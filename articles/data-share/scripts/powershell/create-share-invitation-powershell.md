@@ -1,5 +1,5 @@
 ---
-title: PowerShell 脚本：创建 Azure 数据共享邀请
+title: PowerShell 脚本：创建 Azure Data Share 邀请
 description: 此 PowerShell 脚本发送数据共享邀请。
 author: joannapea
 ms.service: data-share
@@ -7,13 +7,13 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 5f65d081e724206c1c64ad08189d1b620bbb4f2c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92221326"
 ---
-# <a name="use-a-powershell-script-to-monitor-the-usage-of-a-sent-data-share"></a>使用 PowerShell 脚本监视发送的数据共享的使用情况
+# <a name="use-a-powershell-script-to-monitor-the-usage-of-a-sent-data-share"></a>使用 PowerShell 脚本监视已发送的数据共享的使用情况
 
 此 PowerShell 脚本创建数据共享邀请。
 
@@ -39,11 +39,11 @@ New-AzDataShareInvitation -ResourceGroupName $resourceGroupName -AccountName $da
 
 | 命令 | 说明 |
 |---|---|
-| [新-AzDataShareInvitation](/powershell/module/az.datashare/new-azdatashareinvitation) | 创建数据共享邀请。 |
+| [New-AzDataShareInvitation](/powershell/module/az.datashare/new-azdatashareinvitation) | 创建数据共享邀请。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/)。
 
-可以在 [Azure 数据共享 powershell 示例](../../samples-powershell.md)中找到其他 Azure 数据共享 powershell 脚本示例。
+可以在 [Azure Data Share PowerShell 示例](../../samples-powershell.md)中找到其他 Azure Data Share PowerShell 脚本示例。

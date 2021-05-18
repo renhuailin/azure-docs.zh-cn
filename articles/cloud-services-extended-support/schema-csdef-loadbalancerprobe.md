@@ -1,5 +1,5 @@
 ---
-title: Azure 云服务（外延支持）定义LoadBalancerProbe 架构 | Microsoft Docs
+title: Azure 云服务（外延支持）定义 LoadBalancerProbe 架构 | Microsoft Docs
 description: 与云服务（外延支持）的负载均衡器探测架构相关的信息
 ms.topic: article
 ms.service: cloud-services-extended-support
@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 10e42e502a1f435d06d52d22d5c1e1924a46e575
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98744245"
 ---
 # <a name="azure-cloud-services-extended-support-definition-loadbalancerprobe-schema"></a>Azure 云服务（外延支持）定义 LoadBalancerProbe 架构

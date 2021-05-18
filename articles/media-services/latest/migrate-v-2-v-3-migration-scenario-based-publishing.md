@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: f28a95ce6ef5e87eed6e5efcd013cc40b102fcba
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0a0052fa3d78a3b77094cfccbd4c011321ac5925
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721083"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279011"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>基于打包和分发方案的迁移指南
 
@@ -30,10 +30,10 @@ V3 API 中内容发布方式的重大更改。 新的发布模型已简化，可
 
 ## <a name="packaging-and-delivery-in-v3"></a>V3 中的打包和分发
 
-1. 创建[内容密钥策略](content-key-policy-concept.md)。
-1. 创建[流式处理定位符](streaming-locators-concept.md)。
+1. 创建[内容密钥策略](drm-content-key-policy-concept.md)。
+1. 创建[流式处理定位符](stream-streaming-locators-concept.md)。
 1. 获取[流式处理路径](create-streaming-locator-build-url.md) 
-    1. 针对 [DASH](dynamic-packaging-overview.md#mpeg-dash-protocol) 或 [HLS](dynamic-packaging-overview.md#hls-protocol) 播放器进行配置。
+    1. 针对 [DASH](encode-dynamic-packaging-concept.md#mpeg-dash-protocol) 或 [HLS](encode-dynamic-packaging-concept.md#hls-protocol) 播放器进行配置。
 
 有关具体步骤，请参阅以下发布概念、教程和操作指南。
 
@@ -41,28 +41,24 @@ V3 API 中内容发布方式的重大更改。 新的发布模型已简化，可
 
 ### <a name="concepts"></a>概念
 
-- [媒体服务 v3 中的动态打包](dynamic-packaging-overview.md)
+- [媒体服务 v3 中的动态打包](encode-dynamic-packaging-concept.md)
 - [筛选器](filters-concept.md)
-- [使用动态打包器筛选清单](filters-dynamic-manifest-overview.md)
-- [Azure 媒体服务中的流式处理终结点（来源）](streaming-endpoint-concept.md)
-- [使用 CDN 集成流式处理内容](scale-streaming-cdn.md)
-- [流式处理定位符](streaming-locators-concept.md)
+- [使用动态打包器筛选清单](filters-dynamic-manifest-concept.md)
+- [Azure 媒体服务中的流式处理终结点（来源）](stream-streaming-endpoint-concept.md)
+- [使用 CDN 集成流式处理内容](stream-scale-streaming-cdn-concept.md)
+- [流式处理定位符](stream-streaming-locators-concept.md)
 
 ### <a name="how-to-guides"></a>操作方法指南
 
-- [通过媒体服务 v3 管理流式处理终结点](manage-streaming-endpoints-howto.md)
+- [通过媒体服务 v3 管理流式处理终结点](stream-manage-streaming-endpoints-how-to.md)
 - [CLI 示例：发布资产](cli-publish-asset.md)
 - [创建流定位器并生成 URL](create-streaming-locator-build-url.md)
-- [下载作业结果](download-results-howto.md)
+- [下载作业结果](job-download-results-how-to.md)
 - [指示描述性音频轨道](signal-descriptive-audio-howto.md)
 - [Azure Media Player 完全设置](../azure-media-player/azure-media-player-full-setup.md)
-- [如何在 Azure 媒体服务中使用 Video.js 播放器](how-to-video-js-player.md)
-- [如何将 Shaka Player 与 Azure 媒体服务一起使用](how-to-shaka-player.md)
+- [如何在 Azure 媒体服务中使用 Video.js 播放器](player-how-to-video-js-player.md)
+- [如何将 Shaka Player 与 Azure 媒体服务一起使用](player-shaka-player-how-to.md)
 
 ## <a name="samples"></a>示例
 
 还可[将代码示例中的 V2 和 V3 代码进行比较](migrate-v-2-v-3-migration-samples.md)。
-
-## <a name="next-steps"></a>后续步骤
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

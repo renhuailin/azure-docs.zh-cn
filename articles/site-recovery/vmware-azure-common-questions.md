@@ -4,10 +4,10 @@ description: 获取使用 Azure Site Recovery 将本地 VMware VM 灾难恢复�
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97587786"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
@@ -149,7 +149,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>如何跟踪初始复制/同步的进度？
 
-此功能最近 Site Recovery 的服务。 将 Site Recovery 基础结构 (配置服务器、横向扩展进程服务器) 和移动代理更新到版本9.36 或更高版本，以获取准确的详细信息。 详细了解如何在 [此处](vmware-azure-enable-replication.md#monitor-initial-replication)跟踪进度。
+此功能最近已应用于 Site Recovery 服务。 将 Site Recovery 基础结构（配置服务器、横向扩展进程服务器）和移动代理更新至版本 9.36 或更高版本，以获取准确的详细信息。 有关如何跟踪进度的详细信息，请参阅[此处](vmware-azure-enable-replication.md#monitor-initial-replication)。
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>是否可以执行脱机初始复制？
 
@@ -249,7 +249,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](./service-updates-how-to
 [了解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何更新配置服务器。
 
 - 可以在 [Azure 更新页](https://azure.microsoft.com/updates/?product=site-recovery)中找到最新的更新信息。
-- 可从门户下载最新版本。 或者，你可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器。
+- 可从门户下载最新版本。 也可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器。
 - 如果你的版本比当前版本低 4 个版本，请参阅[支持声明](./service-updates-how-to.md#support-statement-for-azure-site-recovery)获取升级指导。
 
 ### <a name="should-i-back-up-the-configuration-server"></a>是否应备份配置服务器？

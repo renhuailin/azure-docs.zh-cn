@@ -1,6 +1,6 @@
 ---
-title: '使用 Azure 映像生成器 & 适用于 Linux Vm (预览版的共享映像库) '
-description: 了解如何使用 Azure 映像生成器和 Azure CLI 来创建共享映像库中的映像版本，然后全局分布该图像。
+title: 使用 Azure 映像生成器和用于 Linux VM 的共享映像库（预览版）
+description: 了解如何使用 Azure 映像生成器和 Azure CLI，在共享映像库中创建映像版本，然后全局分发此映像。
 author: cynthn
 ms.author: cynthn
 ms.date: 03/02/2021
@@ -10,10 +10,10 @@ ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: danis
 ms.openlocfilehash: cf7f5ed4a27772a89d0356c60e6f7135786ca07d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101695594"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Linux 映像并将其分发到共享映像库 

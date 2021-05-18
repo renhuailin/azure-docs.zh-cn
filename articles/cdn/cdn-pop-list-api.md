@@ -1,5 +1,5 @@
 ---
-title: 检索 Azure CDN 的当前 POP IP 列表 |Microsoft Docs
+title: 检索 Azure CDN 的当前 POP 列表 | Microsoft Docs
 description: 了解如何使用 REST API 获取 POP 服务器。 POP 服务器将请求发送到与 Azure 内容分发网络终结点相关联的源服务器。
 services: cdn
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
 ms.openlocfilehash: 4197b1a5f047190872d055dc2ba8ccaa11efbe6c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100376337"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>检索 Azure CDN 的当前 POP IP 列表
@@ -32,14 +32,14 @@ REST API 可用于检索 Verizon 入网点 (POP) 服务器的 IP 集。 这些 P
 
 ## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>检索 Azure CDN 的当前 Microsoft POP IP 列表
 
-若要将应用程序锁定为仅接受来自 Microsoft Azure CDN 的流量，需要为后端设置 IP Acl。 你还可以限制从 Microsoft Azure CDN 发送的标头 "X-转发主机" 的已接受值集。 下面详细说明了这些步骤：
+要锁定应用程序以仅接受来自 Microsoft Azure CDN 的流量，需要为后端设置 IP ACL。 此外，还可以限制 Microsoft Azure CDN 发送的标头“X-Forwarded-Host”接受的值集。 下面详细说明了这些步骤：
 
-将后端的 IP Acl 配置为仅接受来自 Microsoft 后端 IP 地址空间和 Azure 的基础结构服务 Azure CDN 的流量。 
+将后端的 IP ACL 配置为仅接受来自 Microsoft 后端 IP 地址空间和 Azure 基础结构服务的 Azure CDN 流量。 
 
-* 从 Microsoft 的 IPv4 后端 IP 空间 Azure CDN： 147.243.0.0/16
-* 从 Microsoft 的 IPv6 后端 IP 空间 Azure CDN：2a01：111：2050：：/44
+* 来自 Microsoft IPv4 后端 IP 空间的 Azure CDN：147.243.0.0/16
+* 来自 Microsoft IPv6 后端 IP 空间的 Azure CDN：2a01:111:2050::/44
 
-若要将服务标记与 Microsoft 的 Azure CDN 一起使用，请使用 Azure 前门标记。 可在[此处](https://www.microsoft.com/download/details.aspx?id=56519)找到 Microsoft 服务的 IP 范围和服务标记
+要对 Microsoft Azure CDN 使用服务标记，请使用 Azure Front Door 标记。 Microsoft 服务的 IP 范围和服务标记位于[此处](https://www.microsoft.com/download/details.aspx?id=56519)
 
 
 ## <a name="typical-use-case"></a>典型用例

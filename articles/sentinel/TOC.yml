@@ -25,6 +25,8 @@
       href: tutorial-respond-threats-playbook.md
     - name: 创建 KQL 查询（Learn 模块）
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
+    - name: 为 SAP 部署 Azure Sentinel 解决方案
+      href: sap-deploy-solution.md
 - name: 概念
   items:
     - name: 使用实体对数据进行分类
@@ -49,8 +51,12 @@
           href: automate-responses-with-playbooks.md
     - name: 通过 UEBA 识别高级威胁
       href: identify-threats-with-entity-behavior-analytics.md
+    - name: 使用 SOC-ML 异常检测威胁
+      href: soc-ml-anomalies.md
     - name: 将威胁情报导入 Azure Sentinel
       href: import-threat-intelligence.md
+    - name: 威胁情报集成
+      href: threat-intelligence-integration.md
     - name: 自带机器学习平台
       href: bring-your-own-ml.md
     - name: 将 Microsoft 365 Defender 与 Azure Sentinel 集成
@@ -59,6 +65,12 @@
       href: watchlists.md
     - name: 跨工作区和租户扩展 Azure Sentinel
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: Azure Sentinel 解决方案
+      items:
+        - name: 关于 Sentinel 解决方案
+          href: sentinel-solutions.md
+        - name: 解决方案目录
+          href: sentinel-solutions-catalog.md
     - name: 跨表规范化数据
       href: normalization.md
     - name: 使用 Azure 数据资源管理器以实现长期日志保留
@@ -266,6 +278,16 @@
           href: connect-azure-stack.md
         - name: 监视数据连接器运行状况
           href: monitor-data-connector-health.md
+    - name: 部署解决方案
+      items:
+        - name: 发现和部署解决方案
+          href: sentinel-solutions-deploy.md
+        - name: 高级 - 在本地部署 SAP 数据连接器
+          href: sap-solution-deploy-alternate.md
+    - name: 使用 SOC-ML 异常规则
+      href: work-with-anomaly-rules.md
+    - name: 创建自定义实体活动
+      href: customize-entity-activities.md
     - name: 使用用户和实体行为分析
       items:
         - name: 启用 UEBA
@@ -284,8 +306,12 @@
       href: surface-custom-details-in-alerts.md
     - name: 从警报创建事件
       href: create-incidents-from-alerts.md
+    - name: 在 Microsoft Teams 中开展协作
+      href: collaborate-in-microsoft-teams.md
     - name: 利用事件指标更好地管理 SOC
       href: manage-soc-with-incident-metrics.md
+    - name: 处理误报
+      href: false-positives.md
     - name: 审核 Azure Sentinel 查询和活动
       href: audit-sentinel-data.md
     - name: 搜寻
@@ -341,6 +367,14 @@
       href: cef-name-mapping.md
     - name: MCAS 警报未加入到 Microsoft 365 Defender
       href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
+    - name: SAP 解决方案参考
+      items:
+        - name: 详细的 SAP 解决方案要求
+          href: sap-solution-detailed-requirements.md
+        - name: 可用的 SAP 日志
+          href: sap-solution-log-reference.md
+        - name: SAP 解决方案安全内容参考
+          href: sap-solution-security-content.md
 - name: 资源
   items:
     - name: 有用的资源

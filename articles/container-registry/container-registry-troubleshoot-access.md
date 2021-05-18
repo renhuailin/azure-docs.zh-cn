@@ -4,10 +4,10 @@ description: 访问位于虚拟网络中或防火墙后面的 Azure 容器注册
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101699600"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>排查与注册表相关的网络问题
@@ -41,7 +41,7 @@ ms.locfileid: "101699600"
 
 参阅[检查 Azure 容器注册表的运行状况](container-registry-check-health.md)以查看命令示例。 如果报告了错误，请查看[错误参考](container-registry-health-error-reference.md)和以下部分，以了解建议的解决方案。
 
-如果使用注册表同时 Azure Kubernetes 服务时遇到问题，请运行 [az aks check-acr](/cli/azure/aks#az_aks_check_acr) 命令，以验证是否可以从 aks 群集访问注册表。
+如果在将注册表与 Azure Kubernetes 服务配合使用时遇到问题，请运行 [az aks check-acr](/cli/azure/aks#az_aks_check_acr) 命令，以验证是否可以从 AKS 群集访问该注册表。
 
 > [!NOTE]
 > 当注册表身份验证或授权存在问题时，也可能出现一些网络连接症状。 请参阅[注册表登录故障排除](container-registry-troubleshoot-login.md)。
@@ -93,7 +93,7 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 
 如果在网络中配置了 Azure 防火墙或类似的解决方案，请检查是否已允许来自其他资源（如 AKS 群集）的出口流量到达注册表终结点。
 
-如果配置了专用终结点，请确认 DNS 将注册表的公共 FQDN （如 *myregistry.azurecr.io* ）解析为注册表的专用 IP 地址。 使用网络实用工具（如 `dig` 或 `nslookup`）进行 DNS 查找。
+如果配置了专用终结点，请确认 DNS 已将注册表的公共 FQDN（例如，myregistry.azurecr.io）解析为注册表的专用 IP 地址。 使用网络实用工具（如 `dig` 或 `nslookup`）进行 DNS 查找。
 
 相关链接：
 
@@ -105,14 +105,14 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 
 ### <a name="configure-service-access"></a>配置服务访问
 
-目前，不允许通过多个 Azure 服务访问具有网络限制的容器注册表：
+目前，多个 Azure 服务不允许访问具有网络限制的容器注册表：
 
-* Azure 安全中心无法在限制对专用终结点、选定子网或 IP 地址的访问的注册表中执行 [映像漏洞扫描](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) 。 
-* 某些 Azure 服务的资源无法访问具有网络限制（包括 Azure App Service 和 Azure 容器实例）的容器注册表。
+* Azure 安全中心无法在限制对专用终结点、所选子网或 IP 地址进行访问的注册表中执行[映像漏洞扫描](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json)。 
+* 某些 Azure 服务（包括 Azure 应用服务和 Azure 容器实例）的资源无法访问具有网络限制的容器注册表。
 
 如果需要使用容器注册表访问或集成这些 Azure 服务，请去除网络限制。 例如，删除注册表的专用终结点，或者删除或修改注册表的公共访问规则。
 
-从2021年1月开始，你可以配置受网络限制的注册表，以允许从选择受信任的服务进行 [访问](allow-access-trusted-services.md) 。
+从 2021 年 1 月开始，可以将受网络限制的注册表配置为[允许从所选的受信任服务访问](allow-access-trusted-services.md)。
 
 相关链接：
 

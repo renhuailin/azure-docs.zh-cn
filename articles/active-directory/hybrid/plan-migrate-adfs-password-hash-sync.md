@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：从联合迁移到用于 Azure AD 的 PHS |Microsoft Docs
+title: Azure AD Connect：从联合身份验证迁移到 Azure AD 的 PHS | Microsoft Docs
 description: 本文提供有关将混合标识环境从联合身份验证转移到密码哈希同步的信息。
 services: active-directory
 author: billmath
@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dca888bf9e3dc75e80764949a11d95efe3514635
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861810"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的密码哈希同步
@@ -24,9 +24,9 @@ ms.locfileid: "96861810"
 本文介绍如何将组织域从 Active Directory 联合身份验证服务 (AD FS) 迁移到密码哈希同步。
 
 > [!NOTE]
-> 更改身份验证方法需要进行规划、测试并可能会有停机时间。 [过渡推出](how-to-connect-staged-rollout.md) 提供一种替代方法，用于通过密码哈希同步来测试和逐步从联合迁移到云身份验证。
+> 更改身份验证方法需要进行规划、测试并可能会有停机时间。 [分阶段推出](how-to-connect-staged-rollout.md)提供一种替代方法来使用密码哈希同步来逐步从联合身份验证迁移到云身份验证并加以测试。
 >
-> 如果你计划使用分阶段推出，应记得在完成切削后关闭分阶段推出的功能。  有关详细信息，请参阅 [使用分步推出迁移到云身份验证](how-to-connect-staged-rollout.md)
+> 如果你计划使用分阶段推出，应记得在完成割接后关闭分阶段推出功能。  有关详细信息，请参阅[使用分阶段推出迁移到云身份验证](how-to-connect-staged-rollout.md)
 
 
 ## <a name="prerequisites-for-migrating-to-password-hash-synchronization"></a>迁移到密码哈希同步的先决条件
@@ -42,11 +42,11 @@ ms.locfileid: "96861810"
 > [!IMPORTANT]
 > 过时的文档、工具和博客中可能指出，将域从联合标识转换为托管标识时，必须执行用户转换。 现在不再需要转换用户。 Microsoft 正在努力更新文档和工具以反映这项变化。
 
-若要更新 Azure AD Connect，请完成 Azure AD Connect 中的步骤 [：升级到最新版本](./how-to-upgrade-previous-version.md)。
+要更新 Azure AD Connect，请完成 [Azure AD Connect：升级到最新版本](./how-to-upgrade-previous-version.md)中的步骤。
 
 ### <a name="password-hash-synchronization-required-permissions"></a>密码哈希同步所需的权限
 
-可以使用快速设置或自定义安装配置 Azure AD Connect。 如果使用的是自定义安装选项，则可能不会对密码哈希同步 [所需的权限](./reference-connect-accounts-permissions.md) 。
+可以使用快速设置或自定义安装配置 Azure AD Connect。 如果使用了“自定义安装”选项，则可能并不拥有密码哈希同步[所需的权限](./reference-connect-accounts-permissions.md)。
 
 Azure AD Connect Active Directory 域服务 (AD DS) 服务帐户需要以下权限才能同步密码哈希。
 
@@ -90,11 +90,11 @@ Azure AD Connect Active Directory 域服务 (AD DS) 服务帐户需要以下权�
 3. 在“查看解决方案”页上，记下“密码哈希同步”的状态。<br /> 
 
    * 如果“密码哈希同步”设置为“已禁用”，请遵循本文中的步骤将它启用。
-   * 如果 " **密码哈希同步** " 设置为 " **已启用**"，则可以跳过本文中的 **步骤1：启用密码哈希同步** 部分。
+   * 如果“密码哈希同步”设置为“已启用”，则可以跳过本文的“步骤 1 - 启用密码哈希同步”部分  。
 4. 在“查看解决方案”页上，滚动到“Active Directory 联合身份验证服务(AD FS)”。<br />
 
-   * 如果此部分显示了 AD FS 配置，则可以肯定 AD FS 最初是使用 Azure AD Connect 配置的。 可以使用 Azure AD Connect 的“更改用户登录”选项将域从联合标识转换为托管标识。 本部分详细介绍了 **如何使用 Azure AD Connect 从联合身份验证到密码哈希同步** 部分。
-   * 如果当前设置中未列出 AD FS，则必须使用 PowerShell 手动将域从联合标识转换为托管标识。 有关此过程的详细信息，请参阅 " **选项 B：使用 Azure AD Connect 和 PowerShell 从联合转换到密码哈希同步**" 部分。
+   * 如果此部分显示了 AD FS 配置，则可以肯定 AD FS 最初是使用 Azure AD Connect 配置的。 可以使用 Azure AD Connect 的“更改用户登录”选项将域从联合标识转换为托管标识。 “选项 A：使用 Azure AD Connect 从联合身份验证切换到密码哈希同步”一节详细介绍了该过程。
+   * 如果当前设置中未列出 AD FS，则必须使用 PowerShell 手动将域从联合标识转换为托管标识。 有关此过程的详细信息，请参阅“选项 B：使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到密码哈希同步”一节。
 
 ### <a name="document-current-federation-settings"></a>阐述当前联合身份验证设置
 
@@ -104,7 +104,7 @@ Azure AD Connect Active Directory 域服务 (AD DS) 服务帐户需要以下权�
 Get-MsolDomainFederationSettings -DomainName YourDomain.extention | fl *
 ```
 
-例如：
+示例：
 
 ``` PowerShell
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
@@ -118,15 +118,15 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 * [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication)
 
 > [!NOTE]
-> 如果 **SupportsMfa** 设置为 **True**，则表示你正在使用本地多重身份验证解决方案将第二因素质询注入到用户身份验证流。 将此域转换为托管身份验证后，此设置不再适用于 Azure AD 身份验证方案。 禁用联合后，会将关系加入本地联合身份验证，这包括本地 MFA 适配器。 
+> 如果 **SupportsMfa** 设置为 **True**，则表示你正在使用本地多重身份验证解决方案将第二因素质询注入到用户身份验证流。 在将该域从联合身份验证转换为托管身份验证之后，此设置不再适用于 Azure AD 身份验证方案。 禁用联合后，相当于切断了与本地联合的关系，这包括本地 MFA 适配器。 
 >
-> 请改用 Azure AD 多因素身份验证基于云的服务来执行相同的功能。 在继续之前，请仔细评估多重身份验证要求。 在转换域之前，请确保了解如何使用 Azure AD 多重身份验证、许可影响和用户注册过程。
+> 应改为使用基于云的 Azure AD 多重身份验证服务来执行相同的功能。 在继续之前，请仔细评估多重身份验证要求。 在转换域之前，请确保了解 Azure AD 多重身份验证的用法、许可影响，以及用户注册过程。
 
 #### <a name="back-up-federation-settings"></a>备份联合身份验证设置
 
 尽管在执行本文所述的过程期间不会对 AD FS 场中的其他信赖方进行任何更改，但我们建议为 AD FS 场创建可用于还原的当前有效备份。 可以使用免费的 Microsoft [AD FS 快速还原工具](/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool)创建当前有效的备份。 使用此工具可以备份 AD FS、还原现有场，或创建新场。
 
-如果选择不使用 AD FS 快速还原工具，则至少应导出 Microsoft 365 标识平台信赖方信任和所添加的任何关联的自定义声明规则。 可使用以下 PowerShell 示例导出信赖方信任和关联的声明规则：
+如果不选择使用 AD FS 快速还原工具，则最起码应该导出“Microsoft 365 标识平台”信赖方信任，以及可能已添加的任何关联的自定义声明规则。 可使用以下 PowerShell 示例导出信赖方信任和关联的声明规则：
 
 ``` PowerShell
 (Get-AdfsRelyingPartyTrust -Name "Microsoft Office 365 Identity Platform") | Export-CliXML "C:\temp\O365-RelyingPartyTrust.xml"
@@ -138,15 +138,15 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 ### <a name="current-ad-fs-use"></a>当前的 AD FS 用法
 
-将联合身份转换为托管标识之前，请仔细查看 Azure AD、Microsoft 365 和其他应用程序的 AD FS， (信赖方信任) 。 具体而言，请考虑下表中所述的场景：
+从联合标识转换为托管标识之前，请仔细检查目前如何将 AD FS 用于 Azure AD、Microsoft 365 和其他应用程序（信赖方信任）。 具体而言，请考虑下表中所述的场景：
 
 | 如果 | Then |
 |-|-|
-| 你计划继续将 AD FS 与 Azure AD 和 Microsoft 365) 之外的其他应用程序 (使用。 | 转换域后，将同时使用 AD FS 和 Azure AD。 考虑用户体验。 在某些情况下，用户可能需要进行两次身份验证：一次是 Azure AD (用户获取对其他应用程序的 SSO 访问权限（如 Microsoft 365) ），并再次针对仍绑定到 AD FS 作为信赖方信任的任何应用程序。 |
+| 打算对其他这些应用程序（非 Azure AD 和 Microsoft 365）保留使用 AD FS。 | 转换域后，将同时使用 AD FS 和 Azure AD。 考虑用户体验。 在某些情况下，用户可能需要进行身份验证两次，一次是针对 Azure AD（然后用户可以通过 SSO 访问 Microsoft 365 等其他应用程序），另一次是针对仍以信赖方信任方式绑定到 AD FS 的任何应用程序再次进行身份验证。 |
 | AD FS 实例经过重度的自定义，并依赖于 onload.js 文件中的特定自定义设置（例如，你已更改登录体验，使用户只需以 **SamAccountName** 格式输入其用户名而不是用户主体名称 (UPN)；或者组织在登录体验中使用了众多的品牌设计）。 不能在 Azure AD 中复制 onload.js 文件。 | 在继续之前，必须验证 Azure AD 是否可以满足当前自定义要求。 如需更多信息和指导，请参阅有关 AD FS 品牌和 AD FS 自定义的部分。|
-| 使用 AD FS 阻止旧版身份验证客户端。| 请考虑通过结合使用 [条件访问控制](../conditional-access/concept-conditional-access-conditions.md) 和 [Exchange Online 客户端访问规则](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)来替换阻止早期版本身份验证客户端的 AD FS 控件。 |
-| 要求用户在 AD FS 中进行身份验证时对本地多重身份验证服务器解决方案执行多重身份验证。| 在托管标识域中，无法通过本地多重身份验证解决方案将多重身份验证质询注入到身份验证流。 但是，在域转换后，可以使用 Azure AD 多重身份验证服务进行多重身份验证。<br /><br /> 如果用户当前不使用 Azure AD 多重身份验证，则需要一次性用户注册步骤。 必须准备好将规划的注册过程传达给用户。 |
-| 你当前在 AD FS 中 (AuthZ 规则) 使用访问控制策略来控制对 Microsoft 365 的访问。| 请考虑将策略替换为等效的 Azure AD [条件性访问策略](../conditional-access/overview.md) 和 [Exchange Online 客户端访问规则](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)。|
+| 使用 AD FS 阻止旧版身份验证客户端。| 考虑将用于阻止旧版身份验证客户端的 AD FS 控制机制替换为[条件访问控制](../conditional-access/concept-conditional-access-conditions.md)和 [Exchange Online 客户端访问规则](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)的组合。 |
+| 要求用户在 AD FS 中进行身份验证时对本地多重身份验证服务器解决方案执行多重身份验证。| 在托管标识域中，无法通过本地多重身份验证解决方案将多重身份验证质询注入到身份验证流。 但是，在转换域后，可以使用 Azure AD 多重身份验证服务进行多重身份验证。<br /><br /> 如果用户当前未使用 Azure AD 多重身份验证，则需要执行一次性的用户注册步骤。 必须准备好将规划的注册过程传达给用户。 |
+| 目前在 AD FS 中使用访问控制策略（AuthZ 规则）来控制对 Microsoft 365 的访问。| 考虑将这些策略替换为等效的 Azure AD [条件访问策略](../conditional-access/overview.md)和 [Exchange Online 客户端访问规则](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules)。|
 
 ### <a name="common-ad-fs-customizations"></a>常见的 AD FS 自定义项
 
@@ -158,28 +158,28 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 将域转换为密码哈希同步后，**InsideCorporateNetwork** 声明不再可用。 可以使用 [Azure AD 中的命名位置](../reports-monitoring/quickstart-configure-named-locations.md)来取代此功能。
 
-配置命名位置后，必须更新所有已配置为包括或排除网络 **所有受信任位置** 的条件访问策略，或者更新 **MFA 受信任的 ip** 值，以反映新的命名位置。
+配置命名位置后，必须更新配置为包含或排除网络“所有受信任位置”或“MFA 信任的 IP”值的所有条件访问策略，以反映新的命名位置。 
 
-有关条件访问中的 **位置** 条件的详细信息，请参阅 [Active Directory 条件访问位置](../conditional-access/location-condition.md)。
+有关条件访问中的“位置”条件的详细信息，请参阅 [Active Directory 条件访问位置](../conditional-access/location-condition.md)。
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>已加入混合 Azure AD 的设备
 
-将设备加入到 Azure AD 时，可以创建条件性访问规则，强制设备满足安全和合规性的访问标准。 此外，用户可以使用组织的工作或学校帐户（而不是个人帐户）登录到设备。 使用已加入混合 Azure AD 的设备可将已加入 Active Directory 域的设备加入到 Azure AD。 你的联合环境可能已设置为使用此功能。
+将设备加入 Azure AD 时，可以创建条件访问规则，以强制要求设备符合访问标准以及安全与合规性要求。 此外，用户可以使用组织的工作或学校帐户（而不是个人帐户）登录到设备。 使用已加入混合 Azure AD 的设备可将已加入 Active Directory 域的设备加入到 Azure AD。 你的联合环境可能已设置为使用此功能。
 
-为了确保在将域转换为密码哈希同步（对于 Windows 10 客户端）后，混合联接仍适用于加入域的任何设备，你必须使用 Azure AD Connect 设备选项将 Active Directory 计算机帐户同步到 Azure AD。 
+为了确保在将域转换为密码哈希同步之后，混合加入仍适用于任何已加入域的设备，对于 Windows 10 客户端，必须使用 Azure AD Connect 设备选项将 Active Directory 计算机帐户同步到 Azure AD。 
 
 对于 Windows 8 和 Windows 7 计算机帐户，混合加入将使用无缝 SSO 在 Azure AD 中注册计算机。 无需像在 Windows 10 设备上一样同步 Windows 8 和 Windows 7 计算机帐户。 但是，必须（通过一个 .msi 文件）将更新的 workplacejoin.exe 文件部署到 Windows 8 和 Windows 7 客户端，使它们能够使用无缝 SSO 自我注册。 [下载 .msi 文件](https://www.microsoft.com/download/details.aspx?id=53554)。
 
 有关详细信息，请参阅[配置已加入混合 Azure AD 的设备](../devices/hybrid-azuread-join-plan.md)。
 
-#### <a name="branding"></a>品牌
+#### <a name="branding"></a>品牌打造
 
 如果你的组织已[自定义 AD FS 登录页](/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization)以使显示的内容与组织更相关，请考虑[在 Azure AD 登录页中使用类似的自定义项](../fundamentals/customize-branding.md)。
 
 尽管可以使用类似的自定义项，但转换后，登录页上预期会发生一定的视觉变化。 可以在发送给用户的信件中提供有关预期变化的信息。
 
 > [!NOTE]
-> 仅当你购买 Azure Active Directory 的高级或基本许可证或者你有 Microsoft 365 许可证时，组织品牌才可用。
+> 只有购买了 Azure Active Directory 的 Premium 或 Basic 许可证或者拥有 Microsoft 365 许可证，才能使用组织品牌功能。
 
 ## <a name="plan-deployment-and-support"></a>规划部署和支持
 
@@ -194,7 +194,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 新式身份验证客户端（Office 2016 和 Office 2013、iOS 及 Android 应用）使用有效的刷新令牌获取新的访问令牌以持续访问资源，而无需返回到 AD FS。 在完成域转换过程后，有无密码提示对这些客户端而言并不重要。 无需进行额外的配置，这些客户端就能持续正常运行。
 
 > [!IMPORTANT]
-> 在验证所有用户均可使用云身份验证成功进行身份验证之前，请不要关闭 AD FS 环境或删除 Microsoft 365 信赖方信任。
+> 在验证所有用户可以使用云身份验证成功完成身份验证之前，请不要关闭 AD FS 环境或删除 Microsoft 365 信赖方信任。
 
 ### <a name="plan-for-rollback"></a>规划回滚
 
@@ -211,7 +211,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 规划部署和支持的一个重要组成部分是确保主动通知最终用户将要发生哪些变化。 用户应该提前知道他们可能会遇到哪种情况，以及需要做些什么。 
 
-在部署密码哈希同步和无缝 SSO 后，用户登录经验用于访问 Microsoft 365 和其他通过 Azure AD 更改进行身份验证的资源。 网络外部的用户只会看到 Azure AD 登录页。 这些用户不会重定向到面向外部的 Web 应用程序代理服务器提供的基于窗体的页。
+部署密码哈希同步和无缝 SSO 后，访问通过 Azure AD 进行身份验证的 Microsoft 365 和其他资源时，用户登录体验将会发生变化。 网络外部的用户只会看到 Azure AD 登录页。 这些用户不会重定向到面向外部的 Web 应用程序代理服务器提供的基于窗体的页。
 
 在沟通策略中包括以下要素：
 
@@ -229,7 +229,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 * 准备无缝 SSO。
 * 将登录方法更改为密码哈希同步并启用无缝 SSO。
 
-### <a name="step-1-enable-password-hash-synchronization"></a>步骤1：启用密码哈希同步
+### <a name="step-1-enable-password-hash-synchronization"></a>步骤 1 - 启用密码哈希同步
 
 实施此解决方案的第一步是使用 Azure AD Connect 向导启用密码哈希同步。 密码哈希同步是一个可选功能，可以使用联合身份验证在环境中启用。 这不会对身份验证流造成任何影响。 在这种情况下，Azure AD Connect 将开始同步密码哈希，而不影响用户使用联合身份验证登录。
 
@@ -238,7 +238,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 启用密码哈希同步：
 
 1. 在 Azure AD Connect 服务器上打开 Azure AD Connect 向导，然后选择“配置”。
-2. 选择 " **自定义同步选项**"，然后选择 " **下一步**"。
+2. 依次选择“自定义同步选项”、“下一步”。 
 3. 在“连接到 Azure AD”页上，输入全局管理员帐户的用户名和密码。
 4. 在“连接目录”页上选择“下一步”。
 5. 在“域和 OU 筛选”页上选择“下一步”。
@@ -264,33 +264,33 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 若要排查问题，请参阅[使用 Azure AD Connect 同步排查密码哈希同步问题](./tshoot-connect-password-hash-synchronization.md)。
 
-### <a name="step-2-prepare-for-seamless-sso"></a>步骤2：为无缝 SSO 做好准备
+### <a name="step-2-prepare-for-seamless-sso"></a>步骤 2 - 准备无缝 SSO
 
 要让设备使用无缝 SSO，必须使用 Active Directory 中的组策略将一个 Azure AD URL 添加到用户的 Intranet 区域设置。
 
-默认情况下，浏览器将自动从 URL 计算正确的区域（Internet 或 Intranet）。 例如， **http： \/ \/ contoso/** maps 到 intranet 区域， **http： \/ \/ INTRANET.CONTOSO.COM** 映射到 internet 区域 (因为 URL 包含句点) 。 仅当显式将 URL 添加到浏览器的 Intranet 区域时，浏览器才会将 Kerberos 票证发送到云终结点（例如 Azure AD URL）。
+默认情况下，浏览器将自动从 URL 计算正确的区域（Internet 或 Intranet）。 例如，**http:\/\/contoso/** 映射到 Intranet 区域，而 **http:\/\/intranet.contoso.com** 映射到 Internet 区域（因为此 URL 包含句点）。 仅当显式将 URL 添加到浏览器的 Intranet 区域时，浏览器才会将 Kerberos 票证发送到云终结点（例如 Azure AD URL）。
 
 请完成[这些步骤](./how-to-connect-sso-quick-start.md)在设备上实施所需的更改。
 
 > [!IMPORTANT]
 > 进行此项更改不会修改用户登录到 Azure AD 的方式。 但是，必须在继续之前将此配置应用到所有设备。 在尚未收到此配置的设备上登录的用户只需输入用户名和密码即可登录到 Azure AD。
 
-### <a name="step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso"></a>步骤3：将登录方法更改为密码哈希同步并启用无缝 SSO
+### <a name="step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso"></a>步骤 3：将登录方法更改为密码哈希同步并启用无缝 SSO
 
 可以使用两个选项将登录方法更改为密码哈希同步并启用无缝 SSO。
 
-#### <a name="option-a-switch-from-federation-to-password-hash-synchronization-by-using-azure-ad-connect"></a>选项 A：使用 Azure AD Connect 从联合切换到密码哈希同步
+#### <a name="option-a-switch-from-federation-to-password-hash-synchronization-by-using-azure-ad-connect"></a>选项 A：使用 Azure AD Connect 从联合身份验证切换到密码哈希同步
 
 如果最初使用 Azure AD Connect 配置了 AD FS 环境，请使用此方法。 如果最初不是使用 Azure AD Connect 配置了 AD FS 环境，则不能使用此方法。
 
 首先更改登录方法：
 
 1. 在 Azure AD Connect 服务器上打开 Azure AD Connect 向导。
-2. 选择 " **更改用户登录**"，然后选择 " **下一步**"。 
+2. 依次选择“更改用户登录”、“下一步”。  
 
    ![“其他任务”页上的“更改用户登录”选项的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image7.png)<br />
 3. 在“连接到 Azure AD”页上，输入全局管理员帐户的用户名和密码。
-4. 在 " **用户登录** " 页上，选择 " **密码哈希同步" 按钮**。 并确保选中“不要转换用户帐户”框。 该选项已过时。 依次选择“启用单一登录”、“下一步”。
+4. 在“用户登录”页上，选择“密码哈希同步”按钮。  并确保选中“不要转换用户帐户”框。 该选项已过时。 依次选择“启用单一登录”、“下一步”。
 
    ![“启用单一登录”页的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image8.png)<br />
 
@@ -302,7 +302,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 5. 在“启用单一登录”页上输入域管理员帐户的凭据，然后选择“下一步”。
 
-   !["启用单一登录" 页的屏幕截图，你可以在其中输入域管理员帐户凭据。](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
+   ![“启用单一登录”页的屏幕截图，可在其中输入域管理员帐户凭据。](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
 
    > [!NOTE]
    > 需要使用域管理员帐户凭据来启用无缝 SSO。 该过程将完成以下操作，而这些操作需要这些提升的权限。 域管理员帐户凭据不存储在 Azure AD Connect 或 Azure AD 中。 域管理员帐户凭据仅用于启用该功能。 成功完成该过程后会丢弃这些凭据。
@@ -311,38 +311,38 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
    > 2. 计算机帐户的 Kerberos 解密密钥与 Azure AD 安全共享。
    > 3. 创建两个 Kerberos 服务主体名称 (SPN) 来表示 Azure AD 登录期间使用的两个 URL。
 
-6. 在“已准备好进行配置”页上，确保已选中“配置完成后启动同步过程”复选框。 然后选择 " **配置**"。
+6. 在“已准备好进行配置”页上，确保已选中“配置完成后启动同步过程”复选框。 然后选择“配置”。
 
       ![“准备好配置”页的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image10.png)<br />
 
    > [!IMPORTANT]
    > 此时，所有联合域将更改为托管身份验证。 密码哈希同步是新的身份验证方法。
 
-7. 在 Azure AD 门户中，选择 " **Azure Active Directory**"  >  **Azure AD Connect**"。
+7. 在 Azure AD 门户中，选择“Azure Active Directory” > “Azure AD Connect”。 
 8. 验证以下设置：
    * “联合身份验证”设置为“已禁用”。
    * “无缝单一登录”设置为“已启用”。
    * “密码同步”设置为“已启用”。<br /> 
 
-   ![显示 Azure AD 门户的用户登录部分中的设置的屏幕截图。](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![显示 Azure AD 门户的“用户登录”部分中的设置的屏幕截图。](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 跳到[测试和后续步骤](#testing-and-next-steps)。
 
    > [!IMPORTANT]
-   > 跳过部分 **选项 B：使用 Azure AD Connect 和 PowerShell 从联合切换到密码哈希同步**。 如果已选择使用“选项 A”将登录方法更改为密码哈希同步并启用无缝 SSO，则“选项 B”部分中的步骤不适用。
+   > 跳过“选项 B：使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到密码哈希同步”部分。 如果已选择使用“选项 A”将登录方法更改为密码哈希同步并启用无缝 SSO，则“选项 B”部分中的步骤不适用。
 
-#### <a name="option-b-switch-from-federation-to-password-hash-synchronization-using-azure-ad-connect-and-powershell"></a>选项 B：使用 Azure AD Connect 和 PowerShell 从联合切换到密码哈希同步
+#### <a name="option-b-switch-from-federation-to-password-hash-synchronization-using-azure-ad-connect-and-powershell"></a>选项 B：使用 Azure AD Connect 和 PowerShell 从联合身份验证切换到密码哈希同步
 
 如果联合域最初不是使用 Azure AD Connect 配置的，请使用此选项。 在此过程中，将启用无缝 SSO，并将联合域切换到托管域。
 
 1. 在 Azure AD Connect 服务器上打开 Azure AD Connect 向导。
-2. 选择 " **更改用户登录**"，然后选择 " **下一步**"。
+2. 依次选择“更改用户登录”、“下一步”。 
 3. 在“连接到 Azure AD”页上，输入全局管理员帐户的用户名和密码。
 4. 在“用户登录”页上，选择“密码哈希同步”按钮。 依次选择“启用单一登录”、“下一步”。
 
-   启用密码哈希同步之前： ![ 屏幕截图，显示用户登录页上的 "不配置" 选项](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
+   在启用密码哈希同步之前：![显示“用户登录”页上的“不要配置”选项的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   启用密码哈希同步之后： ![ 屏幕截图，显示用户登录页上的新选项](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   在启用密码哈希同步之后：![显示“用户登录”页上的新选项的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
    > 从 Azure AD Connect 版本 1.1.880.0 开始，默认会选中“无缝单一登录”复选框。
@@ -356,7 +356,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
    > 2. 计算机帐户的 Kerberos 解密密钥与 Azure AD 安全共享。
    > 3. 创建两个 Kerberos 服务主体名称 (SPN) 来表示 Azure AD 登录期间使用的两个 URL。
 
-6. 在“已准备好进行配置”页上，确保已选中“配置完成后启动同步过程”复选框。 然后选择 " **配置**"。
+6. 在“已准备好进行配置”页上，确保已选中“配置完成后启动同步过程”复选框。 然后选择“配置”。
 
    ![显示“已准备好进行配置”页上的“配置”按钮的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
    选择“配置”按钮时，将会根据上一步骤中的指定配置无缝 SSO。 不会修改密码哈希同步配置，因为之前已将其启用。
@@ -387,7 +387,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
 
-3. 在 Azure AD 门户中，选择 " **Azure Active Directory**"  >  **Azure AD Connect**"。
+3. 在 Azure AD 门户中，选择“Azure Active Directory” > “Azure AD Connect”。 
 4. 运行以下命令，验证是否已将该域转换为托管域：
 
    ``` PowerShell
@@ -405,7 +405,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 测试密码哈希同步：
 
 1. 在 InPrivate 模式下打开 Internet Explorer，以避免无缝 SSO 自动将你登录。
-2. )  (，请参阅 Office 365 登录页 [https://portal.office.com](https://portal.office.com/) 。
+2. 转到 Office 365 登录页 ([https://portal.office.com](https://portal.office.com/))。
 3. 输入用户 UPN，然后选择“下一步”。 请务必输入已从本地 Active Directory 实例同步的，并且事先已使用联合身份验证的混合用户的 UPN。 此时会显示一个页面，可在其中输入用户名和密码：
 
    ![显示用于输入用户名的登录页的屏幕截图](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)
@@ -431,14 +431,14 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 3. 用户将重定向并成功登录到访问面板：
 
    > [!NOTE]
-   > 无缝 SSO 适用于支持域提示 (Microsoft 365 服务，例如 myapps.microsoft.com/contoso.com) 。 目前 Microsoft 365 门户 (portal.office.com) 不支持域提示。 用户需要输入 UPN。 输入 UPN 之后，无缝 SSO 将代表用户检索 Kerberos 票证。 用户无需输入密码即可登录。
+   > 无缝 SSO 可在支持域提示（例如 myapps.microsoft.com/contoso.com）的 Microsoft 365 服务中正常工作。 Microsoft 365 门户 (portal.office.com) 目前不支持域提示。 用户需要输入 UPN。 输入 UPN 之后，无缝 SSO 将代表用户检索 Kerberos 票证。 用户无需输入密码即可登录。
 
    > [!TIP]
    > 为了改善 SSO 体验，请考虑部署 [Windows 10 上的 Azure AD 混合加入](../devices/overview.md)。
 
 ### <a name="remove-the-relying-party-trust"></a>删除信赖方信任
 
-验证所有用户和客户端通过 Azure AD 成功进行身份验证后，可以安全地删除 Microsoft 365 信赖方信任。
+验证所有用户和客户端已通过 Azure AD 成功完成身份验证后，可以安全删除 Microsoft 365 信赖方信任。
 
 如果未将 AD FS 用于其他目的（即，其他信赖方信任），则现在可以安全解除 AD FS。
 
@@ -460,11 +460,11 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 若要了解如何验证或启用此功能，请参阅[同步 userPrincipalName 更新](./how-to-connect-syncservice-features.md)。
 
-### <a name="troubleshooting"></a>疑难解答
+### <a name="troubleshooting"></a>故障排除
 
 支持团队应了解如何排查在从联合身份验证更改为托管身份验证期间或之后出现的任何身份验证问题。 使用以下故障排除文档可帮助支持团队熟悉常见的故障排除步骤，以及可帮助找出和解决问题的相应操作。
 
-[Azure Active Directory 密码哈希同步的疑难解答](./tshoot-connect-password-hash-synchronization.md)
+[排查 Azure Active Directory 密码哈希同步问题](./tshoot-connect-password-hash-synchronization.md)
 
 [排查 Azure Active Directory 无缝单一登录问题](./tshoot-connect-sso.md)
 
@@ -479,5 +479,5 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 ## <a name="next-steps"></a>后续步骤
 
 * 了解 [Azure AD Connect 设计概念](plan-connect-design-concepts.md)。
-* 选择 [正确的身份验证](./choose-ad-authn.md)。
+* 选择[适当的身份验证](./choose-ad-authn.md)。
 * 了解[支持的拓扑](plan-connect-design-concepts.md)。

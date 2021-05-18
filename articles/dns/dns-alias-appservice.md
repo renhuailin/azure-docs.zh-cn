@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954505"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>在区域顶点托管负载均衡的 Azure Web 应用
@@ -26,7 +26,7 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 必须具有可用于在 Azure DNS 中托管以供测试的域名。 必须能够完全控制此域。 完全控制包括能够为域设置名称服务器 (NS) 记录。
 
@@ -89,8 +89,8 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
    |类型  |名称  |目标  |位置  |自定义标头设置|
    |---------|---------|---------|---------|---------|
-   |外部终结点     |End-01|为 App-01 记下的 IP 地址|美国东部|主持人\<the URL you recorded for App-01\><br>示例：**host:app-01.azurewebsites.net**|
-   |外部终结点     |End-02|为 App-02 记下的 IP 地址|美国中部|主持人\<the URL you recorded for App-02\><br>示例：**host:app-02.azurewebsites.net**
+   |外部终结点     |End-01|为 App-01 记下的 IP 地址|美国东部|主机：\<the URL you recorded for App-01\><br>示例：**host:app-01.azurewebsites.net**|
+   |外部终结点     |End-02|为 App-02 记下的 IP 地址|美国中部|主机：\<the URL you recorded for App-02\><br>示例：**host:app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>创建 DNS 区域
 

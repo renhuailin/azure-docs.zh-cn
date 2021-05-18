@@ -1,5 +1,5 @@
 ---
-title: 如何通过 Java 使用 Azure 通知中心
+title: 如何结合使用 Azure 通知中心与 Java
 description: 了解如何从 Java 后端使用 Azure 通知中心。
 services: notification-hubs
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 09553f587916e8204541b36f259a450d72c1b270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87322935"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>如何通过 Java 使用通知中心
@@ -42,7 +42,7 @@ SDK 目前支持以下内容：
 * 常规发送
 * 计划发送
 * 通过 Java NIO 的异步操作
-* 支持的平台： APNS (iOS) ，FCM (Android) ，WNS (Windows 应用商店应用) ，MPNS (Windows Phone) ，ADM (Amazon Kindle 激发) ，百度 (Android
+* 支持的平台：APNS (iOS)、FCM (Android)、WNS（Windows 应用商店应用）、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、百度（没有 Google 服务的 Android）
 
 ## <a name="sdk-usage"></a>SDK 用法
 
@@ -74,7 +74,7 @@ hub.setWindowsCredential(new WindowsCredential("sid","key"));
 hub = namespaceManager.createNotificationHub(hub);
 ```
 
- 或
+ OR
 
 ```java
 hub = new NotificationHub("connection string", "hubname");

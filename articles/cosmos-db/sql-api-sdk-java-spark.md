@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 7ff75bf9d45803dd96927bcf7c70e7c7912db979
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097152"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>适用于 Core (SQL) API 的 Azure Cosmos DB Apache Spark 连接器：发行说明和资源
@@ -40,13 +40,13 @@ ms.locfileid: "93097152"
 
 可以通过使用适用于 Core (SQL) 的 Azure Cosmos DB Apache Spark 连接器加速大数据分析。 利用 Spark 连接器，可以对 Azure Cosmos DB 中存储的数据运行 [Spark](https://spark.apache.org/) 作业。 支持批处理和流处理。
 
-你可以将连接器与 [Azure Databricks](https://azure.microsoft.com/services/databricks) 或 [azure HDInsight](https://azure.microsoft.com/services/hdinsight/)配合使用，后者提供 Azure 上的托管 Spark 群集。 下表显示了支持的版本：
+可以将连接器用于 [Azure Databricks](https://azure.microsoft.com/services/databricks) 或 [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)，它们在 Azure 上提供 Spark 托管群集。 下表显示了支持的版本：
 
 | 组件 | 版本 |
 |---------|-------|
 | Apache Spark | 2.4.x、2.3.x、2.2.x 和 2.1.x    |
 | Scala | 2.11 |
-| Azure Databricks (运行时版本)  | 晚于3。4 |
+| Azure Databricks（运行时版本） | 晚于 3.4 |
 
 > [!WARNING]
 > 此连接器支持 Azure Cosmos DB 的核心 (SQL) API。

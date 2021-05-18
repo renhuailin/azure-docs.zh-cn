@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: 8db556709f68a1184046989a15fad147542a05a7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735735"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的计划内维护通知
@@ -25,7 +25,7 @@ Azure Database for PostgreSQL 服务执行基础硬件、OS 和数据库引擎�
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>计划内维护 - 持续时间和客户影响
 
-给定 Azure 区域的计划内维护通常会在15小时内完成。 如果需要，此时间窗口还包含执行回滚计划的缓冲时间。 Azure Database for PostgreSQL 服务器在容器中运行，因此数据库服务器重启通常需要60-120 秒钟才能完成，但没有确定的方法知道您的服务器将受到什么影响。 工程团队会认真监视包括每个服务器重启在内的整个计划内维护事件。 服务器故障转移时间依赖于数据库恢复，这可能会导致在故障转移时，如果服务器上有大量的事务活动，数据库会变得更长。 若要避免重启时间延长，建议在计划内维护事件期间避免任何长时间运行的事务（大容量加载）。
+给定 Azure 区域的计划内维护通常应在 15 小时内完成。 此时间范围还包括在必要时执行回退计划的缓冲时间。 Azure Database for PostgreSQL 服务器在容器中运行，因此数据库服务器重启通常需要 60-120 秒才能完成，但你的服务器在此 15 小时的范围内何时会受到影响是无法确定的。 工程团队会认真监视包括每个服务器重启在内的整个计划内维护事件。 服务器故障转移时间取决于数据库恢复时间，如果在故障转移时服务器上有大量的事务活动，这可能会导致数据库需要更长的时间才能联机。 若要避免重启时间延长，建议在计划内维护事件期间避免任何长时间运行的事务（大容量加载）。
 
 总之，虽然计划内维护事件运行 15 小时，但单个服务器的影响通常只持续 60 秒，具体取决于服务器上的事务活动。 一个通知会在计划内维护开始前的 72 个日历小时内发送，另一个通知将在给定区域正在维护时发送。
 
@@ -36,7 +36,7 @@ Azure Database for PostgreSQL 服务执行基础硬件、OS 和数据库引擎�
 ### <a name="planned-maintenance-notification"></a>计划内维护通知
 
 > [!IMPORTANT]
-> 计划内维护通知当前在美国西部地区 **以外** 的所有区域中提供预览版
+> 计划内维护通知目前在除美国中西部以外的所有区域中都以预览版形式提供
 
 “计划内维护通知”允许你接收有关 Azure Database for PostgreSQL 即将进行的计划内维护事件的警报。 这些通知与[服务运行状况](../service-health/overview.md)计划内维护集成，允许你在同一位置查看你的订阅的所有计划内维护。 它还有助于将通知扩展到不同资源组的适当受众，因为你可能有不同的联系人负责不同的资源。 你会在事件发生前的 72 个日历小时收到即将进行维护的通知。
 
@@ -65,7 +65,7 @@ Azure Database for PostgreSQL 服务执行基础硬件、OS 和数据库引擎�
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>能否取消或推迟计划内维护？
 
-维护是使服务器保持安全、稳定和最新状态所必需的。 计划内维护事件无法取消或推迟。 将通知发送到给定的 Azure 区域后，不能对该区域中的任何单个服务器进行修补计划更改。 补丁针对整个区域同时推出。 Azure Database for PostgreSQL 单服务器服务适用于不需要对服务进行精细控制或自定义的云本机应用程序。 如果你希望能够为服务器计划维护，则建议你考虑使用 [灵活的服务器](./flexible-server/overview.md)。
+维护是使服务器保持安全、稳定和最新状态所必需的。 计划内维护事件无法取消或推迟。 将通知发送到给定的 Azure 区域后，不能对该区域中的任何单个服务器进行修补计划更改。 补丁针对整个区域同时推出。 Azure Database for PostgreSQL - 单服务器服务适用于不需要对服务进行精细控制或自定义的云原生应用程序。 如果希望能为服务器计划维护，则建议考虑使用[灵活服务器](./flexible-server/overview.md)。
 
 ## <a name="are-all-the-azure-regions-patched-at-the-same-time"></a>是否所有 Azure 区域都同时修补？
 
@@ -78,7 +78,7 @@ Azure Database for PostgreSQL 服务执行基础硬件、OS 和数据库引擎�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关使用 Azure Database for PostgreSQL 的任何问题或建议，请向 Azure Database for PostgreSQL 团队发送一封电子邮件，网址为： AskAzureDBforPostgreSQL@service.microsoft.com
+- 如有任何关于使用 Azure Database for PostgreSQL 的问题或建议，请向 Azure Database for PostgreSQL 团队 (AskAzureDBforPostgreSQL@service.microsoft.com) 发送电子邮件
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。
 - [排查 Azure Databases for PostgreSQL - 单一服务器的连接问题](howto-troubleshoot-common-connection-issues.md)
 - [处理暂时性错误并有效地连接到 Azure Database for PostgreSQL（单一服务器）](concepts-connectivity.md)

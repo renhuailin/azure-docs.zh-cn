@@ -1,5 +1,5 @@
 ---
-title: 将跨租户 Vnet 连接到中心： PowerShell
+title: 将跨租户 VNet 连接到中心：PowerShell
 titleSuffix: Azure Virtual WAN
 description: 本文介绍了如何使用 PowerShell 将跨租户 VNet 连接到某个虚拟中心。
 services: virtual-wan
@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: c49a85c71c9b877be7e143f5caf27dc307fe0c12
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
-ms.translationtype: MT
+ms.openlocfilehash: 82a5e90221a77b891df78984c7fddfd63b6532aa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381263"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104585411"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>将跨租户 VNet 连接到某个虚拟 WAN 中心
 
@@ -90,7 +90,7 @@ ms.locfileid: "94381263"
 1. 将 VNet 连接到中心。
 
    ```azurepowershell-interactive
-   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
+   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $remote
    ```
 
 1. 可以在 PowerShell 或 Azure 门户中查看新连接。

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Active Directory 进行 LDAP 身份验证
-description: 有关通过 Azure Active Directory 实现 LDAP 身份验证的体系结构指南。
+description: 有关如何使用 Azure Active Directory 实现 LDAP 身份验证的体系结构指南。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f209d394e1a0c2c4ddde9cbf8df2704647e2822a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96168706"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>使用 Azure Active Directory 进行 LDAP 身份验证

@@ -8,10 +8,10 @@ author: mksuni
 ms.author: sumuth
 ms.date: 12/08/2020
 ms.openlocfilehash: ee3b1f7db8bdafb1233b32579e032e8c864c37a9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97364555"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--flexible-server"></a>Azure Database for PostgreSQL 灵活服务器连接和查询概述
@@ -26,7 +26,7 @@ ms.locfileid: "97364555"
 | 快速入门 | 说明 |
 |---|---|
 |[Pgadmin](https://www.pgadmin.org/)|可以使用 pgadmin 连接到服务器，它可简化数据库对象的创建、维护和使用。|
-|[Azure Cloud Shell 中的 psql](./quickstart-create-server-cli.md#connect-using-postgresql-command-line-client)|本文介绍如何运行 [Azure Cloud Shell](../../cloud-shell/overview.md) 中的“**psql**”[](https://www.postgresql.org/docs/current/static/app-psql.html)以连接到服务器，然后运行语句以在数据库中查询、插入、更新和删除数据。可以运行“psql”（如果已安装在开发环境中）|
+|[Azure Cloud Shell 中的 psql](./quickstart-create-server-cli.md#connect-using-postgresql-command-line-client)|本文介绍如何运行 [Azure Cloud Shell](../../cloud-shell/overview.md) 中的 [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html)以连接到服务器，然后运行语句以在数据库中查询、插入、更新和删除数据。可以运行“psql”（如果已安装在开发环境中）|
 |[Python](connect-python.md)|本快速入门演示如何使用 Python 连接到数据库，并使用数据库对象来查询数据。 |
 |[应用服务的 Django](tutorial-django-app-service-postgres.md)|本教程演示如何使用 Ruby 创建连接到数据库的程序，并使用数据库对象来查询数据。|
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90090119"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：暂存服务器和灾难恢复
@@ -33,7 +33,7 @@ ms.locfileid: "90090119"
 * 测试和部署新的配置更改。
 * 引入新的服务器并解除旧服务器。
 
-可以在安装过程中选择将服务器置于**暂存模式**。 此操作可以激活服务器进行导入和同步，但不会运行任何导出。 处于暂存模式的服务器不会运行密码同步或密码写回，即使在安装期间选择了这些功能。 如果禁用暂存模式，服务器将开始导出，启用密码同步，并启用密码写回。
+可以在安装过程中选择将服务器置于 **暂存模式**。 此操作可以激活服务器进行导入和同步，但不会运行任何导出。 处于暂存模式的服务器不会运行密码同步或密码写回，即使在安装期间选择了这些功能。 如果禁用暂存模式，服务器将开始导出，启用密码同步，并启用密码写回。
 
 > [!NOTE]
 > 假设拥有已启用密码哈希同步功能的 Azure AD Connect。 如果启用暂存模式，则服务器停止同步本地 AD 的密码更改。 如果禁用暂存模式，则服务器从上次离开的位置恢复同步密码更改。 如果服务器长时间处于暂存模式，则服务器可能需要一段时间才能同步该时间段内发生的所有密码更改。
@@ -57,10 +57,10 @@ ms.locfileid: "90090119"
 
 #### <a name="prepare"></a>准备
 1. 安装 Azure AD Connect，选择“暂存模式”，然后取消选择安装向导中最后一页上的“启动同步”。   此模式允许手动运行同步引擎。
-   ![屏幕截图显示 "Azure AD Connect" 对话框中的 "已准备好配置" 页。](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
+   ![屏幕截图显示了“Azure AD Connect”对话框中的“已准备好进行配置”页。](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. 注销/登录并从“开始”菜单选择“同步服务”。 
 
-#### <a name="configuration"></a>Configuration
+#### <a name="configuration"></a>配置
 如果对主服务器进行了自定义更改并希望比较配置和临时服务器，则使用 [Azure AD Connect 配置文档管理器](https://github.com/Microsoft/AADConnectConfigDocumenter)。
 
 #### <a name="import-and-synchronize"></a>导入和同步
@@ -73,7 +73,7 @@ ms.locfileid: "90090119"
 
 #### <a name="verify"></a>验证
 1. 启动 cmd 提示符并转到 `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. 运行：`csexport "Name of Connector" %temp%\export.xml /f:x` 连接器名称可以在同步服务中找到。 它的名称类似于 "contoso.com – Azure AD" Azure AD。
+2. 运行：`csexport "Name of Connector" %temp%\export.xml /f:x` 连接器名称可以在同步服务中找到。 对于 Azure AD，它的名称类似于“contoso.com - Azure AD”。
 3. 运行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` %temp% 中已有名为 export.csv 的文件，可在 Microsoft Excel 中检查。 此文件包含要导出的所有更改。
 4. 对数据或配置进行必要的更改并再次执行这些步骤（导入、同步和身份验证），直到要导出的更改都按预期进行。
 
@@ -102,7 +102,7 @@ ms.locfileid: "90090119"
 根据这些问题的回答和组织的策略，实施下列其中一个策略：
 
 * 根据需要重建。
-* 具有备用的待机服务器（称为**暂存模式**）。
+* 具有备用的待机服务器（称为 **暂存模式**）。
 * 使用虚拟机
 
 如果不使用内置的 SQL Express 数据库，应查看 [SQL 高可用性](#sql-high-availability)部分。
@@ -113,9 +113,9 @@ ms.locfileid: "90090119"
 同步引擎服务器不存储有关对象的任何状态，因此可以从 Active Directory 与 Azure AD 中的数据重建数据库。 **sourceAnchor** 属性可用于联接来自本地和云的对象。 如果重新生成包含本地与云中现有对象的服务器，同步引擎的重新安装符合这些项目。 需要记录和保存的内容是对服务器进行的配置更改，例如筛选和同步规则。 在开始同步之前，必须重新应用这些自定义配置。
 
 ### <a name="have-a-spare-standby-server---staging-mode"></a>具有备用的待机服务器 - 暂存模式
-如果环境更复杂，我们建议使用一个或多个待机服务器。 可以在安装过程中启用服务器的**暂存模式**。
+如果环境更复杂，我们建议使用一个或多个待机服务器。 可以在安装过程中启用服务器的 **暂存模式**。
 
-有关详细信息，请参阅 [暂存模式](#staging-mode)。
+有关详细信息，请参阅[暂存模式](#staging-mode)。
 
 ### <a name="use-virtual-machines"></a>使用虚拟机
 常用的受支持方法是在虚拟机中运行同步引擎。 如果主机有问题，可将包含同步引擎服务器的映像迁移到另一个服务器。
@@ -151,9 +151,9 @@ write-host "Importing XML" -ForegroundColor Yellow
 $resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
 
 #use an XmlReader to deal with even large files
-$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
 $result=$reader.ReadToDescendant('cs-object')
-do 
+do 
 {
     #create the object placeholder
     #adding them up here means we can enforce consistency

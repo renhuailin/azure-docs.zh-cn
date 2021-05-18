@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 6ba49ebc593e67e1168f6427ade38b7d80bf7edf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 94b7b0761d40906ba5a8043ff02953db74b6c1b5
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96621427"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145008"
 ---
 # <a name="how-to-sell-your-azure-application-offer"></a>如何销售 Azure 应用程序产品/服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "96621427"
 
 在“与 Microsoft 联合销售”选项卡上提供信息 - 此信息完全可选填。 但是它需要达到“联合销售就绪”和“IP 联合销售就绪”状态 。 Microsoft 销售团队在评估你的解决方案是否满足客户需求时，会使用此信息来详细了解该解决方案。 在此选项卡上提供的信息不会直接向客户提供。
 
-有关配置“与 Microsoft 联合销售”选项卡的详细信息和说明，请参阅[商业市场中的“联合销售”选项](commercial-marketplace-co-sell.md)。
+有关配置“与 Microsoft 联合销售”选项卡的详细信息和说明，请参阅[商业市场中的“联合销售”选项](./co-sell-configure.md)。
 
 ## <a name="resell-through-csps"></a>通过 CSP 转售
 

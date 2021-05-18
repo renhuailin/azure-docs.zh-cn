@@ -1,6 +1,6 @@
 ---
-title: 配置服务器参数-Azure CLI-Azure Database for MySQL 灵活服务器
-description: 本文介绍如何使用 Azure CLI 命令行实用工具在 Azure Database for MySQL 灵活的服务器中配置服务参数。
+title: 配置服务器参数 - Azure CLI - Azure Database for MySQL 灵活服务器
+description: 本文介绍如何使用 Azure CLI 命令行实用工具在 Azure Database for MySQL 灵活服务器中配置服务参数。
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
@@ -9,63 +9,63 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489533"
 ---
-# <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Database for MySQL 灵活的服务器中配置服务器参数
+# <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Database for MySQL 灵活服务器中配置服务器参数
 
 > [!IMPORTANT] 
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
-可以通过使用 Azure CLI （Azure 命令行实用程序）列出、显示和更新 Azure Database for MySQL 灵活服务器的参数。 创建服务器时，将使用默认值和推荐值配置服务器参数。  
+可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MySQL 灵活服务器的参数。 创建服务器时，将使用默认值和推荐值配置服务器参数。  
 
 本文介绍如何使用 Azure CLI 列出、显示和更新服务器参数。
 
 >[!Note]
-> 服务器参数可以在服务器级别全局更新，使用 [Azure CLI](./how-to-configure-server-parameters-cli.md) 或 [Azure 门户](./how-to-configure-server-parameters-portal.md)
+> 可在服务器级别全局更新服务器参数，方法是使用 [Azure CLI](./how-to-configure-server-parameters-cli.md) 或 [Azure 门户](./how-to-configure-server-parameters-portal.md)
 
 ## <a name="prerequisites"></a>先决条件
 若要逐步执行本操作方法指南，需要：
-- [Azure Database for MySQL 灵活的服务器](quickstart-create-server-cli.md)
+- [Azure Database for MySQL 灵活服务器](quickstart-create-server-cli.md)
 - [Azure CLI](/cli/azure/install-azure-cli) 命令行实用工具或在浏览器中使用 Azure Cloud Shell。
 
-## <a name="list-server-parameters-for-azure-database-for-mysql-flexible-server"></a>列出 Azure Database for MySQL 灵活服务器的服务器参数
-若要列出服务器中的所有参数及其值，请运行 [az mysql 挠性-server parameters list](/cli/azure/mysql/flexible-server/parameter) 命令。
+## <a name="list-server-parameters-for-azure-database-for-mysql-flexible-server"></a>为 Azure Database for MySQL 灵活服务器列出服务器参数
+若要列出服务器中的所有参数及其值，请运行 [az mysql flexible-server parameter list](/cli/azure/mysql/flexible-server/parameter) 命令。
 
-可以在资源组 **myresourcegroup** 下列出服务器 **mydemoserver.mysql.database.azure.com** 的服务器参数。
+可以列出资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的服务器参数 。
 ```azurecli-interactive
 az mysql flexible-server parameter list --resource-group myresourcegroup --server-name mydemoserver
 ```
 有关每个列出参数的定义，请参阅[服务器系统变量](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)上的 MySQL 引用部分。
 
 ## <a name="show-server-parameter-details"></a>显示服务器参数详细信息
-若要显示有关某个服务器的特定参数的详细信息，请运行 [az mysql 挠性-server parameter show](/cli/azure/mysql/flexible-server/parameter) 命令。
+若要显示服务器的某个特定参数的详细信息，请运行 [az mysql flexible-server parameter show](/cli/azure/mysql/flexible-server/parameter) 命令。
 
-此示例显示了 "资源组 myresourcegroup" 下服务器 **mydemoserver.mysql.database.azure.com** 的 **慢速 \_ 查询 \_ 日志** 服务器参数的详细信息 **。**
+本示例显示了资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的服务器参数 slow\_query\_log 的详细信息  。
 ```azurecli-interactive
 az mysql flexible-server parameter show --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
 ## <a name="modify-a-server-parameter-value"></a>修改服务器参数值
-你还可以修改某个服务器参数的值，该参数将更新 MySQL server 引擎的基础配置值。 若要更新服务器参数，请使用 [az mysql 挠性-server 参数 set](/cli/azure/mysql/flexible-server/parameter) 命令。 
+还可以修改某个服务器参数的值，这会更新 MySQL 服务器引擎的基础配置值。 若要更新服务器参数，请使用 [az mysql flexible-server parameter set](/cli/azure/mysql/flexible-server/parameter) 命令。 
 
-若要更新资源组 myresourcegroup 下的服务器 **mydemoserver.mysql.database.azure.com** 的 **慢速 \_ 查询 \_ 日志** 服务器参数 **。**
+更新资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的服务器参数 slow\_query\_log  。
 ```azurecli-interactive
 az mysql flexible-server parameter set --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver --value ON
 ```
-如果要重置参数的值，则省略可选 `--value` 参数，并且服务将应用默认值。 对于上述示例，它将如下所示：
+若要重置参数的值，省去可选的 `--value` 参数，服务将应用默认值。 对于上述示例，它将如下所示：
 ```azurecli-interactive
 az mysql flexible-server parameter set --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
-此代码将 **慢速 \_ 查询 \_ 日志** 重置为默认值 **OFF** 。 
+此代码会将 slow\_query\_log 重置为默认值 OFF 。 
 
 ## <a name="setting-non-modifiable-server-parameters"></a>设置不可修改的服务器参数
 
-如果要更新的服务器参数是不可修改的，则可以选择使用在连接级别设置参数 `init_connect` 。 此项可为每个连接到服务器的客户端设置服务器参数。 
+如果要更新的服务器参数不可修改，则可以选择性地使用 `init_connect` 在连接级别设置参数。 此项可为每个连接到服务器的客户端设置服务器参数。 
 
-更新 "资源组 **myresourcegroup** " 下服务器 **mydemoserver.mysql.database.azure.com** 的 **init \_ connect** 服务器参数以设置值（如字符集）。
+更新资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的 init\_connect 服务器参数，以设置字符集之类的值  。
 ```azurecli-interactive
 az mysql flexible-server parameter set --name init_connect --resource-group myresourcegroup --server-name mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
 ```
@@ -96,9 +96,9 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>设置全局级时区
 
-可以使用 [az mysql 挠性-server 参数 set](/cli/azure/mysql/flexible-server/parameter) 命令设置全局级别时区。
+可以使用 [az mysql flexible-server parameter set](/cli/azure/mysql/flexible-server/parameter) 命令来设置全局级时区。
 
-以下命令将资源组 **myresourcegroup** 下的服务器 **mydemoserver.mysql.database.azure.com** 的 **时区服务器参数 \_** 更新为 **US/太平洋** 。
+以下命令将资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的 time\_zone 服务器参数更新为“US/Pacific”   。
 
 ```azurecli-interactive
 az mysql flexible-server parameter set --name time_zone --resource-group myresourcegroup --server-name mydemoserver --value "US/Pacific"

@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 05/04/2021
-  ms.openlocfilehash: 20d2d685c6ac634a1463669c262f599fb465e05d
-  ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+  ms.date: 05/11/2021
+  ms.openlocfilehash: ae12f4ed9d356eb7a196164574766868ea469f1a
+  ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108803903"
+  ms.lasthandoff: 05/11/2021
+  ms.locfileid: "109754328"
 landingContent:
 - title: 关于 Azure VMware 解决方案
   linkLists:
@@ -40,7 +40,7 @@ landingContent:
       url: concepts-api-management.md
     - text: 中心和分支
       url: concepts-hub-and-spoke.md
-- title: 常见问题解答
+- title: 常见问题
   linkLists:
   - linkListType: reference
     links:
@@ -94,6 +94,14 @@ landingContent:
       url: tutorial-scale-private-cloud.md
     - text: 删除私有云
       url: tutorial-delete-private-cloud.md
+- title: 身份管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 私有云的访问权限和标识
+      url: concepts-identity.md
+    - text: 轮换 cloudadmin 凭据
+      url: rotate-cloudadmin-credentials.md
 - title: 扩展 Azure VMware 解决方案
   linkLists:
   - linkListType: reference

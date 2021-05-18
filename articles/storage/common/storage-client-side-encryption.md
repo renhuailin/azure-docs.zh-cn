@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d00b6aa09ef19b1e6892e0e90536e45dd3bce79
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718516"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104588250"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 存储的客户端加密和 Azure 密钥保管库
 
@@ -132,7 +132,7 @@ Key Vault 集成有两个必需的包：
 * Azure.Core 包含 `IKeyEncryptionKey` 和 `IKeyEncryptionKeyResolver` 接口。 用于 .NET 的存储客户端库已将其定义为一个依赖项。
 * Azure.Security.KeyVault.Keys (v4.x) 包含 Key Vault REST 客户端，以及用于客户端加密的加密客户端。
 
-密钥保管库专为高价值主密钥设计，每个密钥保管库的限流限制的设计也考虑了这一点。 在 KeyVault 4.1.0 的情况下，没有 `IKeyEncryptionKeyResolver` 支持密钥缓存的实现。 由于限制，应执行 [此示例](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) ，接下来可以将缓存层注入到 `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` 实例中。
+密钥保管库专为高价值主密钥设计，每个密钥保管库的限流限制的设计也考虑了这一点。 截至 Azure.Security.KeyVault.Keys 4.1.0，都没有支持密钥缓存的 `IKeyEncryptionKeyResolver` 实现。 如果在限制条件下需要缓存，则应按照[本示例](/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/)中的步骤将缓存层注入到 `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` 实例中。
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 

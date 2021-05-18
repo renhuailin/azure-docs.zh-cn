@@ -1,5 +1,5 @@
 ---
-title: 服务到服务身份验证-Data Lake Storage Gen1-Java SDK
+title: 服务到服务身份验证 - Data Lake Storage Gen1 - Java SDK
 description: 了解如何使用 Azure Active Directory 和 Java 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 author: twooley
 ms.service: data-lake-store
@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.custom: devx-track-java
 ms.author: twooley
 ms.openlocfilehash: 0e320557a7372af6a41038d9b3196db23d2496c3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96000379"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>使用 Java 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
@@ -32,7 +32,7 @@ ms.locfileid: "96000379"
 
 * **创建 Azure Active Directory“Web”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-using-active-directory.md)中的步骤。
 
-* [Maven](https://maven.apache.org/install.html)。 本教程使用 Maven 生成项目和项目依赖项。 尽管可以在不使用 Maven 或 Gradle 等生成系统的情况下进行生成，但这些系统可以更轻松地管理依赖项。
+* [Maven](https://maven.apache.org/install.html)。 本教程使用 Maven 生成项目和项目依赖项。 尽管不使用 Maven 或 Gradle 等生成系统也能完成生成，但使用这些系统可以大大减化依赖项的管理。
 
 * （可选）[IntelliJ IDEA](https://www.jetbrains.com/idea/download/)、[Eclipse](https://www.eclipse.org/downloads/) 或类似的 IDE。
 
@@ -40,7 +40,7 @@ ms.locfileid: "96000379"
 
 1. 在命令行使用 [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 或通过 IDE 创建一个 Maven 项目。 有关如何使用 IntelliJ 创建 Java 项目的说明，请参阅[此文](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 有关如何使用 Eclipse 创建项目的说明，请参阅[此文](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。
 
-2. 将以下依赖项添加到 Maven pom.xml 文件。 在标记之前添加以下代码片段 **\</project>** ：
+2. 将以下依赖项添加到 Maven pom.xml 文件。 在 \</project> 标记前添加以下代码片段：
 
     ```xml
     <dependencies>

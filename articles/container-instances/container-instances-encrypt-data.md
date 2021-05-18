@@ -6,10 +6,10 @@ ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
 ms.openlocfilehash: 1b73ce5c994231a1c7b2f26ad702f2ad5880ba44
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94686270"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署数据
@@ -22,7 +22,7 @@ ACI 中的数据是使用 256 位 AES 加密法加密和解密的。 此加密�
 
 ## <a name="encryption-key-management"></a>加密密钥管理
 
-你可以依赖于 Microsoft 托管的密钥来加密容器数据，也可以通过自己的密钥来管理加密。 下表对这些选项做了比较： 
+可以依赖于使用 Microsoft 管理的密钥来加密容器数据，也可以使用自己的密钥来管理加密。 下表对这些选项做了比较： 
 
 |    |    Microsoft 管理的密钥     |     客户管理的密钥     |
 |----|----|----|
@@ -59,7 +59,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 ### <a name="create-a-key-vault-resource"></a>创建 Key Vault 资源
 
-使用 [Azure 门户](../key-vault/general/quick-create-portal.md)、 [Azure CLI](../key-vault/general/quick-create-cli.md)或 [Azure PowerShell](../key-vault/general/quick-create-powershell.md)创建 Azure Key Vault。
+使用 [Azure 门户](../key-vault/general/quick-create-portal.md)、[Azure CLI](../key-vault/general/quick-create-cli.md) 或 [Azure PowerShell](../key-vault/general/quick-create-powershell.md) 创建 Azure Key Vault。
 
 对于 Key Vault 的属性，请使用以下指导原则： 
 * 姓名：必须提供唯一的名称。 
@@ -83,7 +83,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 * 生成密钥后，返回到 Key Vault 资源边栏选项卡，在“设置”下单击“访问策略”。 
 * 在 Key Vault 的“访问策略”页上，单击“添加访问策略”。 
-* 设置 *密钥权限* 以包含 **Get** 和 **解包密钥** ![ 设置密钥权限](./media/container-instances-encrypt-data/set-key-permissions.png)
+* 设置 ![密钥权限以](./media/container-instances-encrypt-data/set-key-permissions.png)包括“获取”和“解包密钥”设置密钥权限  
 * 对于“选择主体”，请选择“Azure 容器实例服务”  
 * 在底部单击“添加”  
 
@@ -225,9 +225,9 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 ### <a name="deploy-your-resources"></a>部署资源
 
-如果在桌面上创建并编辑了模板文件，则可以通过将文件拖动到 Cloud Shell 目录上，将其上传到该文件。 
+如果在桌面上创建并编辑了模板文件，则可以通过将文件拖动到 Cloud Shell 目录中，将其上传到该目录中。 
 
-使用 [az group create][az-group-create] 命令创建资源组。
+使用“[az group create][az-group-create]”命令创建资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

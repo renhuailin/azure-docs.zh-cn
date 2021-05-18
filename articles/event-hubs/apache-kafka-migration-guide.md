@@ -3,12 +3,12 @@ title: 迁移到用于 Apache Kafka 的 Azure 事件中心
 description: 本文介绍如何将客户端从 Apache Kafka 迁移到 Azure 事件中心。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8db14f6ec18843bf7d592d56b3cf2352c3901a9a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d9f3775a85df5a881c2c38566628e4e1d4d8c40e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310030"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "90061438"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>迁移到用于 Apache Kafka 的 Azure 事件中心生态系统
 Azure 事件中心公开了一个 Apache Kafka 终结点，使你能够使用 Kafka 协议连接到事件中心。 对现有 Kafka 应用程序稍作更改即可连接到 Azure 事件中心并充分利用 Azure 生态系统的优势。 事件中心可与许多现有 Kafka 应用程序（包括 MirrorMaker）配合使用。 有关详细信息，请参阅[适用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
@@ -59,6 +59,6 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 若要详细了解事件中心和适用于 Kafka 的事件中心，请参阅以下文章：  
 
 - [针对事件中心的 Apache Kafka 故障排除指南](apache-kafka-troubleshooting-guide.md)
-- [常见问题解答 - 用于 Apache Kafka 的事件中心](apache-kafka-frequently-asked-questions.yml)
+- [常见问题解答 - 用于 Apache Kafka 的事件中心](apache-kafka-frequently-asked-questions.md)
 - [针对 Azure 事件中心的 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)
 - [建议的配置](apache-kafka-configurations.md)

@@ -9,17 +9,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0c45a48e6cafa722945400554f2f81916da13775
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691920"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627602"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL 连接设置
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-本文介绍的设置可用于控制与 Azure SQL 数据库和 Azure Synapse Analytics 的服务器的连接。 这些设置适用于与服务器关联的所有 SQL 数据库和 Azure Synapse Analytics 数据库。
+本文介绍的设置可用于控制 Azure Synapse Analytics 中与 Azure SQL 数据库和[专用 SQL 池（以前的 SQL DW）](../../synapse-analytics\sql-data-warehouse\sql-data-warehouse-overview-what-is.md)的服务器的连接。 这些设置适用于所有与服务器关联的 SQL 数据库和专用 SQL 池（以前的 SQL DW）数据库。
 
 > [!IMPORTANT]
 > 本文不适用于 Azure SQL 托管实例。

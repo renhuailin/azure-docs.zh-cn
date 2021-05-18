@@ -16,14 +16,14 @@ ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: d36a2804519e5728dd068cc6c06ad005244e8c95
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95524090"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 中的多租户应用程序
-多租户应用程序是一种共享资源，它允许“单独租户中的用户”像使用其自己的应用程序一样查看应用程序。 适合实施多租户应用程序的典型情况是，不同租户中的所有应用程序用户都可能希望定制用户体验，但在其他方面具有相同的基本业务要求。 大型多租户应用程序的示例有 Microsoft 365、Outlook.com 和 visualstudio.com。
+多租户应用程序是一种共享资源，它允许“单独租户中的用户”像使用其自己的应用程序一样查看应用程序。 适合实施多租户应用程序的典型情况是，不同租户中的所有应用程序用户都可能希望定制用户体验，但在其他方面具有相同的基本业务要求。 大型多租户应用程序的示例包括 Microsoft 365、Outlook.com 和 visualstudio.com。
 
 从应用程序提供商的角度来看，多租户技术的优势大多涉及运营和成本效益。 应用程序的一个版本可以满足许多租户/客户的需求，从而使你能够整合系统管理任务，例如监视、性能优化、软件维护和数据备份。
 

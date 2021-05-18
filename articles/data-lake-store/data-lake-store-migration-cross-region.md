@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen1 跨区域迁移 | Microsoft Docs
-description: 了解当你计划并完成迁移到 Azure Data Lake Storage Gen1 时应考虑的事项，因为它在新区域中可用。
+description: 了解在计划和完成到在新区域中可用的 Azure Data Lake Storage Gen1 的迁移时应考虑的事项。
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: twooley
 ms.openlocfilehash: c6520036f3ddb8799025129391330268b0604886
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97723800"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>跨区域迁移 Azure Data Lake Storage Gen1
@@ -25,7 +25,7 @@ Azure Data Lake Storage Gen1 在新区域中推出后，用户可以选择执行
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 有关详细信息，请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 有关详细信息，请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * **在两个不同的区域中提供 Data Lake Storage Gen1 帐户**。 有关详细信息，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 * **Azure 数据工厂**。 有关详细信息，请参阅 [Azure 数据工厂简介](../data-factory/introduction.md)。
 

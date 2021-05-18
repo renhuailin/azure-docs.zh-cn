@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: eee59d906da46e315ede52796bd89c7827833ede
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.openlocfilehash: f41a895aef3476386b8b530fc3e265ffaa21e8c5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095724"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104597573"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "93095724"
 > * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
 
-|   |   |
+|   | 链接  |
 |---|---|
 |**SDK 下载**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
 |**示例**|[Cosmos DB 表 API .NET 示例](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
@@ -47,7 +47,7 @@ ms.locfileid: "93095724"
 ### <a name="108"></a><a name="1.0.8"></a>1.0.8
 * 添加了支持以便在是 cosmosdb 终结点时设置 TTL 属性 
 * 在超时和任务取消异常时遵从重试策略
-* 修复了 asp .net 应用程序中出现的间歇性任务已取消异常
+* 修复了 asp .net 应用程序中出现的间歇性任务取消异常
 * 修复了仅在位置模式下从辅助终结点进行的 azure 表存储检索
 * 将 `Microsoft.Azure.DocumentDB.Core` 依赖项版本更新为 2.11.2，该版本修复了间歇性 null 引用异常
 * 将 `Odata.Core` 依赖项版本更新为 7.6.4，该版本修复了与 azure shell 的兼容性冲突

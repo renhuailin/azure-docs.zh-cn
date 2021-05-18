@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET 管理 Azure Data Lake Storage Gen2 中的数据
-description: 使用用于 .NET 的 Azure 存储客户端库来管理已启用分层命名空间的存储帐户中的目录和文件。
+description: 使用适用于 .NET 的 Azure 存储客户端库在启用了分层命名空间的存储帐户中管理目录和文件。
 author: normesta
 ms.service: storage
 ms.date: 02/17/2021
@@ -10,25 +10,25 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 52e993a22a512a94c8b5b8b050205db0c4ce0b1b
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100650314"
 ---
 # <a name="use-net-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
-本文介绍如何使用 .NET 在具有分层命名空间的存储帐户中创建和管理目录和文件。
+本文介绍如何使用 .NET 在具有分层命名空间的存储帐户中创建和管理目录与文件。
 
-若要了解如何获取、设置和更新访问控制列表 (ACL) 目录和文件，请参阅 [使用 .net 管理 Azure Data Lake Storage Gen2 中的 acl](data-lake-storage-acl-dotnet.md)。
+若要了解如何获取、设置和更新目录与文件的访问控制列表 (ACL)，请参阅[使用 .NET 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-dotnet.md)。
 
-[包 (NuGet) ](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)  | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)  | [API 参考](/dotnet/api/azure.storage.files.datalake)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
+[包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API 参考](/dotnet/api/azure.storage.files.datalake) | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-- 已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
+- 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
 ## <a name="set-up-your-project"></a>设置项目
 

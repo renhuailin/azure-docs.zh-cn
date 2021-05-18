@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 7b663c8d6e5849d39bb8366c82f45e0fd66d77dd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371390"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP 地址
@@ -27,7 +27,7 @@ Azure 集成运行时使用的 IP 地址取决于 Azure 集成运行时所在的
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure 集成运行时 IP 地址：特定的区域
 
-对于资源所在的特定 Azure 区域中的 Azure Integration Runtime ，允许来自为其列出的 IP 地址的流量。 可以从[服务标记 IP 范围下载链接](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)中获取服务标记的 IP 范围列表。 例如，如果 Azure 区域为 **AustraliaEast**，则可以从 DATAFACTORY 获取 IP 范围列表 **。**
+对于资源所在的特定 Azure 区域中的 Azure Integration Runtime ，允许来自为其列出的 IP 地址的流量。 可以从[服务标记 IP 范围下载链接](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)中获取服务标记的 IP 范围列表。 例如，Azure 区域为 AustraliaEast 时，可从 DataFactory.AustraliaEast 获取 IP 范围列表。
 
 
 ## <a name="known-issue-with-azure-storage"></a>Azure 存储的已知问题

@@ -8,10 +8,10 @@ ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18, references_regions
 ms.openlocfilehash: 004b32118521f72c5b59ad7bab2d4e41244b85c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85833598"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>应用服务环境的异地分布式缩放
@@ -40,12 +40,12 @@ ms.locfileid: "85833598"
 
 * **应用的自定义域：** 客户访问应用时使用的自定义域名是什么？  对于示例应用，自定义域名为 `www.scalableasedemo.com`。
 * **流量管理器域：** 创建 [Azure 流量管理器配置文件][AzureTrafficManagerProfile]时请选择域名。  此名称与 *trafficmanager.net* 后缀相结合，以注册流量管理器所管理的域条目。  就示例应用而言，选择的名称是 *scalable-ase-demo*。  因此，流量管理器所管理的完整域名是 *scalable-ase-demo.trafficmanager.net*。
-* **缩放应用占用空间的策略：** 应用程序占用空间是否分布到单个区域中的多个应用服务环境？  是多个区域吗？  两种方法要混搭使用吗？  做决策时请依据对客户流量来源位置的预期，以及应用的支持性后端基础结构其余部分的可缩放程度。  例如，对于 100% 无状态的应用程序，应用可以通过使用每个 Azure 区域中多个应用服务环境的组合进行大规模缩放，通过多个 Azure 区域间部署的应用服务环境成倍扩展。  由于有 15 个以上的全球 Azure 区域可供选择，客户可真正构建全球性超高缩放性的应用程序范围。  对于本文使用的示例应用，在单个 Azure 区域中创建了三个应用服务环境 (美国中南部) 。
+* **缩放应用占用空间的策略：** 应用程序占用空间是否分布到单个区域中的多个应用服务环境？  是多个区域吗？  两种方法要混搭使用吗？  做决策时请依据对客户流量来源位置的预期，以及应用的支持性后端基础结构其余部分的可缩放程度。  例如，对于 100% 无状态的应用程序，应用可以通过使用每个 Azure 区域中多个应用服务环境的组合进行大规模缩放，通过多个 Azure 区域间部署的应用服务环境成倍扩展。  由于有 15 个以上的全球 Azure 区域可供选择，客户可真正构建全球性超高缩放性的应用程序范围。  在本文使用的示例应用中，在一个 Azure 区域（美国中南部）创建了三个应用服务环境。
 * **应用服务环境的命名约定：** 每个应用服务环境需要唯一的名称。  有两个或更多应用服务环境时，命名约定将有助于标识每个应用服务环境。  对于该示例应用，使用的是简单命名约定。  三个应用服务环境的名称分别是 *fe1ase*、*fe2ase* 和 *fe3ase*。
-* **应用的命名约定：** 由于将部署多个应用实例，每个部署的应用实例都要有名称。  一项鲜为人知但非常方便的应用服务环境功能是，在多个应用服务环境中可以使用同一个应用名称。  由于每个应用服务环境都有唯一的域后缀，开发人员可以选择在每个环境中重复使用完全相同的应用名称。  例如，开发人员可能具有名为的应用程序，如下所示：  *myapp.foo1.p.azurewebsites.net*、 *myapp.foo2.p.azurewebsites.net*、 *myapp.foo3.p.azurewebsites.net*等。 但对于该示例应用程序，每个应用程序实例也具有唯一的名称。  所用的应用实例名称是 *webfrontend1*、*webfrontend2* 和 *webfrontend3*。
+* **应用的命名约定：** 由于将部署多个应用实例，每个部署的应用实例都要有名称。  一项鲜为人知但非常方便的应用服务环境功能是，在多个应用服务环境中可以使用同一个应用名称。  由于每个应用服务环境都有唯一的域后缀，开发人员可以选择在每个环境中重复使用完全相同的应用名称。  例如，开发人员可以将应用命名如下：myapp.foo1.p.azurewebsites.net、myapp.foo2.p.azurewebsites.net、myapp.foo3.p.azurewebsites.net，等等  。但是，对于该示例应用，每个应用实例也都有独一无二的名称。  所用的应用实例名称是 *webfrontend1*、*webfrontend2* 和 *webfrontend3*。
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>设置流量管理器配置文件
-将应用的多个实例部署在多个应用服务环境上之后，可以使用流量管理器来注册单个应用实例。  对于示例应用程序，需要对 *scalable-ase-demo.trafficmanager.net* 使用流量管理器配置文件，以便将客户路由到下列任何已部署的应用程序实例：
+将应用的多个实例部署在多个应用服务环境上之后，可以使用流量管理器来注册单个应用实例。  就示例应用而言，scalable-ase-demo.trafficmanager.net 必须要有流量管理器配置文件，将客户路由到任何以下已部署的应用实例：
 
 * **webfrontend1.fe1ase.p.azurewebsites.net：** 部署在第一个应用服务环境中的示例应用实例。
 * **webfrontend2.fe2ase.p.azurewebsites.net：** 部署在第二个应用服务环境中的示例应用实例。
@@ -59,7 +59,7 @@ ms.locfileid: "85833598"
 $profile = New-AzureTrafficManagerProfile –Name scalableasedemo -ResourceGroupName yourRGNameHere -TrafficRoutingMethod Weighted -RelativeDnsName scalable-ase-demo -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
 ```
 
-请注意 *RelativeDnsName* 参数已设置为 *scalable-ase-demo*。  此参数会导致创建域名 *scalable-ase-demo.trafficmanager.net* ，并将其与流量管理器配置文件相关联。
+请注意 *RelativeDnsName* 参数已设置为 *scalable-ase-demo*。  此参数导致创建域名 scalable-ase-demo.trafficmanager.net 以及该域名与流量管理器配置文件关联。
 
 *TrafficRoutingMethod* 参数定义负载均衡策略，流量管理器将使用该策略来确定如何将客户负载分散到所有可用的终结点。  在本示例中，选择的方法是 Weighted。  由于选择此方法，客户请求将会根据与每个终结点关联的相对权重被分散到所有已注册的应用程序终结点。 
 

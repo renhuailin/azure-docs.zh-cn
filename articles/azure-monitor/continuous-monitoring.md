@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
 ms.openlocfilehash: 2fe9d7e4da8950cee2dcb2fbcfb26355ace7285d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102044011"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
@@ -27,7 +27,7 @@ ms.locfileid: "102044011"
 - [Azure DevOps Projects](../devops-project/overview.md) 提供一种简化的体验，在其中可以使用现有的代码和 Git 存储库，或者选择一个示例应用程序，来与 Azure 建立持续集成 (CI) 和持续交付 (CD) 管道。
 - 使用 [DevOps 发布管道中的持续监视](./app/continuous-monitoring.md)可以基于监视数据限制或回滚部署。
 - 使用 [Status Monitor](./app/monitor-performance-live-website-now.md) 可以配合 Azure Application Insights 检测 Windows 上的实时 .NET 应用，而无需修改或重新部署代码。
-- 如果你有权访问应用程序的代码，则通过安装适用于[.net](./app/asp-net.md)、 [.Net Core](./app/asp-net-core.md)、 [Java](./app/java-get-started.md)、 [Node.js](./app/nodejs-quick-start.md)或[任何其他编程语言](./app/platforms.md)的 Azure Monitor Application Insights SDK 来启用对[Application Insights](./app/app-insights-overview.md)的完整监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
+- 如果你有权访问应用程序的代码，则可以安装适用于 [.NET](./app/asp-net.md)、[.NET Core](./app/asp-net-core.md)、[Java](./app/java-get-started.md)、[Node.js](./app/nodejs-quick-start.md) 或[任何其他编程语言](./app/platforms.md)的 Azure Monitor Application Insights SDK，在 [Application Insights](./app/app-insights-overview.md) 中启用完全监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
 
 
 
@@ -35,7 +35,7 @@ ms.locfileid: "102044011"
 应用程序的可靠性只与其底层基础结构相当。 为整个基础结构启用监视有助于实现全面的观察，发生故障时，还可以更轻松地发现潜在的根本原因。 Azure Monitor 可帮助你跟踪整个混合基础结构（包括 VM、容器、存储和网络等资源）的运行状况与性能。
 
 - 无需进行任何配置，即可自动从大多数 Azure 资源获取[平台指标、活动日志和诊断日志](agents/data-sources.md)。
-- 使用 [vm insights](vm/vminsights-overview.md)为 vm 启用更深层监视。
+- 在 [VM 见解](vm/vminsights-overview.md)中启用对 VM 的深层监视。
 -  使用[用于容器的 Azure Monitor](containers/container-insights-overview.md) 为 AKS 群集启用更深入的监视。
 - 为环境中的不同应用程序和服务添加[监视解决方案](./monitor-reference.md)。
 

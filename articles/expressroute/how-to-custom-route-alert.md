@@ -1,22 +1,22 @@
 ---
 title: ExpressRoute：如何为播发路由配置自定义警报
-description: 本文介绍了如何使用 Azure 自动化和逻辑应用来监视从 ExpressRoute 网关播发到本地网络的路由数量，以避免达到 200 个路由的限制。
+description: 本文介绍了如何使用 Azure 自动化和逻辑应用来监视从 ExpressRoute 网关播发到本地网络的路由数量，以避免达到 1000 个路由的限制。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: fed7663e2342a708aee70b9a54e6e0a6b6f97e8c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 2291d1fa7f890296c59661060f5a823d8eb194ba
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504395"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654384"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>配置自定义警报来监视播发路由
 
-可以根据本文的要求，使用 Azure 自动化和逻辑应用来持续监视从 ExpressRoute 网关播发到本地网络的路由数量。 可以通过监视来避免达到 [200 个路由的限制](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering)。
+可以根据本文的要求，使用 Azure 自动化和逻辑应用来持续监视从 ExpressRoute 网关播发到本地网络的路由数量。 监视有助于防止达到 1000 个路由的限制](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering)。
 
 **Azure 自动化** 允许你自动执行存储在 runbook中的自定义 PowerShell 脚本。 使用本文中的配置时，可以通过 runbook 中包含的 PowerShell 脚本来查询一个或多个 ExpressRoute 网关。 它收集的数据集包含资源组、ExpressRoute 网关名称以及在本地播发的网络前缀数量。
 
@@ -48,7 +48,7 @@ ms.locfileid: "102504395"
 
 * 本文中讨论的自定义警报是一个加载项，可实现更好的操作和控制。 它不能替代 ExpressRoute 中的原生警报。
 * ExpressRoute 网关的数据收集操作在后台运行。 运行时间可能会超出预期。 若要避免作业队列，必须正确设置工作流重复周期。
-* 通过脚本或 ARM 模板进行的部署可能比自定义警报触发器更快。 这可能会导致 ExpressRoute 网关中的网络前缀数量增长为超过 200 个路由的限制。
+* 通过脚本或 ARM 模板进行的部署可能比自定义警报触发器更快。 这可能会导致 ExpressRoute 网关中的网络前缀数量增至超过 1000 个路由的限制。
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>创建和配置帐户
 
@@ -409,7 +409,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
    :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="numRoutesPeer2":::
 
-9. 如果两个动态变量中的一个（numRoute1 或 numRoute2）大于阈值，则逻辑条件为 true。 在此示例中，阈值固定为 160（200 个路由这一最大值的 80%）。 你可以更改阈值来适应你的需求。 为了保持一致性，此值应与 runbook PowerShell 脚本中使用的值相同。
+9. 如果两个动态变量中的一个（numRoute1 或 numRoute2）大于阈值，则逻辑条件为 true。 在此例中，阈值固定为 800（1000 个路由这一最大值的 80%）。 你可以更改阈值来适应你的需求。 为了保持一致性，此值应与 runbook PowerShell 脚本中使用的值相同。
 
    :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="逻辑条件":::
 

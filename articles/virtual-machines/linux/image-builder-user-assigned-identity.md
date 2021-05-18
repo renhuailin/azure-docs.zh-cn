@@ -1,6 +1,6 @@
 ---
-title: '创建虚拟机映像，并使用用户分配的托管标识访问 Azure 存储中的文件 (预览) '
-description: 使用 Azure 映像生成器创建虚拟机映像，该映像可使用用户分配的托管标识访问存储在 Azure 存储中的文件。
+title: 创建虚拟机映像并使用用户分配的托管标识来访问 Azure 存储（预览版）中的文件
+description: 使用 Azure 映像生成器创建虚拟机映像，该映像可以使用用户分配的托管标识来访问 Azure 存储中存储的文件。
 author: cynthn
 ms.author: cynthn
 ms.date: 03/02/2021
@@ -9,19 +9,19 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.openlocfilehash: 9bcb7a94cdf1d5478db32a22ba6e612a90c53ed9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695373"
 ---
-# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>创建映像，并使用用户分配的托管标识访问 Azure 存储中的文件 
+# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>创建映像并使用用户分配的托管标识来访问 Azure 存储中的文件 
 
-Azure 映像生成器支持使用脚本，或从多个位置（例如 GitHub 和 Azure 存储等）复制文件。若要使用这些功能，必须对 Azure 映像生成器进行外部访问，但可以使用 SAS 令牌保护 Azure 存储 blob。
+Azure 映像生成器支持使用脚本或从多个位置（例如 GitHub 和 Azure 存储等）复制文件。要使用这些文件，必须可以从外部通过 Azure 映像生成器来访问这些文件，但你可以使用 SAS 令牌保护 Azure 存储 blob。
 
-本文介绍如何使用 Azure VM 映像生成器创建自定义映像，在此示例中，服务将使用 [用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md) 来访问 Azure 存储中的文件以进行映像自定义，而无需使文件公开访问，也无需设置 SAS 令牌。
+本文演示如何使用 Azure VM 映像生成器来创建自定义映像，其中服务将使用[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)来访问 Azure 存储中用于映像定制的文件，你无需将这些文件设为可公共访问，也不必设置 SAS 令牌。
 
-在下面的示例中，你将创建两个资源组，一个用于自定义映像，另一个将托管包含脚本文件的 Azure 存储帐户。 这会模拟现实生活方案，在此方案中，可能会在映像生成器之外的不同存储帐户中有生成项目或图像文件。 你将创建一个用户分配的标识，然后授予该脚本文件的读取权限，但你不会设置对该文件的任何公共访问权限。 然后，你将使用 Shell 定制器从存储帐户下载并运行该脚本。
+在下面的示例中，你将创建两个资源组，一个用于自定义映像，另一个将托管包含脚本文件的 Azure 存储帐户。 这模拟了一个真实场景，即，你可能在映像生成器之外的不同存储帐户内具有生成项目或映像文件。 你将创建用户分配的标识，然后授予对该脚本文件的读取权限，但不会设置对该文件的任何公共访问权限。 然后将使用 Shell 定制器从存储帐户下载并运行该脚本。
 
 
 > [!IMPORTANT]
@@ -87,7 +87,7 @@ runOutputName=u1804ManImgMsiro
 subscriptionID=<Your subscription ID>
 ```
 
-为映像和脚本存储创建资源组。
+同时为映像和脚本存储创建资源组。
 
 ```console
 # create resource group for image template
@@ -96,9 +96,9 @@ az group create -n $imageResourceGroup -l $location
 az group create -n $strResourceGroup -l $location
 ```
 
-创建用户分配的标识并对资源组设置权限。
+创建用户分配的标识，并在资源组上设置权限。
 
-映像生成器将使用提供的 [用户标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) 将图像注入资源组。 在此示例中，你将创建一个 Azure 角色定义，其中包含用于对映像进行分布的精细操作。 然后将此角色定义分配给用户标识。
+映像生成器使用提供的[用户标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)将映像注入到资源组中。 在本示例中，你将创建一个 Azure 角色定义，其中包含分发映像时要执行的精细操作。 然后将此角色定义分配给用户标识。
 
 ```console
 # create user assigned identity for image builder to access the storage account where the script is located
@@ -128,7 +128,7 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
 
-创建存储并将示例脚本从 GitHub 复制到其中。
+创建存储，从 GitHub 将示例脚本复制到该存储中。
 
 ```azurecli-interactive
 # script storage account
@@ -153,7 +153,7 @@ az storage blob copy start \
     --source-uri https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/customizeScript.sh
 ```
 
-为映像生成器授予在映像资源组中创建资源的权限。 `--assignee`该值是用户标识 ID。
+授予映像生成器在映像资源组中创建资源的权限。 `--assignee` 值是用户标识 ID。
 
 ```azurecli-interactive
 az role assignment create \
@@ -167,7 +167,7 @@ az role assignment create \
 
 ## <a name="modify-the-example"></a>修改示例
 
-下载示例 json 文件，并将其配置为创建的变量。
+下载示例 .json 文件，并使用先前创建的变量对其进行配置。
 
 ```console
 curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
@@ -203,7 +203,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-等待生成完成。 这可能需要大约15分钟。
+等待生成完成。 这可能需要大约 15 分钟。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -236,9 +236,9 @@ ssh aibuser@<publicIp>
 *******************************************************
 ```
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
-完成后，可以删除不再需要的资源。
+完成后，如果不再需要资源，可以将其删除。
 
 ```azurecli-interactive
 
@@ -259,4 +259,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在使用 Azure 映像生成器时遇到任何问题，请参阅 [故障排除](image-builder-troubleshoot.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)。
+如果在使用 Azure 映像生成器时遇到任何问题，请参阅[故障排除](image-builder-troubleshoot.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)。

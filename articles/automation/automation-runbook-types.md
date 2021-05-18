@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 067096943cd95913077ada817c94640ff5264520
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3e4f90372c2da22e8df3430ce340477352e5033b
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100634883"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830441"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 

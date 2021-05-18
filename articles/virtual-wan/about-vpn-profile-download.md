@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: cherylmc
 ms.openlocfilehash: d83b6ed2ae83db569d3c61e3cf4cd887f875eb25
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99980909"
 ---
 # <a name="working-with-user-vpn-client-profile-files"></a>使用用户 VPN 客户端配置文件
@@ -20,7 +20,7 @@ ms.locfileid: "99980909"
 
 ## <a name="download-the-profile"></a>下载配置文件
 
-你可以使用 [下载配置文件](global-hub-profile.md) 一文中的步骤来下载客户端配置文件 zip 文件。
+可使用[下载配置文件](global-hub-profile.md)一文中的步骤来下载客户端配置文件 zip 文件。
 
 [!INCLUDE [client profiles](../../includes/vpn-gateway-vwan-vpn-profile-download.md)]
 

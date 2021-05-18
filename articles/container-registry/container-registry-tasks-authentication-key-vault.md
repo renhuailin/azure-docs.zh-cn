@@ -4,10 +4,10 @@ description: 配置 Azure 容器注册表任务（ACR 任务）以使用 Azure �
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86058123"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR 任务中使用 Azure 托管标识的外部身份验证 
@@ -36,7 +36,7 @@ ms.locfileid: "86058123"
 
 ## <a name="create-a-key-vault-and-store-secrets"></a>创建 Key Vault 并存储机密
 
-首先，如果需要，请在*eastus*位置创建一个名为*myResourceGroup*的资源组，并在其中包含以下[az group create][az-group-create]命令：
+首先，如果需要，请使用以下 [az group create][az-group-create] 命令在 eastus 位置创建一个名为“myResourceGroup”的资源组 ：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

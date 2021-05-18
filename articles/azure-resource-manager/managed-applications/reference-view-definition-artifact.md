@@ -6,19 +6,19 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 5173db54abef132a4a4d5d117881352ca37d6b23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75651197"
 ---
 # <a name="reference-view-definition-artifact"></a>参考：视图定义项目
 
-本文是 Azure 托管应用程序中 viewDefinition.json  项目的参考。 有关创作视图配置的详细信息，请参阅[视图定义项目](concepts-view-definition.md)。
+本文是 Azure 托管应用程序中 viewDefinition.json 项目的参考。 有关创作视图配置的详细信息，请参阅[视图定义项目](concepts-view-definition.md)。
 
 ## <a name="view-definition"></a>查看定义
 
-以下 JSON 演示了 Azure 托管应用程序的 viewDefinition.json  文件的示例：
+以下 JSON 演示了 Azure 托管应用程序的 viewDefinition.json 文件的示例：
 
 ```json
 {

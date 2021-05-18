@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
 ms.openlocfilehash: 9b60075eb861fe598a05ba014a7def96bc815d06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97653004"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>使用 Azure PowerShell 迁移 Web 应用程序防火墙策略
@@ -27,7 +27,7 @@ ms.locfileid: "97653004"
 1. 打开以下 Cloud Shell 窗口，或者在门户中打开这个窗口。
 2. 将脚本复制到 Cloud Shell 窗口并运行该脚本。
 3. 该脚本要求提供订阅 ID、资源组名称、与 WAF config 关联的应用程序网关的名称，以及要创建的新 WAF 策略的名称。 输入这些信息后，脚本会运行并创建新的 WAF 策略
-4. 将新的 WAF 策略与应用程序网关相关联。 转到门户中的 WAF 策略，然后选择“应用程序关联的网关”选项卡。选择“关联应用程序网关”，然后选择要关联 WAF 策略的应用程序网关。
+4. 将新的 WAF 策略与应用程序网关相关联。 转到门户中的 WAF 策略，然后选择“关联的应用程序网关”选项卡。选择“关联应用程序网关”，然后选择 WAF 策略要关联的应用程序网关 。
 
 > [!NOTE]
 > 如果存在以下情况，则该脚本不会完成迁移：

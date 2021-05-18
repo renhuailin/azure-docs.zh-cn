@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Active Directory 进行 LDAP 同步
-description: 有关实现 LDAP 同步与 Azure Active Directory 的体系结构指南。
+description: 有关如何实现与 Azure Active Directory 的 LDAP 同步的体系结构指南。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f34e734b315c7c05ce77f5e168a452fc1c1c547
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96168672"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>使用 Azure Active Directory 进行 LDAP 同步
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 可使用 Azure AD Connect 来替换 LDAP 同�
 
 * **Azure AD**：Azure AD 通过 Azure AD Connect 从组织的本地 LDAP 目录中同步标识信息（用户、组、密码）。 
 
-* **Azure AD Connect**：是一种用于将本地标识基础结构连接到 Microsoft Azure AD 的工具。 向导和引导式体验可帮助部署和配置进行连接所需要的必备项和组件。 
+* Azure AD Connect：用于将本地标识基础结构连接到 Microsoft Azure AD 的工具。 向导和引导式体验可帮助部署和配置进行连接所需要的必备项和组件。 
 
 * 自定义连接器：一个通用 LDAP 连接器，用于将 Azure AD Connect 同步服务与 LDAP v3 服务器集成。 该连接器位于 Azure AD Connect 上。
 

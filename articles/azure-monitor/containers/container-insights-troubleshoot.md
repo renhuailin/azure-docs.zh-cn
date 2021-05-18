@@ -1,24 +1,24 @@
 ---
-title: 如何排查 Container insights 问题 |Microsoft Docs
-description: 本文介绍了如何排查和解决有关 Container insights 的问题。
+title: 容器见疑难解答 | Microsoft Docs
+description: 本文介绍如何排查和解决容器见解存在的问题。
 ms.topic: conceptual
 ms.date: 07/21/2020
 ms.openlocfilehash: 60a6e76d43d954b27336b9631c48328aeff0b69b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708299"
 ---
 # <a name="troubleshooting-container-insights"></a>容器见解疑难解答
 
-当使用容器见解配置 Azure Kubernetes Service (AKS) 群集的监视时，可能会遇到阻止数据收集或报告状态的问题。 本文详细介绍了一些常见问题及其排查步骤。
+使用容器见解配置 Azure Kubernetes 服务 (AKS) 群集的监视时，可能会遇到阻止数据收集或报告状态的问题。 本文详细介绍了一些常见问题及其排查步骤。
 
 ## <a name="authorization-error-during-onboarding-or-update-operation"></a>在执行载入或更新操作期间出现授权错误
 
-启用容器见解或更新群集以支持收集指标时，可能会收到类似于以下的错误：*客户端 <用户的标识> "对象 id 为" <用户的 objectId> "无权对作用域执行操作" roleAssignments/write "* 。
+启用容器见解或者更新群集以支持收集指标时，可能会收到如下错误 - 对象 ID 为 <用户的对象 ID> 的客户端 <用户的标识> 无权对作用域执行操作“Microsoft.Authorization/roleAssignments/write”
 
-在载入或更新过程中，将对群集资源尝试授予“监视指标发布服务器”  角色分配。 启动启用容器见解或更新以支持指标收集的用户必须具有对 AKS 群集资源作用域的 **roleAssignments/write** 权限的访问权限。 只有 **所有者** 和 **用户访问管理员** 内置角色的成员才被授权访问此权限。 如果安全策略需要分配粒度级别的权限，我们建议查看[自定义角色](../../role-based-access-control/custom-roles.md)，并将其分配给需要它的用户。
+在载入或更新过程中，将对群集资源尝试授予“监视指标发布服务器”  角色分配。 如果用户要启动为容器启用容器见解或用于支持收集指标的更新，则该用户必须可以访问 AKS 群集资源作用域上的 **Microsoft.Authorization/roleAssignments/write** 权限。 只有 **所有者** 和 **用户访问管理员** 内置角色的成员才被授权访问此权限。 如果安全策略需要分配粒度级别的权限，我们建议查看[自定义角色](../../role-based-access-control/custom-roles.md)，并将其分配给需要它的用户。
 
 此外，还可以通过执行以下步骤，在 Azure 门户中手动授予此角色：
 
@@ -31,7 +31,7 @@ ms.locfileid: "101708299"
 
 ## <a name="container-insights-is-enabled-but-not-reporting-any-information"></a>已启用容器见解，但未报告任何信息
 
-如果成功启用并配置了容器 insights，但无法查看状态信息，或者日志查询未返回任何结果，则可以通过执行以下步骤来诊断问题：
+如果容器见解已成功启用和配置，但你无法查看状态信息或日志查询未返回任何结果，你可以按照以下步骤诊断问题：
 
 1. 通过运行以下命令检查代理状态：
 
@@ -84,19 +84,19 @@ ms.locfileid: "101708299"
 
 ## <a name="error-messages"></a>错误消息
 
-下表汇总了使用容器 insights 时可能会遇到的已知错误。
+下表汇总了使用容器见解时可能会遇到的已知错误。
 
 | 错误消息  | 操作 |
 | ---- | --- |
 | 错误消息 `No data for selected filters`  | 为新创建的群集建立监视数据流可能需要花费一些时间。 群集的数据至少需要 10 到 15 分钟才能显示。 |
-| 错误消息 `Error retrieving data` | 为 Azure Kubernetes 服务群集设置运行状况和性能监视时，会在群集与 Azure Log Analytics 工作区之间建立连接。 Log Analytics 工作区用于存储你的群集的所有监视数据。 当 Log Analytics 工作区已删除时，可能会发生此错误。 检查工作区是否已删除，如果已删除，你将需要重新启用使用容器 insights 监视群集并指定现有工作区或创建新的工作区。 若要重新启用，你将需要为群集 [禁用](container-insights-optout.md) 监视并再次 [启用](container-insights-enable-new-cluster.md) 容器见解。 |
-| `Error retrieving data` 通过 az aks cli 添加容器见解后 | 使用启用监视时 `az aks cli` ，可能无法正确部署容器见解。 请检查是否部署了该解决方案。 若要进行验证，请转到你的 Log Analytics 工作区，从左侧的面板中选择“解决方案”来查看该解决方案是否可用。 若要解决此问题，你将需要按照有关[如何部署容器 insights](container-insights-onboard.md)的说明重新部署解决方案。 |
+| 错误消息 `Error retrieving data` | 为 Azure Kubernetes 服务群集设置运行状况和性能监视时，会在群集与 Azure Log Analytics 工作区之间建立连接。 Log Analytics 工作区用于存储你的群集的所有监视数据。 当 Log Analytics 工作区已删除时，可能会发生此错误。 检查工作区是否已删除，如果已删除，则需要使用容器见解重新启用对群集的监视，并指定现有工作区或创建新工作区。 若要重新启用，将需要对该群集[禁用](container-insights-optout.md)监视，然后再次[启用](container-insights-enable-new-cluster.md)容器见解。 |
+| 通过 az aks cli 添加容器见解出现`Error retrieving data` | 使用 `az aks cli` 启用监视时，可能无法正确部署容器见解。 请检查是否部署了该解决方案。 若要进行验证，请转到你的 Log Analytics 工作区，从左侧的面板中选择“解决方案”来查看该解决方案是否可用。 要解决此问题，需要按照[如何部署容器见解](container-insights-onboard.md)中的说明重新部署该解决方案 |
 
 为了帮助诊断问题，我们提供了一个[故障排除脚本](https://github.com/microsoft/Docker-Provider/tree/ci_dev/scripts/troubleshoot)。
 
-## <a name="container-insights-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>未在非 Azure Kubernetes 群集上计划 Container insights 代理 ReplicaSet pod
+## <a name="container-insights-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>未在非 Azure Kubernetes 群集上计划容器见解代理 ReplicaSet Pod
 
-容器 insights 代理 ReplicaSet pod 依赖于辅助节点上的以下节点选择器 (或代理) 节点进行计划：
+容器见解代理 ReplicaSet pod 依赖于辅助节点上的以下节点选择器（或代理）节点进行计划：
 
 ```
 nodeSelector:
@@ -108,12 +108,12 @@ nodeSelector:
 
 ## <a name="performance-charts-dont-show-cpu-or-memory-of-nodes-and-containers-on-a-non-azure-cluster"></a>性能图表不显示非 Azure 群集上节点和容器的 CPU 或内存
 
-容器 insights 代理箱使用节点代理上的 cAdvisor 终结点来收集性能指标。 验证节点上的容器化代理是否配置为允许在群集中的所有节点上打开 `cAdvisor port: 10255` 以收集性能指标。
+容器见解代理 Pod 使用节点代理上的 cAdvisor 终结点来收集性能指标。 验证节点上的容器化代理是否配置为允许在群集中的所有节点上打开 `cAdvisor port: 10255` 以收集性能指标。
 
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-container-insights"></a>容器见解中未显示非 Azure Kubernetes 群集
 
-若要查看 Container insights 中的非 Azure Kubernetes 群集，支持此见解的 Log Analytics 工作区和容器 Insights 解决方案资源 **ContainerInsights (*工作区*)** 上需要 "读取" 访问权限。
+要在容器见解中查看非 Azure Kubernetes 群集，需要在支持此见解的 Log Analytics 工作区和容器见解解决方案资源 ContainerInsights（工作区）上具有读取访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 
-启用监视来捕获 AKS 群集节点和 Pod 的运行状况指标后，可在 Azure 门户中找到这些运行状况指标。 若要了解如何使用容器 insights，请参阅 [查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。
+启用监视来捕获 AKS 群集节点和 Pod 的运行状况指标后，可在 Azure 门户中找到这些运行状况指标。 要了解如何使用容器见解，请参阅[查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。

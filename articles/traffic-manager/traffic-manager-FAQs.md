@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: 0d4f1ed6bab5775c44b2a745e1edc5fc07e0c06d
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 708d63695cbba53578b13d1674b9aa99018bcae4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215453"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791114"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -64,7 +64,7 @@ ms.locfileid: "102215453"
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>处理 DNS 查询时流量管理器是否会考虑客户端子网地址？ 
 
 会，除了其收到的 DNS 查询的源 IP 地址（通常是 DNS 解析器的 IP 地址）以外，在执行地理、性能和子网路由方法的查找时，流量管理器还会考虑客户端子网地址（如果它通过代表最终用户发起请求的解析器包含在查询中）。  
-具体而言， [RFC 7871 – Dns 查询中的客户端子网](https://tools.ietf.org/html/rfc7871) ，用于 [为 dns (EDNS0) 提供扩展机制 ](https://tools.ietf.org/html/rfc2671) ，该机制可通过支持的解析程序传递客户端子网地址。
+具体而言，是 [RFC 7871 – DNS 查询中的客户端子网](https://tools.ietf.org/html/rfc7871)，它提供[ DNS (EDNS0) 的扩展机制](https://tools.ietf.org/html/rfc2671)，可以从支持该机制的解析器传递客户端子网地址。
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>什么是 DNS TTL，它如何影响我的用户？
 
@@ -242,11 +242,11 @@ ms.locfileid: "102215453"
 
 ### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>测量真实用户度量的网页是否需要使用流量器以供路由使用？
 
-不需要，它不需要使用流量管理器。 流量管理器的路由端独立于实际用户测量部分进行操作，但在相同的 web 属性中有一个很好的想法，它们不需要。
+不，它无需使用流量管理器。 流量管理器的路由端从真实用户度量部分单独运行，尽管使其都在同一 Web 属性中运行是一个很好的方法，但无需执行此操作。
 
 ### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>是否需要在 Azure 区域托管任何服务才能使用真实用户度量？
 
-不需要，你无需在 Azure 上托管任何服务器端组件即可运行真实用户度量。 度量 JavaScript 下载的单像素图像和在不同 Azure 区域运行它的服务是由 Azure 托管和管理的。 
+不需要在 Azure 上托管任何服务器端组件即可使用真实用户度量。 度量 JavaScript 下载的单像素图像和在不同 Azure 区域运行它的服务是由 Azure 托管和管理的。 
 
 ### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>使用真实用户度量时，我的 Azure 带宽使用率是否会增加？
 
@@ -271,7 +271,7 @@ ms.locfileid: "102215453"
 
 ### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>流量视图与 Azure 监视器提供的流量管理器指标有何不同？
 
-Azure 监视器可用于以聚合级别理解你的配置文件及其终结点收到的流量。 通过公开运行状况检查结果，还可以借助它跟踪终结点的运行状况。 当你需要了解并了解最终用户在区域级别连接到 Azure 时的体验时，可以使用流量视图来实现此目的。
+Azure 监视器可用于以聚合级别理解你的配置文件及其终结点收到的流量。 通过公开运行状况检查结果，还可以借助它跟踪终结点的运行状况。 需要实现更多功能并了解在区域级别连接到 Azure 的最终用户体验时，可以通过流量视图来实现。
 
 ### <a name="does-traffic-view-use-edns-client-subnet-information"></a>流量视图是否使用 EDNS 客户端子网信息？
 
@@ -306,7 +306,7 @@ Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的�
 
 不能对 Azure Web 应用使用多个订阅中的终结点。 Web 应用要求其所用的任何自定义域名只能在单个订阅中使用。 无法对多个订阅中的 Web 应用使用同一个域名。
 
-对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。 可使用 [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 或 [Azure CLI](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create) 添加其他订阅中的终结点。
+对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。 可使用 [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 或 [Azure CLI](/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_create) 添加其他订阅中的终结点。
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>能否将流量管理器用于云服务的“过渡”槽？
 
@@ -447,7 +447,7 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>运行状况检查从哪些 IP 地址发起？
 
-单击 [此处](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 了解如何检索流量管理器运行状况检查可能源自的 IP 地址的列表。 您可以使用 REST API、Azure CLI 或 Azure PowerShell 来检索最新列表。 查看列出的 Ip，以确保终结点允许来自这些 IP 地址的传入连接检查其运行状况状态。
+单击[此处](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)，以了解如何检索可从其中发起流量管理器运行状况检查的 IP 地址的列表。 可以使用 REST API、Azure CLI 或 Azure PowerShell 来检索最新列表。 查看列出的 IP，确保终结点允许来自这些 IP 地址的传入连接，以便检查其运行状况。
 
 使用 Azure PowerShell 的示例：
 
@@ -458,7 +458,7 @@ $result.Properties.AddressPrefixes
 ```
 
 > [!NOTE]
-> 公共 IP 地址可能会更改，恕不另行通知。 请确保使用服务标记发现 API 或可下载的 JSON 文件检索最新信息。
+> 公共 IP 地址可能会在没有通知的情况下更改。 请确保使用服务标记发现 API 或可下载的 JSON 文件检索最新信息。
 
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>流量管理器预期会对终结点执行多少次运行状况检查？
 

@@ -657,6 +657,8 @@
     - name: 移动单一登录(SSO)
       href: mobile-sso-support-overview.md
       displayName: 'android, ios'
+    - name: 声明挑战和请求
+      href: claims-challenge.md
     - name: 权限和许可
       displayName: Scopes
       items:

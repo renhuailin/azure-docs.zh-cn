@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI - sfctl partition
-description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于管理服务分区的命令列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于管理服务分区的命令的列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fff569c586548d84ed55018764363ad7f05e526d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86257081"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
@@ -39,8 +39,8 @@ ms.locfileid: "86257081"
 此 API 会造成指定的分区发生数据丢失。
 
 它会触发对分区的 OnDataLossAsync API 的调用。  此 API 会造成指定的分区发生数据丢失。 它会触发对分区的 OnDataLoss API 的调用。 实际的数据丢失情况将取决于指定的 DataLossMode。
-- PartialDataLoss:仅删除一定数量的副本，并且会为分区触发 OnDataLoss，但实际的数据丢失情况取决于是否存在正在进行的复制。  
-- FullDataLoss:会删除所有副本，因此会丢失所有数据并触发 OnDataLoss。 调用此 API 时，只能将有状态服务作为目标。 建议不要在调用此 API 时将系统服务作为目标。
+- PartialDataLoss：仅删除副本仲裁，并且会为分区触发 OnDataLoss，但实际的数据丢失情况取决于是否存在正在进行的复制。  
+- FullDataLoss：会删除所有副本，因此会丢失所有数据并触发 OnDataLoss。 调用此 API 时，只能将有状态服务作为目标。 建议不要在调用此 API 时将系统服务作为目标。
 
 > [!NOTE]   
 > 此 API 一旦被调用就无法撤消。 调用 CancelOperation 只会停止执行操作并清除内部系统状态。 如果命令的执行时间很长，已导致数据丢失，则不会还原数据。 使用同一 OperationId 调用 GetDataLossProgress API 会返回使用此 API 启动的操作的信息。
@@ -101,7 +101,7 @@ ms.locfileid: "86257081"
 | --partition-id      [必需] | 分区的标识。 |
 | --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --exclude-health-statistics | 指示运行状况统计数据是否应作为查询结果的一部分返回。 默认值为 False。 统计信息显示处于 Ok、Warning 和 Error 运行状况的子实体数。 |
-| --replicas-health-state-filter | 允许筛选分区上 ReplicaHealthState 对象的集合。 可通过对 HealthStateFilter 的成员进行成员操作或位运算获取该值。 只会返回与筛选器匹配的副本。 所有副本都会用于评估聚合运行状态。 如果未指定，将返回所有条目。状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则会返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 此参数的可能值包括以下运行状态之一的整数值。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
+| --replicas-health-state-filter | 用于筛选分区中 ReplicaHealthState 对象的集合。 可从位运算的成员或 HealthStateFilter 的成员获取该值。 只会返回与筛选器匹配的副本。 所有副本都会用于评估聚合运行状态。 如果未指定，将返回所有条目。状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则会返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 此参数的可能值包括以下运行状态之一的整数值。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
@@ -146,7 +146,7 @@ ms.locfileid: "86257081"
 |参数|说明|
 | --- | --- |
 | --service-id [必需] | 服务的标识。 此 ID 通常是不带“fabric\:”URI 方案的服务全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果服务名称为“fabric\:/myapp/app1/svc1”，则 6.0 及更高版本中的服务标识为“myapp\~app1\~svc1”，在以前的版本中为“myapp/app1/svc1”。 |
-| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
+| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 3a8429d9dc6820b1f79c49d325872b61833f988d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095538"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>常见问题解答 - 关于 Azure 安全中心的一般问题
@@ -29,7 +29,7 @@ Azure 安全中心有助于预防、检测和响应威胁，同时增加资源�
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>如何获取Azure 安全中心？
-Azure 安全中心通过你的 Microsoft Azure 订阅启用，并从 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问。 若要访问它，请[登录门户](https://portal.azure.com)，选择“浏览”，并滚动到“安全中心” 。
+Azure 安全中心通过 Microsoft Azure 订阅启用，可从 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问。 若要访问它，请[登录门户](https://portal.azure.com)，选择“浏览”，并滚动到“安全中心” 。
 
 
 ## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>哪些 Azure 资源由 Azure 安全中心监视？
@@ -47,9 +47,9 @@ Azure 安全中心监视以下 Azure 资源：
 
 
 ## <a name="what-is-a-security-initiative"></a>什么是安全计划？
-安全计划将定义一组控件，这些控件 (策略) 为指定订阅中的资源建议的。 在 Azure 安全中心，根据公司的安全要求和应用程序类型或每个订阅中数据的敏感性，为 Azure 订阅分配计划。
+安全计划定义了为指定订阅中的资源建议的一组控制措施（策略）。 在 Azure 安全中心，你需根据公司安全要求和应用程序类型或每个订阅中数据的敏感性，为 Azure 订阅分配计划。
 
-Azure 安全中心中启用的安全策略将使用安全建议和监视。 有关详细信息 [，请参阅什么是安全策略、计划和建议？](security-policy-concept.md)。
+Azure 安全中心中启用的安全策略将使用安全建议和监视。 在[什么是安全策略、计划和建议？](security-policy-concept.md)一文中了解详细信息。
 
 
 ## <a name="who-can-modify-a-security-policy"></a>哪些用户可以修改安全策略？

@@ -1,6 +1,6 @@
 ---
 title: 预付软件计划费 - Azure 预留
-description: 了解如何通过即用即付成本模型预付软件计划费，以节省费用。
+description: 了解如何通过即用即付成本为软件计划预付，从而节省资金。
 author: bandersmsft
 manager: yashesvi
 ms.service: virtual-machines
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
 ms.openlocfilehash: 136207afef3fef9266fadcea1e67bb0aa6a38a32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102549747"
 ---
 # <a name="prepay-for-azure-software-plans"></a>为 Azure 软件计划预付
 
-为 Azure 中使用的 SUSE 和 RedHat 软件预付费用时，可以通过即用即付成本模型来节省费用。 折扣仅适用于 SUSE 和 RedHat 计量器，而不适用于虚拟机的使用。 可以单独购买虚拟机预留项，以节省更多成本。
+为 Azure 中使用的 SUSE 和 RedHat 软件预付时，可以通过即用即付成本来节省资金。 折扣仅适用于 SUSE 和 RedHat 计量器，而不适用于虚拟机的使用。 可以单独购买虚拟机预留项，以节省更多成本。
 
 可以在 Azure 门户中购买 SUSE 和 RedHat 软件计划。 若要购买计划：
 
@@ -36,7 +36,7 @@ ms.locfileid: "102549747"
     - 对于采用即用即付定价的个人订阅，将从订阅中的信用卡或发票付款方式收取费用。
 4. 选择一个范围。 范围可以包含一个订阅或多个订阅（共享范围）。
     - 单个订阅 - 计划折扣将应用于订阅中匹配的使用情况。
-    - 共享 - 计划折扣将应用于计费上下文中任何订阅内的匹配实例。 对于企业客户，共享范围是注册，包括注册中的所有订阅。 对于采用即用即付定价的单个订阅，计费上下文包含帐户管理员创建的即用即付定价订阅的所有个人计划。
+    - 共享 - 计划折扣将应用于计费上下文中任何订阅内的匹配实例。 对于企业客户，共享范围是注册，包括注册中的所有订阅。 对于拥有即用即付定价客户的单个计划，计费上下文包含帐户管理员创建的即用即付定价订阅的所有个人计划。
     - 单个资源组 - 仅将预留折扣应用于所选资源组中匹配的资源。
 5. 选择一个产品以选择 VM 大小和映像类型。 折扣仅适用到选定的 VM 大小。
 6. 选择一年或三年期限。

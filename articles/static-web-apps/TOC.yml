@@ -18,23 +18,27 @@
           href: get-started-cli.md
 - name: 概念
   items:
-    - name: 配置
-      href: configuration.md
-      displayName: Routing
     - name: 通过 Azure Functions 提供 API 支持
       href: apis.md
-    - name: 路由
-      href: routes.md
-    - name: 身份验证和授权
-      href: authentication-authorization.md
-    - name: 访问用户信息
-      href: user-information.md
+    - name: Configuration
+      items:
+        - name: 应用程序配置
+          href: configuration.md
+          displayName: 'routing, routes'
+        - name: 生成和工作流配置
+          href: github-actions-workflow.md
+    - name: 安全性
+      items:
+        - name: 身份验证和授权
+          href: authentication-authorization.md
+        - name: 访问用户信息
+          href: user-information.md
+        - name: 自定义身份验证
+          href: authentication-custom.md
     - name: 查看预生产环境中的拉取请求
       href: review-publish-pull-requests.md
     - name: 自定义域
       href: custom-domain.md
-    - name: 生成和工作流配置
-      href: github-actions-workflow.md
 - name: 操作指南
   items:
     - name: 设置本地开发
@@ -43,6 +47,8 @@
       href: add-api.md
     - name: 配置应用设置
       href: application-settings.md
+    - name: 使用 Azure DevOps 进行发布
+      href: publish-devops.md
     - name: 配置前端框架和库
       href: front-end-frameworks.md
     - name: 启用监视
@@ -53,6 +59,10 @@
     - name: 排查错误
       href: troubleshooting.md
       displayName: 'deployment, runtime, errors'
+    - name: 创建自己的函数
+      href: functions-bring-your-own.md
+    - name: 保护身份验证机密
+      href: key-vault-secrets.md
 - name: 教程
   items:
     - name: 从静态站点生成器发布
@@ -95,5 +105,7 @@
           href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
         - name: 使用 Blazor 创建和发布静态 Web 应用
           href: /learn/modules/publish-app-service-static-web-app-api-dotnet
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/app-service/static/'
     - name: 配额
       href: quotas.md

@@ -4,10 +4,10 @@ description: 批处理池删除完成事件参考。 当完成池删除操作时
 ms.topic: reference
 ms.date: 12/28/2020
 ms.openlocfilehash: be6411a150ae6be424c0621eed768157154c7408
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97803725"
 ---
 # <a name="pool-delete-complete-event"></a>池删除完成事件
@@ -26,7 +26,7 @@ ms.locfileid: "97803725"
 
 |元素|类型|说明|
 |-------------|----------|-----------|
-|`id`|String|池的 ID。|
+|`id`|字符串|池的 ID。|
 |`startTime`|DateTime|池删除开始的时间。|
 |`endTime`|DateTime|池删除完成的时间。|
 

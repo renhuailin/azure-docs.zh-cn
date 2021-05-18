@@ -1,18 +1,18 @@
 ---
-title: 使用 Hive 活动转换数据-Azure
-description: 了解如何使用 Azure 数据工厂 v1 中的 Hive 活动，在按需/自己的 HDInsight 群集上运行 Hive 查询。
+title: 使用 Hive 活动转换数据 - Azure
+description: 了解如何使用 Azure 数据工厂 v1 中的 Hive 活动在按需/自己的 HDInsight 群集上运行 Hive 查询。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9d14ddb172546e062b62a5a8dd98b49a0a6e1c6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 63e726c98922b789977a884bf747f12186707d57
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383018"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104782701"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换数据 
 > [!div class="op_single_selector" title1="转换活动"]
@@ -30,7 +30,7 @@ ms.locfileid: "100383018"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中使用 Hive 活动转换数据](../transform-data-using-hadoop-hive.md)。
 
-数据工厂 [管道](data-factory-create-pipelines.md) 中的 HDInsight Hive 活动会在 [自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) 或基于 Windows/Linux 的 [按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Hive 查询。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
+数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight Hive 活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Hive 查询。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE] 
 > 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。 
@@ -67,7 +67,7 @@ ms.locfileid: "100383018"
 }
 ```
 ## <a name="syntax-details"></a>语法详细信息
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | name |活动名称 |是 |
 | description |描述活动用途的文本 |否 |

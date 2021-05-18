@@ -39,6 +39,8 @@
   items:
     - name: 应用和部署
       href: concept-understand-app-and-deployment.md
+    - name: 蓝绿部署策略
+      href: concepts-blue-green-deployment-strategies.md
     - name: 配额和限制
       href: quotas.md
     - name: 指标
@@ -197,6 +199,8 @@
       href: /cli/azure/spring-cloud
     - name: Azure PowerShell
       href: /powershell/module/az.springcloud
+    - name: Azure Pipelines 任务
+      href: /azure/devops/pipelines/tasks/deploy/azure-spring-cloud
     - name: 资源
       href: resources.md
     - name: 常见问题

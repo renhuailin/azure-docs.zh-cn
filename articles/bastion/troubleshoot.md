@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure 堡垒问题 |Microsoft Docs
+title: Azure Bastion 故障排除 | Microsoft Docs
 description: 在本文中，学习如何对 Azure Bastion 进行排除故障。
 services: bastion
 author: charwen
@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: MT
+ms.openlocfilehash: bf6cde94374133e10b077ac799be0b85ae02bcb7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133984"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773388"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion 疑难解答
 
@@ -22,9 +22,9 @@ ms.locfileid: "98133984"
 
 **问：** 我尝试在 Azure Bastion 子网上创建 NSG 时，遇到以下错误：“网络安全组 <NSG name> 没有 Azure Bastion 子网 AzureBastionSubnet 必需的规则”。
 
-**答：** 如果创建 NSG 并将其应用于 *AzureBastionSubnet*，请确保已将所需规则添加到 NSG。 有关所需规则的列表，请参阅 [使用 NSG access 和 Azure 堡垒](./bastion-nsg.md)。 如果未添加它们，则 NSG 创建/更新操作将失败。
+**答:** 如果要创建 NSG 并将其应用到 AzureBastionSubnet，请确保已在 NSG 中添加所需规则。 有关所需规则的列表，请参阅[使用 NSG 访问和 Azure Bastion](./bastion-nsg.md)。 如果未添加它们，则 NSG 创建/更新操作将失败。
 
-[快速启动模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)中提供了 NSG 规则的示例以供参考。
+[快速启动模板](https://azure.microsoft.com/resources/templates/101-azure-bastion-nsg/)中提供了 NSG 规则的示例以供参考。
 有关详细信息，请参阅 [Azure 服务的 NSG 指南](bastion-nsg.md)。
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>无法将 SSH 密钥用于 Azure Bastion
@@ -77,7 +77,7 @@ The key's randomart image is:
 
 ## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Azure 门户中出现黑屏
 
-**问：** 尝试使用 Azure 堡垒进行连接时，无法连接目标 VM，并在 Azure 门户中显示黑屏。
+**问**：我在尝试使用 Azure Bastion 进行连接时，无法连接到目标 VM，并且 Azure 门户中出现黑屏现象。
 
 **答:** 如果 Web 浏览器与 Azure Bastion 之间出现网络连接问题（诸如客户端 Internet 防火墙可能正在阻止 WebSockets 流量之类的），或者 Azure Bastion 与目标 VM 之间出现网络连接问题，则会出现此情况。 大多数情况是 AzureBastionSubnet 或目标 VM 子网上应用了一个 NSG 来阻止你的虚拟机中的 RDP/SSH 流量。 请允许客户端 Internet 防火墙上的 WebSockets 流量，并检查目标 VM 子网上的 NSG。
 

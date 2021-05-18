@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: b6369013d605ae538ad611a28a90e9c099bb7d80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: ce4eb3d556b6dff833129d11b26d439066b63f2e
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91326042"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446836"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>在主 VHD 映像中安装 Office
 

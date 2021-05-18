@@ -3,12 +3,12 @@ title: 使用挎斗容器启用 TLS
 description: 通过在挎斗中运行 Nginx 为 Azure 容器实例中运行的容器组创建 SSL 或 TLS 终结点
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
-ms.translationtype: MT
+ms.openlocfilehash: 906a1f239d7050ea17fd7d1425138049ebf045c1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558073"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790952"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>在挎斗容器中启用 TLS 终结点
 
@@ -24,13 +24,13 @@ ms.locfileid: "96558073"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- 本文要求 Azure CLI 版本2.0.55 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+- 本文需要 2.0.55 或更高版本的 Azure CLI。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
 若要将 Nginx 设置为 TLS 提供程序，需要一个 TLS/SSL 证书。 本文介绍如何创建和设置自签名的 TLS/SSL 证书。 对于生产方案，应从证书颁发机构获取证书。
 
-若要创建自签名的 TLS/SSL 证书，请使用 Azure Cloud Shell 和许多 Linux 发行版中提供的 [OpenSSL](https://www.openssl.org/) 工具，或在操作系统中使用类似的客户端工具。
+若要创建自签名的 TLS/SSL 证书，请使用 Azure Cloud Shell 以及许多 Linux 分发版中提供的 [OpenSSL](https://www.openssl.org/) 工具，或使用操作系统中的类似客户端工具。
 
 首先在本地工作目录中创建证书请求（.csr 文件）：
 
@@ -193,13 +193,13 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="deploy-the-container-group"></a>部署容器组
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组：
+使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
 ```
 
-使用 [az container create](/cli/azure/container#az-container-create) 命令部署容器组并传递 YAML 文件作为参数。
+使用 [az container create](/cli/azure/container#az_container_create) 命令部署容器组并传递 YAML 文件作为参数。
 
 ```azurecli
 az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
@@ -207,7 +207,7 @@ az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
 
 ### <a name="view-deployment-state"></a>查看部署状态
 
-若要查看部署状态，请运行以下 [az container show](/cli/azure/container#az-container-show) 命令：
+若要查看部署状态，请运行以下 [az container show](/cli/azure/container#az_container_show) 命令：
 
 ```azurecli
 az container show --resource-group <myResourceGroup> --name app-with-ssl --output table
@@ -238,8 +238,8 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 尽管本文在挎斗中使用 Nginx，但你可以使用另一个 TLS 提供程序，例如 [Caddy](https://caddyserver.com/)。
 
-如果在 [Azure 虚拟网络](container-instances-vnet.md)中部署容器组，可以考虑使用其他选项为后端容器实例启用 TLS 终结点，包括：
+如果在 [Azure 虚拟网络](container-instances-vnet.md)中部署容器组，则可考虑使用其他选项为后端容器实例启用 TLS 终结点，其中包括：
 
 * [Azure Functions 代理](../azure-functions/functions-proxies.md)
 * [Azure API 管理](../api-management/api-management-key-concepts.md)
-* [Azure 应用程序网关](../application-gateway/overview.md) -请参阅示例 [部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)。
+* [Azure 应用程序网关](../application-gateway/overview.md) - 请参阅[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)示例。

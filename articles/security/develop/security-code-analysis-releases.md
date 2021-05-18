@@ -4,7 +4,7 @@ description: 本文介绍即将发布的 Microsoft 安全代码分析扩展
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 04/24/2020
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,14 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 33ce2a496caa52609d8bdf8c92e29064ca4ae349
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 7596df66dbcbe1b7cdefab4811da7174bc83ac65
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85362034"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801173"
 ---
 # <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Microsoft 安全代码分析版本和路线图
+
+> [!Note]
+> Microsoft 安全代码分析 (MSCA) 扩展将将于 2022 年 3 月 1 日停用。 现有 MSCA 客户在 2022 年 3 月 1 日之前仍可访问 MSCA。 请参阅 [OWASP 源代码分析工具](https://owasp.org/www-community/Source_Code_Analysis_Tools)，了解 Azure DevOps 中的替代选项。 对于计划迁移到 GitHub 的客户，可以查看 [Github 高级安全](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security)。
 
 Microsoft 安全代码分析团队与开发人员支持部门合作，自豪地宣布 MSCA 扩展近期即将推出增强功能。
 
@@ -53,14 +56,14 @@ Microsoft 安全代码分析团队与开发人员支持部门合作，自豪地�
 
 ### <a name="improvements"></a>改进
 
-- 功能：更新为最终 SARIF v2（版本 2.1.16）。 此更新在命令行上传递哈希时启用结果缓存，并在递归分析具有多个扫描目标副本的目录时显著提高性能。
+- 功能：更新为最终 SARIF v2（版本 2.1.16）。 在命令行上传递 --hashes 时，此升级会启用结果缓存，在递归分析具有多个扫描目标副本的目录时会显著提高性能。
 - BUG 修复：修复了 BA2021.DoNotMarkWritableSectionsAsExecutable 输出中的拼写错误。
 - 性能：为托管程序集（包括 IL 库（已预先编译）二进制文件）消除了所有非混合模式的 PDB 加载。
 - 误报修复：验证与二进制文件一起放置的 PDB 是否确实与所分析的二进制文件匹配
 - 功能：提供了 --local-symbol-directories 参数，用于指定其他（本地、非符号服务器）PDB 查找位置
 - 假正修复：跳过对生成的 .NET Core 本机引导程序 exe（不是用户可控代码）的 PDB 驱动型分析。
 
-## <a name="whats-next-in-q3-cy20"></a>第三季度 CY20 中的下一步是什么？
+## <a name="whats-next-in-q3-cy20"></a>第三季度 CY20 的下一步是什么？
 
 - Java 安全分析工具
 - Python 安全分析工具
@@ -69,12 +72,12 @@ Microsoft 安全代码分析团队与开发人员支持部门合作，自豪地�
 
 ## <a name="tool-deprecation-notification"></a>工具弃用通知
 
-### <a name="microsoft-security-risk-detection-msrd-is-deprecated-on-june-26-2020"></a>26 2020 年6月，Microsoft 安全风险检测 (MSRD) 弃用。
+### <a name="microsoft-security-risk-detection-msrd-is-deprecated-on-june-26-2020"></a>Microsoft 安全风险检测 (MSRD) 于 2020 年 6 月 26 日弃用。
 
-不推荐使用的 MSRD 模糊化服务将替换为适用于 Azure 的开源自承载开发人员模糊化平台。 当前正在与许多 Microsoft 核心产品团队合作开发和测试此平台。 此模糊化平台将集成 sanitizers，并允许自适应的学习/CD 管道中内置的自适应模糊测试，这些测试随时间推移随软件项目一起增长。 此平台的开源发行版计划为2020的后半部分。
+已弃用的 MSRD 模糊服务将替换为适用于 Azure 的开源自承载开发人员模糊平台。 目前，正在与许多 Microsoft 核心产品团队合作开发和测试该平台。 此模糊测试平台将集成擦除系统，并允许在随软件项目不断发展的 CI/CD 管道中内置自适应的学习模糊测试。 此平台的开源版本计划于 2020 年下半年发布。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何载入和安装 Microsoft 安全代码分析的说明，请参阅我们的 [载入和安装指南](security-code-analysis-onboard.md)。
+有关如何加入和安装 Microsoft 安全代码分析的说明，请参阅我们的[加入和安装指南](security-code-analysis-onboard.md)。
 
 对于所提供的扩展和工具，如果仍有疑问，请查看我们的[常见问题解答页](security-code-analysis-faq.md)。

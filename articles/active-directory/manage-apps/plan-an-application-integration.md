@@ -2,21 +2,21 @@
 title: Azure Active Directory 与应用集成入门
 description: 本文是一篇入门指南，介绍如何将 Azure Active Directory (AD) 与本地应用程序和云应用程序集成。
 services: active-directory
-author: iantheninja
-manager: CelesteDG
+author: kenwith
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/05/2021
-ms.author: iangithinji
+ms.date: 03/19/2021
+ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 37916e5e356e7c5ad6e685ac0838363fe2579496
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: de06bb4f97568eaa40b0b09e9bc2b50608424aa8
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374975"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775589"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>将 Azure Active Directory 与应用程序集成入门指南
 
@@ -73,7 +73,7 @@ ms.locfileid: "107374975"
 - 通过自助方式集成支持[安全断言标记语言 (SAML) 2.0](https://wikipedia.org/wiki/SAML_2.0) 标识提供者的任何应用程序（SP 发起或 IdP 发起）
 - 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](sso-options.md#password-based-sso) 的任何 Web 应用程序
 - 以自助方式连接使用[跨域身份管理系统 (SCIM) 协议进行用户预配](../app-provisioning/use-scim-to-provision-users-and-groups.md)的应用程序
-- 可在 [Office 365 应用启动器](https://support.microsoft.com/office/meet-the-microsoft-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)或[我的应用](https://myapplications.microsoft.com/)中添加任何应用程序的链接
+- 可在 [Office 365 应用启动器](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/)或[我的应用](sso-options.md#linked-sign-on)中添加任何应用程序的链接
 
 如果要查找有关如何将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](../develop/authentication-vs-authorization.md)。 开发使用新式协议（如 [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md)）对用户进行身份验证的应用时，可以使用 Azure 门户中的[应用注册](../develop/quickstart-register-app.md)体验将应用注册到 Microsoft 标识平台。
 
@@ -100,5 +100,5 @@ ms.locfileid: "107374975"
 
 若要从 Azure 门户下载部署计划，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择“企业应用程序” | “选取应用” | “部署计划”。  

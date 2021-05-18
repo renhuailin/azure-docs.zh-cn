@@ -9,26 +9,26 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.openlocfilehash: 7445ac5d750ac29d3e6ce466a48e82efd1bcde40
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100545524"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>创建专用终结点以建立到 Azure 认知搜索的安全连接
 
 在本文中，你将使用 Azure 门户创建无法通过 Internet 访问的新的 Azure 认知搜索服务实例。 接下来，你将在同一虚拟网络中配置 Azure 虚拟机，并使用它通过专用终结点访问搜索服务。
 
-专用终结点由 [Azure 专用链接](../private-link/private-link-overview.md)作为单独的服务提供。 有关成本的详细信息，请参阅 [定价页](https://azure.microsoft.com/pricing/details/private-link/)。
+专用终结点由 [Azure 专用链接](../private-link/private-link-overview.md)作为单独的服务提供。 有关费用的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/private-link/)。
 
-如本文中所述，你可以在 Azure 门户中创建私有终结点。 或者，你可以使用 [管理 REST API 版本 2020-03-13](/rest/api/searchmanagement/)、 [Azure PowerShell](/powershell/module/az.search)或 [Azure CLI](/cli/azure/search)。
+如本文中所述，你可以在 Azure 门户中创建专用终结点。 或者，你可以使用[管理 REST API 版本 2020-03-13](/rest/api/searchmanagement/)、[Azure PowerShell](/powershell/module/az.search) 或 [Azure CLI](/cli/azure/search)。
 
 > [!NOTE]
-> 当服务终结点为专用时，某些门户功能处于禁用状态。 你可以查看和管理服务级别信息，但出于安全原因，将隐藏索引、索引器和技能组合信息。 作为门户的替代方法，可以使用 [VS Code 扩展](https://aka.ms/vscode-search) 与服务中的各种组件进行交互。
+> 当服务终结点为专用时，某些门户功能处于禁用状态。 你可以查看和管理服务级别信息，但出于安全原因，将隐藏索引、索引器和技能组信息。 可以使用 [VS Code 扩展](https://aka.ms/vscode-search)与服务中的各种组件进行交互，以此替代门户。
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>为何使用专用终结点进行安全访问？
 
-Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview.md)允许虚拟网络上的客户端通过[专用链接](../private-link/private-link-overview.md)安全访问搜索索引中的数据。 专用终结点将[虚拟网络地址空间](../virtual-network/private-ip-addresses.md)中的 IP 地址用于你的搜索服务。 客户端与搜索服务之间的网络流量将穿过虚拟网络以及 Microsoft 主干网络上的专用链接，不会从公共 Internet 公开。 有关支持专用链接的其他 PaaS 服务的列表，请查看产品文档中的 " [可用性" 部分](../private-link/private-link-overview.md#availability) 。
+Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview.md)允许虚拟网络上的客户端通过[专用链接](../private-link/private-link-overview.md)安全地访问搜索索引中的数据。 专用终结点将[虚拟网络地址空间](../virtual-network/private-ip-addresses.md)中的 IP 地址用于你的搜索服务。 客户端与搜索服务之间的网络流量将穿过虚拟网络以及 Microsoft 主干网络上的专用链接，不会从公共 Internet 公开。 有关支持专用链接的其他 PaaS 服务的列表，请查看产品文档中的[“可用性”](../private-link/private-link-overview.md#availability)部分。
 
 为搜索服务使用专用终结点，你可以：
 
@@ -95,7 +95,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 子网 | 选择“mySubnet”。 |
     | **专用 DNS 集成** |  |
     | 与专用 DNS 区域集成  | 保留默认值“是”。 |
-    | 专用 DNS 区域  | 保留默认值 * * (New) privatelink.search.windows.net * *。 |
+    | 专用 DNS 区域  | 保留默认值“(新建) privatelink.search.windows.net”。 |
     |||
 
 1. 选择“确定”。 
@@ -155,7 +155,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     ||
 
    > [!NOTE]
-   > IPv4 地址可以用 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 格式表示。 请记住，应避免使用为专用网络保留的 IP 范围，如 [RFC 1918](https://tools.ietf.org/html/rfc1918) 中所述：
+   > IPv4 地址可以表示为 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 格式。 请记住，应避免使用为专用网络保留的 IP 范围，如 [RFC 1918](https://tools.ietf.org/html/rfc1918) 中所述：
    >
    > - `10.0.0.0 - 10.255.255.255  (10/8 prefix)`
    > - `172.16.0.0 - 172.31.255.255  (172.16/12 prefix)`
@@ -198,7 +198,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在 *myVM* 的远程桌面中，打开 PowerShell。
 
-1. 输入 "nslookup [search service name]. search. net"
+1. 输入“nslookup [search service name].search.windows.net”
 
     将收到类似于下面的消息：
     ```azurepowershell
@@ -210,7 +210,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     Aliases:  [search service name].search.windows.net
     ```
 
-1. 从 VM 中，连接到搜索服务并创建索引。 可以按照此[快速入门](search-get-started-rest.md)使用 REST API 在你的服务中创建新的搜索索引。 通过 Web API 测试工具设置请求需要搜索服务终结点 (https：//[search service name].) ，以及在上一步中复制的管理 API 密钥。
+1. 从 VM 中，连接到搜索服务并创建索引。 可以按照此[快速入门](search-get-started-rest.md)使用 REST API 在你的服务中创建新的搜索索引。 通过 Web API 测试工具设置请求需要使用搜索服务终结点 (https://[搜索服务名称].search.windows.net) 和你在之前的步骤中复制的管理 api-key。
 
 1. 从 VM 完成快速入门便可确认服务是否可以完全运行。
 

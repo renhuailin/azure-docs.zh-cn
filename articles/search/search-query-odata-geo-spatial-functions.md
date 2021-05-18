@@ -20,24 +20,24 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88934831"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure 认知搜索中的 OData 地理空间函数 - `geo.distance` 和 `geo.intersects`
 
 Azure 认知搜索支持使用 `geo.distance` 和 `geo.intersects` 函数通过 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)进行地理空间查询。 `geo.distance` 函数以公里为单位返回两点之间的距离，一个点是字段或范围变量，另一个点是作为筛选器一部分传递的常量。 如果给定的点位于给定的多边形范围内（其中该点是字段或范围变量，多边形指定为作为筛选器一部分传递的常量），`geo.intersects` 函数会返回 `true`。
 
-`geo.distance` 函数也可用在 [ **$orderby** 参数](search-query-odata-orderby.md)中，以便按照与给定点的距离对搜索结果排序。 **$orderby** 中 `geo.distance` 的语法与其在 **$filter** 中的语法相同。 如果在 **$orderby** 中使用 `geo.distance`，则它应用到的字段必须为 `Edm.GeographyPoint` 类型，而且它还必须是**可排序的**。
+`geo.distance` 函数也可用在 [ **$orderby** 参数](search-query-odata-orderby.md)中，以便按照与给定点的距离对搜索结果排序。 **$orderby** 中 `geo.distance` 的语法与其在 **$filter** 中的语法相同。 如果在 **$orderby** 中使用 `geo.distance`，则它应用到的字段必须为 `Edm.GeographyPoint` 类型，而且它还必须是 **可排序的**。
 
 > [!NOTE]
 > 在 **$orderby** 参数中使用 `geo.distance` 时，传递给函数的字段只能包含单个地理点。 换言之，它必须是类型 `Edm.GeographyPoint` 而非 `Collection(Edm.GeographyPoint)`。 不可能在 Azure 认知搜索中对集合字段排序。
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF ([扩展 Backus-Naur 窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义和函数的语法 `geo.distance` ，以及 `geo.intersects` 它们运行时所在的地理空间值：
+以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义了 `geo.distance` 和 `geo.intersects` 函数的语法，以及这些函数运算时依据的地理空间值：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

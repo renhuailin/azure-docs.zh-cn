@@ -1,24 +1,24 @@
 ---
-title: 计划适用于 Microsoft AppSource 的 Dynamics 365 产品/服务
+title: 计划适用于 Microsoft AppSource 的 Dynamics 365 产品/服务 - Azure
 description: 计划适用于 Microsoft AppSource 的 Dynamics 365 产品/服务
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 04/16/2021
-ms.openlocfilehash: c2b4fddc91a9bd24ac1fd4f326d225835180dd78
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 04/30/2021
+ms.openlocfilehash: c0af6f3045a686f9ef73b7761b41e869d3ce9d6f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144684"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766378"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>计划 Microsoft Dynamics 365 产品/服务
 
-本文介绍了商业市场中 Microsoft AppSource 提供的 Dynamics 365 的不同选项和功能。 AppSource 包括基于或扩展 Microsoft 365、Dynamics 365、PowerApps 和 Power BI 的产品/服务。 AppSource 允许付费（立即获取）、列表（联系我）和试用（立即试用）产品/服务。
+本文介绍了商业市场中 Microsoft AppSource 提供的 Dynamics 365 的不同选项和功能。 AppSource 包括基于或扩展 Microsoft 365、Dynamics 365、PowerApps 和 Power BI 的产品/服务。
 
-开始之前，先在[合作伙伴中心](./create-account.md)创建一个商业市场帐户，并确保该帐户已在商业市场计划中注册。 此外，请查看[发布流程和指导](/office/dev/store/submit-to-appsource-via-partner-center)。
+开始之前，先在[合作伙伴中心](./partner-center-portal/create-account.md)创建一个商业市场帐户，并确保该帐户已在商业市场计划中注册。 此外，请查看[发布流程和指导](/office/dev/store/submit-to-appsource-via-partner-center)。
 
 ## <a name="licensing-options"></a>许可选项
 
@@ -28,10 +28,11 @@ ms.locfileid: "108144684"
 
 | 许可选项 | 事务处理 |
 | --- | --- |
-| 立即获取（免费） | 免费向客户列出产品/服务。 |
-| 免费试用版（列出） | 为客户提供为期一个月、三个月或六个月的免费试用版。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。 |
 | 与我联系 | 通过连接客户关系管理 (CRM) 系统来收集客户联系信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及产品/服务名称、ID 和他们在其中找到产品/服务的市场来源将发送到你配置的 CRM 系统。 有关配置 CRM 的详细信息，请参阅产品/服务类型的“产品/服务设置”页面的“客户引导”部分。 |
-|
+| 免费试用版（列出） | 为客户提供为期一个月、三个月或六个月的免费试用版。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。 |
+| 立即获取（免费） | 免费向客户列出产品/服务。 |
+| 立即获取 | 使你能够在合作伙伴中心管理第三方许可证。<br>目前仅可用于以下产品/服务类型：<ul><li>适用于客户参与和 Power Apps 的 Dynamics 365</li></ul><br>有关此选项的详细信息，请参阅[通过 Microsoft 管理第三方应用许可证](third-party-license.md)。 |
+|||
 
 ## <a name="test-drive"></a>体验版
 
@@ -76,7 +77,7 @@ ms.locfileid: "108144684"
 
 ## <a name="additional-sales-opportunities"></a>其他销售机会
 
-你可以选择加入 Microsoft 支持的营销和销售渠道。 在合作伙伴中心创建产品/服务时，你将在“与 Microsoft 联合销售”这一进程即将结束时看到两个选项卡。 此选项可让 Microsoft 销售团队在评估其客户需求时考虑你的 IP 联合销售资格解决方案。 请参阅[合作伙伴中心的联合销售选项](./co-sell-configure.md)，详细了解如何准备对产品/服务进行评估。
+你可以选择加入 Microsoft 支持的营销和销售渠道。 在合作伙伴中心创建产品/服务时，你将在“与 Microsoft 联合销售”这一进程即将结束时看到两个选项卡。 此选项可让 Microsoft 销售团队在评估其客户需求时考虑你的 IP 联合销售资格解决方案。 请参阅[合作伙伴中心的联合销售选项](commercial-marketplace-co-sell.md)，详细了解如何准备对产品/服务进行评估。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -87,5 +88,5 @@ ms.locfileid: "108144684"
 | [Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md) | 为 Enterprise Edition 构建时，请先查看这些附加的[发布流程和指导原则](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)。 |
 | [Dynamics 365 for Business Central](partner-center-portal/create-new-business-central-offer.md) |   |
 | [适用于客户参与和 Power Apps 的 Dynamics 365](dynamics-365-customer-engage-offer-setup.md) | 先查看这些附加的[发布流程和指导原则](/dynamics365/customer-engagement/developer/publish-app-appsource)。 |
-| [Power BI](/partner-center-portal/create-power-bi-app-offer.md) | 先查看这些附加的[发布流程和指导原则](/power-bi/developer/office-store)。 |
-|
+| [Power BI](/azure/marketplace/partner-center-portal/create-power-bi-app-offer) | 先查看这些附加的[发布流程和指导原则](/power-bi/developer/office-store)。 |
+|||

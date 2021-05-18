@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd1bf4f9c463973d70f5289f7a82f372d0156cb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b38a27788a4bbb25ff0405a54ca5e64258dd135
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96742539"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286017"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>将 Azure 多重身份验证服务器配置为与 Windows Server 中的 AD FS 配合使用
 
@@ -171,4 +171,4 @@ ms.locfileid: "96742539"
 
 ## <a name="related-topics"></a>相关主题
 
-有关疑难解答帮助，请参阅 [ Azure 多重身份验证常见问题](multi-factor-authentication-faq.md)
+有关疑难解答帮助，请参阅 [ Azure 多重身份验证常见问题](multi-factor-authentication-faq.yml)

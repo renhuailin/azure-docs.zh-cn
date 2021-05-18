@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 81cd2ca1cb47e6fdfb4858df930b73c1bd10118a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101091822"
 ---
 # <a name="change-iot-central-application-settings"></a>更改 IoT Central 应用程序设置
@@ -39,17 +39,17 @@ ms.locfileid: "101091822"
 使用“删除”按钮可以永久删除 IoT Central 应用程序。 此操作会永久删除与该应用程序关联的所有数据。
 
 > [!Note]
-> 若要删除某个应用程序，还必须有权删除在创建应用程序时所选的 Azure 订阅中的资源。 若要了解详细信息，请参阅 [分配 azure 角色以管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
+> 若要删除某个应用程序，还必须有权删除在创建应用程序时所选的 Azure 订阅中的资源。 若要了解详细信息，请参阅[分配 Azure 角色以管理对 Azure 订阅资源的访问](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="manage-programmatically"></a>以编程方式管理
 
 IoT Central Azure 资源管理器 SDK 程序包适用于 Node、Python、C#、Ruby、Java 和 Go。 可以使用这些包来创建、列出、更新或删除 IoT Central 应用程序。 这些包包含用于管理身份验证和错误处理的帮助程序。
 
-可以在中找到有关如何使用 Azure 资源管理器 Sdk 的示例 [https://github.com/Azure-Samples/azure-iot-central-arm-sdk-samples](https://github.com/Azure-Samples/azure-iot-central-arm-sdk-samples) 。
+可以在 [https://github.com/Azure-Samples/azure-iot-central-arm-sdk-samples](https://github.com/Azure-Samples/azure-iot-central-arm-sdk-samples) 中找到有关如何使用 Azure 资源管理器 SDK 的示例。
 
 有关详细信息，请参阅以下 GitHub 存储库和包：
 
-| Language | 存储库 | 程序包 |
+| 语言 | 存储库 | 程序包 |
 | ---------| ---------- | ------- |
 | 节点 | [https://github.com/Azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js) | [https://www.npmjs.com/package/@azure/arm-iotcentral](https://www.npmjs.com/package/@azure/arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)

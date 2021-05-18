@@ -5,14 +5,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 03/16/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3f8f7744e07abb56d825ce44d5bb30190e7e87c4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.openlocfilehash: f632c916c3de61b94532e96be23da511ad5863ea
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020411"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104593027"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>使用流分析进行高频交易模拟
 用户可以在 Azure 流分析中结合使用 SQL 语言和 JavaScript 的用户定义函数 (UDF) 与用户定义聚合 (UDA) 进行高级分析。 高级分析可能包括在线机器学习训练和评分，以及有状态过程模拟。 本文介绍如何在 Azure 流分析作业中执行线性回归操作，该作业在高频交易方案中进行持续的训练和评分。
@@ -349,7 +349,7 @@ JavaScript UDA 在 `init` 函数中初始化所有累加器，在计算状态转
 - 如果在持股的情况下收到卖出信号，则卖出股票。
 - 如果没有持股，则表明已空仓。 
 
-如果在空仓情况下收到买入信号，则通过买入来补仓。 在此模拟中，我们从来没有持有或空仓 10 股股票。 交易费始终为 8 美元。
+如果在空仓情况下收到买入信号，则通过买入来补仓。 在此模拟中，我们持有或空仓 10 股股票。 交易费始终为 8 美元。
 
 ```javascript
 function main() {

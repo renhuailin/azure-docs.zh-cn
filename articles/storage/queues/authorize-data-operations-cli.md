@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2f7092d8ce184d7021774814e96935e46d1ffb56
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1570906ae036b31dc2e97f35c827385933093f73
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100363162"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162196"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>选择如何使用 Azure CLI 授予对队列数据的访问权限
 
@@ -52,7 +52,7 @@ Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何根据
 
 Azure 存储扩展支持针对队列数据的操作。 可调用的操作取决于向 Azure AD 安全主体授予的权限，此安全主体用于登录 Azure CLI。 对队列的权限通过 Azure RBAC 进行分配。 例如，如果为你分配了“存储队列数据读取者”角色，你可以运行从队列读取数据的脚本命令。 如果为你分配了“存储队列数据参与者”角色，你可以运行脚本命令来读取、写入或删除队列或其中所含数据。
 
-若要详细了解针对队列的每个 Azure 存储操作所需的权限，请参阅[使用 OAuth 令牌调用存储操作](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。  
+若要详细了解针对队列的每个 Azure 存储操作所需的权限，请参阅[使用 OAuth 令牌调用存储操作](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。
 
 ### <a name="example-authorize-an-operation-to-create-a-queue-with-azure-ad-credentials"></a>示例：授权操作使用 Azure AD 凭据创建队列
 
@@ -63,7 +63,7 @@ Azure 存储扩展支持针对队列数据的操作。 可调用的操作取决�
     > [!IMPORTANT]
     > 传播 Azure 角色分配可能需要花费几分钟时间。
 
-1. 在将 `--auth-mode` 参数设置为 `login` 的情况下，调用 [`az storage queue create`](/cli/azure/storage/queue#az-storage-queue-create) 命令以使用 Azure AD 凭据创建队列。 请务必将尖括号中的占位符值替换为你自己的值：
+1. 在将 `--auth-mode` 参数设置为 `login` 的情况下，调用 [`az storage queue create`](/cli/azure/storage/queue#az_storage_queue_create) 命令以使用 Azure AD 凭据创建队列。 请务必将尖括号中的占位符值替换为你自己的值：
 
     ```azurecli
     az storage queue create \

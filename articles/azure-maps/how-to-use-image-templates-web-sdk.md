@@ -1,6 +1,6 @@
 ---
-title: Azure Maps Web SDK 中的图像模板 |Microsoft Azure 映射
-description: 了解如何使用 Azure Maps Web SDK 将图像图标和图案填充多边形添加到地图中。 查看可用的图像和填充模式模板。
+title: Azure Maps Web SDK 中的图像模板 | Microsoft Azure Maps
+description: 了解如何通过使用 Azure Maps Web SDK 将图像图标和填充了图案的多边形添加到地图。 查看可用的图像和填充图案模板。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -10,33 +10,33 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 5f455a1132a0f63e1ba3eb5d2a57a1f9bfa9a867
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895675"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用图像模板
 
-可以在 Azure Maps web SDK 中的 HTML 标记和各种层上使用图像：
+可以在 Azure Maps Web SDK 中将图像与 HTML 标记和各种层配合使用：
 
- - 符号层可使用图像图标呈现地图上的点。 还可以沿着行路径呈现符号。
- - 可以使用填充模式图像呈现多边形层。 
- - HTML 标记可以使用图像和其他 HTML 元素呈现点。
+ - 符号层可使用图像图标来呈现地图上的点。 还可以沿着线条路径呈现符号。
+ - 可以使用填充图案图像来呈现多边形层。 
+ - HTML 标记可以使用图像和其他 HTML 元素来呈现点。
 
-为了确保层具有良好的性能，请在呈现前将图像加载到地图图像动画处理资源。 默认情况下，SymbolLayer 的 [IconOptions](/javascript/api/azure-maps-control/atlas.iconoptions)将几个颜色的标记图像预加载到地图图像的子画面。 这些标记图像和其他标记图像作为 SVG 模板提供。 它们可用于创建具有自定义比例的图像，或用作客户主要和辅助颜色。 总共提供了42个图像模板：27个符号图标和15个多边形填充模式。
+为了确保层具有良好的性能，请在呈现前将图像加载到地图图像子画面资源。 在默认情况下，SymbolLayer 的 [IconOptions](/javascript/api/azure-maps-control/atlas.iconoptions) 会将几个带有一些颜色的标记图像预加载到地图图像子画面。 这些标记图像和其他标记图像会作为 SVG 模板提供。 它们可用于创建具有自定义比例的图像，或用作客户主色和辅色。 总共提供了 42 个图像模板：27 个符号图标和 15 个多边形填充图案。
 
-可以使用函数将图像模板添加到地图图像 sprite 资源 `map.imageSprite.createFromTemplate` 。 此函数允许传入多达五个参数;
+可以通过使用 `map.imageSprite.createFromTemplate` 函数将图像模板添加到地图图像子画面资源。 此函数允许传入最多 5 个参数；
 
 ```javascript
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-`id`是您创建的唯一标识符。 将 `id` 图像添加到地图图像 sprite 后，会将其分配给映像。 在层中使用此标识符来指定要呈现的图像资源。 `templateName`指定要使用的图像模板。 `color`选项设置图像的主要颜色， `secondaryColor` 选项设置图像的辅助颜色。 `scale`选项会在将图像模板应用于图像子画面之前对其进行缩放。 当图像应用于图像子画面时，它将转换为 PNG。 若要确保清晰渲染，最好在将图像模板添加到子画面之前向上向上扩展，而不是在层中进行缩放。
+`id` 是你创建的独一无二的标识符。 `id` 会在图像添加到地图图像子画面后被分配到该图像。 在层中使用此标识符来指定要呈现哪个图像资源。 `templateName` 指定要使用哪个图像模板。 `color` 选项设置图像的主色，`secondaryColor` 选项设置图像的辅色。 `scale` 选项会在将图像模板应用到图像子画面之前先对该模板进行缩放。 在图像应用于图像子画面时，它会转换为 PNG。 为了确保呈现清晰，最好在将图像模板添加到子画面之前先将该模板向上扩展，而不是在层中向上扩展。
 
-此函数以异步方式将图像加载到图像 sprite。 因此，它将返回可等待此函数完成的承诺。
+此函数以异步方式将图像加载到图像子画面。 因此，它会返回一个承诺，你可以等待此函数完成。
 
-下面的代码演示如何从一个内置模板创建一个图像，并将其用于符号层。
+下面的代码演示如何从某一个内置模板创建图像并将该图像用于符号层。
 
 ```javascript
 map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#fff').then(function () {
@@ -50,63 +50,63 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 });
 ```
 
-## <a name="use-an-image-template-with-a-symbol-layer"></a>使用带有符号层的图像模板
+## <a name="use-an-image-template-with-a-symbol-layer"></a>将图像模板用于符号层
 
-将图像模板加载到地图图像 sprite 后，可通过在的选项中引用图像资源 ID，将其呈现为符号层中的符号 `image` `iconOptions` 。
+在将图像模板加载到地图图像子画面后，可以通过在 `iconOptions` 的 `image` 选项中引用图像资源 ID 将该图像模板呈现为符号层中的符号。
 
-下面的示例使用 `marker-flat` 带有蓝绿色主色和白色辅助颜色的图像模板呈现符号层。 
+下面的示例使用带有青色主色和白色辅助色的 `marker-flat` 图像模板来呈现符号层。 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的符号层" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-通过 CodePen 上的 () Azure Maps <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>，查看带有内置图标模板的笔符号层</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 <a href='https://codepen.io'>CodePen</a> 上的触笔<a href='https://codepen.io/azuremaps/pen/VoQMPp/'>带有内置图标模板的符号层</a>（由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供）。
 </iframe>
 
-## <a name="use-an-image-template-along-a-lines-path"></a>使用沿行路径的图像模板
+## <a name="use-an-image-template-along-a-lines-path"></a>沿线条路径使用图像模板
 
-一旦将图像模板加载到地图图像下边缘，就可以通过将 LineString 添加到数据源，并使用带选项的符号层， `lineSpacing` 并通过在选项中引用图像资源的 ID，将其沿行的路径进行呈现 `image` `iconOptions` 。 
+在将图像模板加载到地图图像子画面后，可以将 LineString 添加到数据源，并配合 `lineSpacing` 选项使用符号层，并且可以在 `iconOptions` 的 `image` 选项中引用图像资源的 ID，通过这样的方式来沿线条的路径呈现该图像模板。 
 
-下面的示例在地图上呈现粉红色的线条，并使用 `car` 带有宝蓝蓝原色和白色辅助颜色的图像模板的符号层。 
+下面的示例使用带有宝蓝色主色和白色辅色的 `car` 图像模板，在地图上呈现粉红色线条并使用符号层。 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的线条层" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-通过 CodePen 上的 () Azure Maps <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>，查看带有内置图标模板</a>的 "笔线层" <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 <a href='https://codepen.io'>CodePen</a> 上的触笔<a href='https://codepen.io/azuremaps/pen/KOQvJe/'>带有内置图标模板的线条层</a>（由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供）。
 </iframe>
 
 > [!TIP]
-> 如果图像模板指向上方，则将 `rotation` 符号层的图标选项设置为90（如果你想要将其指向与直线相同的方向。
+> 如果图像模板指向上方，请将符号层的 `rotation` 图标选项设置为 90（如果你希望它指向与线条相同的方向）。
 
 ## <a name="use-an-image-template-with-a-polygon-layer"></a>使用带有多边形层的图像模板
 
-将图像模板加载到地图图像下边缘后，可通过在该图层的选项中引用图像资源 ID，将其呈现为多边形层中的填充模式 `fillPattern` 。
+在将图像模板加载到地图图像子画面后，可以通过在多边形层的 `fillPattern` 选项中引用图像资源 ID 将该图像模板呈现为该层中的填充图案。
 
-下面的示例使用 `dot` 带有红色主颜色和透明辅助颜色的图像模板呈现多边形层。  
+下面的示例使用带有红色主色和透明辅色的 `dot` 图像模板呈现多边形层。  
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="用内置图标模板填充多边形" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>使用内置图标模板的笔填充多边形</a>" Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 <a href='https://codepen.io'>CodePen</a> 上的触笔 <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>带有内置图标模板的填充多边形</a>（由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供）。
 </iframe>
 
 > [!TIP]
-> 通过设置填充模式的辅助颜色，可以更轻松地看到基础地图仍将提供主模式。 
+> 通过设置填充图案的辅色，可以更轻松地看到基础地图仍将提供主要图案。 
 
 ## <a name="use-an-image-template-with-an-html-marker"></a>使用带有 HTML 标记的图像模板
 
-可以使用函数检索图像模板，并将其用作 `altas.getImageTemplate` HTML 标记的内容。 模板可传递到 `htmlContent` 标记的选项，然后使用 `color` 、 `secondaryColor` 和选项自定义 `text` 。
+可以使用 `altas.getImageTemplate` 函数来检索图像模板，并且图像模板可以用作 HTML 标记的内容。 可以将模板传递到标记的 `htmlContent` 选项中，然后使用 `color`、`secondaryColor` 和 `text` 选项来自定义模板。
 
-下面的示例使用 `marker-arrow` 具有红色主色、粉红色辅助颜色和文本值 "00" 的模板。
+下面的示例使用具有红色主色、粉红色辅色和文本值“00”的 `marker-arrow` 模板。
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的 HTML 标记" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-通过 CodePen 上的 () Azure Maps，查看<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>带有内置图标模板</a>的 "笔 HTML 标记" <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 <a href='https://codepen.io'>CodePen</a> 上的触笔<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>带有内置图标模板的 HTML 标记</a>（由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供）。
 </iframe>
 
 
 > [!TIP]
-> 还可以在地图外使用图像模板。 GetImageTemplate 函数返回具有占位符的 SVG 字符串; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. 替换这些占位符值以创建有效的 SVG 字符串。 然后，可以将 SVG 字符串直接添加到 HTML DOM，或将其转换为数据 URI，然后将其插入到 image 标记中。 例如：
+> 图像模板也可以在地图外部使用。 getImageTemplate 函数会返回具有占位符（`{color}`、`{secondaryColor}`、`{scale}`、`{text}`）的 SVG 字符串。 请替换这些占位符值，以创建有效的 SVG 字符串。 然后，可以将这个 SVG 字符串直接添加到 HTML DOM，或者也可以将它转换为数据 URI 并将它插入到图像标记中。 例如：
 > ```JavaScript
 > //Retrieve an SVG template and replace the placeholder values.
 > var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
@@ -115,13 +115,13 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 > var dataUri = 'data:image/svg+xml;base64,' + btoa(svg);
 > ```
 
-## <a name="create-custom-reusable-templates"></a>创建自定义的可重用模板
+## <a name="create-custom-reusable-templates"></a>创建自定义可重用模板
 
-如果你的应用程序使用不同图标的相同图标，或者如果你要创建添加其他图像模板的模块，则可以从 Azure Maps web SDK 轻松添加和检索这些图标。 在命名空间上使用以下静态函数 `atlas` 。
+如果应用程序使用具有不同图标的相同图标，或者，如果要创建添加其他图像模板的模块，可以从 Azure Maps Web SDK 轻松地添加和检索这些图标。 请对 `atlas` 命名空间使用以下静态函数。
 
 | 名称 | 返回类型 | 说明 | 
 |-|-|-|
-| `addImageTemplate(templateName: string, template: string, override: boolean)` | | 向塔命名空间添加自定义 SVG 图像模板。 |
+| `addImageTemplate(templateName: string, template: string, override: boolean)` | | 将自定义 SVG 图像模板添加到 atlas 命名空间。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| 字符串 | 按名称检索 SVG 模板。 |
 | `getAllImageTemplateNames()` | string[] |  按名称检索 SVG 模板。 |
 
@@ -129,37 +129,37 @@ SVG 图像模板支持以下占位符值：
 
 | 占位符 | 说明 |
 |-|-|
-| `{color}` | 主要颜色。 | 
-| `{secondaryColor}` | 辅助颜色。 | 
-| `{scale}` | 将 SVG 图像添加到地图图像动画层后，会将其转换为 png 图像。 此占位符可用于在转换模板之前对其进行缩放，确保它清晰呈现。 | 
-| `{text}` | 与 HTML 标记一起使用时呈现文本的位置。 |
+| `{color}` | 主色。 | 
+| `{secondaryColor}` | 辅色。 | 
+| `{scale}` | SVG 图像在添加到地图图像子画面后，会转换为 PNG 图像。 此占位符可用于在模板转换之前对它进行缩放，确保它清晰呈现。 | 
+| `{text}` | 在文本与 HTML 标记配合使用时用于呈现文本的位置。 |
 
-下面的示例演示如何获取 SVG 模板，并将其作为可重用的图标模板添加到 Azure Maps web SDK。 
+下面的示例演示如何获取 SVG 模板，并将它添加到 Azure Maps Web SDK 作为可重用的图标模板。 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="将自定义图标模板添加到阿特拉斯命名空间" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 () ，<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>以将自定义图标模板添加到阿特拉斯命名 Azure Maps 空间</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="将自定义图标模板添加到 atlas 命名空间" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+请参阅 <a href='https://codepen.io'>CodePen</a> 上的触笔<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>将自定义图标模板添加到 atlas 命名空间</a>（由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供）。
 </iframe>
 
-## <a name="list-of-image-templates"></a>映像模板列表
+## <a name="list-of-image-templates"></a>图像模板的列表
 
-下表列出了 Azure Maps web SDK 中当前可用的所有映像模板。 模板名称位于每个图像上方。 默认情况下，主要颜色为蓝色，辅助颜色为白色。 为了使辅助颜色在白色背景上更易于查看，以下图像将辅助颜色设置为黑色。
+下表列出了 Azure Maps Web SDK 中所有目前可用的图像模板。 模板名称位于每个图像上方。 在默认情况下，主色为蓝色，辅色为白色。 为了更易于在白色背景上看清辅色，以下图像将辅色设置为黑色。
 
-**符号图标模板**
+符号图标模板
 
 :::row:::
    :::column span="":::
       marker
    :::column-end:::
    :::column span="":::
-      标记-厚
+      粗标记
    :::column-end:::
    :::column span="":::
-      标记-圆圈
+      圆形标记
    :::column-end:::
    :::column span="":::
-      标记-平
+      扁平标记
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -167,73 +167,73 @@ SVG 图像模板支持以下占位符值：
       ![标记图标](./media/image-templates/marker.png)
    :::column-end:::
    :::column span="":::
-      ![标记-厚图标](./media/image-templates/marker-thick.png)
+      ![粗标记图标](./media/image-templates/marker-thick.png)
    :::column-end:::
    :::column span="":::
-      ![标记-圆圈图标](./media/image-templates/marker-circle.png)
+      ![圆形标记图标](./media/image-templates/marker-circle.png)
    :::column-end:::
    :::column span="":::
-      ![标记-平面图标](./media/image-templates/marker-flat.png)
-   :::column-end:::
-:::row-end:::
-<br>
-
-:::row:::
-   :::column span="":::
-      标记-正方形
-   :::column-end:::
-   :::column span="":::
-      标记-方形-分类
-   :::column-end:::
-   :::column span="":::
-      标记-箭头
-   :::column-end:::
-   :::column span="":::
-      标记球-pin
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      ![标记-正方形图标](./media/image-templates/marker-square.png)
-   :::column-end:::
-   :::column span="":::
-      ![标记-方形-群集图标](./media/image-templates/marker-square-cluster.png)
-   :::column-end:::
-   :::column span="":::
-      ![标记-箭头图标](./media/image-templates/marker-arrow.png)
-   :::column-end:::
-   :::column span="":::
-      ![标记球图标](./media/image-templates/marker-ball-pin.png)
+      ![扁平标记图标](./media/image-templates/marker-flat.png)
    :::column-end:::
 :::row-end:::
 <br>
 
 :::row:::
    :::column span="":::
-      标记-圆形
+      正方形标记
    :::column-end:::
    :::column span="":::
-      标记-方形舍入-分类
+      正方形标记群
+   :::column-end:::
+   :::column span="":::
+      箭头标记
+   :::column-end:::
+   :::column span="":::
+      球形图钉标记
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![正方形标记图标](./media/image-templates/marker-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![正方形标记群图标](./media/image-templates/marker-square-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![箭头标记图标](./media/image-templates/marker-arrow.png)
+   :::column-end:::
+   :::column span="":::
+      ![球形图钉标记图标](./media/image-templates/marker-ball-pin.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      圆角正方形
+   :::column-end:::
+   :::column span="":::
+      圆角正方形标记群
    :::column-end:::
    :::column span="":::
       flag
    :::column-end:::
    :::column span="":::
-      标记-三角形
+      旗形三角
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      ![标记-圆形图标](./media/image-templates/marker-square-rounded.png)
+      ![圆角正方形标记图标](./media/image-templates/marker-square-rounded.png)
    :::column-end:::
    :::column span="":::
-      ![标记-方形舍入-分类图标](./media/image-templates/marker-square-rounded-cluster.png)
+      ![圆角正方形标记群图标](./media/image-templates/marker-square-rounded-cluster.png)
    :::column-end:::
    :::column span="":::
-      ![标志图标](./media/image-templates/flag.png)
+      ![旗形图标](./media/image-templates/flag.png)
    :::column-end:::
    :::column span="":::
-      ![标记-三角形图标](./media/image-templates/flag-triangle.png)
+      ![旗形三角图标](./media/image-templates/flag-triangle.png)
    :::column-end:::
 :::row-end:::
 <br>
@@ -243,13 +243,13 @@ SVG 图像模板支持以下占位符值：
       三角形
    :::column-end:::
    :::column span="":::
-      三角形-粗
+      粗三角
    :::column-end:::
    :::column span="":::
-      三角形-向上箭头
+      向上三角箭头
    :::column-end:::
    :::column span="":::
-      三角形-向左箭头
+      向左三角箭头
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -257,13 +257,13 @@ SVG 图像模板支持以下占位符值：
       ![三角形图标](./media/image-templates/triangle.png)
    :::column-end:::
    :::column span="":::
-      ![三角形-厚图标](./media/image-templates/triangle-thick.png)
+      ![粗三角图标](./media/image-templates/triangle-thick.png)
    :::column-end:::
    :::column span="":::
-      ![三角形-向上箭头图标](./media/image-templates/triangle-arrow-up.png)
+      ![向上三角箭头图标](./media/image-templates/triangle-arrow-up.png)
    :::column-end:::
    :::column span="":::
-      ![三角形-向左箭头图标](./media/image-templates/triangle-arrow-left.png)
+      ![向左三角箭头图标](./media/image-templates/triangle-arrow-left.png)
    :::column-end:::
 :::row-end:::
 <br>
@@ -273,13 +273,13 @@ SVG 图像模板支持以下占位符值：
       六边形
    :::column-end:::
    :::column span="":::
-      六边形-粗
+      粗六边形
    :::column-end:::
    :::column span="":::
-      六边形-圆形
+      圆角六边形
    :::column-end:::
    :::column span="":::
-      六边形-粗
+      粗圆角六边形
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -287,13 +287,13 @@ SVG 图像模板支持以下占位符值：
       ![六边形图标](./media/image-templates/hexagon.png)
    :::column-end:::
    :::column span="":::
-      ![六边形-厚图标](./media/image-templates/hexagon-thick.png)
+      ![粗六边形图标](./media/image-templates/hexagon-thick.png)
    :::column-end:::
    :::column span="":::
-      ![六边形圆形图标](./media/image-templates/hexagon-rounded.png)
+      ![圆角六边形图标](./media/image-templates/hexagon-rounded.png)
    :::column-end:::
    :::column span="":::
-      ![六边形-粗图标](./media/image-templates/hexagon-rounded-thick.png)
+      ![粗圆角六边形图标](./media/image-templates/hexagon-rounded-thick.png)
    :::column-end:::
 :::row-end:::
 <br>
@@ -303,13 +303,13 @@ SVG 图像模板支持以下占位符值：
       固定
    :::column-end:::
    :::column span="":::
-      固定
+      圆形图钉
    :::column-end:::
    :::column span="":::
       圆角正方形
    :::column-end:::
    :::column span="":::
-      圆方形-粗
+      粗圆角正方形
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -317,13 +317,13 @@ SVG 图像模板支持以下占位符值：
       ![“固定”图标](./media/image-templates/pin.png)
    :::column-end:::
    :::column span="":::
-      ![固定线图标](./media/image-templates/pin-round.png)
+      ![圆形图钉图标](./media/image-templates/pin-round.png)
    :::column-end:::
    :::column span="":::
-      ![圆角图标](./media/image-templates/rounded-square.png)
+      ![圆角正方形图标](./media/image-templates/rounded-square.png)
    :::column-end:::
    :::column span="":::
-      ![圆角方形-粗图标](./media/image-templates/rounded-square-thick.png)
+      ![粗圆角正方形图标](./media/image-templates/rounded-square-thick.png)
    :::column-end:::
 :::row-end:::
 <br>
@@ -333,7 +333,7 @@ SVG 图像模板支持以下占位符值：
       向上箭头
    :::column-end:::
    :::column span="":::
-      向上箭头-细
+      细向上箭头
    :::column-end:::
    :::column span="":::
       car
@@ -347,7 +347,7 @@ SVG 图像模板支持以下占位符值：
       ![向上箭头图标](./media/image-templates/arrow-up.png)
    :::column-end:::
    :::column span="":::
-      ![向上箭头-细图标](./media/image-templates/arrow-up-thin.png)
+      ![细向上箭头图标](./media/image-templates/arrow-up-thin.png)
    :::column-end:::
    :::column span="":::
       ![汽车图标](./media/image-templates/car.png)
@@ -358,64 +358,64 @@ SVG 图像模板支持以下占位符值：
 :::row-end:::
 
 
-**多边形填充图案模板**
+多边形填充图案模板
 
 :::row:::
    :::column span="":::
-      检查
+      棋盘
    :::column-end:::
    :::column span="":::
-      检查器-旋转
+      旋转棋盘
    :::column-end:::
    :::column span="":::
       圆形
    :::column-end:::
    :::column span="":::
-      圆圈-间距
+      间距圆形
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      ![检查图标](./media/image-templates/checker.png)
+      ![棋盘图标](./media/image-templates/checker.png)
    :::column-end:::
    :::column span="":::
-      ![检查器-旋转图标](./media/image-templates/checker-rotated.png)
+      ![旋转棋盘图标](./media/image-templates/checker-rotated.png)
    :::column-end:::
    :::column span="":::
-      ![圆圈图标](./media/image-templates/circles.png)
+      ![圆形图标](./media/image-templates/circles.png)
    :::column-end:::
    :::column span="":::
-      ![圆圈-间距图标](./media/image-templates/circles-spaced.png)
+      ![间距圆形图标](./media/image-templates/circles-spaced.png)
    :::column-end:::
 :::row-end:::
 <br>
 
 :::row:::
    :::column span="":::
-      斜上框线
+      向上斜线
    :::column-end:::
    :::column span="":::
-      对角线-向下移动
+      向下斜线
    :::column-end:::
    :::column span="":::
-      对角-条向上
+      向上斜条
    :::column-end:::
    :::column span="":::
-      对角线-向下移动
+      向下斜条
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      ![斜上框线图标](./media/image-templates/diagonal-lines-up.png)
+      ![向上斜线图标](./media/image-templates/diagonal-lines-up.png)
    :::column-end:::
    :::column span="":::
-      ![斜向下箭头图标](./media/image-templates/diagonal-lines-down.png)
+      ![向下斜线图标](./media/image-templates/diagonal-lines-down.png)
    :::column-end:::
    :::column span="":::
-      ![对角-条带图标](./media/image-templates/diagonal-stripes-up.png)
+      ![向上斜条图标](./media/image-templates/diagonal-stripes-up.png)
    :::column-end:::
    :::column span="":::
-      ![对角线-向下移动图标](./media/image-templates/diagonal-stripes-down.png)
+      ![向下斜条图标](./media/image-templates/diagonal-stripes-down.png)
    :::column-end:::
 :::row-end:::
 <br>
@@ -428,7 +428,7 @@ SVG 图像模板支持以下占位符值：
       旋转网格线
    :::column-end:::
    :::column span="":::
-      旋转网格-条纹
+      旋转网格条
    :::column-end:::
    :::column span="":::
       x 填充
@@ -442,7 +442,7 @@ SVG 图像模板支持以下占位符值：
       ![旋转网格线图标](./media/image-templates/rotated-grid-lines.png)
    :::column-end:::
    :::column span="":::
-      ![旋转网格线图标](./media/image-templates/rotated-grid-stripes.png)
+      ![旋转网格条图标](./media/image-templates/rotated-grid-stripes.png)
    :::column-end:::
    :::column span="":::
       ![x 填充图标](./media/image-templates/x-fill.png)
@@ -452,13 +452,13 @@ SVG 图像模板支持以下占位符值：
 
 :::row:::
    :::column span="":::
-      之-字形
+      波浪线
    :::column-end:::
    :::column span="":::
-      之-字形-垂直
+      垂直波浪线
    :::column-end:::
    :::column span="":::
-      点数
+      圆点
    :::column-end:::
    :::column span="":::
       &nbsp;
@@ -466,13 +466,13 @@ SVG 图像模板支持以下占位符值：
 :::row-end:::
 :::row:::
    :::column span="":::
-      ![之-字形图标](./media/image-templates/zig-zag.png)
+      ![波浪线图标](./media/image-templates/zig-zag.png)
    :::column-end:::
    :::column span="":::
-      ![之-字形图标](./media/image-templates/zig-zag-vertical.png)
+      ![垂直波浪线图标](./media/image-templates/zig-zag-vertical.png)
    :::column-end:::
    :::column span="":::
-      ![点图标](./media/image-templates/dots.png)
+      ![圆点图标](./media/image-templates/dots.png)
    :::column-end:::
    :::column span="":::
       &nbsp;
@@ -480,9 +480,9 @@ SVG 图像模板支持以下占位符值：
 :::row-end:::
 <br>
 
-**预加载的图像图标**
+预加载的图像图标
 
-该映射使用 `marker` 、和模板将一组图标预加载到地图图像 sprite `pin` `pin-round` 。 下表列出了这些图标名称及其颜色值。
+地图使用 `marker`、`pin` 和 `pin-round` 模板将一组图标预加载到地图图像子画面。 下表列出了这些图标名称及其颜色值。
 
 | 图标名称 | color | secondaryColor |
 |-----------|-------|----------------|
@@ -501,12 +501,12 @@ SVG 图像模板支持以下占位符值：
 
 ## <a name="try-it-now-tool"></a>立即试用工具
 
-通过以下工具，你可以通过多种方式呈现不同的内置图像模板，并自定义主要和次要的颜色和缩放。
+通过以下工具，可以通过多种方式呈现不同的内置图像模板，并自定义主色、辅色和缩放。
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="图标模板选项" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-查看 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>图标模板 Azure Maps 选项</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+请参阅 <a href='https://codepen.io'>CodePen</a> 上的触笔<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>图标模板选项</a>（由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供）。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤
@@ -517,10 +517,10 @@ SVG 图像模板支持以下占位符值：
 > [ImageSpriteManager](/javascript/api/azure-maps-control/atlas.imagespritemanager)
 
 > [!div class="nextstepaction"]
-> [阿特拉斯命名空间](/javascript/api/azure-maps-control/atlas#functions
+> [atlas 命名空间](/javascript/api/azure-maps-control/atlas#functions
 )
 
-请参阅以下文章，了解可以使用图像模板的更多代码示例：
+请参阅以下文章，以获取更多可以使用图像模板的代码示例：
 
 > [!div class="nextstepaction"]
 > [添加符号层](map-add-pin.md)

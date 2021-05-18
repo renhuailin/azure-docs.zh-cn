@@ -11,10 +11,10 @@ ms.date: 01/26/2021
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 752d7f86941967c218b3a57fa163698b9f502057
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98897014"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
@@ -83,7 +83,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 
 ### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>私有网络配置
 
-查看 [Azure 自动化网络配置](automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) ，详细了解专用网络上的节点所需的端口、url 和其他网络详细信息。
+查看 [Azure 自动化网络配置](automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration)，以详细了解专用网络上节点所需的端口、URL 和其他网络详细信息。
 
 #### <a name="proxy-support"></a>代理支持
 
@@ -96,7 +96,7 @@ Windows 版本 1809 及更高版本中提供了对 DSC 代理的代理支持。 
 
 #### <a name="dns-records-per-region"></a>每个区域的 DNS 记录数
 
-定义异常时，建议使用 " [每个区域的 DNS 记录](how-to/automation-region-dns-records.md) " 表中列出的地址。
+建议在定义异常时使用[每个区域的 DNS 记录数](how-to/automation-region-dns-records.md)表中列出的地址。
 
 ## <a name="next-steps"></a>后续步骤
 

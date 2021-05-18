@@ -1,6 +1,6 @@
 ---
 title: 预付 Azure 专用主机以节省资金
-description: 了解如何购买 Azure 专用托管预订实例，以节省计算成本。
+description: 了解如何购买 Azure 专用主机预留实例以节省计算成本。
 services: virtual-machines
 author: yashar
 ms.service: virtual-machines
@@ -9,47 +9,47 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 1450f03ae72e79daca5a5ae2c04506e6bee5180b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 2f90d3698156e27780bc57e0ac9355b6811d20d3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672285"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104607409"
 ---
-# <a name="save-costs-with-azure-dedicated-host-reservations"></a>通过 Azure 专用主机预留节省成本
+# <a name="save-costs-with-azure-dedicated-host-reservations"></a>通过 Azure 专用主机预留来节省成本
 
-当你提交到 Azure 专用主机的保留实例时，可以节省资金。 预订折扣将自动应用于与预订范围和属性匹配的运行的专用主机的数量。 无需将预订分配给专用主机即可获取折扣。 购买的预订实例仅涵盖使用情况的计算部分，并包括软件许可成本。 请参阅 [虚拟机的 Azure 专用主机概述](./dedicated-hosts.md)。
+当提交到 Azure 专用主机的预留实例时，可以节省资金。 预留折扣会自动应用到正在运行的专用主机，具体数量需与预留范围和属性相匹配。 无需向专用主机分配预留，即可享受折扣。 购买的预留实例仅涵盖使用过程中的计算部分，并包括软件许可成本。 请参阅[适用于虚拟机的 Azure 专用主机概述](./dedicated-hosts.md)。
 
-## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>购买之前确定适当的专用主机 SKU
+## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>购买之前，先确定适当的专用主机 SKU
 
 
-在购买预订之前，应确定所需的专用主机。 为代表 VM 系列和类型的专用主机定义 SKU。 
+在购买预留之前，应先确定所需的专用主机。 为专用主机定义 SKU，以指示 VM 系列和类型。 
 
-首先，请使用 [Windows 虚拟机](./sizes.md) 或 [Linux](./sizes.md) 的支持大小来识别 VM 系列。
+首先，检查受支持的 [Windows 虚拟机](./sizes.md)或 [Linux 虚拟机](./sizes.md)大小，以确定 VM 系列。
 
-接下来，请检查 Azure 专用主机上是否支持该选项。 [Azure 专用主机定价](https://aka.ms/ADHPricing) 页提供了专用主机 sku、其 CPU 信息和各种定价选项的完整列表， (包括) 的预订实例。
+然后，检查其在 Azure 专用主机上是否受支持。 [Azure 专用主机定价](https://aka.ms/ADHPricing)页提供了专用主机 SKU 及其 CPU 信息和各种定价选项（包括预留实例）的完整列表。
 
-你可能会发现多个 Sku 支持不同类型) 的 VM 序列 (。 通过比较主机的容量 () 个 vcpu 数来确定最佳 SKU。 请注意，你将能够将你的预订应用于多个支持同一 VM 系列的专用主机 Sku (例如 DSv3_Type1 和 DSv3_Type2) 但不能跨不同 VM 系列 (如 DSv3 和 ESv3) 。
+可能存在多个 SKU 都支持所选 VM 系列（分属不同类型）的情况。 通过比较主机容量（vCPU 的数量），确定最佳 SKU。 请注意，预留可以应用于支持同一 VM 系列的多个专用主机 SKU（例如 DSv3_Type1 和 DSv3_Type2），但是不能跨不同 VM 系列（例如 DSv3 和 ESv3）。
 
 
 
 ## <a name="purchase-restriction-considerations"></a>购买限制注意事项
 
-保留实例适用于大多数专用主机大小，但有一些例外情况。
+预留实例适用于大多数专用主机大小，但也有一些例外。
 
-预订折扣不适用于以下各项：
+预留折扣不适用于以下情况：
 
 - **云** - 不能在德国或中国区域中购买预留。
 
-- **配额不足** -作用于单个订阅的保留必须在订阅中为新的保留实例提供 vCPU 配额。 例如，如果目标订阅的配额限制为10个 vcpu （对于 DSv3 系列），则不能购买保留支持此系列的专用主机。 保留配额检查包括已在订阅中部署的 Vm 和专用主机。 你可以 [创建配额增加请求](../azure-portal/supportability/resource-manager-core-quotas-request.md) 以解决此问题。
+- **配额不足** - 范围仅限于单个订阅的预留必须在订阅中具有充足的可用 vCPU 配额才能获得新的预留实例。 例如，目标订阅的配额限制为 10 个 vCPU（适用于 DSv3 系列），则不能再购买支持此系列的预留专用主机。 预留的配额检查包括已部署在订阅中的 VM 和专用主机。 可以[创建配额增加请求](../azure-portal/supportability/resource-manager-core-quotas-request.md)以解决此问题。
 
-- **容量限制** -在极少数情况下，Azure 会限制专用主机 sku 子集的新保留购买，因为区域中的容量不足。
+- **容量限制** - 在极少数情况下，由于某个区域的容量不足，Azure 会限制为专用主机 SKU 的子集购买新的预留。
 
 ## <a name="buy-a-reservation"></a>购买预留项
 
-可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买 Azure 专用主机实例的保留实例。
+可以在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买 Azure 专用主机实例的预留实例。
 
-通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 这些要求适用于购买保留的专用主机实例：
+通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 购买预留专用主机实例时需满足以下要求：
 
 - 你必须具有至少一个 EA 订阅或采用即用即付费率的订阅的所有者角色。
 
@@ -63,9 +63,9 @@ ms.locfileid: "101672285"
 
 2. 选择“所有服务”\>“预留”。
 
-3. 选择 " **添加** " 购买新的预订，并单击 " **专用主机**"。
+3. 选择“添加”以购买新的预留，然后单击“专用主机” 。
 
-4. 输入必填字段。 运行与所选属性匹配的专用主机实例，以获得预订折扣。 获取折扣的专用主机实例的实际数目取决于所选的范围和数量。
+4. 输入必填字段。 与所选属性相匹配的正在运行的专用主机实例有资格获得预订折扣。 获得折扣的专用主机实例的实际数目取决于所选范围和数量。
 
 如果你有 EA 协议，则可使用“添加更多选项”来快速添加其他实例。 此选项不可用于其他订阅类型。
 
@@ -76,7 +76,7 @@ ms.locfileid: "101672285"
 | 区域              | 预订涵盖的 Azure 区域。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | 专用主机大小 | 专用主机实例的大小。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | 术语                | 一年或三年。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| 数量            | 预订中购买的实例数。 数量是可以获得计费折扣的正在运行的专用主机实例数。                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 数量            | 预订中购买的实例数。 数量是指可以获得计费折扣的正在运行的专用主机实例数。                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 - **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。
 
@@ -84,27 +84,27 @@ ms.locfileid: "101672285"
 
 - **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
 
-## <a name="usage-data-and-reservation-utilization"></a>使用情况数据和预订利用率
+## <a name="usage-data-and-reservation-utilization"></a>使用数据和预留使用情况
 
-对于获得预留折扣的使用量，使用数据的有效价格为零。 你可以看到哪个 VM 实例收到每个预订的预订折扣。
+对于获得预留折扣的使用量，使用数据的有效价格为零。 这样可以看出每个预留对应的预留折扣分别应用于哪一个 VM 实例。
 
-有关如何在使用情况数据中显示预订折扣的详细信息，请参阅 [了解企业注册的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) （如果你是 EA 客户）。 如果有单独的订阅，请参阅 [了解即用即付订阅的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
+有关使用数据中如何显示预留折扣的详细信息，EA 客户可参阅[了解适用于企业合约的 Azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)。 对于个人订阅，请参阅[了解即用即付订阅的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
-## <a name="change-a-reservation-after-purchase"></a>在购买后更改保留
+## <a name="change-a-reservation-after-purchase"></a>在购买后更改预留
 
 可以在购买后对预留进行以下类型的更改：
 
 - 更新预留范围
 
-- 实例大小灵活性 (（如果适用）) 
+- 实例大小灵活性（如果适用）
 
 - 所有权
 
-还可以将保留拆分为较小的区块，并合并已拆分的保留项。 任何更改都不会导致新的商业交易，也不会更改预订的结束日期。
+还可以将预留拆分为多个小区块，或者对已拆分的预留进行合并。 这些更改都不会产生新的商业交易，也不会更改预留的结束日期。
 
-在购买后，不能进行以下类型的更改：
+在购买后，不能直接进行以下类型的更改：
 
-- 现有预订的区域
+- 现有预留的区域
 
 - SKU
 
@@ -112,7 +112,7 @@ ms.locfileid: "101672285"
 
 - 持续时间
 
-不过，如果想要进行更改，则可以 *交换* 预订。
+但是，如果想要进行更改，可以交换预留。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 

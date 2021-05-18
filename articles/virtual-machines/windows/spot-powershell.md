@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 9a2ad2eb197af613919efa4414da1759cd47e2e7
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: bcf3cb5a020bb2efd5a2528c28421deba206ee31
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802737"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125258"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 部署 Azure 现成虚拟机
 
@@ -99,7 +99,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 第一次响应可能需要长达 2 分钟的时间。 自此之后，几乎会立即显示输出。
 
-在已安装 Az PowerShell 模块的计算机（例如本地计算机）中，使用 [Set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) 模拟逐出。 将资源组名称和 VM 名称替换成你自己的名称。 
+在已安装 Az PowerShell 模块的计算机（例如本地计算机）中，使用 [Set-AzVM](/powershell/module/az.compute/set-azvm) 模拟逐出。 将资源组名称和 VM 名称替换成你自己的名称。 
 
 ```azurepowershell-interactive
 Set-AzVM -ResourceGroupName "mySpotRG" -Name "mySpotVM" -SimulateEviction

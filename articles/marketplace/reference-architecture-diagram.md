@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 02/18/2021
-ms.openlocfilehash: f7dfaf8e8afb4d7a5e39c16cf280c10dcae05859
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 66e4d498ff7584188d680e35c89c6f10cc43c9cb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133036"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604485"
 ---
 # <a name="reference-architecture-diagram"></a>参考体系结构示意图
 
@@ -39,4 +39,4 @@ ms.locfileid: "108133036"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [配置商业市场产品/服务的联合销售](./co-sell-configure.md)
+- [配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)

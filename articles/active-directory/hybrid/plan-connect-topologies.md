@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92359826"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
@@ -85,7 +85,7 @@ Azure AD Connect 同步中的默认配置假设：
 
 不支持多个 Azure AD Connect 同步服务器连接到单个 Azure AD 租户。 使用 [暂存服务器](#staging-server)时例外。
 
-此拓扑与下面的拓扑不同，不支持连接到单个 Azure AD 租户的**多个同步服务器**。
+此拓扑与下面的拓扑不同，不支持连接到单个 Azure AD 租户的 **多个同步服务器**。
 
 ### <a name="multiple-forests-single-sync-server-users-are-represented-in-only-one-directory"></a>多个林、单个同步服务器、用户仅在一个目录中表示
 ![表示用户在所有目录中只出现一次的选项](./media/plan-connect-topologies/multiforestusersonce.png)
@@ -125,12 +125,12 @@ Azure AD Connect 同步中的默认配置假设：
 | Exchange Online | 有关 Exchange Online 支持的混合拓扑的详细信息，请参阅[具有多个 Active Directory 林的混合部署](/Exchange/hybrid-deployment/hybrid-with-multiple-forests)。 |
 | Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。 有关详细信息，请参阅 [Skype for Business Server 2015 的环境要求](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements)。 |
 
-如果你是一个较大的组织，则应该考虑使用 [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 功能。 它允许你定义用户的资源位于哪个数据中心区域。
+如果是更大的组织，则应考虑使用 [Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 功能。 它允许你定义用户的资源位于哪个数据中心区域。
 
 ## <a name="staging-server"></a>暂存服务器
 ![拓扑中的暂存服务器](./media/plan-connect-topologies/multiforeststaging.png)
 
-Azure AD Connect 支持以 *暂存模式*安装第二个服务器。 使用此模式的服务器从所有已连接的目录读取数据，但不会向已连接的目录写入任何数据。 它使用普通的同步周期，因此具有标识数据的更新副本。
+Azure AD Connect 支持以 *暂存模式* 安装第二个服务器。 使用此模式的服务器从所有已连接的目录读取数据，但不会向已连接的目录写入任何数据。 它使用普通的同步周期，因此具有标识数据的更新副本。
 
 在主服务器发生故障的灾难事件中，可以故障转移到暂存服务器。 在 Azure AD Connect 向导中执行此操作。 可将第二个服务器定位在不同的数据中心，因为没有基础结构与主服务器共享。 必须手动将主服务器上所做的任何配置更改复制到第二个服务器。
 
@@ -161,10 +161,10 @@ DNS 域只能在单个 Azure AD 租户中注册。 本地 Active Directory 实�
 
 另外，此拓扑对支持的方案实施以下限制：
 
-* 最多5个 Azure Active Directory 租户可与本地 Active Directory 实例进行 Exchange 混合。 此方案在 [2020 年9月混合配置向导更新](https://techcommunity.microsoft.com/t5/exchange-team-blog/september-2020-hybrid-configuration-wizard-update/ba-p/1687698)中进行了介绍。
-* Exchange Server 运行混合配置向导应为 2016 CU18 或 2019 CU7 或更高版本。
+* 最多 5 个 Azure Active Directory 租户可以将 Exchange 混合与本地 Active Directory 实例一起使用。 [2020 年 9 月混合配置向导更新](https://techcommunity.microsoft.com/t5/exchange-team-blog/september-2020-hybrid-configuration-wizard-update/ba-p/1687698)中介绍了此方案。
+* 运行混合配置向导的 Exchange Server 应为 2016 CU18 或 2019 CU7 或更高版本。
 * 每个 Azure AD Connect 实例都应在加入域的计算机上运行。
-* 必须使用域/OU 筛选选项对 Azure AD Connect 进行配置，以便从本地目录筛选用户。 使用此选项可确保用户仅出现在单个联机 Exchange 租户中。
+* 必须使用“域/OU 筛选”选项对 Azure AD Connect 进行配置，以便从本地目录筛选用户。 使用此选项可确保用户仅出现在单个联机 Exchange 租户中。
 * Windows 10 设备只能与一个 Azure AD 租户相关联。
 * 用于密码哈希同步和直通身份验证的单一登录 (SSO) 选项只能由一个 Azure AD 租户使用。
 

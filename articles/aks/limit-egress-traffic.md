@@ -4,14 +4,14 @@ description: 了解控制 Azure Kubernetes Service (AKS) 中的出口流量所�
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 11/09/2020
+ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: c6160d36240b59c60fafa955b916fb6167c2648e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 9e65e2736578ce04dfa79d5a7827e190d47fb312
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685748"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103573823"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes 服务 (AKS) 中群集节点的出口流量
 
@@ -28,13 +28,13 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 默认情况下，AKS 群集具有不受限制的出站（出口）Internet 访问权限。 此级别的网络访问权限允许运行的节点和服务根据需要访问外部资源。 如果希望限制出口流量，则必须限制可访问的端口和地址数量，才能维护正常的群集维护任务。 保护出站地址的最简单解决方案在于使用可基于域名控制出站流量的防火墙设备。 例如，Azure 防火墙可以根据目标的 FQDN 限制出站 HTTP 和 HTTPS 流量。 还可配置首选的防火墙和安全规则，以允许所需的端口和地址。
 
 > [!IMPORTANT]
-> 本文档仅介绍如何锁定离开 AKS 子网的流量。 默认情况下，AKS 没有入口需求。  不支持使用网络安全组 (NSG) 和防火墙阻止内部子网流量。 若要控制和阻止群集内的流量，请使用[网络策略*_][network-policy]。
+> 本文档仅介绍如何锁定离开 AKS 子网的流量。 默认情况下，AKS 没有入口需求。  不支持使用网络安全组 (NSG) 和防火墙阻止内部子网流量。 若要控制和阻止群集中的流量，请使用[网络策略][network-policy]。
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>AKS 群集所需的出站网络规则和 FQDN
 
 以下网络和 FQDN/应用程序规则为 AKS 群集所必需，若要配置 Azure 防火墙以外的解决方案，可以使用它们。
 
-_ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
+* IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 * 可将 FQDN HTTP/HTTPS 终结点放在防火墙设备中。
 * 通配符 HTTP/HTTPS 终结点是可以根据许多限定符随 AKS 群集一起变化的依赖项。
 * AKS 使用准入控制器将 FQDN 作为环境变量注入 kube-system 和 gatekeeper-system下的所有部署，确保节点和 API 服务器之间的所有系统通信使用 API 服务器 FQDN 而不是 API 服务器 IP。 
@@ -128,7 +128,7 @@ _ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 
 | 目标 FQDN                                                               | 端口          | 用途      |
 |--------------------------------------------------------------------------------|---------------|----------|
-| **`security.ubuntu.com`、`azure.archive.ubuntu.com`、`changelogs.ubuntu.com`** | **`HTTP:80`** | 此地址允许 Linux 群集节点下载必需的安全修补程序和更新。 |
+| **`security.ubuntu.com`, `azure.archive.ubuntu.com`, `changelogs.ubuntu.com`** | **`HTTP:80`** | 此地址允许 Linux 群集节点下载必需的安全修补程序和更新。 |
 
 如果选择阻止/不允许这些 FQDN，则仅当进行[节点映像升级](node-image-upgrade.md)或[群集升级](upgrade-cluster.md)时，节点才会接收 OS 更新。
 
@@ -182,7 +182,7 @@ _ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 
 ### <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
-更新防火墙或安全配置，以允许与以下所有 Fqdn 和 [Azure Dev Spaces 基础结构服务][dev-spaces-service-tags]的网络流量。
+更新防火墙或安全配置，以允许往返以下所有 FQDN 和 [Azure Dev Spaces 基础结构服务][dev-spaces-service-tags]的网络流量。
 
 #### <a name="required-network-rules"></a>必需的网络规则
 
@@ -214,6 +214,24 @@ _ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | 此地址用于正确操作 Azure Policy。  |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | 此地址用于从 GitHub 请求内置策略，以确保正确操作 Azure Policy。 |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy 加载项，用于向应用程序见解终结点发送遥测数据。 |
+
+#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure 中国世纪互联需要的 FQDN/应用程序规则 
+
+启用了 Azure Policy 的 AKS 群集需要以下 FQDN/应用程序规则。
+
+| FQDN                                          | 端口      | 用途      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.cn`** | **`HTTPS:443`** | 此地址用于拉取 Kubernetes 策略，并向策略服务报告群集合规性状态。 |
+| **`store.policy.azure.cn`** | **`HTTPS:443`** | 此地址用于拉取内置策略的 Gatekeeper 项目。 |
+
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure 美国政府需要的 FQDN/应用程序规则
+
+启用了 Azure Policy 的 AKS 群集需要以下 FQDN/应用程序规则。
+
+| FQDN                                          | 端口      | 用途      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.us`** | **`HTTPS:443`** | 此地址用于拉取 Kubernetes 策略，并向策略服务报告群集合规性状态。 |
+| **`store.policy.azure.us`** | **`HTTPS:443`** | 此地址用于拉取内置策略的 Gatekeeper 项目。 |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>使用 Azure 防火墙限制出口流量
 
@@ -371,7 +389,7 @@ az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route
 
 ### <a name="adding-firewall-rules"></a>添加防火墙规则
 
-下面是可用于在防火墙上配置的三个网络规则，可能需要根据部署来调整这些规则。 第一个规则允许通过 TCP 访问端口 9000。 第二个规则允许通过 UDP 访问端口 1194 和 123（如果部署到 Azure 中国世纪互联，可能需要[更多](#azure-china-21vianet-required-network-rules)）。 这两个规则将仅允许目标为当前使用的 Azure 区域 CIDR 的流量，在本例中为 "美国东部"。 最后添加第三个网络规则，通过 UDP 打开端口 123 转到 `ntp.ubuntu.com` FQDN（将 FQDN 添加为网络规则是 Azure 防火墙的一项特定功能，使用自己的选项时需要对其进行调整）。
+下面是可用于在防火墙上配置的三个网络规则，可能需要根据部署来调整这些规则。 第一个规则允许通过 TCP 访问端口 9000。 第二个规则允许通过 UDP 访问端口 1194 和 123（如果部署到 Azure 中国世纪互联，可能需要[更多](#azure-china-21vianet-required-network-rules)）。 这两个规则将仅允许发往我们正在使用的 Azure 区域 CIDR（在本例中为“美国东部”）的流量。 最后添加第三个网络规则，通过 UDP 打开端口 123 转到 `ntp.ubuntu.com` FQDN（将 FQDN 添加为网络规则是 Azure 防火墙的一项特定功能，使用自己的选项时需要对其进行调整）。
 
 设置网络规则后，还将使用 `AzureKubernetesService` 添加应用程序规则，该规则涵盖可通过 TCP 端口 443 和端口 80 访问的所有必需 FQDN。
 
@@ -407,7 +425,7 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>创建有权在现有虚拟网络中进行预配的服务主体
 
-AKS 使用服务主体来创建群集资源。 创建时传递的服务主体用于创建底层 AKS 资源，例如 AKS 使用的存储资源、IP 和负载均衡器（还可以改为使用[托管标识](use-managed-identity.md)）。 如果未授予以下适当的权限，则无法预配 AKS 群集。
+AKS 使用群集标识（托管标识或服务主体）来创建群集资源。 创建时传递的服务主体用于创建基础 AKS 资源，例如 AKS 使用的存储资源、IP 和负载均衡器（还可以改为使用[托管标识](use-managed-identity.md)）。 如果未授予以下适当的权限，则无法预配 AKS 群集。
 
 ```azurecli
 # Create SP and Assign Permission to Virtual Network

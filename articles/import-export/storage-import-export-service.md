@@ -9,10 +9,10 @@ ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: b1f1560fc1a00577e1e4b30d922fc7d4cae0ab92
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102181823"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
@@ -29,8 +29,8 @@ ms.locfileid: "102181823"
 
 * **将数据迁移到云**：将大量数据快速且经济高效地转移到 Azure。
 * **内容分发**：将数据快速发送到客户站点。
-* **备份**：备份本地数据以将其存储在 Azure 存储中。
-* **数据恢复**：恢复存储在存储中的大量数据，并将其传送到本地位置。
+* **备份**：将本地数据备份后存储在 Azure 存储中。
+* **数据恢复**：恢复存储在存储中的大量数据，然后将其递送到本地位置。
 
 ## <a name="importexport-components"></a>“导入/导出”组件
 
@@ -41,7 +41,7 @@ ms.locfileid: "102181823"
 * WAImportExport 工具：这是命令行工具，可执行以下任务：
   * 准备要寄送的磁盘驱动器，以便进行导入。
   * 在将数据导入到驱动器的过程中提供辅助。
-  * 用 AES 256 位 BitLocker 加密驱动器上的数据。 你可以使用外部密钥保护程序保护你的 BitLocker 密钥。
+  * 通过 AES 256 位 BitLocker 加密驱动器上的数据。 可以使用外部密钥保护程序保护你的 BitLocker 密钥。
   * 生成导入创建过程中使用的驱动器日志文件。
   * 帮助确定导出作业所需的驱动器数。
 
@@ -75,9 +75,9 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 8. 该中心会使用快递商帐户将驱动器寄送到在导入作业中提供的回寄地址。
 
 > [!NOTE]
-> 对于数据中心国家/地区内的本地 () 装运，请共享国内运营商帐户。
+> 对于本地（在数据中心所在国家/地区内）装运，请共享国内承运人帐户。
 >
-> 对于国外 (数据中心国家/地区外) 发货，请分享国际运营商帐户。
+> 对于国外（在数据中心所在国家/地区外）装运，请共享国际承运人帐户。
 
  ![图 1：导入作业流](./media/storage-import-export-service/import-job.png)
 
@@ -104,9 +104,9 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 9. 该中心会使用快递商帐户将驱动器寄送到在导入作业中提供的回寄地址。
 
 > [!NOTE]
-> 对于数据中心国家/地区内的本地 () 装运，请共享国内运营商帐户。
+> 对于本地（在数据中心所在国家/地区内）装运，请共享国内承运人帐户。
 >
-> 对于国外 (数据中心国家/地区外) 发货，请分享国际运营商帐户。
+> 对于国外（在数据中心所在国家/地区外）装运，请共享国际承运人帐户。
   
  ![图 2：导出作业流](./media/storage-import-export-service/export-job.png)
 
@@ -123,8 +123,8 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 |美国东部    | 北欧        | 印度中部        |US Gov 爱荷华州         |
 |美国西部     |西欧         | 印度南部        | US DoD 东部        |
 |美国东部 2    | 东亚        |  印度西部        | US DoD 中部        |
-|美国西部 2     | 东南亚        | 加拿大中部        | 中国东部         |
-|美国中部     | 澳大利亚东部        | 加拿大东部        | 中国北部        |
+|美国西部 2     | Southeast Asia        | 加拿大中部        | 中国东部         |
+|Central US     | 澳大利亚东部        | 加拿大东部        | 中国北部        |
 |美国中北部     |  澳大利亚东南部       | Brazil South        | 英国南部        |
 |美国中南部     | 日本西部        |韩国中部         | 德国中部        |
 |美国中西部     |  日本东部       | US Gov 弗吉尼亚州        | 德国东北部        |
@@ -132,13 +132,13 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 
 ## <a name="security-considerations"></a>安全注意事项
 
-使用 AES 256 位 BitLocker 驱动器加密对驱动器上的数据进行加密。 此加密会在运送过程中保护数据。
+需使用 AES 256 位 BitLocker 驱动器加密对驱动器上的数据进行加密。 此加密会在运送过程中保护数据。
 
 对于导入作业，驱动器有两种加密方式。  
 
 * 在运行 WAImportExport 工具准备驱动器时，使用 dataset.csv 文件指定该选项。
 
-* 手动对驱动器启用 BitLocker 加密。 在驱动器准备期间运行 WAImportExport 命令行工具时，在 driveset.csv 文件中指定加密密钥。 可以使用外部密钥保护程序来进一步保护 BitLocker 加密密钥， (也称为 Microsoft 托管密钥) 或客户托管密钥。 有关详细信息，请参阅如何 [使用客户托管密钥保护 BitLocker 密钥](storage-import-export-encryption-key-portal.md)。
+* 手动对驱动器启用 BitLocker 加密。 在驱动器准备期间运行 WAImportExport 命令行工具时，在 driveset.csv 文件中指定加密密钥。 可以使用外部密钥保护程序（也称为 Microsoft 托管密钥）或客户管理的密钥来进一步保护 BitLocker 加密密钥。 有关详细信息，请参阅如何[使用客户管理的密钥保护 BitLocker 密钥](storage-import-export-encryption-key-portal.md)。
 
 对于导出作业，在将数据复制到驱动器以后，此服务会使用 BitLocker 加密驱动器，然后再将驱动器寄回给你。 加密密钥是通过 Azure 门户提供的。 需要使用 WAImporExport 工具通过密钥解锁驱动器。
 
@@ -156,7 +156,7 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 
 **事务成本**
 
-在导入和导出数据的过程中，将应用[标准存储事务费用](https://azure.microsoft.com/pricing/details/storage/)。 从 Azure 存储导出数据时，标准传出费用也适用于存储事务费用。 有关出口成本的详细信息，请参阅[数据传输定价。](https://azure.microsoft.com/pricing/details/data-transfers/)
+导入和导出数据期间遵循[标准存储事务收费](https://azure.microsoft.com/pricing/details/storage/)标准。 将数据从 Azure 存储导出时，除了存储事务费用，还需支付标准的传出费用。 有关传出费用的更多信息，请参阅[数据传输定价](https://azure.microsoft.com/pricing/details/data-transfers/)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: d8e7fb85e369f5f278436370944eafeb1fb6a50e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96779509"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
@@ -20,9 +20,9 @@ ms.locfileid: "96779509"
 ## <a name="issues-during-container-group-deployment"></a>容器组部署过程中的问题
 ### <a name="naming-conventions"></a>命名约定
 
-定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。 有关详细信息，请参阅 Azure 体系结构中心和命名规则中的[命名约定][azure-name-restrictions][和 Azure 资源的限制][naming-rules]。
+定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。 有关更多信息，请参见 Azure 体系结构中心中的[命名约定][azure-name-restrictions]和 [Azure 资源的命名规则和限制][naming-rules]。
 
-| 作用域 | 长度 | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| 范围 | 长度 | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- |
 | 容器名称<sup>1</sup> | 1-63 |小写 | 第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-container<number>` |`web-batch-container1` |
 | 容器端口 | 介于 1 和 65535 之间 |Integer |一个介于 1 和 65535 之间的整数 |`<port-number>` |`443` |
@@ -187,7 +187,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>缓存的映像
 
-对于基于常用 [Windows 基本映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019` 和 `servercore:1809`）的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 对于 Windows 和 Linux 映像，请避免使用 `latest` 标记。 查看容器注册表的 [图像标记最佳实践](../container-registry/container-registry-image-tag-version.md) 以获得指导。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
+对于基于常用 [Windows 基本映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019` 和 `servercore:1809`）的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 对于 Windows 和 Linux 映像，请避免使用 `latest` 标记。 有关指南，请参阅容器注册表的[映像标记最佳做法](../container-registry/container-registry-image-tag-version.md)。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
 
 > [!NOTE]
 > 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。

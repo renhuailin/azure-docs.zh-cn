@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12613362d9fc67dea14b41ece19a34febb489dda
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96860637"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
@@ -334,7 +334,7 @@ Microsoft 365 组是在云中创建和管理的。 使用写回功能，可以�
 
 有关更多详细信息，请参阅 [Azure AD Connect 同步服务](../hybrid/how-to-connect-syncservice-features.md)的文档。
 
-Microsoft 365 组写回是 Azure Active Directory (Azure AD) 的一项公共预览功能，可通过任何付费 Azure AD 许可计划获得。 有关预览的一些法律信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Microsoft 365 组写回是 Azure Active Directory (Azure AD) 的一项公共预览功能，可通过任何付费 Azure AD 许可计划获得。 有关预览版的一些法律信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="next-steps"></a>后续步骤
 

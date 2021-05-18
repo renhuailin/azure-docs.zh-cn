@@ -1,5 +1,5 @@
 ---
-title: 使用 RADIUS Azure Active Directory 的 RDG 和 Azure MFA 服务器
+title: 使用 RADIUS 的 RDG 和 Azure MFA 服务器 - Azure Active Directory
 description: 本 Azure 多重身份验证页面会帮助你部署使用 RADIUS 的远程桌面 (RD) 网关和 Azure 多重身份验证服务器。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,30 +12,30 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff89e8c803e0edf5245a62d625a6367d68de96ba
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742062"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器
 
-通常，远程桌面 (RD) 网关使用本地 [网络策略服务 (NPS) ](/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures) 来对用户进行身份验证。 本文介绍如何将来自远程桌面网关（通过本地 NPS）的 RADIUS 请求路由到多重身份验证服务器。 将 Azure MFA 与 RD 网关结合使用意味着，用户可以从任何地方访问其工作环境，同时进行强身份验证。
+通常情况下，远程桌面 (RD) 网关使用本地[网络策略服务 (NPS)](/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures) 对用户进行身份验证。 本文介绍如何将来自远程桌面网关（通过本地 NPS）的 RADIUS 请求路由到多重身份验证服务器。 将 Azure MFA 与 RD 网关结合使用意味着，用户可以从任何地方访问其工作环境，同时进行强身份验证。
 
 由于 Server 2012 R2 不支持对终端服务使用 Windows 身份验证，请通过 RD 网关和 RADIUS 与 MFA 服务器集成。
 
 在独立的服务器上安装 Azure 多重身份验证服务器，它随后会将 RADIUS 请求通过代理路由回远程桌面网关服务器上的 NPS。 NPS 在验证用户名和密码以后，会返回对多重身份验证服务器的响应。 然后，MFA 服务器执行双重身份验证并将结果返回到网关。
 
 > [!IMPORTANT]
-> 从2019年7月1日起，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间 (MFA) 需要多重身份验证的新客户应使用基于云的 Azure AD 多重身份验证。
+> 从 2019 年 7 月 1 日开始，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间要求进行多重身份验证 (MFA) 的新客户应使用基于云的 Azure AD 多重身份验证。
 >
-> 若要开始执行基于云的 MFA，请参阅 [教程：通过 Azure AD 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
+> 若要开始进行基于云的 MFA，请参阅[教程：使用 Azure AD 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
 >
-> 如果你使用基于云的 MFA，请参阅如何 [集成 Azure 多重身份验证的 RADIUS 身份验证](howto-mfa-nps-extension.md)。
+> 如果你使用基于云的 MFA，请参阅如何[对 Azure 多重身份验证集成 RADIUS 身份验证](howto-mfa-nps-extension.md)。
 >
-> 在2019年7月1日之前激活 MFA 服务器的现有客户，可以下载最新版本、将来的更新，并照常生成激活凭据。
+> 在 2019 年 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 已加入域的 Azure MFA 服务器。 如果尚未安装该服务器，请执行 [Azure 多重身份验证服务器入门](howto-mfaserver-deploy.md)中的步骤。
 - 现有已配置的 NPS 服务器。

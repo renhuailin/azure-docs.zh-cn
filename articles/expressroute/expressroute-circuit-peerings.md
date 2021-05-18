@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 87fed1d2ac4f5fa85c01d7af10bec10c1412744f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 08a19c55bd208036fe6731e4436a8f0a74a76723
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92202338"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127706"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 线路和对等互连
 
@@ -20,8 +20,9 @@ ExpressRoute 线路通过连接提供商将本地基础结构连接到 Microsoft
 
 ![演示 ExpressRoute 线路如何通过连接提供方将本地基础结构连接到 Microsoft 的示意图。](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
-> [!IMPORTANT]
-> Azure 公共对等互连已弃用，并且不可用于新的 ExpressRoute 线路。 新线路支持 Microsoft 对等互连和专用对等互连。  
+> [!NOTE]
+> * 在 ExpressRoute 的背景下，Microsoft Edge 描述了 ExpressRoute 线路 Microsoft 端的 Edge 路由器。 这是 ExpressRoute 线路进入 Microsoft 网络的入口点。
+> * Azure 公共对等互连已弃用，并且不可用于新的 ExpressRoute 线路。 新线路支持 Microsoft 对等互连和专用对等互连。  
 >
 
 ## <a name="expressroute-circuits"></a><a name="circuits"></a>ExpressRoute 线路

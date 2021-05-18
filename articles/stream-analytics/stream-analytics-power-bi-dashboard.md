@@ -7,15 +7,15 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.openlocfilehash: 3bd35df91e836245de52d8959dff0671582ebc3f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98012438"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>流分析和 Power BI：针对流式处理数据的实时分析仪表板
 
-Azure 流分析使你可以利用其中一种领先的商业智能工具 [Microsoft Power BI](https://powerbi.com/)。 本文将介绍如何使用 Power BI 作为 Azure 流分析作业的输出，以创建商业智能工具。 你还将了解如何创建和使用实时仪表板，该仪表板会在流分析作业中持续更新。
+Azure 流分析使你可以利用其中一种领先的商业智能工具 [Microsoft Power BI](https://powerbi.com/)。 本文将介绍如何使用 Power BI 作为 Azure 流分析作业的输出，以创建商业智能工具。 还将了解如何创建和使用实时仪表板，该仪表板由流分析作业持续更新。
 
 本文是流分析[实时欺诈检测](stream-analytics-real-time-fraud-detection.md)教程的延续。 本文是在该教程中所创建工作流的基础上编写的，并添加了 Power BI 输出，以便可视化流分析作业检测到的欺诈性电话呼叫。 
 
@@ -38,10 +38,10 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 2. 在左侧菜单中，选择“作业拓扑结构”下的“输出” 。 然后从下拉菜单中依次选择“+ 添加”和“Power BI” 。
 
-3. 选择“+ 添加” > “Power BI”。 然后，使用以下详细信息填充窗体，并选择 " **授权** " 以使用自己的用户标识连接到 Power BI (该令牌在90天) 有效。 
+3. 选择“+ 添加” > “Power BI”。 然后，使用以下详细信息填写表单，并选择“授权”以使用自己的用户标识连接到 Power BI（该令牌的有效期为 90 天）。 
 
 >[!NOTE]
->对于生产作业，我们建议连接到 [使用托管标识对 Azure 流分析作业进行身份验证，以便 Power BI](./powerbi-output-managed-identity.md)。
+>对于生产作业，建议连接到[使用托管标识对 Azure 流分析作业的 Power BI 进行身份验证](./powerbi-output-managed-identity.md)。
 
    |**设置**  |**建议的值**  |
    |---------|---------|
@@ -63,7 +63,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 数据集是使用以下设置创建的；
 
 * **defaultRetentionPolicy：BasicFIFO** - 数据为 FIFO，最多 200,000 行。
-* **defaultMode：混合** 数据集支持流式处理磁贴， (也称为推送) 和传统的基于报表的视觉对象。 对于推送内容，在这种情况下，数据将在流分析作业中连续更新，无需计划从 Power BI 端进行刷新。
+* **defaultMode: hybrid** - 数据集支持流式处理磁贴（也称为推送）和基于报表的传统视觉对象。 对于推送内容，这种情况下数据将从流分析作业中持续更新，无需计划从 Power BI 端进行刷新。
 
 目前，无法其他标志创建数据集。
 
@@ -220,7 +220,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 ```
 
 ### <a name="renew-authorization"></a>续订授权
-如果自作业创建后或上次身份验证后更改了密码，需要重新对 Power BI 帐户进行身份验证。 如果 Azure Active Directory (Azure AD) 租户上配置 Azure AD 多重身份验证，则还需要每两周续订 Power BI 授权。 如果不续订，操作日志中会出现缺少作业输出或者 `Authenticate user error` 之类的表现。
+如果自作业创建后或上次身份验证后更改了密码，需要重新对 Power BI 帐户进行身份验证。 如果在 Azure Active Directory (Azure AD) 租户中配置了 Azure AD 多重身份验证，则还需要每两周续订一次 Power BI 授权。 如果不续订，操作日志中会出现缺少作业输出或者 `Authenticate user error` 之类的表现。
 
 同样，如果作业在令牌过期后启动，则会发生错误且作业将失败。 若要解决此问题，请停止正在运行的作业并转到 Power BI 输出。 为了避免数据丢失，请选择“续订授权”链接，并从“上次停止时间”重新启动作业。 
 
@@ -232,4 +232,4 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 * [流分析输出](stream-analytics-define-outputs.md)
 * [Azure 流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](/rest/api/streamanalytics/)
-* [使用托管标识对 Azure 流分析作业进行身份验证，以便 Power BI](./powerbi-output-managed-identity.md)
+* [使用托管标识对 Azure 流分析作业的 Power BI 进行身份验证](./powerbi-output-managed-identity.md)

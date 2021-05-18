@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b9f76eba9697d6ad47ecf8dc51689538923f88
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 74735e80326e1d05e3f8820fc2b94c8fe930fcb3
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094471"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784226"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -29,8 +29,8 @@ Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决�
 ## <a name="access-azure-and-azure-active-directory"></a>访问 Azure 和 Azure Active Directory
 **问：尝试在 Azure 门户中访问 Azure AD 时，为何出现“找不到订阅”错误？**
 
-**答:** 若要访问 Azure 门户，每个用户都需要 Azure 订阅的权限。 如果没有付费 Microsoft 365 或 Azure AD 订阅，将需要激活免费的 [Azure 帐户](https://azure.microsoft.com/free/
-) 或付费订阅。
+**答:** 若要访问 Azure 门户，每个用户都需要 Azure 订阅的权限。 如果没有付费 Microsoft 365 或 Azure AD 订阅，则需要激活免费的 [Azure 帐户](https://azure.microsoft.com/free/
+)或付费订阅。
 
 有关详细信息，请参阅：
 
@@ -39,11 +39,11 @@ Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决�
 ---
 **问：Azure AD、Microsoft 365 与 Azure 之间是什么关系？**
 
-**答:** Azure AD 为所有 Web 服务提供通用的标识和访问功能。 无论你使用 Microsoft 365、Microsoft Azure、Intune 还是其他用户，你都已在使用 Azure AD 来帮助打开所有这些服务的登录和访问管理。
+**答:** Azure AD 为所有 Web 服务提供通用的标识和访问功能。 不管使用的是 Microsoft 365、Microsoft Azure、Intune 还是其他服务，都是在使用 Azure AD 为上述所有服务启用登录和访问管理。
 
 可以将所有已设置为使用 Web 服务的用户定义为一个或多个 Azure AD 实例中的用户帐户。 可以在设置这些帐户时启用免费的 Azure AD 功能，例如云应用程序访问。
 
-Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业级管理和安全解决方案来补充 Microsoft 365 和 Microsoft Azure 的其他 web 服务。
+Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合性的企业级管理和安全解决方案来弥补其他 Web 服务（例如 Microsoft 365 和 Microsoft Azure）的不足。
 
 ---
 
@@ -51,11 +51,11 @@ Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业�
 
 **答:** 默认情况下，系统会将注册 Azure 订阅的人员指派为 Azure 资源的所有者角色。 所有者可以使用 Microsoft 帐户，也可以使用 Azure 订阅与之关联的目录中的工作或学校帐户。  此角色有权管理 Azure 门户中的服务。
 
-如果其他人需要使用同一个订阅登录和访问服务，则可向他们分配相应的[内置角色](../../role-based-access-control/built-in-roles.md)。 有关其他信息，请参阅 [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+如果其他人需要使用同一个订阅登录和访问服务，则可向他们分配相应的[内置角色](../../role-based-access-control/built-in-roles.md)。 有关其他信息，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 全局管理员有权访问所有 Azure AD 目录功能。 Azure AD 提供一组不同的管理员角色，用于管理目录和标识相关的功能。 这些管理员将有权访问 Azure 门户中的各种功能。 管理员的角色决定了其所能执行的操作，例如创建或编辑用户、向其他用户分配管理角色、重置用户密码、管理用户许可证，或者管理域。  有关 Azure AD 目录管理员及其角色的其他信息，请参阅[在 Azure Active Directory 中向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)和[在 Azure Active Directory 中分配管理员角色](../roles/permissions-reference.md)。
 
-此外，Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业级管理和安全解决方案来补充其他 web 服务，如 Microsoft 365 和 Microsoft Azure。
+另外，Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合性的企业级管理和安全解决方案来弥补其他 Web 服务（例如 Microsoft 365 和 Microsoft Azure）的不足。
 
 ---
 **问：是否可以通过报表来查看我的 Azure AD 用户许可证何时会过期？**
@@ -90,7 +90,7 @@ Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业�
 ---
 **问：Azure AD 是否为组织中的用户提供自助服务门户？**
 
-**答:** 是的，Azure AD 提供 [Azure AD 访问面板](https://myapps.microsoft.com)，方便用户使用自助服务以及进行应用程序访问。 如果你是 Microsoft 365 的客户，可以在 [Office 365 门户](https://portal.office.com)中找到许多相同的功能。
+**答:** 是的，Azure AD 提供 [Azure AD 访问面板](https://myapps.microsoft.com)，方便用户使用自助服务以及进行应用程序访问。 如果你是 Microsoft 365 客户，可以在 [Office 365 门户](https://portal.office.com)中找到许多相同的功能。
 
 有关详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
 
@@ -119,7 +119,8 @@ Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业�
 
 **答:** 可以。如果已启用密码写回，管理员执行的密码操作将写回到用户的本地环境。  
 
-<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>有关密码相关问题的详细解答，请参阅[密码管理常见问题](../authentication/active-directory-passwords-faq.md)。
+有关密码相关问题的详细解答，请参阅[密码管理常见问题](../authentication/active-directory-passwords-faq.yml)。
+
 ---
 **问：如果我在尝试更改 Microsoft 365/Azure AD 密码时忘记了现有的密码，该怎么办？**
 
@@ -132,8 +133,8 @@ Azure AD 付费服务，如企业移动性 + 安全性通过综合性的企业�
 - [在 Azure 门户中重置帐户](active-directory-users-reset-password-azure-portal.md)
 - [使用 PowerShell](/powershell/module/msonline/set-msoluserpassword)
 
-
 ---
+
 ## <a name="security"></a>安全性
 **问：帐户在经过特定次数的失败尝试后被锁定还是使用了更复杂的策略？**
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: memildin
 ms.openlocfilehash: ff23a1fa4b631fc10163f22d94ccdbd8cbe657c2
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102099244"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
@@ -25,17 +25,17 @@ ms.locfileid: "102099244"
 - **集成检测**：自动收集、聚合合作伙伴解决方案中的安全事件，并将其作为安全中心警报和事件的一部分进行显示。 这些事件还与来自其他源的检测融合在一起，以提供高级威胁检测功能。
 - **统一的运行状况监视和管理**：客户可以使用集成式运行状况事件，一目了然地监视所有合作伙伴解决方案。 可通过使用合作伙伴解决方案轻松地访问高级设置，进行基本管理。
 
-目前，集成的安全解决方案包括通过 [Qualys](https://www.qualys.com/public-cloud/#azure) 和 [Rapid7](https://www.rapid7.com/products/insightvm/) 进行漏洞评估，并 [Microsoft Azure Azure 应用程序网关上的 Web 应用程序防火墙](../web-application-firewall/ag/ag-overview.md)。
+目前，集成安全解决方案包括由 [Qualys](https://www.qualys.com/public-cloud/#azure) 和 [Rapid7](https://www.rapid7.com/products/insightvm/) 提供的漏洞评估以及 [Azure 应用程序网关上的 Microsoft Azure Web 应用程序防火墙](../web-application-firewall/ag/ag-overview.md)。
 
 > [!NOTE]
 > 安全中心不会在合作伙伴虚拟设备上安装 Log Analytics 代理，因为大多数安全供应商都禁止在其设备上运行外部代理。
 
-若要详细了解 Qualys 中的漏洞扫描工具的集成，包括 Azure Defender 客户可用的内置扫描仪，请参阅 [Azure 虚拟机的漏洞评估](deploy-vulnerability-assessment-vm.md)。
+若要详细了解 Qualys 中漏洞扫描工具的集成，包括 Azure Defender 客户可用的内置扫描程序，请参阅 [Azure 虚拟机的漏洞评估](deploy-vulnerability-assessment-vm.md)。
 
 安全中心还为以下内容提供漏洞分析：
 
 * SQL 数据库 - 请参阅[在漏洞评估仪表板中浏览漏洞评估报告](defender-for-sql-on-machines-vulnerability-assessment.md#explore-vulnerability-assessment-reports)
-* Azure 容器注册表映像-请参阅 [使用 Azure Defender 容器注册表扫描映像中的漏洞](defender-for-container-registries-usage.md)
+* Azure 容器注册表映像 - 请参阅[使用适用于容器注册表的 Azure Defender 扫描映像中的漏洞](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>安全中心如何集成
 从安全中心部署的 Azure 安全解决方案是自动连接的。 还可以连接其他安全数据源，包括在本地或其他云中运行的计算机。
@@ -80,10 +80,10 @@ ms.locfileid: "102099244"
 
 ### <a name="discovered-solutions"></a>已发现解决方案
 
-安全中心会自动发现在 Azure 中运行但未连接到安全中心的安全解决方案，并在“发现的解决方案”部分中显示这些解决方案。 这些解决方案包括 Azure 解决方案，例如 [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)和合作伙伴解决方案。
+安全中心会自动发现在 Azure 中运行但未连接到安全中心的安全解决方案，并在“发现的解决方案”部分中显示这些解决方案。 这些解决方案包括 Azure 解决方案（例如 [Azure AD 标识保护](../active-directory/identity-protection/overview-identity-protection.md)）和合作伙伴解决方案。
 
 > [!NOTE]
-> 在订阅级别为发现的解决方案功能启用 Azure Defender。 在 [快速入门：启用 Azure Defender](enable-azure-defender.md)中了解详细信息。
+> 在订阅级别为发现的解决方案功能启用 Azure Defender。 在[快速入门：启用 Azure Defender](enable-azure-defender.md) 中了解详细信息。
 
 在解决方案下选择“连接”，以便与安全中心集成，并获得安全警报通知。
 
@@ -97,4 +97,4 @@ ms.locfileid: "102099244"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在安全中心集成合作伙伴的解决方案。 若要了解如何设置与 Azure Sentinel 或任何其他 SIEM 的集成，请参阅 [持续导出安全中心数据](continuous-export.md)。
+本文介绍了如何在安全中心集成合作伙伴的解决方案。 若要了解如何设置与 Azure Sentinel 或任何其他 SIEM 的集成，请参阅[连续导出安全中心数据](continuous-export.md)。

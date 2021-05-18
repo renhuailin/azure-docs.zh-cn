@@ -4,10 +4,10 @@ description: 了解你在使用 Azure 服务总线时可能遇到的一些问题
 ms.topic: article
 ms.date: 03/03/2021
 ms.openlocfilehash: 7de39e5a3a7b6cbb8e5fa504f073023853e18366
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179691"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
@@ -52,7 +52,7 @@ ms.locfileid: "102179691"
     ```
     如果使用的是其他工具（如 `tnc`、`ping` 等），则可以使用等效的命令。 
 - 如果上述步骤没有帮助，请获取网络跟踪，并使用 [Wireshark](https://www.wireshark.org/) 之类的工具对其进行分析。 如果需要，请联系 [Microsoft 支持部门](https://support.microsoft.com/)。 
-- 若要查找要添加到连接的正确 IP 地址，请参阅 [允许列表添加哪些 ip 地址](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list)。 
+- 若要查找要添加到连接允许列表的正确 IP 地址，请参阅[我需要添加到允许列表的 IP 地址](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list)。 
 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>服务升级/重启时可能出现的问题

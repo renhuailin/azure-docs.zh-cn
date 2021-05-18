@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 79e3ce8c1605e5d68ff44901f53854d2f5f10abc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96014374"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务在 StorSimple 虚拟阵列上管理卷
@@ -73,7 +73,7 @@ StorSimple 服务摘要边栏选项卡上的“卷”菜单显示给定 StorSimp
 
 1. 在“StorSimple 服务摘要”边栏选项卡上，单击命令栏中的“+ 添加卷”。 此时会打开“添加卷”边栏选项卡。
    
-    ![屏幕截图显示 "添加卷" 按钮和 "添加卷" 窗格。](./media/storsimple-virtual-array-manage-volumes/add-volume.png)
+    ![屏幕截图显示“添加卷”按钮和“添加卷”窗格。](./media/storsimple-virtual-array-manage-volumes/add-volume.png)
 2. 在“添加卷”边栏选项卡中，执行以下操作：
    
    * 在“卷名”字段中，输入卷的唯一名称。 该名称必须是包含 3 到 127 个字符的字符串。
@@ -82,7 +82,7 @@ StorSimple 服务摘要边栏选项卡上的“卷”菜单显示给定 StorSimp
    * * 单击“已连接主机”，选择要连接到此卷的 iSCSI 发起程序所对应的访问控制记录 (ACR)，并单击“选择”。
 3. 要添加新连接的主机，请单击“新增”，输入主机的名称及其 iSCSI 限定名称 (IQN)，并单击“添加”。
    
-    ![屏幕截图显示 "连接的主机" 窗格，你可以在其中添加新的。](./media/storsimple-virtual-array-manage-volumes/volume-add-acr.png)
+    ![屏幕截图显示“已连接主机”窗格，可以在其中“新增”。](./media/storsimple-virtual-array-manage-volumes/volume-add-acr.png)
 4. 完成配置卷后，单击“创建”。 此时会使用指定的设置创建卷，成功创建后，会显示一条通知。 默认情况下，将为卷启用备份功能。
 5. 若要确认已成功创建卷，请转到“卷”边栏选项卡。 此时会看到列出的卷。
    

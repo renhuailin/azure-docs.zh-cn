@@ -4,10 +4,10 @@ description: 使用 Azure 资源管理器将应用服务资源移到新的资源
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.openlocfilehash: 27555a4616befca41c7e970e947afa1cd1ff7248
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90531366"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>针对应用服务资源的移动指南
@@ -28,11 +28,11 @@ ms.locfileid: "90531366"
 - 只要将证书与资源组中的所有其他资源一起移动，就可以将绑定的证书移到 Web，而无需删除 TLS 绑定。
 - 只能从最初创建应用服务资源的资源组中移动它们。 如果应用服务资源不再位于其原始资源组中，请将其移回其原始资源组。 然后，在订阅之间移动资源。
 
-如果忘记了原始资源组，可以通过诊断来查找。 对于 Web 应用，请选择“诊断和解决问题”****。 然后，选择“配置和管理”。****
+如果忘记了原始资源组，可以通过诊断来查找。 对于 Web 应用，请选择“诊断和解决问题”。 然后，选择“配置和管理”。
 
 ![选择诊断](./media/app-service-move-limitations/select-diagnostics.png)
 
-选择“迁移选项”****。
+选择“迁移选项”。
 
 ![选择迁移选项](./media/app-service-move-limitations/select-migration.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "90531366"
 
 可以看到在移动资源之前需采取的建议操作。 该信息包含 Web 应用的原始资源组。
 
-![屏幕捕获显示了移动 Microsoft dot Web 资源的建议步骤。](./media/app-service-move-limitations/recommendations.png)
+![屏幕捕获显示了针对移动 Microsoft.Web 资源的建议步骤。](./media/app-service-move-limitations/recommendations.png)
 
 ## <a name="move-support"></a>移动支持
 

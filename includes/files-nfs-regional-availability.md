@@ -9,15 +9,15 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: f5ebd05177abf5fb3468b3ce935b7d004b414424
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100551814"
 ---
-**所有** 30 多个区域都支持 NFS，其中的高级文件存储可用。
+高级文件存储可用的 30 多个区域 **全部** 支持 NFS。
 
-我们不断地添加区域。 有关最新列表，请使用下面的示例查询具有 NFS 支持的区域列表。 你还可以在 "**高级文件存储**" 下的 "[区域" 页](https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all)中查看区域支持。
+支持区域还在不断增加。 有关最新列表，请使用下面的示例查询支持 NFS 的区域列表。 还可以在“高级文件存储”下的[各区域的 Azure 产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all)页中查看区域支持。
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if not using Cloud Shell

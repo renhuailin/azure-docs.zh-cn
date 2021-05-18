@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.openlocfilehash: b180a0f148db5222a288958724ad248acd18b565
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101673857"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  你将学习如何执行以下操作：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  学习如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 Oracle 数据库 VM
@@ -204,7 +204,7 @@ ssh <publicIpAddress>
    fdisk /dev/sdc
    ```
    
-   使用上面提供的答案，命令的输出 `fdisk` 应如下所示：
+   如果使用上面提供的回答，`fdisk` 命令的输出应如下所示：
 
    ```output
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
@@ -240,7 +240,7 @@ ssh <publicIpAddress>
    Syncing disks.
    ```
 
-4. `fdisk`对、和重复前面的命令 `/dev/sdd` `/dev/sde` `/dev/sdf` 。
+4. 针对 `/dev/sdd`、`/dev/sde` 和 `/dev/sdf` 重复上述 `fdisk` 命令。
 
 5. 检查磁盘配置：
 
@@ -421,7 +421,7 @@ ssh <publicIpAddress>
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 在客户端系统上启动 PuTTY。 在 "**类别**" 窗格中，请参阅 **连接**  >  **SSH**  >  **身份验证**。在 "**身份验证的私钥文件**" 框中，浏览到之前生成的密钥。
+6. 在客户端系统上启动 PuTTY。 在“类别”窗格中，转到“连接” > “SSH” > “身份验证”。   在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
 
    ![SSH 身份验证选项屏幕截图](./media/oracle-asm/setprivatekey.png)
 
@@ -437,7 +437,7 @@ ssh <publicIpAddress>
 
 若要安装 Oracle Grid Infrastructure，请完成以下步骤：
 
-1. 以 **网格格式** 登录。 （应该可以直接登录，系统不会提示输入密码。） 
+1. 以 **grid** 身份登录。 （应该可以直接登录，系统不会提示输入密码。） 
 
    > [!NOTE]
    > 如果运行的是 Windows，请确保在开始安装之前已启动 Xming。
@@ -528,7 +528,7 @@ ssh <publicIpAddress>
    - 单击 `ok` 创建磁盘组。
    - 单击 `ok` 关闭确认窗口。
 
-   !["创建磁盘组" 对话框的屏幕截图，突出显示 External (none) 选项。](./media/oracle-asm/asm04.png)
+   ![“创建磁盘组”对话框的屏幕截图，其中突出显示了“外部(无)”选项。](./media/oracle-asm/asm04.png)
 
 6. 选择“退出”关闭 ASM 配置助手。
 

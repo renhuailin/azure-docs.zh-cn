@@ -1,15 +1,15 @@
 ---
-title: 适用于 Redis 的 Azure Cache Azure Monitor |Microsoft Docs
+title: 适用于 Azure Cache for Redis 的 Azure Monitor | Microsoft Docs
 description: 本文介绍了适用于 Azure Redis Cache 的 Azure Monitor 功能。使用此功能，缓存所有者能够快速了解性能和利用率问题。
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
 ms.openlocfilehash: fee454073c50b9542e140576ef0629a39b8f4294
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100573464"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>探究适用于 Azure Cache for Redis 的 Azure Monitor

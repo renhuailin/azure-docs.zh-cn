@@ -3,15 +3,15 @@ title: 最佳实践
 description: 获得改进结果的推荐最佳做法
 author: ariye
 ms.author: crtreasu
-ms.date: 02/17/2021
+ms.date: 03/12/2021
 ms.topic: best-practice
 ms.service: azure-object-anchors
-ms.openlocfilehash: da3be6e3d97e50b27ded29ba017164fdbd9a0a5b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 6b9546843d88a5a7329120cca86d685d8abf3460
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503039"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061921"
 ---
 # <a name="best-practices"></a>最佳实践
 
@@ -19,7 +19,7 @@ ms.locfileid: "102503039"
 
 ## <a name="ingestion"></a>引入
 
-- 检查物理对象的尺寸。 Object Anchors 最适用于其最小尺寸在建议的 1m-10m 范围内的对象。
+- 检查物理对象的尺寸。 Azure Object Anchors 最适用于其最小尺寸在建议的 1 米 - 10 米范围内的对象。
 - 在 [MeshLab](https://www.meshlab.net/) 之类的软件中检查 3D 模型，以了解以下详细信息。
   - 确保 3D 模型具有三角形网格，并且外表面上的三角形朝外。 也就是说，顶点的方向应使法线在向外方向上遵循右手定则。
   - 确保为 3D 模型指定了相对于物理对象的正确缩放单元。 单位应为以下之一：厘米、分米、英尺、英寸、公里、米、毫米、码。
@@ -32,12 +32,12 @@ ms.locfileid: "102503039"
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Mixed-Reality/Azure-Object-Anchors-Detection-and-Alignment-Best-Practices/player]
 
 - 提供的运行时 SDK 需要用户提供的搜索区域来搜索和检测物理对象。 搜索区域可以是边界框、球体、视锥体或它们的任意组合。 若要避免错误检测，最好设置一个足以涵盖对象的搜索区域。 使用提供的示例应用时，你可以站在对象的一侧，距离最近的表面 2 米左右，然后启动应用。
-- 在 HoloLens 2 设备上启动 Object Anchors 应用之前，请通过“设置”->“系统”->“全息影像”在设备的主要设置中删除工作区附近的全息影像
+- 在 HoloLens 2 设备上启动 Azure Object Anchors 应用之前，请通过“设置”->“系统”->“全息影像”在设备的主要设置中删除工作区附近的全息影像
 
   这一步可以确保，如果一个新对象（如汽车）出现在先前被另一个对象占据的同一空间中，或者对象已从目标空间移出，任何旧的和不相关的全息影像将不会持久保留，也不会为当前能够看到的对象创建混淆的可视化效果。
 - 在删除全息影像后与启动应用前，通过佩戴设备在大约 1-2 米的距离内面朝对象并绕着对象缓慢移动一到两次来扫描对象（如汽车）。
 
-  此步骤可确保使用要处理的当前目标对象的表面刷新由之前的对象和扫描在空间中创建的任何残留表面估计值。 否则，应用可能会看到重影表面，导致 3D 模型和相关全息影像无法准确对齐。 预扫描对象还将大幅减少 AOA 检测延迟，例如，从 30 秒减少到 5 秒。
+  此步骤可确保使用要处理的当前目标对象的表面刷新由之前的对象和扫描在空间中创建的任何残留表面估计值。 否则，应用可能会看到重影表面，导致 3D 模型和相关全息影像无法准确对齐。 预扫描对象还将大幅减少 Azure Object Anchors 检测延迟，例如，从 30 秒减少到 5 秒。
 - 对于深色和高反射的对象，你可能必须在更近的范围内扫描对象，也可以通过上下左右移动头部，让设备从多个角度和多个距离看到对象表面。
 - 如果发现对象检测错误（如方向被翻转）或姿势不正确（如模型倾斜），应将空间映射可视化。 出现错误的结果通常是由于表面重建不佳或不完整。 你可以删除全息影像，扫描对象，然后再次在应用上运行对象检测。
 - 提供的运行时 SDK 提供了几个参数，以允许用户微调检测，如我们的示例应用所示。 默认参数适用于大多数对象。 如果你发现需要针对特定对象调整它们，以下是一些建议：

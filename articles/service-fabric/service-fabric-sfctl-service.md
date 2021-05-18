@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 426220f38e6ddfaaf8b24bf4f7d34473d881ae56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86245596"
 ---
 # <a name="sfctl-service"></a>sfctl service
@@ -17,7 +17,7 @@ ms.locfileid: "86245596"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|说明|
 | --- | --- |
 | app-name | 获取服务的 Service Fabric 应用程序名称。 |
 | code-package-list | 获取部署在 Service Fabric 节点上的代码包的列表。 |
@@ -110,15 +110,15 @@ ms.locfileid: "86245596"
 | --int-scheme-low | 键整数范围的上限（适用于统一整数分区方案）。 |
 | --load-metrics | 对各节点上的服务进行负载均衡时使用的指标的 JSON 编码列表。 |
 | --min-replica-set-size | 数字形式的最小副本集大小。 仅适用于有状态服务。 |
-| --move-cost | 指定服务的移动成本。 可能的值为\:“Zero”、“Low”、“Medium”、“High”、“VeryHigh”。 |
+| --move-cost | 指定服务的移动成本。 可能的值为“Zero”、“Low”、“Medium”、“High”和“VeryHigh”。 |
 | --named-scheme | 指示服务应包含多个命名分区。 |
 | --named-scheme-list | 要在其中将服务分区的名称的 JSON 编码列表（如果使用命名分区方案）。 |
 | --no-persisted-state | 如果为 true，则表示服务不会在本地磁盘上存储持久状态，或者只在内存中存储状态。 |
-| --placement-policy-list | 服务的放置策略以及任何关联域名的 JSON 编码列表。 策略可以是下列其中一项或多项\: `NonPartiallyPlaceService`、`PreferPrimaryDomain`、`RequireDomain`、`RequireDomainDistribution`。 |
+| --placement-policy-list | 服务的放置策略以及任何关联域名的 JSON 编码列表。 策略可以是下列其中一项或多项：`NonPartiallyPlaceService`、`PreferPrimaryDomain`、`RequireDomain`、`RequireDomainDistribution`。 |
 | --quorum-loss-wait | 允许分区处于仲裁丢失状态的最大持续时间，以秒为单位。 仅适用于有状态服务。 |
 | --replica-restart-wait | 副本关闭之后、创建新副本之前的持续时间，以秒为单位。 仅适用于有状态服务。 |
 | --scaling-policies | 此服务的缩放策略的 JSON 编码列表。 |
-| --service-placement-time | 在报告生成停滞之前，副本可在 InBuild 中停留的持续时间。 仅适用于有状态服务。 |
+| --service-placement-time | 在报告该生成处于停滞状态之前，副本可保持 InBuild 的持续时间。 仅适用于有状态服务。 |
 | --singleton-scheme | 指示服务应包含单个分区，或者为非分区服务。 |
 | --stand-by-replica-keep | 删除备用副本之前将其保留的最大持续时间，以秒为单位。 仅适用于有状态服务。 |
 | --stateful | 指示服务是有状态服务。 |
@@ -563,12 +563,12 @@ ms.locfileid: "86245596"
 | --instance-count | 实例计数。 仅适用于无状态服务。 |
 | --load-metrics | 在各节点中进行负载均衡时使用的指标的 JSON 编码列表。 |
 | --min-replica-set-size | 数字形式的最小副本集大小。 仅适用于有状态服务。 |
-| --move-cost | 指定服务的移动成本。 可能的值为\:“Zero”、“Low”、“Medium”、“High”、“VeryHigh”。 |
-| --placement-policy-list | 服务的放置策略以及任何关联域名的 JSON 编码列表。 策略可以是下列其中一项或多项\: `NonPartiallyPlaceService`、`PreferPrimaryDomain`、`RequireDomain`、`RequireDomainDistribution`。 |
+| --move-cost | 指定服务的移动成本。 可能的值为“Zero”、“Low”、“Medium”、“High”和“VeryHigh”。 |
+| --placement-policy-list | 服务的放置策略以及任何关联域名的 JSON 编码列表。 策略可以是下列其中一项或多项：`NonPartiallyPlaceService`、`PreferPrimaryDomain`、`RequireDomain`、`RequireDomainDistribution`。 |
 | --quorum-loss-wait | 允许分区处于仲裁丢失状态的最大持续时间，以秒为单位。 仅适用于有状态服务。 |
 | --replica-restart-wait | 副本关闭之后、创建新副本之前的持续时间，以秒为单位。 仅适用于有状态服务。 |
 | --scaling-policies | 此服务的缩放策略的 JSON 编码列表。 |
-| --service-placement-time | 在报告生成停滞之前，副本可在 InBuild 中停留的持续时间。 仅适用于有状态服务。 |
+| --service-placement-time | 在报告该生成处于停滞状态之前，副本可保持 InBuild 的持续时间。 仅适用于有状态服务。 |
 | --stand-by-replica-keep | 删除备用副本之前将其保留的最大持续时间，以秒为单位。 仅适用于有状态服务。 |
 | --stateful | 指示目标服务是有状态服务。 |
 | --stateless | 指示目标服务是无状态服务。 |

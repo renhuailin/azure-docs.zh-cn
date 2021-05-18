@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c4301a61a79ab2351c18af0c76cccc3d07dd202
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: eb002eec38cf4c940450616ac1d30a0f43cc83f9
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94836676"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176065"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>使用 Azure AD 快速响应以保护标识
 
@@ -84,7 +84,7 @@ ms.locfileid: "94836676"
 | [启用 ADFS 智能锁定](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)（如果适用） | 保护用户免受恶意活动导致的 Extranet 帐户锁定。 |
 | [启用 Azure Active Directory 智能锁定](../authentication/howto-password-smart-lockout.md)（如果使用托管标识） | 智能锁定功能可帮助锁定那些试图猜测用户密码或使用暴力方法进入的不良参与者。 |
 | [禁用应用程序的最终用户同意](../manage-apps/configure-user-consent.md) | 管理员同意工作流为管理员提供了一种安全的方法来授予需要管理员批准的应用程序访问权限，因此最终用户不会公开公司数据。 Microsoft 建议禁用将来的所有用户许可操作有助于减小受攻击面并缓解此风险。 |
-| [使用应用程序代理启用对本地旧应用程序的远程访问](../manage-apps/application-proxy-add-on-premises-application.md) | 启用 Azure AD 应用程序代理并与旧应用集成，使用户能够使用 Azure AD 帐户登录来安全地访问本地应用程序。 |
+| [使用应用程序代理启用对本地旧应用程序的远程访问](../app-proxy/application-proxy-add-on-premises-application.md) | 启用 Azure AD 应用程序代理并与旧应用集成，使用户能够使用 Azure AD 帐户登录来安全地访问本地应用程序。 |
 | [启用安全混合访问：使用现有应用交付控制器和网络保护旧应用](../manage-apps/secure-hybrid-access.md)（如果适用）。 | 通过使用现有应用程序交付控制器或网络将本地和云的旧身份验证应用程序连接到 Azure AD 来发布并保护这些应用程序。 |
 | [将库中受支持的 SaaS 应用程序集成到 Azure AD 并启用单一登录](../manage-apps/add-application-portal.md) | Azure AD 的某个库包含数千个预先集成的应用程序。 组织使用的某些应用程序可能就在该库中。可通过 Azure 门户直接访问该库。 通过改进的用户体验 (SSO) 提供对企业 SaaS 应用程序的安全远程访问。 |
 | [在 SaaS 应用程序中自动预配和取消预配用户](../app-provisioning/user-provisioning.md)（如果适用） | 在用户需要访问的云 (SaaS) 应用程序中自动创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识，以及增加组织的安全性。 |
@@ -116,7 +116,7 @@ ms.locfileid: "94836676"
 | [启用 ADFS 智能锁定](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)（如果适用） | 保护用户免受恶意活动导致的 Extranet 帐户锁定。 |
 | [启用 Azure Active Directory 智能锁定](../authentication/howto-password-smart-lockout.md)（如果使用托管标识） | 智能锁定功能可帮助锁定那些试图猜测用户密码或使用暴力方法进入的不良参与者。 |
 | [禁用应用程序的最终用户同意](../manage-apps/configure-user-consent.md) | 管理员同意工作流为管理员提供了一种安全的方法来授予需要管理员批准的应用程序访问权限，因此最终用户不会公开公司数据。 Microsoft 建议禁用将来的所有用户许可操作有助于减小受攻击面并缓解此风险。 |
-| [使用应用程序代理启用对本地旧应用程序的远程访问](../manage-apps/application-proxy-add-on-premises-application.md) | 启用 Azure AD 应用程序代理并与旧应用集成，使用户能够使用 Azure AD 帐户登录来安全地访问本地应用程序。 |
+| [使用应用程序代理启用对本地旧应用程序的远程访问](../app-proxy/application-proxy-add-on-premises-application.md) | 启用 Azure AD 应用程序代理并与旧应用集成，使用户能够使用 Azure AD 帐户登录来安全地访问本地应用程序。 |
 | [启用安全混合访问：使用现有应用交付控制器和网络保护旧应用](../manage-apps/secure-hybrid-access.md)（如果适用）。 | 通过使用现有应用程序交付控制器或网络将本地和云的旧身份验证应用程序连接到 Azure AD 来发布并保护这些应用程序。 |
 | [将库中受支持的 SaaS 应用程序集成到 Azure AD 并启用单一登录](../manage-apps/add-application-portal.md) | Azure AD 的某个库包含数千个预先集成的应用程序。 组织使用的某些应用程序可能就在该库中。可通过 Azure 门户直接访问该库。 通过改进的用户体验 (SSO) 提供对企业 SaaS 应用程序的安全远程访问。 |
 | [在 SaaS 应用程序中自动预配和取消预配用户](../app-provisioning/user-provisioning.md)（如果适用） | 在用户需要访问的云 (SaaS) 应用程序中自动创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识，以及增加组织的安全性。 |

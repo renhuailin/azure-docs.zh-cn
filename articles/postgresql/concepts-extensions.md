@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.openlocfilehash: 78395873457f9fe53d45dfbfd94aa9ccdccd614d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92485454"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
@@ -228,10 +228,10 @@ pg_prewarm 扩展可将关系数据加载到缓存中。 预热缓存意味着�
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 TimescaleDB 提供以时间为导向的分析功能、优化，并根据时序工作负荷来缩放 Postgres。
 
-[详细了解 TimescaleDB](https://docs.timescale.com/latest)，它是 [Timescale, Inc.](https://www.timescale.com/) 的注册商标。 Azure Database for PostgreSQL 提供 TimescaleDB [Apache-2 版](https://www.timescale.com/legal/licenses)。
+[详细了解 TimescaleDB](https://docs.timescale.com/latest)，它是 [Timescale, Inc.](https://www.timescale.com/) 的注册商标。 Azure Database for PostgreSQL 提供 TimescaleDB [Apache-2 版本](https://www.timescale.com/legal/licenses)。
 
 ### <a name="installing-timescaledb"></a>安装 TimescaleDB
-若要安装 TimescaleDB，需将其包括在服务器的共享预加载库中。 更改 Postgres 的 `shared_preload_libraries` 参数需要**重启服务器**才能生效。 可以使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 更改参数。
+若要安装 TimescaleDB，需将其包括在服务器的共享预加载库中。 更改 Postgres 的 `shared_preload_libraries` 参数需要 **重启服务器** 才能生效。 可以使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 更改参数。
 
 使用 [Azure 门户](https://portal.azure.com/)：
 
@@ -245,7 +245,7 @@ TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 T
 
 5. 选择“保存”  ，保留所做的更改。 保存更改后会获得通知。 
 
-6. 获得通知后，请**重启**服务器以应用这些更改。 若要了解如何重启服务器，请参阅[重启 Azure Database for PostgreSQL 服务器](howto-restart-server-portal.md)。
+6. 获得通知后，请 **重启** 服务器以应用这些更改。 若要了解如何重启服务器，请参阅[重启 Azure Database for PostgreSQL 服务器](howto-restart-server-portal.md)。
 
 
 现在可以在 Postgres 数据库中启用 TimescaleDB。 连接到数据库并发出以下命令：
@@ -279,4 +279,4 @@ SELECT timescaledb_post_restore();
 
 
 ## <a name="next-steps"></a>后续步骤
-如果未看到要使用的扩展，请告诉我们。 在我们的 [反馈论坛](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)中投票现有请求或创建新的反馈请求。
+如果未看到要使用的扩展，请告诉我们。 若要支持现有请求或提出新反馈请求，请访问我们的[反馈论坛](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)。

@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 1fd2b8461bd66c826dc4890c331b740c4703f896
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96903983"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解决方案加速器常见问题解答
 
-另请参阅 [连接工厂特定的常见问题](iot-accelerators-faq-cf.md)。
+另请参阅[连接工厂相关的常见问题解答](iot-accelerators-faq-cf.md)。
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>在哪里可以找到此解决方案加速器的源代码？
 
@@ -28,15 +28,15 @@ ms.locfileid: "96903983"
 
 ### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>在哪里可以找到远程监视和预见性维护解决方案加速器？
 
-自2020年12月10日起，远程监视和预测性维护加速器已从 [Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators) 站点中删除，不再适用于新部署。 这两个加速器的 GitHub 存储库已存档。 代码仍可供任何人访问，但存储库不会产生任何新的贡献。
+自 2020 年 12 月 10 日起，远程监视和预测性维护加速器已从 [Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators)站点中删除，不再适用于新部署。 这两个加速器的 GitHub 存储库已存档。 代码仍可供任何人访问，但存储库不会产生任何新的贡献。
 
 ### <a name="what-happens-to-my-existing-remote-monitoring-and-predictive-maintenance-deployments"></a>现有远程监视和预见性维护部署会发生什么情况？
 
-现有部署不会受到远程监视和预测维护解决方案加速器的删除影响，并且将继续工作。 分叉的存储库也不会受到影响。 GitHub 上的主存储库已存档。
+现有部署不会受到远程监视和预测维护解决方案加速器的删除影响，会继续工作。 分支存储库也不会受到影响。 GitHub 上的主存储库已存档。
 
 ### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>如何实现部署设备模拟解决方案加速器？
 
-若要部署设备模拟解决方案加速器，请参阅 [设备模拟](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) GitHub 存储库。
+若要部署设备模拟解决方案加速器，请参阅[设备模拟](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) GitHub 存储库。
 
 ### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>在哪里可以找到有关已删除解决方案加速器的信息？
 
@@ -72,14 +72,14 @@ ms.locfileid: "96903983"
 
 如果确定拥有 Azure 订阅，请验证订阅的租户映射，并确保在下拉列表中选择正确的租户。 如果租户经验证是正确的，请按照上图，验证订阅与此 Azure AD 租户之间的映射。
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>删除 Azure 门户中的资源组与在 azureiotsolutions.com 中的解决方案加速器上单击 "删除" 之间有何区别？
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>在 Azure 门户中删除资源组与在 azureiotsolutions.com 中对解决方案加速器单击删除之间的区别是什么？
 
-* 如果删除 [azureiotsolutions.com](https://www.azureiotsolutions.com/)中的解决方案加速器，则会删除在创建解决方案加速器时部署的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
+* 如果在 [azureiotsolutions.com](https://www.azureiotsolutions.com/) 中删除解决方案加速器，则会删除在创建解决方案加速器时部署的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
 * 如果在 [Azure 门户](https://portal.azure.com)中删除资源组，则只会删除该资源组中的资源。 此外还需要删除与解决方案加速器关联的 Azure Active Directory 应用程序。
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>是否可以继续利用 Azure IoT 解决方案加速器中的现有投资？
 
-是的。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
+是。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>在一个订阅中可以设置多少个 IoT 中心实例？
 

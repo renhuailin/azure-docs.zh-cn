@@ -5,13 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 91a7cc4b96dcff7a20afccfe5995574b89a8e87b
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 7200978ce31a47f7bd0d023cecf359b10a1c96de
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315698"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100520907"
 ---
 # <a name="troubleshoot-application-change-analysis-preview"></a>排查应用程序更改分析问题（预览）
 

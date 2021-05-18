@@ -51,11 +51,11 @@
     - name: UI 框架
       items:
         - name: 复合组件入门
-          href: quickstarts/ui-framework/get-started-with-composites.md
-        - name: 基本组件入门
-          href: quickstarts/ui-framework/get-started-with-components.md
-        - name: 创建自己的 UI 框架组件
-          href: quickstarts/ui-framework/create-your-own-components.md
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-composites--page'
+        - name: 有状态客户端入门
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-stateful-client--page'
+        - name: UI 组件入门
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-ui-components--page'
 - name: 教程
   expanded: false
   items:

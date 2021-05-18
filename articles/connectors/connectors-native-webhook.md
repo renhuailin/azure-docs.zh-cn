@@ -7,42 +7,42 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 7c6f3c4e3e4a2a29fe6a02c03043e3dfb81a2010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: cdbf853a96f319cb27c10136004a1398014e602f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227893"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109146"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP Webhook 创建和运行基于事件的自动化工作流
 
-使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md) 和内置 HTTP Webhook 连接器，你可以创建用于订阅服务终结点的自动化任务和工作流，等待特定事件，并基于这些事件运行，而不是定期检查或 *轮询* 该终结点。
+借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置 HTTP Webhook 连接器，可以创建订阅服务终结点，等待特定事件以及基于这些事件运行（而不是定期检查或轮询该终结点）的自动化任务和工作流。
 
-下面是一些基于 webhook 的示例工作流：
+下面是一些基于 Webhook 的工作流示例：
 
 * 在触发逻辑应用运行之前，等待来自 [Azure 事件中心](https://github.com/logicappsio/EventHubAPI)的某个项抵达。
 * 在继续运行工作流之前等待批准。
 
-本文介绍如何使用 Webhook 触发器和 Webhook 操作，以便逻辑应用可以接收服务终结点上的事件并对其作出响应。
+本文介绍如何使用 Webhook 触发器和 Webhook 操作，以便逻辑应用可以接收和响应服务终结点上的事件。
 
 ## <a name="how-do-webhooks-work"></a>Webhook 的工作原理
 
-Webhook 触发器是基于事件的，不依赖于定期检查或轮询新项。 当你保存以 webhook 触发器开头的逻辑应用，或者将逻辑应用从 "禁用" 更改为 "已启用" 时，webhook 触发器将通过向该终结点注册*回调 URL*来*订阅*指定的服务终结点。 然后，触发器等待该服务终结点调用 URL，该 URL 开始运行逻辑应用。 与[请求触发器](connectors-native-reqres.md)类似，发生指定的事件时，会立即激发逻辑应用。 如果删除触发器并保存逻辑应用，或者将逻辑应用从 "启用" 更改为 "已禁用"，webhook 触发器将从服务终结点取消 *订阅* 。
+Webhook 触发器基于事件，它不依赖于定期检查或轮询新项。 保存以 Webhook 触发器开头的逻辑应用，或者将逻辑应用从已禁用状态更改为已启用状态时，Webhook 触发器会通过将一个回调 URL 注册到指定服务终结点，来订阅该终结点。  然后，该触发器将等待该服务终结点调用该 URL，从而开始运行逻辑应用。 与[请求触发器](connectors-native-reqres.md)类似，发生指定的事件时，会立即激发逻辑应用。 如果你删除触发器并保存逻辑应用，或者将逻辑应用从已启用状态更改为已禁用状态，则 Webhook 触发器将从服务终结点取消订阅。
 
-Webhook 操作也是基于事件的，并通过向指定的服务终结点注册一个*回调 URL*来*订阅*该终结点。 Webhook 操作会暂停逻辑应用的工作流，并等到服务终结点调用 URL，然后再继续运行逻辑应用。 在这些情况下，webhook 操作将从服务终结点取消 *订阅* ：
+Webhook 操作也基于事件，它会通过将一个回调 URL 注册到指定服务终结点，来订阅该终结点。  Webhook 操作将暂停逻辑应用的工作流，在逻辑应用恢复运行之前，会等待该服务终结点调用该 URL。 在以下情况下，Webhook 操作将从服务终结点取消订阅：
 
 * 当 Webhook 操作成功完成时
 * 如果逻辑应用运行在等待响应时已取消
 * 在逻辑应用超时之前
 
-例如, Office 365 Outlook 连接器的[**发送审批电子邮件**](connectors-create-api-office365-outlook.md)操作就是遵循此模式的 Webhook 操作示例。 可以使用 Webhook 操作将此模式扩展到任何服务中。
+例如, Office 365 Outlook 连接器的 [**发送审批电子邮件**](connectors-create-api-office365-outlook.md)操作就是遵循此模式的 Webhook 操作示例。 可以使用 Webhook 操作将此模式扩展到任何服务中。
 
 有关详细信息，请参阅以下主题：
 
 * [Webhook 和订阅](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
 * [创建支持 Webhook 的自定义 API](../logic-apps/logic-apps-create-api-app.md)
 
-有关对逻辑应用的入站调用的加密、安全和授权（例如 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，之前称为安全套接字层 (SSL) ），或 [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)，请参阅 [对基于请求的触发器的入站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
+若要了解向逻辑应用（例如，[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)（以前称为安全套接字层 (SSL)）或 [Azure Active Directory 开放式身份验证 (Azure AD OAuth)](../active-directory/develop/index.yml)）发出的入站调用的加密、安全和授权，请参阅[保护访问和数据 - 对基于请求的触发器的入站调用的访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -72,7 +72,7 @@ Webhook 操作也是基于事件的，并通过向指定的服务终结点注册
 
    ![输入 HTTP Webhook 触发器参数](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | **订阅 - 方法** | 是 | 订阅目标终结点时使用的方法 |
    | **订阅 - URI** | 是 | 用于订阅目标终结点的 URL |
@@ -118,7 +118,7 @@ Webhook 操作也是基于事件的，并通过向指定的服务终结点注册
 
    ![输入 HTTP Webhook 操作参数](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | **订阅 - 方法** | 是 | 订阅目标终结点时使用的方法 |
    | **订阅 - URI** | 是 | 用于订阅目标终结点的 URL |
@@ -145,9 +145,9 @@ Webhook 操作也是基于事件的，并通过向指定的服务终结点注册
 | 属性名称 | 类型 | 说明 |
 |---------------|------|-------------|
 | headers | object | 请求中的标头 |
-| body | object | JSON 对象 | 包含请求中正文内容的对象 |
+| body | object | 包含请求中正文内容的对象 |
 | 状态代码 | int | 请求中的状态代码 |
-|||
+||||
 
 | 状态代码 | 说明 |
 |-------------|-------------|
@@ -166,5 +166,5 @@ Webhook 操作也是基于事件的，并通过向指定的服务终结点注册
 
 ## <a name="next-steps"></a>后续步骤
 
-* [对基于请求的触发器的入站调用进行安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
+* [保护访问和数据 - 对基于请求的触发器的入站调用的访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
 * [适用于逻辑应用的连接器](../connectors/apis-list.md)

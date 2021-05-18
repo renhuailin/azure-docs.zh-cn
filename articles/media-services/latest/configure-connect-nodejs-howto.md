@@ -14,34 +14,34 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 33d84ca86ac3cd4696dce3797b015b861884182a
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: fcb9fd9f0539b42d9253db783fd5da840f358e66
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216422"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960718"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>连接到媒体服务 v3 API - Node.js
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-本文介绍如何使用服务主体登录方法连接到 Azure 媒体服务 v3 node.js SDK。 你将使用 " *媒体服务-v3-教程* " 示例存储库中的文件。 *HelloWorld-ListAssets* 示例包含用于连接的代码，并在帐户中列出资产。
+本文介绍如何使用服务主体登录方法连接到 Azure 媒体服务 v3 node.js SDK。 你将使用 media-services-v3-node-tutorials 示例存储库中的文件。 HelloWorld-ListAssets 示例包含用于连接的代码，并在帐户中列出资产。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 安装 Visual Studio Code。
 - 安装 [Node.js](https://nodejs.org/en/download/)。
-- 安装 [Typescript](https://www.typescriptlang.org/download)。
-- [创建媒体服务帐户](./create-account-howto.md)。 请务必记住资源组名称和媒体服务帐户名称。
-- 创建应用程序的服务主体。 请参阅 [访问 api](./access-api-howto.md)。<br/>**Pro 提示！** 使此窗口保持打开状态，或将 JSON 选项卡中的所有内容复制到记事本。 
+- 安装 [TypeScript](https://www.typescriptlang.org/download)。
+- [创建媒体服务帐户](./account-create-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。
+- 创建应用程序的服务主体。 请参阅[访问 API](./access-api-howto.md)。<br/>专业提示！ 使此窗口保持打开状态，或将 JSON 选项卡中的所有内容复制到记事本。 
 - 确保获取[适用于 JavaScript 的 AzureMediaServices SDK](https://www.npmjs.com/package/@azure/arm-mediaservices)。
 
 > [!IMPORTANT]
-> 查看 Azure 媒体服务 [命名约定](media-services-apis-overview.md#naming-conventions) ，了解实体的重要命名限制。
+> 查看 Azure 媒体服务[命名约定](media-services-apis-overview.md#naming-conventions)，了解实体的重要命名限制。
 
 ## <a name="clone-the-nodejs-samples-repo"></a>克隆 Node.JS 示例存储库
 
-你将在 Azure 示例中使用某些文件。 克隆 Node.JS 示例存储库。
+你将在 Azure 示例中使用一些文件。 克隆 Node.JS 示例存储库。
 
 ```git
 git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
@@ -57,26 +57,26 @@ npm install @azure/arm-mediaservices
 
 ### <a name="install-azurems-rest-nodeauth"></a>安装 @azure/ms-rest-nodeauth
 
-请安装 " @azure/ms-rest-nodeauth "： "^ 3.0.0" 的最低版本。
+请安装“@azure/ms-rest-nodeauth”的最低版本：“^3.0.0”。
 
 ```bash
 npm install @azure/ms-rest-nodeauth@"^3.0.0"
 ```
 
-在此示例中，你将在文件中使用以下包 `package.json` 。
+在此示例中，你将在 `package.json` 文件中使用以下包。
 
 |程序包|说明|
 |---|---|
-|`@azure/arm-mediaservices`|Azure 媒体服务 SDK。 <br/>若要确保使用的是最新的 Azure 媒体服务包，请选中 " [npm 安装 @azure/arm-mediaservices ](https://www.npmjs.com/package/@azure/arm-mediaservices)"。|
-|`@azure/ms-rest-nodeauth` | 使用服务主体或托管标识进行 AAD 身份验证所必需的|
+|`@azure/arm-mediaservices`|Azure 媒体服务 SDK。 <br/>为确保使用的是最新的 Azure 媒体服务包，请检查 [npm install@azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)。|
+|`@azure/ms-rest-nodeauth` | 使用服务主体或托管标识进行 AAD 身份验证时所必需的|
 |`@azure/storage-blob`|存储 SDK。 将文件上传到资产时使用。|
 |`@azure/ms-rest-js`| 用于登录。|
-|`@azure/storage-blob` | 用于将文件上传和下载到 Azure 媒体服务中的资产进行编码。|
+|`@azure/storage-blob` | 用于将文件上传和下载到 Azure 媒体服务中的“资产”，以进行编码。|
 |`@azure/abort-controller`| 与存储客户端一起用于超时长时间运行的下载操作|
 
-### <a name="create-the-packagejson-file"></a>在文件上创建 package.js
+### <a name="create-the-packagejson-file"></a>创建 package.json 文件
 
-1. `package.json`使用偏好的编辑器创建文件。
+1. 使用偏好的编辑器创建一个 `package.json` 文件。
 1. 打开该文件并粘贴以下代码：
 
 ```json
@@ -98,11 +98,11 @@ npm install @azure/ms-rest-nodeauth@"^3.0.0"
 
 
 
-### <a name="sample-env-file"></a>示例 *env* 文件
+### <a name="sample-env-file"></a>示例 .env 文件
 
-将此文件的内容复制到名为 *env* 的文件中。 它应存储在工作存储库的根目录中。 这些是你在门户中的媒体服务帐户的 "API 访问" 页中获得的值。
+将此文件的内容复制到名为 .env 的文件中。 它应存储在工作存储库的根目录中。 这些是你在门户中媒体服务帐户的“API 访问”页中获得的值。
 
-一旦创建了 *env* 文件，就可以开始使用这些示例。
+一旦创建了 .env 文件，就可以开始使用这些示例。
 
 ```nodejs
 # Values from the API Access page in the portal
@@ -129,42 +129,42 @@ AZURE_ARM_ENDPOINT="https://management.azure.com"
 DRM_SYMMETRIC_KEY="add random base 64 encoded string here"
 ```
 
-## <a name="run-the-sample-application-helloworld-listassets"></a>运行示例应用程序 *HelloWorld-ListAssets*
+## <a name="run-the-sample-application-helloworld-listassets"></a>运行示例应用程序 HelloWorld-ListAssets
 
-1. 将目录更改到 *AMSv3Samples* 文件夹
+1. 将目录更改为 AMSv3Samples 文件夹
 
 ```bash
 cd AMSv3Samples
 ```
 
-2. 安装 *packages.js* 文件中使用的包。
+2. 安装 packages.json 文件中使用的包。
 
 ```
 npm install 
 ```
 
-3. 将目录更改到 *HelloWorld-ListAssets* 文件夹。
+3. 将目录更改为 HelloWorld-ListAssets 文件夹。
 
 ```bash
 cd HelloWorld-ListAssets
 ```
 
-4. 从 AMSv3Samples 文件夹启动 Visual Studio Code。 这是从 "vscode" 文件夹和文件上 tsconfig.js所在的文件夹启动所必需的
+4. 从 AMSv3Samples 文件夹中启动 Visual Studio Code。 需要从“.vscode”文件夹和 tsconfig.json 文件所在的文件夹中启动
 
 ```dotnetcli
 cd ..
 code .
 ```
 
-打开 *HelloWorld-ListAssets* 的文件夹， *然后在 Visual Studio Code* 编辑器中打开文件。
+打开 HelloWorld-ListAssets 的文件夹，然后在 Visual Studio Code 编辑器中打开 index.ts 文件。
 
-在 *索引 ts* 文件中，按 F5 启动调试器。 如果你的资产已在帐户中，你应看到显示的资产列表。 如果帐户为空，您将看到一个空列表。  
+在 index.ts 文件中，按 F5 启动调试器。 如果你的资产已在帐户中，应会看到显示的资产列表。 如果帐户为空，你将看到一个空列表。  
 
-若要快速查看列出的资产，请使用门户上传几个视频文件。 将自动创建每个资产，并再次运行此脚本，然后返回它们的名称。
+若要快速查看列出的资产，请使用门户上传几个视频文件。 将自动创建每个资产，然后再次运行此脚本以返回它们的名称。
 
-### <a name="a-closer-look-at-the-helloworld-listassets-sample"></a>*HelloWorld-ListAssets* 示例的详细介绍
+### <a name="a-closer-look-at-the-helloworld-listassets-sample"></a>详细了解 HelloWorld-ListAssets 示例
 
-*HelloWorld-ListAssets* 示例说明了如何使用服务主体连接到媒体服务客户端，并列出了帐户中的资产。 有关其作用的详细说明，请参阅代码中的注释。
+HelloWorld-ListAssets 示例说明了如何使用服务主体连接到媒体服务客户端，并列出帐户中的资产。 有关其作用的详细说明，请参阅代码中的注释。
 
 ```ts
 import * as msRestNodeAuth from "@azure/ms-rest-nodeauth";
@@ -213,25 +213,25 @@ main().catch((err) => {
 
 ## <a name="more-samples"></a>更多示例
 
-[存储库](https://github.com/Azure-Samples/media-services-v3-node-tutorials)中提供了以下示例
+以下示例可在[存储库](https://github.com/Azure-Samples/media-services-v3-node-tutorials)中获得
 
 |项目名称|用例|
 |---|---|
-|Live/index。 ts| 基本实时流式处理示例。 **警告**，请确保在使用 live 时，检查是否所有资源都已清理，并且不再在门户中计费|
-|StreamFilesSample/index。 ts| 上载本地文件或从源 URL 编码的基本示例。 示例演示如何使用存储 SDK 下载内容，并演示如何流式传输到播放机 |
-|StreamFilesWithDRMSample/index。 ts| 演示如何使用 Widevine 和 PlayReady DRM 进行编码和流式处理 |
-|VideoIndexerSample/index。 ts| 使用视频和音频分析器预设生成视频或音频文件中的元数据和见解的示例 |
+|Live/index.ts| 基本实时传送视频流示例。 警告：在使用实时传送视频流时，请确保检查是否已清理所有资源，并且不再在门户中计费|
+|StreamFilesSample/index.ts| 上传本地文件或从源 URL 编码的基本示例。 示例演示如何使用存储 SDK 下载内容，并演示如何流式传输到播放机 |
+|StreamFilesWithDRMSample/index.ts| 演示如何使用 Widevine 和 PlayReady DRM 进行编码和流式传输 |
+|VideoIndexerSample/index.ts| 使用视频和音频分析器预设生成视频或音频文件中的元数据和见解的示例 |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-- [适用于 Node.js的 Azure 媒体服务模块的参考文档 ](/javascript/api/overview/azure/media-services)
-- [适用于 JavaScript & Node.js 开发人员的 Azure](/azure/developer/javascript/)
-- [Git 中心存储库中的媒体服务源代码 @azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
+- [用于 Node.js 的 Azure 媒体服务模块的参考文档](/javascript/api/overview/azure/media-services)
+- [面向 JavaScript 和 Node.js 开发人员的 Azure](/azure/developer/javascript/)
+- [@azure/azure-sdk-for-js Git 中心存储库中的媒体服务源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
 - [面向 Node.js 开发人员的 Azure 包文档](/javascript/api/overview/azure/)
 - [媒体服务概念](concepts-overview.md)
-- [npm 安装 @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
-- [适用于 JavaScript & Node.js 开发人员的 Azure](/azure/developer/javascript/)
-- [存储库中的媒体服务源代码 @azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
+- [npm install @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
+- [面向 JavaScript 和 Node.js 开发人员的 Azure](/azure/developer/javascript/)
+- [@azure/azure-sdk-for-js 存储库中的媒体服务源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,10 +14,10 @@ ms.date: 02/16/2021
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd4374067fe0070c379a76ef5f59bb6aef5b29fc
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102123099"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure AD 角色
@@ -101,7 +101,7 @@ Azure AD Privileged Identity Management (PIM) 服务还允许特权角色管理�
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>更新或删除现有的角色分配
 
-按照以下步骤更新或删除现有的角色分配。 **仅限 Azure AD P2 授权客户**：不要通过 Azure AD 和 Privileged Identity Management (PIM) 为角色分配活动组。 有关详细说明，请参阅 [已知问题](../roles/groups-concept.md#known-issues)。
+按照以下步骤更新或删除现有的角色分配。 **仅限 Azure AD P2 授权客户**：不要通过 Azure AD 和 Privileged Identity Management (PIM) 为角色分配活动组。 有关详细说明，请参阅[已知问题](../roles/groups-concept.md#known-issues)。
 
 1. 打开“Azure AD Privileged Identity Management”。
 

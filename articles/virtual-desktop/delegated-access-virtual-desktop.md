@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
-manager: femila
-ms.openlocfilehash: 6dabdbc34bc1be23ee840dfa2a35eb962a6f9aae
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+manager: lizross
+ms.openlocfilehash: f2aa2c74704cf89c082d2837b39e82902efa0a62
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447057"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "88010049"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的委托访问
 
@@ -29,7 +29,7 @@ Windows 虚拟桌面有一个委托访问模型，可通过为特定用户分配
 * 角色定义
     * 内置角色
     * 自定义角色
-* 范围
+* 作用域
     * 主机池
     * 应用组
     * 工作区

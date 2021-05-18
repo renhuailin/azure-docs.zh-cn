@@ -7,10 +7,10 @@ ms.author: abnarain
 author: nabhishek
 ms.date: 02/10/2021
 ms.openlocfilehash: ccfe8fbf330e1c7f6f415b64a1f18d93a084a0ba
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100374008"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Jar 活动转换数据
@@ -52,14 +52,14 @@ ms.locfileid: "100374008"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|properties|说明|必须|
+|属性|说明|必需|
 |:--|---|:-:|
 |name|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|
 |type|对于 Databricks Jar 活动，活动类型是 DatabricksSparkJar。|是|
 |linkedServiceName|Databricks 链接服务的名称，Jar 活动在其上运行。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。|是|
-|mainClassName|类的全名，包含要执行的主要方法。 此类必须包含在作为库提供的 JAR 中。 JAR 文件可以包含多个类。 每个类都可以包含 main 方法。|是|
-|parameters|将传递到主要方法的参数。 此属性是一个字符串数组。|否|
+|mainClassName|类的全名，包含要执行的主要方法。 此类必须包含在作为库提供的 JAR 中。 一个 JAR 文件中可以包含多个类。 每个类都可以包含一种主要方法。|是|
+|parameters|将传递到主要方法的参数。 该属性是一个字符串数组。|否|
 |库|要安装在将执行作业的群集上的库列表。 它可以是 <string, object> 数组|是（至少有一个包含 mainClassName 方法）|
 
 > [!NOTE]
@@ -67,7 +67,7 @@ ms.locfileid: "100374008"
 
 ## <a name="supported-libraries-for-databricks-activities"></a>databricks 活动支持的库
 
-在前面的 Databricks 活动定义中，已指定以下库类型： `jar` 、 `egg` 、 `maven` 、 `pypi` 和 `cran` 。
+在前面的 Databricks 活动定义中，已指定以下库类型：`jar`、`egg`、`maven`、`pypi` 和 `cran`。
 
 ```json
 {
@@ -101,26 +101,26 @@ ms.locfileid: "100374008"
 
 ```
 
-有关详细信息，请参阅库类型的 [Databricks 文档](/azure/databricks/dev-tools/api/latest/libraries#managedlibrarieslibrary) 。
+有关详细信息，请参阅针对库类型的 [Databricks 文档](/azure/databricks/dev-tools/api/latest/libraries#managedlibrarieslibrary)。
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>如何上传 Databricks 中的库
 
-### <a name="you-can-use-the-workspace-ui"></a>您可以使用工作区 UI：
+### <a name="you-can-use-the-workspace-ui"></a>可以使用工作区 UI：
 
 1. [使用 Databricks 工作区 UI](/azure/databricks/libraries/#create-a-library)
 
-2. 若要获取使用 UI 添加的库的 dbfs 路径，可以使用 [DATABRICKS CLI](/azure/databricks/dev-tools/cli/#install-the-cli)。
+2. 若要获取使用 UI 添加的库的 dbfs 路径，可以使用 [Databricks CLI](/azure/databricks/dev-tools/cli/#install-the-cli)。
 
    使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 可以通过 CLI 列出所有库：databricks fs ls dbfs:/FileStore/job-jars
 
 ### <a name="or-you-can-use-the-databricks-cli"></a>或者，可以使用 Databricks CLI：
 
-1. 跟踪 [使用 DATABRICKS CLI 复制库](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs)
+1. 按照[使用 Databricks CLI 复制库](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs)操作
 
-2. 使用 Databricks CLI [ (安装步骤) ](/azure/databricks/dev-tools/cli/#install-the-cli)
+2. 使用 Databricks CLI[（安装步骤）](/azure/databricks/dev-tools/cli/#install-the-cli)
 
-   例如，要将 JAR 复制到 dbfs： `dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar`
+   例如，将 JAR 复制到 dbfs：`dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar`
 
 ## <a name="next-steps"></a>后续步骤
 
-有关此功能的11分钟简介和演示，请观看 [视频](https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player)。
+有关此功能的十一分钟介绍和演示，请观看[视频](https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player)。

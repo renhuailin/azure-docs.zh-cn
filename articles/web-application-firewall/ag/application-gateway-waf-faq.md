@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 1fbe930780ff026be748bc42104f821ee9e5c443
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.openlocfilehash: 890688dba70a7fa654e97652b3e474b919f9a077
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785096"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104585377"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>应用程序网关上的 Azure Web 应用程序防火墙的常见问题解答
 
@@ -53,6 +53,20 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 * 检测常见应用程序错误配置（即 Apache、IIS 等）
 
 有关详细信息，请参阅 [OWASP 前十大漏洞](https://owasp.org/www-project-top-ten/)。
+
+## <a name="what-content-types-does-waf-support"></a>WAF 支持哪些内容类型？
+
+对于托管规则，应用程序网关 WAF 支持以下内容类型：
+
+* application/json
+* application/xml
+* application/x-www-form-urlencoded
+* multipart/form-data
+
+对于自定义规则：
+
+* application/x-www-form-urlencoded
+* multipart/form-data
 
 ## <a name="does-waf-support-ddos-protection"></a>WAF 是否支持 DDoS 防护？
 

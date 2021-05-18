@@ -2,21 +2,21 @@
 title: 教程：使用 Azure 门户和 SSMS 加载数据
 description: 教程使用 Azure 门户和 SQL Server Management Studio 将 WideWorldImportersDW 数据仓库从全局 Azure Blob 加载到 Azure Synapse Analytics SQL 池。
 services: synapse-analytics
-author: kevinvngo
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 01/12/2021
-ms.author: kevin
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: bd9d477ed20122b0706e7997ab8922dcce7a59ba
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: fa2d720d995fdaa76a9aa98659edf4060ea6509b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685419"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565961"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教程：将数据加载到 Azure Synapse Analytics SQL 池
 
@@ -40,7 +40,7 @@ ms.locfileid: "98685419"
 本教程假设你已根据以下[教程](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)创建 SQL 专用池。 
 
 > [!NOTE]
-> 建议在本教程中使用至少一个 DW1000c。 
+> 对于本教程，建议至少使用 DW1000c。 
 
 ## <a name="create-a-user-for-loading-data"></a>创建用于加载数据的用户
 
@@ -984,7 +984,7 @@ SELECT TOP 1 * FROM [wwi].[dimension_TransactionType];
 
 3. 如果不想支付将来的费用，则可以删除数据仓库。 要删除数据仓库，以便不再为计算或存储付费，请单击“删除”。
 
-4. 若要删除创建的服务器，请单击上图中的 " **sample-svr.database.windows.net** "，然后单击 " **删除**"。  请审慎执行此操作，因为删除服务器会删除分配给该服务器的所有数据库。
+4. 若要删除之前创建的服务器，请单击上图中的“sample-svr.database.windows.net”，然后单击“删除”。   请审慎执行此操作，因为删除服务器会删除分配给该服务器的所有数据库。
 
 5. 若要删除资源组，请单击“SampleRG”，然后单击“删除资源组”。 
 

@@ -1,9 +1,9 @@
 ---
 title: 使用 Azure PowerShell 创建和配置 Azure DDoS 防护计划
-description: 了解如何使用 Azure PowerShell 创建 DDoS 保护计划
+description: 了解如何使用 Azure PowerShell 创建 DDoS 防护计划
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 69f9b5a74566879ecf8f15f23e689ebb731da45a
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
-ms.translationtype: MT
+ms.openlocfilehash: 41d45b216337cc1b674a9be390f241c4e1bb062a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814136"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103124"
 ---
-# <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和配置 Azure DDoS 保护标准
+# <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和配置 Azure DDoS 防护标准
 
-使用 Azure PowerShell 开始使用 Azure DDoS 保护标准版。 
+借助于 Azure PowerShell 开始使用 Azure DDoS 防护标准。 
 
 DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网络。 可以为组织配置一个 DDoS 防护计划，然后从多个订阅将虚拟网络链接到相同计划。 
 
-在本快速入门中，你将创建一个 DDoS 保护计划并将其链接到虚拟网络。 
+在本快速入门中，你将创建一个 DDoS 防护计划，并将其链接到虚拟网络。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,17 +35,17 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-ddos-protection-plan"></a>创建 DDoS 保护计划
+## <a name="create-a-ddos-protection-plan"></a>创建 DDoS 防护计划
 
 在 Azure 中，可将相关的资源分配到资源组。 可以使用现有资源组，也可以创建新组。
 
-若要创建资源组，请使用 [AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)。 在此示例中，我们将命名资源组 _MyResourceGroup_ ，并使用 _美国东部_ 位置：
+若要创建资源组，请使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)。 在此示例中，我们将资源组命名为 _MyResourceGroup_，并使用 _美国东部_ 位置：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name MyResourceGroup -Location "East US"
 ```
 
-现在，创建名为 _MyDdosProtectionPlan_ 的 DDoS 保护计划：
+现在，创建名为 _MyDdosProtectionPlan_ 的 DDoS 防护计划：
 
 ```azurepowershell-interactive
 New-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtectionPlan -Location "East US"
@@ -55,7 +55,7 @@ New-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtecti
 
 ### <a name="enable-ddos-for-a-new-virtual-network"></a>为新的虚拟网络启用 DDoS
 
-创建虚拟网络时，可以启用 DDoS 保护。 在此示例中，我们将命名为虚拟网络 _MyVnet_： 
+创建虚拟网络时，可以启用 DDoS 防护。 在此示例中，我们将为虚拟网络命名为 _MyVnet_： 
 
 ```azurepowershell-interactive
 New-AzVirtualNetwork -Name MyVnet -ResourceGroupName MyResourceGroup -Location "East US" -AddressPrefix 10.0.0.0/16
@@ -63,7 +63,7 @@ New-AzVirtualNetwork -Name MyVnet -ResourceGroupName MyResourceGroup -Location "
 
 ### <a name="enable-ddos-for-an-existing-virtual-network"></a>为现有虚拟网络启用 DDoS
 
-创建 DDoS 保护计划时，可以关联现有虚拟网络：
+创建 DDoS 防护计划时，可以关联现有虚拟网络：
 
 ```azurepowershell-interactive
 # Creates the DDoS protection plan
@@ -79,9 +79,9 @@ $vnet.EnableDdosProtection = $true
 $vnet | Set-AzVirtualNetwork
 ``` 
 
-## <a name="validate-and-test"></a>验证和测试
+## <a name="validate-and-test"></a>验证并测试
 
-首先，请查看 DDoS 保护计划的详细信息：
+首先检查 DDoS 防护计划的详细信息：
 
 ```azurepowershell-interactive
 Get-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtectionPlan
@@ -91,13 +91,13 @@ Get-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtecti
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可在下一教程中保留资源。 如果不再需要，请删除 _MyResourceGroup_ 资源组。 删除资源组时，还会删除 DDoS 保护计划及其所有相关资源。 
+可保留资源以供下一教程使用。 如果不再需要，请删除“MyResourceGroup”资源组。 删除资源组时，DDoS 防护计划及其所有相关资源也会一起删除。 
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
 
-为虚拟网络禁用 DDoS 保护： 
+若要为虚拟网络禁用 DDoS 防护，请执行以下操作： 
 
 ```azurepowershell-interactive
 # Gets the most updated version of the virtual network
@@ -107,11 +107,11 @@ $vnet.EnableDdosProtection = $false
 $vnet | Set-AzVirtualNetwork
 ```
 
-如果要删除 DDoS 保护计划，必须先取消关联所有虚拟网络的关联。
+如果要删除 DDoS 防护计划，必须首先取消与之关联的所有虚拟网络。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
+要了解如何查看和配置 DDoS 防护计划的遥测，请继续阅读教程。
 
 > [!div class="nextstepaction"]
 > [查看和配置 DDoS 防护遥测](telemetry.md)

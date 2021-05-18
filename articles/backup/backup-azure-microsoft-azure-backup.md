@@ -4,10 +4,10 @@ description: 本文介绍了如何准备环境，以使用 Microsoft Azure 备�
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: d476c228a619f03f798c1a2cd6854a8d603c3637
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98987016"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
@@ -80,7 +80,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 ### <a name="set-storage-replication"></a>设置存储复制
 
-存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，恢复服务保管库使用异地冗余存储。 如果此保管库是主保管库，请保留异地冗余存储这一存储选项。 如果想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 有关详细信息，请参阅[Azure 存储复制概述](../storage/common/storage-redundancy.md)中的[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)、[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)和[区域冗余](../storage/common/storage-redundancy.md#zone-redundant-storage)存储选项。
+存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，恢复服务保管库使用异地冗余存储。 如果此保管库是主保管库，请保留异地冗余存储这一存储选项。 如果想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储复制概述](../storage/common/storage-redundancy.md)部分，深入了解[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)、[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)和[区域冗余](../storage/common/storage-redundancy.md#zone-redundant-storage)存储选项。
 
 若要编辑存储复制设置，请执行以下操作：
 
@@ -156,11 +156,11 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 ![安装程序正在提取要安装的文件](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-提取过程完成后，请选中相应的复选框以启动刚刚解压缩的 *setup.exe* ，开始安装 Microsoft Azure 备份服务器并选择 " **完成** " 按钮。
+解压缩过程完成后，请选中相应的框，以启动刚刚解压缩的 setup.exe 来开始安装 Microsoft Azure 备份服务器，然后选择“完成”按钮。
 
 ### <a name="installing-the-software-package"></a>安装软件包
 
-1. 选择 " **Microsoft Azure 备份** " 以启动安装向导。
+1. 选择“Microsoft Azure 备份”以启动安装向导。
 
     ![Microsoft Azure 备份安装向导](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 2. 在“欢迎”屏幕上选择“下一步”按钮。 随即会转到“先决条件检查”部分。 在此屏幕上选择“检查”，以确定是否已满足 Azure 备份服务器的硬件和软件先决条件。 如果成功满足了所有先决条件，将看到一条消息，其中指出该计算机满足要求。 选择“下一步”按钮。
@@ -217,7 +217,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 7. 查看“设置摘要”，然后选择“安装”。
 
     ![设置摘要](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
-8. 安装会分阶段进行。 第一个阶段，会在服务器上安装 Microsoft Azure 恢复服务代理。 向导还会检查 Internet 连接。 如果 Internet 连接可用，则可以继续安装。 否则，需要提供连接到 Internet 所需的代理详细信息。
+8. 安装会分阶段进行。 第一个阶段，会在服务器上安装 Microsoft Azure 恢复服务代理。 向导还会检查 Internet 连接。 如果已建立 Internet 连接，则可继续安装。 否则，需要提供连接到 Internet 所需的代理详细信息。
 
     下一个步骤是配置 Microsoft Azure 恢复服务代理。 在配置过程中，需要提供保管库凭据，用于将计算机注册到恢复服务保管库。 还需提供通行短语来加密/解密在 Azure 与本地之间发送的数据。 可以自动生成通行短语，或提供自己的通行短语（最少包含 16 个字符）。 请继续运行向导，直到代理已完成配置。
 
@@ -278,7 +278,7 @@ MABS 使用 System Center Data Protection Manager 保护代理。 [此处](/syst
 9. 从 SQL 还原 DPMDB。
 10. 在新服务器上运行 CMD（以管理员身份）。 转到 Microsoft Azure 备份安装位置和 bin 文件夹
 
-    路径示例： `C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"`
+    路径示例：`C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"`
 
 11. 若要连接到 Azure 备份，请运行 `DPMSYNC -SYNC`
 
@@ -294,9 +294,9 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
 | 连接状态 | Azure 订阅 | 备份到 Azure | 备份到磁盘 | 从 Azure 还原 | 从磁盘还原 |
 | --- | --- | --- | --- | --- | --- |
-| 连续 |活动 |允许 |允许 |允许 |允许 |
-| 连续 |已过期 |已停止 |已停止 |允许 |允许 |
-| 连续 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
+| 已连接 |活动 |允许 |允许 |允许 |允许 |
+| 已连接 |已过期 |已停止 |已停止 |允许 |允许 |
+| 已连接 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 | 连接断开超过 15 天 |活动 |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |已过期 |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |

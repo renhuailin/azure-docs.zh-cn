@@ -5,19 +5,19 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: feea44741fbc2c81d781f0bba12b280abdb9f68a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.date: 03/16/2021
+ms.openlocfilehash: 5ff59b0add8a9b3c48ad8ae80a50c0a816c08d6e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020242"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104588065"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>流分析开窗函数简介
 
 在实时流方案中，对临时窗口中包含的数据执行操作是一种常见模式。 流分析提供对开窗函数的本机支持，使开发人员能够最小的工作量创建复杂的流进程作业。
 
-有五种类型的时态窗口可供选择： [**翻转**](/stream-analytics-query/tumbling-window-azure-stream-analytics)、 [**跳跃**](/stream-analytics-query/hopping-window-azure-stream-analytics)、 [**滑动**](/stream-analytics-query/sliding-window-azure-stream-analytics)、 [**会话**](/stream-analytics-query/session-window-azure-stream-analytics)和 [**快照**](/stream-analytics-query/snapshot-window-azure-stream-analytics) 窗口。  可在流分析作业中查询语法的 [GROUP BY](/stream-analytics-query/group-by-azure-stream-analytics) 子句中使用开窗函数  。 还可以使用 [Windows() 函数](/stream-analytics-query/windows-azure-stream-analytics)聚合在多个窗口中聚合事件。
+有五种类型的时态窗口可供选择：[ **“翻转”**](/stream-analytics-query/tumbling-window-azure-stream-analytics)、[ **“跳跃”**](/stream-analytics-query/hopping-window-azure-stream-analytics)、[ **“滑动”**](/stream-analytics-query/sliding-window-azure-stream-analytics)、[ **“会话”**](/stream-analytics-query/session-window-azure-stream-analytics)和 [ **“快照”** ](/stream-analytics-query/snapshot-window-azure-stream-analytics)窗口。  可在流分析作业中查询语法的 [GROUP BY](/stream-analytics-query/group-by-azure-stream-analytics) 子句中使用开窗函数  。 还可以使用 [Windows() 函数](/stream-analytics-query/windows-azure-stream-analytics)聚合在多个窗口中聚合事件。
 
 所有[开窗](/stream-analytics-query/windowing-azure-stream-analytics)操作都在窗口“结束”时输出结果  。 请注意，在启动流分析作业时，可以指定“作业输出开始时间”，系统将自动提取传入流中先前的事件，以在指定时间输出第一个窗口；例如，当你开始使用“立即”选项时，它将立即开始发出数据 。 窗口的输出是基于所用聚合函数的单个事件。 该输出事件包含窗口的结束时间戳，所有开窗函数都以固定的长度定义。 
 

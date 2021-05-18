@@ -1,5 +1,5 @@
 ---
-title: 在云服务中配置自定义域名 (经典) |Microsoft Docs
+title: 在云服务（经典）中配置自定义域名 | Microsoft Docs
 description: 了解如何通过配置 DNS 设置在自定义域上向 Internet 公开 Azure 应用程序或数据。  这些示例使用 Azure 门户。
 ms.topic: article
 ms.service: cloud-services
@@ -9,16 +9,16 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: bced2345473dbcbb5b9adf0269de0bef0549e862
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742363"
 ---
-# <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service-classic"></a>为 Azure 云服务配置自定义域名 (经典) 
+# <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service-classic"></a>为 Azure 云服务（经典）配置自定义域名
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 `http://contoso.cloudapp.net`）上访问应用程序。 Azure 还会分配一个虚拟 IP 地址。
 
@@ -79,14 +79,14 @@ A 记录将域（例如 **contoso.com** 或 **www\.contoso.com**）或通配符�
 4. 若要为 **www\.customdomain.com** 创建别名，还必须为 CNAME 提供域或子域别名，例如 **www**。 如果希望为根域创建别名，它可能在注册机构的 DNS 工具中以符号“ **\@** ”的形式列出。
 5. 然后，必须提供一个规范主机名，在此示例中它是应用程序的“cloudapp.net”域。
 
-例如，以下 CNAME 记录会将 **www \. contoso.com** 中的所有流量转发到 **contoso.cloudapp.net**（已部署的应用程序的自定义域名）：
+例如，以下 CNAME 记录会将 www\.contoso.com 的全部流量都转发到已部署的应用程序的自定义域名 contoso.cloudapp.net ：
 
 | 别名/主机名/子域 | 规范域 |
 | --- | --- |
 | www |contoso.cloudapp.net |
 
 > [!NOTE]
-> **Www \. contoso.com** 的访问者将不会看到真正的主机 (contoso.cloudapp.net) ，因此，转发过程对最终用户不可见。
+> www\.contoso.com 的访问者看不到真正的主机 (contoso.cloudapp.net)，所以转发过程不会让最终用户看到。
 > 
 > 上述示例仅适用于 **www** 子域的流量。 因为无法为 CNAME 记录使用通配符，所以必须为每个域/子域创建一个 CNAME。 如果希望将子域（例如 .*.contoso.com）的流量定向到 cloudapp.net 地址，则可以在 DNS 设置中配置“URL 重定向”或“URL 转发”条目，或者创建一条 A 记录。
 

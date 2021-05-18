@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7615e1dbce040002d9d1a13502637f78100965fb
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
-ms.translationtype: MT
+ms.openlocfilehash: 65ee741ee928a4883def68a5c0b6d20beee441c7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538901"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105609201"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure 认知搜索的功能
 
@@ -43,15 +43,15 @@ Azure 认知搜索提供了全文搜索引擎、持久的搜索索引存储、�
 | 相关性 | [**简单计分**](index-add-scoring-profiles.md)是 Azure 认知搜索的主要优势。 计分配置文件用于在文档中自行将相关性建模为值的函数。 例如，你可能希望较新产品或打折产品显示在搜索结果的顶部位置。 也可以基于已跟踪和单独存储的客户搜索首选项将标记用于个性化计分，来生成计分配置文件。 |
 | 地理搜索 | Azure 认知搜索可以处理、筛选和显示地理位置。 它可以让用户基于搜索结果与物理位置的临近程度浏览数据。 [观看此视频](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data)或[查看此示例](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)了解详细信息。 |
 | 筛选器和分面导航 | 通过单个查询参数实现 [**分面导航**](search-faceted-navigation.md)。 Azure 认知搜索返回一个分面导航结构，可以将该结构用作类别列表背后的代码，用于自定向筛选（例如，按价格范围或品牌来筛选目录项）。 <br/><br/> 可以使用 [**筛选器**](query-odata-filter-orderby-syntax.md)将分面导航纳入到应用程序的 UI 中，改进查询表述，以及基于用户或开发人员指定的条件进行筛选。 可以使用 OData 语法创建筛选器。 |
-| 用户体验 | 可以为搜索栏中预先键入的查询启用[自动完成](search-autocomplete-tutorial.md)。 <br/><br/>[**搜索建议**](/rest/api/searchservice/suggesters)也基于搜索栏中的部分文本输入开始工作，但结果是索引中的实际文档而不是查询术语。 <br/><br/>[**同义词**](search-synonyms.md)功能无需用户提供替换术语，便可关联隐式扩展查询范围的等效术语。 <br/><br/>[命中项突出显示](/rest/api/searchservice/Search-Documents)向搜索结果中的匹配关键字应用文本格式设置。 可以选择哪些字段返回突出显示的片段。<br/><br/>[**排序**](/rest/api/searchservice/Search-Documents)通过索引架构覆盖多个字段，可以使用一个搜索参数在查询时进行切换。<br/><br/> 通过 Azure 认知搜索所提供的对搜索结果的优化控制，[**分页**](search-pagination-page-layout.md)和限制搜索结果将变得更简单。  <br/><br/>|
+| 用户体验 | 可以为搜索栏中预先键入的查询启用[自动完成](search-add-autocomplete-suggestions.md)。 <br/><br/>[**搜索建议**](/rest/api/searchservice/suggesters)也基于搜索栏中的部分文本输入开始工作，但结果是索引中的实际文档而不是查询术语。 <br/><br/>[**同义词**](search-synonyms.md)功能无需用户提供替换术语，便可关联隐式扩展查询范围的等效术语。 <br/><br/>[命中项突出显示](/rest/api/searchservice/Search-Documents)向搜索结果中的匹配关键字应用文本格式设置。 可以选择哪些字段返回突出显示的片段。<br/><br/>[**排序**](/rest/api/searchservice/Search-Documents)通过索引架构覆盖多个字段，可以使用一个搜索参数在查询时进行切换。<br/><br/> 通过 Azure 认知搜索所提供的对搜索结果的优化控制，[**分页**](search-pagination-page-layout.md)和限制搜索结果将变得更简单。  <br/><br/>|
 
 ## <a name="security-features"></a>安全功能
 
 | 类别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 功能 |
 |-------------------|----------|
 | 数据加密 | [Microsoft 托管的静态加密](search-security-overview.md#encryption)内置在内部存储层中，它是不可撤消的。 <br/><br/>你在 Azure Key Vault 中创建和管理的 [**客户管理的加密密钥**](search-security-manage-encryption-keys.md)可以用于索引和同义词映射的补充加密。 对于 2020 年 8 月 1 日后创建的服务，CMK 加密延伸到临时磁盘上的数据，以对索引内容进行完全双重加密。|
-| Endpoint Protection | 通过 [**用于入站防火墙支持的 ip 规则**](service-configure-firewall.md)，可以设置搜索服务将接受请求的 ip 范围。<br/><br/>使用 Azure Private Link [**创建专用终结点**](service-create-private-endpoint.md)，通过虚拟网络强制执行所有请求。 |
-| 出站安全（索引器） | [**通过专用终结点的数据访问**](search-indexer-howto-access-private.md) 允许索引器连接到通过 Azure private Link 保护的 azure 资源。<br/><br/>[**使用可信标识的数据访问**](search-howto-managed-identities-data-sources.md) 意味着到外部数据源的连接字符串可以省略用户名和密码。 当索引器连接到数据源时，如果搜索服务以前已注册为受信任的服务，则资源允许连接。 |
+| Endpoint Protection | 利用[用于入站防火墙的 IP 规则支持](service-configure-firewall.md)，可以设置搜索服务将接受其中请求的 IP 范围。<br/><br/>使用 Azure 专用链接[创建专用终结点](service-create-private-endpoint.md)，以通过虚拟网络强制执行所有请求。 |
+| 出站安全（索引器） | 利用[通过专用终结点的数据访问](search-indexer-howto-access-private.md)，索引器可以连接到通过 Azure 专用链接保护的 Azure 资源。<br/><br/>[使用可信标识的数据访问](search-howto-managed-identities-data-sources.md)意味着到外部数据源的连接字符串可以省略用户名和密码。 在索引器连接到数据源时，如果搜索服务以前已注册为受信任的服务，则资源会允许该连接。 |
 
 ## <a name="portal-features"></a>门户功能
 

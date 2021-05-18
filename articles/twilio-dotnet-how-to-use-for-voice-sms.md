@@ -14,10 +14,10 @@ ms.date: 04/24/2015
 ms.author: gwallace
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 104f969f5e27ef36ad43eb10e19176a4bcfd6648
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96003747"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>如何在 Azure 中使用 Twilio 实现语音和短信功能
@@ -29,7 +29,7 @@ Twilio 为将来的商业沟通提供强大支持，并使开发人员能够将�
 利用 **Twilio 语音**，应用程序可以发起和接收电话呼叫。 **Twilio SMS** 使应用程序能够发送和接收 SMS 消息。 利用 **Twilio 客户端**，可以从任何手机、平板电脑或浏览器发起 VoIP 呼叫并支持 WebRTC。
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio 定价和特惠套餐
-Azure 客户在升级 Twilio 帐户后即可获得[特惠套餐](https://www.twilio.com/azure)：10 美元的 Twilio 信用额度。 此 Twilio 信用可应用于任何 Twilio 使用（10 美元信用等价于发送多达 1,000 条 SMS 消息或接收长达 1000 分钟的入站语音，具体取决电话号码和消息或呼叫目标的位置）。 兑换此 Twilio 信用额度，开始在 [twilio.com/azure](https://twilio.com/azure)。
+Azure 客户在升级 Twilio 帐户后即可获得[特惠套餐](https://www.twilio.com/azure)：10 美元的 Twilio 信用额度。 此 Twilio 信用可应用于任何 Twilio 使用（10 美元信用等价于发送多达 1,000 条 SMS 消息或接收长达 1000 分钟的入站语音，具体取决电话号码和消息或呼叫目标的位置）。 兑换此 Twilio 信用额度并从 [twilio.com/azure](https://twilio.com/azure) 开始。
 
 Twilio 是一种现用现付服务。 没有设置费用，并且可以随时关闭帐户。 可以在 [Twilio 定价](https://www.twilio.com/voice/pricing)中找到更多详细信息。
 
@@ -39,7 +39,7 @@ Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。 
 Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio 谓词
-API 利用了 Twilio 谓词;例如， **&lt; 口述 &gt;** 谓词指示 Twilio 在调用时呼叫时传递一条消息。
+API 利用了 Twilio 谓词；例如， **&lt;Say&gt;** 谓词指示 Twilio 在呼叫时传递语音消息。
 
 下面是 Twilio 谓词的列表。  通过 [Twilio 标记语言文档](https://www.twilio.com/docs/api/twiml)了解其他谓词和功能。
 
@@ -99,7 +99,7 @@ Twilio 为 .NET 开发人员提供了 5 个库：
 
 这些库可以[使用 NuGet 程序包管理器扩展进行安装](https://www.twilio.com/docs/csharp/install)，该扩展适用于 Visual Studio 2010 到 2015。  源代码托管在 [GitHub][twilio_github_repo] 上，其中的 Wiki 包含有关使用这些库的完整文档。
 
-默认情况下，Microsoft Visual Studio 2010 安装 1.2 版的 NuGet。 安装 Twilio 库需要 1.6 或更高版本的 NuGet。 有关安装或更新 NuGet 的信息，请参阅 [https://nuget.org/][nuget] 。
+默认情况下，Microsoft Visual Studio 2010 安装 1.2 版的 NuGet。 安装 Twilio 库需要 1.6 或更高版本的 NuGet。 有关安装或更新 NuGet 的信息，请参阅 [https://nuget.org/][nuget]。
 
 > [!NOTE]
 > 若要安装 NuGet 的最新版本，必须首先使用 Visual Studio Extension Manager 卸载已加载的版本。 为此，必须以管理员的身份运行 Visual Studio。 否则，“卸载”按钮将处于禁用状态。
@@ -175,7 +175,7 @@ catch (TwilioException ex)
 当应用程序启动对 Twilio API 的调用时（例如通过 **CallResource.Create** 方法），Twilio 会将请求发送到应该返回 TwiML 响应的 URL。 [如何：发起传出呼叫](#howto_make_call)中的示例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 返回该响应。
 
 > [!NOTE]
-> 虽然 TwiML 专供 Web 服务使用，但可以在浏览器中查看 TwiML。 例如，单击 [https://twimlets.com/message][twimlet_message_url] 以查看空 `<Response>` 元素; 如另一个示例，请单击 [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) 以查看 `<Response>` 包含 contains 元素的元素 &lt; &gt; 。
+> 虽然 TwiML 专供 Web 服务使用，但可以在浏览器中查看 TwiML。 例如，单击 [https://twimlets.com/message][twimlet_message_url] 可查看空的 `<Response>` 元素；再例如，单击 [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) 可查看包含 &lt; Say&gt; 元素的 `<Response>` 元素。
 >
 
 可以创建自己的返回 HTTP 响应的 URL 网站，而不用依赖 Twilio 提供的 URL。 可以使用任何语言创建返回 HTTP 响应的站点。 本主题假设要从 ASP.NET 一般处理程序承载该 URL。
@@ -252,7 +252,7 @@ namespace WebRole1
 }
 ```
 
-有关 TwiML 的详细信息，请参阅 [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml) 。
+有关 TwiML 的详细信息，请参阅 [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml)。
 
 在设置提供 TwiML 响应的方法后，可将此 URL 传入 **CallResource.Create** 方法中。 例如，如果将名为 MyTwiML 的 Web 应用程序部署到 Azure 云服务，则 ASP.NET 处理程序的名称将为 mytwiml.ashx，并且可将 URL 传递到 **CallResource.Create**，如以下代码示例中所示：
 

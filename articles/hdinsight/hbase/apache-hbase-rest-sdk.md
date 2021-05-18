@@ -5,14 +5,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: d1979e43adc76f4125097fc809ef137baee05f53
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 70c1dcc133f01cf72392f444192d977440c55cf4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939576"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866618"
 ---
-# <a name="use-the-net-sdk-for-apache-hbase"></a>使用 .NET SDK for Apache HBase
+# <a name="use-the-net-sdk-for-apache-hbase"></a>使用用于 Apache HBase 的 .NET SDK
 
 [Apache HBase](apache-hbase-overview.md) 提供两种主要的数据处理选择：[Apache Hive 查询，以及调用 HBase 的 RESTful API](apache-hbase-tutorial-get-started-linux.md)。 可以通过 `curl` 命令或类似的实用工具直接使用 REST API。
 
@@ -57,7 +57,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-此新表有两列系列： t1 和 t2。 由于列系列单独存储在不同的 HFile 中，因此对于频繁查询的数据，应该有一个单独的列系列。 在下面的[插入数据](#insert-data)示例中，列添加到 t1 列系列中。
+此新表有两个列系列：t1 和 t2。 由于列系列单独存储在不同的 HFile 中，因此对于频繁查询的数据，应该有一个单独的列系列。 在下面的[插入数据](#insert-data)示例中，列添加到 t1 列系列中。
 
 ## <a name="delete-a-table"></a>删除表
 
@@ -113,7 +113,7 @@ await client.StoreCellsAsync("RestSDKTable", set);
 
 HBase 可实现 [Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下图所示：
 
-![Apache HBase 示例数据输出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
+:::image type="content" source="./media/apache-hbase-rest-sdk/hdinsight-table-roles.png" alt-text="Apache HBase 示例数据输出" border="true":::
 
 ## <a name="select-data"></a>选择数据
 

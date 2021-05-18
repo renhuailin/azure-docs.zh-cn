@@ -6,22 +6,22 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5a637a6f355be32f82878a52a30c77d020190651
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 26538f48213d025c6fe71fb55abb17a025a23b45
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211611"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025673"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure 应用服务中为 .NET 应用启用快照调试器
 
-Snapshot Debugger 当前支持在 Windows 服务计划的 Azure App Service 上运行的 ASP.NET 和 ASP.NET Core 应用。
+快照调试器当前支持按 Windows 服务计划在 Azure 应用服务上运行的 ASP.NET 和 ASP.NET Core 应用。
 
-建议你在使用快照调试程序时，在 "基本" 服务层或更高版本上运行应用程序。
+建议在使用 Snapshot Debugger 时在基本服务层或更高版本上运行应用程序。
 
 对于大多数应用程序，“免费”和“共享”服务层没有足够的内存或磁盘空间来保存快照。
 
-## <a name="enable-snapshot-debugger"></a><a id="installation"></a> 启用 Snapshot Debugger
+## <a name="enable-snapshot-debugger"></a><a id="installation"></a> 启用快照调试器
 若要为应用启用快照调试器，请遵循下面的说明。
 
 如果你在运行另一种类型的 Azure 服务，则下面提供了用于在其他受支持平台上启用 Snapshot Debugger 的说明：
@@ -32,9 +32,9 @@ Snapshot Debugger 当前支持在 Windows 服务计划的 Azure App Service 上�
 * [本地虚拟机或物理计算机](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
 > [!NOTE]
-> 如果你使用的是 .NET Core 的预览版本，或你的应用程序通过依赖程序集直接或间接引用 Application Insights SDK，请按照为 [其他环境启用 Snapshot Debugger 的](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) 说明，将 [microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用程序，然后完成下面的说明。 
+> 如果使用的是 .NET Core 预览版，或者应用程序通过依赖程序集直接或间接引用了 Application Insights SDK，请按照[为其他环境启用 Snapshot Debugger](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)进行操作，将 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包包含在应用程序中，然后完成下面的其余说明。 
 >
-> Application Insights Snapshot Debugger 的无代码置备安装遵循 .NET Core 支持策略。
+> Application Insights Snapshot Debugger 的无代码安装遵循 .NET Core 支持策略。
 > 有关支持的运行时的详细信息，请参阅 [.Net Core 支持策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
 
 预安装 Snapshot Debugger 作为应用程序服务运行时的一部分，但需启用它才能获得适用于应用服务应用的快照。
@@ -56,13 +56,13 @@ Snapshot Debugger 当前支持在 Windows 服务计划的 Azure App Service 上�
 
 ## <a name="enable-snapshot-debugger-for-other-clouds"></a>为其他云启用 Snapshot Debugger
 
-目前，需要终结点修改的唯一区域是 [Azure 政府](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) 和 [azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide) 通过 Application Insights 的连接字符串。
+目前唯一需要修改终结点的区域是借助 Visual Studio Online Application Insights 的 [Azure 政府](../../azure-government/compare-azure-government-global-azure.md#application-insights)和 [Azure 中国](/azure/china/resources-developer-guide)。
 
 |连接字符串属性    | 美国政府云 | 中国云 |   
 |---------------|---------------------|-------------|
 |SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-有关其他连接替代的详细信息，请参阅 [Application Insights 文档](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides)。
+有关其他连接替代的详细信息，请参阅 [Application Insights 文档](./sdk-connection-string.md?tabs=net#connection-string-with-explicit-endpoint-overrides)。
 
 ## <a name="disable-snapshot-debugger"></a>禁用快照调试器
 
@@ -120,4 +120,3 @@ Snapshot Debugger 当前支持在 Windows 服务计划的 Azure App Service 上�
 
 [Enablement UI]: ./media/snapshot-debugger/enablement-ui.png
 [snapshot-debugger-app-setting]:./media/snapshot-debugger/snapshot-debugger-app-setting.png
-

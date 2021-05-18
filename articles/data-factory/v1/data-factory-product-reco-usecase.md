@@ -3,21 +3,21 @@ title: 数据工厂使用案例 - 产品建议
 description: 了解通过 Azure 数据工厂以及其他服务实现的使用案例。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b20eef90cebab59f823e1766d28eb355f317463d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 44c66f5fa89e7293667c930bfd1720d72dc26bf4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387183"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785064"
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 产品建议
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关此套件的详细信息，请参阅 [Cortana Intelligence 套件](https://www.microsoft.com/cortanaanalytics) 页面。 在本文档中，我们介绍了 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务已解决和实现的常见用例。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 为了吸引客户购买产品，在线零售商通常会向客户推介他们最有可能感兴趣的产品，从而大大提高购买几率。 为实现此目的，在线零售商需要针对特定用户使用个性化产品建议来自定义用户的在线体验。 这些个性化建议均基于其当前和以往购物行为数据、产品信息、新引入的品牌以及产品和客户分段数据。  另外，他们还可分析所有用户的整体使用行为，并以此为基础提供用户产品建议。
 
 这些零售商的目的是优化用户“单击-销售”转换并获得更高的销售收入。  他们通过根据客户兴趣和行动提供基于行为的全背景式产品建议来实现此转化。 在此使用案例中，我们以希望优化客户购买行为的在线零售商为例。 但这些原则适用于想要通过个性化产品建议吸引客户关注其产品和服务并增强客户购买体验的任何企业。
@@ -36,7 +36,7 @@ Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence �
 ## <a name="solution-overview"></a>解决方案概述
 在此示例中，实际 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务解决和实现使用案例，包括 [HDInsight](https://azure.microsoft.com/services/hdinsight/) 和 [Power BI](https://powerbi.microsoft.com/)。
 
-在线零售商在整个工作流中使用 Azure Blob 存储、本地 SQL Server、Azure SQL 数据库和关系数据市场作为其数据存储选项。  Blob 存储包含客户信息、客户行为数据和产品信息数据。 产品信息数据包括产品品牌信息和在 Azure Synapse Analytics 中本地存储的产品目录。 
+在线零售商在整个工作流中将 Azure Blob 存储、本地 SQL Server、Azure SQL 数据库和关系数据市场用作其数据存储选项。  Blob 存储包含客户信息、客户行为数据和产品信息数据。 产品信息数据包括产品品牌信息以及以本地方式存储于 Azure Synapse Analytics 中的产品目录。 
 
 用户在网站上浏览目录中的产品时，所有数据会汇总起来并输送到产品建议系统以基于客户兴趣和行为提供个性化的建议。 客户还会看到另外一种与寻找的产品相关的产品，这种产品以网站整体使用模式为基础，并不是以一个用户为基础。
 

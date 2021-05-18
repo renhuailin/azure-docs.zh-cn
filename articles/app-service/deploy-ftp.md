@@ -5,13 +5,13 @@ ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
 ms.topic: article
 ms.date: 02/26/2021
 ms.reviewer: dariac
-ms.custom: seodec18
-ms.openlocfilehash: c7427a1f8f528fdf405b22c4e91941ea7a915ffa
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: fd856ee47c1100292f7558bb0fa2a1772951a3cb
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045796"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832362"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
@@ -20,41 +20,41 @@ ms.locfileid: "102045796"
 应用的 FTP/S 终结点已处于活动状态。 启用 FTP/S 部署不需要进行任何配置。
 
 > [!NOTE]
-> Azure 门户的 **开发中心 (经典)** 页面，这是旧的部署经验，将于2021年3月弃用。 此更改不会影响你的应用中的任何现有部署设置，你可以继续在 " **部署中心** " 页中管理应用部署。
+> Azure 门户中的“开发中心(经典)”页面（旧部署体验）将于 2021 年 3 月弃用。 此更改不会影响应用中的任何现有部署设置，你可以继续在“部署中心”页中管理应用部署。
 
 ## <a name="get-deployment-credentials"></a>获取部署凭据
 
-1. 按照 [配置 Azure App Service 的部署凭据](deploy-configure-credentials.md) 中的说明复制应用程序范围的凭据或设置用户范围凭据。 可以使用凭据连接到应用的 FTP/S 终结点。
+1. 按照[配置 Azure 应用服务的部署凭据](deploy-configure-credentials.md)中的说明，复制应用程序范围的凭据或设置用户范围的凭据。 使用任一凭据都可以连接到应用的 FTP/S 终结点。
 
 1. 根据所选的凭据范围，按以下格式创建 FTP 用户名：
 
-    | 应用程序-范围 | 用户范围 |
+    | 应用程序范围 | 用户范围 |
     | - | - |
     |`<app-name>\$<app-name>`|`<app-name>\<deployment-user>`|
 
     ---
 
-    在应用服务中，FTP/S 终结点在应用之间共享。 由于用户范围凭据未链接到特定资源，因此需要在应用程序名称前面预置用户范围的用户名，如上所示。
+    在应用服务中，多个应用间共享 FTP/S 终结点。 由于用户范围的凭据未链接到特定资源，因此需要在应用名称前面预置用户范围的用户名，如上所示。
 
 ## <a name="get-ftps-endpoint"></a>获取 FTP/S 终结点
     
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-在你的应用程序的同一管理页面中，你已将部署凭据复制 (**部署中心**  >  **FTP 凭据**) 中，请复制 **FTPS 终结点**。
+还是在应用中复制部署凭据的同一管理页（“部署中心” > “FTP 凭据”）上，复制 **FTPS 终结点**。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-运行 [az webapp deployment list-发布-](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) profile 命令。 下面的示例使用 [JMES 路径](https://jmespath.org/) 从输出中提取 FTP/S 终结点。
+运行 [az webapp deployment list-publishing-profiles](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) 命令。 下面的示例使用 [JMES 路径](https://jmespath.org/)从输出中提取 FTP/S 终结点。
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app-name> --resource-group <group-name> --query "[?ends_with(profileName, 'FTP')].{profileName: profileName, publishUrl: publishUrl}"
 ```
 
-每个应用都有两个 FTP/S 终结点，一个是读写的，另一个是只读的 (`profileName` 包含 `ReadOnly`) 并且用于数据恢复方案。 若要通过 FTP 部署文件，请复制读写终结点的 URL。
+每个应用都有两个 FTP/S 终结点，一个支持读写，另一个是只读（`profileName` 包含 `ReadOnly`），用于数据恢复方案。 若要使用 FTP 部署文件，请复制读写终结点的 URL。
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-运行 [AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) 命令。 下面的示例从 XML 输出中提取 FTP/S 终结点。
+运行 [Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) 命令。 下面的示例是从 XML 输出中提取 FTP/S 终结点。
 
 ```azurepowershell-interactive
 $xml = [xml](Get-AzWebAppPublishingProfile -Name <app-name> -ResourceGroupName <group-name> -OutputFile null)
@@ -70,7 +70,7 @@ $xml.SelectNodes("//publishProfile[@publishMethod=`"FTP`"]/@publishUrl").value
 3. 浏览到应用的 URL，以验证该应用是否正在正常运行。 
 
 > [!NOTE] 
-> 与 [基于 Git 的部署](deploy-local-git.md) 和 [Zip 部署](deploy-zip.md)不同，FTP 部署不支持生成自动化，例如： 
+> 与[基于 Git 的部署](deploy-local-git.md)和 [Zip 部署](deploy-zip.md)不同，FTP 部署不支持生成自动化，例如： 
 >
 > - 还原依赖项（如 NuGet、NPM、PIP 和 Composer 自动化）
 > - 编译 .NET 二进制文件
@@ -93,23 +93,23 @@ $xml.SelectNodes("//publishProfile[@publishMethod=`"FTP`"]/@publishUrl").value
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-运行带有参数的 [az webapp config set](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) 命令 `--ftps-state` 。
+使用 `--ftps-state` 参数运行 [az webapp config set](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) 命令。
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <group-name> --ftps-state FtpsOnly
 ```
 
-的可能值 `--ftps-state` `AllAllowed` (启用了 FTP 和 ftps) 、 `Disabled` (禁用了 ftp 和 ftps) ， `FtpsOnly` (仅) FTPS。
+`--ftps-state` 的可能值有 `AllAllowed`（FTP 和 FTPS 已启用时）、`Disabled`（FTP 和 FTPS 已禁用时）和 `FtpsOnly`（仅 FTPS 时）。
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-运行带有参数的 [AzWebApp](/powershell/module/az.websites/set-azwebapp) 命令 `-FtpsState` 。
+使用 `-FtpsState` 参数运行 [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) 命令。
 
 ```azurepowershell-interactive
 Set-AzWebApp -Name <app-name> -ResourceGroupName <group-name> -FtpsState FtpsOnly
 ```
 
-的可能值 `--ftps-state` `AllAllowed` (启用了 FTP 和 ftps) 、 `Disabled` (禁用了 ftp 和 ftps) ， `FtpsOnly` (仅) FTPS。
+`--ftps-state` 的可能值有 `AllAllowed`（FTP 和 FTPS 已启用时）、`Disabled`（FTP 和 FTPS 已禁用时）和 `FtpsOnly`（仅 FTPS 时）。
 
 -----
 
@@ -132,7 +132,7 @@ Set-AzWebApp -Name <app-name> -ResourceGroupName <group-name> -FtpsState FtpsOnl
 若要确定问题是部署问题还是运行时问题，请参阅 [Deployment vs. runtime issues](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues)（部署问题和运行时问题）。
 
 #### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>我无法通过 FTP 来发布代码。 如何解决此问题？
-检查是否输入了正确的 [主机名](#get-ftps-endpoint) 和 [凭据](#get-deployment-credentials)。 另请检查计算机上的以下 FTP 端口是否未被防火墙阻止：
+检查是否输入了正确的[主机名](#get-ftps-endpoint)和[凭据](#get-deployment-credentials)。 另请检查计算机上的以下 FTP 端口是否未被防火墙阻止：
 
 - FTP 控制连接端口：21、990
 - FTP 数据连接端口：989、10001-10300
@@ -144,5 +144,5 @@ Azure 应用服务支持通过“主动”模式和“被动”模式进行连�
 
 * [从本地 Git 部署到 Azure 应用服务](deploy-local-git.md)
 * [ 部署凭据](deploy-configure-credentials.md)
-* [示例：创建 web 应用并使用 FTP (Azure CLI) 部署文件 ](./scripts/cli-deploy-ftp.md)。
-* [示例：使用 FTP (PowerShell) 将文件上传到 web 应用 ](./scripts/powershell-deploy-ftp.md)。
+* [示例：使用 FTP (Azure CLI) 创建 Web 应用并部署文件](./scripts/cli-deploy-ftp.md)。
+* [示例：使用 FTP (PowerShell) 将文件上传到 Web 应用](./scripts/powershell-deploy-ftp.md)。

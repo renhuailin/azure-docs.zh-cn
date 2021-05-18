@@ -7,17 +7,17 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 1/30/2018
 ms.openlocfilehash: 3305524a4e2e06f1e3433c018124495a4cd82f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87090359"
 ---
 # <a name="custom-connectors-in-logic-apps"></a>逻辑应用中的自定义连接器
 
 在未编写任何代码的情况下，你可以通过 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps)、[Power Automate](https://flow.microsoft.com) 和 [Power Apps](https://powerapps.microsoft.com) 构建工作流和应用。 这些服务为 Microsoft 服务和产品，以及 GitHub、Salesforce、Twitter 等其他服务提供[大约 200 个连接器](/connectors/)，旨在帮助集成应用、数据和业务流程。
 
-但有些时候，可能想要调用不可用作预生成的连接器的 API、服务和系统。 若要支持针对性更强的方案，可以生成有自己的触发器和操作的自定义连接器  。 连接器文档站点中提供了完整的自定义连接器基础和高级教程。 你可以首先了解[自定义连接器概述](/connectors/custom-connectors/)，也可直接转到以下主题，了解特定领域的详细信息：
+但有些时候，可能想要调用不可用作预生成的连接器的 API、服务和系统。 若要支持针对性更强的方案，可以生成有自己的触发器和操作的自定义连接器。 连接器文档站点中提供了完整的自定义连接器基础和高级教程。 你可以首先了解[自定义连接器概述](/connectors/custom-connectors/)，也可直接转到以下主题，了解特定领域的详细信息：
 
 * [创建逻辑应用连接器](/connectors/custom-connectors/create-logic-apps-connector)
 

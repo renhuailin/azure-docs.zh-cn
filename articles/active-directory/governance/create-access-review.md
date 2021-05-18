@@ -16,17 +16,17 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7143c3f9786d41c32ae954ab219197a9cfaa1050
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176869"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中创建对组和应用程序的访问评审
 
 员工和来宾对组和应用程序的访问权限会不断变化。 为了降低与过期访问权限分配相关的风险，管理员可以使用 Azure Active Directory (Azure AD) 针对组成员或应用程序访问权限创建访问评审。 如果需要定期评审访问权限，则还可以创建定期访问评审。 有关这些方案的详细信息，请参阅[管理用户访问权限](manage-user-access-with-access-reviews.md)和[管理来宾访问权限](manage-guest-access-with-access-reviews.md)。
 
-你可以观看有关如何启用访问评审的快速视频：
+你可以观看有关如何启用访问评审的短片：
 
 >[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
 
@@ -80,7 +80,7 @@ ms.locfileid: "102176869"
     - 组所有者（仅在对团队或组执行评审时可用）
     - 选定的用户或组
     - 用户评审自己的访问权限
-    - **用户的经理。**
+    - 用户的经理。
     如果你选择“用户的经理”或“组所有者”，则还可以指定回退审阅者。 当用户未在目录中指定任何经理或者组没有所有者时，系统会要求回退审阅者执行评审。
 
     ![新建访问评审](./media/create-access-review/new-access-review.png)

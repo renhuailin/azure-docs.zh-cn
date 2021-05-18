@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alkohli
 ms.openlocfilehash: 55676128f482c8fb4dbdeab0523e4556f3957af7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96581570"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的带宽计划  
@@ -40,13 +40,13 @@ ms.locfileid: "96581570"
 
 3. 在“添加计划”中： 
 
-   1. 提供计划的 **开始日期**、 **结束日期**、 **开始时间** 和 **结束时间** 。 
+   1. 提供计划的“开始日期”、“结束日期”、“开始时间”和“结束时间”。    
    2. 如果此计划全天运行，可以选中“全天”选项。 
-   3. **带宽速度** 是设备在涉及云的操作中使用的带宽（以兆位/秒为单位） (Mbps) ， (上传和下载) 。 为此字段提供介于 1 和 1,000 之间的数字。 
+   3. “带宽速率”是指设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。 为此字段提供介于 1 和 1,000 之间的数字。 
    4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。 
    5. 单击“添加”。
 
-      ![单击 "添加用户 2"](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![单击“添加用户 2”](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. 此时会使用指定的参数创建一个计划。 此计划随后会显示在门户中的带宽计划列表中。
 
@@ -62,18 +62,18 @@ ms.locfileid: "96581570"
 
 3. 进行所需的更改并保存更改。
 
-    ![修改用户2](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
+    ![修改用户 2](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
 
 4. 修改计划后，计划列表将会更新，以反映修改后的计划。
 
-    ![修改用户3](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![修改用户 3](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>删除计划
 
 执行以下步骤可以删除与 Data Box Gateway 设备关联的带宽计划。
 
-1. 在 Azure 门户中，请切换到 Data Box Gateway 资源，然后再中转到 " **带宽**"。  
+1. 在 Azure 门户中，转到自己的 Data Box Gateway 资源，然后转到“带宽”。  
 
 2. 在带宽计划列表中，选择要删除的计划。 单击右键以显示上下文菜单，然后单击“删除”。 
 

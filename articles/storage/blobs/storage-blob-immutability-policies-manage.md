@@ -9,10 +9,10 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a09dbd7d778a4f7ea2a9aac9ca07b9e6d06bc1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84463597"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>为 Blob 存储设置和管理不可变性策略
@@ -23,15 +23,15 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
 ## <a name="set-retention-policies-and-legal-holds"></a>设置保留策略和合法保留
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 请创建新的容器或选择现有容器，以便存储需要保持不可变状态的 Blob。 容器必须位于常规用途 v2 或 Blob 存储帐户中。
 
-2. 在容器设置中选择“访问策略”  。 然后选择“不可变 Blob 存储”下的“添加策略”。  
+2. 在容器设置中选择“访问策略”。 然后选择“不可变 Blob 存储”下的“添加策略”。
 
     ![门户中的容器设置](media/storage-blob-immutability-policies-manage/portal-image-1.png)
 
-3. 若要启用基于时间的保留，请从下拉菜单中选择“基于时间的保留”。 
+3. 若要启用基于时间的保留，请从下拉菜单中选择“基于时间的保留”。
 
     ![在“策略类型”下选择“基于时间的保留”](media/storage-blob-immutability-policies-manage/portal-image-2.png)
 
@@ -41,15 +41,15 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
     策略的初始状态为“未锁定”，在此状态下可以先测试该功能，并在锁定之前对策略进行更改。 必须锁定策略才能符合 SEC 17a-4 等法规的要求。
 
-5. 锁定策略。 右键单击省略号 ( **...** )，此时会显示以下包含附加操作的菜单：
+5. 锁定策略。 右键单击省略号 (**...**)，此时会显示以下包含附加操作的菜单：
 
     ![菜单中的“锁定策略”](media/storage-blob-immutability-policies-manage/portal-image-4-lock-policy.png)
 
-6. 选择“锁定策略”并确认锁定。  现已锁定该策略，无法将其删除，只允许延长保留时间间隔。 不允许删除和替代 Blob。 
+6. 选择“锁定策略”并确认锁定。 现已锁定该策略，无法将其删除，只允许延长保留时间间隔。 不允许删除和替代 Blob。 
 
     ![在菜单中确认“锁定策略”](media/storage-blob-immutability-policies-manage/portal-image-5-lock-policy.png)
 
-7. 若要启用法定保留，请选择“添加策略”。  从下拉菜单中选择“法定保留”  。
+7. 若要启用法定保留，请选择“添加策略”。 从下拉菜单中选择“法定保留”。
 
     ![菜单中“策略类型”下面的“法定保留”](media/storage-blob-immutability-policies-manage/portal-image-legal-hold-selection-7.png)
 
@@ -166,11 +166,11 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ---
 
-## <a name="enabling-allow-protected-append-blobs-writes"></a>允许受保护的追加 Blob 写入
+## <a name="enabling-allow-protected-append-blobs-writes"></a>启用允许受保护的追加 blob 写入
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![允许其他追加写入](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
+![允许额外追加写入](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -188,4 +188,4 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用不可变存储存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)
+[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)

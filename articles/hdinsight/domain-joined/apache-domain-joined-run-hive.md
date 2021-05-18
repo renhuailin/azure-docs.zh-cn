@@ -4,12 +4,12 @@ description: 了解如何为具有企业安全性套餐的 Azure HDInsight 服�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: fbe4361033321f2ba81478c41a138937f70b5498
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 15c406576b373577a2a3a50108acad7ccbf36699
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705698"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863252"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 
@@ -30,7 +30,7 @@ ms.locfileid: "101705698"
 
 2. 使用群集管理员域用户名和密码登录：
 
-    ![HDInsight ESP Ranger 主页](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png" alt-text="HDInsight ESP Ranger 主页" border="true":::
 
     目前，Ranger 仅适用于 Yarn 和 Hive。
 
@@ -57,7 +57,7 @@ ms.locfileid: "101705698"
     |选择用户|hiveuser1|
     |权限|select|
 
-    ![HDInsight ESP Ranger Hive 策略配置](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png" alt-text="HDInsight ESP Ranger Hive 策略配置" border="true":::。
 
     > [!NOTE]  
     > 如果域用户未在“选择用户”中填充，请等待几分钟让 Ranger 与 AAD 同步。
@@ -101,7 +101,7 @@ ms.locfileid: "101705698"
 
 1. 在“数据”选项卡中，导航到“获取数据” > “从其他源” > “从 ODBC”来启动“从 ODBC”窗口    。
 
-    ![打开数据连接向导](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png" alt-text="打开数据连接向导" border="true":::
 
 1. 在下拉列表中，选择在上一部分创建的数据源名称，然后选择“确定”。
 

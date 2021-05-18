@@ -4,10 +4,10 @@ description: 列出用于扩展其他资源类型的功能的 Azure 资源类型
 ms.topic: conceptual
 ms.date: 11/14/2020
 ms.openlocfilehash: 5561c480dd5a2849588ed2288eb5bcc35fc1446c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94658445"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>用于扩展其他资源的功能的资源类型
@@ -36,9 +36,9 @@ ms.locfileid: "94658445"
 - Microsoft.Authorization/roleAssignments
 - Microsoft.Authorization/roleDefinitions
 
-## <a name="microsoftautomanage"></a>Automanage
+## <a name="microsoftautomanage"></a>Microsoft.Automanage
 
-- Automanage/configurationProfileAssignments
+- Microsoft.Automanage/configurationProfileAssignments
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -68,7 +68,7 @@ ms.locfileid: "94658445"
 - Microsoft.Consumption/Pricesheets
 - Microsoft.Consumption/products
 - Microsoft.Consumption/ReservationDetails
-- ReservationRecommendationDetails/
+- Microsoft.Consumption/ReservationRecommendationDetails
 - Microsoft.Consumption/ReservationRecommendations
 - Microsoft.Consumption/ReservationSummaries
 - Microsoft.Consumption/ReservationTransactions
@@ -85,7 +85,7 @@ ms.locfileid: "94658445"
 - Microsoft.CostManagement/Exports
 - Microsoft.CostManagement/ExternalSubscriptions
 - Microsoft.CostManagement/Forecast
-- CostManagement/Insights
+- Microsoft.CostManagement/Insights
 - Microsoft.CostManagement/Query
 - Microsoft.CostManagement/Reportconfigs
 - Microsoft.CostManagement/Reports
@@ -127,7 +127,7 @@ ms.locfileid: "94658445"
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft.KubernetesConfiguration
 
-- KubernetesConfiguration/扩展
+- Microsoft.KubernetesConfiguration/extensions
 - Microsoft.KubernetesConfiguration/sourceControlConfigurations
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
@@ -186,7 +186,7 @@ ms.locfileid: "94658445"
 - Microsoft.Security/assessments
 - Microsoft.Security/Compliances
 - Microsoft.Security/dataCollectionAgents
-- Microsoft. Security/devices
+- Microsoft.Security/devices
 - Microsoft.Security/deviceSecurityGroups
 - Microsoft.Security/InformationProtectionPolicies
 - Microsoft.Security/iotSensors
@@ -199,20 +199,20 @@ ms.locfileid: "94658445"
 - Microsoft.SecurityInsights/aggregations
 - Microsoft.SecurityInsights/alertRules
 - Microsoft.SecurityInsights/alertRuleTemplates
-- SecurityInsights/automationRules
+- Microsoft.SecurityInsights/automationRules
 - Microsoft.SecurityInsights/bookmarks
 - Microsoft.SecurityInsights/cases
 - Microsoft.SecurityInsights/dataConnectors
-- SecurityInsights/dataConnectorsCheckRequirements
+- Microsoft.SecurityInsights/dataConnectorsCheckRequirements
 - Microsoft.SecurityInsights/entities
-- SecurityInsights/事件
+- Microsoft.SecurityInsights/incidents
 - Microsoft.SecurityInsights/settings
-- SecurityInsights/threatIntelligence
-- SecurityInsights/watchlists
+- Microsoft.SecurityInsights/threatIntelligence
+- Microsoft.SecurityInsights/watchlists
 
-## <a name="microsoftserialconsoleppe"></a>SerialConsole. PPE
+## <a name="microsoftserialconsoleppe"></a>Microsoft.SerialConsole.PPE
 
-- SerialConsole. PPE/serialPorts
+- Microsoft.SerialConsole.PPE/serialPorts
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
 
@@ -232,4 +232,4 @@ ms.locfileid: "94658445"
 ## <a name="next-steps"></a>后续步骤
 
 - 若要在 Azure 资源管理器模板中获取扩展资源的资源 ID，请使用 [extensionResourceId](../templates/template-functions-resource.md#extensionresourceid)。
-- 有关在模板中创建扩展资源的示例，请参阅 [事件网格事件订阅](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions)。
+- 有关在模板中创建扩展资源的示例，请参阅[事件网格事件订阅](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions)。

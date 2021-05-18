@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 057a284f99dd7c3713249b19e8fc39212d9e6003
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb43396260e1b914f9f5b9e9ae489e87042a3154
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640281"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101092435"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统
 
@@ -53,7 +53,7 @@ ms.locfileid: "105640281"
 | **Windows 10** | PlayReady | 适用于 PlayReady 的 Microsoft Edge/IE11|
 | **Android 设备（手机、平板电脑、电视）** |Widevine |适用于 Widevine 的 Chrome |
 | **iOS** | FairPlay | 适用于 FairPlay 的 Safari（自 iOS 11.2 起） |
-| **macOS** | FairPlay | 适用于 FairPlay 的 Safari（自 macOS X 10.11 + El Capitan 版 Safari 9+ 起）|
+| **macOS** | FairPlay | 适用于 FairPlay 的 Safari（自 Mac OS X 10.11 + El Capitan 版 Safari 9+ 起）|
 | **tvOS** | FairPlay | |
 
 就目前每种 DRM 的部署状态而言，服务通常需要实现两到三个 DRM，以确保能以最佳方式处理所有类型的终结点。
@@ -357,3 +357,9 @@ Widevine 不会阻止对受保护的视频进行屏幕截图。
 ![自定义 STS 和非对称密钥](./media/design-multi-drm-system-with-access-control/media-services-running-sts2.png)
 
 在上述两个方案中，用户身份验证相同。 身份验证是通过 Azure AD 发生的。 唯一的差别在于，JWT 由自定义 STS 而不是 Azure AD 颁发。 配置动态 CENC 保护时，许可证传送服务的限制将指定 JWT 的类型是对称还是非对称密钥。
+
+## <a name="next-steps"></a>后续步骤
+
+* [常见问题解答](frequently-asked-questions.md)
+* [内容保护概述](content-protection-overview.md)
+* [使用 DRM 保护内容](protect-with-drm.md)

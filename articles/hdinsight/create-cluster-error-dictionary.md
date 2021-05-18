@@ -1,15 +1,15 @@
 ---
-title: Azure HDInsight 创建群集错误字典
+title: Azure HDInsight 创建群集 - 错误字典
 description: 了解如何排查创建 Azure HDInsight 群集时出现的错误
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
 ms.openlocfilehash: 469adf1c0e5108f7a8c89a7c3a4bebba5d42b431
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102183958"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：群集创建错误
@@ -144,7 +144,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ---
 
-## <a name="error-code-storagepermissionsblockedformsi"></a>错误代码： StoragePermissionsBlockedForMsi
+## <a name="error-code-storagepermissionsblockedformsi"></a>错误代码：StoragePermissionsBlockedForMsi
 
 ### <a name="error"></a>错误
 

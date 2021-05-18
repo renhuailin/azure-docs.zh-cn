@@ -644,11 +644,17 @@ items:
                 href: monitoring/how-to-monitor-spark-pools.md
               - name: 使用 Apache Spark 分析 JSON
                 href: how-to-analyze-complex-schema.md
-          - name: 引入和准备数据
+          - name: 数据源
             items:
-              - name: SQL 数据仓库
+              - name: Azure Cosmos DB
+                href: ./synapse-link/how-to-query-analytical-store-spark.md
+              - name: Azure 数据资源管理器 (Kusto)
+                href: ./spark/data-sources/apache-spark-kusto-connector.md
+              - name: Azure SQL 数据仓库
                 href: ./spark/synapse-spark-sql-pool-import-export.md
-              - name: 分析 JSON
+              - name: Azure SQL 和 SQL Server
+                href: ./spark/data-sources/apache-spark-sql-connector.md
+              - name: JSON
                 href: how-to-analyze-complex-schema.md
   - name: Synapse Link
     items:

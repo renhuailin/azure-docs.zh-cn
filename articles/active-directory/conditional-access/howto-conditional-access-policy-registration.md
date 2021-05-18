@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e99f7466bd3b7ed5517157ca3fa45e7c3241217
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98599756"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>条件访问：保护安全信息注册
 
-使用条件性访问策略中的用户操作，可以确保用户注册 Azure AD 多重身份验证和自助密码重置的时间和方式。 此预览功能适用于已启用[合并注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 如果要使用受信任的网络位置等条件来限制对注册 Azure AD 多重身份验证和自助服务密码重置 (SSPR) ，则可以在组织中启用此功能。 有关可用条件的详细信息，请参阅[条件访问：条件](concept-conditional-access-conditions.md)一文。
+现在，通过使用条件访问策略中的用户操作，可以保护用户何时以及如何注册 Azure AD 多重身份验证和自助式密码重置。 此预览功能适用于已启用[合并注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 如果要使用受信任的网络位置等条件来限制对注册 Azure AD 多重身份验证和自助密码重置 (SSPR) 的访问权限，组织可能会启用此功能。 有关可用条件的详细信息，请参阅[条件访问：条件](concept-conditional-access-conditions.md)一文。
 
 ## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>创建需要从受信任位置注册的策略
 
@@ -35,7 +35,7 @@ ms.locfileid: "98599756"
    > 必须为[合并注册](../authentication/howto-registration-mfa-sspr-combined.md)启用用户。
 
    1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
-   1. 选择“完成”。
+   1. 选择“完成”  。
 1. 在“云应用或操作”下，选择“用户操作”，选中“注册安全信息”。
 1. 在“条件” > “位置”下。
    1. 配置“是”。
@@ -63,7 +63,7 @@ ms.locfileid: "98599756"
 
 > [!WARNING]
 > 如果你使用设备状态作为策略中的条件，则可能会影响目录中的来宾用户。 [仅限报告模式](concept-conditional-access-report-only.md)有助于确定策略决策的影响。
-> 请注意，仅限报表模式不适用于具有 "用户操作" 范围的条件性访问策略。
+> 请注意，仅限报告模式不适用于具有“用户操作”范围的条件访问策略。
 
 ## <a name="next-steps"></a>后续步骤
 

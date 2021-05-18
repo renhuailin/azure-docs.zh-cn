@@ -130,14 +130,16 @@
           href: backup.md
     - name: 安全
       items:
+        - name: 配置密钥保管库网络设置
+          href: how-to-azure-key-vault-network-security.md
+        - name: 访问防火墙后面的 Key Vault
+          href: access-behind-firewall.md
         - name: Azure 专用链接
           items:
             - name: 与 Azure 专用链接服务集成
               href: private-link-service.md
             - name: 诊断专用链接配置问题
               href: private-link-diagnostics.md
-        - name: 访问防火墙后面的 Key Vault
-          href: access-behind-firewall.md
     - name: 移动 Key Vault
       items:
         - name: 将 Key Vault 移到另一个资源组

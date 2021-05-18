@@ -1,5 +1,5 @@
 ---
-title: 显示 Android maps 中的功能信息 |Microsoft Azure 映射
+title: 在 Android 地图上显示功能信息 | Microsoft Azure Maps
 description: 了解如何在用户与地图功能交互时显示信息。 使用 Azure Maps Android SDK 显示 toast 消息和其他类型的消息。
 author: rbrundritt
 ms.author: richbrun
@@ -10,15 +10,15 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: b9926d5d6a70d959c0baacd9602341bb69abe924
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097238"
 ---
 # <a name="display-feature-information"></a>显示功能信息
 
-空间数据通常使用点、线条和多边形来表示。 此数据通常具有与之关联的元数据信息。 例如，点可能代表餐馆的位置，而有关该餐馆的元数据可能是其所服务的食品的名称、地址和类型。 此元数据可作为 GeoJSON 的属性添加 `Feature` 。 下面的代码使用 `title` 值为 "Hello World！" 的属性创建一个简单的点功能。
+空间数据通常使用点、线条和多边形来表示。 这种数据通常具有与之关联的元数据信息。 例如，点可能代表餐馆的位置，而有关该餐馆的元数据可能是餐馆的名称、地址和提供的美食种类。 可作为 GeoJSON 的属性 `Feature` 添加这一元数据。 下面的代码创建一个简单的点要素，其 `title` 属性的值为“Hello World!”
 
 ::: zone pivot="programming-language-java-android"
 
@@ -58,9 +58,9 @@ source.add(feature)
 
 ::: zone-end
 
-有关创建数据源并将数据添加到地图的方法，请参阅 [创建数据源](create-data-source-android-sdk.md) 文档。
+有关创建数据并将其添加到地图的方法，请参见[创建数据源](create-data-source-android-sdk.md)文档。
 
-当用户与地图上的功能交互时，可以使用事件来响应这些操作。 常见的情况是显示一条消息，该消息由用户与之交互的功能的元数据属性组成。 `OnFeatureClick`事件是用于检测用户在地图上点击功能时所使用的主要事件。 还有一个 `OnLongFeatureClick` 事件。 向映射添加 `OnFeatureClick` 事件时，可以将该事件限制为单个层，方法是传入层的 ID 以将其限制为。 如果未传入任何层 ID，请在映射上点击任意功能，而不考虑它所在的层，将触发此事件。 下面的代码创建一个符号层，用于在地图上呈现点数据，然后添加一个 `OnFeatureClick` 事件并将其限制为此符号层。
+当用户与地图上的功能交互时，可以使用事件来回应这些操作。 常见的情况是显示一条消息，其中包含用户与之交互的功能的元数据属性。 `OnFeatureClick` 事件是用于检测用户在地图上点击功能时所使用的主要事件。 还有一个是 `OnLongFeatureClick` 事件。 向地图中添加 `OnFeatureClick` 事件时，可以将该事件限制为单个层，方法是传入要将事件限制为的层的 ID。 如果未传入任何层 ID，则在地图上点击任意功能都将触发此事件，无论功能位于哪个层。 下面的代码创建一个符号层，用于在地图上呈现点数据，然后添加一个 `OnFeatureClick` 事件并将该事件限制为此符号层。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -100,7 +100,7 @@ map.events.add(OnFeatureClick { features: List<Feature> ->
 
 ## <a name="display-a-toast-message"></a>显示 toast 消息
 
-Toast 消息是向用户显示信息的最简单方法之一，在 Android 的所有版本中都提供。 它不支持任何类型的用户输入，只会在短时间内显示。 如果你想要快速让用户了解他们点击的内容，则 toast 消息可能是一个不错的选择。 下面的代码演示如何在事件中使用 toast 消息 `OnFeatureClick` 。
+Toast 消息是向用户显示信息的最简单方法之一，在 Android 的所有版本中都提供。 Toast 消息不支持任何类型的用户输入，只是显示片刻。 如果你想要快速让用户了解他们点击的内容，则 toast 消息可能是一个不错的选择。 下面的代码演示如何在事件中使用 toast 消息 `OnFeatureClick`。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -134,16 +134,16 @@ map.events.add(OnFeatureClick { features: List<Feature> ->
 
 ![正在点击的功能的动画和正在显示的 toast 消息](media/display-feature-information-android/symbol-layer-click-toast-message.gif)
 
-除了 toast 消息以外，还有很多其他方法可以提供功能的元数据属性，例如：
+除了 toast 消息以外，还有很多其他方法可以呈现功能的元数据属性，例如：
 
-- [Snackbar 小组件](https://developer.android.com/training/snackbar/showing.html)  -  `Snackbars`提供有关操作的轻型反馈。 它们会在移动设备的底部显示简短消息，在较大的设备上显示在左下方。 `Snackbars` 显示在屏幕上的所有其他元素之上，一次只能显示一个。
-- [对话框-对话框](https://developer.android.com/guide/topics/ui/dialogs) 是一个小窗口，它会提示用户做出决定或输入其他信息。 对话框并不填充屏幕，通常用于模式事件，这些事件要求用户执行操作，然后才能继续。
-- 向当前活动添加一个 [片段](https://developer.android.com/guide/components/fragments) 。
+- [Snackbar](https://developer.android.com/training/snackbar/showing.html) - `Snackbars` 小组件提供有关操作的轻量级反馈。 这些小组件会在移动设备的底部显示简短消息，在较大的设备上则显示在左下方。 `Snackbars` 显示在屏幕上的所有其他元素之上，一次只能显示一个。
+- [对话框](https://developer.android.com/guide/topics/ui/dialogs) - 对话框是一个小窗口，它会提示用户做出决定或输入其他信息。 对话框并不填充屏幕，通常用于模式事件，这些事件要求用户先执行某个操作，然后才能继续。
+- 向当前活动添加一个[片段](https://developer.android.com/guide/components/fragments)。
 - 导航到另一个活动或视图。
 
 ## <a name="display-a-popup"></a>显示弹出窗口
 
-Azure Maps Android SDK 提供了一个 `Popup` 类，使用户可以轻松地创建定位到地图上某个位置的 UI 注释元素。 对于弹出窗口，必须将具有相对布局的视图传入 `content` 弹出式窗口的选项。 下面是一个简单的布局示例，用于在背景上显示暗文本。
+Azure Maps Android SDK 提供了一个 `Popup` 类，使用户可以轻松创建定位到地图上某个位置的 UI 注释元素。 对于弹出窗口，必须将具有相对布局的视图传入弹出窗口的 `content` 选项。 下面是一个简单的布局示例，用于在白色背景上显示深色文本。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -168,7 +168,7 @@ Azure Maps Android SDK 提供了一个 `Popup` 类，使用户可以轻松地创
 </RelativeLayout>
 ```
 
-假设以上布局存储在应用的文件夹中名为的文件中 `popup_text.xml` `res -> layout` ，以下代码将创建一个弹出窗口，并将其添加到地图中。 单击某个功能时，将 `title` 使用布局显示该属性 `popup_text.xml` ，并将布局的底部中心定位到地图上的指定位置。
+假设以上布局存储在应用的 `res -> layout` 文件夹中名为 `popup_text.xml` 的文件中，以下代码将创建一个弹出窗口，并将弹出窗口添加到地图中。 单击某个功能时，将使用 `popup_text.xml` 布局显示 `title` 属性，并且布局的底部中心定位在地图上的指定位置。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -260,13 +260,13 @@ map.events.add(OnFeatureClick { feature: List<Feature> ->
 
 ::: zone-end
 
-下面的屏幕截图显示当功能被单击时显示的弹出窗口，并在移动时保持定位到其在地图上指定的位置。
+以下屏幕截图显示了单击功能时出现的弹出窗口，并在地图移动时固定在其在地图上的指定位置。
 
-![正在显示的弹出窗口，并且地图被定位到地图上某个位置的弹出窗口](./media/display-feature-information-android/android-popup.gif)
+![动画演示，显示了弹出窗口，并且地图移动，而弹出窗口固定到地图上某个位置](./media/display-feature-information-android/android-popup.gif)
 
 ## <a name="next-steps"></a>后续步骤
 
-将更多数据添加到地图：
+要将更多数据添加到地图，请执行以下操作：
 
 > [!div class="nextstepaction"]
 > [响应地图事件](android-map-events.md)

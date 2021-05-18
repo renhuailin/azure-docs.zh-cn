@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 1e3ea9222b0f231250bde43fb86c07847ca4835e
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99832329"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>使用 Azure Cloud Shell 编辑器
@@ -53,5 +53,5 @@ Azure Cloud Shell 包括从开源 [Monaco 编辑器](https://github.com/Microsof
 
 ## <a name="next-steps"></a>后续步骤
 
-- [试用 Cloud Shell 上的 Bash 快速入门](quickstart.md)
-- [查看集成 Cloud Shell 工具的完整列表](features.md)
+- [试用 Cloud Shell 中 Bash 的快速入门](quickstart.md)
+- [查看集成的 Cloud Shell 工具的完整列表](features.md)

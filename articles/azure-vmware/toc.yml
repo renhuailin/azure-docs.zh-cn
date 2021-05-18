@@ -76,8 +76,8 @@
       href: configure-site-to-site-vpn-gateway.md
     - name: 配置 Windows Server 故障转移群集
       href: configure-windows-server-failover-cluster.md
-    - name: 重置 vSphere 凭据
-      href: reset-vsphere-credentials.md
+    - name: 轮换 cloudadmin 凭据
+      href: rotate-cloudadmin-credentials.md
     - name: 使用 Azure 备份服务器进行备份和还原
       items:
         - name: 备份 VMware VM
@@ -144,7 +144,7 @@
           href: fix-deployment-provisioning-failures.md
         - name: VMware 工具 vix 错误代码 = 21009
           href: 'https://kb.vmware.com/s/article/2129927'
-    - name: 常见问题解答
+    - name: 常见问题
       items:
         - name: 常规
           href: /azure/azure-vmware/faq#general

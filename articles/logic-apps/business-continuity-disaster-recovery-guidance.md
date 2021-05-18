@@ -3,15 +3,15 @@ title: 业务连续性和灾难恢复
 description: 设计策略以保护数据、在发生中断性事件后快速恢复、还原关键业务功能所需的资源，以及保持 Azure 逻辑应用的业务连续性
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: f974a99c59b19b5df7bf6ffcc66c2dc133743f0a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 03/31/2020
+ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790532"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "89658203"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure 逻辑应用的业务连续性和灾难恢复
 
@@ -46,7 +46,7 @@ ms.locfileid: "107790532"
 
 * 这两个逻辑应用实例的主机类型相同。 因此，两个实例都会部署到全球多租户 Azure 中的区域，或者，两个实例都会部署到 ISE，从而使逻辑应用能够直接访问 Azure 虚拟网络中的资源。 有关 BCDR 配对区域的最佳做法和详细信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../best-practices-availability-paired-regions.md)。
 
-  例如，如果主要逻辑应用在 ISE 中运行，并且使用 [ISE 版本控制连接器](../connectors/managed.md#ise-connectors)和/或用于调用 Azure 虚拟网络中资源的 HTTP 操作，则主要位置和辅助位置都必须是 ISE。 在此方案中，辅助逻辑应用还必须在辅助位置具有与主要逻辑应用类似的设置。
+  例如，如果主要逻辑应用在 ISE 中运行，并且使用 [ISE 版本控制连接器](../connectors/apis-list.md#ise-connectors)和/或用于调用 Azure 虚拟网络中资源的 HTTP 操作，则主要位置和辅助位置都必须是 ISE。 在此方案中，辅助逻辑应用还必须在辅助位置具有与主要逻辑应用类似的设置。
 
   > [!NOTE]
   > 对于更高级的方案，可以将多租户 Azure 和 ISE 混合起来作为位置。 但是，请确保考虑并了解[逻辑应用在 ISE 中运行与在多租户 Azure 中运行的方式有何区别](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)。

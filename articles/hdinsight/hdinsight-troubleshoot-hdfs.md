@@ -1,16 +1,16 @@
 ---
-title: 排查 Azure HDInsight 中的 HDFS 问题
+title: Azure HDInsight 中的 HDFS 故障排除
 description: 获取有关使用 HDFS 和 Azure HDInsight 的常见问题答案。
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0be7805493e5acc41254c57ca912b5a2ecf02dae
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: c725e7b4e7af33181cb616d2bce2ae19521a5e7d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931465"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871871"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hadoop HDFS 进行故障排除
 
@@ -116,13 +116,13 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 3. 在“筛选...”字段中输入 `fs.azure.write.request.size`。
 4. 将值从 262144 (256 KB) 更改为新的值。 例如，4194304 (4 MB)。
 
-    ![通过 Ambari Web UI 更改值的图像](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)
+    :::image type="content" source="./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png" alt-text="通过 Ambari Web UI 更改值的图像" border="false":::
 
 有关如何使用 Ambari 的详细信息，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
 
 ## <a name="du"></a>du
 
-[`-du`](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du)命令显示给定目录中包含的文件和目录的大小或文件的长度（如果它只是一个文件）。
+[`-du`](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) 命令显示给定目录中包含的文件和目录的大小或文件的长度（如果它只是一个文件）。
 
 `-s` 选项生成所显示文件长度的聚合汇总。  
 `-h` 选项设置文件大小的格式。

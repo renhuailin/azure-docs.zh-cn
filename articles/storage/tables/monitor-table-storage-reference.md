@@ -1,6 +1,6 @@
 ---
-title: Azure 表存储监视数据引用 |Microsoft Docs
-description: 用于监视 Azure 表存储中的数据的日志和指标参考。
+title: Azure 表存储监视数据参考 | Microsoft Docs
+description: 有关 Azure 表存储中的监视数据的日志和指标参考。
 author: normesta
 services: azure-monitor
 ms.service: azure-monitor
@@ -10,13 +10,13 @@ ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
 ms.openlocfilehash: ad56b6af9a9071812ad6fa581954010df3b6b5d7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100574841"
 ---
-# <a name="azure-table-storage-monitoring-data-reference"></a>Azure 表存储监视数据引用
+# <a name="azure-table-storage-monitoring-data-reference"></a>Azure 表存储监视数据参考
 
 请参阅[监视 Azure 存储](monitor-table-storage.md)，详细了解如何收集和分析 Azure 存储的监视数据。
 
@@ -44,9 +44,9 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 | TableCount   | 存储帐户中的表数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 | TableEntityCount | 存储帐户中的表实体数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
-### <a name="transaction-metrics"></a>事务指标
+### <a name="transaction-metrics"></a>事务度量值
 
-从 Azure 存储到 Azure Monitor 的每个存储帐户请求都会发出事务指标。 如果存储帐户中没有任何活动，则在此期间不会有关于事务指标的数据。 所有事务指标都在帐户和表存储服务级别均可用。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
+从 Azure 存储到 Azure Monitor 的每个存储帐户请求都会发出事务指标。 如果存储帐户中没有任何活动，则在此期间不会有关于事务指标的数据。 所有事务指标均在帐户级别和表存储服务级别提供。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
 
 [!INCLUDE [Transaction metrics](../../../includes/azure-storage-account-transaction-metrics.md)]
 
@@ -79,5 +79,5 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 
 ## <a name="see-also"></a>另请参阅
 
-- 有关监视 Azure 存储的说明，请参阅 [监视 Azure 表存储](monitor-table-storage.md) 。
-- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。
+- 有关如何监视 Azure 存储的说明，请参阅[监视 Azure 表存储](monitor-table-storage.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。

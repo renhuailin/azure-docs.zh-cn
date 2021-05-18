@@ -1,7 +1,7 @@
 ---
 title: 条件认知技能
 titleSuffix: Azure Cognitive Search
-description: Azure 认知搜索中的条件性技能启用筛选、创建默认值以及合并技能组合定义中的值。
+description: Azure 认知搜索中的条件性技能可以启用筛选、创建默认值以及合并技能组定义中的值。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f47ca56fa1b40422edeb0d4e11c24be6f60e49e5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101666369"
 ---
 # <a name="conditional-cognitive-skill"></a>条件认知技能
 
-**条件** 技能使 Azure 认知搜索方案需要一个布尔运算来确定要分配给输出的数据。 这些方案包括基于条件进行筛选、分配默认值以及合并数据。
+利用 **条件** 技能，需要布尔运算的 Azure 认知搜索方案能够确定要分配给输出的数据。 这些方案包括基于条件进行筛选、分配默认值以及合并数据。
 
 以下伪代码演示条件技能可以实现的功能：
 
@@ -96,7 +96,7 @@ Microsoft.Skills.Util.ConditionalSkill
 
 ## <a name="examples"></a>示例
 
-### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>示例技能定义1：筛选文档以仅返回法语文档
+### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>示例技能定义 1：筛选文档以仅返回法语文档
 
 如果文档的语言为法语，则以下输出将返回句子数组 ("/document/frenchSentences")。 如果语言不是法语，值将设置为 *null*。
 
@@ -115,7 +115,7 @@ Microsoft.Skills.Util.ConditionalSkill
 如果将“/document/frenchSentences”用作另一技能的上下文，仅当“/document/frenchSentences”未设置为 *null* 时，才运行该技能。
 
 
-### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>示例技能定义2：为不存在的值设置默认值
+### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>示例技能定义 2：为不存在的值设置默认值
 
 以下输出创建批注 ("/document/languageWithDefault")，该批注设置为文档的语言，如果未设置该语言，则该批注将设置为“es”。
 
@@ -132,9 +132,9 @@ Microsoft.Skills.Util.ConditionalSkill
 }
 ```
 
-### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>示例技能定义3：将两个字段中的值合并为一个字段
+### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>示例技能定义 3：将两个字段中的值合并为一个值
 
-在此示例中，某些句子包含 *frenchSentiment* 属性。 每当 *frenchSentiment* 属性为 null 时，我们就要使用 *englishSentiment* 值。 我们将输出分配给名为 *情绪* ( "/document/sentences/*/sentiment" ) 的成员。
+在此示例中，某些句子包含 *frenchSentiment* 属性。 每当 *frenchSentiment* 属性为 null 时，我们就要使用 *englishSentiment* 值。 将输出分配到名为 *sentiment* 的成员 ("/document/sentences/*/sentiment")。
 
 ```json
 {
@@ -150,7 +150,7 @@ Microsoft.Skills.Util.ConditionalSkill
 ```
 
 ## <a name="transformation-example"></a>转换示例
-### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>示例技能定义4：对单个字段的数据转换
+### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>示例技能定义 4：对单个字段的数据转换
 
 在此示例中，我们将收到介于 0 和 1 之间的情绪。 我们希望将此值转换为 -1 到 1。 可以使用条件技能来实现这种次要转换。
 

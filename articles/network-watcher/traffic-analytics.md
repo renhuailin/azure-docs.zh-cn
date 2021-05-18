@@ -14,10 +14,10 @@ ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
 ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101095356"
 ---
 # <a name="traffic-analytics"></a>流量分析
@@ -103,7 +103,7 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
       USNat 东部  
       USNat 西部  
       USSec 东部  
-      USSec 西  
+      USSec 西部  
       美国中西部  
       西欧  
       美国西部  
@@ -140,7 +140,7 @@ Log Analytics 工作区必须存在于以下区域中：
       美国中南部  
    :::column-end:::
    :::column span="":::
-      Southeast Asia  
+      东南亚  
       瑞士北部  
       瑞士西部  
       阿联酋中部  
@@ -154,7 +154,7 @@ Log Analytics 工作区必须存在于以下区域中：
    :::column span="":::
       USNat 西部   
       USSec 东部  
-      USSec 西  
+      USSec 西部  
       美国中西部  
       西欧  
       美国西部  
@@ -170,7 +170,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 |部署模型   | 角色                   |
 |---------          |---------               |
-|Resource Manager   | 所有者                  |
+|资源管理器   | “所有者”                  |
 |                   | 参与者            |
 |                   | 读取器                 |
 |                   | 网络参与者    |

@@ -9,12 +9,12 @@ ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: b62c3c4be4fdffd9f509b86d248cd028518ae89a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c13ffc597349cdd2b304889d142ca7c2f89c713
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181935"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861528"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 导入/导出服务将数据导入到 Azure 文件
 
@@ -171,7 +171,7 @@ ms.locfileid: "102181935"
 
    1. 请检查“条款”，然后选择“我确认提供的所有信息均正确无误，并同意上述条款和条件。” 然后会执行验证。
    1. 在摘要中复查提供的作业信息。 记下作业名称和 Azure 数据中心送货地址，以便将将磁盘寄回 Azure。 稍后将在发货标签中使用此信息。
-   1. 选择“创建”  。
+   1. 选择“创建”。
 
         ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "102181935"
 
 ### <a name="create-a-job"></a>创建作业
 
-1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令添加 [az import-export](/cli/azure/ext/import-export/import-export) 扩展：
+1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令添加 [az import-export](/cli/azure/import-export) 扩展：
 
     ```azurecli
     az extension add --name import-export
@@ -201,19 +201,19 @@ ms.locfileid: "102181935"
     az storage account create -resource-group myierg -name myssdocsstorage --https-only
     ```
 
-1. 若要获取可将磁盘寄送到的位置的列表，请使用 [az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) 命令：
+1. 若要获取可将磁盘寄送到的位置的列表，请使用 [az import-export location list](/cli/azure/import-export/location#az_import_export_location_list) 命令：
 
     ```azurecli
     az import-export location list
     ```
 
-1. 使用 [az import-export location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) 命令获取你所在区域的位置：
+1. 使用 [az import-export location show](/cli/azure/import-export/location#az_import_export_location_show) 命令获取你所在区域的位置：
 
     ```azurecli
     az import-export location show --location "West US"
     ```
 
-1. 运行以下 [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) 命令来创建导入作业：
+1. 运行以下 [az import-export create](/cli/azure/import-export#az_import_export_create) 命令来创建导入作业：
 
     ```azurecli
     az import-export create \
@@ -241,13 +241,13 @@ ms.locfileid: "102181935"
    > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
 
 
-1. 使用 [az import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) 命令查看 myierg 资源组的所有作业：
+1. 使用 [az import-export list](/cli/azure/import-export#az_import_export_list) 命令查看 myierg 资源组的所有作业：
 
     ```azurecli
     az import-export list --resource-group myierg
     ```
 
-1. 若要更新作业或取消作业，请运行 [az import-export update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) 命令：
+1. 若要更新作业或取消作业，请运行 [az import-export update](/cli/azure/import-export#az_import_export_update) 命令：
 
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true

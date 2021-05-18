@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 622a83c6d91bf2a30c2844e3279d6fd4b89d429f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102213787"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
@@ -98,13 +98,13 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
       ![屏幕截图显示了“连续 WebJob 详细信息”窗格。][profiler-webjob-log]
 
-如果探查器不能正常工作，可以下载日志并将其发送给我们的团队以获得帮助 serviceprofilerhelp@microsoft.com 。
+如果 Profiler 不能正常工作，可以下载日志并将其发送给我们的团队 serviceprofilerhelp@microsoft.com 以获取帮助。
 
 ### <a name="check-the-diagnostic-services-site-extension-status-page"></a>检查诊断服务站点扩展的“状态”页
 如果 Profiler 是通过门户中的 [Application Insights 窗格](profiler.md)启用的，则它是由诊断服务站点扩展启用的。
 
 > [!NOTE]
-> Application Insights Profiler 的无代码置备安装遵循 .NET Core 支持策略。
+> Application Insights 探查器的无代码安装遵循 .NET Core 支持策略。
 > 有关支持的运行时的详细信息，请参阅 [.Net Core 支持策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
 
 可以转到以下 url 来查看此扩展的“状态”页：`https://{site-name}.scm.azurewebsites.net/DiagnosticServices`

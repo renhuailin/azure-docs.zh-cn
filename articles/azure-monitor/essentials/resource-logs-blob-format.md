@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.openlocfilehash: d4be3983d70a1ca78d849e231b8cc55e2b5895d4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033191"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 平台日志的格式更改做准备
@@ -132,5 +132,5 @@ Azure blob 存储中 PT1H.json 文件的当前格式使用 JSON 数组记录。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何 [将资源资源日志存档到存储帐户](./resource-logs.md#send-to-azure-storage)
+* 了解如何[将资源日志存档到存储帐户](./resource-logs.md#send-to-azure-storage)
 * 了解如何[将活动日志数据存档到存储帐户](./activity-log.md#legacy-collection-methods)

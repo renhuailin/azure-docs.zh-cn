@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.openlocfilehash: 1b04ef24ff01787c6904db0e288c23d4434e7dcf
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101673822"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上实现 Oracle Data Guard 
@@ -276,7 +276,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 200M;
 ```
 
-启用闪回 (这会使恢复过程更容易) 并将备用 \_ 文件 \_ 管理设置为 "自动"。退出 SQL * 并在之后退出。
+启用闪回（这会使恢复轻松很多）并将 STANDBY\_FILE\_MANAGEMENT 设置为 auto。此后退出 SQL*Plus。
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -506,7 +506,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>在 myVM1（主 VM）上配置 Data Guard 代理
 
-启动 Data Guard Manager，并使用 SYS 和密码登录。  (不使用 OS 身份验证。 ) 执行以下操作：
+启动 Data Guard Manager，并使用 SYS 和密码登录。 （请勿使用 OS 身份验证）。执行以下操作：
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1

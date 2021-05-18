@@ -200,7 +200,7 @@
           href: functions-bindings-return-value.md
         - name: 处理绑定错误
           href: functions-bindings-errors.md
-    - name: Languages
+    - name: 语言
       items:
         - name: 支持的语言
           href: supported-languages.md
@@ -642,6 +642,16 @@
           href: functions-bindings-twilio.md
         - name: 预热
           href: functions-bindings-warmup.md
+    - name: 错误和诊断
+      items:
+        - name: .NET 辅助角色规则
+          items:
+            - name: AZFW0001
+              href: errors-diagnostics/net-worker-rules/azfw0001.md
+        - name: SDK 规则
+          items:
+            - name: AZF0001
+              href: errors-diagnostics/sdk-rules/azf0001.md
     - name: host.json 2.x 参考
       href: functions-host-json.md
     - name: host.json 1.x 参考

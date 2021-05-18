@@ -7,20 +7,20 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: bwren
-ms.subservice: diagnostic-extension
-ms.openlocfilehash: 4962d5f048cf41eca50a77a0dedad3cef48ac1f0
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.subservice: application-insights
+ms.openlocfilehash: b58249dac5b98bb86c35fae9ac574b6100fa9fd5
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740068"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383093"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 存储中存储和查看诊断数据
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
-诊断数据不会永久存储，除非将其传输到 Microsoft Azure 存储模拟器或 Azure 存储空间。 一旦位于存储空间中，诊断数据就可以使用提供的工具之一进行查看。
+诊断数据不会永久存储，除非将其传输到 Microsoft Azure 存储模拟器或 Azure 存储中。 一旦位于存储空间中，诊断数据就可以使用提供的工具之一进行查看。
 
 ## <a name="specify-a-storage-account"></a>指定存储帐户
 指定要在 ServiceConfiguration.cscfg 文件中使用的存储帐户。 帐户信息被定义为配置设置中的连接字符串。 以下示例显示的是在 Visual Studio 中针对新的云服务项目创建的默认连接字符串：
@@ -63,16 +63,16 @@ ms.locfileid: "98740068"
 
 * **WadLogsTable** - 使用跟踪侦听器以代码编写的日志。
 * **WADDiagnosticInfrastructureLogsTable** - 诊断监视器和配置更改。
-* **WADDirectoriesTable** -诊断监视器监视的目录。  这包括 IIS 日志、IIS 失败请求日志和自定义目录。  在“容器”字段中指定 blob 日志文件的位置，在 RelativePath 字段中指定 blob 的名称。  AbsolutePath 字段指示文件的位置和名称，就像文件是存在于 Azure 虚拟机上一样。
-* **WADPerformanceCountersTable** -性能计数器。
-* **WADWindowsEventLogsTable** -Windows 事件日志。
+* **WADDirectoriesTable** - 诊断监视器监视的目录。  这包括 IIS 日志、IIS 失败请求日志和自定义目录。  在“容器”字段中指定 blob 日志文件的位置，在 RelativePath 字段中指定 blob 的名称。  AbsolutePath 字段指示文件的位置和名称，就像文件是存在于 Azure 虚拟机上一样。
+* **WADPerformanceCountersTable** - 性能计数器。
+* **WADWindowsEventLogsTable** - Windows 事件日志。
 
 **Blob**
 
-* **wad** -仅适用于 SDK 2.4 和以前的)  (包含用于控制 Azure 诊断的 XML 配置文件。
+* **wad-control-container** -（仅适用于 SDK 2.4 及更低版本）包含用于控制 Azure 诊断的 XML 配置文件。
 * **wad-iis-failedreqlogfiles** – 包含 IIS 失败请求日志中的信息。
 * **wad-iis-logfiles** – 包含有关 IIS 日志的信息。
-* **"自定义"** –基于配置诊断监视器所监视的目录的自定义容器。  此 blob 容器的名称会在 WADDirectoriesTable 中指定。
+* **"custom"** - 一个自定义容器，其所基于的配置目录受诊断监视器监视。  此 blob 容器的名称会在 WADDirectoriesTable 中指定。
 
 ## <a name="tools-to-view-diagnostic-data"></a>用于查看诊断数据的工具
 将数据传输到存储空间以后，可以使用多个工具来查看这些数据。 例如：

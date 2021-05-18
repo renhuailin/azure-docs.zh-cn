@@ -1,23 +1,23 @@
 ---
-title: '自带密钥 (客户托管密钥) '
+title: 自带密钥（客户管理的密钥）
 description: 可将客户管理的密钥（即自带密钥）与媒体服务配合使用。
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 4564e28f76aebe7f708c2b6f68903fe67bcefe26
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: bc7b1a0742e79c3c84bf533e75467b5def2706b4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698852"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277719"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>自带密钥（客户管理的密钥）与媒体服务
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-自带密钥 (BYOK) 是一种 Azure 范围的计划，可帮助客户将其工作负载转移到云中。 客户管理的密钥使客户能够遵守行业合规性法规并改进服务的租户隔离。 为客户控制加密密钥是一种在 Microsoft 服务中最大程度地减少不必要的访问和控制和构建置信度的方法。
+自带密钥 (BYOK) 是一种 Azure 范围的计划，可帮助客户将其工作负载转移到云中。 客户管理的密钥使客户能够遵守行业合规性法规并改进服务的租户隔离。 通过让客户控制加密密钥，可以在 Microsoft 服务中最大程度地减少不必要的访问和控制并建立信心。
 
 ## <a name="keys-and-key-management"></a>密钥和密钥管理
 
@@ -27,7 +27,7 @@ ms.locfileid: "101698852"
 
 媒体服务使用媒体服务帐户的托管标识从你拥有的 Key Vault 读取密钥。 媒体服务要求 Key Vault 位于帐户所在区域，并且已启用软删除和清除保护。
 
-密钥可以是2048、3072或 4096 RSA 密钥，同时支持 HSM 和软件密钥。
+密钥可以是 2048、3072 或 4096 RSA 密钥，同时支持 HSM 和软件密钥。
 
 > [!NOTE]
 > 不支持 EC 密钥。
@@ -39,16 +39,16 @@ ms.locfileid: "101698852"
 
 ## <a name="double-encryption"></a>双重加密
 
-媒体服务自动支持双加密。 对于静态数据，第一层加密使用客户管理的密钥或 Microsoft 托管密钥，具体取决于帐户的 `AccountEncryption` 设置。  使用单独的 Microsoft 托管密钥自动提供静态数据加密的第二层。 若要详细了解双重加密，请参阅 [Azure 双重加密](../../security/fundamentals/double-encryption.md)。
+媒体服务自动支持双重加密。 对于静态数据，第一层加密使用客户管理的密钥或 Microsoft 托管密钥，具体取决于帐户的 `AccountEncryption` 设置。  使用单独的 Microsoft 托管密钥自动提供静态数据加密的第二层。 若要详细了解双重加密，请参阅 [Azure 双重加密](../../security/fundamentals/double-encryption.md)。
 
 > [!NOTE]
-> 在 Media Services 帐户上自动启用双加密。 但是，你需要分别在存储帐户上配置客户托管的密钥和双加密。 请参阅 [Storege encryption](../../storage/common/storage-service-encryption.md)。
+> 双重加密在媒体服务帐户上是自动启用的。 但需在存储帐户上分别配置客户管理的密钥和双重加密。 请参阅[存储加密](../../storage/common/storage-service-encryption.md)。
 
 ## <a name="tutorials"></a>教程
 
-- [使用 Azure 门户将客户管理的密钥或 BYOK 与媒体服务配合使用](tutorial-byok-portal.md)
-- [将客户管理的密钥或 BYOK 与媒体服务 REST API 配合使用](tutorial-byok-postman.md)。
+- [使用 Azure 门户将客户管理的密钥或 BYOK 与媒体服务配合使用](security-customer-managed-keys-portal-tutorial.md)
+- [将客户管理的密钥或 BYOK 与媒体服务 REST API 配合使用](security-customer-managed-keys-rest-postman-tutorial.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用媒体服务动态加密保护内容](content-protection-overview.md)
+[使用媒体服务动态加密保护内容](drm-content-protection-concept.md)

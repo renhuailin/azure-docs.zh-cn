@@ -4,17 +4,17 @@ description: 可以使用 Azure Data Box 以脱机方式将初始备份数据从
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96752543"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 Azure Data Box 进行 DPM 和 MABS 的脱机植入（预览版）
 
 > [!NOTE]
 > 此功能适用于 Data Protection Manager (DPM) 2019 UR2 及更高版本。<br><br>
-> 此功能目前以预览版提供 Microsoft Azure 备份 Server (MABS) 。 如果你对使用 Azure Data Box 进行 MABS 脱机植入感兴趣，请通过 [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com) 联系我们。
+> 对于 Microsoft Azure 备份服务器 (MABS)，此功能目前为预览版。 如果你对使用 Azure Data Box 进行 MABS 脱机植入感兴趣，请通过 [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com) 联系我们。
 
 本文介绍如何使用 Azure Data Box 以脱机方式将初始备份数据从 DPM 和 MABS 植入 Azure 恢复服务保管库。
 
@@ -46,7 +46,7 @@ ms.locfileid: "96752543"
 \*\*如果希望单个数据源的初始备份数据超过 80 TB，请联系 [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com)。
 
 > [!IMPORTANT]
-> 单个数据源的初始备份数据必须包含在单个 Azure Data Box 或 Azure Data Box 磁盘中，并且不能在相同或不同 Sku 的多个设备之间共享。 但是，Azure Data Box 可能会包含来自多个数据源的初始备份。
+> 单个数据源的初始备份数据必须包含在单个 Azure Data Box 或 Azure Data Box Disk 中，并且不能在具有相同或不同 SKU 的多个设备之间共享。 但是，Azure Data Box 可能会包含来自多个数据源的初始备份。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -84,29 +84,29 @@ DPM/MABS 上运行的 MARS 代理应升级到[最新版本](https://aka.ms/azure
 
 ## <a name="setup-azure-data-box"></a>设置 Azure Data Box
 
-如果你订购的 Azure Data Box (高达 100 TB) ，请按照 [此处](../databox/data-box-deploy-set-up.md) 所述的步骤设置 Data Box。
+如果订购了 Azure Data Box（最大 100 TB），请执行[此处](../databox/data-box-deploy-set-up.md)所述的步骤来设置 Data Box。
 
 ### <a name="mount-your-azure-data-box-as-local-system"></a>将 Azure Data Box 作为本地系统装载
 
-DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data Box 的装入路径提供相同级别的特权。 按照以下步骤确保你可以使用 NFS 协议将 Data Box 设备装载为本地系统。
+DPM/MABS 服务器在系统上下文中运行，因此需要向在其中连接 Azure Data Box 的装载路径提供相同级别的特权。 请执行以下步骤，以确保可以使用 NFS 协议将 Data Box 设备作为本地系统装载。
 
-1. 启用 DPM/MABS 服务器上的 NFS 客户端功能。
+1. 在 DPM/MABS 服务器上启用 NFS 客户端功能。
 指定备用源：WIM:D:\Sources\Install.wim:4
-2. 将 **PSExec** 从下载 [https://download.sysinternals.com/files/PSTools.zip](https://download.sysinternals.com/files/PSTools.zip) 到 DPM/MABS 服务器。
+2. 从 [https://download.sysinternals.com/files/PSTools.zip](https://download.sysinternals.com/files/PSTools.zip) 将 PSExec 下载到 DPM/MABS 服务器。
 3. 打开提升的命令提示符，并以包含 PSExec.exe 的目录作为当前目录执行以下命令。
 
    ```cmd
    psexec.exe  -s  -i  cmd.exe
    ```
 
-4. 由于上述命令而打开的命令窗口位于本地系统上下文中。 使用此命令窗口执行相关步骤，以将 Azure 页 Blob 共享作为网络驱动器装载到 Windows Server。
-5. 按照 [此处](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box) 的步骤，通过 NFS 将 DPM/MABS 服务器连接到 Data Box 设备，并在本地系统命令提示符下执行以下命令，以装载 Azure 页 blob 共享：
+4. 因上述命令而打开的命令窗口位于本地系统上下文中。 使用此命令窗口执行相关步骤，以将 Azure 页 Blob 共享作为网络驱动器装载到 Windows Server。
+5. 请执行[此处](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box)的步骤，通过 NFS 将 DPM/MABS 服务器连接到 Data Box 设备，并在本地系统命令提示符下执行以下命令，以装载 Azure 页 Blob 共享：
 
     ```cmd
     mount -o nolock \\<DeviceIPAddres>\<StorageAccountName_PageBlob X:
     ```
 
-6. 装载后，检查是否可以从服务器访问 X:。 如果可以，请继续阅读本文的下一部分。
+6. 装载后，检查是否可以从服务器访问 X:。 如果可以，请继续完成本文的下一部分。
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>将初始备份数据传输到 Azure Data Box 设备
 
@@ -230,7 +230,7 @@ DPM 服务器上的 Microsoft Azure 备份 (MAB) 代理会在你的租户中为�
 
 若要解决此问题，请执行以下步骤，然后重试策略配置。
 
-1. 使用具有创建的 Data Box 作业的订阅上的管理员访问权限登录到 DPM/MABS 服务器 UI 上显示的 Azure 登录页。
+1. 使用在要创建 Data Box 作业的订阅上具有管理员访问权限的另一个帐户，登录到 DPM/MABS 服务器 UI 上显示的 Azure 登录页。
 2. 如果没有其他服务器配置了脱机种子设定并且没有其他服务器依赖于 `AzureOfflineBackup_<Azure User Id>` 应用程序，则从“Azure 门户”>“Azure Active Directory”>“应用程序注册”删除此应用程序。
 
    > [!NOTE]

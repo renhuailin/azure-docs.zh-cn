@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 148ba2ce256b11b623bf28cf7723dbb0cce60830
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 25ff8611cc988c9777b52a313cfd74d4ee0a638c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929753"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104870290"
 ---
 # <a name="configure-apache-spark-settings"></a>配置 Apache Spark 设置
 
@@ -18,7 +18,7 @@ HDInsight Spark 群集包含 Apache Spark 库的安装。  每个 HDInsight 群�
 
 默认的 HDInsight Apache Spark 群集包括以下节点：三个 Apache ZooKeeper 节点、两个头节点和一个或多个工作节点：
 
-![Spark HDInsight 体系结构](./media/apache-spark-settings/spark-hdinsight-arch.png)
+:::image type="content" source="./media/apache-spark-settings/spark-hdinsight-arch.png" alt-text="Spark HDInsight 体系结构" border="false":::
 
 HDInsight 群集中节点的 VM 数目和 VM 大小可能影响 Spark 配置。 非默认的 HDInsight 配置值通常需要非默认的 Spark 配置值。 在创建 HDInsight Spark 群集时，系统会显示每个组件的建议 VM 大小。 目前，Azure 的[内存优化 Linux VM 大小](../../virtual-machines/sizes-memory.md)为 D12 v2 或更大。
 
@@ -26,7 +26,7 @@ HDInsight 群集中节点的 VM 数目和 VM 大小可能影响 Spark 配置。 
 
 使用适合你的群集的最佳 Spark 版本。  HDInsight 服务本身包含 Spark 和 HDInsight 的多个版本。  每个 Spark 版本包含一组默认群集设置。  
 
-创建新群集时，可从以下多个 Spark 版本中进行选择。 若要查看完整列表，请参阅  [HDInsight 组件和版本](../hdinsight-component-versioning.md)。
+创建新群集时，可从以下多个 Spark 版本中进行选择。 若要查看完整列表，请参阅 [HDInsight 组件和版本](../hdinsight-component-versioning.md)。
 
 > [!NOTE]  
 > HDInsight 服务中的默认 Apache Spark 版本可随时更改，恕不另行通知。 如果你依赖某个版本，Microsoft 建议在使用 .NET SDK、Azure PowerShell 和 Azure 经典 CLI 创建群集时指定该特定版本。
@@ -59,7 +59,7 @@ spark.sql.files.openCostInBytes 1099511627776
 
 若要查看 Apache Spark 的配置值，请依次选择“配置历史记录”、“Spark2”。   选择“配置”选项卡，然后在服务列表中选择 `Spark` 或 `Spark2`（取决于版本）链接。  此时会显示群集的配置值列表：
 
-![Spark 配置](./media/apache-spark-settings/spark-configurations.png)
+:::image type="content" source="./media/apache-spark-settings/spark-configurations.png" alt-text="Spark 配置" border="true":::
 
 若要查看和更改单个 Spark 配置值，请选择标题中包含“spark”的任何链接。  Spark 配置包括以下类别的自定义配置值和高级配置值：
 
@@ -78,7 +78,7 @@ spark.sql.files.openCostInBytes 1099511627776
 
 下图显示了关键的 Spark 对象：驱动程序及其关联的 Spark 上下文，以及群集管理器及其 *n* 个 工作节点。  每个工作节点包括执行器、缓存和 *n* 个 任务实例。
 
-![群集对象](./media/apache-spark-settings/hdi-spark-architecture.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-spark-architecture.png" alt-text="群集对象" border="false":::
 
 Spark 作业使用辅助角色资源（具体而言是内存），因此，我们往往会调整工作节点执行器的 Spark 配置值。
 
@@ -89,7 +89,7 @@ Spark 作业使用辅助角色资源（具体而言是内存），因此，我�
 
 Spark 执行程序使用的资源的另一个信息源是 Spark 应用程序 UI。  在 UI 中，“执行程序”显示有关配置和已使用资源的“摘要”和“详细信息”视图。  确定是更改整个群集的执行程序值，还是更改一组特定的作业执行操作。
 
-![Spark 执行器](./media/apache-spark-settings/apache-spark-executors.png)
+:::image type="content" source="./media/apache-spark-settings/apache-spark-executors.png" alt-text="Spark 执行器" border="true":::
 
 或者，可以使用 Ambari REST API 以编程方式验证 HDInsight 和 Spark 群集的配置设置。  [GitHub 上的 Apache Ambari API 参考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)提供了详细信息。
 
@@ -103,7 +103,7 @@ Spark 执行程序使用的资源的另一个信息源是 Spark 应用程序 UI�
 
 下面是使用不同配置值的两个工作节点的示例：
 
-![双节点配置](./media/apache-spark-settings/executor-configuration.png)
+:::image type="content" source="./media/apache-spark-settings/executor-configuration.png" alt-text="双节点配置" border="false":::
 
 以下列表显示关键的 Spark 执行器内存参数。
 
@@ -116,9 +116,9 @@ Spark 执行程序使用的资源的另一个信息源是 Spark 应用程序 UI�
 
 YARN 控制每个 Spark 节点上的容器使用的最大内存量总计。 下图显示了 YARN 配置对象与 Spark 对象之间的节点关系。
 
-![YARN Spark 内存管理](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-yarn-spark-memory.png" alt-text="YARN Spark 内存管理" border="false":::
 
-## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>更改中运行的应用程序的参数 Jupyter Notebook
+## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>更改 Jupyter Notebook 中运行的应用程序的参数
 
 HDInsight 中的 Spark 群集默认包含许多组件。 其中每个组件包含可按需替代的默认配置值。
 
@@ -127,15 +127,15 @@ HDInsight 中的 Spark 群集默认包含许多组件。 其中每个组件包�
 |Spark Core|Spark Core、Spark SQL、Spark 流式处理 API、GraphX 和 Apache Spark MLlib。|
 |Anaconda|Python 包管理器。|
 |Apache Livy|Apache Spark REST API，用于将远程作业提交到 HDInsight Spark 群集。|
-|Jupyter 笔记本和 Apache Zeppelin 笔记本|用来与 Spark 群集交互的基于浏览器的交互式 UI。|
+|Jupyter Notebook 和 Apache Zeppelin 笔记本|用来与 Spark 群集交互的基于浏览器的交互式 UI。|
 |ODBC 驱动程序|将 HDInsight 中的 Spark 群集连接到 Microsoft Power BI 和 Tableau 等商业智能 (BI) 工具。|
 
-对于在 Jupyter Notebook 中运行的应用程序，请使用 `%%configure` 命令从笔记本自身中进行配置更改。 这些配置更改将应用到从 Notebook 实例运行的 Spark 作业。 先在应用程序的开头进行此类更改，然后再运行第一个代码单元。 创建 Livy 会话时，会将更改的配置应用到该会话。
+对于 Jupyter Notebook 中运行的应用程序，可以使用 `%%configure` 命令从 Notebook 本身内部进行配置更改。 这些配置更改将应用到从 Notebook 实例运行的 Spark 作业。 先在应用程序的开头进行此类更改，然后再运行第一个代码单元。 创建 Livy 会话时，会将更改的配置应用到该会话。
 
 > [!NOTE]  
 > 若要更改处于应用程序中后面某个阶段的配置，请使用 `-f` (force) 参数。 但是，应用程序中的所有进度将会丢失。
 
-下面的代码演示如何更改 Jupyter Notebook 中运行的应用程序的配置。
+以下代码演示了如何更改 Jupyter Notebook 中运行的应用程序的配置。
 
 ```
 %%configure

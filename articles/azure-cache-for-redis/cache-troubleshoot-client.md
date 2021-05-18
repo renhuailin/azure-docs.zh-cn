@@ -1,16 +1,16 @@
 ---
 title: 排查 Azure Cache for Redis 客户端问题
-description: 了解如何排查 Azure Cache for Redis 的常见客户端问题，如 Redis 客户端内存压力、流量突发、CPU 使用率过高、带宽有限、大型请求或响应大小过大。
+description: 了解如何解决 Azure Cache for Redis 的常见客户端问题，例如 Redis 客户端内存压力、流量突发、高 CPU、带宽受限、大型的请求或大型的响应大小。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008961"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>排查 Azure Cache for Redis 客户端问题
@@ -59,7 +59,7 @@ ms.locfileid: "88008961"
 
 客户端 CPU 使用率偏高表示系统跟不上所要求执行的工作的进度。 即使缓存发送响应的速度很快，客户端也可能无法及时处理该响应。
 
-使用 Azure 门户中提供的指标或者通过计算机上的性能计数器监视客户端的系统范围的 CPU 使用率。 请注意不要监视进程 CPU，因为即使单个进程的 CPU 使用率较低，但系统范围的 CPU 使用率也可能很高。  注意与超时相对应的 CPU 使用率峰值。 CPU 使用率较高可能还会导致 `TimeoutException` 错误消息中出现较大的 `in: XXX` 值，如[流量突增](#traffic-burst)部分所述。
+使用 Azure 门户中提供的指标或者通过计算机上的性能计数器监视客户端的系统范围的 CPU 使用率。 请注意不要监视进程 CPU，因为即使单个进程的 CPU 使用率较低，但系统范围的 CPU 使用率也可能很高。 注意与超时相对应的 CPU 使用率峰值。 CPU 使用率较高可能还会导致 `TimeoutException` 错误消息中出现较大的 `in: XXX` 值，如[流量突增](#traffic-burst)部分所述。
 
 > [!NOTE]
 > StackExchange.Redis 1.1.603 及更高版本在 `TimeoutException` 错误消息中包括了 `local-cpu` 指标。 确保使用最新版本的 [StackExchange.Redis NuGet 包](https://www.nuget.org/packages/StackExchange.Redis/)。 我们会不断对代码中的 Bug 进行修正，以便更好地应对超时情况。因此，请务必使用最新的版本。
@@ -99,7 +99,7 @@ ms.locfileid: "88008961"
 
 1. 优化应用程序以处理大量的小值，而不是处理少量的大值。
     - 首选解决方案是将数据分解成较小的相关值。
-    - 请参阅 post [什么是 redis 的理想值大小范围？100 KB 太大？](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) 有关为何建议使用较小值的详细信息。
+    - 请参阅 [Redis 的理想值大小范围是多少？100KB 是否过大？](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)这个帖子，以详细了解为何建议使用较小值。
 1. 增大 VM 的大小以获得更高的带宽能力
     - 提高客户端或服务器 VM 上的带宽可以缩短较大响应的数据传输时间。
     - 将两台计算机上的网络用量与当前 VM 大小的限制进行比较。 只提高服务器上的带宽，或者只提高客户端上的带宽，都不足以解决问题。

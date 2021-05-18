@@ -6,18 +6,18 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 1ae35d1ac35dacfab2690980d57973dce050382b
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
-ms.translationtype: MT
+ms.openlocfilehash: e239b6b00c5a5e993834a10fca30de02b9f715ff
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242851"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065508"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Azure Database for MySQL 的专用链接
 
 使用专用链接可以通过专用终结点连接到 Azure 中的各种 PaaS 服务。 Azure 专用链接实质上是将 Azure 服务引入专用虚拟网络 (VNet) 中。 就像 VNet 中的任何其他资源一样，可以使用专用 IP 地址访问 PaaS 资源。
 
-有关支持专用链接功能的 PaaS 服务的列表，请查看专用链接 [文档](../private-link/index.yml)。 专用终结点是特定 [VNet](../virtual-network/virtual-networks-overview.md) 和子网中的专用 IP 地址。
+有关支持专用链接功能的 PaaS 服务列表，请查看“专用链接”[文档](../private-link/index.yml)。 专用终结点是特定 [VNet](../virtual-network/virtual-networks-overview.md) 和子网中的专用 IP 地址。
 
 > [!NOTE]
 > 专用链接功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MySQL 服务器。 请确保数据库服务器位于其中一个定价层中。
@@ -26,18 +26,18 @@ ms.locfileid: "93242851"
 
 Azure Database for MySQL 中的数据渗透是指已获授权的用户（例如数据库管理员）能够从一个系统提取数据，并将其移到组织外部的其他位置或系统。 例如，该用户将数据移到第三方拥有的存储帐户。
 
-假设有一个方案，该用户在连接到美国西部的 Azure Database for MySQL 服务器 (VM) 的 Azure 虚拟机中运行 MySQL 工作台。 下面的示例演示如何使用网络访问控制在 Azure Database for MySQL 上使用公共终结点限制访问。
+假设如下场景，一位用户在 Azure 虚拟机 (VM) 中运行 MySQL Workbench，该虚拟机连接到美国西部预配的 Azure Database for MySQL 服务器。 以下示例演示了如何使用网络访问控制来限制通过公共终结点对 Azure Database for MySQL 进行访问。
 
-* 通过将 " *允许 Azure 服务* " 设置为 "关闭"，禁用通过公共终结点 Azure Database for MySQL 的所有 Azure 服务流量。 请确保不允许 IP 地址或范围通过 [防火墙规则](./concepts-firewall-rules.md) 或 [虚拟网络服务终结点](./concepts-data-access-and-security-vnet.md)访问服务器。
+* 通过将“*允许 Azure 服务*”设置为“关闭”，禁止所有 Azure 服务流量通过公共终结点进入 Azure Database for MySQL。 务必通过[防火墙规则](./concepts-firewall-rules.md)或[虚拟网络服务终结点](./concepts-data-access-and-security-vnet.md)来禁止某些 IP 地址或 IP 范围访问服务器。
 
-* 仅允许使用 VM 的专用 IP 地址将流量传输到 Azure Database for MySQL。 有关详细信息，请参阅有关[服务终结点](concepts-data-access-and-security-vnet.md)和 [VNet 防火墙规则](howto-manage-vnet-using-portal.md)的文章。
+* 仅允许流量使用 VM 的专用 IP 地址进入 Azure Database for MySQL。 有关详细信息，请参阅有关[服务终结点](concepts-data-access-and-security-vnet.md)和 [VNet 防火墙规则](howto-manage-vnet-using-portal.md)的文章。
 
 * 在 Azure VM 上，按如下所示使用网络安全组 (NSG) 和服务标记缩小传出连接的范围
 
-    * 指定 NSG 规则以允许 *服务标记 = SQL 的流量。WestUs* -仅允许连接到美国西部 Azure Database for MySQL
-    * 指定 NSG 规则 (优先级较高的) 拒绝服务标记的流量 *= SQL* -拒绝连接更新到所有区域中的 Azure Database for MySQL</br></br>
+    * 指定一个 NSG 规则以允许“*服务标记 = SQL.WestUs*”的流量 - 仅允许连接到美国西部的 Azure Database for MySQL
+    * 指定一个 NSG 规则（具有较高的优先级），以拒绝“*服务标记 = SQL*”的流量 - 拒绝连接到所有区域中 Azure Database for MySQL 的更新</br></br>
 
-在此设置结束时，Azure VM 只能连接到美国西部区域中的 Azure Database for MySQL。 不过，连接并不限于单个 Azure Database for MySQL。 VM 仍可连接到美国西部区域中的任何 Azure Database for MySQL，包括不属于订阅的数据库。 尽管我们在上述场景中已将数据渗透范围缩小到了特定的区域，但我们并未完全消除这种渗透。</br>
+完成此设置后，Azure VM 只能连接到“美国西部”区域的 Azure Database for MySQL。 不过，连接并不局限于 SQL 数据库中的单个 Azure Database for MySQL。 VM 仍可连接到“美国西部”区域中的任何 Azure Database for MySQL，包括不在订阅中的数据库。 尽管我们在上述场景中已将数据渗透范围缩小到了特定的区域，但我们并未完全消除这种渗透。</br>
 
 借助专用链接，你现在可以设置 NSG 之类的网络访问控制来限制对专用终结点的访问。 然后，将单个 Azure PaaS 资源映射到特定的专用终结点。 恶意的预览体验成员只能访问映射的 PaaS 资源（例如 Azure Database for MySQL），而不能访问其他资源。
 
@@ -84,7 +84,7 @@ Azure Database for MySQL 中的数据渗透是指已获授权的用户（例如�
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mysql"></a>适用于 Azure Database for MySQL 的专用链接用例
 
-客户端可以通过同一 VNet、同一区域中的对等互连 VNet 或者跨区域的 VNet 到 VNet 连接连接到专用终结点。 此外，客户端可以使用 ExpressRoute、专用对等互连或 VPN 隧道从本地进行连接。 以下简化示意图显示了常见用例。
+客户端可以通过以下方式连接到专用终结点：同一 VNet；同一区域中或跨区域的[对等互连 VNet](../virtual-network/virtual-network-peering-overview.md)；或者跨区域的 [VNet 到 VNet 连接](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。 此外，客户端可以使用 ExpressRoute、专用对等互连或 VPN 隧道从本地进行连接。 以下简化示意图显示了常见用例。
 
 :::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="选择专用终结点概述":::
 
@@ -118,7 +118,7 @@ Azure Database for MySQL 中的数据渗透是指已获授权的用户（例如�
 当此设置设为“是”时，只允许通过专用终结点连接到 Azure Database for MySQL。 当此设置设为“否”时，客户端可以基于防火墙或 VNet 服务终结点设置连接到 Azure Database for MySQL。 此外，设置专用网络访问的值后，客户就无法添加和/或更新现有的“防火墙规则”和“VNet 服务终结点规则”。
 
 > [!Note]
-> 此功能适用于所有 Azure 区域，其中的 Azure Database for PostgreSQL 单一服务器支持“常规用途”和“内存优化”定价层。
+> 此功能适用于所有 Azure 区域，其中 Azure Database for MySQL 单一服务器支持“常规用途”和“内存优化”定价层。
 >
 > 此设置不会对 Azure Database for MySQL 的 SSL 和 TLS 配置产生任何影响。
 

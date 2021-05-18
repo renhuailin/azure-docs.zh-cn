@@ -1,15 +1,15 @@
 ---
-title: 使用 Azure Monitor 创建、查看和管理日志警报 |Microsoft Docs
+title: 使用 Azure Monitor 创建、查看和管理日志警报 | Microsoft Docs
 description: 使用 Azure Monitor 创建、查看和管理日志预警规则
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 8759a539005a38892498c9450d31f97884547db7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033701"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
@@ -70,7 +70,7 @@ ms.locfileid: "102033701"
     > 由于 [bin()](/azure/kusto/query/binfunction) 可能导致不均匀的时间间隔，因此，警报服务会自动将 [bin()](/azure/kusto/query/binfunction) 函数转换为针对运行时的相应时间的 [bin_at()](/azure/kusto/query/binatfunction) 函数，以确保生成针对确定时间点的结果。
 
     > [!NOTE]
-    > 按警报维度拆分仅适用于当前的 scheduledQueryRules API。 如果使用旧版 [Log Analytics 警报 API](./api-alerts.md)，则需要切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)。 仅在 API 版本 `2020-05-01-preview` 及更高版本中支持大规模的以资源为中心的警报。
+    > 按警报维度拆分仅适用于当前的 scheduledQueryRules API。 如果使用旧的 [Log Analytics 警报 API](./api-alerts.md)，则需要进行切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)。 仅在 API 版本 `2020-05-01-preview` 及更高版本中支持大规模的以资源为中心的警报。
 
     ![“聚合基于”选项](media/alerts-log/aggregate-on.png)
 
@@ -226,7 +226,7 @@ ms.locfileid: "102033701"
 - [Remove-AzScheduledQueryRule](/powershell/module/az.monitor/remove-azscheduledqueryrule)：用于删除现有日志警报规则的 PowerShell cmdlet
 
 > [!NOTE]
-> ScheduledQueryRules PowerShell cmdlets 只能管理在当前[计划查询规则 API](/rest/api/monitor/scheduledqueryrules/) 中创建的规则。 仅在[切换到计划的查询规则 api](../alerts/alerts-log-api-switch.md)之后，才能使用旧版[Log Analytics 警报 api](./api-alerts.md)创建的日志警报规则才能使用 PowerShell 进行管理。
+> ScheduledQueryRules PowerShell cmdlets 只能管理在当前[计划查询规则 API](/rest/api/monitor/scheduledqueryrules/) 中创建的规则。 仅在[切换到计划的查询规则 API](../alerts/alerts-log-api-switch.md) 之后，才能通过 PowerShell 管理使用旧版 [Log Analytics 警报 API](./api-alerts.md) 创建的日志警报规则。
 
 以下是使用 PowerShell 创建日志预警规则的示例步骤：
 
@@ -246,7 +246,7 @@ $alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsAction
 New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name for your Application Insights App or Log Analytics Workspace" -Action $alertingAction -Enabled $true -Description "Alert description" -Schedule $schedule -Source $source -Name "Alert Name"
 ```
 
-下面是使用 PowerShell 和跨资源查询创建日志警报规则的示例步骤：
+以下是使用 PowerShell 创建带有跨资源查询的日志警报规则的示例步骤：
 
 ```powershell
 $authorized = @ ("/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicewsCrossExample", "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/components/serviceAppInsights")
@@ -279,11 +279,11 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ## <a name="managing-log-alerts-using-cli"></a>使用 CLI 管理日志警报
 
 > [!NOTE]
-> Azure CLI 支持仅适用于 scheduledQueryRules API 版本 `2020-05-01-preview` 和更高版本。 以前的 API 版本可将 Azure 资源管理器 CLI 与模板配合使用，如下所述。 如果使用旧版 [Log Analytics 警报 API](./api-alerts.md)，则需要切换到使用 CLI。 [了解有关切换的详细信息](./alerts-log-api-switch.md)。
+> Azure CLI 支持仅适用于 scheduledQueryRules API 版本 `2020-05-01-preview` 和更高版本。 以前的 API 版本可将 Azure 资源管理器 CLI 与模板配合使用，如下所述。 如果使用的是旧版 [Log Analytics 警报 API](./api-alerts.md)，则需要切换为使用 CLI。 [了解有关切换的详细信息](./alerts-log-api-switch.md)。
 
-前面几个部分介绍了如何使用 Azure 门户创建、查看和管理日志预警规则。 本部分将介绍如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](../../cloud-shell/overview.md)。 对于本文，我们将使用 Cloud Shell。
+前面几个部分介绍了如何使用 Azure 门户创建、查看和管理日志预警规则。 本部分将介绍如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](../../cloud-shell/overview.md)。 本文将使用 Cloud Shell。
 
-1. 请参阅 Azure 门户，选择 **Cloud Shell**。
+1. 转到 Azure 门户，选择“Cloud Shell”。
 
 1. 在提示符下，可以结合 ``--help`` 选项使用命令来详细了解相应的命令及其用法。 例如，以下命令显示可用于创建、查看和管理日志警报的命令列表：
 

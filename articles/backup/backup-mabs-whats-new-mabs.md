@@ -4,17 +4,17 @@ description: Microsoft Azure 备份服务器提供用于保护 VM、文件和文
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91332757"
 ---
-# <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure 备份 Server 中的新增功能 (MABS) 
+# <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure 备份服务器 (MABS) 中的新增功能
 
 ## <a name="whats-new-in-mabs-v3-ur1"></a>MABS V3 UR1 中的新增功能
 
-Microsoft Azure 备份 Server (MABS) 版本 3 UR1 是最新的更新，并包含关键的 bug 修复程序以及其他功能和增强功能。 若要查看 MABS V3 UR1 中已修复的 bug 列表和安装说明，请参阅知识库文章 [4534062](https://support.microsoft.com/help/4534062)。
+Microsoft Azure 备份服务器 (MABS) 版本 3 UR1 是最新更新，其中包含重要的 bug 修复以及其他功能和增强功能。 若要查看 MABS V3 UR1 中已修复的 bug 列表和安装说明，请参阅知识库文章 [4534062](https://support.microsoft.com/help/4534062)。
 
 >[!NOTE]
 >MABS v3 UR1 不再支持 32 位保护代理。 请参阅[弃用 32 位保护代理](#32-bit-protection-agent-deprecation)。
@@ -37,7 +37,7 @@ MABS V2 引入了[新式备份存储](backup-mabs-add-storage.md) (MBS)，从而
 >[!NOTE]
 > MABS V3 支持备份 ReFS 卷上存储的 Hyper-V VM
 
->无关紧要我们发现了一些备份已删除重复引用卷的问题。 我们正在努力解决这些问题，并将在提供修补程序后立即更新此部分。 在此之前，我们从 MABSv3 UR1 中删除对已删除重复的 ReFS 卷的支持。
+>[重要说明] 我们已经发现了一些已删除重复数据的 ReFS 卷的备份问题。 我们正在努力解决这些问题，并将在有可用的修补程序后立即更新此部分。 在此之前，我们将从 MABSv3 UR1 中删除对删除重复数据的 ReFS 卷备份的支持。
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware 解决方案保护支持
 
@@ -58,10 +58,10 @@ MABS V3 UR1 为关键操作添加了额外的身份验证层。 当你执行“�
 
 ### <a name="offline-backup-improvements"></a>脱机备份改进
 
-MABS v3 UR1 通过 Azure 导入/导出服务改善了脱机备份体验。 有关详细信息，请参阅 [此处](./backup-azure-backup-server-import-export.md)的更新步骤。
+MABS v3 UR1 通过 Azure 导入/导出服务改善了脱机备份体验。 有关详细信息，请参阅[此处](./backup-azure-backup-server-import-export.md)的更新步骤。
 
 >[!NOTE]
->此更新还会在 MABS 中使用 Azure Data Box 进行脱机备份的预览。 联系 [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) 以了解详细信息。
+>此更新还通过使用 MABS 中的 Azure Data Box 提供脱机备份预览。 请联系 [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) 了解更多信息。
 
 ### <a name="new-cmdlet-parameter"></a>新的 cmdlet 参数
 
@@ -114,7 +114,7 @@ MABS V3 可与用作 MABS 数据库的 SQL 2017 一同安装。 可将 SQL Serve
 
 ### <a name="windows-server-2019-support"></a>Windows Server 2019 支持
 
-可在 Windows Server 2019 中安装 MABS V3。 若要将 MABS V3 与 WS2019 配合使用，可以在安装/升级到 MABS V3 之前将 OS 升级到 WS2019，也可以在安装/升级后在 WS2016 上升级 OS。
+可在 Windows Server 2019 中安装 MABS V3。 若要将 MABS V3 与 WS2019 配合使用，可以在安装/升级到 MABS V3 之前将 OS 升级到 WS2019，或者在 WS2016 中安装/升级 V3 之后升级 OS。
 
 MABS V3 是完整发行版，可直接安装在 Windows Server 2016、Windows Server 2019 中，或者从 MABS V2 升级。 在升级到或安装备份服务器 V3 之前，请阅读安装先决条件。
 在[此处](./backup-azure-microsoft-azure-backup.md#software-package)可以找到有关 MABS 安装/升级步骤的详细信息。

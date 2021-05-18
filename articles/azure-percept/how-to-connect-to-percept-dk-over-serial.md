@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 93b8ab0ce53202402e86b059abe3c600590d549e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101661858"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-serial"></a>通过串行连接到 Azure Percept DK
@@ -60,7 +60,7 @@ ms.locfileid: "101661858"
 
 1. 接下来，打开 Windows 设备管理器（“开始” -> “设备管理器”） 。 转到“端口”并单击“USB 转 UART”，以打开“属性”。 请注意设备连接到的 COM 端口。
 
-1. 单击“端口设置”选项卡。确保将“每秒位数”设置为 115200。
+1. 单击“端口设置”选项卡。确保“每秒位数”设置为 115200 。
 
 1. 打开 PuTTY。 输入以下内容，并单击“打开”以通过串行连接到 devkit：
 

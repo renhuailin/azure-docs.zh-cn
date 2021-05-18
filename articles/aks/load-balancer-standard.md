@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: e37c5a748a8e99f49e3535946268427139bbbf44
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 3f2219f5052aee0c0a9cd43aa87df8789adbcae2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102184417"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783082"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用公共标准负载均衡器
 
@@ -29,7 +29,7 @@ Azure 负载均衡器是开放式系统互连 (OSI) 模型的 L4，支持入站�
 
 ## <a name="before-you-begin"></a>准备阶段
 
-Azure 负载均衡器以两种 SKU 提供：“基本”和“标准” 。 默认情况下，创建 AKS 群集时将使用标准 SKU。 使用 *标准* SKU 可以访问附加功能，例如更大的后端池、 [**多个节点池**](use-multiple-node-pools.md)和 [**可用性区域**](availability-zones.md)。 这是推荐的 AKS 的负载均衡器 SKU。
+Azure 负载均衡器以两种 SKU 提供：“基本”和“标准” 。 默认情况下，创建 AKS 群集时将使用标准 SKU。 使用“标准”SKU 可以访问添加的功能，例如更大的后端池、[多节点池](use-multiple-node-pools.md)和[可用性区域](availability-zones.md)。 这是推荐的 AKS 的负载均衡器 SKU。
 
 有关基本和标准 SKU 的详细信息，请参阅 [Azure 负载均衡器 SKU 的比较][azure-lb-comparison]。 
 
@@ -225,7 +225,7 @@ az aks update \
     --load-balancer-outbound-ports 4000
 ```
 
-此示例假设为群集中的每个节点提供 4000 个分配的出站端口以及 7 个 IP，则你会得到以下结果：每个节点 4000 个端口 * 100 个节点 = 400,000 个总端口 < = 448,000 个总端口 = 7 个 IP * 每个 IP 64,000 端口。 这样你便可安全地缩放到 100 个节点，并执行默认升级操作。 为升级和其他操作所需的其他节点分配足够的端口至关重要。 AKS 默认为一个缓冲区节点用于升级，在此示例中，这要求在任何给定时间点有 4000 个可用端口。 如果使用 [maxSurge 值](upgrade-cluster.md#customize-node-surge-upgrade)，请将每个节点的出站端口乘以 maxSurge 值。
+此示例假设为群集中的每个节点提供 4000 个分配的出站端口以及 7 个 IP，则你会得到以下结果：每个节点 4000 个端口 * 100 个节点 = 400,000 个总端口 < = 448,000 个总端口 = 7 个 IP * 每个 IP 64,000 端口。 这样你便可安全地缩放到 100 个节点，并执行默认升级操作。 为升级和其他操作所需的其他节点分配足够的端口至关重要。 AKS 默认为一个缓冲区节点用于升级，在此示例中，这要求在任何给定时间点有 4000 个可用端口。 如果使用 [maxSurge 值](upgrade-cluster.md#customize-node-surge-upgrade)，请将每个节点的出站端口数乘以 maxSurge 值。
 
 要安全地超过 100 个节点，必须添加更多 IP。
 
@@ -301,7 +301,7 @@ spec:
 
 ## <a name="maintain-the-clients-ip-on-inbound-connections"></a>维护入站连接上的客户端 IP
 
-默认情况下，在 [Kubernetes](https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-loadbalancer) 和 AKS 中，`LoadBalancer` 类型的服务在连接到 Pod 时不会持久保留客户端的 IP 地址。 传递到 Pod 的数据包上的源 IP 将是节点的专用 IP。 若要维护客户端的 IP 地址，必须 `service.spec.externalTrafficPolicy` `local` 在服务定义中将设置为。 以下清单显示了一个示例：
+默认情况下，在 [Kubernetes](https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-loadbalancer) 和 AKS 中，`LoadBalancer` 类型的服务在连接到 Pod 时不会持久保留客户端的 IP 地址。 传递到 Pod 的数据包上的源 IP 将是节点的专用 IP。 若要保留客户端的 IP 地址，必须在服务定义中将 `service.spec.externalTrafficPolicy` 设置为 `local`。 以下清单显示了一个示例：
 
 ```yaml
 apiVersion: v1
@@ -323,8 +323,8 @@ spec:
 
 | Annotation | Value | 说明
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
-| `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` 或 `false`                     | 指定负载均衡器是否应为“内部”。 如果未设置，则默认为 public。
-| `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | 子网的名称                    | 指定内部负载均衡器应绑定到的子网。 如果未设置，则默认为在云配置文件中配置的子网。
+| `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` 或 `false`                     | 指定负载均衡器是否应为“内部”。 如果未设置，则默认为“公共”。
+| `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | 子网的名称                    | 指定内部负载均衡器应绑定到的子网。 如果未设置，则默认为云配置文件中配置的子网。
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | 公共 IP 上的 DNS 标签的名称   | 指定公共服务的 DNS 标签的名称。 如果设置为空字符串，则不会使用公共 IP 中的 DNS 条目。
 | `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` 或 `false`                     | 指定应使用可能与其他服务共享的 Azure 安全规则公开服务，交易规则的特定性，以增加可公开的服务数量。 此注释依赖于网络安全组的 Azure [扩充式安全规则](../virtual-network/network-security-groups-overview.md#augmented-security-rules)功能。 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | 资源组的名称            | 指定与群集基础结构（节点资源组）不在同一资源组中的负载均衡器公共 IP 的资源组。
@@ -402,19 +402,19 @@ spec:
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-group-create]: /cli/azure/group#az-group-create
-[az-provider-register]: /cli/azure/provider#az-provider-register
-[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule#az-network-lb-outbound-rule-list
-[az-network-public-ip-show]: /cli/azure/network/public-ip#az-network-public-ip-show
-[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-aks-install-cli]: /cli/azure/aks#az_aks_install_cli
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-group-create]: /cli/azure/group#az_group_create
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule#az_network_lb_outbound_rule_list
+[az-network-public-ip-show]: /cli/azure/network/public-ip#az_network_public_ip_show
+[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix#az_network_public_ip_prefix_show
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/skus.md
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-connections.md#outboundrules
@@ -425,8 +425,8 @@ spec:
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat

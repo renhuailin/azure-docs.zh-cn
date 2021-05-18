@@ -1,5 +1,5 @@
 ---
-title: Azure AD 多重身份验证的登录事件详细信息-Azure Active Directory
+title: Azure AD 多重身份验证的登录事件详细信息 - Azure Active Directory
 description: 了解如何查看 Azure AD 多重身份验证事件和状态消息的登录活动。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 5f78b70599d6d0ae8825accf4cc55cdc1c01d9ce
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861232"
 ---
-# <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>使用 "登录" 报告查看 Azure AD 多重身份验证事件
+# <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>使用登录报告查看 Azure AD 多重身份验证事件
 
-若要查看和了解 Azure AD 多重身份验证事件，可以使用 Azure Active Directory (Azure AD) 登录 "报告。 此报告显示提示用户进行多重身份验证时事件的身份验证详细信息，以及是否正在使用任何条件访问策略。 有关登录报告的详细信息，请参阅 [Azure AD 中的登录活动报告概述](../reports-monitoring/concept-sign-ins.md)。
+若要查看和了解 Azure AD 多重身份验证事件，可使用 Azure Active Directory (Azure AD) 登录报告。 此报告显示提示用户进行多重身份验证时事件的身份验证详细信息，以及是否正在使用任何条件访问策略。 有关登录报告的详细信息，请参阅 [Azure AD 中的登录活动报告概述](../reports-monitoring/concept-sign-ins.md)。
 
 本文介绍如何查看 Azure 门户中的 Azure AD 登录报告，然后查看 MSOnline V1 PowerShell 模块。
 

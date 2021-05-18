@@ -4,15 +4,15 @@ description: 配置存储库凭据以从容器注册表下载映像
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: 0c6421fed88a3909db717c13a6b3faf51c4491cd
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96574813"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>配置应用程序的存储库凭据以下载容器映像
 
-通过将 `RepositoryCredentials` 添加到应用程序清单的 `ContainerHostPolicies` 部分来配置容器注册表身份验证。 在以下示例中，为容器注册表 (*myregistry.azurecr.io* 添加帐户和密码) ，这允许服务从存储库下载容器映像。
+通过将 `RepositoryCredentials` 添加到应用程序清单的 `ContainerHostPolicies` 部分来配置容器注册表身份验证。 为容器注册表（下面示例中的“myregistry.azurecr.io”）添加帐户和密码，以便服务从存储库下载容器映像。
 
 ```xml
 <ServiceManifestImport>

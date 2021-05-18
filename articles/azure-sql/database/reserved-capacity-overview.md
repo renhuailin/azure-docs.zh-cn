@@ -1,7 +1,7 @@
 ---
-title: 节省预留容量的计算成本
+title: 通过预留容量节省计算成本
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: 了解如何购买 Azure SQL 数据库和 SQL 托管实例保留容量以节省计算成本。
+description: 了解如何购买 Azure SQL 数据库和 SQL 托管实例预留容量以节省计算成本。
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: features
@@ -13,59 +13,59 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 10/13/2020
 ms.openlocfilehash: cacd43502a01352c24f8fcfd85b12aac781dccbd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98602514"
 ---
-# <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>利用保留容量节省资源成本-Azure SQL 数据库 & SQL 托管实例
+# <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>通过预留容量节省资源成本 - Azure SQL 数据库和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
 
-与即用即付价格相比，将 Azure SQL 数据库和 SQL 托管实例与即用即付价格相比，为计算资源节省资金。 利用预留容量，你可以对 SQL 数据库和/或 SQL 托管实例使用一年或三年的时间，以获得有关计算成本的重要折扣。 若要购买保留容量，需要指定 Azure 区域、部署类型、性能层和术语。
+与即用即付价格相比，通过承诺预留计算资源，Azure SQL 数据库和 SQL 托管实例可以节省资金。 通过预留容量，你可以承诺使用一年或三年 SQL 数据库和/或 SQL 托管实例，以获得可观的计算成本折扣。 若要购买预留容量，需要指定 Azure 区域、部署类型、性能层和期限。
 
-不需要将保留分配给特定的数据库或托管实例。 匹配已在运行的现有部署或新部署的部署会自动获得权益。 购买预订后，可在一年或三年的时间内承诺计算成本。 一旦购买了预订，就不再按即用即付费率对与预订属性匹配的计算费用收费。 
+不需要将预留分配给特定的数据库或托管实例。 已在运行的现有匹配部署或者新部署的匹配部署将自动获得此权益。 通过购买预留，你承诺了在一年或三年内使用的计算成本。 购买预留后，与预留属性匹配的计算费用不再按照即用即付的费率计收。 
 
-预订同时适用于主要和计费辅助计算副本，但不包括与服务相关联的软件、网络或存储费用。 在保留期结束时，计费权益过期，数据库或托管实例按即用即付价格计费。 保留不自动续订。 有关定价信息，请参阅 [保留容量产品](https://azure.microsoft.com/pricing/details/sql-database/managed/)。
+预留同时适用于主要计算副本和可计费辅助计算副本，但不包括与服务相关联的软件、网络或存储费用。 在预留期限结束时，计费权益随即过期，数据库或托管实例将按即用即付价格计费。 预留不自动续订。 有关定价信息，请参阅[预留容量产品/服务](https://azure.microsoft.com/pricing/details/sql-database/managed/)。
 
-可以在 [Azure 门户](https://portal.azure.com)中购买保留容量。 通过[提前付款或按月付款](../../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 购买预留容量：
+可在 [Azure 门户](https://portal.azure.com)中购买预留容量。 通过[提前付款或按月付款](../../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 购买预留容量：
 
-- 对于至少一个企业或个人订阅，你必须以即用即付费率作为所有者角色。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。 保留容量。
+- 你必须至少是一个采用即用即付费率的企业或个人订阅的所有者角色。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。 预留容量。
 
-有关企业客户和即用即付客户如何针对预订购买付费的详细信息，请参阅 [了解企业注册的 azure 保留使用情况](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 和 [了解即用即付订阅的 azure 保留使用情况](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
+有关预留购买如何针对企业客户和即用即付客户进行计费的详细信息，请参阅[了解适用于企业合约的 Azure 预留使用情况](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)和[了解即用即付订阅的 Azure 预留使用情况](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
 > [!NOTE]
-> 购买保留容量并不会为你使用)  (虚拟机或节点预分配或保留特定的基础结构资源。
+> 购买预留容量不会预分配或保留供你使用的特定基础结构资源（虚拟机或节点）。
 
 ## <a name="determine-correct-size-before-purchase"></a>在购买之前确定正确的大小
 
-保留的大小应基于特定区域中现有或即将部署的数据库或托管实例使用的计算总量，并使用相同的性能层和硬件生成。
+预留的大小应基于特定区域中使用相同性能层和硬件代系的现有的或即将部署的数据库或托管实例所用的计算资源总量。
 
-例如，假设你正在运行一个通用的 Gen5 – 16 vCore 弹性池和两个业务关键 Gen5 – 4 vCore 单一数据库。 接下来，假设你计划在下个月中部署一个额外的常规用途 Gen5 – 16 vCore 弹性池和一个业务关键 Gen5 – 32 vCore 弹性池。 我们还假设你知道在至少 1 年的时间内，都需要这些资源。 在这种情况下，你应该购买 32 (2x16) Vcore 1 年保留，适用于单一数据库/弹性池常规用途-Gen5 和 40 (2x4 + 32) vCore 1 年保留用于单数据库/弹性池业务关键-Gen5。
+例如，假设你要运行一个常规用途的第 5 代 16 vCore 弹性池，以及两个业务关键型的第 5 代 4 vCore 单一数据库。 此外，假设你打算在下个月额外部署一个常规用途的第 5 代 16 vCore 弹性池，以及一个业务关键型的第 5 代 32 vCore 弹性池。 我们还假设你知道在至少 1 年的时间内，都需要这些资源。 在这种情况下，应该购买 32 (2x16) 个 vCore 的 1 年期“常规用途 - 第 5 代”单一数据库/弹性池预留容量，以及 40 (2x4 + 32) 个 vCore 的 1 年期“业务关键 - 第 5 代”单一数据库/弹性池预留容量。
 
 ## <a name="buy-reserved-capacity"></a>购买预留容量
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择“所有服务” > “预订”。
-3. 选择 " **添加** "，然后在 " **购买预订** " 窗格中选择 " **SQL 数据库** "，为 sql 数据库购买新的保留。
-4. 填写必填字段。 SQL 数据库中的现有数据库和与选择的属性相匹配的 SQL 托管实例都有资格获取预留容量折扣。 获取折扣的数据库或托管实例的实际数目取决于所选的范围和数量。
+3. 选择“添加”，然后在“购买预留”窗格中选择“SQL 数据库”以购买 SQL 数据库的新预留。  
+4. 填写必填字段。 SQL 数据库和 SQL 托管实例中与所选属性匹配的现有数据库符合享受预留容量折扣的条件。 享受折扣的数据库或托管实例的实际数目取决于所选范围和数量。
 
-    ![提交保留容量购买之前的屏幕截图](./media/reserved-capacity-overview/sql-reserved-vcores-purchase.png)
+    ![提交预留容量订单之前的屏幕截图](./media/reserved-capacity-overview/sql-reserved-vcores-purchase.png)
 
     下表描述了必填字段。
     
     | 字段      | 说明|
     |------------|--------------|
-    |订阅|用于支付产能预留的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须是企业协议 (产品/服务的 Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) ，或具有即用即付定价的单个协议 (产品编号为 MS-BC-OP-NT-AZR 或 bc-op-nt-azr-ms-azr-0003p) 。 对于企业订阅，将从注册的 Azure 预付款 (之前称为货币承诺) 余额或按超额支付收费。 对于使用即用即付定价的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。|
-    |范围       |VCore 预订的范围可以包含一个订阅或多个订阅 (共享范围) 。 如果选择 <br/><br/>**共享**，vCore 预订折扣应用于计费上下文内任何订阅中运行的数据库或托管实例。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。<br/><br/>**单个订阅**，vCore 预订折扣将应用到此订阅中的数据库或托管实例。 <br/><br/>**单个资源组**，预订折扣应用于所选订阅中的数据库实例或托管实例，以及该订阅内的所选资源组。|
-    |区域      |容量保留所涵盖的 Azure 区域。|
+    |订阅|用于支付产能预留费用的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）或采用即用即付定价的个人协议（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的 Azure 预付款（以前称为货币承诺）余额中扣除费用或按超额收取费用。 对于采用即用即付定价的个人订阅，将从订阅上的信用卡或发票付款方式收取费用。|
+    |范围       |vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择 <br/><br/>“共享”，则 vCore 预留折扣将应用于计费上下文中任何订阅中运行的数据库或托管实例。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。<br/><br/>“单个订阅”，则 vCore 预留折扣将应用于此订阅中的数据库或托管实例。 <br/><br/>“单个资源组”，则预留折扣将应用于所选订阅中的数据库实例或托管实例，以及该订阅中的所选资源组。|
+    |区域      |产能预留涵盖的 Azure 区域。|
     |部署类型|要为其购买预留容量的 SQL 资源类型。|
-    |性能层|数据库或托管实例的服务层。 |
+    |性能层|数据库或托管实例的服务层级。 |
     |术语        |一年或三年。|
-    |数量    |在容量保留内购买的计算资源量。 该数量是所选 Azure 区域和正在保留的性能层中的 Vcore 数，将获得计费折扣。 例如，如果运行或计划运行的多个数据库的总计算能力为 "美国东部" 区域的 Gen5 16 Vcore，则可将数量指定为16，以最大程度地提高所有数据库的权益。 |
+    |数量    |在产能预留中购买的计算资源量。 数量是预留并将享受计费折扣的所选 Azure 区域和性能层中的 vCores 的数量。 例如，如果在“美国东部”区域运行或计划运行总计算容量为 Gen5 16 vCore 的多个数据库，则将数量指定为 16，以使所有数据库的权益最大化。 |
 
-1. 在 " **成本** " 部分中查看容量预留的成本。
+1. 在“成本”部分查看产能预留成本。
 1. 选择“购买”。
 1. 选择“查看此预订”以查看购买的状态。
 
@@ -75,11 +75,11 @@ ms.locfileid: "98602514"
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小灵活性
 
-vCore 大小灵活性有助于在同一性能层和区域内纵向扩展或收缩，且不会丢失预留容量权益。 保留容量还能让你灵活地将热数据库移入和移出弹性池 (在同一区域和性能层中，) 作为正常操作的一部分，而不会丢失保留容量权益。 通过保留保留中未使用的缓冲区，可以有效地管理性能峰值，而不会超出预算。
+vCore 大小灵活性有助于在同一性能层和区域内纵向扩展或收缩，且不会丢失预留容量权益。 预留容量还提供了灵活性，使你可以在正常操作过程中临时将正在使用的数据库移入和移出弹性池（在同一区域和性能层内），而不会失去预留容量权益。 通过在预留中保留一个未应用的缓冲区，你可以在不超出预算的情况下有效地管理性能峰值。
 
 ## <a name="limitation"></a>限制
 
-不能在 SQL 数据库中保留基于 DTU 的 (基本、标准或高级) 的数据库。
+不能在 SQL 数据库中预留基于 DTU 的（基本、标准或高级）数据库。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
@@ -87,9 +87,9 @@ vCore 大小灵活性有助于在同一性能层和区域内纵向扩展或收�
 
 ## <a name="next-steps"></a>后续步骤
 
-VCore 预订折扣将自动应用于与容量预留范围和属性匹配的数据库或托管实例的数目。 可以通过 [Azure 门户](https://portal.azure.com)、PowerShell、AZURE CLI 或 API 更新容量预留的作用域。
+vCore 预留折扣自动应用于与产能预留范围和属性匹配的数据库或托管实例数目。 可以通过 [Azure 门户](https://portal.azure.com)、PowerShell、Azure CLI 或 API 更新产能预留的范围。
 
-若要了解如何管理容量预留，请参阅 [管理预留容量](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)。
+若要了解如何管理产能预留，请参阅[管理预留容量](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)。
 
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 

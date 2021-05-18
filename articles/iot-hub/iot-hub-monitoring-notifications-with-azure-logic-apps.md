@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490316"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知
@@ -70,7 +70,7 @@ ms.locfileid: "92490316"
 
 ### <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 
-1. 在[Azure 门户](https://portal.azure.com/)上，选择 " **+ 创建资源**  >  **集成**  >  **服务总线**"。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择“+ 创建资源” > “集成” > “服务总线”  。
 
 1. 在“创建命名空间”窗格中提供以下信息：
 
@@ -112,7 +112,7 @@ ms.locfileid: "92490316"
 
 1. 在“消息传送”下，选择“消息路由”。  在“消息路由”窗格中选择“自定义终结点”选项卡，然后选择“+ 添加”。   从下拉列表中选择“服务总线队列”。
 
-   ![突出显示 "服务总线队列" 选项的屏幕截图。](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
+   ![突出显示“服务总线队列”选项的屏幕截图。](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
 
 1. 在“添加服务总线终结点”窗格中输入以下信息：
 
@@ -183,7 +183,7 @@ ms.locfileid: "92490316"
 1. 创建服务总线连接。
    1. 输入连接名称，并从列表中选择你的服务总线命名空间。 下一个屏幕将会打开。
 
-      ![当一条或多条消息到达队列时 (自动完成) 选项的屏幕截图。](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
+      ![突出显示“一封或多封邮件到达队列时(自动完成)”选项的屏幕截图。](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
 
    1. 选择服务总线策略 (RootManageSharedAccessKey)。 然后选择“创建”。
 

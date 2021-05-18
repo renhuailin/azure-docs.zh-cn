@@ -1,40 +1,40 @@
 ---
-title: 设置蓝图操作员的环境
-description: 了解如何配置 Azure 环境以与蓝图操作员 Azure 内置角色一起使用。
-ms.date: 02/05/2021
+title: 为蓝图操作员设置环境
+description: 了解如何将 Azure 环境配置为与蓝图操作员 Azure 内置角色配合使用。
+ms.date: 05/01/2021
 ms.topic: how-to
-ms.openlocfilehash: b43a33f4bac92903bd07454041d11850f217d480
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.openlocfilehash: beea51f6d4b320895b235a0362f323a09c2460e3
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558723"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323260"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>为蓝图操作员配置环境
 
-可以将蓝图定义和蓝图分配的管理分配给不同的团队。 在运营团队负责管理这些集中控制的蓝图定义的分配时，架构师或调控团队通常负责管理蓝图定义的生命周期管理。
+可以将蓝图定义管理和蓝图分配管理分配到不同的团队。 通常，架构师或治理团队负责蓝图定义的生命周期管理，而运营团队则负责管理那些集中控制的蓝图定义的分配。
 
-**蓝图运算符** 内置角色专用于在此类方案中使用。 角色允许操作类型团队管理组织蓝图定义的分配，但不允许对其进行修改。 执行此操作需要在 Azure 环境中进行一些配置，本文介绍必要的步骤。
+蓝图操作员内置角色是专门为在此类方案中使用而设计的。 运营类型的团队可以通过该角色管理组织蓝图定义的分配，但不可修改这些定义。 执行此操作需要在 Azure 环境中进行一些配置，本文介绍了必要的步骤。
 
-## <a name="grant-permission-to-the-blueprint-operator"></a>向蓝图运算符授予权限
+## <a name="grant-permission-to-the-blueprint-operator"></a>向蓝图操作员授予权限
 
-第一步是向帐户或安全组授予 **蓝图操作员** 角色 (建议) 分配蓝图。 应在管理组层次结构中的最高级别完成此操作，该管理组层次结构包含操作团队应对其进行蓝图分配访问的所有管理组和订阅。 建议在授予这些权限时遵循最低权限原则。
+第一步是向将要为其分配蓝图的帐户或安全组（建议）授予蓝图操作员角色。 应在管理组层次结构中的最高级别完成此操作，该级别包含运营团队应具有其蓝图分配访问权限的所有管理组和订阅。 建议在授予这些权限时遵循最低权限原则。
 
-1.  (建议) [创建安全组并添加成员](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
+1. （建议）[创建安全组并添加成员](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. 将 **蓝图操作员** 的 [Azure 角色分配](../../../role-based-access-control/role-assignments-portal.md)给帐户或安全组
+1. 将蓝图操作员 [Azure 角色分配](../../../role-based-access-control/role-assignments-portal.md)到帐户或安全组
 
-## <a name="user-assign-managed-identity"></a>用户-分配托管标识
+## <a name="user-assign-managed-identity"></a>用户分配的托管标识
 
-蓝图定义可以使用系统分配的或用户分配的托管标识。 但是，在使用 **蓝图运算符** 角色时，需要将蓝图定义配置为使用用户分配的托管标识。 此外，要向其授予 **蓝图操作员** 角色的帐户或安全组需要向用户分配的托管标识授予 **托管标识操作员** 角色。 如果没有此权限，则蓝图分配由于缺少权限而失败。
+蓝图定义可以使用系统分配的或用户分配的托管标识。 但是，在使用蓝图操作员角色时，需要将蓝图定义配置为使用用户分配的托管标识。 此外，对于被授予蓝图操作员角色的帐户或安全组，需要针对用户分配的托管标识向它们授予托管标识操作员角色 。 如果没有此权限，蓝图分配会由于缺少权限而失败。
 
-1. [创建用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) ，供分配的蓝图使用。
+1. [创建用户分配的托管标识](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)，供分配的蓝图使用。
 
 1. 向用户分配的托管标识授予指定范围的蓝图定义所需的任何角色或权限。
 
-1. 将 **托管标识操作员** 的 [Azure 角色分配](../../../role-based-access-control/role-assignments-portal.md)给帐户或安全组。 将角色分配的范围限定为新的用户分配的托管标识。
+1. 将托管标识操作员 [Azure 角色分配](../../../role-based-access-control/role-assignments-portal.md)到帐户或安全组。 将角色分配的范围限定为用户分配的新托管标识。
 
-1. 作为 **蓝图运算符**， [分配一个](../create-blueprint-portal.md#assign-a-blueprint) 使用新的用户分配的托管标识的蓝图。
+1. 作为蓝图操作员，[分配使用用户分配的新托管标识的蓝图](../create-blueprint-portal.md#assign-a-blueprint)。
 
 ## <a name="next-steps"></a>后续步骤
 

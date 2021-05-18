@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783566"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
@@ -51,7 +51,7 @@ Get-AzEnvironment
 Connect-AzAccount –Environment AzureUSGovernment
 ```
 
-若要访问中国云，请使用环境 **AzureChinaCloud** 。 若要访问德国云，请使用 **AzureGermanCloud** 。
+若要访问中国云，请使用环境 **AzureChinaCloud**。 若要访问德国云，请使用 **AzureGermanCloud**。
 
 此时，如果需要查看可在其中创建存储帐户或其他资源的位置列表，可以使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 查询所选云可用的位置。
 
@@ -69,13 +69,13 @@ Get-AzLocation | select Location, DisplayName
 
 ## <a name="endpoint-suffix"></a>终结点后缀
 
-其中每个环境的终结点后缀不同于 Azure 公有云终结点。 例如，Azure 公有云的 Blob 终结点后缀为 **blob.core.windows.net** 。 政府云的 Blob 终结点后缀为 **blob.core.usgovcloudapi.net** 。
+其中每个环境的终结点后缀不同于 Azure 公有云终结点。 例如，Azure 公有云的 Blob 终结点后缀为 **blob.core.windows.net**。 政府云的 Blob 终结点后缀为 **blob.core.usgovcloudapi.net**。
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>使用 Get-AzEnvironment 获取终结点
 
 使用 [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) 检索终结点后缀。 终结点是环境的 *StorageEndpointSuffix* 属性。
 
-下面的代码片段演示如何检索终结点后缀。 所有这些命令返回类似于 "core.cloudapp.net" 或 "core.cloudapi.de" 等的内容。将后缀追加到存储服务以访问该服务。 例如，追加“queue.core.cloudapi.de”可访问德国云中的队列服务。
+下面的代码片段演示如何检索终结点后缀。 所有这些命令返回类似于“core.cloudapp.net”、“core.cloudapi.de”等的内容。将后缀追加到存储服务即可访问该服务。 例如，追加“queue.core.cloudapi.de”可访问德国云中的队列服务。
 
 此代码片段检索所有环境，以及每个环境的终结点后缀。
 
@@ -92,7 +92,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix** 。 以下示例适用于德国云。
+若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于德国云。
 
 ```powershell
 Get-AzEnvironment -Name AzureGermanCloud

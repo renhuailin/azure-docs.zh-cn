@@ -4,10 +4,10 @@ description: 本文介绍如何将 Azure 事件中心命名空间从当前区域
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: b177c3916919e3d97325f9d8c6b6027c00cb476f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96019916"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>将 Azure 事件中心命名空间移到另一个区域
@@ -18,8 +18,8 @@ ms.locfileid: "96019916"
 ## <a name="prerequisites"></a>先决条件
 
 - 确保帐户使用的服务和功能在目标区域中受支持。
-- 如果为命名空间中的事件中心启用了 **捕获功能** ，请在移动事件中心命名空间之前移动 [Azure 存储或 Azure Data Lake Store 第2代](../storage/common/storage-account-move.md) 或 [Azure Data Lake Store 第1代](../data-lake-store/data-lake-store-migration-cross-region.md) 帐户。 还可以按照与本文所述步骤类似的步骤，将包含存储和事件中心命名空间的资源组移到另一个区域。 
-- 如果事件中心命名空间位于 **事件中心群集** 中，请在执行本文中的步骤之前， [将专用群集移](move-cluster-across-regions.md) 到 **目标区域** 。 你还可以使用 [GitHub 上的快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-cluster-namespace-eventhub/) 来创建事件中心群集。 在模板中，删除 JSON 的命名空间部分以仅创建群集。 
+- 如果在命名空间中为事件中心启用了捕获功能，请在移动事件中心命名空间之前首先移动 [Azure 存储或 Azure Data Lake Store Gen 2](../storage/common/storage-account-move.md) 或 [Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-migration-cross-region.md) 帐户。 还可以按照与本文所述步骤类似的步骤，将包含存储和事件中心命名空间的资源组移到另一个区域。 
+- 如果事件中心命名空间位于事件中心群集中，则在执行本文中的步骤之前，请将[专用群集](move-cluster-across-regions.md)移到目标区域。 还可以使用 [GitHub 上的快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-cluster-namespace-eventhub/)创建事件中心群集。 在模板中，删除 JSON 的命名空间部分以仅创建群集。 
 
 ## <a name="prepare"></a>准备
 若要开始，请导出资源管理器模板。 此模板包含描述事件中心命名空间的设置。

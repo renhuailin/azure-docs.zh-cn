@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 5c72ab7d085de558ee95f3c602ccc6be6160b322
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96620199"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>信任关系如何作用于 Azure Active Directory 域服务中的资源林
@@ -255,13 +255,13 @@ Net Logon 服务维护从基于 Windows 的计算机到 DC 的安全通道。 �
 
     对于林信任，信任信息包括林信任信息 (FTInfo) 记录，其中包含受信任的林声明要管理的命名空间集，使用指示每个声明是否受信任林信任的字段进行批注。
 
-* 身份验证-通过受保护的通道向域控制器提供用户凭据，并为用户返回域 Sid 和用户权限。
+* 身份验证 - 通过受保护的通道向域控制器提供用户凭据，并返回用户的域 SID 和用户权限。
 
-* 域控制器位置–帮助查找或查找域中或跨域的域控制器。
+* 域控制器位置 - 帮助在域中或域间查找或定位域控制器。
 
-* 传递验证– Net Logon 处理其他域中用户的凭据。 当信任域需要验证用户的身份时，它会将用户的凭据通过 Net Logon 传递到受信任的域进行验证。
+* 直通验证 - 由 Net Logon 处理其他域中用户的凭据。 当信任域需要验证用户的身份时，它会将用户的凭据通过 Net Logon 传递到受信任的域进行验证。
 
-* 特权属性证书 (PAC) 验证–当使用 Kerberos 协议进行身份验证的服务器需要在服务票证中验证 PAC 时，它会将 PAC 发送到其域控制器进行验证。
+* 特权属性证书 (PAC) 验证 - 当使用 Kerberos 协议进行身份验证的服务器需要验证服务票证中的 PAC 时，它会通过安全通道将该 PAC 发送到其域控制器以进行验证。
 
 ### <a name="local-security-authority"></a>本地安全机构
 

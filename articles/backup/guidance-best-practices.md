@@ -3,12 +3,12 @@ title: 指南和最佳做法
 description: 了解将云和本地工作负载备份到云的最佳做法和指南
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 14476533cf896434182e1d63f89c6a1279b36362
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100593337"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519057"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
 
@@ -261,4 +261,4 @@ Azure 备份服务的功能让你可以灵活地有效管理你的成本，并�
 建议你阅读以下文章，以便开始使用 Azure 备份：
 
 * [Azure 备份概述](backup-overview.md)
-* [常见问题解答](backup-azure-backup-faq.md)
+* [常见问题解答](backup-azure-backup-faq.yml)

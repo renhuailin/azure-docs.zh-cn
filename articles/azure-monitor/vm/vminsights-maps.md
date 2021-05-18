@@ -1,24 +1,24 @@
 ---
-title: 查看 VM insights 的应用依赖项
-description: Map 是 VM insights 的一项功能。 它可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供有关如何在各种方案中使用映射功能的详细信息。
+title: 使用 VM 见解查看应用依赖项
+description: VM 见解中有一个映射功能。 它可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供有关如何在各种方案中使用映射功能的详细信息。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: 267ec0ed01fb85e9e29b0b8c9294d20d610db8fb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046561"
 ---
-# <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>使用 VM insights 的地图功能了解应用程序组件
-在 VM insights 中，可以查看在 Windows 和 Linux 虚拟机上发现的应用程序组件 (在 Azure 或环境中运行的 Vm) 。 可通过两种方式观察 VM。 查看直接从 VM 建立的映射，或查看从 Azure Monitor 建立的映射，以查看各个 VM 组中的组件。 本文将帮助你了解这两种查看方法，以及如何使用映射功能。 
+# <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>使用 VM 见解中的映射功能，了解应用程序组件
+在 VM 见解中，可以查看在 Azure 或实际环境中运行的 Windows 和 Linux 虚拟机 (VM) 上发现的应用程序组件。 可通过两种方式观察 VM。 查看直接从 VM 建立的映射，或查看从 Azure Monitor 建立的映射，以查看各个 VM 组中的组件。 本文将帮助你了解这两种查看方法，以及如何使用映射功能。 
 
-有关配置 VM insights 的信息，请参阅 [ENABLE vm insights](./vminsights-enable-overview.md)。
+有关配置 VM 见解的信息，请参阅[启用 VM 见解](./vminsights-enable-overview.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-登录 [Azure 门户](https://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="introduction-to-the-map-experience"></a>映射体验简介
 在深入了解映射体验之前，应该了解它如何显示和可视化信息。 无论是直接从 VM 还是从 Azure Monitor 选择映射功能，它都能提供一致的体验。 唯一的区别是，通过 Azure Monitor 使用时，一个映射会显示多层应用程序或群集的所有成员。
@@ -84,24 +84,24 @@ ms.locfileid: "102046561"
 
 ## <a name="view-a-map-from-a-vm"></a>从 VM 查看映射 
 
-直接从 VM 访问 VM insights：
+若要直接从 VM 访问 VM 见解，请执行以下操作：
 
 1. 在 Azure 门户中，选择“虚拟机”。 
-2. 在列表中选择一个 VM。 在 " **监视** " 部分，选择 " **见解**"。  
+2. 在列表中选择一个 VM。 在“监视”部分中，选择“见解”。  
 3. 选择“映射”选项卡。
 
 映射将发现在指定时间范围内已建立有效网络连接的正在运行的进程组和进程，以此将 VM 的依赖项可视化。  
 
 默认情况下，映射显示最近 30 分钟。 若要查看过去发现的依赖项，可以查询最多一小时的历史时间范围。 若要运行查询，请使用左上角的“TimeRange”选择器。 例如，在发生某个事件期间，或者想要查看更改前的状态时，可以运行查询。  
 
-![Azure 门户的 "监视见解" 部分中 "地图" 选项卡的屏幕截图，显示了虚拟机之间依赖关系的关系图。](./media/vminsights-maps/map-direct-vm-01.png)
+![Azure 门户的“监视见解”部分中“映射”选项卡的屏幕截图，显示了虚拟机之间的依赖关系图。](./media/vminsights-maps/map-direct-vm-01.png)
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>从虚拟机规模集查看映射
 
-若要从虚拟机规模集直接访问 VM insights：
+若要直接从虚拟机规模集访问 VM 见解，请执行以下操作：
 
 1. 在 Azure 门户中选择“虚拟机规模集”。
-2. 在列表中选择一个 VM。 然后在 " **监视** " 部分选择 " **见解**"。  
+2. 在列表中选择一个 VM。 然后在“监视”部分中，选择“见解”。  
 3. 选择“映射”选项卡。
 
 映射会将规模集中的所有实例可视化为组节点，并可视化该组的依赖项。 展开的节点将列出规模集中的实例。 每次可以滚动浏览其中的 10 个实例。 
@@ -110,17 +110,17 @@ ms.locfileid: "102046561"
 
 默认情况下，映射显示最近 30 分钟。 若要查看过去发现的依赖项，可以查询最多一小时的历史时间范围。 若要运行查询，请使用“TimeRange”选择器。 例如，在发生某个事件期间，或者想要查看更改前的状态时，可以运行查询。
 
-!["监视见解" 部分中 "地图" 选项卡的屏幕截图，显示了虚拟机规模集之间的依赖关系示意图 Azure 门户。](./media/vminsights-maps/map-direct-vmss-01.png)
+![Azure 门户的“监视见解”部分中“映射”选项卡的屏幕截图，显示了虚拟机规模集之间的依赖关系图。](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->也可以从虚拟机规模集的“实例”视图访问特定实例的映射。 在 "**设置**" 部分中，请参阅 **实例**  >  **见解**。
+>也可以从虚拟机规模集的“实例”视图访问特定实例的映射。 在“设置”部分中，依次转到“实例” > “见解”。
 
 ## <a name="view-a-map-from-azure-monitor"></a>从 Azure Monitor 查看映射
 
 在 Azure Monitor 中，映射功能将提供 VM 及其依赖项的全局视图。 若要在 Azure Monitor 中访问映射功能：
 
 1. 在 Azure 门户中选择“监视”。 
-2. 在 " **见解** " 部分，选择 " **虚拟机**"。
+2. 在“见解”部分中，选择“虚拟机”。
 3. 选择“映射”选项卡。
 
    ![多个 VM 的 Azure Monitor 概述映射](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
@@ -133,4 +133,4 @@ ms.locfileid: "102046561"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要确定瓶颈、查看性能并了解 Vm 的总体利用率，请参阅 [查看 vm insights 的性能状态](vminsights-performance.md)。
+若要确定瓶颈、检查性能和了解 VM 的整体利用率，请参阅[查看 VM 见解的性能状态](vminsights-performance.md)。

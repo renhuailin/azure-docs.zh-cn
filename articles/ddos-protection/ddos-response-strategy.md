@@ -1,6 +1,6 @@
 ---
 title: DDoS 响应策略的组件
-description: 了解如何使用 Azure DDoS 保护标准来响应 DDoS 攻击。
+description: 了解如何使用 Azure DDoS 防护标准对 DDoS 攻击做出响应。
 services: ddos-protection
 documentationcenter: na
 author: yitoh
@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
 ms.openlocfilehash: 2b31a8aa8b126c228ac7e9c3ca182300c710b098
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97814051"
 ---
 # <a name="components-of-a-ddos-response-strategy"></a>DDoS 响应策略的组件
@@ -44,23 +44,23 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 - 我的服务在跨多个区域故障转移后是否保持主动/主动状态？
 
-务必了解应用程序的正常行为，并在应用程序在 DDoS 攻击期间不按预期方式执行操作。 为模拟客户端行为的业务关键应用程序配置监视器，并在检测到相关异常时通知你。 若要深入了解应用程序的运行状况，请参阅 [监视和诊断最佳实践](/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) 。
+务必了解应用程序的正常行为，并做好在 DDoS 攻击期间，应用程序行为不符合预期时随时做出响应的准备，这一点很重要。 为业务关键应用程序配置监视器，以模拟客户端行为，并在检测到相关异常时发出通知。 若要深入了解应用程序的运行状况，请参阅[监视和诊断最佳做法](/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios)。
 
-[Azure Application Insights](../azure-monitor/app/app-insights-overview.md) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用 Application Insights 来监视实时 Web 应用程序。 它会自动检测性能异常。 它包含分析工具，可帮助你诊断问题并了解用户对应用执行的操作。 Application Insights 有助于持续提高性能与可用性。
+[Azure Application Insights](../azure-monitor/app/app-insights-overview.md) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用 Application Insights 来监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含分析工具，可帮助诊断问题，并了解用户在应用中执行的操作。 Application Insights 有助于持续提高性能与可用性。
 
 ## <a name="customer-ddos-response-team"></a>客户 DDoS 响应团队
 
 建立 DDoS 响应团队是快速有效地对攻击做出响应的关键一步。 在组织中确定负责监督规划和执行的各个联系人。 此 DDoS 响应团队应该全面了解标准 Azure DDoS 防护服务。 确保该团队能够与内部和外部客户（包括 Microsoft 支持团队）协作，以识别和缓解攻击。 
 
-建议在服务可用性和连续性规划中使用模拟练习，这些练习应包括缩放测试。 请参阅 [测试模拟](test-through-simulations.md) ，了解如何针对 Azure 公共终结点模拟 DDoS 测试流量。
+建议使用模拟演练作为服务可用性和连续性规划的日常组成部分，而且这些演练中应包括缩放测试。 请参阅[通过模拟进行测试](test-through-simulations.md)，以了解如何针对 Azure 公共终结点模拟 DDoS 测试流量。
 
 ## <a name="alerts-during-an-attack"></a>攻击期间的警报
 
-标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护的公共 IP 存在活动缓解时获得通知，你可以 [配置警报](alerts.md)。
+标准 Azure DDoS 防护将识别并缓解 DDoS 攻击，而无需任何用户干预。 若要在受保护的公共 IP 有对应的主动缓解时收到通知，可以[配置警报](alerts.md)。
 
 ### <a name="when-to-contact-microsoft-support"></a>何时与 Microsoft 支持部门联系
 
-Azure DDoS 保护标准客户有权访问 DDoS 快速响应 (DRR) 团队，他们可以在攻击期间帮助攻击调查，还可以进行攻击后的分析。 有关更多详细信息，请参阅 [DDoS 快速响应](ddos-rapid-response.md) ，包括应参与 DRR 团队。
+Azure DDoS 防护标准客户有权联系 DDoS 快速响应 (DRR) 团队，该团队可在攻击过程中帮助进行攻击调查，并在攻击之后帮助进行分析。 有关更多详细信息，包括何时应联系 DRR 团队，请参阅 [DDoS 快速响应](ddos-rapid-response.md)。
 
 ## <a name="post-attack-steps"></a>攻击后的措施
 
@@ -76,4 +76,4 @@ Azure DDoS 保护标准客户有权访问 DDoS 快速响应 (DRR) 团队，他�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何 [创建 DDoS 保护计划](manage-ddos-protection.md)。
+- 了解如何[创建 DDoS 防护计划](manage-ddos-protection.md)。

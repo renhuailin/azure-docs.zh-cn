@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94358620"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 认知搜索索引器连接到 Azure SQL 内容并为其编制索引
@@ -42,7 +42,7 @@ ms.locfileid: "94358620"
 * Azure 认知搜索 [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 * Azure 认知搜索 [REST API](/rest/api/searchservice/indexer-operations)
 
-在本文中，我们将使用 REST API 创建 **索引器** 和 **数据源** 。
+在本文中，我们将使用 REST API 创建 **索引器** 和 **数据源**。
 
 ## <a name="when-to-use-azure-sql-indexer"></a>何时使用 Azure SQL 索引器
 根据与数据相关的多个因素，可能适合也可能不适合使用 Azure SQL 索引器。 如果数据符合以下要求，可以使用 Azure SQL 索引器。
@@ -76,7 +76,7 @@ ms.locfileid: "94358620"
 
    连接字符串可遵循以下格式之一：
     1. 可从 [Azure 门户](https://portal.azure.com)获取连接字符串；请使用 `ADO.NET connection string` 选项。
-    1. 不包含采用以下格式的帐户密钥的托管标识连接字符串： `Initial Catalog|Database=<your database name>;ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Sql/servers/<your SQL Server name>/;Connection Timeout=connection timeout length;` 。 若要使用此连接字符串，请按照有关 [使用托管标识设置到 AZURE SQL 数据库的索引器连接](search-howto-managed-identities-sql.md)的说明进行操作。
+    1. 不包含以下格式的帐户密钥的托管标识连接字符串：`Initial Catalog|Database=<your database name>;ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Sql/servers/<your SQL Server name>/;Connection Timeout=connection timeout length;`。 若要使用此连接字符串，请按照有关[使用托管标识设置到 Azure SQL 数据库的索引器连接](search-howto-managed-identities-sql.md)的说明进行操作。
 
 2. 创建目标 Azure 认知搜索索引（如果还没有）。 可以使用[门户](https://portal.azure.com)或[创建索引 API](/rest/api/searchservice/Create-Index) 创建索引。 确保目标索引的架构与源表的架构兼容 - 请参阅 [SQL 和 Azure 认知搜索数据类型之间的映射](#TypeMapping)。
 
@@ -165,7 +165,7 @@ ms.locfileid: "94358620"
     }
 ```
 
-**间隔** 参数是必需的。 间隔是指开始两个连续的索引器执行之间的时间。 允许的最小间隔为 5 分钟；最长为一天。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 它的模式为： `P(nD)(T(nH)(nM))`。 示例：`PT15M` 为每隔 15 分钟，`PT2H` 为每隔 2 小时。
+**间隔** 参数是必需的。 间隔是指开始两个连续的索引器执行之间的时间。 允许的最小间隔为 5 分钟；最长为一天。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 它的模式为：`P(nD)(T(nH)(nM))`。 示例：`PT15M` 为每隔 15 分钟，`PT2H` 为每隔 2 小时。
 
 若要详细了解如何定义索引器计划，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
@@ -176,7 +176,7 @@ ms.locfileid: "94358620"
 Azure 认知搜索使用  “增量索引编制”来避免索引器每次运行时都必须为整个表或视图重新编制索引。 Azure 认知搜索提供了两个更改检测策略来支持增量索引编制。 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 集成的更改跟踪策略
-如果 SQL 数据库支持 [更改跟踪](/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我们建议使用 **SQL 集成的更改跟踪策略** 。 这是最有效的策略。 此外，它允许 Azure 认知搜索标识删除的行，无需向表中添加显式“软删除”列。
+如果 SQL 数据库支持 [更改跟踪](/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我们建议使用 **SQL 集成的更改跟踪策略**。 这是最有效的策略。 此外，它允许 Azure 认知搜索标识删除的行，无需向表中添加显式“软删除”列。
 
 #### <a name="requirements"></a>要求 
 
@@ -356,7 +356,7 @@ SQL 索引器公开多个配置设置：
 
 **问：是否可以将 Azure SQL 索引器与本地运行的 SQL 数据库配合使用？**
 
-无法直接配合使用。 我们不建议使用也不支持直接连接，因为这样做需要使用 Internet 流量打开数据库。 对于此方案，客户已使用诸如 Azure 数据工厂之类的桥技术取得了成功。 有关详细信息，请参阅 [使用 Azure 数据工厂将数据推送到 Azure 认知搜索索引](../data-factory/v1/data-factory-azure-search-connector.md)。
+无法直接配合使用。 我们不建议使用也不支持直接连接，因为这样做需要使用 Internet 流量打开数据库。 对于此方案，客户已使用诸如 Azure 数据工厂之类的桥技术取得了成功。 有关详细信息，请参阅[使用 Azure 数据工厂将数据推送到 Azure 认知搜索索引](../data-factory/v1/data-factory-azure-search-connector.md)。
 
 **问：是否可以将 Azure SQL 索引器与在 Azure 上 IaaS 中运行的非 SQL Server 数据库配合使用？**
 

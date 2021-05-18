@@ -4,13 +4,13 @@ description: 了解如何生成用于部署函数应用的 Azure 资源管理器
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 9df4c62a65fd133c6ea8dc84e33d7c7b02d94cbf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: fasttrack-edit, devx-track-azurepowershell
+ms.openlocfilehash: e5de54384d59423ac5e4b8ab851faf98070d027d
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99494033"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278841"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -212,7 +212,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
-消耗计划中运行的函数应用所需的设置在 Windows 和 Linux 之间有所不同。 
+在消耗计划中运行的函数应用所需的设置在 Windows 和 Linux 之间有所不同。 
 
 #### <a name="windows"></a>Windows
 
@@ -262,7 +262,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 #### <a name="linux"></a>Linux
 
-在 Linux 上，函数应用必须将其 `kind` 设置为 `functionapp,linux`，并且其属性 `reserved` 必须设置为 `true`。 
+在 Linux 上，函数应用必须将其 `kind` 设置为 `functionapp,linux`，并将其 `reserved` 属性设置为 `true`。 
 
 ```json
 {
@@ -300,7 +300,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-Linux 上不支持 [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) 和 [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 设置。
+Linux 不支持 [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) 和 [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 设置。
 
 <a name="premium"></a>
 ## <a name="deploy-on-premium-plan"></a>在高级计划上部署
@@ -407,7 +407,7 @@ Linux 上不支持 [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-se
 }
 ```
 
-若要在 Linux 上运行应用，还必须将设置 `kind` 为 `Linux`：
+若要在 Linux 上运行应用，还必须将 `kind` 设置为 `Linux`：
 
 ```json
 {
@@ -467,7 +467,7 @@ Linux 上不支持 [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-se
 }
 ```
 
-Linux 应用还应在 `siteConfig` 下包括 `linuxFxVersion` 属性。 如果只部署代码，则此属性的值由所需的运行时堆栈确定，格式为 ```runtime|runtimeVersion```：
+Linux 应用还应包含 `siteConfig` 下的 `linuxFxVersion` 属性。 如果只是部署代码，则此值由所需的运行时堆栈决定，格式为 ```runtime|runtimeVersion```：
 
 | 堆栈            | 示例值                                         |
 |------------------|-------------------------------------------------------|
@@ -513,7 +513,7 @@ Linux 应用还应在 `siteConfig` 下包括 `linuxFxVersion` 属性。 如果�
 }
 ```
 
-如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，必须将其指定为 `linuxFxVersion` 并包括允许拉取映像的配置，如[用于容器的 Web 应用](../app-service/index.yml)中所示。 此外，应将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置为 `false`，因为容器本身中提供了应用内容：
+如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，必须将其指定为 `linuxFxVersion`，并包括允许拉取映像的配置，如[用于容器的 Web 应用](../app-service/index.yml)中所示。 此外，将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置为 `false`，因为容器本身提供了应用内容：
 
 ```json
 {
@@ -684,7 +684,7 @@ $TemplateParams = @{"appName" = "<function-app-name>"}
 New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
 ```
 
-若要测试此部署，可以使用[这样的模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json)，该模板在消耗计划中在 Windows 上创建函数应用。 将 `<function-app-name>` 替换为你的函数应用的唯一名称。
+若要测试此部署，可以使用[这样的模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.web/function-app-create-dynamic/azuredeploy.json)，该模板在消耗计划中在 Windows 上创建函数应用。 将 `<function-app-name>` 替换为你的函数应用的唯一名称。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -696,5 +696,5 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 
 <!-- LINKS -->
 
-[基于消耗计划的函数应用]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic/azuredeploy.json
+[基于消耗计划的函数应用]: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.web/function-app-create-dynamic/azuredeploy.json
 [基于 Azure 应用服务计划的函数应用]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json

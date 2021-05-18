@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: c81eb092fa59cb890093e1e9acd0511e39b5047b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939527"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104864204"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
 
-数据管道构成多个数据分析解决方案的基础  。 顾名思义，数据管道采用原始数据、清除数据，并根据需要对其进行重新定形，然后通常在存储已处理的数据之前执行计算或聚合。 处理的数据供客户端、报表或 API 使用。 数据管道必须提供可重复的结果，无论是按计划还是由新数据触发。
+数据管道构成多个数据分析解决方案的基础  。 顾名思义，数据管道使用原始数据，对其进行清除并按需重塑，然后通常在存储处理的数据之前执行计算或聚合。 处理的数据供客户端、报表或 API 使用。 数据管道必须提供可重复的结果，无论是按计划还是由新数据触发。
 
 本文介绍如何使用 HDInsight Hadoop 群集上运行的 Oozie 让数据管道可操作化，以实现可重复性。 示例方案演示的数据管道用于准备和处理航班时间序列数据。
 
@@ -26,11 +26,11 @@ ms.locfileid: "98939527"
 | 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
-示例管道等待一个新时间段的航班数据到达，然后将详细航班信息存储到 Apache Hive 数据仓库，用于长期分析。 管道还创建一个较小的数据集，用于汇总每日航班数据。 此每日航班摘要数据会发送到 SQL 数据库，以便提供报表，例如网站的。
+示例管道等待一个新时间段的航班数据到达，然后将详细航班信息存储到 Apache Hive 数据仓库，用于长期分析。 管道还创建一个较小的数据集，用于汇总每日航班数据。 此每日航班汇总数据发送到 SQL 数据库，为网站等提供报表。
 
 下图展示了此示例管道。
 
-![HDI 航班示例数据管道概述](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
+:::image type="content" source="./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png" alt-text="HDI 航班示例数据管道概述" border="false":::
 
 ## <a name="apache-oozie-solution-overview"></a>Apache Oozie 解决方案概述
 
@@ -40,11 +40,11 @@ Oozie 根据操作、工作流和协调器对管道进行描述    。 操作决
 
 下图展示此示例 Oozie 管道的高级设计。
 
-![Oozie 航班示例数据管道](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+:::image type="content" source="./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png" alt-text="Oozie 航班示例数据管道" border="false":::
 
 ## <a name="provision-azure-resources"></a>预配 Azure 资源
 
-此管道要求 Azure SQL 数据库和 HDInsight Hadoop 群集位于同一位置。 Azure SQL 数据库存储管道生成的汇总数据和 Oozie 元数据存储。
+此管道要求 Azure SQL 数据库和 HDInsight Hadoop 群集位于同一位置。 Azure SQL 数据库同时存储管道和 Oozie 元数据存储生成的汇总数据。
 
 ### <a name="provision-azure-sql-database"></a>预配置 Azure SQL 数据库
 
@@ -131,11 +131,11 @@ Azure SQL 数据库现已准备就绪。
 
 2. 从服务列表选择“Hive”  。
 
-    ![Apache Ambari services 列表选择 Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png" alt-text="Apache Ambari 服务列表选择 Hive":::
 
 3. 选择 Hive 视图 2.0 标签旁的“转到视图”  。
 
-    ![Ambari Apache Hive 摘要列表](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png" alt-text="Ambari Apache Hive 摘要列表":::
 
 4. 在查询文本区域中，粘贴以下语句以创建 `rawFlights` 表。 `rawFlights` 表在 Azure 存储的 `/example/data/flights` 文件夹内为 CSV 文件提供读取时架构。
 
@@ -164,9 +164,9 @@ Azure SQL 数据库现已准备就绪。
 
 5. 选择“执行”以创建表  。
 
-    ![hdi ambari services hive 查询](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png" alt-text="hdi ambari 服务 hive 查询":::
 
-6. 若要创建 `flights` 表，请使用以下语句替换查询文本区域中的文本。 `flights`表是由 Hive 管理的表，它将按年、月和日的日期对加载到其中的数据进行分区。 此表将包含全部历史航班数据，其中原始数据的呈现采用最小粒度，达到每个航班一行数据。
+6. 若要创建 `flights` 表，请使用以下语句替换查询文本区域中的文本。 `flights` 表是 Hive 托管的表格，将加载到其中的数据按年、月和月份日期进行分区。 此表将包含全部历史航班数据，其中原始数据的呈现采用最小粒度，达到每个航班一行数据。
 
     ```sql
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -253,18 +253,18 @@ Azure SQL 数据库现已准备就绪。
     INSERT OVERWRITE TABLE flights
     PARTITION (YEAR, MONTH, DAY_OF_MONTH)
     SELECT 
-        FL_DATE,
-        CARRIER,
-        FL_NUM,
-        ORIGIN,
-        DEST,
-        DEP_DELAY,
-        ARR_DELAY,
-        ACTUAL_ELAPSED_TIME,
-        DISTANCE,
+          FL_DATE,
+          CARRIER,
+          FL_NUM,
+          ORIGIN,
+          DEST,
+          DEP_DELAY,
+          ARR_DELAY,
+          ACTUAL_ELAPSED_TIME,
+          DISTANCE,
         YEAR,
-        MONTH,
-        DAY_OF_MONTH
+          MONTH,
+          DAY_OF_MONTH
     FROM rawflights
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
@@ -278,17 +278,17 @@ Azure SQL 数据库现已准备就绪。
     CREATE EXTERNAL TABLE ${hiveTableName}
     (
         YEAR INT,
-        MONTH INT,
-        DAY_OF_MONTH INT,
-        CARRIER STRING,
-        AVG_DEP_DELAY FLOAT,
-        AVG_ARR_DELAY FLOAT,
-        TOTAL_DISTANCE FLOAT
+          MONTH INT,
+          DAY_OF_MONTH INT,
+          CARRIER STRING,
+          AVG_DEP_DELAY FLOAT,
+          AVG_ARR_DELAY FLOAT,
+          TOTAL_DISTANCE FLOAT
     )
     ROW FORMAT DELIMITED
     FIELDS TERMINATED BY '\t' STORED AS TEXTFILE LOCATION '${hiveDataFolder}';
     INSERT OVERWRITE TABLE ${hiveTableName}
-    SELECT  year, month, day_of_month, carrier, avg(dep_delay) avg_dep_delay, 
+    SELECT     year, month, day_of_month, carrier, avg(dep_delay) avg_dep_delay, 
             avg(arr_delay) avg_arr_delay, sum(distance) total_distance 
     FROM flights
     GROUP BY year, month, day_of_month, carrier 
@@ -415,9 +415,9 @@ Azure SQL 数据库现已准备就绪。
 
 1. 使用 Oozie Web 控制台观察状态。 从 Ambari 内部，依次选择“Oozie”、“快速链接”和“Oozie Web 控制台”    。 在“工作流作业”选项卡下，选择“所有作业”   。
 
-    ![hdi oozie web 控制台工作流](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png" alt-text="hdi oozie Web 控制台工作流":::
 
-1. 当状态为 "成功" 时，查询 SQL 数据库表以查看插入的行。 使用 Azure 端口，导航到 SQL 数据库的窗格，选择“工具”，然后打开“查询编辑器”   。
+1. 当状态为 SUCCEEDED 时，查询 SQL 数据库表以查看插入的行。 使用 Azure 端口，导航到 SQL 数据库的窗格，选择“工具”，然后打开“查询编辑器”   。
 
     ```sql
     SELECT * FROM dailyflights
@@ -504,7 +504,7 @@ Azure SQL 数据库现已准备就绪。
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上述协调器定义中，协调器配置为运行从2017年1月1日到2017年1月5日的操作。 频率设置为一天，由 [Oozie 表达式语言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) 频率表达式设置为一天 `${coord:days(1)}` 。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”  。 例如，若要处理2017年1月1日的数据，协调员将使用 2017-01-01T00：00： 00 GMT 的名义时间安排操作。
+    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调器定义中，协调器被配置为从 2017 年 1 月 1 日到 2017 年 1 月 5 日运行操作。 频率通过 [Oozie 表达式语言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式 `${coord:days(1)}` 设置为 1 天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”  。 例如，若要处理 2017 年 1 月 1 日的数据，协调器会将操作的名义时间计划为 2017-01-01T00:00:00 GMT。
 
 * 第 2 点：在工作流的日期范围内，`dataset` 元素指定 HDFS 中查找特定日期范围的数据的位置，并配置 Oozie 如何确定数据是否可进行处理。
 
@@ -515,9 +515,9 @@ Azure SQL 数据库现已准备就绪。
     </dataset>
     ```
 
-    HDFS 中数据的路径根据 `uri-template` 元素中提供的表达式动态生成。 在此协调器中，一天的频率也用于数据集。 协调器元素上的开始和结束日期控制操作的计划时间（并定义它们的名义时间），而数据集上的 `initial-instance` 和 `frequency` 控制构建 `uri-template` 时使用的日期的计算。 在此情况下，在协调器启动前将初始实例设为一天以确保它选取第一天 (1/1/2017) 的数据。 数据集的日期计算从 (12/31/2016 的值中向前滚动 `initial-instance` (一天内的数据集频率增量增加) ) 直到它找到最近的日期，该日期未通过第一次操作 (2017-01-01T00：00：00：00：00：00：00：00：00：00：00： 00 GMT。
+    HDFS 中数据的路径根据 `uri-template` 元素中提供的表达式动态生成。 在此协调器中，一天的频率也用于数据集。 协调器元素上的开始和结束日期控制操作的计划时间（并定义它们的名义时间），而数据集上的 `initial-instance` 和 `frequency` 控制构建 `uri-template` 时使用的日期的计算。 在此情况下，在协调器启动前将初始实例设为一天以确保它选取第一天 (1/1/2017) 的数据。 数据集的日期计算从 `initial-instance` (12/31/2016) 的值向后滚动，按数据集频率（1 天）递增，直到找到未超过协调器（第一次操作的 2017-01-01T00:00:00 GMT）设置的名义时间的最近日期。
 
-    空 `done-flag` 元素指示当 Oozie 在指定时间检查输入数据是否存在时，Oozie 通过目录或文件的存在情况确定数据是否可用。 在这种情况下，它是 csv 文件的状态。 如果存在 csv 文件，则 Oozie 假设数据已准备就绪并启动工作流实例以处理文件。 如果不存在 csv 文件，Oozie 将假定数据尚未就绪，并且工作流的运行将进入等待状态。
+    空 `done-flag` 元素指示当 Oozie 在指定时间检查输入数据是否存在时，Oozie 通过目录或文件的存在情况确定数据是否可用。 在此例中指 csv 文件的存在情况。 如果存在 csv 文件，则 Oozie 假设数据已准备就绪并启动工作流实例以处理文件。 如果不存在 csv 文件，Oozie 假定数据尚未就绪，并且工作流的运行将进入等待状态。
 
 * 第 3 点：`data-in` 元素指定在 `uri-template` 中替换关联数据集的值时，要用作名义时间的特定时间戳。
 
@@ -593,11 +593,11 @@ sqlDatabaseTableName=dailyflights
 
 5. 使用 Oozie Web 控制台验证状态，这一次选择“协调器作业”选项卡，然后选择“全部作业”   。
 
-    ![Oozie Web 控制台协调器作业](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png" alt-text="Oozie Web 控制台协调器作业":::
 
 6. 选择一个协调器实例显示计划操作的列表。 在此例中，应会显示四个名义时间在 2017/1/1 到 2017/1/4 范围内的操作。
 
-    ![Oozie Web 控制台协调器作业](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png" alt-text="Oozie Web 控制台协调器作业":::
 
     此列表中的每个操作对应于工作流的一个实例，用于处理一天的数据量，其中该天的开始时间由名义时间指示。
 

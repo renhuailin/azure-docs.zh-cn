@@ -3,23 +3,23 @@ title: 使用模板进行条件部署
 description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中有条件地部署资源。
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 409d258d7dfe3ed186e5cf97cc0dbe6dc149b849
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 8be42b4e57e628e41afa5cd914f9dcf72ebe4ab7
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741168"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736945"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>使用 ARM 模板进行条件部署
 
-有时，你需要根据需要在 Azure 资源管理器模板中部署资源 (ARM 模板) 或 Bicep 文件。 对于 JSON 模板，使用 `condition` 元素指定是否部署资源。 对于 Bicep，使用 `if` 关键字指定是否部署资源。 条件的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
+有时，需要选择在 Azure 资源管理器模板（ARM 模板）或 Bicep 文件中部署资源。 对于 JSON 模板，请使用 `condition` 元素指定是否部署资源。 对于 Bicep，请使用 `if` 关键字指定是否部署资源。 条件的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
 
 > [!NOTE]
 > 条件部署不会级联到[子资源](child-resource-name-type.md)。 如果要有条件地部署资源及其子资源，需要对每种资源类型应用相同的条件。
 
 ## <a name="deploy-condition"></a>部署条件
 
-你可以传入一个参数值，该值指示是否部署了资源。 以下示例有条件地部署一个 DNS 区域。
+你可以传入一个指示是否部署资源的参数值。 以下示例按条件部署 DNS 区域。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -58,11 +58,11 @@ resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = if (deployZone) {
 
 ---
 
-有关更复杂的示例，请参阅 [AZURE SQL 逻辑服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server)。
+如需查看更复杂的示例，请参阅 [Azure SQL 逻辑服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-logical-server)。
 
 ## <a name="new-or-existing-resource"></a>新资源或现有资源
 
-可以使用条件部署来创建新资源或使用现有资源。 下面的示例演示如何部署新的存储帐户或使用现有的存储帐户。
+可以使用条件部署来创建新资源或使用现有资源。 以下示例演示如何部署新的存储帐户或使用现有存储帐户。
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -138,7 +138,7 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 
 当参数 `newOrExisting` 设置为 **new** 时，条件的计算结果为 true。 将部署存储帐户。 但是，当 `newOrExisting` 设置为 **existing** 时，条件的计算结果为 false，并且不部署存储帐户。
 
-有关使用 `condition` 元素的完整示例模板，请参阅[具有新的或现有虚拟网络、存储和公共 IP 的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions)。
+有关使用 `condition` 元素的完整示例模板，请参阅[具有新的或现有虚拟网络、存储和公共 IP 的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-new-or-existing-conditions)。
 
 ## <a name="runtime-functions"></a>运行时函数
 
@@ -154,6 +154,6 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关涵盖条件部署的 Microsoft Learn 模块，请参阅 [使用高级 ARM 模板功能管理复杂的云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
+* 有关介绍条件部署的 Microsoft Learn 模块，请参阅[使用高级 ARM 模板功能管理复杂云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 * 有关创建模板的建议，请参阅 [ARM 模板的最佳做法](template-best-practices.md)。
 * 要创建资源的多个实例，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。

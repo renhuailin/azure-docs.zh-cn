@@ -4,13 +4,13 @@ description: 本文介绍如何排查和解决 Azure 自动化 Runbook 的问题
 services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.custom: has-adal-ref
-ms.openlocfilehash: 1ff5adf3ec974cc922d73cf5993a78722ca1b591
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.custom: has-adal-ref, devx-track-azurepowershell
+ms.openlocfilehash: 7964bc62aefc912a0f61744841784600575c98de
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723803"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831215"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
 
@@ -90,12 +90,12 @@ No certificate was found in the certificate store with thumbprint
    ```powershell
    $Cred = Get-Credential
    #Using Azure Service Management
-   Add-AzureAccount –Credential $Cred
+   Add-AzureAccount -Credential $Cred
    #Using Azure Resource Manager
-   Connect-AzAccount –Credential $Cred
+   Connect-AzAccount -Credential $Cred
    ```
 
-1. 如果无法在本地进行身份验证，则表示尚未正确设置 Azure Active Directory (Azure AD) 凭据。 若要正确设置 Azure AD 帐户，请参阅文章 [使用 Azure Active Directory 对 Azure 进行身份验证](../automation-use-azure-ad.md)。
+1. 如果无法在本地进行身份验证，则表示尚未正确设置 Azure Active Directory (Azure AD) 凭据。 若要正确设置 Azure AD 帐户，请参阅文章[使用 Azure Active Directory 向 Azure 进行身份验证](../automation-use-azure-ad.md)。
 
 1. 如果该错误看上去是暂时性的，请尝试向身份验证例程添加重试逻辑，使身份验证更加可靠。
 
@@ -201,11 +201,11 @@ The subscription named <subscription name> cannot be found.
 
 1. 为确保脚本可单独正常运行，请在 Azure 自动化外部对其进行测试。
 1. 确保脚本先运行 [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) cmdlet，再运行 `Select-*` cmdlet。
-1. 将 `Disable-AzContextAutosave –Scope Process` 添加到 runbook 的开头。 此 cmdlet 可以确保任何凭据都仅适用于当前 runbook 的执行。
+1. 将 `Disable-AzContextAutosave -Scope Process` 添加到 runbook 的开头。 此 cmdlet 可以确保任何凭据都仅适用于当前 runbook 的执行。
 1. 如果仍看到该错误消息，请通过为 `Connect-AzAccount` 添加 `AzContext` 参数来修改代码，然后执行代码。
 
    ```powershell
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
@@ -239,16 +239,16 @@ Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automat
 
 当某个 Runbook 调用多个 Runbook 时，订阅上下文可能会丢失。 若要避免意外尝试访问不正确的订阅，应遵循以下指导。
 
-* 若要避免引用错误的订阅，请在每个 runbook 开始时使用以下代码禁用自动化 runbook 中的上下文保存。
+* 为避免引用错误的订阅，请在每个 runbook 的开头使用以下代码来禁用自动化 runbook 中的上下文保存。
 
    ```azurepowershell-interactive
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
    ```
 
-* Azure PowerShell cmdlet 支持 `-DefaultProfile` 参数。 此操作已添加到所有 Az 和 AzureRm cmdlet 以支持在同一进程中运行多个 PowerShell 脚本，从而使你可以指定上下文和要用于每个 cmdlet 的订阅。 使用 runbook 时，应在创建 runbook 时将上下文对象保存在 runbook 中 (即，当帐户登录) 时和每次更改时，并在指定 Az cmdlet 时引用上下文。
+* Azure PowerShell cmdlet 支持 `-DefaultProfile` 参数。 该支持已添加到所有 Az 和 AzureRm cmdlet 中，以支持在同一进程中运行多个 PowerShell 脚本，因此你可以指定上下文和要用于每个 cmdlet 的订阅。 使用 runbook 时，应在创建 runbook（即帐户登录）时以及每次更改时将上下文对象保存在 runbook 中，并在指定 Az cmdlet 时引用上下文。
 
    > [!NOTE]
-   > 即使使用 [AzContext](/powershell/module/az.accounts/Set-AzContext) 或 [AzSubscription](/powershell/module/servicemanagement/azure.service/set-azuresubscription)等 cmdlet 直接操作上下文，也应该传入上下文对象。
+   > 即使在使用 [Set-AzContext](/powershell/module/az.accounts/Set-AzContext) 或 [Select-AzSubscription](/powershell/module/servicemanagement/azure.service/set-azuresubscription) 之类的 cmdlet 直接操作上下文时，也应该传递上下文对象。
 
    ```azurepowershell-interactive
    $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName 

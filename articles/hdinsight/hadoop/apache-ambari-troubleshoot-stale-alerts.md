@@ -4,12 +4,12 @@ description: 讨论和分析 HDInsight 中导致 Apache Ambari 警报过时的�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: e31e5d5a5b27f4dcb267905eae6329666fc3292c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 22985f295e504a2d73015f1dc96064f89be47bd7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946724"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866924"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>方案：Azure HDInsight 中的 Apache Ambari 过时警报
 
@@ -19,7 +19,7 @@ ms.locfileid: "98946724"
 
 在 Apache Ambari UI 中，你可能会看到如下所示的警报：
 
-![Apache Ambari 过时警报示例](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
+:::image type="content" source="./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png" alt-text="Apache Ambari 过时警报示例" border="true":::
 
 ## <a name="cause"></a>原因
 
@@ -75,12 +75,12 @@ Ambari 代理会持续监视许多资源的运行状况。 可以将警报配置
 
 ## <a name="next-steps"></a>后续步骤
 
-如果此处未提及你的问题，或者你无法解决问题，请访问以下某个渠道获取更多支持：
+如果你的问题未在本文中列出，或者你无法解决问题，请访问以下渠道之一，以获取更多支持：
 
-* 在 azure [社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
+* 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 连接到 [@AzureSupport](https://twitter.com/azuresupport) Twitter 上的。 这是用于改善客户体验的官方 Microsoft Azure 帐户。 它将 Azure 社区连接到适当的资源：答案、支持和专家。
+* 在 Twitter 上联系 [@AzureSupport](https://twitter.com/azuresupport)。 这是用于改进客户体验的官方 Microsoft Azure 帐户。 它可以将 Azure 社区成员引导至适当的资源，为他们提供解答、支持和专家建议。
 
-* 如果需要更多帮助，请从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 若要获取该信息，请从门户菜单中选择 "帮助 (**？**) ，或打开" **帮助 + 支持** "窗格。 有关详细信息，请参阅 [如何创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 为此，请从门户菜单中选择“帮助 ( **?** )”，或打开“帮助 + 支持”窗格。 有关详细信息，请参阅[如何创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 
 
-  Microsoft Azure 订阅中包含对订阅管理和计费的支持。 技术支持通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)提供。
+  Microsoft Azure 订阅中包含对订阅管理和计费的支持。 可通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)获取技术支持。

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96002708"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple 本地固定卷：常见问题 (FAQ)
@@ -163,7 +163,7 @@ ms.locfileid: "96002708"
 
 **Q.** 是否可以在还原期间更改卷的类型？
 
-**A.** 不可以，你无法在还原期间更改卷类型。
+**A.** 无法在还原期间更改卷类型。
 
 * 已删除的卷还原为快照中存储的类型。
 * 无论快照中存储的类型为何，卷都根据其当前类型还原（请参考前两个问题）。

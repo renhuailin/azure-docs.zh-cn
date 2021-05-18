@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: 4eda6eaf69fad6f8600651660ae4ac6223fe8f8c
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102438057"
 ---
 # <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>使用 IoT Edge 模块在 Azure Stack Edge Pro GPU 设备上运行 Kubernetes 无状态应用程序
@@ -76,7 +76,7 @@ ms.locfileid: "102438057"
         }
         ```
 
-        此配置可让你使用基于 *http* 的计算网络 IP 在 TCP 端口 8080（默认的 webserver 端口为 80）上访问该模块。 选择 **添加** 。
+        此配置可让你使用基于 *http* 的计算网络 IP 在 TCP 端口 8080（默认的 webserver 端口为 80）上访问该模块。 选择“添加”。
 
         ![在 IoT Edge 自定义模块边栏选项卡中指定端口信息](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-module-status-1.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "102438057"
 1. 若要获取 webserver 应用的外部终结点，请访问 [Kubernetes 仪表板](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#access-dashboard)。 
 1. 在仪表板的左窗格中，按照 **iotedge** 命名空间进行筛选。 转到“发现和负载均衡”>“服务”。 在列出的服务列表下，找到 webserver 应用模块的外部终结点。 
 
-    ![通过外部终结点连接到 webserver 应用](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/connect-external-endpoint-1.png)
+    ![在外部终结点连接到 webserver 应用](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/connect-external-endpoint-1.png)
 
 1. 选择外部终结点打开新的浏览器窗口。
 

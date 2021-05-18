@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 42e244249ecb0539637918ae2439bdb4f5da4b38
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98674987"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588473"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>为 Azure Active Directory B2C 配置 Nevis 以进行无密码身份验证的教程
 
-在此示例教程中，了解如何使用 [Nevis](https://www.nevis.net/solution/authentication-cloud) 扩展 Azure AD B2C 以启用无密码身份验证。 Nevis 通过 Nevis Access 应用提供移动优先的完全品牌化的最终用户体验，以提供强大的客户身份验证并符合支付服务指令 2 (PSD2) 事务要求。
+在此示例教程中，了解如何使用 [Nevis](https://www.nevis.net/en/solution/authentication-cloud) 扩展 Azure AD B2C 以启用无密码身份验证。 Nevis 通过 Nevis Access 应用提供移动优先的完全品牌化的最终用户体验，以提供强大的客户身份验证并符合支付服务指令 2 (PSD2) 事务要求。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,7 +32,7 @@ ms.locfileid: "98674987"
 
 - 已链接到 Azure 订阅的 [Azure AD B2C 租户](./tutorial-create-tenant.md)。
 
-- 已配置支持使用[自定义策略](./custom-policy-get-started.md)的 Azure AD B2C 环境（如果要将 Nevis 集成到登录策略流中）。
+- 已配置支持使用[自定义策略](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)的 Azure AD B2C 环境（如果要将 Nevis 集成到登录策略流中）。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -92,7 +92,7 @@ ms.locfileid: "98674987"
 >[!NOTE]
 >稍后需要使用 Nevis 访问令牌。
 
-11. 选择“完成”  。
+11. 选择“完成”。
 
 ### <a name="install-the-nevis-access-app-on-your-phone"></a>在手机上安装 Nevis Access 应用
 
@@ -232,7 +232,7 @@ ms.locfileid: "98674987"
 
 10. 在表单中填入新密码和显示名称。
 
-11. 选择“创建”  。
+11. 选择“创建”。
 
 12. 你将转到 QR 码扫描页。
 
@@ -270,4 +270,4 @@ ms.locfileid: "98674987"
 
 - [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

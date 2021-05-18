@@ -3,16 +3,17 @@ title: 排查 Synapse Studio 与存储之间的连接问题
 description: 排查 Synapse Studio 与存储之间的连接问题
 author: saveenr
 ms.service: synapse-analytics
+ms.subservice: troubleshooting
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: d570b4a8df5d59cf8828985bee20852d6bc79b1e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27a6fcde84f248fa69dd39091a16ac8edf64ddf0
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98117055"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143226"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>排查 Azure Synapse Analytics Synapse Studio 与存储之间的连接问题
 

@@ -1,17 +1,17 @@
 ---
 title: 服务器 - Azure Database for PostgreSQL - 单一服务器
 description: 本文提供配置和管理 Azure Database for PostgreSQL（单一服务器）的注意事项和指南。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c8ae129cbad56e3bb63e055f9d843cac1da22fb1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1d1751ed56f63105ce7775ceaed9ea2dcca1f8bf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91710458"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628129"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器
 本文提供使用 Azure Database for PostgreSQL（单一服务器）的注意事项和指南。
@@ -36,7 +36,7 @@ Azure Database for PostgreSQL 服务器：
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>如何连接到 Azure Database for PostgreSQL 服务器并向其进行身份验证？
 以下元素有助于确保安全地访问数据库：
 
-|||
+|安全概念|说明|
 |:--|:--|
 | **身份验证和授权** | Azure Database for PostgreSQL 服务器支持本机 PostgreSQL 身份验证。 可使用服务器的管理员登录名连接到服务器并进行身份验证。 |
 | 协议 | 该服务支持 PostgreSQL 使用的基于消息的协议。 |

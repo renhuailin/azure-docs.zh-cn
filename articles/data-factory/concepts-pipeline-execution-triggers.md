@@ -3,16 +3,16 @@ title: Azure 数据工厂中的管道执行和触发器
 description: 本文介绍了如何在 Azure 数据工厂中按需执行管道，或者通过创建触发器来执行管道。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: bd36b589424a0d890fc5e1bbab3f234e9b3264c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 271dbd87950018cebbd23841d32324afa42511e7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374773"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785795"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 
@@ -277,7 +277,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
-| JSON 属性 | 类型 | 必须 | 默认值 | 有效值 | 示例 |
+| JSON 属性 | 类型 | 必选 | 默认值 | 有效值 | 示例 |
 | --- | --- | --- | --- | --- | --- |
 | **startTime** | string | 是 | 无 | ISO 8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | object | 是 | 无 | recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
@@ -323,13 +323,8 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 如需翻转窗口触发器的详细信息和示例，请参阅[创建翻转窗口触发器](how-to-create-tumbling-window-trigger.md)。
 
-## <a name="event-based-trigger"></a>基于事件的触发器
-
-基于事件的触发器在 Azure Blob 存储中通过运行管道来响应某个事件，例如某个文件已到达，或者某个文件已删除。
-
-若要详细了解基于事件的触发器，请参阅[创建可以通过运行管道来响应事件的触发器](how-to-create-event-trigger.md)。
-
 ## <a name="examples-of-trigger-recurrence-schedules"></a>触发器定期触发计划示例
+
 此部分提供定期触发计划的示例， 重点介绍 **schedule** 对象及其元素。
 
 这些示例假定 interval 值为 1，且根据计划定义，frequency 值是正确的。 例如，不能在 **frequency** 值为 "day" 的同时，在 **schedule** 对象中有一个 **monthDays** 修改项。 这些类型的限制在上一部分的表中已说明过。
@@ -364,6 +359,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | 在每月第三个星期三的早晨 5:15、早晨 5:45、下午 5:15、下午 5:45 运行。 |
 
 ## <a name="trigger-type-comparison"></a>触发器类型比较
+
 翻转窗口触发器和计划触发器都按时间检测信号运行， 那么其不同之处在哪里？
 
 > [!NOTE]
@@ -380,7 +376,17 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **系统变量** | 除了 @trigger().scheduledTime 和 @trigger().startTime 之外，它还支持使用 WindowStart 和 WindowEnd 系统变量。 用户可以访问在触发器定义中充当触发器系统变量的 `trigger().outputs.windowStartTime` 和 `trigger().outputs.windowEndTime`。 这两个值分别用作窗口开始时间和窗口结束时间。 例如，如果翻转窗口触发器每小时运行一次，则对于凌晨 1:00 到凌晨 2:00 这个窗口，相应的定义为 `trigger().outputs.windowStartTime = 2017-09-01T01:00:00Z` 和 `trigger().outputs.windowEndTime = 2017-09-01T02:00:00Z`。 | 仅支持默认的 @trigger().scheduledTime 和 @trigger().startTime 变量。 |
 | **管道-触发器关系** | 支持一对一关系。 只能触发一个管道。 | 支持多对多关系。 多个触发器可以启动单个管道。 单个触发器可以启动多个管道。 |
 
+## <a name="event-based-trigger"></a>基于事件的触发器
+
+基于事件的触发器运行管道以对事件做出响应。 有两种基于事件的触发器。
+
+* _存储事件触发器_ 是针对存储帐户中发生的事件（例如，文件到达或 Azure Blob 存储帐户中的文件删除）运行管道。
+* _自定义事件触发器_ 是处理事件网格中的[自定义主题](../event-grid/custom-topics.md)
+
+有关基于事件的触发器的详细信息，请参阅[存储事件触发器](how-to-create-event-trigger.md)和[自定义事件触发器](how-to-create-custom-event-trigger.md)。
+
 ## <a name="next-steps"></a>后续步骤
+
 参阅以下教程：
 
 - [快速入门：使用 .NET SDK 创建数据工厂](quickstart-create-data-factory-dot-net.md)

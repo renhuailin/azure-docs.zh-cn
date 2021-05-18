@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure 逻辑应用？
+    - name: 关于 Azure 逻辑应用
       href: logic-apps-overview.md
 - name: 快速入门
   expanded: true
@@ -36,13 +36,15 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
 - name: 概念
   items:
-    - name: 逻辑应用的连接器概述
-      href: ../connectors/apis-list.md
-    - name: 适用于逻辑应用的托管连接器
-      href: ../connectors/managed.md
-    - name: 适用于逻辑应用的内置连接器
-      href: ../connectors/built-in.md
-    - name: 安排重复工作流
+    - name: 连接器和内置操作
+      items:
+        - name: 连接器概述
+          href: ../connectors/apis-list.md
+        - name: 托管的连接器
+          href: ../connectors/managed.md
+        - name: 内置操作
+          href: ../connectors/built-in.md
+    - name: 计划的重复工作流
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Azure 的无服务器体验
       href: logic-apps-serverless-overview.md
@@ -61,13 +63,13 @@
           href: /security/benchmark/azure/baselines/logic-apps-security-baseline?toc=/azure/logic-apps/toc.json
 - name: 操作指南
   items:
-    - name: Azure 逻辑应用预览版
+    - name: 单租户 Azure 逻辑应用（预览）
       items:
-        - name: Azure 逻辑应用预览版概述
+        - name: 单租户概述（预览）
           href: logic-apps-overview-preview.md
-        - name: 创建有状态和无状态工作流 - Azure 门户
+        - name: 创建预览版逻辑应用 - 门户
           href: create-stateful-stateless-workflows-azure-portal.md
-        - name: 创建有状态或无状态工作流 - Visual Studio Code
+        - name: 创建预览版逻辑应用 - Visual Studio Code
           href: create-stateful-stateless-workflows-visual-studio-code.md
     - name: 开发
       items:

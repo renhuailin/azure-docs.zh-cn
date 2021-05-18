@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
-ms.date: 09/30/2020
-ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.date: 03/17/2021
+ms.openlocfilehash: 4c9edaea75215bc4b471cd2e0ac50c4e69546bb0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592690"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592126"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL 数据库与 Azure SQL 托管实例中的监视和性能优化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "100592690"
 
 Azure SQL 数据库提供多个数据库顾问来提供智能性能优化建议以及用于提高性能的自动优化选项。 此外，Query Performance Insight 会显示有关针对单一数据库和共用数据库运行的、CPU 和 IO 占用量最高的查询的详细信息。
 
-Azure SQL 数据库和 Azure SQL 托管实例提供基于人工智能的其他监视和优化功能，以帮助排查数据库和解决方案的性能问题并实现其最高性能。 你可以选择将这些[智能见解](intelligent-insights-overview.md)和其他数据库资源日志和指标的[流式导出](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)配置为多个目标中的一个，以便使用[SQL Analytics](../../azure-monitor/insights/azure-sql.md)。 Azure SQL Analytics 是一种高级云监视解决方案，用于在单个视图中跨多个订阅大规模监视所有数据库的性能。 有关可导出的日志和指标列表，请参阅[可导出的诊断遥测数据](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)
+Azure SQL 数据库和 Azure SQL 托管实例提供基于人工智能的其他监视和优化功能，以帮助排查数据库和解决方案的性能问题并实现其最高性能。 可以选择将这些[智能见解](intelligent-insights-overview.md)以及其他数据库资源日志和指标配置为[流式导出](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)到多个目标之一，以供使用和分析，尤其是使用 [SQL Analytics](../../azure-monitor/insights/azure-sql.md)。 Azure SQL Analytics 是一种高级云监视解决方案，用于在单个视图中跨多个订阅大规模监视所有数据库的性能。 有关可导出的日志和指标列表，请参阅[可导出的诊断遥测数据](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)
 
 SQL Server 具有自己的监视和诊断功能，SQL 数据库和 SQL 托管实例可以利用这些功能，例如[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)和[动态管理视图 (DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)。 有关用于监视各种性能问题的脚本，请参阅[使用 DMV 进行监视](monitoring-with-dmvs.md)。
 
@@ -35,6 +35,10 @@ SQL Server 具有自己的监视和诊断功能，SQL 数据库和 SQL 托管实
 
 > [!NOTE]
 > 使用率极低的数据库在门户中显示的使用情况可能低于实际使用情况。 由于在将双精度值转换为最接近的整数时发出遥测的方式，某些小于 0.5 的使用量将舍入为 0，这会导致发出的遥测的精度降低。 有关详细信息，请参阅[数据库和弹性池低指标舍入为零](#low-database-and-elastic-pool-metrics-rounding-to-zero)。
+
+### <a name="monitor-with-sql-insights"></a>使用 SQL 见解进行监视
+
+[Azure Monitor SQL 见解](../../azure-monitor/insights/sql-insights-overview.md)是一种实用工具，可用于监视 Azure SQL VM 中的 Azure SQL 托管实例、Azure SQL 数据库和 SQL Server 实例。 此服务使用远程代理从动态管理视图 (DMV) 捕获数据，并将数据路由到 Azure Log Analytics 进行监视和分析。 可以从 [Azure Monitor](../../azure-monitor/overview.md) 在提供的视图中查看此数据，或直接访问日志数据以运行查询和分析趋势。 若要开始使用 Azure Monitor SQL 见解，请参阅[启用 SQL 见解](../../azure-monitor/insights/sql-insights-enable.md)。
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL 数据库和 Azure SQL 托管实例资源监视
 
@@ -93,13 +97,13 @@ Intelligent Insights 是 Azure 内置智能的一项独特功能，提供以下�
 
 ## <a name="enable-the-streaming-export-of-metrics-and-resource-logs"></a>启用指标和资源日志的流式导出
 
-可以启用并配置将[诊断遥测数据（包括智能见解资源日志）流式导出](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)到多个目标之一。 使用 [SQL 分析](../../azure-monitor/insights/azure-sql.md) 和其他功能来使用此附加的诊断遥测来识别和解决性能问题。
+可以启用并配置将[诊断遥测数据（包括智能见解资源日志）流式导出](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)到多个目标之一。 使用 [SQL 分析](../../azure-monitor/insights/azure-sql.md)和其他功能来利用这部分附加的诊断遥测数据，从而识别和解决性能问题。
 
 可以配置诊断设置，以将单一数据库、共用数据库、弹性池、托管实例和实例数据库的指标和资源日志类别流式传输到以下 Azure 资源之一。
 
 ### <a name="log-analytics-workspace-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 工作区
 
-可将指标和资源日志流式传输到 [Azure Monitor 中的 Log Analytics 工作区](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。 SQL Analytics 可以使用此处流式传输的数据， [SQL Analytics](../../azure-monitor/insights/azure-sql.md)是一种仅限云的监视解决方案，它提供对数据库的智能监视，其中包括性能报告、警报和缓解建议。 流式传输到 Log Analytics 工作区的数据可以使用收集的其他监视数据进行分析，还可以利用其他 Azure Monitor 功能，如警报和可视化效果。
+可将指标和资源日志流式传输到 [Azure Monitor 中的 Log Analytics 工作区](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。 流式传输到这里的数据可供 [SQL 分析](../../azure-monitor/insights/azure-sql.md)使用，这是一种仅限云的监视解决方案，提供对数据库的智能监视，其中包括性能报表、警报和风险缓解建议。 流式传输到 Log Analytics 工作区的数据可以使用其他收集到的监视数据进行分析，通过这些数据还可以利用其他 Azure Monitor 功能，例如警报和可视化效果。
 
 ### <a name="azure-event-hubs"></a>Azure 事件中心
 
@@ -113,7 +117,7 @@ Intelligent Insights 是 Azure 内置智能的一项独特功能，提供以下�
   可利用事件中心高度可缩放的发布-订阅功能，灵活地将指标和资源日志引入到自定义遥测平台。 有关详细信息，请参阅 [Designing and Sizing a Global Scale Telemetry Platform on Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)（在 Azure 事件中心设计全球规模的遥测平台并设置其大小）。
 - **通过将数据流式传输到 Power BI 来查看服务运行状况**
 
-  使用事件中心、流分析和 Power BI 将诊断数据转换为对 Azure 服务的近乎实时见解。 有关此解决方案的详细信息，请参阅 [流分析和 Power BI：用于流式处理数据的实时分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md) 。
+  使用事件中心、流分析和 PowerBI，将诊断数据转换成 Azure 服务上几近实时的认知见解。 有关此解决方案的详细信息，请参阅[流分析和 Power BI：用于流式处理数据的实时分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md)。
 
 ### <a name="azure-storage"></a>Azure 存储
 

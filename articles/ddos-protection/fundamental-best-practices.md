@@ -1,5 +1,5 @@
 ---
-title: Azure DDoS 保护的基本最佳实践
+title: Azure DDoS 防护的基本最佳做法
 description: 了解使用 DDoS 防护的最佳安全做法。
 services: ddos-protection
 documentationcenter: na
@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
 ms.openlocfilehash: 66c1ab1cb5ed478aa34825fb6903e4d06f834097
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94989467"
 ---
 # <a name="fundamental-best-practices"></a>基本最佳做法
@@ -41,7 +41,7 @@ ms.locfileid: "94989467"
 
 深层防御的理念是通过多样化的防御策略来掌控风险。 应用程序中的分层安全防御可以减少攻击成功的可能性。 我们建议使用 Azure 平台的内置功能对其应用程序实施安全设计。
 
-例如，攻击风险会随着应用程序的规模（外围应用）的增大而增大。 你可以通过使用审批列表来关闭公开的 IP 地址空间，并将负载平衡器上不需要的侦听端口关闭 ([Azure 负载平衡器](../load-balancer/quickstart-load-balancer-standard-public-portal.md) 和 [Azure 应用程序网关](../application-gateway/application-gateway-create-probe-portal.md)) ，从而减少外围应用。 [网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md) 是缩小受攻击面的另一种方法。
+例如，攻击风险会随着应用程序的规模（外围应用）的增大而增大。 可以使用审批列表关闭负载均衡器（[Azure 负载均衡器](../load-balancer/quickstart-load-balancer-standard-public-portal.md)和 [Azure 应用程序网关](../application-gateway/application-gateway-create-probe-portal.md)）上不需要的公开 IP 地址空间和侦听端口，从而减少外围应用。 [网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md) 是缩小受攻击面的另一种方法。
 可以使用[服务标记](../virtual-network/network-security-groups-overview.md#service-tags)和[应用程序安全组](../virtual-network/network-security-groups-overview.md#application-security-groups)来最大程度地简化安全规则的创建，并将网络安全性配置为应用程序结构的自然扩展。
 
 应尽可能地在[虚拟网络](../virtual-network/virtual-networks-overview.md)中部署 Azure 服务。 这种做法可让服务资源通过专用 IP 地址通信。 来自虚拟网络的 Azure 服务流量默认使用公共 IP 地址作为源 IP 地址。 使用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)时，服务流量会在通过虚拟网络访问 Azure 服务时改用虚拟网络专用地址作为源 IP 地址。
@@ -50,4 +50,4 @@ ms.locfileid: "94989467"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何 [创建 DDoS 保护计划](manage-ddos-protection.md)。
+- 了解如何[创建 DDoS 防护计划](manage-ddos-protection.md)。

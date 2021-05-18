@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
 ms.openlocfilehash: e82e74f4cd325444221bbd2e1c060b7cd2f5c6c7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036719"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理收集 Syslog 数据源
@@ -47,9 +47,9 @@ Syslog 收集器支持以下功能：
 针对 Linux 的 Log Analytics 代理将仅收集在其配置中指定设施和严重级别的事件。 通过 Azure 门户或通过管理 Linux 代理的配置文件来配置 Syslog。
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>在 Azure 门户中配置 Syslog
-从 "Log Analytics" 工作区的 " [代理配置" 菜单](../agents/agent-data-sources.md#configuring-data-sources) 配置 Syslog。 此配置将传递到每个 Linux 代理上的配置文件。
+从[代理配置菜单](../agents/agent-data-sources.md#configuring-data-sources)中为 Log Analytics 工作区配置 Syslog。 此配置将传递到每个 Linux 代理上的配置文件。
 
-可以通过单击 " **添加设备**" 来添加新设施。 对于每个设施，将仅收集具有所选严重级别的消息。  检查要收集的特定设施的严重级别。 不能向筛选消息提供任何其他条件。
+可以通过单击“添加设施”来添加新设施。 对于每个设施，将仅收集具有所选严重级别的消息。  检查要收集的特定设施的严重级别。 不能向筛选消息提供任何其他条件。
 
 [![配置 Syslog](media/data-sources-syslog/configure.png)](media/data-sources-syslog/configure.png#lightbox)
 

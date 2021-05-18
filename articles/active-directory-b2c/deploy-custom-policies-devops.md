@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 13f5f8da0bd58cef0974e8ea8f5f3c5172daa0ba
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 913f21b90043209cae1ec9963619389bcb452781
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96928726"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529425"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>使用 Azure Pipelines 部署自定义策略
 
@@ -29,12 +29,12 @@ ms.locfileid: "96928726"
 1. 配置 Azure 管道
 
 > [!IMPORTANT]
-> 借助 Azure 管道管理 Azure AD B2C 自定义策略目前使用 Microsoft Graph API `/beta` 终结点上提供的预览操作。 不支持在生产应用程序中使用这些 API。 有关详细信息，请参阅 [Microsoft Graph REST API beta 版本终结点参考](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta)。
+> 借助 Azure 管道管理 Azure AD B2C 自定义策略目前使用 Microsoft Graph API `/beta` 终结点上提供的预览操作。 不支持在生产应用程序中使用这些 API。 有关详细信息，请参阅 [Microsoft Graph REST API beta 版本终结点参考](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta&preserve-view=true)。
 
 ## <a name="prerequisites"></a>必备条件
 
 * [Azure AD B2C 租户](tutorial-create-tenant.md)，以及目录中具有 [B2C IEF 策略管理员](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)角色的用户的凭据
-* 已上传到租户的[自定义策略](custom-policy-get-started.md)
+* 已上传到租户的[自定义策略](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 * 已在你的租户中注册了[管理应用](microsoft-graph-get-started.md)，具有 Microsoft Graph API 权限 Policy.ReadWrite.TrustFramework
 * [Azure 管道](https://azure.microsoft.com/services/devops/pipelines/)以及对 [Azure DevOps Services 项目][devops-create-project]的访问权限
 
@@ -131,7 +131,7 @@ ms.locfileid: "96928726"
 1. 选择“变量”选项卡。
 1. 在“管道变量”下添加以下变量并按指定设置其值：
 
-    | 名称 | “值” |
+    | 名称 | 值 |
     | ---- | ----- |
     | `clientId` | 先前注册的应用程序的应用程序（客户端）ID。 |
     | `clientSecret` | 先前创建的客户端密码的值。 <br /> 将变量类型更改为“机密”（选择锁定图标）。 |

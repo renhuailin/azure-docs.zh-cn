@@ -4,10 +4,10 @@ description: 了解 Azure 备份中的安全功能，这些功能可帮助你保
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 9aa1909f1590b477d9a7f7a09ad0c2b1936e3e29
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96325649"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 备份中的安全功能概述
@@ -38,7 +38,7 @@ Azure 备份服务中内置了多个安全控制机制，用于防止、检测�
 
 ## <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
-现在可以使用[专用终结点](../private-link/private-endpoint-overview.md)将数据从虚拟网络内的服务器安全地备份到恢复服务保管库。 专用终结点使用保管库的 VNET 地址空间中的 IP，因此，无需将虚拟网络公开给任何公共 Ip。 专用终结点可用于备份和还原在 Azure VM 中运行的 SQL 数据库和 SAP HANA 数据库。 它还可以通过 MARS 代理用于本地服务器。
+现在可以使用[专用终结点](../private-link/private-endpoint-overview.md)将数据从虚拟网络内的服务器安全地备份到恢复服务保管库。 专用终结点对保管库使用来自 VNET 地址空间的 IP，因此你无需向任何公共 IP 公开你的虚拟网络。 专用终结点可用于备份和还原在 Azure VM 中运行的 SQL 数据库和 SAP HANA 数据库。 它还可以通过 MARS 代理用于本地服务器。
 
 在[此处](./private-endpoints.md)详细了解 Azure 备份的专用终结点。
 
@@ -48,7 +48,7 @@ Azure 备份服务中内置了多个安全控制机制，用于防止、检测�
 
 * 在 Azure 中，Azure 存储与保管库之间传输的数据[受 HTTPS 保护](backup-support-matrix.md#network-traffic-to-azure)。 此数据保留在 Azure 主干网络上。
 
-* 备份数据使用[平台管理的密钥](backup-encryption.md)自动进行加密，你不需要执行任何显式操作来启用它。 你还可以使用存储在 Azure Key Vault 中的 [客户托管密钥](encryption-at-rest-with-cmk.md) 来加密备份的数据。 这种加密适用于要备份到恢复服务保管库的所有工作负荷。
+* 备份数据使用[平台管理的密钥](backup-encryption.md)自动进行加密，你不需要执行任何显式操作来启用它。 你还可使用 Azure Key Vault 中存储的[客户管理的密钥](encryption-at-rest-with-cmk.md)来加密备份数据。 这种加密适用于要备份到恢复服务保管库的所有工作负荷。
 
 * Azure 备份支持备份和还原已使用 [Azure 磁盘加密 (ADE)](backup-azure-vms-encryption.md#encryption-support-using-ade) 功能加密了其 OS/数据磁盘的 Azure VM 和[带 CMK 加密磁盘的 VM](backup-azure-vms-encryption.md#encryption-using-customer-managed-keys)。 有关详细信息，请参阅[详细了解加密的 Azure VM 和 Azure 备份](./backup-azure-vms-encryption.md)。
 

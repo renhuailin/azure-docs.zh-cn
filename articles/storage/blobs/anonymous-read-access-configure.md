@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: feac7b890c973b1541c5362f860432687082953f
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96533870"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>配置对容器和 blob 的匿名公共读取访问
@@ -22,7 +22,7 @@ ms.locfileid: "96533870"
 Azure 存储支持对容器和 blob 进行可选的匿名公共读取访问。 默认情况下，系统从不允许匿名访问你的数据。 除非你显式启用匿名访问，否则对容器及其 blob 的所有请求都必须获得授权。 如果你将容器的公共访问级别设置配置为允许匿名访问，则客户端无需对请求进行授权便可读取该容器中的数据。
 
 > [!WARNING]
-> 为容器配置了公共访问时，任何客户端都可以读取该容器中的数据。 公共访问权限会带来潜在的安全风险，因此，如果你的方案不需要，Microsoft 建议你禁止将其用于存储帐户。 有关详细信息，请参阅[阻止对容器和 Blob 的匿名公共读取访问](anonymous-read-access-prevent.md)。
+> 为容器配置了公共访问时，任何客户端都可以读取该容器中的数据。 公共访问会带来潜在的安全风险，因此，如果你的方案不需要公共访问，Microsoft 建议你为存储帐户禁止公共访问。 有关详细信息，请参阅[阻止对容器和 Blob 的匿名公共读取访问](anonymous-read-access-prevent.md)。
 
 本文介绍了如何配置对容器及其 blob 的匿名公共读取访问。 有关如何从客户端应用程序匿名访问 blob 数据的信息，请参阅[使用 .NET 匿名访问公共容器和 blob](anonymous-read-access-client.md)。
 
@@ -46,14 +46,14 @@ Azure 存储支持对容器和 blob 进行可选的匿名公共读取访问。 �
 
 请记住，默认情况下，对容器的公共访问始终关闭，必须显式配置才能允许匿名请求。 无论存储帐户的设置如何，你的数据将永远不可供公共访问，除非具有适当权限的用户执行此额外步骤以在容器上启用公共访问。
 
-禁止对存储帐户的公共访问将阻止对该帐户中的所有容器和 blob 进行匿名访问。 如果禁止对帐户的公共访问，则无法将容器的公共访问设置配置为允许匿名访问。 为了提高安全性，Microsoft 建议你禁止对存储帐户进行公共访问，除非你的方案要求用户匿名访问 blob 资源。
+禁止对存储帐户的公共访问将阻止对该帐户中的所有容器和 blob 进行匿名访问。 如果禁止对帐户的公共访问，则无法将容器的公共访问设置配置为允许匿名访问。 为了提高安全性，Microsoft 建议你禁止对存储帐户的公共访问，除非你的方案要求用户匿名访问 blob 资源。
 
 > [!IMPORTANT]
 > 禁止对存储帐户的公共访问将替代该存储帐户中所有容器的公共访问设置。 禁止对存储帐户的公共访问后，将来对该帐户的任何匿名请求都会失败。 在更改此设置之前，请务必了解这会对可能匿名访问存储帐户中数据的客户端应用程序带来的影响。 有关详细信息，请参阅[阻止对容器和 Blob 的匿名公共读取访问](anonymous-read-access-prevent.md)。
 
 若要允许或禁止对存储帐户的公共访问，请配置帐户的 **AllowBlobPublicAccess** 属性。 此属性适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 有关详细信息，请参阅[存储帐户概述](../common/storage-account-overview.md)。
 
-默认情况下，默认情况下不会为存储帐户设置 **AllowBlobPublicAccess** 属性，并且在您显式设置之前，不会返回值。 当属性值为 **null** 或 **true** 时，存储帐户允许公共访问。
+默认情况下，不会为存储帐户设置 AllowBlobPublicAccess 属性，在你显式设置此属性之前，它不会返回值。 当此属性值为 null 或为 true 时，存储帐户允许公共访问。
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 

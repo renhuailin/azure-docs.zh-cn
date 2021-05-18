@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 35395a30f7d58b9edb3aa7622a35e8c4a62dc76f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102211356"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>Blob 存储的加密范围（预览）
@@ -27,11 +27,11 @@ ms.locfileid: "102211356"
 创建加密范围后，可以对创建容器或 Blob 的请求指定加密范围。 有关如何创建加密范围的详细信息，请参阅[创建和管理加密范围（预览）](encryption-scope-manage.md)。
 
 > [!IMPORTANT]
-> 加密范围目前为 **预览版**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，它们适用于适用于 beta、preview 或其他尚未公开上市的 Azure 功能的法律条款。
+> 加密范围目前为预览版。 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
 > 为避免意外费用，请确保禁用当前不需要的任何加密范围。
 >
-> 读取访问异地冗余存储不支持加密作用域 (GRS) 或读取访问地域冗余存储 (在预览期间 GZRS) 帐户。
+> 在预览期间，读取访问异地冗余存储 (RA-GRS) 或取访问异地区域冗余存储 (RA-GZRS) 帐户不支持加密范围。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 

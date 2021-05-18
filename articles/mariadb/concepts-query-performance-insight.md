@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: b643ba3305736480e06d7c10d594b2271839038f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664225"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的 Query Performance Insight
@@ -56,7 +56,7 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 ### <a name="wait-statistics"></a>等待统计信息 
 
 > [!NOTE]
-> 等待统计信息用于排查查询性能问题。 建议仅在进行故障排除时启用。 <br>如果在 Azure 门户中收到错误消息“'Microsoft.DBforMariaDB' 遇到问题；则无法满足请求。如果此问题仍然存在或意外出现，请与支持部门联系并提供此信息。” ，请使用较短的时间段。
+> 等待统计信息用于排查查询性能问题。 建议仅在进行故障排除时启用。 <br>如果在查看等待统计信息时在 Azure 门户中收到错误消息“Microsoft.DBforMariaDB 遇到问题；无法满足该请求。如果此问题仍然存在或意外出现，请与支持部门联系并提供此信息。” ，请使用较短的时间段。
 
 “等待统计信息”提供特定查询的执行期间发生的等待事件的视图。 若要详细了解等待事件类型，请参阅 [MySQL 引擎文档](https://go.microsoft.com/fwlink/?linkid=2098206)。
 

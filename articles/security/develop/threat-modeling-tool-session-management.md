@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
 ms.openlocfilehash: a1f4d4a3bb78da82753d651e1a73cf244096d5df
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94518095"
 ---
 # <a name="security-frame-session-management"></a>安全框架：会话管理
@@ -398,7 +398,7 @@ void Page_Init (object sender, EventArgs e) {
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体 |
 | **属性**              | 空值  |
-| **参考**              | [身份验证 (ASP.NET 设置架构) 的 Forms 元素 ](/previous-versions/dotnet/netframework-4.0/1d3t3c61(v=vs.100)) |
+| **参考**              | [用于身份验证的窗体元素（ASP.NET 设置架构）](/previous-versions/dotnet/netframework-4.0/1d3t3c61(v=vs.100)) |
 | **步骤** | 将窗体身份验证票证 Cookie 超时设置为 15 分钟|
 
 ### <a name="example"></a>示例

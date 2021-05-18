@@ -1,14 +1,14 @@
 ---
-title: 使用消息集成 Azure 区块链工作台
-description: 介绍如何使用消息将 Azure 区块链工作台预览版与其他系统集成。
+title: 使用消息与 Azure Blockchain Workbench 集成
+description: 概述如何使用消息将 Azure Blockchain Workbench 预览版与其他系统集成。
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74324513"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench 消息集成
@@ -38,7 +38,7 @@ ms.locfileid: "74324513"
 | messageSchemaVersion | 消息传送架构版本                            |
 | messageName          | **CreateUserRequest**                               |
 
-例如：
+示例：
 
 ``` json
 {
@@ -59,11 +59,11 @@ Blockchain Workbench 返回包含以下字段的响应：
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | requestId             | 客户端提供的 GUID |
 | userId                | 创建的用户的 ID |
-| userChainIdentifier   | 在区块链网络上创建的用户的地址。 在以太坊中，该地址是用户的 **链接** 地址。 |
+| userChainIdentifier   | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此地址是用户的链上地址。 |
 | connectionId          | 区块链连接的唯一标识符|
 | messageSchemaVersion  | 消息传送架构版本 |
 | messageName           | **CreateUserUpdate** |
-| status                | 用户创建请求的状态。  如果成功，则值为 **Success**。 如果失败，则值为 **Failure**。     |
+| 状态                | 用户创建请求的状态。  如果成功，则值为 **Success**。 如果失败，则值为 **Failure**。     |
 | additionalInformation | 基于状态提供的附加信息 |
 
 Blockchain Workbench 返回的 **create user** 成功响应示例：
@@ -108,7 +108,7 @@ Blockchain Workbench 返回的 **create user** 成功响应示例：
 | **名称**             | **说明**                                                                                                           |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId            | 客户端提供的 GUID |
-| userChainIdentifier  | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此地址是用户的**链上**地址。 |
+| userChainIdentifier  | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此地址是用户的 **链上** 地址。 |
 | applicationName      | 应用程序的名称 |
 | 版本              | 应用程序版本。 在启用了应用程序的多个版本时是必需的。 否则，版本是可选的。 有关应用程序版本控制的详细信息，请参阅 [Azure Blockchain Workbench 应用程序版本控制](version-app.md)。 |
 | workflowName         | 工作流的名称 |
@@ -117,7 +117,7 @@ Blockchain Workbench 返回的 **create user** 成功响应示例：
 | messageSchemaVersion | 消息传送架构版本 |
 | messageName          | **CreateContractRequest** |
 
-例如：
+示例：
 
 ``` json
 { 
@@ -152,7 +152,7 @@ Blockchain Workbench 返回包含以下字段的响应：
 | connectionId             | 区块链连接的唯一标识符                               |
 | messageSchemaVersion     | 消息传送架构版本                                                         |
 | messageName              | **CreateContractUpdate**                                                      |
-| status                   | 合同创建请求的状态。  可能的值：**Submitted**、**Committed**、**Failure**。  |
+| 状态                   | 合同创建请求的状态。  可能的值：**Submitted**、**Committed**、**Failure**。  |
 | additionalInformation    | 基于状态提供的附加信息                              |
 
 Blockchain Workbench 返回的页面提交 **create contract** 响应示例：
@@ -212,7 +212,7 @@ Blockchain Workbench 返回的事务提交 **create contract** 响应示例：
 | **名称**                 | **说明**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId                | 客户端提供的 GUID |
-| userChainIdentifier      | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此地址是用户的**链上**地址。 |
+| userChainIdentifier      | 在区块链网络上创建的用户的地址。 在 Ethereum 中，此地址是用户的 **链上** 地址。 |
 | contractLedgerIdentifier | 账本中合同的地址 |
 | 版本                  | 应用程序版本。 在启用了应用程序的多个版本时是必需的。 否则，版本是可选的。 有关应用程序版本控制的详细信息，请参阅 [Azure Blockchain Workbench 应用程序版本控制](version-app.md)。 |
 | workflowFunctionName     | 工作流函数的名称 |
@@ -221,7 +221,7 @@ Blockchain Workbench 返回的事务提交 **create contract** 响应示例：
 | messageSchemaVersion     | 消息传送架构版本 |
 | messageName              | **CreateContractActionRequest** |
 
-例如：
+示例：
 
 ``` json
 {
@@ -255,7 +255,7 @@ Blockchain Workbench 返回包含以下字段的响应：
 | connectionId          | 区块链连接的唯一标识符 |
 | messageSchemaVersion  | 消息传送架构版本 |
 | messageName           | **CreateContractActionUpdate** |
-| status                | 合同操作请求的状态。 可能的值：**Submitted**、**Committed**、**Failure**。                         |
+| 状态                | 合同操作请求的状态。 可能的值：**Submitted**、**Committed**、**Failure**。                         |
 | additionalInformation | 基于状态提供的附加信息 |
 
 Blockchain Workbench 返回的页面提交 **create contract action** 响应示例：
@@ -335,7 +335,7 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 
 如果用户想要使用事件网格来接收有关 Blockchain Workbench 中所发生的事件的通知，你可以通过 Azure Functions 使用来自事件网格的事件。
 
-1. 在 Azure 门户中创建 **Azure Function App** 。
+1. 在 Azure 门户中创建一个 **Azure 函数应用**。
 2. 创建新函数。
 3. 找到事件网格的模板。 其中会显示用于读取消息的基本模板代码。 根据需要修改代码。
 4. 保存函数。 
@@ -344,9 +344,9 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 ### <a name="consuming-event-grid-events-with-logic-apps"></a>配合逻辑应用使用事件网格事件
 
 1. 在 Azure 门户中创建一个新的 **Azure 逻辑应用**。
-2. 在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 选择“Azure 事件网格 - 发生资源事件时”。****
+2. 在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 选择“Azure 事件网格 - 发生资源事件时”。
 3. 显示工作流设计器后，系统会提示登录。
-4. 选择订阅。 资源为 **Microsoft.EventGrid.Topics**。 从 Azure Blockchain Workbench 资源组的资源名称中选择“资源名称”。****
+4. 选择订阅。 资源为 **Microsoft.EventGrid.Topics**。 从 Azure Blockchain Workbench 资源组的资源名称中选择“资源名称”。
 5. 从 Blockchain Workbench 的资源组中选择“事件网格”。
 
 ## <a name="using-service-bus-topics-for-notifications"></a>使用服务总线主题发送通知
@@ -354,22 +354,22 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 可以使用服务总线主题通知用户有关 Blockchain Workbench 中发生的事件。 
 
 1. 浏览到 Workbench 资源组中的“服务总线”。
-2. 选择“主题”。****
-3. 选择“egress-topic”。****
+2. 选择“主题”。
+3. 选择“egress-topic”。
 4. 创建此主题的新订阅。 获取该订阅的密钥。
 5. 创建一个程序，用于订阅此订阅的事件。
 
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>配合逻辑应用使用服务总线消息
 
 1. 在 Azure 门户中创建一个新的 **Azure 逻辑应用**。
-2. 在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 在搜索框中键入“服务总线”，然后选择适合与服务总线之间的交互类型的触发器。**** 例如，选择“服务总线 - 主题订阅中收到邮件时(自动完成)”。****
+2. 在门户中打开 Azure 逻辑应用时，系统会提示选择触发器。 在搜索框中键入“服务总线”，然后选择适合与服务总线之间的交互类型的触发器。 例如，选择“服务总线 - 主题订阅中收到邮件时(自动完成)”。
 3. 显示工作流设计器后，指定服务总线的连接信息。
 4. 选择订阅并指定 **workbench-external** 主题。
 5. 开发应用程序的逻辑，以利用此触发器的消息。
 
 ## <a name="notification-message-reference"></a>通知消息参考
 
-根据 **messageName**的不同，通知消息具有以下消息类型之一。
+根据 messageName，通知消息采用以下消息类型之一。
 
 ### <a name="block-message"></a>块消息
 
@@ -400,7 +400,7 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 |--------------------|-------------|
 | transactionId      | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash    | 账本中事务的哈希 |
-| from               | 事务来源账本中的唯一标识符 |
+| 从               | 事务来源账本中的唯一标识符 |
 | to                 | 事务目标账本中的唯一标识符 |
 | provisioningStatus | 标识事务的当前预配过程状态。 可能的值包括： </br>0 – API 已在数据库中创建事务</br>1 – 事务已发送到账本</br>2 – 事务已成功提交到账本</br>3 或 4 - 事务无法提交到账本</br>5 - 事务已成功提交到账本 |
 
@@ -462,7 +462,7 @@ Blockchain Workbench 中的 *BlockMessage* 示例：
 |--------------------|-------------|
 | transactionId | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash | 账本中事务的哈希 |
-| from | 事务来源账本中的唯一标识符 |
+| 从 | 事务来源账本中的唯一标识符 |
 | to | 事务目标账本中的唯一标识符 |
 
 #### <a name="contract-properties"></a>合同属性
@@ -471,7 +471,7 @@ Blockchain Workbench 中的 *BlockMessage* 示例：
 |--------------------|-------------|
 | workflowPropertyId | Azure Blockchain Workbench 中工作流属性的唯一标识符 |
 | name | 工作流属性的名称 |
-| value | 工作流属性的值 |
+| 值 | 工作流属性的值 |
 
 Blockchain Workbench 中的 *ContractMessage* 示例：
 
@@ -550,7 +550,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 }
 ```
 
-### <a name="event-message-contract-function-invocation"></a>事件消息：协定函数调用
+### <a name="event-message-contract-function-invocation"></a>事件消息：合同函数调用
 
 包含调用合同函数时的信息，例如函数名称、参数输入和函数调用方。
 
@@ -574,7 +574,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 | 名称 | 说明 |
 |------|-------------|
 | type | 调用方类型，例如用户或合同 |
-| ID | Azure Blockchain Workbench 中调用方的唯一标识符 |
+| id | Azure Blockchain Workbench 中调用方的唯一标识符 |
 | ledgerIdentifier | 账本中调用方的唯一标识符 |
 
 #### <a name="parameter-information"></a>参数信息
@@ -582,7 +582,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 | 名称 | 说明 |
 |------|-------------|
 | name | 参数名称 |
-| value | 参数值 |
+| 值 | 参数值 |
 
 #### <a name="event-message-transaction-information"></a>事件消息事务信息
 
@@ -590,7 +590,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 |--------------------|-------------|
 | transactionId      | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash    | 账本中事务的哈希 |
-| from               | 事务来源账本中的唯一标识符 |
+| 从               | 事务来源账本中的唯一标识符 |
 | to                 | 事务目标账本中的唯一标识符 |
 
 Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
@@ -654,7 +654,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 | 名称 | 说明 |
 |------|-------------|
-| ID | Azure Blockchain Workbench 中合同代码文件的唯一标识符 |
+| id | Azure Blockchain Workbench 中合同代码文件的唯一标识符 |
 | ledgerId | Azure Blockchain Workbench 中账本的唯一标识符 |
 | location | 合同代码文件所在的 URL |
 
@@ -662,14 +662,14 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 | 名称 | 说明 |
 |------|-------------|
-| ID | Azure Blockchain Workbench 中应用程序角色的唯一标识符 |
+| id | Azure Blockchain Workbench 中应用程序角色的唯一标识符 |
 | name | 应用程序角色的名称 |
 
 #### <a name="application-workflow-information"></a>应用程序工作流信息
 
 | 名称 | 说明 |
 |------|-------------|
-| ID | Azure Blockchain Workbench 中应用程序工作流的唯一标识符 |
+| id | Azure Blockchain Workbench 中应用程序工作流的唯一标识符 |
 | name | 应用程序工作流名称 |
 | displayName | 应用程序工作流显示名称 |
 | functions | [应用程序工作流的函数](#workflow-function-information)集合|
@@ -680,7 +680,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 | 名称 | 说明 |
 |------|-------------|
-| ID | Azure Blockchain Workbench 中应用程序工作流函数的唯一标识符 |
+| id | Azure Blockchain Workbench 中应用程序工作流函数的唯一标识符 |
 | name | 函数名称 |
 | parameters | 函数的参数 |
 
@@ -696,9 +696,9 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
 | 名称 | 说明 |
 |------|-------------|
-| ID | Azure Blockchain Workbench 中应用程序工作流属性的唯一标识符 |
+| id | Azure Blockchain Workbench 中应用程序工作流属性的唯一标识符 |
 | name | 属性名称 |
-| 类型 | 属性类型 |
+| type | 属性类型 |
 
 Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
 
@@ -847,23 +847,23 @@ Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 示例：
 
 | 名称 | 说明 |
 |------|-------------|
-| ID | Azure Blockchain Workbench 中应用程序角色的唯一标识符 |
+| id | Azure Blockchain Workbench 中应用程序角色的唯一标识符 |
 | name | 应用程序角色的名称 |
 
 #### <a name="roleassignment-assigner"></a>RoleAssignment 分配者
 
 | 名称 | 说明 |
 |------|-------------|
-| ID | Azure Blockchain Workbench 中用户的唯一标识符 |
-| 类型 | 分配者的类型 |
+| id | Azure Blockchain Workbench 中用户的唯一标识符 |
+| type | 分配者的类型 |
 | chainIdentifier | 账本中用户的唯一标识符 |
 
 #### <a name="roleassignment-assignee"></a>RoleAssignment 被分配者
 
 | 名称 | 说明 |
 |------|-------------|
-| ID | Azure Blockchain Workbench 中用户的唯一标识符 |
-| 类型 | 被分配者的类型 |
+| id | Azure Blockchain Workbench 中用户的唯一标识符 |
+| type | 被分配者的类型 |
 | chainIdentifier | 账本中用户的唯一标识符 |
 
 Blockchain Workbench 中的 *EventMessage RoleAssignment* 示例：
@@ -898,4 +898,4 @@ Blockchain Workbench 中的 *EventMessage RoleAssignment* 示例：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [智能合同集成模式](integration-patterns.md)
+- [智能合约集成模式](integration-patterns.md)
