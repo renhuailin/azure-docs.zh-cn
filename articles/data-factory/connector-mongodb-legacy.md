@@ -1,6 +1,6 @@
 ---
 title: 使用旧版从 MongoDB 复制数据
-description: 了解如何在旧的 Azure 数据工厂管道中使用复制活动，将数据从 Mongo DB 复制到支持的接收器数据存储。
+description: 了解如何通过在旧版 Azure 数据工厂管道中使用复制活动，将数据从 Mongo DB 复制到支持的接收器数据存储。
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: e13a1a5a939d314bdf4500c0827fa13201505016
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100368840"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>使用 Azure 数据工厂（旧版）从 MongoDB 复制数据
@@ -51,7 +51,7 @@ ms.locfileid: "100368840"
 
 MongoDB 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：MongoDb |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
@@ -94,7 +94,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：MongoDbCollection | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -125,7 +125,7 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动 **source** 部分支持以下属性：
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**MongoDbSource** | 是 |
 | 查询 |使用自定义 SQL-92 查询读取数据。 例如：select * from MyTable。 |否（如果指定了数据集中的“collectionName”） |

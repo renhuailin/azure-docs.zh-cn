@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596939"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
@@ -131,7 +131,7 @@ AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并
 相关错误不一定是文件中出现的第一个错误。 对于网络错误、超时和服务器忙等错误，AzCopy 将重试最多 20 次，通常重试过程会成功。  你看到的第一个错误可能是已成功重试的无害内容。  因此，请查找 `UPLOADFAILED`、`COPYFAILED` 或 `DOWNLOADFAILED` 附近的错误，而不是查看文件中的第一个错误。 
 
 > [!IMPORTANT]
-> 提交请求以 Microsoft 支持部门 (或排查涉及任何第三方) 的问题时，请共享你要执行的命令的修正版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
+> 向 Microsoft 支持部门提交请求时（或者排查涉及第三方的问题时），请告知你想执行的命令的修正版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
 
 ### <a name="review-the-logs-for-errors"></a>查看日志中的错误
 

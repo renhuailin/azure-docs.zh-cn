@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
 ms.openlocfilehash: 9ed060c1f3fc47aa7050c0f9b25c757953fa22fe
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98220331"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
@@ -75,7 +75,7 @@ ms.locfileid: "98220331"
 - 如果子网中不同 VM 需要应用不同的安全规则，则可将 VM 中的网络接口与一个或多个应用程序安全组相关联。 安全规则可以在其源和/或目标中指定应用程序安全组。 该规则仅适用于属于应用程序安全组成员的网络接口。 详细了解[网络安全组](./network-security-groups-overview.md)和[应用程序安全组](./network-security-groups-overview.md#application-security-groups)。
 - Azure 在每个网络安全组中创建了多个默认安全规则。 其中一个默认规则允许所有流量在虚拟网络中的所有资源之间流动。 若要替代此行为，可使用网络安全组和/或自定义路由将流量路由到 NVA。 建议熟悉 Azure 的所有[默认安全规则](./network-security-groups-overview.md#default-security-rules)，并了解网络安全组规则如何应用于资源。
 
-可以查看使用 [NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)在 Azure 与 internet 之间实现外围网络 (也称为 DMZ) 的示例设计。
+你可以查看使用 [NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) 在 Azure 和 Internet 之间实现外围网络（也称为“DMZ”）的示例设计。
 
 ### <a name="traffic-routing"></a>流量路由
 
@@ -97,7 +97,7 @@ Azure 为子网中的出站流量创建多个默认路由。 可通过创建路�
 
 可通过[站点到站点 VPN ](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或与 Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的专用连接，使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)将虚拟网络连接到本地网络。
 
-可以结合对等互连和 VPN 网关来创建 [中心和分支网络](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)，其中的辐射虚拟网络连接到中心虚拟网络，中心连接到本地网络，例如。
+例如，可将对等和 VPN 网关结合使用以创建[中心辐射网络](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)，其中分支虚拟网络连接到中心虚拟网络，并且中心虚拟网络连接到本地网络。
 
 ### <a name="name-resolution"></a>名称解析
 

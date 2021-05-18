@@ -1,6 +1,6 @@
 ---
-title: 为 Android 地图创建数据源 |Microsoft Azure 映射
-description: 了解如何为地图创建数据源。 了解 Azure Maps Android SDK 使用的数据源： GeoJSON 源和矢量图块。
+title: 为 Android 地图创建数据源 | Microsoft Azure Maps
+description: 了解如何为地图创建数据源。 了解 Azure Maps Android SDK 使用的数据源：GeoJSON 源和矢量图块。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 2/26/2021
@@ -10,22 +10,22 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: e870134e2ecd431aa3e5c02638120027f0d47df2
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102101454"
 ---
-# <a name="create-a-data-source-android-sdk"></a> (Android SDK 创建数据源) 
+# <a name="create-a-data-source-android-sdk"></a>创建数据源 (Android SDK)
 
-Azure Maps Android SDK 将数据存储在数据源中。 使用数据源优化用于查询和呈现的数据操作。 目前有两种类型的数据源：
+Azure Maps Android SDK 将数据存储在数据源中。 使用数据源可优化用于查询和渲染的数据操作。 目前数据源有两种类型：
 
-- **GeoJSON source**：在本地管理 GeoJSON 格式的原始位置数据。 适用于小型到中型数据集， (的) 的数量为几十万个形状。
-- **矢量图块源**：基于地图平铺系统，为当前地图视图加载格式为矢量图块的数据。 适用于大到大数据集 (数百万或数十亿个形状) 。
+- **GeoJSON 源**：在本地管理 GeoJSON 格式的原始位置数据。 适合中小型数据集（数十万个形状以上）。
+- **矢量图块源**：基于地图图块系统，为当前的地图视图加载矢量图块格式的数据。 适合大型乃至超大型数据集（数百万或数十亿个形状）。
 
 ## <a name="geojson-data-source"></a>GeoJSON 数据源
 
-Azure Maps 使用 GeoJSON 作为其主数据模型之一。 GeoJSON 是以 JSON 格式表示地理空间数据的开放地理空间标准方式。 Azure Maps Android SDK 中可用的 GeoJSON 类，可轻松创建和序列化 GeoJSON 数据。 在类中加载并存储 GeoJSON 数据 `DataSource` ，并使用层进行呈现。 下面的代码演示如何在 Azure Maps 中创建 GeoJSON 对象。
+Azure Maps 使用 GeoJSON 作为其主数据模型之一。 GeoJSON 是一种开放式地理空间标准方法，用于以 JSON 格式表示地理空间数据。 通过 Azure Maps Android SDK 中可用的 GeoJSON 类，可轻松创建和序列化 GeoJSON 数据。 在 `DataSource` 类中加载并存储 GeoJSON 数据，并使用层呈现它。 以下代码演示了如何在 Azure Maps 中创建 GeoJSON 对象。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -89,7 +89,7 @@ source.add(feature)
 
 ::: zone-end
 
-另外，还可以先将属性加载到 JsonObject 中，然后再将其创建，如下所示。
+另外，还可以先将属性加载到 JsonObject 中，然后在创建特征时将其传入特征，如下所示。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -115,7 +115,7 @@ val feature = Feature.fromGeometry(Point.fromLngLat(-100, 45), properties)
 
 ::: zone-end
 
-创建 GeoJSON 功能后，可以通过映射的属性将数据源添加到地图中 `sources` 。 下面的代码演示如何创建 `DataSource` ，将其添加到映射，并将功能添加到数据源。
+创建 GeoJSON 特征后，可以通过地图的 `sources` 属性将数据源添加到地图中。 下面的代码演示如何创建 `DataSource`，将其添加到地图，以及如何将特征添加到数据源。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -126,7 +126,7 @@ map.sources.add(source);
 source.add(feature);
 ```
 
-下面的代码演示了几种创建 GeoJSON 功能、FeatureCollection 和几何图形的方式。
+下面的代码演示了几种创建 GeoJSON 特征、FeatureCollection 和几何图形的方式。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -208,9 +208,9 @@ val featureCollection = FeatureCollection.fromFeatures(listOfFeatures)
 
 ::: zone-end
 
-### <a name="serialize-and-deserialize-geojson"></a>序列化和反序列化 GeoJSON
+### <a name="serialize-and-deserialize-geojson"></a>对 GeoJSON 进行序列化和反序列化
 
-功能集合、功能和几何图形类都具有 `fromJson()` 和 `toJson()` 静态方法，有助于进行序列化。 通过方法传递的格式化有效 JSON 字符串 `fromJson()` 将创建 geometry 对象。 此 `fromJson()` 方法还意味着可以使用 Gson 或其他序列化/反序列化策略。 下面的代码演示如何获取字符串化 GeoJSON 功能并将其反序列化为功能类，然后将其序列化为 GeoJSON 字符串。
+特征集合、特征和几何图形类都具有 `fromJson()` 和 `toJson()` 静态方法，有助于进行序列化。 通过 `fromJson()` 方法传递的格式化有效 JSON 字符串将创建几何对象。 此 `fromJson()` 方法还意味着可以使用 Gson 或其他序列化/反序列化策略。 下面的代码演示如何获取字符串化 GeoJSON 特征并将其反序列化为特征类，然后将其序列化回 GeoJSON 字符串。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -264,7 +264,7 @@ val featureString = feature.toJson()
 
 大多数 GeoJSON 文件都包含一个 FeatureCollection。 将 GeoJSON 文件作为字符串读取，并使用 `FeatureCollection.fromJson` 方法对其进行反序列化。
 
-下面的代码是一个可重用的类，用于将 web 或本地资产文件夹中的数据作为字符串导入，并通过回调函数将其返回到 UI 线程。
+下面的代码是一个可重用的类，用于将 Web 或本地资产文件夹中的数据作为字符串导入，并通过回调函数将其返回到 UI 线程。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -510,7 +510,7 @@ class Utils {
 
 ::: zone-end
 
-下面的代码演示如何使用此实用工具将 GeoJSON 数据导入为字符串，并通过回调将其返回到 UI 线程。 在回调中，可以将字符串数据序列化为 GeoJSON 功能集合，并将其添加到数据源。 还可以更新 "地图" 照相机，将数据集中在一起。
+下面的代码演示如何使用此实用工具将 GeoJSON 数据导入为字符串，并通过回调将其返回到 UI 线程。 在回调中，可以将字符串数据序列化为 GeoJSON 特征集合，并将其添加到数据源。 还可选择性更新地图照相机，将焦点对准数据。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -576,26 +576,26 @@ Utils.importData("SamplePoiDataSet.json", this) {
 
 ::: zone-end
 
-## <a name="vector-tile-source"></a>矢量磁贴源
+## <a name="vector-tile-source"></a>矢量图块源
 
-矢量图块源介绍如何访问矢量图块层。 使用 `VectorTileSource` 类实例化矢量图块源。 矢量图块层类似于图块层，但它们不同。 图块层是光栅图像。 矢量图块层是压缩文件，采用 **PBF** 格式。 此压缩文件包含向量映射数据以及一个或多个层。 基于每个层的样式，可以在客户端上呈现并设计文件样式。 矢量磁贴中的数据包含点、线条和多边形格式的地理功能。 使用矢量图块层（而不是光栅图块层）有多种优点：
+矢量图块源介绍如何访问矢量图块层。 使用 `VectorTileSource` 类实例化矢量图块源。 矢量图块层与图块层类似，但不同。 图块层是光栅图像。 矢量图块层是压缩文件，为 PBF 格式。 此压缩文件包含矢量地图数据以及一个或多个层。 根据每层的样式，可以在客户端渲染文件并设计文件样式。 矢量图块中的数据包含点、线和多边形形式的地理功能。 相比光栅图块层，使用矢量图块层有多种优势：
 
-- 矢量磁贴的文件大小通常比等效的光栅磁贴小得多。 因此，使用的带宽更少。 这意味着延迟较低、更快的地图和更好的用户体验。
-- 由于矢量磁贴是在客户端上呈现的，因此它们会适应其所显示的设备的分辨率。 因此，呈现的地图的定义更清晰，并显示 crystal 清晰标签。
-- 更改向量图中的数据样式不需要再次下载数据，因为新样式可应用于客户端。 与此相反，更改光栅图块层的样式通常需要从服务器加载磁贴，然后应用新样式。
-- 由于数据是以矢量形式传递的，因此，进行数据准备需要的服务器端处理就越少。 因此，可以更快地提供较新的数据。
+- 矢量图块的文件大小通常比等效的光栅图块小得多。 因此，使用的带宽更少。 这意味着延迟较低、地图较快和用户体验更好。
+- 由于矢量图块在客户端渲染，所以它们会适应要显示它们的设备的分辨率。 因此，渲染的地图看起来更清晰，可清楚地看到标签。
+- 更改矢量地图中的数据样式不需要重新下载数据，因为新样式可应用于客户端。 相反，更改光栅图块层的样式通常需要从服务器加载图块，然后再应用新样式。
+- 由于数据以矢量形式传递，所以准备数据所需的服务器端处理更少。 因此，可以更快地提供较新的数据。
 
-Azure Maps 遵循 [Mapbox Vector 磁贴规范](https://github.com/mapbox/vector-tile-spec)，即开放标准。 Azure Maps 在平台中提供以下矢量图块服务：
+Azure Maps 遵循开放式标准 - [Mapbox 矢量图块规范](https://github.com/mapbox/vector-tile-spec)。 Azure Maps 在平台中提供以下矢量图块服务：
 
-- 路标磁贴[文档](/rest/api/maps/renderv2/getmaptilepreview)  |  [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
-- 流量事件[文档](/rest/api/maps/traffic/gettrafficincidenttile)  |  [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
-- 流量流[文档](/rest/api/maps/traffic/gettrafficflowtile)  |  [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- Azure Maps Creator 还允许通过[获取磁贴呈现 V2](/rest/api/maps/renderv2/getmaptilepreview)创建和访问自定义向量磁贴
+- 道路图块[文档](/rest/api/maps/renderv2/getmaptilepreview) | [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- 交通事故[文档](/rest/api/maps/traffic/gettrafficincidenttile) | [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- 交通流[文档](/rest/api/maps/traffic/gettrafficflowtile) | [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- 使用 Azure Maps Creator，还可以通过[获取图块渲染器 V2](/rest/api/maps/renderv2/getmaptilepreview) 创建和访问自定义矢量图块
 
 > [!TIP]
-> 使用 web SDK Azure Maps 呈现服务中的矢量或光栅图像磁贴时，可以 `atlas.microsoft.com` 将替换为占位符 `azmapsdomain.invalid` 。 此占位符将替换为映射所使用的相同域，并将自动附加相同的身份验证详细信息。 当使用 Azure Active Directory authentication 时，这大大简化了使用渲染服务进行的身份验证。
+> 通过 Web SDK 使用 Azure Maps 渲染服务中的矢量或光栅图块时，可以使用占位符 `azmapsdomain.invalid` 替代 `atlas.microsoft.com`。 此占位符将替换为地图使用的相同域，还会自动附加相同的身份验证详细信息。 这样可大大简化使用 Azure Active Directory 身份验证时对渲染服务的身份验证。
 
-若要在地图上显示 vector 磁贴源中的数据，请将源连接到数据呈现层之一。 使用矢量源的所有层都必须 `sourceLayer` 在选项中指定一个值。 下面的代码将 Azure Maps 流量向量磁贴服务作为矢量图块源加载，然后使用线条层在地图上显示它。 此向量磁贴源在源层中具有一组称为 "流量流" 的数据。 此数据集中的行数据具有一个名为的属性，该属性 `traffic_level` 在此代码中用于选择颜色并缩放线条大小。
+要在地图上显示矢量图块源中的数据，请将该源连接到数据渲染层之一。 使用矢量源的所有层都必须在选项中指定一个 `sourceLayer` 值。 以下代码可将 Azure Maps 交通流矢量图块服务加载为矢量图块源，然后使用线条层在地图上进行显示。 该矢量图块源在源层中有一个数据集，称为“交通流”。 此数据集中的线条数据包含一个 `traffic_level` 属性，在此代码中用于选择颜色和缩放线条大小。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -685,19 +685,19 @@ map.layers.add(layer, "labels")
 
 ::: zone-end
 
-![具有显示流量流级别的彩色编码路段的地图](media/create-data-source-android-sdk/android-vector-tile-source-line-layer.png)
+![用色彩编码的道路线显示交通流情况的地图](media/create-data-source-android-sdk/android-vector-tile-source-line-layer.png)
 
 ## <a name="connecting-a-data-source-to-a-layer"></a>将数据源连接到层
 
-使用呈现层在地图上呈现数据。 一个或多个呈现层可以引用单个数据源。 以下呈现层需要数据源：
+使用渲染层在地图上渲染数据。 一个数据源可被一个或多个渲染层引用。 以下渲染层需要数据源：
 
-- [气泡图层](map-add-bubble-layer-android.md) -将点数据呈现为地图上的缩放圆圈。
-- [符号层](how-to-add-symbol-to-android-map.md) -将点数据呈现为图标或文本。
-- [热度地图层](map-add-heat-map-layer-android.md) -将点数据呈现为密度热度地图。
-- [线条层](android-map-add-line-layer.md) -呈现线条并呈现多边形的轮廓。
-- [多边形层](how-to-add-shapes-to-android-map.md) -使用纯色或图像图案填充多边形的面积。
+- [气泡层](map-add-bubble-layer-android.md) - 将点数据渲染为地图上的缩放圆圈。
+- [符号层](how-to-add-symbol-to-android-map.md) - 将点数据渲染为图标或文本。
+- [热度地图层](map-add-heat-map-layer-android.md) - 将点数据渲染为密度热度地图。
+- [线条层](android-map-add-line-layer.md) - 渲染线条和/或渲染多边形边框。
+- [多边形层](how-to-add-shapes-to-android-map.md) - 使用纯色或图像图案填充多边形区域。
 
-下面的代码演示如何创建数据源，将其添加到地图中，然后将其连接到气泡图层。 然后，将 GeoJSON 点数据从远程位置导入到数据源中。
+以下代码演示了如何创建数据源，将其添加到地图中，然后将其连接到气泡层。 然后，从远程位置向数据源中导入 GeoJSON 点数据。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -768,19 +768,19 @@ Utils.importData("URL_or_FilePath_to_GeoJSON_data", this) {
 
 ::: zone-end
 
-还有其他呈现层不连接到这些数据源，但它们直接加载要呈现的数据。
+还有一些渲染层不会连接到这些数据源，而是直接加载要渲染的数据。
 
-- 图[块层](how-to-add-tile-layer-android-map.md)-superimposes 在地图的顶部。
+- [图块层](how-to-add-tile-layer-android-map.md) - 将光栅图块层叠加到地图顶部。
 
-## <a name="one-data-source-with-multiple-layers"></a>一个具有多个层的数据源
+## <a name="one-data-source-with-multiple-layers"></a>包含多个层的单个数据源
 
-多个层可以连接到单个数据源。 在许多不同方案中，此选项很有用。 例如，假设用户绘制多边形的情况。 当用户向地图添加点时，应呈现并填充多边形区域。 如果将样式的线条添加到边框，则可以在用户绘制时更轻松地看到多边形的边缘。 若要方便地编辑多边形中的单个位置，可以在每个位置的上方添加一个句柄，如 pin 或标记。
+可将多个层连接到单个数据源。 在许多不同方案中，这种选择都很有用。 例如，假设用户绘制多边形的场景。 当用户向地图中添加点时，我们应渲染并填充多边形区域。 如果对多边形边框添加样式化的线条，用户在绘制时则可以更清晰地看到多边形的边缘。 若要方便地编辑多边形中的单个位置，可以在每个位置上添加图柄，如单边锁定或标记。
 
-![显示单个数据源呈现数据的多个层的地图](media/create-data-source-android-sdk/multiple-layers-one-datasource.png)
+![地图，显示了从单个数据源渲染数据的多个层](media/create-data-source-android-sdk/multiple-layers-one-datasource.png)
 
-在大多数映射平台中，需要一个多边形对象、一个线条对象和一个用于多边形中每个位置的 pin。 修改多边形时，您需要手动更新线条和 pin，这很快就会变得复杂。
+大多数地图平台中都需要一个多边形对象、一个线条对象以及用于多边形中各个位置的单边锁定。 由于修改了多边形，因此你需要手动更新线条和单边锁定，这可能很快就变得复杂起来。
 
-对于 Azure Maps，只需在数据源中使用一个多边形，如以下代码所示。
+使用 Azure Maps，只需在数据源中创建一个多边形，如以下代码所示。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -856,10 +856,10 @@ map.layers.add(arrayOf<Layer>(polygonLayer, lineLayer, bubbleLayer))
 ::: zone-end
 
 > [!TIP]
-> 使用方法向地图添加层时 `map.layers.add` ，可以将现有层的 ID 或实例作为第二个参数传入。 这会告知映射将插入要添加到现有层下方的新层。 除了传递层 ID 外，此方法还支持以下值。
+> 使用 `map.layers.add` 方法向地图中添加层时，可以将现有层的 ID 或实例作为第二个参数传递。 这会告知地图将要添加的新层插入到现有层下方。 除传递层 ID 之外，这种方法还支持以下值。
 >
-> - `"labels"` -将新层插入到地图标签层之下。
-> - `"transit"` -将新层插入到地图道路和中转层下方。
+> - `"labels"` - 将新层插入到地图标签层之下。
+> - `"transit"` - 将新层插入到地图道路和中转层之下。
 
 ## <a name="next-steps"></a>后续步骤
 

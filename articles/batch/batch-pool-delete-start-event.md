@@ -4,10 +4,10 @@ description: 批处理池删除开始事件参考。 当池删除操作开始时
 ms.topic: reference
 ms.date: 12/28/2020
 ms.openlocfilehash: 86f6eb8e7b269cb45f692398e9e60390375ca073
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97803742"
 ---
 # <a name="pool-delete-start-event"></a>池删除开始事件
@@ -24,4 +24,4 @@ ms.locfileid: "97803742"
 
 |元素|类型|说明|
 |-------------|----------|-----------|
-|`id`|String|池的 ID。|
+|`id`|字符串|池的 ID。|

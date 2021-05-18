@@ -1,28 +1,18 @@
 ---
 title: 调查可疑设备
 description: 本操作指南介绍如何通过 Log Analytics 使用 Defender for IoT 来调查可疑的 IoT 设备。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/04/2020
-ms.author: mlottner
-ms.openlocfilehash: 096549c37c9f1feb04cd9214e1835956dae53735
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.openlocfilehash: 32cc8d82a867ead533cbaa6802bffb4494398412
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516832"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104782004"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>调查可疑的 IoT 设备
 
-当 IoT 设备被怀疑可疑活动的参与时，或者当存在设备遭到入侵时出现迹象时，IoT service 警报会提供清晰的指示。
+怀疑 IoT 设备参与可疑的活动或者有迹象表明某个设备遭到入侵时，Defender for IoT 服务警报会提供明确的指示。
 
 本指南使用提供的调查建议来帮助你的组织确定潜在风险，确定补救方式，以及找到将来防止类似攻击的最佳方法。
 
@@ -43,8 +33,8 @@ Defender for IoT 默认将安全警报和建议存储在 Log Analytics 工作区
 
 根据配置执行以下操作，以访问 Log Analytics 工作区中存储的数据：
 
-1. 在 IoT 中心选择并选择 "在 IoT 上的 IoT" 警报。
-1. 选择 **进一步调查**。
+1. 在 IoT 中心选择并单击某个 Defender for IoT 警报。
+1. 选择“进一步调查”。
 1. 选择“若要查看哪些设备生成了此警报，请单击此处并查看 DeviceId 列”。
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>可疑 IoT 设备的调查步骤
@@ -55,7 +45,7 @@ Defender for IoT 默认将安全警报和建议存储在 Log Analytics 工作区
 
 ### <a name="related-alerts"></a>相关警报
 
-您可以通过以下 kql 查询查看是否同时触发了其他警报：
+可通过以下 KQL 查询确定在大致相同的时间是否触发了其他警报：
 
   ```
   let device = "YOUR_DEVICE_ID";
@@ -144,8 +134,8 @@ Defender for IoT 默认将安全警报和建议存储在 Log Analytics 工作区
 使用查询结果来确定：
 
 - 哪些用户登录到了该设备？
-- 已登录的用户是否应该登录？
-- 登录的用户是否从预期或意外的 IP 地址进行连接？
+- 登录的用户是否应该登录？
+- 登录的用户是从预期还是意外的 IP 地址连接的？
 
 ### <a name="process-list"></a>进程列表
 
@@ -182,7 +172,7 @@ Defender for IoT 默认将安全警报和建议存储在 Log Analytics 工作区
 
 - 是否有任何可疑的进程在设备上运行？
 - 进程是否由适当的用户执行？
-- 任何命令行执行是否都包含正确和预期的参数？
+- 所有命令行执行是否包含正确的预期参数？
 
 ## <a name="next-steps"></a>后续步骤
 

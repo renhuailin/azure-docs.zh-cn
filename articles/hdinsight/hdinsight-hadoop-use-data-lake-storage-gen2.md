@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/24/2020
 ms.openlocfilehash: 2bbfbd2d953ea663453f0092ff366e95f6dd5ea7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945373"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 是构建在 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)基础之上的，专用于大数据分析的云存储服务。 Data Lake Storage Gen2 将 Azure Blob 存储和 Azure Data Lake Storage Gen1 的功能组合在一起。 由此产生的服务提供来自 Azure Data Lake Storage Gen1 的功能，包括：文件系统语义、目录级和文件级安全性以及适应性。 以及 Azure Blob 存储的低成本、分层存储、高可用性和灾难恢复功能。
 
-有关使用 Data Lake Storage Gen2 的群集创建选项的完整比较，请参阅 [比较用于 Azure HDInsight 群集的存储选项](hdinsight-hadoop-compare-storage-options.md)。
+有关与使用 Data Lake Storage Gen2 的群集创建选项的全面比较，请参阅[比较用于 Azure HDInsight 群集的存储选项](hdinsight-hadoop-compare-storage-options.md)。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -39,17 +39,17 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 
 ### <a name="what-kinds-of-permissions-does-data-lake-storage-gen2-support"></a>Data Lake Storage Gen2 支持哪些类型的权限？
 
-Data Lake Storage Gen2 使用的访问控制模型同时支持 Azure RBAC) 和类似 POSIX 的访问控制列表 (Azure RBAC 和类似 POSIX 的访问控制 (列表) 。 Data Lake Storage Gen1 仅支持用于控制数据访问的访问控制列表。
+Data Lake Storage Gen2 使用一个访问控制模型，该模型支持 Azure 基于角色的访问控制 (Azure RBAC) 和类似于 POSIX 的访问控制列表 (ACL)。 Data Lake Storage Gen1 仅支持用于控制数据访问的访问控制列表。
 
-Azure RBAC 使用角色分配将权限集有效地应用于 Azure 资源的用户、组和服务主体。 一般情况下，这些 Azure 资源限制为顶级资源（例如 Azure Blob 存储帐户）。 对于 Azure Blob 存储以及 Azure Data Lake Storage Gen2，此机制已扩展到文件系统资源。
+Azure RBAC 使用角色分配有效地将权限集应用到 Azure 资源的用户、组和服务主体。 一般情况下，这些 Azure 资源限制为顶级资源（例如 Azure Blob 存储帐户）。 对于 Azure Blob 存储以及 Azure Data Lake Storage Gen2，此机制已扩展到文件系统资源。
 
-有关使用 Azure RBAC 的文件权限的详细信息，请参阅 azure [rbac)  (azure 基于角色的访问控制 ](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)。
+有关使用 Azure RBAC 分配文件权限的详细信息，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control)。
 
 有关使用 ACL 分配文件权限的详细信息，请参阅[对文件和目录应用访问控制列表](../storage/blobs/data-lake-storage-access-control.md)。
 
 ### <a name="how-do-i-control-access-to-my-data-in-data-lake-storage-gen2"></a>如何在 Data Lake Storage Gen2 中控制对数据的访问？
 
-HDInsight 群集在 Data Lake Storage Gen2 中访问文件的能力通过托管标识进行控制。 托管标识是在 Azure Active Directory (Azure AD) 中注册的标识，其凭据由 Azure 管理。 利用托管标识，无需在 Azure AD 中注册服务主体。 或维护凭据，如证书。
+HDInsight 群集在 Data Lake Storage Gen2 中访问文件的能力通过托管标识进行控制。 托管标识是在 Azure Active Directory (Azure AD) 中注册的标识，其凭据由 Azure 管理。 使用托管标识，无需在 Azure AD 中注册服务主体。 也无需维护证书等凭据。
 
 Azure 服务有两种类型的托管标识：系统分配的托管标识和用户分配的托管标识。 HDInsight 使用用户分配的托管标识来访问 Data Lake Storage Gen2。 `user-assigned managed identity`是作为独立的 Azure 资源创建的。 在创建过程中，Azure 会在由所用订阅信任的 Azure AD 租户中创建一个标识。 在创建标识后，可以将标识分配到一个或多个 Azure 服务实例。
 

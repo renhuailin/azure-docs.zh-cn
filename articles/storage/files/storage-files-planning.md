@@ -4,25 +4,25 @@ description: 了解规划 Azure 文件部署。 可以直接装载 Azure 文件�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8a96b44a280e0aea15a6d0843f02f4ed16f8fcf4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: be7e5b1f9721cc65c2f9b371becf8b4c82fb37b4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879841"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759752"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
-[Azure 文件存储](storage-files-introduction.md)有两种主要部署方式：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步功能在本地缓存 Azure 文件共享。所选择的部署方式决定了规划部署时需要考虑的事项。 
+[Azure 文件存储](storage-files-introduction.md)的部署主要有两种方式：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步功能在本地缓存 Azure 文件共享。所选择的部署方式决定了规划部署时需要考虑的事项。 
 
 - **直接装载 Azure 文件共享**：由于 Azure 文件存储提供服务器消息块 (SMB) 或网络文件系统 (NFS) 访问，因此可以使用操作系统中提供的标准 SMB 或 NFS 客户端将 Azure 文件共享装载到本地或云中。 由于 Azure 文件共享是无服务器的，因此针对生产方案进行部署不需要管理文件服务器或 NAS 设备。 这意味着无需应用软件修补程序或换出物理磁盘。 
 
 - **使用 Azure 文件同步在本地缓存 Azure 文件共享**：借助 Azure 文件同步，可以在 Azure 文件存储中集中管理组织的文件共享，同时又能保留本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将本地（或云中的）Windows Server 转换为 Azure SMB 文件共享的快速缓存。 
 
-本文主要阐述有关部署可供本地或云客户端直接装载的 Azure 文件共享时的部署注意事项。 若要规划 Azure 文件同步部署，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)。
+本文主要阐述有关部署可供本地或云客户端直接装载的 Azure 文件共享时的部署注意事项。 若要规划 Azure 文件同步部署，请参阅[规划 Azure 文件同步部署](../file-sync/file-sync-planning.md)。
 
 ## <a name="available-protocols"></a>可用的协议
 
@@ -65,7 +65,7 @@ Azure 文件存储提供了两种协议，可以用于装载文件共享、SMB �
 
 - **使用 ExpressRoute、站点到站点或点到站点 VPN 的网络隧道**：通过隧道连接到虚拟网络后，即使端口 445 已被阻止，也能从本地访问 Azure 文件共享。
 - **专用终结点**：专用终结点在虚拟网络的地址空间中为存储帐户指定了一个专用 IP 地址。 这样，无需打开本地网络就可以通过网络隧道连接到 Azure 存储群集拥有的所有 IP 地址范围。 
-- **DNS 转发**：配置本地 DNS，以将存储帐户的名称（例如用于公有云区域的 `storageaccount.file.core.windows.net`）解析为专用终结点的 IP 地址。
+- **DNS 转发**：配置本地 DNS，以将存储帐户的名称（用于公有云区域的 `storageaccount.file.core.windows.net`）解析为专用终结点的 IP 地址。
 
 若要规划与 Azure 文件共享部署相关的网络，请参阅 [Azure 文件存储网络注意事项](storage-files-networking-overview.md)。
 
@@ -107,16 +107,17 @@ Azure 文件共享的软删除（预览版）是一种存储帐户级别设置�
 
 有关备份的详细信息，请参阅[关于 Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
-### <a name="advanced-threat-protection-for-azure-files-preview"></a>Azure 文件存储的高级威胁防护（预览版）
-适用于 Azure 存储的高级威胁防护 (ATP) 提供额外的安全智能层，当其检测到你的存储帐户中存在异常活动（例如，异常尝试访问存储帐户）时，将发出警报。 ATP 还会运行恶意软件哈希信誉分析，并对已知的恶意软件发出警报。 可以通过 Azure 安全中心在订阅或存储帐户级别上配置 ATP。 
+### <a name="azure-defender-for-azure-files"></a>适用于 Azure 文件存储的 Azure Defender 
+适用于 Azure 存储的 Azure Defender（之前为适用于 Azure 存储的高级威胁防护）提供额外的安全智能层，当其检测到你的存储帐户中存在异常活动（例如异常访问尝试）时，将发出警报。 它还会运行恶意软件哈希信誉分析，并对已知的恶意软件发出警报。 你可以通过 Azure 安全中心在订阅或存储帐户级别配置 Azure Defender。 
 
-有关详细信息，请参阅 [Azure Storage 的高级威胁防护](../common/azure-defender-storage-configure.md)。
+有关详细信息，请参阅[用于存储的 Azure Defender 简介](../../security-center/defender-for-storage-introduction.md)。
 
 ## <a name="storage-tiers"></a>存储层
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>启用标准文件共享最高可以扩展到 100 TiB
-[!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
+### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>让标准文件共享能够承受最多 100 TiB 的容量
+默认情况下，标准文件共享不得超过 5 TiB，但你可将共享上限提高到 100 TiB。 若要了解如何提高共享上限，请参阅[启用和创建大型文件共享](storage-files-how-to-create-large-file-share.md)。
+
 
 #### <a name="limitations"></a>限制
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
@@ -130,7 +131,7 @@ Azure 文件共享的软删除（预览版）是一种存储帐户级别设置�
 [迁移概述文章](storage-files-migration-overview.md)简要介绍了基础知识，并包含一个表格，指引你查看适用于你的方案的迁移指南。
 
 ## <a name="next-steps"></a>后续步骤
-* [规划 Azure 文件同步部署](storage-sync-files-planning.md)
+* [规划 Azure 文件同步部署](../file-sync/file-sync-planning.md)
 * [部署 Azure 文件](./storage-how-to-create-file-share.md)
-* [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)
+* [部署 Azure 文件同步](../file-sync/file-sync-deployment-guide.md)
 * [查看迁移概述文章，了解适用于你的方案的迁移指南](storage-files-migration-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro 计算管理 |Microsoft Docs
-description: 介绍如何管理边缘计算设置，如触发器、模块、视图计算配置、通过 Azure Stack Edge Pro 上的 Azure 门户删除配置。
+title: Azure Stack Edge Pro 计算管理 | Microsoft Docs
+description: 介绍如何通过 Azure 门户在 Azure Stack Edge Pro 上管理 Edge 计算设置（例如触发器和模块）、查看计算配置及删除配置。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: alkohli
 ms.openlocfilehash: ebf967fe02ab6424b9952bb0315b70fadb547fe3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97967761"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>在 Azure Stack Edge Pro 上管理计算
 
-本文介绍如何在 Azure Stack Edge Pro 上管理计算。 可以通过 Azure 门户或本地 Web UI 管理计算。 使用 Azure 门户可以管理模块、触发器和计算配置，使用本地 Web UI 可以管理计算设置。
+本文介绍如何管理 Azure Stack Edge Pro 上的计算。 可以通过 Azure 门户或本地 Web UI 管理计算。 使用 Azure 门户可以管理模块、触发器和计算配置，使用本地 Web UI 可以管理计算设置。
 
 在本文中，学习如何：
 
@@ -28,17 +28,17 @@ ms.locfileid: "97967761"
 
 ## <a name="manage-triggers"></a>管理触发器
 
-事件是在云环境中或者在设备上发生的、可能需要采取措施的情况。 例如，在共享中创建文件就是一个事件。 触发器引发这些事件。 对于 Azure Stack Edge Pro，触发器可以响应文件事件或计划。
+事件是在云环境中或者在设备上发生的、可能需要采取措施的情况。 例如，在共享中创建文件就是一个事件。 触发器引发这些事件。 对于 Azure Stack Edge Pro，触发器可用于响应文件事件或计划。
 
-- **文件**：这些触发器用于响应文件事件，如创建文件、修改文件。
-- **计划**：这些触发器是对你可以用开始日期、开始时间和重复间隔定义的计划的响应。
+- **文件**：这些触发器可用于响应文件创建、文件修改等文件事件。
+- **计划**：这些触发器可用于响应某个计划，对于该计划，可以定义开始日期、开始时间和重复间隔。
 
 
 ### <a name="add-a-trigger"></a>添加触发器
 
 在 Azure 门户中执行以下步骤可以创建触发器。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后跳到 **IoT Edge > 触发器**。 在命令栏上选择“+ 添加触发器”。
+1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到“IoT Edge”>“触发器”。 在命令栏上选择“+ 添加触发器”。
 
     ![选择“添加触发器”](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "97967761"
 
     - **计划的触发器** - 指定开始日期/时间，并以小时、分钟或秒为单位指定重复间隔。 此外，请输入主题的名称。 使用主题可以灵活地将触发器路由到设备上部署的模块。
 
-        示例路由字符串：`"route3": "FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint("modules/modulename/inputs/input1")"`。
+        示例路由字符串：`"route3&quot;: &quot;FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint(&quot;modules/modulename/inputs/input1")"`。
 
         ![添加 NFS 共享](media/azure-stack-edge-manage-compute/add-scheduled-trigger.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "97967761"
 
     ![选择触发器](media/azure-stack-edge-manage-compute/delete-trigger-1.png)
 
-2. 右键单击，然后选择 " **删除**"。
+2. 单击右键并选择“删除”。
 
     ![选择“删除”](media/azure-stack-edge-manage-compute/delete-trigger-2.png)
 
@@ -82,17 +82,17 @@ ms.locfileid: "97967761"
 
 ## <a name="manage-compute-configuration"></a>管理计算配置
 
-使用 Azure 门户查看计算配置、删除现有的计算配置，或刷新计算配置以同步 IoT 设备的访问密钥，并为 Azure Stack Edge Pro IoT Edge 设备。
+使用 Azure 门户可以查看计算配置、删除现有的计算配置，或者刷新计算配置以便同步 Azure Stack Edge Pro 的 IoT 设备和 IoT Edge 设备的访问密钥。
 
 ### <a name="view-compute-configuration"></a>查看计算配置
 
 在 Azure 门户中执行以下步骤可以查看设备的计算配置。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，并 **IoT Edge > 概述**"。 
+1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到“IoT Edge”>“概述”。 
 
     ![选择“查看计算”](media/azure-stack-edge-manage-compute/view-compute-1.png)
 
-2. 请参阅 " **属性** " 页。 记下设备上的计算配置。 配置计算时，已创建一个 IoT 中心资源。 在该 IoT 中心资源下，已配置 IoT 设备和 IoT Edge 设备。 仅支持在 IoT Edge 设备上运行 Linux 模块。
+2. 转到“属性”页。 记下设备上的计算配置。 配置计算时，已创建一个 IoT 中心资源。 在该 IoT 中心资源下，已配置 IoT 设备和 IoT Edge 设备。 仅支持在 IoT Edge 设备上运行 Linux 模块。
 
     ![查看配置](media/azure-stack-edge-manage-compute/view-compute-2.png)
 
@@ -101,25 +101,25 @@ ms.locfileid: "97967761"
 
 在 Azure 门户中执行以下步骤可以删除设备的现有 Edge 计算配置。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，并 **IoT Edge > 概述**"。 在命令栏上选择 " **删除** "。
+1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到“IoT Edge”>“概述”。 在命令栏上选择“删除”。
 
     ![选择“删除计算”](media/azure-stack-edge-manage-compute/remove-compute-1.png)
 
 2. 删除计算配置后，如果需要再次使用计算，则重新配置设备。 出现确认提示时，选择“是”。
 
-    ![选择删除计算2](media/azure-stack-edge-manage-compute/remove-compute-2.png)
+    ![选择“删除计算 2”](media/azure-stack-edge-manage-compute/remove-compute-2.png)
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>同步 IoT 设备和 IoT Edge 设备的访问密钥
 
-在 Azure Stack Edge Pro 上配置计算时，会创建 IoT 设备和 IoT Edge 设备。 系统会自动为这些设备分配对称访问密钥。 最佳安全做法是通过 IoT 中心服务定期轮换这些密钥。
+在 Azure Stack Edge Pro 中配置计算时，会创建 IoT 设备和 IoT Edge 设备。 系统会自动为这些设备分配对称访问密钥。 最佳安全做法是通过 IoT 中心服务定期轮换这些密钥。
 
 若要轮换这些密钥，可以转到创建的 IoT 中心服务，并选择该 IoT 设备或 IoT Edge 设备。 每个设备都有一个主要访问密钥和辅助访问密钥。 将主要访问密钥分配到辅助访问密钥，然后重新生成主要访问密钥。
 
-如果 IoT 设备和 IoT Edge 设备密钥已经旋转，则需要刷新 Azure Stack Edge Pro 上的配置以获取最新的访问密钥。 同步可帮助设备获取 IoT 设备和 IoT Edge 设备的最新密钥。 Azure Stack Edge Pro 只使用主访问密钥。
+如果已轮换 IoT 设备和 IoT Edge 设备的密钥，需要刷新 Azure Stack Edge Pro 中的配置才能获取最新的访问密钥。 同步可帮助设备获取 IoT 设备和 IoT Edge 设备的最新密钥。 Azure Stack Edge Pro 仅使用主要访问密钥。
 
 在 Azure 门户中执行以下步骤可以同步设备的访问密钥。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，并 **IoT Edge > 概述**"。 在命令栏上选择“刷新配置”。
+1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到“IoT Edge”>“概述”。 在命令栏上选择“刷新配置”。
 
     ![选择“刷新配置”](media/azure-stack-edge-manage-compute/refresh-configuration-1.png)
 
@@ -131,4 +131,4 @@ ms.locfileid: "97967761"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何 [通过 Azure 门户管理边缘计算网络](azure-stack-edge-extend-compute-access-modules.md)。
+- 了解如何[通过 Azure 门户管理 Edge 计算网络](azure-stack-edge-extend-compute-access-modules.md)。

@@ -1,24 +1,24 @@
 ---
-title: 管理 Azure 实验室服务中的实验室 |Microsoft Docs
-description: 了解如何创建和配置教室实验室，查看所有实验室，与实验室用户共享注册链接，或删除实验室。
+title: 管理 Azure 实验室服务中的实验室 | Microsoft Docs
+description: 了解如何创建和配置教室实验室、如何查看所有实验室、如何与实验室用户共享注册链接，或者如何删除实验室。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-ms.translationtype: MT
+ms.openlocfilehash: c6acb9609abac15b9ff92250e3d5d44c585881cc
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434203"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481797"
 ---
 # <a name="manage-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的实验室 
-本文介绍如何创建和删除教室实验室。 还介绍了如何在实验室帐户中查看所有实验室。 
+本文介绍如何创建和删除教室实验室。 它还说明了如何查看实验室帐户中的所有实验室。 
 
 ## <a name="prerequisites"></a>先决条件
 若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 实验室所有者可以按照以下文章中的步骤将其他用户添加到“实验室创建者”角色：[将用户添加到“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)。
 
 ## <a name="create-a-classroom-lab"></a>创建课堂实验室
 
-1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 尚不支持 Internet Explorer 11。 
+1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。
 1. 选择“登录”并输入凭据。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码 。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
 1. 选择“新建实验室”。 
     
@@ -32,7 +32,7 @@ ms.locfileid: "96434203"
     1. 查看页面上显示的“每小时总价”。 
     1. 选择“保存”。
 
-        ![显示 "新建实验室" 窗口的屏幕截图。](./media/tutorial-setup-classroom-lab/new-lab-window.png)
+        ![显示“新实验室”窗口的屏幕截图。](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 
         > [!NOTE]
         > 如果实验室帐户配置为[允许实验室创建者选取实验室位置](allow-lab-creator-pick-lab-location.md)选项，则会显示一个用于选择实验室位置的选项。 
@@ -139,5 +139,5 @@ ms.locfileid: "96434203"
 
 - [以实验室所有者身份设置并发布模板](how-to-create-manage-template.md)
 - [以实验室所有者身份配置并控制实验室的使用](how-to-configure-student-usage.md)
-- [作为实验室用户，访问实验室](how-to-use-classroom-lab.md)
+- [以实验室用户身份访问实验室](how-to-use-classroom-lab.md)
 

@@ -14,10 +14,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
 ms.openlocfilehash: ae0d9696d869b2a260de643482a9f86c34bcc824
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100575467"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL 托管实例审核入门
@@ -26,7 +26,7 @@ ms.locfileid: "100575467"
 [Azure SQL 托管实例](sql-managed-instance-paas-overview.md)审核会跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
-- 实现并促进遵从合规标准，但不能保证合规性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅 " [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)"，其中可以找到最新的符合性认证列表。
+- 实现并促进遵从合规标准，但不能保证合规性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅 [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可以从中找到符合性认证的最新列表。
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>将服务器的审核设置为 Azure 存储
 
@@ -81,7 +81,7 @@ ms.locfileid: "100575467"
 
           - **允许的服务**：Blob
 
-          - **开始日期**：若要避免时区相关的问题，请使用昨天的日期
+          - **开始日期**：为避免与时区相关的问题，请使用昨天的日期
 
           - **结束日期**：选择此 SAS 令牌的到期日期
 
@@ -177,7 +177,7 @@ ms.locfileid: "100575467"
 
 5. 选择审核事件的目标：事件中心、Azure Monitor 日志或两者。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
 
-6. 单击“保存” 。
+6. 单击“保存”  。
 
     ![配置诊断设置](./media/auditing-configure/9_mi_configure_diagnostics.png)
 
@@ -247,6 +247,6 @@ Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 ## <a name="next-steps"></a>后续步骤
 
 - 有关审核日志使用方法的完整列表，请参阅 [Azure SQL 数据库审核入门](../../azure-sql/database/auditing-overview.md)。
-- 有关支持标准符合性的 Azure 程序的详细信息，请参阅 " [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)"，其中可以找到最新的符合性认证列表。
+- 有关支持标准符合性的 Azure 程序的详细信息，请参阅 [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可以从中找到符合性认证的最新列表。
 
 <!--Image references-->

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: c35d5d2f63f4a7abe80a0ff19e5994013355c386
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98020513"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>将 Azure 流分析与 Azure 机器学习集成（预览版）
@@ -24,19 +24,19 @@ ms.locfileid: "98020513"
 
 1. 使用 Azure 机器学习[将模型部署为 Web 服务](../machine-learning/how-to-deploy-and-where.md)。
 
-2. 评分脚本应该包含由 Azure 机器学习用来生成架构规范的[示例输入和输出](../machine-learning/how-to-deploy-and-where.md)。 流分析使用该架构来理解 Web 服务的函数签名。 可以使用此 [示例 swagger 定义](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) 作为参考，以确保已正确设置该定义。
+2. 评分脚本应该包含由 Azure 机器学习用来生成架构规范的[示例输入和输出](../machine-learning/how-to-deploy-and-where.md)。 流分析使用该架构来理解 Web 服务的函数签名。 可以此[示例 swagger 定义](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)为参考来确保已正确设置。
 
 3. 确保 Web 服务接受并返回 JSON 序列化的数据。
 
-4. 在 [Azure Kubernetes 服务](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target)中部署模型，以进行大规模生产部署。 如果 Web 服务无法处理来自作业的请求数，流分析作业的性能将会下降，从而影响延迟。 仅当你使用 Azure 门户时，Azure 容器实例中部署的模型才受支持。 流分析中尚不支持使用 [Azure 机器学习设计器](../machine-learning/concept-designer.md) 生成的模型。
+4. 在 [Azure Kubernetes 服务](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target)中部署模型，以进行大规模生产部署。 如果 Web 服务无法处理来自作业的请求数，流分析作业的性能将会下降，从而影响延迟。 仅当你使用 Azure 门户时，Azure 容器实例中部署的模型才受支持。 流分析中尚不支持使用 [Azure 机器学习设计器](../machine-learning/concept-designer.md)生成的模型。
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>将机器学习模型添加到作业
 
-可以直接从 Azure 门户或 Visual Studio Code 将 Azure 机器学习函数添加到流分析作业。
+可直接从 Azure 门户或 Visual Studio Code 将 Azure 机器学习函数添加到流分析作业。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 在 Azure 门户中导航到你的流分析作业，在“作业拓扑”下选择“函数”。  然后，从 " **+ 添加**" 下拉菜单中选择 " **Azure 机器学习服务**"。
+1. 在 Azure 门户中导航到你的流分析作业，在“作业拓扑”下选择“函数”。  然后从“+添加”下拉菜单中，选择“Azure 机器学习服务” 。
 
    ![添加 Azure 机器学习 UDF](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
@@ -46,19 +46,19 @@ ms.locfileid: "98020513"
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-1. 在 Visual Studio Code 中打开流分析项目，然后右键单击 " **函数** " 文件夹。 然后，选择 " **添加函数**"。 从下拉列表中选择 " **机器学习 UDF** "。
+1. 在 Visual Studio Code 中打开流分析项目，再右键单击“函数”文件夹。 然后，选择“添加函数”。 从下拉列表中选择“机器学习 UDF”。
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="在 VS Code 中添加 UDF":::
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="在 VS Code 中添加 Azure 机器学习 UDF":::
 
-2. 输入函数名称，并在 CodeLens 中使用 " **从你的订阅中选择** "，在配置文件中填入设置。
+2. 输入函数名称，然后使用 CodeLens 中的“从订阅中选择”，在配置文件中填写设置。
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="选择 Azure 机器学习 UDF VS Code":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="在 VS Code 中选择 Azure 机器学习 UDF":::
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="在 VS Code 中配置 Azure 机器学习 UDF":::
 
-下表描述了流分析中 Azure 机器学习服务函数的每个属性。
+下表描述了流分析中的 Azure 机器学习服务函数的每个属性。
 
 |属性|说明|
 |--------|-----------|
@@ -82,7 +82,7 @@ INTO output
 FROM input
 ```
 
-流分析仅支持为 Azure 机器学习函数传递一个参数。 在将数据作为输入传递给机器学习 UDF 之前，可能需要准备该数据。 必须确保 ML UDF 的输入不为 null，因为 null 输入将导致作业失败。
+流分析仅支持为 Azure 机器学习函数传递一个参数。 在将数据作为输入传递给机器学习 UDF 之前，可能需要准备该数据。 必须确保 ML UDF 的输入不为 NULL，因为 NULL 输入将导致作业失败。
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>向 UDF 传递多个输入参数
 

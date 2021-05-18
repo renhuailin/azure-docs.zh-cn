@@ -9,10 +9,10 @@ ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
 ms.openlocfilehash: b14bd60ab744be5a1735abc073f32f8ebc3e1ab1
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96301714"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>在应用程序网关上创建和使用 Web 应用程序防火墙 v2 自定义规则
@@ -21,7 +21,7 @@ Azure 应用程序网关上的 Web 应用程序防火墙 (WAF) v2 可为 Web 应
 
 本文介绍一些示例性的自定义规则，这些规则可以通过 v2 WAF 创建并使用。 若要了解如何使用 Azure PowerShell 通过自定义规则来部署 WAF，请参阅[使用 Azure PowerShell 配置 Web 应用程序防火墙自定义规则](configure-waf-custom-rules.md)。
 
-本文中所示的 JSON 代码片段派生自 [ApplicationGatewayWebApplicationFirewallPolicies](/azure/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) 资源。
+本文中所示的 JSON 代码片段来自 [ApplicationGatewayWebApplicationFirewallPolicies](/azure/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) 资源。
 
 >[!NOTE]
 > 如果应用程序网关未使用 WAF 层，会在右侧窗格中显示“将应用程序网关升级到 WAF 层”选项。
@@ -130,7 +130,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-2"></a>示例 2
 
-你希望通过 GeoMatch 操作员允许来自美国的流量：
+你想要使用 GeoMatch 运算符允许来自美国的流量：
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `

@@ -1,7 +1,7 @@
 ---
-title: 对等互连服务-常见问题
+title: 对等互连服务 - 常见问题解答
 titleSuffix: Azure
-description: 对等互连服务-常见问题
+description: 对等互连服务 - 常见问题解答
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,37 +9,37 @@ ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 507e503b881df123ffc6694c53b0e9cc9b6a8872
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75775467"
 ---
-# <a name="peering-service---faqs"></a>对等互连服务-常见问题
+# <a name="peering-service---faqs"></a>对等互连服务 - 常见问题解答
 
-对于一般问题，你可以查看以下信息。
+对于一般问题，可以查看以下信息。
 
-**运营商是否可以使用与 Microsoft 的现有直接对等互连来支持对等互连服务？**
+运营商是否可以使用现有的与 Microsoft 的直接对等互连来支持对等互连服务？
 
-是的，运营商可以利用其现有的 PNI 支持对等互连服务。 对等互连服务 PNI 需要多样性来支持 HA。 如果现有 PNI 已有多样性，则不需要新的基础结构。 如果现有 PNI 需要多样性，则可以对其进行扩充。
+可以，运营商可以利用其现有的 PNI 来支持对等互连服务。 对等互连服务 PNI 需要多样性来支持 HA。 如果现有 PNI 已有多样性，则不需要新基础结构。 如果现有 PNI 需要多样性，则可以对其进行扩充。
 
-**运营商是否可以使用与 Microsoft 的新直接对等互连来支持对等互连服务？**
+运营商是否可以使用新的与 Microsoft 的直接对等互连来支持对等互连服务？
 
 是的，这也是可能的。 Microsoft 将与运营商合作创建新的直接对等互连，以支持对等互连服务。  
 
-**为什么直接对等互连要求支持对等互连服务？**
+为什么支持对等互连服务需要直接对等互连？
 
-对等互连服务背后的主要驱动因素之一是通过连接良好的 SP 提供与 Microsoft 联机服务的连接。 PNI 始终在 Gbps 范围内，因此是运营商和 Microsoft 之间的高吞吐量连接的基本构建基块。
+支持对等互连服务的主要驱动因素之一是通过连接状态良好的 SP 提供到 Microsoft 联机服务的连接。 PNI 始终在 Gbps 范围内，因此，它是运营商与 Microsoft 之间高吞吐量连接的基本构建基块。
 
-**对直接对等互连的支持对等互连服务的多样性要求是什么？**
+为了支持对等互连服务，对于直接对等互连有什么多样性要求？
 
-PNI 必须支持本地冗余和异地冗余。 本地冗余定义为特定对等站点中的两个不同的路径集。 异地冗余要求在主站点出现故障的情况下，在其他 Microsoft 边缘站点上运营商具有额外的连接。 对于短的故障持续时间，运营商可以通过备份站点路由流量。
+PNI 必须支持本地冗余和异地冗余。 本地冗余定义为某个特定对等互连站点中两组不同的路径。 异地冗余要求运营商在主站点出现故障的情况下在其他 Microsoft 边缘站点具有额外的连接。 对于持续时间较短的故障，运营商可以通过备份站点来路由流量。
 
-**该运营商已提供 SLA 和企业级 Internet，该产品的不同之处是什么？**
+此产品/服务与运营商已提供的 SLA 和企业级 Internet 相比有何不同？
 
-某些运营商在网络部分提供 SLA 和企业级 Internet。 在对等互连服务中，Microsoft 将在网络的 Microsoft 部分提供 SLA 提供流量。 通过选择 "对等互连服务"，客户将获得端到端 SLA。 Isp 可能会涵盖向 ISP 网络上的 Microsoft edge 站点的 SLA。 Microsoft 向最终用户应用程序的 Microsoft 全球网络中的 SLA 现在已由 Microsoft 涵盖。
+有些运营商在网络中他们的部分提供 SLA 和企业级 Internet。 在对等互连服务中，Microsoft 将会在网络的 Microsoft 部分提供 SLA 产品/服务流量。 通过选择对等互连服务，客户会获得端到端 SLA。 ISP 网络上从客户站点到 Microsoft 边缘的 SLA 可以由 ISP 负责。 Microsoft 全球网络中从 Microsoft 边缘到最终用户应用程序的 SLA 目前由 Microsoft 负责。
 
-**如果服务提供商已使用 PNI 与 Microsoft 建立了对等互连，则需要哪种类型的更改来支持对等互连服务？**
+如果服务提供商已使用 PNI 与 Microsoft 对等互连，需要进行哪些更改来支持对等互连服务？
 
-* 用于标识对等服务用户及其流量的软件更改。 可能需要通过对等互连服务连接在最近的 Microsoft edge 交换用户流量的路由策略更改。
-* 确保连接具有本地冗余和异地冗余。
+* 更改软件，以便识别对等互连服务用户及其流量。 可能需要更改路由策略，以通过对等互连服务连接在最近的 Microsoft 边缘交换用户的流量。
+* 请确保连接具有本地冗余和异地冗余。

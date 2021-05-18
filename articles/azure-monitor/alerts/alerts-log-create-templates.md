@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 560f26b712818327294791feb787b5fe7c9d7b82
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036463"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建日志警报
@@ -28,7 +28,7 @@ ms.locfileid: "102036463"
 > 可以将 [Log Analytics 工作区](../logs/log-analytics-tutorial.md)中的日志数据发送到 Azure Monitor 指标存储。 指标警报具有[不同的行为](./alerts-metric-overview.md)，该行为可能更可取，具体取决于你要使用的数据。 要了解如何将日志路由到指标，请参阅[日志的指标警报](./alerts-metric-logs.md)。
 
 > [!NOTE]
-> 过去使用旧式 [Log Analytics 警报 API](./api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../insights/solutions.md)的旧式模板管理 Log Analytics 的日志警报。 [详细了解如何切换到当前的 SCHEDULEDQUERYRULES API](alerts-log-api-switch.md)。
+> 过去使用旧式 [Log Analytics 警报 API](./api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../insights/solutions.md)的旧式模板管理 Log Analytics 的日志警报。 [了解有关切换到当前 ScheduledQueryRules API 的详细信息](alerts-log-api-switch.md)。
 
 
 ## <a name="simple-template-up-to-api-version-2018-04-16"></a>简单模板（最高 API 版本为 2018-04-16）

@@ -1,15 +1,15 @@
 ---
-title: 基础结构：本地 Apache Hadoop 到 Azure HDInsight
+title: 基础结构：从本地 Apache Hadoop 到 Azure HDInsight
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的基础结构最佳做法。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 309053c2d7a0f9482016f1bd83e0c61dcd31bec5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740658"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
@@ -29,10 +29,10 @@ Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化�
 **VM 大小和类型（现在支持 G 系列）**  
 每个群集类型具有一组节点类型，每个节点类型在 VM 大小和类型方面提供特定的选项。 VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定。 可以使用模拟工作负荷来确定每个节点类型的最佳 VM 大小和类型。
 
-**辅助角色节点数**  
+**工作器节点数**  
 可以使用模拟工作负荷来确定初始的工作器节点数。 以后可以通过添加更多工作节点来扩展群集，以满足峰值负载需求。 以后不需要额外的工作器节点时，可以重新缩放群集。
 
-有关详细信息，请参阅有关 [HDInsight 群集容量规划](../hdinsight-capacity-planning.md)的文章。
+有关详细信息，请参阅 [HDInsight 群集的容量规划](../hdinsight-capacity-planning.md)一文。
 
 ## <a name="use-recommended-virtual-machine-type-for-cluster"></a>对群集使用建议的虚拟机类型
 
@@ -44,7 +44,7 @@ Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化�
 
 还可以使用 Apache Ambari UI 或 Ambari REST API 来检查 HDInsight 中的 Hadoop 组件和版本。
 
-本地群集中提供但不是 HDInsight 群集的一部分的应用程序或组件可以添加到与 HDInsight 群集位于同一 VNet 中的边缘节点或 VM 上。 可以在 HDInsight 群集中使用“应用程序”选项，来安装 Azure HDInsight 中未提供的第三方 Hadoop 应用程序。 可以使用“脚本操作”在 HDInsight 群集上安装自定义的 Hadoop 应用程序。 下表列出了一些常见的应用程序及其 HDInsight 集成选项：
+可以在与 HDInsight 群集位于同一 VNet 中的边缘节点或 VM 上，添加以往在本地群集中提供的、但现在不属于 HDInsight 群集的应用程序或组件。 可以在 HDInsight 群集中使用“应用程序”选项，来安装 Azure HDInsight 中未提供的第三方 Hadoop 应用程序。 可以使用“脚本操作”在 HDInsight 群集上安装自定义的 Hadoop 应用程序。 下表列出了一些常见的应用程序及其 HDInsight 集成选项：
 
 |**应用程序**|**集成**
 |---|---|
@@ -69,7 +69,7 @@ Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化�
 |Vertica|IaaS（SQLDW，Azure 上的替代产品）
 |Tableau|IaaS 
 |Waterline|HDInsight 边缘节点
-|StreamSets|HDInsight 边缘 
+|StreamSets|HDInsight 边缘节点 
 |Palantir|IaaS 
 |Sailpoint|Iaas 
 
@@ -106,7 +106,7 @@ HDInsight 提供预先编写的脚本用于在 HDInsight 群集上安装以下�
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 配置
 
-可以使用 Bootstrap 对 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml` 等配置文件中的配置进行更改。 以下脚本是使用 PowerShell [AZ module](/powershell/azure/new-azureps-module-az) cmdlet [AzHDInsightClusterConfig](/powershell/module/az.hdinsight/new-azhdinsightcluster)的示例：
+可以使用 Bootstrap 对 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml` 等配置文件中的配置进行更改。 以下脚本是使用 PowerShell [AZ module](/powershell/azure/new-azureps-module-az) cmdlet [New-AzHDInsightClusterConfig](/powershell/module/az.hdinsight/new-azhdinsightcluster) 的示例：
 
 ```powershell
 # hive-site.xml configuration
@@ -149,7 +149,7 @@ New—AzHDInsightCluster `
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>使用群集的纵向扩展和缩减功能
 
-HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点数。 使用此功能可在若干小时后或者在周末收缩群集，或者在业务高峰期扩展群集。 有关详细信息，请参阅：
+HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点数。 使用此功能可在若干小时后或者在周末收缩群集，或者在业务高峰期扩展群集。 有关详细信息，请参见:
 
 * [缩放 HDInsight 群集](../hdinsight-scaling-best-practices.md)。
 * [缩放群集](../hdinsight-administer-use-portal-linux.md#scale-clusters)。
@@ -164,7 +164,7 @@ Azure 虚拟网络可以筛选和路由网络流量，使 Azure 资源（例如 
 - 在 Azure 虚拟网络中将 HDInsight 连接到数据存储。
 - 直接访问无法通过 Internet 公开访问的 Hadoop 服务。 例如，Kafka API 或 HBase Java API。
 
-可将 HDInsight 添加到新的或现有的 Azure 虚拟网络。 如果将 HDInsight 添加到现有的虚拟网络，则需要更新现有的网络安全组和用户定义的路由，以便能够不受限制地访问 Azure 数据中心内的[多个 IP 地址](../hdinsight-management-ip-addresses.md)。 此外，请确保不要阻止对 HDInsight 服务使用的 [端口](../control-network-traffic.md#required-ports)的流量。
+可将 HDInsight 添加到新的或现有的 Azure 虚拟网络。 如果将 HDInsight 添加到现有的虚拟网络，则需要更新现有的网络安全组和用户定义的路由，以便能够不受限制地访问 Azure 数据中心内的[多个 IP 地址](../hdinsight-management-ip-addresses.md)。 此外，请确保不要阻止发往 HDInsight 服务正在使用的[端口](../control-network-traffic.md#required-ports)的流量。
 
 > [!Note]  
 > HDInsight 目前不支持强制隧道。 强制隧道是一种子网设置，将出站 Internet 流量强制定向到设备以进行检查和记录。 在将 HDInsight 安装到子网之前删除强制隧道，或者为 HDInsight 创建新的子网。 此外，HDInsight 不支持限制出站网络连接。
@@ -176,7 +176,7 @@ Azure 虚拟网络可以筛选和路由网络流量，使 Azure 资源（例如 
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>使用 Azure 虚拟网络服务终结点安全地连接到 Azure 服务
 
-HDInsight 支持 [虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)，使你能够安全地连接到 Azure Blob 存储、Azure Data Lake Storage Gen2、COSMOS DB 和 SQL 数据库。 为 Azure HDInsight 启用服务终结点后，流量将通过 Azure 数据中心内部的受保护路由传送。 在网络层实施这种增强的安全级别后，可将大数据存储帐户锁定到其指定的虚拟网络 (VNET)，同时仍可以顺畅地使用 HDInsight 群集来访问和处理这些数据。
+HDInsight 支持[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)，使你能够安全连接到 Azure Blob 存储、Azure Data Lake Storage Gen2、Cosmos DB 和 SQL 数据库。 为 Azure HDInsight 启用服务终结点后，流量将通过 Azure 数据中心内部的受保护路由传送。 在网络层实施这种增强的安全级别后，可将大数据存储帐户锁定到其指定的虚拟网络 (VNET)，同时仍可以顺畅地使用 HDInsight 群集来访问和处理这些数据。
 
 有关详细信息，请参阅以下文章：
 
@@ -195,4 +195,4 @@ HDInsight 支持 [虚拟网络服务终结点](../../virtual-network/virtual-net
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读本系列文章中的下一篇文章： [本地到 Azure HDInsight Hadoop 迁移的存储最佳实践](apache-hadoop-on-premises-migration-best-practices-storage.md)。
+阅读本系列教程中的下一篇文章：[有关从本地迁移到 Azure HDInsight Hadoop 的存储最佳做法](apache-hadoop-on-premises-migration-best-practices-storage.md)。

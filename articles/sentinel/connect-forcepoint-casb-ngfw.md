@@ -1,5 +1,5 @@
 ---
-title: 将 Forcepoint 产品连接到 Azure Sentinel |Microsoft Docs
+title: 将 Forcepoint 产品连接到 Azure Sentinel | Microsoft Docs
 description: 了解如何将 Forcepoint 产品连接到 Azure Sentinel。
 services: sentinel
 author: yelevin
@@ -13,21 +13,21 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: eb099a786a84f9b7d0a6f0dc6e6df9c3459af295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77588223"
 ---
 # <a name="connect-your-forcepoint-products-to-azure-sentinel"></a>将 Forcepoint 产品连接到 Azure Sentinel
 
 > [!IMPORTANT]
-> Azure Sentinel 中的 Forcepoint products 数据连接器目前为公共预览版。 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Sentinel 中的 Forcepoint 产品数据连接器目前为公共预览版。 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
 本文介绍了如何将 Forcepoint 产品连接到 Azure Sentinel。 
 
-Forcepoint 数据连接器允许使用 Azure Sentinel 连接 Forcepoint Cloud Access Security Broker 和 Forcepoint 下一代防火墙日志。 通过这种方式，可以将用户定义的日志实时地自动导出到 Azure Sentinel。 连接器可让你深入了解 Forcepoint 产品记录的用户活动。 它还可让你进一步关联 Azure 工作负荷中的数据和其他源，并改进了 Azure Sentinel 内的工作簿的监视功能。
+通过 Forcepoint 数据连接器，可使用 Azure Sentinel 连接 Forcepoint Cloud Access Security Broker 和 Forcepoint Next Generation Firewall 日志。 通过这种方式，可将用户定义的日志实时地自动导出到 Azure Sentinel。 通过连接器，你可更深入地了解 Forcepoint 产品记录的用户活动。 它还支持与来自 Azure 工作负载和其他源的数据进一步关联，并通过 Azure Sentinel 内的工作簿改进监视功能。
 
 > [!NOTE]
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
@@ -36,13 +36,13 @@ Forcepoint 数据连接器允许使用 Azure Sentinel 连接 Forcepoint Cloud Ac
 
 ## <a name="forward-forcepoint-product-logs-to-the-syslog-agent"></a>将 Forcepoint 产品日志转发到 Syslog 代理 
 
-配置 Forcepoint 产品以通过 Syslog 代理将 CEF 格式的 Syslog 消息转发到 Azure 工作区。
+配置 Forcepoint 产品，通过 Syslog 代理将 CEF 格式的 Syslog 消息转发到 Azure 工作区。
 
-1. 按照以下安装指南中所述，将 Forcepoint 产品设置为 Azure Sentinel 集成：
+1. 按照以下安装指南中所述，将 Forcepoint 产品设置为 Azure Sentinel 集成项：
  - [Forcepoint CASB 集成指南](https://frcpnt.com/casb-sentinel)
  - [Forcepoint NGFW 集成指南](https://frcpnt.com/ngfw-sentinel)
 
-2. 搜索 "CommonSecurityLog" 以在 Log Analytics 中使用相关架构，其中 DeviceVendor 名称包含 "Forcepoint"。 
+2. 搜索“CommonSecurityLog”，使用 Log Analytics 中 DeviceVendor 名称包含“Forcepoint”的相关架构。 
 
 3. 继续执行[步骤 3：验证连接性](connect-cef-verify.md)。
 

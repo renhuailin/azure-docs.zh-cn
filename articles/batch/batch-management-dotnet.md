@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 01/26/2021
 ms.custom: seodec18, has-adal-ref, devx-track-csharp
 ms.openlocfilehash: f6acf23742b8d4c5c31a5ea952aba5c76b64cae0
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98896725"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>通过用于 .NET 的 Batch Management 客户端库管理 Batch 帐户和配额
@@ -18,14 +18,14 @@ ms.locfileid: "98896725"
 - 在任何区域中 **创建和删除 Batch 帐户**。 例如，如果是一家独立软件供应商 (ISV)，现在要为每个分配了不同计费 Batch 帐户的客户提供服务，则可以将帐户创建和删除功能添加到客户门户中。
 - 以编程方式为任何 Batch 帐户 **检索和重新生成帐户密钥**。 这可以帮助遵守强制帐户密钥定期滚动更新或到期的安全策略。 当各种不同的 Azure 区域中有多个 Batch 帐户时，将此滚动更新过程自动化会提高解决方案的效率。
 - **检查帐户配额** 并采取试错猜测，确定哪些 Batch 帐户存在哪些限制。 在启动作业、创建池或添加计算节点之前检查帐户配额可以主动调整创建计算资源的位置或时机。 可在帐户中分配其他资源之前，确定哪些帐户需要增加配额。
-- **结合其他 azure 服务的功能** ，通过在同一应用程序中使用 Batch management .net、 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)和 [Azure 资源管理器](../azure-resource-manager/management/overview.md) 来实现全功能管理体验。 使用这些功能及其 API 可以提供顺畅的身份验证体验、创建和删除资源组以及上述功能，以获取端到端管理解决方案。
+- 结合其他 Azure 服务的功能获得全功能管理体验，方法是在同一应用程序中使用 Batch Management .NET、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 和 [Azure 资源管理器](../azure-resource-manager/management/overview.md)。 使用这些功能及其 API 可以提供顺畅的身份验证体验、创建和删除资源组以及上述功能，以获取端到端管理解决方案。
 
 > [!NOTE]
-> 尽管本文重点介绍批处理帐户、密钥和配额的编程管理，但你也可以 [使用 Azure 门户](batch-account-create-portal.md)执行其中许多活动。
+> 尽管本文着重介绍以编程方式管理 Batch 帐户、密钥和配额，但你也可以使用 [Azure 门户](batch-account-create-portal.md)执行其中的许多活动。
 
 ## <a name="create-and-delete-batch-accounts"></a>创建和删除 Batch 帐户
 
-批处理管理 API 的主要功能之一就是在 Azure 区域中创建和删除 [batch 帐户](accounts.md) 。 为此，请使用 [BatchManagementClient.Account.CreateAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.createasync) 和 [DeleteAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.deleteasync)，或其同步对应命令。
+Batch Management API 的主要功能之一就是在 Azure 区域中创建和删除 [Batch 帐户](accounts.md)。 为此，请使用 [BatchManagementClient.Account.CreateAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.createasync) 和 [DeleteAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.deleteasync)，或其同步对应命令。
 
 以下代码段将创建一个帐户，从 Batch 服务获取新建的帐户，然后将它删除。 在此代码片段以及本文的其他代码片段中，`batchManagementClient` 是完全初始化的 [BatchManagementClient](/dotnet/api/microsoft.azure.management.batch.batchmanagementclient) 实例。
 
@@ -49,7 +49,7 @@ await batchManagementClient.Account.DeleteAsync("MyResourceGroup", account.Name)
 
 ## <a name="retrieve-and-regenerate-account-keys"></a>检索和重新生成帐户密钥
 
-使用 [GetKeysAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.getkeysasync)从订阅中的任何 Batch 帐户获取主要和辅助帐户密钥。 可以使用 [RegenerateKeyAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.regeneratekeyasync) 重新生成这些密钥。
+使用 [GetKeysAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.getkeysasync) 从订阅中的任何 Batch 帐户获取主要和次要帐户密钥。 可以使用 [RegenerateKeyAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.regeneratekeyasync) 重新生成这些密钥。
 
 ```csharp
 // Get and print the primary and secondary keys
@@ -71,7 +71,7 @@ BatchAccountRegenerateKeyResponse newKeys =
 ```
 
 > [!TIP]
-> 可以为管理应用程序创建简化的连接工作流。 首先，获取想要使用 [GetKeysAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.getkeysasync)管理的批处理帐户的帐户密钥。 然后在初始化 Batch .NET 库的 [BatchSharedKeyCredentials](/dotnet/api/microsoft.azure.batch.auth.batchsharedkeycredentials) 类（初始化 [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) 时使用）时使用此密钥。
+> 可以为管理应用程序创建简化的连接工作流。 首先，获取想要使用 [GetKeysAsync](/dotnet/api/microsoft.azure.management.batch.batchaccountoperationsextensions.getkeysasync) 管理的 Batch 帐户的帐户密钥。 然后在初始化 Batch .NET 库的 [BatchSharedKeyCredentials](/dotnet/api/microsoft.azure.batch.auth.batchsharedkeycredentials) 类（初始化 [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) 时使用）时使用此密钥。
 
 ## <a name="check-azure-subscription-and-batch-account-quotas"></a>检查 Azure 订阅和 Batch 帐户配额
 
@@ -81,7 +81,7 @@ Azure 订阅和类似于 Batch 的各个 Azure 服务均有默认配额，用于
 
 在区域中创建 Batch 帐户之前，可以检查 Azure 订阅，看是否能将帐户添加到该区域中。
 
-在下面的代码片段中，我们首先使用 **batchmanagementclient.account.listasync** 获取订阅中所有批处理帐户的集合。 获取此集合后，可以确定目标区域有多少个帐户。 然后，使用 **GetQuotasAsync** 获取批处理帐户配额，并确定在该区域中可创建任何)  (帐户的数量。
+在以下代码片段中，我们先使用 ListAsync 获取订阅中所有 Batch 帐户的集合。 获取此集合后，可以确定目标区域有多少个帐户。 然后使用 GetQuotasAsync 获取 Batch 帐户配额，并确定可以在该区域中创建多少个帐户（如果有）。
 
 ```csharp
 // Get a collection of all Batch accounts within the subscription
@@ -105,7 +105,7 @@ Console.WriteLine("Accounts in {0}: {1}", region, accountsInRegion);
 Console.WriteLine("You can create {0} accounts in the {1} region.", quotaResponse.AccountQuota - accountsInRegion, region);
 ```
 
-在上面的代码片段中， `creds` 是 **TokenCredentials** 的实例。 若要查看一个创建此对象的示例，请参阅 GitHub 上的 [AccountManagement](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/AccountManagement) 代码示例。
+在上面的代码片段中，`creds` 是 TokenCredentials 的实例。 若要查看一个创建此对象的示例，请参阅 GitHub 上的 [AccountManagement](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/AccountManagement) 代码示例。
 
 ### <a name="check-a-batch-account-for-compute-resource-quotas"></a>检查 Batch 帐户的计算资源配额
 
@@ -124,7 +124,7 @@ Console.WriteLine("Active job and job schedule quota: {0}", account.Properties.A
 ```
 
 > [!IMPORTANT]
-> 尽管 Azure 订阅和服务有默认配额，但许多限制都可以通过 [在 Azure 门户中请求增加配额来提高](batch-quota-limit.md#increase-a-quota)。
+> 尽管 Azure 订阅和服务有默认配额，但其中许多限制都可以通过在 [Azure 门户请求增加配额](batch-quota-limit.md#increase-a-quota)来提高。
 
 ## <a name="use-azure-ad-with-batch-management-net"></a>将 Azure AD 和 Batch 管理 .NET 配合使用
 
@@ -155,4 +155,4 @@ Batch Management .NET 库是 Azure 资源提供程序客户端，可与 [Azure �
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)（如池、节点、作业和任务）。
-- 了解使用[批处理 .NET 客户端库](quick-run-dotnet.md)或 [Python](quick-run-python.md) 开发支持批处理的应用程序的基本概念。 这些快速入门指南介绍了一个示例应用程序，该应用程序使用 Batch 服务在多个计算节点上执行工作负荷，并使用 Azure 存储进行工作负荷文件暂存和检索。 git kd2-mp-pus
+- 了解使用[批处理 .NET 客户端库](quick-run-dotnet.md)或 [Python](quick-run-python.md) 开发支持批处理的应用程序的基本概念。 这些快速入门介绍了使用 Batch 服务在多个计算节点上执行工作负载的示例应用程序，并说明了如何使用 Azure 存储进行工作负载文件暂存和 retrieval.git pus

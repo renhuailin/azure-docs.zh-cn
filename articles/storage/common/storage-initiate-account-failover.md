@@ -12,10 +12,10 @@ ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97814323"
 ---
 # <a name="initiate-a-storage-account-failover"></a>启动存储帐户故障转移
@@ -34,7 +34,7 @@ ms.locfileid: "97814323"
 请先确保为异地复制配置了存储帐户，然后才能对存储帐户执行帐户故障转移。 你的存储帐户可以使用以下任一冗余选项：
 
 - 异地冗余存储 (GRS) 或读取访问异地冗余存储 (RA-GRS)
-- 区域冗余存储 (GZRS) 或读取访问地域冗余存储 (GZRS) 
+- 异地区域冗余存储 (GZRS) 或读取访问异地区域冗余存储 (RA-GZRS)
 
 有关 Azure 存储冗余的详细信息，请参阅 [Azure 存储冗余](storage-redundancy.md)。
 

@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure CLI 创建、查看和删除系统�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c1c847c7f25e3a656b798e186a408e560b9ee9e6
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98633216"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>使用 Azure CLI 创建、查看和管理事件网格系统主题
@@ -18,8 +18,8 @@ ms.locfileid: "98633216"
 
 在 Cloud Shell 中：
 
-- 如果以前安装了该扩展，请对其进行更新： `az extension update -n eventgrid`
-- 如果你之前未安装该扩展，请安装它：  `az extension add -n eventgrid`
+- 如果之前已安装此扩展，请进行更新：`az extension update -n eventgrid`
+- 如果之前尚未安装此扩展，请安装：`az extension add -n eventgrid`
 
 对于本地安装：
 

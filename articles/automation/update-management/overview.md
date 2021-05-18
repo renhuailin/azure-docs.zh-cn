@@ -3,18 +3,20 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-ms.date: 03/08/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a79be9d879e9ccb7ae4583d0674cf2bb23aafa4
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 62ae2eab33063416fdd6265b14dd8c30da55e174
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485667"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166694"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
 可以使用 Azure 自动化中的更新管理，为 Azure、本地环境和其他云环境中的 Windows 和 Linux 虚拟机管理操作系统更新。 可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。
+
+作为服务提供商，你可能已经将多个客户租户载入了 [Azure Lighthouse](../../lighthouse/overview.md)。 借助 Azure Lighthouse，你可以一次在多个 Azure Active Directory (Azure AD) 中大规模执行操作，从而提高你负责的这些租户上更新管理等管理任务的效率。
 
 > [!NOTE]
 > 不能使用配置了更新管理功能的计算机从 Azure 自动化运行自定义脚本。 此计算机只能运行 Microsoft 签名的更新脚本。
@@ -22,9 +24,9 @@ ms.locfileid: "102485667"
 > [!NOTE]
 > 目前，不支持直接从启用了 Arc 的服务器启用更新管理。 请参阅[从自动化帐户启用更新管理](../../automation/update-management/enable-from-automation-account.md)，以了解要求以及如何为服务器启用更新管理。
 
-若要在 Azure VM 上自动下载并安装可用的关键修补程序和安全修补程序 ，请查看适用于 Windows VM 的[自动 VM 来宾修补](../../virtual-machines/windows/automatic-vm-guest-patching.md)。
+若要在 Azure VM 上自动下载并安装可用的关键修补程序和安全修补程序 ，请查看适用于 Windows VM 的[自动 VM 来宾修补](../../virtual-machines/automatic-vm-guest-patching.md)。
 
-在部署更新管理并启用计算机进行管理之前，请确保你了解以下部分中的信息。  
+在部署更新管理并启用计算机进行管理之前，请确保你了解以下部分中的信息。
 
 ## <a name="about-update-management"></a>关于更新管理
 
@@ -40,7 +42,7 @@ ms.locfileid: "102485667"
 
 ![更新管理工作流](./media/overview/update-mgmt-updateworkflow.png)
 
-更新管理可用于在同一租户的多个订阅中以原生方式部署计算机。
+更新管理可用于以本机方式部署到同一租户中的多个订阅中的计算机，或使用 [Azure 委派资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)跨租户进行部署。
 
 发布包后，Linux 计算机需要 2-3 小时才会显示修补程序以供评估。 对于 Windows 计算机，发布后，需要 12-15 小时才会显示修补程序以供评估。 当计算机完成更新合规性扫描时，代理会将信息批量转发到 Azure Monitor 日志。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。 对于 Linux 计算机，符合性扫描默认情况下每小时执行一次。 如果 Log Analytics 代理重启，则会在 15 分钟内启动符合性扫描。
 
@@ -76,8 +78,8 @@ ms.locfileid: "102485667"
 |---------|---------|
 |Windows Server 2019（包括 Server 核心的数据中心/标准）<br><br>Windows Server 2016（不包括 Server 核心的数据中心/标准）<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2（RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统进行评估和修补。 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](../automation-windows-hrw-install.md)。 |
-|CentOS 6 和 7 (x64)      | Linux 代理需要具有访问更新存储库的权限。 基于分类的修补需要借助 `yum` 来返回 CentOS 的 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅 [Linux 上的更新分类](view-update-assessments.md#linux)。          |
-|Red Hat Enterprise 6 和 7 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
+|CentOS 6、7 和 8 (x64)      | Linux 代理需要具有访问更新存储库的权限。 基于分类的修补需要借助 `yum` 来返回 CentOS 的 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅 [Linux 上的更新分类](view-update-assessments.md#linux)。          |
+|Red Hat Enterprise 6、7 和 8 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 12、15 和 15.1 (x64)     | Linux 代理需要具有访问更新存储库的权限。 对于 SUSE 15.x，需要在计算机上安装 Python 3。      |
 |Ubuntu 14.04 LTS、16.04 LTS 和 18.04 LTS (x64)      |Linux 代理需要具有访问更新存储库的权限。         |
 

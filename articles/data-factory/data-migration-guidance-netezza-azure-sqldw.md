@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
 ms.openlocfilehash: 36ca7b709e0ec945f1fb4a9a8b745d20e6a58fe1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100367769"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure 
@@ -49,7 +49,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 在单个复制活动运行中，Azure 数据工厂具有内置的重试机制，因此，它可以处理数据存储或底层网络中特定级别的暂时性故障。
 
-使用 Azure 数据工厂复制活动在源与接收器数据存储之间复制数据时，可通过两种方式处理不兼容的行。 可以中止复制活动并使其失败，或者可以通过跳过不兼容的数据行来继续复制剩余的数据。 此外，若要了解失败的原因，可以在 Azure Blob 存储或 Azure Data Lake Store 中记录不兼容的行，修复数据源上的数据，并重试复制活动。
+使用 Azure 数据工厂复制活动在源与接收器数据存储之间复制数据时，可通过两种方式处理不兼容的行。 可以中止复制活动并使其失败，或者可以通过跳过不兼容的数据行来继续复制剩余的数据。 此外，若要了解失败的原因，可在 Azure Blob 存储或 Azure Data Lake Store 中记录不兼容的行，修复数据源中的数据，然后重试复制活动。
 
 ## <a name="network-security"></a>网络安全 
 

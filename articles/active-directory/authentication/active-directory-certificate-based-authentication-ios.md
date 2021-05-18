@@ -11,10 +11,10 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5f9b96fe9ee0781803bbbd86316e8783b60a6f1
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861317"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上 Azure Active Directory 基于证书的身份验证
@@ -26,7 +26,7 @@ ms.locfileid: "96861317"
 
 如果使用证书，则无需在移动设备上的某些邮件和 Microsoft Office 应用程序中输入用户名和密码组合。
 
-本文详细介绍了在 iOS 设备上配置 CBA 时的要求和支持的方案。 CBA for iOS 可跨 Azure 公有云、Microsoft 政府云、Microsoft 云德国和 Microsoft Azure 中国世纪互联。
+本文详细介绍了在 iOS 设备上配置 CBA 时的要求和支持的方案。 适用于 iOS 的 CBA 可用于 Azure 公有云、Microsoft 政府云、德国 Microsoft 云和 Microsoft Azure 中国世纪互联。
 
 ## <a name="microsoft-mobile-applications-support"></a>Microsoft 移动应用程序支持
 

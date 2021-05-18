@@ -12,10 +12,10 @@ ms.author: aamalvea
 ms.reviewer: sstein
 ms.date: 1/21/2021
 ms.openlocfilehash: d38ac9731959cf9a23052753b09c9e7819846705
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101664111"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>规划在 Azure SQL 数据库和 Azure SQL 托管实例中的 Azure 维护事件
@@ -31,11 +31,11 @@ Azure SQL 数据库和 Azure SQL 托管实例为每个数据库维护了一组�
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>计划内维护事件期间会发生什么
 
-维护事件可能产生单个或多个故障转移，具体取决于维护事件开始时主要副本和次要副本的集合。 平均而言，每个计划内维护事件会出现 1.7 个故障转移。 重新配置/故障转移通常在 30 秒内完成。 平均8秒。 如果应用程序处于已连接状态，则必须重新连接至新的数据库主要副本。 如果在进行连接时数据库正在进行重新配置，且新的主副本尚未处于联机状态，会显示错误 40613（数据库不可用）： *“服务器 '{servername}' 上的数据库 '{databasename}' 当前不可用。请稍后重试连接”错误。* 如果数据库有一个长时间运行的查询，重新配置期间此查询会中断，需要重新启动。
+维护事件可能产生单个或多个故障转移，具体取决于维护事件开始时主要副本和次要副本的集合。 平均而言，每个计划内维护事件会出现 1.7 个故障转移。 重新配置/故障转移通常在 30 秒内完成。 平均值为 8 秒。 如果应用程序处于已连接状态，则必须重新连接至新的数据库主要副本。 如果在进行连接时数据库正在进行重新配置，且新的主副本尚未处于联机状态，会显示错误 40613（数据库不可用）： *“服务器 '{servername}' 上的数据库 '{databasename}' 当前不可用。请稍后重试连接”错误。* 如果数据库有一个长时间运行的查询，重新配置期间此查询会中断，需要重新启动。
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>如何模拟计划内维护事件
 
-在部署到生产环境之前，确保客户端应用程序对于维护事件是可复原的，这有助于降低应用程序故障的风险，并可帮助提升最终用户的应用程序可用性。 可以通过 PowerShell、CLI 或 REST API [启动手动故障转移](https://aka.ms/mifailover-techblog) ，在计划内维护事件期间测试客户端应用程序的行为。 这将生成与使主要副本脱机的维护事件相同的行为。
+在部署到生产环境之前，确保客户端应用程序对于维护事件是可复原的，这有助于降低应用程序故障的风险，并可帮助提升最终用户的应用程序可用性。 可在计划内维护事件期间通过 PowerShell、CLI 或 REST API [启动手动故障转移](https://aka.ms/mifailover-techblog)来测试客户端应用程序的行为。 这将生成与使主要副本脱机的维护事件相同的行为。
 
 ## <a name="retry-logic"></a>重试逻辑
 
@@ -45,12 +45,12 @@ Azure SQL 数据库和 Azure SQL 托管实例为每个数据库维护了一组�
 
 如果数据库发生登录失败的情况，请在 [Azure 门户](https://portal.azure.com)的[资源运行状况](../../service-health/resource-health-overview.md#get-started)窗口中查看当前状态。 运行状况历史记录部分包含每个事件（如果有）的停机原因。
 
-## <a name="maintenance-window-feature"></a>维护窗口功能
+## <a name="maintenance-window-feature"></a>维护时段功能
 
-维护时段功能允许配置适用于符合条件的 Azure SQL 数据库和 SQL 托管实例的可预测维护时段计划。 有关详细信息，请参阅 [维护时段](maintenance-window.md) 。
+维护时段功能允许配置适用于符合条件的 Azure SQL 数据库和 SQL 托管实例的可预测维护时段计划。 有关详细信息，请参阅[维护时段](maintenance-window.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解 Azure SQL 数据库和 Azure SQL 托管实例的[资源运行状况](resource-health-to-troubleshoot-connectivity.md)。
 - 有关重试逻辑的详细信息，请参阅[针对暂时性错误的重试逻辑](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。
-- 用 [维护时段](maintenance-window.md) 功能配置维护时段计划。
+- 使用[维护时段](maintenance-window.md)功能配置维护时段计划。

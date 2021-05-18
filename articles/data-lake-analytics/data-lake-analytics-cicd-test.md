@@ -8,19 +8,19 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015224"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>测试 Azure Data Lake Analytics 代码
 
-Azure Data Lake 提供了 [U SQL](data-lake-analytics-u-sql-get-started.md) 语言。 U-SQL 将声明性 SQL 与命令式 c # 组合在一起，以任意比例处理数据。 在本文档中，将了解如何为 U SQL 和扩展的 c # 用户定义的运算符 (UDO) 代码创建测试用例。
+Azure Data Lake 提供了 [U-SQL](data-lake-analytics-u-sql-get-started.md) 语言。 U-SQL 将声明性 SQL 与命令性 C# 相结合，用于处理任何规模的数据。 此文档介绍如何为 U-SQL 和扩展的 C# 用户定义运算符 (UDO) 代码创建测试用例。
 
 ## <a name="test-u-sql-scripts"></a>测试 U-SQL 脚本
 
-为可执行代码在 Azure 中或本地计算机上运行，编译和优化了 U SQL 脚本。 编译和优化过程将整个 U-SQL 脚本视为一个整体。 不能对每个语句执行传统的单元测试。 但是，通过使用 U-SQL 测试 SDK 和本地运行 SDK，可以执行脚本级测试。
+U-SQL 脚本针对可执行代码进行编译和优化，以便在 Azure 中或本地计算机上运行。 编译和优化过程将整个 U-SQL 脚本视为一个整体。 无法为每个语句执行传统的单元测试。 但是，通过使用 U-SQL 测试 SDK 和本地运行 SDK，可以执行脚本级测试。
 
 ### <a name="create-test-cases-for-u-sql-script"></a>为 U-SQL 脚本创建测试用例
 
@@ -34,35 +34,35 @@ Azure Data Lake 提供了 [U SQL](data-lake-analytics-u-sql-get-started.md) 语�
 
 ### <a name="manage-the-test-data-source"></a>管理测试数据源
 
-在测试 U-SQL 脚本时，需要使用测试输入文件。 若要管理测试数据，请在 **解决方案资源管理器** 中右键单击 "U-SQL" 项目，然后选择 " **属性**"。 您可以输入 **测试数据源** 中的源。
+在测试 U-SQL 脚本时，需要使用测试输入文件。 若要管理测试数据，请在“解决方案资源管理器”中右键单击 U-SQL 项目，然后选择“属性” 。 可以在“测试数据源”中输入源。
 
 ![针对 Visual Studio 的 Data Lake 工具 - 配置项目测试数据源](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
-在 `Initialize()` U SQL 测试 SDK 中调用接口时，会在测试项目的工作目录下创建一个临时本地数据根文件夹。 测试数据源文件夹中的所有文件和文件夹都将在运行 U SQL 脚本测试用例之前复制到临时本地数据根文件夹。 通过使用分号拆分测试数据文件夹路径，可以添加更多测试数据源文件夹。
+在调用 U-SQL 测试 SDK 中的 `Initialize()` 接口时，会在测试项目的工作目录下创建临时本地数据根文件夹。 在运行 U-QL 脚本测试用例之前，测试数据源文件夹中的所有文件和文件夹都会复制到这个临时本地数据根文件夹中。 通过使用分号拆分测试数据文件夹路径，可以添加更多测试数据源文件夹。
 
 ### <a name="manage-the-database-environment-for-testing"></a>管理用于测试的数据库环境
 
-如果你的 U SQL 脚本使用或查询了 U-SQL 数据库对象，则在运行 U SQL 测试用例之前，需要初始化数据库环境。 调用存储过程时，此方法可能是必需的。 U-SQL 测试 SDK 中的 `Initialize()` 接口可帮助将 U-SQL 项目引用的所有数据库部署到测试项目工作目录中的临时本地数据根文件夹。
+如果 U-SQL 脚本使用或查询 U-SQL 数据库对象，则需要在运行 U-SQL 测试用例之前先初始化数据库环境。 在调用存储过程时，可能需要使用此方法。 U-SQL 测试 SDK 中的 `Initialize()` 接口可帮助将 U-SQL 项目引用的所有数据库部署到测试项目工作目录中的临时本地数据根文件夹。
 
-有关如何管理 u sql 项目的 SQL 数据库项目引用的详细信息，请参阅 [引用 u sql 数据库项目](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)。
+若要详细了解如何管理 U-SQL 项目的 U-SQL 数据库项目引用，请参阅[引用 U-SQL 数据库项目](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)。
 
 ### <a name="verify-test-results"></a>验证测试结果
 
-`Run()` 接口返回作业执行结果。 *0* 表示成功， *1* 表示失败。 也可以使用 C# 断言函数来验证输出。
+`Run()` 接口返回作业执行结果。 0 表示成功，1 表示失败 。 也可以使用 C# 断言函数来验证输出。
 
 ### <a name="run-test-cases-in-visual-studio"></a>在 Visual Studio 中运行测试用例
 
-U-SQL 脚本测试项目是基于 C# 单元测试框架生成的。 生成项目后，选择 "**测试**  >  **Windows**  >  **测试资源管理器**"。 可以从 **测试资源管理器** 运行测试用例。 或者，在单元测试中右键单击 .cs 文件，然后选择 " **运行测试**"。
+U-SQL 脚本测试项目是基于 C# 单元测试框架生成的。 在生成项目后，请选择“测试” > “Windows” > “测试资源管理器”  。 可以从“测试资源管理器”运行测试用例。 也可以右键单击单元测试中的 .cs 文件并选择“运行测试”。
 
 ## <a name="test-c-udos"></a>测试 C# UDO
 
 ### <a name="create-test-cases-for-c-udos"></a>为 C# UDO 创建测试用例
 
-可以使用 c # 单元测试框架来测试 (Udo) 的 c # 用户定义运算符。 在测试 UDO 时，需要准备相应的 IRowset 对象作为输入。
+可以使用 C# 单元测试框架来测试 C# 用户定义运算符 (UDO)。 在测试 UDO 时，需要准备相应的 IRowset 对象作为输入。
 
-可以通过两种方式来创建 **IRowset** 对象：
+有两种创建 IRowset 对象的方法：
 
-- 从文件加载数据以创建 **IRowset**：
+- 从文件中加载数据来创建 IRowset：
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -78,7 +78,7 @@ U-SQL 脚本测试项目是基于 C# 单元测试框架生成的。 生成项目
     IRowset rowset = UnitTestHelper.GetRowsetFromFile(@"processor.txt", schema, output.AsReadOnly(), discardAdditionalColumns: true, rowDelimiter: null, columnSeparator: '\t');
     ```
 
-- 使用数据集合中的数据创建 **IRowset**：
+- 使用数据集合中的数据来创建 IRowset：
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -101,43 +101,43 @@ U-SQL 脚本测试项目是基于 C# 单元测试框架生成的。 生成项目
 
 ### <a name="verify-test-results"></a>验证测试结果
 
-调用 UDO 函数后，可以使用 C# 断言函数，通过架构和 Rowset 值验证来验证结果。 可以向解决方案中添加一个 **U SQL c # UDO 单元测试项目** 。 为此，请在 Visual Studio 中选择 " **文件 > 新的 > 项目** 。
+调用 UDO 函数后，可以使用 C# 断言函数，通过架构和 Rowset 值验证来验证结果。 可以将 U-SQL C# UDO 单元测试项目添加到解决方案。 为此，请在 Visual Studio 中选择“文件”>“新建”>“项目”。
 
 ### <a name="run-test-cases-in-visual-studio"></a>在 Visual Studio 中运行测试用例
 
-生成项目后，选择 "**测试**  >  **Windows**  >  **测试资源管理器**"。 可以从 **测试资源管理器** 运行测试用例。 或者，在单元测试中右键单击 .cs 文件，然后选择 " **运行测试**"。
+在生成项目后，请选择“测试” > “Windows” > “测试资源管理器”  。 可以从“测试资源管理器”运行测试用例。 也可以右键单击单元测试中的 .cs 文件并选择“运行测试”。
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>在 Azure Pipelines 中运行测试用例<a name="run-test-cases-in-azure-devops"></a>
 
-U-SQL 脚本测试项目和 C# UDO 测试项目都继承 C# 单元测试项目。 Azure Pipelines 中的 [Visual Studio 测试任务](/azure/devops/pipelines/test/getting-started-with-continuous-testing) 可以运行这些测试用例。
+U-SQL 脚本测试项目和 C# UDO 测试项目都继承 C# 单元测试项目。 Azure Pipelines 中的 [Visual Studio 测试任务](/azure/devops/pipelines/test/getting-started-with-continuous-testing)可以运行这些测试用例。
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>在 Azure Pipelines 中运行 U-SQL 测试用例
 
-对于 U SQL 测试，请确保在 `CPPSDK` 生成计算机上加载，然后将 `CPPSDK` 路径传递给 `USqlScriptTestRunner(cppSdkFolderFullPath: @"")` 。
+对于 U-SQL 测试，请确保在生成计算机上加载 `CPPSDK`，然后将 `CPPSDK` 路径传递到 `USqlScriptTestRunner(cppSdkFolderFullPath: @"")`。
 
 #### <a name="what-is-cppsdk"></a>什么是 CPPSDK？
 
-CPPSDK 是包含 Microsoft Visual C++ 14 和 Windows SDK 10.0.10240.0 的包。 此包包含 U SQL 运行时所需的环境。 可以在针对 Visual Studio 的 Azure Data Lake 工具安装文件夹下获取此包：
+CPPSDK 是包含 Microsoft Visual C++ 14 和 Windows SDK 10.0.10240.0 的包。 此包中包含了 U-SQL 运行时需要的环境。 可以在针对 Visual Studio 的 Azure Data Lake 工具安装文件夹下获取此包：
 
 - 对于 Visual Studio 2015，它位于 `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK` 下
 - 对于 Visual Studio 2017，它位于 `C:\Program Files (x86)\Microsoft Visual Studio\2017\<Visual Studio Edition>\SDK\ScopeCppSDK` 下
-- 对于 Visual Studio 2019，它在 `C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK`
+- 对于 Visual Studio 2019，它位于 `C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK` 下
 
-#### <a name="prepare-cppsdk-in-the-azure-pipelines-build-agent"></a>准备 Azure Pipelines 生成代理中的 CPPSDK
+#### <a name="prepare-cppsdk-in-the-azure-pipelines-build-agent"></a>在 Azure Pipelines 生成代理中准备 CPPSDK
 
 在 Azure Pipelines 中准备 CPPSDK 依赖项的最常见方法如下：
 
 1. 压缩包含 CPPSDK 库的文件夹。
 
-1. 将 .zip 文件签入到源代码管理系统。 .Zip 文件可确保签入 CPPSDK 文件夹下的所有库，以便文件不会被忽略 `.gitignore` 。
+1. 将 .zip 文件签入到源代码管理系统。 该 .zip 文件可确保 CPPSDK 文件夹下的所有库都会签入，文件不会因 `.gitignore` 文件而被忽略。
 
 1. 解压缩生成管道中的 .zip 文件。
 
-1. 指向 `USqlScriptTestRunner` 生成计算机上的此解压文件夹。
+1. 将 `USqlScriptTestRunner` 指向生成计算机上这个已解压缩的文件夹。
 
-### <a name="run-c-udo-test-cases-in-azure-pipelines"></a>在 Azure Pipelines 中运行 c # UDO 测试用例
+### <a name="run-c-udo-test-cases-in-azure-pipelines"></a>在 Azure Pipelines 中运行 C# UDO 测试用例
 
-对于 c # UDO 测试，请确保引用 Udo 所需的以下程序集。
+对于 C# UDO 测试，请确保引用 UDO 所需的以下程序集。
 
 - Microsoft.Analytics.Interfaces
 - Microsoft.Analytics.Types
@@ -149,4 +149,4 @@ CPPSDK 是包含 Microsoft Visual C++ 14 和 Windows SDK 10.0.10240.0 的包。 
 
 - [如何为 Azure Data Lake Analytics 设置 CI/CD 管道](data-lake-analytics-cicd-overview.md)
 - [在本地计算机上运行 U-SQL 脚本](data-lake-analytics-data-lake-tools-local-run.md)
-- [使用 U-SQL 数据库项目开发 SQL 数据库](data-lake-analytics-data-lake-tools-develop-usql-database.md)
+- [使用 U-SQL 数据库项目开发 U-SQL 数据库](data-lake-analytics-data-lake-tools-develop-usql-database.md)

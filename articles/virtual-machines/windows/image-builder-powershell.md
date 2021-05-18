@@ -10,10 +10,10 @@ ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 90d09763f2c9e167d6a0a34adbbc444ebad14c46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101693452"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>预览版：使用 Azure 映像生成器的 PowerShell 创建 Windows VM
@@ -171,7 +171,7 @@ New-AzRoleAssignment @RoleAssignParams
 ```
 
 > [!NOTE]
-> 如果收到此错误：“New-AzRoleDefinition: 已超出角色定义限制。无法创建更多的角色定义。”请参阅[排查 Azure RBAC 问题](../../role-based-access-control/troubleshooting.md)。
+> 如果收到错误消息：“New-AzRoleDefinition: 已超出角色定义限制。无法创建更多角色定义”，请参阅 [Azure RBAC 故障排除](../../role-based-access-control/troubleshooting.md)。
 
 ## <a name="create-a-shared-image-gallery"></a>创建共享映像库
 
@@ -278,7 +278,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName $imageTemplateName -ResourceGroupN
   Select-Object -Property Name, LastRunStatusRunState, LastRunStatusMessage, ProvisioningState
 ```
 
-在后台，映像生成器还会在您的订阅中创建一个暂存资源组。 此资源组用于生成映像。 其格式为：`IT_<DestinationResourceGroup>_<TemplateName>`。
+在后台，映像生成器还会在您的订阅中创建一个暂存资源组。 此资源组用于映像生成过程。 其格式为：`IT_<DestinationResourceGroup>_<TemplateName>`。
 
 > [!WARNING]
 > 请勿直接删除暂存资源组。 删除映像模板项目会删除暂存资源组。

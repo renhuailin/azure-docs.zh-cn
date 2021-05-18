@@ -12,10 +12,10 @@ ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: fe31e1bf095d15cfdd7945288486cb866ace8246
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94840604"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 OAuth 2.0 隐式流的单页登录
@@ -30,7 +30,7 @@ ms.locfileid: "94840604"
 
 某些框架（如 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)）仅支持隐式授权流。 在这些情况下，Azure Active Directory B2C (Azure AD B2C) 支持 OAuth 2.0 授权隐式授权流。 有关该流的说明，请参阅 [OAuth 2.0 规范第 4.2 节](https://tools.ietf.org/html/rfc6749)。 在隐式流中，应用直接从 Azure Active Directory (Azure AD) 授权终结点接收令牌，无需任何服务器到服务器的交换。 所有身份验证逻辑和会话处理全部在 JavaScript 客户端中通过页面重定向或弹框执行。
 
-Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了简单的身份验证和授权。 Azure AD B2C 引入了[策略参数](user-flow-overview.md)。 通过该策略参数，可以使用 OAuth 2.0 向应用添加策略，例如注册、登录和配置文件管理用户流。 在本文的示例 HTTP 请求中，将使用 **{租户}. onmicrosoft** 作为示例。 如果你有一个租户并且还创建了用户流，请将 `{tenant}` 替换为该租户的名称。
+Azure AD B2C 扩展了标准 OAuth 2.0 隐式流，使其功能远远超出了简单的身份验证和授权。 Azure AD B2C 引入了[策略参数](user-flow-overview.md)。 通过该策略参数，可以使用 OAuth 2.0 向应用添加策略，例如注册、登录和配置文件管理用户流。 在本文的示例 HTTP 请求中，使用了 {tenant}.onmicrosoft.com 作为示例。 如果你有一个租户并且还创建了用户流，请将 `{tenant}` 替换为该租户的名称。
 
 隐式登录流看起来类似于下图。 本文后面将详细说明每个步骤。
 
@@ -141,7 +141,7 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/disco
 
 * 确保用户或组织已注册应用。
 * 确保用户拥有正确的授权和权限。
-* 确保发生了某种程度的身份验证，例如通过使用 Azure AD 多重身份验证。
+* 确保通过某种方式（例如，通过 Azure AD 多重身份验证）执行了一定强度的身份验证。
 
 有关 ID 令牌中声明的详细信息，请参阅 [Azure AD B2C 令牌参考](tokens-overview.md)。
 

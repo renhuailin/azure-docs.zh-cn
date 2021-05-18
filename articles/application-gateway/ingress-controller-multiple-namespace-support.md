@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: c13c4410852d97f0bf4548578f40a5cc560804d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94874587"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>在使用应用程序网关入口控制器的 AKS 群集中启用多命名空间支持
 
 ## <a name="motivation"></a>动机
-Kubernetes [命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)使 Kubernetes 群集可分区并分配到较大团队的子组。 然后，这些子团队可以部署和管理基础结构，并对资源、安全、配置等进行更精细的控制。Kubernetes 允许在每个命名空间中独立定义一个或多个入口资源。
+Kubernetes [命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)使 Kubernetes 群集可分区并分配到较大团队的子组。 然后，这些子团队可以通过更精细地控制资源、安全性、配置等来部署和管理基础结构。Kubernetes 允许在每个命名空间内独立定义一个或多个入口资源。
 
 从版本 0.7 开始，[Azure 应用程序网关 Kubernetes 入口控制器](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/README.md) (AGIC) 可以从多个命名空间引入事件，并可以观察这些命名空间。 如果 AKS 管理员决定使用[应用程序网关](https://azure.microsoft.com/services/application-gateway/)作为入口，则所有命名空间将使用相同的应用程序网关实例。 入口控制器的单个安装将会监视可访问的命名空间，并配置关联的应用程序网关。
 

@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 337a9f3f2ea25e5a4d4fa4204a0f3fa4dcc9369b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: a6247116cdf579691e48883231f57712da36c4ad
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940645"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104864561"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>为 Visual Studio Code 设置 PySpark 交互式环境
 
@@ -26,7 +26,7 @@ ms.locfileid: "98940645"
    * （可选）使用 `python --version` 和 `pip --version` 命令来验证是否成功安装了 Python 和 pip。 
 
      > [!NOTE]
-     > 建议手动安装 Python，而不是使用 macOS 默认版本。
+     > 建议手动而不是使用 macOS 默认版本安装 Python。
 
 2. 通过运行以下命令，安装 virtualenv。
 
@@ -38,7 +38,7 @@ ms.locfileid: "98940645"
 
 在 Linux 上，如果遇到下面的错误消息，请通过运行以下两个命令来安装所需的包。
 
-   ![安装适用于 Python 的 libkrb5 包](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+   :::image type="content" source="./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png" alt-text="安装适用于 Python 的 libkrb5 包" border="true":::
 
 ```bash
 sudo apt-get install libkrb5-dev

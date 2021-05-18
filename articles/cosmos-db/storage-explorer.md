@@ -8,10 +8,10 @@ ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
 ms.openlocfilehash: 5b09ce48226b3c31efce4966ec776c10931cc391
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96348647"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器管理 Azure Cosmos DB 资源
@@ -22,7 +22,7 @@ ms.locfileid: "96348647"
 使用相同的工具在一个位置管理不同的 Azure 实体。 可管理 Azure Cosmos DB 实体、操作数据、更新存储过程和触发器，还可更新其他 Azure 实体（例如存储 Blob 和队列）。 Azure 存储资源管理器支持为 SQL、MongoDB、图形和表 API 配置的 Cosmos 帐户。
 
 > [!NOTE]
-> 与存储资源管理器的 Azure Cosmos DB 集成已弃用。 任何现有功能至少在一年内不会从此版本中删除。 应改为使用 [Azure 门户](https://portal.azure.com/)、 [azure 门户桌面应用](https://portal.azure.com/App/Download) 或独立 [Azure Cosmos DB 资源管理器](data-explorer.md) 。 替代选项包含存储资源管理器当前不支持的许多新功能。
+> 与存储资源管理器的 Azure Cosmos DB 集成已弃用。 任何现有功能至少在一年内不会从此版本中删除。 应改为使用 [Azure 门户](https://portal.azure.com/)、[Azure 门户桌面应用](https://portal.azure.com/App/Download)或独立的 [Azure Cosmos DB 资源管理器](data-explorer.md)。 替代选项包含存储资源管理器当前不支持的许多新功能。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -73,7 +73,7 @@ ms.locfileid: "96348647"
       :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="“连接到 Cosmos DB”窗口的屏幕截图，其中显示 API 下拉菜单、“连接字符串”框和“帐户标签”框。":::
 
 > [!NOTE]
-> 如果 Azure 存储资源管理器显示 Azure Cosmos DB 连接字符串的格式无效，请确保连接字符串的末尾有一个分号 (`;`) 。 有效 Azure Cosmos DB 连接字符串的示例如下： `AccountEndpoint=https://accountname.documents.azure.com:443;AccountKey=accountkey==;`
+> 如果 Azure 存储资源管理器显示 Azure Cosmos DB 连接字符串的格式无效，请确保连接字符串的末尾有一个分号 (`;`)。 有效 Azure Cosmos DB 连接字符串的示例如下：`AccountEndpoint=https://accountname.documents.azure.com:443;AccountKey=accountkey==;`
 
 ## <a name="use-a-local-emulator-to-connect-to-azure-cosmos-db"></a>使用本地模拟器连接到 Azure Cosmos DB
 
@@ -357,5 +357,5 @@ ms.locfileid: "96348647"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 观看此视频以了解如何在 Azure 存储资源管理器中使用 Azure Cosmos DB： [使用 Azure 存储资源管理器中的 Azure Cosmos DB](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。
+* 观看此视频，了解如何在 Azure 存储资源管理器中使用 Azure Cosmos DB：[在 Azure 存储资源管理器中使用 Azure Cosmos DB](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。
 * 在[存储资源管理器入门](../vs-azure-tools-storage-manage-with-storage-explorer.md)中了解有关存储资源管理器和连接更多服务的详细信息。

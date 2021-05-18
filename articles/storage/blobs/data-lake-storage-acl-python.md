@@ -1,6 +1,6 @@
 ---
-title: 使用 Python 管理 Azure Data Lake Storage Gen2 中的 Acl
-description: 使用 Python 管理访问控制列表 (ACL) 在已启用分层命名空间 (HNS) 的存储帐户中。
+title: 使用 Python 管理 Azure Data Lake Storage Gen2 中的 ACL
+description: 使用 Python 在启用了分层命名空间 (HNS) 的存储帐户中管理访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
 ms.date: 02/17/2021
@@ -10,19 +10,19 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
 ms.openlocfilehash: ba864aa1aa2462f21e05ab5e779c8e715d6bb973
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100653992"
 ---
-# <a name="use-python-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的 Acl
+# <a name="use-python-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的 ACL
 
-本文介绍如何使用 Python 获取、设置和更新目录和文件的访问控制列表。 
+本文介绍如何使用 Python 来获取、设置和更新目录和文件的访问控制列表。 
 
-ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父目录的现有子项目上以递归方式添加、更新和删除 Acl，而不必为每个子项目单独进行这些更改。 
+ACL 继承已可用于在父目录下创建的新子项。 但是你也可以为父目录的现有子项以递归方式添加、更新和删除 ACL，而不必为每个子项单独进行这些更改。 
 
-[包 (Python 包索引) ](https://pypi.org/project/azure-storage-file-datalake/)  | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  | [递归 ACL 示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)  | [API 参考](/python/api/azure-storage-file-datalake/azure.storage.filedatalake)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)
+[包（Python 包索引）](https://pypi.org/project/azure-storage-file-datalake/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [递归 ACL 示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py) | [API 参考](/python/api/azure-storage-file-datalake/azure.storage.filedatalake) | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,7 +36,7 @@ ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父
 
   - 一个预配的 Azure Active Directory (AD) [安全主体](../../role-based-access-control/overview.md#security-principal)，它在目标容器父资源组或订阅范围中分配有[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色。  
 
-  - 你打算将 ACL 设置应用到的目标容器或目录的拥有用户。 若要以递归方式设置 Acl，这包括目标容器或目录中的所有子项。
+  - 计划将 ACL 设置应用到的目标容器或目录的拥有用户。 为了以递归方式设置 ACL，这包括目标容器或目录中的所有子项。
   
   - 存储帐户密钥。
 
@@ -64,7 +64,7 @@ from azure.storage.filedatalake._models import ContentSettings
 ### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory (AD) 进行连接
 
 > [!NOTE]
-> 若要使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们的影响，请参阅  [Azure Data Lake Storage Gen2 中的访问控制模型](./data-lake-storage-access-control-model.md)。
+> 若要使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改这些权限所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制模型](./data-lake-storage-access-control-model.md)。
 
 可以使用[适用于 Python 的 Azure 标识客户端库](https://pypi.org/project/azure-identity/)，通过 Azure AD 对应用程序进行身份验证。
 
@@ -94,9 +94,9 @@ from azure.storage.filedatalake._models import ContentSettings
 
 - 将 `storage_account_key` 占位符值替换为存储帐户访问密钥。
 
-## <a name="set-acls"></a>设置 Acl
+## <a name="set-acls"></a>设置 ACL
 
-设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的 [更新 acl](#update-acls-recursively) 部分。  
+设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的[更新 ACL](#update-acls-recursively) 部分。  
 
 本节介绍如何完成下列操作：
 
@@ -123,9 +123,9 @@ from azure.storage.filedatalake._models import ContentSettings
 
 ## <a name="set-acls-recursively"></a>以递归方式设置 ACL
 
-设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的 [更新 acl](#update-acls-recursively) 部分。
+设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的[以递归方式更新 ACL](#update-acls-recursively) 部分。
 
-通过调用 **DataLakeDirectoryClient.set_access_control_recursive** 方法以递归方式设置 acl。
+通过调用 DataLakeDirectoryClient.set_access_control_recursive 方法，以递归方式设置 ACL。
 
 如果要设置 **默认** ACL 条目，请将字符串 `default:` 添加到每个 ACL 条目字符串的开头。
 
@@ -139,11 +139,11 @@ ACL 的条目为所有者用户提供读取、写入和执行权限，仅为负�
 
 若要查看通过指定批大小以递归方式成批处理 ACL 的示例，请参阅 python [示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)。
 
-## <a name="update-acls-recursively"></a>以递归方式更新 Acl
+## <a name="update-acls-recursively"></a>以递归方式更新 ACL
 
-更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是更新 ACL，请参阅本文的 [设置 acl](#set-acls) 部分。
+更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是更新它，请参阅本文的 [设置 ACL](#set-acls) 部分。
 
-若要以递归方式更新 ACL，请使用要更新的 ACL 项创建一个新的 ACL 对象，然后在 "更新 ACL" 操作中使用该对象。 不要获取现有 ACL，只需要提供要更新的 ACL 条目。 通过调用 **DataLakeDirectoryClient.update_access_control_recursive** 方法以递归方式更新 ACL。 如果要更新 **默认** ACL 条目，请将字符串 `default:` 添加到每个 ACL 条目字符串的开头。
+若要以递归方式更新 ACL，请创建包含要更新的 ACL 条目的一个新 ACL 对象，然后在“更新 ACL”操作中使用该对象。 不要获取现有 ACL，只需要提供要更新的 ACL 条目。 通过调用 **DataLakeDirectoryClient.update_access_control_recursive** 方法以递归方式更新 ACL。 如果要更新 **默认** ACL 条目，请将字符串 `default:` 添加到每个 ACL 条目字符串的开头。
 
 此示例以写入权限更新某个 ACL 条目。
 
@@ -155,7 +155,7 @@ ACL 的条目为所有者用户提供读取、写入和执行权限，仅为负�
 
 ## <a name="remove-acl-entries-recursively"></a>以递归方式删除 ACL 条目
 
-可以删除一个或多个 ACL 条目。 若要以递归方式删除 ACL 项，请为要删除的 ACL 项创建一个新的 ACL 对象，然后在 "删除 ACL" 操作中使用该对象。 不要获取现有 ACL，只需要提供要删除的 ACL 条目。 
+可以删除一个或多个 ACL 条目。 若要以递归方式删除 ACL 条目，请为要删除的 ACL 条目创建一个新的 ACL 对象，然后在“删除 ACL”操作中使用该对象。 不要获取现有 ACL，只需要提供要删除的 ACL 条目。 
 
 通过调用 **DataLakeDirectoryClient.remove_access_control_recursive** 方法删除 ACL 条目。 如果要删除 **默认** ACL 条目，请将字符串 `default:` 添加到 ACL 条目字符串的开头。 
 

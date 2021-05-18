@@ -4,10 +4,10 @@ description: 介绍在 Azure 资源管理器模板（ARM 模板）中检索值�
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.openlocfilehash: dbda5c635a5189158424363c341b269d331a5fdc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101707313"
 ---
 # <a name="arm-template-functions"></a>ARM 模板函数
@@ -36,7 +36,7 @@ ms.locfileid: "101707313"
 
 ## <a name="any-function"></a>任何函数
 
-[Any 函数](template-functions-any.md)在 Bicep 中可用以帮助解决有关数据类型警告的问题。
+Bicep 中提供 [any 函数](template-functions-any.md)可帮助解决有关数据类型警告的问题。
 
 ## <a name="array-functions"></a>数组函数
 

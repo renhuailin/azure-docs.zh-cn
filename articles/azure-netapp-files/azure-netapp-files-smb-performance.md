@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1ec58b056bd610773500c8ace1fb12d268b980e0
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91929450"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726711"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>有关 Azure NetApp 文件的 SMB 性能的常见问题解答
 
@@ -153,6 +153,9 @@ SMB 签名对 SMB 性能有负面影响。 在性能下降的各种可能原因�
 
 ![显示 SMB 签名对性能造成的影响的图表。](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
 
+## <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a>SMB 加密对客户端工作负载的预期影响有哪些？
+
+请参阅 [SMB 加密常见问题解答](azure-netapp-files-faqs.md#smb_encryption_impact)。
 
 ## <a name="next-steps"></a>后续步骤  
 

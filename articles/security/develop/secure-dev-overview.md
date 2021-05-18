@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: baaa311620f5c10948aa3494002ce359cc5dab28
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94517166"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Azure 上的安全开发最佳做法
@@ -29,11 +29,11 @@ ms.locfileid: "94517166"
 
 ## <a name="overview"></a>概述
 
-安全性是任何应用程序的最重要方面之一，但这并不是一件简单的事情。 幸运的是，Azure 提供了许多服务，可帮助你保护云中的应用程序。 这些文章介绍了可在软件开发生命周期各阶段实施的活动和 Azure 服务，以帮助你开发更安全的代码以及在云中部署更安全的应用程序。
+对于任何应用程序，安全性都是最重要的方面之一，但提供良好的安全性并非易事。 幸运的是，Azure 提供了许多服务，可帮助你保护云中的应用程序。 这些文章介绍了可在软件开发生命周期各阶段实施的活动和 Azure 服务，以帮助你开发更安全的代码以及在云中部署更安全的应用程序。
 
 ## <a name="security-development-lifecycle"></a>安全开发生命周期
 
-遵循安全软件开发的最佳做法要求将安全性集成到软件开发生命周期的每个阶段，从要求分析到维护，而不考虑项目方法 ([瀑布](https://en.wikipedia.org/wiki/Waterfall_model)性、 [agile](https://en.wikipedia.org/wiki/Agile_software_development)或 [DevOps](https://en.wikipedia.org/wiki/DevOps)) 。 随着引入关注的数据泄露和运营方面的安全缺陷被利用等情况的发生，越来越多的开发人员理解了解决安全性问题是需要贯穿整个开发过程的。
+要遵循安全软件开发的最佳做法，就必须将安全性集成到软件开发生命周期的每个阶段（从需求分析到维护），而无论项目方法如何（[waterfall](https://en.wikipedia.org/wiki/Waterfall_model)、[agile](https://en.wikipedia.org/wiki/Agile_software_development) 或 [DevOps](https://en.wikipedia.org/wiki/DevOps)）。 随着引入关注的数据泄露和运营方面的安全缺陷被利用等情况的发生，越来越多的开发人员理解了解决安全性问题是需要贯穿整个开发过程的。
 
 在开发生命周期中，解决问题的时间越晚，那么解决问题要耗费的成本也就越高。 安全性问题也不例外。 如果在软件开发早期阶段漠视安全问题，那么后面的每个阶段可能会继承前面的阶段中存在的漏洞。 最终产品将会积累很多安全问题，还可能会发生数据泄露。 将安全性融入开发生命周期的每个阶段，会有助于及早发现问题，并且有助于降低开发成本。
 
@@ -53,7 +53,7 @@ SDL 各阶段包括：
 
 在这些文章中，我们将 SDL 的各个阶段划分为三类：设计、开发和部署。
 
-## <a name="engage-your-organizations-security-team"></a>与你组织的安全团队合作
+## <a name="engage-your-organizations-security-team"></a>让组织的安全团队共同参与
 
 你的组织可能有正式的应用程序安全计划，用于在开发生命周期过程中自始至终为你提供安全活动方面的帮助。 如果你的组织有安全性和合规性团队，那么在开始开发应用程序前一定要请他们一起参与进来。 在 SDL 的每个阶段都要询问他们，是否存在一些被你忽视的任务。
 
@@ -67,11 +67,11 @@ SDL 各阶段包括：
 
 [开放式 Web 应用程序安全性项目 (OWASP)](https://www.owasp.org/index.php/Main_Page) – OWASP 是一个在线社区，它提供 Web 应用程序安全性领域的免费文章、方法、文档、工具和技术。
 
-[向左推送，如老板](https://code.likeagirl.io/pushing-left-like-a-boss-part-1-80f1f007da95?WT.mc_id=docs-blog-tajanca) –一系列在线文章，其中概述了开发人员为了创建更安全的代码而应完成的不同类型的应用程序安全活动。
+[强劲推动](https://code.likeagirl.io/pushing-left-like-a-boss-part-1-80f1f007da95?WT.mc_id=docs-blog-tajanca) - 一系列在线文章，其中概述了开发人员为创建更安全的代码而应完成的不同类型的应用程序安全活动。
 
 [Microsoft 标识平台](../../active-directory/develop/index.yml) – Microsoft 标识平台是由 Azure AD 标识服务和开发人员平台演变而来。 它是一个全功能平台，包含身份验证服务、开源库、应用程序注册和配置、完整的开发人员文档、代理示例，以及其他开发人员内容。 Microsoft 标识平台支持 OAuth 2.0 和 OpenID Connect 这样的行业标准协议。
 
-[Azure 解决方案的最佳安全方案](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/) -使用 azure 设计、部署和管理云解决方案时要使用的一系列安全最佳做法。 本文旨在作为 IT 专业人员的资源。 这可能包括构建和部署安全的 Azure 解决方案的设计人员、架构师、开发者和测试人员。
+[Azure 解决方案的安全性最佳做法](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/) - 一组安全性最佳做法，供你在使用 Azure 设计、部署和管理云解决方案时使用。 本文旨在为 IT 专业人员提供资源。 这可能包括构建和部署安全的 Azure 解决方案的设计人员、架构师、开发者和测试人员。
 
 [Azure 安全性与合规性蓝图](https://servicetrust.microsoft.com/ViewPage/BlueprintOverview) - Azure 安全性与合规性蓝图资源有助于构建和推出符合严格法规和标准的云助力应用程序。
 

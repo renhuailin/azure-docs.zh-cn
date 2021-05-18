@@ -1,5 +1,5 @@
 ---
-title: 多租户应用示例-Wingtip SaaS
+title: 多租户应用示例 - Wingtip SaaS
 description: 借助使用 Azure SQL 数据库的示例多租户应用程序，了解 Wingtip SaaS 示例
 services: sql-database
 ms.service: sql-database
@@ -12,13 +12,13 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 0efc8105295ca7f97e6f465071c31b193173c5cd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100588735"
 ---
-# <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>在 Azure SQL 数据库中使用 "每租户一个数据库" 模式的多租户 SaaS 应用简介
+# <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>多租户 SaaS 应用简介，该应用通过“每个租户一个数据库”模式使用 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Wingtip SaaS 应用程序是一个示例多租户应用。 该应用使用“每个租户各有数据库”（一种 SaaS 应用程序模式）为多个租户提供服务。 该应用使用多个 SaaS 设计及管理模式，展示支持 SaaS 方案的 Azure SQL 数据库功能。 Wingtip SaaS 应用的部署时间不到五分钟，可快速启动并运行。
@@ -37,7 +37,7 @@ Wingtip SaaS 应用使用“每个租户各有数据库”模型。 它使用 SQ
 
 ## <a name="sql-database-wingtip-saas-tutorials"></a>SQL 数据库 Wingtip SaaS 教程
 
-部署应用后，请浏览基于初始部署制作的以下教程。 这些教程探讨了利用 SQL 数据库、Azure Synapse Analytics 和其他 Azure 服务的内置功能的常见 SaaS 模式。 教程包括 PowerShell 脚本及详细说明。 这些说明可简化对应用程序中相同 SaaS 管理模式的理解和实现。
+部署应用后，请浏览基于初始部署制作的以下教程。 这些教程探索常见 SaaS 模式，这些模式利用 SQL 数据库、Azure Synapse Analytics 和其他 Azure 服务的内置功能。 教程包括 PowerShell 脚本及详细说明。 这些说明可简化对应用程序中相同 SaaS 管理模式的理解和实现。
 
 
 | 教程 | 说明 |
@@ -46,7 +46,7 @@ Wingtip SaaS 应用使用“每个租户各有数据库”模型。 它使用 SQ
 |[部署和浏览 Wingtip SaaS 应用程序](./saas-dbpertenant-get-started-deploy.md)|  使用 Azure 订阅部署并浏览 Wingtip SaaS 应用程序。 |
 |[预配和编录租户](./saas-dbpertenant-provision-and-catalog.md)| 了解应用程序如何使用目录数据库连接到租户，以及目录如何将租户映射到其数据。 |
 |[监视和管理性能](./saas-dbpertenant-performance-monitoring.md)| 了解如何使用 SQL 数据库的监视功能，以及如何设置在超出性能阈值时发出警报。 |
-|[使用 Azure Monitor 日志进行监视](./saas-dbpertenant-log-analytics.md) | 了解如何使用 [Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md) 来监视跨多个池的大量资源。 |
+|[使用 Azure Monitor 日志进行监视](./saas-dbpertenant-log-analytics.md) | 了解如何使用 [Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md)监视多个池中的大量资源。 |
 |[还原单个租户](./saas-dbpertenant-restore-single-tenant.md)| 了解如何将租户数据库还原到先前的时间点。 此外，请了解如何还原到并行数据库，这会使现有租户数据库保持联机。 |
 |[管理租户数据库架构](saas-tenancy-schema-management.md)| 了解如何跨所有租户数据库更新架构和更新参考数据。 |
 |[运行跨租户分布式查询](saas-tenancy-cross-tenant-reporting.md) | 创建即席分析数据库，并跨所有租户运行实时分布式查询。  |

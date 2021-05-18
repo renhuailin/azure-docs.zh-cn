@@ -2,13 +2,13 @@
 title: 支持的内容格式
 description: 了解 Azure 容器注册表支持的内容格式，其中包括与 Docker 兼容的容器映像、Helm 图表、OCI 映像和 OCI 项目。
 ms.topic: article
-ms.date: 08/30/2019
-ms.openlocfilehash: b2a54c65d149a27ed9eae85c3308d657ed3471a3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/02/2021
+ms.openlocfilehash: 218d98f3f16e8d0ca76a24692afbb2b69606564b
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100008326"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223058"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure 容器注册表中支持的内容格式
 
@@ -34,7 +34,7 @@ Azure 容器注册表支持 [OCI 分发规范](https://github.com/opencontainers
 
 ## <a name="helm-charts"></a>Helm 图表
 
-Azure 容器注册表可以承载 [Helm 图表](https://helm.sh/)的存储库，该存储库是用来快速为 Kubernetes 管理和部署应用程序的一种打包格式。 支持 [Helm 客户端](https://docs.helm.sh/using_helm/#installing-helm)版本 2（2.11.0 或更高版本）。
+Azure 容器注册表可以承载 [Helm 图表](https://helm.sh/)的存储库，该存储库是用来快速为 Kubernetes 管理和部署应用程序的一种打包格式。 建议使用 [Helm 客户端](https://docs.helm.sh/using_helm/#installing-helm)版本 3。 请参阅[将 Helm 图表推送和提取到 Azure 容器注册表](container-registry-helm-repos.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

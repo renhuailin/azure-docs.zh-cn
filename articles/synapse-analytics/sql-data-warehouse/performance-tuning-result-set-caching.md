@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
 ms.openlocfilehash: d8c6c8d22c059c63fb4f84c84a02a70de30d4ebe
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98678519"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能
@@ -36,7 +36,7 @@ ms.locfileid: "98678519"
 
 对数据库启用结果集缓存后，在缓存填满之前将缓存所有查询的结果，但以下查询除外：
 
-- 带有内置函数或运行时表达式的查询，这些表达式是不确定的，即使基表的数据或查询不存在更改。 例如，DateTime.Now()、GetDate()。
+- 带有内置函数或运行时表达式的查询，这些表达式为非确定表达式，即使基表的数据或查询中没有更改也是如此。 例如，DateTime.Now()、GetDate()。
 - 使用用户定义的函数的查询
 - 使用启用了行级安全性或列级安全性的表的查询
 - 其返回数据中的行大小超过 64KB 的查询

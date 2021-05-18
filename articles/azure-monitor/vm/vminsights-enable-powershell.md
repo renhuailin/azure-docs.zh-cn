@@ -1,38 +1,38 @@
 ---
-title: 使用 PowerShell 启用 VM insights
-description: 介绍如何使用 Azure PowerShell 为 Azure 虚拟机或虚拟机规模集启用 VM insights。
+title: 使用 PowerShell 启用 VM 见解
+description: 介绍如何使用 Azure PowerShell 为 Azure 虚拟机或虚拟机规模集启用 VM 见解。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: b51a49abda76a4d1433336cf73dc9a0dd6e40787
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031850"
 ---
-# <a name="enable-vm-insights-using-powershell"></a>使用 PowerShell 启用 VM insights
-本文介绍如何使用 PowerShell 在 Azure 虚拟机上启用 VM insights。 此过程可用于以下操作：
+# <a name="enable-vm-insights-using-powershell"></a>使用 PowerShell 启用 VM 见解
+本文介绍如何使用 PowerShell 在 Azure 虚拟机上启用 VM 见解。 此过程可用于以下对象：
 
 - Azure 虚拟机
 - Azure 虚拟机规模集
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建并配置 Log Analytics 工作区](./vminsights-configure-workspace.md)。
-- 请参阅 [支持的操作系统](./vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
+- [创建和配置 Log Analytics 工作区](./vminsights-configure-workspace.md)。
+- 请参阅[支持的操作系统](./vminsights-enable-overview.md#supported-operating-systems)，以确保要启用的虚拟机或虚拟机规模集的操作系统受支持。 
 
 
 ## <a name="powershell-script"></a>PowerShell 脚本
 
-若要为多个 Vm 或虚拟机规模集启用 VM insights，请使用 Azure PowerShell 库中提供的 PowerShell 脚本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)。 此脚本循环访问：
+若要为多个 VM 或虚拟机规模集启用 VM 见解，请使用 Azure PowerShell 库中提供的 PowerShell 脚本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)。 此脚本循环访问：
 
 - 订阅中的每个虚拟机和虚拟机规模集。
 - 通过 *ResourceGroup* 指定的具有作用域的资源组。
 - 通过 *Name* 指定的单个 VM 或虚拟机规模集。
 
-对于每个虚拟机或虚拟机规模集，该脚本将验证是否已安装 Log Analytics 代理和依赖关系代理的 VM 扩展。 如果同时安装了这两个扩展，该脚本会尝试重新安装。 如果未安装这两个扩展，则脚本将安装它们。
+对于每个虚拟机或虚拟机规模集，该脚本将验证是否已安装 Log Analytics 代理和 Dependency Agent 的 VM 扩展。 如果这两个扩展均已安装，该脚本会尝试重新安装。 如果这两个扩展均未安装，该脚本会进行安装。
 
 验证是否使用的是启用了 `Enable-AzureRM` 兼容性别名的 Azure PowerShell 模块 Az 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
@@ -138,7 +138,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-下面的示例演示如何使用文件夹中的 PowerShell 命令来启用 VM insights 并了解预期的输出：
+以下示例演示如何在文件夹中使用 PowerShell 命令来启用 VM 见解，并了解预期的输出：
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -189,5 +189,5 @@ Failed: (0)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 [使用 VM Insights 映射](vminsights-maps.md) 查看已发现的应用程序依赖关系。 
-* 请参阅 [查看 AZURE VM 性能](vminsights-performance.md) ，找出瓶颈、整体利用率和 VM 的性能。
+* 请参阅[使用 VM 见解地图](vminsights-maps.md)，查看已发现的应用程序依赖项。 
+* 请参阅[查看 Azure VM 性能](vminsights-performance.md)，了解瓶颈、整体利用率和 VM 的性能。

@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c7c78dcbc34deca769739f82964df41ebfc596ea
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176784"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中管理外部用户的访问权限
@@ -84,7 +84,7 @@ Azure AD 权利管理利用 [Azure AD 企业对企业 (B2B) 解决方案](../ext
 - 允许来宾将其他来宾邀请到你的目录意味着来宾邀请可以在权利管理外部进行。 建议将“来宾可邀请”设置为“否” ，只允许正确控制的邀请。
 - 如果你使用的是 B2B 允许列表，则必须确保将你需要通过权利管理与之合作的任何域添加到该列表中。 另外，如果你使用的是 B2B 拒绝列表，则必须确保不将你需要与之合作的任何域添加到该列表中。
 - 如果为所有用户（所有连接的组织 + 任何新的外部用户）创建了权利管理策略，并且某位用户不属于目录中的已连接组织，则在请求包时将自动为其创建连接的组织。 你拥有的任何 B2B 允许或拒绝列表设置都具有优先级。 因此，请务必将要包含在此策略中的域添加到允许列表（如果你使用的是允许列表），或将其从拒绝列表中排除（如果你使用的是拒绝列表）。
-- 如果你想要创建包含所有 **用户** (所有连接的组织以及) 的所有外部用户的授权管理策略，则必须首先为你的目录启用电子邮件一次性密码身份验证。 有关详细信息，请参阅 [电子邮件一次性密码身份验证](../external-identities/one-time-passcode.md)。
+- 如果要创建包含“所有用户”（所有已连接组织 + 任何新的外部用户）的权利管理策略，必须首先为目录启用电子邮件一次性密码身份验证。 有关详细信息，请参阅[电子邮件一次性密码身份验证](../external-identities/one-time-passcode.md)。
 - 有关 Azure AD B2B 外部协作设置的详细信息，请参阅[启用 B2B 外部协作并管理谁可以邀请来宾](../external-identities/delegate-invitations.md)。
 
     ![Azure AD 外部协作设置](./media/entitlement-management-external-users/collaboration-settings.png)

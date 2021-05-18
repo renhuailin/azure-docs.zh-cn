@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务 v3 REST API 创建筛选器
-description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务 v3 REST API 创建动态清单以实现此选择性流。
+description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务 v3 REST API 将创建动态清单来存档此选择性流式传输。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c1d7bf933b487c40d571f1912341b5ef771e4e67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: c2d081ded07b1d32ee7525855c1756e13dfd57aa
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90527320"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277498"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>使用媒体服务 REST API 创建筛选器
 
@@ -26,7 +26,7 @@ ms.locfileid: "90527320"
 
 将内容传送到客户（直播流活动或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 使用 Azure 媒体服务可为内容定义帐户筛选器和资产筛选器。 
 
-有关此功能及其使用方案的详细说明，请参阅[动态清单](filters-dynamic-manifest-overview.md)和[筛选器](filters-concept.md)。
+有关此功能及其使用方案的详细说明，请参阅[动态清单](filters-dynamic-manifest-concept.md)和[筛选器](filters-concept.md)。
 
 本主题展示了如何为点播视频资产定义筛选器，以及如何使用 REST API 创建[帐户筛选器](/rest/api/media/accountfilters)和[资产筛选器](/rest/api/media/assetfilters)。 
 
@@ -37,14 +37,14 @@ ms.locfileid: "90527320"
 
 若要完成本主题中所述的步骤，必须：
 
-- 查看[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
-- [配置 Postman 以便进行 Azure 媒体服务 REST API 调用](media-rest-apis-with-postman.md)。
+- 查看[筛选器和动态清单](filters-dynamic-manifest-concept.md)。
+- [配置 Postman 以便进行 Azure 媒体服务 REST API 调用](setup-postman-rest-how-to.md)。
 
-    确保遵循[获取 Azure AD 令牌](media-rest-apis-with-postman.md#get-azure-ad-token)主题中的最后一步。 
+    确保遵循[获取 Azure AD 令牌](setup-postman-rest-how-to.md#get-azure-ad-token)主题中的最后一步。 
 
 ## <a name="define-a-filter"></a>定义筛选器  
 
-下面是**请求正文**示例，其中定义了添加到清单的曲目择条件。 此筛选器包括属于 EC-3 的任何音频曲目和比特率在 0-1000000 范围内的任何视频曲目。
+下面是 **请求正文** 示例，其中定义了添加到清单的曲目择条件。 此筛选器包括属于 EC-3 的任何音频曲目和比特率在 0-1000000 范围内的任何视频曲目。
 
 ```json
 {
@@ -121,7 +121,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="associate-filters-with-streaming-locator"></a>将筛选器与流定位器关联
 
-可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 [动态打包程序（流式处理终结点）](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位器上指定的“URL + 筛选器”中的筛选器。 如果要应用筛选器，但不希望在 URL 中公开筛选器名称，建议使用此功能。
+可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 [动态打包程序（流式处理终结点）](encode-dynamic-packaging-concept.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-concept.md)，该清单基于你在流定位器上指定的“URL + 筛选器”中的筛选器。 如果要应用筛选器，但不希望在 URL 中公开筛选器名称，建议使用此功能。
 
 若要使用 REST 创建筛选器并将其与流定位器关联，请使用[流定位器 - 创建](/rest/api/media/streaminglocators/create) API并在[请求正文](/rest/api/media/streaminglocators/create#request-body)中指定 `properties.filters`。
                                 

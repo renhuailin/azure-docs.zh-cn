@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84689981"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API 管理模板资源
@@ -39,35 +39,35 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
   
 ```  
   
- 以下示例来自“产品列表”模板，在页面顶部显示“产品”。   
+ 以下示例来自“产品列表”模板，在页面顶部显示“产品”。  
   
 ```  
 <h2>{% localized "ProductsStrings|PageTitleProducts" %}</h2>  
   
 ```  
   
-支持以下本地化选项：
+支持以下本地化测选项：
 
 | Locale    | 语言               |
 |-----------|------------------------|
-| “en”      | -              |
-| 站      | "Čeština"              |
-| 取消      | Deutsch              |
-| es      | 西班牙语              |
-| fr      | 结算             |
-| hu      | Magyar               |
-| 以便      | Italiano             |
-| "ja-jp"   | 日本語                |
-| “ko”      | 한국어                |
-| nl      | Nederlands           |
-| pl      | Polski               |
-| "pt-br"   | "Português (巴西) "   |
-| "pt"   | "Português (葡萄牙) " |
-| 阴      | "Русский"              |
-| sv      | Svenska              |
-| tr      | "Türkçe"               |
-| "zh-chs-hans" | "中文 (简体) "           |
-| "zh-chs-zh-hant" | "中文 (繁體) "           |
+| “en”      | "English"              |
+| "cs"      | "Čeština"              |
+| "de"      | "Deutsch"              |
+| "es"      | "Español"              |
+| "fr"      | "Français"             |
+| "hu"      | "Magyar"               |
+| "it"      | "Italiano"             |
+| "ja-JP"   | "日本語"                |
+| “ko”      | "한국어"                |
+| "nl"      | "Nederlands"           |
+| "pl"      | "Polski"               |
+| "pt-br"   | "Português (Brasil)"   |
+| "pt-pt"   | "Português (Portugal)" |
+| "ru"      | "Русский"              |
+| "sv"      | "Svenska"              |
+| "tr"      | "Türkçe"               |
+| "zh-hans" | "中文(简体)"           |
+| "zh-hant" | "中文(繁體)"           |
 
  请参阅下面的表，了解适用于开发人员门户模板的字符串资源。 请使用表名作为该表中字符串资源的前缀。  
   
@@ -183,7 +183,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |TablePlaceholderNothingToDisplay|没有所选期间和范围的数据|  
 |ButtonLabelClose|关闭|  
   
-###  <a name="documentation"></a><a name="Documentation"></a> 关于  
+###  <a name="documentation"></a><a name="Documentation"></a> 文档  
   
 |名称|文本|  
 |----------|----------|  
@@ -329,7 +329,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |SectionHeadingRequestHeaders|请求标头|  
 |FormLabelSubtextOptional|可选|  
 |SectionHeadingCodeSamples|代码示例|  
-|TextblockOpenidConnectHeaderDescription|从</i <获取的 OpenID Connect ID 令牌 \> {0} \> 。 支持的授权类型：<i\>{1}</i\>。|  
+|TextblockOpenidConnectHeaderDescription|从 <i\>{0}</i\> 获得的 OpenID Connect ID 令牌。 支持的授权类型：<i\>{1}</i\>。|  
   
 ###  <a name="errorpagestrings"></a><a name="ErrorPageStrings"></a> ErrorPageStrings  
   
@@ -582,7 +582,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |TextboxLabelEmailLastName|姓氏|  
 |TextboxLabelNotificationsSenderEmail|通知发件人电子邮件|  
 |TextboxLabelOrganizationName|组织名称|  
-|SubscriptionStateActive|可用|  
+|SubscriptionStateActive|活动|  
 |SubscriptionStateCancelled|已取消|  
 |SubscriptionStateExpired|已过期|  
 |SubscriptionStateRejected|已拒绝|  

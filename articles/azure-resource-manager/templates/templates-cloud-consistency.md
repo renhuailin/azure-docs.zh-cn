@@ -1,28 +1,28 @@
 ---
 title: 跨云重用模板
-description: 开发 Azure 资源管理器模板 (ARM 模板) ，适用于不同的云环境。 创建适用于 Azure Stack 的新模板或更新现有模板。
+description: 开发可针对不同的云环境一致地工作的 Azure 资源管理器模板（ARM 模板）。 创建适用于 Azure Stack 的新模板或更新现有模板。
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: MT
+ms.openlocfilehash: 120e98ebebec1436c9171f6076baccd35be9b843
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928352"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104888815"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>开发用于确保云一致性的 ARM 模板
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 Azure 资源管理器模板 (ARM 模板) 使你的部署在不同的环境（包括全球 Azure、Azure 主权云和 Azure Stack）之间保持一致且可重复。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
+Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 Azure 资源管理器模板（ARM 模板）可确保部署在全球 Azure、Azure 主权云和 Azure Stack 等环境中保持一致性和可重复性。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
 
 Microsoft 在很多位置提供了面向企业的智能云服务，其中包括：
 
 * 全球 Azure 平台，该平台由全球各区域不断扩大的 Microsoft 托管数据中心的网络提供支持。
-* 独立的主权云，如 Azure 德国、Azure 政府和 Azure 中国世纪互联。 主权云提供具有大部分相同的强大功能的一致平台，全球 Azure 客户均有权访问。
+* 独立主权云，例如 Azure 德国、Azure 政府和 Azure 中国世纪互联。 主权云提供具有大部分相同的强大功能的一致平台，全球 Azure 客户均有权访问。
 * Azure Stack，一种混合云平台，可从组织数据中心提供 Azure 服务。 企业可以在自己的数据中心中设置 Azure Stack，或者使用服务提供商提供的 Azure 服务，在他们的设施（有时称为托管区域）中运行 Azure Stack。
 
 在所有这些云的核心，Azure 资源管理器提供一个 API，用于实现各种用户界面与 Azure 平台的通信。 此 API 提供了强大的基础结构即代码功能。 使用 Azure 资源管理器可以部署和配置 Azure 云平台上提供的任何类型的资源。 只用一个模板即可将完整的应用程序部署和配置为操作结束状态。
@@ -83,7 +83,7 @@ Azure 资源管理器的功能始终会首先引入到全球 Azure。 使用以�
 "resources": [
   {
      "type": "Microsoft.Resources/deployments",
-     "apiVersion": "2017-05-10",
+     "apiVersion": "2020-10-01",
      "name": "linkedTemplate",
      "properties": {
        "mode": "incremental",
@@ -133,7 +133,7 @@ Azure 资源管理器在运行时评估主要模板并检索和评估每个嵌�
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
+    "apiVersion": "2020-10-01",
     "name": "shared",
     "properties": {
       "mode": "Incremental",
@@ -443,8 +443,8 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 一般情况下，请避免在模板中使用硬编码终结点。 最佳做法是使用引用模板函数动态检索终结点。 例如，最常进行硬编码的终结点是存储帐户的终结点命名空间。 每个存储帐户均有唯一的 FQDN，它通过连接存储帐户的名称与终结点命名空间来构造。 名为 mystorageaccount1 的 blob 存储帐户会因为云的不同而产生不同的 FQDN：
 
-* `mystorageaccount1.blob.core.windows.net` 在全局 Azure 云上创建时。
-* `mystorageaccount1.blob.core.chinacloudapi.cn` 在 Azure 中国世纪互联云中创建的。
+* 在全球 Azure 云上创建时，为 `mystorageaccount1.blob.core.windows.net`。
+* 在 Azure 中国世纪互联云中创建时，为 `mystorageaccount1.blob.core.chinacloudapi.cn`。
 
 以下引用模板函数从存储资源提供程序中检索终结点命名空间：
 

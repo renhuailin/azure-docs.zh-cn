@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 79bcca688146b2c2382876b6a61bc0eee34382a1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 82e34bff573b746f7d9c4185fe6c24fa92de0394
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040951"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321044"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 
@@ -119,7 +120,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 ## <a name="manage-access-using-azure-permissions"></a>使用 Azure 权限管理访问
 
-若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请按照 [分配 azure 角色中的步骤来管理对 azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。 如需自定义角色的示例，请参阅 [自定义角色示例](#custom-role-examples)
+若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)中的步骤。 如需自定义角色的示例，请参阅 [自定义角色示例](#custom-role-examples)
 
 Azure 有两个适用于 Log Analytics 工作区的内置用户角色：
 
@@ -227,14 +228,14 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
     * 为用户授予对工作区的以下权限： 
 
-        * `Microsoft.OperationalInsights/workspaces/read` –必需，以便用户可以枚举工作区并在 Azure 门户中打开工作区边栏选项卡
-        * `Microsoft.OperationalInsights/workspaces/query/read` –每个可以执行查询的用户都需要
-        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` –能够读取 Azure AD 登录日志
-        * `Microsoft.OperationalInsights/workspaces/query/Update/read` –能够读取更新管理解决方案日志
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` –能够读取更新管理解决方案日志
-        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` –能够读取更新管理日志
-        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` –要求能够使用更新管理解决方案
-        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` –要求能够使用更新管理解决方案
+        * `Microsoft.OperationalInsights/workspaces/read` - 需要此权限用户才可以枚举工作区并在 Azure 门户中打开工作区边栏选项卡
+        * `Microsoft.OperationalInsights/workspaces/query/read` - 需要此权限每位用户才可以执行查询
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` - 需要此权限才能读取 Azure AD 登录日志
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read` - 需要此权限才能读取更新管理解决方案日志
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` - 需要此权限才能读取更新管理解决方案日志
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` - 需要此权限才能读取更新管理日志
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` - 需要此权限才能使用更新管理解决方案
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` - 需要此权限才能使用更新管理解决方案
 
     * 为用户授予对其资源的以下权限：分配给“读取者”角色的 `*/read`，或 `Microsoft.Insights/logs/*/read`。 
 

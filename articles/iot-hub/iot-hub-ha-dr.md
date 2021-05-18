@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.openlocfilehash: 10a3360f30d211336e4ce861b124a307c85fb150
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151672"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308245"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
 
@@ -41,7 +41,7 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 
 在极少见的情况下，电源故障或其他涉及到实物资产的故障会导致数据中心遇到长时间的服务中断。 此类事件非常罕见，在此期间，上述区域内部 HA 不一定总能发挥作用。 IoT 中心提供多种解决方案，用于在发生此类长时间服务中断后进行恢复。 
 
-在这种情况下，客户可以使用的恢复选项是 [Microsoft 启动的故障转移](#microsoft-initiated-failover) 和 [手动故障转移](#manual-failover)。 两者之间的根本差别在于，前者由 Microsoft 发起，后者由用户发起。 此外，与 Microsoft 发起的故障转移选项相比，手动故障转移提供更低的恢复时间目标 (RTO)。 以下部分讨论了每个选项提供的具体 RTO。 如果执行了其中任一选项从主要区域执行 IoT 中心故障转移，则该中心将在相应的 [Azure 异地配对区域](../best-practices-availability-paired-regions.md)中完全正常运行。
+出现此类情况时为客户提供的恢复选项包括 [Microsoft 发起的故障转移](#microsoft-initiated-failover)和[手动故障转移](#manual-failover)。 两者之间的根本差别在于，前者由 Microsoft 发起，后者由用户发起。 此外，与 Microsoft 发起的故障转移选项相比，手动故障转移提供更低的恢复时间目标 (RTO)。 以下部分讨论了每个选项提供的具体 RTO。 执行上述任一选项从主要区域故障转移 IoT 中心时，中心将在对应的 [Azure 异地配对区域](../best-practices-availability-paired-regions.md)完全正常运行。
 
 这两个故障转移选项提供以下恢复点目标 (RPO)：
 
@@ -64,7 +64,7 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 >
 > - 如果使用 Azure Functions 或 Azure 流分析来连接内置事件终结点，则可能需要执行重启操作。 这是因为在故障转移过程中，上一个偏移量不再有效。
 >
-> - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保在不进行分区的情况下读取所有 blob 或文件。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 可以使用 [List Blobs API](/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) 枚举文件列表。 若要了解详细信息，请查看 [Azure 存储作为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)。
+> - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保在不进行分区的情况下读取所有 blob 或文件。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 可以使用 [List Blobs API](/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/filesystem/list) 枚举文件列表。 若要了解详细信息，请查看 [Azure 存储作为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)。
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft 发起的故障转移
 
@@ -78,7 +78,7 @@ RTO 较高的原因是，Microsoft 必须代表该区域中所有受影响的客
 
 不管主要区域是否遇到停机，手动故障转移选项始终可用。 因此，用户可能会使用此选项来执行计划内故障转移。 计划内故障转移的一个示例用途是执行定期的故障转移演练。 需要注意的是，计划内故障转移操作会导致中心在此选项的 RTO 定义的时间段内停机，同时会导致数据丢失（由上面的 RPO 表定义）。 可以考虑设置一个测试 IoT 中心实例来定期执行计划内故障转移选项，以便在发生实际灾难时，自信地让端到端解决方案正常运行。
 
-对于在5月 18 2017 日之后创建的 IoT 中心，无需额外付费即可使用手动故障转移
+对于 2017 年 5 月 18 日之后创建的 IoT 中心，用户无需额外付费便可使用手动故障转移功能
 
 有关分步说明，请参阅[教程：为 IoT 中心执行手动故障转移](tutorial-manual-failover.md)
 

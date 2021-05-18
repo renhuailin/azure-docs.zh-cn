@@ -1,22 +1,22 @@
 ---
-title: 将 Configuration Manager 连接到 Azure Monitor |Microsoft Docs
+title: 将 Configuration Manager 连接到 Azure Monitor | Microsoft Docs
 description: 本文介绍将 Configuration Manager 连接到 Azure Monitor 中的工作区以及开始分析数据的步骤。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/30/2020
 ms.openlocfilehash: 7302f61fce6763fdbb41c2b4899dea749ac3225f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031066"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>将 Configuration Manager 连接到 Azure Monitor
 可将 Microsoft Endpoint Configuration Manager 环境连接到 Azure Monitor 以同步设备集合数据，并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
 
 > [!IMPORTANT]
-> 从 Configuration Manager 版本2010开始，此功能已弃用。<!-- 8269855 --> 有关详细信息，请参阅 [Configuration Manager 中已删除和已弃用的功能](/mem/configmgr/core/plan-design/changes/deprecated/removed-and-deprecated-cmfeatures)。
+> 从 Configuration Manager 版本 2010 开始，此功能已被弃用。<!-- 8269855 --> 有关详细信息，请参阅 [Configuration Manager 中已删除和已弃用的功能](/mem/configmgr/core/plan-design/changes/deprecated/removed-and-deprecated-cmfeatures)。
 
 ## <a name="prerequisites"></a>必备条件
 

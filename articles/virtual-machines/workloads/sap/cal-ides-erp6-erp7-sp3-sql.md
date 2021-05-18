@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.openlocfilehash: 5184df38b6a6b2757a5d5f7c0970258657cf5c0f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101671003"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3
@@ -45,11 +45,11 @@ ms.locfileid: "101671003"
 
     b. Microsoft Azure 是新的 Resource Manager 部署模型。
 
-    ![屏幕截图显示了具有 Microsoft Azure 的 P CAL 帐户。](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
+    ![屏幕截图显示了 SAP CAL 帐户，其中已标注“Microsoft Azure”。](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
 
     若要部署在 Resource Manager 模型中，请选择“Microsoft Azure”。
 
-    ![屏幕截图显示 P CAL 帐户。](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
+    ![屏幕截图显示了 SAP CAL 帐户。](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
 1. 输入可在 Azure 门户中找到的 Azure 订阅 ID。 
 

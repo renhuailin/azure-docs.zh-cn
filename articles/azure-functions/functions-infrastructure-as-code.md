@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 9df4c62a65fd133c6ea8dc84e33d7c7b02d94cbf
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99494033"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
@@ -212,11 +212,11 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
-在消耗计划中运行的函数应用所需的设置在 Windows 和 Linux 之间延迟。 
+消耗计划中运行的函数应用所需的设置在 Windows 和 Linux 之间有所不同。 
 
 #### <a name="windows"></a>Windows
 
-在 Windows 上，消耗计划需要在站点配置中使用额外的设置： [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) 。 此属性配置用于存储函数应用代码和配置的存储帐户。
+在 Windows 上，消耗计划还需要站点配置中的一个附加设置：[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring)。 此属性配置用于存储函数应用代码和配置的存储帐户。
 
 ```json
 {
@@ -258,11 +258,11 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 ```
 
 > [!IMPORTANT]
-> 不要设置在 [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 首次创建站点时为您生成的设置。  
+> 请勿设置 [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 设置，因为它是在第一次创建站点时为你生成的。  
 
 #### <a name="linux"></a>Linux
 
-在 Linux 上，函数应用必须将其 `kind` 设置为 `functionapp,linux` ，并且它的属性必须 `reserved` 设置为 `true` 。 
+在 Linux 上，函数应用必须将其 `kind` 设置为 `functionapp,linux`，并且其属性 `reserved` 必须设置为 `true`。 
 
 ```json
 {
@@ -300,7 +300,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) Linux 不支持和设置。
+Linux 上不支持 [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) 和 [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 设置。
 
 <a name="premium"></a>
 ## <a name="deploy-on-premium-plan"></a>在高级计划上部署
@@ -334,7 +334,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
-高级计划的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。 此外，高级计划还需要在站点配置中使用额外的设置： [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) 。 此属性配置用于存储函数应用代码和配置的存储帐户。
+高级计划的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。 此外，高级计划还需要站点配置中的一个附加设置：[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring)。 此属性配置用于存储函数应用代码和配置的存储帐户。
 
 ```json
 {
@@ -377,7 +377,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 > [!IMPORTANT]
-> 不要设置在 [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 首次创建站点时为您生成的设置。  
+> 请勿设置 [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 设置，因为它是在第一次创建站点时为你生成的。  
 
 <a name="app-service-plan"></a>
 
@@ -407,7 +407,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-若要在 Linux 上运行应用，还必须将设置 `kind` 为 `Linux` ：
+若要在 Linux 上运行应用，还必须将设置 `kind` 为 `Linux`：
 
 ```json
 {
@@ -467,7 +467,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-Linux 应用还应 `linuxFxVersion` 在下包括属性 `siteConfig` 。 如果只是部署代码，则此值的值由所需的运行时堆栈确定，格式为 ```runtime|runtimeVersion``` ：
+Linux 应用还应在 `siteConfig` 下包括 `linuxFxVersion` 属性。 如果只部署代码，则此属性的值由所需的运行时堆栈确定，格式为 ```runtime|runtimeVersion```：
 
 | 堆栈            | 示例值                                         |
 |------------------|-------------------------------------------------------|
@@ -513,7 +513,7 @@ Linux 应用还应 `linuxFxVersion` 在下包括属性 `siteConfig` 。 如果�
 }
 ```
 
-如果要 [部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其指定为， `linuxFxVersion` 并包括允许请求映像的配置，如 [用于容器的 Web 应用](../app-service/index.yml)中所示。 此外，将设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 为 `false` ，因为容器本身中提供了应用内容：
+如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，必须将其指定为 `linuxFxVersion` 并包括允许拉取映像的配置，如[用于容器的 Web 应用](../app-service/index.yml)中所示。 此外，应将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置为 `false`，因为容器本身中提供了应用内容：
 
 ```json
 {
@@ -571,7 +571,7 @@ Linux 应用还应 `linuxFxVersion` 在下包括属性 `siteConfig` 。 如果�
 
 ## <a name="customizing-a-deployment"></a>自定义部署
 
-函数应用有许多可用于部署的子资源，包括应用设置和源代码管理选项。 你还可以选择删除 **sourcecontrols** 子资源，并改用不同的 [部署选项](functions-continuous-deployment.md) 。
+函数应用有许多可用于部署的子资源，包括应用设置和源代码管理选项。 还可以选择删除 **sourcecontrols** 子资源，改用另一个[部署选项](functions-continuous-deployment.md)。
 
 > [!IMPORTANT]
 > 若要使用 Azure 资源管理器成功部署应用程序，了解如何在 Azure 中部署资源尤为重要。 在下面的示例中，通过使用 **siteConfig** 应用顶级配置。 请务必在顶级设置这些配置，因为这些配置会将信息传达给 Functions 运行时和部署引擎。 应用 **sourcecontrols/web** 子资源前，需要顶级信息。 虽然可以在子级别 **config/appSettings** 资源中配置这些设置，但在某些情况下，需要在应用 **config/appSettings** 之前部署函数应用。 比如在[逻辑应用](../logic-apps/index.yml)中使用函数时，函数是另一资源的依赖项。

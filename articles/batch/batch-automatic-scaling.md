@@ -5,17 +5,17 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
 ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100381420"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动公式
 
 Azure Batch 可以根据定义的参数自动缩放池，节省时间和资金。 Batch 通过自动缩放动态控制计算节点的数目，在任务需求提高时向池中添加节点，在任务需求降低时删除节点。
 
-若要为某个计算节点池启用自动缩放，请将该池与你所定义的自动缩放公式相关联。 Batch 服务会使用自动缩放公式确定执行工作负载所需的节点数。 这些节点可以是专用节点，也可以是 [低优先级节点](batch-low-pri-vms.md)。 然后，Batch 会定期检查服务指标数据，并使用它根据公式和你定义的时间间隔来调整池中的节点数。
+若要为某个计算节点池启用自动缩放，请将该池与你所定义的自动缩放公式相关联。 Batch 服务会使用自动缩放公式确定执行工作负载所需的节点数。 这些节点可以是专用节点，也可以是[低优先级节点](batch-low-pri-vms.md)。 然后，Batch 会定期检查服务指标数据，并使用它根据公式和你定义的时间间隔来调整池中的节点数。
 
 可以在创建池时启用自动缩放，也可以将其应用于现有池。 Batch 使可以在将公式分配给池之前先评估公式，以及监视自动缩放运行的状态。 为池配置自动缩放后，可在以后对该公式做出更改。
 
@@ -41,7 +41,7 @@ $variable1 = function1($ServiceDefinedVariable);
 $variable2 = function2($OtherServiceDefinedVariable, $variable1);
 ```
 
-在自动缩放公式中包含这些语句可实现计算节点的目标数。 专用节点和低优先级节点都有其自己的目标设置。 自动缩放公式可以包含专用节点的目标值和/或低优先级节点的目标值。
+在自动缩放公式中包含这些语句可实现计算节点的目标数。 专用节点和低优先级节点都有各自的目标设置。 自动缩放公式可以包含专用节点的目标值和/或低优先级节点的目标值。
 
 节点的目标数可以大于、小于或等于池中该节点类型的当前数目。 Batch 按特定的[自动缩放间隔](#automatic-scaling-interval)对池的自动缩放公式求值。 Batch 将池中每种节点类型的目标数调整成在求值时自动缩放公式所指定的数目。
 
@@ -75,7 +75,7 @@ $TargetLowPriorityNodes = min(maxNumberofVMs , maxNumberofVMs - $TargetDedicated
 $NodeDeallocationOption = taskcompletion;
 ```
 
-稍后将详细介绍 [如何创建自动缩放公式](#write-an-autoscale-formula) ，并查看本主题后面的其他 [示例自动缩放公式](#example-autoscale-formulas) 。
+在本主题中，稍后你将详细了解[如何创建自动缩放公式](#write-an-autoscale-formula)，并查看其他[示例自动缩放公式](#example-autoscale-formulas)。
 
 ## <a name="variables"></a>变量
 
@@ -97,7 +97,7 @@ $NodeDeallocationOption = taskcompletion;
 | 变量 | 说明 |
 | --- | --- |
 | $TargetDedicatedNodes |池的专用计算节点的目标数。 此项被指定为目标，因为池可能不会始终获得所需节点数。 例如，如果在池达到初始目标数之前专用节点的目标数被自动缩放评估修改，则池可能不会达到目标数。 <br /><br /> 如果目标数超过了 Batch 帐户节点或核心配额，则使用 Batch 服务模式创建的帐户中的池无法达到其目标。 如果目标数超过了订阅的共享核心配额，则使用用户订阅模式创建的帐户中的池无法达到其目标。|
-| $TargetLowPriorityNodes |池的低先级计算节点的目标数。 此指定为目标，因为池可能无法始终达到所需的节点数。 例如，如果在池达到初始目标之前，低优先级节点的目标数被自动缩放评估修改，则池可能不会达到目标。 如果目标超过 Batch 帐户节点或核心配额，则池也可能不会实现其目标。 <br /><br /> 有关低优先级计算节点的详细信息，请参阅[在 Batch 中使用低优先级 VM](batch-low-pri-vms.md)。 |
+| $TargetLowPriorityNodes |池的低先级计算节点的目标数。 此项被指定为目标，因为池可能不会始终达到所需节点数。 例如，如果在池达到初始目标数之前低优先级的目标数被自动缩放评估修改，池可能不会达到目标。 如果目标超过 Batch 帐户节点或核心配额，则池也可能不会实现其目标。 <br /><br /> 有关低优先级计算节点的详细信息，请参阅[在 Batch 中使用低优先级 VM](batch-low-pri-vms.md)。 |
 | $NodeDeallocationOption |从池中删除计算节点时发生的操作。 可能的值包括：<ul><li>**requeue**：默认值。 立即终止任务并将其放回作业队列，以便重新计划这些任务。 此操作可确保尽快达到目标节点数。 但是，其效率可能较低，因为任何正在运行的任务都会被中断，必须彻底重启。 <li>**terminate**：立即终止任务并将其从作业队列中删除。<li>**taskcompletion**：等待当前运行的任务完成，然后从池中删除节点。 使用此选项可以避免任务被中断和重新排队，因此不会浪费任务已完成的任何工作。<li>**retaineddata**：等待节点上本地任务保留的所有数据清理完毕，然后从池中删除节点。</ul> |
 
 > [!NOTE]
@@ -128,7 +128,7 @@ $NodeDeallocationOption = taskcompletion;
 | $PendingTasks |$ActiveTasks 和 $RunningTasks 的总和。 |
 | $SucceededTasks |成功完成的任务数。 |
 | $FailedTasks |失败的任务数。 |
-| $TaskSlotsPerNode |可用于在池中单个计算节点上运行并发任务的任务槽数。 |
+| $TaskSlotsPerNode |可用于在池中的单个计算节点上运行并发任务的任务槽数。 |
 | $CurrentDedicatedNodes |当前的专用计算节点数。 |
 | $CurrentLowPriorityNodes |当前低优先级计算节点数，包括任何已占用的节点。 |
 | $PreemptedNodeCount | 池中处于预占状态的节点数。 |

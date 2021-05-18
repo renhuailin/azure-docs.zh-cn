@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
 ms.openlocfilehash: 748eaca93eaee5ec858ea43261995111cef8ceda
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98676845"
 ---
 # <a name="data-storage"></a>数据存储
@@ -47,7 +47,7 @@ ms.locfileid: "98676845"
 
 ## <a name="warm-store"></a>暖存储
 
-你的热存储中的数据只能通过 [时序查询 api](./concepts-query-overview.md)、 [AZURE 时序见解 TSI 资源管理器](./concepts-ux-panels.md)或 [Power BI 连接器](./how-to-connect-power-bi.md)提供。 暖存储查询免费且没有配额，但有一个 [30 个并发请求的限制](/rest/api/time-series-insights/reference-api-limits#query-apis---limits)。
+只能通过[时序查询 API](./concepts-query-overview.md) 和 [Azure 时序见解 TSI Explorer](./concepts-ux-panels.md) 或 [Power BI 连接器](./how-to-connect-power-bi.md)使用暖存储中的数据。 暖存储查询免费且没有配额，但有一个 [30 个并发请求的限制](/rest/api/time-series-insights/reference-api-limits#query-apis---limits)。
 
 ### <a name="warm-store-behavior"></a>暖存储行为
 
@@ -77,7 +77,7 @@ Azure 时序见解第 2 代在 Azure 存储帐户中为每个事件保留最多�
 
 #### <a name="accessing-cold-store-data"></a>访问冷存储数据
 
-除了从 [Azure 时序见解资源管理器](./concepts-ux-panels.md) 和 [时序查询 api](./concepts-query-overview.md)访问数据外，还可能需要直接从存储在 Cold 存储中的 Parquet 文件访问数据。 例如，可以在 Jupyter 笔记本中读取、转换和清理数据，然后使用它来训练同一 Spark 工作流中的 Azure 机器学习模型。
+除了从 [Azure 时序见解资源管理器](./concepts-ux-panels.md)和[时序查询 API](./concepts-query-overview.md) 访问数据外，还可以直接从冷存储中存储的 Parquet 文件访问数据。 例如，可以在 Jupyter 笔记本中读取、转换和清理数据，然后使用它来训练同一 Spark 工作流中的 Azure 机器学习模型。
 
 若要直接从 Azure 存储帐户访问数据，你需要具有用于存储 Azure 时序见解第 2 代数据的帐户的读取访问权限。 然后，可以根据 Parquet 文件的创建时间读取选定的数据，该文件位于下面的 [Parquet 文件格式](#parquet-file-format-and-folder-structure)部分所述的 `PT=Time` 文件夹中。  若要详细了解如何启用对存储帐户的读取访问权限，请参阅[管理对存储帐户资源的访问权限](../storage/blobs/anonymous-read-access-configure.md)。
 

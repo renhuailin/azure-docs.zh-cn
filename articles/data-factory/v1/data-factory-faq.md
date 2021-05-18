@@ -3,16 +3,16 @@ title: Azure 数据工厂 - 常见问题解答
 description: 有关 Azure 数据工厂的常见问题解答。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4ddadec327f1a4f6aa22d51ac073b9aebb0dee82
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 450a12ae5ae1e13c9cc9b5599a41b6c29d740a9f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383188"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785319"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 数据工厂 - 常见问题解答
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "100383188"
 有关详细信息，请参阅[概述和关键概念](data-factory-introduction.md)。
 
 ### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>在哪里可以找到 Azure 数据工厂的定价详细信息？
-有关 Azure 数据工厂的定价详细信息，请参阅 [数据工厂定价详细信息页][adf-pricing-details] 。  
+有关 Azure 数据工厂的定价详细信息，请参阅[“数据工厂定价详细信息”页][adf-pricing-details]。  
 
 ### <a name="how-do-i-get-started-with-azure-data-factory"></a>如何使用 Azure 数据工厂？
 * 有关 Azure 数据工厂的概述，请参阅 [Azure 数据工厂简介](data-factory-introduction.md)。
@@ -46,7 +46,7 @@ ms.locfileid: "100383188"
 可以使用下列工具/SDK 之一创作/创建数据工厂：
 
 * **Visual Studio**：可以使用 Visual Studio 创建 Azure 数据工厂。 有关详细信息，请参阅[使用 Visual Studio 构建第一个数据管道](data-factory-build-your-first-pipeline-using-vs.md)。
-* **Azure PowerShell** 有关使用 PowerShell 创建数据工厂的教程/演练，请参阅 [使用 Azure PowerShell 创建和监视 Azure 数据工厂](data-factory-build-your-first-pipeline-using-powershell.md) 。 有关数据工厂 cmdlet 的综合文档，请参阅 MSDN 库上的[数据工厂 Cmdlet 参考][adf-powershell-reference]内容。
+* **Azure PowerShell**：有关使用 PowerShell 创建数据工厂的教程/演练，请参阅[使用 Azure PowerShell 创建和监视 Azure 数据工厂](data-factory-build-your-first-pipeline-using-powershell.md)。 有关数据工厂 cmdlet 的综合文档，请参阅 MSDN 库上的[数据工厂 Cmdlet 参考][adf-powershell-reference]内容。
 * **.NET 类库**：可以使用数据工厂 .NET SDK 以编程方式创建数据工厂。 有关使用 .NET SDK 创建数据工厂的演练，请参阅[使用 .NET SDK 创建、监视和管理数据工厂](data-factory-create-data-factories-programmatically.md)。 有关数据工厂 .NET SDK 的综合文档，请参阅[数据工厂类库参考][msdn-class-library-reference]。
 * **REST API**：还可以使用 Azure 数据工厂服务公开的 REST API 创建和部署数据工厂。 有关数据工厂 REST API 的综合文档，请参阅[数据工厂 REST API 参考][msdn-rest-api-reference]。
 * **Azure 资源管理器模板**：有关详细信息，请参阅 [教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂](data-factory-build-your-first-pipeline-using-arm.md)。
@@ -55,7 +55,7 @@ ms.locfileid: "100383188"
 不是。 和其他 Azure 资源一样，不可以更改 Azure 数据工厂的名称。
 
 ### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>是否可以将数据工厂从一个 Azure 订阅移动到另一个？
-是。 使用 "数据工厂" 边栏选项卡上的 " **移动** " 按钮，如下图所示：
+是。 使用数据工厂边栏选项卡上的“移动”按钮，如下面的关系图所示：
 
 ![移动数据工厂](media/data-factory-faq/move-data-factory.png)
 
@@ -66,12 +66,12 @@ ms.locfileid: "100383188"
 | --- | --- |
 | [按需 HDInsight 群集](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop 流式处理](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure 机器学习工作室（经典）](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[Studio (经典) 活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure 机器学习工作室（经典）](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[工作室（经典）活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure Synapse Analytics](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[存储过程](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure 数据工厂与 SQL Server Integration Services (SSIS) 相比如何？ 
-请参阅 [Azure 数据工厂和 SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) 演示文稿，从我们的一位 Mvp (最有价值专家) ： Reza Rad。 幻灯片中可能未列出数据工厂中的一些最新更改。 我们将不断向 Azure 数据工厂添加更多的功能。 我们将不断向 Azure 数据工厂添加更多的功能。 我们会在今年晚些时候，将这些更新纳入 Microsoft 的数据集成技术的比较中。   
+请参阅 [Azure 数据工厂与 SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) 演示文稿，来自我们的 MVP（最有价值的专家）之一 Reza Rad。 幻灯片中可能未列出数据工厂中的一些最新更改。 我们将不断向 Azure 数据工厂添加更多的功能。 我们将不断向 Azure 数据工厂添加更多的功能。 我们会在今年晚些时候，将这些更新纳入 Microsoft 的数据集成技术的比较中。   
 
 ## <a name="activities---faq"></a>活动 - 常见问题解答
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>在数据工厂管道中可以使用哪些不同的活动类型？
@@ -166,12 +166,12 @@ Pipeline 1: dataset4->activity4->dataset5
 
 * 使用“监视和管理应用”重新运行活动窗口或切片。 有关说明，请参阅[重新运行所选活动窗口](data-factory-monitor-manage-app.md#perform-batch-actions)。   
 * 在 Azure 门户中，在切片的“数据切片”边栏选项卡上，单击命令栏中的“运行”。
-* 运行 **AzDataFactorySliceStatus** cmdlet，并将状态设置为 " **等待** 切片"。   
+* 对切片运行 Set-AzDataFactorySliceStatus cmdlet（在将“Status”设置为“Waiting”的情况下）。   
 
     ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-  有关 cmdlet 的详细信息，请参阅 [AzDataFactorySliceStatus][set-azure-datafactory-slice-status] 。
+  有关该 cmdlet 的详细信息，请参阅 [Set-AzDataFactorySliceStatus][set-azure-datafactory-slice-status]。
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>处理一个切片需要多长时间？
 请使用“监视和管理应用”中的活动窗口资源管理器来了解处理数据切片所花费的时间。 有关详细信息，请参阅[活动窗口资源管理器](data-factory-monitor-manage-app.md#activity-window-explorer)。
@@ -186,7 +186,7 @@ Pipeline 1: dataset4->activity4->dataset5
 6. 应该会看到“持续时间”字段包含一个值。 该值就是处理切片所花费的时间。   
 
 ### <a name="how-to-stop-a-running-slice"></a>如何停止正在运行的切片？
-如果需要停止执行管道，可以使用 [AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) cmdlet。 目前，挂起管道不会停止正在进行中的切片执行。 一旦完成正在进行中的执行，就不会再选取任何额外的切片。
+如需停止执行管道，可以使用 [Suspend-AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) cmdlet。 目前，挂起管道不会停止正在进行中的切片执行。 一旦完成正在进行中的执行，就不会再选取任何额外的切片。
 
 如果确实想要立即停止所有执行，唯一的方法就是删除管道，再重新创建。 如果选择删除管道，“不”需要删除该管道所使用的表和链接服务。
 

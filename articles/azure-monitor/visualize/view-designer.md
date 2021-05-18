@@ -1,15 +1,15 @@
 ---
-title: 创建视图以分析 Azure Monitor 中的日志数据 |Microsoft Docs
+title: 在 Azure Monitor 中创建分析日志数据的视图 | Microsoft Docs
 description: 可以通过 Azure Monitor 中的视图设计器创建自定义视图，此类视图在 Azure 门户中显示，包含 Log Analytics 工作区中的多种基于数据的可视化效果。 本文包含视图设计器的概述，并提供了创建和编辑自定义视图的过程。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
 ms.openlocfilehash: cb0274260022c55ae657b5b28b2c9ad1903d0296
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043263"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure Monitor 中使用视图设计器创建自定义视图

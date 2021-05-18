@@ -1,16 +1,16 @@
 ---
-title: Apache Kafka TLS 加密 & 身份验证-Azure HDInsight
-description: 为 Kafka 客户端和 Kafka 代理之间以及 Kafka 代理之间的通信设置 TLS 加密。 设置客户端的 SSL 身份验证。
+title: Apache Kafka TLS 加密和身份验证 - Azure HDInsight
+description: 设置 TLS 加密，以便在 Kafka 客户端与 Kafka 代理之间以及在各 Kafka 代理之间进行通信。 设置客户端的 SSL 身份验证。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: 6c020153d5c5cb5aad593c5b15e60e67951b89d4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: d061832022b983e4d5fd55e72c1d4789b82f6633
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945188"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863218"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>为 Azure HDInsight 中的 Apache Kafka 设置 TLS 加密和身份验证
 
@@ -119,7 +119,7 @@ Kafka TLS 代理设置按以下方式使用四个 HDInsight 群集 VM：
 
 ## <a name="update-kafka-configuration-to-use-tls-and-restart-brokers"></a>将 Kafka 配置更新为使用 TLS 并重启代理
 
-现在，你已设置了包含密钥存储和 truststore 的每个 Kafka 代理，并导入了正确的证书。 接下来，请使用 Ambari 修改相关的 Kafka 配置属性，然后重启 Kafka 代理。
+现已为每个 Kafka 代理设置了密钥存储和信任存储，并导入了正确的证书。 接下来，请使用 Ambari 修改相关的 Kafka 配置属性，然后重启 Kafka 代理。
 
 若要完成配置修改，请按照以下步骤操作：
 
@@ -128,11 +128,11 @@ Kafka TLS 代理设置按以下方式使用四个 HDInsight 群集 VM：
 1. 在“Kafka 代理”下，将 **listeners** 属性设置为 `PLAINTEXT://localhost:9092,SSL://localhost:9093`
 1. 在“高级 kafka-broker”下，将 **security.inter.broker.protocol** 属性设置为 `SSL`
 
-    ![在 Ambari 中编辑 Kafka ssl 配置属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png" alt-text="在 Ambari 中编辑 Kafka ssl 配置属性" border="true":::
 
 1. 在“自定义 kafka-broker”下，将 **ssl.client.auth** 属性设置为 `required`。 仅当同时设置了身份验证和加密时，才需要执行此步骤。
 
-    ![在 Ambari 中编辑 kafka ssl 配置属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png" alt-text="在 Ambari 中编辑 kafka ssl 配置属性" border="true":::
 
 1. 对于 HDI 版本 3.6，请转到 Ambari UI，并在“高级 kafka-env”和“kafka-env 模板”属性下添加以下配置 。
 
@@ -153,11 +153,11 @@ Kafka TLS 代理设置按以下方式使用四个 HDInsight 群集 VM：
 
     对于 HDI 版本 3.6：
 
-    ![在 Ambari 中编辑“kafka-env template”属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png" alt-text="在 Ambari 中编辑“kafka-env template”属性" border="true":::
 
     对于 HDI 版本 4.0：
 
-     ![在 Ambari 4 中编辑“kafka-env template”属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
+     :::image type="content" source="./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png" alt-text="在 Ambari 4 中编辑“kafka-env template”属性" border="true":::
 
 1. 重启所有 Kafka 代理。
 

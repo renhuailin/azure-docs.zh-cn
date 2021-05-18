@@ -1,20 +1,20 @@
 ---
 title: Azure 中的自动缩放入门
-description: 了解如何在 Azure 中缩放资源 Web 应用、云服务、虚拟机或虚拟机规模集。
+description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、虚拟机或虚拟机规模集。
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726047"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
 
-Azure Monitor 自动缩放仅适用于 [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、 [云服务](https://azure.microsoft.com/services/cloud-services/)、 [应用服务 Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。
+Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>了解订阅中的自动缩放设置
 
@@ -117,7 +117,7 @@ Azure Monitor 自动缩放仅适用于 [虚拟机规模集](https://azure.micros
 
 <a id="health-check-path"></a>
 
-将 Azure web 应用扩展到多个实例时，应用服务可以对实例执行运行状况检查，以将流量路由到正常的实例。 若要了解详细信息，请参阅 [有关应用服务运行状况检查的这篇文章](../../app-service/monitor-instances-health-check.md)。
+当 Azure Web 应用横向扩展到多个实例时，应用服务可以对实例执行运行状况检查，以仅将流量路由到正常运行的实例。 若要了解详细信息，请参阅[有关应用服务运行状况检查的这篇文章](../../app-service/monitor-instances-health-check.md)。
 
 ## <a name="moving-autoscale-to-a-different-region"></a>将自动缩放移动到其他区域
 本部分介绍如何将 Azure 自动缩放移动到同一订阅和资源组下的另一个区域。 可以使用 REST API 来移动自动缩放设置。

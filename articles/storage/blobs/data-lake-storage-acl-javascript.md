@@ -1,24 +1,24 @@
 ---
-title: 使用 JavaScript 设置 Azure Data Lake Storage Gen2 中的 Acl
-description: 使用 Azure Storage Data Lake 适用于 JavaScript 的客户端库来管理启用了分层命名空间 (HNS) 的存储帐户中 (ACL) 的访问控制列表。
+title: 使用 JavaScript (Node.js) 设置 Azure Data Lake Storage Gen2 中的 ACL
+description: 使用适用于 JavaScript 的 Azure Storage Data Lake 客户端库在启用了分层命名空间 (HNS) 的存储帐户中管理访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
-ms.date: 02/17/2021
+ms.date: 03/19/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: 4d3e13c6593c0e11df84131a9a07eb2868277d2f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.openlocfilehash: 21b4977102a484d8a3a680450a9cb6f77c7e3fbd
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653995"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722746"
 ---
-# <a name="use-javascript-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的 Acl
+# <a name="use-javascript-sdk-in-nodejs-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Node.js 中的 JavaScript SDK 管理 Azure Data Lake Storage Gen2 中的 ACL
 
-本文介绍如何使用 JavaScript 获取、设置和更新目录和文件的访问控制列表。 
+本文介绍如何使用 Node.js 来获取、设置和更新目录和文件的访问控制列表。 
 
 “[包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-file-datalake)” | ”[示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)” | ”[提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)”
 
@@ -34,9 +34,9 @@ ms.locfileid: "100653995"
 
   - 一个预配的 Azure Active Directory (AD) [安全主体](../../role-based-access-control/overview.md#security-principal)，它在目标容器父资源组或订阅范围中分配有[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色。  
 
-  - 你打算将 ACL 设置应用到的目标容器或目录的拥有用户。 若要以递归方式设置 Acl，这包括目标容器或目录中的所有子项。
+  - 计划将 ACL 设置应用到的目标容器或目录的拥有用户。 为了以递归方式设置 ACL，这包括目标容器或目录中的所有子项。
   
-  - 存储帐户密钥 .。。
+  - 存储帐户密钥。
 
 ## <a name="set-up-your-project"></a>设置项目
 
@@ -49,7 +49,11 @@ npm install @azure/storage-file-datalake
 将此语句放置在代码文件的顶部，以导入 `storage-file-datalake` 包。 
 
 ```javascript
-const AzureStorageDataLake = require("@azure/storage-file-datalake");
+const {
+AzureStorageDataLake,
+DataLakeServiceClient,
+StorageSharedKeyCredential
+} = require("@azure/storage-file-datalake");
 ```
 
 ## <a name="connect-to-the-account"></a>连接到帐户
@@ -59,7 +63,7 @@ const AzureStorageDataLake = require("@azure/storage-file-datalake");
 ### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory (AD) 进行连接
 
 > [!NOTE]
-> 若要使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们的影响，请参阅  [Azure Data Lake Storage Gen2 中的访问控制模型](./data-lake-storage-access-control-model.md)。
+> 若要使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改这些权限所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制模型](./data-lake-storage-access-control-model.md)。
 
 可以使用[适用于 JS 的 Azure 标识客户端库](https://www.npmjs.com/package/@azure/identity)，通过 Azure AD 对应用程序进行身份验证。
 
@@ -167,7 +171,7 @@ async function ManageDirectoryACLs(fileSystemClient) {
 
 还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将空字符串 (`/`) 传递到“DataLakeFileSystemClient.getDirectoryClient”方法。
 
-### <a name="get-and-set-a-file-acl"></a>获取和设置文件 ACL
+### <a name="get-and-set-a-file-acl"></a>获取并设置文件 ACL
 
 此示例获取并设置名为 `upload-file.txt` 的文件的 ACL。 此示例为拥有用户提供读取、写入和执行权限，为拥有组授予读取和执行权限，并为所有其他用户提供读取访问权限。
 

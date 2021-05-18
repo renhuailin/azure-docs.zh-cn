@@ -13,10 +13,10 @@ ms.author: aiwang
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 01af0e620ecb100839f7b1101e5ff9fcfc874eea
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92206663"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>将使用代理的 Android 应用程序从 ADAL.NET 迁移到 MSAL.NET
@@ -25,7 +25,7 @@ ms.locfileid: "92206663"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Xamarin Android 应用已与需要迁移到 MSAL.NET 的代理 ([Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) 或 [Intune 公司门户](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)) 和 ADAL.NET 集成。
+* Xamarin Android 应用已与需要迁移到 MSAL.NET 的代理（[Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) 或 [Intune 公司门户](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)）和 ADAL.NET 集成。
 
 ## <a name="step-1-enable-the-broker"></a>步骤 1：启用中介
 

@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
 ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87284908"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 虚拟机上的自定义数据和 Cloud-Init
 
-在设置时，可能需要将一个脚本或其他元数据注入到 Microsoft Azure 虚拟机。  在其他云中，此概念通常称为用户数据。  在 Microsoft Azure 中，我们有一个称为自定义数据的类似功能。 
+可能需要在预配时将脚本或其他元数据注入 Microsoft Azure 虚拟机。  在其他云中，此概念通常称为用户数据。  在 Microsoft Azure 中，我们有一个称为自定义数据的类似功能。 
 
-自定义数据仅在首次启动/初始设置（称为“预配”）期间提供给 VM。 预配是指向 VM 提供“VM 创建”参数（例如主机名、用户名、密码、证书、自定义数据、密钥等）的过程，某个预配代理（例如 [Linux 代理](./extensions/agent-linux.md)和 [cloud-init](./linux/using-cloud-init.md#troubleshooting-cloud-init)）会处理这些参数。 
+自定义数据仅在第一次启动/初始设置期间可用于 VM，我们称之为“预配”。 预配是指向 VM 提供“VM 创建”参数（例如主机名、用户名、密码、证书、自定义数据、密钥等）的过程，某个预配代理（例如 [Linux 代理](./extensions/agent-linux.md)和 [cloud-init](./linux/using-cloud-init.md#troubleshooting-cloud-init)）会处理这些参数。 
 
 
 ## <a name="passing-custom-data-to-the-vm"></a>将自定义数据传递给 VM
@@ -80,7 +80,7 @@ Azure 目前支持两个预配代理：
 若要排查自定义数据执行问题，请查看故障排除[文档](./linux/using-cloud-init.md#troubleshooting-cloud-init)。
 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>是否可以在创建 VM 后更新自定义数据？
 对于单个 VM，无法更新 VM 模型中的自定义数据，但对于 VMSS，你可以通过 [REST API](/rest/api/compute/virtualmachinescalesets/update) 更新 VMSS 自定义数据（不适用于 PS 或 AZ CLI 客户端）。 在 VMSS 模型中更新自定义数据时：
 * VMSS 中的现有实例只有在重置映像之后，才会获得更新的自定义数据。
@@ -88,7 +88,7 @@ Azure 目前支持两个预配代理：
 * 新实例会接收新的自定义数据。
 
 ### <a name="can-i-place-sensitive-values-in-custom-data"></a>是否可将敏感值放入自定义数据中？
-建议**不要**将敏感数据存储在自定义数据中。 有关详细信息，请参阅 [Azure 安全和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md)。
+建议 **不要** 将敏感数据存储在自定义数据中。 有关详细信息，请参阅 [Azure 安全和加密最佳做法](../security/fundamentals/data-encryption-best-practices.md)。
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>自定义数据在 IMDS 中是否可用？

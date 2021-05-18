@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
 ms.openlocfilehash: 2f34e0bb3c4abcf4efba807f95decd798bbc1f86
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101669069"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
@@ -25,7 +25,7 @@ ms.locfileid: "101669069"
 az vm image list --publisher oracle -o table --all
 ```
 
-截至2020年6月，提供以下映像：
+自 2020 年 6 月起提供以下映像：
 
 ```bash
 Offer                   Publisher    Sku                     Urn                                                          Version

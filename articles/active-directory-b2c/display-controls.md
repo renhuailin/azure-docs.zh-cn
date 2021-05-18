@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97387048"
 ---
 # <a name="display-controls"></a>显示控件
@@ -44,7 +44,7 @@ ms.locfileid: "97387048"
 
 **DisplayControl** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于显示控件的一个标识符。 可以对它进行[引用](#referencing-display-controls)。 |
 | UserInterfaceControlType | 是 | 显示控件的类型。 当前支持的是 [VerificationControl](display-control-verification.md) |
@@ -108,7 +108,7 @@ Actions 元素包含以下元素：
 
 Action 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 操作的类型。 可能的值：`SendCode` 或 `VerifyCode`。 `SendCode` 值向用户发送代码。 此操作可能包含两个验证技术配置文件：一个用于生成代码，另一个用于发送代码。 `VerifyCode` 值验证用户在输入文本框中键入的代码。 |
 
@@ -128,7 +128,7 @@ ValidationClaimsExchange 元素包含以下元素：
 
 ValidationTechnicalProfile 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略或父策略中定义的技术配置文件的标识符。 |
 |ContinueOnError|否| 指示在此验证技术配置文件引发错误时，任何后续验证技术配置文件是否应继续进行验证。 可能的值：`true` 或 `false`（默认值，进一步验证配置文件的处理会停止，并且返回错误）。 |
@@ -142,7 +142,7 @@ ValidationTechnicalProfile 元素包含以下元素：
 
 Precondition 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | `Type` | 是 | 要对前置条件执行的检查或查询的类型。 可能的值：`ClaimsExist` 或 `ClaimEquals`。 如果指定的声明存在于用户的当前声明集中，则 `ClaimsExist` 指定应执行的操作。 如果指定的声明存在并且其值等于指定的值，则 `ClaimEquals` 指定应执行的操作。 |
 | `ExecuteActionsIf` | 是 | 指示在测试为 true 或 false 时是否应执行前置条件中的操作。 |
@@ -227,5 +227,5 @@ Precondition 元素包含以下元素：
 
 有关使用显示控件的示例，请参阅： 
 
-- [通过 Mailjet 进行自定义电子邮件验证](custom-email-mailjet.md)
-- [通过 SendGrid 进行自定义电子邮件验证](custom-email-sendgrid.md)
+- [使用 Mailjet 进行自定义电子邮件验证](custom-email-mailjet.md)
+- [使用 SendGrid 进行自定义电子邮件验证](custom-email-sendgrid.md)

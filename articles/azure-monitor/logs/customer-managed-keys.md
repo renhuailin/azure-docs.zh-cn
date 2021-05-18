@@ -6,10 +6,10 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
 ms.openlocfilehash: 9fdaf42f18c320bf841e710b7066451fca24eaae
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030981"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
@@ -24,7 +24,7 @@ ms.locfileid: "102030981"
 
 Azure Monitor 确保使用 Microsoft 管理的密钥 (MMK) 静态加密所有数据和保存的查询。 Azure Monitor 还可以使用你自己的密钥进行加密（该密钥存储在 [Azure Key Vault](../../key-vault/general/overview.md) 中），这会赋予你控制权，允许你随时撤销对你的数据的访问权限。 Azure Monitor 进行加密的操作与[Azure 存储加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)的操作相同。
 
-客户管理的密钥在提供更高保护级别和控制的 [专用群集](./logs-dedicated-clusters.md) 上传递。 引入到专用群集的数据将被加密两次-一次是在使用 Microsoft 托管密钥或客户托管密钥的服务级别，一次使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](#customer-lockbox-preview)控制来保护数据。
+客户管理的密钥在[专用的群集](./logs-dedicated-clusters.md)上提供，可提供更高的保护级别和控制。 引入到专用群集的数据进行两次加密 - 一次在服务级别使用 Microsoft 管理的密钥或客户管理的密钥，一次在基础结构级别使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](#customer-lockbox-preview)控制来保护数据。
 
 过去 14 天内引入的数据也保存在热缓存（受 SSD 支持）中，以实现高效的查询引擎操作。 此数据保持使用 Microsoft 密钥进行加密，而不管客户管理的密钥的配置如何，但你对 SSD 数据的控制将遵循[密钥吊销](#key-revocation)规定。 我们正致力于在 2021 年的上半年使用客户管理的密钥加密 SSD 数据。
 
@@ -59,7 +59,7 @@ Azure Monitor 使用托管标识授予对 Azure Key Vault 的访问权限。 在
 - Log Analytics 群集存储帐户为每个存储帐户生成唯一的加密密钥，称为 AEK。
 - AEK 用于派生 DEK 密钥，后者用于对写入磁盘的每个数据块进行加密。
 - 在 Key Vault 中配置密钥并在群集中引用它时，Azure 存储会将请求发送到 Azure Key Vault 以包装和解包 AEK，从而执行数据加密和解密操作。
-- 你的 KEK 绝不会离开你的 Key Vault，在使用 HSM 密钥的情况下，它绝不会离开硬件。
+- KEK 绝不会离开 Key Vault，HSM 密钥绝不会离开硬件。
 - Azure 存储使用与群集资源关联的托管标识通过 Azure Active Directory 对 Azure Key Vault 进行身份验证和访问。
 
 ### <a name="customer-managed-key-provisioning-steps"></a>客户管理的密钥的预配步骤
@@ -117,7 +117,7 @@ Authorization: Bearer <token>
 ## <a name="create-cluster"></a>创建群集
 
 群集支持两种[托管标识类型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系统分配的标识和用户分配的标识，而单一标识可根据自己的场景在群集中进行自定义。 
-- 当标识 `type` 设置为“SystemAssigned”时，系统分配的托管标识会更加简单，并在群集创建过程中自动生成。 此标识稍后可用于授予对 Key Vault 进行包装和解包操作的存储访问权限。 
+- 当标识 `type` 设置为“SystemAssigned”时，系统分配的托管标识会更加简单，并在群集创建过程中自动生成。 此标识稍后可用于授予对 Key Vault 的存储访问权限，以便进行包装和展开操作。 
   
   群集中系统分配的托管标识的标识设置
   ```json
@@ -128,7 +128,7 @@ Authorization: Bearer <token>
   }
   ```
 
-- 如果你想要在创建群集时配置客户托管的密钥，你应该事先在 Key Vault 中授予密钥和用户分配的标识，然后使用以下设置创建群集：标识 `type` 为 "*UserAssigned*"， `UserAssignedIdentities` 其中包含标识的 *资源 ID* 。
+- 如果要在创建群集时配置客户管理的密钥，则应事先在 Key Vault 中授予密钥和用户分配的标识，然后使用以下设置创建群集：标识 `type` 为“UserAssigned”，`UserAssignedIdentities` 具有标识的资源 ID。
 
   群集中用户分配的托管标识的标识设置
   ```json
@@ -142,7 +142,7 @@ Authorization: Bearer <token>
   ```
 
 > [!IMPORTANT]
-> 如果 Key Vault Private-Link (vNet) ，则不能使用用户分配的托管标识。 在这种情况下，可以使用系统分配的托管标识。
+> 如果 Key Vault 位于专用链接 (vNet) 中，则不能使用用户分配的托管标识。 在这种情况下，可以使用系统分配的托管标识。
 
 请遵循[“专用群集”一文](./logs-dedicated-clusters.md#creating-a-cluster)中说明的过程。 
 
@@ -382,7 +382,7 @@ Content-type: application/json
 
 在 Azure Monitor 中，对 Log Analytics 专用群集所链接的工作区中的数据也可以实现上述操作。 密码箱适用于 Log Analytics 专用群集中存储的数据，在群集中这些数据以隔离形式存在于受密码箱保护的订阅下的群集存储帐户中。  
 
-了解有关[Microsoft Azure 客户密码箱的](../../security/fundamentals/customer-lockbox-overview.md)详细信息
+了解有关 [Microsoft Azure 客户密码箱](../../security/fundamentals/customer-lockbox-overview.md)详细信息
 
 ## <a name="customer-managed-key-operations"></a>客户管理的密钥的操作
 
@@ -415,11 +415,11 @@ Content-type: application/json
 
 - 当前不能在中国使用密码箱。 
 
-- 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过在群集上发送 GET 请求来验证群集是否已配置为进行双重加密，并观察 `isDoubleEncryptionEnabled` 该值是否 `true` 适用于启用了双加密的群集。 
-  - 如果创建了一个群集并收到错误 "<region name> 不支持对群集进行双加密"，则仍可通过 `"properties": {"isDoubleEncryptionEnabled": false}` 在 REST 请求正文中添加来创建不带双重加密的群集。
+- 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过在群集上发送 GET 请求并观察启用了双重加密的群集的 `isDoubleEncryptionEnabled` 值是否为 `true` 来验证是否为你的群集配置了双重加密。 
+  - 如果你创建群集并收到错误“<区域名称> 不支持对群集进行双重加密。”，则你仍可通过在 REST 请求正文中添加 `"properties": {"isDoubleEncryptionEnabled": false}` 以在不使用双重加密的情况下创建群集。
   - 创建群集后，无法更改双重加密设置。
 
-  - 如果你的群集是使用用户分配的托管标识设置的，则设置 `UserAssignedIdentities` `None` 会挂起群集并阻止对数据的访问，但不能在不打开支持请求的情况下还原吊销并激活群集。 此限制不会应用到系统分配的托管标识。
+  - 如果你的群集是使用用户分配的托管标识设置的，将 `UserAssignedIdentities` 设置为 `None` 会挂起群集并阻止对数据的访问，但如果不提交支持请求，则不能还原吊销并激活群集。 此限制不会应用到系统分配的托管标识。
 
   - 如果 Key Vault 位于专用链接 (vNet) 中，则不能将客户管理的密钥与用户分配的托管标识一起使用。 在这种情况下，可以使用系统分配的托管标识。
 
@@ -436,7 +436,7 @@ Content-type: application/json
 
 - 如果在群集处于预配或更新状态时对其进行更新，则更新将失败。
 
-- 如果在创建群集时出现冲突，则可能是你在过去14天内删除了群集，并且该群集位于软删除期间。 软删除期间，群集名称保持为预留，并且无法新建同名群集。 永久删除群集时，名称将在软删除期结束后释放。
+- 如果创建群集时出现冲突错误，原因可能是你在过去 14 天内删除了群集，并且它处于软删除期间。 软删除期间，群集名称保持为预留，并且无法新建同名群集。 永久删除群集时，名称将在软删除期结束后释放。
 
 - 将工作区链接到群集时，如果是链接到其他群集，则链接会失败。
 

@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric Reliable Services 生命周期
-description: 了解使用 Java 的 Azure Service Fabric Reliable Services 应用程序中的生命周期事件以实现有状态和无状态服务。
+description: 了解使用 Java 实现有状态和无状态服务的 Azure Service Fabric Reliable Services 应用程序中的生命周期事件。
 author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-java
 ms.author: pakunapa
 ms.openlocfilehash: b22c78a0259e4430ac6bfae1c0a9379c4a832cd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87324601"
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services 生命周期

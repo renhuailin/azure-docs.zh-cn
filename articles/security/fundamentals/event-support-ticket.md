@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80548595"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>如何记录安全事件支持票证
@@ -28,11 +28,11 @@ ms.locfileid: "80548595"
 
     ![事件类型和定义](./media/event-support-ticket/chart.png)
 
-3. 选择问题类型和类别后，单击 "**启动请求**" 按钮。 提供以下信息有助于了解问题。
+3. 选择问题类型和类别后，单击“启动请求”按钮。 提供以下信息有助于了解问题。
 
     i. 问题和/或漏洞是什么？
 
-    ii. 对于漏洞，请提供 CVE (mitre.org) 或 CVSS3 v3 计算器的已填充 (https://www.first.org/cvss/calculator/3.0) 。
+    ii. 对于漏洞，请提供 CVE (mitre.org) 或已填充的 CVSS3 v3 计算器 (https://www.first.org/cvss/calculator/3.0) 。
 
     iii. 是否有解决方法或缓解措施？ 如果是，请提供补救措施。
 

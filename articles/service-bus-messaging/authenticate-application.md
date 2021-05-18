@@ -4,10 +4,10 @@ description: 本文介绍如何对使用 Azure Active Directory 访问 Azure 服
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518222"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 对应用程序进行身份验证和授权，使之能够访问 Azure 服务总线实体
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 通过 [Azure RBAC](../role-based-access-contr
 
 以下列表描述了可将服务总线资源访问权限限定到哪些级别，从最小的范围开始：
 
-- **队列**、**主题**或**订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别为服务总线 Azure 角色分配用户/组/托管标识。 
+- **队列**、**主题** 或 **订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别为服务总线 Azure 角色分配用户/组/托管标识。 
 - **服务总线命名空间**：角色分配横跨命名空间中服务总线的整个拓扑，并延伸至与之关联的使用者组。
 - **资源组**：角色分配适用于资源组下的所有服务总线资源。
 - **订阅**：角色分配适用于订阅的所有资源组中的所有服务总线资源。
@@ -65,12 +65,12 @@ Azure Active Directory (Azure AD) 通过 [Azure RBAC](../role-based-access-contr
 1. 在 [Azure 门户](https://portal.azure.com/)中，导航到你的服务总线命名空间。 选择左侧菜单上的“访问控制(标识和访问管理)”，显示命名空间的访问控制设置  。 如果需要创建服务总线命名空间，请按此文中的说明操作：[创建服务总线消息传送命名空间](service-bus-create-namespace-portal.md)。
 
     ![在左侧菜单中选择“访问控制”](./media/authenticate-application/select-access-control-menu.png)
-1. 选择“角色分配”选项卡以查看角色分配列表。 在工具栏上选择“添加”按钮，然后选择“添加角色分配”。 
+1. 选择“角色分配”  选项卡以查看角色分配列表。 在工具栏上选择“添加”按钮，然后选择“添加角色分配”。 
 
     ![工具栏上的“添加”按钮](./media/authenticate-application/role-assignments-add-button.png)
 1. 在“添加角色分配”  页上，执行以下步骤：
-    1. 选择要分配的**服务总线角色**。 
-    1. 通过搜索找到要为其分配该角色的**安全主体**（用户、组、服务主体）。
+    1. 选择要分配的 **服务总线角色**。 
+    1. 通过搜索找到要为其分配该角色的 **安全主体**（用户、组、服务主体）。
     1. 选择“保存”以保存角色分配。 
 
         ![向用户分配角色](./media/authenticate-application/assign-role-to-user.png)
@@ -131,7 +131,7 @@ Azure Active Directory (Azure AD) 通过 [Azure RBAC](../role-based-access-contr
 有关支持获取令牌的方案列表，请参阅[适用于 .NET 的 Microsoft 身份验证库 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub 存储库的[方案](https://aka.ms/msal-net-scenarios)部分。
 
 ## <a name="sample-on-github"></a>GitHub 上的示例
-请参阅 GitHub 上的以下示例： [Azure 服务总线基于角色的访问控制](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)。 
+查看 GitHub 上的以下示例：[服务总线的 Azure 基于角色的访问控制](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)。 
 
 使用“客户端机密登录”选项，而不是“交互用户登录”选项。 使用客户端机密选项时，看不到弹出窗口。 应用程序会使用租户 ID 和应用 ID 进行身份验证。 
 

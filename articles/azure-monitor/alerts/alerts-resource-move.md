@@ -6,16 +6,16 @@ ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 02/14/2021
-ms.openlocfilehash: eb6dbb74fe0d345a157049e79f7a3642499d7cfa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d21ee7a60d11a154737c5380ec20d3e9c4490962
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037976"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786056"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>如何在警报规则或操作规则的目标资源移动到其他 Azure 区域时对这些规则进行更新
 
-本文介绍了当你在区域之间移动其他 Azure 资源时，为何现有的[警报规则](./alerts-overview.md)和[操作规则](./alerts-action-rules.md)会受影响，以及如何识别和解决这些问题。 请查看主要的[资源移动文档](../../azure-resource-manager/management/move-region.md)，详细了解何时需要在区域之间移动资源，以及用于设计移动过程的清单。
+本文介绍了当你在区域之间移动其他 Azure 资源时，为何现有的[警报规则](./alerts-overview.md)和[操作规则](./alerts-action-rules.md)会受影响，以及如何识别和解决这些问题。 请查看主要的[资源移动文档](../../azure-resource-manager/management/move-resources-overview.md)，详细了解何时需要在区域之间移动资源，以及用于设计移动过程的清单。
 
 ## <a name="why-the-problem-exists"></a>存在此问题的原因
 
@@ -67,7 +67,7 @@ Azure 资源发出的指标是区域性的。 每次将资源移到新区域时�
 
 - **对于警报规则** - 导航到“警报”>“管理警报规则”> 按包含项目的订阅和移动的资源进行筛选。
 > [!NOTE]
-> 活动日志警报规则不支持此过程。 无法更新活动日志警报规则的范围，也无法将其指向另一个订阅中的资源。 你可以改为创建新规则来替换旧规则。
+> 活动日志警报规则不支持此过程。 无法更新活动日志预警规则的范围，也无法将其指向另一个订阅中的资源。 你可以改为创建新规则来替换旧规则。
 
 - **对于操作规则** - 导航到“警报”>“管理操作”>“操作规则(预览版)”> 按包含项目的订阅和移动的资源进行筛选。
 
@@ -82,7 +82,7 @@ Azure 资源发出的指标是区域性的。 每次将资源移到新区域时�
 
 ### <a name="change-the-scope-of-a-rule-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板更改规则的范围
 
-1. 获取规则的 Azure 资源管理器模板。  若要从 Azure 门户导出规则的模板，请执行以下操作：
+1. 获取规则的 Azure 资源管理器模板。   若要从 Azure 门户导出规则的模板，请执行以下操作：
    1. 在门户中导航到“资源组”部分，打开包含该规则的资源组。
    2. 在“概览”部分中，选中“显示隐藏的类型”复选框，并按规则的相关类型进行筛选。
    3. 选择相关规则以查看其详细信息。
@@ -104,8 +104,8 @@ Azure 资源发出的指标是区域性的。 每次将资源移到新区域时�
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>使用 Azure CLI 更改规则的范围
 
-1.  获取现有规则（[指标警报](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show)、[活动日志警报](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)）。
-2.  直接更新规则范围（[指标警报](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update)、[活动日志警报](/cli/azure/monitor/activity-log/alert/scope)）
+1.  获取现有规则（[指标警报](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_show)、[活动日志警报](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log-alert_list)）。
+2.  直接更新规则范围（[指标警报](/cli/azure/monitor/metrics/alert#az_monitor_metrics_alert_update)、[活动日志警报](/cli/azure/monitor/activity-log/alert/scope)）
 3.  如果需要，请将其拆分为两个规则（这适用于指标警报的某些案例，如上文所述）。
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,46 +1,46 @@
 ---
-title: 了解 Azure Monitor 经典警报的自动迁移过程是如何工作的
-description: 了解自动迁移过程的工作方式。
+title: 了解 Azure Monitor 经典警报的自动迁移过程的工作原理
+description: 了解自动迁移过程的工作原理。
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.openlocfilehash: 92aaffcea7a7c96cd77aade318520b093eed3e14
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102045456"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>了解经典警报规则的自动迁移过程
 
-如前所述 [，对于](monitoring-classic-retirement.md)公有云用户，Azure Monitor 中的经典警报将会停用，但在31年 **5 月31日之前仍2021会** 受到限制。 Azure 政府云和 Azure 中国世纪互联的经典警报将于 **2024 年2月29日** 停用。
+如[以前公告](monitoring-classic-retirement.md)的那样，Azure Monitor 中的经典警报已对公有云用户停用，但在 2021 年 5 月 31 日之前仍可有限制地使用它。 针对 Azure 政府云和 Azure 中国世纪互联的经典警报将于 2024 年 2 月 29 日停用。
 
-Azure 门户中提供[了一个迁移工具](alerts-using-migration-tool.md)，供客户自行触发迁移。 本文介绍了公有云中的自动迁移过程，该过程将在31年5月2021后开始。 它还详细介绍了你可能会遇到的问题和解决方案。
+Azure 门户中提供了一个可供客户自行触发迁移的[迁移工具](alerts-using-migration-tool.md)。 本文介绍了公有云中的自动迁移过程，该过程将于 2021 年 5 月 31 日之后启动。 还详细介绍了你可能会遇到的问题及其解决方案。
 
 ## <a name="important-things-to-note"></a>需要注意的重要事项
 
 迁移过程会将经典警报规则转换为新的等效警报规则，并创建操作组。 在准备期间，请注意以下几点：
 
-- 新警报规则的通知负载格式不同于经典警报规则的负载，因为它们支持更多功能。 如果有使用逻辑应用、runbook 或 webhook 的经典警报规则，则在迁移后，它们可能会因负载不同而停止按预期方式工作。 [了解如何准备迁移](alerts-prepare-migration.md)。
+- 新警报规则的通知有效负载格式不同于经典警报规则的有效负载，因为它们支持更多的功能。 如果你对逻辑应用、Runbook 或 Webhook 有一个经典警告规则，该规则可能会在迁移后如预期的那样停止工作，因为有效负载存在差异。 [了解如何准备迁移](alerts-prepare-migration.md)。
 
-- 不能使用工具迁移某些经典警报规则。 [了解无法迁移哪些规则以及](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)如何处理它们。
+- 一些经典警报规则无法通过使用工具进行迁移。 [了解无法迁移哪些规则及其解决方法](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)。
 
-## <a name="what-will-happen-during-the-automatic-migration-process-in-public-cloud"></a>在公有云中的自动迁移过程中将发生什么情况？
+## <a name="what-will-happen-during-the-automatic-migration-process-in-public-cloud"></a>在公有云中的自动迁移过程期间会发生什么情况？
 
-- 从31年5月 2021 5 日开始，你将无法创建任何新的经典警报规则，并将成批触发经典警报的迁移。
-- 监视已删除目标资源或 [不再受支持的度量值](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics) 的任何经典警报规则都被视为无效。
-- 在31月 2021 5 日后，将删除无效的经典警报规则。
-- 一旦迁移开始后，就会在一小时内完成。 客户可以在 [Azure Monitor 的迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)上监视迁移状态。
-- 如果迁移成功或失败，订阅所有者将收到一封电子邮件。
+- 从 2021 年 5 月 31 日开始，你将无法创建任何新的经典警报规则，经典警报的迁移将分批触发。
+- 监视已删除的目标资源或针对[不再受支持的指标](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics)的任何经典警报规则都被视为无效。
+- 在 2021 年 5 月 31 日之后，无效的经典警报规则将被删除。
+- 对订阅的迁移开始后，它应该在一个小时内完成。 客户可在 [Azure Monitor 中的迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)上监视迁移的状态。
+- 订阅所有者将收到有关迁移成功或失败的电子邮件。
 
     > [!NOTE]
-    > 如果你不想等待自动迁移过程开始，你仍可以使用迁移工具主动触发迁移。
+    > 如果不想等待自动迁移过程启动，仍可使用迁移工具自行触发迁移。
 
-## <a name="what-if-the-automatic-migration-fails"></a>如果自动迁移失败，该怎么办？
+## <a name="what-if-the-automatic-migration-fails"></a>如果自动迁移失败，怎么办？
 
-当自动迁移过程失败时，订阅所有者将收到一封电子邮件，通知他们此问题。 你可以使用 Azure Monitor 中的迁移工具来查看问题的完整详细信息。 请参阅[故障排除指南](alerts-understand-migration.md#common-problems-and-remedies)来解决迁移期间可能遇到的问题。
+当自动迁移过程失败时，订阅所有者将收到一封电子邮件，让他们知道这个问题。 可使用 Azure Monitor 中的迁移工具查看问题的完整详细信息。 请参阅[故障排除指南](alerts-understand-migration.md#common-problems-and-remedies)来解决迁移期间可能遇到的问题。
 
   > [!NOTE]
-  > 如果客户需要执行操作（如暂时禁用资源锁定或更改策略分配），则客户需要解决此类问题。 如果未解决问题，则无法保证经典警报的成功迁移。
+  > 如果需要客户采取操作（例如暂时禁用资源锁或更改策略分配），客户需要解决任何此类问题。 如果到那时还未解决问题，则无法保证成功迁移经典警报。
 
 ## <a name="next-steps"></a>后续步骤
 

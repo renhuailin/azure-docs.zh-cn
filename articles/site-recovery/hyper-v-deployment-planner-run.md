@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Site Recovery 中运行 Hyper-v 部署规划器
+title: 在 Azure Site Recovery 中运行 Hyper-V 部署规划器
 description: 本文介绍如何运行用于从 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器。
 author: mayurigupta13
 manager: rochakm
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mayg
 ms.openlocfilehash: ba1979c940d4a92b3d1a7a52a4f356b2896ece55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74082608"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>运行用于从 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 
 可使用以下四种模式之一运行 Site Recovery 部署规划器命令行工具 (ASRDeploymentPlanner.exe)： 
 -   获取虚拟机 (VM) 列表
--   [配置文件](#profile-hyper-v-vms)
+-   [Profile](#profile-hyper-v-vms)
 -   生成报告
 -   [获取吞吐量](#get-throughput)
 
@@ -97,7 +97,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Directory|（可选）用于存储在分析期间生成的分析数据的 UNC 或本地目录路径。 如果未指定名称，则会使用当前路径下名为 ProfiledData 的目录作为默认目录。|
 |-Password|（可选）连接到 Hyper-V 主机所需的密码。 如果未将密码指定为参数，则在运行命令时，系统会提示你输入它。|
 |-StorageAccountName|（可选）存储帐户名称，用于确定在将数据从本地复制到 Azure 时可实现的吞吐量。 该工具会将测试数据上传到此存储帐户来计算吞吐量。 存储帐户必须是常规用途 v1 (GPv1) 类型。|
-|-StorageAccountKey|（可选）用于访问存储帐户的密钥。 转到 Azure 门户 >“存储帐户”   > *存储帐户名称* >   “设置” >   “访问密钥” > **Key1**（或经典存储帐户的主访问密钥）。|
+|-StorageAccountKey|（可选）用于访问存储帐户的密钥。 转到 Azure 门户 >“存储帐户” > *存储帐户名称* > “设置” > “访问密钥” > **Key1**（或经典存储帐户的主访问密钥）。|
 |-Environment|（可选）Azure 存储帐户的目标环境。 它可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标区域为 Azure 美国政府或 Azure 中国世纪互联时，请使用此参数。|
 
 建议在分析 VM 时，分析 7 天以上。 如果变动量模式在某个月发生变化，建议在看到最大变动量的一周内进行分析。 最好的方式是分析 31 天，以便获取更好的建议。 
@@ -157,7 +157,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Dire
 Azure Site Recovery 不支持使用 iSCSI 和传递磁盘的 VM。 该工具无法检测和分析附加到 VM 的 iSCSI 和传递磁盘。
 
 ## <a name="generate-a-report"></a>生成报告
-该工具生成一个启用了宏的 Microsoft Excel 文件（XLSM 文件）作为报表输出， 并对所有部署建议进行了汇总。 该报表名为 DeploymentPlannerReport_*唯一数字标识符*.xlsm，置于指定目录中。
+该工具生成一个启用了宏的 Microsoft Excel 文件（XLSM 文件）作为报表输出， 并对所有部署建议进行了汇总。 该报表名为 DeploymentPlannerReport_ *唯一数字标识符*.xlsm，置于指定目录中。
 
 完成分析后，可在报告生成模式下运行该工具。 
 
@@ -281,7 +281,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 |-Virtualization|虚拟化类型（VMware 或 Hyper-V）。|
 |-Directory|（可选）UNC 或本地目录路径，其中存储了分析数据（在分析期间生成的文件）。 需要使用此数据来生成报告。 如果未指定名称，则会使用当前路径下名为 ProfiledData 的目录作为默认目录。|
 | -StorageAccountName | 存储帐户名称，用于确定在将数据从本地复制到 Azure 时消耗的带宽。 该工具会将测试数据上传到此存储帐户来确定消耗的带宽。 存储帐户必须是常规用途 v1 (GPv1) 类型。|
-| -StorageAccountKey | 用于访问存储帐户的存储帐户密钥。 请参阅 "Azure 门户 >**存储**帐户" "存储帐户" "  >  *存储帐户*" "  >  **Settings**  >  **访问密钥**"  >  **Key1**。|
+| -StorageAccountKey | 用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户” > *存储帐户名称* > “设置” > “访问密钥” > **Key1**。|
 | -VMListFile | 一个文件，其中包含一系列可以通过分析来计算所消耗带宽的 VM。 文件路径可以是绝对或相对路径。 对于 Hyper-V，此文件是 GetVMList 操作的输出文件。 如果手动进行准备，此文件应包含一个服务器名称或 IP 地址，后跟 VM 名称（每一行都由 \ 分隔）。 该文件中指定的 VM 名称应与 Hyper-V 主机上的 VM 名称相同。<br><br>**示例：** VMList.txt 包含以下 VM：<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Environment|（可选）Azure 存储帐户的目标环境。 它可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府或 Azure 中国世纪互联时，请使用此参数。|
 
@@ -292,7 +292,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Direc
 
 ### <a name="throughput-considerations"></a>吞吐量注意事项
 
-该工具将在指定的目录中创建多个 64 MB 的 asrvhdfile*number*.vhd 文件（其中 *number* 是文件编号）。 该工具会将这些文件上传到存储帐户来确定吞吐量。 测出吞吐量后，该工具会从存储帐户和本地服务器中删除所有这些文件。 如果该工具在计算吞吐量时因故被终止，它不会从存储帐户或本地服务器中删除这些文件。 需手动删除这些文件。
+该工具将在指定的目录中创建多个 64 MB 的 asrvhdfile *number*.vhd 文件（其中 *number* 是文件编号）。 该工具会将这些文件上传到存储帐户来确定吞吐量。 测出吞吐量后，该工具会从存储帐户和本地服务器中删除所有这些文件。 如果该工具在计算吞吐量时因故被终止，它不会从存储帐户或本地服务器中删除这些文件。 需手动删除这些文件。
 
 吞吐量在指定的时间点测量。 它是 Azure Site Recovery 在复制过程中能够实现的最大吞吐量，前提是所有其他系数保持不变。 例如，如果任何应用程序在相同的网络中开始消耗更多的带宽，则在复制期间实际吞吐量会有所变化。 如果是在受保护 VM 的数据变动量高时运行 GetThroughput 操作，则所测吞吐量的结果会有所不同。 
 

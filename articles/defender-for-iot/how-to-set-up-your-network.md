@@ -1,34 +1,30 @@
 ---
 title: 设置网络
-description: 了解需要确保成功将网络设置为使用适用于 IoT 设备的 Azure Defender 的解决方案体系结构、网络准备、先决条件和其他信息。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
+description: 了解需要提供哪些解决方案体系结构、网络准备、先决条件和其他信息，才能确保成功设置好网络来使用 Azure Defender for IoT 设备。
 ms.date: 02/18/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 0f85eebbfa8fcdfd9ad6e31a564f27b5d9bfbdfc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ed75995b7cbc3b051d77942698a5d0d948e6eef0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733238"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781800"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>关于 Azure Defender for IoT 网络设置
 
-Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平台包括以下组件：
+Azure Defender for IoT 提供连续的 ICS 威胁监视和设备发现。 该平台包含以下组件：
 
-**用于 IoT 传感器的 Defender：** 传感器使用被动 (无代理) 监视收集 ICS 网络流量。 被动和产生干扰，传感器对 OT 网络和设备的性能没有影响。 传感器连接到 SPAN 端口或网络分流，并立即开始监视网络。 检测在传感器控制台中显示。 在这里，你可以在网络映射、设备清单和范围广泛的报表中查看、调查和分析它们。 示例包括风险评估报表、数据挖掘查询和攻击向量。 
+Defender for IoT 传感器：传感器使用被动（无代理）监视收集 ICS 网络流量。 这些传感器属被动非侵入式传感器，对 OT 与 IoT 网络和设备的性能不会造成任何影响。 传感器在连接到 SPAN 端口或网络 TAP 后，会立即开始监视你的网络。 检测结果会在传感器控制台中显示。 在那里，可以在网络映射、设备库存和各种报告中查看、调查和分析这些结果。 例如，风险评估报告、数据挖掘查询、攻击途径。 
 
-**用于 IoT 本地管理控制台的 Defender**：本地管理控制台提供所有网络设备的合并视图。 它在所有设备上实时查看关键的和 IoT 风险指标和警报。 它与 SOC 工作流和行动手册紧密集成，可轻松地确定缓解活动的优先级，以及威胁的跨站点关联。 
+Defender for IoT 本地管理控制台：本地管理控制台提供所有网络设备的合并视图。 它提供所有设施中关键 OT 与 IoT 风险指标和警报的实时视图。 它紧密集成了 SOC 工作流和 playbook，可轻松确定缓解活动的优先级和跨站点的威胁关联。 
 
-**用于 IoT 的 Defender 门户：** 用于 IoT 应用程序的 Defender 可帮助你购买解决方案设备、安装和更新软件以及更新 TI 包。 
+Defender for IoT 门户：Defender for IoT 应用程序可帮助你购买解决方案设备、安装和更新软件，以及更新 TI 包。 
 
-本文提供了有关解决方案体系结构、网络准备、先决条件等的信息，可帮助你成功将网络设置为使用适用于 IoT 设备的 Defender。 使用本文中的信息的读者应在操作和管理 OT 和 IoT 网络方面有经验。 示例包括自动化工程师、植物经理、网络基础结构服务提供商、网络安全团队、Ciso 或 Cio。
+本文提供有关解决方案体系结构、网络准备、先决条件等信息，以帮助你成功设置网络来使用 Defender for IoT 设备。 阅读本文中的信息的读者应具备操作和管理 OT 与 IoT 网络方面的经验。 这些读者包括自动化工程师、工厂经理、OT 网络基础结构服务提供商、网络安全团队、CISO 或 CIO。
 
-若要获得帮助或支持，请联系 [Microsoft 支持部门](https://support.microsoft.com/en-us/supportforbusiness/productselection?sapId=82c88f35-1b8e-f274-ec11-c6efdd6dd099)。
+如需帮助或支持，请联系 [Microsoft 支持部门](https://support.microsoft.com/en-us/supportforbusiness/productselection?sapId=82c88f35-1b8e-f274-ec11-c6efdd6dd099)。
 
-## <a name="on-site-deployment-tasks"></a>现场部署任务
+## <a name="on-site-deployment-tasks"></a>站点部署任务
 
 站点部署任务包括：
 
@@ -40,7 +36,7 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 ### <a name="collect-site-information"></a>收集站点信息
 
-记录站点信息，例如：
+记录如下所述的站点信息：
 
 - 传感器管理网络信息。
 
@@ -50,21 +46,21 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 - 系统集成。
 
-- 计划的用户凭据。
+- 规划的用户凭据。
 
 - 配置工作站。
 
-- SSL 证书 (可选的，但建议) 。
+- SSL 证书（可选，但建议记录）。
 
-- SMTP 身份验证 (可选) 。 若要将 SMTP 服务器用于身份验证，请准备服务器所需的凭据。
+- SMTP 身份验证（可选）。 若要将 SMTP 服务器用于身份验证，请准备服务器所需的凭据。
 
-- DNS 服务器 (可选的) 。 准备 DNS 服务器的 IP 和主机名。
+- DNS 服务器（可选）。 准备 DNS 服务器的 IP 和主机名。
 
-有关重要站点信息的详细列表和说明，请参阅 [示例网站书籍](#example-site-book)。
+有关重要站点信息的详细列表和说明，请参阅[示例站点手册](#example-site-book)。
 
-#### <a name="successful-monitoring-guidelines"></a>成功的监视指导原则
+#### <a name="successful-monitoring-guidelines"></a>有关成功监视的指导原则
 
-若要在每个生产网络中查找连接设备的最佳位置，建议执行以下步骤：
+若要在每个生产网络中找到最适合连接到设备的位置，我们建议遵循以下过程：
 
 :::image type="content" source="media/how-to-set-up-your-network/production-network-diagram.png" alt-text="生产网络设置示意图示例。":::
 
@@ -74,41 +70,41 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 - 与传感器管理接口的连接。
 
-- 受支持的浏览器
+- 支持的浏览器
 
-- 终端软件，如 PuTTY。
+- 终端软件，例如 PuTTY。
 
-请确保在工作站上打开了所需的防火墙规则。 有关详细信息，请参阅 [网络访问要求](#network-access-requirements) 。
+确保所需的防火墙规则已在工作站上打开。 有关详细信息，请参阅[网络访问要求](#network-access-requirements)。
 
 #### <a name="supported-browsers"></a>支持的浏览器
 
-传感器和本地管理控制台 web 应用程序支持以下浏览器：
+传感器和本地管理控制台 Web 应用程序支持以下浏览器：
 
-- Chrome 32 +
+- Chrome 32+
 
-- Microsoft Edge 86 +
+- Microsoft Edge 86+
 
 - Internet Explorer 10+
 
 ### <a name="network-access-requirements"></a>网络访问要求
 
-验证你的组织安全策略是否允许访问以下内容：
+验证你的组织安全策略是否允许访问以下各项：
 
-| 协议 | Transport | 输入/输出 | 端口 | 已使用 | 目的 | 源 | 目标 |
+| 协议 | Transport | 输入/输出 | 端口 | 已使用 | 用途 | 源 | 目标 |
 |--|--|--|--|--|--|--|--|
-| HTTPS | TCP | IN/OUT | 443 | 传感器和本地管理控制台 Web 控制台 | 访问 Web 控制台 | 客户端 | 传感器和本地管理控制台 |
-| SSH | TCP | IN/OUT | 22 | CLI | 访问 CLI | 客户端 | 传感器和本地管理控制台 |
-| SSL | TCP | IN/OUT | 443 | 传感器和本地管理控制台 | CyberX 平台与中央管理平台之间的连接 | 传感器 | 本地管理控制台 |
-| NTP | UDP | IN | 123 | 时间同步 | 本地管理控制台使用 as NTP 传感器 | 传感器 | 本地管理控制台 |
-| NTP | UDP | IN/OUT | 123 | 时间同步 | 未安装本地管理控制台时，连接到外部 NTP 服务器的传感器 | 传感器 | NTP |
-| SMTP | TCP | OUT | 25 | 电子邮件 | CyberX 平台与管理平台与邮件服务器之间的连接 | 传感器和本地管理控制台 | 电子邮件服务器 |
+| HTTPS | TCP | 输入/输出 | 443 | 传感器和本地管理 Web 控制台 | 访问 Web 控制台 | 客户端 | 传感器和本地管理控制台 |
+| SSH | TCP | 输入/输出 | 22 | CLI | 访问 CLI | 客户端 | 传感器和本地管理控制台 |
+| SSL | TCP | 输入/输出 | 443 | 传感器和本地管理控制台 | CyberX 平台与集中管理平台之间的连接 | 传感器 | 本地管理控制台 |
+| NTP | UDP | IN | 123 | 时间同步 | 本地管理控制台使用 NTP 来连接传感器 | 传感器 | 本地管理控制台 |
+| NTP | UDP | 输入/输出 | 123 | 时间同步 | 未安装本地管理控制台时，传感器将连接到外部 NTP 服务器 | 传感器 | NTP |
+| SMTP | TCP | OUT | 25 | 电子邮件 | CyberX 平台和管理平台与邮件服务器之间的连接 | 传感器和本地管理控制台 | 电子邮件服务器 |
 | Syslog | UDP | OUT | 514 | LEEF | 从本地管理控制台发送到 Syslog 服务器的日志 | 本地管理控制台和传感器 | Syslog 服务器 |
-| DNS |  | IN/OUT | 53 | DNS | DNS 服务器端口 | 本地管理控制台和传感器 | DNS 服务器 |
-| LDAP | TCP | IN/OUT | 389 | Active Directory | 在 CyberX 平台和管理平台之间连接到 Active Directory | 本地管理控制台和传感器 | LDAP 服务器 |
-| LDAPS | TCP | IN/OUT | 636 | Active Directory | 在 CyberX 平台和管理平台之间连接到 Active Directory | 本地管理控制台和传感器 | LDAPS 服务器 |
+| DNS |  | 输入/输出 | 53 | DNS | DNS 服务器端口 | 本地管理控制台和传感器 | DNS 服务器 |
+| LDAP | TCP | 输入/输出 | 389 | Active Directory | CyberX 平台和管理平台与 Active Directory 之间的连接 | 本地管理控制台和传感器 | LDAP 服务器 |
+| LDAPS | TCP | 输入/输出 | 636 | Active Directory | CyberX 平台和管理平台与 Active Directory 之间的连接 | 本地管理控制台和传感器 | LDAPS 服务器 |
 | SNMP | UDP | OUT | 161 | 监视 | 远程 SNMP 收集器。 | 本地管理控制台和传感器 | SNMP 服务器 |
 | WMI | UDP | OUT | 135 | 监视 | Windows 终结点监视 | 传感器 | 相关网络元素 |
-| 隧道 | TCP | IN | 9000 <br /><br />-在端口443之上 <br /><br />从最终用户到本地管理控制台。 <br /><br />-从传感器到本地管理控制台的端口22  | 监视 | 隧道 | 传感器 | 本地管理控制台 |
+| 隧道 | TCP | IN | 9000 <br /><br />- 在端口 443 上 <br /><br />从最终用户到本地管理控制台。 <br /><br />- 从传感器的端口 22 到本地管理控制台  | 监视 | 隧道 | 传感器 | 本地管理控制台 |
 
 ### <a name="planning-rack-installation"></a>规划机架安装
 
@@ -116,204 +112,204 @@ Azure Defender for IoT 提供持续的 ICS 威胁监视和设备发现。 此平
 
 1. 为设备网络设置准备监视器和键盘。
 
-1. 为设备分配货架空间。
+1. 为设备分配机架空间。
 
-1. 设备是否有可用的 AC 电源。
-1. 准备用于将管理连接到网络交换机的 LAN 电缆。
-1. 准备好用于连接交换机范围 (镜像的 LAN 电缆) 端口和或网络点击到 IoT 设备的 Defender。 
-1. 如体系结构审查会话中所述，配置、连接和验证镜像交换机中的 SPAN 端口。
-1. 将配置的 SPAN 端口连接到运行 Wireshark 的计算机，并验证是否正确配置了端口。
+1. 为设备提供交流电源。
+1. 准备好用于将管理控制台连接到网络交换机的 LAN 线缆。
+1. 准备好用于将交换机 SPAN（镜像）端口和/或网络 TAP 连接到 Defender for IoT 设备的 LAN 线缆。 
+1. 根据体系结构复习课中所述，配置、连接并验证镜像交换机中的 SPAN 端口。
+1. 将已配置的 SPAN 端口连接到运行 Wireshark 的计算机，并验证是否正确配置了该端口。
 1. 打开所有相关的防火墙端口。
 
 ## <a name="about-passive-network-monitoring"></a>关于被动网络监视
 
-设备通过交换机镜像端口 (跨端口) 或网络点击来接收来自多个源的流量。 管理端口连接到业务、公司或传感器管理网络，连接到本地管理控制台或 Defender for IoT 门户。
+设备通过交换机镜像端口（SPAN 端口）或网络 TAP 接收来自多个源的流量。 管理端口通过与本地管理控制台或 Defender for IoT 门户建立的连接，连接到业务、企业或传感器管理网络。
 
-:::image type="content" source="media/how-to-set-up-your-network/switch-with-port-mirroring.png" alt-text="具有端口镜像的托管交换机的关系图。":::
+:::image type="content" source="media/how-to-set-up-your-network/switch-with-port-mirroring.png" alt-text="使用端口镜像的受管理交换机的示意图。":::
 
 ### <a name="purdue-model"></a>Purdue 模型
 
-以下各节介绍了 Purdue 级别。
+以下部分将介绍 Purdue 级别。
 
-:::image type="content" source="media/how-to-set-up-your-network/purdue-model.png" alt-text="Purdue 模型的关系图。":::
+:::image type="content" source="media/how-to-set-up-your-network/purdue-model.png" alt-text="Purdue 模型示意图。":::
 
-####  <a name="level-0-cell-and-area"></a>级别0：单元格和区域  
+####  <a name="level-0-cell-and-area"></a>级别 0：单元和区域  
 
-级别0包含基本制造过程中涉及的各种传感器、传动装置和设备。 这些设备执行工业自动化和控制系统的基本功能，例如：
+级别 0 由涉及到基本制造过程的各种传感器、传动器和设备组成。 这些设备执行工业自动化和控制系统的基本功能，例如：
 
-- 驱动汽车。
+- 驱动马达。
 
-- 度量变量。
+- 测量变量。
 - 设置输出。
-- 执行键功能，如绘制、焊接和蛇形。
+- 执行关键功能，例如喷漆、焊接和弯折。
 
-#### <a name="level-1-process-control"></a>级别1：进程控制
+#### <a name="level-1-process-control"></a>级别 1：过程控制
 
-级别1由嵌入式控制器组成，它们控制和操作其键函数与级别0设备通信的生产进程。 在离散制造中，这些设备是 (Plc) 或远程遥测单位 (RTUs) 的可编程逻辑控制器。 在处理制造中，基本控制器称为分布式控制系统 (DC) 。
+级别 1 由嵌入式控制器组成，这些控制器操控其关键功能是与级别 0 设备通信的制造过程。 在离散式制造中，这些设备是可编程逻辑控制器 (PLC) 或远程遥测单元 (RTU)。 在流程式制造中，基本控制器称为分布式控制系统 (DCS)。
 
-#### <a name="level-2-supervisory"></a>级别2：监管
+#### <a name="level-2-supervisory"></a>级别 2：监督
 
-级别2表示与生产设施的某个区域的运行时监管和操作相关联的系统和功能。 这通常包括以下内容： 
+级别 2 代表与某个生产设施区域的运行时监督和操作关联的系统与功能。 这通常包括以下各项： 
 
-- Operator 接口或 HMIs
+- 操作员接口或 HMI
 
 - 告警或警报系统
 
-- 处理 historian 和 batch 管理系统
+- 过程历史数据库和批管理系统
 
 - 控制室工作站
 
-这些系统与第1级中的 Plc 和 RTUs 通信。 在某些情况下，它们与站点或企业 (级别4和级别 5) 系统和应用程序通信或共享数据。 这些系统主要基于标准计算设备和操作系统 (Unix 或 Microsoft Windows) 。
+这些系统与级别 1 中的 PLC 和 RTU 通信。 在某些情况下，它们与站点或企业（级别 4 和级别 5）系统和应用程序通信或共享数据。 这些系统主要基于标准计算设备和操作系统（Unix 或 Microsoft Windows）。
 
-#### <a name="levels-3-and-35-site-level-and-industrial-perimeter-network"></a>级别3和3.5：站点级别和工业外围网络
+#### <a name="levels-3-and-35-site-level-and-industrial-perimeter-network"></a>级别 3 和 3.5：站点级别和工业外围网络
 
-站点级别表示工业自动化和控制系统的最高级别。 位于此级别的系统和应用程序将管理站点范围的工业自动化和控制功能。 级别0到3被视为对站点操作至关重要。 位于此级别的系统和功能可能包括：
+站点级别代表工业自动化和控制系统的最高级别。 位于此级别的系统和应用程序将管理站点范围的工业自动化和控制功能。 级别 0 至 3 被认为对站点操作至关重要。 位于此级别的系统和功能可能包括：
 
-- 生产报表 (例如，周期时间、质量索引、预测维护) 
+- 生产报告（例如周期时间、质量索引、预测性维护）
 
-- 植物 historian
+- 工厂历史数据库
 
-- 详细生产计划
+- 详细生产排程
 
 - 站点级操作管理
 
 - 设备和材料管理
 
-- 修补程序启动服务器
+- 补丁启动服务器
 
 - 文件服务器
 
-- 工业域，Active Directory，终端服务器
+- 工业域、Active Directory、终端服务器
 
-这些系统与生产区域通信，并与企业 (级别4和级别 5) 系统和应用程序共享数据。  
+这些系统与生产区域通信，并与企业（级别 4 和级别 5）系统和应用程序共享数据。  
 
-#### <a name="levels-4-and-5-business-and-enterprise-networks"></a>级别4和5：企业网络和企业网络
+#### <a name="levels-4-and-5-business-and-enterprise-networks"></a>级别 4 和 5：业务和企业网络
 
-级别4和级别5代表集中式 IT 系统和功能所在的站点或企业网络。 IT 组织会直接管理这些级别的服务、系统和应用程序。
+级别 4 和级别 5 代表集中式 IT 系统和功能所在的站点或企业网络。 IT 组织直接管理位于这些级别的服务、系统和应用程序。
 
 ## <a name="planning-for-network-monitoring"></a>规划网络监视
 
-以下示例演示了适用于工业控制网络的不同类型的拓扑，以及传感器的最佳监视和放置的注意事项。
+以下示例演示了工业控制网络的不同类型的拓扑，以及以最佳方式监视和定位传感器时的注意事项。
 
 ### <a name="what-should-be-monitored"></a>应监视哪些内容？
 
-应监视遍历第1层和第2层的流量。
+应监视流经第 1 和第 2 层的流量。
 
-### <a name="what-should-the-defender-for-iot-appliance-connect-to"></a>IoT 设备的 Defender 应连接到什么？
+### <a name="what-should-the-defender-for-iot-appliance-connect-to"></a>Defender for IoT 设备应连接到哪些组件？
 
-用于 IoT 设备的 Defender 应连接到托管交换机，这些交换机在某些情况下还会在第3层) 中看到第1层和第2层之间的工业通信 (。
+Defender for IoT 设备应连接到可看到第 1 层与第 2 层（在某些情况下还包括第 3 层）之间的工业通信的受管理交换机。
 
-下图是多层的多租户网络的总体抽象概念，其中包含的大规模网络安全生态系统通常由 SOC 和 MSSP 操作。
+下图是多层多租户网络的总体抽象图，其中的广阔网络安全生态系统通常由 SOC 和 MSSP 运营。
 
-通常，NTA 传感器部署在 OSI 模型的第0层到第3层。
+通常，NTA 传感器部署在 OSI 模型的第 0 层到第 3 层。
 
-:::image type="content" source="media/how-to-set-up-your-network/osi-model.png" alt-text="OSI 模型的关系图。":::
+:::image type="content" source="media/how-to-set-up-your-network/osi-model.png" alt-text="OSI 模型示意图。":::
 
 #### <a name="example-ring-topology"></a>示例：环形拓扑
 
-环形网络是一种拓扑，其中每个交换机或节点正好连接到两个其他交换机，形成流量的单个连续路径。
+环形网络是其中每个交换机或节点连接到其他两个（且只能是两个）交换机，从而构成单个连续路径用于传送流量的一种拓扑。
 
-:::image type="content" source="media/how-to-set-up-your-network/ring-topology.PNG" alt-text="环形拓扑图。":::
+:::image type="content" source="media/how-to-set-up-your-network/ring-topology.PNG" alt-text="环形拓扑示意图。":::
 
-#### <a name="example-linear-bus-and-star-topology"></a>示例：线性总线和星型拓扑
+#### <a name="example-linear-bus-and-star-topology"></a>示例：线性总线和星形拓扑
 
-在星形网络中，每个主机都连接到中心集线器。 在最简单的形式中，一个中心中心充当用于传输消息的管道。 在以下示例中，不会监视较低版本的交换机，也不会显示仍为本地交换机的流量。 可能会根据 ARP 消息标识设备，但会缺少连接信息。
+在星形网络中，每个主机连接到中心集线器。 最简单的形式是，由一个中心集线器充当管道来传输消息。 在以下示例中，不会监视下方的交换机，并且看不到保留在这些交换机本地的流量。 可根据 ARP 消息识别设备，但缺少连接信息。
 
-:::image type="content" source="media/how-to-set-up-your-network/linear-bus-star-topology.PNG" alt-text="线性总线和星型拓扑的关系图。":::
+:::image type="content" source="media/how-to-set-up-your-network/linear-bus-star-topology.PNG" alt-text="线性总线和星形拓扑示意图。":::
 
-#### <a name="multisensor-deployment"></a>Multisensor 部署
+#### <a name="multisensor-deployment"></a>多传感器部署
 
-下面是部署多个传感器的一些建议：
+下面是有关部署多个传感器的一些建议：
 
-| **数字** | **计量** | **依赖项** | **传感器数量** |
+| **数字** | **米** | **依赖项** | **传感器数量** |
 |--|--|--|--|
-| 交换机之间的最大距离 | 80米 | 准备好的以太网电缆 | 超过1个 |
-| 网络的数目 | 超过1个 | 无物理连接 | 超过1个 |
-| 开关数 | 可以使用 RSPAN 配置 | 通过布线距离，最多可将本地跨度接近于传感器的8个交换机 | 超过1个 |
+| 交换机之间的最大距离 | 80 米 | 已准备好的以太网线缆 | > 1 |
+| OT 网络数量 | > 1 | 无物理连接 | > 1 |
+| 交换机数量 | 可以使用 RSPAN 配置 | 最多可部署 8 个本地 SPAN 与传感器靠近的交换机，具体取决于布线距离 | > 1 |
 
 #### <a name="traffic-mirroring"></a>流量镜像  
 
-若要仅查看流量分析的相关信息，需要将 Defender for IoT 平台连接到交换机上的镜像端口，或只包含工业 ICS 和 SCADA 流量的网络分流。 
+若要仅查看流量分析的相关信息，需要将 Defender for IoT 平台连接到交换机上的镜像端口，或连接到只包含工业 ICS 和 SCADA 流量的 TAP。 
 
-:::image type="content" source="media/how-to-set-up-your-network/switch.jpg" alt-text="使用此开关进行设置。":::
+:::image type="content" source="media/how-to-set-up-your-network/switch.jpg" alt-text="将此交换机用于设置。":::
 
-你可以使用以下方法监视交换机流量：
+可使用以下方法监视交换机流量：
 
-- [交换机范围端口](#switch-span-port)
+- [交换机 SPAN 端口](#switch-span-port)
 
-- [远程 SPAN (RSPAN) ](#remote-span-rspan)
+- [远程 SPAN (RSPAN)](#remote-span-rspan)
 
-- [主动和被动聚合分流点](#active-and-passive-aggregation-tap)
+- [主动和被动聚合 TAP](#active-and-passive-aggregation-tap)
 
-SPAN 和 RSPAN 是 Cisco 术语。 其他品牌的交换机具有类似的功能，但可能使用不同的术语。
+SPAN 和 RSPAN 是 Cisco 的术语。 其他品牌的交换机具有类似的功能，但可能使用不同的术语。
 
-#### <a name="switch-span-port"></a>交换机范围端口
+#### <a name="switch-span-port"></a>交换机 SPAN 端口
 
-交换机端口分析器将交换机上的接口的本地流量镜像到相同交换机上的接口。 下面是一些注意事项：
+交换机端口分析器将交换机上的接口发出的本地流量镜像到同一交换机上的接口。 下面是一些注意事项：
 
 - 验证相关交换机是否支持端口镜像功能。  
 
-- 镜像选项默认情况下处于禁用状态。
+- 默认会禁用镜像选项。
 
-- 建议配置交换机的所有端口，即使没有数据连接到交换机。 否则，恶意设备可能连接到不受监视的端口，并且不会在传感器上收到警报。
+- 我们建议配置交换机的所有端口，即使这些端口不连接任何数据。 否则，恶意设备可能会连接到不受监视的端口，而且在传感器上不会收到警报。
 
-- 在使用广播或多播消息的网络上，将开关配置为仅限镜像 RX (接收) 传输。 否则，将为多个活动端口重复多播消息，并将带宽相乘。
+- 在利用广播或多播消息的 OT 网络上，将交换机配置为仅镜像 RX（接收）传输。 否则，多播消息将会根据主动端口数目反复传输，消耗的带宽会倍增。
 
-以下配置示例仅供参考，并且基于 Cisco 2960 交换机 (24 个端口) 运行 IOS。 它们只是典型示例，因此请勿将其用作说明。 其他 Cisco 操作系统和其他品牌交换机的镜像端口配置不同。
+以下配置示例仅供参考，基于运行 IOS 的 Cisco 2960 交换机（24 个端口）。 这只是一些典型示例，因此请勿将其当作说明书使用。 其他 Cisco 操作系统和其他品牌的交换机上的镜像端口配置方式不同。
 
-:::image type="content" source="media/how-to-set-up-your-network/span-port-configuration-terminal-v2.png" alt-text="SPAN 端口配置终端的关系图。":::
-:::image type="content" source="media/how-to-set-up-your-network/span-port-configuration-mode-v2.png" alt-text="跨端口配置模式的关系图。":::
+:::image type="content" source="media/how-to-set-up-your-network/span-port-configuration-terminal-v2.png" alt-text="SPAN 端口配置终端示意图。":::
+:::image type="content" source="media/how-to-set-up-your-network/span-port-configuration-mode-v2.png" alt-text="SPAN 端口配置模式示意图。":::
 
-##### <a name="monitoring-multiple-vlans"></a>监视多个 Vlan
+##### <a name="monitoring-multiple-vlans"></a>监视多个 VLAN
 
-Defender for IoT 允许监视网络中配置的 Vlan。 无需为 IoT 系统配置 Defender。 用户需要确保网络中的交换机配置为将 VLAN 标记发送到用于 IoT 的 Defender。
+Defender for IoT 允许监视网络中配置的 VLAN。 无需对 Defender for IoT 系统进行任何配置。 用户需确保网络中的交换机已配置为将 VLAN 标记发送到 Defender for IoT。
 
-以下示例显示了必须在 Cisco 交换机上配置的必需命令，以便在用于 IoT 的 Defender 中监视 Vlan：
+以下示例演示了要在 Defender for IoT 启用 VLAN 监视而必须在 Cisco 交换机上配置的命令：
 
-**监视会话**：此命令负责将 vlan 发送到 SPAN 端口。
+Monitor session：此命令负责将 VLAN 发送到 SPAN 端口的过程。
 
-- 监视会话1源接口 Gi1/2
+- monitor session 1 source interface Gi1/2
 
-- 监视会话1筛选器数据包类型良好 Rx
+- monitor session 1 filter packet type good Rx
 
-- 监视会话1目标接口 fastEthernet1/1 封装 dot1q
+- monitor session 1 destination interface fastEthernet1/1 encapsulation dot1q
 
-**监视干线端口 F.E. Gi1/1**：在中继端口上配置 vlan。
+Monitor Trunk Port F.E.Gi1/1：在汇聚端口上配置 VLAN。
 
 - interface GigabitEthernet1/1
 
-- 交换机间中继封装 dot1q
+- switchport trunk encapsulation dot1q
 
-- 交换机间模式干线
+- switchport mode trunk
 
-#### <a name="remote-span-rspan"></a>远程 SPAN (RSPAN) 
+#### <a name="remote-span-rspan"></a>远程 SPAN (RSPAN)
 
-远程 SPAN 会话反映了从多个分布式源端口到专用远程 VLAN 的流量。  
+远程 SPAN 会话将多个分布式源端口发出的流量镜像到专用远程 VLAN 中。  
 
-:::image type="content" source="media/how-to-set-up-your-network/remote-span.png" alt-text="远程范围关系图。":::
+:::image type="content" source="media/how-to-set-up-your-network/remote-span.png" alt-text="远程 SPAN 示意图。":::
 
-然后，通过中继端口跨多个交换机将 VLAN 中的数据传递到包含物理目标端口的特定交换机。 此端口连接到 IoT 平台的 Defender。  
+然后，通过汇聚端口跨多个交换机将 VLAN 中的数据传递到包含物理目标端口的特定交换机。 此端口连接到 Defender for IoT 平台。  
 
 ##### <a name="more-about-rspan"></a>有关 RSPAN 的详细信息
 
-- RSPAN 是一项高级功能，需要特殊的 VLAN 来携带跨交换机的流量。 所有交换机都不支持 RSPAN。 验证开关是否支持 RSPAN 函数。
+- RSPAN 是一项高级功能，它需要使用特殊的 VLAN 在交换机之间传输 SPAN 监视的流量。 并非所有交换机都支持 RSPAN。 请验证你的交换机是否支持 RSPAN 功能。
 
-- 镜像选项默认情况下处于禁用状态。
+- 默认会禁用镜像选项。
 
-- 在源交换机和目标交换机之间的中继端口上必须允许使用远程 VLAN。
+- 源交换机与目标交换机之间的汇聚端口上必须允许远程 VLAN。
 
-- 连接同一个 RSPAN 会话的所有交换机都必须来自同一个供应商。
+- 连接同一个 RSPAN 会话的所有交换机必须来自同一家供应商。
 
 > [!NOTE]
-> 请确保共享交换机之间的远程 VLAN 的中继端口未定义为镜像会话源端口。
+> 确保在交换机之间共享远程 VLAN 的汇聚端口未定义为镜像会话源端口。
 >
-> 远程 VLAN 按镜像会话带宽的大小增加中继端口上的带宽。 验证交换机的干线端口是否支持该端口。  
+> 远程 VLAN 会增大汇聚端口上的带宽用量，增量与镜像会话的带宽大小相当。 验证交换机的汇聚端口是否支持这种情况。  
 
-:::image type="content" source="media/how-to-set-up-your-network/remote-vlan.jpg" alt-text="远程 VLAN 关系图。":::
+:::image type="content" source="media/how-to-set-up-your-network/remote-vlan.jpg" alt-text="远程 VLAN 示意图。":::
 
 #### <a name="rspan-configuration-examples"></a>RSPAN 配置示例
 
-RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
+RSPAN：基于 Cisco catalyst 2960（24 个端口）。
 
 **源交换机配置示例：**
 
@@ -323,15 +319,15 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 1. 创建专用 VLAN。
 
-1. 将 VLAN 标识为 RSPAN VLAN。
+1. 将该 VLAN 标识为 RSPAN VLAN。
 
-1. 返回 "配置终端" 模式。
+1. 返回“配置终端”模式。
 
-1. 将所有24个端口配置为会话源。
+1. 将所有 24 个端口配置为会话源。
 
 1. 将 RSPAN VLAN 配置为会话目标。
 
-1. 返回到特权执行模式。
+1. 返回特权 EXEC 模式。
 
 1. 验证端口镜像配置。
 
@@ -341,238 +337,238 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 1. 将 RSPAN VLAN 配置为会话源。
 
-1. 将物理端口24配置为会话目标。
+1. 将物理端口 24 配置为会话目标。
 
-1. 返回到特权执行模式。
+1. 返回特权 EXEC 模式。
 
 1. 验证端口镜像配置。
 
 1. 保存配置。
 
-#### <a name="active-and-passive-aggregation-tap"></a>主动和被动聚合分流点
+#### <a name="active-and-passive-aggregation-tap"></a>主动和被动聚合 TAP
 
-将主动或被动聚合分流方式安装到网络电缆。 它将 RX 和 TX 都复制到监视传感器。
+主动或被动聚合 TAP 以内联方式安装在网线中。 它将 RX 和 TX 复制到监视传感器。
 
- (，终端接入点) 是一种硬件设备，允许网络流量从端口 A 流向端口 B，从端口 B 流向端口 A，而不会中断。 它会连续创建流量流两侧的完全副本，而不会影响网络完整性。 如果需要，某些点击会使用交换机设置来聚合传输和接收流量。 如果不支持聚合，则每个分流器都使用两个传感器端口来监视发送和接收流量。
+终端接入点 (TAP) 是一个硬件设备，用于将网络流量从端口 A 传送到端口 B，或者从端口 B 传送到端口 A，而不会出现中断。 它会连续创建两端的流量流的精确副本，且不会影响网络完整性。 某些 TAP 会根据需要使用交换机设置来聚合传输和接收流量。 如果不支持聚合，则每个 TAP 将使用两个传感器端口来监视发送和接收流量。
 
-点击由于各种原因非常有利。 它们是基于硬件的，不会受到损害。 它们会传递经常丢弃的所有流量，甚至是损坏的消息。 它们不是处理器敏感的，因此，数据包计时是指交换机处理镜像函数的确切位置，这是一项可以影响镜像数据包的时间的低优先级任务。 出于取证考虑，点击是最佳设备。
+出于各种原因，TAP 具备诸多优势。 TAP 基于硬件，因此不会遭到入侵。 它们传递所有流量，甚至包括往往由交换机丢弃的已损坏消息。 它们不是处理器敏感型设备，因此数据包计时非常精确，交换机将镜像功能当作可影响镜像数据包计时的低优先级任务进行处理。 对于取证目的，TAP 是最佳设备。
 
-点击聚合器还可用于端口监视。 这些设备是基于处理器的，并不像硬件点击那样本质上是安全的。 它们可能不会反映确切的数据包计时。
+TAP 聚合器也可用于端口监视。 但这些设备基于处理器，因此其内在安全性不如硬件 TAP。 它们可能不会反映精确的数据包计时。
 
-:::image type="content" source="media/how-to-set-up-your-network/active-passive-tap-v2.PNG" alt-text="主动和被动分流关系图。":::
+:::image type="content" source="media/how-to-set-up-your-network/active-passive-tap-v2.PNG" alt-text="主动和被动 TAP 示意图。":::
 
-##### <a name="common-tap-models"></a>常用分流模型
+##### <a name="common-tap-models"></a>常见 TAP 型号
 
-这些模型已测试兼容性。 其他供应商和型号也可能兼容。
+这些型号已经过兼容性测试。 其他供应商和型号也可能兼容。
 
 | 映像 | 建模 |
 |--|--|
 | :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS 的屏幕截图。"::: | Garland P1GCCAS |
 | :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 的屏幕截图。"::: | IXIA TPA2-CU3 |
-| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="美国机器人 USR 4503 的屏幕截图。"::: | 美国机器人 USR 4503 |
+| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="US Robotics USR 4503 的屏幕截图。"::: | US Robotics USR 4503 |
 
-##### <a name="special-tap-configuration"></a>特殊点击配置
+##### <a name="special-tap-configuration"></a>特殊 TAP 配置
 
-| Garland | US 机器人分流 |
+| Garland TAP | US Robotics TAP |
 | ----------- | --------------- |
-| 请确保跳线设置如下：<br />:::image type="content" source="media/how-to-set-up-your-network/jumper-setup-v2.jpg" alt-text="美国机器人开关屏幕截图。":::| 请确保聚合模式处于活动状态。 |
+| 确保按如下所示设置跳线：<br />:::image type="content" source="media/how-to-set-up-your-network/jumper-setup-v2.jpg" alt-text="US Robotics 交换机的屏幕截图。":::| 确保聚合模式为“主动”。 |
 
 ## <a name="deployment-validation"></a>部署验证
 
-### <a name="engineering-self-review"></a>工程自我审查  
+### <a name="engineering-self-review"></a>工程自我评审  
 
-查看你的 OT 和 ICS 网络图是定义连接到的最佳位置的最有效方法，你可以在其中获取最相关的流量进行监视。
+评审 OT 和 ICS 网络图是定义要连接到的最佳位置（从中可以获取最相关的待监视流量）的最有效方式。
 
-站点工程师知道其网络外观。 与本地网络和运营团队开展审查会话通常会阐明预期并定义连接设备的最佳位置。
+站点工程师知道其网络的外观。 与本地网络和运营团队开展评审会议通常可以明确预期，并定义最佳设备连接位置。
 
 相关信息：
 
--  (电子表格) 的已知设备列表  
+- 已知设备列表（电子表格）  
 
 - 估计的设备数  
 
 - 供应商和工业协议
 
-- 交换机型号，验证端口镜像选项是否可用
+- 交换机型号，用于验证端口镜像选项是否可用
 
-- 有关谁管理交换机的信息 (例如，它) 以及它们是否是外部资源
+- 有关交换机管理者（例如 IT）以及这些管理者是否是外部资源的信息
 
-- 站点上的网络网络列表
+- 站点上的 OT 网络列表
 
 #### <a name="common-questions"></a>常见问题
 
-- 实现的总体目标是什么？ 完整清单和准确的网络映射是否重要？
+- 实施方案的总体目标是什么？ 完整库存和准确的网络映射是否重要？
 
-- ICS 中是否有多个或冗余的网络？ 是否正在监视所有网络？
+- ICS 中是否有多个网络或冗余网络？ 是否监视所有网络？
 
-- ICS 与企业 (business) 网络之间是否存在通信？ 是否正在监视这些通信？
+- ICS 与企业（业务）网络之间是否有通信？ 是否监视这些通信？
 
-- 网络设计中是否配置了 Vlan？
+- 网络设计中是否配置了 VLAN？
 
-- 如何维护带有固定或暂时性设备的 ICS？
+- 如何使用固定设备或暂用设备执行 ICS 的维护？
 
-- 哪些防火墙安装在受监视的网络中？
+- 防火墙安装在受监视网络中的哪个位置？
 
-- 监视的网络中是否有任何路由？
+- 受监视网络中是否有任何路由？
 
-- 监视的网络上哪些协议处于活动状态？
+- 受监视网络上有哪些 OT 协议处于活动状态？
 
-- 如果我们连接到此交换机，我们是否会看到 HMI 和 Plc 之间的通信？
+- 如果我们连接到此交换机，是否会看到 HMI 与 PLC 之间的通信？
 
-- ICS 交换机与企业防火墙之间的物理距离是多少？ 
+- ICS 交换机与企业防火墙之间的实际距离是多少？ 
 
-- 不能将非托管交换机替换为托管交换机，还是使用网络点击选项？
+- 是否可将非受管理交换机更换为受管理交换机，或者，是否可以选择使用网络 TAP？
 
-- 网络中是否有任何串行通信？ 如果是，则在网络图中显示它。
+- 网络中是否有任何串行通信？ 如果有，则在网络图中显示这种通信。
 
-- 如果 IoT 设备的 Defender 应连接到该交换机，该机柜中是否有可用的物理机架空间？
+- 如果 Defender for IoT 设备应连接到该交换机，机柜中是否有可用的物理机架空间？
 
 #### <a name="other-considerations"></a>其他注意事项
 
-用于 IoT 设备的 Defender 的用途是监视来自第1层和第2层的流量。
+Defender for IoT 设备的用途是监视来自第 1 层和第 2 层的流量。
 
-对于某些体系结构，如果此层上存在通信，则用于 IoT 设备的 Defender 还会监视第3层。 查看站点体系结构并决定是否监视交换机时，请考虑以下变量：
+对于某些体系结构，如果此层上存在 OT 流量，则 Defender for IoT 设备还会监视第 3 层。 评审站点体系结构和决定是否监视某个交换机时，请考虑以下变数：
 
-- 监视此交换机的重要性是多少？
+- 监视此交换机产生的成本/收益与这种监视的重要性各有多大？
 
-- 如果交换机处于非托管状态，是否可以监视来自更高级别交换机的流量？
+- 如果某个交换机不受管理，是否可以监视来自更高级别交换机的流量？
 
-  如果 ICS 体系结构是环拓扑，则只需要监视此环中的一个交换机。
+  如果 ICS 体系结构是环形拓扑，则只需监视此环中的一个交换机。
 
 - 此网络中的安全或操作风险是什么？
 
-- 是否可以监视交换机的 VLAN？ VLAN 在可监视的其他交换机中是否可见？
+- 是否可以监视交换机的 VLAN？ 该 VLAN 是否在我们可以监视的另一个交换机中可见？
 
 #### <a name="technical-validation"></a>技术验证
 
-从交换机跨度 (PCAP 文件) 接收记录的流量示例 (或镜像) 端口可帮助：
+从交换机 SPAN（或镜像）端口接收记录的流量示例（PCAP 文件）可能有助于：
 
-- 验证是否正确配置了开关。
+- 验证是否正确配置了交换机。
 
-- 确认通过交换机的流量是否适用于监视)  (的流量。
+- 确认通过交换机的流量（OT 流量）是否适合进行监视。
 
-- 确定此交换机中的带宽和设备数估算。
+- 确定此交换机中的带宽和估计设备数。
 
-通过 Wireshark 应用程序将便携式计算机连接到已配置的 SPAN 端口，可以将示例 PCAP 文件录制 (几分钟) 。
+通过 Wireshark 应用程序将笔记本电脑连接到已配置的 SPAN 端口，即可记录示例 PCAP 文件（只需几分钟时间）。
 
-:::image type="content" source="media/how-to-set-up-your-network/laptop-connected-to-span.jpg" alt-text="连接到 SPAN 端口的便携式计算机的屏幕截图。":::
-:::image type="content" source="media/how-to-set-up-your-network/sample-pcap-file.PNG" alt-text="示例 PCAP 文件的录制屏幕截图。":::
+:::image type="content" source="media/how-to-set-up-your-network/laptop-connected-to-span.jpg" alt-text="已连接到 SPAN 端口的笔记本电脑的屏幕截图。":::
+:::image type="content" source="media/how-to-set-up-your-network/sample-pcap-file.PNG" alt-text="记录示例 PCAP 文件的屏幕截图。":::
 
 #### <a name="wireshark-validation"></a>Wireshark 验证
 
-- 检查 *单播数据包* 是否在记录通信中出现。 单播从一个地址到另一个地址。 如果大部分流量为 ARP 消息，则交换机设置不正确。
+- 检查记录流量中是否存在单播数据包。 单播是指从一个地址传播到另一个地址。 如果大部分流量是 ARP 消息，则表示交换机设置不正确。
 
-- 请参阅 **Statistics**  >  **协议层次结构**。 验证是否存在工业 OT 协议。
+- 转到“统计信息” > “协议层次结构” 。 验证是否存在工业 OT 协议。
 
 :::image type="content" source="media/how-to-set-up-your-network/wireshark-validation.png" alt-text="Wireshark 验证的屏幕截图。":::
 
 ## <a name="troubleshooting"></a>疑难解答
 
-使用以下部分来解决问题：
+参考以下部分排查问题：
 
-- [无法使用 web 界面进行连接](#cant-connect-by-using-a-web-interface)
+- [无法使用 Web 界面进行连接](#cant-connect-by-using-a-web-interface)
 
-- [设备未响应](#appliance-is-not-responding)
+- [设备无响应](#appliance-is-not-responding)
 
-### <a name="cant-connect-by-using-a-web-interface"></a>无法使用 web 界面进行连接
+### <a name="cant-connect-by-using-a-web-interface"></a>无法使用 Web 界面进行连接
 
-1. 验证你尝试连接的计算机是否与设备位于同一网络上。
+1. 验证你尝试连接的计算机是否位于设备所在的同一网络上。
 
 2. 验证 GUI 网络是否已连接到传感器上的管理端口。
 
-3. 对设备 IP 地址执行 Ping 操作。 如果没有对 ping 的响应：
+3. 对设备 IP 地址运行 ping。 如果 ping 命令没有响应：
 
     1. 将监视器和键盘连接到设备。
 
-    1. 使用 **支持** 用户和密码进行登录。
+    1. 使用 support 用户和密码登录。
 
-    1. 使用 "命令 **网络" 列表** 查看当前 IP 地址。
+    1. 使用 network list 命令查看当前 IP 地址。
 
-    :::image type="content" source="media/how-to-set-up-your-network/list-of-network-commands.png" alt-text="Network list 命令的屏幕截图。":::
+    :::image type="content" source="media/how-to-set-up-your-network/list-of-network-commands.png" alt-text="network list 命令的屏幕截图。":::
 
-4. 如果网络参数配置错误，请使用以下过程对其进行更改：
+4. 如果网络参数配置错误，请使用以下过程更改参数：
 
-    1. 使用命令 " **网络编辑设置**"。
+    1. 使用 network edit-settings 命令。
 
-    1. 若要更改管理网络 IP 地址，请选择 " **Y**"。
+    1. 若要更改管理网络 IP 地址，请选择“Y”。
 
-    1. 若要更改子网掩码，请选择 **Y**。
+    1. 若要更改子网掩码，请选择“Y”。
 
-    1. 若要更改 DNS，请选择 **Y**。
+    1. 若要更改 DNS，请选择“Y”。
 
-    1. 若要更改默认网关 IP 地址，请选择 " **Y**"。
+    1. 若要更改默认网关 IP 地址，请选择“Y”。
 
-    1. 对于 "仅传感器) 的输入接口更改 ("，请选择 " **Y**"。
+    1. 若要更改输入接口（仅限传感器），请选择“Y”。
 
-    1. 对于桥接口，选择 " **N**"。
+    1. 对于网桥接口，请选择“N”。
 
-    1. 若要应用设置，请选择 " **Y**"。
+    1. 若要应用设置，请选择“Y”。
 
-5. 重新启动后，请与用户支持联系，并使用 **network list** 命令验证参数是否已更改。
+5. 重启后，使用 support 用户建立连接，然后使用 network list 命令验证参数是否已更改。
 
-6. 尝试 ping 并再次从 GUI 连接。
+6. 再次尝试从 GUI 运行 ping 并连接。
 
-### <a name="appliance-is-not-responding"></a>设备未响应
+### <a name="appliance-is-not-responding"></a>设备无响应
 
 1. 使用监视器和键盘连接到设备，或使用 PuTTY 远程连接到 CLI。
 
-2. 使用支持凭据进行登录。
+2. 使用 support 用户凭据登录。
 
-3. 使用 **系统健全** 命令并检查所有进程是否正在运行。
+3. 使用 system sanity 命令，检查所有进程是否正在运行。
 
-    :::image type="content" source="media/how-to-set-up-your-network/system-sanity-command.png" alt-text="系统健全命令的屏幕截图。":::
+    :::image type="content" source="media/how-to-set-up-your-network/system-sanity-command.png" alt-text="system sanity 命令的屏幕截图。":::
 
-对于任何其他问题，请联系 [Microsoft 支持部门](https://support.microsoft.com/en-us/supportforbusiness/productselection?sapId=82c88f35-1b8e-f274-ec11-c6efdd6dd099)。
+如有任何其他问题，请联系 [Microsoft 支持部门](https://support.microsoft.com/en-us/supportforbusiness/productselection?sapId=82c88f35-1b8e-f274-ec11-c6efdd6dd099)。
 
-## <a name="example-site-book"></a>示例网站书籍
+## <a name="example-site-book"></a>示例站点手册
 
-使用示例网站书籍检索和查看网络设置所需的重要信息。
+使用示例站点手册来检索和查看需要用于网络设置的重要信息。
 
-### <a name="site-checklist"></a>站点清单
+### <a name="site-checklist"></a>站点检查列表
 
-在站点部署之前查看此列表：
+在进行站点部署之前查看此列表：
 
 | **#** | **任务或活动** | **状态** | **注释** |
 |--|--|--|--|
 | 1 | 订购设备。 | ☐ |  |
-| 2 | 准备网络中子网的列表。 | ☐ |  |
+| 2 | 准备网络中的子网列表。 | ☐ |  |
 | 3 | 提供生产网络的 VLAN 列表。 | ☐ |  |
 | 4 | 提供网络中的交换机型号列表。 | ☐ |  |
 | 5 | 提供工业设备的供应商和协议列表。 | ☐ |  |
-| 6 | 为传感器 (IP 地址、子网、D-GW、DNS) 提供网络详细信息。 | ☐ |  |
-| 7 | 创建必要的防火墙规则和访问列表。 | ☐ |  |
-| 8 | 为端口监视在交换机上创建跨越端口，或根据需要配置网络分流。 | ☐ |  |
-| 9 | 准备传感器设备的机架空间。 | ☐ |  |
+| 6 | 提供传感器的网络详细信息（IP 地址、子网、D-GW、DNS）。 | ☐ |  |
+| 7 | 创建所需的防火墙规则和访问列表。 | ☐ |  |
+| 8 | 创建交换机上的跨越端口用于端口监视，或根据需要配置网络 TAP。 | ☐ |  |
+| 9 | 准备机架空间用于安装传感器设备。 | ☐ |  |
 | 10 | 为人员准备工作站。 | ☐ |  |
-| 11 | 为 IoT 货架设备的 Defender 提供键盘、监视器和鼠标。 | ☐ |  |
-| 12 | 将设备放在机架上并连接电缆。 | ☐ |  |
-| 13 | 分配站点资源以支持部署。 | ☐ |  |
+| 11 | 为 Defender for IoT 机架设备提供键盘、监视器和鼠标。 | ☐ |  |
+| 12 | 在机架上安装设备并布线。 | ☐ |  |
+| 13 | 分配站点资源用于支持部署。 | ☐ |  |
 | 14 | 创建 Active Directory 组或本地用户。 | ☐ |  |
-| 15 | 设置培训 (自学) 。 | ☐ |  |
-| 16 | 开始或不执行。 | ☐ |  |
-| 17 | 计划部署日期。 | ☐ |  |
+| 15 | 设置培训（自学）。 | ☐ |  |
+| 16 | 做出是否部署的决策。 | ☐ |  |
+| 17 | 安排部署日期。 | ☐ |  |
 
 
 | **日期** | **注意** | **部署日期** | **注意** |
 |--|--|--|--|
-| Defender for IoT |  | 站点名称 * |  |
+| Defender for IoT |  | 站点名称* |  |
 | 名称 |  | 名称 |  |
 | 位置 |  | 位置 |  |
 
 #### <a name="architecture-review"></a>体系结构评审
 
-"工业网络" 图示的概述允许为 IoT 设备定义正确的位置。
+提供工业网络概览图可为 Defender for IoT 设备定义正确的位置。
 
-1.  查看工业环境的全球网络示意图。 例如：
+1.  查看工业 OT 环境的全局网络图。 例如：
 
-    :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="适用于全球网络的工业 OT 环境示意图。":::
+    :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="工业 OT 环境的全局网络图。":::
 
     > [!NOTE]
-    > IoT 设备的 Defender 应连接到一个较低级别的交换机，该交换机查看交换机上端口间的流量。  
+    > Defender for IoT 设备应连接到较低级别的交换机，该交换机可以看到其端口之间的流量。  
 
-2. 提供要监视的网络设备的近似数目。 在将订阅加入 Azure Defender for IoT 门户时，你将需要此信息。 在载入过程中，系统会提示输入设备数量，以1000为增量。
+2. 提供要监视的网络设备的大致数量。 将订阅加入 Azure Defender for IoT 门户时需要此信息。 在加入过程中，系统会提示你输入设备数量，以 1000 为增量。
 
-3. 为生产网络提供子网列表，并提供 (可选) 的说明。 
+3. 提供生产网络的子网列表，并提供说明（可选）。 
 
     |  **#**  | **子网名称** | **说明** |
     |--| --------------- | --------------- |
@@ -590,50 +586,50 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
     | 3 |  |  |
     | 4 |  |  |
 
-5. 若要验证交换机是否具有端口镜像功能，请提供 IoT 平台的 Defender 应连接到的交换机型号：
+5. 若要验证交换机是否具有端口镜像功能，请提供 Defender for IoT 平台应连接到的交换机型号：
 
-    | **#** | **Switch** | **Model** | **流量镜像支持 (SPAN、RSPAN 或 none)** |
+    | **#** | **Switch** | **Model** | **流量镜像支持（SPAN、RSPAN 或无）** |
     |--|--|--|--|
     | 1 |  |  |
     | 2 |  |  |
     | 3 |  |  |
     | 4 |  |  |
 
-    第三方是否会管理交换机？ Y 或 N 
+    是否由第三方管理交换机？ 是或否 
 
-    如果是，谁？ __________________________________ 
+    如果是，由谁管理？ __________________________________ 
 
-    其策略是什么？ __________________________________ 
+    他们的策略是什么？ __________________________________ 
 
     例如：
 
     - Siemens
 
-    - 幼圆-以太网或 IP
+    - Rockwell Automation – 以太网或 IP
 
     - Emerson – DeltaV、Ovation
     
 6. 是否有设备通过网络中的串行连接进行通信？ 是或否 
 
-    如果是，请指定哪种串行通信协议： ________________ 
+    如果是，请指定串行通信协议：________________ 
 
-    如果是，则在网络图上标记哪些设备与串行协议通信以及这些设备的位置： 
+    如果是，请在网络图上标记哪些设备使用串行协议通信，以及这些设备的位置： 
  
     <Add your network diagram with marked serial connection> 
 
-7. 对于 QoS，传感器的默认设置为 1.5 Mbps。 指定是否要更改： ________________ 
+7. 对于 QoS，传感器的默认设置为 1.5 Mbps。 指定是否要更改此设置：________________ 
 
-   业务部门 (BU) ： ________________ 
+   业务单位 (BU)：________________ 
 
 ### <a name="specifications-for-site-equipment"></a>站点设备规范
 
 #### <a name="network"></a>网络  
 
-传感器设备通过网络适配器连接到交换机范围端口。 它与客户的公司网络连接，通过另一个专用网络适配器进行管理。
+传感器设备通过网络适配器连接到交换机 SPAN 端口。 它连接到客户的企业网络，以通过另一个专用网络适配器进行管理。
 
-提供将在企业网络中连接的传感器 NIC 的地址详细信息： 
+提供要在企业网络中连接的传感器 NIC 的地址详细信息： 
 
-|  项目               | 设备1 | 设备2 | 设备3 |
+|  项               | 设备 1 | 设备 2 | 设备 3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 设备 IP 地址    |               |               |               |
 | 子网          |               |               |               |
@@ -643,7 +639,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="idraciloserver-management"></a>iDRAC/iLO/服务器管理
 
-|       项目          | 设备1 | 设备2 | 设备3 |
+|       项          | 设备 1 | 设备 2 | 设备 3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 设备 IP 地址     |               |               |               |
 | 子网          |               |               |               |
@@ -652,7 +648,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="on-premises-management-console"></a>本地管理控制台  
 
-|       项目          | 可用 | 使用 HA) 时的被动 ( |
+|       项          | 可用 | 被动（使用 HA 时） |
 | --------------- | ------ | ----------------------- |
 | IP 地址             |        |                         |
 | 子网          |        |                         |
@@ -661,7 +657,7 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 
 #### <a name="snmp"></a>SNMP  
 
-|   项目              | 详细信息 |
+|   项              | 详细信息 |
 | --------------- | ------ |
 | IP              |        |
 | IP 地址 | |
@@ -670,31 +666,31 @@ RSPAN：基于 Cisco catalyst 2960 (24 端口) 。
 | 身份验证类型 | MD5 或 SHA |
 | 加密 | DES 或 AES |
 | 密钥 | |
-| SNMP v2 团体字符串 |
+| SNMP v2 社区字符串 |
 
 ### <a name="on-premises-management-console-ssl-certificate"></a>本地管理控制台 SSL 证书
 
-你是否打算使用 SSL 证书？ 是或否
+你是否计划使用 SSL 证书？ 是或否
 
-如果是，将使用哪种服务生成它？ 你将在证书 (中包含哪些属性，例如，域或 IP 地址) ？
+如果是，你要使用哪个服务生成证书？ 你将在证书中包含哪些特性（例如域或 IP 地址）？
 
 ### <a name="smtp-authentication"></a>SMTP 身份验证
 
-你是否打算使用 SMTP 将警报转发到电子邮件服务器？ 是或否
+你是否计划使用 SMTP 将警报转发到电子邮件服务器？ 是或否
 
-如果是，将使用哪种身份验证方法？  
+如果是，你要使用哪种身份验证方法？  
 
 ### <a name="active-directory-or-local-users"></a>Active Directory 或本地用户
 
-请与 Active Directory 管理员联系，以创建 Active Directory 的站点用户组或创建本地用户。 请确保用户已准备好部署日期。 
+请与 Active Directory 管理员联系，以创建 Active Directory 站点用户组或创建本地用户。 确保用户为部署日的到来做好准备。 
 
 ### <a name="iot-device-types-in-the-network"></a>网络中的 IoT 设备类型
 
 | 设备类型 | 网络中的设备数 | 平均带宽 |
 | --------------- | ------ | ----------------------- |
 | 照相机 | |
-| X 射线计算机 | |
+| X 光机 | |
 
 ## <a name="see-also"></a>另请参阅
 
-[关于用于 IoT 安装的 Defender](how-to-install-software.md)
+[关于 Defender for IoT 安装](how-to-install-software.md)

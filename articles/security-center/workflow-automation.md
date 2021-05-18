@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: memildin
 ms.openlocfilehash: 6268ff6cfb3d3e856edcd8f84af930d52f4cf9d3
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102096167"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>自动执行对安全中心触发器的响应
 
 每个安全计划都包含事件响应的多个工作流。 这些流程可能包含通知相关利益干系人、启动更改管理进程，以及应用特定的修正步骤。 安全专家建议你尽可能多地将这些流程自动化。 自动化可减少开销， 还可确保根据你预定义的要求快速、一致地执行处理步骤，从而增强安全性。
 
-本文介绍 Azure 安全中心的工作流自动化功能。 此功能可根据安全警报、建议和法规遵从性更改触发逻辑应用。 例如，你可能希望安全中心在出现警报时向特定用户发送电子邮件。 你还将了解如何使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)创建逻辑应用。
+本文介绍 Azure 安全中心的工作流自动化功能。 此功能可根据安全警报、建议和监管合规性触发逻辑应用。 例如，你可能希望安全中心在出现警报时向特定用户发送电子邮件。 你还将了解如何使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)创建逻辑应用。
 
 
 ## <a name="availability"></a>可用性
@@ -55,7 +55,7 @@ ms.locfileid: "102096167"
 
         :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="添加工作流自动化窗格":::
 
-1. 在 "操作" 部分中，单击 " **新建** " 以开始创建逻辑应用过程。
+1. 在“操作”部分中，单击“新建”以开始逻辑应用创建过程。
 
     你将转到 Azure 逻辑应用。
 
@@ -74,7 +74,7 @@ ms.locfileid: "102096167"
 
     - 创建或触发 Azure 安全中心警报时 - 你可自定义触发器，使其仅与你关注的严重性级别的警报关联。
     
-    - **当创建或触发安全中心规章符合性评估时** ，基于对规章符合性评估的更新触发自动化。
+    - **当创建或触发安全中心监管合规性评估时**：根据监管合规性的更新触发自动化。
 
     > [!NOTE]
     > 如果使用名为“触发 Azure 安全中心警报的响应时”的旧触发器，逻辑应用不会通过工作流自动化功能启动。 请改用上述的任一触发器。 
@@ -113,7 +113,7 @@ ms.locfileid: "102096167"
     |---------|---------|---------|
     |安全警报的工作流自动化|[为 Azure 安全中心警报部署工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
     |安全建议的工作流自动化|[为 Azure 安全中心建议部署工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
-    |合规性更改的工作流自动化|[部署 Azure 安全中心合规工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
+    |用于法规合规性的工作流自动化发生更改|[部署 Azure 安全中心合规工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
     ||||
 
     > [!TIP]

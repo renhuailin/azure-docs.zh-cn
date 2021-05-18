@@ -1,14 +1,14 @@
 ---
 title: 在 Azure 实验室服务中对模板 VM 启用嵌套虚拟化 | Microsoft Docs
-description: 本文介绍如何在 Azure 实验室服务中的模板计算机上设置嵌套虚拟化。
+description: 本文介绍如何在 Azure 实验室服务中对模板计算机设置嵌套虚拟化。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 319695088e967dc3156ecab5c1b9458e77fcc186
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: f1f981602adcf90762258a2921b996507f56f3a2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251468"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125564"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>在 Azure 实验室服务中对模板虚拟机启用嵌套虚拟化
 
@@ -23,7 +23,7 @@ ms.locfileid: "91251468"
 若要详细了解嵌套虚拟化，请参阅以下文章：
 
 - [Azure 中的嵌套虚拟化](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
-- [如何在 Azure VM 中启用嵌套虚拟化](../virtual-machines/windows/nested-virtualization.md)
+- [如何在 Azure VM 中启用嵌套虚拟化](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)
 
 ## <a name="considerations"></a>注意事项
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Python 管理 Azure Data Lake Storage Gen2 中的数据
-description: 使用 Python 管理已启用分层命名空间的存储帐户中的目录和文件。
+description: 使用 Python 在启用了分层命名空间的存储帐户中管理目录和文件。
 author: normesta
 ms.service: storage
 ms.date: 02/17/2021
@@ -10,25 +10,25 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
 ms.openlocfilehash: a143c0aa19241b532cabff95fe6bf85679e4007c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100652286"
 ---
 # <a name="use-python-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
-本文介绍如何使用 Python 在具有分层命名空间的存储帐户中创建和管理目录和文件。
+本文介绍了如何使用 Python 在具有分层命名空间的存储帐户中创建和管理目录与文件。
 
-若要了解如何获取、设置和更新访问控制列表 (ACL) 目录和文件，请参阅 [使用 Python 管理 Azure Data Lake Storage Gen2 中的 acl](data-lake-storage-acl-python.md)。
+若要了解如何获取、设置和更新目录与文件的访问控制列表 (ACL)，请参阅[使用 Python 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-python.md)。
 
-[包 (Python 包索引) ](https://pypi.org/project/azure-storage-file-datalake/)  | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  | [API 参考](/python/api/azure-storage-file-datalake/azure.storage.filedatalake)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)
+[包（Python 包索引）](https://pypi.org/project/azure-storage-file-datalake/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API 参考](/python/api/azure-storage-file-datalake/azure.storage.filedatalake) | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-- 已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
+- 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
 ## <a name="set-up-your-project"></a>设置项目
 

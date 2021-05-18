@@ -7,10 +7,10 @@ ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
 ms.openlocfilehash: 5066264777c66369205489fb27a6f9206c5da521
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101707993"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor 日志概览
@@ -36,7 +36,7 @@ Azure Monitor 日志是 Azure Monitor 的一项功能，用于从[受监视的�
 
 
 ## <a name="data-collection"></a>数据收集
-创建 Log Analytics 工作区后，必须配置不同的源以发送其数据。 系统不自动收集任何数据。 此配置将因数据源而异。 例如，[创建诊断设置](../essentials/diagnostic-settings.md)，以将资源日志从 Azure 资源发送到工作区。 [启用 VM insights](../vm/vminsights-enable-overview.md) 以从虚拟机收集数据。 配置[工作区上的数据源](../agents/data-sources.md)，以收集其他事件和性能数据。
+创建 Log Analytics 工作区后，必须配置不同的源以发送其数据。 系统不自动收集任何数据。 此配置将因数据源而异。 例如，[创建诊断设置](../essentials/diagnostic-settings.md)，以将资源日志从 Azure 资源发送到工作区。 [启用 VM 见解](../vm/vminsights-enable-overview.md)以从虚拟机收集数据。 配置[工作区上的数据源](../agents/data-sources.md)，以收集其他事件和性能数据。
 
 - 有关可以配置为将数据发送到 Azure Monitor 日志的数据源的完整列表，请参阅 [Azure Monitor 监视哪些内容？](../monitor-reference.md)
 

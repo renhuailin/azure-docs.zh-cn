@@ -4,12 +4,12 @@ description: 了解 Azure HDInsight IO 缓存以及如何将其用于提高 Apac
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 9df585c102e2c7307e949e38b6b69147372c38dd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940138"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866295"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负载的性能
 
@@ -33,44 +33,44 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中的 `CLUSTERNAME` 是群集的名称。
 
-1. 选择左侧的“IO 缓存”  服务。
+1. 选择左侧的“IO 缓存”服务。
 
-1. 选择“操作”（在 HDI 3.6 中为“服务操作”）和“激活”    。
+1. 选择“操作”（在 HDI 3.6 中为“服务操作”）和“激活”。
 
-    ![在 Ambari 中启用 IO 缓存服务](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "在 Ambari 中启用 IO 缓存服务")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png " alt-text="在 Ambari 中启用 IO 缓存服务" border="true":::
 
 1. 确认重新启动群集上所有受影响的服务。
 
 > [!NOTE]  
 > 即使进度栏显示已激活，但 IO 缓存实际上未启用，直到重新启动其他受影响的服务。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
   
 启用 IO 缓存后可能会收到运行 Spark 作业时出现的磁盘空间错误。 出现这些错误的原因是 Spark 还将本地磁盘存储用于在执行数据重组操作期间存储数据。 启用 IO 缓存并减少 Spark 存储空间后，Spark 可能会耗尽 SSD 空间。 IO 缓存所用的空间量默认为 SSD 空间总量的一半。 IO 缓存的磁盘空间使用量可以在 Ambari 中进行配置。 如果收到磁盘空间错误，请减少 IO 缓存所用的 SSD 空间量，并重新启动该服务。 若要更改为 IO 缓存设置的空间，请执行以下步骤：
 
-1. 在 Apache Ambari 中，选择左侧的“HDFS”服务  。
+1. 在 Apache Ambari 中，选择左侧的“HDFS”服务。
 
-1. 依次选择  “配置”和  “高级”选项卡。
+1. 依次选择“配置”和“高级”选项卡。
 
-    ![编辑 HDFS 高级配置](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "编辑 HDFS 高级配置")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png " alt-text="编辑 HDFS 高级配置" border="true":::
 
-1. 向下滚动并展开  “自定义 core-site”区域。
+1. 向下滚动并展开“自定义 core-site”区域。
 
-1. 查找属性 hadoop.cache.data.fullness.percentage  。
+1. 查找属性 hadoop.cache.data.fullness.percentage。
 
 1. 更改框中的值。
 
-    ![编辑 IO 缓存填充度百分比](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "编辑 IO 缓存填充度百分比")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png " alt-text="编辑 IO 缓存填充度百分比" border="true":::
 
-1. 选择右上角的“保存”  。
+1. 选择右上角的“保存”。
 
-1. 选择“重新启动”   >   “重新启动所有受影响的项”。
+1. 选择“重新启动” > “重新启动所有受影响的项”。
 
-    ![Apache Ambari 重新启动所有受影响的](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "重新启动所有受影响的服务")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png " alt-text="Apache Ambari 重启所有受影响的项" border="true":::
 
-1. 选择“确认全部重启”  。
+1. 选择“确认全部重启”。
 
-如果这不起作用，请禁用 IO 缓存。
+如果不起作用，请禁用 IO 缓存。
 
 ## <a name="next-steps"></a>后续步骤
 

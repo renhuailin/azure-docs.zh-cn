@@ -1,13 +1,13 @@
 ---
-title: 实验室概念-Azure 实验室服务 |Microsoft Docs
+title: 实验室概念 - Azure 实验室服务 | Microsoft Docs
 description: 了解实验室服务的基本概念，以及它是如何简化实验室创建和管理的。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fa3a8dad195b4b3cbf0786c8923c8b330d148898
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96435512"
 ---
 # <a name="labs-concepts"></a>实验室概念
@@ -48,7 +48,7 @@ ms.locfileid: "96435512"
 
 ### <a name="educator"></a>教师
 
-通常，用户（如教师或联机培训人员）在实验室帐户下创建实验室。 教师执行以下任务：
+通常，用户（例如教师或在线培训师）会在实验室帐户下创建实验室。 教师执行以下任务：
 
 - 创建教室实验室。
 - 创建实验室中的虚拟机。

@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
 ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98018065"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>将数百 TB 的数据迁移到 Azure Cosmos DB 
@@ -43,7 +43,7 @@ Azure 数据工厂、Azure 数据迁移服务之类的工具正在修复上述�
 
 自定义工具使用批量执行程序库，支持跨多个客户端横向扩展，并可以跟踪引入过程中出现的错误。 若要使用此工具，应将源数据分区成 Azure Data Lake Storage (ADLS) 中的不同文件，以便不同的迁移工作线程可以选取每个文件并将其引入 Azure Cosmos DB。 自定义工具利用单独的集合，该集合存储 ADLS 中每个源文件的迁移进度的相关元数据，并跟踪与这些文件关联的任何错误。  
 
-下图描述了使用此自定义工具的迁移过程。 该工具在一组虚拟机上运行，其中每个虚拟机查询 Azure Cosmos DB 中的跟踪集合，以获取某个源数据分区上的租约。 完成此操作后，该工具将读取源数据分区，并使用批量执行程序库将其引入 Azure Cosmos DB。 接下来，跟踪集合将会更新，以记录数据引入的进度和遇到的任何错误。 处理数据分区后，该工具会尝试查询下一个可用的源分区。 它会继续处理下一个源分区，直到迁移了所有数据。 [Azure Cosmos DB 大容量引入](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)存储库中提供了该工具的源代码。  
+下图描述了使用此自定义工具的迁移过程。 该工具在一组虚拟机上运行，其中每个虚拟机查询 Azure Cosmos DB 中的跟踪集合，以获取某个源数据分区上的租约。 完成此操作后，该工具将读取源数据分区，并使用批量执行程序库将其引入 Azure Cosmos DB。 接下来，跟踪集合将会更新，以记录数据引入的进度和遇到的任何错误。 处理数据分区后，该工具会尝试查询下一个可用的源分区。 它会继续处理下一个源分区，直到迁移了所有数据。 该工具的源代码可从 [Azure Cosmos DB 批量引入](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)存储库中获得。  
 
  
 :::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="迁移工具设置" border="false":::
@@ -113,7 +113,7 @@ Azure 数据工厂、Azure 数据迁移服务之类的工具正在修复上述�
 
 #### <a name="turn-off-the-indexing"></a>关闭索引：  
 
-由于迁移应尽快完成，我们建议最大程度地减少为每个引入文档创建索引所用的时间和 RU。  Azure Cosmos DB 自动为所有属性编制索引，因此有必要在迁移过程中将索引操作尽量限制为最少量的几个选定字词，或完全关闭索引。 可以通过将 Indexingpolicy.indexingmode 更改为 "无" 来关闭容器的索引策略，如下所示：  
+由于迁移应尽快完成，我们建议最大程度地减少为每个引入文档创建索引所用的时间和 RU。  Azure Cosmos DB 自动为所有属性编制索引，因此有必要在迁移过程中将索引操作尽量限制为最少量的几个选定字词，或完全关闭索引。 可以通过将 indexingMode 更改为 none 来禁用容器的索引策略，如下所示：  
 
  
 ```
@@ -133,15 +133,15 @@ Azure 数据工厂、Azure 数据迁移服务之类的工具正在修复上述�
 
 2. 批量执行程序库可以纵向扩展，以消耗单个客户端 VM 中的 50 万个 RU。 由于可用吞吐量为 500 万个 RU，因此，应在 Azure Cosmos 数据库所在的同一区域中预配 10 个 Ubuntu 16.04 VM (Standard_D32_v3)。 应使用迁移工具及其设置文件准备好这些 VM。  
 
-3. 在某个客户端虚拟机上运行排队步骤。 此步骤将创建跟踪集合，该操作将扫描 ADLS 容器，并为每个源数据集的分区文件创建进度跟踪文档。  
+3. 在某个客户端虚拟机上运行排队步骤。 此步骤将创建跟踪集合，以用于扫描 ADLS 容器，并针对源数据集的每个分区文件创建进度跟踪文档。  
 
-4. 接下来，在所有客户端 VM 上运行导入步骤。 每个客户端都可以取得源分区的所有权，并将其数据引入 Azure Cosmos DB。 完成后，在跟踪集合中更新其状态之后，客户端就可以在跟踪集合中查询下一个可用的源分区。  
+4. 接下来，在所有客户端 VM 上运行导入步骤。 每个客户端都可以取得源分区的所有权，并将其数据引入 Azure Cosmos DB。 此步骤完成并且其状态在跟踪集合中更新之后，客户端可以查询跟踪集合中的下一个可用源分区。  
 
 5. 此过程将持续到引入了整个源分区集为止。 处理所有源分区之后，应以纠错模式针对同一个跟踪集合重新运行该工具。 需要执行此步骤来识别由于出错而要重新处理的源分区。  
 
 6. 其中某些错误可能是源数据中错误的文档造成的。 应识别并修复这些错误。 接下来，应针对失败的分区重新运行导入步骤以将其重新引入。 
 
-完成迁移后，可以验证 Azure Cosmos DB 中的文档计数是否与源数据库中的文档计数相同。 在此示例中，Azure Cosmos DB 中的总大小为 65 TB。 迁移后，可以有选择地打开索引，并且可以将 ru 降低到工作负荷操作所需的级别。
+完成迁移后，可以验证 Azure Cosmos DB 中的文档计数是否与源数据库中的文档计数相同。 在此示例中，Azure Cosmos DB 中的总大小为 65 TB。 迁移后，可以选择性地启用索引，并将 RU 降低到执行工作负荷操作所需的级别。
 
 ## <a name="next-steps"></a>后续步骤
 

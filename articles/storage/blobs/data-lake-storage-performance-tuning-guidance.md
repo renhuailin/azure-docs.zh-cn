@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: f0f64d910d03e42008c5fe6fef28a5b9c0917abd
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97814459"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>优化 Azure Data Lake Storage Gen2 性能
@@ -21,11 +21,11 @@ Azure Data Lake Storage Gen2 支持使用高吞吐量进行 I/O 密集型分析�
 
 ![Data Lake Storage Gen2 性能](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 可以进行缩放，为所有分析方案提供必要的吞吐量。 默认情况下，Data Lake Storage Gen2 帐户在其默认配置中提供了足够的吞吐量，以满足各种用例的需求。 对于客户达到默认限制的情况，可联系 [Azure 支持部门](https://azure.microsoft.com/support/faq/)配置 Data Lake Storage Gen2 帐户，以获得更多吞吐量。
+Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要的吞吐量。 默认情况下，Data Lake Storage Gen2 帐户在其默认配置中提供足够的吞吐量，以满足广泛类别用例的需要。 对于客户达到默认限制的情况，可联系 [Azure 支持部门](https://azure.microsoft.com/support/faq/)配置 Data Lake Storage Gen2 帐户，以获得更多吞吐量。
 
 ## <a name="data-ingestion"></a>数据引入
 
-将源系统中的数据引入到 Data Lake Storage Gen2 时，必须考虑源硬件、源网络硬件或到 Data Lake Storage Gen2 的网络连接，这一点很重要。  
+将数据从源系统引入 Data Lake Storage Gen2 时，源硬件、源网络硬件或与 Data Lake Storage Gen2 的网络连接可能成为瓶颈，请务必考虑到这一点。  
 
 ![此图显示了将源系统中的数据引入到 Data Lake Storage Gen2 时要考虑的因素。](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
@@ -37,7 +37,7 @@ Data Lake Storage Gen2 可以进行缩放，为所有分析方案提供必要的
 
 ### <a name="network-connectivity-to-data-lake-storage-gen2"></a>到 Data Lake Storage Gen2 的网络连接
 
-源数据和 Data Lake Storage Gen2 之间的网络连接有时可能成为瓶颈。 如果源数据位于本地，请考虑使用 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)的专用链接。 如果源数据在 Azure 中，当数据与 Data Lake Storage Gen2 帐户位于同一 Azure 区域时，可获得最佳性能。
+源数据和 Data Lake Storage Gen2 之间的网络连接有时可能成为瓶颈。 如果源数据位于本地，请考虑在 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 中使用专用链接。 如果源数据在 Azure 中，当数据与 Data Lake Storage Gen2 帐户位于同一 Azure 区域时，可获得最佳性能。
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>配置数据引入工具，实现最大并行化
 

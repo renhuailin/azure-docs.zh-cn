@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell 快速入门-PowerShell
-description: 了解如何在浏览器中使用 Azure Cloud Shell 的 PowerShell。
+title: Azure Cloud Shell 快速入门 - PowerShell
+description: 了解如何通过 Azure Cloud Shell 在浏览器中使用 PowerShell。
 author: maertendmsft
 ms.author: damaerte
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
 ms.openlocfilehash: d4a7f1453ec686cfa16d260101ba81f429ce1da0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89469450"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
@@ -25,9 +25,9 @@ ms.locfileid: "89469450"
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 
-1. 在 Azure 门户的顶部导航栏中单击“Cloud Shell”按钮****
+1. 在 Azure 门户的顶部导航栏中单击“Cloud Shell”按钮
 
-   ![显示如何从 Azure 门户启动 Azure Cloud Shell 的屏幕截图。](media/quickstart-powershell/shell-icon.png)
+   ![显示如何从 Azure 门户中启动 Azure Cloud Shell 的屏幕截图。](media/quickstart-powershell/shell-icon.png)
 
 2. 在下拉列表中选择 PowerShell 环境，随后会进入 Azure 驱动器 `(Azure:)`
 
@@ -261,7 +261,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ### <a name="using-ssh"></a>使用 SSH
 
-按照 [此处](../virtual-machines/linux/quick-create-powershell.md) 的说明使用 Azure PowerShell cmdlet 创建新的 VM 配置。
+按照[此处](../virtual-machines/linux/quick-create-powershell.md)的说明使用 Azure PowerShell cmdlet 创建新的 VM 配置。
 在调用 `New-AzVM` 以启动部署之前，请将 SSH 公钥添加到 VM 配置。
 新创建的 VM 将包含 `~\.ssh\authorized_keys` 位置中的公钥，从而允许通过无凭据的 SSH 会话连接到 VM。
 
@@ -332,7 +332,7 @@ Hello World!
 
 ## <a name="use-git"></a>使用 Git
 
-若要在 Cloud Shell 中克隆 Git 存储库，需要创建 [个人访问令牌][githubtoken] 并将其用作用户名。 创建令牌后，可按如下所示克隆存储库：
+若要在 Cloud Shell 中克隆 Git 存储库，需要创建[个人访问令牌][githubtoken]并将其用作用户名。 创建令牌后，可按如下所示克隆存储库：
 
 ```azurepowershell-interactive
   git clone https://<your-access-token>@github.com/username/repo.git

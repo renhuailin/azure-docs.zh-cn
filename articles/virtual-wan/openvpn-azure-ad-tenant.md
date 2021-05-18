@@ -1,5 +1,5 @@
 ---
-title: 用于用户 VPN 连接的 Azure AD 租户： Azure AD 身份验证
+title: 用于用户 VPN 连接的 Azure AD 租户：Azure AD 身份验证
 description: 可使用 Azure 虚拟 WAN 用户 VPN（点到站点）通过 Azure AD 身份验证连接到 VNet
 titleSuffix: Azure Virtual WAN
 services: virtual-wan
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
 ms.openlocfilehash: a54397fe7cfecef6813105645b7f2b218894875e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91367846"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>为用户 VPN OpenVPN 协议连接准备 Azure Active Directory 租户
@@ -76,7 +76,7 @@ ms.locfileid: "91367846"
 
 4. 出现提示时选择“接受”。
 
-    ![屏幕截图显示具有为你的组织请求接受的消息权限的对话框和其他信息。](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![屏幕截图显示“为你的组织请求接受的权限”的消息和其他信息的对话框。](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 5. 在 Azure AD 下的“企业应用程序”中，你现会发现已列出 Azure VPN 。
 

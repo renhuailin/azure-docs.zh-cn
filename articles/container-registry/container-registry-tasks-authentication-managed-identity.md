@@ -8,18 +8,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: 8f2749a18a5ac6aed0822553d59beaacc9060228
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.openlocfilehash: 19d63861a98884ff2f5103946c19e2226c4b14b7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915941"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781156"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>在 ACR 任务中使用 Azure 托管标识 
 
 在 [ACR 任务](container-registry-tasks-overview.md)中启用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)，使该任务无需提供或管理凭据即可访问其他 Azure 资源。 例如，使用托管标识可让某个任务步骤将容器映像提取或推送到其他注册表。
 
-本文介绍如何使用 Azure CLI 在 ACR 任务中启用用户分配的或系统分配的托管标识。 您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装。 若要在本地使用 Azure CLI，需要安装 2.0.68 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+本文介绍如何使用 Azure CLI 在 ACR 任务中启用用户分配的或系统分配的托管标识。 可以使用 Azure Cloud Shell 或本地安装的 Azure CLI。 若要在本地使用 Azure CLI，需要安装 2.0.68 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 为了进行说明，本文中的示例命令使用 [az acr task create][az-acr-task-create] 创建一个基本映像生成任务，该任务启用了托管标识。 有关使用托管标识从 ACR 任务访问受保护资源的示例方案，请参阅：
 
@@ -140,10 +140,10 @@ az acr task credential add \
 
 
 <!-- LINKS - Internal -->
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-show]: /cli/azure/identity#az-identity-show
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-credential-add]: /cli/azure/acr/task/credential#az-acr-task-credential-add
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-identity-create]: /cli/azure/identity#az_identity_create
+[az-identity-show]: /cli/azure/identity#az_identity_show
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-credential-add]: /cli/azure/acr/task/credential#az_acr_task_credential_add
 [azure-cli-install]: /cli/azure/install-azure-cli

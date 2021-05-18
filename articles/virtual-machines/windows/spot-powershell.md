@@ -1,39 +1,39 @@
 ---
-title: 使用 PowerShell 部署 Azure 点虚拟机
-description: 了解如何使用 Azure PowerShell 部署 Azure 点虚拟机以节省成本。
+title: 使用 PowerShell 部署 Azure 现成虚拟机
+description: 了解如何使用 Azure PowerShell 部署 Azure 现成虚拟机以节省成本。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 33172004ac4361de51b92389fbf56bd699f7124f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: 9a2ad2eb197af613919efa4414da1759cd47e2e7
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096439"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802737"
 ---
-# <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 部署 Azure 点虚拟机
+# <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 部署 Azure 现成虚拟机
 
 
-使用 [Azure 点虚拟机](../spot-vms.md) ，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出 Azure 点虚拟机。 因此，Azure 点虚拟机非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
+使用 [Azure 现成虚拟机](../spot-vms.md)，可以利用未使用的容量，大幅降低成本。 每当 Azure 需要回收容量时，Azure 基础结构就会逐出 Azure 现成虚拟机。 因此，Azure 现成虚拟机非常适用于那些处理服务中断的工作负荷（例如批处理作业）、开发/测试环境、大型计算工作负荷等。
 
-基于区域和 SKU，Azure 点虚拟机的定价是可变的。 有关详细信息，请参阅适用于 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 和 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。 有关设置最大价格的详细信息，请参阅 [Azure 点虚拟机-价格](../spot-vms.md#pricing)。
+Azure 现成虚拟机的定价因地区和 SKU 而异。 有关详细信息，请参阅针对 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 和 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 的 VM 定价。 若要详细了解如何设置最高价格，请参阅 [Azure 现成虚拟机 - 定价](../spot-vms.md#pricing)。
 
-你可以选择为 VM 设置你愿意支付的最大价格（每小时）。 可使用最多5个小数位，将 Azure 点虚拟机的最大价格设置为美元 (USD) 。 例如，值 `0.98765` 表示最高价格为 0.98765 美元/小时。 如果将最大价格设置为 `-1` ，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。
+可以选择对 VM 设置你愿意支付的每小时最高价格。 Azure 现成虚拟机的最高价格可以美元 (USD) 形式设置，最多保留 5 位小数。 例如，值 `0.98765` 表示最高价格为 0.98765 美元/小时。 如果将最高价格设置为 `-1`，则不会根据价格逐出 VM。 VM 的价格将是 Spot 的当前价格或是标准 VM 的价格（两者中的较低者，前提是有可用的容量和配额）。
 
 
 ## <a name="create-the-vm"></a>创建 VM
 
-使用 [AzVmConfig](/powershell/module/az.compute/new-azvmconfig) 创建 spotVM，创建配置。 包含 `-Priority Spot` 并将设置 `-MaxPrice` 为：
-- `-1` 因此，VM 不会根据价格收回。
-- 美元金额，最多5位数字。 例如， `-MaxPrice .98765` 这意味着，一旦 spotVM 的价格约为每小时98765美元，就会解除分配 VM。
+通过使用 [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) 来创建配置以创建现成虚拟机。 包括 `-Priority Spot` 并将 `-MaxPrice` 设置为以下项之一：
+- `-1`，使 VM 不会因价格而被逐出。
+- 一个美元金额，最多 5 位数。 例如，`-MaxPrice .98765` 表示一旦现成虚拟机的价格达到大约每小时 $.98765 就会解除分配 VM。
 
 
-此示例将创建一个 spotVM，该仅在 Azure 需要容量回) 时才会基于定价 (释放。 逐出策略设置为解除分配 VM，以便以后可以重新启动它。 如果要在逐出 VM 时删除 VM 和基础磁盘，请 `-EvictionPolicy` 在中将设置为 `Delete` `New-AzVMConfig` 。
+此示例创建一个现成虚拟机，该虚拟机不会根据定价解除分配（只有当 Azure 需要回收容量时，才会将其解除分配）。 逐出策略设置为解除分配 VM，以便以后可以重启该 VM。 如果要在 VM 被逐出时删除该 VM 和基础磁盘，请在 `New-AzVMConfig` 中将 `-EvictionPolicy` 设置为 `Delete`。
 
 
 ```azurepowershell-interactive
@@ -67,7 +67,7 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-创建 VM 后，你可以查询以查看资源组中所有 Vm 的最大价格。
+创建 VM 后，可以通过查询来查看资源组中所有 VM 的最高价格。
 
 ```azurepowershell-interactive
 Get-AzVM -ResourceGroupName $resourceGroup | `
@@ -76,25 +76,58 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="simulate-an-eviction"></a>模拟逐出
 
-可以模拟 Azure 点虚拟机的 [逐出](/rest/api/compute/virtualmachines/simulateeviction) ，以测试应用程序将 repond 突然逐出的程度。 
+可以使用 REST、PowerShell 或 CLI 模拟 Azure 现成虚拟机逐出，以测试应用程序对突然逐出的响应。
 
-将以下内容替换为你的信息： 
+大多数情况下，需要借助 REST API [虚拟机 - 模拟逐出](/rest/api/compute/virtualmachines/simulateeviction)来自动测试应用程序。 对于 REST，`Response Code: 204` 意味着模拟逐出成功。 可以将模拟逐出与[计划事件服务](scheduled-events.md)相结合，自动测试应用在 VM 被逐出时的响应。
 
-- `subscriptionId`
-- `resourceGroupName`
-- `vmName`
+若要了解操作中的计划事件，请观看 [Azure Friday - 使用 Azure Scheduled Events 准备 VM 维护](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)。
 
 
-```rest
-POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+### <a name="quick-test"></a>快速测试
+
+若要快速测试以了解模拟逐出的运作情况，我们可通过查询计划事件服务来查看使用 PowerShell 模拟逐出时的具体情况。
+
+首次为事件发出请求时，为你的服务启用了计划事件服务。 
+
+远程登录到 VM，然后打开命令提示符。 
+
+在 VM 的命令提示符处键入：
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
-`Response Code: 204` 表示模拟逐出成功。 
+第一次响应可能需要长达 2 分钟的时间。 自此之后，几乎会立即显示输出。
+
+在已安装 Az PowerShell 模块的计算机（例如本地计算机）中，使用 [Set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) 模拟逐出。 将资源组名称和 VM 名称替换成你自己的名称。 
+
+```azurepowershell-interactive
+Set-AzVM -ResourceGroupName "mySpotRG" -Name "mySpotVM" -SimulateEviction
+```
+
+如果请求成功完成，则响应输出将为“`Status: Succeeded`”。
+
+快速返回到现成虚拟机的远程连接，再次查询 Scheduled Events 终结点。 重复以下命令，直到获得包含详细信息的输出：
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
+```
+
+当计划事件服务获得逐出通知后，响应将如下所示：
+
+```output
+{"DocumentIncarnation":1,"Events":[{"EventId":"A123BC45-1234-5678-AB90-ABCDEF123456","EventStatus":"Scheduled","EventType":"Preempt","ResourceType":"VirtualMachine","Resources":["myspotvm"],"NotBefore":"Tue, 16 Mar 2021 00:58:46 GMT","Description":"","EventSource":"Platform"}]}
+```
+
+可以看到 `"EventType":"Preempt"`，资源为 VM 资源 `"Resources":["myspotvm"]`。 
+
+你还可以通过检查 `"NotBefore"` 值来查看 VM 何时会被逐出。 VM 在 `NotBefore` 中给定的时间之前不会被逐出，因此，在此时间窗口内你的应用程序可以正常关闭。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-你还可以使用 [Azure CLI](../linux/spot-cli.md)、 [门户](../spot-portal.md) 或 [模板](../linux/spot-template.md)创建 Azure 点虚拟机。
+此外，还可以使用 [Azure CLI](../linux/spot-cli.md)、[门户](../spot-portal.md)或[模板](../linux/spot-template.md)创建 Azure 现成虚拟机。
 
-使用 [azure 零售价格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) 查询当前定价信息，获取有关 Azure 点虚拟机定价的信息。 `meterName`和 `skuName` 都包含 `Spot` 。
+使用 [Azure 零售价格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) 查询当前的定价信息，了解 Azure 现成虚拟机定价。 `meterName` 和 `skuName` 都会包含 `Spot`。
 
-如果遇到错误，请参阅 [错误代码](../error-codes-spot.md)。
+如果遇到错误，请参阅[错误代码](../error-codes-spot.md)。

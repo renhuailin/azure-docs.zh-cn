@@ -1,5 +1,5 @@
 ---
-title: 带有 Visual Studio Cloud Explorer 的 Azure IoT 设备管理
+title: 使用 Visual Studio Cloud Explorer 进行 Azure IoT 设备管理
 description: 使用适用于 Visual Studio 的 Cloud Explorer 进行 Azure IoT 中心设备管理，其中包含直接方法和孪生所需的属性管理选项。
 author: shizn
 ms.service: iot-hub
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73953185"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio 的 Cloud Explorer 管理 Azure IoT 中心设备
@@ -59,17 +59,17 @@ ms.locfileid: "73953185"
 
 ## <a name="sign-in-to-access-your-hub"></a>登录以访问中心
 
-1. 在 Visual Studio 中，选择“查看”   > “Cloud Explorer”  以打开 Cloud Explorer。
+1. 在 Visual Studio 中，选择“查看” > “Cloud Explorer”以打开 Cloud Explorer。
 
 1. 选择“帐户管理”图标以显示你的订阅。
 
     ![“帐户管理”图标](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
 
-1. 如果已登录到 Azure，则会显示帐户。 若要首次登录 Azure，请选择“添加帐户”  。
+1. 如果已登录到 Azure，则会显示帐户。 若要首次登录 Azure，请选择“添加帐户”。
 
-1. 选择要使用的 Azure 订阅并选择“应用”  。
+1. 选择要使用的 Azure 订阅并选择“应用”。
 
-1. 展开订阅，然后展开“IoT 中心”  。  在每个中心下，都可以看到该中心的设备。 右键单击一个设备以访问管理选项。
+1. 展开订阅，然后展开“IoT 中心”。  在每个中心下，都可以看到该中心的设备。 右键单击一个设备以访问管理选项。
 
     ![管理选项](media/iot-hub-device-management-visual-studio/management-options-vs2019.png)
 
@@ -77,35 +77,35 @@ ms.locfileid: "73953185"
 
 若要使用直接方法，请执行以下步骤：
 
-1. 右键单击设备并选择“调用设备直接方法”  。
+1. 右键单击设备并选择“调用设备直接方法”。
 
-1. 在**调用直接方法**中输入方法名称和有效负载，然后选择“确定”  。
+1. 在 **调用直接方法** 中输入方法名称和有效负载，然后选择“确定”。
 
-    结果将显示在**输出**中。
+    结果将显示在 **输出** 中。
 
 ## <a name="update-device-twin"></a>更新设备孪生
 
 若要编辑设备孪生，请执行以下步骤：
 
-1. 右键单击设备并选择“编辑设备孪生”  。
+1. 右键单击设备并选择“编辑设备孪生”。
 
    将打开一个 **azure-iot-device-twin.json** 文件，其中包含设备孪生的内容。
 
-1. 对 **azure-iot-device-twin.json** 文件中的**标记**或 **properties.desired** 字段进行一些编辑。
+1. 对 **azure-iot-device-twin.json** 文件中的 **标记** 或 **properties.desired** 字段进行一些编辑。
 
 1. 按 **Ctrl + S** 来更新设备孪生。
 
-   结果将显示在**输出**中。
+   结果将显示在 **输出** 中。
 
 ## <a name="send-cloud-to-device-messages"></a>发送“云到设备”消息
 
 若要将消息从 IoT 中心发送到设备，请按照以下步骤操作：
 
-1. 右键单击设备，然后选择“发送 C2D 消息”  。
+1. 右键单击设备，然后选择“发送 C2D 消息”。
 
-1. 在**发送 C2D 消息**中输入消息，然后选择“确定”  。
+1. 在 **发送 C2D 消息** 中输入消息，然后选择“确定”。
 
-   结果将显示在**输出**中。
+   结果将显示在 **输出** 中。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 05/20/2020
 ms.openlocfilehash: 20a257bde6022249fd7b2ab875b94f356234b490
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94488870"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft 商业市场的标准协定
@@ -21,7 +21,7 @@ Microsoft 为 Microsoft 商业市场提供标准协定。 这有助于简化客�
 在合作伙伴中心中创建产品/服务时，需要定义产品/服务的条款和条件。 可以选择使用 Microsoft 商业市场的标准协定，而不是提供自己的自定义条款和条件。
 
 >[!Note]
->使用 Microsoft 商业应用商店的标准合同发布产品/服务后，将无法使用自己的自定义条款和条件。 可以根据标准协定或自己的条款和条件提供解决方案。 自定义条款和条件在服务级别定义，适用于所有计划;在合作伙伴中心的产品/服务的 " **属性** " 页中编写自定义条款和条件。 如果要修改标准协定的条款，可以通过标准协定改正来实现。
+>使用 Microsoft 商业市场标准协定发布产品/服务后，你将无法使用自己的自定义条款和条件。 可以根据标准协定或自己的条款和条件提供解决方案。 自定义条款和条件在产品/服务级别进行定义，适用于所有计划；在合作伙伴中心的产品/服务的“属性”页中编写自定义条款和条件。 如果要修改标准协定的条款，可以通过标准协定修订进行。
 
 ## <a name="standard-contract-amendments"></a>标准协定修正
 
@@ -34,7 +34,7 @@ Microsoft 为 Microsoft 商业市场提供标准协定。 这有助于简化客�
 * 自定义修正：这些修正是对标准协定的特殊修正内容，仅通过 Azure 租户 ID 面向特定客户提供。 发行商可以选择要面向的租户。 只有租户中的客户才能在产品/服务的购买流程中看到自定义修正条款。  客户在使用产品/服务之前，必须接受标准协定的条款和修正。
 
 >[!Note]
->这两种修正相互叠加。 在购买过程中，可看到自定义修正内容的客户也会看到标准协定的通用修正内容。 修正范围限制为4000个字符，包括空格。
+>这两种修正相互叠加。 在购买过程中，可看到自定义修正内容的客户也会看到标准协定的通用修正内容。 修正字数限制在 4000 个字符以内（包括空格）。
 
 可以利用 Microsoft 商业市场的标准协定提供以下类型的产品/服务：Azure 应用程序（解决方案模板和托管应用程序）、虚拟机和 SaaS。
 

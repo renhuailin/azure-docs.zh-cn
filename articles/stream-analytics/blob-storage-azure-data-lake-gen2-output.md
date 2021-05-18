@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98935138"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>来自 Azure 流分析的 Blob 存储和 Azure Data Lake Gen2 输出
@@ -44,7 +44,7 @@ Azure Blob 存储提供了一种经济高效且可扩展的解决方案，用于
 使用 blob 存储作为输出时，在以下情况下 blob 中创建一个新文件：
 
 * 如果文件超出了允许的最大块数（目前为 50,000）。 可达到允许的最大块数，但不能达到允许的最大 blob 大小。 例如，如果输出率很高，则可以看到每个块的字节更多，并且文件大小会更大。 输出率较低时，每个块都有较少的数据，且文件大小较小。
-* 如果输出中有架构更改，并且输出格式需要固定的架构 (CSV、Avro、Parquet) 。
+* 如果输出中出现架构更改，输出格式也需要固定的架构（CSV、Avro 和 Parquet）。
 * 如果作业重新启动，可选择在外部由用户停止或启动，或在内部进行系统维护或错误恢复。
 * 如果对查询进行完全分区，会为每个输出分区创建新文件。
 * 如果用户删除存储帐户的文件或容器。
@@ -62,5 +62,5 @@ Azure Blob 存储提供了一种经济高效且可扩展的解决方案，用于
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用托管身份 (预览) 对 azure 流分析作业进行 Azure Blob 存储的身份验证](blob-output-managed-identity.md)
+* [使用托管标识（预览版）在 Azure Blob 存储中对 Azure 流分析作业进行身份验证](blob-output-managed-identity.md)
 * [快速入门：使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)

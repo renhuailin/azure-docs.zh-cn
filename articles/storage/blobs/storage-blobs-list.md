@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95543062"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 blob
@@ -51,11 +51,11 @@ ms.locfileid: "95543062"
 
 ### <a name="manage-how-many-results-are-returned"></a>管理要返回的结果数
 
-默认情况下，列表操作一次最多返回 5000 个结果，但你可以指定你所希望的每个列表操作返回的结果数。 本文中介绍的示例说明了如何在页中返回结果。
+默认情况下，列表操作一次最多返回 5000 个结果，但你可以指定你所希望的每个列表操作返回的结果数。 本文演示的示例说明了如何在页面中返回结果。
 
 ### <a name="filter-results-with-a-prefix"></a>使用前缀筛选结果
 
-若要筛选 blob 列表，请指定参数的字符串 `prefix` 。 前缀字符串可以包含一个或多个字符。 然后，Azure 存储只返回其名称以该前缀开头的 Blob。
+若要筛选 blob 列表，请为 `prefix` 参数指定一个字符串。 前缀字符串可以包含一个或多个字符。 然后，Azure 存储只返回其名称以该前缀开头的 Blob。
 
 ### <a name="return-metadata"></a>返回元数据
 
@@ -65,9 +65,9 @@ ms.locfileid: "95543062"
 
 - 如果使用的是 .NET v11 SDK，请为 [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 枚举指定 Metadata  值。 Azure 存储包含每个返回的 Blob 的元数据，因此在此上下文中，无需同时调用 **FetchAttributes** 方法之一即可检索 Blob 元数据。
 
-### <a name="list-blob-versions-or-snapshots"></a>列出 blob 版本或快照
+### <a name="list-blob-versions-or-snapshots"></a>列出 Blob 版本或快照
 
-若要通过 .NET v12 客户端库列出 blob 版本或快照，请在 "**版本**" 或 "**快照**" 字段中指定 [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates)参数。 版本和快照从最旧到最新列出。 有关列出版本的详细信息，请参阅 [列出 blob 版本](versioning-enable.md#list-blob-versions)。
+若要使用 .NET v12 客户端库列出 Blob 版本或快照，请在“版本”或“快照”字段中指定 [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) 参数 。 版本和快照将按最旧到最新的顺序列出。 有关如何列出版本的详细信息，请参阅[列出 Blob 版本](versioning-enable.md#list-blob-versions)。
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>平面列表与分层列表
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: d894ce71e0ffa5a0894a1f6b0035efe66271ded8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1900326bf03c6a32f25c7a019d8bd1e460735bd6
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100591473"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505592"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
 
@@ -55,7 +55,7 @@ ms.locfileid: "100591473"
 
 2. 选择“所有资源”，然后选择你的存储帐户。
 
-3. 选择“设置” > “导出模板”。 
+3. 选择“自动化” > “导出模板” 。
 
 4. 选择“导出模板”边栏选项卡中的“下载”。 
 

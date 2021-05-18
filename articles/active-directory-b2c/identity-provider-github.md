@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 36bdda4165c7307eaa7837d6208952da7f1d115f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 442894da23111877f4dd4f67363add0c8e52a4c9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448364"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028972"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 GitHub 帐户注册与登录
 
@@ -43,7 +43,7 @@ ms.locfileid: "102448364"
 1. 使用 GitHub 凭据登录到 [GitHub 开发人员](https://github.com/settings/developers)门户。
 1. 选择“OAuth 应用”，然后选择“新建 OAuth 应用”。
 1. 输入 **应用程序名称** 和 **主页 URL**。
-1. 在“授权回调 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 输入租户名称时，全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
+1. 对于“授权回调 URL”，输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-domain-name` 替换为你的自定义域，将 `your-tenant-name` 替换为租户的名称。 输入租户名称时，全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
 1. 单击“注册应用程序”。
 1. 复制“客户端 ID”和“客户端密钥”的值。 将标识提供者添加到租户时需要这两个值。
 
@@ -62,12 +62,15 @@ ms.locfileid: "102448364"
 
 ## <a name="add-github-identity-provider-to-a-user-flow"></a>将 GitHub 标识提供者添加到用户流 
 
+此时，GitHub 标识提供者已设置，但还不能在任何登录页中使用。 将 GitHub 标识提供者添加到用户流：
+
+
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要将 GitHub 标识提供者添加到的用户流。
 1. 在“社交标识提供者”下，选择“GitHub”。
 1. 选择“保存”。
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“运行用户流”按钮。
 1. 在注册或登录页面中，选择“GitHub”以使用 GitHub 帐户登录。
 
@@ -205,7 +208,7 @@ GitHub 技术配置文件要求将 **CreateIssuerUserId** 声明转换添加到 
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页面中，选择“GitHub”以使用 GitHub 帐户登录。
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91359148"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 专用 HSM 网络
@@ -60,7 +60,7 @@ Azure 专用 HSM 需要高度安全的网络环境。 无论是要 Azure 云连�
 
 ### <a name="site-to-site-vpn"></a>站点到站点 VPN
 
-使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 这样做的一个原因是，在本地有一个用于 HSM 的备份设备，并且需要两个连接才能运行备份。
+使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 进行安全通信的原因之一是为本地 HSM 提供备份设施，并在两者之间建立连接以运行备份。
 
 ## <a name="connecting-virtual-networks"></a>连接虚拟网络
 
@@ -83,13 +83,13 @@ HSM 设备可以通过软件库将流量重定向到备用 HSM。 如果设备�
 > [!NOTE]
 > 目前，全局 VNet 对等互连在使用专用 HSM 的跨区域连接方案中不可用，为此应改用 VPN 网关。 
 
-![关系图显示两个由两个 V P N 网关连接的区域。 每个区域包含对等互连虚拟网络。](media/networking/global-vnet.png)
+![图中显示了由 VPN 网关连接的两个区域。 每个区域都包含对等互连虚拟网络。](media/networking/global-vnet.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 - [常见问题解答](faq.md)
 - [可支持性](supportability.md)
-- [高可用性](high-availability.md)
+- 高可用性
 - [物理安全性](physical-security.md)
 - [Monitoring](monitoring.md)
 - [部署体系结构](deployment-architecture.md)

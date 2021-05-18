@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: ramamill
 ms.openlocfilehash: a141280338632fdad7053cbbe76c8bdf2797443d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89424865"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
@@ -100,7 +100,7 @@ Aman Sharma 在其博客 [Harvesting Clouds](http://harvestingclouds.com) 上给
 
 ## <a name="before-you-start"></a>开始之前
 
-- 如果不熟悉 Azure 自动化，可以 [注册](https://azure.microsoft.com/services/automation/) 和 [下载示例脚本](https://azure.microsoft.com/documentation/scripts/)。
+- 如果刚开始接触 Azure 自动化，可以[注册](https://azure.microsoft.com/services/automation/)并[下载示例脚本](https://azure.microsoft.com/documentation/scripts/)。
 - 确保自动化帐户包含以下模块：
     - AzureRM.profile
     - AzureRM.Resources
@@ -256,7 +256,7 @@ Aman Sharma 在其博客 [Harvesting Clouds](http://harvestingclouds.com) 上给
 
 [![“部署到 Azure”](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-此视频提供了其他示例。 它演示了如何将两层 WordPress 应用程序恢复到 Azure：
+此视频提供了另一个示例。 它演示了如何将两层 WordPress 应用程序恢复到 Azure：
 
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]

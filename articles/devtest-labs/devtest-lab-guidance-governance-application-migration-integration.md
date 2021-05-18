@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87289351"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure 开发测试实验室基础结构的监管 - 应用程序迁移和集成
@@ -55,7 +55,7 @@ ms.locfileid: "87289351"
 使用开发测试实验室在 Azure Pipelines 中创建自定义映像管道：
 
 - [Introduction: Get VMs ready in minutes by setting up an image factory in Azure DevTest Labs](./devtest-lab-faq.md#blog-post)（简介：通过在 Azure 开发测试实验室中设置映像工厂即可在几分钟内准备好虚拟机）
-- [Image Factory – Part 2!Setup Azure Pipelines and Factory Lab to Create VMs](./devtest-lab-faq.md#blog-post)（映像工厂 - 第 2 部分！设置 Azure Pipelines 和工厂实验室以创建 VM）
+- [映像工厂 - 第 2 部分！设置 Azure Pipelines 和工厂实验室以创建 VM](./devtest-lab-faq.md#blog-post)
 - [Image Factory – Part 3: Save Custom Images and Distribute to Multiple Labs](./devtest-lab-faq.md#blog-post)（映像工厂 – 第 3 部分：保存自定义映像并分发到多个实验室）
 - [Video: Custom Image Factory with Azure DevTest Labs](./devtest-lab-faq.md#blog-post)（视频：Azure 开发测试实验室的自定义映像工厂）
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97693730"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>安装使用现有应用程序网关的应用程序网关入口控制器 (AGIC)
@@ -32,7 +32,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
 - 已启用[高级网络](../aks/configure-azure-cni.md)的 [AKS](https://azure.microsoft.com/services/kubernetes-service/)
 - AKS 所在的同一虚拟网络中的[应用程序网关 v2](./tutorial-autoscale-ps.md)
 - 已在 AKS 群集上安装 [AAD Pod Identity](https://github.com/Azure/aad-pod-identity)
-- [Cloud Shell](https://shell.azure.com/) 是 Azure Shell 环境， `az` 安装了 CLI、 `kubectl` 和 `helm` 。 需要使用这些工具来运行下面所述的命令。
+- [Cloud Shell](https://shell.azure.com/) 是 Azure Shell 环境，它已安装 `az` CLI、`kubectl` 和 `helm`。 需要使用这些工具来运行下面所述的命令。
 
 在安装 AGIC 之前，请 __备份应用程序网关的配置__：
   1. 使用 [Azure 门户](https://portal.azure.com/)导航到 `Application Gateway` 实例
@@ -77,7 +77,7 @@ AGIC 与 Kubernetes API 服务器和 Azure 资源管理器通信。 它需要一
 请根据 [AAD Pod Identity 安装说明](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra)将此组件添加到 AKS。
 
 接下来，需要创建一个 Azure 标识并向其授予对 ARM 的权限。
-使用 [Cloud Shell](https://shell.azure.com/) 运行以下所有命令并创建标识：
+使用 [Cloud Shell](https://shell.azure.com/) 运行下列所有命令并创建标识：
 
 1. **在 AKS 节点所在的同一个资源组** 中创建 Azure 标识。 选取正确的资源组十分重要。 以下命令中所需的资源组不是 AKS 门户窗格中提到的资源组， 而是 `aks-agentpool` 虚拟机的资源组。 通常，该资源组以 `MC_` 开头并包含 AKS 的名称。 例如：`MC_resourceGroup_aksABCD_westus`
 

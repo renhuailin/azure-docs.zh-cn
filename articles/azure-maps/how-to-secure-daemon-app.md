@@ -1,7 +1,7 @@
 ---
 title: 如何保护守护程序应用程序
 titleSuffix: Azure Maps
-description: 使用 Azure 门户管理身份验证以配置受信任的后台应用程序。
+description: 使用 Azure 门户管理身份验证以配置受信任的守护程序应用程序。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -10,134 +10,134 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2dd04f404330a6c86e2df09da610e16ba9b721f3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895641"
 ---
-# <a name="secure-a-daemon-application"></a>保护后台应用程序
+# <a name="secure-a-daemon-application"></a>保护守护程序应用程序
 
-以下指南适用于受信任且安全的环境中托管的后台进程、计时器和作业。 示例包括 Azure Web 作业、Azure Function App、Windows 服务和任何其他可靠的后台服务。
+以下指南适用于在受信任的安全环境中托管的后台进程、计时器和作业。 示例包括 Azure Web 作业、Azure 函数应用、Windows 服务和任何其他可靠的后台服务。
 
 > [!Tip]
-> Microsoft 建议实现 Azure Active Directory (Azure AD) 和 Azure 基于角色的访问控制 (用于生产应用程序的 Azure RBAC) 。 有关概念的概述，请参阅 [Azure Maps Authentication](./azure-maps-authentication.md)。
+> Microsoft 建议为生产应用程序实现 Azure Active Directory (Azure AD) 和 Azure 基于角色的访问控制 (Azure RBAC)。 有关这些概念的概述，请参阅 [Azure Maps 身份验证](./azure-maps-authentication.md)。
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
 ## <a name="scenario-shared-key-authentication"></a>方案：共享密钥身份验证
 
-创建 Azure Maps 帐户后，将生成主密钥和辅助密钥。 当 [使用共享密钥身份验证调用 Azure Maps](./azure-maps-authentication.md#shared-key-authentication)时，建议使用主密钥作为订阅密钥。 你可以在某些情况下使用辅助密钥，例如滚动密钥更改。 有关详细信息，请参阅 [Azure Maps 中的身份验证](./azure-maps-authentication.md)。
+创建 Azure Maps 帐户后，将生成主密钥和辅助密钥。 当[使用共享密钥身份验证以调用 Azure Maps](./azure-maps-authentication.md#shared-key-authentication) 时，建议使用主密钥作为订阅密钥。 在滚动密钥更改等方案下，可以使用辅助密钥。 有关详细信息，请参阅 [Azure Maps 中的身份验证](./azure-maps-authentication.md)。
 
 ### <a name="securely-store-shared-key"></a>安全存储共享密钥
 
-主密钥和辅助密钥允许映射帐户的所有 Api 的授权。 应用程序应将密钥存储在安全存储区中，如 Azure Key Vault。 应用程序必须检索共享密钥作为 Azure Key Vault 机密，以避免在应用程序配置中以纯文本格式存储共享密钥。 若要了解如何配置 Azure Key Vault，请参阅 [Azure Key Vault 开发人员指南](../key-vault/general/developers-guide.md)。
+主密钥和辅助密钥允许针对 Maps 帐户向所有 API 授权。 应用程序应将密钥存储在安全存储中（如 Azure 密钥保管库）。 应用程序必须以 Azure 密钥保管库机密的形式检索共享密钥，以避免在应用程序配置中以纯文本格式存储共享密钥。 若要了解如何配置 Azure 密钥保管库，请参阅 [Azure 密钥保管库开发人员指南](../key-vault/general/developers-guide.md)。
 
 以下步骤概述了此过程：
 
 1. 创建 Azure 密钥保管库。
-2. 创建一个 Azure AD 的服务主体，方法是创建一个应用注册或托管标识，创建的主体负责访问 Azure Key Vault。
-3. 将服务主体访问权限分配给 Azure 密钥机密 `Get` 权限。
-4. 为开发人员临时分配机密 `Set` 权限的访问权限。
-5. 设置 Key Vault 机密中的共享密钥，并将该密钥 ID 作为后台应用程序应用程序的配置进行引用，并删除机密 `Set` 权限。
-6. 在后台应用程序中实现 Azure AD 身份验证，以从 Azure Key Vault 检索共享密钥机密。
-7. 创建具有共享密钥的 Azure Maps REST API 请求。
+2. 通过创建应用注册或托管标识来创建 Azure AD 服务主体，创建的主体负责访问 Azure 密钥保管库。
+3. 向服务主体分配对 Azure 密钥机密 `Get` 权限的访问权限。
+4. 为开发人员临时分配对机密 `Set` 权限的访问权限。
+5. 在密钥保管库机密中设置共享密钥，并引用密钥 ID 作为守护程序应用程序的配置，然后删除机密 `Set` 权限。
+6. 在守护程序应用程序中实现 Azure AD 身份验证，以从 Azure 密钥保管库检索共享密钥机密。
+7. 使用共享密钥创建 Azure Maps REST API 请求。
 
 > [!Tip]
-> 如果应用托管在 Azure 环境中，则应实现托管标识，以降低管理机密以 Azure Key Vault 进行身份验证所需的成本和复杂性。 请参阅以下 Azure Key Vault [教程，通过托管标识进行连接](../key-vault/general/tutorial-net-create-vault-azure-web-app.md)。
+> 如果应用在 Azure 环境中托管，则应实现托管标识，以降低为向 Azure 密钥保管库进行身份验证而管理机密的成本和复杂性。 请参阅以下 Azure 密钥保管库[教程以通过托管标识进行连接](../key-vault/general/tutorial-net-create-vault-azure-web-app.md)。
 
-后台应用程序负责从安全存储中检索共享密钥。 具有 Azure Key Vault 的实现要求通过 Azure AD 进行身份验证才能访问机密。 相反，我们鼓励直接 Azure AD 身份验证 Azure Maps，因为使用共享密钥身份验证的其他复杂性和操作要求。
+守护程序应用程序负责从安全存储检索共享密钥。 Azure 密钥保管库的实现要求通过 Azure AD 进行身份验证以访问机密。 相反，我们鼓励将 Azure AD 身份验证定向到 Azure Maps，因为使用共享密钥身份验证会增加复杂性和操作要求。
 
 > [!IMPORTANT]
-> 为了简化密钥再生，建议应用程序一次使用一个密钥。 然后，应用程序可以重新生成未使用的密钥，并将新的再生密钥部署到受保护的机密存储区，如 Azure Key Vault。
+> 为了简化密钥重新生成，建议应用程序一次使用一个密钥。 应用程序随后可以重新生成未使用的密钥，并将重新生成的新密钥部署到安全机密存储，例如 Azure 密钥保管库。
 
-## <a name="scenario-azure-ad-role-based-access-control"></a>方案： Azure AD 基于角色的访问控制
+## <a name="scenario-azure-ad-role-based-access-control"></a>方案：Azure AD 基于角色的访问控制
 
-创建 Azure Maps 帐户后，Azure Maps `x-ms-client-id` 值就会出现在 Azure 门户身份验证详细信息页中。 此值表示将用于 REST API 请求的帐户。 应将此值存储在应用程序配置中，并在发出 HTTP 请求之前检索此值。 此方案的目标是使后台应用程序能够通过身份验证 Azure AD 并调用 Azure Maps REST Api。
+创建 Azure Maps 帐户后，Azure Maps `x-ms-client-id` 值就会出现在 Azure 门户身份验证详细信息页中。 此值表示将用于 REST API 请求的帐户。 此值应存储在应用程序配置中，并在发出 HTTP 请求之前进行检索。 此方案的目标是使守护程序应用程序能够对 Azure AD 进行身份验证，并调用 Azure Maps REST API。
 
 > [!Tip]
-> 建议在 Azure 虚拟机、虚拟机规模集或应用服务上托管，以启用托管标识组件的好处。
+> 建议在 Azure 虚拟机、虚拟机规模集或应用服务上进行托管，以实现托管标识组件的好处。
 
-### <a name="daemon-hosted-on-azure-resources"></a>托管在 Azure 资源上的后台程序
+### <a name="daemon-hosted-on-azure-resources"></a>在 Azure 资源上托管的守护程序
 
-在 Azure 资源上运行时，配置 Azure 托管标识以实现低成本、最小凭据管理工作量。 
+在 Azure 资源上运行时，请配置 Azure 托管标识，以实现低成本、最少的凭据管理工作。 
 
-请参阅 [托管标识概述](../active-directory/managed-identities-azure-resources/overview.md) ，使应用程序能够访问托管标识。
+请参阅[托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)，使应用程序可以访问托管标识。
 
-托管标识权益：
+托管标识好处：
 
-* Azure 系统托管 X509 证书公钥加密身份验证。
-* Azure AD 具有 X509 证书的安全，而不是客户端密码。
-* Azure 会管理和续订与托管标识资源关联的所有证书。
-* 通过删除任何对受保护的密钥存储服务（如 Azure Key Vault）的需求，简化了凭据操作管理。 
+* Azure 系统管理的 X509 证书公钥加密身份验证。
+* 使用 X509 证书（而不是客户端密码）保护 Azure AD 安全性。
+* Azure 管理并续订与托管标识资源关联的所有证书。
+* 无需使用安全机密存储服务（如Azure 密钥保管库），从而简化了凭据操作管理。 
 
-### <a name="daemon-hosted-on-non-azure-resources"></a>非 Azure 资源上托管的守护程序
+### <a name="daemon-hosted-on-non-azure-resources"></a>在非 Azure 资源上托管的守护程序
 
-在非 Azure 环境中运行时，托管标识不可用。 因此，你必须通过后台应用程序的 Azure AD 应用程序注册来配置服务主体。
+在非 Azure 环境中运行时，托管标识不可用。 因此，必须通过 Azure AD 应用程序注册为守护程序应用程序配置服务主体。
 
-1. 在 "Azure 门户的" Azure 服务 "列表中，选择" **Azure Active Directory** "  >  **应用注册** "  >  **新注册** "。  
+1. 在 Azure 门户的 Azure 服务列表中，依次选择“Azure Active Directory” > “应用注册” > “新注册”。    
 
     > [!div class="mx-imgBorder"]
     > ![应用注册](./media/how-to-manage-authentication/app-registration.png)
 
-2. 如果已经注册了应用，则继续执行下一步。 如果尚未注册应用，请输入 **名称** ，选择 " **支持帐户类型** "，然后选择 " **注册** "。  
+2. 如果已注册应用，请继续执行下一步。 如果尚未注册应用，请输入“名称”，选择“支持帐户类型”，然后选择“注册”  。  
 
     > [!div class="mx-imgBorder"]
     > ![应用注册详细信息](./media/how-to-manage-authentication/app-create.png)
 
-3. 若要将委派的 API 权限分配到 Azure Maps，请访问应用程序。 然后，在 " **应用注册** " 下，选择 " **API 权限** " "  >  **添加权限** "。 在 " **我的组织使用的 api** " 下，搜索并选择 " **Azure Maps** "。
+3. 若要将委托的 API 权限分配给 Azure Maps，请访问应用程序。 然后在“应用注册”下，选择“API 权限” > “添加权限”。 在“我的组织使用的 API”下，搜索并选择“Azure Maps” 。
 
     > [!div class="mx-imgBorder"]
     > ![添加应用 API 权限](./media/how-to-manage-authentication/app-permissions.png)
 
-4. 选中 " **Access Azure Maps** 旁边的复选框，然后选择" **添加权限** "。
+4. 选中“访问 Azure Maps”旁边的复选框，然后选择“添加权限” 。
 
     > [!div class="mx-imgBorder"]
     > ![选择应用 API 权限](./media/how-to-manage-authentication/select-app-permissions.png)
 
-5. 完成以下步骤来创建客户端机密或配置证书。
+5. 完成以下步骤以创建客户端密码或配置证书。
 
-    * 如果你的应用程序使用服务器或应用程序身份验证，请在你的应用程序注册页上，中转到 **证书 & 密码** 。 然后，通过选择 " **新建客户端密钥** " 上传公钥证书或创建密码。
+    * 如果应用程序使用服务器或应用程序身份验证，则在应用注册页上，转到“证书和机密”。 然后上传公钥证书或是通过选择“新客户端密码”来创建密码。
 
         > [!div class="mx-imgBorder"]
         > ![创建客户端机密](./media/how-to-manage-authentication/app-keys.png)
 
-    * 选择 " **添加** " 后，复制密钥并将其安全地存储在服务中，如 Azure Key Vault。 查看 [Azure Key Vault 开发人员指南](../key-vault/general/developers-guide.md) ，以安全地存储证书或机密。 将使用此机密从 Azure AD 获取令牌。
+    * 选择“添加”后，复制机密并将它安全地存储在诸如 Azure 密钥保管库此类的服务中。 查看 [Azure 密钥保管库开发人员指南](../key-vault/general/developers-guide.md)以安全地存储证书或机密。 你会使用此机密从 Azure AD 获取令牌。
 
         > [!div class="mx-imgBorder"]
         > ![添加客户端密码](./media/how-to-manage-authentication/add-key.png)
 
-### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>向后台应用程序授予基于角色的访问权限以便 Azure Maps
+### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>为守护程序应用程序授予对 Azure Maps 的基于角色的访问权限
 
-通过将创建的托管标识或服务主体分配给一个或多个 Azure Maps 角色定义，可以 *(AZURE RBAC) 授予 azure 基于角色的访问控制* 。 若要查看可用于 Azure Maps 的 Azure 角色定义，请 **访问 (IAM) 的 "访问控制** "。 选择 " **角色** "，然后搜索以 *Azure Maps* 开头的角色。 这些 Azure Maps 角色是可以向其授予访问权限的角色。
+通过将创建的托管标识或服务主体分配给一个或多个 Azure Maps 角色定义，来授予 Azure 基于角色的访问控制 (Azure RBAC)。 若要查看可用于 Azure Maps 的 Azure 角色定义，请转到“访问控制(IAM)”。 选择“角色”，然后搜索以“Azure Maps”开头的角色。 这些 Azure Maps 角色是可以向其授予访问权限的角色。
 
 > [!div class="mx-imgBorder"]
 > ![查看可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. 中转到你的 **Azure Maps 帐户** 。 选择“访问控制(IAM)” > “角色分配”。
+1. 转到你的 Azure Maps 帐户。 选择“访问控制(IAM)” > “角色分配”。
 
     > [!div class="mx-imgBorder"]
     > ![使用 Azure RBAC 授予访问权限](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 " **角色分配** " 选项卡上， **添加** 角色分配。 
+2. 在“角色分配”选项卡上，“添加”角色分配 。 
 
     > [!div class="mx-imgBorder"]
-    > ![屏幕截图显示带有 "添加选定" 的滚动分配。](./media/how-to-manage-authentication/add-role-assignment.png)
+    > ![屏幕截图显示角色分配，其中选择了“添加”。](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. 选择内置 Azure Maps 角色定义，如 **Azure Maps 数据读取器** 或 **Azure Maps 数据参与者** 。 在 " **分配访问权限** " 下，选择 "使用 **用户分配** 的托管标识系统 **Azure AD 用户、组或服务主体** 或托管标识" 分配的托管标识  /  **System assigned Managed identity** 。 选择主体。 再选择“保存”。
+3. 选择内置 Azure Maps 角色定义，例如“Azure Maps 数据读取器”或“Azure Maps 数据参与者” 。 在“将访问权限分配到”下，选择“Azure AD 用户、组或服务主体”或是具有“用户分配的托管标识” / “系统分配的托管标识”的托管标识   。 选择主体。 再选择“保存”。
 
     > [!div class="mx-imgBorder"]
     > ![如何添加角色分配](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
 
-4. 你可以确认已在 "角色分配" 选项卡上应用了角色分配。
+4. 可以在角色分配选项卡上确认已应用了角色分配。
 
-## <a name="request-token-with-managed-identity"></a>具有托管标识的请求令牌
+## <a name="request-token-with-managed-identity"></a>使用托管标识请求令牌
 
-为宿主资源配置托管标识后，请使用 Azure SDK 或 REST API 获取用于 Azure Maps 的令牌，请参阅 [获取访问令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)中的详细信息。 在本指南中，假定将返回访问令牌，可在 REST API 请求中使用该令牌。
+为托管资源配置托管标识后，使用 Azure SDK 或 REST API 获取 Azure Maps 的令牌，请参阅有关[获取访问令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)的详细信息。 按照指南，预期会返回一个访问令牌，该令牌可用于 REST API 请求。
 
-## <a name="request-token-with-application-registration"></a>具有应用程序注册的请求令牌
+## <a name="request-token-with-application-registration"></a>使用应用程序注册请求令牌
 
-注册应用并将其与 Azure Maps 相关联后，可以请求访问令牌。
+注册应用并将它与 Azure Maps 关联后，可以请求访问令牌。
 
 * Azure AD 资源 ID `https://atlas.microsoft.com/`
 * Azure AD 应用 ID

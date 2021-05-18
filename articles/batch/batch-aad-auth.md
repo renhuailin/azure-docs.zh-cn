@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
 ms.openlocfilehash: 2ceefa538c44208750da8986fcf3d161f0c0865f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102180014"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
@@ -41,7 +41,7 @@ Azure Batch 支持使用 [Azure Active Directory](../active-directory/fundamenta
 >
 > 使用集成身份验证进行验证时，虽然特定于租户的终结点为可选，但仍推荐。 然而，还可以使用 Azure AD 常用终结点。 未提供特定租户时，该常用终结点可提供泛型凭据收集接口。 常用终结点为 `https://login.microsoftonline.com/common`。
 
-有关 Azure AD 终结点的详细信息，请参阅 [身份验证与授权](../active-directory/develop/authentication-vs-authorization.md)。
+有关 Azure AD 终结点的详细信息，请参阅[身份验证和授权](../active-directory/develop/authentication-vs-authorization.md)。
 
 ### <a name="batch-resource-endpoint"></a>Batch 资源终结点
 
@@ -55,7 +55,7 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 
 注册应用程序时，需要向 Azure AD 提供关于应用程序的信息。 然后，Azure AD 将提供一个应用程序 ID（也称为“客户端 ID”），在运行时，可以使用该 ID 将应用程序与 Azure AD 相关联。 若要详细信息应用程序 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)。
 
-若要注册批处理应用程序，请遵循 [快速入门：将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)中的 "**注册应用** 程序" 部分中的步骤。 如果将应用程序注册为本机应用程序，可以为重定向 URI 指定任何有效 URI。 它不需要是实际的终结点。
+若要注册 Batch 应用程序，请执行[快速入门：将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)中的“注册应用程序”部分内的步骤。 如果将应用程序注册为本机应用程序，可以为重定向 URI 指定任何有效 URI。 它不需要是实际的终结点。
 
 注册应用程序后，会看到应用程序 ID：
 

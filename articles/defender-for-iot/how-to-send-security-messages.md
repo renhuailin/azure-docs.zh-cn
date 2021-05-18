@@ -1,29 +1,19 @@
 ---
 title: 发送 Defender for IoT 设备安全消息
 description: 了解如何使用 Defender for IoT 发送安全消息。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/8/2021
-ms.author: shhazam
 ms.custom: devx-track-js
-ms.openlocfilehash: d59121f2dbae208ba045a9c2e6d66245296537a0
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
-ms.translationtype: MT
+ms.openlocfilehash: dcda7f4c1d078fa32a5ab8c7b7ce690ab2134afe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820681"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104781630"
 ---
 # <a name="send-security-messages-sdk"></a>发送安全消息 SDK
 
-本操作方法指南介绍了在不使用用于 IoT 代理的情况下，选择收集和发送设备安全消息时的 IoT 服务功能，并说明如何执行此操作。
+本操作指南介绍了当你选择在不使用 Defender for IoT 代理的情况下收集和发送设备安全消息时使用的 Defender for IoT 服务功能，并说明了其用法。
 
 本指南介绍如何：
 

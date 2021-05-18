@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: bafd8a9752d2587ec52fe586e442e3bfc86d7537
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97585762"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure Cache for Redis 开发的常见问题解答
@@ -35,11 +35,11 @@ ms.locfileid: "97585762"
 
 * 用户可以查看适用于 [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)、[ASP.NET](cache-web-app-howto.md)、[Java](cache-java-get-started.md)、[Node.js](cache-nodejs-get-started.md) 和 [Python](cache-python-get-started.md) 的教程之一。
 * 用户可以观看[如何使用 Microsoft Azure Redis 缓存生成高性能应用](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/)。
-* 可以查看与你项目的开发语言对应的面向客户的客户端文档，了解如何使用 Redis。 许多 Redis 客户端都可用于 Azure Redis 缓存。 有关 Redis 客户端列表，请参阅 [https://redis.io/clients](https://redis.io/clients)。
+* 还可以查看与项目的开发语言匹配的面向客户的客户文档，了解如何使用 Redis。 许多 Redis 客户端都可用于 Azure Redis 缓存。 有关 Redis 客户端列表，请参阅 [https://redis.io/clients](https://redis.io/clients)。
 
-如果还没有 Azure 帐户，可以：
+如果还没有 Azure 帐户，则可以：
 
-* [免费注册 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留帐户并使用免费的 Azure 服务和功能。
+* [免费注册 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留帐户和使用免费的 Azure 服务和功能。
 * [激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero)。 MSDN 订阅每月提供可用来试用付费版 Azure 服务的信用额度。
 
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange.Redis 配置选项有什么作用？
@@ -114,7 +114,7 @@ public static ConnectionMultiplexer Connection
 >
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference"></a>Azure Redis 缓存为什么没有 MSDN 类库参考？
-Redis Microsoft Azure 缓存基于流行的开源内存中数据存储 Redis。 它可以通过各种 [Redis 客户端](https://redis.io/clients) 进行访问，这些客户端适用于许多编程语言。 每个客户端有自身的 API，用于通过 [Redis 命令](https://redis.io/commands)调用 Azure Redis 缓存实例。
+Microsoft Azure Cache for Redis 基于热门开源内存中数据存储 Redis。 它可以通过各种 [Redis 客户端](https://redis.io/clients) 进行访问，这些客户端适用于许多编程语言。 每个客户端有自身的 API，用于通过 [Redis 命令](https://redis.io/commands)调用 Azure Redis 缓存实例。
 
 由于客户端各不相同，因此 MSDN 上未提供统一的类引用，每个客户端都有自己的参考文档。 除了参考文档以外，还可以参阅多个教程，这些教程介绍了如何通过不同的语言和缓存客户端来开始使用 Azure Redis 缓存。 若要访问这些教程，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)以及它在内容列表中的同级文章。
 

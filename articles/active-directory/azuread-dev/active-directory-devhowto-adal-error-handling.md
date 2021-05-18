@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: da47893839322f06cebfbee40902414040bb87d8
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383728"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075196"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
 
@@ -197,7 +197,7 @@ AcquireToken 是用于获取令牌的默认 ADAL 方法。 在需要用户标识
 
 本机应用程序中的错误处理可以按两种情况定义：
 
-|  |  |
+| 案例 | 说明  |
 |------|-------------|
 | **情况 1**：<br>不可重试错误（大多数情况下） | 1.不要尝试立即重试。 根据调用重试的特定错误显示最终用户 UI（例如，“尝试再次登录”或“下载 Azure AD 中转站应用程序”）。 |
 | **情况 2**：<br>可重试错误 | 1.执行一次重试，因为最终用户可能已进入某种会带来成功的状态。<br><br>2.如果重试失败，请根据调用重试的特定错误显示最终用户 UI（“尝试再次登录”、“下载 Azure AD 中转站应用”等）。 |
@@ -371,7 +371,7 @@ catch (AdalException e) {
 
 AcquireToken 失败存在以下情况：
 
-|  |  |
+| 案例 | 说明  |
 |------|-------------|
 | **情况 1**：<br>可通过交互式式请求解决 | 1.如果 login() 失败，请勿立即执行重试。 仅在用户执行某一操作，提示重试后才重试。|
 | **情况 2**：<br>不可通过交互式请求解决。 错误可重试。 | 1.执行一次重试，因为最终用户可能已进入某种会带来成功的状态。<br><br>2.如果重试失败，请根据调用重试的特定错误向最终用户显示操作（“尝试再次登录”）。 |
@@ -481,8 +481,8 @@ catch (AdalException e) {
 
 ## <a name="error-and-logging-reference"></a>错误和日志记录引用
 
-### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>记录个人身份信息 & 组织身份信息 
-默认情况下，ADAL 日志记录不会捕获或记录任何个人身份信息或组织身份信息。 库允许应用开发人员通过 Logger 类中的资源库启用该功能。 通过记录个人身份信息或组织身份信息，应用程序负责安全地处理高度敏感的数据，并遵守任何法规要求。
+### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>记录个人身份信息和组织身份信息 
+默认情况下，ADAL 日志记录不捕获或记录任何个人身份信息或组织身份信息。 库允许应用开发人员通过 Logger 类中的资源库启用该功能。 记录个人身份信息或组织身份信息后，应用负责安全地处理高度敏感的数据并遵守任何法规要求。
 
 ### <a name="net"></a>.NET
 

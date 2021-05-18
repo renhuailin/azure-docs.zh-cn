@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c06fb0830ae709918b668ed60efbaaf47a63ce84
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94842832"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
@@ -38,7 +38,7 @@ ms.locfileid: "94842832"
 
 ### <a name="azure-tenancy"></a>Azure 租户
 
-Azure 租户（Azure 订阅）是指 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 中的“客户/账单”关系和唯一的[租户](../../active-directory/develop/quickstart-create-new-tenant.md)。 Microsoft Azure 中的租户级隔离使用 Azure Active Directory 和 Azure 提供的 [基于角色的访问控制](../../role-based-access-control/overview.md) 实现。 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。
+Azure 租户（Azure 订阅）是指 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 中的“客户/账单”关系和唯一的[租户](../../active-directory/develop/quickstart-create-new-tenant.md)。 Microsoft Azure 中的租户级别隔离是使用 Azure Active Directory 及其提供的 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)实现的。 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。
 
 该目录中的用户、组和应用程序可以管理 Azure 订阅中的资源。 可以使用 Azure 门户、Azure 命令行工具及 Azure 管理 API 来分配这些访问权限。 从逻辑上讲，Azure AD 租户是使用安全边界隔离的，这样，任何客户都不能访问或入侵联合租户，而无论其行为是恶意的还是偶然的。 在“裸机”服务器上运行的 Azure AD 是在分隔的网络段中隔离的，主机级别数据包筛选和 Windows 防火墙在该网络段中阻止不需要的连接和流量。
 
@@ -52,7 +52,7 @@ Azure 租户（Azure 订阅）是指 [Azure Active Directory](../../active-direc
 
 - 限制了对危及 Azure AD 服务的服务器的物理访问，以及对 Azure 后端系统的直接访问。
 
-- Azure AD 用户无权访问物理资产或位置，因此，他们不可能跳过以下所述的逻辑 Azure RBAC 策略检查。
+- Azure AD 用户无权访问物理资产或位置，因此他们不可能绕过下述逻辑 Azure RBAC 策略检查。
 
 为了满足诊断和维护需求，需要使用采用实时特权提升系统的操作模型。 Azure AD Privileged Identity Management (PIM) 引入了有资格管理员的概念。[有资格管理员](../../active-directory/privileged-identity-management/pim-configure.md)应是不时（但不是每天）需要特权访问的用户。 该角色处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。
 
@@ -80,7 +80,7 @@ Azure RBAC 有三种适用于所有资源类型的基本角色：
 
 可以通过 Azure 中的其他 Azure 角色对特定的 Azure 资源进行管理。 例如，虚拟机参与者角色允许用户创建和管理虚拟机。 但不会向用户授予对虚拟机连接的 Azure 虚拟网络或子网的访问权限。
 
-[Azure 内置角色](../../role-based-access-control/built-in-roles.md) 列出了 azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。 若要定义自己的角色以便进一步控制，请参阅如何生成 [Azure RBAC 中的自定义角色](../../role-based-access-control/custom-roles.md)。
+[Azure 内置角色](../../role-based-access-control/built-in-roles.md)列出了 Azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。 若要定义自己的角色以便进一步控制，请参阅如何生成 [Azure RBAC 中的自定义角色](../../role-based-access-control/custom-roles.md)。
 
 Azure Active Directory 的其他部分功能包括:
 
@@ -90,7 +90,7 @@ Azure Active Directory 的其他部分功能包括:
 
 - Azure AD 通过联合身份验证（使用 [Active Directory 联合身份验证服务](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)）、同步以及本地目录复制方式提供标识即服务。
 
-- [Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md) 是多因素身份验证服务，它要求用户使用移动应用、电话呼叫或短信验证登录。 它可以与 Azure AD 配合使用，帮助通过 Azure 多重身份验证服务器来保护本地资源；它还用于使用 SDK 的自定义应用程序和目录。
+- [Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)是多重身份验证服务，它要求用户使用移动应用、手机或短信验证登录。 它可以与 Azure AD 配合使用，帮助通过 Azure 多重身份验证服务器来保护本地资源；它还用于使用 SDK 的自定义应用程序和目录。
 
 - [Azure AD 域服务](https://azure.microsoft.com/services/active-directory-ds/)可让用户将 Azure 虚拟机加入一个 Active Directory 域，且无需部署域控制器。 用户可以使用其公司的 Active Directory 凭据登录到这些虚拟机中，并使用组策略管理已加入域的虚拟机，以便在所有 Azure 虚拟机上强制实施安全基准措施。
 
@@ -231,7 +231,7 @@ Azure 提供了以下加密类型来保护数据：
 
 适用于虚拟机 (VM) 的 [Azure 磁盘加密](./azure-disk-encryption-vms-vmss.md)通过使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中控制的密钥和策略加密 VM 磁盘（包括引导磁盘和数据磁盘），帮助解决企业的安全和符合性要求。
 
-适用于 Windows 的磁盘加密解决方案基于 [Microsoft BitLocker 驱动器加密](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11))，Linux 解决方案基于 [dm dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)。
+适用于 Windows 的磁盘加密解决方案是基于 [Microsoft BitLocker 驱动器加密](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11))技术，Linux 解决方案基于 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)。
 
 在 Microsoft Azure 中启用 IaaS VM 时，该解决方案支持以下 IaaS VM 方案：
 
@@ -242,7 +242,7 @@ Azure 提供了以下加密类型来保护数据：
 - 在 Linux IaaS VM 的数据驱动器上禁用加密
 - 在运行 Windows 客户端 OS 的 IaaS VM 上启用加密
 - 在包含安装路径的卷上启用加密
-- 在使用 mdadm 配置了磁盘条带化的 Linux Vm 上启用加密 (RAID) 使用[mdadm](https://en.wikipedia.org/wiki/Mdadm)
+- 在使用 [mdadm](https://en.wikipedia.org/wiki/Mdadm) 配置了磁盘条带化 (RAID) 的 Linux VM 上启用加密
 - 使用 [LVM（逻辑卷管理器）](/windows/win32/fileio/about-volume-management)对 Linux VM 上的数据磁盘启用加密
 - 在使用存储空间配置的 Windows VM 上启用加密
 - 支持所有 Azure 公共区域
@@ -317,6 +317,6 @@ Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Windows Azure 虚拟网络中的计算机的网络隔离选项](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)。 它包括经典的前端和后端方案，其中特定后端网络或子网中的计算机可能只允许某些客户端或其他计算机根据 IP 地址允许列表连接到特定终结点。
+- 了解[适用于 Microsoft Azure 虚拟网络中的计算机的网络隔离选项](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)。 它包括经典的前端和后端方案，其中特定后端网络或子网中的计算机可能只允许某些客户端或其他计算机根据 IP 地址允许列表连接到特定终结点。
 
 - 了解 [Azure 中的虚拟机隔离](../../virtual-machines/isolation.md)。 Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。

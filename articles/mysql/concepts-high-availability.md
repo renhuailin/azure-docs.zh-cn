@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: 74d6981c0465a1960e920313c1f960f0d781692b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101092970"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的高可用性
@@ -22,8 +22,8 @@ Azure Database for MySQL 适合运行对正常运行时间要求很高的关键�
 
 | **组件** | **说明**|
 | ------------ | ----------- |
-| <b>MySQL 数据库服务器 | Azure Database for MySQL 为数据库服务器提供安全性、隔离、资源保护和快速重启功能。 这些功能有助于在60-120 秒内发生中断后执行缩放和数据库服务器恢复操作，具体取决于数据库上的事务活动。 <br/> 数据库服务器中的数据修改通常发生在数据库事务的上下文中。 所有数据库更改都以预写日志 (ib_log) 的形式同步记录在 Azure 存储上，该存储附加到数据库服务器。 在数据库[检查点](https://dev.mysql.com/doc/refman/5.7/en/innodb-checkpoints.html)过程中，数据库服务器内存中的数据页也会刷新到存储中。 |
-| <b>远程存储 | 所有 MySQL 物理数据文件和日志文件都存储在 Azure 存储中，该存储设计为在一个区域中存储数据的三个副本，以确保数据冗余、可用性和可靠性。 存储层还独立于数据库服务器。 它可以从失败的数据库服务器分离，并在60秒内重新附加到新的数据库服务器。 此外，Azure 存储还会持续监视是否存在任何存储故障。 如果检测到块损坏，则会通过实例化新的存储副本来自动修复。 |
+| <b>MySQL 数据库服务器 | Azure Database for MySQL 为数据库服务器提供安全性、隔离、资源保护和快速重启功能。 这些功能用于在 60-120 秒内发生中断后辅助操作（例如缩放和数据库服务器恢复操作），具体取决于数据库上的事务活动。 <br/> 数据库服务器中的数据修改通常发生在数据库事务的上下文中。 所有数据库更改都以预写日志 (ib_log) 的形式同步记录在 Azure 存储上，该存储附加到数据库服务器。 在数据库[检查点](https://dev.mysql.com/doc/refman/5.7/en/innodb-checkpoints.html)过程中，数据库服务器内存中的数据页也会刷新到存储中。 |
+| <b>远程存储 | 所有 MySQL 物理数据文件和日志文件都存储在 Azure 存储中，该存储设计为在一个区域中存储数据的三个副本，以确保数据冗余、可用性和可靠性。 存储层还独立于数据库服务器。 它可以在 60 秒内从发生故障的数据库服务器分离并重新附加到新的数据库服务器。 此外，Azure 存储还会持续监视是否存在任何存储故障。 如果检测到块损坏，则会通过实例化新的存储副本来自动修复。 |
 | <b>网关 | 网关充当数据库代理，将所有客户端连接路由到数据库服务器。 |
 
 ## <a name="planned-downtime-mitigation"></a>缓解计划内停机
@@ -37,13 +37,13 @@ Azure Database for MySQL 设计为在计划内停机操作期间提供高可用�
 | ------------ | ----------- |
 | <b>计算纵向扩展/缩减 | 当用户执行计算纵向扩展/缩减操作时，将使用缩放的计算配置来预配新的数据库服务器。 在旧的数据库服务器中，将允许处于活动状态的检查点完成，客户端连接将排空，所有未提交的事务将取消，然后将关闭该服务器。 然后会从旧数据库服务器分离存储并将其附加到新的数据库服务器。 当客户端应用程序重试连接或尝试建立新连接时，网关会将连接请求定向到新的数据库服务器。|
 | <b>纵向扩展存储 | 纵向扩展存储是一种联机操作，不会中断数据库服务器。|
-| <b>新软件部署 (Azure) | 新功能的推出或 bug 修复会自动在服务的计划内维护过程中发生。 有关详细信息，请参阅[文档](concepts-monitoring.md#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
+| <b>新软件部署 (Azure) | 在服务的计划内维护过程中，将自动推出新功能或修复 bug。 有关详细信息，请参阅[文档](concepts-monitoring.md#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
 | <b>次要版本升级 | Azure Database for MySQL 会自动将数据库服务器修补到 Azure 确定的次要版本。 这是在服务的计划内维护过程中发生的。 在计划内维护期间，可能会发生数据库服务器重启或故障转移，这可能会导致最终用户的数据库服务器暂时不可用。 Azure Database for MySQL 服务器在容器中运行，因此数据库服务器重启通常很快，预计一般会在 60-120 秒内完成。 工程团队会认真监视包括每个服务器重启在内的整个计划内维护事件。 服务器故障转移时间取决于数据库恢复时间，如果在故障转移时服务器上有大量的事务活动，这可能会导致数据库需要更长的时间才能联机。 若要避免重启时间延长，建议在计划内维护事件期间避免任何长时间运行的事务（大容量加载）。 有关详细信息，请参阅[文档](concepts-monitoring.md#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
 
 
 ##  <a name="unplanned-downtime-mitigation"></a>缓解计划外停机
 
-意外的故障（包括基础硬件故障、网络问题和软件 bug）可能会导致计划外停机。 如果数据库服务器意外关闭，将在60-120 秒内自动预配新的数据库服务器。 远程存储会自动附加到新的数据库服务器。 MySQL 引擎使用 WAL 和数据库文件执行恢复操作，并打开数据库服务器以允许客户端进行连接。 未提交的事务将丢失，并且必须由应用程序重试。 虽然计划外停机无法避免，但 Azure Database for MySQL 可以通过在数据库服务器和存储层上自动执行恢复操作来减少停机时间，无需人工干预。 
+意外的故障（包括基础硬件故障、网络问题和软件 bug）可能会导致计划外停机。 如果数据库服务器意外关闭，则会在 60-120 秒内自动预配一个新的数据库服务器。 远程存储会自动附加到新的数据库服务器。 MySQL 引擎使用 WAL 和数据库文件执行恢复操作，并打开数据库服务器以允许客户端进行连接。 未提交的事务将丢失，并且必须由应用程序重试。 虽然计划外停机无法避免，但 Azure Database for MySQL 可以通过在数据库服务器和存储层上自动执行恢复操作来减少停机时间，无需人工干预。 
 
 
 :::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="Azure MySQL 中的高可用性的视图":::

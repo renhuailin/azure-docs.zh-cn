@@ -3,14 +3,15 @@ title: 从 Azure Application Insights 导出到 Power BI | Microsoft Docs
 description: 可以在 Power BI 中显示分析查询。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 4bdae09d193d5ae9c59fe9352e07b8219a76841d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: e0644a083021956316595d299a69a69b321a87d9
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584307"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164122"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
+
 [Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](./app-insights-overview.md) 的数据。
 
 可以使用三种方法将 Application Insights 数据导出到 Power BI：
@@ -23,18 +24,21 @@ ms.locfileid: "100584307"
 > Power BI 适配器现在 **已弃用**。 此解决方案的预定义图表是由静态的不可编辑查询填充的。 你无法编辑这些查询，到 Power BI 的连接可能会成功但不会填充数据，具体取决于你的数据的某些属性。 这是由硬编码的查询中设置的排除条件导致的。 虽然此解决方案仍然适用于某些客户，但是由于缺少适配器的灵活性，建议的解决方案是使用 [**导出 Analytics 查询**](#export-analytics-queries)功能。
 
 ## <a name="export-analytics-queries"></a>导出 Analytics 查询
+
 可以使用这种方法编写所需的任何 Analytics 查询或从使用情况漏斗图导出，然后将其导出到 Power BI 仪表板。 （可以添加到适配器创建的仪表板。）
 
 ### <a name="one-time-install-power-bi-desktop"></a>一次性操作：安装 Power BI Desktop
-若要导入 Application Insights 查询，可以使用 Power BI Desktop（桌面版）。 随后可以将其发布到 Web 或 Power BI 云工作区。 
+
+若要导入 Application Insights 查询，可以使用 Power BI Desktop（桌面版）。 随后可以将其发布到 Web 或 Power BI 云工作区。
 
 安装 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)。
 
 ### <a name="export-an-analytics-query"></a>导出 Analytics 查询
+
 1. [打开 Analytics 并编写查询](../logs/log-analytics-tutorial.md)。
 2. 测试并优化查询，直到对结果满意。 导出之前，请确保查询在 Analytics 中正常运行。
 3. 在“导出”菜单中，选择“Power BI (M)”。  保存文本文件。
-   
+
     ![Analytics 屏幕截图，其中突出显示了“导出”菜单](./media/export-power-bi/analytics-export-power-bi.png)
 4. 在 Power BI Desktop 中，选择“获取数据” > “空白查询”。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。 
 
@@ -43,19 +47,20 @@ ms.locfileid: "100584307"
     ![Power BI Desktop 的屏幕截图，其中突出显示了“高级编辑器”](./media/export-power-bi/power-bi-import-analytics-query.png)
 
 5. 可能需要提供凭据才能让 Power BI 访问 Azure。 使用“组织帐户”和 Microsoft 帐户登录。
-   
+
     ![Power BI“查询设置”对话框的屏幕截图](./media/export-power-bi/power-bi-import-sign-in.png)
 
     如果需要验证凭据，请使用查询编辑器中的“数据源设置”菜单命令。 请务必指定用于 Azure 的凭据，它可能不同于用于 Power BI 的凭据。
 6. 选择查询的可视化效果并选择 X 轴、Y 轴和分段维度的字段。
-   
+
     ![Power BI Desktop 可视化选项的屏幕截图](./media/export-power-bi/power-bi-analytics-visualize.png)
 7. 将报告发布到 Power BI 云工作区。 在该工作区中，可将同步的版本嵌入其他网页。
-   
+
     ![Power BI Desktop 的屏幕截图，其中突出显示了“发布”按钮](./media/export-power-bi/publish-power-bi.png)
 8. 定期手动刷新报告，或者在选项页中设置按计划刷新。
 
 ### <a name="export-a-funnel"></a>导出漏斗图
+
 1. [生成漏斗图](./usage-funnels.md)。
 2. 选择“Power BI”。
 
@@ -65,7 +70,7 @@ ms.locfileid: "100584307"
 
    ![Power BI Desktop 的屏幕截图，其中突出显示了“空白查询”按钮](./media/export-power-bi/blankquery.png)
 
-   将导出的 M 语言脚本粘贴到高级编辑器中。 
+   将导出的 M 语言脚本粘贴到高级编辑器中。
 
    ![屏幕截图显示 Power BI Desktop，其中突出显示了“高级编辑器”](./media/export-power-bi/advancedquery.png)
 
@@ -73,7 +78,7 @@ ms.locfileid: "100584307"
 
    ![屏幕截图显示 Power BI Desktop 漏斗图可视化选项](./media/export-power-bi/selectsequence.png)
 
-5. 更改标题使其有意义，并将报表发布到 Power BI 云工作区。 
+5. 更改标题使其有意义，并将报表发布到 Power BI 云工作区。
 
    ![Power BI Desktop 的屏幕截图，其中突出显示了标题更改](./media/export-power-bi/changetitle.png)
 
@@ -82,42 +87,49 @@ ms.locfileid: "100584307"
 你可能会遇到与凭据或数据集大小相关的错误。 下面是有关如何解决这些错误的一些信息。
 
 ### <a name="unauthorized-401-or-403"></a>未授权（401 或 403）
+
 若未更新过刷新令牌，可能会出现此问题。 请尝试以下步骤，确保仍拥有访问权限：
 
 1. 登录 Azure 门户，确保可访问资源。
 2. 尝试刷新仪表板的凭据。
 3. 尝试从 Power BI Desktop 清除缓存。
 
-
    如果具有访问权限且刷新凭据不起作用，请开具支持票证。
 
 ### <a name="bad-gateway-502"></a>错误的网关 (502)
-这通常由返回过多数据的分析查询导致。 尝试使用较小的时间范围执行查询。 
+
+这通常由返回过多数据的分析查询导致。 尝试使用较小的时间范围执行查询。
 
 如果减少来自分析查询的数据集不符合需求，应考虑使用 [API](https://dev.applicationinsights.io/documentation/overview) 来拉取更大的数据集。 下面介绍如何转换 M-Query 导出以使用 API。
 
 1. 创建 [API 密钥](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)。
 2. 通过将 Azure 资源管理器 URL 替换为 Application Insights API，更新从分析中导出的 Power BI M 脚本。
-   * 替换 **https： \/ /management.azure.com/subscriptions/**
+   * 将 https:\//management.azure.com/subscriptions/...
    * 替换为 **https:\//api.applicationinsights.io/beta/apps/...**
 3. 最后，将凭据更新为基本凭据，再使用 API 密钥。
 
 **现有脚本**
- ```
+
+```
  Source = Json.Document(Web.Contents("https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups//providers/microsoft.insights/components//api/query?api-version=2014-12-01-preview",[Query=[#"csl"="requests",#"x-ms-app"="AAPBI"],Timeout=#duration(0,0,4,0)]))
- ```
+```
+
 **更新的脚本**
- ```
- Source = Json.Document(Web.Contents("https://api.applicationinsights.io/beta/apps/<APPLICATION_ID>/query?api-version=2014-12-01-preview",[Query=[#"csl"="requests",#"x-ms-app"="AAPBI"],Timeout=#duration(0,0,4,0)]))
- ```
+
+```
+Source = Json.Document(Web.Contents("https://api.applicationinsights.io/beta/apps/<APPLICATION_ID>/query?api-version=2014-12-01-preview",[Query=[#"csl"="requests",#"x-ms-app"="AAPBI"],Timeout=#duration(0,0,4,0)]))
+```
 
 ## <a name="about-sampling"></a>关于采样
+
 根据应用程序发送的数据量，你可能希望使用自适应采样功能，它只发送一定百分比的遥测数据。 如果在 SDK 中或者针对引入手动设置了采样，也同样可以做到这一点。 [了解有关采样的详细信息](./sampling.md)。
 
 ## <a name="power-bi-adapter-deprecated"></a>Power BI 适配器（已弃用）
+
 此方法可以自动创建完整的遥测仪表板。 初始数据集是预定义的，但可以在其中添加更多数据。
 
 ### <a name="get-the-adapter"></a>获取适配器
+
 1. 登录 [Power BI](https://app.powerbi.com/)。
 2. 打开“获取数据”![左下角的“获取数据”图标的屏幕截图](./media/export-power-bi/001.png)，然后选择“服务” 。
 
@@ -145,5 +157,6 @@ ms.locfileid: "100584307"
 完成初始导入后，仪表板和报告会持续每日更新。 可以控制数据集的刷新计划。
 
 ## <a name="next-steps"></a>后续步骤
+
 * [Power BI - 学习](https://www.powerbi.com/learning/)
 * [Analytics 教程](../logs/log-analytics-tutorial.md)

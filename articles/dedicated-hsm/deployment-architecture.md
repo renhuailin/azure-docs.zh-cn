@@ -10,26 +10,50 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/05/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 6a0767b077886337331f24b15715247006f3fe2c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: c454b2e4df7a9ce5fadd33386e5bb413b503c6e4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94888889"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608419"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure 专用 HSM 部署体系结构
 
 Azure 专用 HSM 提供 Azure 中的加密密钥存储。 它符合严格的安全要求。 如果客户具备以下条件，将受益于 Azure 专用 HSM：
 
-* 必须符合 FIPS 140-2 级别 3 认证
+* 必须符合 [FIPS 140-2 级别 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) 认证
 * 要求其具有对 HSM 的独占访问权限
 * 应具有对其设备的完全控制权
 
 HSM 分布于 Microsoft 数据中心，并可以作为高度可用解决方案的基础轻松地预配为设备对。 它们还可以跨区域部署，用于灾难恢复解决方案。 目前可以使用[按区域的产品页](https://azure.microsoft.com/global-infrastructure/services/?products=azure-dedicated-hsm)来检查具有专用 HSM 的区域。 
 
-以上每个区域在两个独立数据中心或至少两个独立可用性区域中部署了 HSM 机架。 例如，东南亚有三个可用性区域，美国东部 2 有两个。 欧洲、亚洲和美国共有 8 个区域，提供专用 HSM 服务，在新区域中添加新的 HSM 机架时，这会发生变化。 有关 Azure 区域的详细信息，请参阅官方 [Azure 区域信息](https://azure.microsoft.com/global-infrastructure/regions/)。
+* 美国东部
+* 美国东部 2
+* 美国西部
+* 美国西部 2
+* 美国中南部
+* 东南亚
+* 东亚
+* 印度中部
+* 印度南部
+* 日本东部
+* 日本西部
+* 北欧
+* 西欧
+* 英国南部
+* 英国西部
+* 加拿大中部
+* 加拿大东部
+* 澳大利亚东部
+* 澳大利亚东南部
+* 瑞士北部
+* 瑞士西部
+* US Gov 弗吉尼亚州
+* US Gov 德克萨斯州
+
+以上每个区域在两个独立数据中心或至少两个独立可用性区域中部署 HSM 机架。 东南亚有三个可用性区域，美国东部 2 有两个。 在欧洲、亚洲和北美总共有 23 个区域提供专用 HSM 服务。 有关 Azure 区域的详细信息，请参阅官方 [Azure 区域信息](https://azure.microsoft.com/global-infrastructure/regions/)。
 任意基于专用 HSM 的解决方案共享的一些设计因素包括位置/延迟、高可用性，以及对其他分布式应用程序的支持。
 
 ## <a name="device-location"></a>设备位置
@@ -38,7 +62,7 @@ HSM 设备最佳位置是最接近执行加密操作的应用程序的位置。 
 
 ## <a name="high-availability"></a>高可用性
 
-若要实现高可用性，客户必须在区域中使用通过 Thanles 软件配置为高可用性对的两个 HSM 设备。 这种部署可确保在单个设备遇到阻碍其处理密钥操作的问题时密钥的可用性。 执行中断/修复维护（如电源更换）时，它还可以极大地降低风险。 对设计来说，说明各种区域级故障的原因非常重要。 遭遇自然灾害（如飓风、洪水或地震）时，可能会发生区域级故障。 应在另一个区域预配 HSM 设备以减轻此类事件的影响。 另一个区域部署的设备可通过 Thales 软件配置进行配对。 这意味着，跨两个区域的高可用性和灾难复原解决方案的最小部署为四个 HSM 设备。 本地冗余和跨区域冗余可作为基线以添加其他更多的 HSM 设备部署来支持延迟和容量，或者满足其他特定于应用程序的要求。
+若要实现高可用性，客户必须在区域中使用通过 Thales 软件配置为高可用性对的两个 HSM 设备。 这种部署可确保在单个设备遇到阻碍其处理密钥操作的问题时密钥的可用性。 执行中断/修复维护（如电源更换）时，它还可以极大地降低风险。 对设计来说，说明各种区域级故障的原因非常重要。 遭遇自然灾害（如飓风、洪水或地震）时，可能会发生区域级故障。 应在另一个区域预配 HSM 设备以减轻此类事件的影响。 另一个区域部署的设备可通过 Thales 软件配置进行配对。 这意味着，跨两个区域的高可用性和灾难复原解决方案的最小部署为四个 HSM 设备。 本地冗余和跨区域冗余可作为基线以添加其他更多的 HSM 设备部署来支持延迟和容量，或者满足其他特定于应用程序的要求。
 
 ## <a name="distributed-application-support"></a>分布式应用程序支持
 
@@ -46,7 +70,7 @@ HSM 设备最佳位置是最接近执行加密操作的应用程序的位置。 
 
 ## <a name="next-steps"></a>后续步骤
 
-确定部署体系结构后，Thales 将提供实现该体系结构的大多数配置活动。 这包括设备配置以及应用程序集成方案。 有关详细信息，请使用 [Thales 客户支持](https://supportportal.gemalto.com/csm/)门户并下载管理和配置指南。 Microsoft 合作伙伴网站提供各种集成指南。
+确定部署体系结构后，Thales 将提供实现该体系结构的大多数配置活动。 这包括设备配置以及应用程序集成方案。 有关详细信息，请使用 [Thales 客户支持](https://supportportal.thalesgroup.com/csm)门户并下载管理和配置指南。 Microsoft 合作伙伴网站提供各种集成指南。
 建议在进行设备预配或应用程序设计和部署之前，先深入了解此服务的所有重要概念（例如高可用性和安全性）。
 更多概念级别的主题：
 

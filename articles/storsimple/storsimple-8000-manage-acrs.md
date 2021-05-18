@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: 15c35fb314af27b1ced129a12f752d0a2794e0f8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91949898"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>使用 StorSimple Manager 服务管理访问控制记录
 
 ## <a name="overview"></a>概述
-使用访问控制记录 (ACR) 可以指定哪些主机能够连接到 StorSimple 设备上的卷。 ACR 设置为特定的卷，并包含主机的 iSCSI 限定名称 (IQN)。 当主机尝试连接到卷时，设备会在与该卷关联的 ACR 中检查 IQN 名称；如果名称匹配，则建立连接。 StorSimple 设备管理器服务边栏选项卡的“配置”部分中的访问控制记录显示包含相应主机 IQN 的所有访问控制记录。****
+使用访问控制记录 (ACR) 可以指定哪些主机能够连接到 StorSimple 设备上的卷。 ACR 设置为特定的卷，并包含主机的 iSCSI 限定名称 (IQN)。 当主机尝试连接到卷时，设备会在与该卷关联的 ACR 中检查 IQN 名称；如果名称匹配，则建立连接。 StorSimple 设备管理器服务边栏选项卡的“配置”部分中的访问控制记录显示包含相应主机 IQN 的所有访问控制记录。
 
 本教程介绍了以下与 ACR 相关的常见任务：
 
@@ -44,34 +44,34 @@ ms.locfileid: "91949898"
 
 
 ## <a name="add-an-access-control-record"></a>添加访问控制记录
-使用 StorSimple 设备管理器服务边栏选项卡中的“配置”部分可以添加 ACR。**** 通常情况下，会将一个 ACR 与一个卷相关联。
+使用 StorSimple 设备管理器服务边栏选项卡中的“配置”部分可以添加 ACR。 通常情况下，会将一个 ACR 与一个卷相关联。
 
 执行以下步骤，添加 ACR。
 
 #### <a name="to-add-an-acr"></a>添加 ACR
 
-1. 转到 StorSimple 设备管理器服务，双击服务名称，在“配置”部分中单击“访问控制记录”********。
-2. 在“访问控制记录”**** 边栏选项卡中，单击“+ 添加 ACR”****。
+1. 转到 StorSimple 设备管理器服务，双击服务名称，在“配置”部分中单击“访问控制记录”。
+2. 在“访问控制记录”边栏选项卡中，单击“+ 添加 ACR”。
 
     ![单击“添加 ACR”](./media/storsimple-8000-manage-acrs/createacr1.png)
 
-3. 在“添加 ACR”**** 边栏选项卡中，执行以下步骤：
+3. 在“添加 ACR”边栏选项卡中，执行以下步骤：
 
     1. 为 ACR 提供名称。
     
-    2. 在“iSCSI 发起程序名称(IQN)”**** 下，提供 Windows Server 主机的 IQN 名称。
+    2. 在“iSCSI 发起程序名称(IQN)”下，提供 Windows Server 主机的 IQN 名称。
 
-    3. 单击“添加”**** 创建 ACR。
+    3. 单击“添加”创建 ACR。
 
-        ![单击 "添加 ACR 2"](./media/storsimple-8000-manage-acrs/createacr2.png)
+        ![单击“添加 ACR 2”](./media/storsimple-8000-manage-acrs/createacr2.png)
 
 4.  新添加的 ACR 会显示在 ACR 的表格列表中。
 
-    ![单击 "添加 ACR 3"](./media/storsimple-8000-manage-acrs/createacr5.png)
+    ![单击“添加 ACR 3”](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
 ## <a name="edit-an-access-control-record"></a>编辑访问控制记录
-使用 StorSimple 设备管理器服务边栏选项卡中的“配置”部分可以编辑 ACR。****
+使用 StorSimple 设备管理器服务边栏选项卡中的“配置”部分可以编辑 ACR。
 
 > [!NOTE]
 > 建议只修改当前未在使用的 ACR。 若要编辑与当前正在使用的卷关联的 ACR，必须先使该卷脱机。
@@ -79,7 +79,7 @@ ms.locfileid: "91949898"
 执行以下步骤，编辑 ACR。
 
 #### <a name="to-edit-an-access-control-record"></a>编辑访问控制记录
-1.  转到 StorSimple 设备管理器服务，双击服务名称，在“配置”部分中单击“访问控制记录”********。
+1.  转到 StorSimple 设备管理器服务，双击服务名称，在“配置”部分中单击“访问控制记录”。
 
     ![转到访问控制记录](./media/storsimple-8000-manage-acrs/createacr1.png)
 
@@ -87,19 +87,19 @@ ms.locfileid: "91949898"
 
     ![编辑访问控制记录](./media/storsimple-8000-manage-acrs/editacr1.png)
 
-3. 在“编辑访问控制记录”边栏选项卡中，提供对应于另一台主机的不同 IQN。****
+3. 在“编辑访问控制记录”边栏选项卡中，提供对应于另一台主机的不同 IQN。
 
-    ![编辑访问控制记录2](./media/storsimple-8000-manage-acrs/editacr2.png)
+    ![编辑访问控制记录 2](./media/storsimple-8000-manage-acrs/editacr2.png)
 
-4. 单击“保存” 。 当系统提示你进行确认时，单击 **“是”**。 
+4. 单击“保存”  。 当系统提示你进行确认时，单击 **“是”**。 
 
-    ![编辑访问控制记录3](./media/storsimple-8000-manage-acrs/editacr3.png)
+    ![编辑访问控制记录 3](./media/storsimple-8000-manage-acrs/editacr3.png)
 
 5. 更新 ACR 后，系统会发出通知。 表格列表也会更新以反映更改。
 
    
 ## <a name="delete-an-access-control-record"></a>删除访问控制记录
-使用 StorSimple 设备管理器服务边栏选项卡中的“配置”部分可以删除 ACR。****
+使用 StorSimple 设备管理器服务边栏选项卡中的“配置”部分可以删除 ACR。
 
 > [!NOTE]
 > 只能删除当前未使用的 ACR。 若要删除与当前正在使用的卷关联的 ACR，必须先使该卷脱机。
@@ -107,25 +107,25 @@ ms.locfileid: "91949898"
 执行以下步骤，删除访问控制记录。
 
 #### <a name="to-delete-an-access-control-record"></a>删除访问控制记录
-1.  转到 StorSimple 设备管理器服务，双击服务名称，在“配置”部分中单击“访问控制记录”********。
+1.  转到 StorSimple 设备管理器服务，双击服务名称，在“配置”部分中单击“访问控制记录”。
 
-    ![中转到访问控制记录1b](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![转到访问控制记录 1b](./media/storsimple-8000-manage-acrs/createacr1.png)
 
 2. 在访问控制记录的表格列表中，单击并选择要删除的 ACR。
 
-    ![中转到访问控制记录2](./media/storsimple-8000-manage-acrs/deleteacr1.png)
+    ![转到访问控制记录 2](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
-3. 单击右键调用上下文菜单，选择“删除”。****
+3. 单击右键调用上下文菜单，选择“删除”。
 
-    ![中转到访问控制记录3](./media/storsimple-8000-manage-acrs/deleteacr2.png)
+    ![转到访问控制记录 3](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
-4. 当系统提示确认时，请检查信息，单击“删除”。****
+4. 当系统提示确认时，请检查信息，单击“删除”。
 
-    ![中转到访问控制记录4](./media/storsimple-8000-manage-acrs/deleteacr3.png)
+    ![转到访问控制记录 4](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
 5. 删除完成后，系统会发出通知。 表格列表随即会更新以反映删除。
 
-    ![访问控制记录5](./media/storsimple-8000-manage-acrs/deleteacr5.png)
+    ![转到访问控制记录 5](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[管理 StorSimple 卷](storsimple-8000-manage-volumes-u2.md)。

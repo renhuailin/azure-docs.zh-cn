@@ -6,12 +6,12 @@ ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 1223ff5c56d3c7d58b324d2099980bc0b5408125
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.openlocfilehash: 5e4351529fb7b6a66f554182a195bc26f79c0e2b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655962"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889478"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>为 Azure 应用服务配置 ASP.NET Core 应用
 
@@ -38,13 +38,13 @@ dotnet --info
 
 ## <a name="show-net-core-version"></a>显示 .NET Core 版本
 
-若要显示当前的 .NET Core 版本，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+若要显示当前的 .NET Core 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-若要显示所有支持的 .NET Core 版本，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+若要显示所有受支持的 .NET Core 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep DOTNETCORE
@@ -62,7 +62,7 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 
 ::: zone pivot="platform-linux"
 
-在 [Cloud Shell](https://shell.azure.com) 中运行以下命令，将 .net Core 版本设置为3.1：
+在 [Cloud Shell](https://shell.azure.com) 中运行以下命令，将 .NET Core 版本设置为 3.1：
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|3.1"
@@ -128,7 +128,7 @@ namespace SomeNamespace
 例如，如果你在应用服务中和 appsettings.json 中配置了具有相同名称的应用设置，则应用服务值将优先于 appsettings.json 值。 本地 appsettings.json 值允许你在本地调试应用，但应用服务值允许你使用生产设置在生产中运行应用。 连接字符串的使用方式与此相同。 这样，你可以将应用程序机密保存在代码存储库外部，无需更改代码便可访问相应的值。
 
 > [!NOTE]
-> 请注意，appsettings.json 中的[层次化配置数据](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data)是使用 .NET Core 的标准分隔符 `:` 进行访问的。 若要替代应用服务中的特定层次化配置设置，请在密钥中设置具有相同分隔格式的应用设置名称。 可以在 [Cloud Shell](https://shell.azure.com)中运行以下示例：
+> 请注意，appsettings.json 中的[层次化配置数据](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data)是使用 .NET Core 的标准分隔符 `:` 进行访问的。 若要替代应用服务中的特定层次化配置设置，请在密钥中设置具有相同分隔格式的应用设置名称。 可以在 [Cloud Shell](https://shell.azure.com) 中运行以下示例：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
@@ -136,7 +136,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="deploy-multi-project-solutions"></a>部署多项目解决方案
 
-如果 Visual Studio 解决方案包含多个项目，则说明 Visual Studio 发布过程已包括选择要部署的项目的操作。 当你部署到应用服务部署引擎（例如，使用 Git 或 ZIP 部署）时，如果启用了“生成自动化”，则应用服务部署引擎会选取它发现的第一个网站或 Web 应用程序项目作为应用服务应用。 你可以通过指定 `PROJECT` 应用设置来指定应用服务应当使用哪个项目。 例如，在 [Cloud Shell](https://shell.azure.com)中运行以下内容：
+如果 Visual Studio 解决方案包含多个项目，则说明 Visual Studio 发布过程已包括选择要部署的项目的操作。 当你部署到应用服务部署引擎（例如，使用 Git 或 ZIP 部署）时，如果启用了“生成自动化”，则应用服务部署引擎会选取它发现的第一个网站或 Web 应用程序项目作为应用服务应用。 你可以通过指定 `PROJECT` 应用设置来指定应用服务应当使用哪个项目。 例如，在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -167,7 +167,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ## <a name="get-detailed-exceptions-page"></a>获取详细的异常页面
 
-当 ASP.NET Core 应用在 Visual Studio 调试器中生成异常时，浏览器会显示一个详细的异常页面，但在应用服务中，该页面被替换为一般 **HTTP 500** 错误或 **处理请求时发生的某个错误**。 。 若要在应用服务中显示详细的异常页面，请 `ASPNETCORE_ENVIRONMENT` 在 <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令，将应用设置添加到应用。
+当 ASP.NET Core 应用在 Visual Studio 调试器中生成异常时，浏览器会显示一个详细的异常页面，但在应用服务中，该页面被替换为一般 **HTTP 500** 错误或 **处理请求时发生的某个错误**。 。 若要在应用服务中显示详细的异常页面，请在 <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> 中运行以下命令，将 `ASPNETCORE_ENVIRONMENT` 应用设置添加到应用。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"

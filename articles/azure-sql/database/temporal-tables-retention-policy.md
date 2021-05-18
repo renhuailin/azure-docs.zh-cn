@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/25/2018
 ms.openlocfilehash: 1d68163a9fba3ba3bcd4c0c0f3fb5f442296e781
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91619383"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>使用保留策略管理临时表中的历史数据
@@ -35,7 +35,7 @@ ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 
 ## <a name="how-to-configure-retention-policy"></a>如何配置保留策略
 
-在为临时表配置保留策略之前，请先检查是否 *在数据库级别*启用了临时历史记录保留策略。
+在为临时表配置保留策略之前，请先检查是否 *在数据库级别* 启用了临时历史记录保留策略。
 
 ```sql
 SELECT is_temporal_history_retention_enabled, name
@@ -148,7 +148,7 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 
 ## <a name="querying-tables-with-retention-policy"></a>使用保留策略查询表
 
-针对临时表执行的所有查询会自动筛选出与有限保留策略匹配的历史行，以免出现不可预测且不一致的结果，因为清理任务可能会 *在任何时间点按任意顺序*删除陈旧行。
+针对临时表执行的所有查询会自动筛选出与有限保留策略匹配的历史行，以免出现不可预测且不一致的结果，因为清理任务可能会 *在任何时间点按任意顺序* 删除陈旧行。
 
 下图显示一个简单查询的查询计划：
 
@@ -168,7 +168,7 @@ SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 
 ## <a name="point-in-time-restore-considerations"></a>时间点还原注意事项
 
-通过[将现有数据库还原到特定时间点](recovery-using-backups.md)创建新数据库时，将在数据库级别禁用临时保留。 （**is_temporal_history_retention_enabled** 标志设置为 OFF） 使用此功能可以在还原时检查所有历史行，无需担心在查询陈旧行之前它们是否已删除。 可以使用此功能*检查已超过配置的保留期的历史数据*。
+通过[将现有数据库还原到特定时间点](recovery-using-backups.md)创建新数据库时，将在数据库级别禁用临时保留。 （**is_temporal_history_retention_enabled** 标志设置为 OFF） 使用此功能可以在还原时检查所有历史行，无需担心在查询陈旧行之前它们是否已删除。 可以使用此功能 *检查已超过配置的保留期的历史数据*。
 
 假设为某个临时表指定了一个月的保留期。 如果数据库是在高级服务层中创建的，则可以使用保持过去最多 35 天前状态的数据库创建数据库副本。 这样，便可以通过直接查询历史记录表，有效分析保留时间最长为 65 天前的历史行。
 
@@ -183,6 +183,6 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 
 若要了解如何在应用程序中使用临时表，请查看[临时表入门](../temporal-tables.md)。
 
-访问第9频道收听 [客户时态实现成功案例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) ，观看 [实时时态演示](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)。
+访问第 9 频道收听[客户实施时态表的成功案例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)，观看[时态表现场演示](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)。
 
 有关临时表的详细信息，请查看[临时表](/sql/relational-databases/tables/temporal-tables)。

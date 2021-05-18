@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: 4caf804a274956556d6e9ca396c8f08594b11a87
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101092873"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的常见警报和解决方法
@@ -162,7 +162,7 @@ Azure AD 域服务用来为域提供服务的服务主体无权管理 Azure 订�
 
 某些自动生成的服务主体可用于管理和创建托管域的资源。 如果更改了其中一个服务主体的访问权限，则域将无法正确管理资源。 以下步骤说明如何了解服务主体并向服务主体授予访问权限：
 
-1. 了解 [Azure 基于角色的访问控制，以及如何向 Azure 门户中的应用程序授予访问权限](../role-based-access-control/role-assignments-portal.md)。
+1. 了解[基于 Azure 角色的访问控制以及如何在 Azure 门户中授予对应用程序的访问权限](../role-based-access-control/role-assignments-portal.md)。
 2. 评审 ID 为“abba844e-bc0e-44b0-947a-dc74e5d09022”的服务主体所具有的访问权限，并授予在以前的某个日期拒绝的访问权限。
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112：托管域中没有足够的 IP 地址

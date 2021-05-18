@@ -1,5 +1,5 @@
 ---
-title: 为故障转移 VM 自定义网络配置 |Microsoft Docs
+title: 为故障转移 VM 自定义网络配置 | Microsoft Docs
 description: 概述了在使用 Azure Site Recovery 复制 Azure VM 时，如何为故障转移 VM 自定义网络配置。
 services: site-recovery
 author: sideeksh
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: sideeksh
 ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98541184"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>自定义目标 Azure VM 的网络配置
@@ -49,7 +49,7 @@ ms.locfileid: "98541184"
 
     ![编辑 NIC 配置](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-6. 选择“确定”  。
+6. 选择“确定” 。
 
 现在，Site Recovery 将会遵守这些设置，并确保故障转移 VM 通过相应的 NIC 连接到所选资源。
 
@@ -68,14 +68,14 @@ ms.locfileid: "98541184"
 
 - 负载均衡器与目标 VM 应当具有相同的订阅和区域。
 - 与内部负载均衡器关联的虚拟网络应当与目标 VM 的虚拟网络相同。
-- 目标 VM 的公共 IP SKU 和内部负载均衡器的 SKU 应相同。
-- 如果将目标 VM 配置为放入可用性区域，请检查负载均衡器是区域冗余的还是任何可用性区域的一部分。  (基本 SKU 负载均衡器不支持区域，并且在此情况下下拉列表中不会显示。 ) 
+- 目标 VM 的公共 IP SKU 应与内部负载均衡器的 SKU 相同。
+- 如果将目标 VM 配置为放入可用性区域，请检查负载均衡器是区域冗余的还是任何可用性区域的一部分。 （基本 SKU 负载均衡器不支持区域，在这种情况下不会显示在下拉列表中。）
 - 请确保内部负载均衡器上具有已预先创建的后端池和前端配置。
 
 公共 IP 地址：
 
 - 公共 IP 与目标 VM 的订阅和区域应当相同。
-- 目标 VM 的公共 IP SKU 和内部负载均衡器的 SKU 应相同。
+- 目标 VM 的公共 IP SKU 应与内部负载均衡器的 SKU 相同。
 
 网络安全组：
 - 网络安全组与目标 VM 的订阅和区域应当相同。

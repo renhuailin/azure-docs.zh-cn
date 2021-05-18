@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
 ms.openlocfilehash: c30077d0d8f359e93745b53755f9dae998073d4d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936904"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) 无法在 Azure HDInsight 中启动
@@ -29,7 +29,7 @@ HMaster 会对 WAL 文件夹执行一个基本的 list 命令。 在任何时候
 
 ### <a name="resolution"></a>解决方法
 
-检查调用堆栈并尝试确定哪个文件夹可能导致问题（例如，是 WAL 文件夹还是 .tmp 文件夹）。 然后，通过 Cloud Explorer 或 HDFS 命令尝试找到问题文件。 通常这是一个 `*-renamePending.json` 文件。 （`*-renamePending.json` 文件是用于在 WASB 驱动程序中实现原子重命名操作的日记文件。 由于此实现中的 bug，在发生进程崩溃之类的问题后，这些文件可能会保留。）可以通过 Cloud Explorer 或 HDFS 命令强制删除此文件。
+检查调用堆栈并尝试确定哪个文件夹可能导致问题（例如，是 WAL 文件夹还是 .tmp 文件夹）。 然后，通过 Cloud Explorer 或 HDFS 命令尝试找到问题文件。 通常这是一个 `*-renamePending.json` 文件。 （`*-renamePending.json` 文件是用于在 WASB 驱动程序中实现原子重命名操作的日记文件。 由于此实现中的 bug，在发生进程崩溃之类的问题后，这些文件可能会被保留。）可以通过 Cloud Explorer 或 HDFS 命令强制删除此文件。
 
 有时，此位置还可能存在名称类似于 `$$$.$$$` 的临时文件。 必须使用 HDFS `ls` 命令查看此文件，而不能在 Cloud Explorer 中查看。 若要删除此文件，请使用 HDFS 命令 `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`。
 

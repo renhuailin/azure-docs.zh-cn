@@ -1,24 +1,14 @@
 ---
 title: Azure Defender for IoT 代理常见问题
 description: 查找有关 Azure Defender for IoT 代理的最常见问题的解答。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: rkarlin
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/07/2020
-ms.author: rkarlin
-ms.openlocfilehash: f584f11603e41b63f3c96749ed6c720eb5ce07a8
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
-ms.translationtype: MT
+ms.openlocfilehash: 4bd7d3c9b76dfb37e53cc51e5e16b660545cb7f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835051"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778655"
 ---
 # <a name="azure-defender-for-iot-agent-frequently-asked-questions"></a>Azure Defender for IoT 代理常见问题
 
@@ -90,6 +80,6 @@ Defender for IoT 支持各种平台。 请参阅[受支持的设备平台](how-t
 若要详细了解如何开始使用 Defender for IoT，请参阅以下文章：
 
 - 阅读 Defender for IoT [概述](overview.md)
-- 验证 [系统先决条件](quickstart-system-prerequisites.md)
-- 了解有关如何开始将[Defender 用于 IoT 的](getting-started.md)详细信息
+- 验证[系统先决条件](quickstart-system-prerequisites.md)
+- 详细了解如何[开始使用 Defender for IoT](getting-started.md)
 - 了解 [Defender for IoT 安全警报](concept-security-alerts.md)

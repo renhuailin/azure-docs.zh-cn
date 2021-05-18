@@ -1,5 +1,5 @@
 ---
-title: Azure 跨网络连接
+title: Azure 跨网连接
 description: 本页介绍跨网络连接和基于 Azure 网络功能的解决方案的应用场景。
 services: expressroute
 author: duongau
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: duau
 ms.openlocfilehash: 018afa1b2a31ebd44925a3fc79cbdc729b2d4695
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92202491"
 ---
 # <a name="cross-network-connectivity"></a>跨网连接
@@ -20,29 +20,29 @@ Fabrikam Inc. 的实际经营场所众多，并在美国东部部署了 Azure。
 
 Fabrikam Inc. 并购了 Contoso ltd.并购后，Fabrikam 希望建立网络互连。 下图演示了该场景：
 
-![应用程序方案](./media/cross-network-connectivity/premergerscenario.png)
+![应用程序场景](./media/cross-network-connectivity/premergerscenario.png)
 
-上图中间的虚线箭头表示所需的网络互连。 具体而言，需要三种类型的交叉连接：1) Fabrikam 和 Contoso VNet 交叉连接；2) 本地区域和 VNet 交叉连接（即，将 Fabrikam 本地网络连接到 Contoso VNet，将 Contoso 本地网络连接到 Fabrikam VNet）；3) Fabrikam 和 Contoso 本地网络交叉连接。 
+上图中间的虚线箭头表示所需的网络互连。 具体而言，需要三种类型的交叉连接：1) Fabrikam 和 Contoso VNet 交叉连接；2) 跨区域本地和 VNet 交叉连接（即将 Fabrikam 本地网络连接到 Contoso VNet，并将 Contoso 本地网络连接到 Fabrikam VNet）；3) Fabrikam 和 Contoso 本地网络交叉连接。 
 
 下表显示了并购之前，Contoso Ltd. 的 ExpressRoute 专用对等互连路由表。
 
-![合并之前的 Contoso ExpressRoute 路由表](./media/cross-network-connectivity/contosoexr-rt-premerger.png)
+![并购前的 Contoso ExpressRoute 路由表](./media/cross-network-connectivity/contosoexr-rt-premerger.png)
 
 下表显示了合并之前 Contoso 订阅中 VM 的有效路由。 根据该表，VNet 中的 VM 可以识别 VNet 地址空间和 Contoso 本地网络，此外还能识别默认网络。
 
-![合并之前的 Contoso VM 路由](./media/cross-network-connectivity/contosovm-routes-premerger.png)
+![并购前的 Contoso VM 路由](./media/cross-network-connectivity/contosovm-routes-premerger.png)
 
 下表显示了并购之前，Fabrikam Inc. 的 ExpressRoute 专用对等互连路由表。
 
-![合并之前的 Fabrikam ExpressRoute 路由表](./media/cross-network-connectivity/fabrikamexr-rt-premerger.png)
+![并购前的 Fabrikam ExpressRoute 路由表](./media/cross-network-connectivity/fabrikamexr-rt-premerger.png)
 
 下表显示了合并之前 Fabrikam 订阅中 VM 的有效路由。 根据该表，VNet 中的 VM 可以识别 VNet 地址空间和 Fabrikam 本地网络，此外还能识别默认网络。
 
-![合并之前的 Fabrikam VM 路由](./media/cross-network-connectivity/fabrikamvm-routes-premerger.png)
+![并购前的 Fabrikam VM 路由](./media/cross-network-connectivity/fabrikamvm-routes-premerger.png)
 
 本文逐步介绍如何使用以下 Azure 网络功能实现所需的交叉连接：
 
-* [虚拟网络对等互连][Virtual network peering] 
+* [虚拟网络对等][Virtual network peering] 
 * [虚拟网络 ExpressRoute 连接][connection]
 * [Global Reach][Global Reach] 
 
@@ -54,15 +54,15 @@ Fabrikam Inc. 并购了 Contoso ltd.并购后，Fabrikam 希望建立网络互�
 
 下图显示了配置全局 VNet 对等互连后的网络体系结构。
 
-![VNet 对等互连后的体系结构](./media/cross-network-connectivity/vnet-peering.png )
+![建立 VNet 对等互连后的体系结构](./media/cross-network-connectivity/vnet-peering.png )
 
 下表显示了 Contoso 订阅 VM 已知的路由。 请注意表格中的最后一项。 此项是交叉连接虚拟网络后的结果。
 
-![VNet 对等互连后的 Contoso VM 路由](./media/cross-network-connectivity/contosovm-routes-peering.png)
+![建立 VNet 对等互连后的 Contoso VM 路由](./media/cross-network-connectivity/contosovm-routes-peering.png)
 
 下表显示了 Fabrikam 订阅 VM 已知的路由。 请注意表格中的最后一项。 此项是交叉连接虚拟网络后的结果。
 
-![VNet 对等互连后的 Fabrikam VM 路由](./media/cross-network-connectivity/fabrikamvm-routes-peering.png)
+![建立 VNet 对等互连后的 Fabrikam VM 路由](./media/cross-network-connectivity/fabrikamvm-routes-peering.png)
 
 VNet 对等互连直接将两个虚拟网络链接到一起（在上面的两个表格中可以看到，*VNetGlobalPeering* 项没有下一跃点）
 
@@ -70,7 +70,7 @@ VNet 对等互连直接将两个虚拟网络链接到一起（在上面的两个
 
 我们可以将 ExpressRoute 线路连接到多个虚拟网络。 有关可连接到 ExpressRoute 线路的最大虚拟网络数量，请[参阅订阅和服务限制][Subscription limits]。 
 
-让我们将 Fabrikam ExpressRoute 线路连接到 Contoso 订阅 VNet，并将 Contoso ExpressRoute 线路连接到 Fabrikam 订阅 VNet，以便在虚拟网络与本地网络之间实现交叉连接。 若要将虚拟网络连接到其他订阅中的 ExpressRoute 线路，需要创建并使用授权。  请参阅以下文章：[将虚拟网络连接到 ExpressRoute 线路][Connect-ER-VNet]。
+让我们将 Fabrikam ExpressRoute 线路连接到 Contoso 订阅 VNet，并将 Contoso ExpressRoute 线路连接到 Fabrikam 订阅 VNet，以便在虚拟网络与本地网络之间实现交叉连接。 若要将虚拟网络连接到其他订阅中的 ExpressRoute 线路，需要创建并使用授权。  请参阅文章：[将虚拟网络连接到 ExpressRoute 线路][Connect-ER-VNet]。
 
 下图显示了配置 ExpressRoute 与虚拟网络之间的交叉连接后的网络体系结构。
 
@@ -78,19 +78,19 @@ VNet 对等互连直接将两个虚拟网络链接到一起（在上面的两个
 
 下表显示了通过 ExpressRoute 将虚拟网络交叉连接到本地网络后，Contoso Ltd. 的 ExpressRoute 专用对等互连路由表。 可以看到，该路由表包含属于这两个虚拟网络的路由。
 
-![在交叉连接 .Exr 和 Vnet 之后的 Contoso ExpressRoute 路由表](./media/cross-network-connectivity/contosoexr-rt-xconnect.png)
+![交叉连接 ExR 和 VNet 后的 Contoso ExpressRoute 路由表](./media/cross-network-connectivity/contosoexr-rt-xconnect.png)
 
 下表显示了通过 ExpressRoute 将虚拟网络交叉连接到本地网络后，Fabrikam Ltd. 的 ExpressRoute 专用对等互连路由表。 可以看到，该路由表包含属于这两个虚拟网络的路由。
 
-![交叉连接 .Exr 和 Vnet 之后的 Fabrikam ExpressRoute 路由表](./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png)
+![交叉连接 ExR 和 VNet 后的 Fabrikam ExpressRoute 路由表](./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png)
 
-下表显示了 Contoso 订阅 VM 已知的路由。 请注意表格中的“虚拟网络网关”项。  VM 会看到这两个本地网络的路由。
+下表显示了 Contoso 订阅 VM 已知的路由。 请注意表格中的“虚拟网络网关”项。 VM 会看到这两个本地网络的路由。
 
-![跨连接 .Exr 和 Vnet 之后的 Contoso VM 路由](./media/cross-network-connectivity/contosovm-routes-xconnect.png)
+![交叉连接 ExR 和 VNet 后的 Contoso VM 路由](./media/cross-network-connectivity/contosovm-routes-xconnect.png)
 
-下表显示了 Fabrikam 订阅 VM 已知的路由。 请注意表格中的“虚拟网络网关”项。  VM 会看到这两个本地网络的路由。
+下表显示了 Fabrikam 订阅 VM 已知的路由。 请注意表格中的“虚拟网络网关”项。 VM 会看到这两个本地网络的路由。
 
-![交叉连接 .Exr 和 Vnet 之后的 Fabrikam VM 路由](./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png)
+![交叉连接 ExR 和 VNet 后的 Fabrikam VM 路由](./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png)
 
 >[!NOTE]
 >在 Fabrikam 和/或 Contoso 订阅中，还可以将辐射 VNet 连接到相应的中心 VNet（本文中的体系结构图未演示中心辐射型设计）。 中心 VNet 网关与 ExpressRoute 之间的交叉连接还允许东部和西部中心与辐射之间的通信。
@@ -102,15 +102,15 @@ ExpressRoute Global Reach 在已连接到不同 ExpressRoute 线路的本地网�
 
 下图显示了配置 Global Reach 后的网络体系结构。
 
-![配置后的体系结构 Global Reach](./media/cross-network-connectivity/globalreach.png)
+![配置 Global Reach 后的体系结构](./media/cross-network-connectivity/globalreach.png)
 
 下表显示了配置 Global Reach 之后，Contoso Ltd. 的 ExpressRoute 专用对等互连路由表。 可以看到，该路由表包含属于这两个本地网络的路由。 
 
-![Global Reach 后的 Contoso ExpressRoute 路由表](./media/cross-network-connectivity/contosoexr-rt-gr.png)
+![配置 Global Reach 后的 Contoso ExpressRoute 路由表](./media/cross-network-connectivity/contosoexr-rt-gr.png)
 
 下表显示了配置 Global Reach 之后，Fabrikam Inc. 的 ExpressRoute 专用对等互连路由表。 可以看到，该路由表包含属于这两个本地网络的路由。
 
-![Global Reach 后的 Fabrikam ExpressRoute 路由表]( ./media/cross-network-connectivity/fabrikamexr-rt-gr.png )
+![配置 Global Reach 后的 Fabrikam ExpressRoute 路由表]( ./media/cross-network-connectivity/fabrikamexr-rt-gr.png )
 
 ## <a name="next-steps"></a>后续步骤
 

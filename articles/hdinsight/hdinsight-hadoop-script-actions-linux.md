@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
 ms.openlocfilehash: b6705728fddc9a5a3c9cb8eb2f1811412fb3a290
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98945477"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
@@ -130,11 +130,11 @@ fi
 
 脚本必须是幂等的。 如果脚本多次运行，则每次都应将群集返回到相同的状态。
 
-例如，修改配置文件的脚本如果运行多次，不应添加重复的项。
+例如，修改配置文件的脚本如果运行了多次，不应添加重复的项。
 
 ### <a name="ensure-high-availability-of-the-cluster-architecture"></a><a name="bPS5"></a>确保群集体系结构的高可用性
 
-基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作会同时在这两个节点上运行。 如果安装的组件只需要一个头节点，请不要在两个头节点上都安装这些组件。
+基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作会同时在这两个节点上运行。 如果安装的组件只应使用一个头节点，请不要在两个头节点上安装该组件。
 
 > [!IMPORTANT]  
 > 作为 HDInsight 一部分提供的服务旨在根据需要在两个头节点之间进行故障转移。 此功能未扩展到通过脚本操作安装的自定义组件。 如果需要为自定义组件提供高可用性，必须实现自己的故障转移机制。
@@ -223,7 +223,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helper-methods-for-custom-scripts"></a><a name="helpermethods"></a>自定义脚本的帮助器方法
 
-脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法包含在脚本中 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) 。 使用以下命令下载这些方法并在脚本中使用：
+脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法包含在 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) 脚本中。 使用以下命令下载这些方法并在脚本中使用：
 
 ```bash
 # Import the helper method module.
@@ -234,7 +234,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 | 帮助器用法 | 说明 |
 | --- | --- |
-| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |将文件从源 URI 下载到指定的文件路径。 默认情况下，它不会覆盖现有文件。 |
+| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |将文件从源 URI 下载到指定的文件路径。 默认情况下，它不会覆盖现有的文件。 |
 | `untar_file TARFILE DESTDIR` |将 tar 文件解压缩（使用 `-xf`）到目标目录。 |
 | `test_is_headnode` |如果脚本在群集头节点上运行，则返回 1；否则返回 0。 |
 | `test_is_datanode` |如果当前节点是数据（辅助角色）节点，则返回 1；否则返回 0。 |
@@ -335,7 +335,7 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参�
 
 此问题最常出现于 Windows 环境中编写的脚本，因为 CRLF 是 Windows 上许多文本编辑器中常见的行尾符号。
 
-*解决方法*：如果是文本编辑器中的选项，请选择 "Unix 格式" 或 "LF" 作为行尾。 也可以在 Unix 系统上使用以下命令，将 CRLF 更改为 LF：
+*解决方法*：如果文本编辑器提供了选项，请选择 Unix 格式或 LF 作为行尾。 也可以在 Unix 系统上使用以下命令，将 CRLF 更改为 LF：
 
 > [!NOTE]  
 > 以下命令大致相当于将 CRLF 行尾更改为 LF。 根据系统中提供的实用工具选择一种解决方法。

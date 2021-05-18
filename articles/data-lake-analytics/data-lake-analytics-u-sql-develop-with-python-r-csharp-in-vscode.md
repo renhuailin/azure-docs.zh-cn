@@ -1,5 +1,5 @@
 ---
-title: '在 Python、R 和 c # 中运行 U-SQL 作业-Azure Data Lake Analytics'
+title: 运行 Python、R 和 C# 中的 U-SQL 作业 - Azure Data Lake Analytics
 description: 了解如何使用 Python、R 和 C# 的隐藏代码来提交 Azure Data Lake 中的作业。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
 ms.openlocfilehash: d6066bd6ec2a4c986ae17ad0cce3e7f6f73b21e7
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92219966"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>在 Visual Studio Code 中使用 Python、R 和 C# 开发用于 Azure Data Lake Analytics 的 U-SQL
@@ -22,10 +22,10 @@ ms.locfileid: "92219966"
 ## <a name="prerequisites-for-python-and-r"></a>Python 和 R 的先决条件
 注册 ADL 帐户的 Python 和 R 扩展程序集。 
 1. 在门户中打开帐户。
-   - 选择“概述”。 
-   - 单击“示例脚本”****。
+   - 选择“概述”。  
+   - 单击“示例脚本”。
 2. 单击“更多”  。
-3. 选择“安装 U-SQL 扩展”****。 
+3. 选择“安装 U-SQL 扩展”。 
 4. 安装 U-SQL 扩展后，将显示确认消息。 
 
    ![设置 python 和 R 环境](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
@@ -33,15 +33,15 @@ ms.locfileid: "92219966"
    > [!Note]
    > 为了获得 Python 和 R 语言服务的最佳体验，请安装 VSCode Python 和 R 扩展。 
 
-## <a name="develop-python-file"></a>开发 Python 文件
-1. 单击工作区中的“新文件”****。
+## <a name="develop-python-file&quot;></a>开发 Python 文件
+1. 单击工作区中的“新文件”。
 2. 在 U-SQL 中编写代码。 下面就是一个代码示例。
     ```U-SQL
     REFERENCE ASSEMBLY [ExtPython];
     @t  = 
         SELECT * FROM 
         (VALUES
-            ("D1","T1","A1","@foo Hello World @bar"),
+            (&quot;D1&quot;,&quot;T1&quot;,&quot;A1&quot;,&quot;@foo Hello World @bar"),
             ("D2","T2","A2","@baz Hello World @beer")
         ) AS 
             D( date, time, author, tweet );
@@ -56,8 +56,8 @@ ms.locfileid: "92219966"
         USING Outputters.Csv();
     ```
     
-3. 右键单击脚本文件，并选择“ADL: 生成 Python 代码隐藏文件”****。 
-4. xxx.usql.py**** 文件将在工作文件夹中生成。 在 Python 文件中编写代码。 下面就是一个代码示例。
+3. 右键单击脚本文件，并选择“ADL: 生成 Python 代码隐藏文件”。 
+4. xxx.usql.py 文件将在工作文件夹中生成。 在 Python 文件中编写代码。 下面就是一个代码示例。
 
     ```Python
     def get_mentions(tweet):
@@ -70,10 +70,10 @@ ms.locfileid: "92219966"
         del df['tweet']
         return df
     ```
-5. 右键单击 USQL **** 文件，可以单击“编译脚本”**** 或“提交作业”**** 以运行作业。
+5. 右键单击 USQL 文件，可以单击“编译脚本”或“提交作业”以运行作业。
 
 ## <a name="develop-r-file"></a>开发 R 文件
-1. 单击工作区中的“新文件”****。
+1. 单击工作区中的“新文件”。
 2. 在 U-SQL 文件中编写代码。 下面就是一个代码示例。
     ```U-SQL
     DEPLOY RESOURCE @"/usqlext/samples/R/my_model_LM_Iris.rda";
@@ -113,19 +113,19 @@ ms.locfileid: "92219966"
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. 右键单击 USQL **** 文件，并选择“ADL: 生成 R 代码隐藏文件”****。 
-4. xx.usql.r**** 文件将在工作文件夹中生成。 在 R 文件中编写代码。 下面就是一个代码示例。
+3. 右键单击 USQL 文件，并选择“ADL: 生成 R 代码隐藏文件”。 
+4. xx.usql.r 文件将在工作文件夹中生成。 在 R 文件中编写代码。 下面就是一个代码示例。
 
     ```R
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence"))
     ```
-5. 右键单击 USQL **** 文件，可以单击“编译脚本”**** 或“提交作业”**** 以运行作业。
+5. 右键单击 USQL 文件，可以单击“编译脚本”或“提交作业”以运行作业。
 
 ## <a name="develop-c-file"></a>开发 C# 文件
 代码隐藏文件是与单个 U-SQL 脚本关联的 C# 文件。 可在代码隐藏文件中定义 UDO、UDA、UDT 和 UDF 专用的脚本。 无需事先注册程序集，即可直接在脚本中使用 UDO、UDA、UDT 和 UDF。 代码隐藏文件放置在其对等 U-SQL 脚本文件所在的文件夹中。 如果脚本名为 xxx.usql，则代码隐藏文件命名为 xxx.usql.cs。 如果手动删除代码隐藏文件，会对关联的 U-SQL 脚本禁用代码隐藏功能。 有关为 U-SQL 脚本编写自定义代码的详细信息，请参阅[在 U-SQL 中编写和使用自定义代码：用户定义的函数]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/)。
 
-1. 单击工作区中的“新文件”****。
+1. 单击工作区中的“新文件”。
 2. 在 U-SQL 文件中编写代码。 下面就是一个代码示例。
     ```U-SQL
     @a = 
@@ -155,8 +155,8 @@ ms.locfileid: "92219966"
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. 右键单击 USQL **** 文件，并选择“ADL: 生成 CS 代码隐藏文件”****。 
-4. xxx.usql.cs**** 文件将在工作文件夹中生成。 在 CS 文件中编写代码。 下面就是一个代码示例。
+3. 右键单击 USQL 文件，并选择“ADL: 生成 CS 代码隐藏文件”。 
+4. xxx.usql.cs 文件将在工作文件夹中生成。 在 CS 文件中编写代码。 下面就是一个代码示例。
 
     ```CS
     namespace USQLApplication_codebehind
@@ -174,7 +174,7 @@ ms.locfileid: "92219966"
         }
     }
     ```
-5. 右键单击 USQL **** 文件，可以单击“编译脚本”**** 或“提交作业”**** 以运行作业。
+5. 右键单击 USQL 文件，可以单击“编译脚本”或“提交作业”以运行作业。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用用于 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)

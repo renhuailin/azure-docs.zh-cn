@@ -1,37 +1,37 @@
 ---
-title: 了解 IoT 中心导入的设备更新 |Microsoft Docs
-description: 用于将新的更新导入到 IoT 中心的设备更新的关键概念。
+title: 了解 Device Update for IoT Hub 导入 | Microsoft Docs
+description: 将新的更新导入 Device Update for IoT Hub 时涉及的关键概念。
 author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/10/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 4cd5e0c016b98a3dc9336237a5c1b14e6b0f5789
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040577"
 ---
-# <a name="importing-updates-into-device-update-for-iot-hub"></a>将更新导入到 IoT 中心的设备更新
-若要将更新从 IoT 中心的设备更新部署到设备，你必须首先将该更新 _导入_ 到设备更新服务中。 下面概述了导入更新时要了解的一些重要概念。
+# <a name="importing-updates-into-device-update-for-iot-hub"></a>将更新导入 Device Update for IoT Hub
+若要将更新从 Device Update for IoT Hub 部署到设备，首先必须将该更新导入 Device Update 服务。 下面概述了一些在导入更新时要了解的重要概念。
 
 ## <a name="import-manifest"></a>导入清单
 
-导入清单是一种 JSON 文件，用于定义有关要导入的更新的重要信息。 在导入过程中，你将导入清单和关联的更新文件 (如固件更新包) 。 导入清单中定义的元数据用于引入更新。 某些元数据还会在部署时使用-例如，用于验证是否正确安装了更新。
+导入清单是一个 JSON 文件，它定义有关要导入的更新的重要信息。 在导入过程中，你需要提交导入清单和关联的更新文件（如固件更新包）。 在导入清单中定义的元数据用于引入更新。 有些元数据还会在部署时用到，例如，用于验证是否正确安装了某个更新。
 
-导入清单包含若干项，这些项表示 IoT 中心概念的重要设备更新。 下面概述了这些概念。
+导入清单包含多个项，它们表示重要的 Device Update for IoT Hub 概念。 下面简要介绍这些概念。
 
-### <a name="update-identity-update-id"></a>更新 ID (标识) 
+### <a name="update-identity-update-id"></a>更新标识（更新 ID）
 
-更新标识表示更新的唯一标识符。 它定义有关要导入的更新的重要属性。 更新标识由三个部分组成：
-* 提供者：这是创建或直接负责更新的实体。 它通常是公司名称。
-* Name：更新类的标识符。 类可以是你选择的任何内容。 它通常是一个设备或模型名称。
-* 版本：这是一个与此更新具有相同提供程序和名称的版本号。 此版本由 IoT 中心服务的设备更新使用，并可能与设备上的单个软件组件的版本相匹配。 
+更新标识表示某个更新的独一无二的标识符。 它定义有关要导入的更新的重要属性。 该更新标识由三部分组成：
+* 提供者：这是指创建或直接负责该更新的实体。 它通常会是公司名称。
+* 名称：某一类更新的标识符。 该类可以是你选择的任何内容。 它通常会是设备或型号名称。
+* 版本：它是一个版本号，将此更新与其他具有相同“提供者”和“名称”的更新区分开。 此版本由 Device Update for IoT Hub 服务使用，可能与设备上单个软件组件的版本相符，也可能不相符。 
 
 ### <a name="compatibility"></a>兼容性
 
-为了简化更新部署，IoT 中心的设备更新会将导入清单中定义的更新的兼容性属性与相应的设备属性进行比较。 仅返回具有匹配属性的更新，并且可用于部署。
+为了简化更新部署，Device Update for IoT Hub 会将某个更新的兼容性属性（在导入清单中定义）与相应的设备属性进行比较。 只有属性匹配的更新才会返回，可用于部署。
 
 ### <a name="installedcriteria"></a>InstalledCriteria
 
@@ -40,6 +40,6 @@ ms.locfileid: "102040577"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果已准备就绪，请尝试 [导入 How-To 指南](./import-update.md)，这将逐步引导你完成导入过程。
+如果已准备就绪，请尝试按[导入操作指南](./import-update.md)操作，它将逐步引导你完成导入过程。
 
 

@@ -4,10 +4,10 @@ description: 本文介绍了如何排查 Azure 事件中心的身份验证和授
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 368fd8efda1b828f99bc41da0743768989c1a601
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92329604"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>排查身份验证和授权问题 - Azure 事件中心
@@ -21,7 +21,7 @@ ms.locfileid: "92329604"
 - [Azure 事件中心数据发送方](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)，具有发送访问权限。
 - [Azure 事件中心数据接收方](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)，具有接收访问权限。
 
-有关架构注册表内置角色，请参阅 [架构注册表角色](schema-registry-overview.md#azure-role-based-access-control)。
+要了解架构注册表内置角色，请参阅[架构注册表角色](schema-registry-overview.md#azure-role-based-access-control)。
 
 ### <a name="resource-scopes"></a>资源范围
 - **使用者组**：在此范围，角色分配仅应用到此实体。 目前，Azure 门户不支持在此级别向安全主体分配 Azure 角色。 

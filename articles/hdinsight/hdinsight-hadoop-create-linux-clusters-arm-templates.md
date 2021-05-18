@@ -1,16 +1,16 @@
 ---
-title: 使用模板创建 Apache Hadoop 群集-Azure HDInsight
+title: 使用模板创建 Apache Hadoop 群集 - Azure HDInsight
 description: 了解如何使用 Resource Manager 模板创建 HDInsight 的群集
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive, devx-track-azurecli
+ms.custom: hdinsightactive
 ms.date: 04/07/2020
-ms.openlocfilehash: 43f9736ce902d4c195d6b07cfdf7011ba9ca0c2c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 9d35e5730d35309b7881723df5a682f6c9990a59
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702736"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072614"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集
 
@@ -29,7 +29,7 @@ ms.locfileid: "101702736"
 
 在此模板中，定义应用程序所需的资源。 还可指定部署参数以输入不同环境的值。 模板中包含用于为部署构造值的 JSON 和表达式。
 
-可以在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)中找到 HDInsight 模板示例。 将跨平台 [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) 与[资源管理器扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)或文本编辑器配合使用，将模板保存到工作站上的文件中。
+可在 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)中找到 HDInsight 模板示例。 将跨平台 [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) 与[资源管理器扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)或文本编辑器配合使用，将模板保存到工作站上的文件中。
 
 有关资源管理器模板的详细信息，请参阅以下文章和示例：
 
@@ -72,7 +72,7 @@ ms.locfileid: "101702736"
 
 在本文中，已经学习了几种创建 HDInsight 群集的方法。 要了解更多信息，请参阅下列文章：
 
-* 有关 HDInsight 相关模板的详细信息，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)。
+* 有关更多与 HDInsight 相关的模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)。
 * 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](/previous-versions/azure/virtual-machines/windows/csharp-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 有关部署应用程序的详细示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](../app-service/deploy-complex-application-predictably.md)。
 * 有关将解决方案部署到不同环境的指南，请参阅 [Microsoft Azure 中的开发和测试环境](../devtest-labs/devtest-lab-overview.md)。

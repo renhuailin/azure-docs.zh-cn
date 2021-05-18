@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: sngun
 ms.openlocfilehash: 4e638fdff67ad2d0bc6f191cdfd46867ab847923
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93080101"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Azure Cosmos DB Gremlin 限制
@@ -27,13 +27,13 @@ Cosmos DB Gremlin 基于 Cosmos DB 基础结构而构建。 由于此原因，[A
 
 **资源**    | **默认限制** | **解释**
 --- | --- | ---
-脚本长度  | **64 KB** | 每个请求的 Gremlin 遍历脚本的最大长度。
-运算符深度  | **400** |  遍历中的唯一步骤的总数。 例如，```g.V().out()``` 的运算符计数为 2：V() 和 out()，```g.V('label').repeat(out()).times(100)``` 的运算符深度为 3：V()、repeat() 和 out()，因为 ```.times(100)``` 为 ```.repeat()``` 运算符的参数。
+脚本长度 | **64 KB** | 每个请求的 Gremlin 遍历脚本的最大长度。
+运算符深度 | **400** |  遍历中的唯一步骤的总数。 例如，```g.V().out()``` 的运算符计数为 2：V() 和 out()，```g.V('label').repeat(out()).times(100)``` 的运算符深度为 3：V()、repeat() 和 out()，因为 ```.times(100)``` 是 ```.repeat()``` 运算符的参数。
 *并行度* | **32** | 发往存储层的单个请求中查询的存储分区的最大数。 具有数百个分区的图将受到此限制的影响。
-重复限制  | **32** | ```.repeat()``` 运算符可执行的最大迭代次数。 在大多数情况下，```.repeat()``` 步骤的每次迭代都会运行广度优先的遍历，这意味着任何遍历都限于顶点之间最多 32 个跃点。
-遍历超时  | **30 秒** | 超过此时间时，遍历将取消。 Cosmos DB Graph 是一种 OLTP 数据库，其中绝大部分遍历都在几毫秒内完成。 若要对 Cosmos DB Graph 运行 OLAP 查询，请使用 [Apache Spark](https://azure.microsoft.com/services/cosmos-db/)（带 [Graph Data Frames](https://spark.apache.org/docs/latest/sql-programming-guide.html#datasets-and-dataframes)）和 [Cosmos DB Spark 连接器](https://github.com/Azure/azure-cosmosdb-spark)。
-空闲连接超时  | 1 小时  | Gremlin 服务将使空闲 websocket 连接保持打开状态的时间量。 “保持 TCP 连接”数据包或“保持 HTTP 连接”请求不会将连接生存期延长到超过此限制。 如果 websocket 连接上没有正在运行的活动 Gremlin 请求，Cosmos DB Graph 引擎会将该连接视为处于空闲状态。
-每小时的资源令牌  | **100** | Gremlin 客户端在连接到某个区域中的 Gremlin 帐户时使用的唯一资源令牌的数目。 当应用程序超出每小时唯一令牌限制时，系统会针对下一次的身份验证请求返回 `"Exceeded allowed resource token limit of 100 that can be used concurrently"`。
+重复限制 | **32** | ```.repeat()``` 运算符可执行的最大迭代次数。 在大多数情况下，```.repeat()``` 步骤的每次迭代都会运行广度优先的遍历，这意味着任何遍历都限于顶点之间最多 32 个跃点。
+遍历超时 | **30 秒** | 超过此时间时，遍历将取消。 Cosmos DB Graph 是一种 OLTP 数据库，其中绝大部分遍历都在几毫秒内完成。 若要对 Cosmos DB Graph 运行 OLAP 查询，请使用 [Apache Spark](https://azure.microsoft.com/services/cosmos-db/)（带 [Graph Data Frames](https://spark.apache.org/docs/latest/sql-programming-guide.html#datasets-and-dataframes)）和 [Cosmos DB Spark 连接器](https://github.com/Azure/azure-cosmosdb-spark)。
+空闲连接超时 | 1 小时 | Gremlin 服务将使空闲 websocket 连接保持打开状态的时间量。 “保持 TCP 连接”数据包或“保持 HTTP 连接”请求不会将连接生存期延长到超过此限制。 如果 websocket 连接上没有正在运行的活动 Gremlin 请求，Cosmos DB Graph 引擎会将该连接视为处于空闲状态。
+每小时的资源令牌 | **100** | Gremlin 客户端在连接到某个区域中的 Gremlin 帐户时使用的唯一资源令牌的数目。 当应用程序超出每小时唯一令牌限制时，系统会针对下一次的身份验证请求返回 `"Exceeded allowed resource token limit of 100 that can be used concurrently"`。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure Cosmos DB Gremlin 响应标头](gremlin-headers.md)

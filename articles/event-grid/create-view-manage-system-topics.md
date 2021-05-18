@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure 门户查看现有系统主题并创
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86115105"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>在 Azure 门户中创建、查看和管理事件网格系统主题
@@ -16,7 +16,7 @@ ms.locfileid: "86115105"
 ## <a name="create-a-system-topic"></a>创建系统主题
 可以通过两种方式创建 Azure 资源（存储帐户、事件中心命名空间等）的系统主题：
 
-- 使用资源（例如存储帐户或事件中心命名空间）的“事件”页。 在 Azure 门户中使用“事件”页为 Azure 源（例如 Azure 存储帐户）引发的事件创建事件订阅时，门户创建 Azure 资源的系统主题，然后创建该系统主题的订阅。 如果是首次在 Azure 资源上创建事件订阅，则指定系统主题的名称。 从第二次开始，系统主题名称将在只读模式下显示。 有关详细步骤，请参阅 [快速入门：将 Blob 存储事件路由到 web 终结点，并提供 Azure 门户](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage) 。
+- 使用资源（例如存储帐户或事件中心命名空间）的“事件”页。 在 Azure 门户中使用“事件”页为 Azure 源（例如 Azure 存储帐户）引发的事件创建事件订阅时，门户创建 Azure 资源的系统主题，然后创建该系统主题的订阅。 如果是首次在 Azure 资源上创建事件订阅，则指定系统主题的名称。 从第二次开始，系统主题名称将在只读模式下显示。 有关详细步骤，请参阅[快速入门：利用 Azure 门户将 Blob 存储事件路由到 Web 终结点](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage)。
 - 使用“事件网格系统主题”页。 以下步骤用于通过“事件网格系统主题”页创建系统主题。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。

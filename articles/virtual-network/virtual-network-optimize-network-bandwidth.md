@@ -1,6 +1,6 @@
 ---
 title: 优化 VM 网络吞吐量 | Microsoft 文档
-description: 为 Microsoft Azure Windows 和 Linux Vm （包括 Ubuntu、CentOS 和 Red Hat 等主要分发）优化网络吞吐量。
+description: 优化 Microsoft Azure Windows 和 Linux VM（包括 Ubuntu、CentOS 和 Red Hat 等主要发行版）的网络吞吐量。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
 ms.openlocfilehash: bb9235f4d1190bf7f71ddc007f09c9666c353234
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98216795"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>优化 Azure 虚拟机网络吞吐量

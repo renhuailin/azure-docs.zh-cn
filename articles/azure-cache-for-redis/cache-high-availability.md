@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: ad6696fc4fe2af7047c25a3a9c260d3b12588ee2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6c44c87221442797f063877385ac5eb7f8585850
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203294"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719090"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Azure Cache for Redis 的高可用性
 
@@ -21,9 +21,9 @@ Azure Cache for Redis 使用多个称为“节点”的用于缓存的 VM 来实
 
 | 选项 | 说明 | 可用性 | 标准 | 高级 | Enterprise |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
-| [标准复制](#standard-replication)| 单个数据中心中具有自动故障转移功能的双节点复制配置 | 99.9% |✔|✔|-|
-| [区域冗余](#zone-redundancy) | AZ 中具有自动故障转移功能的多节点复制配置 | 99.95% (高级层) ，99.99% (企业层) |-|预览|预览|
-| [异地复制](#geo-replication) | 两个区域中的链接缓存实例，具有用户控制的故障转移 | 99.999% (企业层) |-|✔|预览|
+| [标准复制](#standard-replication)| 单个数据中心中具有自动故障转移功能的双节点复制配置 | 99.9%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)） |✔|✔|-|
+| [区域冗余](#zone-redundancy) | AZ 中具有自动故障转移功能的多节点复制配置 | 高达 99.99%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)） |-|预览|✔|
+| [异地复制](#geo-replication) | 两个区域中的链接缓存实例，具有用户控制的故障转移 | 高达 99.999%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)） |-|✔|预览|
 
 ## <a name="standard-replication"></a>标准复制
 
@@ -45,7 +45,7 @@ Azure Cache for Redis 使用多个称为“节点”的用于缓存的 VM 来实
 >
 >
 
-此外，Azure Cache for Redis 在高级层中允许更多副本节点。 可以为[多副本缓存](cache-how-to-multi-replicas.md)配置最多三个副本节点。 具有更多副本通常会提高复原能力，因为附加的节点会为主节点提供备份。 即使有更多备份，Azure Cache for Redis 实例仍可能会受到数据中心层面或 AZ 层面服务中断的严重影响。 通过将多个副本与[区域冗余](#zone-redundancy)结合使用，可以提高缓存可用性。
+此外，Azure Cache for Redis 在高级层中允许更多副本节点。 可以为[多副本缓存](cache-how-to-multi-replicas.md)配置最多三个副本节点。 具有更多副本通常会提高复原能力，因为附加的节点会为主节点提供备份。 即使有更多副本，Azure Cache for Redis 实例仍可能会受到数据中心级别或 AZ 级别的服务中断的严重影响。 通过将多个副本与[区域冗余](#zone-redundancy)结合使用，可以提高缓存可用性。
 
 ## <a name="zone-redundancy"></a>区域冗余
 

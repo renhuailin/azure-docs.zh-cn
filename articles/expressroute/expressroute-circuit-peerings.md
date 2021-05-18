@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
 ms.openlocfilehash: 87fed1d2ac4f5fa85c01d7af10bec10c1412744f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92202338"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 线路和对等互连
 
 ExpressRoute 线路通过连接提供商将本地基础结构连接到 Microsoft。 本文帮助你了解 ExpressRoute 线路和路由域/对等互连。 下图展示了 WAN 与 Microsoft 之间连接的逻辑表示。
 
-![显示 ExpressRoute 线路如何通过连接提供商将本地基础结构连接到 Microsoft 的示意图。](./media/expressroute-circuit-peerings/expressroute-basic.png)
+![演示 ExpressRoute 线路如何通过连接提供方将本地基础结构连接到 Microsoft 的示意图。](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
-> Azure 公共对等互连已弃用，不适用于新的 ExpressRoute 线路。 新线路支持 Microsoft 对等互连和专用对等互连。  
+> Azure 公共对等互连已弃用，并且不可用于新的 ExpressRoute 线路。 新线路支持 Microsoft 对等互连和专用对等互连。  
 >
 
 ## <a name="expressroute-circuits"></a><a name="circuits"></a>ExpressRoute 线路
@@ -40,9 +40,9 @@ ExpressRoute 线路不会映射到任何物理实体。 线路由称为服务密
 
 ## <a name="expressroute-peering"></a><a name="routingdomains"></a>ExpressRoute 对等互连
 
-ExpressRoute 线路有多个与之关联的路由域/对等互连： Azure 公共、Azure 专用和 Microsoft。 在一对路由器上（采用主动-主动或负载共享配置），每个对等互连采用相同的配置以实现高可用性。 Azure 服务分类为 Azure 公共** 和 Azure 专用** 以表示 IP 寻址方案。
+一条 ExpressRoute 线路有多个与之关联的路由域/对等互连：Azure 公共、Azure 专用和 Microsoft。 在一对路由器上（采用主动-主动或负载共享配置），每个对等互连采用相同的配置以实现高可用性。 Azure 服务分类为 Azure 公共和 Azure 专用以表示 IP 寻址方案。
 
-![显示如何在 ExpressRoute 线路中配置 Azure 公共、Azure 专用和 Microsoft 对等互连的关系图。](./media/expressroute-circuit-peerings/expressroute-peerings.png)
+![演示如何在 ExpressRoute 线路中配置 Azure 公共、Azure 专用和 Microsoft 对等互连的示意图。](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
 ### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure 专用对等互连
 
@@ -54,7 +54,7 @@ ExpressRoute 线路有多个与之关联的路由域/对等互连： Azure 公�
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-与 Microsoft 联机服务 (Microsoft 365 和 Azure PaaS 服务的连接) 通过 Microsoft 对等互连进行。 我们将通过 Microsoft 对等路由域在 WAN 和 Microsoft 云服务之间启用双向连接。 只能通过由你或连接提供商拥有的公共 IP 地址连接到 Microsoft 云服务，并且你必须遵守我们规定的所有规则。 有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)页。
+与 Microsoft 联机服务（Microsoft 365 和 Azure PaaS 服务）的连接通过 Microsoft 对等互连建立。 我们将通过 Microsoft 对等路由域在 WAN 和 Microsoft 云服务之间启用双向连接。 只能通过由你或连接提供商拥有的公共 IP 地址连接到 Microsoft 云服务，并且你必须遵守我们规定的所有规则。 有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)页。
 
 有关支持的服务、费用和配置的详细信息，请参阅[常见问题解答页](expressroute-faqs.md)。 有关提供 Microsoft 对等互连支持的连接提供商列表的信息，请参阅 [ExpressRoute Locations](expressroute-locations.md) （ExpressRoute 位置）页。
 

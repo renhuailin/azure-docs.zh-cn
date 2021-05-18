@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
 ms.openlocfilehash: 190a9e431dedfb0f0fe6077e903174f253f5c773
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100589111"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>使用见解监视和配置 Azure 负载均衡器
@@ -71,7 +71,7 @@ ms.locfileid: "100589111"
 这些视图可为你提供有关负载均衡器配置或流量模式是否导致流量不平衡的反馈。 例如，是否已配置会话关联，以及某个客户端发出的请求数量是否不成比例。 它还会告知你的计算机大小是否已达到[每个 VM 流量限制](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations)。
 
 ### <a name="connection-monitors"></a>连接监视器
-“连接监视器”选项卡会在全局地图上显示已配置的所有[连接监视器](../network-watcher/connection-monitor.md)的往返延迟。 这些视觉对象为具有严格延迟要求的服务提供有用的信息。 为了满足您的需求，您可能需要添加更多区域部署或迁移到 [跨区域负载平衡](./cross-region-overview.md) 模型
+“连接监视器”选项卡会在全局地图上显示已配置的所有[连接监视器](../network-watcher/connection-monitor.md)的往返延迟。 这些视觉对象为具有严格延迟要求的服务提供有用的信息。 为了满足你的需求，你可能需要添加额外的区域部署或迁移到[跨区域负载均衡](./cross-region-overview.md)模型
 
 ### <a name="metric-definitions"></a>指标定义
 “指标定义”选项卡包含[“多维指标标准”文章](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)中显示的所有信息。

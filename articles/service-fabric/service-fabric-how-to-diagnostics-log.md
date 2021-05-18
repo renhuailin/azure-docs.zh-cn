@@ -1,17 +1,15 @@
 ---
 title: 从 .NET 应用生成日志事件
 description: 了解如何向 Azure 群集或独立群集中托管的 .NET Service Fabric 应用程序添加日志记录。
-author: srrengar
 ms.topic: conceptual
 ms.date: 03/27/2018
-ms.author: srrengar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a36425acf42a469c7f48b2e954bdacfdfcce1b10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: dd3afed85dc3eff81cbe60f252cdc16b0d4018c8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89011474"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628112"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>向 Service Fabric 应用程序添加日志记录
 

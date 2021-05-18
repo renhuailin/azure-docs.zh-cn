@@ -1,6 +1,6 @@
 ---
 title: 用作备份目标的 StorSimple 8000 系列与 NetBackup 的集成 | Microsoft 文档
-description: 了解适用于 Veritas NetBackup 的 StorSimple 备份目标配置，以及集成这两种解决方案的最佳实践。
+description: 了解 Veritas NetBackup 的 StorSimple 备份目标配置，以及集成这两种解决方案时的最佳实践。
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 4f71cf82b675222836a73eec12d68bd8f62a5538
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94967272"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
@@ -55,8 +55,8 @@ StorSimple 是极佳的备份目标，原因如下：
 
 StorSimple 旨在为处理妥善定义的工作数据集（热数据）的应用程序提供存储。 在此模型中，工作数据集存储在本地层中，剩余的非工作/冷/存档数据集在云中分层。 下图演示了此模型。 平坦的绿线表示存储在 StorSimple 设备本地层中的数据。 红线表示 StorSimple 解决方案的所有层中存储的总数据量。 平坦绿线与呈指数级升高的红色曲线之间的空间表示存储在云中的总数据量。
 
-**StorSimple 分层** 
- ![StorSimple 分层示意图](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
+**StorSimple 分层**
+![StorSimple 分层示意图](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
 
 知道这种体系结构后，会发现 StorSimple 非常适合用作备份目标。 使用 StorSimple 可以：
 -   通过本地工作数据集执行最常见的还原。
@@ -102,7 +102,7 @@ StorSimple 提供以下优势：
 | 备份方案  | 本地存储容量  | 云存储容量  |
 |---|---|---|
 | 主备份  | 最近的备份存储在本地存储中以加快恢复速度，满足恢复点目标 (RPO)。 | 备份历史记录 (RPO) 占用云容量 |
-| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 空值  |
+| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 不适用  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>用作主备份目标的 StorSimple
 
@@ -132,7 +132,7 @@ StorSimple 提供以下优势：
 
 必须调整高性能卷的大小，使其能够应对保留策略容量和性能要求。
 
-![显示一种体系结构的关系图，其中，初始备份和还原针对高性能卷。](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
+![图中显示初始备份和还原针对高性能卷的体系结构。](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
 
 ### <a name="secondary-target-backup-logical-steps"></a>辅助目标备份逻辑步骤
 
@@ -265,7 +265,7 @@ StorSimple 提供以下优势：
 
 ### <a name="to-set-up-netbackup-storage"></a>设置 NetBackup 存储
 
-1.  在 NetBackup 管理控制台中，选择 "**媒体和设备管理**  >  **设备**" "  >  **磁盘池**"。 在磁盘池配置向导中，选择存储服务器类型“AdvancedDisk”，并选择“下一步”。
+1.  在 NetBackup 管理控制台中，选择“媒体和设备存储” > “设备” > “磁盘池”。   在磁盘池配置向导中，选择存储服务器类型“AdvancedDisk”，并选择“下一步”。
 
     ![NetBackup 管理控制台，磁盘池配置向导](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
 
@@ -277,7 +277,7 @@ StorSimple 提供以下优势：
 
     ![NetBackup 管理控制台，选择 StorSimple 卷磁盘](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  输入备份目标的名称，**然后选择 "下一步"**  >  **Next** 以完成向导。
+4.  输入备份目标的名称，并选择“下一步” > “下一步”完成向导中的操作。 
 
 5.  检查设置，并选择“完成”。
 
@@ -300,7 +300,7 @@ StorSimple 提供以下优势：
 
 下面是四周、每月和每年的 GFS 轮转计划示例：
 
-| 频率/备份类型 | 完整 | 增量备份（第 1-5 天）  |   
+| 频率/备份类型 | 完全 | 增量备份（第 1-5 天）  |   
 |---|---|---|
 | 每周（第 1-4 周） | 星期六 | 星期一至星期五 |
 | 每月  | 星期六  |   |
@@ -328,7 +328,7 @@ StorSimple 提供以下优势：
 
    ![NetBackup 管理控制台，选择策略类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5. 选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。 选择“**下一页**”。
+5. 选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。 选择“**下一步**”。
 
    ![NetBackup 管理控制台，在新策略中列出客户端](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -340,7 +340,7 @@ StorSimple 提供以下优势：
 
    ![NetBackup 管理控制台，新策略的备份频率和轮转](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. 选择 **下** 一  >  **步**  >  **完成**。  创建策略后，可以修改计划。
+8. 选择“下一步” > “下一步” > “完成”。    创建策略后，可以修改计划。
 
 9. 选择刚刚创建的策略将它展开，然后选择“计划”。
 
@@ -408,7 +408,7 @@ StorSimple 提供以下优势：
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GSF 示例计划：每周、每月和每年 GFS 轮转计划
 
-| 周 | 完整 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
+| 周 | 完全 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
 |---|---|---|---|---|---|---|
 | 第 1 周 | 本地 RAID 卷  | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 |
 | 第 2 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
@@ -430,7 +430,7 @@ StorSimple 提供以下优势：
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>将 StorSimple 卷分配到 NetBackup 存档和重复数据删除作业
 
-1. 在 NetBackup 管理控制台中，选择 "**存储**  >  **存储生命周期策略**" "  >  **新建存储生命周期策略**"。
+1. 在 NetBackup 管理控制台中，选择“存储” > “存储生命周期策略” > “新建存储生命周期策略”。  
 
    ![NetBackup 管理控制台，新建存储生命周期策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
@@ -529,7 +529,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 灾难的发生可能会出于多种因素。 下表列出了常见的灾难恢复方案。
 
-| 方案 | 影响 | 如何恢复 | 说明 |
+| 方案 | 影响 | 如何恢复 | 备注 |
 |---|---|---|---|
 | StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](./storsimple-8000-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
 | NetBackup 服务器故障 | 备份和还原操作会中断。 | 重新构建备份服务器并执行数据库还原。 | 必须在灾难恢复站点重建或还原 NetBackup 服务器。 将数据库还原到最近的时间点。 如果还原的 NetBackup 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |

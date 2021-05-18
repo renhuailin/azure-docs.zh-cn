@@ -1,26 +1,26 @@
 ---
-title: 通过 PowerShell 还原 Azure 文件
+title: 使用 PowerShell 还原 Azure 文件
 description: 本文介绍如何使用 Azure 备份服务和 PowerShell 还原 Azure 文件。
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 60c9848e12de80bcafe4553a9e8f3e27e8876d41
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021378"
 ---
-# <a name="restore-azure-files-with-powershell"></a>通过 PowerShell 还原 Azure 文件
+# <a name="restore-azure-files-with-powershell"></a>使用 PowerShell 还原 Azure 文件
 
-本文介绍如何使用 Azure PowerShell 从 [Azure 备份](backup-overview.md) 服务创建的还原点还原整个文件共享或特定文件。
+本文介绍如何使用 Azure PowerShell 从 [Azure 备份](backup-overview.md)服务所创建的还原点来还原整个文件共享或特定文件。
 
 可以还原整个文件共享，或共享中的特定文件。 可以还原到原始位置或备用位置。
 
 > [!WARNING]
-> 请确保将 PowerShell 版本升级到最小版本的 "Az. Microsoft.recoveryservices 2.6.0" for AFS 备份。 有关详细信息，请参阅概述此更改要求的 [部分](backup-azure-afs-automation.md#important-notice-backup-item-identification) 。
+> 确保 PowerShell 版本已升级到 AFS 备份的最低版本“Az.RecoveryServices 2.6.0”。 有关详细信息，请参阅概述此更改的要求的[部分](backup-azure-afs-automation.md#important-notice-backup-item-identification)。
 
 >[!NOTE]
->Azure 备份现在支持使用 PowerShell 将多个文件或文件夹还原到原始或备用位置。 要了解如何操作，请参阅文档的 [此部分](#restore-multiple-files-or-folders-to-original-or-alternate-location) 。
+>Azure 备份现在支持使用 PowerShell 将多个文件或文件夹还原到原始位置或备用位置。 请参阅本文的[这一部分](#restore-multiple-files-or-folders-to-original-or-alternate-location)，了解如何操作。
 
 ## <a name="fetch-recovery-points"></a>提取恢复点
 
@@ -29,9 +29,9 @@ ms.locfileid: "96021378"
 在以下脚本中：
 
 * 变量 **$rp** 是一个数组，其中包含所选备份项在过去七天的恢复点。
-* 数组按时间的反向顺序进行排序，最新的恢复点位于索引 **0** 处。
+* 该数组按时间进行反向排序，以最新的恢复点作为索引 0。
 * 使用标准 PowerShell 数组索引选取恢复点。
-* 在此示例中， **$rp [0]** 选择最新的恢复点。
+* 在示例中，$rp[0] 选择最近的恢复点。
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
@@ -65,10 +65,10 @@ BackupManagementType : AzureStorage
 
 使用 [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) 还原到所选的恢复点。 指定以下参数来标识备用位置：
 
-* **TargetStorageAccountName**：将备份的内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
-* **TargetFileShareName**：要将备份内容还原到的目标存储帐户中的文件共享。
-* **TargetFolder**：要将数据还原到的文件共享上的文件夹。 如果要将备份内容还原到根文件夹，请将目标文件夹值指定为空字符串。
-* **ResolveConflict**：如果与还原的数据发生冲突，则为指令。 接受“覆盖”或“跳过”。
+* TargetStorageAccountName：要将备份内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
+* TargetFileShareName：目标存储帐户中要将备份内容还原到的文件共享。
+* TargetFolder：文件共享中要将数据还原到的文件夹。 如果要将备份内容还原到根文件夹，请将目标文件夹值指定为空字符串。
+* ResolveConflict：与还原的数据发生冲突时提供的说明。 接受“覆盖”或“跳过”。
 
 结合如下所示的参数运行 cmdlet：
 
@@ -88,12 +88,12 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 使用 [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) 还原到所选的恢复点。 指定以下参数来标识备用位置，以及唯一标识要还原的文件。
 
-* **TargetStorageAccountName**：将备份的内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
-* **TargetFileShareName**：要将备份内容还原到的目标存储帐户中的文件共享。
-* **TargetFolder**：要将数据还原到的文件共享上的文件夹。 如果要将备份内容还原到根文件夹，请将目标文件夹值指定为空字符串。
-* **SourceFilePath**：文件共享中要还原的文件的绝对路径（以字符串形式）。 此路径与 Get-AzStorageFile PowerShell cmdlet 中使用的路径相同。
-* **SourceFileType**：是否选择目录或文件。 接受“目录”或“文件”。
-* **ResolveConflict**：如果与还原的数据发生冲突，则为指令。 接受“覆盖”或“跳过”。
+* TargetStorageAccountName：要将备份内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
+* TargetFileShareName：目标存储帐户中要将备份内容还原到的文件共享。
+* TargetFolder：文件共享中要将数据还原到的文件夹。 如果要将备份内容还原到根文件夹，请将目标文件夹值指定为空字符串。
+* SourceFilePath：文件共享中要还原的文件的绝对路径（字符串格式）。 此路径与 Get-AzStorageFile PowerShell cmdlet 中使用的路径相同。
+* SourceFileType：是否已选择目录或文件。 接受“目录”或“文件”。
+* ResolveConflict：与还原的数据发生冲突时提供的说明。 接受“覆盖”或“跳过”。
 
 其他参数（SourceFilePath 和 SourceFileType）只与要还原的单个文件相关。
 
@@ -121,11 +121,11 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>将多个文件或文件夹还原到原始或备用位置
 
-通过将你想要还原的所有文件或文件夹的路径传递为 **MultipleSourceFilePath** 参数的值，使用 [AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem)命令。
+通过将要还原的所有文件或文件夹的路径作为 MultipleSourceFilePath 参数的值传递，使用 [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) 命令。
 
 ### <a name="restore-multiple-files"></a>还原多个文件
 
-在下面的脚本中，我们将尝试还原 *FileSharePage.png* 和 *MyTestFile.txt* 文件。
+在以下脚本中，我们尝试还原 FileSharePage.png 和 MyTestFile.txt 文件 。
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
@@ -143,7 +143,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePa
 
 ### <a name="restore-multiple-directories"></a>还原多个目录
 
-在以下脚本中，我们将尝试还原 *zrs1_restore* 和 *还原* 目录。
+在以下脚本中，我们尝试还原 zrs1_restore 和 Restore 目录 。
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
@@ -167,8 +167,8 @@ WorkloadName         Operation         Status          StartTime                
 azurefiles           Restore           InProgress      4/5/2020 8:01:24 AM                    cd36abc3-0242-44b1-9964-0a9102b74d57
 ```
 
-如果要将多个文件或文件夹还原到备用位置，请通过指定与目标位置相关的参数值来使用以上脚本，如上文将 [Azure 文件还原到备用位置](#restore-an-azure-file-to-an-alternate-location)中所述。
+如果要将多个文件或文件夹还原到备用位置，请如上文的[将 Azure 文件还原到备用位置](#restore-an-azure-file-to-an-alternate-location)中所述，通过指定与目标位置相关的参数值以使用上述脚本。
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解如何](restore-afs.md) 在 Azure 门户中还原 Azure 文件。
+[了解](restore-afs.md)如何在 Azure 门户中还原 Azure 文件。

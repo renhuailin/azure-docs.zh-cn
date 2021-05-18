@@ -1,6 +1,6 @@
 ---
 title: 使用 Java 管理 Azure Data Lake Storage Gen2 中的数据
-description: 使用用于 Java 的 Azure 存储库管理已启用分层命名空间的存储帐户中的目录和文件。
+description: 使用适用于 Java 的 Azure 存储库在启用了分层命名空间的存储帐户中管理目录和文件。
 author: normesta
 ms.service: storage
 ms.date: 02/17/2021
@@ -10,31 +10,31 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 10debe7bb870ddd9f8711e73ccb4b690d7011b62
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100650179"
 ---
 # <a name="use-java-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Java 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
-本文介绍如何使用 Java 在具有分层命名空间的存储帐户中创建和管理目录和文件。
+本文介绍如何使用 Java 在具有分层命名空间的存储帐户中创建和管理目录与文件。
 
-若要了解如何获取、设置和更新访问控制列表 (ACL) 目录和文件，请参阅 [使用。用于管理 Azure Data Lake Storage Gen2 中的 Acl 的 Java](data-lake-storage-acl-java.md)。
+若要了解如何获取、设置和更新目录与文件的访问控制列表 (ACL)，请参阅[使用 Java 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-java.md)。
 
-[Package (Maven) ](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)  | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)  | [API 参考](/java/api/overview/azure/storage-file-datalake-readme)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
+[包 (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API 参考](/java/api/overview/azure/storage-file-datalake-readme) | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-- 已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
+- 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
 ## <a name="set-up-your-project"></a>设置项目
 
 若要开始，请打开[此页](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)，找到最新版本的 Java 库。 然后，在文本编辑器中打开 pom.xml 文件。 添加引用该版本的依赖项元素。
 
-如果你计划通过使用 Azure Active Directory (Azure AD) 来对客户端应用程序进行身份验证，则将依赖项添加到 Azure 机密客户端库。 请参阅[将机密客户端库包添加到项目](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project)。
+如果计划通过使用 Azure Active Directory (Azure AD) 来验证客户端应用程序，请将依赖项添加到 Azure 机密客户端库。 请参阅[将机密客户端库包添加到项目](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project)。
 
 接下来，将这些 import 语句添加到代码文件。
 

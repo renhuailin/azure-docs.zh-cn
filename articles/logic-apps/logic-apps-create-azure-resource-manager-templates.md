@@ -7,15 +7,15 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90971789"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>创建 Azure 资源管理器模板以自动化 Azure 逻辑应用的部署
 
-为了帮助你自动创建和部署逻辑应用，本文介绍了在为逻辑应用创建 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)时可用的方法。 有关包含工作流定义以及用于部署的其他资源的模板的结构和语法概述，请参阅[概述：使用 Azure 资源管理器模板将逻辑应用部署自动化](logic-apps-azure-resource-manager-templates-overview.md)。
+为了帮助你自动创建和部署逻辑应用，本文介绍了在为逻辑应用创建 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)时可用的方法。 有关包含工作流定义以及用于部署的其他必要资源的模板的结构和语法概述，请参阅[概述：使用 Azure 资源管理器模板自动完成逻辑应用的部署](logic-apps-azure-resource-manager-templates-overview.md)。
 
 Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)，使用它不仅可以创建逻辑应用，还可以定义要对部署使用的资源和参数。 可以将此模板用于自己的业务方案，也可以根据需要自定义此模板。
 
@@ -34,7 +34,7 @@ Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 
 
 若要创建最适合部署的有效参数化逻辑应用模板，请使用 Visual Studio（免费的社区版或更高版本）以及适用于 Visual Studio 的 Azure 逻辑应用工具。 然后，可以[在 Visual Studio 中创建逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)，或者[在 Azure 门户中找到某个现有逻辑应用并将其下载到 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)。
 
-下载逻辑应用后，你将获得一个模板，其中包含逻辑应用和其他资源（例如连接）的定义。 该模板还会参数化或定义用于部署逻辑应用和其他资源的值的参数。  可在单独的参数文件中提供这些参数的值。 这样，就可以根据部署需求更轻松地更改这些值。 有关详细信息，请参阅以下主题：
+下载逻辑应用后，你将获得一个模板，其中包含逻辑应用和其他资源（例如连接）的定义。 该模板还会参数化或定义用于部署逻辑应用和其他资源的值的参数。 可在单独的参数文件中提供这些参数的值。 这样，就可以根据部署需求更轻松地更改这些值。 有关详细信息，请参阅以下主题：
 
 * [使用 Visual Studio 创建逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [使用 Visual Studio 管理逻辑应用](../logic-apps/manage-logic-apps-with-visual-studio.md)
@@ -45,7 +45,7 @@ Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 
 
 可以结合 [LogicAppTemplate 模块](https://github.com/jeffhollan/LogicAppTemplateCreator)使用 Azure PowerShell 创建资源管理器模板。 此开源模块首先评估逻辑应用，以及逻辑应用使用的任何连接。 然后，该模块生成模板资源以及用于部署的必需参数。
 
-例如，假设有一个逻辑应用，该应用从 Azure 服务总线队列接收消息，并将数据上传到 Azure SQL 数据库。 该模块会保留所有业务流程逻辑，并参数化 SQL 和服务总线连接字符串，使你能够根据部署需求提供和更改这些值。
+例如，假设某个逻辑应用要从 Azure 服务总线队列接收消息，并将数据上传到 Azure SQL 数据库。 该模块会保留所有业务流程逻辑，并参数化 SQL 和服务总线连接字符串，使你能够根据部署需求提供和更改这些值。
 
 这些示例演示如何使用 Azure 资源管理器模板、Azure DevOps 中的 Azure Pipelines，以及 Azure PowerShell 来创建和部署逻辑应用：
 
@@ -119,10 +119,10 @@ Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>
 Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| parameters | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 |------------|----------|-------------|
 | TemplateFile | 是 | 模板文件的文件路径 |
-| KeyVault | 否 | 一个枚举，描述如何处理可能的 Key Vault 值。 默认为 `None`。 |
+| KeyVault | 否 | 一个枚举，描述如何处理可能的 Key Vault 值。 默认值为 `None`。 |
 ||||
 
 ## <a name="next-steps"></a>后续步骤

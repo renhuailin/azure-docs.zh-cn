@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.openlocfilehash: 2e57b7d8121ac0bd6fc9cb693750c41a0ef6a5bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101733051"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>如何在 Azure HDInsight 群集中使用 Apache Hive 复制
@@ -17,9 +17,9 @@ ms.locfileid: "101733051"
 
 Hive 复制已经过多年的发展，更新的版本提供了更好的功能，速度更快，资源消耗更少。 在本文中，我们讨论在 HDInsight 3.6 和 HDInsight 4.0 群集类型中都支持的 Hive 复制 (Replv2)。
 
-## <a name="advantages-of-replv2"></a>Replv2 的优点
+## <a name="advantages-of-replv2"></a>replv2 的优点
 
-[Hive ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) (也称为 Replv2) 与使用 Hive [导入/导出](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport)的 hive 复制的第一个版本相比，具有以下优点：
+与使用了 Hive [IMPORT-EXPORT](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport) 的第一版 Hive 复制相比，[Hive ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development)（也称为“Replv2”）具有以下优点：
 
 - 基于事件的增量复制
 - 时间点复制  

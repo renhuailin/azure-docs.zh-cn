@@ -8,10 +8,10 @@ ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 ms.openlocfilehash: 40c3b8ab228c93fd4c681281d89d16f88ddf30f1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100384361"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure-SSIS Integration Runtime
@@ -127,7 +127,7 @@ ms.locfileid: "100384361"
     
 2. 若要测试第三个管道，请启动 SQL Server Management Studio (SSMS)。 在“连接到服务器”窗口中执行以下操作  。 
 
-    1. 对于 "**服务器名称**"，请输入 **&lt; 服务器名称 &gt; . database.windows.net**。
+    1. 对于“服务器名称”，请输入 &lt;服务器名称&gt;.database.windows.net 。
     2. 选择“选项Options >>”。 
     3. 对于“连接到数据库”，请选择“SSISDB”。  
     4. 选择“连接”  。 
@@ -242,11 +242,11 @@ ms.locfileid: "100384361"
 
    ![验证所需的模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  如果没有 **DataFactory**，请参阅 [DataFactory 模块](https://www.powershellgallery.com/packages/Az.DataFactory/)的 PowerShell 库，选择 " **部署到 Azure 自动化**"，选择 Azure 自动化帐户，然后选择 **"确定"**。 返回查看左侧菜单的“共享资源”部分中的“模块”并等待，直到看到“Az.DataFactory”模块的“状态”更改为“可用”    。
+2.  如果没有“Az.DataFactory”，请转到 [Az.DataFactory 模块](https://www.powershellgallery.com/packages/Az.DataFactory/)的“PowerShell 库”，选择“部署到 Azure 自动化”，再选择你的 Azure 自动化帐户，然后选择“确定”  。 返回查看左侧菜单的“共享资源”部分中的“模块”并等待，直到看到“Az.DataFactory”模块的“状态”更改为“可用”    。
 
     ![验证数据工厂模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  如果你没有 **az. profile**，请前往 [az. profile 模块](https://www.powershellgallery.com/packages/Az.profile/)的 PowerShell 库，选择 " **部署到 azure 自动化**"，选择你的 Azure 自动化帐户，然后选择 **"确定"**。 返回查看左侧菜单的“共享资源”部分中的“模块”并等待，直到看到“Az.Profile”模块的“状态”更改为“可用”    。
+3.  如果没有“Az.Profile”，请转到 [Az.Profile 模块](https://www.powershellgallery.com/packages/Az.profile/)的“PowerShell 库”，选择“部署到 Azure 自动化”，再选择你的 Azure 自动化帐户，然后选择“确定”  。 返回查看左侧菜单的“共享资源”部分中的“模块”并等待，直到看到“Az.Profile”模块的“状态”更改为“可用”    。
 
     ![验证配置文件模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 

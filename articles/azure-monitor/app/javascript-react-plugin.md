@@ -7,10 +7,10 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 44554434eee51c11e7f89007c532f1a142fc998c
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199333"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的 React 插件
@@ -162,10 +162,10 @@ export default MyComponent;
 ### `useTrackEvent`
 
 `useTrackEvent` 挂钩用于跟踪应用程序可能需要跟踪的任何自定义事件，例如按钮单击或其他 API 调用。 它采用四个参数：
--   Application Insights 实例 (可从挂钩) 获取该实例 `useAppInsightsContext` 。
+-   Application Insights 实例（可以从 `useAppInsightsContext` Hook 获取）
 -   事件的名称。
 -   事件数据对象，该对象封装了必须跟踪的更改。
--   skipFirstRun (可选的) 标志来跳过 `trackEvent` 初始化调用。 默认值设置为 `true`。
+-   skipFirstRun（可选）标志，用于在初始化时跳过 `trackEvent` 调用。 默认值设置为 `true`。
 
 ```javascript
 import React, { useState, useEffect } from "react";

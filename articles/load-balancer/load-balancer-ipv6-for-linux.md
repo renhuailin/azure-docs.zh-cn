@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: d8bd62bab627beb70a8fcba276bf8c2eca309c45
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96006740"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>为 Linux VM 配置 DHCPv6
@@ -36,7 +36,7 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
 
 ## <a name="ubuntu"></a>Ubuntu
 
-1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行  ：
+1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行：
 
     ```config
     timeout 10;
@@ -44,8 +44,8 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
 
 2. 编辑使用以下配置的 eth0 接口的网络配置：
 
-   * 在 Ubuntu 12.04 和 14.04 上编辑 /etc/network/interfaces.d/eth0.cfg 文件   。 
-   * 在 Ubuntu 16.04 上编辑 /etc/network/interfaces.d/50-cloud-init.cfg 文件   。
+   * 在 Ubuntu 12.04 和 14.04 上编辑 /etc/network/interfaces.d/eth0.cfg 文件。 
+   * 在 Ubuntu 16.04 上编辑 /etc/network/interfaces.d/50-cloud-init.cfg 文件。
 
     ```config
     iface eth0 inet6 auto
@@ -59,9 +59,9 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
-从 Ubuntu 17.10 开始，默认网络配置机制是 [NETPLAN]( https://netplan.io)。  在安装/实例化时，NETPLAN 从以下位置的 YAML 配置文件中读取网络配置：/{lib,etc,run}/netplan/*.yaml。
+从 Ubuntu 17.10 开始，默认网络配置机制为 [NETPLAN]( https://netplan.io)。  在安装/实例化时，NETPLAN 从以下位置的 YAML 配置文件中读取网络配置：/{lib,etc,run}/netplan/*.yaml。
 
-请为配置中的每个以太网接口添加“dhcp6:true”  语句。  例如：
+请在配置中为每个以太网接口包含 dhcp6:true 语句。  例如：
 
 ```config
 network:
@@ -71,17 +71,17 @@ network:
       dhcp6: true
 ```
 
-在早期启动过程中，netplan “network renderer”将配置写入“/run”，以将设备控制权移交给指定的网络守护程序。有关 NETPLAN 的参考信息，请参阅 https://netplan.io/reference 。
+在早期启动过程中，netplan“网络呈现器”将配置写入 /run，以将设备的控制权移交给指定的网络守护程序。有关 NETPLAN 的参考信息，请参阅 https://netplan.io/reference 。
  
 ## <a name="debian"></a>Debian
 
-1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行  ：
+1. 编辑 /etc/dhcp/dhclient6.conf 文件，并添加以下行：
 
     ```config
     timeout 10;
     ```
 
-2. 编辑 /etc/network/interfaces 文件，添加以下配置  ：
+2. 编辑 /etc/network/interfaces 文件，添加以下配置：
 
     ```config
     iface eth0 inet6 auto
@@ -97,13 +97,13 @@ network:
 
 ## <a name="rhel-centos-and-oracle-linux"></a>RHEL、CentOS 和 Oracle Linux
 
-1. 编辑 /etc/sysconfig/network 文件，添加以下参数  ：
+1. 编辑 /etc/sysconfig/network 文件，添加以下参数：
 
     ```config
     NETWORKING_IPV6=yes
     ```
 
-2. 编辑 /etc/sysconfig/network-scripts/ifcfg-eth0 文件，添加以下两个参数  ：
+2. 编辑 /etc/sysconfig/network-scripts/ifcfg-eth0 文件，添加以下两个参数：
 
     ```config
     IPV6INIT=yes
@@ -126,7 +126,7 @@ Azure 中最新的 SUSE Linux Enterprise Server (SLES) 和 openSUSE 映像已预
     sudo zypper install dhcp-client
     ```
 
-2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数  ：
+2. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，添加以下参数：
 
     ```config
     DHCLIENT6_MODE='managed'

@@ -4,10 +4,10 @@ description: 介绍如何使用策略定义为组织中的 Azure 资源建立约
 ms.date: 02/17/2021
 ms.topic: conceptual
 ms.openlocfilehash: cebba214671cfab75a3f44720578b51febacdfcd
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102215062"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
@@ -82,7 +82,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 
 - `Builtin`：这些策略定义由 Microsoft 提供并维护。
 - `Custom`：客户创建的所有策略定义都具有此值。
-- `Static`：表示具有 Microsoft **所有权** 的 [法规遵从性](./regulatory-compliance.md)策略定义。 这些策略定义的合规性结果是 Microsoft 基础结构上的第三方审核结果。 在 Azure 门户中，此值有时显示为“Microsoft 托管”。 有关详细信息，请参阅[云中责任分担](../../../security/fundamentals/shared-responsibility.md)。
+- `Static`：表示具有 Microsoft“所有权”的[法规合规性](./regulatory-compliance.md)策略定义。 这些策略定义的合规性结果是 Microsoft 基础结构上的第三方审核结果。 在 Azure 门户中，此值有时显示为“Microsoft 托管”。 有关详细信息，请参阅[云中责任分担](../../../security/fundamentals/shared-responsibility.md)。
 
 ## <a name="mode"></a>模式
 
@@ -103,21 +103,21 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 
 ### <a name="resource-provider-modes"></a>资源提供程序模式
 
-完全支持以下资源提供程序模式：
+充分支持以下资源提供程序模式：
 
-- `Microsoft.Kubernetes.Data`，用于在 Azure 上或外部管理 Kubernetes 群集。 使用该资源提供程序模式的定义使用效果“审核”、“拒绝”和“已禁用”  。 不 _推荐_ 使用 [EnforceOPAConstraint](./effects.md#enforceopaconstraint)效果。
+- `Microsoft.Kubernetes.Data`，用于在 Azure 上或外部管理 Kubernetes 群集。 使用该资源提供程序模式的定义使用效果“审核”、“拒绝”和“已禁用”  。 不推荐使用 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 效果。
 
-目前支持以下资源提供程序模式作为 **预览**：
+目前支持以下资源提供程序模式（预览版）：
 
-- `Microsoft.ContainerService.Data`，用于管理 [Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的许可控制器规则。 使用此资源提供程序模式的定义 **必须** 使用 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 效果。 此模式已 _弃用_。
-- `Microsoft.KeyVault.Data`，用于管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保管库和证书。 有关这些策略定义的详细信息，请参阅将 [Azure Key Vault 与 Azure 策略集成](../../../key-vault/general/azure-policy.md)。
+- `Microsoft.ContainerService.Data`，用于管理 [Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的许可控制器规则。 使用此资源提供程序模式的定义必须使用 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 效果。 此模式已弃用。
+- `Microsoft.KeyVault.Data`，用于管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保管库和证书。 有关这些策略定义的详细信息，请参阅[将 Azure Key Vault 与 Azure Policy 集成](../../../key-vault/general/azure-policy.md)。
 
 > [!NOTE]
-> 资源提供程序模式仅支持内置策略定义，不支持 [例外](./exemption-structure.md)。
+> 资源提供程序模式仅支持内置策略定义，不支持[豁免](./exemption-structure.md)。
 
 ## <a name="metadata"></a>Metadata
 
-`metadata` 可选属性用于存储关于策略定义的信息。 客户可在 `metadata` 中定义对其组织有用的任何属性和值。 但是，Azure 策略和内置内置了一些 _常用_ 属性。每个 `metadata` 属性的限制为1024个字符。
+`metadata` 可选属性用于存储关于策略定义的信息。 客户可在 `metadata` 中定义对其组织有用的任何属性和值。 但是，Azure 策略和内置策略有一些相同属性。每个 `metadata` 属性有 1024 个字符的限制。
 
 ### <a name="common-metadata-properties"></a>常见元数据属性
 
@@ -147,7 +147,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
   - `description`：说明参数的用途。 可以用来提供可接受值的示例。
   - `displayName`：在门户中显示的用于参数的友好名称。
   - `strongType`：（可选）通过门户分配策略定义时使用。 提供上下文感知列表。 有关详细信息，请参阅 [strongType](#strongtype)。
-  - `assignPermissions`：（可选）设置为“true”，使 Azure 门户在策略分配过程中创建角色分配。 如果希望在分配范围之外分配权限，此属性会很有用。 策略中的每个角色定义都有一个角色分配， (或每个角色定义中的策略) 。 参数值必须是有效的资源或范围。
+  - `assignPermissions`：（可选）设置为“true”，使 Azure 门户在策略分配过程中创建角色分配。 如果希望在分配范围之外分配权限，此属性会很有用。 策略中每个角色定义（或计划中所有策略中的每个角色定义）都有一个角色分配。 参数值必须是有效的资源或范围。
 - `defaultValue`：（可选）设置分配的参数的值（如果值未给定）。
   在更新已分配的现有策略定义时必须使用此项。
 - `allowedValues`：（可选）提供参数在分配过程中所接受值的数组。 允许的值比较区分大小写。 
@@ -487,29 +487,29 @@ strongType 的非资源类型允许值包括：
 以下属性与“值计数”结合使用：
 
 - count.value（必需）：要评估的数组。
-- count.name（必需）：索引名称，由英文字母和数字构成。 定义在当前迭代中评估的数组成员的值的名称。 该名称用于引用 `count.where` 条件内的当前值。 当 **计数** 表达式不在另一个 **计数** 表达式的子级中时为可选。 如果未提供此项，则索引名称将隐式设置为 `"default"`。
+- count.name（必需）：索引名称，由英文字母和数字构成。 定义在当前迭代中评估的数组成员的值的名称。 该名称用于引用 `count.where` 条件内的当前值。 当“count”表达式不在另一个“count”表达式的子级中时，此项为可选 。 如果未提供此项，则索引名称将隐式设置为 `"default"`。
 - **count.where**（可选）：用于针对 `count.value` 的每个数组成员分别进行评估的条件表达式。 如果未提供此属性，则所有数组成员都将评估为 true。 任何[条件](../concepts/definition-structure.md#conditions)都可在此属性内使用。 可在此属性中使用[逻辑运算符](#logical-operators)来创建复杂的评估要求。 可以通过调用 [current](#the-current-function) 函数来访问当前枚举的数组成员的值。
 - **\<condition\>** （必需）：该值将与满足 `count.where` 条件表达式的项数进行比较。 应使用数字[条件](../concepts/definition-structure.md#conditions)。
 
 将强制实施以下限制：
 - 在单个 policyRule 定义中最多可以使用 10 个“值计数”表达式。
-- 每个 **值计数** 表达式最多可以执行100次迭代。 此数目包括由任何父级“值计数”表达式执行的迭代次数。
+- 每个“值计数”表达式最多可以执行 100 次迭代。 此数目包括由任何父级“值计数”表达式执行的迭代次数。
 
 #### <a name="the-current-function"></a>current 函数
 
-`current()` 函数仅在 `count.where` 条件内可用。 它将返回当前由 **计数** 表达式计算枚举的数组成员的值。
+`current()` 函数仅在 `count.where` 条件内可用。 它返回当前通过“count”表达式评估枚举的数组成员的值。
 
 值计数用法
 
 - `current(<index name defined in count.name>)`. 例如：`current('arrayMember')`。
-- `current()`. 仅当 **值计数** 表达式不是另一个 **计数** 表达式的子级时才允许。 返回与上面的值相同的值。
+- `current()`. 只有当“值计数”表达式不是另一个“count”表达式的子级时，才允许使用此函数 。 返回与上面的值相同的值。
 
 如果调用返回的值是一个对象，则支持属性访问器。 例如：`current('objectArrayMember').property`。
 
 字段计数用法
 
 - `current(<the array alias defined in count.field>)`. 例如，`current('Microsoft.Test/resource/enumeratedArray[*]')`。
-- `current()`. 仅当 **字段计数** 表达式不是另一个 **计数** 表达式的子级时才允许。 返回与上面的值相同的值。
+- `current()`. 只有当“字段计数”表达式不是另一个“count”表达式的子级时，才允许使用此函数 。 返回与上面的值相同的值。
 - `current(<alias of a property of the array member>)`. 例如，`current('Microsoft.Test/resource/enumeratedArray[*].property')`。
 
 #### <a name="field-count-examples"></a>字段计数示例
@@ -597,7 +597,7 @@ strongType 的非资源类型允许值包括：
 }
 ```
 
-示例 6：在 `where` 条件中使用 `current()` 函数来访问模板函数中当前枚举的数组成员的值。 此条件检查虚拟网络是否包含不在 10.0.0.0/24 CIDR 范围内的地址前缀。
+示例 6：在 `where` 条件中使用 `current()` 函数来访问模板函数中当前枚举的数组成员的值。 此条件检查虚拟网络是否包含不在 10.0.0.0/24 CIDR 范围内的某个地址前缀。
 
 ```json
 {
@@ -612,7 +612,7 @@ strongType 的非资源类型允许值包括：
 }
 ```
 
-示例 7：在 `where` 条件中使用 `field()` 函数来访问当前枚举的数组成员的值。 此条件检查虚拟网络是否包含不在 10.0.0.0/24 CIDR 范围内的地址前缀。
+示例 7：在 `where` 条件中使用 `field()` 函数来访问当前枚举的数组成员的值。 此条件检查虚拟网络是否包含不在 10.0.0.0/24 CIDR 范围内的某个地址前缀。
 
 ```json
 {
@@ -676,7 +676,7 @@ strongType 的非资源类型允许值包括：
 }
 ```
 
-示例4：检查是否有任何虚拟网络地址前缀不在批准的前缀列表下。
+示例 4：检查是否有任何虚拟网络地址前缀不在批准的前缀的列表下。
 
 ```json
 {
@@ -766,9 +766,9 @@ Azure Policy 支持以下类型的效果：
 - Deny：会在活动日志中生成一个事件，并使请求失败
 - DeployIfNotExists：如果相关资源不存在，则部署该资源
 - **Disabled**：不评估资源是否符合策略规则
-- **修改**：添加、更新或删除资源或订阅中定义的标记
-- **EnforceOPAConstraint** (弃用) ：为 Azure 上的自托管 Kubernetes 群集配置打开策略代理招生控制器和网关控制器 v3
-- **EnforceRegoPolicy** (弃用) ：在 Azure Kubernetes 服务中配置打开策略代理招生控制器和网关守卫 v2
+- **Modify**：添加、更新或删除资源或订阅中已定义的标记
+- **EnforceOPAConstraint**（已弃用）：针对 Azure 上的自托管 Kubernetes 群集，配置 Open Policy Agent 许可控制器与 Gatekeeper v3
+- **EnforceRegoPolicy**（已弃用）：在 Azure Kubernetes 服务中，配置 Open Policy Agent 许可控制器与 Gatekeeper v2
 
 有关每种效果、评估顺序、属性和示例的完整详细信息，请参阅[了解 Azure Policy 效果](effects.md)。
 
@@ -830,7 +830,7 @@ Azure Policy 支持以下类型的效果：
   - 由起始 IP 地址和结束 IP 地址定义的范围（示例：`192.168.0.1-192.168.0.9`、`2001:0DB8::-2001:0DB8::3:FFFF`）
 
 - `current(indexName)`
-  - 仅可在 [计数表达式](#count)内使用的特殊函数。
+  - 只能在 [count 表达式](#count)内使用的特殊函数。
 
 #### <a name="policy-function-example"></a>策略函数示例
 
@@ -915,7 +915,7 @@ Azure Policy 支持以下类型的效果：
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `ipRules` 数组的元素。 |
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `ipRules` 数组的每个元素中的 `action` 属性的值。 |
 
-在 [字段](#fields) 条件中使用数组别名时，可以将每个单个数组元素与目标值进行比较。 与 [count](#count) 表达式一起使用时，可以执行以下操作：
+在[字段](#fields)条件中使用数组别名时，可以将每个单独的数组元素与目标值进行比较。 与 [count](#count) 表达式结合使用时，可以执行以下操作：
 
 - 检查数组的大小
 - 检查是否所有或任意数组元素均满足复杂条件，或者是否没有数组元素满足复杂条件

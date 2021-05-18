@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: fbd6f7cd3ade753c659464522408aa715cce48f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75609734"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>配置 Reliable Actors - ReliableDictionaryActorStateProvider
@@ -18,7 +18,7 @@ ms.locfileid: "75609734"
 Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名称，并在创建基础运行时组件时使用这些配置值。
 
 > [!NOTE]
-> 请**勿**删除或修改 Visual Studio 解决方案中生成的 settings.xml 文件中的以下配置的节名称。
+> 请 **勿** 删除或修改 Visual Studio 解决方案中生成的 settings.xml 文件中的以下配置的节名称。
 > 
 > 
 
@@ -30,7 +30,7 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 群集清单是单个 XML 文件，可保留适用于群集中所有节点和服务的设置与配置。 此文件通常称为 ClusterManifest.xml。 可以使用 Get-ServiceFabricClusterManifest powershell 命令查看群集的群集清单。
 
 ### <a name="configuration-names"></a>配置名称
-| 名称 | 单位 | 默认值 | 备注 |
+| 名称 | 计价单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |千字节 |8388608 |以内核模式分配给记录器写入缓冲区内存池的最小 KB 数。 此内存池用于在将状态信息写入磁盘之前缓存这些信息。 |
 | WriteBufferMemoryPoolMaximumInKB |千字节 |无限制 |记录器写入缓冲区内存池可以增长到的大小上限。 |
@@ -75,16 +75,16 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>配置名称
-| 名称 | 单位 | 默认值 | 备注 |
+| 名称 | 计价单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |秒 |0.015 |收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
-| ReplicatorEndpoint |空值 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 若要了解有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |
+| ReplicatorEndpoint |不适用 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 若要了解有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |
 | MaxReplicationMessageSize |字节 |50 MB |可以在单个消息中传输的复制数据的最大大小。 |
 | MaxPrimaryReplicationQueueSize |操作的数量 |8192 |主要队列中的操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，将释放一个操作。 此值必须大于 64 和 2 的幂。 |
 | MaxSecondaryReplicationQueueSize |操作的数量 |16384 |辅助队列中的操作的最大数目。 将在使操作的状态在暂留期间高度可用后释放该操作。 此值必须大于 64 和 2 的幂。 |
 | CheckpointThresholdInMB |MB |200 |创建状态检查点后的日志文件空间量。 |
 | MaxRecordSizeInKB |KB |1024 |复制器可以在日志中写入的最大记录大小。 此值必须是 4 的倍数，且大于 16。 |
-| OptimizeLogForLowerDiskUsage |Boolean |true |为 true 时会配置日志，以便使用 NTFS 稀疏文件创建副本的专用日志文件。 这会降低文件的实际磁盘空间使用率。 为 false 时，会使用固定分配创建文件，这可提供最佳写入性能。 |
+| OptimizeLogForLowerDiskUsage |布尔 |是 |为 true 时会配置日志，以便使用 NTFS 稀疏文件创建副本的专用日志文件。 这会降低文件的实际磁盘空间使用率。 为 false 时，会使用固定分配创建文件，这可提供最佳写入性能。 |
 | SharedLogId |guid |"" |指定要用于标识与此副本一起使用的共享日志文件的唯一 guid。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogId，则也必须指定 SharedLogPath。 |
 | SharedLogPath |完全限定的路径名 |"" |指定会在其中创建此副本共享日志文件的完全限定路径。 通常情况下，服务不应使用此设置。 但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。 |
 

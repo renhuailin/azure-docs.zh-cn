@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951464"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
@@ -42,7 +42,7 @@ ms.locfileid: "104951464"
 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/management/manage-resources-powershell.md)
 
 ### <a name="azure-resource-explorer"></a>Azure 资源浏览器
-使用此[预览工具](https://resources.azure.com)可以够浏览订阅中所有资源组的 JSON 定义和独立资源。 在工具中，可编辑资源的 JSON 定义、删除资源的整个层次结构及创建新资源。  此工具中随时可用的信息对模板创作非常有帮助，因为它会显示需要为特定类型的资源设置的属性、正确值等。甚至可在 [Azure 门户](https://portal.azure.com/)中创建资源组，并在资源管理器工具中检查其 JSON 定义以帮助模板化资源组。
+使用此[预览工具](https://resources.azure.com)可以够浏览订阅中所有资源组的 JSON 定义和独立资源。 在工具中，可编辑资源的 JSON 定义、删除资源的整个层次结构及创建新资源。  此工具中随时可用的信息对模板创作非常有帮助，因为它会显示需要为特定类型的资源设置的属性、正确的值等。你甚至可以在 [Azure 门户](https://portal.azure.com/)中创建资源组，然后在资源管理器工具中检查其 JSON 定义以帮助模板化资源组。
 
 ### <a name="deploy-to-azure-button"></a>“部署到 Azure”按钮
 如果将 GitHub 用于源代码管理，则可将一个[“部署到 Azure”按钮](../azure-resource-manager/templates/deploy-to-azure-button.md)放入 README.MD，这会对 Azure 启用统包部署 UI。 可为任何简单的应用执行此操作，同时可扩展这一操作，通过将 azuredeploy.json 文件放入存储库根来实现对整个资源组的部署。 “部署到 Azure”按钮将使用此包含资源组模板的 JSON 文件来创建资源组。 有关示例，请参阅会在本教程中使用的 [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) 示例。

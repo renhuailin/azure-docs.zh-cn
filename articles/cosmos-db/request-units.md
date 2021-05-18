@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/23/2020
 ms.custom: seo-nov-2020
 ms.openlocfilehash: 23401885580a3883dc49eccc97c17bbedd9080ab
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96187317"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位
@@ -19,7 +19,7 @@ ms.locfileid: "96187317"
 
 Azure Cosmos DB 支持多种 API，例如 SQL、MongoDB、Cassandra、Gremlin 和表。 每个 API 具有自身的数据库操作集。 这些操作包括简单的点读取和写入，以及复杂的查询等等。 每个数据库操作根据其复杂性消耗系统资源。
 
-所有数据库操作的成本将由 Azure Cosmos DB 规范化，并以“请求单位”（简称 RU）表示。 请求单位是一种性能货币，用于提取执行 Azure Cosmos DB 支持的数据库操作所需的系统资源，例如 CPU、IOPS 和内存。
+所有数据库操作的成本将由 Azure Cosmos DB 规范化，并以“请求单位”（简称 RU）表示。 可将请求单位视为性能货币，它抽象化了执行 Azure Cosmos DB 支持的数据库操作所需的系统资源，例如 CPU、IOPS 和内存。
 
 对于一个 1 KB 的项，执行点读取（即，按 ID 和分区键值提取单个项）的成本是 1 个请求单位（或 1 RU）。 以类似方式为其他所有数据库操作分配 RU 成本。 不管使用哪个 API 来与 Azure Cosmos 容器和数据库操作交互，都始终以 RU 来计量成本。 无论数据库操作是写入、点读取还是查询，都始终以 RU 来计量成本。
 
@@ -40,7 +40,7 @@ Azure Cosmos DB 支持多种 API，例如 SQL、MongoDB、Cassandra、Gremlin �
 
 2. 无服务器模式：在此模式下，在 Azure Cosmos 帐户中创建资源时无需预配任何吞吐量。 在计费周期结束时，会针对你的数据库操作已消耗的请求单位量计费。 若要了解详细信息，请参阅[无服务器吞吐量](serverless.md)一文。 
 
-3. **自动缩放模式**：在此模式下，你可以根据数据库的使用情况，自动并即时缩放数据库或容器) 的吞吐量 (，而不会影响工作负荷的可用性、延迟、吞吐量或性能。 此模式非常适合具有可变或不可预测流量模式且需要高性能和大规模 SLA 的关键工作负荷。 若要了解详细信息，请参阅[自动缩放吞吐量](provision-throughput-autoscale.md)一文。 
+3. **自动缩放模式**：在此模式下，你可以根据使用情况自动且即时地缩放数据库或容器的吞吐量（RU/秒），而不会影响工作负荷的可用性、延迟、吞吐量或性能。 此模式非常适合具有可变或不可预测流量模式且需要高性能和大规模 SLA 的关键工作负荷。 若要了解详细信息，请参阅[自动缩放吞吐量](provision-throughput-autoscale.md)一文。 
 
 ## <a name="request-unit-considerations"></a>请求单位注意事项
 
@@ -76,7 +76,7 @@ Azure Cosmos DB 支持多种 API，例如 SQL、MongoDB、Cassandra、Gremlin �
 
 如果针对 Cosmos 容器（或数据库）预配了 'R' 个 RU，则 Cosmos DB 可确保 'R' 个 RU 在与 Cosmos 帐户关联的每个区域中都可用。    无法有选择地将 RU 分配给特定区域。 针对 Cosmos 容器（或数据库）预配的 RU 是在与 Cosmos 帐户关联的所有区域中预配的。
 
-假设 Cosmos 容器配置了 *"R"* ru，并且存在与 Cosmos 帐户关联的 *"N"* 个区域，则容器中全局可用的总 ru 数 = *R* x *N*。
+假设为 Cosmos 容器配置了 R 个 RU，并且有 N 个区域与 Cosmos 帐户关联，那么该容器在全局可用的 RU 总数 = R x N 。
 
 所选的[一致性模型](consistency-levels.md)也会影响吞吐量。 与更强的一致性级别（例如，“有限过期”或“强”一致性）相比，更宽松的一致性级别（例如“会话”、“一致前缀”和“最终”一致性）可以获得约 2 倍的读取吞吐量。
 

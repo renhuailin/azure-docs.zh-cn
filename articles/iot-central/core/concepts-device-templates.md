@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 04c2330ffee396f5fc30b85640e992df77c08263
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2396768d87b93c4df16b6de78d03faf1d8d1cc2b
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97795422"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491995"
 ---
 # <a name="what-are-device-templates"></a>什么是设备模板？
 
@@ -30,7 +30,7 @@ Azure IoT Central 中的设备模板是一个蓝图，用于定义可连接到�
     - _组件_。 除了描述设备功能的默认组件之外，设备模型还可以包含其他组件。 每个组件都有一个用于描述组件功能的接口。 组件接口可以在其他设备模型中重复使用。 例如，多个电话设备模型可能使用同一照相机接口。
     - _继承接口_。 设备模型包含一个或多个接口以扩展默认组件功能。
 - _云属性_。 设备模板的此部分使解决方案开发者可以指定任何要存储的设备元数据。 云属性永远不会与设备同步，而只存在于应用程序中。 云属性不影响设备开发者为实现设备模型而编写的代码。
-- 自定义 设备模板的此部分使解决方案开发者可以替代设备模型中的部分定义。 如果解决方案开发者想要优化应用程序处理值的方式（例如更改属性的显示名称或用于显示遥测值的颜色），则自定义功能很有用。 自定义不会影响设备开发者为实现设备模型而编写的代码。
+- _自定义_。 设备模板的此部分使解决方案开发者可以替代设备模型中的部分定义。 如果解决方案开发者想要优化应用程序处理值的方式（例如更改属性的显示名称或用于显示遥测值的颜色），则自定义功能很有用。 自定义不会影响设备开发者为实现设备模型而编写的代码。
 - _视图_。 设备模板的此部分使解决方案开发者可以定义可视化，以查看设备中的数据，以及用于管理和控制设备的窗体。 视图使用设备模型、云属性和自定义。 视图不影响设备开发者为实现设备模型而编写的代码。
 
 ## <a name="device-models"></a>设备模型
@@ -39,70 +39,122 @@ Azure IoT Central 中的设备模板是一个蓝图，用于定义可连接到�
 
 解决方案开发者还可以导出包含设备模型的 JSON 文件。 设备开发者可以使用此 JSON 文档来了解设备应该如何与 IoT Central 的应用程序进行通信。
 
-定义设备模型的 JSON 文件使用[数字孪生体定义语言 (DTDL) V2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 IoT Central 要求 JSON 文件包含带有以内联方式（而不是在单独的文件中）定义接口的设备模型。
+定义设备模型的 JSON 文件使用[数字孪生体定义语言 (DTDL) V2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 IoT Central 要求 JSON 文件包含带有以内联方式（而不是在单独的文件中）定义接口的设备模型。 若要了解详细信息，请参阅 [IoT 即插即用建模指南](../../iot-pnp/concepts-modeling-guide.md)。
 
 典型的 IoT 设备由以下内容组成：
 
 - 自定义部件，这是使你的设备独一无二的内容。
 - 标准部件，是所有设备通用的内容。
 
-这些部件在设备模型中称为“接口”。 接口定义设备实现的每个部件的详细信息。 接口可跨设备模型重复使用。 在 DTDL 中，组件是指单独 DTDL 文件中定义的接口。
+这些部件在设备模型中称为“接口”。 接口定义设备实现的每个部件的详细信息。 接口可跨设备模型重复使用。 在 DTDL 中，组件引用另一个接口，该接口可能是在单独的 DTDL 文件中或该文件的一个单独的部分中定义的。
 
-以下示例概述了温度控制器设备的设备模型。 默认组件包含对 `workingSet`、`serialNumber` 和 `reboot` 的定义。 设备模型还包括 `thermostat` 和 `deviceInformation` 接口：
+以下示例概述了[温度控制器设备](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/temperaturecontroller-2.json)的设备模型。 默认组件包含对 `workingSet`、`serialNumber` 和 `reboot` 的定义。 设备模型还包括两个 `thermostat` 组件和一个 `deviceInformation` 组件。 为了简洁起见，已删除了这三个组件的内容：
 
 ```json
-{
-  "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:example:TemperatureController;1",
-  "@type": "Interface",
-  "displayName": "Temperature Controller",
-  "description": "Device with two thermostats and remote reboot.",
-  "contents": [
-    {
-      "@type": [
-        "Telemetry", "DataSize"
-      ],
-      "name": "workingSet",
-      "displayName": "Working Set",
-      "description": "Current working set of the device memory in KiB.",
-      "schema": "double",
-      "unit" : "kibibyte"
-    },
-    {
-      "@type": "Property",
-      "name": "serialNumber",
-      "displayName": "Serial Number",
-      "description": "Serial number of the device.",
-      "schema": "string"
-    },
-    {
-      "@type": "Command",
-      "name": "reboot",
-      "displayName": "Reboot",
-      "description": "Reboots the device after waiting the number of seconds specified.",
-      "request": {
-        "name": "delay",
-        "displayName": "Delay",
-        "description": "Number of seconds to wait before rebooting the device.",
-        "schema": "integer"
+[
+  {
+    "@context": [
+      "dtmi:iotcentral:context;2",
+      "dtmi:dtdl:context;2"
+    ],
+    "@id": "dtmi:com:example:TemperatureController;2",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": [
+          "Telemetry",
+          "DataSize"
+        ],
+        "description": {
+          "en": "Current working set of the device memory in KiB."
+        },
+        "displayName": {
+          "en": "Working Set"
+        },
+        "name": "workingSet",
+        "schema": "double",
+        "unit": "kibibit"
+      },
+      {
+        "@type": "Property",
+        "displayName": {
+          "en": "Serial Number"
+        },
+        "name": "serialNumber",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@type": "Command",
+        "commandType": "synchronous",
+        "description": {
+          "en": "Reboots the device after waiting the number of seconds specified."
+        },
+        "displayName": {
+          "en": "Reboot"
+        },
+        "name": "reboot",
+        "request": {
+          "@type": "CommandPayload",
+          "description": {
+            "en": "Number of seconds to wait before rebooting the device."
+          },
+          "displayName": {
+            "en": "Delay"
+          },
+          "name": "delay",
+          "schema": "integer"
+        }
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "thermostat1"
+        },
+        "name": "thermostat1",
+        "schema": "dtmi:com:example:Thermostat;2"
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "thermostat2"
+        },
+        "name": "thermostat2",
+        "schema": "dtmi:com:example:Thermostat;2"
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "DeviceInfo"
+        },
+        "name": "deviceInformation",
+        "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1"
       }
-    },
-    {
-      "@type" : "Component",
-      "schema": "dtmi:com:example:Thermostat;1",
-      "name": "thermostat",
-      "displayName": "Thermostat",
-      "description": "Thermostat One."
-    },
-    {
-      "@type": "Component",
-      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1",
-      "name": "deviceInformation",
-      "displayName": "Device Information interface",
-      "description": "Optional interface with basic device hardware information."
+    ],
+    "displayName": {
+      "en": "Temperature Controller"
     }
-  ]
-}
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:example:Thermostat;2",
+    "@type": "Interface",
+    "displayName": "Thermostat",
+    "description": "Reports current temperature and provides desired temperature control.",
+    "contents": [
+      ...
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:azure:DeviceManagement:DeviceInformation;1",
+    "@type": "Interface",
+    "displayName": "Device Information",
+    "contents": [
+      ...
+    ]
+  }
+]
 ```
 
 接口具有一些必填字段：
@@ -132,7 +184,7 @@ DTDL 用于描述设备的功能。 相关功能分组为接口。 接口描述�
 ```json
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:example:Thermostat;1",
+  "@id": "dtmi:com:example:Thermostat;2",
   "@type": "Interface",
   "displayName": "Thermostat",
   "description": "Reports current temperature and provides desired temperature control.",
@@ -143,8 +195,8 @@ DTDL 用于描述设备的功能。 相关功能分组为接口。 接口描述�
         "Temperature"
       ],
       "name": "temperature",
-      "displayName" : "Temperature",
-      "description" : "Temperature in degrees Celsius.",
+      "displayName": "Temperature",
+      "description": "Temperature in degrees Celsius.",
       "schema": "double",
       "unit": "degreeCelsius"
     },
@@ -157,7 +209,7 @@ DTDL 用于描述设备的功能。 相关功能分组为接口。 接口描述�
       "schema": "double",
       "displayName": "Target Temperature",
       "description": "Allows to remotely specify the desired target temperature.",
-      "unit" : "degreeCelsius",
+      "unit": "degreeCelsius",
       "writable": true
     },
     {
@@ -167,7 +219,7 @@ DTDL 用于描述设备的功能。 相关功能分组为接口。 接口描述�
       ],
       "name": "maxTempSinceLastReboot",
       "schema": "double",
-      "unit" : "degreeCelsius",
+      "unit": "degreeCelsius",
       "displayName": "Max temperature since last reboot.",
       "description": "Returns the max temperature since last device reboot."
     },
@@ -183,7 +235,7 @@ DTDL 用于描述设备的功能。 相关功能分组为接口。 接口描述�
         "schema": "dateTime"
       },
       "response": {
-        "name" : "tempReport",
+        "name": "tempReport",
         "displayName": "Temperature Report",
         "schema": {
           "@type": "Object",
@@ -199,17 +251,17 @@ DTDL 用于描述设备的功能。 相关功能分组为接口。 接口描述�
               "schema": "double"
             },
             {
-              "name" : "avgTemp",
+              "name": "avgTemp",
               "displayName": "Average Temperature",
               "schema": "double"
             },
             {
-              "name" : "startTime",
+              "name": "startTime",
               "displayName": "Start Time",
               "schema": "dateTime"
             },
             {
-              "name" : "endTime",
+              "name": "endTime",
               "displayName": "End Time",
               "schema": "dateTime"
             }

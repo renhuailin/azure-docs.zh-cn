@@ -6,10 +6,10 @@ ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 1d83f859fce33b9499d01c4b58e69f56fdbbb293
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92221989"
 ---
 # <a name="remove-update-management-from-automation-account"></a>从自动化帐户删除更新管理
@@ -69,4 +69,4 @@ ms.locfileid: "92221989"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要重新启用此功能，请参阅 [从自动化帐户启用更新管理](enable-from-automation-account.md)， [通过浏览 Azure 门户启用更新管理](enable-from-portal.md)， [启用从 Runbook 更新管理](enable-from-runbook.md)，或 [从 Azure VM 启用更新管理](enable-from-vm.md)。
+若要重新启用此功能，请参阅[从自动化帐户启用更新管理](enable-from-automation-account.md)、[通过浏览 Azure 门户启用更新管理](enable-from-portal.md)、[从 runbook 启用更新管理](enable-from-runbook.md)或[从 Azure VM 启用更新管理](enable-from-vm.md)。

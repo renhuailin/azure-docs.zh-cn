@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 8bd46f013680d5cbc9e75a312206fdb2fdcac7ec
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730875"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109350"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用调用 REST 终结点
 
@@ -56,7 +56,7 @@ ms.locfileid: "101730875"
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![显示逻辑应用设计器的屏幕截图，其中 "H T T P + Swagger" 触发器和 "Swagger Endpoint U R L" 属性设置为 U R L 值。](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![屏幕截图显示了带有“HTTP + Swagger”触发器的逻辑应用设计器，其中“Swagger 终结点 URL”属性设置为一个 URL 值。](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. 当设计器显示了 Swagger 文件描述的操作时，请选择要使用的操作。
 
@@ -124,7 +124,7 @@ ms.locfileid: "101730875"
 
 1. 现在，为 Blob 启用 CORS。 在存储帐户的菜单中选择“CORS”。 在“Blob 服务”选项卡上指定值，然后选择“保存”。 
 
-   | 属性 | Value |
+   | 属性 | 值 |
    |----------|-------|
    | **允许的源** | `*` |
    | **允许的方法** | `GET`, `HEAD`, `PUT` |
@@ -149,10 +149,10 @@ ms.locfileid: "101730875"
 
 | 属性名称 | 类型 | 说明 |
 |---------------|------|-------------|
-| headers | 对象 | 请求中的标头 |
-| body | 对象 | JSON 对象 | 包含请求中正文内容的对象 |
+| headers | object | 请求中的标头 |
+| body | object | 包含请求中正文内容的对象 |
 | 状态代码 | int | 请求中的状态代码 |
-|||
+||||
 
 | 状态代码 | 说明 |
 |-------------|-------------|

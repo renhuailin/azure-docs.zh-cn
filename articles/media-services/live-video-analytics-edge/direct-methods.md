@@ -3,12 +3,12 @@ title: 在 IoT Edge 上的实时视频分析中使用直接方法 - Azure
 description: IoT Edge 上的实时视频分析公开了多种直接方法。 直接方法基于本主题中描述的约定。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.openlocfilehash: 56fbf565af45a9b3877ff8d6c48a56713ddc3da6
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656234"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076983"
 ---
 # <a name="direct-methods"></a>直接方法
 
@@ -381,7 +381,7 @@ IoT Edge 上的实时视频分析公开了可以从 IoT 中心调用的多种直
 | 图形验证错误 | 400 | GraphValidationError |
 | 模块验证错误 | 400 | ModuleValidationError |
 | 资源验证错误 | 409 | ResourceValidationError |
-| 一般服务器错误 | 500 range |  |  |
+| 一般服务器错误 | 500 range |  | 
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 
@@ -485,13 +485,13 @@ IoT Edge 上的实时视频分析公开了可以从 IoT 中心调用的多种直
 关键方面
 
 * 方法仅在激活图形后返回 
-* Graph 假设激活时处于 "正在激活" 状态。
+* 图在被激活时将呈现“正在激活”状态。
 
     * 对图形进行 List/Get 操作将返回处于正确状态的图形。
 * 幂等性：
 
-    * 在 "激活" 状态启动关系图的行为方式与停用关系图的方式相同 (即：调用块直到激活 graph) 
-    * 以 "活动" 状态激活关系图会立即成功返回。
+    * 如果启动处于“正在激活”状态的图，则该操作的行为与在图已停用时启动图一样（即：调用块直到图被激活）
+    * 激活处于“活动”状态的图会立即成功返回。
 
 #### <a name="request"></a>请求
 
@@ -533,14 +533,14 @@ IoT Edge 上的实时视频分析公开了可以从 IoT 中心调用的多种直
 关键方面：
 
 * 方法仅在停用图形后返回
-* Graph 在停用 "停用" 状态时将其取消。
+* 图在被停用时将呈现“正在停用”状态。
 
     * 对图形进行 List/Get 操作将返回处于正确状态的图形。
     * 停止仅在所有媒体都已上传到云后完成。
 * 幂等性：
 
-    * 停用关系图时，"停用" 状态的行为方式与停用关系图的方式相同 (即：调用块直到激活 graph) 
-    * 停用处于 "非活动" 状态的关系图会立即成功返回。
+    * 如果停用处于“正在停用”状态的图，则该操作的行为与在图已停用时停用图一样（即：调用块直到图被停用）
+    * 在“非活动”状态下停用图会立即成功返回。
 
 #### <a name="request"></a>请求
 

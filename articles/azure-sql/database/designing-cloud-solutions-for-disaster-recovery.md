@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: be632ba06edc858e7eadcd6e57a4f7769f69f2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91321673"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>使用 Azure SQL 数据库设计全球可用的服务
@@ -36,7 +36,7 @@ ms.locfileid: "91321673"
 * 必须并置 Web 层和数据层以减少延迟和流量成本
 * 从根本上讲，相比数据丢失，停机时间对于那些应用程序来说是更高的业务风险
 
-在这种情况下，当所有应用程序组件需要一同进行故障转移时，将针对处理区域灾难对应用程序部署拓扑进行优化。 下图展示了此拓扑。 对于地理冗余，应用程序的资源部署到区域 A 和 B。但是，只有当区域 A 失败后才会利用区域 B 中的资源。 两个区域之间会配置故障转移组，用于管理数据库连接、复制和故障转移。 这两个区域中的 web 服务配置为通过读写侦听器** &lt; &gt; database.windows.net** (1) 访问数据库。 Azure 流量管理器设置为使用[优先级路由方法](../../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2)。  
+在这种情况下，当所有应用程序组件需要一同进行故障转移时，将针对处理区域灾难对应用程序部署拓扑进行优化。 下图展示了此拓扑。 对于地理冗余，应用程序的资源部署到区域 A 和 B。但是，只有当区域 A 失败后才会利用区域 B 中的资源。 两个区域之间会配置故障转移组，用于管理数据库连接、复制和故障转移。 两个区域中的 Web 服务配置为通过读写侦听器 &lt;failover-group-name&gt;.database.windows.net 访问数据库 (1)。 Azure 流量管理器设置为使用[优先级路由方法](../../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2)。  
 
 > [!NOTE]
 > [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)在本文中仅供说明之用。 可以使用任何支持优先级路由方法的负载均衡解决方案。
@@ -119,7 +119,7 @@ ms.locfileid: "91321673"
 
 若要满足这些需求，需要保证用户设备始终连接至部署到同一地理位置的应用程序以实现只读操作，例如浏览数据、分析等。然而，大多数时候都在同一地理位置处理 OLTP 操作。 例如，工作时间在同一个地理位置处理 OLTP 操作，而非工作时间可能会在另一个地理位置处理这些操作。 如果最终用户活动大多发生在工作时间，那么可保证大多数时间，对于大多数用户，均可实现最佳性能。 下图显示了此拓扑。
 
-应用程序的资源应部署到每个有大量使用需求的地理位置。 例如，如果在美国、欧盟和东南亚，应用程序使用率很高，则应在所有这些区域部署该应用程序。 主数据库应在工作时间结束时从一个地理区域动态转至下一个区域。 此方法称为“循日”。 OLTP 工作负载始终通过读写侦听器** &lt; &gt; database.windows.net** (1) 连接到数据库。 只读工作负载直接使用数据库服务器终结点** &lt; 服务器- &gt; database.windows.net** (2) 连接到本地数据库。 使用[性能路由方法](../../traffic-manager/traffic-manager-configure-performance-routing-method.md)配置流量管理器。 它可确保最终用户的设备连接到最靠近的区域中的 web 服务。 设置流量管理器时应为每个 Web 服务终结点启用终结点监视 (3)。
+应用程序的资源应部署到每个有大量使用需求的地理位置。 例如，如果在美国、欧盟和东南亚，应用程序使用率很高，则应在所有这些区域部署该应用程序。 主数据库应在工作时间结束时从一个地理区域动态转至下一个区域。 此方法称为“循日”。 OLTP 工作负载始终通过读写侦听器 &lt;failover-group-name&gt;.database.windows.net 连接到数据库 (1)。 只读工作负载直接使用数据库服务器终结点 &lt;server-name&gt;.database.windows.net 连接到本地数据库 (2)。 使用[性能路由方法](../../traffic-manager/traffic-manager-configure-performance-routing-method.md)配置流量管理器。 它确保最终用户的设备连接到最近区域的 Web 服务。 设置流量管理器时应为每个 Web 服务终结点启用终结点监视 (3)。
 
 > [!NOTE]
 > 故障转移组配置定义要用于故障转移的区域。 由于新的主区域位于另一个地理位置，所以对于 OLTP 和只读工作负载，故障转移会导致更长的延迟，直到受影响的区域恢复联机状态为止。

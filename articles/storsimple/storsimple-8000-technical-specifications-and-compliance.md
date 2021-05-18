@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68965286"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
@@ -83,7 +83,7 @@ StorSimple 设备 8100 和 8600 都是硬盘驱动器和固态硬盘的混合。
 | 总可用容量* |~ 15 TB |~ 38 TB |
 | 最大解决方案容量（包括云） |200 TB |500 TB |
 
-<sup>* </sup>- *总可用容量包括数据、元数据和缓冲区的可用容量。可以在8100设备上预配高达 8.5 TB 的本地固定卷，或者在较大的8600设备上预配高达 22.5 TB 的卷。有关详细信息，请参阅 [StorSimple 本地固定卷](storsimple-8000-local-volume-faq.md)。*
+<sup>* </sup>- *总可用容量包括数据、元数据和缓冲区的可用容量。可以在 8100 设备上预配高达 8.5 TB 的本地固定卷，或者在更大的 8600 设备上预配高达 22.5 TB 的本地固定卷。有关详细信息，请转到 [StorSimple 本地固定卷](storsimple-8000-local-volume-faq.md)。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>机箱尺寸和重量规格
 
@@ -175,7 +175,7 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 
 ## <a name="ac-power-cord-compliance"></a>交流电源线符合性
 
-插头和完整电源线组装人员必须满足使用设备的国家/地区的标准，并且必须具有该国家/地区可接受的安全审批。 下表列出了美国和欧洲的标准。
+插头和整个电源线组件必须符合适用于设备所在国家/地区的标准，并且必须具有该国家/地区可接受的安全许可。 下表列出了美国和欧洲的标准。
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>交流电源线 - 美国（必须在 NRTL 登记）
 

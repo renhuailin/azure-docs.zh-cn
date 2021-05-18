@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
 ms.openlocfilehash: 2297364e8f1a531b4512f2497bc4d99963d61179
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386197"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>通过使用数据工厂映射数据流来处理定长文本文件
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-通过使用在 Microsoft Azure 数据工厂中映射数据流，可以转换固定宽度文本文件中的数据。 在以下任务中，我们将为不带分隔符的文本文件定义数据集，然后基于序号位置设置子字符串拆分。
+通过在 Microsoft Azure 数据工厂中使用映射数据流，可以从定宽的文本文件转换数据。 在以下任务中，我们将为不带分隔符的文本文件定义数据集，然后基于序号位置设置子字符串拆分。
 
 ## <a name="create-a-pipeline"></a>创建管道
 

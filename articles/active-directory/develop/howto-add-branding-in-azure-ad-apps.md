@@ -14,20 +14,20 @@ ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
 ms.openlocfilehash: 236e82ab97244e1428441f83295f6a5d4ed56350
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99581986"
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
 
-使用 Microsoft 标识平台开发应用程序时，如果客户想要使用其工作或学校帐户 (在 Azure AD) 中进行管理，或使用其个人帐户进行注册和登录到你的应用程序，则需要指导你的客户。
+使用 Microsoft 标识平台开发应用程序时，如果你的客户想要使用工作或学校帐户（在 Azure AD 中托管）或其个人账户注册和登录到你的应用程序，你需要指导客户进行相关操作。
 
 在本文中，你将：
 
 - 了解 Microsoft 管理的两种用户帐户以及如何在应用程序中引用 Azure AD 帐户
-- 了解在应用中使用 Microsoft 徽标的要求
+- 了解有关在应用中使用 Microsoft 徽标的要求
 - 下载官方的 **登录** 或 **使用 Microsoft 登录** 图像以在应用中使用
 - 了解品牌和导航的注意事项
 
@@ -36,9 +36,9 @@ ms.locfileid: "99581986"
 Microsoft 管理两种类型的用户帐户：
 
 - **个人帐户**（以前称为 Windows Live ID）。 这些帐户表示个人用户与 Microsoft 之间的关系，用于访问使用者的设备和 Microsoft 的服务。 这些帐户专供个人使用。
-- **工作或学校帐户。** 这些帐户由 Microsoft 代表使用 Azure Active Directory 的组织进行管理。 这些帐户用于登录到 Microsoft 365 和 Microsoft 的其他业务服务。
+- **工作或学校帐户。** 这些帐户由 Microsoft 代表使用 Azure Active Directory 的组织进行管理。 这些帐户用于登录 Microsoft 365 和 Microsoft 的其他业务服务。
 
-Microsoft 工作或学校帐户帐户通常由组织（公司、学校、政府机构）分配给最终用户（员工、学生、联邦雇员）。 这些帐户直接在 Azure AD 平台) 或从本地目录（如 Windows Server Active Directory）同步到 Azure AD 中的云 (。 Microsoft 是工作或学校帐户的监管员，但这些帐户由组织所有和控制。
+Microsoft 工作或学校帐户帐户通常由组织（公司、学校、政府机构）分配给最终用户（员工、学生、联邦雇员）。 这些帐户可以直接在云中（在 Azure AD 平台中）控制，也可以从本地目录（如 Windows Server Active Directory）同步到 Azure AD。 Microsoft 是工作或学校帐户的监管员，但这些帐户由组织所有和控制。
 
 ## <a name="referring-to-azure-ad-accounts-in-your-application"></a>在应用程序中引用 Azure AD 帐户
 
@@ -63,7 +63,7 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 “获取应用程序”链接必须将用户重定向到 Azure AD 的访问权限授予（授权）页，以方便组织的管理员对应用程序进行授权，使其有权访问 Microsoft 托管的组织数据。 有关如何请求访问权限的详细信息，请参阅[将应用程序与 Azure Active Directory 集成](./quickstart-register-app.md) 一文。
 
-在管理员同意你的应用后，他们可以选择将其添加到其用户的 Microsoft 365 应用启动器体验 (可从 waffle 和 [https://portal.office.com/myapps](https://portal.office.com/myapps)) 访问。 如果想要广告此功能，可以使用类似于“将此应用程序添加到组织”词语，并显示类似于以下示例的按钮：
+管理员同意应用后，可以选择将应用添加到其用户的 Microsoft 365 应用启动器体验（可从 waffle 和 [https://portal.office.com/myapps](https://portal.office.com/myapps) 访问）。 如果想要广告此功能，可以使用类似于“将此应用程序添加到组织”词语，并显示类似于以下示例的按钮：
 
 ![显示 Microsoft 徽标和“添加到我的组织”文本的按钮](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 

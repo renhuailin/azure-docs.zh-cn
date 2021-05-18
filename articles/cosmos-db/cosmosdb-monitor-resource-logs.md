@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: sngun
 ms.openlocfilehash: 1e551fc12da5e25ba54df5a6a38a49b76f7c376e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102181816"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>使用 Azure 中的诊断设置监视 Azure Cosmos DB 数据
@@ -106,7 +106,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
 有关如何使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细信息，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)一文。
 
 
-## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> 诊断查询问题疑难解答
+## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> 使用诊断查询排查问题
 
 1. 如何查询运行时间超过 3 毫秒的操作：
 

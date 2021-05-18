@@ -4,10 +4,10 @@ description: 介绍如何使用 Azure 备份与 PowerShell 来备份和恢复 Az
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: f59c18aecf577bc7f7d0b1360dd36504305af893
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100633166"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
@@ -58,7 +58,7 @@ ms.locfileid: "100633166"
 3. 使用 **Connect-AzAccount** 登录到 Azure 帐户。 此 cmdlet 打开一个网页，提示输入帐户凭据：
 
     * 或者，可以使用 **-Credential** 参数，在 **Connect-AzAccount** cmdlet 中将帐户凭据包含为参数。
-    * 如果你是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如： **AzAccount-Tenant "fabrikam.com"**
+    * 如果你是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如：Connect-AzAccount -Tenant "fabrikam.com"
 
 4. 由于一个帐户可以有多个订阅，因此请将要使用的订阅与帐户关联在一起：
 
@@ -96,7 +96,7 @@ ms.locfileid: "100633166"
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. 请指定要使用的存储冗余类型。 你可以使用 [本地冗余存储 (LRS) ](../storage/common/storage-redundancy.md#locally-redundant-storage)、 [异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md#geo-redundant-storage)或 [区域冗余存储 (ZRS) ](../storage/common/storage-redundancy.md#zone-redundant-storage)。 以下示例显示，“testvault”的“-BackupStorageRedundancy”选项设置为“GeoRedundant”。
+3. 请指定要使用的存储冗余类型。 可使用[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage)、[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) 或[区域冗余存储 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)。 以下示例显示，“testvault”的“-BackupStorageRedundancy”选项设置为“GeoRedundant”。
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -256,10 +256,10 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ```
 
 > [!NOTE]
-> 如果你使用的是 Azure 政府云，请使用 `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 中的参数 **ServicePrincipalName** 的值。
+> 如果使用的是 Azure 政府云，请对 [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 中的 ServicePrincipalName 参数使用值 `ff281ffe-705c-4f53-9f37-a40e6f2c68f3`。
 >
 
-如果要有选择地备份少量磁盘，并按 [这些方案](selective-disk-backup-restore.md#scenarios)中所述排除其他磁盘，则只能配置保护和备份 [此处](selective-disk-backup-restore.md#enable-backup-with-powershell)所述的相关磁盘。
+如果想要有选择地备份少量磁盘，并按[这些方案](selective-disk-backup-restore.md#scenarios)中所述排除其他磁盘，可配置保护并仅备份相关磁盘，如[此处](selective-disk-backup-restore.md#enable-backup-with-powershell)所述。
 
 ## <a name="monitoring-a-backup-job"></a>监视备份作业
 
@@ -529,11 +529,11 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
 #### <a name="restore-disks-to-a-secondary-region"></a>将磁盘还原到次要区域
 
-如果在保护 Vm 的保管库上启用跨区域还原，则会将备份数据复制到次要区域。 你可以使用备份数据来执行还原。 执行以下步骤以在次要区域中触发还原：
+如果在用于保护 VM 的保管库上启用跨区域还原，则会将备份数据复制到次要区域。 可使用备份数据来执行还原。 执行以下步骤，在次要区域中触发还原：
 
-1. 提取 Vm 受保护的[保管库 ID](#fetch-the-vault-id) 。
-1. 选择 [要还原的正确备份项](#select-the-vm-when-restoring-files)。
-1. 选择要用于执行还原的次要区域中的相应恢复点。
+1. 提取用于保护 VM 的[保管库 ID](#fetch-the-vault-id)。
+1. 选择[要还原的正确备份项](#select-the-vm-when-restoring-files)。
+1. 在次要区域中选择要用于执行还原的相应恢复点。
 
     若要完成此步骤，请运行以下命令：
 
@@ -542,7 +542,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
     $rp=$rp[0]
     ```
 
-1. 使用参数执行 [AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) cmdlet， `-RestoreToSecondaryRegion` 以在次要区域中触发还原。
+1. 使用 `-RestoreToSecondaryRegion` 参数执行 [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) cmdlet，以在次要区域触发还原。
 
     若要完成此步骤，请运行以下命令：
 
@@ -558,7 +558,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
     V2VM             CrossRegionRestore   InProgress           4/23/2016 5:00:30 PM                       cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
     ```
 
-1. 用参数执行 [AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet `-UseSecondaryRegion` 以监视还原作业。
+1. 使用 `-UseSecondaryRegion` 参数执行 [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet，以监视还原作业。
 
     若要完成此步骤，请运行以下命令：
 

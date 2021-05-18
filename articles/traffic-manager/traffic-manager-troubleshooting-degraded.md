@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
 ms.openlocfilehash: b76eab5771d724e4f0ec56b7d5acd5cf5f91edc0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98183449"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
 
-本文介绍如何对显示降级状态的 Azure 流量管理器配置文件进行故障排除。 在排查 Azure 流量管理器状态降级问题时，第一步是启用日志记录。  有关详细信息，请参阅 [启用资源日志](./traffic-manager-diagnostic-logs.md) 。 在此方案中，假设已配置了一个指向某些 cloudapp.net 托管服务的流量管理器配置文件。 如果流量管理器的运行状况显示“已降级”的状态，则一个或多个终结点的状态可能为“已降级”：
+本文介绍如何对显示降级状态的 Azure 流量管理器配置文件进行故障排除。 在排查 Azure 流量管理器状态降级问题时，第一步是启用日志记录。  有关详细信息，请参阅[启用资源日志](./traffic-manager-diagnostic-logs.md)。 在此方案中，假设已配置了一个指向某些 cloudapp.net 托管服务的流量管理器配置文件。 如果流量管理器的运行状况显示“已降级”的状态，则一个或多个终结点的状态可能为“已降级”：
 
 ![已降级终结点状态](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "98183449"
 
 也可以在 Internet Explorer 中使用“F12 调试工具”的“网络”标签页查看 HTTP 响应。
 
-在此示例中，我们想要查看探测器 URL 中的响应： http： \/ /watestsdp2008r2.cloudapp.net:80/Probe。 以下 PowerShell 示例演示了该问题。
+在本示例中，我们想要查看探测 URL 返回的响应：http:\//watestsdp2008r2.cloudapp.net:80/Probe。 以下 PowerShell 示例演示了该问题。
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

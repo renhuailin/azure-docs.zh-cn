@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: seodec18, devx-track-azurecli
 ms.date: 01/03/2020
 ms.openlocfilehash: 09564bd149488d956586c8a0e349cd79eec358a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100582756"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>用于 Go 的 HDInsight SDK（预览版）
@@ -33,14 +33,14 @@ ms.locfileid: "100582756"
 
 ## <a name="authentication"></a>身份验证
 
-首先需要使用 Azure 订阅对该 SDK 进行身份验证。  请遵循以下示例创建服务主体，然后使用该服务主体进行身份验证。 完成此操作后，你将拥有一个实例 `ClustersClient` ，该实例包含可用于执行管理操作的以下部分中 (列出的许多函数) 。
+首先需要使用 Azure 订阅对该 SDK 进行身份验证。  请遵循以下示例创建服务主体，然后使用该服务主体进行身份验证。 完成此操作后，你将会获得 `ClustersClient` 的实例，其中包含可用于执行管理操作的许多函数（以下部分将概述这些函数）。
 
 > [!NOTE]  
 > 除了以下示例中所示的方法以外，还有其他一些身份验证方法可能更符合你的需要。 此处概述了所有函数：[Azure SDK for Go 中的身份验证函数](/azure/go/azure-sdk-go-authorization)
 
 ### <a name="authentication-example-using-a-service-principal"></a>使用服务主体的身份验证示例
 
-首先登录到 [Azure Cloud Shell](https://shell.azure.com/bash)。 验证你当前正在使用的订阅需要创建服务主体。
+首先登录到 [Azure Cloud Shell](https://shell.azure.com/bash)。 验证当前使用的是要在其中创建服务主体的订阅。
 
 ```azurecli-interactive
 az account show
@@ -70,7 +70,7 @@ az account set -s <name or ID of subscription>
 ```
 
 > [!IMPORTANT]  
-> 如果尚未通过其他功能注册 HDInsight 资源提供程序 (例如通过 Azure 门户) 创建 HDInsight 群集，则需要执行此操作一次，然后才能进行身份验证。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令来完成此操作：
+> 如果尚未通过其他功能（例如，通过 Azure 门户创建 HDInsight 群集）注册 HDInsight 资源提供程序，则需要先执行一次此操作，然后才能进行身份验证。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令来完成此操作：
 >```azurecli-interactive
 >az provider register --namespace Microsoft.HDInsight
 >```
@@ -162,7 +162,7 @@ az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
 az storage account create -n <Storage Account Name> -g <Existing Resource Group Name> -l <Region Name (i.e. eastus)> --sku <SKU i.e. Standard_LRS>
 ```
 
-现在，请运行以下命令获取存储帐户的密钥， (需要此密钥来创建群集) ：
+现在，运行以下命令获取存储帐户的密钥（创建群集时需要用到）：
 
 ```azurecli-interactive
 az storage account keys list -n <Storage Account Name>
@@ -260,7 +260,7 @@ client.Get(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 
 #### <a name="example"></a>示例
 
-可以使用 `get` 确认是否已成功创建了群集。
+可使用 `get` 来确认已成功创建群集。
 
 ```golang
 cluster, err := client.Get(context.Background(), resourceGroupName, clusterName)
@@ -349,7 +349,7 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 使用 HDInsight 管理 SDK 还可以通过 Operations Management Suite (OMS) 来管理群集的监视。
 
-与创建 `ClusterClient` 以用于管理操作类似，你需要创建一个 `ExtensionClient` 来用于监视操作。 完成上述身份验证部分后，可以创建如下所示的 `ExtensionClient` ：
+与创建 `ClusterClient` 以用于管理操作类似，你需要创建一个 `ExtensionClient` 来用于监视操作。 完成上面的“身份验证”部分后，可创建一个 `ExtensionClient`，如下所示：
 
 ```golang
 extClient := hdi.NewExtensionsClient(SUBSCRIPTION_ID)
@@ -402,7 +402,7 @@ var scriptAction1 = hdi.RuntimeScriptAction{Name: to.StringPtr("<Script Name>"),
 client.ExecuteScriptActions(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ExecuteScriptActionParameters{PersistOnSuccess: to.BoolPtr(true), ScriptActions: &[]hdi.RuntimeScriptAction{scriptAction1}}) //add more RuntimeScriptActions to the list to execute multiple scripts
 ```
 
-对于“删除脚本操作”和“列出持久化脚本操作”操作，你需要创建一个 `ScriptActionsClient`，类似于创建 `ClusterClient` 以用于管理操作。 完成上述身份验证部分后，可以创建如下所示的 `ScriptActionsClient` ：
+对于“删除脚本操作”和“列出持久化脚本操作”操作，你需要创建一个 `ScriptActionsClient`，类似于创建 `ClusterClient` 以用于管理操作。 完成上面的“身份验证”部分后，可以创建一个 `ScriptActionsClient`，如下所示：
 
 ```golang
 scriptActionsClient := hdi.NewScriptActionsClient(SUBSCRIPTION_ID)
@@ -450,7 +450,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>列出所有脚本的执行历史记录
 
-对于此操作，与创建 `ScriptExecutionHistoryClient` 以用于管理操作的方式类似，你需要创建一个 `ClusterClient`。 完成上述身份验证部分后，可以创建如下所示的 `ScriptActionsClient` ：
+对于此操作，与创建 `ScriptExecutionHistoryClient` 以用于管理操作的方式类似，你需要创建一个 `ClusterClient`。 完成上面的“身份验证”部分后，可以创建一个 `ScriptActionsClient`，如下所示：
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)

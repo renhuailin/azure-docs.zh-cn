@@ -4,19 +4,19 @@ description: 本文介绍受支持的 VM SKU（包含发布者、映像产品/�
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.openlocfilehash: 4658d1beffe707682e173491edea1eac0db9c811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82183613"
 ---
 # <a name="supported-vm-skus-for-azure-policy"></a>Azure Policy 支持的 VM SKU
 
-Azure 备份提供了一个内置策略（使用 Azure Policy），可以将其分配给“订阅或资源组中指定位置的所有 Azure VM”****。 将此策略分配到给定范围时，该范围中创建的所有新 VM 都将自动配置为备份到位于“同一位置和订阅中的现有保管库”****。 下表列出了此策略支持的所有 VM SKU。
+Azure 备份提供了一个内置策略（使用 Azure Policy），可以将其分配给“订阅或资源组中指定位置的所有 Azure VM”。 将此策略分配到给定范围时，该范围中创建的所有新 VM 都将自动配置为备份到位于“同一位置和订阅中的现有保管库”。 下表列出了此策略支持的所有 VM SKU。
 
 ## <a name="supported-vms"></a>支持的 VM*
 
-策略名称：**** 将某个位置的 VM 的备份配置到同一位置中的现有中央保管库
+策略名称：将某个位置的 VM 的备份配置到同一位置中的现有中央保管库
 
 映像发布者 | 映像产品/服务 | 映像 SKU
 --- | --- | ---
@@ -86,6 +86,6 @@ Canonical | UbuntuServer | 18.04-DAILY-LTS
 Canonical | UbuntuServer | 18.04-LTS
 Oracle | Oracle-Linux | 6.8、6.9、6.10、7.3、7.4、7.5、7.6
 OpenLogic | CentOS | 6.X、7.X
-OpenLogic | CentOS – LVM | 6.X、7.X
-OpenLogic | CentOS – SRIOV | 6.X、7.X
+OpenLogic | CentOS-LVM | 6.X、7.X
+OpenLogic | CentOS-SRIOV | 6.X、7.X
 cloudera | cloudera-centos-os | 7.X

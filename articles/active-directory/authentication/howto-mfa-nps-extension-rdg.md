@@ -1,6 +1,6 @@
 ---
-title: 将 RDG 与 Azure AD MFA NPS 扩展集成-Azure Active Directory
-description: 使用适用于 Microsoft Azure 的网络策略服务器扩展将远程桌面网关基础结构与 Azure AD MFA 集成
+title: 使用 Azure AD MFA NPS 扩展集成 RDG - Azure Active Directory
+description: 使用 Microsoft Azure 的网络策略服务器扩展将远程桌面网关基础结构与 Azure AD MFA 进行集成
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,22 +12,22 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20b0150c18f2c007ed104d34daacd49ab03131a7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96743371"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
-本文详细介绍了如何将远程桌面网关基础结构与 Azure AD 多重身份验证 (MFA 进行集成) 使用网络策略服务器 () NPS Microsoft Azure 扩展。
+本文将详细介绍如何使用 Microsoft Azure 的网络策略服务器 (NPS) 扩展集成远程桌面网关基础结构与 Azure AD 多重身份验证 (MFA)。
 
-适用于 Azure 的网络策略服务器 (NPS) 扩展允许客户使用 Azure 基于云的 [多重身份验证) MFA ](./concept-mfa-howitworks.md) (来保护远程身份验证拨入用户服务 (RADIUS) 客户端身份验证。 该解决方案提供双重验证，用于将第二层安全性添加到用户的登录和事务。
+Azure 网络策略服务 (NPS) 扩展允许客户使用 Azure 基于云的[多重身份验证 (MFA)](./concept-mfa-howitworks.md) 来保护远程身份验证拨入用户服务 (RADIUS) 客户端身份验证。 该解决方案提供双重验证，用于将第二层安全性添加到用户的登录和事务。
 
-本文提供了有关使用适用于 Azure 的 NPS 扩展将 NPS 基础结构与 Azure AD MFA 集成的分步说明。 这使得尝试登录到远程桌面网关的用户能够进行安全验证。
+本文将逐步说明如何使用 Azure 的 NPS 扩展集成 NPS 基础结构与 Azure AD MFA。 这使得尝试登录到远程桌面网关的用户能够进行安全验证。
 
 > [!NOTE]
-> 本文不应与 MFA 服务器部署一起使用，只应与基于云的) 部署 (Azure AD MFA 一起使用。
+> 本文不适用于 MFA 服务器部署，仅适用于 Azure AD MFA（基于云）部署。
 
 网络策略和访问服务 (NPS) 使组织能够执行以下操作：
 
@@ -35,11 +35,11 @@ ms.locfileid: "96743371"
 * 建立和强制执行网络访问保护 (NAP) 客户端健康策略，可确定是授予设备对网络资源的无限制还是受限制的访问权限。
 * 提供一种强制进行身份验证和授权，以访问支持 802.1x 无线访问点和以太网交换机的方式。
 
-通常，组织使用 NPS (RADIUS) 来简化和集中 VPN 策略的管理。 然而，许多组织也会使用 NPS 简化和集中 RD 桌面连接授权策略 (RD CAP) 的管理。
+通常情况下，组织将使用 NPS (RADIUS) 来简化和集中管理 VPN 策略。 然而，许多组织也会使用 NPS 简化和集中 RD 桌面连接授权策略 (RD CAP) 的管理。
 
-组织还可以将 NPS 与 Azure AD MFA 集成，以增强安全性，并提供高级别的符合性。 这将有助于确保用户建立双重验证以登录到远程桌面网关。 已授予访问权限的用户，他们必须提供其用户名/密码组合与用户已有的信息。 此信息必须受信任且不容易复制，例如手机号码、座机号码、移动设备上的应用程序等等。 RDG 当前支持用于2FA 的 Microsoft 验证器应用方法的电话呼叫和推送通知。 有关支持的身份验证方法的详细信息，请参阅[决定你的用户可以使用哪些身份验证方法](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)部分。
+另外，组织还可以将 NPS 与 Azure AD MFA 进行集成，以增强安全性并提供高级别的符合性。 这将有助于确保用户建立双重验证以登录到远程桌面网关。 已授予访问权限的用户，他们必须提供其用户名/密码组合与用户已有的信息。 此信息必须受信任且不容易复制，例如手机号码、座机号码、移动设备上的应用程序等等。 RDG 当前支持来自用于 2FA 的 Microsoft 验证器应用方法的电话呼叫和推送通知。 有关支持的身份验证方法的详细信息，请参阅[决定你的用户可以使用哪些身份验证方法](howto-mfa-nps-extension.md#determine-which-authentication-methods-your-users-can-use)部分。
 
-在适用于 Azure 的 NPS 扩展之前，希望对集成的 NPS 和 Azure AD MFA 环境实施双重验证的客户，必须在本地环境中配置和维护单独的 MFA 服务器，如 [使用 RADIUS 远程桌面网关和 Azure 多重身份验证服务器](howto-mfaserver-nps-rdg.md)中所述。
+在为 Azure 提供 NPS 扩展之前，希望对集成的 NPS 和 Azure AD MFA 环境实施双重验证的客户，必须在本地环境中配置和维护单独的 MFA 服务器，如[使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器](howto-mfaserver-nps-rdg.md)中所述。
 
 现在提供了 Azure 的 NPS 扩展之后，可使组织选择部署基于内部部署的 MFA 解决方案或基于云的 MFA 解决方案来保护 RADIUS 客户端身份验证。
 
@@ -53,15 +53,15 @@ ms.locfileid: "96743371"
 
 1. 远程桌面网关服务器从远程桌面用户接收身份验证请求，用于连接到资源，如远程桌面会话。 作为 RADIUS 客户端，远程桌面网关服务器将请求转换为 RADIUS 访问请求消息，并将此消息发送到安装了 NPS 扩展的 RADIUS (NPS) 服务器。
 1. 用户名和密码组合在 Active Directory 中进行验证，同时进行用户身份验证。
-1. 如果满足 NPS 连接请求和网络策略中指定的所有条件 (例如，当天的时间或组成员资格限制) ，则 NPS 扩展将触发对 Azure AD MFA 进行辅助身份验证的请求。
-1. Azure AD MFA 与 Azure AD 通信，检索用户的详细信息，并使用受支持的方法执行辅助身份验证。
-1. 成功完成 MFA 质询后，Azure AD MFA 会将结果传递给 NPS 扩展。
+1. 如果满足 NPS 连接请求和网络策略中指定的所有条件（例如，时间或组成员资格限制），NPS 扩展将触发对 Azure AD MFA 进行辅助身份验证的请求。
+1. Azure AD MFA 与 Azure AD 通信，检索用户的详细信息并使用受支持的方法执行辅助身份验证。
+1. 在 MFA 质询成功之后，Azure AD MFA 将结果传递给 NPS 扩展。
 1. 安装此扩展的 NPS 服务器向远程桌面网关服务器发送 RD CAP 策略的 RADIUS 访问接受消息。
 1. 通过 RD 网关授予用户访问所请求的网络资源的权限。
 
 ## <a name="prerequisites"></a>先决条件
 
-本部分详细介绍了将 Azure AD MFA 与远程桌面网关集成之前需要满足的先决条件。 开始集成之前，必须具备以下先决条件：  
+本部分将详细介绍将 Azure AD MFA 与远程桌面网关集成之前的必备条件。 开始集成之前，必须具备以下先决条件：  
 
 * 远程桌面服务 (RDS) 基础结构
 * Azure AD MFA 许可证
@@ -72,14 +72,14 @@ ms.locfileid: "96743371"
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>远程桌面服务 (RDS) 基础结构
 
-必须具有有效的远程桌面服务 (RDS) 基础结构。 否则，可以使用以下快速入门模板在 Azure 中快速创建此基础结构： [创建远程桌面会话集合部署](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment)。
+必须具有有效的远程桌面服务 (RDS) 基础结构。 如果没有，则可以使用以下快速入门模板在 Azure 中快速创建此基础结构：[创建远程桌面会话集合部署](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment)。
 
 如果希望快速手动创建一个测试用的本地 RDS 基础结构，请按照以下步骤进行部署。
-**了解详细信息**： [通过 Azure 快速入门](/windows-server/remote/remote-desktop-services/rds-in-azure) 和 [基本 RDS 基础结构部署](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)部署 RDS。
+**详细了解**：[使用 Azure 快速入门部署 RDS](/windows-server/remote/remote-desktop-services/rds-in-azure) 和[基本 RDS 基础结构部署](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)。
 
 ### <a name="azure-ad-mfa-license"></a>Azure AD MFA 许可证
 
-必需是 Azure AD MFA 的许可证，可通过 Azure AD Premium 或包含它的其他捆绑包获得。 Azure AD MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 有关详细信息，请参阅 [如何获取 Azure AD 多重身份验证](concept-mfa-licensing.md)。 出于测试目的，你可以使用一个试用订阅。
+需要一个 Azure AD MFA 许可证，Azure AD Premium 或包括它的其他捆绑包中提供了该许可证。 Azure AD MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 有关详细信息，请参阅[如何获取 Azure AD 多重身份验证](concept-mfa-licensing.md)。 出于测试目的，你可以使用一个试用订阅。
 
 ### <a name="windows-server-software"></a>Windows Server 软件
 
@@ -101,24 +101,24 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 ## <a name="configure-multi-factor-authentication"></a>配置多重身份验证
 
-本部分提供有关将 Azure AD MFA 与远程桌面网关集成的说明。 作为管理员，你必须先配置 Azure AD MFA 服务，然后用户才能自行注册其多重设备或应用程序。
+本部分说明如何将 Azure AD MFA 与远程桌面网关进行集成。 作为管理员，你必须先配置 Azure AD MFA 服务，然后用户才能自行注册其多重设备或应用程序。
 
-遵循 [云中 Azure AD 多重身份验证](howto-mfa-getstarted.md) 入门中的步骤，为你的 Azure AD 用户启用 MFA。
+按照[云中的 Azure AD 多重身份验证入门](howto-mfa-getstarted.md)中的步骤，为 Azure AD 用户启用 MFA。
 
 ### <a name="configure-accounts-for-two-step-verification"></a>配置帐户进行双重验证
 
 为 MFA 启用帐户后，在成功配置用于二次身份验证的受信任的设备并且使用双重验证进行身份验证前，你将无法登录 MFA 策略管理的资源。
 
-按照 [Azure AD 多重身份验证对我意味着什么？](../user-help/multi-factor-authentication-end-user-first-time.md) 中的步骤来了解和正确配置设备，以便与用户帐户进行 MFA。
+按照 [Azure AD 多重身份验证对我而言有什么用途？](../user-help/multi-factor-authentication-end-user-first-time.md)中的步骤，使用你的用户帐户了解并正确配置 MFA 的设备。
 
 > [!IMPORTANT]
-> 远程桌面网关的登录行为未提供输入验证码和 Azure AD 多重身份验证的选项。 必须使用推送通知将用户帐户配置为使用电话验证或 Microsoft Authenticator 应用。
+> 远程桌面网关的登录行为未提供使用 Azure AD 多重身份验证输入验证码的选项。 必须为用户帐户配置电话验证或 Microsoft Authenticator 应用的推送通知。
 >
-> 如果没有为用户配置这两种身份验证方法中的一种，则他们将无法完成 Azure AD 多重身份验证质询并登录到远程桌面网关。
+> 如果未为用户配置这两种身份验证方法之一，则他们将无法完成 Azure AD 多重身份验证质询并登录到远程桌面网关。
 
 ## <a name="install-and-configure-nps-extension"></a>安装和配置 NPS 扩展
 
-本部分提供有关配置 RDS 基础结构以使用远程桌面网关进行客户端身份验证 Azure AD MFA 的说明。
+本部分将说明如何配置 RDS 基础结构，以通过远程桌面网关使用 Azure AD MFA 进行客户端身份验证。
 
 ### <a name="acquire-azure-active-directory-tenant-id"></a>获取 Azure Active Directory 租户 ID
 
@@ -126,9 +126,9 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 1. 以 Azure 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户菜单中，选择“Azure Active Directory”，或在任意页面中搜索并选择“Azure Active Directory”。
-1. 在 " **概述** " 页上，将显示 *租户信息* 。 在 " *租户 ID*" 旁边，选择 " **复制** " 图标，如以下示例屏幕截图所示：
+1. 在“概述”页上，将显示“租户信息”。 在“租户 ID”旁边，选择“复制”图标，如以下示例屏幕截图所示：
 
-   ![正在从 Azure 门户获取租户 ID](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
+   ![从 Azure 门户获取租户 ID](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>安装 NPS 扩展
 
@@ -137,13 +137,13 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 > [!IMPORTANT]
 > 请勿在远程桌面网关 (RDG) 服务器上安装 NPS 扩展。 RDG 服务器不会将 RADIUS 协议与客户端一起使用，因此该扩展无法解释和执行 MFA。
 >
-> 当使用 NPS 扩展的 RDG 服务器和 NPS 服务器是不同的服务器时，RDG 会在内部使用 NPS 与其他 NPS 服务器通信，并使用 RADIUS 作为协议来正确通信。
+> 当 RDG 服务器和具有 NPS 扩展的 NPS 服务器是不同的服务器时，RDG 会在内部使用 NPS 与其他 NPS 服务器进行通信，并使用 RADIUS 作为协议来正确通信。
 
 1. 下载 [NPS 扩展](https://aka.ms/npsmfa)。
 1. 将安装程序可执行文件 (NpsExtnForAzureMfaInstaller.exe) 复制到 NPS 服务器。
 1. 在 NPS 服务器上，双击“NpsExtnForAzureMfaInstaller.exe”。 系统提示后，单击“运行”。
-1. 在 "Azure AD MFA 设置的 NPS 扩展" 对话框中，查看软件许可条款，勾选 " **我同意许可条款和条件**"，然后单击 " **安装**"。
-1. 在 Azure AD MFA 设置的 NPS 扩展 "对话框中，单击" **关闭**"。
+1. 在“适用于 Azure AD MFA 设置的 NPS 扩展”对话框中，查看软件许可条款，勾选“我同意许可条款和条件”，然后单击“安装”。
+1. 在“适用于 Azure AD MFA 设置的 NPS 扩展”对话框中，单击“关闭”。
 
 ### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>使用 PowerShell 脚本配置用于 NPS 扩展的证书
 
@@ -171,7 +171,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![在 PowerShell 中对 Azure AD 进行身份验证](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. 出现提示时，粘贴之前复制到剪贴板的 *租户 ID* ，然后按 **enter**。
+1. 出现提示时，粘贴之前复制到剪贴板的租户 ID，然后按 ENTER。
 
    ![在 PowerShell 中输入租户 ID](./media/howto-mfa-nps-extension-rdg/image6.png)
 
@@ -183,35 +183,35 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 在本节中，你将配置远程桌面网关连接授权策略和其他 RADIUS 设置。
 
-身份验证流需要在安装了 NPS 扩展的远程桌面网关和 NPS 服务器之间交换 RADIUS 消息。 这意味着你必须在远程桌面网关和安装了 NPS 扩展的 NPS 服务器上配置 RADIUS 客户端设置。
+身份验证流程要求在远程桌面网关和安装了 NPS 扩展的 NPS 服务器之间交换 RADIUS 消息。 这意味着你必须在远程桌面网关和安装了 NPS 扩展的 NPS 服务器上配置 RADIUS 客户端设置。
 
 ### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>配置远程桌面网关连接授权策略以使用中央存储
 
-远程桌面连接授权策略 (RD CAP) 指定连接到远程桌面网关服务器的要求。 可以本地存储 RD CAP（默认），也可以存储在运行 NPS 的中央 RD CAP 存储中。 若要配置 Azure AD MFA 与 RDS 的集成，需要指定中心存储的使用。
+远程桌面连接授权策略 (RD CAP) 指定连接到远程桌面网关服务器的要求。 可以本地存储 RD CAP（默认），也可以存储在运行 NPS 的中央 RD CAP 存储中。 要配置 Azure AD MFA 与 RDS 的集成，需要指定使用中央存储。
 
 1. 在 RD 网关服务器上，打开“服务器管理器”。
 1. 在此菜单上，单击“工具”，指向“远程桌面服务”，然后单击“远程桌面网关管理器”。
-1. 在 RD 网关管理器中，右键单击 " **\[ 服务器名称" \] ("本地)**"，然后单击 "**属性**"。
-1. 在 "属性" 对话框中，选择 " **RD CAP 存储** " 选项卡。
+1. 在 RD 网关管理器中，右键单击 **\[\]** “服务器名称(本地)”，然后单击“属性”。
+1. 在“属性”对话框中，选择“RD CAP 存储”选项卡。
 1. 在“RD CAP 存储”选项卡上，选择“运行 NPS 的中心服务器”。 
 1. 在“输入正在运行 NPS 的服务器的名称或 IP 地址”字段中，键入安装了 NPS 扩展的服务器的 IP 地址或服务器名称。
 
    ![输入 NPS 服务器的名称或 IP 地址](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. 单击“添加”。
+1. 单击“添加” 。
 1. 在“共享密钥”对话框中，输入一个共享密钥，然后单击“确定”。 确保记录此共享密钥并安全地存储该记录。
 
    >[!NOTE]
    >共享密钥用于在 RADIUS 服务器和客户端之间建立信任关系。 创建长且复杂的密码。
    >
 
-   ![创建共享机密来建立信任](./media/howto-mfa-nps-extension-rdg/image11.png)
+   ![创建共享机密来建立信任关系](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-1. 单击“确定”  关闭对话框。
+1. 单击 **“确定”** 关闭对话框。
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>在远程桌面网关 NPS 上配置 RADIUS 超时值
 
-若要确保有时间验证用户的凭据、执行双重验证、接收响应和响应 RADIUS 消息，需要调整 RADIUS 超时值。
+为确保有时间验证用户凭据、执行双重验证、接收响应和响应 RADIUS 消息，必须调整 RADIUS 超时值。
 
 1. 在 RD 网关服务器上，打开“服务器管理器”。 在菜单中，单击“工具”，然后单击“网络策略服务器”。
 1. 在“NPS (本地)”控制台中，展开“RADIUS 客户端和服务器”，然后选择“远程 RADIUS 服务器”。
@@ -226,13 +226,13 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 1. 在“TS 网关服务器组属性”对话框中，选择配置为存储 RD CAP 的 NPS 服务器的 IP 地址或名称，然后单击“编辑”。
 
-   ![选择前面配置的 NPS 服务器的 IP 或名称](./media/howto-mfa-nps-extension-rdg/image13.png)
+   ![选择之前配置的 NPS 服务器的 IP 或名称](./media/howto-mfa-nps-extension-rdg/image13.png)
 
 1. 在“编辑 RADIUS 服务器”对话框中，选择“负载平衡”选项卡。
 1. 在“负载平衡”选项卡的“考虑放弃请求之前的不响应秒数”字段中，将默认值从 3 更改为 30 到 60 秒之间的值。
 1. 在“将服务器标识为不可用时请求之间的秒数”字段中，将默认值 30 秒更改为等于或大于上一步中指定的值。
 
-   ![在 "负载平衡" 选项卡上编辑 Radius 服务器超时设置](./media/howto-mfa-nps-extension-rdg/image14.png)
+   ![在“负载均衡”选项卡上编辑 Radius 服务器超时设置](./media/howto-mfa-nps-extension-rdg/image14.png)
 
 1. 单击“确定”两次，以关闭该对话框。
 
@@ -250,7 +250,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 1. 单击“取消” 。
 
 >[!NOTE]
-> 有关创建连接请求策略的详细信息，请参阅 [配置连接请求策略](/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) 文档的相关文章。 
+> 有关创建连接请求策略的详细信息，请参阅[配置连接请求策略](/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy)文档的相关文章。 
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>在安装了 NPS 扩展的服务器上配置 NPS
 
@@ -277,59 +277,59 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![在 NPS 控制台中创建新的 RADIUS 客户端](./media/howto-mfa-nps-extension-rdg/image17.png)
 
-1. 在 " **新建 RADIUS 客户端** " 对话框中，提供一个友好名称，如 _网关_，并提供远程桌面网关服务器的 IP 地址或 DNS 名称。
+1. 在“新建 RADIUS 客户端”对话框中，提供一个友好名称，如“网关”，以及远程桌面网关服务器的 IP 地址或 DNS 名称。
 1. 在“共享密钥”和“确认共享密钥”字段中，输入与之前使用的相同的密码。
 
    ![配置友好名称和 IP 或 DNS 地址](./media/howto-mfa-nps-extension-rdg/image18.png)
 
-1. 单击 **"确定"** 以关闭 "新建 RADIUS 客户端" 对话框。
+1. 单击“确定”，以关闭“新建 RADIUS 客户端”对话框。
 
 ### <a name="configure-network-policy"></a>配置网络策略
 
-请记住，具有 Azure AD MFA 扩展的 NPS 服务器是连接授权策略 (CAP) 指定的中心策略存储。 因此，需要在 NPS 服务器上实现 CAP，以授权有效的连接请求。  
+撤回 NPS 服务器与 Azure AD MFA 扩展是连接授权策略 (CAP) 的指定中央策略存储。 因此，需要在 NPS 服务器上实现 CAP，以授权有效的连接请求。  
 
 1. 在 NPS 服务器上，打开“NPS (本地)”控制台，展开“策略”，然后单击“网络策略”。
 1. 右键单击“到其他访问服务器的连接”，然后单击“重复策略”。
 
-   ![复制与其他访问服务器策略的连接](./media/howto-mfa-nps-extension-rdg/image19.png)
+   ![将连接复制到其他访问服务器策略](./media/howto-mfa-nps-extension-rdg/image19.png)
 
 1. 右键单击“复制到其他访问服务器的连接”，然后单击“属性”。
-1. 在“复制到其他访问服务器的连接”对话框中，在“策略名称”中输入合适的名称，如“RDG_CAP”。 选中 " **启用策略**"，然后选择 " **授予访问权限**"。 （可选）在“网络访问服务器类型”中，选择“远程桌面网关”，也可以将其保留为“未指定”。
+1. 在“复制到其他访问服务器的连接”对话框中，在“策略名称”中输入合适的名称，如“RDG_CAP”。 勾选“策略已启用”，然后选择“授权访问”。 （可选）在“网络访问服务器类型”中，选择“远程桌面网关”，也可以将其保留为“未指定”。
 
    ![命名策略，启用并授予访问权限](./media/howto-mfa-nps-extension-rdg/image21.png)
 
 1. 单击“约束”选项卡，然后选中“允许客户端连接时不必协商身份验证方法”。
 
-   ![修改身份验证方法，以允许客户端连接](./media/howto-mfa-nps-extension-rdg/image22.png)
+   ![修改身份验证方法以允许客户端进行连接](./media/howto-mfa-nps-extension-rdg/image22.png)
 
 1. （可选）单击“条件”选项卡，并添加授权连接必须满足的条件，例如特定 Windows 组中的成员资格。
 
-   ![选择性地指定连接条件](./media/howto-mfa-nps-extension-rdg/image23.png)
+   ![（可选）指定连接条件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. 单击" **确定**"。 当系统提示查看相应帮助主题时，请单击“否”。
+1. 单击 **“确定”** 。 当系统提示查看相应帮助主题时，请单击“否”。
 1. 确保新策略位于列表的顶部、该策略已启用，并且它授予访问权限。
 
    ![将策略移至列表顶部](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>验证配置
 
-若要验证配置，需要使用合适的 RDP 客户端登录远程桌面网关。 请确保使用连接授权策略允许的帐户，并为 Azure AD MFA 启用该帐户。
+若要验证配置，需要使用合适的 RDP 客户端登录远程桌面网关。 确保使用连接授权策略允许的帐户，并为 Azure AD MFA 启用了此帐户。
 
 如下图所示，你可以使用“远程桌面 Web 访问”页面。
 
-![在远程桌面 Web 访问中测试](./media/howto-mfa-nps-extension-rdg/image25.png)
+![在远程桌面 Web 访问中进行测试](./media/howto-mfa-nps-extension-rdg/image25.png)
 
 成功输入凭证进行主要身份验证后，“远程桌面连接”对话框将显示“正在启动远程连接”的状态，如下所示。 
 
-如果你之前在 Azure AD MFA 中配置的辅助身份验证方法成功进行身份验证，则已连接到资源。 但是，如果辅助身份验证不成功，你将无法访问资源。 
+如果使用先前在 Azure AD MFA 中配置的辅助身份验证方法成功进行身份验证，则将连接到此资源。 但是，如果辅助身份验证不成功，你将无法访问资源。 
 
-![远程桌面连接启动远程连接](./media/howto-mfa-nps-extension-rdg/image26.png)
+![启动远程连接的远程桌面连接](./media/howto-mfa-nps-extension-rdg/image26.png)
 
 在下面的示例中，Windows 手机上的 Authenticator 应用用于提供辅助身份验证。
 
-![显示验证的 Windows Phone 验证器应用示例](./media/howto-mfa-nps-extension-rdg/image27.png)
+![显示验证的示例 Windows Phone Authenticator 应用](./media/howto-mfa-nps-extension-rdg/image27.png)
 
-使用辅助身份验证方法成功进行身份验证后，你就可以正常登录到远程桌面网关。 但是，由于你需要在受信任的设备上使用移动应用的辅助身份验证方法，因此，登录过程比其他情况更安全。
+使用辅助身份验证方法成功进行身份验证后，你就可以正常登录到远程桌面网关。 但是，由于你需要在受信任的设备上通过移动应用使用辅助身份验证方法，所以登录过程比其他方式更安全。
 
 ### <a name="view-event-viewer-logs-for-successful-logon-events"></a>查看事件查看器日志以了解成功登录事件
 
@@ -358,23 +358,23 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 ![网络策略和访问服务事件查看器](./media/howto-mfa-nps-extension-rdg/image31.png)
 
-在安装了用于 Azure AD MFA 的 NPS 扩展的服务器上，可以在 _应用程序和服务 logs\microsoft\azuremfa 位置_ 查找特定于该扩展的事件查看器应用程序日志。
+在安装了适用于 Azure AD MFA 的 NPS 扩展的服务器上，可以在 Application and Services Logs\Microsoft\AzureMfa 位置找到特定于此扩展的事件查看器应用程序日志。
 
 ![事件查看器 AuthZ 应用程序日志](./media/howto-mfa-nps-extension-rdg/image32.png)
 
 ## <a name="troubleshoot-guide"></a>故障排除指南
 
-如果配置未按预期工作，则首先要解决的问题是验证用户是否配置为使用 Azure AD MFA。 将用户连接到 [Azure 门户](https://portal.azure.com)。 如果提示用户进行辅助验证并且可以成功进行身份验证，则可以消除 Azure AD MFA 的配置不正确。
+如果配置无法正常工作，首先要排查的问题是验证是否将用户配置为使用 Azure AD MFA。 将用户连接到 [Azure 门户](https://portal.azure.com)。 如果提示用户进行辅助身份验证并且身份验证成功，则可以消除 Azure AD MFA 的不正确配置。
 
-如果 Azure AD MFA 正在为用户 () ，则应查看相关的事件日志。 其中包括上一节中讨论的安全事件、网关操作和 Azure AD MFA 日志。
+如果用户的 Azure AD MFA 正常工作，则应查看相关的事件日志。 其中包括上一节中讨论的安全事件、网关操作和 Azure AD MFA 日志。
 
 以下是安全日志的输出示例，显示失败的登录事件（事件 ID 6273）。
 
-![失败登录事件的示例](./media/howto-mfa-nps-extension-rdg/image33.png)
+![失败的登录事件示例](./media/howto-mfa-nps-extension-rdg/image33.png)
 
 下面是 AzureMFA 日志中的相关事件：
 
-![Azure AD MFA 日志的示例事件查看器](./media/howto-mfa-nps-extension-rdg/image34.png)
+![事件查看器中的 Azure AD MFA 登录示例](./media/howto-mfa-nps-extension-rdg/image34.png)
 
 要执行高级故障排除选项，请参阅安装了 NPS 服务的 NPS 数据库格式日志文件。 这些日志文件以逗号分隔的文本文件形式在 %SystemRoot%\System32\Logs 文件夹中创建。
 
@@ -386,7 +386,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 最后，对于其他故障排除选项，你可以使用协议分析器，例如 [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)。
 
-以下来自 Microsoft Message Analyzer 的图像显示了在 RADIUS 协议上筛选的网络流量，其中包含用户名 **CONTOSO\AliceC**。
+来自 Microsoft Message Analyzer 的以下图像显示了根据包含用户名 **CONTOSO\AliceC** 的 RADIUS 协议进行筛选的网络流量。
 
 ![显示筛选的流量的 Microsoft 消息分析器](./media/howto-mfa-nps-extension-rdg/image36.png)
 

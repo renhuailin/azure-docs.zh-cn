@@ -4,21 +4,21 @@ description: Application Insights 所需的服务器防火墙例外
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: 56ff33cc0a34cb254ca88f96d69a07bc131bebf4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101714028"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>Azure Monitor 使用的 IP 地址
 
-[Azure Monitor](../overview.md) 使用多个 IP 地址。 Azure Monitor 除了包含 Log Analytics 和 Application Insights，还由核心平台指标和日志组成。 如果所监视的应用或基础结构位于防火墙后面，则你可能需要知道这些地址。
+[Azure Monitor](../overview.md) 使用多个 IP 地址。 除了 Log Analytics 和 Application Insights，Azure Monitor 还包含核心平台指标和日志。 如果要监视的应用或基础结构托管在防火墙后面，可能需要知道这些 IP 地址。
 
 > [!NOTE]
 > 尽管这些地址是静态的，但我们可能随时需要更改它们。 除了需要入站防火墙规则的可用性监视和 Webhook 之外，所有 Application Insights 流量都表示出站流量。
 
 > [!TIP]
-> 如果使用 Azure 网络安全组，则可以使用 Azure [网络服务标记](../../virtual-network/service-tags-overview.md)管理访问。 如果在为混合/本地资源管理访问，则可以下载 [JSON 文件](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)形式的等效 IP 地址列表（每周更新一次）。 为了涵盖本文中的所有异常，你需要使用服务标记： `ActionGroup` 、 `ApplicationInsightsAvailability` 和 `AzureMonitor` 。
+> 如果使用 Azure 网络安全组，则可以使用 Azure [网络服务标记](../../virtual-network/service-tags-overview.md)管理访问。 如果在为混合/本地资源管理访问，则可以下载 [JSON 文件](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)形式的等效 IP 地址列表（每周更新一次）。 若要涵盖本文中的所有例外情况，需要使用服务标记 `ActionGroup`、`ApplicationInsightsAvailability` 和 `AzureMonitor`。
 
 或者，可以通过将 https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom 添加到喜欢的 RSS/ATOM 阅读器来订阅此页面作为 RSS 源，以获取有关最新更改的通知。
 
@@ -53,7 +53,7 @@ ms.locfileid: "101714028"
 
 
 > [!NOTE]
-> 对于位于专用虚拟网络中的资源，这些资源无法允许与公共 Azure 中的可用性测试代理进行直接入站通信，唯一的选择是 [创建并托管你自己的自定义可用性测试](availability-azure-functions.md)。
+> 对于专用虚拟网络中无法与公共 Azure 中的可用性测试代理直接进行入站通信的资源，只能[创建并托管你自己的自定义可用性测试](availability-azure-functions.md)。
 
 ### <a name="service-tag"></a>服务标记
 
@@ -247,12 +247,12 @@ USDoD East
 
 ## <a name="action-group-webhooks"></a>操作组 Webhook
 
-可以使用 [AzNetworkServiceTag PowerShell 命令](/powershell/module/az.network/Get-AzNetworkServiceTag)查询操作组使用的 IP 地址列表。
+可使用 [PowerShell 命令 Get-AzNetworkServiceTag](/powershell/module/az.network/Get-AzNetworkServiceTag) 查询操作组使用的 IP 地址列表。
 
 ### <a name="action-groups-service-tag"></a>操作组服务标记
-管理对源 IP 地址所做的更改可能会非常耗时。 使用 **服务标记** ，无需更新配置。 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 管理 IP 地址，并在地址更改时自动更新服务标记，无需更新操作组的网络安全规则。
+管理对源 IP 地址的更改可能会非常耗时。 使用服务标记就无需更新配置。 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理 IP 地址，并在地址更改时自动更新服务标记，无需更新操作组的网络安全规则。
 
-1. 在 "Azure 服务的 Azure 门户" 下搜索 " *网络安全组*"。
+1. 在 Azure 门户中的“Azure 服务”下，搜索“网络安全组”。
 2. 单击“添加”，创建一个网络安全组。
 
    1. 添加资源组名称，然后输入“实例详细信息”。

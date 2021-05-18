@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92173678"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 静态 Web 应用预览中设置自定义域
@@ -37,7 +37,7 @@ Azure 静态 Web 应用默认提供自动生成的域名。 本文介绍如何�
 
 ## <a name="map-a-cname-record"></a>映射 CNAME 记录
 
-CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将 `www.example.com` 、 `blog.example.com` 或任何其他子域映射到由 Azure 静态 Web 应用提供的自动生成的域。
+CNAME 记录将一个域映射到另一个域。 可以使用 CNAME 记录将 `www.example.com`、`blog.example.com` 或任何其他子域映射到由 Azure Static Web Apps 提供的自动生成域。
 
 1. 打开 [Azure 门户](https://portal.azure.com)，然后使用 Azure 帐户登录。
 
@@ -47,7 +47,7 @@ CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将
 
 1. 在菜单中单击“自定义域”。
 
-1. 单击 " **添加** " 按钮
+1. 单击“添加”按钮
 
 1. 在“自定义域”窗口中，将 URL 复制到“值”字段。
 
@@ -55,7 +55,7 @@ CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将
 
 1. 请登录到域提供商的网站。
 
-2. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。   
+2. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。  
 
 3. 通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接  。
 
@@ -65,7 +65,7 @@ CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将
 
 4. 使用以下值创建新的 CNAME 记录...
 
-    | 设置             | “值”                     |
+    | 设置             | 值                     |
     | ------------------- | ------------------------- |
     | 类型                | CNAME                     |
     | 主机                | www                       |
@@ -82,7 +82,7 @@ CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将
 
 1. 单击“验证”按钮。
 
-配置自定义域后，DNS 提供商可能需要几个小时才能传播所做的更改。 可以通过转到 [dnspropagation.net](https://dnspropagation.net) 检查传播的状态。 输入包含 `www` 的自定义域，从下拉菜单中选择“CNAME”，然后选择“开始”。
+现在，自定义域已完成配置，DNS 提供程序可能需要几个小时才能在全球范围内传播更改。 可以通过转到 [dnspropagation.net](https://dnspropagation.net) 检查传播的状态。 输入包含 `www` 的自定义域，从下拉菜单中选择“CNAME”，然后选择“开始”。
 
 如果 DNS 更改已填充，则网站将返回静态 Web 应用的自动生成的 URL（例如 _random-name-123456789c.azurestaticapps.net_）。
 
@@ -100,7 +100,7 @@ CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将
 
 1. 请登录到域提供商的网站。
 
-2. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。   
+2. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。  
 
 3. 通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接  。
 
@@ -110,7 +110,7 @@ CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将
 
 4. 使用以下值创建新的 CNAME 记录，并将 `www.example.com` 替换为自定义域名。
 
-    | 设置 | “值”                  |
+    | 设置 | 值                  |
     | ------- | ---------------------- |
     | 类型    | CNAME                  |
     | 主机    | \*                     |

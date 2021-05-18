@@ -3,12 +3,13 @@ title: 查看 Azure 活动日志以监视资源
 description: 使用活动日志查看用户操作和错误。 显示 Azure 门户、PowerShell、Azure CLI 和 REST。
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 8917ffe287ecf60659f48dfb947bbd5b06d46005
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371586"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752907"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>查看活动日志以监视对资源的操作
 
@@ -74,7 +75,7 @@ ms.locfileid: "91371586"
 
     ![选择操作](./media/view-activity-logs/select-operation.png)
 
-1. 选择“更改历史记录(预览)”****，然后选择一个可用操作。
+1. 选择“更改历史记录(预览)”，然后选择一个可用操作。
 
     ![选择“更改历史记录”](./media/view-activity-logs/select-change-history.png)
 
@@ -82,7 +83,7 @@ ms.locfileid: "91371586"
 
     ![显示更改](./media/view-activity-logs/show-changes.png)
 
-若要了解有关更改历史记录的详细信息，请参阅 [获取资源更改](../../governance/resource-graph/how-to/get-resource-changes.md)。
+若要详细了解更改历史记录，请参阅[获取资源更改](../../governance/resource-graph/how-to/get-resource-changes.md)。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -140,7 +141,7 @@ Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq
 
 ## <a name="azure-cli"></a>Azure CLI
 
-若要检索日志条目，请运行带有偏移量（用于指示时间跨度）的 [az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) 命令。
+若要检索日志条目，请运行带有偏移量（用于指示时间跨度）的 [az monitor activity-log list](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) 命令。
 
 ```azurecli-interactive
 az monitor activity-log list --resource-group ExampleGroup --offset 7d
@@ -191,7 +192,7 @@ az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationNam
 ## <a name="next-steps"></a>后续步骤
 
 * Azure 活动日志可以与 Power BI 一起使用，以便更深入地了解在订阅中执行的操作。 请参阅 [View and analyze Azure Activity Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）。
-* 若要了解如何设置安全策略，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](../../role-based-access-control/role-assignments-portal.md)。
+* 若要了解如何设置安全策略，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)。
 * 若要查看有关从基础结构层一直到应用程序部署的应用程序更改的详细信息，请参阅[在 Azure Monitor 中使用应用程序更改分析](../../azure-monitor/app/change-analysis.md)。
 * 若要了解查看部署操作的命令，请参阅[查看部署操作](../templates/deployment-history.md)。
 * 若要了解如何防止对所有用户的资源执行删除操作，请参阅[使用 Azure 资源管理器锁定资源](lock-resources.md)。

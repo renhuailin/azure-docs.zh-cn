@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: 9a126fe4676f340fb45677382a3aeeed79291f0b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100574212"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿查看 Azure Active Directory 域服务中的安全审核事件
@@ -106,7 +106,7 @@ Azure AD DS 提供的两个模板工作簿适合于开始进行数据分析。 �
 1. 若要保存其中一个工作簿模板的副本，请选择“编辑”>“另存为”>“共享报表”，然后提供名称并保存。
 1. 从你自己的模板副本中，选择“编辑”以进入编辑模式。 可以选择报表中任何部分旁边的蓝色“编辑”按钮，并对其进行更改。
 
-Azure Monitor 工作簿中的所有图表和表都是使用 Kusto 查询生成的。 有关创建自己的查询的详细信息，请参阅 [Azure Monitor 日志查询][azure-monitor-queries] 和 [Kusto 查询教程][kusto-queries]。
+Azure Monitor 工作簿中的所有图表和表都是使用 Kusto 查询生成的。 有关如何创建查询的详细信息，请参阅 [Azure Monitor 日志查询][azure-monitor-queries]和 [Kusto 查询教程][kusto-queries]。
 
 ## <a name="next-steps"></a>后续步骤
 

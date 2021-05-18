@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
 ms.openlocfilehash: c99ad16e119c4262aa6d9d645b2457cdd46061b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101700671"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
@@ -43,7 +43,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 3. 在该计算机上，设置以下注册表项：<br>注册表项：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication<br>值：IsTarget<br>值数据：**true**
 
    > [!NOTE]
-   > 在您重新启动 Microsoft Monitoring Agent 服务 (HealthService.exe) 之前，这些更改不会生效。
+   > 在重启 Microsoft Monitoring Agent 服务 (HealthService.exe) 之后，这些更改才会生效。
    > ### <a name="install-solution"></a>安装解决方案
    > 按照 [安装监视解决方案](solutions.md#install-a-monitoring-solution)中描述的过程，将 **Active Directory 复制状态** 解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 

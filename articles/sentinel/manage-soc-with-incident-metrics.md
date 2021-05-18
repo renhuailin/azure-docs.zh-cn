@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
 ms.openlocfilehash: 408913fed864ee5f966b96c81afbfee4b2dc8678
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94660723"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>利用事件指标更好地管理 SOC
@@ -80,7 +80,7 @@ SecurityIncident
 - 最近活动 
 - 最近关闭分类  
 
-通过从 Azure Sentinel 导航菜单选择“工作簿”并选择“模板”选项卡中，可找到此新工作簿模板。 从库中选择“安全运营效率”，单击“查看保存的工作簿”或“查看模板”按钮。  
+通过从 Azure Sentinel 导航菜单选择“工作簿”并选择“模板”选项卡，可找到此新工作簿模板。从库中选择“安全运营效率”并单击“查看保存的工作簿”和“查看模板”按钮    。
 
 :::image type="content" source="./media/manage-soc-with-incident-metrics/security-incidents-workbooks-gallery.png" alt-text="安全事件工作簿库":::
 

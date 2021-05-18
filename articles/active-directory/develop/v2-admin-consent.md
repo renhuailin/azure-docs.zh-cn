@@ -1,6 +1,6 @@
 ---
 title: Microsoft 标识平台管理员同意协议
-description: Microsoft 标识平台中的授权说明，包括范围、权限和许可。
+description: 介绍 Microsoft 标识平台中的授权，包括范围、权限和许可。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b6fb5f680dfa5e2c87533083e3df4c2bae1ed12a
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097017"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft 标识平台中的管理员同意
@@ -43,9 +43,9 @@ https://login.microsoftonline.com/{tenant}/v2.0/adminconsent
 
 | 参数 | 条件 | 说明 |
 | :--- | :--- | :--- |
-| `tenant` | 必须 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `organizations` 以一般方式引用，如示例所示。 不要使用 "公用"，因为个人帐户不能提供管理员同意，但在租户的上下文中除外。 若要确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
+| `tenant` | 必须 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用 `organizations` 以一般方式引用，如示例所示。 请勿使用“common”，因为除非在租户的上下文中，否则个人帐户无法提供管理员同意。 为了确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
 | `client_id` | 必选 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
-| `redirect_uri` | 必选 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
+| `redirect_uri` | 必须 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
 |`scope` | 必须 | 定义应用程序请求的权限集。 这可以是静态范围（使用 `/.default`）或动态范围。 这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 |
 

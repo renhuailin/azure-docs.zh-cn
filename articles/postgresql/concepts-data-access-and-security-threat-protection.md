@@ -1,29 +1,29 @@
 ---
-title: 高级威胁防护-Azure Database for PostgreSQL-单服务器
-description: 了解如何使用高级威胁防护来检测异常的数据库活动，指示数据库存在潜在的安全威胁。
+title: 高级威胁防护 - Azure Database for PostgreSQL - 单一服务器
+description: 了解如何使用高级威胁防护检测异常的数据库活动，这些活动意味着可能存在对数据库的安全威胁。
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: fa136a15e4fa034307e16ef50c2b16060c5af0d2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92490197"
 ---
-# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 中的高级威胁防护-单服务器
+# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 中的高级威胁防护 - 单一服务器
 
 Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。
 
 > [!NOTE]
-> 高级威胁防护是公开预览版。
+> 高级威胁防护目前为公共预览版。
 
-威胁防护是高级威胁防护 (ATP) 产品/服务的一部分，后者是一个针对高级安全功能的统一软件包。 可以通过 [Azure 门户](https://portal.azure.com) 或使用 [REST API](/rest/api/postgresql)来访问和管理高级威胁防护。 此功能可用于常规用途和内存优化服务器。
+威胁防护是高级威胁防护 (ATP) 产品/服务的一部分，后者是一个针对高级安全功能的统一软件包。 可通过 [Azure 门户](https://portal.azure.com)或使用 [REST API](/rest/api/postgresql) 来访问和管理高级威胁防护。 此功能可用于常规用途和内存优化服务器。
 
 > [!NOTE]
-> 高级威胁防护功能在以下 Azure 政府和主权云区域中不**** 可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
+> 高级威胁防护功能在以下 Azure 政府和主权云区域中不可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
 
 ## <a name="what-is-advanced-threat-protection"></a>什么是高级威胁防护？
 

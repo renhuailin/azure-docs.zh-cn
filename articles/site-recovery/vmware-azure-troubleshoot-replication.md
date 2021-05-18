@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: a365ae58442a8448baeee831035f10efb40e24fa
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336199"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949787"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -140,14 +140,14 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 **如何解决**：SQL Server 2008/2008 R2 有一个已知问题。 请参阅此知识库文章：[托管 SQL Server 2008 R2 的服务器的 Azure Site Recovery 代理或其他非组件 VSS 备份失败](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
 #### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>原因 2：在使用 AUTO_CLOSE DB 托管任何版本的 SQL Server 实例的服务器上，Azure Site Recovery 作业失败
-**如何解决**：请参阅知识库[文章](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)
+**如何解决**：请参阅知识库 [文章](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)
 
 
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3：SQL Server 2016 和 2017 中的已知问题
-**如何解决**：请参阅知识库[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
+**如何解决**：请参阅知识库 [文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
 #### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因 4：Linux 服务器上未启用应用一致性
-**如何解决**：适用于 Linux 操作系统的 Azure Site Recovery 支持通过应用程序自定义脚本实现应用一致性。 为保障应用一致性，Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [这里](./site-recovery-faq.md#replication)是启用此功能的步骤。
+**如何解决**：适用于 Linux 操作系统的 Azure Site Recovery 支持通过应用程序自定义脚本实现应用一致性。 为保障应用一致性，Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [这里](/azure/site-recovery/site-recovery-faq#replication)是启用此功能的步骤。
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS 相关问题的更多原因：
 
@@ -178,10 +178,10 @@ C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\Appl
         - Azure Site Recovery VSS 提供程序
         - VDS 服务
 
-####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS 提供程序未注册 - 错误 2147754756
+####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED - 错误 2147754756
 
 **如何解决**：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。
-检查 Azure Site Recovery VSS 提供程序服务是否已安装。 </br>
+检查是否已安装 Azure Site Recovery VSS 提供程序服务。 </br>
 
 - 使用以下命令重试提供程序安装：
 - 卸载现有提供程序：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
@@ -193,23 +193,23 @@ C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\Appl
         - Azure Site Recovery VSS 提供程序
         - VDS 服务
 
-## <a name="error-id-95001---insufficient-permissions-found"></a>错误 ID 95001-未找到足够的权限
+## <a name="error-id-95001---insufficient-permissions-found"></a>错误 ID 95001 - 发现权限不足
 
 尝试启用复制时，如果应用程序文件夹没有足够的权限，则会出现此错误。
 
-**如何修复**：若要解决此问题，请确保 IUSR 用户具有以下所有提到文件夹的所有者角色-
+**如何解决**：若要解决此问题，请确保 IUSR 用户对下面提到的所有文件夹具有“所有者”角色：
 
-- *C\ProgramData\Microsoft Azure Site Recovery\private*
-- 安装目录。 例如，如果安装目录为 F 驱动器，则为-
-    - *F:\Program 文件 (x86) \Microsoft Azure Site Recovery\home\svsystems*
-- 安装目录中的 *\pushinstallsvc* 文件夹。 例如，如果安装目录为 F 驱动器，请提供对-
-    - *F:\Program 文件 (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc*
-- 安装目录中的 *\etc* 文件夹。 例如，如果安装目录为 F 驱动器，请提供对-
-    - *F:\Program 文件 (x86) \Microsoft Azure Site Recovery\home\svsystems\etc*
+- C\ProgramData\Microsoft Azure Site Recovery\private
+- 安装目录。 例如，如果安装目录为 F 驱动器，则提供对以下项的相应权限：
+    - F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems
+- 安装目录中的“\pushinstallsvc”文件夹。 例如，如果安装目录为 F 驱动器，则提供对以下项的相应权限：
+    - F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc
+- 安装目录中的“\etc”文件夹。 例如，如果安装目录为 F 驱动器，则提供对以下项的相应权限：
+    - F:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\etc
 - *C:\Temp*
-- *C:\thirdparty\php5nts*
-- 以下路径下的所有项-
-    - *C:\thirdparty\rrdtool-1.2.15-win32-perl58\rrdtool\Release\**
+- C:\thirdparty\php5nts
+- 以下路径下的所有项：
+    - C:\thirdparty\rrdtool-1.2.15-win32-perl58\rrdtool\Release\*
 
 ## <a name="next-steps"></a>后续步骤
 

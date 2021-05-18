@@ -1,23 +1,22 @@
 ---
-title: 在 Azure AD 中管理企业应用的用户预配
-description: 了解如何通过 Azure Active Directory 管理企业应用的用户帐户预配
+title: 在 Azure Active Directory 中管理企业应用的用户预配
+description: 了解如何通过 Azure Active Directory 管理企业应用的用户帐户预配。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/04/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 02d415bd957b0490857081b996c592f90365f031
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
-ms.translationtype: MT
+ms.openlocfilehash: 5dceeb11ed9a4d6af88650a6146f58db412748d9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555619"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579410"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
 
@@ -63,9 +62,7 @@ ms.locfileid: "99555619"
 
 在预配或更新用户帐户时，展开“映射”以查看和编辑在 Azure AD 和目标应用程序之间转移的用户属性。
 
-在 Azure AD 用户对象和每个 SaaS 应用的用户对象之间存在预先配置的映射组。 某些应用还管理组对象。 在表中选择一个映射，以在右侧打开映射编辑器，可以在其中查看和自定义映射。
-
-![显示“属性映射”屏幕](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+在 Azure AD 用户对象和每个 SaaS 应用的用户对象之间存在预先配置的映射组。 某些应用还管理组对象。 在表中选择一个映射以打开映射编辑器，可以在其中查看和自定义映射。
 
 支持的自定义项包括：
 
@@ -79,10 +76,10 @@ ms.locfileid: "99555619"
 
 ### <a name="settings"></a>设置
 
-可以在“预配”屏幕的“设置”区域中，为所选应用程序启动和停止 Azure AD 预配服务。 还可以选择清除预配缓存并重启服务。
+展开“设置”以设置用于接收通知的电子邮件地址，并设置是否接收有关错误的警报。 还可以选择要同步的用户范围。可以选择同步所有用户或组，也可选择仅同步那些分配的组。
+
+### <a name="provisioning-status"></a>预配状态 
 
 如果是第一次为应用程序启用预配功能，则将“预配状态”更改为“开”即可启用该服务。 此更改会导致 Azure AD 预配服务运行初始周期。 它会读取“用户和组”部分所分配的用户，查询其目标应用程序，然后运行在 Azure AD 的“映射”部分定义的预配操作。 在此过程中，预配服务会存储所托管用户帐户的相关缓存数据，因此在执行取消预配操作时，不会影响目标应用程序中从来不在分配范围内的非托管帐户。 初始周期以后，预配服务会自动按四十分钟的时间间隔同步用户和组对象。
 
 将“预配状态”更改为“关”以暂停预配服务。 在这种状态下，Azure 不会创建、更新或删除应用中的任何用户或组对象。 将状态重新更改为“开”，服务会从中断的位置继续。
-
-“清除当前状态并重新开始同步”会触发初始周期。 服务随后会再次评估源系统中的所有用户，并确定它们是否处于预配的范围中。 当应用程序当前处于隔离中或者需要更改属性映射时，这可能会很有用。 请注意，由于需要评估的对象数，初始周期的完成时间比典型增量周期更长。 可在[此处](application-provisioning-when-will-provisioning-finish-specific-user.md)详细了解初始和增量周期的性能。

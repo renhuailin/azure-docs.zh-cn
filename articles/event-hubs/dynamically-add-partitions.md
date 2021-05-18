@@ -3,12 +3,12 @@ title: 将分区动态添加到 Azure 事件中心的某个事件中心
 description: 本文介绍如何将分区动态添加到 Azure 事件中心的某个事件中心。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: e6efdc7bab309f825032555c97f1e1128f5addd6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
-ms.translationtype: MT
+ms.openlocfilehash: aeeee1bcefe58b006dac0b6913aaa609cbeefb8c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625259"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775113"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>动态将分区添加到 Azure 事件中心的事件中心（Apache Kafka 主题）
 事件中心通过分区使用者模式提供消息流式处理功能，在此模式下，每个使用者只读取消息流的特定子集或分区。 此模式支持事件处理的水平缩放，同时提供队列和主题中不可用的其他面向流的功能。 分区是事件中心内保留的有序事件。 当较新的事件到达时，它们将添加到此序列的末尾。 有关一般分区的详细信息，请参阅[分区](event-hubs-scalability.md#partitions)
@@ -33,7 +33,7 @@ Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespac
 ```
 
 ### <a name="cli"></a>CLI
-使用 [`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az-eventhubs-eventhub-update) CLI 命令更新事件中心中的分区。 
+使用 [`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az_eventhubs_eventhub_update) CLI 命令更新事件中心中的分区。 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12
@@ -71,7 +71,7 @@ az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-na
 
 - **分区发送方** - 在此方案中，客户端直接向分区发送事件。 尽管分区是可识别的并且可以直接向其发送事件，但我们不建议采用这种模式。 添加分区不会影响此方案。 建议重启应用程序，以便其能够检测新添加的分区。 
 - **分区密钥发送方** - 在此方案中，客户端使用密钥发送事件，以便属于该密钥的所有事件最终位于同一分区。 在这种情况下，服务将对密钥进行哈希处理，并路由到相应的分区。 由于哈希更改，分区计数更新可能导致出现乱序问题。 因此，如果在意排序，请在增加分区计数之前确保应用程序使用现有分区中的所有事件。
-- **轮循机制)  (默认值** –在此方案中，事件中心服务会将事件 robins 循环，并使用负载平衡算法。 事件中心服务可感知分区计数更改，并在分区计数更改后的几秒钟内发送到新的分区。
+- 轮循机制发送方（默认） - 在此方案中，事件中心服务以轮询方式向各分区发送事件，并且还使用负载均衡算法。 事件中心服务可感知分区计数更改，并在分区计数更改后的几秒钟内发送到新的分区。
 
 ### <a name="receiverconsumer-clients"></a>接收方/使用者客户端
 事件中心提供直接接收方和称为[事件处理器主机（旧 SDK）](event-hubs-event-processor-host.md)或[事件处理器（新 SDK）](event-processor-balance-partition-load.md)的简单使用者库。
@@ -99,10 +99,9 @@ az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-na
     > [!IMPORTANT]
     > 虽然现有数据保持了排序状态，但由于添加了分区，分区计数更改，因此在这之后哈希的消息的分区哈希将中断。
 - 在以下情况下，建议将分区添加到现有主题或事件中心实例：
-    - 使用发送事件的默认方法时
+    - 在使用默认的事件发送方法时
      - Kafka 默认分区策略，例如“粘滞分配器”策略
 
 
 ## <a name="next-steps"></a>后续步骤
 有关分区的详细信息，请参阅[分区](event-hubs-scalability.md#partitions)。
-

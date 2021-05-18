@@ -3,16 +3,16 @@ title: Azure 容器注册表中存储库的权限
 description: 创建一个令牌，使其权限范围限定于高级注册表中的特定存储库，用来拉取或推送映像，或执行其他操作
 ms.topic: article
 ms.date: 02/04/2021
-ms.openlocfilehash: ceec69d746f77ea7a23bc70d029c8b3736e7f292
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
-ms.translationtype: MT
+ms.openlocfilehash: 8cdcd3e09603f24c37ad7323a273ca97f76fcd0c
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988262"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930490"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>创建具有存储库范围权限的令牌
 
-本文介绍如何创建令牌和作用域映射，以管理对容器注册表中特定存储库的访问权限。 通过创建令牌，注册表所有者可以为用户或服务提供范围限定于存储库且有时间限制的访问权限，用来拉取或推送映像或执行其他操作。 令牌提供的权限比其他注册表[身份验证选项](container-registry-authentication.md)更精细，后者指定的权限范围是整个注册表。 
+本文介绍了如何创建令牌和范围映射，以便在容器注册表中管理对特定存储库的访问权限。 通过创建令牌，注册表所有者可以为用户或服务提供范围限定于存储库且有时间限制的访问权限，用来拉取或推送映像或执行其他操作。 令牌提供的权限比其他注册表[身份验证选项](container-registry-authentication.md)更精细，后者指定的权限范围是整个注册表。 
 
 适合创建令牌的场景包括：
 
@@ -61,7 +61,7 @@ ms.locfileid: "99988262"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 本文中 **Azure CLI** Azure CLI 的命令命令示例需要 Azure CLI 版本2.17.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+* **Azure CLI** - 本文中的 Azure CLI 命令示例需要 Azure CLI 2.17.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 * **Docker** - 若要对注册表进行身份验证以拉取或推送映像，你需要安装一个本地 Docker。 Docker 提供适用于 [macOS](https://docs.docker.com/docker-for-mac/)[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统的安装说明。
 * **容器注册表** - 如果没有，请在你的 Azure 订阅中创建一个高级容器注册表，或升级现有注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。 
 
@@ -76,10 +76,11 @@ ms.locfileid: "99988262"
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
   --repository samples/hello-world \
-  content/write content/read
+  content/write content/read \
+  --output json
 ```
 
-输出会显示有关令牌的详细信息。 默认情况下，将生成两个未过期的密码，但也可以选择设置过期日期。 建议将密码保存在安全的位置，以便以后将其用于身份验证。 无法再次检索这些密码，但可以生成新密码。
+输出会显示有关令牌的详细信息。 默认情况下，系统会生成两个不会过期的密码，但你可以根据需要设置过期日期。 建议将密码保存在安全的位置，以便以后将其用于身份验证。 无法再次检索这些密码，但可以生成新密码。
 
 ```console
 {
@@ -113,7 +114,7 @@ az acr token create --name MyToken --registry myregistry \
 ```
 
 > [!NOTE]
-> 若要重新生成令牌密码和有效期，请参阅本文稍后部分中的 " [重新生成令牌密码](#regenerate-token-passwords) "。
+> 若要重新生成令牌密码和有效期，请参阅本文后面的[重新生成令牌密码](#regenerate-token-passwords)。
 
 输出包含该命令创建的范围映射的详细信息。 可以使用范围映射（在此处名为 `MyToken-scope-map`）将相同的存储库操作应用于其他令牌。 或者，稍后更新范围映射以更改关联的令牌的权限。
 
@@ -141,7 +142,7 @@ az acr token create --name MyToken \
 输出会显示有关令牌的详细信息。 默认情况下，会生成两个密码。 建议将密码保存在安全的位置，以便以后将其用于身份验证。 无法再次检索这些密码，但可以生成新密码。
 
 > [!NOTE]
-> 若要重新生成令牌密码和有效期，请参阅本文稍后部分中的 " [重新生成令牌密码](#regenerate-token-passwords) "。
+> 若要重新生成令牌密码和有效期，请参阅本文后面的[重新生成令牌密码](#regenerate-token-passwords)。
 
 ## <a name="create-token---portal"></a>创建令牌 - 门户
 
@@ -198,7 +199,7 @@ az acr token create --name MyToken \
 
 ### <a name="pull-and-tag-test-images"></a>请求和标记测试映像
 
-对于以下示例，请 `hello-world` `nginx` 从 Microsoft 容器注册表中提取 public 和 images，并将其标记为注册表和存储库。
+以下示例从 Microsoft Container Registry 拉取公共 `hello-world` 和 `nginx` 映像，并针对你的注册表和存储库标记它们。
 
 ```bash
 docker pull mcr.microsoft.com/hello-world
@@ -285,7 +286,7 @@ docker pull myregistry.azurecr.io/samples/hello-world:v1
 
 通过将 `content/delete` 操作添加到 `nginx` 存储库可以更新范围映射。 此操作允许删除存储库中的映像或删除整个存储库。
 
-为简洁起见，我们仅显示用来更新范围映射的 [az acr scope-map update][az-acr-scope-map-update] 命令：
+为简洁起见，我们只显示用于更新范围映射的 [az acr scope map update][az-acr-scope-map-update] 命令：
 
 ```azurecli
 az acr scope-map update \
@@ -433,21 +434,21 @@ az acr token delete --name MyToken --registry myregistry
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
-[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-repository]: /cli/azure/acr/repository/
-[az-acr-repository-show-tags]: /cli/azure/acr/repository/#az-acr-repository-show-tags
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository/#az-acr-repository-show-manifests
-[az-acr-repository-delete]: /cli/azure/acr/repository/#az-acr-repository-delete
+[az-acr-repository-show-tags]: /cli/azure/acr/repository/#az_acr_repository_show_tags
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository/#az_acr_repository_show_manifests
+[az-acr-repository-delete]: /cli/azure/acr/repository/#az_acr_repository_delete
 [az-acr-scope-map]: /cli/azure/acr/scope-map/
-[az-acr-scope-map-create]: /cli/azure/acr/scope-map/#az-acr-scope-map-create
-[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az-acr-scope-map-show
-[az-acr-scope-map-show]: /cli/azure/acr/scope-map/#az-acr-scope-map-list
-[az-acr-scope-map-update]: /cli/azure/acr/scope-map/#az-acr-scope-map-update
-[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az-acr-scope-map-list
+[az-acr-scope-map-create]: /cli/azure/acr/scope-map/#az_acr_scope_map_create
+[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az_acr_scope_map_show
+[az-acr-scope-map-show]: /cli/azure/acr/scope-map/#az_acr_scope_map_list
+[az-acr-scope-map-update]: /cli/azure/acr/scope-map/#az_acr_scope_map_update
+[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az_acr_scope_map_list
 [az-acr-token]: /cli/azure/acr/token/
-[az-acr-token-show]: /cli/azure/acr/token/#az-acr-token-show
-[az-acr-token-list]: /cli/azure/acr/token/#az-acr-token-list
-[az-acr-token-delete]: /cli/azure/acr/token/#az-acr-token-delete
-[az-acr-token-create]: /cli/azure/acr/token/#az-acr-token-create
-[az-acr-token-update]: /cli/azure/acr/token/#az-acr-token-update
-[az-acr-token-credential-generate]: /cli/azure/acr/token/credential/#az-acr-token-credential-generate
+[az-acr-token-show]: /cli/azure/acr/token/#az_acr_token_show
+[az-acr-token-list]: /cli/azure/acr/token/#az_acr_token_list
+[az-acr-token-delete]: /cli/azure/acr/token/#az_acr_token_delete
+[az-acr-token-create]: /cli/azure/acr/token/#az_acr_token_create
+[az-acr-token-update]: /cli/azure/acr/token/#az_acr_token_update
+[az-acr-token-credential-generate]: /cli/azure/acr/token/credential/#az_acr_token_credential_generate

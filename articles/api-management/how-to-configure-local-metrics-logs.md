@@ -1,6 +1,6 @@
 ---
 title: 为 Azure API 管理自承载网关配置本地指标和日志 | Microsoft Docs
-description: 了解如何在 Kubernetes 群集上配置 Azure API 管理的本地指标和日志
+description: 了解如何为 Kubernetes 群集上的 Azure API 管理自承载网关配置本地指标和日志
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -10,25 +10,26 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 05/11/2021
 ms.author: apimpm
-ms.openlocfilehash: 2b66663c9ee8033bcb12bfac57964ea0eafecdac
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: a8199f88527cfd1417997c12f9d682be1c60a810
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594170"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784532"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>为 Azure API 管理自承载网关配置本地指标和日志
 
-本文详细介绍了如何配置 Kubernetes 群集上部署的 [自承载网关](./self-hosted-gateway-overview.md) 的本地指标和日志。 若要配置云指标和日志，请参阅[本文](how-to-configure-cloud-metrics-logs.md)。 
+本文详细介绍如何为 Kubernetes 群集上部署的[自承载网关](./self-hosted-gateway-overview.md)配置本地指标和日志。 若要配置云指标和日志，请参阅[本文](how-to-configure-cloud-metrics-logs.md)。
 
 ## <a name="metrics"></a>指标
-自承载网关支持 [StatsD](https://github.com/statsd/statsd)，它已成为指标收集和聚合的统一协议。 本部分介绍将 StatsD 部署到 Kubernetes 的完整步骤，包含配置网关以通过 StatsD 发出指标，以及使用 [Prometheus](https://prometheus.io/) 监视指标。 
+
+自承载网关支持 [StatsD](https://github.com/statsd/statsd)，它已成为指标收集和聚合的统一协议。 本部分介绍将 StatsD 部署到 Kubernetes 的完整步骤，包含配置网关以通过 StatsD 发出指标，以及使用 [Prometheus](https://prometheus.io/) 监视指标。
 
 ### <a name="deploy-statsd-and-prometheus-to-the-cluster"></a>将 StatsD 和 Prometheus 部署到群集
 
-下面是一个示例 YAML 配置，用于将 StatsD 和 Prometheus 部署到已部署自承载网关的 Kubernetes 群集。 它还会为每个群集创建一个[服务](https://kubernetes.io/docs/concepts/services-networking/service/)。 自承载网关会将指标发布到 StatsD 服务。 我们将通过 Prometheus 的服务访问其仪表板。   
+下面是一个示例 YAML 配置，用于将 StatsD 和 Prometheus 部署到已部署自承载网关的 Kubernetes 群集。 它还会为每个群集创建一个[服务](https://kubernetes.io/docs/concepts/services-networking/service/)。 自承载网关会将指标发布到 StatsD 服务。 我们将通过 Prometheus 的服务访问其仪表板。
 
 ```yaml
 apiVersion: v1
@@ -65,7 +66,7 @@ spec:
     spec:
       containers:
       - name: sputnik-metrics-statsd
-        image: mcr.microsoft.com/aks/hcp/prom/statsd-exporter
+        image: prom/statsd-exporter
         ports:
         - name: tcp
           containerPort: 9102
@@ -80,7 +81,7 @@ spec:
           - mountPath: /tmp
             name: sputnik-metrics-config-files
       - name: sputnik-metrics-prometheus
-        image: mcr.microsoft.com/oss/prometheus/prometheus
+        image: prom/prometheus
         ports:
         - name: tcp
           containerPort: 9090
@@ -128,7 +129,7 @@ spec:
 kubectl apply -f metrics.yaml
 ```
 
-部署完成后，运行以下命令以检查 Pod 是否正在运行。 请注意，你的 pod 名称与此不同。 
+部署完成后，运行以下命令以检查 Pod 是否正在运行。 请注意，你的 pod 名称与此不同。
 
 ```console
 kubectl get pods
@@ -171,11 +172,11 @@ sputnik-metrics-statsd       NodePort       10.0.41.179   <none>          8125:3
         telemetry.metrics.local.statsd.tag-format: "dogStatsD"
 ```
 
-通过上述配置更新自承载网关部署的 YAML 文件，并使用以下命令应用更改： 
+通过上述配置更新自承载网关部署的 YAML 文件，并使用以下命令应用更改：
 
 ```console
 kubectl apply -f <file-name>.yaml
- ```
+```
 
 若要选取最新的配置更改，请使用以下命令重启网关部署：
 
@@ -185,7 +186,7 @@ kubectl rollout restart deployment/<deployment-name>
 
 ### <a name="view-the-metrics"></a>查看指标
 
-现在，我们已部署并配置了所有内容，自承载网关应通过 StatsD 报告指标。 Prometheus 将从 StatsD 中选取指标。 使用 Prometheus 服务的 `EXTERNAL-IP` 和 `PORT` 转到 Prometheus 仪表板。 
+现在，我们已部署并配置了所有内容，自承载网关应通过 StatsD 报告指标。 Prometheus 将从 StatsD 中选取指标。 使用 Prometheus 服务的 `EXTERNAL-IP` 和 `PORT` 转到 Prometheus 仪表板。
 
 通过自承载网关进行一些 API 调用，如果所有内容都已正确配置，则应该能够查看以下指标：
 
@@ -204,16 +205,16 @@ kubectl rollout restart deployment/<deployment-name>
 kubectl logs <pod-name>
 ```
 
-如果自承载网关部署在 Azure Kubernetes 服务中，则可以启用[适用于容器的 Azure Monitor](../azure-monitor/containers/container-insights-overview.md)，以便从工作负载收集 `stdout` 和 `stderr` 并查看 Log Analytics 中的日志。 
+如果自承载网关部署在 Azure Kubernetes 服务中，则可以启用[适用于容器的 Azure Monitor](../azure-monitor/containers/container-insights-overview.md)，以便从工作负载收集 `stdout` 和 `stderr` 并查看 Log Analytics 中的日志。
 
-自承载网关还支持多种协议，包括 `localsyslog`、`rfc5424` 和 `journal`。 下表汇总了所有支持的选项。 
+自承载网关还支持多种协议，包括 `localsyslog`、`rfc5424` 和 `journal`。 下表汇总了所有支持的选项。
 
 | 字段  | 默认 | 说明 |
 | ------------- | ------------- | ------------- |
 | telemetry.logs.std  | `text` | 启用到标准流的日志记录。 值可以是 `none`、`text`、`json` |
 | telemetry.logs.local  | `none` | 启用本地日志记录。 值可以是 `none`、`auto`、`localsyslog`、`rfc5424`、`journal`  |
 | telemetry.logs.local.localsyslog.endpoint  | 不适用 | 指定 localsyslog 终结点。  |
-| telemetry.logs.local.localsyslog.facility  | 不适用 | 指定 localsyslog [设备代码](https://en.wikipedia.org/wiki/Syslog#Facility)。 例如，`7` 
+| telemetry.logs.local.localsyslog.facility  | 不适用 | 指定 localsyslog [设备代码](https://en.wikipedia.org/wiki/Syslog#Facility)。 例如，`7`
 | telemetry.logs.local.rfc5424.endpoint  | 不适用 | 指定 rfc5424 终结点。  |
 | telemetry.logs.local.rfc5424.facility  | 不适用 | 指定每个 [rfc5424](https://tools.ietf.org/html/rfc5424) 的设备代码。 例如，`7`  |
 | telemetry.logs.local.journal.endpoint  | 不适用 | 指定日志终结点。  |
@@ -231,7 +232,7 @@ kubectl logs <pod-name>
         telemetry.logs.local.localsyslog.endpoint: "/dev/log"
         telemetry.logs.local.localsyslog.facility: "7"
 ```
- 
+
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解自承载网关，请参阅 [Azure API 管理自承载网关概述](self-hosted-gateway-overview.md)

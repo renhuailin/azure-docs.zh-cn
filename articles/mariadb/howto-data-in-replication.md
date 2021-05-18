@@ -3,14 +3,14 @@ title: 配置数据传入复制 - Azure Database for MariaDB
 description: 本文介绍如何在 Azure Database for MariaDB 中设置数据传入复制。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/18/2021
-ms.openlocfilehash: ed1031bd45ca4f1223de9c0bce2053a393e3a2c6
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 67e4da13d6954342b9979eb57a35c812cb63bb3e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98665117"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中配置数据传入复制
@@ -25,11 +25,11 @@ ms.locfileid: "98665117"
 > 如果源服务器的版本为 10.2 或更高版本，我们建议使用[全局事务 ID](https://mariadb.com/kb/en/library/gtid/) 设置数据传入复制。
 
 > [!NOTE]
-> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>创建用作副本的 MariaDB 服务器
 
-1. 创建新的 Azure Database for MariaDB server (例如，replica.mariadb.database.azure.com) 。 在数据传入复制中，该服务器为副本服务器。
+1. 创建新的 Azure Database for MariaDB 服务器（例如，replica.mariadb.database.azure.com）。 在数据传入复制中，该服务器为副本服务器。
 
     若要了解如何创建服务器，请参阅[使用 Azure 门户创建 Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)。
 
@@ -52,9 +52,9 @@ ms.locfileid: "98665117"
 
 2. 请确保源服务器允许端口 3306 上的入站和出站流量，并且源服务器具有公共 IP 地址，DNS 可公开访问，或者 DNS 具有完全限定的域名 (FQDN)。 
 
-   通过尝试从其他计算机上托管的 MySQL 命令行或 Azure 门户中提供的 [Azure Cloud Shell](../cloud-shell/overview.md) ，测试与源服务器的连接。
+   通过尝试从工具（例如其他计算机上托管的 MySQL 命令行）或 Azure 门户中提供的 [Azure Cloud Shell](../cloud-shell/overview.md) 连接，测试与源服务器的连接。
 
-   如果你的组织具有严格的安全策略，并且不允许源服务器上的所有 IP 地址启用从 Azure 到源服务器的通信，则你可能会使用以下命令来确定 Azure Database for MariaDB 服务器的 IP 地址。
+   如果你的组织有严格的安全策略，并且不允许源服务器上的所有 IP 地址都能进行从 Azure 到源服务器的通信，那么你可能可以使用以下命令来确定 Azure Database for MariaDB 服务器的 IP 地址。
 
    1. 使用 MySQL 命令行之类的工具登录 Azure Database for MariaDB。
    2. 执行下面的查询。
@@ -94,7 +94,7 @@ ms.locfileid: "98665117"
 
 3. 启用二进制日志记录。
 
-    若要查看是否在主副本上启用了二进制日志记录，请输入以下命令：
+    若要查看是否已在主服务器上启用二进制日志记录，请输入以下命令：
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
@@ -177,7 +177,7 @@ ms.locfileid: "98665117"
 
    ![主机状态结果](./media/howto-data-in-replication/masterstatus.png)
 
-   请注意二进制文件名，因为后面的步骤会用到它。
+   请记下二进制文件名，因为后面的步骤中将要用到它。
 
 8. 获取 GTID 位置（可选，使用 GTID 复制时需要用到）。
 

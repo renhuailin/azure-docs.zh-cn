@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
 ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735720"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure 网络安全最佳做法
@@ -131,7 +131,7 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 在混合 IT 方案中，通常有某种类型的跨界连接。 跨界连接可让公司将其本地网络连接到 Azure 虚拟网络。 可用的跨界连接解决方案有两种：
 
 * [站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 它是一种值得信赖、可靠且成熟的技术，但连接是通过 Internet 进行的。 带宽限制在 1.25 Gbps 左右。 在某些情况下，站点到站点 VPN 是一个理想选择。
-* Azure ExpressRoute。 建议使用 [ExpressRoute](../../expressroute/expressroute-introduction.md) 进行跨界连接。 使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 借助 ExpressRoute，你可以与 Microsoft 云服务（如 Azure、Microsoft 365 和 Dynamics 365）建立连接。 ExpressRoute 是你本地位置与 Microsoft Exchange 托管提供商之间专用的 WAN 链接。 因为这是电信运营商连接，所以数据不会通过 Internet 传输，也不会暴露在 Internet 通信的潜在风险中。
+* Azure ExpressRoute。 建议使用 [ExpressRoute](../../expressroute/expressroute-introduction.md) 进行跨界连接。 使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Azure、Microsoft 365 和 Dynamics 365 等 Microsoft 云服务建立连接。 ExpressRoute 是你本地位置与 Microsoft Exchange 托管提供商之间专用的 WAN 链接。 因为这是电信运营商连接，所以数据不会通过 Internet 传输，也不会暴露在 Internet 通信的潜在风险中。
 
 ExpressRoute 连接的位置可能会影响防火墙容量、可伸缩性、可靠性和网络流量可见性。 需要确定在现有（本地）网络中终止 ExpressRoute 的位置。 可以：
 
@@ -196,17 +196,17 @@ ExpressRoute 连接的位置可能会影响防火墙容量、可伸缩性、可�
 - 专用的 WAN 链接通常更稳定且性能更佳。
 
 ## <a name="secure-your-critical-azure-service-resources-to-only-your-virtual-networks"></a>保护关键的 Azure 服务资源，只允许在客户自己的虚拟网络中对其进行访问
-使用 Azure 专用链接访问 Azure PaaS 服务 (例如，Azure 存储和 SQL 数据库) 通过虚拟网络中的专用终结点。 专用终结点允许你将关键 Azure 服务资源仅保护到虚拟网络。 从虚拟网络发往 Azure 服务的流量始终保留在 Microsoft Azure 主干网络中。 不再需要使用 Azure PaaS 服务将虚拟网络公开到公共 internet。 
+使用 Azure 专用链接通过你的虚拟网络中的专用终结点访问 Azure PaaS 服务（例如 Azure 存储和 SQL 数据库）。 使用专用终结点可保护你的关键 Azure 服务资源，只允许在你的虚拟网络中访问这些资源。 从虚拟网络发往 Azure 服务的流量始终保留在 Microsoft Azure 主干网络中。 无需再为了使用 Azure PaaS 服务而向公共 Internet 公开你的虚拟网络。 
 
-Azure Private Link 具有以下优势：
-- **提高 azure 服务资源的安全性**：借助 Azure 专用链接，可以使用专用终结点将 Azure 服务资源保护到虚拟网络。 将服务资源保护到虚拟网络中的专用终结点可通过完全删除资源的公共 internet 访问权限，并仅允许来自虚拟网络中专用终结点的流量，从而提高了安全性。
-- **在 azure 平台上私下访问 azure 服务资源**：使用专用终结点将虚拟网络连接到 azure 中的服务。 不需要公共 IP 地址。 专用链接平台将通过 Azure 主干网络处理使用者与服务之间的连接。
-- **从本地和对等互连网络访问**：通过 ExpressRoute 专用对等互连、VPN 隧道和使用专用终结点的对等互连虚拟网络，从本地在 Azure 中运行的访问服务。 无需配置 ExpressRoute Microsoft 对等互连或遍历 Internet 即可访问服务。 专用链接可让客户安全地将工作负荷迁移到 Azure。
+Azure 专用链接提供以下优势：
+- **提高了 Azure 服务资源的安全性**：通过 Azure 专用链接，可使用专用终结点在虚拟网络中保护 Azure 服务资源。 通过在虚拟网络中使用专用终结点保护服务资源，可完全消除通过公共 Internet 访问这些资源的需求，只允许来自你的虚拟网络中的专用终结点的流量，从而提高了安全性。
+- **在 Azure 平台上以私密方式访问 Azure 服务资源**：使用专用终结点将虚拟网络连接到 Azure 中的服务。 无需使用公共 IP 地址。 专用链接平台将通过 Azure 主干网络处理使用者与服务之间的连接。
+- **从本地网络和对等互连的网络进行访问**：使用专用终结点通过 ExpressRoute 专用对等互连、VPN 隧道和对等互连的虚拟网络从本地访问 Azure 中运行的服务。 无需配置 ExpressRoute Microsoft 对等互连或遍历 Internet 即可访问服务。 专用链接可让客户安全地将工作负荷迁移到 Azure。
 - **防范数据泄露**：专用终结点映射到 PaaS 资源的某个实例，而不是映射到整个服务。 使用者只能连接到特定的资源。 对服务中任何其他资源的访问将遭到阻止。 此机制可以防范数据泄露风险。
-- **全球覆盖**：以私密方式连接到在其他区域中运行的服务。 使用者的虚拟网络可以在区域 A 中，它可以连接到区域 B 中的服务。
-- **易于设置和管理**：你不再需要在虚拟网络中保留的公共 IP 地址来通过 IP 防火墙保护 Azure 资源。 设置专用终结点不需要 NAT 或网关设备。 专用终结点通过简单的工作流进行配置。 在服务端，你还可以轻松地管理 Azure 服务资源上的连接请求。 Azure 专用链接适用于属于不同 Azure Active Directory 租户的使用者和服务。 
+- **全球覆盖**：以私密方式连接到在其他区域中运行的服务。 使用者的虚拟网络可位于区域 A，而且可连接到区域 B 中的服务。
+- **轻松设置和管理**：不再需要使用虚拟网络中保留的公共 IP 地址通过 IP 防火墙保护 Azure 资源。 无需使用 NAT 或网关设备即可设置专用终结点。 通过简单的工作流配置专用终结点。 在服务端，你还可轻松管理 Azure 服务资源上的连接请求。 Azure 专用链接还适用于不同的 Azure Active Directory 租户中的使用者和服务。 
     
-若要了解有关专用终结点的详细信息以及可供使用的 Azure 服务和区域的详细信息，请参阅 [Azure Private Link](../../private-link/private-link-overview.md)。
+若要详细了解专用终结点及其适用的 Azure 服务和区域，请查看 [Azure 专用链接](../../private-link/private-link-overview.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

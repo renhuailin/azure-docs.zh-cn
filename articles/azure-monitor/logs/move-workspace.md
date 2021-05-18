@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
 ms.openlocfilehash: 8f48ed1aa7422d6925c3a7b0ad30b59a479e4614
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034942"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>将 Log Analytics 工作区移到其他订阅或资源组
@@ -39,8 +39,8 @@ ms.locfileid: "102034942"
 
 >[!IMPORTANT]
 > **Azure Sentinel 客户**
-> - 目前，Azure Sentinel 部署到工作区后，不支持将工作区移动到另一个资源组或订阅。 
-> - 如果已移动工作区，请禁用“分析”下的所有活动规则，并在五分钟后重新启用这些规则。 但在大多数情况下，这应该是一个有效的解决方案，不过，这是不受支持的，会自行承担。
+> - 目前，在工作区中部署 Azure Sentinel 后，不支持将工作区移到其他资源组或订阅。 
+> - 如果已移动工作区，请禁用“分析”下的所有活动规则，并在五分钟后重新启用这些规则。 重申一下，此解决方案在大多数情况下应该是有效的，但不支持这样做，风险由你自己承担。
 > 
 > **重新创建警报**
 > - 所有警报必须在移动后重新创建，因为权限基于工作区的 Azure 资源 ID，而该 ID 在工作区移动期间会更改。

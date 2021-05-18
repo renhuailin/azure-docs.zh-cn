@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 2987cd1ff8c678f7079e13e8b9bc657817c066f1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95531366"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>管理专用终结点连接
@@ -20,8 +20,8 @@ Azure 专用链接基于一个审批调用流模型工作，其中，专用链�
 ![管理专用终结点](media/manage-private-endpoint/manage-private-endpoint.png)
 
 专用链接服务使用者可以从两种连接审批方法中进行选择：
-- **自动**：如果服务使用者对服务提供者资源具有 Azure RBAC 权限，则使用者可以选择自动批准方法。 在这种情况下，当请求到达服务提供商资源时，不需要服务提供商执行任何操作，并且将自动批准连接。 
-- **手动**：相反，如果服务使用者没有针对服务提供商资源的 Azure RBAC 权限，则使用者可以选择手动批准方法。 在这种情况下，连接请求会以 **挂起** 状态出现在服务资源上。 服务提供商必须手动批准请求，然后才能建立连接。 在手动情况下，服务使用者还可以指定包含请求的消息来向服务提供商提供更多上下文。 服务提供商可以为所有专用终结点连接选择以下选项：**已批准**、**拒绝**、**删除**。
+- **自动**：如果服务使用者对服务提供商资源具有 Azure RBAC 权限，则使用者可以选择自动审批方法。 在这种情况下，当请求到达服务提供商资源时，不需要服务提供商执行任何操作，并且将自动批准连接。 
+- **手动**：另一方面，如果服务使用者对服务提供商资源没有 Azure RBAC 权限，则使用者可以选择手动审批方法。 在这种情况下，连接请求会以 **挂起** 状态出现在服务资源上。 服务提供商必须手动批准请求，然后才能建立连接。 在手动情况下，服务使用者还可以指定包含请求的消息来向服务提供商提供更多上下文。 服务提供商可以为所有专用终结点连接选择以下选项：**已批准**、**拒绝**、**删除**。
 
 下表显示了专用终结点的各种服务提供商操作和产生的连接状态。  服务提供商还可以在以后更改专用终结点连接的连接状态，不需要使用者干预。 此操作将更新使用者端的终结点状态。 
 
@@ -35,7 +35,7 @@ Azure 专用链接基于一个审批调用流模型工作，其中，专用链�
 |   |         |         |
    
 ## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>管理 Azure PaaS 资源上的专用终结点连接
-门户是用于管理 Azure PaaS 资源上的专用终结点连接的首选方法。 目前，我们没有 PowerShell/CLI 支持来管理 Azure PaaS 资源上的连接。
+门户是用于管理 Azure PaaS 资源上的专用终结点连接的首选方法。 目前，我们不支持使用 PowerShell/CLI 来管理 Azure PaaS 资源上的连接。
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
 2. 导航到“专用链接中心”。
 3. 在“资源”  下，选择要管理专用终结点连接的资源类型。
@@ -45,7 +45,7 @@ Azure 专用链接基于一个审批调用流模型工作，其中，专用链�
 
 ## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>管理客户/合作伙伴拥有的专用链接服务上的专用终结点连接
 
-Azure PowerShell 和 Azure CLI 是在 Microsoft 合作伙伴服务或客户拥有的服务上管理专用终结点连接的首选方法。 目前，我们没有任何门户支持来管理专用链接服务上的连接。  
+Azure PowerShell 和 Azure CLI 是用于管理 Microsoft 合作伙伴服务或客户拥有的服务上的专用终结点连接的首选方法。 目前，我们不支持使用门户来管理专用链接服务上的连接。  
  
 ### <a name="powershell"></a>PowerShell 
   

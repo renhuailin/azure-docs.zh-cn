@@ -1,6 +1,6 @@
 ---
-title: 'Microsoft Azure 地图移动服务 (预览版请求实时公共传输数据) '
-description: 了解如何在传输停止时请求实时公共传输数据，如抵达。 请参阅如何使用 Azure Maps 移动服务 (预览版) 实现此目的。
+title: 使用 Microsoft Azure Maps 出行服务（预览版）请求实时公共交通数据
+description: 了解如何请求实时公共交通数据，例如某个公交车站的车辆到站情况。 了解如何使用 Azure Maps 出行服务（预览版）来执行此操作。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -10,48 +10,48 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: d3e3dc4b0e3bc64a38856da8344583b744ea62b6
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96906040"
 ---
-# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>使用 Azure Maps 移动服务 (预览版请求实时公共传输数据)  
+# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>使用 Azure Maps 出行服务（预览版）请求实时公共交通数据 
 
 > [!IMPORTANT]
-> Azure Maps 移动服务目前为公共预览版。
+> Azure Maps 出行服务目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
-本文介绍如何使用 Azure Maps [移动服务](/rest/api/maps/mobility) 来请求实时公共传输数据。
+本文介绍如何使用 Azure Maps [出行服务](/rest/api/maps/mobility)来请求实时公共交通数据。
 
-在本文中，你将学习如何请求到达给定停止处的所有行的下一个实时到达
+在本文中，你将学习如何请求到达某个指定车站的所有车次的下一批实时到站情况
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-首先需要 Azure Maps 帐户和订阅密钥才能对 Azure Maps 公用传输 Api 进行任何调用。 有关信息，请按照 [创建帐户](quick-demo-map-app.md#create-an-azure-maps-account) 创建 Azure Maps 帐户中的说明进行操作。 按照 [获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account) 中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
+首先需要有 Azure Maps 帐户和订阅密钥才能对 Azure Maps 公共交通 API 进行调用。 如需相关信息，请按照[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)中的说明操作，以创建 Azure Maps 帐户。 请按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤操作，以获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
 本文使用 [Postman 应用](https://www.getpostman.com/apps)来构建 REST 调用。 可以使用你喜欢的任何 API 开发环境。
 
-## <a name="request-real-time-arrivals-for-a-stop"></a>请求停止的实时到达
+## <a name="request-real-time-arrivals-for-a-stop"></a>请求某个车站的实时到站情况
 
-为了请求特定公用传输停止的实时到达数据，需要向 Azure Maps[移动服务 (预览版) ](/rest/api/maps/mobility)的[实时到达 API](/rest/api/maps/mobility/getrealtimearrivalspreview)发出请求。 需要 **metroID** 和 **stopID** 来完成请求。 若要详细了解如何请求这些参数，请参阅有关如何 [请求公用传输路由](./how-to-request-transit-data.md)的指南。
+为了请求某个特定公交车站的实时到站数据，需要向 Azure Maps [出行服务（预览版）](/rest/api/maps/mobility)的[实时到站 API](/rest/api/maps/mobility/getrealtimearrivalspreview) 发出请求。 你需要 metroID 和 stopID 来完成该请求 。 若要详细了解如何请求这些参数，请参阅有关如何[请求公交线路](./how-to-request-transit-data.md)的指南。
 
-让我们使用 "522" 作为地铁 ID，这是 "西雅图– Tacoma – Bellevue，WA" 领域的地铁 ID。 使用 "522---2060603" 作为 "stop ID"，此总线将停止在 "Ne 24 日 St & 162nd，Bellevue WA"。 若要请求接下来的五个实时到达数据，则在此停止时，请完成以下步骤：
+我们使用“522”作为 metroID，这是“华盛顿州西雅图–塔科马–贝尔维尤”地区的 metroID。 使用“522---2060603”作为 stopID，此车站位于“Ne 24th St & 162nd Ave Ne, Bellevue WA”。 若要针对这一站所有接下来的实时到站来请求接下来的五批实时到站数据，请完成以下步骤：
 
-1. 打开 Postman 应用，让我们创建一个集合来存储请求。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。
+1. 打开 Postman 应用，创建用于存储这些请求的集合。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。
 
-2. 若要创建请求，请再次选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 选择你在上一步中创建的集合，作为要保存请求的位置。 然后选择“保存”。
+2. 若要创建请求，请再次选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 选择在上一步创建的集合，作为保存请求的位置。 然后选择“保存”。
 
     ![在 Postman 中创建请求](./media/how-to-request-transit-data/postman-new.png)
 
-3. 在 "生成器" 选项卡上选择 " **获取** HTTP" 方法，然后输入以下 URL 创建 GET 请求。 `{subscription-key}`将替换为 Azure Maps 的主键。
+3. 在生成器选项卡上选择 GET HTTP 方法，并输入以下 URL 来创建 GET 请求。 将 `{subscription-key}` 替换为 Azure Maps 主密钥。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus
     ```
 
-4. 成功请求后，会收到以下响应。  请注意，参数 "scheduleType" 定义了预计的到达时间是基于实时数据还是静态数据。
+4. 在请求成功之后，会收到以下响应。  请注意，参数“scheduleType”定义预计的到站时间是基于实时数据还是静态数据。
 
     ```JSON
     {
@@ -118,12 +118,12 @@ ms.locfileid: "96906040"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用移动服务 (预览) 请求传输数据：
+了解如何使用出行服务（预览版）来请求交通数据：
 
 > [!div class="nextstepaction"]
-> [如何请求传输数据](how-to-request-transit-data.md)
+> [如何请求交通数据](how-to-request-transit-data.md)
 
-浏览 Azure Maps 移动服务 (预览版) API 文档：
+浏览 Azure Maps 出行服务（预览版）API 文档：
 
 > [!div class="nextstepaction"]
-> [移动服务 API 文档](/rest/api/maps/mobility)
+> [出行服务 API 文档](/rest/api/maps/mobility)

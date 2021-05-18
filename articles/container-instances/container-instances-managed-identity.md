@@ -3,12 +3,12 @@ title: 在容器组中启用托管标识
 description: 了解如何在 Azure 容器实例中启用可使用其他 Azure 服务进行身份验证的托管标识
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: a0d029e39122ca7bb858103f4d7f88e2536850d5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: f8f3c646487d86f4e1bce13ccbf28992b8b1497a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198313"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763977"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -53,13 +53,13 @@ Azure 容器实例支持以下两种类型的 Azure 托管标识：用户分配�
 
 本文中示例使用 Azure 容器实例中的托管标识来访问 Azure Key Vault 机密。 
 
-首先，使用以下 [az group create](/cli/azure/group#az-group-create) 命令在 eastus 位置中创建一个名为“myResourceGroup”的资源组：
+首先，使用以下 [az group create](/cli/azure/group#az_group_create) 命令在 eastus 位置中创建一个名为“myResourceGroup”的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create) 命令创建 Key Vault。 请务必指定唯一的 Key Vault 名称。 
+使用 [az keyvault create](/cli/azure/keyvault#az_keyvault_create) 命令创建 Key Vault。 请务必指定唯一的 Key Vault 名称。 
 
 ```azurecli-interactive
 az keyvault create \
@@ -68,7 +68,7 @@ az keyvault create \
   --location eastus
 ```
 
-使用 [az keyvault secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set) 命令在 Key Vault 中存储实例机密：
+使用 [az keyvault secret set](/cli/azure/keyvault/secret#az_keyvault_secret_set) 命令在 Key Vault 中存储实例机密：
 
 ```azurecli-interactive
 az keyvault secret set \
@@ -83,7 +83,7 @@ az keyvault secret set \
 
 ### <a name="create-an-identity"></a>创建标识
 
-首先使用 [az identity create](/cli/azure/identity#az-identity-create) 命令在订阅中创建标识。 可以使用用于创建 Key Vault 的相同资源组，也可以使用不同的资源组。
+首先使用 [az identity create](/cli/azure/identity#az_identity_create) 命令在订阅中创建标识。 可以使用用于创建 Key Vault 的相同资源组，也可以使用不同的资源组。
 
 ```azurecli-interactive
 az identity create \
@@ -91,7 +91,7 @@ az identity create \
   --name myACIId
 ```
 
-若要在以下步骤中使用标识，请使用 [az identity show](/cli/azure/identity#az-identity-show) 命令在变量中存储标识的服务主体 ID 和资源 ID。
+若要在以下步骤中使用标识，请使用 [az identity show](/cli/azure/identity#az_identity_show) 命令在变量中存储标识的服务主体 ID 和资源 ID。
 
 ```azurecli-interactive
 # Get service principal ID of the user-assigned identity
@@ -121,7 +121,7 @@ resourceID=$(az identity show \
 
 ### <a name="enable-user-assigned-identity-on-a-container-group"></a>在容器组中启用用户分配的标识
 
-运行以下 [az container create](/cli/azure/container#az-container-create) 命令，创建基于 Microsoft 映像的容器实例 `azure-cli` 。 此示例提供了单一容器组，可用于以交互方式运行 Azure CLI 以访问其他 Azure 服务。 在本部分中，只使用基本操作系统。 有关在容器中使用 Azure CLI 的示例，请参阅[在容器组中启用系统分配的标识](#enable-system-assigned-identity-on-a-container-group)。 
+运行以下 [az container create](/cli/azure/container#az_container_create) 命令，基于 Microsoft 的 `azure-cli` 映像创建容器实例。 此示例提供了单一容器组，可用于以交互方式运行 Azure CLI 以访问其他 Azure 服务。 在本部分中，只使用基本操作系统。 有关在容器中使用 Azure CLI 的示例，请参阅[在容器组中启用系统分配的标识](#enable-system-assigned-identity-on-a-container-group)。 
 
 `--assign-identity` 参数将用户分配的托管标识传递到组。 长时间运行命令将使容器保持运行状态。 此示例使用用于创建 Key Vault 的相同资源组，但可以指定不同的资源组。
 
@@ -134,7 +134,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-在几秒钟内，你应当会从 Azure CLI 收到响应，它指出部署已完成。 使用 [az container show](/cli/azure/container#az-container-show) 命令检查它的状态。
+在几秒钟内，你应当会从 Azure CLI 收到响应，它指出部署已完成。 使用 [az container show](/cli/azure/container#az_container_show) 命令检查它的状态。
 
 ```azurecli-interactive
 az container show \
@@ -190,7 +190,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-现在使用访问令牌对密钥保管库进行身份验证并读取机密。 请确保将 URL 中的密钥保管库名称替换 (*https： \/ /mykeyvault.vault.azure.net/*) ：
+现在使用访问令牌对密钥保管库进行身份验证并读取机密。 请确保替换 URL 中的密钥保管库名称 (https:\//mykeyvault.vault.azure.net/…)：
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -206,7 +206,7 @@ curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-1
 
 ### <a name="enable-system-assigned-identity-on-a-container-group"></a>在容器组中启用系统分配的标识
 
-运行以下 [az container create](/cli/azure/container#az-container-create) 命令，创建基于 Microsoft 映像的容器实例 `azure-cli` 。 此示例提供了单一容器组，可用于以交互方式运行 Azure CLI 以访问其他 Azure 服务。 
+运行以下 [az container create](/cli/azure/container#az_container_create) 命令，基于 Microsoft 的 `azure-cli` 映像创建容器实例。 此示例提供了单一容器组，可用于以交互方式运行 Azure CLI 以访问其他 Azure 服务。 
 
 没有任何附加值的 `--assign-identity` 参数在组上启用系统分配的托管标识。 标识的范围限定为容器组的资源组。 长时间运行命令将使容器保持运行状态。 此示例使用用于创建密钥保管库的相同资源组，该资源组在此标识的范围内。
 
@@ -223,7 +223,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-在几秒钟内，你应当会从 Azure CLI 收到响应，它指出部署已完成。 使用 [az container show](/cli/azure/container#az-container-show) 命令检查它的状态。
+在几秒钟内，你应当会从 Azure CLI 收到响应，它指出部署已完成。 使用 [az container show](/cli/azure/container#az_container_show) 命令检查它的状态。
 
 ```azurecli-interactive
 az container show \
@@ -394,4 +394,4 @@ identity:
 
 * 详细了解 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/index.yml)。
 
-* 请参阅 [Azure 中转 SDK 示例](https://medium.com/@samkreter/c98911206328) ，了解如何使用托管标识从 Azure 容器实例中访问密钥保管库。
+* 要了解如何使用托管标识从 Azure 容器实例访问密钥保管库，请参阅 [Azure Go SDK 示例](https://medium.com/@samkreter/c98911206328)。

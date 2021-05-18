@@ -1,17 +1,17 @@
 ---
 title: 服务器参数 - Azure Database for MySQL 灵活服务器
 description: 本主题提供了在 Azure Database for MySQL 灵活服务器中配置服务器参数的准则。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 58978f120578afeca129b0d8928713835def8418
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d64dc4f3c034279aee7401503bbb60883c9ed4e7
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94496533"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492233"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL 灵活服务器中的服务器参数
 
@@ -39,9 +39,11 @@ Azure Database for MySQL 灵活服务器公开了通过 [Azure 门户](./how-to-
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-在 Azure Database for MySQL 灵活服务器中，始终启用二进制日志（即 `log_bin` 设置为“开启”）。 如果你想使用触发器，则会收到如下错误：“你没有 SUPER 权限且二进制日志记录已启用(你可能需要使用安全性更低的 `log_bin_trust_function_creators` 变量)”。 
+在 Azure Database for MySQL 灵活服务器中，始终启用二进制日志（即 `log_bin` 设置为“开启”）。 在灵活服务器中，log_bin_trust_function_creators 默认设置为“开启”。 
 
-二进制日志记录格式始终是“行”，所有与服务器的连接始终使用基于行的二进制日志记录。 使用基于行的二进制日志记录时，不存在安全问题并且二进制日志记录无法中断，因此可以安全地将 [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) 设置为 TRUE。
+二进制日志记录格式始终是“行”，所有与服务器的连接始终使用基于行的二进制日志记录。 使用基于行的二进制日志记录时，不存在安全问题并且二进制日志记录无法中断，因此可以安全地使 [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) 保留为“开启”。
+
+如果 [`log_bin_trust_function_creators`] 设置为“关闭”，如果你尝试创建触发器，可能会收到如下错误消息：你没有“超级”权限且二进制日志记录已启用(你可能需要使用安全性更低的 `log_bin_trust_function_creators` 变量)”。 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 

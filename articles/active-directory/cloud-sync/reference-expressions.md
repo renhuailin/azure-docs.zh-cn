@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 云同步表达式和函数引用
+title: Azure AD Connect 云同步表达式和函数参考
 description: reference
 services: active-directory
 author: billmath
@@ -12,14 +12,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 869d60d4ccb3bae58924fe4221f83b1b0125ae04
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98613031"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
-配置云同步时，可指定的属性映射类型之一是表达式映射。 
+配置云同步时，可以指定的属性映射类型之一是表达式映射。 
 
 通过表达式映射，可以使用类似于脚本的表达式来自定义属性。  这样，便可以将本地数据转换为新的或不同的值。  例如，你可能需要将两个属性合并成单个属性，因为某个云应用程序需使用此单个属性。
 
@@ -34,20 +34,20 @@ ms.locfileid: "98613031"
 * 可以将三种不同类型的参数传递给函数：
   
   1. 属性，必须括在方括号中。 例如：[attributeName]
-  2. 字符串常量必须括在双引号内。 例如："United States"
+  2. 字符串常量必须括在双引号内。 例如："美国"
   3. 其他函数。 例如：FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
-* 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如：“Company name:\\"Contoso\\"”
+* 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如："Company name: \\"Contoso\\""
 
 ## <a name="list-of-functions"></a>函数列表
-| 函数列表 | 说明 |
+| 函数列表 | 描述 |
 |-----|----|
-|[Append](#append)|获取源字符串值，并将后缀附加到其末尾。|
+|[追加](#append)|获取源字符串值，并将后缀附加到其末尾。|
 |[BitAnd](#bitand)|BitAnd 函数设置值的指定位。|
 |[CBool](#cbool)|CBool 函数基于计算的表达式返回布尔值|
 |[ConvertFromBase64](#convertfrombase64)|ConvertFromBase64 函数将指定的 base64 编码值转换为规则的字符串。|
 |[ConvertToBase64](#converttobase64)|ConvertToBase64 函数将字符串转换为 Unicode base64 字符串。 |
 |[ConvertToUTF8Hex](#converttoutf8hex)|ConvertToUTF8Hex 函数将字符串转换为 UTF8 Hex 编码的值。|
-|[Count](#count)|Count 函数返回多值属性中的元素数量|
+|[计数](#count)|Count 函数返回多值属性中的元素数量|
 |[Cstr](#cstr)|CStr 函数转换为字符串数据类型。|
 |[DateFromNum](#datefromnum)|DateFromNum 函数将 AD 的日期格式的值转换为 DateTime 类型。|
 |[DNComponent](#dncomponent)|DNComponent 函数返回从左边起的指定 DN 组件的值。|
@@ -60,27 +60,27 @@ ms.locfileid: "98613031"
 |[IsNullOrEmpty](#isnullorempty)|如果表达式为 null 或空字符串，则 IsNullOrEmpty 函数返回 true。|         
 |[IsPresent](#ispresent)|如果表达式的计算结果为字符串，该字符串不是 Null 且不为空，则 IsPresent 函数返回 true。|    
 |[IsString](#isstring)|如果表达式可以计算为字符串类型，则 IsString 函数计算结果为 True。|
-|[项](#item)|Item 函数返回多值字符串/属性中的一个项。|
-|[Join](#join) |Join() 类似于 Append()，只不过它可以将多个 **source** 字符串值组合到单个字符串中，且每个值由 **separator** 字符串分隔。| 
+|[项目](#item)|Item 函数返回多值字符串/属性中的一个项。|
+|[Join](#join) |Join() 类似于 Append()，不同的是，它可以将多个 **source** 字符串值组合成单个字符串，每个值将由 **separator** 字符串分隔。| 
 |[Left](#left)|Left 函数从字符串左侧起返回指定的字符数。|
 |[Mid](#mid) |返回源值的子字符串。 子字符串是一个只包含源字符串中某些字符的字符串。|
 |[NormalizeDiacritics](#normalizediacritics)|需要一个字符串参数。 返回字符串，但将任何标注字符替换为等效的非标注字符。|
-|[Not](#not) |翻转 **source** 的布尔值。 如果 **source** 值为“*True*”，则返回“*False*”。 否则，返回“*True*”。| 
+|[Not](#not) |对 **source** 的布尔值取反。 如果 **source** 值为 *True*，则返回 *False*。 反之，则返回 *True*。| 
 |[RemoveDuplicates](#removeduplicates)|RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值。| 
-|[替换](#replace) |替换字符串中的值。 | 
+|[将](#replace) |替换字符串中的值。 | 
 |[SelectUniqueValue](#selectuniquevalue)|需要至少两个参数，这些参数是使用表达式定义的唯一值生成规则。 此函数会评估每个规则，然后在目标应用/目录中检查生成的值的唯一性。| 
 |[SingleAppRoleAssignment](#singleapproleassignment)|对于给定的应用程序，从向一个用户分配的所有 appRoleAssignments 列表中返回单个 appRoleAssignment。| 
-|[Split](#split)|使用指定的分隔符字符，将字符串拆分为多值数组。|
-|[StringFromSID](#stringfromsid)|StringFromSid 函数将包含安全标识符的字节数组转换为字符串。| 
+|[拆分](#split)|使用指定的分隔符字符，将字符串拆分为多值数组。|
+|[StringFromSID](#stringfromsid)|StringFromSid 函数包含安全标识符的字节数组转换为字符串。| 
 |[StripSpaces](#stripspaces) |从源字符串中删除所有空格 (" ") 字符。| 
-|[开关](#switch)|当 **source** 值匹配 **key** 时，会返回用于该 **key** 的 **value**。 | 
-|[ToLower](#tolower)|采用源  字符串值并用指定的区域性规则将其转换为小写。| 
-|[ToUpper](#toupper)|采用源  字符串值并用指定的区域性规则将其转换为大写。|
+|[Switch](#switch)|当 **source** 值与一个 **key** 匹配时，返回该 **key** 所对应的 **value**。 | 
+|[ToLower](#tolower)|采用源字符串值并用指定的区域性规则将其转换为小写。| 
+|[ToUpper](#toupper)|采用源字符串值并用指定的区域性规则将其转换为大写。|
 |[Trim](#trim)|Trim 函数从字符串中删除前导空格和尾随空格。|
 |[Word](#word)|基于描述要使用的分隔符与要返回的单词数的参数，Word 函数返回字符串中包含的单词。|
 
 ---
-### <a name="append"></a>附加
+### <a name="append"></a>追加
 **函数：**<br> Append(source, suffix)
 
 **说明：**<br> 获取源字符串值，并将后缀附加到其末尾。
@@ -89,8 +89,8 @@ ms.locfileid: "98613031"
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | **源 (source)** |必选 |String |通常是来自源对象的属性的名称。 |
-   | **suffix** |必选 |String |要附加到源值末尾的字符串。 |
+   | **source** |必须 |String |通常是来自源对象的属性的名称。 |
+   | **suffix** |必须 |String |要附加到源值末尾的字符串。 |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -105,7 +105,7 @@ BitAnd 函数设置值的指定位。
 **备注：**  
 此函数将两个参数转换为二进制表示形式，并将位设置为：
 
-* 0 - 如果 *value1* 和 *value2* 中的一个或两个对应位为 0
+* 0 - 如果 *value1* 和 *value2* 中的一个或两个相应位为 0
 * 1 - 如果两个相应位均为 1。
 
 换而言之，除了当两个参数的相应位均为 1 时之外，所有情况下均返回 0。
@@ -179,7 +179,7 @@ ConvertToUTF8Hex 函数将字符串转换为 UTF8 Hex 编码的值。
 返回 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>计数
 **说明：**  
 Count 函数返回多值属性中的元素数量
 
@@ -224,11 +224,11 @@ DNComponent 函数返回从左边起的指定 DN 组件的值。
 `str DNComponent(ref dn, num ComponentNumber)`
 
 * dn：要解释的引用属性
-* ComponentNumber：DN 中要返回的组件
+* ComponentNumber：要返回的 DN 中的组件
 
 **示例：**  
 `DNComponent(CRef([dn]),1)`  
-如果 dn 为“cn=Joe,ou=…”，则返回 Joe
+如果 dn 为 "cn=Joe,ou=…,"，则返回 Joe
 
 ---
 ### <a name="error"></a>错误
@@ -252,9 +252,9 @@ Error 函数用于返回自定义错误。
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | **源 (source)** |必选 |String |通常是来自源对象的属性的名称。 |
-   | **inputFormat** |必选 |String |源值的预期格式。 有关支持的格式，请参阅 [/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
-   | **outputFormat** |必选 |String |输出日期的格式。 |
+   | **source** |必须 |String |通常是来自源对象的属性的名称。 |
+   | **inputFormat** |必须 |String |源值的预期格式。 有关支持的格式，请参阅 [/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+   | **outputFormat** |必须 |String |输出日期的格式。 |
 
 ---
 ### <a name="guid"></a>Guid
@@ -331,7 +331,7 @@ InStr 函数查找字符串中第一次出现的子字符串
 
 **备注：**  
 对于属性，如果属性不存在，或存在但为空字符串，此语法计算结果则为 True。  
-此函数的逆函数被命名为 IsPresent。
+此函数的逆函数命名为 IsPresent。
 
 **示例：**  
 `IsNullOrEmpty([displayName])`  
@@ -352,7 +352,7 @@ InStr 函数查找字符串中第一次出现的子字符串
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
-### <a name="item"></a>Item
+### <a name="item"></a>项目
 **说明：**  
 Item 函数返回多值字符串/属性中的一个项。
 
@@ -383,10 +383,10 @@ Item 函数与 Contains 函数一起使用很有利，因为后一函数返回�
 用来确定 CStr() 是否能成功分析表达式。
 
 ---
-### <a name="join"></a>Join
+### <a name="join"></a>联接
 **函数：**<br> Join(separator, source1, source2, …)
 
-**说明：**<br> Join() 类似于 Append()，只不过它可以将多个 **source** 字符串值组合到单个字符串中，且每个值由 **separator** 字符串分隔。
+**说明：**<br> Join() 类似于 Append()，不同的是，它可以将多个 **source** 字符串值组合成单个字符串，每个值将由 **separator** 字符串分隔。
 
 如果其中一个源值是多值属性，那么该属性中的每个值都将联接在一起，由分隔符值分隔。
 
@@ -394,8 +394,8 @@ Item 函数与 Contains 函数一起使用很有利，因为后一函数返回�
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | separator  |必选 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
-   | **source1  … sourceN** |必选，次数可变 |String |要联接在一起的字符串值。 |
+   | separator  |必须 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
+   | **source1  … sourceN** |必选，次数可变 |字符串 |要联接在一起的字符串值。 |
 
 ---
 ### <a name="left"></a>Left
@@ -431,9 +431,9 @@ Left 函数从字符串左侧起返回指定的字符数。
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | **源 (source)** |必选 |String |通常是属性的名称。 |
-   | **start** |必选 |integer |**source** 字符串中的索引，子字符串应从此处开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
-   | **length** |必选 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
+   | **source** |必须 |String |通常是属性的名称。 |
+   | **start** |必需 |整型 |**source** 字符串中的索引，子字符串应从这里开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
+   | **length** |必需 |整型 |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -445,19 +445,19 @@ Left 函数从字符串左侧起返回指定的字符数。
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | **源 (source)** |必选 |String | 通常是名字或姓氏属性。 |
+   | **source** |必须 |String | 通常是名字或姓氏属性。 |
 
 ---
 ### <a name="not"></a>Not
 **函数：**<br> Not(source)
 
-**说明：**<br> 翻转 **source** 的布尔值。 如果 **source** 值为“*True*”，则返回“*False*”。 否则，返回“*True*”。
+**说明：**<br> 对 **source** 的布尔值取反。 如果 **source** 值为 *True*，则返回 *False*。 反之，则返回 *True*。
 
 **参数：**<br> 
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | **源 (source)** |必选 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
+   | **source** |必需 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
 ---
 ### <a name="removeduplicates"></a>RemoveDuplicates
@@ -472,18 +472,18 @@ RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值
 返回净化的 proxyAddress 属性，其中所有重复值已被删除。
 
 ---
-### <a name="replace"></a>将
+### <a name="replace"></a>Replace
 **函数：**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **说明：**<br>
 替换字符串中的值。 其工作方式取决于提供的参数：
 
-* 当提供 **oldValue** 和 **replacementValue** 时：
+* 当提供了 **oldValue** 和 **replacementValue** 时：
   
   * 将 **source** 中出现的所有 **oldValue** 替换为 **replacementValue**
-* 当提供 **oldValue** 和 **template** 时：
+* 当提供了 **oldValue** 和 **template** 时：
   
-  * 将 **template** 中出现的所有 **oldValue** 都替换为 **source** 值
+  * 将 **template** 中出现的所有 **oldValue** 替换为 **source** 值
 * 如果已提供 **regexPattern** 和 **replacementValue**：
 
   * 函数将 **regexPattern** 应用到 **source** 字符串，你可以使用 regex 组名称来构造 **replacementValue** 的字符串。
@@ -499,13 +499,13 @@ RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | **源 (source)** |必选 |String |通常是 **source** 对象中的属性的名称。 |
-   | **oldValue** |可选 |String |要在 **source** 或 **template** 中替换的值。 |
-   | **regexPattern** |可选 |String |要在 **source** 中替换的值的正则表达式模式。 或者，当使用 **replacementPropertyName** 时，从 **replacementPropertyName** 中提取值的模式。 |
-   | **regexGroupName** |可选 |String |**regexPattern** 中的组名称。 仅当使用 **replacementPropertyName** 时，才会从 **replacementPropertyName** 中以 **replacementValue** 的形式提取此组的值。 |
-   | **replacementValue** |可选 |String |用于替换旧值的新值。 |
-   | **replacementAttributeName** |可选 |String |用于替换值的属性的名称 |
-   | **template** |可选 |String |当提供 **template** 值时，会在模板中查找 **oldValue** 并将其替换为 **source** 值。 |
+   | **source** |必须 |String |通常是 **source** 对象中的属性的名称。 |
+   | **oldValue** |可选 |字符串 |要在 **source** 或 **template** 中替换的值。 |
+   | **regexPattern** |可选 |字符串 |**source** 中要替换的值的正则表达式模式。 或者，当使用 **replacementPropertyName** 时，从 **replacementPropertyName** 中提取值的模式。 |
+   | **regexGroupName** |可选 |字符串 |**regexPattern** 中的组名称。 仅当使用 **replacementPropertyName** 时，才会从 **replacementPropertyName** 中以 **replacementValue** 的形式提取此组的值。 |
+   | **replacementValue** |可选 |字符串 |用于替换旧值的新值。 |
+   | **replacementAttributeName** |可选 |字符串 |用于替换值的属性的名称 |
+   | **template** |可选 |字符串 |当提供 **template** 值时，会在模板中查找 **oldValue** 并将其替换为 **source** 值。 |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -516,7 +516,7 @@ RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值
 > [!NOTE]
 > - 这是一个顶级函数，不能嵌套。
 > - 此函数不能应用到具有匹配优先级的属性。  
-> - 此函数仅供用于创建条目。 将其与属性一起使用时，请将“应用映射”  属性设置为“仅在创建对象期间”。 
+> - 此函数仅供用于创建条目。 将其与属性一起使用时，请将“应用映射”属性设置为“仅在创建对象期间”。
 > - 目前只有“Workday 到 Active Directory 的用户预配”支持此函数。 此函数不可用于其他预配应用程序。 
 
 
@@ -524,7 +524,7 @@ RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |String | 要评估的唯一值生成规则的列表。 |
+   | **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |字符串 | 要评估的唯一值生成规则的列表。 |
 
 
 ---
@@ -537,7 +537,7 @@ RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值
 
   | 名称 | 必选/重复 | 类型 | 说明 |
   |--- | --- | --- | --- |
-  | **[appRoleAssignments]** |必选 |String |**[appRoleAssignments]** 对象。 |
+  | **[appRoleAssignments]** |必须 |String |**[appRoleAssignments]** 对象。 |
 
 ---
 ### <a name="split"></a>拆分
@@ -549,13 +549,13 @@ RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | **源 (source)** |必选 |String |要更新的 **source** 值。 |
-   | **delimiter** |必选 |String |指定将用来拆分字符串的字符（示例：“,”） |
+   | **source** |必须 |String |要更新的 **source** 值。 |
+   | **delimiter** |必须 |String |指定将用来拆分字符串的字符（示例：“,”） |
 
 ---
 ### <a name="stringfromsid"></a>StringFromSid
 **说明：**  
-StringFromSid 函数将包含安全标识符的字节数组转换为字符串。
+StringFromSid 函数包含安全标识符的字节数组转换为字符串。
 
 **语法：**  
 `str StringFromSid(bin ObjectSID)`  
@@ -570,49 +570,49 @@ StringFromSid 函数将包含安全标识符的字节数组转换为字符串。
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | **源 (source)** |必选 |String |要更新的 **source** 值。 |
+   | **source** |必须 |String |要更新的 **source** 值。 |
 
 ---
 ### <a name="switch"></a>开关
 **函数：**<br> Switch(source, defaultValue, key1, value1, key2, value2, …)
 
-**说明：**<br> 当 **source** 值匹配 **key** 时，会返回用于该 **key** 的 **value**。 如果 **source** 值不匹配任何键，则返回 **defaultValue**。  **Key** 和 **value** 参数必须始终成对出现。 该函数始终需要偶数个参数。
+**说明：**<br> 当 **source** 值与一个 **key** 匹配时，返回该 **key** 所对应的 **value**。 当 **source** 值未与任何 key 匹配时，则返回 **defaultValue**。  **Key** 和 **value** 参数必须始终成对出现。 该函数始终需要偶数个参数。
 
 **参数：**<br> 
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | **源 (source)** |必选 |String |要检查的 **Source** 值。 |
-   | **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
-   | **键** |必选 |String |用来比较 **source** 值的 **key**。 |
-   | **value** |必选 |String |与该 key 匹配的 **source** 的替换值。 |
+   | **source** |必须 |String |要检查的 **Source** 值。 |
+   | **defaultValue** |可选 |字符串 |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
+   | key  |必须 |String |用来比较 **source** 值的 **key**。 |
+   | value  |必须 |String |与该 key 匹配的 **source** 的替换值。 |
 
 ---
 ### <a name="tolower"></a>ToLower
 **函数：**<br> ToLowe（源、区域性）
 
-**说明：**<br> 采用源  字符串值并用指定的区域性规则将其转换为小写。 如果没有指定任何区域性  信息，则使用固定区域性。
+**说明：**<br> 采用源字符串值并用指定的区域性规则将其转换为小写。 如果没有指定任何区域性信息，则使用固定区域性。
 
 **参数：**<br> 
 
    | 名称 | 必选/重复 | 类型 | 说明 |
    | --- | --- | --- | --- |
-   | **源 (source)** |必选 |String |通常是来自源对象的属性的名称 |
-   | **区域性** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2  ，其中 languagecode2  是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码  。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+   | **source** |必须 |String |通常是来自源对象的属性的名称 |
+   | **culture** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ---
 
 ### <a name="toupper"></a>ToUpper
 **函数：**<br> ToUpper（源、区域性）
 
-**说明：**<br> 采用源  字符串值并用指定的区域性规则将其转换为大写。 如果没有指定任何区域性  信息，则使用固定区域性。
+**说明：**<br> 采用源字符串值并用指定的区域性规则将其转换为大写。 如果没有指定任何区域性信息，则使用固定区域性。
 
 **参数：**<br> 
 
   | 名称 | 必选/重复 | 类型 | 说明 |
   | --- | --- | --- | --- |
-  | **源 (source)** |必选 |String |通常是来自源对象的属性的名称。 |
-  | **区域性** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2  ，其中 languagecode2  是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码  。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+  | **source** |必须 |String |通常是来自源对象的属性的名称。 |
+  | **culture** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ---
 
@@ -625,7 +625,7 @@ Trim 函数从字符串中删除前导空格和尾随空格。
 
 **示例：**  
 `Trim(" Test ")`  
-返回“Test”。
+返回 "test"。
 
 `Trim([proxyAddresses])`  
 删除 proxyAddress 属性中每个值的前导空格和尾随空格。
@@ -652,10 +652,10 @@ Trim 函数从字符串中删除前导空格和尾随空格。
 
 **示例：**  
 `Word("The quick brown fox",3," ")`  
-返回“brown”
+返回 "brown"
 
 `Word("This,string!has&many separators",3,",!&#")`  
-返回“has”
+返回 "has"
 
 ## <a name="examples"></a>示例
 ### <a name="strip-known-domain-name"></a>删除已知域名
@@ -689,9 +689,9 @@ Trim 函数从字符串中删除前导空格和尾随空格。
 
 **示例输入/输出：** <br>
 
-* **输入** (givenName)："John"
-* **输入** (surname)："Doe"
-* **输出**："JohDoe"
+* **输入** (givenName)：“John”
+* **输入** (surname)：“Doe”
+* **输出**：“JohDoe”
 
 ### <a name="remove-diacritics-from-a-string"></a>从字符串中删除音调符号
 需要将包含重音符号的字符替换为不包含重音符号的等效字符。
@@ -701,8 +701,8 @@ NormalizeDiacritics([givenName])
 
 **示例输入/输出：** <br>
 
-* **输入** (givenName)："Zoë"
-* **输出**："Zoe"
+* **输入** (givenName)：“Zoë”
+* **输出**：“Zoe”
 
 ### <a name="split-a-string-into-a-multi-valued-array"></a>将字符串拆分为多值数组
 你需要获取一个以逗号分隔的字符串列表，将它们拆分为一个数组，可以将该数组插入到多值属性中，例如 Salesforce 的 PermissionSets 属性。 在此示例中，Azure AD 中的 extensionAttribute5 中填充了一个权限集列表。
@@ -712,7 +712,7 @@ Split([extensionAttribute5], ",")
 
 **示例输入/输出：** <br>
 
-* **输入** (extensionAttribute5) ： "PermissionSetOne，PermissionSetTwo"
+* **输入** (extensionAttribute5)："PermissionSetOne, PermissionSetTwo"
 * **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>输出日期是一种特定格式的字符串
@@ -725,8 +725,8 @@ Split([extensionAttribute5], ",")
 
 **示例输入/输出：**
 
-* **输入** (extensionAttribute1)："20150123105347.1Z"
-* **输出**："2015-01-23"
+* **输入** (extensionAttribute1)：“20150123105347.1Z”
+* **输出**：“2015-01-23”
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>根据预定义的选项集替换值
 
@@ -738,8 +738,8 @@ Split([extensionAttribute5], ",")
 
 **示例输入/输出：**
 
-* **输入** (state)："QLD"
-* **输出**："Australia/Brisbane"
+* **输入** (state)：“QLD”
+* **输出**：“澳大利亚/布里斯班”
 
 ### <a name="replace-characters-using-a-regular-expression"></a>使用正则表达式替换字符
 你需要查找与正则表达式匹配的值并将其删除。

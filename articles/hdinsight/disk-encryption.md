@@ -5,12 +5,12 @@ description: 本文介绍可用于 Azure HDInsight 群集上静态数据的两�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
-ms.translationtype: MT
+ms.openlocfilehash: 226516b1178f14789570b45b68cfdbf56f63bbd7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988623"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775144"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight 静态数据双重加密
 
@@ -76,25 +76,25 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
 1. 在新密钥保管库中，导航到“设置” > “密钥” > “生成/导入”。  
 
-    ![在 Azure Key Vault 中生成新密钥](./media/disk-encryption/create-new-key.png "在 Azure Key Vault 中生成新密钥")
+    :::image type="content" source="./media/disk-encryption/create-new-key.png" alt-text="在 Azure Key Vault 中生成新密钥":::
 
 1. 提供名称，然后选择“创建”。 保留默认 **密钥类型** **RSA**。
 
-    ![生成密钥名称](./media/disk-encryption/create-key.png "生成密钥名称")
+    :::image type="content" source="./media/disk-encryption/create-key.png" alt-text="生成密钥名称":::
 
 1. 返回到“密钥”页时，选择创建的密钥。
 
-    ![Key Vault 密钥列表](./media/disk-encryption/key-vault-key-list.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-key-list.png" alt-text="Key Vault 密钥列表":::
 
 1. 选择要打开“密钥版本”页的版本。 使用自己的密钥加密 HDInsight 群集时，需要提供密钥 URI。 复制“密钥标识符”并将其保存在某处，直到你准备好创建群集。
 
-    ![获取密钥标识符](./media/disk-encryption/get-key-identifier.png)
+    :::image type="content" source="./media/disk-encryption/get-key-identifier.png" alt-text="获取密钥标识符":::
 
 ### <a name="create-access-policy"></a>创建访问策略
 
 1. 在新密钥保管库中，导航到“设置” > “访问策略” > “+ 添加访问策略”。  
 
-    ![创建新的 Azure Key Vault 访问策略](./media/disk-encryption/key-vault-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-access-policy.png" alt-text="创建新的 Azure Key Vault 访问策略":::
 
 1. 在“添加访问策略”页中提供以下信息：
 
@@ -104,13 +104,13 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
     |机密权限|选择“获取”、“设置”和“删除”。  |
     |选择主体|选择前面创建的用户分配的托管标识。|
 
-    ![为 Azure Key Vault 访问策略设置“选择主体”](./media/disk-encryption/azure-portal-add-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/azure-portal-add-access-policy.png" alt-text="为 Azure Key Vault 访问策略设置“选择主体”":::
 
 1. 选择“添加”  。
 
 1. 选择“保存” 。
 
-    ![保存 Azure Key Vault 访问策略](./media/disk-encryption/add-key-vault-access-policy-save.png)
+    :::image type="content" source="./media/disk-encryption/add-key-vault-access-policy-save.png" alt-text="保存 Azure Key Vault 访问策略":::
 
 ### <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>创建支持客户管理的密钥磁盘加密的群集
 
@@ -129,11 +129,11 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
 还需要将托管标识分配给群集。
 
-![创建新群集](./media/disk-encryption/create-cluster-portal.png)
+:::image type="content" source="./media/disk-encryption/create-cluster-portal.png" alt-text="创建新群集":::
 
 #### <a name="using-azure-cli"></a>使用 Azure CLI
 
-以下示例演示如何使用 Azure CLI 来创建已启用磁盘加密的新 Apache Spark 群集。 有关详细信息，请参阅 [Azure CLI az hdinsight create](/cli/azure/hdinsight#az-hdinsight-create)。 `encryption-key-version` 参数是可选的。
+以下示例演示如何使用 Azure CLI 来创建已启用磁盘加密的新 Apache Spark 群集。 有关详细信息，请参阅 [Azure CLI az hdinsight create](/cli/azure/hdinsight#az_hdinsight_create)。 `encryption-key-version` 参数是可选的。
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -367,11 +367,11 @@ New-AzResourceGroupDeployment `
 
 若要轮换密钥，需要基密钥保管库 URI。 完成此操作后，转到门户中的“HDInsight 群集属性”部分，单击“磁盘加密密钥 URL”下的“更改密钥”。  输入新密钥的 URL，并提交轮换密钥的操作。
 
-![轮换磁盘加密密钥](./media/disk-encryption/change-key.png)
+:::image type="content" source="./media/disk-encryption/change-key.png" alt-text="轮换磁盘加密密钥":::
 
 #### <a name="using-azure-cli"></a>使用 Azure CLI
 
-以下示例演示如何轮换现有 HDInsight 群集的磁盘加密密钥。 有关详细信息，请参阅 [Azure CLI az hdinsight rotate-disk-encryption-key](/cli/azure/hdinsight#az-hdinsight-rotate-disk-encryption-key)。
+以下示例演示如何轮换现有 HDInsight 群集的磁盘加密密钥。 有关详细信息，请参阅 [Azure CLI az hdinsight rotate-disk-encryption-key](/cli/azure/hdinsight#az_hdinsight_rotate_disk_encryption_key)。
 
 ```azurecli
 az hdinsight rotate-disk-encryption-key \
@@ -400,11 +400,11 @@ HDInsight 使用与 HDInsight 群集关联的托管标识来访问 Azure Key Vau
 
 如果群集失去了对密钥的访问权限，Apache Ambari 门户中会显示警告。 在此状态下，“更改密钥”操作将会失败。 恢复密钥访问权限后，Ambari 警告将会消失，密钥轮换等操作可以成功执行。
 
-![密钥访问 Ambari 警报](./media/disk-encryption/ambari-alert.png)
+:::image type="content" source="./media/disk-encryption/ambari-alert.png" alt-text="密钥访问 Ambari 警报":::
 
 **如果删除密钥，如何恢复群集？**
 
-由于仅支持已启用“软删除”的密钥，因此，如果 Key Vault 中的密钥已恢复，则群集应重新获得对密钥的访问权限。 若要恢复 Azure Key Vault 密钥，请参阅 [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) 或 [az-keyvault-key-recover](/cli/azure/keyvault/key#az-keyvault-key-recover)。
+由于仅支持已启用“软删除”的密钥，因此，如果 Key Vault 中的密钥已恢复，则群集应重新获得对密钥的访问权限。 若要恢复 Azure Key Vault 密钥，请参阅 [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) 或 [az-keyvault-key-recover](/cli/azure/keyvault/key#az_keyvault_key_recover)。
 
 
 **如果群集已纵向扩展，新节点是否无缝支持客户管理的密钥？**
@@ -426,7 +426,7 @@ HDInsight 使用与 HDInsight 群集关联的托管标识来访问 Azure Key Vau
 
 :::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="启用主机加密。":::
 
-使用此选项可以 [在主机上](../virtual-machines/disks-enable-host-based-encryption-portal.md) 使用 PMK 对 HDInsight vm 临时数据磁盘进行加密。 仅 [支持在有限区域中的特定 VM sku 上](../virtual-machines/disks-enable-host-based-encryption-portal.md) 加密，且 HDInsight 支持 [以下节点配置和 sku](./hdinsight-supported-node-configuration.md)。
+利用此选项可以使用 PMK 对 HDInsight VM 临时数据磁盘启用[主机加密](../virtual-machines/disks-enable-host-based-encryption-portal.md)。 仅[支持在有限区域中的特定 VM SKU 上](../virtual-machines/disks-enable-host-based-encryption-portal.md)进行主机加密，且 HDInsight 支持[以下节点配置和 SKU](./hdinsight-supported-node-configuration.md)。
 
 要了解适用于 HDInsight 群集的正确 VM 大小，请参阅[选择适用于 Azure HDInsight 群集的正确 VM 大小](hdinsight-selecting-vm-size.md)。 启用主机加密时，Zookeeper 节点的默认 VM SKU 将为 DS2V2。
 

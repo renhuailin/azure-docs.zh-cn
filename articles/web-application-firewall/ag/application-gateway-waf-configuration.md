@@ -8,15 +8,15 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 2d34641fdecfe334e84347efe1a2f64482cae74b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93040261"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 应用程序防火墙请求大小限制和排除列表
 
-Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 本文介绍了 WAF 请求大小限制和排除列表配置。 这些设置位于与应用程序网关关联的 WAF 策略中。 若要了解有关 WAF 策略的详细信息，请参阅 [Azure 应用程序网关上的 Azure Web 应用程序防火墙](ag-overview.md) 和 [创建应用程序网关的 Web 应用程序防火墙策略](create-waf-policy-ag.md)
+Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 本文介绍了 WAF 请求大小限制和排除列表配置。 这些设置位于与应用程序网关关联的 WAF 策略中。 若要详细了解 WAF 策略，请参阅 [Azure 应用程序网关上的 Azure Web 应用程序防火墙](ag-overview.md)和[为应用程序网关创建 Web 应用程序防火墙策略](create-waf-policy-ag.md)
 
 ## <a name="waf-exclusion-lists"></a>WAF 排除列表
 
@@ -38,11 +38,11 @@ WAF 排除列表允许你忽略 WAF 评估中的某些请求属性。 常见示�
 
 下面是受支持的匹配条件运算符：
 
-- **等于** ：此运算符用于完全匹配。 例如，要选择名为“bearerToken”的标头，请结合使用等号运算符和设为“bearerToken”的选择器 。
-- **开头为** ：此运算符与以指定选择器值开头的所有字段匹配。
-- **结尾为** ：此运算符与以指定选择器值结尾的所有请求字段匹配。
-- **包含** ：此运算符与包含指定选择器值的所有请求字段匹配。
-- **等于任何值** ：此运算符与所有请求字段匹配。 * 将是选择器值。
+- **等于**：此运算符用于完全匹配。 例如，要选择名为“bearerToken”的标头，请结合使用等号运算符和设为“bearerToken”的选择器 。
+- **开头为**：此运算符与以指定选择器值开头的所有字段匹配。
+- **结尾为**：此运算符与以指定选择器值结尾的所有请求字段匹配。
+- **包含**：此运算符与包含指定选择器值的所有请求字段匹配。
+- **等于任何值**：此运算符与所有请求字段匹配。 * 将是选择器值。
 
 在所有情况下，匹配不区分大小写，并且正则表达式不允许作为选择器。
 
@@ -81,7 +81,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-因此，如果将 URL `http://www.contoso.com/?user%281%29=fdafdasfda` 传递给 WAF，后者就不会评估字符串 **fdafdasfda** ，但仍会评估参数名称 **user%281%29** 。 
+因此，如果将 URL `http://www.contoso.com/?user%281%29=fdafdasfda` 传递给 WAF，后者就不会评估字符串 **fdafdasfda**，但仍会评估参数名称 **user%281%29**。 
 
 ## <a name="waf-request-size-limits"></a>WAF 请求大小限制
 

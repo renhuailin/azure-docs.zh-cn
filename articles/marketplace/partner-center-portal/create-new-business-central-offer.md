@@ -7,25 +7,25 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: 99c36354334701dcd4c7c30c5fd5039c13885525
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 001f7453c29e7a8525fb88a96dd9a867468460e3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97358701"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501427"
 ---
 # <a name="create-a-dynamics-365-for-business-central-offer"></a>创建 Dynamics 365 for Business Central 产品/服务
 
 本文介绍如何创建新的 Dynamics 365 Business Central 产品/服务。 [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) 是一个企业资源计划 (ERP) 服务系统，用于处理财务、运营、供应链、客户关系管理 (CRM)、项目管理和电子商务等各种业务流程。 高级包还支持经典部署模型和制造。 Dynamics 365 Business Central 的所有产品/服务都必须完成我们的认证过程。
 
-开始前，请先[在合作伙伴中心内创建商业市场帐户](create-account.md)（如果尚未创建）。 确保你的帐户已注册加入商业市场计划。
+开始前，请先[在合作伙伴中心内创建商业市场帐户](../create-account.md)（如果尚未创建）。 确保你的帐户已注册加入商业市场计划。
 
 >[!NOTE]
 > 发布了产品/服务后，只有在重新提交产品/服务进行发布的情况下，才会在合作伙伴中心和在线商店中更新对产品/服务的编辑信息。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
-1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左侧导航菜单中，依次选择“商业市场” > “概述” 。
 3. 在“概述”页面上，依次选择“+新建产品/服务” > “Dynamics 365 Business Central” 。
 
@@ -33,7 +33,7 @@ ms.locfileid: "97358701"
 
 ## <a name="new-offer"></a>新产品/服务
 
-输入“产品/服务 ID”。 这是你帐户中的每个产品/服务的唯一标识符。
+输入“产品/服务 ID”。 该值是你帐户中的每个产品/服务的唯一标识符。
 
 - 客户可以在市场产品/服务和 Azure 资源管理器模板的 Web 地址中看到此 ID（若有）。
 - 产品 ID 和发布者 ID 的组合长度必须为在 40 个字符以内。
@@ -118,11 +118,11 @@ ms.locfileid: "97358701"
 > [!NOTE]
 > 仅可用一种语言提供产品/服务列表的详细信息。 如果不要求用英语，则只要产品/服务描述的开头是短语“此应用程序只提供[非英语语言]版本”就可以。 提供“实用链接 URL” 来提供产品/服务列表内容中使用的语言以外的语言内容，也是可以接受的。
 
-以下示例说明了产品/服务信息在 Microsoft AppSource 中的显示方式（所有的价格仅用于举例目的，而不代表实际成本）：
-<!-- update screen? -->
+以下示例说明了产品/服务信息在 Microsoft AppSource 中的显示方式（所有的价格仅用于举例，而不代表实际成本）：
+
 :::image type="content" source="media/example-d365-business-central.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
 
-#### <a name="call-out-descriptions"></a>调用说明
+### <a name="call-out-descriptions"></a>调用说明
 
 1. 徽标
 2. 产品
@@ -131,7 +131,7 @@ ms.locfileid: "97358701"
 5. 使用条款
 6. 隐私策略
 7. 产品名称
-8. 总结
+8. 摘要
 9. 说明
 10. 屏幕截图/视频
 
@@ -174,11 +174,11 @@ ms.locfileid: "97358701"
 [!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
->如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
+>如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 `https://upload.xboxlive.com` 服务。
 
 #### <a name="logos"></a>徽标
 
-提供大徽标的 PNG 文件。 合作伙伴中心将使用它来创建其他所需的大小。 稍后，可以选择将其替换为其他图像。
+提供大徽标的 PNG 文件。 合作伙伴中心将使用此初始文件来创建其他所需的大小。 你可以选择稍后将调整过大小的图像替换为自己的图像。
 
 这些徽标会在列表的不同位置上使用：
 
@@ -225,6 +225,8 @@ ms.locfileid: "97358701"
 
 此页定义用于连接到产品/服务的技术详细信息。 如果最终客户选择获取你的产品/服务，我们可以通过此连接为其预配你的产品/服务。
 
+为产品/服务提交的扩展必须满足[技术验证清单](/dynamics365/business-central/dev-itpro/developer/devenv-checklist-submission)中指定的要求。
+
 ### <a name="file-upload"></a>文件上传
 
 如果在上面选择了“附加产品”，则将上传产品/服务的包文件，以及有其依赖项的任何扩展包文件。
@@ -242,14 +244,6 @@ ms.locfileid: "97358701"
 
 选择“保存草稿”，然后继续操作。
 
-<!-- ## Test drive technical configuration
-
-This page lets you set up a demonstration ("test drive") that allows customers to try your offer before purchasing it. Learn more in [What is test drive](../what-is-test-drive.md).
-
-To enable a test drive, select the **Enable a test drive** check box on the [Offer setup](#test-drive) tab. To remove test drive from your offer, clear this check box.
-
-When you've finished setting up your test drive, select **Save draft** before continuing.
--->
 ## <a name="supplemental-content"></a>补充内容
 
 通过此页，可以提供产品/服务的其他信息，以帮助我们验证你的产品/服务。 此信息不显示给客户，也不在市场上发布。
@@ -285,9 +279,9 @@ When you've finished setting up your test drive, select **Save draft** before co
 如果这是第一次发布此产品/服务，则可以：
 
 - 查看产品/服务各个部分的完成状态。
-    - “未开始” - 尚未涉及该部分，需要完成。
-    - “未完成” - 此部分包含需要修复的错误或需要提供详细信息。 返回相应部分并进行更新。
-    - “完成” - 此部分已完成，已提供所有必需的数据，并且没有错误。 产品/服务的所有部分都必须处于完成状态，然后才能提交产品/服务。
+  - “未开始” - 尚未涉及该部分，需要完成。
+  - “未完成” - 此部分包含需要修复的错误或需要提供详细信息。 返回相应部分并进行更新。
+  - “完成” - 此部分已完成，已提供所有必需的数据，并且没有错误。 产品/服务的所有部分都必须处于完成状态，然后才能提交产品/服务。
 - 在“认证说明”部分，除了有助于理解应用的任何补充说明之外，还可以向认证团队提供测试说明，以确保应用得到正确测试。
 - 通过选择“提交”来提交要发布的产品/服务。 当产品/服务的预览版本可供查看和审批时，我们将向你发送一封电子邮件通知。 返回合作伙伴中心并选择“上线”，公开发布你的产品/服务。
 

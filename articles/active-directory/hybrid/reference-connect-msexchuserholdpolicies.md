@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0fbda588d99de44c77118586519055a8fc474104
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861759"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies 和 cloudMsExchUserHoldPolicies
@@ -44,7 +44,7 @@ MsExchUserHoldPolcies 和 cloudMsExchUserHoldPolicies 属性允许本地 AD 与 
 
 |Metaverse 属性|属性名称|流类型|Azure AD 属性|同步规则|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|msExchUserHoldPolicies|直接|msExchUserHoldPolicies|Out to AAD – UserExchangeOnline|
+|Azure Active Directory|msExchUserHoldPolicies|直接|msExchUserHoldPolicies|Out to AAD - UserExchangeOnline|
 
 ## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies 同步流
 默认情况下，cloudMsExchUserHoldPolicies 由 Azure AD Connect 直接同步到 Metaverse 中的 cloudMsExchUserHoldPolicies 属性。 如果 Metaverse 中的 msExchUserHoldPolicies 不为 null，该属性将流出到 Active Directory。
@@ -61,7 +61,7 @@ MsExchUserHoldPolcies 和 cloudMsExchUserHoldPolicies 属性允许本地 AD 与 
 
 |Metaverse 属性|属性名称|流类型|Azure AD 属性|同步规则|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|cloudMsExchUserHoldPolicies|IF(NOT NULL)|msExchUserHoldPolicies|Out to AD – UserExchangeOnline|
+|Azure Active Directory|cloudMsExchUserHoldPolicies|IF(NOT NULL)|msExchUserHoldPolicies|Out to AD - UserExchangeOnline|
 
 ## <a name="information-on-the-attribute-behavior"></a>有关属性行为的信息
 msExchangeUserHoldPolicies 是单机构属性。  可以针对本地目录或云目录中的对象（在本例中为用户对象）设置单机构属性。  “启动机构”规则规定，如果属性已从本地同步，则不允许 Azure AD 更新此属性。
@@ -71,4 +71,4 @@ msExchangeUserHoldPolicies 是单机构属性。  可以针对本地目录或云
 例如，在某些情况下，如果两者同时在本地和 Azure 中发生更改，则可能会导致一些问题。  
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

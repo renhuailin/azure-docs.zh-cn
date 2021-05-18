@@ -16,10 +16,10 @@ ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
 ms.openlocfilehash: cb128f9269895f04d1e0dad8e0c8d06c481e86c6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100576157"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虚拟机网络带宽
@@ -46,19 +46,19 @@ Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口�
 
 ## <a name="network-flow-limits"></a>网络流限制
 
-除了带宽，VM 上任意给定时间存在的网络连接数目也可能影响其网络性能。 对于名为 "流" 的数据结构，Azure 网络堆栈为 TCP/UDP 连接的每个方向维护状态。 典型的 TCP/UDP 连接将创建 2 个流，一个对应于入站方向，另一个对应于出站方向。 
+除了带宽，VM 上任意给定时间存在的网络连接数目也可能影响其网络性能。 Azure 网络堆栈保留名为“流”的数据结构中 TCP/UDP 连接的每个方向的状态。 典型的 TCP/UDP 连接将创建 2 个流，一个对应于入站方向，另一个对应于出站方向。 
 
 在终结点之间进行数据传输时，除了那些执行数据传输的流，还必须创建多个流。 例如，为 DNS 解析创建的流，以及为负载均衡器运行状况探测创建的流。 另请注意，网关、代理、防火墙之类的网络虚拟设备 (NVA) 会看到为在设备上终止的连接创建的流，以及为设备所发起的连接创建的流。 
 
 ![通过转发设备进行的 TCP 对话的流计数](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-active-connections-recommendations"></a>流限制和活动连接建议
+## <a name="flow-limits-and-active-connections-recommendations"></a>流限制和活动连接数建议
 
-如今，Azure 网络堆栈支持 1M total flow (50 万个入站和50万个出站) 用于 VM。 VM 可以在不同方案中处理的活动连接总数如下所示。
-- 属于 VNET 的 Vm 可以处理50万个 ***活动连接**，对于所有 VM，都可以 _在每个方向_ 上处理50万个 _ * 活动流 * *。  
-- 具有网络虚拟设备 (Nva) （如网关、代理、防火墙）的 Vm 可以 *_在每个方向_* 上处理50万个 _ 活动的 250k ***active connections***，因为在新连接设置到下一跃点时，将会进行转发和其他新的流程创建。 
+针对一个 VM，Azure 网络堆栈现支持的流共计 100 万个（50 万个入站、50 万个出站）。 VM 可在不同场景中处理的活动连接总数如下所示。
+- 属于 VNET 的所有大小的虚拟机都可以处理 50 万个活动连接，在每个方向都支持 50 万个活动流。  
+- 具有网关、代理、防火墙等网络虚拟设备 (NVA) 的虚拟机可以处理 25 万个活动连接，在每个方向都支持 50 万个活动流，这是由于在下一个跃点建立新连接时，将进行转发并创建额外的新流，如上图所示。 
 
-一旦达到此限制，就会删除其他连接。 连接建立速度和终止速度也可能影响网络性能，因为连接的建立和终止与包处理例程共享 CPU。 建议针对预期的流量模式对工作负荷进行基准测试，并根据性能需要对工作负荷进行相应的横向扩展。
+达到此限制后，系统就会删除其他连接。 连接建立速度和终止速度也可能影响网络性能，因为连接的建立和终止与包处理例程共享 CPU。 建议针对预期的流量模式对工作负荷进行基准测试，并根据性能需要对工作负荷进行相应的横向扩展。
 
 [Azure Monitor](../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) 中提供的指标用于跟踪 VM 或 VMSS 实例上的网络流数和流创建速率。
 

@@ -4,10 +4,10 @@ description: 使用 Azure 顾问确保并提高业务关键 Azure 部署的可�
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: c96b47f1ee145129f4c14c6646f93abeb8a5aac9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100579964"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure 顾问提高应用程序的可靠性
@@ -110,10 +110,10 @@ Azure 顾问会识别使用旧版本的 Azure Cosmos DB Spark 连接器的 Azure
 因未启用复制而不能复制到另一区域的虚拟机在出现区域性服务中断时无法复原。 复制虚拟机可在 Azure 区域服务中断期间减少任何不利的业务影响。 顾问会检测到未启用复制的 VM，并建议启用复制。 启用了复制时，如果发生服务中断，可以使虚拟机快速在远程 Azure 区域中启动。 [详细了解虚拟机复制。](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>升级到最新版的 Azure Connected Machine Agent
-[Azure 连接的计算机代理](../azure-arc/servers/manage-agent.md)会定期更新，其中包含 bug 修复、稳定性增强和新功能。 我们已识别出不能使用最新版本的计算机代理的资源，此顾问建议会建议将代理升级到最新版本，以获得最佳的 Azure Arc 体验。
+[Azure Connected Machine Agent](../azure-arc/servers/manage-agent.md) 会定期更新 bug 修补程序、稳定性增强功能和新功能。 我们发现了在最新版本的计算机代理上不可用的资源，此顾问建议将建议你将代理升级到最新版本，以获得最佳 Azure Arc 体验。
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>请勿替代主机名以确保网站的完整性
-顾问建议在配置应用程序网关时，尝试避免替代主机名。 如果在应用程序网关前端使用的域不同于访问后端所使用的域，可能会导致 cookie 或重定向 URL 被破坏。 请注意，并非所有情况都是如此，某种类别的后端（如 REST API 的后端）一般对此不太敏感。 请确保后端能够应对此情况或更新应用程序网关配置，以便不需要在后端替代主机名。 与应用服务一起使用时，将自定义域名附加到 Web 应用，并避免使用 *azurewebsites.net 主机名。* [详细了解自定义域](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md)。
+顾问建议在配置应用程序网关时，尝试避免替代主机名。 如果在应用程序网关前端使用的域不同于访问后端所使用的域，可能会导致 cookie 或重定向 URL 被破坏。 请注意，并非所有情况都是如此，某种类别的后端（如 REST API 的后端）一般对此不太敏感。 请确保后端能够应对此情况或更新应用程序网关配置，以便不需要在后端替代主机名。 在配合应用服务一起使用时，请将自定义域名附加到 Web 应用，并避免在后端使用“.azurewebsites.net”主机名。 [详细了解自定义域](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md)。
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何访问顾问中的高可用性建议
 

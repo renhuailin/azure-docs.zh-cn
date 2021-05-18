@@ -10,10 +10,10 @@ ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
 ms.openlocfilehash: f28a95ce6ef5e87eed6e5efcd013cc40b102fcba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101721083"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>基于打包和分发方案的迁移指南
@@ -45,7 +45,7 @@ V3 API 中内容发布方式的重大更改。 新的发布模型已简化，可
 - [筛选器](filters-concept.md)
 - [使用动态打包器筛选清单](filters-dynamic-manifest-overview.md)
 - [Azure 媒体服务中的流式处理终结点（来源）](streaming-endpoint-concept.md)
-- [通过 CDN 集成流式传输内容](scale-streaming-cdn.md)
+- [使用 CDN 集成流式处理内容](scale-streaming-cdn.md)
 - [流式处理定位符](streaming-locators-concept.md)
 
 ### <a name="how-to-guides"></a>操作方法指南
@@ -55,9 +55,9 @@ V3 API 中内容发布方式的重大更改。 新的发布模型已简化，可
 - [创建流定位器并生成 URL](create-streaming-locator-build-url.md)
 - [下载作业结果](download-results-howto.md)
 - [指示描述性音频轨道](signal-descriptive-audio-howto.md)
-- [Azure Media Player 完全安装](../azure-media-player/azure-media-player-full-setup.md)
+- [Azure Media Player 完全设置](../azure-media-player/azure-media-player-full-setup.md)
 - [如何在 Azure 媒体服务中使用 Video.js 播放器](how-to-video-js-player.md)
-- [如何将 Shaka player 用于 Azure 媒体服务](how-to-shaka-player.md)
+- [如何将 Shaka Player 与 Azure 媒体服务一起使用](how-to-shaka-player.md)
 
 ## <a name="samples"></a>示例
 

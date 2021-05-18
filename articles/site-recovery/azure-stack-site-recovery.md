@@ -4,10 +4,10 @@ description: 了解如何使用 Azure Site Recovery 服务为 Azure Stack VM 设
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016892"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
@@ -137,11 +137,11 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>步骤 2：创建保管库并选择复制目标
 
-1. 在 Azure 门户中，选择 "**创建资源**  >  **管理工具**" "  >  **备份" 和 "Site Recovery**"。
+1. 在 Azure 门户中，选择“创建资源” > “管理工具” > “备份和站点恢复”。
 2. 在“名称”  中，输入一个友好名称以标识此保管库。
 3. 在“资源”组中，创建或选择资源组  。 我们将使用 contosoRG  。
 4. 在“位置”中，输入 Azure 区域  。 我们将使用“西欧”。
-5. 若要从仪表板快速访问保管库，请选择“固定到仪表板”   >   “创建”。
+5. 若要从仪表板快速访问保管库，请选择“固定到仪表板” > “创建”。
 
    ![创建新的保管库](./media/azure-stack-site-recovery/new-vault-settings.png)
 
@@ -151,7 +151,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 1. 在“恢复服务保管库”中，指定保管库名称  。 我们将使用 ContosoVMVault  。
 2. 在“入门”中，选择“Site Recovery”  ， 然后选择“准备基础结构”  。
-3. 在“保护目标”   >   “计算机所在位置”中，选择“本地”。 
+3. 在“保护目标” > “计算机所在位置”中，选择“本地”。
 4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”   。
 5. 在“计算机是否已虚拟化”中，选择“尚未虚拟化/其他”   。 然后选择“确定”。 
 
@@ -164,11 +164,11 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 1. 单击“准备基础结构” > “源”。  
 2. 在“准备源”中，单击“+配置服务器”   。
 
-    !["+ 配置服务器" 对话框的屏幕截图，其中包含消息 "在上面的命令栏中单击 + 配置服务器以设置一个 ..."。](./media/azure-stack-site-recovery/plus-config-srv.png)
+    ![“+配置服务器”对话框的屏幕截图，其中显示消息“在上面的命令栏中单击‘+配置服务器’以设置一个...”。](./media/azure-stack-site-recovery/plus-config-srv.png)
 
 3. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中    。
 5. 下载站点恢复统一安装程序安装文件。
-6. 下载保管库注册密钥。 运行统一安装程序时需要使用该注册密钥。 生成的密钥有效期为 5 天。
+6. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为 5 天。
 
     ![“添加服务器”对话框的屏幕截图，其中“服务器类型”设置为“配置服务器”，并突出显示了“下载保管库注册密钥”按钮。](./media/azure-stack-site-recovery/set-source2.png)
 
@@ -247,7 +247,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 >
 > 可能要等 15 分钟或更长时间，更改才会生效并显示在门户中。
 >
-> 若要监视添加的 VM，请在“配置服务器”   >   “上次联系时间”中查看上次发现 VM 的时间。 若要添加 VM 而不想要等待计划的发现，请突出显示配置服务器（不要选择它），然后选择“刷新”。 
+> 若要监视添加的 VM，请在“配置服务器” > “上次联系时间”中查看上次发现 VM 的时间。 若要添加 VM 而不想要等待计划的发现，请突出显示配置服务器（不要选择它），然后选择“刷新”。 
 
 
 ## <a name="step-6-run-a-disaster-recovery-drill"></a>步骤 6：运行灾难恢复演练
@@ -300,7 +300,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 然后按如下所述运行故障转移：
 
 
-1. 在 "**设置**  >  " "复制的 **项**" 中，单击 >**故障转移** 的计算机。
+1. 在“设置” > “复制的项”中，单击计算机 >“故障转移”  。
 2. 选择要使用的恢复点。
 3. 在“测试故障转移”中，选择目标 Azure 网络  。
 4. 选择“在开始故障转移前关闭计算机”  。 选择此设置后，Site Recovery 会在开始故障转移前尝试关闭源计算机。 但即使关机失败，故障转移也仍会继续。

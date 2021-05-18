@@ -7,25 +7,25 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.openlocfilehash: 369348133f7395f5db5b5923bd438cec8e4ad733
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954372"
 ---
-# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>使用托管身份 (预览) 对 azure 流分析作业进行 Azure Blob 存储的身份验证
+# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>使用托管标识（预览版）在 Azure Blob 存储中对 Azure 流分析作业进行身份验证
 
-用于输出到 Azure Blob 存储的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md) (预览) 使流分析作业能够直接访问存储帐户，而不是使用连接字符串。 除了提高安全性以外，此功能还可让你将数据写入到 Azure 上的虚拟网络 (VNET) 中的存储帐户。
+用于输出到 Azure Blob 存储的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md)（预览版）使流分析作业能够直接访问存储帐户，而不用使用连接字符串。 除了提高安全性以外，此功能还可让你将数据写入到 Azure 上的虚拟网络 (VNET) 中的存储帐户。
 
 本文介绍如何通过 Azure 门户以及通过 Azure 资源管理器部署，为流分析作业的 Blob 输出启用托管标识。
 
 ## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>使用 Azure 门户创建流分析作业
 
-1. 在 Azure 门户中创建新的流分析作业，或打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识”。   确保选择“使用系统分配的托管标识”，然后单击屏幕底部的“保存”按钮。 
+1. 在 Azure 门户中创建新的流分析作业，或打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识”。 确保选择“使用系统分配的托管标识”，然后单击屏幕底部的“保存”按钮。
 
    ![配置流分析托管标识](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. 在 Azure Blob 存储输出接收器的输出属性窗口中，选择“身份验证模式”下拉列表并选择“托管标识”。  有关其他输出属性的信息，请参阅[了解 Azure 流分析的输出](./stream-analytics-define-outputs.md)。 完成后，单击“保存”。 
+2. 在 Azure Blob 存储输出接收器的输出属性窗口中，选择“身份验证模式”下拉列表并选择“托管标识”。 有关其他输出属性的信息，请参阅[了解 Azure 流分析的输出](./stream-analytics-define-outputs.md)。 完成后，单击“保存”。
 
    ![配置 Azure Blob 存储输出](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "98954372"
 使用 Azure 资源管理器可以完全自动化流分析作业的部署。 可以使用 Azure PowerShell 或 [Azure CLI](/cli/azure/) 部署资源管理器模板。 以下示例使用 Azure CLI。
 
 
-1. 可以通过在资源管理器模板的 resource 节中包含以下属性，来创建带有托管标识的 **Microsoft.StreamAnalytics/streamingjobs** 资源：
+1. 可以通过在资源管理器模板的 resource 节中包含以下属性，来创建带有托管标识的 Microsoft.StreamAnalytics/streamingjobs 资源：
 
     ```json
     "Identity": {
@@ -158,7 +158,7 @@ ms.locfileid: "98954372"
 1. **容器级访问权限**：使用此选项可为作业授予对现有特定容器的访问权限。
 2. **帐户级访问权限**：使用此选项可为作业授予对存储帐户的一般访问权限，包括创建新容器的能力。
 
-除非你需要作业代表你创建容器，否则应选择“容器级访问权限”，因为此选项将为作业授予所需的最低访问权限级别。  下面将会解释这两个选项在 Azure 门户和命令行中的用法。
+除非你需要作业代表你创建容器，否则应选择“容器级访问权限”，因为此选项将为作业授予所需的最低访问权限级别。 下面将会解释这两个选项在 Azure 门户和命令行中的用法。
 
 ### <a name="grant-access-via-the-azure-portal"></a>通过 Azure 门户授予访问权限
 
@@ -166,33 +166,33 @@ ms.locfileid: "98954372"
 
 1. 导航到存储帐户中的容器配置窗格。
 
-2. 在左侧选择“访问控制(IAM)”。 
+2. 在左侧选择“访问控制(IAM)”。
 
-3. 在“添加角色分配”部分下，单击“添加”。 
+3. 在“添加角色分配”部分下，单击“添加”。
 
 4. 在角色分配窗格中：
 
-    1. 将“角色”设置为“存储 Blob 数据参与者” 
-    2. 确保“将访问权限分配给”下拉列表设置为“Azure AD 用户、组或服务主体”。 
+    1. 将“角色”设置为“存储 Blob 数据参与者”
+    2. 确保“将访问权限分配给”下拉列表设置为“Azure AD 用户、组或服务主体”。
     3. 在搜索字段中键入流分析作业的名称。
-    4. 选择你的流分析作业，然后单击“保存”。 
+    4. 选择你的流分析作业，然后单击“保存”。
 
    ![授予容器访问权限](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
 
 #### <a name="account-level-access"></a>帐户级访问权限
 
-1. 导航到存储帐户。
+1. 导航到自己的存储帐户。
 
-2. 在左侧选择“访问控制(IAM)”。 
+2. 在左侧选择“访问控制(IAM)”。
 
-3. 在“添加角色分配”部分下，单击“添加”。 
+3. 在“添加角色分配”部分下，单击“添加”。
 
 4. 在角色分配窗格中：
 
-    1. 将“角色”设置为“存储 Blob 数据参与者” 
-    2. 确保“将访问权限分配给”下拉列表设置为“Azure AD 用户、组或服务主体”。 
+    1. 将“角色”设置为“存储 Blob 数据参与者”
+    2. 确保“将访问权限分配给”下拉列表设置为“Azure AD 用户、组或服务主体”。
     3. 在搜索字段中键入流分析作业的名称。
-    4. 选择你的流分析作业，然后单击“保存”。 
+    4. 选择你的流分析作业，然后单击“保存”。
 
    ![授予帐户访问权限](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
 
@@ -218,15 +218,15 @@ ms.locfileid: "98954372"
 
 配置存储帐户的 **防火墙和虚拟网络** 时，可以视需要允许来自其他受信任 Microsoft 服务的网络流量。 当流分析使用托管标识进行身份验证时，它会提供该请求源自受信任服务的证明。 下面是有关启用此 VNET 访问权限例外的说明。
 
-1.    在存储帐户的配置窗格中导航到 "防火墙和虚拟网络" 窗格。
-2.    确保已启用 "允许受信任的 Microsoft 服务访问此存储帐户" 选项。
-3.    如果已启用此选项，请单击“保存”。 
+1.    在存储帐户的配置窗格中导航到“防火墙和虚拟网络”窗格。
+2.    确保启用“允许受信任的 Microsoft 服务访问此存储帐户”选项。
+3.    如果已启用此选项，请单击“保存”。
 
    ![启用 VNET 访问权限](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
 
 ## <a name="remove-managed-identity"></a>删除托管标识
 
-仅当删除作业时，才会删除为流分析作业创建的托管标识。 如果不删除该作业，则无法删除该托管标识。 如果不再想要使用托管标识，可以更改输出的身份验证方法。 在删除作业之前，托管标识将继续存在，如果你决定再次使用托管标识身份验证，则将使用该标识。
+仅当删除流分析作业后，才会删除为该作业创建的托管标识。 如果不删除作业，则无法删除其托管标识。 如果不想再使用托管标识，可以更改对输出的身份验证方法。 在删除作业之前，托管标识会始终存在，如果决定再次使用托管标识身份验证，将再次使用该标识。
 
 ## <a name="limitations"></a>限制
 下面是此功能的当前限制：

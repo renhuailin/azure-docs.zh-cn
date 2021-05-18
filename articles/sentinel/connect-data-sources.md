@@ -1,6 +1,6 @@
 ---
 title: 将数据源连接到 Azure Sentinel | Microsoft Docs
-description: 了解如何将数据源（如 Microsoft 365 Defender (以前的 Microsoft 威胁防护) 、Microsoft 365 和 Office 365、Azure AD、ATP 和 Cloud App Security 连接到 Azure Sentinel。
+description: 了解如何将 Microsoft 365 Defender（原 Microsoft 威胁防护）、Microsoft 365 和 Office 365、Azure AD、ATP 和 Cloud App Security 等数据源连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
 ms.openlocfilehash: 3df78d6b53f8e8739307e9b870aa03d76bfd6771
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101718601"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
-一旦你启用了 Azure Sentinel，你需要做的第一件事就是连接数据源。 Azure Sentinel 附带了多个 Microsoft 解决方案连接器，并提供实时集成，包括 Microsoft 365 Defender (以前的 Microsoft 威胁防护) 解决方案，Microsoft 365 源 (包括 Office 365) 、Azure AD、Microsoft Defender for Identity (以前的 Azure ATP) 、Microsoft Cloud App Security 等。 此外，内置的连接器可以拓宽非 Microsoft 解决方案的安全生态系统。 也可以使用常用事件格式 (CEF)、Syslog 或 REST-API 将数据源与 Azure Sentinel 相连接。
+启用 Azure Sentinel 后，首先需要连接数据源。 Azure Sentinel 随附许多适用于 Microsoft 解决方案的开箱即用连接器，提供实时集成，包括 Microsoft 365 Defender（之前称为 Microsoft 威胁防护）解决方案、Microsoft 365 源（包括 Office 365）、Azure AD、Microsoft Defender for Identity（之前称为 Azure ATP）、Microsoft Cloud App Security 等。 此外，内置的连接器可以拓宽非 Microsoft 解决方案的安全生态系统。 也可以使用常用事件格式 (CEF)、Syslog 或 REST-API 将数据源与 Azure Sentinel 相连接。
 
 1. 在菜单上，选择“数据连接器”。 通过此页，可以查看 Azure Sentinel 提供的连接器及其状态的完整列表。 选择要连接的连接器，然后选择“打开连接器页”。 
 
@@ -45,22 +45,22 @@ Azure Sentinel 支持以下数据连接方法：
 
 - **服务到服务集成**：<br> 有些服务是本机互连的（如 AWS 和 Microsoft 服务），这些服务利用 Azure 基础进行现成集成，只需单击几次即可连接以下解决方案：
     - [Amazon Web Services - CloudTrail](connect-aws.md)
-    - [Azure Active Directory](connect-azure-active-directory.md) 审核日志和登录日志
+    - [Azure Active Directory](connect-azure-active-directory.md) - 审核日志和登录日志
     - [Azure 活动](connect-azure-activity.md)
     - [Azure AD 标识保护](connect-azure-ad-Identity-protection.md)
     - [Azure DDoS 防护](connect-azure-ddos-protection.md)
-    - 用于 iot 的[Azure Defender](connect-asc-iot.md) (以前为 iot) 的 Azure 安全中心
+    - [Azure Defender for IoT](connect-asc-iot.md)（以前称为适用于 IoT 的 Azure 安全中心）
     - [Azure 信息保护](connect-azure-information-protection.md)
     - [Azure 防火墙](connect-azure-firewall.md)
-    - [Azure 安全中心](connect-azure-security-center.md) -来自 azure Defender 解决方案的警报
-    - [Azure Web 应用程序防火墙 (WAF) ](connect-azure-waf.md) (以前的 Microsoft WAF) 
+    - [Azure 安全中心](connect-azure-security-center.md) - 来自 Azure Defender 解决方案的警报
+    - [Azure Web 应用程序防火墙 (WAF)](connect-azure-waf.md)（原 Microsoft WAF）
     - [Cloud App Security](connect-cloud-app-security.md)
     - [域名服务器](connect-dns.md)
-    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) -包括 M365D 事件和 MDE 原始数据
-    - [Microsoft defender For Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (以前的 Microsoft Defender 高级威胁防护) 
-    - [Microsoft Defender For Identity](connect-azure-atp.md) (以前的 Azure 高级威胁防护) 
-    - [Microsoft Defender For office 365](connect-office-365-advanced-threat-protection.md) (以前的 Office 365 高级威胁防护) 
-    - [Office 365](connect-office-365.md) (与团队合作！ ) 
+    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) - 包括 M365D 事件和 MDE 原始数据
+    - [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md)（原 Microsoft Defender 高级威胁防护）
+    - [Microsoft Defender For Identity](connect-azure-atp.md)（原 Azure 高级威胁防护）
+    - [Microsoft Defender for Office 365](connect-office-365-advanced-threat-protection.md)（原 Office 365 高级威胁防护）
+    - [Office 365](connect-office-365.md)（现带有 Teams！）
     - [Windows 防火墙](connect-windows-firewall.md)
     - [Windows 安全事件](connect-windows-security-events.md)
 
@@ -76,13 +76,13 @@ Azure Sentinel 支持以下数据连接方法：
     - [Citrix Analytics（安全）](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
-    - [Google Workspace (以前的 G Suite) ](connect-google-workspace.md)
+    - [Google Workspace（原 G Suite）](connect-google-workspace.md)
     - [NXLog (Windows) DNS 日志](connect-nxlog-dns.md)
     - [NXLog LinuxAudit](connect-nxlog-linuxaudit.md)
     - [Okta SSO](connect-okta-single-sign-on.md)
     - [Orca Security](connect-orca-security-alerts.md)
     - [Perimeter 81 日志](connect-perimeter-81-logs.md)
-    - [Proofpoint on demand 点播 (POD) 电子邮件安全](connect-proofpoint-pod.md)
+    - [Proofpoint On Demand (POD) Email Security](connect-proofpoint-pod.md)
     - [Proofpoint TAP](connect-proofpoint-tap.md)
     - [Qualys VM](connect-qualys-vm.md)
     - [Salesforce 服务云](connect-salesforce-service-cloud.md)
@@ -93,13 +93,13 @@ Azure Sentinel 支持以下数据连接方法：
     - [Zimperium](connect-zimperium-mtd.md)
 
 
-- **通过代理的外部解决方案**： Azure Sentinel 可以通过代理连接到任何其他数据源，该数据源可以使用 Syslog 协议执行实时日志流式传输。
+- **通过代理连接外部解决方案**：可以通过代理使用 Syslog 协议将 Azure Sentinel 连接到可执行实时日志流式处理的其他任何数据源。
 
-    大部分设备使用 Syslog 协议发送包含日志本身以及日志相关数据的事件消息。 日志的格式会有所不同，但大多数设备对于日志数据支持基于 CEF 的格式设置。 
+    大部分设备使用 Syslog 协议发送包含日志本身以及日志相关数据的事件消息。 虽然日志格式各不相同，但大多数设备都支持基于 CEF 的日志数据格式。 
 
-    Azure Sentinel 代理实际上是 Log Analytics 代理，它将 CEF 格式的日志转换为可通过 Log Analytics 引入的格式。 根据设备类型，代理会直接安装在设备上，也可以在基于 Linux 的专用日志转发器上安装。 适用于 Linux 的代理通过 UDP 从 Syslog 守护程序接收事件，但如果预期 Linux 计算机需要收集大量的 Syslog 事件，则会通过 TCP 将这些事件从 Syslog 守护程序发送到代理，然后从代理发送到 Log Analytics。
+    Azure Sentinel 代理实际上就是 Log Analytics 代理，它将 CEF 格式的日志转换为可供 Log Analytics 引入的格式。 根据设备类型，可以直接在设备上安装代理，或者在专用的 Linux 日志转发器上安装代理。 适用于 Linux 的代理通过 UDP 从 Syslog 守护程序接收事件，但如果预期 Linux 计算机需要收集大量的 Syslog 事件，则会通过 TCP 将这些事件从 Syslog 守护程序发送到代理，然后从代理发送到 Log Analytics。
 
-    - **防火墙、代理和终结点-CEF：**
+    - **防火墙、代理和终结点 - CEF：**
         - [AI Vectra 检测](connect-ai-vectra-detect.md)
         - [Akamai 安全事件](connect-akamai-security-events.md)
         - [Aruba ClearPass](connect-aruba-clearpass.md)
@@ -119,13 +119,13 @@ Azure Sentinel 支持以下数据连接方法：
         - [Thycotic Secret Server](connect-thycotic-secret-server.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
         - [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
-        - [WireX 网络取证平台](connect-wirex-systems.md)
+        - [WireX Network Forensics Platform](connect-wirex-systems.md)
         - [Zscaler](connect-zscaler.md)
         - [其他基于 CEF 的设备](connect-common-event-format.md)
-    - **防火墙、代理和终结点-Syslog：**
+    - **防火墙、代理和终结点 - Syslog：**
         - [Alsid for Active Directory](connect-alsid-active-directory.md)
         - [Cisco Meraki](connect-cisco-meraki.md)
-        - [Cisco 统一计算系统 (UCS) ](connect-cisco-ucs.md)
+        - [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
         - [Infoblox NIOS](connect-infoblox.md)
         - [Juniper SRX](connect-juniper-srx.md)
         - [Pulse Connect Secure](connect-pulse-connect-secure.md)
@@ -139,7 +139,7 @@ Azure Sentinel 支持以下数据连接方法：
     - DLP 解决方案
     - [威胁智能提供程序](connect-threat-intelligence.md)
     - [DNS 计算机](connect-dns.md) - 直接安装在 DNS 计算机上的代理
-    - [Azure Stack Vm](connect-azure-stack.md)
+    - [Azure Stack VM](connect-azure-stack.md)
     - Linux 服务器
     - 其他云
     
@@ -178,7 +178,7 @@ Azure Sentinel 支持以下数据连接方法：
 | WireData | [连接 Wire Data](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [连接 Windows 防火墙](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [连接 Azure AD 标识保护](connect-azure-ad-identity-protection.md)  | &#10003; | |
-| AATP SecurityAlert  | [将 Microsoft Defender For Identity](connect-azure-atp.md) (以前的 Azure ATP)  | &#10003; | |
+| AATP SecurityAlert  | [连接 Microsoft Defender for Identity](connect-azure-atp.md)（原 Azure ATP） | &#10003; | |
 | ASC SecurityAlert  | 从 Azure 安全中心[连接 Azure Defender 警报](connect-azure-security-center.md)  | &#10003; | |
 | MCAS SecurityAlert  | [连接 Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |

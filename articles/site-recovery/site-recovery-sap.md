@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: e639762cd1adb7bbbc3fb2ec31f4ce52710e46f9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101711937"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>为多层 SAP NetWeaver 应用部署设置灾难恢复
@@ -56,7 +56,7 @@ ms.locfileid: "101711937"
 
 ## <a name="reference-sap-application-deployment"></a>参考 SAP 应用程序部署
 
-此参考体系结构在具有高可用性的 Azure 上的 Windows 环境中运行 SAP NetWeaver。 此体系结构部署 (VM) 大小的特定虚拟机，你可以更改这些虚拟机以满足你的组织的需求。
+此参考体系结构在具有高可用性的 Azure 上的 Windows 环境中运行 SAP NetWeaver。 此体系结构是使用可根据组织需求更改的特定虚拟机 (VM) 大小来部署的。
 
 ![典型 SAP 部署模式的示意图](./media/site-recovery-sap/sap-netweaver_latest.png)
 

@@ -4,17 +4,17 @@ description: Azure 服务总线和事件中心内 AMQP 1.0 协议的表达与描
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98624483"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
 高级消息队列协议 1.0 是一种标准化组帧和传输协议，能够以异步、安全且可靠的方式在两方之间传输消息。 它是 Azure 服务总线消息传送和 Azure 事件中心的主要协议。  
 
-AMQP 1.0 是中间件供应商（例如 Microsoft 和 Red Hat）与许多消息传送中间件用户（例如代表金融服务行业的 JP Morgan Chase）广泛合作的成果。 适用于 AMQP 协议和扩展规范的技术标准化论坛是 OASIS，它已获得正式批准，作为 ISO/IEC 19494:2014 国际标准。 
+AMQP 1.0 是中间件供应商（例如 Microsoft 和 Red Hat）与许多消息传送中间件用户（例如代表金融服务行业的 JP Morgan Chase）广泛合作的成果。 OASIS 是 AMQP 协议和扩展规范的技术标准化论坛，它已获 ISO/IEC 19494:2014 国际标准的官方批准。 
 
 ## <a name="goals"></a>目标
 
@@ -410,7 +410,7 @@ name 属性标识应与此令牌关联的实体。 在服务总线中，这是�
 
 * [服务总线 AMQP 概述]
 * [针对服务总线分区队列和主题的 AMQP 1.0 支持]
-* [Service Bus for Windows Server 中的 AMQP]
+* [适用于 Windows Server 的服务总线中的 AMQP]
 
 [this video course]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp-protocol-guide/amqp1.png

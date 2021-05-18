@@ -3,18 +3,18 @@ title: 锁定图像
 description: 设置容器映像或存储库的属性，使之不会在 Azure 容器注册表中遭到删除或覆盖。
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 340beb1bb6666ddf0de7de38adee6be71f5f52bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77659690"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772336"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>锁定 Azure 容器注册表中的容器映像
 
 在 Azure 容器注册表中，可以锁定某个映像版本或存储库，使之不会被删除或更新。 若要锁定映像或存储库，可使用 Azure CLI 命令 [az acr repository update][az-acr-repository-update] 更新其属性。 
 
-本文要求在 Azure Cloud Shell 或本地 (版本2.0.55 或更高版本的推荐) 中运行 Azure CLI。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+本文要求在 Azure Cloud Shell 中或本地运行 Azure CLI（建议使用 2.0.55 或更高版本）。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 > [!IMPORTANT]
 > 本文不适用于锁定整个注册表，例如，在 Azure 门户中使用“设置”>“锁定”  ，或在 Azure CLI 中使用 `az lock` 命令。 锁定注册表资源不会阻止你在存储库中创建、更新或删除数据。 锁定注册表只会影响管理操作，如添加或删除复制，或删除注册表本身。 有关详细信息，请参阅[锁定资源以防止意外更改](../azure-resource-manager/management/lock-resources.md)。
@@ -154,9 +154,8 @@ az acr repository update \
 有关删除操作的详细信息，请参阅[删除 Azure 容器注册表中的容器映像][container-registry-delete]。
 
 <!-- LINKS - Internal -->
-[az-acr-repository-update]: /cli/azure/acr/repository#az-acr-repository-update
-[az-acr-repository-show]: /cli/azure/acr/repository#az-acr-repository-show
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
+[az-acr-repository-update]: /cli/azure/acr/repository#az_acr_repository_update
+[az-acr-repository-show]: /cli/azure/acr/repository#az_acr_repository_show
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-delete]: container-registry-delete.md
-

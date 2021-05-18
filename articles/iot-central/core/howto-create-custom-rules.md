@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 6146676121bac0089d5f520d60a97d74567a32bc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179334"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
@@ -43,8 +43,8 @@ ms.locfileid: "102179334"
 | 定价计划 | Standard |
 | 应用程序模板 | 店内分析 – 条件监视 |
 | 应用程序名称 | 接受默认设置，或选择自己的名称 |
-| 代码 | 接受默认设置，或选择自己的唯一 URL 前缀 |
-| 目录 | Azure Active Directory 租户 |
+| URL | 接受默认设置，或选择自己的唯一 URL 前缀 |
+| Directory | Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
 | 区域 | 离你最近的区域 |
 
@@ -99,16 +99,16 @@ ms.locfileid: "102179334"
 
 ### <a name="sendgrid-account-and-api-keys"></a>SendGrid 帐户和 API 密钥
 
-如果没有 Sendgrid 帐户，请在开始前创建一个 [免费帐户](https://app.sendgrid.com/) 。
+如果没有 Sendgrid 帐户，请在开始前创建一个[免费帐户](https://app.sendgrid.com/)。
 
-1. 从左侧菜单的 "Sendgrid 仪表板设置" 中，选择 " **API 密钥**"。
-1. 单击 " **创建 API 密钥"。**
-1. 将新的 API 密钥命名为 **AzureFunctionAccess。**
-1. 单击 " **创建 & 视图**"。
+1. 从左侧菜单的“Sendgrid 仪表板设置”中，选择“API 密钥”。
+1. 单击“创建 API 密钥”。
+1. 将新的 API 密钥命名为“AzureFunctionAccess”。
+1. 单击“创建和查看”。
 
-    :::image type="content" source="media/howto-create-custom-rules/sendgrid-api-keys.png" alt-text="Create SendGrid API 密钥的屏幕截图。":::
+    :::image type="content" source="media/howto-create-custom-rules/sendgrid-api-keys.png" alt-text="创建 SendGrid API 密钥的屏幕截图。":::
 
-之后，你将获得一个 API 密钥。 保存此字符串供以后使用。
+之后，你将获得一个 API 密钥。 保存此字符串以供稍后使用。
 
 ## <a name="create-an-event-hub"></a>创建事件中心
 
@@ -119,28 +119,26 @@ ms.locfileid: "102179334"
 
 事件中心命名空间如以下屏幕截图所示： 
 
-:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="事件中心命名空间的屏幕截图。" border="false":::
+```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
 
+## Define the function
 
-## <a name="define-the-function"></a>定义函数
+This solution uses an Azure Functions app to send an email notification when the Stream Analytics job detects a stopped device. To create your function app:
 
-当流分析作业检测到已停止的设备时，此解决方案将使用 Azure Functions 应用来发送电子邮件通知。 若要创建函数应用：
+1. In the Azure portal, navigate to the **App Service** instance in the **DetectStoppedDevices** resource group.
+1. Select **+** to create a new function.
+1. Select **HTTP Trigger**.
+1. Select **Add**.
 
-1. 在 Azure 门户中，导航到“DetectStoppedDevices”资源组中的“应用服务”实例。
-1. 选择此 **+** 功能可创建新函数。
-1. 选择 " **HTTP 触发器**"。
-1. 选择“添加”。
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Image of the Default HTTP trigger function"::: 
 
-    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="默认 HTTP 触发器函数的图像"::: 
+## Edit code for HTTP Trigger
 
-## <a name="edit-code-for-http-trigger"></a>编辑 HTTP 触发器的代码
+The portal creates a default function called **HttpTrigger1**:
 
-门户将创建名为 **HttpTrigger1** 的默认函数：
+```:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
 
-:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="编辑 HTTP 触发器函数的屏幕截图。":::
-
-
-1. 将 c # 代码替换为以下代码：
+1. Replace the C# code with the following code:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -179,50 +177,50 @@ ms.locfileid: "102179334"
     }
     ```
 
-    在保存新代码之前，可能一直会出现一条错误消息。
-1. 选择“保存”以保存函数。
+    You may see an error message until you save the new code.
+1. Select **Save** to save the function.
 
-## <a name="add-sendgrid-key"></a>添加 SendGrid 项
+## Add SendGrid Key
 
-若要添加 SendGrid API 密钥，需将其添加到 **函数密钥** ，如下所示：
+To add your SendGrid API Key, you need to add it to your **Function Keys** as follows:
 
-1. 选择 " **功能键**"。
-1. 选择 " **+ 新建功能键**"。
-1. 输入你之前创建的 API 密钥的 *名称* 和 *值* 。
-1. 单击“确定” **。**
+1. Select **Function Keys**.
+1. Choose **+ New Function Key**.
+1. Enter the *Name* and *Value* of the API Key you created before.
+1. Click **OK.**
 
-    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="添加 Sangrid 键的屏幕截图。":::
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Screenshot of Add Sangrid Key.":::
 
 
-## <a name="configure-httptrigger-function-to-use-sendgrid"></a>配置 HttpTrigger 函数以使用 SendGrid
+## Configure HttpTrigger function to use SendGrid
 
-若要使用 SendGrid 发送电子邮件，需按如下所述配置函数的绑定：
+To send emails with SendGrid, you need to configure the bindings for your function as follows:
 
-1. 选择“集成”。
-1. 选择 " **HTTP ($return)** 下的"**添加输出**"。
-1. 选择 " **删除"。**
-1. 选择 " **+ 新建输出**"。
-1. 对于 "绑定类型"，请选择 " **SendGrid**"。
-1. 对于 "SendGrid API 密钥设置类型"，请单击 "新建"。
-1. 输入 SendGrid API 密钥的 *名称* 和 *值* 。
-1. 添加以下信息：
+1. Select **Integrate**.
+1. Choose **Add Output** under **HTTP ($return)**.
+1. Select **Delete.**
+1. Choose **+ New Output**.
+1. For Binding Type, then choose **SendGrid**.
+1. For SendGrid API Key Setting Type, click New.
+1. Enter the *Name* and *Value* of your SendGrid API key.
+1. Add the following information:
 
-| 设置 | “值” |
+| Setting | Value |
 | ------- | ----- |
-| 消息参数名称 | 选择你的名称 |
-| 解决 | 选择要寻址的名称 |
-| 发件人地址 | 选择 "发件人地址" 的名称 |
-| 消息主题 | 输入主题标头 |
-| 消息正文 | 输入来自你的集成的消息 |
+| Message parameter name | Choose your name |
+| To address | Choose the name of your To Address |
+| From address | Choose the name of your From Address |
+| Message subject | Enter your subject header |
+| Message text | Enter the message from your integration |
 
-1. 选择“确定”。
+1. Select **OK**.
 
-    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="添加 SandGrid 输出的屏幕截图。":::
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Screenshot of Add SandGrid Output.":::
 
 
-### <a name="test-the-function-works"></a>测试函数的运行情况
+### Test the function works
 
-若要在门户中测试函数，请先选择代码编辑器底部的“日志”。 然后选择代码编辑器右侧的“测试”。 使用以下 JSON 作为 **请求正文**：
+To test the function in the portal, first choose **Logs** at the bottom of the code editor. Then choose **Test** to the right of the code editor. Use the following JSON as the **Request body**:
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
@@ -230,9 +228,9 @@ ms.locfileid: "102179334"
 
 函数日志消息将显示在“日志”面板中：
 
-:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="函数日志输出":::
+```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
 
-几分钟后，“收件人”电子邮件地址将收到包含以下内容的电子邮件：
+After a few minutes, the **To** email address receives an email with the following content:
 
 ```txt
 The following device(s) have stopped sending telemetry:
@@ -247,7 +245,7 @@ test-device-3    2019-05-02T14:24:28.919Z
 
 此解决方案使用流分析查询来检测设备何时停止发送遥测数据超过 120 秒。 该查询使用来自事件中心的遥测数据作为输入。 作业将查询结果发送到函数应用。 在本部分，你将配置流分析作业：
 
-1. 在 Azure 门户中，导航到流分析作业，在 " **作业拓扑** " 下，选择 " **输入**"，选择 " **+ 添加流输入**"，然后选择 " **事件中心**"。
+1. 在 Azure 门户中导航到流分析作业，在“作业拓扑”下，依次选择“输入”、“+ 添加流输入”和“事件中心”   。
 1. 根据下表中的信息使用前面创建的事件中心配置输入，然后选择“保存”：
 
     | 设置 | 值 |
@@ -257,7 +255,7 @@ test-device-3    2019-05-02T14:24:28.919Z
     | 事件中心命名空间 | 事件中心命名空间 |
     | 事件中心名称 | 使用现有名称 - **centralexport** |
 
-1. 在 " **作业拓扑**" 下，选择 " **输出**"，选择 " **+ 添加**"，然后选择 " **Azure 函数**"。
+1. 在“作业拓扑”下，依次选择“输出”、“+ 添加”和“Azure 函数”   。
 1. 使用下表中的信息配置输出，然后选择“保存”：
 
     | 设置 | 值 |
@@ -315,7 +313,7 @@ test-device-3    2019-05-02T14:24:28.919Z
 
 ## <a name="configure-export-in-iot-central"></a>在 IoT Central 中配置导出 
 
-在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral) 网站上，导航到所创建的 IoT Central 应用程序。
+在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上，导航到创建的 IoT Central 应用程序。
 
 在本部分，你将配置应用程序，以将其模拟设备发来的遥测数据流式传输到事件中心。 若要配置导出：
 
@@ -325,10 +323,10 @@ test-device-3    2019-05-02T14:24:28.919Z
     | 设置 | 值 |
     | ------- | ----- |
     | 显示名称 | 导出到事件中心 |
-    | 已启用 | 启用 |
-    | 要导出的数据类型 | 遥测 |
-    | 根据 | 输入想要如何组织导出数据的所需键/值 | 
-    | 目标 | 新建并输入用于导出数据的信息 |
+    | Enabled | 开 |
+    | 要导出的数据的类型 | 遥测 |
+    | 扩充 | 输入想要如何组织导出数据的所需键/值 | 
+    | 目标 | 新建并输入有关数据导出位置的信息 |
 
     :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="数据导出的屏幕截图。":::
 

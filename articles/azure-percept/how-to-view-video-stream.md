@@ -1,22 +1,22 @@
 ---
-title: 查看 Azure Percept 深色的 RTSP 视频流
-description: 了解如何从 Azure Percept 深色查看 RTSP 视频流
-author: elqu20
-ms.author: v-elqu
+title: 查看 Azure Percept DK 的 RTSP 视频流
+description: 了解如何从 Azure Percept DK 查看 RTSP 视频流
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5f77e99dc5c34867fef2b0ac47c709824fa4477d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: 678c5520b002f22552a6262fe245783f88ee61eb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095997"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754138"
 ---
-# <a name="view-your-azure-percept-dks-rtsp-video-stream"></a>查看 Azure Percept 深色的 RTSP 视频流
+# <a name="view-your-azure-percept-dks-rtsp-video-stream"></a>查看 Azure Percept DK 的 RTSP 视频流
 
-按照此指南查看 azure Percept Studio 内 Azure Percept 深色的 RTSP 视频流。 从视觉 AI 模型部署到设备的推断将可在 web 流中查看。
+按照此指南进行操作，查看 Azure Percept Studio 中 Azure Percept DK 的 RTSP 视频流。 部署到设备的视觉 AI 模型的推断将可在 Web 流中查看。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,22 +30,22 @@ ms.locfileid: "102095997"
 
 1. 转到 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)。
 
-1. 在 "概述" 页的左侧，单击 " **设备**"。
+1. 在概述页面的左侧，单击“设备”。
 
     :::image type="content" source="./media/how-to-view-video-stream/overview-devices-inline.png" alt-text="Azure Percept Studio 概述屏幕。" lightbox="./media/how-to-view-video-stream/overview-devices.png":::
 
-1. 从列表中选择你的 devkit。
+1. 从列表中选择 devkit。
 
     :::image type="content" source="./media/how-to-view-video-stream/select-device.png" alt-text="Azure Percept Studio 中可用设备的屏幕截图。":::
 
-1. 单击 " **查看设备流**"。
+1. 单击“查看设备流”。
 
     :::image type="content" source="./media/how-to-view-video-stream/view-device-stream.png" alt-text="显示可用的视觉项目操作的设备页的屏幕截图。":::
 
-    这会打开一个单独的选项卡，其中显示 Azure Percept 深色的实时 web 流。
+    这会打开一个单独的选项卡，其中显示 Azure Percept DK 的实时 Web 流。
 
-    :::image type="content" source="./media/how-to-view-video-stream/webstream.png" alt-text="设备 web 流的屏幕截图。":::
+    :::image type="content" source="./media/how-to-view-video-stream/webstream.png" alt-text="设备 Web 流的屏幕截图。":::
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何查看 [Azure PERCEPT 深色遥测](./how-to-view-telemetry.md)数据。
+了解如何查看 [Azure Percept DK 遥测](./how-to-view-telemetry.md)。

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28a9080ce878e262573adf0b3c79394079c09ca2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94835962"
 ---
 # <a name="identity-protection-policies"></a>标识保护策略
@@ -26,9 +26,9 @@ Azure Active Directory 标识保护包含三个管理员可选择启用的默认
 
 ## <a name="azure-ad-mfa-registration-policy"></a>Azure AD MFA 注册策略
 
-标识保护可以通过在登录时使用要求注册的条件性访问策略，来帮助组织 (MFA) 推出 Azure AD 多重身份验证。 启用此策略可更好地确保组织中的新用户在第一天就已注册 MFA。 在标识保护中，多重身份验证是针对风险事件的一种自动修正方法。 用户可通过自动修正自行采取措施来减少支持人员呼叫量。
+标识保护可帮助组织推出使用条件访问策略的 Azure AD 多重身份验证 (MFA)，该策略要求在登录时进行注册。 启用此策略可更好地确保组织中的新用户在第一天就已注册 MFA。 在标识保护中，多重身份验证是针对风险事件的一种自动修正方法。 用户可通过自动修正自行采取措施来减少支持人员呼叫量。
 
-有关 Azure AD 多重身份验证的详细信息，请参阅 [它的工作原理： Azure AD 多重身份验证](../authentication/concept-mfa-howitworks.md)。
+有关 Azure AD 多重身份验证的更多信息，请参阅文章[工作原理：Azure AD 多重身份验证](../authentication/concept-mfa-howitworks.md)。
 
 ## <a name="sign-in-risk-policy"></a>登录风险策略
 
@@ -37,7 +37,7 @@ Azure Active Directory 标识保护包含三个管理员可选择启用的默认
 如果检测到风险，用户可以执行多重身份验证以进行自我修正，并关闭有风险的登录事件，以避免为管理员带来不必要的干扰。
 
 > [!NOTE] 
-> 用户必须先注册 Azure AD 多重身份验证，然后才能触发登录风险策略。
+> 用户必须预先注册了 Azure AD 多重身份验证，然后才能触发登录风险策略。
 
 ### <a name="custom-conditional-access-policy"></a>自定义条件访问策略
 

@@ -1,14 +1,14 @@
 ---
 title: 策略分配结构的详细信息
 description: 介绍策略分配定义，Azure Policy 使用该定义将策略定义和参数关联到资源，以进行评估。
-ms.date: 01/29/2021
+ms.date: 03/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 625314a8b83a4d0cc76eae51eae8d357e39d2a6a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581960"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604859"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -88,7 +88,10 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 
 ## <a name="non-compliance-messages"></a>不符合性消息
 
-若要设置自定义消息以描述资源不符合策略或计划定义的原因，请 `nonComplianceMessages` 在分配定义中设置。 此节点是一组 `message` 条目。 此自定义消息是对不符合性的默认错误消息的补充，并且是可选的。
+若要设置描述资源为何不符合策略或计划定义的自定义消息，请在分配定义中设置 `nonComplianceMessages`。 此节点是一个 `message` 条目的数组。 此自定义消息是对不符合性默认错误消息的补充，并且是可选的。
+
+> [!IMPORTANT]
+> 只有使用[资源管理器模式](./definition-structure.md#resource-manager-modes)定义的定义或计划才支持针对不合规的自定义消息。
 
 ```json
 "nonComplianceMessages": [
@@ -98,7 +101,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 ]
 ```
 
-如果分配用于某个计划，则可以为该计划中的每个策略定义配置不同的消息。 消息使用 `policyDefinitionReferenceId` 计划定义中配置的值。 有关详细信息，请参阅 [策略定义属性](./initiative-definition-structure.md#policy-definition-properties)。
+如果分配是针对某个计划的，则可以为该计划中的每个策略定义配置不同的消息。 消息使用在计划定义中配置的 `policyDefinitionReferenceId` 值。 有关详细信息，请参阅[策略定义属性](./initiative-definition-structure.md#policy-definition-properties)。
 
 ```json
 "nonComplianceMessages": [

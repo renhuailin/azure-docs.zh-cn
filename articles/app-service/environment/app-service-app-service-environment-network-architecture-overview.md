@@ -1,6 +1,6 @@
 ---
 title: 网络体系结构 v1
-description: 应用服务环境的网络拓扑的体系结构概述。 本文档仅供使用旧版 v1 ASE 的用户使用。
+description: 应用服务环境网络拓扑的体系结构概述。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: stefsch
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84701807"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>应用服务环境的网络体系结构概述
@@ -42,13 +42,13 @@ ms.locfileid: "84701807"
 ## <a name="outbound-network-addresses"></a>出站网络地址
 应用服务环境执行出站调用时，IP 地址始终与出站调用相关联。  使用的特定 IP 地址取决于所调用的终结点是位于虚拟网络拓扑内部还是外部。
 
-如果调用的终结点在虚拟网络拓扑**外部**，则使用的出站地址（也称为出站 NAT 地址）是应用服务环境的公共 VIP。  可以在应用服务环境的门户用户界面上的“属性”边栏选项卡中找到此地址。
+如果调用的终结点在虚拟网络拓扑 **外部**，则使用的出站地址（也称为出站 NAT 地址）是应用服务环境的公共 VIP。  可以在应用服务环境的门户用户界面上的“属性”边栏选项卡中找到此地址。
 
 ![出站 IP 地址][OutboundIPAddress]
 
 对于只有公共 VIP 的 ASE，也可以通过在应用服务环境中创建一个应用，并对该应用的地址执行 *nslookup*，来确定此地址。 最终的 IP 地址既是公共 VIP，也是应用服务环境的出站 NAT 地址。
 
-如果调用的终结点在虚拟网络拓扑**内部**，则调用端应用的出站地址是运行应用的单个计算资源的内部 IP 地址。  但是，虚拟网络内部 IP 地址与应用之间不存在持久性的映射。  应用可以在不同的计算资源之间移动，并且可以基于缩放操作更改应用服务环境中的可用计算资源池。
+如果调用的终结点在虚拟网络拓扑 **内部**，则调用端应用的出站地址是运行应用的单个计算资源的内部 IP 地址。  但是，虚拟网络内部 IP 地址与应用之间不存在持久性的映射。  应用可以在不同的计算资源之间移动，并且可以基于缩放操作更改应用服务环境中的可用计算资源池。
 
 但是，由于应用服务环境始终位在子网内，可以保证运行应用的计算资源的内部 IP 地址始终处于子网的 CIDR 范围内。  因此，使用精细 ACL 或网络安全组来保护虚拟网络中其他终结点的访问时，需要将访问权限授予包含应用服务环境的子网范围。
 
@@ -64,7 +64,7 @@ ms.locfileid: "84701807"
 ## <a name="calls-between-app-service-environments"></a>在应用服务环境之间调用
 如果在相同的虚拟网络中部署多个应用服务环境，并从一个应用服务环境传出调用到另一个应用服务环境，则可能会出现更复杂的情景。  这些跨应用服务环境的调用也被视为“Internet”调用。
 
-下图显示了一个分层体系结构的示例，其中一个应用服务环境上的应用程序 (例如，在第二个应用服务环境上) 调用应用程序的 "前门" web 应用程序 (例如，内部后端 API 应用程序不能从 Internet) 访问。 
+下图显示了一个分层体系结构示例，其中应用在一个应用服务环境上（例如“前端”Web 应用）调用第二个应用服务环境上的应用（例如：内部后端 API 应用不需要可从 Internet 访问）。 
 
 ![在应用服务环境之间调用][CallsBetweenAppServiceEnvironments] 
 

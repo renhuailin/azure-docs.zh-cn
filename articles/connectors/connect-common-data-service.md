@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 tags: connectors
 ms.openlocfilehash: bec3416195358121b85eb61679ab39647e664a9e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100382339"
 ---
 # <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 Common Data Service (Microsoft Dataverse) 中创建和管理记录
@@ -19,7 +19,7 @@ ms.locfileid: "100382339"
 > [!NOTE]
 > 2020 年 11 月，Common Data Service 已重命名为 Microsoft Dataverse。
 
-使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Common Data Service 连接器](/connectors/commondataservice/)，你可以构建自动化工作流，用于管理 [Common Data Service（现在的 Microsoft Dataverse）](/powerapps/maker/common-data-service/data-platform-intro)数据库中的记录。 这些工作流可以创建记录、更新记录，以及执行其他操作。 还可以从 Dataverse 数据库中获取信息，并使输出可用于在逻辑应用中使用的其他操作。 例如，在 Dataverse 数据库中更新记录时，可以使用 Office 365 Outlook connector 发送电子邮件。
+使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Common Data Service 连接器](/connectors/commondataservice/)，你可以构建自动化工作流，用于管理 [Common Data Service（现在的 Microsoft Dataverse）](/powerapps/maker/common-data-service/data-platform-intro)数据库中的记录。 这些工作流可以创建记录、更新记录，以及执行其他操作。 你还可以从 Dataverse 数据库中获取信息，使输出可供逻辑应用中的其他操作使用。 例如，在 Dataverse 数据库中更新记录时，可以使用 Office 365 Outlook 连接器发送电子邮件。
 
 本文介绍如何构建一个逻辑应用，用于在每次创建新的潜在顾客记录时创建一个任务记录。
 
@@ -32,7 +32,7 @@ ms.locfileid: "100382339"
   * [Learn：Common Data Service 入门](/learn/modules/get-started-with-powerapps-common-data-service/)
   * [Power Platform - 环境概述](/power-platform/admin/environments-overview)
 
-* 有关 [如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 和逻辑应用的基本知识，你需要从该位置访问 Dataverse 数据库中的记录。 若要通过 Common Data Service 触发器启动逻辑应用，需要一个空白逻辑应用。 如果你不熟悉 Azure 逻辑应用，请查看[快速入门：使用 Azure 逻辑应用创建你的第一个工作流](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 关于[逻辑应用创建方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)以及特定逻辑应用（你需要从其访问 Dataverse 数据库中的记录）的基本知识。 若要通过 Common Data Service 触发器启动逻辑应用，需要一个空白逻辑应用。 如果你不熟悉 Azure 逻辑应用，请查看[快速入门：使用 Azure 逻辑应用创建你的第一个工作流](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="add-common-data-service-trigger"></a>添加 Common Data Service 触发器
 
@@ -52,7 +52,7 @@ ms.locfileid: "100382339"
 
    ![要监视的环境的触发器信息](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | **环境** | 是 | 要监视的环境，例如“Fabrikam Sales Production”。 有关详细信息，请参阅 [Power Platform - 环境概述](/power-platform/admin/environments-overview)。 |
    | **实体名称** | 是 | 要监视的实体，例如“潜在顾客” |
@@ -73,7 +73,7 @@ ms.locfileid: "100382339"
 
    ![要在其中创建记录的环境的操作信息](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | **组织名称** | 是 | 要在其中创建记录的环境，不一定是触发器中的同一环境，在本示例中为“Fabrikam Sales Production” |
    | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” |
@@ -171,26 +171,26 @@ ms.locfileid: "100382339"
 
 如需基于连接器的 Swagger 说明的技术信息，例如触发器、操作、限制和其他详细信息，请参阅[连接器的参考页](/connectors/commondataservice/)。
 
-## <a name="troubleshooting-problems"></a>疑难解答问题
+## <a name="troubleshooting-problems"></a>解决问题
 
 ### <a name="calls-from-multiple-environments"></a>来自多个环境的调用
 
-连接器 Common Data Service 和 Common Data Service (当前环境) ，存储有关需要的逻辑应用工作流的信息，并使用 Microsoft Dataverse 中的实体获取有关实体更改的通知 `callbackregistrations` 。 如果复制 Dataverse 组织，还会复制任何 webhook。 如果你在禁用映射到你的组织的工作流之前复制你的组织，则任何复制的 webhook 也指向相同的逻辑应用，后者随后会从多个组织获得通知。
+连接器“Common Data Service”和“Common Data Service(当前环境)”都可存储关于所需逻辑应用工作流的信息，并可通过使用 Microsoft Dataverse 中的 `callbackregistrations` 实体获取有关实体更改的通知。 如果你复制某个 Dataverse 组织，则还会复制任何 Webhook。 如果你在禁用映射到你的组织的工作流之前复制你的组织，则任何复制的 Webhook 也指向相同的逻辑应用，后者随后会从多个组织获取通知。
 
-若要停止不需要的通知，请按以下步骤操作，从发送这些通知的组织中删除回拨注册：
+若要停止不需要的通知，请按以下步骤操作，从发送这些通知的组织中删除回调注册：
 
 1. 确定要从中删除通知的 Dataverse 组织，并登录到该组织。
 
-1. 在 Chrome 浏览器中，按以下步骤查找要删除的回拨注册：
+1. 在 Chrome 浏览器中，通过以下步骤找到要删除的回调注册：
 
-   1. 查看以下 OData URI 上的所有回调注册的泛型列表，以便可以查看实体内的数据 `callbackregistrations` ：
+   1. 在以下 OData URI 上查看所有回调注册的泛型列表，以便你可以查看 `callbackregistrations` 实体内的数据：
 
       `https://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations`:
 
       > [!NOTE]
-      > 如果未返回任何值，则您可能没有查看此实体类型的权限，或者您可能未登录到正确的组织。
+      > 如果未返回任何值，则你可能没有权限查看此实体类型，或者你可能未登录到正确的组织。
 
-   1. 筛选触发实体的逻辑名称 `entityname` 和与逻辑应用工作流匹配的通知事件 (消息) 。 每个事件类型都映射到消息整数，如下所示：
+   1. 请筛选触发实体的逻辑名称 `entityname` 以及与你的逻辑应用工作流（消息）匹配的通知事件。 每个事件类型都映射到消息整数，如下所示：
 
       | 事件类型 | 消息整数 |
       |------------|-----------------|
@@ -203,20 +203,20 @@ ms.locfileid: "100382339"
       | CreateOrUpdateOrDelete | 7 |
       |||
 
-      此示例演示如何 `Create` `nov_validation` 使用示例组织的以下 OData URI 筛选名为的实体上的通知：
+      此示例展示了如何通过为示例组织使用以下 OData URI 来筛选名为 `nov_validation` 的实体上的 `Create` 通知：
 
       `https://fabrikam-preprod.crm1.dynamics.com/api/data/v9.0/callbackregistrations?$filter=entityname eq 'nov_validation' and message eq 1`
 
-      ![屏幕截图，显示地址栏中的浏览器窗口和 OData URI。](./media/connect-common-data-service/find-callback-registrations.png)
+      ![屏幕截图显示了浏览器窗口和地址栏中的 OData URI。](./media/connect-common-data-service/find-callback-registrations.png)
 
       > [!TIP]
-      > 如果同一个实体或事件存在多个触发器，则可以使用其他筛选器（如和属性）筛选该列表 `createdon` `_owninguser_value` 。 所有者用户的名称将显示在下 `/api/data/v9.0/systemusers({id})` 。
+      > 如果同一个实体或事件存在多个触发器，则可以使用附加筛选器（例如 `createdon` 和 `_owninguser_value` 属性）来筛选列表。 所有者用户的名称将显示在 `/api/data/v9.0/systemusers({id})` 下。
 
-   1. 找到要删除的回拨注册的 ID 后，请执行以下步骤：
+   1. 找到要删除的回调注册的 ID 后，执行以下步骤：
    
-      1. 在 Chrome 浏览器中，打开 "Chrome 开发人员工具 (键盘： F12) "。
+      1. 在 Chrome 浏览器中，打开“Chrome 开发人员工具”（键盘：F12）。
 
-      1. 在窗口顶部，选择 " **控制台** " 选项卡。
+      1. 在窗口顶部，选择“控制台”选项卡。
 
       1. 在命令行提示符下，输入此命令，该命令将发送请求以删除指定的回调注册：
 
@@ -225,7 +225,7 @@ ms.locfileid: "100382339"
          > [!IMPORTANT]
          > 请确保从非统一的客户端界面 (UCI) 页面（例如，从 OData 或 API 响应页面本身）发出请求。 否则，app.js 文件中的逻辑可能会干扰此操作。
 
-   1. 若要确认回拨注册不再存在，请检查回调注册列表。
+   1. 若要确认回调注册不再存在，请检查回调注册列表。
 
 ## <a name="next-steps"></a>后续步骤
 

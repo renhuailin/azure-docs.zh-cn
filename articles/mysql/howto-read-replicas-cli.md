@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a5bc9638e2e6eeff8f2176247f579b64beede90
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.openlocfilehash: 697e594581636bb3940684371661705539068e6a
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540206"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001657"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API 在 Azure Database for MySQL 中创建和管理只读副本
 
@@ -118,7 +118,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 可以使用 [Azure REST API](/rest/api/azure/) 创建和管理只读副本。
 
 ### <a name="create-a-read-replica"></a>创建只读副本
-可以使用[创建 API](/rest/api/mysql/servers/create) 创建只读副本：
+可以使用[创建 API](/rest/api/mysql/flexibleserver(preview)/servers/create) 创建只读副本：
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{replicaName}?api-version=2017-12-01
@@ -146,14 +146,14 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > 将源服务器设置更新为新值之前，请将副本设置更新为一个相等或更大的值。 此操作可帮助副本与主服务器发生的任何更改保持同步。
 
 ### <a name="list-replicas"></a>列出副本
-可以使用[副本列表 API](/rest/api/mysql/replicas/listbyserver) 查看源服务器的副本列表：
+可以使用[副本列表 API](/rest/api/mysql/flexibleserver(preview)/replicas/listbyserver) 查看源服务器的副本列表：
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>停止复制到副本服务器
-可以使用[更新 API](/rest/api/mysql/servers/update) 停止源服务器与只读副本之间的复制。
+可以使用[更新 API](/rest/api/mysql/flexibleserver(preview)/servers/update) 停止源服务器与只读副本之间的复制。
 
 停止复制到源服务器和只读副本后，无法撤消该操作。 只读副本将成为支持读取和写入的独立服务器。 独立服务器不能再次成为副本。
 
@@ -170,7 +170,7 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 ```
 
 ### <a name="delete-a-source-or-replica-server"></a>删除源服务器或副本服务器
-若要删除源服务器或副本服务器，请使用[删除 API](/rest/api/mysql/servers/delete)：
+若要删除源服务器或副本服务器，请使用[删除 API](/rest/api/mysql/flexibleserver(preview)/servers/delete)：
 
 删除源服务器后，将停止复制到所有只读副本的操作。 只读副本将成为支持读取和写入的独立服务器。
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f171ab9619f2bcb8ecf15c4bfb3b17146ab5a0ff
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 419b4939c19ee03651a406db44244897e17087f2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938938"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104865462"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>HDInsight 中的 Azure 存储概述
 
@@ -24,7 +24,7 @@ Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无
 
 下图提供了 Azure 存储的 HDInsight 存储体系结构的抽象视图：
 
-![“HDInsight 存储体系结构”](./media/overview-azure-storage/storage-architecture.png "HDInsight 存储体系结构")
+:::image type="content" source="./media/overview-azure-storage/storage-architecture.png" alt-text="HDInsight 存储体系结构" border="false":::
 
 HDInsight 提供对在本地附加到计算节点的分布式文件系统的访问权限。 可使用完全限定 URI 访问该文件系统，例如：
 
@@ -40,7 +40,7 @@ HDInsight 提供对在本地附加到计算节点的分布式文件系统的访�
 
 * **没有连接到群集的存储帐户中的公共容器或公共 Blob：** 你对这些容器中的 Blob 具有只读权限。
   
-  > [!NOTE]  
+  > [!NOTE]
   > 利用公共容器，可以获得该容器中可用的所有 Blob 的列表以及容器元数据。 利用公共 Blob，仅在知道正确 URL 时才可访问 Blob。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../storage/blobs/anonymous-read-access-configure.md)。
 
 * **没有连接到群集的存储帐户中的专用容器：** 不能访问这些容器中的 Blob，除非在提交 WebHCat 作业时定义存储帐户。

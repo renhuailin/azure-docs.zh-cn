@@ -1,21 +1,21 @@
 ---
-title: 如何删除用户对 Azure Active Directory 中的应用程序的访问权限
-description: 了解如何在 Azure Active Directory 中删除用户对应用程序的访问权限
+title: 如何删除用户对 Azure Active Directory 中应用程序的访问权限
+description: 了解如何删除用户对 Azure Active Directory 中应用程序的访问权限
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/02/2020
-ms.author: kenwith
-ms.openlocfilehash: e6a6c00811a7b87156802897db62a4a10130f130
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.author: iangithinji
+ms.openlocfilehash: 958abc5f9be443d66037a6d9fe8d8779e6e37e0e
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257349"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379581"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>如何删除用户对应用程序的访问权限
 
@@ -31,11 +31,11 @@ ms.locfileid: "99257349"
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>我要彻底删除应用程序
 
-[有关应用程序管理的快速入门系列](delete-application-portal.md)包括从 Azure Active Directory 租户中删除应用程序的指南。
+[应用程序管理快速入门系列](delete-application-portal.md)包括有关从 Azure Active Directory 租户中删除应用程序的指南。
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>我要禁用用户未来针对应用程序的所有同意操作
 
-针对整个目录禁用用户同意操作，可防止最终用户同意任何应用程序。 管理员仍可以代表用户授予许可。 有关应用程序同意的详细信息，以及可能希望或可能不希望这样做的原因，请阅读[了解用户和管理员同意](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)。 此外，请参阅[权限和许可](../develop/v2-permissions-and-consent.md)。
+针对整个目录禁用用户同意操作，可防止最终用户同意任何应用程序。 管理员仍可代表用户执行同意操作。 有关应用程序同意的详细信息，以及可能希望或可能不希望这样做的原因，请阅读[了解用户和管理员同意](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)。 此外，请参阅[权限和许可](../develop/v2-permissions-and-consent.md)。
 
 若要 **禁用用户未来在整个目录中执行的所有同意操作**，请根据以下说明进行操作：
 
@@ -43,9 +43,9 @@ ms.locfileid: "99257349"
 
 2.  打开“Azure Active Directory 扩展” 
 
-3.  单击导航菜单中的 " **企业应用程序** "。
+3.  在导航菜单中，单击“企业应用程序”。
 
-5.  单击 " **用户设置**"。
+5.  单击“用户设置”。
 
 6.  将“用户可以允许应用代表他们访问公司数据”切换为“否”并单击“保存”按钮。
 

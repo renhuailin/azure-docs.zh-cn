@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/07/2020
 ms.author: irenehua
 ms.openlocfilehash: 1b7bdbdb9e1d642f2ef4a715d4993e4f449ccd0a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98050691"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升级 Azure 内部负载均衡器 - 不需出站连接
@@ -32,7 +32,7 @@ ms.locfileid: "98050691"
 
 * 脚本只支持不需要出站连接的内部负载均衡器升级。 如果需要用于某些 VM 的[出站连接](./load-balancer-outbound-connections.md)，请参阅此[页面](upgrade-InternalBasic-To-PublicStandard.md)，了解相关说明。 
 * 基本负载均衡器需要与后端 VM 和 NIC 位于同一资源组中。
-* 如果在不同的区域中创建标准负载均衡器，则无法将旧区域中的 Vm 关联到新创建的标准负载均衡器。 若要克服此限制，请确保在新区域中创建新的 VM。
+* 如果标准负载均衡器是在不同的区域中创建的，则无法将旧区域中的 VM 关联到新建的标准负载均衡器。 若要克服此限制，请确保在新区域中创建新的 VM。
 * 如果负载均衡器没有任何前端 IP 配置或后端池，则运行脚本时可能会遇到错误。 确保负载均衡器不是空的。
 
 ## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>将前端 IP 配置的 IP 分配方法更改为“静态”（如果此项已为“静态”，则忽略此步骤）
@@ -89,7 +89,7 @@ ms.locfileid: "98050691"
     **示例**
 
    ```azurepowershell
-   AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg&quot; -oldLBName &quot;LBForInternal&quot; -newlocation &quot;centralus&quot; -newLbName &quot;LBForUpgrade"
    ```
 
 ## <a name="common-questions"></a>常见问题

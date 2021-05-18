@@ -6,10 +6,10 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.openlocfilehash: bc3e77b560a94b45acf1ae696551dbefbabbdf0a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038197"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>在单个指标警报规则中监视多个时序
@@ -159,9 +159,9 @@ ms.locfileid: "102038197"
  
 ### <a name="advanced-multi-dimension-features"></a>高级多维度功能
 
-1.  **选择所有当前和未来的维度** -可以选择监视维度的所有可能值，包括未来值。 此类警报规则会自动缩放以监视维度的所有值，不需要你在每次添加或删除维度值时修改警报规则。
-2.  **排除维度** –为维度值选择 "≠" ("排除") 运算符等效于选择该维度的所有其他值，包括未来值。
-3.  **新维度和自定义维度** -Azure 门户中显示的维度值基于在上一天收集的指标数据。 如果你要查找的维度值尚未发出，则可以添加自定义维度值。
+1.  **选择当前和将来的所有维度** - 你可以选择监视维度的所有可能值，包括将来的值。 此类警报规则会自动缩放以监视维度的所有值，不需要你在每次添加或删除维度值时修改警报规则。
+2.  **排除维度** - 针对维度值选择“≠”（排除）运算符等效于选择该维度的所有其他值，包括将来的值。
+3.  **新维度和自定义维度** - Azure 门户中显示的维度值基于前一天收集的指标数据。 如果你要查找的维度值尚未发出，则可以添加自定义维度值。
 4. 与前缀匹配的维度 - 通过选择“开头为”运算符并输入自定义前缀，你可以选择监视以特定模式开头的所有维度值。
 
 ![高级多维度功能](media/alerts-metric-multiple-time-series-single-rule/advanced-features.png)

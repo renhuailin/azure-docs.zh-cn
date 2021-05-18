@@ -1,6 +1,6 @@
 ---
-title: Azure Blob 存储监视数据引用 |Microsoft Docs
-description: 用于监视来自 Azure Blob 存储的数据的日志和指标参考。
+title: Azure Blob 存储监视数据参考 | Microsoft Docs
+description: 有关 Azure Blob 存储中的监视数据的日志和指标参考。
 author: normesta
 services: azure-monitor
 ms.service: azure-monitor
@@ -10,13 +10,13 @@ ms.author: normesta
 ms.subservice: logs
 ms.custom: subject-monitoring
 ms.openlocfilehash: b37586f66106e33b2a8dad034a6e7c131484be73
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100571622"
 ---
-# <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob 存储监视数据引用
+# <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob 存储监视数据参考
 
 请参阅[监视 Azure 存储](monitor-blob-storage.md)，详细了解如何收集和分析 Azure 存储的监视数据。
 
@@ -26,7 +26,7 @@ ms.locfileid: "100571622"
 
 ### <a name="capacity-metrics"></a>容量度量值
 
-容量指标值每日刷新 (最多24小时) 。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
+容量指标值每天刷新（最多 24 小时）。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
 
 Azure 存储在 Azure Monitor 中提供以下容量指标。
 
@@ -46,7 +46,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 | ContainerCount    | 存储帐户中的容器数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 | IndexCapacity     | ADLS Gen2 分层索引所使用的存储量 <br/><br/> 单元：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
-### <a name="transaction-metrics"></a>事务指标
+### <a name="transaction-metrics"></a>事务度量值
 
 从 Azure 存储到 Azure Monitor 的每个存储帐户请求都会发出事务指标。 如果存储帐户中没有任何活动，则在此期间不会有关于事务指标的数据。 所有事务指标均可用于帐户和 Blob 存储服务级别。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
 
@@ -69,7 +69,7 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 | **BlobType** | 仅限 Blob 指标的 Blob 类型。 支持的值为 **BlockBlob**、**PageBlob** 和 **Azure Data Lake Storage**。 **BlockBlob** 中包含追加 Blob。 |
 | **BlobTier** | Azure 存储提供了不同的访问层，允许以最具成本效益的方式存储 Blob 对象数据。 请在 [Azure 存储 Blob 层](../blobs/storage-blob-storage-tiers.md)中查看详细信息。 支持的值包括： <br/> <li>**Hot**：热层</li> <li>**Cool**：冷层</li> <li>**存档**：存档层</li> <li>**Premium**：块 Blob 的高级层</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**：高级页 Blob 的层类型</li> <li>**标准**：标准页 Blob 的层类型</li> <li>**Untiered**：常规用途 v1 存储帐户的层类型</li> |
 
-对于支持维度的指标，需要指定维度值才能查看相应的指标值。 例如，如果查看成功响应的 **Transactions** 值，需要使用 **Success** 筛选 **ResponseType** 维度。 如果查看块 Blob 的 **BlobCount** 值，则需要通过 **BlockBlob** 筛选 **BlobType** 维度。
+对于支持维度的指标，需要指定维度值才能查看相应的指标值。 例如，如果查看成功响应的 **Transactions** 值，需要使用 **Success** 筛选 **ResponseType** 维度。 如果查看块 Blob 的 BlobCount 值，需要使用 BlockBlob 筛选 BlobType 维度  。
 
 ## <a name="resource-logs-preview"></a>资源日志（预览版）
 
@@ -176,4 +176,4 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 ## <a name="see-also"></a>另请参阅
 
 - 有关如何监视 Azure 存储的说明，请参阅[监视 Azure 存储](monitor-blob-storage.md)。
-- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。

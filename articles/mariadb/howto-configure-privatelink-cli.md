@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 55f375c83affea8585ec7ebf881a80315ff7a38c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100361310"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>使用 CLI 创建和管理用于 Azure Database for MariaDB 的专用链接
@@ -33,7 +33,7 @@ ms.locfileid: "100361310"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在创建任何资源之前，必须创建一个资源组以托管虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 " *westeurope* " 位置创建名为 " *myResourceGroup* " 的资源组：
+在创建任何资源之前，必须创建一个资源组以托管虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“westeurope”位置创建名为“myResourceGroup”的资源组 ：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
@@ -176,7 +176,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
     | 设置 | 值 |
     | ------- | ----- |
     | 连接名称| 选择所选的连接名称。|
-    | 主机名 | 选择 *mydemoserver.privatelink.mariadb.database.azure.com* |
+    | 主机名 | 选择 mydemoserver.privatelink.mariadb.database.azure.com |
     | 用户名 | 输入用户名 username@servername，该用户名是在创建 MariaDB 服务器期间提供的。 |
     | 密码 | 输入创建 MariaDB 服务器期间提供的密码。 |
     ||
@@ -195,7 +195,7 @@ az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>后续步骤
-了解[什么是 Azure 专用终结点的](../private-link/private-endpoint-overview.md)详细信息
+详细了解[什么是 Azure 专用终结点](../private-link/private-endpoint-overview.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

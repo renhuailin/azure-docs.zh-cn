@@ -4,15 +4,15 @@ description: 了解如何识别还原点并使用 Azure 门户配置连续备份
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 707ef9f60891c1da7c13638e233ee74e78fc20dd
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100381862"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283931"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>使用 Azure 门户配置和管理连续备份和时间点还原（预览版）
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -32,6 +32,10 @@ Azure Cosmos DB 的时间点还原功能（预览版）可帮助你从容器内�
 
 :::image type="content" source="./media/continuous-backup-restore-portal/configure-continuous-backup-portal.png" alt-text="为 Azure Cosmos DB 帐户预配连续备份配置。" border="true":::
 
+## <a name="backup-storage-redundancy"></a>备份存储冗余
+
+默认情况下，Azure Cosmos DB 将连续模式备份数据存储在本地冗余存储 Blob 中。 对于配置了区域冗余的区域，备份存储在区域冗余存储 Blob 中。 在此模式下，你无法更新备份存储冗余。
+
 ## <a name="restore-a-live-account-from-accidental-modification"></a><a id="restore-live-account"></a>将实时帐户从意外修改中还原
 
 可以使用 Azure 门户来还原实时帐户或该帐户下所选的数据库和容器。 还原数据需要完成以下步骤：
@@ -46,7 +50,7 @@ Azure Cosmos DB 的时间点还原功能（预览版）可帮助你从容器内�
 
    * **还原点 (UTC)** – 在过去 30 天内的时间戳。 该帐户应存在于该时间戳下。 可以指定 UTC 格式的还原点。 如果你希望还原，可将该还原点设为与第二个还原点相接近。 选择“单击此处”，获取有关[标识还原点](#event-feed)的帮助。
 
-   * **位置** – 还原帐户的目标区域。 此帐户应存在于规定时间戳以及此区域中（例如 美国西部或美国东部）。 帐户只能还原到源帐户所在的区域。
+   * **位置** – 还原帐户的目标区域。 在给定时间戳此帐户应存在于该区域中（例如美国西部或美国东部）。 帐户只能还原到源帐户所在的区域。
 
    * **还原资源** – 可选择“整个帐户”，也可选择要还原的“所选数据库/容器”。 数据库和容器应存在于规定时间戳下。 根据所选的还原点和位置，将填充恢复资源，以便用户可以选择需要还原的特定数据库或容器。
 

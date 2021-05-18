@@ -1,17 +1,17 @@
 ---
-title: 在 Azure 服务总线中设置订阅筛选器 |Microsoft Docs
-description: 本文提供了有关在 Azure 服务总线主题订阅上定义筛选器和操作的示例。
+title: 在 Azure 服务总线中设置订阅筛选器 | Microsoft Docs
+description: 本文提供了有关在“Azure 服务总线”主题订阅上定义筛选器和操作的示例。
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.openlocfilehash: bcbb72901ed8e2dfe0932163ee18683e0011ce70
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100654071"
 ---
-# <a name="set-subscription-filters-azure-service-bus"></a> (Azure 服务总线设置订阅筛选器) 
-本文提供了有关在服务总线主题订阅上设置筛选器的一些示例。 有关筛选器的概念信息，请参阅 [筛选器](topic-filters.md)。
+# <a name="set-subscription-filters-azure-service-bus"></a>设置订阅筛选器（Azure 服务总线）
+本文提供了一些有关在“服务总线”主题订阅上设置筛选器的示例。 有关筛选器的概念性信息，请参阅[筛选器](topic-filters.md)。
 
 ## <a name="filter-on-system-properties"></a>按系统属性筛选
 若要在筛选器中引用系统属性，请使用以下格式：`sys.<system-property-name>`。 

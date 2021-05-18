@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 825a7d8c53552120a861657c7f3df7ae8f488c18
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99581714"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
@@ -52,7 +52,7 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。 通过在 [Azure 门�
 
 使用多租户应用程序时，应用程序事先并不知道用户来自哪个租户，因此无法将请求发送到租户的终结点。 取而代之的是，请求将发送到在所有 Azure AD 租户之间多路复用的终结点：`https://login.microsoftonline.com/common`
 
-当 Microsoft 标识平台在/common 终结点上收到请求时，它会在中对用户进行签名，因此，会发现用户来自哪个租户。 /common 终结点可与 Azure AD 支持的所有身份验证协议配合使用：OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
+当 Microsoft 标识平台在 /common 终结点上收到请求时，会使用户登录，因而可以发现用户来自哪个租户。 /common 终结点可与 Azure AD 支持的所有身份验证协议配合使用：OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
 
 然后，对应用程序做出的登录响应会包含代表该用户的令牌。 令牌中的颁发者值告知应用程序该用户来自哪个租户。 从 /common 终结点返回响应时，令牌中的颁发者值将与用户的租户相对应。
 
@@ -117,7 +117,7 @@ https://sts.windows.net/{tenantid}/
 
 有些权限可由普通用户同意，有些则需要租户管理员同意。
 
-若要了解有关用户和管理员同意的详细信息，请参阅 [配置管理员许可工作流](../manage-apps/configure-admin-consent-workflow.md)。
+若要详细了解用户和管理员同意，请参阅[配置管理员同意工作流](../manage-apps/configure-admin-consent-workflow.md)。
 
 ### <a name="admin-consent"></a>管理员同意
 
@@ -125,7 +125,7 @@ https://sts.windows.net/{tenantid}/
 
 有些委托的权限也需要租户管理员的同意。 例如，若要能够以登录用户身份写回 Azure AD，就需要租户管理员的同意。 与仅限应用的权限一样，如果普通用户尝试登录请求委托权限的应用程序，而该权限需要管理员同意，则应用程序会收到错误。 权限是否需要管理员同意是由发布资源的开发人员决定的，可以在该资源的文档中找到相关信息。 [Microsoft Graph API][MSFT-Graph-permission-scopes] 的权限文档指示哪些权限需要管理员同意。
 
-如果你的应用程序使用需要管理员同意的权限，则有一个手势（如按钮或链接），管理员可以在其中启动操作。 应用程序针对此操作发送的请求是一个普通的 OAuth2/OpenID Connect 授权请求，但此请求同时也包含 `prompt=admin_consent` 查询字符串参数。 在管理员同意且系统已在客户的租户中创建服务主体之后，后续登录请求就不再需要 `prompt=admin_consent` 参数。 由于管理员已确定可接受请求的权限，因此从该时间点之后，不再提示租户中的任何其他用户同意。
+如果应用程序使用需要管理员同意的权限，请提供某种表示，例如可供管理员发起操作的按钮或链接。 应用程序针对此操作发送的请求是一个普通的 OAuth2/OpenID Connect 授权请求，但此请求同时也包含 `prompt=admin_consent` 查询字符串参数。 在管理员同意且系统已在客户的租户中创建服务主体之后，后续登录请求就不再需要 `prompt=admin_consent` 参数。 由于管理员已确定可接受请求的权限，因此从该时间点之后，不再提示租户中的任何其他用户同意。
 
 租户管理员可以禁用普通用户同意应用程序的能力。 如果禁用此功能，则始终需要管理员同意，才能在租户中使用应用程序。 若要在禁用最终用户许可的情况下测试应用程序，可以在 [Azure 门户][AZURE-portal]的“企业应用程序”下的  [用户设置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)  部分中找到配置开关。
 
@@ -188,7 +188,7 @@ https://sts.windows.net/{tenantid}/
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 在应用和 Azure AD 之间启用单个 Sign-On (SSO) 后，还可以更新应用程序以访问 Microsoft 资源（如 Microsoft 365）公开的 Api。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。
+本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 在应用与 Azure AD 之间启用单一登录 (SSO) 后，还可更新应用程序以访问 Microsoft 资源（如 Microsoft 365）公开的 API。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。
 
 若要详细了解如何对 Azure AD 和 Microsoft 365 服务（如 Exchange、SharePoint、OneDrive、OneNote 等）进行 API 调用，请访问 [Microsoft Graph API][MSFT-Graph-overview]。
 

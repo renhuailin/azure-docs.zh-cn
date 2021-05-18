@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro FPGA 管理用户 |Microsoft Docs
-description: 描述如何使用 Azure 门户来管理 Azure Stack Edge Pro 上的用户。
+title: Azure Stack Edge Pro FPGA 管理用户 | Microsoft Docs
+description: 介绍如何使用 Azure 门户管理 Azure Stack Edge Pro 上的用户。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.date: 01/05/2021
 ms.author: alkohli
 ms.openlocfilehash: 27ca190f3bad7f75175e5206d48e13dae1f5687e
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97913280"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro-fpga"></a>使用 Azure 门户管理 Azure Stack Edge Pro FPGA 上的用户
 
-本文介绍如何在 Azure Stack Edge Pro FPGA 设备上管理用户。 可以通过 Azure 门户或通过本地 web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户来添加、修改或删除用户。
+本文介绍如何管理 Azure Stack Edge Pro FPGA 设备上的用户。 可以通过 Azure 门户或本地 Web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户来添加、修改或删除用户。
 
 在本文中，学习如何：
 
@@ -39,7 +39,7 @@ ms.locfileid: "97913280"
 
 在 Azure 门户中执行以下步骤可以添加用户。
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **用户**"。 在命令栏上选择 " **+ 添加用户** "。
+1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到“用户”。 选择命令栏上的“+ 添加用户”。
 
     ![选择“添加用户”](media/azure-stack-edge-manage-users/add-user-1.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "97913280"
 在 Azure 门户中执行以下步骤可以删除用户。
 
 
-1. 在 Azure 门户中，请切换到 Azure Stack Edge 资源，然后前往 " **用户**"。
+1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到“用户”。
 
     ![选择要删除的用户](media/azure-stack-edge-manage-users/delete-user-1.png)
 

@@ -1,18 +1,18 @@
 ---
 title: 使用 MARS 代理备份 Windows 计算机
-description: 使用 Microsoft Azure 恢复服务 (MARS) 代理来备份 Windows 计算机。
+description: 使用 Microsoft Azure 恢复服务 (MARS) 代理备份 Windows 计算机。
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98702762"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>将 Windows Server 文件和文件夹备份到 Azure
 
-本文介绍如何使用 [Azure 备份](backup-overview.md) 服务和 MICROSOFT AZURE 恢复服务 (MARS) 代理来备份 Windows 计算机。 MARS 也称为 Azure 备份代理。
+本文介绍如何使用 [Azure 备份](backup-overview.md)服务和 Microsoft Azure 恢复服务 (MARS) 代理备份 Windows 计算机。 MARS 也称为 Azure 备份代理。
 
 本文将指导如何进行以下操作：
 

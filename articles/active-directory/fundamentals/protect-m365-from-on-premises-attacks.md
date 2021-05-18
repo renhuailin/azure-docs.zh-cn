@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6d548f4d792d8980e2aa5040b09530eaf7868c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102609900"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>防范 Microsoft 365 遭受本地攻击
@@ -164,7 +164,7 @@ Microsoft 365 云环境受益于功能丰富的监视和安全基础结构。 Mi
 
 使用 Azure AD 功能来安全管理设备。
 
--   **使用 Windows 10 工作站**：使用 MDM 策略 [部署已加入 Azure AD](../devices/azureadjoin-plan.md) 的设备。 启用 [Windows Autopilot](/mem/autopilot/windows-autopilot) 以实现全自动化预配体验。
+-   **使用 Windows 10 工作站**：使用 MDM 策略[部署已加入 Azure AD](../devices/azureadjoin-plan.md) 的设备。 启用 [Windows Autopilot](/mem/autopilot/windows-autopilot) 以实现全自动化预配体验。
 
     -   弃用运行 Windows 8.1 和更低版本的计算机。
 
@@ -254,7 +254,7 @@ Microsoft 365 云环境受益于功能丰富的监视和安全基础结构。 Mi
 
   * 在 Azure AD B2B 中对允许列表和阻止列表做出的更改。
 
-  * 在 Azure AD B2B 中通过直接联合或社交登录对允许的标识提供者（SAML 标识提供者）做出的更改。  
+  * Azure AD B2B 通过直接联合或社交登录对允许的标识提供者（SAML 标识提供者）做出的更改。  
 
   * 条件访问或风险策略的更改。 
 

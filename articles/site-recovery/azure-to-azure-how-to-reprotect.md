@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure Site Recovery 将 Azure Vm 重新保护到主要区域 |Microsoft Docs
+title: 重新保护使用 Azure Site Recovery 故障转移到主要区域的 Azure VM | Microsoft Docs
 description: 介绍在使用 Azure Site Recovery 将 Azure VM 从次要区域故障转移到主要区域后，如何重新保护 VM。
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91360865"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保护已故障转移到主要区域的 Azure VM
 
-使用 [Azure Site Recovery](site-recovery-overview.md) 将 Azure VM 从一个区域[故障转移](site-recovery-failover.md)到另一个区域后，VM 将在次要区域中启动，且**不受保护**。 若要将 VM 故障回复到主要区域，请执行以下任务：
+使用 [Azure Site Recovery](site-recovery-overview.md) 将 Azure VM 从一个区域 [故障转移](site-recovery-failover.md)到另一个区域后，VM 将在次要区域中启动，且 **不受保护**。 若要将 VM 故障回复到主要区域，请执行以下任务：
 
 1. 在次要区域中重新保护 VM，以便这些 VM 开始复制到主要区域。
 1. 重新保护完成并且 VM 开始复制后，可将其从次要区域故障转移到主要区域。
@@ -31,7 +31,7 @@ ms.locfileid: "91360865"
 
 1. 在“保管库” > “复制的项”中，右键单击已故障转移的 VM，并选择“重新保护”。   重新保护方向应该显示为从次要区域到主要区域。
 
-   ![屏幕截图显示了一个虚拟机，其中包含已选择 "重新保护" 的上下文菜单。](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![屏幕截图显示一个虚拟机，其中包含已选择“重新保护”的上下文菜单。](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
 1. 查看资源组、网络、存储和可用性集。 。 如果有任何资源标记为“新”，则表示它们是在重新保护过程中创建的。
 1. 重新保护作业使用最新数据植入目标站点。 该作业完成后，将发生增量复制。 然后，可以故障转移回到主要站点。 可以使用自定义选项，选择要在重新保护期间使用的存储帐户或网络。

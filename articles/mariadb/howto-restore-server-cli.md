@@ -3,16 +3,16 @@ title: 备份和还原 - Azure CLI - Azure Database for MariaDB
 description: 了解如何使用 Azure CLI 在 Azure Database for MariaDB 中备份和还原服务器。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ceda6c99493818042aa281ab545465e91493a80e
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: a6e46efd7f998437c3998df9a989ef9e1500e888
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664828"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MariaDB 中备份和还原服务器
@@ -76,7 +76,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 | restore-point-in-time | 2018-03-13T13:59:00Z | 选择要还原到的时间点。 此日期和时间必须在源服务器的备份保留期限内。 使用 ISO8601 日期和时间格式。 例如，可以使用自己的本地时区，如 `2018-03-13T05:59:00-08:00`。 也可以使用 UTC Zulu 格式，如 `2018-03-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要从其还原的源服务器的名称或 ID。 |
 
-当将服务器还原到较早的时间点时，将创建新服务器。 原始服务器及其从指定时间点开始创建的数据库会复制到新服务器。
+将服务器还原到以前的某个时间点时，会创建新服务器。 原始服务器及其从指定时间点开始创建的数据库会复制到新服务器。
 
 还原的服务器的位置值和定价层值与原始服务器保持相同。 
 

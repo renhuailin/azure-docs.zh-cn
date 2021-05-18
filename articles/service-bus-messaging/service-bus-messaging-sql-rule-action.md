@@ -1,13 +1,13 @@
 ---
-title: Azure 服务总线订阅规则 SQL 操作语法 |Microsoft Docs
+title: Azure 服务总线订阅规则 SQL 操作语法 | Microsoft Docs
 description: 本文提供了有关 SQL 规则操作语法的参考。 这些操作是以针对消息执行的基于 SQL 语言的语法编写的。
 ms.topic: article
 ms.date: 11/24/2020
 ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100652830"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>订阅规则 SQL 操作语法
@@ -200,7 +200,7 @@ ms.locfileid: "100652830"
 `property(name)` 函数返回 `name` 所引用的属性的值。 `name` 值可以是返回字符串值的任何有效表达式。  
 
 ## <a name="examples"></a>示例
-有关示例，请参阅 [服务总线筛选器示例](service-bus-filter-examples.md)。
+有关示例，请参阅[服务总线筛选器示例](service-bus-filter-examples.md)。
   
 ## <a name="considerations"></a>注意事项
 

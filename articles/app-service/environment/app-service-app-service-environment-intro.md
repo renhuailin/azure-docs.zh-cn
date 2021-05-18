@@ -8,16 +8,16 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 878cef39ade0487c03dba83c9e3631fe3c72088f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96008612"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>应用服务环境 v1 简介
 
 > [!NOTE]
-> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要了解有关新版本的详细信息，请从 [应用服务环境简介](intro.md)开始。
+> 本文介绍应用服务环境 v1。  应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要深入了解新版本，请先参阅[应用服务环境简介](intro.md)。
 
 ## <a name="overview"></a>概述
 
@@ -32,7 +32,7 @@ ms.locfileid: "96008612"
 
 应用服务环境可在隔离后只运行单个客户的应用程序，并可始终部署到虚拟网络中。  客户对于入站和出站的应用网络流量都有更细微的控制，且应用程序可以通过虚拟网络创建与本地公司资源的高速安全连接。
 
-有关应用服务环境如何启用大规模和安全网络访问的概述，请参阅应用服务环境中的 [AzureCon 深入探讨][AzureConDeepDive] ！
+有关应用服务环境如何启用高缩放性和安全网络访问的概述，请参阅有关应用服务环境的 [AzureCon 深入探讨][AzureConDeepDive]！
 
 有关使用多个应用服务环境横向调整规模的深入探讨，请参阅有关如何设置[按地理位置分布的应用的数量][GeodistributedAppFootprint]的文章。
 
@@ -48,7 +48,7 @@ ms.locfileid: "96008612"
 
 应用服务环境由前端计算资源池，以及一到三个工作线程计算资源池组成。
 
-前端池包含负责 TLS 终止的计算资源，以及应用服务环境内的应用请求的自动负载均衡。
+前端池包含负责处理 TLS 终止以及应用服务环境中应用请求的自动负载均衡的计算资源。
 
 每个工作线程池包含分配给[应用服务计划][AppServicePlan]的计算资源，而这些资源又包含一个或多个 Azure 应用服务应用。  由于应用服务环境中可能有多达三个不同的工作线程池，因此可以灵活地为每个工作线程池选择不同的计算资源。  
 

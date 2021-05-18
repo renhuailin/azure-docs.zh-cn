@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: ed250e3f32965fc450102fb14b93b93d6753ab3e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98222779"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>查看和修改主机名
@@ -41,7 +41,7 @@ ms.locfileid: "98222779"
 
 1. 确保有用于连接到 Azure 门户的客户端证书。 若要获取客户端证书，请执行[如何：下载和导入发布设置和订阅信息](/previous-versions/dynamicsnav-2013/dn385850(v=nav.70))中提供的步骤。 
 2. 使用值 2013-11-01 设置名为 x-ms-version 的标头条目。
-3. 按以下格式发送请求： https： \/ /management.core.windows.net/ \<subscrition-id\> /services/hostedservices/service-name \<service-name\> ？ embed-detail = true
+3. 使用以下格式发送请求：https:\//management.core.windows.net/\<subscrition-id\>/services/hostedservices/\<service-name\>?embed-detail=true
 4. 在 **HostName** 元素中查找每个 **RoleInstance** 元素。
 
 > [!WARNING]

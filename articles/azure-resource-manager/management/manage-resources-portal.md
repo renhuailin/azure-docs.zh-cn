@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 12d704b0a3d92aa0585fb120f969000def282396
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101092199"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源
@@ -40,11 +40,11 @@ Azure 资源按 Azure 服务和资源组进行组织。 以下过程说明如何
 
 3. 选择要打开的资源。
 
-    ![突出显示所选资源的屏幕截图。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
+    ![屏幕截图突出显示所选资源。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
 
     存储帐户类似于：
 
-    ![显示存储帐户的外观的屏幕截图。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
+    ![屏幕截图显示存储帐户的外观。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
 
 按资源组打开资源：
 
@@ -114,7 +114,7 @@ Azure 资源按 Azure 服务和资源组进行组织。 以下过程说明如何
 
 ## <a name="manage-access-to-resources"></a>管理对资源的访问
 
-可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 管理对 Azure 中资源的访问权限。 有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 管理对 Azure 中资源的访问权限。 有关详细信息，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 02/24/2021
 ms.topic: conceptual
 ms.openlocfilehash: af767ab37e8e77195b7d13b24ea78f4fb88485fb
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102122130"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
@@ -23,7 +23,7 @@ ms.locfileid: "102122130"
 * [在 Azure 自动化中编辑文本 Runbook](automation-edit-textual-runbook.md)
 * [了解自动化 Runbook 的关键 Windows PowerShell 工作流概念](automation-powershell-workflow.md)
 * [在 Azure 自动化中管理 Python 2 包](python-packages.md)
-* [在 Azure 自动化中管理 Python 3 包 (预览) ](python-3-packages.md)
+* [在 Azure 自动化中管理 Python 3 程序包（预览版）](python-3-packages.md)
 
 ### <a name="create-a-runbook-in-the-azure-portal"></a>在 Azure 门户中创建 Runbook
 
@@ -46,7 +46,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>导入 Runbook
 
-你可以导入 PowerShell 或 PowerShell 工作流 (**ps1**) 脚本、图形 runbook (**. .graphrunbook**) ，或 python 2 或 python 3 脚本 (**py**) 来创建你自己的 runbook。 必须指定在导入期间创建的 [Runbook 类型](automation-runbook-types.md)，并考虑以下注意事项。
+可导入 PowerShell 或 PowerShell 工作流脚本 (.ps1)、图形 Runbook (.graphrunbook) 或 Python 2 或 Python 3 脚本 (.py) 来创建自己的 Runbook  。 必须指定在导入期间创建的 [Runbook 类型](automation-runbook-types.md)，并考虑以下注意事项。
 
 * 可将不含工作流的 .ps1 文件导入 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 或 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 如果将其导入 PowerShell 工作流 Runbook，它将转换为工作流。 这样的话，Runbook 会包含注释来描述所作的更改。
 
@@ -192,7 +192,7 @@ Runbook 必须可靠且能够处理[错误](automation-runbook-execution.md#erro
 
 ## <a name="work-with-multiple-subscriptions"></a>使用多个订阅
 
-Runbook 必须能够处理[订阅](automation-runbook-execution.md#subscriptions)。 例如，Runbook 会使用 [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave) cmdlet 来处理多个订阅。 该 cmdlet 可确保不从正在同一沙盒中运行的另一 Runbook 中检索身份验证上下文。 Runbook 还使用 `Get-AzContext` cmdlet 检索当前会话的上下文，并将其分配给变量 `$AzureContext` 。
+Runbook 必须能够处理[订阅](automation-runbook-execution.md#subscriptions)。 例如，Runbook 会使用 [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave) cmdlet 来处理多个订阅。 该 cmdlet 可确保不从正在同一沙盒中运行的另一 Runbook 中检索身份验证上下文。 Runbook 还使用 `Get-AzContext` cmdlet 检索当前会话的上下文，并将其分配给变量 `$AzureContext`。
 
 ```powershell
 Disable-AzContextAutosave -Scope Process

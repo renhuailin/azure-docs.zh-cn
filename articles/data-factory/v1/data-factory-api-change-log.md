@@ -1,19 +1,19 @@
 ---
-title: 数据工厂-.NET API 更改日志
-description: 介绍适用于 Azure 数据工厂的 .NET API 的特定版本中的重大更改、功能添加、bug 修复等。
+title: 数据工厂 - .NET API 更改日志
+description: 描述 Azure 数据工厂的 .NET API 的特定版本中的中断性变更、新增功能、Bug 修复等。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jonburchel
 ms.service: data-factory
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: 3f7c80f5818c1353f438a164bf52c777056ad6d4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 2d292bbc820574d4360be51e93588f8f908f468d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377476"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785591"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure 数据工厂 - .NET API 更改日志
 > [!NOTE]
@@ -177,5 +177,5 @@ ms.locfileid: "100377476"
 * **列表** 管道 API 仅返回管道的摘要而不是完整的详细信息。 例如，管道摘要中的活动只包含名称和类型。
 
 ### <a name="feature-additions"></a>新增功能
-* [SqlDWSink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink)类支持两个新属性（ **SliceIdentifierColumnName** 和 **SqlWriterCleanupScript**），以支持将幂等复制到 azure azure Synapse Analytics。 有关这些属性的详细信息，请参阅 [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md) 文章。
-* 现在，我们支持针对 Azure SQL 数据库和 Azure Synapse Analytics 源运行存储过程，作为复制活动的一部分。 [SqlSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqlsource) 和 [SqlDWSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsource) 类具有以下属性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 有关这些属性的详细信息，请参阅 Azure.com 上的 [AZURE SQL 数据库](data-factory-azure-sql-connector.md#sqlsource) 和 [azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) 文章。
+* [SqlDWSink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) 类支持两个新属性（SliceIdentifierColumnName 和 SqlWriterCleanupScript），以支持向 Azure Synapse Analytics 的幂等复制 。 有关这些属性的详细信息，请参阅 [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md) 一文。
+* 当前支持针对 Azure SQL 数据库和 Azure Synapse Analytics 源作为复制活动的一部分运行存储过程。 [SqlSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqlsource) 和 [SqlDWSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsource) 类具有以下属性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 有关这些属性的详细信息，请参阅 Azure.com 上的 [Azure SQL 数据库](data-factory-azure-sql-connector.md#sqlsource)和 [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) 文章。

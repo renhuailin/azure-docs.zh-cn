@@ -1,18 +1,15 @@
 ---
 title: 在 Azure Site Recovery 中将测试故障转移（灾难恢复演练）运行到 Azure
 description: 了解使用 Azure Site Recovery 服务运行从本地到 Azure 的测试故障转移。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: 815a35c167bbcd3ac03dfdaaf6d699e58a791f33
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 840243bd5a67bc97bdc1903908c4e25adad93062
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92369380"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579302"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>将测试故障转移（灾难恢复演练）运行到 Azure 
 
@@ -42,7 +39,7 @@ ms.locfileid: "92369380"
     - 如果用于测试故障转移的 Azure 虚拟网络中没有同名的子网，则会按字母顺序在第一个子网中创建测试 VM。
     - 如果该子网中没有相同的 IP 地址，则 VM 会接收该子网中的另一个可用 IP 地址。 [了解详细信息](#create-a-network-for-test-failover)。
 4. 如果要故障转移到 Azure 并且启用了数据加密，请在“加密密钥”中，选择在安装提供程序期间启用加密时颁发的证书。 如果未启用加密，则可以忽略此步骤。
-5. 在“**作业**”选项卡上跟踪故障转移进度。在 Azure 门户中，应当能够看到测试副本计算机。
+5. 在“作业”选项卡上跟踪故障转移进度。你应该能够在 Azure 门户中看到测试副本计算机。
 6. 若要通过 RDP 与 Azure VM 发起连接，需在故障转移的 VM 的网络接口上[添加公共 IP 地址](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)。
 7. 如果一切符合预期，请单击“清理测试故障转移”。 这会删除在执行测试故障转移期间创建的 VM。
 8. 在“说明”中，记录并保存与测试性故障转移相关联的任何观测结果。 

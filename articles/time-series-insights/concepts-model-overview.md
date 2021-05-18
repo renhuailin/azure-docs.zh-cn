@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
 ms.openlocfilehash: 37c24f2d785bbdd9847e0dadaa47969f5b090ef2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101698087"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 时序见解第 2 代中的时序模型
@@ -101,7 +101,7 @@ ms.locfileid: "101698087"
 | --- | ---|
 | timeSeriesId | 与实例关联的时序的唯一 ID。 在大多数情况下，实例由诸如 deviceId 或 assetId 等属性唯一标识。 在某些情况下，可以使用组合了最多 3 个属性的更具体的复合 ID。 |
 | typeId | 与实例关联的时序模型类型的区分大小写的唯一字符串 ID。 默认情况下，所有已发现的新实例都会关联到默认类型。
-| name | **name** 属性可选，区分大小写。 如果未提供 **name**，则默认值为 **timeSeriesId**。 如果提供了名称， **timeSeriesId** [仍将可用。](./concepts-ux-panels.md#4-time-series-well) |
+| name | **name** 属性可选，区分大小写。 如果未提供 **name**，则默认值为 **timeSeriesId**。 如果提供了名称，仍然可以在 [well](./concepts-ux-panels.md#4-time-series-well) 中使用 timeSeriesId。 |
 | description | 实例的文本说明。 |
 | hierarchyIds | 定义实例所属的层次结构。 |
 | instanceFields | 实例的属性，并且是定义实例的任何静态数据。 它们定义层次结构或非层次结构属性的值，同时还支持索引，以便能够执行搜索操作。 |
@@ -216,7 +216,7 @@ ms.locfileid: "101698087"
 | ID4 | "building" = "1000", "floor" = "10"  |
 | ID5 | “building”、“floor”和“room”均未设置。 |
 
-时序 **ID1** 和 **ID4** 在 [Azure 时序见解资源管理器](./concepts-ux-panels.md)中作为层次结构 **H1** 的一部分显示，因为它们具有完全定义且正确排序的 *生成*、*楼层* 和 *房间* 参数。
+时序 ID1 和 ID4 在 [Azure 时序见解资源管理器](./concepts-ux-panels.md)中显示为层次结构 H1 的一部分，因为它们包含已完全定义且正确排序的 building、floor 和 room 参数    。
 
 其他 ID 分类到“无父实例”下，因为它们不符合指定的数据层次结构。
 

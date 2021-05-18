@@ -6,15 +6,15 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.openlocfilehash: 5236a3be9f8908d886274764dfc0c0da5b3565bc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92104472"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Azure Functions HTTP 触发器和绑定概述
 
-Azure Functions 可以通过 HTTP 请求进行调用，以生成无服务器 Api 和响应 [webhook](https://en.wikipedia.org/wiki/Webhook)。
+Azure Functions 可以通过 HTTP 请求调用，以构建无服务器 API 并响应 [Webhook](https://en.wikipedia.org/wiki/Webhook)。
 
 | 操作 | 类型 |
 |---------|---------|
@@ -32,7 +32,7 @@ Azure Functions 可以通过 HTTP 请求进行调用，以生成无服务器 Api
 | 语言                                        | 添加方式...                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安装 [NuGet 包]版本 3.x | |
-| C # 脚本，Java，JavaScript，Python，PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |
+| C# 脚本、Java、JavaScript、Python、PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |
 | C# 脚本（Azure 门户中仅限联机）         | 添加绑定                            | 若要更新现有绑定扩展而不必重新发布函数应用，请参阅[更新扩展]。 |
 
 [core tools]: ./functions-run-local.md

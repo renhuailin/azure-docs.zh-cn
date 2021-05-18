@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 56d5eb981aa02d9da83973d49e8df79fcd9c7e9c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95021008"
 ---
 # <a name="securing-azure-sql-edge"></a>保护 Azure SQL Edge
@@ -92,8 +92,8 @@ Azure SQL Edge 的平台包括物理 docker 主机、主机上的操作系统，
 
 Azure SQL Edge 安全性最佳做法包括编写安全的客户端应用程序。 有关如何在网络层保护客户端应用程序安全的详细信息，请参阅 [Client Network Configuration](/sql/database-engine/configure-windows/client-network-configuration)。
 
-### <a name="security-catalog-views-and-functions"></a>安全目录视图和函数  
-安全信息显示在多个视图和函数（已针对性能和效用进行了优化）中。 下表包含有关 Azure SQL Edge 中的安全视图和函数的信息。  
+### <a name="security-catalog-views-and-functions"></a>安全性目录视图和函数  
+安全信息显示在多个视图和函数（已针对性能和效用进行了优化）中。 下表包含有关 Azure SQL Edge 中安全性视图和函数的信息。  
   
 |函数和视图|链接|  
 |---------------------------|---------|  

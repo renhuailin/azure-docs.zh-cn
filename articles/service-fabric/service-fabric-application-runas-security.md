@@ -4,21 +4,21 @@ description: 了解如何在系统和本地安全帐户下运行 Service Fabric 
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75610109"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>以本地用户帐户或本地系统帐户运行服务
-使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 Service Fabric 还提供了在本地用户或系统帐户下运行应用程序的功能。 受支持的本地系统帐户类型为 **LocalUser**、**NetworkService**、**LocalService** 和 **LocalSystem**。  如果在 Windows 独立群集上运行 Service Fabric，可以使用 [Active Directory 域帐户](service-fabric-run-service-as-ad-user-or-group.md)或[组托管服务帐户](service-fabric-run-service-as-gmsa.md)运行服务。
+使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 默认情况下，Service Fabric 应用程序在运行 Fabric.exe 进程的帐户之下运行。 Service Fabric 还提供了在本地用户或系统帐户下运行应用程序的功能。 受支持的本地系统帐户类型为 **LocalUser**、**NetworkService**、**LocalService** 和 **LocalSystem**。  如果在 Windows 独立群集上运行 Service Fabric，可以使用 [Active Directory 域帐户](service-fabric-run-service-as-ad-user-or-group.md)或[组托管服务帐户](service-fabric-run-service-as-gmsa.md)运行服务。
 
 在应用程序清单中，在 **Principals** 部分中定义运行服务或保护资源时所需的用户帐户。 还可以定义并创建用户组，以便统一管理一个或多个用户。 如果不同的服务入口点有多个用户，而且这些用户需要拥有可在组级别使用的常用权限，则这种做法特别有用。  然后，可以在 RunAs 策略中引用用户，该策略应用于应用程序中的特定服务或所有服务。 
 
 默认情况下，RunAs 策略应用于主入口点。  如果需要[在系统帐户下运行特定的高权限设置操作](service-fabric-run-script-at-service-startup.md)，则还可以将 RunAs 策略应用于安装程序入口点，或者同时应用于主入口点和安装程序入口点。  
 
 > [!NOTE] 
-> 如果将 RunAs 策略应用到服务，且服务清单使用 HTTP 协议声明终结点资源，则必须指定 SecurityAccessPolicy  。  有关详细信息，请参阅[为 HTTP 和 HTTPS 终结点分配安全访问策略](service-fabric-assign-policy-to-endpoint.md)。 
+> 如果将 RunAs 策略应用到服务，且服务清单使用 HTTP 协议声明终结点资源，则必须指定 SecurityAccessPolicy。  有关详细信息，请参阅[为 HTTP 和 HTTPS 终结点分配安全访问策略](service-fabric-assign-policy-to-endpoint.md)。 
 >
 
 ## <a name="run-a-service-as-a-local-user"></a>以本地用户身份运行服务
@@ -152,7 +152,7 @@ ms.locfileid: "75610109"
 有时，查看正在运行的服务的控制台输出对于调试很有帮助。 可以在服务清单中的入口点上设置控制台重定向策略，以便将输出写入到文件。 文件输出将写入到部署和运行应用程序的群集节点上名为 **log** 的应用程序文件夹中。 
 
 > [!WARNING]
-> 永远不要在生产中部署的应用程序中使用控制台重定向策略，因为这可能会影响应用程序故障转移。 *仅*将其用于本地开发和调试目的。  
+> 永远不要在生产中部署的应用程序中使用控制台重定向策略，因为这可能会影响应用程序故障转移。 *仅* 将其用于本地开发和调试目的。  
 > 
 > 
 

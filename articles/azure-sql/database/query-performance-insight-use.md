@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
 ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98222320"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Query Performance Insight
@@ -155,7 +155,7 @@ Query Performance Insight 很容易使用：
 
 Query Performance Insight 中的两个指标可帮助你查找潜在的瓶颈：持续时间和执行计数。
 
-长时间运行的查询长时间锁定资源、阻止其他用户和限制可伸缩性的可能性最大。 它们也非常适合进行优化。 有关详细信息，请参阅 [了解和解决 AZURE SQL 阻止问题](understand-resolve-blocking.md)。
+长时间运行的查询长时间锁定资源、阻止其他用户和限制可伸缩性的可能性最大。 它们也非常适合进行优化。 有关详细信息，请参阅[了解并解决 Azure SQL 阻塞问题](understand-resolve-blocking.md)。
 
 识别长时间运行的查询：
 
@@ -278,4 +278,4 @@ Query Performance Insight 中的两个指标可帮助你查找潜在的瓶颈：
 
 ## <a name="next-steps"></a>后续步骤
 
-请考虑使用 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) 对大量的单一数据库和池数据库、弹性池、托管实例和实例数据库进行高级性能监视。
+请考虑使用 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) 对大量单一和共用数据库、弹性池、托管实例和实例数据库进行高级性能监视。

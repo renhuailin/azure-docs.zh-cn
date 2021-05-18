@@ -4,12 +4,12 @@ description: 本文介绍使用 Azure 门户对 Azure 备份工作负荷执行�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 83ed5af00bb61d7a8929e710b52e60c33c0f479b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713365"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559207"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
@@ -19,14 +19,14 @@ Azure 备份根据备份要求和基础结构拓扑（本地或 Azure）提供�
 
 ## <a name="backup-items-in-recovery-services-vault"></a>恢复服务保管库中的备份项
 
-可以通过恢复服务保管库监视所有备份项。 导航到保管库中的 " **备份项** " 部分会打开一个视图，其中提供了每个工作负荷类型与保管库关联的备份项的数量。 单击任意行将打开一个详细视图，其中列出了给定工作负载类型的所有备份项，并提供了有关每个项的上次备份状态、可用的最新还原点等信息。
+可通过恢复服务保管库监视所有备份项。 导航到保管库中的“备份项”部分后会打开一个视图，其中提供与保管库关联的每种工作负载的备份项数量。 单击任意行会打开一个详细视图，其中列出了给定工作负载类型的所有备份项，以及有关每个项的上次备份状态、可用的最新还原点等信息。
 
-![RS vault 备份项](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+![RS 保管库备份项](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
 
 > [!NOTE]
-> 对于使用 DPM 备份到 Azure 的项目，该列表将显示使用 DPM 服务器 (磁盘和联机) 保护的所有数据源。 如果在保留了备份数据的情况下停止保护数据，则数据源仍会在门户中列出。 可以访问数据源的详细信息，查看恢复点是否存在于磁盘、联机或两者中。 此外，为使联机保护停止但保留数据的数据源，在数据完全删除之前，将继续计费联机恢复点。
+> 对于使用 DPM 备份到 Azure 的项，该列表将显示使用 DPM 服务器保护的所有数据源（包括磁盘和联机）。 如果对保留了备份数据的数据源停止保护，则该数据源仍会在门户中列出。 可访问数据源的详细信息，查看恢复点是否存在于磁盘、联机或同时存在于这两者中。 此外，对于联机保护已停止但数据仍保留的数据源，在数据完全删除之前，将继续对联机恢复点进行计费。
 >
-> DPM 版本必须是 DPM 1807 (5.1.378.0) 或 DPM 2019 ( 版本10.19.58.0 或更) 高版本，才能使备份项在恢复服务保管库门户中可见。
+> DPM 版本必须是 DPM 1807 (5.1.378.0) 或 DPM 2019（10.19.58.0 或更高版本），才能在恢复服务保管库门户中显示备份项。
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>恢复服务保管库中的 Azure 备份作业
 
@@ -51,7 +51,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 ## <a name="backup-alerts-in-recovery-services-vault"></a>恢复服务保管库中的备份警报
 
 > [!NOTE]
-> 备份中心目前不支持在保管库中查看警报。 需要导航到单个保管库以查看该保管库的警报。
+> 备份中心当前不支持跨保管库查看警报。 需要导航到单个保管库才能查看该保管库的警报。
 
 警报主要用于通知用户，让他们采取相关的措施。 “备份警报”部分显示 Azure 备份服务生成的警报。 这些警报由服务定义，用户无法以自定义方式创建任何警报。
 
@@ -120,17 +120,17 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 
 ![停用恢复服务保管库警报](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 
-## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Azure 备份 (预览版 Azure Monitor 警报) 
+## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Azure 备份的 Azure Monitor 警报（预览）
 
-Azure 备份还通过 Azure Monitor 提供警报，使用户能够在不同的 Azure 服务（包括备份）中获得一致的警报管理体验。 使用 Azure Monitor 警报，你可以将警报路由到 Azure 备份支持的任何通知通道，例如电子邮件、ITSM、Webhook、逻辑应用等。
+Azure 备份还通过 Azure Monitor 提供警报，使用户能够在包括备份在内的不同 Azure 服务间获得一致的警报管理体验。 使用 Azure Monitor 警报可将警报路由到 Azure 备份支持的任何通知通道，例如电子邮件、ITSM、Webhook、逻辑应用等。
 
-目前，此功能适用于适用于 PostgreSQL Server、Azure Blob 和 Azure 托管磁盘的 Azure 数据库。 为以下情况生成警报，并且可以通过导航到备份保管库并单击 " **警报** " 菜单项来访问这些警报：
+目前，此功能适用于 Azure Databases for PostgreSQL Server、Azure Blob 和 Azure 托管磁盘。 警报是针对以下情况生成的，你可导航到“备份”保管库并单击“警报”菜单项来进行访问：
 
 - 删除备份数据
-- 备份失败 (若要获取有关备份失败的警报，需要通过预览门户注册名为 **EnableAzureBackupJobFailureAlertsToAzureMonitor** 的 AFEC 标志) 
-- 还原失败 (若要获取有关还原失败的警报，需要通过预览门户注册名为 **EnableAzureBackupJobFailureAlertsToAzureMonitor** 的 AFEC 标志) 
+- 备份失败（要获取有关备份失败的警报，需要通过预览门户注册名为 EnableAzureBackupJobFailureAlertsToAzureMonitor 的 AFEC 标志）
+- 还原失败（要获取有关还原失败的警报，需要通过预览门户注册名为 EnableAzureBackupJobFailureAlertsToAzureMonitor 的 AFEC 标志）
 
-有关 Azure Monitor 警报的详细信息，请参阅 [Azure 中的警报概述](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview)。
+有关 Azure Monitor 警报的详细信息，请参阅 [Azure 中的警报概述](../azure-monitor/alerts/alerts-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

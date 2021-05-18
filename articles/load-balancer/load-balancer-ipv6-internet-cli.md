@@ -1,7 +1,7 @@
 ---
 title: 创建使用 IPv6 的公共负载均衡器 - Azure CLI
 titleSuffix: Azure Load Balancer
-description: 使用此学习路径，开始使用 Azure CLI 创建使用 IPv6 的公共负载均衡器。
+description: 通过此学习路径，开始使用 Azure CLI 创建使用 IPv6 的公共负载均衡器。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
 ms.openlocfilehash: 714fb92e8757fed6e11a09528b60cda3e945175e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102218887"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>使用 Azure CLI 创建使用 IPv6 的公共负载均衡器
@@ -284,7 +284,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     ```
 
     > [!WARNING]
-    > 本示例为 VM 使用了明文用户名和密码。 以明文形式使用这些凭据时请保持适当的谨慎。 有关在 PowerShell 中处理凭据的更安全方法，请参阅 [`Get-Credential`](/powershell/module/microsoft.powershell.security/get-credential) cmdlet。
+    > 本示例为 VM 使用了明文用户名和密码。 以明文形式使用这些凭据时请保持适当的谨慎。 有关在 PowerShell 中更安全处理凭据的方法，请参阅 [`Get-Credential`](/powershell/module/microsoft.powershell.security/get-credential) cmdlet。
 
 2. 创建可用性集：
 

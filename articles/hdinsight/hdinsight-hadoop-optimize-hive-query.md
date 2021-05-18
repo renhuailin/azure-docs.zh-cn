@@ -1,16 +1,16 @@
 ---
 title: 优化 Azure HDInsight 中的 Hive 查询
-description: 本文介绍如何在 Azure HDInsight 中优化 Apache Hive 查询。
+description: 本文介绍如何优化 Azure HDInsight 中的 Apache Hive 查询。
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/28/2020
-ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 551d985ea78e83397e507676c5fd7ecfce12ff7b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945570"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104864238"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Apache Hive 查询
 
@@ -34,11 +34,11 @@ ms.locfileid: "98945570"
 
 * 创建群集时，可以使用 Azure 门户、Azure PowerShell 或命令行接口指定工作器节点数。  有关详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 以下屏幕截图显示了 Azure 门户上的工作节点配置：
   
-    ![Azure 门户群集大小节点](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
+    :::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png" alt-text="Azure 门户群集大小节点":::
 
 * 创建后，还可以通过编辑工作节点的数目来进一步横向扩展群集，而无需重新创建：
 
-    ![Azure 门户缩放群集大小](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
+    :::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png " alt-text="Azure 门户缩放群集大小":::
 
 有关缩放 HDInsight 的详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)
 
@@ -46,7 +46,7 @@ ms.locfileid: "98945570"
 
 [Apache Tez](https://tez.apache.org/) 是 MapReduce 引擎的替代执行引擎。 基于 Linux 的 HDInsight 群集在默认情况下会启用 Tez。
 
-![HDInsight Apache Tez 概述关系图](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
+:::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png" alt-text="HDInsight Apache Tez 概述关系图":::
 
 Tez 速度更快，因为：
 
@@ -70,7 +70,7 @@ I/O 操作是运行 Hive 查询的主要性能瓶颈。 如果可以减少需要
 
 Hive 分区的实现方法是将原始数据重新组织成新目录。 每个分区都有自身的文件目录。 分区由用户定义。 下图说明如何根据年列来分区 Hive 表。 每年都会创建新的目录。
 
-![HDInsight Apache Hive 分区](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
+:::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png" alt-text="HDInsight Apache Hive 分区":::
 
 一些分区注意事项：
 

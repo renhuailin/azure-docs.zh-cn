@@ -1,13 +1,13 @@
 ---
-title: Azure 服务总线订阅规则 SQL 筛选器语法 |Microsoft Docs
+title: Azure 服务总线订阅规则 SQL 筛选器语法 | Microsoft Docs
 description: 本文提供了有关 SQL 筛选器语法的详细信息。 SQL 筛选器支持 SQL-92 标准的子集。
 ms.topic: article
 ms.date: 11/24/2020
 ms.openlocfilehash: 022f6cb1d698a10dc216db8d41c172691f7535ab
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100652935"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>订阅规则 SQL 筛选器语法
@@ -270,7 +270,7 @@ SQL 筛选器是服务总线主题订阅的某个可用筛选器类型。 它是
 -   在进行数据类型提升和隐式转换时，算术运算符（例如 `+`、`-`、`*`、`/` 和 `%`）与 C# 运算符绑定遵循相同的语义。
 
 ## <a name="examples"></a>示例
-有关示例，请参阅 [服务总线筛选器示例](service-bus-filter-examples.md)。
+有关示例，请参阅[服务总线筛选器示例](service-bus-filter-examples.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91767578"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>在 Azure 门户中使用 StorSimple 设备管理器服务来克隆卷
 
 ## <a name="overview"></a>概述
 
-本教程介绍如何通过“备份目录”边栏选项卡使用备份集来克隆单个卷。**** 并说明了“暂时性”克隆和“永久性”克隆的差异。**** 本教程中的指导适用于运行 Update 3 或更高版本的所有 StorSimple 8000 系列设备。
+本教程介绍如何通过“备份目录”边栏选项卡使用备份集来克隆单个卷。 并说明了“暂时性”克隆和“永久性”克隆的差异。 本教程中的指导适用于运行 Update 3 或更高版本的所有 StorSimple 8000 系列设备。
 
-StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动或自动备份时创建的所有备份集。**** 然后，可以在某个备份集中选择要克隆的卷。
+StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动或自动备份时创建的所有备份集。 然后，可以在某个备份集中选择要克隆的卷。
 
  ![备份集列表](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
 
@@ -53,24 +53,24 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动
 
 #### <a name="to-clone-a-volume"></a>克隆卷
 
-1. 转到 StorSimple 设备管理器服务，单击“备份目录”。****
+1. 转到 StorSimple 设备管理器服务，单击“备份目录”。
 
 2. 选择备份集，如下所示：
    
    1. 选择适当的设备。
    2. 在下拉列表中，选择想要选择的备份的卷或备份策略。
    3. 指定时间范围。
-   4. 单击“应用”执行此查询。****
+   4. 单击“应用”执行此查询。
 
       与所选的卷或备份策略相关联的备份应出现在备份集的列表中。
    
-      ![备份集列表2](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![备份集列表 2](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
-3. 展开备份集以查看关联的卷并选择备份集中的卷。 单击右键，从上下文菜单中选择“克隆”。****
+3. 展开备份集以查看关联的卷并选择备份集中的卷。 单击右键，从上下文菜单中选择“克隆”。
 
-   ![备份集列表3](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
+   ![备份集列表 3](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
-3. 在“克隆”边栏选项卡中执行以下步骤：****
+3. 在“克隆”边栏选项卡中执行以下步骤：
    
    1. 标识目标设备。 这是会在其中创建克隆的位置。 可以选择同一设备，也可以指定其他设备。
 
@@ -80,21 +80,21 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动
    2. 指定克隆的唯一卷名称。 该名称必须包含 3 到 127 个字符。
       
        > [!NOTE]
-       > 即使克隆的是本地固定卷，“将卷克隆为”字段也会是“分层卷”。******** 不能更改此设置；但是，如果也需对克隆卷进行本地固定，可在成功创建克隆后将克隆转换为本地固定卷。 要了解如何将分层卷转换为本地固定卷，请转到[更改卷类型](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)。
+       > 即使克隆的是本地固定卷，“将卷克隆为”字段也会是“分层卷”。 不能更改此设置；但是，如果也需对克隆卷进行本地固定，可在成功创建克隆后将克隆转换为本地固定卷。 要了解如何将分层卷转换为本地固定卷，请转到[更改卷类型](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)。
           
-   3. 在“连接的主机”下面，指定克隆的访问控制记录 (ACR)。**** 可以添加新的 ACR，或从现有列表中进行选择。 ACR 会确定哪些主机可以访问此克隆。
+   3. 在“连接的主机”下面，指定克隆的访问控制记录 (ACR)。 可以添加新的 ACR，或从现有列表中进行选择。 ACR 会确定哪些主机可以访问此克隆。
       
-       ![备份集列表4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![备份集列表 4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
-   4. 单击“克隆”完成操作。****
+   4. 单击“克隆”完成操作。
 
-4. 此时会启动克隆作业，成功创建克隆后，系统会发出通知。 单击作业通知或转到“作业”边栏选项卡可监视克隆作业。****
+4. 此时会启动克隆作业，成功创建克隆后，系统会发出通知。 单击作业通知或转到“作业”边栏选项卡可监视克隆作业。
 
-    ![备份集列表5](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
+    ![备份集列表 5](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
-7. 克隆作业完成后，请转到自己的设备，单击“卷”。**** 在卷列表中，应会看到刚刚创建的克隆出现在包含源卷的同一个卷容器中。
+7. 克隆作业完成后，请转到自己的设备，单击“卷”。 在卷列表中，应会看到刚刚创建的克隆出现在包含源卷的同一个卷容器中。
 
-    ![备份集列表6](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
+    ![备份集列表 6](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
 通过此方式创建的克隆为暂时性克隆。 有关克隆类型的详细信息，请参阅[暂时性克隆与永久性克隆](#transient-vs-permanent-clones)。
 
@@ -102,7 +102,7 @@ StorSimple 设备管理器服务的“备份目录”边栏选项卡显示手动
 ## <a name="transient-vs-permanent-clones"></a>暂时性克隆与永久性克隆
 仅当克隆到另一个设备时，才会创建暂时性克隆。 可将特定卷从备份集克隆到 StorSimple 设备管理器所管理的其他设备。 暂时性克隆引用原始卷中的数据，并使用该数据在目标设备上进行本地读写操作。
 
-对暂时性克隆执行云快照操作后，生成的克隆是“永久性”克隆。** 在此过程中，会在云中创建数据的副本，复制该数据的时间取决于数据大小和 Azure 延迟（此为 Azure 到 Azure 复制）。 此过程可能需要数天到数周的时间。 暂时性克隆成为永久性克隆，不再引用从其克隆的原始卷数据。
+对暂时性克隆执行云快照操作后，生成的克隆是“永久性”克隆。 在此过程中，会在云中创建数据的副本，复制该数据的时间取决于数据大小和 Azure 延迟（此为 Azure 到 Azure 复制）。 此过程可能需要数天到数周的时间。 暂时性克隆成为永久性克隆，不再引用从其克隆的原始卷数据。
 
 ## <a name="scenarios-for-transient-and-permanent-clones"></a>进行暂时性克隆和永久性克隆的方案
 以下部分描述了可以使用暂时性克隆和永久性克隆的示例方案。

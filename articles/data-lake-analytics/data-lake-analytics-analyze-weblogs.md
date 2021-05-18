@@ -1,15 +1,15 @@
 ---
 title: 使用 Azure Data Lake Analytics 分析网站日志
-description: 了解如何使用 Azure Data Lake Analytics 分析网站日志以运行 U SQL 函数和查询。
+description: 了解如何使用 Azure Data Lake Analytics 运行 U-SQL 函数和查询来分析网站日志。
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: d2764e5e3994eb7b80a8e7cf62fb7f437323c97e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015292"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 分析网站日志
@@ -17,7 +17,7 @@ ms.locfileid: "96015292"
 
 ## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2015 或 Visual Studio 2013**。
-* **[适用于 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)**。
+* **[针对 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)** 。
 
     安装好适用于 Visual Studio 的 Data Lake 工具后，将在 Visual Studio 的“工具”菜单中看到“Data Lake”项：
 
@@ -41,7 +41,7 @@ ms.locfileid: "96015292"
 ### <a name="to-browse-your-data-lake-analytics-accounts"></a>浏览 Data Lake Analytics 帐户
 
 1. 从 Visual Studio 中，通过按 **CTRL+ALT+S** 打开“服务器资源管理器” 。
-2. 在“服务器资源管理器”中，展开“Azure”，并展开“Data Lake Analytics”。 如果有 Data Lake Analytics 帐户，将看到其列表。 无法从 Visual Studio 创建 Data Lake Analytics 帐户。 若要创建帐户，请参阅使用 [Azure 门户开始 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md) 或 [使用 Azure PowerShell 开始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-powershell.md)。
+2. 在“服务器资源管理器”中，展开“Azure”，并展开“Data Lake Analytics”。 如果有 Data Lake Analytics 帐户，将看到其列表。 无法从 Visual Studio 创建 Data Lake Analytics 帐户。 若要创建帐户，请参阅 [Get Started with Azure Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)（使用 Azure 门户开始 Azure Data Lake Analytics 入门）或 [Get Started with Azure Data Lake Analytics using Azure PowerShell](data-lake-analytics-get-started-powershell.md)（使用 Azure PowerShell 开始 Azure Data Lake Analytics 入门）。
 
 ## <a name="develop-u-sql-application"></a>开发 U SQL 应用程序
 U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细信息，请参阅 [Get started with U-SQL](data-lake-analytics-u-sql-get-started.md)（U-SQL 入门）。
@@ -56,7 +56,7 @@ U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细�
 
    ![新建 U-SQL Visual Studio 项目](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
 
-3. 单击“确定”。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
+3. 单击 **“确定”** 。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
 
 4. 在 Script.usql 文件中输入以下脚本：
 

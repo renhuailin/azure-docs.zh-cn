@@ -7,13 +7,13 @@ tags: top-support-issue
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
-ms.custom: seodec18
-ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
-ms.translationtype: MT
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: c2c09e1a30c9cef4d65b2d5443481c84ab779af8
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607603"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833825"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 TLS/SSL 证书问题
 
@@ -269,7 +269,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 **购买网站的自定义域后是否必须配置该域？**
 
-通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息，请观看 [Azure App Service 自助：在 Channel9 上添加自定义域名](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) 。
+通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息，请在 Channel9 上观看 [Azure 应用服务自助：添加自定义域名](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)。
 
 **是否可以使用在 Azure 门户中购买的域来指向 Azure VM？**
 
@@ -287,7 +287,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 最初的域购买费用仅适用于域注册。 除了注册费用以外，Azure DNS 还会根据用量收费。 有关详细详细，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
 
-**我之前从 Azure 门户购买了域，并希望从 GoDaddy 托管到 Azure DNS 托管。如何执行此操作？**
+**我的域是之前在 Azure 门户中购买的，现在想要从 GoDaddy 托管改为 Azure DNS 托管。如何执行此操作？**
 
 不一定非要迁移到 Azure DNS 托管。 如果你确实想要迁移到 Azure DNS，Azure 门户中的域管理体验会提供有关转移到 Azure DNS 的步骤信息。 如果域通过应用服务购买的，则从 GoDaddy 托管迁移到 Azure DNS 的过程相对较为顺畅。
 

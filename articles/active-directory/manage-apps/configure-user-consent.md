@@ -2,22 +2,22 @@
 title: 使用 Azure AD 配置最终用户如何对应用程序表示同意
 description: 对于将有权访问你组织数据的应用程序，了解管理用户如何及何时对这些应用表示同意的方式。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/01/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 68bb846ebb0199691161bc501441df908eb8ad87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 95a651f6201c9f60500c9191821edb7eb76b8535
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101643603"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374431"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>配置最终用户如何对应用程序表示同意
 
@@ -38,7 +38,7 @@ ms.locfileid: "101643603"
 
 * **禁止用户同意** - 用户无法向应用程序授予权限。 用户可继续登录到他们之前同意或管理员代表他们同意的应用，但不可自行同意新权限或新应用。 仅当用户被授予了目录角色并且该角色有权授予同意时，这些用户才能同意新应用。
 
-* **用户可以同意已验证的发布者或你的组织中的应用，但仅适用于你选择的权限** -所有用户只能同意已 [验证的发布者](../develop/publisher-verification-overview.md) 发布的应用和已在你的租户中注册的应用。 用户只能同意已分类为“影响较低”的权限。 你必须[对权限进行分类](configure-permission-classifications.md)，以选择允许用户同意哪些权限。
+* 用户可以同意已验证的发布者或你的组织提供的应用，但仅限于你选择的权限 - 所有用户只能同意由[已验证的发布者](../develop/publisher-verification-overview.md)发布的应用以及在你的租户中注册的应用。 用户只能同意已分类为“影响较低”的权限。 你必须[对权限进行分类](configure-permission-classifications.md)，以选择允许用户同意哪些权限。
 
 * 用户可以同意所有应用 - 此选项允许所有用户同意任何应用程序的无需管理员同意的任何权限。
 
@@ -97,7 +97,7 @@ Set-AzureADMSAuthorizationPolicy `
 ---
 
 > [!TIP]
-> [启用管理员许可工作流](configure-admin-consent-workflow.md) ，允许用户请求管理员审阅和批准用户不允许同意的应用程序，例如，当用户同意已禁用或应用程序请求用户不允许授予的权限时。
+> [启用管理员同意工作流](configure-admin-consent-workflow.md)，以允许用户请求管理员评审和批准不允许用户同意的应用程序，例如当用户同意已被禁用或应用程序请求用户无法授予的权限时。
 
 ## <a name="risk-based-step-up-consent"></a>基于风险的升级同意
 
@@ -185,4 +185,4 @@ Set-AzureADMSAuthorizationPolicy `
 * [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
-* [Azure AD 上的 Microsoft Q&。](/answers/topics/azure-active-directory.html)
+* [Microsoft Q&A 上的 Azure AD。](/answers/topics/azure-active-directory.html)

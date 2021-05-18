@@ -1,15 +1,15 @@
 ---
 title: 有关在基于 Linux 的 HDInsight 上使用 Hadoop 的提示 - Azure
-description: 获取有关在 Azure 云中运行的你所熟悉的 Linux 环境中使用基于 Linux 的 HDInsight (Hadoop) 群集的实施提示。
+description: 获取有关使用基于 Linux 的 HDInsight (Hadoop) 群集的实施提示（群集在 Azure 云中熟悉的 Linux 环境中运行）。
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: 2d2619c7bd7bc09eeab3845599758db7134b4134
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98945649"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
@@ -98,15 +98,15 @@ Hadoop 相关文件可在群集节点上的 `/usr/hdp`中找到。 此目录包�
 
 在大多数 Hadoop 分发版中，数据存储在 HDFS 中。 HDFS 受群集中计算机上的本地存储的支持。 为基于云的解决方案使用本地存储可能费用高昂，因为计算资源以小时或分钟为单位来计费。
 
-使用 HDInsight 时，数据文件在云中使用 Azure Blob 存储以一种适应性和复原方式存储，并可以选择 Azure Data Lake Storage Gen1/Gen2。 这些服务提供以下优势：
+使用 HDInsight 时，数据文件使用 Azure Blob 存储以及可选的 Azure Data Lake Storage Gen1/Gen2 以适应性和可复原的方式存储在云中。 这些服务提供以下优势：
 
 * 成本低廉的长期存储。
 * 可从外部服务访问，例如网站、文件上传/下载实用程序、各种语言 SDK 和 Web 浏览器。
 * 大型文件容量和大型自适应存储。
 
-有关详细信息，请参阅 [Azure Blob 存储](../storage/common/storage-introduction.md)、 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)或 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)。
+有关详细信息，请参阅 [Azure Blob 存储](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) 或 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)。
 
-使用 Azure Blob 存储或 Data Lake Storage Gen1/Gen2 时，无需从 HDInsight 进行任何特殊操作即可访问数据。 例如，以下命令将列出 `/example/data` 文件夹中的文件，而无论它是存储在 Azure 存储还是 Data Lake Storage 上：
+使用 Azure Blob 存储或 Data Lake Storage Gen1/Gen2 时，不需要从 HDInsight 进行任何特殊操作即可访问数据。 例如，以下命令将列出 `/example/data` 文件夹中的文件，而无论它是存储在 Azure 存储还是 Data Lake Storage 上：
 
 ```console
 hdfs dfs -ls /example/data
@@ -200,7 +200,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [存储 REST API](/rest/api/storageservices/Blob-Service-REST-API)
 
-如果使用 __Azure Data Lake Storage Gen1__，请参阅以下链接，了解访问数据的方法：
+如果使用 Azure Data Lake Storage Gen1，请参阅以下链接，了解访问数据的方法：
 
 * [Web 浏览器](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397614"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>应用程序网关基础结构配置
@@ -33,9 +33,9 @@ ms.locfileid: "93397614"
 
 假设某个子网包含 27 个应用程序网关实例，并且包含一个用作专用前端 IP 的 IP 地址。 在这种情况下，需要 33 个 IP 地址：27 个 IP 地址用于应用程序网关实例，1 个 IP 地址用于专用前端，5 个 IP 地址供内部使用。
 
-应用程序网关 (Standard 或 WAF) SKU 最多支持32实例 (32 实例 IP 地址 + 1 个专用前端 IP + 5 Azure 保留) –因此建议使用最小子网大小/26
+应用程序网关（标准或 WAF）SKU 最多可支持 32 个实例（已预留 32 个实例 IP 地址 + 1 个专用前端 IP + 5 个 Azure）- 因此建议使用的最小子网大小为 /26
 
-应用程序网关 (Standard_v2 或 WAF_v2 SKU) 最多可支持125实例 (125 实例 IP 地址 + 1 个专用前端 IP + 5 Azure 保留) –因此建议使用最小子网大小/24
+应用程序网关（Standard_v2 或 WAF_v2 SKU）最多可支持 125 个实例（已预留 125 个实例 IP 地址 + 1 个专用前端 IP + 5 个 Azure）- 因此建议使用的最小子网大小为 /24
 
 ## <a name="network-security-groups"></a>网络安全组
 
@@ -56,7 +56,7 @@ ms.locfileid: "93397614"
 
 1. 允许来自源 IP 或 IP 范围的传入流量，其目标为整个应用程序网关子网地址范围，目标端口为入站访问端口，例如，使用端口 80 进行 HTTP 访问。
 2. 允许特定的传入请求，这些请求来自采用 **GatewayManager** 服务标记的源，其目标为“任意”，目标端口为 65503-65534（适用于应用程序网关 v1 SKU）或 65200-65535（适用于 v2 SKU），可以进行 [后端运行状况通信](./application-gateway-diagnostics.md)。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体将无法对这些终结点做出任何更改。
-3. 允许 [网络安全组](../virtual-network/network-security-groups-overview.md)中的传入 Azure 负载均衡器探测（ *AzureLoadBalancer* 标记）和入站虚拟网络流量（ *VirtualNetwork* 标记）。
+3. 允许 [网络安全组](../virtual-network/network-security-groups-overview.md)中的传入 Azure 负载均衡器探测（*AzureLoadBalancer* 标记）和入站虚拟网络流量（*VirtualNetwork* 标记）。
 4. 使用“全部拒绝”规则阻止其他所有传入流量。
 5. 允许所有目的地的 Internet 出站流量。
 
@@ -78,7 +78,7 @@ ms.locfileid: "93397614"
    > 错误配置路由表可能会导致应用程序网关 v2 中出现非对称路由。 确保所有管理平面/控制平面流量直接发送到 Internet，且不通过虚拟设备发送。 日志和指标也可能会受影响。
 
 
-  **场景 1** ：使用 UDR 禁用向应用程序网关子网进行边界网关协议 (BGP) 路由传播
+  **场景 1**：使用 UDR 禁用向应用程序网关子网进行边界网关协议 (BGP) 路由传播
 
    有时，默认网关路由 (0.0.0.0/0) 会通过与应用程序网关虚拟网络关联的 ExpressRoute 或 VPN 网关进行播发。 这会中断管理平面流量，因此需要 Internet 的直接路径。 在这种情况下，可以使用 UDR 来禁用 BGP 路由传播。 
 
@@ -90,11 +90,11 @@ ms.locfileid: "93397614"
 
    为此方案启用 UDR 不应会破坏任何现有设置。
 
-  **场景 2** ：使用 UDR 将 0.0.0.0/0 定向到 Internet
+  **场景 2**：使用 UDR 将 0.0.0.0/0 定向到 Internet
 
    可以创建一个 UDR，用于将 0.0.0.0/0 流量直接发送到 Internet。 
 
-  **方案 3** ：对 kubenet 中的 Azure Kubernetes 服务使用 UDR
+  **方案 3**：对 kubenet 中的 Azure Kubernetes 服务使用 UDR
 
   如果使用包含 Azure Kubernetes 服务 (AKS) 和应用程序网关入口控制器 (AGIC) 的 kubenet，则需要路由表，以允许将发送到 pod 的流量从应用程序网关路由到正确的节点。 如果使用 Azure CNI，则不需要这样做。 
 
@@ -109,7 +109,7 @@ ms.locfileid: "93397614"
     
   **v2 不支持的方案**
 
-  **场景 1** ：对虚拟设备使用 UDR
+  **场景 1**：对虚拟设备使用 UDR
 
   V2 不支持需要通过任何虚拟设备、中心辐射型虚拟网络或者在本地（强制隧道）重定向 0.0.0.0/0 的任何方案。
 

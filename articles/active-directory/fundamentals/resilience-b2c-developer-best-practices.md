@@ -14,10 +14,10 @@ ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff7505e7c47b93f32efd9de60463873026247329
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724919"
 ---
 # <a name="resilience-through-developer-best-practices"></a>通过开发人员最佳做法实现复原能力
@@ -34,7 +34,7 @@ ms.locfileid: "98724919"
 
 ## <a name="optimize-directory-reads-and-writes"></a>优化目录读取和写入
 
-Microsoft Azure AD B2C 目录服务一天支持数十亿身份验证。 其设计可实现较高的每秒读取速率。 优化写入以最大程度地减少依赖关系并提高复原能力。
+Microsoft Azure AD B2C 目录服务支持一天进行数十亿次身份验证。 其设计可实现较高的每秒读取速率。 优化写入以最大程度地减少依赖关系并提高复原能力。
 
 ### <a name="how-to-optimize-directory-reads-and-writes"></a>如何优化目录读取和写入
 
@@ -90,13 +90,13 @@ Microsoft Azure AD B2C 目录服务一天支持数十亿身份验证。 其设�
 
 ## <a name="configure-single-sign-on"></a>配置单一登录
 
-使用 [单一登录 (SSO) ](../manage-apps/what-is-single-sign-on.md)，用户可以使用单个帐户登录一次，并可以访问多个应用程序。 无论平台或域名如何，应用程序都可以是 web 应用、移动应用或单页面应用程序 (SPA) 。 用户首次登录应用程序时，Azure AD B2C 会保留 [基于 cookie 的会话](../../active-directory-b2c/session-behavior.md)。
+借助[单一登录 (SSO)](../manage-apps/what-is-single-sign-on.md)，用户可以使用单个帐户登录一次，然后即可访问多个应用程序。 应用程序可以是 Web、移动或单页应用程序 (SPA)，不管它们的平台或域名如何。 当用户最初登录到应用程序时，Azure AD B2C 会保留一个[基于 Cookie 的会话](../../active-directory-b2c/session-behavior.md)。
 
-在后续身份验证请求中，Azure AD B2C 读取和验证基于 cookie 的会话，并颁发访问令牌，而不提示用户重新登录。 如果在策略或应用程序中使用有限范围配置 SSO，以后访问其他策略和应用程序时将需要全新身份验证。
+收到后续的身份验证请求后，Azure AD B2C 会读取并验证该基于 Cookie 的会话，然后颁发访问令牌，且不提示用户重新登录。 如果在策略或应用程序中将 SSO 配置为有限的范围，那么以后访问其他策略和应用程序时将需要全新的身份验证。
 
-### <a name="how-to-configure-sso"></a>如何配置 SSO
+### <a name="how-to-configure-sso"></a>如何配置 PRO
 
-将[SSO 配置](../hybrid/how-to-connect-sso-quick-start.md)为租户范围 (默认) ，以允许租户中的多个应用程序和用户流共享相同的用户会话。 租户范围内的配置为全新身份验证提供大多数复原能力。  
+[将 SSO 配置](../hybrid/how-to-connect-sso-quick-start.md)为租户范围（默认），以允许租户中的多个应用程序和用户流共享相同的用户会话。 租户范围的配置为全新身份验证提供最大的复原能力。  
 
 ## <a name="safe-deployment-practices"></a>安全部署实践
 
@@ -104,11 +104,11 @@ Microsoft Azure AD B2C 目录服务一天支持数十亿身份验证。 其设�
 
 ## <a name="web-application-firewall"></a>Web 应用程序防火墙
 
-保护应用程序免受已知漏洞的威胁，如分布式拒绝服务 (DDoS) 攻击、SQL 注入、跨站点脚本、远程代码执行等，如 [OWASP Top 10](https://owasp.org/www-project-top-ten/)中所述。 部署 Web 应用程序防火墙 (WAF) 可以抵御常见的攻击和漏洞。
+保护应用程序免受已知漏洞的威胁，如分布式拒绝服务 (DDoS) 攻击、SQL 注入、跨站脚本、远程代码执行和 [OWASP Top 10](https://owasp.org/www-project-top-ten/) 中所述的许多其他漏洞。 部署 Web 应用程序防火墙 (WAF) 可以抵御常见的攻击和漏洞。
 
-- 使用 Azure [WAF](../../web-application-firewall/overview.md)，它提供集中式防护来防范攻击。
+- 使用 Azure [WAF](../../web-application-firewall/overview.md)，它提供集中式保护来防范攻击。
 
-- 使用带有 Azure AD [Identity protection 和条件访问](../../active-directory-b2c/conditional-access-identity-protection-overview.md) 的 WAF 在使用 Azure AD B2C 时提供多层保护。  
+- 在使用 Azure AD B2C 时，将 WAF 与 Azure AD [标识保护和条件访问一起使用以提供多层保护](../../active-directory-b2c/conditional-access-identity-protection-overview.md)。  
 
 ## <a name="secrets-rotation"></a>机密轮换
 
@@ -118,7 +118,7 @@ Azure AD B2C 对应用程序、API、策略和加密使用机密。 机密可保
 
 - 使用受支持资源的[托管标识](../managed-identities-azure-resources/overview.md)向支持 Azure AD 身份验证的任何服务验证身份。 使用托管标识时，可以自动管理资源，包括凭据轮换。
 
-- 清点 Azure AD B2C 中配置的所有 [密钥和证书](../../active-directory-b2c/policy-keys-overview.md) 。 此列表可能包括用于 SAML 的自定义策略、 [api](../../active-directory-b2c/secure-rest-api.md)、签名 ID 令牌和证书中使用的密钥。
+- 清点 Azure AD B2C 中[配置的所有密钥和证书](../../active-directory-b2c/policy-keys-overview.md)。 此列表可能包括的自定义策略、[API](../../active-directory-b2c/secure-rest-api.md)、签名 ID 令牌和 SAML 证书中使用的密钥。
 
 - 使用 CICD，可轮换将在预期旺季两个月内到期的机密。 与证书关联的私钥的建议最大加密期为一年。
 
@@ -126,7 +126,7 @@ Azure AD B2C 对应用程序、API、策略和加密使用机密。 机密可保
 
 ## <a name="test-rest-apis"></a>测试 REST API
 
-在复原环境中，REST Api 的测试需要包括对 HTTP 代码、响应负载、标头和性能的验证。 测试不应只包含快乐路径测试，还应检查 API 是否可正常处理问题情景。
+在复原能力上下文中，REST API 的测试需要包括 HTTP 代码、响应有效负载、标头和性能的验证。 测试不应只包含快乐路径测试，还应检查 API 是否可正常处理问题情景。
 
 ### <a name="how-to-test-apis"></a>如何测试 API
 

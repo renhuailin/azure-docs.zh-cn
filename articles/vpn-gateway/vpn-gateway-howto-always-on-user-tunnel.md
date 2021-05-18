@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 99d21222a62ed6b27a6a1b2a73b704f4cb26457b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89435790"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>配置 Always On VPN 用户隧道
@@ -21,7 +21,7 @@ ms.locfileid: "89435790"
 
 ## <a name="configure-the-gateway"></a>配置网关
 
- 请按照[配置点到站点 VPN 连接](vpn-gateway-howto-point-to-site-resource-manager-portal.md)一文中的说明将 VPN 网关配置为使用 IKEv2 和基于证书的身份验证。
+ 按照[配置点到站点 VPN 连接](vpn-gateway-howto-point-to-site-resource-manager-portal.md)一文中的说明，将 VPN 网关配置为使用 IKEv2 和基于证书的身份验证。
 
 ## <a name="configure-a-user-tunnel"></a>配置用户隧道
 

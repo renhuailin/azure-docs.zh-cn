@@ -10,45 +10,42 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/04/2021
+ms.date: 04/28/2021
 ms.author: genli
-ms.openlocfilehash: c28790b2ef423a3d0f996d7c6030b04198756eb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3cc4cb587a7b2d5d06c249cc8f25bc78cdb86739
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607605"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165256"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>在 Azure 中排查出站 SMTP 连接问题
 
-从 2017 年 11 月 15 日开始，从虚拟机 (VM) 直接发送到外部域（如 outlook.com 和 gmail.com）的出站电子邮件将仅适用于 Azure 中的某些订阅类型。 将阻止使用 TCP 端口 25 的出站 SMTP 连接。 （端口 25 主要用于未经身份验证的电子邮件传递。）
-
-此行为更改仅适用于在 2017 年 11 月 15 日之后创建的订阅和部署。
+仅当在特定订阅类型中部署 VM 时，才有可能直接向 TCP 端口 25 上的外部域（如 outlook.com 和 gmail.com）发送出站电子邮件。
 
 ## <a name="recommended-method-of-sending-email"></a>推荐的电子邮件发送方法
 
-建议使用经过身份验证的 SMTP 中继服务从 Azure VM 或 Azure 应用服务发送电子邮件。 （这些中继服务通常通过 TCP 端口 587 连接，但它们支持其他端口。）这些服务用于维护 IP 或域信誉，以尽量降低第三方电子邮件提供商拒绝邮件的可能性。 [SendGrid](https://sendgrid.com/partners/azure/) 就是这样一个 SMTP 中继服务，但还有其他服务。 还可具有本地运行并能使用的安全的 SMTP 中继服务。
+建议使用经过身份验证的 SMTP 中继服务从 Azure VM 或 Azure 应用服务发送电子邮件。 （这些中继服务通常通过 TCP 端口 587 连接，但它们支持其他端口。）这些服务用于维护 IP 和域信誉，以尽量降低外部域拒绝邮件或将其放到 SPAM 文件夹的可能性。 [SendGrid](https://sendgrid.com/partners/azure/) 就是这样一个 SMTP 中继服务，但还有其他服务。 你在本地服务器上可能还有一个经过身份验证的 SMTP 中继服务。
 
 在 Azure 中使用这些电子邮件传递服务不受限制（无论是哪种订阅类型）。
 
 ## <a name="enterprise-agreement"></a>企业协议
 
-企业协议 Azure 用户仍然无需使用经身份验证的中继便可发送电子邮件。 新的和现有的企业协议用户均可以尝试从 Azure VM 直接向外部电子邮件提供商发送出站电子邮件，且没有任何 Azure 平台限制。 不保证电子邮件提供商会接受来自任何给定用户的传入电子邮件。 但是，Azure 平台不会阻止企业协议订阅中针对 VM 的交付尝试。 必须直接与电子邮件提供商接洽，以修复涉及特定提供商的各项邮件发送或垃圾邮件筛选问题。
+对于在企业协议订阅中部署的 VM，TCP 端口 25 上的出站 SMTP 连接不会受到阻止。 但是，不保证外部域将接受来自 VM 的传入电子邮件。 如果电子邮件被外部域拒绝或筛选，你应联系外部域的电子邮件服务提供商解决问题。 Azure 支持不包含这些问题。
 
 ## <a name="pay-as-you-go"></a>即用即付
 
-如果你已在 2017 年 11 月 15 日之前注册即用即付订阅，那么从技术上来说，你仍然能够尝试发送出站电子邮件。 你仍然能够尝试从这些订阅中的 Azure VM 直接向外部电子邮件提供商发送出站电子邮件，而且不存在任何 Azure 平台限制。 同样地，不保证电子邮件提供商会接受来自任何给定用户的传入电子邮件。 用户必须直接与电子邮件提供商接洽，以修复涉及特定提供商的各项邮件发送或垃圾邮件筛选问题。
+对于在即用即付订阅中部署的 VM，Azure 平台会阻止 TCP 端口 25 上的出站 SMTP 连接。 如果你的 Azure 订阅良好并具有足够的付款历史记录，则可以删除该阻止。 你可以通过转到 [Azure 门户](https://portal.azure.com)中 Azure 虚拟网络资源的“诊断和解决”边栏选项卡的“无法发送电子邮件(SMTP-端口 25)”部分，来请求删除此限制 。 
 
-对于在 2017 年 11 月 15 日之后创建的即用即付订阅，存在一些技术限制，它们会阻止订阅中的 VM 直接发送电子邮件。 如果希望能够将来自 Azure VM 的电子邮件直接发送给外部电子邮件提供商（不使用经过身份验证的 SMTP 中继），并且你的帐户具有良好的付款历史记录，那么你可请求删除限制。 你可在 Azure 门户中某项 Azure 虚拟网络资源的“诊断和解决”边栏选项卡的“连接”部分中执行此操作。 如果你的请求被接受，你的订阅将被启用，或者你将收到后续步骤的说明。 
-
-在 Azure 门户中豁免即用即付订阅并停止再重启 VM 后，该订阅中的所有 VM 在此后都会被豁免。 该豁免仅适用于请求的订阅，并且仅适用于直接路由到 Internet 的 VM 流量。
+在 Azure 门户中使即用即付订阅不受此项阻止并停止再重启 VM 后，该订阅中的所有 VM 在此后都会被豁免。 该豁免仅适用于请求的订阅，并且仅适用于直接路由到 Internet 的 VM 流量。
 
 > [!NOTE]
 > Microsoft 保留在确定发生违反服务条款的情况下撤销这些豁免的权利。
 
 ## <a name="msdn-azure-pass-azure-in-open-education-azure-for-students-visual-studio-and-free-trial"></a>MSDN、Azure Pass、Azure 开放许可、教育、面向学生的 Azure、Visual Studio 和免费试用版
 
-如果你在 2017 年 11 月 15 日之后创建了以下订阅类型之一，则将存在技术限制，它们会阻止从订阅中的 VM 直接发送给电子邮件提供商的电子邮件：
+对于在以下订阅类型中部署的 VM，Azure 平台会阻止 TCP 端口 25 上的出站 SMTP 连接：
+
 - MSDN
 - Azure Pass
 - Azure 开放许可
@@ -59,28 +56,31 @@ ms.locfileid: "102607605"
 
 此限制是为了防止滥用邮件。 不接受去除这些限制的请求。
 
-如果你正在使用这些订阅类型，建议使用 SMTP 中继服务（如本文前面部分所述），或者更改订阅类型。
+如果你正在使用这些订阅类型，建议使用经过身份验证的 SMTP 中继服务（如本文前面部分所述），或者更改订阅类型。
 
 ## <a name="cloud-solution-provider"></a>云解决方案提供商
 
-如果你是通过云解决方案提供商使用 Azure 资源，则可以在 Azure 门户中某项虚拟网络资源的“诊断和解决”窗格的“连接”部分请求删除限制。 如果你的请求被接受，你的订阅将被启用，或者你将收到后续步骤的说明。
+对于在云解决方案提供商订阅中部署的 VM，Azure 平台会阻止 TCP 端口 25 上的出站 SMTP 连接。 可以删除这项阻止。 若要请求删除这项阻止，请转到 Azure 门户中 Azure 虚拟网络资源的“诊断和解决”边栏选项卡的“无法发送电子邮件(SMTP-端口 25)”部分，并创建支持请求 。
 
 ## <a name="microsoft-partner-network-bizspark-plus-or-azure-sponsorship"></a>Microsoft 合作伙伴网络、BizSpark Plus 或 Azure 赞助
 
-对于在 2017 年 11 月 15 日之后创建的以下类型的订阅，将存在一些技术限制，它们会阻止订阅中的 VM 直接发送电子邮件：
+对于在以下订阅中部署的 VM，Azure 平台会阻止 TCP 端口 25 上的出站 SMTP 传递尝试：
 
 - Microsoft 合作伙伴网络 (MPN)
 - BizSpark Plus
 - Azure 赞助
 
-如果希望能够将来自 Azure VM 的电子邮件直接发送给外部电子邮件提供商（不使用经过身份验证的 SMTP 中继），可使用以下问题类型打开支持案例来发出请求：“技术” > “虚拟网络” > “连接” > “无法发送电子邮件(SMTP/端口 25)”。 请务必添加详细信息，解释你的部署为什么需要向邮件直接发送给电子邮件提供商，而不使用经过身份验证的中继。 请求将由 Microsoft 自行决定审查和审批。 只有在完成其他反欺诈检查后，才能授予请求。 
+可以删除这项阻止。 若要请求删除这项阻止，请转到 Azure 门户中 Azure 虚拟网络资源的“诊断和解决”边栏选项卡的“无法发送电子邮件(SMTP-端口 25)”部分，并创建支持请求 。
 
-在 Azure 门户中豁免订阅并停止再重启 VM 后，该订阅中的所有 VM 在此后都会被豁免。 该豁免仅适用于请求的订阅，并且仅适用于直接路由到 Internet 的 VM 流量。
+使订阅不受此阻止并停止再重启 VM 后，该订阅中的所有 VM 在此后都会被豁免。 该豁免仅适用于请求的订阅，并且仅适用于直接路由到 Internet 的 VM 流量。
 
-## <a name="changing-subscription-type"></a>更改订阅名称
+> [!NOTE]
+> Microsoft 保留在确定发生违反服务条款的情况下撤销这些豁免的权利。
 
-如果更改订阅类型，或云解决方案提供商或即用即付订阅获得批准，则必须停止、解除分配，然后重新启动 VM，新策略才会生效。 同样，如果你有一个默认情况下允许的订阅类型，然后更改为不允许的订阅类型，则可能会由于部署更改而阻止端口 25。
+## <a name="changing-subscription-type"></a>更改订阅类型
+
+如果将订阅类型从企业协议更改为另一种订阅类型，对部署所做的更改可能导致出站 SMTP 被阻止。 如果你计划将订阅类型从企业协议更改为另一种订阅类型，并需要 TCP 端口 25 上的出站 SMTP，则在更改订阅类型之前，务必联系支持部门将订阅解除锁定。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
-如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。 使用以下问题类型：“技术” > “虚拟网络” > “连接” > “无法发送电子邮件(SMTP/端口 25)”。
+如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。 使用以下问题类型：“技术” > “虚拟网络” > “无法发送电子邮件（SMTP/端口 25）”。

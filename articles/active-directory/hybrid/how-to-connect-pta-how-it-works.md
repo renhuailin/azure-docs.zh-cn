@@ -17,14 +17,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe92f761ac0b16da7c3cc3c69c1fa4b00f4e7579
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95996587"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 直通身份验证：技术深入研究
-本文简要介绍了 Azure Active Directory (Azure AD) 直通身份验证的工作原理。 有关深入的技术和安全信息，请参阅 [安全性深入探讨](how-to-connect-pta-security-deep-dive.md) 文章。
+本文简要介绍了 Azure Active Directory (Azure AD) 直通身份验证的工作原理。 有关深入的技术和安全信息，请参阅[深入了解安全性](how-to-connect-pta-security-deep-dive.md)一文。
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Azure Active Directory 直通身份验证的工作原理是什么？
 
@@ -43,7 +43,7 @@ ms.locfileid: "95996587"
 8. 代理使用标准 Windows API（类似于 Active Directory 联合身份验证服务 (AD FS) 使用的机制）针对 Active Directory 验证该用户名和密码。 用户名可以是本地默认用户名（通常为 `userPrincipalName`），也可以是在 Azure AD Connect 中配置的另一个属性（称为 `Alternate ID`）。
 9. 本地 Active Directory 域控制器 (DC) 将评估请求并向代理返回适当的响应（成功、失败、密码过期或用户被锁定）。
 10. 身份验证代理转而将此响应返回给 Azure AD。
-11. Azure AD 评估响应，并相应地向用户提供响应。 例如，Azure AD 立即为用户签名，或请求 Azure AD 多重身份验证。
+11. Azure AD 评估响应，并相应地向用户提供响应。 例如，Azure AD 立即让用户登录或请求 Azure AD 多重身份验证。
 12. 如果用户登录成功，则该用户可以访问应用程序。
 
 下图说明了所涉及的所有组件和步骤：
@@ -52,12 +52,12 @@ ms.locfileid: "95996587"
 
 ## <a name="next-steps"></a>后续步骤
 - [当前限制](how-to-connect-pta-current-limitations.md)：了解支持和不支持的方案。
-- [快速入门](how-to-connect-pta-quick-start.md)：在 Azure AD 直通身份验证上启动并运行。
+- [快速入门](how-to-connect-pta-quick-start.md)：快速了解 Azure AD 直通身份验证。
 - [从 AD FS 迁移到传递身份验证](https://aka.ms/adfstoPTADP) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：在租户中配置智能锁定功能以保护用户帐户。
 - [常见问题](how-to-connect-pta-faq.md)：查找常见问题的解答。
 - [故障诊断](tshoot-connect-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。
-- [安全性深入探讨](how-to-connect-pta-security-deep-dive.md)：获取有关直通身份验证功能的深入技术信息。
+- [深入了解安全性](how-to-connect-pta-security-deep-dive.md)：深入了解有关直通身份验证功能的技术信息。
 - [Azure AD 无缝 SSO](how-to-connect-sso.md)：深入了解此补充功能。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)：使用 Azure Active Directory 论坛来提交新的功能请求。
 

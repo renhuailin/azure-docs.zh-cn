@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 2f7372d522c02eb86f1cc6470cefa9cb299605a7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86261621"
 ---
 # <a name="manage-the-azure-maps-visual-within-your-organization"></a>在组织中管理 Azure Maps 视觉对象
@@ -22,7 +22,7 @@ ms.locfileid: "86261621"
 
 ### <a name="designer-options"></a>设计者选项
 
-在 Power BI Desktop 中，设计者可禁用“安全”选项卡上的 Azure Maps 视觉对象。选择“文件” &gt; “选项和设置” ，然后选择“选项” &gt; “预览功能” 。 禁用后，将默认不会加载 ArcGIS Maps。  
+在 Power BI Desktop 中，设计器可以在安全选项卡上禁用 Azure Maps 视觉对象。选择“文件”&gt;“选项和设置”，然后选择“选项”&gt;“预览功能”   。 禁用后，将默认不会加载 ArcGIS Maps。  
   
 ![“Power BI 选项”面板中显示了 Azure Maps 视觉对象的预览功能选项](media/power-bi-visual/preview-options-panel.png)
 
@@ -35,7 +35,7 @@ ms.locfileid: "86261621"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure Maps Power BI 视觉对象的详细信息：
+详细了解 Azure Maps Power BI 视觉对象：
 
 > [!div class="nextstepaction"]
 > [了解 Azure Maps Power BI 视觉对象中的层](power-bi-visual-understanding-layers.md)

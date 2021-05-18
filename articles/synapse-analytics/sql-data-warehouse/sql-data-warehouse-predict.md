@@ -1,6 +1,6 @@
 ---
-title: 通过预测对机器学习模型进行评分
-description: 了解如何使用专用 SQL 池中的 T-sql PREDICT 函数对机器学习模型进行评分。
+title: 使用 PREDICT 对机器学习模型进行评分
+description: 了解如何在专用 SQL 池中使用 T-SQL PREDICT 函数对机器学习模型进行评分。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -12,42 +12,42 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 9e7d45a588e60cd082f1eef43d1d1b6681b9e912
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98117735"
 ---
-# <a name="score-machine-learning-models-with-predict"></a>通过预测对机器学习模型进行评分
+# <a name="score-machine-learning-models-with-predict"></a>使用 PREDICT 对机器学习模型进行评分
 
-专用 SQL 池提供使用熟悉的 T-sql 语言对机器学习模型进行评分的功能。 利用 T-sql [预测](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)，你可以将现有机器学习模型与历史数据定型，并将其评分到数据仓库的安全边界内。 PREDICT 函数使用 [ONNX (打开神经网络交换) ](https://onnx.ai/) 模型和数据作为输入。 此功能消除了在数据仓库外移动宝贵数据以实现评分的步骤。 它旨在使数据专业人员能够轻松地使用熟悉的 T-sql 界面来部署机器学习模型，并与数据科学家无缝协作，为其任务使用正确的框架。
+专用 SQL 池为你提供了使用熟悉的 T-SQL 语言对机器学习模型进行评分的功能。 使用 T-SQL [PREDICT](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)，你可以引入使用历史数据训练的现有机器学习模型，在数据仓库的安全边界内对其进行评分。 PREDICT 函数采用 [ONNX (Open Neural Network Exchange)](https://onnx.ai/) 模型和数据作为输入。 此功能消除了将有价值的数据移到数据仓库外部进行评分的步骤。 它的目标是使数据专业人员能够使用熟悉的 T-SQL 接口轻松地部署机器学习模型，并对其任务使用正确的框架，以便与数据科学家无缝地协作。
 
 > [!NOTE]
-> 此功能目前在无服务器 SQL 池中不受支持。
+> 无服务器 SQL 池目前不支持此功能。
 
-此功能要求在 Synapse SQL 之外训练该模型。 生成模型后，将其加载到数据仓库中，并通过 T-sql 预测语法对其进行评分，以获取数据的见解。
+此功能要求在 Synapse SQL 外部训练模型。 在构建模型后，将模型加载到数据仓库中，然后使用 T-SQL Predict 语法对该模型进行评分，以从数据中获取见解。
 
 ![predictoverview](./media/sql-data-warehouse-predict/datawarehouse-overview.png)
 
-## <a name="training-the-model"></a>定型模型
+## <a name="training-the-model"></a>训练模型
 
-专用 SQL 池需要预先训练的模型。 在训练用于在专用 SQL 池中执行预测的机器学习模型时，请记住以下几点。
+专用 SQL 池需要一个预先训练的模型。 在训练用于在专用 SQL 池中执行预测的机器学习模型时，请牢记以下因素。
 
-- 专用 SQL 池仅支持 ONNX 格式模型。 ONNX 是一种开源模型格式，可用于在不同框架之间交换模型以实现互操作性。 你可以使用框架将现有模型转换为 ONNX 格式，这种框架既支持本机支持，也可用来转换可用的包。 例如， [spark-sklearn-onnx](https://github.com/onnx/sklearn-onnx) package 将 scikit-learn-了解模型转换为 onnx。 [ONNX GitHub 存储库](https://github.com/onnx/tutorials#converting-to-onnx-format) 提供支持的框架和示例的列表。
+- 专用 SQL 池仅支持 ONNX 格式模型。 ONNX 是一种开源模型格式，可用于在各种框架之间交换模型以实现互操作性。 你可以将现有模型转换为 ONNX 格式（使用本身就支持此格式的框架或使用提供转换包的框架）。 例如，[sklearn-onnx](https://github.com/onnx/sklearn-onnx) 包将 scikit-learn 模型转换为 ONNX。 [ONNX GitHub 存储库](https://github.com/onnx/tutorials#converting-to-onnx-format)提供了一系列受支持的框架和示例。
 
-   如果使用 [自动 ML](../../machine-learning/concept-automated-ml.md) 进行培训，请确保将 *enable_onnx_compatible_models* 参数设置为 TRUE，以生成 onnx 格式模型。 [自动机器学习笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 显示了如何使用自动 ML 创建 ONNX 格式的机器学习模型的示例。
+   如果你使用[自动化 ML](../../machine-learning/concept-automated-ml.md) 进行训练，请确保将 enable_onnx_compatible_models 参数设置为 TRUE，以生成 ONNX 格式模型。 [自动化机器学习笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)显示了一个示例，该示例展示了如何使用自动化 ML 创建 ONNX 格式的机器学习模型。
 
-- 输入数据支持以下数据类型：
+- 支持将以下数据类型用于输入数据：
     - int、bigint、real、float
     - char、varchar、nvarchar
 
-- 评分数据需要与定型数据的格式相同。 预测不支持复杂数据类型（如多维数组）。 因此，对于定型，请确保模型的每个输入对应于评分表的单个列，而不是传递包含所有输入的单个数组。
+- 评分数据需要采用与训练数据相同的格式。 PREDICT 不支持复杂数据类型（例如多维数组）。 因此，对于训练，请确保模型的每个输入对应于评分表的单个列，而不是传递包含所有输入的单个数组。
 
-- 请确保模型输入的名称和数据类型与新预测数据的列名称和数据类型匹配。 使用联机可用的各种开源工具可视化 ONNX 模型可以进一步帮助进行调试。
+- 请确保模型输入的名称和数据类型与新预测数据的列的名称和数据类型匹配。 使用在线提供的各种开源工具将 ONNX 模型可视化可以进一步帮助你进行调试。
 
-## <a name="loading-the-model"></a>正在加载模型
+## <a name="loading-the-model"></a>加载模型
 
-模型以十六进制字符串的形式存储在专用 SQL 池用户表中。 可以在模型表中添加其他列（如 ID 和说明）来标识模型。 使用 varbinary (max) 作为模型列的数据类型。 下面是可用于存储模型的表的代码示例：
+模型以十六进制字符串的形式存储在专用 SQL 池用户表中。 可以在模型表中添加 ID 和说明等其他列来标识模式。 使用 varbinary(max) 作为模型列的数据类型。 下面是可用于存储模型的表的代码示例：
 
 ```sql
 -- Sample table schema for storing a model and related data
@@ -66,7 +66,7 @@ GO
 
 ```
 
-一旦将模型转换为十六进制字符串并指定了表定义，就可以使用 [COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?preserve-view=true&view=azure-sqldw-latest) 或 Polybase 加载专用 SQL 池表中的模型。 下面的代码示例使用 Copy 命令来加载模型。
+将模型转换为十六进制字符串并指定表定义后，请使用 [COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?preserve-view=true&view=azure-sqldw-latest)或 Polybase 加载专用 SQL 池表中的模型。 下面的代码示例使用 Copy 命令来加载模型。
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location
@@ -78,11 +78,11 @@ WITH (
 )
 ```
 
-## <a name="scoring-the-model"></a>为模型评分
+## <a name="scoring-the-model"></a>对模型进行评分
 
-一旦将模型和数据加载到数据仓库中，就可以使用 **T-SQL 预测** 函数对模型进行评分。 请确保新的输入数据的格式与用于生成模型的定型数据的格式相同。 T-sql 预测采用两个输入：模型和新的评分输入数据，并为输出生成新列。可以将模型指定为变量、文本或标量 sub_query。 [与 Common_table_expression 一起](/sql/t-sql/queries/with-common-table-expression-transact-sql?preserve-view=true&view=azure-sqldw-latest)使用，以便为数据参数指定命名的结果集。
+将模型和数据加载到数据仓库中后，使用 T-SQL PREDICT 函数对模型进行评分。 请确保新的输入数据采用的格式与用于构建模型的训练数据采用的格式相同。 T-SQL PREDICT 采用两种输入数据：模型输入数据和新评分输入数据，并为输出生成新列。可以将模型指定为变量、文本或标量 sub_query。 使用 [WITH common_table_expression](/sql/t-sql/queries/with-common-table-expression-transact-sql?preserve-view=true&view=azure-sqldw-latest) 指定数据参数的已命名结果集。
 
-下面的示例演示了一个使用预测函数的示例查询。 创建了包含预测结果的具有名称 *分数* 和数据类型 *float* 的其他列。 所有输入数据列以及输出预测列都可与 select 语句一起显示。 有关更多详细信息，请参阅 [预测 (transact-sql) ](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)。
+下面的示例展示了一个使用预测函数的示例查询。 创建了一个名称为 Score 且数据类型为 float 的附加列，其中包含预测结果。 所有输入数据列和输出预测列都可以通过 Select 语句进行显示。 如需更多详细信息，请参阅 [PREDICT (Transact-SQL)](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)。
 
 ```sql
 -- Query for ML predictions
@@ -93,4 +93,4 @@ DATA = dbo.mytable AS d, RUNTIME = ONNX) WITH (Score float) AS p;
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 PREDICT 函数的详细信息，请参阅 [预测 (transact-sql) ](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)。
+若要详细了解 PREDICT 函数，请参阅 [PREDICT (Transact-SQL)](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)。

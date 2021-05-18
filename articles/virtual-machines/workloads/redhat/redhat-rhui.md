@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
 ms.openlocfilehash: 968377ed09996b9a717e0739a3de8355d1c8d88d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101677133"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
@@ -47,7 +47,7 @@ ms.locfileid: "101677133"
 
 ### <a name="images-connected-to-non-eus-repositories"></a>连接到非 EUS 存储库的映像
 
-如果从连接到非 EUS 存储库的 RHEL 映像预配 VM，则在运行 `sudo yum update` 时，将升级到最新的 RHEL 次要版本。 例如，如果从 RHEL 7.4 PAYG 映像预配 VM 并运行 `sudo yum update` ，最终会获得一个 rhel 7.8 VM， (RHEL7 系列中的最新次要版本) 。
+如果从连接到非 EUS 存储库的 RHEL 映像预配 VM，则在运行 `sudo yum update` 时，将升级到最新的 RHEL 次要版本。 例如，如果从 RHEL 7.4 PAYG 映像预配 VM 并运行 `sudo yum update`，最终会获得 RHEL 7.8 VM（RHEL7 系列中的最新次要版本）。
 
 连接到非 EUS 存储库的映像不会在 SKU 中包含次要版本号。 SKU 是 URN（映像的完整名称）中的第三个元素。 例如，以下所有映像都附加到非 EUS 存储库：
 
@@ -81,17 +81,17 @@ RedHat:RHEL:7.6:7.6.2019062116
 >[!NOTE]
 > RHEL Extras 不支持 EUS。 这意味着，如果要安装通常可从 RHEL Extras 渠道获得的包，则在 EUS 上将无法这样做。 [此处](https://access.redhat.com/support/policy/updates/extras/)详细介绍了 Red Hat Extras 产品生命周期。
 
-在撰写本文时，对 RHEL 7.4 及更低版本的 EUS 支持已终止。 有关更多详细信息，请参阅 [Red Hat 文档](https://access.redhat.com/support/policy/updates/errata/#Long_Support) 中的 "Red Hat Enterprise Linux 扩展维护" 部分。
+在撰写本文时，对 RHEL 7.4 及更低版本的 EUS 支持已终止。 有关更多详细信息，请参阅 [Red Hat 文档](https://access.redhat.com/support/policy/updates/errata/#Long_Support)中的“Red Hat Enterprise Linux 扩展维护”部分。
 * RHEL 7.4 EUS 支持于 2019 年 8 月 31 日终止
 * RHEL 7.5 EUS 支持于 2020 年 4 月 30 日终止
-* RHEL 7.6 EUS 支持在5月31日结束，2021
+* RHEL 7.6 EUS 支持于 2021 年 5 月 31 日终止
 * RHEL 7.7 EUS 支持于 2021 年 8 月 30 日终止
 
-### <a name="switch-a-rhel-vm-7x-to-eus-version-lock-to-a-specific-minor-version"></a>将 RHEL VM 1.x 切换到 EUS (版本-锁定到特定次要版本) 
-使用以下说明将 RHEL 7. x VM 锁定到特定的次要版本， (以根) 运行：
+### <a name="switch-a-rhel-vm-7x-to-eus-version-lock-to-a-specific-minor-version"></a>将 RHEL VM 7.x 切换到 EUS（版本锁定到特定次要版本）
+使用以下指令将 RHEL 7.x VM 锁定到特定次要版本（以 root 身份运行）：
 
 >[!NOTE]
-> 这仅适用于 EUS 可用的 RHEL 7、windows 版本。 在撰写本文时，这包括 RHEL 7.2-7.7。 有关更多详细信息，请访问 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)页。
+> 这仅适用于 EUS 可用的 RHEL 7.x 版本。 在撰写本文时，这包括 RHEL 7.2-7.7。 有关更多详细信息，请访问 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)页。
 
 1. 禁用非 EUS 存储库：
     ```bash
@@ -109,18 +109,18 @@ RedHat:RHEL:7.6:7.6.2019062116
     ```
 
     >[!NOTE]
-    > 以上指令会将 RHEL 次版本锁定到当前次版本。 如果希望进行升级并锁定到不是最新版本的较高次版本，请输入具体的次版本。 例如， `echo 7.5 > /etc/yum/vars/releasever` 会将你的 rhel 版本锁定到 rhel 7.5。
+    > 以上指令会将 RHEL 次版本锁定到当前次版本。 如果希望进行升级并锁定到不是最新版本的较高次版本，请输入具体的次版本。 例如，`echo 7.5 > /etc/yum/vars/releasever` 会将 RHEL 版本锁定到 RHEL 7.5。
 
 1. 更新 RHEL VM
     ```bash
     sudo yum update
     ```
 
-### <a name="switch-a-rhel-vm-8x-to-eus-version-lock-to-a-specific-minor-version"></a>将 RHEL VM 2.x 切换到 EUS (版本-锁定到特定的次要版本) 
-使用以下说明将 RHEL 8.x VM 锁定到特定的次要版本， (以根) 运行：
+### <a name="switch-a-rhel-vm-8x-to-eus-version-lock-to-a-specific-minor-version"></a>将 RHEL VM 8.x 切换到 EUS（版本锁定到特定次要版本）
+使用以下指令将 RHEL 8.x VM 锁定到特定次要版本（以 root 身份运行）：
 
 >[!NOTE]
-> 这仅适用于 EUS 可用的 RHEL 8.x 版本。 撰写本文时，这包括 RHEL 8.1-8.2。 有关更多详细信息，请访问 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)页。
+> 这仅适用于 EUS 可用的 RHEL 8.x 版本。 在撰写本文时，这包括 RHEL 8.1-8.2。 有关更多详细信息，请访问 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)页。
 
 1. 禁用非 EUS 存储库：
     ```bash
@@ -143,10 +143,10 @@ RedHat:RHEL:7.6:7.6.2019062116
     ```
 
     >[!NOTE]
-    > 以上指令会将 RHEL 次版本锁定到当前次版本。 如果希望进行升级并锁定到不是最新版本的较高次版本，请输入具体的次版本。 例如， `echo 8.1 > /etc/yum/vars/releasever` 会将你的 rhel 版本锁定到 rhel 8.1。
+    > 以上指令会将 RHEL 次版本锁定到当前次版本。 如果希望进行升级并锁定到不是最新版本的较高次版本，请输入具体的次版本。 例如，`echo 8.1 > /etc/yum/vars/releasever` 会将 RHEL 版本锁定到 RHEL 8.1。
 
     >[!NOTE]
-    > 如果有权访问 releasever 的权限问题，则可以使用 "nano/etc/yum/vars/releaseve" 编辑该文件并添加映像版本详细 ( 信息，然后按 enter，再按 enter，然后按 "Ctrl + x" ) 。  
+    > 如果存在访问 releasever 的权限问题，可使用“nano /etc/yum/vars/releaseve”编辑该文件并添加映像版本详细信息，然后进行保存（按“Ctrl+O”再按 Enter，然后按“Ctrl+X”）。  
 
 1. 更新 RHEL VM
     ```bash
@@ -154,7 +154,7 @@ RedHat:RHEL:7.6:7.6.2019062116
     ```
 
 
-### <a name="switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock"></a>将 RHEL 7、windows VM 切换回非 EUS (删除版本锁定) 
+### <a name="switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock"></a>将 RHEL 7.x VM 切换回非 EUS（删除版本锁）
 以 root 身份运行以下命令：
 1. 删除 `releasever` 文件：
     ```bash
@@ -176,7 +176,7 @@ RedHat:RHEL:7.6:7.6.2019062116
     sudo yum update
     ```
 
-### <a name="switch-a-rhel-8x-vm-back-to-non-eus-remove-a-version-lock"></a>将 RHEL 8.x VM 切换回非 EUS (删除版本锁定) 
+### <a name="switch-a-rhel-8x-vm-back-to-non-eus-remove-a-version-lock"></a>将 RHEL 8.x VM 切换回非 EUS（删除版本锁）
 以 root 身份运行以下命令：
 1. 删除 `releasever` 文件：
     ```bash
@@ -228,10 +228,10 @@ RedHat:RHEL:7.6:7.6.2019062116
 51.4.228.145
 ```
 >[!NOTE]
->从2020年1月起，新的 Azure 美国政府版映像将使用以上 Azure Global 标头中提到的公共 IP。
+>从 2020 年 1 月起，新的 Azure 美国政府版映像将使用上面 Azure 全球标头中提到的公共 IP。
 
 >[!NOTE]
->另外，请注意，Azure 德国已弃用，以取代公共德国地区。 Azure 德国客户的建议使用 [此处](#manual-update-procedure-to-use-the-azure-rhui-servers)的步骤开始指向公共 RHUI。
+>另请注意，已弃用 Azure 德国，取而代之的是公共德国地区。 建议 Azure 德国客户使用[此处](#manual-update-procedure-to-use-the-azure-rhui-servers)的步骤开始指向公共 RHUI。
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUI 基础结构
 

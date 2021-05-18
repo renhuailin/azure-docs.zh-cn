@@ -4,15 +4,15 @@ description: 本文介绍订阅者如何通过指定筛选器来定义希望从�
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.openlocfilehash: f28b26ee112b47b9782823f6c79670dee9a3f082
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100651657"
 ---
 # <a name="topic-filters-and-actions"></a>主题筛选器和操作
 
-订阅者可以定义他们希望从主题接收的消息。 这些消息采用一个或多个命名订阅规则的形式指定。 每个规则包含一个用于选择特定消息的 **筛选条件** ，并且 **可以选择** 包含批注所选消息的 **操作** 。 
+订阅者可以定义他们希望从主题接收的消息。 这些消息采用一个或多个命名订阅规则的形式指定。 每个规则都包含用于选择特定消息的筛选器条件，并且（可选）包含对所选消息进行批注的操作  。 
 
 所有未包含操作的规则都将使用 `OR` 条件进行合并，并最终在订阅上生成一条消息（即使你有多个匹配规则也是如此） 。 
 
@@ -65,7 +65,7 @@ ms.locfileid: "100651657"
 路由使用筛选器以可预测、但不一定独占的方式在主题订阅间分发消息。 通过与[自动转发](service-bus-auto-forwarding.md)功能相结合，主题筛选器可以用于在服务总线命名空间中创建复杂路由图，以便在 Azure 区域中进行消息分发。 通过使 Azure Functions 或 Azure 逻辑应用充当 Azure 服务总线命名空间之间的桥梁，可以创建直接集成到业务线应用程序中的复杂全局拓扑。
 
 ## <a name="examples"></a>示例
-有关示例，请参阅 [服务总线筛选器示例](service-bus-filter-examples.md)。
+有关示例，请参阅[服务总线筛选器示例](service-bus-filter-examples.md)。
 
 
 

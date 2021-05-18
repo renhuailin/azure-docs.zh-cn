@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: caf46850b3d8d6946225575b8a9a732a90847482
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574133"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务启用安全审核
@@ -249,10 +249,10 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 
 有关 Kusto 的特定信息，请参阅以下文章：
 
-* Kusto 查询语言的[概述](/azure/kusto/query/)。
-* [Kusto 教程](/azure/kusto/query/tutorial) 来熟悉查询基础知识。
-* 帮助您了解查看数据的新方法的[示例查询](/azure/kusto/query/samples)。
-* Kusto [最佳实践](/azure/kusto/query/best-practices) 以优化查询是否成功。
+* Kusto 查询语言[概述](/azure/kusto/query/)。
+* 可帮助你熟悉查询基础知识的 [Kusto 教程](/azure/kusto/query/tutorial)。
+* 可帮助你了解查看数据的新方法的[示例查询](/azure/kusto/query/samples)。
+* 可帮助你优化查询以获得成功的 Kusto [最佳做法](/azure/kusto/query/best-practices)。
 
 <!-- LINKS - Internal -->
 [migrate-azure-adds]: migrate-from-classic-vnet.md

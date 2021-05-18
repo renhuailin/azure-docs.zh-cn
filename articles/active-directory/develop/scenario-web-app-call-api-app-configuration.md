@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.openlocfilehash: aa377547f7f4961e199ec8d62bf0f1435296f983
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582309"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104669298"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web 应用：代码配置
 
@@ -28,15 +28,11 @@ ms.locfileid: "99582309"
 
 [用于登录用户的 Web 应用](scenario-web-app-sign-user-overview.md)方案只涉及第一步。 在本文中，你将学习如何修改 Web 应用，使其不仅能登录用户，而且现在还能调用 Web API。
 
-## <a name="libraries-that-support-web-app-scenarios"></a>支持 Web 应用方案的库
+## <a name="microsoft-libraries-supporting-web-apps"></a>支持 Web 应用的 Microsoft 库
 
-Microsoft 身份验证库 (MSAL) 中的以下库支持 Web 应用的授权代码流：
+以下 Microsoft 库支持 Web 应用：
 
-| MSAL 库 | 说明 |
-|--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持 .NET Framework 和 .NET Core 平台。 不支持通用 Windows 平台 (UWP)、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于生成公共客户端应用。 <br/><br/>对于 ASP.NET Core Web 应用和 Web API，MSAL.NET 会封装在名为 [Microsoft.Identity.Web](https://aka.ms/ms-identity-web) 的更高级别库中。 |
-| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> 适用于 Python 的 MSAL | 支持 Python Web 应用。 |
-| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> 适用于 Java 的 MSAL | 支持 Java Web 应用。 |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 选择你感兴趣的平台的选项卡：
 
@@ -44,7 +40,7 @@ Microsoft 身份验证库 (MSAL) 中的以下库支持 Web 应用的授权代码
 
 ## <a name="client-secrets-or-client-certificates"></a>客户端密码或客户端证书
 
-假设 web 应用现在调用下游 web API，请在 *appsettings.js* 文件中提供客户端机密或客户端证书。 你还可以添加一个节来指定：
+鉴于 Web 应用现在调用下游的 Web API，请提供 appsettings.json 文件中客户端密码或客户端证书。 你还可以添加一个节来指定：
 
 - 下游 Web API 的 URL
 - 调用 API 所需的范围
@@ -184,7 +180,7 @@ Web 应用将需要获取下游 API 的令牌。 可通过在 `.AddMicrosoftIden
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="此框图显示了 Startup.cs 中的服务配置选项，用于调用 Web API 和指定令牌缓存实现":::
 
 > [!NOTE]
-> 若要完全了解此处的代码示例，请熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，并特别了解 [依赖关系注入](/aspnet/core/fundamentals/dependency-injection) 和 [选项](/aspnet/core/fundamentals/configuration/options)。
+> 若要完全理解以下代码示例，请熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，尤其是[依赖项注入](/aspnet/core/fundamentals/dependency-injection)和[选项](/aspnet/core/fundamentals/configuration/options)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

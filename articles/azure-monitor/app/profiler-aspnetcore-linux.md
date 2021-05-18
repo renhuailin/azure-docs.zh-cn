@@ -7,16 +7,16 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6ef52e946edb5db8074a9b4e3ce5e4a81ae0bde5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: MT
+ms.openlocfilehash: 4c208a80a1f701cc3e0c1c5cd08a999f2f15815e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561046"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889070"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
 
-此功能目前以预览版提供。
+此功能目前处于预览状态。
 
 使用 [Application Insights](./app-insights-overview.md) 确定实时 Web 应用程序中的每个方法花费了多长时间。 Application Insights Profiler 现在可用于 Azure 应用服务上的 Linux 中托管的 ASP.NET Core Web 应用。 本指南提供了有关如何为 ASP.NET Core Linux Web 应用收集探查器跟踪的分步说明。
 
@@ -48,20 +48,12 @@ ms.locfileid: "97561046"
    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
    ```
 
-1. 在 Program.cs 中启用 Application Insights：
-
-    ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .UseApplicationInsights() // Add this line of code to Enable Application Insights
-            .UseStartup<Startup>();
-    ```
-
-1. 在 Startup.cs 中启用 Profiler：
+1. 在 Startup.cs 中启用 Application Insights 和 Profiler：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddApplicationInsightsTelemetry(); // Add this line of code to enable Application Insights.
         services.AddServiceProfiler(); // Add this line of code to Enable Profiler
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
@@ -107,7 +99,7 @@ ms.locfileid: "97561046"
 
     ![设置 Git 存储库](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-有关更多部署选项，请参阅 [应用服务文档](../../app-service/index.yml)。
+有关更多部署选项，请参阅[应用服务文档](../../app-service/index.yml)。
 
 ## <a name="deploy-your-project"></a>部署项目
 

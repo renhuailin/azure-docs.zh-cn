@@ -7,10 +7,10 @@ ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: e8641cada03577cf22e6627bdf53b2a8a0e836ef
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102216377"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
@@ -551,7 +551,7 @@ Python 不支持特性。
 |---------|---------|----------------------|
 | type | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
-| name | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
+| **name** | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
 | methods |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | route | **Route** | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
@@ -596,7 +596,7 @@ http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-此配置允许函数代码支持地址、 _类别_ 和 _id_ 中的两个参数。有关如何在 URL 中标记路由参数的详细信息，请参阅 [ASP.NET Core 中的路由](https://docs.microsoft.com/aspnet/core/fundamentals/routing#route-constraint-reference)。
+此配置使得函数代码在地址中支持两个参数：_category_ 和 _id_。有关如何在 URL 中标记化路由参数的更多信息，请参阅 [ASP.NET Core 中的路由](https://docs.microsoft.com/aspnet/core/fundamentals/routing#route-constraint-reference)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

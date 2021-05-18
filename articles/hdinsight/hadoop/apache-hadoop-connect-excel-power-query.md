@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 13862e642c6a91fe6f3c635df2efde91672ecbad
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946692"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866805"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>使用 Power Query 将 Excel 连接到 Apache Hadoop
 
@@ -42,13 +42,13 @@ Power Query 可以导入已输出的数据，或者导入已由在 HDInsight 群
 
      * 选择 >“数据”   > “获取数据”   > “从 Azure”   > “从 Azure HDInsight(HDFS)”  。
 
-       ![HDI.PowerQuery.SelectHdiSource.2016](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png" alt-text="HDI.PowerQuery.SelectHdiSource.2016" border="true":::
 
    * Excel 2013/2010
 
      * 选择“Power Query“   > “从 Azure”   > “从 Microsoft Azure HDInsight”  。
 
-       ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png" alt-text="HDI.PowerQuery.SelectHdiSource" border="true":::
 
        **注意：** 如果未看到“Power Query”菜单，请转到“文件” > “选项” > “加载项”，从页面底部的下拉“管理”框中选择“COM 加载项”       。  。
 
@@ -62,15 +62,15 @@ Power Query 可以导入已输出的数据，或者导入已由在 HDInsight 群
 
 1. 在“名称”列中找到“HiveSampleData.txt”（文件夹路径是“../hive/warehouse/hivesampletable/”），然后选择 HiveSampleData.txt 左侧的“二进制”     。 HiveSampleData.txt 随所有群集提供。 （可选）可使用自己的文件。
 
-    ![HDI Excel Power Query 导入数据](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png" alt-text="HDI Excel Power Query 导入数据" border="true":::
 
 1. 可根据需要重命名列名称。 准备就绪后，选择“关闭并加载”。   数据已加载到工作簿：
 
-    ![HDI Excel Power Query 导入的表](./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png" alt-text="HDI Excel Power Query 导入的表" border="true":::
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，已了解如何使用 Power Query 将数据从 HDInsight 检索到 Excel 中。 同样地，也可以将来自 HDInsight 的数据检索到 Azure SQL 数据库中。 也可以将数据上载到 HDInsight。 要了解更多信息，请参阅下列文章：
+在本文中，已了解如何使用 Power Query 将数据从 HDInsight 检索到 Excel 中。 同样地，也可以将来自 HDInsight 的数据检索到 Azure SQL 数据库中。 也可以将数据上传到 HDInsight 中。 要了解更多信息，请参阅下列文章：
 
 * [在 Azure HDInsight 中使用 Microsoft Power BI 直观显示 Apache Hive 数据](apache-hadoop-connect-hive-power-bi.md)。
 * [在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Hive 数据](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。

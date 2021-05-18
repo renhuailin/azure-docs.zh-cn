@@ -14,10 +14,10 @@ ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 0127c8d796126d1e99b1fa38a9506df477c7eb49
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98755736"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>在声明中使用目录架构扩展属性
@@ -35,13 +35,13 @@ ms.locfileid: "98755736"
 可通过以下两种方式之一注册和填充目录架构扩展属性：
 
 - 通过配置 AD Connect 来创建它们，并将数据从本地 AD 同步其中。 请参阅 [Azure AD Connect 同步目录扩展](../hybrid/how-to-connect-sync-feature-directory-extensions.md)。
-- 通过使用 Microsoft Graph 来注册、设置[架构扩展](/graph/extensibility-overview)的值并从架构扩展读取数据。 还提供了[PowerShell cmdlet](/powershell/azure/active-directory/using-extension-attributes-sample) 。
+- 通过使用 Microsoft Graph 来注册、设置[架构扩展](/graph/extensibility-overview)的值并从架构扩展读取数据。 也可使用 [PowerShell cmdlet](/powershell/azure/active-directory/using-extension-attributes-sample)。
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>发出包含使用 AD Connect 创建的目录架构扩展属性中数据的声明
 使用 AD Connect 创建和同步的目录架构扩展属性始终与 AD Connect 使用的应用程序 ID 相关联。 可通过两种方式将其用作声明的源：对于在“企业应用程序”下方使用“库”或“非库”应用程序配置体验注册的 SAML 应用程序，在门户 UI 中“企业应用程序”配置中将其配置为声明；对于通过应用程序注册体验注册的应用程序，通过声明映射策略进行配置。   通过 AD Connect 创建的目录扩展属性位于目录中之后，它将显示在 SAML SSO 声明配置 UI 中。
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-for-an-application-using-graph-or-powershell"></a>使用 Graph 或 PowerShell 发出包含为应用程序所创建目录架构扩展属性中数据的声明
-如果使用 Microsoft Graph 或 PowerShell 为应用程序注册目录架构扩展属性（例如通过应用程序初始设置或预配步骤），则可以在 Azure Active Directory 中将同一应用程序配置为在用户登录时接收来自声明中的用户对象的该属性中的数据。  可将应用程序配置为在目录架构扩展中接收数据，该扩展使用[可选声明](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)在同一应用程序上进行注册。  可以在应用程序清单中设置它们。  这使多租户应用程序可以注册目录架构扩展属性以供自己使用。 将应用程序预配到租户中后，相关联的目录架构扩展可以在该租户中的用户上进行设置并可以进行使用。  一旦将其配置为租户并获得同意，就可以使用它通过 graph 存储和检索数据，并映射到 Microsoft 标识平台向应用程序发出的令牌中的声明。
+如果使用 Microsoft Graph 或 PowerShell 为应用程序注册目录架构扩展属性（例如通过应用程序初始设置或预配步骤），则可以在 Azure Active Directory 中将同一应用程序配置为在用户登录时接收来自声明中的用户对象的该属性中的数据。  可将应用程序配置为在目录架构扩展中接收数据，该扩展使用[可选声明](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)在同一应用程序上进行注册。  可以在应用程序清单中设置它们。  这使多租户应用程序可以注册目录架构扩展属性以供自己使用。 将应用程序预配到租户中后，相关联的目录架构扩展可以在该租户中的用户上进行设置并可以进行使用。  在租户中配置该扩展并授予同意后，便可以将其用于通过图形存储和检索数据，以及用于映射令牌中的声明，这些令牌由 Microsoft 标识平台发送到应用程序。
 
 可以为任何应用程序注册和填充目录架构扩展属性。
 

@@ -11,10 +11,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
 ms.openlocfilehash: ea418576ab8fe06964a61e48f16393e1a0566ce8
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102182241"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 预热触发器
@@ -139,7 +139,7 @@ module.exports = async function (context, warmupContext) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例显示了文件 *function.js* 中的预热触发器，以及将在添加到应用时每个新实例上运行的 [Python 函数](functions-reference-python.md) 。
+下面的示例展示了 function.json 文件中的一个预热触发器和一个 [Python 函数](functions-reference-python.md)，该函数将在向应用添加新实例时在每个新实例上运行。
 
 函数必须命名为 ```warmup```（不区分大小写），并且每个应用只能有一个预热函数。
 
@@ -232,7 +232,7 @@ Java 中不支持将预热触发器用作属性。
 |---------|---------|----------------------|
 | type | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
-| name | 不适用| 必需 - 函数代码中使用的变量名称。|
+| **name** | 不适用| 必需 - 函数代码中使用的变量名称。|
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 

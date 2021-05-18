@@ -4,10 +4,10 @@ description: 了解如何将 Azure 开发测试实验室用于 VM 和 PaaS 测�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 978071aa160098612a5effebfb30d5d58b777df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89299824"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>将 Azure 开发测试实验室用于 VM 和 PaaS 测试环境
@@ -36,7 +36,7 @@ Azure 开发测试实验室可用于实现许多关键方案，但其中一个�
    | 任务 | 学习内容 |
    | --- | --- |
    | [在 Azure 开发测试实验室中创建实验室](devtest-lab-create-lab.md) |了解如何在 Azure 门户中的 Azure 开发测试实验室中创建实验室。 |
-2. 使用现成市场映像和自定义映像在几分钟内创建 VM**** 
+2. 使用现成市场映像和自定义映像在几分钟内创建 VM 
    
     可从 Azure 市场的多种映像中选择现成映像并使它们在实验室中可用。 如果现成的映像不能满足需求，可使用 Azure 市场中的现成映像创建实验室 VM，安装所需的所有软件并在实验室中将 VM 保存为自定义映像来创建自定义映像。
 
@@ -46,7 +46,7 @@ Azure 开发测试实验室可用于实现许多关键方案，但其中一个�
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | [配置 Azure 市场映像](devtest-lab-configure-marketplace-images.md) |了解如何允许 Azure Marketplace 映像，使其仅供在测试人员使用所需的映像。|
+   | [配置 Azure 市场映像](devtest-lab-configure-marketplace-images.md) |了解如何允许 Azure 市场映像，同时仅提供对测试人员可用的映像以供选择。|
    | [创建自定义映像](devtest-lab-create-template.md) |通过预安装所需的软件创建自定义映像，让测试人员能够使用自定义映像快速创建 VM。|
    | [了解映像工厂](./devtest-lab-faq.md#blog-post) |观看介绍如何设置和使用映像工厂的视频。|
 

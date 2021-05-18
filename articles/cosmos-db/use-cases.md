@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 04de6dce6cbab4dc0716ae841707b1d61d6bc375
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.openlocfilehash: 4aed956fc7052f844080b830aa4cc3b2a07235a1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073751"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799388"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB 常见用例
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "93073751"
 
 ## <a name="introduction"></a>介绍
 
-[Azure Cosmos DB](../cosmos-db/introduction.md) 是适用于任何规模的开放 Api 的 Microsoft fast NoSQL 数据库。 使用该服务，客户可在任意数量的地理区域间弹性而独立地缩放吞吐量和存储空间。 Azure Cosmos DB 是一项全球分布式数据库服务，它在当前市场中率先提供了综合[服务级别协议](https://azure.microsoft.com/support/legal/sla/cosmos-db/)，包含吞吐量、延迟、可用性和一致性。
+[Azure Cosmos DB](../cosmos-db/introduction.md) 是 Microsoft 的快速 NoSQL 数据库，具有适合于任何规模的开放式 API。 使用该服务，客户可在任意数量的地理区域间弹性而独立地缩放吞吐量和存储空间。 Azure Cosmos DB 是一项全球分布式数据库服务，它在当前市场中率先提供了综合[服务级别协议](https://azure.microsoft.com/support/legal/sla/cosmos-db/)，包含吞吐量、延迟、可用性和一致性。
 
 Azure Cosmos DB 是一种全球分步的多模型数据库，广泛用于应用程序和用例。 它对于需要低延迟毫秒级响应时间或需要全局快速缩放的任何[无服务器的](https://azure.com/serverless)应用程序都是一个不错的选择。 它以可扩展的方式本机支持多种数据模型（键值、文档、图形和纵栏式）以及许多用于数据访问的 API，包括 [Azure Cosmos DB 的 API for MongoDB](mongodb-introduction.md)、[SQL API](./introduction.md)、[Gremlin API](graph-introduction.md) 和[表 API](table-introduction.md)。 
 
@@ -61,11 +61,11 @@ Azure Cosmos DB 广泛用于 Microsoft 旗下运行 Windows 应用商店和 XBox
 
 以汽车部件供应商的产品目录为例。 除所有部件共有的常见属性外，每个部件可能都具有其自己的属性。 而且，某个特定部件的属性还可能会在发布新型号之后的第二年发生变化。 Azure Cosmos DB 支持灵活的架构和分层数据，因此非常适用于存储产品目录数据。
 
-:::image type="content" source="./media/use-cases/product-catalog.png" alt-text="Azure Cosmos DB IoT 参考体系结构" border="false":::
+:::image type="content" source="./media/use-cases/product-catalog.png" alt-text="Azure Cosmos DB 零售目录参考体系结构" border="false":::
 
 Azure Cosmos DB 通常用于事件寻源，可使用其[更改源](change-feed.md)功能为事件驱动的体系结构提供动力。 更改源使下游微服务能够可靠地以增量方式读取针对 Azure Cosmos DB 所做的插入和更新（例如订单事件）。 利用此功能可以提供一个持久性的事件存储作为状态不断变化的事件的消息中转站，并驱动许多微服务之间的订单处理工作流（可实现为[无服务器 Azure Functions](https://azure.com/serverless)）。
 
-:::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Azure Cosmos DB IoT 参考体系结构" border="false":::
+:::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Azure Cosmos DB 订单管道参考体系结构" border="false":::
 
 此外，Azure Cosmos DB 中存储的数据可与 HDInsight 集成，通过 Apache Spark 作业进行大数据分析。 有关 Azure Cosmos DB 的 Spark 连接器的详细信息，请参阅[使用 Cosmos DB 和 HDInsight 运行 Spark 作业](spark-connector.md)。
 
@@ -80,7 +80,7 @@ Azure Cosmos DB 用于 [Next Games](https://www.nextgames.com/) 推出的 [The W
 * 采用灵活的架构，就更容易实现游戏内聊天消息、玩家公会成员身份、已完成的挑战、高分排行榜以及社交图谱等社交功能。
 * Azure Cosmos DB 作为托管的平台即服务 (PaaS) 只需最少的设置和管理工作即可实现快速迭代并缩短上市时间。
 
-:::image type="content" source="./media/use-cases/gaming.png" alt-text="Azure Cosmos DB IoT 参考体系结构" border="false":::
+:::image type="content" source="./media/use-cases/gaming.png" alt-text="Azure Cosmos DB 游戏参考体系结构" border="false":::
 
 ## <a name="web-and-mobile-applications"></a>Web 和移动应用程序
 Azure Cosmos DB 通常用于 Web 和移动应用程序内部，非常适用于社交互动建模、与第三方服务集成和积累丰富的个性化体验。 可以使用 Cosmos DB SDK 构建使用常用 [Xamarin 框架](mobile-apps-with-xamarin.md)的丰富 iOS 和 Android 应用程序。  
@@ -92,14 +92,14 @@ Azure Cosmos DB 的一个常见用例就是存储和查询 Web、移动和社交
 
 许多社交应用程序在全球范围内运行并表现出不可预测的使用模式。 因此，当应用程序层能根据用量需求缩放时，缩放数据存储的灵活性至关重要。  可通过在 Cosmos DB 帐户之下添加额外的数据分区来进行扩大。  也可在多个区域中创建额外的 Cosmos DB 帐户。 有关 Cosmos DB 服务区域可使用性的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/#services)。
 
-:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="Azure Cosmos DB IoT 参考体系结构" border="false":::
+:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="此图显示了 Azure Cosmos DB Web 应用参考体系结构。" border="false":::
 
 ### <a name="personalization"></a>个性化
 如今，现代应用程序都具有复杂的视图和体验。 它们通常采用动态设计，以迎合对用户首选项或情绪应对和品牌塑造的需求。 因此，应用程序需要能够有效地检索个性化设置，以快速呈现 UI 元素和体验。 
 
 JSON 是一种用于呈现 UI 布局数据的有效格式，它受 Cosmos DB 支持，不仅轻量而且可被 JavaScript 轻松理解。 Cosmos DB 提供可调的一致性级别，可以实现快速读取和低延迟写入。 因此，在 Cosmos DB 中将包括个性化设置的 UI 布局数据存储为 JSON 文档是获取网络数据的一种有效方法。
 
-:::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB IoT 参考体系结构" border="false":::
+:::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB Web 应用参考体系结构" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 

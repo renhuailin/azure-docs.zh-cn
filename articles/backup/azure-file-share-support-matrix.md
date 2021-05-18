@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
 ms.openlocfilehash: 38c066c20399b39d676fb0c25aa158993258b979
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100370982"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 文件共享备份的支持矩阵
@@ -22,7 +22,7 @@ ms.locfileid: "100370982"
 
 ### <a name="ga-regions-for-azure-file-shares-backup"></a>Azure 文件共享备份的 GA 区域
 
-Azure 文件共享备份在除以下项 **之外** 的所有地区提供：德国中部 (主权) 、德国东北部 (主权) 、中国东部、中国东部2、中国北部、中国北部2、US Gov 爱荷华州
+Azure 文件共享备份在除以下地区之外的所有地区提供：德国中部（主权）、德国东北部（主权）、中国东部、中国东部 2、中国北部、中国北部 2、US Gov 爱荷华州
 
 ## <a name="supported-storage-accounts"></a>支持的存储帐户
 
@@ -31,7 +31,7 @@ Azure 文件共享备份在除以下项 **之外** 的所有地区提供：德�
 | 帐户种类            | Azure 备份支持常规用途 v1、常规用途 v2 和文件存储类型存储帐户中存在的 Azure 文件共享 |
 | 性能              | Azure 备份同时支持标准存储帐户和高级存储帐户中的文件共享 |
 | 复制              | 支持具有任何复制类型的存储帐户中的 Azure 文件共享 |
-| 防火墙已启用         | 支持支持 Microsoft Azure 服务访问存储帐户的存储帐户中的 Azure 文件共享|
+| 防火墙已启用         | 支持以下存储帐户中的 Azure 文件共享：这些帐户设有允许 Microsoft Azure 服务访问存储帐户的防火墙规则|
 
 ## <a name="supported-file-shares"></a>支持的文件共享
 
@@ -46,10 +46,10 @@ Azure 文件共享备份在除以下项 **之外** 的所有地区提供：德�
 
 | 设置                                                      | 限制 |
 | ------------------------------------------------------------ | ----- |
-| 每个保管库每天可保护的文件共享的最大数目| 200   |
+| 每个保管库每天可保护的文件共享数上限| 200   |
 | 每个保管库每天可以注册的存储帐户数上限 | 50    |
-| 每个保管库可保护的文件共享的最大数目 | 2000   |
-| 每个保管库可以注册的最大存储帐户数 | 200   |
+| 每个保管库可保护的文件共享数上限 | 2000   |
+| 每个保管库可以注册的存储帐户数上限 | 200   |
 
 ## <a name="backup-limits"></a>备份限制
 

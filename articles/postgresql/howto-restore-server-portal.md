@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 82cec4cc448f0ec30aecf6f8a69f399e0abbdde0
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97706943"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中备份和还原服务器
@@ -71,7 +71,7 @@ Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功�
 
 还原期间创建的新服务器没有原始服务器上存在的防火墙规则或 VNet 服务终结点。 需要为此新服务器单独设置这些规则。
 
-如果源 PostgreSQL 服务器是用客户管理的密钥加密的，请参阅 [文档](concepts-data-encryption-postgresql.md) 以了解其他注意事项。
+如果源 PostgreSQL 服务器使用客户管理的密钥加密，请参阅[文档](concepts-data-encryption-postgresql.md)以了解其他注意事项。
 
 ## <a name="geo-restore"></a>异地还原
 
@@ -121,7 +121,7 @@ Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功�
 
 还原期间创建的新服务器没有原始服务器上存在的防火墙规则或 VNet 服务终结点。 需要为此新服务器单独设置这些规则。
 
-如果源 PostgreSQL 服务器是用客户管理的密钥加密的，请参阅 [文档](concepts-data-encryption-postgresql.md) 以了解其他注意事项。
+如果源 PostgreSQL 服务器使用客户管理的密钥加密，请参阅[文档](concepts-data-encryption-postgresql.md)以了解其他注意事项。
 
 
 ## <a name="next-steps"></a>后续步骤

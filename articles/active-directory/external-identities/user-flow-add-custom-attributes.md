@@ -1,5 +1,5 @@
 ---
-title: 将自定义属性添加到自助服务注册流-Azure AD
+title: 将自定义属性添加到自助注册流 - Azure AD
 description: 了解如何自定义自助注册用户流的属性。
 services: active-directory
 author: msmimart
@@ -12,10 +12,10 @@ ms.author: mimart
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46b498f8b8512d0202f47dd31ba25cc851ca71e6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101644096"
 ---
 # <a name="define-custom-attributes-for-user-flows"></a>定义用户流的自定义属性
@@ -28,14 +28,14 @@ ms.locfileid: "101644096"
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-`<extensions-app-id>`特定于你的租户。 若要查找此标识符，请导航到 Azure Active Directory > 应用注册 > 所有应用程序 "。 搜索以 "aad-extension-应用" 开头的应用并将其选中。 在应用的 "概述" 页上，记下应用程序 (客户端) ID。
+`<extensions-app-id>` 供你的租户专用。 若要查找此标识符，请导航到“Azure Active Directory”>“应用注册”>“所有应用程序”。 搜索以“aad-extensions-app”开头的应用并将其选中。 在应用的“概述”页上，记下应用程序（客户端）ID。
 
 ## <a name="create-a-custom-attribute"></a>创建自定义属性
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
-4. 选择 " **自定义用户属性**"。 此时会列出可用的用户属性。
+4. 选择“自定义用户属性”。 此时会列出可用的用户属性。
 
    ![选择注册用户流的用户属性](media/user-flow-add-custom-attributes/user-attributes.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "101644096"
 
 现在，自定义属性显示在用户属性列表中，并可用于用户流。 自定义属性只在第一次在任何用户流中使用时创建，而不是在添加到用户属性列表时创建。
 
-通过使用新创建的自定义属性的用户流来新建用户后，可以在 [Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)中查询对象。 现在，应会在用户对象上注册旅程收集的属性列表中看到 **ShoeSize** 。 可以从应用程序调用图形 API，以便在将此特性添加到用户对象之后，从此特性获取数据。
+通过使用新创建的自定义属性的用户流来新建用户后，可以在 [Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)中查询对象。 现在，应可在注册期间收集的用户对象属性的列表中看到“ShoeSize”。 在将属性添加到用户对象之后，可从应用程序调用图形 API 以从该属性获取数据。
 
 ## <a name="next-steps"></a>后续步骤
 

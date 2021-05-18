@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
 ms.openlocfilehash: c88f2d25046ee017fccd2cee6e951be72d4dda91
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361938"
 ---
 # <a name="move-files-with-azure-data-factory"></a>使用 Azure 数据工厂移动文件
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-ADF 复制活动在存储存储之间复制二进制文件时，对 "移动" 方案提供内置支持。  启用该方法的方法是在复制活动中将 "deleteFilesAfterCompletion" 设置为 true。 这样一来，复制活动就会在作业完成后从数据源存储中删除文件。 
+对于在存储之间复制二进制文件的“移动”场景，ADF 复制活动提供了内置支持。  启用它的方法是在复制活动中将“deleteFilesAfterCompletion”设置为 true。 这样一来，复制活动就会在作业完成后从数据源存储中删除文件。 
 
 本文介绍了一种解决方案模板，它可作为另一种利用 ADF 灵活控制流以及复制活动和删除活动来实现相同场景的方法。 此模板的常见使用场景之一：不断地将文件放入源存储的登陆文件夹。 通过创建计划触发器，ADF 管道可以定期将这些文件从源存储移到目标存储。  ADF 管道实现“移动文件”的方式是从登陆文件夹中获取文件，将每个文件复制到目标存储中的另一个文件夹，然后从源存储中的登陆文件夹删除相同的文件。
 

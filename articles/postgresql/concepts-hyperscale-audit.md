@@ -1,33 +1,33 @@
 ---
-title: '审核日志记录-Azure Database for PostgreSQL-超大规模 (Citus) '
-description: Azure Database for PostgreSQL-超大规模 (Citus) 中的 pgAudit 审核日志的概念。
+title: 审核日志记录 - Azure Database for PostgreSQL 超大规模 (Citus)
+description: Azure Database for PostgreSQL 超大规模 (Citus) 中的 pgAudit 审核日志记录的概念。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.openlocfilehash: 8a36062a2d29bcec10279d73211526a0dcba619e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702107"
 ---
-# <a name="audit-logging-in-azure-database-for-postgresql---hyperscale-citus"></a>审核日志记录 Azure Database for PostgreSQL-超大规模 (Citus) 
+# <a name="audit-logging-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL 超大规模 (Citus) 中的审核日志记录
 
-通过 PostgreSQL Audit extension： [pgAudit](https://www.pgaudit.org/)提供 Azure Database for PostgreSQL-超大规模 (Citus) 中的数据库活动的审核日志记录。 pgAudit 提供详细的会话和/或对象审核日志记录。
+Azure Database for PostgreSQL 超大规模 (Citus) 中数据库活动的审核日志记录可以通过 PostgreSQL 审核扩展 [pgAudit](https://www.pgaudit.org/) 来获取。 pgAudit 提供详细的会话和/或对象审核日志记录。
 
 > [!IMPORTANT]
-> pgAudit 在 Azure Database for PostgreSQL-超大规模 (Citus 上处于预览阶段) 
+> pgAudit 在 Azure Database for PostgreSQL 超大规模 (Citus) 上为预览版
 
 如果需要对计算和存储缩放之类的操作进行 Azure 资源级别的日志记录，请参阅 [Azure 活动日志](../azure-monitor/essentials/platform-logs-overview.md)。
 
 ## <a name="usage-considerations"></a>使用注意事项
-默认情况下，使用 Postgres 的标准日志记录设备将 pgAudit 日志语句与常规日志语句一起发出。 在 Azure Database for PostgreSQL-超大规模 (Citus) 中，你可以配置要发送到 Azure Monitor 日志存储的所有日志，以便在 Log Analytics 中进行后续分析。 如果启用 Azure Monitor 资源日志记录，系统会将日志（以 JSON 格式）自动发送到 Azure 存储、事件中心和/或 Azure Monitor 日志，具体取决于你的选择。
+默认情况下，使用 Postgres 的标准日志记录设备将 pgAudit 日志语句与常规日志语句一起发出。 在 Azure Database for PostgreSQL 超大规模 (Citus) 中，可将所有日志配置为发送到 Azure Monitor 日志存储，以供将来在 Log Analytics 中进行分析。 如果启用 Azure Monitor 资源日志记录，系统会将日志（以 JSON 格式）自动发送到 Azure 存储、事件中心和/或 Azure Monitor 日志，具体取决于你的选择。
 
 ## <a name="enabling-pgaudit"></a>启用 pgAudit
 
-PgAudit 扩展在所有超大规模 (Citus) 服务器组节点上预安装和启用。 启用它不需要执行任何操作。
+PgAudit 扩展在所有超大规模 (Citus) 服务器组节点上预安装和启用。 无需执行任何操作即可启用。
 
 ## <a name="pgaudit-settings"></a>pgAudit 设置
 
@@ -36,7 +36,7 @@ PgAudit 扩展在所有超大规模 (Citus) 服务器组节点上预安装和启
 > [!NOTE]
 > pgAudit 设置在全局范围指定，不能在数据库或角色级别指定。
 >
-> 此外，还会在服务器组中为每个节点指定 pgAudit 设置。 若要在所有节点上进行更改，必须分别将它应用到每个节点。
+> 此外，pgAudit 设置是按服务器组中的每个节点指定的。 若要在所有节点上进行更改，必须将其单独应用到每个节点。
 
 必须将 pgAudit 参数配置为开始记录。 [pgAudit 文档](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings)提供每个参数的定义。 请先测试参数，确认获取的是预期的行为。
 
@@ -45,7 +45,7 @@ PgAudit 扩展在所有超大规模 (Citus) 服务器组节点上预安装和启
 > `pgaudit.log_level` 只有在 `pgaudit.log_client` 为 on 的情况下启用。
 
 > [!NOTE]
-> 在 Azure Database for PostgreSQL-超大规模 (Citus) 中， `pgaudit.log` 无法使用 `-` (减) 签名快捷方式进行设置，如 pgAudit 文档中所述。 所有必需的语句类（READ、WRITE 等）均应单独指定。
+> 在 Azure Database for PostgreSQL 超大规模 (Citus) 中，根据 pgAudit 文档中的说明，不能使用 `-`（减号）快捷方式来设置 `pgaudit.log`。 所有必需的语句类（READ、WRITE 等）均应单独指定。
 
 ## <a name="audit-log-format"></a>审核日志格式
 每个审核条目通过靠近日志行开头的 `AUDIT:` 进行指示。 条目其余部分的格式详见 [pgAudit 文档](https://github.com/pgaudit/pgaudit/blob/master/README.md#format)。
@@ -70,4 +70,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解如何在 Azure Database for PostgreSQL-超大规模 (Citus) 以及如何访问日志中设置日志记录](howto-hyperscale-logging.md)
+- [了解如何在 Azure Database for PostgreSQL 超大规模 (Citus) 中设置日志记录以及如何访问日志](howto-hyperscale-logging.md)

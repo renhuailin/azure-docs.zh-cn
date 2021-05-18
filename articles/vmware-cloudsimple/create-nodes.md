@@ -1,6 +1,6 @@
 ---
-title: 通过 CloudSimple 为 VMware 解决方案预配节点-Azure
-description: 了解如何在 Azure 门户中通过 CloudSimple 部署将节点添加到 VMWare。 你可以为私有云环境设置即用即付容量。
+title: 为 VMware Solution by CloudSimple 预配节点 - Azure
+description: 了解如何在 Azure 门户中通过 CloudSimple 部署向 VMWare 添加节点。 可以为私有云环境设置即用即付容量。
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -9,41 +9,41 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88140728"
 ---
-# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>通过 CloudSimple 为 Azure VMware 解决方案预配节点
+# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>为 Azure VMware Solution by CloudSimple 预配节点
 
-在 Azure 门户中设置节点。 然后，你可以为 CloudSimple 私有云环境设置即用即付容量。
+在 Azure 门户中预配节点。 然后，可以为 CloudSimple 私有云环境设置即用即付容量。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
-## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>将节点添加到 CloudSimple 私有云
+## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>向 CloudSimple 私有云添加节点
 
-1. 选择“所有服务”。
-2. 搜索 **CloudSimple 节点**。
+1. 选择“所有服务”  。
+2. 搜索“CloudSimple 节点”。
 
    ![搜索 CloudSimple 节点](media/create-cloudsimple-node-search.png)
 
-3. 选择 **CloudSimple 节点**。
-4. 单击 " **添加** " 创建节点。
+3. 选择“CloudSimple 节点”。
+4. 单击“添加”以创建节点。
 
     ![添加 CloudSimple 节点](media/create-cloudsimple-node-add.png)
 
 5. 选择要在其中预配 CloudSimple 节点的订阅。
-6. 选择节点的资源组。 若要添加新的资源组，请单击 " **新建**"。
-7. 输入前缀来标识节点。
+6. 为节点选择资源组。 若要添加新的资源组，请单击“新建”。
+7. 输入前缀以标识节点。
 8. 选择节点资源的位置。
 9. 选择用于托管节点资源的专用位置。
-10. 选择 [节点类型](cloudsimple-node.md)。
+10. 选择[节点类型](cloudsimple-node.md)。
 11. 选择要预配的节点数。
-12. 选择“查看 + 创建”  。
-13. 查看设置。 若要修改任何设置，请单击 " **上一步**"。
+12. 选择“查看 + 创建”。
+13. 查看设置。 若要修改任何设置，请单击“上一步”。
 14. 选择“创建”。
 
 ## <a name="next-steps"></a>后续步骤

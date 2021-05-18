@@ -12,13 +12,13 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.reviewer: arvinh
 ms.openlocfilehash: 9eba671f6c824c8c88388f2b9d61512dfb1d122f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99256637"
 ---
-# <a name="known-issues-application-provisioning"></a>已知问题：应用预配
+# <a name="known-issues-application-provisioning"></a>已知问题：应用程序预配
 处理应用预配时应注意的已知问题。 可以在 UserVoice 上提供有关应用预配服务的反馈，请参阅 [Azure AD 应用预配 UserVoice](https://aka.ms/appprovisioningfeaturerequest)。 我们密切关注 UserVoice，以便改进服务。 
 
 > [!NOTE]

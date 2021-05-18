@@ -6,15 +6,15 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 61b45d6f6414b1e8e1f48f6d46957b21b9b8c58b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99052492"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>从 Azure VM 启用更改跟踪和清单
 
-本文介绍如何使用 Azure VM 在其他计算机上启用 [更改跟踪和清单](overview.md) 。 若要大规模启用 Azure VM，必须使用更改跟踪和库存启用现有 VM。
+本文介绍如何使用 Azure VM 在其他计算机上启用[更改跟踪和清单](overview.md)功能。 若要大规模启用 Azure VM，必须使用更改跟踪和库存启用现有 VM。
 
 > [!NOTE]
 > 在启用更改跟踪和库存时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。 有关支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](../how-to/region-mappings.md)。
@@ -43,6 +43,6 @@ ms.locfileid: "99052492"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用此功能的详细信息，请参阅 [管理更改跟踪](manage-change-tracking.md) 和 [管理清单](manage-inventory-vms.md)。
+* 有关使用此功能的详细信息，请参阅[管理更改跟踪](manage-change-tracking.md)和[管理清单](manage-inventory-vms.md)。
 
 * 若要排查该功能的常见问题，请参阅[排查更改跟踪和清单问题](../troubleshoot/change-tracking.md)。

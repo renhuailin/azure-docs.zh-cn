@@ -10,19 +10,19 @@ ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
 ms.openlocfilehash: a6ce5446bd6470ef7a829925646d486801b28ebc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101670022"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>使用 Azure 存储在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库
 
-本文演示如何使用 Azure 存储作为媒体来备份和还原在 Azure VM 上运行的 Oracle 数据库。 使用 SMB 协议将使用 Oracle RMAN 的数据库备份到装载到 VM 的 Azure 文件存储。 对备份介质使用 Azure 存储非常经济高效。 但对于非常大的数据库，Azure 备份提供了更好的解决方案。
+本文演示如何使用 Azure 存储作为介质来备份和还原在 Azure VM 上运行的 Oracle 数据库。 你将使用 Oracle RMAN 将数据库备份到 Azure 文件存储，该文件存储使用 SMB 协议装载到 VM。 使用 Azure 存储作为备份介质非常经济高效。 但对于非常大的数据库，Azure 备份提供了更好的解决方案。
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
-- 若要执行备份和恢复过程，必须首先创建一个 Oracle Database 19c 的已安装实例的 Linux VM。 当前用于创建 VM 的 Marketplace 映像是  **oracle： oracle-数据库-19-3： oracle-0904：最新版本**。 按照 [oracle 创建数据库快速入门](./oracle-database-quick-create.md) 中的步骤创建 oracle 数据库来完成本教程。
+- 要执行备份和恢复过程，首先必须创建已安装 Oracle Database 19c 实例的 Linux VM。 当前用于创建 VM 的市场映像为 Oracle:oracle-database-19-3:oracle-database-19-0904:latest。 请按照 [Oracle 创建数据库快速入门](./oracle-database-quick-create.md)中的步骤操作，创建 Oracle 数据库来完成本教程。
 
 ## <a name="prepare-the-database-environment"></a>准备数据库环境
 
@@ -32,21 +32,21 @@ ms.locfileid: "101670022"
    ssh azureuser@<publicIpAddress>
    ```
    
-2. 切换到 ***根*** 用户：
+2. 切换到根用户：
  
    ```bash
    sudo su -
    ```
     
-3. 将 oracle 用户添加到 ***/etc/sudoers*** 文件：
+3. 将 oracle 用户添加到 /etc/sudoers 文件中：
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
    ```
 
-4. 此步骤假定你有一个在名为 *vmoracle19c* 的 VM 上运行的 Oracle 实例 (测试) 。
+4. 为了更好地执行此步骤，请确保你已有在名为“vmoracle19c”的 VM 上运行的 Oracle 实例（“test”）。
 
-   将用户切换到 *oracle* 用户：
+   切换到 oracle 用户：
 
    ```bash
    sudo su - oracle
@@ -64,7 +64,7 @@ ms.locfileid: "101670022"
     echo "export ORACLE_SID=test" >> ~oracle/.bashrc
     ```
     
-6. 如果 Oracle 侦听器尚未运行，则启动它：
+6. 启动 Oracle 侦听器（如果它还没有运行的话）：
     
    ```bash
    $ lsnrctl start
@@ -104,7 +104,7 @@ ms.locfileid: "101670022"
     The command completed successfully
     ```
 
-7.   (FRA) 位置创建快速恢复区域：
+7.  创建快速恢复区域 (FRA) 位置：
 
     ```bash
     mkdir /u02/fast_recovery_area
@@ -116,21 +116,21 @@ ms.locfileid: "101670022"
     sqlplus / as sysdba
     ```
 
-9.  如果数据库尚未运行，则启动它：
+9.  启动数据库（如果它还没有运行的话）：
 
     ```bash
     SQL> startup
     ```
 
-10. 为快速恢复区域设置数据库环境变量：
+10. 设置快速恢复区域的数据库环境变量：
 
     ```bash
     SQL>  system set db_recovery_file_dest_size=4096M scope=both;
     SQL> alter system set db_recovery_file_dest='/u02/fast_recovery_area' scope=both;
     ```
     
-11. 请确保数据库处于存档日志模式，以启用联机备份。
-    首先检查日志存档状态：
+11. 确保数据库处于存档日志模式，以启用联机备份。
+    首先，检查日志存档状态：
 
     ```bash
     SQL> SELECT log_mode FROM v$database;
@@ -140,7 +140,7 @@ ms.locfileid: "101670022"
     NOARCHIVELOG
     ```
 
-    如果在 NOARCHIVELOG 模式下，请在 sqlplus 中运行以下命令：
+    如果处于 NOARCHIVELOG 模式，请在 sqlplus 中运行以下命令：
 
     ```bash
     SQL> SHUTDOWN IMMEDIATE;
@@ -162,20 +162,20 @@ ms.locfileid: "101670022"
     SQL> quit
     ```
 
-## <a name="back-up-to-azure-files"></a>备份到 Azure 文件
+## <a name="back-up-to-azure-files"></a>备份到 Azure 文件存储
 
-若要备份到 Azure 文件，请完成以下步骤：
+若要备份到 Azure 文件存储，请完成以下步骤：
 
 1. 设置 Azure 文件存储。
 1. 将 Azure 存储文件共享装载到 VM。
 1. 备份数据库。
-1. 还原和恢复数据库。
+1. 还原并恢复数据库。
 
 ### <a name="set-up-azure-file-storage"></a>设置 Azure 文件存储
 
-在此步骤中，你将使用 Oracle 恢复管理器将 Oracle 数据库备份 (RMAN) 备份到 Azure 文件存储。 Azure 文件共享是位于云中的完全托管文件共享。 它们可以使用服务器消息块 (SMB) 协议或网络文件系统 (NFS) 协议进行访问。 此步骤介绍如何创建使用 SMB 协议装载到 VM 的文件共享。 有关如何使用 NFS 进行装载的信息，请参阅 [使用 nfs 3.0 协议装载 Blob 存储](../../../storage/blobs/network-file-system-protocol-support-how-to.md)。
+在此步骤中，你将使用 Oracle 恢复管理器 (RMAN) 将 Oracle 数据库备份到 Azure 文件存储。 Azure 文件共享是位于云中的完全托管文件共享。 可以使用服务器消息块 (SMB) 协议或网络文件系统 (NFS) 协议来访问它们。 此步骤介绍如何创建使用 SMB 协议装载到 VM 的文件共享。 有关如何使用 NFS 进行装载的信息，请参阅[使用 NFS 3.0 协议装载 Blob 存储](../../../storage/blobs/network-file-system-protocol-support-how-to.md)。
 
-装载 Azure 文件时，我们将使用 `cache=none` 禁用文件共享数据的缓存。 若要确保在共享中创建的文件归 oracle 用户所有，也可以设置 `uid=oracle` 和 `gid=oinstall` 选项。 
+装载 Azure 文件存储时，使用 `cache=none` 来禁用文件共享数据的缓存。 若要确保在共享中创建的文件归 oracle 用户所有，也可以设置 `uid=oracle` 和 `gid=oinstall` 选项。 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -183,39 +183,39 @@ ms.locfileid: "101670022"
 
 1. 在 Azure 门户中配置文件存储
 
-    在 Azure 门户中，选择 "***+ 创建资源**"，搜索并选择 "*_存储帐户_*"*
+    在 Azure 门户中，选择“+ 创建资源”，然后搜索并选择“存储帐户”*
     
-    ![屏幕截图，显示创建资源的位置，并选择存储帐户。](./media/oracle-backup-recovery/storage-1.png)
+    ![显示创建资源和选择存储帐户的位置的屏幕截图。](./media/oracle-backup-recovery/storage-1.png)
     
-2. 在 "创建存储帐户" 页中，选择现有的资源组 ***rg-oracle** _，为你的存储帐户 _*_oracbkup1_*_ 命名，并为帐户类型选择 _*_存储 V2 (generalpurpose V2)_*_ 。 将复制更改为 _*_本地冗余存储 (LRS)_*_ 并将性能设置为 _ *_标准_* *。 确保将 "位置" 设置为与资源组中的所有其他资源相同的区域。 
+2. 在“创建存储帐户”页中，选择现有的资源组 rg-oracle，将存储帐户命名为 oracbkup1，然后选择“存储 V2 (generalpurpose v2)”作为“帐户类型” 。 将“复制”更改为“本地冗余存储(LRS)”，并将“性能”设置为“标准” 。 请确保将“位置”设置为与资源组中其他所有资源相同的区域。 
     
-    ![屏幕截图显示了在何处选择现有的资源组。](./media/oracle-backup-recovery/file-storage-1.png)
+    ![显示在何处选择现有资源组的屏幕截图。](./media/oracle-backup-recovery/file-storage-1.png)
    
    
-3. 单击 "**高级**" 选项卡，然后在 "Azure 文件" 下，将 " _*_大型文件共享_*_ " 设置为 "_已启用_"。 依次单击“查看 + 创建”、“创建”。
+3. 单击“高级”选项卡，然后在 Azure 文件存储下，将“大文件共享”设置为“已启用” 。 依次单击“查看 + 创建”、“创建”。
     
-    ![显示将大文件共享设置为启用的位置的屏幕截图。](./media/oracle-backup-recovery/file-storage-2.png)
+    ![显示在何处将大文件共享设置为“已启用”的屏幕截图。](./media/oracle-backup-recovery/file-storage-2.png)
     
     
-4. 创建存储帐户后，请前往资源并选择 "***文件共享***"
+4. 创建存储帐户后，请前往资源并选择“文件共享”
     
-    ![显示在何处选择文件共享的屏幕截图。](./media/oracle-backup-recovery/file-storage-3.png)
+    ![显示在何处选择“文件共享”的屏幕截图。](./media/oracle-backup-recovery/file-storage-3.png)
     
-5. 单击 "打开 ***+ 文件共享**"，然后在 " _*_新建文件共享_*_ " 边栏选项卡中，为文件共享 _*_orabkup1_*_。 将 _*_配额_*_ 设置为 _*_10240_*_ GiB，并检查优化为层的 _*_事务_*_ 。 配额反映文件共享可以增长到的上限。 由于我们使用的是标准存储，因此 PAYG 和未预配资源，因此将其设置为 10 TiB 不会产生超出你使用范围的成本。 如果备份策略需要更多的存储空间，则必须将配额设置为适当的级别以保存所有备份。   完成 "新建文件共享" 边栏选项卡后，单击 "_创建_"。
+5. 单击“+ 文件共享”，然后在“新建文件共享”边栏选项卡中，将文件共享命名为“orabkup1” 。 将“配额”设置为 10240 GiB，并勾选“经优化的事务”作为层  。 配额反映文件共享可以增长到的上限。 由于我们使用的是标准存储，未预配 PAYG 和资源，因此将其设置为 10 TiB 不会产生超出你使用范围的成本。 如果备份策略需要更多的存储空间，则必须将配额设置为适当的级别以保存所有备份。   填写完“新建文件共享”边栏选项卡后，单击“创建”。
     
     ![显示在何处添加新文件共享的屏幕截图。](./media/oracle-backup-recovery/file-storage-4.png)
     
     
-6. 创建后，单击 "文件共享设置" 页上的 " ***orabkup1*** "。 
-    单击 "**连接**" 选项卡以打开 "连接" 边栏选项卡，然后单击 "_ *_Linux_**" 选项卡。复制提供的命令，以便使用 SMB 协议装载文件共享。 
+6. 创建后，在“文件共享设置”页上单击“orabkup1”。 
+    单击“连接”选项卡打开“连接”边栏选项卡，然后单击“Linux”选项卡。使用 SMB 协议复制提供用于装载文件共享的命令。 
     
-    ![存储帐户添加页](./media/oracle-backup-recovery/file-storage-5.png)
+    ![存储帐户添加页面](./media/oracle-backup-recovery/file-storage-5.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要设置存储帐户和文件共享，请在 Azure CLI 中运行以下命令。
 
-1. 在与 VM 相同的资源组和位置中创建存储帐户：
+1. 在 VM 所在的资源组和位置中创建存储帐户：
    ```azurecli
    az storage account create -n orabackup1 -g rg-oracle -l eastus --sku Standard_LRS --enable-large-file-share
    ```
@@ -226,7 +226,7 @@ ms.locfileid: "101670022"
    az storage share create --account-name orabackup1 --name orabackup --quota 10240
    ```
 
-3. 在将文件共享装载到 VM 时，检索存储帐户主密钥 (key1) ：
+3. 在将文件共享装载到 VM 时，检索存储帐户主密钥 (key1)：
 
    ```azurecli
    az storage account keys list --resource-group rg-oracle --account-name orabackup1
@@ -236,7 +236,7 @@ ms.locfileid: "101670022"
 
 ### <a name="mount-the-azure-storage-file-share-to-your-vm"></a>将 Azure 存储文件共享装载到 VM
 
-1. 创建装入点：
+1. 创建装载点：
 
    ```bash
    sudo mkdir /mnt/orabackup
@@ -250,7 +250,7 @@ ms.locfileid: "101670022"
    fi
    ```
 
-   `<Your Storage Account Key1>`在运行以下命令之前，替换之前检索到的存储帐户密钥：
+   在运行以下命令之前，用 `<Your Storage Account Key1>` 替换之前检索到的存储帐户密钥：
    ```bash
    if [ ! -f "/etc/smbcredentials/orabackup1.cred" ]; then
      sudo bash -c 'echo "username=orabackup1" >> /etc/smbcredentials/orabackup1.cred'
@@ -264,7 +264,7 @@ ms.locfileid: "101670022"
    sudo chmod 600 /etc/smbcredentials/orabackup1.cred
    ```
 
-4. 将装载添加到/etc/fstab：
+4. 将装载添加到 /etc/fstab：
 
    ```bash
    sudo bash -c 'echo "//orabackup1.file.core.windows.net/orabackup /mnt/orabackup cifs nofail,vers=3.0,credentials=/etc/smbcredentials/orabackup1.cred,dir_mode=0777,file_mode=0777,serverino,cache=none,uid=oracle,gid=oinstall" >> /etc/fstab'
@@ -282,9 +282,9 @@ ms.locfileid: "101670022"
    mount: wrong fs type, bad option, bad superblock on //orabackup1.file.core.windows.net/orabackup 
    ```
 
-   然后，可能不会在 Linux 主机上安装 CIFS 包。 
+   则可能 Linux 主机上未安装 CIFS 包。 
    
-   若要检查是否安装了 CIS，请运行以下命令：
+   若要检查是否已安装 CIS，请运行以下命令：
 
    ```bash
    sudo rpm -qa|grep cifs-utils
@@ -298,7 +298,7 @@ ms.locfileid: "101670022"
 
    现在，请重新运行上述装载命令以装载 Azure 文件存储。
 
-6. 请检查文件共享是否已正确装入以下命令：
+6. 使用以下命令检查文件共享是否已正确装载：
 
    ```bash
    df -h
@@ -327,7 +327,7 @@ ms.locfileid: "101670022"
 
 在本部分中，我们将使用 Oracle 恢复管理器 (RMAN) 对数据库和存档日志进行完整备份，并将备份作为备份集写入先前装载的 Azure 文件共享。 
 
-1. 将 RMAN 配置为备份到 Azure 文件装入点：
+1. 将 RMAN 配置为备份到 Azure 文件存储装入点：
 
     ```bash
     $ rman target /
@@ -336,7 +336,7 @@ ms.locfileid: "101670022"
     RMAN> configure channel 2 device type disk format '/mnt/orabkup/%d/Full_%d_%U_%T_%s'; 
     ```
 
-2. 由于 Azure 标准文件共享的最大文件大小为 1 TiB，因此，我们会将 RMAN 备份部分的大小限制为 1 TiB。  (请注意，高级文件共享的最大文件大小限制为 4 TiB。 有关详细信息，请参阅 [Azure 文件可伸缩性和性能目标](../../../storage/files/storage-files-scale-targets.md)。 ) 
+2. 由于 Azure 标准文件共享的最大文件大小为 1 TiB，我们将 RMAN 备份部分的大小限制为 1 TiB。 （请注意，高级文件共享的最大文件大小限制为 4 TiB。 有关详细信息，请参阅 [Azure 文件存储可伸缩性和性能目标](../../../storage/files/storage-files-scale-targets.md)。）
 
     ```bash
     RMAN> configure channel device type disk maxpiecesize 1000G;
@@ -348,17 +348,17 @@ ms.locfileid: "101670022"
     RMAN> show all;
     ```
 
-4. 现在运行备份。 以下命令将采用压缩格式的 backupset 进行完整数据库备份，包括存档日志文件：   
+4. 现在，运行备份。 下面的命令将创建完整数据库备份（包括存档日志文件）作为压缩格式的备份集：   
 
     ```bash
     RMAN> backup as compressed backupset database plus archivelog;
     ```
 
-你现在已使用 Oracle RMAN 备份了数据库，并在 Azure 文件存储中进行备份。 此方法的优点是，可以利用 RMAN 的功能，同时将备份存储在可从其他 Vm 访问的 Azure 文件存储中，这在需要克隆数据库时很有用。  
+你现在已使用 Oracle RMAN 备份了数据库，并且备份位于 Azure 文件存储中。 此方法的优点是，可以利用 RMAN 的功能，同时将备份存储在可从其他 VM 访问的 Azure 文件存储中，这在需要克隆数据库时很有用。  
     
-使用 RMAN 和用于数据库备份的 Azure 文件存储具有很多优势时，备份和还原时间会与数据库的大小相关联，因此对于非常大的数据库，这些操作可能需要相当长的时间。  使用 Azure 备份应用程序一致性 VM 备份的一种替代备份机制，使用快照技术来执行备份，这种备份的优点是非常快，而不考虑数据库大小。 与恢复服务保管库集成，可在 Azure 云存储中安全存储 Oracle Database 备份，可从其他 Vm 和 Azure 区域访问。 
+尽管使用 RMAN 和 Azure 文件存储进行数据库备份具有很多优势，但备份和还原时间与数据库的大小相关，因此对于非常大的数据库，这些操作可能需要相当长的时间。  另一种备份机制是使用 Azure 备份应用程序一致性 VM 备份，它使用快照技术来执行备份，其优点是无论数据库大小如何，都可以进行非常快速的备份。 与恢复服务保管库集成，可以将 Oracle Database 备份安全地存储在可从其他 VM 和 Azure 区域访问的 Azure 云存储中。 
 
-### <a name="restore-and-recover-the-database"></a>还原和恢复数据库
+### <a name="restore-and-recover-the-database"></a>还原并恢复数据库
 
 1.  关闭 Oracle 实例：
 
@@ -375,7 +375,7 @@ ms.locfileid: "101670022"
     rm -f *.dbf
     ```
 
-3. 以下命令使用 RMAN 还原缺少的数据文件并恢复数据库：
+3. 下面的命令使用 RMAN 来还原缺失的数据文件并恢复数据库：
 
     ```bash
     rman target /
@@ -392,7 +392,7 @@ ms.locfileid: "101670022"
     ```
 
 
-现在已完成在 Azure Linux VM 上 Oracle Database 19c 数据库的备份和恢复。
+现已完成在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库。
 
 ## <a name="delete-the-vm"></a>删除 VM
 

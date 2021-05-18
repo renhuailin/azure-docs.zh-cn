@@ -10,10 +10,10 @@ ms.date: 02/17/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: c1a2a54bf2d4c5de3e6cfca66256f60592fc1f3e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101737505"
 ---
 # <a name="about-virtual-hub-routing"></a>关于虚拟中心路由
@@ -28,7 +28,7 @@ ms.locfileid: "101737505"
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>中心路由表
 
-虚拟中心路由表可以包含一个或多个路由。 路由包括其名称、标签、目标类型、目标前缀列表和要路由的数据包的下一跃点信息。 **连接** 通常会有一个关联或传播到路由表的路由配置。
+虚拟中心路由表可以包含一个或多个路由。 路由包括其名称、标签、目标类型、目标前缀列表和要路由的数据包的下一跃点信息。 “连接”通常具有一个与路由表关联或传播到路由表的路由配置。
 
 ### <a name="connections"></a><a name="connection"></a>连接
 
@@ -59,13 +59,13 @@ ms.locfileid: "101737505"
 
 ### <a name="labels"></a><a name="labels"></a>标签
 
-标签提供一种对路由表进行逻辑分组的机制。 该机制在将路由从连接传播到多个路由表的过程中尤其有用。 例如， **默认路由表** 具有一个名为 "Default" 的内置标签。 当用户将连接路由传播到“默认”标签时，它会自动应用于虚拟 WAN 中每个中心的所有默认路由表。
+标签提供一种对路由表进行逻辑分组的机制。 该机制在将路由从连接传播到多个路由表的过程中尤其有用。 例如，默认路由表具有一个名为“默认”的内置标签。 当用户将连接路由传播到“默认”标签时，它会自动应用于虚拟 WAN 中每个中心的所有默认路由表。
 
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>在虚拟网络连接中配置静态路由
 
 配置静态路由提供了一种机制来引导流量通过下一跃点 IP，这可以是与虚拟中心连接的分支 VNet 中预配的网络虚拟设备 (NVA) 的 IP。 静态路由由路由名称、目标前缀列表和下一跃点 IP 组成。
 
-## <a name="route-tables-for-pre-existing-routes"></a><a name="route"></a>为预先存在的路由路由表
+## <a name="route-tables-for-pre-existing-routes"></a><a name="route"></a>预先存在的路由的路由表
 
 路由表现在具有关联和传播功能。 预先存在的路由表是不具有这些功能的路由表。 如果中心路由中有预先存在的路由，并且你希望使用新功能，请考虑以下事项：
 
@@ -77,13 +77,13 @@ ms.locfileid: "101737505"
 
    如果你在 Azure 门户中的中心的“路由”部分具有预先存在的路由，则需要首先删除它们，再将虚拟 WAN 从基本版升级到标准版。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。
 
-## <a name="hub-reset"></a><a name="reset"></a>集线器重置
+## <a name="hub-reset"></a><a name="reset"></a>中心重置
 
-虚拟中心 **重置** 仅在 Azure 门户中可用。 重置使你可以将任何失败的资源（例如路由表、中心路由器或虚拟中心资源本身）恢复到其合法预配状态。 请考虑在联系 Microsoft 寻求支持之前重置中心。 此操作不会重置虚拟中心内的任何网关。
+虚拟中心“重置”仅可在 Azure 门户中使用。 通过重置功能，可将任何失败的资源（例如路由表、中心路由器或虚拟中心资源本身）恢复为其正确预配状态。 在联系 Microsoft 寻求支持之前，请考虑重置中心。 此操作不会重置虚拟中心内的任何网关。
 
 ## <a name="additional-considerations"></a><a name="considerations"></a>其他注意事项
 
-配置虚拟 WAN 路由时，请注意以下事项：
+配置虚拟 WAN 路由时，请考虑以下事项：
 
 * 所有分支连接（点到站点、站点到站点和 ExpressRoute）都需要与默认路由表关联。 这样，所有分支都将具有相同的前缀。
 * 所有分支连接都需要将它们的路由传播到同一组路由表。 例如，如果你决定分支应传播到默认路由表，则此配置应在所有分支间保持一致。 因此，与默认路由表关联的所有连接都可以访问所有分支。

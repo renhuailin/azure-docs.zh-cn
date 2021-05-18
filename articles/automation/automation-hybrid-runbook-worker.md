@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: c95ccb5ea1a23e8173d58bd3a18490e9b8e630e4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2bb178302d399805eb84b233060d5717e2dba8b3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581256"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830549"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合 Runbook 辅助角色概述
 
@@ -54,7 +55,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 ## <a name="network-planning"></a><a name="network-planning"></a>网络规划
 
-有关混合 Runbook 辅助角色所需的端口、Url 和其他网络详细信息，请参阅 [Azure 自动化网络配置](automation-network-configuration.md#network-planning-for-hybrid-runbook-worker) 。
+查看 [Azure 自动化网络配置](automation-network-configuration.md#network-planning-for-hybrid-runbook-worker)，以了解有关混合 Runbook 辅助角色所需的端口、URL 和其他网络的详细信息。
 
 ### <a name="proxy-server-use"></a>使用代理服务器
 
@@ -76,16 +77,16 @@ Azure 自动化服务的服务标记仅提供用于以下场景的 IP：
 >[!NOTE]
 >服务标记 GuestAndHybridManagement 当前不支持在 Azure 沙盒中执行 runbook 作业，仅允许直接在混合 Runbook 辅助角色中执行。
 
-## <a name="support-for-impact-level-5-il5"></a>对影响级别5的支持 (IL5) 
+## <a name="support-for-impact-level-5-il5"></a>对影响级别 5 (IL5) 的支持
 
-Azure Automation 混合 Runbook 辅助角色可在 Azure 政府版中使用，以支持以下两种配置中的任何一种的影响级别5工作负荷：
+可在 Azure 政府中使用 Azure 自动化混合 Runbook 辅助角色，以下面两种配置中的任何一种来支持影响级别为 5 工作负载：
 
-* [独立虚拟机](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines)。 在部署时，它们会将整个物理主机用于该计算机，并提供所需的隔离级别，以支持 IL5 工作负荷。
+* [独立虚拟机](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines)。 在部署时，对该计算机使用整个物理主机，从而提供支持 IL5 工作负载所需的必要隔离级别。
 
-* [Azure 专用主机](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host)，提供可承载一个或多个虚拟机的物理服务器，专用于一个 Azure 订阅。
+* [Azure 专用主机](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host)，可提供物理服务器，物理服务器可托管专用于一个 Azure 订阅的一个或多个虚拟机。
 
 >[!NOTE]
->通过混合 Runbook 辅助角色进行的计算隔离适用于 Azure 商业版和美国政府云。
+>通过混合 Runbook 辅助角色进行的计算隔离适用于 Azure 商业云和美国政府云。
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合 Runbook 辅助角色的更新管理地址
 

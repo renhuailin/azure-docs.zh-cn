@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97932429"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
@@ -39,7 +39,7 @@ ms.locfileid: "97932429"
 
   ![显示访问评审流的关系图。](./media/deploy-access-review/1-planning-review.png)
 
-访问评审是一项 [Azure AD Identity Governance](identity-governance-overview.md) 功能。 其他功能包括： [权利管理](entitlement-management-overview.md)、 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 和 [使用条款](../conditional-access/terms-of-use.md)。 将它们配合使用，可帮助组织解决以下四个问题：
+访问评审是一项 [Azure AD Identity Governance](identity-governance-overview.md) 功能。 其他功能包括[权利管理](entitlement-management-overview.md)、[Privileged Identity Management](../privileged-identity-management/pim-configure.md) 和[使用条款](../conditional-access/terms-of-use.md)。 将它们配合使用，可帮助组织解决以下四个问题：
 
 * 哪些用户应该有权访问哪些资源？
 
@@ -91,7 +91,7 @@ ms.locfileid: "97932429"
 
 对于访问评审，可能需包括组织中以下团队的代表：
 
-* **It 管理** 管理 it 基础结构，管理云投资和软件即服务 (SaaS) 应用。 该团队将：
+* IT 管理负责管理 IT 基础结构、云投资应用和软件即服务 (SaaS) 应用。 该团队将：
 
    * 评审对基础结构和应用（包括 Microsoft 365 和 Azure AD）的特权访问权限。
 
@@ -101,7 +101,7 @@ ms.locfileid: "97932429"
 
 * **开发团队**：为组织构建和维护应用程序。 该团队将：
 
-   * 控制谁可以访问和管理 SaaS、PaaS 和 IaaS 资源中构成开发解决方案的组件。
+   * 控制谁可访问和管理构成已开发的解决方案的 SaaS、PaaS 和 IaaS 资源中的组件。
 
    * 管理可访问应用程序和工具（用于内部应用程序开发）的组。
 
@@ -166,7 +166,7 @@ ms.locfileid: "97932429"
 
 * 监视审核日志以确保对所有事件进行适当的审核。
 
-有关详细信息，请参阅 [试验的最佳实践](../fundamentals/active-directory-deployment-plans.md)。
+有关详细信息，请参阅[试点的最佳做法](../fundamentals/active-directory-deployment-plans.md)。
 
 ## <a name="introduction-to-access-reviews"></a>访问评审简介
 
@@ -178,7 +178,7 @@ ms.locfileid: "97932429"
 
 典型的评审目标包括：
 
-* [与单一登录 (Azure AD 集成的应用程序](../manage-apps/what-is-application-management.md) ，如 SaaS、业务线) 。
+* [与 Azure AD 集成以进行单一登录的应用程序](../manage-apps/what-is-application-management.md)（例如 SaaS 应用程序、业务线应用程序）。
 
 * 组[成员身份](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)（同步到 Azure AD，或者在 Azure AD 或 Microsoft 365 中创建，包括 Microsoft Teams）。
 
@@ -261,7 +261,7 @@ ms.locfileid: "97932429"
 
   ![规划访问评审](./media/deploy-access-review/3-automate-actions-settings.png)
 
-完成评审并结束后，审阅者未批准的用户将自动从资源中删除，或者保留为持续访问。 这可能意味着删除其组成员身份或其应用程序分配，或者撤消其提升到特权角色所需的权限。
+评审完结后，系统会自动将审阅者未批准的用户从资源中删除，或保留用户的持续访问权限。 这可能意味着删除其组成员身份或其应用程序分配，或者撤消其提升到特权角色所需的权限。
 
 采用建议
 
@@ -333,9 +333,9 @@ ms.locfileid: "97932429"
 > [!NOTE]
 > 建议在定义业务策略时定义组的创建方式，务必明确组所有权和责任，以便对成员身份进行定期评审。 
 
-### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>在条件访问策略中查看排除组的成员身份 
+### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>评审条件访问策略中排除组的成员身份 
 
-有时，旨在确保网络安全的条件性访问策略不应应用到所有用户。 例如，仅允许用户在公司网络上登录的条件性访问策略可能不适用于销售团队，后者会广泛传播。 在这种情况下，销售团队成员将被放入一个组中，该组将从条件性访问策略中排除。 
+有时，不得将旨在确保网络安全的条件访问策略应用给所有用户。 例如，仅允许用户在公司网络上登录的条件访问策略可能不适用于需要到处出差的销售团队。 在这种情况下，需要将销售团队成员置于一个从条件访问策略中排除的组中。 
 
 请定期评审此类组成员身份，因为如果从要求中排除了错误的成员，则排除意味着潜在风险。
 
@@ -343,7 +343,7 @@ ms.locfileid: "97932429"
 
 ### <a name="review-external-users-group-memberships"></a>评审外部用户的组成员身份
 
-若要最大程度地减少手动工作和相关的潜在错误，请考虑使用 [动态组](../enterprise-users/groups-create-rule.md) 基于用户的属性分配组成员身份。 可能需要为外部用户创建一个或多个动态组。 内部赞助商可以充当组中成员身份的审阅者。 
+若要最大限度地减少手动工作和相关的潜在错误，请考虑使用[动态组](../enterprise-users/groups-create-rule.md)根据用户的属性分配组成员身份。 需要为外部用户创建一个或多个动态组。 内部发起人可充当审阅者来审阅组中的成员资格。 
 
 注意：由于访问评审而从组中删除的外部用户不会从租户中删除。 
 
@@ -509,7 +509,7 @@ ms.locfileid: "97932429"
 | 日期范围| 七天 |
 
 
-若要对访问评审进行更高级的查询和分析，以及跟踪评审的更改和完成情况，建议将 Azure AD 审核日志导出到 [Azure Log Analytics](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) 或 Azure 事件中心。 在 Azure Log Analytics 中存储时，可以使用 [功能强大的分析语言](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md) ，并构建你自己的仪表板。
+若要对访问评审进行更高级的查询和分析，以及跟踪评审的更改和完成情况，建议将 Azure AD 审核日志导出到 [Azure Log Analytics](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) 或 Azure 事件中心。 在 Azure Log Analytics 中进行存储时，可以使用[功能强大的分析语言](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)并构建你自己的仪表板。
 
 ## <a name="next-steps"></a>后续步骤
 

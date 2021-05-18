@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: b65560a3b10d04887040c4da1e137912810b3095
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 9c73d7434a002a5efc7d058095eb9743a7f3ebf8
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91929585"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446819"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>利用新的会话主机扩展现有的主机池
 
@@ -49,7 +49,7 @@ ms.locfileid: "91929585"
 
 5. 选择 " **+ 添加** " 开始创建主机池。
 
-6. 忽略基本选项卡，选择 **VM 详细信息** 选项卡。在这里你可以查看和编辑要添加到主机池的虚拟机 (VM) 的详细信息。
+6. 忽略“基本信息”选项卡，然后选择“VM 详细信息”选项卡。在这里，你可以查看和编辑要添加到主机池的虚拟机 (VM) 的详细信息。
 
 7. 选择要在下面创建 VM 的资源组，然后选择区域。 你可以选择当前使用的区域或新区域。
 
@@ -67,7 +67,7 @@ ms.locfileid: "91929585"
 
 11. 如果你有要将虚拟机分组到其中的任何标记，请选择 " **标记** " 选项卡。 否则，请跳过此选项卡。
 
-12. 选择 **“查看 + 创建”** 选项卡。请查看你的选择，如果感觉没问题，请选择 **创建**。
+12. 选择“查看 + 创建”选项卡。查看你的选择，如果一切正常，请选择“创建” 。
 
 ## <a name="next-steps"></a>后续步骤
 

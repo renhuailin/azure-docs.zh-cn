@@ -1,21 +1,21 @@
 ---
 title: Azure Service Fabric 中的重新配置
-description: 了解有状态服务副本的配置以及 Service Fabric 用于在更改期间保持一致性和可用性的重新配置过程。
+description: 了解有状态服务副本的配置以及在更改期间 Service Fabric 用来维护一致性和可用性的重新配置过程。
 author: appi101
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: bd46a7776495624affef77a44fcf68334750ba17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75609989"
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Azure Service Fabric 中的重新配置
-*配置*定义为有状态服务的分区的副本及其角色。
+*配置* 定义为有状态服务的分区的副本及其角色。
 
-重新配置  是将一个配置迁移为另一个配置的过程。 这会更改有状态服务的分区副本集。 旧配置称为“先前配置 (PC)”  ，新配置称为“当前配置 (CC)”  。 Azure Service Fabric 中的重新配置协议可以在对副本集进行任何更改期间，保持一致性和可用性。
+重新配置是将一个配置迁移为另一个配置的过程。 这会更改有状态服务的分区副本集。 旧配置称为“先前配置 (PC)”，新配置称为“当前配置 (CC)”。 Azure Service Fabric 中的重新配置协议可以在对副本集进行任何更改期间，保持一致性和可用性。
 
 为了应对系统中的不同事件，故障转移管理器会启动重新配置。 例如，如果主要副本发生故障，重新配置会启动以将活动的次要副本升级为主要副本。 再例如，在应用程序升级期间，可能有必要将主要副本移至另一节点，从而升级节点。
 
@@ -40,7 +40,7 @@ ms.locfileid: "75609989"
 其他几个阶段仅供内部使用。
 
 ## <a name="stuck-reconfigurations"></a>重新配置已停止
-重新配置无法执行  的原因有很多种。 一些常见原因包括：
+重新配置无法执行的原因有很多种。 一些常见原因包括：
 
 - **副本故障**：一些重新配置阶段要求配置中的大多数副本能够正常运行。
 - **网络或通信问题**：重新配置要求在不同的节点之间建立网络连接。

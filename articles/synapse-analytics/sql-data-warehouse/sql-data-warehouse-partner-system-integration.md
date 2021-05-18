@@ -5,16 +5,16 @@ services: synapse-analytics
 author: periclesrocha
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/24/2020
 ms.author: procha
 ms.reviewer: jrasnick
-ms.openlocfilehash: 19941963b5200b3ffdb9f2360301d30fe9df4823
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ccc33b8e6b9dc2e014e3ffa38cb7a957b7dfaad2
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96121849"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566488"
 ---
 # <a name="azure-synapse-analytics-system-integration-partners"></a>Azure Synapse Analytics 系统集成合作伙伴
 
@@ -26,7 +26,7 @@ ms.locfileid: "96121849"
 | ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>Accenture Microsoft Business Group（由 Avanade 支持）汇集了 45,000 多名专业人员，帮助企业在数字颠覆时代蓬勃发展。|[合作伙伴页面](https://www.accenture.com/us-en/services/microsoft-index)<br>|
 | ![Adatis](./media/sql-data-warehouse-partner-public-preview/adatis-logo.png) |**Adatis**<br>Adatis 提供专门用于高级数据分析的服务，从数据策略和顾问，到全球一流的交付和托管服务。 |[合作伙伴页面](https://adatis.co.uk/)<br> |
 | ![Blue Granite](./media/sql-data-warehouse-partner-public-preview/blue-granite-logo.png) |**Blue Granite**<br>BlueGranite Catalyst for Analytics 是立足于“小起点，大思想”理念的一种参与方法。 从协作性构想和策略会议开始，Blue Granite 与客户合作，使用 Microsoft 平台上的最新技术发现、创造和实现现代新型数据与分析解决方案的价值。|[合作伙伴页面](https://www.blue-granite.com/)<br>|
-| ![Capax Global](./media/sql-data-warehouse-partner-public-preview/capax-global-logo.png) |**Capax Global**<br>我们通过更好地利用你已有的信息，构建符合你的业务目标的自定义解决方案来改善你的业务，并使你为长期成功做好准备。 我们将妥善建立的模式和做法与技术相结合，同时利用团队丰富的工业和商业软件开发经验。 我们在技术、创新和客户满意度方面都富有激情。 我们对自己从事的事业满怀骄傲，这促成了项目的成功，并且是客户与我们合作的基石。|[合作伙伴页面](https://www.capaxglobal.com/)<br>|
+| ![Capax Global](./media/sql-data-warehouse-partner-public-preview/capax-global-logo.png) |**Capax Global**<br>我们通过以下方式改进你的业务：充分利用你已拥有的信息， 构建符合你的业务目标的自定义解决方案，并使你为长期成功做好准备。 我们将妥善建立的模式和做法与技术相结合，同时利用团队丰富的工业和商业软件开发经验。 我们在技术、创新和客户满意度方面都富有激情。 我们对自己从事的事业满怀骄傲，这促成了项目的成功，并且是客户与我们合作的基石。|[合作伙伴页面](https://www.capaxglobal.com/)<br>|
 | ![Coeo](./media/sql-data-warehouse-partner-public-preview/coeo-logo.png) |**Coeo**<br>Coeo 团队成员包括在 Azure 数据库方面具有深厚专业知识的云顾问，以及专门提供灵活且可缩放的分析解决方案的 BI 顾问。 Coeo 可帮助你迁移到混合或完整的 Azure 解决方案。|[合作伙伴页面](https://www.coeo.com/solution/technology/microsoft-azure/)<br>|
 | ![Cognizant](./media/sql-data-warehouse-partner-public-preview/cognizant-logo.png) |**Cognizant**<br>作为 Microsoft 的战略合作伙伴，Cognizant 提供咨询技能和经验，以帮助客户顺利完成迁移到云的历程。 对于每个客户项目，Cognizant 都会利用其与 Microsoft 之间的强大合作，让客户最大限度地从 Azure 体系结构中获得收益。|[合作伙伴页面](https://www.cognizant.com/partners/microsoftazure)<br>|
 | ![Neal Analytics](./media/sql-data-warehouse-partner-public-preview/neal-analytics-logo.png) |**Neal Analytics**<br>Neal Analytics 可将公司的数据转换为宝贵的资产和竞争优势，从而帮助公司完成其数字变革历程。 凭借我们的机器学习和数据工程专业技术，我们将利用数据来促成利润增长和可盈利的分析项目。 深受客户信任的 Neal Analytics 由专业从事数据科学、商业智能、认知服务、实用 AI、数据管理和 IoT 方面业务的顾问组成，可以解决独特的业务问题并优化各行业的运营。|[合作伙伴页面](https://nealanalytics.com/)<br>|

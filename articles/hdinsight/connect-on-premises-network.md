@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: cd787e1c846bfe4728577cbbce069385ce064a10
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: f26813176d4286a052772d2096427231759aacc2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943411"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863371"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>将 HDInsight 连接到本地网络
 
@@ -37,7 +37,7 @@ ms.locfileid: "98943411"
 
 在下面的关系图中，绿线表示以虚拟网络的 DNS 后缀结尾的资源请求。 蓝线表示本地网络或公共 Internet 上的资源请求。
 
-![如何在配置中解析 DNS 请求的示意图](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+:::image type="content" source="./media/connect-on-premises-network/on-premises-to-cloud-dns.png" alt-text="如何在配置中解析 DNS 请求的示意图" border="false":::
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,13 +64,13 @@ ms.locfileid: "98943411"
   
 1. 在顶部菜单中，选择“+ 创建资源”  。
 
-    ![创建 Ubuntu 虚拟机](./media/connect-on-premises-network/azure-portal-create-resource.png)
+    :::image type="content" source="./media/connect-on-premises-network/azure-portal-create-resource.png" alt-text="创建 Ubuntu 虚拟机":::
 
 1. 选择“计算”   > “虚拟机”  ，以转到“创建虚拟机”  页。
 
 1. 在“基本信息”选项卡中输入以下信息：   
   
-    | 字段 | Value |
+    | 字段 | 值 |
     | --- | --- |
     |订阅 |选择相应的订阅。|
     |资源组 |选择包含此前创建的虚拟网络的资源组。|
@@ -78,24 +78,24 @@ ms.locfileid: "98943411"
     |区域 | 选择与此前创建的虚拟网络相同的区域。  并非所有 VM 大小都可在所有区域中使用。  |
     |可用性选项 |  选择所需的可用性级别。  Azure 提供一系列的选项，用于管理应用程序的可用性和复原能力。  将解决方案构建为使用可用性区域或可用性集中的已复制 VM，使应用和数据免受事件中心中断和维护事件的影响。 此示例使用“不需要基础结构冗余”  。 |
     |映像 | 保留“Ubuntu Server 18.04 LTS”  。 |
-    |身份验证类型 | __密码__ 或 __SSH 公钥__：SSH 帐户的身份验证方法。 建议使用公钥，因为这些密钥更安全。 本示例使用 **密码**。  有关详细信息，请参阅[为 Linux VM 创建和使用 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)文档。|
+    |身份验证类型 | __密码__ 或 __SSH 公钥__：SSH 帐户的身份验证方法。 建议使用公钥，因为公钥更安全。 本示例使用 **密码**。  有关详细信息，请参阅[为 Linux VM 创建和使用 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)文档。|
     |用户名 |输入 VM 的管理员用户名。  本示例使用 **sshuser**。|
     |密码或 SSH 公钥 | 可用字段取决于针对“身份验证类型”所做的选择。   输入相应的值。|
     |公共入站端口|选择“允许所选端口”  。 然后从“选择入站端口”  下拉列表中选择“SSH (22)”  。|
 
-    ![虚拟机基本配置](./media/connect-on-premises-network/virtual-machine-basics.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-machine-basics.png" alt-text="虚拟机基本配置":::
 
     将其他项保留为默认值，然后选择“网络”选项卡  。
 
 4. 在“网络”选项卡中，输入以下信息： 
 
-    | 字段 | Value |
+    | 字段 | 值 |
     | --- | --- |
     |虚拟网络 | 选择此前创建的虚拟网络。|
     |子网 | 选择前面创建的虚拟网络的默认子网。  请勿选择 VPN 网关使用的子网。|
     |公共 IP | 使用自动填充的值。  |
 
-    ![HDInsight 虚拟网络设置](./media/connect-on-premises-network/virtual-network-settings.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-network-settings.png" alt-text="HDInsight 虚拟网络设置":::
 
     将其他项保留为默认值，然后选择“查看 + 创建”  。
 
@@ -103,13 +103,13 @@ ms.locfileid: "98943411"
 
 ### <a name="review-ip-addresses"></a>查看 IP 地址
 
-创建虚拟机后，你将收到包含 "**前往资源**" 按钮的 **部署成功** 通知。  选择“转到资源”  ，转到新的虚拟机。  在新虚拟机的默认视图中，按照以下步骤确定关联的 IP 地址：
+创建虚拟机后，你将收到“部署成功”的通知，该通知附带一个“转到资源”按钮 。  选择“转到资源”  ，转到新的虚拟机。  在新虚拟机的默认视图中，按照以下步骤确定关联的 IP 地址：
 
 1. 在“设置”中，选择“属性”   。
 
 2. 记下“公共 IP 地址/DNS 名称标签”和“专用 IP 地址”的值供以后使用。  
 
-   ![公共和专用 IP 地址](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
+   :::image type="content" source="./media/connect-on-premises-network/virtual-machine-ip-addresses.png" alt-text="公共和专用 IP 地址":::
 
 ### <a name="install-and-configure-bind-dns-software"></a>安装和配置 Bind（DNS 软件）
 
@@ -179,7 +179,7 @@ ms.locfileid: "98943411"
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是此虚拟网络的  DNS 后缀。 保存此值，因为稍后将用到它。
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是此虚拟网络的  DNS 后缀。 保存该值，因为稍后会使用它。
 
 5. 若要配置 Bind，以便为虚拟网络中的资源解析 DNS 名称，请使用以下文本作为 `/etc/bind/named.conf.local` 文件的内容：
 
@@ -245,7 +245,7 @@ ms.locfileid: "98943411"
 
 5. 选择“保存”  。  <br />  
 
-    ![设置网络的自定义 DNS 服务器](./media/connect-on-premises-network/configure-custom-dns.png)
+    :::image type="content" source="./media/connect-on-premises-network/configure-custom-dns.png" alt-text="设置网络的自定义 DNS 服务器":::
 
 ## <a name="configure-on-premises-dns-server"></a>配置本地 DNS 服务器
 
@@ -266,7 +266,7 @@ zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
 
 若要了解如何在 Windows Server 2016  上使用 DNS，请参阅 [Add-DnsServerConditionalForwarderZone](/powershell/module/dnsserver/add-dnsserverconditionalforwarderzone) 文档。
 
-配置本地 DNS 服务器后，可以 `nslookup` 从本地网络使用来验证是否可以解析虚拟网络中的名称。 下面为示例 
+配置本地 DNS 服务器后，可从本地网络使用 `nslookup` 来验证是否可以解析虚拟网络中的名称。 下面为示例 
 
 ```bash
 nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.4
@@ -285,8 +285,8 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 2. 对于步骤 1 中确定的 IP 地址，允许该 IP 地址的入站流量。
 
-   * 如果使用的是 __NSG__：允许 IP 地址的端口 __443__ 上的 __入站__ 流量。
-   * 如果使用的是 __UDR__：将 IP 地址的路由的 __下一跃点__ 类型设置为 __Internet__ 。
+   * 如果使用 NSG：在端口 443上允许该 IP地址的入站流量  。
+   * 如果使用 UDR：为该 IP 地址将路由的下一个跃点类型设置为“Internet”  。
 
 如需使用 Azure PowerShell 或 Azure CLI 来创建 NSG 的示例，请参阅[使用 Azure 虚拟网络扩展 HDInsight](hdinsight-create-virtual-network.md#hdinsight-nsg) 文档。
 
@@ -303,9 +303,9 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 ## <a name="connecting-to-hdinsight"></a>连接到 HDInsight
 
-HDInsight 上的大多数文档假定你可以通过 Internet 访问群集。 例如，可以通过 `https://CLUSTERNAME.azurehdinsight.net` 连接到该群集。 此地址使用公共网关，如果你已使用 Nsg 或 Udr 限制从 internet 的访问，则该网关不可用。
+HDInsight 上的大多数文档假定你可以通过 Internet 访问群集。 例如，可以通过 `https://CLUSTERNAME.azurehdinsight.net` 连接到该群集。 此地址使用公共网关，在已使用 NSG 或 UDR 限制从 Internet 访问时不可用。
 
-一些文档在通过 SSH 会话连接到群集时还引用了 `headnodehost`。 此地址仅适用于群集中的节点，在通过虚拟网络连接的客户端上不可用。
+一些文档在通过 SSH 会话连接到群集时还引用了 `headnodehost`。 该地址仅可在群集中的节点上使用，在通过虚拟网络连接的客户端上不可用。
 
 若要通过虚拟网络直接连接到 HDInsight，请使用以下步骤：
 

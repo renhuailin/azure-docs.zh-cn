@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 8f8086aced26fc46fb1430df074082e8c3365baa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: e859da6b3ac38ddb89c998d172c39f2549455aaa
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92746810"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447924"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 文件存储和 AD DS 创建配置文件容器
 
@@ -19,7 +19,7 @@ ms.locfileid: "92746810"
 
 此过程使用 Active Directory 域服务 (AD DS)，这是本地的目录服务。 如果你正在查找有关如何使用 Azure AD DS 创建 FSLogix 配置文件容器的信息，请参阅[使用 Azure 文件存储创建 FSLogix 配置文件容器](create-profile-container-adds.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保域控制器已同步到 Azure，并可从会话主机连接到 Azure 虚拟网络 (VNET) 进行解析。
 
@@ -42,7 +42,7 @@ ms.locfileid: "92746810"
     - 对于“位置”，建议选择与 Windows 虚拟机主机池相同的位置。
     - 对于“性能”，请选择“标准”。 （取决于你的 IOPS 需求。 有关详细信息，请参阅 [Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。）
     - 对于“帐户类型”，选择“StorageV2”或 “FileStorage”（仅在性能层为高级时可用）。
-    - 对于“复制”，请选择“本地冗余存储 (LRS)”。
+    - 对于“复制”，请选择“本地冗余存储(LRS)” 。
 
 5. 完成后，依次选择“查看 + 创建”，然后选择“创建”。
 
@@ -54,13 +54,13 @@ ms.locfileid: "92746810"
 
 若要创建文件共享，请执行以下操作：
 
-1. 选择“转到资源”。 
+1. 选择“转到资源”。
 
 2. 在“概述”页面上，选择“文件共享”。
 
 3. 选择“+ 文件共享”，创建一个名为“配置文件”的新文件共享，然后输入相应的配额，或者将该字段留空，不使用配额。
 
-4. 选择“创建”  。
+4. 选择“创建”。
 
 ## <a name="enable-active-directory-authentication"></a>启用 Active Directory 域服务身份验证
 

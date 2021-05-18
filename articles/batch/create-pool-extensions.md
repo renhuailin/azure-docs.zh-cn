@@ -1,39 +1,39 @@
 ---
-title: 将扩展与批处理池一起使用
-description: 扩展是一种小型应用程序，用于简化批处理计算节点上的预配配置和设置。
+title: 对 Batch 池使用扩展
+description: 扩展是一种小型应用程序，用于帮助在 Batch 计算节点上进行预配后配置和设置。
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.openlocfilehash: 1bf9847af57347c143ee3d790d89988ba7cd48e4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100416969"
 ---
-# <a name="use-extensions-with-batch-pools"></a>将扩展与批处理池一起使用
+# <a name="use-extensions-with-batch-pools"></a>对 Batch 池使用扩展
 
-扩展是一种小型应用程序，用于简化批处理计算节点上的预配配置和设置。 你可以选择 Azure Batch 允许的任何扩展，并在预配计算节点时将其安装在计算节点上。 之后，扩展可以执行其预期操作。
+扩展是一种小型应用程序，用于帮助在 Batch 计算节点上进行预配后配置和设置。 可选择 Azure Batch 允许的任何扩展，并在预配计算节点时将其安装在这些节点上。 之后，扩展就可执行其预期操作。
 
-您可以查看您使用的扩展的实时状态，并检索它们返回的信息，以寻求任何检测、更正或诊断功能。
+可查看所用扩展的实时状态，并检索它们返回的信息，以实现任何检测、更正或诊断功能。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 具有扩展的池必须使用 [虚拟机配置](nodes-and-pools.md#virtual-machine-configuration)。
-- CustomScript 扩展类型是为 Azure Batch 服务而保留的，不能被重写。
+- 使用扩展的池必须采用[虚拟机配置](nodes-and-pools.md#virtual-machine-configuration)。
+- CustomScript 扩展类型是为 Azure Batch 服务保留的，不能被替代。
 
 ### <a name="supported-extensions"></a>支持的扩展
 
-在创建 Batch 池时，当前可以安装以下扩展。 
+目前可在创建 Batch 池时安装以下扩展。 
 
-- 适用于[Linux](../virtual-machines/extensions/key-vault-linux.md)和[Windows](../virtual-machines/extensions/key-vault-windows.md)的 Azure Key Vault 扩展
-- 适用于[Linux](../virtual-machines/extensions/oms-linux.md)和[Windows](../virtual-machines/extensions/oms-windows.md)的 Log analytics 和监视扩展
+- 适用于 [Linux](../virtual-machines/extensions/key-vault-linux.md) 和 [Windows](../virtual-machines/extensions/key-vault-windows.md) 的 Azure Key Vault 扩展
+- 适用于 [Linux](../virtual-machines/extensions/oms-linux.md) 和 [Windows](../virtual-machines/extensions/oms-windows.md) 的日志分析和监视扩展
 - Azure 安全包
 
-您可以通过打开支持请求来请求对其他发布服务器和/或扩展类型的支持。
+可通过创建支持请求来请求对其他发布服务器和/或扩展类型的支持。
 
-## <a name="create-a-pool-with-extensions"></a>使用扩展创建池
+## <a name="create-a-pool-with-extensions"></a>创建使用扩展的池
 
-下面的示例创建一个使用 Azure Key Vault 扩展的 Linux 节点的批处理池。
+下面的示例会创建一个使用 Azure Key Vault 扩展的 Linux 节点 Batch 池。
 
 REST API URI
 
@@ -125,5 +125,5 @@ REST API URI
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [将应用程序和数据复制到池节点](batch-applications-to-pool-nodes.md)的各种方式。
-- 了解有关使用 [节点和池](nodes-and-pools.md)的详细信息。
+- 了解[将应用程序和数据复制到池节点](batch-applications-to-pool-nodes.md)的各种方法。
+- 详细了解如何使用[节点和池](nodes-and-pools.md)。

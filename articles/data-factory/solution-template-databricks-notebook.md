@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
 ms.openlocfilehash: ee663423071458605f37f07293693dbc91f592bb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100362108"
 ---
 # <a name="transformation-with-azure-databricks"></a>使用 Azure Databricks 进行转换
@@ -24,7 +24,7 @@ ms.locfileid: "100362108"
 
 - “复制数据”将源数据集复制到接收器存储，该存储在 Azure Databricks 笔记本中装载为 DBFS。 这样，Spark 就可以直接使用该数据集。
 
-- “笔记本”触发对数据集进行转换的 Databricks 笔记本。 它还将数据集添加到已处理的文件夹或 Azure Synapse Analytics 中。
+- “笔记本”触发对数据集进行转换的 Databricks 笔记本。 它还将数据集添加到已处理的文件夹或 Azure Synapse Analytics。
 
 为简单起见，本教程中的模板没有创建计划的触发器。 如有必要，你可以添加计划的触发器。
 

@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.openlocfilehash: e2fa09ac8609310d4579590214bc25e5d7ee309f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841642"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641569"
 ---
-# <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>通过 Azure AD 多重身份验证连接到 Azure SQL 数据库
+# <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>使用 Azure AD 多重身份验证连接到 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-本文提供了用于连接到 Azure SQL 数据库的 C# 程序。 该程序使用交互式模式身份验证，该身份验证支持 [Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)。
+本文提供了用于连接到 Azure SQL 数据库的 C# 程序。 该程序使用支持 [Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)的交互模式身份验证。
 
 有关 SQL 工具的多重身份验证支持的详细信息，请参阅 [SQL Server Data Tools (SSDT) 中的 Azure Active Directory 支持](/sql/ssdt/azure-active-directory)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "94841642"
 
 * 一个对话框，它要求提供系统已发送到手机的多重身份验证验证码。
 
-有关如何配置 Azure AD 以要求多重身份验证的信息，请参阅 [云中的 Azure AD 多重身份验证](../../active-directory/authentication/howto-mfa-getstarted.md)入门。
+有关如何将 Azure AD 配置为要求多重身份验证的信息，请参阅[云中的 Azure AD 多重身份验证入门](../../active-directory/authentication/howto-mfa-getstarted.md)。
 
 有关这些对话框的屏幕截图，请参阅[为 SQL Server Management Studio 和 Azure AD 配置多重身份验证](authentication-mfa-ssms-configure.md)。
 
@@ -113,7 +113,7 @@ ms.locfileid: "94841642"
   使用此值进行需要 Azure AD 用户名和密码的身份验证。 Azure SQL 数据库执行身份验证。 此方法不支持多重身份验证。
 
 > [!NOTE]
-> 如果使用的是 .NET Core，需要使用 [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) 命名空间。 有关详细信息，请参阅以下[博客文章](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)。
+> 如果使用的是 .NET Core，需要使用 [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient) 命名空间。 有关详细信息，请参阅以下[博客文章](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)。
 
 ## <a name="set-c-parameter-values-from-the-azure-portal"></a>在 Azure 门户中设置 C# 参数值
 
@@ -122,7 +122,7 @@ ms.locfileid: "94841642"
 | 静态字段名称 | 示例值 | Azure 门户中的位置 |
 | :---------------- | :------------ | :-------------------- |
 | Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | “SQL 服务器” > “按名称筛选”  |
-| AzureAD_UserID | "用户名 \@ abc.onmicrosoft.com" | “Azure Active Directory” > “用户” > “新建来宾用户” |
+| AzureAD_UserID | “auser\@abc.onmicrosoft.com” | “Azure Active Directory” > “用户” > “新建来宾用户” |
 | Initial_DatabaseName | "myDatabase" | “SQL 服务器” > “SQL 数据库” |
 | ClientApplicationID | “a94f9c62-97fe-4d19-b06d-111111111111” | “Azure Active Directory” > “应用注册” > “按名称搜索” > “应用程序 ID”    |
 | RedirectUri | new Uri("https://mywebserver.com/") | “Azure Active Directory” > “应用注册” > “按名称搜索” > “[你的应用注册]” > “设置” > “RedirectURI”   <br /><br />在本文中，任何有效值均适用于 RedirectUri，因为此处并不使用 RedirectUri。 |
@@ -148,7 +148,7 @@ ms.locfileid: "94841642"
 ## <a name="c-code-example"></a>C# 代码示例
 
 > [!NOTE]
-> 如果使用的是 .NET Core，需要使用 [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) 命名空间。 有关详细信息，请参阅以下[博客文章](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)。
+> 如果使用的是 .NET Core，需要使用 [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient) 命名空间。 有关详细信息，请参阅以下[博客文章](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)。
 
 示例 C# 程序依赖于 [*Microsoft.IdentityModel.Clients.ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory) DLL 程序集。
 

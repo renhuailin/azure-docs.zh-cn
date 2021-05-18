@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
 ms.openlocfilehash: 30328db465e0d9bf8c1ce67d92e48c688c51e043
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574612"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>如何配置适用于 Cosmos DB 的 Azure Functions 触发器的日志记录和连接
@@ -82,7 +82,7 @@ traces
 ```
 
 > [!NOTE]
-> 在消耗计划中托管函数应用时，每个实例可以维护的套接字连接数量都有限制。 使用 Direct/TCP 模式时，根据设计，会创建更多的连接，这可能会达到[消耗计划限制](../azure-functions/manage-connections.md#connection-limit)，在这种情况下，可以使用 Gateway 模式，或改为在[高级计划](../azure-functions/functions-premium-plan.md)或[专用（应用服务）计划](../azure-functions/dedicated-plan.md)中托管函数应用。
+> 在消耗计划中托管函数应用时，每个实例可以维护的套接字连接数量都有限制。 使用 Direct/TCP 模式时，根据设计会创建更多的连接，这可能会达到[消耗计划限制](../azure-functions/manage-connections.md#connection-limit)，在这种情况下，可使用 Gateway 模式或者改为在[高级计划](../azure-functions/functions-premium-plan.md)或[专用（应用服务）计划](../azure-functions/dedicated-plan.md)中托管函数应用。
 
 ## <a name="next-steps"></a>后续步骤
 

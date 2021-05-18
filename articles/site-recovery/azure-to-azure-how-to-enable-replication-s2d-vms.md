@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92424831"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>将运行存储空间直通的 Azure VM 复制到另一区域
@@ -20,7 +20,7 @@ ms.locfileid: "92424831"
 >存储空间直通群集仅支持故障一致恢复点。
 >
 
-[存储空间直通 (S2D)](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) 是软件定义的存储，可便于在 Azure 上创建[来宾群集](https://techcommunity.microsoft.com/t5/failover-clustering/bg-p/FailoverClustering)。  Microsoft Azure 中的来宾群集是由 IaaS Vm 组成的故障转移群集。 这样一来，托管的 VM 工作负载可以跨来宾群集进行故障转移，从而实现更高的应用程序可用性 SLA（与单一 Azure VM 相比）。 它适用于 VM 托管关键应用程序（如 SQL 或横向扩展文件服务器）的方案。
+[存储空间直通 (S2D)](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) 是软件定义的存储，可便于在 Azure 上创建[来宾群集](https://techcommunity.microsoft.com/t5/failover-clustering/bg-p/FailoverClustering)。  Microsoft Azure 中的来宾群集是由 IaaS VM 组成的故障转移群集。 这样一来，托管的 VM 工作负载可以跨来宾群集进行故障转移，从而实现更高的应用程序可用性 SLA（与单一 Azure VM 相比）。 它适用于 VM 托管关键应用程序（如 SQL 或横向扩展文件服务器）的方案。
 
 ## <a name="disaster-recovery-with-storage-spaces-direct"></a>利用存储空间直通进行灾难恢复
 
@@ -49,12 +49,12 @@ ms.locfileid: "92424831"
 1. 选择复制策略，同时禁用应用程序一致性*（仅支持故障一致性）
 1. 启用复制
 
-   ![显示在何处配置复制设置的屏幕截图。](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
+   ![屏幕截图显示配置复制设置的位置。](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
 2. 转到已复制的项，可以看到两个虚拟机的状态。
 3. 两个虚拟机均受到保护，并显示为属于多 VM 一致性组。
 
-   ![显示虚拟机受保护并且属于多 VM 一致性组的屏幕截图。](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
+   ![屏幕截图显示虚拟机受到保护并属于一个多 VM 一致性组。](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
 
 ## <a name="creating-a-recovery-plan"></a>创建恢复计划
 恢复计划支持在故障转移期间将多层应用程序中的各个层排序。 排序有助于保持应用程序一致性。 为多层 Web 应用程序创建恢复计划时，请完成[使用 Site Recovery 创建恢复计划](site-recovery-create-recovery-plans.md)中所述的步骤。
@@ -88,7 +88,7 @@ VM 的两个节点都需要使用 [Site Recovery 恢复计划](./site-recovery-c
 
 1.  在 Azure 门户中，选择恢复服务保管库。
 2.  选择针对 SAP 应用程序创建的恢复计划。
-3.  选择“故障转移”。 
+3.  选择“故障转移”。
 4.  若要启动故障转移过程，请选择恢复点。
 
 有关详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。

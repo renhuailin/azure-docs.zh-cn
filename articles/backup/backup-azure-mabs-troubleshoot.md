@@ -4,12 +4,12 @@ description: 排查 Azure 备份服务器的安装和注册以及应用程序工
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 644946ca90c2893ba3d87f9d2ff8bfd8325f4715
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403001"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514744"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
@@ -17,35 +17,35 @@ ms.locfileid: "91403001"
 
 ## <a name="basic-troubleshooting"></a>基本故障排除
 
-建议你在开始排查 Microsoft Azure 备份 Server (MABS) 之前执行以下验证：
+建议在开始对 Microsoft Azure 备份服务器 (MABS) 进行故障排除之前执行以下验证：
 
 - [确保 Microsoft Azure 恢复服务 (MARS) 代理是最新版本](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [确保 MARS 代理与 Azure 之间存在网络连接](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
-- 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 如有必要，请重启并重试操作
-- [确保在暂存文件夹位置有 5-10% 的可用卷空间](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
-- 如果注册失败，则确保你尝试安装的服务器 Azure 备份服务器尚未注册到另一个保管库
+- 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 视需要重启并重试操作
+- [确保在暂存文件夹位置有 5-10% 的可用卷空间](./backup-azure-file-folder-backup-faq.yml#what-s-the-minimum-size-requirement-for-the-cache-folder-)
+- 如果注册失败，请确保你尝试安装 Azure 备份服务器的服务器尚未在其他保管库中注册
 - 如果推送安装失败，请检查 DPM 代理是否存在。 如果该代理存在，请将其卸载，然后重试安装
 - [确保没有其他进程或防病毒软件在干扰 Azure 备份](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
 - 确保 SQL 代理服务正在运行并在 MABS 服务器中设为自动<br>
 
 ## <a name="configure-antivirus-for-mabs-server"></a>为 MABS 服务器配置防病毒软件
 
-MABS 与最常见的防病毒软件产品兼容。 我们建议执行以下步骤以避免冲突：
+MABS 与大多数流行的防病毒软件产品兼容。 我们建议执行以下步骤以避免冲突：
 
-1. **禁用实时监视** -禁用防病毒软件对以下项的实时监视：
+1. **禁用实时监视** - 对以下内容禁用防病毒软件实时监视：
     - `C:\Program Files<MABS Installation path>\XSD` 文件夹
     - `C:\Program Files<MABS Installation path>\Temp` 文件夹
     - 新式备份存储卷的驱动器号
-    - 副本和传输日志：若要执行此操作，请禁用位于文件夹中的 **dpmra.exe**的实时监视 `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` 。 实时监视会降低性能，因为防病毒软件会在 MABS 每次与受保护服务器同步时扫描副本，并在每次 MABS 将更改应用于副本时扫描所有受影响的文件。
-    - 管理员控制台：为了避免对性能产生影响，请禁用 **csc.exe** 过程的实时监视。 **csc.exe**过程是 C \# 编译器，实时监视会降低性能，因为防病毒软件会扫描**csc.exe**进程在生成 XML 消息时发出的文件。 **CSC.exe** 位于以下路径中：
+    - 副本和传输日志：若要执行此操作，请禁用 dpmra.exe 的实时监视，该文件位于文件夹 `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` 中。 实时监视会降低性能，因为防病毒软件会在 MABS 每次与受保护服务器同步时扫描副本，并在每次 MABS 将更改应用于副本时扫描所有受影响的文件。
+    - 管理员控制台：为避免影响性能，请禁用 csc.exe 进程的实时监视。 csc.exe 进程是 C\# 编译器，实时监视可能会降低性能，因为防病毒软件会扫描 csc.exe 进程在生成 XML 消息时发出的文件 。 CSC.exe 位于以下路径：
         - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
         - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
-    - 对于安装在 MABS 服务器上的 MARS 代理，我们建议你排除以下文件和位置：
+    - 对于安装在 MABS 服务器上的 MARS 代理，建议排除以下文件和位置：
         - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` 作为进程
         - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
         - 暂存位置（如果没有使用标准位置）
-2. **禁用受保护服务器上的实时监视**：在受保护的服务器上禁用位于文件夹中的 **dpmra.exe**的实时监视 `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` 。
-3. **将防病毒软件配置为删除受保护的服务器和 MABS 服务器上感染病毒的文件**：若要防止副本和恢复点的数据损坏，请将防病毒软件配置为删除感染的文件，而不是自动清除或隔离它们。 自动清除和隔离可能会导致防病毒软件修改文件，并使 MABS 无法检测到的更改。
+2. **在受保护的服务器上禁用实时监视**：在受保护的服务器上禁用 dpmra.exe 的实时监视，该程序位于文件夹 `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` 中。
+3. **将防病毒软件配置为删除受保护的服务器和 MABS 服务器上的被感染文件**：为防止副本和恢复点的数据损坏，请将防病毒软件配置为删除被感染文件，而不是自动清除或隔离它们。 自动清除和隔离可能会导致防病毒软件修改文件，做出无法被 MABS 检测到的更改。
 
 应运行手动同步，保持一致性。 每次防病毒软件从副本中删除文件时均检查作业，即使副本标记为不一致也是如此。
 
@@ -71,7 +71,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 备份 | 副本不一致 | 检查是否已在保护组向导中启用自动一致性检查选项。 若要详细了解复制选项和一致性检查，请参阅[这篇文章](/system-center/dpm/create-dpm-protection-groups)。<br> <ol><li> 对于系统状态/BMR 备份，验证是否在受保护的服务器上安装了 Windows Server 备份。</li><li> 检查 DPM/Microsoft Azure 备份服务器上的 DPM 存储池中是否存在空间相关的问题，并根据需要分配存储。</li><li> 检查受保护服务器上卷影复制服务的状态。 如果它处于禁用状态，请将其设置为手动启动。 在服务器上启动该服务。 然后返回到 DPM/Microsoft Azure 备份服务器控制台，开始与一致性检查作业同步。</li></ol>|
+| 备份 | 副本不一致 | 检查是否已在保护组向导中启用自动一致性检查选项。 若要详细了解复制选项和一致性检查，请参阅[这篇文章](/system-center/dpm/create-dpm-protection-groups)。<br> <ol><li> 对于系统状态/BMR 备份，请检查是否已在受保护服务器上安装 Windows Server 备份。</li><li> 检查 DPM/Microsoft Azure 备份服务器上的 DPM 存储池中是否存在空间相关的问题，并根据需要分配存储。</li><li> 检查受保护服务器上卷影复制服务的状态。 如果该服务处于禁用状态，请将其设置为手动启动。 在服务器上启动该服务。 然后返回到 DPM/Microsoft Azure 备份服务器控制台，开始与一致性检查作业同步。</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>在线恢复点创建失败
 
@@ -83,7 +83,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 还原 | **错误代码**：CBPServerRegisteredVaultDontMatchWithCurrent/保管库凭据错误：100110 <br/> <br/>**错误消息**：原始和外部 DPM 服务器必须注册到同一保管库 | **原因**：当你尝试使用外部 DPM 恢复选项将文件从原始服务器还原到备用服务器，并且如果要恢复的服务器和从其备份数据的原始服务器未关联到同一恢复服务保管库时，会出现此问题。<br/> <br/>**解决方法**：若要解决此问题，请确保将原始服务器和备用服务器注册到同一保管库。|
+| 还原 | **错误代码**：CBPServerRegisteredVaultDontMatchWithCurrent/保管库凭据错误：100110 <br/> <br/>**错误消息**：原始和外部 DPM 服务器必须注册到同一保管库 | **原因：** 此问题在以下情况下发生：尝试使用外部 DPM 恢复选项将文件从原始服务器还原到备用服务器，且要恢复的服务器和从中备份数据的原始服务器没有与同一恢复服务保管库关联。<br/> <br/>**解决方法**：若要解决此问题，请确保将原始服务器和备用服务器注册到同一保管库。|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>VMware VM 的联机恢复点创建作业失败
 
@@ -95,7 +95,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 将代理推送到受保护的服务器 | 代理操作失败，因为 \<ServerName> 上的 DPM 代理协调器服务出现通信错误。 | **如果产品中显示的建议操作不起作用，请执行以下步骤**： <ul><li> 如果要从不受信任的域附加计算机，请执行 [以下步骤](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)。 <br> （或者） </li><li> 如果要附加受信任域中的计算机，请使用 [此博客](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)中所述的步骤进行故障排除。 <br>（或者）</li><li> 尝试禁用防病毒软件以进行故障排除。 如果解决了问题，可根据[此文](/system-center/dpm/run-antivirus-server)中的建议修改防病毒软件设置。</li></ul> |
+| 将代理推送到受保护的服务器 | 代理操作失败，因为 \<ServerName> 上的 DPM 代理协调器服务出现通信错误。 | **如果产品中显示的建议操作不起作用，请执行以下步骤**： <ul><li> 如果是从不可信域附加计算机，请执行[这些步骤](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)。 <br> （或者） </li><li> 如果是从可信域附加计算机，则可通过[此博客](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)中概述的步骤进行故障排除。 <br>（或者）</li><li> 尝试禁用防病毒软件以进行故障排除。 如果解决了问题，可根据[此文](/system-center/dpm/run-antivirus-server)中的建议修改防病毒软件设置。</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>安装程序无法更新注册表元数据
 
@@ -119,9 +119,9 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | 配置保护组 | DPM 无法枚举受保护计算机（受保护计算机名称）上的应用程序组件。 | 在相关数据源/组件级别的“配置保护组”UI 屏幕上选择“刷新”。 |
 | 配置保护组 | 无法配置保护 | 如果受保护的服务器是 SQL Server，请根据[此文](/system-center/dpm/back-up-sql-server)中所述，检查是否已在受保护计算机上将 sysadmin 角色权限提供给系统帐户 (NTAuthority\System)。
 | 配置保护组 | 此保护组的存储池中没有足够的可用空间。 | 添加到存储池的磁盘[不应包含分区](/system-center/dpm/create-dpm-protection-groups)。 删除磁盘上的所有现有卷。 然后将磁盘添加到存储池。|
-| 策略更改 |无法修改备份策略。 错误：由于内部服务错误 [0x29834]，当前操作失败。 请在一段时间后重试操作。 如果问题持续出现，请联系 Microsoft 支持。 | 原因：<br/>在以下三种情况下会发生此错误：当启用安全设置时，如果尝试将保留期减小到前面指定的最小值以下，则会出现此错误。  (不受支持的版本低于 Microsoft Azure 备份服务器版本2.0.9052 和 Azure 备份服务器 update 1。 )  <br/>**建议的操作：**<br/> 若要继续执行策略相关的更新，请将保留期设置为高于指定的最短保留期。 （每日、每周、每月和每年备份的最短保留期分别为 7 天、4 周、3 个月和 1 年）。 <br><br>（可选）另一种首选方法是更新备份代理和 Azure 备份服务器，以利用所有安全更新。 |
+| 策略更改 |无法修改备份策略。 错误：由于内部服务错误 [0x29834]，当前操作失败。 请在一段时间后重试操作。 如果问题持续出现，请联系 Microsoft 支持。 | **原因：**<br/>在以下三种情况下会发生此错误：启用安全设置、尝试缩短保留期至低于前面指定的最小值，以及使用不受支持的版本。 （不受支持的版本包括低于 Microsoft Azure 备份服务器版本 2.0.9052 和 Azure 备份服务器 Update 1 的版本。） <br/>**建议的操作：**<br/> 若要继续执行策略相关的更新，请将保留期设置为高于指定的最短保留期。 （每日、每周、每月和每年备份的最短保留期分别为 7 天、4 周、3 个月和 1 年）。 <br><br>（可选）另一种首选方法是更新备份代理和 Azure 备份服务器，以利用所有安全更新。 |
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>备份
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
@@ -135,14 +135,14 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 更改通行短语 |输入的安全 PIN 不正确。 提供正确的安全 PIN 来完成此操作。 |**原因：**<br/> 当你在执行关键操作 (例如更改密码) 时，输入的安全 PIN 无效或过期时会发生此错误。 <br/>**建议的操作：**<br/> 若要完成该操作，必须输入有效的安全 PIN。 若要获取 PIN，请登录到 Azure 门户并转到“恢复服务保管库”。 然后转到“设置” > “属性” > “生成安全 PIN”。 使用此 PIN 更改通行短语。 |
-| 更改通行短语 |操作失败。 ID:120002 |**原因：**<br/>启用安全设置、尝试更改通行短语和使用不受支持的版本时，会出现此错误。<br/>**建议的操作：**<br/> 若要更改通行短语，必须先将备份代理更新到最低版本 2.0.9052。 此外，还需要将 Azure 备份服务器更新到最低的 Update 1 版本，并输入有效的安全 PIN。 若要获取 PIN，请登录到 Azure 门户并转到“恢复服务保管库”。 然后转到“设置” > “属性” > “生成安全 PIN”。 使用此 PIN 更改通行短语。 |
+| 更改通行短语 |输入的安全 PIN 不正确。 提供正确的安全 PIN 来完成此操作。 |**原因：**<br/> 如果在执行关键操作（例如更改通行短语）时输入无效或已过期的安全 PIN，则会出现此错误。 <br/>**建议的操作：**<br/> 若要完成该操作，必须输入有效的安全 PIN。 若要获取 PIN，请登录到 Azure 门户并转到“恢复服务保管库”。 然后转到“设置” > “属性” > “生成安全 PIN”。 使用此 PIN 更改通行短语。 |
+| 更改通行短语 |操作失败。 ID：120002 |**原因：**<br/>启用安全设置、尝试更改通行短语和使用不受支持的版本时，会出现此错误。<br/>**建议的操作：**<br/> 若要更改通行短语，必须先将备份代理更新到最低版本 2.0.9052。 此外，还需要将 Azure 备份服务器更新到最低的 Update 1 版本，并输入有效的安全 PIN。 若要获取 PIN，请登录到 Azure 门户并转到“恢复服务保管库”。 然后转到“设置” > “属性” > “生成安全 PIN”。 使用此 PIN 更改通行短语。 |
 
 ## <a name="configure-email-notifications"></a>配置电子邮件通知
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 使用工作或学校帐户设置电子邮件通知 |错误 ID：2013| **原因：**<br> 尝试使用工作或学校帐户 <br>**建议的操作：**<ol><li> 首先要确保已在 Exchange 上为 DPM 服务器设置“在接收连接器上允许匿名中继”。 若要详细了解如何配置此设置，请参阅[在接收连接器上允许匿名中继](/exchange/mail-flow/connectors/allow-anonymous-relay)。</li> <li> 如果无法使用内部 SMTP 中继并需要使用 Office 365 服务器进行设置，可将 IIS 设置为中继。 将 DPM 服务器配置为 [使用 IIS 将 SMTP 中继到 Office 365](/exchange/mail-flow/test-smtp-with-telnet)。<br><br>  请务必使用 user\@domain.com 格式，而不要使用“域\用户”格式。<br><br><li>指示 DPM 将本地服务器名用作 SMTP 服务器，并使用端口 587。 然后将它指向于应从中发送电子邮件的用户电子邮件地址。<li> DPM SMTP 设置页上的用户名和密码应属于 DPM 所在域中的域帐户。 </li><br> 当你更改 SMTP 服务器地址时，请对新设置进行更改，关闭设置框，然后重新打开它以确保它反映新的值。  只是进行更改和测试可能不一定总能让新设置生效，因此最佳做法是通过此方法进行测试。<br><br>在此过程期间，可随时清除这些设置，方法是关闭 DPM 控制台，然后编辑以下注册表项：**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 删除 SMTPPassword 和 SMTPUserName 项**。 重新启动 UI 时，可将这些设置添加回到 UI。
+| 使用工作或学校帐户设置电子邮件通知 |错误 ID：2013| **原因：**<br> 尝试使用工作或学校帐户 <br>**建议的操作：**<ol><li> 首先要确保已在 Exchange 上为 DPM 服务器设置“在接收连接器上允许匿名中继”。 若要详细了解如何配置此设置，请参阅[在接收连接器上允许匿名中继](/exchange/mail-flow/connectors/allow-anonymous-relay)。</li> <li> 如果无法使用内部 SMTP 中继并需要使用 Office 365 服务器进行设置，可将 IIS 设置为中继。 将 DPM 服务器配置为[使用 IIS 将 SMTP 中继到 Office 365](/exchange/mail-flow/test-smtp-with-telnet)。<br><br>  请务必使用 user\@domain.com 格式，而不要使用“域\用户”格式。<br><br><li>指示 DPM 将本地服务器名用作 SMTP 服务器，并使用端口 587。 然后将它指向于应从中发送电子邮件的用户电子邮件地址。<li> DPM SMTP 设置页上的用户名和密码应属于 DPM 所在域中的域帐户。 </li><br> 更改 SMTP 服务器地址时，请对新设置进行更改，关闭设置框，然后重新打开它以确保反映新值。  只是进行更改和测试可能不一定总能让新设置生效，因此最佳做法是通过此方法进行测试。<br><br>在此过程期间，可随时清除这些设置，方法是关闭 DPM 控制台，然后编辑以下注册表项：**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 删除 SMTPPassword 和 SMTPUserName 项**。 重新启动 UI 时，可将这些设置添加回到 UI。
 
 ## <a name="common-issues"></a>常见问题
 

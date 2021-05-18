@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
 ms.openlocfilehash: b3b5679b254a07b275cc7fd1295ba4ca5b405fbc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100362006"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库执行增量复制
@@ -41,7 +41,7 @@ ms.locfileid: "100362006"
 - *Data_Destination_Container* 是在目标存储中将数据复制到的位置的根路径。
 - *Data_Destination_Directory* 是在目标存储中将数据复制到的位置的根下的目录路径。
 - Data_Destination_Table_Name 是目标存储中要将数据复制到的位置（在选择“Azure Synapse Analytics”作为“数据目标”时适用）。
-- *Data_Destination_Folder_Path* 是将数据复制到目标存储中的位置 (适用于选择 "文件系统" 或 "Azure Data Lake Storage Gen1" 作为数据目标) 的情况。
+- Data_Destination_Folder_Path 是目标存储中要将数据复制到的位置（在选择“文件系统”或“Azure Data Lake Storage Gen1”作为“数据目标”时适用）。
 - *Control_Table_Table_Name* 是用于存储高水印值的外部控制表。
 - *Control_Table_Table_Name* 是外部控制表中要将高水印值存储到的列。
 

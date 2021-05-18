@@ -6,10 +6,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: a76974b8daddf225b0d9b8b581475d657322847e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98931450"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hive 进行故障排除
@@ -36,9 +36,9 @@ ms.locfileid: "98931450"
     hive -f alltables.sql
     ```
 
-解决方法步骤中的代码假设新群集上的数据路径与旧群集上的相同。 如果数据路径不同，则可以手动编辑生成的 `alltables.sql` 文件以反映任何更改。
+解决方法步骤中的代码假设新群集上的数据路径与旧群集上的相同。 如果数据路径不同，可以手动编辑生成的 `alltables.sql` 文件以反映任何更改。
 
-### <a name="additional-reading"></a>其他阅读材料
+### <a name="additional-reading"></a>附加阅读材料
 
 - [使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -66,7 +66,7 @@ ms.locfileid: "98931450"
    /var/log/hive/hiveserver2.log
    ```
 
-### <a name="additional-reading"></a>其他阅读材料
+### <a name="additional-reading"></a>附加阅读材料
 
 - [使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -92,7 +92,7 @@ ms.locfileid: "98931450"
    hive -hiveconf hive.root.logger=ALL,console
    ```
 
-### <a name="additional-reading"></a>其他阅读材料
+### <a name="additional-reading"></a>附加阅读材料
 
 - [Hive 配置属性](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
@@ -129,7 +129,7 @@ ms.locfileid: "98931450"
     - **TaskConcurrencyAnalyzer**：列显 DAG 中的任务并发性详细信息
     - **VertexLevelCriticalPathAnalyzer**：查找 DAG 中顶点级别的关键路径
 
-### <a name="additional-reading"></a>其他阅读材料
+### <a name="additional-reading"></a>附加阅读材料
 
 - [使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -141,7 +141,7 @@ ms.locfileid: "98931450"
 
 - 通过命令行：
 
-    使用 SSH 连接到 HDInsight 群集。 在命令提示符下运行以下命令：
+    使用 SSH 连接到 HDInsight 群集。 在命令提示符处运行以下命令：
 
   ```apache
   hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId>
@@ -152,9 +152,9 @@ ms.locfileid: "98931450"
   1. 转到 Ambari。
   2. 转到 Tez 视图（隐藏在右上角的磁贴图标下面）。
   3. 选择想要查看的 DAG。
-  4. 选择“下载数据”  。
+  4. 选择“下载数据”。
 
-### <a name="additional-reading"></a><a name="additional-reading-end"></a>其他阅读材料
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>附加阅读材料
 
 [使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)
 

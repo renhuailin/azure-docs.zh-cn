@@ -13,10 +13,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 7e2fcf2dc0dc53038b82bbf182cb12f580d88357
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99583580"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
@@ -37,7 +37,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-若要使用 MSAL.NET Azure AD 使用 Microsoft Graph API 读取和写入 (https： \/ /graph.microsoft.com/) ，请创建一个范围列表，如以下示例中所示：
+若要使用 Microsoft Graph API (https:\//graph.microsoft.com/) 通过 MSAL.NET Azure AD 进行读写，请按以下示例所示创建范围列表：
 
 ```csharp
 string ResourceId = "https://graph.microsoft.com/";
@@ -49,7 +49,7 @@ var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-若要将对应于 Azure 资源管理器 API 的作用域写入 (https： \/ /management.core.windows.net/) ，请请求以下范围 (注意这两个斜杠) ：
+若要写入对应于 Azure 资源管理器 API (https:\//management.core.windows.net/) 的范围，需要请求以下范围（请注意有两个斜杠）：
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -59,13 +59,13 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 ```
 
 > [!NOTE]
-> 使用两个斜杠，因为 Azure 资源管理器 API 在其受众声明中需要斜杠 (aud) ，然后有一个斜杠用于将 API 名称与范围分隔开来。
+> 使用两个斜杠是因为 Azure 资源管理器 API 要求在其受众声明 (aud) 中使用一个斜杠，然后使用一个斜杠来分隔 API 名称与范围。
 
 下面是 Azure AD 使用的逻辑：
 
 - 对于使用 v1.0 访问令牌（只能使用此类令牌）的 ADAL (Azure AD v1.0) 终结点，aud=resource
-- 对于 MSAL (Microsoft 标识平台) 为接受 v2.0 令牌的资源请求访问令牌。 `aud=resource.AppId`
-- 对于要求资源访问令牌接受 v1.0 令牌的 MSAL（v2.0 终结点）（与上面的情况相同），Azure AD 将提取最后一个斜杠前面的所有内容并将其用作资源标识符，以分析请求的范围中的所需受众。 因此，如果 https： \/ /database.windows.net 需要 "https： \/ /database.windows.net/" 的受众，则需要请求 "https：/database.windows.net//.default" 的作用域 \/ 。 另请参阅 GitHub 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
+- 对于要求资源访问令牌接受 v2.0 令牌的 MSAL（Microsoft 标识平台），`aud=resource.AppId`
+- 对于要求资源访问令牌接受 v1.0 令牌的 MSAL（v2.0 终结点）（与上面的情况相同），Azure AD 将提取最后一个斜杠前面的所有内容并将其用作资源标识符，以分析请求的范围中的所需受众。 因此，如果 https:\//database.windows.net 预期的受众为“https:\//database.windows.net/”，则需要请求的范围为“https:\//database.windows.net//.default”。 另请参阅 GitHub 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的所有权限
 

@@ -7,22 +7,22 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
 ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92485437"
 ---
-# <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL 中的高可用性–单一服务器
-Azure Database for PostgreSQL –单服务器服务可提供有保证的高级别可用性，其中包含 [99.99%](https://azure.microsoft.com/support/legal/sla/postgresql) 运行时间 (SLA) 的财务支持服务级别协议。 Azure Database for PostgreSQL 在发生计划内事件（例如用户发起的缩放计算操作）期间提供高可用性，并且还在发生基础硬件、软件或网络故障等计划外事件时提供高可用性。 Azure Database for PostgreSQL 在发生大多数严重状况时都可以快速恢复，确保用户在使用此服务时应用程序几乎不会停机。
+# <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL（单一服务器）中的高可用性
+Azure Database for PostgreSQL（单一服务器）提供高可用性承诺，即提供 [99.99%](https://azure.microsoft.com/support/legal/sla/postgresql) 的正常运行时间服务等级协议 (SLA)，并在未能兑现承诺的情况下提供财务补偿。 Azure Database for PostgreSQL 在发生计划内事件（例如用户发起的缩放计算操作）期间提供高可用性，并且还在发生基础硬件、软件或网络故障等计划外事件时提供高可用性。 Azure Database for PostgreSQL 在发生大多数严重状况时都可以快速恢复，确保用户在使用此服务时应用程序几乎不会停机。
 
 Azure Database for PostgreSQL 适合运行对正常运行时间要求很高的关键数据库。 该服务基于 Azure 体系结构构建，具有固有的高可用性、冗余性和复原能力，可以缓解计划内和计划外中断造成的数据库停机，不需要你配置任何其他组件。 
 
-## <a name="components-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL 中的组件–单一服务器
+## <a name="components-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL（单一服务器）中的组件
 
 | **组件** | **说明**|
 | ------------ | ----------- |
-| <b>PostgreSQL 数据库服务器 | Azure Database for PostgreSQL 为数据库服务器提供安全性、隔离、资源保护和快速重启功能。 这些功能有助于在发生中断后的几秒钟内执行缩放操作和数据库服务器恢复操作等操作。 <br/> 数据库服务器中的数据修改通常发生在数据库事务的上下文中。 所有数据库更改以同步方式记录在 Azure 存储 (WAL) 上，该日志附加到数据库服务器。 在数据库[检查点](https://www.postgresql.org/docs/11/sql-checkpoint.html)过程中，数据库服务器内存中的数据页也会刷新到存储中。 |
+| <b>PostgreSQL 数据库服务器 | Azure Database for PostgreSQL 为数据库服务器提供安全性、隔离、资源保护和快速重启功能。 这些功能有助于在发生中断后的几秒钟内执行缩放操作和数据库服务器恢复操作等操作。 <br/> 数据库服务器中的数据修改通常发生在数据库事务的上下文中。 所有数据库更改都以预写日志 (WAL) 的形式同步记录在 Azure 存储上，该存储附加到数据库服务器。 在数据库[检查点](https://www.postgresql.org/docs/11/sql-checkpoint.html)过程中，数据库服务器内存中的数据页也会刷新到存储中。 |
 | <b>远程存储 | 所有 PostgreSQL 物理数据文件和 WAL 文件都存储在 Azure 存储中，该存储设计为在一个区域中存储数据的三个副本，以确保数据冗余、可用性和可靠性。 存储层还独立于数据库服务器。 它可以在几秒内从发生故障的数据库服务器分离并重新附加到新的数据库服务器。 此外，Azure 存储还会持续监视是否存在任何存储故障。 如果检测到块损坏，则会通过实例化新的存储副本来自动修复。 |
 | <b>网关 | 网关充当数据库代理，将所有客户端连接路由到数据库服务器。 |
 
@@ -40,7 +40,7 @@ Azure Database for PostgreSQL 设计为在计划内停机操作期间提供高�
 | ------------ | ----------- |
 | <b>计算纵向扩展/缩减 | 当用户执行计算纵向扩展/缩减操作时，将使用缩放的计算配置来预配新的数据库服务器。 在旧的数据库服务器中，将允许处于活动状态的检查点完成，客户端连接将排空，所有未提交的事务将取消，然后将关闭该服务器。 然后会从旧数据库服务器分离存储并将其附加到新的数据库服务器。 当客户端应用程序重试连接或尝试建立新连接时，网关会将连接请求定向到新的数据库服务器。|
 | <b>纵向扩展存储 | 纵向扩展存储是一种联机操作，不会中断数据库服务器。|
-| <b>新软件部署 (Azure) | 新功能的推出或 bug 修复会自动在服务的计划内维护过程中发生。 有关详细信息，请参阅[文档](./concepts-monitoring.md#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
+| <b>新软件部署 (Azure) | 在服务的计划内维护过程中，将自动推出新功能或修复 bug。 有关详细信息，请参阅[文档](./concepts-monitoring.md#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
 | <b>次要版本升级 | Azure Database for PostgreSQL 会自动将数据库服务器修补到 Azure 确定的次要版本。 这是在服务的计划内维护过程中发生的。 这会导致短暂的停机（以秒为单位），并且会自动重启装有新次要版本的数据库服务器。 有关详细信息，请参阅[文档](./concepts-monitoring.md#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
 
 
@@ -49,7 +49,7 @@ Azure Database for PostgreSQL 设计为在计划内停机操作期间提供高�
 意外的故障（包括基础硬件故障、网络问题和软件 bug）可能会导致计划外停机。 如果数据库服务器意外关闭，则会在数秒内自动预配一个新的数据库服务器。 远程存储会自动附加到新的数据库服务器。 PostgreSQL 引擎使用 WAL 和数据库文件执行恢复操作，并打开数据库服务器以允许客户端进行连接。 未提交的事务将丢失，并且必须由应用程序重试。 虽然计划外停机无法避免，但 Azure Database for PostgreSQL 可以通过在数据库服务器和存储层上自动执行恢复操作来减少停机时间，无需人工干预。 
 
 
-:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL 中的弹性缩放的视图":::
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL 中的高可用性的视图":::
 
 1. 具有快速缩放功能的 Azure PostgreSQL 服务器。
 2. 充当代理的网关，可以将客户端连接路由到适当的数据库服务器。

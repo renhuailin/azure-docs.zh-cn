@@ -1,15 +1,15 @@
 ---
 title: Reliable Services 生命周期概述
-description: 了解 Azure Service Fabric Reliable Services 应用程序中的生命周期事件以实现有状态和无状态服务。
+description: 了解有状态和无状态服务的 Azure Service Fabric Reliable Services 应用程序中的生命周期事件。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 6ea8fa6933052374721d8d205d5b07386c807ae2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98784590"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services 生命周期概述

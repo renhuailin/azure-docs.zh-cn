@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/11/2021
 ms.author: alkohli
 ms.openlocfilehash: fa7616a740e8246fa08e950494428095f41ee404
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100382848"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列软件、高可用性和网络要求
@@ -41,7 +41,7 @@ ms.locfileid: "100382848"
 
 | 支持的操作系统 | 所需版本 | 其他要求/说明 |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1、2012、2012 R2、2016 |仅支持将 StorSimple iSCSI 卷用于以下 Windows 磁盘类型：<ul><li>基本磁盘上的简单卷</li><li>动态磁盘上的简单和镜像卷</li></ul>仅支持操作系统中原本就存在的软件 iSCSI 发起程序。 不支持硬件 iSCSI 发起程序。<br></br>如果使用 StorSimple iSCSI 卷，则支持 Windows Server 2012 和 2016 的精简预配和 ODX 功能。<br><br>StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。<br><br>重新格式化精简预配的卷可能需要很长时间。 建议删除该卷，并新建一个卷而不是重新格式化。 但是，如果仍希望重新格式化卷：<ul><li>请在重新格式化之前运行以下命令，以免造成空间回收延迟： <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>格式化完成后，请使用以下命令重新启用空间回收功能：<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>如 [KB 2878635](https://support.microsoft.com/kb/2870270) 中所述，对 Windows Server 计算机应用 Windows Server 2012 修补程序。</li></ul></li></ul></ul> 如果要配置 StorSimple Snapshot Manager 或 StorSimple Adapter for SharePoint，请转到[可选组件的软件要求](#software-requirements-for-optional-components)。 <br> 如果 Windows Server 客户端使用 SMB 协议来访问 StorSimple 设备，请参阅 [SMB 文件服务器的性能优化](/windows-server/administration/performance-tuning/role/file-server/smb-file-server) ，获取有关增加并行处理的指南。|
+| Windows Server |2008 R2 SP1、2012、2012 R2、2016 |仅支持将 StorSimple iSCSI 卷用于以下 Windows 磁盘类型：<ul><li>基本磁盘上的简单卷</li><li>动态磁盘上的简单和镜像卷</li></ul>仅支持操作系统中原本就存在的软件 iSCSI 发起程序。 不支持硬件 iSCSI 发起程序。<br></br>如果使用 StorSimple iSCSI 卷，则支持 Windows Server 2012 和 2016 的精简预配和 ODX 功能。<br><br>StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。<br><br>重新格式化精简预配的卷可能需要很长时间。 建议删除该卷，并新建一个卷而不是重新格式化。 但是，如果仍希望重新格式化卷：<ul><li>请在重新格式化之前运行以下命令，以免造成空间回收延迟： <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>格式化完成后，请使用以下命令重新启用空间回收功能：<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>如 [KB 2878635](https://support.microsoft.com/kb/2870270) 中所述，对 Windows Server 计算机应用 Windows Server 2012 修补程序。</li></ul></li></ul></ul> 如果要配置 StorSimple Snapshot Manager 或 StorSimple Adapter for SharePoint，请转到[可选组件的软件要求](#software-requirements-for-optional-components)。 <br> 如果 Windows Server 客户端正在使用 SMB 协议来访问 StorSimple 设备，请参阅 [SMB 文件服务器的性能优化](/windows-server/administration/performance-tuning/role/file-server/smb-file-server)，获取有关增加并行处理的指南。|
 | VMware ESX |5.5 和 6.0 |支持与作为 iSCSI 客户端的 VMware vSphere 配合使用。 StorSimple 设备上的 VMware vSphere 支持 VAAI 块功能。 |
 | Linux RHEL/CentOS |5、6 和 7 |支持配有开放 iSCSI 发起程序版本 5、6 和 7 的 Linux iSCSI 客户端。 |
 | Linux |SUSE Linux 11 | |
@@ -70,9 +70,9 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 | UDP 53 (DNS) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 DNS 服务器时，才需要此端口。 |
 | UDP 123 (NTP) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 NTP 服务器时，才需要此端口。 |
 | TCP 9354 |出 |WAN |是 |StorSimple 设备使用出站端口与 StorSimple 设备管理器服务进行通信。 |
-| 3260 (iSCSI) |In |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
-| 5985 |In |LAN |否 |StorSimple Snapshot Manager 使用入站端口与 StorSimple 设备进行通信。<br>通过 HTTP 远程连接到 Windows PowerShell for StorSimple 时，也会使用此端口。 |
-| 5986 |In |LAN |否 |通过 HTTPS 远程连接到 Windows PowerShell for StorSimple 时使用此端口。 |
+| 3260 (iSCSI) |在 |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
+| 5985 |在 |LAN |否 |StorSimple Snapshot Manager 使用入站端口与 StorSimple 设备进行通信。<br>通过 HTTP 远程连接到 Windows PowerShell for StorSimple 时，也会使用此端口。 |
+| 5986 |在 |LAN |否 |通过 HTTPS 远程连接到 Windows PowerShell for StorSimple 时使用此端口。 |
 
 <sup>1</sup> 无需在公共 Internet 上打开任何入站端口。
 
@@ -81,7 +81,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 <sup>3</sup> StorSimple 设备上控制器的固定 IP 必须可路由，并能直接连接到 Internet 或通过配置 Web 代理连接到 Internet。 固定 IP 地址用于为设备提供更新以及垃圾回收。 如果设备控制器无法通过固定 IP 连接到 Internet，用户将不能更新 StorSimple 设备，且垃圾回收将无法正常工作。
 
 > [!IMPORTANT]
-> 请确保防火墙不会修改或解密 StorSimple 设备和 Azure 之间的任何 TLS 通信。
+> 确保防火墙不会修改或解密 StorSimple 设备和 Azure 之间的任何 TLS 通信。
 
 
 ### <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
@@ -91,7 +91,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 绝大多数情况下，建议基于 StorSimple 固定 IP 地址为出站流量设置防火墙规则。 但是，下面的信息可用于设置创建安全环境所需的高级防火墙规则。
 
 > [!NOTE]
-> 设备（源）IP 应始终设置为所有已启用的网络接口。 目标 Ip 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)。
+> 设备（源）IP 应始终设置为所有已启用的网络接口。 目标 IP 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)。
 
 
 #### <a name="url-patterns-for-azure-portal"></a>Azure 门户的 URL 模式
@@ -233,7 +233,7 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 * 请确保始终都安装有两个 EBOD 机箱控制器模块、两个 SAS 电缆以及所有的硬盘驱动器。
 * 如果 EBOD 机箱控制器模块发生故障，立即请求更换。
 * 如果 EBOD 机箱控制器模块发生故障，请确保在更换发生故障的模块之前另一个控制器模块处于主动状态。 若要验证控制器是否处于主动状态，请转到 [Identify the active controller on your device](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)（识别设备上的主动控制器）。
-* 在 EBOD 控制器模块更换过程中，会通过访问 "**监视**  >  **硬件运行状况**" 持续监视 StorSimple Device Manager 服务中组件的状态。
+* 在 EBOD 控制器模块更换过程中，依次访问“监视” > “硬件运行状况”，持续监视 StorSimple 设备管理器服务中的组件状态。
 * 如果 SAS 电缆发生故障或需要更换（应让 Microsoft 支持部门参与，一起做出决定），请确保仅移除需要更换的 SAS 电缆。
 * 不要同时从系统中移除两个 SAS 电缆。
 

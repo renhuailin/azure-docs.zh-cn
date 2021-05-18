@@ -8,10 +8,10 @@ ms.date: 02/11/2021
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 658107bb74396891c8e6e05a9e8074a9416a5f6f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100369656"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
@@ -20,7 +20,7 @@ ms.locfileid: "100369656"
 若要启用此功能，需要准备好以下各项：
 
 * 至少包含一个服务总线队列的服务总线高级命名空间，或者至少包含一个订阅的服务总线主题。
-* 对服务总线命名空间拥有“参与者”访问权限。 导航到 Azure 门户中的“服务总线”命名空间，选择“访问控制（标识和访问管理）”，并选择“角色分配”选项卡。验证你是否拥有该命名空间的参与者访问权限。 
+* 对服务总线命名空间拥有“参与者”访问权限。 导航到 Azure 门户中的“服务总线”命名空间，选择“访问控制(IAM)”，并选择“角色分配”选项卡。验证你是否拥有该命名空间的参与者访问权限 。 
 * 此外，需要服务总线命名空间的事件网格订阅。 存在可提取的消息时，此订阅将从事件网格接收通知。 典型的订阅方可能是 Azure 应用服务的逻辑应用功能、Azure Functions，或者与 Web 应用联系的 Webhook。 然后，订阅方会处理消息。 
 
 ![19][]

@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: af6adcf408c9790b09830e986cd1cac00774a2ec
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92123314"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491927"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>使用工作流将 Azure IoT Central 应用程序与其他云服务相集成
 
@@ -180,7 +180,7 @@ ms.locfileid: "92123314"
 
 ### <a name="update-device-properties"></a>更新设备属性
 
-使用此操作可更新特定设备的可写属性值。
+使用此操作更新特定设备的可写属性值。
 
 | 字段 | 说明 |
 | ----- | ----------- |

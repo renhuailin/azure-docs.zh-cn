@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84021851"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL 数据库安全功能    
@@ -31,13 +31,13 @@ Azure SQL 数据库在 Azure 中提供关系型数据库服务。 为了保护�
 Azure SQL 数据库仅支持表格格式数据流 (TDS) 协议，该协议要求只能通过默认端口 TCP/1433 访问数据库。
 
 ### <a name="azure-sql-database-firewall"></a>Azure SQL 数据库防火墙
-为了帮助保护客户数据，Azure SQL 数据库包括防火墙功能，该功能默认情况下会阻止对 SQL 数据库的所有访问，如下所示。
+为了帮助保护客户数据，Azure SQL 数据库包含防火墙功能，默认情况下，该功能会阻止对 SQL 数据库的所有访问，如下所示。
 
 ![Azure SQL 数据库防火墙](./media/infrastructure-sql/sql-database-firewall.png)
 
 网关防火墙可以限制地址，使客户能够进行精细控制，以指定可接受的 IP 地址范围。 防火墙基于每个请求的来源 IP 地址授予访问权限。
 
-客户可以使用管理门户，或者使用 Microsoft Azure SQL 数据库管理 REST API 以编程方式实现防火墙配置。 默认情况下，Azure SQL 数据库网关防火墙阻止所有客户 TDS 对 Azure SQL 数据库的访问权限。 客户使用访问控制列表 (ACL) 配置访问权限，允许通过源和目标 Internet 地址、协议和端口号建立 Azure SQL 数据库建立连接。
+客户可以使用管理门户，或者使用 Microsoft Azure SQL 数据库管理 REST API 以编程方式实现防火墙配置。 Azure SQL 数据库网关防火墙默认阻止所有客户 TDS 访问 Azure SQL 数据库。 客户使用访问控制列表 (ACL) 配置访问权限，允许通过源和目标 Internet 地址、协议和端口号建立 Azure SQL 数据库建立连接。
 
 ### <a name="dosguard"></a>DoSGuard
 名为 DoSGuard 的 SQL 数据库网关服务可以减少拒绝服务 (DoS) 攻击。 DoSGuard 能够主动跟踪 IP 地址发起的失败登录。 如果特定的 IP 地址在一段时间内多次登录失败，则会阻止该 IP 地址在预定义的时间段内访问服务中的任何资源。

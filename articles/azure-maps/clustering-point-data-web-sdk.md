@@ -1,6 +1,6 @@
 ---
 title: 在地图上聚类点数据 | Microsoft Azure Maps
-description: 了解如何对地图上的数据点进行分类。 了解如何使用 Azure Maps Web SDK 对数据进行分类、对群集鼠标事件做出反应并显示群集聚合。
+description: 了解如何在地图上聚类点数据。 了解如何使用 Azure Maps Web SDK 来聚类数据，响应聚类鼠标事件以及显示聚类聚合。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102044181"
 ---
 # <a name="clustering-point-data"></a>聚类点数据
@@ -26,7 +26,7 @@ ms.locfileid: "102044181"
 
 ## <a name="enabling-clustering-on-a-data-source"></a>对数据源启用聚类
 
-通过将 `cluster` 选项设置为 true，在 `DataSource` 类中启用聚类。 设置 `clusterRadius` 为选择附近点并将它们合并到一个群集。 `clusterRadius` 的值以像素为单位。 用于 `clusterMaxZoom` 指定禁用聚类分析逻辑的缩放级别。 下面的示例演示如何在数据源中启用聚类。
+通过将 `cluster` 选项设置为 true，在 `DataSource` 类中启用聚类。 设置 `clusterRadius` 以选择附近的点，并将它们合并为聚类。 `clusterRadius` 的值以像素为单位。 使用 `clusterMaxZoom` 指定禁用聚类逻辑的缩放级别。 下面的示例演示如何在数据源中启用聚类。
 
 ```javascript
 //Create a data source and enable clustering.
@@ -46,7 +46,7 @@ var datasource = new atlas.source.DataSource(null, {
 > [!TIP]
 > 如果两个数据点在地面上紧挨着，则聚类可能永远不会分解，无论用户放大多少倍。 若要解决此情况，可以设置 `clusterMaxZoom` 选项以禁用聚类逻辑，只是显示所有内容。
 
-`DataSource`类还提供了与聚类分析相关的下列方法。
+`DataSource` 类还提供了以下与聚类有关的方法。
 
 | 方法 | 返回类型 | 说明 |
 |--------|-------------|-------------|
@@ -92,7 +92,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 当鼠标事件在包含聚类数据点的层上发生时，聚类数据点会作为 GeoJSON 点特征对象返回给事件。 此点特征具有以下属性：
 
-| 属性名称             | 类型    | 说明   |
+| 属性名称             | 类型    | 描述   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | 指示特征是否表示聚类。 |
 | `cluster_id`              | 字符串  | 可与数据源 `getClusterExpansionZoom`、`getClusterChildren` 和 `getClusterLeaves` 方法结合使用的群集唯一 ID。 |

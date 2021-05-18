@@ -1,7 +1,7 @@
 ---
 title: AD FS 支持（适用于 Java 的 MSAL）
 titleSuffix: Microsoft identity platform
-description: 了解 Active Directory 联合身份验证服务适用于 Java 的 Microsoft 身份验证库 (MSAL4j)  (AD FS) 支持。
+description: 了解适用于 Java (MSAL4j) 的 Microsoft 身份验证库中的 Active Directory 联合身份验证服务 (AD FS) 支持。
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-java
 ms.openlocfilehash: 82e3f3b32c6d96b83ec1d0402f344e7d65788c06
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98063699"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>MSAL for Java 中的 Active Directory 联合身份验证服务支持

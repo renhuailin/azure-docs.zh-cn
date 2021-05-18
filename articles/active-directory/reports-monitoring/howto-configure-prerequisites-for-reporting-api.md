@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ca618dc234ff4383083ff5eb21299fb1e3e7128
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348732"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
@@ -50,7 +50,7 @@ ms.locfileid: "96348732"
 
 ## <a name="license-requirements"></a>许可证要求
 
-Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能访问租户的登录报告。 若要访问任何 Azure AD 租户的登录报告，需要 Azure AD Premium P1（或更高版本）许可证。 或者，如果目录类型为 Azure AD B2C，则无需任何其他许可证要求即可通过 API 访问登录报告。 
+Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能访问租户的登录报告。 若要访问任何 Azure AD 租户的登录报告，需要 Azure AD Premium P1（或更高版本）许可证。 或者，如果目录类型为 Azure AD B2C，则无需满足任何其他许可证要求即可通过 API 访问登录报告。 
 
 
 ## <a name="register-an-application"></a>注册应用程序
@@ -195,13 +195,13 @@ Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能�
 
 本部分列出了使用 Microsoft Graph API 访问活动报告时可能遇到的常见错误消息及其解决步骤。
 
-### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>错误：未能从 Microsoft Graph 获取用户角色
+### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>错误：无法从 Microsoft Graph 获取用户角色
 
- 使用图形资源管理器 UI 中的登录按钮登录到你的帐户，以避免尝试使用图形资源管理器登录时出现错误。 
+ 使用 Graph 浏览器 UI 中的两个登录按钮登录到你的帐户，以避免在尝试使用 Graph 浏览器登录时出现错误。 
 
 ![Graph 浏览器](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>错误：未能从 Microsoft Graph 进行高级许可证检查 
+### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>错误：无法从 Microsoft Graph 执行 Premium 许可证检查 
 
 如果尝试使用 Graph 浏览器访问登录时收到此错误消息，请在左侧导航栏中选择帐户下方的“修改权限”，然后选择“Tasks.ReadWrite”和“Directory.Read.All”。 
 

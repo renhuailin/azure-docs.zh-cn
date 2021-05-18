@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 03fc17c0d071cef4c8de92c6b50d60d961d18aef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91565253"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>使用证书提高 B2B 消息的安全性
@@ -26,7 +26,7 @@ ms.locfileid: "91565253"
 
 * [公用证书](https://en.wikipedia.org/wiki/Public_key_certificate)，必须从公用 Internet [证书颁发机构 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) 购买，不需要任何密钥。 
 
-* 私有证书或[*自签名证书*](https://en.wikipedia.org/wiki/Self-signed_certificate)，由你自己创建并颁发，但还需要私钥。 
+* 私有证书或 [*自签名证书*](https://en.wikipedia.org/wiki/Self-signed_certificate)，由你自己创建并颁发，但还需要私钥。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -44,18 +44,18 @@ ms.locfileid: "91565253"
 
 3. 在“证书”下，选择“添加”。  在“添加证书”下，提供证书的这些详细信息。 完成后，选择“确定”。
 
-   | 属性 | Value | 说明 | 
+   | 属性 | 值 | 说明 | 
    |----------|-------|-------------|
    | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“publicCert” | 
    | **证书类型** | 公共 | 你的证书的类型 |
    | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 |
    ||||
 
-   ![屏幕截图显示在何处选择 "添加" 以提供证书详细信息。](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
+   ![屏幕截图显示了在何处选择“添加”以提供证书详细信息。](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
 
    在 Azure 验证你的选择后，Azure 会上传你的证书。
 
-   ![显示 Azure 显示新证书的位置的屏幕截图。](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
+   ![此屏幕截图展示了 Azure 显示新证书的位置。](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
 
 ## <a name="upload-a-private-certificate"></a>上传私有证书
 
@@ -66,7 +66,7 @@ ms.locfileid: "91565253"
 > [!NOTE]
 > 对于专用证书，请确保添加相应的公共证书（出现在 [AS2 协议的](logic-apps-enterprise-integration-as2.md)“发送和接收”设置中），用于对消息进行签名和加密。
 
-1. [将私钥添加到 Azure Key Vault](../key-vault/certificates/certificate-scenarios.md#import-a-certificate) 并提供**密钥名称**。
+1. [将私钥添加到 Azure Key Vault](../key-vault/certificates/certificate-scenarios.md#import-a-certificate) 并提供 **密钥名称**。
    
 2. 授权 Azure 逻辑应用对 Azure Key Vault 执行操作。 若要向逻辑应用服务主体授予访问权限，请使用 PowerShell 命令 [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)，例如：
 
@@ -83,7 +83,7 @@ ms.locfileid: "91565253"
 
 5. 在“证书”下，选择“添加”。  在“添加证书”下，提供证书的这些详细信息。 完成后，选择“确定”。
 
-   | 属性 | Value | 说明 | 
+   | 属性 | 值 | 说明 | 
    |----------|-------|-------------|
    | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“privateCert” | 
    | **证书类型** | 专用 | 你的证书的类型 |

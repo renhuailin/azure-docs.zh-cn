@@ -1,5 +1,5 @@
 ---
-title: Azure ADAL 到 MSAL 的迁移视频 |Microsoft
+title: Azure ADAL 到 MSAL 的迁移视频 | Azure
 description: 有助于从 Azure Active Directory 开发人员平台迁移到 Microsoft 标识平台的视频
 services: active-directory
 author: mmacy
@@ -14,23 +14,23 @@ ms.custom: aaddev
 ms.reviewer: celested
 ROBOTS: NOINDEX
 ms.openlocfilehash: a4bb9151e9d4b76507b0c7f8ab5aaa7f5f1820b8
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96608191"
 ---
 # <a name="azure-active-directory-developer-platform-videos"></a>Azure Active Directory 开发人员平台视频
 
-了解新的 Microsoft 标识平台以及如何从 Azure Active Directory (Azure AD) 开发人员平台迁移到该平台。 视频通常为1-2 分钟。
+了解新的 Microsoft 标识平台以及如何从 Azure Active Directory (Azure AD) 开发人员平台迁移到该平台。 这些视频一般为 1-2 分钟。
 
 ## <a name="migrate-from-v10-to-v20"></a>从 1.0 迁移到 v2.0
 
-**了解如何迁移到最新版本的 Microsoft 标识平台**
+了解如何迁移到最新版本的 Microsoft 标识平台
 
 :::row:::
     :::column:::
-        新的 Microsoft 标识平台概述
+        新 Microsoft 标识平台的概述
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]

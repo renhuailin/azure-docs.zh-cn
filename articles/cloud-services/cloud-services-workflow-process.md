@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 606510940460db963a2aa63deb57b6dba77de3ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101700127"
 ---
 # <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure 经典 VM 体系结构的工作流 
@@ -80,7 +80,7 @@ ms.locfileid: "101700127"
 5. WindowsAzureGuestAgent 设置来宾 OS（防火墙、ACL、LocalStorage 等），将新的 XML 配置文件复制到 c:\Config，然后启动 WaHostBootstrapper 进程。
 6. 对于完整 IIS Web 角色，WaHostBootstrapper 将启动 IISConfigurator，并告诉它要从 IIS 中删除 Web 角色的所有现有 AppPool。
 7. WaHostBootstrapper 从 E:\RoleModel.xml 读取 **启动** 任务，并开始执行启动任务。 WaHostBootstrapper 等到所有简单启动任务已完成并返回了“成功”消息。
-8. 对于完整 IIS Web 角色，WaHostBootstrapper 将告知 IISConfigurator 配置 IIS AppPool 并将站点指向 `E:\Sitesroot\<index>`，其中 `<index>` 是为服务定义的 `<Sites>` 元素数目的从 0 开始的索引。
+8. 对于完整 IIS web 角色，WaHostBootstrapper 会指示 IISConfigurator 配置 IIS AppPool，并将站点指向 `E:\Sitesroot\<index>`（其中 `<index>` 是指向为服务定义的 `<Sites>` 元素数的从零开始的索引）。
 9. WaHostBootstrapper 将根据角色类型启动主机进程：
     1. **辅助角色**：WaWorkerHost.exe 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 当它返回后，WaHostBootstrapper 开始执行 Run() 方法，同时将角色标记为 Ready，并将其放入负载均衡器轮换阵容（如果定义了 InputEndpoints）。 然后，WaHostBootsrapper 进入检查角色状态的循环中。
     2. **完整 IIS Web 角色**：aIISHost 已启动。 WaHostBootstrapper 执行 OnStart() 方法。 返回后，它开始执行 Run() 方法，同时将角色标记为 Ready，并将其放入负载均衡器轮换阵容。 然后，WaHostBootsrapper 进入检查角色状态的循环中。

@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: 990ca661eb6ec17c7f8aca246c15f89fcf8975a8
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e72d509f71704bbf8608543df5e819a9b8783935
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104785217"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562063"
 ---
 # <a name="provide-server-credentials-to-discover-software-inventory-dependencies-and-sql-server-instances-and-databases"></a>提供服务器凭据以发现软件清单、依赖项以及 SQL Server 实例和数据库
 
@@ -22,7 +22,7 @@ ms.locfileid: "104785217"
 
 [Azure Migrate 设备](migrate-appliance.md)是“Azure Migrate: 发现和评估”使用的一种轻型设备，可发现在 VMware 环境中运行的本地服务器，并将服务器配置和性能元数据发送到 Azure。 该设备还可用于执行软件清单、无代理依赖项分析以及发现 SQL Server 实例和数据库。
 
-若要使用这些功能，可按照以下步骤提供服务器凭据。 设备会尝试自动将凭据映射到服务器以执行发现功能。
+若要使用这些功能，可遵循以下步骤提供服务器凭据。 设备会尝试自动将凭据映射到服务器以执行发现功能。
 
 ## <a name="add-credentials-for-servers-running-in-vmware-environment"></a>为 VMware 环境中运行的服务器添加凭据
 
@@ -34,9 +34,9 @@ ms.locfileid: "104785217"
 
 凭据类型 | 说明
 --- | ---
-域凭据 | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加“域凭据”。  <br/><br/> 若要提供域凭据，你需要指定域名，该域名必须以 FQDN 格式提供（例如 prod.corp.contoso.com）。 <br/><br/> 你还需要为凭据、用户名和密码指定一个易记名称。 <br/><br/> 添加的域凭据将根据域的 Active Directory 自动验证其真实性。 这是为了防止在设备尝试根据所发现的服务器映射域凭据时发生帐户锁定的情况。 <br/><br/> 设备不会尝试映射验证失败的域凭据。 你需要至少有一个已成功验证的域凭据或至少一个非域凭据才能继续执行软件清单。<br/><br/>针对 Windows 服务器自动映射的域凭据将用来执行软件清单，并且可以用来发现 SQL Server 实例和数据库（如果你已在 SQL Server 上配置了 Windows 身份验证模式）。<br/> [详细了解](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authentication-in-sql-server) SQL Server 上支持的身份验证模式的类型。
+域凭据 | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加“域凭据”。  <br/><br/> 若要提供域凭据，你需要指定域名，该域名必须以 FQDN 格式提供（例如 prod.corp.contoso.com）。 <br/><br/> 你还需要为凭据、用户名和密码指定一个易记名称。 <br/><br/> 添加的域凭据将根据域的 Active Directory 自动验证其真实性。 这是为了防止在设备尝试根据所发现的服务器映射域凭据时发生帐户锁定的情况。 <br/><br/> 设备不会尝试映射验证失败的域凭据。 你需要至少有一个已成功验证的域凭据或至少一个非域凭据才能继续执行软件清单。<br/><br/>针对 Windows 服务器自动映射的域凭据将用来执行软件清单，并且可以用来发现 SQL Server 实例和数据库（如果你已在 SQL Server 上配置了 Windows 身份验证模式）。<br/> [详细了解](/dotnet/framework/data/adonet/sql/authentication-in-sql-server) SQL Server 上支持的身份验证模式的类型。
 非域凭据 (Windows/Linux) | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加 Windows（非域）或 Linux（非域）凭据。   <br/><br/> 你需要为凭据、用户名和密码指定一个易记名称。
-SQL Server 身份验证凭据 | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加“SQL Server 身份验证”凭据。  <br/><br/> 你需要为凭据、用户名和密码指定一个易记名称。 <br/><br/> 如果你已在 SQL Server 上配置了 SQL Server 身份验证模式，则可以添加此类型的凭据，以发现在 VMware 环境中运行的 SQL Server 实例和数据库。<br/> [详细了解](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authentication-in-sql-server) SQL Server 上支持的身份验证模式的类型。<br/><br/> 你需要提供至少一个已成功验证的域凭据或至少一个 Windows（非域）凭据，以便使设备能够完成软件清单来发现服务器上安装的 SQL，然后再使用 SQL Server 身份验证凭据来发现 SQL Server 实例和数据库。
+SQL Server 身份验证凭据 | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加“SQL Server 身份验证”凭据。  <br/><br/> 你需要为凭据、用户名和密码指定一个易记名称。 <br/><br/> 如果你已在 SQL Server 上配置了 SQL Server 身份验证模式，则可以添加此类型的凭据，以发现在 VMware 环境中运行的 SQL Server 实例和数据库。<br/> [详细了解](/dotnet/framework/data/adonet/sql/authentication-in-sql-server) SQL Server 上支持的身份验证模式的类型。<br/><br/> 你需要提供至少一个已成功验证的域凭据或至少一个 Windows（非域）凭据，以便使设备能够完成软件清单来发现服务器上安装的 SQL，然后再使用 SQL Server 身份验证凭据来发现 SQL Server 实例和数据库。
 
 检查 Windows/Linux 凭据所需的权限，以执行软件清单、无代理依赖项分析以及发现 SQL Server 实例和数据库。
 
@@ -46,7 +46,7 @@ SQL Server 身份验证凭据 | 在“添加凭据”模式下，你可以通过
 
 功能 | Windows 凭据 | Linux 凭据
 ---| ---| ---
-**软件清单** | 来宾用户帐户 | 常规/普通用户帐户（非 sudo 访问权限）
+软件清单 | 来宾用户帐户 | 常规/普通用户帐户（非 sudo 访问权限）
 发现 SQL Server 实例和数据库 | 作为 sysadmin 服务器角色成员的用户帐户。 | _当前不支持_
 **无代理依赖项分析** | 具有管理权限的域或非域（本地）帐户 | 根用户帐户，或 <br/> 对 /bin/netstat 和 /bin/ls 文件具有以下权限的帐户：CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。<br/><br/> 使用以下命令设置这些功能： <br/><br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls<br/><br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat
 

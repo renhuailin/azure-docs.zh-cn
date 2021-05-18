@@ -1,7 +1,7 @@
 ---
-title: 视频索引器概念-Azure
+title: 视频索引器概念 - Azure
 titleSuffix: Azure Media Services Video Indexer
-description: 本文简要概述了 Azure 媒体服务视频索引器的术语和概念。
+description: 本文简要概述 Azure 媒体服务视频索引器的术语和概念。
 services: media-services
 author: Juliako
 manager: femila
@@ -11,23 +11,23 @@ ms.topic: article
 ms.date: 01/19/2021
 ms.author: juliako
 ms.openlocfilehash: 41c9dfe9251da3bddb16ff507ebd512713c3b88a
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98633757"
 ---
 # <a name="video-indexer-concepts"></a>视频索引器概念
 
-本文简要概述了 Azure 媒体服务视频索引器的术语和概念。
+本文简要概述 Azure 媒体服务视频索引器的术语和概念。
 
 ## <a name="audiovideocombined-insights"></a>音频/视频/组合见解
 
-将视频上传到视频索引器时，会通过运行不同的 AI 模型来分析视觉对象和音频。 当视频索引器分析视频时，由 AI 模型提取的见解。 有关详细信息，请参阅 [概述](video-indexer-overview.md)。
+将视频上传到视频索引器时，会通过运行不同的 AI 模型来分析视觉对象和音频。 当视频索引器分析视频时，由 AI 模型提取的见解。 有关详细信息，请参阅[概述](video-indexer-overview.md)。
 
-## <a name="confidence-scores"></a>置信度分数 
+## <a name="confidence-scores"></a>置信度分数
 
-置信度分数表明了洞察力的置信度。 它是介于0.0 和1.0 之间的数字。 分数越高，答案的置信度就越大。 例如， 
+置信度分数表明了见解的置信度。 此分数是介于 0.0 到 1.0 之间的数字。 分数越高，答案的置信度就越大。 例如， 
 
 ```json
 "transcript":[
@@ -50,27 +50,27 @@ ms.locfileid: "98633757"
 
 ## <a name="content-moderation"></a>内容审核
 
-使用文本和视觉内容裁决模型，使你的用户不受不良内容的安全，并验证发布的内容是否与组织的值匹配。 你可以自动阻止某些视频，或向用户发出有关这些内容的警报。 有关详细信息，请参阅 [Insights：视觉对象和文本内容审核](video-indexer-output-json-v2.md#visualcontentmoderation)。 
+使用文本和视觉内容审核模型可保护用户远离不当内容，并验证发布的内容是否与组织的价值观相符。 你可以自动阻止某些视频，或向用户发出有关这些内容的警报。 有关详细信息，请参阅[见解：视觉和文本内容审核](video-indexer-output-json-v2.md#visualcontentmoderation)。 
 
-## <a name="blocks"></a>Blocks   
+## <a name="blocks"></a>块   
 
 可以通过块更轻松地浏览数据。 例如，可以在发言人换人或中断时间长时将块细分。  
 
 ## <a name="project-and-editor"></a>项目和编辑器
 
-[视频索引器](https://www.videoindexer.ai/)网站使你能够使用视频的深入见解来：查找正确的媒体内容，找到你感兴趣的部分，并使用结果创建全新的项目。 创建后，可以从视频索引器呈现和下载项目，并在自己的编辑应用程序或下游工作流中使用。
+通过[视频索引器](https://www.videoindexer.ai/)网站，你能够使用视频的深入见解来查找正确的媒体内容，找到你感兴趣的部分，并使用结果创建全新的项目。 创建后，可以从视频索引器呈现和下载项目，并在自己的编辑应用程序或下游工作流中使用。
 
-在某些情况下，你可能会发现此功能非常有用： 
+在以下情况下，你可能会发现此功能非常有用： 
 
-* 为拖车创建电影亮点。
-* 在新闻强制转换中使用旧的视频剪辑。
+* 为预告片创建电影亮点。
+* 在新闻广播中使用旧的视频剪辑。
 * 为社交媒体创建较短的内容。
 
-有关详细信息，请参阅 [使用编辑器创建项目](use-editor-create-project.md)。
+有关详细信息，请参阅[使用编辑器创建项目](use-editor-create-project.md)。
 
 ## <a name="keyframes"></a>关键帧
 
-视频索引器选择最能表示每个截图 () 帧。 关键帧是基于美观属性从整个视频中选择的代表帧， (例如，对比度和 stableness) 。 有关详细信息，请参阅[场景、镜头和关键帧](scenes-shots-keyframes.md)。
+视频索引器选择最能表示每个镜头的帧。 关键帧是根据美学属性（例如对比度和稳定性）从整个视频中选取的代表性帧。 有关详细信息，请参阅[场景、镜头和关键帧](scenes-shots-keyframes.md)。
 
 ## <a name="time-range-vs-adjusted-time-range"></a>时间范围和调整的时间范围   
 
@@ -78,7 +78,7 @@ TimeRange 是原始视频中的时间范围。 AdjustedTimeRange 是相对于当
 
 ## <a name="widgets"></a>小组件
 
-视频索引器支持在应用程序中嵌入小组件。 有关详细信息，请参阅 [在应用中嵌入视频索引器小组件](video-indexer-embed-widgets.md)。
+视频索引器支持在应用中嵌入小组件。 有关详细信息，请参阅[将视频索引器小组件嵌入应用](video-indexer-embed-widgets.md)。
 
 ## <a name="summarized-insights"></a>汇总见解  
 

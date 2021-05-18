@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 5abbb26e7582d8ddabb73f3a178cf6d87e24db21
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 5422fe324ca1f3ef5bb2d14fb04664c8fb03fe3c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942531"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866227"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ 进行失败 Spark 作业调试（预览）
 
@@ -40,13 +40,13 @@ ms.locfileid: "98942531"
 
    b. 从主窗口中选择“Spark 项目和失败任务调试示例(预览)(Scala)”。
 
-     ![Intellij 创建调试项目](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
+     :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png" alt-text="Intellij 创建调试项目" border="true":::
 
    c. 选择“**下一步**”。
 
 2. 在“新建项目”窗口中执行以下步骤：
 
-   ![Intellij 的“新建项目”选项选择 Spark 版本](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png" alt-text="Intellij 的“新建项目”选项选择 Spark 版本" border="true":::
 
    a. 输入项目名称和项目位置。
 
@@ -64,25 +64,25 @@ ms.locfileid: "98942531"
 
 1. 单击“添加配置”，打开“运行/调试配置”窗口。 
 
-   ![HDI Intellij 添加配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png" alt-text="HDI Intellij 添加配置" border="true":::
 
 2. 在“运行/调试配置”对话框中，选择加号 (+) 。 然后选择“HDInsight 上的 Apache Spark”选项。
 
-   ![Intellij 添加新配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png" alt-text="Intellij 添加新配置" border="true":::
 
 3. 切换到“在群集中远程运行”选项卡。为“名称”、“Spark 群集”  和“Main 类名”输入信息。 工具支持使用“执行器”进行调试。 **numExectors** 的默认值为 5，设置的值最好不要大于 3。 若要减少运行次数，可以将 **spark.yarn.maxAppAttempts** 添加到“作业配置”中并将值设置为 1。 单击“确定”按钮，保存配置。
 
-   ![Intellij 运行调试配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png" alt-text="Intellij 运行调试配置“新建”" border="true":::
 
 4. 现已使用提供的名称保存配置。 若要查看配置详细信息，请选择配置名称。 若要进行更改，请选择“编辑配置”。
 
 5. 完成配置设置后，可以针对远程群集运行项目。
 
-   ![Intellij 调试远程 Spark 作业远程运行按钮](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png" alt-text="Intellij 调试远程 Spark 作业“远程运行”按钮" border="true":::
 
 6. 可以在输出窗口中查看应用程序 ID。
 
-   ![Intellij 调试远程 Spark 作业远程运行结果](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png" alt-text="Intellij 调试远程 Spark 作业远程运行结果" border="true":::
 
 ## <a name="download-failed-job-profile"></a>下载已失败作业的配置文件
 
@@ -90,9 +90,9 @@ ms.locfileid: "98942531"
 
 1. 打开 Microsoft Azure 存储资源管理器，找到已失败作业所在群集的 HDInsight 帐户，将已失败作业的资源从相应的位置 (\hdp\spark2-events\\.spark-failures\\\<application ID>) 下载到本地文件夹。 “活动”窗口会显示下载进度。
 
-   ![Azure 存储资源管理器下载失败](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png" alt-text="Azure 存储资源管理器下载失败" border="true":::
 
-   ![Azure 存储资源管理器下载成功](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png" alt-text="Azure 存储资源管理器下载成功" border="true":::
 
 ## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>配置本地调试环境并在失败时进行调试
 
@@ -100,13 +100,13 @@ ms.locfileid: "98942531"
 
 1. 在 IntelliJ IDEA 中，创建一个 **Spark 失败调试** 配置文件，从以前下载的已失败作业的资源中选择与“Spark 作业失败上下文位置”字段对应的 FTD 文件。
 
-   ![创建故障配置](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png" alt-text="创建故障配置" border="true":::
 
 1. 单击工具栏中的本地运行按钮，错误就会显示在“运行”窗口中。
 
-   ![运行失败-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png" alt-text="run-failure-configuration1" border="true":::
 
-   ![运行失败-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png" alt-text="run-failure-configuration2" border="true":::
 
 1. 按日志指示设置断点，然后单击本地调试按钮进行本地调试，就像 IntelliJ 中的正常 Scala/Java 项目一样。
 
@@ -140,8 +140,8 @@ ms.locfileid: "98942531"
 * [将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
 * [使用 Azure Toolkit for Eclipse 中的 HDInsight 工具创建 Apache Spark 应用程序](./apache-spark-eclipse-tool-plugin.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
-* [适用于 HDInsight 的 Apache Spark 群集中的 Jupyter Notebook 可用的内核](apache-spark-jupyter-notebook-kernels.md)
-* [将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
+* [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
+* [将外部包与 Jupyter Notebook 配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理资源

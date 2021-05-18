@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fcc482e215e646fec20516f35641bd05398d2f2d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: MT
+ms.openlocfilehash: cbe465c41363e8c0779440affeae78f999b4632d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928709"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257426"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure AD B2C 自定义策略
 
@@ -30,7 +30,7 @@ Azure PowerShell 提供了多个 cmdlet 来基于命令行和脚本对 Azure AD 
 ## <a name="prerequisites"></a>必备条件
 
 * [Azure AD B2C 租户](tutorial-create-tenant.md)，以及目录中具有 [B2C IEF 策略管理员](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)角色的用户的凭据
-* 已上传到租户的[自定义策略](custom-policy-get-started.md)
+* 已上传到租户的[自定义策略](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 * [用于 Graph 的 Azure AD PowerShell **预览版模块**](/powershell/azure/active-directory/install-adv2)
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>将 PowerShell 会话连接到 B2C 租户
@@ -191,11 +191,11 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 ...
 ```
 
-有关自定义策略疑难解答的信息，请参阅 [排查 Azure AD B2C 自定义策略和标识体验框架](./troubleshoot-custom-policies.md)。
+若要了解如何排查自定义策略问题，请参阅[排查 Azure AD B2C 自定义策略和 Identity Experience Framework 问题](./troubleshoot-custom-policies.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何使用 PowerShell 将自定义策略作为持续集成/持续交付 (CI/CD) 管道的一部分进行部署，请参阅 [从 Azure DevOps 管道部署自定义策略](deploy-custom-policies-devops.md)。
+若要了解如何使用 PowerShell 将自定义策略作为持续集成/持续交付 (CI/CD) 管道的一部分进行部署，请参阅[从 Azure DevOps 管道部署自定义策略](deploy-custom-policies-devops.md)。
 
 <!-- LINKS - External -->
 [Connect-AzureAD]: /powershell/module/azuread/get-azureadmstrustframeworkpolicy

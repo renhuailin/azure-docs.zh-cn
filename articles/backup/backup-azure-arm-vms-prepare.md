@@ -3,12 +3,12 @@ title: 将 Azure VM 备份到恢复服务保管库中
 description: 介绍如何使用 Azure 备份将 Azure VM 备份到恢复服务保管库中
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
-ms.translationtype: MT
+ms.openlocfilehash: 5c3bc66c2111c347f8ed0e32c9e597a52ed404ed
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172740"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104670420"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -117,6 +117,8 @@ ms.locfileid: "92172740"
 4. 在“保留范围”中，指定要保留每日或每周备份点的时间长度。
 5. 在“每月备份点的保留”和“每年备份点的保留”中，指定是否要保留每日或每周备份的每月或每年备份 。
 6. 选择“确定”来保存策略。
+    > [!NOTE]
+    > 为了存储还原点集合 (RPC)，备份服务将创建一个单独的资源组 (RG)。 此 RG 不同于 VM 的 RG。 [了解详细信息](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)。
 
     ![新建备份策略](./media/backup-azure-arm-vms-prepare/new-policy.png)
 

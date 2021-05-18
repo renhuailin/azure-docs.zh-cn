@@ -12,10 +12,10 @@ ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102119869"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
@@ -28,7 +28,7 @@ ms.locfileid: "102119869"
 
 使用声明值或常量生成 JSON 字符串。 点表示法后面的路径字符串用于指示将数据插入 JSON 字符串的位置。 按点拆分后，任何整数都解释为 JSON 数组的索引，而非整数则解释为 JSON 对象的索引。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | 点表示法后面的任何字符串 | string | JSON 的 JsonPath，声明值将插入到其中。 |
 | InputParameter | 点表示法后面的任何字符串 | string | JSON 的 JsonPath，常量字符串值将插入到其中。 |
@@ -117,8 +117,8 @@ ms.locfileid: "102119869"
 - 输入声明：
   - **email**,  transformation claim type  **customerEntity.email**: "john.s@contoso.com"
   - **objectId**, transformation claim type **customerEntity.userObjectId** "01234567-89ab-cdef-0123-456789abcdef"
-  - **givenName**，转换声明类型 **customerEntity** "John"
-  - **姓**，转换声明类型 **customerEntity** "Smith"
+  - givenName, transformation claim type customerEntity.firstName "John"
+  - surname, transformation claim type customerEntity.lastName "Smith"
 - 输入参数：
   - **customerEntity.role.name**:“Administrator”
   - **customerEntity.role.id** 1
@@ -144,7 +144,7 @@ ms.locfileid: "102119869"
 
 从 JSON 数据中获取指定的元素。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | string | 由声明转换用于获取项的 ClaimTypes。 |
 | InputParameter | claimToExtract | string | 要提取的 JSON 元素的名称。 |
@@ -180,7 +180,7 @@ ms.locfileid: "102119869"
 
 从 Json 数据中获取指定元素列表。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | jsonSourceClaim | string | 由声明转换用于获取声明的 ClaimTypes。 |
 | InputParameter | errorOnMissingClaims | boolean | 指定如果缺少一个声明是否引发错误。 |
@@ -234,7 +234,7 @@ ms.locfileid: "102119869"
 
 从 JSON 数据中获取指定的数值 (long) 元素。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | string | 由声明转换用于获取声明的 ClaimTypes。 |
 | InputParameter | claimToExtract | string | 要提取的 JSON 元素的名称。 |
@@ -277,7 +277,7 @@ ms.locfileid: "102119869"
 
 从 JSON 数据中获取第一个元素。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | string | ClaimType，由声明转换用于从 JSON 数据中获取项。 |
 | OutputClaim | key | string | JSON 中的第一个元素键。 |
@@ -310,7 +310,7 @@ ms.locfileid: "102119869"
 
 从 JSON 数据数组中获取第一个元素。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJsonClaim | string | 由声明转换用于从 JSON 数组中获取项的 ClaimTypes。 |
 | OutputClaim | extractedClaim | string | 调用此 ClaimsTransformation 后生成的 ClaimType，即 JSON 数组中的第一个元素。 |
@@ -339,7 +339,7 @@ ms.locfileid: "102119869"
 
 将 XML 数据转换为 JSON 格式。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | xml | string | 由声明转换用于将数据从 XML 转换为 JSON 格式的 ClaimTypes。 |
 | OutputClaim | json | string | 调用此 ClaimsTransformation 后生成的 ClaimType，即采用 JSON 格式的数据。 |

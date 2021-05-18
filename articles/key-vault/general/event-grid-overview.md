@@ -3,22 +3,21 @@ title: 通过 Azure 事件网格监视 Key Vault
 description: 使用 Azure 事件网格订阅 Key Vault 事件
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1ee38196f0b1a6e00d385dc0d2c88d45a4291d3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 4fb6d57bb84f4a3b4c5c138be9306489191bfce8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087430"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753355"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid"></a>通过 Azure 事件网格监视 Key Vault
 
-Key Vault 与事件网格的集成，用户可以在密钥保管库中存储的机密状态发生更改时收到通知。 状态更改定义为即将过期 (30 天之前过期的机密) 、已过期的机密或具有新版本的机密。 支持所有三种机密类型（密钥、证书和机密）的通知。
+通过将 Key Vault 与事件网格集成，用户可以在密钥保管库中存储的机密的状态发生更改时收到通知。 状态更改将定义为即将到期的机密（到期前 30 天）、已过期的机密或具有可用新版本的机密。 支持所有三种机密类型（密钥、证书和机密）的通知。
 
 应用程序可以响应这些使用新式无服务器体系结构的事件，无需采用复杂代码或昂贵低效的轮询服务。 可以通过 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)向事件处理程序（如 [Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)），甚至是向自己的 Webhook 推送事件，且仅需为使用的内容付费。 有关定价的详细信息，请参阅[事件网格定价](https://azure.microsoft.com/pricing/details/event-grid/)。
 
@@ -29,7 +28,7 @@ Key Vault 与事件网格的集成，用户可以在密钥保管库中存储的�
 有关详细信息，请参阅 [Key Vault 事件架构](../../event-grid/event-schema-key-vault.md)。
 
 > [!WARNING]
-> 仅在新版本的机密、密钥和证书上触发通知事件，你必须首先订阅密钥保管库中的事件，才能接收这些通知。
+> 通知事件仅在新版本的机密、密钥和证书上触发，并且你必须先在密钥保管库中订阅该事件才能接收这些通知。
 
 ## <a name="practices-for-consuming-events"></a>使用事件的做法
 
@@ -44,7 +43,7 @@ Key Vault 与事件网格的集成，用户可以在密钥保管库中存储的�
 
 - [Azure Key Vault 概述](overview.md)
 - [Azure 事件网格概述](../../event-grid/overview.md)
-- 如何：将 [Key Vault 事件路由到自动化 Runbook](event-grid-tutorial.md)。
+- 操作说明：[将 Key Vault 事件路由到自动化 Runbook](event-grid-tutorial.md)。
 - 如何：[Key Vault 机密发生更改时接收电子邮件](event-grid-logicapps.md)
 - [Azure Key Vault 的 Azure 事件网格事件架构](../../event-grid/event-schema-key-vault.md)
 - [Azure 自动化概述](../../automation/index.yml)

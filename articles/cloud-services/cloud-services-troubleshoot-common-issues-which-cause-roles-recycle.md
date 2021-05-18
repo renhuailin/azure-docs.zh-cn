@@ -1,5 +1,5 @@
 ---
-title: 云服务 (经典) 角色回收的常见原因 |Microsoft Docs
+title: 云服务（经典）角色回收的常见原因 | Microsoft Docs
 description: 突然回收云服务角色可能会导致严重停机。 以下是导致角色回收的一些常见问题，解决这些问题将有助于减少停机。
 ms.topic: article
 ms.service: cloud-services
@@ -9,16 +9,16 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 9610b32207f8367b9415c0881e49b54e24c49ad7
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741156"
 ---
-# <a name="common-issues-that-cause-azure-cloud-service-classic-roles-to-recycle"></a>导致 Azure 云服务 (经典) 角色回收的常见问题
+# <a name="common-issues-that-cause-azure-cloud-service-classic-roles-to-recycle"></a>导致 Azure 云服务（经典）角色回收的常见问题
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 本文讨论部署问题的一些常见原因，并提供故障排除技巧以帮助你解决这些问题。 角色实例无法启动，或者在“正在初始化”、“忙”和“正在停止”状态之间循环时，即指示应用程序存在问题。
 

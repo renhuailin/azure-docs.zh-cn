@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: a77a870304e20c179e22b4a4ffe404315894d8a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91743686"
 ---
-# <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>为点到站点 (预览创建和设置自定义 IPsec 策略) 
+# <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>为点到站点创建和设置自定义 IPsec 策略（预览版）
 
 如果你的环境需要自定义 IPsec 策略来用于加密，则可以轻松地使用所需设置来配置策略对象。 本文可帮助你创建自定义策略对象，然后使用 PowerShell 对其进行设置。
 
@@ -33,7 +33,7 @@ ms.locfileid: "91743686"
 
 ## <a name="1-set-variables"></a><a name="signin"></a>1.设置变量
 
-声明要使用的变量。 使用以下示例，根据需要将值替换为自己的值。 如果在练习中的任何时间点关闭 PowerShell/Cloud Shell 会话，只需再次复制并粘贴值即可重新声明这些变量。
+声明要使用的变量。 使用以下示例，根据需要将值替换为自己的值。 如果在练习期间的任何时候关闭了 PowerShell/Cloud Shell 会话，只需再次复制和粘贴该值，重新声明变量。
 
   ```azurepowershell-interactive
   $RG = "TestRG"

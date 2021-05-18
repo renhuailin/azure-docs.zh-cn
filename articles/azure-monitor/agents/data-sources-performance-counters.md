@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
 ms.openlocfilehash: f4bddc1666d1165d6a1e4c749fdbc96ede37747a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036755"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理收集 Windows 和 Linux 性能数据源
@@ -21,7 +21,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 ![性能计数器](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>配置性能计数器
-从 "Log Analytics" 工作区的 " [代理配置" 菜单](../agents/agent-data-sources.md#configuring-data-sources) 中配置性能计数器。
+从[代理配置菜单](../agents/agent-data-sources.md#configuring-data-sources)中为 Log Analytics 工作区配置性能计数器。
 
 首次为新的工作区配置 Windows 或 Linux 性能计数器时，可以选择快速创建几个通用的计数器。  将这些计数器在一个复选框中依次列出。  请确保已选中所有想要首先创建的计数器，并单击“**添加选定的性能计数器**。
 
@@ -39,13 +39,13 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 遵循以下步骤添加要收集的新 Windows 性能计数器。 请注意，不支持 V2 Windows 性能计数器。
 
-1. 单击 " **添加性能计数器**"。
+1. 单击“添加性能计数器”。
 2. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  还可以通过指定 *object\counter* 返回特定计数器的所有实例。  
 
     在从命名实例中收集 SQL Server 性能计数器时，所有命名实例计数器以 MSSQL$ 开头，并且后面接实例的名称。  例如，若要从命名 SQL 实例 INST2 的数据库性能对象收集所有数据库的“日志缓存命中率”计数器，请指定 `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`。
 
 4. 添加计数器后，计数器将把 10 秒作为“**采样间隔**”的默认时间。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
-5. 添加完计数器后，单击屏幕顶部的 " **应用** " 按钮保存配置。
+5. 添加完计数器后，单击屏幕顶部的“保存”按钮以保存配置。
 
 ### <a name="linux-performance-counters"></a>Linux 性能计数器
 
@@ -53,10 +53,10 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 遵循以下步骤添加要收集的新 Linux 性能计数器。
 
-1. 单击 " **添加性能计数器**"。
+1. 单击“添加性能计数器”。
 1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  
 1. 一个对象的所有计数器使用相同的“**采样间隔**”。  默认为 10 秒。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
-1. 添加完计数器后，单击屏幕顶部的 " **应用** " 按钮保存配置。
+1. 添加完计数器后，单击屏幕顶部的“保存”按钮以保存配置。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>在配置文件中配置 Linux 性能计数器
 可以不使用 Azure 门户配置 Linux 性能计数器，而是在 Linux 代理上编辑配置文件。  要收集的性能指标由 /etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf 中的配置控制。

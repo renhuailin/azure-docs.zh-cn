@@ -6,21 +6,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 2f15b397fbceb9e097d94080ba03fba50a96ed06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fd0b3ada5fec283562cee9727e3f805a7d34c532
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048499"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479043"
 ---
-# <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>为 Azure Cosmos DB 分析存储配置专用终结点
+# <a name="configure-azure-private-link-for-azure-cosmos-db-analytical-store"></a>为 Azure Cosmos DB 分析存储配置 Azure 专用链接
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-在文本中，你将了解如何为 Azure Cosmos DB 分析存储设置托管的专用终结点。 如果要使用事务存储，请参阅[事务存储的专用终结点](how-to-configure-private-endpoints.md)一文。 使用托管的专用终结点，你可以限制 Azure Cosmos DB 分析存储对 Azure Synapse 托管的虚拟网络的网络访问权限。 托管的专用终结点建立与分析存储的专用链接。
+在文本中，你将了解如何为 Azure Cosmos DB 分析存储设置托管的专用终结点。 如果要使用事务存储，请参阅[事务存储的专用终结点](how-to-configure-private-endpoints.md)一文。 使用[托管的专用终结点](../synapse-analytics/security/synapse-workspace-managed-private-endpoints.md)，你可以限制 Azure Cosmos DB 分析存储对与 Azure Synapse 工作区关联的托管虚拟网络的网络访问权限。 托管的专用终结点建立与分析存储的专用链接。
 
-## <a name="enable-private-endpoint-for-the-analytical-store"></a>启用分析存储的专用终结点
+## <a name="enable-a-private-endpoint-for-the-analytical-store"></a>启用分析存储的专用终结点
 
-### <a name="set-up-an-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>设置包含托管虚拟网络的 Azure Synapse Analytics 工作区
+### <a name="set-up-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>设置包含托管虚拟网络的 Azure Synapse Analytics 工作区
 
 [在 Azure Synapse Analytics 中创建工作区并启用数据外泄保护。](../synapse-analytics/security/how-to-create-a-workspace-with-data-exfiltration-protection.md) 通过[数据外泄保护](../synapse-analytics/security/workspace-data-exfiltration-protection.md)，可以确保恶意用户无法将数据从 Azure 资源复制或传输到组织范围以外的位置。
 

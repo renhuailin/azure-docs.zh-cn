@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
 ms.openlocfilehash: 15f1a814b302611029cf6459b8d2df93a32a2d36
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97740549"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>迁移到新的 Azure 时序见解第 2 代 API 版本
@@ -76,7 +76,7 @@ ms.locfileid: "97740549"
 若要更新查询以使用新的 API 版本和新的时序表达式语法，需要从资源管理器重新生成查询。 详细了解如何[使用 Power BI 连接器创建查询](./how-to-connect-power-bi.md)。
 
 > [!NOTE]
-> 必须使用至少2020版本的 Power BI Desktop。 否则，可能会显示 "查询负载版本无效" 错误。
+> 必须至少使用 2020 年 7 月版的 Power BI Desktop。 否则，可能会看到“查询有效负载版本无效”错误。
 
 ## <a name="migrate-custom-applications"></a>迁移自定义应用程序
 
@@ -387,4 +387,4 @@ ms.locfileid: "97740549"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 通过 [Azure 时序见解资源管理器](./concepts-ux-panels.md) 或自定义应用程序测试环境。
+- 通过 [Azure 时序见解资源管理器](./concepts-ux-panels.md)或通过自定义应用程序测试环境。

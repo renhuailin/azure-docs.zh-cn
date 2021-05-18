@@ -9,10 +9,10 @@ ms.date: 08/24/2020
 ms.author: duau
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 24ad325cae2ee71ad49ee8ee055a83ceb8fa7ef2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101721729"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
@@ -80,9 +80,9 @@ ms.locfileid: "101721729"
 * IPv4 子网：
     * 路径 1（共 30 条）的对等互连子网
     * 路径 2（共 30 条）的对等互连子网
-* IPv6 子网 (可选) ：
-    * 路径 1 (/126) 的对等互连子网
-    * 路径 2 (/126) 的对等互连子网
+* IPv6 子网（可选）：
+    * 路径 1（共 126 条）的对等互连子网
+    * 路径 2（共 126 条）的对等互连子网
 * 对等互连的 VLAN ID
 * 对等互连的 ASN
 * ExpressRoute ASN = 12076
@@ -90,14 +90,14 @@ ms.locfileid: "101721729"
 
 #### <a name="for-microsoft-peering"></a>对于 Microsoft 对等互连
 
-启用此类以访问 Microsoft 联机服务，如 Microsoft 365。 此外，所有的 Azure PaaS 服务也可通过 Microsoft 对等互连访问。 必须确保使用独立的代理/边缘，而不是用于 Internet 的代理/边缘来连接 Microsoft。 对 ExpressRoute 和 Internet 使用相同的边缘会导致路由不对称，并造成网络连接中断。
+启用此对等互连可访问 Microsoft 365 等 Microsoft 联机服务。 此外，所有的 Azure PaaS 服务也可通过 Microsoft 对等互连访问。 必须确保使用独立的代理/边缘，而不是用于 Internet 的代理/边缘来连接 Microsoft。 对 ExpressRoute 和 Internet 使用相同的边缘会导致路由不对称，并造成网络连接中断。
 
 * IPv4 子网：
     * 路径 1（共 30 条）的对等互连子网 - 必须是公共 IP
     * 路径 2（共 30 条）的对等互连子网 - 必须是公共 IP
-* IPv6 子网 (可选) ：
-    * 路径 1 (/126) 的对等互连子网-必须是公共 IP
-    * 路径 2 (/126) 的对等互连子网-必须是公共 IP
+* IPv6 子网（可选）：
+    * 路径 1（共 126 条）的对等互连子网 - 必须是公共 IP
+    * 路径 2（共 126 条）的对等互连子网 - 必须是公共 IP
 * 对等互连的 VLAN ID
 * 对等互连的 ASN
 * 播发的前缀 - 必须是公共 IP 前缀
@@ -168,7 +168,7 @@ Status                           : Enabled
 
 ## <a name="routing-session-configuration-state"></a>路由会话配置状态
 
-BGP 预配状态将报告是否已在 Microsoft Edge 上启用了 BGP 会话。 必须启用该状态才能使用专用对等互连或 Microsoft 对等互连。
+BGP 预配状态会报告是否已在 Microsoft Edge 上启用 BGP 会话。 必须启用该状态才能使用专用对等互连或 Microsoft 对等互连。
 
 必须特意检查 Microsoft 对等互连的 BGP 会话状态。 除了 BGP 预配状态，还有另一个状态称为 *播发的公共前缀状态*。 播发的公共前缀状态必须是“已配置”状态，BGP 会话才能启动，才能进行端到端的路由。 
 

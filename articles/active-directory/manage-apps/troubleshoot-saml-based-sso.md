@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory 中排查基于 SAML 的单一登录问题
 description: 排查为基于 SAML 的单一登录配置的 Azure AD 应用程序的问题。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: kenwith
-ms.openlocfilehash: b169616042892c379196dd1d38c2343704aa1030
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: iangithinji
+ms.openlocfilehash: c4a4f7bfad4254e7c3fa5851e62532ed427ced8b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257520"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376420"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中排查基于 SAML 的单一登录问题
 如果在配置应用程序时遇到问题。 验证是否已经遵循应用程序教程中的所有步骤。 在应用程序的配置中，存在关于如何配置应用程序的内联文档。 还可以访问[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)，获取详细的分步指南。
@@ -31,7 +31,7 @@ ms.locfileid: "99257520"
 如果无法配置标识符或回复 URL，确认标识符和回复 URL 值是否与应用程序预配置的模式匹配。
 
 若要了解应用程序预配置的模式，请执行以下操作：
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 转到步骤 7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
+1. 打开 [Azure 门户](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。转到步骤 7  。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。

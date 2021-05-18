@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 90addb74811819dec563ba072e9a6aea2cf72ca4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036531"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure 诊断扩展概述
@@ -33,7 +33,7 @@ Azure Monitor 中的 Log Analytics 代理还可以用来从虚拟机的来宾操
 
 - Azure 诊断扩展只能在 Azure 中的虚拟机中使用。 Log Analytics 代理可在 Azure、其他云和本地中的虚拟机中使用。
 - Azure 诊断扩展将数据发送到 Azure 存储、[Azure Monitor 指标](../essentials/data-platform-metrics.md)（仅限 Windows）和事件中心。 Log Analytics 代理将数据收集到 [Azure Monitor 日志](../logs/data-platform-logs.md)中。
-- [解决方案](../monitor-reference.md#insights-and-core-solutions)、 [VM insights](../vm/vminsights-overview.md)和其他服务（例如[Azure 安全中心](../../security-center/index.yml)）需要 Log Analytics 代理。
+- [解决方案](../monitor-reference.md#insights-and-core-solutions)、[VM 见解](../vm/vminsights-overview.md)和其他服务（例如 [Azure 安全中心](../../security-center/index.yml)）都需要 Log Analytics 代理。
 
 ## <a name="costs"></a>成本
 Azure 诊断扩展不会产生费用，但可能会产生数据引入费用。 检查与要将数据收集到其中的目标相对应的 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。

@@ -1,5 +1,5 @@
 ---
-title: Azure Analysis Services 的本地数据网关 |Microsoft Docs
+title: Azure Analysis Services 的本地数据网关 | Microsoft Docs
 description: 如果 Azure 中的 Analysis Services 服务器要连接到本地数据源，则本地网关是必需的。
 author: minewiskan
 ms.service: azure-analysis-services
@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 6ca96f76287482a445d8a9a1cdc441333b36efbd
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97739597"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用本地数据网关连接到本地数据源
@@ -51,7 +51,7 @@ ms.locfileid: "97739597"
 | *.powerbi.com |80 |用于下载该安装程序的 HTTP。 |
 | *.powerbi.com |443 |HTTPS |
 | *.analysis.windows.net |443 |HTTPS |
-| *. login.windows.net、login.live.com、aadcdn.msauth.net |443 |HTTPS |
+| *.login.windows.net, login.live.com, aadcdn.msauth.net |443 |HTTPS |
 | *.servicebus.windows.net |5671-5672 |高级消息队列协议 (AMQP) |
 | *.servicebus.windows.net |443, 9350-9354 |通过 TCP 的服务总线中继上的侦听器（需要 443 来获取访问控制令牌） |
 | *.frontend.clouddatahub.net |443 |HTTPS |

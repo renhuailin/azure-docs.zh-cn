@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/10/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0d164c19da1ed2cbf6930a92686b35690fb0afb5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 177a58090303a70491d9a9226eca40d0bb371764
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666922"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104722253"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>HC 系列虚拟机大小
 
@@ -21,15 +21,15 @@ ms.locfileid: "101666922"
 
 | 工作负荷                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| STREAM Triad                                    | 190 GB/s (Intel LIP.MLC AVX-512)   |
-| High-Performance Linpack (HPL.DAT)                   | 3520 GigaFLOPS (Rpeak) ，2970 GigaFLOPS (Rmax)  |
-| RDMA 延迟 & 带宽                        | 1.05 微秒，96.8 Gb/秒   |
-| 本地 NVMe SSD 上的 FIO                           | 1.3 GB/s 读取，900 MB/秒写入 |  
-| IOR on 4 Azure 高级 SSD (P30 托管磁盘，RAID0) * *  | 780 MB/s 读取，780 MB/写入 |
+| STREAM Triad                                    | 190 GB/秒 (Intel MLC AVX-512)  |
+| 高性能 Linpack (HPL)                  | 3520 GigaFLOPS (Rpeak)，2970 GigaFLOPS (Rmax) |
+| RDMA 延迟和带宽                        | 1.05 微秒，96.8 Gb/秒   |
+| 本地 NVMe SSD 上的 FIO                           | 1.3 GB/秒的读取速度，900 MB/秒的写入速度 |  
+| 4 个 Azure 高级 SSD 上的 IOR（P30 托管磁盘，RAID0）**  | 780 MB/秒的读取速度，780 MB/秒的写入速度 |
 
 ## <a name="mpi-latency"></a>MPI 延迟
 
-运行 OSU microbenchmark suite 的 MPI 延迟测试。 [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)上的示例脚本
+运行 OSU 微基准测试程序套件中的 MPI 延迟测试。 示例脚本位于 [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh) 上
 
 ```bash
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
@@ -39,7 +39,7 @@ ms.locfileid: "101666922"
 
 ## <a name="mpi-bandwidth"></a>MPI 带宽
 
-运行 OSU microbenchmark suite 的 MPI 带宽测试。 [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)上的示例脚本
+运行 OSU 微基准测试程序套件中的 MPI 带宽测试。 示例脚本位于 [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh) 上
 
 ```bash
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
@@ -50,7 +50,7 @@ ms.locfileid: "101666922"
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest
 
-[Mellanox Perftest 包](https://community.mellanox.com/s/article/perftest-package)具有许多不受影响的测试，如延迟 (ib_send_lat) 和带宽 (ib_send_bw) 。 下面是一个示例命令。
+[Mellanox Perftest 包](https://community.mellanox.com/s/article/perftest-package)具有许多 InfiniBand 测试，如延迟 (ib_send_lat) 和带宽 (ib_send_bw)。 下面是一个示例命令。
 
 ```console
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
@@ -58,5 +58,5 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读有关最新的公告和一些高性能计算 (HPC) 示例和 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)中的结果。
-- 有关运行 HPC 工作负荷的更高级结构视图，请参阅 [Azure 上的高性能计算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
+- 若要从体系结构角度更概略性地看待如何运行 HPC 工作负载，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

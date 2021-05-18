@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 将磁盘排除在复制之外
 description: 如何使用 Azure Site Recovery 免于将磁盘复制到 Azure。
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 45ee7b23d01ff80bcb2e090688626f3f7fccb146
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008253"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131111"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>将磁盘排除在灾难恢复之外
 
@@ -56,13 +56,13 @@ ms.locfileid: "96008253"
 
 ## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>示例 1：排除 SQL Server tempdb 磁盘
 
-让我们看看如何处理 SQL Server Windows VM- **SalesDB** _ 的源的磁盘排除、故障转移和故障转移，我们想要排除 tempdb。 
+我们来看看如何处理源 SQL Server Windows VM (**SalesDB***) 的磁盘排除和故障转移操作，其中我们要排除 tempdb。 
 
-### <a name="exclude-disks-from-replication"></a>将磁盘排除在复制之外
+### <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 
 源 Windows VM SalesDB 上有以下磁盘。
 
-_ *磁盘名称** | **来宾 OS 磁盘** | **驱动器号** | **磁盘数据类型**
+**磁盘名称** | **来宾 OS 磁盘** | **驱动器号** | **磁盘数据类型**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | 操作系统磁盘。
 DB-Disk1| Disk1 | D:\ | SQL 系统数据库和用户数据库 1。
@@ -207,7 +207,7 @@ DB-Disk3 | Disk3 | F:\ | 用户数据 2
 
 源 VM 上的页面文件设置如下所示：
 
-!["虚拟内存" 对话框的屏幕截图，其中显示了 "D：驱动器 [页面文件卷]" 行，其中突出显示了页面文件大小 (MB) 为3000-7000。](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
+![“虚拟内存”对话框的屏幕截图，其中突出显示了“D: 驱动器 [页面文件卷]”行，显示“分页文件大小(MB)”为 3000-7000。](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
 
 1. 为 VM 启用复制。
 2. 将 DB-Disk1 排除在复制之外。
@@ -260,12 +260,12 @@ DB-Disk3 | Disk3 | F:\ | 用户数据 2
 
 Azure VM 上的页面文件设置如下所示：
 
-![显示了 "系统管理" 的页面文件大小设置的 "虚拟内存" 对话框的屏幕截图。](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
+![“虚拟内存”对话框的屏幕截图，其中突出显示了“C: 驱动器”行，显示“分页文件大小”设置为“系统托管”。](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解临时存储磁盘的指导原则：
     - [了解](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)如何在 Azure VM 中使用 SSD 来存储 SQL Server TempDB 和缓冲池扩展
-    - [查看](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) Azure VM 中 SQL Server 的性能最佳做法。
+    - [查看](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md) Azure VM 中 SQL Server 的性能最佳做法。
 - 设置并运行部署后，请 [详细了解](failover-failback-overview.md) 不同类型的故障转移。

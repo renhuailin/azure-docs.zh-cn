@@ -1,5 +1,5 @@
 ---
-title: 绘制工具事件 |Microsoft Azure 映射
+title: 绘图工具事件 | Microsoft Azure Maps
 description: 本文介绍如何使用 Microsoft Azure Maps Web SDK 向地图添加绘图工具栏
 author: rbrundritt
 ms.author: richbrun
@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 6abe0ed88adbdf8263aa27d340fb2fff156d98e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90089337"
 ---
 # <a name="drawing-tool-events"></a>绘图工具事件

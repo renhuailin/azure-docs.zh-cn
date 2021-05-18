@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
 ms.openlocfilehash: 2f160948a06d8a3175158e0100345ee2a330048c
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100634682"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>使用文件完整性监视 (FIM) 比较基线
@@ -64,7 +64,7 @@ FIM 基线首先确定操作系统和支持应用程序的已知良好状态的�
 
 将 FIM 配置为监视注册表基线：
 
-1. 在 " **为更改跟踪添加 Windows 注册表** " 窗口的 " **windows 注册表项** " 文本框中，输入以下注册表项：
+1. 在“添加 Windows 注册表以跟踪更改”窗口的“Windows 注册表项”文本框中，输入以下注册表项：
 
     ```
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters

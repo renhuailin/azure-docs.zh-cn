@@ -8,10 +8,10 @@ ms.subservice: service
 ms.topic: conceptual
 ms.date: 09/13/2020
 ms.openlocfilehash: 96367b143711c4ec5f3f8d609f048c72c6fded16
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97590845"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-sql-database--sql-managed-instance"></a>了解 Azure SQL 数据库和 SQL 托管实例的根 CA 更改
@@ -72,7 +72,7 @@ Azure SQL 数据库和 SQL 托管实例将更改通过 SSL 启用的客户端应
 ### <a name="how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>Microsoft 更新其证书的频率是多少？或者说过期策略是怎样的？
 Azure SQL 数据库和 SQL 托管实例使用的这些证书是由受信任的证书颁发机构 (CA) 提供的。 因此，Azure SQL 数据库和 SQL 托管实例对这些证书的支持与 CA 对这些证书的支持相关联。 但是，这些预定义证书中可能存在无法预料的 bug，这些 bug 需要尽早进行修复，正如此示例一样。
 
-### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-primary-server-or-all-the-read-replicas"></a>如果我使用的是读取副本，是否只需在主服务器或所有读取副本上执行此更新？
+### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-primary-server-or-all-the-read-replicas"></a>如果我使用的是只读副本，是否只需在主服务器或所有只读副本上执行此更新？
 由于此更新是客户端更改，因此，如果客户端过去从副本服务器读取数据，则我们还需要对这些客户端应用更改。 
 
 ### <a name="do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>是否有服务器端查询可用来验证是否正在使用 SSL？

@@ -11,12 +11,12 @@ ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0e2bdaa2c7a7648124fbe0be60e5a0af2f83238f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98681949"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226491"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>导入和导出 Azure AD Connect 配置设置 
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) Connect 部署有多种变化，从单个林�
 1. 选择“导入同步设置”。 浏览先前导出的 JSON 设置文件。
 1. 选择“安装”。
 
-   ![显示“安装所需的组件”屏幕的屏幕截图](media/how-to-connect-import-export-config/import1.png)
+   ![显示“安装所需的组件”屏幕的屏幕截图](media/how-to-connect-import-export-config/import-1.png)
 
 > [!NOTE]
 > 替代此页上的设置，如使用 SQL Server 而不是 LocalDB 或使用现有服务帐户而不是默认 VSA。 这些设置不会从配置设置文件导入。 它们用于提供信息以及进行比较。
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) Connect 部署有多种变化，从单个林�
 - **本地目录凭据**：对于同步设置中包含的每个本地目录，必须提供凭据以创建同步帐户或提供预先创建的自定义同步帐户。 此过程与全新安装体验相同，只是你不能添加或删除目录。
 - **配置选项**：与全新安装一样，你可以选择配置初始设置，来确定是启动自动同步还是启用暂存模式。 主要区别在于，默认有意启用暂存模式，以允许在将结果主动导出到 Azure 之前比较配置和同步结果。
 
-![显示“连接目录”屏幕的屏幕截图](media/how-to-connect-import-export-config/import2.png)
+![显示“连接目录”屏幕的屏幕截图](media/how-to-connect-import-export-config/import-2.png)
 
 > [!NOTE]
 > 只有一个同步服务器可以担任主角色，并主动将配置更改导出到 Azure。 所有其他服务器都必须处于暂存模式。
@@ -71,21 +71,27 @@ Azure Active Directory (Azure AD) Connect 部署有多种变化，从单个林�
 ### <a name="migration-process"></a>迁移过程 
 迁移设置的方法如下：
 
-1. 在新暂存服务器上启动 AzureADConnect.msi，然后转到 Azure AD Connect 的“欢迎”页 。
+ 1. 在新暂存服务器上启动 AzureADConnect.msi，然后转到 Azure AD Connect 的“欢迎”页 。
 
-1. 将 MigrateSettings.ps1 从 Microsoft Azure AD Connect\Tools 目录复制到现有服务器上的某个位置。 一个示例是 C:\setup，其中 setup 是在现有服务器上创建的目录。
+ 2. 将 MigrateSettings.ps1 从 Microsoft Azure AD Connect\Tools 目录复制到现有服务器上的某个位置。 一个示例是 C:\setup，其中 setup 是在现有服务器上创建的目录。</br>
+     ![显示 Azure AD Connect 目录的屏幕截图。](media/how-to-connect-import-export-config/migrate-1.png)
 
-   ![显示 Azure AD Connect 目录的屏幕截图。](media/how-to-connect-import-export-config/migrate1.png)
+     >[!NOTE]
+     > 如果看到消息“找不到接受实际参数‘True’的位置形式参数”，如下所示：
+     >
+     >
+     >![错误消息的屏幕截图](media/how-to-connect-import-export-config/migrate-5.png)然后编辑 MigrateSettings.ps1 文件，删除 $true，再运行脚本：![编辑配置的屏幕截图](media/how-to-connect-import-export-config/migrate-6.png)
+ 
 
-1. 运行如下所示的脚本，并保存整个下级服务器配置目录。 将该目录复制到新的暂存服务器。 必须将整个 Exported-ServerConfiguration-* 文件夹复制到新服务器。
 
-   ![显示 Windows PowerShell 中的脚本的屏幕截图。](media/how-to-connect-import-export-config/migrate2.png)
-   ![显示如何复制 Exported-Exported-ServerConfiguration-* 文件夹的屏幕截图。](media/how-to-connect-import-export-config/migrate3.png)
 
-1. 通过双击桌面上的图标启动 Azure AD Connect。 接受 Microsoft 软件许可条款，然后在下一页上选择“自定义”。
-1. 选择“导入同步设置”复选框。 选择“浏览”以浏览复制的 Exported-ServerConfiguration-* 文件夹。 选择 MigratedPolicy.json 以导入迁移的设置。
+ 3. 运行如下所示的脚本，并保存整个下级服务器配置目录。 将该目录复制到新的暂存服务器。 必须将整个 Exported-ServerConfiguration-* 文件夹复制到新服务器。
+     ![显示 Windows PowerShell 中的脚本的屏幕截图。](media/how-to-connect-import-export-config/migrate-2.png)![显示如何复制 Exported-Exported-ServerConfiguration-* 文件夹的屏幕截图。](media/how-to-connect-import-export-config/migrate-3.png)
 
-   ![显示“导入同步设置”选项的屏幕截图。](media/how-to-connect-import-export-config/migrate4.png)
+ 4. 通过双击桌面上的图标启动 Azure AD Connect。 接受 Microsoft 软件许可条款，然后在下一页上选择“自定义”。
+ 5. 选择“导入同步设置”复选框。 选择“浏览”以浏览复制的 Exported-ServerConfiguration-* 文件夹。 选择 MigratedPolicy.json 以导入迁移的设置。
+
+     ![显示“导入同步设置”选项的屏幕截图。](media/how-to-connect-import-export-config/migrate-4.png)
 
 ## <a name="post-installation-verification"></a>安装后验证 
 

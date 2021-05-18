@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92359809"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
@@ -59,7 +59,7 @@ ms.locfileid: "92359809"
 4. 下载配置服务器的 OVA 模板。
 
    > [!TIP]
-   >你还可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器模板。
+   >另外，还可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器模板。
 
 > [!NOTE]
 > 通过 OVA 模板提供的许可证是有效期为 180 天的评估许可证。 此期限过后，必须购买许可证。
@@ -71,7 +71,7 @@ ms.locfileid: "92359809"
 
      ![部署 OVF 模板](./media/vmware-azure-deploy-configuration-server/vcenter-wizard.png)
 
-3. 在“选择源”中，输入下载的 OVF 所在的位置  。
+3. 在“选择源”中，输入下载的 OVF 所在的位置。
 4. 在“查看详细信息”中，选择“下一步”。  
 5. 在“选择名称和文件夹”和“选择配置”中，接受默认设置   。
 6. 在“选择存储”中，为获得最佳性能，请在“选择虚拟磁盘格式”中选择“Thick Provision Eager Zeroed”    。 使用精简预配选项可能会影响配置服务器的性能。
@@ -92,7 +92,7 @@ ms.locfileid: "92359809"
 若要将其他 NIC 添加到配置服务器，请在将服务器注册到保管库中之前添加它。 注册后不支持添加其他适配器。
 
 1. 在 vSphere 客户端库存中，右键单击 VM 并选择“编辑设置”  。
-2. 在“硬件”中，选择“添加” > “以太网适配器”。 然后，选择“下一步”  。
+2. 在“硬件”中，选择“添加” > “以太网适配器”。 然后，选择“下一步”。
 3. 选择适配器类型和网络。
 4. 若要在打开 VM 时连接虚拟 NIC，请选择“上电时连接”  。 然后，选择“下一步” > “完成” > “确定”。
 
@@ -102,7 +102,7 @@ ms.locfileid: "92359809"
 2. VM 将启动并进入 Windows Server 2016 安装体验。 接受许可协议，然后输入管理员密码。
 3. 安装完成后，以管理员身份登录到 VM。
 4. 首次登录时，会在数秒内启动 Azure Site Recovery 配置工具。
-5. 输入用于向 Site Recovery 注册配置服务器的名称。 然后，选择“下一步”  。
+5. 输入用于向 Site Recovery 注册配置服务器的名称。 然后，选择“下一步”。
 6. 该工具会检查 VM 是否能够连接到 Azure。 建立连接后，选择“登录”以登录到 Azure 订阅  。</br>
     a. 使用的凭据必须有权访问配置服务器所要注册到的保管库。</br>
     b. 确保所选用户帐户有权在 Azure 中创建应用程序。 若要启用所需的权限，请遵循 [Azure Active Directory 权限要求](#azure-active-directory-permission-requirements)部分中的指导原则。
@@ -112,7 +112,7 @@ ms.locfileid: "92359809"
 ### <a name="configure-settings"></a>配置设置
 
 1. 在配置服务器管理向导中，选择“设置连接”。  在下拉框中，首先选择内置进程服务器用于发现的 NIC，并将移动服务的安装推送到源计算机上。 然后选择配置服务器用来与 Azure 建立连接的 NIC。 选择“保存”  。 配置后无法更改此设置。 不要更改配置服务器的 IP 地址。 确保分配给配置服务器的 IP 是静态 IP，而不是 DHCP IP。
-2. 在 " **选择恢复服务保管库**" 上，使用向 [Azure Site Recovery 服务注册配置服务器](#register-the-configuration-server-with-azure-site-recovery-services)的步骤6中使用的凭据登录到 Microsoft Azure。
+2. 在“选择恢复服务保管库”中，使用在[将配置服务器注册到 Azure Site Recovery 服务](#register-the-configuration-server-with-azure-site-recovery-services)的步骤 6 中所用的凭据登录到 Azure。
 3. 登录后，选择你的 Azure 订阅以及相关的资源组和保管库。
 
     > [!NOTE]
@@ -146,7 +146,7 @@ ms.locfileid: "92359809"
 
 参阅我们的[故障排除文章](vmware-azure-troubleshoot-configuration-server.md)来解决部署和连接问题。
 
-## <a name="faqs"></a>常见问题解答
+## <a name="faqs"></a>常见问题
 
 * 通过 OVF 部署在配置服务器上的许可证有效期是多长？ 如果不重新激活许可证会发生什么情况？
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 843e11e7f2df404a6bf1866da7b383ee9d1097de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574784"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
@@ -65,9 +65,9 @@ ms.locfileid: "100574784"
     * 值 = *所需时区*
 3. 选择“保存” 。
 
-对于在 Windows 上运行的应用服务，请参阅 Windows 命令的输出 `tzutil /L` 。 使用每个项的第二行中的值。 例如： "汤加标准时间"。 其中的某些值也在 [默认时区](/windows-hardware/manufacture/desktop/default-time-zones)的 "**时区**" 列中列出。
+对于在 Windows 上运行的应用服务，请参阅 Windows `tzutil /L` 命令的输出。 使用每个项的第二行中的值。 例如：“汤加标准时间”。 其中的某些值也列在[默认时区](/windows-hardware/manufacture/desktop/default-time-zones)的“时区”列中。
 
-对于在 Linux 上运行的应用服务，请从 [IANA TZ 数据库](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)设置一个值。 例如： "美国/Adak"。
+对于在 Linux 上运行的应用程序服务，请在 [IANA TZ 数据库](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)中设置值。 例如：“美国/Adak”。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>为什么连续 Web 作业有时会失败？
 
@@ -284,7 +284,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何将默认的 *.azurewebsites.net 域重定向到我的 Azure Web 应用的自定义域？
 
-在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *. azurewebsites.net 域，则可以重定向默认的 URL。 若要了解如何将源自网站默认域的所有通信流重定向到自定义域，请参阅[将默认域重定向到 Azure Web 应用中的自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *.azurewebsites.net 域，则可以重定向默认 URL。 若要了解如何将源自网站默认域的所有通信流重定向到自定义域，请参阅[将默认域重定向到 Azure Web 应用中的自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何确定应用服务中安装的 .NET 版本？
 

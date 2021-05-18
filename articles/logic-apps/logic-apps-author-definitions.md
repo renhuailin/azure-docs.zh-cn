@@ -1,19 +1,19 @@
 ---
 title: 创建、编辑或扩展逻辑应用 JSON 工作流定义
-description: 如何在 Azure 逻辑应用中编写、编辑和扩展逻辑应用的 JSON 工作流定义
+description: 如何在 Azure 逻辑应用中创建、编辑或扩展逻辑应用的 JSON 工作流定义
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96014391"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>在 Azure 逻辑应用中为逻辑应用工作流定义创建、编辑或扩展 JSON
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>为 Azure 逻辑应用中的逻辑应用工作流定义创建、编辑或扩展 JSON
 
 在 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)中使用自动化工作流创建企业集成解决方案时，基础逻辑应用定义会将简单的声明性 JavaScript 对象表示法 (JSON) 以及[工作流定义语言 (WDL) 架构](../logic-apps/logic-apps-workflow-definition-language.md)用于说明和验证。 这些格式使得逻辑应用定义更易于阅读和理解，无需让用户详细了解代码。
 若要自动创建和部署逻辑应用，可在 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)中将逻辑应用定义包含为 [Azure 资源](../azure-resource-manager/management/overview.md)。
@@ -28,12 +28,12 @@ ms.locfileid: "96014391"
 
 ## <a name="edit-json---azure-portal"></a>编辑 JSON - Azure 门户
 
-1. 登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。
+1. 登录 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。
 
-2. 在左侧菜单中选择“所有服务”。 
+2. 在左侧菜单中选择“所有服务”。
 在搜索框中查找“逻辑应用”，然后在结果中选择择自己的逻辑应用。
 
-3. 在逻辑应用菜单中的“开发工具”  下，选择“逻辑应用代码视图”  。
+3. 在逻辑应用菜单中的“开发工具”下，选择“逻辑应用代码视图”。
 
    “代码视图”编辑器将会打开并显示 JSON 格式的逻辑应用定义。
 
@@ -50,24 +50,24 @@ ms.locfileid: "96014391"
 可以使用并自定义此模板，以部署到不同的环境中。
 
 3. 打开逻辑应用定义和模板的快捷菜单。
-选择“使用逻辑应用设计器打开”  。
+选择“使用逻辑应用设计器打开”。
 
    ![在 Visual Studio 解决方案中打开逻辑应用](./media/logic-apps-author-definitions/open-logic-app-designer.png)
 
    > [!TIP]
    > 如果你的 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 的最新更新。
 
-4. 在设计器底部，选择“代码视图”  。
+4. 在设计器底部，选择“代码视图”。
 
    “代码视图”编辑器将会打开并显示 JSON 格式的逻辑应用定义。
 
-5. 若要返回设计器视图，请在“代码视图”编辑器的底部选择“设计”  。
+5. 若要返回设计器视图，请在“代码视图”编辑器的底部选择“设计”。
 
 ## <a name="parameters"></a>parameters
 
 部署生命周期通常有用于开发、测试、过渡和生产的不同环境。 如果有需要在逻辑应用中不进行硬编码就重用的值，或者该值会根据部署需求而变化，则请针对工作流定义创建一个 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)，这样就还可以自动完成逻辑应用部署。
 
-请改为按这些常规步骤来参数化这些值，或者定义和使用其参数。  然后，可以在单独的参数文件中提供这些值，通过该文件将这些值传递给模板。 这样，无需更新和重新部署逻辑应用即可更轻松地更改这些值。 如需完整的详细信息，请参阅[概述：使用 Azure 资源管理器模板将逻辑应用部署自动化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
+请改为按这些常规步骤来参数化这些值，或者定义和使用其参数。 然后，可以在单独的参数文件中提供这些值，通过该文件将这些值传递给模板。 这样，无需更新和重新部署逻辑应用即可更轻松地更改这些值。 有关完整的详细信息，请参阅[概述：使用 Azure 资源管理器模板自动完成逻辑应用的部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 
 1. 在模板中，定义模板参数和工作流定义参数，以便接受分别在部署时和运行时使用的值。
 

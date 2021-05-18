@@ -1,17 +1,17 @@
 ---
-title: Apache Hive Zeppelin 解释器错误-Azure HDInsight
-description: Apache Zeppelin Hive JDBC 解释器指向 Azure HDInsight 中的错误 URL
+title: Apache Hive Zeppelin 解释器错误 - Azure HDInsight
+description: Apache Zeppelin Hive JDBC 解释器在 Azure HDInsight 中指向错误的 URL
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
 ms.openlocfilehash: 2d6e660459d9f350cc5c63fb8d312bcbcb300a64
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98930756"
 ---
-# <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>方案：Apache Hive Zeppelin 解释器在 Azure HDInsight 中给出 Zookeeper 错误
+# <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>场景：Apache Hive Zeppelin 解释器在 Azure HDInsight 中给出 Zookeeper 错误
 
 本文介绍在 Azure HDInsight 群集中使用交互式查询组件时出现的问题的故障排除步骤和可能的解决方案。
 

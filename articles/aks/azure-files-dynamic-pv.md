@@ -5,12 +5,12 @@ description: 了解如何使用 Azure 文件动态创建永久性卷，以便与
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 2ad2affee34348e8c2fc7b734c8b49d0aec8db40
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.openlocfilehash: f301a01e479d03647bebf7cb042564a258e9250e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744903"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776116"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
 
@@ -18,7 +18,7 @@ ms.locfileid: "96744903"
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -33,7 +33,7 @@ ms.locfileid: "96744903"
 * *Standard_ZRS* - 标准区域冗余存储 (ZRS)
 * *Standard_RAGRS* - 标准读取访问异地冗余存储 (RA-GRS)
 * *Premium_LRS* - 高级本地冗余存储 (LRS)
-* *Premium_ZRS* 高级区域冗余存储 (ZRS) 
+* Premium_ZRS - 高级区域冗余存储 (ZRS)
 
 > [!NOTE]
 > Azure 文件存储在运行 Kubernetes 1.13 或更高版本的 AKS 群集中支持高级存储，最小高级文件共享为 100GB
@@ -211,18 +211,18 @@ parameters:
 [smb-overview]: /windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview
 
 <!-- LINKS - internal -->
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-list]: /cli/azure/group#az-group-list
-[az-resource-show]: /cli/azure/aks#az-aks-show
-[az-storage-account-create]: /cli/azure/storage/account#az-storage-account-create
-[az-storage-create]: /cli/azure/storage/account#az-storage-account-create
-[az-storage-key-list]: /cli/azure/storage/account/keys#az-storage-account-keys-list
-[az-storage-share-create]: /cli/azure/storage/share#az-storage-share-create
+[az-group-create]: /cli/azure/group#az_group_create
+[az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/aks#az_aks_show
+[az-storage-account-create]: /cli/azure/storage/account#az_storage_account_create
+[az-storage-create]: /cli/azure/storage/account#az_storage_account_create
+[az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list
+[az-storage-share-create]: /cli/azure/storage/share#az_storage_share_create
 [mount-options]: #mount-options
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
-[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [storage-skus]: ../storage/common/storage-redundancy.md
 [kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-storage]: operator-best-practices-storage.md

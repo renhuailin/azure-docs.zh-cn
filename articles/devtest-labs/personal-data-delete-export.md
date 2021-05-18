@@ -4,10 +4,10 @@ description: 了解如何从 Azure 开发测试实验室服务中删除和导出
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85483510"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>从 Azure 开发测试实验室中导出或删除个人数据
@@ -201,7 +201,7 @@ virtualmachines.csv 包含以下数据列：
 > [!NOTE]
 > 如果要处理多个实验室并想要获取整体信息，两个关键列是 LabUID 和 ResourceUId，它们是订阅之间的唯一 ID。
 
-可以使用 SQL Server、Power BI 等工具对导出的数据进行操作和可视化。如果你想要向管理团队报告实验室使用情况：使用情况可能与你使用的 Azure 订阅不同，则该功能可能特别有用。
+可以使用 SQL Server 和 Power BI 等工具对导出的数据执行操作和可视化。想将实验室的使用情况报告给未和你使用相同 Azure 订阅的管理团队时，此功能特别有用。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 

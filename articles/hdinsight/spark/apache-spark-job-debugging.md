@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: f332416a10aa86cb7e0bc7ba560537955d9f2faa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 0dd250f0a8f67d7e370b8ff453e9cff4d88b7896
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930581"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866091"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>调试 Azure HDInsight 中运行的 Apache Spark 作业
 
@@ -28,50 +28,50 @@ ms.locfileid: "98930581"
 
 1. 启动 YARN UI。 在“群集仪表板”下选择“Yarn” 。
 
-    ![Azure 门户启动 YARN UI](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/launch-apache-yarn-ui.png" alt-text="Azure 门户启动 YARN UI" border="true":::
 
    > [!TIP]  
    > 或者，也可以从 Ambari UI 启动 YARN UI。 若要启动 Ambari UI，请在“群集仪表板”下选择“Ambari 主页” 。 在 Ambari UI 中，导航到“YARN” > “快速链接”>“活动资源管理器”>“资源管理器 UI”。
 
-2. 由于已使用 Jupyter 笔记本启动 Spark 作业，因此应用程序的名称为 " **为 remotesparkmagics** " (从 "笔记本") 中启动的所有应用程序的名称。 根据应用程序名称选择应用程序 ID，以获取有关该作业的详细信息。 此操作会启动应用程序视图。
+2. 由于 Spark 作业是使用 Jupyter Notebook 启动的，因此应用程序的名称为“remotesparkmagics”（从笔记本启动的所有应用程序的名称）。 根据应用程序名称选择应用程序 ID，以获取有关该作业的详细信息。 此操作会启动应用程序视图。
 
-    ![Spark History Server - 查找 Spark 应用程序 ID](./media/apache-spark-job-debugging/find-application-id1.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/find-application-id1.png" alt-text="Spark History Server - 查找 Spark 应用程序 ID" border="true":::
 
-    对于从 Jupyter 笔记本启动的此类应用程序，状态始终为 " **正在运行** "，直到你退出笔记本。
+    对于从 Jupyter Notebook 启动的应用程序，在退出笔记本之前，其状态始终是“正在运行”。
 
 3. 从应用程序视图中，可以进一步深入以找到与应用程序和日志 (stdout/stderr) 关联的容器。 也可以通过单击“跟踪 URL”对应的链接来启动 Spark UI，如下所示。
 
-    ![Spark History Server - 下载容器日志](./media/apache-spark-job-debugging/download-container-logs.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/download-container-logs.png" alt-text="Spark History Server - 下载容器日志" border="true":::
 
 ## <a name="track-an-application-in-the-spark-ui"></a>在 Spark UI 中跟踪应用程序
 
 在 Spark UI 中，可以深入到前面启动的应用程序所产生的 Spark 作业。
 
-1. 若要启动 Spark UI，请在应用程序视图中选择针对“跟踪 URL”的链接，如上面的屏幕截图所示。 你可以查看 Jupyter Notebook 中运行的应用程序启动的所有 Spark 作业。
+1. 若要启动 Spark UI，请在应用程序视图中选择针对“跟踪 URL”的链接，如上面的屏幕截图所示。 可以看到，应用程序启动的所有 Spark 作业正在 Jupyter Notebook 中运行。
 
-    ![Spark History Server 的“作业”选项卡](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-apache-spark-jobs.png" alt-text="Spark History Server 的“作业”选项卡" border="true":::
 
 2. 选择“执行程序”选项卡以查看每个执行程序的处理和存储信息。 还可以通过选择“线程转储”链接来检索调用堆栈。
 
-    ![Spark History Server 的“执行程序”选项卡](./media/apache-spark-job-debugging/view-spark-executors.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-executors.png" alt-text="Spark History Server 的“执行程序”选项卡" border="true":::
 
 3. 选择“阶段”选项卡以查看与应用程序关联的阶段。
 
-    ![Spark History Server 的“阶段”选项卡](./media/apache-spark-job-debugging/view-apache-spark-stages.png "查看 Spark 阶段")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-apache-spark-stages.png " alt-text="Spark History Server 的“阶段”选项卡" border="true":::
 
     每个阶段可能有多个任务，你可以查看这些任务的执行统计信息，如下所示。
 
-    ![Spark History Server 的“阶段”选项卡详细信息](./media/apache-spark-job-debugging/view-spark-stages-details.png "查看 Spark 阶段详细信息")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-details.png " alt-text="Spark History Server 的“阶段”选项卡详细信息" border="true":::
 
 4. 在阶段详细信息页上，可以启动 DAG 可视化。 展开页面顶部的“DAG 可视化”链接，如下所示。
 
-    ![查看 Spark 阶段 DAG 可视化](./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png" alt-text="查看 Spark 阶段 DAG 可视化" border="true":::
 
     DAG (Direct Aclyic Graph) 呈现了应用程序中的不同阶段。 图形中的每个蓝框表示从应用程序调用的 Spark 操作。
 
 5. 在阶段详细信息页上，还可以启动应用程序时间线视图。 展开页面顶部的“事件时间线”链接，如下所示。
 
-    ![查看 Spark 阶段事件时间线](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png" alt-text="查看 Spark 阶段事件时间线" border="true":::
 
     此图像以时间线形式显示 Spark 事件。 时间线视图提供三个级别：跨作业、作业内和阶段内。 上图中捕获了指定阶段的时间线视图。
 
@@ -92,14 +92,14 @@ ms.locfileid: "98930581"
 
 1. 若要启动 Spark History Server，请在“概览”页的“群集仪表板”下选择“Spark History Server”  。
 
-    ![在 Azure 门户中启动 Spark History Server](./media/apache-spark-job-debugging/launch-spark-history-server.png "启动 Spark History Server1")
+    :::image type="content" source="./media/apache-spark-job-debugging/launch-spark-history-server.png " alt-text="在 Azure 门户中启动 Spark History Server" border="true":::
 
    > [!TIP]  
    > 或者，也可以从 Ambari UI 启动 Spark History Server UI。 若要启动 Ambari UI，请在“概览”边栏选项卡的“群集仪表板”下选择“Ambari 主页” 。 在 Ambari UI 中，导航到“Spark2” > “快速链接” > “Spark2 History Server UI”。
 
 2. 随后会看到已列出所有已完成的应用程序。 选择应用程序 ID 可深入到该应用程序中获取更多信息。
 
-    ![Spark History Server 的已完成应用程序](./media/apache-spark-job-debugging/view-completed-applications.png "启动 Spark History Server2")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-completed-applications.png " alt-text="Spark History Server 的已完成应用程序" border="true":::
 
 ## <a name="see-also"></a>另请参阅
 

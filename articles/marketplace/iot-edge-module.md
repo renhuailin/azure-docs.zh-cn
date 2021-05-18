@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: 90267f2b75b7b9c1e77a45d7e3faa4b0bf6dd63a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 492571ac76acfcf388954a4b714b6603aced7338
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708537"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107663"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -30,7 +30,7 @@ ms.locfileid: "91708537"
 
 ## <a name="what-is-an-iot-edge-module"></a>IoT Edge 模块是什么？
 
-通过 Azure IoT Edge，可让你以模块的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是 IoT Edge 管理的最小计算单元，可以包含 Microsoft 服务 (如 Azure 流分析) 、第三方服务或你自己特定于解决方案的代码。 若要了解有关 IoT Edge 模块的详细信息，请参阅[了解 Azure IoT Edge 模块](../iot-edge/iot-edge-modules.md)。
+通过 Azure IoT Edge，可让你以模块的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 管理的最小计算单位，可包含 Microsoft 服务（如 Azure 流分析）、第三方服务，或你自己的解决方案特定代码。 若要了解有关 IoT Edge 模块的详细信息，请参阅[了解 Azure IoT Edge 模块](../iot-edge/iot-edge-modules.md)。
 
 **容器套餐类型和 IoT Edge 模块套餐类型之间的区别是什么？**
 
@@ -38,9 +38,9 @@ IoT Edge 模块套餐类型是在 IoT Edge 设备上运行的一种特定类型�
 
 ## <a name="publishing-your-iot-edge-module"></a>发布 IoT Edge 模块
 
-**选择正确的在线商店**
+选择正确的在线商店
 
-IoT Edge 模块仅发布到 Azure Marketplace;AppSource 不适用。 有关在线商店之间的差异的详细信息，请参阅 [确定发布选项](determine-your-listing-type.md)。
+IoT Edge 模块仅发布到 Azure 市场；AppSource 不适用。 有关在线商店之间的差异的详细信息，请参阅[确定发布选项](determine-your-listing-type.md)。
 
 **计费选项**
 
@@ -54,16 +54,16 @@ IoT Edge 模块仅发布到 Azure Marketplace;AppSource 不适用。 有关在�
 
 Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块套餐。  此外，还有 IoT Edge 模块的先决条件和技术要求。  
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 若要将 IoT Edge 模块发布到 Azure 市场，需满足以下先决条件：
 
-- 访问合作伙伴中心。 有关详细信息，请参阅 [在合作伙伴中心创建商业 marketplace 帐户](partner-center-portal/create-account.md)。
+- 访问合作伙伴中心。 有关详细信息，请参阅[在合作伙伴中心创建商业市场帐户](create-account.md)。
 - 在 Azure 容器注册表中托管 IoT Edge 模块。
 - 准备好 IoT Edge 模块元数据，比如（非详尽列表）：
     - 标题
     - 说明（采用 HTML 格式）
-    - 徽标图像 (大小为 48 x 48 (可选) 、90 x 90 (可选) ，以及从 216 x 216 到 350 x 350 px，均为 PNG 格式) 
+    - 徽标图像（大小为 48 x 48 px [可选]、90 x 90 px [可选] 以及从 216 x 216 到 350 x 350 px，均采用 PNG 格式）
     - 使用条款和隐私策略
     - 默认模块配置（路由、孪生所需属性、createOptions、环境变量）
     - 文档

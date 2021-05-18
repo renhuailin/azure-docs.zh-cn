@@ -1,5 +1,5 @@
 ---
-title: 将订阅组织到管理组中，并将角色分配给 Azure 安全中心的用户
+title: 在 Azure 安全中心中将订阅组织到管理组中，并为用户分配角色
 description: 了解如何在 Azure 安全中心将 Azure 订阅组织到管理组中，并向组织中的用户分配角色
 services: security-center
 documentationcenter: na
@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: memildin
 ms.openlocfilehash: 3508d508a19d6ce7fba4f3ef3a4fa545a58a167d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102099380"
 ---
 # <a name="organize-subscriptions-into-management-groups-and-assign-roles-to-users"></a>将订阅组织到管理组中，并为用户分配角色
@@ -132,6 +132,6 @@ ms.locfileid: "102099380"
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何将订阅组织到管理组中，以及如何将角色分配给用户。 如需相关信息，请参阅：
+本文介绍了如何将订阅组织到管理组中，以及如何为用户分配角色。 如需相关信息，请参阅：
 
 - [Azure 安全中心中的权限](security-center-permissions.md)

@@ -10,16 +10,16 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88958989"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的应用程序性能常见问题解答
 
 > [!NOTE]
-> 下面的某些准则可能仅适用于 Windows 或 Linux 应用服务。 例如，默认情况下，Linux 应用服务在64位模式下运行。
+> 下面的某些准则可能仅适用于 Windows 或 Linux 应用服务。 例如，Linux 应用服务默认在 64 位模式下运行。
 >
 
 本文对 [Azure 应用服务 Web 应用功能](https://azure.microsoft.com/services/app-service/web/)的应用程序性能常见问题 (FAQ) 进行了解答。
@@ -32,11 +32,11 @@ ms.locfileid: "88958989"
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>如何解决 CPU 占用高的问题？
 
-在某些 CPU 占用高的情况下，应用可能真的需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 其他情况下，高 CPU 占用可能是由错误循环或编码实践导致的。 深入了解 CPU 占用升高的触发因素这一过程分为两部分。 首先，创建进程转储，然后分析此进程转储。 有关详细信息，请参阅[捕获和分析 Web 应用高 CPU 占用的转储文件](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app)。
+在某些 CPU 占用高的情况下，应用可能真的需要更多计算资源。  在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 其他情况下，高 CPU 占用可能是由错误循环或编码实践导致的。 深入了解 CPU 占用升高的触发因素这一过程分为两部分。 首先，创建进程转储，然后分析此进程转储。 有关详细信息，请参阅[捕获和分析 Web 应用高 CPU 占用的转储文件](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app)。
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>如何解决内存占用高的问题？
 
-在某些内存占用高的情况下，应用可能真的需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 在其他情况下，代码中存在的 bug 可能会导致内存泄漏。 此外，编码实践也可能会增大内存占用。 深入了解内存占用高的触发因素这一过程分为两部分。 首先，创建进程转储，然后分析此进程转储。 Azure 站点扩展库中的故障诊断程序可高效执行这两个步骤。 有关详细信息，请参阅[捕获和分析 Web 应用间歇性高内存的转储文件](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app)。
+在某些内存占用高的情况下，应用可能真的需要更多计算资源。  在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 在其他情况下，代码中存在的 bug 可能会导致内存泄漏。 此外，编码实践也可能会增大内存占用。  深入了解内存占用高的触发因素这一过程分为两部分。 首先，创建进程转储，然后分析此进程转储。 Azure 站点扩展库中的故障诊断程序可高效执行这两个步骤。 有关详细信息，请参阅[捕获和分析 Web 应用间歇性高内存的转储文件](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app)。
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>如何使用 PowerShell 实现应用服务 Web 应用的自动化？
 

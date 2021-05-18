@@ -3,14 +3,14 @@ title: 高可用性 - Azure Database for MariaDB
 description: 本文介绍 Azure Database for MariaDB 中的高可用性
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: dc37474a56ddb7d2c48c7acfce881fb812f0b8a4
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 4dcb1ac7ce4b468374993c11578bce553f766a42
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664327"
 ---
 # <a name="high-availability-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的高可用性
@@ -27,9 +27,9 @@ Azure Database for MariaDB 适合运行对正常运行时间要求很高的关�
 | <b>网关 | 网关充当数据库代理，将所有客户端连接路由到数据库服务器。 |
 
 ## <a name="planned-downtime-mitigation"></a>缓解计划内停机
-Azure Database for MariaDB 旨在在计划的停机时间内提供高可用性。 
+Azure Database for MariaDB 设计为在计划内停机操作期间提供高可用性。 
 
-![Azure MariaDB 中的弹性缩放视图](./media/concepts-high-availability/elastic-scaling-mariadb-server.png)
+![Azure MariaDB 中的弹性缩放的视图](./media/concepts-high-availability/elastic-scaling-mariadb-server.png)
 
 下面是一些计划内维护方案：
 
@@ -37,7 +37,7 @@ Azure Database for MariaDB 旨在在计划的停机时间内提供高可用性�
 | ------------ | ----------- |
 | <b>计算纵向扩展/缩减 | 当用户执行计算纵向扩展/缩减操作时，将使用缩放的计算配置来预配新的数据库服务器。 在旧的数据库服务器中，将允许处于活动状态的检查点完成，客户端连接将排空，所有未提交的事务将取消，然后将关闭该服务器。 然后会从旧数据库服务器分离存储并将其附加到新的数据库服务器。 当客户端应用程序重试连接或尝试建立新连接时，网关会将连接请求定向到新的数据库服务器。|
 | <b>纵向扩展存储 | 纵向扩展存储是一种联机操作，不会中断数据库服务器。|
-| <b>新软件部署 (Azure) | 新功能的推出或 bug 修复会自动在服务的计划内维护过程中发生。 有关详细信息，请参阅[文档](concepts-monitoring.md#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
+| <b>新软件部署 (Azure) | 在服务的计划内维护过程中，将自动推出新功能或修复 bug。 有关详细信息，请参阅[文档](concepts-monitoring.md#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
 | <b>次要版本升级 | Azure Database for MariaDB 会自动将数据库服务器修补到 Azure 确定的次要版本。 这是在服务的计划内维护过程中发生的。 这会导致短暂的停机（以秒为单位），并且会自动重启装有新次要版本的数据库服务器。 有关详细信息，请参阅[文档](concepts-monitoring.md#planned-maintenance-notification)并检查你的[门户](https://aka.ms/servicehealthpm)。|
 
 
@@ -67,7 +67,7 @@ Azure Database for MariaDB 旨在在计划的停机时间内提供高可用性�
 
 ## <a name="summary"></a>摘要
 
-Azure Database for MariaDB 提供了数据库服务器、冗余存储和网关的高效路由的快速重新启动功能。 为了进一步进行数据保护，你可以将备份配置为异地复制的备份，同时在其他区域中部署一个或多个只读副本。 利用固有的高可用性功能，Azure Database for MariaDB 保护数据库免受最常见的服务中断影响，并提供行业领先且具有财务支持的[正常运行时间占比为 99.99% 的 SLA](https://azure.microsoft.com/support/legal/sla/MariaDB)。 所有这些可用性和可靠性功能使得 Azure 成为运行关键应用程序的理想平台。
+Azure Database for MariaDB 提供了数据库服务器快速重启功能、冗余存储和网关的高效路由。 为了进一步进行数据保护，你可以将备份配置为异地复制的备份，同时在其他区域中部署一个或多个只读副本。 利用固有的高可用性功能，Azure Database for MariaDB 保护数据库免受最常见的服务中断影响，并提供行业领先且具有财务支持的[正常运行时间占比为 99.99% 的 SLA](https://azure.microsoft.com/support/legal/sla/MariaDB)。 所有这些可用性和可靠性功能使得 Azure 成为运行关键应用程序的理想平台。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解 [Azure 区域](../availability-zones/az-overview.md)

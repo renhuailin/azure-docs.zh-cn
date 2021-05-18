@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
 ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555568"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC 最佳做法
@@ -42,9 +42,9 @@ ms.locfileid: "100555568"
 
 有关详细信息，请参阅[什么是 Azure AD Privileged Identity Management？](../active-directory/privileged-identity-management/pim-configure.md)。
 
-## <a name="assign-roles-to-groups-not-users"></a>将角色分配给组，而不是用户
+## <a name="assign-roles-to-groups-not-users"></a>将角色分配给组而不是用户
 
-为了使角色分配更易于管理，请避免将角色直接分配给用户。 而是将角色分配给组。 将角色分配给组而不是用户还有助于最大程度地减少角色分配的数量，[每个订阅的角色分配数限制为 2,000](troubleshooting.md#azure-role-assignments-limit)。 
+为了使角色分配更易于管理，请避免将角色直接分配给用户。 而应将角色分配给组。 将角色分配给组而不是用户还有助于最大程度地减少角色分配的数量，[每个订阅的角色分配数限制为 2,000](troubleshooting.md#azure-role-assignments-limit)。 
 
 ## <a name="next-steps"></a>后续步骤
 

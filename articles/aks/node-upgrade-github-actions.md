@@ -1,33 +1,33 @@
 ---
-title: 处理具有 GitHub 操作的 AKS 节点升级
+title: 使用 GitHub Actions 处理 AKS 节点升级
 titleSuffix: Azure Kubernetes Service
-description: 了解如何使用 GitHub 操作更新 AKS 节点
+description: 了解如何使用 GitHub Actions 更新 AKS 节点
 services: container-service
 ms.topic: article
 ms.date: 11/27/2020
 ms.openlocfilehash: 6876cf1e5044246492e249d8a61060cbeac46f96
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98217951"
 ---
-# <a name="apply-security-updates-to-azure-kubernetes-service-aks-nodes-automatically-using-github-actions"></a>使用 GitHub 操作自动将安全更新应用到 Azure Kubernetes Service (AKS) 节点
+# <a name="apply-security-updates-to-azure-kubernetes-service-aks-nodes-automatically-using-github-actions"></a>使用 GitHub Actions 自动将安全更新应用于 Azure Kubernetes 服务 (AKS) 节点
 
-安全更新是维护 AKS 群集的安全性和符合底层操作系统的最新修补程序的关键部分。 这些更新包括 OS 安全修复项或内核更新。 某些更新需要重启节点才能完成此过程。
+安全更新是维护 AKS 群集安全性与合规性的关键部分，具有用于基础 OS 的最新修补程序。 这些更新包括 OS 安全修复项或内核更新。 一些更新需要重启节点才能完成更新过程。
 
-运行可 `az aks upgrade` 提供一种无停机的应用更新方法。 该命令处理将最新更新应用到所有群集的节点、cordoning 和排出节点的流量，并重新启动节点，然后允许流量发送到更新的节点。 如果使用其他方法更新节点，AKS 不会自动重新启动节点。
+运行 `az aks upgrade` 提供了一种无故障时间的方法来应用更新。 该命令处理以下内容：将最新更新应用于所有群集的节点，隔离并排空流向节点的流量，重启节点，然后允许流向更新节点的流量。 如果使用其他方法更新节点，AKS 将不会自动重启节点。
 
 > [!NOTE]
-> `az aks upgrade`与标志一起使用时的主要区别在于 `--node-image-only` ，在使用时，只会升级节点映像。 如果省略，则会升级节点映像和 Kubernetes 控制平面版本。 您可以查看 [节点上的托管升级的文档][managed-node-upgrades-article] 和 [群集升级的文档][cluster-upgrades-article] ，以获取更深入的信息。
+> 与 `--node-image-only` 标志一起使用时，`az aks upgrade` 之间的主要区别在于，使用该标志时只会升级节点映像。 如果省略，则将升级节点映像和 Kubernetes 控制平面版本。 可以查看[节点的托管升级文档][managed-node-upgrades-article]和[群集升级文档][cluster-upgrades-article]获取更深入的信息。
 
-所有 Kubernetes 的节点都在 (VM) 的标准 Azure 虚拟机中运行。 这些 Vm 可以是 Windows 或基于 Linux 的虚拟机。 基于 Linux 的 Vm 使用 Ubuntu 映像，并将操作系统配置为每晚自动检查更新。
+所有 Kubernetes 节点都在标准 Azure 虚拟机 (VM) 中运行。 这些 VM 可以是基于 Windows 或 Linux 的 VM。 基于 Linux 的 VM 使用 Ubuntu 映像，其 OS 配置为每晚自动检查更新。
 
-使用 `az aks upgrade` 命令时，Azure CLI 使用最新的安全性和内核更新创建新节点的冲击，则这些节点最初是封锁的，以防止在更新完成之前将任何应用程序安排到它们。 完成后，Azure cordons (使节点无法用于计划新的工作负荷) 并排出 (将现有工作负荷移到其他节点) 旧节点并 uncordon 新节点，从而有效地将所有计划的应用程序传输到新节点。
+使用 `az aks upgrade` 命令时，Azure CLI 会使用最新安全和内核更新创建大量新节点，这些节点最初会被隔离，以防止在更新完成前向其安排任何应用。 完成后，Azure 会隔离（使节点无法用于新工作负载计划）旧节点并将其排空，然后取消隔离新节点，将所有计划的应用程序有效传输到新节点。
 
-此过程优于手动更新基于 Linux 的内核，因为 Linux 需要在安装新的内核更新时重新启动。 如果手动更新操作系统，还需要重新启动 VM，手动 cordoning 和排出所有应用。
+此过程要优于手动更新基于 Linux 的内核，因为 Linux 需要在安装新内核更新时重启。 如果手动更新 OS，则还需要重启 VM，手动隔离并排空所有应用。
 
-本文介绍如何自动执行 AKS 节点的更新过程。 你将使用 GitHub 操作和 Azure CLI 来创建基于 `cron` 自动运行的更新任务。
+本文介绍如何自动执行 AKS 节点的更新过程。 你将使用 GitHub Actions 和 Azure CLI 根据自动运行的 `cron` 创建更新任务。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -35,16 +35,16 @@ ms.locfileid: "98217951"
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
-本文还假定你具有用于在中创建操作的 [GitHub][github] 帐户。
+本文还假定你具有用于创建操作的 [GitHub][github] 帐户。
 
-## <a name="create-a-timed-github-action"></a>创建定时 GitHub 操作
+## <a name="create-a-timed-github-action"></a>创建定时 GitHub Action
 
-`cron` 是一个实用工具，它允许你按自动计划运行一组命令或作业。 若要创建作业以按自动计划更新 AKS 节点，你将需要一个存储库来托管你的操作。 通常，GitHub 操作在应用程序所在的存储库中进行配置，但你可以使用任何存储库。 对于本文，我们将使用您的 [配置文件存储库][profile-repository]。 如果没有，请创建一个与 GitHub 用户名同名的新存储库。
+`cron` 是一种实用工具，使你可按自动计划运行一组命令或作业。 若要创建作业以按自动计划更新 AKS 节点，你将需要一个存储库来托管操作。 通常，GitHub 操作与应用程序在同一存储库中进行配置，但你可以使用任何存储库。 本文将使用[配置文件存储库][profile-repository]。 如果没有该存储库，请创建一个与 GitHub 用户名同名的新存储库。
 
 1. 导航到 GitHub 上的存储库
-1. 单击页面顶部的 " **操作** " 选项卡。
-1. 如果已在此存储库中设置工作流，则会将你定向到已完成运行列表，在这种情况下，请单击 " **新建工作流** " 按钮。 如果这是你在存储库中的第一个工作流，GitHub 将显示一些项目模板，请单击描述文本下的 " **自行设置工作流** " 链接。
-1. 更改工作流 `name` 和 `on` 标记，如下所示。 GitHub 操作使用与任何基于 Linux 的系统相同的 [POSIX cron 语法][cron-syntax] 。 在此计划中，我们会告诉工作流每15天在3am 运行一次。
+1. 单击页面顶部的“操作”选项卡。
+1. 如果已在此存储库中设置工作流，则系统会将你定向到已完成运行的列表，在这种情况下，请单击“新建工作流”按钮。 如果这是你在存储库中的第一个工作流，GitHub 将显示一些项目模板，单击说明文本下的“自行设置工作流”链接。
+1. 更改工作流 `name` 和 `on` 标记，如下所示。 GitHub Actions 使用与任何基于 Linux 的系统相同的 [POSIX cron 语法][cron-syntax]。 在此计划中，我们要告诉工作流每 15 天在凌晨 3 点运行一次。
 
     ```yml
     name: Upgrade cluster node images
@@ -53,7 +53,7 @@ ms.locfileid: "98217951"
         - cron: '0 3 */15 * *'
     ```
 
-1. 使用下面的创建新作业。 此作业命名为 `upgrade-node` ，在 Ubuntu 代理上运行，并将连接到 Azure CLI 帐户以执行升级节点所需的步骤。
+1. 使用以下内容创建新作业。 此作业名为 `upgrade-node`，在 Ubuntu 代理上运行，并将连接到 Azure CLI 帐户来执行升级节点所需的步骤。
 
     ```yml
     name: Upgrade cluster node images
@@ -69,20 +69,20 @@ ms.locfileid: "98217951"
 
 ## <a name="set-up-the-azure-cli-in-the-workflow"></a>在工作流中设置 Azure CLI
 
-在 `steps` 密钥中，你将定义工作流将执行的所有工作以升级节点。
+在 `steps` 键中，你将定义工作流为升级节点将执行的所有工作。
 
 下载并登录到 Azure CLI。
 
-1. 在 GitHub 操作屏幕的右侧，找到 *marketplace 搜索栏* ，然后键入 **"Azure Login"**。
-1. 结果就是一个名为 "azure 发布的 **Azure 登录** 名" 的操作：
+1. 在“GitHub Actions”屏幕的右侧，查找“市场”搜索栏并键入“Azure 登录”。
+1. 这样一来，你将获得由 Azure 发布的名为“Azure 登录”的操作 ：
 
-      :::image type="content" source="media/node-upgrade-github-actions/azure-login-search.png" alt-text="显示两行的搜索结果，第一个操作称为 &quot;Azure Login&quot;，第二个 &quot;Azure 容器注册表&quot; Login":::
+      :::image type="content" source="media/node-upgrade-github-actions/azure-login-search.png" alt-text="显示两行的搜索结果，第一个操作名为“Azure 登录”，第二个操作名为“Azure 容器注册表登录”":::
 
-1. 单击 " **Azure 登录**"。 在下一个屏幕上，单击代码示例右上方的 " **复制" 图标** 。
+1. 单击“Azure 登录”。 在下一屏幕上，单击代码示例右上方的“复制”图标。
 
-    :::image type="content" source="media/node-upgrade-github-actions/azure-login.png" alt-text="带有下面代码示例的 &quot;Azure 登录操作结果&quot; 窗格，&quot;复制&quot; 图标周围的红色方块突出显示了单击点":::
+    :::image type="content" source="media/node-upgrade-github-actions/azure-login.png" alt-text="“Azure 登录操作”结果窗格，下方带有代码示例，“复制”图标周围的红色方框突出显示了单击位置":::
 
-1. 将以下内容粘贴到下面的 `steps` 项：
+1. 将以下内容粘贴到 `steps` 键下：
 
       ```yml
       name: Upgrade cluster node images
@@ -102,7 +102,7 @@ ms.locfileid: "98217951"
                 creds: ${{ secrets.AZURE_CREDENTIALS }}
       ```
 
-1. 在 Azure CLI 中运行以下命令，生成新的用户名和密码。
+1. 在 Azure CLI 中运行以下命令，以生成新的用户名和密码。
 
     ```azurecli-interactive
     az ad sp create-for-rbac -o json
@@ -120,23 +120,23 @@ ms.locfileid: "98217951"
     }
     ```
 
-1. **在新的浏览器窗口中** ，导航到 GitHub 存储库并打开存储库的 " **设置** " 选项卡。 单击 " **密钥** "，然后单击 " **新建存储库机密**"。
+1. 在新的浏览器窗口中，导航到 GitHub 存储库并打开存储库的“设置”选项卡 。 单击“机密”，然后单击“新建存储库机密” 。
 1. 使用 `AZURE_CREDENTIALS` 作为“名称”。
-1.  对于 " *值*"，请从上一步的输出中添加全部内容，你可以在其中创建新的用户名和密码。
+1.  对于“值”，请添加上一步（你在这一步中创建了新用户名和密码）的输出中的全部内容。
 
-    :::image type="content" source="media/node-upgrade-github-actions/azure-credential-secret.png" alt-text="将 AZURE_CREDENTIALS 显示为机密标题，并将已执行命令的输出粘贴为 JSON":::
+    :::image type="content" source="media/node-upgrade-github-actions/azure-credential-secret.png" alt-text="窗体显示了将 AZURE_CREDENTIALS 作为机密标题，并以 JSON 的形式粘贴已执行命令的输出":::
 
-1. 单击 " **添加密钥**"。
+1. 单击“添加机密”。
 
-你的操作使用的 CLI 将记录到你的 Azure 帐户并准备好运行命令。
+操作使用的 CLI 将被记录到 Azure 帐户并准备好运行命令。
 
-若要创建 Azure CLI 命令执行的步骤。
+如何创建执行 Azure CLI 命令的步骤：
 
-1. 在屏幕右侧的 " *GitHub marketplace* " 中导航到 "**搜索" 页**，搜索 *Azure CLI 操作*。 选择 " *Azure Azure CLI 操作*"。
+1. 在屏幕右侧导航到 GitHub 市场上的“搜索”页，并搜索“Azure CLI 操作” 。 选择“Azure 执行的 Azure CLI 操作”。
 
-    :::image type="content" source="media/node-upgrade-github-actions/azure-cli-action.png" alt-text="&quot;Azure CLI 操作&quot; 的搜索结果，其中的第一个结果将显示为 Azure 所做的结果":::
+    :::image type="content" source="media/node-upgrade-github-actions/azure-cli-action.png" alt-text="“Azure CLI 操作”的搜索结果，第一个结果显示为 Azure 执行的操作":::
 
-1. 单击 *GitHub marketplace 结果* 中的 "复制" 按钮，然后将该操作的内容粘贴到主编辑器中的 " *Azure 登录* " 步骤下，如下所示：
+1. 单击 GitHub 市场结果上的“复制”按钮，并将操作的内容粘贴到“Azure 登录”步骤下的主编辑器中，类似于以下所示内容 ：
 
     ```yml
     name: Upgrade cluster node images
@@ -161,22 +161,22 @@ ms.locfileid: "98217951"
     ```
 
     > [!TIP]
-    > 可以 `-g` `-n` 通过将和参数添加到类似于前面步骤的机密来将和参数从命令中分离出来。 将 `{resourceGroupName}` 和 `{aksClusterName}` 占位符替换为其对应的密钥，例如 `${{secrets.RESOURCE_GROUP_NAME}}` 和 `${{secrets.AKS_CLUSTER_NAME}}`
+    > 可以通过将 `-g` 和 `-n` 参数添加到机密来将其与命令分离，这与前面的步骤类似。 将 `{resourceGroupName}` 和 `{aksClusterName}` 占位符替换为其机密对应项，例如 `${{secrets.RESOURCE_GROUP_NAME}}` 和 `${{secrets.AKS_CLUSTER_NAME}}`
 
 1. 将此文件重命名为 `upgrade-node-images`。
-1. 单击 " **开始提交**"，添加消息标题，并保存工作流。
+1. 单击“开始提交”，添加消息标题，并保存工作流。
 
-创建提交后，工作流将保存并准备好执行。
+创建提交后，将保存工作流并准备用于执行。
 
 > [!NOTE]
-> 若要升级单个节点池而不是群集上的所有节点池，请将 `--name` 参数添加到 `az aks nodepool upgrade` 命令以指定节点池名称。 例如：
+> 若要升级单个节点池而不是群集上的所有节点池，请将 `--name` 参数添加到 `az aks nodepool upgrade` 命令，以指定节点池名称。 例如：
 > ```azurecli-interactive
 > az aks nodepool upgrade -g {resourceGroupName} --cluster-name {aksClusterName} --name {{nodePoolName}} --node-image-only
 > ```
 
-## <a name="run-the-github-action-manually"></a>手动运行 GitHub 操作
+## <a name="run-the-github-action-manually"></a>手动运行 GitHub Action
 
-除了计划的运行，还可以通过添加名为的新触发器，手动运行工作流 `on` `workflow_dispatch` 。 完成的文件应如下所示：
+除了计划的运行之外，还可以通过添加名为 `workflow_dispatch` 的新 `on` 触发器手动运行工作流。 完成的文件应如以下 YAML 所示：
 
 ```yml
 name: Upgrade cluster node images
@@ -204,8 +204,8 @@ jobs:
 - 参阅 [AKS 发行说明](https://github.com/Azure/AKS/releases)以了解有关最新节点映像的信息。
 - 通过阅读[升级 AKS 群集][cluster-upgrades-article]一文来了解如何升级 Kubernetes 版本。
 - 通过阅读[创建和管理多个节点池][use-multiple-node-pools]一文来详细了解多个节点池以及如何升级节点池。
-- 了解有关[系统节点池][system-pools]的详细信息
-- 若要了解如何使用点实例节省成本，请参阅 [将专色节点池添加到 AKS][spot-pools]
+- 详细了解[系统节点池][system-pools]
+- 若要了解如何使用现成实例节省成本，请参阅[将现成节点池添加到 AKS][spot-pools]
 
 <!-- LINKS - external -->
 [github]: https://github.com

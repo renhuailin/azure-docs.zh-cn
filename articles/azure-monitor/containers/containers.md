@@ -1,15 +1,15 @@
 ---
-title: Azure Monitor 中的容器监视解决方案 |Microsoft Docs
+title: Azure Monitor 中的容器监视解决方案 | Microsoft Docs
 description: Azure Monitor 中的容器监视解决方案可帮助用户在单个位置查看和管理 Docker 和 Windows 容器主机。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/06/2020
 ms.openlocfilehash: 59f81103e72be6c0f1b629981fdb53c8467000a9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037415"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor 中的容器监视解决方案
@@ -106,7 +106,7 @@ ms.locfileid: "102037415"
        - 查看“使用 Helm 在 Linux Kubernetes 上部署 Log Analytics 代理”。
      - 如果拥有 Azure 容器服务 DC/OS 群集，请前往[通过 Azure Monitor 监视 Azure 容器服务 DC/OS 群集](/previous-versions/azure/container-service/dcos-swarm/container-service-monitoring-oms)了解详细信息。
      - 如果拥有 Docker Swarm 模式环境，请访问“配置适用于 Docker Swarm 的 Log Analytics 代理”了解更多信息。
-     - 如果有 Service Fabric 群集，请在 [具有 Azure Monitor 的监视器容器](../../service-fabric/service-fabric-diagnostics-oms-containers.md)中了解详细信息。
+     - 如果有 Service Fabric 群集，请访问[使用 Azure Monitor 监视容器](../../service-fabric/service-fabric-diagnostics-oms-containers.md)了解更多信息。
 
 请参阅 [Windows 上的 Docker 引擎](/virtualization/windowscontainers/manage-docker/configure-docker-daemon)一文，详细了解如何在运行 Windows 的计算机上安装和配置 Docker 引擎。
 
@@ -129,7 +129,7 @@ ms.locfileid: "102037415"
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
 ```
 
-**对于所有 Azure 政府版 Linux 容器主机，包括 CoreOS：**
+对于包括 CoreOS 在内的所有 Azure 政府 Linux 容器主机：
 
 启动要监视的容器。 修改并使用以下示例：
 
@@ -608,12 +608,12 @@ Log Analytics 将打开，显示有关容器状态的信息。
 
 解决特定错误时，它可以帮助你查看环境中发生错误的位置。 以下日志类型将帮助你创建查询以返回所需的信息。
 
-- **ContainerImageInventory** –尝试查找按图像组织的信息并查看图像 id 或大小等图像信息时，请使用此类型。
-- **ContainerInventory** –如果需要有关容器位置、其名称和正在运行的映像的信息，请使用此类型。
-- **ContainerLog** –如果要查找特定的错误日志信息和条目，请使用此类型。
+- **ContainerImageInventory** – 尝试查找按映像组织的信息并查看映像 ID 或大小等映像信息时，请使用此类型。
+- **ContainerInventory** – 当需要有关容器位置、容器名称和容器中运行的映像的信息时，请使用此类型。
+- **ContainerLog** – 想要查找特定的错误日志信息和条目时，请使用此类型。
 - ContainerNodeInventory_CL - 如果需要容器所在主机/节点的信息时，可使用此类型  。 它可提供 Docker 版本、业务流程类型、存储和网络信息。
 - ContainerProcess_CL - 使用此类型可快速查看容器内正在运行的进程  。
-- **ContainerServiceLog** –尝试查找 Docker 后台程序的审核记录信息（例如 start、stop、delete 或 pull 命令）时，请使用此类型。
+- **ContainerServiceLog** – 尝试查找 Docker 守护程序的审核线索信息（如 start、stop、delete 或 pull 命令）时，请使用此类型。
 - KubeEvents_CL- 使用此类型可查看 Kubernetes 事件  。
 - KubePodInventory_CL- 如果想要了解群集层次结构信息，请使用此类型  。
 

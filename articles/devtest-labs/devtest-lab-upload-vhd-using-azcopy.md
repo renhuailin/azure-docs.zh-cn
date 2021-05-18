@@ -1,13 +1,13 @@
 ---
 title: 使用 AzCopy 将 VHD 文件上传到 Azure 开发测试实验室 | Microsoft Docs
-description: 本文介绍如何使用 AzCopy 命令行实用工具将 VHD 文件上载到 Azure 开发测试实验室中的实验室存储帐户。
+description: 本文演练了如何使用 AzCopy 命令行实用程序将 VHD 文件上传到 Azure 开发测试实验室中实验室的存储帐户。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1d8ede0f78726b04ac862a00b559b8d42c3ed1cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88650768"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>使用 AzCopy 将 VHD 文件上传到实验室的存储帐户
@@ -28,23 +28,23 @@ ms.locfileid: "88650768"
 
 1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择 " **所有服务**"，然后从列表中选择 " **开发测试实验室** "。
+1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 
 1. 从实验室列表，选择所需的实验室。  
 
-1. 在实验室的边栏选项卡上，选择“配置”****。 
+1. 在实验室的边栏选项卡上，选择“配置”。 
 
-1. 在实验室的“配置”**** 边栏选项卡上，选择“自定义映像(VHD)”****。
+1. 在实验室的“配置”边栏选项卡上，选择“自定义映像(VHD)”。
 
-1. 在“自定义映像”**** 边栏选项卡上，选择“+添加”****。 
+1. 在“自定义映像”边栏选项卡上，选择“+添加”。 
 
-1. 在“自定义映像”**** 边栏选项卡上，选择“VHD”****。
+1. 在“自定义映像”边栏选项卡上，选择“VHD”。
 
-1. 在“VHD”**** 边栏选项卡上，选择“使用 PowerShell 上传 VHD”****。
+1. 在“VHD”边栏选项卡上，选择“使用 PowerShell 上传 VHD”。
 
     ![使用 PowerShell 上传 VHD](./media/devtest-lab-upload-vhd-using-azcopy/upload-image-using-psh.png)
 
-1. “使用 PowerShell 上传映像”**** 边栏选项卡显示对 **Add-AzureVhd** cmdlet 的调用。 第一个参数 (Destination**) 包含采用以下格式的 blob 容器 (uploads**) 的 URI：
+1. “使用 PowerShell 上传映像”边栏选项卡显示对 **Add-AzureVhd** cmdlet 的调用。 第一个参数 (Destination) 包含采用以下格式的 blob 容器 (uploads) 的 URI：
 
     ```
     https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...

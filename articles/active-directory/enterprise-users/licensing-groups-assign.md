@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c1a6957d347681f1c7dd9979429fffb153ccb39
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96546601"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>按 Azure Active Directory 中的组成员资格将许可证分配给用户
@@ -35,7 +35,7 @@ ms.locfileid: "96546601"
 
 ## <a name="step-1-assign-the-required-licenses"></a>步骤 1：分配所需的许可证
 
-1. 使用许可证管理员帐户登录到 [**Azure AD 管理中心**](https://aad.portal.azure.com) 。 若要管理许可证，该帐户必须是许可证管理员、用户管理员或全局管理员。
+1. 使用许可证管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。 若要管理许可证，该帐户必须是许可证管理员、用户管理员或全局管理员。
 
 1. 选择“许可证”以打开一个页面，可以在其中查看和管理租户中的所有可许可产品。
 

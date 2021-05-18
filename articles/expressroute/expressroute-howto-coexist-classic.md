@@ -1,5 +1,5 @@
 ---
-title: 配置 ExpressRoute 和 S2S VPN 共存连接：经典
+title: 配置 ExpressRoute 和 S2S VPN 并存连接：经典
 description: 本文指导配置可在经典部署模型中并存的 ExpressRoute 连接和站点到站点 VPN 连接。
 documentationcenter: na
 services: expressroute
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
 ms.openlocfilehash: 70407d726b697dd6c4dfb6777cf6c445092d3b73
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92206319"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
 > [!div class="op_single_selector"]
-> * [PowerShell - 资源管理器](expressroute-howto-coexist-resource-manager.md)
+> * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - 经典](expressroute-howto-coexist-classic.md)
 > 
 > 
@@ -53,7 +53,7 @@ ms.locfileid: "92206319"
 > 
 > 
 
-![显示一个站点到站点 VPN 连接作为 ExpressRoute 的备份的关系图。](media/expressroute-howto-coexist-classic/scenario1.jpg)
+![显示将站点到站点 VPN 连接作为 ExpressRoute 的备份的示意图。](media/expressroute-howto-coexist-classic/scenario1.jpg)
 
 ### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>配置站点到站点 VPN，以便连接到不通过 ExpressRoute 进行连接的站点
 可以对网络进行配置，使得部分站点通过站点到站点 VPN 直接连接到 Azure，部分站点通过 ExpressRoute 进行连接。 
@@ -238,7 +238,7 @@ ms.locfileid: "92206319"
       <AddressPrefix>10.17.159.224/27</AddressPrefix>
     </Subnet>
     ```
-5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为 **“专用”** 。
+5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为 **“专用”**。
    
     ```xml
     <Gateway>

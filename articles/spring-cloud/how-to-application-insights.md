@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: e9c0a2a6a6b40325e4bf87dc8cf52bc419b77621
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 457b21a0d84202cc712d5b1b719f5239de0e3391
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129056"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324664"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Azure Spring Cloud 中的 Application Insights Java 进程内代理（预览版）
 
@@ -141,6 +141,28 @@ az spring-cloud create/update [--app-insights]/[--app-insights-key] "assignedNam
 az spring-cloud app-insights update --disable â€“name "assignedName" â€“resource-group "resourceGroupName"
 
 ```
+
+## <a name="java-agent-updateupgrade"></a>Java 代理更新/升级
+
+Java 代理将随 JDK 一起定期更新/升级，这可能会影响以下方案。
+
+> [!Note]
+> JDK 版本将每年每季度更新/升级一次。
+
+* 更新/升级之前使用 Java 代理的现有应用程序不会受到影响。
+* 更新/升级后创建的应用程序将利用新版本的 Java 代理。
+* 以前未使用 Java 代理的现有应用程序需要重启或重新部署，然后才能利用新版本的 Java 代理。
+
+## <a name="java-agent-configuration-hot-loading"></a>Java 代理配置热加载
+
+Azure Spring Cloud 启用了热加载机制来调整代理配置的设置，而无需重启应用程序。
+
+> [!Note]
+> 热加载机制有几分钟延迟时间。
+
+* 如果以前启用了 Java 代理，更改 Application Insights 实例和/或 SamplingRate 不需要重启应用程序。
+* 如果启用 Java 代理，则必须重启应用程序。
+* 禁用 Java 代理后，应用程序将在几分钟的延迟后停止发送所有监视数据。 你可以重启应用程序以从 Java 运行时环境中删除代理。
 
 ## <a name="see-also"></a>另请参阅
 * [将分布式跟踪与 Azure Spring Cloud 配合使用](./how-to-distributed-tracing.md)

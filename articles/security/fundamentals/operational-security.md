@@ -1,6 +1,6 @@
 ---
 title: Azure 操作安全性 |Microsoft Docs
-description: 阅读本概述，亲自介绍 Microsoft Azure 监视日志、服务以及其工作原理。
+description: 阅读本概述，了解 Microsoft Azure Monitor 日志、其服务以及工作原理。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 7d71820db3d58931f2fcd8d18441534ad36183c2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ab54243eb7109965941cf60edd9358133550c7d3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711988"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046634"
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>简介
@@ -54,9 +54,9 @@ Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据
 6.  [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
 
 
-## <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure 监视日志
+## <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure Monitor 日志
 
-Microsoft Azure 监视器日志是适用于混合云的 IT 管理解决方案。 Azure Monitor 日志可单独使用，也可用于扩展现有 System Center 部署，为用户基于云管理基础结构提供了最大的灵活性和控制度。
+Microsoft Azure Monitor 日志是适用于混合云的 IT 管理解决方案。 Azure Monitor 日志可单独使用，也可用于扩展现有 System Center 部署，为用户基于云管理基础结构提供了最大的灵活性和控制度。
 
 ![Azure Monitor 日志](./media/operational-security/azure-operational-security-fig1.png)
 
@@ -94,7 +94,7 @@ Azure Monitor 服务使用以下方法安全地管理你基于云的数据：
 ### <a name="azure-backup"></a>Azure 备份
 
 [Azure 备份](https://azure.microsoft.com/documentation/services/backup)提供数据备份和还原服务，是 Azure Monitor 产品和服务套件的一部分。
-它可以保护应用程序数据，并且无需资本投资、只需最低的运行成本，即可将这些数据保留多年。 除 SQL Server 和 SharePoint 等应用程序工作负荷之外，它还可以备份物理和虚拟 Windows 服务器中的数据。 它还可以由 [System Center Data Protection Manager (DPM) ](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) 用于将受保护的数据复制到 Azure，以实现冗余和长期存储。
+它可以保护应用程序数据，并且无需资本投资、只需最低的运行成本，即可将这些数据保留多年。 除 SQL Server 和 SharePoint 等应用程序工作负荷之外，它还可以备份物理和虚拟 Windows 服务器中的数据。 [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) 也可使用它将受保护的数据复制到 Azure，以实现冗余和长期存储。
 
 
 Azure 备份中的受保护数据存储在位于特定地理区域的备份保管库。 数据在同一区域内复制，并且根据保管库类型，可能还会复制到其他区域以进一步实现复原。
@@ -165,7 +165,7 @@ Azure 安全中心收集故障转储文件的临时副本并对其进行分析�
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-[Azure Monitor 日志安全](../../security-center/security-center-monitoring.md)和审核解决方案允许 IT 人员主动监视所有资源，这有助于最大程度地降低安全事件的影响。 Azure Monitor 日志安全和审核具有可用于监视资源的安全域。 安全域支持快速访问用于安全监视的选项，详细介绍了以下域：
+[Azure Monitor 日志安全](../../security-center/security-center-remediate-recommendations.md)和审核解决方案允许 IT 人员主动监视所有资源，这有助于最大程度地降低安全事件的影响。 Azure Monitor 日志安全和审核具有可用于监视资源的安全域。 安全域支持快速访问用于安全监视的选项，详细介绍了以下域：
 
 -   恶意软件评估
 -   更新评估
@@ -299,7 +299,7 @@ Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报�
 
 
 
-对于应用程序（如 SIEM 系统、审核）和商业智能工具而言，这些报表的数据可能非常有用。 Azure AD 报告 [api](../../active-directory/reports-monitoring/concept-reporting-api.md) 通过一组基于 REST 的 api，提供对数据的编程访问。 可从各种编程语言和工具中调用这些 API。
+对于应用程序（如 SIEM 系统、审核）和商业智能工具而言，这些报表的数据可能非常有用。 Azure AD 报告 [API](../../active-directory/reports-monitoring/concept-reporting-api.md) 通过一组基于 REST 的 API，提供对该数据的编程访问权限。 可从各种编程语言和工具中调用这些 API。
 
 Azure AD 审核报告中的事件将保留 180 天。
 

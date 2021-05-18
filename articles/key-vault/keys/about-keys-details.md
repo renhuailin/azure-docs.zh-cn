@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
 ms.openlocfilehash: 675c4f04ece322000ae0ebb44d6291c455db9397
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98133270"
 ---
 # <a name="key-types-algorithms-and-operations"></a>密钥类型、算法和操作
@@ -26,7 +26,7 @@ Key Vault 支持两种资源类型：保管库和托管 HSM。 这两种资源�
 | --- | --- | --- |
 |EC-P256、EC-P256K、EC-P384、EC-521|NA|ES256<br>ES256K<br>ES384<br>ES512|
 |RSA 2K、3K、4K| RSA1_5<br>RSA-OAEP<br>RSA-OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
-|AES 128 位、256 位 <br/>仅 (托管 HSM) | AES-KW<br>AES-GCM<br>AES-CBC| NA| 
+|AES 128 位、256 位 <br/>（仅限托管 HSM）| AES-KW<br>AES-GCM<br>AES-CBC| NA| 
 |||
 
 ##  <a name="ec-algorithms"></a>EC 算法
@@ -65,10 +65,10 @@ Key Vault 支持两种资源类型：保管库和托管 HSM。 这两种资源�
 -   **RS512** - RSASSA-PKCS-v1_5 使用 SHA-512。 必须使用 SHA-512 计算应用程序提供的摘要值，并且该值的长度必须为 64 字节。  
 -   **RSNULL** - 请参阅 [RFC2437](https://tools.ietf.org/html/rfc2437)，这是一种用于实现某些 TLS 方案的特殊用例。  
 
-##  <a name="symmetric-key-algorithms-managed-hsm-only"></a>对称密钥算法仅 (托管 HSM) 
+##  <a name="symmetric-key-algorithms-managed-hsm-only"></a>对称密钥算法（仅限托管 HSM）
 - **AES-KW** - AES 密钥包装 ([RFC3394](https://tools.ietf.org/html/rfc3394))。
-- Galois 计数器模式下的 **aes-GCM** -aes 加密 ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800)) 
-- **Aes-CBC** 加密中的 Aes 加密块链接模式 ([NIST SP 800-38a](https://csrc.nist.gov/publications/sp800)) 
+- AES-GCM - Galois 计数器模式下的 AES 加密 ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800))
+- AES-CBC - 加密块链接模式下的 AES 加密 ([NIST SP 800-38a](https://csrc.nist.gov/publications/sp800))
 
 > [!NOTE] 
 > 当前的 AES-GCM 实现及相应的 API 是实验性的。 在将来的迭代中，这些实现和 API 可能会发生重大更改。 

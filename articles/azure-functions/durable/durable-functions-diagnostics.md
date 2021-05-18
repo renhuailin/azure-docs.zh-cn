@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 62cc5e1762a2a54b26cbebae5aa7cfbf64204ba5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584613"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure Durable Functions 中的诊断
@@ -463,7 +463,7 @@ Azure Functions 支持直接调试函数代码，Durable Functions 承袭了这�
 
 ## <a name="storage"></a>存储
 
-默认情况下，Durable Functions 在 Azure 存储中存储状态。 此行为意味着可以使用 [Microsoft Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)的工具检查业务流程的状态。
+默认情况下，Durable Functions 在 Azure 存储中存储状态。 此行为意味着，可以使用 [Microsoft Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)等工具检查业务流程的状态。
 
 ![Azure 存储资源管理器屏幕截图](./media/durable-functions-diagnostics/storage-explorer.png)
 

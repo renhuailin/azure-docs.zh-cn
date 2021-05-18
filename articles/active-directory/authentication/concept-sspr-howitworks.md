@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98703269"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
   * 如果策略要求使用两种方法，请检查用户是否为通过管理员策略启用的至少两种身份验证方法定义了合适的数据。
     * 如果未配置身份验证方法，则建议用户联系其管理员来重置其密码。
   * 如果为用户分配了 Azure 管理员角色，则会强制实施强双门密码策略。 有关详细信息，请参阅[管理员重置策略差异](concept-sspr-policy.md#administrator-reset-policy-differences)。
-* 检查是否在本地管理用户密码，如 Azure AD 租户使用联合身份验证、传递身份验证或密码哈希同步：
+* 检查是否在本地管理用户密码，例如，Azure AD 租户使用的是联合身份验证、直通身份验证还是密码哈希同步：
   * 如果已配置 SSPR 写回且在本地管理用户密码，则允许用户继续进行身份验证并重置其密码。
   * 如果未部署 SSPR 写回且在本地管理用户密码，则要求用户联系其管理员重置其密码。
 
@@ -97,7 +97,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 
 ## <a name="authentication-methods"></a>身份验证方法
 
-如果为用户启用了 SSPR，则他们必须注册至少一种身份验证方法。 强烈建议你选择两种或更多种身份验证方法，让用户在无法使用所需的一种方法时，能够更灵活地选择其他方法。 有关详细信息，请参阅 [什么是身份验证方法？](concept-authentication-methods.md)。
+如果为用户启用了 SSPR，则他们必须注册至少一种身份验证方法。 强烈建议你选择两种或更多种身份验证方法，让用户在无法使用所需的一种方法时，能够更灵活地选择其他方法。 有关详细信息，请参阅[什么是身份验证方法？](concept-authentication-methods.md)。
 
 以下身份验证方法可用于 SSPR：
 
@@ -134,14 +134,14 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 | :---: | :---: | :---: |
 | 可用的移动应用功能 | 代码 | 代码或通知 |
 
-用户通过 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 注册自助式密码重置时，无法选择注册其移动应用。 用户可以在中注册其移动应用 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) ，或者在中的组合安全信息注册中注册 [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) 。
+用户通过 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 注册自助式密码重置时，无法选择注册其移动应用。 用户可以在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 中，或者在组合的安全信息注册 ([https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)) 中注册其移动应用。
 
 > [!IMPORTANT]
-> 当只需要一个方法时，无法选择身份验证器应用作为唯一的身份验证方法。 同样，如果要求使用两种方法，则不能选择 Authenticator 应用和另一种额外的方法。
+> 当只要求使用一种方法时，不能选择 Authenticator 应用作为唯一的身份验证方法。 同样，如果要求使用两种方法，则不能选择 Authenticator 应用和另一种额外的方法。
 >
 > 在配置将 Authenticator 应用作为一种方法的 SSPR 策略时，如果要求在使用一种方法时应选择至少一种额外的方法，则当要求配置两种方法时，应选择至少两种额外的方法。
 >
-> 之所以有此要求，是因为当前 SSPR 注册体验未包含用于注册 Authenticator 应用的选项。 用于注册验证器应用的选项包含在新的 [组合注册体验](./concept-registration-mfa-sspr-combined.md)中。
+> 之所以有此要求，是因为当前 SSPR 注册体验未包含用于注册 Authenticator 应用的选项。 用于注册 Authenticator 应用的选项包含在新的[组合注册体验](./concept-registration-mfa-sspr-combined.md)中。
 >
 > 如果允许的策略仅使用 Authenticator 应用（要求使用一种方法时）或使用 Authenticator 应用和另一种额外的方法（要求使用两种方法时），则可能会导致系统阻止用户注册 SSPR，直到将其配置为使用新的组合注册体验为止。
 
@@ -206,7 +206,7 @@ Azure AD 会检查当前的混合连接，并在 Azure 门户中提供以下消�
 可以通过 Azure 门户启用密码写回。 还可以暂时禁用密码写回，无需重新配置 Azure AD Connect。
 
 * 如果将此选项设置为“是”，则会启用写回。 联合身份验证、传递身份验证或密码哈希同步的用户能够重置其密码。
-* 如果将此选项设置为“否”，则会禁用写回。 联合身份验证、传递身份验证或密码哈希同步的用户无法重置其密码。
+* 如果将此选项设置为“否”，则会禁用写回。 联合身份验证、传递身份验证或密码哈希同步的用户不能重置其密码。
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>允许用户在不重置密码的情况下解锁帐户
 
@@ -217,7 +217,7 @@ Azure AD 会检查当前的混合连接，并在 Azure 门户中提供以下消�
 
 ### <a name="on-premises-active-directory-password-filters"></a>本地 Active Directory 密码筛选器
 
-SSPR 在 Active Directory 中执行管理员发起的密码重置的等效操作。 如果你使用第三方密码筛选器来强制实施自定义密码规则，并且你要求在 Azure AD 自助式密码重置期间检查此密码筛选器，请确保将第三方密码筛选器解决方案配置为应用于管理员密码重置场景。 默认情况下支持[Active Directory 域服务 Azure AD 密码保护](concept-password-ban-bad-on-premises.md)。
+SSPR 在 Active Directory 中执行管理员发起的密码重置的等效操作。 如果你使用第三方密码筛选器来强制实施自定义密码规则，并且你要求在 Azure AD 自助式密码重置期间检查此密码筛选器，请确保将第三方密码筛选器解决方案配置为应用于管理员密码重置场景。 默认情况下支持[针对 Active Directory 域服务的 Azure AD 密码保护](concept-password-ban-bad-on-premises.md)。
 
 ## <a name="password-reset-for-b2b-users"></a>B2B 用户的密码重置
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: victorh
 ms.openlocfilehash: a02879c5322add16f89f77e2da39daec7d2b5f31
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100633642"
 ---
 # <a name="azure-firewall-policy-dns-settings"></a>Azure 防火墙策略 DNS 设置
@@ -27,7 +27,7 @@ DNS 服务器维护域名并将它解析为 IP 地址。 默认情况下，Azure
 1. 选择你的防火墙策略。
 2. 在“设置”下，选择“DNS 设置” 。
 3. 在“DNS 服务器”下，可以键入或添加之前在虚拟网络中指定的现有 DNS 服务器。
-4. 选择“保存”。
+4. 选择“保存” 。
 5. 防火墙现在将 DNS 流量定向到指定的 DNS 服务器以进行名称解析。
 
 ## <a name="dns-proxy"></a>DNS 代理

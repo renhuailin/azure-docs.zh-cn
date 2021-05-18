@@ -1,5 +1,5 @@
 ---
-title: 创建 & 查询 Azure Data Lake Analytics-PowerShell
+title: 创建和查询 Azure Data Lake Analytics - PowerShell
 description: 使用 Azure PowerShell 创建 Azure Data Lake Analytics 帐户，并提交 U-SQL 作业。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 93a05231bc971737a08d74ad04150e5449dfc792
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92220935"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Analytics
@@ -25,7 +25,7 @@ ms.locfileid: "92220935"
 
 开始学习本教程之前，必须做好以下准备：
 
-* **Azure Data Lake Analytics 帐户**。 请参阅 [Data Lake Analytics 入门](./data-lake-analytics-get-started-portal.md)。
+* **一个 Azure Data Lake Analytics 帐户**。 请参阅 [Data Lake Analytics 入门](./data-lake-analytics-get-started-portal.md)。
 * **配备 Azure PowerShell 的工作站**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure

@@ -1,15 +1,15 @@
 ---
-title: 使用 C# 保护服务远程处理通信
+title: 使用 C# 保护服务远程通信
 description: 了解如何保护 Azure Service Fabric 群集中运行的 C# Reliable Services 的基于服务远程处理的通信。
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ba68df53f1f21b9ff360772fe1a60c93c8df74d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86252209"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>保护 C# 服务的服务远程处理通信
@@ -19,7 +19,7 @@ ms.locfileid: "86252209"
 >
 >
 
-安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先构建的通信堆栈和工具，可用来提高安全性。 本文介绍如何在 C# 服务中使用服务远程处理时提高安全性。 它基于现有的[示例](service-fabric-reliable-services-communication-remoting.md)构建，该示例解释了如何为使用 C# 编写的 Reliable Services 设置远程处理。 
+安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先生成的通信堆栈和工具供你用来提高安全性。 本文介绍如何在 C# 服务中使用服务远程处理时提高安全性。 它基于现有的[示例](service-fabric-reliable-services-communication-remoting.md)构建，该示例解释了如何为使用 C# 编写的 Reliable Services 设置远程处理。 
 
 若要在 C# 服务中使用服务远程处理时帮助保护服务，请遵循以下步骤：
 

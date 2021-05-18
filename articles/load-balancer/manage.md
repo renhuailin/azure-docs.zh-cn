@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/8/2020
 ms.author: allensu
 ms.openlocfilehash: e1080aea12e70f4312fbee07b063d5a5cfbd1201
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89596254"
 ---
 # <a name="azure-load-balancer-portal-settings"></a>Azure 负载均衡器门户设置
@@ -47,11 +47,11 @@ Azure 负载均衡器是一个网络负载均衡器，用于在后端池中的 V
 | ---------- | ---------- |
 | 公共 IP 地址 | 选择“新建”可创建公共负载均衡器的公共 IP 地址。 </br> 如果有现有的公共 IP，请选择“使用现有项”。  |
 | 公共 IP 地址名称 | 公共 IP 地址的名称。|
-| 公用 IP 地址 SKU | 公共 IP 地址有两个 SKU：“基本”和“标准” 。 </br> 基本不支持区域复原和区域性特性。 </br> 对于生产型工作负载，建议使用标准 SKU。 </br> 负载均衡器和公共 IP 地址 SKU 必须匹配。 |
+| 公用 IP 地址 SKU | 公共 IP 地址有两个 SKU：“基本”和“标准” 。 </br> 基本 SKU 不支持区域复原和区域属性。 </br> 对于生产型工作负载，建议使用标准 SKU。 </br> 负载均衡器和公共 IP 地址 SKU 必须匹配。 |
 | 分配 | 对于标准 SKU，会自动选择“静态”。 </br> 基本公共 IP 有两种类型：“动态”和“静态”。 </br> 动态公共 IP 地址在创建之前不会进行分配。 </br> 如果删除了资源，则可能会丢失 IP。 </br> 建议使用静态 IP 地址。 |
-| 可用性区域 | 选择“区域冗余”以创建弹性负载均衡器。 </br> 若要创建区域负载均衡器，请从 **1**、 **2**或 **3**选择特定的区域。 </br> 标准负载均衡器和公共 Ip 支持区域。 </br> 了解有关 [负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)的详细信息。 </br> 你将看不到 "基本" 区域选择。 基本负载均衡器不支持区域。 |
+| 可用性区域 | 选择“区域冗余”以创建弹性负载均衡器。 </br> 若要创建区域负载均衡器，请选择特定的区域：1、2 或 3  。 </br> 标准负载均衡器和公共 IP 支持区域。 </br> 详细了解[负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。 </br> 你将不会看到“基本”区域选项。 基本负载均衡器不支持区域。 |
 | 添加一个公共 IPv6 地址 | 负载均衡器支持将 **IPv6** 地址用于前端。 </br> 详细了解[负载平衡器和 IPv6](load-balancer-ipv6-overview.md)
-| 路由首选项 | 选择 " **Microsoft 网络**"。 </br> Microsoft 网络表示通过 Microsoft 全球网络路由流量。 </br> Internet 表示通过 internet 服务提供商网络路由流量。 </br> 了解[路由首选项](../virtual-network/routing-preference-overview.md)的详细信息|
+| 路由首选项 | 选择“Microsoft 网络”。 </br> Microsoft 网络表示流量通过 Microsoft 全球网络进行路由。 </br> Internet 表示流量通过 Internet 服务提供商网络进行路由。 </br> 详细了解[路由首选项](../virtual-network/routing-preference-overview.md)|
 
 :::image type="content" source="./media/manage/create-public-load-balancer-basics.png" alt-text="创建公共负载均衡器。" border="true":::
 
@@ -61,9 +61,9 @@ Azure 负载均衡器是一个网络负载均衡器，用于在后端池中的 V
 | ---------- | ---------- |
 | 虚拟网络 | 你希望自己的内部负载均衡器能够成为其一部分的虚拟网络。 </br> 为内部负载均衡器选择的专用前端 IP 地址将来自此虚拟网络。 |
 | IP 地址分配 | 选项为“静态”或“动态”。 </br> “静态”可确保 IP 不会更改。 动态 IP 地址可能会更改。 |
-| 可用性区域 | 你的选项为： </br> **区域冗余** </br> **区域 1** </br> **区域 2** </br> **区域 3** </br> 若要创建高度可用且可复原可用性区域故障的负载均衡器，请选择 **区域冗余** IP。 |
+| 可用性区域 | 你的选项为： </br> **区域冗余** </br> **区域 1** </br> **区域 2** </br> **区域 3** </br> 若要创建高度可用且可针对可用性区域故障进行复原的负载均衡器，请选择区域冗余 IP。 |
 
-:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="创建公共负载均衡器。" border="true":::
+:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="创建内部负载均衡器。" border="true":::
 
 ## <a name="frontend-ip-configuration"></a>前端 IP 配置
 
@@ -80,7 +80,7 @@ Azure 负载均衡器的 IP 地址。 这是客户端的联系点。
 | IP 类型 | IP 类型决定了单个 IP 地址是与前端关联，还是与使用某个 IP 前缀的 IP 地址范围关联。 </br> 在需要重复连接到同一终结点时，可以使用[公共 IP 前缀](../virtual-network/public-ip-address-prefix.md)。 前缀可确保提供足够的端口来帮助解决 SNAT 端口问题。 |
 | 公共 IP 地址（或前缀，前提是选择了上述前缀） | 为负载均衡器前端选择或创建新的公共 IP（或前缀）。 |
 
-:::image type="content" source="./media/manage/frontend.png" alt-text="创建公共负载均衡器。" border="true":::
+:::image type="content" source="./media/manage/frontend.png" alt-text="“创建前端 IP 配置”页。" border="true":::
 
 ## <a name="backend-pools"></a>后端池
 
@@ -96,7 +96,7 @@ Azure 负载均衡器的 IP 地址。 这是客户端的联系点。
 
 可以将虚拟机或虚拟机规模集添加到 Azure 负载均衡器的后端池。 首先创建虚拟机或虚拟机规模集。 接下来，在门户中将其添加到负载均衡器。
 
-:::image type="content" source="./media/manage/backend.png" alt-text="创建公共负载均衡器。" border="true":::
+:::image type="content" source="./media/manage/backend.png" alt-text="“创建后端池”页面。" border="true":::
 
 ## <a name="health-probes"></a>运行状况探测
 
@@ -112,7 +112,7 @@ Azure 负载均衡器的 IP 地址。 这是客户端的联系点。
 | 时间间隔 | 两次探测尝试之间的秒数。 </br> 该间隔将确定运行状况探测尝试访问后端实例的频率。 </br> 如果选择 5，则会在 5 秒后进行第二次探测尝试，依此类推。 |
 | 不正常阈值 | 在将 VM 视为不正常之前必须发生的连续探测失败次数。</br> 如果选择 2，则在连续两次失败后，不会将新流设置为此后端实例。 |
 
-:::image type="content" source="./media/manage/health-probe.png" alt-text="创建公共负载均衡器。" border="true":::
+:::image type="content" source="./media/manage/health-probe.png" alt-text="添加运行状况探测。" border="true":::
 
 ## <a name="load-balancing-rules"></a>负载均衡规则
 
@@ -136,7 +136,7 @@ Azure 负载均衡器的 IP 地址。 这是客户端的联系点。
 | 浮动 IP | “浮动 IP”是 Azure 的术语，表示所谓的“直接服务器返回 (DSR)”的一部分。 </br> DSR 由两个部分组成： <br> 1.流拓扑 </br> 2.平台级别的 IP 地址映射方案。 </br></br> Azure 负载均衡器始终在 DSR 流拓扑中运行，不管是否启用了浮动 IP。 </br> 此操作意味着，流的出站部分始终会正确重写为直接流回到源。 </br> 如果不使用浮动 IP，则 Azure 会公开传统的负载均衡 IP 地址映射方案，即 VM 实例的 IP。 </br> 启用浮动 IP 会更改向负载均衡器前端 IP 进行的 IP 地址映射，以实现更大的灵活性。 </br> 有关详细信息，请参阅 [Azure 负载均衡器的多个前端](load-balancer-multivip-overview.md)。|
 | 创建隐式出站规则 | 请选择“否”。 </br> 默认设置：disableOutboundSnat = false  </br> 在这种情况下，出站通过同一前端 IP 发生。 </br></br> disableOutboundSnat = true </br>在这种情况下，出站规则是出站所需的。 |
 
-:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="创建公共负载均衡器。" border="true":::
+:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="添加负载均衡规则。" border="true":::
 
 ## <a name="inbound-nat-rules"></a>入站 NAT 规则
 
@@ -163,7 +163,7 @@ Azure 负载均衡器的 IP 地址。 这是客户端的联系点。
 | 目标虚拟机 | 你希望将此规则与之关联的后端池的虚拟机部分。 |
 | 端口映射 | 此设置可以是默认设置，也可以是自定义设置，具体取决于应用程序首选项。 |
 
-:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="创建公共负载均衡器。" border="true":::
+:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="添加入站 NAT 规则。" border="true":::
 
 ## <a name="outbound-rules"></a>出站规则
 
@@ -193,7 +193,7 @@ Azure 负载均衡器的 IP 地址。 这是客户端的联系点。
 | 选择依据 | 选择“每个实例的端口数” |
 | 每个实例的端口数 | 输入 10,000。 |
 
-:::image type="content" source="./media/manage/outbound-rule.png" alt-text="创建公共负载均衡器。" border="true":::
+:::image type="content" source="./media/manage/outbound-rule.png" alt-text="添加出站规则。" border="true":::
 
 ## <a name="next-steps"></a>后续步骤
 

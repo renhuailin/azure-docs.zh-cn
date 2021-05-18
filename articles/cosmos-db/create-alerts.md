@@ -8,10 +8,10 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.openlocfilehash: e29db7e31438bc7f6ac609384d0d9b92c275e813
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93339523"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>使用 Azure Monitor 为 Azure Cosmos DB 创建警报
@@ -23,7 +23,7 @@ ms.locfileid: "93339523"
 
 * **指标** - 当指定指标的值超出分配的阈值时，会触发警报。 例如，当所使用的请求单位总数超出 1000 RU/秒时，会触发警报。 首次满足条件时，以及之后不再满足条件时，都会触发此警报。 有关 Azure Cosmos DB 中可用的各种指标，请参阅[监视数据参考](monitor-cosmos-db-reference.md#metrics)一文。
 
-* **活动日志事件** –当发生特定事件时，会触发此警报。 例如，当 Azure Cosmos 帐户的密钥被访问或刷新时触发此警报。
+* 活动日志事件 - 在出现特定事件时触发此警报。 例如，当 Azure Cosmos 帐户的密钥被访问或刷新时触发此警报。
 
 可以通过 Azure 门户中的“Azure Cosmos DB”窗格或 Azure Monitor 服务设置警报。 这两个界面提供相同的选项。 本文介绍了如何使用 Azure Monitor 为 Azure Cosmos DB 设置警报。
 
@@ -57,11 +57,11 @@ ms.locfileid: "93339523"
 
    * 对于“Azure Monitor 服务”，请选择“全部” 
 
-   * 选择一个 **信号名称** 。 若要获取 HTTP 状态代码的警报，请选择“请求单位总数”信号。
+   * 选择一个 **信号名称**。 若要获取 HTTP 状态代码的警报，请选择“请求单位总数”信号。
 
-   * 在下一个选项卡中，可以定义警报触发逻辑，并使用图表查看 Azure Cosmos 帐户的趋势。 “请求单位总数”指标支持维度。 可以按这些维度对指标进行筛选。 如果未选择任何维度，则忽略此值。
+   * 在下一个选项卡中，可以定义警报触发逻辑，并使用图表查看 Azure Cosmos 帐户的趋势。 “请求单位总数”指标支持维度。 可以按这些维度对指标进行筛选。 如果你未选择任何维度，系统会忽略此值。
 
-   * 选择“StatusCode”作为 **维度名称** 。 选择“添加自定义值”，将状态代码设置为 429。
+   * 选择“StatusCode”作为 **维度名称**。 选择“添加自定义值”，将状态代码设置为 429。
 
    * 在“警报逻辑”中，将“阈值”设置为“静态”。   静态阈值使用用户定义的阈值来评估规则，而动态阈值则使用内置的机器学习算法来持续学习指标行为模式并自动计算阈值。
 
@@ -81,7 +81,7 @@ ms.locfileid: "93339523"
 
    * 选择要在其中创建此操作组的订阅和资源组。  
 
-   * 提供操作的名称，并选择 " **电子邮件/短信/推送/语音** " 作为 " **操作类型** "。 以下屏幕截图显示了操作类型的详细信息：
+   * 为操作提供一个名称，并选择“电子邮件/短信/推送/语音”作为“操作类型”。 以下屏幕截图显示了操作类型的详细信息：
 
      :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="配置用于接收警报的操作类型（例如电子邮件通知）":::
 
@@ -97,12 +97,12 @@ ms.locfileid: "93339523"
 
 * 当更新了 Azure Cosmos 帐户的密钥时。
 * 当某个容器、数据库或区域所使用的数据或索引超过特定数目的字节时。
-* 当规范化的 RU/s 消耗量大于特定百分比时。 规范化 RU 消耗指标提供副本集内的最大吞吐量使用率。 若要了解，请参阅 [如何监视规范化 RU/秒](monitor-normalized-request-units.md) 。  
+* 当规范化 RU/秒消耗量大于特定百分比时。 规范化 RU 消耗指标提供副本集内的最大吞吐量使用率。 若要了解相关信息，请参阅[如何监视规范化 RU/秒](monitor-normalized-request-units.md)。  
 * 当添加、删除了某个区域或该区域进入脱机状态时。
 * 当创建、删除或更新了数据库或容器时。
 * 当数据库或容器的吞吐量发生变化时。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如何监视 Azure Cosmos 容器中 [规范化的 RU/s 指标](monitor-normalized-request-units.md) 。
+* 如何在 Azure Cosmos 容器中[监视规范化 RU/秒指标](monitor-normalized-request-units.md)。
 * 如何[监视 Azure Cosmos DB 中的操作的吞吐量或请求单位用量](monitor-request-unit-usage.md)。

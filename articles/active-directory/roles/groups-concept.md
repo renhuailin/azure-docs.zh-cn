@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5df7088551e7e7f616077342b762baca179f8640
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102123354"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用云组来管理 Azure Active Directory（预览版）中的角色分配
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 即将引入公共预览，可在其中向 Azu
 
 ## <a name="how-this-feature-works"></a>该功能的工作原理
 
-创建新的 Microsoft 365 或安全组，并将“isAssignableToRole”属性设置为“true”。 还可以通过启用“Azure AD 角色可以分配到组”，在 Azure 门户中创建组时启用此属性。 无论采用哪种方式，你都可以将组分配给一个或多个 Azure AD 角色，方法与为用户分配角色的方式相同。 可在单个 Azure AD 组织 (租户) 中创建最多可分配250个角色的组。
+创建新的 Microsoft 365 或安全组，并将“isAssignableToRole”属性设置为“true”。 还可以通过启用“Azure AD 角色可以分配到组”，在 Azure 门户中创建组时启用此属性。 无论采用哪种方式，你都可以将组分配给一个或多个 Azure AD 角色，方法与为用户分配角色的方式相同。 在单个 Azure AD 组织（租户）中最多可以创建 250 个可分配角色的组。
 
 如果不希望组成员具有对角色的现有访问权限，则可以使用 Azure AD Privileged Identity Management。 将组分配为 Azure AD 角色的符合条件的成员。 然后，该组中的每个成员都有资格为分配给该组的角色激活其分配。 然后，他们可以在固定的时间内激活角色分配。
 
@@ -61,8 +61,8 @@ Azure Active Directory (Azure AD) 即将引入公共预览，可在其中向 Azu
   - 在 PIM 门户中，“我的角色”只能显示一个角色分配，而不管通过多少方法授予分配（通过一个或多个组直接进行）。
 - “为托管用户登录名启用分阶段推出”功能不支持通过组分配。
 - 仅限 Azure AD P2 授权客户。即使删除该组，它仍会在 PIM UI 中显示该角色的合格成员。 在功能上没有问题；这只是 Azure 门户中的缓存问题。  
-- 通过组成员身份将新的 [Exchange 管理中心](https://admin.exchange.microsoft.com/) 用于角色分配。 旧的 Exchange 管理中心目前尚不支持此功能。 Exchange PowerShell cmdlet 将按预期方式工作。
-- Azure 信息保护门户 (经典门户) 不通过组识别角色成员身份。 你可以 [迁移到统一的灵敏度标签平台](/azure/information-protection/configure-policy-migrate-labels) ，然后使用 Office 365 Security & 相容性中心来使用组分配来管理角色。
+- 使用新的 [Exchange 管理中心](https://admin.exchange.microsoft.com/)通过组成员身份进行角色分配。 旧的 Exchange 管理中心目前尚不支持此功能。 Exchange PowerShell cmdlet 将按预期方式工作。
+- Azure 信息保护门户（经典门户）尚未通过组识别角色成员身份。 你可以[迁移到统一的敏感度标签平台](/azure/information-protection/configure-policy-migrate-labels)，然后使用 Office 365 安全与合规中心通过组分配来管理角色。
 
 我们正在解决这些问题。
 

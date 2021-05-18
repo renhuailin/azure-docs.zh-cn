@@ -1,16 +1,16 @@
 ---
-title: 高级威胁防护-Azure 门户-Azure Database for MySQL
-description: 了解如何配置高级威胁防护来检测异常数据库活动，指示数据库存在潜在的安全威胁。
+title: 高级威胁防护 - Azure 门户 - Azure Database for MySQL
+description: 了解如何配置高级威胁防护以检测异常的数据库活动，这些活动意味着可能存在对数据库的安全威胁。
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: b30bd36dca6f866b8f3e6e8a0b133a6dd61b239b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96012657"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Azure Database for MySQL 的高级威胁防护
@@ -54,7 +54,7 @@ Azure Database for MySQL 的高级威胁防护可检测异常活动，指出有�
 
 ## <a name="explore-threat-detection-alerts"></a>浏览威胁检测警报
 
-SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成。 实时 SQL 威胁检测磁贴跟踪 Azure 门户中数据库和 SQL ATP 页面上的活动威胁的状态。
+SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成。 “实时 SQL 威胁检测”磁贴会跟踪 Azure 门户中数据库和 SQL ATP 页上活动威胁的状态。
 
 单击“威胁检测警报”以启动“Azure 安全中心警报”页，并获取在数据库中检测到的活动 SQL 威胁的概述。
 

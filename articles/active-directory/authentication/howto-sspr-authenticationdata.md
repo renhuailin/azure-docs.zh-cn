@@ -13,10 +13,10 @@ ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: ed93944c2a94370250fb75a679c1ac37a2a8418c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861147"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>为 Azure Active Directory 自助式密码重置 (SSPR) 预填用户身份验证联系信息
@@ -48,7 +48,7 @@ ms.locfileid: "96861147"
 
 ## <a name="authentication-contact-info"></a>身份验证联系人信息
 
-在 Azure 门户中 Azure AD 用户的“身份验证方法”页上，全局管理员可以手动设置身份验证联系人信息。 您可以查看 " *可用身份验证方法* " 部分下的现有方法，或按以下示例屏幕截图中所示的 " **+ 添加身份验证方法**"：
+在 Azure 门户中 Azure AD 用户的“身份验证方法”页上，全局管理员可以手动设置身份验证联系人信息。 可以查看“可用身份验证方法”部分下的现有方法，或如以下示例屏幕截图中所示“+添加身份验证方法”：
 
 :::image type="content" source="media/howto-sspr-authenticationdata/user-authentication-contact-info.png" alt-text="从 Azure 门户管理身份验证方法":::
 

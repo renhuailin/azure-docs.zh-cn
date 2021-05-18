@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 07/24/2019
 ms.author: duau
 ms.openlocfilehash: fb4c34345ab902e243f22eae06fd5ea174fd2992
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92202185"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>将 Azure 与公有云进行连接
 
-许多企业因业务目标和技术目标而追求一种多云的策略。 这些目标包括成本、灵活性、功能可用性、冗余、数据主权等。此策略有助于企业利用两种云的优势。 
+许多企业因业务目标和技术目标而追求一种多云的策略。 其中包括成本、灵活性、功能可用性、冗余、数据主权等。此策略可帮助他们充分利用这两个云。 
 
 此方法也对企业提出了网络和应用程序体系结构方面的挑战。 这些挑战包括延迟和数据吞吐量。 为了应对这些挑战，客户希望能够直接连接到多个云。 一些服务提供商提供了一种为客户连接多个云提供商的解决方案。 在其他情况下，客户可以通过部署自己的路由器来连接多个公有云。
 ## <a name="connectivity-via-expressroute"></a>通过 ExpressRoute 进行连接
@@ -34,7 +34,7 @@ Layer3 提供商通常称为 IP VPN 或 MPLS VPN 提供商。 客户利用这些
  
 通过 Layer3 提供商进行连接时，Microsoft 会通过 BGP 将客户 VNET 路由播发给服务提供商。 提供商可以进行两种不同的实现。
 
-![显示第3层提供程序的关系图。](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
+![此图显示了第 3 层提供程序。](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
 提供商可能会将每个云提供商置于单独的 VRF 中，前提是来自所有云提供商的流量会到达客户路由器。 如果客户通过服务提供商运行 BGP，则默认情况下，这些路由会重新播发到其他云提供商。 
 
@@ -45,7 +45,7 @@ Layer3 提供商通常称为 IP VPN 或 MPLS VPN 提供商。 客户利用这些
 ### <a name="layer2-provider-and-direct-connection"></a>Layer2 提供商和直接连接
 
 虽然两种模型中的物理连接不同，但在 layer3 中，BGP 是在 MSEE 和客户路由器之间直接建立的。 就 ExpressRoute Direct 来说，客户直接连接到 MSEE。 而在使用 Layer2 时，服务提供商将 VLAN 从客户本地扩展到云。 客户在 layer2 网络之上运行 BGP，将其 DC 连接到云。
-![显示 L2 提供程序和直接连接的关系图。](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
+![此图显示了第 2 层提供程序和直接连接。](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
 在两种情况下，客户将通过点到点方式连接到每个公有云。 客户会建立单独的 BGP 连接来连接到每个公有云。 默认情况下，一个云提供商接收的路由会播发到其他云提供商。 每个云提供商都有不同的前缀限制，因此客户在播发路由时应注意这些限制。 客户可以在播发其他公有云提供的路由时，与 Microsoft 一起使用常规 BGP 设置。
 
 ## <a name="direct-connection-with-expressroute"></a>通过 ExpressRoute 进行的直接连接
@@ -61,7 +61,7 @@ Layer3 提供商通常称为 IP VPN 或 MPLS VPN 提供商。 客户利用这些
 ## <a name="next-steps"></a>后续步骤
 如果遇到 ExpressRoute 和虚拟网络连接的其他任何问题，请参阅 [ExpressRoute 常见问题解答][ER-FAQ]。
 
-请参阅在 Azure 和 oracle [云之间设置直接连接][ER-OCI] 以连接 Azure 和 oracle
+请参阅[在 Azure 与 Oracle 云之间建立直接连接][ER-OCI]，了解 Azure 和 Oracle 之间的连接
 
 <!--Link References-->
 [ER-FAQ]: ./expressroute-faqs.md

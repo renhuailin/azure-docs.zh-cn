@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 ms.author: normesta
 ms.openlocfilehash: 769163dd09ec29c2c206d0273e71de27732fb9db
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100516272"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
@@ -42,8 +42,8 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |快照|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[blob 快照](snapshots-overview.md)|
 |静态网站|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Azure 存储中的静态网站托管](storage-blob-static-website.md)|
 |不可变存储|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)|
-|容器软删除|预览|预览|[容器的软删除 (预览) ](soft-delete-container-overview.md)|
-|Azure 存储清单|预览|预览|[使用 Azure 存储空间库存来管理 blob 数据 (预览) ](blob-inventory.md)|
+|容器软删除|预览|预览|[容器软删除（预览版）](soft-delete-container-overview.md)|
+|Azure 存储清单|预览|预览|[使用 Azure 存储清单管理 blob 数据（预览版）](blob-inventory.md)|
 |自定义域|预览<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|预览<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)|
 |Blob 软删除|尚不支持|尚不支持|[blob 的软删除](./soft-delete-blob-overview.md)|
 |Blobfuse|正式发布|正式发布|[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)|
@@ -55,8 +55,8 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |对象复制|尚不支持|尚不支持|[为块 blob 配置对象复制](object-replication-configure.md)|
 |Blob 版本控制|尚不支持|尚不支持|[启用和管理 blob 版本控制](versioning-enable.md)|
 
-<div id="preview-form"><sup>1</sup>若要将快照、不可变的存储或静态网站用于 Data Lake Storage Gen2，您需要完成此 <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>窗体</a>中的注册。  </div>
-<div id="preview-form-2"><sup>2</sup>自定义域名只能映射到 blob 服务或静态网站终结点。 不支持 Data Lake 存储终结 </a> 点。  </div>
+<div id="preview-form"><sup>1</sup>若要在 Data Lake Storage Gen2 中使用快照、不可变存储或静态网站，需要填写此<a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>表单</a>以注册预览版。  </div>
+<div id="preview-form-2"><sup>2</sup>自定义域名只能映射到 blob 服务或静态网站终结点。 Data Lake Storage 终结点不受支持。</a>  </div>
 
 ## <a name="see-also"></a>另请参阅
 

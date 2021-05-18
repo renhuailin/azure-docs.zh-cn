@@ -4,10 +4,10 @@ description: 本文介绍如何备份在 Azure 虚拟机上运行的 SAP HANA �
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: efb9c3f786e429df404e261f053a9c9a9b032e11
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96296448"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>关于 Azure VM 中的 SAP HANA 数据库备份
@@ -60,12 +60,12 @@ Azure 备份由 SAP 进行了 [Backint 认证](https://www.sap.com/dmc/exp/2013_
 
 [经 Backint 认证的 Azure SAP HANA 备份解决方案](#backup-architecture)可用于数据库备份和恢复。
 
-[Azure VM 备份](backup-azure-vms-introduction.md)可用于备份 OS 和其他非数据库磁盘。 VM 备份每天创建一次，并备份 (除 **写入加速器 (WA) OS 磁盘** 和 **超) 磁盘** 之外的所有磁盘。 由于要使用 Azure SAP HANA 备份解决方案备份数据库，因此可以使用 [Azure VM 选择性磁盘备份和还原](selective-disk-backup-restore.md)功能仅对 OS 和非数据库磁盘进行文件一致性备份。
+[Azure VM 备份](backup-azure-vms-introduction.md)可用于备份 OS 和其他非数据库磁盘。 VM 备份每天进行一次，会备份所有磁盘（写入加速器 (WA) OS 磁盘和超级磁盘除外 ）。 由于要使用 Azure SAP HANA 备份解决方案备份数据库，因此可以使用 [Azure VM 选择性磁盘备份和还原](selective-disk-backup-restore.md)功能仅对 OS 和非数据库磁盘进行文件一致性备份。
 
 若要还原运行 SAP HANA 的 VM，请按照以下步骤操作：
 
 * 从最新的恢复点，[从 Azure VM 备份还原新的 VM](backup-azure-arm-restore-vms.md)。 或创建新的空 VM 并将磁盘附加到最新恢复点。
-* 如果排除了 WA 磁盘，则不会还原它们。 在这种情况下，请创建空 WA 磁盘和日志区域。
+* 如果排除了 WA 磁盘，则不会还原它们。 在这种情况下，请创建空的 WA 磁盘和日志区域。
 * 设置所有其他配置（例如 IP、系统名称等）后，将 VM 设置为从 Azure 备份接收 DB 数据。
 * 现在，将 DB 从 [Azure SAP HANA DB 备份](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point)还原到 VM 中所需的时间点。
 

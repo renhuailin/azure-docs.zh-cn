@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 577340e485550e84941a33d82b58aa6ff1c933d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90983664"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>在虚拟 WAN 中心配置 Azure 防火墙
@@ -32,20 +32,20 @@ ms.locfileid: "90983664"
 
 虚拟 WAN 的“概述”页面显示了虚拟中心和安全中心的列表。 下图显示没有安全中心的虚拟 WAN。
 
-[![屏幕截图显示虚拟 WAN 列表的 "概述" 页。](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
+[ ![屏幕截图显示了虚拟 WAN 的概述页面，其中包含虚拟中心列表。](./media/howto-firewall/overview.png)](./media/howto-firewall/overview.png#lightbox)
 
 ## <a name="convert-to-secured-hub"></a>转换为安全中心
 
 1. 在虚拟 WAN 的“概述”页面上，选择要转换为安全中心的中心。 在虚拟中心页面上，可看到两个选项，用于将 Azure 防火墙部署到此中心。 选择任一选项。
 
-   [![屏幕截图显示你的虚拟 WAN 的 "概述" 页，可在其中选择 "转换为安全中心" 或 "Azure 防火墙"。](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
+   [ ![屏幕截图显示了虚拟 WAN 的概述页面，你可以在其中选择“转换为安全中心”或“Azure 防火墙”。](./media/howto-firewall/security.png)](./media/howto-firewall/security.png#lightbox)
 
 1. 选择其中一个选项之后，会看到“转换为安全中心”页面。 选择要转换的中心，然后选择页面底部的“下一步:Azure 防火墙”。
 
    [ ![选择中心](./media/howto-firewall/select-hub.png)](./media/howto-firewall/select-hub.png#lightbox)
 1. 完成工作流之后，选择“确认”。
 
-   [![屏幕截图显示 "转换为安全中心" 窗格并选择 "确认"。](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
+   [ ![屏幕截图显示了“转换为安全中心”窗格，其中已选择“确认”。](./media/howto-firewall/confirm.png)](./media/howto-firewall/confirm.png#lightbox)
 
 1. 将中心转换为安全中心之后，可在虚拟 WAN“概述”页面上查看它。
 

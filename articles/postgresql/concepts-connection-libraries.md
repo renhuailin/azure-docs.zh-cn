@@ -1,16 +1,16 @@
 ---
-title: 连接库-Azure Database for PostgreSQL-单服务器
-description: 本文介绍了几个库和驱动程序，可以在对应用程序进行连接和查询 Azure Database for PostgreSQL 单服务器时使用。
+title: 连接库 - Azure Database for PostgreSQL（单一服务器）
+description: 本文介绍了几种库和驱动程序，在对应用程序编码以连接和查询 Azure Database for PostgreSQL（单一服务器）时，你可使用这些库和驱动程序。
 author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 45081c6ba161686498398f2c4ccae8b4cff4c0d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91704304"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器的连接库
@@ -24,7 +24,7 @@ ms.locfileid: "91704304"
 | Python | [psycopg](http://initd.org/psycopg/) | 符合 DB API 2.0 规范 | [下载](http://initd.org/psycopg/download/) |
 | PHP | [php-pgsql](https://secure.php.net/manual/en/book.pgsql.php) | 数据库扩展 | [安装](https://secure.php.net/manual/en/pgsql.installation.php) |
 | Node.js | [Pg npm 包](https://www.npmjs.com/package/pg) | 纯 JavaScript 非阻止客户端 | [安装](https://www.npmjs.com/package/pg) |
-| Java | [JDBC](https://jdbc.postgresql.org/) | 类型 4 JDBC 驱动程序 | [下载](https://jdbc.postgresql.org/download.html)  |
+| Java | [JDBC](https://jdbc.postgresql.org/) | 类型 4 JDBC 驱动程序 | [下载](https://jdbc.postgresql.org/download.html)  |
 | Ruby | [Pg gem](https://deveiate.org/code/pg/) | Ruby 接口 | [下载](https://rubygems.org/downloads/pg-0.20.0.gem) |
 | Go | [Package pq](https://godoc.org/github.com/lib/pq) | 纯 Go 语言 postgres 驱动程序 | [安装](https://github.com/lib/pq/blob/master/README.md) |
 | C\#/ .NET | [Npgsql](https://www.npgsql.org/) | ADO.NET 数据提供程序 | [下载](https://www.microsoft.com/net/) |
@@ -35,4 +35,4 @@ ms.locfileid: "91704304"
 ## <a name="next-steps"></a>后续步骤
 阅读这些快速入门，了解如何使用所选语言连接和查询 Azure Database for PostgreSQL：
 
-[Python](./connect-python.md)  | [Node.JS](./connect-nodejs.md)  | [Java](./connect-java.md)  | [Ruby](./connect-ruby.md)  | [PHP](./connect-php.md)  | [.Net (c # ) ](./connect-csharp.md)  | [开始](./connect-go.md)
+[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md)

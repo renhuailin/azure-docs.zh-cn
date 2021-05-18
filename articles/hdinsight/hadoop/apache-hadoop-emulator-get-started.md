@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 60f4e4998e1077ca373f47a0cdf35c9d7a064605
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946612"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866669"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>开始使用 Apache Hadoop 沙盒，它是虚拟机上的模拟器
 
@@ -39,7 +39,7 @@ ms.locfileid: "98946612"
 1. 在“文件”  菜单上，单击“导入设备”  ，并指定 Hortonworks 沙盒映像。
 1. 选择 Hortonworks 沙盒，依次单击“启动”  、“正常启动”  。 虚拟机完成启动过程后，显示登录说明。
 
-    ![virtualbox manager 正常启动](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+    :::image type="content" source="./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png" alt-text="virtualbox 管理器正常启动" border="true":::
 
 1. 打开 Web 浏览器并导航到显示的 URL（通常是 `http://127.0.0.1:8888`）。
 

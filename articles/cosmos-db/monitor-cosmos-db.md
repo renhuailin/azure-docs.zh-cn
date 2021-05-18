@@ -1,5 +1,5 @@
 ---
-title: 监视 Azure Cosmos DB |Microsoft Docs
+title: 监视 Azure Cosmos DB | Microsoft Docs
 description: 了解如何监视 Azure Cosmos DB 的性能和可用性。
 author: SnehaGunda
 services: cosmos-db
@@ -9,10 +9,10 @@ ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
 ms.openlocfilehash: f18d1850cb6ccf28ff70f826e3d4bfe74ae05c40
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178722"
 ---
 # <a name="monitor-azure-cosmos-db"></a>监视 Azure Cosmos DB
@@ -24,7 +24,7 @@ ms.locfileid: "102178722"
 
 * **通过 Azure Cosmos DB 门户监视：** 可以使用 Azure Cosmos 帐户的“指标”选项卡中提供的指标进行监视。 此选项卡上的指标包括吞吐量、存储、可用性、延迟、一致性和系统级指标。 默认情况下，这些指标的保留期为 7 天。 若要了解详细信息，请参阅本文的[从 Azure Cosmos DB 中收集的监视数据](#monitoring-from-azure-cosmos-db)部分。
 
-* **使用 Azure Monitor 中的指标进行监视：** 可以监视 Azure Cosmos 帐户的指标，并从 Azure Monitor 中创建仪表板。 默认情况下，Azure Monitor 收集 Azure Cosmos DB 指标，你无需显式配置任何内容。 这些指标以一分钟的粒度进行收集，粒度可能因所选指标而异。 默认情况下，这些指标的保留期为 30 天。 从前面选项中获得的大多数指标也可在这些指标中使用。 指标的维度值（例如容器名称）不区分大小写。 因此，在对这些维度值进行字符串比较时，需要使用不区分大小写的比较。 若要了解详细信息，请参阅本文的[分析指标数据](#analyze-metric-data)部分。
+* **使用 Azure Monitor 中的指标进行监视：** 可以监视 Azure Cosmos 帐户的指标，并从 Azure Monitor 中创建仪表板。 默认情况下，Azure Monitor 会收集 Azure Cosmos DB 指标，你无需显式配置任何内容。 这些指标以一分钟的粒度进行收集，粒度可能因所选指标而异。 默认情况下，这些指标的保留期为 30 天。 从前面选项中获得的大多数指标也可在这些指标中使用。 指标的维度值（例如容器名称）不区分大小写。 因此，在对这些维度值进行字符串比较时，需要使用不区分大小写的比较。 若要了解详细信息，请参阅本文的[分析指标数据](#analyze-metric-data)部分。
 
 * **使用 Azure Monitor 中的诊断日志进行监视：** 可以监视 Azure Cosmos 帐户的日志，并从 Azure Monitor 中创建仪表板。 以秒粒度发生的遥测（例如，事件和跟踪）将作为日志进行存储。 例如，如果容器的吞吐量发生变化，则 Cosmos 帐户的属性也会发生变化，这些事件将在日志中捕获。 可以通过对收集的数据运行查询来分析这些日志。 若要了解详细信息，请参阅本文的[分析日志数据](#analyze-log-data)部分。
 
@@ -81,7 +81,7 @@ Azure 门户中每个 Azure Cosmos 数据库的“概述”页都提供数据库
 
 ## <a name="analyzing-metrics"></a><a id="analyze-metric-data"></a> 分析指标
 
-Azure Cosmos DB 提供了一个自定义体验来用于处理指标。 可以从“Azure Monitor”菜单中打开“指标”，使用指标资源管理器根据来自其他 Azure 服务的指标分析 Azure Cosmos DB 的指标 。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)。 还可以查看如何监视 Azure Cosmos DB 资源的 [服务器端延迟](monitor-server-side-latency.md)、 [请求单位使用情况](monitor-request-unit-usage.md)和 [规范化请求单位使用情况](monitor-normalized-request-units.md) 。
+Azure Cosmos DB 提供了一个自定义体验来用于处理指标。 可以从“Azure Monitor”菜单中打开“指标”，使用指标资源管理器根据来自其他 Azure 服务的指标分析 Azure Cosmos DB 的指标 。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)。 你还可以查看如何监视 Azure Cosmos DB 资源的[服务器端延迟](monitor-server-side-latency.md)、[请求单位使用情况](monitor-request-unit-usage.md)和[规范化请求单位使用情况](monitor-normalized-request-units.md)。
 
 有关为 Azure Cosmos DB 收集的平台指标的列表，请参阅[监视 Azure Cosmos DB 数据参考指标](monitor-cosmos-db-reference.md#metrics)一文。
 
@@ -97,7 +97,7 @@ Azure Cosmos DB 的所有指标都位于命名空间“Cosmos DB 标准指标”
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>查看 Azure Cosmos DB 的操作级别指标
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 在左侧导航栏中选择“监视”，然后选择“指标”。 
 

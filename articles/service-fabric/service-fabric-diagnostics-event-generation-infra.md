@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: f9db0df9370197190c11b740f1fd1af3fb69f19c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100581408"
 ---
 # <a name="monitoring-the-cluster"></a>监视群集
@@ -81,13 +81,13 @@ Service Fabric 具有自身的运行状况模型，以下文章对此做了详�
 以下是设置群集收集性能数据的两种常见方式：
 
 * **使用代理**  
-这是从计算机中收集性能的首选方法，因为代理通常有可以收集的可能性能指标列表，并且选择要收集或更改的指标是一个相对简单的过程。 有关 Azure Monitor 服务的详细信息，请参阅 Service Fabric 的 [Azure Monitor 日志集成](service-fabric-diagnostics-event-analysis-oms.md) 中的 Azure Monitor 日志，并 [设置 Log Analytics 代理](../azure-monitor/agents/agent-windows.md) ，以了解有关 Log Analytics 代理的详细信息，这是一个可以获取群集 vm 和部署容器的性能数据的监视代理。
+这是从计算机中收集性能的首选方法，因为代理通常有可以收集的可能性能指标列表，并且选择要收集或更改的指标是一个相对简单的过程。 在 Service Fabric 的 [Azure Monitor 日志集成](service-fabric-diagnostics-event-analysis-oms.md)和[设置 Log Analytics 代理](../azure-monitor/agents/agent-windows.md)中阅读 Azure Monitor 如何提供 Azure Monitor 日志的相关内容，以了解 Log Analytics 代理（这样一个能够获取群集 VM 和已部署容器的性能数据的监视代理）。
 
 * **性能计数器到 Azure 表存储**  
 还可将性能指标发送到与事件相同的表存储。 此操作需要更改 Azure 诊断配置以从群集中的 VM 读取适当的性能计数器，如果要部署任何容器，也能使其读取 Docker 统计数据。 阅读有关在 Service Fabric 中配置 [WAD 中的性能计数器](service-fabric-diagnostics-event-aggregation-wad.md)的文章，设置性能计数器集合。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 Service Fabric [Azure Monitor 日志集成](service-fabric-diagnostics-event-analysis-oms.md) 以收集群集诊断以及创建自定义查询和警报
+* 阅读 Service Fabric 的 [Azure Monitor 日志集成](service-fabric-diagnostics-event-analysis-oms.md)的相关内容，以收集群集诊断信息以及创建自定义查询和警报
 * 了解 Service Fabric 内置诊断体验：[EventStore](service-fabric-diagnostics-eventstore.md)
 * 在 Service Fabric 中演练某些[常见诊断方案](service-fabric-diagnostics-common-scenarios.md)

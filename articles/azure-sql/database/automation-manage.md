@@ -12,10 +12,10 @@ ms.author: jrasnick
 ms.reviewer: sstein
 ms.date: 03/12/2019
 ms.openlocfilehash: faf5b1108e28b352a0b8622feed8bdd99264ff16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91327572"
 ---
 # <a name="manage-databases-in-azure-sql-database-by-using-azure-automation"></a>使用 Azure 自动化管理 Azure SQL 数据库中的数据库
@@ -38,11 +38,11 @@ Azure 自动化提供了高度可靠且高度可用的工作流执行引擎，�
 
 Azure 自动化还可以通过使用 PowerShell 发出 SQL 命令，与 SQL 服务器直接通信。
 
-适用于 [Azure 自动化](../../automation/automation-runbook-gallery.md) 的 runbook 和模块库提供了来自 Microsoft 和社区的各种 runbook，你可以将其导入 Azure 自动化。 若要使用 Runbook，可以从库下载 Runbook，也可以直接从库或 Azure 门户中的自动化帐户导入 Runbook。
+用于 [Azure 自动化](../../automation/automation-runbook-gallery.md)的 runbook 和模块库提供了来自 Microsoft 和社区的各种 runbook，你可以将它们导入到 Azure 自动化中。 若要使用 Runbook，可以从库下载 Runbook，也可以直接从库或 Azure 门户中的自动化帐户导入 Runbook。
 
 ## <a name="next-steps"></a>后续步骤
 
 在了解 Azure 自动化 以及如何使用它来管理 Azure SQL 数据库的基础知识后，请使用以下链接了解有关 Azure 自动化的更多信息。
 
 - [Azure 自动化概述](../../automation/automation-intro.md)
-- [我的第一个 Runbook](../../automation/learn/automation-tutorial-runbook-graphical.md)
+- [第一个 Runbook](../../automation/learn/automation-tutorial-runbook-graphical.md)

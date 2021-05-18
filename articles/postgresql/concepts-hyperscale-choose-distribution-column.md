@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 129eff8c954c0c5469d3607e6ae16ce3202630ed
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91929330"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>在 Azure Database for PostgreSQL - 超大规模 (Citus) 中选择分布列
@@ -32,7 +32,7 @@ ms.locfileid: "91929330"
 
 ![多租户归置](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-若要在自己的架构中应用此设计，请确定在应用程序中构成租户的内容。 常见的实例包括公司、帐户、组织或客户。 列名称将类似于 company_id 或 customer_id。 检查每个查询并问自己，如果有其他 WHERE 子句来将涉及的所有表限制为具有相同租户 ID 的行，它是否起作用？
+若要在自己的架构中应用此设计，请确定在应用程序中构成租户的内容。 常见的实例包括公司、帐户、组织或客户。 列名将类似于 `company_id` 或 `customer_id`。 检查每个查询并问自己，如果有其他 WHERE 子句来将涉及的所有表限制为具有相同租户 ID 的行，它是否起作用？
 多租户模型中的查询的作用域为租户。 例如，针对销售或库存的查询作用域在特定商店内。
 
 #### <a name="best-practices"></a>最佳做法

@@ -1,16 +1,16 @@
 ---
 title: Microsoft Azure FXT Edge Filer 规格 | Microsoft Docs
-description: 了解 Microsoft Azure FXT Edge 文件服务器硬件的物理和环境规格。
+description: 了解 Microsoft Azure FXT Edge Filer 硬件的物理和环境规格。
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: b1a172adb54593421ef56e09c131e0ddcaee9f6e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92215818"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer 规格
@@ -34,10 +34,10 @@ ms.locfileid: "92215818"
 
 ![FXT 机箱中一个硬盘槽的图片，其中显示了驱动器编号和容量标签](media/fxt-drives-photo.png)
 
-| 驱动器编号    |  使用   |  规格 |
+| 驱动器编号    |  用途   |  规范 |
 |------------------|--------|-----------------|
-| 0、1             | 操作系统     | 480 GB SATA SSD |
-| 2、3、4、5、6、7、8、9 | 数据   | FXT 6600： 3.2 TB NVMe SSD <br> FXT 6400： 1.6 TB NVMe SSD |
+| 0、1             | (OS)     | 480 GB SATA SSD |
+| 2、3、4、5、6、7、8、9 | 数据   | FXT 6600：3.2 TB NVMe SSD <br> FXT 6400：1.6 TB NVMe SSD |
 
 ## <a name="dimensions-and-weight"></a>尺寸和重量
 
@@ -45,7 +45,7 @@ Azure FXT Edge Filer 适用于标准 19 英寸设备机架，其高度为一个�
 
 <!-- 10x2.5 inches version -->
 
-| Filer 尺寸            | “值”                    |
+| Filer 尺寸            | 值                    |
 |-----------------------------|--------------------------|
 | 高度                      | 42.8 毫米（1.68 英寸）    |
 | 宽度（包括机架耳） | 482.0 毫米（18.97 英寸）  |
@@ -55,7 +55,7 @@ Azure FXT Edge Filer 适用于标准 19 英寸设备机架，其高度为一个�
 | 机架耳到正面最远突出部分（不含嵌槽）的深度 | 22.0 毫米（0.87 英寸）  |
 | 机架耳到正面最远突出部分（含嵌槽）的深度    | 35.84 毫米（1.41 英寸） |
 
-| 重量 | “值” |
+| 重量 | 值 |
 |-----------------|----------------------|
 | 节点重量（不含外包装，不含附件） | 40 磅（18.1 千克） |
 | 净重（不含外包装，含附件） | 51 磅（23.1 千克）|
@@ -143,17 +143,17 @@ Azure FXT Edge Filer 节点使用变速风扇，因此功率取决于温度和�
 | 海拔高度                  | 上限为 3048 米（10,000 英尺），额定温度将受到影响，如下所示 | 上限为 12,000 米（39,370 英尺） |
 
 > [!NOTE]
-> **温度解除评分：** 最大温度降低了1° C/300 m (1 ° F/547 ft) 以上950米 (3117 英尺) 。
+> 海拔高度影响最高额定温度：950 米（3,117 英尺）以上，每升高 300 米，最高温度降低 1°C（每升高 547 英尺降低 1°F）。
 
 ### <a name="airflow-shock-and-vibration"></a>气流、撞击和振动
 
-| Attribute         | 规范 |
+| 属性         | 规范 |
 |-------------------|---------------|
 | 气流                    | 系统气流的方向是从前到后。 系统必须以低压、后排气的安装方式运行。 |
 | 撞击，可运行         | 6 G/11 毫秒（以 6 个方向测试） |
 | 撞击，不可运行     | 71 G/2 毫秒（以 6 个方向测试） |
 | 震动，可运行     | 0.26 G<sub>RMS</sub> 5 Hz 到 350 Hz 随机         |
-| 震动，不可运行 | 1.88 G<sub>RMS</sub> 10 Hz 到 500 Hz， (所有六个端测试)   |
+| 震动，不可运行 | 1.88 G<sub>RMS</sub> 10 Hz 到 500 Hz 测试 15 分钟（对六个面都进行测试）  |
 
 ## <a name="safety-regulation-compliance"></a>遵守安全规范
 

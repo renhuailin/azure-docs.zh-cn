@@ -1,6 +1,6 @@
 ---
 title: 诊断和排查 Azure IoT 中心 DPS 的连接断开问题
-description: '了解如何诊断和排查 Azure IoT 中心设备预配服务的设备连接的常见错误 (DPS) '
+description: 了解如何诊断和排查 Azure IoT 中心设备预配服务 (DPS) 设备连接的常见错误
 author: xujing-ms
 manager: nberdy
 ms.service: iot-dps
@@ -8,16 +8,16 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.author: xujing
-ms.openlocfilehash: ba81be54592e591f734b05235bb3ce183a07a11c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: fd7d4407f7ea552409599946d1c13a7e9d1d7268
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709880"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062533"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务进行故障排除
 
-IoT 设备的连接问题可能难以排查，因为有许多可能的故障点，如证明失败、注册失败等。本文提供了有关如何通过 [Azure Monitor](../azure-monitor/overview.md)检测和解决设备连接问题的指南。
+由于存在许多可能的故障点（例如证明失败、注册失败等），IoT 设备的连接问题有时很难排查。本文介绍如何通过 [Azure Monitor](../azure-monitor/overview.md) 检测和排查设备连接问题。
 
 ## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>使用 Azure Monitor 查看指标并设置警报
 
@@ -44,7 +44,7 @@ IoT 设备的连接问题可能难以排查，因为有许多可能的故障点�
 
 7. 选择“添加条件”，然后按照以下提示选择所需指标和阈值。
 
-若要了解详细信息，请参阅 [Azure Monitor 中的警报](../azure-monitor/platform/alerts-overview.md)。
+若要了解详细信息，请参阅 [Azure Monitor 中的警报](../azure-monitor/alerts/alerts-overview.md)。
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>使用 Log Analytic 查看和解决错误
 

@@ -1,27 +1,26 @@
 ---
-title: 如何导入新更新 | Microsoft Docs
-description: 操作指南，用于将新的更新导入到 IoT 中心的 IoT 中心设备更新。
+title: 如何新增更新 | Microsoft Docs
+description: 向 Device Update for IoT Hub 新增更新的操作指南。
 author: andrewbrownmsft
 ms.author: andbrown
-ms.date: 2/11/2021
+ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: ebfeee2828b3a36f9cf47891f8aea6d889db85bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507273"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763570"
 ---
-# <a name="import-new-update"></a>导入新的更新
-了解如何将新的更新导入到 IoT 中心的设备更新。 如果尚未这样做，请务必熟悉基本的[导入概念](import-concepts.md)。
+# <a name="add-an-update-to-device-update-for-iot-hub"></a>向 Device Update for IoT Hub 新增更新
+了解如何将新的更新添加到 Device Update for IoT Hub。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [访问启用了 IoT 中心设备更新的 IoT 中心](create-device-update-account.md)。 建议为 IoT 中心使用 S1（标准）层或更高版本。 
-* 为 IoT 中心内的设备更新预配的 IoT 设备（或模拟器）。
-   * 如果使用的是真实设备，则需要一个更新映像文件来进行映像更新，或 [APT 清单文件](device-update-apt-manifest.md)进行包更新。
-* [PowerShell 5](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) 或更高版本。
+* [访问启用了 IoT 中心设备更新的 IoT 中心](create-device-update-account.md)。 
+* 为 IoT 中心内的[设备更新预配](device-update-agent-provisioning.md)的 IoT 设备（或模拟器）。
+* [PowerShell 5](/powershell/scripting/install/installing-powershell) 或更高版本（包括 Linux、macOS 和 Windows 安装）
 * 支持的浏览器：
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome
@@ -29,13 +28,23 @@ ms.locfileid: "102507273"
 > [!NOTE]
 > 提交给此服务的某些数据可能在创建此实例的区域之外的区域进行处理。
 
-## <a name="create-device-update-import-manifest"></a>创建设备更新导入清单
+## <a name="obtain-an-update-for-your-devices"></a>获取设备的更新
 
-1. 确保更新映像文件或 APT 清单文件位于可从 PowerShell 访问的目录中。
+现在，你已设置了设备更新并预配了设备，接下来需要的是打算部署到这些设备的更新文件。
 
-2. 克隆 [IoT 中心存储库的设备更新](https://github.com/azure/iot-hub-device-update)，或将其作为 .zip 文件下载到可从 PowerShell 访问的位置（下载了 zip 文件后，请右键单击 `Properties`  >  `General` 选项卡 > 检查 `Security` 部分中是否为 `Unblock`，以避免 PowerShell 安全警告提示）。
+如果是通过 OEM 或解决方案集成商购买的设备，该组织很可能会为你提供更新文件，不需要你自行创建更新。 请联系 OEM 或解决方案集成商，了解他们如何提供更新。
 
-3. 在 PowerShell 中，导航到 `tools/AduCmdlets` 目录并运行：
+如果组织已为你使用的设备创建软件，也将这些设备创建该软件的更新。 创建要使用 Device Update for IoT Hub 部署的更新时，请从[基于映像或基于包的方法](understand-device-update.md#support-for-a-wide-range-of-update-artifacts)开始，具体取决于你的方案。 注意：如果你是刚刚开始创建自己的更新，GitHub 是用于管理开发的最佳选项。 你可以存储和管理你的源代码，并使用 [GitHub Actions](https://docs.github.com/en/actions/guides/about-continuous-integration) 来执行持续集成 (CI) 和持续部署 (CD)。
+
+## <a name="create-a-device-update-import-manifest"></a>创建设备更新导入清单
+
+如果尚未这样做，请务必熟悉基本的[导入概念](import-concepts.md)。
+
+1. 确保更新文件位于可从 PowerShell 访问的目录中。
+
+2. 在更新映像文件或 APT 清单文件所在的目录中创建一个名为 **AduUpdate.psm1** 的文本文件。 然后打开 [AduUpdate.psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell cmdlet，将内容复制到文本文件中，然后保存该文本文件。
+
+3. 在 PowerShell 中，导航到步骤 2 中创建了 PowerShell cmdlet 的目录。 使用下面的复制选项，然后粘贴到 PowerShell 中来运行以下命令：
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -57,17 +66,17 @@ ms.locfileid: "102507273"
 
     | 参数 | 说明 |
     | --------- | ----------- |
-    | deviceManufacturer | 与该更新兼容的设备制造商，例如 Contoso。 必须与制造商[设备属性](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)匹配
-    | deviceModel | 与更新兼容的设备模型，例如 Toaster。 必须与模型[设备属性](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)匹配
+    | deviceManufacturer | 与该更新兼容的设备制造商，例如 Contoso。 必须与 _制造商_ [设备属性](./device-update-plug-and-play.md#device-properties)匹配。
+    | deviceModel | 与更新兼容的设备模型，例如 Toaster。 必须与 _模型_ [设备属性](./device-update-plug-and-play.md#device-properties)匹配。
     | updateProvider | 正在创建或直接负责更新的实体。 它通常是公司名称。
     | updateName | 更新类的标识符。 类可以是你选择的任何内容。 它通常是一个设备或模型名称。
-    | updateVersion | 将此更新与具有相同“提供程序”和“名称”的其他更新区分开来的版本号。 可能与设备上单个软件组件的版本匹配或不匹配。
+    | updateVersion | 将此更新与具有相同“提供程序”和“名称”的其他更新区分开来的版本号。 不会与设备上单个软件组件的版本相匹配 （但你可以选择匹配）。
     | updateType | <ul><li>指定 `microsoft/swupdate:1` 用于映像更新</li><li>指定 `microsoft/apt:1`用于包更新</li></ul>
-    | installedCriteria | <ul><li>指定 SWVersion 值用于 `microsoft/swupdate:1` 更新类型</li><li>指定推荐值用于 `microsoft/apt:1` 更新类型。
+    | installedCriteria | <ul><li>指定 SWVersion 值用于 `microsoft/swupdate:1` 更新类型</li><li>指定 name-version，其中“name”是 APT 清单的名称，“version”是 APT 清单的版本 。 例如 contoso-iot-edge-1.0.0.0。
     | updateFilePath(s) | 计算机上更新文件的路径
 
 
-## <a name="review-generated-import-manifest"></a>查看生成的导入清单
+## <a name="review-the-generated-import-manifest"></a>查看生成的导入清单
 
 示例：
 ```json
@@ -110,7 +119,10 @@ ms.locfileid: "102507273"
 }
 ```
 
-## <a name="import-update"></a>导入更新
+## <a name="import-an-update"></a>导入更新
+
+> [!NOTE]
+> 以下说明演示了如何通过 Azure 门户 UI 导入更新。 用户还可以使用 [IoT Hub API 的设备更新](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) 来导入更新。 
 
 1. 登录 [Azure 门户](https://portal.azure.com)并导航到具有设备更新的 IoT 中心。
 

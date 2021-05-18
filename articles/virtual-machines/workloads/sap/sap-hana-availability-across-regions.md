@@ -16,10 +16,10 @@ ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f925e72493a94bcdbde64bdfbcef6acf83977f52
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101669729"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>跨 Azure 区域的 SAP HANA 可用性
@@ -74,7 +74,7 @@ SAP 使用 HANA 2.0 SPS3 引入了[多目标系统复制](https://help.sap.com/v
 
 如果组织对第二个 (DR) Azure 区域的高可用性就绪性有要求，那么体系结构将如下所示：
 
-![此图显示了在第二个 (DR) Azure 区域中满足高可用性准备情况的组织。](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+![此图显示了对第二个 (DR) Azure 区域的高可用性就绪性有要求的组织。](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
 
 
 使用 logreplay 作为操作模式时，此配置在主要区域内提供低 RTO 的 RPO=0。 如果需要转移到第二个区域，此配置还能提供更低的 RPO。 第二个区域的 RTO 时间取决于是否预加载数据。 许多客户使用次要区域中的 VM 来运行测试系统。 在这种用例中，无法预加载数据。

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
 ms.openlocfilehash: eb0ce5cfadbab247299cd3c22bf6ee618bf19731
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100582482"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>在 Azure 应用服务中纵向扩展应用
@@ -36,7 +36,7 @@ ms.locfileid: "100582482"
 ## <a name="scale-up-your-pricing-tier"></a>向上缩放定价层
 
 > [!NOTE]
-> 若要纵向扩展到 **PremiumV3** 层，请参阅为 [应用服务配置 PremiumV3 层](app-service-configure-premium-tier.md)。
+> 若要纵向扩展到 PremiumV3 层，请参阅[为应用服务配置 PremiumV3 层](app-service-configure-premium-tier.md)。
 >
 
 1. 在浏览器中，打开 [Azure 门户][portal]。

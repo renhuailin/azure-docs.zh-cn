@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
 ms.openlocfilehash: 97509b878fb5e0cb28bddc5d1b58c21b32c34675
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99555650"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>使用 Azure Sentinel 播放列表
@@ -22,17 +22,17 @@ ms.locfileid: "99555650"
 > [!IMPORTANT]
 > 监视列表功能目前处于预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
-Azure Sentinel 监视列表允许从外部数据源收集数据，以便关联 Azure Sentinel 环境中的事件。 创建监视列表后，可以在搜索、检测规则、威胁搜寻和响应 playbook 中使用它。 监视列表在 Azure Sentinel 工作区中存储为名称值对并缓存，从而提供最佳查询性能和低延迟。
+Azure Sentinel 监视列表允许从外部数据源收集数据，以便关联 Azure Sentinel 环境中的事件。 创建后，可在搜索、检测规则、威胁搜寻和响应 playbook 中使用监视列表。 监视列表以名称/值对的形式存储在 Azure Sentinel 工作区中，并进行缓存来实现最佳查询性能和低延迟。
 
 使用监视列表的常见方案包括：
 
-- 通过从 CSV 文件快速导入 IP 地址、文件哈希和其他数据，调查威胁并迅速响应事件。 导入后，可以在警报规则、威胁搜寻、工作簿、笔记本和常规查询中使用监视列表名称值对进行联接和筛选。
+- 通过从 CSV 文件快速导入 IP 地址、文件哈希和其他数据，调查威胁并迅速响应事件。 导入后，可在警报规则、威胁搜寻、工作簿、笔记本和常规查询中使用监视列表名称/值对进行联接和筛选。
 
-- 导入业务数据用作监视列表。 例如，导入对系统具有特权访问权限或访问权限已终止的员工的用户列表，然后使用监视列表创建允许和拒绝列表来检测或阻止这些用户登录网络。
+- 导入业务数据用作监视列表。 例如，导入具有特权系统访问权限或已离职员工的用户列表，然后使用监视列表创建用于检测或阻止这些用户登录到网络的允许列表和拒绝列表。
 
-- 缓解警报疲劳。 创建允许列表可抑制一组用户的警报（例如授权 IP 地址中的用户执行通常会触发警报的任务），并防止良性事件成为警报。
+- 缓解警报疲劳。 创建允许列表来取消显示来自一组用户的警报和防止正常事件成为警报，其中这些用户包括来自已授权的 IP 地址的用户，他们执行通常会触发警报的任务。
 
-- 扩充事件数据。 使用监视列表可以通过派生自外部数据源的名称值组合来扩充事件数据。
+- 扩充事件数据。 使用监视列表可通过派生自外部数据源的名称/值对组合来扩充事件数据。
 
 ## <a name="create-a-new-watchlist"></a>创建新的监视列表
 
@@ -52,7 +52,7 @@ Azure Sentinel 监视列表允许从外部数据源收集数据，以便关联 A
 
     > [!NOTE]
     >
-    > 上传的文件大小目前限制为最大 3.8 MB。
+    > 文件上传大小当前限制为不超过 3.8 MB。
 
 1. 预览信息，验证是否正确，然后选择“创建”。
 
@@ -69,7 +69,7 @@ Azure Sentinel 监视列表允许从外部数据源收集数据，以便关联 A
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="在查询中使用监视列表" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
 
-1. 将针对查询自动提取监视列表中的项并显示在“结果”选项卡中。下面的示例显示了“ServerName”和“IpAddress”字段的提取结果。 
+1. 系统会自动为查询提取播放列表中的项，并将它们显示在“结果”选项卡上。以下示例显示 ServerName 和 IpAddress 字段的提取结果  。
 
     > [!NOTE]
     > 查询 UI 和计划警报中将忽略查询的时间戳。

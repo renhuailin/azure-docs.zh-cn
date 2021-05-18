@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92330608"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>协调 Azure 开发测试实验室的实施
@@ -26,17 +26,17 @@ ms.locfileid: "92330608"
 ## <a name="milestone-1-establish-initial-network-topology-and-design"></a>里程碑 1：建立初始网络拓扑和设计
 部署 Azure 开发测试实验室解决方案时，第一个侧重点是为虚拟机建立计划的连接。 以下步骤概述了所需的过程：
 
-1. 定义分配到 Azure 中开发测试实验室订阅的**初始 IP 地址范围**。 此步骤需要预测 VM 的预期使用数量，以便能够为将来的扩展提供足够大的区块。
-2. 确定开发测试实验室的**所需访问方法**（例如外部/内部访问）。 此步骤的一个要点是确定虚拟机是否有公共 IP 地址（即，是否可从 Internet 直接访问）。
-3. 确定并规定其他 Azure 云环境和本地的**连接方法**。 如果启用了通过 Express Route 进行强制路由，则虚拟机可能需要相应的代理配置才能遍历企业防火墙。
-4. 如果 VM 要**加入域**，请确定它们是要加入基于云的域（例如 AAD 目录服务）还是本地域。 如果加入本地域，请确定虚拟机要加入 Active Directory 中的哪个组织单位 (OU)。 此外，确认用户是否有权执行加入（或者建立一个可在域中创建计算机记录的服务帐户）
+1. 定义分配到 Azure 中开发测试实验室订阅的 **初始 IP 地址范围**。 此步骤需要预测 VM 的预期使用数量，以便能够为将来的扩展提供足够大的区块。
+2. 确定开发测试实验室的 **所需访问方法**（例如外部/内部访问）。 此步骤的一个要点是确定虚拟机是否有公共 IP 地址（即，是否可从 Internet 直接访问）。
+3. 确定并规定其他 Azure 云环境和本地的 **连接方法**。 如果启用了通过 Express Route 进行强制路由，则虚拟机可能需要相应的代理配置才能遍历企业防火墙。
+4. 如果 VM 要 **加入域**，请确定它们是要加入基于云的域（例如 AAD 目录服务）还是本地域。 如果加入本地域，请确定虚拟机要加入 Active Directory 中的哪个组织单位 (OU)。 此外，确认用户是否有权执行加入（或者建立一个可在域中创建计算机记录的服务帐户）
 
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>里程碑 2：部署试点实验室
 准备好网络拓扑后，可执行以下步骤来创建第一个/试点实验室：
 
 1. 创建初始开发测试实验室环境。
 2. 确定允许在实验室中使用的 VM 映像和大小。 确定是否可将自定义映像上传到 Azure，以便在开发测试实验室中使用。
-3. 通过为实验室 (实验室所有者和实验室用户) 创建初始 Azure 基于角色的访问控制 (Azure RBAC) 来安全地访问实验室。 我们建议对开发测试实验室的标识结合使用同步的 Active Directory 帐户和 Azure Active Directory。
+3. 通过为实验室（实验室所有者和实验室用户）创建初始 Azure 基于角色的访问控制 (Azure RBAC) 来保护对实验室的访问。 我们建议对开发测试实验室的标识结合使用同步的 Active Directory 帐户和 Azure Active Directory。
 4. 将开发测试实验室配置为使用计划、成本管理、可认领 VM、自定义映像或公式等策略。
 5. 建立 Azure Repos/Git 等联机存储库。
 6. 确定是要使用公共存储库、专用存储库，还是两者的组合。 组织用于部署和长期保留的 JSON 模板。

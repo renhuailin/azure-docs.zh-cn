@@ -14,16 +14,16 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 83bf6b6123cf7e0d57296f1f344a264c8a18ed77
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101671057"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中进行高可用性设置
 本文档将针对如何使用 STONITH 设备在 SUSE 操作系统上设置高可用性，进行详细的分步说明。
 
-**免责声明：** *本指南是通过测试成功运行的 Microsoft HANA 大型实例环境中的设置得出的。由于适用于 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，因此，你可能需要联系 SUSE，以便在操作系统层上进行进一步的故障排除或澄清。Microsoft 服务管理团队设置了 STONITH 设备，并完全支持并可参与 STONITH 设备问题的疑难解答。*
+免责声明：*本指南是通过测试成功运行的 Microsoft HANA 大型实例环境中的设置得出的。由于面向 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，因此，你可能需要联系 SUSE，以进一步了解操作系统层面的疑难解答或说明。* Microsoft 服务管理团队对 STONITH 设备进行设置并提供全力支持，可以对有关 STONITH 设备的问题进行疑难解答。
 ## <a name="overview"></a>概述
 要使用 SUSE 群集设置高可用性，必须满足以下先决条件。
 ### <a name="pre-requisites"></a>先决条件
@@ -63,7 +63,7 @@ ms.locfileid: "101671057"
 7.  将资源配置为群集
 8.  测试故障转移过程
 
-## <a name="1---identify-the-sbd-device"></a>1. 确定 SBD 设备
+## <a name="1---identify-the-sbd-device"></a>1. 标识 SBD 设备
 本部分将介绍如何在 Microsoft 服务管理团队配置 STONITH 后确定适用于设置的 SBD 设备。 本部分仅适用于现有客户。 如果你是新客户，Microsoft 服务管理团队会向你提供 SBD 设备名称，所以，可以跳过此部分。
 
 1.1 将 /etc/iscsi/initiatorname.isci 修改为 
@@ -83,21 +83,21 @@ Microsoft 服务管理会提供此字符串。 在这两个节点上修改文件
 iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
 ```
 
-![屏幕截图显示控制台窗口，其中包含 isciadm 发现命令的结果。](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
+![屏幕截图显示了控制台窗口，其中显示了 isciadm discovery 命令的结果。](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
-1.4 执行命令以登录到 iSCSI 设备，它会显示四个会话。 在 **两个** 节点上运行它。
+1.4 执行命令以登录到 iSCSI 设备，它会显示四个会话。 在这两个节点上都运行该脚本。
 
 ```
 iscsiadm -m node -l
 ```
-![屏幕截图显示控制台窗口，其中包含 iscsiadm node 命令的结果。](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
+![屏幕截图显示了控制台窗口，其中显示了 iscsiadm node 命令的结果。](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.5 执行重新扫描脚本： *rescan-scsi-bus.sh*。 此脚本将显示为你创建的新磁盘。  在两个节点上都运行该脚本。 应会看到一个大于零的 LUN 编号（例如，1、2 等）
+1.5 执行重新扫描脚本：rescan-scsi-bus.sh。此脚本显示创建的新磁盘。  在两个节点上都运行该脚本。 应会看到一个大于零的 LUN 编号（例如，1、2 等）
 
 ```
 rescan-scsi-bus.sh
 ```
-![屏幕截图显示了包含脚本结果的控制台窗口。](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
+![屏幕截图显示了控制台窗口，其中显示了脚本的结果。](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
 
 1.6 若要获取设备名称，请运行命令 fdisk –l。 在两个节点上都运行该脚本。 选择大小为 178 MiB 的设备。
 
@@ -105,7 +105,7 @@ rescan-scsi-bus.sh
   fdisk –l
 ```
 
-![屏幕截图显示控制台窗口，其中包含 f disk 命令的结果。](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
+![屏幕截图显示了控制台窗口，其中显示了 f disk 命令的结果。](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
 
 ## <a name="2---initialize-the-sbd-device"></a>2. 初始化 SBD 设备
 
@@ -114,7 +114,7 @@ rescan-scsi-bus.sh
 ```
 sbd -d <SBD Device Name> create
 ```
-![屏幕截图显示一个控制台窗口，其中包含 s b create 命令的结果。](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
+![屏幕截图显示了控制台窗口，其中显示了 sbd create 命令的结果。](media/HowToHLI/HASetupWithStonith/sbdcreate.png)
 
 2.2 检查已写入到设备的内容。 在两个节点上都执行该操作
 
@@ -130,40 +130,40 @@ sbd -d <SBD Device Name> dump
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
 ```
-![屏幕截图显示具有模式命令结果的控制台窗口。 ](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
- ![屏幕截图显示具有 Saphanasr-doc 命令结果的控制台窗口。](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
+![屏幕截图显示了控制台窗口，其中显示了 pattern 命令的结果。](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
+![屏幕截图显示了控制台窗口，其中显示了 SAPHanaSR-doc 命令的结果。](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3.2 设置群集
 3.2.1   可以使用 ha-cluster-init 命令或 yast2 向导设置群集。 这种情况使用 yast2 向导。 仅在主节点上执行此步骤。
 
-按照 yast2> 高可用性 > 群集 ![ 屏幕截图显示已选择高可用性和群集的 YaST 控制中心。 ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
- ![屏幕截图显示带有 "安装" 和 "取消" 选项的对话框。](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
+单击“yast2”>“高可用性”>“群集”![屏幕截图显示了 YaST 控制中心，其中选中了“高可用性”和“群集”。](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
+![屏幕截图显示了包含“安装”和“取消”选项的对话框。](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
 由于已安装 halk2 包，请单击“取消”。
 
-![屏幕截图显示有关 "取消" 选项的消息。](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
+![屏幕截图显示了有关你的取消选项的消息。](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
 单击“继续”
 
-预期值 = 在这种情况下 (部署的节点数 2) ![ 屏幕快照使用 "启用安全身份验证" 复选框显示群集安全。](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)
-单击 "**下一** 
- ![ 屏幕截图"，显示包含同步主机和同步文件列表的群集配置窗口。](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)
-添加节点名称，然后单击 "添加建议的文件"
+预期值=已部署的节点数（在本例中为 2）![屏幕截图显示了“群集安全性”，其中包含“启用安全性身份验证”复选框。](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)
+单击“下一步”
+![屏幕截图显示了“群集配置”窗口，其中显示了“同步主机”和“同步文件”列表。](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)
+添加节点名称，然后单击“添加建议的文件”
 
 单击“打开 csync2”
 
 单击“生成预共享密钥”，它会显示下面的弹出窗口
 
-![屏幕截图显示了已生成你的密钥的消息。](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
+![屏幕截图显示了一条消息，指出你的密钥已生成。](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
 单击 **“确定”**
 
 使用 Csync2 中的 IP 地址和预共享密钥执行身份验证。 使用 csync2 -k /etc/csync2/key_hagroup 生成密钥文件。 在创建文件 key_hagroup 后，应将其手动复制到群集的所有成员。 确保将文件从 node1 复制到 node2。
 
-![屏幕截图显示 "群集配置" 对话框，其中包含将密钥复制到群集的所有成员所需的选项。](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
+![屏幕截图显示了“群集配置”对话框，其中包含将密钥复制到群集的所有成员所需的选项。](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-单击 "**下一** 
- ![ 屏幕快照" 将显示 "群集服务" 窗口。](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
+单击“下一步”
+![屏幕截图显示了“群集服务”窗口。](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 在默认选项中，启动已关闭，将其更改为“打开”，以便 pacemaker 在启动时开始。 可以基于设置需求做出选择。
 单击“下一步”，完成群集配置。
@@ -175,49 +175,49 @@ zypper in SAPHanaSR SAPHanaSR-doc
 ```
 modprobe softdog
 ```
-![屏幕截图显示已添加 softdog 行的启动文件。](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
+![屏幕截图显示了其中添加了 softdog 行的启动文件。](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
 
 4.2 更新这两个节点上的文件 /etc/sysconfig/sbd，如下所示：
 ```
 SBD_DEVICE="<SBD Device Name>"
 ```
-![屏幕截图显示了 s b d 文件，其中添加了 S B D_DEVICE 值。](media/HowToHLI/HASetupWithStonith/sbd-device.png)
+![屏幕截图显示了其中添加了 SBD_DEVICE 值的 sbd 文件。](media/HowToHLI/HASetupWithStonith/sbd-device.png)
 
 4.3 通过运行以下命令在这两个节点上加载内核模块
 ```
 modprobe softdog
 ```
-![屏幕截图使用命令 modprobe softdog 显示控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
+![屏幕截图显示了控制台窗口的一部分，其中显示了 modprobe softdog 命令。](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
 4.4 检查并确保该 softdog 在这两个节点上运行，如下所示：
 ```
 lsmod | grep dog
 ```
-![屏幕截图显示控制台窗口的一部分，其中包含运行 l s mod 命令的结果。](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
+![屏幕截图显示了控制台窗口的一部分，其中显示了运行 lsmod 命令的结果。](media/HowToHLI/HASetupWithStonith/lsmod-grep-dog.png)
 
 4.5 在这两个节点上启动 SBD 设备
 ```
 /usr/share/sbd/sbd.sh start
 ```
-![屏幕截图使用 "启动" 命令显示控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
+![屏幕截图显示了控制台窗口的一部分，其中显示了 start 命令。](media/HowToHLI/HASetupWithStonith/sbd-sh-start.png)
 
 4.6 在这两个节点上测试 SBD 守护程序。 在这两个节点上进行配置后，会看到两个条目
 ```
 sbd -d <SBD Device Name> list
 ```
-![屏幕截图显示了显示两个条目的控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
+![屏幕截图显示了控制台窗口的一部分，其中显示了两个条目。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
 4.7 向其中一个节点发送测试消息
 ```
 sbd  -d <SBD Device Name> message <node2> <message>
 ```
-![屏幕截图显示了显示两个条目的控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
+![屏幕截图显示了控制台窗口的一部分，其中显示了两个条目。](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
 4.8 在第二个节点 (node2) 上，可以查看消息状态
 ```
 sbd  -d <SBD Device Name> list
 ```
-![屏幕截图显示控制台窗口的一部分，其中一个成员显示另一个成员的测试值。](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
+![屏幕截图显示了控制台窗口的一部分，其中的一个成员显示了另一个成员的测试值。](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
 
 4.9 若要采用 sbd 配置，请按如下所示更新文件 /etc/sysconfig/sbd。 在这两个节点上都更新文件。
 ```
@@ -231,7 +231,7 @@ SBD_OPTS=""
 ```
 systemctl start pacemaker
 ```
-![屏幕截图显示启动 pacemaker 后显示状态的控制台窗口。](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
+![屏幕截图显示了控制台窗口，其中显示了启动 pacemaker 后的状态。](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
 如果 pacemaker 服务失败，请参阅“方案 5：Pacemaker 服务失败”。
 
@@ -253,16 +253,16 @@ ha-cluster-join
 systemctl status pacemaker
 systemctl start pacemaker
 ```
-![屏幕截图显示了状态为 "pacemaker" 的控制台窗口。](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
+![屏幕截图显示了控制台窗口，其中显示了 pacemaker 的状态。](media/HowToHLI/HASetupWithStonith/systemctl-status-pacemaker.png)
 ### <a name="62-monitor-the-status"></a>6.2 监视状态
 运行命令 crm_mon，以确保这两个节点处于联机状态。 可以在该群集的任意节点上运行该命令
 ```
 crm_mon
 ```
-![屏幕截图显示一个控制台窗口，其中包含 c r m_mon 的结果。](media/HowToHLI/HASetupWithStonith/crm-mon.png)
-你还可以登录到 hawk 以检查群集状态 *https:// \<node IP> ： 7630*。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd 命令更改密码。
+![屏幕截图显示了控制台窗口，其中显示了 crm_mon 的结果。](media/HowToHLI/HASetupWithStonith/crm-mon.png)
+你还可以登录到 hawk 来检查群集状态 https://\<node IP>:7630。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd 命令更改密码。
 
-## <a name="7-configure-cluster-properties-and-resources"></a>7. 配置群集属性和资源 
+## <a name="7-configure-cluster-properties-and-resources"></a>7.配置群集属性和资源 
 本部分将介绍配置群集资源的步骤。
 在本示例中，设置以下资源，其余资源可以通过参考 SUSE HA 指南进行配置（如果需要）。 仅在其中一个节点中执行配置。 在主节点上执行该操作。
 
@@ -291,7 +291,7 @@ timeout="600"
 ```
 crm configure load update crm-bs.txt
 ```
-![屏幕截图显示了运行 c r m 命令的控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/crm-configure-crmbs.png)
+![屏幕截图显示了运行 crm 命令的控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/crm-configure-crmbs.png)
 
 ### <a name="72-stonith-device"></a>7.2 STONITH 设备
 添加资源 STONITH。 创建文件并按以下所示添加文本。
@@ -323,13 +323,13 @@ crm configure load update crm-vip.txt
 ### <a name="74-validate-the-resources"></a>7.4 验证资源
 
 在运行命令 crm_mon 时，可以在那里看到两个资源。
-![屏幕截图显示具有两个资源的控制台窗口。](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
+![屏幕截图显示了控制台窗口，其中包含两个资源。](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
 此外，可以在 https://\<node IP address>:7630/cib/live/state 上看到状态
 
-![屏幕截图显示两个资源的状态。](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
+![屏幕截图显示了两个资源的状态。](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
-## <a name="8-testing-the-failover-process"></a>8. 测试故障转移过程
+## <a name="8-testing-the-failover-process"></a>8.测试故障转移过程
 若要测试故障转移过程，请停止 node1 上的 pacemaker 服务，并将资源故障转移到 node2。
 ```
 Service pacemaker stop
@@ -337,14 +337,14 @@ Service pacemaker stop
 现在，停止 node2 上的 pacemaker 服务，资源已故障转移到 node1
 
 故障转移前   
-![屏幕截图显示故障转移之前的两个资源的状态。](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+![屏幕截图显示了故障转移前两个资源的状态。](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
 **故障转移之后**  
-![屏幕截图显示故障转移后两个资源的状态。](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![屏幕截图显示故障转移后具有资源状态的控制台窗口。](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+![屏幕截图显示了故障转移后两个资源的状态。](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![屏幕截图显示了控制台窗口，其中显示了故障转移后资源的状态。](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
-## <a name="9-troubleshooting"></a>9. 疑难解答
+## <a name="9-troubleshooting"></a>9.疑难解答
 本部分将介绍几个在安装过程中可能会遇到的失败情景。 你不一定会遇到这些问题。
 
 ### <a name="scenario-1-cluster-node-not-online"></a>情景 1：群集节点未联机
@@ -376,11 +376,11 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 
 **错误**
 
-![屏幕截图显示了包含错误消息的控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
+![屏幕截图显示了控制台窗口的一部分，其中显示了一条错误消息。](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
 
 **预期输出**
 
-![屏幕截图显示突出显示了高可用性和分类的 YaST 控制中心。](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
+![屏幕截图显示了 YaST 控制中心，其中突出显示了“高可用性”和“群集”。](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 
 如果 yast2 不随图形视图一起打开，请按照以下步骤进行操作。
 
@@ -390,19 +390,19 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 >[!NOTE]
 >需要在这两个节点上都执行这些步骤，以便可以从两个节点访问 yast2 图形视图。
 
-![屏幕截图显示了一个显示 YaST 控制中心的控制台窗口。](media/HowToHLI/HASetupWithStonith/yast-sofwaremanagement.png)
+![屏幕截图显示了控制台窗口，其中显示了 YaST 控制中心。](media/HowToHLI/HASetupWithStonith/yast-sofwaremanagement.png)
 
-在 "依赖关系" 下，选择 "安装建议的包" ![ 屏幕截图显示一个控制台窗口，其中选择了 "安装建议的包](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
+在“依赖项”下，选择“安装建议的包”![屏幕截图显示了控制台窗口，其中选择了“安装建议的包”。](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
 
 查看所做的更改，并点击“确定”
 
 ![yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
 
-包安装将继续 ![ 屏幕截图显示一个控制台窗口，其中显示了安装进度。](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
+包安装继续![屏幕截图显示了控制台窗口，其中显示了安装进度。](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
 单击“下一步”
 
-![屏幕截图显示控制台窗口，其中包含一条成功消息。](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
+![屏幕截图显示了控制台窗口，其中显示了一条成功消息。](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
 单击“完成”
 
@@ -410,14 +410,14 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 ```
 zypper -n install libqt4
 ```
-![屏幕截图显示了安装 libqt4 包的控制台窗口。](media/HowToHLI/HASetupWithStonith/zypper-install-libqt4.png)
+![屏幕截图显示了控制台窗口，其中正在安装 libqt4 包。](media/HowToHLI/HASetupWithStonith/zypper-install-libqt4.png)
 ```
 zypper -n install libyui-qt
 ```
-![屏幕截图显示了一个控制台窗口，其中安装了 libyui-qt 包。 ](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
- ![屏幕截图显示了一个控制台窗口，其中安装了 libyui-qt 包，并继续。](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png)
-Yast2 应能立即打开图形视图，如下所示。
-![屏幕截图显示选择了软件和联机更新的 YaST 控制中心。](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![屏幕截图显示了控制台窗口，其中正在安装 libyui-qt 包。](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
+![屏幕截图显示了控制台窗口，其中正在安装 libyui-qt 包（续）。](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png)
+Yast2 现在应当能够打开图形视图，如下所示。
+![屏幕截图显示了 YaST 控制中心，其中选择了“软件”和“联机更新”。](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 ### <a name="scenario-3-yast2-does-not-high-availability-option"></a>情景 3：yast2 不显示高可用性选项
 对于要在 yast2 控制中心上显示的高可用性选项，需要安装其他包。
@@ -433,33 +433,33 @@ Yast2 应能立即打开图形视图，如下所示。
 
 使用 yast2 > 软件 > 软件管理
 
-![屏幕截图显示了 YaST 控制中心，其中选择了 "软件" 和 "联机更新" 来开始安装。](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![屏幕截图显示了 YaST 控制中心，其中选择了“软件”和“联机更新”来开始安装。](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 选择模式
 
-![屏幕截图显示了如何选择 C/c + + 编译器和工具项中的第一种模式。 ](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
- ![屏幕截图显示了如何选择 C/c + + 编译器和工具项中的第二种模式。](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
+![屏幕截图显示了在“C/C++ 编译器和工具”项中选择第一种模式。](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
+![屏幕截图显示了在“C/C++ 编译器和工具”项中选择第二种模式。](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
-单击 "**接受**"
+单击“接受”
 
-![屏幕截图显示已更改的包对话框，其中的包已更改为解析依赖项。](media/HowToHLI/HASetupWithStonith/yast-changed-packages.png)
+![屏幕截图显示了“已更改的包”对话框，已更改了其中的包来解析依赖项。](media/HowToHLI/HASetupWithStonith/yast-changed-packages.png)
 
 单击“继续”
 
-![屏幕截图显示 "正在执行的安装状态" 页。](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
+![屏幕截图显示了“正在执行安装”状态页。](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
-hte 安装完成后，单击“下一步”
+安装完成后，单击“下一步”
 
-![屏幕截图显示安装报告。](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
+![屏幕截图显示了安装报告。](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
 ### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>情景 4：HANA 安装失败，显示 gcc 程序集错误
 HANA 安装失败，显示以下错误。
 
-![屏幕截图显示一条错误消息，指出操作系统未准备好执行 g c c 5 程序集。](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
+![屏幕截图显示了一条错误消息，指出操作系统未准备好执行 gcc5 程序集。](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
 
 若要解决此问题，需要安装库（libgcc_sl 和 libstdc++6），如下所示。
 
-![屏幕截图显示了安装所需库的控制台窗口。](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
+![屏幕截图显示了控制台窗口，其中正在安装所需的库。](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
 
 ### <a name="scenario-5-pacemaker-service-fails"></a>情景 5：Pacemaker 服务失败
 
@@ -510,7 +510,7 @@ sapprdhdb95:/ # tail -f /var/log/messages
 Persistent=true
 ```
 
-![屏幕截图显示要删除其值为 Persistent = true 的 f s 剪裁文件。](media/HowToHLI/HASetupWithStonith/Persistent.png)
+![屏幕截图显示了 fstrim 文件，其中包含要删除的值 Persistent=true。](media/HowToHLI/HASetupWithStonith/Persistent.png)
 
 ### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>情景 6：Node2 无法加入群集
 
@@ -520,7 +520,7 @@ Persistent=true
 ERROR: Can’t retrieve SSH keys from <Primary Node>
 ```
 
-![屏幕截图显示一个控制台窗口，该窗口中的错误消息无法从 I P 地址检索 S H 键。](media/HowToHLI/HASetupWithStonith/ha-cluster-join-error.png)
+![屏幕截图显示了控制台窗口，其中显示了错误消息“无法从 IP 地址检索 SSH 密钥”。](media/HowToHLI/HASetupWithStonith/ha-cluster-join-error.png)
 
 若要修复，请在这两个节点上运行以下命令
 
@@ -529,15 +529,15 @@ ssh-keygen -q -f /root/.ssh/id_rsa -C 'Cluster Internal' -N ''
 cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 ```
 
-![屏幕截图显示了在第一个节点上运行命令的控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/ssh-keygen-node1.PNG)
+![屏幕截图显示了控制台窗口的一部分，正在第一个节点上运行命令。](media/HowToHLI/HASetupWithStonith/ssh-keygen-node1.PNG)
 
-![屏幕截图显示在第二个节点上运行命令的控制台窗口的一部分。](media/HowToHLI/HASetupWithStonith/ssh-keygen-node2.PNG)
+![屏幕截图显示了控制台窗口的一部分，正在第二个节点上运行命令。](media/HowToHLI/HASetupWithStonith/ssh-keygen-node2.PNG)
 
 执行前面的修复操作后，应能将 node2 添加到群集中
 
-![屏幕截图显示一个控制台窗口，其中包含成功的 ha 群集联接命令。](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
+![屏幕截图显示了控制台窗口，其中显示了成功的 ha-cluster-join 命令。](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
-## <a name="10-general-documentation"></a>10. 常规文档
+## <a name="10-general-documentation"></a>10.常规文档
 可以在以下文章中找到有关 SUSE HA 设置的详细信息： 
 
 - [SAP HANA SR 性能优化方案](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )

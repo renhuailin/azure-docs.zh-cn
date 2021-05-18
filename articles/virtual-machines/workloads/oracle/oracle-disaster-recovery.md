@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.openlocfilehash: 68b5b9dfd205628c9d7c430df4c0230267752e01
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101669941"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复
@@ -43,7 +43,7 @@ ms.locfileid: "101669941"
 - 位于不同子网的 jumpbox、应用程序服务、数据库和 VPN 网关
 - 对应用程序和数据库子网强制执行的 NSG
 
-![显示 Azure 上的主站点和 DR 站点的示意图。](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![图中显示了 Azure 上的主站点和 DR 站点。](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
 ## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>方案 2：本地主站点和 Azure 上的 DR 站点
 
@@ -69,7 +69,7 @@ ms.locfileid: "101669941"
 - NSG 策略/规则，以允许入站 TCP 端口 1521（或用户定义的端口）
 - NSG 策略/规则，以仅限制一个或多个本地 IP 地址（DB 或应用程序）访问虚拟网络
 
-![此图显示了在本地与 Azure 之间的直接连接，要求在防火墙上打开 TCP 端口。](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![图中显示了在本地和 Azure 之间直接连接，要求在防火墙上开启 TCP 端口。](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>方式 2：站点到站点 VPN
 使用站点到站点 VPN 是一个比较好的做法。 有关安装 VPN 的详细信息，请参阅[使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)。

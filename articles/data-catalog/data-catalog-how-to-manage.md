@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 9d035417b613c81487c493bde90cdcc461f04412
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 0182f744e038bc8080b9fb96bfdb1eeda16b86c0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017281"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674846"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>管理 Azure 数据目录中的数据资产
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>简介
 Azure 数据目录设计用于发现数据源，使用户能够轻松发现和理解执行分析和做出决策所需的数据源。 当你和其他用户能够找到并了解最广泛的可用数据源时，这些发现功能可以产生最大的影响。 考虑到这些因素，数据目录的默认行为是让所有目录用户都能看见并发现所有已注册的数据源。
 
@@ -37,7 +40,7 @@ Azure 数据目录设计用于发现数据源，使用户能够轻松发现和�
 >
 
 ### <a name="take-ownership"></a>取得所有权
-用户可以通过选择数据目录门户中的 " **取得所有权** " 选项来取得数据资产的所有权。 要取得无所有者数据资产的所有权并不需要任何特殊权限。 任何用户都可取得无所有者数据资产的所有权。
+通过选择数据目录门户中的“取得所有权”选项，用户可以获得数据资产的所有权。 要取得无所有者数据资产的所有权并不需要任何特殊权限。 任何用户都可取得无所有者数据资产的所有权。
 
 ### <a name="add-owners-and-co-owners"></a>添加所有者和共同所有者
 如果数据资产已有所有者，其他用户无法直接获取所有权。 必须由现有所有者将他们添加为共同所有者。 任何所有者都可以将其他用户或安全组添加为共同所有者。
@@ -50,7 +53,7 @@ Azure 数据目录设计用于发现数据源，使用户能够轻松发现和�
 ### <a name="remove-owners"></a>删除所有者
 正如任何资产所有者可以添加共同所有者一样，他们也可以删除任何共同所有者。
 
-将自身作为所有者删除的资产所有者不能再管理资产。 如果资产所有者删除了自己作为所有者，但没有其他共同所有者，资产将恢复为未所有者状态。
+资产所有者删除了自己作为所有者的身份后，将不能再管理资产。 如果资产所有者删除了自己作为所有者的身份且没有其他共同所有者，资产将还原到无所有者状态。
 
 ## <a name="control-visibility"></a>控制可见性
 数据资产所有者可以控制他们所拥有的数据资产的可见性。 若要限制默认可见性（让所有数据目录用户都能发现和查看数据资产），资产所有者可以在资产属性中将可见性设置从“任何人”切换为“所有者和这些用户”。 然后所有者可以添加特定用户和安全组。
@@ -63,5 +66,5 @@ Azure 数据目录设计用于发现数据源，使用户能够轻松发现和�
 ## <a name="catalog-administrators"></a>目录管理员
 数据目录管理员是目录中所有资产的隐式共同所有者。 资产所有者不能删除管理员的可见性，并且管理员可以管理目录中所有数据资产的所有权和可见性。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 数据目录的元数据和数据资产发现众包模型允许所有目录用户参与和发现。 数据目录标准版设计用于所有权和管理，限制特定数据资产的可见性和使用。

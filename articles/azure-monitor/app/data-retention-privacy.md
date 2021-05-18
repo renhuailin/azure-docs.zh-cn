@@ -4,12 +4,12 @@ description: 保留和隐私政策声明
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 6a7545d4d927418e6153ce3bf439fc8c3e2dc702
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579573"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774909"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -294,6 +294,10 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅 [Appl
 
 > [!NOTE]
 > 客户端 IP 用于推断地理位置，但默认情况下，不再存储 IP 数据且将所有的零写入关联的字段。 若要了解有关个人数据处理的详细信息，推荐参阅这一篇[文章](../logs/personal-data-mgmt.md#application-data)。 如果需要存储 IP 地址数据，我们的[“IP 地址收集”一文](./ip-collection.md)会指导你完成选择。
+
+## <a name="can-i-modify-or-update-data-after-it-has-been-collected"></a>是否可以在收集数据后对其进行修改或更新？
+
+不可以。数据是只读的，只能通过清除功能删除。 若要了解详细信息，请访问[存储在 Log Analytics 和 Application Insights 中的个人数据指南](../logs/personal-data-mgmt.md#delete)。
 
 ## <a name="credits"></a>致谢
 此产品包含 MaxMind 创建的 GeoLite2 数据，可从 [https://www.maxmind.com](https://www.maxmind.com) 获取。

@@ -4,20 +4,16 @@ description: 了解如何检索 Azure API 管理服务的 IP 地址，及其何�
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 04/13/2021
 ms.author: apimpm
-ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5939292b6e810634723fada17521bb227764b989
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "80047742"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534028"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API 管理的 IP 地址
 
@@ -106,4 +102,4 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 * 在该服务中添加或删除 Azure 虚拟网络。
 * 切换 API 管理服务的“外部”和“内部” VNet 部署模式。
 
-在[多区域部署](api-management-howto-deploy-multi-region.md)中，如果某个区域搬迁然后重建，则区域 IP 地址将发生变化。
+在[多区域部署](api-management-howto-deploy-multi-region.md)中，如果某个区域搬迁然后重建，则区域 IP 地址将发生变化。 当你启用、添加或删除[可用性区域](zone-redundancy.md)时，区域 IP 地址也会更改。

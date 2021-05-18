@@ -4,10 +4,10 @@ description: 本文介绍网络安全功能，如服务标记、IP 防火墙规�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: db0dd89d1f902699c27b724609505ba681757454
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92310460"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure 服务总线的网络安全性 
@@ -83,7 +83,7 @@ IP 防火墙规则应用于服务总线命名空间级别。 因此，这些规�
 > 通过 Azure 服务总线高级层支持此功能。 有关高级层的详细信息，请参阅[服务总线高级和标准消息传送层](service-bus-premium-messaging.md)。
 
 
-有关详细信息，请参阅 [如何为服务总线命名空间配置专用终结点](private-link-service.md)
+有关详细信息，请参阅[如何为服务总线命名空间配置专用终结点](private-link-service.md)
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -91,4 +91,4 @@ IP 防火墙规则应用于服务总线命名空间级别。 因此，这些规�
 
 - [如何为服务总线命名空间配置 IP 防火墙](service-bus-ip-filtering.md)
 - [如何为服务总线命名空间配置虚拟网络服务终结点](service-bus-service-endpoints.md)
-- [如何配置服务总线命名空间的专用终结点](private-link-service.md)
+- [如何为服务总线命名空间配置专用终结点](private-link-service.md)

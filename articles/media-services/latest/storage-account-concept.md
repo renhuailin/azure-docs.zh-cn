@@ -1,7 +1,7 @@
 ---
 # <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必填字段。 有关详细信息，请参阅 aka.ms/skyeye/meta。
-标题： Azure 存储帐户： Azure 媒体服务说明：了解如何创建用于 Azure 媒体服务的 Azure 存储帐户。
-服务：媒体服务 documentationcenter： ' ' author： IngridAtMicrosoft manager： femila editor： ' ' ms. service： media-服务毫秒：：01/29/2021：： inhenkel
+title: Azure 存储帐户：Azure 媒体服务 description: 了解如何创建用于 Azure 媒体服务的 Azure 存储帐户。
+services: media-services documentationcenter: '' author: IngridAtMicrosoft manager: femila editor: '' ms.service: media-services ms.workload: ms.topic: conceptual ms.date: 01/29/2021 ms.author: inhenkel
 ---
 
 # <a name="azure-storage-accounts"></a>Azure 存储帐户
@@ -40,9 +40,9 @@
 
 <sup>1</sup> 在媒体服务 v3 中，仅当资产是使用媒体服务 v2 创建的时才支持存储加密（AES-256 加密）以实现向后兼容性，这意味着 v3 适用于现有存储加密的资产，但不允许创建新资产。
 
-## <a name="storage-account-double-encryption"></a>存储帐户双加密
+## <a name="storage-account-double-encryption"></a>存储帐户双重加密
 
-存储帐户支持双加密，但必须显式启用第二层。 请参阅[静态数据的 Azure 存储加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。  
+存储帐户支持双重加密，但必须显式启用第二层。 请参阅[静态数据的 Azure 存储加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。  
 
 ## <a name="storage-account-errors"></a>存储帐户错误
 
@@ -57,4 +57,4 @@
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何将存储帐户附加到媒体服务帐户，请参阅[创建帐户](./create-account-howto.md)。
+若要了解如何将存储帐户附加到媒体服务帐户，请参阅[创建帐户](./account-create-how-to.md)。

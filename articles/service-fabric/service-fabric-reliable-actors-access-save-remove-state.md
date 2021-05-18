@@ -1,14 +1,14 @@
 ---
 title: 管理 Azure Service Fabric 状态
-description: 了解如何访问、保存和删除 Azure Service Fabric Reliable Actors 的状态，以及设计应用程序时的注意事项。
+description: 了解如何访问、保存和删除 Azure Service Fabric Reliable Actor 的状态，以及设计应用程序时的注意事项。
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1e796232719342883efc2aa5dd377d586f3039ad
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96571311"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>访问、保存和删除 Reliable Actors 状态

@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure AD Connect 1.4. x. x 和设备消失 |Microsoft Docs
-description: 本文档描述了版本 1.4. x Azure AD Connect 的问题
+title: 了解 Azure AD Connect 1.4.xx.x 和设备消失 | Microsoft Docs
+description: 本文档介绍了 1.4.xx.x 版 Azure AD Connect 出现的问题
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,38 +11,38 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "73176020"
 ---
-# <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>了解 Azure AD Connect 1.4. x. x 和设备消失
-Azure AD Connect 的版本 1.4. x，某些客户可能会看到其所有 Windows 设备从 Azure AD 中消失。 不必担心，因为在条件访问授权期间 Azure AD 不会使用这些设备标识。 此更改不会删除为混合 Azure AD 联接正确注册 Azure AD 的任何 Windows 设备。
+# <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>了解 Azure AD Connect 1.4.xx.x 和设备消失
+使用 1.4.xx.x 版 Azure AD Connect 时，某些客户可能会看到其部分或所有 Windows 设备从 Azure AD 中消失。 不必担心，因为在条件访问授权期间 Azure AD 不会使用这些设备标识。 此更改不会删除已向 Azure AD 正确注册以建立混合 Azure AD 联接的任何 Windows 设备。
 
-如果在 Azure AD 超过导出删除阈值时看到删除了设备对象，则建议客户允许删除操作。 [如何：允许删除超出删除阈值时流动](how-to-connect-sync-feature-prevent-accidental-deletes.md)
+如果发现在 Azure AD 中删除设备对象时超出“导出删除阈值”，建议客户允许删除操作完成。 [如何在删除操作数超出删除阈值时允许删除操作完成](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
 ## <a name="background"></a>背景
-注册为混合 Azure AD 的 Windows 设备在 Azure AD 中表示为设备对象。 这些设备对象可用于条件性访问。 Windows 10 设备通过 Azure AD Connect 同步到云，下一级 Windows 设备是使用 AD FS 或无缝单一登录直接注册的。
+注册为混合 Azure AD 联接的 Windows 设备在 Azure AD 中表示为设备对象。 这些设备对象可用于条件访问。 Windows 10 设备将通过 Azure AD Connect 同步到云，下层 Windows 设备将直接使用 AD FS 或无缝单一登录进行注册。
 
 ## <a name="windows-10-devices"></a>Windows 10 设备
-只应 Azure AD Connect 将具有混合 Azure AD 联接配置的特定 userCertificate 属性值的 Windows 10 设备同步到云。 在的早期版本中 Azure AD Connect 未严格实施此要求，导致 Azure AD 中不必要的设备对象。 Azure AD 中的此类设备始终处于 "挂起" 状态，因为这些设备不打算注册到 Azure AD 中。 
+只有具有混合 Azure AD 联接配置的特定 userCertificate 属性值的 Windows 10 设备才应被 Azure AD Connect 同步到云中。 在以前版本的 Azure AD Connect 中，未严格执行此要求，导致 Azure AD 中出现不必要的设备对象。 Azure AD 中的此类设备始终保持“挂起”状态，因为这些设备不打算向 Azure AD 注册。 
 
-此版本的 Azure AD Connect 将只同步正确配置为混合 Azure AD 加入的 Windows 10 设备。 将从 Azure AD 中删除没有 Azure AD 联接特定 userCertificate 的 Windows 10 设备对象。
+此版本的 Azure AD Connect 仅同步已正确配置为建立混合 Azure AD 联接的 Windows 10 设备。 没有 Azure AD 联接特定 userCertificate 的 Windows 10 设备对象将从 Azure AD 中删除。
 
-## <a name="down-level-windows-devices"></a>Down-Level Windows 设备
-Azure AD Connect 不得同步 [下层 Windows 设备](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)。 将从 Azure AD 中删除之前未正确同步 Azure AD 中的任何设备。 如果 Azure AD Connect 尝试删除 [下层 windows 设备](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)，则该设备不是由 [Microsoft Workplace Join 为非 WINDOWS 10 计算机 MSI](https://www.microsoft.com/download/details.aspx?id=53554) 创建的，并且不能被任何其他 Azure AD 功能使用。
+## <a name="down-level-windows-devices"></a>下层 Windows 设备
+Azure AD Connect 任何时候都不应同步[下层 Windows 设备](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)。 Azure AD 中以前错误同步的所有设备现在将被删除。 如果 Azure AD Connect 试图删除[下层 Windows 设备](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)，则该设备不是[非 Windows 10 计算机 MSI 的 Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554) 创建的设备，并且它不能由任何其他 Azure AD 功能使用。
 
-有些客户可能需要重新访问 [如何：规划混合 Azure Active Directory 联接实现](../devices/hybrid-azuread-join-plan.md) ，使其 Windows 设备正确注册，并确保此类设备可以完全参与基于设备的条件访问。 
+一些客户可能需要重新访问[如何：规划混合 Azure Active Directory 联接实现](../devices/hybrid-azuread-join-plan.md)以正确注册其 Windows 设备，并确保此类设备可以完全参与基于设备的条件访问。 
 
 ## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>如何验证哪些设备已通过此更新删除？
 
-若要验证已删除的设备，你可以使用以下 PowerShell 脚本： https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
+若要验证哪些设备已删除，可以使用以下 PowerShell 脚本： https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
 
-此脚本将生成一个报表，该报表介绍 Active Directory 计算机对象中存储的证书，尤其是混合 Azure AD 联接功能颁发的证书。
-它将检查 AD 中计算机对象的 UserCertificate 属性中存在的证书，并验证是否为每个未过期的证书颁发了证书，验证是否为混合 Azure AD 联接功能颁发了证书 (例如，使用者名称是否与 CN = {ObjectGUID} ) 匹配。
-之前，Azure AD Connect 将同步到至少包含一个有效证书但从 Azure AD Connect 版本1.4 开始的任何计算机 Azure AD，同步引擎可以识别混合 Azure AD 联接证书，并将 "cloudfilter" 计算机对象从同步到 Azure AD，除非存在有效的混合 Azure AD 联接证书。
-Azure AD 已同步到 AD 但没有有效混合 Azure AD 联接证书的设备将被同步引擎)  (CloudFiltered = TRUE。
+此脚本会生成有关存储在 Active Directory 计算机对象中的证书的报告，尤其是由混合 Azure AD 联接功能颁发的证书。
+它将检查 AD 中计算机对象的 UserCertificate 属性中存在的证书，并为每个未过期的证书验证是否为混合 Azure AD 联接功能颁发了证书（即，使用者名称与 CN = {ObjectGUID} 匹配）。
+以前，Azure AD Connect 会将包含至少一个有效证书的任何计算机同步到 Azure AD，但从 Azure AD Connect 1.4 版本开始，同步引擎可以识别混合 Azure AD 联接证书，将“云筛选”同步到 Azure AD 的计算机对象，除非存在有效的混合 Azure AD 联接证书。
+同步引擎将删除已同步到 AD 但没有有效混合 Azure AD 联接证书的 Azure AD 设备 (CloudFiltered = TRUE)。
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure AD Connect 版本历史记录](reference-connect-version-history.md)

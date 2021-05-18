@@ -4,10 +4,10 @@ description: Azure 资源管理器公开的 Azure 事件中心异常列表以及
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: cec24696d0d49ba408860f6562c34dd14876c311
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91334202"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure 事件中心 - 资源管理器异常
@@ -44,7 +44,7 @@ ms.locfileid: "91334202"
 | BadRequest | 无 | 无法更新辅助命名空间 | 无法更新命名空间，因为它是 [GeoDR 配对](event-hubs-geo-dr.md)中的辅助命名空间。 | 如果合适，请改为对此配对中的主命名空间进行更改。 否则，请中断 GeoDR 配对以进行更改。 |
 | BadRequest | 无 | 无法在基本 SKU 中设置自动扩充 | 无法在基本层事件中心命名空间中启用自动扩充。 | 若要在命名空间中[启用自动扩充](event-hubs-auto-inflate.md)，请确保它位于标准层。 |
 | BadRequest | 无 | 容量不足，无法创建命名空间。 请联系事件中心管理员。 | 所选区域已达到容量限制，无法创建更多命名空间。 | 选择另一个区域来容纳命名空间。 |
-| BadRequest | 无 | 无法对实体类型 'ConsumerGroup' 执行该操作，因为命名空间 '<命名空间名称>' 使用的是“基本”层。  | 基本层事件中心命名空间有一个使用者组的配额 (event-hubs-quotas.md)  (默认) 。 不支持创建更多使用者组。 | 继续使用默认使用者组 ($Default)，如果需要更多使用者组，请考虑改用标准层事件中心命名空间。 | 
+| BadRequest | 无 | 无法对实体类型 'ConsumerGroup' 执行该操作，因为命名空间 '<命名空间名称>' 使用的是“基本”层。  | 基本层事件中心命名空间的配额 (event-hubs-quotas.md) 为一个使用者组（默认）。 不支持创建更多使用者组。 | 继续使用默认使用者组 ($Default)，如果需要更多使用者组，请考虑改用标准层事件中心命名空间。 | 
 | BadRequest | 无 | 命名空间 '<命名空间名称>' 不存在。 | 找不到提供的命名空间。 | 仔细检查命名空间名称是否正确，以及是否可以在订阅中找到该名称。 如果找不到，请[创建事件中心命名空间](event-hubs-create.md)。 | 
 | BadRequest | 无 | 资源的 location 属性与其包含命名空间不匹配。 | 在特定区域中创建事件中心失败，因为此区域与命名空间的区域不匹配。 | 尝试在命名空间所在的同一区域中创建事件中心。 | 
 

@@ -8,10 +8,10 @@ ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: ede4e5dd781851c781407a8acea640e3e501f259
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96436379"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>处理关于 Azure 应用程序套餐的评审反馈
@@ -43,7 +43,7 @@ ms.locfileid: "96436379"
 
 1. 在主页左侧的菜单中，选择“文件”以显示构成此套餐的技术资产的列表文件。 Microsoft 评审者应已添加了备注来描述所发现的严重问题。 在以下示例中发现了两个问题。
 
-    [![突出显示文件的屏幕截图和发现的两个问题。](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    [![屏幕截图突出显示“文件”和发现的两个问题。](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> 单击此图像展开内容。
 
 1. 选择左侧树中的每个注释节点，导航到周围代码上下文中的注释。 在团队项目中修复源代码，以更正备注中所述的问题。

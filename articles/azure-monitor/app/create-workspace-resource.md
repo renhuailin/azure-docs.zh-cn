@@ -3,12 +3,13 @@ title: 新建基于工作区的 Azure Monitor Application Insights 资源 | Micr
 description: 了解启用基于工作区的新 Azure Monitor Application Insights 资源所需的步骤。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: a84a9de854123b70ca96531942debc00afb2d6c6
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578338"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754490"
 ---
 # <a name="workspace-based-application-insights-resources"></a>基于工作区的 Application Insights 资源
 
@@ -25,7 +26,7 @@ ms.locfileid: "100578338"
 
 * [客户管理的密钥 (CMK)](../logs/customer-managed-keys.md) 为你的数据提供静态加密，并提供只有你有权访问的加密密钥。
 * 通过 [Azure 专用链接](../logs/private-link-security.md)，可使用专用终结点将 Azure PaaS 服务安全地链接到你的虚拟网络。
-* [为探查器和 Snapshot Debugger 提供自己的存储 (BYOS) ](./profiler-bring-your-own-storage.md) ，你可以完全控制静态加密策略、生存期管理策略以及与 Application Insights Profiler 和 Snapshot Debugger 相关的所有数据的网络访问。 
+* 借助[适用于 Profiler 和 Snapshot Debugger 的自带存储 (BYOS)](./profiler-bring-your-own-storage.md)，你可以完全控制与 Application Insights Profiler 和 Snapshot Debugger 相关联的所有数据的静态加密策略、生存期管理策略和网络访问。 
 * 使用[产能预留层](../logs/manage-cost-storage.md#pricing-model)可以节省 25% 的成本（与即用即付价格相比）。 
 * 可以通过 Log Analytics 流引入提高数据引入速度。
 
@@ -38,7 +39,7 @@ ms.locfileid: "100578338"
 
 如果你还没有现有的 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](../logs/quick-create-workspace.md)。
 
-**基于工作区的资源当前在所有商业区域和 Azure 政府版中可用**
+基于工作区的资源当前在所有商业区域和 Azure 政府中可用
 
 创建资源后，可在“概览”窗格中看到相应的工作区信息：
 
@@ -113,7 +114,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)。
+有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/monitor/app-insights/component#az_monitor_app_insights_component_create)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

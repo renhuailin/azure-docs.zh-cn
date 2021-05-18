@@ -5,21 +5,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: ff6d532d3c391ffecfbfb54a761c73ff24c823d9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 03c4babc8fa70c951d80b720c4d4693968011532
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040254"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772257"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
 
 Log Analytics 是一种可能存有个人数据的数据存储。 Application Insights 将其数据存储在 Log Analytics 分区中。 本文讨论通常在 Log Analytics 和 Application Insights 中的哪些位置可找到此类数据，以及可用于处理此类数据的功能。
 
 > [!NOTE]
-> 在本文中，_日志数据_ 指的是发送到 Log Analytics 工作区的数据，而 _应用程序数据_ 指的是 Application Insights 收集的数据。
+> 在本文中，_日志数据_ 指的是发送到 Log Analytics 工作区的数据，而 _应用程序数据_ 指的是 Application Insights 收集的数据。 如果使用的是基于工作区的 Application Insights 资源，将应用日志数据中的信息；但如果使用的是经典 Application Insights 资源，将应用应用程序数据。
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
+
 
 ## <a name="strategy-for-personal-data-handling"></a>个人数据处理策略
 
@@ -27,7 +28,7 @@ Log Analytics 是一种可能存有个人数据的数据存储。 Application In
 
 * 如果可行，应停止收集、混淆或匿名处理私人数据，或停止以其他方式调整所收集的数据，使其不再被视为“私人数据”。 这是 _目前为止_ 的首选方法，无需创建非常昂贵且影响很大的数据处理策略。
 * 如果不可行，请尝试规范化数据，减少对数据平台和性能的影响。 例如，不记录显式用户 ID，而是创建查找数据，将用户名及其详细信息关联到可随后在其他位置记录的内部 ID。 这样一来，如果某个用户要求删除其个人信息，则只需删除查找表中对应于该用户的行就足够了。 
-* 最后，如果必须收集私人数据，请就清除 API 路径和现有查询 API 路径构建相关流程，以履行在导出和删除与用户关联的任何私人数据时可能需要承担的任何义务。 
+* 最后，如果必须收集私人数据，请就清除 API 路径和现有查询 API 路径构建相关流程，以履行在导出和删除与用户关联的任何私人数据时可能需要承担的任何义务。
 
 ## <a name="where-to-look-for-private-data-in-log-analytics"></a>在 Log Analytics 中的何处查找私人数据？
 

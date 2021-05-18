@@ -1,5 +1,5 @@
 ---
-title: 构建一个可调用 web Api 的 web 应用 |Microsoft
+title: 构建用于调用 Web API 的 Web 应用 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 Web API 的 Web 应用（概述）
 services: active-directory
@@ -13,10 +13,10 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 1fdbdada54320ef28f6a4b04a7f415c835acc9dd
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98756286"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>方案：调用 Web API 的 Web 应用
@@ -54,4 +54,4 @@ ms.locfileid: "98756286"
 
 ## <a name="next-steps"></a>后续步骤
 
-转到此方案中的下一篇文章：[应用注册](scenario-web-app-call-api-app-registration.md)。
+转到此方案中的下一篇文章，[应用注册](scenario-web-app-call-api-app-registration.md)。

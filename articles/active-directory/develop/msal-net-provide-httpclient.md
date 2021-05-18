@@ -1,7 +1,7 @@
 ---
-title: 提供 HttpClient & proxy (MSAL.NET) |Microsoft
+title: 提供 HttpClient 和代理 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何提供自己的 HttpClient 和代理，使用适用于 .NET (MSAL.NET) 的 Microsoft 身份验证库连接到 Azure AD。
+description: 了解如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 提供你自己的 HttpClient 和代理来连接到 Azure AD。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 6139fd1b081c69f037ec9cd3313e4a6499c39543
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98064617"
 ---
 # <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>使用 MSAL.NET 提供你自己的 HttpClient 和代理

@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中批准对 Azure 资源角色的请求-Azure AD |Microsoft Docs
+title: 在 PIM 中批准 Azure 资源角色的请求 - Azure AD | Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中批准或拒绝 Azure 资源角色的请求。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 096da0547806680f62b569f7c7809a7bbb04cb86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84742073"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中批准或拒绝 Azure 资源角色的请求
@@ -32,15 +32,15 @@ ms.locfileid: "84742073"
 
 有 Azure 资源角色请求正在等待审批时，委派的审批者将收到电子邮件通知。 可以在 Privileged Identity Management 中查看这些挂起的请求。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。 
+1. 打开“Azure AD Privileged Identity Management”。
 
-1. 选择“审批请求”  。
+1. 选择“审批请求”。
 
     ![显示要评审的请求的“审批请求 - Azure 资源”页](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
-    在“请求激活角色”部分，将看到等待审批的请求列表  。
+    在“请求激活角色”部分，将看到等待审批的请求列表。
 
 ## <a name="approve-requests"></a>审批请求
 
@@ -48,9 +48,9 @@ ms.locfileid: "84742073"
 
     ![“审批请求 - 批准或拒绝”窗格，其中包含详细信息和“理由”框](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
-1. 在“理由”  框中，输入业务理由。
+1. 在“理由”框中，输入业务理由。
 
-1. 选择“批准”  。 你将收到 Azure 批准通知。
+1. 选择“批准”。  你将收到 Azure 批准通知。
 
     ![显示请求已批准的批准通知](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
@@ -60,9 +60,9 @@ ms.locfileid: "84742073"
 
     ![“审批请求 - 批准或拒绝”窗格，其中包含详细信息和“理由”框](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
-1. 在“理由”  框中，输入业务理由。
+1. 在“理由”框中，输入业务理由。
 
-1. 选择“拒绝”  。 拒绝后会出现一个通知。
+1. 选择“拒绝”。 拒绝后会出现一个通知。
 
 ## <a name="workflow-notifications"></a>工作流通知
 

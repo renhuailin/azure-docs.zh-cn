@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fd1bf4f9c463973d70f5289f7a82f372d0156cb
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742539"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>将 Azure 多重身份验证服务器配置为与 Windows Server 中的 AD FS 配合使用
@@ -25,13 +25,13 @@ ms.locfileid: "96742539"
 本文介绍如何将 Azure 多重身份验证服务器与 Windows Server 2012 R2 或 Windows Server 2016 中的 AD FS 配合使用。 请阅读如何 [将 Azure 多重身份验证服务器与 AD FS 2.0 配合使用来保护云资源和本地资源](howto-mfaserver-adfs-2.md)，了解详细信息。
 
 > [!IMPORTANT]
-> 从2019年7月1日起，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间 (MFA) 需要多重身份验证的新客户应使用基于云的 Azure AD 多重身份验证。
+> 从 2019 年 7 月 1 日开始，Microsoft 不再为新部署提供 MFA 服务器。 希望在登录事件期间要求进行多重身份验证 (MFA) 的新客户应使用基于云的 Azure AD 多重身份验证。
 >
-> 若要开始执行基于云的 MFA，请参阅 [教程：通过 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
+> 若要开始使用基于云的 MFA，请参阅[教程：使用 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
 >
-> 如果你使用基于云的 MFA，请参阅 [使用 Azure AD 多重身份验证和 AD FS 保护云资源](howto-mfa-adfs.md)。
+> 如果使用基于云的 MFA，请参阅[使用 Azure AD 多重身份验证和 AD FS 来保护云资源](howto-mfa-adfs.md)。
 >
-> 在2019年7月1日之前激活 MFA 服务器的现有客户，可以下载最新版本、将来的更新，并照常生成激活凭据。
+> 在 2019 年 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>使用 Azure 多重身份验证服务器保护 Windows Server AD FS
 
@@ -90,7 +90,7 @@ ms.locfileid: "96742539"
 按照以下步骤编辑 MultiFactorAuthenticationAdfsAdapter.config 文件：
 
 1. 将“UseWebServiceSdk”节点设置为“true”。  
-2. 将“WebServiceSdkUrl”的值设置为多重身份验证 Web 服务 SDK 的 URL。 例如： *https： \/ \/ Contoso.com/ \<certificatename> /MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*，其中 *\<certificatename>* 是证书的名称。  
+2. 将“WebServiceSdkUrl”的值设置为多重身份验证 Web 服务 SDK 的 URL。 例如：https:\/\/contoso.com/\<certificatename>/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx，其中 \<certificatename> 是证书的名称 。  
 3. 编辑 Register-MultiFactorAuthenticationAdfsAdapter.ps1 脚本，将 `-ConfigurationFilePath &lt;path&gt;` 添加到 `Register-AdfsAuthenticationProvider` 命令的末尾，其中 *&lt;path&gt;* 是 MultiFactorAuthenticationAdfsAdapter.config 文件的完整路径。
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>使用用户名和密码配置 Web 服务 SDK

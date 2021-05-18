@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 550084ccbb1df24fe0cbc0a4630efe19e6685e5c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101709897"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
@@ -53,7 +53,7 @@ Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访�
 
 ### <a name="authentication-best-practices"></a>身份验证最佳做法
 
-建议对部署到 Azure 的应用程序使用托管标识。 如果使用不支持托管标识的 Azure 服务或应用程序是在本地部署的，则可以选择[有证书的服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 在这种情况下，证书应存储在 Key Vault 中并经常轮换。 使用机密的服务主体可用于开发和测试环境，并可在本地或使用用户主体 Cloud Shell。
+建议对部署到 Azure 的应用程序使用托管标识。 如果使用不支持托管标识的 Azure 服务或应用程序是在本地部署的，则可以选择[有证书的服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 在这种情况下，证书应存储在 Key Vault 中并经常轮换。 具有机密的服务主体可用于开发和测试环境，建议在本地或在 Cloud Shell 中使用用户主体。
 
 每个环境的建议安全主体：
 - **生产环境**：
@@ -133,7 +133,7 @@ Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访�
 - 使用 [Azure 专用链接服务](private-link-service.md)，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure Key Vault、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
 - 通过将 Key Vault 与[事件网格](../../event-grid/event-schema-key-vault.md)集成，用户可以在密钥保管库中存储的机密的状态发生更改时收到通知。 可以将新版本的机密分发到应用程序，也可以轮换即将到期的机密，以防止中断。
 - 可以防止自己的 [Azure Devops](/azure/devops/pipelines/release/azure-key-vault) 机密在 Key Vault 中被意外访问。
-- [使用 DataBricks 中存储 Key Vault 的机密连接到 Azure 存储](./integrate-databricks-blob-storage.md)
+- [在 DataBricks 中使用 Key Vault 中存储的机密连接到 Azure 存储](./integrate-databricks-blob-storage.md)
 - 为 Kubernetes 上的[机密存储 CSI 驱动程序](./key-vault-integrate-kubernetes.md)配置并运行 Azure Key Vault 提供程序
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念

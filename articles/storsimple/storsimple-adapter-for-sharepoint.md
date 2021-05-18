@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
 ms.openlocfilehash: 639efab3a9eaef400b3fbe3d0b134d02f458b865
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94966286"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>安装和配置 StorSimple Adapter for SharePoint
@@ -92,7 +92,7 @@ RBS 的 Microsoft Azure StorSimple 实现具有以下优势：
 ## <a name="configure-prerequisites"></a>配置先决条件
 在安装 StorSimple Adapter for SharePoint 之前，请确保 StorSimple 设备、SharePoint 服务器场和 SQL Server 实例化满足以下先决条件。
 
-### <a name="system-requirements"></a>系统要求
+### <a name="system-requirements"></a>系统需求
 StorSimple Adapter for SharePoint 支持以下硬件和软件：
 
 * 支持的操作系统 – Windows Server 2008 R2 SP1、Windows Server 2012 或 Windows Server 2012 R2
@@ -162,7 +162,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 安装 StorSimple Adapter for SharePoint 后，请按照以下过程配置 RBS。
 
 > [!TIP]
-> StorSimple Adapter for SharePoint 已插入 SharePoint 管理中心页，因此可以在 SharePoint 场中的每个内容数据库上启用或禁用 RBS。 不过，在内容服务器上启用或禁用 RBS 会导致 IIS 重置，这可能会使 SharePoint Web (WFE) 前端暂时不可用，具体取决于场配置。 （前端负载均衡器的使用、当前服务器工作负荷等多种因素可能会限制或消除这种中断现象的发生。）为了避免用户受到服务中断的影响，我们建议仅在计划的维护时间窗口启用或禁用 RBS。
+> StorSimple Adapter for SharePoint 已插入 SharePoint 管理中心页，因此可以在 SharePoint 场中的每个内容数据库上启用或禁用 RBS。 不过，在内容服务器上启用或禁用 RBS 会导致 IIS 重置，这可能会使 SharePoint Web (WFE) 前端暂时不可用，具体取决于场配置。 （前端负载均衡器的使用、当前服务器工作负荷等多种因素可能会限制或消除这种中断现象的发生。）为了避免用户受到服务中断的影响，我们建议仅在计划内维护时段启用或禁用 RBS。
 
 
 [!INCLUDE [storsimple-sharepoint-adapter-configure-rbs](../../includes/storsimple-sharepoint-adapter-configure-rbs.md)]
@@ -196,7 +196,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 > * 以前通过 RBS 转到外部存储的任何文件，必须等到重新安装完成并重新启用 RBS 功能之后才能使用。 为了限制用户受影响的程度，请在规划的维护期间执行任何升级或重新安装。
 > * 升级/重新安装所需的时间取决于 SharePoint 服务器场中的 SharePoint 数据库总数。
 > * 升级/重新安装完成后，需要为内容数据库启用 RBS。 有关详细信息，请参阅[配置 RBS](#configure-rbs)。
-> * 如果要配置 RBS 的 SharePoint 场包含大量的数据库（超过 200 个），“SharePoint 管理中心”页可能会超时。如果发生这种情况，请刷新页面。 这不会影响配置过程。
+> * 如果要配置 RBS 的 SharePoint 场包含大量的数据库（超过 200 个），“SharePoint 管理中心”页面可能会超时。如果发生这种情况，请刷新页面。 这不会影响配置过程。
 
 
 [!INCLUDE [storsimple-upgrade-sharepoint-adapter](../../includes/storsimple-upgrade-sharepoint-adapter.md)]

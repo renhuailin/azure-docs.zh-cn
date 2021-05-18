@@ -1,21 +1,21 @@
 ---
 title: Azure HDInsight 中的 Apache Spark 的 OutOfMemoryError 异常
-description: Azure HDInsight 中 Apache Spark 群集的各种 OutOfMemoryError 异常
+description: Azure HDInsight 中的 Apache Spark 群集的各种 OutOfMemoryError 异常
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: a15d79f2ae9c3d20a73ec557c57a5c189b18111b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: dd33972810ab3b0d51bbd82282d0e6cf6cd9d96c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946349"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868658"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 的 OutOfMemoryError 异常
 
-本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时出现的问题的故障排除步骤和可能的解决方法。
+本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时出现的问题的故障排除步骤和可能的解决方案。
 
-## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>方案：Apache Spark 的 OutOfMemoryError 异常
+## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>场景：Apache Spark 的 OutOfMemoryError 异常
 
 ### <a name="issue"></a>问题
 
@@ -57,9 +57,9 @@ java.lang.OutOfMemoryError
 
 1. 确定 Spark 应用程序将要处理的数据大小上限。 根据输入数据的最大大小、转换输入数据时生成的中间数据，以及进一步转换中间数据时生成的输出数据来估算大小。 如果初始估算值不足，请略微增大大小并反复调整，直到内存错误消减。
 
-1. 请确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 若要确定资源是否足够，可以在群集的 YARN UI 的“群集指标”部分中查看“已用内存与内存总计”  以及“已用 VCore 数与 VCore 总计”   的值。 
+1. 请确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 若要确定资源是否足够，可以在群集的 YARN UI 的“群集指标”部分中查看“已用内存”与“内存总计”和“已用 VCore 与 VCore 总计” 的值。
 
-    ![yarn 核心内存视图](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
+    :::image type="content" source="./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png" alt-text="yarn 核心内存视图" border="true":::
 
 1. 将以下 Spark 配置设置为适当的值。 使应用程序要求与群集中的可用资源相互平衡。 这些值不应超过 YARN 所识别到可用内存和核心数的 90%，此外应满足 Spark 应用程序的最低内存要求：
 
@@ -87,7 +87,7 @@ java.lang.OutOfMemoryError
 
 ---
 
-## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>方案：尝试打开 Apache Spark 历史记录服务器时出现 Java 堆空间错误
+## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>场景：尝试打开 Apache Spark 历史记录服务器时出现 Java 堆空间错误
 
 ### <a name="issue"></a>问题
 
@@ -117,17 +117,17 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 为此，可在 Ambari 浏览器 UI 中选择“Spark2/Config/Advanced spark2-env”部分。
 
-![Advanced spark2-env 部分](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png" alt-text="Advanced spark2-env 部分" border="true":::
 
 添加以下属性，以将 Spark 历史记录服务器内存从 1G 更改为 4G：`SPARK_DAEMON_MEMORY=4g`。
 
-![Spark 属性](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png" alt-text="Spark 属性" border="true":::
 
 请确保在 Ambari 中重启所有受影响的服务。
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>方案：Livy 服务器无法在 Apache Spark 群集上启动
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>场景：Livy 服务器无法在 Apache Spark 群集上启动
 
 ### <a name="issue"></a>问题
 

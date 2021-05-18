@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5504b9bc87f78682ff584006255d4e75e5e69fa7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92793341"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>跨云数据库的分布式事务（预览版）
@@ -83,7 +83,7 @@ Azure 为托管 .NET 应用程序提供了多个产品。 不同产品的比较�
 
 ### <a name="multi-database-applications"></a>多数据库应用程序
 
-以下示例代码使用熟悉的 .NET System.Transactions 编程体验。 TransactionScope 类在 .NET 中创建环境事务。 （“环境事务”是位于当前线程中的事务）。在 TransactionScope 内打开的所有连接都参与该事务。 如果有不同的数据库参与，事务自动提升为分布式事务。 通过设置完成范围来指示提交，即可控制事务的结果。
+以下示例代码使用熟悉的 .NET System.Transactions 编程体验。 TransactionScope 类在 .NET 中创建环境事务。 （“环境事务”是位于当前线程中的事务。）在 TransactionScope 内打开的所有连接都参与该事务。 如果有不同的数据库参与，事务自动提升为分布式事务。 通过设置完成范围来指示提交，即可控制事务的结果。
 
 ```csharp
     using (var scope = new TransactionScope())

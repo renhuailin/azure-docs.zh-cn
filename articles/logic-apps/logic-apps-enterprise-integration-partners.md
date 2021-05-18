@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91565065"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>向 Azure 逻辑应用的集成帐户添加贸易合作伙伴
@@ -47,7 +47,7 @@ ms.locfileid: "91565065"
 
 1. 选择“合作伙伴”  磁贴。
 
-   ![显示 "合作伙伴" 磁贴的屏幕截图。](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
+   ![显示“合作伙伴”磁贴的屏幕截图。](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
 1. 在“合作伙伴”  下，选择“添加”  。 在“添加合作伙伴”  下提供合作伙伴的详细信息，如下表所述。
 
@@ -100,7 +100,7 @@ ms.locfileid: "91565065"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。 选择“合作伙伴”  磁贴。
 
-   ![显示要删除合作伙伴时选择的 "合作伙伴" 磁贴的屏幕截图。](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
+   ![屏幕截图显示了要删除合作伙伴时选择的“合作伙伴”磁贴。](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
 1. 在“合作伙伴”  下，选择要删除的合作伙伴。 选择“删除”  。
 

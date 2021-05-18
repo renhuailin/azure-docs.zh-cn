@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75707180"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Outlook.com 中的电子邮件、日历和联系人
@@ -51,7 +51,7 @@ ms.locfileid: "75707180"
 
 1. 在设计器工具栏上，选择“保存”  ，这将保存你的逻辑应用。
 
-若要响应触发器，请添加另一操作。 例如，你可以添加 Twilio **发送消息**操作，该操作将在电子邮件到达时发送一个文本。
+若要响应触发器，请添加另一操作。 例如，你可以添加 Twilio **发送消息** 操作，该操作将在电子邮件到达时发送一个文本。
 
 ## <a name="add-an-action"></a>添加操作
 
@@ -61,9 +61,9 @@ ms.locfileid: "75707180"
 
 1. 若要将某个操作添加为工作流的最后一步，请选择“新建步骤”  。 
 
-   若要在步骤之间添加操作，请将鼠标指针移到这些步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。 
+   若要在步骤之间添加操作，请将鼠标指针移到这些步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。
 
-1. 在搜索框中，输入 "outlook.com" 作为筛选器。 对于此示例，请选择“发送电子邮件”  。 
+1. 在搜索框中，输入“outlook.com”作为筛选器。 对于此示例，请选择“发送电子邮件”  。 
 
 1. 如果提示你登录，请提供你的 Outlook.com 凭据，以便逻辑应用可以连接到你的帐户。 或者，如果连接已存在，请提供操作属性的信息。
 

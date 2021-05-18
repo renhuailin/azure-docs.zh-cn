@@ -11,18 +11,18 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 0dcffe6731c177d1d45c569361fcb200f23af86c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
-ms.translationtype: MT
+ms.openlocfilehash: 67e807e948caf1fec014457814c1b7f105630f9f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095352"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784418"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*虚拟网络规则* 是一种防火墙安全功能，用于控制 [azure sql 数据库](sql-database-paas-overview.md) 中的数据库和弹性池的服务器、 (以前在 [AZURE SYNAPSE 分析](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中的 sql DW) 数据库是否接受从虚拟网络中的特定子网发送的通信。 本文说明了为何有时候最好选择虚拟网络规则来安全地启用与 Azure SQL 数据库和 Azure Synapse Analytics 中数据库的通信。
+虚拟网络规则是一项防火墙安全功能，用于控制 [Azure SQL 数据库](sql-database-paas-overview.md)中数据库和弹性池的服务器或 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中专用 SQL 池（之前称为 SQL DW）数据库的服务器是否接受从虚拟网络中的特定子网发出的通信。 本文说明了为何有时候最好选择虚拟网络规则来安全地启用与 Azure SQL 数据库和 Azure Synapse Analytics 中数据库的通信。
 
 > [!NOTE]
 > 本文同时适用于 Azure SQL 数据库和 Azure Synapse Analytics。 为简单起见，术语“数据库”是指 Azure SQL 数据库中的数据库和 Azure Synapse Analytic 中的数据库。 同样，无论何时提及“服务器”，都是指承载着 Azure SQL 数据库和 Azure Synapse Analytics 的[逻辑 SQL 服务器](logical-servers.md)。
@@ -78,7 +78,7 @@ ms.locfileid: "99095352"
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][arm-deployment-model-568f]网络。
 - 如果启用 Azure SQL 数据库的虚拟网络服务终结点，则会同时启用 Azure Database for MySQL 和 Azure Database for PostgreSQL 的终结点。 当终结点设置为“启用”时，尝试从终结点连接到 Azure Database for MySQL 或 Azure Database for PostgreSQL 实例可能会失败。
   - 根本原因是 Azure Database for MySQL 和 Azure Database for PostgreSQL 可能没有配置虚拟网络规则。 必须为 Azure Database for MySQL 和 Azure Database for PostgreSQL 配置虚拟网络规则，连接才会成功。
-  - 若要在已配置专用终结点的 SQL 逻辑服务器上定义虚拟网络防火墙规则，请将 " **拒绝公共网络访问权限** " 设置为 " **否**"。
+  - 若要对已配置了专用终结点的 SQL 逻辑服务器定义虚拟网络防火墙规则，请将“拒绝公用网络访问”设置为“否” 。
 - 在防火墙上，IP 地址范围适用于以下网络项，但虚拟网络规则并不适用：
   - [站点到站点 (S2S) 虚拟专用网络 (VPN)][vpn-gateway-indexmd-608y]
   - 通过 [Azure ExpressRoute](../../expressroute/index.yml) 建立的本地网络
@@ -127,13 +127,13 @@ PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azu
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-   Azure Synapse Analytics 工作区中的专用 SQL 池不需要执行此步骤。
+   Azure Synapse Analytics 工作区中的专用 SQL 池不需要此步骤。
 
-1. 如果有 Azure Synapse Analytics 工作区，请注册工作区的系统管理的标识：
+1. 如果你有一个 Azure Synapse Analytics 工作区，请注册工作区的系统托管标识：
 
-   1. 在 Azure 门户中转到 Azure Synapse Analytics 工作区。
-   2. 中转到 " **托管标识** " 窗格。
-   3. 请确保已启用 " **允许管道** " 选项。
+   1. 在 Azure 门户中转到你的 Azure Synapse Analytics 工作区。
+   2. 转到“托管标识”窗格。
+   3. 确保已启用“允许管道”选项。
    
 1. 遵循[创建存储帐户](../../storage/common/storage-account-create.md)中的步骤创建一个常规用途 v2 存储帐户。
 
@@ -142,7 +142,7 @@ PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azu
    > - 如果你有常规用途 v1 或 Blob 存储帐户，则必须按照[升级到常规用途 v2 存储帐户](../../storage/common/storage-account-upgrade.md)中的步骤先升级到 v2。
    > - 有关 Azure Data Lake Storage Gen2 的已知问题，请参阅 [Azure Data Lake Storage Gen2 的已知问题](../../storage/blobs/data-lake-storage-known-issues.md)。
 
-1. 在你的存储帐户下，转到“访问控制(IAM)”，然后选择“添加角色分配”。  将 **存储 Blob 数据参与者** Azure 角色分配给托管专用 SQL 池的服务器或工作区，该服务器或已注册到 Azure AD 的工作区。
+1. 在你的存储帐户下，转到“访问控制(IAM)”，然后选择“添加角色分配”。  将 Azure 角色“存储 Blob 数据参与者”分配给承载着已注册到 Azure AD 的专用 SQL 池的服务器或工作区。
 
    > [!NOTE]
    > 只有对存储帐户具有“所有者”权限的成员才能执行此步骤。 有关各种 Azure 内置角色，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
@@ -225,7 +225,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 ## <a name="powershell-alternative"></a>PowerShell 备用
 
-脚本还可以使用 PowerShell cmdlet New-AzSqlServerVirtualNetworkRule 或 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 来创建虚拟网络规则。 如果有兴趣，可以参阅[使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点和规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]。
+脚本还可以使用 PowerShell cmdlet New-AzSqlServerVirtualNetworkRule 或 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 来创建虚拟网络规则。 如果有兴趣，可以参阅[使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点和规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]。
 
 ## <a name="rest-api-alternative"></a>REST API 替代项
 
@@ -251,7 +251,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 1. 将“允许访问 Azure 服务”设置为“关闭”。 
 
     > [!IMPORTANT]
-    > 如果将此控件设置为“开启”，则你的服务器会接受来自 Azure 边界内任何子网的通信。 该通信源自系统认定的 IP 地址之一，系统认定这些地址在为 Azure 数据中心定义的范围内。 从安全角度来看，将此控件设置为“开启”可能会导致过度访问。 与 SQL 数据库的虚拟网络规则功能结合在一起的 Microsoft Azure 虚拟网络服务终结点功能可以减少安全面。
+    > 如果将此控件设置为“开启”，则你的服务器会接受来自 Azure 边界内任何子网的通信。 该通信源自系统认定的 IP 地址之一，系统认定这些地址在为 Azure 数据中心定义的范围内。 从安全角度来看，将此控件设置为“开启”可能会导致过度访问。 Microsoft Azure 虚拟网络服务终结点功能与 SQL 数据库的虚拟网络规则功能一起使用可减少安全外围应用。
 
 1. 在“虚拟网络”部分选择“+ 添加现有项”。 
 

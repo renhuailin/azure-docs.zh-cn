@@ -1,16 +1,16 @@
 ---
 title: 传感器合作伙伴集成
 description: 本文介绍传感器合作伙伴集成。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: 8d1b8203fa50609daf59431c2cfecba68eba52b1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.author: riyazp
+ms.openlocfilehash: 6bce47e07d2f9c2a9a8ac2043488739d2d2421c6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179742"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773820"
 ---
 # <a name="sensor-partner-integration"></a>传感器合作伙伴集成
 
@@ -101,7 +101,7 @@ Accept | 响应格式。 对于 FarmBeats 数据中心 API，格式为 JSON。 A
 
 **API 请求**
 
-若要发出 REST API 请求，请将 HTTP（GET、POST 或 PUT）方法、API 服务的 URL、用于查询、提交数据、更新或删除的资源的统一资源标识符 (URI) 以及一个或多个 HTTP 请求标头组合在一起。 API 服务的 URL 是提供的 API 终结点。 下面是一个示例： https:// \<yourdatahub-website-name> . azurewebsites.net
+若要发出 REST API 请求，请将 HTTP（GET、POST 或 PUT）方法、API 服务的 URL、用于查询、提交数据、更新或删除的资源的统一资源标识符 (URI) 以及一个或多个 HTTP 请求标头组合在一起。 API 服务的 URL 是提供的 API 终结点。 下面是一个示例： https://\<yourdatahub-website-name>.azurewebsites.net
 
 或者，可在 GET 调用中包含查询参数以筛选数据、限制数据的大小，并对响应中的数据进行排序。
 

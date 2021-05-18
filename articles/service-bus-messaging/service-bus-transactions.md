@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e2848f41d5557584b0f1a197b548a00a4aef1564
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102183737"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
@@ -43,7 +43,7 @@ ms.locfileid: "102183737"
 
 当传输队列或主题本身是发送方的输入消息的源时，此事务功能的优势越明显。 换而言之，服务总线可以“通过”传输队列或主题将消息传输到目标队列或主题中，同时对输入消息执行完成（或延迟/死信）操作，所有这一切都通过一个原子操作完成。 
 
-如果需要从主题订阅接收，然后将其发送到相同事务中的队列或主题，则传输实体必须是主题。 在此方案中，启动主题上的事务范围，从包含在事务范围内的订阅接收，并通过传输主题发送到队列或主题目标。 
+如果需要从主题订阅接收，然后将其发送到相同事务中的队列或主题，则传输实体必须是主题。 在此方案中，启动主题上的事务范围，从事务范围内的订阅接收，并通过传输主题发送到队列或主题目标。 
 
 ### <a name="see-it-in-code"></a>在代码中查看它
 

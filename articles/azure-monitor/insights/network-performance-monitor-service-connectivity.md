@@ -6,16 +6,16 @@ author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
 ms.openlocfilehash: a5b42e61af398e111b2014f3734a0011a4bee778
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101734156"
 ---
 # <a name="service-connectivity-monitor"></a>服务连接监视器
 
 > [!IMPORTANT]
-> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你可以继续使用在2021年7月之前创建的测试。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前将 [测试从网络性能监视器迁移到](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) Azure 网络观察程序中的新连接监视器。
+> 自 2021 年 7 月 1 日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 可以继续使用在 2021 年 7 月 1 日之前创建的测试。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[将测试从网络性能监视器迁移到新连接监视器](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)。
 
 可以使用[网络性能监视器](network-performance-monitor.md)中的服务连接监视器功能，监视与 TCP 端口打开的任何终结点之间的网络连接。 此类终结点包括网站、SaaS 应用程序、PaaS 应用程序和 SQL 数据库。 
 
@@ -59,7 +59,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
     * 如果要监视响应 HTTP/S 请求的服务（例如 outlook.office365.com 或 bing.com）的连接，请选择“Web”。 <br>
     * 如果要监视响应 TCP 请求，但不响应 HTTP/S 请求的服务（例如 SQL 服务器、FTP 服务器、SSH 端口等）的连接，请选择“网络”。  
-    * 例如：若要创建对 blob 存储帐户的 web 测试，请选择 " **web** "，并将 target 输入为 *yourstorageaccount*. blob.core.windows.net。 同样，可以使用[此链接](../../storage/common/storage-account-overview.md#storage-account-endpoints)为其他表存储、队列存储和 Azure 文件存储创建测试。
+    * 例如：若要为 blob 存储帐户创建 Web 测试，请选择“Web” 并输入目标为“yourstorageaccount.blob.core.windows.net”。 同样，可以使用[此链接](../../storage/common/storage-account-overview.md#storage-account-endpoints)为其他表存储、队列存储和 Azure 文件存储创建测试。
 4. 如果你不希望执行网络度量（例如网络延迟、数据包丢失和拓扑发现），请清除“执行网络度量”  复选框。 保持选中此项可以最大程度地利用此功能。 
 5. 在“目标”  中，输入要监视其网络连接的目标 URL/FQDN/IP 地址。
 6. 在“端口号”中，输入目标服务的端口号。  

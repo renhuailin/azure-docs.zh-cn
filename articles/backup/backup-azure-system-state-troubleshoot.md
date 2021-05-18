@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
 ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376275"
 ---
 # <a name="troubleshoot-system-state-backup"></a>解决系统状态备份的问题
@@ -17,11 +17,11 @@ ms.locfileid: "89376275"
 
 ## <a name="basic-troubleshooting"></a>基本故障排除
 
-建议你在开始排查系统状态备份之前执行以下验证步骤：
+建议在开始对系统状态备份进行故障排除之前执行以下验证步骤：
 
 - [确保 Microsoft Azure 恢复服务 (MARS) 代理是最新版本](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [确保 MARS 代理与 Azure 之间存在网络连接](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
-- 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 如有必要，请重启并重试操作
+- 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 视需要重启并重试操作
 - [确保在暂存文件夹位置有 5-10% 的可用卷空间](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [检查其他进程或防病毒软件是否正在干扰 Azure 备份](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
 - [计划的备份失败，但手动备份成功](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
@@ -37,12 +37,12 @@ ms.locfileid: "89376275"
 
 ### <a name="limitation"></a>限制
 
-- Microsoft 不建议使用系统状态恢复恢复到不同的硬件
+- Microsoft 不建议使用系统状态恢复来恢复到不同的硬件
 - 系统状态备份当前支持“本地”Windows 服务器。 此功能不适用于 Azure VM。
 
 ## <a name="prerequisites"></a>先决条件
 
-在对 Azure 备份进行系统状态备份的故障排除之前，请执行以下先决条件检查。  
+使用 Azure 备份解决系统状态备份的问题之前，请检查以下先决条件。  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>验证是否已安装 Windows Server 备份
 
@@ -66,31 +66,31 @@ Get-WindowsFeature Windows-Server-Backup
 
 若要使用服务器管理器安装 Windows Server 备份，请执行以下步骤：
 
-1. 在 **服务器管理**器中，选择 " **添加角色和功能**"。 随即会显示“添加角色和功能向导”。
+1. 在“服务器管理器”中，选择“添加角色和功能” 。 随即会显示“添加角色和功能向导”。
 
     ![仪表板](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
-2. 选择 " **安装类型** " 并选择 " **下一步**"。
+2. 选择“安装类型”，然后选择“下一步” 。
 
     ![安装类型](./media/backup-azure-system-state-troubleshoot/install_type.jpg)
 
-3. 从服务器池中选择一个服务器，然后选择 " **下一步**"。 在服务器角色中，保留默认选择，然后选择 " **下一步**"。
-4. 选择 "**功能**" 选项卡中**Windows Server 备份**，然后选择 "**下一步**"。
+3. 从服务器池中选择服务器，然后选择“下一步”。 在“服务器角色”中，保留默认选择，然后选择“下一步”。
+4. 在“功能”选项卡中，选择“Windows Server 备份”，然后选择“下一步”  。
 
     ![选择功能窗口](./media/backup-azure-system-state-troubleshoot/features.png)
 
-5. 在 " **确认** " 选项卡中，选择 " **安装** " 以启动安装过程。
+5. 在“确认”选项卡中，选择“安装”以启动安装进程 。
 6. “结果”选项卡中将显示 Windows Server 备份功能已成功安装到 Windows Server 上。
 
     ![安装结果](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>系统卷信息权限
 
-确保本地系统可以完全控制安装有 Windows 的卷中的“系统卷信息”文件夹。 通常，该文件夹为 C:\System Volume Information。 如果上面的权限设置不正确，Windows Server backup 可能会失败。
+确保本地系统可以完全控制安装有 Windows 的卷中的“系统卷信息”文件夹。 通常，该文件夹为 C:\System Volume Information。 如果未正确设置上述权限，则 Windows Server 备份可能会失败。
 
 ### <a name="dependent-services"></a>依赖的服务
 
-请确保下面的服务处于 "正在运行" 状态：
+请确保下面的服务处于正在运行状态：
 
 **服务名称** | **启动类型**
 --- | ---
@@ -113,7 +113,7 @@ Microsoft 软件影子副本提供程序(SWPRV) | 手动
 
     - 如果失败并提示此错误，请在服务器计算机上重新安装 Windows Server 备份功能，如先决条件的步骤 1 中所述。
 
-  - 通过从提升的命令提示符运行以下命令，确保 WSB 备份正常工作：
+  - 从提升的命令提示符运行以下命令，确保 WSB 备份运行正常：
 
       `wbadmin start systemstatebackup -backuptarget:X: -quiet`
 
@@ -137,7 +137,7 @@ Microsoft 软件影子副本提供程序(SWPRV) | 手动
 
 | 症状 | 解决方法
 | -- | --
-| - MARS 代理失败，显示错误消息：由于包含系统文件的卷上磁盘空间不足，使影子副本卷无法增长，备份失败 <br/><br/> - volsnap 系统事件日志中出现以下错误/警告日志：“卷 C: 上的磁盘空间不足，C: 影子副本的影子副本存储无法增长，由于此故障，卷 C: 的所有影子副本都存在被删除的风险” | -释放事件日志中突出显示的卷中的空间，以便在备份过程中有足够的空间用于卷影副本增长 <br/><br/> - 配置影子副本空间时，可以限制用于影子副本的空间量。 有关详细信息，请参阅[此文](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
+| - MARS 代理失败，显示错误消息：由于包含系统文件的卷上磁盘空间不足，使影子副本卷无法增长，备份失败 <br/><br/> - volsnap 系统事件日志中出现以下错误/警告日志：“卷 C: 上的磁盘空间不足，C: 影子副本的影子副本存储无法增长，由于此故障，卷 C: 的所有影子副本都存在被删除的风险” | - 释放事件日志中突出显示的卷中的空间，以便在备份过程中有足够的空间供影子副本增长 <br/><br/> - 配置影子副本空间时，可以限制用于影子副本的空间量。 有关详细信息，请参阅[此文](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
 
 ### <a name="efi-partition-locked"></a>EFI 分区已锁定
 

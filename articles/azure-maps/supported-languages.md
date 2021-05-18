@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 地图的本地化支持
-description: 查看哪些区域 Azure Maps 支持地图、搜索、路由、天气和流量事件等服务。 了解如何设置 View 参数。
+title: Microsoft Azure Maps 的本地化支持
+description: 查看 Azure Maps 在哪些区域内支持地图、搜索、路线规划、天气和交通事故等服务。 了解如何设置 View 参数。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 50e5d0721eb14d1fcdfad26aaf081bfa370e954e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96904510"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps 中的本地化支持
@@ -112,7 +112,7 @@ Azure Maps 已采用多种语言对其服务进行了本地化。 下表提供�
 对于你的服务正在使用的 REST API 和 SDK，请确保根据需要设置“视图”参数。
   
 
-### <a name="rest-apis"></a>Rest Api
+### <a name="rest-apis"></a>REST API
   
 确保已根据需要设置“视图”参数。 “视图”参数指定了通过 Azure Maps 服务返回哪组地理位置存在争议的内容。 
 
@@ -129,10 +129,10 @@ Azure Maps 已采用多种语言对其服务进行了本地化。 下表提供�
  * 获取反向地址搜索
  * 获取交叉路口反向地址搜索
  * 发布在几何图形中的搜索
- * Post 搜索地址批处理
- * 后期搜索地址反向批处理
+ * 发布批量地址搜索
+ * 发布批量反向地址搜索
  * 发布沿路线搜索
- * 帖子搜索模糊批处理
+ * 发布批量模糊搜索
 
  
 ### <a name="sdks"></a>SDK

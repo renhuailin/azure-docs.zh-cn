@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 418f0797343a64728c4e48084b09bd0e426cec62
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101686404"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的语言自定义
@@ -42,9 +42,9 @@ ms.locfileid: "101686404"
 
 本地化需要三个步骤： 
 
-1. 设置支持的语言的明确列表
+1. 设置受支持语言的显式列表
 1. 提供特定于语言的字符串和集合
-1. 编辑页面的 [内容定义](contentdefinitions.md) 。 
+1. 编辑页面的[内容定义](contentdefinitions.md)。 
 
 ::: zone-end 
 
@@ -168,7 +168,7 @@ ms.locfileid: "101686404"
 
 ## <a name="customize-the-page-ui-by-using-language-customization"></a>使用语言自定义来自定义页面 UI
 
-可以通过两种方法本地化 [HTML 内容](customize-ui-with-html.md)。 一种方法是启用[语言自定义](language-customization.md)。 启用此功能可让 Azure AD B2C 将 OpenID Connect 参数 `ui-locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的自定义 HTML 页面。
+可通过两种方法本地化 [HTML 内容](customize-ui-with-html.md)。 一种方法是启用[语言自定义](language-customization.md)。 启用此功能可让 Azure AD B2C 将 OpenID Connect 参数 `ui-locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的自定义 HTML 页面。
 
 或者，可以基于所用的区域设置从不同位置拉取内容。 在已启用 CORS 的终结点中，可以设置文件夹结构以托管特定语言的内容。 如果使用通配符值 `{Culture:RFC5646}`，则会调用正确的语言。 例如，假设自定义页 URI 如下：
 
@@ -184,7 +184,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 ## <a name="add-custom-languages"></a>添加自定义语言
 
-还可以添加 Microsoft 目前未为其提供翻译的语言。 需要为用户流中的所有字符串提供翻译。 语言和区域设置代码仅限于 ISO 639-1 标准中的代码。 例如，区域设置代码格式应为 "ISO_639 1_code"-"CountryCode" `en-GB` 。 有关区域设置 ID 格式的详细信息，请参阅 https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
+还可以添加 Microsoft 目前未为其提供翻译的语言。 需要为用户流中的所有字符串提供翻译。 语言和区域设置代码仅限于 ISO 639-1 标准中的代码。 区域设置代码格式应为 "ISO_639-1_code"-"CountryCode"，例如 `en-GB`。 有关区域设置 ID 格式的详细信息，请参阅 https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 2. 单击想要添加自定义语言的用户流，然后单击“语言”  。
@@ -226,7 +226,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 你将为内容定义和要支持的任何语言配置本地化资源元素。 若要自定义适用于英语和西班牙语的统一注册或登录页面，请在 `</SupportedLanguages>` 元素结束后添加以下 `LocalizedResources` 元素。
 
 > [!NOTE]
-> 在下面的示例中，我们在每行的开头添加了井号 `#` 符号，因此你可以轻松地在屏幕上找到本地化的标签。
+> 在下面的示例中，我们在每行的开头都添加了井字符号 `#`，以便你可以在屏幕上轻松找到本地化的标签。
 
 ```xml
 <!--Local account sign-up or sign-in page English-->
@@ -532,7 +532,7 @@ Azure AD B2C 包括对以下语言的支持。 用户流语言由 Azure AD B2C �
 
 ::: zone pivot="b2c-user-flow"
 
-若要详细了解如何自定义应用程序的用户界面，请在 [Azure Active Directory B2C 中自定义应用程序的用户界面](customize-ui-with-html.md)。
+有关如何自定义应用程序用户界面的详细信息，请参阅[在 Azure Active Directory B2C 中自定义应用程序的用户界面](customize-ui-with-html.md)。
 
 ::: zone-end 
 

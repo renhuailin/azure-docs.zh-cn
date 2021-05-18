@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: feedc0065419162237c4f4826fe275a6fd947e53
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.openlocfilehash: ea6ecf456bbcea01bf4c1eef5377d918bf0918fd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753736"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798946"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>方案：用于调用 Web API 的 桌面应用
 
@@ -30,6 +30,7 @@ ms.locfileid: "98753736"
 - [快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API](./quickstart-v2-windows-desktop.md)
 - [快速入门：获取令牌并从 UWP 应用中调用 Microsoft Graph API](./quickstart-v2-uwp.md)
 - [快速入门：获取令牌并从 macOS 本机应用中调用 Microsoft Graph API](./quickstart-v2-ios.md)
+- [快速入门：获取令牌并从 Node.js & Electron 应用中调用 Microsoft Graph API](./quickstart-v2-nodejs-desktop.md)
 
 ## <a name="overview"></a>概述
 
@@ -39,6 +40,7 @@ ms.locfileid: "98753736"
 
   - 如果您的桌面应用程序支持图形控件，例如，它是一个 Windows.Form 应用程序、一个 WPF 应用程序或一个 macOS 本机应用程序。
   - 或者，如果它是 .NET Core 应用程序，并且你同意在系统浏览器中与 Azure Active Directory (Azure AD) 进行身份验证交互。
+  - 或者，如果它是在 Chromium 实例上运行的 Node.js Electron 应用程序。
 
 - 对于 Windows 托管的应用程序，在已加入 Windows 域或 Azure AD 的计算机上运行的应用程序也可以使用集成 Windows 身份验证以无提示方式获取令牌。
 - 最后，虽然不推荐但也可以在公共客户端应用程序中使用用户名和密码。 在某些方案（例如 DevOps）中仍需要它。 但是，使用它会对应用程序施加约束。 例如，它无法使需要执行[多重身份验证](../authentication/concept-mfa-howitworks.md)（条件访问）的用户登录。 此外，应用程序将无法受益于单一登录 (SSO)。
@@ -61,4 +63,4 @@ ms.locfileid: "98753736"
 
 ## <a name="next-steps"></a>后续步骤
 
-转到此方案中的下一篇文章：[应用注册](scenario-desktop-app-registration.md)。
+转到此方案中的下一篇文章，[应用注册](scenario-desktop-app-registration.md)。

@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 数据工厂从/向 IBM Informix 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动从/向 IBM Informix 复制数据。
-author: jianleishen
+author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.author: jianleishen
-ms.openlocfilehash: c992140863649752a9c964424923c917462f16f7
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.author: jingwang
+ms.openlocfilehash: af907704862e80a2747ac064b98242a1d9d7edb3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485866"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588862"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 IBM Informix 复制数据
 
@@ -34,11 +34,11 @@ ms.locfileid: "109485866"
 若要使用此 Informix 连接器，需要：
 
 - 设置自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
-- 在集成运行时计算机上安装数据存储的 Informix ODBC 驱动程序。 有关驱动程序安装和设置，请参阅 IBM 知识中心中的 [Informix ODBC 驱动程序指南](https://www.ibm.com/support/knowledgecenter/SSGU8G_11.70.0/com.ibm.odbc.doc/odbc.htm)一文以了解详细信息，或与 IBM 支持团队联系以获取驱动程序安装指南。
+- 在集成运行时计算机上安装数据存储的 Informix ODBC 驱动程序。 有关驱动程序的安装和设置信息，请参阅 IBM 帮助中心中的 [Informix ODBC 驱动程序指南](https://www.ibm.com/support/knowledgecenter/SSGU8G_11.70.0/com.ibm.odbc.doc/odbc.htm)一文，或与 IBM 支持团队联系以获取驱动程序安装指南。
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Informix 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 

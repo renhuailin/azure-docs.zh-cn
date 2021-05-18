@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
 ms.openlocfilehash: 344caf4080380f5d9dfdaf452798ada6d1dc9f1c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98931221"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
@@ -20,7 +20,7 @@ ms.locfileid: "98931221"
 
 * 部署在同一[虚拟网络](./hdinsight-plan-virtual-network-deployment.md)中的两个单独的 HDInsight 群集。 一个HBase 和一个至少安装了 Spark 2.1 (HDInsight 3.6) 的 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
-* 群集主存储的 URI 方案。 此方案将 wasb://用于 Azure Blob 存储， `abfs://` 适用于 Azure Data Lake Storage Gen1 的 Azure Data Lake Storage Gen2 或 adl://。 如果为 Blob 存储启用了安全传输，则 URI 将为 `wasbs://`。  另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 URI 方案。 对于 Azure Blob 存储，此架构为 wasb://；对于 Azure Data Lake Storage Gen2，此架构为 `abfs://`；对于 Azure Data Lake Storage Gen1，此架构为 adl://。 如果为 Blob 存储启用了安全传输，则 URI 将为 `wasbs://`。  另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="overall-process"></a>整体进程
 
@@ -79,10 +79,10 @@ ms.locfileid: "98931221"
 
 * 从 HBase 群集运行的脚本会将 `hbase-site.xml` 和 HBase IP 映射信息上传到 Spark 群集所附加的默认存储。 
 * 从 Spark 群集运行的脚本设置两个 cron 作业，以定期运行两个帮助器脚本：  
-    1.  HBase cron 作业– `hbase-site.xml` 从 Spark 默认存储帐户向本地节点下载新文件和 HBASE IP 映射
-    2.  Spark cron 作业–检查是否发生了 Spark 缩放以及群集是否安全。 如果是，则编辑 `/etc/hosts` 以包含本地存储的 HBase IP 映射
+    1.  HBase cron 作业 - 将新的 `hbase-site.xml` 文件和 HBase IP 映射从 Spark 默认存储帐户下载到本地节点
+    2.  Spark cron 作业 - 检查是否发生了 Spark 缩放以及群集是否安全。 如果是，则编辑 `/etc/hosts` 以包含本地存储的 HBase IP 映射
 
-__注意__：在继续操作之前，请确保已将 Spark 群集的存储帐户作为辅助存储帐户添加到 HBase 群集。 请确保按以下所示顺序运行脚本。
+__注意__：在继续之前，请确保已将 Spark 群集的存储帐户作为辅助存储帐户添加到了 HBase 群集。 请确保按以下所示顺序运行脚本。
 
 
 1. 在 HBase 群集上使用[脚本操作](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)以应用更改（考虑以下因素）： 
@@ -108,7 +108,7 @@ __注意__：在继续操作之前，请确保已将 Spark 群集的存储帐户
     |持久化|是|
 
 
-    * 可以指定希望此群集自动检查更新的频率。 默认值：-s "*/1 * * * * *"-h 0 (在此示例中，Spark cron 每分钟运行一次，而 HBase cron 不会运行) 
+    * 可以指定希望此群集自动检查更新的频率。 默认值：-s “*/1 * * * *” -h 0（在此示例中，Spark cron 每分钟运行一次，而 HBase cron 不运行）
     * 由于默认情况下未设置 HBase cron，因此在对 HBase 群集执行缩放时需要重新运行此脚本。 如果 HBase 群集经常缩放，可以选择自动设置 HBase cron 作业。 例如：`-h "*/30 * * * *"` 将脚本配置为每 30 分钟执行一次检查。 这样将会定期运行 HBase cron 计划，以自动将公共存储帐户上的新 HBase 信息下载到本地节点。
     
     

@@ -11,17 +11,17 @@ ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92147893"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>摇一摇，摇一条推文 - 使用 Azure Functions 检索 Twitter 消息
 
 此项目演示如何 Azure Functions 通过动作传感器触发事件。 该应用会检索包含 Arduino 草图中配置的 # 井号标签的随机推文。 该推文显示在 DevKit 屏幕上。
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
 完成[入门指南](./iot-hub-arduino-iot-devkit-az3166-get-started.md)来实现以下目的：
 
@@ -31,7 +31,7 @@ ms.locfileid: "92147893"
 一个有效的 Azure 订阅。 如果没有订阅，可通过以下方法之一进行注册：
 
 * 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/free/)
-* 如果你是 MSDN 或 Visual Studio 订阅者，请声明你的[Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
+* 如果你是 MSDN 或 Visual Studio 的订阅者，请索取你的 [Azure 额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
 
 ## <a name="open-the-project-folder"></a>打开项目文件夹
 
@@ -50,10 +50,10 @@ ms.locfileid: "92147893"
 
 ### <a name="open-the-arduino-examples-folder"></a>打开 Arduino 示例文件夹
 
-展开左侧的“ARDUINO 示例”部分，浏览到 MXCHIP AZ3166 的示例”>“AzureIoT”，然后选择“ShakeShake”************。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹。 如果看不到“MXCHIP AZ3166”部分，请确保设备已正确连接，并重启 Visual Studio Code。  
+展开左侧的“ARDUINO 示例”部分，浏览到 MXCHIP AZ3166 的示例”>“AzureIoT”，然后选择“ShakeShake”。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹。 如果看不到“MXCHIP AZ3166”部分，请确保设备已正确连接，并重启 Visual Studio Code。  
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-也可从命令面板打开示例项目。 单击 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”********。
+也可从命令面板打开示例项目。 单击 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”。
 
 ## <a name="provision-azure-services"></a>预配 Azure 服务
 
@@ -80,7 +80,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 使用 `Ctrl+P`（macOS：`Cmd+P`）运行 `task cloud-deploy`，开始部署 Azure Functions 代码：
 
-![屏幕截图显示 Visual Studio Code 你可以在其中运行任务 cloud-部署来部署 Azure Functions 代码。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
+![屏幕截图显示可在其中运行任务云部署来部署 Azure Functions 代码的 Visual Studio Code。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
 > [!NOTE]
 > Azure 函数偶尔无法正常工作。 要在问题发生时解决此问题，请查看 [IoT DevKit 常见问题解答中的“compilation error”（编译错误）部分](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function)。
@@ -154,7 +154,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 ## <a name="how-it-works"></a>工作原理
 
-![关系图显示了向 Azure I o T 集线器发送事件的移动设备，该设备会触发 Azure Function app 请求推文，并将其发送回应用并转发到中心和移动设备。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
+![关系图显示一个移动设备向 Azure IoT 中心发送事件，该事件触发 Azure Function 应用请求推文，并将其发送回应用并转发到中心和移动设备。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
 Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Functions 应用。 Azure Functions 应用包含用于连接 Twitter 的 API 和检索推文的逻辑。 然后，它将推文包装成 C2D（云到设备）消息，并将其发回到设备。
 
@@ -168,9 +168,9 @@ Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Funct
 
 3. 使用[某种实用工具](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/)，通过这两个密钥生成 Twitter 持有者令牌。
 
-4. 在 [Azure 门户](https://portal.azure.com/){:target="_blank"} 中，转到“资源组”并找到“Shake, Shake”项目的 Azure 函数（类型：应用服务）。**** 名称始终包含“shake...”字符串。
+4. 在 [Azure 门户](https://portal.azure.com/){:target="_blank"} 中，转到“资源组”并找到“Shake, Shake”项目的 Azure 函数（类型：应用服务）。 名称始终包含“shake...”字符串。
 
-   ![Azure 门户屏幕截图显示项目的应用服务。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
+   ![Azure 门户的屏幕截图，显示了项目的应用服务。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
 5. 使用自己的令牌更新 **Functions > shakeshake-cs** 中 `run.csx` 的代码：
 
@@ -178,9 +178,9 @@ Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Funct
    string authHeader = "Bearer " + "[your own token]";
    ```
   
-   ![屏幕截图显示了可在其中输入令牌的函数的 c # 代码。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
+   ![屏幕截图显示了函数的 C# 代码，可在其中输入令牌。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
-6. 保存文件并单击“运行”。****
+6. 保存文件并单击“运行”。
 
 ## <a name="problems-and-feedback"></a>问题和反馈
 
@@ -196,7 +196,7 @@ Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Funct
 
 2. 在 [Azure 门户](https://portal.azure.com/)中，找到创建的 Azure Functions 应用并将其重启：
 
-   ![屏幕截图显示了使用 Azure Functions 应用和 "重新启动" 按钮的 Azure 门户。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
+   ![屏幕截图显示了具有 Azure Functions 应用和“重新启动”按钮的 Azure 门户。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
 
 如果遇到其他问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)，或通过以下渠道联系我们：
 

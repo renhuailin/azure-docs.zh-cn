@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2021
 ms.openlocfilehash: 7dd58a7d4a94b832e52930f8ac6507cdd8f7a20e
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100534815"
 ---
 # <a name="data-flow-script-dfs"></a>数据流脚本 (DFS)
@@ -142,7 +142,7 @@ derive1 sink(allowSchemaDrift: true,
 
 ## <a name="script-snippets"></a>脚本代码片段
 
-脚本代码片段是可共享的数据流脚本代码，可用于在数据流之间共享。 下面的视频介绍了如何使用脚本片段，并使用数据流脚本将部分脚本复制并粘贴到数据流关系图后面：
+脚本代码片段是可共享的数据流脚本代码，可用于在数据流之间共享。 下面的视频介绍了如何使用脚本代码片段以及使用数据流脚本在数据流图后面复制并粘贴部分脚本：
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tA9b]
 
@@ -261,7 +261,7 @@ SurrogateKey window(over(dummy),
 ```
 
 ### <a name="moving-average"></a>移动平均线
-可以通过使用 Windows 转换在数据流中非常轻松地实现移动平均线。 下面的示例创建了 Microsoft 股票价格的15天移动平均线。
+可通过使用 Windows 转换在数据流中轻松实现移动平均线。 下面的示例创建了 Microsoft 股价的 15 天移动平均线。
 
 ```
 window(over(stocksymbol),

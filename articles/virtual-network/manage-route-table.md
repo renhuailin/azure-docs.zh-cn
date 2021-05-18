@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
 ms.openlocfilehash: 642a9a9f798492d85ee2a9784a1fe5ad4f854d58
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574130"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>创建、更改或删除路由表
@@ -29,11 +29,11 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 - **门户用户**：使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-- **PowerShell 用户**：运行 [Azure Cloud Shell](https://shell.azure.com/powershell)中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 在 "Azure Cloud Shell 浏览器" 选项卡中，找到 " **选择环境** " 下拉列表，然后选择 " **PowerShell** " （如果尚未选择）。
+- **PowerShell 用户**：在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行命令，或在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 在 Azure Cloud Shell 浏览器标签页中，找到“选择环境”下拉列表，然后选择“PowerShell”（如果尚未选择） 。
 
     如果在本地运行 PowerShell，请使用 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az.Network` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 另请运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
-- **Azure 命令行接口 (CLI) 用户**：在 [Azure Cloud Shell](https://shell.azure.com/bash)中运行命令，或从计算机运行 cli。 如果在本地运行 Azure CLI，请使用 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 另请运行 `az login` 以创建与 Azure 的连接。
+- **Azure 命令行接口 (CLI) 用户**：在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行命令，或在计算机中运行 CLI。 如果在本地运行 Azure CLI，请使用 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 另请运行 `az login` 以创建与 Azure 的连接。
 
 用于登录或者用于连接 Azure 的帐户必须分配有[网络参与者角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)，或者分配有[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，并且该自定义角色分配有[权限](#permissions)中列出的相应操作。
 
@@ -127,7 +127,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 1. 在“路由表”中，选择要关联到子网的路由表。
 
-1. 选择“保存” 。
+1. 选择“保存”  。
 
 如果虚拟网络已连接到 Azure VPN 网关，请不要将路由表与包含目标为 0.0.0.0/0 的路由的[网关子网](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)相关联。 这样做可能会阻止网关正常工作。 有关在路由中使用 0.0.0.0/0 的详细信息，请参阅[虚拟网络流量路由](virtual-networks-udr-overview.md#default-route)。
 
@@ -152,7 +152,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 1. 在“路由表”中选择“无”。 
 
-1. 选择“保存” 。
+1. 选择“保存”  。
 
 ### <a name="dissociate-a-route-table---commands"></a>取消关联路由表 - 命令
 
@@ -196,7 +196,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 1. 如果为“下一跃点类型”选择了“虚拟设备”，请为“下一跃点地址”输入一个 IP 地址。  
 
-1. 选择“确定”  。
+1. 选择“确定” 。
 
 ### <a name="create-a-route---commands"></a>创建路由 - 命令
 

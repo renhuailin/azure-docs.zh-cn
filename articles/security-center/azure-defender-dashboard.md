@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 16379380fc35bb2355c496dc857e9de3b41347f9
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102096898"
 ---
 # <a name="the-azure-defender-dashboard"></a>Azure Defender 仪表板
@@ -33,7 +33,7 @@ Azure Defender 仪表板提供：
 
 1. Azure Defender 覆盖范围 - 在这里，可以查看订阅中有资格受 Azure Defender 保护的资源类型。 在相关的地方，都有升级的选项。 如果要升级所有可能的符合条件的资源，请选择“升级全部”。
 
-2. **安全警报** -当 Azure Defender 在环境中的任何区域检测到威胁时，会生成警报。 这些警报会描述受影响资源的详细信息、建议的修正步骤，在某些情况下还会提供触发逻辑应用作为响应的选项。 在该图中选择任意位置将打开“安全警报”页面。
+2. **安全警报** - 当 Azure Defender 区域检测到环境中任何区域出现威胁时，会生成警报。 这些警报会描述受影响资源的详细信息、建议的修正步骤，在某些情况下还会提供触发逻辑应用作为响应的选项。 在该图中选择任意位置将打开“安全警报”页面。
 
 3. 高级保护 - Azure Defender 包括针对虚拟机、SQL 数据库、容器、Web 应用程序、网络等的许多高级威胁防护功能。 在此高级保护部分中，可以查看所选订阅中每种保护的资源状态。 选择其中任何一个可直接转到该保护类型的配置区域。
 

@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: raynew
 ms.openlocfilehash: 358efaa1493aa08fb76c9bb83e0e4289950e0969
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87844314"
 ---
 # <a name="migrating-to-azure"></a>迁移到 Azure
 
-对于迁移，我们建议使用 Azure Migrate 服务将 Vm 和服务器迁移到 Azure，而不是迁移到 Azure Site Recovery 服务。 [详细了解](../migrate/migrate-services-overview.md) Azure Migrate。
+对于迁移，建议使用 Azure Migrate 服务将 VM 和服务器迁移到 Azure，而不是使用 Azure Site Recovery 服务。 [详细了解](../migrate/migrate-services-overview.md) Azure Migrate。
 
 
 ## <a name="why-use-azure-migrate"></a>为何使用 Azure Migrate？

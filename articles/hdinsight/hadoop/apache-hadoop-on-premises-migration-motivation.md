@@ -1,5 +1,5 @@
 ---
-title: 优势：将本地 Apache Hadoop 迁移到 Azure HDInsight
+title: 好处：将本地 Apache Hadoop 迁移到 Azure HDInsight
 description: 了解将本地 Hadoop 群集迁移到 Azure HDInsight 的动机和权益。
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -7,10 +7,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.openlocfilehash: 975d72df32027888e217d5da9171dba0ba61f257
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943249"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
@@ -39,19 +39,19 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 - **易于缩放** - 通过 HDInsight 可纵向 [缩放](../hdinsight-administer-use-portal-linux.md)工作负载。 Azure 负责重新分配数据和重新均衡工作负载，而不会中断数据处理作业。
 
-- **全球可用性** -HDInsight 比任何其他大数据分析产品在更多 [区域](https://azure.microsoft.com/regions/services/) 中提供。 Azure HDInsight 还在中国和德国的 Azure 政府版中提供，满足关键主权领域的企业需求。
+- **全球可用性** - 提供 HDInsight 的[区域](https://azure.microsoft.com/regions/services/)要多于提供任何其他大数据分析产品/服务的区域。 Azure HDInsight 还在中国和德国的 Azure 政府版中提供，满足关键主权领域的企业需求。
 
 - **安全性和合规性** - HDInsight 允许通过 [Azure 虚拟网络](../hdinsight-plan-virtual-network-deployment.md)、[加密](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)以及与 [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) 集成来保护企业数据资产。 HDInsight 还满足最常用的行业和政府[符合性标准](https://azure.microsoft.com/overview/trusted-cloud)。
 
-- **简化版本管理** -Azure HDInsight 管理 Hadoop eco 系统组件的版本，并使其保持最新。 软件更新在内部部署过程中通常比较复杂。
+- **简化版本管理** - Azure HDInsight 管理 Hadoop 生态系统组件的版本并使其保持最新。 软件更新在内部部署过程中通常比较复杂。
 
-- 针对 **特定工作负荷进行了优化的小型群集，组件之间的依赖关系更少**-典型的本地 Hadoop 设置使用单个群集来提供多种用途。 使用 Azure HDInsight，可创建特定于工作负载的群集。 为特定工作负载创建群集消除了维护单个群集日益复杂的复杂性。
+- **针对特定工作负载优化的较小群集与组件之间的依赖关系较少** - 典型的本地 Hadoop 设置使用具有多种用途的单个群集。 使用 Azure HDInsight，可创建特定于工作负载的群集。 为特定工作负载创建群集消除了维护单个群集日益复杂的复杂性。
 
 - **生产力** - 可在首选开发环境中使用 Hadoop 和 Spark 的各种工具。
 
 - **自定义工具或第三方应用程序的可扩展性** - HDInsight 群集可使用已安装的组件进行扩展，也可以通过 Azure 市场中的 [一键式](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)部署与其他大数据解决方案进行集成。
 
-- **易于管理、管理和监视** -Azure HDInsight 与 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md) 集成，提供单个界面，可用于监视所有群集。
+- **轻松经营、管理和监视** - Azure HDInsight 与 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md)进行集成，以通过单个界面来监视所有群集。
 
 - **与其他 Azure 服务集成** - HDInsight 可轻松地与其他常用 Azure 服务进行集成，例如：
 
@@ -83,7 +83,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 - 项目详细信息
 - Azure 要求
 
-### <a name="on-premises-deployment-questionnaire"></a>本地部署调查表
+### <a name="on-premises-deployment-questionnaire"></a>本地部署问卷
 
 | **问题** | **示例** | **答案** |
 |---|---|---|
@@ -93,7 +93,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |群集类型|Hadoop、Spark、Confluent Kafka、Storm、Solr|
 |分类数|4|
 |主节点数|2|
-|辅助角色节点数|100|
+|工作器节点数|100|
 |边缘节点数| 5|
 |总磁盘空间|100 TB|
 |主节点配置|m/y、cpu、磁盘等。|

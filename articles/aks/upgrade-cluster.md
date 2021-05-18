@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 12/17/2020
 ms.openlocfilehash: 11218fc0cd754e9793067c449fdcb7589688dc2e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176342"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
@@ -50,25 +50,25 @@ default  myResourceGroup  1.18.10          1.19.1, 1.19.3
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
 
-## <a name="customize-node-surge-upgrade"></a>自定义节点浪涌升级
+## <a name="customize-node-surge-upgrade"></a>自定义节点激增升级
 
 > [!Important]
-> 节点浪涌需要针对每个升级操作请求的最大浪涌计数的订阅配额。 例如，具有5个节点池（每个节点的计数为4个节点）的群集总共包含20个节点。 如果每个节点池的最大电涌值为50%，则需要10个节点 (2 个节点的附加计算和 IP 配额，) 需要完成升级。
+> 节点激增需要的订阅配额对应于为每个升级操作请求的最大激增计数。 例如，具有 5 个节点池（每个池有 4 个节点）的群集总共包含 20 个节点。 如果每个节点池的最大激增值为 50%，则额外需要 10 个节点（2 个节点/池 * 5 个池）的计算和 IP 配额才能完成升级。
 >
-> 如果使用 Azure CNI，请验证子网中是否存在可用 ip，以 [满足 AZURE CNI 的 IP 要求](configure-azure-cni.md)。
+> 如果使用 Azure CNI，则还需要验证子网中是否有可用 IP 来[满足 Azure CNI 的 IP 要求](configure-azure-cni.md)。
 
-默认情况下，AKS 将升级配置为浪涌，并另外添加一个节点。 "最大冲击" 设置的默认值为1时，AKS 通过在现有应用程序的 cordon/排出替换较早版本的节点之前创建其他节点来最大程度地减少工作负载中断。 可以为每个节点池自定义最大浪涌值，以便在升级速度和升级中断之间进行权衡。 增加最大的浪涌值后，升级过程的速度将更快，但是为 max 电涌设置较大的值可能会导致在升级过程中发生中断。 
+默认情况下，AKS 会将升级配置为使用一个额外节点进行激增。 最大激增设置的默认值为 1，这样会使 AKS 能够在隔离/排出现有应用程序之前创建一个额外的节点来替换旧版本的节点，从而最大限度地减少工作负荷中断。 可以为每个节点池自定义最大激增值，以便在升级速度与升级中断之间进行权衡。 通过增大最大激增值，升级过程可以更快地完成，但是，设置大的最大激增值可能会导致升级过程中出现中断的情况。 
 
-例如，max 电涌值100% 提供最快的升级过程 (将节点计数翻倍) ，同时还会导致节点池中的所有节点同时排出。 你可能想要使用较高的值（例如）来测试环境。 对于生产节点池，建议使用33% 的 max_surge 设置。
+例如，最大激增值为 100% 时，可以让升级过程尽可能快（将节点计数加倍），但也会导致节点池中的所有节点同时被耗尽。 对于测试环境，你可能希望使用这样的较高的值。 对于生产节点池，建议将 max_surge 设置为 33%。
 
-AKS 接受整数值和最大冲击的百分比值。 整数（如 "5"）指示向浪涌增加了五个节点。 如果值为 "50%"，则表示池中当前节点计数的半电涌值为一半。 最大浪涌百分比值的最小值为1%，最大值为100%。 百分比值将向上舍入到最近的节点计数。 如果 max 电涌值低于升级时的当前节点计数，则使用当前节点计数来表示最大浪涌值。
+AKS 可以接受整数值和百分比值作为最大激增值。 整数值，例如 5，指示要激增五个额外的节点。 值为“50%”指示激增值为池中当前节点计数的一半。 最大激增百分比值的最小值可以为 1%，最大值可以为 100%。 百分比值将向上舍入到最近的节点计数。 如果最大激增值低于升级时的当前节点计数，则使用当前节点计数作为最大激增值。
 
-在升级过程中，最大电涌值最小为1，最大值可以等于节点池中的节点数。 你可以设置较大的值，但在升级时，最大的最大可用节点数不会高于池中的节点数。
+在升级过程中，最大激增值最小可以为 1，最大为节点池中的节点数。 你可以设置较大的值，但用于最大激增的最大节点数不会高于升级时池中的节点数。
 
 > [!Important]
-> 节点池上的最大冲击设置是永久性的。  后续的 Kubernetes 升级或节点版本升级将使用此设置。 你可以随时更改节点池的最大浪涌值。 对于生产节点池，建议使用最大-电涌设置33%。
+> 对节点池的最大激增设置是永久性的。  后续的 Kubernetes 升级或节点版本升级都将使用此设置。 你可以随时更改节点池的最大激增值。 对于生产节点池，建议将 max-surge 设置为 33%。
 
-使用以下命令为新的或现有的节点池设置最大浪涌值。
+请使用以下命令为新的或现有的节点池设置最大激增值。
 
 ```azurecli-interactive
 # Set max surge for a new node pool
@@ -83,7 +83,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 ## <a name="upgrade-an-aks-cluster"></a>升级 AKS 群集
 
 如果有一系列适用于 AKS 群集的版本，则可使用 [az aks upgrade][az-aks-upgrade] 命令进行升级。 在升级过程中，AKS 将： 
-- 将新的缓冲区节点 (或任意数量的节点添加到运行指定 Kubernetes 版本的群集的 [最大冲击](#customize-node-surge-upgrade)) 中。 
+- 向运行指定 Kubernetes 版本的群集添加一个新的缓冲区节点（或 [max surge](#customize-node-surge-upgrade) 中配置的节点数）。 
 - [隔离并排空][kubernetes-drain]其中一个旧节点，以最大程度地减少对正在运行的应用程序的干扰（如果你使用的是最大浪涌，它会同时[隔离并排空][kubernetes-drain]与指定的缓冲区节点数相同的节点数）。 
 - 旧节点在完全排空时，会被重置映像以接收新版本，并且会成为下一个要升级的节点的缓冲区节点。 
 - 此过程会重复进行，直至群集中的所有节点都已升级完毕。 
@@ -118,25 +118,25 @@ myAKSCluster  eastus      myResourceGroup  1.18.10              Succeeded       
 
 ## <a name="set-auto-upgrade-channel"></a>设置自动升级通道
 
-除手动升级群集外，还可以在群集上设置自动升级通道。 可用的升级通道如下：
+除了手动升级群集之外，还可以在群集上设置自动升级通道。 有以下升级通道可用：
 
 |通道| 操作 | 示例
 |---|---|---|
-| `none`| 禁用自动升级并使群集处于其当前版本的 Kubernetes| 如果保持不变，则默认设置|
-| `patch`| 将群集自动升级到支持的最新修补程序版本，同时保持次要版本相同。| 例如，如果群集运行版本 *1.17.7* ， *1.17.9*、 *1.18.4*、 *1.18.6* 和 *1.19.1* 可用，则群集会升级到 *1.17.9*|
-| `stable`| 自动将群集升级到次要版本 *N-1* 上支持的最新修补程序版本，其中 *N* 是支持的最新次要版本。| 例如，如果群集运行版本 *1.17.7* ， *1.17.9*、 *1.18.4*、 *1.18.6* 和 *1.19.1* 可用，则群集会升级到 *1.18.6*。
-| `rapid`| 自动将群集升级到支持的最新次要版本上支持的最新修补程序版本。| 如果群集处于 Kubernetes 版本的，其中 *n* 是最新的受支持 *的次版本*，则群集首先会升级到 *n-1* 次版本上支持的最新修补程序版本。 例如，如果群集运行版本 *1.17.7* ， *1.17.9*、 *1.18.4*、 *1.18.6* 和 *1.19.1* 可用，则首先将群集升级到 *1.18.6*，然后将其升级到 *1.19.1*。
+| `none`| 禁用自动升级并使群集保持其当前版本的 Kubernetes| 如果保持不变，则为默认设置|
+| `patch`| 当有最新的受支持补丁版本可用时，将群集自动升级到该版本，同时使次要版本保持不变。| 例如，如果群集正在运行版本 1.17.7 且版本 1.17.9、1.18.4、1.18.6 和 1.19.1 可用，则你的群集将升级到 1.17.9。|
+| `stable`| 自动将群集升级到次要版本 N-1 的最新受支持补丁发行版，其中 N 是最新的受支持次要版本。| 例如，如果群集正在运行版本 1.17.7 且版本 1.17.9、1.18.4、1.18.6 和 1.19.1 可用，则你的群集将升级到 1.18.6。
+| `rapid`| 自动将群集升级到最新受支持次要版本的最新受支持补丁发行版。| 如果群集的 Kubernetes 版本的次要版本为 N-2，其中 N 是最新的受支持次要版本，则群集将首先升级到 N-1 次要版本的最新受支持补丁版本。 例如，如果群集正在运行版本 1.17.7 且版本 1.17.9、1.18.4、1.18.6 和 1.19.1 可用，则群集将首先升级到 1.18.6，然后再升级到 1.19.1。
 
 > [!NOTE]
-> 群集自动升级仅更新 Kubernetes 的 GA 版本，不会更新为预览版版本。
+> 群集自动升级仅更新到 Kubernetes 的 GA 版，不会更新到预览版。
 
-自动升级群集的操作遵循与手动升级群集相同的过程。 有关更多详细信息，请参阅 [Upgrade a AKS cluster][upgrade-cluster]。
+自动升级群集遵循与手动升级群集相同的过程。 有关更多详细信息，请参阅[升级 AKS 群集][upgrade-cluster]。
 
 AKS 群集的群集自动升级是一项预览功能。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-`AutoUpgradePreview`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
+使用 [az feature register][az-feature-register] 命令注册 `AutoUpgradePreview` 功能标志，如以下示例所示：
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
@@ -148,19 +148,19 @@ az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AutoUpgradePreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，请使用 [az provider register][az-provider-register]命令刷新 *ContainerService* 资源提供程序的注册：
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-若要在创建群集时设置自动升级通道，请使用 *自动升级通道* 参数，如下所示。
+若要在创建群集时设置自动升级通道，请使用 auto-upgrade-channel 参数，类似于以下示例。
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable --generate-ssh-keys
 ```
 
-若要在现有群集上设置自动升级通道，请更新 *自动升级通道* 参数，如下例所示。
+若要在现有群集上设置自动升级通道，请更新 auto-upgrade-channel 参数，类似于以下示例。
 
 ```azurecli-interactive
 az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable

@@ -1,5 +1,5 @@
 ---
-title: 方案： any 到 any
+title: 场景：任意位置到任意位置
 titleSuffix: Azure Virtual WAN
 description: 用于路由的方案 - 任意位置到任意位置
 services: virtual-wan
@@ -10,21 +10,21 @@ ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 3b5002873160490dfb7b8d3ad9790f9c6f1e8ae6
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99525782"
 ---
 # <a name="scenario-any-to-any"></a>方案：任意位置到任意位置
 
-使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在“任意位置到任意位置”方案中，任意分支都可以联系另一个分支。 如果存在多个中心，默认情况下会在标准虚拟 WAN 中启用中心到中心路由（也称为“中心间”）。 可以使用多种不同的方法（例如 Azure 门户或 [Azure 快速入门模板](quickstart-any-to-any-template.md)）来创建此配置。 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。 
+使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在“任意位置到任意位置”方案中，任意分支都可以联系另一个分支。 如果存在多个中心，默认情况下会在标准虚拟 WAN 中启用中心到中心路由（也称为“中心间”）。 可使用多种不同的方法（例如 Azure 门户或 [Azure 快速启动模板](quickstart-any-to-any-template.md)）来创建此配置。 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。 
 
 ## <a name="design"></a><a name="design"></a>设计
 
 为了确定虚拟 WAN 方案中将会需要多少路由表，可以构建一个连接矩阵，其中每个单元格都表示源（行）是否可以与目标（列）通信。
 
-| 源 |   目标 |  VNet | *分支* |
+| From |   目标 |  VNet | *分支* |
 | -------------- | -------- | ---------- | ---|
 | VNet     | &#8594;| 直接 | 直接 |
 | 分支   | &#8594;| 直接  | 直接 |
@@ -58,7 +58,7 @@ ms.locfileid: "99525782"
 
 ## <a name="workflow"></a><a name="workflow"></a>工作流
 
-对于标准虚拟 WAN，默认情况下会启用此方案。 如果 WAN 配置中禁用了分支到分支的设置，则不会在分支轮辐之间建立连接。 VPN/ExpressRoute/用户 VPN 在虚拟 WAN 中被视为分支
+对于标准虚拟 WAN，默认情况下会启用此方案。 如果 WAN 配置中禁用了分支到分支的设置，将会禁止分支之间的连接。 VPN/ExpressRoute/用户 VPN 在虚拟 WAN 中被视为分支
 
 ## <a name="next-steps"></a>后续步骤
 

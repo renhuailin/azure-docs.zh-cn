@@ -13,10 +13,10 @@ ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 5072ae58d3a9412237e70a9bc98970296ce1e1fa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101686574"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web API：代码配置
@@ -33,7 +33,7 @@ Microsoft 建议在调用下游 Web API 开发 ASP.NET Core 保护的 API 时，
 
 ## <a name="client-secrets-or-client-certificates"></a>客户端密码或客户端证书
 
-假设你的 web API 现在调用下游 web API，请在 *appsettings.js* 的文件中提供客户端密码或客户端证书。 你还可以添加一个节来指定：
+鉴于 Web API 现在调用下游的 Web API，请提供 appsettings.json 文件中客户端密码或客户端证书。 你还可以添加一个节来指定：
 
 - 下游 Web API 的 URL
 - 调用 API 所需的范围
@@ -169,7 +169,7 @@ public class Startup
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="此框图显示了 Startup.cs 中的服务配置选项，用于调用 Web API 和指定令牌缓存实现":::
 
 > [!NOTE]
-> 若要完全了解此处的代码示例，请熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，并特别了解 [依赖关系注入](/aspnet/core/fundamentals/dependency-injection) 和 [选项](/aspnet/core/fundamentals/configuration/options)。
+> 若要完全理解以下代码示例，请熟悉 [ASP.NET Core 基础知识](/aspnet/core/fundamentals)，尤其是[依赖项注入](/aspnet/core/fundamentals/dependency-injection)和[选项](/aspnet/core/fundamentals/configuration/options)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -246,7 +246,7 @@ class MsalAuthHelper {
 
 Python Web API 需要使用一些中间件来验证从客户端接收的持有者令牌。 然后，Web API 可以通过调用 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 方法，使用 MSAL Python 库获取下游 API 的访问令牌。 有关使用此 API 的示例，请参阅 [GitHub 上 microsoft-authentication-library-for-python 的测试代码](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)。 另请参阅在同一存储库中对[问题 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53) 的讨论，以了解可以避免使用中间层应用程序的方法。
 
-你还可以在 OBO 中看到一个示例，其中显示了 [ms identity-python](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of) 。
+也可以参阅 [ms-identity-python-on-behalf-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of) 示例中的 OBO 流实现示例。
 
 ---
 

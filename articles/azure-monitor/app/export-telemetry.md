@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 ms.custom: references_regions
 ms.openlocfilehash: e7831123834df9186310453106c50261373160ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101737029"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
 
 > [!IMPORTANT]
-> 已不推荐使用连续导出。 [迁移到基于工作区的 Application Insights 资源](convert-classic-resource.md) ，以使用 [诊断设置](#diagnostic-settings-based-export) 导出遥测。
+> 连续导出已弃用。 [迁移到基于工作区的 Application Insights 资源](convert-classic-resource.md)，以使用[诊断设置](#diagnostic-settings-based-export)导出遥测数据。
 
 > [!NOTE]
 > 只有经典 Application Insights 资源支持连续导出。 [基于工作区的 Application Insights 资源](./create-workspace-resource.md)必须使用[诊断设置](./create-workspace-resource.md#export-telemetry)。
@@ -36,7 +36,7 @@ ms.locfileid: "101737029"
 
 以下区域支持连续导出：
 
-* 东南亚
+* Southeast Asia
 * 加拿大中部
 * 印度中部
 * 北欧
@@ -68,7 +68,7 @@ ms.locfileid: "101737029"
 * 日本西部
 
 > [!NOTE]
-> 支持在 **西欧** 和 **美国东部** 配置的应用程序，但不支持在这些区域中载入新应用程序。
+> 支持已在西欧和美国东部配置的应用程序，但不支持在这些区域中加入新应用程序 。
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>连续导出高级存储配置
 

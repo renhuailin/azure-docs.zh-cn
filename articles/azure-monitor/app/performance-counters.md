@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 423e17ef2b44286c28b464836075284929d8644c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031355"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
@@ -21,7 +21,7 @@ Windows 提供了各种[性能计数器](/windows/desktop/perfctrs/about-perform
 
 ![Application Insights 中报告的性能计数器](./media/performance-counters/performance-counters.png)
 
-为 ASP.NET web 应用程序配置的当前默认计数器为：
+根据配置要为 ASP.NET Web 应用程序收集的当前默认计数器包括：
 - % Process\\Processor Time
 - % Process\\Processor Time Normalized
 - Memory\\Available Bytes
@@ -33,7 +33,7 @@ Windows 提供了各种[性能计数器](/windows/desktop/perfctrs/about-perform
 - ASP.NET Applications\\Requests In Application Queue
 - Processor(_Total)\\% Processor Time
 
-为 ASP.NET Core web 应用程序配置的当前默认计数器为：
+根据配置要为 ASP.NET Core Web 应用程序收集的当前默认计数器包括：
 - % Process\\Processor Time
 - % Process\\Processor Time Normalized
 - Memory\\Available Bytes

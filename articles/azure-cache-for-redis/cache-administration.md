@@ -6,12 +6,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 0a79b0b5b5f21d1c75fec6b062f1ca91cfe9dd1f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7f8eb44ab301b211eaeb2dc3679c97714f91f0da
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102219193"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833033"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Redis 缓存
 本主题介绍如何为 Azure Redis 缓存实例执行管理任务，如[重启](#reboot)和[计划更新](#schedule-updates)。
@@ -71,7 +72,7 @@ ms.locfileid: "102219193"
 使用“计划更新”边栏选项卡可以为缓存实例指定维护时段。 借助维护时段，可以控制在一周中的哪一天和哪个时间点更新托管缓存的 VM。 Azure Cache for Redis 将尽最大努力在定义的指定时间范围内启动和完成 Redis 服务器软件的更新。
 
 > [!NOTE] 
-> 维护时段适用于 Redis 服务器更新以及托管缓存的 Vm 的操作系统更新。 维护时段不适用于承载缓存 Vm 或其他 Azure 网络组件的主机的主机操作系统更新。 在极少数情况下，缓存驻留在较旧的模型上 (如果缓存的 DNS 名称解析为后缀 "cloudapp.net"、"chinacloudapp.cn"、"usgovcloudapi.net" 或 "cloudapi.de" ) ，则可以判断缓存是否在旧的模型上，也不会将维护时段应用于来宾 OS 更新。
+> 维护时段适用于 Redis 服务器更新以及托管缓存的 VM 的操作系统更新。 维护时段不适用于承载缓存 VM 或其他 Azure 网络组件的主机的主机 OS 更新。 在极少数情况下，缓存托管在较旧的模型上（如果缓存的 DNS 名称解析为后缀“cloudapp.net”、“chinacloudapp.cn”、“usgovcloudapi.net”或“cloudapi.de”，则可判断缓存是否位于较旧的模型上），此时维护时段也不适用于来宾 OS 更新。
 >
 
 

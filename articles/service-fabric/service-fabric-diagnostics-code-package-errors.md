@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
 ms.openlocfilehash: 400651b240f0518a85b9deb7a7293a77a88b0861
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100591714"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>使用 Service Fabric 诊断常见代码包错误
@@ -52,11 +52,11 @@ Service Fabric 可能会出于各种原因而终止代码包。 例如，它可�
 退出代码 | 十六进制值 | 简短说明 | 根本原因 | 可能的修复方法
 --------- | --------- | ----------------- | ---------- | -------------
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | 此错误有时表示计算机已耗尽桌面堆空间。 如果有极大量的进程属于节点上运行的应用程序，则这种可能性很大。 | 如果程序未在 Ctrl+C 信号响应方面经过设计，你可以在群集清单中启用 **EnableActivateNoWindow** 设置。 启用此设置后，代码包无需使用 GUI 窗口即可运行，并且不会收到 Ctrl+C 信号。 此操作还可减少每个进程占用的桌面堆空间量。 如果代码包需要接收 Ctrl+C 信号，你可以增加节点的桌面堆大小。
-3762504530 | 0xe0434352 | 空值 | 此值表示托管代码（即 .NET）中发生的未经处理的异常的错误代码。 | 此退出代码表示应用程序引发了一个仍未处理的异常，从而终止了进程。 若要确定是哪种因素触发了此错误，首先请调试应用程序的日志和转储文件。
+3762504530 | 0xe0434352 | 不适用 | 此值表示托管代码（即 .NET）中发生的未经处理的异常的错误代码。 | 此退出代码表示应用程序引发了一个仍未处理的异常，从而终止了进程。 若要确定是哪种因素触发了此错误，首先请调试应用程序的日志和转储文件。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何 [诊断其他常见方案](service-fabric-diagnostics-common-scenarios.md)。
+* 详细了解如何[诊断其他常见方案](service-fabric-diagnostics-common-scenarios.md)。
 * 阅读 [Azure Monitor 概述](../azure-monitor/overview.md)，详细了解 Azure Monitor 日志及其提供的功能。
 * 详细了解可帮助进行检测和诊断的 Azure Monitor 日志[警报](../azure-monitor/alerts/alerts-overview.md)。
 * 熟悉 Azure Monitor 日志中提供的[日志搜索和查询](../azure-monitor/logs/log-query-overview.md)功能。

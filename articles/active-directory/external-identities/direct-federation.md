@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 598cbf303c8a87675833b8d87f05055771e46f55
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101687237"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与面向来宾用户的 AD FS 和第三方提供者的直接联合（预览）
@@ -42,15 +42,15 @@ ms.locfileid: "101687237"
 
 ## <a name="sign-in-endpoints"></a>登录终结点
 
-直接联合身份验证来宾用户现在可以使用 [公共终结点](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) 登录到你的多租户或 Microsoft 第一方应用 (换言之，这是一个不包含租户上下文) 的常规应用 URL。 在登录过程中，来宾用户选择 "登录" **选项**，然后选择 " **登录到组织**"。 然后，用户键入组织的名称并继续使用其自己的凭据登录。
+直接联合来宾用户现在可以使用[公共终结点](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint)（也就是不包含租户上下文的常规应用 URL）登录到多租户或 Microsoft 第一方应用。 在登录过程中，来宾用户选择“登录选项”，然后选择“登录到组织” 。 然后，用户需要键入组织的名称并继续使用自己的凭据登录。
 
-直接联合身份验证来宾用户还可以使用包含租户信息的应用程序终结点，例如：
+直接联合来宾用户还可以使用包含租户信息的应用程序终结点，例如：
 
   * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
   * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
   * `https://portal.azure.com/<your tenant ID>`
 
-例如，你还可以通过包含你的租户信息，为直接联合身份验证来宾用户提供指向应用程序或资源的直接链接 `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` 。
+还可以通过在链接中包含你的租户信息，为直接联合来宾用户提供指向应用程序或资源的直接链接，例如 `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`。
 
 ## <a name="limitations"></a>限制
 
@@ -88,8 +88,8 @@ ms.locfileid: "101687237"
 与合作伙伴组织建立直接联合时，对于该组织中的新来宾用户而言，它将优先于电子邮件一次性密码身份验证。 如果来宾用户在建立直接联合之前使用一次性密码身份验证兑换了邀请，则他们将继续使用一次性密码身份验证。 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>是否由于部分同步的租户导致了直接联合地址登录问题？
 否。在此场景中，应使用[电子邮件一次性密码](one-time-passcode.md)功能。 “部分同步的租户”指的是合作伙伴 Azure AD 租户，其中本地用户标识未完全同步到云。 其标识尚不存在于云中但尝试兑换 B2B 邀请的来宾将无法登录。 使用一次性密码功能，此来宾可以登录。 直接联合功能可以解决以下情况：来宾具有其自己的 IdP 托管的组织帐户，但组织没有 Azure AD。
-### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>将直接联盟配置为组织后，是否需要发送每个来宾并兑换单个邀请？
-设置直接联合不会更改已兑换你邀请的来宾用户的身份验证方法。 可以通过从目录中删除来宾用户帐户并对其进行 reinviting 来更新来宾用户的身份验证方法。
+### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>为组织配置直接联合后，是否需要向每位来宾发送单独邀请，并且需要来宾兑换邀请？
+建立直接联合并不会更改已兑换邀请的来宾用户的身份验证方法。 可以通过从目录中删除来宾用户帐户并对其重新发出邀请，来更新来宾用户的身份验证方法。
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>步骤 1：配置合作伙伴组织的标识提供者
 首先，你的合作伙伴组织需要为其标识提供者配置所需的声明和信赖方信任。 
 
@@ -157,7 +157,7 @@ IdP 颁发的 WS-Fed 令牌的必需声明：
 
 1. 转到 [Azure 门户](https://portal.azure.com/)。 在左窗格中选择“Azure Active Directory”。 
 2. 选择“外部标识” > “所有标识提供者”。
-3. 选择 " **新建 SAML/WS-送 IdP**"。
+3. 选择“新 SAML/WS 联合身份验证 IdP”。
 
     ![显示用于添加新 SAML 或 WS-Fed IdP 的按钮的屏幕截图](media/direct-federation/new-saml-wsfed-idp.png)
 
@@ -234,4 +234,4 @@ IdP 颁发的 WS-Fed 令牌的必需声明：
 
 ## <a name="next-steps"></a>后续步骤
 
-当外部用户登录到各种标识提供者时，详细了解 [邀请兑换体验](redemption-experience.md) 。
+详细了解外部用户使用各种标识提供程序登录时的[邀请兑换体验](redemption-experience.md)。

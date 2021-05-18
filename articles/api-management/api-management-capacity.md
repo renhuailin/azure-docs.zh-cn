@@ -13,10 +13,10 @@ ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
 ms.openlocfilehash: c7c002b57f2220ac0a9fba43a8081b2a4ed800e7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93081053"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API 管理实例的容量
@@ -42,7 +42,7 @@ ms.locfileid: "93081053"
 
 ## <a name="what-is-capacity"></a>什么是容量
 
-![介绍容量指标的关系图。](./media/api-management-capacity/capacity-ingredients.png)
+![此图解释了容量指标。](./media/api-management-capacity/capacity-ingredients.png)
 
 **容量** 是 API 管理实例中负载的指标。 它反映资源用量（CPU、内存）和网络队列的长度。 CPU 和内存用量反映以下对象的资源消耗量：
 
@@ -56,13 +56,13 @@ ms.locfileid: "93081053"
 
 ## <a name="capacity-metric-behavior"></a>容量指标行为
 
-由于这种构造，在现实中， **容量** 可能受到多种可变因素的影响，例如：
+由于这种构造，在现实中，**容量** 可能受到多种可变因素的影响，例如：
 
 + 连接模式（是根据请求创建新连接，还是重复使用现有连接）
 + 请求和响应的大小
 + 在每个 API 中配置的策略数，或发送请求的客户端数。
 
-请求中的操作越复杂， **容量** 消耗就越高。 例如，复杂转换策略消耗的 CPU 比简单的请求转发要高得多。 后端服务响应速度较慢也会增大消耗量。
+请求中的操作越复杂，**容量** 消耗就越高。 例如，复杂转换策略消耗的 CPU 比简单的请求转发要高得多。 后端服务响应速度较慢也会增大消耗量。
 
 > [!IMPORTANT]
 > **容量** 不是所处理请求数量的直接度量值。
@@ -79,12 +79,12 @@ ms.locfileid: "93081053"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到自己的 APIM 实例。
 2. 选择“指标”。
-3. 在紫色部分，从可用指标中选择“容量”，并保留默认的“平均值”聚合。 
+3. 在紫色部分，从可用指标中选择“容量”，并保留默认的“平均值”聚合。
 
     > [!TIP]
-    > 为避免解释错误， **容量** 指标始终按位置分解。
+    > 为避免解释错误，**容量** 指标始终按位置分解。
 
-4. 在绿色部分选择“位置”，以便按维度拆分指标。 
+4. 在绿色部分选择“位置”，以便按维度拆分指标。
 5. 从该部分的顶部栏中选择所需的时间范围。
 
     可以设置指标警报，以便在发生意外的情况时收到通知。 例如，当 APIM 实例超出预期峰值容量有 20 分钟以上时收到通知。
@@ -95,7 +95,7 @@ ms.locfileid: "93081053"
 
 ## <a name="use-capacity-for-scaling-decisions"></a>使用容量做出缩放决策
 
-在是否扩展 API 管理实例以容纳更多负载方面， **容量** 指标可以帮助做出决策。 请注意以下几点：
+在是否扩展 API 管理实例以容纳更多负载方面，**容量** 指标可以帮助做出决策。 请注意以下几点：
 
 + 查看长期趋势和平均值。
 + 忽略往往与负载提高无关的突发高峰（请参阅“容量指标行为”部分中的说明）。

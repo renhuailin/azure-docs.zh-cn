@@ -16,21 +16,21 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82733765"
 ---
 # <a name="understand-azure-deny-assignments"></a>了解 Azure 拒绝分配
 
-*拒绝分配*类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组或服务主体，以便拒绝访问。 即使角色分配向用户授予了访问权限，拒绝分配也会阻止用户执行特定的 Azure 资源操作。
+*拒绝分配* 类似于角色分配，可将一组拒绝操作附加到特定范围内的用户、组或服务主体，以便拒绝访问。 即使角色分配向用户授予了访问权限，拒绝分配也会阻止用户执行特定的 Azure 资源操作。
 
 本文介绍如何定义拒绝分配。
 
 ## <a name="how-deny-assignments-are-created"></a>如何创建拒绝分配
 
-拒绝分配由 Azure 创建和管理以保护资源。 Azure 蓝图和 Azure 托管应用使用拒绝分配来保护系统管理的资源。 Azure 蓝图和 Azure 托管应用是创建拒绝分配的唯一方式。 不能直接创建自己的拒绝分配。 有关蓝图如何使用拒绝分配来锁定资源的详细信息，请参阅 [了解 Azure 蓝图中的资源锁定](../governance/blueprints/concepts/resource-locking.md)。
+拒绝分配由 Azure 创建和管理以保护资源。 Azure 蓝图和 Azure 托管应用使用拒绝分配来保护系统管理的资源。 Azure 蓝图和 Azure 托管应用是创建拒绝分配的唯一方式。 不能直接创建自己的拒绝分配。 若要详细了解蓝图如何使用拒绝分配来锁定资源，请参阅[了解 Azure 蓝图中的资源锁定](../governance/blueprints/concepts/resource-locking.md)。
 
 > [!NOTE]
 > 不能直接创建自己的拒绝分配。
@@ -54,7 +54,7 @@ ms.locfileid: "82733765"
  拒绝分配具有以下属性：
 
 > [!div class="mx-tableFixed"]
-> | 属性 | 必须 | 类型 | 说明 |
+> | 属性 | 必选 | 类型 | 说明 |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | 是 | String | 拒绝分配的显示名称。 对于给定作用域，名称必须是唯一的。 |
 > | `Description` | 否 | String | 拒绝分配的说明。 |

@@ -5,12 +5,12 @@ author: ofirmanor
 ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: d65fa03a183c15022535debee6476844192ec6bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 08ac23fbb29829bf2a7a46e41f9a7f646ad97915
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037840"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104586312"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>排查 Azure Monitor 警报的问题
 
@@ -20,8 +20,8 @@ ms.locfileid: "102037840"
 
 如果你遇到警报触发问题或警报未按预期触发问题，请参阅下面的文章。 可以在 Azure 门户中查看已触发的警报。
 
-- [对 Microsoft Azure 中 Azure Monitor 指标警报进行故障排除](alerts-troubleshoot-metric.md)  
-- [对 Microsoft Azure 中 Azure Monitor 日志警报进行故障排除](alerts-troubleshoot-metric.md)
+- [排查 Microsoft Azure 中的 Azure Monitor 指标警报问题](alerts-troubleshoot-metric.md)  
+- [排查 Microsoft Azure 中的 Azure Monitor 日志警报问题](alerts-troubleshoot-log.md)
 
 如果警报根据 Azure 门户按预期触发，但未出现正确的通知，请使用本文其余部分中的信息来解决该问题。
 
@@ -171,7 +171,7 @@ ms.locfileid: "102037840"
 
 1. **是否为操作选择了正确的格式？** 
 
-    每个操作类型 (电子邮件、webhook 等 ) 具有两种格式：默认格式、旧格式和 [较新的通用架构格式](../alerts/alerts-common-schema.md)。 创建操作组时，请指定每个操作所需的格式，操作组中的不同操作可能具有不同的格式。 
+    每种操作类型（电子邮件、Webhook 等）都有两种格式：默认的旧格式和[较新的通用架构格式](../alerts/alerts-common-schema.md)。 创建操作组时，请指定每个操作所需的格式，操作组中的不同操作可能具有不同的格式。 
 
     例如，对于 Webhook 操作： 
 
@@ -222,7 +222,7 @@ ms.locfileid: "102037840"
 
 ## <a name="how-to-find-the-alert-id-of-a-fired-alert"></a>如何查找已触发的警报的警报 ID
 
-当打开有关特定发出的警报的事例时 (例如–如果未收到其电子邮件通知) ，则需要提供警报 ID。 
+建立有关已触发的特定警报的案例（例如，你未收到其电子邮件通知）时，需要提供警报 ID。 
 
 若要查找该 ID，请遵循以下步骤：
 

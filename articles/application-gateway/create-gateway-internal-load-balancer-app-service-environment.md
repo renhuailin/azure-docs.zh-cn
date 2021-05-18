@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/09/2020
 ms.author: genli
 ms.openlocfilehash: 8861e850e168169762d95c44a54b6a88a036f396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84628535"
 ---
 # <a name="back-end-server-certificate-is-not-allow-listed-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>未使用内部负载均衡器和应用服务环境将应用程序网关的后端服务器证书加入允许列表。
@@ -39,20 +39,20 @@ ms.locfileid: "84628535"
 - **IP 地址：** 10.1.5.11
 - **HTTP 设置：** HTTPS
 - **端口：** :443
-- **自定义探测：** Hostname – test.appgwtestase.com
+- **自定义探测：** 主机名 - test.appgwtestase.com
 - **身份验证证书：** test.appgwtestase.com 的 .cer 证书
-- **后端运行状况：** 不正常–不允许向应用程序网关列出后端服务器证书。
+- **后端运行状况：** 运行不正常 - 未将应用程序网关的后端服务器证书加入允许列表。
 
 **ASE 配置：**
 
 - **ILB IP：** 10.1.5.11
 - **域名：** appgwtestase.com
 - **应用服务：** test.appgwtestase.com
-- **SSL 绑定：** SNI SSL – CN = appgwtestase
+- **SSL 绑定：** SNI SSL – CN=test.appgwtestase.com
 
 访问应用程序网关时，会收到以下错误消息，因为后端服务器不正常：
 
-**502-Web 服务器在作为网关或代理服务器时收到了无效响应。**
+“502 - Web 服务器在充当网关或代理服务器时收到了无效响应”。
 
 ## <a name="solution"></a>解决方案
 
@@ -72,4 +72,4 @@ ms.locfileid: "84628535"
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
-如果仍需要帮助，可 [联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 来快速解决问题。
+如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

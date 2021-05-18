@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 349f70c32ea4ebb4559f053d5ef05b4b37b6480f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260372"
 ---
 # <a name="sfctl-is"></a>sfctl is
@@ -17,7 +17,7 @@ ms.locfileid: "86260372"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|说明|
 | --- | --- |
 | command | 针对给定基础结构服务实例调用管理命令。 |
 | query | 针对给定基础结构服务实例调用只读查询。 |

@@ -7,12 +7,12 @@ services: firewall
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: victorh
-ms.openlocfilehash: 621bf6138e4336c63ca137a6a8c54f77a4a99d61
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 47ebc752dedd72bbdedc02908911f1686584acda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520279"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102615493"
 ---
 # <a name="azure-firewall-premium-preview-certificates"></a>Azure 防火墙高级预览版证书 
 
@@ -111,7 +111,8 @@ Azure 防火墙高级预览版可以拦截出站 HTTP/S 流量并自动为 `www.
 
 > [!IMPORTANT]
 > rootCA.key 应存储在安全的脱机位置。 脚本会生成有效期为 1024 天的证书。
-
+> 脚本要求在本地计算机上安装 openssl 二进制文件。 有关详细信息，请参阅 https://www.openssl.org/
+> 
 创建证书后，将其部署到以下位置：
 - rootCA.crt - 在终结点计算机上部署（仅限公共证书）。
 - interCA.pfx - 在 Key Vault 上作为证书导入并分配给防火墙策略。

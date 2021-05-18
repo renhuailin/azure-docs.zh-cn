@@ -1,15 +1,15 @@
 ---
 title: Azure Monitor 视图设计器到工作簿的转换指南
-description: 从视图转换为 Azure Monitor 中的工作簿。
+description: Azure Monitor 中视图到工作簿的转换。
 author: austonli
 ms.author: aul
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.openlocfilehash: 19de2a3d3f5a998c09db7c4df689b0378e2597fd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043365"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Monitor 视图设计器到工作簿的转换指南
@@ -17,7 +17,7 @@ ms.locfileid: "102043365"
 
 
 ## <a name="workbooks-overview"></a>工作簿概述
-[工作簿](../vm/vminsights-workbooks.md) 将文本、 [日志查询](/azure/data-explorer/kusto/query/)、指标和参数合并到丰富的交互式报表中。 对 Azure 资源拥有相同访问权限的团队成员也可以编辑工作簿。
+[工作簿](../vm/vminsights-workbooks.md)可将文本、 [日志查询](/azure/data-explorer/kusto/query/)、指标和参数合并到丰富的交互式报告中。 对 Azure 资源拥有相同访问权限的团队成员也可以编辑工作簿。
 
 在如下所述的场景中，工作簿非常有用：
 

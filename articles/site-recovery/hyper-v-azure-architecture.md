@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: c5025b83619b505728bfdf5c4e1ccc81d3bb225e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97654755"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 到 Azure 的灾难恢复体系结构
@@ -86,7 +86,7 @@ ms.locfileid: "97654755"
 1. 为 Hyper-V VM 启用保护以后，就会在 Azure 门户中或本地启动“启用保护”。
 2. 该作业会检查计算机是否符合先决条件，然后调用 [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice)，以使用配置的设置来设置复制。
 3. 该作业通过调用 [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) 方法启动初始复制，以便初始化完整的 VM 复制，然后将 VM 的虚拟磁盘发送到 Azure。
-4. 可以在 "**作业**" 选项卡中监视作业。     !["作业" 选项卡中的 "作业" 列表屏幕截图。 ](media/hyper-v-azure-architecture/image1.png)!["启用保护" 屏幕的屏幕截图，其中包含更多详细信息。](media/hyper-v-azure-architecture/image2.png)
+4. 可以在“作业”选项卡中监视作业。    ![“作业”选项卡中作业列表的屏幕截图。](media/hyper-v-azure-architecture/image1.png)![“启用保护”屏幕的屏幕截图，其中包含更多详细信息。](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>初始数据复制

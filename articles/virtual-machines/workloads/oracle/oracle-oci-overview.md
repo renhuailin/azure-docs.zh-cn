@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/01/2020
 ms.author: kegorman
 ms.openlocfilehash: b27db94775e2ba8275dbdab4bf5bd61cc0fdf5c8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101666870"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>集成 Microsoft Azure 和 Oracle 云基础结构的 Oracle 应用程序解决方案
@@ -29,7 +29,7 @@ Microsoft 和 Oracle 合作提供低延迟、高吞吐量的跨云连接，使�
 
 跨云连接为你提供了一种解决方案，用于在 Azure 虚拟机上运行 Oracle 业界领先的应用程序和你自己的自定义应用程序，同时享受 OCI 中托管数据库服务的权益。 
 
-从5月2020，以下应用程序通过跨云配置进行认证：
+截至 2020 年 5 月，以下应用程序已通过跨云配置认证：
 
 * E-Business Suite
 * JD Edwards EnterpriseOne
@@ -49,7 +49,7 @@ Microsoft 和 Oracle 合作提供低延迟、高吞吐量的跨云连接，使�
 * Azure 加拿大中部 (CanadaCentral) 和 OCI 多伦多（加拿大东南部）
 * Azure 西欧 (WestEurope) 和 OCI 阿姆斯特丹（荷兰西北部）
 * Azure 日本东部 (JapanEast) 和 OCI 东京（日本东部）
-* Azure 美国西部 (WestUS) & OCI 圣马力诺 (美国西部) 
+* Azure 美国西部 (WestUS) 和 OCI 圣何塞（美国西部）
 
 ## <a name="networking"></a>网络
 

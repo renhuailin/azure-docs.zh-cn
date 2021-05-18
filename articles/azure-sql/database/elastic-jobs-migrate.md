@@ -1,5 +1,5 @@
 ---
-title: '迁移到新的弹性数据库作业 (预览) '
+title: 迁移到新的弹性数据库作业（预览版）
 description: 迁移到新的弹性数据库作业。
 services: sql-database
 ms.service: sql-database
@@ -12,13 +12,13 @@ ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: e8c222d7cdcdb203cd323cde38818e5b51643159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91443379"
 ---
-# <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>迁移到新的弹性数据库作业 (预览版) 
+# <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>迁移到新的弹性数据库作业（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 现已提供升级版本的[弹性数据库作业](elastic-jobs-overview.md)。
@@ -46,7 +46,7 @@ Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
 # Restart your powershell session with administrative access
 
 # Places Az.Sql preview cmdlets side by side with existing Az.Sql version
-Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease
+Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease
 
 # Import the Az.Sql module
 Import-Module Az.Sql -RequiredVersion 1.1.1
@@ -71,7 +71,7 @@ $agent = $db | New-AzSqlElasticJobAgent -Name <agentName>
 
 ### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>安装旧的弹性数据库作业 cmdlet
 
-迁移需要使用一些旧的弹性作业 cmdlet，所以如果没有安装，请运行以下命令**。
+迁移需要使用一些旧的弹性作业 cmdlet，所以如果没有安装，请运行以下命令。
 
 ```powershell
 # Install the old elastic job cmdlets if necessary and initialize the old jobs cmdlets
@@ -91,7 +91,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 ## <a name="migration"></a>迁移
 
-现在旧的和新的弹性作业 cmdlet 都已初始化，可将作业凭据、目标和作业迁移到新的作业数据库**。
+现在旧的和新的弹性作业 cmdlet 都已初始化，可将作业凭据、目标和作业迁移到新的作业数据库。
 
 ### <a name="setup"></a>设置
 
@@ -369,7 +369,7 @@ function Setup-TargetGroup ($tgName, $agent) {
 
 若要将目标（服务器、数据库和自定义集合）迁移到新的作业数据库，请执行 **Migrate-TargetGroups** cmdlet 来执行以下操作：
 
-- 作为服务器和数据库的根级别目标将迁移到名为 " (，) " 的新目标组 \<serverName\> ，并且 \<databaseName\> 只包含根级别目标。
+- 作为服务器和数据库的根级别目标将被迁移到一个名为“(\<serverName\>, \<databaseName\>)”的新目标组，其中只包含根级别目标。
 - 自定义集合将迁移到包含所有子目标的新目标组。
 
 ```powershell
@@ -563,9 +563,9 @@ function Setup-JobStep ($newJob, $job) {
 }
 ```
 
-若要将作业、作业内容、作业触发器和作业计划迁移到新的弹性作业代理的数据库，请执行传入代理的 Migrate-Jobs cmdlet****。
+若要将作业、作业内容、作业触发器和作业计划迁移到新的弹性作业代理的数据库，请执行传入代理的 Migrate-Jobs cmdlet。
 
-- 具有多个具有不同计划的触发器的作业分为多个作业，命名方案为 " \<jobName\> (\<scheduleName\>) "。
+- 具有不同计划的多个触发器的作业被分为具有以下命名方案的多个作业：“\<jobName\> (\<scheduleName\>)”。
 - 通过添加一个名为 JobStep 具有关联命令文本的默认作业步骤将作业内容迁移到作业。
 - 作业在默认情况下是禁用的，以便在启用作业之前可以先对它们进行验证。
 
@@ -605,7 +605,7 @@ Job job4
 
 ## <a name="migration-complete"></a>迁移完成
 
-作业数据库现在应具有所有作业凭据、目标、作业触发器、作业计划、作业内容和迁移的作业**。
+作业数据库现在应具有所有作业凭据、目标、作业触发器、作业计划、作业内容和迁移的作业。
 
 若要确认迁移的所有内容是否正确，请使用以下脚本：
 

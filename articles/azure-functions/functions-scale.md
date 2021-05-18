@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 490fa46deabc822e416705fe9bf9c5cdb58f8cd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 079ac41f8b138bccbe4d435a79836d3acee71b7d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97936749"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728617"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions 托管选项
 
@@ -28,7 +28,7 @@ ms.locfileid: "97936749"
 
 下面汇总了适用于 Functions 的三个主要托管计划的优点：
 
-| | |
+| 计划 | 优点 |
 | --- | --- |  
 |**[消耗计划](consumption-plan.md)**| 在函数运行时自动缩放，你只需为计算资源付费。<br/><br/>在消耗计划中，会根据传入事件数动态添加和删除 Functions 主机的实例。<br/><br/> ✔ 默认托管计划。<br/>✔ 仅当函数运行时才产生费用。<br/>✔ 即使是在负载较高期间也可自动缩放。|  
 |**[高级计划](functions-premium-plan.md)**|使用预热的工作器根据需要自动缩放，这些工作器在空闲后会毫不延迟地运行应用程序，在更强大的实例上运行，并连接到虚拟网络。 <br/><br/>请考虑下列情况中的 Azure Functions 高级计划： <br/><br/>✔ 你的函数应用持续地运行，或者近乎持续地运行。<br/>✔ 你的消耗计划具有大量的小型执行操作，具有较高的执行费用但较低的 GB 秒数。<br/>✔ 你需要的 CPU 或内存选项超出消耗计划提供的选项。<br/>✔ 你的代码所需的运行时间超过消耗计划允许的最长执行时间。<br/>✔ 你需要使用消耗计划中未提供的功能，例如虚拟网络连接。|  
@@ -36,7 +36,7 @@ ms.locfileid: "97936749"
 
 本文中的比较表还包括以下托管选项，这些选项提供了运行函数应用所需的最大限度的控制和隔离。  
 
-| | |
+| 托管选项 | 详细信息 |
 | --- | --- |  
 |**[ASE](dedicated-plan.md)** | 应用服务环境 (ASE) 是一项应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用。<br/><br/>ASE 适用于有以下要求的应用程序工作负荷： <br/><br/>✔ 极高的缩放性。<br/>✔完全计算隔离和安全的网络访问。<br/>✔ 内存使用率较高。|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes 提供了一个在 Kubernetes 平台之上运行的完全隔离的专用环境。<br/><br/> Kubernetes 适用于有以下要求的应用程序工作负荷： <br/>✔ 自定义硬件要求。<br/>✔ 隔离和安全的网络访问。<br/>✔ 能够在混合或多云环境中运行。<br/>✔ 与现有的 Kubernetes 应用程序和服务一起运行。|  
@@ -65,7 +65,7 @@ ms.locfileid: "97936749"
 
 下表对各种托管计划的缩放行为进行了比较。
 
-| | 向外扩展 | 最大实例数 |
+| 计划 | 向外扩展 | 最大实例数 |
 | --- | --- | --- |
 | **[消耗计划](consumption-plan.md)** | [事件驱动型](event-driven-scaling.md)。 即使是在负载较高期间也可自动扩展。 Azure Functions 基础结构可根据传入的触发器事件数添加额外的 Functions 主机实例，因此可以缩放 CPU 和内存资源。 | 200 |
 | **[高级计划](functions-premium-plan.md)** | [事件驱动型](event-driven-scaling.md)。 即使是在负载较高期间也可自动扩展。 Azure Functions 基础结构可根据触发函数的事件数添加额外的 Functions 主机实例，因此可以缩放 CPU 和内存资源。 |100|
@@ -77,12 +77,12 @@ ms.locfileid: "97936749"
 
 ## <a name="cold-start-behavior"></a>冷启动行为
 
-|    |    | 
+| 计划 | 详细信息 | 
 | -- | -- |
 | **[消耗&nbsp;计划](consumption-plan.md)** | 当空闲时，应用数可能会缩减为零，这意味着某些请求在启动时可能会产生额外的延迟。  消耗计划有一些可缩短冷启动时间的优化措施，包括从已经运行函数主机和语言进程的预热占位符函数中进行拉取。 |
 | **[高级计划](functions-premium-plan.md)** | 永久预热实例以避免任何冷启动。 |
-| **[专用计划](dedicated-plan.md)** | 在专用计划中运行时，函数主机可以连续运行，这意味着冷启动实际上不是问题。 |
-| **[ASE](dedicated-plan.md)** | 在专用计划中运行时，函数主机可以连续运行，这意味着冷启动实际上不是问题。 |
+| **[专用计划](dedicated-plan.md)** | 在专用计划中运行时，Functions 主机可以连续运行，这意味着冷启动实际上不是问题。 |
+| **[ASE](dedicated-plan.md)** | 在专用计划中运行时，Functions 主机可以连续运行，这意味着冷启动实际上不是问题。 |
 | **[Kubernetes](functions-kubernetes-keda.md)**  | 可以根据 KEDA 配置对应用进行配置以避免冷启动。 如果配置为缩放到零，则新事件会遇到冷启动。 
 
 ## <a name="service-limits"></a>服务限制
@@ -95,7 +95,7 @@ ms.locfileid: "97936749"
 
 ## <a name="billing"></a>计费
 
-| | | 
+| 计划 | 详细信息 |
 | --- | --- |
 | **[消耗计划](consumption-plan.md)** | 只需为函数运行时间付费。 账单将基于执行数量、执行时间和所用内存。 |
 | **[高级计划](functions-premium-plan.md)** | 高级计划基于在必需实例和预热实例中使用的核心秒数和内存。 每个计划必须至少有一个实例始终处于预热状态。 此计划提供了最可预测的定价。 |

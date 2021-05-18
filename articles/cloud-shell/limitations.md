@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74951473"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
@@ -45,7 +45,7 @@ Cloud Shell 支持最新版本的 Microsoft Edge、Microsoft Internet Explorer�
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>对于一个给定的用户，只有一个 shell 可处于活动状态
 
-不管是在 **Bash** 还是 **PowerShell** 中，用户每次只能启动一种类型的 shell。 但是，每次可以运行 Bash 或 PowerShell 的多个实例。 使用菜单在 Bash 或 PowerShell 之间进行交换会导致 Cloud Shell 重新启动，这将终止现有会话。 或者，你可以通过键入在 PowerShell 中运行 bash， `bash` 并通过键入在 bash 中运行 powershell `pwsh` 。
+不管是在 **Bash** 还是 **PowerShell** 中，用户每次只能启动一种类型的 shell。 但是，每次可以运行 Bash 或 PowerShell 的多个实例。 通过使用菜单在 Bash 和 PowerShell 之间切换会导致 Cloud Shell 重启，从而终止现有会话。 或者，可通过键入 `bash` 在 PowerShell 中运行 bash，而通过键入 `pwsh` 在 bash 中运行 PowerShell。
 
 ### <a name="usage-limits"></a>使用限制
 
@@ -57,9 +57,9 @@ Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交�
 
 权限设置为普通用户，不具有 sudo 访问权限。 不会保留 `$Home` 目录外部的任何安装。
 
-### <a name="editing-bashrc-or-profile"></a>编辑. .bashrc 或 $PROFILE
+### <a name="editing-bashrc-or-profile"></a>编辑 .bashrc 或 $PROFILE
 
-在编辑 .bashrc 或 PowerShell $PROFILE 文件时要格外小心，这样做会导致 Cloud Shell 中出现意外错误。
+编辑 .bashr 或 PowerShell 的 PROFILE 文件时要小心，执行这一操作可能导致 Cloud Shell 中出现意外错误。
 
 ## <a name="powershell-limitations"></a>PowerShell 限制
 
@@ -73,15 +73,15 @@ Cloud Shell 中包含的 `SqlServer` 模块仅具有对 PowerShell Core 的预�
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>从 Azure 驱动器创建时的默认文件位置：
 
-使用 PowerShell cmdlet，用户无法在 Azure：驱动器下创建文件。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 `$HOME`。 
+使用 PowerShell cmdlet，用户无法在 Azure: 驱动器下创建文件。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 `$HOME`。 
 
 ### <a name="gui-applications-are-not-supported"></a>不支持 GUI 应用程序
 
-如果用户运行的命令将创建一个 Windows 对话框，则会看到一条错误消息，例如： `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` 。
+如果用户运行一个会创建 Windows 对话框的命令，将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>在显示进度栏后出现大间距型
 
-如果用户执行了显示进度栏的操作，例如在驱动器中完成的选项卡，则 `Azure:` 可能是游标设置不正确，并且在进度栏之前出现间隔。
+如果用户执行显示进度栏的操作（例如，在 `Azure:` 驱动器中的 tab 自动补全），则光标可能设置不正确，且在以前的进度栏处出现间距。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,10 +10,10 @@ ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96024157"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>将 IoT DevKit AZ3166 与 Azure Functions 和认知服务配合使用生成语言翻译
@@ -47,7 +47,7 @@ ms.locfileid: "96024157"
 
 ## <a name="use-speech-service-with-azure-functions"></a>配合使用语音服务和 Azure Functions
 
-1. 在 VS Code 中，单击 `F1`，键入并选择“Azure IoT Device Workbench:预配 Azure 服务...”。![预配 Azure 服务](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
+1. 在 VS Code 中，单击 `F1`，键入并选择“Azure IoT Device Workbench: 预配 Azure 服务…”。![预配 Azure 服务](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
 
 1. 按照以下步骤完成 Azure IoT 中心和 Azure Functions 的预配。
    ![预配步骤](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
@@ -66,7 +66,7 @@ ms.locfileid: "96024157"
    const string deviceName = "";
    ```
 
-1. 单击 `F1`，键入并选择“Azure IoT 设备 Workbench:部署到 Azure...”。如果 VS Code 要求对重新部署进行确认，请单击“是”。
+1. 单击 `F1`，键入并选择“Azure IoT Device Workbench: 部署到 Azure…”。如果 VS Code 要求确认重新部署，请单击“是” 。
    ![部署警告](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png)
 
 1. 确保部署成功。

@@ -3,24 +3,24 @@ title: 即将更改 Azure 时序见解 Gen2 中的引入和平展规则 |Microso
 description: 引入规则更改
 ms.service: time-series-insights
 services: time-series-insights
-author: lyrana
-ms.author: lyhughes
-manager: dpalled
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 56a1d5aab2f665f9c5bd8f6fa322f35e55483c7b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 44553e2a57f796dcf48561ff3b273e25514247ae
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995227"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504526"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>即将针对新环境进行的 JSON 平展和转义规则更改
 
 > [!IMPORTANT]
-> 这些更改将仅应用于 *新创建* 的 Microsoft Azure 时序见解 Gen2 环境。 它们不适用于第 1 代环境。
+> 这些更改将仅适用于新创建的 Microsoft Azure 时序见解第 2 代环境。 它们不适用于第 1 代环境。
 
 Azure 时序见解 Gen2 环境将按照一组特定的命名约定动态创建存储列。 引入事件时，时序见解将向 JSON 有效负载和属性名称应用一组规则。 2020 年 7 月，已开始在新的 Azure 时序见解第 2 代环境中应用对 JSON 数据的平展和存储方式的更改。 在以下情况下，此更改会对你造成影响：
 

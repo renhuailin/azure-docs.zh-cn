@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eb97ed6e43f70db4cce6a6f8013c8669a6a62a78
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 373c69d0d8e966f1b55f680ef58ff26826a14de5
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448075"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027901"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过微博帐户注册与登录
 
@@ -52,7 +52,7 @@ ms.locfileid: "102448075"
 1. 选择“保存以上信息”(save)。
 1. 选择“高级信息”(advanced information)。
 1. 选择 OAuth2.0“授权设置”(redirect URL) 字段旁边的“编辑”(edit)。
-1. 为 OAuth2.0“授权设置”(redirect URL) 输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 例如，如果租户名称是 contoso，请将 URL 设置为 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
+1. 对于 OAuth 2.0“授权设置”（重定向 URL），请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称，将 `your-domain-name` 替换为你的自定义域。
 1. 选择“提交”(submit)。
 
 ::: zone pivot="b2c-user-flow"
@@ -157,13 +157,13 @@ ms.locfileid: "102448075"
 
 ### <a name="add-the-claims-transformations"></a>添加声明转换
 
-GitHub 技术配置文件要求将 CreateIssuerUserId 声明转换添加到 ClaimsTransformations 列表。 如果未在文件中定义 ClaimsTransformations 元素，请按如下所示添加父 XML 元素。 声明转换还需要定义一个名为 **numericUserId** 的新声明类型。
+GitHub 技术配置文件要求将 **CreateIssuerUserId** 声明转换添加到 ClaimsTransformations 列表。 如果未在文件中定义 **ClaimsTransformations** 元素，请按如下所示添加父 XML 元素。 声明转换还需要定义一个名为 **numericUserId** 的新声明类型。
 
 1. 搜索 [BuildingBlocks](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
 1. 找到 [ClaimsSchema](claimsschema.md) 元素。 如果该元素不存在，请添加该元素。
-1. 将 numericUserId 声明添加到 ClaimsSchema 元素。
+1. 将 numericUserId 声明添加到 **ClaimsSchema** 元素。
 1. 找到 [ClaimsTransformations](claimstransformations.md) 元素。 如果该元素不存在，请添加该元素。
-1. 将 CreateIssuerUserId 声明转换添加到 ClaimsTransformations 元素。
+1. 将 CreateIssuerUserId 声明转换添加到 **ClaimsTransformations** 元素。
 
 ```xml
 <BuildingBlocks>
@@ -211,7 +211,7 @@ GitHub 技术配置文件要求将 CreateIssuerUserId 声明转换添加到 Clai
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，选择[之前注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页上，选择“Weibo”以使用 Weibo 帐户登录。
 

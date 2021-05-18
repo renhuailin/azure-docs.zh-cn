@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 84124f33f6aa02f63c0c47a24bd7d2a71ced2d11
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 47f0ea34fa650371d39252ce6b0ee6a15f3124d6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699294"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871174"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -67,7 +67,7 @@ ms.locfileid: "101699294"
 
 如果升级内置组件或预安装在群集上的应用程序，Microsoft 将不支持生成的配置。 Microsoft 尚未测试这些系统配置。 请尝试使用不同版本的 HDInsight 群集，该版本可能已预装了组件的升级版本。
 
-例如，不支持将 Hive 升级为单个组件。 HDInsight 是一个托管服务；许多服务已与 Ambari 服务器集成并已经过测试。 单独升级 Hive 会导致其他组件的已编制索引的二进制文件发生更改，并会导致群集上出现组件集成问题。
+例如，不支持将 Hive 作为单个组件进行升级。 HDInsight 是一个托管服务；许多服务已与 Ambari 服务器集成并已经过测试。 单独升级 Hive 会导致其他组件的已编制索引的二进制文件发生更改，并会导致群集上出现组件集成问题。
 
 ### <a name="can-spark-and-kafka-run-on-the-same-hdinsight-cluster"></a>Spark 和 Kafka 是否可在同一 HDInsight 群集上运行？
 
@@ -78,11 +78,11 @@ ms.locfileid: "101699294"
 1. 通过 `https://CLUSTERNAME.azurehdinsight.net` （其中，CLUSTERNAME 是群集的名称）打开 Ambari Web UI。
 2. 在右上角选择“管理”|“设置”。 
 
-   ![Ambari 设置](media/hdinsight-faq/ambari-settings.png)
+   :::image type="content" source="media/hdinsight-faq/ambari-settings.png" alt-text="Ambari 设置":::
 
 3. 在“用户设置”窗口中，从“时区”下拉列表中选择新的时区，然后单击“保存”。
 
-   ![Ambari 用户设置](media/hdinsight-faq/ambari-user-settings.png)
+   :::image type="content" source="media/hdinsight-faq/ambari-user-settings.png" alt-text="Ambari 用户设置":::
 
 ## <a name="metastore"></a>元存储
 
@@ -118,13 +118,13 @@ Hive 元存储用于存储 Hive 服务器所用数据源的元数据。 其大�
 
 ### <a name="can-i-share-a-metastore-across-multiple-clusters"></a>是否可在多个群集之间共享元存储？
 
-是的，你可以在多个群集之间共享自定义元存储，只要它们使用相同版本的 HDInsight。
+是，可以在多个群集之间共享自定义元存储，前提是这些群集使用相同的 HDInsight 版本。
 
 ## <a name="connectivity-and-virtual-networks"></a>连接和虚拟网络  
 
 ### <a name="what-are-the-implications-of-blocking-ports-22-and-23-on-my-network"></a>在网络中阻止端口 22 和 23 会造成什么影响？
 
-如果阻止端口22和端口23，则不会有权访问群集。 HDInsight 服务不使用这些端口。
+如果阻止端口 22 和端口 23，则无法通过 SSH 访问群集。 HDInsight 服务不使用这些端口。
 
 有关详细信息，请参阅以下文档：
 
@@ -189,9 +189,9 @@ ktutil: q
 
 ### <a name="can-i-disable-clamscan-on-my-cluster"></a>是否可在群集上禁用 `Clamscan`？
 
-`Clamscan` 是在 HDInsight 群集上运行并由 Azure security (azsecd) 使用的防病毒软件，以保护群集免受病毒攻击。 Microsoft 强烈建议用户避免对默认配置进行任何更改 `Clamscan` 。
+`Clamscan` 是在 HDInsight 群集上运行的防病毒软件，Azure 安全性 (azsecd) 使用它来保护群集免受病毒攻击。 Microsoft 强烈建议用户不要对默认的 `Clamscan` 配置进行任何更改。
 
-此过程不会影响其他进程，也不会对其进行任何循环。 它始终屈从于其他进程。 `Clamscan`仅当系统处于空闲状态时，才应显示 CPU 峰值。  
+此进程不会干扰其他进程，也不会中断其运行周期。 它始终屈从于其他进程。 仅当系统空闲时，才应显示 `Clamscan` 的 CPU 峰值。  
 
 如果必须控制计划，可使用以下步骤：
 
@@ -234,7 +234,7 @@ ktutil: q
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>如何设置 Blob 存储帐户的审核？
 
-若要审核 Blob 存储帐户，请使用[在 Azure 门户中监视存储帐户](../storage/common/manage-storage-analytics-logs.md)中的过程配置监视。 HDFS 审核日志仅提供本地 HDFS 文件系统 (hdfs://mycluster) 的审核信息。  它不包括在远程存储上执行的操作。
+若要审核 Blob 存储帐户，请使用[在 Azure 门户中监视存储帐户](../storage/common/manage-storage-analytics-logs.md)中的过程配置监视。 HDFS 审核日志仅提供本地 HDFS 文件系统 (hdfs://mycluster) 的审核信息。  此日志不包括针对远程存储执行的操作。
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>如何在 Blob 容器与 HDInsight 头节点之间传输文件？
 
@@ -261,7 +261,7 @@ done
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>是否可以在不增大工作器节点的磁盘大小的情况下增大群集上的 HDFS 存储？
 
-否。 不能增加任何工作节点的磁盘大小。 因此，增加磁盘大小的唯一方法是删除群集，并将其重新创建为更大的辅助 Vm。 请不要使用 HDFS 来存储任何 HDInsight 数据，因为删除群集时会删除这些数据。 请改为在 Azure 中存储数据。 纵向扩展群集也可以将更多的容量添加到 HDInsight 群集。
+不是。 无法增大任何工作器节点的磁盘大小。 因此，增大磁盘大小的唯一方法是删除群集，然后使用更大的工作器 VM 重新创建群集。 请不要使用 HDFS 来存储任何 HDInsight 数据，因为删除群集时会删除这些数据。 请改为在 Azure 中存储数据。 纵向扩展群集也可以将更多的容量添加到 HDInsight 群集。
 
 ## <a name="edge-nodes"></a>边缘节点
 
@@ -283,14 +283,14 @@ done
 
 可使用以下 REST 终结点来提取 JSON 格式的所需信息。 使用基本身份验证标头发出请求。
 
-- `Tez Query View`： *https： \/ / \<cluster name> . azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
-- `Tez Dag View`： *https： \/ / \<cluster name> . azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
+- `Tez Query View`: *https:\//\<cluster name>.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
+- `Tez Dag View`: *https:\//\<cluster name>.azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>如何以 Azure Active Directory 用户身份从 HDI 群集检索配置详细信息？
 
 若要以 AAD 用户身份协商正确的身份验证令牌，请使用以下格式浏览网关：
 
-* https:// `<cluster dnsname>` . azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https://`<cluster dnsname>`.azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>如何使用 Ambari Restful API 来监视 YARN 性能？
 
@@ -340,7 +340,7 @@ HDInsight 群集计费在创建群集之后便会开始，删除群集后才会�
 
 ## <a name="hive"></a>Hive
 
-### <a name="why-does-the-hive-version-appear-as-121000-instead-of-21-in-the-ambari-ui-even-though-im-running-an-hdinsight-36-cluster"></a>即使我在运行 HDInsight 3.6 群集，Hive 版本为何会在 Ambari UI 中显示为1.2.1000 而不是2.1？
+### <a name="why-does-the-hive-version-appear-as-121000-instead-of-21-in-the-ambari-ui-even-though-im-running-an-hdinsight-36-cluster"></a>为何即使我运行的是 HDInsight 3.6 群集，Ambari UI 中显示的 Hive 版本也仍是 1.2.1000 而不是 2.1？
 
 尽管 Ambari UI 中仅显示 1.2，但 HDInsight 3.6 同时包含 Hive 1.2 和 Hive 2.1。
 
@@ -354,6 +354,6 @@ HDInsight 群集计费在创建群集之后便会开始，删除群集后才会�
 
 无法对 HDInsight 群集执行此操作。 可以使用 Azure 数据工厂实现此类目的。
 
-### <a name="what-compliance-offerings-does-hdinsight-offer"></a>HDInsight 提供哪些符合性产品？
+### <a name="what-compliance-offerings-does-hdinsight-offer"></a>HDInsight 提供哪些合规性产品？
 
-有关符合性信息，请参阅 [Microsoft 信任中心](https://www.microsoft.com/trust-center) 和 [Microsoft Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。
+有关合规性的信息，请参阅 [Microsoft 信任中心](https://www.microsoft.com/trust-center)和 [Microsoft Azure 合规性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。

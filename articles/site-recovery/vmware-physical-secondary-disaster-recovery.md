@@ -1,19 +1,16 @@
 ---
-title: 使用 Azure Site Recovery 将 VMware Vm/物理服务器灾难恢复到辅助站点
+title: 使用 Azure Site Recovery 将 VMware VM/物理服务器灾难恢复到辅助站点
 description: 了解如何使用 Azure Site Recovery 将 VMware VM 或 Windows 和 Linux 物理服务器的灾难恢复设置到辅助站点。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.author: raynew
-ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: c2456fcfffd9645f94856998142f262298b5eef9
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711895"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581466"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>将本地 VMware 虚拟机或物理服务器的灾难恢复设置到辅助站点
 
@@ -190,21 +187,21 @@ Scout Update 6 是累积更新。 其中包含从 Update 1 到 Update 5 的所�
 - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
 - 对于 RHEL5、OL5、OL6、SUSE 10、SUSE 11 的 UA update4 位：UA_\<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
   1. 解压缩 .zip 文件。
-  2. **** RX 服务器：将 RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz**** 复制到 RX 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-  3. **** 配置服务器和进程服务器：将 CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe**** 复制到配置服务器和进程服务器。 双击以运行该文件。<br>
-  4. **** Windows 主目标服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe**** 复制到该服务器。 双击以运行该文件。 相同的统一代理更新也适用于源服务器。 如果源尚未更新到 Update 4，则应更新统一代理。
-  更新不需要应用于备有 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe**** 的主目标服务器，因为这是拥有所有最新更改的新 GA 安装程序。
-  5. **** vContinuum 服务器：将 vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe**** 复制到该服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
-  更新不需要应用于使用 **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** 准备的主目标，因为这是新的 GA 安装程序，并且具有所有最新的更改。
-  6. **** Linux 主目标服务器：要更新统一代理，请将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz**** 复制到主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-  7. **** Windows 源服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe**** 复制到该源服务器。 双击以运行该文件。 
-  如果源服务器已更新到 Update 4 或源代理已安装有最新的基本安装程序 InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe****，则不需要在源服务器上安装 Update 5 代理。
-  8. **** Linux 源服务器：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz 复制到该服务器并进行文件提取****。 在解压缩的文件夹中运行 **/Install**。
+  2. RX 服务器：将 RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz 复制到 RX 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+  3. 配置服务器和进程服务器：将 CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe 复制到配置服务器和进程服务器。 双击以运行该文件。<br>
+  4. Windows 主目标服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe 复制到该服务器。 双击以运行该文件。 相同的统一代理更新也适用于源服务器。 如果源尚未更新到 Update 4，则应更新统一代理。
+  更新不需要应用于备有 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe 的主目标服务器，因为这是拥有所有最新更改的新 GA 安装程序。
+  5. vContinuum 服务器：将 vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe 复制到该服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
+  更新不需要应用于备有 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe 的主目标服务器，因为这是拥有所有最新更改的新 GA 安装程序。
+  6. Linux 主目标服务器：要更新统一代理，请将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz 复制到主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+  7. Windows 源服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe 复制到该源服务器。 双击以运行该文件。 
+  如果源服务器已更新到 Update 4 或源代理已安装有最新的基本安装程序 InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe，则不需要在源服务器上安装 Update 5 代理。
+  8. Linux 源服务器：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz 复制到该服务器并进行文件提取。 在解压缩的文件夹中运行 **/Install**。
 
 
 > [!NOTE]
-> * 已刷新面向 Windows 的基本统一代理 (UA) 安装程序，以支持 Windows Server 2016。 新的安装程序 InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe**** 与基本 Scout GA 程序包一起打包 (InMage_Scout_Standard_8.0.1 GA-Oct17.zip****)。 相同的安装程序将用于所有受支持的 Windows 版本。 
-> * 已刷新基本 Windows vContinuum 和主目标安装程序来支持 Windows Server 2016。 新的安装程序 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe**** 与基本 Scout GA 程序包一起打包 (InMage_Scout_Standard_8.0.1 GA-Oct17.zip****)。 相同的安装程序将用于部署 Windows 2016 主目标和 Windows 2012R2 主目标。
+> * 已刷新面向 Windows 的基本统一代理 (UA) 安装程序，以支持 Windows Server 2016。 新的安装程序 InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe 与基本 Scout GA 程序包一起打包 (InMage_Scout_Standard_8.0.1 GA-Oct17.zip)。 相同的安装程序将用于所有受支持的 Windows 版本。 
+> * 已刷新基本 Windows vContinuum 和主目标安装程序来支持 Windows Server 2016。 新的安装程序 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe 与基本 Scout GA 程序包一起打包 (InMage_Scout_Standard_8.0.1 GA-Oct17.zip)。 相同的安装程序将用于部署 Windows 2016 主目标和 Windows 2012R2 主目标。
 > * ASR Scout 不支持物理服务器上的 Windows Server 2016。 它仅支持 Windows Server 2016 VMware VM。 
 >
 
@@ -218,7 +215,7 @@ Scout Update 5 是累积更新。 其中包含从 Update 1 到 Update 4 的所�
 
 #### <a name="new-platform-support"></a>新的平台支持
 * SUSE Linux Enterprise Server 11 Service Pack 4(SP4)
-* SLES 11 SP4 64 位 InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz**** 与基础 Scout GA 包 (**InMage_Scout_Standard_8.0.1 GA.zip**) 打包在一起。 从门户中下载 GA 包，如“创建保管库”中所述。
+* SLES 11 SP4 64 位 InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz 与基础 Scout GA 包 (**InMage_Scout_Standard_8.0.1 GA.zip**) 打包在一起。 从门户中下载 GA 包，如“创建保管库”中所述。
 
 
 #### <a name="bug-fixes-and-enhancements"></a>Bug 修复和增强功能
@@ -236,7 +233,7 @@ Scout Update 5 是累积更新。 其中包含从 Update 1 到 Update 4 的所�
 > [!NOTE]
 > * P2V 群集修补程序仅适用于使用 Site Recovery Scout Update 5 全新保护的物理 MSCS 群集。 若要在使用较旧更新程序保护的 P2V MSCS 群集上安装群集修补程序，请按照 [Site Recovery Scout 发行说明](https://aka.ms/asr-scout-release-notes)第 12 节中所述的升级步骤进行操作。
 > * 如果在重新保护时，同一组磁盘在最初受保护的每个群集节点上都处于活动状态，则物理 MSCS 群集的重新保护只能重新使用现有的目标磁盘。 如果不是，则需执行 [Site Recovery Scout 发行说明](https://aka.ms/asr-scout-release-notes)第 12 节中提到的手动步骤，将目标端磁盘移动到正确的数据存储路径，以便在重新保护期间重新使用它们。 如果在不执行以下升级步骤的情况下重新保护处于 P2V 模式的 MSCS 群集，则它会在目标 ESXi 服务器上创建新磁盘。 你将需要手动从数据存储中删除旧磁盘。
-> * 当源 SLES11 或 SLES11（具有任何 Service Pack）服务器正常重新启动时，手动标记根**** 磁盘复制对，以便重新同步。 CX 界面中不显示任何通知。如果不标记用于重新同步的根磁盘，则可能会发现数据完整性问题。
+> * 当源 SLES11 或 SLES11（具有任何 Service Pack）服务器正常重新启动时，手动标记根磁盘复制对，以便重新同步。 CX 界面中不显示任何通知。 如果不标记用于重新同步的根磁盘，则可能会发现数据完整性问题。
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4
@@ -252,7 +249,7 @@ Scout Update 4 是累积更新。 其中包含从 Update 1 到 Update 3 的所�
   * CentOS 6.8
 
 > [!NOTE]
-> RHEL/CentOS 7 64 位 InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz**** 与基础 Scout GA 包 InMage_Scout_Standard_8.0.1 GA.zip**** 一起打包。 从门户中下载 Scout GA 包，如“创建保管库”中所述。
+> RHEL/CentOS 7 64 位 InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz 与基础 Scout GA 包 InMage_Scout_Standard_8.0.1 GA.zip 一起打包。 从门户中下载 Scout GA 包，如“创建保管库”中所述。
 
 #### <a name="bug-fixes-and-enhancements"></a>Bug 修复和增强功能
 
@@ -268,16 +265,16 @@ Scout Update 4 是累积更新。 其中包含从 Update 1 到 Update 3 的所�
 * 对于物理群集，修复了在 vContinuum 向导中收缩源卷时导致卷大小调整失败的问题。
 * 修复了当群集磁盘为 PRDM 磁盘时，群集保护失败并出现“未能找到磁盘签名”错误的问题。
 * 修复了 cxps 传输服务器由于超出范围的异常而崩溃的问题。
-* 在 vContinuum 向导的“推送安装”**** 页面中，现在可对服务器名称列和 IP 地址列的大小进行调整。
+* 在 vContinuum 向导的“推送安装”页面中，现在可对服务器名称列和 IP 地址列的大小进行调整。
 * RX API 的增强功能：
   * 现在提供了 5 个最新可用的通用一致性点（仅适用于“保证”标记）。
   * 显示有关所有受保护设备的容量及可用空间的详细信息。
   * 提供源服务器上的 Scout 驱动程序状态。
 
 > [!NOTE]
-> * **** InMage_Scout_Standard_8.0.1_GA.zip 基础包中含有：
->     * 更新的配置服务器基本安装程序 (InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe****)
->     * Windows 主目标基本安装程序 (InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_26Feb2015_release.exe****)。
+> * InMage_Scout_Standard_8.0.1_GA.zip 基础包中含有：
+>     * 更新的配置服务器基本安装程序 (InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe)
+>     * Windows 主目标基本安装程序 (InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_26Feb2015_release.exe)。
 >     * 对于所有新安装，请使用新的配置服务器和 Windows 主目标 GA 位。
 > * Update 4 可以直接应用于 8.0.1 GA。
 > * 应用配置服务器和 RX 更新后，不能进行回滚。
@@ -318,15 +315,15 @@ Update 3 修复了以下问题：
 
 Update 2 中的修复包括：
 
-* 配置服务器：在将配置服务器注册到 Azure Site Recovery 保管库时阻止 31 天免费计量功能正常使用的问题****。
-* **** 统一代理：修复了 Update 1 中导致从版本 8.0 升级到 8.0.1 期间，更新无法安装在主目标服务器上的问题。
+* 配置服务器：在将配置服务器注册到 Azure Site Recovery 保管库时阻止 31 天免费计量功能正常使用的问题。
+* 统一代理：修复了 Update 1 中导致从版本 8.0 升级到 8.0.1 期间，更新无法安装在主目标服务器上的问题。
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
 Update 1 包含以下 bug 修复和新功能：
 
 * 每个服务器实例享有 31 天的免费保护。 这样，便可以测试功能或建立概念认证。
 * 服务器上的所有操作（包括故障转移和故障回复），前 31 天都可免费使用。 从第一次使用 Site Recovery Scout 保护服务器开始计时。 从第 32 天起，会根据标准实例费率，针对每个受保护的服务器，向客户拥有的站点收取 Site Recovery 保护费用。
-* 在保管库中的“仪表板”**** 上随时会显示当前计费的受保护服务器数目。
+* 在保管库中的“仪表板”上随时会显示当前计费的受保护服务器数目。
 * 添加了对 vSphere 命令行接口 (vCLI) 5.5 Update 2 的支持。
 * 添加了对源服务器上以下 Linux 操作系统的支持：
     * RHEL 6 Update 6
@@ -341,7 +338,7 @@ Update 1 包含以下 bug 修复和新功能：
   * 重新同步阈值不按预期强制执行，导致复制行为不一致。
   * RPO 设置未正常显示在配置服务器控制台中。 未压缩的数据值错误地显示压缩值。
   * 在 vContinuum 向导中使用“删除”操作不会按预期执行删除，因而无法从配置服务器控制台删除复制内容。
-  * 在 vContinuum 向导中保护 MSCS VM 期间，单击磁盘视图中的“详细信息”**** 会自动取消选择磁盘。
+  * 在 vContinuum 向导中保护 MSCS VM 期间，单击磁盘视图中的“详细信息”会自动取消选择磁盘。
   * 在物理到虚拟 (P2V) 方案中，所需的 HP 服务（例如 CIMnotify、CqMgHost）不会在 VM 恢复中变为“手动”。 此问题会导致启动时间延长。
   * 当主目标服务器上的磁盘数超过 26 个时，Linux VM 保护会失败。
 

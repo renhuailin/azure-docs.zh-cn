@@ -4,10 +4,10 @@ description: 了解将云和本地工作负载备份到云的最佳做法和指�
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100593337"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
@@ -38,9 +38,9 @@ Azure 备份为各种工作负载（本地和云）启用数据保护。 它是 
 
 ### <a name="data-plane"></a>数据平面
 
-* **自动存储管理** -Azure 备份会自动预配和管理备份数据的存储帐户，以确保在备份数据增长时可以扩展存储帐户。
+* 自动化存储管理 - Azure 备份会自动预配和管理备份数据的存储帐户，以确保存储帐户随着备份数据的增长而扩展。
 
-* **恶意删除保护–** 防止任何意外和恶意尝试通过软删除备份删除备份。 已删除的备份数据将免费存储 14 天，并允许其从该状态恢复。
+* 恶意删除保护 - 通过备份的软删除来防止有人意外或恶意尝试删除备份。 已删除的备份数据将免费存储 14 天，并允许其从该状态恢复。
 
 * **安全的加密备份 -** Azure 备份利用 Azure 平台的内置安全功能（例如 Azure RBAC 和加密），确保你的备份数据以安全的方式存储。
 
@@ -48,13 +48,13 @@ Azure 备份为各种工作负载（本地和云）启用数据保护。 它是 
 
 ### <a name="management-plane"></a>管理平面
 
-* **访问控制** -保管库 (恢复服务和备份保管库) 提供管理功能，可通过 Azure 门户、备份中心、保管库仪表板、SDK、CLI 甚至 REST api 进行访问。 它也是 Azure RBAC 边界，让你可以选择对备份访问权限进行限制，仅限经过授权的管理员进行访问。
+* 访问控制 - 保管库（恢复服务和备份保管库）提供管理功能，可通过 Azure 门户、备份中心、保管库仪表板、SDK、CLI 进行访问，甚至还可以通过 REST API 进行访问。 它也是 Azure RBAC 边界，让你可以选择对备份访问权限进行限制，仅限经过授权的管理员进行访问。
 
-* "**策略管理**" –每个保管库中的 Azure 备份策略定义应该何时触发备份，以及需要保留多长时间。 你还可以管理这些策略，并将它们应用于多个项。
+* 策略管理 - 每个保管库中的 Azure 备份策略定义了应该何时触发备份，以及需要将备份保留多长时间。 你还可以管理这些策略，并将它们应用于多个项。
 
-* **监视和报告** -Azure 备份与 Log Analytics 集成，还提供通过工作簿查看报表的功能。
+* 监视和报告 - Azure 备份与 Log Analytics 集成，还提供了通过 Workbooks 查看报告的功能。
 
-* **快照管理** -azure 备份 (Vm 和 azure 文件) 为某些 azure 本机工作负荷拍摄快照，管理这些快照并允许从这些快照快速还原。 此选项可大大减少将数据恢复到原始存储的时间。
+* 快照管理 - Azure 备份为某些 Azure 原生工作负载（VM 和 Azure 文件存储）创建快照、管理这些快照，并允许从这些快照快速还原。 此选项可大大减少将数据恢复到原始存储的时间。
 
 ## <a name="vault-considerations"></a>保管库注意事项
 
@@ -73,9 +73,9 @@ Azure 备份使用保管库（恢复服务保管库和备份保管库）来安�
 * 如果工作负载分布在多个订阅中，则可以创建多个保管库，每个订阅一个保管库或多个保管库。
   * 备份中心使你可以在一个管理工具中管理与备份相关的所有任务。 [在此处了解更多信息]()。
   * 可以通过工作簿模板来自定义视图。 备份资源管理器就是这样一个用于 Azure VM 的模板。 [在此处了解更多信息](monitor-azure-backup-with-backup-explorer.md)。
-  * 如果你需要对多个保管库应用一致的策略，则可以使用 Azure Policy 来跨多个保管库传播备份策略。 可以编写自定义 [Azure Policy 定义](../governance/policy/concepts/definition-structure.md)，以使用 [‘deployifnotexists’](../governance/policy/concepts/effects.md#deployifnotexists) 效果跨多个保管库传播一个备份策略。 你还可以 [将](../governance/policy/assign-policy-portal.md) 此 Azure 策略定义分配给特定范围 (订阅或 RG) ，以便它将 "备份策略" 资源部署到 Azure 策略分配范围内的所有恢复服务保管库。 备份策略的设置（例如备份频率、保留期等）应作为 Azure Policy 分配中的参数由用户指定。
+  * 如果你需要对多个保管库应用一致的策略，则可以使用 Azure Policy 来跨多个保管库传播备份策略。 可以编写自定义 [Azure Policy 定义](../governance/policy/concepts/definition-structure.md)，以使用 [‘deployifnotexists’](../governance/policy/concepts/effects.md#deployifnotexists) 效果跨多个保管库传播一个备份策略。 还可以将此 Azure Policy 定义[分配](../governance/policy/assign-policy-portal.md)到特定的范围（订阅或 RG），以便它将一个“备份策略”资源部署到该 Azure Policy 分配的范围内的所有恢复服务保管库。 备份策略的设置（例如备份频率、保留期等）应作为 Azure Policy 分配中的参数由用户指定。
 
-* 随着组织的占用量的增长，你可能想要跨订阅移动工作负荷，原因如下：按备份策略、合并保管库、在较低冗余上权衡 (从 GRS 迁移到 LRS) 。  Azure 备份支持在 Azure 订阅之间移动恢复服务保管库，或将其移动到同一订阅中的其他资源组。 [在此处了解更多信息](backup-azure-move-recovery-services-vault.md)。
+* 随着组织的占用量的增长，你可能想要跨订阅移动工作负载，原因包括：根据备份策略进行调整，合并保管库，权衡降低冗余度以节省成本（从 GRS 迁移到 LRS）。  Azure 备份支持跨 Azure 订阅移动恢复服务保管库，或将其移动到同一订阅中的其他资源组。 [在此处了解更多信息](backup-azure-move-recovery-services-vault.md)。
 
 ### <a name="review-default-settings"></a>查看默认设置
 
@@ -152,13 +152,13 @@ Azure 备份策略有两个组件：计划（何时进行备份）和 *保留期
 
 * 在 Azure 中，Azure 存储与保管库之间传输的数据受 HTTPS 保护。 此数据保留在 Azure 网络中。
 
-* 使用 Microsoft 托管的密钥自动加密备份数据。 或者，你可以使用自己的密钥，也称为 [客户托管密钥](encryption-at-rest-with-cmk.md)。
+* 使用 Microsoft 托管的密钥自动加密备份数据。 或者，你可以使用自己的密钥，也称为[客户托管密钥](encryption-at-rest-with-cmk.md)。
 
 * Azure 备份支持备份和还原已使用 Azure 磁盘加密 (ADE) 功能加密了其 OS/数据磁盘的 Azure VM。 [在此处了解更多信息](backup-azure-vms-encryption.md)。
 
 ### <a name="protection-of-backup-data-from-unintentional-deletes"></a>防止意外删除备份数据
 
-Azure 备份提供安全功能来帮助保护备份数据，即使是删除了备份数据，也能予以恢复。 使用软删除时，如果用户删除 VM 的备份 (，SQL Server 数据库、Azure 文件共享、SAP HANA 数据库) 备份数据保留14天，这使得恢复该备份项目不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会对你产生任何费用。 [在此处了解更多信息](backup-azure-security-feature-cloud.md)。
+Azure 备份提供安全功能来帮助保护备份数据，即使是删除了备份数据，也能予以恢复。 在使用软删除的情况下，如果用户删除了（属于 VM、SQL Server 数据库、Azure 文件共享、SAP HANA 数据库）备份，备份数据将额外保留 14 天，使该备份项可以恢复，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会对你产生任何费用。 [在此处了解更多信息](backup-azure-security-feature-cloud.md)。
 
 ### <a name="monitoring-and-alerts-of-suspicious-activity"></a>可疑活动的监视和警报
 
@@ -178,11 +178,11 @@ Azure 备份需要将工作负载中的数据移到恢复服务保管库。 Azur
 
 * Azure VM 上的 SAP HANA 数据库、Azure VM 上的 SQL Server 数据库 - 要求连接到 Azure 备份服务、Azure 存储和 Azure Active Directory。 这可以通过使用专用终结点，或允许访问所需的公共 IP 地址或 FQDN 来实现。 如果不允许正确连接到所需的 Azure 服务，则可能会导致诸如数据库发现、配置备份、执行备份和还原数据等操作失败。 有关在使用 NSG 标记、Azure 防火墙和 HTTP 代理时可参考的完整网络指南，请参阅这些 [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) 和 [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) 文章。
 
-* *混合* -Microsoft Azure 恢复服务) 代理的 MARS (需要对所有关键操作（安装、配置、备份和还原）进行网络访问。 MARS 代理可以通过以下这些方式连接到 Azure 备份服务：使用公共对等互连（可用于旧线路）和 Microsoft 对等互连通过 [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) 进行连接；使用[专用终结点](install-mars-agent.md#private-endpoints)进行连接；通过[具有适当访问控制的代理/防火墙](install-mars-agent.md#verify-internet-access)进行连接。
+* 混合 - 对于所有关键操作（安装、配置、备份和还原），MARS（Microsoft Azure 恢复服务）代理都需要进行网络访问。 MARS 代理可以通过以下这些方式连接到 Azure 备份服务：使用公共对等互连（可用于旧线路）和 Microsoft 对等互连通过 [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) 进行连接；使用[专用终结点](install-mars-agent.md#private-endpoints)进行连接；通过[具有适当访问控制的代理/防火墙](install-mars-agent.md#verify-internet-access)进行连接。
 
 ### <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
-Azure [专用终结点](../private-link/private-endpoint-overview.md) 是一个网络接口，该接口将你私下并安全地连接到由 Azure 专用链接提供支持的服务。 通过 Azure 备份，你可以使用专用终结点从恢复服务保管库安全地备份和还原数据。
+Azure [专用终结点](../private-link/private-endpoint-overview.md)是一个网络接口，可以将你通过专用且安全的方式连接到 Azure 专用链接支持的服务。 通过 Azure 备份，你可以使用专用终结点从恢复服务保管库安全地备份和还原数据。
 
 * 为保管库启用了专用终结点后，这些专用终结点仅用于备份 Azure VM 中的 SQL 和 SAP HANA 工作负载并向 Azure VM 还原这些工作负载，以及进行 MARS 代理备份。  还可以使用保管库来备份其他工作负载（尽管它们不需要专用终结点）。 除了备份 SQL 和 SAP HANA 工作负载以及使用 MARS 代理进行备份，专用终结点还可用于针对 Azure VM 备份执行文件恢复。 [在此处了解更多信息](private-endpoints.md#recommended-and-supported-scenarios)。
 
@@ -190,7 +190,7 @@ Azure [专用终结点](../private-link/private-endpoint-overview.md) 是一个�
 
 ## <a name="governance-considerations"></a>治理注意事项
 
-Azure 中的管理主要是通过 [Azure 策略](../governance/policy/overview.md) 和 [azure 成本管理](../cost-management-billing/cost-management-billing-overview.md)实现的。 [Azure Policy ](../governance/policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。 此功能可使这些资源符合企业标准。 [Azure 成本管理](../cost-management-billing/cost-management-billing-overview.md)可用于跟踪 Azure 资源和其他云提供商的云使用情况和开支。 此外，下列工具（例如 [Azure 价格计算器](https://azure.microsoft.com/pricing/calculator/)和 [Azure 顾问](../advisor/advisor-overview.md)）在成本管理过程中扮演着重要的角色。
+Azure 中的治理主要通过 [Azure Policy](../governance/policy/overview.md) 和 [Azure 成本管理](../cost-management-billing/cost-management-billing-overview.md)来实现。 [Azure Policy ](../governance/policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。 此功能可使这些资源符合企业标准。 [Azure 成本管理](../cost-management-billing/cost-management-billing-overview.md)可用于跟踪 Azure 资源和其他云提供商的云使用情况和开支。 此外，下列工具（例如 [Azure 价格计算器](https://azure.microsoft.com/pricing/calculator/)和 [Azure 顾问](../advisor/advisor-overview.md)）在成本管理过程中扮演着重要的角色。
 
 ### <a name="azure-backup-support-two-key-scenarios-via-built-in-azure-policy"></a>Azure 备份通过内置的 Azure Policy 支持两个关键方案
 
@@ -230,7 +230,7 @@ Azure 备份服务的功能让你可以灵活地有效管理你的成本，并�
 * 如果需要大规模监视操作活动，则可使用 **备份资源管理器** 来提供整个备份资产的聚合视图，从而实现详细的深化分析和故障排除。 内置的 Azure Monitor 工作簿提供了一个中心位置，可帮助你跨租户、位置、订阅、资源组和保管库监视 Azure 中的整个备份资产的操作活动。 [在此处了解更多信息](monitor-azure-backup-with-backup-explorer.md)。
   * 使用它可识别未配置为要进行备份的资源，并确保你永不会错过保护不断增长的资产中的关键数据。
   * 该仪表板提供过去 7 天（最大值）的操作活动。 如果需要保留此数据，则可以导出为 Excel 文件并保留这些数据。
-  * 如果你是 Azure Lighthouse 用户，则可以跨多个租户查看信息，启用无边界监视。
+  * 如果你是 Azure Lighthouse 用户，则可以跨多个租户查看信息，从而实现无边界监视。
 
 * 如果需要长期保留并查看操作活动，请使用 **报告**。 备份管理员的一个常见需求是根据时间跨度较长的数据获取有关备份的见解。 此类解决方案的用例包括：
   * 分配和预测需使用的云存储空间。

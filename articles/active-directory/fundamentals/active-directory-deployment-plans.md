@@ -13,10 +13,10 @@ ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4185ffd644d54c419f42c78326ca10bf100443c3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99051424"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
@@ -31,7 +31,7 @@ ms.locfileid: "99051424"
 | -| -|
 | [多重身份验证](../authentication/howto-mfa-getstarted.md)| Azure AD 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azure AD MFA 可使用管理员批准的身份验证方法帮助保护对数据和应用程序的访问，同时满足对简单登录过程的需求。 观看此视频，了解[如何在租户中配置和强制实施多重身份验证](https://www.youtube.com/watch?v=qNndxl7gqVM)|
 | [条件访问](../conditional-access/plan-conditional-access.md)| 使用条件访问时，可以根据条件实施自动化的访问控制决策，决定谁能够访问云应用。 |
-| [自助密码重置](../authentication/howto-sspr-deployment.md)| 自助密码重置允许用户根据需要重置其密码，不需要管理员干预。 |
+| [自助式密码重置](../authentication/howto-sspr-deployment.md)| 自助密码重置允许用户根据需要重置其密码，不需要管理员干预。 |
 | [无密码](../authentication/howto-authentication-passwordless-deployment.md) | 在组织中使用 Microsoft Authenticator 应用或 FIDO2 安全密钥实施无密码身份验证 |
 
 ## <a name="deploy-application-and-device-management"></a>部署应用程序和设备管理
@@ -78,7 +78,7 @@ ms.locfileid: "99051424"
 |最终用户|代表用户群，该功能将为其实施。 经常预览试点计划中的更改。
 |IT 支持经理|IT 支持组织的代表，可以从服务支持的角度提供有关更改的可支持性的信息。  
 |标识架构师或 Azure 全局管理员|标识管理团队代表，负责定义如何根据组织中的核心标识管理基础结构实施此更改。|
-|应用程序业务所有者 |受影响的应用程序的总体业务所有者，可能负责管理访问权限。  还可能提供有关用户体验的信息，以及从最终用户的角度来考虑的此更改的有效性。
+|应用程序业务所有者 |受影响的应用程序的总体业务所有者，可能负责管理访问权限。还可能提供有关用户体验的信息，以及从最终用户的角度来考虑的此更改的有效性。
 |安全所有者|安全团队的代表，可签字确保该计划符合组织的安全要求。|
 |合规性管理器|组织中负责确保符合公司、行业或政府要求的人员。|
 

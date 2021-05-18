@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: raynew
 ms.openlocfilehash: 3022b2d4954ffaef71e17ed28dd9b6f141d4da70
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99980484"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>对在 Azure 区域之间移动 Azure VM 的支持
@@ -28,10 +28,10 @@ ms.locfileid: "99980484"
 
 **操作系统** | **详细信息**
 --- | ---
-Windows Server 2019 | 支持服务器核心、带桌面体验的服务器。
+Windows Server 2019 | 支持 Server Core、带桌面体验的服务器。
 Windows Server 2016  | 支持 Server Core、带桌面体验的服务器。
-Windows Server 2012 R2 | 。
-Windows Server 2012 | 。
+Windows Server 2012 R2 | 支持。
+Windows Server 2012 | 支持。
 Windows Server 2008 R2 SP1/SP2 | 。<br/><br/> 对于运行 Windows Server 2008 R2 SP1/SP2 的计算机，你需要安装 Windows [维护堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
 Windows 10 (x64) | 支持。
 Windows 8.1 (x64) | 支持。
@@ -113,10 +113,10 @@ Azure RBAC 策略 | 不支持 | VM 上的 Azure 基于角色的访问控制 (Azu
 
 ## <a name="supported-vm-storage-settings"></a>支持的 VM 存储设置
 
-此表汇总了对 Azure VM OS 磁盘、数据磁盘和临时磁盘的支持。 务必要查看 [托管磁盘](../virtual-machines/disks-scalability-targets.md) 的 VM 磁盘限制和目标，以避免出现任何性能问题。
+此表汇总了对 Azure VM OS 磁盘、数据磁盘和临时磁盘的支持。 请务必遵循[托管磁盘](../virtual-machines/disks-scalability-targets.md)的 VM 磁盘限制以及目标，以避免任何性能问题。
 
 > [!NOTE]
-> 目标 VM 大小应当等于或大于源 VM 大小。 用于验证的参数有：数据磁盘计数、NIC 计数、可用 CPU 数、内存大小 (GB)。 如果 sn't，则会发出错误。
+> 目标 VM 大小应当等于或大于源 VM 大小。 用于验证的参数有：数据磁盘计数、NIC 计数、可用 CPU 数、内存大小 (GB)。 如果不是，则会发出错误。
 
 
 **组件** | **支持** | **详细信息**
@@ -134,8 +134,8 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/managed
 标准 SSD | 支持 |
 第 2 代（UEFI 启动） | 支持
 启动诊断存储帐户 | 不支持 | 将 VM 移动到目标区域后，重新启用它。
-启用了 Azure 磁盘加密的 Vm | 支持 | [了解详细信息](tutorial-move-region-encrypted-virtual-machines.md)
-使用客户托管密钥的服务器端加密的 Vm | 支持 | [了解详细信息](tutorial-move-region-encrypted-virtual-machines.md)
+启用了 Azure 磁盘加密的 VM | 支持 | [了解详细信息](tutorial-move-region-encrypted-virtual-machines.md)
+使用客户托管密钥的服务器端加密的 VM | 支持 | [了解详细信息](tutorial-move-region-encrypted-virtual-machines.md)
 
 ### <a name="limits-and-data-change-rates"></a>限制和数据更改率
 

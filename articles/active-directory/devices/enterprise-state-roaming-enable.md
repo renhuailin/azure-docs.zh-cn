@@ -13,10 +13,10 @@ ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89268598"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
@@ -26,13 +26,13 @@ ms.locfileid: "89268598"
 启用企业状态漫游时，会自动授予组织对 Azure Rights Management 保护的免费受限使用许可证，该许可证来自 Azure 信息保护。 此免费订阅仅限用于加密和解密企业设置，以及由企业状态漫游同步的应用程序数据。 必须拥有[付费版订阅](https://azure.microsoft.com/pricing/details/information-protection/)才能使用 Azure Rights Management 服务的完整功能。
 
 > [!NOTE]
-> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅 [Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
+> 本文适用于 2015 年 7 月与 Windows 10 一起推出的 Microsoft Edge 旧版基于 HTML 的浏览器。 本文不适用于 2020 年 1 月 15 日发布的基于 Chromium 的新 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅 [Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)一文。
 
 ## <a name="to-enable-enterprise-state-roaming"></a>启用企业状态漫游
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
-1. 选择**企业状态漫游 Azure Active Directory**  >  **设备**"  >  **Enterprise State Roaming**。
-1. 选择“用户可以跨设备同步设置和应用数据”。**** 有关详细信息，请参阅[如何配置设备设置](./device-management-azure-portal.md)。
+1. 选择“Azure Active Directory” > “设备” > “企业状态漫游”。
+1. 选择“用户可以跨设备同步设置和应用数据”。 有关详细信息，请参阅[如何配置设备设置](./device-management-azure-portal.md)。
   
    ![标有“用户可以跨设备同步设置和应用数据”的设备设置的图像](./media/enterprise-state-roaming-enable/device-settings.png)
   
@@ -44,9 +44,9 @@ ms.locfileid: "89268598"
 
 | 国家/地区值 | 数据托管位置 |
 | -------------------- | ------------------------ |
-| EMEA 国家/地区，如法国或赞比亚 | 欧洲的一个或多个 Azure 区域 |
-| 北美国家/地区（如美国或加拿大） | 美国的一个或多个 Azure 区域 |
-| APAC 国家/地区，如澳大利亚或新西兰 | 亚洲的一个或多个 Azure 区域 |
+| “法国”或“赞比亚”等 EMEA 国家/地区 | 欧洲的一个或多个 Azure 区域 |
+| “美国”或“加拿大”等北美国家/地区 | 美国的一个或多个 Azure 区域 |
+| “澳大利亚”或“新西兰”等 APAC 国家/地区 | 亚洲的一个或多个 Azure 区域 |
 | 南美国家/地区和南极洲区域 | 美国的一个或多个 Azure 区域 |
 
 国家/地区值在 Azure AD 目录创建过程中设置，无法进行后续修改。 如需有关数据存储位置的更多详细信息，请向 [Azure 支持](https://azure.microsoft.com/support/options/)提交票证。
@@ -56,9 +56,9 @@ ms.locfileid: "89268598"
 遵循以下步骤查看每个用户的设备同步状态报告。
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
-1. 选择 " **Azure Active Directory**  >  **用户**"  >  **All users**。
-1. 选择用户，再选择“设备”。****
-1. 在“显示”下，选择“同步设置和应用数据的设备”显示同步状态。********
+1. 选择“Azure Active Directory” > “用户” > “所有用户”  。
+1. 选择用户，再选择“设备”。
+1. 在“显示”下，选择“同步设置和应用数据的设备”显示同步状态。
   
    ![设备同步数据设置图像](./media/enterprise-state-roaming-enable/sync-status.png)
   
@@ -83,7 +83,7 @@ ms.locfileid: "89268598"
 一年（“保留期”）内未访问的数据会被视为过时，可能会从 Microsoft 云中删除。 保留期可能会发生变化，但不会少于 90 天。 过时数据可以是一组特定的 Windows/应用程序设置或用户的所有设置。 例如：
 
 * 如果没有设备访问特定设置集合（例如从设备中删除了应用程序，或者对某用户的所有设备禁用了“主题”等设置组），则该集合会在保留期后变为过时，并可能被删除。 
-* 如果用户已在其所有设备上关闭设置同步，则将不会访问任何设置数据，并且该用户的所有设置数据都将变为过时，并且可能会在保留期后被删除。 
+* 如果用户已关闭其所有设备上的设置同步，则不会访问任何设置数据，同时该用户的所有设置数据会过时，并可能在保持期后被删除。 
 * 如果 Azure AD 目录管理员关闭整个目录的企业状态漫游，则该目录中的所有用户将停止同步设置，所有用户的所有设置数据都将过时，并可能在保留期后被删除。 
 
 ### <a name="deleted-data-recovery"></a>恢复已删除数据

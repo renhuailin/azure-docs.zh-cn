@@ -3,14 +3,14 @@ title: 安全性 - Azure Database for MariaDB
 description: Azure Database for MariaDB 中的安全性功能概述。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 9e6ca797b1e982e1ef632ba99e9210e3c347a2f1
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 8a46f70e3089a8610fa8ca6362bcba6f624e2b1a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664174"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的安全性
@@ -45,9 +45,9 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对服务器的访�
 
 ## <a name="threat-protection"></a>威胁防护
 
-你可以选择 " [高级威胁防护](concepts-data-access-and-security-threat-protection.md) "，它会检测异常活动，这些活动表示对访问或利用服务器的异常和潜在有害尝试。
+可以选择加入用于检测异常活动的[高级威胁防护](concepts-data-access-and-security-threat-protection.md)，这些活动指示有人企图以非寻常或可能有害的方式访问或恶意利用服务器。
 
-[审核日志记录](concepts-audit-logs.md) 可用于跟踪数据库中的活动。 
+[审核日志记录](concepts-audit-logs.md)可用于跟踪数据库中的活动。 
 
 
 ## <a name="next-steps"></a>后续步骤

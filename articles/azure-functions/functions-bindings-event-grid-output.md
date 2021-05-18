@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 888afdc2764fed9f0b2c8b548c3e2b1c48e9a31e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97094670"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 事件网格输出绑定
@@ -166,7 +166,7 @@ module.exports = function(context) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-下面的示例演示如何配置函数以输出事件网格事件消息。 `type`设置为 `eventGrid` 配置建立事件网格输出绑定所需的值的部分。
+下面的示例演示如何配置函数以输出事件网格事件消息。 `type` 设置为 `eventGrid` 的部分配置建立事件网格输出绑定所需的值。
 
 ```powershell
 {
@@ -197,7 +197,7 @@ module.exports = function(context) {
 }
 ```
 
-在函数中，使用 `Push-OutputBinding` 通过事件网格输出绑定将事件发送到自定义主题。
+在函数中，请使用 `Push-OutputBinding` 通过事件网格输出绑定将事件发送到自定义主题。
 
 ```powershell
 using namespace System.Net
@@ -230,7 +230,7 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 # <a name="python"></a>[Python](#tab/python)
 
-以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 然后，它将在事件中发送到由指定的自定义主题 `topicEndpointUri` 。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 然后，它会将事件发送到自定义主题，如 `topicEndpointUri` 所指定。
 
 下面是 function.json 文件中的绑定数据：
 
@@ -255,7 +255,7 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 }
 ```
 
-下面是用于通过设置将事件发送到自定义主题的 Python 示例 `EventGridOutputEvent` ：
+以下 Python 示例通过设置 `EventGridOutputEvent` 将事件发送到自定义主题：
 
 ```python
 import logging
@@ -328,7 +328,7 @@ PowerShell 不支持特性。
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为“eventGrid”。 |
 |direction | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
-|name | 不适用 | 函数代码中使用的表示事件的变量名称。 |
+|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**topicEndpointUri** |**TopicEndpointUri** | 包含自定义主题 URI 的应用设置的名称，例如 `MyTopicEndpointUri`。 |
 |**topicKeySetting** |**TopicKeySetting** | 包含自定义主题访问密钥的应用设置的名称。 |
 
@@ -357,7 +357,7 @@ PowerShell 不支持特性。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-通过使用 `Push-OutputBinding` commandlet 向事件网格输出绑定发送事件，来访问输出事件。
+通过使用 `Push-OutputBinding` cmdlet 访问输出事件，将事件发送到事件网格输出绑定。
 
 # <a name="python"></a>[Python](#tab/python)
 

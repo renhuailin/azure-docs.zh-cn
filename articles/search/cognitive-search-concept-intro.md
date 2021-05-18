@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.custom: references_regions
 ms.openlocfilehash: 22d7c1bbe03d8b3c0e3b6026c9bac039f0651548
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037245"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充
@@ -36,14 +36,14 @@ Azure 认知搜索中的内置技能基于认知服务 API 中预先训练的机
 
 ## <a name="feature-availability"></a>功能可用性
 
-AI 扩充在 Azure 认知服务也可用的区域中提供。  可以在 " [Azure 产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=search) ）" 页上检查 AI 扩充当前的可用性。  AI 扩充适用于所有受支持的区域，但以下情况除外：
+AI 扩充在 Azure 认知服务也可用的区域中提供。  可在[各区域的 Azure 产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=search)页上检查 AI 扩充当前的可用性。  AI 扩充在所有支持的区域提供，但以下区域除外：
 
 + 澳大利亚东南部
 + 中国北部 2
 + 挪威东部
 + 德国中西部
 
-如果搜索服务位于其中一个区域，您将无法创建和使用技能集，但所有其他搜索服务功能都可用且完全受支持。
+如果搜索服务位于其中一个区域，你将无法创建和使用技能组，但所有其他搜索服务功能都可用且完全受支持。
 
 ## <a name="when-to-use-ai-enrichment"></a>何时使用 AI 扩充
 
@@ -63,7 +63,7 @@ AI 扩充在 Azure 认知服务也可用的区域中提供。  可以在 " [Azur
 
 + 非结构化或半结构化的文档，其中包含的内容有固有的含义，或者其上下文隐藏在更大的文档中。 
 
-  Blob 特别包含打包到单个 "字段" 中的大内容正文。 将图像和自然语言处理技能附加到索引器以后，即可创建新信息，该信息存在于原始内容中，但在其他情况下并不显示为非重复字段。 某些对你有帮助的可用内置认知技能：关键短语提取、情绪分析、实体识别（人、组织和位置）。
+  具体说来，Blob 通常包含大量的内容，这些内容打包到单个“字段”中。 将图像和自然语言处理技能附加到索引器以后，即可创建新信息，该信息存在于原始内容中，但在其他情况下并不显示为非重复字段。 某些对你有帮助的可用内置认知技能：关键短语提取、情绪分析、实体识别（人、组织和位置）。
 
   另外，内置技能还可以用来通过文本拆分、合并和形状操作来重新构造内容。
 

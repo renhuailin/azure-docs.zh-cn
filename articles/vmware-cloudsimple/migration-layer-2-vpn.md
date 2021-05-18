@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 将本地第 2 层网络延伸到私有云
 description: 介绍如何在 CloudSimple 私有云上的 NSX 和本地的独立 NSX Edge 客户端之间设置第 2 层 VPN
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 06446b6c36e36466fe891d7327d8151603cdecd2
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
-ms.translationtype: MT
+ms.openlocfilehash: 1b4b3e85323e2023afb67b2175377cb9b2d13a4f
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97899365"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177505"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 层外延式网络迁移工作负荷
 
@@ -118,7 +118,7 @@ ms.locfileid: "97899365"
 
 3. 打开与 Edge VM 的管理 IP 地址的 SSH 会话。 以用户名“admin”和密码“CloudSimple 123!”运行 ```get logical-router``` 命令 。
 
-    ![显示打开的 SSH 会话的屏幕截图。](media/l2vpn-fetch03.png)
+    ![此屏幕截图显示了打开的 SSH 会话。](media/l2vpn-fetch03.png)
 
 4. 如果未看到“DR-Provider-LR”条目，请完成以下步骤。
 
@@ -132,7 +132,7 @@ ms.locfileid: "97899365"
 
 7. 再次对 Edge VM 的 SSH 会话运行 `get logical-router` 命令。 “DR-Provider-LR”逻辑路由器的 UUID 将随之显示。 记下 UUID，在配置 L2VPN 时需要使用。
 
-    ![显示逻辑路由器 UUID 的屏幕截图。](media/l2vpn-fetch06.png)
+    ![此屏幕截图显示了逻辑路由器的 UUID。](media/l2vpn-fetch06.png)
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>获取 L2VPN 所需的逻辑交换机 ID
 
@@ -430,7 +430,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 2. 前往包含所有提取文件的文件夹。 选择所有 vmdk（对大型设备选择 NSX-l2t-client-large.mf 和 NSX-l2t-client-large.ovf；对超大型设备选择 NSX-l2t-client-Xlarge.mf 和 NSX-l2t-client-Xlarge.ovf）。 单击“下一步”。
 
-    ![选择 ](media/l2vpn-deploy-client02.png) ![ 显示所选 vmdk 文件的模板屏幕截图。](media/l2vpn-deploy-client03.png)
+    ![选择模板](media/l2vpn-deploy-client02.png) ![此屏幕截图显示了所选 vmdks 文件。](media/l2vpn-deploy-client03.png)
 
 3. 输入 NSX-T 独立客户端的名称，然后单击“下一步”。
 

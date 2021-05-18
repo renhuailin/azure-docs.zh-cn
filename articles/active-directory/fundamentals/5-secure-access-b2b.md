@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4206ba7617032e34310682d1468e6b1b661b8c8a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101648581"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>通过 Azure Active Directory B2B 协作转换到受管控的协作 
@@ -36,7 +36,7 @@ ms.locfileid: "101648581"
 
 ## <a name="control-who-your-organization-collaborates-with"></a>控制组织的协作方
 
-你必须决定是否对用户可以与哪些组织协作以及组织中的哪些用户可以发起协作进行限制。 大多数组织采取的方法是允许业务单位决定与谁协作，并根据需要委托审批和监督权限。 例如，某些政府版、教育版和金融服务机构不允许开放协作。 你可能希望使用 Azure AD 功能来确定协作范围，如本节的其余部分所述。
+你必须决定是否对用户可以与哪些组织协作以及组织中的哪些用户可以发起协作进行限制。 大多数组织采取的方法是允许业务单位决定与谁协作，并根据需要委托审批和监督权限。 例如，一些政府、教育和金融服务组织不允许开放式协作。 你可能希望使用 Azure AD 功能来确定协作范围，如本节的其余部分所述。
 
 ### <a name="determine-collaboration-partners"></a>确定协作伙伴
 
@@ -76,7 +76,7 @@ ms.locfileid: "101648581"
 
 * 兑换[通过电子邮件发送的邀请](../external-identities/redemption-experience.md)或[用于共享某项资源的直接链接](../external-identities/redemption-experience.md)。
 
-* 通过创建 [的应用程序](../external-identities/self-service-sign-up-overview.md) 请求访问
+* [通过你创建的应用程序](../external-identities/self-service-sign-up-overview.md)请求访问权限
 
 * 通过[我的访问权限](../governance/entitlement-management-request-access.md)门户请求访问权限
 
@@ -100,7 +100,7 @@ ms.locfileid: "101648581"
 
 如果使用 Azure AD 权利管理，则可配置要求外部用户回答的问题。 然后，会向审批者显示这些问题，让他们做出决定。 你可以为每项[访问包策略](../governance/entitlement-management-access-package-approval-policy.md)配置不同的问题集，以便审批者可以获取其审批的访问权限的相关信息。 例如，如果一个访问包用于供应商访问权限，则可要求请求者提供其供应商合同号。 另一个用于供应商的访问包可以要求供应商提供原国籍。
 
-如果使用自助服务门户，则可以使用 [API 连接器](../external-identities/api-connectors-overview.md) 在用户注册时收集有关用户的其他属性。 然后，你可以使用这些属性来分配访问权限。 例如，如果在注册过程中收集其供应商 ID，则可以使用该属性将其动态分配给该供应商的组或访问包。 可以在 Azure 门户中创建自定义属性，并将它们用于自助注册用户流。 还可以使用 [Microsoft Graph API](../../active-directory-b2c/microsoft-graph-operations.md) 读写这些属性。 
+如果你使用自助服务门户，可使用 [API 连接器](../external-identities/api-connectors-overview.md)在用户注册时收集有关用户的其他属性。 然后，可能可使用这些属性来分配访问权限。 例如，如果在注册过程中，你收集了用户的供应商 ID，则可使用该属性将他们动态分配到该供应商的组或访问包。 可以在 Azure 门户中创建自定义属性，并将它们用于自助注册用户流。 还可以使用 [Microsoft Graph API](../../active-directory-b2c/microsoft-graph-operations.md) 读写这些属性。 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>排查 Azure AD 用户的邀请兑换问题
 
@@ -170,7 +170,7 @@ ms.locfileid: "101648581"
 
 * 轻松地包括或排除对 Teams、SharePoint 等资源的外部访问权限。
 
-若要在维护这些内部用户的当前访问、UPN 和组成员身份的同时对其进行转换，请参阅 [邀请外部用户使用 B2B 协作](../external-identities/invite-internal-users.md)。
+若要在维护这些内部用户的当前访问、UPN 和组成员身份的同时对他们进行转换，请参阅[邀请外部用户参与 B2B 协作](../external-identities/invite-internal-users.md)。
 
 ## <a name="decommission-undesired-collaboration-methods"></a>停用不需要的协作方法
 

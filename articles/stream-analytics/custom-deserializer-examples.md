@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 140a836882ad3abe048047120e4fe1ebc0a3067c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98018150"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自定义反序列化程序读取任何格式的输入
@@ -248,9 +248,9 @@ namespace ExampleCustomCode.Serialization
 
 实现反序列化程序后，可以在社区中分享，以便为其他人提供帮助。 请将代码提交到 [Azure 流分析 GitHub 存储库](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)。
 
-### <a name="what-are-the-other-limitations-of-using-custom-deserializers-in-stream-analytics"></a>在流分析中使用自定义反有哪些其他限制？
+### <a name="what-are-the-other-limitations-of-using-custom-deserializers-in-stream-analytics"></a>在流分析中使用自定义反序列化程序还有其他哪些限制？
 
-如果输入的 Protobuf 格式为包含类型的架构 `MapField` ，则将无法实现自定义反序列化程序。 此外，自定义反不支持示例数据或预览数据。 
+如果输入采用 Protobuf 格式，并且该格式的架构包含 `MapField` 类型，则无法实现自定义反序列化程序。 此外，自定义反序列化程序不支持示例数据或预览数据。 
 
 ## <a name="next-steps"></a>后续步骤
 

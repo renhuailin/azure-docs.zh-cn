@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
 ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91445391"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>启用和使用 Bastion 资源日志
@@ -22,13 +22,13 @@ ms.locfileid: "91445391"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 Azure Bastion 资源并从 Azure Bastion 页面选择“诊断设置”。
 
-   ![显示 "诊断设置" 页的屏幕截图。](./media/diagnostic-logs/1diagnostics-settings.png)
+   ![此屏幕截图显示了“诊断设置”页。](./media/diagnostic-logs/1diagnostics-settings.png)
 2. 选择“诊断设置”，然后选择“+添加诊断设置”，以便为日志添加目标。
 
-   ![显示 "诊断设置" 页的屏幕截图，其中选择了 "添加诊断设置" 按钮。](./media/diagnostic-logs/2add-diagnostic-setting.png)
+   ![此屏幕截图显示了“诊断设置”页，其中已选择“添加诊断设置”按钮。](./media/diagnostic-logs/2add-diagnostic-setting.png)
 3. 在“诊断设置”页上，选择要用于存储诊断日志的存储帐户的类型。
 
-   !["诊断设置" 页的屏幕截图，其中突出显示了选择存储位置部分。](./media/diagnostic-logs/3add-storage-account.png)
+   ![“诊断设置”页的屏幕截图，其中突出显示了“选择存储位置”部分。](./media/diagnostic-logs/3add-storage-account.png)
 4. 完成设置后，设置将如以下示例所示：
 
    ![示例设置](./media/diagnostic-logs/4example-settings.png)

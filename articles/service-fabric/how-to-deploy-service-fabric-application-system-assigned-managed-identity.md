@@ -4,10 +4,10 @@ description: 本文介绍如何将系统分配的托管标识分配给 Azure Ser
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81415652"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>使用系统分配的托管标识部署 Service Fabric 应用程序
@@ -15,7 +15,7 @@ ms.locfileid: "81415652"
 若要访问 Azure Service Fabric 应用程序的托管标识功能，必须先在群集上启用托管标识令牌服务。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分看到它，它在其他系统服务旁边以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
 
 > [!NOTE] 
-> 从 API 版本 `"2019-06-01-preview"` 开始，我们就支持使用托管标识部署 Service Fabric 应用程序。 另外，不管应用程序类型、应用程序类型版本和服务资源如何，你都可以使用同一 API 版本。 支持的最低 Service Fabric 运行时为 6.5 CU2。 在 additoin 中，生成/包环境还应具有 SF .Net SDK CU2 或更高版本
+> 从 API 版本 `"2019-06-01-preview"` 开始，我们就支持使用托管标识部署 Service Fabric 应用程序。 另外，不管应用程序类型、应用程序类型版本和服务资源如何，你都可以使用同一 API 版本。 支持的最低 Service Fabric 运行时为 6.5 CU2。 此外，生成/包环境还应具有 SF .Net SDK CU2 或更高版本
 
 ## <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 

@@ -12,10 +12,10 @@ ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97881185"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
@@ -45,13 +45,13 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 ## <a name="generate-code"></a>生成代码
 
-此技术配置文件的第一种模式是生成代码。 下面是可以为此模式配置的选项。 在会话中跟踪生成和尝试的代码。 
+此技术配置文件的第一种模式是生成代码。 下面是可以为此模式配置的选项。 在会话中跟踪生成的代码和尝试。 
 
 ### <a name="input-claims"></a>输入声明
 
 InputClaims 元素包含发送到一次性密码协议提供程序所需的声明列表。 还可将声明名称映射到下面定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 标识符 | 是 | 一个标识符，用于标识需在稍后验证代码的用户。 此标识符通常用作代码传递的目标对象的标识符，例如电子邮件地址或电话号码。 |
 
@@ -61,7 +61,7 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 
 OutputClaims 元素包含由一次性密码协议提供程序生成的声明列表。 还可将声明名称映射到下面定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | otpGenerated | 是 | 一段生成代码，由 Azure AD B2C 管理其会话。 |
 
@@ -71,9 +71,9 @@ OutputClaims 元素包含由一次性密码协议提供程序生成的声明列�
 
 以下设置可用于配置代码生成模式：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | 否 | 代码过期之前的时间（秒）。 最小值：`60`；大值：`1200`；默认值：`600` 每次提供代码（使用 `ReuseSameCode` 的相同代码或新代码）时，代码过期时间都会延长。 此时间还用于设置重试超时 (在达到最大尝试次数后，用户将被锁定，尝试获取新代码，直到此时间到期)  |
+| CodeExpirationInSeconds | 否 | 代码过期之前的时间（秒）。 最小值：`60`；大值：`1200`；默认值：`600` 每次提供代码（使用 `ReuseSameCode` 的相同代码或新代码）时，代码过期时间都会延长。 此时间还用于设置重试超时（达到最大尝试次数后，用户将被锁定，在此时间到期之前无法尝试获取新代码） |
 | CodeLength | 否 | 代码的长度。 默认值为 `6`。 |
 | CharacterSet | 否 | 代码的字符集，其格式设置为可在正则表达式中使用。 例如，`a-z0-9A-Z`。 默认值为 `0-9`。 字符集必须在指定的集中至少包含 10 个不同的字符。 |
 | NumRetryAttempts | 否 | 代码被视为无效之前的验证尝试次数。 默认值为 `5`。 |
@@ -117,7 +117,7 @@ OutputClaims 元素包含由一次性密码协议提供程序生成的声明列�
 
 InputClaims 元素包含发送到一次性密码协议提供程序所需的声明列表。 还可将声明名称映射到下面定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 标识符 | 是 | 一个标识符，用于标识之前生成代码的用户。 此标识符通常用作代码传递的目标对象的标识符，例如电子邮件地址或电话号码。 |
 | otpToVerify | 是 | 用户提供的验证码。 |
@@ -134,16 +134,16 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 
 以下设置可用于代码验证模式：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| Operation | 是 | 要执行的操作。 可能的值：`VerifyCode`。 |
+| 操作 | 是 | 要执行的操作。 可能的值：`VerifyCode`。 |
 
 
 ### <a name="ui-elements"></a>UI 元素
 
 以下元数据可用于配置在代码验证失败时显示的错误消息。 元数据应该在[自断言](self-asserted-technical-profile.md)技术配置文件中进行配置。 可以将错误消息[本地化](localization-string-ids.md#one-time-password-error-messages)。
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | 否 | 代码验证会话过期后向用户显示的消息。 代码已过期，或从未为给定标识符生成代码。 |
 | UserMessageIfMaxRetryAttempted | 否 | 用户尝试验证的次数超过允许的最大值时显示的消息。 |
@@ -174,5 +174,5 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 
 请参阅以下文章，了解将一次性密码技术配置文件与自定义电子邮件验证配合使用的示例：
 
-- 中的自定义电子邮件验证 Azure Active Directory B2C ([Mailjet](custom-email-mailjet.md)， [SendGrid](custom-email-sendgrid.md)) 
+- Azure Active Directory B2C 中的自定义电子邮件验证（[Mailjet](custom-email-mailjet.md)、[SendGrid](custom-email-sendgrid.md)）
 

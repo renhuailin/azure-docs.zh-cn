@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 055afe24cb72b331e64e1a2b3d786503ef31a105
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: cb92f84560a88d406f0d519459c27b5d916ec5ad
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176393"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769564"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成（旧版）
 
@@ -134,7 +134,7 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 
 ## <a name="deploy-the-cluster"></a>部署群集
 
-创建两个 Azure AD 应用程序后，请创建 AKS 群集本身。 首先使用 [az group create][az-group-create] 命令创建资源组。 以下示例在 *EastUS* 区域中创建资源组：
+创建两个 Azure AD 应用程序后，请创建 AKS 群集本身。 首先使用 [az group create][az-group-create] 命令创建资源组。 以下示例在“EastUS”区域创建此资源组：
 
 为群集创建资源组：
 
@@ -177,7 +177,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > 如果你为其授予 Kubernetes RBAC 绑定的用户在同一个 Azure AD 租户中，请根据 userPrincipalName 分配权限。 如果该用户位于不同的 Azure AD 租户中，请查询并改用 *objectId* 属性。
 
-创建名为 `basic-azure-ad-binding.yaml` 的 YAML 清单并粘贴以下内容。 在最后一行中，将 *userPrincipalName_or_objectId*  替换为前一命令中的 UPN 或对象 ID 输出：
+创建名为 `basic-azure-ad-binding.yaml` 的 YAML 清单并粘贴以下内容。 在最后一行中，请将 userPrincipalName_or_objectId 替换为前一命令的 UPN 或对象 ID 输出：
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -264,24 +264,24 @@ error: You must be logged in to the server (Unauthorized)
 [complete-script]: https://github.com/Azure-Samples/azure-cli-samples/tree/master/aks/azure-ad-integration/azure-ad-integration.sh
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-group-create]: /cli/azure/group#az-group-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-group-create]: /cli/azure/group#az_group_create
 [open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
-[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
-[az-ad-app-create]: /cli/azure/ad/app#az-ad-app-create
-[az-ad-app-update]: /cli/azure/ad/app#az-ad-app-update
-[az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create
-[az-ad-app-permission-add]: /cli/azure/ad/app/permission#az-ad-app-permission-add
-[az-ad-app-permission-grant]: /cli/azure/ad/app/permission#az-ad-app-permission-grant
-[az-ad-app-permission-admin-consent]: /cli/azure/ad/app/permission#az-ad-app-permission-admin-consent
-[az-ad-app-show]: /cli/azure/ad/app#az-ad-app-show
-[az-group-create]: /cli/azure/group#az-group-create
-[az-account-show]: /cli/azure/account#az-account-show
-[az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
+[az-ad-user-show]: /cli/azure/ad/user#az_ad_user_show
+[az-ad-app-create]: /cli/azure/ad/app#az_ad_app_create
+[az-ad-app-update]: /cli/azure/ad/app#az_ad_app_update
+[az-ad-sp-create]: /cli/azure/ad/sp#az_ad_sp_create
+[az-ad-app-permission-add]: /cli/azure/ad/app/permission#az_ad_app_permission_add
+[az-ad-app-permission-grant]: /cli/azure/ad/app/permission#az_ad_app_permission_grant
+[az-ad-app-permission-admin-consent]: /cli/azure/ad/app/permission#az_ad_app_permission_admin_consent
+[az-ad-app-show]: /cli/azure/ad/app#az_ad_app_show
+[az-group-create]: /cli/azure/group#az_group_create
+[az-account-show]: /cli/azure/account#az_account_show
+[az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az_ad_signed_in_user_show
 [install-azure-cli]: /cli/azure/install-azure-cli
-[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset
+[rbac-authorization]: concepts-identity.md#kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [managed-aad]: managed-aad.md

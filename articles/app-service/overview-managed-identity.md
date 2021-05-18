@@ -8,10 +8,10 @@ ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 ms.openlocfilehash: 16cd4685f513eb628372802cc158195b81bce72a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736165"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
@@ -37,9 +37,9 @@ ms.locfileid: "98736165"
 
 3. 选择“标识”。
 
-4. 在“系统分配的”选项卡中，将“状态”切换为“启用”  。 单击“ **保存**”。
+4. 在“系统分配的”选项卡中，将“状态”切换为“启用”  。 单击“保存”  。
 
-    ![屏幕截图，显示要将状态切换到的位置，然后选择 "保存"。](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
+    ![屏幕截图显示了在何处将“状态”切换为“启用”，然后选择“保存”。](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
@@ -204,7 +204,7 @@ tenantId 属性标识该标识所属的 Azure AD 租户。 principalId 是应用
 
 5. 在“用户分配”选项卡中，单击“添加” 。
 
-6. 搜索之前创建的标识并选择它。 单击“添加”。
+6. 搜索之前创建的标识并选择它。 单击“添加” 。
 
     ![应用服务中的托管标识](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -524,6 +524,6 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 
 - [使用托管标识安全地访问 SQL 数据库](app-service-web-tutorial-connect-msi.md)
 - [使用托管标识安全地访问 Azure 存储](scenario-secure-app-access-storage.md)
-- [使用托管标识安全调用 Microsoft Graph](scenario-secure-app-access-microsoft-graph-as-app.md)
+- [使用托管标识安全地调用 Microsoft Graph](scenario-secure-app-access-microsoft-graph-as-app.md)
 
 [Microsoft.Azure.Services.AppAuthentication 参考]: /dotnet/api/overview/azure/service-to-service-authentication

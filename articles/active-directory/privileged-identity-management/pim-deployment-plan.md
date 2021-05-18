@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b1d18982a4f2a9ee8ba585af56a5e9ded7c1c62
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036820"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
@@ -111,7 +111,7 @@ ms.locfileid: "102036820"
 
 按照以下步骤为 Azure AD 角色实现最低权限原则。
 
-1. 阅读并了解可用的 [Azure AD 内置角色](../roles/permissions-reference.md)，了解角色的粒度。 你和你的团队还应参阅 [Azure AD 中按标识任务划分的管理员角色](../roles/delegate-by-task.md)，其中解释了特定任务的最低权限角色。
+1. 通过阅读和理解[可用的 Azure AD 内置角色](../roles/permissions-reference.md)来了解角色粒度。 你和你的团队还应参阅 [Azure AD 中按标识任务划分的管理员角色](../roles/delegate-by-task.md)，其中解释了特定任务的最低权限角色。
 
 1. 列出组织中有特权角色的人员。 可以使用 Privileged Identity Management [发现和见解（预览版）](pim-security-wizard.md)来降低曝光度。
 
@@ -200,11 +200,11 @@ Azure 资源的 Privileged Identity Management 支持时限服务帐户。 应�
 
 #### <a name="many-users-are-assigned-to-a-role"></a>向一个角色分配了多个用户
 
-如果手动完成跟踪向角色分配的用户以及根据用户需要管理其角色分配这一过程，可能会花费一些时间。 若要为某个角色分配一个角色，请首先 [创建一个角色可分配组](../roles/groups-create-eligible.md) ，然后为该组分配适用于角色的组。 此操作可将组中的每个人与有资格提升为角色的单个用户进行相同的激活过程。 组成员使用 Privileged Identity Management 的激活请求和审批过程，分别激活其对组的分配。 组未激活，只是用户的组成员身份。
+如果手动完成跟踪向角色分配的用户以及根据用户需要管理其角色分配这一过程，可能会花费一些时间。 若要将组分配给角色，首先请[创建一个可分配角色的组](../roles/groups-create-eligible.md)，然后将该组分配为符合角色条件的组。 此操作使该组中的每个人都遵循与符合将权限提升至角色的单个用户所执行的相同的激活过程。 组成员使用 Privileged Identity Management 激活请求和审批过程来单独激活对组的分配。 组没有被激活，只是激活了用户的组成员身份。
 
 #### <a name="you-want-to-delegate-assigning-the-role"></a>想要委托分配角色
 
-组所有者可以管理组的成员身份。 对于 Azure AD 可分配角色的组，只有特权角色管理员、全局管理员和组所有者可以管理组成员身份。 通过将新成员添加到组中，无论分配是“合格”分配还是“活动”分配，该成员都可以访问为其分配了该组的角色。 使用组所有者来委托管理所分配角色的组成员身份，可减少所需的权限范围。 若要详细了解如何在创建组时为组分配所有者，请参阅 [在 Azure AD 中创建可分配角色的组](../roles/groups-create-eligible.md)。
+组所有者可以管理组的成员身份。 对于 Azure AD 可分配角色的组，只有特权角色管理员、全局管理员和组所有者可以管理组成员身份。 通过将新成员添加到组中，无论分配是“合格”分配还是“活动”分配，该成员都可以访问为其分配了该组的角色。 使用组所有者来委托管理所分配角色的组成员身份，可减少所需的权限范围。 若要详细了解如何在创建组时为组分配所有者，请参阅[在 Azure AD 中创建可分配角色的组](../roles/groups-create-eligible.md)。
 
 > [!TIP]
 > :heavy_check_mark:Microsoft 建议使用 Privileged Identity Management 来管理 Azure AD 可分配角色的组。 在使用 PIM 管理可分配角色的组后，该组被称为特权访问组。 使用 PIM 要求组所有者先激活其所有者角色分配，然后再管理组成员身份。 有关使用 PIM 管理组的详细信息，请参阅[将特权访问组（预览版）引入 Privileged Identity Management](groups-discover-groups.md)。
@@ -219,7 +219,7 @@ Azure 资源的 Privileged Identity Management 支持时限服务帐户。 应�
 虽然我们建议不设立长期管理员，但组织有时很难立即实现这一目标。 下面是做出此决定时要考虑的事项：
 
 - 提升频率 - 如果用户只需要一次特权分配，他们不应拥有永久分配。 另一方面，如果用户需要某个角色来处理日常工作且使用 Privileged Identity Management 会极大降低其工作效率，则可考虑向其分配永久角色。
-- 特定于你的组织的案例–如果被授予了合格角色的人员来自遥远团队或高排名的主管，则与进行通信并强制实施提升过程的点比较困难，则可将其视为永久角色。
+- 特定于组织的案例 - 如果被授予符合条件的角色的人员来自遥远的团队或为高级管理人员，不便沟通和执行提升过程，则可考虑为其分配永久角色。
 
 > [!TIP]
 > :heavy_check_mark:Microsoft建议为分配了永久角色的用户（如果有）设置定期访问评审。 可通过此部署计划的最后一部分了解有关定期访问评审的详细信息

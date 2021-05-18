@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.openlocfilehash: 814a5afbde548891a30d941365cdd71d227b4767
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101674402"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索服务管理
@@ -140,7 +140,7 @@ Azure 认知搜索利用 [Azure Monitor](../azure-monitor/index.yml) 来收集�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 通过[PowerShell](search-manage-powershell.md)或[Azure CLI](search-manage-azure-cli.md)自动执行
+* 使用 [PowerShell](search-manage-powershell.md) 或 [Azure CLI](search-manage-azure-cli.md) 进行自动化操作
 
 * 查看[性能和优化](search-performance-optimization.md)技术
 

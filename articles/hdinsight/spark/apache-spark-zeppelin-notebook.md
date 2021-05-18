@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: ba58c007dc0bc3776f429366651cb79404b137b3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 969dda4b57deb35d745cf7c7d263b78e6fe577d2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928486"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867536"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本
 
@@ -19,7 +19,7 @@ HDInsight Spark 群集包括 [Apache Zeppelin](https://zeppelin.apache.org/) 笔
 ## <a name="prerequisites"></a>先决条件
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-* 群集主存储的 URI 方案。 此方案适用 `wasb://` 于 Azure Blob 存储， `abfs://` 适用于 Azure Data Lake Storage Gen2 或 `adl://` Azure Data Lake Storage Gen1。 如果为 Blob 存储启用了安全传输，则 URI 将为 `wasbs://`。  有关详细信息，请参阅[在 Azure 存储中要求安全传输](../../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 URI 方案。 对于 Azure Blob 存储，此架构为 `wasb://`；对于 Azure Data Lake Storage Gen2，此架构为 `abfs://`；对于 Azure Data Lake Storage Gen1，此架构为 `adl://`。 如果为 Blob 存储启用了安全传输，则 URI 将为 `wasbs://`。  有关详细信息，请参阅[在 Azure 存储中要求安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>启动 Apache Zeppelin 笔记本
 
@@ -32,13 +32,13 @@ HDInsight Spark 群集包括 [Apache Zeppelin](https://zeppelin.apache.org/) 笔
 
 2. 创建新的笔记本。 在标题窗格中，导航到“笔记本” > “创建新笔记”。 
 
-    ![创建新的 Zeppelin 笔记本](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "创建新的 Zeppelin 笔记本")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png " alt-text="创建新的 Zeppelin 笔记本" border="true":::
 
     输入笔记本的名称，然后选择“创建笔记”。
 
 3. 确保笔记本标题显示“已连接”状态。 该状态由右上角的一个绿点表示。
 
-    ![Zeppelin 笔记本状态](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Zeppelin 笔记本状态")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png " alt-text="Zeppelin 笔记本状态" border="true":::
 
 4. 将示例数据载入临时表。 在 HDInsight 中创建 Spark 群集时，系统会将示例数据文件 `hvac.csv` 复制到 `\HdiSamples\SensorSampleData\hvac` 下的关联存储帐户。
 
@@ -70,7 +70,7 @@ HDInsight Spark 群集包括 [Apache Zeppelin](https://zeppelin.apache.org/) 笔
 
     按 **SHIFT + ENTER** 或为段落选择“播放”按钮以运行代码片段。 段落右上角的状态应从“就绪”逐渐变成“挂起”、“正在运行”和“已完成”。 输出会显示在同一段落的底部。 屏幕截图如下图所示：
 
-    ![基于原始数据创建临时表](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "基于原始数据创建临时表")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png " alt-text="基于原始数据创建临时表" border="true":::
 
     也可以为每个段落提供标题。 在段落的右侧一角，选择“设置”图标（齿轮图标），然后选择“显示标题”。   
 
@@ -88,7 +88,7 @@ HDInsight Spark 群集包括 [Apache Zeppelin](https://zeppelin.apache.org/) 笔
 
 6. 选择“条形图”图标以更改显示内容。  使用“设置”（选择“条形图”后显示）可以选择“键”和“值”。     以下屏幕快照显示了输出。
 
-    ![使用 notebook1 运行 Spark SQL 语句](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "使用 notebook1 运行 Spark SQL 语句")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png " alt-text="使用 notebook1 运行 Spark SQL 语句" border="true":::
 
 7. 还可以在查询中使用变量来运行 Spark SQL 语句。 以下代码片段演示如何在查询中使用可以用来查询的值定义 `Temp` 变量。 首次运行查询时，下拉列表中会自动填充你指定的变量值。
 
@@ -106,25 +106,25 @@ HDInsight Spark 群集包括 [Apache Zeppelin](https://zeppelin.apache.org/) 笔
 
      以下屏幕快照显示了输出。
 
-     ![使用 notebook2 运行 Spark SQL 语句](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "使用 notebook2 运行 Spark SQL 语句")
+     :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png " alt-text="使用 notebook2 运行 Spark SQL 语句" border="true":::
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>如何在笔记本中使用外部包？
 
 HDInsight 上 Apache Spark 群集中的 Zeppelin 笔记本可以使用群集中未包含的、社区提供的外部包。 在 [Maven 存储库](https://search.maven.org/)中搜索可用包的完整列表。 也可以从其他源获取可用包的列表。 例如， [Spark 包](https://spark-packages.org/)中提供了社区贡献包的完整列表。
 
-在本文中，你将了解如何将 [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包与 Jupyter Notebook 一起使用。
+本文将介绍如何在 Jupyter Notebook 中使用 [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包。
 
 1. 打开解释器设置。 选择右上角的登录用户名，然后选择“解释器”。
 
-    ![启动解释器](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive 输出")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png " alt-text="启动解释器" border="true":::
 
 2. 滚动到“livy2”，然后选择“编辑”。 
 
-    ![更改解释器设置 1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "更改解释器设置 1")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png " alt-text="更改解释器设置 1" border="true":::
 
 3. 导航到键 `livy.spark.jars.packages`，并以 `group:id:version` 格式设置其值。 因此，如果要使用 [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包，必须将键的值设置为 `com.databricks:spark-csv_2.10:1.4.0`。
 
-    ![更改解释器设置 2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "更改解释器设置 2")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png " alt-text="更改解释器设置 2" border="true":::
 
     依次选择“保存”、“确定”，以重启 Livy 解释器。 
 
@@ -134,7 +134,7 @@ HDInsight 上 Apache Spark 群集中的 Zeppelin 笔记本可以使用群集中�
 
     b. 从存储库中收集 **GroupId**、**ArtifactId** 和 **Version** 的值。
 
-    ![在 Jupyter Notebook 中使用外部包](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "在 Jupyter Notebook 中使用外部包")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png " alt-text="将外部包与 Jupyter Notebook 配合使用" border="true":::
 
     c. 串连这三个值并以冒号分隔 ( **:** )。
 
@@ -146,7 +146,7 @@ HDInsight 上 Apache Spark 群集中的 Zeppelin 笔记本可以使用群集中�
 
 Zeppelin 笔记本保存在群集头节点。 因此，如果删除群集，笔记本也会被删除。 如果想要保留笔记本以供将来在其他群集中使用，那么必须在运行完作业之后，将笔记本导出。 若要导出笔记本，请选择下图所示的“导出”图标。
 
-![下载笔记本](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "下载笔记本")
+:::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png " alt-text="下载笔记本" border="true":::
 
 此操作可在下载位置将笔记本另存为 JSON 文件。
 
@@ -178,11 +178,11 @@ Zeppelin 笔记本中的第一个代码段会在群集中创建一个新的 Livy
 
 1. 在 Zeppelin 笔记本中重启 Livy 解释器。 为此，请选择右上角的登录用户名打开解释器设置，然后选择“解释器”。
 
-    ![启动解释器](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive 输出")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png " alt-text="启动解释器" border="true":::
 
 2. 滚动到“livy2”，然后选择“重启”。 
 
-    ![重启 Livy 解释器](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "重启 Zeppelin 解释器")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png " alt-text="重启 Livy 解释器" border="true":::
 
 3. 在现有的 Zeppelin 笔记本中运行代码单元。 此代码会在 HDInsight 群集中创建新的 Livy 会话。
 
@@ -224,5 +224,5 @@ Zeppelin 笔记本中的第一个代码段会在群集中创建一个新的 Livy
 ## <a name="next-steps"></a>后续步骤
 
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
-* [适用于 HDInsight 的 Apache Spark 群集中的 Jupyter Notebook 可用的内核](apache-spark-jupyter-notebook-kernels.md)
+* [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)

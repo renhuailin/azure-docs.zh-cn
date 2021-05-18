@@ -6,10 +6,10 @@ author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
 ms.openlocfilehash: 1fbb8f82366ee961d10ce8a6bc098128bad6555a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041002"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
@@ -19,8 +19,8 @@ Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日
 需要专用群集的功能包括：
 
 - **[客户管理的密钥](../logs/customer-managed-keys.md)** - 使用由客户提供和控制的密钥对群集数据进行加密。
-- **[密码箱](../logs/customer-managed-keys.md#customer-lockbox-preview)** -客户可以控制 Microsoft 支持工程师对数据的访问请求。
-- **[双加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** 可防止其中一个加密算法或密钥泄露的情况。 在这种情况下，附加的加密层会继续保护你的数据。
+- **[密码箱](../logs/customer-managed-keys.md#customer-lockbox-preview)** - 客户可以控制 Microsoft 支持工程师的数据访问请求。
+- **[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** 可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。
 - **[多工作区](../logs/cross-workspace-query.md)** - - 如果客户使用多个工作区进行生产，则使用专用群集可能是合理的。 如果所有工作区都在同一群集上，则“跨工作区”查询会运行更快。 使用专用群集还可能更具成本效益，因为分配的产能预留层考虑了所有群集引入并应用于其所有工作区，即使其中一些工作区很小并且没有资格享受产能预留折扣。
 
 专用群集要求客户使用每天至少 1 TB 的数据引入产能进行提交。 迁移到专用群集很简单。 无数据丢失或服务中断。 
@@ -80,12 +80,12 @@ Authorization: Bearer <token>
 
 创建群集资源后，可以编辑其他属性，如 sku、keyVaultProperties 或 billingType  。 参阅下面的更多详细信息。
 
-每个区域每个订阅最多可以有2个活动群集。 如果删除群集，它仍保留14天。 每个区域每个订阅最多可以有4个保留群集 (活动或最近删除的) 。
+每个区域每个订阅最多可以有 2 个活动群集。 如果删除群集，该群集将仍保留 14 天。 每个区域每个订阅最多可以有 4 个保留群集（活动或最近删除的群集）。
 
 > [!WARNING]
 > 创建群集会触发资源分配和预配。 此操作可能需要几个小时才能完成。 建议以异步方式运行。
 
-创建群集的用户帐户必须具有标准 Azure 资源创建权限： `Microsoft.Resources/deployments/*` 和群集写入权限， `Microsoft.OperationalInsights/clusters/write` 方法是将其角色分配到此特定操作或 `Microsoft.OperationalInsights/*` 或 `*/write` 。
+创建群集的用户帐户必须具有以下标准 Azure 资源创建权限：`Microsoft.Resources/deployments/*` 和群集写入权限 `Microsoft.OperationalInsights/clusters/write`，可通过在其角色分配中添加此特定操作或 `Microsoft.OperationalInsights/*` 或 `*/write` 获得这些权限。
 
 ### <a name="create"></a>创建 
 
@@ -183,7 +183,7 @@ Log Analytics 群集的预配需要一段时间才能完成。 可以通过多�
 - 在群集资源中：*Microsoft.OperationalInsights/clusters/write*
 
 除了计费方面，链接的工作区还会保留自己的设置，例如数据保留的长度。
-工作区和群集可以位于不同的订阅中。 如果使用 Azure Lighthouse 将这两个用户映射到单个租户，则工作区和群集可能位于不同的租户中。
+工作区和群集可以位于不同的订阅中。 如果使用 Azure Lighthouse 将工作区和群集映射到一个租户，那么工作区和群集可能位于不同的租户中。
 
 与任何群集操作一样，只有在完成 Log Analytics 群集配置之后才能执行工作区链接。
 
@@ -504,9 +504,9 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 ## <a name="limits-and-constraints"></a>限制和约束
 
-- 每个区域和订阅的活动群集的最大数目为2
+- 每个区域和每个订阅的活动群集的最大数目为 2
 
-- 每个区域和订阅 (活动或最近删除) 的保留群集的最大数目为4 
+- 每个区域和每个订阅的保留群集（活动或最近删除）的最大数目为 4 
 
 - 与群集链接的工作区的最大数目为 1000
 
@@ -516,13 +516,13 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 - 当前不能在中国使用密码箱。 
 
-- 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过在群集上发送 GET 请求来验证群集是否已配置为进行双重加密，并观察 `isDoubleEncryptionEnabled` 该值是否 `true` 适用于启用了双加密的群集。 
-  - 如果创建了一个群集并收到错误 "<region name> 不支持对群集进行双加密"，则仍可通过 `"properties": {"isDoubleEncryptionEnabled": false}` 在 REST 请求正文中添加来创建不带双重加密的群集。
+- 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过在群集上发送 GET 请求并观察启用了双重加密的群集的 `isDoubleEncryptionEnabled` 值是否为 `true` 来验证是否为你的群集配置了双重加密。 
+  - 如果你创建群集并收到错误“<区域名称> 不支持对群集进行双重加密。”，则你仍可通过在 REST 请求正文中添加 `"properties": {"isDoubleEncryptionEnabled": false}` 以在不使用双重加密的情况下创建群集。
   - 创建群集后，无法更改双重加密设置。
 
 ## <a name="troubleshooting"></a>疑难解答
 
-- 如果在创建群集时出现冲突，则可能是你在过去14天内删除了群集，并且该群集处于软删除状态。 软删除期间，群集名称保持为预留，并且无法新建同名群集。 永久删除群集时，名称将在软删除期结束后释放。
+- 如果创建群集时出现冲突错误，原因可能是你在过去 14 天内删除了群集，并且它处于软删除状态。 软删除期间，群集名称保持为预留，并且无法新建同名群集。 永久删除群集时，名称将在软删除期结束后释放。
 
 - 如果在群集处于预配或更新状态时对其进行更新，则更新将失败。
 

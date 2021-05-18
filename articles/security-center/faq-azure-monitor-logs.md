@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 1a52b2fec6155959a570f2438a59c14d9f79f368
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101701954"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>针对已在使用 Azure Monitor 日志的客户的常见问题解答<a name="existingloganalyticscust"></a>
@@ -34,8 +34,8 @@ ms.locfileid: "101701954"
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>安全中心是否在现有 Log Analytics 工作区上安装解决方案？ 计费会产生什么影响？
 安全中心确定 VM 已连接到所创建的工作区时，会根据定价配置启用此工作区上的解决方案。 由于[解决方案目标](../azure-monitor/insights/solution-targeting.md)，解决方案仅应用于相关的 Azure VM，因此计费保持不变。
 
-- **Azure Defender off** –安全中心在工作区中安装 "SecurityCenterFree" 解决方案。 系统不会向你收费。
-- **Azure Defender on** –安全中心在工作区上安装 "安全" 解决方案。
+- Azure Defender 关 - 安全中心在工作区中安装“SecurityCenterFree”解决方案。 系统不会向你收费。
+- Azure Defender 开 - 安全中心在工作区中安装“Security”解决方案。
 
    ![默认工作区上的解决方案](./media/security-center-platform-migration-faq/solutions.png)
 

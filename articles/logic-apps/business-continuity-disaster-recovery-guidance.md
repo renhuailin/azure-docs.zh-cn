@@ -3,15 +3,15 @@ title: 业务连续性和灾难恢复
 description: 设计策略以保护数据、在发生中断性事件后快速恢复、还原关键业务功能所需的资源，以及保持 Azure 逻辑应用的业务连续性
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/24/2021
+ms.openlocfilehash: f974a99c59b19b5df7bf6ffcc66c2dc133743f0a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658203"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790532"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure 逻辑应用的业务连续性和灾难恢复
 
@@ -25,33 +25,33 @@ ms.locfileid: "89658203"
 
 * [集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，将在其中定义和存储逻辑应用对[企业到企业 (B2B) 企业集成](../logic-apps/logic-apps-enterprise-integration-overview.md)方案使用的项目。 例如，可以[为集成帐户设置跨区域灾难恢复](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md)。
 
-* [Integration service 环境 (ISEs) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ，你可以在其中创建在 Azure 虚拟网络内的独立逻辑应用运行时实例中运行的逻辑应用。 然后，这些逻辑应用可以访问在该虚拟网络中受防火墙保护的资源。
+* [集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，在其中创建在 Azure 虚拟网络内的独立逻辑应用运行时实例中运行的逻辑应用。 然后，这些逻辑应用可以访问在该虚拟网络中的防火墙后受保护的资源。
 
 <a name="primary-secondary-locations"></a>
 
 ## <a name="primary-and-secondary-locations"></a>主要和辅助位置
 
-每个逻辑应用需要指定用于部署的位置。 此位置是全局多租户 Azure 中的公共区域，如 "美国西部"，或 (ISE) 之前创建并部署到 Azure 虚拟网络中的集成服务环境。 在 ISE 中运行逻辑应用类似于在全球 Azure 区域中运行逻辑应用，这意味着你的灾难恢复策略可以应用于这两种方案。 但是，ISEs 有其他注意事项，如配置仅对 ISEs 可用的资源的访问。
+每个逻辑应用需要指定用于部署的位置。 此位置是全球多租户 Azure 中的公共区域（如“美国西部”），或者是以前创建并部署到 Azure 虚拟网络中的集成服务环境 (ISE)。 在 ISE 中运行逻辑应用类似于在全球 Azure 区域中运行逻辑应用，这意味着灾难恢复策略可以应用于这两种方案。 但是，使用 ISE 需要考虑其他事项，例如，配置只可用于 ISE 的资源的访问权限。
 
 > [!NOTE]
 > 如果逻辑应用还使用存储在集成帐户中的 B2B 项目（例如贸易合作伙伴、协议、架构、映射和证书），则集成帐户和逻辑应用必须指定同一位置。
 
 此灾难恢复策略侧重于将主要逻辑应用设置为[故障转移](https://en.wikipedia.org/wiki/Failover)到也可以使用 Azure 逻辑应用的备用位置中的待机或备份逻辑应用。 这样，在主要逻辑应用发生损毁、中断或故障时，辅助逻辑应用就可以接管工作。 此策略要求辅助逻辑应用和从属资源已在备用位置中部署且准备就绪。
 
-如果你遵循了良好的 DevOps 实践，则已经使用 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)定义并部署了逻辑应用及其从属资源。 资源管理器模板提供的功能允许你先使用单个部署定义，然后使用参数文件来提供用于每个部署目标的配置值。 此功能意味着，可将同一逻辑应用部署到不同的环境（例如开发、测试和生产环境）。 你还可以将相同的逻辑应用部署到不同的 Azure 区域或 ISEs，后者支持使用 [配对区域](../best-practices-availability-paired-regions.md)的灾难恢复策略。
+如果你遵循了良好的 DevOps 实践，则已经使用 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)定义并部署了逻辑应用及其从属资源。 资源管理器模板提供的功能允许你先使用单个部署定义，然后使用参数文件来提供用于每个部署目标的配置值。 此功能意味着，可将同一逻辑应用部署到不同的环境（例如开发、测试和生产环境）。 还可以将同一逻辑应用部署到不同的 Azure 区域或 ISE，从而支持那些使用[配对区域](../best-practices-availability-paired-regions.md)的灾难恢复策略。
 
 对于故障转移策略，逻辑应用和位置必须满足以下要求：
 
 * 辅助逻辑应用实例能够访问主要逻辑应用实例所能访问的应用、服务和系统。
 
-* 这两个逻辑应用实例的主机类型相同。 因此，两个实例都部署到全局多租户 Azure 中的区域，或这两个实例都部署到 ISEs，这使逻辑应用可以直接访问 Azure 虚拟网络中的资源。 有关 BCDR 配对区域的最佳做法和详细信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../best-practices-availability-paired-regions.md)。
+* 这两个逻辑应用实例的主机类型相同。 因此，两个实例都会部署到全球多租户 Azure 中的区域，或者，两个实例都会部署到 ISE，从而使逻辑应用能够直接访问 Azure 虚拟网络中的资源。 有关 BCDR 配对区域的最佳做法和详细信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../best-practices-availability-paired-regions.md)。
 
-  例如，当主逻辑应用在 ISE 中运行并使用 [ise 版本管理连接器](../connectors/apis-list.md#ise-connectors)、调用 Azure 虚拟网络中的资源的 HTTP 操作或同时使用这两者时，主要和辅助位置都必须 ISEs。 在此方案中，辅助逻辑应用还必须在辅助位置中具有类似的设置，作为主要逻辑应用。
+  例如，如果主要逻辑应用在 ISE 中运行，并且使用 [ISE 版本控制连接器](../connectors/managed.md#ise-connectors)和/或用于调用 Azure 虚拟网络中资源的 HTTP 操作，则主要位置和辅助位置都必须是 ISE。 在此方案中，辅助逻辑应用还必须在辅助位置具有与主要逻辑应用类似的设置。
 
   > [!NOTE]
-  > 对于更高级的方案，可以将多租户 Azure 和 ISE 作为位置混合使用。 但是，请确保考虑并了解 [逻辑应用在 ISE 与多租户 Azure 中的运行情况之间的区别](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)。
+  > 对于更高级的方案，可以将多租户 Azure 和 ISE 混合起来作为位置。 但是，请确保考虑并了解[逻辑应用在 ISE 中运行与在多租户 Azure 中运行的方式有何区别](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)。
 
-* 如果使用 ISEs，请 [确保它们已横向扩展或具有足够的容量](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) 来处理负载。
+* 如果使用 ISE，请[确保它们已横向扩展或具有足够容量](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)，以便处理负载。
 
 #### <a name="example-multi-tenant-azure"></a>示例：多租户 Azure
 
@@ -59,9 +59,9 @@ ms.locfileid: "89658203"
 
 ![位于不同位置的主要和辅助逻辑应用实例](./media/business-continuity-disaster-recovery-guidance/primary-secondary-locations.png)
 
-#### <a name="example-integration-service-environment"></a>示例： Integration service 环境
+#### <a name="example-integration-service-environment"></a>示例：集成服务环境
 
-此示例显示了前面的主要和辅助逻辑应用实例，但部署到了单独的 ISEs。 单个资源管理器模板定义逻辑应用实例、这些逻辑应用所需的从属资源，以及 ISEs 作为部署位置。 单独的参数文件定义要用于每个位置中的部署的配置值：
+此示例显示了前面的主要和辅助逻辑应用实例，但这些实例部署到了不同的 ISE。 单个资源管理器模板定义这两个逻辑应用实例、这些逻辑应用需要的依赖资源，以及作为部署位置的 ISE。 单独的参数文件定义要用于每个位置中的部署的配置值：
 
 ![位于不同位置的主要和辅助逻辑应用](./media/business-continuity-disaster-recovery-guidance/primary-secondary-locations-ise.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "89658203"
 
 ## <a name="connections-to-resources"></a>与资源的连接
 
-Azure 逻辑应用提供 [内置的触发器和操作，以及](../connectors/apis-list.md) 你的逻辑应用可用于处理其他应用、服务、系统和其他资源（例如 Azure 存储帐户、SQL Server 数据库、工作或学校电子邮件帐户等）的数百个托管连接器。 如果逻辑应用需要访问这些资源，你可以创建连接来验证对这些资源的访问。 每个连接是位于特定位置的单独 Azure 资源，不可由其他位置中的资源使用。
+Azure 逻辑应用提供[内置的触发器和操作以及数百个托管连接器](../connectors/apis-list.md)，逻辑应用可以使用它们来处理其他应用、服务、系统和其他资源，例如 Azure 存储帐户、SQL Server 数据库、工作或学校电子邮件帐户等。 如果逻辑应用需要访问这些资源，你可以创建连接来验证对这些资源的访问。 每个连接是位于特定位置的单独 Azure 资源，不可由其他位置中的资源使用。
 
 对于灾难恢复策略，请考虑从属资源相对于逻辑应用实例所在的位置：
 
@@ -102,7 +102,7 @@ Azure 逻辑应用提供 [内置的触发器和操作，以及](../connectors/ap
 
 | 主要-辅助角色 | 说明 |
 |------------------------|-------------|
-| 主动-主动 | 位于两个位置的主要和辅助逻辑应用实例按照以下任一模式来主动处理请求： <p><p>- *负载平衡*：可以让两个实例都侦听终结点，并根据需要对每个实例的流量进行负载均衡。 <p>- *竞争使用者*：可以将这两个实例作为竞争使用者，使实例可以从队列中争用消息。 如果有一个实例失败，另一个实例会接管工作负荷。 |
+| 主动-主动 | 位于两个位置的主要和辅助逻辑应用实例按照以下任一模式来主动处理请求： <p><p>- 负载均衡：可让两个实例都侦听某个终结点，并根据需要对发往每个实例的流量进行负载均衡。 <p>- 竞争性使用者：可让两个实例都充当竞争性使用者，使实例竞争来自队列的消息。 如果有一个实例失败，另一个实例会接管工作负荷。 |
 | 主动-被动 | 主要逻辑应用实例主动处理整个工作负荷，而辅助实例是被动性的（已禁用或处于非活动状态）。 辅助实例会等待主要实例不可用或者因中断或故障而无法正常工作的信号出现，然后以主动实例的角色接管工作负荷。 |
 | 组合 | 有些逻辑应用充当主动-主动角色，还有一些逻辑应用充当主动-被动角色。 |
 |||
@@ -339,7 +339,7 @@ Webhook 触发器通过向服务传递回调 URL，为逻辑应用提供订阅�
 
 可为逻辑应用运行设置日志记录，将生成的诊断数据发送到 Azure 存储、Azure 事件中心和 Azure Log Analytics 等服务处进行进一步的处理。
 
-* 若要在 Azure Log Analytics 中使用此数据，可以通过设置逻辑应用的诊断设置并将数据发送到多个 Log Analytics 工作区，来提供主要位置和辅助位置的数据。 有关详细信息，请参阅 [设置 Azure Monitor 日志和收集 Azure 逻辑应用的诊断数据](../logic-apps/monitor-logic-apps-log-analytics.md)。
+* 若要在 Azure Log Analytics 中使用此数据，可以通过设置逻辑应用的诊断设置并将数据发送到多个 Log Analytics 工作区，来提供主要位置和辅助位置的数据。 有关详细信息，请参阅[为 Azure 逻辑应用设置 Azure Monitor 日志并收集诊断数据](../logic-apps/monitor-logic-apps-log-analytics.md)。
 
 * 若要将数据发送到 Azure 存储或 Azure 事件中心，可以通过设置异地冗余，来提供主要位置和辅助位置的数据。 有关详细信息，请参阅以下文章：<p>
 

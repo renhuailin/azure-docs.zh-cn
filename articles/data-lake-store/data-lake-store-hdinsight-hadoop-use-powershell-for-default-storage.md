@@ -1,16 +1,16 @@
 ---
-title: Data Lake Storage Gen1 Azure 的 PowerShell HDInsight 群集
-description: 使用 Azure PowerShell 通过 Azure Data Lake Storage Gen1 创建和使用 Azure HDInsight 群集。
+title: PowerShell - 包含 Data Lake Storage Gen1 的 HDInsight 群集 - Azure
+description: 在 Azure PowerShell 中创建和使用包含 Azure Data Lake Storage Gen1 的 Azure HDInsight 群集。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 5e899f28cf5b3c11ae5f935d7bc273c566214225
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97606770"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>通过 PowerShell 创建使用 Azure Data Lake Storage Gen1 作为默认存储的 HDInsight 群集
@@ -67,7 +67,7 @@ ms.locfileid: "97606770"
     ```
 
     > [!NOTE]
-    > 如果注册 Data Lake Storage Gen1 资源提供程序，并收到类似于的错误 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` ，则可能不会为 Data Lake Storage Gen1 批准你的订阅。 要在 Data Lake Storage Gen1 中启用 Azure 订阅，请遵循[通过 Azure 门户开始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。
+    > 如果在注册 Data Lake Storage Gen1 资源提供程序时收到类似于 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的错误，原因可能是订阅未获得 Data Lake Storage Gen1 批准。 要在 Data Lake Storage Gen1 中启用 Azure 订阅，请遵循[通过 Azure 门户开始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。
     >
 
 2. Data Lake Store Gen1 帐户与 Azure 资源组关联。 首先请创建资源组。
@@ -77,7 +77,7 @@ ms.locfileid: "97606770"
     New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
     ```
 
-    应看到如下输出：
+    应该会看到如下输出：
 
     ```output
     ResourceGroupName : hdiadlgrp
@@ -146,7 +146,7 @@ ms.locfileid: "97606770"
     pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
     ```
 
-    出现提示时，请输入前面指定的私钥密码。 为 -po 参数指定的值是与 .pfx 文件关联的密码。 成功完成该命令后，还应在指定的证书目录中看到 **CertFile。**
+    出现提示时，请输入前面指定的私钥密码。 为 -po 参数指定的值是与 .pfx 文件关联的密码。 成功完成该命令后，指定的证书目录中也应会出现 CertFile.pfx。
 
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>创建 Azure AD 和服务主体
 本部分将为 Azure AD 应用程序创建一个服务主体，将角色分配给该服务主体，然后通过提供证书来以服务主体的身份进行身份验证。 若要在 Azure AD 中创建应用程序，请运行以下命令：
@@ -236,7 +236,7 @@ ms.locfileid: "97606770"
     成功完成该 cmdlet 后，应会出现列出群集详细信息的输出。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>在 HDInsight 群集上运行测试作业以使用 Data Lake Storage Gen1
-配置 HDInsight 群集后，可在该群集上运行测试作业，确保该群集可访问 Data Lake Storage Gen1。 若要执行此操作，请运行示例 Hive 作业，以创建一个表，该表使用在 *\<cluster root> /example/data/sample.log* 上的 Data Lake Storage Gen1 中已经提供的示例数据。
+配置 HDInsight 群集后，可在该群集上运行测试作业，确保该群集可访问 Data Lake Storage Gen1。 为此，请运行一个示例 Hive 作业，使用 Data Lake Storage Gen1 的 \<cluster root>/example/data/sample.log 中已提供的示例数据创建一个表。
 
 在本部分，我们将与创建的 HDInsight Linux 群集建立安全外壳 (SSH) 连接，然后运行示例 Hive 查询。
 

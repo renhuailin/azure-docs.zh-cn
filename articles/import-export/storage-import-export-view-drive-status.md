@@ -10,10 +10,10 @@ ms.author: alkohli
 ms.subservice: common
 ms.custom: contperf-fy21q3
 ms.openlocfilehash: 8ef18ea663f3a77589d61ed89c50df38f5cf0d0e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176125"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>查看 Azure 导入/导出作业的状态
@@ -21,17 +21,17 @@ ms.locfileid: "102176125"
 本文提供有关如何查看 Azure 导入/导出作业的驱动器和作业状态的信息。 Azure 导入/导出服务用于将大量数据安全地传输到 Azure Blob 和 Azure文件。 该服务还用于从 Azure Blob 存储导出数据。  
 
 ## <a name="view-job-and-drive-status"></a>查看作业和驱动器状态
-你可以在 Azure 门户的 " **导入/导出** " 选项卡上跟踪导入或导出作业的状态。
+可以在 Azure 门户的“导入”/“导出”选项卡跟踪导入或导出作业的状态。
 1. 登录到 https://portal.azure.com/ 。
-2. 搜索 **导入/导出作业**。
+2. 搜索“导入/导出作业”。
 
     ![搜索导入/导出作业](./media/storage-import-export-view-drive-status/open-import-export-tab.png)
 
- 3. 导入/导出作业的列表将出现在该页上。
+ 3. 随即页面上显示导入/导出作业列表。
 
     ![查看作业状态](./media/storage-import-export-view-drive-status/job-state.png)
 
-4. 选择并单击一个作业以查看作业详细信息。
+4. 选择并单击作业，查看作业详细信息。
 
    ![查看详细作业状态](./media/storage-import-export-view-drive-status/job-detail.png)
   
@@ -84,7 +84,7 @@ Azure 门户中的此映像会显示示例作业的驱动器状态：
 -  作业类型和待复制数据的大小
 -  作业中的磁盘数目。 
 
-导入/导出服务没有 SLA，但在收到磁盘之后，服务力求在 7 到 10 天内完成复制。 除了 Azure 门户上发布的状态以外，你还可以使用 REST API 来跟踪作业进度。 使用 [列出作业](/previous-versions/azure/dn529083(v=azure.100)) 操作 API 调用中的完成百分比参数查看百分比复制进度。
+导入/导出服务没有 SLA，但在收到磁盘之后，服务力求在 7 到 10 天内完成复制。 除了 Azure 门户上发布的状态以外，你还可以使用 REST API 来跟踪作业进度。 在[列出作业](/previous-versions/azure/dn529083(v=azure.100))操作 API 调用中使用完成百分比参数查看复制进度百分比。
 
 
 ## <a name="next-steps"></a>后续步骤

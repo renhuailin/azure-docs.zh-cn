@@ -4,12 +4,12 @@ description: 使用 Docker CLI 将 Docker 映像推送和拉取到 Azure 中的�
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 48f5f1707881ac8461e12212be631d3b80c16ca7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99987759"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783820"
 ---
 # <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将你的第一个映像推送到 Azure 容器注册表
 
@@ -24,7 +24,7 @@ Azure 容器注册表可存储和管理专用容器映像和其他项目，类�
 
 ## <a name="log-in-to-a-registry"></a>登录到注册表
 
-可[通过多种方式验证](container-registry-authentication.md)专用容器注册表。 在命令行中操作时，建议的方法是使用 Azure CLI 命令 [az acr login](/cli/azure/acr#az-acr-login)。 例如，若要登录到名为 myregistry 的注册表，请登录到 Azure CLI，然后向注册表进行身份验证：
+可[通过多种方式验证](container-registry-authentication.md)专用容器注册表。 在命令行中操作时，建议的方法是使用 Azure CLI 命令 [az acr login](/cli/azure/acr#az_acr_login)。 例如，若要登录到名为 myregistry 的注册表，请登录到 Azure CLI，然后向注册表进行身份验证：
 
 ```azurecli
 az login
@@ -114,7 +114,7 @@ docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-若要从 Azure 容器注册表中删除映像，可以使用 Azure CLI 命令[az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete)。 例如，以下命令删除 `samples/nginx:latest` 标记引用的清单、所有唯一的层数据以及引用此清单的其他所有标记。
+若要从 Azure 容器注册表中删除映像，可以使用 Azure CLI 命令[az acr repository delete](/cli/azure/acr/repository#az_acr_repository_delete)。 例如，以下命令删除 `samples/nginx:latest` 标记引用的清单、所有唯一的层数据以及引用此清单的其他所有标记。
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest

@@ -3,12 +3,12 @@ title: 使用 PowerShell 将 Windows Server 备份到 Azure
 description: 本文介绍如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 8876dc30cc60356accaf3c828f0162cca8d7372e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987097"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162412"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -24,13 +24,13 @@ ms.locfileid: "90987097"
 
 以下步骤引导用户创建恢复服务保管库。 恢复服务保管库不同于备份保管库。
 
-1. 如果是首次使用 Azure 备份，则必须使用 **AzResourceProvider** Cmdlet 将 Azure 恢复服务提供程序注册到订阅。
+1. 首次使用 Azure 备份时，必须使用 Register-AzResourceProvider cmdlet 将 Azure 恢复服务提供程序注册到订阅。
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-2. 恢复服务保管库是 Azure 资源管理器资源，因此需要将其放在资源组中。 可以使用现有资源组，也可以创建新组。 创建新的资源组时，请指定资源组的名称和位置。  
+2. 恢复服务保管库是一种 Azure 资源管理器资源，因此需要将它放在资源组中。 可以使用现有资源组，也可以创建新组。 创建新的资源组时，请指定资源组的名称和位置。
 
     ```powershell
     New-AzResourceGroup –Name "test-rg" –Location "WestUS"
@@ -42,7 +42,7 @@ ms.locfileid: "90987097"
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. 请指定要使用的存储冗余类型。 你可以使用 [本地冗余存储 (LRS) ](../storage/common/storage-redundancy.md#locally-redundant-storage)、 [异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md#geo-redundant-storage) 或 [区域冗余存储 (ZRS) ](../storage/common/storage-redundancy.md#zone-redundant-storage)。 下面的示例显示了 **-BackupStorageRedundancy** 选项，适用于 *TestVault* 设置为 **GeoRedundant**。
+4. 请指定要使用的存储冗余类型。 可以使用[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage)、[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) 或[区域冗余存储 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)。 以下示例显示，“testVault”的“-BackupStorageRedundancy”选项设置为“GeoRedundant”。
 
    > [!TIP]
    > 许多 Azure 备份 cmdlet 要求使用恢复服务保管库对象作为输入。 出于此原因，可方便地在变量中存储备份恢复服务保管库对象。
@@ -56,7 +56,7 @@ ms.locfileid: "90987097"
 
 ## <a name="view-the-vaults-in-a-subscription"></a>在订阅中查看保管库
 
-使用 **Get-AzRecoveryServicesVault** 查看当前订阅中所有保管库的列表。 你可以使用此命令检查是否已创建新的保管库，或者查看订阅中有哪些保管库可用。
+使用 **Get-AzRecoveryServicesVault** 查看当前订阅中所有保管库的列表。 可以使用此命令来查看是否创建了新的保管库，或者查看订阅中的可用保管库。
 
 运行 **Get-AzRecoveryServicesVault** 命令即可列出订阅中的所有保管库。
 
@@ -64,7 +64,7 @@ ms.locfileid: "90987097"
 Get-AzRecoveryServicesVault
 ```
 
-```Output
+```output
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -82,12 +82,12 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 或者，使用 PowerShell 获取下载程序：
 
- ```powershell
- $MarsAURL = 'https://aka.ms/Azurebackup_Agent'
- $WC = New-Object System.Net.WebClient
- $WC.DownloadFile($MarsAURL,'C:\downloads\MARSAgentInstaller.EXE')
- C:\Downloads\MARSAgentInstaller.EXE /q
- ```
+```powershell
+$MarsAURL = 'https://aka.ms/Azurebackup_Agent'
+$WC = New-Object System.Net.WebClient
+$WC.DownloadFile($MarsAURL,'C:\downloads\MARSAgentInstaller.exe')
+C:\Downloads\MARSAgentInstaller.exe /q
+```
 
 若要安装代理，请在已提升权限的 PowerShell 控制台中运行以下命令：
 
@@ -95,7 +95,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 MARSAgentInstaller.exe /q
 ```
 
-这会以所有默认选项安装代理。 安装在几分钟内在后台完成。 如果未指定 */nu* 选项，则在安装结束时将打开 " **Windows 更新** " 窗口以检查是否有任何更新。 安装之后，代理会显示在已安装程序列表中。
+这会以所有默认选项安装代理。 安装在几分钟内在后台完成。 如果没有指定 /nu 选项，则安装结束时，会打开“Windows 更新”窗口，检查是否有任何更新。 安装之后，代理会显示在已安装程序列表中。
 
 若要查看已安装的程序列表，请转到“**控制面板**”“ > **程序** > ”“**程序和功能**”。
 
@@ -117,7 +117,7 @@ MARSAgentInstaller.exe /?
 | /p:"location" |Azure 备份代理的安装文件夹路径。 |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s:"location" |Azure 备份代理的缓存文件夹路径。 |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |选择启用 Microsoft Update |- |
-| /nu |安装完成后不检查更新 |- |
+| /nu |安装完成后不要检查更新 |- |
 | /d |卸载 Microsoft Azure 恢复服务代理 |- |
 | /ph |代理主机地址 |- |
 | /po |代理主机端口号 |- |
@@ -148,9 +148,9 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -
 ```
 
 在 Windows Server 或 Windows 客户端计算机上，运行 [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) cmdlet 以将计算机注册到保管库。
-此操作以及用于备份的其他 cmdlet 来自 MSONLINE 模块，该模块是 MARS AgentInstaller 作为安装过程的一部分添加的。
+此 cmdlet 和用于备份的其他 cmdlet 都来自 MARS AgentInstaller 在安装过程中添加的 MSONLINE 模块。
 
-代理安装程序不会更新:P SModulePath 变量的 $Env。 这意味着模块自动加载失败。 若要解决此问题，可以执行以下操作：
+代理安装程序不会更新 $Env:PSModulePath 变量。 这意味着模块自动加载失败。 若要解决此问题，可以执行以下操作：
 
 ```powershell
 $Env:PSModulePath += ';C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules'
@@ -168,7 +168,7 @@ Import-Module -Name 'C:\Program Files\Microsoft Azure Recovery Services Agent\bi
 Start-OBRegistration -VaultCredentials $CredsFilename.FilePath -Confirm:$false
 ```
 
-```Output
+```output
 CertThumbprint      : 7a2ef2caa2e74b6ed1222a5e89288ddad438df2
 SubscriptionID      : ef4ab577-c2c0-43e4-af80-af49f485f3d1
 ServiceResourceName : testvault
@@ -177,13 +177,11 @@ Machine registration succeeded.
 ```
 
 > [!IMPORTANT]
-> 不要使用相对路径来指定保管库凭据文件。 必须提供绝对路径作为 cmdlet 的输入。
->
->
+> 请勿使用相对路径来指定保管库凭据文件。 必须提供绝对路径作为 cmdlet 的输入。
 
 ## <a name="networking-settings"></a>网络设置
 
-如果 Windows 计算机通过代理服务器连接到 Internet，则也可以向代理提供代理设置。 在此示例中，没有代理服务器，因此我们会显式清除任何与代理相关的信息。
+如果 Windows 计算机通过代理服务器连接到 Internet，则也可以向代理提供代理设置。 此示例未使用代理服务器，因此我们会显式清除任何与代理相关的信息。
 
 也可以针对给定的一组星期日期，使用 `work hour bandwidth` 和 `non-work hour bandwidth` 选项控制带宽使用。
 
@@ -193,7 +191,7 @@ Machine registration succeeded.
 Set-OBMachineSetting -NoProxy
 ```
 
-```Output
+```output
 Server properties updated successfully.
 ```
 
@@ -201,7 +199,7 @@ Server properties updated successfully.
 Set-OBMachineSetting -NoThrottle
 ```
 
-```Output
+```output
 Server properties updated successfully.
 ```
 
@@ -211,7 +209,7 @@ Server properties updated successfully.
 
 必须通过在 Azure 门户的“恢复服务保管库”部分的“设置” > “属性” > “安全 PIN”下选择“生成”来生成安全 PIN    。
 
->[!NOTE]
+> [!NOTE]
 > 安全 PIN 只能通过 Azure 门户生成。
 
 然后，将其用作命令中的 `generatedPIN`：
@@ -221,18 +219,16 @@ $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -
 Set-OBMachineSetting -EncryptionPassPhrase $PassPhrase -SecurityPin "<generatedPIN>"
 ```
 
-```Output
+```output
 Server properties updated successfully
 ```
 
 > [!IMPORTANT]
-> 设置密码后，请确保密码信息安全可靠。 如果没有此通行短语，将无法从 Azure 还原数据。
->
->
+> 请妥善保管设置好的通行短语，并保证其安全。 如果没有此通行短语，将无法从 Azure 还原数据。
 
 ## <a name="back-up-files-and-folders"></a>备份文件和文件夹
 
-从 Windows Server 和客户端到 Azure 备份的所有备份由策略控制。 此策略包括三个部分：
+从 Windows Server 和客户端到 Azure 备份的所有备份由策略控制。 策略由三个部分组成：
 
 1. **备份计划** ，用于指定需要备份并与服务保持同步的时间。
 2. **保留计划** ，用于指定要在 Azure 中保留恢复点的时长。
@@ -244,7 +240,7 @@ Server properties updated successfully
 $NewPolicy = New-OBPolicy
 ```
 
-此时，策略为空，并且需要其他 cmdlet 来定义要包含或排除的项、运行备份的时间以及存储备份的位置。
+该策略暂时是空的，需要使用其他 cmdlet 来定义要包含或排除的项、运行备份的时间，以及备份的存储位置。
 
 ### <a name="configuring-the-backup-schedule"></a>配置备份计划
 
@@ -265,13 +261,13 @@ $Schedule = New-OBSchedule -DaysOfWeek Saturday, Sunday -TimesOfDay 16:00
 Set-OBSchedule -Policy $NewPolicy -Schedule $Schedule
 ```
 
-```Output
+```output
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName : RetentionPolicy : State : New PolicyState : Valid
 ```
 
 ### <a name="configuring-a-retention-policy"></a>配置保留策略
 
-保留策略定义基于备份作业创建的恢复点的保留时间。 使用 [OBRetentionPolicy](/powershell/module/msonlinebackup/new-obretentionpolicy) cmdlet 创建新的保留策略时，可以指定备份恢复点将在 Azure 备份中保留的天数。 以下示例将保留策略设置为 7 天。
+保留策略定义基于备份作业创建的恢复点的保留时间。 使用 [New-OBRetentionPolicy](/powershell/module/msonlinebackup/new-obretentionpolicy) cmdlet 创建新的保留策略时，可以使用 Azure 备份来指定将保留备份恢复点的天数。 以下示例将保留策略设置为 7 天。
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
@@ -283,7 +279,7 @@ $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
 Set-OBRetentionPolicy -Policy $NewPolicy -RetentionPolicy $RetentionPolicy
 ```
 
-```Output
+```output
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
                   Every 1 week(s)
@@ -322,7 +318,7 @@ $Exclusions = New-OBFileSpec -FileSpec @("C:\windows", "C:\temp") -Exclude
 Add-OBFileSpec -Policy $NewPolicy -FileSpec $Inclusions
 ```
 
-```Output
+```output
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
                   Every 1 week(s)
@@ -363,7 +359,7 @@ PolicyState     : Valid
 Add-OBFileSpec -Policy $NewPolicy -FileSpec $Exclusions
 ```
 
-```Output
+```output
 BackupSchedule  : 4:00 PM
                   Saturday, Sunday,
                   Every 1 week(s)
@@ -416,7 +412,7 @@ PolicyState     : Valid
 Get-OBPolicy | Remove-OBPolicy
 ```
 
-```Output
+```output
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
@@ -426,7 +422,7 @@ Microsoft Azure Backup Are you sure you want to remove this backup policy? This 
 Set-OBPolicy -Policy $NewPolicy
 ```
 
-```Output
+```output
 Microsoft Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s)
 DsList : {DataSource
@@ -474,7 +470,7 @@ State : Existing PolicyState : Valid
 Get-OBPolicy | Get-OBSchedule
 ```
 
-```Output
+```output
 SchedulePolicyName : 71944081-9950-4f7e-841d-32f0a0a1359a
 ScheduleRunDays : {Saturday, Sunday}
 ScheduleRunTimes : {16:00:00}
@@ -485,7 +481,7 @@ State : Existing
 Get-OBPolicy | Get-OBRetentionPolicy
 ```
 
-```Output
+```output
 RetentionDays : 7
 RetentionPolicyName : ca3574ec-8331-46fd-a605-c01743a5265e
 State : Existing
@@ -495,7 +491,7 @@ State : Existing
 Get-OBPolicy | Get-OBFileSpec
 ```
 
-```Output
+```output
 FileName : *
 FilePath : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
 FileSpec : D:\
@@ -529,7 +525,7 @@ IsRecursive : True
 Get-OBPolicy | Start-OBBackup
 ```
 
-```Output
+```output
 Initializing
 Taking snapshot of volumes...
 Preparing storage...
@@ -562,13 +558,13 @@ $rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -Retention
 
 ```powershell
 New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
- ```
+```
 
 ### <a name="verifying-the-policy"></a>验证策略
 
 ```powershell
 Get-OBSystemStatePolicy
- ```
+```
 
 ## <a name="restore-data-from-azure-backup"></a>从 Azure 备份还原数据
 
@@ -581,14 +577,14 @@ Get-OBSystemStatePolicy
 
 ### <a name="picking-the-source-volume"></a>选取源卷
 
-若要从 Azure 备份还原项，首先需要标识项的源。 由于我们要在 Windows Server 或 Windows 客户端的上下文中执行命令，因此已识别了计算机。 识别源的下一步是识别它所在的卷。 运行 [Get-OBRecoverableSource](/powershell/module/msonlinebackup/get-obrecoverablesource) cmdlet 可以检索正在从此计算机备份的卷或源的列表。 此命令返回从此服务器/客户端备份的所有源的数组。
+若要从 Azure 备份还原某个项，需要先识别该项的源。 由于我们要在 Windows Server 或 Windows 客户端的上下文中执行命令，因此已识别了计算机。 识别源的下一步是识别它所在的卷。 运行 [Get-OBRecoverableSource](/powershell/module/msonlinebackup/get-obrecoverablesource) cmdlet 可以检索正在从此计算机备份的卷或源的列表。 此命令返回从此服务器/客户端备份的所有源的数组。
 
 ```powershell
 $Source = Get-OBRecoverableSource
 $Source
 ```
 
-```Output
+```output
 FriendlyName : C:\
 RecoverySourceName : C:\
 ServerName : myserver.microsoft.com
@@ -607,7 +603,7 @@ $Rps = Get-OBRecoverableItem $Source[0]
 $Rps
 ```
 
-```Output
+```output
 
 IsDir                : False
 ItemNameFriendly     : C:\
@@ -632,7 +628,7 @@ ItemSize             :
 ItemLastModifiedTime :
 ```
 
-对象 `$Rps` 是备份点数组。 第一个元素是最新备份点，第 N 个元素是最旧的备份点。 为了选择最新的点，我们将使用 `$Rps[0]` 。
+对象 `$Rps` 是备份点数组。 第一个元素是最新备份点，第 N 个元素是最旧的备份点。 为了选择最新的点，我们会使用 `$Rps[0]`。
 
 ### <a name="specifying-an-item-to-restore"></a>指定要还原的项
 
@@ -643,7 +639,7 @@ $Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
 $Item
 ```
 
-```Output
+```output
 IsDir                : False
 ItemNameFriendly     : C:\Test\cat.jpg
 ItemNameGuid         :
@@ -654,12 +650,11 @@ PointInTime          : 10/17/2019 7:52:13 PM
 ServerName           : myserver.microsoft.com
 ItemSize             :
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
-
 ```
 
 ### <a name="triggering-the-restore-process"></a>触发还原过程
 
-为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](/powershell/module/msonlinebackup/new-obrecoveryoption) cmdlet 来完成。 对于本示例，假设我们想要将文件还原到 *C：\temp*。假设要跳过目标文件夹 *C：\temp*中已存在的文件。若要创建此类恢复选项，请使用以下命令：
+为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](/powershell/module/msonlinebackup/new-obrecoveryoption) cmdlet 来完成。 在本示例中，我们假设要将文件还原到 C:\temp。此外，我们假设要跳过目标文件夹 C:\temp 中已存在的文件。若要创建此类恢复选项，请使用以下命令：
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
@@ -671,7 +666,7 @@ $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption
 ```
 
-```Output
+```output
 Estimating size of backup items...
 Estimating size of backup items...
 Estimating size of backup items...
@@ -706,7 +701,7 @@ The recovery operation completed successfully.
 Get-Service -Name WinRM
 ```
 
-```Output
+```output
 Status   Name               DisplayName
 ------   ----               -----------
 Running  winrm              Windows Remote Management (WS-Manag...
@@ -718,7 +713,7 @@ Running  winrm              Windows Remote Management (WS-Manag...
 Enable-PSRemoting -Force
 ```
 
-```Output
+```output
 WinRM is already set up to receive requests on this computer.
 WinRM has been updated for remote management.
 WinRM firewall exception enabled.

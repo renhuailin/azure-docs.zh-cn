@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 73251fcbe9f149979d3fd62d14bbca86d77027f2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657530"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640136"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>使用 Azure Cosmos DB 和 Power BI 创建实时仪表板
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -72,7 +72,7 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
    
    |属性  |数据类型  |筛选器  |
    |---------|---------|---------|
-   |_ts     |   Numeric      |  [_ts] > Duration.TotalSeconds(RangeStart - #datetime(1970, 1, 1, 0, 0, 0)) and [_ts] < Duration.TotalSeconds(RangeEnd - #datetime(1970, 1, 1, 0, 0, 0)))       |
+   |_ts        |   Numeric      |  [_ts] > Duration.TotalSeconds(RangeStart - #datetime(1970, 1, 1, 0, 0, 0)) and [_ts] < Duration.TotalSeconds(RangeEnd - #datetime(1970, 1, 1, 0, 0, 0)))       |
    |Date（例如：- 2019-08-19）     |   String      | [Document.date]> DateTime.ToText(RangeStart,"yyyy-MM-dd") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd")        |
    |Date（例如：- 2019-08-11 12:00:00）   |  String       |  [Document.date]> DateTime.ToText(RangeStart," yyyy-mm-dd HH:mm:ss") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-mm-dd HH:mm:ss")       |
 
@@ -100,7 +100,7 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
 
 1. **创建新的 Azure Analysis Services 群集**  -  在 Azure Cosmos 帐户和 Databricks 群集所在的同一区域中 [创建 Azure Analysis Services 的实例](../analysis-services/analysis-services-create-server.md)。
 
-1. **在 Visual Studio 中创建新的 Analysis Services 表格项目**  -   [安装 SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017&preserve-view=true)，并在 Visual Studio 中创建一个 Analysis Services 表格项目。
+1. **在 Visual Studio 中创建新的 Analysis Services 表格项目**  -   [安装 SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)，并在 Visual Studio 中创建一个 Analysis Services 表格项目。
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="创建 Azure Analysis Services 项目":::
 
@@ -142,7 +142,7 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
 
    此外，将气温列的数据类型更改为“Decimal”，以确保可以在 Power BI 中绘出这些值。
 
-1. **创建 Azure Analysis 分区** - 在 Azure Analysis Services 中创建分区，以将数据集划分到可按不同的频率独立刷新的逻辑分区。 在此示例中，将创建两个分区，将数据集划分为最近的月份的数据和其他内容。
+1. **创建 Azure Analysis 分区** - 在 Azure Analysis Services 中创建分区，以将数据集划分到可按不同的频率独立刷新的逻辑分区。 此示例将创建两个分区，以将数据集划分为最近月份的数据和任何其他内容。
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="创建 Analysis Services 分区":::
 
@@ -155,7 +155,7 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="部署 Azure Analysis Services 模型":::
 
-1. **配置分区刷新与合并** - Azure Analysis Services 允许独立处理分区。 由于我们希望使用最新的数据持续更新“最近月份”分区，因此请将刷新间隔设置为 5 分钟。  可以使用 [REST API](../analysis-services/analysis-services-async-refresh.md)、 [Azure 自动化](../analysis-services/analysis-services-refresh-azure-automation.md)或 [逻辑应用](../analysis-services/analysis-services-refresh-logic-app.md)来刷新数据。 不需要刷新历史分区中的数据。 此外，还需要编写一些代码将“最近月份”分区合并到历史分区，并创建一个新的“最近月份”分区。
+1. **配置分区刷新与合并** - Azure Analysis Services 允许独立处理分区。 由于我们希望使用最新的数据持续更新“最近月份”分区，因此请将刷新间隔设置为 5 分钟。  可使用 [REST API](../analysis-services/analysis-services-async-refresh.md)、[Azure 自动化](../analysis-services/analysis-services-refresh-azure-automation.md)或[逻辑应用](../analysis-services/analysis-services-refresh-logic-app.md)刷新数据。 不需要刷新历史分区中的数据。 此外，还需要编写一些代码将“最近月份”分区合并到历史分区，并创建一个新的“最近月份”分区。
 
 ## <a name="connect-power-bi-to-analysis-services"></a>将 Power BI 连接到 Analysis Services
 

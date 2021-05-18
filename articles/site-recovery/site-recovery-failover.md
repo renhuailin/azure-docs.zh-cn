@@ -5,10 +5,10 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 6737f64773f91ede1631d42cd7f28c7d961c0454
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92368615"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>运行从本地到 Azure 的故障转移
@@ -46,7 +46,7 @@ ms.locfileid: "92368615"
 1. 在 Site Recovery 保管库中，选择“恢复计划” > “recoveryplan_name”   。
 2. 单击 **“故障转移”** 。
 
-    ![Azure Site Recovery 屏幕截图，其中显示了从 "更多" 菜单中选择 "故障转移" 的 ADRP 窗格。](./media/site-recovery-failover/Failover.png)
+    ![Azure Site Recovery 的屏幕截图，其中显示了 ADRP 窗格，并从“更多”菜单中选择了“故障转移”。](./media/site-recovery-failover/Failover.png)
 
 3. 在“故障转移” > “故障转移方向”中，如果要复制到 Azure，则保留默认值   。
 4. 在“故障转移”中，选择要故障转移到的恢复点   。
@@ -67,7 +67,7 @@ ms.locfileid: "92368615"
 6. 在“作业”页上跟踪故障转移进度。 即使发生错误，恢复计划也会运行到完成为止。
 7. 故障转移后，登录到 VM 进行验证。 
 8. 如果要切换到用于故障转移的其他恢复点，请使用“更改恢复点”。
-9. 准备就绪后，就可以提交故障转移。**提交**操作将删除该服务可用的所有恢复点。 “更改恢复点”选项将不再可用。
+9. 准备就绪后，就可以提交故障转移。**提交** 操作将删除该服务可用的所有恢复点。 “更改恢复点”选项将不再可用。
 
 ## <a name="run-a-planned-failover-hyper-v"></a>运行计划故障转移 (Hyper-V)
 
@@ -81,10 +81,10 @@ ms.locfileid: "92368615"
 
 有多个与故障转移相关的作业。
 
-!["作业" 页的屏幕截图，其中显示了组1：开始 (1) 展开在 "名称" 列中的作业列表。 SQLServer 作业的行突出显示。](./media/site-recovery-failover/FailoverJob.png)
+![“作业”页面的屏幕截图，其中显示了在“名称”列中展开的“组 1: Start(1)”的作业列表。 突出显示了 SQLServer 作业行。](./media/site-recovery-failover/FailoverJob.png)
 
 - **先决条件检查**：确保满足故障转移所需的全部条件。
-- **故障转移**：处理数据，以便通过其创建 Azure VM。 如果选择了**最新的**恢复点，则会基于发送到服务的数据创建恢复点。
+- **故障转移**：处理数据，以便通过其创建 Azure VM。 如果选择了 **最新的** 恢复点，则会基于发送到服务的数据创建恢复点。
 - **开始**：使用上一步中处理的数据创建 Azure VM。
 
 > [!WARNING]

@@ -1,19 +1,19 @@
 ---
 title: Service Fabric 群集资源管理器简介
-description: 了解 Service Fabric 群集资源管理器，通过它可以管理应用程序服务的业务流程。
+description: 了解 Service Fabric 群集资源管理器，通过它可管理应用程序服务的业务流程。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: da9205f5d95eaf1b4dc655ee727ab8a4fe90893d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75563320"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric 群集 Resource Manager 简介
-在传统上，管理 IT 系统或联机服务意味着将特定物理机或虚拟机专用于这些特定的服务或系统。 服务构建为层级形式。 这些层级分为“ Web”层和“数据”（或“存储”）层。 应用程序会有消息传送层（请求在其中流入和流出）以及一组专用于缓存的计算机。 每个层级或每种类型的工作负荷都有特定的专用计算机：数据库需要一些专用计算机，Web 服务器也需要一些。 如果特定类型的工作负荷导致运行它的计算机运行温度过高，则可以向该层添加更多具有该相同配置的计算机。 但是，并非所有工作负荷都可以如此轻松地进行横向扩展 - 尤其是在数据层中，通常需要将计算机替换为更大的计算机。 这很容易理解。 如果某台计算机发生故障，则在还原该计算机之前，整个应用程序中的该部件以较低容量来运行。 这仍然很容易理解（但不一定有趣）。
+在传统上，管理 IT 系统或联机服务意味着将特定物理机或虚拟机专用于这些特定的服务或系统。 服务构建为层级形式。 这些层级分为“ Web”层和“数据”（或“存储”）层。 应用程序会有消息传送层（请求在其中流入和流出）以及一组专用于缓存的计算机。 每个层级或每种类型的工作负荷都有特定的专用计算机：数据库需要一些专用计算机，Web 服务器也需要一些。 如果特定类型的工作负荷导致运行它的计算机运行温度过高，则可以向该层添加更多具有该相同配置的计算机。 但是，并非所有工作负荷都可以如此轻松地进行横向扩展 - 尤其是在数据层中，通常需要将计算机替换为更大的计算机。 简单。 如果某台计算机发生故障，则在还原该计算机之前，整个应用程序中的该部件以较低容量来运行。 这仍然很容易理解（但不一定有趣）。
 
 然而，现在的服务和软件体系结构领域已发生改变。 应用程序采用横向扩展设计更为常见。 具有容器和/或微服务的应用程序的构建已较为普遍。 现在，虽然可能仍只具有几台计算机，但它们已不只是运行单个工作负荷实例。 它们甚至可以同时运行多个不同的工作负荷。 现在有多个不同类型的服务（没有一个服务需要占用整个计算机的资源），可能使用了这些服务的数百个不同实例。 每个命名实例都有一个或多个实例或副本用于高可用性 (HA)。 根据这些工作负荷的大小及其繁忙程度，可能需要数百至数千台计算机。 
 
@@ -40,14 +40,14 @@ ms.locfileid: "75563320"
 
 网络均衡器或消息路由器尝试确保 Web/辅助角色层大致保持均衡。 用于平衡数据层的策略有所不同，具体取决于数据存储机制。 数据层的平衡依赖于数据分区、缓存、托管视图、存储过程和其他特定于存储的机制。
 
-尽管其中有些策略很有作用，但 Service Fabric 群集 Resource Manager 的功能并不像网络负载均衡器或缓存一样。 网络负载均衡器通过在前端分散流量来确保前端均衡。 Service Fabric 群集资源管理器采用不同的策略。 从根本上说，Service Fabric 会将*服务*移到服务最适用且流量或负载应跟随的位置。 例如，它可能会将服务移至当前冷门的节点，因为那里的服务未在做很多工作。 这些节点可能冷门，因为已存在的服务已删除或移到其他位置。 再举一例，群集 Resource Manager 还可以将服务移出计算机。 可能是计算机将要升级，或由于其上运行的服务的资源消耗量达到峰值而超载。 或者，服务的资源需求可能已增加。 因此，此计算机上没有足够的资源来继续运行服务。 
+尽管其中有些策略很有作用，但 Service Fabric 群集 Resource Manager 的功能并不像网络负载均衡器或缓存一样。 网络负载均衡器通过在前端分散流量来确保前端均衡。 Service Fabric 群集资源管理器采用不同的策略。 从根本上说，Service Fabric 会将 *服务* 移到服务最适用且流量或负载应跟随的位置。 例如，它可能会将服务移至当前冷门的节点，因为那里的服务未在做很多工作。 这些节点可能冷门，因为已存在的服务已删除或移到其他位置。 再举一例，群集 Resource Manager 还可以将服务移出计算机。 可能是计算机将要升级，或由于其上运行的服务的资源消耗量达到峰值而超载。 或者，服务的资源需求可能已增加。 因此，此计算机上没有足够的资源来继续运行服务。 
 
 由于群集资源管理器负责移动服务，因此它提供一个不同于网络负载均衡器的功能集。 这是因为，网络负载均衡器将网络流量传送到服务所在位置，即使这个位置并不适合运行该服务。 Service Fabric 群集资源管理器使用本质上不同的策略来确保可以高效利用群集中的资源。
 
 ## <a name="next-steps"></a>后续步骤
-- 有关群集资源管理器中的体系结构和信息流的信息，请参阅[此文](service-fabric-cluster-resource-manager-architecture.md)
+- 要了解群集资源管理器中的体系结构和信息流，请查看[此文](service-fabric-cluster-resource-manager-architecture.md)
 - 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些指标，请查看这篇[描述 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章
 - 有关配置服务的详细信息，请参阅[了解如何配置服务](service-fabric-cluster-resource-manager-configure-services.md)
 - 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 若要详细了解指标及其配置方式，请查看[本文](service-fabric-cluster-resource-manager-metrics.md)
 - 群集 Resource Manager 可与 Service Fabric 的管理功能配合使用。 若要了解有关这种集成的详细信息，请阅读[此文](service-fabric-cluster-resource-manager-management-integration.md)
-- 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
+- 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[均衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章

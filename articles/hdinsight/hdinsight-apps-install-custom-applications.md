@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 9591551b7d5657803e770bd71b47acb141b40fb6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 19dd5bf94b524ff3eb6eb601c77b503a0040bd75
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942694"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867638"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装自定义 Apache Hadoop 应用程序
 
-本文介绍如何在 Azure HDInsight 上安装尚未发布到 Azure 门户的 [Apache Hadoop](https://hadoop.apache.org/) 应用程序。 您将在本文中安装的应用程序是 [色调](https://gethue.com/)。
+本文介绍如何在 Azure HDInsight 上安装尚未发布到 Azure 门户的 [Apache Hadoop](https://hadoop.apache.org/) 应用程序。 在本文中，要安装的应用程序是 [Hue](https://gethue.com/)。
 
 HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程序。  这些应用程序可能是 Microsoft、独立软件供应商 (ISV) 或自己开发的。  
 
@@ -68,7 +68,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
 ## <a name="validate-the-installation"></a>验证安装
 
-可以在 Azure 门户中检查应用程序状态，以验证应用程序安装。 此外，还可以验证所有 HTTP 终结点是否按预期方式出现，以及网页（如果有）。
+可以在 Azure 门户中检查应用程序状态，以验证应用程序安装。 此外，还可以验证所有 HTTP 终结点和网页（如果有）是否按预期出现。
 
 对于 **Hue**，可以使用以下步骤：
 
@@ -106,13 +106,13 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
     从门户打开群集，并在“设置”中选择“应用程序”：
 
-    ![hdinsight 应用程序安装错误](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-error.png)
+    :::image type="content" source="./media/hdinsight-apps-install-custom-applications/hdinsight-apps-error.png" alt-text="hdinsight 应用程序安装错误":::
 
 * HDInsight 脚本操作：如果 HDInsight 应用程序的错误消息指出脚本操作失败，“脚本操作”窗格会显示有关脚本失败的详细信息。
 
     从“设置”中选择“脚本操作”。 脚本操作历史记录中显示了错误消息
 
-    ![hdinsight 应用程序脚本操作错误](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-script-action-error.png)
+    :::image type="content" source="./media/hdinsight-apps-install-custom-applications/hdinsight-apps-script-action-error.png" alt-text="hdinsight 应用程序脚本操作错误":::
 
 * Apache Ambari Web UI：如果安装脚本是失败的原因，请使用 Ambari Web UI 来检查有关安装脚本的完整日志。
 

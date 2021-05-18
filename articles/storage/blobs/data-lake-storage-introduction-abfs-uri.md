@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Lake Storage Gen2 URI
-description: 了解 abfs 方案标识符的 URI 语法，它代表用于 Azure Data Lake Storage Gen2)  (Hadoop Filesystem 驱动程序的 Azure Blob 文件系统驱动程序。
+description: 了解 abfs 方案标识符的 URI 语法，该标识符表示 Azure Blob File System 驱动程序（适用于 Azure Data Lake Storage Gen2 的 Hadoop Filesystem 驱动程序）。
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: 948b5aa0ad015f9f3c693e13219ec034724687c0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95913158"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>使用 Azure Data Lake Storage Gen2 URI

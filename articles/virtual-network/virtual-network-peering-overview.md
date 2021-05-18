@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.openlocfilehash: 1356c896abff8c525df283251240d027123405fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216744"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778283"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
-利用虚拟网络对等互连，可以在 Azure 中无缝连接两个或多个 [虚拟网络](virtual-networks-overview.md) 。 出于连接目的，两个虚拟网络会显示为一个。 对等互连虚拟网络中虚拟机之间的流量使用 Microsoft 主干基础结构。 类似于同一网络中的虚拟机之间的流量，仅通过 Microsoft 的 *专用* 网络路由流量。
+使用虚拟网络对等互连可以无缝连接 Azure 中的两个或更多个[虚拟网络](virtual-networks-overview.md)。 出于连接目的，两个虚拟网络会显示为一个。 对等互连虚拟网络中虚拟机之间的流量使用 Microsoft 主干基础结构。 与同一网络中的虚拟机之间的流量一样，这些流量仅通过 Microsoft 的专用网络路由。
 
 Azure 支持以下类型的对等互连：
 

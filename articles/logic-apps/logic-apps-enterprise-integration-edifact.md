@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96006517"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 EDIFACT 消息以实现 B2B 企业集成
@@ -84,7 +84,7 @@ ms.locfileid: "96006517"
 1. 在“添加”下面，选择“接收设置”。 
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
-   **接收设置** 分为以下几部分：标识符、确认、架构、控制编号、验证和内部设置。
+   “接收设置”划分为以下部分：“标识符”、“确认”、“架构”、“控制编号”、“验证”和“内部设置”。
 
    ![配置“接收设置”](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
@@ -158,7 +158,7 @@ ms.locfileid: "96006517"
 1.  在“添加”下面，选择“发送设置”。 
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
-    **发送设置** 分为以下几部分：标识符、确认、架构、信封、字符集和分隔符、控制编号和验证。
+    “发送设置”划分为以下部分：“标识符”、“确认”、“架构”、“字符集和分隔符”、“控制编号”和“验证”。
 
     ![配置“发送设置”](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
 
@@ -247,7 +247,7 @@ ms.locfileid: "96006517"
 
 2.  还可以在集成帐户概述中查看协议。 在集成帐户菜单中选择“概述”，并选择“协议”磁贴。  
 
-    ![显示协议磁贴的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![显示“协议”磁贴的屏幕截图。](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="connector-reference"></a>连接器参考
 

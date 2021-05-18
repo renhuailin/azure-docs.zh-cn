@@ -1,6 +1,6 @@
 ---
 title: 为云解决方案提供商计划部署 StorSimple Virtual Array
-description: 了解 CSP 合作伙伴如何向现有客户添加客户或新订阅，然后创建用于在 CSP 中部署 StorSimple 虚拟阵列的服务。
+description: 了解 CSP 合作伙伴如何向现有客户添加客户或新订阅，并创建服务，以在 CSP 中部署 StorSimple Virtual Array。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021854"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>为云解决方案提供商计划部署 StorSimple Virtual Array

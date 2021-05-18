@@ -13,24 +13,26 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6616b0573019703f287d3be521569f5953aeb032
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.openlocfilehash: 7ff61811e8b736f8f6d104a253cfe5dc5e76c428
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600283"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771356"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>使用 MSAL.NET 初始化客户端应用程序
-本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 初始化公共客户端和机密客户端应用程序。  若要详细了解客户端应用程序类型和应用程序配置选项，请阅读[概述](msal-client-applications.md)。
+本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 初始化公共客户端和机密客户端应用程序。  若要详细了解客户端应用程序类型，请参阅[公共客户端和机密客户端应用程序](msal-client-applications.md)。
 
 使用 MSAL.NET 3.x 实例化应用程序的建议方式是使用应用程序生成器 `PublicClientApplicationBuilder` 和 `ConfidentialClientApplicationBuilder`。 这些生成器提供强大的机制用于通过代码、配置文件甚至两者的混合来配置应用程序。
+
+[API 参考文档](/dotnet/api/microsoft.identity.client) | [NuGet 上的包](https://www.nuget.org/packages/Microsoft.Identity.Client/) | [库源代码](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [代码示例](sample-v2-code.md)
 
 ## <a name="prerequisites"></a>先决条件
 在初始化应用程序之前，首先需要[将其注册](quickstart-register-app.md)，使应用能够与 Microsoft 标识平台集成。  注册后，可能需要以下信息（可在 Azure 门户中找到）：
 
 - 客户端 ID（表示 GUID 的字符串）
 - 标识提供者 URL（为实例命名）和应用程序的登录受众。 这两个参数统称为颁发机构。
-- 租户 ID：如果你编写的业务线应用程序（也称为单租户应用程序）专用于自己的组织。
+- 如果你仅在为组织编写业务线应用程序（也称为单租户应用程序），则为租户 ID。
 - 应用程序机密（客户端机密字符串）；对于机密客户端应用，需要获取证书（类型为 X509Certificate2）。
 - 对于 Web 应用或者公共客户端应用（特别是当你的应用需要使用中转站时），还将需要设置 redirectUri，标识提供者将在其中使用安全令牌联系你的应用程序。
 
@@ -39,7 +41,7 @@ ms.locfileid: "98600283"
 
 ### <a name="initializing-a-public-client-application-from-code"></a>通过代码初始化公共客户端应用程序
 
-下面的代码实例化公用客户端应用程序、在 Microsoft Azure 公有云中登录用户，以及他们的工作和学校帐户或个人 Microsoft 帐户。
+以下代码实例化公共客户端应用程序，让用户通过其工作和学校帐户或其个人 Microsoft 帐户在 Microsoft Azure 公有云中登录。
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
@@ -48,7 +50,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="initializing-a-confidential-client-application-from-code"></a>通过代码初始化机密客户端应用程序
 
-同样，下面的代码将机密应用程序 (一个 Web 应用 `https://myapp.azurewebsites.net` ，该应用位于) 处理 Microsoft Azure 公有云中用户的令牌中，以及其工作和学校帐户，或者其个人 Microsoft 帐户。 标识提供者通过共享客户端机密标识该应用程序：
+以下代码以相同的方式实例化一个机密应用程序（位于 `https://myapp.azurewebsites.net` 上的 Web 应用），该应用程序可以使用工作和学校帐户或个人 Microsoft 帐户处理 Microsoft Azure 公有云中用户的令牌。 标识提供者通过共享客户端机密标识该应用程序：
 
 ```csharp
 string redirectUri = "https://myapp.azurewebsites.net";
@@ -141,7 +143,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-有趣的是，针对国家云的编程现在已简化。 如果你希望你的应用程序成为全国云中的多租户应用程序，可以编写，例如：
+有趣的是，针对国家/地区云的编程现已简化。 例如，如果希望应用程序成为国家/地区云的多租户应用程序，可以编写：
 
 ```csharp
 IPublicClientApplication app;
@@ -169,9 +171,9 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ## <a name="next-steps"></a>后续步骤
 
-初始化客户端应用程序后，下一项任务是添加对用户登录和/或授权 API 访问的支持。
+初始化客户端应用程序后，下一项任务是添加对用户登录和/或已授权 API 访问的支持。
 
-我们的应用程序方案文档提供了有关在用户中签名和获取访问令牌以代表该用户访问 API 的指南：
+我们的应用程序方案文档提供了有关将用户登录和获取访问令牌以代表用户访问 API 的指南：
 
 - [用于登录用户的 Web 应用：登录和注销](scenario-web-app-sign-user-sign-in.md)
-- [用于调用 web Api 的 web 应用：获取令牌](scenario-web-app-call-api-acquire-token.md)
+- [调用 Web API 的 Web 应用：获取令牌](scenario-web-app-call-api-acquire-token.md)

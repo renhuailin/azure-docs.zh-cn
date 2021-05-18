@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
 ms.openlocfilehash: f909f5714a049f63032c8a23ca1731777a40d332
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101702855"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>排查 Azure HDInsight 中的群集创建失败问题
@@ -28,7 +28,7 @@ ms.locfileid: "101702855"
 
 如果使用的是 Azure Data Lake Storage Gen2 并收到错误 `AmbariClusterCreationFailedErrorCode`（“:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::”），请打开 Azure 门户，转到你的存储帐户，并在访问控制 (IAM) 下确保“存储 Blob 数据参与者”或“存储 Blob 数据所有者”角色已经为该订阅的“用户分配的托管标识”分配了访问权限  。 有关详细说明，请参阅[在 Data Lake Storage Gen2 上设置托管标识的权限](../hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2)。
 
-如果使用 Azure Data Lake Storage Gen1，请参阅安装和配置说明在 [Azure HDInsight 群集中使用 Azure Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)。 HBase 群集不支持 Data Lake Storage Gen1，HDInsight 版本4.0 不支持此项。
+如果使用 Azure Data Lake Storage Gen1，请参阅安装和配置说明[在 Azure HDInsight 群集中使用 Azure Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)。 HBase 群集以及 HDInsight 版本 4.0 都不支持 Data Lake Storage Gen1。
 
 如果使用 Azure 存储，请确保创建群集期间存储帐户名称有效。
 
@@ -65,7 +65,7 @@ ms.locfileid: "101702855"
 
 ## <a name="unsupported-component-versions"></a>不支持的组件版本
 
-确保你使用的是 [受支持版本的 Azure HDInsight 和解决方案中 Apache Hadoop 组件](../hdinsight-component-versioning.md) 。  
+确保在解决方案中使用[受支持版本的 Azure HDInsight 和 Apache Hadoop 组件](../hdinsight-component-versioning.md)。  
 
 ## <a name="storage-account-name-restrictions"></a>存储帐户名称限制
 

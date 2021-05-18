@@ -1,5 +1,5 @@
 ---
-title: PIM 中的访问评审的资源仪表板-Azure AD |Microsoft Docs
+title: PIM 中访问评审的资源仪表板 - Azure AD | Microsoft Docs
 description: 介绍如何使用资源仪表板在 Azure AD Privileged Identity Management (PIM) 中执行访问评审。
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e95eaa5b0e86a7470fc48edc23b2dbfb47e4b10c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84743722"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review-in-privileged-identity-management"></a>使用资源仪表板在 Privileged Identity Management 中执行访问评审
@@ -43,4 +43,4 @@ ms.locfileid: "84743722"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Privileged Identity Management 中启动 Azure 资源角色的访问评审](pim-resource-roles-start-access-review.md)
+- [在 Privileged Identity Management 中启动对 Azure 资源角色的访问评审](pim-resource-roles-start-access-review.md)

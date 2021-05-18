@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792593"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>如何使用批处理来提升 Azure SQL 数据库和 Azure SQL 托管实例应用程序的性能
@@ -33,7 +33,7 @@ ms.locfileid: "92792593"
 * Azure SQL 数据库和 Azure SQL 托管实例的多租户特征意味着数据访问层的效率与数据库的总体缩放性有关。 在响应使用量超过预定义的配额时，Azure SQL 数据库和 Azure SQL 托管实例可减小吞吐量或引发限制异常。 一些提高效率的措施（如批处理），允许你在达到这些配额前做更多的工作。
 * 批处理对于使用多个数据库或联合的体系结构也很有效（分片）。 与每个数据库单位的交互效率仍是影响总体伸缩性的关键因素。
 
-使用 Azure SQL 数据库或 Azure SQL 托管实例的好处之一是，你不必管理托管数据库的服务器。 但是，这个托管的基础结构也意味着必须重新考虑数据库优化。 你将不再致力于改进数据库硬件或网络基础结构。 Microsoft Azure 将控制这些环境。 你可以控制的主要方面是应用程序如何与 Azure SQL 数据库和 Azure SQL 托管实例交互。 批处理就是这些优化措施之一。
+使用 Azure SQL 数据库或 Azure SQL 托管实例的一个好处是不必管理托管数据库的服务器。 但是，这个托管的基础结构也意味着必须重新考虑数据库优化。 你将不再致力于改进数据库硬件或网络基础结构。 Microsoft Azure 将控制这些环境。 你可以控制的主要方面是应用程序如何与 Azure SQL 数据库和 Azure SQL 托管实例交互。 批处理就是这些优化措施之一。
 
 本文的第一部分比较了使用 Azure SQL 数据库或 Azure SQL 托管实例的 .NET 应用程序可用的各种批处理方法。 最后两个部分介绍批处理准则和方案。
 
@@ -42,7 +42,7 @@ ms.locfileid: "92792593"
 ### <a name="note-about-timing-results-in-this-article"></a>请注意本文中的执行时间结果
 
 > [!NOTE]
-> 结果并不是基准，而是用于显示 **相对性能** 。 计时基于至少运行 10 次测试后的平均值。 操作将插入空表。 这些测试会在 V12 以前的版本中测量，不一定对应于在使用新 [DTU 服务层级](database/service-tiers-dtu.md)或 [vCore 服务层级](database/service-tiers-vcore.md)的 V12 数据库中可能获得的吞吐量。 批处理技术的相对优势应该类似。
+> 结果并不是基准，而是用于显示 **相对性能**。 计时基于至少运行 10 次测试后的平均值。 操作将插入空表。 这些测试会在 V12 以前的版本中测量，不一定对应于在使用新 [DTU 服务层级](database/service-tiers-dtu.md)或 [vCore 服务层级](database/service-tiers-vcore.md)的 V12 数据库中可能获得的吞吐量。 批处理技术的相对优势应该类似。
 
 ### <a name="transactions"></a>事务
 
@@ -97,12 +97,12 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 下表显示了一些即席测试结果。 这些测试执行具有事务和不具有事务的相同的顺序插入。 为了更具对比性，第一组测试是从笔记本电脑针对 Microsoft Azure 中的数据库远程运行的。 第二组测试是从位于同一 Microsoft Azure 数据中心（美国西部）内的云服务和数据库运行的。 下表显示具有和不具有事务的一系列顺序插入所用的时间（毫秒）。
 
-**本地到 Azure** ：
+**本地到 Azure**：
 
 | 操作 | 无事务（毫秒） | 事务（毫秒） |
 | --- | --- | --- |
 | 1 |130 |402 |
-| 10 个 |1208 |1226 |
+| 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
@@ -111,14 +111,14 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 | 操作 | 无事务（毫秒） | 事务（毫秒） |
 | --- | --- | --- |
 | 1 |21 |26 |
-| 10 个 |220 |56 |
+| 10 |220 |56 |
 | 100 |2145 |341 |
 | 1000 |21479 |2756 |
 
 > [!NOTE]
 > 结果并非基准。 请参阅[有关本文中计时结果的注意事项](#note-about-timing-results-in-this-article)。
 
-根据前面的测试结果，在事务中包装一个操作实际上会降低性能。 但是，当增加单个事务中的操作数时，性能提高将变得很明显。 当所有操作发生在 Microsoft Azure 数据中心内时，性能差异也更明显。 从 Microsoft Azure 数据中心外使用 Azure SQL 数据库或 Azure SQL 托管实例增加了延迟，带来使用事务的性能提升。
+根据前面的测试结果，在事务中包装一个操作实际上会降低性能。 但是，当增加单个事务中的操作数时，性能提高将变得很明显。 当所有操作发生在 Microsoft Azure 数据中心内时，性能差异也更明显。 从 Microsoft Azure 数据中心外部使用 Azure SQL 数据库或 Azure SQL 托管实例所增加的延迟超过了使用事务带来的性能提升。
 
 尽管使用事务可以提高性能，但还请继续[遵循事务和连接的最佳做法](/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105))。 使事务尽可能短，并在工作完成后关闭数据库连接。 前一个示例中的 using 语句可确保在后续代码阻塞完成时关闭连接。
 
@@ -136,7 +136,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
       num INT );
 ```
 
-在代码中，你将创建一个与表类型具有相同名称和类型的 **DataTable** 。 在文本查询或存储过程调用的参数中传递此 **DataTable** 。 以下示例显示了这个方法：
+在代码中，你将创建一个与表类型具有相同名称和类型的 **DataTable**。 在文本查询或存储过程调用的参数中传递此 **DataTable**。 以下示例显示了这个方法：
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -169,7 +169,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-在前一示例中， **SqlCommand** 对象从表值参数 **\@TestTvp** 插入行。 使用 **SqlCommand.Parameters.Add** 方法将以前创建的 **DataTable** 对象分配到此参数。 对一个调用中的插入进行批处理将显著提高顺序插入的性能。
+在前一示例中，**SqlCommand** 对象从表值参数 **\@TestTvp** 插入行。 使用 **SqlCommand.Parameters.Add** 方法将以前创建的 **DataTable** 对象分配到此参数。 对一个调用中的插入进行批处理将显著提高顺序插入的性能。
 
 若要进一步改进前一个示例，请使用存储过程来替代基于文本的命令。 以下 Transact-SQL 命令创建一个采用 **SimpleTestTableType** 表值参数的存储过程。
 
@@ -198,7 +198,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 | 操作 | 本地到 Azure（毫秒） | 同一 Azure 数据中心（毫秒） |
 | --- | --- | --- |
 | 1 |124 |32 |
-| 10 个 |131 |25 |
+| 10 |131 |25 |
 | 100 |338 |51 |
 | 1000 |2615 |382 |
 | 10000 |23830 |3586 |
@@ -212,7 +212,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 ### <a name="sql-bulk-copy"></a>SQL 批量复制
 
-SQL 批量复制是另一种向目标数据库中插入大量数据的方法。 .NET 应用程序可以使用 **SqlBulkCopy** 类来执行批量插入操作。 **SqlBulkCopy** 的功能类似于命令行工具 **Bcp.exe** ，或 Transact-SQL 语句 **BULK INSERT** 。 以下代码示例显示如何将源表 DataTable 中的行大容量复制到目标表 MyTable。
+SQL 批量复制是另一种向目标数据库中插入大量数据的方法。 .NET 应用程序可以使用 **SqlBulkCopy** 类来执行批量插入操作。 **SqlBulkCopy** 的功能类似于命令行工具 **Bcp.exe**，或 Transact-SQL 语句 **BULK INSERT**。 以下代码示例显示如何将源表 DataTable 中的行大容量复制到目标表 MyTable。
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -236,7 +236,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 | 操作 | 本地到 Azure（毫秒） | 同一 Azure 数据中心（毫秒） |
 | --- | --- | --- |
 | 1 |433 |57 |
-| 10 个 |441 |32 |
+| 10 |441 |32 |
 | 100 |636 |53 |
 | 1000 |2535 |341 |
 | 10000 |21605 |2737 |
@@ -244,7 +244,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 > [!NOTE]
 > 结果并非基准。 请参阅[有关本文中计时结果的注意事项](#note-about-timing-results-in-this-article)。
 
-在较小的批大小中，使用表值参数的效果好于使用 **SqlBulkCopy** 类的效果。 但是，对于涉及 1,000 和 10,000 行的测试，使用 **SqlBulkCopy** 时比使用表值参数时快 12-31%。 与表值参数一样， **SqlBulkCopy** 是执行批处理插入的一个可选方法，特别是在与非批处理操作的性能作对比时。
+在较小的批大小中，使用表值参数的效果好于使用 **SqlBulkCopy** 类的效果。 但是，对于涉及 1,000 和 10,000 行的测试，使用 **SqlBulkCopy** 时比使用表值参数时快 12-31%。 与表值参数一样，**SqlBulkCopy** 是执行批处理插入的一个可选方法，特别是在与非批处理操作的性能作对比时。
 
 有关 ADO.NET 中大容量复制的详细信息，请参阅 [大容量复制操作](/dotnet/framework/data/adonet/sql/bulk-copy-operations-in-sql-server)。
 
@@ -278,8 +278,8 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 | 操作 | 表值参数（毫秒） | 单语句 INSERT（毫秒） |
 | --- | --- | --- |
-| 1 |32 |20 个 |
-| 10 个 |30 |25 |
+| 1 |32 |20 |
+| 10 |30 |25 |
 | 100 |33 |51 |
 
 > [!NOTE]
@@ -289,7 +289,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 ### <a name="dataadapter"></a>DataAdapter
 
-**DataAdapter** 类允许修改 **DataSet** 对象，然后将更改作为 INSERT、UPDATE 和 DELETE 操作提交。 如果你正在这样使用 **DataAdapter** ，请注意必须为每个不同的操作发出单独的调用。 为了提高性能，请将 **UpdateBatchSize** 属性值设置为应同时进行批处理的操作数。 有关详细信息，请参阅[使用 DataAdapter 执行批处理操作](/dotnet/framework/data/adonet/performing-batch-operations-using-dataadapters)。
+**DataAdapter** 类允许修改 **DataSet** 对象，然后将更改作为 INSERT、UPDATE 和 DELETE 操作提交。 如果你正在这样使用 **DataAdapter**，请注意必须为每个不同的操作发出单独的调用。 为了提高性能，请将 **UpdateBatchSize** 属性值设置为应同时进行批处理的操作数。 有关详细信息，请参阅[使用 DataAdapter 执行批处理操作](/dotnet/framework/data/adonet/performing-batch-operations-using-dataadapters)。
 
 ### <a name="entity-framework"></a>Entity Framework
 
@@ -325,8 +325,8 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |
-| 100 |10 个 |465 |
-| 50 |20 个 |630 |
+| 100 |10 |465 |
+| 50 |20 |630 |
 
 > [!NOTE]
 > 结果并非基准。 请参阅[有关本文中计时结果的注意事项](#note-about-timing-results-in-this-article)。
@@ -368,7 +368,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 有关数据库性能的通常准则也影响批处理。 例如，对于具有大的主键或很多非聚集索引的表，插入性能会下降。
 
-如果表值参数使用存储过程，则可以在该过程开头使用命令 **SET NOCOUNT ON** 。 此语句禁止返回过程中受影响的行的计数。 但是，在我们的测试中，使用 **SET NOCOUNT ON** 对性能没有影响或导致性能下降。 测试存储过程很简单，它只有来自表值参数的一个 **INSERT** 命令。 更复杂的存储过程可能从此语句受益。 但不要假设将 **SET NOCOUNT** 添加到存储过程会自动提高性能。 为了了解该影响，请用包含和不包含 **SET NOCOUNT ON** 语句来测试存储过程。
+如果表值参数使用存储过程，则可以在该过程开头使用命令 **SET NOCOUNT ON**。 此语句禁止返回过程中受影响的行的计数。 但是，在我们的测试中，使用 **SET NOCOUNT ON** 对性能没有影响或导致性能下降。 测试存储过程很简单，它只有来自表值参数的一个 **INSERT** 命令。 更复杂的存储过程可能从此语句受益。 但是不要认为将 **SET NOCOUNT ON** 添加到存储过程会自动提高性能。 为了了解该影响，请用包含和不包含 **SET NOCOUNT ON** 语句来测试存储过程。
 
 ## <a name="batching-scenarios"></a>批处理方案
 

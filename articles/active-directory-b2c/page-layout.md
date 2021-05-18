@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dc52414fa0d2eeffe0381a68bd66eadafe4862ea
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 8469e05b82a651760829761ca57af3bdb1b256a9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781273"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443400"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
 
@@ -33,6 +33,13 @@ Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)
 |1.1.0 | 1.10.2 |
 
 ## <a name="self-asserted-page-selfasserted"></a>自断言页面 (selfasserted)
+
+**2.1.4**
+- 已将 jQuery 更新至版本 3.5.1。
+- 已将 HandlebarJS 版本更新至 4.7.6。
+
+**2.1.3**
+- 安全修补程序。
 
 **2.1.2**
 - 修复了各种语言（例如西班牙语和法语）的本地化编码问题。
@@ -87,6 +94,14 @@ Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)
 > [!TIP]
 > 如果对页面进行本地化以支持多种区域设置或用户流中的语言。 [本地化 ID](localization-string-ids.md) 提供了一系列可用于所选页面版本的本地化 ID。
 
+**2.1.4**
+- 已将 jQuery 更新至版本 3.5.1。
+- 已将 HandlebarJS 版本更新至 4.7.6。
+
+**2.1.3**
+- 安全修补程序。
+- 小 bug 修复。
+
 **2.1.2**
 - 修复了各种语言（例如西班牙语和法语）的本地化编码问题。
 - 允许将“忘记密码”链接用作声明交换。 有关详细信息，请参阅[自助式密码重置](add-password-reset-policy.md#self-service-password-reset-recommended)。
@@ -126,6 +141,15 @@ Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)
 
 ## <a name="mfa-page-multifactor"></a>MFA 页面 (multifactor)
 
+**1.2.4**
+- 已将 jQuery 更新至版本 3.5.1。
+- 已将 HandlebarJS 版本更新至 4.7.6。
+
+**1.2.3**
+- 允许通过语言本地化覆盖工具提示字符串。
+- 安全修补程序。
+- 小 bug 修复。
+
 **1.2.2**
 - 修复了使用 iOS 时与自动填写验证码相关的一个问题。
 - 修复了从 Android Webview 将令牌重定向到信赖方时出现的一个问题。 
@@ -162,6 +186,10 @@ Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)
 
 ## <a name="exception-page-globalexception"></a>异常页 (globalexception)
 
+**1.2.1**
+- 已将 jQuery 更新至版本 3.5.1。
+- 已将 HandlebarJS 版本更新至 4.7.6。
+
 **1.2.0**
 
 - 辅助功能修复
@@ -182,6 +210,10 @@ Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)
 - 初始版本
 
 ## <a name="other-pages-providerselection-claimsconsent-unifiedssd"></a>其他页（ProviderSelection、ClaimsConsent、UnifiedSSD）
+
+**1.2.1**
+- 已将 jQuery 更新至版本 3.5.1。
+- 已将 HandlebarJS 版本更新至 4.7.6。
 
 **1.2.0**
 

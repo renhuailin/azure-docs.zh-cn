@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
 ms.openlocfilehash: b133f1cce4af07d8d5e50e04670741fcf7c936a4
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097068"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 门户创建 ExpressRoute Direct
@@ -22,7 +22,7 @@ ms.locfileid: "102097068"
 ## <a name="before-you-begin"></a><a name="before"></a>准备工作
 
 需要先注册订阅，然后才能使用 ExpressRoute Direct。 若要注册，请通过 Azure PowerShell 执行以下操作：
-1.  登录到 Azure 并选择要注册的订阅。
+1.  登录到 Azure 并选择想要注册的订阅。
 
     ```azurepowershell-interactive
     Connect-AzAccount 

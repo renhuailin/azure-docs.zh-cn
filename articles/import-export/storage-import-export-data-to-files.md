@@ -10,10 +10,10 @@ ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
 ms.openlocfilehash: b62c3c4be4fdffd9f509b86d248cd028518ae89a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102181935"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 导入/导出服务将数据导入到 Azure 文件
@@ -31,11 +31,11 @@ ms.locfileid: "102181935"
 - 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。
 - 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。
 - 在 Windows 系统上[下载 WAImportExport 版本 2](https://aka.ms/waiev2)。 解压缩到默认文件夹 `waimportexport`。 例如，`C:\WaImportExport`。
-- 具有 FedEx/DHL 帐户。 如果要使用 FedEx/DHL 以外的运营商，请联系 Azure Data Box 运营团队 `adbops@microsoft.com` 。
+- 具有 FedEx/DHL 帐户。 如果想使用 FedEx/DHL 以外的承运商，请通过 `adbops@microsoft.com` 与 Azure Data Box 运营团队联系。
     - 该帐户必须是有余额的有效帐户，且有退货功能。
     - 生成导出作业的跟踪号。
     - 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。
-    - 如果你没有承运人帐户，请参阅：
+    - 如果没有承运商帐户，请转到：
         - [创建 FedEx 帐户](https://www.fedex.com/en-us/create-account.html)，或
         - [创建 DHL 帐户](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
 
@@ -44,13 +44,13 @@ ms.locfileid: "102181935"
 
 此步骤生成一个日志文件。 日志文件存储着驱动器序列号、加密密钥和存储帐户详细信息等基本信息。
 
-执行以下步骤来准备驱动器。
+请执行以下步骤来准备驱动器。
 
 1. 通过 SATA 连接器将磁盘驱动器连接到 Windows 系统。
 2. 在每个驱动器上创建一个 NTFS 卷。 为卷分配驱动器号。 不要使用装入点。
-3. 修改该工具所在的根文件夹中的 *dataset.csv* 文件。 根据是要导入文件还是文件夹还是同时导入两者，在 *dataset.csv* 文件中添加类似于以下示例的条目。
+3. 修改工具所在的根文件夹中的 dataset.csv 文件。 根据是要导入文件还是文件夹还是同时导入两者，在 *dataset.csv* 文件中添加类似于以下示例的条目。
 
-   - **导入文件**：在以下示例中，要复制的数据在 F：驱动器上。 文件 *MyFile1.txt* 将被复制到根目录 *MyAzureFileshare1* 中。 如果 *MyAzureFileshare1* 不存在，则会在 Azure 存储帐户中创建它。 文件夹结构保持不变。
+   - **导入文件**：在以下示例中，要复制的数据位于 F: 驱动器中。 文件 *MyFile1.txt* 将被复制到根目录 *MyAzureFileshare1* 中。 如果 MyAzureFileshare1 不存在，则会在 Azure 存储帐户中创建该目录。 文件夹结构保持不变。
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
@@ -73,7 +73,7 @@ ms.locfileid: "102181935"
      详细了解如何[准备数据集 CSV 文件](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import)。
 
 
-4. 修改该工具所在的根文件夹中的 *driveset.csv* 文件。 在 *driveset.csv* 文件中添加类似于以下示例的条目。 此驱动器集文件包含磁盘列表和对应的驱动器号，因此，工具可以正确地选取要准备的磁盘列表。
+4. 修改工具所在的根文件夹中的 driveset.csv 文件。 在 *driveset.csv* 文件中添加类似于以下示例的条目。 此驱动器集文件包含磁盘列表和对应的驱动器号，因此，工具可以正确地选取要准备的磁盘列表。
 
     此示例假定将附加两个磁盘并创建基本 NTFS 卷 G:\ 和 H:\。 H:\ 未加密，而 G: 已加密。 该工具仅会对承载着 H:\（不会对承载着 G:\)）的磁盘进行格式化和加密。
 
@@ -105,7 +105,7 @@ ms.locfileid: "102181935"
     .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
     ```
 
-6. 每次运行该命令行时，都会使用通过 `/j:` 参数提供名称创建一个日志文件。 你准备的每个驱动器都有一个在创建导入作业时必须上传的日志文件。 不处理无日志文件的驱动器。
+6. 每次运行该命令行时，都会使用通过 `/j:` 参数提供名称创建一个日志文件。 你准备的每个驱动器都有一个在创建导入作业时必须上传的日志文件。 不会处理没有日志文件的驱动器。
 
     > [!IMPORTANT]
     > - 完成磁盘准备工作后，请不要改磁盘驱动器上的数据，也不要修改日志文件。
@@ -116,20 +116,20 @@ ms.locfileid: "102181935"
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-执行以下步骤以在 Azure 门户中创建导入作业。
+在 Azure 门户中执行以下步骤来创建导入作业。
 1. 登录到 https://portal.azure.com/ 。
-2. 搜索 **导入/导出作业**。
+2. 搜索“导入/导出作业”。
 
     ![搜索导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
 3. 选择“+ 新建”  。
 
-    ![选择 "新建" 创建新的 ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
+    ![选择“新建”以创建一个新的 ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. 在“基本信息”中：
 
    1. 选择一个订阅。
-   1. 选择一个资源组，或选择 " **新建** " 并创建一个新的资源组。
+   1. 选择一个资源组，或选择“新建”，创建新资源组。
    1. 输入导入作业的描述性名称。 可使用此名称来跟踪作业进度。
        * 此名称只能包含小写字母、数字和连字符。
        * 此名称必须以字母开头，并且不得包含空格。
@@ -137,26 +137,26 @@ ms.locfileid: "102181935"
 
     ![创建导入作业 - 步骤 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
-   选择 " **下一步：作业详细信息" >** 继续。
+   选择“下一步: 作业详细信息 >”以继续。
 
 5. 在“作业详细信息”中：
 
    1. 上传你在前面的[步骤 1：准备驱动器](#step-1-prepare-the-drives)中创建的日志文件。
-   1. 选择订单的目标 Azure 区域。
-   1. 选择用于导入的存储帐户。
+   1. 选择该订单的目标 Azure 区域。
+   1. 为该导入选择存储帐户。
 
       放置位置会根据选定存储帐户所属的区域自动进行填充。
 
-   1. 如果不想保存详细日志，请 **在 "waimportexport" blob 容器选项中清除 "保存详细日志** "。
+   1. 如果不想保存详细日志，请清除“在 'waimportexport' Blob 容器中保存详细日志”选项。
 
 
    ![创建导入作业 - 步骤 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
 
-   选择 **下一步：送货 >** 继续。
+   选择“下一步: 寄送 >”以继续。
 
-4. **装运**：
+4. 在“寄送”中：
 
-    1. 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系， `adbops@microsoft.com`  并提供有关计划使用的电信公司的信息。
+    1. 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的承运商，请从下拉列表中选择现有的选项。 请通过 `adbops@microsoft.com` 与 Azure Data Box 运营团队联系，提供计划使用的承运商的信息。
     1. 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。
     1. 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 
@@ -169,9 +169,9 @@ ms.locfileid: "102181935"
 
 5. 在订单摘要中：
 
-   1. 查看 **条款**，然后选择 "我确认提供的所有信息都正确，并同意条款和条件"。 然后，将执行验证。
+   1. 请检查“条款”，然后选择“我确认提供的所有信息均正确无误，并同意上述条款和条件。” 然后会执行验证。
    1. 在摘要中复查提供的作业信息。 记下作业名称和 Azure 数据中心送货地址，以便将将磁盘寄回 Azure。 稍后将在发货标签中使用此信息。
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
         ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
@@ -361,13 +361,13 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证数据上传到 Azure
 
-跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在验证上传成功后，才删除本地数据。
+跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。
 
 ## <a name="samples-for-journal-files"></a>日志文件示例
 
 若要 **添加更多驱动器**，请创建一个新的驱动器集文件并运行以下命令。
 
-对于与 *InitialDriveset* 文件中指定的磁盘驱动器不同的后续复制会话，请指定新 *的驱动器集文件* ，并将其作为参数的值提供 `AdditionalDriveSet` 。 使用 **同一日记文件** 的名称并提供 **新的会话 ID**。 AdditionalDriveset CSV 文件的格式与 InitialDriveSet 的格式相同。
+如果后续复制会话中的磁盘驱动器与 InitialDriveset .csv 中指定的不同，可以指定一个新的驱动器集 .csv 文件并将其作为值提供给 `AdditionalDriveSet` 参数 。 使用 **同一日记文件** 的名称并提供 **新的会话 ID**。 AdditionalDriveset CSV 文件的格式与 InitialDriveSet 的格式相同。
 
 ```cmd
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>

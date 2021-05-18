@@ -1,5 +1,5 @@
 ---
-title: PowerShell 脚本：设置和查看 Azure 数据共享同步设置
+title: PowerShell 脚本：设置和查看 Azure Data Share 同步设置
 description: 此 PowerShell 脚本设置并获取共享同步设置。
 author: joannapea
 ms.service: data-share
@@ -7,13 +7,13 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 401754436739e5594c0d7baac6507f9d9984fc31
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92221275"
 ---
-# <a name="use-powershell-to-set-azure-data-share-synchronization-settings"></a>使用 PowerShell 设置 Azure 数据共享同步设置
+# <a name="use-powershell-to-set-azure-data-share-synchronization-settings"></a>使用 PowerShell 设置 Azure Data Share 同步设置
 
 此 PowerShell 脚本设置并获取共享同步设置。
 
@@ -45,12 +45,12 @@ Get-AzDataShareSynchronizationSetting -ResourceGroupName $resourceGroupName -Acc
 
 | 命令 | 说明 |
 |---|---|
-| [新-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting) | 创建共享同步。 |
-| [AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting) | 获取共享同步的同步设置。 |
+| [New-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting) | 创建共享同步。 |
+| [Get-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting) | 获取共享同步的同步设置。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/)。
 
-可以在 [Azure 数据共享 powershell 示例](../../samples-powershell.md)中找到其他 Azure 数据共享 powershell 脚本示例。
+可以在 [Azure Data Share PowerShell 示例](../../samples-powershell.md)中找到其他 Azure Data Share PowerShell 脚本示例。

@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：将公共对等互连移到 Microsoft 对等互连
+title: Azure ExpressRoute：将公共对等互连迁移到 Microsoft 对等互连
 description: 本文介绍了在 ExpressRoute 上将公共对等互连移动到 Microsoft 对等互连的步骤。
 services: expressroute
 author: duongau
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: duau
 ms.openlocfilehash: 608d6c87442821e904fde16c6b75841fe792e3f0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206282"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>将公共对等互连移动到 Microsoft 对等互连
