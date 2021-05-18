@@ -10,17 +10,27 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: e078fb91b3279b6f4321cd51dfb094f82bbe5f14
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6218715878ec40fecee79f1c93bf2ca1820af007
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98696373"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277005"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 发行说明 
 
 本文介绍每个新的 Azure SQL Edge 内部版本中的新增功能或已更改的内容。
 
+## <a name="azure-sql-edge-103"></a>Azure SQL Edge 1.0.3
+
+SQL 引擎内部版本 15.0.2000.1554
+
+### <a name="fixes"></a>修复项
+
+- 将 ONNX 运行时升级到 1.5.3
+- 更新到 Microsoft.SqlServer.DACFx 版本 150.5084.2
+- 其他 Bug 修复  
+   
 ## <a name="azure-sql-edge-102"></a>Azure SQL Edge 1.0.2
 
 SQL 引擎内部版本 15.0.2000.1554

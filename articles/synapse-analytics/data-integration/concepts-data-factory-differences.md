@@ -4,16 +4,17 @@ description: 了解 Azure Synapse Analytics 的数据集成功能与 Azure 数�
 services: synapse-analytics
 author: kromerm
 ms.service: synapse-analytics
+ms.subservice: pipeline
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cd3fc9353c684ec6617761616b958477ca83ee3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 638b78f0304a9bbba8521ed523dffa1deda03c7c
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183635"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480790"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics 与 Azure 数据工厂中的数据集成比较
 
@@ -31,7 +32,7 @@ ms.locfileid: "102183635"
 |                          | 集成运行时共享 | ✓<br><small>可在不同的数据工厂之间共享 | ✗ |
 |                          | 生存时间 | ✓ | ✗ |
 | **管道和活动** | SSIS 包活动 | ✓ | ✗ |
-|                          | 支持 Power Query 活动 | ✓ | ✓ |
+|                          | 支持 Power Query 活动 | ✓ | ✗ |
 | **模板库和知识中心** | 解决方案模板 | ✓<br><small>Azure 数据工厂模板库 | ✓<br><small>Synapse 工作区知识中心 |
 | **GIT 存储库集成** | GIT 集成 | ✓ | ✓ |
 | **Monitoring**           | 监视 Spark 作业的数据流 | ✗ | ✓<br><small>利用 Synapse Spark 池 |

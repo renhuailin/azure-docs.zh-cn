@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 72b8f7e9e4934b516f843ae8bc9bb7adc1c349ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101720494"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 群集中引入受控的混沌测试
@@ -40,7 +40,7 @@ ms.locfileid: "101720494"
 
 混沌测试在多个迭代中运行。 每个迭代包含指定时间段的故障和群集验证。 可以配置使群集达到稳定状态以及成功完成验证所用的时间。 如果在群集验证中发现故障，混沌测试将生成并保留一个包含 UTC 时间戳与故障详细信息的 ValidationFailedEvent。 例如，假设某个混沌测试实例设置为运行 1 小时，并且最多有 3 个并发故障。 该混沌测试将引入三个故障，然后验证群集运行状况。 它会循环访问上一步骤，直到通过 StopChaosAsync API 或者在一小时后将它显式停止。 如果在任何一次迭代中群集变得不正常（即在传入的 MaxClusterStabilizationTimeout 内不稳定或未变得正常），混沌测试会生成 ValidationFailedEvent。 此事件指明系统出现问题，可能需要进一步调查。
 
-若要使发生混乱的故障，可以使用 GetChaosReport API (PowerShell、c # 或 REST) 。 该 API 根据传入的继续标记或传入的时间范围获取混沌测试报告的下一段。 可以指定 ContinuationToken 以获取混沌测试报告的下一段或者通过 StartTimeUtc 和 EndTimeUtc 指定时间范围，但不能在同一调用中同时指定 ContinuationToken 和时间范围。 如果发生了 100 个以上的混沌测试事件，混沌测试报告会分段返回，每一段包含的混沌测试事件均不能超过 100 个。
+若要获取混沌测试引入的故障，可以使用 GetChaosReport API（PowerShell、C# 或 REST）。 该 API 根据传入的继续标记或传入的时间范围获取混沌测试报告的下一段。 可以指定 ContinuationToken 以获取混沌测试报告的下一段或者通过 StartTimeUtc 和 EndTimeUtc 指定时间范围，但不能在同一调用中同时指定 ContinuationToken 和时间范围。 如果发生了 100 个以上的混沌测试事件，混沌测试报告会分段返回，每一段包含的混沌测试事件均不能超过 100 个。
 
 ## <a name="important-configuration-options"></a>重要的配置选项
 * **TimeToRun**：混沌测试在成功完成之前的总运行时间。 在混沌测试运行了 TimeToRun 这段时间之前，可以通过 StopChaos API 将它停止。

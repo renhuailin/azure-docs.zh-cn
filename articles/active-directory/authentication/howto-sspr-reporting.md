@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a764538ebc73927b1d274b2538e123ec90ce60e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.openlocfilehash: fa33a4641de1d630883a225814b2fb3d59ef9946
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741552"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285963"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -53,7 +53,7 @@ ms.locfileid: "96741552"
 
 ### <a name="combined-registration"></a>合并注册
 
-如果已启用 [组合注册](./concept-registration-mfa-sspr-combined.md)，则在 "**安全**  >  **身份验证方法**" 下会找到有关审核日志中的用户活动的信息。
+如果已启用[合并注册](./concept-registration-mfa-sspr-combined.md)，则可在“安全” > “身份验证方法”下找到有关审核日志中的用户活动的信息 。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 门户中报表列的说明
 
@@ -171,7 +171,7 @@ ms.locfileid: "96741552"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [SSPR 和 MFA 使用情况和见解报告](howto-authentication-methods-usage-insights.md)
+* [SSPR 和 MFA 使用情况和见解报告](./howto-authentication-methods-activity.md)
 * [如何成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)。
 * [注册自助服务密码重置](../user-help/active-directory-passwords-reset-register.md)。
@@ -182,6 +182,6 @@ ms.locfileid: "96741552"
 * [什么是密码写回？我为什么关心它？](./tutorial-enable-sspr-writeback.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](./troubleshoot-sspr.md)
-* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
+* [我有在别处未涵盖的问题](active-directory-passwords-faq.yml)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Azure AD 中的 SSPR 活动审核日志示例"

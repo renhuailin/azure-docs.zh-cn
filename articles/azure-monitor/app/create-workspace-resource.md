@@ -3,13 +3,12 @@ title: 新建基于工作区的 Azure Monitor Application Insights 资源 | Micr
 description: 了解启用基于工作区的新 Azure Monitor Application Insights 资源所需的步骤。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a84a9de854123b70ca96531942debc00afb2d6c6
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754490"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100578338"
 ---
 # <a name="workspace-based-application-insights-resources"></a>基于工作区的 Application Insights 资源
 
@@ -114,7 +113,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/monitor/app-insights/component#az_monitor_app_insights_component_create)。
+有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

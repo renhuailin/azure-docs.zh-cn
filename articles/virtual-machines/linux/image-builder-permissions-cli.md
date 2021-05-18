@@ -8,20 +8,20 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 4b6154a18cf4e08bf59dad91350160a1f83c49ed
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: eb4fe102407bf519c9253ac7da39178ad8cacb0c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201475"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104607494"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>使用 Azure CLI 配置 Azure 映像生成器服务权限
 
 注册 (AIB) 时，这会授予 AIB 服务创建、管理和删除暂存资源组 (IT_*) 以及向其添加资源的权限，映像生成需要这些权限。 这是通过在成功注册期间在订阅中提供的 AIB 服务主体名称 (SPN) 来实现的。
 
-若要允许 Azure VM 映像生成器将映像分发到托管映像或共享映像库，则需要创建一个拥有读取和写入映像权限的 Azure 用户分配的标识。 如果要访问 Azure 存储，则这将需要权限才能读取私有或公共容器。
+若要允许 Azure VM 映像生成器将映像分发到托管映像或共享映像库，则需要创建一个拥有读取和写入映像权限的 Azure 用户分配的标识。 如果要访问 Azure 存储，则需要具有读取专用或公共容器的权限。
 
-在生成映像之前，必须设置权限和特权。 以下部分详细说明了如何使用 Azure CLI 配置可能的方案。
+必须先设置权限和特权才能生成映像。 以下各部分详细介绍如何使用 Azure CLI 配置可能的方案。
 
 > [!IMPORTANT]
 > Azure 映像生成器目前提供公共预览版。
@@ -31,7 +31,7 @@ ms.locfileid: "102201475"
 
 ## <a name="register-the-features"></a>注册功能
 
-首先，必须注册 Azure 映像生成器服务。 注册将授予服务创建、管理和删除暂存资源组的权限。 服务还具有添加资源所需的资源组的权限。
+首先必须注册 Azure 映像生成器服务。 注册会向该服务授予创建、管理和删除暂存资源组的权限。 该服务还具有添加映像生成所需的组资源的权限。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -39,16 +39,16 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 
 ## <a name="create-an-azure-user-assigned-managed-identity"></a>创建 Azure 用户分配的托管标识
 
-Azure 映像生成器要求创建 [azure 用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。 Azure 映像生成器使用用户分配的托管标识来读取映像、写入映像以及访问 Azure 存储帐户。 你向标识授予在你的订阅中执行特定操作的权限。
+Azure 映像生成器要求创建 [Azure 用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。 Azure 映像生成器使用用户分配的托管标识来读取映像、写入映像以及访问 Azure 存储帐户。 你授予标识在订阅中执行特定操作的权限。
 
 > [!NOTE]
-> 以前，Azure 映像生成器使用 Azure 映像生成器服务主体名称 (SPN) 为映像资源组授予权限。 将弃用使用 SPN。 改为使用用户分配的托管标识。
+> 以前，Azure 映像生成器使用 Azure 映像生成器服务主体名称 (SPN) 向映像资源组授予权限。 建议不再使用 SPN。 请改用用户分配的托管标识。
 
-以下示例演示如何创建 Azure 用户分配的托管标识。 替换占位符设置以设置变量。
+下面的示例演示如何创建 Azure 用户分配的托管标识。 替换占位符设置以设置变量。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |---------|-------------|
-| \<Resource group\> | 要在其中创建用户分配的托管标识的资源组。 |
+| \<Resource group\> | 用于创建用户分配的托管标识的资源组。 |
 
 ```azurecli-interactive
 identityName="aibIdentity"
@@ -59,13 +59,13 @@ az identity create \
     --name $identityName
 ```
 
-有关 Azure 用户分配的标识的详细信息，请参阅 [azure 用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) 文档，了解如何创建标识。
+有关 Azure 用户分配的标识的详细信息，请参阅 [Azure 用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)文档，了解如何创建标识。
 
-## <a name="allow-image-builder-to-distribute-images"></a>允许图像生成器分发图像
+## <a name="allow-image-builder-to-distribute-images"></a>允许映像生成器分发映像
 
-要使 Azure 映像生成器 (托管映像/共享映像库) 分发映像，必须允许 Azure 映像生成器服务将图像注入这些资源组。 若要授予所需的权限，需要创建用户分配的托管标识，并在生成映像的资源组上授予其权限。 Azure **映像生成器无权** 访问订阅中其他资源组中的资源。 你需要执行显式操作以允许访问，以避免你的生成失败。
+要使 Azure 映像生成器（托管映像/共享映像库）能够分发映像，需要允许 Azure 映像生成器服务将映像注入这些资源组。 若要授予所需的权限，需要创建用户分配的托管标识，并授予其对生成映像的资源组的权限。 Azure 映像生成器没有访问订阅中其他资源组中资源的权限。 需要执行显式操作以允许访问，从而避免生成失败。
 
-无需向用户分配的托管标识参与者授予资源组的权限即可分发映像。 但是，用户分配的托管标识需要 `Actions` 分发资源组中的以下 Azure 权限：
+无需向用户分配的托管标识参与者授予对资源组的权限就能分发映像。 但是，用户分配的托管标识需要在分发资源组中具有以下 Azure `Actions` 权限：
 
 ```Actions
 Microsoft.Compute/images/write
@@ -84,7 +84,7 @@ Microsoft.Compute/galleries/images/versions/write
 
 ## <a name="permission-to-customize-existing-images"></a>自定义现有映像的权限
 
-要使 Azure 映像生成器能 (托管映像/共享映像库) 从源自定义映像生成映像，必须允许 Azure 映像生成器服务将图像读入这些资源组。 若要授予所需的权限，需要创建用户分配的托管标识，并向其授予对映像所在的资源组的权限。
+要使 Azure VM 映像生成器从源自定义映像（托管映像/共享映像库）生成映像，需要允许 Azure 映像生成器服务将映像读取到这些资源组中。 若要授予所需的权限，需要创建用户分配的托管标识，并为其授予对映像所在资源组的权限。
 
 从现有自定义映像生成：
 
@@ -100,11 +100,11 @@ Microsoft.Compute/galleries/images/read
 Microsoft.Compute/galleries/images/versions/read
 ```
 
-## <a name="permission-to-customize-images-on-your-vnets"></a>自定义 Vnet 的映像的权限
+## <a name="permission-to-customize-images-on-your-vnets"></a>用于自定义 VNET 上的映像的权限
 
-Azure 映像生成器可以在订阅中部署和使用现有 VNET，从而允许自定义访问连接的资源。
+Azure 映像生成器可以在订阅中部署和使用现有 VNET，从而允许自定义内容访问连接的资源。
 
-无需向用户分配的托管标识参与者授予资源组，即可将 VM 部署到现有的 VNET。 但是，用户分配的托管标识需要对 `Actions` VNET 资源组具有以下 Azure 权限：
+无需向用户分配的托管标识参与者授予对资源组的权限就能将 VM 部署到现有的 VNET。 但是，用户分配的托管标识需要对 VNET 资源组具有以下 Azure `Actions` 权限：
 
 ```Actions
 Microsoft.Network/virtualNetworks/read
@@ -113,17 +113,17 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 ## <a name="create-an-azure-role-definition"></a>创建 Azure 角色定义
 
-以下示例根据前面部分中所述的操作创建 Azure 角色定义。 示例在资源组级别应用。 评估并测试示例是否精细满足你的要求。 对于你的方案，你可能需要将其优化到特定的共享映像库。
+以下示例根据前面部分中所述的操作创建 Azure 角色定义。 这些示例在资源组级别应用。 评估并测试示例是否足以满足你的要求。 你可能需要根据你的方案将其优化到特定的共享映像库。
 
-图像操作允许进行读写。 确定适合您的环境的内容。 例如，创建角色以允许 Azure 映像生成器从资源组中读取映像 *示例-rg-1* 并将映像写入资源组 *示例-rg-2*。
+映像操作允许进行读写。 确定适合你的环境的操作。 例如，创建一个角色以允许 Azure 映像生成器从资源组 example-rg-1 中读取映像并将相应映像写入资源组 example-rg-2 。
 
 ### <a name="custom-image-azure-role-example"></a>自定义映像 Azure 角色示例
 
-以下示例创建一个 Azure 角色以使用和分发源自定义映像。 然后，将自定义角色授予 Azure 映像生成器的用户分配的托管标识。
+以下示例会创建一个 Azure 角色，以使用和分发源自定义映像。 然后，将自定义角色授给 Azure 映像生成器的用户分配的托管标识。
 
 若要简化示例中值的替换，请先设置以下变量。 替换占位符设置以设置变量。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |---------|-------------|
 | \<Subscription ID\> | Azure 订阅 ID |
 | \<Resource group\> | 自定义映像的资源组 |
@@ -161,11 +161,11 @@ az role assignment create \
 
 ### <a name="existing-vnet-azure-role-example"></a>现有的 VNET Azure 角色示例
 
-以下示例创建一个 Azure 角色以使用和分发现有的 VNET 映像。 然后，将自定义角色授予 Azure 映像生成器的用户分配的托管标识。
+以下示例会创建一个 Azure 角色，以使用和分发现有的 VNET 映像。 然后，将自定义角色授给 Azure 映像生成器的用户分配的托管标识。
 
 若要简化示例中值的替换，请先设置以下变量。 替换占位符设置以设置变量。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 |---------|-------------|
 | \<Subscription ID\> | Azure 订阅 ID |
 | \<Resource group\> | VNET 资源组 |
@@ -202,10 +202,10 @@ az role assignment create \
 
 ## <a name="using-managed-identity-for-azure-storage-access"></a>使用托管标识访问 Azure 存储
 
-如果要无缝使用 Azure 存储进行身份验证并使用私有容器，azure 映像生成器 Azure 需要使用用户分配的托管标识。 Azure 映像生成器使用该标识对 Azure 存储进行身份验证。
+如果要无缝向 Azure 存储进行身份验证并使用私有容器，Azure 映像生成器需要一个由用户分配的托管标识。 Azure 映像生成器使用该标识向 Azure 存储进行身份验证。
 
 > [!NOTE]
-> Azure 映像生成器仅在映像模板提交时使用标识。 生成 VM 在映像生成过程中无权访问标识。
+> Azure 映像生成器仅在映像模板提交时使用标识。 编译 VM 在映像编译过程中无权访问标识。
 
 使用 Azure CLI 创建用户分配的托管标识。
 
@@ -216,7 +216,7 @@ az role assignment create \
     --scope /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Storage/storageAccounts/$scriptStorageAcc/blobServices/default/containers/<Storage account container>
 ```
 
-在映像生成器模板中，需要提供用户分配的托管标识。
+在映像生成器模板中，需要提供由用户分配的托管标识。
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -239,7 +239,7 @@ az role assignment create \
 | \<Storage account container\> | 存储帐户容器名称 |
 | \<Subscription ID\> | Azure 订阅 |
 
-有关使用用户分配的托管标识的详细信息，请参阅 [创建自定义映像，该映像将使用 azure User-Assigned 托管标识来无缝访问 Azure 存储的文件](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity)。 快速入门介绍如何创建和配置用户分配的托管标识以访问存储帐户。
+有关使用用户分配的托管标识的详细信息，请参阅[创建自定义映像以使用 Azure 用户分配的托管标识来无缝访问 Azure 存储中的文件](./image-builder-user-assigned-identity.md)。 快速入门介绍如何创建和配置用户分配的托管标识以访问存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

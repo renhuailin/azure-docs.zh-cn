@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 67b472d1629c2b59f80d36aaf43df1e783d2ffa4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101666811"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>适用于 SAP NetWeaver 的高可用性 Azure 虚拟机
@@ -320,7 +320,7 @@ _**图 4：** 高可用性 SAP 应用程序服务器_
 * 所有虚拟机都是同一个升级域的一部分。 例如，升级域确保虚拟机不在计划的维护停机时间期间同时更新。
 * 所有虚拟机都是同一个容错域的一部分。 例如，容错域确保将虚拟机部署为任何单一故障点都不会影响所有虚拟机的可用性。
 
-详细了解如何 [管理虚拟机的可用性] [。/manage-availability.md]。
+详细了解如何[管理虚拟机的可用性][../manage-availability.md]。
 
 仅限非托管磁盘：由于 Azure 存储帐户是潜在的单一故障点，因此必须至少有两个 Azure 存储帐户，并在其中至少分配两个虚拟机。 在理想的设置中，运行 SAP 对话实例的每个虚拟机的磁盘都应部署在不同的存储帐户中。
 
@@ -591,7 +591,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 2. 根据使用的网络类型选择设置。 有关详细信息，请参阅以下资源：
    * 添加本地 DNS 服务器的 IP 地址。  
    可将本地 DNS 服务器扩展到正在 Azure 中运行的虚拟机。 在该情况下，可添加运行 DNS 服务器的 Azure 虚拟机的 IP 地址。
-   * 对于在 Azure 中隔离的 VM 部署：在充当 DNS 服务器的同一虚拟网络实例中部署其他虚拟机。 添加已设置为运行 DNS 服务的 Azure 虚拟机的 IP 地址。
+   * 对于 Azure 中隔离的 VM 部署：在充当 DNS 服务器的同一虚拟网络实例中部署其他虚拟机。 添加已设置为运行 DNS 服务的 Azure 虚拟机的 IP 地址。
 
    ![图 12：为 Azure 虚拟网络配置 DNS 服务器][sap-ha-guide-figure-3001]
 

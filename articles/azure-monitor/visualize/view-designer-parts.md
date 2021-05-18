@@ -1,15 +1,15 @@
 ---
-title: Azure Monitor 中的视图设计器部件的参考指南 |Microsoft Docs
+title: Azure Monitor 中视图设计器磁贴的参考指南 | Microsoft Docs
 description: 可以通过 Azure Monitor 中的视图设计器创建自定义视图，此类视图在 Azure 门户中显示，包含 Log Analytics 工作区中的多种基于数据的可视化效果。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
 ms.openlocfilehash: 6e971db01322fc031dd0fa8abe82f76a5b45d256
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102045252"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor 中视图设计器可视化部件的参考指南
@@ -317,7 +317,7 @@ ms.locfileid: "102045252"
 例如，考虑一个名为 *Location* 的属性，该属性包括 *Redmond-Building 41* 和 *Bellevue-Building 12* 等值。 可以指定短划线 (–) 作为名称和值分隔符，指定 *City-Building* 作为名称。 此方法会将每个值分析为两个称作 *City* 和 *Building* 的属性。
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>点击导航
-点击导航定义在单击标题或视图中的列表项时要执行的操作。  这会在 [Log Analytics](../logs/log-query-overview.md) 中打开查询或启动其他视图。
+点击导航定义在单击标题或视图中的列表项时要执行的操作。  此操作将在 [Log Analytics](../logs/log-query-overview.md) 中打开查询或启动另一个视图。
 
 下表描述了点击导航的设置。
 

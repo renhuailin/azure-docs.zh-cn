@@ -14,15 +14,15 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.openlocfilehash: 9b3840ffb39a204cfa24dcb0430f20ac16587582
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100104172"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>如何：配置应用程序的发布者域
 
-应用程序的发布者域将在[应用程序的许可提示](application-consent-experience.md)中显示给用户，以告知用户其信息将发送到何处。 在 2019 年 5 月 21 日之后注册的且没有发布者域的多租户应用程序将显示为 **unverified**。 多租户应用程序是支持单个组织目录以外的帐户的应用程序;例如，支持所有 Azure AD 帐户，或支持所有 Azure AD 帐户和个人 Microsoft 帐户。
+应用程序的发布者域将在[应用程序的许可提示](application-consent-experience.md)中显示给用户，以告知用户其信息将发送到何处。 在 2019 年 5 月 21 日之后注册的且没有发布者域的多租户应用程序将显示为 **unverified**。 多租户应用程序是指支持单个组织目录以外帐户的应用程序；例如，支持所有 Azure AD 帐户，或支持所有 Azure AD 帐户和 Microsoft 个人帐户。
 
 ## <a name="new-applications"></a>新应用程序
 
@@ -35,10 +35,10 @@ ms.locfileid: "100104172"
 | 租户验证的域 | 发布者域的默认值 |
 |-------------------------|----------------------------|
 | Null | Null |
-| *. onmicrosoft.com | *. onmicrosoft.com |
-| -*. onmicrosoft.com<br/>- domain1.com<br/>- domain2.com（主要） | domain2.com |
+| *.onmicrosoft.com | *.onmicrosoft.com |
+| - *.onmicrosoft.com<br/>- domain1.com<br/>- domain2.com（主要） | domain2.com |
 
-如果未设置多租户应用程序的发布者域，或者将其设置为以. onmicrosoft.com 结尾的域，则应用的许可提示将显示未 **验证** 的发布者域。
+如果多租户应用程序的发布者域未设置，或者设置为以 .onmicrosoft.com 结尾的域，则应用的许可提示将在发布者域的位置显示“未验证”。
 
 ## <a name="grandfathered-applications"></a>祖父应用程序
 
@@ -49,11 +49,11 @@ ms.locfileid: "100104172"
 若要设置应用的发布者域，请执行以下步骤。
 
 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
-1. 如果有权访问多个租户，请使用顶部菜单中的 " **目录 + 订阅** " 筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 选择注册应用程序的租户。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择在其中注册应用的租户。
 1. 导航到[“Azure Active Directory”>“应用注册”](https://go.microsoft.com/fwlink/?linkid=2083908)，找到并选择要配置的应用。
 
    选择应用后，会看到该应用的“概述”页。 
-1. 在 " **管理**" 下，选择 " **品牌**"。
+1. 在“管理”下，选择“品牌打造” 。
 1. 找到“发布者域”字段并选择以下选项之一： 
 
    - 如果尚未配置域，请选择“配置域”。 
@@ -110,7 +110,7 @@ ms.locfileid: "100104172"
 
 ## <a name="implications-on-redirect-uris"></a>对重定向 URI 的影响
 
-使用任何工作或学校帐户登录用户的应用程序或个人 Microsoft 帐户 ([多租户](single-and-multi-tenant-apps.md)) 在指定重定向 uri 时受到少数限制。
+指定重定向 URI 时，允许用户使用任何工作或学校帐户或 Microsoft 个人帐户（[多租户](single-and-multi-tenant-apps.md)）登录的应用程序存在几项限制。
 
 ### <a name="single-root-domain-restriction"></a>单个根域限制
 

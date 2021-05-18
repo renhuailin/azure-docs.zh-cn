@@ -1,5 +1,5 @@
 ---
-title: 与 Visual Studio Mobile Center 真实用户度量-Azure 流量管理器
+title: 使用 Visual Studio Mobile Center 进行真实用户度量 - Azure 流量管理器
 description: 设置使用 Visual Studio Mobile Center 开发的移动应用程序，将实际用户度量发送到流量管理器
 services: traffic-manager
 documentationcenter: traffic-manager
@@ -13,10 +13,10 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: devx-track-js
 ms.openlocfilehash: f9e8cdd3eb5c9f441444683fb5efaccc880b2757
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98184605"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>如何使用 Visual Studio Mobile Center 将实际用户度量发送到流量管理器
@@ -40,7 +40,7 @@ ms.locfileid: "98184605"
         
    ![生成实际用户度量密钥](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **图1：真实用户度量密钥生成**
+   **图 1：生成实际用户度量密钥**
 
 5. 该页显示生成的 RUM 密钥和需要嵌入到 HTML 页中的 JavaScript 代码片段。
  

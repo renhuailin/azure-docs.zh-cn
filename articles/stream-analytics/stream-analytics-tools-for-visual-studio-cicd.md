@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
 ms.openlocfilehash: 0b4356c74b2e0c1494456d5d1082efd7b8953a15
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98693369"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 流分析 CI/CD NuGet 包进行集成和开发 
@@ -18,20 +18,20 @@ ms.locfileid: "98693369"
 
 使用版本 2.3.0000.0 或更高版本的[适用于 Visual Studio 的流分析工具](./stream-analytics-quick-create-vs.md)以获得对 MSBuild 的支持。
 
-有 NuGet 包可用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供 MSBuild、本地运行和部署工具，它们支持 [流分析 Visual Studio 项目](stream-analytics-vs-tools.md)的持续集成和部署过程。 
+有 NuGet 包可用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供了 MSBuild、本地运行和部署工具，用于支持[流分析 Visual Studio 项目](stream-analytics-vs-tools.md)的持续集成和部署进程。 
 > [!NOTE]
 > NuGet 包只能与 2.3.0000.0 或以上版本的用于 Visual Studio 的流分析工具配合使用。 如果具有在以前版本的 Visual Studio 工具中创建的项目，只需使用 2.3.0000.0 或以上版本将其打开并保存即可。 然后即可启用新功能。 
 
 有关详细信息，请参阅[适用于 Visual Studio 的流分析工具](./stream-analytics-quick-create-vs.md)。
 
 ## <a name="msbuild"></a>MSBuild
-同标准 Visual Studio MSBuild 体验一样，可通过两种方式生成项目。 可右键单击该项目，然后选择“生成”  。 还可从命令行使用 NuGet 包中的 MSBuild  。
+同标准 Visual Studio MSBuild 体验一样，可通过两种方式生成项目。 可右键单击该项目，然后选择“生成”。 还可从命令行使用 NuGet 包中的 MSBuild。
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
 ```
 
-成功生成流分析 Visual Studio 项目后，会在 bin/[Debug/Retail]/Deploy 文件夹下生成以下两个 Azure 资源管理器模板文件  ： 
+成功生成流分析 Visual Studio 项目后，会在 bin/[Debug/Retail]/Deploy 文件夹下生成以下两个 Azure 资源管理器模板文件： 
 
 * 资源管理器模板文件
 
@@ -44,7 +44,7 @@ ms.locfileid: "98693369"
 parameters.json 文件中的默认参数来自 Visual Studio 项目中的设置。 如果要部署到其他环境，请相应地替换参数。
 
 > [!NOTE]
-> 对于所有凭据，默认值均设置为 null。 部署到云之前，必须先设置这些值  。
+> 对于所有凭据，默认值均设置为 null。 部署到云之前，必须先设置这些值。
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -93,4 +93,4 @@ arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-O
 
 * [快速入门：在 Visual Studio 中创建 Azure 流分析云作业](stream-analytics-quick-create-vs.md)
 * [使用 Visual Studio 在本地测试流分析查询](stream-analytics-vs-tools-local-run.md)
-* [利用 Visual Studio 探索 Azure 流分析作业](stream-analytics-vs-tools.md)
+* [使用 Visual Studio 浏览 Azure 流分析作业](stream-analytics-vs-tools.md)

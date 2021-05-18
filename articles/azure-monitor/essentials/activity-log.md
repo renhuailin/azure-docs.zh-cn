@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
-ms.openlocfilehash: 557fc6e358f371b47c1df314508e3565d843a28c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 7583b4037d350b9190d6eae30c28b907b1d41d86
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049179"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104722848"
 ---
 # <a name="azure-activity-log"></a>Azure 活动日志
 活动日志是 Azure 中的一种[平台日志](./platform-logs-overview.md)，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 若要获得其他功能，应当创建诊断设置，以便将活动日志发送到 [Azure Monitor 日志](../logs/data-platform-logs.md)，发送到 Azure 事件中心以转发到 Azure 外部，或发送到 Azure 存储进行存档。 本文详细介绍了如何查看活动日志，以及如何将其发送到不同的目标。
@@ -28,13 +28,18 @@ ms.locfileid: "102049179"
 
 有关活动日志类别的说明，请参阅 [Azure 活动日志事件架构](activity-log-schema.md#categories)。
 
+## <a name="download-the-activity-log"></a>下载活动日志
+选择“下载为 CSV”，在当前视图中下载事件。
+
+![下载活动日志](media/activity-log/download-activity-log.png)
+
 ### <a name="view-change-history"></a>查看更改历史记录
 
-对于某些事件，你可以查看更改历史记录，其中显示了在该事件时间内发生了哪些更改。 从活动日志中选择要深入了解的事件。 选择“更改历史记录（预览）”选项卡以查看与该事件相关的任何更改。
+对于某些事件，可以查看“更改历史记录”，其中显示了该事件期间进行的更改。 从活动日志中选择要深入了解的事件。 选择“更改历史记录（预览）”选项卡以查看与该事件相关的任何更改。
 
 ![更改事件的历史记录列表](media/activity-log/change-history-event.png)
 
-如果有与事件关联的任何更改，你将看到可选择的更改列表。 此时将打开“更改历史记录（预览）”页面。 在此页上，可以看到对资源所做的更改。 在下面的示例中，你不仅可以看到 VM 更改了大小，还可以查看在更改之前以前的 VM 大小以及更改的内容。 若要了解有关更改历史记录的详细信息，请参阅 [获取资源更改](../../governance/resource-graph/how-to/get-resource-changes.md)。
+如果有与事件关联的任何更改，你将看到可选择的更改列表。 此时将打开“更改历史记录（预览）”页面。 在此页上，可以看到对资源所做的更改。 在下面的示例中，我们不仅可以看到 VM 更改了大小，而且还可以看到 VM 在更改之前和之后的内容。 若要了解有关更改历史记录的详细信息，请参阅[获取资源更改](../../governance/resource-graph/how-to/get-resource-changes.md)。
 
 ![显示差异的更改历史记录页](media/activity-log/change-history-event-details.png)
 

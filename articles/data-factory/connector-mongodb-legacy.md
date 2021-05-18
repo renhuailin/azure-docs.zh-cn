@@ -1,18 +1,18 @@
 ---
 title: 使用旧版从 MongoDB 复制数据
 description: 了解如何通过在旧版 Azure 数据工厂管道中使用复制活动，将数据从 Mongo DB 复制到支持的接收器数据存储。
-author: linda33wj
-ms.author: jingwang
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: e13a1a5a939d314bdf4500c0827fa13201505016
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4882949abd21e782d98dff8de2ba7be1b66ecdfb
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100368840"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482176"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>使用 Azure 数据工厂（旧版）从 MongoDB 复制数据
 
@@ -37,13 +37,13 @@ ms.locfileid: "100368840"
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 集成运行时提供内置 MongoDB 驱动程序，因此从 MongoDB 复制数据时，无需手动安装任何驱动程序。
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 MongoDB 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -125,7 +125,7 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动 **source** 部分支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**MongoDbSource** | 是 |
 | 查询 |使用自定义 SQL-92 查询读取数据。 例如：select * from MyTable。 |否（如果指定了数据集中的“collectionName”） |
@@ -182,7 +182,7 @@ Azure 数据工厂服务通过使用 MongoDB 集合中 **最新的 100 个文档
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| String |String |
+| 字符串 |String |
 | UUID |Guid |
 | Object |重新标准化为平展列，以“_”作为嵌套分隔符 |
 

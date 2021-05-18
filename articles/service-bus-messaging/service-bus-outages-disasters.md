@@ -4,10 +4,10 @@ description: 本文提供了用于保护应用程序免受潜在的 Azure 服务
 ms.topic: article
 ms.date: 02/10/2021
 ms.openlocfilehash: b9090a54cd58788dbd13f528af4dda4aa96005b7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100374586"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
@@ -23,13 +23,13 @@ ms.locfileid: "100374586"
 
 ### <a name="geo-disaster-recovery"></a>异地灾难恢复
 
-服务总线高级版支持命名空间级别的异地灾难恢复。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。 灾难恢复功能仅适用于[高级 SKU](service-bus-premium-messaging.md)，可实现元数据灾难恢复，并且依赖于主要和辅助灾难恢复命名空间。 在 Geo-Disaster 恢复的情况下，仅在主命名空间和辅助命名空间之间复制实体的元数据。  
+服务总线高级版支持命名空间级别的异地灾难恢复。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。 灾难恢复功能仅适用于[高级 SKU](service-bus-premium-messaging.md)，可实现元数据灾难恢复，并且依赖于主要和辅助灾难恢复命名空间。 在异地灾难恢复的情况下，仅在主命名空间和辅助命名空间之间复制实体的元数据。  
 
 ### <a name="availability-zones"></a>可用性区域
 
-服务总线高级 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在同一 Azure 区域内提供故障隔离位置。 服务总线管理消息存储的三个副本 (1 个主) 和2个辅助。 服务总线为数据和管理操作保留同步的所有三个副本。 如果主要副本发生故障，则会将其中一个辅助副本提升为主要副本，无需停机。 如果应用程序看到暂时性中断了服务总线，SDK 中的重试逻辑将自动重新连接到服务总线。 
+服务总线高级 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在同一 Azure 区域内提供故障隔离位置。 服务总线管理消息存储的三个副本（1 个主副本和 2 个辅助副本）。 服务总线使所有这三个副本保持同步，以用于数据和管理操作。 如果主副本发生故障，则可将其中一个辅助副本提升为主副本，而不会产生故障时间。 如果应用程序发现服务总线有暂时性中断，则 SDK 中的重试逻辑将自动重新连接到服务总线。 
 
-使用可用性区域时，将在可用性区域中的数据中心之间复制元数据和数据 (消息) 。 
+使用可用性区域时，将在该可用性区域中的数据中心之间复制元数据和数据（消息）。 
 
 > [!NOTE]
 > Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-region.md)。

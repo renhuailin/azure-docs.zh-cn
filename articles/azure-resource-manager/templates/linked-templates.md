@@ -2,13 +2,14 @@
 title: 用于部署的链接模板
 description: 介绍如何使用 Azure 资源管理器模板（ARM 模板）中的链接模板创建一个模块化的模板解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 3636ea64227a7c013134d96647144d4f1e2ae31e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 03/25/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 80fabe5f720182e51e731e0d4d833ed0e7ab9137
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211305"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751538"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -37,7 +38,7 @@ ms.locfileid: "102211305"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -66,7 +67,7 @@ ms.locfileid: "102211305"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
@@ -103,7 +104,7 @@ ms.locfileid: "102211305"
 ```json
 {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2019-10-01",
+  "apiVersion": "2020-10-01",
   "name": "nestedTemplate1",
   "properties": {
     "expressionEvaluationOptions": {
@@ -130,7 +131,7 @@ ms.locfileid: "102211305"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "nestedTemplate1",
       "properties": {
         "expressionEvaluationOptions": {
@@ -214,7 +215,7 @@ ms.locfileid: "102211305"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "dynamicSecret",
       "properties": {
         "mode": "Incremental",
@@ -321,7 +322,7 @@ ms.locfileid: "102211305"
     {
       "name": "outer",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "outer"
@@ -351,7 +352,7 @@ ms.locfileid: "102211305"
     {
       "name": "inner",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
@@ -406,7 +407,7 @@ ms.locfileid: "102211305"
 
 ## <a name="linked-template"></a>链接的模板
 
-若要链接模板，请将 [部署资源](/azure/templates/microsoft.resources/deployments) 添加到主模板。 在 `templateLink` 属性中，指定要包括的模板的 URI。 以下示例链接到存储帐户中的模板。
+若要链接某个模板，请向主模板中添加一个[部署资源](/azure/templates/microsoft.resources/deployments)。 在 `templateLink` 属性中，指定要包括的模板的 URI。 以下示例链接到存储帐户中的模板。
 
 ```json
 {
@@ -417,7 +418,7 @@ ms.locfileid: "102211305"
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -445,6 +446,8 @@ ms.locfileid: "102211305"
 
 :::image type="content" source="./media/linked-templates/select-raw.png" alt-text="选择原始 URL":::
 
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
+
 ### <a name="parameters-for-linked-template"></a>链接模板的参数
 
 可以在外部文件中或以内联方式为链接模板提供参数。 提供外部参数文件时，请使用 `parametersLink` 属性：
@@ -453,7 +456,7 @@ ms.locfileid: "102211305"
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
+    "apiVersion": "2020-10-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -476,7 +479,7 @@ ms.locfileid: "102211305"
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
+    "apiVersion": "2020-10-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -496,18 +499,18 @@ ms.locfileid: "102211305"
 
 不能同时使用内联参数和指向参数文件的链接。 同时指定 `parametersLink` 和 `parameters` 时，部署将失败，并出现错误。
 
-### <a name="use-relative-path-for-linked-templates"></a>使用链接模板的相对路径
+### <a name="use-relative-path-for-linked-templates"></a>为链接模板使用相对路径
 
-的 `relativePath` 属性使你可以 `Microsoft.Resources/deployments` 更轻松地创建链接模板。 此属性可用于在相对于父级的位置部署远程链接模板。 此功能要求对所有模板文件进行暂存并在远程 URI （例如 GitHub 或 Azure 存储帐户）中使用。 使用 Azure PowerShell 或 Azure CLI 中的 URI 调用主模板时，子部署 URI 是父级和 relativePath 的组合。
+使用 `Microsoft.Resources/deployments` 的 `relativePath` 属性可以更轻松地创作链接模板。 可以使用此属性在相对于父级的某个位置部署远程链接模板。 此功能要求暂存所有模板文件并使其可通过远程 URI（例如 GitHub 或 Azure 存储帐户）进行访问。 通过 Azure PowerShell 或 Azure CLI 使用 URI 调用主模板时，子部署 URI 是父级和 relativePath 的组合。
 
 > [!NOTE]
-> 当创建 templateSpec 时，属性引用的任何模板 `relativePath` 将通过 Azure PowerShell 或 Azure CLI 打包在 templateSpec 资源中。 不需要暂存文件。 有关详细信息，请参阅 [创建具有链接模板的模板规范](./template-specs.md#create-a-template-spec-with-linked-templates)。
+> 当创建 templateSpec 时，`relativePath` 属性引用的任何模板都将通过 Azure PowerShell 或 Azure CLI 打包在 templateSpec 资源中。 它不要求暂存文件。 有关详细信息，请参阅[创建具有链接模板的模板规范](./template-specs.md#create-a-template-spec-with-linked-templates)。
 
 假设文件夹结构如下所示：
 
 ![资源管理器链接模板相对路径](./media/linked-templates/resource-manager-linked-templates-relative-path.png)
 
-以下模板演示了如何在上图中 *mainTemplate.js* 部署 *nestedChild.js* 。
+以下模板展示了 mainTemplate.json 如何部署上图中所示的 nestedChild.json。
 
 ```json
 {
@@ -533,7 +536,7 @@ ms.locfileid: "102211305"
 }
 ```
 
-在以下部署中，上一模板中链接模板的 URI 是 **https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/children/nestedChild.json** 。
+在以下部署中，上面的模板中链接模板的 URI 是 **https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/children/nestedChild.json** 。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -555,7 +558,7 @@ az deployment group create \
 
 ---
 
-若要使用存储在 Azure 存储帐户中的相对路径部署链接模板，请使用 `QueryString` / `query-string` 参数指定与 TemplateUri 参数一起使用的 SAS 令牌。 仅 Azure CLI 版本2.18 或更高版本以及 Azure PowerShell 版本5.4 或更高版本支持此参数。
+若要使用在 Azure 存储帐户中存储的相对路径来部署链接模板，请使用 `QueryString`/`query-string` 参数指定要与 TemplateUri 参数一起使用的 SAS 令牌。 只有 Azure CLI 2.18 版或更高版本和 Azure PowerShell 5.4 版或更高版本支持此参数。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -579,7 +582,7 @@ az deployment group create \
 
 ---
 
-请确保 QueryString 中没有前导 "？"。 部署时，部署会添加一个。
+请确保 QueryString 中没有前导“？”。 在组装部署的 URI 时，部署会添加一个“？”。
 
 ## <a name="template-specs"></a>模板规格
 
@@ -641,7 +644,7 @@ az deployment group create \
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
+    "apiVersion": "2020-10-01",
     "name": "[concat('nestedTemplate', copyIndex())]",
     // yes, copy works here
     "copy": {
@@ -758,7 +761,7 @@ az deployment group create \
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "[concat('linkedTemplate', copyIndex())]",
       "copy": {
         "count": 3,
@@ -828,7 +831,7 @@ done
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",

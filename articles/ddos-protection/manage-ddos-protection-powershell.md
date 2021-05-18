@@ -3,7 +3,7 @@ title: 使用 Azure PowerShell 创建和配置 Azure DDoS 防护计划
 description: 了解如何使用 Azure PowerShell 创建 DDoS 防护计划
 services: ddos-protection
 documentationcenter: na
-author: aletheatoh
+author: yitoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 41d45b216337cc1b674a9be390f241c4e1bb062a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 69f9b5a74566879ecf8f15f23e689ebb731da45a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103124"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97814136"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和配置 Azure DDoS 防护标准
 
@@ -24,7 +24,7 @@ ms.locfileid: "107103124"
 
 DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网络。 可以为组织配置一个 DDoS 防护计划，然后从多个订阅将虚拟网络链接到相同计划。 
 
-在本快速入门中，你将创建一个 DDoS 防护计划，并将其链接到虚拟网络。 
+在本次快速入门中，你将创建一个 DDoS 防护计划，并将其链接到虚拟网络。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -81,7 +81,7 @@ $vnet | Set-AzVirtualNetwork
 
 ## <a name="validate-and-test"></a>验证并测试
 
-首先检查 DDoS 防护计划的详细信息：
+首先，请查看 DDoS 防护计划的详细信息：
 
 ```azurepowershell-interactive
 Get-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtectionPlan
@@ -91,7 +91,7 @@ Get-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtecti
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可保留资源以供下一教程使用。 如果不再需要，请删除“MyResourceGroup”资源组。 删除资源组时，DDoS 防护计划及其所有相关资源也会一起删除。 
+资源可保留在下一教程中使用。 如果不再需要，请删除 _MyResourceGroup_ 资源组。 删除资源组时，DDoS 防护计划及其所有相关资源也会一起删除。 
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: makromer
 ms.openlocfilehash: 45f5334ebee3365c17bfa52c8d47ed75b82bdfa1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100387693"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure 数据工厂中的 Common Data Model 格式
@@ -39,14 +39,14 @@ Common Data Model 作为映射数据流中的[内联数据集](data-flow-source.
 | 根位置：文件夹路径 | CDM 文件夹的根文件夹位置 | 是 | 字符串 | folderPath |
 | 清单文件：实体路径 | 根文件夹中实体的文件夹路径 | 否 | 字符串 | entityPath |
 | 清单文件：清单名称 | 清单文件名称。 默认值为“default”  | 否 | 字符串 | manifestName |
-| 按上次修改时间筛选 | 选择根据文件上次更改的时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore | 
+| 按上次修改时间筛选 | 选择根据上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore | 
 | 架构链接服务 | 语料库所在的链接服务 | 是（如果使用清单） | `'adlsgen2'` 或 `'github'` | corpusStore | 
 | 实体引用容器 | 容器语料库位于其中 | 是（如果使用 ADLS Gen2 中的清单和语料库） | 字符串 | adlsgen2_fileSystem |
 | 实体引用存储库 | GitHub 存储库名称 | 是（如果使用 GitHub 中的清单和语料库） | 字符串 | github_repository |
 | 实体引用分支 | GitHub 存储库分支 | 是（如果使用 GitHub 中的清单和语料库） | 字符串 |  github_branch |
 | 语料库文件夹 | 语料库的根位置 | 是（如果使用清单） | 字符串 | corpusPath |
 | 语料库实体 | 实体引用的路径 | 是 | 字符串 | 实体 |
-| 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+| 允许找不到文件 | 如果为 true，则找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 在源和接收器转换过程中选择“实体引用”时，可从以下三个选项中选择实体引用的位置：
 
@@ -82,7 +82,7 @@ CDM 仅作为内联数据集提供，且默认情况下没有关联架构。 若
 
 1. 在文本编辑器中打开 model.json 文件
 2. 查找 partitions.Location 属性 
-3. 将 "blob.core.windows.net" 更改为 "dfs.core.windows.net"
+3. 将“blob.core.windows.net”更改为“dfs.core.windows.net”
 4. 将 URL 中的任何“% 2F”编码修正为“/”
 5. 如果使用 ADF 数据流，则必须将分区文件路径中的特殊字符替换为字母数字值，或切换到 Synapse 数据流
 

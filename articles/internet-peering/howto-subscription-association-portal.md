@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
 ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91540262"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>使用门户将对等 ASN 关联到 Azure 订阅
 
-作为 Internet 服务提供商或 Internet Exchange 提供商，在提交对等互连请求之前，你应该首先使用以下步骤将你的 ASN 与 Azure 订阅相关联。
+作为 Internet 服务提供商或 Internet Exchange 提供商，在提交对等互连请求之前，应首先使用以下步骤将 ASN 与 Azure 订阅相关联。
 
 如果需要，可以使用 [PowerShell](howto-subscription-association-powershell.md) 完成本指南。
 
@@ -39,7 +39,7 @@ ms.locfileid: "91540262"
     > [!div class="mx-imgBorder"]
     > ![订阅](./media/rp-subscriptions-launch.png)
 
-1. 订阅打开后，在左侧单击“资源提供程序”。 然后，在右窗格中，在搜索窗口中搜索“peering”，或使用滚动条查找 Microsoft.Peering，并查看“状态”。 如果状态为“已注册”，请跳过以下步骤，然后继续到“创建 PeerAsn”部分。 如果状态为“未注册”，请选择“Microsoft.Peering”，然后单击“注册”。
+1. 订阅打开后，在左侧单击“资源提供程序”。 然后，在右窗格中，在搜索窗口中搜索“peering”，或使用滚动条查找 Microsoft.Peering，并查看“状态”。 如果状态为“已注册”，请跳过以下步骤，然后继续到“创建 PeerAsn”部分。 如果状态为“未注册”，请选择“Microsoft.Peering”，然后单击“注册”****。
 
     > [!div class="mx-imgBorder"]
     > ![注册开始](./media/rp-register-start.png)
@@ -49,13 +49,13 @@ ms.locfileid: "91540262"
     > [!div class="mx-imgBorder"]
     > ![注册正在进行](./media/rp-register-progress.png)
 
-1. 等待一分钟左右，使它可完成注册。 然后，单击“刷新”并验证状态是否为“已注册”。
+1. 等待一分钟左右，使它可完成注册。 然后，单击“刷新”并验证状态是否为“已注册” 。
 
     > [!div class="mx-imgBorder"]
     > ![注册完成](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>创建 PeerAsn
-作为 Internet 服务提供商或 Internet Exchange 提供商，你可以创建新的 PeerAsn 资源，以便在 " [关联对等 ASN" 页](https://go.microsoft.com/fwlink/?linkid=2129592) 上将自治系统编号 (ASN) 与 Azure 订阅相关联。 可以通过为需要关联的每个 ASN 创建 **PeerAsn** ，将多个 asn 关联到一个订阅。
+作为 Internet 服务提供商或 Internet Exchange 提供商，可以创建新的 PeerAsn 资源，以便将自治系统编号 (ASN) 与[关联对等 ASN 页](https://go.microsoft.com/fwlink/?linkid=2129592)上的 Azure 订阅相关联。 可以通过为要关联的每个 ASN 创建“PeerAsn”，将多个 ASN 关联到订阅。
 
 1. 在“关联对等 ASN”页面上的“基本信息”选项卡下，按如下所示填写字段。
 
@@ -70,12 +70,12 @@ ms.locfileid: "91540262"
 1. 然后，单击“审阅 + 创建”，会观察到门户对所输入的信息运行基本验证。 这会在顶部的功能区中显示为“正在运行最终验证...”。
 
     > [!div class="mx-imgBorder"]
-    > ![屏幕截图显示关联对等方 A S N 基本信息选项卡。](./media/peerasn-review-tab-validation.png)
+    > ![屏幕截图显示“关联对等 ASN 基本信息”选项卡。](./media/peerasn-review-tab-validation.png)
 
 1. 功能区中的消息变为“通过验证”后，通过单击“创建”来验证信息并提交请求。 如果验证未通过，则单击“上一步”，然后重复以上步骤来修改请求并确保输入的值没有错误。
 
     > [!div class="mx-imgBorder"]
-    > ![屏幕截图显示了如何关联对等方 A S N 基本信息选项卡，并通过验证。](./media/peerasn-review-tab.png)
+    > ![屏幕截图显示已通过验证的“关联对等 ASN 基本信息”选项卡。](./media/peerasn-review-tab.png)
 
 1. 提交请求之后，请等待它完成部署。 如果部署失败，请联系 [Microsoft 对等互连](mailto:peering@microsoft.com)。 成功的部署将如下所示。
 

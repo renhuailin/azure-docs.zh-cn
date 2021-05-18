@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
 ms.openlocfilehash: 4bb7458d4258dffb074d663e5cf712c7a0245cc7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96022320"
 ---
 # <a name="verify-traffic-manager-settings"></a>验证流量管理器设置

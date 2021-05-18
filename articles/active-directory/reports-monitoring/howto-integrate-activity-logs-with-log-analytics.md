@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f328ed44252f7fb314552d6d05df9806f59d972
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100591128"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志与 Azure Monitor 日志集成
@@ -46,7 +46,7 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 
 * **审核日志**：可以通过 [审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
 * **登录日志**：可以通过 [登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
-* **预配日志**：借助 [预配日志](../app-provisioning/application-provisioning-log-analytics.md)，可以监视在所有第三方应用程序中创建、更新和删除的用户。 
+* 预配日志：借助[预配日志](../app-provisioning/application-provisioning-log-analytics.md)，可以监视已在所有第三方应用程序中创建、更新和删除的用户。 
 
 > [!NOTE]
 > 目前不支持 B2C 相关的审核和登录活动日志。

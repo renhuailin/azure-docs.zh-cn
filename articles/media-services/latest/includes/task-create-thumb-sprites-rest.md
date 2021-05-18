@@ -6,15 +6,15 @@ ms.date: 2/17/2020
 ms.author: inhenkel
 ms.custom: REST
 ms.openlocfilehash: d34cfd31f9648ce6f401c3936a0a28be4729f8e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101705415"
 ---
 <!--Create a thumbnail sprites REST-->
 
-以下 Azure REST 命令创建缩略图子画面转换。 将 `subscriptionID`、`resourceGroup` 和 `accountName` 值替换为当前正在使用的值。 
+以下 Azure REST 命令将创建缩略图子画面转换。 将 `subscriptionID`、`resourceGroup` 和 `accountName` 值替换为当前正在使用的值。 
 
 通过设置 `transformName` 为转换命名。
 

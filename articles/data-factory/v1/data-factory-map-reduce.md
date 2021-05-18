@@ -3,16 +3,16 @@ title: 从 Azure 数据工厂调用 MapReduce 程序
 description: 了解如何通过从 Azure 数据工厂在 Azure HDInsight 群集上运行 MapReduce 程序来处理数据。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f5ad917609d6f9ea401abc898f80631474a44475
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: f1f54e972d59d3de3b0f93b3150ee1150eb6f612
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371067"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786390"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>从数据工厂调用 MapReduce 程序
 > [!div class="op_single_selector" title1="转换活动"]
@@ -31,7 +31,7 @@ ms.locfileid: "100371067"
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中使用 MapReduce 活动转换数据](../transform-data-using-hadoop-map-reduce.md)。
 
 
-数据工厂 [管道](data-factory-create-pipelines.md) 中的 HDInsight MapReduce 活动会在 [自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) 或基于 Windows/Linux 的 [按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 MapReduce 程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
+数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight MapReduce 活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 MapReduce 程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE] 
 > 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。  
@@ -130,7 +130,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 ```
 
 #### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight 链接服务
-接下来，创建一个链接服务，将 Azure HDInsight 群集链接到 Azure 数据工厂。 如果复制/粘贴以下代码，请将 **hdinsight 群集名称** 替换为 hdinsight 群集的名称，并更改用户名和密码值。   
+接下来，创建一个链接服务，将 Azure HDInsight 群集链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请将 **HDInsight 群集名称** 替换为自己的 HDInsight 群集的名称，并更改用户名和密码值。   
 
 ```JSON
 {

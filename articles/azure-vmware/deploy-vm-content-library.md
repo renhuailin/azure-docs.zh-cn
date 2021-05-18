@@ -1,16 +1,16 @@
 ---
-title: 创建用于在 Azure VMware 解决方案中部署 Vm 的内容库
-description: 在 Azure VMware 解决方案私有云中创建用于部署 VM 的内容库。
+title: 创建内容库以在 Azure VMware 解决方案中部署 VM
+description: 创建内容库以在 Azure VMware 解决方案私有云中部署 VM。
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100381998"
 ---
-# <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>创建用于在 Azure VMware 解决方案中部署 Vm 的内容库
+# <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>创建内容库以在 Azure VMware 解决方案中部署 VM
 
 内容库以库项的形式存储和管理内容。 单个库项由用于部署虚拟机 (VM) 的一个或多个文件组成。 
 
@@ -18,7 +18,7 @@ ms.locfileid: "100381998"
 
 ## <a name="prerequisites"></a>先决条件
 
-使用逻辑交换机) 的 NSX-T 段 (，需要使用托管 DHCP 服务才能完成本教程。  有关详细信息，请参阅 [如何管理 Azure VMware 解决方案](manage-dhcp.md) 一文中的 DHCP。
+学习本教程需要具备 NSX-T 段（逻辑交换机）和托管式 DHCP 服务。  有关详细信息，请参阅[如何管理 Azure VMware 解决方案中的 DHCP](manage-dhcp.md) 一文。
 
 ## <a name="create-a-content-library"></a>创建内容库
 
@@ -26,9 +26,9 @@ ms.locfileid: "100381998"
 
    ![选择“菜单”>“内容库”](./media/content-library/vsphere-menu-content-libraries.png)
 
-1. 选择 " **添加** " 按钮创建一个新的内容库。
+1. 选择“添加”按钮新建一个内容库。
 
-   ![选择 "添加" 按钮创建一个新的内容库。](./media/content-library/create-new-content-library.png)
+   ![选择“添加”按钮新建一个内容库。](./media/content-library/create-new-content-library.png)
 
 1. 指定一个名称，确认 vCenter 服务器的 IP 地址，然后选择“下一步”。
 
@@ -92,10 +92,10 @@ ms.locfileid: "100381998"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已介绍了如何创建内容库，以便在 Azure VMware 解决方案中部署 Vm，你可能想要了解：
+了解如何在 Azure VMware 解决方案中创建内容库以部署 VM 后，接下来你可能想要了解以下内容：
 
-- [部署和配置 VMWARE HCX](tutorial-deploy-vmware-hcx.md) ，将 VM 工作负荷迁移到私有云。
-- [Azure VMware 解决方案 vm 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
+- [部署和配置 VMware HCX](tutorial-deploy-vmware-hcx.md) 以将 VM 工作负载迁移到私有云。
+- [Azure VMware 解决方案 VM 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
 
 <!-- LINKS - external-->
 

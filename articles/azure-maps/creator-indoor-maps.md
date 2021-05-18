@@ -1,6 +1,6 @@
 ---
-title: '使用 Azure Maps 创建者 (预览版中的室内地图) '
-description: '本文介绍适用于 Azure Maps Creator 服务 (预览版的概念) '
+title: 在 Azure Maps Creator（预览版）中使用室内定位
+description: 本文介绍适用于 Azure Maps Creator 服务（预览版）的概念
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4ab00317e71f832bb677c4c7587e2356a37cb7a1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96903558"
 ---
-# <a name="creator-preview-for-indoor-maps"></a>室内地图的 Creator (预览) 
+# <a name="creator-preview-for-indoor-maps"></a>室内定位 Creator（预览版）
 
 
 > [!IMPORTANT]
-> Azure Maps Creator 服务目前为公共预览版。
+> Azure Maps Creator 服务目前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
@@ -29,15 +29,15 @@ ms.locfileid: "96903558"
 
 ![Creator 定位数据工作流](./media/creator-indoor-maps/workflow.png)
 
-## <a name="create-azure-maps-creator-preview"></a>创建 Azure Maps 创建者 (预览版)  
+## <a name="create-azure-maps-creator-preview"></a>创建 Azure Maps Creator（预览版） 
 
-若要使用 Creator 服务 (预览版) ，必须在 Azure Maps 帐户中创建 Azure Maps 创建者。 有关如何在 Azure Maps 中创建 Azure Maps Creator 的信息，请参阅[管理 Azure Maps Creator](how-to-manage-creator.md)。
+若要使用 Creator 服务（预览版），必须在 Azure Maps 帐户中创建 Azure Maps Creator。 有关如何在 Azure Maps 中创建 Azure Maps Creator 的信息，请参阅[管理 Azure Maps Creator](how-to-manage-creator.md)。
 
 ## <a name="upload-a-drawing-package"></a>上传绘图包
 
-Creator (预览) 通过转换上传的绘图包收集室内地图数据。 此绘图包表示构造或已重构的设施。 有关绘图包要求的信息，请参阅[绘图包要求](drawing-requirements.md)。
+Creator（预览版）通过转换上传的绘图包收集室内定位数据。 此绘图包表示构造或已重构的设施。 有关绘图包要求的信息，请参阅[绘图包要求](drawing-requirements.md)。
 
-使用 [Azure Maps 数据 (预览版) 上传 API](/rest/api/maps/data/uploadpreview) 来上载绘图包。  成功上传后，数据上传 API 将返回用户数据标识符 (`udid`)。 将在下一步使用 `udid`，以将上传的包转换为室内定位数据。
+使用 [Azure Maps 数据（预览版）上传 API](/rest/api/maps/data/uploadpreview) 上传绘图包。  成功上传后，数据上传 API 将返回用户数据标识符 (`udid`)。 将在下一步使用 `udid`，以将上传的包转换为室内定位数据。
 
 ## <a name="convert-a-drawing-package"></a>转换绘图包
 
@@ -47,7 +47,7 @@ Creator (预览) 通过转换上传的绘图包收集室内地图数据。 此�
 
 ## <a name="create-indoor-map-data"></a>创建室内定位数据
 
-Azure Maps Creator (预览版) 提供三个服务：
+Azure Maps Creator（预览版）提供三个服务：
 
 * [数据集服务](/rest/api/maps/dataset/createpreview)。
 使用数据集服务，基于转换后的绘图包数据创建数据集。
@@ -93,7 +93,7 @@ Azure Maps Creator (预览版) 提供三个服务：
 
 ### <a name="render-v2-service"></a>Render V2 服务
 
-Azure Maps [Render V2 服务-获取地图磁贴 API (预览版) ](/rest/api/maps/renderv2/getmaptilepreview) 已扩展为支持创建者 (预览版) tilesets。
+Azure Maps [Render V2 服务 - 获取定位图块 API（预览版）](/rest/api/maps/renderv2/getmaptilepreview) 已扩展为支持 Creator（预览版）图块集。
 
 Render V2 服务 - 获取定位状态图块 API 允许应用程序请求图块集。 然后，可以将图块集集成到定位控件或 SDK。 有关使用 Render V2 服务的定位控件的示例，请参阅[室内定位模块](#indoor-maps-module)。
 
@@ -103,7 +103,7 @@ Render V2 服务 - 获取定位状态图块 API 允许应用程序请求图块�
 
 ### <a name="indoor-maps-module"></a>室内定位模块
 
-[Azure Maps Web SDK](./index.yml) 包括室内定位模块。 此模块为 Azure Maps 定位控件库提供扩展功能。 室内地图模块呈现在创建者 (预览) 中创建的室内地图。 它集成小组件（如楼层选取器），从而帮助用户可视化不同的楼层。
+[Azure Maps Web SDK](./index.yml) 包括室内定位模块。 此模块为 Azure Maps 定位控件库提供扩展功能。 室内定位模块呈现在 Creator（预览版）中创建的室内定位。 它集成小组件（如楼层选取器），从而帮助用户可视化不同的楼层。
 
 室内定位模块使你能够创建将室内定位数据与其他 [Azure Maps 服务](./index.yml)相集成的 Web 应用程序。 最常见的应用程序设置可能包括从其他定位（如道路、图像、天气和运输）将知识添加到室内定位。
 
@@ -115,7 +115,7 @@ Render V2 服务 - 获取定位状态图块 API 允许应用程序请求图块�
 
 ### <a name="data-maintenance"></a>数据维护
 
- Azure Maps Creator (预览版) 列表、更新和删除 API 允许列出、更新和删除数据集、tilesets 和功能 statesets。
+ 通过 Azure Maps Creator（预览版）列出、更新和删除 API，你可以列出、更新和删除数据集、图块集和功能状态集。
 
 >[!NOTE]
 >每次查看项列表并决定删除它们时，必须考虑该删除对所有从属 API 或应用程序的影响。 例如，如果应通过 [Render V2 - 获取定位图块 API](/rest/api/maps/renderv2/getmaptilepreview) 删除应用程序当前正在使用的图块集，删除该图块集将导致应用程序无法呈现图块集。
@@ -135,4 +135,4 @@ Render V2 服务 - 获取定位状态图块 API 允许应用程序请求图块�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：创建 Creator (预览) 室内地图](tutorial-creator-indoor-maps.md)
+> [教程：创建 Creator（预览）室内定位](tutorial-creator-indoor-maps.md)

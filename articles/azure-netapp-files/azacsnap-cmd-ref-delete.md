@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure NetApp 文件 Azure 应用程序一致性快照工具删除 |Microsoft Docs
-description: 提供有关运行可与 Azure NetApp 文件一起使用的 Azure 应用程序一致性快照工具的 "删除" 命令的指南。
+title: 使用 Azure NetApp 文件的 Azure 应用程序一致性快照工具进行删除 | Microsoft Docs
+description: 提供的指南介绍了如何运行可与 Azure NetApp 文件配合使用的 Azure 应用程序一致性快照工具的删除命令。
 services: azure-netapp-files
 documentationcenter: ''
 author: Phil-Jensen
@@ -14,77 +14,77 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 0e2e4beebedb93524da43c5a3fad750b0295f5cd
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
-ms.translationtype: MT
+ms.openlocfilehash: 1f2c767d45bb08e25a057c7db1f380ceb250f607
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632590"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864901"
 ---
-# <a name="delete-using-azure-application-consistent-snapshot-tool-preview"></a>使用 Azure 应用程序一致性快照工具删除 (预览版) 
+# <a name="delete-using-azure-application-consistent-snapshot-tool-preview"></a>使用 Azure 应用程序一致性快照工具（预览版）进行删除
 
-本文提供了有关运行可与 Azure NetApp 文件一起使用的 Azure 应用程序一致性快照工具的 "删除" 命令的指南。
+本文提供的指南介绍了如何运行可与 Azure NetApp 文件配合使用的 Azure 应用程序一致性快照工具的删除命令。
 
 ## <a name="introduction"></a>简介
 
-可以通过命令删除卷快照和数据库目录条目 `azacsnap -c delete` 。
+可以通过 `azacsnap -c delete` 命令来删除卷快照和数据库目录条目。
 
 > [!IMPORTANT]
-> 由于可能会干扰快照复制，因此，在运行此命令之前创建的快照不会被删除。
+> 不应删除在运行此命令前 10 分钟以内创建的快照，因为那样可能会干扰快照复制。
 
 ## <a name="command-options"></a>命令选项
 
-`-c delete`命令包含以下选项：
+`-c delete` 命令的选项如下：
 
-- `--delete hana` 与选项一起使用时 `--hanasid <SID>` ， `--hanabackupid <HANA backup id>` 将从与条件匹配的 SAP HANA 备份目录中删除条目。
+- `--delete hana` 在与选项 `--dbsid <SID>` 和 `--hanabackupid <HANA backup id>` 配合使用时，会从 SAP HANA 备份目录删除符合条件的条目。
 
-- `--delete storage` 与选项一起使用时， `--snapshot <snapshot name>` 将从后端存储系统中删除快照。
+- `--delete storage` 在与选项 `--snapshot <snapshot name>` 配合使用时，会从后端存储系统删除快照。
 
-- `--delete sync` 与选项一起使用 `--hanasid <SID>` 时 `--hanabackupid <HANA backup id>` ，从的备份目录获取存储快照名称 `<HANA backup id>` ，然后删除备份目录中的条目 _以及_ 包含命名快照的任何卷的快照。
+- `--delete sync` 在与选项 `--dbsid <SID>` 和 `--hanabackupid <HANA backup id>` 配合使用时，会从 `<HANA backup id>` 的备份目录获取存储快照名称，然后删除备份目录中的条目，并从任何包含命名快照的卷中删除快照。
 
-- `--delete sync` 当与一起使用时 `--snapshot <snapshot name>` ，将检查的备份目录中的任何条目 `<snapshot name>` ，获取 SAP HANA 备份 ID 并同时从包含命名快照的任何卷删除备份目录中的条目 _和_ 快照。
+- `--delete sync` 在与 `--snapshot <snapshot name>` 配合使用时，会检查 `<snapshot name>` 的备份目录中是否有任何条目，获取 SAP HANA 备份 ID，并删除备份目录中的条目以及任何包含命名快照的卷中的快照。
 
-- `[--force]` (可选 *的) 谨慎使用*。  此操作将强制删除，而不提示确认。
+- `[--force]`（可选）请谨慎使用。  此操作会强制执行删除，不提示你进行确认。
 
-- `[--configfile <config filename>]` 是允许自定义配置文件名称的可选参数。
+- `[--configfile <config filename>]` 是可选参数，可用于自定义配置文件名称。
 
-### <a name="delete-a-snapshot-using-sync-option"></a>使用选项删除快照 `sync`
+### <a name="delete-a-snapshot-using-sync-option"></a>使用 `sync` 选项删除快照
 
 ```bash
-azacsnap -c delete --delete sync --hanasid H80 --hanabackupid 157979797979
+azacsnap -c delete --delete sync --dbsid H80 --hanabackupid 157979797979
 ```
 
 > [!NOTE]
-> 检查备份目录中是否存在 SAP HANA 备份 ID 157979797979 的任何条目，获取存储快照名称，并从包含命名快照的所有卷中删除备份目录中的条目和快照。
+> 针对 ID 为 157979797979 的 SAP HANA 备份检查备份目录中是否有任何条目，获取存储快照名称，并删除备份目录中的条目以及所有包含命名快照的卷中的快照。
 
 ```bash
 azacsnap -c delete --delete sync --snapshot hana_hourly.2020-01-22_2358
 ```
 
 > [!NOTE]
-> 在备份目录中检查名为 hana_hourly .2020-01-22 _2358 的快照的任何条目，获取 SAP HANA 备份 ID，并从包含命名快照的任何卷删除备份目录中的条目和快照。
+> 针对名为“hana_hourly.2020-01-22_2358”的快照检查备份目录中是否有任何条目，获取 SAP HANA 备份 ID，并删除备份目录中的条目以及所有包含命名快照的卷中的快照。
 
-### <a name="delete-a-snapshot-using-hana-option"></a>使用选项删除快照 `hana`
+### <a name="delete-a-snapshot-using-hana-option"></a>使用 `hana` 选项删除快照
 
 ```bash
-azacsnap -c delete --delete hana --hanasid H80 --hanabackupid 157979797979
+azacsnap -c delete --delete hana --dbsid H80 --hanabackupid 157979797979
 ```
 
 > [!NOTE]
 > 从 SID H80 的备份目录中删除 SAP HANA 备份 ID 157979797979。
 
-### <a name="delete-a-snapshot-using-storage-option"></a>使用选项删除快照 `storage`
+### <a name="delete-a-snapshot-using-storage-option"></a>使用 `storage` 选项删除快照
 
 ```bash
 azacsnap -c delete --delete storage --snapshot hana_hourly.2020-01-22_2358
 ```
 
 > [!NOTE]
-> 从包含名为 hana_hourly .2020;-22 _2358 的快照的任何卷删除快照。
+> 从任何包含名为“hana_hourly.2020-01-22_2358”的快照的卷中删除快照。
 
-**使用选项的输出 `--delete storage`**
+使用 `--delete storage` 选项的输出
 
-系统要求用户确认删除。
+系统会要求用户确认删除。
 
 ```bash
 azacsnap -c delete --delete storage --snapshot azacsnap-hsr-ha.2020-07-02T221702.2535255Z
@@ -96,7 +96,7 @@ Are you sure you want to permanently delete the snapshot 'azacsnap-hsr-ha.2020-0
 Snapshot deletion completed
 ```
 
-通过使用可选参数，可以避免用户确认，如下所示 `--force` ：
+使用可选的 `--force` 参数可以省去用户确认的步骤，如下所示：
 
 ```bash
 azacsnap -c delete --delete storage --snapshot azacsnap-hsr-ha.2020-07-02T222201.4988618Z --force

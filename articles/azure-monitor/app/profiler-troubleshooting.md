@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 622a83c6d91bf2a30c2844e3279d6fd4b89d429f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2c80362c3407f1404c6657997de89c2741264909
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213787"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026549"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -19,7 +19,7 @@ ms.locfileid: "102213787"
 
 ### <a name="make-sure-youre-using-the-appropriate-profiler-endpoint"></a>请确保使用适当的探查器终结点
 
-目前唯一需要修改终结点的区域是 [Azure 政府](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights)和 [Azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide)。
+目前唯一需要修改终结点的区域是 [Azure 政府](../../azure-government/compare-azure-government-global-azure.md#application-insights)和 [Azure 中国](/azure/china/resources-developer-guide)。
 
 |应用设置    | 美国政府云 | 中国云 |   
 |---------------|---------------------|-------------|

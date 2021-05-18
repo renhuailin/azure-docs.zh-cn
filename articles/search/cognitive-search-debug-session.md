@@ -1,5 +1,5 @@
 ---
-title: " (预览) 调试会话概念"
+title: 调试会话概念（预览）
 titleSuffix: Azure Cognitive Search
 description: 调试会话（通过 Azure 门户访问）提供一个类似于 IDE 的环境，可在其中识别和修复错误、验证更改，以及将更改推送到 AI 扩充管道中的技能组。 调试会话当前为预览版。
 manager: nitinme
@@ -9,13 +9,13 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92057614"
 ---
-# <a name="debug-sessions-in-azure-cognitive-search"></a>在 Azure 中调试会话认知搜索
+# <a name="debug-sessions-in-azure-cognitive-search"></a>Azure 认知搜索中的调试会话
 
 调试会话是一个可视化编辑器，可与 Azure 门户中的现有技能组配合使用。 在调试会话中，可以识别和解决错误、验证更改，以及将更改推送到 AI 扩充管道中的生产技能组。
 
@@ -51,7 +51,7 @@ ms.locfileid: "92057614"
 
 在关系图中选择某个技能后，将突出显示与其相连的技能、创建其输入的节点和接受其输出的节点。 每个技能节点都会显示其类型、错误或警告，以及执行计数。 在“技能图”中，可选择要调试或增强的技能。 选择技能后，其详细信息将显示在图右侧的“技能详细信息”窗格中。
 
-> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="创建调试会话":::
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="技能图":::
 
 ## <a name="skill-details"></a>技能详细信息
 
@@ -73,7 +73,7 @@ ms.locfileid: "92057614"
 
 “扩充数据结构”窗格显示通过技能组实现的文档扩充，详细介绍了每个扩充和起始技能的上下文。 “表达式计算器”也可用于查看每个扩充的内容。
 
-> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="创建调试会话":::
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="扩充数据结构":::
 
 ## <a name="expression-evaluator"></a>表达式计算器
 
@@ -85,7 +85,7 @@ ms.locfileid: "92057614"
 
 ## <a name="limitations"></a>限制
 
-调试 sesisons 适用于所有正式可用的数据源 amd 大多数预览版数据源。 当前不支持 (预览) 和 Cassandra API (预览) 的 MongoDB API。
+调试会话适用于所有正式发布的数据源和大多数预览数据源。 当前不支持 Cosmos DB 的 MongoDB API（预览版）和 Cassandra API（预览版）。
 
 ## <a name="next-steps"></a>后续步骤
 

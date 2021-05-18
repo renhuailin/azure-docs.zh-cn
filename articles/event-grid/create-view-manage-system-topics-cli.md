@@ -3,12 +3,12 @@ title: 使用 CLI 创建、查看和管理 Azure 事件网格系统主题
 description: 本文介绍如何使用 Azure CLI 创建、查看和删除系统主题。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: c1c847c7f25e3a656b798e186a408e560b9ee9e6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 34a098406762fd57dc9dc4b58fc375286f5d5b13
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98633216"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874290"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>使用 Azure CLI 创建、查看和管理事件网格系统主题
 本文说明如何使用 Azure CLI 创建和管理系统主题。 有关系统主题的概述，请参阅[系统主题](system-topics.md)。
@@ -30,7 +30,7 @@ ms.locfileid: "98633216"
 ## <a name="create-a-system-topic"></a>创建系统主题
 
 - 若要先在 Azure 源上创建系统主题，然后再为该主题创建事件订阅，请参阅以下参考主题：
-    - [az eventgrid system-topic create](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-create)
+    - [az eventgrid system-topic create](/cli/azure/eventgrid/system-topic#az_eventgrid_system_topic_create)
 
         ```azurecli-interactive
         # Get the ID of the Azure source (for example: Azure Storage account)
@@ -53,14 +53,14 @@ ms.locfileid: "98633216"
         ```azurecli-interactive
         az eventgrid topic-type  list --output json | grep -w id
         ```
-    - [az eventgrid system-topic event-subscription create](/cli/azure/ext/eventgrid/eventgrid/system-topic/event-subscription#ext-eventgrid-az-eventgrid-system-topic-event-subscription-create)
+    - [az eventgrid system-topic event-subscription create](/cli/azure/eventgrid/system-topic/event-subscription#az_eventgrid_system_topic_event-subscription-create)
 
         ```azurecli-interactive
         az eventgrid system-topic event-subscription create --name <SPECIFY EVENT SUBSCRIPTION NAME> \
             -g rg1 --system-topic-name <SYSTEM TOPIC NAME> \
             --endpoint <ENDPOINT URL>         
         ```
-- 若要在创建 Azure 源的事件订阅时创建系统主题（以隐式方式），请使用 [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) 方法。 下面是一个示例：
+- 若要在创建 Azure 源的事件订阅时创建系统主题（以隐式方式），请使用 [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) 方法。 下面是一个示例：
     
     ```azurecli-interactive
     storageid=$(az storage account show --name <AZURE STORAGE ACCOUNT NAME> --resource-group <AZURE RESOURCE GROUP NAME> --query id --output tsv)
@@ -76,12 +76,12 @@ ms.locfileid: "98633216"
 ## <a name="view-all-system-topics"></a>查看所有系统主题
 若要查看所有系统主题以及所选系统主题的详细信息，请使用以下命令：
 
-- [az eventgrid system-topic list](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-list)
+- [az eventgrid system-topic list](/cli/azure/eventgrid/system-topic#az_eventgrid_system_topic_list)
 
     ```azurecli-interactive
     az eventgrid system-topic list   
      ```
-- [az eventgrid system-topic show](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-show)
+- [az eventgrid system-topic show](/cli/azure/eventgrid/system-topic#az_eventgrid_system_topic_show)
 
     ```azurecli-interactive
     az eventgrid system-topic show -g <AZURE RESOURCE GROUP NAME> -n <SYSTEM TOPIC NAME>     
@@ -90,7 +90,7 @@ ms.locfileid: "98633216"
 ## <a name="delete-a-system-topic"></a>删除系统主题
 若要删除系统主题，请使用以下命令： 
 
-- [az eventgrid system-topic delete](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-delete)
+- [az eventgrid system-topic delete](/cli/azure/eventgrid/system-topic#az_eventgrid_system_topic_delete)
 
     ```azurecli-interactive
     az eventgrid system-topic delete -g <AZURE RESOURCE GROUP NAME> --name <SYSTEM TOPIC NAME>   

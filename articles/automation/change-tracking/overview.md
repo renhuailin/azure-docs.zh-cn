@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: e2371f3de8ed73250bca6639e6c749811c5559ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ed29def305bfa33a0a947a331775de89275e5f7f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100572608"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220860"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>更改跟踪和库存概述
 
@@ -40,6 +40,8 @@ ms.locfileid: "100572608"
 
 > [!NOTE]
 > “更改跟踪和清单”要求将 Log Analytics 工作区链接到自动化帐户。 有关受支持区域的明确列表，请参阅 [Azure 工作区映射](../how-to/region-mappings.md)。 区域映射不会影响在单独的区域中管理自动化帐户内 VM 的功能。
+
+作为服务提供商，你可能已经将多个客户租户载入了 [Azure Lighthouse](../../lighthouse/overview.md)。 借助 Azure Lighthouse，你可以一次在多个 Azure Active Directory (Azure AD) 中大规模执行操作，从而提高你负责的这些租户上的管理任务（如更改跟踪和清单）的效率。 更改跟踪和清单功能可管理同一租户内多个订阅中的计算机，或使用 [Azure 委托资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)跨租户管理计算机。
 
 ## <a name="current-limitations"></a>当前限制
 

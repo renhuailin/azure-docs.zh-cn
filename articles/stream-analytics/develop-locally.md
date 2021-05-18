@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
 ms.openlocfilehash: 18df480dab90d9ab127bb96971fc19cdc5a361ce
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98016467"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>在本地开发和调试 Azure 流分析作业
@@ -25,7 +25,7 @@ ms.locfileid: "98016467"
 
 |环境                              |说明    |
 |-----------------------------------------|------------|
-|[Visual Studio Code](visual-studio-code-explore-jobs.md)| 利用适用于 Visual Studio Code 的 [Azure 流分析工具扩展](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) ，可以通过丰富的 IntelliSense 和本机源代码管理，在本地和云中创作、管理和测试流分析作业。 支持在 Linux、MacOS 和 Windows 上进行开发。 若要了解详细信息，请参阅[在 Visual Studio Code 中创建 Azure 流分析作业](quick-create-visual-studio-code.md)。 扩展还支持 [Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/) ，它是云托管的开发环境。|
+|[Visual Studio Code](visual-studio-code-explore-jobs.md)| 利用 Visual Studio Code 的 [Azure 流分析工具扩展](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa)，你可以使用丰富的 IntelliSense 和原生源代码管理在本地和云中创作、管理和测试你的流分析作业。 支持在 Linux、MacOS 和 Windows 上进行开发。 若要了解详细信息，请参阅[在 Visual Studio Code 中创建 Azure 流分析作业](quick-create-visual-studio-code.md)。 扩展还支持 [Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)，它是云托管的开发环境。|
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |流分析工具是 Visual Studio 中 Azure 开发以及数据存储和处理工作负载的一部分。 可以使用 Visual Studio 编写自定义 C# 用户定义函数和反序列化程序。 若要了解详细信息，请参阅[使用 Visual Studio 创建 Azure 流分析作业](stream-analytics-quick-create-vs.md)。|
 |[命令提示符或终端](stream-analytics-tools-for-visual-studio-cicd.md)|Azure 流分析 CI/CD NuGet 包提供了用于在任意计算机上进行 Visual Studio 项目生成、本地测试的工具。 Azure 流分析 CI/CD npm 包提供了用于在任意计算机上进行 Visual Studio Code 项目生成（将生成 Azure 资源管理器模板）的工具。|
 

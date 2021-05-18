@@ -13,19 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/02/2019
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: e8778e50dcb881647696c6e901bf1058b9d6ac43
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996553"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104720332"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>更改 ADSync 服务帐户密码
 如果更改了 ADSync 服务帐户密码，则将无法正常启动同步服务，除非已放弃加密密钥并重新初始化 ADSync 服务帐户密码。 
+
+>[!IMPORTANT]
+> 如果将 Connect 与 2017 年 3 月的版本或更早版本一起使用，则不应重置服务帐户中的密码，因为出于安全原因，Windows 会销毁加密密钥。 无法在不重装 Azure AD Connect 的情况下将帐户更改为任何其他帐户。 如果升级到 2017 年 4 月的版本或更高版本，则支持更改服务帐户中的密码，但不能更改使用的帐户。 
 
 Azure AD Connect 是同步服务的一部分，它使用加密密钥来存储 AD DS 连接器帐户和 ADSync 服务帐户的密码。  这些帐户在存储到数据库之前会进行加密。 
 
@@ -45,7 +48,7 @@ Azure AD Connect 是同步服务的一部分，它使用加密密钥来存储 AD
 其次，在特定条件下，如果密码已更新，则同步服务无法再通过 DPAPI 检索加密密钥。 没有加密密钥，同步服务就不能解密在本地 AD 和 Azure AD 之间进行同步所需的密码。
 此时会出现错误，例如：
 
-- 在 Windows 服务控制管理器下，如果尝试启动同步服务，但无法检索加密密钥，则会失败并出现错误 "<strong>Windows 无法在本地计算机上启动 Microsoft Azure AD 同步"。有关详细信息，请查看系统事件日志。如果这是非 Microsoft 服务，请与服务供应商联系，并参考特定于服务的错误代码-21451857952</strong>。 "
+- 如果尝试在 Windows 服务控制管理器中启动同步服务，但却无法检索加密密钥，则该服务会失败，并且会出现错误“Windows 无法在本地计算机上启动 Microsoft Azure AD 同步。有关详细信息，请查看系统事件日志。如果该服务是非 Microsoft 服务，请联系服务供应商，并请参阅特定于服务的错误代码 -21451857952。”
 - 在 Windows 事件查看器中，应用程序事件日志包含 **事件 ID 为 6028** 且内容为“服务器加密密钥无法访问”的错误消息。 
 
 若要确保不收到这些错误，请在更改密码时，按照[放弃 ADSync 服务帐户加密密钥](#abandoning-the-adsync-service-account-encryption-key)中的过程进行操作。

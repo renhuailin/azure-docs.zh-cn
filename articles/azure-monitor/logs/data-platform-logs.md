@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 5066264777c66369205489fb27a6f9206c5da521
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9794c5f048b8795652e4b31e0134b36a77715abe
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101707993"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873372"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor 日志概览
 Azure Monitor 日志是 Azure Monitor 的一项功能，用于从[受监视的资源](../monitor-reference.md)收集并整理日志和性能数据。 来自不同源的数据（例如来自 Azure 服务的[平台日志](../essentials/platform-logs-overview.md)、来自[虚拟机代理](../agents/agents-overview.md)的日志和性能数据以及来自[应用程序](../app/app-insights-overview.md)的使用情况和性能数据）可以合并到一个工作区中，以便使用一种能够快速分析数百万条记录的复杂查询语言对这些数据进行集中分析。 你可以执行仅检索特定记录集的简单查询，也可以执行复杂的数据分析来识别监视数据中的关键模式。 通过 Log Analytics 以交互方式使用日志查询及其结果，在警报规则中使用它们来主动接收问题通知，或者在工作簿或仪表板中将直观显示其结果。
@@ -23,13 +23,13 @@ Azure Monitor 日志是 Azure Monitor 的一项功能，用于从[受监视的�
 ## <a name="what-can-you-do-with-azure-monitor-logs"></a>可以对 Azure Monitor 日志执行哪些操作？
 下表介绍了 Azure Monitor 中的日志的不同使用方式：
 
-|  |  |
+|  | 说明 |
 |:---|:---|
 | **分析** | 使用 Azure 门户中的 [Log Analytics](./log-analytics-tutorial.md) 可以编写[日志查询](./log-query-overview.md)，并通过强大的分析引擎以交互方式分析日志数据 |
 | **Alert** | 配置[日志警报规则](../alerts/alerts-log.md)，以便在查询结果与特定的结果匹配时发送通知或执行[自动化操作](../alerts/action-groups.md)。 |
 | **可视化** | 将以表格或图表形式呈现的查询结果固定到 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)。<br>创建一个[工作簿](../visualize/workbooks-overview.md)以与交互式报表中的多组数据合并。 <br>将查询结果导出到 [Power BI](../visualize/powerbi.md)，以使用不同的可视化效果并与 Azure 外部的用户共享。<br>将查询结果导出到 [Grafana](../visualize/grafana-plugin.md) 以利用其仪表板并与其他数据源合并。|
 | **Insights** | 支持为特定应用程序和服务提供自定义监视体验的[见解](../monitor-reference.md#insights-and-core-solutions)。  |
-| **检索** | 使用 [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) 从命令行访问日志查询结果。<br>使用 [PowerShell cmdlet](/powershell/module/az.operationalinsights) 从命令行访问日志查询结果。<br>使用 [REST API](https://dev.loganalytics.io/) 从自定义应用程序访问日志查询结果。 |
+| **检索** | 使用 [Azure CLI](/cli/azure/monitor/log-analytics) 从命令行访问日志查询结果。<br>使用 [PowerShell cmdlet](/powershell/module/az.operationalinsights) 从命令行访问日志查询结果。<br>使用 [REST API](https://dev.loganalytics.io/) 从自定义应用程序访问日志查询结果。 |
 | **导出** | [将日志数据配置为自动导出](./logs-data-export.md)到 Azure 存储帐户或 Azure 事件中心。<br>构建一个工作流来检索日志数据，并使用[逻辑应用](./logicapp-flow-connector.md)将其复制到外部位置。 |
 
 ![日志概述](media/data-platform-logs/logs-overview.png)

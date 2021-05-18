@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
 ms.openlocfilehash: 6b1079797f1a753fa8362d6e920f3394087d7e9f
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98119282"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>在 Azure 认知搜索中配置客户管理的密钥以用于数据加密
 
-Azure 认知搜索会自动使用[服务托管的密钥](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components)对已编制索引的内容进行静态加密。 如果需要更多保护，可以使用在 Azure Key Vault 中创建和管理的密钥，通过一个额外的加密层来补充默认加密。 本文将指导你完成设置客户托管的密钥加密的步骤。
+Azure 认知搜索会自动使用[服务托管的密钥](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components)对已编制索引的内容进行静态加密。 如果需要更多保护，可以使用在 Azure Key Vault 中创建和管理的密钥，通过一个额外的加密层来补充默认加密。 本文将指导你完成设置客户管理的密钥加密的步骤。
 
-客户托管的密钥加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你可以创建自己的加密密钥并将其存储在 Key Vault 中，或使用 Azure Key Vault 的 API 来生成加密密钥。 使用 Azure Key Vault，还可以在[启用日志记录](../key-vault/general/logging.md)的情况下审核密钥使用情况。  
+客户管理的密钥加密依赖于 [Azure Key Vault](../key-vault/general/overview.md)。 你可以创建自己的加密密钥并将其存储在 Key Vault 中，或使用 Azure Key Vault 的 API 来生成加密密钥。 使用 Azure Key Vault，还可以在[启用日志记录](../key-vault/general/logging.md)的情况下审核密钥使用情况。  
 
 使用客户管理的密钥进行的加密是在创建单个索引或同义词映射时应用于这些对象的，而不是在搜索服务级别本身上指定的。 只有新对象才能加密。 无法加密已存在的内容。
 
@@ -31,7 +31,7 @@ Azure 认知搜索会自动使用[服务托管的密钥](../security/fundamental
 
 ## <a name="double-encryption"></a>双重加密
 
-对于在2020年8月1日之后创建的服务，在特定区域中，客户托管的密钥加密的作用域包括临时磁盘，从而实现 [完全双重加密](search-security-overview.md#double-encryption)（当前在这些区域中提供）： 
+对于 2020 年 8 月 1 日之后在特定区域创建的服务，客户管理的密钥加密的范围包括目前在以下区域提供的临时磁盘（实现[完全双重加密](search-security-overview.md#double-encryption)）： 
 
 + 美国西部 2
 + 美国东部
@@ -39,7 +39,7 @@ Azure 认知搜索会自动使用[服务托管的密钥](../security/fundamental
 + US Gov 弗吉尼亚州
 + US Gov 亚利桑那州
 
-如果你使用的是其他区域，或在8月1日之前创建的服务，则托管密钥加密仅限于数据磁盘，不包括服务使用的临时磁盘。
+如果使用的是其他区域或 8 月 1 日之前创建的服务，则托管密钥加密仅限于数据磁盘，不包括服务使用的临时磁盘。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,11 +52,11 @@ Azure 认知搜索会自动使用[服务托管的密钥](../security/fundamental
 你应该有一个可创建加密的对象的搜索应用程序。 你需要将密钥保管库密钥和 Active Directory 注册信息引用到此代码中。 此代码可以是某个工作应用，也可以是原型代码，例如 [C# 代码示例 DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)。
 
 > [!TIP]
-> 你可以使用 [Postman](search-get-started-rest.md)、 [Visual Studio Code](search-get-started-vs-code.md)或 [Azure PowerShell](./search-get-started-powershell.md)调用创建包含加密密钥参数的索引和同义词映射的 REST api。 目前，门户尚不支持将键添加到索引或同义词映射。
+> 可以使用 [Postman](search-get-started-rest.md) 或 [Visual Studio Code](search-get-started-vs-code.md) 或 [Azure PowerShell](./search-get-started-powershell.md) 来调用 REST API，以便创建包含加密密钥参数的索引和同义词映射。 目前，门户尚不支持将键添加到索引或同义词映射。
 
 ## <a name="1---enable-key-recovery"></a>1 - 启用密钥恢复
 
-删除你的 Azure Key Vault 密钥后，无人可以检索你的数据，这是使用客户管理的密钥进行的加密的本质决定的。 若要防止意外删除 Key Vault 密钥造成数据丢失，必须在密钥保管库上启用“软删除”和“清除保护”。 默认情况下会启用“软删除”，因此，只有在你特意禁用了此功能时才会遇到问题。 清除保护默认情况下未启用，但在认知搜索中，客户管理的密钥加密是必需的。 有关详细信息，请参阅[软删除](../key-vault/general/soft-delete-overview.md)和[清除保护](../key-vault/general/soft-delete-overview.md#purge-protection)概述。
+删除你的 Azure Key Vault 密钥后，无人可以检索你的数据，这是使用客户管理的密钥进行的加密的本质决定的。 若要防止意外删除 Key Vault 密钥造成数据丢失，必须在密钥保管库上启用“软删除”和“清除保护”。 默认情况下会启用“软删除”，因此，只有在你特意禁用了此功能时才会遇到问题。 “清除保护”在默认情况下未启用，但它是认知搜索中客户管理的密钥加密所必需的。 有关详细信息，请参阅[软删除](../key-vault/general/soft-delete-overview.md)和[清除保护](../key-vault/general/soft-delete-overview.md#purge-protection)概述。
 
 可以使用门户、PowerShell 或 Azure CLI 命令设置这两项属性。
 
@@ -377,7 +377,7 @@ Azure 认知搜索会自动使用[服务托管的密钥](../security/fundamental
 
 ## <a name="work-with-encrypted-content"></a>使用加密内容
 
-使用客户托管的密钥加密时，由于额外的加密/解密工作，你会注意到索引和查询的延迟。 Azure 认知搜索不记录加密活动，但你可以通过密钥保管库日志记录监视密钥访问。 建议在配置密钥保管库的过程中[启用日志记录](../key-vault/general/logging.md)。
+使用客户管理的密钥加密时，你会注意到，由于额外的加密/解密工作，索引编制和查询会出现相应的延迟。 Azure 认知搜索不记录加密活动，但你可以通过密钥保管库日志记录监视密钥访问。 建议在配置密钥保管库的过程中[启用日志记录](../key-vault/general/logging.md)。
 
 应每隔一段时间就进行密钥轮换。 每当轮换密钥时，请务必遵循此顺序：
 

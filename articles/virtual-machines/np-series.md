@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 61488b88b00206cb78beed4fe773bf9377848701
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 69af7e2129136128e87b4c9b28806b2f02f09e27
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107861042"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205388"
 ---
 # <a name="np-series"></a>NP 系列 
 NP 系列虚拟机由 [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA 提供支持，以加速工作负载，包括机器学习推理、视频转码以及数据库搜索和分析。 NP 系列 VM 还由全核 Turbo 时钟频率为 3.2GHz 的 Intel Xeon 8171M (Skylake) CPU 提供支持。
@@ -43,10 +43,17 @@ VM 代系支持：第 1 代<br>
 
 答：Xilinx 建议使用 [Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html)
 
-
 问：是否需要使用 NP VM 来开发解决方案？ 
 
-答：否，可以在本地开发并部署到云中！ 若要在 NP VM 上部署，请确保遵循证明文档。 
+答：否，可以在本地开发并部署到云中！ 要在 NP VM 上部署，请确保按[证明文档](https://docs.microsoft.com/azure/virtual-machines/field-programmable-gate-arrays-attestation)操作。 
+
+问：在 NP VM 中对 FPGA 进行编程时，应使用从证明返回的哪个文件？
+
+答：证明返回两个 xclbin，即 design.bit.xclbin 和 design.azure.xclbin  。 请使用 design.azure.xclbin。
+
+问：在哪里可以获取所有 XRT/Platform 文件？
+
+答：请访问 Xilinx 的 [Microsoft-Azure](https://www.xilinx.com/microsoft-azure.html) 网站获取所有文件。
 
 问：我应使用哪个 XRT 版本？
 

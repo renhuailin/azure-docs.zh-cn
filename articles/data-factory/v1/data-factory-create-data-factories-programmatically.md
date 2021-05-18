@@ -3,17 +3,17 @@ title: 使用 Azure .NET SDK 创建数据管道
 description: 了解如何使用数据工厂 SDK 以编程方式创建、监视和管理 Azure 数据工厂。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1b7f5d1ad671b6d97bd6597386c714b026c02232
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: e67f924806909d55d17151c36f28f81312223b23
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376847"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104782769"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 > [!NOTE]
@@ -134,7 +134,7 @@ ms.locfileid: "100376847"
         </appSettings>
     </configuration>
     ```
-5. 在 App.Config 文件中，更新 " **&lt; 应用程序 ID &gt;**"、" **&lt; 密码 &gt;**"、" **&lt; 订阅 id &gt;**" 和 " **&lt; 租户 id &gt;** " 值，并将其作为自己的值。
+5. 在 App.Config 文件中，使用自己的值更新 **&lt;Application ID&gt;** 、 **&lt;Password&gt;** 、 **&lt;Subscription ID&gt;** 和 **&lt;tenant ID&gt;** 的值。
 6. 将以下 **using** 语句添加到项目中的 **Program.cs** 文件。
 
     ```csharp
@@ -442,7 +442,7 @@ ms.locfileid: "100376847"
     }
     ```
 
-15. 在解决方案资源管理器中，展开项目： **DataFactoryAPITestApp**，右键单击 " **引用**"，然后单击 " **添加引用**"。 选择 `System.Configuration` 程序集的复选框，并单击“确定”。
+15. 在“解决方案资源管理器”中展开项目 **DataFactoryAPITestApp**，右键单击“引用”，并单击“添加引用”。 选择 `System.Configuration` 程序集的复选框，并单击“确定”。
 15. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。 
 16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，然后将其上传到 adftutorial 容器。
 
@@ -497,6 +497,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下示例，了解如何使用将数据从 Azure blob 存储复制到 Azure SQL 数据库的 .NET SDK 创建管道： 
+请参阅以下示例，该示例使用 .NET SDK 创建将数据从 Azure blob 存储复制到 Azure SQL 数据库的管道： 
 
 - [创建用于将数据从 Blob 存储复制到 SQL 数据库的管道](data-factory-copy-activity-tutorial-using-dotnet-api.md)

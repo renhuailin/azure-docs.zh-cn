@@ -1,5 +1,5 @@
 ---
-title: 在 CI/CD 管道中管理 U SQL 程序集-Azure Data Lake
+title: 在 CI/CD 管道中管理 U-SQL 程序集 - Azure Data Lake
 description: 了解使用 Azure DevOps 在 CI/CD 管道中管理 U-SQL C# 程序集的最佳做法。
 author: liudan66
 ms.author: liud
@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
 ms.openlocfilehash: e88616f45c69d33234aa35333e0d82ad8cc59bb6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015275"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>在 CI/CD 管道中管理 U-SQL 程序集的最佳做法
@@ -31,21 +31,21 @@ U-SQL 数据库项目可引用类库（对于 U-SQL 应用程序）项目。 可
 
 请按照下列步骤创建项目并添加引用。
 
-1. 通过选择 "**文件**" "  >  **新建**  >  **项目**"，为 U SQL 应用程序) 项目创建类库 (。 该项目位于“Azure Data Lake > U-SQL”节点下。
+1. 通过选择“文件” > “新建” > “项目”创建类库（对于 U-SQL 应用程序）项目  。 该项目位于“Azure Data Lake > U-SQL”节点下。
 
    ![用于 Visual Studio 的 Data Lake 工具 - 创建 C# 类库项目](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
 
 1. 在类库（对于 U-SQL 应用程序）项目中添加用户定义的 C# 代码。
 
-1. 通过选择 "**文件**" "  >  **新建**  >  **项目**" 创建一个 U SQL 项目。 该项目位于 **Azure Data Lake**  >  **U-SQL** 节点下。
+1. 通过选择“文件” > “新建” > “项目”来创建 U-SQL 项目  。 该项目位于“Azure Data Lake > U-SQL”节点下 。
 
    ![用于 Visual Studio 的 Data Lake 工具 - 创建 U-SQL 数据库项目](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
 
 1. 为 U-SQL 数据库项目添加对 C# 类库项目的引用。
 
-   ![适用于 Visual Studio 的 Data Lake 工具-添加引用](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference.png)
+   ![针对 Visual Studio 的 Data Lake 工具 - 添加引用](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference.png)
 
-   ![用于 Visual Studio 的 Data Lake 工具-添加 U-SQL 数据库项目引用](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference-wizard.png)
+   ![针对 Visual Studio 的 Data Lake 工具 - 添加 U-SQL 数据库项目引用](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference-wizard.png)
 
 1. 通过右键单击项目并选择“添加新项目”在 U-SQL 数据库项目中创建程序集脚本。
 
@@ -57,7 +57,7 @@ U-SQL 数据库项目可引用类库（对于 U-SQL 应用程序）项目。 可
 
 1. 添加“托管的依赖项”和“其他文件”（若有）。 添加其他文件时，该工具会使用相对路径来确保它稍后可在本地计算机和生成计算机上找到程序集。
 
-位于底部编辑器窗口中的 **\@ _DeployTempDirectory** 是预定义的变量，它将工具指向生成输出文件夹。 在生成输出文件夹下，每个程序集都有按程序集名称命名的子文件夹。 此子文件夹中包含所有 DLL 和其他文件。
+底部编辑器窗口中的 \@_DeployTempDirectory 是一个预定义的变量，它将该工具指向生成输出文件夹。 在生成输出文件夹下，每个程序集都有按程序集名称命名的子文件夹。 此子文件夹中包含所有 DLL 和其他文件。
 
 ## <a name="build-a-u-sql-database-project"></a>生成 U-SQL 数据库项目
 

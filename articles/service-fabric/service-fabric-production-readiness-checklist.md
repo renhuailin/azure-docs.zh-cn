@@ -3,12 +3,12 @@ title: Azure Service Fabric 生产就绪情况核对清单
 description: 遵循最佳做法，让 Service Fabric 应用程序和群集做好生产准备。
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5872de420b72f9b453c4b64cd7790a14c0d5d305
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87835861"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732193"
 ---
 # <a name="production-readiness-checklist"></a>生产就绪情况核对清单
 
@@ -34,7 +34,7 @@ ms.locfileid: "87835861"
 1. 关闭生产集群中的自动升级，并对开发和暂存群集启用自动升级（根据需要回滚）。 
 1. 为服务建立恢复点目标 (RPO)，设置[灾难恢复流程](service-fabric-disaster-recovery.md)并进行测试。
 1. 手动或以编程方式计划群集的[缩放](service-fabric-cluster-scaling.md)。
-1. 计划群集节点的[修补](service-fabric-patch-orchestration-application.md)。 
+1. 计划群集节点的[修补](how-to-patch-cluster-nodes-windows.md)。 
 1. 建立一个 CI/CD 管道，以便不断测试最新的更改。 例如，使用 [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster)
 1. 使用[故障分析服务](service-fabric-testability-overview.md)测试负载下的开发和暂存集群，并引入受控[混沌测试](service-fabric-controlled-chaos.md)。 
 1. 计划应用程序的[缩放](service-fabric-concepts-scalability.md)。 

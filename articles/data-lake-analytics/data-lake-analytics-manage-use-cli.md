@@ -5,10 +5,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
 ms.openlocfilehash: 19b471d85a52fe38b72ad55847d022fb56b3c4f0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92220918"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令行接口 (CLI) 管理 Azure Data Lake Analytics
@@ -138,7 +138,7 @@ Data Lake Analytics 目前支持以下两个数据源：
    az dla account blob-storage list --account "<Data Lake Analytics account name>"
    ```
 
-![显示 Azure C L I 并突出显示 "dataLakeStoreAccounts：" 信息的屏幕截图。](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
+![此屏幕截图显示了 Azure CLI，其中突出显示了“dataLakeStoreAccounts:”信息。](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
 ### <a name="delete-data-sources"></a>删除数据源
 
@@ -183,7 +183,7 @@ Data Lake Analytics 目前支持以下两个数据源：
 
 ### <a name="cancel-jobs"></a>取消作业
 
-使用 list 命令查找作业 ID，然后使用 "取消" 来取消该作业。
+使用 list 命令查找作业 ID，并使用 cancel 来取消相应作业。
 
    ```azurecli
    az dla job cancel --account "<Data Lake Analytics account name>" --job-identity "<Job Id>"
@@ -212,6 +212,6 @@ az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recu
 ## <a name="next-steps"></a>后续步骤
 
 - [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
-- [使用 Azure 门户 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
+- [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
 - [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
-- [使用 Azure 门户监视 Azure Data Lake Analytics 作业并对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

@@ -4,17 +4,17 @@ description: 本文提供了从弃用的 Azure 服务管理器 REST API 和 Powe
 ms.topic: article
 ms.date: 09/25/2020
 ms.openlocfilehash: b82772b364bbc44a898197e7fafd11b33e2e6320
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518783"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>弃用了 Azure 服务管理器对 Azure 服务总线、中继和事件中心的支持
 
 资源管理器是我们的下一代云基础结构堆栈，正在完全取代“经典”Azure 服务管理模型（经典部署模型）。 因此，我们将于 2021 年 11 月 1 日停用经典部署模型 REST API 以及对服务总线、中继和事件中心的支持。 我们首先在 [Microsoft 技术社区公告](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Deprecating-Service-Management-support-for-Azure-Service-Bus/ba-p/370909)上宣告了该停用决定，但最近又决定将弃用期在原始公告时间的基础上再延长两年。 这些 API 的 URI 中包含 `management.core.windows.net`，这是为了方便识别。 请参阅下表，了解一系列已弃用的 API 及其 Azure 资源管理器 API 版本，后者是你现在应该使用的。
 
-若继续使用服务总线、中继和事件中心，请在 2021 年 10 月 31 日之前迁移到资源管理器。 我们鼓励所有仍在使用旧 Api 的客户利用资源管理器的其他好处，其中包括资源分组、标记、简化的部署和管理过程，以及使用 Azure 基于角色的访问控制 (Azure RBAC) 的精细访问控制。
+若继续使用服务总线、中继和事件中心，请在 2021 年 10 月 31 日之前迁移到资源管理器。 我们鼓励所有仍在使用旧 API 的客户尽快转换版本，以便利用资源管理器带来的其他好处，这包括资源分组、标记、简化的部署和管理过程，以及使用 Azure 基于角色的访问控制 (Azure RBAC) 进行精细的访问控制。
 
 若要详细了解 Azure 资源管理器与 Azure 服务管理器的对比情况，请查看 [TechNet 博客](https://blogs.technet.microsoft.com/meamcs/2016/12/22/difference-between-azure-service-manager-and-azure-resource-manager/)。
 

@@ -14,17 +14,17 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 7dc3241198fbc6eeddba059251f28c6dc35c8a29
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98754938"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>将应用程序迁移到适用于 iOS 和 macOS 的 MSAL
 
 创建的 Azure Active Directory 身份验证库 ([ADAL Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc)) 通过 v1.0 终结点使用 Azure Active Directory 帐户。
 
-适用于 iOS 和 macOS (MSAL) 的 Microsoft 身份验证库构建用于处理所有 Microsoft 标识，如 Azure Active Directory (Azure AD) 帐户、Microsoft 个人帐户和 Azure AD B2C 帐户通过 Microsoft 标识平台 (正式 Azure AD v2.0 终结点) 。
+构建适用于 iOS 和 macOS 的 Microsoft 身份验证库 (MSAL) 是为了通过 Microsoft 标识平台（以前称为 Azure AD v2.0 终结点）使用所有 Microsoft 标识，如 Azure Active Directory (Azure AD) 帐户、Microsoft 个人帐户以及 Azure AD B2C 帐户。
 
 Microsoft 标识平台与 Azure Active Directory v1.0 之前存在一些重要差异。 本文重点描述这些差异，并提供有关将应用从 ADAL 迁移到 MSAL 的指导。
 
@@ -33,19 +33,19 @@ Microsoft 标识平台与 Azure Active Directory v1.0 之前存在一些重要�
 ### <a name="who-can-sign-in"></a>谁可以登录
 
 * ADAL 仅支持工作和学校帐户（也称为 Azure AD 帐户）。
-* MSAL 支持 (MSA 帐户的个人 Microsoft 帐户) 例如 Hotmail.com、Outlook.com 和 Live.com。
+* MSAL 支持 Microsoft 个人帐户（MSA 帐户），例如 Hotmail.com、Outlook.com 和 Live.com。
 * MSAL 支持工作和学校帐户，并支持 Azure AD B2C 帐户。
 
 ### <a name="standards-compliance"></a>标准合规性
 
-* Microsoft 标识平台遵循 OAuth 2.0 和 OpenId Connect 标准。
+* Microsoft 标识平台遵从 OAuth 2.0 和 OpenId Connect 标准。
 
 ### <a name="incremental-and-dynamic-consent"></a>增量许可和动态许可
 
 * Azure Active Directory v1.0 终结点要求在应用程序注册过程中提前声明所有权限。 这意味着，这些权限是静态的。
 * Microsoft 标识平台允许动态请求权限。 应用只能根据需求请求权限，并在需求提高时请求更多的权限。
 
-有关 Azure Active Directory 1.0 和 Microsoft 标识平台之间的差异的详细信息，请参阅 [为什么要更新到 microsoft 标识平台？](../azuread-dev/azure-ad-endpoint-comparison.md)。
+若要详细了解 Azure Active Directory v1.0 与 Microsoft 标识平台之间的差异，请参阅[为何要更新到 Microsoft 标识平台？](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 ## <a name="adal-and-msal-library-differences"></a>ADAL 与 MSAL 库的差异
 
@@ -203,7 +203,7 @@ SSO 是通过 iOS 密钥链共享实现的，只能在通过同一 Apple 开发�
 iOS 上的 MSAL 还支持其他两种类型的 SSO：
 
 * 通过 Web 浏览器实现的 SSO。 适用于 iOS 的 MSAL 支持 `ASWebAuthenticationSession`，它通过设备上的其他应用与具体 Safari 浏览器之间共享的 Cookie 提供 SSO。
-* 通过身份验证中介实现的 SSO。 在 iOS 设备上，Microsoft Authenticator 充当身份验证中介。 它可以遵循条件性访问策略，例如需要相容设备，并为已注册的设备提供 SSO。 MSAL SDK 从版本 0.3.0 开始默认支持中介。
+* 通过身份验证中介实现的 SSO。 在 iOS 设备上，Microsoft Authenticator 充当身份验证中介。 它可以遵循条件访问策略（例如需要满足合规性要求的设备），并为已注册的设备提供 SSO。 MSAL SDK 从版本 0.3.0 开始默认支持中介。
 
 ## <a name="intune-mam-sdk"></a>Intune MAM SDK
 

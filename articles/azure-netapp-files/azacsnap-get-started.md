@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 25f555038c1ce0d960266eacc673a62a1ffd5ac0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: eee7204413face46870de049b38a79061de28347
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98736356"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929788"
 ---
-# <a name="get-started-with-azure-application-consistent-snapshot-tool-preview"></a>Azure 应用程序一致性快照工具入门（预览版）
+# <a name="get-started-with-azure-application-consistent-snapshot-tool"></a>Azure 应用程序一致性快照工具入门
 
 本文提供可与 Azure NetApp 文件配合使用的 Azure 应用一致的快照工具的安装指南。
 

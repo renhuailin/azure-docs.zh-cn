@@ -1,7 +1,7 @@
 ---
 title: 将重定向 URI 与 MSAL (iOS/macOS) 配合使用 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解适用于 ObjectiveC 的 Microsoft Authentication Library (MSAL 和 macOS) 之间的差异，以及 ObjectiveC (ADAL 的 Azure AD 身份验证库。ObjC) 以及如何在它们之间迁移。
+description: 了解用于 ObjectiveC 的 Microsoft 身份验证库（用于 iOS 和 macOS 的 MSAL）和用于 ObjectiveC 的 Azure AD 身份验证库 (ADAL.ObjC) 之间的差异，以及如何在其间进行迁移。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
 ms.openlocfilehash: 2c728854846a3add1f5b41cb318d7dc5fd86e742
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98064192"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>将重定向 URI 与用于 iOS 和 macOS 的 Microsoft 身份验证库配合使用

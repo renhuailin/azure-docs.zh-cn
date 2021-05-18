@@ -1,148 +1,48 @@
 ---
-title: 创建支持表和队列的客户托管密钥的帐户
+title: 为表和队列创建一个支持客户管理密钥的帐户
 titleSuffix: Azure Storage
-description: 了解如何创建支持为表和队列配置客户托管密钥的存储帐户。 使用 Azure CLI 或 Azure 资源管理器模板来创建一个存储帐户，该帐户依赖于 Azure 存储加密的帐户加密密钥。 然后，可以为帐户配置客户管理的密钥。
+description: 了解如何创建支持为表和队列配置客户管理密钥的存储帐户。 使用 Azure CLI 或 Azure 资源管理器模板来创建一个存储帐户，该帐户依赖于 Azure 存储加密的帐户加密密钥。 然后，可以为帐户配置客户管理的密钥。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/05/2020
+ms.date: 03/31/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8150375eff98374e21d200d98c04158b07f1c243
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.openlocfilehash: 4c86811ee72d2713fced6320a17d1ccde1866d99
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789686"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769942"
 ---
-# <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>创建支持表和队列的客户托管密钥的帐户
+# <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>为表和队列创建一个支持客户管理密钥的帐户
 
-Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，队列存储和表存储使用的密钥的作用域为服务，由 Microsoft 管理。 你还可以选择使用客户管理的密钥来加密队列或表数据。 若要对队列和表使用客户托管的密钥，必须首先创建一个存储帐户，该帐户使用范围限定为帐户的加密密钥，而不是使用服务。 在创建了使用帐户加密密钥作为队列和表数据的帐户后，可以为该存储帐户配置客户管理的密钥。
+Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，队列存储和表存储使用的密钥的作用域为服务，由 Microsoft 管理。 用户还可以选择使用客户管理的密钥来加密队列或表数据。 若要将客户管理的密钥与队列和表一起使用，必须首先创建一个存储帐户，该帐户使用的加密密钥的作用域是帐户，而不是服务。 在创建了使用帐户加密密钥作为队列和表数据的帐户后，可以为该存储帐户配置客户管理的密钥。
 
-本文介绍如何创建一个存储帐户，该帐户依赖于该帐户的作用域。 首次创建帐户时，Microsoft 使用帐户密钥对帐户中的数据进行加密，而 Microsoft 管理密钥。 接下来，你可以为帐户配置客户管理的密钥，以利用这些权益，包括提供你自己的密钥、更新密钥版本、轮换密钥和吊销访问控制。
-
-## <a name="about-the-feature"></a>关于功能
-
-若要创建依赖于队列和表存储的帐户加密密钥的存储帐户，必须首先注册以便将此功能与 Azure 结合使用。 由于容量有限，请注意，批准请求之前可能需要几个月的时间。
-
-你可以创建一个存储帐户，该帐户依赖于以下区域中队列和表存储的帐户加密密钥：
-
-- 美国东部
-- 美国中南部
-- 美国西部 2  
-
-### <a name="register-to-use-the-account-encryption-key"></a>注册以使用帐户加密密钥
-
-若要注册以将帐户加密密钥与队列或表存储配合使用，请使用 PowerShell 或 Azure CLI。
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-若要向 PowerShell 注册，请调用 [AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) 命令。
-
-```powershell
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForQueues
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForTables
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-若要注册 Azure CLI，请调用 [az feature register](/cli/azure/feature#az-feature-register) 命令。
-
-```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForQueues
-az feature register --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForTables
-```
-
-# <a name="template"></a>[模板](#tab/template)
-
-空值
-
----
-
-### <a name="check-the-status-of-your-registration"></a>检查注册状态
-
-若要查看队列或表存储的注册状态，请使用 PowerShell 或 Azure CLI。
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-若要通过 PowerShell 检查注册状态，请调用 [AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) 命令。
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForQueues
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForTables
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-若要查看 Azure CLI 的注册状态，请调用 [az 功能](/cli/azure/feature#az-feature-show) 命令。
-
-```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForQueues
-az feature show --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForTables
-```
-
-# <a name="template"></a>[模板](#tab/template)
-
-空值
-
----
-
-### <a name="re-register-the-azure-storage-resource-provider"></a>重新注册 Azure 存储资源提供程序
-
-批准注册后，你必须重新注册 Azure 存储资源提供程序。 使用 PowerShell 或 Azure CLI 重新注册资源提供程序。
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-若要通过 PowerShell 重新注册资源提供程序，请调用 [AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) 命令。
-
-```powershell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-若要用 Azure CLI 重新注册资源提供程序，请调用 [az provider register](/cli/azure/provider#az-provider-register) 命令。
-
-```azurecli
-az provider register --namespace 'Microsoft.Storage'
-```
-
-# <a name="template"></a>[模板](#tab/template)
-
-空值
-
----
+本文介绍了如何创建一个存储帐户，该帐户依赖于该帐户的作用域。 首次创建帐户时，Microsoft 使用帐户密钥来对帐户中的数据进行加密，而 Microsoft 管理密钥。 接下来，用户可以为帐户配置客户管理的密钥，以利用这些权益，包括提供用户自己的密钥、更新密钥版本、轮换密钥和吊销访问控制。
 
 ## <a name="create-an-account-that-uses-the-account-encryption-key"></a>创建使用帐户加密密钥的帐户
 
-你必须配置新的存储帐户，以便在创建存储帐户时为队列和表使用帐户加密密钥。 创建帐户后，不能更改加密密钥的作用域。
+用户必须配置新的存储帐户，以便在创建存储帐户时为队列和表使用帐户加密密钥。 帐户创建后，便无法更改加密密钥的作用域。
 
-存储帐户的类型必须是常规用途 v2。 可以通过使用 Azure CLI 或 Azure 资源管理器模板，来创建存储帐户并将其配置为依赖帐户加密密钥。
+存储帐户必须是常规用途 v2 类型。 可以通过使用 Azure CLI 或 Azure 资源管理器模板，来创建存储帐户并将其配置为依赖帐户加密密钥。
 
 > [!NOTE]
-> 只有在创建存储帐户时，才可以选择配置 "队列" 和 "表存储"，以通过帐户加密密钥来加密数据。 Blob 存储和 Azure 文件始终使用帐户加密密钥来加密数据。
+> 只有在创建存储帐户时，才可以选择配置队列和表存储，以通过帐户加密密钥来加密数据。 Blob 存储和 Azure 文件始终使用帐户加密密钥来加密数据。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 创建依赖于帐户加密密钥的存储帐户，请确保已安装 Azure PowerShell 模块版本3.4.0 或更高版本。 有关详细信息，请参阅 [安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+若要使用 PowerShell 创建依赖于帐户加密密钥的存储帐户，请确保已安装 Azure PowerShell 模块版本 3.4.0 或更高版本。 有关详细信息，请参阅“[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)”。
 
-接下来，通过调用 [AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 命令并使用适当的参数来创建常规用途 v2 存储帐户：
+接下来，通过调用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 命令并使用适当的参数来创建常规用途 v2 存储帐户：
 
-- 包括 `-EncryptionKeyTypeForQueue` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密队列存储中的数据。
-- 包括 `-EncryptionKeyTypeForTable` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密表存储中的数据。
+- 包括 `-EncryptionKeyTypeForQueue` 选项，并将其值设置为 `Account`，以使用帐户加密密钥加密队列存储中的数据。
+- 包括 `-EncryptionKeyTypeForTable` 选项，并将其值设置为 `Account`，以使用帐户加密密钥加密表存储中的数据。
 
-下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
+下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS)，并使用帐户加密密钥来加密队列和表存储的数据。 请记得将括号中的占位符值替换为你自己的值：
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -156,14 +56,14 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 创建依赖于帐户加密密钥的存储帐户，请确保已安装 Azure CLI 版本2.0.80 或更高版本。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+若要使用 Azure CLI 创建依赖于账户加密密钥的存储帐户，请确保已安装 Azure CLI 2.0.80 或更高版本。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-接下来，通过使用适当的参数调用 [az storage account create](/cli/azure/storage/account#az-storage-account-create) 命令创建常规用途 v2 存储帐户：
+接下来，通过调用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令并使用适当的参数来创建常规用途 v2 存储帐户：
 
-- 包括 `--encryption-key-type-for-queue` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密队列存储中的数据。
-- 包括 `--encryption-key-type-for-table` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密表存储中的数据。
+- 包括 `--encryption-key-type-for-queue` 选项，并将其值设置为 `Account`，以使用帐户加密密钥加密队列存储中的数据。
+- 包括 `--encryption-key-type-for-table` 选项，并将其值设置为 `Account`，以使用帐户加密密钥加密表存储中的数据。
 
-下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
+下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS)，并使用帐户加密密钥来加密队列和表存储的数据。 请记得将括号中的占位符值替换为你自己的值：
 
 ```azurecli
 az storage account create \
@@ -178,7 +78,7 @@ az storage account create \
 
 # <a name="template"></a>[模板](#tab/template)
 
-下面的 JSON 示例创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换尖括号中的占位符值：
+下面的 JSON 示例创建了一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS)，并使用帐户加密密钥来加密队列和表存储的数据。 请务必将尖括号中的占位符值替换为自己的值：
 
 ```json
 "resources": [
@@ -215,15 +115,15 @@ az storage account create \
 
 ---
 
-创建了依赖于帐户加密密钥的帐户之后，可以配置 Azure Key Vault 中或 Key Vault 托管硬件安全模型中存储的客户托管的密钥， (HSM)  (预览版) 。 若要了解如何将客户托管的密钥存储在密钥保管库中，请参阅 [使用 Azure Key Vault 中存储的客户托管密钥配置加密](customer-managed-keys-configure-key-vault.md)。 若要了解如何在托管 HSM 中存储客户管理的密钥，请参阅 [使用 Azure Key Vault 托管 hsm (预览版) 中存储的客户托管密钥配置加密 ](customer-managed-keys-configure-key-vault-hsm.md)。
+依赖于帐户加密密钥的帐户创建后，便可以配置客户管理的密钥，这些密钥存储在 Azure 密钥保管库或密钥保管库托管的硬件安全模型 (HSM) （预览版）中。 若要了解如何配置密钥保管库中客户管理的密钥，请参阅“[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault.md)”。 若要了解如何存储托管 HSM 中客户管理的密钥，请参阅“[使用 Azure 密钥保管库托管 HSM（预览版）中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault-hsm.md)”。
 
 ## <a name="verify-the-account-encryption-key"></a>验证帐户加密密钥
 
-若要验证存储帐户中的服务是否正在使用帐户加密密钥，请调用 Azure CLI [az storage account](/cli/azure/storage/account#az-storage-account-show) 命令。 此命令返回一组存储帐户属性及其值。 在 `keyType` "加密" 属性中查找每个服务的字段，并验证其是否设置为 `Account` 。
+若要验证存储帐户中的服务是否正在使用帐户加密密钥，请调用 Azure CLI [az storage account](/cli/azure/storage/account#az_storage_account_show) 命令。 此命令可返回一组存储帐户属性及其值。 在加密属性中查找每个服务的 `keyType` 字段，并验证其是否设置为 `Account`。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要验证存储帐户中的服务是否正在使用帐户加密密钥，请调用 [AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) 命令。 此命令返回一组存储帐户属性及其值。 在 `KeyType` 属性中查找每个服务的字段 `Encryption` ，并验证其是否设置为 `Account` 。
+若要验证存储帐户中的服务是否正在使用帐户加密密钥，请调用 [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) 命令。 此命令可返回一组存储帐户属性及其值。 在 `Encryption` 属性中查找每个服务的 `KeyType` 字段，并验证其是否设置为 `Account`。
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -234,7 +134,7 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要验证存储帐户中的服务是否正在使用帐户加密密钥，请调用 [az storage account show](/cli/azure/storage/account#az-storage-account-show) 命令。 此命令返回一组存储帐户属性及其值。 在 `keyType` "加密" 属性中查找每个服务的字段，并验证其是否设置为 `Account` 。
+若要验证存储帐户中的服务是否正在使用帐户加密密钥，请调用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 命令。 此命令可返回一组存储帐户属性及其值。 在加密属性中查找每个服务的 `keyType` 字段，并验证其是否设置为 `Account`。
 
 ```azurecli
 az storage account show /
@@ -248,8 +148,12 @@ az storage account show /
 
 ---
 
+## <a name="pricing-and-billing"></a>定价和计费
+
+如果创建的存储帐户使用范围为该帐户的加密密钥，则在对表存储容量和事务计费方面，该帐户与使用默认的服务范围密钥的帐户存在不同。 有关详细信息，请参阅 [Azure 表存储定价](https://azure.microsoft.com/pricing/details/storage/tables/)。
+
 ## <a name="next-steps"></a>后续步骤
 
 - [静态数据的 Azure 存储加密](storage-service-encryption.md)
-- [用于 Azure 存储加密的客户托管密钥](customer-managed-keys-overview.md)
+- [用于 Azure 存储加密的客户管理的密钥](customer-managed-keys-overview.md)
 - [什么是 Azure Key Vault？](../../key-vault/general/overview.md)

@@ -4,10 +4,10 @@ description: Azure Monitor 中的警报概述
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.openlocfilehash: 6785cfdf673e4c2da03ff26649c9336d57b699c8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038044"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
@@ -99,7 +99,7 @@ ms.locfileid: "102038044"
 
 可以通过选择页面顶部的下拉菜单中的值，来对此视图进行筛选。
 
-| 列 | 说明 |
+| 列 | 描述 |
 |:---|:---|
 | 订阅 | 选择要查看其警报的 Azure 订阅。 （可选）可以选择你的所有订阅。 视图中仅包含你在所选订阅中有权访问的警报。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
@@ -145,7 +145,7 @@ ms.locfileid: "102038044"
 
 可以选择页面顶部下拉菜单中的以下值，对该视图进行筛选：
 
-| 列 | 说明 |
+| 列 | 描述 |
 |:---|:---|
 | 订阅 | 选择要查看其警报的 Azure 订阅。 （可选）可以选择你的所有订阅。 视图中仅包含你在所选订阅中有权访问的警报。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
@@ -195,7 +195,7 @@ ms.locfileid: "102038044"
 }
 ```
 
-还可以通过 Azure 资源图资源管理器在门户中查看此资源图形查询的结果： [portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+还可以使用 Azure Resource Graph 资源管理器在门户中查看此 Resource Graph 查询的结果：[portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
 
 可以查询警报的[基本](../alerts/alerts-common-schema-definitions.md#essentials)字段。
 

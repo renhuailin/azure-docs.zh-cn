@@ -4,13 +4,13 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中创建跨可用性
 services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
-ms.date: 09/04/2020
-ms.openlocfilehash: 3eec8a6c331227d9d6298c46b272a5784080d342
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.date: 03/16/2021
+ms.openlocfilehash: 4c5b0ceb3f8e0b96f18a67ed0c7dbf1b56ac30da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180320"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583541"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>创建使用可用性区域的 Azure Kubernetes 服务 (AKS) 群集
 
@@ -29,6 +29,7 @@ Azure Kubernetes 服务 (AKS) 群集跨基础 Azure 基础结构的逻辑部分�
 目前可以在以下地区使用可用性区域创建 AKS 群集：
 
 * 澳大利亚东部
+* 巴西南部
 * 加拿大中部
 * 美国中部
 * 美国东部 
@@ -53,13 +54,13 @@ Azure Kubernetes 服务 (AKS) 群集跨基础 Azure 基础结构的逻辑部分�
 
 ### <a name="azure-disks-limitations"></a>Azure 磁盘限制
 
-使用 Azure 托管磁盘的卷当前不是区域冗余资源。 卷不能跨区域附加，并且必须与承载目标 pod 的给定节点位于同一区域中。
+使用 Azure 托管磁盘的卷当前不是区域冗余资源。 卷不能跨区域附加，并且必须与承载目标 Pod 的给定节点位于同一区域中。
 
-自1.12 版起，Kubernetes 知道 Azure 可用性区域。 你可以在多区域 AKS 群集中部署引用 Azure 托管磁盘的 PersistentVolumeClaim 对象，并且 [Kubernetes 将负责计划](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones) 在正确的可用性区域中声明此 PVC 的所有 pod。
+自版本 1.12 起，Kubernetes 开始注意到 Azure 可用性区域。 可以在多区域 AKS 群集中部署一个引用 Azure 托管磁盘的 PersistentVolumeClaim 对象，[Kubernetes 将负责计划](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones)在正确的可用性区域中声明此 PVC 的所有 Pod。
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS 群集的可用性区域概述
 
-可用性区域是一种高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 这些区域是 Azure 地区中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为了确保复原能力，所有启用区域的区域中始终有多个区域。 数据中心发生故障时，区域中的可用性区域的物理隔离可保护应用程序和数据。
+可用性区域是一种高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 这些区域是 Azure 地区中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为了确保复原能力，所有已启用区域的大区域中应始终有多个区域。 数据中心发生故障时，区域中的可用性区域的物理隔离可保护应用程序和数据。
 
 有关详细信息，请参阅 [Azure 中的可用性区域是什么？][az-overview]。
 
@@ -71,7 +72,7 @@ Azure Kubernetes 服务 (AKS) 群集跨基础 Azure 基础结构的逻辑部分�
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>跨可用性区域创建 AKS 群集
 
-使用 [az aks create][az-aks-create] 命令创建群集时，`--zones` 参数定义代理节点部署到的区域。 如果在创建群集时定义参数，则控制平面组件（如 etcd 或 API）将分散到区域中的可用区域 `--zones` 。 控制平面组件所分布到的特定区域与为初始节点池选择的显式区域无关。
+使用 [az aks create][az-aks-create] 命令创建群集时，`--zones` 参数定义代理节点部署到的区域。 如果在创建群集时定义了 `--zones` 参数，则控制平面组件（如 etcd 或 API）将分散到区域中的各个可用区域。 控制平面组件所分布到的特定区域与为初始节点池选择的显式区域无关。
 
 如果在创建 AKS 群集时未为默认代理池定义任何区域，则不能保证控制平面组件分布到可用性区域。 可以使用 [az aks nodepool add][az-aks-nodepool-add] 命令添加更多节点池，并为新节点指定 `--zones`，但这不会更改控制平面在各个区域中的分布方式。 可用性区域设置只能在群集或节点池创建时定义。
 
@@ -104,7 +105,7 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-接下来，使用 [kubectl 说明][kubectl-describe] 命令列出群集中的节点并按 *failure-domain.beta.kubernetes.io/zone* 值进行筛选。 以下示例适用于 Bash shell。
+然后，使用 [kubectl describe][kubectl-describe] 命令列出群集中的节点，并按 *failure-domain.beta.kubernetes.io/zone* 值进行筛选。 下面是 Bash shell 示例。
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
@@ -123,13 +124,13 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 向代理池添加其他节点时，Azure 平台会自动在指定的可用性区域内分发基础 VM。
 
-请注意，在新的 Kubernetes 版本（1.17.0 及更高版本）中，除了已弃用的 `failure-domain.beta.kubernetes.io/zone` 之外，AKS 还使用新标签 `topology.kubernetes.io/zone`。 通过运行以下脚本，可以获得与上述相同的结果：
+请注意，在新的 Kubernetes 版本（1.17.0 及更高版本）中，除了已弃用的 `failure-domain.beta.kubernetes.io/zone` 之外，AKS 还使用新标签 `topology.kubernetes.io/zone`。 通过运行以下脚本，可以获得与上文相同的结果：
 
 ```console
 kubectl get nodes -o custom-columns=NAME:'{.metadata.name}',REGION:'{.metadata.labels.topology\.kubernetes\.io/region}',ZONE:'{metadata.labels.topology\.kubernetes\.io/zone}'
 ```
 
-这将为你带来更简洁的输出：
+但输出更简洁：
 
 ```console
 NAME                                REGION   ZONE
@@ -149,7 +150,7 @@ az aks scale \
     --node-count 5
 ```
 
-如果缩放操作在几分钟后完成，则 `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` Bash shell 中的命令应为类似于以下示例的输出：
+几分钟后缩放操作完成时，Bash shell 中的命令 `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` 应显示类似于以下示例的输出：
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -167,11 +168,11 @@ Name:       aks-nodepool1-28993262-vmss000004
 现在，区域 1 和 2 中有两个额外的节点。 你可以部署包含三个副本的应用程序。 我们以 NGINX 为例：
 
 ```console
-kubectl create deployment nginx --image=nginx
+kubectl create deployment nginx --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 kubectl scale deployment nginx --replicas=3
 ```
 
-通过查看运行 pod 的节点，可以看到 pod 在与三个不同的可用性区域相对应的节点上运行。 例如， `kubectl describe pod | grep -e "^Name:" -e "^Node:"` 在 Bash shell 中使用命令时，会收到类似于下面的输出：
+通过查看运行 pod 的节点，可以看到 pod 在与三个不同的可用性区域相对应的节点上运行。 例如，使用 Bash shell 中的命令 `kubectl describe pod | grep -e "^Name:" -e "^Node:"` 将获得类似于以下内容的输出：
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg

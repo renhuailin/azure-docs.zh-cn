@@ -4,15 +4,15 @@ description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96002947"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
-本文介绍如何使用 Azure 备份服务器 (MABS) 将运行在 VMware ESXi 主机/vCenter Server 上的 VMware Vm 备份到 Azure。
+本文介绍如何使用 Azure 备份服务器 (MABS) 将 VMware ESXi 主机/vCenter 服务器上运行的 VMware VM 备份到 Azure。
 
 本文介绍如何执行以下操作：
 

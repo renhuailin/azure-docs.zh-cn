@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
 ms.openlocfilehash: c7d14599ec1ebbcb94e0c0f3985a3b857f9353dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102563874"
 ---
 # <a name="develop-c-class-library-functions-using-azure-functions"></a>使用 Azure Functions 开发 C# 类库函数
@@ -24,7 +24,7 @@ ms.locfileid: "102563874"
 
 | 入门 | 概念| 引导式学习/示例 |
 |--| -- |--| 
-| <ul><li>[使用 Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[使用 Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[使用命令行工具](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[托管选项](functions-scale.md)</li><li>[性能注意事项](functions-best-practices.md)</li><li>[Visual Studio 开发](functions-develop-vs.md)</li><li>[依赖关系注入](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[C# 示例](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+| <ul><li>[使用 Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[使用 Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[使用命令行工具](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[托管选项](functions-scale.md)</li><li>[性能&nbsp;注意事项](functions-best-practices.md)</li><li>[Visual Studio 开发](functions-develop-vs.md)</li><li>[依赖关系注入](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[C# 示例](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在 Azure 门户中使用 C#](functions-create-function-app-portal.md) 的指南，请参阅 [C# 脚本 (.csx) 开发人员参考](functions-reference-csharp.md)。
 
@@ -56,7 +56,7 @@ Functions 运行时版本使用特定版本的 .NET。 若要详细了解 Functi
 
 应该尽快使函数与 .NET Core 3.1 兼容。 解决这些问题后，将版本改回到 `~2` 或升级到 `~3`。 若要详细了解如何选择 Functions 运行时的目标版本，请参阅[如何选择 Azure Functions 运行时的目标版本](set-runtime-version.md)。
 
-在 Linux 上的高级或专用（应用服务）计划中运行时，请通过将 `linuxFxVersion` 站点配置设置指定为 `DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0.14786-appservice` 来固定版本，而不要选择特定的映像作为目标。若要了解如何设置 `linuxFxVersion`，请参阅 [Linux 上的手动版本更新](set-runtime-version.md#manual-version-updates-on-linux)。
+在 Linux 上的高级或专用（应用服务）计划中运行时，请不要选择特定的映像作为目标，而是通过将 `linuxFxVersion` 站点配置设置指定为 `DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0.14786-appservice` 来固定版本。若要了解如何设置 `linuxFxVersion`，请参阅 [Linux 上的手动版本更新](set-runtime-version.md#manual-version-updates-on-linux)。
 
 ## <a name="functions-class-library-project"></a>Functions 类库项目
 

@@ -1,18 +1,18 @@
 ---
 title: 将视觉 AI 模型部署到 Azure Percept DK
 description: 了解如何将视觉 AI 模型从 Azure Percept Studio 部署到 Azure Percept DK
-author: mimcco
-ms.author: mimcco
+author: elqu20
+ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c9622c033309a8e6c33e49180b2a40d8b1f2720e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 01bd3709050d8a2b57c1bf51920308188546fb31
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754318"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102035477"
 ---
 # <a name="deploy-a-vision-ai-model-to-your-azure-percept-dk"></a>将视觉 AI 模型部署到 Azure Percept DK
 

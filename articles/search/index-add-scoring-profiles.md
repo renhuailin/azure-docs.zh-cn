@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 97797e309c32c6ea996d5ae1901b9a266a683173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: afe56bb8637c9b2a88bda23944fd5097413fce97
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537627"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077714"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>将计分概要文件添加到 Azure 认知搜索索引
 
@@ -21,7 +21,7 @@ ms.locfileid: "91537627"
 
  Azure 认知搜索使用默认计分计算初始分数，但可以通过“计分概要文件”自定义计算。 借助计分概要文件，可以更好地控制搜索结果中的项排名。 例如，建议根据创收能力提升项、提升新项或提升库存时间太长的项。  
 
- 以下视频段快进到如何在 Azure 认知搜索中工作配置文件。
+ 下面的视频片段快进到计分概要文件在 Azure 认知搜索中的工作原理。
  
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=463&end=970]
 
@@ -36,24 +36,24 @@ ms.locfileid: "91537627"
 "scoringProfiles": [
   {  
     "name":"geo",
-    "text": {  
-      "weights": {  
-        "hotelName": 5
-      }                              
+    "text": {  
+      "weights": {  
+        "hotelName": 5
+      }                              
     },
     "functions": [
       {  
         "type": "distance",
-        "boost": 5,
-        "fieldName": "location",
-        "interpolation": "logarithmic",
-        "distance": {
-          "referencePointParameter": "currentLocation",
-          "boostingDistance": 10
-        }                        
-      }                                      
-    ]                     
-  }            
+        "boost": 5,
+        "fieldName": "location",
+        "interpolation": "logarithmic",
+        "distance": {
+          "referencePointParameter": "currentLocation",
+          "boostingDistance": 10
+        }                        
+      }                                      
+    ]                     
+  }            
 ]
 ```  
 
@@ -71,7 +71,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 ## <a name="what-is-default-scoring"></a>什么是默认计分？  
  计分对排序结果集中的每项计算搜索分数。 搜索结果集中的每项都分配到一个搜索分数，并从高到低排名。 分数较高的项返回应用程序。 默认返回前 50 个，但可以使用 `$top` 参数返回较少或较多的项（单个响应中最多 1000 个）。  
 
-根据数据和查询的统计属性计算搜索分数。 Azure 认知搜索查找包含了查询字符串中搜索词的文档（部分或全部包含，具体取决于 `searchMode`），优先列出包含该搜索词多个实例的文档。 如果搜索词在数据索引中很少见，但在文档中很常见，搜索分数仍升至更高。 这种计算关联方法的基础称为 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) 或术语 "频率-反转文档频率"。  
+根据数据和查询的统计属性计算搜索分数。 Azure 认知搜索查找包含了查询字符串中搜索词的文档（部分或全部包含，具体取决于 `searchMode`），优先列出包含该搜索词多个实例的文档。 如果搜索词在数据索引中很少见，但在文档中很常见，搜索分数仍升至更高。 这种相关性计算方法的基础称为 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) 或词频-逆文档频率。  
 
  假设没有自定义排序，结果在返回调用应用程序之前按搜索分数排名。 如果 $top 未指定，则返回具有最高搜索分数的 50 项。  
 
@@ -161,7 +161,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  计分概要文件的主体由加权字段和函数构造而成。  
 
-|||  
+|属性 |说明|  
 |-|-|  
 |**权重**|指定为字段分配相对权重的名称/值对。 在[示例](#bkmk_ex)中，albumTitle、genre 和 artistName 字段各自提升 1.5、5 和 2。 genre 为何比其他字段提升更高？ 如果对在某种程度上为同类的数据执行搜索（正如 `musicstoreindex` 中的“genre”一样），可能需要在相对权重中产生较大差异。 例如，在 `musicstoreindex` 中，“rock”既作为流派显示，又显示在采用相同组句方式的流派说明中。 如果希望流派的权重在流派说明之上，genre 字段将需要更高的相对权重。|  
 |**函数**|在特定上下文需要进行额外计算时使用。 有效的值为 `freshness`、`magnitude`、`distance` 和 `tag`。 每个函数具有独有的参数。<br /><br /> 当希望按项目的新旧方式进行提升时，应使用 -   `freshness`。 此函数仅可与 `datetime` 字段结合使用 (edm.DataTimeOffset)。 请注意，`boostingDuration` 属性仅用于 `freshness` 函数。<br />当希望按数值高低程度提升时，应使用 -   `magnitude`。 调用此函数的方案包括按照利润率、最高价格、最低价格或下载次数提升。 此函数仅可与 double 和 integer 字段结合使用。<br />     对于 `magnitude` 函数，如果想要反转模式（例如，将价格较低项提升至价格较高项之上），可以将范围反转为从高到低。 假设价格范围从 100 美元到 1 美元，可以将 `boostingRangeStart` 设为 100、`boostingRangeEnd` 设为 1 以提升价格较低的项。<br />当希望按距离或地理位置提升时，应使用 -   `distance`。 此函数仅可与 `Edm.GeographyPoint` 字段结合使用。<br />当希望按文档和搜索查询之间共有的标记提升时，应使用 -   `tag`。 此函数仅可与 `Edm.String` 和 `Collection(Edm.String)` 字段结合使用。<br /><br /> **使用函数的规则**<br /><br /> 函数类型（`freshness`、`magnitude`、`distance`）`tag` 必须小写。<br /><br /> 函数不能包含 null 或空值。 具体而言，如果包含字段名称，则必须将其设置为某值。<br /><br /> 函数仅可应用于可筛选字段。 有关可筛选字段的详细信息，请参阅[创建索引（Azure 认知搜索 REST API）](/rest/api/searchservice/create-index)。<br /><br /> 函数仅可应用于在索引的字段集合中定义的字段。|  

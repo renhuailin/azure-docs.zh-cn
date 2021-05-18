@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 9a7e16bf85293a412baf5015af825377438ebb7b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 278f8f816909a7e365d7e45d04c5169950e79a65
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778492"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96493672"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-by-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure Database for PostgreSQL 灵活服务器
 
@@ -26,13 +26,13 @@ ms.locfileid: "107778492"
 
 需要在本地运行 Azure CLI 版本 2.0 或更高版本。 若要查看安装的版本，请运行 `az --version` 命令。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-使用 [az login](/cli/azure/reference-index#az_login) 命令登录到你的帐户。 
+使用 [az login](/cli/azure/reference-index#az-login) 命令登录到你的帐户。 
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](/cli/azure/account) 命令选择订阅。 记下 az login 输出中的 id 值，以用作以下命令中 subscription 参数的值  。 如果有多个订阅，请选择应计费的资源所在的订阅。 若要确定所有订阅，请使用 [az account list](/cli/azure/account#az_account_list) 命令。
+使用 [az account set](/cli/azure/account) 命令选择订阅。 记下 az login 输出中的 id 值，以用作以下命令中 subscription 参数的值  。 如果有多个订阅，请选择应计费的资源所在的订阅。 若要确定所有订阅，请使用 [az account list](/cli/azure/account#az-account-list) 命令。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -131,7 +131,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>删除服务器
 
-若要删除 Azure Database for PostgreSQL 灵活服务器，请运行 [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az_postgresql_flexible_server_delete) 命令。
+若要删除 Azure Database for PostgreSQL 灵活服务器，请运行 [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) 命令。
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

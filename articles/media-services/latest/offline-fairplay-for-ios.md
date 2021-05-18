@@ -2,18 +2,26 @@
 title: 适用于 iOS 的媒体服务 v3 脱机 FairPlay 流式处理
 description: 本主题概括介绍并演示了如何使用 Azure 媒体服务 v3 以脱机模式通过 Apple FairPlay 动态加密 HTTP Live Streaming (HLS) 内容。
 services: media-services
+keywords: HLS, DRM, FairPlay Streaming (FPS), 脱机, iOS 10
+documentationcenter: ''
 author: willzhan
-manager: femila
+manager: steveng
+editor: ''
+ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: how-to
-ms.date: 03/25/2021
-ms.author: inhenkel
-ms.openlocfilehash: 0412ef303a301873d437e03e91c58c0a2e8e7e15
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 08/31/2020
+ms.author: willzhan
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 399f9b0184217db8180fcec38e4f78917d5c9bc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640730"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98955221"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>适用于 iOS 的脱机 FairPlay 流式处理与媒体服务 v3
 
@@ -197,6 +205,10 @@ func requestApplicationCertificate() throws -> Data {
 可在[此演示站点](https://aka.ms/poc#22)上找到这些示例，相应的应用程序证书托管在 Azure Web 应用中。
 使用 FPS Server SDK 的版本 3 或版本 4 示例时，如果在脱机模式期间主播放列表包含备用的音频，则只播放音频。 因此，需要删除备用音频。 换言之，前面所列的第二和第三个示例在联机和脱机模式下都可正常运行。 所列的第一个示例在脱机模式期间只播放音频，联机流式处理可正常运行。
 
-## <a name="offline-fairplay-questions"></a>脱机 Fairplay 问题
+## <a name="faq"></a>常见问题
 
-请参阅[脱机 Fairplay 问题](questions-collection.md#why-does-only-audio-play-but-not-video-during-offline-mode)。
+请参阅[常见问题解答提供故障排除帮助](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)。
+
+## <a name="next-steps"></a>后续步骤
+
+了解如何[使用 AES-128 提供保护](protect-with-aes128.md)

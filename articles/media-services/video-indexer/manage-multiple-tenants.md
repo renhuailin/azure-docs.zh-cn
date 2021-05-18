@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 7596aa4cef6c4bc601c15018e8ede4265f395eb7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312852"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "76990498"
 ---
 # <a name="manage-multiple-tenants"></a>管理多个租户
 
@@ -45,7 +45,7 @@ ms.locfileid: "107312852"
 * 由于每个租户有多个视频索引器（和关联的媒体服务）帐户，因此更难管理。
 
 > [!TIP]
-> 在[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中创建系统的管理员用户，并使用授权 API 为租户提供相关的[帐户访问令牌](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account-Access-Token)。
+> 在[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中创建系统的管理员用户，并使用授权 API 为租户提供相关的[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token)。
 
 ## <a name="single-video-indexer-account-for-all-users"></a>所有用户使用单个视频索引器帐户
 
@@ -55,7 +55,7 @@ ms.locfileid: "107312852"
 
 使用此选项时，可以通过按租户筛选模型，在租户之间共享或隔离自定义模型（人员、语言和品牌）。
 
-[上传视频](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video)时，可为每个租户指定不同的分区属性。 这可以在 [搜索 API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Search-Videos)中实现隔离。 在搜索 API 中指定分区属性后，只会获取指定分区的结果。 
+[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)时，可为每个租户指定不同的分区属性。 这可以在 [搜索 API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?)中实现隔离。 在搜索 API 中指定分区属性后，只会获取指定分区的结果。 
 
 ### <a name="considerations"></a>注意事项
 

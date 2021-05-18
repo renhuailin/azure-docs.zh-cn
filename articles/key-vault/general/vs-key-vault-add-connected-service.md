@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: 9c62534acdbfbff7fd4e718bad1f07a92c641626
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792389"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
@@ -24,7 +24,7 @@ ms.locfileid: "92792389"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **一个 Azure 订阅** 。 如果没有订阅，请注册 [免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- **Azure 订阅**。 如果没有订阅，可以注册[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 - Visual Studio 2019 版本 16.3 或更高版本 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 
@@ -191,7 +191,7 @@ ms.locfileid: "92792389"
 | .NET; NuGet | Azure.Security.KeyVault.Secrets |
 
 > [!IMPORTANT] 
-> 默认情况下，Azure 会安装，它不支持 Visual Studio 凭据。 你可以将包引用手动更新为 1.2 + 使用 Visual Studio 凭据。
+> 默认情况下，会安装 Azure.Identity 1.1.1，它不支持 Visual Studio Credential。 你可以使用 Visual Studio Credential 手动将包引用更新为 1.2+。
 
 ### <a name="added-files-for-aspnet-framework"></a>为 ASP.NET Framework 添加了文件
 

@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 02/16/2021
 ms.author: victorh
 ms.openlocfilehash: 8922e6e0d5137a3a900e0f57f685d449c08b3f47
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596956"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火墙日志和指标
 
 可以使用防火墙日志来监视 Azure 防火墙。 此外，可以使用活动日志来审核对 Azure 防火墙资源执行的操作。
 
-可通过门户访问其中部分日志。 可以将日志发送到 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)、存储和事件中心，并在 Azure Monitor 日志中或通过不同的工具（如 Excel 和 Power BI）进行分析。
+可通过门户访问其中部分日志。 可将日志发送到 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)、存储和事件中心，并使用 Azure Monitor 日志或其他工具（例如 Excel 和 Power BI）对其进行分析。
 
 指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。
 
@@ -87,7 +87,7 @@ ms.locfileid: "100596956"
 
 * **DNS 代理日志**
 
-   DNS 代理日志将保存到存储帐户，并传输到事件中心，并/或仅在为每个 Azure 防火墙启用了日志后，才能将其发送到 Azure Monitor 日志。 此日志跟踪发送到使用 DNS 代理配置的 DNS 服务器的 DNS 消息。 如以下示例中所示，数据以 JSON 格式记录：
+   只有为每个 Azure 防火墙已启用 DNS 代理日志后，它们才会保存到存储帐户，流式传输到事件中心和/或发送到 Azure Monitor 日志。 此日志跟踪发送到使用 DNS 代理配置的 DNS 服务器的 DNS 消息。 如以下示例中所示，数据以 JSON 格式记录：
 
 
    ```

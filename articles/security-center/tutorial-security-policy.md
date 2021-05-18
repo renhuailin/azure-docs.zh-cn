@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/24/2021
 ms.author: memildin
 ms.openlocfilehash: 6ecedc20cf6924a82b6b4640d3caa75bc5958de0
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102101318"
 ---
 # <a name="manage-security-policies"></a>管理安全策略
@@ -42,18 +42,18 @@ ms.locfileid: "102101318"
 
 1. 此时会显示该订阅或管理组的安全策略页。 其中显示了可用和已分配的策略。
 
-    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="安全中心的安全策略页" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
+    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="安全中心的“安全策略”页" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
 
     > [!NOTE]
     > 如果默认策略旁边有一个标签“MG 已继承”，则表示该策略已分配到某个管理组，并已由当前你正在查看的订阅继承。
 
 1. 从此页提供的可用选项中进行选择：
 
-    1. 若要使用行业标准，请选择 **添加更多标准**。 有关详细信息，请参阅 [在法规相容性仪表板中自定义标准集](update-regulatory-compliance-packages.md)。
+    1. 要使用行业标准，请选择“添加更多标准”。 有关详细信息，请参阅[在监管合规仪表板中自定义标准集](update-regulatory-compliance-packages.md)。
 
-    1. 要分配和管理自定义计划，请选择“添加自定义计划”。 有关详细信息，请参阅 [使用自定义安全计划和策略](custom-security-policies.md)。
+    1. 要分配和管理自定义计划，请选择“添加自定义计划”。 有关详细信息，请参阅[使用自定义安全计划和策略](custom-security-policies.md)。
 
-    1. 若要查看和编辑默认计划，请选择 " **查看有效策略** " 并继续，如下所述。 
+    1. 要查看并编辑默认计划，请选择“查看有效策略”并按如下所述继续操作。 
 
         :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="有效策略屏幕":::
 
@@ -104,9 +104,9 @@ ms.locfileid: "102101318"
    > 禁用策略更改可能需要长达 12 小时才会生效。
 
 ## <a name="next-steps"></a>后续步骤
-本页介绍了安全策略。 如需相关信息，请参阅以下页面：
+此页介绍了安全策略。 如需相关信息，请参阅以下页面：
 
 - [了解如何使用 PowerShell 设置策略](../governance/policy/assign-policy-powershell.md)
 - [了解如何在 Azure Policy 中编辑安全策略](../governance/policy/tutorials/create-and-manage.md)
-- [了解如何使用 Azure 策略在订阅或管理组上设置策略](../governance/policy/overview.md)
+- [了解如何使用 Azure Policy 跨订阅或在管理组上设置策略](../governance/policy/overview.md)
 - [了解如何对管理组中的所有订阅启用安全中心](onboard-management-group.md)

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75609768"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>配置 Reliable Actors - KVSActorStateProvider
@@ -18,7 +18,7 @@ ms.locfileid: "75609768"
 Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名称，并在创建基础运行时组件时使用这些配置值。
 
 > [!NOTE]
-> 请**勿**删除或修改 Visual Studio 解决方案中生成的 settings.xml 文件中的以下配置的节名称。
+> 请 **勿** 删除或修改 Visual Studio 解决方案中生成的 settings.xml 文件中的以下配置的节名称。
 > 
 > 
 
@@ -41,10 +41,10 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>配置名称
-| 名称 | 单位 | 默认值 | 备注 |
+| 名称 | 计价单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |秒 |0.015 |收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
-| ReplicatorEndpoint |空值 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |
+| ReplicatorEndpoint |不适用 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |
 | RetryInterval |秒 |5 |如果复制器未收到操作的确认信息而进行重新传输之后的时间段。 |
 | MaxReplicationMessageSize |字节 |50 MB |可以在单个消息中传输的复制数据的最大大小。 |
 | MaxPrimaryReplicationQueueSize |操作的数量 |1024 |主要队列中的操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，将释放一个操作。 此值必须大于 64 和 2 的幂。 |
@@ -58,7 +58,7 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 &lt;ActorName&gt;ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>配置名称
-| 名称 | 单位 | 默认值 | 备注 |
+| 名称 | 计价单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |毫秒 |200 |设置持久的本地存储提交的最大批处理间隔。 |
 | MaxVerPages |页数 |16384 |本地存储数据库中的最大版本页数。 它确定未完成事务的最大数目。 |

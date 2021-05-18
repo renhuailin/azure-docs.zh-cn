@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 67e807e948caf1fec014457814c1b7f105630f9f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0dcffe6731c177d1d45c569361fcb200f23af86c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784418"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "99095352"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 
@@ -225,7 +225,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 ## <a name="powershell-alternative"></a>PowerShell 备用
 
-脚本还可以使用 PowerShell cmdlet New-AzSqlServerVirtualNetworkRule 或 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 来创建虚拟网络规则。 如果有兴趣，可以参阅[使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点和规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]。
+脚本还可以使用 PowerShell cmdlet New-AzSqlServerVirtualNetworkRule 或 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 来创建虚拟网络规则。 如果有兴趣，可以参阅[使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点和规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]。
 
 ## <a name="rest-api-alternative"></a>REST API 替代项
 

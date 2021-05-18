@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.openlocfilehash: 4087341a9a96ae56c00972f886ce3cc8891750a5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98929732"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>在 HDInsight 中的 Apache Spark 上使用自动化机器学习运行 Azure 机器学习工作负载
@@ -21,7 +21,7 @@ Azure 机器学习可简化和加速机器学习模型的生成、训练和部�
 所有新的 HDInsight-Spark 群集都预装了 AzureML-AutoML SDK。
 
 > [!Note]
-> Azure 机器学习包将安装到 Python3 conda 环境中。 应使用 PySpark3 内核运行安装的 Jupyter Notebook。
+> Azure 机器学习包将安装到 Python3 conda 环境中。 应该使用 PySpark3 内核来运行安装的 Jupyter Notebook。
 
 还可以通过 Zeppelin 笔记本来使用 AutoML。
 

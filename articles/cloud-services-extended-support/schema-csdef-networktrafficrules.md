@@ -1,6 +1,6 @@
 ---
-title: Azure 云服务 (扩展支持) NetworkTrafficRules 架构 |Microsoft Docs
-description: '与云服务相关联的网络通信规则 (扩展支持的相关信息) '
+title: Azure 云服务（外延支持）定义NetworkTrafficRules 架构 | Microsoft Docs
+description: 与云服务（外延支持）相关联的网络流量规则相关的信息
 ms.topic: article
 ms.service: cloud-services-extended-support
 ms.date: 10/14/2020
@@ -9,17 +9,17 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 0064794701e87419da086c458673f7ccee4f37dd
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744244"
 ---
-# <a name="azure-cloud-services-extended-support-definition-networktrafficrules-schema"></a>Azure 云服务 (扩展支持) 定义 NetworkTrafficRules 架构
+# <a name="azure-cloud-services-extended-support-definition-networktrafficrules-schema"></a>Azure 云服务（外延支持）定义 NetworkTrafficRules 架构
 
 `NetworkTrafficRules` 节点是服务定义文件中的一个可选元素，用于指定角色如何彼此进行通信。 它限制哪些角色可以访问特定角色的内部终结点。 `NetworkTrafficRules` 不是一个独立的元素；它在服务定义文件中与两个或更多角色结合使用。
 
-服务定义文件的默认扩展名为 "已设置"。
+服务定义文件的默认扩展名为 csdef。
 
 > [!NOTE]
 >  仅当使用 Azure SDK 1.3 版或更高版本时，才可以使用 `NetworkTrafficRules` 节点。
@@ -66,7 +66,7 @@ ms.locfileid: "98744244"
 ##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a> OnlyAllowTrafficTo 元素
 `OnlyAllowTrafficTo` 元素描述目标终结点的集合以及可以与它们进行通信的角色。 可以指定多个 `OnlyAllowTrafficTo` 节点。
 
-##  <a name="destinations-element"></a><a name="Destinations"></a> 目标元素
+##  <a name="destinations-element"></a><a name="Destinations"></a> Destinations 元素
 `Destinations` 元素描述可以与之进行通信的 RoleEndpoint 的集合。
 
 ##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a> RoleEndpoint 元素
@@ -95,7 +95,7 @@ ms.locfileid: "98744244"
 | `roleName` | `string` | 必需。 允许从中进行通信的角色的名称。|
 
 ## <a name="see-also"></a>另请参阅
-[云服务 (扩展支持) 定义架构](schema-csdef-file.md)。
+[云服务（外延支持）定义架构](schema-csdef-file.md)。
 
 
 

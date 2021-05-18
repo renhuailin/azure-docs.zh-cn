@@ -1,6 +1,6 @@
 ---
-title: 跟踪 Azure 安全中心的安全评分
-description: 了解在 Azure 安全中心访问和跟踪安全分数的多种方法。
+title: 跟踪 Azure 安全中心中的安全功能分数
+description: 了解在 Azure 安全中心访问和跟踪安全功能分数的多种方法。
 author: memildin
 ms.author: memildin
 manager: rkarlin
@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/25/2021
 ms.openlocfilehash: 5efc48d348e9cfceab590bcfba8c621e7721376f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102107367"
 ---
-# <a name="access-and-track-your-secure-score"></a>访问和跟踪安全评分
+# <a name="access-and-track-your-secure-score"></a>访问和跟踪安全分数
 
 可以通过 Azure 门户或以编程方式查找总体安全功能分数以及每个订阅的分数，如以下各部分所述：
 
 > [!TIP]
-> 有关如何计算分数的详细说明，请参阅 [计算-了解成绩](secure-score-security-controls.md#calculations---understanding-your-score)。
+> 有关如何计算分数的详细说明，请参阅[计算 - 了解分数](secure-score-security-controls.md#calculations---understanding-your-score)。
 
 ## <a name="get-your-secure-score-from-the-portal"></a>从门户获取安全功能分数
 
@@ -31,14 +31,14 @@ ms.locfileid: "102107367"
 
     :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="安全中心仪表板上的安全功能分数":::
 
-- 在 "专用 **安全分数** " 页中，你可以查看你的订阅和管理组的安全评分：
+- 在专用的“安全功能分数”页面中，可查看订阅和管理组的安全功能分数：
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="安全中心安全分数页面上的订阅安全分数":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="安全中心“安全功能分数”页面上的订阅的安全功能分数":::
 
-    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="安全中心安全分数页面上管理组的安全评分":::
+    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="安全中心的“安全功能分数”页面上的管理组的安全功能分数":::
 
     > [!NOTE]
-    > 你没有足够权限的任何管理组会将其分数显示为 "受限"。 
+    > 你对其没有足够权限的管理组都会将其分数显示为“受限”。 
 
 - 在“建议”页面的顶部：
 
@@ -52,11 +52,11 @@ ms.locfileid: "102107367"
 
 有关构建在安全功能分数 API 之上的工具示例，请参阅 [GitHub 社区的安全功能分数区域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。 
 
-## <a name="get-your-secure-score-from-azure-resource-graph"></a>从 Azure 资源关系图获取安全评分
+## <a name="get-your-secure-score-from-azure-resource-graph"></a>从 Azure Resource Graph 获取安全功能分数
 
 使用 Azure Resource Graph (ARG)，可以通过可靠的筛选、分组和排序功能，快速访问你的云环境中的资源信息。 这是以编程方式或从 Azure 门户中查询 Azure 订阅中的信息的一种快速且有效的方式。 [详细了解 Azure Resource Graph](../governance/resource-graph/index.yml)。
 
-使用 Azure 资源关系图访问多个订阅的安全分数：
+若要使用 Azure Resource Graph 访问多个订阅的安全功能分数：
 
 1. 在 Azure 门户中，打开 Azure Resource Graph Explorer。
 
@@ -87,11 +87,11 @@ ms.locfileid: "102107367"
 
 ## <a name="tracking-your-secure-score-over-time"></a>跟踪一段时间内的安全评分
 
-### <a name="secure-score-over-time-report-in-workbooks-page"></a>工作簿页中的 "基于时间的安全评分" 报表
+### <a name="secure-score-over-time-report-in-workbooks-page"></a>工作簿页中的“一段时间内的安全功能分数”报表
 
-安全中心的工作簿页面包含一个现成的报表，可用于直观地跟踪订阅、安全控件等的分数。 有关详细信息 [，请参阅创建安全中心数据的丰富交互式报表](custom-dashboards-azure-workbooks.md)。
+安全中心的工作簿页面包含一个现成的报表，可用于直观地跟踪订阅和安全控制措施等内容的分数。 有关详细信息，请参阅[创建丰富的交互式安全中心数据报表](custom-dashboards-azure-workbooks.md)。
 
-:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="Azure 安全中心的工作簿库中的 &quot;基于时间的安全评分&quot; 报表部分":::
+:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="Azure 安全中心的工作簿库中的“一段时间内的安全功能分数报表”部分":::
 
 ### <a name="power-bi-pro-dashboards"></a>Power BI Pro 仪表板
 
@@ -105,12 +105,12 @@ ms.locfileid: "102107367"
 - **资源摘要** - 提供有关资源运行状况的摘要数据。
 - **安全评分摘要** - 提供有关评分进度的摘要数据。 使用“每个订阅一段时间内的安全评分”图表查看评分的变化。 如果发现评分发生了巨大变化，请检查“检测到的可能会影响你安全评分的更改”表，以查找可能引起变化的可能更改。 此表显示了已删除的资源、新部署的资源或其安全状态针对其中一项建议发生了更改的资源。
 
-:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="随时间推移的可选安全评分 Power BI 仪表板跟踪安全分数并调查更改":::
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="可选的一段时间内的安全评分 Power BI 面板，用于跟踪一段时间内的安全评分并调查更改":::
 
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何访问和跟踪安全分数。 如需相关材料，请参阅以下文章：
+本文介绍了如何访问和跟踪安全功能分数。 如需相关材料，请参阅以下文章：
 
 - [了解建议的不同元素](security-center-recommendations.md)
 - [了解如何修正建议](security-center-remediate-recommendations.md)

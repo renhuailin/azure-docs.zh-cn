@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
-manager: femila
-ms.openlocfilehash: af0da66766a4b814dde8dfa45a0abe00f9e93efa
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+manager: lizross
+ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444167"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "88008621"
 ---
 # <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows 虚拟桌面（经典版）会话主机虚拟机配置
 
@@ -305,7 +305,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 ## <a name="remote-desktop-licensing-mode-isnt-configured"></a>未配置远程桌面许可模式
 
-如果使用管理帐户登录到 Windows 10 企业版多会话，则可能会接收到一条通知，显示“未配置远程桌面许可模式，远程桌面服务将在 X 天内停止工作。 请在连接代理服务器中，使用服务器管理器指定远程桌面许可模式。”
+如果使用管理帐户登录到 Windows 10 企业版多会话，则可能会接收到一条通知，显示“未配置远程桌面许可模式，远程桌面服务将在 X 天后停止工作。 请在连接代理服务器中，使用服务器管理器指定远程桌面许可模式。”
 
 如果时间限制过期，则将出现一条错误消息，显示“由于这台计算机没有远程桌面客户端访问许可证，远程会话被中断。”
 

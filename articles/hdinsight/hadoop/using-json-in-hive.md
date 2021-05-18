@@ -1,16 +1,16 @@
 ---
-title: 分析 Apache Hive & 进程 JSON-Azure HDInsight
-description: 了解如何使用 JSON 文档，以及如何使用 Azure HDInsight 中的 Apache Hive 分析它们。
+title: 使用 Apache Hive 分析并处理 JSON - Azure HDInsight
+description: 了解如何使用 JSON 文档，以及如何使用 Azure HDInsight 中的 Apache Hive 来分析这些文档。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 5bc9acea219e5d111700840149a26c127b47514d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: d3c5077450dd4ec59f5ea7bc8f37879f9aa775bf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943072"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104868930"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Hive 分析和处理 JSON 文档
 
@@ -83,7 +83,7 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-原始 JSON 文件位于 `wasb://processjson@hditutorialdata.blob.core.windows.net/`。 **StudentsRaw** Hive 表指向未平展的原始 JSON 文档。
+原始 JSON 文件位于 `wasb://processjson@hditutorialdata.blob.core.windows.net/`。 StudentsRaw Hive 表指向未平展的原始 JSON 文档。
 
 **StudentsOneLine** Hive 表将数据存储在 HDInsight 默认文件系统中的 **/json/students/** 路径下。
 
@@ -93,7 +93,7 @@ SELECT * FROM StudentsOneLine
 
 下面是 **SELECT** 语句的输出：
 
-![HDInsight 平展 JSON 文档](./media/using-json-in-hive/hdinsight-flatten-json.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-flatten-json.png" alt-text="平展 JSON 文档的 HDInsight" border="true":::
 
 ## <a name="analyze-json-documents-in-hive"></a>在 Hive 中分析 JSON 文档
 
@@ -119,7 +119,7 @@ FROM StudentsOneLine;
 
 这是在控制台窗口中运行此查询时的输出：
 
-![Apache Hive 获取 json 对象 UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-get-json-object.png" alt-text="Apache Hive 获取 json 对象 UDF" border="true":::
 
 get_json_object UDF 有限制：
 
@@ -141,9 +141,9 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 此脚本在 Hive 控制台中的输出：
 
-![Apache Hive json 查询结果](./media/using-json-in-hive/hdinsight-json-tuple.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-json-tuple.png" alt-text="Apache Hive json 查询结果" border="true":::
 
-`json_tuple`UDF 使用 Hive 中的[横向视图](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView)语法， \_ 通过将 UDT 函数应用于原始表的每一行，使 json 元组能够创建虚拟表。 由于重复使用 **横向视图**，复杂的 JSON 会变得过于庞大。 而且， **JSON_TUPLE** 无法处理嵌套的 json。
+`json_tuple` UDF 在 Hive 中使用了[横向视图](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView)语法，使 json\_tuple 能够通过将 UDT 函数应用于原始表的每一行来创建虚拟表。 由于重复使用 **横向视图**，复杂的 JSON 会变得过于庞大。 此外，JSON_TUPLE 无法处理嵌套的 JSON。
 
 ### <a name="use-a-custom-serde"></a>使用自定义 SerDe
 

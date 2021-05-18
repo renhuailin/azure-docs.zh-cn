@@ -10,15 +10,15 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 14da8b6cb695703f1881b6b0b9858772bde386c5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95544745"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能与可伸缩性查检表
 
-Microsoft 已开发了许多经验证的做法，用于使用 Blob 存储开发高性能的应用程序。 此查检表列出了开发人员在优化性能时可以遵循的关键做法。 在设计应用程序时以及在整个流程中，请牢记这些做法。
+在开发高性能 Blob 存储应用程序方面，Microsoft 制定了许多经过证实的做法。 此查检表列出了开发人员在优化性能时可以遵循的关键做法。 在设计应用程序时以及在整个流程中，请牢记这些做法。
 
 Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能目标。 有关 Azure 存储可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)和 [Blob 存储的可伸缩性和性能目标](scalability-targets.md)。
 
@@ -66,7 +66,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 如果即将达到特定订阅/区域组合允许的最大存储帐户数，请评估你的方案并确定是否符合以下任何条件：
 
 - 是否使用存储帐户作为非托管磁盘，并将这些磁盘添加到虚拟机 (VM)？ 对于此方案，Microsoft 建议使用托管磁盘。 托管磁盘可自动缩放，你无需创建和管理单个存储帐户。 有关详细信息，请参阅 [Azure 托管磁盘简介](../../virtual-machines/managed-disks-overview.md)
-- 是否对每个客户使用一个存储帐户，以实现数据隔离？ 对于此方案，Microsoft 建议为每个客户使用 blob 容器，而不是使用整个存储帐户。 Azure 存储现在允许基于每个容器分配 Azure 角色。 有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色以访问 blob 和队列数据](../common/storage-auth-aad-rbac-portal.md)。
+- 是否对每个客户使用一个存储帐户，以实现数据隔离？ 对于此方案，Microsoft 建议对每个客户使用 Blob 容器，而不要使用整个存储帐户。 Azure 存储现在允许基于每个容器分配 Azure 角色。 有关详细信息，请参阅[使用 Azure 门户分配用于访问 Blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-portal.md)。
 - 是否使用多个存储帐户进行分片，以增加流入量、流出量、每秒 I/O 操作次数 (IOPS) 或容量？ 对于这种情况，Microsoft 建议在可能的情况下，利用存储帐户的更高限制来减少工作负荷所需的存储帐户数。 若要请求提高存储帐户的限制，请联系 [Azure 支持部门](https://azure.microsoft.com/support/options/)。 有关详细信息，请参阅[宣布推出更大容量和规模的存储帐户](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。
 
 ### <a name="capacity-and-transaction-targets"></a>容量和事务目标
@@ -247,7 +247,7 @@ AzCopy 命令行实用工具是向/从以及跨存储帐户批量传输 Blob 的
 
 ### <a name="use-azure-data-box"></a>使用 Azure Data Box
 
-若要将大量数据导入 Blob 存储，请考虑使用 Azure Data Box 系列进行脱机传输。 当你按时间、网络可用性或成本进行限制时，Microsoft 提供的 Data Box 设备可用于将大量数据移到 Azure。 有关详细信息，请参阅 [Azure DataBox 文档](../../databox/index.yml)。
+若要将大量数据导入 Blob 存储，请考虑使用 Azure Data Box 系列进行脱机传输。 如果时间、网络可用性或成本有限，建议使用 Microsoft 提供的 Data Box 设备将大量数据移动到 Azure。 有关详细信息，请参阅 [Azure DataBox 文档](../../databox/index.yml)。
 
 ## <a name="content-distribution"></a>内容分发
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 7ede1c917bb44dd31aa59855a0b7c83eb478700a
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100651709"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure 防火墙威胁情报配置
@@ -22,18 +22,18 @@ ms.locfileid: "100651709"
 
 :::image type="content" source="media/threat-intelligence-settings/threat-intelligence-policy.png" alt-text="威胁情报策略":::
 
-## <a name="threat-intelligence-mode"></a>威胁智能模式
+## <a name="threat-intelligence-mode"></a>威胁情报模式
 
-可以在下表所述的三种模式之一中配置威胁情报。 默认情况下，基于威胁情报的筛选将在警报模式下启用。
+可以使用下表中描述的三种模式之一配置威胁情报。 默认情况下，基于威胁情报的筛选将在警报模式下启用。
 
 |“模式” |说明  |
 |---------|---------|
 |`Off`     | 没有为防火墙启用威胁智能功能。 |
-|`Alert only`     | 你将收到有关通过防火墙传入或传出已知恶意 IP 地址和域的流量的高可信度警报。 |
-|`Alert and deny`     | 流量被阻止，并且在检测到试图通过防火墙进入或收到已知恶意 IP 地址和域的流量时，会收到高可信度警报。 |
+|`Alert only`     | 当检测到流量从防火墙流向已知的恶意 IP 地址和域或从这些位置流向你的防火墙时，你将收到高可信度警报。 |
+|`Alert and deny`     | 当检测到流量尝试从防火墙流向已知的恶意 IP 地址或从该地址流向你的防火墙时，流量将被阻止并且你将收到高可信度警报。 |
 
 > [!NOTE]
-> 威胁智能模式从父策略继承到子策略。 子策略的配置必须与父策略的模式相同或更严格。
+> 威胁智能模式是从父策略继承到子策略。 子策略的配置必须与父策略的模式相同或更严格。
 
 ## <a name="allowlist-addresses"></a>允许列表地址
 
@@ -48,7 +48,7 @@ ms.locfileid: "100651709"
 
 ## <a name="logs"></a>日志
 
-以下日志摘录显示了一个触发的规则，该规则用于指向恶意站点的出站流量：
+以下日志摘录显示了一个触发的规则，适用于指向恶意站点的出站流量：
 
 ```json
 {

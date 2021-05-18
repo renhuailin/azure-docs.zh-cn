@@ -3,13 +3,12 @@ title: 查看 Azure 活动日志以监视资源
 description: 使用活动日志查看用户操作和错误。 显示 Azure 门户、PowerShell、Azure CLI 和 REST。
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8917ffe287ecf60659f48dfb947bbd5b06d46005
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752907"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "91371586"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>查看活动日志以监视对资源的操作
 
@@ -141,7 +140,7 @@ Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq
 
 ## <a name="azure-cli"></a>Azure CLI
 
-若要检索日志条目，请运行带有偏移量（用于指示时间跨度）的 [az monitor activity-log list](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) 命令。
+若要检索日志条目，请运行带有偏移量（用于指示时间跨度）的 [az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) 命令。
 
 ```azurecli-interactive
 az monitor activity-log list --resource-group ExampleGroup --offset 7d

@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: f0aaa996d6520a69f5546976d89c7cc4aa802d38
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81730758"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481347"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>使用 AMQP 协议来与 IoT 中心通信
 
@@ -29,12 +29,12 @@ Azure IoT 中心支持使用 [OASIS 高级消息队列协议 (AMQP) 版本 1.0](
 
 服务客户端需要以下信息：
 
-| 信息 | Value |
+| 信息 | 值 |
 |-------------|--------------|
 | IoT 中心主机名 | `<iot-hub-name>.azure-devices.net` |
-| 密钥名称 | `service` |
+| 项名称 | `service` |
 | 访问密钥 | 与服务关联的主要密钥或辅助密钥 |
-| 共享访问签名 | 采用以下格式的短生存期共享访问签名：`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要获取用于生成此签名的代码，请参阅[控制对 IoT 中心的访问](./iot-hub-devguide-security.md#security-token-structure)。
+| 共享访问签名 | 采用以下格式的短生存期共享访问签名：`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要获取用于生成此签名的代码，请参阅[控制对 IoT 中心的访问](./iot-hub-dev-guide-sas.md#security-token-structure)。
 
 以下代码片段使用 [Python 中的 uAMQP 库](https://github.com/Azure/azure-uamqp-python)通过发送方链接连接到 IoT 中心。
 
@@ -131,7 +131,7 @@ for msg in batch:
 
 如以上代码中所示，云到设备的反馈消息的内容类型为 *application/vnd.microsoft.iothub.feedback.json*。 可以使用消息的 JSON 正文中的属性推断原始消息的传送状态：
 
-* 反馈正文中的键 `statusCode` 包含以下值之一：*Success*、*Expired*、*DeliveryCountExceeded*、*Rejected* 或 *Purged*。
+* 反馈正文中的 `statusCode` 项具有以下值之一：“成功”、“已过期”、“DeliveryCountExceeded”、“已拒绝”或“已清除”。
 
 * 反馈正文中的键 `deviceId` 包含目标设备的 ID。
 
@@ -225,11 +225,11 @@ for msg in batch:
 
 设备客户端需要以下信息：
 
-| 信息 | Value |
+| 信息 | 值 |
 |-------------|--------------|
 | IoT 中心主机名 | `<iot-hub-name>.azure-devices.net` |
 | 访问密钥 | 与设备关联的主要密钥或辅助密钥 |
-| 共享访问签名 | 采用以下格式的短生存期共享访问签名：`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要获取用于生成此签名的代码，请参阅[控制对 IoT 中心的访问](./iot-hub-devguide-security.md#security-token-structure)。
+| 共享访问签名 | 采用以下格式的短生存期共享访问签名：`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要获取用于生成此签名的代码，请参阅[控制对 IoT 中心的访问](./iot-hub-dev-guide-sas.md#security-token-structure)。
 
 以下代码片段使用 [Python 中的 uAMQP 库](https://github.com/Azure/azure-uamqp-python)通过发送方链接连接到 IoT 中心。
 

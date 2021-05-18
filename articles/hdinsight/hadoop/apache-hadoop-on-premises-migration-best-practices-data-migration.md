@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: cdb028bcd608aa7a19a7c83e5e2c1129386928a0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98939790"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
@@ -30,7 +30,7 @@ ms.locfileid: "98939790"
 
 * 脱机寄送数据
 
-    Data Box 脱机数据传输 - Data Box、Data Box Disk 和 Data Box Heavy 设备可在网络不可用时将大量数据传输到 Azure。 这些脱机数据传输设备在组织和 Azure 数据中心之间往返运输。 它们使用 AES 加密来帮助保护传输中的数据，还在上传后执行一个清理过程，从设备中删除你的数据。 有关 Data Box 脱机传输设备的详细信息，请参阅 [Azure Data Box 文档 - 脱机传输](../../databox/index.yml)。 有关迁移 Hadoop 群集的详细信息，请参阅 [使用 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)。
+    Data Box 脱机数据传输 - Data Box、Data Box Disk 和 Data Box Heavy 设备可在网络不可用时将大量数据传输到 Azure。 这些脱机数据传输设备在组织和 Azure 数据中心之间往返运输。 它们使用 AES 加密来帮助保护传输中的数据，还在上传后执行一个清理过程，从设备中删除你的数据。 有关 Data Box 脱机传输设备的详细信息，请参阅 [Azure Data Box 文档 - 脱机传输](../../databox/index.yml)。 有关迁移 Hadoop 群集的详细信息，请参阅[使用 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)。
 
 下表根据数据量和网络带宽列出了大致的数据传输持续时间。 如果数据迁移预计需要花费三周以上，请使用 Data Box。
 
@@ -56,7 +56,7 @@ DistCp 是一个 Apache 项目，它使用 MapReduce 映射作业来传输数据
 
 DistCp 会尝试创建映射任务，使每个副本的字节数大致相同。 默认情况下，DistCp 作业使用 20 个映射器。 对 Distcp 使用更多的映射器（在命令行中包含“m”参数）可在数据传输过程中提高并行度，减少数据传输的时长。 但是，增加映射器时需要注意两点：
 
-* DistCp 的最低粒度是一个文件。 指定的映射器数大于源文件数，并将浪费可用的群集资源。
+* DistCp 的最低粒度是一个文件。 指定超过源文件数目的映射器数目没有任何帮助，而且会浪费可用的群集资源。
 
 * 确定映射器数目时，请考虑群集上的可用 Yarn 内存。 每个映射任务作为 Yarn 容器启动。 假设群集上没有其他繁重的工作负荷在运行，可通过以下公式确定映射器数目：m = (工作节点数 \* 每个工作节点的 YARN 内存) / YARN 容器大小。 但是，如果其他应用程序正在使用内存，请选择仅将一部分 YARN 内存用于 DistCp 作业。
 
@@ -109,7 +109,7 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 ### <a name="apache-ranger"></a>Apache Ranger
 
 - 将本地 Ranger 策略导出到 XML 文件。
-- 使用 XSLT 之类的工具，将本地特定的基于 HDFS 的路径转换为 WASB/ADLS。
+- 使用 XSLT 等工具将基于 HDFS 的本地特定路径转换为 WASB/ADLS。
 - 将策略导入到 HDInsight 上运行的 Ranger。
 
 ## <a name="next-steps"></a>后续步骤

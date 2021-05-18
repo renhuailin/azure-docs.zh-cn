@@ -1,5 +1,5 @@
 ---
-title: 在本地运行 U-SQL 作业-Azure Data Lake U-SQL SDK
+title: 在本地运行 U-SQL 作业 - Azure Data Lake U-SQL SDK
 description: 了解如何使用命令行和本地工作站上的编程接口在本地运行和测试 U-SQL 作业。
 ms.service: data-lake-analytics
 author: yanacai
@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215529"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 运行和测试 U-SQL
@@ -21,7 +21,7 @@ ms.locfileid: "92215529"
 
 ## <a name="install-azure-data-lake-u-sql-sdk"></a>安装 Azure Data Lake U-SQL SDK
 
-可以在 [Nuget.org 上获取](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) Azure Data Lake U-SQL SDK。使用之前，需要确保具有以下依赖项。
+可从 Nuget.org 上的[此处](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)获取 Azure Data Lake U-SQL SDK。在使用它之前，需要确保拥有以下依赖项。
 
 ### <a name="dependencies"></a>依赖项
 
@@ -34,7 +34,7 @@ Data Lake U-SQL SDK 需要以下依赖项：
 
     ![用于 Visual Studio 的 Data Lake 工具本地运行 Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - 安装 [适用于 Visual Studio Data Lake 工具](https://aka.ms/adltoolsvs)。 可以在中找到预打包的 Visual C++ 和 Windows SDK 文件 `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
+  - 安装[用于 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)。 可在 `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.` 中找到预打包的 Visual C++ 和 Windows SDK 文件
 
     在本例中，U-SQL 本地编译器无法自动查找依赖项。 需要为它指定 CppSDK 路径。 可将文件复制到其他位置，或按原样使用。
 
@@ -84,7 +84,7 @@ Data Lake U-SQL SDK 需要以下依赖项：
 LocalRunHelper.exe <command> <Required-Command-Arguments> [Optional-Command-Arguments]
 ```
 
-运行不带参数的 LocalRunHelper.exe，或通过 **帮助** 开关显示帮助信息：
+不带参数运行或带 **help** 开关运行 LocalRunHelper.exe 可显示帮助信息：
 
 ```console
 > LocalRunHelper.exe help
@@ -100,8 +100,8 @@ LocalRunHelper.exe <command> <Required-Command-Arguments> [Optional-Command-Argu
 
 在帮助信息中：
 
-- **Command** 提供命令的名称。  
-- **必需的参数** 列出必须提供的参数。  
+- **Command** 指定命令的名称。  
+- **Required Argument** 列出必须提供的参数。  
 - **Optional Argument** 列出可选参数及其默认值。  可选的布尔实参不带形参，指定这些实参即意味着使用非默认值。
 
 ### <a name="return-value-and-logging"></a>返回值和日志记录
@@ -118,7 +118,7 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 
     `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
 
-  定义名为 **SCOPE_CPP_SDK** 的新环境变量以指向此目录。 或者将文件夹复制到其他位置，并将 **SCOPE_CPP_SDK** 指定为该位置。
+  定义名为 **SCOPE_CPP_SDK** 的新环境变量并将其指向此目录。 或者将文件夹复制到其他位置，并将 **SCOPE_CPP_SDK** 指定为该位置。
 
   除设置环境变量外，还可在使用命令行时指定 **-CppSDK** 参数。 此参数将覆盖默认的 CppSDK 环境变量。
 
@@ -132,7 +132,7 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 
 #### <a name="compile-and-run"></a>编译和运行
 
-**运行**命令用于编译脚本，并执行编译的结果。 其命令行参数是 **compile** 和 **execute** 命令的参数组合。
+**run** 命令用于编译脚本，并执行编译的结果。 其命令行参数是 **compile** 和 **execute** 命令的参数组合。
 
 ```console
 LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
@@ -142,15 +142,15 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 |参数|默认值|说明|
 |--------|-------------|-----------|
-|-CodeBehind|False|该脚本具有 .cs 代码隐藏|
+|-CodeBehind|错误|该脚本具有 .cs 代码隐藏|
 |-CppSDK| |CppSDK 目录|
 |-DataRoot| DataRoot 环境变量|用于本地运行的 DataRoot，默认为“LOCALRUN_DATAROOT”环境变量|
 |-MessageOut| |将控制台上的消息转储到文件中|
 |-Parallel|1|使用指定的并行度运行计划|
 |-References| |代码隐藏的额外引用数据集或数据文件的路径列表，列表由“;”分隔|
-|-UdoRedirect|False|生成 Udo 程序集重定向配置|
+|-UdoRedirect|错误|生成 Udo 程序集重定向配置|
 |-UseDatabase|主|用于代码隐藏临时程序集注册的数据库|
-|-Verbose|False|显示运行时的详细输出|
+|-Verbose|错误|显示运行时的详细输出|
 |-WorkDir|当前目录|编译器用法和输出的目录|
 |-RunScopeCEP|0|要使用的 ScopeCEP 模式|
 |-ScopeCEPTempPath|temp|用于流式处理数据的临时路径|
@@ -209,7 +209,7 @@ LocalRunHelper compile -Script d:\test\test1.usql -WorkDir d:\test\bin -Referenc
 
 #### <a name="execute-compiled-results"></a>执行编译的结果
 
-**Execute**命令用于执行编译的结果。
+**execute** 命令用于执行编译的结果。
 
 ```console
 LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
@@ -241,7 +241,7 @@ LocalRunHelper execute -Algebra d:\test\workdir\C6A101DDCB470506\Script_66AE4909
 
    ![Azure Data Lake U-SQL SDK 添加引用](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
 
-- U-SQL SDK **仅**支持 x64 环境，请确保将生成目标平台设置为 x64。 可通过“项目属性”>“生成”>“目标平台”进行设置。
+- U-SQL SDK **仅** 支持 x64 环境，请确保将生成目标平台设置为 x64。 可通过“项目属性”>“生成”>“目标平台”进行设置。
 
    ![Azure Data Lake U-SQL SDK 配置 x64 项目](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
 
@@ -324,7 +324,7 @@ namespace Test.Helpers
 
 ### <a name="programming-interfaces-in-localrunhelperexe"></a>LocalRunHelper.exe 中的编程接口
 
-LocalRunHelper.exe 提供了用于进行 U SQL 本地编译、运行等的编程接口。接口按如下方式列出。
+LocalRunHelper.exe 为 U-SQL 本地编译和运行等提供编程接口。以下列出了这些接口。
 
 ### <a name="constructor"></a>构造函数
 
@@ -376,13 +376,13 @@ E_CSC_SYSTEM_INTERNAL：内部错误！ 无法加载文件或程序集“ScopeEn
 
 请检查以下事项：
 
-- 请确保具有 x64 环境。 生成目标平台和测试环境应为 x64，请参阅上面的**步骤 1：创建 C# 单元测试项目和配置**。
+- 请确保具有 x64 环境。 生成目标平台和测试环境应为 x64，请参阅上面的 **步骤 1：创建 C# 单元测试项目和配置**。
 - 请确保已将 NugetPackage\build\runtime\ 下的所有依赖项文件都复制到了项目工作目录。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解 U-SQL，请参阅 [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)。
-- 若要记录诊断信息，请参阅 [访问 Azure Data Lake Analytics 的诊断日志](data-lake-analytics-diagnostic-logs.md)。
+- 若要记录诊断信息，请参阅[访问 Azure Data Lake Analytics 的诊断日志](data-lake-analytics-diagnostic-logs.md)。
 - 若要查看更复杂的查询，请参阅[使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。
-- 若要查看作业详细信息，请参阅 [使用作业浏览器和作业视图 Azure Data Lake Analytics 作业](data-lake-analytics-data-lake-tools-view-jobs.md)。
-- 若要使用顶点执行视图，请参阅 [在 Data Lake Tools For Visual Studio 中使用顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+- 若要查看作业详细信息，请参阅 [Use Job Browser and Job View for Azure Data Lake Analytics jobs](data-lake-analytics-data-lake-tools-view-jobs.md)（对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图）。
+- 若要使用顶点执行视图，请参阅 [Use the Vertex Execution View in Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)（使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图）。

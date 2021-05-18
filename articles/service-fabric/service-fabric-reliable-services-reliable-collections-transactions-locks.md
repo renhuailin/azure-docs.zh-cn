@@ -4,17 +4,17 @@ description: Azure Service Fabric 可靠状态管理器和可靠集合事务和�
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: 5d2cbb517ea5ca45697cd9124b82e9ef13dd32db
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98784336"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric 可靠集合中的事务和锁模式
 
 ## <a name="transaction"></a>事务
 
-事务是作为单个逻辑工作单元执行的一系列操作。 它展示了公共 [ACID](https://en.wikipedia.org/wiki/ACID) (数据库事务的 *原子* 性、 *一致性*、 *隔离* 和 *持续* 性) 属性：
+事务是作为单个逻辑工作单元执行的一系列操作。 它表现出数据库事务常见的 [ACID](https://en.wikipedia.org/wiki/ACID)（原子性、一致性、隔离性、持续性）属性   ：
 
 * **原子性**：事务必须是原子工作单元。 换而言之，要么执行其所有数据修改，要么一个数据修改也不执行。
 * **一致性**：事务在完成时，必须使所有的数据都保持一致状态。 事务结束时，所有内部数据结构必须都正确。

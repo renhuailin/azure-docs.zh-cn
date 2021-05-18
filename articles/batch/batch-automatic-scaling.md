@@ -2,14 +2,14 @@
 title: 自动缩放 Azure Batch 池中的计算节点
 description: 对云池启用自动缩放功能可以动态调整池中计算节点的数目。
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 04/13/2021
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f70c29f0e8a313233991c7363dc4b8a41a1b1cd5
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100381420"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389360"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动公式
 
@@ -128,7 +128,7 @@ $NodeDeallocationOption = taskcompletion;
 | $PendingTasks |$ActiveTasks 和 $RunningTasks 的总和。 |
 | $SucceededTasks |成功完成的任务数。 |
 | $FailedTasks |失败的任务数。 |
-| $TaskSlotsPerNode |可用于在池中的单个计算节点上运行并发任务的任务槽数。 |
+| $TaskSlotsPerNode |可用于在池中单个计算节点上运行并发任务的任务槽数。 |
 | $CurrentDedicatedNodes |当前的专用计算节点数。 |
 | $CurrentLowPriorityNodes |当前低优先级计算节点数，包括任何已占用的节点。 |
 | $PreemptedNodeCount | 池中处于预占状态的节点数。 |
@@ -419,7 +419,13 @@ $NodeDeallocationOption = taskcompletion;
 CloudPool pool = myBatchClient.PoolOperations.CreatePool(
                     poolId: "mypool",
                     virtualMachineSize: "standard_d1_v2",
-                    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
+                    VirtualMachineConfiguration: new VirtualMachineConfiguration(
+                        imageReference: new ImageReference(
+                                            publisher: "MicrosoftWindowsServer",
+                                            offer: "WindowsServer",
+                                            sku: "2019-datacenter-core",
+                                            version: "latest"),
+                        nodeAgentSkuId: "batch.node.windows amd64");
 pool.AutoScaleEnabled = true;
 pool.AutoScaleFormula = "$TargetDedicatedNodes = (time().weekday == 1 ? 5:1);";
 pool.AutoScaleEvaluationInterval = TimeSpan.FromMinutes(30);

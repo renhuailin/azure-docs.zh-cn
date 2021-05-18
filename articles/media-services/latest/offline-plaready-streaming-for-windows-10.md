@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: aecae72b0bea07a0d8e240b3dcae7ee9b9662f95
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea3d895970c6a18286d719471a693f774efaa387
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640712"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98955218"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>使用媒体服务 v3 进行适用于 Windows 10 的 PlayReady 脱机流式处理
 
@@ -34,7 +34,7 @@ Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用�
 > [!NOTE]
 > 下载内容时，脱机 DRM 仅针对发出单个许可证请求进行计费。 任何错误都不收费。
 
-## <a name="background-on-offline-mode-playback"></a>脱机模式播放时的背景
+## <a name="overview"></a>概述
 
 本节介绍有关脱机模式播放的一些背景，特别是以下问题的原因：
 
@@ -61,12 +61,12 @@ Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用�
 
 下面是两组测试资产，第一组使用 AMS 中的 PlayReady 许可证交付，而第二组使用 Azure VM 上托管的 PlayReady 许可证服务器：
 
-## <a name="asset-1"></a>资产 1
+资产 #1：
 
 * 渐进式下载 URL：[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (AMS)：`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
-## <a name="asset-2"></a>资产 2
+资产 #2：
 
 * 渐进式下载 URL：[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL（本地）：`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
@@ -124,3 +124,7 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * 内容可以托管在 Azure 媒体服务或 Azure 存储中，用于渐进式下载；
 * PlayReady 许可证交付可以来自 Azure 媒体服务或其他位置；
 * 已准备好的平滑流式处理内容仍然可以通过 DASH 用作联机流式处理或作为 DRM 使用 PlayReady 进行平滑处理。
+
+## <a name="next-steps"></a>后续步骤
+
+[设计带访问控制的多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)

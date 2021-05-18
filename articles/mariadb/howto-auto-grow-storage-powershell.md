@@ -3,15 +3,15 @@ title: 自动增长存储 - Azure PowerShell - Azure Database for MariaDB
 description: 本文介绍如何使用 PowerShell 实现 Azure Database for MariaDB 存储的自动增长。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 5/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ef495fc884b1930f8510b6b2443bde40e269a8f1
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 87438c406ea2b31942003d9211cf5e285628f15d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98665151"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-server-using-powershell"></a>使用 PowerShell 实现 Azure Database for MariaDB 服务器存储的自动增长
@@ -27,7 +27,7 @@ ms.locfileid: "98665151"
 
 若要完成本操作指南，需要：
 
-- 在本地安装[Az PowerShell 模块](/powershell/azure/install-az-ps)或在浏览器中[Azure Cloud Shell](https://shell.azure.com/)
+- 本地安装 [Az PowerShell 模块](/powershell/azure/install-az-ps)或浏览器中有 [Azure Cloud Shell](https://shell.azure.com/)
 - [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]

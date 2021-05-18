@@ -1,6 +1,6 @@
 ---
-title: 真实用户度量网页-Azure 流量管理器
-description: 本文介绍如何设置网页以将真实用户度量发送到 Azure 流量管理器。
+title: 使用网页发送真实用户度量 - Azure 流量管理器
+description: 本文介绍如何设置网页，将真实用户度量发送到 Azure 流量管理器。
 services: traffic-manager
 documentationcenter: traffic-manager
 author: duongau
@@ -14,10 +14,10 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
 ms.openlocfilehash: 2bb104fd9cfc3c4ffddb82e4cf442e94c4650550
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98184552"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用网页将实际用户度量发送到 Azure 流量管理器

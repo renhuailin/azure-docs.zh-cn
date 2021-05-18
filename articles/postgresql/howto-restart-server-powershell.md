@@ -1,18 +1,18 @@
 ---
 title: 重启服务器 - Azure PowerShell - Azure Database for PostgreSQL
 description: 本文介绍了如何使用 PowerShell 重启 Azure Database for PostgreSQL 服务器。
-author: sunilagarwal
-ms.author: sunila
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2eadde4e3158c60685ba30542845f28954651bde
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2d37de4a1861cb78b4a76c8ca7bc8c3643245b32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609320"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97706960"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-powershell"></a>使用 PowerShell 重启 Azure Database for PostgreSQL 服务器
 

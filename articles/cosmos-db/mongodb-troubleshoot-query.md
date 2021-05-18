@@ -9,10 +9,10 @@ ms.date: 03/02/2021
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 5302cb7bb3f4683d200f6f9ea106991bb934fc17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101659896"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>排查使用 Azure Cosmos DB API for MongoDB 时遇到的查询问题
@@ -30,7 +30,7 @@ Azure Cosmos DB 中的查询优化大致分为以下类别：
 本文提供可使用 [nutrition 数据集](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)重新创建的示例。
 
 > [!NOTE] 
-> 本文假设你使用的是 Azure Cosmos DB 3.6 版及更高版本的 API for MongoDB 帐户。 在版本 3.2 中性能较差的某些查询在版本 3.6+ 中有了显著改进。 可以通过提交[支持请求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)升级到版本 3.6。
+> 本文假设你在使用适用于 MongoDB 帐户的 3.6 版或更高版本的 Azure Cosmos DB API。 在版本 3.2 中性能较差的某些查询在版本 3.6 中有了显著改进。 可以通过提交[支持请求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)升级到版本 3.6。
 
 ## <a name="use-explain-command-to-get-metrics"></a>使用 $explain 命令获取指标
 

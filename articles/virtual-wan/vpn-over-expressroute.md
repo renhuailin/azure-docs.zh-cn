@@ -1,5 +1,5 @@
 ---
-title: 配置 ExpressRoute 加密： IPsec over ExpressRoute for Azure 虚拟 WAN
+title: 配置 ExpressRoute 加密：Azure 虚拟 WAN 的基于 ExpressRoute 的 IPsec
 description: 了解如何使用 Azure 虚拟 WAN 通过 ExpressRoute 专用对等互连创建站点到站点 VPN 连接。
 services: virtual-wan
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: b8dde3ed76587e2343edaec8626287853ec6ef9b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96487501"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute 加密：虚拟 WAN 的基于 ExpressRoute 的 IPsec

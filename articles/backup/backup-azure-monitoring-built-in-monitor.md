@@ -4,12 +4,12 @@ description: 本文介绍使用 Azure 门户对 Azure 备份工作负荷执行�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 83ed5af00bb61d7a8929e710b52e60c33c0f479b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559207"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101713365"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
@@ -130,7 +130,7 @@ Azure 备份还通过 Azure Monitor 提供警报，使用户能够在包括备�
 - 备份失败（要获取有关备份失败的警报，需要通过预览门户注册名为 EnableAzureBackupJobFailureAlertsToAzureMonitor 的 AFEC 标志）
 - 还原失败（要获取有关还原失败的警报，需要通过预览门户注册名为 EnableAzureBackupJobFailureAlertsToAzureMonitor 的 AFEC 标志）
 
-有关 Azure Monitor 警报的详细信息，请参阅 [Azure 中的警报概述](../azure-monitor/alerts/alerts-overview.md)。
+有关 Azure Monitor 警报的详细信息，请参阅 [Azure 中的警报概述](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview)。
 
 ## <a name="next-steps"></a>后续步骤
 

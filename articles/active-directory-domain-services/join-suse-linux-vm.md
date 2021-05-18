@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: justinha
 ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96619600"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>将 SUSE Linux Enterprise 虚拟机加入到 Azure Active Directory 域服务托管域
@@ -343,7 +343,7 @@ sudo vi /etc/hosts
 
 若要验证 VM 是否已成功加入托管域，请使用域用户帐户启动新的 SSH 连接。 确认已创建主目录，并且已应用域的组成员身份。
 
-1. 从控制台创建新的 SSH 连接。 通过 `ssh -l` 命令使用属于托管域的域帐户（例如 `contosoadmin@aaddscontoso.com`），然后输入 VM 的地址（例如“linux-q2gr.aaddscontoso.com”）。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
+1. 从控制台创建新的 SSH 连接。 通过 `ssh -l` 命令使用属于托管域的域帐户（例如 `contosoadmin@aaddscontoso.com`），然后输入 VM 的地址（例如“linux-q2gr.aaddscontoso.com”）。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不是使用内部 DNS 名称。
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com linux-q2gr.aaddscontoso.com

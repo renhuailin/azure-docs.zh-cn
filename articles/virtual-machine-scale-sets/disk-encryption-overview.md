@@ -1,20 +1,19 @@
 ---
 title: 为虚拟机规模集启用 Azure 磁盘加密
 description: 本文提供了有关为虚拟机规模集启用 Microsoft Azure 磁盘加密的说明
-author: mimckitt
-ms.author: mimckitt
+author: ju-shim
+ms.author: jushiman
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 10/10/2019
-ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 6b9805d66149a18216a200bc89a79b3e06106c9d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.reviewer: mimckitt
+ms.openlocfilehash: 9e9a0a8b07c300282f26ce12b989a8510ccd1e98
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "83195114"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738344"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 磁盘加密
 

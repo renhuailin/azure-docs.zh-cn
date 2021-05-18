@@ -3,7 +3,7 @@ title: DDoS 响应策略的组件
 description: 了解如何使用 Azure DDoS 防护标准对 DDoS 攻击做出响应。
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 2b31a8aa8b126c228ac7e9c3ca182300c710b098
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c028185a0753bc4da966ebc56bb792e57cac1f77
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97814051"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103039"
 ---
 # <a name="components-of-a-ddos-response-strategy"></a>DDoS 响应策略的组件
 

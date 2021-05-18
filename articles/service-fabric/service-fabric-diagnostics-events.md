@@ -1,14 +1,16 @@
 ---
 title: Azure Service Fabric 事件
 description: 了解所提供的可直接用来帮助监视 Azure Service Fabric 群集的 Service Fabric 事件。
+author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.openlocfilehash: 581bb3f16941fce660e0f464ed8ea9389b034b12
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: srrengar
+ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628798"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "75451729"
 ---
 # <a name="service-fabric-events"></a>Service Fabric 事件 
 

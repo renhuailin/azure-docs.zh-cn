@@ -6,10 +6,10 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.openlocfilehash: 0b2f70e2727832514f1ce92d1ce0da90f0a6a2e9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038027"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
@@ -90,9 +90,9 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 ## <a name="with-azure-cli"></a>使用 Azure CLI
 
-前面几个部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](../../cloud-shell/overview.md)。 对于本文，我们将使用 Cloud Shell。
+前面几个部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](../../cloud-shell/overview.md)。 本文将使用 Cloud Shell。
 
-1. 请参阅 Azure 门户，单击 **Cloud Shell**。
+1. 转到 Azure 门户，单击“Cloud Shell”。
 
 2. 在提示符下，可以结合 ``--help`` 选项使用命令来详细了解相应的命令及其用法。 例如，以下命令显示可用于创建、查看和管理指标警报的命令列表
 

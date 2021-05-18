@@ -4,12 +4,12 @@ description: 排查 Azure 备份服务器的安装和注册以及应用程序工
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 644946ca90c2893ba3d87f9d2ff8bfd8325f4715
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514744"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "91403001"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
@@ -22,7 +22,7 @@ ms.locfileid: "107514744"
 - [确保 Microsoft Azure 恢复服务 (MARS) 代理是最新版本](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [确保 MARS 代理与 Azure 之间存在网络连接](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 视需要重启并重试操作
-- [确保在暂存文件夹位置有 5-10% 的可用卷空间](./backup-azure-file-folder-backup-faq.yml#what-s-the-minimum-size-requirement-for-the-cache-folder-)
+- [确保在暂存文件夹位置有 5-10% 的可用卷空间](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - 如果注册失败，请确保你尝试安装 Azure 备份服务器的服务器尚未在其他保管库中注册
 - 如果推送安装失败，请检查 DPM 代理是否存在。 如果该代理存在，请将其卸载，然后重试安装
 - [确保没有其他进程或防病毒软件在干扰 Azure 备份](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>

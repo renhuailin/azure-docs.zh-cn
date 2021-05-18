@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: tisande
 ms.openlocfilehash: 1f3c4ef56feb77e9b01375b8b5dbdb567f5bfadb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179963"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的关键字
@@ -110,7 +110,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 ## <a name="like"></a>LIKE
 
-根据特定字符串是否与指定的模式匹配，返回布尔值。 模式可以包含常规字符和通配符。 可以使用 `LIKE` 关键字或 [RegexMatch](sql-query-regexmatch.md) 系统函数编写在逻辑上等效的查询。 无论选择哪一种，都将看到相同的索引利用率。 因此，如果与正则表达式相比，你更喜欢 `LIKE` 的语法，那么你应使用 LIKE。
+根据特定字符串是否与指定的模式匹配，返回布尔值。 模式可以包含常规字符和通配符。 可以使用 `LIKE` 关键字或 [RegexMatch](sql-query-regexmatch.md) 系统函数编写在逻辑上等效的查询。 无论选择哪一种，索引利用率都将相同。 因此，如果与正则表达式相比，你更喜欢 `LIKE` 的语法，那么你应使用 LIKE。
 
 > [!NOTE]
 > 由于 `LIKE` 可以利用索引，因此你应为你要使用 `LIKE` 来比较的属性[创建范围索引](./index-policy.md)。
@@ -119,10 +119,10 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 | 通配符 | 描述                                                  | 示例                                     |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------- |
-| %                    | 包含零个或多个字符的任意字符串                      | 其中 c. 说明（如 "%，% PS%"）      |
-| _（下划线）     | 任何单个字符                                       | 其中，如 "% SO_PS%" 的描述      |
-| [ ]                  | 在指定范围 ([a-f]) 或集合 ([abcdef]) 内的任何单个字符。 | 其中，如 "% SO [t-z] PS%" 的描述  |
-| [^]                  | 不属于指定范围 ([a-f]) 或集合 ([abcdef]) 的任何单个字符。 | 其中，如 "% SO [^ abc] PS%" 的描述 |
+| %                    | 包含零个或多个字符的任意字符串                      | WHERE   c.description LIKE   “%SO%PS%”      |
+| _（下划线）     | 任何单个字符                                       | WHERE   c.description LIKE   “%SO_PS%”      |
+| [ ]                  | 在指定范围 ([a-f]) 或集合 ([abcdef]) 内的任何单个字符。 | WHERE   c.description LIKE   “%SO[t-z]PS%”  |
+| [^]                  | 不属于指定范围 ([a-f]) 或集合 ([abcdef]) 的任何单个字符。 | WHERE   c.description LIKE   “%SO[^abc]PS%” |
 
 
 ### <a name="using-like-with-the--wildcard-character"></a>使用带 % 通配符的 LIKE
@@ -135,7 +135,7 @@ FROM c
 WHERE c.description LIKE "%fruit%"
 ```
 
-如果只 `%` 在模式末尾使用字符，则只会返回带有以开头的说明的项 `fruit` ：
+如果只在模式结尾处使用 `%` 字符，则只会返回带有以 `fruit` 开头的说明的项：
 
 ```sql
 SELECT *
@@ -156,7 +156,7 @@ WHERE c.description NOT LIKE "%fruit%"
 
 ### <a name="using-the-escape-clause"></a>使用 ESCAPE 子句
 
-可以使用 ESCAPE 子句搜索包含一个或多个通配符的模式。 例如，如果要搜索包含字符串的说明 `20-30%` ，则不需要将解释 `%` 为通配符。
+可以使用 ESCAPE 子句搜索包含一个或多个通配符的模式。 例如，如果要搜索包含字符串 `20-30%` 的说明，则不需要将 `%` 解释为通配符。
 
 ```sql
 SELECT *
@@ -170,10 +170,10 @@ WHERE c.description LIKE '%20-30!%%' ESCAPE '!'
 
 | 模式           | 含义 |
 | ----------------- | ------- |
-| 如 "20-30 [%]" | 20-30%  |
-| 如 "[_] n"     | _n      |
-| 如 "[[]"    | [       |
-| 如 "]"        | ]       |
+| LIKE   “20-30[%]” | 20-30%  |
+| LIKE   “[_]n”     | _n      |
+| LIKE   “[ [ ]”    | [       |
+| LIKE   “]”        | ]       |
 
 ## <a name="in"></a>IN
 

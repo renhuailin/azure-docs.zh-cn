@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
 ms.openlocfilehash: b8f8403617a5fc8b442e8a3f74ab9226fe1479fe
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97588754"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 设备 SDK 平台支持
@@ -34,7 +34,7 @@ Microsoft 在 GitHub 上发布适用于以下语言的开源 SDK：C、.NET (C#)
 
 对于列出的每个 SDK，Microsoft 将会：
 
-* 在多个常用平台上持续构建并运行针对相关 SDK 的主要分支的端到端测试。  为了提供覆盖不同编译器版本的测试，我们通常会针对最新的 LTS 版本和最常用的版本进行测试。
+* 在多个流行平台上，针对 GitHub 中的相关 SDK 的主分支持续构建并运行端到端测试。  为了提供覆盖不同编译器版本的测试，我们通常会针对最新的 LTS 版本和最常用的版本进行测试。
 
 * 在适用的情况下提供安装指南或安装包。
 
@@ -116,7 +116,7 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 
 * 若要浏览 Azure IoT 认证的设备，请参阅 [Microsoft Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)。
 
-* 若要了解有关 Azure IoT 认证生态系统的详细信息，请参阅 [加入 IoT 认证生态系统](https://catalog.azureiotsolutions.com/register)。
+* 若要了解有关 Azure IoT 认证生态系统的详细信息，请参阅[加入 IoT 认证生态系统](https://catalog.azureiotsolutions.com/register)。
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>在不使用 SDK 的情况下连接到 IoT 中心
 
@@ -138,7 +138,7 @@ Microsoft 与许多合作伙伴合作，通过 Azure IoT 测试和认证的设�
 
 * [Azure IoT 中心 Python SDK 问题](https://github.com/Azure/azure-iot-sdk-python/issues)
 
-**技术问题**–可以使用标记 *azure iot sdk* [&](/answers/topics/azure-iot-sdk.html)和 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk)上的技术问题。
+**技术问题** - 可以使用标记 azure-iot-sdk 在 [Microsoft Q&A](/answers/topics/azure-iot-sdk.html) 和 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) 上提出技术问题。
 
 **Microsoft 客户支持团队** – 拥有 [支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)创建新的支持请求来与 Microsoft 客户支持团队进行沟通。
 

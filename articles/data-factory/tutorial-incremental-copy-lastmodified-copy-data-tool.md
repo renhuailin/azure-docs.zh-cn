@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: fda76fd16787c01b9fc35ef63473be215a2c126d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 25e39d3fc9c56a282714bafb630fee65421fb5ac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740046"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104606661"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>使用复制数据工具根据 LastModifiedDate 以增量方式复制新的和已更改的文件
 
@@ -47,7 +47,7 @@ ms.locfileid: "101740046"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左窗格中，选择“创建资源”  。 选择 **集成**  >  **数据工厂**：
+1. 在左窗格中，选择“创建资源”  。 选择“集成” > “数据工厂” ：
 
    ![选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "101740046"
 
    数据工厂的名称必须全局独一无二。 可能会收到以下错误消息：
 
-   ![“名称不可用”错误消息](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="针对重复名称的新数据工厂错误消息。":::
 
    如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_**ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 3. 在“订阅”下，选择要在其中创建新数据工厂的 Azure 订阅  。
@@ -73,7 +73,7 @@ ms.locfileid: "101740046"
 9. 创建数据工厂后，会显示数据工厂主页。
 10. 若要在单独的选项卡中打开 Azure 数据工厂用户界面 (UI)，请选择“创作和监视”磁贴： 
 
-    ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>使用“复制数据”工具创建管道
 

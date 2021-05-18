@@ -10,19 +10,19 @@ ms.date: 03/13/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f59e4238c983cdb336500a68c52730ae5346b1c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 08bc36500bbd95633d1cb1d02bf10a7397401aa4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612415"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780112"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>确定用于存储帐户的 Azure 存储加密密钥模型
 
 存储帐户中的数据自动由 Azure 存储加密。 Azure 存储加密提供两个选项，用于在存储帐户级别管理加密密钥：
 
-- **Microsoft 管理的密钥。** 默认情况下，Microsoft 管理用于加密存储帐户的密钥。
+- **Microsoft 管理的密钥。** 默认情况下，Microsoft 会管理用于加密存储帐户的密钥。
 - **客户管理的密钥。** 可以选择管理存储帐户的加密密钥。 客户管理的密钥必须存储在 Azure Key Vault 中。
 
 此外，还可以在单个请求级别为某些 Blob 存储操作提供加密密钥。 在请求上指定加密密钥时，该密钥会替代存储帐户上处于活动状态的加密密钥。 有关详细信息，请参阅[在对 Blob 存储的请求中指定客户提供的密钥](../blobs/storage-blob-customer-provided-key.md)。
@@ -62,7 +62,7 @@ $account.Encryption.KeySource
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-若要使用 Azure CLI 检查存储帐户的加密模型，请调用 [az storage account show](/cli/azure/storage/account#az-storage-account-show) 命令，然后检查该帐户的 **keySource** 属性。
+若要使用 Azure CLI 检查存储帐户的加密模型，请调用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 命令，然后检查该帐户的 **keySource** 属性。
 
 ```azurecli-interactive
 key_source=$(az storage account show \
@@ -79,4 +79,4 @@ key_source=$(az storage account show \
 ## <a name="next-steps"></a>后续步骤
 
 - [静态数据的 Azure 存储加密](storage-service-encryption.md)
-- [用于 Azure 存储加密的客户托管密钥](customer-managed-keys-overview.md)
+- [用于 Azure 存储加密的客户管理的密钥](customer-managed-keys-overview.md)

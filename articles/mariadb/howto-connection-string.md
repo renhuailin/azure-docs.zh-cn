@@ -1,17 +1,17 @@
 ---
-title: 连接字符串-Azure Database for MariaDB
+title: 连接字符串 - Azure Database for MariaDB
 description: 本文档列出了目前支持用于将应用程序连接到 Azure Database for MariaDB 的连接字符串，包括 ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python 和 Ruby。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 309c8b55910c5223f377571edb7207e5b34bd219
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 8119f0bfd1f9007cab0df93ad2c7ef22b4db2199
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98662171"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>如何将应用程序连接到 Azure Database for MariaDB

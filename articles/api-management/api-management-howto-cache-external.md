@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96018216"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>在 Azure API 管理中使用外部 Redis 兼容缓存
@@ -60,7 +60,7 @@ ms.locfileid: "96018216"
 
 按照以下步骤在 Azure API 管理中添加用于 Redis 的外部 Azure 缓存。
 
-![介绍如何在 Azure API 管理中为 Redis 添加外部 Azure 缓存的屏幕截图。](media/api-management-howto-cache-external/add-external-cache.png)
+![该屏幕截图显示以下步骤在 Azure API 管理中添加用于 Redis 的外部 Azure 缓存。](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
 > “使用位置”设置指定将使用配置的缓存的 Azure 区域或自承载网关位置。 配置为“默认值”的缓存将由具有特定匹配区域或位置值的缓存进行重写。

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/25/2018
 ms.openlocfilehash: bfe5dc00ba0255520c04ea85157f0b8bdc71b590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84038508"
 ---
 # <a name="building-scalable-cloud-databases"></a>构建可缩放的云数据库
@@ -69,7 +69,7 @@ ms.locfileid: "84038508"
 - GitHub（[Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md)[.NET](https://github.com/Azure/elastic-db-tools)）- 用于为代码做出贡献。
 - [Azure SQL 数据库弹性查询概述](elastic-query-overview.md) - 使用弹性查询。
 
-- [在横向扩展云数据库之间移动数据](elastic-scale-overview-split-and-merge.md) - 获取有关使用**拆分/合并工具**的说明。
+- [在横向扩展云数据库之间移动数据](elastic-scale-overview-split-and-merge.md) - 获取有关使用 **拆分/合并工具** 的说明。
 
 
 

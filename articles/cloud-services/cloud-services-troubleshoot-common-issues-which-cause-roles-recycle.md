@@ -1,19 +1,19 @@
 ---
 title: 云服务（经典）角色回收的常见原因 | Microsoft Docs
 description: 突然回收云服务角色可能会导致严重停机。 以下是导致角色回收的一些常见问题，解决这些问题将有助于减少停机。
-ms.topic: article
+ms.topic: troubleshooting
 ms.service: cloud-services
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 9610b32207f8367b9415c0881e49b54e24c49ad7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: daf8bdb0e6729d5e95fdf0e6186f6511c39690f8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98741156"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108735886"
 ---
 # <a name="common-issues-that-cause-azure-cloud-service-classic-roles-to-recycle"></a>导致 Azure 云服务（经典）角色回收的常见问题
 

@@ -7,15 +7,15 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.openlocfilehash: b7e9318ee34836f8fbd2ae7a330134d8174e6a60
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031389"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor 指标的指标聚合和显示说明
 
-本文介绍了 Azure Monitor [平台指标](../data-platform.md) 和 [自定义指标](../essentials/metrics-custom-overview.md)的 Azure Monitor 时序数据库中的指标聚合。 本文还适用于标准 [Application Insights 指标](../app/app-insights-overview.md)。 
+本文介绍支持 Azure Monitor [平台指标](../data-platform.md)和[自定义指标](../essentials/metrics-custom-overview.md)的 Azure Monitor 时序数据库中指标的聚合。 本文还适用于标准 [Application Insights 指标](../app/app-insights-overview.md)。 
 
 这个主题比较复杂，但无需理解本文中的所有信息即可有效使用 Azure Monitor 指标。
 
@@ -25,13 +25,13 @@ ms.locfileid: "102031389"
 
 首先明确定义几个术语：
 
-- **指标值** –为特定资源收集的单个度量值。
-- **时间段** -一般时间段。
-- **时间间隔** –收集两个指标值之间的时间段。 
-- **时间范围** –图表中显示的时间段。 典型默认值为 24 小时。 仅提供特定范围。 
-- **时间粒度** 或 **时间粒度** –用于聚合值以允许在图表上显示的时间段。 仅提供特定范围。 当前最小值为 1 分钟。 时间粒度值应小于所选时间范围才有用，否则整个图表仅显示一个值。 
-- **聚合类型** –从多个指标值计算得出的一种统计信息。  
-- **聚合** –采用多个输入值，然后使用这些值通过聚合类型定义的规则生成单个输出值的过程。 例如，获取多个值的平均值。  
+- **指标值** - 为特定资源收集的单个度量值。
+- **时间段** - 一段普通时间。
+- **时间间隔** - 收集两个指标值之间的时间段。 
+- **时间范围** - 图表上显示的时间段。 典型默认值为 24 小时。 仅提供特定范围。 
+- **时间粒度** - 用于将值聚合在一起以便在图表上显示的时间段。 仅提供特定范围。 当前最小值为 1 分钟。 时间粒度值应小于所选时间范围才有用，否则整个图表仅显示一个值。 
+- **聚合类型** - 通过多个指标值计算得出的一种统计信息。  
+- **聚合** - 获取多个输入值，然后使用这些值通过聚合类型定义的规则生成单个输出值的过程。 例如，获取多个值的平均值。  
 
 指标是按固定时间间隔捕获的一系列指标值。 绘制图表时，所选指标的值将基于时间粒度进行单独聚合。 使用[指标资源管理器时间选取器面板](../essentials/metrics-getting-started.md#select-a-time-range)选择时间粒度的大小。 如果没有进行显式选择，则会根据当前选择的时间范围自动选择时间粒度。 选择后，在每个时间粒度间隔期间捕获的指标值将聚合并放置在图表上 - 每个间隔一个数据点。
 
@@ -39,11 +39,11 @@ ms.locfileid: "102031389"
 
 指标资源管理器中提供了五种基本的聚合类型。 指标资源管理器将隐藏不相关且无法用于给定指标的聚合。 
 
-- **Sum** –聚合间隔内捕获的所有值的总和。 有时称为总聚合。
-- **Count** –通过聚合间隔捕获的度量值的数量。 Count 不会查看度量值，而只会查看记录数。 
-- **Average** –聚合间隔内捕获的指标值的平均值。 对于大多数指标，此值为 Sum/Count。 
-- **最小** 值–聚合间隔内捕获的最小值。
-- **Max** –聚合间隔内捕获的最大值。
+- **求和** - 在聚合间隔内捕获的所有值的总和。 有时称为总聚合。
+- **计数** - 在聚合间隔内捕获的度量的数目。 Count 不会查看度量值，而只会查看记录数。 
+- **平均值** - 在聚合间隔内捕获的指标值的平均值。 对于大多数指标，此值为 Sum/Count。 
+- **最小值** - 在聚合间隔内捕获的最小值。
+- **最大值** - 在聚合间隔内捕获的最大值。
 
 例如，假设一个图表显示了在过去 24 小时的时间范围内使用 SUM 聚合的 VM 的“网络输出总量”指标 。 如以下屏幕截图所示，可以从图表的右上方更改时间范围和粒度。
 
@@ -132,7 +132,7 @@ ms.locfileid: "102031389"
 
 NULL 值在不同图表上以不同方式显示。 散点图跳过在图表上显示点。 条形图跳过显示条形。 在折线图中，NULL 值可显示为[点或虚线](../essentials/metrics-troubleshoot.md#chart-shows-dashed-line)，如上一部分屏幕截图中所示。 计算包含 NULL 值的平均值时，要用于计算平均值的数据点较少。  此行为有时会导致图表上的值意外下降，但通常比将值转换为零并用作有效数据点的情况要好很多。  
 
-当未收到任何数据时，[自定义指标](../essentials/metrics-custom-overview.md)始终使用 null。 使用[平台指标](../data-platform.md)，每个资源提供程序都可以根据最适合给定指标的情况决定是使用零值还是 NULL 值。
+未收到任何数据时，[自定义指标](../essentials/metrics-custom-overview.md)始终使用 null。 使用[平台指标](../data-platform.md)，每个资源提供程序都可以根据最适合给定指标的情况决定是使用零值还是 NULL 值。
 
 Azure Monitor 警报使用资源提供程序写入指标数据库的值，因此先查看数据，了解资源提供程序如何处理 NULL 值非常重要。
 

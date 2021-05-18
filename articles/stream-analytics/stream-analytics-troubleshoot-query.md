@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0dc36b817d5b5cdf731edecd64e1879c153d866a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98015124"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除
@@ -27,7 +27,7 @@ ms.locfileid: "98015124"
     - 在 Azure 门户的“查询”选项卡上，选择“测试” 。 使用下载的示例数据[测试查询](stream-analytics-test-query.md)。 检查并尝试修正所有错误。   
     - 还可以使用适用于 Visual Studio 或 [Visual Studio Code](visual-studio-code-local-run-live-input.md) 的 Azure 流分析工具[在本地测试查询](stream-analytics-live-data-local-testing.md)。 
 
-2.  在 Visual Studio Code 的 Azure 流分析工具中，[使用作业关系图在本地调试查询](debug-locally-using-job-diagram-vs-code.md)。 作业关系图显示数据如何从输入源（事件中心、IoT 中心等）流经多个查询步骤，最后流向输出接收器。 每个查询步骤都使用 WITH 语句映射到脚本中定义的临时结果集。 可以在每个中间结果集中查看数据和指标，以找到问题的根源。
+2.  在适用于 Visual Studio Code 的 Azure 流分析工具中，[使用作业关系图对查询进行本地分步调试](debug-locally-using-job-diagram-vs-code.md)。 作业关系图显示数据如何从输入源（事件中心、IoT 中心等）流经多个查询步骤，最后流向输出接收器。 每个查询步骤都使用 WITH 语句映射到脚本中定义的临时结果集。 可以在每个中间结果集中查看数据和指标，以找到问题的根源。
 
     ![作业关系图预览结果](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 

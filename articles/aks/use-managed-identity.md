@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用托管标识
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 59da03985f0bc9248fdb498d7b0222158029e0d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c87b6dbde14c8b736301846faa8471dd518a98a4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777664"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289761"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
 
@@ -35,8 +35,8 @@ AKS 对内置服务和加载项使用多个托管标识。
 
 | 标识                       | 名称    | 使用案例 | 默认权限 | 自带标识
 |----------------------------|-----------|----------|
-| 控制面板 | 不可见 | 由 AKS 控制平面组件用于管理群集资源，包括入口负载均衡器和 AKS 管理的公共 IP，以及群集自动缩放程序操作 | 节点资源组的参与者角色 | 受支持
-| Kubelet | AKS Cluster Name-agentpool | 向 Azure 容器注册表 (ACR) 进行身份验证 | NA（对于 kubernetes v1.15+） | 目前不支持
+| 控制面板 | 不可见 | 由 AKS 控制平面组件用于管理群集资源，包括入口负载均衡器和 AKS 管理的公共 IP，以及群集自动缩放程序操作 | 节点资源组的参与者角色 | 支持
+| Kubelet | AKS Cluster Name-agentpool | 向 Azure 容器注册表 (ACR) 进行身份验证 | NA（对于 kubernetes v1.15+） | 支持（预览）
 | 加载项 | AzureNPM | 无需标识 | 不可用 | 否
 | 加载项 | AzureCNI 网络监视 | 无需标识 | 不可用 | 否
 | 加载项 | azure-policy (gatekeeper) | 无需标识 | 不可用 | 否
@@ -209,10 +209,144 @@ az aks create \
  },
 ```
 
+## <a name="bring-your-own-kubelet-mi-preview"></a>自带 kubelet MI（预览版）
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+凭借 Kubelet 标识，即可在创建群集之前将访问权限授予现有标识。 此功能可以实现使用预先创建的托管标识连接到 ACR 等方案。
+
+### <a name="prerequisites"></a>先决条件
+
+- 必须安装 Azure CLI 2.21.1 或更高版本。
+- 必须安装 Azure CLI 0.5.10 或更高版本。
+
+### <a name="limitations"></a>限制
+
+- 仅适用于用户分配的托管群集。
+- 当前不支持 Azure 政府。
+- 当前不支持 Azure 中国世纪互联。
+
+首先，为 Kubelet 标识注册功能标志：
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n CustomKubeletIdentityPreview
+```
+
+状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/CustomKubeletIdentityPreview')].{Name:name,State:properties.state}"
+```
+
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="create-or-obtain-managed-identities"></a>创建或获取托管标识
+
+如果还没有控制平面托管标识，应先创建一个。 下方示例使用 [az identity create][az-identity-create] 命令创建：
+
+```azurecli-interactive
+az identity create --name myIdentity --resource-group myResourceGroup
+```
+
+结果应如下所示：
+
+```output
+{                                  
+  "clientId": "<client-id>",
+  "clientSecretUrl": "<clientSecretUrl>",
+  "id": "/subscriptions/<subscriptionid>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity", 
+  "location": "westus2",
+  "name": "myIdentity",
+  "principalId": "<principalId>",
+  "resourceGroup": "myResourceGroup",                       
+  "tags": {},
+  "tenantId": "<tenant-id>",
+  "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+}
+```
+
+如果还没有 kubelet 托管标识，应先创建一个。 下方示例使用 [az identity create][az-identity-create] 命令创建：
+
+```azurecli-interactive
+az identity create --name myKubeletIdentity --resource-group myResourceGroup
+```
+
+结果应如下所示：
+
+```output
+{
+  "clientId": "<client-id>",
+  "clientSecretUrl": "<clientSecretUrl>",
+  "id": "/subscriptions/<subscriptionid>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity", 
+  "location": "westus2",
+  "name": "myKubeletIdentity",
+  "principalId": "<principalId>",
+  "resourceGroup": "myResourceGroup",                       
+  "tags": {},
+  "tenantId": "<tenant-id>",
+  "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+}
+```
+
+如果现有托管标识属于订阅，可以使用 [az identity list][az-identity-list] 命令对其进行查询：
+
+```azurecli-interactive
+az identity list --query "[].{Name:name, Id:id, Location:location}" -o table
+```
+
+### <a name="create-a-cluster-using-kubelet-identity"></a>使用 kubelet 标识创建群集
+
+现在，可以使用以下命令创建具有现有标识的群集。 通过 `assign-identity` 提供控制平面标识，通过 `assign-kublet-identity` 提供 kubelet 托管标识：
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myManagedCluster \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet-id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 \
+    --enable-managed-identity \
+    --assign-identity <identity-id> \
+    --assign-kubelet-identity <kubelet-identity-id> \
+```
+
+使用自己的 kubelet 托管标识成功创建的群集应包含以下输出：
+
+```output
+  "identity": {
+    "principalId": null,
+    "tenantId": null,
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "/subscriptions/<subscriptionid>/resourcegroups/resourcegroups/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity": {
+        "clientId": "<client-id>",
+        "principalId": "<principal-id>"
+      }
+    }
+  },
+  "identityProfile": {
+    "kubeletidentity": {
+      "clientId": "<client-id>",
+      "objectId": "<object-id>",
+      "resourceId": "/subscriptions/<subscriptionid>/resourcegroups/resourcegroups/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity"
+    }
+  },
+```
+
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Azure 资源管理器 (ARM) 模板][aks-arm-template]创建已启用托管标识的群集。
+* 使用 [Azure 资源管理器模板][aks-arm-template]创建已启用托管标识的群集。
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
+
+<!-- LINKS - internal -->
 [az-identity-create]: /cli/azure/identity#az_identity_create
 [az-identity-list]: /cli/azure/identity#az_identity_list
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

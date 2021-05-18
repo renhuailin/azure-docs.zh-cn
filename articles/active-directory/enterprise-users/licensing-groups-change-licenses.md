@@ -17,10 +17,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 050ae95c79e7ecb98f8508c2fdb41b90fc1b1da0
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96546533"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>在 Azure Active Directory 中更改用户或组的许可证分配
@@ -39,7 +39,7 @@ ms.locfileid: "96546533"
 
 - 如果通过 Azure AD Connect 在本地管理组并将其同步到 Azure AD 中，则需要使用本地系统添加或删除用户。 将更改同步到 Azure AD 并在组许可中拾取更改可能会花费一段时间。
 
-- 如果使用 Azure AD 动态组成员身份，则可以通过更改用户的属性添加或删除用户，但是许可证分配的更新过程保持不变。
+- 如果使用 Azure AD 动态组成员资格，可通过更改用户的属性添加或移除用户，但是许可证分配的更新过程保持不变。
 
 ## <a name="change-user-license-assignments"></a>更改用户许可证分配
 
@@ -80,5 +80,5 @@ Azure AD 将应用新许可证，同时删除旧许可证以提供服务连续�
 - [将许可证分配到 Azure Active Directory 中的组](licensing-groups-assign.md)
 - [识别和解决 Azure Active Directory 中组的许可问题](licensing-groups-resolve-problems.md)
 - [如何在 Azure Active Directory 中将单个许可用户迁移到组许可](licensing-groups-migrate-users.md)
-- [Azure Active Directory 组许可附加方案](licensing-group-advanced.md)
+- [Azure Active Directory 组许可的其他场景](licensing-group-advanced.md)
 - [Azure Active Directory 中的组许可的 PowerShell 示例](licensing-ps-examples.md)

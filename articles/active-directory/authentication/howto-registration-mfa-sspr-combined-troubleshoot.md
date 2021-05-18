@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: db87887fc2b51c7cb8cb300eb8e711d3ae9b6ac8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98610772"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>合并安全信息注册故障排除
@@ -46,13 +46,13 @@ ms.locfileid: "98610772"
 
 | 症状 | 疑难解答步骤 |
 | --- | --- |
-| 我没有看到预期应看到的方法。 | 1.检查用户是否拥有 Azure AD 管理员角色。 如果拥有，请查看 SSPR 管理员策略差异。 <br> 2.确定用户是否由于强制多重身份验证注册或强制 SSPR 注册而被中断。 查看“合并注册模式”下的[流程图](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes)来确定应当显示的方法。 <br> 3.确定多重身份验证或 SSPR 策略最近的更改情况。 如果更改在最近发生，则更新的策略可能需要一些时间传播。|
+| 我没有看到预期应看到的方法。 | 1. 检查用户是否拥有 Azure AD 管理员角色。 如果拥有，请查看 SSPR 管理员策略差异。 <br> 2. 确定用户是否由于强制多重身份验证注册或强制 SSPR 注册而被中断。 查看“合并注册模式”下的[流程图](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes)来确定应当显示的方法。 <br> 3. 确定多重身份验证或 SSPR 策略最近的更改情况。 如果更改在最近发生，则更新的策略可能需要一些时间传播。|
 
 ## <a name="troubleshooting-manage-mode"></a>管理模式故障排除
 
 | 症状 | 疑难解答步骤 |
 | --- | --- |
-| 我没有添加特定方法的选项。 | 1.确定是否为多重身份验证或 SSPR 启用了方法。 <br> 2.如果已启用方法，请再次保存策略并等待 1-2 小时，然后再进行测试。 <br> 3.如果方法已启用，请确保用户尚未设置允许其设置的该方法的最大数目。|
+| 我没有添加特定方法的选项。 | 1. 确定是否为多重身份验证或 SSPR 启用了方法。 <br> 2. 如果已启用方法，请再次保存策略并等待 1-2 小时，然后再进行测试。 <br> 3. 如果方法已启用，请确保用户尚未设置允许其设置的该方法的最大数目。|
 
 ## <a name="disable-combined-registration"></a>禁用合并注册
 

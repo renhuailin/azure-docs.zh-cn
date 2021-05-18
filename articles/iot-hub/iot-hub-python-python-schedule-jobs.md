@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure IoT 中心安排作业 (Python) | Microsoft Docs
-description: 如何安排 Azure IoT 中心作业实现多台设备上的直接方法调用。 使用 Azure IoT SDK for Python 实现模拟设备应用以及用于运行作业的服务应用。
+description: 如何安排 Azure IoT 中心作业对多台设备调用直接方法。 使用 Azure IoT SDK for Python 实现模拟设备应用以及用于运行作业的服务应用。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
-ms.openlocfilehash: 733e3be21a1a1305b5c7947de1ae54ddce5e0d2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 55672b5d58c6c1185c6bf6b17ea63302b6f9b891
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87876676"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487954"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>计划和广播作业 (Python)
 
@@ -38,18 +38,18 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 本教程演示如何：
 
-* 创建一个 Python 模拟设备应用，该应用具有一种直接方法，使 lockDoor 能够由解决方案后端调用  。
+* 创建一个 Python 模拟设备应用，该应用具有一种直接方法，使 lockDoor 能够由解决方案后端调用。
 
-* 创建 Python 控制台应用，它使用作业在模拟设备应用中调用 lockDoor 直接方法，并使用设备作业更新所需属性  。
+* 创建 Python 控制台应用，它使用作业在模拟设备应用中调用 lockDoor 直接方法，并使用设备作业更新所需属性。
 
 在本教程结束时，会创建两个 Python 应用：
 
-simDevice.py，它使用设备标识连接到 IoT 中心并接收 lockDoor 直接方法   。
+simDevice.py，它使用设备标识连接到 IoT 中心并接收 lockDoor 直接方法。
 
-scheduleJobService.py，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性  。
+scheduleJobService.py，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性。
 
 > [!NOTE]
-> Azure IoT SDK for Python 不直接支持作业功能   。 本教程中转而提供一种利用异步现成和计时器的备选解决方案。 有关进一步的更新，请参阅 [Azure IoT SDK for Python](https://github.com/Azure/azure-iot-sdk-python) 页面上的**服务客户端 SDK**功能列表。
+> Azure IoT SDK for Python 不直接支持作业功能。 本教程中转而提供一种利用异步现成和计时器的备选解决方案。 有关进一步的更新，请参阅 [Azure IoT SDK for Python](https://github.com/Azure/azure-iot-sdk-python) 页面上的 **服务客户端 SDK** 功能列表。
 >
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
@@ -68,7 +68,7 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 
-本部分将创建一个 Python 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法  。
+本部分将创建一个 Python 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法。
 
 1. 在命令提示符处，运行以下命令以安装 **azure-iot-device** 包：
 
@@ -76,9 +76,9 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
     pip install azure-iot-device
     ```
 
-2. 使用文本编辑器，在工作目录中创建一个 simDevice.py 文件  。
+2. 使用文本编辑器，在工作目录中创建一个 simDevice.py 文件。
 
-3. 在 simDevice.py 文件的开头添加以下 `import` 语句和变量  。 将 `deviceConnectionString` 替换为上述创建的设备的连接字符串：
+3. 在 simDevice.py 文件的开头添加以下 `import` 语句和变量。 将 `deviceConnectionString` 替换为上述创建的设备的连接字符串：
 
     ```python
     import threading
@@ -88,7 +88,7 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-4. 添加以下功能回调以处理 lockDoor 方法  ：
+4. 添加以下功能回调以处理 lockDoor 方法：
 
     ```python
     def lockdoor_listener(client):
@@ -145,7 +145,7 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
         iothub_jobs_sample_run()
     ```
 
-7. 保存并关闭 simDevice.py 文件  。
+7. 保存并关闭 simDevice.py 文件。
 
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章 [Transient Fault Handling](/azure/architecture/best-practices/transient-faults)（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
@@ -153,31 +153,31 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中，你将创建一个在设备上调用直接方法并更新设备孪生的后端服务。 服务需要“服务连接”  权限才能在设备上调用直接方法。 服务还需要“注册表读取”  和“注册表写入”  权限才能读取和写入标识注册表。 没有仅包含这些权限的默认共享访问策略，因此需要创建一个。
+在本文中，你将创建一个在设备上调用直接方法并更新设备孪生的后端服务。 服务需要“服务连接”权限才能在设备上调用直接方法。 服务还需要“注册表读取”和“注册表写入”权限才能读取和写入标识注册表。 没有仅包含这些权限的默认共享访问策略，因此需要创建一个。
 
-若要创建授予“服务连接”  、“注册表读取”  和“注册表写入”  权限的共享访问策略，并获取此策略的连接字符串，请执行以下步骤：
+若要创建授予“服务连接”、“注册表读取”和“注册表写入”权限的共享访问策略，并获取此策略的连接字符串，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)中打开 IoT 中心。 若要转到 IoT 中心，最简单的方法是选择“资源组”，接着选择 IoT 中心所在的资源组，然后从资源列表中选择该 IoT 中心。 
+1. 在 [Azure 门户](https://portal.azure.com)中打开 IoT 中心。 若要转到 IoT 中心，最简单的方法是选择“资源组”，接着选择 IoT 中心所在的资源组，然后从资源列表中选择该 IoT 中心。
 
-2. 在 IoT 中心的左侧窗格中，选择“共享访问策略”  。
+2. 在 IoT 中心的左侧窗格上，选择“共享访问策略”。
 
-3. 从策略列表上方的顶部菜单中选择“添加”  。
+3. 在策略列表上方的顶部菜单中，选择“添加”。
 
-4. 在“添加共享访问策略”窗格中，为策略输入一个说明性名称，例如 serviceAndRegistryReadWrite  。  在**权限**下，选择“服务连接”  和“注册表写入”  （选择“注册表写入”  时，会自动选择“注册表读取”  ）。 然后选择“创建”  。
+4. 在“添加共享访问策略”窗格中，为策略输入一个说明性名称，例如 serviceAndRegistryReadWrite。 在 **权限** 下，选择“服务连接”和“注册表写入”（选择“注册表写入”时，会自动选择“注册表读取”）。 然后选择“创建”。
 
-    ![显示如何添加新的共享访问策略](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
+    ![演示如何添加新的共享访问策略](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
-5. 回到“共享访问策略”窗格，从策略列表中选择新的策略  。
+5. 回到“共享访问策略”窗格，从策略列表中选择新的策略。
 
-6. 在“共享访问密钥”  下，选择“连接字符串 - 主密钥”  所对应的“复制”图标并保存该值。
+6. 在“共享访问密钥”下，选择“连接字符串 - 主密钥”的复制图标并保存值。
 
     ![显示如何检索连接字符串](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
 
-有关 IoT 中心共享访问策略和权限的详细信息，请参阅[访问控制和权限](./iot-hub-devguide-security.md#access-control-and-permissions)。
+有关 IoT 中心共享访问策略和权限的详细信息，请参阅[访问控制和权限](./iot-hub-dev-guide-sas.md#access-control-and-permissions)。
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>安排作业，用于调用直接方法和更新设备孪生的属性
 
-在本部分中，将创建一个 Python 控制台应用，它使用直接方法在设备上启动远程 lockDoor，还更新设备孪生的所需属性  。
+在本部分中，将创建一个 Python 控制台应用，该应用使用直接方法在设备上启动远程 lockDoor，还更新设备孪生所需的属性。
 
 1. 在命令提示符处，运行以下命令以安装 **azure-iot-hub** 包：
 
@@ -185,9 +185,9 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
     pip install azure-iot-hub
     ```
 
-2. 使用文本编辑器，在工作目录中创建一个 scheduleJobService.py 文件  。
+2. 使用文本编辑器，在工作目录中创建一个 scheduleJobService.py 文件。
 
-3. 在 scheduleJobService.py 文件的开头添加以下 `import` 语句和变量  。 将 `{IoTHubConnectionString}` 占位符替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。 将 `{deviceId}` 占位符替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID：
+3. 在 scheduleJobService.py 文件的开头添加以下 `import` 语句和变量。 将 `{IoTHubConnectionString}` 占位符替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。 将 `{deviceId}` 占位符替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID：
 
     ```python
     import sys
@@ -310,7 +310,7 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
         iothub_jobs_sample_run()
     ```
 
-7. 保存并关闭 scheduleJobService.py 文件  。
+7. 保存并关闭 scheduleJobService.py 文件。
 
 ## <a name="run-the-applications"></a>运行应用程序
 

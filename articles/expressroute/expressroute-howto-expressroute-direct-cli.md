@@ -9,10 +9,10 @@ ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: d68011afe044535783dd8a8c56ed5d950c6d06b1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102099873"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Direct
@@ -22,7 +22,7 @@ ms.locfileid: "102099873"
 ## <a name="before-you-begin"></a>准备阶段
 
 需要先注册订阅，然后才能使用 ExpressRoute Direct。 需要先注册订阅，然后才能使用 ExpressRoute Direct。 若要注册，请通过 Azure PowerShell 执行以下操作：
-1.  登录到 Azure 并选择要注册的订阅。
+1.  登录到 Azure 并选择想要注册的订阅。
 
     ```azurepowershell-interactive
     Connect-AzAccount 

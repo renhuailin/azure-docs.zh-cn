@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: b974af343907c98ebd7a318bc60a0e553a07a233
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98219345"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>故障排除：无法在 Azure 中删除虚拟网络
@@ -78,7 +78,7 @@ ms.locfileid: "98219345"
 
 如果 Active Directory 域服务已启用并已连接到虚拟网络，则无法删除此虚拟网络。 
 
-![Azure 门户中 Azure AD 域服务屏幕的屏幕截图。 突出显示 "虚拟网络/子网中的可用字段" 字段。](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
+![Azure 门户中“Azure AD 域服务”屏幕的屏幕截图。 “在虚拟网络/子网中可用”字段将突出显示。](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
 若要禁用服务，请参阅[使用 Azure 门户禁用 Azure Active Directory 域服务](../active-directory-domain-services/delete-aadds.md)。
 

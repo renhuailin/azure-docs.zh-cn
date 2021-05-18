@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: cherylmc
 ms.openlocfilehash: a5cda5d4d447bc04f853ea4a9abd15be75e7e177
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100588647"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>使用 Azure Bastion 通过 SSH 连接到 Linux 虚拟机
@@ -49,59 +49,59 @@ SSH 私钥必须采用以 `"-----BEGIN RSA PRIVATE KEY-----"` 开头并以 `"---
 
 1. 打开 [Azure 门户](https://portal.azure.com)。 导航到要连接到的虚拟机，然后单击“连接”并从下拉列表中选择“Bastion”。
 
-   :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="屏幕截图显示了在选择了 &quot;连接&quot; Azure 门户中虚拟机的概述":::
-1. 选择 "堡垒" 后，单击 " **使用堡垒**"。 如果未为虚拟网络预配 Bastion，请参阅[配置 Bastion](./quickstart-host-portal.md)。
-1. 在 " **使用 Azure 堡垒连接** " 页上，输入 **用户名** 和 **密码**。
+   :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="屏幕截图显示了 Azure 门户中虚拟机的概览，其中已选择“连接”":::
+1. 选择“Bastion”后，单击“使用 Bastion”。 如果未为虚拟网络预配 Bastion，请参阅[配置 Bastion](./quickstart-host-portal.md)。
+1. 在“使用 Azure Bastion 连接”页上，输入“用户名”和“密码”  。
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/password.png" alt-text="密码验证":::
-1. 选择 " **连接** " 以连接到 VM。
+1. 选择“连接”以连接到 VM。
 
 ## <a name="connect-manually-enter-a-private-key"></a><a name="privatekey"></a>连接：手动输入私钥
 
 1. 打开 [Azure 门户](https://portal.azure.com)。 导航到要连接到的虚拟机，然后单击“连接”并从下拉列表中选择“Bastion”。
 
-   :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="屏幕截图显示了在选择了 &quot;连接&quot; Azure 门户中虚拟机的概述":::
-1. 选择 "堡垒" 后，单击 " **使用堡垒**"。 如果未为虚拟网络预配 Bastion，请参阅[配置 Bastion](./quickstart-host-portal.md)。
-1. 在 " **使用 Azure 堡垒连接** " 页上，输入 **用户名** 和 **SSH 私钥**。
+   :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="屏幕截图显示了 Azure 门户中虚拟机的概览，其中已选择“连接”":::
+1. 选择“Bastion”后，单击“使用 Bastion”。 如果未为虚拟网络预配 Bastion，请参阅[配置 Bastion](./quickstart-host-portal.md)。
+1. 在“使用 Azure Bastion 连接”页上，输入“用户名”和“SSH 私钥”  。
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/ssh-private-key.png" alt-text="SSH 私钥身份验证":::
 1. 将私钥输入到文本区域“SSH 私钥”中（或直接进行粘贴）。
-1. 选择 " **连接** " 以连接到 VM。
+1. 选择“连接”以连接到 VM。
 
 ## <a name="connect-using-a-private-key-file"></a><a name="ssh"></a>连接：使用私钥文件
 
 1. 打开 [Azure 门户](https://portal.azure.com)。 导航到要连接到的虚拟机，然后单击“连接”并从下拉列表中选择“Bastion”。
 
-   :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="屏幕截图显示了在选择了 &quot;连接&quot; Azure 门户中虚拟机的概述":::
-1. 选择 "堡垒" 后，单击 " **使用堡垒**"。 如果未为虚拟网络预配 Bastion，请参阅[配置 Bastion](./quickstart-host-portal.md)。
-1. 在 "**使用 Azure 堡垒连接**" 页上，输入 **本地文件中** 的 **用户名** 和 SSH 私钥。
+   :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="屏幕截图显示了 Azure 门户中虚拟机的概览，其中已选择“连接”":::
+1. 选择“Bastion”后，单击“使用 Bastion”。 如果未为虚拟网络预配 Bastion，请参阅[配置 Bastion](./quickstart-host-portal.md)。
+1. 在“使用 Azure Bastion 连接”页上，输入“用户名”和“本地文件中的 SSH 私钥”  。
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/private-key-file.png" alt-text="SSH 私钥文件":::
 
-1. 浏览文件，然后选择 " **打开**"。
-1. 选择 " **连接** " 以连接到 VM。 单击“连接”后，可连接到此虚拟机的 SSH 将直接在 Azure 门户中打开。 此连接通过 HTML5 在虚拟机的专用 IP 上使用 Bastion 服务的端口 443 进行。
+1. 通过浏览方式找到该文件，然后选择“打开”。
+1. 选择“连接”以连接到 VM。 单击“连接”后，可连接到此虚拟机的 SSH 将直接在 Azure 门户中打开。 此连接通过 HTML5 在虚拟机的专用 IP 上使用 Bastion 服务的端口 443 进行。
 
 ## <a name="connect-using-a-private-key-stored-in-azure-key-vault"></a><a name="akv"></a>连接：使用存储在 Azure Key Vault 中的私钥
 
 >[!NOTE]
->此功能的门户更新当前正在向区域推出。
+>此功能的门户更新当前正在向各个区域推出。
 >
 
 1. 打开 [Azure 门户](https://portal.azure.com)。 导航到要连接到的虚拟机，然后单击“连接”并从下拉列表中选择“Bastion”。
 
-   :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="屏幕截图显示了在选择了 &quot;连接&quot; Azure 门户中虚拟机的概述":::
-1. 选择 "堡垒" 后，单击 " **使用堡垒**"。 如果未为虚拟网络预配 Bastion，请参阅[配置 Bastion](./quickstart-host-portal.md)。
-1. 在 " **使用 Azure 堡垒连接** " 页上，输入 **用户名** 并 **从 Azure Key Vault 中选择 "SSH 私钥**"。
+   :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="屏幕截图显示了 Azure 门户中虚拟机的概览，其中已选择“连接”":::
+1. 选择“Bastion”后，单击“使用 Bastion”。 如果未为虚拟网络预配 Bastion，请参阅[配置 Bastion](./quickstart-host-portal.md)。
+1. 在“使用 Azure Bastion 连接”页上，输入“用户名”并选择“Azure Key Vault 中的 SSH 私钥”  。
 
-   :::image type="content" source="./media/bastion-connect-vm-ssh/ssh-key-vault.png" alt-text="Azure Key Vault 中的 SSH 私钥":::
-1. 选择 **Azure Key Vault** 下拉列表，并选择存储 SSH 私钥的资源。 如果未设置 Azure Key Vault 资源，请参阅 [创建密钥保管库](../key-vault/general/quick-create-portal.md) 并将 SSH 私钥存储为新 Key Vault 机密的值。
+   :::image type="content" source="./media/bastion-connect-vm-ssh/ssh-key-vault.png" alt-text="来自 Azure Key Vault 的 SSH 私钥":::
+1. 选择“Azure Key Vault”下拉列表，并选择在其中存储 SSH 私钥的资源。 如果未设置 Azure Key Vault 资源，请参阅[创建密钥保管库](../key-vault/general/quick-create-portal.md)并将 SSH 私钥存储为新 Key Vault 机密的值。
 
-   :::image type="content" source="./media/bastion-connect-vm-ssh/key-vault.png" alt-text="Azure 密钥保管库":::
+   :::image type="content" source="./media/bastion-connect-vm-ssh/key-vault.png" alt-text="Azure Key Vault":::
 
-   请确保你具有 **列表** 并 **可访问 Key Vault** 资源中存储的机密。 若要为 Key Vault 资源分配和修改访问策略，请参阅 [分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)。
-1. 选择 " **Azure Key Vault 密钥** " 下拉列表，并选择包含 SSH 私钥值的 Key Vault 机密。
-1. 选择 " **连接** " 以连接到 VM。 单击 " **连接**" 后，SSH 将直接在 Azure 门户中打开此虚拟机。 此连接通过 HTML5 在虚拟机的专用 IP 上使用 Bastion 服务的端口 443 进行。
+   确保对 Key Vault 中存储的机密具有“列出”和“获取”权限 。 若要为 Key Vault 资源分配访问策略和修改该资源的访问策略，请参阅[分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)。
+1. 选择“Azure Key Vault 机密”下拉列表，然后选择包含 SSH 私钥值的 Key Vault 机密。
+1. 选择“连接”以连接到 VM。 单击“连接”后，可连接到此虚拟机的 SSH 将直接在 Azure 门户中打开。 此连接通过 HTML5 在虚拟机的专用 IP 上使用 Bastion 服务的端口 443 进行。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 堡垒的详细信息，请参阅 [堡垒常见问题解答](bastion-faq.md)。 
+有关 Azure Bastion 的详细信息，请参阅 [Bastion 常见问题解答](bastion-faq.md)。 

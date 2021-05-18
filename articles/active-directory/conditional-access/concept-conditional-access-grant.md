@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f0a84af0c7a4105327405cfb809f5101ab42931
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: d01a750948f8e3c264b9bcffdaad3ae72fa40ac0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938383"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579104"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -28,7 +28,7 @@ ms.locfileid: "98938383"
 
 阻止操作会考虑到任何分配，根据条件访问策略配置阻止访问。
 
-阻止是一种强有力的控制，运用此项控制时，应具备相应的知识。 带有块语句的策略可能会产生意外的副作用。 在大规模启用之前，正确的测试和验证至关重要。 在进行更改时，管理员应使用条件访问 [仅报告模式](concept-conditional-access-report-only.md) 和 [What If 工具](what-if-tool.md) 等工具进行更改。
+阻止是一种强有力的控制，运用此项控制时，应具备相应的知识。 带有块语句的策略可能会产生意外的副作用。 在大规模启用之前，正确的测试和验证至关重要。 进行更改时，管理员应使用[条件访问仅限报告模式](concept-conditional-access-report-only.md)和[条件访问中的 What If 工具](what-if-tool.md)等工具。
 
 ## <a name="grant-access"></a>授予访问权限
 
@@ -51,6 +51,8 @@ ms.locfileid: "98938383"
 ### <a name="require-multi-factor-authentication"></a>需要多重身份验证
 
 选中此复选框会要求用户执行 Azure AD 多重身份验证。 在[规划基于云的 Azure AD 多重身份验证部署](../authentication/howto-mfa-getstarted.md)一文中可以找到有关部署 Azure AD 多重身份验证的详细信息。
+
+[Windows Hello 企业版](/windows/security/identity-protection/hello-for-business/hello-overview)满足条件访问策略中多重身份验证的要求。 
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>要求将设备标记为合规
 
@@ -111,7 +113,7 @@ ms.locfileid: "98938383"
    - 仅支持 iOS 和 Android 作为设备平台条件。
    - 注册设备需要代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是 Microsoft Authenticator 或适用于 Android 设备的 Microsoft 公司门户。
 - 条件访问无法将 InPrivate 模式下的 Microsoft Edge 视为已批准的客户端应用。
-- 使用 Azure AD 应用程序代理来启用 Power BI 移动应用程序连接到本地 Power BI 报表服务器，这种条件访问策略不支持将 Microsoft Power BI 应用作为批准的客户端应用。
+- 条件访问策略要求将 Microsoft Power BI 应用作为获批的客户端应用，它不支持使用 Azure AD 应用程序代理将 Power BI 移动应用连接到本地 Power BI 报表服务器。
 
 请参阅文章[如何：使用条件访问要求使用批准的设备应用访问云应用](app-based-conditional-access.md)，以获取配置示例。
 
@@ -121,7 +123,7 @@ ms.locfileid: "98938383"
 
 为了利用此授权控制，条件访问要求在 Azure Active Directory 中注册设备，这需要使用代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是适用于 Android 设备的 Microsoft 公司门户。 如果用户尝试进行身份验证时设备上未安装代理应用，则会将用户重定向到应用商店来安装代理应用。
 
-需要 **为应用** 程序实施 **策略保证** 并满足某些其他要求以支持此设置。 通过 Intune SDK 实现应用程序的开发人员可以在 SDK 文档中找到有关这些要求的详细信息。
+应用程序需要具有已实现策略保障的 Intune SDK，并且需要满足其他一些要求才能支持此设置 。 通过 Intune SDK 实施应用程序的开发人员可在 SDK 文档中找到这些要求的详细信息。
 
 已确认以下客户端应用支持此设置：
 
@@ -137,11 +139,11 @@ ms.locfileid: "98938383"
 - Microsoft PowerPoint
 - Microsoft SharePoint
 - Microsoft Word
-- Intune 多行
-- 九封电子邮件 & 日历
+- MultiLine for Intune
+- Nine Mail - 电子邮件和日历
 
 > [!NOTE]
-> Microsoft 团队、Microsoft Kaizala、Microsoft Skype for Business 和 Microsoft Visio 不支持必需的 **应用保护策略** 授予。 如果要求这些应用正常工作，请使用 "仅 **要求批准的应用** " 授权。 对于这三个应用程序，在两个授予之间使用或子句将不起作用。
+> Microsoft Teams、Microsoft Kaizala、Microsoft Skype for Business 和 Microsoft Visio 不支持“需要应用保护策略”授权。 如果需要这些应用正常工作，请仅使用“需要已批准的应用”授权。 对于这三款应用程序，在两个授权之间使用 or 子句将不起作用。
 
 **备注**
 
@@ -150,7 +152,7 @@ ms.locfileid: "98938383"
     - 仅支持 iOS 和 Android 作为设备平台条件。
     - 注册设备需要代理应用。 在 iOS 上，代理应用是 Microsoft Authenticator；在 Android 上，代理应用是 Intune 公司门户应用。
 
-有关配置示例，请参阅 [如何：要求应用保护策略和批准的客户端应用，以进行 cloud 应用访问](app-protection-based-conditional-access.md) 。
+如需配置示例，请查看[如何：需要应用保护策略和已批准的客户端应用才能通过条件访问来访问云应用](app-protection-based-conditional-access.md)一文。
 
 ### <a name="require-password-change"></a>要求更改密码 
 
@@ -169,7 +171,7 @@ ms.locfileid: "98938383"
 
 ### <a name="terms-of-use"></a>使用条款
 
-如果你的组织已创建使用条款，则授权控制下可能会显示其他选项。 管理员可以通过这些选项要求用户确认使用条款，作为访问受策略保护的资源的条件。 有关使用条款的详细信息，请参阅 [Azure Active Directory 使用条款](terms-of-use.md)。
+如果你的组织已创建使用条款，则授权控制下可能会显示其他选项。 管理员可以通过这些选项要求用户确认使用条款，作为访问受策略保护的资源的条件。 若要详细了解使用条款，可查看 [Azure Active Directory 使用条款](terms-of-use.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

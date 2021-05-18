@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 89efc1d4f34b250d211f9fd7492588bd2896eb6e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95016847"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-gen2"></a>Azure 时序见解第 2 代中的数据建模
@@ -24,7 +24,7 @@ ms.locfileid: "95016847"
 > [!TIP]
 >
 > * 阅读有关[时序模型](concepts-model-overview.md)的详细内容。
-> * 详细了解如何导航 [Azure 时序见解 Gen2 资源管理器](./concepts-ux-panels.md)。
+> * 详细了解如何在 [Azure 时序见解 Gen2 资源管理器](./concepts-ux-panels.md)中导航。
 
 ## <a name="instances"></a>Instances
 
@@ -171,6 +171,6 @@ Azure 时序见解资源管理器在浏览器中支持类型“创建”、“�
 
 * 有关时序模型的详细信息，请阅读[数据建模](./concepts-model-overview.md)。
 
-* 若要了解有关 Gen2 的详细信息，请参阅 [Azure 时序见解 Gen2 资源管理器中的可视化数据](./concepts-ux-panels.md)。
+* 若要详细了解 Gen2，请阅读[在 Azure 时序见解 Gen2 资源管理器中可视化数据](./concepts-ux-panels.md)。
 
 * 若要了解支持的 JSON 形状，请阅读[支持的 JSON 形状](./time-series-insights-send-events.md#supported-json-shapes)。

@@ -4,7 +4,7 @@ description: 本文讨论在 Web 应用项目的实现和验证阶段要考虑�
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
-ms.date: 06/12/2019
+ms.date: 03/21/2021
 ms.topic: article
 ms.service: security
 ms.subservice: security-develop
@@ -13,14 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8edceb31a0cdde36c987076e91350116a4f81255
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102548438"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104782395"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
+
 本文介绍开发云应用程序时要考虑的安全活动和控制措施， 并涵盖 Microsoft [安全开发生命周期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的实现和验证阶段要考虑的安全问题和概念。 目标在于帮助定义可用于开发更安全的应用程序的活动和 Azure 服务。
 
 本文介绍以下 SDL 阶段：
@@ -29,6 +30,7 @@ ms.locfileid: "102548438"
 - 验证
 
 ## <a name="implementation"></a>实现
+
 实现阶段的重点在于确立早期预防最佳做法，以及从代码中检测和消除安全问题。
 假设你的应用程序将以预期外的方式使用。 这有助于防止意外或故意滥用你的应用程序。
 
@@ -89,7 +91,7 @@ Server、X-Powered-By 和 X-AspNet-Version 等标头会透露有关服务器和�
 
 若要防范暴力破解和基于字典的猜测，必须实现强密码策略，以确保用户创建复杂密码（例如，最小长度为 12 个字符且需要包含字母数字字符和特殊字符）。
 
-可以使用标识框架来创建和强制实施密码策略。 Azure AD B2C 通过提供[内置策略](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow)、[自助式密码重置](../../active-directory-b2c/user-flow-self-service-password-reset.md)等来帮助进行密码管理。
+Azure Active Directory B2C 通过提供[自助式密码重置](../../active-directory-b2c/add-password-reset-policy.md)、[强制密码重置](../../active-directory-b2c/force-password-reset.md)等功能，帮助你进行密码管理。
 
 若要防范针对默认帐户的攻击，请验证所有密钥和密码是否可替换，以及它们是否是在安装资源后生成或被替换。
 
@@ -108,6 +110,7 @@ Server、X-Powered-By 和 X-AspNet-Version 等标头会透露有关服务器和�
 不要在浏览器中缓存敏感内容。 浏览器可能出于缓存和历史记录的目的存储信息。 缓存的文件存储在某个文件夹中，例如，如果使用 Internet Explorer，该文件夹为“临时 Internet 文件”。 再次浏览这些页面时，浏览器会从缓存显示这些页面。 如果向用户显示了敏感信息（地址、信用卡详细信息、身份证号或用户名），这些信息可能会存储在浏览器的缓存中，并可通过查看浏览器的缓存或直接按下浏览器的“后退”按钮检索到。
 
 ## <a name="verification"></a>验证
+
 验证阶段涉及确保代码符合在之前阶段中建立的安全和隐私原则的全面工作。
 
 ### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>查找并修复应用程序依赖项中的漏洞
@@ -151,6 +154,7 @@ DAST 与静态应用程序安全测试 (SAST) 不同。 SAST 工具在代码未�
 [Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/index.html) (AzSK) 包含用于多个 Azure 平台服务的 SVT。 定期运行这些 SVT，以确保 Azure 订阅和组成应用程序的不同资源处于安全状态。 还可以使用 AzSK 的持续集成/持续部署( CI/CD) 扩展功能自动执行这些测试，该功能使 SVT 可以作为 Visual Studio 扩展使用。
 
 ## <a name="next-steps"></a>后续步骤
+
 在以下文章中，我们就可以帮助设计和部署安全应用程序的安全控件和活动提供建议。
 
 - [设计安全的应用程序](secure-design.md)

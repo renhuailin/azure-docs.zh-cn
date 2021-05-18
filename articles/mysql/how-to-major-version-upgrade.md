@@ -7,16 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
 ms.openlocfilehash: 13cf315291cdf788951e352e430976851b30ce0c
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102216711"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 单一服务器中的主版本升级
 
 > [!NOTE]
-> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 从软件中删除该字词后，我们会将其从本文中删除。
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 从软件中删除该术语后，我们会将其从本文中删除。
 >
 
 > [!IMPORTANT]
@@ -27,8 +27,8 @@ ms.locfileid: "102216711"
 利用此功能，客户可以轻松地将 MySQL 5.6 服务器就地升级到 MySQL 5.7，无需移动任何数据，也无需更改应用程序连接字符串。
 
 > [!Note]
-> * 主版本升级仅适用于从 MySQL 5.6 到 MySQL 5.7 的主要版本升级。
-> * 在整个升级操作过程中，服务器将不可用。 因此，建议在计划内维护时段执行升级。 可以考虑 [使用 "读取副本" 执行从 mysql 5.6 到 mysql 5.7 的最短停机时间升级。](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)
+> * 主版本升级仅适用于从 MySQL 5.6 到 MySQL 5.7 的升级。
+> * 在整个升级操作过程中，服务器将不可用。 因此，建议在计划内维护时段执行升级。 可以考虑[使用只读副本执行从 MySQL 5.6 到 MySQL 5.7 的停机时间最短的主版本升级。](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)
 
 ## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57-using-azure-portal"></a>使用 Azure 门户执行从 MySQL 5.6 到 MySQL 5.7 的主版本升级
 
@@ -55,7 +55,7 @@ ms.locfileid: "102216711"
 > [!IMPORTANT]
 > 建议首先在还原后的服务器副本上执行升级，而不是直接升级生产服务器。 请参阅[如何执行时间点还原](howto-restore-server-cli.md#server-point-in-time-restore)。
 
-1. 安装 [适用于 Windows 的 Azure CLI](/cli/azure/install-azure-cli) ，或使用 [Azure Cloud Shell](../cloud-shell/overview.md) 中 Azure CLI 运行升级命令。 
+1. 安装[适用于 Windows 的 Azure CLI](/cli/azure/install-azure-cli)，或在 [Azure Cloud Shell](../cloud-shell/overview.md) 中使用 Azure CLI 运行升级命令。 
  
    此升级需要 2.16.0 或更高版本的 Azure CLI。 如果使用 Azure Cloud Shell，则最新版本已安装。 运行 az version 以查找安装的版本和依赖库。 若要升级到最新版本，请运行 az upgrade。
 
@@ -67,35 +67,35 @@ ms.locfileid: "102216711"
    
    命令提示符会显示“-Running”消息。 此消息不再显示即表示版本升级完成。
 
-## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal"></a>使用 Azure 门户在读取副本上执行从 MySQL 5.6 到 MySQL 5.7 的主要版本升级
+## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal"></a>使用 Azure 门户在只读副本上执行从 MySQL 5.6 到 MySQL 5.7 的主版本升级
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择现有 Azure Database for MySQL 5.6 读取副本服务器。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的现有 Azure Database for MySQL 5.6 只读副本服务器。
 
 2. 从“概述”页上，单击工具栏中的“升级”按钮。
 
-3. 在 " **升级** " 部分，选择 **"确定"** 以将 Azure database for MySQL 5.6 "读取副本服务器" 升级到5.7 服务器。
+3. 在“升级”部分，选择“确定”以将 Azure database for MySQL 5.6 只读副本服务器升级为 5.7 服务器。
 
    :::image type="content" source="./media/how-to-major-version-upgrade-portal/upgrade.png" alt-text="Azure Database for MySQL - 概述 - 升级":::
 
 4. 一条通知会确认升级是否成功。
 
-5. 在 " **概述** " 页上，确认 Azure Database for MySQL 读取副本服务器版本为5.7。
+5. 在“概述”页上，确认 Azure Database for MySQL 只读副本服务器版本为 5.7。
 
-6. 现在，请前往你的主服务器，并对其 [执行主要版本升级](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-using-azure-portal) 。
+6. 现在请前往主服务器，并在该服务器上[执行主版本升级](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-using-azure-portal)。
 
-## <a name="perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas"></a>使用读取副本完成从 MySQL 5.6 到 MySQL 5.7 的最小停机时间主要版本升级
+## <a name="perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas"></a>使用只读副本执行从 MySQL 5.6 到 MySQL 5.7 停机时间最短的主版本升级
 
-可以通过使用读取副本，执行从 MySQL 5.6 到 MySQL 5.7 的最短停机时间主版本升级。 这种做法是先将服务器的读取副本升级到5.7，然后再将应用程序故障转移到 "读取副本"，并使其成为新的主副本。
+利用只读副本，可以执行从 MySQL 5.6 到 MySQL 5.7 停机时间最短的主版本升级。 其原理是先将服务器的只读副本升级到 5.7，然后对应用程序进行故障转移以指向只读副本并使其成为新的主服务器。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择现有 Azure Database for MySQL 5.6。
 
-2. 从主服务器创建 [读取副本](./concepts-read-replicas.md#create-a-replica) 。
+2. 从主服务器创建[只读副本](./concepts-read-replicas.md#create-a-replica)。
 
-3. 将[读取副本升级](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal)到版本5.7。
+3. [将只读副本升级](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal)到版本 5.7。
 
-4. 确认副本服务器在版本5.7 上运行后，阻止应用程序连接到主服务器。
+4. 确认副本服务器的运行版本为 5.7 后，断开应用程序和主服务器之间的连接。
  
-5. 检查复制状态，确保副本与主要副本全部同步，以便所有数据都处于同步状态，并确保在主副本中没有执行任何新操作。
+5. 检查复制状态，确保副本服务器与主服务器完全同步，从而让所有数据都处于同步状态，并确保主服务器中没有执行任何新的操作。
 
    在副本服务器上调用 [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) 命令查看复制状态。
 
@@ -103,14 +103,14 @@ ms.locfileid: "102216711"
    SHOW SLAVE STATUS\G
    ```
 
-   如果 `Slave_IO_Running` 和 `Slave_SQL_Running` 状态为“yes”，并且 `Seconds_Behind_Master` 的值为“0”，则表示复制正常运行。 `Seconds_Behind_Master` 指示副本的陈旧状态。 如果其值不为“0”，则表示副本正在处理更新。 确认 `Seconds_Behind_Master` "0" 后，可以安全地停止复制。
+   如果 `Slave_IO_Running` 和 `Slave_SQL_Running` 状态为“yes”，并且 `Seconds_Behind_Master` 的值为“0”，则表示复制正常运行。 `Seconds_Behind_Master` 指示副本的陈旧状态。 如果其值不为“0”，则表示副本正在处理更新。 确认 `Seconds_Behind_Master` 为“0”后即可放心地停止复制。
 
-6. 通过 [停止复制](./howto-read-replicas-portal.md#stop-replication-to-a-replica-server)将读取副本提升为主副本。
+6. 通过[停止复制](./howto-read-replicas-portal.md#stop-replication-to-a-replica-server)，可将只读副本提升为主服务器。
 
-7. 将您的应用程序指向运行服务器5.7 的新主 (以前的副本) 。 每个服务器都有唯一的连接字符串。 更新应用程序，使之指向（以前的）副本而不是源。
+7. 将应用程序指向运行服务器 5.7 的新的主服务器（也就是之前的副本服务器）。 每个服务器都有唯一的连接字符串。 更新应用程序，使之指向（以前的）副本而不是源。
 
 > [!Note]
-> 此方案在步骤4、5和6中将仅出现停机时间。
+> 此方案仅在步骤 4、5 和 6 中出现停机。
 
 
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -121,7 +121,7 @@ ms.locfileid: "102216711"
 
 ### <a name="will-this-cause-downtime-of-the-server-and-if-so-how-long"></a>这是否会导致服务器停机？如果会，会停机多长时间？
 
-是的，服务器在升级过程中将不可用。因此，我们建议你在计划内维护时段执行此操作。 估计的停机时间取决于数据库大小、预配的存储大小（预配的 IOPS）以及数据库中的表的数量。 升级时间与服务器中表的数量成正比。基本 SKU 服务器的升级预计需要更长时间，因为它在标准存储平台上。 为了估计服务器环境的停机时间，建议你首先在还原后的服务器副本上执行升级。 请考虑 [使用 "读取副本" 执行从 mysql 5.6 到 mysql 5.7 的最小停机主要版本升级。](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)
+是的，服务器在升级过程中将不可用。因此，我们建议你在计划内维护时段执行此操作。 估计的停机时间取决于数据库大小、预配的存储大小（预配的 IOPS）以及数据库中的表的数量。 升级时间与服务器中表的数量成正比。基本 SKU 服务器的升级预计需要更长时间，因为它在标准存储平台上。 为了估计服务器环境的停机时间，建议你首先在还原后的服务器副本上执行升级。 请考虑[使用只读副本执行从 MySQL 5.6 到 MySQL 5.7 停机时间最短的主版本升级。](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)
 
 ### <a name="what-will-happen-if-we-do-not-choose-to-upgrade-our-mysql-v56-server-before-february-5-2021"></a>如果未选择在 2021 年 2 月 5 日之前升级 MySQL 5.6 服务器，会发生什么情况？
 

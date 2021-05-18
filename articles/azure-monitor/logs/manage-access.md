@@ -5,13 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 82e34bff573b746f7d9c4185fe6c24fa92de0394
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 79bcca688146b2c2382876b6a61bc0eee34382a1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321044"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102040951"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 
@@ -120,7 +119,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 ## <a name="manage-access-using-azure-permissions"></a>使用 Azure 权限管理访问
 
-若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)中的步骤。 如需自定义角色的示例，请参阅 [自定义角色示例](#custom-role-examples)
+若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[分配 Azure 角色来管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)中的步骤。 如需自定义角色的示例，请参阅 [自定义角色示例](#custom-role-examples)
 
 Azure 有两个适用于 Log Analytics 工作区的内置用户角色：
 

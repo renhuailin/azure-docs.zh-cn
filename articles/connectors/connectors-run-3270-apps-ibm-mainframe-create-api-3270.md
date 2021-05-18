@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/03/2021
 tags: connectors
 ms.openlocfilehash: 7873076618125241d9bdf4f225c194572553d060
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99573426"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>使用 Azure 逻辑应用和 IBM 3270 连接器将 IBM 大型机上的 3270 屏幕驱动的应用集成到 Azure
@@ -353,11 +353,11 @@ ms.locfileid: "99573426"
 
 1. 如果连接尚不存在，请提供连接所需的信息，然后选择“创建”。
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | <*connection-name*> | 连接名称 |
    | **集成帐户 ID** | 是 | <integration-account-name>  | 集成帐户的名称 |
-   | **集成帐户 SAS URL** | 是 | <“integration-account-SAS-URL”> | 集成帐户的共享访问签名 (SAS) URL，可以在 Azure 门户中基于集成帐户的设置生成此 URL。 <p>1.在集成帐户菜单上的“设置”下，选择“回叫 URL”。 <br>2.在右侧窗格中，复制“生成的回叫 URL”值。 |
+   | **集成帐户 SAS URL** | 是 | <“integration-account-SAS-URL”> | 集成帐户的共享访问签名 (SAS) URL，可以在 Azure 门户中基于集成帐户的设置生成此 URL。 <p>1. 在集成帐户菜单上的“设置”下，选择“回叫 URL” 。 <br>2. 在右侧窗格中，复制“生成的回叫 URL”值。 |
    | **服务器** | 是 | <“TN3270-server-name”> | TN3270 服务的服务器名称 |
    | 端口 | 否 | <“TN3270-server-port”> | TN3270 服务器使用的端口。 如果留空，则连接器将使用 `23` 作为默认值。 |
    | **设备类型** | 否 | <“IBM-terminal-model”> | 要仿真的 IBM 终端的机型名称或型号。 如果留空，则连接器将使用默认值。 |
@@ -373,7 +373,7 @@ ms.locfileid: "99573426"
 
 1. 提供操作的所需信息：
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **Hidx 名称** | 是 | <“HIDX-file-name”> | 选择要使用的 3270 HIDX 文件。 |
    | “方法名称” | 是 | <“method-name”> | 选择要使用的 HIDX 文件中的方法。 选择方法后，“添加新参数”列表将会显示，可以从中选择要对该方法使用的参数。 |

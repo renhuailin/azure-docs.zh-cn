@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
 ms.openlocfilehash: b7c067ca82ea7fbe7eb9c0f3d50b7fe75dfb47df
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100377357"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>启用和请求对 Azure 托管应用程序的实时访问权限
 
-你的托管应用程序的使用者可能不愿意向你授予对托管资源组的永久访问权限。 作为托管应用程序的发布者，你可能更倾向于使用者完全知道何时需要访问托管资源。 为了让使用者在授予对托管资源的访问权限时能够更好地进行控制，Azure 托管应用程序提供了一种称为实时 (JIT) 访问的功能。 此功能目前处于预览状态。
+你的托管应用程序的使用者可能不愿意向你授予对托管资源组的永久访问权限。 作为托管应用程序的发布者，你可能更希望使用者准确了解你何时需要访问受管理资源。 为了让使用者在授予对托管资源的访问权限时能够更好地进行控制，Azure 托管应用程序提供了一种称为实时 (JIT) 访问的功能。 此功能目前处于预览状态。
 
 通过 JIT 访问可以对托管应用程序的资源请求提升的访问权限，以便进行故障排除或维护。 你始终对资源拥有只读访问权限，但在特定时间段内，可以获得更高访问权限。
 
@@ -70,9 +70,9 @@ ms.locfileid: "100377357"
 
 在合作伙伴中心创建产品/服务时，请确保启用 JIT 访问。
 
-1. 登录到 [合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)的 "商用 Marketplace 门户"。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)的商业市场门户。
 
-1. 有关创建新的托管应用程序的指南，请遵循 [创建 Azure 应用程序服务](../../marketplace/create-new-azure-apps-offer.md)中的步骤。
+1. 有关新建托管应用程序的指南，请按照[创建 Azure 应用程序产品/服务](../../marketplace/create-new-azure-apps-offer.md)中的步骤操作。
 
 1. 在“技术配置”页上，选中“启用实时(JIT)访问”复选框。
 
@@ -86,13 +86,13 @@ ms.locfileid: "100377357"
 
 若要发送 JIT 访问请求，请执行以下操作：
 
-1. 针对你需要访问的托管应用程序选择“JIT 访问”  。
+1. 针对你需要访问的托管应用程序选择“JIT 访问”。
 
-1. 选择“符合条件的角色”  ，然后针对你需要的角色在“操作”列中选择“激活”  。
+1. 选择“符合条件的角色”，然后针对你需要的角色在“操作”列中选择“激活”。
 
    ![激活访问请求](./media/request-just-in-time-access/send-request.png)
 
-1. 在“激活角色”  窗体上，选择要激活的角色的开始时间和持续时间。 选择“激活”  以发送请求。
+1. 在“激活角色”窗体上，选择要激活的角色的开始时间和持续时间。 选择“激活”以发送请求。
 
    ![激活访问权限](./media/request-just-in-time-access/activate-access.png) 
 
@@ -102,7 +102,7 @@ ms.locfileid: "100377357"
 
    现在，你必须等待使用者[批准你的请求](approve-just-in-time-access.md#approve-requests)。
 
-1. 若要查看对托管应用程序的所有 JIT 请求的状态，请依次选择“JIT 访问”  和“请求历史记录”  。
+1. 若要查看对托管应用程序的所有 JIT 请求的状态，请依次选择“JIT 访问”和“请求历史记录”。
 
    ![查看状态](./media/request-just-in-time-access/view-status.png)
 

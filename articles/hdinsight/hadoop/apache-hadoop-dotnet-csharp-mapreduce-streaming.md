@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 6e2758fd650547978924c25f8f3faf1e3e7194f6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 8093db9c53d9c34014d1b315d53539b3f2cffb30
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699379"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866703"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
@@ -20,7 +20,7 @@ Apache Hadoop 流式处理使你能够使用脚本或可执行文件运行 MapRe
 
 ## <a name="net-on-hdinsight"></a>HDInsight 上的 .NET
 
-HDInsight 群集使用 [Mono (https://mono-project.com)](https://mono-project.com) 运行 .NET 应用程序。 HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关 HDInsight 随附的 Mono 版本的详细信息，请参阅 [hdinsight 版本中可用的 Apache Hadoop 组件](../hdinsight-component-versioning.md)。
+HDInsight 群集使用 [Mono (https://mono-project.com)](https://mono-project.com) 运行 .NET 应用程序。 HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关 HDInsight 随附的 Mono 版本的详细信息，请参阅 [HDInsight 版本随附的 Apache Hadoop 组件](../hdinsight-component-versioning.md)。
 
 有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)。
 
@@ -28,9 +28,9 @@ HDInsight 群集使用 [Mono (https://mono-project.com)](https://mono-project.co
 
 在本文档中用于流式处理的基本流程如下所示：
 
-1. Hadoop 将数据传递到映射器 (此示例中的 *mapper.exe*) STDIN。
+1. Hadoop 在 STDIN 上将数据传递到映射器（在本示例中为 mapper.exe）。
 2. 映射器处理数据，并向 STDOUT 发出制表符分隔的键/值对。
-3. 输出由 Hadoop 读取，然后传递到化简器 (*reducer.exe* 在此示例中) STDIN。
+3. 该输出由 Hadoop 读取，随后将传递到 STDIN 上的化简器（在本示例中为 reducer.exe）。
 4. 化简器将读取制表符分隔的键/值对、处理数据，并将结果作为制表符分隔的键/值对在 STDOUT 上发出。
 5. 该输出由 Hadoop 读取，并写入输出目录。
 
@@ -148,9 +148,9 @@ namespace reducer
 
 1. 右键单击“Azure”并选择“连接到 Microsoft Azure 订阅...”，然后完成登录过程。  
 
-1. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”的条目。
+1. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”  的条目。
 
-   ![存储帐户，HDInsight 群集，服务器资源管理器，Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
+   :::image type="content" source="./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png" alt-text="存储帐户，HDInsight 群集，服务器资源管理器，Visual Studio" border="true":::
 
    * 如果可以展开“(默认存储帐户)”项，则表示你正在使用 **Azure 存储帐户** 作为群集的默认存储。 若要查看群集的默认存储中的文件，请展开该项，然后双击“(默认容器)”。
 
@@ -158,9 +158,9 @@ namespace reducer
 
 1. 若要上传 .exe 文件，请使用以下方法之一：
 
-    * 如果使用的是 **Azure 存储帐户**，请选择“上传 Blob”图标。
+    * 如果使用的是 **Azure 存储帐户**，请选择“上传 Blob”图标。 
 
-        ![mapper 的 HDInsight 上传图标，Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
+        :::image type="content" source="./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png" alt-text="mapper 的 HDInsight 上传图标，Visual Studio" border="true":::
 
         在“上传新文件”对话框中的“文件名”下，选择“浏览”。   在“上传 Blob”对话框中，转到“mapper”项目的“bin\debug”文件夹，然后选择“mapper.exe”文件。   最后，依次选择“打开”、“确定”完成上传。 
 
@@ -191,7 +191,7 @@ namespace reducer
             -output /example/wordcountout
         ```
 
-    * 如果默认存储为 **Data Lake Storage Gen1**：
+    * 如果默认存储为 Data Lake Storage Gen1：
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -250,7 +250,7 @@ namespace reducer
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
 
-此脚本会提示用户提供群集登录的帐户名和密码，以及 HDInsight 群集名称。 作业完成后，输出将下载到名为 *output.txt* 的文件。 以下文本是 `output.txt` 文件中数据的示例：
+此脚本会提示用户提供群集登录的帐户名和密码，以及 HDInsight 群集名称。 作业完成后，输出会下载到名为 output.txt 的文件中。 以下文本是 `output.txt` 文件中数据的示例：
 
 ```output
 you     1128

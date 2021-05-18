@@ -10,54 +10,54 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 28e7066c166a4c61c2f6436e9bd126f712f89f78
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 6edaed1011b867cac9920a19be6bb5fb7157e16f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670065"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104721229"
 ---
 # <a name="hbv2-series-virtual-machine-sizes"></a>HBv2 系列虚拟机大小
 
-已对 [HBv2 系列的](../../hbv2-series.md) vm 运行多个性能测试。 下面是此性能测试的部分结果。
+已对 [HBv2 系列](../../hbv2-series.md)大小的 VM 运行多个性能测试。 下面是此性能测试的部分结果。
 
 
 | 工作负荷                                        | HBv2                                                              |
 |-------------------------------------------------|-------------------------------------------------------------------|
-| STREAM Triad                                    | 每 CCX 350 GB/秒 (21-23 GB/秒)                                      |
-| High-Performance Linpack (HPL.DAT)                   | 4兆次 (Rpeak，FP64) ，8兆次 (Rmax，FP32)                |
-| RDMA 延迟 & 带宽                        | 1.2 微秒，190 Gb/秒                                        |
-| 本地 NVMe SSD 上的 FIO                           | 2.7 GB/s 读取，1.1 GB/秒写入;102k IOPS 读取，115 IOPS 写入 |
-| IOR on 8 * Azure 高级 SSD (P40 托管磁盘，RAID0) * *  | 1.3 GB/s 读取，2.5 GB/写入;101k IOPS 读取，105k IOPS 写入 |
+| STREAM Triad                                    | 350 GB/秒（每个 CCX 21-23 GB/秒）                                     |
+| 高性能 Linpack (HPL)                  | 4 兆次（Rpeak，FP64），8 兆次（Rmax，FP32）               |
+| RDMA 延迟和带宽                        | 1.2 微秒，190 Gb/秒                                        |
+| 本地 NVMe SSD 上的 FIO                           | 2.7 GB/秒的读取速度，1.1 GB/秒的写入速度； 102k 的 IOPS 读取速度，115 的 IOPS 写入速度 |
+| 8 个 Azure 高级 SSD 上的 IOR（P40 托管磁盘，RAID0）**  | 1.3 GB/秒的读取速度，2.5 GB/秒的写入速度；101k 的 IOPS 读取速度，105k 的 IOPS 写入速度 |
 
 
 ## <a name="mpi-latency"></a>MPI 延迟
 
-运行 OSU microbenchmark suite 的 MPI 延迟测试。 示例脚本位于 [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)上。
+运行 OSU 微基准测试程序套件中的 MPI 延迟测试。 示例脚本位于 [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh) 上。
 
 
 ```bash 
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency
 ``` 
  
-:::image type="content" source="./media/latency-hbv2.png" alt-text="Azure HB-ACCT-WC 上的 MPI 延迟。":::
+:::image type="content" source="./media/latency-hbv2.png" alt-text="Azure HB 上的 MPI 延迟。":::
 
 
 ## <a name="mpi-bandwidth"></a>MPI 带宽
 
-运行 OSU microbenchmark suite 的 MPI 带宽测试。 示例脚本位于 [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh)上。
+运行 OSU 微基准测试程序套件中的 MPI 带宽测试。 示例脚本位于 [GitHub](https://github.com/Azure/azhpc-images/blob/04ddb645314a6b2b02e9edb1ea52f079241f1297/tests/run-tests.sh) 上。
 
 
 ```bash
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ``` 
 
-:::image type="content" source="./media/bandwidth-hbv2.png" alt-text="Azure HB-ACCT-WC 上的 MPI 带宽。":::
+:::image type="content" source="./media/bandwidth-hbv2.png" alt-text="Azure HB 上的 MPI 带宽。":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest
 
-[Mellanox Perftest 包](https://community.mellanox.com/s/article/perftest-package)具有许多不受影响的测试，如延迟 (ib_send_lat) 和带宽 (ib_send_bw) 。 下面是一个示例命令。 
+[Mellanox Perftest 包](https://community.mellanox.com/s/article/perftest-package)具有许多 InfiniBand 测试，如延迟 (ib_send_lat) 和带宽 (ib_send_bw)。 下面是一个示例命令。 
 
 
 ```console
@@ -67,5 +67,5 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读有关最新的公告和一些高性能计算 (HPC) 示例和 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)中的结果。
-- 有关运行 HPC 工作负荷的更高级结构视图，请参阅 [Azure 上的高性能计算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
+- 若要从体系结构角度更概略性地看待如何运行 HPC 工作负载，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

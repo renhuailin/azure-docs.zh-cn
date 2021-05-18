@@ -1,6 +1,6 @@
 ---
-title: 教程：为 GroupTalk 配置自动用户预配 Azure Active Directory |Microsoft Docs
-description: 了解如何自动将用户 Azure AD 帐户预配到 GroupTalk 以及取消其预配。
+title: 教程：使用 Azure Active Directory 为 GroupTalk 配置自动用户预配 | Microsoft Docs
+description: 了解如何将用户帐户从 Azure AD 自动预配到 GroupTalk 及如何取消预配。
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,21 +16,21 @@ ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0af41127577c172cdab74ae908f0645733d49a42
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735752"
 ---
 # <a name="tutorial-configure-grouptalk-for-automatic-user-provisioning"></a>教程：为 GroupTalk 配置自动用户预配
 
-本教程介绍了需要在 GroupTalk 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到 [GroupTalk](https://www.grouptalk.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
+本教程介绍了在 GroupTalk 和 Azure Active Directory (Azure AD) 中配置自动用户预配所需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [GroupTalk](https://www.grouptalk.com/) 以及将其取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
 > * 在 GroupTalk 中创建用户
-> * 当用户不再需要访问权限时，删除 GroupTalk 中的用户
+> * 当用户不再需要访问权限时，在 GroupTalk 中删除用户
 > * 使用户属性在 Azure AD 和 GroupTalk 之间保持同步
 > * 在 GroupTalk 中预配组和组成员身份
 
@@ -40,39 +40,39 @@ ms.locfileid: "98735752"
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
 * Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
-* GroupTalk 中具有管理员权限的用户帐户。
+* 在 GroupTalk 中具有管理员权限的用户帐户。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
-3. 确定要 [在 Azure AD 与 GroupTalk 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
+3. 确定要[在 Azure AD 与 GroupTalk 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-grouptalk-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 GroupTalk 以支持 Azure AD 的预配
+## <a name="step-2-configure-grouptalk-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 GroupTalk 以支持通过 Azure AD 进行预配
 
-1. 联系 GroupTalk 支持， support@grouptalk.com 其中包含要与 Azure AD 集成的 **租户名称** 和 **ID** 。
-2. 当你收到 Azure AD 集成所需的设置已准备就绪时，请登录 GroupTalk 管理员并导航到你的组织视图。 
-3. Azure AD 集成配置项目应可见。 单击它以验证 **租户名称** 和 **ID**  以获取 **JWT (机密令牌)**。 
-4. GroupTalk 租户 URL 是 `https://api.grouptalk.com/api/scim/` 。 在上一步中检索到的 **租户 URL** 和 **机密令牌** 将在 Azure 门户的 GroupTalk 应用程序的 "预配" 选项卡中输入。 
+1. 发送电子邮件至 support@grouptalk.com 以联系 GroupTalk 支持部门，并提供要与 Azure AD 集成的 **租户名称** 和 **ID**。
+2. 当收到 Azure AD 集成所需的设置已准备就绪的通知时，登录到 GroupTalk 管理员并导航到组织视图。 
+3. Azure AD 集成配置项目应可见。 单击此项目以验证“租户名称”和“ID”，从而获取“JWT (机密令牌)”。 
+4. GroupTalk 租户 URL 是 `https://api.grouptalk.com/api/scim/`。 将上一步中检索到的“租户 URL”和“机密令牌”输入到 Azure 门户中 GroupTalk 应用程序的“预配”选项卡中。 
 
-## <a name="step-3-add-grouptalk-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 GroupTalk
+## <a name="step-3-add-grouptalk-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 GroupTalk
 
-从 Azure AD 应用程序库中添加 **GroupTalk** ，开始管理预配到 GroupTalk。
+从 Azure AD 应用程序库添加 **GroupTalk**，开始管理到 GroupTalk 的预配。
 
-1. 单击 " **注册 GroupTalk** " 按钮，这会将你路由到 GroupTalk 管理应用程序。
-2. 如果你已登录到 GroupTalk，请注销以转到登录屏幕。 选择 "Azure AD" 选项卡，并单击 " **登录** " 按钮。
+1. 单击“注册 GroupTalk”按钮，这将路由到 GroupTalk 管理应用程序。
+2. 如果已登录到 GroupTalk，请注销以转到登录屏幕。 选择“Azure AD”选项卡，并单击“登录”按钮。
 
     ![GroupTalk](media/grouptalk-provisioning-tutorial/login.png)
 
-3. 使用你的 AD 管理帐户登录，并接受 GroupTalk 应用程序的访问权限。 此操作完成后，你将收到一条错误消息，指出该用户不存在。 这是预期的，因为用户尚未预配到 GroupTalk，但你现在已将 GroupTalk 添加到租户。
-4. 返回到 Azure 门户，并验证 **GroupTalk** 是否现已添加到企业应用程序。
+3. 使用 AD 管理帐户进行登录，并接受 GroupTalk 应用程序的访问权限。 此操作完成后，将收到一条错误消息，指出该用户不存在。 这是预期内情况，因为该用户尚未预配到 GroupTalk，但现在已将 GroupTalk 添加到租户。
+4. 返回到 Azure 门户，验证 **GroupTalk** 现在是否已添加到企业应用程序。
 
-可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。 
+若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
-使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
+使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
-* 将用户和组分配到 GroupTalk 时，必须选择 " **默认" 访问权限** 以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
+* 将用户和组分配到 GroupTalk 时，必须选择除“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
@@ -81,17 +81,17 @@ ms.locfileid: "98735752"
 
 本部分介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
 
-### <a name="to-configure-automatic-user-provisioning-for-grouptalk-in-azure-ad"></a>若要在 Azure AD 中配置 GroupTalk 的自动用户预配：
+### <a name="to-configure-automatic-user-provisioning-for-grouptalk-in-azure-ad"></a>若要在 Azure AD 中为 GroupTalk 配置自动用户预配，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择 " **GroupTalk**"。
+2. 在应用程序列表中，选择“GroupTalk”。
 
     ![应用程序列表中的 GroupTalk 链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+3. 选择“预配”  选项卡。
 
     ![“预配”选项卡](common/provisioning.png)
 
@@ -99,9 +99,9 @@ ms.locfileid: "98735752"
 
     ![“预配”选项卡“自动”](common/provisioning-automatic.png)
 
-5. 在 " **管理员凭据** " 部分下，输入你在步骤2之前检索到的 GROUPTALK 租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 GroupTalk。 如果连接失败，请确保 GroupTalk 帐户具有管理员权限，然后重试。 你始终可以获取新的机密令牌，如步骤2中所述。
+5. 在“管理员凭据”部分下，输入之前在步骤 2 中检索到的 GroupTalk“租户 URL”和“机密令牌”。 单击“测试连接”，以确保 Azure AD 可以连接到 GroupTalk。 如果连接失败，请确保 GroupTalk 帐户具有管理员权限，然后重试。 始终可以获取新的机密令牌，如步骤 2 中所述。
 
-    ![令牌](common/provisioning-testconnection-tenanturltoken.png)
+    ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
@@ -109,9 +109,9 @@ ms.locfileid: "98735752"
 
 7. 选择“保存”。
 
-8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 GroupTalk**"。
+8. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 GroupTalk”。
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 GroupTalk 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 GroupTalk 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](../app-provisioning/customize-application-attributes.md)，将需要确保 GroupTalk API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改  。
+9. 在“属性映射”部分中，查看从 Azure AD 同步到 GroupTalk 的用户属性。 选为“匹配”属性的特性用于匹配 GroupTalk 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](../app-provisioning/customize-application-attributes.md)，则需要确保 GroupTalk API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|支持筛选|
    |---|---|---|
@@ -124,31 +124,31 @@ ms.locfileid: "98735752"
    |externalId|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|字符串|
-   |urn： ietf： params： scim：架构：扩展： grouptalk：2.0： User： label1|字符串|
-   |urn： ietf： params： scim：架构：扩展： grouptalk：2.0： User： label2|字符串|
-   |urn： ietf： params： scim：架构：扩展： grouptalk：2.0： User：标签3|字符串|
-   |urn： ietf： params： scim：架构：扩展： grouptalk：2.0： User： label4|字符串|
-   |urn： ietf： params： scim：架构：扩展： grouptalk：2.0： User： label5|字符串|
+   |urn:ietf:params:scim:schemas:extension:grouptalk:2.0:User:label1|String|
+   |urn:ietf:params:scim:schemas:extension:grouptalk:2.0:User:label2|String|
+   |urn:ietf:params:scim:schemas:extension:grouptalk:2.0:User:label3|String|
+   |urn:ietf:params:scim:schemas:extension:grouptalk:2.0:User:label4|String|
+   |urn:ietf:params:scim:schemas:extension:grouptalk:2.0:User:label5|String|
 
 
-10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 GroupTalk**"。
+10. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 GroupTalk”。
 
-11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 GroupTalk 的组属性。 选为 " **匹配** " 属性的特性用于匹配 GroupTalk 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
+11. 在“属性映射”部分中，查看从 Azure AD 同步到 GroupTalk 的组属性。 选为“匹配”属性的特性用于匹配 GroupTalk 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|支持筛选|
       |---|---|---|
       |displayName|字符串|&check;|
       |members|参考|
-      |externalId|字符串|      
-      |urn： ietf： params： scim：架构：扩展： grouptalk：2.0：组：说明|字符串|
+      |externalId|String|      
+      |urn:ietf:params:scim:schemas:extension:grouptalk:2.0:Group:description|字符串|
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-13. 若要为 GroupTalk 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
+13. 若要为 GroupTalk 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”  。
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-14. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 GroupTalk 的用户和/或组。
+14. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 GroupTalk 的用户和/或组 。
 
     ![预配范围](common/provisioning-scope.png)
 
@@ -163,8 +163,8 @@ ms.locfileid: "98735752"
 
 1. 通过[预配日志](../reports-monitoring/concept-provisioning-logs.md)来确定哪些用户已预配成功或失败
 2. 检查[进度栏](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)来查看预配周期的状态以及完成进度
-3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](../app-provisioning/application-provisioning-quarantine-status.md)。
-4. 可以联系 GroupTalk 支持，以便在 GroupTalk 管理员内将其他预配日志设置为自定义报表。它们可能会提供有关用户和组未能正确预配的其他提示。
+3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](../app-provisioning/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。
+4. 请联系 GroupTalk 支持部门，获取额外的预配日志设置以作为 GroupTalk 管理中的自定义报告。这将有助于进一步探知用户和组未能正确预配的原因。
 
 ## <a name="additional-resources"></a>其他资源
 

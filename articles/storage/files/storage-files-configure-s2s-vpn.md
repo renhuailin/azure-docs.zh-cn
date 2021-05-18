@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0fa3fb8040fd79d68f9260ab520d3b6823ab363d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1a08ca4142876a5a92adbe8b1c3fce9ec7953019
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94629285"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778006"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>配置站点到站点 VPN 以与 Azure 文件存储一起使用
 你可以使用站点到站点 (S2S) VPN 连接从本地网络中通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 你可以使用 [Azure VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)设置站点到站点 VPN，该网关是提供 VPN 服务的 Azure 资源，与存储帐户或其他 Azure 资源一起部署在资源组中。
@@ -21,9 +21,9 @@ ms.locfileid: "94629285"
 
 我们强烈建议先阅读 [Azure 文件存储网络概述](storage-files-networking-overview.md)，然后再继续阅读本文章，以全面讨论 Azure 文件存储可用的网络选项。
 
-本文详细介绍了配置站点到站点 VPN 以直接在本地装载 Azure 文件共享的步骤。 如果想要通过站点到站点 VPN 路由 Azure 文件同步的同步流量，请参阅[配置 Azure 文件同步代理和防火墙设置](storage-sync-files-firewall-and-proxy.md)。
+本文详细介绍了配置站点到站点 VPN 以直接在本地装载 Azure 文件共享的步骤。 如果想要通过站点到站点 VPN 路由 Azure 文件同步的同步流量，请参阅[配置 Azure 文件同步代理和防火墙设置](../file-sync/file-sync-firewall-and-proxy.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - 要在本地装载的 Azure 文件共享。 Azure 文件共享部署在存储帐户中，是代表共享存储池的管理结构，可以在其中部署多个文件共享以及其他存储资源（例如 Blob 容器或队列）。 可以在[创建 Azure 文件共享](storage-how-to-create-file-share.md)中详细了解如何部署 Azure 文件共享和存储帐户。
 
 - 包含要在本地装载的 Azure 文件共享的存储帐户的专用终结点。 若要详细了解如何创建专用终结点，请参阅[配置 Azure 文件存储网络终结点](storage-files-networking-endpoints.md?tabs=azure-portal)。 

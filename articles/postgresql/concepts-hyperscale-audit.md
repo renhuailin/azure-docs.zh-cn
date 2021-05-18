@@ -4,14 +4,15 @@ description: Azure Database for PostgreSQL 超大规模 (Citus) 中的 pgAudit �
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 8a36062a2d29bcec10279d73211526a0dcba619e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 224f46f16f03f53009c3f7beb55d252c5ce5e1e7
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702107"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316148"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL 超大规模 (Citus) 中的审核日志记录
 

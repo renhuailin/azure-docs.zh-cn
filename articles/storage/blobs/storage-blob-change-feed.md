@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101095561"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 存储中的更改源支持
@@ -29,7 +29,7 @@ ms.locfileid: "101095561"
 
 下图显示了如何将记录添加到更改源：
 
-:::image type="content" source="media/storage-blob-change-feed/change-feed-diagram.png" alt-text="显示更改源如何为 blob 的更改提供有序日志的关系图":::
+:::image type="content" source="media/storage-blob-change-feed/change-feed-diagram.png" alt-text="图中显示更改源如何提供 Blob 更改的有序日志":::
 
 更改源支持非常适合基于已更改的对象处理数据的方案。 例如，应用程序可以执行以下操作：
 
@@ -43,7 +43,7 @@ ms.locfileid: "101095561"
 
   - 生成连接的应用程序管道，以便根据创建的或更改的对象来响应更改事件或计划执行。
   
-更改源是用于 [对象复制](object-replication-overview.md) 和 [块 Blob 的时间点还原](point-in-time-restore-overview.md)的先决条件功能。
+更改源是[对象复制](object-replication-overview.md)和[块 blob 的时间点还原](point-in-time-restore-overview.md)的先决条件功能。
 
 > [!NOTE]
 > 更改源提供一个持久且有序的日志模型来记录发生在 Blob 中的更改。 在发生更改后的几分钟内，这些更改就会写入并出现在更改源日志中。 如果应用程序必须以比这快得多的速度对事件做出反应，请考虑改用 [Blob 存储事件](storage-blob-event-overview.md)。 [Blob 存储事件](storage-blob-event-overview.md)提供实时的一次性事件，使 Azure Functions 或应用程序能够快速对 Blob 中发生的更改做出反应。 
@@ -159,7 +159,7 @@ ms.locfileid: "101095561"
 
 更改源是按小时段组织的更改日志，但系统每隔几分钟就会在其中追加和更新内容。 仅当在该小时内发生了 Blob 更改事件时，才会创建这些段。 因此，客户端应用程序可以使用在特定时间范围内发生的更改，不必搜索整个日志。 有关详细信息，请参阅[规范](#specifications)。
 
-更改源的可用小时段在清单文件中描述，该文件指定了该段的更改源文件的路径。 `$blobchangefeed/idx/segments/` 虚拟目录的列表按时间顺序显示这些段。 段的路径描述该段所代表的小时时间范围的开始时间。 你可以使用该列表来筛选出你感兴趣的日志段。
+更改源的可用小时段在清单文件中描述，该文件指定了该段的更改源文件的路径。 `$blobchangefeed/idx/segments/` 虚拟目录的列表按时间顺序显示这些段。 段的路径描述该段所代表的小时时间范围的开始时间。 可以使用该列表筛选出你感兴趣的日志段。
 
 ```text
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    

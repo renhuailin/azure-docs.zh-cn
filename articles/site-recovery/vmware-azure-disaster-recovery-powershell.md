@@ -8,10 +8,10 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86129901"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 使用 Set-ASRVaultContext cmdlet 设置保管库上下文。 设置后，PowerShell 会话中的后续 Azure Site Recovery 操作将在所选保管库的上下文中执行。
 
 > [!TIP]
-> Azure Site Recovery PowerShell 模块（Az.RecoveryServices 模块）附带了大多数 cmdlet 的易用别名。 模块中的 cmdlet 采用 \<Operation>-AzRecoveryServicesAsr\<Object> 形式，并具有采用 \<Operation>-ASR\<Object> 形式的等效别名** **。 可以替换 cmdlet 别名以便于使用。
+> Azure Site Recovery PowerShell 模块（Az.RecoveryServices 模块）附带了大多数 cmdlet 的易用别名。 模块中的 cmdlet 采用 \<Operation>-AzRecoveryServicesAsr\<Object> 形式，并具有采用 \<Operation>-ASR\<Object> 形式的等效别名 。 可以替换 cmdlet 别名以便于使用。
 
 在以下示例中，使用来自 $vault 变量的保管库详细信息指定 PowerShell 会话的保管库上下文。
 
@@ -172,7 +172,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    1     ConfigurationServer
    ```
 
-   在以上输出中，***$ProcessServers [0]*** 对应于 *ScaleOut ProcessServer****$ProcessServers [1]*** 对应于 *ConfigurationServer* 上的进程服务器角色
+   在以上输出中，$ProcessServers[0] 对应于 ScaleOut-ProcessServer，$ProcessServers[1] 对应于 ConfigurationServer 上的进程服务器角色
 
 3. 标识在配置服务器设置的帐户。
 
@@ -189,7 +189,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    3         LinuxAccount
    ```
 
-   在以上输出中，***$AccountHandles [0]*** 对应于帐户 *vCenter_account*，***$AccountHandles [1]*** 对应于帐户 *WindowsAccount*，***$AccountHandles [2]*** 对应于帐户 *LinuxAccount*
+   在以上输出中，$AccountHandles[0] 对应于帐户 vCenter_account，$AccountHandles[1] 对应于帐户 WindowsAccount，$AccountHandles[2] 对应于帐户 LinuxAccount 
 
 ## <a name="create-a-replication-policy"></a>创建复制策略
 
@@ -342,7 +342,7 @@ $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDR
 * 要复制的可保护项。
 * 要将虚拟机复制到的存储帐户（前提是复制到存储帐户）。 
 * 需要使用日志存储在高级存储帐户或托管磁盘中保护虚拟机。
-* 用于复制的进程服务器。 已检索到可用进程服务器的列表，并将其保存在 ***$ProcessServers [0]*** * (扩展-scaleout-processserver) *和 ***$ProcessServers [1]*** * (ConfigurationServer) *变量中。  
+* 用于复制的进程服务器。 已检索可用进程服务器的列表，并将其保存在 $ProcessServers[0] (ScaleOut-ProcessServer) 和 $ProcessServers[1] (ConfigurationServer) 变量中。
 * 用于将移动服务软件推送安装到计算机的帐户。 检索可用帐户的列表，并将其存储在 ***$AccountHandles*** 变量中。
 * 要用于复制的复制策略的保护容器映射。
 * 故障转移时必须在其中创建虚拟机的资源组。

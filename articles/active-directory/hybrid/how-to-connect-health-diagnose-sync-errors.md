@@ -16,10 +16,10 @@ ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fe6af43c9ca44095c328356e8171da10717875e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98728231"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>诊断并修正重复的属性同步错误
@@ -34,7 +34,7 @@ ms.locfileid: "98728231"
 
 ## <a name="problems"></a>问题
 ### <a name="a-common-scenario"></a>常见方案
-发生 QuarantinedAttributeValueMustBeUnique 和 AttributeValueMustBeUnique 同步错误时，Azure AD 中往往会出现 UserPrincipalName 或代理地址冲突的情况。 在本地端更新有冲突的源对象即可解决同步错误。 同步错误将在下一次同步后解决。例如，此图像表示有两个用户的 **UserPrincipalName** 发生冲突。 两者都是 **Joe. J \@ contoso.com**。 有冲突的对象将在 Azure AD 中隔离。
+发生 QuarantinedAttributeValueMustBeUnique 和 AttributeValueMustBeUnique 同步错误时，Azure AD 中往往会出现 UserPrincipalName 或代理地址冲突的情况。 在本地端更新有冲突的源对象即可解决同步错误。 下一次同步后，将会解决同步错误。例如，此图指示两位用户的 UserPrincipalName 有冲突。 两者都是 Joe.J\@contoso.com。 有冲突的对象将在 Azure AD 中隔离。
 
 ![诊断常见的同步错误场景](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "98728231"
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> 若要访问此功能，需要具有 Azure RBAC 的 **全局管理员** 权限或 **参与者** 权限。
+> 若要访问此功能，需要全局管理员权限或 Azure RBAC 的参与者权限 。
 >
 
 在 Azure 门户中遵循以下步骤，可以在同步错误详细信息中缩小诊断范围，并提供更具体的解决方法：
@@ -129,21 +129,21 @@ ms.locfileid: "98728231"
 > “应用修复”时所做的更改只适用于孤立对象的情况。
 >
 
-执行上述步骤之后，用户可以访问原始资源，这是对现有对象的链接。 列表视图中的 " **诊断状态** " 值将更新为 " **挂起的同步**"。同步错误将在下一次同步后解决。连接运行状况将不再显示列表视图中已解决的同步错误。
+执行上述步骤之后，用户可以访问原始资源，这是对现有对象的链接。 列表视图中的“诊断状态”值会更新为“等待同步” 。下一次同步后，将会解决同步错误。Connect Health 将不再在列表视图中显示已解决的同步错误。
 
 ## <a name="failures-and-error-messages"></a>故障和错误消息
-**具有冲突属性的用户在 Azure Active Directory 中软删除。请确保在重试之前硬删除用户。**  
+**在 Azure Active Directory 中软删除了具有冲突属性的用户。请确保在重试之前硬删除该用户。**  
 应当清除 Azure AD 中具有冲突属性的用户，然后才能应用修复。 在重试修复之前，请查看[如何在 Azure AD 中永久删除用户](../fundamentals/active-directory-users-restore.md)。 在处于软删除状态 30 天后，用户也将自动永久删除。 
 
 **不支持更新租户中基于云的用户的源定位点。**  
 Azure AD 中基于云的用户不应当具有源定位点。 在这种情况下不支持更新源定位点。 需要从本地手动进行修复。 
 
-**修复过程无法更新这些值。**
-[Azure AD Connect 中](./how-to-connect-preview.md#user-writeback)的特定设置（如 UserWriteback）不受支持。 请在设置中禁用。 
+修复过程未能更新值。
+[Azure AD Connect 中的 UserWriteback](./how-to-connect-preview.md#user-writeback) 等特定设置不受支持。 请在设置中禁用。 
 
 ## <a name="faq"></a>常见问题解答
 **Q.** 如果“应用修复”操作执行失败，会发生什么情况？  
-**A.** 如果执行失败，原因可能是 Azure AD Connect 遇到导出错误。 刷新门户页，然后在下一次同步后重试。默认同步周期为30分钟。 
+**A.** 如果执行失败，原因可能是 Azure AD Connect 遇到导出错误。 请刷新门户页，并在完成下一次同步后重试。默认同步周期为 30 分钟。 
 
 
 **Q.** 如果 **现有对象** 是要删除的对象该怎么办？  
@@ -151,7 +151,7 @@ Azure AD 中基于云的用户不应当具有源定位点。 在这种情况下�
 
 
 **Q.** 用户应用修复需要哪些权限？  
-**A.** **全局管理员** 或 Azure RBAC 的 **参与者** 有权访问诊断和故障排除过程。
+**A.** 全局管理员，或者 Azure RBAC 中的参与者，有权访问诊断和故障排除过程 。
 
 
 **Q.** 是否需要为此功能配置 Azure AD Connect 或更新 Azure AD Connect Health 代理？  

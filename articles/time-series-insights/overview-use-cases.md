@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 7d97958c5fd1274495da88c064b63e59e354f691
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97606957"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure 时序见解第 2 代用例
@@ -58,7 +58,7 @@ Azure 时序见解第 2 代直观且易于使用。 连一行代码也无需编�
 
   * 请阅读 [JS 客户端库](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)和[示例客户端](https://github.com/Microsoft/tsiclient)文档，了解有关 JavaScript SDK 的详细信息。
 
-  * 通过查看 [Azure 时序见解 Gen2 资源管理器中的可视化数据](./concepts-ux-panels.md)，了解有关共享 url 和新 UI 的详细信息。
+  * 通过查看[在 Azure 时序见解 Gen2 资源管理器中可视化数据](./concepts-ux-panels.md)，详细了解共享 URL 和新 UI。
 
 * 第三种开始方法是使用功能强大的 API 查询存储在 Azure 时序见解第 2 代中的数据。 Azure 时序见解第 2 代具有 `from`、`to`、`first` 和 `last` 等时态运算符。 它具有 `average`、`sum`、`min`、`max`、`time-weighted average`、`time-weighted sum` 等聚合与转换。它还允许使用筛选、算术和布尔运算符、标量函数，等等。所有这些运算符使下游应用程序能够快速找到数据中的相关趋势和模式。 可使用它们填充自生成的可视化效果以发现异常。
 

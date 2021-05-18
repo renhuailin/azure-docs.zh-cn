@@ -1,259 +1,260 @@
 ---
-title: Azure Migrate 服务器评估中的 Azure VM 评估
-description: 了解 Azure Migrate 服务器评估中的评估
+title: Azure Migrate 中的 Azure VM 评估
+description: 了解 Azure Migrate 中的评估
 author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 9bdf907ede2c09f7e314df619cd81059956f17dc
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
-ms.translationtype: MT
+ms.openlocfilehash: 7d756b53247206ab4dd4f955c954e6bd105afa1d
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567749"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778485"
 ---
-# <a name="server-assessment-overview-migrate-to-azure-vms"></a>服务器评估概述 (迁移到 Azure Vm) 
+# <a name="assessment-overview-migrate-to-azure-vms"></a>评估概述（迁移到 Azure VM）
 
-本文概述了 [Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool) 工具中的评估。 该工具可评估用于迁移到 Azure 的本地 VMware 虚拟机、Hyper-v Vm 和物理服务器。
+本文概述了 [Azure Migrate：服务器发现和评估](migrate-services-overview.md)工具中的评估。 该工具可对 VMware 虚拟环境和 Hyper-V 环境中的本地服务器以及要迁移到 Azure 的物理服务器进行评估。
 
 ## <a name="whats-an-assessment"></a>什么是评估？
 
-使用服务器评估工具的评估可衡量准备情况并估计将本地服务器迁移到 Azure 的影响。
+使用发现和评估工具进行评估，衡量将本地服务器迁移到 Azure 的就绪性并预估其影响。
 
 > [!NOTE]
-> 在 Azure 政府版中，查看 [支持的目标](migrate-support-matrix.md#supported-geographies-azure-government) 评估位置。 请注意，评估版中的 VM 大小建议将专用于政府云区域的 VM 系列。 [详细了解](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) VM 类型。
+> 在 Azure 政府版中，查看[支持的目标](migrate-support-matrix.md#supported-geographies-azure-government)评估位置。 请注意，评估中的 VM 大小建议将使用专用于政府云区域的 VM 系列。 [深入了解](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) VM 类型的相关信息。
 
-## <a name="types-of-assessments"></a>评估类型
+## <a name="types-of-assessments"></a>评估的类型
 
-使用“Azure Migrate: 服务器评估”可以运行两种类型的评估。
+使用“Azure Migrate：发现和评估”，可以创建三种类型的评估。
 
-**评估类型** | **详细信息**
+*评估类型 | **详细信息**
 --- | --- 
-**Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md) 和[物理服务器](how-to-set-up-appliance-physical.md)。
-**Azure VMware 解决方案 (AVS)** | 将本地服务器迁移到 [Azure VMware 解决方案 (AVS)](../azure-vmware/introduction.md) 的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure VMware 解决方案 (AVS) 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)。[了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 使用这种评估类型，可以对 [VMware](how-to-set-up-appliance-vmware.md) 和 [Hyper-V](how-to-set-up-appliance-hyper-v.md) 环境中的本地服务器以及要迁移到 Azure VM 的[物理服务器](how-to-set-up-appliance-physical.md)进行评估。
+**Azure SQL** | 将本地 SQL Server 从 VMware 环境迁移到 Azure SQL 数据库或 Azure SQL 托管实例的评估。
+**Azure VMware 解决方案 (AVS)** | 将本地服务器迁移到 [Azure VMware 解决方案 (AVS)](../azure-vmware/introduction.md) 的评估。 可使用此评估类型评估要迁移到 Azure VMware 解决方案 (AVS) 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
 
-使用服务器评估创建的评估是数据的时间点快照。 服务器评估中的 Azure VM 评估提供两个大小调整条件选项：
+使用 Azure Migrate 创建的评估是数据的时间点快照。 Azure VM 评估提供了两个调整大小条件选项：
 
 **评估类型** | **详细信息** | **数据**
 --- | --- | ---
-**基于性能** | 基于收集的性能数据提出建议的评估 | VM 大小建议基于 CPU 和 RAM 利用率数据。<br/><br/> 磁盘类型建议基于每秒的输入/输出操作 (IOPS) 和本地磁盘的吞吐量。 磁盘类型为 Azure 标准 HDD、Azure 标准 SSD 和 Azure 高级磁盘。
-**按本地原样** | 不使用性能数据提出建议的评估 | VM 大小建议基于本地 VM 大小。<br/><br> 建议的磁盘类型基于所选的评估存储类型。
+**基于性能** | 基于收集的性能数据提出建议的评估 | VM 大小建议是基于 CPU 和 RAM 使用率数据。<br/><br/> 磁盘类型建议是基于每秒的输入/输出操作 (IOPS) 和本地磁盘的吞吐量。 磁盘类型包括 Azure 标准 HDD、Azure 标准 SSD 和 Azure 高级磁盘。
+**按本地原样** | 不使用性能数据提出建议的评估 | VM 大小建议是基于本地服务器大小。<br/><br> 建议的磁盘类型是基于为评估选择的存储类型。
 
-## <a name="how-do-i-run-an-assessment"></a>如何实现运行评估？
+## <a name="how-do-i-run-an-assessment"></a>如何运行评估？
 
-可以通过多种方式来运行评估。
+可通过多种方法运行评估。
 
-- 使用轻型 Azure Migrate 设备收集的服务器元数据来评估计算机。 设备会发现本地计算机。 然后，它将计算机元数据和性能数据发送到 Azure Migrate。
-- 使用以逗号分隔的值（ (CSV) 格式）导入的服务器元数据来评估计算机。
+- 使用轻型 Azure Migrate 设备收集的服务器元数据来评估服务器。 设备会发现本地服务器。 然后将服务器元数据和性能数据发送到 Azure Migrate。
+- 使用以逗号分隔的值 (CSV) 格式导入的服务器元数据来评估服务器。
 
-## <a name="how-do-i-assess-with-the-appliance"></a>如何实现与设备进行评估？
+## <a name="how-do-i-assess-with-the-appliance"></a>如何使用设备进行评估？
 
-如果要部署 Azure Migrate 设备来发现本地服务器，请执行以下步骤：
+如果部署 Azure Migrate 设备来发现本地服务器，请执行以下步骤：
 
-1. 将 Azure 和本地环境设置为使用服务器评估。
-1. 对于第一个评估，请创建一个 Azure 项目并向其添加服务器评估工具。
-1. 部署轻型 Azure Migrate 设备。 设备持续发现本地计算机，并将计算机元数据和性能数据发送到 Azure Migrate。 将设备部署为 VM 或物理计算机。 无需在要评估的计算机上安装任何内容。
+1. 设置 Azure 及本地环境，以使用 Azure Migrate。
+1. 第一次评估时，创建一个 Azure 项目并向其中添加“发现和评估”工具。
+1. 部署轻型 Azure Migrate 设备。 此设备将持续发现本地服务器，并向 Azure Migrate 发送服务器元数据和性能数据。 将设备部署为 VM 或物理服务器。 无需在要评估的服务器上安装任何软件。
 
-设备开始发现计算机后，你可以将你想要评估的计算机收集到一个组中，并为具有评估类型 " **AZURE VM**" 的组运行评估。
+设备开始服务器发现后，可以将想要评估的服务器集中到一个组中，然后使用评估类型“Azure VM”运行组评估。
 
-按照我们有关 [VMware](./tutorial-discover-vmware.md)、 [hyper-v](./tutorial-discover-hyper-v.md)或 [物理服务器](./tutorial-discover-physical.md) 的教程操作，尝试这些步骤。
+按照我们有关 [VMware](./tutorial-discover-vmware.md)、[Hyper-V](./tutorial-discover-hyper-v.md) 或[物理服务器](./tutorial-discover-physical.md)的教程操作，尝试这些步骤。
 
-## <a name="how-do-i-assess-with-imported-data"></a>如何实现评估导入的数据？
+## <a name="how-do-i-assess-with-imported-data"></a>如何使用导入的数据进行评估？
 
-如果要使用 CSV 文件评估服务器，则无需设备。 请改为执行以下步骤：
+如果要使用 CSV 文件来评估服务器，则不需要设备。 而是执行以下步骤：
 
-1. 设置 Azure 以使用服务器评估。
-1. 对于第一个评估，请创建一个 Azure 项目并向其添加服务器评估工具。
+1. 设置 Azure 以使用 Azure Migrate
+1. 第一次评估时，创建一个 Azure 项目并向其中添加“发现和评估”工具。
 1. 下载 CSV 模板并向其中添加服务器数据。
-1. 将模板导入到服务器评估中。
-1. 发现通过导入添加的服务器，将其收集到一个组中，并运行评估类型为 **AZURE VM** 的组的评估。
+1. 将模板导入 Azure Migrate
+1. 发现通过导入添加的服务器后，将其集中到一个组中，然后使用评估类型“Azure VM”运行组评估。
 
 ## <a name="what-data-does-the-appliance-collect"></a>设备会收集哪些数据？
 
-如果要使用 Azure Migrate 设备进行评估，请参阅针对 [VMware](migrate-appliance.md#collected-data---vmware) 和 [hyper-v](migrate-appliance.md#collected-data---hyper-v)收集的元数据和性能数据。
+如果使用 Azure Migrate 设备进行评估，请了解针对 [VMware](migrate-appliance.md#collected-data---vmware) 和 [Hyper-V](migrate-appliance.md#collected-data---hyper-v) 收集的元数据和性能数据。
 
 ## <a name="how-does-the-appliance-calculate-performance-data"></a>设备如何计算性能数据？
 
-如果使用设备进行发现，则它会使用以下步骤收集计算设置的性能数据：
+如果是使用设备进行发现，则会通过以下步骤为计算设置收集性能数据：
 
-1. 设备将收集实时示例点。
+1. 设备收集实时样本点。
 
-    - **VMware vm**：每隔20秒收集一个示例点。
-    - **Hyper-v vm**：每30秒收集一次示例点。
-    - **物理服务器**：每五分钟收集一次示例点。
+    - **VMware VM**：每 20 秒收集一个样本点。
+    - **Hyper-V VM**：每 30 秒收集一个样本点。
+    - **物理服务器**：每 5 分钟收集一个样本点。
 
-1. 该设备将示例点组合在一起，为 VMware 和 Hyper-v 服务器创建每10分钟一次的数据点，为物理服务器创建每5分钟一次。 为了创建数据点，设备从所有示例中选择最大值。 然后，它将数据点发送到 Azure。
-1. 服务器评估存储上个月的10分钟数据点。
-1. 创建评估时，服务器评估会确定要用于合理精简的相应数据点。 标识基于 *性能历史记录* 和 *百分比利用率* 的百分位值。
+1. 设备将这些样本点组合在一起，为 VMware 和 Hyper-V 服务器每 10 分钟创建一个数据点，为物理服务器每 5 分钟创建一个数据点。 为了创建数据点，设备会从所有样本中选择峰值。 然后，将数据点发送到 Azure。
+1. 评估存储上个月的所有 10 分钟数据点。
+1. 创建评估时，该评估会确定用于合理调整大小的相应数据点。 根据“性能历史记录”和“百分位使用率”的百分位值进行确定。
 
-    - 例如，如果性能历史记录为一周，百分比利用率为95%，则服务器评估会对最后一周的10分钟示例点进行排序。 它将按升序排序，并选取合理精简的第95百分位值。
-    - 95% 的值可以确保忽略任何离群值，如果选择了99% 百分点值，则可能会包含这些离群值。
-    - 如果要选择该时间段的高峰使用量，而不想错过任何离群值，请选择99% 百分位以实现百分比利用率。
+    - 例如，性能历史记录是一周，百分位使用率是第 95 百分位，则评估会对上一周的 10 分钟样本点进行排序。 按升序排序，并选取第 95 百分位值进行合理调整大小。
+    - 第 95 百分位值可以确保忽略任何离群值，如果选取第 99 百分位，则可能包括这些离群值。
+    - 如果希望选择该期间内的峰值使用率，并且不希望错过任何离群值，请为百分位使用率选择第 99 百分位。
 
-1. 此值与舒适因素相乘，以获取设备收集的这些指标的有效性能利用率数据：
+1. 此值与舒适因子相乘，就得到了设备收集的这些指标的有效性能使用率数据：
 
     - CPU 使用率
-    - RAM 利用率
-    - 磁盘 IOPS (读取和写入) 
-    - 磁盘吞吐量 (读取和写入) 
-    -  (传入和传出的网络吞吐量) 
+    - RAM 使用率
+    - 磁盘 IOPS（读取和写入）
+    - 磁盘吞吐量（读取和写入）
+    - 网络吞吐量（传入和传出）
 
 ## <a name="how-are-azure-vm-assessments-calculated"></a>如何计算 Azure VM 评估？
 
-服务器评估使用本地计算机的元数据和性能数据来计算评估。 如果部署 Azure Migrate 设备，则评估将使用设备收集的数据。 但如果运行使用 CSV 文件导入的评估，则需要提供用于计算的元数据。
+该评估使用本地服务器的元数据和性能数据来计算评估。 如果部署 Azure Migrate 设备，则评估使用该设备收集的数据。 但如果运行的是使用 CSV 文件导入的评估，则需要提供用于计算的元数据。
 
-这三个阶段会发生计算：
+计算分为以下三个阶段：
 
-1. **计算 Azure 就绪**：评估计算机是否适合迁移到 Azure。
-1. **计算大小调整建议**：估算计算、存储和网络大小。
-1. **计算每月成本**：计算迁移后在 Azure 中运行计算机的估计每月计算和存储成本。
+1. **计算 Azure 迁移就绪性**：评估服务器是否适合迁移到 Azure。
+1. **计算调整大小建议**：估算计算、存储和网络调整大小。
+1. **计算每月成本**：计算迁移后每月在 Azure 中运行服务器的预估计算和存储成本。
 
-计算按前面的顺序排列。 仅当计算机通过前一个阶段时，计算机才会移动到后面的阶段。 例如，如果服务器未通过 Azure 就绪阶段，则会将其标记为不适用于 Azure。 不会对该服务器执行大小调整和成本计算。
+计算按上述顺序进行。 服务器只有通过了前一个阶段，才会进入下一个阶段。 例如，服务器未通过 Azure 就绪性阶段，则会标记为不适合 Azure。 将不会对该服务器执行调整大小和成本计算。
 
-## <a name="whats-in-an-azure-vm-assessment"></a>Azure VM 评估有哪些？
+## <a name="whats-in-an-azure-vm-assessment"></a>Azure VM 评估有哪些内容？
 
-服务器评估中的 Azure VM 评估中包含以下是：
+Azure VM 评估中包括以下内容：
 
 **属性** | **详细信息**
 --- | ---
-**目标位置** | 要迁移到的位置。 服务器评估目前支持以下目标 Azure 区域：<br/><br/> 澳大利亚东部，澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国东部、美国中北部、中国东部、中国北部、东亚、美国东部、美国东部、日本西部、韩国北部、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、英国西部英国南部 US Gov 亚利桑那州、US Gov 德克萨斯州、US Gov 弗吉尼亚州、美国西部、西欧、印度西部、美国西部和美国西部2。
-**目标存储磁盘 (大小调整)** | 要用于 Azure 中的存储的磁盘类型。 <br/><br/> 将目标存储磁盘指定为高级托管、标准 SSD 管理或标准 HDD 管理。
-**目标存储磁盘 (基于性能的大小调整)** | 将目标存储磁盘的类型指定为自动、高级托管、标准 HDD 管理或标准 SSD 管理。<br/><br/> **自动**：磁盘建议基于磁盘的性能数据，即 IOPS 和吞吐量。<br/><br/>**高级或标准**：评估建议选定存储类型中的磁盘 SKU。<br/><br/> 如果需要单实例 VM 服务级别协议 (SLA) 为99.9%，请考虑使用高级托管磁盘。 此使用确保将评估中的所有磁盘作为高级托管磁盘。<br/><br/> Azure Migrate 仅支持用于迁移评估的托管磁盘。
-**Azure 保留 VM 实例** | 指定 [保留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/) ，以便评估评估中的成本。<br/><br/> 选择 "保留实例" 时，"折扣 (% ) " 和 "VM 运行时间" 属性不适用。<br/><br/> Azure Migrate 当前仅支持即用即付产品/服务的 Azure 保留 VM 实例。
-**调整大小标准** | 用于将 Azure VM。<br/><br/> 使用按原样调整大小或基于性能的大小调整。
-**性能历史记录** | 用于基于性能的大小调整。 性能历史记录指定评估性能数据时使用的持续时间。
-**百分位使用率** | 用于基于性能的大小调整。 百分点利用率指定用于合理精简的性能示例的百分位数值。
-**VM 系列** | 要用于合理精简的 Azure VM 系列。 例如，如果不需要将生产环境迁移到 Azure 中的 A 系列 VM，可以从系列的列表中排除 A 系列。
-**舒适因子** | 评估过程中使用的缓冲区。 它适用于 Vm 的 CPU、RAM、磁盘和网络数据。 它可解决季节性使用情况、简短性能历史记录等问题，并可能会在将来的使用量上增加。<br/><br/> 例如，利用率为20% 的10核 VM 通常会产生两核 VM。 如果使用的是2.0，则结果是一个四核 VM。
-**产品** | 你注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/) 。 “服务器评估”会估计该产品/服务的费用。
+**目标位置** | 要迁移到的位置。 评估目前支持以下目标 Azure 区域：<br/><br/> 澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、印度中部、美国中部、中国东部、中国北部、东亚、美国东部、美国东部 2、德国中部、德国东北部、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、印度南部、英国南部、英国西部、US Gov 亚利桑那州、US Gov 德克萨斯州、US Gov 弗吉尼亚州、美国中西部、西欧、印度西部、美国西部和美国西部 2。
+目标存储磁盘（按原样调整大小） | 要用于 Azure 中存储的磁盘类型。 <br/><br/> 将目标存储磁盘指定为高级托管、标准 SSD 托管或标准 HDD 托管类型。
+目标存储磁盘（基于性能的调整大小） | 将目标存储磁盘的类型指定为自动、高级托管、标准 HDD 托管或标准 SSD 托管类型。<br/><br/> 自动：磁盘建议是基于磁盘的性能数据，即 IOPS 和吞吐量。<br/><br/>高级或标准：评估建议选择存储类型中的磁盘 SKU。<br/><br/> 如果希望单实例 VM 服务级别协议 (SLA) 达到 99.9%，请考虑使用高级托管磁盘。 这样可确保将评估中的所有磁盘都推荐为高级托管磁盘。<br/><br/> Azure Migrate 仅支持使用托管磁盘进行迁移评估。
+Azure 虚拟机预留实例 | 指定[预留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)，以便在评估的成本估算中将它们考虑在内。<br/><br/> 选择“预留实例”时，“折扣 (%)”和“VM 运行时间”属性不适用。<br/><br/> Azure Migrate 当前仅支持对即用即付产品/服务选择“Azure 虚拟机预留实例”。
+**调整大小标准** | 用于调整 Azure VM 大小。<br/><br/> 使用按原样调整大小或基于性能的调整大小。
+**性能历史记录** | 搭配基于性能的调整大小。 性能历史记录指定了评估性能数据时使用的持续时间。
+**百分位使用率** | 搭配基于性能的调整大小。 百分位使用率指定了用于合理调整大小的性能样本的百分位值。
+**VM 系列** | 要考虑用于合理调整大小的 Azure VM 系列。 例如，如果不需要将生产环境迁移到 Azure 中的 A 系列 VM，可以从系列的列表中排除 A 系列。
+**舒适因子** | 评估过程中使用的缓冲区。 它应用于 VM 的 CPU、RAM、磁盘和网络数据。 此因子用于解决季节性使用情况、短期性能历史记录以及未来使用量可能会增加等问题。<br/><br/> 例如，一个使用率为 20% 的 10 核 VM 通常相当于一个双核 VM。 而如果舒适因子是 2.0，则结果是一个四核 VM。
+**产品/服务** | 注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 评估会预估该产品/服务的成本。
 **货币** | 帐户的计费货币。
-**折扣 (%)** | 在 Azure 产品/服务上收到的任何特定于订阅的折扣。 默认设置是 0%。
-**VM 运行时间** | 不连续运行的 Azure Vm 每月的持续时间（以天为单位）和每天的小时数。 成本估算基于该持续时间。<br/><br/> 默认值为每月31天，每天24小时。
-**Azure 混合权益** | 指定您是否具有软件保障并且有资格使用 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。 如果设置的默认值为 "是"，则对于 Windows Vm，将考虑除 Windows 以外的操作系统的 Azure 价格。
-**EA 订阅** | 指定企业协议 (EA) 订阅用于成本估算。 考虑适用于订阅的折扣。 <br/><br/> 保留保留实例、折扣 (% ) 和 VM 运行时间属性及其默认设置的设置。
+**折扣 (%)** | 基于 Azure 产品/服务获得的任何特定于订阅的折扣。 默认设置是 0%。
+**VM 运行时间** | 不连续运行的 Azure VM 每月的持续时间（以天为单位）和每天的持续时间（以小时为单位）。 成本估算就是基于该持续时间。<br/><br/> 默认值是每月 31 天和每天 24 小时。
+**Azure 混合权益** | 指定是否具有软件保证以及是否有资格享受 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。 如果设置的默认值为“是”，则对于 Windows VM，应考虑非 Windows 操作系统的 Azure 价格。
+**EA 订阅** | 指定将将企业协议 (EA) 订阅用于成本估算。 考虑适用于该订阅的折扣。 <br/><br/> 将预留实例、折扣 (%) 和 VM 运行时间属性保留默认设置。
 
 
-查看使用服务器评估创建评估的[最佳实践](best-practices-assessment.md)。
+关于使用 Azure Migrate 创建评估，请[查看最佳做法](best-practices-assessment.md)。
 
-## <a name="calculate-readiness"></a>计算准备情况
+## <a name="calculate-readiness"></a>计算就绪性
 
-并非所有计算机都适合在 Azure 中运行。 Azure VM 评估会评估所有本地计算机，并为其分配一个就绪类别。
+并非所有服务器都适合在 Azure 中运行。 Azure VM 评估会对所有本地服务器进行评估，并为其分配一个就绪性类别。
 
-- **适用于 azure**：计算机可以按原样迁移到 azure，而无需进行任何更改。 它将在 Azure 中从完整的 Azure 支持开始。
-- **Azure 有条件的就绪**：计算机可能会在 azure 中启动，但可能没有完整的 azure 支持。 例如，Azure 不支持运行旧版 Windows Server 的计算机。 在将这些计算机迁移到 Azure 之前，必须注意。 若要解决任何准备情况问题，请遵循评估建议的修正指南。
-- **未准备好进行 azure**：计算机不会在 azure 中启动。 例如，如果本地计算机的磁盘存储超过 64 TB，Azure 将无法托管计算机。 请按照更正指南进行操作，以在迁移之前解决问题。
-- **准备情况未知**：由于元数据不足，Azure Migrate 无法确定计算机的就绪性。
+- Azure 迁移就绪：服务器可以照原样迁移到 Azure，无需任何更改。 它将在 Azure 中启动并具有完整的 Azure 支持。
+- Azure 迁移有条件就绪：服务器可能在 Azure 中启动，但可能没有完整的 Azure 支持。 例如，Azure 不支持运行旧版 Windows Server 的服务器。 在将这些服务器迁移到 Azure 之前，必须谨慎。 若要解决任何就绪性问题，请遵循评估所建议的修正指南。
+- Azure 迁移未就绪：服务器不会在 Azure 中启动。 例如，如果本地服务器的磁盘存储超过 64 TB，Azure 将无法托管该服务器。 请遵循修正指南，在迁移之前解决问题。
+- 就绪性未知：由于元数据不足，Azure Migrate 无法确定计算机就绪性。
 
-若要计算准备情况，服务器评估会查看下表中汇总的计算机属性和操作系统设置。
+为了计算就绪性，评估会评审下表中汇总的服务器属性和操作系统设置。
 
-### <a name="machine-properties"></a>计算机属性
+### <a name="server-properties"></a>服务器属性
 
-对于 Azure VM 评估，服务器评估会查看本地 VM 的以下属性，以确定它是否可以在 Azure Vm 上运行。
+对于 Azure VM 评估，评估会评审本地 VM 的以下属性，以确定它是否可以在 Azure VM 上运行。
 
 属性 | 详细信息 | Azure 迁移就绪性状态
 --- | --- | ---
-**启动类型** | Azure 支持启动类型为 BIOS 而不是 UEFI 的 Vm。 | 如果启动类型为 UEFI，则有条件地准备就绪
-**核心数** | 每台计算机的核心数不得超过128个，这是 Azure VM 支持的最大数量。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果评估设置指定了舒适的因素，则使用的内核数乘以舒适系数。<br/><br/> 如果没有性能历史记录，Azure Migrate 将使用已分配的内核来应用舒适因子。 | 如果内核数在限制范围内，则已准备就绪
-**RAM** | 每台计算机都必须具有超过 3892 GB 的 RAM，这是 Azure M 系列 Standard_M128m &nbsp; <sup>2</sup> VM 支持的最大大小。 [了解详细信息](../virtual-machines/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会将使用的 RAM 视为比较。 如果指定了舒适的因素，则使用的 RAM 将乘以舒适系数。<br/><br/> 如果没有历史记录，则使用分配的 RAM 来应用舒适的因素。<br/><br/> | 如果 RAM 量在限制范围内，则已准备就绪
-**存储磁盘** | 分配的磁盘大小不得超过 32 TB。 尽管 Azure 支持 64 TB 磁盘和 Azure 超级 SSD 磁盘，Azure Migrate：服务器评估目前检查 32 TB 作为磁盘大小限制，因为它尚不支持超级 SSD。 <br/><br/> 附加到计算机的磁盘数（包括 OS 磁盘）必须是65或更少。 | 如果磁盘大小和数量处于限制范围内，则已准备就绪
-**网络** | 计算机上的网络接口 (不能超过32个) 附加到它的 Nic。 | 如果 Nic 数在限制范围内，则已准备就绪
+**启动类型** | Azure 支持启动类型为 BIOS（而非 UEFI）的 VM。 | 如果启动类型为 UEFI，则状态为有条件就绪
+**核心数** | 每个服务器的内核数不得超过 128 个，这是 Azure VM 支持的最大数量。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果评估设置中指定了舒适因子，则将已利用的内核数乘以此舒适因子。<br/><br/> 如果没有任何性能历史记录，Azure Migrate 将使用已分配的内核数乘以舒适因子。 | 如果内核数在限制范围内，则状态为就绪
+**RAM** | 每个服务器的 RAM 不得超过 3,892 GB，这是 Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> VM 所支持的最大存储量。 [了解详细信息](../virtual-machines/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑比较已利用的 RAM。 如果指定了舒适因子，则将已利用的 RAM 乘以此舒适因子。<br/><br/> 如果没有历史记录，则使用已分配的 RAM 乘以舒适因子。<br/><br/> | 如果 RAM 量在限制范围内，则状态为就绪
+**存储磁盘** | 分配的磁盘大小不得超过 32 TB。 尽管 Azure 支持 64 TB 磁盘和 Azure 超级 SSD 盘，但目前评估检查的磁盘大小限制是 32 TB，因为它尚不支持超级 SSD。 <br/><br/> 连接到服务器的磁盘（包括操作系统磁盘）数量不得超过 65 个。 | 如果磁盘大小和数量处于限制范围内，则状态为就绪
+**联网** | 连接到服务器的网络接口 (NIC) 数量不得超过 32 个。 | 如果 NIC 数量在限制范围内，则状态为就绪
 
 ### <a name="guest-operating-system"></a>来宾操作系统
 
-对于 Azure VM 评估以及查看 VM 属性，服务器评估会查看计算机的来宾操作系统，以确定它是否可在 Azure 上运行。
+对于 Azure VM 评估中，除了评审 VM 属性，评估还会查看服务器的来宾操作系统，以确定它是否可以在 Azure 上运行。
 
 > [!NOTE]
-> 为了处理 VMware Vm 的来宾分析，服务器评估使用在 vCenter Server 中为 VM 指定的操作系统。 但 vCenter Server 不提供 Linux VM 操作系统的内核版本。 若要发现版本，需要设置 [应用程序发现](./how-to-discover-applications.md)。 然后，设备会使用在设置应用发现时指定的来宾凭据来发现版本信息。
+> 为了处理 VMware VM 的来宾分析，评估会使用在 vCenter Server 中专为该 VM 指定的操作系统。 但 vCenter Server 不提供适用于 Linux VM 操作系统的内核版本。 如果要发现版本，需要设置[应用程序发现](./how-to-discover-applications.md)。 然后，设备会使用在设置应用发现时指定的来宾凭据来发现版本信息。
 
 
-服务器评估使用以下逻辑来识别基于操作系统的 Azure 准备情况：
+评估使用以下逻辑，基于操作系统确定 Azure 迁移就绪性：
 
 **操作系统** | **详细信息** | **Azure 迁移就绪性状态**
 --- | --- | ---
-Windows Server 2016 和所有 SP | Azure 提供完全支持。 | 适用于 Azure。
-Windows Server 2012 R2 和所有 SP | Azure 提供完全支持。 | 适用于 Azure。
-Windows Server 2012 和所有 SP | Azure 提供完全支持。 | 适用于 Azure。
-Windows Server 2008 R2 和所有 SP | Azure 提供完全支持。| 适用于 Azure。
-Windows Server 2008（32 位和 64 位） | Azure 提供完全支持。 | 适用于 Azure。
-Windows Server 2003 和 Windows Server 2003 R2 | 这些操作系统已超过其支持终止日期，需要 [自定义支持协议 (CSA) ](/troubleshoot/azure/virtual-machines/server-software-support) ，以支持 Azure 中的支持。 | Azure 有条件的就绪。 请考虑在迁移到 Azure 之前升级 OS。
-Windows 2000、Windows 98、Windows 95、Windows NT、Windows 3.1 和 MS-DOS | 这些操作系统已超过其支持结束日期。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前升级 OS。
-Windows 7、Windows 8 和 Windows 10 | Azure [仅支持 Visual Studio 订阅。](../virtual-machines/windows/client-images.md) | Azure 有条件的就绪。
-Windows 10 专业版 | Azure 提供了对[多租户托管权限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)的支持。 | Azure 有条件的就绪。
-Windows Vista 和 Windows XP Professional | 这些操作系统已超过其支持结束日期。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前升级 OS。
-Linux | 请参阅 Azure 予以认可的 [Linux 操作系统](../virtual-machines/linux/endorsed-distros.md) 。 其他 Linux 操作系统可能会在 Azure 中启动。 但建议你在迁移到 Azure 之前，将 OS 升级到认可的版本。 | 如果版本受到认可，则为 Azure 已就绪。<br/><br/>如果版本未认可，则有条件地准备就绪。
-Oracle Solaris、Apple macOS 和 FreeBSD 等其他操作系统 | Azure 不认可这些操作系统。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前安装受支持的操作系统。  
-vCenter Server 中指定为“其他”的 OS | 在这种情况下 Azure Migrate 无法识别 OS。 | 就绪性未知。 确保 Azure 支持在 VM 内运行的 OS。
-32 位操作系统 | 计算机可能会在 Azure 中启动，但 Azure 可能不提供完全支持。 | Azure 有条件的就绪。 迁移到 Azure 之前，请考虑升级到64位操作系统。
+Windows Server 2016 和所有 SP | Azure 提供完全支持。 | Azure 迁移已就绪。
+Windows Server 2012 R2 和所有 SP | Azure 提供完全支持。 | Azure 迁移已就绪。
+Windows Server 2012 和所有 SP | Azure 提供完全支持。 | Azure 迁移已就绪。
+Windows Server 2008 R2 和所有 SP | Azure 提供完全支持。| Azure 迁移已就绪。
+Windows Server 2008（32 位和 64 位） | Azure 提供完全支持。 | Azure 迁移已就绪。
+Windows Server 2003 和 Windows Server 2003 R2 | 这些操作系统的支持日期已结束，需要[自定义支持协议 (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) 以获取 Azure 支持。 | Azure 迁移已有条件就绪。 请考虑在迁移到 Azure 之前升级操作系统。
+Windows 2000、Windows 98、Windows 95、Windows NT、Windows 3.1 和 MS-DOS | 这些操作系统的支持日期已结束。 服务器可能在 Azure 中启动，但 Azure 不提供任何操作系统支持。 | Azure 迁移已有条件就绪。 建议在迁移到 Azure 之前升级操作系统。
+Windows 7、Windows 8 和 Windows 10 | Azure 仅支持 [Visual Studio 订阅](../virtual-machines/windows/client-images.md)。 | Azure 迁移已有条件就绪。
+Windows 10 专业版 | Azure 提供了对[多租户托管权限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)的支持。 | Azure 迁移已有条件就绪。
+Windows Vista 和 Windows XP Professional | 这些操作系统的支持日期已结束。 服务器可能在 Azure 中启动，但 Azure 不提供任何操作系统支持。 | Azure 迁移已有条件就绪。 建议在迁移到 Azure 之前升级操作系统。
+Linux | 请参阅 Azure 予以认可的 [Linux 操作系统](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 操作系统可能在 Azure 中启动。 不过还是建议在迁移到 Azure 之前，先将操作系统升级到经认可的版本。 | 如果版本受到认可，则为 Azure 已就绪。<br/><br/>如果版本不受认可，则为 Azure 迁移有条件就绪。
+Oracle Solaris、Apple macOS 和 FreeBSD 等其他操作系统 | Azure 不认可这些操作系统。 服务器可能在 Azure 中启动，但 Azure 不提供任何操作系统支持。 | Azure 迁移已有条件就绪。 建议在迁移到 Azure 之前，安装受支持的操作系统。  
+vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 无法确定操作系统。 | 就绪性未知。 确保 Azure 支持 VM 内部运行的操作系统。
+32 位操作系统 | 服务器可能在 Azure 中启动，但 Azure 可能不提供完全支持。 | Azure 迁移已有条件就绪。 请考虑在迁移到 Azure 之前，升级到 64 位操作系统。
 
 ## <a name="calculating-sizing"></a>计算调整大小
 
-将计算机标记为准备好进行 Azure 后，服务器评估将在 Azure VM 评估中提供大小建议。 这些建议用于标识 Azure VM 和磁盘 SKU。 大小调整计算取决于你使用的是本地大小调整还是基于性能的大小调整。
+将服务器标记为“Azure 迁移就绪”后，评估将在 Azure VM 评估中做出调整大小建议。 这些建议标识了 Azure VM 和磁盘 SKU。 调整大小计算取决于使用的是按原样本地调整大小还是基于性能的调整大小。
 
-### <a name="calculate-sizing-as-is-on-premises"></a>按本地) 计算大小 (
+### <a name="calculate-sizing-as-is-on-premises"></a>计算调整大小（按原样本地）
 
- 如果使用 "按本地大小调整"，则服务器评估不会考虑 Azure VM 评估中 Vm 和磁盘的性能历史记录。
+ 如果使用的是按原样本地调整大小，则评估不会考虑 Azure VM 评估中 VM 和磁盘的性能历史记录。
 
-- **计算规模**：服务器评估根据本地分配的大小分配 AZURE VM SKU。
-- **存储和磁盘大小调整**：服务器评估查看评估属性中指定的存储类型，并建议相应的磁盘类型。 可能的存储类型为标准 HDD、标准 SSD 和高级。 默认存储类型为 "高级"。
-- **网络大小调整**：服务器评估考虑本地计算机上的网络适配器。
+- 计算调整大小：评估将根据本地分配的大小分配 Azure VM SKU。
+- 存储和磁盘调整大小：评估查看评估属性中指定的存储类型，并建议相应的磁盘类型。 可能的存储类型是“标准 HDD”、“标准 SSD”和“高级”。 默认存储类型为“高级”。
+- 网络调整大小：评估考虑本地服务器上的网络适配器。
 
-### <a name="calculate-sizing-performance-based"></a>基于性能的) 计算 (大小
+### <a name="calculate-sizing-performance-based"></a>计算调整大小（基于性能）
 
-如果在 Azure VM 评估中使用基于性能的大小调整，服务器评估会按如下所示调整大小建议：
+如果 Azure VM 评估中使用的是基于性能的调整大小，则评估按如下所示给出调整大小建议：
 
-- 服务器评估会考虑计算机的性能历史记录来识别 Azure 中的 VM 大小和磁盘类型。
-- 如果使用 CSV 文件导入服务器，则会使用指定的值。 如果你已将本地计算机过度分配，利用率较低，并且你想要将 Azure VM 来节省成本，此方法特别有用。
-- 如果不想要使用性能数据，请按照上一节中所述，将大小调整条件重置为 "按本地"。
+- 评估考虑服务器的性能历史记录，以确定 Azure 中的 VM 大小和磁盘类型。
+- 如果使用 CSV 文件导入服务器，则会使用指定的值。 如果本地服务器过度分配、使用率较低，以及希望合理调整 Azure VM 大小以节约成本，则这种方法特别有帮助。
+- 如果不想要使用性能数据，请按照上一节中所述，将调整大小条件重置为按原样本地。
 
-#### <a name="calculate-storage-sizing"></a>计算存储大小
+#### <a name="calculate-storage-sizing"></a>计算存储调整大小
 
-对于 Azure VM 评估中的存储大小，Azure Migrate 尝试将连接到计算机的每个磁盘映射到 Azure 磁盘。 大小调整工作方式如下：
+对于 Azure VM 评估中的存储调整大小，Azure Migrate 尝试将连接到服务器的每个磁盘映射到 Azure 磁盘。 调整大小的工作方式如下：
 
-1. 服务器评估增加了磁盘的读取和写入 IOPS，以获取所需的总 IOPS。 同样，它会添加 "读取" 和 "写入吞吐量" 值，以获取每个磁盘的总吞吐量。 对于基于导入的评估，可以选择提供总 IOPS、总吞吐量和 total no。 导入文件中的磁盘，无需指定单个磁盘设置。 如果执行此操作，则会跳过单个磁盘大小调整，并直接使用提供的数据来计算规模，并选择适当的 VM SKU。
+1. 评估增加磁盘的读取和写入 IOPS，以达到要求的总 IOPS。 同样，还会添加读取和写入吞吐量值，以达到每个磁盘的总吞吐量。 对于基于导入的评估，可以选择在导入的文件中提供总 IOPS、总吞吐量 以及磁盘总数，而不指定单独的磁盘设置。 如此一来，将跳过单独磁盘调整大小，直接使用提供的数据来计算调整大小，并选择适当的 VM SKU。
 
-1. 如果已将存储类型指定为 "自动"，则所选类型基于 "有效 IOPS" 和 "吞吐量" 值。 服务器评估确定是否将磁盘映射到 Azure 中的标准 HDD、标准 SSD 或高级磁盘。 如果存储类型设置为这些磁盘类型之一，则服务器评估会尝试在选定存储类型中查找磁盘 SKU。
+1. 如果已将存储类型指定为自动，则所选类型将基于有效 IOPS 和吞吐量的值。 评估会决定将磁盘映射到 Azure 中的“标准 HDD”、“标准 SSD”还是“高级”磁盘。 如果存储类型设置为这些磁盘类型之一，则评估将尝试在所选存储类型内查找磁盘 SKU。
 1. 选择磁盘的方法如下所示：
-    - 如果服务器评估找不到具有所需 IOPS 和吞吐量的磁盘，则会将计算机标记为不适用于 Azure。
-    - 如果服务器评估查找一组合适的磁盘，则会选择支持在评估设置中指定的位置的磁盘。
-    - 如果有多个合格的磁盘，服务器评估会选择成本最低的磁盘。
-    - 如果任何磁盘的性能数据不可用，则配置磁盘大小用于在 Azure 中查找标准 SSD 磁盘。
+    - 如果评估找不到具有所需 IOPS 和吞吐量的磁盘，则会将服务器标记为不适合 Azure。
+    - 如果评估找到了一组合适的磁盘，则评估选择支持评估设置中指定位置的磁盘。
+    - 如果有多个合格的磁盘，则评估选择成本最低的磁盘。
+    - 如果有任何磁盘的性能数据不可用，则使用配置磁盘大小在 Azure 中查找标准 SSD 盘。
 
-#### <a name="calculate-network-sizing"></a>计算网络大小
+#### <a name="calculate-network-sizing"></a>计算网络调整大小
 
-对于 Azure VM 评估，服务器评估会尝试查找支持连接到本地计算机的网络适配器的数量和所需性能的 Azure VM。
+对于 Azure VM 评估，评估尝试查找支持连接到本地服务器的网络适配器的数量和所需性能的 Azure VM。
 
-- 为了获得本地 VM 的有效网络性能，服务器评估将数据传输速率从计算机上聚合 (通过所有网络适配器) 的网络传出。 然后，它将应用舒适因子。 它使用结果值查找可支持所需网络性能的 Azure VM。
-- 与网络性能一起，服务器评估还会考虑 Azure VM 是否可支持所需的网络适配器数。
-- 如果网络性能数据不可用，则服务器评估只考虑 VM 大小的网络适配器计数。
+- 为了使本地服务器获得有效的网络性能，评估将对经过所有网络适配器的服务器流出（网络流出）数据传输率求和。 然后乘以舒适因子。 根据结果值，找到可支持所需网络性能的 Azure VM。
+- 除了网络性能，评估还会考虑 Azure VM 是否可支持所需的网络适配器数量。
+- 如果网络性能数据不可用，评估将只考虑对 VM 调整大小有影响的网络适配器。
 
-#### <a name="calculate-compute-sizing"></a>计算计算规模
+#### <a name="calculate-compute-sizing"></a>计算运算调整大小
 
-在计算存储和网络需求后，服务器评估会考虑 CPU 和 RAM 要求，以便在 Azure 中查找合适的 VM 大小。
+在计算了存储和网络需求后，评估将考虑 CPU 和 RAM 需求，以确定 Azure 中合适的 VM 大小。
 
-- Azure Migrate 查看有效的已使用内核和 RAM，查找合适的 Azure VM 大小。
-- 如果找不到合适的大小，计算机将标记为不适用于 Azure。
-- 如果找到了合适的大小，Azure Migrate 将应用存储和网络计算。 然后，它会对最终的 VM 大小建议应用位置和定价层设置。
+- Azure Migrate 会查看有效的已使用内核和 RAM，以查找合适的 Azure VM 大小。
+- 如果找不到合适的大小，服务器将标记为不适合 Azure。
+- 如果找到了合适的大小，Azure Migrate 将应用存储和网络计算。 然后应用位置和定价层设置，以提供最终的 VM 大小建议。
 - 如果有多个合格的 Azure VM 大小，建议选择成本最低的那一个。
 
-## <a name="confidence-ratings-performance-based"></a>基于性能的)  (置信度分级
+## <a name="confidence-ratings-performance-based"></a>置信度分级（基于性能）
 
-Azure Migrate 中的每个基于性能的 Azure VM 评估都与置信度分级相关联。 评级范围为一 (最小) 到五个 () 星。 置信度评级有助于您估算 Azure Migrate 提供的大小建议的可靠性。
+在 Azure Migrate 中，每个基于性能的 Azure VM 评估都与一个置信度分级相关联。 分级范围从一星（最低）到五星（最高）。 置信度分级可帮助评估 Azure Migrate 所提供的大小建议的可靠性。
 
-- 置信度评级分配给评估。 评级基于计算评估所需的数据点的可用性。
-- 对于基于性能的大小调整，服务器评估需要：
-    - CPU 和 VM RAM 的利用率数据。
-    - 附加到 VM 的每个磁盘的磁盘 IOPS 和吞吐量数据。
-    - 为附加到 VM 的每个网络适配器处理基于性能的大小调整的网络 i/o。
+- 置信度分级是分配给评估。 此分级基于对评估进行计算时所需数据点的可用性。
+- 对于基于性能的调整大小，评估需要：
+    - CPU 和 RAM 的使用率数据。
+    - 连接到服务器的每个磁盘所对应的磁盘 IOPS 和吞吐量数据。
+    - 为每个连接到服务器的网络适配器处理基于性能的调整大小所需要的网络 I/O。
 
-如果其中的任何利用率均不可用，则大小建议可能不可靠。
+如果其中的任一使用率数值不可用，则大小建议可能不可靠。
 
 > [!NOTE]
-> 不会为使用导入的 CSV 文件评估的服务器分配置信度。 评级也不适用于 "按本地评估"。
+> 对于使用导入的 CSV 文件进行评估的服务器，不会分配置信度分级。 另外，分级也不适用于按原样本地评估。
 
 ### <a name="ratings"></a>评级
 
-下表显示了评估置信度评级，它取决于可用数据点的百分比：
+下表显示了评估置信度分级，具体取决于可用数据点的百分比：
 
    **数据点的可用性** | **置信度分级**
    --- | ---
@@ -265,28 +266,28 @@ Azure Migrate 中的每个基于性能的 Azure VM 评估都与置信度分级�
 
 ### <a name="low-confidence-ratings"></a>低置信度分级
 
-下面是评估降低置信度的几个原因：
+以下列出了评估可能获得较低置信度分级的一些原因：
 
-- 你未在创建评估的持续时间内分析环境。 例如，如果你创建了 "性能持续时间" 设置为一天的评估，则必须在开始发现所有数据点后等待至少一天。
-- 评估无法在评估期内收集部分或全部 Vm 的性能数据。 若要获得更高的置信度，请确保： 
-    - Vm 在评估期间开机
-    - 允许端口443上的出站连接
-    - 对于 Hyper-v Vm，已启用动态内存 
+- 在创建评估的过程中，没有对环境进行分析。 例如，如果在创建评估时性能持续时间设置为一天，那么开始发现后必须等待至少一天，才能收集到所有的数据点。
+- 评估无法在评估期内收集部分或全部服务器的性能数据。 若要获得较高的置信度分级，请确保： 
+    - 服务器在评估期间处于开机状态
+    - 允许端口 443 上的出站连接
+    - 为 Hyper-V 服务器启用动态内存 
     
     请重新计算评估以反映置信度评级的最新更改。
 
-- 某些 Vm 是在计算评估期间创建的。 例如，假设你为上个月的性能历史记录创建了评估，但某些 Vm 只是在一周之前创建的。 在这种情况下，新 VM 的性能数据在整个过程中都不可用，并且置信度分级会较低。
+- 有些服务器是在计算评估期间创建。 例如，假设针对上一个月的性能历史记录创建了评估，但有些服务器是在一周前刚刚创建。 在这种情况下，整个评估过程中将无法使用新服务器的性能数据，而且置信度分级会较低。
 
 > [!NOTE]
-> 如果任何评估的置信度小于五星级，我们建议你等待至少一天，让设备对环境进行配置，然后重新计算评估。 否则，基于性能的大小调整可能不可靠。 在这种情况下，我们建议你将评估切换为本地大小调整。
+> 如果任何评估的置信度分级低于五星，建议等待至少一天，以便设备对环境进行分析，然后重新计算评估。 否则，基于性能的调整大小可能不可靠。 在这种情况下，建议将评估切换为本地调整大小。
 
 ## <a name="calculate-monthly-costs"></a>计算每月成本
 
-完成规模调整建议后，中的 Azure VM 评估 Azure Migrate 在迁移后计算计算和存储成本。
+完成调整大小建议后，Azure Migrate 中的 Azure VM 评估将计算迁移后的计算和存储成本。
 
-- **计算成本**： Azure Migrate 使用推荐的 azure VM 大小和 AZURE 计费 API 来计算 VM 每月的费用。
+- 计算成本：Azure Migrate 使用建议的 Azure VM 大小和 Azure 计费 API 来计算服务器的每月成本。
 
-    计算将考虑：
+    计算中需要考虑的因素包括：
     - 操作系统
     - 软件保障
     - 预留实例
@@ -294,11 +295,11 @@ Azure Migrate 中的每个基于性能的 Azure VM 评估都与置信度分级�
     - 位置
     - 货币设置
 
-    服务器评估在所有计算机上聚合成本，以计算每月总计算成本。
+    评估会将所有服务器的成本求和，以计算每月的总计算成本。
 
-- **存储成本**：通过聚合附加到计算机的所有磁盘的每月成本来计算计算机的每月存储成本。
+- 存储成本：服务器的每月存储成本等于连接到该服务器上的所有磁盘的每月成本求和。
 
-    服务器评估通过聚合所有计算机的存储成本来计算每月总存储成本。 目前，计算不会考虑评估设置中指定的产品/服务。
+    评估通过将所有服务器的存储成本求和，计算每月总存储成本。 目前，这项计算中不考虑在评估设置中指定的优惠。
 
 成本以在评估设置中指定的币种显示。
 
@@ -306,6 +307,6 @@ Azure Migrate 中的每个基于性能的 Azure VM 评估都与置信度分级�
 
 [查阅](best-practices-assessment.md)关于创建评估的最佳做法。 
 
-- 了解如何为 [VMware vm](./tutorial-discover-vmware.md)、 [hyper-v vm](./tutorial-discover-hyper-v.md)和 [物理服务器](./tutorial-discover-physical.md)运行评估。
-- 了解如何评估 [使用 CSV 文件导入](./tutorial-discover-import.md)的服务器。
-- 了解如何设置 [依赖项可视化](concepts-dependency-visualization.md)。
+- 了解如何对 [VMware](./tutorial-discover-vmware.md) 和 [Hyper-V ](./tutorial-discover-hyper-v.md) 环境中运行的服务器以及[物理服务器](./tutorial-discover-physical.md)运行评估。
+- 了解如何评估[使用 CSV 文件导入](./tutorial-discover-import.md)的服务器。
+- 了解如何设置[依赖项可视化](concepts-dependency-visualization.md)。

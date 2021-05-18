@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a12cc3299fbb5916afba48d2608024f28999634
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: 2d792c1eb0a85f2a898d1dc5c63047a4553f13b0
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724621"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106766"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>通过使用连续访问评估来构建复原能力
 
@@ -42,11 +42,13 @@ ms.locfileid: "98724621"
 
 此机制允许 Azure AD 颁发生存期较长的令牌，同时使应用程序能够只在需要时才撤销访问权限并强制重新进行身份验证。 此模式的最终结果是减少了用于获取令牌的调用，这就意味着端到端流会更具复原能力。 
 
-若要使用 CAE，服务和客户端必须都支持 CAE。 Microsoft 365 服务（如 Exchange Online、Teams 和 SharePoint Online）支持 CAE。 在客户端，使用这些 Office 365 服务的基于浏览器的体验（例如 Outlook Web 应用）和 Office 365 本机客户端的特定版本支持 CAE。 更多的 Microsoft 云服务将 CAE。
+若要使用 CAE，服务和客户端必须都支持 CAE。 Microsoft 365 服务（如 Exchange Online、Teams 和 SharePoint Online）支持 CAE。 在客户端，使用这些 Office 365 服务的基于浏览器的体验（例如 Outlook Web 应用）和 Office 365 本机客户端的特定版本支持 CAE。 更多的 Microsoft 云服务将会支持 CAE。
 
 Microsoft 正在与业界合作构建[标准](https://openid.net/wg/sse/)，这些标准将允许第三方应用程序使用此功能。 你也可以开发支持 CAE 的应用程序。 有关详细信息，请参阅“如何在应用程序中构建复原能力”。
 
 ## <a name="how-do-i-implement-cae"></a>如何实现 CAE？
+
+* [更新代码以使用支持 CAE 的 API](../develop/app-resilience-continuous-access-evaluation.md)。
 
 * 在 Azure AD 安全配置中[启用 CAE](../conditional-access/concept-continuous-access-evaluation.md)。
 
@@ -66,7 +68,7 @@ Microsoft 正在与业界合作构建[标准](https://openid.net/wg/sse/)，这�
 
 * [在混合身份验证中构建复原能力](resilience-in-hybrid.md)
 
-* [使用应用程序代理通过应用程序访问生成恢复能力](resilience-on-premises-access.md)
+* [利用应用程序代理构建应用程序访问的复原能力](resilience-on-premises-access.md)
 
 适用于开发人员的复原能力资源
 

@@ -8,10 +8,10 @@ ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: b32f16d170df9963960862bc82aef1a4baf13896
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92104438"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
@@ -26,7 +26,7 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 
 ## <a name="add-to-your-functions-app"></a>添加到 Functions 应用
 
 > [!NOTE]
-> 服务总线绑定当前不支持使用托管标识进行身份验证。 相反，请使用 [服务总线共享访问签名](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature)。
+> 服务总线绑定目前不支持使用托管标识进行身份验证。 请改用[服务总线共享访问签名](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature)。
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 及更高版本
 
@@ -35,7 +35,7 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 
 | 语言                                        | 添加方式...                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安装 [NuGet 包]版本 4.x | |
-| C # 脚本，Java，JavaScript，Python，PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展]用于 Visual Studio Code。 |
+| C# 脚本、Java、JavaScript、Python、PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展]用于 Visual Studio Code。 |
 | C# 脚本（Azure 门户中仅限联机）         | 添加绑定                            | 若要更新现有绑定扩展而不必重新发布函数应用，请参阅[更新扩展]。 |
 
 [NuGet 包]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/

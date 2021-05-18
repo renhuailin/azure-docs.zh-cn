@@ -4,15 +4,15 @@ description: 了解如何使用 Azure Data Box 以脱机方式将较大初始备
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752577"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure Data Box 进行 Azure 备份脱机备份
 
-你可以使用 [Azure Data Box](../databox/data-box-overview.md) 将大型初始 MICROSOFT AZURE 恢复服务 (MARS) 脱机备份，而无需将网络 (用于恢复服务保管库。 此过程可节省通过高延迟网络联机移动大量备份数据所需的时间和网络带宽。 此增强功能目前为预览版。 与[基于 Azure 导入/导出服务的脱机备份](./backup-azure-backup-import-export.md)相比，基于 Azure Data Box 的脱机备份具有两个明显优势：
+可以使用 [Azure Data Box](../databox/data-box-overview.md) 将大量初始 Microsoft Azure 恢复服务 (MARS) 备份以脱机方式（不使用网络）植入到恢复服务保管库。 此过程可节省通过高延迟网络联机移动大量备份数据所需的时间和网络带宽。 此增强功能目前为预览版。 与[基于 Azure 导入/导出服务的脱机备份](./backup-azure-backup-import-export.md)相比，基于 Azure Data Box 的脱机备份具有两个明显优势：
 
 - 无需购买你自己的与 Azure 兼容的磁盘和连接器。 Azure Data Box 随附与选定 [Data Box SKU](https://azure.microsoft.com/services/databox/data/) 关联的磁盘。
 - Azure 备份（MARS 代理）可以直接将备份数据写入支持的 Azure Data Box SKU。 此功能使你无需为初始备份数据预配暂存位置。 也不需要使用实用工具来格式化数据并将其复制到磁盘上。
@@ -48,10 +48,10 @@ ms.locfileid: "96752577"
 | 每个服务器的备份数据大小（通过 MARS 压缩后）* | 支持的 Azure Data Box SKU                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | <=7.2 TB                                                    | [Azure Data Box Disk](../databox/data-box-disk-overview.md) |
-| >7.2 TB 和 <= 80 TB * *                                      | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
+| 大于 7.2 TB 且小于等于 80TB**                                      | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
 *典型的压缩率在 10% 到 20% 之间变化。 <br>
-* * 如果你预计单个 MARS 服务器的初始备份数据超过 80 TB，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
+**如果希望单个 MARS 服务器拥有超过 80 TB 的初始备份数据，请联系[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)。
 
 >[!IMPORTANT]
 >单个服务器的初始备份数据必须包含在单个 Azure Data Box 实例或 Azure Data Box 磁盘中，不能在相同或不同 SKU 的多个设备之间共享。 但 Azure Data Box 设备可以包含来自多个服务器的初始备份。
@@ -144,34 +144,34 @@ ms.locfileid: "96752577"
 
 ### <a name="set-up-azure-data-box"></a>设置 Azure Data Box
 
-如果你将 Azure Data Box 实例排序 (高达 100 TB) ，请按照此处的步骤 [设置你的 Data Box 实例](../databox/data-box-deploy-set-up.md)。
+如果订购了 Azure Data Box 实例（最大 100 TB），请执行[此处](../databox/data-box-deploy-set-up.md)的步骤来设置 Data Box 实例。
 
 #### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>将 Azure Data Box 实例作为本地系统安装
 
-MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data Box 实例的装载路径提供相同级别的特权。
+MARS 代理在本地系统上下文中运行，因此需要向在其中连接 Azure Data Box 实例的装载路径提供相同级别的特权。
 
-若要确保可以使用 NFS 协议将 Data Box 设备装载为本地系统，请执行以下操作：
+要确保可以使用 NFS 协议将 Data Box 设备装载为本地系统，请执行以下操作：
 
-1. 在安装了 MARS 代理的 Windows server 上启用 NFS 功能的客户端。 指定备用源 *WIM： D： \Sources\Install.wim： 4*。
+1. 在安装了 MARS 代理的 Windows Server 上启用 NFS 功能的客户端。 指定备用源 *WIM:D:\Sources\Install.wim:4*。
 1. 将 PsExec 从 [Sysinternals](/sysinternals/downloads/psexec) 页下载到安装了 MARS 代理的服务器。
-1. 打开提升的命令提示符，并运行以下命令，并将包含 *PSExec.exe* 的目录作为当前目录。
+1. 打开提升的命令提示符，并以包含 PSExec.exe 的目录作为当前目录运行以下命令。
 
     ```cmd
     psexec.exe  -s  -i  cmd.exe
     ```
 
-   由于上一个命令打开的命令窗口位于本地系统上下文中。 使用此命令窗口执行将 Azure 页 blob 共享装载为 Windows server 上的网络驱动器的步骤。
-1. 按照 [连接到 Data Box](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box) 中的步骤，将你的服务器与 MARS 代理连接到通过 NFS 连接到 Data Box 设备。 在本地系统命令提示符下运行以下命令，以装载 Azure 页 blob 共享。
+   由于先前的命令而打开的命令窗口位于本地系统上下文中。 使用此命令窗口执行相关步骤，以将 Azure 页 Blob 共享作为网络驱动器装载到 Windows Server。
+1. 按照[连接到 Data Box](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box) 中的步骤，将安装了 MARS 代理的服务器通过 NFS 连接到 Data Box 设备。 在本地系统命令提示符下运行以下命令，以装载 Azure 页 blob 共享。
 
     ```cmd
     mount -o nolock \\<DeviceIPAddress>\<StorageAccountName_PageBlob X:  
     ```
 
-   装载共享后，请检查是否可以从服务器访问 X：。 如果可以，请继续阅读本文的下一部分。
+   装载共享后，请检查是否可以从服务器访问 X:。 如果可以，请继续完成本文的下一部分。
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>将初始备份数据传输到 Azure Data Box 设备
 
-1. 打开服务器上的 **Microsoft Azure 备份** 应用程序。
+1. 在服务器上打开 **Microsoft Azure 备份** 应用程序。
 1. 在“操作”窗格中，选择“计划备份”。 
 
     ![选择“计划备份”](./media/offline-backup-azure-data-box/schedule-backup.png)
@@ -183,7 +183,7 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
     ![添加要备份的项](./media/offline-backup-azure-data-box/add-items.png)
 
 1. 选择与“文件和文件夹”和“系统状态”相对应的备份计划和保留策略。  系统状态仅适用于 Windows Server，不适用于 Windows 客户端。
-1. 在向导的 " **选择初始备份类型 (文件和文件夹)** " 页上，选择 " **使用 Microsoft Azure Data Box 磁盘传输** " 选项，然后选择 " **下一步**"。
+1. 在向导的“选择初始备份类型(文件和文件夹)”页上选择“使用 Microsoft Azure Data Box 磁盘进行传输”选项，然后选择“下一步”。  
 
     ![选择初始备份类型](./media/offline-backup-azure-data-box/initial-backup-type.png)
 
@@ -203,7 +203,7 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
 
     ![Data Box 设备检测](./media/offline-backup-azure-data-box/databox-device-detection.png)
 
-    如果由于 USB 端口不可用而将 Azure Data Box 实例连接为网络共享 (，或者由于你已订购并装载了 100-TB Data Box 设备) ，检测将首先失败。 你可以选择输入 Data Box 设备的网络路径。
+    如果将 Azure Data Box 实例作为网络共享来连接（由于 USB 端口不可用或由于你订购并安装了 100 TB Data Box 设备），则首次检测会失败。 系统会让你输入 Data Box 设备的网络路径。
 
     ![输入网络路径](./media/offline-backup-azure-data-box/enter-network-path.png)
 
@@ -214,7 +214,7 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
     >
     >例如，如果磁盘的路径是 `\\mydomain\myserver\disk1\`，且 disk1 包含一个名为 PageBlob 的目录，则在 MARS 代理向导页上输入的路径为 `\\mydomain\myserver\disk1\`。
     >
-    >如果 [设置 Azure Data Box 100-TB 设备](#set-up-azure-data-box-devices)，请输入 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` 作为设备的网络路径。
+    >如果[设置 Azure Data Box 100 TB 设备](#set-up-azure-data-box-devices)，请输入 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` 作为设备的网络路径。
 
 1. 选择“下一步”，然后在下一页上选择“完成”，以便保存备份和保留策略，其中包含通过使用 Azure Data Box 进行脱机备份的配置。
 
@@ -238,7 +238,7 @@ MARS 代理开始将你选择的数据备份到 Azure Data Box 设备。 此过�
 
 此部分介绍在成功地将数据备份到 Azure Data Box Disk 之后要执行的步骤。
 
-- 按照此文中的步骤[将 Azure Data Box 磁盘寄送到 Azure](../databox/data-box-disk-deploy-picked-up.md)。 如果使用 Azure Data Box 100 TB 设备，请按照以下步骤将 [Azure Data Box 设备寄送到 Azure](../databox/data-box-deploy-picked-up.md)。
+- 按照此文中的步骤[将 Azure Data Box 磁盘寄送到 Azure](../databox/data-box-disk-deploy-picked-up.md)。 如果使用 Azure Data Box 100 TB 设备，请执行[这些步骤](../databox/data-box-deploy-picked-up.md)，将 Azure Data Box 设备寄送到 Azure。
 
 - 在 Azure 门户中[监视 Data Box 作业](../databox/data-box-disk-deploy-upload-verify.md)。 Azure Data Box 作业完成后，MARS 代理会在下一次执行计划的备份时自动将数据从存储帐户移动到恢复服务保管库。 然后，它会将备份作业标记为“作业已完成”（如果成功创建了恢复点）。
 
@@ -249,7 +249,7 @@ MARS 代理开始将你选择的数据备份到 Azure Data Box 设备。 此过�
 
 ## <a name="troubleshooting"></a>故障排除
 
-Microsoft Azure 恢复服务 (MARS) 代理在租户中为你创建一个 Azure Active Directory (Azure AD 应用程序。 此应用程序需要使用在你配置脱机种子设定策略时创建和上传的证书，来进行身份验证。 我们使用 Azure PowerShell 创建证书并将其上传到 Azure AD 应用程序。
+Microsoft Azure 恢复服务 (MARS) 代理会在租户中为你创建一个 Azure Active Directory (Azure AD) 应用程序。 此应用程序需要使用在你配置脱机种子设定策略时创建和上传的证书，来进行身份验证。 我们使用 Azure PowerShell 创建证书并将其上传到 Azure AD 应用程序。
 
 ### <a name="problem"></a>问题
 
@@ -267,7 +267,7 @@ Microsoft Azure 恢复服务 (MARS) 代理在租户中为你创建一个 Azure A
 
 #### <a name="step-2-of-verification"></a>验证步骤 2
 
-1. 在安装路径中打开 Temp 文件夹。 默认临时文件夹路径为 " *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*"。查找 *CBUICurr* 文件，并打开文件。
+1. 在安装路径中打开 Temp 文件夹。 临时文件夹的默认路径为 *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*。查找 *CBUICurr* 文件，然后打开这个文件。
 
 1. 在 CBUICurr 文件中滚动到最后一行，查看问题是否与以下错误消息中的问题相同：`Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed`。
 
@@ -277,7 +277,7 @@ Microsoft Azure 恢复服务 (MARS) 代理在租户中为你创建一个 Azure A
 
 #### <a name="step-1-of-workaround"></a>解决方法的步骤 1
 
-使用具有创建的 Data Box 作业的订阅上的管理员访问权限登录到在 MAB UI 上出现的其他帐户。
+使用在要创建 Data Box 作业的订阅上具有管理员访问权限的另一个帐户，登录到 MAB UI 上显示的 PowerShell。
 
 #### <a name="step-2-of-workaround"></a>解决方法的步骤 2
 
@@ -302,7 +302,7 @@ Microsoft Azure 恢复服务 (MARS) 代理在租户中为你创建一个 Azure A
 
 4. 在服务器的“运行”窗口中，输入 regedit 以打开注册表。
 
-5. 请参阅注册表 *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider。* 右键单击“CloudBackupProvider”并添加名称为 `AzureADAppCertThumbprint_<Azure User Id>` 的新字符串值。
+5. 转到注册表 *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*。 右键单击“CloudBackupProvider”并添加名称为 `AzureADAppCertThumbprint_<Azure User Id>` 的新字符串值。
 
     >[!NOTE]
     > 若要获取 Azure 用户 ID，请执行以下操作之一：
@@ -318,4 +318,4 @@ Microsoft Azure 恢复服务 (MARS) 代理在租户中为你创建一个 Azure A
 
 ## <a name="questions"></a>问题
 
-如有任何疑问或对所遇到的任何问题的说明，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
+如有任何疑问或对所遇到的任何问题的说明，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)。

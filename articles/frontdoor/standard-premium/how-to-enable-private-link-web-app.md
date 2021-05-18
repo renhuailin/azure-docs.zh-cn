@@ -7,13 +7,13 @@ author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.author: tyao
-ms.openlocfilehash: 805c3ba0360fcffe2bfd4217c0ef625fe61e5d64
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.author: duau
+ms.openlocfilehash: d30b73d1e80273d766f4f94224798ddb04763195
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030573"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633243"
 ---
 # <a name="connect-azure-front-door-premium-to-a-web-app-origin-with-private-link"></a>使用专用链接将 Azure Front Door Premium 连接到 Web 应用源
 
@@ -29,7 +29,7 @@ ms.locfileid: "102030573"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="enable-private-link-to-a-web-app-in-azure-front-door-premium"></a>在 Azure Front Door Premium 中启用 Web 应用专用链接
  

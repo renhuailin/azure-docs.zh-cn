@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.openlocfilehash: b2f2c8497d5365104a5ffc361b791450925d0c19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101694778"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>使用模糊搜索来更正拼写错误
@@ -21,13 +21,13 @@ Azure 认知搜索支持模糊搜索 - 这是可以纠正输入字符串中的�
 
 ## <a name="what-is-fuzzy-search"></a>什么是模糊搜索？
 
-模糊搜索是一种扩展措施，可以根据具有类似构成部分的字词生成匹配项。 如果指定了模糊搜索，引擎将基于 [确定性的有限自动机理论](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)) ，为查询中的所有术语构建一个图形 (。 例如，如果查询包含三个字词“university of washington”，则会为查询 `search=university~ of~ washington~` 中的每个字词创建一张图（模糊搜索中不会删除非索引字，因此“of”也会获得一张图）。
+模糊搜索是一种扩展措施，可以根据具有类似构成部分的字词生成匹配项。 指定模糊搜索后，引擎将为查询中的所有完整字词生成具有类似构成的字词的图（基于[确定性有限自动机理论](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)）。 例如，如果查询包含三个字词“university of washington”，则会为查询 `search=university~ of~ washington~` 中的每个字词创建一张图（模糊搜索中不会删除非索引字，因此“of”也会获得一张图）。
 
 图中最多包含每个字词的 50 个扩展（或排列），在过程中捕获正确和错误的变体。 然后，引擎在响应中返回最相关的匹配项。 
 
 对于类似于“university”的字词，图中可能包含“unversty”、“universty”、“university”、“universe”、“inverse”。 与图中的字词匹配的任何文档会包含在结果中。 与对文本进行分析来处理同一单词的不同形式（“mice”和“mouse”）的其他查询不同，模糊查询中的比较是针对表面值进行的，不会对文本进行任何语言分析。 语义不同的“universe”和“inverse”相互匹配，因为两者的句法差异很小。
 
-如果差异限制为两个或更少的编辑（其中的编辑是指插入、删除、替换或转换的字符），则匹配成功。 指定差异的字符串更正算法是 [Damerau-Levenshtein 距离](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) 度量值，描述为 "最小操作 (插入、删除、替换或 transpositions 两个相邻字符的最小数量) 需要将一个词更改为另一个单词。 
+如果差异限制为两个或更少的编辑（其中的编辑是指插入、删除、替换或转换的字符），则匹配成功。 指定差异的字符串更正算法为 [Damerau-Levenshtein 距离](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)指标，描述为“将一个单词更改为另一个单词所需的最少操作次数（插入、删除、替换或调换两个相邻字符）”。 
 
 在 Azure 认知搜索中：
 

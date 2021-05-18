@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b0a5547928bd7d19343c50e40ab9fcb2c335e893
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97674525"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>如何使用 PowerShell 在 Azure Database for PostgreSQL 中创建和管理只读副本
@@ -26,7 +26,7 @@ ms.locfileid: "97674525"
 
 若要完成本操作指南，需要：
 
-- 在本地安装[Az PowerShell 模块](/powershell/azure/install-az-ps)或在浏览器中[Azure Cloud Shell](https://shell.azure.com/)
+- 本地安装 [Az PowerShell 模块](/powershell/azure/install-az-ps)或浏览器中有 [Azure Cloud Shell](https://shell.azure.com/)
 - [Azure Database for PostgreSQL 服务器](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
@@ -56,7 +56,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | ResourceGroupName |  myresourcegroup |  在其中创建副本服务器的资源组。  |
 | 名称 | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
 
-若要创建跨区域只读副本，请使用 Location 参数。 以下示例在 **美国西部** 区域创建一个副本。
+若要创建跨区域只读副本，请使用 Location 参数。 以下示例在美国西部区域创建了一个副本。
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
@@ -87,7 +87,7 @@ Get-AzPostgreSQLReplica -ResourceGroupName myresourcegroup -ServerName mydemoser
 
 ### <a name="stop-a-replica-server"></a>停止副本服务器
 
-停止读取副本服务器会将读取副本提升为独立服务器。 可以通过运行 `Update-AzPostgreSqlServer` cmdlet 并将 ReplicationRole 值设置为来完成此操作 `None` 。
+停止只读副本服务器会将只读副本提升为独立服务器。 可以通过运行 `Update-AzPostgreSqlServer` cmdlet 并将 ReplicationRole 值设置为 `None` 来完成此操作。
 
 ```azurepowershell-interactive
 Update-AzPostgreSqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -ReplicationRole None

@@ -1,5 +1,5 @@
 ---
-title: 'Azure PowerShell 脚本示例-将 IPv6 前端配置标准负载均衡器 (预览版) '
+title: Azure PowerShell 脚本示例 - 使用标准负载均衡器（预览版）配置 IPv6 前端
 titlesuffix: Azure Virtual Network
 description: 了解使用标准负载均衡器在虚拟网络中配置 IPv6 前端的脚本示例。
 services: virtual-network
@@ -13,17 +13,17 @@ ms.date: 07/15/2019
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 89923bbbb6f1745a4efe033d795a6ee90d1e4d32
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98223185"
 ---
-# <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>在虚拟网络脚本示例中配置标准负载均衡器 (预览版的 IPv6 前端) 
+# <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>使用标准负载均衡器（预览版）在虚拟网络中配置 IPv6 前端的脚本示例
 
 本文介绍如何在 Azure 中部署一个双堆栈 (IPv4 + IPv6) 应用程序，其中包含具有双堆栈子网的双堆栈虚拟网络、采用双重 (IPv4 + IPv6) 前端配置的负载均衡器、具有采用双重 IP 配置的 NIC 的 VM、双重网络安全组规则，以及双重公共 IP。
 
-可以通过 Azure [Cloud Shell](https://shell.azure.com/powershell) 或本地 PowerShell 安装来执行脚本。 如果在本地使用 PowerShell，则此脚本需要 Azure Az PowerShell 模块 1.0.0 或更高版本。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+可以通过 Azure [Cloud Shell](https://shell.azure.com/powershell) 或本地 PowerShell 安装来执行脚本。 如果在本地使用 PowerShell，则此脚本需要 Azure Az PowerShell 模块 1.0.0 或更高版本。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -250,7 +250,7 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。 |

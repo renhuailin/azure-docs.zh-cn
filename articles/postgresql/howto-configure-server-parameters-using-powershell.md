@@ -1,19 +1,19 @@
 ---
 title: 配置服务器参数 - Azure PowerShell - Azure Database for PostgreSQL
 description: 本文介绍如何使用 PowerShell 在 Azure Database for PostgreSQL 中配置服务参数。
-author: sunilagarwal
-ms.author: sunila
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6e9bf55aa46e2206928a5f93285a4001dc731f64
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 24106e40a78d4b5607c352ffd49a310533760a66
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604288"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "92489942"
 ---
 # <a name="customize-azure-database-for-postgresql-server-parameters-using-powershell"></a>使用 PowerShell 自定义 Azure Database for PostgreSQL 服务器参数
 

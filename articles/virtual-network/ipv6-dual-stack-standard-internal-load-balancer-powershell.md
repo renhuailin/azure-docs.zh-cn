@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
 ms.openlocfilehash: 3df89b84e748f041f13866c1eb3c0b8a3341209c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98220824"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>使用 Azure 中的标准内部负载均衡器部署 IPv6 双堆栈应用程序 (预览) 
+# <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>在 Azure 中部署使用标准内部负载均衡器的 IPv6 双堆栈应用程序 - PowerShell（预览版）
 
 本文介绍如何在 Azure 中部署一个双堆栈 (IPv4 + IPv6) 应用程序，其中包含双堆栈虚拟网络和子网、采用双重 (IPv4 + IPv6) 前端配置的标准内部负载均衡器、具有采用双重 IP 配置的 NIC 的 VM、网络安全组规则，以及公共 IP。
 
@@ -35,7 +35,7 @@ ms.locfileid: "98220824"
 ```
 
 创建上述内部负载均衡器前端配置所要做出的更改包括：
-- `PrivateIpAddressVersion`指定为 "IPv6"
+- 将 `PrivateIpAddressVersion` 指定为“IPv6”
 - `-PublicIpAddress` 参数已省略或已替换为 `-PrivateIpAddress`。 请注意，专用地址必须在要将内部负载均衡器部署到的子网 IP 空间的范围内。 如果省略静态 `-PrivateIpAddress`，将从部署内部负载均衡器的子网中选择下一个可用 IPv6 地址。
 - 使用 `-Subnet` 或 `-SubnetId` 参数指定要将内部负载均衡器部署到的双堆栈子网。
 
@@ -43,8 +43,8 @@ ms.locfileid: "98220824"
 
 如果你选择在本地安装和使用 PowerShell，本文要求使用 Azure PowerShell 模块 6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
-## <a name="prerequisites"></a>必备条件
-在 Azure 中部署双堆栈应用程序之前，必须使用以下 Azure PowerShell 来配置此预览功能的订阅：
+## <a name="prerequisites"></a>先决条件
+在 Azure 中部署双堆栈应用程序之前，必须使用以下 Azure PowerShell 为此预览功能配置订阅：
 
 按如下所示进行注册：
 ```azurepowershell
@@ -64,7 +64,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在创建双堆栈虚拟网络之前，必须先使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建一个资源组。 以下示例在 "*美国东部*" 位置创建名为 " *dsStd_ILB_RG* " 的资源组：
+在创建双堆栈虚拟网络之前，必须先使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建一个资源组。 以下示例在“美国东部”位置创建一个名为“dsStd_ILB_RG”的资源组：
 
 ```azurepowershell
 $rg = New-AzResourceGroup `
@@ -334,7 +334,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 
 
 > [!NOTE]
-> 适用于 Azure 虚拟网络的 IPv6 可在此预览版本的只读 Azure 门户中使用。
+> 当前预览版的 Azure 虚拟网络 IPv6 在 Azure 门户中以只读的形式提供。
 
 ## <a name="clean-up-resources"></a>清理资源
 

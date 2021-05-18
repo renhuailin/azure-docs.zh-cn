@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户排查 Azure Data Box Gateway 问题 | Microsoft Docs
-description: 了解如何解决 Azure Data Box Gateway 上的问题。 您可以运行诊断、收集支持信息并使用日志进行故障排除。
+description: 了解如何排查 Azure Data Box Gateway 问题。 你可以运行诊断、收集支持信息并使用日志进行故障排除。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: e5280805090a83245e287c0b15a1735ee41e934e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96581913"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>排查 Azure Data Box Gateway 问题
@@ -30,13 +30,13 @@ ms.locfileid: "96581913"
 
 若要诊断和排查任何设备错误，可以运行诊断测试。 在设备的本地 Web UI 中执行以下步骤，以运行诊断测试。
 
-1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。 选择要运行的测试，然后单击 " **运行测试**"。 这会运行测试来诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 你将收到设备正在运行测试的通知。
+1. 在本地 Web UI 中，转到“故障排除”>“诊断测试”。 选择要运行的测试，然后单击“运行测试”。 这会运行测试来诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 你将收到设备正在运行测试的通知。
 
     ![单击“添加用户”](media/data-box-gateway-troubleshoot/run-diag-1.png)
  
 2. 测试完成后，会显示结果。 如果未通过某项测试，会显示建议的措施的 URL。 可以单击该 URL 查看建议的措施。 
  
-    ![单击 "添加用户 2"](media/data-box-gateway-troubleshoot/run-diag-2.png)
+    ![单击“添加用户 2”](media/data-box-gateway-troubleshoot/run-diag-2.png)
 
 
 ## <a name="collect-support-package"></a>收集支持包
@@ -47,11 +47,11 @@ ms.locfileid: "96581913"
 
 1. 在本地 Web UI 中，转到“故障排除”>“支持”。 单击“创建支持包”。 系统随即开始收集支持包。 收集包可能需要几分钟时间。
 
-    ![单击 "添加用户 3"](media/data-box-gateway-troubleshoot/collect-logs-1.png)
+    ![单击“添加用户 3”](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
 2. 创建支持包后，单击“下载支持包”。 压缩包将下载到所选的路径。 可以将包解压缩。
 
-    ![单击 "添加用户 4"](media/data-box-gateway-troubleshoot/collect-logs-2.png)
+    ![单击“添加用户 4”](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>使用日志进行故障排除
 
@@ -59,7 +59,7 @@ ms.locfileid: "96581913"
 
 1. 若要查看错误文件，请转到共享，然后单击该共享以查看内容。 
 
-      ![单击 "添加用户 5"](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
+      ![单击“添加用户 5”](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
 2. 单击 Microsoft Data Box Gateway 文件夹。 此文件夹包含两个子文件夹：
 

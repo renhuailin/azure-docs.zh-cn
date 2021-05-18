@@ -1,15 +1,15 @@
 ---
-title: 用于 Azure Data Lake 的 U SQL 用户定义的合并器可编程性指南
-description: 了解有关合并器的详细信息。
+title: 适用于 Azure Data Lake 的 U-SQL 用户定义合并器可编程性指南
+description: 了解 U-SQL UDO 可编程性指南 - 用户定义的合并器。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: a6c560cf4ec11197183711656d69024591e7008c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96512527"
 ---
 # <a name="use-user-defined-combiner"></a>使用用户定义的合并器
@@ -94,9 +94,9 @@ CombinerMode 枚举可采用以下值：
 
 输入行集作为左侧和右侧 `IRowset` 类型的接口进行传递。 必须同时枚举这两个行集以进行处理。 由于只能枚举每个接口一次，因此必须在必要时对其进行枚举和缓存。
 
-出于缓存目的，我们可以创建一个列表 \<T\> 类型作为 LINQ 查询执行的结果，尤其是列出<`IRow`>。 还可在枚举期间使用匿名数据类型。
+为进行缓存，可创建 List\<T\> 类型的内存结构，作为 LINQ 查询执行的结果，具体而言就是 List<`IRow`>。 还可在枚举期间使用匿名数据类型。
 
-有关 LINQ 查询的详细信息，请参阅 [Linq 查询简介 (c # ) ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) ，以及 [ienumerable \<T\> 接口](/dotnet/api/system.collections.generic.ienumerable-1) 的详细信息 \<T\> 。
+有关 LINQ 查询的详细信息，请参阅 [LINQ 查询 (C#) 简介](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)，有关 IEnumerable\<T\> 接口的详细信息，请参阅 [IEnumerable\<T\> 接口](/dotnet/api/system.collections.generic.ienumerable-1)。
 
 为从传入 `IRowset` 获取实际数据值，需使用 `IRow` 接口的 Get() 方法。
 
@@ -304,5 +304,5 @@ USING MyNameSpace.MyCombiner();
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [U-SQL 可编程性指南-概述](data-lake-analytics-u-sql-programmability-guide.md)
-* [U-SQL 可编程性指南-UDT 和 UDAGG](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)
+* [U-SQL 可编程性指南 - 概述](data-lake-analytics-u-sql-programmability-guide.md)
+* [U-SQL 可编程性指南 - UDT 和 UDAGG](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)

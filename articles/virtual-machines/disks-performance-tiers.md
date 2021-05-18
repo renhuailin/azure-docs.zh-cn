@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
 ms.openlocfilehash: 429845aa22b6d069b8d7233132de8eb3b24b2985
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043671"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>使用 Azure PowerShell 模块或 Azure CLI 更改性能层
@@ -115,12 +115,12 @@ $disk.Tier
 ```
 ---
 
-## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>更改磁盘的性能层，无需停机 (预览) 
+## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>在不停机的情况下更改磁盘的性能层（预览版）
 
-你还可以在不停机的情况下更改性能层，因此无需释放 VM 或分离磁盘来更改层。 有关预览版的详细信息和注册链接，请参阅 [更改性能层（不停机） (预览) ](#change-performance-tier-without-downtime-preview) 部分。
+你还可以在不停机的情况下更改性能层，因此无需释放 VM 或分离磁盘来更改层。 有关预览版的详细信息和注册链接，请参阅[在不停机的情况下更改性能层（预览版）](#change-performance-tier-without-downtime-preview)部分。
 
 
-以下脚本将使用中的示例模板 [CreateUpdateDataDiskWithTier.js](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json)来更新高于基线层的磁盘层。 替换 `<yourSubScriptionID>` 、、、 `<yourResourceGroupName>` `<yourDiskName>` `<yourDiskSize>` ， `<yourDesiredPerformanceTier>` 然后运行该脚本：
+以下脚本将使用示例模板 [CreateUpdateDataDiskWithTier.json](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json) 更新高于基线层的磁盘层。 替换 `<yourSubScriptionID>`、`<yourResourceGroupName>`、`<yourDiskName>`、`<yourDiskSize>` 和 `<yourDesiredPerformanceTier>`，然后运行脚本：
 
  ```cli
 subscriptionId=<yourSubscriptionID>
@@ -139,7 +139,7 @@ region=EastUS2EUAP
 --parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
 ```
 
-性能层更改最长可能需要15分钟才能完成。 若要确认磁盘已更改层，请使用以下命令：
+性能层更改最长可能需要 15 分钟才能完成。 若要确认磁盘已更改层，请使用以下命令：
 
 ```cli
 az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-12-01 --query [properties.tier] -o tsv

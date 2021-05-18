@@ -1,6 +1,6 @@
 ---
-title: 向 Android 地图添加多边形延伸层 |Microsoft Azure 映射
-description: 如何将多边形延伸层添加到 Microsoft Azure Map Android SDK。
+title: 向 Android 地图添加多边形挤压层 | Microsoft Azure Maps
+description: 如何将多边形挤压层添加到 Microsoft Azure Map Android SDK。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 02/26/2021
@@ -10,22 +10,22 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: ccabffc0e5a65e41f31c3c80703e67f78e8b5f9e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102100995"
 ---
-# <a name="add-a-polygon-extrusion-layer-to-the-map-android-sdk"></a>向地图添加多边形延伸层 (Android SDK) 
+# <a name="add-a-polygon-extrusion-layer-to-the-map-android-sdk"></a>向地图添加多边形挤压层 (Android SDK)
 
-本文介绍如何使用多边形延伸层将 `Polygon` 和 `MultiPolygon` 特征几何作为延伸形状。
+本文介绍如何使用多边形挤压层将 `Polygon` 和 `MultiPolygon` 特征几何体的面积呈现为挤压形状。
 
-## <a name="use-a-polygon-extrusion-layer"></a>使用多边形延伸层
+## <a name="use-a-polygon-extrusion-layer"></a>使用多边形挤压层
 
-将多边形延伸层连接到数据源。 然后，将其加载到地图中。 多边形延伸层会将和功能的区域 `Polygon` 呈现 `MultiPolygon` 为延伸形状。 `height` `base` 多边形延伸层的和属性定义了与延伸形状的地面和高度的基准距离（以米为 **单位**）。 下面的代码演示如何创建一个多边形，如何将其添加到数据源中，以及如何使用多边形延伸层类进行呈现。
+将多边形挤压层连接到数据源。 然后，将其加载到地图中。 多边形挤压层会将 `Polygon` 和 `MultiPolygon` 特征的区域呈现为挤压形状。 多边形挤压层的 `height` 和 `base` 属性定义了与挤压形状的地面和高度的基准距离（以米为单位）。 下面的代码演示如何创建一个多边形，如何将其添加到数据源中，以及如何使用多边形挤压层类进行呈现。
 
 > [!Note]
-> `base`多边形延伸层中定义的值应小于或等于的值 `height` 。
+> 多边形挤压层中定义的 `base` 值应小于或等于 `height` 的值。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -106,13 +106,13 @@ map.layers.add(layer, "labels")
 
 ::: zone-end
 
-下面的屏幕截图显示了上面的代码，呈现多边形使用多边形拉伸层垂直拉伸。
+下面的屏幕截图显示了上面使用多边形挤压层呈现垂直拉伸的多边形的代码。
 
-![使用多边形延伸层垂直拉伸的多边形](media/map-extruded-polygon-android/polygon-extrusion-layer.jpg)
+![带有使用多边形挤压层垂直拉伸的多边形的地图](media/map-extruded-polygon-android/polygon-extrusion-layer.jpg)
 
 ## <a name="add-data-driven-polygons"></a>添加数据驱动多边形
 
-可以使用多边形延伸层来呈现等值线图地图。 将 `height` `fillColor` 延伸层的和属性设置为 `Polygon` 和特征几何中统计变量的度量值 `MultiPolygon` 。 下面的代码示例根据状态的人口密度度量值显示美国的拉伸等值线图地图。
+可以使用多边形挤压层来呈现分级统计图。 将挤压层的 `height` 和 `fillColor` 属性设置为 `Polygon` 和 `MultiPolygon` 特征几何形状中统计变量的度量。 下面的代码示例根据状态的人口密度度量值显示美国的挤压分级统计图。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -213,9 +213,9 @@ map.layers.add(layer, "labels")
 
 ::: zone-end
 
-下面的屏幕截图显示了美国等值线图地图，并将其垂直拉伸为基于人口密度的拉伸多边形。
+下面的屏幕截图显示了美国的分级统计图，该图已着色并根据人口密度垂直拉伸成挤压多边形。
 
-![一种等值线图的状态地图，以垂直方式拉伸为基于人口密度的拉伸多边形](media/map-extruded-polygon-android/android-extruded-choropleth.jpg)
+![美国的分级统计图，该图已着色并根据人口密度垂直拉伸成挤压多边形](media/map-extruded-polygon-android/android-extruded-choropleth.jpg)
 
 ## <a name="next-steps"></a>后续步骤
 

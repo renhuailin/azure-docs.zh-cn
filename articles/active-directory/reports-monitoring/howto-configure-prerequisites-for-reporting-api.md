@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ca618dc234ff4383083ff5eb21299fb1e3e7128
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 00c519ef06637c5193b347f0bbc906c6232a7ca8
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96348732"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532545"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
 
@@ -224,5 +224,5 @@ Azure AD 租户只有在关联了 Azure AD Premium 许可证的情况下才能�
 ## <a name="next-steps"></a>后续步骤
 
 * [使用具有证书的 Azure Active Directory 报告 API 获取数据](tutorial-access-api-with-certificates.md)
-* [审核 API 参考](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [登录活动报告 API 参考](/graph/api/resources/signin?view=graph-rest-beta)
+* [审核 API 参考](/graph/api/resources/directoryaudit) 
+* [登录活动报告 API 参考](/graph/api/resources/signin)

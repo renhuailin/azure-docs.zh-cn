@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
 ms.openlocfilehash: b1b055fa7f083bd8bccda16498e2894d5d67eace
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100374127"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>查询来自 Azure 时序见解第 2 代的数据
 
-使用 Azure 时序见解第 2 代可以通过公共 Surface API 对存储在环境中的事件和元数据进行数据查询。 [Azure 时序见解 TSI 资源管理器](./concepts-ux-panels.md)也使用这些 api。
+使用 Azure 时序见解第 2 代可以通过公共 Surface API 对存储在环境中的事件和元数据进行数据查询。 [Azure 时序见解 TSI 资源管理器](./concepts-ux-panels.md)也会使用这些 API。
 
 Azure 时序见解第 2 代中提供三个主要 API 类别：
 
@@ -70,13 +70,13 @@ Azure 时序见解第 2 代使用丰富的基于字符串的表达式语言[时�
   响应集中返回的时间戳与左间隔边界相关，而与间隔中的采样事件无关。
 
 
-### <a name="selecting-store-type"></a>选择商店类型
+### <a name="selecting-store-type"></a>选择存储类型
 
-上述 Api 只能针对两种存储类型之一执行， (冷或温) 一次调用。 查询 URL 参数用于指定应在其上执行查询的 [存储类型](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) 。 
+上述 API 在单次调用中只能针对两种存储类型之一（冷或暖）执行查询。 查询 URL 参数用于指定查询应该在其上执行的[存储类型](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)。 
 
-如果未指定任何参数，则默认情况下将在冷存储上执行查询。 如果查询跨越与冷存储和热存储重叠的时间范围，则建议将查询路由到冷存储，以获得最佳体验，因为温存储只包含部分数据。 
+如果未指定任何参数，则默认情况下将在冷存储上执行查询。 如果查询跨越的时间范围中存在冷存储和暖存储的重叠，则建议将查询路由到冷存储以获得最佳体验，因为暖存储只包含部分数据。 
 
-[Azure 时序见解资源管理器](./concepts-ux-panels.md)和[Power BI 连接器](./how-to-connect-power-bi.md)调用上述 api，并将自动选择正确的 storeType 参数（如果相关）。 
+[Azure 时序见解资源管理器](./concepts-ux-panels.md)和 [Power BI 连接器](./how-to-connect-power-bi.md)对上述 API 发起调用，并将自动选择相关的正确 storeType 参数。 
 
 
 ## <a name="next-steps"></a>后续步骤

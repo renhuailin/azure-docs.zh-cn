@@ -3,12 +3,12 @@ title: Azure 容器注册表中存储库的权限
 description: 创建一个令牌，使其权限范围限定于高级注册表中的特定存储库，用来拉取或推送映像，或执行其他操作
 ms.topic: article
 ms.date: 02/04/2021
-ms.openlocfilehash: 8cdcd3e09603f24c37ad7323a273ca97f76fcd0c
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: ceec69d746f77ea7a23bc70d029c8b3736e7f292
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930490"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "99988262"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>创建具有存储库范围权限的令牌
 
@@ -76,8 +76,7 @@ ms.locfileid: "107930490"
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
   --repository samples/hello-world \
-  content/write content/read \
-  --output json
+  content/write content/read
 ```
 
 输出会显示有关令牌的详细信息。 默认情况下，系统会生成两个不会过期的密码，但你可以根据需要设置过期日期。 建议将密码保存在安全的位置，以便以后将其用于身份验证。 无法再次检索这些密码，但可以生成新密码。
@@ -434,21 +433,21 @@ az acr token delete --name MyToken --registry myregistry
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
-[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-repository]: /cli/azure/acr/repository/
-[az-acr-repository-show-tags]: /cli/azure/acr/repository/#az_acr_repository_show_tags
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository/#az_acr_repository_show_manifests
-[az-acr-repository-delete]: /cli/azure/acr/repository/#az_acr_repository_delete
+[az-acr-repository-show-tags]: /cli/azure/acr/repository/#az-acr-repository-show-tags
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository/#az-acr-repository-show-manifests
+[az-acr-repository-delete]: /cli/azure/acr/repository/#az-acr-repository-delete
 [az-acr-scope-map]: /cli/azure/acr/scope-map/
-[az-acr-scope-map-create]: /cli/azure/acr/scope-map/#az_acr_scope_map_create
-[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az_acr_scope_map_show
-[az-acr-scope-map-show]: /cli/azure/acr/scope-map/#az_acr_scope_map_list
-[az-acr-scope-map-update]: /cli/azure/acr/scope-map/#az_acr_scope_map_update
-[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az_acr_scope_map_list
+[az-acr-scope-map-create]: /cli/azure/acr/scope-map/#az-acr-scope-map-create
+[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az-acr-scope-map-show
+[az-acr-scope-map-show]: /cli/azure/acr/scope-map/#az-acr-scope-map-list
+[az-acr-scope-map-update]: /cli/azure/acr/scope-map/#az-acr-scope-map-update
+[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az-acr-scope-map-list
 [az-acr-token]: /cli/azure/acr/token/
-[az-acr-token-show]: /cli/azure/acr/token/#az_acr_token_show
-[az-acr-token-list]: /cli/azure/acr/token/#az_acr_token_list
-[az-acr-token-delete]: /cli/azure/acr/token/#az_acr_token_delete
-[az-acr-token-create]: /cli/azure/acr/token/#az_acr_token_create
-[az-acr-token-update]: /cli/azure/acr/token/#az_acr_token_update
-[az-acr-token-credential-generate]: /cli/azure/acr/token/credential/#az_acr_token_credential_generate
+[az-acr-token-show]: /cli/azure/acr/token/#az-acr-token-show
+[az-acr-token-list]: /cli/azure/acr/token/#az-acr-token-list
+[az-acr-token-delete]: /cli/azure/acr/token/#az-acr-token-delete
+[az-acr-token-create]: /cli/azure/acr/token/#az-acr-token-create
+[az-acr-token-update]: /cli/azure/acr/token/#az-acr-token-update
+[az-acr-token-credential-generate]: /cli/azure/acr/token/credential/#az-acr-token-credential-generate

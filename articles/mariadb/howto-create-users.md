@@ -3,14 +3,14 @@ title: 创建用户 - Azure Database for MariaDB
 description: 本文介绍如何创建新的用户帐户，以与 Azure Database for MariaDB 服务器进行交互。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/18/2021
-ms.openlocfilehash: 146495947ba06bd74fea6113e57d950d29e29286
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 28ec060e95d09cb150fc699919dde6cc0e1eaf23
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98663700"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中创建用户
@@ -20,11 +20,11 @@ ms.locfileid: "98663700"
 首次创建 Azure Database for MariaDB 时，需要提供服务器管理员登录用户名和密码。 有关详细信息，可以参考[快速入门](quickstart-create-mariadb-server-database-using-azure-portal.md)。 你可以从 Azure 门户中找到你的服务器管理员登录用户名。
 
 > [!NOTE]
-> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 服务器管理员用户可获得服务器的某些权限，如下所示：选择、插入、更新、删除、创建、放置、重载、处理、引用、索引、更改、显示数据库、创建临时表、锁定表、执行、复制从属、复制客户端、创建视图、显示视图、创建例程、更改例程、创建用户、事件、触发器
 
-创建 Azure Database for MariaDB 服务器后，你可以使用第一个服务器管理员用户帐户来创建更多用户，并向管理员授予对它们的访问权限。 此外，服务器管理员帐户还可以用于创建只能访问各个数据库架构的权限较低的用户。
+创建 Azure Database for MariaDB 服务器后，可以使用第一个服务器管理员用户帐户来创建更多用户，并向这些用户授予管理员访问权限。 此外，服务器管理员帐户还可以用于创建只能访问各个数据库架构的权限较低的用户。
 
 > [!NOTE]
 > 不支持 SUPER 权限和 DBA 角色。 请在“限制”一文中查看[权限](concepts-limits.md#privileges--data-manipulation-support)，以了解服务中不支持的权限。<br><br>
@@ -36,7 +36,7 @@ ms.locfileid: "98663700"
    若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。  
 
 2. 使用管理员帐户和密码连接到你的数据库服务器。 使用你的首选客户端工具，如 MySQL Workbench、mysql.exe、HeidiSQL 或其他工具。
-   如果你不确定如何连接，请参阅 [使用 MySQL 工作台进行连接和数据查询](./connect-workbench.md)
+   如果你不确定如何连接，请参阅[使用 MySQL Workbench 连接和查询数据](./connect-workbench.md)
 
 3. 编辑并运行下面的 SQL 代码。 将占位符值 `new_master_user` 替换为你的新用户名。 此语法会将所有数据库架构 ( *.* ) 上列出的权限授予该用户名（本示例中的 new_master_user）。 
 
@@ -48,7 +48,7 @@ ms.locfileid: "98663700"
    FLUSH PRIVILEGES;
    ```
 
-4. 验证授予。
+4. 验证授权。
 
    ```sql
    USE sys;
@@ -86,17 +86,17 @@ ms.locfileid: "98663700"
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
-5. 使用新用户名和密码登录到服务器，并指定指定的数据库。 此示例显示了 mysql 命令行。 在此命令中，系统会提示输入用户名的密码。 替换你自己的服务器名称、数据库名称和用户名。
+5. 使用新用户名和密码，指定选定的数据库，登录到服务器。 此示例显示了 mysql 命令行。 使用此命令，会提示你输入用户名的密码。 替换你自己的服务器名称、数据库名称和用户名。
 
    ```bash
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
 
-   有关用户帐户管理的详细信息，请参阅 MariaDB 文档中的 [用户帐户管理](https://mariadb.com/kb/en/library/user-account-management/)、 [GRANT 语法](https://mariadb.com/kb/en/library/grant/)和 [权限](https://mariadb.com/kb/en/library/grant/#privilege-levels)。
+   有关用户帐户管理的详细信息，请参阅 MariaDB 文档，了解[用户帐户管理](https://mariadb.com/kb/en/library/user-account-management/)、[GRANT 语法](https://mariadb.com/kb/en/library/grant/)和[权限](https://mariadb.com/kb/en/library/grant/#privilege-levels)。
 
 ## <a name="azure_superuser"></a>azure_superuser
 
-所有 Azure Database for MySQL 服务器都是使用名为“azure_superuser”的用户创建的。 这是由 Microsoft 创建的系统帐户，用于管理服务器以执行监视、备份和其他定期维护。 待命工程师还可以使用此帐户在发生证书身份验证事件期间访问服务器，并且必须使用实时 (JIT) 进程请求访问。
+所有 Azure Database for MySQL 服务器都是使用名为“azure_superuser”的用户创建的。 这是 Microsoft 创建的系统帐户，用于管理服务器以执行监视、备份和其他定期维护。 待命工程师还可以使用此帐户在发生证书身份验证事件期间访问服务器，并且必须使用实时 (JIT) 进程请求访问。
 
 ## <a name="next-steps"></a>后续步骤
 

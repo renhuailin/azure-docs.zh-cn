@@ -1,7 +1,7 @@
 ---
-title: PowerShell：将 SQL Server 迁移到 SQL 托管实例脱机
+title: PowerShell：将 SQL Server 脱机迁移到 SQL 托管实例
 titleSuffix: Azure Database Migration Service
-description: 了解如何使用 Azure PowerShell 和 Azure 数据库迁移服务脱机从 SQL Server 迁移到 Azure SQL 托管实例。
+description: 了解如何使用 Azure PowerShell 和 Azure 数据库迁移服务从 SQL Server 脱机迁移到 Azure SQL 托管实例。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,15 +13,15 @@ ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 12/16/2020
 ms.openlocfilehash: 90663b6beb4f1e3f7ade32e603a53c8b9d9158f5
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98697775"
 ---
-# <a name="migrate-sql-server-to-sql-managed-instance-offline-with-powershell--azure-database-migration-service"></a>通过 PowerShell & Azure 数据库迁移服务将 SQL Server 迁移到 SQL 托管实例
+# <a name="migrate-sql-server-to-sql-managed-instance-offline-with-powershell--azure-database-migration-service"></a>使用 PowerShell 和 Azure 数据库迁移服务将 SQL Server 脱机迁移到 SQL 托管实例
 
-本文介绍如何使用 Microsoft Azure PowerShell 将还原到 SQL Server 2005 或更高版本的本地实例的 **Adventureworks2016** 数据库脱机迁移到 AZURE sql sql 托管实例。 您可以使用 Microsoft Azure PowerShell 中的模块将数据库从 SQL Server 实例迁移到 SQL 托管实例 `Az.DataMigration` 。
+在本文中，我们使用 Microsoft Azure PowerShell 将还原为 SQL Server 2005 或更高版本的本地实例的“Adventureworks2016”数据库脱机迁移到 Azure SQL 托管实例。 可以使用 Microsoft Azure PowerShell 中的 `Az.DataMigration` 模块，将数据库从 SQL Server 实例迁移到 SQL 托管实例。
 
 在本文中，学习如何：
 > [!div class="checklist"]
@@ -29,11 +29,11 @@ ms.locfileid: "98697775"
 > * 创建资源组。
 > * 创建 Azure 数据库迁移服务的实例。
 > * 在 Azure 数据库迁移服务实例中创建迁移项目。
-> * 脱机运行迁移。
+> * 运行脱机迁移。
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-本文提供脱机迁移的步骤，但也可以 [联机](howto-sql-server-to-azure-sql-managed-instance-powershell-online.md)迁移。
+本文提供脱机迁移的步骤，但也可以进行[联机](howto-sql-server-to-azure-sql-managed-instance-powershell-online.md)迁移。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -47,7 +47,7 @@ ms.locfileid: "98697775"
 * Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 * SQL 托管实例。 可按照[创建 SQL 托管实例](../azure-sql/managed-instance/instance-create-quickstart.md)一文中的详述创建 SQL 托管实例。
 * 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 或更高版本。
-* Microsoft Azure 虚拟网络使用 Azure 资源管理器部署模型创建的，该模型通过使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)向 azure 数据库迁移服务提供与本地源服务器的站点到站点连接。
+* 使用 Azure 资源管理器部署模型创建 Microsoft Azure 虚拟网络，该模型使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供具有站点到站点连接的 Azure 数据库迁移服务。
 * 已使用[执行 SQL Server 迁移评估](/sql/dma/dma-assesssqlonprem)一文中所述的数据迁移助手完成对本地数据库和架构迁移的评估。
 * 使用 [Install-Module PowerShell cmdlet](/powershell/module/powershellget/Install-Module) 从 PowerShell 库下载并安装 `Az.DataMigration` 模块（0.7.2 或更高版本）。
 * 确保用于连接到源 SQL Server 实例的凭据具有 [CONTROL SERVER](/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。
@@ -64,7 +64,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 使用 [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
 
-以下示例在 "*美国东部*" 区域创建名为 " *myResourceGroup* " 的资源组。
+以下示例在“美国东部”区域创建名为“myResourceGroup”的资源组。
 
 ```powershell
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
@@ -77,11 +77,11 @@ New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 
 * Azure 资源组名称。 可以使用 [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) 命令创建前述 Azure 资源组，并提供其名称作为参数。
 * 服务名称。 与 Azure 数据库迁移服务的所需唯一服务名称相对应的字符串。
-* *位置*。 指定服务的位置。 指定 Azure 数据中心位置，例如 "美国西部" 或 "东南亚"。
+* *位置*。 指定服务的位置。 指定 Azure 数据中心位置，例如“美国西部”或“东南亚”。
 * Sku。 此参数对应于 DMS Sku 名称。 目前支持的 SKU 名称为 *Basic_1vCore*、*Basic_2vCores* 和 *GeneralPurpose_4vCores*。
 * 虚拟子网标识符。 可以使用 cmdlet [`New-AzVirtualNetworkSubnetConfig`](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建子网。
 
-以下示例使用名为 *MyVNET* 的虚拟网络和名为 *MySubnet* 的子网，在 *美国东部* 区域的资源组 *MyDMSResourceGroup* 中创建名为 *MyDMS* 的服务。
+以下示例使用名为“MyVNET”的虚拟网络和名为“MySubnet”的子网，在位于“美国东部”的资源组“MyDMSResourceGroup”中创建名为“MyDMS”的服务。
 
 ```powershell
 $vNet = Get-AzVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
@@ -117,7 +117,7 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-下一个示例演示如何创建名为 "targetmanagedinstance" 的 Azure SQL 托管实例的连接信息：
+以下示例演示如何为名为“targetmanagedinstance”的 Azure SQL 托管实例创建连接信息：
 
 ```powershell
 $targetResourceId = (Get-AzSqlInstance -Name "targetmanagedinstance").Id
@@ -137,7 +137,7 @@ $dbList = @($dbInfo1)
 
 ### <a name="create-a-project-object"></a>创建项目对象
 
-最后，你 *可以使用创建名为* *MyDMSProject* 的 Azure 数据库迁移服务项目 `New-AzDataMigrationProject` ，并添加以前创建的源和目标连接以及要迁移的数据库的列表。
+最后，可使用 `New-AzDataMigrationProject` 来创建一个位于“美国东部”区域的名为“MyDMSProject”的 Azure 数据库迁移服务项目，并添加以前创建的源和目标连接以及要迁移的数据库的列表 。
 
 ```powershell
 $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
@@ -226,7 +226,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 
 ### <a name="additional-configuration-requirements"></a>其他配置要求
 
-需要满足一些其他要求：
+还需要满足一些其他要求：
 
 
 * **选择登录名**。 按以下示例中所示，创建要迁移的登录名列表：
@@ -255,7 +255,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 
 #### <a name="specify-parameters"></a>指定参数
 
-此 `New-AzDataMigrationTask` cmdlet 需要以下参数：
+`New-AzDataMigrationTask` cmdlet 需要以下参数：
 
 * TaskType。 要创建的迁移任务的类型。对于从 SQL Server 到 Azure SQL 托管实例的迁移类型，此项应为“MigrateSqlServerSqlDbMi”。 
 * ResourceGroupName。 要在其中创建任务的 Azure 资源组的名称。
@@ -349,4 +349,4 @@ Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 
 在[什么是 Azure 数据库迁移服务？](./dms-overview.md)一文中详细了解 Azure 数据库迁移服务。
 
-有关其他迁移方案 (源/目标对) 的信息，请参阅 Microsoft [数据库迁移指南](https://datamigration.microsoft.com/)。
+有关其他迁移方案（源/目标对）的信息，请参阅 Microsoft [数据库迁移指南](https://datamigration.microsoft.com/)。

@@ -1,6 +1,6 @@
 ---
-title: 使用服务主体为 Windows 虚拟桌面 (经典) 部署管理工具-Azure
-description: 如何使用 PowerShell 部署适用于 Windows 虚拟桌面 (经典) 的管理工具。
+title: 使用服务主体为 Windows 虚拟桌面（经典）部署管理工具 - Azure
+description: 如何使用 PowerShell 部署适用于 Windows 虚拟桌面（经典）的管理工具。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
@@ -8,22 +8,22 @@ ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: lizross
 ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89069011"
 ---
-# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>使用 PowerShell 部署 Windows 虚拟桌面 (经典) 管理工具
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>使用 PowerShell 部署 Windows 虚拟桌面（经典）管理工具
 
 >[!IMPORTANT]
 >本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。
 
-本文介绍如何使用 PowerShell 部署管理工具。
+本文将介绍如何使用 PowerShell 来部署管理工具。
 
 ## <a name="important-considerations"></a>重要注意事项
 
-Azure AD) 租户的订阅中的每个 Azure Active Directory (都需要自己的管理工具单独部署。 此工具不支持 Azure AD 企业到企业 (B2B) 方案。
+每个 Azure Active Directory (Azure AD) 租户的订阅都需要单独有自己的管理工具部署。 此工具不支持 Azure AD 企业对企业 (B2B) 方案。
 
 此管理工具只是一个示例。 Microsoft 将提供重要的安全更新和质量更新。 [GitHub 中提供了源代码](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)。 无论你是客户还是合作伙伴，我们都建议你自定义该工具以满足你的业务需求。
 
@@ -45,28 +45,28 @@ Azure AD) 租户的订阅中的每个 Azure Active Directory (都需要自己的
 
 ## <a name="set-up-powershell"></a>设置 PowerShell
 
-通过登录到 Az 和 Azure AD PowerShell 模块开始使用。 下面介绍如何登录：
+首先登录到 Az 和 Azure AD PowerShell 模块。 下面是登录方式：
 
-1. 以管理员身份打开 PowerShell，并导航到保存 PowerShell 脚本的目录。
-2. 通过运行以下 cmdlet，使用对你计划用于创建管理工具的 Azure 订阅拥有 "所有者" 或 "参与者" 权限的帐户登录到 Azure：
+1. 以管理员身份打开 PowerShell 并导航到你保存了 PowerShell 脚本的目录。
+2. 通过运行以下 cmdlet，使用对你计划用来创建管理工具的 Azure 订阅具有“所有者”或“参与者”权限的帐户登录到 Azure：
 
     ```powershell
     Login-AzAccount
     ```
 
-3. 运行以下 cmdlet，以使用 Az PowerShell 模块所用的同一帐户登录 Azure AD：
+3. 运行以下 cmdlet，通过用于 Az PowerShell 模块的帐户登录到 Azure AD：
 
     ```powershell
     Connect-AzureAD
     ```
 
-4. 然后，导航到 RDS-Templates GitHub 存储库中保存这两个 PowerShell 脚本的文件夹。
+4. 然后，导航到你在其中保存了 RDS-Templates GitHub 存储库提供的两个 PowerShell 脚本的文件夹。
 
-保留你用来登录的 PowerShell 窗口，以便在登录时运行其他 PowerShell cmdlet。
+将你用来登录的 PowerShell 窗口保持打开状态，以便在登录后运行其他 PowerShell cmdlet。
 
 ## <a name="create-an-azure-active-directory-app-registration"></a>创建 Azure Active Directory 应用注册
 
-若要成功部署和配置管理工具，首先需要从[RDS 模板 github](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts)存储库下载以下 PowerShell 脚本
+若要成功部署和配置管理工具，首先需要从 [RDS-Templates GitHub 存储库](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts)下载以下 PowerShell 脚本
 
 ```powershell
 Set-Location -Path "c:\temp"
@@ -76,7 +76,7 @@ $uri = "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templat
 Invoke-WebRequest -Uri $uri -OutFile ".\updateWvdMgmtUxApiUrl.ps1"
 ```
 
-运行以下命令，创建具有所需 API 权限的应用注册：
+运行以下命令，使用所需的 API 权限创建应用注册：
 
 ```powershell
 $appName = Read-Host -Prompt "Enter a unique name for the management tool's app registration. The name can't contain spaces or special characters."
@@ -87,11 +87,11 @@ Get-AzSubscription -SubscriptionId $subscriptionId | Select-AzSubscription
 .\createWvdMgmtUxAppRegistration.ps1 -AppName $appName -SubscriptionId $subscriptionId
 ```
 
-现在，你已完成 Azure AD 应用注册，你可以部署管理工具。
+现在你已完成 Azure AD 应用注册，可以部署管理工具了。
 
 ## <a name="deploy-the-management-tool"></a>部署管理工具
 
-运行以下 PowerShell 命令以部署管理工具并将其与刚刚创建的服务主体相关联：
+运行以下 PowerShell 命令来部署管理工具，并将其与你刚才创建的服务主体相关联：
 
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -110,11 +110,11 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
     -Verbose
 ```
 
-创建 web 应用之后，必须将重定向 URI 添加到 Azure AD 应用程序才能成功登录用户。
+创建 Web 应用后，必须为 Azure AD 应用程序添加重定向 URI，以便使用户成功登录。
 
 ## <a name="set-the-redirect-uri"></a>设置重定向 URI
 
-运行以下 PowerShell 命令以检索 web 应用 URL，并将其设置为身份验证重定向 URI (也称为 "答复 URL") ：
+运行以下 PowerShell 命令来检索 Web 应用 URL，并将其设置为身份验证重定向 URI（也称为回复 URL）：
 
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
@@ -122,47 +122,47 @@ $redirectUri = "https://" + $webApp.DefaultHostName + "/"
 Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri
 ```
 
-添加重定向 URI 后，接下来需要更新 API URL，以便管理工具可以与 API 后端服务交互。
+现在，你已添加了一个重定向 URI，接下来需要更新 API URL，以便管理工具可以与 API 后端服务进行交互。
 
-## <a name="update-the-api-url-for-the-web-application"></a>更新 web 应用程序的 API URL
+## <a name="update-the-api-url-for-the-web-application"></a>更新 Web 应用程序的 API URL
 
-运行以下脚本，更新 web 应用程序前端中的 API URL 配置：
+运行以下脚本，更新 Web 应用程序前端中的 API URL 配置：
 
 ```powershell
 .\updateWvdMgmtUxApiUrl.ps1 -AppName $appName -SubscriptionId $subscriptionId
 ```
 
-现在，你已完全配置了管理工具 web 应用，接下来可以验证 Azure AD 应用程序并提供许可。
+现在，你已完全配置了管理工具 Web 应用，是时候验证 Azure AD 应用程序并提供同意了。
 
-## <a name="verify-the-azure-ad-application-and-provide-consent"></a>验证 Azure AD 应用程序并提供许可
+## <a name="verify-the-azure-ad-application-and-provide-consent"></a>验证 Azure AD 应用程序并提供同意
 
-验证 Azure AD 应用程序配置并提供许可：
+若要验证 Azure AD 应用程序配置并提供同意，请执行以下操作：
 
-1. 打开 internet 浏览器，然后用管理帐户登录到 [Azure 门户](https://portal.azure.com/) 。
-2. 在 Azure 门户顶部的搜索栏中，搜索 **应用注册** 并选择 " **服务**" 下的项。
-3. 选择 " **所有应用程序** "，并在 [创建 Azure Active Directory 应用注册](#create-an-azure-active-directory-app-registration)中搜索为 PowerShell 脚本提供的唯一应用名称。
-4. 在浏览器左侧的面板中，选择 " **身份验证** "，并确保重定向 URI 与管理工具的 WEB 应用 URL 相同，如下图所示。
+1. 打开 Internet 浏览器，然后使用管理帐户登录到 [Azure 门户](https://portal.azure.com/)。
+2. 从 Azure 门户顶部的搜索栏中，搜索“应用注册”，然后在“服务”下选择该项。
+3. 选择“所有应用程序”，并在[创建 Azure Active Directory 应用注册](#create-an-azure-active-directory-app-registration)中搜索为 PowerShell 脚本提供的唯一的应用名称。
+4. 在浏览器左侧的面板中，选择“身份验证”，并确保重定向 URI 与管理工具的 Web 应用 URL 相同，如下图所示。
 
-   [![具有输入的重定向 URI ](../media/management-ui-redirect-uri-inline.png) 的身份验证页](../media/management-ui-redirect-uri-expanded.png#lightbox)
+   [ ![身份验证页面，其中包含了输入的重定向 URI](../media/management-ui-redirect-uri-inline.png) ](../media/management-ui-redirect-uri-expanded.png#lightbox)
 
-5. 在左面板中，选择 " **API 权限** " 以确认添加了权限。 如果你是全局管理员，请选中 "**向管理员授予许可 `tenantname` ** " 按钮，然后按照对话框提示为你的组织提供管理员同意。
+5. 在左侧面板中，选择“API 权限”以确认添加了权限。 如果你是全局管理员，请选择“授予对 `tenantname` 的管理员同意”按钮，然后按照对话框提示为你的组织提供管理员同意。
 
-    [!["API 权限" 页 ](../media/management-ui-permissions-inline.png)](../media/management-ui-permissions-expanded.png#lightbox)
+    [ ![“API 权限”页](../media/management-ui-permissions-inline.png) ](../media/management-ui-permissions-expanded.png#lightbox)
 
-你现在可以开始使用管理工具。
+你现在可以开始使用管理工具了。
 
 ## <a name="use-the-management-tool"></a>使用管理工具
 
-现在，你已设置了管理工具，可以随时在任何位置启动它。 下面介绍如何启动该工具：
+现在，你已设置管理工具，可以随时随地启动它了。 下面是该工具的启动方式：
 
-1. 在 web 浏览器中打开 web 应用的 URL。 如果不记得 URL，可以登录到 Azure，找到为管理工具部署的应用服务，然后选择 URL。
+1. 在 Web 浏览器中打开 Web 应用的 URL。 如果你不记得 URL，可以登录到 Azure，找到你为管理工具部署的应用服务，然后选择 URL。
 2. 使用 Windows 虚拟桌面凭据登录。
 
    > [!NOTE]
-   > 如果在配置管理工具时未授予管理员许可，则登录的每个用户都需要提供自己的用户同意才能使用该工具。
+   > 如果你在配置管理工具时未授予管理员同意，则登录的每个用户都需要提供自己的用户同意才能使用该工具。
 
-3. 当系统提示选择租户组时，请从下拉列表中选择 " **默认租户组** "。
-4. 选择“默认租户组”时，将在窗口左侧显示一个菜单****。 在此菜单中，找到租户组的名称并将其选中。
+3. 当系统提示你选择租户组时，请从下拉列表中选择“默认租户组”。
+4. 选择“默认租户组”时，将在窗口左侧显示一个菜单。 在此菜单中，找到租户组的名称并将其选中。
 
    > [!NOTE]
    > 如果你有自定义的租户组，请手动输入名称，而不要从下拉列表中选择。

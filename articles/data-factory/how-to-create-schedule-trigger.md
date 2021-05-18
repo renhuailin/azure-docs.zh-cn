@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 4bf5e9e1e890b2f91377075c4c8b7c8ff6c50fa0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/22/2021
 ms.locfileid: "104779845"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
@@ -367,7 +367,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
-| JSON 属性 | 类型 | 必选 | 默认值 | 有效值 | 示例 |
+| JSON 属性 | 类型 | 必须 | 默认值 | 有效值 | 示例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | String | 是 | 无 | ISO-8601 日期时间 | 对于 UTC 时区为 `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> 对于其他时区为 `"2013-01-09T09:30:00-08:00"` |
 | **timeZone** | 字符串 | 是 | 无 | [时区值](#time-zone-option)  | `"UTC"` |
@@ -465,4 +465,4 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 ## <a name="next-steps"></a>后续步骤
 
 - 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#trigger-execution)。
-- 了解如何在管道中引用触发器元数据，请参阅[在管道运行中引用触发器元数据](how-to-use-trigger-parameterization.md)
+- 了解如何引用管道中的触发器元数据，请参阅[引用管道运行中的触发器元数据](how-to-use-trigger-parameterization.md)

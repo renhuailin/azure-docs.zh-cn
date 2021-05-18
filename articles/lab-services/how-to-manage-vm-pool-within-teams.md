@@ -1,28 +1,28 @@
 ---
-title: 从团队管理 Azure 实验室服务中的 VM 池
-description: 了解如何从团队管理 Azure 实验室服务中的 VM 池。
+title: 从 Teams 管理 Azure 实验室服务中的 VM 池
+description: 了解如何从 Teams 管理 Azure 实验室服务中的 VM 池。
 ms.topic: article
 ms.date: 10/07/2020
 ms.openlocfilehash: b838e0561bb48b20450e49aaef37baf3c9ecb4d0
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91946627"
 ---
-# <a name="manage-a-vm-pool-in-lab-services-from-teams"></a>管理团队实验室服务中的 VM 池
+# <a name="manage-a-vm-pool-in-lab-services-from-teams"></a>从 Teams 管理实验室服务中的 VM 池
 
-首次发布模板 VM 时，将立即启动虚拟机 (VM) 创建。 Vm 等于将创建实验室用户列表中的用户数。 首次登录到 Azure 实验室服务时，会自动将 Vm 分配给学生。 
+在首次发布模板虚拟机 (VM) 时，会立即开始创建 VM。 将会创建数量等于实验室用户列表中用户数量的 VM。 在学生首次登录到 Azure 实验室服务时，会自动将 VM 分配给学生。 
 
 ## <a name="publish-a-template-and-manage-a-vm-pool"></a>发布模板并管理 VM 池
 
-若要发布模板，请依次单击 "团队" "实验室服务" 窗口、"**模板**选项卡-> **...**  ->  "**发布**。
+若要发布模板，请转到“Teams 实验室服务”窗口，选择“模板”选项卡->“...” -> “发布”  。
 
-一旦配置了模板 VM，并且当教师选择发布模板时，将创建与实验室的用户列表中的用户数等效的 Vm 数量。 一旦发布了实验室并创建了 Vm 后，用户将自动注册到实验室，在首次登录到 Azure 实验室服务时，会将 Vm 分配给他们，即，当他们首次访问具有 **Azure 实验室服务** 应用程序的选项卡时。 
+在配置好模板 VM 后，并且在教师选择发布模板时，系统将创建数量与实验室用户列表中的用户数相等的 VM。 在发布实验室并创建 VM 后，用户将自动注册到实验室，他们在首次登录到 Azure 实验室服务时（即，在首次访问具有 **Azure 实验室服务** 应用的选项卡时）将获得系统分配的 VM。 
 
-触发用户列表同步时，实验室) 的实验室容量 (会根据对团队成员身份的更改自动更新。 新的 Vm 将在添加新用户时创建，分配给从团队中删除的用户的 Vm 也会被删除。 有关详细信息，请参阅 [如何管理团队中的用户](how-to-manage-user-lists-within-teams.md)。 
+在触发用户列表同步时，实验室容量（实验室中 VM 的数量）将会根据对团队成员身份的变化自动更新。 在添加新用户时将会创建新 VM，对于从团队中删除的用户，分配给该用户的 VM 也将会被删除。 有关详细信息，请参阅[如何在 Teams 中管理用户](how-to-manage-user-lists-within-teams.md)。 
 
-教师可以继续直接从 "VM 池" 选项卡访问学生 Vm。并且，教师可以从 " **虚拟机池** " 选项卡或单击屏幕) 的 "我的 **虚拟机** " 按钮 (的 "我的虚拟机" 按钮访问自己的 vm。 
+教师可以直接从“VM 池”选项卡继续访问学生 VM。并且教师可以从“虚拟机池”选项卡或通过单击“我的虚拟机”按钮（屏幕的右上角）来访问分配给他们自己的 VM 。 
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/how-to-manage-vm-pool-with-teams/vm-pool.png" alt-text="VM 池":::
@@ -31,10 +31,10 @@ ms.locfileid: "91946627"
 
 请参阅以下文章：
 
-- [在团队内使用 Azure 实验室服务概述](lab-services-within-teams-overview.md)
-- [开始使用并从团队创建实验室服务实验室](how-to-get-started-create-lab-within-teams.md)
-- [管理团队的实验室服务用户列表](how-to-manage-user-lists-within-teams.md)
-- [从团队创建实验室服务计划](how-to-create-schedules-within-teams.md)
-- [从团队中的实验室服务) 访问 VM (学生视图](how-to-access-vm-for-students-within-teams.md)
+- [在 Teams 内使用 Azure 实验室服务概述](lab-services-within-teams-overview.md)
+- [开始使用并从 Teams 创建实验室服务实验室](how-to-get-started-create-lab-within-teams.md)
+- [从 Teams 管理实验室服务用户列表](how-to-manage-user-lists-within-teams.md)
+- [从 Teams 创建实验室服务计划](how-to-create-schedules-within-teams.md)
+- [从 Teams 访问实验室服务中的 VM（学生视图）](how-to-access-vm-for-students-within-teams.md)
 
 

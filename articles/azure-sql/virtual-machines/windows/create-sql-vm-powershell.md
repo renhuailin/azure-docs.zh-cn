@@ -17,10 +17,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a3f51a07b274320d1cd9f12b33703d8ec7f21f49
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359653"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>如何使用 Azure PowerShell 在 Azure 虚拟机上预配 SQL Server
@@ -368,17 +368,17 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 
 ## <a name="install-the-sql-iaas-agent"></a>安装 SQL IaaS 代理
 
-SQL Server 虚拟机支持 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)的自动管理功能。 若要向扩展注册 SQL Server，请在创建虚拟机后运行 [AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) 命令。 指定 SQL Server VM 的许可类型，通过 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)在即用即付或自带许可之间进行选择。 有关许可的详细信息，请参阅[许可模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
+SQL Server 虚拟机支持 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)的自动管理功能。 若要将 SQL Server 注册到扩展，请在创建虚拟机后运行 [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) 命令。 指定 SQL Server VM 的许可类型，通过 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)在即用即付或自带许可之间进行选择。 有关许可的详细信息，请参阅[许可模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
 
 
    ```powershell
    New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
 
-可以通过三种方式向扩展注册： 
-- [对于订阅中的所有当前和未来 Vm 自动执行](sql-agent-extension-automatic-registration-all-vms.md)
-- [对于单个 VM 为手动](sql-agent-extension-manually-register-single-vm.md)
-- [批量为多个 Vm 手动](sql-agent-extension-manually-register-vms-bulk.md)
+可通过三种方式注册到扩展： 
+- [对订阅中的所有当前和未来 VM 自动注册](sql-agent-extension-automatic-registration-all-vms.md)
+- [对单个 VM 手动注册](sql-agent-extension-manually-register-single-vm.md)
+- [对多个 VM 手动批量注册](sql-agent-extension-manually-register-vms-bulk.md)
 
 
 ## <a name="stop-or-remove-a-vm"></a>停止或删除 VM

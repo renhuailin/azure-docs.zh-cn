@@ -1,17 +1,17 @@
 ---
-title: 使用证书，并使用 Batch 安全访问 Azure Key Vault
+title: 使用证书并通过 Batch 安全地访问 Azure Key Vault
 description: 了解如何使用 Azure Batch 以编程方式从 Key Vault 访问凭据。
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99260123"
 ---
-# <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>使用证书，并使用 Batch 安全访问 Azure Key Vault
+# <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>使用证书并通过 Batch 安全地访问 Azure Key Vault
 
 本文介绍如何设置 Batch 节点，以便安全地访问 [Azure Key Vault](../key-vault/general/overview.md) 中存储的凭据。 无需将管理员凭据放入 Key Vault，然后对凭据进行硬编码以从脚本访问 Key Vault。 解决方案是使用授予 Batch 节点对 Key Vault 的访问权限的证书。
 
@@ -83,7 +83,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 ## <a name="install-azure-powershell"></a>安装 Azure PowerShell
 
-如果计划在节点上使用 PowerShell 脚本访问 Key Vault，则需要安装 Azure PowerShell 库。 如果节点安装了 Windows Management Framework (WMF) 5，则可使用 install-module 命令下载该库。 如果你使用的节点不是 WMF 5，则安装它的最简单方法是将 Azure PowerShell `.msi` 文件与批处理文件捆绑在一起，然后将安装程序作为批处理启动脚本的第一部分进行调用。 有关详细信息，请参阅此示例：
+如果计划在节点上使用 PowerShell 脚本访问 Key Vault，则需要安装 Azure PowerShell 库。 如果节点安装了 Windows Management Framework (WMF) 5，则可使用 install-module 命令下载该库。 如果使用的节点未安装 WMF 5，最简单的安装方法是将 Azure PowerShell `.msi` 文件与 Batch 文件捆绑在一起，然后在 Batch 启动脚本的第一部分中调用该安装程序。 有关详细信息，请参阅此示例：
 
 ```powershell
 $psModuleCheck=Get-Module -ListAvailable -Name Azure -Refresh
@@ -112,4 +112,4 @@ $adminPassword=Get-AzureKeyVaultSecret -VaultName BatchVault -Name batchAdminPas
 
 - 详细了解 [Azure Key Vault](../key-vault/general/overview.md)。
 - 查看[适用于 Batch 的 Azure 安全基线](security-baseline.md)。
-- 了解批处理功能，如[使用 Linux 计算节点](batch-linux-nodes.md)[配置对计算节点的访问权限](pool-endpoint-configuration.md)，以及[使用专用终结点](private-connectivity.md)。
+- 了解 Batch 功能，例如[配置对计算节点的访问](pool-endpoint-configuration.md)、[使用 Linux 计算节点](batch-linux-nodes.md)和[使用专用终结点](private-connectivity.md)。

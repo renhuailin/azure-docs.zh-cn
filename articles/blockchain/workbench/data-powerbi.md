@@ -5,15 +5,15 @@ ms.date: 04/22/2020
 ms.topic: how-to
 ms.reviewer: sunri
 ms.openlocfilehash: 7e0e585ce45616c2402972c725b502f4b704d1cd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96000141"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>通过 Microsoft Power BI 使用 Azure Blockchain Workbench 数据
 
-Microsoft Power BI 提供使用 Power BI Desktop 从 SQL DB 数据库轻松生成功能强大的报表，然后将其发布到 [https://www.powerbi.com](https://www.powerbi.com) 。
+利用 Microsoft Power BI，可以轻松使用 Power BI Desktop 从 SQL DB 数据库生成强大的报表并将其发布到 [https://www.powerbi.com](https://www.powerbi.com)。
 
 本文包含了有关以下操作的分步演练：从 PowerBI Desktop 中连接到 Azure Blockchain Workbench 的 SQL 数据库，创建报表，以及将报表部署到 powerbi.com。
 
@@ -41,7 +41,7 @@ Microsoft Power BI 提供使用 Power BI Desktop 从 SQL DB 数据库轻松生�
 
 6.  在连接到数据库后，“导航器”对话框将显示数据库中可用的表和视图。 视图设计用来提供报告并且全部以 **vw** 作为前缀。
 
-    ![选择了 vwContractAction 的 "导航器" 对话框中 Power BI 桌面的屏幕捕获。](./media/data-powerbi/navigator.png)
+    ![Power BI 桌面的屏幕捕获，其中“导航器”对话框中的“vwContractAction”处于选中状态。](./media/data-powerbi/navigator.png)
 
 7.  选择要包括的视图。 为了演示，我们包括了 **vwContractAction**，该视图提供了已对某个合同执行的操作的相关详细信息。
 

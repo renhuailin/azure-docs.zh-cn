@@ -7,15 +7,15 @@ ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 32a9c26bb9e89cf4057cc753b02ad3c006d0bae6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100595080"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量规划和缩放
 
-在创建任何 Azure Service Fabric 群集或缩放托管群集的计算资源之前，必须做好容量规划。 有关规划容量的详细信息，请参阅[规划 Service Fabric 群集容量](./service-fabric-cluster-capacity.md)。 有关群集可伸缩性的更好的最佳实践指南，请参阅 [Service Fabric 可伸缩性注意事项](/azure/architecture/reference-architectures/microservices/service-fabric#scalability-considerations)。
+在创建任何 Azure Service Fabric 群集或缩放托管群集的计算资源之前，必须做好容量规划。 有关规划容量的详细信息，请参阅[规划 Service Fabric 群集容量](./service-fabric-cluster-capacity.md)。 有关群集可伸缩性的进一步最佳做法指导，请参阅 [Service Fabric 可伸缩性注意事项](/azure/architecture/reference-architectures/microservices/service-fabric#scalability-considerations)。
 
 除了考虑节点类型和群集特征以外，还要规划好生产环境中需要花费一小时以上才能完成的缩放操作。 不管要添加多少个 VM，都要考虑到这种情况。
 
@@ -59,12 +59,12 @@ ms.locfileid: "100595080"
 
 声明节点属性和位置约束后，每次在一个 VM 实例上执行以下步骤。 这样，可以在其他位置创建新副本时，让系统服务（以及有状态服务）在要删除的 VM 实例上正常关闭。
 
-1. 在 PowerShell 中，运行 `Disable-ServiceFabricNode` 并通过意向 `RemoveNode` 禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个六节点群集，请删除“MyNodeType_5”虚拟机实例。
+1. 在 PowerShell 中，结合意图 `RemoveNode` 来运行 `Disable-ServiceFabricNode`，以禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个六节点群集，请删除“MyNodeType_5”虚拟机实例。
 2. 运行 `Get-ServiceFabricNode` 以确保该节点已转换为禁用状态。 如果没有，请等到节点已禁用。 对于每个节点，此过程可能需要花费几个小时。 在节点转换为禁用状态之前，请不要继续操作。
 3. 将该节点类型的 VM 数目减少一个。 现在，将会删除编号最大的 VM 实例。
 4. 根据需要重复步骤 1 到 3，但切勿将主节点类型的实例数目横向缩减到少于可靠性层所需的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](./service-fabric-cluster-capacity.md)。
 5. 所有 VM 都消失（表示为“关闭”）后，fabric:/System/InfrastructureService/[node name] 将显示错误状态。 然后，可以更新群集资源以删除节点类型。 可以使用 ARM 模板部署，也可以通过 [Azure 资源管理器](https://resources.azure.com)编辑群集资源。 这将启动群集升级，从而删除处于错误状态的 fabric:/System/InfrastructureService/[node type] 服务。
- 6. 之后，你可以选择删除 VMScaleSet，但仍会从 Service Fabric Explorer 视图中看到节点 "Down"。 最后一步是使用 `Remove-ServiceFabricNodeState` 命令清除它们。
+ 6. 在此之后，可以选择删除 VMScaleSet，但仍然会在 Service Fabric Explorer 视图中看到节点为“关闭”。 最后一步是使用 `Remove-ServiceFabricNodeState` 命令清除它们。
 
 ## <a name="horizontal-scaling"></a>水平扩展
 
@@ -102,7 +102,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 若要手动横向缩减，请执行以下步骤：
 
-1. 在 PowerShell 中，运行 `Disable-ServiceFabricNode` 并通过意向 `RemoveNode` 禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个六节点群集，请删除“MyNodeType_5”虚拟机实例。
+1. 在 PowerShell 中，结合意图 `RemoveNode` 来运行 `Disable-ServiceFabricNode`，以禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个六节点群集，请删除“MyNodeType_5”虚拟机实例。
 2. 运行 `Get-ServiceFabricNode` 以确保该节点已转换为禁用状态。 如果没有，请等到节点已禁用。 对于每个节点，此过程可能需要花费几个小时。 在节点转换为禁用状态之前，请不要继续操作。
 3. 将该节点类型的 VM 数目减少一个。 现在，将会删除编号最大的 VM 实例。
 4. 视需要重复步骤 1 到 3，直到预配了所需的容量。 请勿将主节点类型的实例数目横向缩减到少于可靠性层所需的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](./service-fabric-cluster-capacity.md)。
@@ -207,7 +207,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 }
 ```
 
-其他资源位于 `nodeTypes` [ServiceFabric/群集资源](/azure/templates/microsoft.servicefabric/2018-02-01/clusters)中： 
+另一个资源位于 [Microsoft.ServiceFabric/clusters 资源](/azure/templates/microsoft.servicefabric/2018-02-01/clusters)中的 `nodeTypes` 下： 
 
 ```json
 "nodeTypes": [

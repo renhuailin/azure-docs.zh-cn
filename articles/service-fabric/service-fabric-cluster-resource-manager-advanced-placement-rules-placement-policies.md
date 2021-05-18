@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 263e45928642aa74d682fc490e424a24deeb8076
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98790675"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric 服务的放置策略
@@ -158,7 +158,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> 将高值 [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount) 与此放置策略一起使用可能导致应用程序升级停滞。 例如，如果有五个节点的群集并且设置 InstanceCount = 10，则每个节点上都有两个实例。 如果设置 MinInstanceCount = 9，尝试的应用升级可能会停滞;对于 MinInstanceCount = 8，可以避免这种情况。
+> 将 [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount) 的高值用于此放置策略可能导致应用程序升级停滞。 例如，如果有五个节点的群集并且设置了 InstanceCount=10，则每个节点上都有两个实例。 如果设置了 MinInstanceCount=9，尝试应用升级可能会停滞；如果设置为 MinInstanceCount=8，可以避免这种情况。
 >
 
 ## <a name="next-steps"></a>后续步骤

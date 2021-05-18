@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
-ms.openlocfilehash: 97036266911a8ffd7dca00ad2eaeeed32e620dba
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 31d5c528112ccacab47282729b1b5f8a72f19af0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166372"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "91999291"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions 的 Twilio 绑定
 
@@ -301,7 +301,7 @@ public static CreateMessageOptions Run(
 {
     ...
 }
-```
+ ```
 
 有关完整示例，请参阅 [C# 示例](#example)。
 
@@ -336,7 +336,7 @@ Python 不支持特性。
 |**authToken**|**AuthTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌的应用设置的名称 (`TwilioAccountAuthToken`)。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAuthToken”。 |
 |**to**| 不适用 - 在代码中指定 | **To**| 此值设置为短信将发送到的电话号码。|
 |**from**|**from** | **From**| 此值设置为发送短信的电话号码。|
-|**body**|**body** | **正文**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |
+|**body**|**body** | **正文**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

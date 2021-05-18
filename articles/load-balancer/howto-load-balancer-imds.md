@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: allensu
-ms.openlocfilehash: 95d0e1ceb9e05ce58f388c3f88dc98b2cf6a0cc5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ec217cefb05929ed6f5c7395df5e68891e823ac
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559581"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101739774"
 ---
 # <a name="retrieve-load-balancer-metadata-using-the-azure-instance-metadata-service-imds"></a>使用 Azure 实例元数据服务 (IMDS) 来检索负载均衡器元数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "105559581"
 Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254:80/metadata/loadbalancer?api-version=2020-10-01" | ConvertTo-Json
 ```
 > [!NOTE]
-> 已在 PowerShell 6.0 中引入了 -NoProxy 参数。 如果你使用较旧版本的 PowerShell，请在请求正文中删除 NoProxy，并确保在检索 IMDS 信息时未使用代理。 在[此处](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#proxies)了解更多信息。
+> 已在 PowerShell 6.0 中引入了 -NoProxy 参数。 如果你使用较旧版本的 PowerShell，请在请求正文中删除 NoProxy，并确保在检索 IMDS 信息时未使用代理。 在[此处](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#proxies)了解更多信息。
 > 
 ### <a name="linux"></a>[Linux](#tab/linux/)
 
@@ -89,3 +89,4 @@ curl -H "Metadata:true" --noproxy "*" "http://169.254.169.254:80/metadata/loadba
 [检索实例的所有元数据](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#access-azure-instance-metadata-service)
 
 [部署标准负载均衡器](quickstart-load-balancer-standard-public-portal.md)
+

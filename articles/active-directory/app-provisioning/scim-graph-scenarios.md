@@ -1,6 +1,6 @@
 ---
-title: 使用 SCIM、Microsoft Graph 和 Azure AD 预配用户，并使用数据丰富应用
-description: 同时使用 SCIM 和 Microsoft Graph 来预配用户，并使用所需的数据来丰富应用程序。
+title: 使用 SCIM、Microsoft Graph 和 Azure AD 来预配用户并利用数据扩充应用
+description: 协同使用 SCIM 和 Microsoft Graph 来预配用户并使用应用程序需要的数据来扩充应用程序。
 services: active-directory
 author: kenwith
 manager: daveba
@@ -12,35 +12,35 @@ ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
 ms.openlocfilehash: 0a5d84585f28f6d13cbceb1fec41d6cdabf6d08c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99255621"
 ---
-# <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>同时使用 SCIM 和 Microsoft Graph 来预配用户，并使用所需的数据来丰富应用程序
+# <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>协同使用 SCIM 和 Microsoft Graph 来预配用户并使用应用程序需要的数据来扩充应用程序
 
-**目标受众：** 本文面向的是开发人员构建与 Azure Active Directory (Azure AD) 集成的应用程序。 如果你想要使用已与 Azure AD 集成的应用程序（例如缩放、ServiceNow 和 DropBox），则可以跳过此文章并查看应用程序特定 [教程](../saas-apps/tutorial-list.md) ，或查看 [预配服务的工作原理](./how-provisioning-works.md)。
+目标受众：本文面向那些构建与 Azure Active Directory (Azure AD) 集成的应用程序的开发人员。 如果希望使用已与 Azure AD 集成的应用程序（例如 Zoom、ServiceNow 和 DropBox），则可跳过本文，并查看应用程序特定的[教程](../saas-apps/tutorial-list.md)，或查看[预配服务工作原理](./how-provisioning-works.md)。
 
 **常见方案**
 
-Azure AD 提供了一种现成的服务来进行预配，并提供一个可扩展的平台，用于生成应用程序。 决策树概述了开发人员如何使用 [SCIM](https://aka.ms/scimoverview) 和 [Microsoft Graph](/graph/overview) 自动执行预配。 
+Azure AD 提供了现成的服务来进行预配，并且提供了可扩展的平台用于构建应用程序。 决策树概述了开发人员如何使用 [SCIM](https://aka.ms/scimoverview) 和 [Microsoft Graph](/graph/overview) 来自动完成预配。 
 
 > [!div class="checklist"]
 > * 在我的应用程序中自动创建用户
-> * 当用户不再需要访问时，自动从我的应用程序中删除用户
-> * 集成应用程序与多个标识提供程序以进行预配
-> * 利用来自 Microsoft 服务（如团队、Outlook 和 Office）的数据丰富应用程序。
+> * 在用户不再需要访问权限时，自动从我的应用程序中删除这些用户
+> * 将我的应用程序与多个标识提供者集成以进行预配
+> * 利用来自 Microsoft 服务（如 Teams、Outlook 和 Office）的数据来扩充我的应用程序。
 > * 在 Azure AD 和 Active Directory 中自动创建、更新和删除用户和组
 
-![SCIM 图决策树](./media/user-provisioning/scim-graph.png)
+![SCIM Graph 决策树](./media/user-provisioning/scim-graph.png)
 
-## <a name="scenario-1-automatically-create-users-in-my-app"></a>方案1：在我的应用程序中自动创建用户
-如今，IT 管理员通过手动创建用户帐户或定期将 CSV 文件上传到我的应用程序来设置用户。 对于客户来说，此过程非常耗时，并使应用程序的应用速度变慢。 我只需要基本用户信息，如名称、电子邮件和 userPrincipalName 来创建用户。 
+## <a name="scenario-1-automatically-create-users-in-my-app"></a>方案 1：在我的应用中自动创建用户
+目前，IT 管理员通过手动创建用户帐户或定期将 CSV 文件上传到我的应用程序来预配用户。 对于客户来说，此过程非常耗时，并会降低采用我的应用程序的速度。 我创建用户时只需要基本的用户信息，例如，姓名、电子邮件和 userPrincipalName。 
 
 **建议**： 
-* 如果你的客户使用各种 Idp，并且你不希望维护同步引擎以与每个同步引擎集成，则支持 SCIM 相容 [/Users](https://aka.ms/scimreferencecode) 终结点。 你的客户将能够轻松地使用此终结点与 Azure AD 预配服务集成，并在用户需要访问时自动创建用户帐户。 你可以一次生成终结点，并且它将与所有 Idp 兼容。 查看下面的示例请求，了解如何使用 SCIM 创建用户。
-* 如果需要在用户对象上找到用户数据，在 Azure AD 中找到用户数据，并在 Microsoft 的其他数据中发现用户数据，请考虑生成用于用户预配的 SCIM 终结点，并调用 Microsoft Graph 以获取其余数据。 
+* 如果你的客户使用各种 IdP，而你不想维护同步引擎来与每个 IdP 都集成，则可支持一个符合 SCIM 的 [/Users](https://aka.ms/scimreferencecode) 终结点。 你的客户可以轻松使用此终结点来与 Azure AD 预配服务集成，并且可以在用户需要访问权限时自动创建用户帐户。 可以构建一次终结点，该终结点将与所有 IdP 兼容。 请查看以下示例请求，以了解如何使用 SCIM 来创建用户。
+* 如果需要在 Azure AD 中的用户对象上找到的用户数据，并且需要 Microsoft 提供的其他数据，请考虑构建 SCIM 终结点，以进行用户预配和调用 Microsoft Graph 来获取其余数据。 
 
 ```json
 POST /Users
@@ -63,10 +63,10 @@ POST /Users
 }
 ```
 
-## <a name="scenario-2-automatically-remove-users-from-my-app"></a>方案2：自动从我的应用删除用户
-使用 "我的应用程序" 的客户具有安全重点，并在员工不再需要帐户时，可以使用这些帐户来删除帐户。 如何从我的应用程序自动取消预配？
+## <a name="scenario-2-automatically-remove-users-from-my-app"></a>方案 2：自动从我的应用中删除用户
+使用我的应用程序的客户非常关注安全性，并且会有在员工不再需要帐户时删除帐户的治理需求。 如何自动从我的应用程序取消预配？
 
-**建议：** 支持符合 SCIM 标准的/Users 终结点。 如果用户不应再访问，Azure AD 预配服务会将请求发送到 "禁用" 和 "删除"。 建议同时支持禁用和删除用户。 请参阅下面的示例，了解禁用和删除请求的外观。 
+建议：支持一个符合 SCIM 的 /Users 终结点。 Azure AD 预配服务将会在用户不应再具有访问权限时发送请求来禁用和删除这些用户。 建议支持禁用和删除用户这两种操作。 有关禁用和删除请求的内容，请参阅以下示例。 
 
 禁用用户
 ```json
@@ -89,31 +89,31 @@ PATCH /Users/5171a35d82074e068ce2 HTTP/1.1
 DELETE /Users/5171a35d82074e068ce2 HTTP/1.1
 ```
 
-## <a name="scenario-3-automate-managing-group-memberships-in-my-app"></a>方案3：在我的应用中自动管理组成员身份
-我的应用程序依赖于组来访问各种资源，客户希望重复使用他们在 Azure AD 的组。 如何从 Azure AD 导入组，并在成员身份改变时使其保持更新？  
+## <a name="scenario-3-automate-managing-group-memberships-in-my-app"></a>方案 3：自动管理我的应用中的组成员身份
+我的应用程序依赖于组来访问各种资源，并且客户希望重复使用他们在 Azure AD 中拥有的组。 如何从 Azure AD 导入组并在成员身份更改时使这些组保持更新？  
 
-**建议：** 支持符合 SCIM 标准的/Groups [终结点](https://aka.ms/scimreferencecode)。 Azure AD 预配服务将负责在你的应用程序中创建组和管理成员身份更新。 
+建议：支持一个符合 SCIM 的 /Groups [终结点](https://aka.ms/scimreferencecode)。 Azure AD 预配服务将会负责在你的应用程序中创建组并管理成员身份更新。 
 
-## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>方案4：利用 Microsoft 服务（如团队、Outlook 和 OneDrive）中的数据丰富应用
-我的应用程序内置在 Microsoft 团队中，并依赖于消息数据。 此外，我们还会在 OneDrive 中存储用户的文件。 如何利用这些服务和 Microsoft 提供的数据来丰富应用程序？
+## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>方案 4：利用来自 Microsoft 服务（如 Teams、Outlook 和 OneDrive）的数据来扩充我的应用
+我的应用程序内置于 Microsoft Teams 中，并且依赖于消息数据。 此外，我们还在 OneDrive 中存储用户的文件。 如何使用来自这些服务的以及 Microsoft 的数据来扩充我的应用程序？
 
-**建议：**[Microsoft Graph](/graph/)是访问 Microsoft 数据的入口点。 每个工作负荷都向 Api 公开您需要的数据。 Microsoft graph 可与上述方案一起用于 [SCIM 预配](./use-scim-to-provision-users-and-groups.md) 。 可以使用 SCIM 将基本用户属性预配到应用程序中，同时调用 graph 以获取所需的任何其他数据。 
+建议：[Microsoft Graph](/graph/) 是访问 Microsoft 数据的入口点。 每个工作负载都会向 API 公开你需要的数据。 Microsoft Graph 可与 [SCIM 预配](./use-scim-to-provision-users-and-groups.md)一起用于上述方案。 可以使用 SCIM 将基本用户属性预配到应用程序中，同时调用 Graph 来获取任何其他需要的数据。 
 
-## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>方案5：跟踪 Microsoft 服务（如团队、Outlook 和 Azure AD）中的更改
-我需要能够跟踪对团队和 Outlook 消息所做的更改，并实时对其做出反应。 如何将这些更改推送到我的应用程序？
+## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>方案 5：跟踪 Microsoft 服务（如 Teams、Outlook 和 Azure AD）中的更改
+我需要能够实时跟踪 Teams 和 Outlook 消息的更改并应对这些更改。 如何将这些更改推送到我的应用程序？
 
-**建议：** Microsoft Graph 提供各种资源的 [更改通知](/graph/webhooks) 和 [更改跟踪](/graph/delta-query-overview) 。 请注意更改通知的以下限制：
-- 如果事件接收者确认了某个事件，但由于任何原因而无法采取措施，则可能会丢失该事件。
-- 不保证按时间顺序接收更改的顺序。
-- 出于上述原因，更改通知并不始终包含 [资源数据](/graph/webhooks-with-resource-data) ，开发人员通常会将更改通知和更改跟踪与同步方案一起使用。 
+建议：Microsoft Graph 提供各种资源的[更改通知](/graph/webhooks)和[更改跟踪](/graph/delta-query-overview)。 请注意更改通知的以下限制：
+- 如果事件接收者确认了某个事件，但出于任何原因而未能采取措施，则可能会丢失该事件。
+- 不保证接收更改的顺序是按时间顺序发生的。
+- 更改通知并不总是包含[资源数据](/graph/webhooks-with-resource-data)。出于上述原因，开发人员通常会将更改通知和更改跟踪协同用于同步方案。 
 
-## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>方案6：在 Azure AD 中设置用户和组
-我的应用程序在 Azure AD 中创建客户需要的用户的相关信息。 这可能是一个 HR 应用程序，而不是管理聘用、为用户创建电话号码的通信应用程序或一些其他应用程序，用于生成在 Azure AD 中有价值的数据。 如何实现用该数据填充 Azure AD 中的用户记录？ 
+## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>方案 6：在 Azure AD 中预配用户和组
+我的应用程序创建客户在 Azure AD 中需要的用户相关信息。 这可能是管理招聘的 HR 应用程序、为用户创建电话号码的通信应用，或者某种其他的在 Azure AD 中生成有价值数据的应用。 如何使用这些数据在 Azure AD 中填充用户记录？ 
 
-**建议** Microsoft graph 公开了/Users 和/Groups 终结点，你可以将它们与今天集成，以便将用户预配到 Azure AD。 请注意，Azure Active Directory 不支持将这些用户写回 Active Directory。 
+建议：现在，Microsoft Graph 公开了 /Users 和 /Groups 终结点，可将它们集成，以便将用户预配到 Azure AD 中。 请注意，Azure Active Directory 不支持将这些用户写回到 Active Directory 中。 
 
 > [!NOTE]
-> Microsoft 提供一项预配服务，用于从 HR 应用程序（如 Workday 和 SuccessFactors）提取数据。 这些集成由 Microsoft 构建和管理。 若要向我们的服务加入新的 HR 应用程序，你可以在 [UserVoice](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests)上请求它。 
+> Microsoft 提供了从 HR 应用程序（例如 Workday 和 SuccessFactors）拉取数据的预配服务。 这些集成由 Microsoft 构建和管理。 若要将新 HR 应用程序加入到我们的服务，可在 [UserVoice](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests) 上提出请求。 
 
 ## <a name="related-articles"></a>相关文章
 

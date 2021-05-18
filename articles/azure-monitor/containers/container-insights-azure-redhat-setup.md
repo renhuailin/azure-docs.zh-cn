@@ -3,12 +3,12 @@ title: 配置 Azure Red Hat OpenShift v3.x 的容器见解 | Microsoft Docs
 description: 本文介绍如何使用 Azure Red Hat OpenShift 版本 3 或更高版本上托管的 Azure Monitor 来配置对 Kubernetes 群集的监视。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: b46dfda0bdb0f3b582aa751786187a4d74524f75
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a2910655601548f39983547e12460d949901954d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708367"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784670"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>配置 Azure Red Hat OpenShift v3 的容器见解
 
@@ -30,7 +30,7 @@ ms.locfileid: "101708367"
 可使用以下支持的方法为 Azure Red Hat OpenShift 的新部署，或是一个或多个现有部署启用容器见解：
 
 - 对于现有群集，通过 Azure 门户或使用 Azure 资源管理器模板。
-- 对于新群集，使用 Azure 资源管理器模板，或使用 [Azure CLI](/cli/azure/openshift#az-openshift-create) 创建新群集。
+- 对于新群集，使用 Azure 资源管理器模板，或使用 [Azure CLI](/cli/azure/openshift#az_openshift_create) 创建新群集。
 
 ## <a name="supported-and-unsupported-features"></a>支持/不支持的功能
 
@@ -39,7 +39,7 @@ ms.locfileid: "101708367"
 - 实时数据（预览版）
 - 从群集节点和 Pod [收集指标](container-insights-update-metrics.md)并将其存储在 Azure Monitor 指标数据库中
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [Log Analytics 工作区](../logs/design-logs-deployment.md)。
 
@@ -123,7 +123,7 @@ ms.locfileid: "101708367"
 
     `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json`
 
-2. 登录 Azure
+2. 登录到 Azure
 
     ```azurecli
     az login
@@ -140,7 +140,7 @@ ms.locfileid: "101708367"
 4. 编辑 JSON 参数文件 newClusterWithMonitoringParam.json 并更新以下值：
 
     - *location*
-    - clusterName
+    - *clusterName*
     - aadTenantId
     - aadClientId
     - aadClientSecret
@@ -168,7 +168,7 @@ ms.locfileid: "101708367"
 
 ### <a name="from-the-azure-portal"></a>通过 Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在 Azure 门户菜单上或在门户主页中，选择“Azure Monitor”。 在“见解”部分，选择“容器”。 
 
@@ -176,7 +176,7 @@ ms.locfileid: "101708367"
 
 4. 从未受监视的群集列表中找到群集，然后单击“启用”。 可以通过在“群集类型”列下查找值 ARO 来确定列表中的结果 。
 
-5. 在“载入到容器见解”页上，如果现有的 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区。  
+5. 在“加入到容器见解”页上，如果现有的 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区。  
     列表预先选择了群集在订阅中部署到的默认工作区和位置。
 
     ![对未受监视的群集启用监视](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
@@ -210,7 +210,7 @@ ms.locfileid: "101708367"
 
     `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json`
 
-2. 登录 Azure
+2. 登录到 Azure
 
     ```azurecli
     az login

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
 ms.openlocfilehash: 5c70c575464d82f714022291406418cdd1ca0f8d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102094960"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 网关资源设计虚拟网络
@@ -216,7 +216,7 @@ NAT 网关优先于子网的出站方案。 无法通过适当的转换来调整
 
 如果虚拟机实例部署在同一子网中的多个区域内，则无法使用 NAT 网关资源实现区域承诺。   即使已将多个局部区域性 NAT 网关附加到子网，虚拟机实例也不知道要选择哪个 NAT 网关资源。
 
-如果) 虚拟机实例的区域和区域 NAT 网关的区域未对齐，或 b) 区域 NAT 网关资源与区域虚拟机实例一起使用，则存在区域性承诺不。
+如果存在以下情况，则无法实现局部区域性承诺：a) 虚拟机实例的区域与局部区域性 NAT 网关的区域不一致，或 b) 区域性 NAT 网关资源与局部区域性虚拟机实例一起使用。
 
 尽管方案看起来正常运行，但从可用性区域的角度看，其运行状况模型和故障模式是未定义的。 请考虑改用局部区域性堆栈或全区域性堆栈。
 
@@ -323,7 +323,7 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
 
 以下计时器用于 SNAT 端口释放：
 
-| Timer | Value |
+| Timer | 值 |
 |---|---|
 | TCP FIN | 60 秒 |
 | TCP RST | 10 秒 |
@@ -339,7 +339,7 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
 - NAT 与标准 SKU 公共 IP、公共 IP 前缀和负载均衡器资源兼容。   基本资源（例如基本负载均衡器）以及派生自这些资源的任何产品都与 NAT 不兼容。  必须将基本资源放在未配置 NAT 的子网中。
 - 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。  NAT 不能部署在具有 IPv6 前缀的子网中。
 - NAT 不能跨多个虚拟网络。
-- 不支持 IP 碎片。
+- 不支持 IP 分段。
 
 ## <a name="suggestions"></a>建议
 

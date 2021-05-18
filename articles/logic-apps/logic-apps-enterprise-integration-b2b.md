@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/02/2020
 ms.openlocfilehash: e16cc8934407a5c54c84fd045c99e28116e656c9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93310463"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用与 Enterprise Integration Pack 接收和确认 B2B AS2 消息
@@ -23,7 +23,7 @@ ms.locfileid: "93310463"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果还没有订阅，请 [注册免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 准备一个空白逻辑应用，以便可以使用后接以下操作的[请求](../connectors/connectors-native-reqres.md)触发器创建 B2B 工作流：
 
@@ -91,19 +91,19 @@ ms.locfileid: "93310463"
 
 1. 对于“消息标头”属性，请输入 AS2 操作所需的任何标头，这些标头由 HTTP 请求触发器收到的 `headers` 内容进行描述。
 
-   1. 若要输入引用触发器输出的表达式 `headers` ，请选择 " **将消息标头切换到文本模式** "。
+   1. 若要输入引用触发器 `headers` 输出的表达式，请选择“将消息标头切换到文本模式”。
 
-      ![显示 "切换到文本模式的消息标头" 的屏幕截图。](./media/logic-apps-enterprise-integration-b2b/as2-decode-switch-text-mode.png)
+      ![显示已选择“将消息标头切换到文本模式”的屏幕截图。](./media/logic-apps-enterprise-integration-b2b/as2-decode-switch-text-mode.png)
 
-   1. 在 **消息标题** 框中单击。 显示动态内容列表后，选择“表达式”。 在表达式编辑器中输入表达式，然后选择“确定”：
+   1. 在“消息标头”框中单击。 显示动态内容列表后，选择“表达式”。 在表达式编辑器中输入表达式，然后选择“确定”：
 
       `triggerOutputs()['Headers']`
 
       在 AS2 解码操作中，表达式现在显示为一个标记：
 
-      ![屏幕截图，显示 @triggerOutputs "消息标头" 框中的 " ( # A1 [' 标头 ']" 标记。](./media/logic-apps-enterprise-integration-b2b/as2-decode-message-header-expression.png)
+      ![显示“消息标头”框中的“@triggerOutputs()['Headers']”标记的屏幕截图。](./media/logic-apps-enterprise-integration-b2b/as2-decode-message-header-expression.png)
 
-   1. 若要获取表达式标记以解析为 **标头** 标记，请在设计器和代码视图之间切换。 执行此步骤后，AS2 解码操作如以下示例所示：
+   1. 若要使该表达式标记解析为“标头”标记，请在设计器视图与代码视图之间进行切换。 执行此步骤后，AS2 解码操作如以下示例所示：
 
       ![已解析触发器的标头输出](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-headers-expression.png)
 

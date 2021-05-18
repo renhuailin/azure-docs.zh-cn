@@ -1,22 +1,22 @@
 ---
-title: " (预览版，将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型) "
-description: 下面介绍如何将虚拟机规模集扩展添加 Service Fabric 管理群集节点类型
+title: 将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型（预览版）
+description: 这里将介绍如何将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型
 ms.topic: article
 ms.date: 09/28/2020
 ms.openlocfilehash: a47908b511f79c18482e9d21e623f1cb4dc70ed1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101737760"
 ---
-# <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a> (预览版，将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型) 
+# <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a>将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型（预览版）
 
-Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的支持。 这使你能够将 [虚拟机规模集扩展](../virtual-machines/extensions/overview.md) 添加到 Service Fabric 托管群集节点类型。
+Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的支持。 这样就可以将[虚拟机规模集扩展](../virtual-machines/extensions/overview.md)添加到 Service Fabric 托管群集节点类型。
 
-可以使用 [AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension) PowerShell 命令将虚拟机规模集扩展添加到节点类型。
+可以使用 [Add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension) PowerShell 命令将虚拟机规模集扩展添加到节点类型。
 
-或者，你可以在 Azure 资源管理器模板的 Service Fabric 托管群集节点类型上使用虚拟机规模集扩展，例如：
+或者，可以在 Azure 资源管理器模板的 Service Fabric 托管群集节点类型上使用虚拟机规模集扩展，例如：
 
 ```json
 {
@@ -51,7 +51,7 @@ Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的�
 }
 ```
 
-有关配置 Service Fabric 托管群集节点类型的详细信息，请参阅 [托管群集节点类型](/azure/templates/microsoft.servicefabric/2020-01-01-preview/managedclusters/nodetypes)。
+有关配置 Service Fabric 托管群集节点类型的详细信息，请参阅[托管群集节点类型](/azure/templates/microsoft.servicefabric/2020-01-01-preview/managedclusters/nodetypes)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,18 +1,18 @@
 ---
 title: Azure 数据工厂中的系统变量
 description: 本文介绍了 Azure 数据工厂支持的系统变量。 定义数据工厂实体时，可以在表达式中使用这些变量。
-author: chez-charlie
-ms.author: chez
+author: dcstwh
+ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 0cb5c9cebc97f7afa0156550f70cd78c07b7b410
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: b85efa7ac4481ab9eb2b2637aee7d9e5e76e8f3f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906211"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786050"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure 数据工厂支持的系统变量
 
@@ -72,13 +72,13 @@ ms.locfileid: "107906211"
 如果触发器的类型为 [CustomEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger)，则可以在触发器 JSON 中的任何位置引用这些系统变量。
 
 >[!NOTE]
->Azure 数据工厂需要自定义事件按照 [Azure 事件网格事件架构](../event-grid/event-schema.md)进行格式化。
+>Azure 数据工厂希望自定义事件的格式采用 [Azure 事件网格事件架构](../event-grid/event-schema.md)。
 
-| 变量名 | 描述
+| 变量名 | 说明
 | --- | --- |
-| @triggerBody().event.eventType | 触发了自定义事件触发器运行的事件类型。 事件类型是客户定义的字段，并采用字符串类型的任何值。 |
-| @triggerBody().event.subject | 导致了触发器触发的自定义事件的主题。 |
-| @triggerBody().event.data._keyName_ | 自定义事件中的 Data 字段是自由格式的 JSON blob，客户可以使用它来发送消息和数据。 请使用 data._keyName_ 引用每个字段。 例如，@triggerBody().event.data.callback 返回存储在 _data_ 下的 _callback_ 字段的值。 |
+| @triggerBody().event.eventType | 触发了自定义事件触发器运行的事件类型。 事件类型为客户定义的字段，可以是字符串类型的任何值。 |
+| @triggerBody().event.subject | 导致触发器激发的自定义事件的主题。 |
+| @triggerBody().event.data._keyName_ | 自定义事件中的数据字段不存在 JSON blob，可供客户用于发送消息和数据。 请使用 data._keyName_ 来引用每个字段。 例如，@triggerBody().event.data.callback 将返回存储在数据下的回调字段的值 。 |
 | @trigger().startTime | 触发器触发以调用管道运行的时间。 |
 
 ## <a name="next-steps"></a>后续步骤

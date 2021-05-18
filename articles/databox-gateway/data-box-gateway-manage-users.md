@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 9e941007ddc27f809de7d43cd33e44c5b521a6bd
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96581554"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的用户
@@ -39,13 +39,13 @@ ms.locfileid: "96581554"
 
 在 Azure 门户中执行以下步骤可以添加用户。
 
-1. 在 Azure 门户中，转到 Data Box Gateway 资源，然后导航到 " **概述**"。 单击命令栏上的“+ 添加用户”。
+1. 在 Azure 门户中，转到自己的 Data Box Gateway 资源，然后导航到“概述”。 单击命令栏上的“+ 添加用户”。
 
     ![单击“添加用户”](media/data-box-gateway-manage-users/add-user-1.png)
 
-2. 指定要添加的用户的用户名和密码。 确认密码，然后单击 " **添加**"。
+2. 指定要添加的用户的用户名和密码。 确认密码，然后单击“添加”。
 
-    ![单击 "添加用户 2"](media/data-box-gateway-manage-users/add-user-2.png)
+    ![单击“添加用户 2”](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > 以下用户由系统保留，不应使用：Administrator、EdgeUser、EdgeSupport、HcsSetupUser、WDAGUtilityAccount、CLIUSR、DefaultAccount、Guest。  
@@ -64,17 +64,17 @@ ms.locfileid: "96581554"
 
 在 Azure 门户中执行以下步骤可以删除用户。
 
-1. 从用户列表中选择并单击某个用户，然后单击 " **删除**"。  
+1. 在用户列表中选择并单击该用户，然后单击“删除”。  
 
    ![删除用户](media/data-box-gateway-manage-users/delete-user-1.png)
 
 2. 出现提示时，确认删除。 
 
-   ![删除用户2](media/data-box-gateway-manage-users/delete-user-2.png)
+   ![删除用户 2](media/data-box-gateway-manage-users/delete-user-2.png)
 
 用户列表将会更新，以反映该用户已删除。
 
-![删除用户3](media/data-box-gateway-manage-users/delete-user-3.png)
+![删除用户 3](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
 ## <a name="next-steps"></a>后续步骤

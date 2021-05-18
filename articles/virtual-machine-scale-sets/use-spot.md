@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 61bb87d84b96f988ae065a70b85d445fc8b96ccf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ec73d1363fb18d1d6c46589fe69879a8f6df1dab
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762940"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722559"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 现成虚拟机 
 
@@ -82,7 +82,7 @@ Azure 现成虚拟机可以部署到除 Microsoft Azure 中国世纪互联以外
 
 **使用 CLI**
 
-使用 [az feature register](/cli/azure/feature#az_feature_register) 为订阅启用预览版。 
+使用 [az feature register](/cli/azure/feature#az-feature-register) 为订阅启用预览版。 
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name SpotTryRestore 

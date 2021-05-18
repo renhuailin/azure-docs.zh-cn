@@ -1,16 +1,16 @@
 ---
 title: 从合作伙伴获取传感器数据
 description: 本文介绍如何从合作伙伴获取传感器数据。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: 474b6f8356724546105d902a15427f483f656317
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.openlocfilehash: 3f0077a1868aaf03bf5f6ed1febd4ba5734c6806
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182768"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751276"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>从传感器合作伙伴获取传感器数据
 
@@ -44,7 +44,7 @@ Azure FarmBeats 可帮助你将流数据从 IoT 设备和传感器数据引入�
 
 1. 登录 https://portal.azure.com/ 。
 
-2. 如果你使用的是 FarmBeats 版本 1.2.7 或更高版本，请跳过步骤 a、b 和 c，然后转到步骤 3。 可以通过选择 FarmBeats UI 右上角的“设置”图标来检查 FarmBeats 版本。
+2. “如果你使用的是 FarmBeats 版本 1.2.7 或更高版本，请跳过步骤 a、b 和 c，然后转到步骤 3。” 可以通过选择 FarmBeats UI 右上角的“设置”图标来检查 FarmBeats 版本。
 
       a.  转到“Azure Active Directory” > “应用注册” 
 
@@ -124,7 +124,7 @@ Azure FarmBeats 可帮助你将流数据从 IoT 设备和传感器数据引入�
 - 节点：连接了一个或多个传感器的设备。
 - 网关：连接了一个或多个节点的设备。
 
-按照以下步骤操作：
+执行以下步骤:
 
 1. 在主页中，从菜单中选择“设备”。
   “设备”页显示设备类型、型号、状态、它所在的农场以及元数据的上次更新日期。 默认情况下，农场列设置为 NULL。 可以选择将设备分配给农场。 有关详细信息，请参阅[分配设备](#assign-devices)。
@@ -134,7 +134,7 @@ Azure FarmBeats 可帮助你将流数据从 IoT 设备和传感器数据引入�
 
 ### <a name="view-sensors"></a>查看传感器
 
-按照以下步骤操作：
+执行以下步骤:
 
 1. 在主页中，从菜单中选择“传感器”。
   “传感器”页显示有关传感器类型、它连接到的农场、父设备、端口名称、端口类型和上次更新状态的详细信息。
@@ -163,7 +163,7 @@ Azure FarmBeats 可帮助你将流数据从 IoT 设备和传感器数据引入�
 
 ### <a name="visualize-sensor-data"></a>可视化传感器数据
 
-按照以下步骤操作：
+执行以下步骤:
 
 1. 在主页上，从菜单中选择“农场”以查看“农场”页 。
 2. 选择要查看其传感器数据的“农场”。
@@ -173,7 +173,7 @@ Azure FarmBeats 可帮助你将流数据从 IoT 设备和传感器数据引入�
 
 ## <a name="delete-a-sensor"></a>删除传感器
 
-按照以下步骤操作：
+执行以下步骤:
 
 1. 在主页上，从菜单中选择“传感器”以查看“传感器”页 。
 2. 选择要删除的设备，然后在确认窗口中选择“删除”。
@@ -184,7 +184,7 @@ Azure FarmBeats 可帮助你将流数据从 IoT 设备和传感器数据引入�
 
 ## <a name="delete-devices"></a>删除设备
 
-按照以下步骤操作：
+执行以下步骤:
 
 1. 在主页上，从菜单中选择“设备”以查看“设备”页 。
 2. 选择要删除的设备，然后在确认窗口中选择“删除”。

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 26538f48213d025c6fe71fb55abb17a025a23b45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a637a6f355be32f82878a52a30c77d020190651
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025673"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102211611"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure 应用服务中为 .NET 应用启用快照调试器
 
@@ -56,13 +56,13 @@ ms.locfileid: "105025673"
 
 ## <a name="enable-snapshot-debugger-for-other-clouds"></a>为其他云启用 Snapshot Debugger
 
-目前唯一需要修改终结点的区域是借助 Visual Studio Online Application Insights 的 [Azure 政府](../../azure-government/compare-azure-government-global-azure.md#application-insights)和 [Azure 中国](/azure/china/resources-developer-guide)。
+目前唯一需要修改终结点的区域是借助 Visual Studio Online Application Insights 的 [Azure 政府](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights)和 [Azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide)。
 
 |连接字符串属性    | 美国政府云 | 中国云 |   
 |---------------|---------------------|-------------|
 |SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-有关其他连接替代的详细信息，请参阅 [Application Insights 文档](./sdk-connection-string.md?tabs=net#connection-string-with-explicit-endpoint-overrides)。
+有关其他连接替代的详细信息，请参阅 [Application Insights 文档](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides)。
 
 ## <a name="disable-snapshot-debugger"></a>禁用快照调试器
 
@@ -120,3 +120,4 @@ ms.locfileid: "105025673"
 
 [Enablement UI]: ./media/snapshot-debugger/enablement-ui.png
 [snapshot-debugger-app-setting]:./media/snapshot-debugger/snapshot-debugger-app-setting.png
+

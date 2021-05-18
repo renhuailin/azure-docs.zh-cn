@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a003becba0bc1e42d8fe0c0c5b199402a430a8e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92777735"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105034752"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>利用流量管理器跨多个终结点进行故障转移
 
@@ -94,7 +94,10 @@ Azure CDN 采用全局分布式基础结构，默认会创建本地和地理冗�
     > [!NOTE]
     > 如果你的域当前已上线且不能中断，请在最后执行此步骤。 在将自定义域 DNS 更新到流量管理器之前，请验证 CDN 终结点和流量管理器域是否已上线。
     >
-
+   
+    > [!NOTE]
+    > 若要实现此故障转移方案，这两个终结点需要位于不同的配置文件中，且不同的配置文件应分属不同的 CDN 提供程序，以避免域名冲突。
+    > 
 
 2.  在 Azure CDN 配置文件中，选择第一个 CDN 终结点 (Akamai)。 选择“添加自定义域”，然后输入“cdndemo101.dustydogpetcare.online”。 确认表示验证自定义域的复选标记是否显示为绿色。 
 

@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.openlocfilehash: 6233c42d7fbf8dc7821d26f77171c44485fb8d34
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946929"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Ambari 的用法
@@ -65,7 +65,7 @@ HDInsight 幕后会在 SQL 数据库中创建数据库，用作 Ambari 服务器
 
 ## <a name="property-values-in-esp-clusters"></a>ESP 群集中的属性值
 
-在 HDInsight 4.0 企业安全性套餐群集中，使用管道 `|` 而不是逗号作为可变分隔符。 下面显示了一个示例：
+在 HDInsight 4.0 企业安全性套餐群集中，使用管道 `|` 而不是逗号作为变量分隔符。 下面显示了一个示例：
 
 ```
 Property Key: hive.security.authorization.sqlstd.confwhitelist.append

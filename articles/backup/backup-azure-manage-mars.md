@@ -5,15 +5,15 @@ ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97368590"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务 (MARS) 代理备份
 
-本文介绍如何管理 Microsoft Azure 恢复服务代理备份的文件和文件夹。
+本文介绍如何管理使用 Microsoft Azure 恢复服务代理备份的文件与文件夹。
 
 ## <a name="modify-a-backup-policy"></a>修改备份策略
 
@@ -192,16 +192,16 @@ ms.locfileid: "97368590"
 
 ## <a name="configuring-antivirus-for-the-mars-agent"></a>为 MARS 代理配置防病毒软件
 
-建议为防病毒软件配置以下配置，以避免与 MARS 代理的操作发生冲突。
+建议防病毒软件采用以下配置，以免与 MARS 代理的操作发生冲突。
 
-1. **添加路径排除**：若要避免性能下降和可能的冲突，请从防病毒软件的实时监视中排除以下路径：
+1. **添加路径排除**：为避免性能下降和可能的冲突，请从防病毒软件实时监视中排除以下路径：
     1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` 和子文件夹
-    1. **暂存文件夹**：如果草稿文件夹不在标准位置，请将其添加到排除项。  [请参阅此处，了解](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible) 确定暂存文件夹位置的步骤。
-1. **添加二进制排除**：若要避免备份和控制台活动降低，请从防病毒软件的实时监视中排除以下二进制文件的进程：
+    1. **Scratch 文件夹**：如果 scratch 文件夹不在标准位置，请将其添加到排除项。  [请参阅此处的步骤](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)，确定 scratch 文件夹的位置。
+1. **添加二进制排除**：为避免备份和控制台活动减少，请从防病毒软件实时监视中排除以下二进制文件的进程：
     1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
 
 >[!NOTE]
->尽管排除这些路径足以应对大多数防病毒软件，但某些路径可能仍会继续干扰 MARS 代理操作。 如果出现意外故障，请暂时卸载防病毒软件，并进行监视以查看问题是否消失。 如果这解决了问题，请与防病毒软件供应商联系，以获得正确配置其产品的帮助。
+>尽管排除这些路径足以应对大多数防病毒软件，但某些路径可能仍会继续干扰 MARS 代理操作。 如果出现意外故障，请暂时卸载防病毒软件，并进行监视以查看问题是否消失。 如果这样可以解决问题，请与防病毒软件供应商联系，以获取正确配置其产品方面的帮助。
 
 ## <a name="next-steps"></a>后续步骤
 

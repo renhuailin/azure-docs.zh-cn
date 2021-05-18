@@ -6,10 +6,10 @@ ms.date: 03/02/2021
 ms.author: tomfitz
 author: tfitzmac
 ms.openlocfilehash: 76573e4415dffb2212dd025ed486d834446d3851
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043892"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure 资源管理器模板规格（预览版）
@@ -184,7 +184,7 @@ az deployment group create \
 
 ---
 
-你还可以使用以下格式打开 URL 以部署模板规范：
+还可以打开以下格式的 URL 来部署模板规格：
 
 ```url
 https://portal.azure.com/#create/Microsoft.Template/templateSpecVersionId/%2fsubscriptions%2f{subscription-id}%2fresourceGroups%2f{resource-group-name}%2fproviders%2fMicrosoft.Resources%2ftemplateSpecs%2f{template-spec-name}%2fversions%2f{template-spec-version}
@@ -258,7 +258,7 @@ az deployment group create \
 
 ## <a name="use-tags"></a>使用标记
 
-可以通过[标记](../management/tag-resources.md)对资源进行逻辑组织。 您可以使用 Azure PowerShell 和 Azure CLI 将标记添加到模板规范：
+可以通过[标记](../management/tag-resources.md)对资源进行逻辑组织。 可以使用 Azure PowerShell 和 Azure CLI 将标记添加到模板规格：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -312,17 +312,17 @@ az ts update \
 
 ---
 
-当使用指定的版本参数创建或修改模板规范时，但没有标记/标记参数：
+当使用指定的 version 参数创建或修改模板规格，但不使用 tag/tags 参数时：
 
-- 如果模板规范存在并且具有标记，但该版本不存在，则新版本将继承与现有模板规范相同的标记。
+- 如果模板规格存在且包含标记，但版本不存在，新版本将继承与现有模板规格相同的标记。
 
-当创建或修改具有标记/标记参数和指定的 version 参数的模板规范时：
+当同时使用指定的 tag/tags 参数和 version 参数创建或修改模板规格时：
 
-- 如果模板规范和版本都不存在，则会将标记添加到新的模板规范和新版本。
-- 如果模板规范存在，但该版本不存在，则仅将标记添加到新版本。
-- 如果模板规范和版本都存在，则标记仅适用于版本。
+- 如果模板规格和版本都不存在，标记会同时添加到新模板规格和新版本。
+- 如果模板规格存在，但版本不存在，则标记仅会添加到新版本。
+- 如果模板规格和版本都存在，标记仅会应用到该版本。
 
-当使用指定的标记/标记参数修改模板时，如果未指定 version 参数，则仅将标记添加到模板规范。
+当使用指定的 tag/tags 参数修改模板但未指定 version 参数时，标记仅会添加到模板规格。
 
 ## <a name="create-a-template-spec-with-linked-templates"></a>创建具有链接模板的模板规格
 

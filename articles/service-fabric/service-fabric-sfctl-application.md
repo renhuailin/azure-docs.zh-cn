@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 880770345eb7d65850db322bd97d64c60b6681ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260859"
 ---
 # <a name="sfctl-application"></a>sfctl application
@@ -17,7 +17,7 @@ ms.locfileid: "86260859"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|说明|
 | --- | --- |
 | create | 使用指定说明创建 Service Fabric 应用程序。 |
 | delete | 删除现有 Service Fabric 应用程序。 |
@@ -298,7 +298,7 @@ ms.locfileid: "86260859"
 | --application-type-name | 仅适用于预配种类的外部存储。 应用程序类型名称表示在应用程序清单中找到的应用程序类型的名称。 |
 | --application-type-version | 仅适用于预配种类的外部存储。 应用程序类型版本表示在应用程序清单中找到的应用程序类型的版本。 |
 | --external-provision | 可以从其中注册或预配应用程序包的位置。 指示预配针对之前上传到外部存储的应用程序包。 应用程序包以扩展名 *.sfpkg 结尾。 |
-| --no-wait | 指示预配是否应当以异步方式进行。 <br><br> 当设置为 true 时，预配操作将在请求被系统接受时返回，并且预配操作继续进行，没有任何超时限制。 默认值是 False。 对于大型应用程序包，建议将值设置为 true。 |
+| --no-wait | 指示预配是否应当以异步方式进行。 <br><br> 当设置为 true 时，预配操作将在请求被系统接受时返回，并且预配操作继续进行，没有任何超时限制。 默认值为 false。 对于大型应用程序包，建议将值设置为 true。 |
 | --timeout -t | 默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
@@ -403,7 +403,7 @@ ms.locfileid: "86260859"
 | --- | --- |
 | --application-type-name    [必需] | 应用程序类型的名称。 |
 | --application-type-version [必需] | 应用程序清单中定义的应用程序类型的版本。 |
-| --async-parameter | 此标志指示取消预配是否应当以异步方式进行。 当设置为 true 时，取消预配操作将在请求被系统接受时返回，并且取消预配操作继续进行，没有任何超时限制。 默认值是 False。 但是，对于已预配的大型应用程序包，建议将其设置为 true。 |
+| --async-parameter | 此标志指示取消预配是否应当以异步方式进行。 当设置为 true 时，取消预配操作将在请求被系统接受时返回，并且取消预配操作继续进行，没有任何超时限制。 默认值为 false。 但是，对于已预配的大型应用程序包，建议将其设置为 true。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
@@ -530,10 +530,10 @@ ms.locfileid: "86260859"
 |参数|说明|
 | --- | --- |
 | --path     [必需] | 本地应用程序包的路径。 |
-| --compress | 仅适用于 Service Fabric 应用程序包。 在默认位置或 compressed-location 参数指定的位置创建一个包含压缩的应用程序包的新文件夹，然后上传新建的文件夹。 <br><br> 如果 sfctl 已生成压缩文件，设置此标志时，将覆盖该文件。 如果目录不是应用程序包，将返回错误。 如果目录已经是压缩的应用程序包，将按原样复制文件夹。 默认情况下，在成功上传后，将删除新建的压缩应用程序包。 如果上传不成功，请根据需要手动清理压缩包。 如果 compressed-location 参数引用不存在的目录，则删除操作不会删除任何可能已创建的空目录。 |
-| --compressed-location | 要将压缩的应用程序包放到的位置。 <br><br> 如果未提供任何位置，压缩包将放在新建的名为 sfctl_compressed_temp 的文件夹下，而该文件夹位于 path 参数中指定的父目录下。 例如，如果 path 参数的值为 C\:/FolderA/AppPkg，则压缩包将添加到 C\:/FolderA/sfctl_compressed_temp/AppPkg。 |
+| --compress | 仅适用于 Service Fabric 应用程序包。 创建一个包含压缩应用程序包的新文件夹，可以在默认位置，也可以在压缩位置参数所指定的位置，然后上传新创建的文件夹。 <br><br> 如果已经有 sfctl 生成的压缩文件，且设置了此标记，则将覆盖该文件。 如果目录不是应用程序包，则将返回错误。 如果已经有压缩应用程序包，则将按原样复制文件夹。 默认情况下，上传成功后将删除新创建的压缩应用程序包。 如果上传未成功，请根据需要手动清理压缩包。 在删除操作中，因压缩位置参数引用了不存在的目录而创建的任何空目录不会删除。 |
+| --compressed-location | 要放置压缩应用程序包的位置。 <br><br> 如果未提供任何位置，压缩包将放置在新创建的文件夹下，该文件夹位于 path 参数中指定的父目录下，名为 sfctl_compressed_temp。 例如，path 参数的值为 C\:/FolderA/AppPkg 时，压缩包将添加到 C\:/FolderA/sfctl_compressed_temp/AppPkg。 |
 | --imagestore-string | 应用程序包上传到的目标映像存储区。  默认值\: fabric\:ImageStore。 <br><br> 若要上传到文件位置，请使用“file\:”启动此参数。 否则，该值应为映像存储连接字符串，例如默认值。 |
-| --keep-compressed | 成功完成上传后是否保留生成的压缩包。 <br><br> 如果未设置，则成功完成上传后，将删除压缩的应用包。 如果上传不成功，则应用程序包将始终保留在输出目录中，以便重新上传。 |
+| --keep-compressed | 在成功完成上传后，是否保留生成的压缩包。 <br><br> 如果未设置，则在成功完成时将删除压缩应用包。 如果上传未成功，则应用程序包将始终保留在输出目录中，以备重新上传。 |
 | --show-progress | 显示大型包的文件上传进度。 |
 | --timeout -t | 总超时，以秒为单位。 超过上传超时持续时间后，上传将失败并返回错误。 此超时适用于整个应用程序包，单独的文件超时将等于剩余的超时持续时间。 超时不包括压缩应用程序包所需的时间。  默认值为 \: 300。 |
 

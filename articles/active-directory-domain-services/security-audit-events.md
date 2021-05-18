@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: caf46850b3d8d6946225575b8a9a732a90847482
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6847d803a40797802e9cb1589979bf22062fc5db
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100574133"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285945"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务启用安全审核
 

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 1b73ce5c994231a1c7b2f26ad702f2ad5880ba44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 23c81aeab3bf6e9ee7f2d89fbdf8def20dab4aa7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94686270"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790844"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署数据
 
@@ -242,5 +242,5 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 将在几秒钟内收到来自 Azure 的初始响应。 部署完成后，所有与之相关且由 ACI 服务保存的数据将使用提供的密钥进行加密。
 
 <!-- LINKS - Internal -->
-[az-group-create]: /cli/azure/group#az-group-create
-[az-deployment-group-create]: /cli/azure/deployment/group/#az-deployment-group-create
+[az-group-create]: /cli/azure/group#az_group_create
+[az-deployment-group-create]: /cli/azure/deployment/group/#az_deployment_group_create

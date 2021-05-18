@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例-创建逻辑应用
+title: Azure CLI 脚本示例 - 创建逻辑应用
 description: 通过 Azure CLI 中的逻辑应用扩展创建逻辑应用的示例脚本。
 services: logic-apps
 ms.suite: integration
@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 8086ce0e5964d4e37a5ffc3082d5f2856058e4e5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218037"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875478"
 ---
-# <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI 脚本示例-创建逻辑应用
+# <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI 脚本示例 - 创建逻辑应用
 
-此脚本通过 () 的 [Azure CLI 逻辑应用扩展](/cli/azure/ext/logic/logic)创建一个示例逻辑应用 `az logic` 。 有关通过 Azure CLI 创建和管理逻辑应用的详细指南，请参阅 Azure CLI 的 [逻辑应用快速入门](quickstart-logic-apps-azure-cli.md)。
+此脚本通过 [Azure CLI 逻辑应用扩展](/cli/azure/logic) (`az logic`) 创建一个示例逻辑应用。 有关通过 Azure CLI 创建和管理逻辑应用的详细指南，请参阅 [Azure CLI 的逻辑应用快速入门](quickstart-logic-apps-azure-cli.md)。
 
 > [!WARNING]
 > Azure CLI 逻辑应用扩展当前是试验性的，未涵盖在客户支持中 。 请谨慎使用此 CLI 扩展，尤其是在生产环境中选择使用扩展时。
@@ -26,8 +26,8 @@ ms.locfileid: "102218037"
 * 具有活动订阅的 Azure 帐户。 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 在本地计算机上安装的 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在计算机上安装的[逻辑应用 Azure CLI 扩展](/cli/azure/azure-cli-extensions-list)。 若要安装此扩展，请使用此命令：`az extension add --name logic`
-* 逻辑应用的 [工作流定义](quickstart-logic-apps-azure-cli.md#workflow-definition) 。 此 JSON 文件必须遵循 [工作流定义语言架构](logic-apps-workflow-definition-language.md)。
-* 通过与逻辑应用相同的资源组中支持的 [逻辑应用连接器](../connectors/apis-list.md) 连接到电子邮件帐户的 API。 此示例使用 [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) connector，但你也可以使用其他连接器（如 [Outlook.com](../connectors/connectors-create-api-outlook.md)）。
+* 逻辑应用的[工作流定义](quickstart-logic-apps-azure-cli.md#workflow-definition)。 此 JSON 文件必须遵循[工作流定义语言架构](logic-apps-workflow-definition-language.md)。
+* 通过与逻辑应用相同的资源组中支持的[逻辑应用连接器](../connectors/apis-list.md)建立与电子邮件帐户的 API 连接。 此示例使用 [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) 连接器，但你也可以使用其他连接器（如 [Outlook.com](../connectors/connectors-create-api-outlook.md)）。
 
 ### <a name="prerequisite-check"></a>先决条件检查
 
@@ -45,17 +45,17 @@ ms.locfileid: "102218037"
 
 此示例工作流： 
 
-1. `$schema`为逻辑应用指定架构。
+1. 为逻辑应用指定架构 `$schema`。
 
-1. 定义触发器列表中逻辑应用的触发器 `triggers` 。 触发器 `recurrence` 每3小时重复一次 () 。 当 `When_a_feed_item_is_published`)  (为指定的 rss 源 () 发布新的源项时，将触发这些操作 `feedUrl` 。
+1. 在触发器列表中为逻辑应用定义一个触发器 `triggers`。 该触发器每 3 小时重复一次 (`recurrence`)。 在为指定的 RSS 源 (`feedUrl`) 发布新源项 (`When_a_feed_item_is_published`) 时，将触发该操作。
 
-1. 定义操作列表中逻辑应用的操作 `actions` 。 操作将发送电子邮件 (`Send_an_email_(V2)`) Microsoft 365，其中包含正文 (部分中指定的 RSS 源项中指定的详细信息，) `body` `inputs` () 。
+1. 在操作列表中为逻辑应用定义一个操作 `actions`。 该操作通过 Microsoft 365 发送一封电子邮件 (`Send_an_email_(V2)`)，其中包含该操作输入 (`inputs`) 的正文部分 (`body`) 中指定的来自 RSS 源项的详细信息。
 
 ## <a name="sample-workflow-definition"></a>示例工作流定义
 
-在运行示例脚本之前，必须先创建一个示例 [工作流定义](#prerequisites)。
+在运行示例脚本之前，必须先创建一个示例[工作流定义](#prerequisites)。
 
-1. 在您的计算机上创建一个 JSON 文件 `testDefinition.json` 。 
+1. 在计算机上创建 JSON 文件 `testDefinition.json`。 
 
 1. 将以下内容复制到 JSON 文件中： 
     ```json
@@ -134,22 +134,22 @@ ms.locfileid: "102218037"
     
     ```
 
-1. 用自己的信息更新占位符值：
+1. 将占位符值更新为你自己的信息：
 
-    1. )  (替换占位符电子邮件地址 `"To": "test@example.com"` 。 需要使用与逻辑应用连接器兼容的电子邮件地址。 有关详细信息，请参阅 [先决条件](#prerequisites)。
+    1. 替换占位符电子邮件地址 (`"To": "test@example.com"`)。 需要使用与逻辑应用连接器兼容的电子邮件地址。 有关详细信息，请参阅[先决条件](#prerequisites)。
 
-    1. 如果你使用的电子邮件连接器与 Office 365 Outlook connector 不同，请更换其他连接器详细信息。
+    1. 如果你使用 Office 365 Outlook 连接器外的其他电子邮件连接器，请替换其他连接器详细信息。
 
-    1. 将 (的占位符订阅值替换 `00000000-0000-0000-0000-000000000000` 为你的连接标识符的)  (`connectionId` ，并 `id`) "连接" 参数下的 " (" `$connections` 与你自己的订阅值结合。
+    1. 将连接参数 (`$connections`) 下连接标识符（`connectionId` 和 `id`）的占位符订阅值 (`00000000-0000-0000-0000-000000000000`) 替换为你自己的订阅值。
 
 1. 保存所做更改。
 
 ## <a name="sample-script"></a>示例脚本
 
 > [!NOTE]
-> 此示例是针对 shell 编写的 `bash` 。 如果要在另一 shell 中运行此示例，如 Windows PowerShell 或命令提示符，则可能需要对脚本进行修改。
+> 此示例针对 `bash` shell 编写而成。 如果要在另一个 shell（例如 Windows PowerShell 或命令提示符）中运行此示例，可能需要对脚本进行修改。
 
-运行此示例脚本之前，请运行以下命令连接到 Azure：
+运行此示例脚本之前，请运行此命令以连接到 Azure：
 
 ```azurecli-interactive
 
@@ -157,7 +157,7 @@ az login
 
 ```
 
-接下来，导航到在其中创建工作流定义的目录。 例如，如果您在桌面上创建了工作流定义 JSON 文件：
+接下来，导航到在其中创建了工作流定义的目录。 例如，如果在桌面上创建了工作流定义 JSON 文件：
 
 ```azurecli
 
@@ -183,7 +183,7 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 ### <a name="clean-up-deployment"></a>清理部署
 
-使用完示例脚本后，运行以下命令以删除资源组及其所有嵌套资源（包括逻辑应用）。
+使用完示例脚本后，运行以下命令以删除资源组及其所有嵌套资源，包括逻辑应用。
 
 ```azurecli-interactive
 
@@ -195,11 +195,11 @@ az group delete --name testResourceGroup --yes
 
 此示例脚本使用以下命令创建新的资源组和逻辑应用。
 
-| Command | 说明 |
+| 命令 | 说明 |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group#az-group-create) | 创建一个资源组，其中存储了逻辑应用的资源。 |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | 基于参数中定义的工作流创建逻辑应用 `--definition` 。 |
-| [`az group delete`](/cli/azure/vm/extension) | 删除资源组及其所有嵌套的资源。 |
+| [`az group create`](/cli/azure/group#az_group_create) | 创建存储逻辑应用资源的资源组。 |
+| [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) | 基于参数 `--definition` 中定义的工作流创建逻辑应用。 |
+| [`az group delete`](/cli/azure/vm/extension) | 删除资源组及其所有嵌套资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

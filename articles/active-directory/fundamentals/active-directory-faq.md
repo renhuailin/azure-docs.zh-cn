@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74735e80326e1d05e3f8820fc2b94c8fe930fcb3
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: a3b9f76eba9697d6ad47ecf8dc51689538923f88
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784226"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101094471"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -119,8 +119,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 **答:** 可以。如果已启用密码写回，管理员执行的密码操作将写回到用户的本地环境。  
 
-有关密码相关问题的详细解答，请参阅[密码管理常见问题](../authentication/active-directory-passwords-faq.yml)。
-
+<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>有关密码相关问题的详细解答，请参阅[密码管理常见问题](../authentication/active-directory-passwords-faq.md)。
 ---
 **问：如果我在尝试更改 Microsoft 365/Azure AD 密码时忘记了现有的密码，该怎么办？**
 
@@ -133,8 +132,8 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - [在 Azure 门户中重置帐户](active-directory-users-reset-password-azure-portal.md)
 - [使用 PowerShell](/powershell/module/msonline/set-msoluserpassword)
 
----
 
+---
 ## <a name="security"></a>安全性
 **问：帐户在经过特定次数的失败尝试后被锁定还是使用了更复杂的策略？**
 

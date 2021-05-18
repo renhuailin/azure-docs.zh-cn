@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2021
+ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: c77eac1521da3834e097893718dd5fd9fa9cbcc6
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: d1cc59fe2eb3a2938dc776fd62e6645aec62bb1f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952577"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291783"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -65,6 +65,10 @@ NFSv3 或 SMB3 客户端与 Azure NetApp 文件卷之间的数据流量未加密
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>能否对存储进行静态加密？
 
 所有 Azure NetApp 文件卷都使用 FIPS 140-2 标准进行加密。 所有密钥均由 Azure NetApp 文件服务托管。 
+
+### <a name="is-azure-netapp-files-cross-region-replication-traffic-encrypted"></a>Azure NetApp 文件跨区域复制流量是加密的吗？
+
+Azure NetApp 文件跨区域复制使用 TLS 1.2 AES-256 GCM 加密来加密源卷和目标卷之间传输的所有数据。 这种加密是对所有 Azure 流量（包括 Azure NetApp 文件跨区域复制）默认启用的 [Azure MACSec 加密](../security/fundamentals/encryption-overview.md)的补充。 
 
 ### <a name="how-are-encryption-keys-managed"></a>如何托管加密密钥？ 
 
@@ -133,10 +137,6 @@ Azure NetApp 文件提供卷性能指标。 你还可以使用 Azure Monitor 来
 若要使 NFS 卷在 VM 启动或重新启动时自动装载，请在主机上的 `/etc/fstab` 文件中添加一个条目。 
 
 有关详细信息，请参阅[为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。  
-
-### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>为什么 NFS 客户端上的 DF 命令没有显示预配的卷大小？
-
-DF 中报告的卷大小是 Azure NetApp 文件卷可以增长到的最大大小。 DF 命令中的 Azure NetApp 文件卷的大小不反映卷的配额或大小。  可以通过 Azure 门户或 API 获取 Azure NetApp 文件卷大小或配额。
 
 ### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Azure NetApp 文件支持哪个 NFS 版本？
 
@@ -216,7 +216,7 @@ SMB 客户端报告的卷大小是 Azure NetApp 文件卷可以增长到的最�
 
 ### <a name="can-an-azure-netapp-files-smb-share-act-as-an-dfs-namespace-dfs-n-root"></a>Azure NetApp 文件 SMB 共享是否可以充当 DFS 命名空间 (DFS-N) 根？
 
-否。 但是，Azure NetApp 文件 SMB 共享可以充当 DFS 命名空间 (DFS-N) 文件夹目标。   
+不是。 但是，Azure NetApp 文件 SMB 共享可以充当 DFS 命名空间 (DFS-N) 文件夹目标。   
 若要使用 Azure NetApp 文件 SMB 共享作为 DFS-N 文件夹目标，请使用 [DFS 添加文件夹目标](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target)过程提供 Azure NETAPP 文件 SMB 共享的通用命名约定 (UNC) 装载路径。  
 
 ### <a name="smb-encryption-faqs"></a>SMB 加密常见问题解答
@@ -262,15 +262,13 @@ SMB 加密不是必需的。 因此，只有当用户要求 Azure NetApp 文件�
 
 Azure NetApp 文件提供容量池和卷的使用指标。 你还可以使用 Azure Monitor 来监视 Azure NetApp 文件的使用情况。 有关详细信息，请参阅 [Azure NetApp 文件的指标](azure-netapp-files-metrics.md)。 
 
-### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>能否通过 Azure 存储资源管理器管理 Azure NetApp 文件？
-
-不是。 Azure 存储资源管理器不支持 Azure NetApp 文件。
-
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何确定目录是否即将达到限制大小？
 
+可以从客户端使用 `stat` 命令来查看目录是否即将达到目录元数据的[最大大小限制](azure-netapp-files-resource-limits.md#resource-limits) (320 MB)。
 请参阅 [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md#directory-limit)，了解限制和计算。 
 
-<!-- You can use the `stat` command from a client to see whether a directory is approaching the maximum size limit for directory metadata (320 MB).   
+<!-- 
+You can use the `stat` command from a client to see whether a directory is approaching the maximum size limit for directory metadata (320 MB).   
 
 For a 320-MB directory, the number of blocks is 655360, with each block size being 512 bytes.  (That is, 320x1024x1024/512.)  This number translates to approximately 4 million files maximum for a 320-MB directory. However, the actual number of maximum files might be lower, depending on factors such as the number of files containing non-ASCII characters in the directory. As such, you should use the `stat` command as follows to determine whether your directory is approaching its limit.  
 
@@ -291,6 +289,27 @@ Size: 4096            Blocks: 8          IO Block: 65536  directory
 ```
 --> 
 
+### <a name="does-snapshot-space-count-towards-the-usable--provisioned-capacity-of-a-volume"></a>快照空间是否计入卷的可用/预配容量？
+
+是，[已用快照容量](azure-netapp-files-cost-model.md#capacity-consumption-of-snapshots)将计入卷中预配的空间。 如果卷已满，请考虑采取以下措施：
+
+* [调整卷的大小](azure-netapp-files-resize-capacity-pools-or-volumes.md)。
+* [删除较旧的快照](azure-netapp-files-manage-snapshots.md#delete-snapshots)，以释放宿主卷中的空间。 
+
+### <a name="does-azure-netapp-files-support-auto-grow-for-volumes-or-capacity-pools"></a>Azure NetApp 文件支持卷或容量池的自动增长吗？
+
+不支持， Azure NetApp 文件的卷和容量池在填满后不会自动增长。 请参阅 [Azure NetApp 文件的成本模型](azure-netapp-files-cost-model.md)。   
+
+你可以使用社区支持的[逻辑应用 ANFCapacityManager 工具](https://github.com/ANFTechTeam/ANFCapacityManager)来管理基于容量的预警规则。 该工具可以自动增加卷大小，以防止卷用尽空间。
+
+### <a name="does-the-destination-volume-of-a-replication-count-towards-hard-volume-quota"></a>复制的目标卷是否会计入硬卷配额？  
+
+不会，复制的目标卷不会计入硬卷配额。
+
+### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>能否通过 Azure 存储资源管理器管理 Azure NetApp 文件？
+
+不是。 Azure 存储资源管理器不支持 Azure NetApp 文件。
+
 ## <a name="data-migration-and-protection-faqs"></a>数据迁移和保护常见问题解答
 
 ### <a name="how-do-i-migrate-data-to-azure-netapp-files"></a>如何将数据迁移到 Azure NetApp 文件？
@@ -310,6 +329,8 @@ NetApp 提供基于 SaaS 的解决方案，即 [NetApp 云同步](https://cloud.
 ### <a name="how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region"></a>如何在另一个 Azure 区域中创建 Azure NetApp 文件卷的副本？
     
 Azure NetApp 文件提供 NFS 和 SMB 卷。  可以使用任何基于文件的复制工具在 Azure 区域之间复制数据。 
+
+通过[跨区域复制](cross-region-replication-introduction.md)功能，你可以以异步方式将数据从一个区域中的 Azure NetApp 文件卷（源）复制到另一个区域中的 Azure NetApp 文件卷（目标）。  此外，还可以[使用现有卷的快照创建新卷](azure-netapp-files-manage-snapshots.md#restore-a-snapshot-to-a-new-volume)。
 
 NetApp 提供基于 SaaS 的解决方案，即 [NetApp 云同步](https://cloud.netapp.com/cloud-sync-service)。通过该解决方案，你能够将 NFS 或 SMB 数据复制到 Azure NetApp 文件 NFS 导出或 SMB 共享。 
 
@@ -341,7 +362,7 @@ NetApp 提供基于 SaaS 的解决方案，即 [NetApp 云同步](https://cloud.
 
 ### <a name="does-azure-netapp-files-work-with-azure-policy"></a>Azure NetApp 文件是否适用于 Azure Policy？
 
-是的。 Azure NetApp 文件是第一方服务。 其完全遵循 Azure 资源提供程序标准。 因此，可以通过自定义策略定义将 Azure NetApp 文件集成到 Azure Policy 中。 有关如何为 Azure NetApp 文件实现自定义策略的信息，请参阅 Microsoft 技术社区中的 [Azure Netapp 文件现可使用的 Azure Policy](https://techcommunity.microsoft.com/t5/azure/azure-policy-now-available-for-azure-netapp-files/m-p/2282258)。 
+是。 Azure NetApp 文件是第一方服务。 其完全遵循 Azure 资源提供程序标准。 因此，可以通过自定义策略定义将 Azure NetApp 文件集成到 Azure Policy 中。 有关如何为 Azure NetApp 文件实现自定义策略的信息，请参阅 Microsoft 技术社区中的 [Azure Netapp 文件现可使用的 Azure Policy](https://techcommunity.microsoft.com/t5/azure/azure-policy-now-available-for-azure-netapp-files/m-p/2282258)。 
 
 ## <a name="next-steps"></a>后续步骤  
 

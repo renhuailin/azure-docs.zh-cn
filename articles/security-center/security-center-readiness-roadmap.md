@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
 ms.openlocfilehash: e4f905b7a08564eadb20d65d651c137ef3741376
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102100315"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
@@ -46,7 +46,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 
 ### <a name="onboarding-computers-to-security-center"></a>将计算机载入到安全中心
-安全中心会自动检测 azure Defender 未保护的任何 Azure 订阅或工作区。 这包括使用安全中心免费版和未启用安全解决方案的工作区的 Azure 订阅。
+安全中心会自动检测未受 Azure Defender 保护的任何 Azure 订阅或工作区。 其中包括使用安全中心免费层的 Azure 订阅和未启用安全解决方案的工作区。
 
 在载入过程中，请参考以下资源。
 
@@ -77,7 +77,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 项目    
 * [利用 Azure 安全中心进行事件响应](./tutorial-security-incident.md)
-* [使用自动化来响应安全中心触发器](workflow-automation.md)
+* [使用自动化响应安全中心触发器](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>高级云防御
 
@@ -113,4 +113,4 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 ## <a name="community-resources"></a>社区资源
 
 * [安全中心 UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [问答&安全中心页面](/answers/topics/azure-security-center.html)
+* [有关安全中心的 Q&A 页](/answers/topics/azure-security-center.html)

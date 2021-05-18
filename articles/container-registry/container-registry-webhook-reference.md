@@ -4,10 +4,10 @@ description: Azure 容器注册表中 Webhook 请求的 JSON 有效负载参考�
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74455974"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure 容器注册表 Webhook 参考
@@ -24,7 +24,7 @@ ms.locfileid: "74455974"
 
 配置 Webhook 时，触发的 Webhook 向指定的 URL 终结点发出 HTTP `POST` 请求。
 
-### <a name="http-headers"></a>HTTP 标头
+### <a name="http-headers"></a>HTTP 头
 
 如果尚未指定 Webhook 的 `Content-Type` 自定义标头，则 Webhook 请求包括 `application/json` 的 `Content-Type`。
 
@@ -38,31 +38,31 @@ ms.locfileid: "74455974"
 
 |元素|类型|说明|
 |-------------|----------|-----------|
-|`id`|String|Webhook 事件的 ID。|
+|`id`|字符串|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
-|`action`|String|触发 Webhook 事件的操作。|
+|`action`|字符串|触发 Webhook 事件的操作。|
 |[目标](#target)|复杂类型|触发 Webhook 事件的事件目标。|
 |[请求](#request)|复杂类型|生成 Webhook 事件的请求。|
 
-### <a name="target"></a><a name="target"></a>靶
+### <a name="target"></a><a name="target"></a>目标
 
 |元素|类型|说明|
 |------------------|----------|-----------|
-|`mediaType`|String|引用对象的 MIME 类型。|
+|`mediaType`|字符串|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。 与 Length 字段相同。|
-|`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
+|`digest`|字符串|内容摘要，由注册表 V2 HTTP API 规范定义。|
 |`length`|Int32|内容的字节数。 与 Size 字段相同。|
-|`repository`|String|存储库名称。|
-|`tag`|String|映像标记名称。|
+|`repository`|字符串|存储库名称。|
+|`tag`|字符串|映像标记名称。|
 
-### <a name="request"></a><a name="request"></a>需要
+### <a name="request"></a><a name="request"></a>请求
 
 |元素|类型|说明|
 |------------------|----------|-----------|
-|`id`|String|启动事件的请求 ID。|
-|`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
-|`method`|String|生成事件的请求方法。|
-|`useragent`|String|请求的用户代理标头。|
+|`id`|字符串|启动事件的请求 ID。|
+|`host`|字符串|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
+|`method`|字符串|生成事件的请求方法。|
+|`useragent`|字符串|请求的用户代理标头。|
 
 ### <a name="payload-example-image-push-event"></a>有效负载示例：映像推送事件
 
@@ -88,7 +88,7 @@ ms.locfileid: "74455974"
 }
 ```
 
-触发映像**推送**事件 Webhook 的示例 [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) 命令：
+触发映像 **推送** 事件 Webhook 的示例 [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) 命令：
 
 ```bash
 docker push myregistry.azurecr.io/hello-world:v1
@@ -102,22 +102,22 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 |元素|类型|说明|
 |-------------|----------|-----------|
-|`id`|String|Webhook 事件的 ID。|
+|`id`|字符串|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
-|`action`|String|触发 Webhook 事件的操作。|
+|`action`|字符串|触发 Webhook 事件的操作。|
 |[目标](#helm_target)|复杂类型|触发 Webhook 事件的事件目标。|
 
-### <a name="target"></a><a name="helm_target"></a>靶
+### <a name="target"></a><a name="helm_target"></a>目标
 
 |元素|类型|说明|
 |------------------|----------|-----------|
-|`mediaType`|String|引用对象的 MIME 类型。|
+|`mediaType`|字符串|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。|
-|`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
-|`repository`|String|存储库名称。|
-|`tag`|String|图表标记名称。|
-|`name`|String|图表名称。|
-|`version`|String|图表版本。|
+|`digest`|字符串|内容摘要，由注册表 V2 HTTP API 规范定义。|
+|`repository`|字符串|存储库名称。|
+|`tag`|字符串|图表标记名称。|
+|`name`|字符串|图表名称。|
+|`version`|字符串|图表版本。|
 
 ### <a name="payload-example-chart-push-event"></a>有效负载示例：图表推送事件
 
@@ -152,28 +152,28 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 |元素|类型|说明|
 |-------------|----------|-----------|
-|`id`|String|Webhook 事件的 ID。|
+|`id`|字符串|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
-|`action`|String|触发 Webhook 事件的操作。|
+|`action`|字符串|触发 Webhook 事件的操作。|
 |[目标](#delete_target)|复杂类型|触发 Webhook 事件的事件目标。|
 |[请求](#delete_request)|复杂类型|生成 Webhook 事件的请求。|
 
-### <a name="target"></a><a name="delete_target"></a> 靶
+### <a name="target"></a><a name="delete_target"></a> 目标
 
 |元素|类型|说明|
 |------------------|----------|-----------|
-|`mediaType`|String|引用对象的 MIME 类型。|
-|`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
-|`repository`|String|存储库名称。|
+|`mediaType`|字符串|引用对象的 MIME 类型。|
+|`digest`|字符串|内容摘要，由注册表 V2 HTTP API 规范定义。|
+|`repository`|字符串|存储库名称。|
 
-### <a name="request"></a><a name="delete_request"></a> 需要
+### <a name="request"></a><a name="delete_request"></a> 请求
 
 |元素|类型|说明|
 |------------------|----------|-----------|
-|`id`|String|启动事件的请求 ID。|
-|`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
-|`method`|String|生成事件的请求方法。|
-|`useragent`|String|请求的用户代理标头。|
+|`id`|字符串|启动事件的请求 ID。|
+|`host`|字符串|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
+|`method`|字符串|生成事件的请求方法。|
+|`useragent`|字符串|请求的用户代理标头。|
 
 ### <a name="payload-example-image-delete-event"></a>有效负载示例：映像删除事件
 
@@ -196,7 +196,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
   }
 ```
 
-触发**删除**事件 Webhook 的示例 [Azure CLI](/cli/azure/acr) 命令：
+触发 **删除** 事件 Webhook 的示例 [Azure CLI](/cli/azure/acr) 命令：
 
 ```azurecli
 # Delete repository
@@ -214,22 +214,22 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 
 |元素|类型|说明|
 |-------------|----------|-----------|
-|`id`|String|Webhook 事件的 ID。|
+|`id`|字符串|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
-|`action`|String|触发 Webhook 事件的操作。|
+|`action`|字符串|触发 Webhook 事件的操作。|
 |[目标](#chart_delete_target)|复杂类型|触发 Webhook 事件的事件目标。|
 
-### <a name="target"></a><a name="chart_delete_target"></a> 靶
+### <a name="target"></a><a name="chart_delete_target"></a> 目标
 
 |元素|类型|说明|
 |------------------|----------|-----------|
-|`mediaType`|String|引用对象的 MIME 类型。|
+|`mediaType`|字符串|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。|
-|`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
-|`repository`|String|存储库名称。|
-|`tag`|String|图表标记名称。|
-|`name`|String|图表名称。|
-|`version`|String|图表版本。|
+|`digest`|字符串|内容摘要，由注册表 V2 HTTP API 规范定义。|
+|`repository`|字符串|存储库名称。|
+|`tag`|字符串|图表标记名称。|
+|`name`|字符串|图表名称。|
+|`version`|字符串|图表版本。|
 
 ### <a name="payload-example-chart-delete-event"></a>有效负载示例：图表删除事件
 

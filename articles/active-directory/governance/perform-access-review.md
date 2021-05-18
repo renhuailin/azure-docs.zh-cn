@@ -2,7 +2,7 @@
 title: 在访问评审中评审对组和应用程序的访问权限 - Azure AD
 description: 了解如何在 Azure Active Directory 访问评审中评审组成员的访问权限或应用程序访问权限。
 services: active-directory
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/22/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5cd7a5737b2d13e63eabbbddd076cfc7aff83ac
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 402fadfaa464c4cb13b3fa5ace22679b386140d0
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97746790"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787052"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中评审对组和应用程序的访问权限
 

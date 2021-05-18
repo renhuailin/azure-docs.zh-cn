@@ -3,12 +3,12 @@ title: 使用受信任的 Azure 服务访问受网络限制的注册表
 description: 启用受信任的 Azure 服务实例，以便安全地访问受网络限制的容器注册表以拉取或推送映像
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 2e6b6ee3736f98f53ebb0aa43d707d42ba4cc058
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4b0d7feb223bcfcec4e8b2c786b211f4e3c3c3eb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716476"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785863"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>允许受信任的服务安全地访问受网络限制的容器注册表（预览版）
 
@@ -49,7 +49,7 @@ Azure 容器注册表具有分层的安全模型，支持多个限制对注册�
 
 ## <a name="allow-trusted-services---cli"></a>允许受信任的服务 - CLI
 
-默认情况下，在新的 Azure 容器注册表中启用“允许受信任的服务”设置。 通过运行 [az acr update](/cli/azure/acr#az-acr-update) 命令禁用或启用此设置。
+默认情况下，在新的 Azure 容器注册表中启用“允许受信任的服务”设置。 通过运行 [az acr update](/cli/azure/acr#az_acr_update) 命令禁用或启用此设置。
 
 若要禁用此设置，请执行以下命令：
 

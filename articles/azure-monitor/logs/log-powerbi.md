@@ -6,15 +6,15 @@ author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
 ms.openlocfilehash: 894b87bfa17a59db20b424199a4021ad75b182fc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041053"
 ---
 # <a name="log-analytics-integration-with-power-bi"></a>Log Analytics 与 Power BI 的集成
 
-本文重点介绍如何将数据从 Log Analytics 送入 Microsoft Power BI，以创建更具视觉吸引力的报表和仪表板。 
+本文重点介绍如何将数据从 Log Analytics 馈送到 Microsoft Power BI，以创建在视觉上更具吸引力的报表和仪表板。 
 
 ## <a name="background"></a>背景 
 

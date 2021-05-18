@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f45e7d1515f0d6fc4467b36d95242ef8697c75d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92792593"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641403"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>如何使用批处理来提升 Azure SQL 数据库和 Azure SQL 托管实例应用程序的性能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -93,7 +93,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-事务实际在这两个示例中都用到了。 在第一个示例中，每个单个调用就是一个隐式事务。 在第二个示例中，用一个显式事务包装了所有调用。 按照[预写事务日志](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)的文档中所述，在事务提交时将日志记录刷新到磁盘。 因此通过在事务中包含更多调用，写入事务日志可能延迟，直到提交事务。 实际上，正在为写入服务器的事务日志启用批处理。
+事务实际在这两个示例中都用到了。 在第一个示例中，每个单个调用就是一个隐式事务。 在第二个示例中，用一个显式事务包装了所有调用。 按照[预写事务日志](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15&preserve-view=true#WAL)的文档中所述，在事务提交时将日志记录刷新到磁盘。 因此通过在事务中包含更多调用，写入事务日志可能延迟，直到提交事务。 实际上，你正在为写入服务器的事务日志启用批处理。
 
 下表显示了一些即席测试结果。 这些测试执行具有事务和不具有事务的相同的顺序插入。 为了更具对比性，第一组测试是从笔记本电脑针对 Microsoft Azure 中的数据库远程运行的。 第二组测试是从位于同一 Microsoft Azure 数据中心（美国西部）内的云服务和数据库运行的。 下表显示具有和不具有事务的一系列顺序插入所用的时间（毫秒）。
 
@@ -368,7 +368,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 有关数据库性能的通常准则也影响批处理。 例如，对于具有大的主键或很多非聚集索引的表，插入性能会下降。
 
-如果表值参数使用存储过程，则可以在该过程开头使用命令 **SET NOCOUNT ON**。 此语句禁止返回过程中受影响的行的计数。 但是，在我们的测试中，使用 **SET NOCOUNT ON** 对性能没有影响或导致性能下降。 测试存储过程很简单，它只有来自表值参数的一个 **INSERT** 命令。 更复杂的存储过程可能从此语句受益。 但是不要认为将 **SET NOCOUNT ON** 添加到存储过程会自动提高性能。 为了了解该影响，请用包含和不包含 **SET NOCOUNT ON** 语句来测试存储过程。
+如果表值参数使用存储过程，则可以在该过程开头使用命令 **SET NOCOUNT ON**。 此语句禁止返回过程中受影响的行的计数。 但是，在我们的测试中，使用 **SET NOCOUNT ON** 对性能没有影响或导致性能下降。 测试存储过程很简单，它只有来自表值参数的一个 **INSERT** 命令。 更复杂的存储过程可能从此语句受益。 但是不要认为将 **SET NOCOUNT ON** 添加到你的存储过程会自动提高性能。 为了了解该影响，请用包含和不包含 **SET NOCOUNT ON** 语句来测试存储过程。
 
 ## <a name="batching-scenarios"></a>批处理方案
 
@@ -378,7 +378,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 尽管一些方案中使用批处理很合适，但是也有很多方案下可以通过延迟处理来利用批处理。 但是，在出现意外故障时，延迟处理会使数据丢失的风险加大。 请务必了解此风险并考虑后果。
 
-例如，假设有一个跟踪每个用户的导航历史记录的 Web 应用程序。 对于每个页请求，该应用程序将创建一个数据库调用来记录用户的页面浏览量。 但是可以通过缓冲用户的导航活动，并成批将此数据发送到数据库来提高性能和缩放性。 可用经历的时间和/或缓冲区大小来触发数据库更新。 例如，一个规则可能指定在 20 秒后或缓冲区达到 1000 项时应处理批。
+例如，假设有一个跟踪每个用户的导航历史记录的 Web 应用程序。 对于每个页请求，该应用程序将创建一个数据库调用来记录用户的页面浏览量。 但是可以通过缓冲用户的导航活动，然后成批将此数据发送到数据库来提高性能和缩放性。 可用经历的时间和/或缓冲区大小来触发数据库更新。 例如，一个规则可能指定在 20 秒后或缓冲区达到 1000 项时应处理批。
 
 以下代码示例使用[反应扩展 - Rx](/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) 来处理监视类引发的缓冲事件。 当缓冲区已满或达到超时值时，使用表值参数将该批用户数据发送到数据库。
 

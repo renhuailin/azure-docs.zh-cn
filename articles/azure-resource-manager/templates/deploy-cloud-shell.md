@@ -3,12 +3,12 @@ title: 使用 Cloud Shell 部署模板
 description: 使用 Azure 资源管理器和 Azure Cloud Shell 将资源部署到 Azure。 资源在 Azure 资源管理器模板（ARM 模板）中定义。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 7697eb0a6786a07546bb0de679df69d64da30b1b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742338"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98028601"
 ---
 # <a name="deploy-arm-templates-from-azure-cloud-shell"></a>从 Azure Cloud Shell 部署 ARM 模板
 
@@ -33,7 +33,7 @@ ms.locfileid: "108742338"
    az deployment group create \
      --name ExampleDeployment \
      --resource-group ExampleGroup \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json" \
+     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
      --parameters storageAccountType=Standard_GRS
    ```
 
@@ -44,7 +44,7 @@ ms.locfileid: "108742338"
    New-AzResourceGroupDeployment `
      -DeploymentName ExampleDeployment `
      -ResourceGroupName ExampleGroup `
-     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json `
+     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
      -storageAccountType Standard_GRS
    ```
 
@@ -54,7 +54,7 @@ ms.locfileid: "108742338"
 
 若要部署本地模板，必须首先将模板上传到连接到 Cloud Shell 会话的存储帐户。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 选择 Cloud Shell 资源组。 名称模式为 `cloud-shell-storage-<region>`。
 

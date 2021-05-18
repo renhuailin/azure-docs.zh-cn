@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc182be0d92f3b15d1546017a164d0a6061e4bbf
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: a1c7aa4d2300a6dee44da067b122fc7af97f7aa9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175813"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96172850"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Windows 身份验证 - 使用 Azure Active Directory 实现 Kerberos 约束委派
 
@@ -54,5 +54,5 @@ Azure Active Directory 应用程序代理可以提供单一登录 (SSO)，还能
 
 * [使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) 
 
-* [在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](../app-proxy/application-proxy-add-on-premises-application.md)
+* [在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](../manage-apps/application-proxy-add-on-premises-application.md)
 

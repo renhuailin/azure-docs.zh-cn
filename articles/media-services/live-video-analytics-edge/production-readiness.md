@@ -4,10 +4,10 @@ description: 本文提供如何在生产环境中配置和部署 IoT Edge 上的
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 56982d84b7ffac718072683076657d56a2691d6c
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97400550"
 ---
 # <a name="production-readiness-and-best-practices"></a>生产就绪情况和最佳做法
@@ -15,7 +15,7 @@ ms.locfileid: "97400550"
 本文提供如何在生产环境中配置和部署 IoT Edge 上的实时视频分析模块的指南。 在准备 IoT Edge 解决方案时，你还应该参阅[准备在生产环境中部署 IoT Edge 解决方案](../../iot-edge/production-checklist.md)一文。 
 
 > [!NOTE]
-> 你应向组织的 IT 部门咨询与安全性相关的方面。
+> 就安全性方面的相关问题，你应该咨询组织的 IT 部门。
 
 ## <a name="running-the-module-as-a-local-user"></a>以本地用户的身份运行模块
 
@@ -62,9 +62,9 @@ sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
 
 IoT Edge 上的实时视频分析模块需要能在执行以下操作时将文件写入本地文件系统：
 
-* 使用模块克隆属性 [`applicationDataDirectory`](module-twin-configuration-schema.md#module-twin-properties) ，应在其中指定用于存储配置数据的本地文件系统上的目录。
+* 使用模块孪生属性 [`applicationDataDirectory`](module-twin-configuration-schema.md#module-twin-properties) 时，应通过此属性指定本地文件系统上用于存储配置数据的目录。
 * 使用媒体图将视频录制到云中时，此模块需要将边缘设备上的目录用作缓存（有关详细信息，请参阅[连续视频录制](continuous-video-recording-concept.md)一文）。
-* [记录到本地文件](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources)，您应该在其中指定所录制视频的文件路径。
+* [录制到本地文件](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources)，你应该为录制的视频指定文件路径。
 
 如果你打算使用上述任何操作，应确保上述用户帐户有权访问相关目录。 例如 applicationDataDirectory。 你可以在边缘设备上创建目录，并将设备存储链接到模块存储。 
 
@@ -73,7 +73,7 @@ sudo mkdir /var/local/mediaservices
 sudo chown -R edgeuser /var/local/mediaservices
 ```
 
-接下来，在部署清单中的 edge 模块的 "创建选项" 中，可以添加一个绑定设置，将上述目录 ( "var/local/windowsazure.mediaservices/" ) 映射到模块 (如 "/var/lib/azuremediaservices/" ) 中的目录。 并且将后一个目录用作 applicationDataDirectory 的值。
+接下来，在部署清单中适用于边缘模块的创建选项中，你可以将上述映射目录（“var/local/mediaservices/”）的绑定设置添加到模块中的目录（例如“/var/lib/azuremediaservices/”）。 并且将后一个目录用作 applicationDataDirectory 的值。
 
 ```
 "lvaEdge": {
@@ -111,7 +111,7 @@ sudo chown -R edgeuser /var/local/mediaservices
 
 通过媒体图，可以在云中创建资产或在边缘上创建 mp4 文件。 媒体资产可以由[连续视频录制](continuous-video-recording-tutorial.md)或[基于事件的视频录制](event-based-video-recording-tutorial.md)生成。 虽然可以根据需要对这些资产和文件命名，但对于基于连续视频录制的媒体资产，建议的命名结构是 "&lt;anytext&gt;-${System.GraphTopologyName}-${System.GraphInstanceName}"。   
 
-替换模式由 $ 符号后跟大括号： **$ {variableName}** 定义。  
+替换模式由 $ 符号后跟大括号定义：${variableName}。  
 
 例如，可以对资产接收器设置 assetNamePattern，如下所示：
 
@@ -119,7 +119,7 @@ sudo chown -R edgeuser /var/local/mediaservices
 "assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}
 ```
 
-对于基于事件的视频录制生成的资产，建议的命名模式是 "&lt;anytext&gt;-${System.DateTime}"。 如果事件同时发生，系统变量可确保不会覆盖资产。 例如，可以对资产接收器设置 assetNamePattern，如下所示：
+对于基于事件的视频录制生成的资产，建议的命名模式是 "&lt;anytext&gt;-${System.DateTime}"。 系统变量可确保当事件同时发生时，资产不会被覆盖。 例如，可以对资产接收器设置 assetNamePattern，如下所示：
 
 ```
 "assetNamePattern": "sampleAssetFromEVR-LVAEdge-${System.DateTime}"
@@ -143,20 +143,20 @@ sudo chown -R edgeuser /var/local/mediaservices
 "fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
 ```
 >[!NOTE]
-> 在上面的示例中，变量 **fileSinkOutputName** 是在图形拓扑中定义的示例变量名称。 这 **不** 是系统变量。 
+> 在上面的示例中，变量 fileSinkOutputName 是在图形拓扑中定义的示例变量名称。 这不是系统变量。 
 
 #### <a name="system-variables"></a>系统变量
-您可以使用的一些系统定义变量是：
+可以使用的一些系统定义的变量是：
 
 |系统变量|说明|示例|
 |-----------|-----------|-----------|
-|System.DateTime|ISO8601 file 相容格式的 UTC 日期时间 (基本表示 YYYYMMDDThhmmss) 。|20200222T173200Z|
-|PreciseDateTime|ISO8601 file 相容格式的 UTC 日期时间，以毫秒为单位 (基本表示 YYYYMMDDThhmmss) 。|20200222T 173200.123 Z|
+|System.DateTime|采用 ISO8601 文件标准格式的 UTC 日期时间（基本表示形式为 YYYYMMDDThhmmss）。|20200222T173200Z|
+|System.PreciseDateTime|采用 ISO8601 文件标准格式的包含毫秒的 UTC 日期时间（基本表示形式为 YYYYMMDDThhmmss.sss）。|20200222T173200.123Z|
 |System.GraphTopologyName|用户提供的执行图形拓扑的名称。|IngestAndRecord|
 |System.GraphInstanceName|用户提供的执行图形实例的名称。|camera001|
 
 >[!TIP]
-> 命名资产时，PreciseDateTime 不能使用。 名称中
+> 命名资产时，不能使用 System.PreciseDateTime，因为 名称中包含“.”
 ### <a name="keeping-your-vm-clean"></a>保持 VM 清洁
 
 如果不定期对用作边缘设备的 Linux VM 进行管理，它可能会变得无响应。 因此，务必要保持缓存的清洁、清除不必要的包，并且从 VM 中删除未使用的容器。 为此，可以在边缘 VM 上使用下面一组建议的命令。
@@ -173,7 +173,7 @@ sudo chown -R edgeuser /var/local/mediaservices
 1. `sudo docker image ls` - 提供边缘系统上的 Docker 映像列表
 1. `sudo docker system prune`
 
-    Docker 采用保守的方法来清理未使用的对象 (通常称为 "垃圾回收" ) ，如映像、容器、卷和网络：这些对象通常不会被删除，除非明确要求 Docker 这样做。 这可能导致 Docker 会使用额外的磁盘空间。 对于每种类型的对象，Docker 都提供了 prune 命令。 此外，还可以使用 docker system prune 一次性清理多种类型的对象。 有关详细信息，请参阅[删除未使用的 Docker 对象](https://docs.docker.com/config/pruning/)。
+    Docker 采用保守的方法来清理未使用的对象（通常称为“垃圾回收”），例如映像、容器、卷和网络：除非你明确要求 Docker 这样做，否则通常不会删除这些对象。 这可能导致 Docker 会使用额外的磁盘空间。 对于每种类型的对象，Docker 都提供了 prune 命令。 此外，还可以使用 docker system prune 一次性清理多种类型的对象。 有关详细信息，请参阅[删除未使用的 Docker 对象](https://docs.docker.com/config/pruning/)。
 1. `sudo docker rmi REPOSITORY:TAG`
 
     当边缘模块在进行更新时，docker 仍可有旧版本的边缘模块。 在这种情况下，建议使用 docker rmi 命令删除映像版本标记标识的特定映像。

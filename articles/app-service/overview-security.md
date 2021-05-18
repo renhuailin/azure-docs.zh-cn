@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
 ms.openlocfilehash: 61bffcfa8b98ed666e450c344023258b752e4880
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98736099"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
@@ -22,7 +22,7 @@ ms.locfileid: "98736099"
 
 ## <a name="https-and-certificates"></a>HTTPS 和证书
 
-应用服务允许通过 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保护应用。 创建应用后，其默认域名 (\<app_name> 。 azurewebsites.net) 已使用 HTTPS 进行访问。 如果[为应用配置自定义域](app-service-web-tutorial-custom-domain.md)，则还应[使用 TLS/SSL 对其进行保护](configure-ssl-bindings.md)，以便客户端浏览器与自定义域建立安全的 HTTPS 连接。 下面是应用服务支持的多种类型的证书：
+应用服务允许通过 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保护应用。 创建应用后，便可使用 HTTPS 访问其默认域名 (\<app_name>.azurewebsites.net)。 如果[为应用配置自定义域](app-service-web-tutorial-custom-domain.md)，则还应[使用 TLS/SSL 对其进行保护](configure-ssl-bindings.md)，以便客户端浏览器与自定义域建立安全的 HTTPS 连接。 下面是应用服务支持的多种类型的证书：
 
 - 免费应用服务托管证书
 - 应用服务证书

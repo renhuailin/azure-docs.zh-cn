@@ -1,5 +1,5 @@
 ---
-title: 准备源计算机以通过推送安装安装移动服务，以便将 VMware Vm 和物理服务器灾难恢复到 Azure |Microsoft Docs
+title: 准备源计算机以通过推送安装来安装移动服务，以便将 VMware VM 和物理服务器灾难恢复到 Azure | Microsoft Docs
 description: 了解如何准备服务器以通过推送安装来安装移动代理，以便使用 Azure Site Recovery 服务将 VMware VM 和物理服务器灾难恢复到 Azure。
 author: Rajeswari-Mamilla
 ms.service: site-recovery
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90524991"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>准备源计算机以推送安装移动代理
@@ -63,7 +63,7 @@ ms.locfileid: "90524991"
 11. 在“管理帐户”选项卡中，选择“添加帐户”。  
 12. 添加已创建的帐户。
 13. 输入为计算机启用复制时使用的凭据。
-1. 用于更新或保护 SUSE Linux Enterprise Server 11 SP3 或 RHEL 5 或 Debian 7 计算机的其他步骤。 [确保配置服务器中提供了最新版本](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)。
+1. 用于更新或保护 SUSE Linux Enterprise Server 11 SP3 或 RHEL 5 或 CentOS 5 或 Debian 7 计算机的其他步骤。 [确保配置服务器中提供了最新版本](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)。
 
 ## <a name="anti-virus-on-replicated-machines"></a>复制计算机上的防病毒
 
@@ -71,6 +71,6 @@ ms.locfileid: "90524991"
 
 ## <a name="next-steps"></a>后续步骤
 
-安装移动服务后，在 Azure 门户中选择“+复制”以开始保护这些 VM。**** 详细了解如何为 [VMware VM](vmware-azure-enable-replication.md) 和[物理服务器](physical-azure-disaster-recovery.md#enable-replication)启用复制。
+安装移动服务后，在 Azure 门户中选择“+复制”以开始保护这些 VM。 详细了解如何为 [VMware VM](vmware-azure-enable-replication.md) 和[物理服务器](physical-azure-disaster-recovery.md#enable-replication)启用复制。
 
 

@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: ee8174114f1b892210e8ee9173ce0eb1d09c7e31
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96619294"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-active-directory-domain-services-managed-domains"></a>解决现有 Azure Active Directory 域服务托管域的目录不匹配错误
@@ -62,7 +62,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 用于限制对资源的访问权
 以下两个选项可解决不匹配的目录错误：
 
 * 首先，从现有 Azure AD 目录中[删除托管域](delete-aadds.md)。 然后，在与想要使用的虚拟网络相同的 Azure AD 目录中[创建替换托管域](tutorial-create-instance.md)。 准备就绪后，将以前加入已删除域的所有计算机加入重新创建的托管域。
-* 将包含虚拟网络的[Azure 订阅移](../cost-management-billing/manage/billing-subscription-transfer.md)到与托管域相同的 Azure AD 目录中。
+* 将包含虚拟网络的 [Azure 订阅移动](../cost-management-billing/manage/billing-subscription-transfer.md)到与托管域相同的 Azure AD 目录。
 
 ## <a name="next-steps"></a>后续步骤
 

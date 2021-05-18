@@ -1,5 +1,5 @@
 ---
-title: 开发 SQL 数据库项目-Azure Data Lake
+title: 开发 U-SQL 数据库项目 - Azure Data Lake
 description: 了解如何使用针对 Visual Studio 的 Azure Data Lake 工具开发 U-SQL 数据库。
 author: liudan66
 ms.author: liud
@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/03/2018
 ms.openlocfilehash: 706457a602e20dd37e64e5f389948b351ac8ebcf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015241"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>使用 U-SQL 数据库项目开发 Azure Data Lake 的 U-SQL 数据库
@@ -38,15 +38,15 @@ U-SQL 数据库项目是 Visual Studio 中的一种项目类型，可帮助开�
 
 1. 为 U-SQL 数据库项目添加对包含 UDO/UDAG/UDF 的 C# 项目的引用。
 
-   ![适用于 Visual Studio 的 Data Lake 工具-添加引用](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-project-reference.png)
+   ![针对 Visual Studio 的 Data Lake 工具 - 添加引用](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-project-reference.png)
 
-   ![用于 Visual Studio 的 Data Lake 工具-添加 U-SQL 数据库项目引用](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-project-reference-wizard.png)
+   ![针对 Visual Studio 的 Data Lake 工具 - 添加 U-SQL 数据库项目引用](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-project-reference-wizard.png)
 
 2. 在程序集设计视图中，从“从引用创建程序集”下拉菜单中选择引用的程序集。
 
    ![针对 Visual Studio 的 Data Lake 工具 - 从引用创建程序集](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-create-assembly-from-reference.png)
 
-3. 添加 **托管依赖项** 和 **其他文件** （如果有）。 添加其他文件时，该工具会使用相对路径来确保它稍后可在本地计算机和生成计算机上找到程序集。
+3. 添加“托管的依赖项”和“其他文件”（若有） 。 添加其他文件时，该工具会使用相对路径来确保它稍后可在本地计算机和生成计算机上找到程序集。
 
 @_DeployTempDirectory 是一个预定义的变量，它将该工具指向生成输出文件夹。 在生成输出文件夹下，每个程序集都有按程序集名称命名的子文件夹。 此子文件夹中包含所有 DLL 和其他文件。
 
@@ -54,7 +54,7 @@ U-SQL 数据库项目是 Visual Studio 中的一种项目类型，可帮助开�
 
 U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称的后缀为 `.usqldbpack`。 `.usqldbpack` 包是一个 zip 文件，其中包含“DDL”文件夹中单个 U-SQL 脚本中的所有 DDL 语句，以及“Temp”文件夹中程序集的所有 DLL 和其他文件。
 
-了解有关 [如何使用 MSBuild 命令行和 Azure DevOps Services 生成任务生成 U SQL 数据库项目](data-lake-analytics-cicd-overview.md)的详细信息。
+详细了解[如何使用 MSBuild 命令行和 Azure DevOps Services 生成任务生成 U-SQL 数据库项目](data-lake-analytics-cicd-overview.md)。
 
 ## <a name="deploy-a-u-sql-database"></a>部署 U-SQL 数据库
 
@@ -68,7 +68,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 1. 右键单击 U-SQL 数据库项目，然后选择“部署”。
 
-1. 在 " **部署" "SQL 数据库" 向导** 中，选择要将数据库部署到的 **ADLA 帐户** 。 支持本地帐户和 ADLA 帐户。
+1. 在“部署 U-SQL 数据库”向导中，选择要将数据库部署到的“ADLA 帐户” 。 支持本地帐户和 ADLA 帐户。
 
 1. “数据库源”会自动填充，并指向项目生成输出文件夹中的 .usqldbpack 包。
 
@@ -82,7 +82,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 #### <a name="deploy-through-a-u-sql-database-deployment-package"></a>通过 U-SQL 数据库部署包进行部署
 
-1. 打开 **服务器资源管理器**。 然后展开要将数据库部署到的“Azure Data Lake Analytics 帐户”。
+1. 打开“服务器资源管理器”。 然后展开要将数据库部署到的“Azure Data Lake Analytics 帐户”。
 
 1. 右键单击“U-SQL 数据库”并选择“部署数据库”。
 

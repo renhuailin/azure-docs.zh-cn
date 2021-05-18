@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 68b9b31cdfb55e8150b05e3efd35389320905cdc
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: MT
+ms.openlocfilehash: 72ad05eea9232e7a0d6ac24d1d0d22a971a7f6a5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034265"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790826"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>在专用主机上部署
 
@@ -21,7 +21,7 @@ ms.locfileid: "98034265"
 ## <a name="prerequisites"></a>先决条件
 
 > [!NOTE]
-> 由于当前限制，并非所有限制增加请求都保证获得批准。
+> 由于当前的一些限制，并非所有限制增加请求都可以保证得到批准。
 
 * 使用专用 SKU 的任何订阅的默认限制均为 0。 如果要将此 SKU 用于生产容器部署，请创建 [Azure 支持请求][azure-support]以增加限制。
 
@@ -132,9 +132,9 @@ ms.locfileid: "98034265"
 
 ## <a name="deploy-your-container-group"></a>部署容器组
 
-如果在桌面上创建并编辑了部署模板文件，可以通过将文件拖动到 Cloud Shell 目录上，将其上传到该文件。 
+如果在桌面上创建并编辑了部署模板文件，则可以通过将文件拖动到 Cloud Shell 目录中，将其上传到该目录中。 
 
-使用 [az group create][az-group-create] 命令创建资源组。
+使用“[az group create][az-group-create]”命令创建资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -149,8 +149,8 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 将在几秒钟内收到来自 Azure 的初始响应。 在专用主机上部署成功。
 
 <!-- LINKS - Internal -->
-[az-group-create]: /cli/azure/group#az-group-create
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
+[az-group-create]: /cli/azure/group#az_group_create
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff89e8c803e0edf5245a62d625a6367d68de96ba
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f6abfbcf8aafe2c7c733cc06ae068ff1fcb43b7e
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96742062"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285783"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>使用 RADIUS 的远程桌面网关和 Azure 多重身份验证服务器
 
@@ -35,7 +35,7 @@ ms.locfileid: "96742062"
 >
 > 在 2019 年 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 已加入域的 Azure MFA 服务器。 如果尚未安装该服务器，请执行 [Azure 多重身份验证服务器入门](howto-mfaserver-deploy.md)中的步骤。
 - 现有已配置的 NPS 服务器。
@@ -94,4 +94,4 @@ RD 网关使用 NPS 将 RADIUS 请求发送到 Azure 多重身份验证。 若�
 
 - 集成 Azure MFA 和 [IIS Web 应用](howto-mfaserver-iis.md)
 
-- 在 [Azure 多重身份验证常见问题](multi-factor-authentication-faq.md)中获取答案
+- 在 [Azure 多重身份验证常见问题](multi-factor-authentication-faq.yml)中获取答案

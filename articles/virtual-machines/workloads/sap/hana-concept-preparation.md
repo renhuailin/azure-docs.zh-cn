@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: babd7c1dcae9d83af1f6c41e756b663d92d6d486
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101677119"
 ---
 # <a name="disaster-recovery-principles"></a>灾难恢复原则
@@ -68,7 +68,7 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
 - 在 DR Azure 区域中的 HANA 大型实例单元上停止新安装的 SAP HANA 实例。
 - 卸载这些 PRD 卷并联系 Azure 上的 SAP HANA 服务管理部门。 卷无法一直保持在单元上，因为它们在作为存储复制目标运行时无法对其进行访问。  
 
-![此图显示了生产 Azure 区域中的 PRD 卷与 DR Azure 区域中的 PRD 卷之间的复制关系。](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![关系图显示生产 Azure 区域中的 PRD 卷与 DR Azure 区域中的 PRD 卷之间的复制关系。](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
 运营团队在生产 Azure 区域中的 PRD 卷与 DR Azure 区域中的 PRD 卷之间建立复制关系。
 

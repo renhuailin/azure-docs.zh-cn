@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 4c71ddbf1d2b435697b2707acf0b1262f2c5dc31
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94517183"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>在 Azure 上部署安全应用程序
@@ -32,7 +32,7 @@ ms.locfileid: "94517183"
 发布阶段的重点是准备要公开发布的项目。
 这包括规划各种可有效执行发布后服务任务的方法，并解决以后可能会出现的安全漏洞。
 
-### <a name="check-your-applications-performance-before-you-launch"></a>启动之前检查应用程序的性能
+### <a name="check-your-applications-performance-before-you-launch"></a>在推出应用程序之前检查其性能
 
 在推出应用程序或将更新部署到生产环境之前，先检查该应用程序的性能。 使用 Visual Studio 运行基于云的[负载测试](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing)，以查找应用程序中的性能问题，提高部署质量，确保应用程序始终启动或可用，并且应用程序可以处理推出的流量。
 

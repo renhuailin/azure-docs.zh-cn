@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 10a3360f30d211336e4ce861b124a307c85fb150
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308245"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "92151672"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
 
@@ -64,7 +64,7 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 >
 > - 如果使用 Azure Functions 或 Azure 流分析来连接内置事件终结点，则可能需要执行重启操作。 这是因为在故障转移过程中，上一个偏移量不再有效。
 >
-> - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保在不进行分区的情况下读取所有 blob 或文件。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 可以使用 [List Blobs API](/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/filesystem/list) 枚举文件列表。 若要了解详细信息，请查看 [Azure 存储作为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)。
+> - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保在不进行分区的情况下读取所有 blob 或文件。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 可以使用 [List Blobs API](/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) 枚举文件列表。 若要了解详细信息，请查看 [Azure 存储作为路由终结点](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)。
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft 发起的故障转移
 

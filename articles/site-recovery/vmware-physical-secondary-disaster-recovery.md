@@ -1,16 +1,19 @@
 ---
 title: 使用 Azure Site Recovery 将 VMware VM/物理服务器灾难恢复到辅助站点
 description: 了解如何使用 Azure Site Recovery 将 VMware VM 或 Windows 和 Linux 物理服务器的灾难恢复设置到辅助站点。
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.openlocfilehash: c2456fcfffd9645f94856998142f262298b5eef9
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.author: raynew
+ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581466"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "84711895"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>将本地 VMware 虚拟机或物理服务器的灾难恢复设置到辅助站点
 

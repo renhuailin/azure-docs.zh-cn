@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-java
 ms.openlocfilehash: d321e0c10b66a15e6cb309cefe711602fa12957c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91534102"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>使用 Eclipse 调试 Java Service Fabric 应用程序
@@ -28,7 +28,7 @@ ms.locfileid: "91534102"
 
 4. 部署应用程序。
 
-5. 在 Eclipse IDE 中，选择“运行”->“调试配置”->“远程 Java 应用程序和输入连接属性”  ，并按如下所示设置属性：
+5. 在 Eclipse IDE 中，选择“运行”->“调试配置”->“远程 Java 应用程序和输入连接属性”，并按如下所示设置属性：
 
    ```
    Host: ipaddress

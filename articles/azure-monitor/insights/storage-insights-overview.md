@@ -6,10 +6,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/11/2020
 ms.openlocfilehash: 0baaca8df8865061b51f1629da14c3b18a527047
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101708061"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用用于存储的 Azure Monitor 监视存储服务
@@ -84,7 +84,7 @@ ms.locfileid: "101708061"
 
 ## <a name="view-from-a-storage-account"></a>在存储帐户中查看
 
-若要从存储帐户直接访问 VM insights：
+若要直接从存储帐户访问 VM 见解，请执行以下操作：
 
 1. 在 Azure 门户中，选择“存储帐户”。
 

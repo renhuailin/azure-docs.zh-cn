@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: d4bc59a9bd5299698bff9949aaaa881fbdf385ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 71249534c6a088088213659b5a45e042229721c7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100526266"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813175"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics 工作区的加密
 
@@ -53,7 +53,7 @@ Azure 服务的第一层加密是通过平台管理的密钥实现的。 默认�
 
 ### <a name="key-access-and-workspace-activation"></a>密钥访问和工作区激活
 
-在使用客户管理的密钥的 Azure Synapse 加密模型中，工作区会根据需要访问 Azure Key Vault 中的密钥以完成加密和解密。 要让工作区能访问这些密钥，可以采用访问策略或 [Azure Key Vault RBAC 访问](../../key-vault/general/rbac-guide.md)。 通过 Azure Key Vault 访问策略授予权限时，请在创建策略时选择 [仅限应用程序](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options)选项（选择工作区的托管标识，且请勿将其添加为获得授权的应用程序）。
+在使用客户管理的密钥的 Azure Synapse 加密模型中，工作区会根据需要访问 Azure Key Vault 中的密钥以完成加密和解密。 要让工作区能访问这些密钥，可以采用访问策略或 [Azure Key Vault RBAC 访问](../../key-vault/general/rbac-guide.md)。 通过 Azure Key Vault 访问策略授予权限时，请在创建策略时选择 [仅限应用程序](../../key-vault/general/security-features.md#key-vault-authentication-options)选项（选择工作区的托管标识，且请勿将其添加为获得授权的应用程序）。
 
  在激活工作区之前，必须向工作区托管标识授予访问密钥保管库所需的权限。 这种分阶段的工作区激活方法可以确保工作区中的数据是通过客户管理的密钥进行加密的。 请注意，可以为专用 SQL 池启用或禁用加密（默认情况下每个池都不启用加密）。
 

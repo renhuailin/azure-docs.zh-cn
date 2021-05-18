@@ -1,6 +1,6 @@
 ---
-title: 通过 Azure 静态 Web 应用预览配置前端框架
-description: Azure 静态 Web 应用所需的常用前端框架的设置
+title: 使用 Azure Static Web Apps 预览版配置前端框架
+description: Azure Static Web Apps 所需的常用前端框架的设置
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
@@ -8,32 +8,32 @@ ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
 ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97901226"
 ---
-# <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>通过 Azure 静态 Web 应用预览配置前端框架和库
+# <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>使用 Azure Static Web Apps 预览版配置前端框架和库
 
-Azure 静态 Web 应用要求在前端框架或库的 [生成配置文件](github-actions-workflow.md) 中具有相应的配置值。
+Azure Static Web Apps 要求在前端框架或库的[生成配置文件](github-actions-workflow.md)中具有相应的配置值。
 
 ## <a name="configuration"></a>配置
 
 下表列出了一系列框架和库的设置<sup>1</sup>。
 
-表列的目的是通过以下项进行说明：
+表中各列的作用通过以下项进行说明：
 
-- **输出位置**：列出的值 `output_location` ，它是 [应用程序文件的生成版本的文件夹](github-actions-workflow.md#build-and-deploy)。
+- **输出位置**：列出 `output_location` 的值，即[应用程序文件的生成版本所在的文件夹](github-actions-workflow.md#build-and-deploy)。
 
-- **自定义生成命令**：当框架需要不同于或的命令时 `npm run build` `npm run azure:build` ，可以定义 [自定义生成命令](github-actions-workflow.md#custom-build-commands)。
+- **自定义生成命令**：当框架需要不同于 `npm run build` 或 `npm run azure:build` 的命令时，可以定义[自定义生成命令](github-actions-workflow.md#custom-build-commands)。
 
 | 框架 | 应用项目位置 | 自定义生成命令 |
 |--|--|--|
-| [Alpine.js](https://github.com/alpinejs/alpine/) | `/` | 不适用 <sup>2</sup> |
+| [Alpine.js](https://github.com/alpinejs/alpine/) | `/` | n/a <sup>2</sup> |
 | [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --prod` |
-| [协调世界](https://angular.io/guide/universal) | `dist/<APP_NAME>/browser` | `npm run prerender` |
-| [Aurelia meets](https://aurelia.io/) | `dist` | 不适用 |
+| [Angular Universal](https://angular.io/guide/universal) | `dist/<APP_NAME>/browser` | `npm run prerender` |
+| [Aurelia](https://aurelia.io/) | `dist` | 不适用 |
 | [Backbone.js](https://backbonejs.org/) | `/` | 不适用 |
 | [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) | `wwwroot` | 不适用 |
 | [Ember](https://emberjs.com/) | `dist` | 不适用 |
@@ -58,9 +58,9 @@ Azure 静态 Web 应用要求在前端框架或库的 [生成配置文件](githu
 | [TypeScript](https://www.typescriptlang.org/) | `dist` | 不适用 |
 | [Vue.js](https://vuejs.org/) | `dist` | 不适用 |
 
-<sup>1</sup> 上面的表并不是与 Azure 静态 Web 应用配合使用的框架和库的详尽列表。
+<sup>1</sup>上表并未详尽列出与 Azure Static Web Apps 配合使用的所有框架和库。
 
-<sup>2</sup> 不适用
+<sup>2</sup>不适用
 
 ## <a name="next-steps"></a>后续步骤
 

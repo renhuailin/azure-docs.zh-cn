@@ -1,18 +1,18 @@
 ---
 title: 排查复制活动的性能问题
 description: 了解如何排查 Azure 数据工厂中复制活动的性能问题。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: 07be5d29ccb55fe97f38123ff4a850d28cd39ead
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: eee68b8cb533763aff0c1cc6a1ebe19db735461e
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387676"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488566"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
@@ -69,7 +69,7 @@ ms.locfileid: "100387676"
 
     - 检查是否可以[基于按日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这不会在“列出源”端带来负担。
 
-    - 检查是否可以使用数据存储的本机筛选器，尤其是 "**前缀**" 用于 Amazon S3/azure Blob/Azure 文件存储，"**listAfter/listBefore**" 用于 ADLS Gen1。 这些筛选器是一个数据存储服务器端筛选器，其性能要好得多。
+    - 检查是否可以改用数据存储的本机筛选器，具体说来就是 Amazon S3/Azure Blob/Azure 文件存储的“前缀”，以及 ADLS Gen1 的“listAfter/listBefore”。 这些筛选器是一个数据存储服务器端筛选器，其性能要好得多。
 
     - 考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 解决方案模板，其中提供了一般性的示例。
 
@@ -123,7 +123,7 @@ ms.locfileid: "100387676"
 
     - 检查是否可以[基于按日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这不会在“列出源”端带来负担。
 
-    - 检查是否可以使用数据存储的本机筛选器，尤其是 "**前缀**" 用于 Amazon S3/azure Blob/Azure 文件存储，"**listAfter/listBefore**" 用于 ADLS Gen1。 这些筛选器是一个数据存储服务器端筛选器，其性能要好得多。
+    - 检查是否可以改用数据存储的本机筛选器，具体说来就是 Amazon S3/Azure Blob/Azure 文件存储的“前缀”，以及 ADLS Gen1 的“listAfter/listBefore”。 这些筛选器是一个数据存储服务器端筛选器，其性能要好得多。
 
     - 考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 解决方案模板，其中提供了一般性的示例。
 
@@ -168,7 +168,7 @@ ms.locfileid: "100387676"
   - 考虑逐步优化[并行复制](copy-activity-performance-features.md)，同时请注意，过多的并行复制可能会进一步损害性能。
 
 
-## <a name="connector-and-ir-performance"></a>连接器和 IR 性能
+## <a name="connector-and-ir-performance"></a>连接器和 IR 性能 
 
 本部分探讨特定连接器类型或集成运行时的一些性能故障排除指南。
 
@@ -176,9 +176,11 @@ ms.locfileid: "100387676"
 
 当数据集基于不同 Integration Runtime 时，活动执行时间会有所不同。
 
-- **症状**：只需在数据集中切换 "链接的服务" 下拉列表，就可以执行相同的管道活动，但运行时间会明显不同。 如果数据集基于托管虚拟网络 Integration Runtime，则完成运行所需的平均时间超过2分钟，但根据默认 Integration Runtime 完成时需要大约20秒的时间。
+- **症状**：只需在数据集中切换“链接服务”下拉列表就可以执行相同的管道活动，但运行时间会明显不同。 当数据集基于托管虚拟网络集成运行时时，运行所需的平均时间要比基于默认集成运行时时更长。  
 
-- **原因**：检查管道运行的详细信息，可以看到慢速管道运行在托管 VNet (虚拟网络) IR 上，而正常运行在 Azure IR 上。 按照设计，托管 VNet IR 的排队时间比 Azure IR 长，因为我们不会为每个数据工厂保留一个计算节点，因此每个复制活动需要大约2分钟的时间来启动，并且它主要在 VNet 联接而不是 Azure IR 进行。
+- **原因**：检查管道运行的详细信息，可以看到慢速管道在托管 VNet（虚拟网络）IR 上运行，而正常管道在 Azure IR 上运行。 按照设计，托管 VNet IR 的排队时间比 Azure IR 长，因为我们不会为每个数据工厂保留一个计算节点，因此每次启动复制活动时都需要进行预热，并且它主要在 VNet 联接（而不是 Azure IR）上进行。 
+
+
 
     
 ### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>在将数据加载到 Azure SQL 数据库时性能较低
@@ -218,7 +220,7 @@ ms.locfileid: "100387676"
 
     - 若要列出工作表，可以改为在工作表下拉框中单击“编辑”并输入工作表名称/索引。
 
-    - 若要将 (>100 MB) 的大型 excel 文件复制到其他存储，可以使用运动流式处理读取和执行的数据流 Excel 源。
+    - 若要将大型 Excel 文件 (>100 MB) 复制到其他存储，可以使用支持流式读取且性能更好的数据流 Excel 源。
     
 ## <a name="other-references"></a>其他参考资料
 

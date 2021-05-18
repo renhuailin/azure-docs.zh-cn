@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
 ms.openlocfilehash: fd66aa1f10a32d94d515a1f0aa25c25331796a8d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035681"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>使用逻辑应用将数据从 Log Analytics 工作区存档到 Azure 存储
@@ -60,7 +60,7 @@ Azure Monitor 中的 Log Analytics 工作区和日志查询是多租户服务，
 
 ## <a name="create-logic-app"></a>创建逻辑应用
 
-在 Azure 门户中转到“逻辑应用”，然后单击“添加”。  选择用于存储新逻辑应用的“订阅”、“资源组”和“区域”，并为逻辑应用指定唯一的名称。   可以打开 **Log Analytics** 设置来收集有关运行时数据和事件的信息，如 [设置 Azure Monitor 日志和收集 Azure 逻辑应用的诊断数据](../../logic-apps/monitor-logic-apps-log-analytics.md)中所述。 使用 Azure Monitor 日志连接器不需要此设置。
+在 Azure 门户中转到“逻辑应用”，然后单击“添加”。  选择用于存储新逻辑应用的“订阅”、“资源组”和“区域”，并为逻辑应用指定唯一的名称。   可以打开“Log Analytics”设置来收集有关运行时数据和事件的信息，如 [设置 Azure Monitor 日志和收集 Azure 逻辑应用的诊断数据](../../logic-apps/monitor-logic-apps-log-analytics.md)中所述。 使用 Azure Monitor 日志连接器不需要此设置。
 
 ![创建逻辑应用](media/logs-export-logic-app/create-logic-app.png)
 
@@ -78,7 +78,7 @@ Azure Monitor 中的 Log Analytics 工作区和日志查询是多租户服务，
 
 ![Azure Monitor 日志操作](media/logs-export-logic-app/select-azure-monitor-connector.png)
 
-单击 " **Azure Log Analytics –运行查询并列出结果**。
+单击“Azure Log Analytics - 运行查询并列出结果”。
 
 ![在逻辑应用设计器的一个步骤中添加新操作的屏幕截图。 Azure Monitor 日志在“选择操作”下突出显示。](media/logs-export-logic-app/select-query-action-list.png)
 

@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: b7b7f1c5fb0a7991707a26b4a7f54fb3ffaf7bab
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033514"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用多重身份验证
@@ -40,11 +40,11 @@ Azure Active Directory B2C (Azure AD B2C) 直接集成了 [Azure AD 多重身份
 1. 选择“用户流”。
 1. 选择要为其启用 MFA 的用户流。 例如，*B2C_1_signinsignup*。
 1. 选择“属性”。
-1. 在 " **多重身份验证** " 部分中，选择所需的 **MFA 方法**，然后在 " **MFA 强制** " 下选择 " **始终打开**" 或 " **建议的条件 (")**。
+1. 在“多重身份验证”部分中，选择所需的“MFA 方法”，然后在“MFA 强制执行”下选择“始终启用”或“条件(推荐)”    。
    > [!NOTE]
    >
-   > - 如果选择 " **条件 (建议)**"，则还需要 [添加对用户流的条件性访问](conditional-access-user-flow.md)，并指定要应用策略的应用。
-   > - 默认情况下，为注册用户流禁用多重身份验证 (MFA) 。 你可以通过电话注册在用户流中启用 MFA，但由于使用电话号码作为主标识符，因此第二个身份验证因素只提供电子邮件一次性密码。
+   > - 如果选择“条件(推荐)”，则还需要[用户流添加条件访问](conditional-access-user-flow.md)，并指定要应用策略的应用。
+   > - 在默认情况下，对于注册用户流，多重身份验证 (MFA) 处于禁用状态。 你可以在具有电话注册的用户流中启用 MFA，但是，由于使用电话号码作为主标识符，因此，对于第二个身份验证因素，只提供电子邮件一次性密码这一个选项。
 
 1. 选择“保存”。 现在已为此用户流启用 MFA。
 
@@ -56,6 +56,6 @@ Azure Active Directory B2C (Azure AD B2C) 直接集成了 [Azure AD 多重身份
 
 ::: zone pivot="b2c-custom-policy"
 
-若要启用多重身份验证，请从 GitHub 获取自定义策略初学者包，并使用 Azure AD B2C 租户名称更新 **SocialAndLocalAccountsWithMFA** 初学者包中的 XML 文件。 **SocialAndLocalAccountsWithMFA** 启用社交、本地和多重身份验证选项。 有关详细信息，请参阅 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)。 
+若要启用多重身份验证，请从 GitHub 获取自定义策略新手包，然后使用 Azure AD B2C 租户名称更新 SocialAndLocalAccountsWithMFA 新手包中的 XML 文件。 SocialAndLocalAccountsWithMFA 启用社交、本地和多重身份验证选项。 有关详细信息，请参阅 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)。 
 
 ::: zone-end

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 03/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 85a0ce20f1d8e5a7e943efc088c19a8ad1912fc1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f999dbf7a4e0262e36181a98560931d32d3296b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101706022"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612494"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box 系统要求
 
@@ -39,7 +39,7 @@ ms.locfileid: "101706022"
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
 
 > [!IMPORTANT] 
-> 对于导出命令，不支持通过 REST 连接到 Data Box 共享。 
+> 对于导出命令，不支持通过 REST 连接到 Data Box 共享。
 
 ### <a name="supported-storage-accounts"></a>支持的存储帐户
 

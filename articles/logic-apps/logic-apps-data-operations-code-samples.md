@@ -1,16 +1,16 @@
 ---
 title: 使用数据操作的代码示例
-description: 尝试这些代码示例，这些代码示例演示了如何在使用 Azure 逻辑应用创建的自动工作流中使用数据操作
+description: 试用以下代码示例，这些代码示例演示了如何在使用 Azure 逻辑应用创建的自动化工作流中使用数据操作
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84712439"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure 逻辑应用的数据操作代码示例
@@ -23,7 +23,7 @@ ms.locfileid: "84712439"
 
 ## <a name="compose"></a>撰写
 
-若要尝试[**撰写**操作示例](../logic-apps/logic-apps-perform-data-operations.md#compose-action)，可使用以下操作定义：
+若要尝试 [**撰写** 操作示例](../logic-apps/logic-apps-perform-data-operations.md#compose-action)，可使用以下操作定义：
 
 ```json
 "actions": {
@@ -93,7 +93,7 @@ ms.locfileid: "84712439"
 
 ## <a name="create-csv-table"></a>创建 CSV 表
 
-若要尝试[**创建 CSV 表**操作示例](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action)，可使用以下操作定义：
+若要尝试 [**创建 CSV 表** 操作示例](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action)，可使用以下操作定义：
 
 ```json
 "actions": {
@@ -138,7 +138,7 @@ ms.locfileid: "84712439"
 
 ## <a name="create-html-table"></a>创建 HTML 表
 
-若要尝试[**创建 HTML 表**操作示例](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action)，可使用以下操作定义：
+若要尝试 [**创建 HTML 表** 操作示例](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action)，可使用以下操作定义：
 
 ```json
 "actions": {
@@ -183,7 +183,7 @@ ms.locfileid: "84712439"
 
 ## <a name="filter-array"></a>筛选数组
 
-若要尝试[**筛选数组**操作示例](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)，可使用以下操作定义：
+若要尝试 [**筛选数组** 操作示例](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)，可使用以下操作定义：
 
 ```json
 "actions": {
@@ -222,9 +222,9 @@ ms.locfileid: "84712439"
 
 <a name="join-action-example"></a>
 
-## <a name="join"></a>Join
+## <a name="join"></a>联接
 
-若要尝试[**联接**操作示例](../logic-apps/logic-apps-perform-data-operations.md#join-action)，可使用以下操作定义：
+若要尝试 [**联接** 操作示例](../logic-apps/logic-apps-perform-data-operations.md#join-action)，可使用以下操作定义：
 
 ```json
 "actions": {
@@ -265,7 +265,7 @@ ms.locfileid: "84712439"
 
 ## <a name="parse-json"></a>分析 JSON
 
-若要尝试[**分析 JSON** 操作示例](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)，可使用以下操作定义：
+若要尝试 [**分析 JSON** 操作示例](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)，可使用以下操作定义：
 
 ```json
 "actions": {
@@ -322,9 +322,9 @@ ms.locfileid: "84712439"
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>Select
+## <a name="select"></a>选择
 
-若要尝试[**选择**操作示例](../logic-apps/logic-apps-perform-data-operations.md#select-action)，可使用以下操作定义：
+若要尝试 [**选择** 操作示例](../logic-apps/logic-apps-perform-data-operations.md#select-action)，可使用以下操作定义：
 
 ```json
 "actions": {

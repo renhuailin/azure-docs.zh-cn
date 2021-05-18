@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: ramamill
 ms.openlocfilehash: a1ea8b6fb9800d796670161288be0d86ce6ffc42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89424933"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery 中的服务更新
@@ -85,7 +85,7 @@ Site Recovery 定期发布服务更新。 更新包括新功能、支持改进�
 
 ## <a name="azure-vm-disaster-recovery-to-azure"></a>Azure VM 灾难恢复到 Azure
 
-在此方案中，我们强烈建议你 [启用自动更新](azure-to-azure-autoupdate.md)。 你可以允许 Site Recovery 管理更新，如下所示：
+对于此方案，我们强烈建议[启用自动更新](azure-to-azure-autoupdate.md)。 可以允许 Site Recovery 管理更新，如下所述：
 
 - 在启用复制过程期间。
 - 在保管库中指定扩展更新设置。
@@ -130,7 +130,7 @@ Site Recovery 定期发布服务更新。 更新包括新功能、支持改进�
 ## <a name="between-an-on-premises-vmm-site-and-azure"></a>在本地 VMM 站点与 Azure 之间
 1. 下载 Microsoft Azure Site Recovery 提供程序的更新。
 2. 在 VMM 服务器上安装该提供程序。 如果 VMM 部署在群集中，请在所有群集节点上安装该提供程序。
-3. 在所有 Hyper-v 主机或群集节点上安装最新的 Microsoft Azure 恢复服务代理。
+3. 在所有 Hyper-V 主机或群集节点上安装最新的 Microsoft Azure 恢复服务代理。
 
 
 ## <a name="between-two-on-premises-vmm-sites"></a>在两个本地 VMM 站点之间

@@ -4,10 +4,10 @@ description: 了解如何对 Azure 开发测试实验室中的虚拟机执行附
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8eebfbda421233bcec780d441a4020acce740618
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91328507"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>对 Azure 开发测试实验室中的虚拟机执行附加或分离数据磁盘操作
@@ -25,34 +25,34 @@ ms.locfileid: "91328507"
 请按照下列步骤创建新的托管数据磁盘并将其附加到 Azure 开发测试实验室中的 VM。
 
 1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“所有服务”****，并从列表中选择“开发测试实验室”****。
+1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 1. 从实验室列表，选择所需的实验室。 
-1. 从“我的虚拟机”**** 列表中，选择一个正在运行的虚拟机。
-1. 从左侧菜单中选择“磁盘”****。
-1. 选择“附加新磁盘”**** 以创建新的数据磁盘并将其附加到 VM。
+1. 从“我的虚拟机”列表中，选择一个正在运行的虚拟机。
+1. 从左侧菜单中选择“磁盘”。
+1. 选择“附加新磁盘”以创建新的数据磁盘并将其附加到 VM。
 
     ![将新的数据磁盘附加到虚拟机](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png)
-1. 通过输入数据磁盘名称、类型和大小，完成“附加新磁盘”**** 窗格。
+1. 通过输入数据磁盘名称、类型和大小，完成“附加新磁盘”窗格。
 
     ![完成“附加新磁盘”表单](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
-1. 选择“确定”  。
+1. 选择“确定”。
 
-几分钟后，将创建新的数据磁盘并将其附加到 VM，并将其显示在该 VM 的 **数据磁盘** 列表中。
+稍后，新的数据磁盘会被创建并附加到 VM，并且将出现在该 VM 的“数据磁盘”列表中。
 
 ### <a name="attach-an-existing-disk"></a>附加现有磁盘
 请按照下列步骤将现有可用数据磁盘重新附加到正在运行的 VM。 
 
 1. 选择要将数据磁盘重新附加到的正在运行的 VM。
-1. 从左侧菜单中选择“磁盘”****。
-1. 选择“附加现有磁盘”**** 将可用数据磁盘附加到 VM。
+1. 从左侧菜单中选择“磁盘”。
+1. 选择“附加现有磁盘”将可用数据磁盘附加到 VM。
 
-    ![显示选定的 "磁盘" 设置和 "附加现有" 设置的屏幕截图。](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
+    ![显示已选中“磁盘”设置和“附加现有磁盘”设置的屏幕截图。](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
 
-1. 从“附加现有磁盘”**** 窗格中选择“确定”。
+1. 从“附加现有磁盘”窗格中选择“确定”。
 
     ![将现有数据磁盘附加到虚拟机](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing.png)
 
-几分钟后，数据磁盘会附加到 VM，并显示在该 VM 的 **数据磁盘** 列表中。
+稍后，数据磁盘会附加到 VM，并且将出现在该 VM 的“数据磁盘”列表中。
 
 ## <a name="detach-a-data-disk"></a>分离数据磁盘
 不再需要已附加到 VM 的数据磁盘时，可以轻松地分离它。 执行分离操作会从 VM 中删除磁盘，但会将该磁盘保留在存储中供以后使用。
@@ -61,25 +61,25 @@ ms.locfileid: "91328507"
 
 ### <a name="detach-from-the-vms-management-pane"></a>在 VM 的管理窗格中分离
 1. 从虚拟机列表中，选择已附加了数据磁盘的 VM。
-1. 从左侧菜单中选择“磁盘”****。
-1. 从 **数据磁盘**列表中，选择要分离的数据磁盘。
+1. 从左侧菜单中选择“磁盘”。
+1. 从“数据磁盘”列表中，选择要拆离的数据磁盘。
 
     ![为虚拟机选择数据磁盘](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png) 
-1. 从磁盘的详细信息窗格顶部选择“分离”****。
+1. 从磁盘的详细信息窗格顶部选择“分离”。
 
-    ![屏幕截图显示磁盘的详细信息窗格，其中突出显示了 "分离" 操作。](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
-1. 选择“是”**** 确认要分离该数据磁盘。
+    ![屏幕截图显示磁盘的细节窗格，其中突出显示了“拆离”操作。](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
+1. 选择“是”确认要分离该数据磁盘。
 
 该磁盘已分离，并且可供附加到另一个 VM。 
 ### <a name="detach-from-the-labs-main-pane"></a>从实验室的主窗格中分离
-1. 在实验室主窗格中，选择“我的数据磁盘”****。
-1. 右键单击要分离的数据磁盘，或选择其 **省略号 ("**) "，然后选择 " **分离**"。
+1. 在实验室主窗格中，选择“我的数据磁盘”。
+1. 右键单击要拆离的数据磁盘，或者选择其省略号 (…)，然后选择“拆离” 。
 
     ![分离数据磁盘](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk.png)
-1. 选择“是”**** 确认要分离该数据磁盘。
+1. 选择“是”确认要分离该数据磁盘。
 
    > [!NOTE]
-   > 如果数据磁盘已分离，可以通过选择“删除”来选择从可用数据磁盘列表中删除该数据磁盘****。
+   > 如果数据磁盘已分离，可以通过选择“删除”来选择从可用数据磁盘列表中删除该数据磁盘。
    >
    >
 

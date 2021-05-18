@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 90e215ea445c8c700e351149e9c7a91d9a595252
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 26b5331aa9242978f0f097c8e90bc807fc65f745
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96859515"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531943"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "96859515"
 
 ### <a name="assign-owners-to-key-tasks"></a>将所有者分配到关键任务
 
-管理 Azure Active Directory 需要持续执行关键操作任务和流程，这可能并不完全属于某一个推出式项目。 设置这些任务对于优化环境仍非常重要。 关键任务及其建议所有者包括：
+管理 Azure Active Directory 需要持续执行关键操作任务和过程，这可能并不属于一个推出项目。 设置这些任务对于优化环境仍非常重要。 关键任务及其建议所有者包括：
 
 | 任务 | 所有者 |
 | :- | :- |
@@ -365,14 +365,14 @@ Microsoft Intune 应用管理 (MAM) 能够将数据保护控件（如存储加�
 
 #### <a name="logs-recommended-reading"></a>日志方面的推荐读物
 
-- [Azure Active Directory 审核 API 参考](/graph/api/resources/directoryaudit?view=graph-rest-beta%3fview%3dgraph-rest-beta)
-- [Azure Active Directory 登录活动报告 API 参考](/graph/api/resources/signin?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Azure Active Directory 审核 API 参考](/graph/api/resources/directoryaudit)
+- [Azure Active Directory 登录活动报告 API 参考](/graph/api/resources/signin)
 - [使用证书通过 Azure AD 报告 API 获取数据](../reports-monitoring/tutorial-access-api-with-certificates.md)
 - [Microsoft Graph for Azure Active Directory Identity Protection](../identity-protection/howto-identity-protection-graph-api.md)
 - [Office 365 Management Activity API 参考](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [如何使用 Azure Active Directory Power BI 内容包](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 安全的标识基础结构有 12 个方面。 此列表将帮助你进一步保护和管理凭据、定义身份验证体验、委派分配、衡量使用情况，并根据企业安全状况定义访问策略。
 

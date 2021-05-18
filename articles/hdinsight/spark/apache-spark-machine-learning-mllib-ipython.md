@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: d2054058bb00b0801aa1c3694c73b6a2edb46c80
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 224ebae58a5688f81d1b64b4a9c81d5abd8a9690
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930041"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104868845"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 生成机器学习应用程序并分析数据集
 
@@ -35,7 +35,7 @@ MLlib 是一个核心 Spark 库，它为以下机器学习任务提供了许多�
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>对食品检测数据进行预测分析的示例
 
-在此示例中，我们使用 Spark 对食品检测数据 (Food_Inspections1.csv) 进行一些预测分析。 通过 [芝加哥数据门户的城市获取的](https://data.cityofchicago.org/)数据。 此数据集包含有关在芝加哥进行的食品建立检查的信息。 包括有关每个建立的信息、发现的违规 (如果任何) ，以及检查结果。 CSV 数据文件在与群集（位于 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**）关联的存储帐户中可用。
+在此示例中，我们使用 Spark 对食品检测数据 (Food_Inspections1.csv) 进行一些预测分析。 通过[芝加哥市数据门户](https://data.cityofchicago.org/)获取的数据。 此数据集包含有关在芝加哥执行的食品企业检测的信息。 包括每家企业的相关信息、发现的违规行为（若有）以及检测结果。 CSV 数据文件在与群集（位于 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**）关联的存储帐户中可用。
 
 在下面的步骤中，将开发一个模型来了解决定食品检验通过或不通过的因素。
 
@@ -118,7 +118,7 @@ MLlib 是一个核心 Spark 库，它为以下机器学习任务提供了许多�
     df.registerTempTable('CountResults')
     ```
 
-    数据帧中的四个相关列是 **ID**、 **名称**、 **结果** 和 **冲突**。
+    数据帧中的四个相关列为“ID”、“name”、“results”和“violations”   。
 
 4. 运行以下代码获取数据小样本：
 
@@ -171,11 +171,11 @@ MLlib 是一个核心 Spark 库，它为以下机器学习任务提供了许多�
     SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
-    后接 `-o countResultsdf` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头节点）。 输出将保存为具有指定名称 [countResultsdf](https://pandas.pydata.org/) 的 **Pandas** 数据帧。 有关神奇的详细信息 `%%sql` 以及 PySpark 内核提供的其他 magic 的详细信息，请参阅 [具有 Apache Spark HDInsight 群集的 Jupyter 笔记本上可用的内核](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
+    后接 `-o countResultsdf` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头节点）。 输出将保存为具有指定名称 [countResultsdf](https://pandas.pydata.org/) 的 **Pandas** 数据帧。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅[包含 Apache Spark HDInsight 群集的 Jupyter Notebook 上可用的内核](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
 
     输出为：
 
-    ![SQL 查询输出](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL 查询输出")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png " alt-text="SQL 查询输出" border="true":::
 
 3. 还可以使用 Matplotlib（用于构建数据可视化效果的库）创建绘图。 因为必须从本地保存的 **countResultsdf** 数据帧中创建绘图，所以代码片段必须以 `%%local` magic 开头。 此操作可确保代码在 Jupyter 服务器上本地运行。
 
@@ -283,7 +283,7 @@ model = pipeline.fit(labeledData)
     predictionsDf.take(1)
     ```
 
-   测试数据集中的第一项有一个预测。
+   将显示针对测试数据集中第一项的预测。
 
 1. `model.transform()` 方法对具有相同架构的任何新数据应用相同的转换，并得出如何对数据进行分类的预测。 可以进行一些统计以了解预测的具体情况：
 
@@ -348,7 +348,7 @@ model = pipeline.fit(labeledData)
 
     应会看到以下输出：
 
-    ![Spark 机器学习应用程序输出 - 失败的食品检测结果的饼图百分比。](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark 机器学习结果输出")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png " alt-text="Spark 机器学习应用程序输出 - 失败的食品检测结果的饼图百分比。" border="true":::
 
     在该图中，“正”的结果指未通过食品检验，而“负”的结果指通过检验。
 

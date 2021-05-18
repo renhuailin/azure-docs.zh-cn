@@ -4,10 +4,10 @@ description: 使用 Azure 门户和 Azure 资源管理器将资源部署到订�
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.openlocfilehash: d8467bb4e51fc4e6ba89a84f1260a8d2743758d2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028669"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>使用 ARM 模板和 Azure 门户部署资源
@@ -102,11 +102,11 @@ ms.locfileid: "98028669"
     - **选择模板**：部署模板。
     - **编辑模板**：在部署快速入门模板之前对其进行编辑。
 
-1. 选择“编辑模板”，浏览门户模板编辑器。 模板会加载到编辑器中。 请注意，有两个参数： `storageAccountType` 和 `location` 。
+1. 选择“编辑模板”，浏览门户模板编辑器。 模板会加载到编辑器中。 请注意，有两个参数：`storageAccountType` 和 `location`。
 
    ![创建模板](./media/deploy-portal/show-json.png)
 
-1. 对模板进行小的更改。 例如，将变量更新 `storageAccountName` 为：
+1. 对模板进行小的更改。 例如，将 `storageAccountName` 变量更新为：
 
     ```json
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"

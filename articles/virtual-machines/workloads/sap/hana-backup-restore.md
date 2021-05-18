@@ -3,7 +3,7 @@ title: 在 Azure SAP HANA（大型实例）上进行 HANA 备份和还原 | Micr
 description: 如何在 Azure SAP HANA（大型实例）上执行 HANA 备份和还原
 services: virtual-machines-linux
 documentationcenter: ''
-author: Ajayan1008
+author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-sap
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
-ms.author: madhukan
+ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4b7ac968564c6c2e734fe48cca27c617eb82533
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 3244cbca3df717d3432670a366147408cf2b2c0e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737269"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101669110"
 ---
 # <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>在 HANA 大型实例上备份和还原 SAP HANA
 

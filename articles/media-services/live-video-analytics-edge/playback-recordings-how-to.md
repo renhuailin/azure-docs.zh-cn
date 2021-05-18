@@ -4,10 +4,10 @@ description: 可以使用 IoT Edge 上的实时视频分析进行连续视频录
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 0351f10d9fac3ad7e3b4fdd5fd549eb7c0023694
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99490888"
 ---
 # <a name="playback-of-recordings"></a>播放录制内容 
@@ -26,11 +26,11 @@ ms.locfileid: "99490888"
 
 例如，当通过 HLS 进行流式处理时，流式处理 URL 类似于 `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl).m3u8`。 对于 MPEG-DASH，它则类似于 `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=mpd-time-cmaf).mpd`。
 
-这会返回一个清单文件，其中的所有内容都描述正在传递的流的总持续时间，以及它是表示预先录制的内容还是正在进行的 "实时" 源。
+这会返回一个清单文件，其中描述了正在传送的流的总持续时间，以及它是表示预先录制的内容还是正在进行的“实时”源。
 
 ### <a name="live-vs-vod"></a>实时与VoD  
 
-流协议（例如 HLS 和 MPEG-DASH）是为处理实时视频的流式处理等方案以及为流式处理点播/预先录制的内容（例如电视节目和电影）而创建的。 对于 live 视频，HLS 和 MPEG 虚线客户端旨在开始从 "最近的时间" 开始播放。 但是对于电影而言，观看者希望能够从开头看起，并且可以选择跳过某些内容。 HLS 和 MPEG-DASH 清单拥有标记，这些标记会向客户端指示视频表示的是实时流还是预先录制的内容。
+流协议（例如 HLS 和 MPEG-DASH）是为处理实时视频的流式处理等方案以及为流式处理点播/预先录制的内容（例如电视节目和电影）而创建的。 对于实时视频，HLS 和 MPEG-DASH 客户端被设计为从“最近”时间开始播放。 但是对于电影而言，观看者希望能够从开头看起，并且可以选择跳过某些内容。 HLS 和 MPEG-DASH 清单拥有标记，这些标记会向客户端指示视频表示的是实时流还是预先录制的内容。
 此概念也适用于来自资产的 HLS 和 MPEG-DASH 流，这些资产包含使用 IoT Edge 上的实时视频分析录制的视频。
 
 ## <a name="browsing-and-selective-playback-of-recordings"></a>浏览和选择性地播放录制内容  

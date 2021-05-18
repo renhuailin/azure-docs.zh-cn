@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 929463e346311d58da5ac75b28c774bcfe258f08
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b69492dc41786a677043df5e77c9d12aa26893f6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557524"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102119767"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -72,12 +72,12 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {OIDC:LoginHint} |  `login_hint` 查询字符串参数。 | someone@contoso.com |
 | {OIDC:MaxAge} | `max_age`。 | 空值 |
 | {OIDC:Nonce} |`Nonce` 查询字符串参数。 | defaultNonce |
-| {OIDC:Password}| [资源所有者密码凭据流](add-ropc-policy.md)用户的密码。| password1| 
+| {OIDC:Password}| [资源所有者密码凭据流](ropc-custom.md)用户的密码。| password1| 
 | {OIDC:Prompt} | `prompt` 查询字符串参数。 | 登录 |
 | {OIDC:RedirectUri} |`redirect_uri` 查询字符串参数。 | https://jwt.ms |
 | {OIDC:Resource} |`resource` 查询字符串参数。 | 空值 |
 | {OIDC:Scope} |`scope` 查询字符串参数。 | openid |
-| {OIDC:Username}| [资源所有者密码凭据流](add-ropc-policy.md)用户的用户名。| emily@contoso.com| 
+| {OIDC:Username}| [资源所有者密码凭据流](ropc-custom.md)用户的用户名。| emily@contoso.com| 
 
 ### <a name="context"></a>上下文
 

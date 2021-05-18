@@ -6,12 +6,12 @@ ms.author: anavin
 ms.date: 01/23/2020
 ms.topic: how-to
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 801f0424e7ec15fbde58f35975f4c7eca4c9a5de
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e945dec2ce8514c3e4f1edecdecd13c5c43f7c75
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775558"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96745445"
 ---
 # <a name="networking-limit-increase"></a>网络限制提高
 
@@ -19,7 +19,7 @@ ms.locfileid: "107775558"
 
 要在 Azure 门户中查看当前网络使用情况和配额，请打开订阅，然后选择“使用情况 + 配额”。 你还可以使用以下选项来查看网络使用情况和限制。
 
-* [使用情况 CLI](/cli/azure/network#az_network_list_usages)
+* [使用情况 CLI](/cli/azure/network#az-network-list-usages)
 * [PowerShell](/powershell/module/azurerm.network/get-azurermnetworkusage)
 * [网络使用情况 API](/rest/api/virtualnetwork/virtualnetworks/listusage)
 

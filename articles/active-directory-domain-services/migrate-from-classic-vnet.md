@@ -9,13 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: justinha
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 93ad9fc33f3faf599d442a922f18d76e838f82c0
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285729"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98013033"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>将 Azure Active Directory 域服务从经典虚拟网络模型迁移到资源管理器
 

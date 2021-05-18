@@ -1,6 +1,6 @@
 ---
 title: 使用应用服务环境
-description: 了解如何使用您的应用服务环境来承载独立的应用程序。
+description: 了解如何使用应用服务环境来托管独立的应用程序。
 author: ccompy
 ms.assetid: 377fce0b-7dea-474a-b64b-7fbe78380554
 ms.topic: article
@@ -8,22 +8,22 @@ ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: d4cd673b5029d8379a699becd7339a265c787390
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100586405"
 ---
 # <a name="using-an-app-service-environment"></a>使用应用服务环境
 
-应用服务环境 (ASE) 是 Azure App Service 的单个租户部署，它直接注入到所选的 Azure 虚拟网络 (VNet) 。 它是一种仅由一位客户使用的系统。 部署到 ASE 中的应用受应用到 ASE 子网的网络功能的限制。 在应用中，无需启用任何附加功能即可服从这些网络功能。 
+应用服务环境 (ASE) 是直接注入到你所选的 Azure 虚拟网络 (VNet) 中的 Azure 应用服务的单一租户部署。 它是一种仅由一位客户使用的系统。 部署到 ASE 中的应用受应用于 ASE 子网的网络功能的影响。 在这些网络功能的影响下，无需在应用中启用任何额外的功能。 
 
 ## <a name="create-an-app-in-an-ase"></a>在 ASE 中创建应用
 
 在 ASE 中创建应用的过程与一般情况下创建应用的过程大致相同，只存在几处细微的差别。 创建新的应用服务计划时：
 
 - 不要选择某个地理位置来部署应用，而应该选择 ASE 作为位置。
-- ASE 中创建的所有应用服务计划只能位于独立主机定价层中。
+- 在 ASE 中创建的所有应用服务计划只能位于独立 v2 定价层中。
 
 如果没有 ASE，可以根据[创建应用服务环境][MakeASE]中的说明创建一个。
 
@@ -41,19 +41,19 @@ ms.locfileid: "100586405"
 
 1. 选择发布类型、堆栈和操作系统。
 
-1.  选择区域。 此处需要选择预先存在的应用服务环境 v3。  在应用程序创建过程中无法创建 ASEv3 
+1.  选择区域。 此处，需要选择预先存在的应用服务环境 v3。  在应用创建过程中无法创建 ASEv3 
 
-1. 在 ASE 中选择现有的应用服务计划，或创建新的应用服务计划。 如果要创建新应用，请选择应用服务计划所需的大小。 您可以为应用程序选择的唯一 SKU 是一个独立的 v2 定价 SKU。
+1. 在你的 ASE 中选择一个现有的应用服务计划，或创建新的计划。 如果要创建新应用，请选择应用服务计划所需的大小。 可为应用选择的唯一 SKU 是一个独立 v2 定价 SKU。
 
     ![独立 v2 定价层][2]
 
     > [!NOTE]
-    > Linux 应用和 Windows 应用不能处于同一应用服务计划中，但可以在同一应用服务环境中。
+    > Linux 应用和 Windows 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。
     >
 
-1. 选择 " **下一步：监视**  "。如果想要使用应用程序启用 application Insights，可以在创建流程中执行此操作。 
+1. 选择“下一步: 监视”。如果想要对应用启用 App Insights，可在创建流期间在此处执行此操作。 
 
-1.  选择 **下一步：标记** 向应用添加所需的任何标记  
+1.  选择“下一步: 标记”。向应用添加所需的任何标记  
 
 1. 选择“查看 + 创建”，确保信息正确，然后选择“创建”。 
 
@@ -61,30 +61,30 @@ ms.locfileid: "100586405"
 
 每个应用服务应用在应用服务计划中运行。 应用服务环境保存应用服务计划，应用服务计划保存应用。 缩放某个应用时，也会缩放应用服务计划，以及同一计划中的所有应用。
 
-缩放应用服务计划时，会自动添加所需的基础结构。 添加基础结构时，缩放操作存在一定的时间延迟。 缩放应用服务计划时，请求的任何其他规模操作都将等待，直到第一个操作完成。 阻止规模操作完成后，将同时处理所有排队的请求。 一个大小和 OS 的缩放操作不会阻止缩放大小和操作系统的其他组合。 例如，如果你缩放了 Windows I2v2 应用服务计划，则在该 ASE 中缩放 Windows I2v2 的任何其他请求将排入队列，直到完成。   
+缩放应用服务计划时，会自动添加所需的基础结构。 添加基础结构时，缩放操作存在一定的时间延迟。 缩放应用服务计划时，请求的任何相同 OS 和大小的其他缩放操作都将等待，直到第一个操作完成。 阻塞的缩放操作完成后，将同时处理所有排队的请求。 针对某个大小和 OS 的缩放操作不会阻止阻止其他大小和 OS 组合的缩放。 例如，如果你缩放 Windows I2v2 应用服务计划，则在该 ASE 中缩放 Windows I2v2 的任何其他请求将排队，直到该操作完成。   
 
 在多租户应用服务中，缩放是即时发生的，因为有现成可用的资源池用于支持。 ASE 中没有此类缓冲区，而会根据需要分配资源。
 
 ## <a name="app-access"></a>应用访问
 
-在 ASE 中，用于创建应用的域后缀是 *。 &lt;asename &gt; . appserviceenvironment.net*。 如果 ASE 命名为 _my ase_ ，并在该 ase 中托管名为 _contoso_ 的应用，则可通过以下 url 访问该应用：
+在 ASE 中，用于创建应用的域后缀是 .&lt;asename&gt;.appserviceenvironment.net。 如果 ASE 名为 my-ase 并且其中托管了名为 contoso 的应用，可通过以下 URL 访问该应用 ：
 
 - contoso.my-ase.appserviceenvironment.net
 - contoso.scm.my-ase.appserviceenvironment.net
 
-有关如何创建 ASE 的信息，请参阅 [创建应用服务环境][MakeASE]。
+有关如何创建 ASE 的信息，请参阅[创建应用服务环境][MakeASE]。
 
 SCM URL 用于访问 Kudu 控制台，也可用于通过 Web 部署发布应用。 有关 Kudu 控制台的信息，请参阅 [Azure 应用服务的 Kudu 控制台][Kudu]。 Kudu 控制台提供 Web UI，可在其中进行调试、上传文件、 编辑文件及执行其他许多操作。
 
 ### <a name="dns-configuration"></a>DNS 配置 
 
-ASE 将专用终结点用于入站流量。 它不会自动配置 Azure DNS 专用区域。 如果要使用自己的 DNS 服务器，则需要添加以下记录：
+ASE 对入站流量使用专用终结点。 对于 Azure DNS 专用区域，这不会自动进行配置。 如果要使用自己的 DNS 服务器，则需要添加以下记录：
 
 1. 为 &lt;ASE 名称&gt;.appserviceenvironment.net 创建一个区域
-1. 在该区域中创建 A 记录，将 * 指向 ASE 专用终结点使用的入站 IP 地址
-1. 在该区域中创建 A 记录，将 @ 指向 ASE 专用终结点使用的入站 IP 地址
+1. 在该区域中创建 A 记录，该记录将 * 指向 ASE 专用终结点使用的入站 IP 地址
+1. 在该区域中创建 A 记录，该记录将 @ 指向 ASE 专用终结点使用的入站 IP 地址
 1. 在 &lt;ASE 名称&gt;.appserviceenvironment.net 中创建名为 scm 的区域
-1. 在 scm 区域中创建 A 记录，将该记录指向 ASE 专用终结点使用的 IP 地址
+1. 在 scm 区域中创建 A 记录，该记录将 * 指向 ASE 专用终结点使用的 IP 地址
 
 在 Azure DNS 专用区域中配置 DNS：
 
@@ -93,7 +93,7 @@ ASE 将专用终结点用于入站流量。 它不会自动配置 Azure DNS 专�
 1. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
 1. 在该区域中创建一条将 *.scm 指向 ILB IP 地址的 A 记录
 
-ASE 默认域后缀的 DNS 设置不会将应用限制为仅可通过这些名称访问。 可以设置自定义域名，无需对 ASE 中的应用进行任何验证。 如果随后想要创建名为 *contoso.net* 的区域，则可以将其指向入站 IP 地址。 自定义域名适用于应用请求，但不适用于 scm 站点。 scm 站点仅在 &lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net 中可用。 
+ASE 默认域后缀的 DNS 设置不会将你的应用限制为只能由这些名称访问。 可在 ASE 中设置自定义域名而无需对应用进行任何验证。 如果随后想要创建名为 contoso.net 的区域，可执行此操作并将其指向入站 IP 地址。 自定义域名适用于应用请求，但不适用于 scm 站点。 scm 站点仅在 &lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net 中可用。 
 
 ## <a name="publishing"></a>发布
 
@@ -104,7 +104,7 @@ ASE 默认域后缀的 DNS 设置不会将应用限制为仅可通过这些名�
 - 在 Kudu 控制台中拖放
 - Visual Studio、Eclipse 或 IntelliJ IDEA 等 IDE
 
-对于 ASE，只能通过专用终结点使用的入站地址使用发布终结点。 如果你没有对专用终结点地址的网络访问权限，则无法在该 ASE 上发布任何应用。  IDE 还必须能够通过网络访问 ILB 才能直接向其发布。
+使用 ASE，只能通过专用终结点使用的入站地址访问发布终结点。 如果无法通过网络访问专用终结点地址，则无法在该 ASE 上发布任何应用。  IDE 还必须能够通过网络访问 ILB 才能直接向其发布。
 
 在不进行额外更改的情况下，基于 Internet 的 CI 系统（例如 GitHub 和 Azure DevOps）不支持 ILB ASE，因为发布终结点不可通过 Internet 进行访问。 可以通过在包含 ILB ASE 的虚拟网络中安装自承载发布代理，来实现从 Azure DevOps 发布到 ILB ASE。 
 
@@ -118,10 +118,10 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 
 | 场景 | Message |
 |---------|----------|
-| ASE 运行不正常 | 由于虚拟网络配置无效，指定的 ASE 运行不正常。 如果持续出现不正常状态，ASE 将会挂起。 请确保遵循此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
+| ASE 运行不正常 | 由于虚拟网络配置无效，指定的 ASE 运行不正常。 如果持续出现不正常状态，ASE 将会挂起。 确保遵守此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
 | ASE 子网空间几乎已耗尽 | 指定的 ASE 位于一个几乎耗尽了空间的子网中。 还剩下 {0} 个地址。 一旦这些地址耗尽，ASE 就无法缩放。  |
 | ASE 即将达到实例总数限制 | 指定的 ASE 即将达到 ASE 的实例总数限制。 它目前包含 {0} 个应用服务计划实例，最多可以包含 201 个实例。 |
-| ASE 无法访问某个依赖项 | 指定的 ASE 无法访问 {0}。  请确保遵循此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
+| ASE 无法访问某个依赖项 | 指定的 ASE 无法访问 {0}。  确保遵守此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
 | ASE 已挂起 | 指定的 ASE 已挂起。 ASE 挂起的可能原因是帐户不足，或虚拟网络配置无效。 解决根本原因并恢复 ASE，以继续为流量提供服务。 |
 | ASE 升级已启动 | 已开始对指定的 ASE 进行平台升级。 预期缩放操作会出现延迟。 |
 | ASE 升级已完成 | 对指定的 ASE 进行平台升级已完成。 |
@@ -154,7 +154,7 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 
 ## <a name="internal-encryption"></a>内部加密
 
-应用服务环境作为一个黑框系统运行，你将看不到系统中的内部组件或通信。 为了实现更高的吞吐量，默认情况下，在内部组件之间不启用加密。 系统很安全，因为流量完全无法访问，不管你是要监视流量还是要访问流量。 如果你的符合性要求需要从端到端加密对数据路径进行完全加密，则可以在 ASE **配置** UI 中启用此项。
+应用服务环境作为一个黑框系统运行，你将看不到系统中的内部组件或通信。 为了实现更高的吞吐量，默认情况下，在内部组件之间不启用加密。 系统很安全，因为流量完全无法访问，不管你是要监视流量还是要访问流量。 如果你的符合性要求必须从端到端对数据路径进行完全加密，则可在 ASE 的配置 UI中启用此功能。
 
 ![启用内部加密][5]
 
@@ -168,9 +168,9 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 - **Early**：ASE 将在应用服务升级过程的上半阶段升级。
 - **Late**：ASE 将在应用服务升级过程的下半阶段升级。
 
-若要配置升级首选项，请参阅 ASE **配置** UI。 
+若要配置升级首选项，请转到 ASE 的配置 UI。 
 
-当你有多个 Ase 时， **upgradePreferences** 功能最有意义，因为你的 "早期" ase 将在 "延迟" ase 之前升级。 当你有多个 Ase 时，应将你的开发和测试 Ase 设置为 "提前"，并将生产 Ase 设置为 "延迟"。
+当你有多个 ASE 时，upgradePreferences 功能最为有效，因为“早期”ASE 将在“晚期”ASE 之前升级。 当你有多个 ASE 时，应将开发和测试 ASE 设置为“早期”，而将生产 ASE 设置为“晚期”。
 
 ## <a name="delete-an-ase"></a>删除 ASE
 

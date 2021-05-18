@@ -9,10 +9,10 @@ ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 8d52f8c59e83a4aae8724100770965f756a439fb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98015685"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
@@ -375,7 +375,7 @@ Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门
 
 ## <a name="use-powershell"></a>使用 PowerShell
 
-若要创建具有自定义索引策略的容器，请参阅 [使用 PowerShell 创建具有自定义索引策略的容器](manage-with-powershell.md#create-container-custom-index)
+若要创建具有自定义索引策略的容器，请参阅[使用 PowerShell 创建具有自定义索引策略的容器](manage-with-powershell.md#create-container-custom-index)
 
 ## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a> 使用 .NET SDK
 

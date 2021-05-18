@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
 ms.openlocfilehash: 4a25d7a23d486c8ce22fa433cc1ead390726facc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048856"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>适用于逻辑应用和 Power Automate 的 Azure Monitor 日志连接器
@@ -24,7 +24,7 @@ Azure Monitor 日志连接器具有以下限制：
 * 最大查询响应大小 100 MB
 * 最大记录数：500,000
 * 最大查询超时 110 秒。
-* 图表可视化效果可以在 "日志" 页中使用并且在连接器中丢失，因为 "连接器和日志" 页当前不使用相同的图表库。
+* 图表可视化效果可能在“日志”页中可用，但在连接器中丢失，因为连接器和“日志”页当前使用的图表库不同。
 
 根据数据大小和所用的查询，连接器可能会达到其限制而失败。 调整触发器重复周期，增加运行频率、减少每次查询的数据量，即可解决这种情况。 你可以使用能聚合数据的查询来返回更少的记录和列。
 
@@ -46,7 +46,7 @@ Azure Monitor 日志连接器具有以下限制：
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 
-在 Azure 门户中转到“逻辑应用”，然后单击“添加”。  选择用于存储新逻辑应用的“订阅”、“资源组”和“区域”，并为逻辑应用指定唯一的名称。   可以打开 **Log Analytics** 设置来收集有关运行时数据和事件的信息，如 [设置 Azure Monitor 日志和收集 Azure 逻辑应用的诊断数据](../../logic-apps/monitor-logic-apps-log-analytics.md)中所述。 使用 Azure Monitor 日志连接器不需要此设置。
+在 Azure 门户中转到“逻辑应用”，然后单击“添加”。  选择用于存储新逻辑应用的“订阅”、“资源组”和“区域”，并为逻辑应用指定唯一的名称。   可以打开“Log Analytics”设置来收集有关运行时数据和事件的信息，如 [设置 Azure Monitor 日志和收集 Azure 逻辑应用的诊断数据](../../logic-apps/monitor-logic-apps-log-analytics.md)中所述。 使用 Azure Monitor 日志连接器不需要此设置。
 
 ![创建逻辑应用](media/logicapp-flow-connector/create-logic-app.png)
 
@@ -66,7 +66,7 @@ Azure Monitor 日志连接器具有以下限制：
 
 ![Azure Monitor 日志操作](media/logicapp-flow-connector/select-azure-monitor-connector.png)
 
-单击 " **Azure Log Analytics –运行查询并将结果可视化**。
+单击“Azure Log Analytics – 运行查询和可视化结果”。
 
 ![在逻辑应用设计器的一个步骤中添加新操作的屏幕截图。 Azure Monitor 日志在“选择操作”下突出显示。](media/logicapp-flow-connector/select-query-action-visualize.png)
 

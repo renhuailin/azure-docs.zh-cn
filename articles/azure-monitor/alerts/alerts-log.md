@@ -5,12 +5,13 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 8759a539005a38892498c9450d31f97884547db7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: c362603771744cf94f3e1d70a9f636f31bbd399a
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033701"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750962"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
 
@@ -70,7 +71,7 @@ ms.locfileid: "102033701"
     > 由于 [bin()](/azure/kusto/query/binfunction) 可能导致不均匀的时间间隔，因此，警报服务会自动将 [bin()](/azure/kusto/query/binfunction) 函数转换为针对运行时的相应时间的 [bin_at()](/azure/kusto/query/binatfunction) 函数，以确保生成针对确定时间点的结果。
 
     > [!NOTE]
-    > 按警报维度拆分仅适用于当前的 scheduledQueryRules API。 如果使用旧的 [Log Analytics 警报 API](./api-alerts.md)，则需要进行切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)。 仅在 API 版本 `2020-05-01-preview` 及更高版本中支持大规模的以资源为中心的警报。
+    > 按警报维度拆分这一做法仅适用于当前的 scheduledQueryRules API。 如果使用旧的 [Log Analytics 警报 API](./api-alerts.md)，则需要进行切换。 [了解有关切换的详细信息](./alerts-log-api-switch.md)。 仅在 API `2020-05-01-preview` 及更高版本中支持大规模的以资源为中心的警报。
 
     ![“聚合基于”选项](media/alerts-log/aggregate-on.png)
 
@@ -246,7 +247,7 @@ $alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsAction
 New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name for your Application Insights App or Log Analytics Workspace" -Action $alertingAction -Enabled $true -Description "Alert description" -Schedule $schedule -Source $source -Name "Alert Name"
 ```
 
-以下是使用 PowerShell 创建带有跨资源查询的日志警报规则的示例步骤：
+以下是使用 PowerShell 通过跨资源查询创建日志预警规则的示例步骤：
 
 ```powershell
 $authorized = @ ("/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicewsCrossExample", "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/components/serviceAppInsights")

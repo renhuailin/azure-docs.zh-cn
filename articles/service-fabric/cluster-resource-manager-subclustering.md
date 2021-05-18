@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: nipavlo
 ms.openlocfilehash: 7f571a851e4da147240c524b742bcd652bc54181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82183104"
 ---
 # <a name="balancing-of-subclustered-metrics"></a>子聚类化指标的均衡
@@ -24,17 +24,17 @@ ms.locfileid: "82183104"
 
 例如，假设有四个服务，它们全都报告负载的指标 Metric1：
 
-* 服务 A –具有放置约束 "NodeType = = 前端"，报告10的负载
-* 服务 B-具有放置约束 "NodeType = = 前端"，报告10的负载
-* 服务 C-具有放置约束 "NodeType = = 后端"，报告100的负载
-* Service D-具有放置约束 "NodeType = = 后端"，报告100的负载
+* 服务 A - 放置约束为“NodeType==Frontend”，报告的负载指标为 10
+* 服务 B - 放置约束为“NodeType==Frontend”，报告的负载指标为 10
+* 服务 C - 放置约束为“NodeType==Backend”，报告的负载指标为 100
+* 服务 D - 放置约束为“NodeType==Backend”，报告的负载指标为 100
 * 另外，我们有四个节点。 其中两个节点的 NodeType 设置为“Frontend”，另两个节点的 NodeType 设置为“Backend”
 
 放置约束如下：
 
 <center>
 
-![Subclustered 放置示例][Image1]
+![子聚类化放置约束示例][Image1]
 </center>
 
 群集可能看似不均衡，节点 3 和 4 上的负载较大，但在此情况下，此放置约束会产生可能最佳的均衡。
@@ -67,14 +67,14 @@ ms.locfileid: "82183104"
 
 <center>
 
-![子集超集 subclusters][Image2]
+![子集-超集子聚类][Image2]
 </center>
 
 在此情况下，有可能会产生欠佳的均衡。
 
-资源管理器将识别这种情况，并生成运行状况报告，通知你将服务 A 拆分为两个服务-服务 A1，可以放置在前端节点上，并可以放置在后端节点上。 这样，我们就会重新遇到能够实现最佳均衡的第一种类别的情况。
+资源管理器会识别这种情况，并生成运行状况报告，建议将服务 A 拆分为两个服务：可放置在 Frontend 节点上的服务 A1，以及可放置在 Backend 节点上的服务 A2。 这样，我们就会重新遇到能够实现最佳均衡的第一种类别的情况。
 
-### <a name="third-category--subclustering-with-partial-overlap-between-node-sets"></a>第三个类别–节点集之间具有部分重叠的 subclustering
+### <a name="third-category--subclustering-with-partial-overlap-between-node-sets"></a>第三种类别 - 节点集之间部分重叠的子聚类化
 
 如果可以放置某些服务的节点集之间存在部分重叠，则会发生这种情况。
 

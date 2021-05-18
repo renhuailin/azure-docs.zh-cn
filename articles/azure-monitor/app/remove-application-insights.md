@@ -4,10 +4,10 @@ description: 如何在 Visual Studio 中删除用于 ASP.NET 和 ASP.NET Core �
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 1d70413fa6a47e2d41693db6eb705f31b2a2b1b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101704304"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>如何在 Visual Studio 中删除 Application Insights
@@ -58,7 +58,7 @@ ms.locfileid: "101704304"
     > [!NOTE]
     > 如果启用了跟踪信息收集，需要在未选中“删除依赖项”的情况下，先卸载 Microsoft.ApplicationInsights.TraceListener，然后在选中“删除依赖项”的情况下，按照以下步骤卸载 Microsoft.ApplicationInsights.Web。
 
-1. 单击 **applicationinsights.config** 包。 在右侧选中“项目”旁边的复选框以选择所有项目。
+1. 单击“Microsoft.ApplicationInsights.Web”包。 在右侧选中“项目”旁边的复选框以选择所有项目。
 
 1. 若要在卸载时删除所有依赖项，请在选定项目所在的部分下选择“选项”下拉按钮。
 
@@ -72,7 +72,7 @@ ms.locfileid: "101704304"
     
     ![屏幕截图显示了一个对话框，其中包含要删除的依赖项。](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  卸载所有内容后，你可能仍会在 *解决方案资源管理器* 中看到 "ApplicationInsights.config" 和 "AiHandleErrorAttribute.cs"。  可手动删除这两个文件。
+1.  卸载所有内容后，可能仍会在解决方案资源管理器中看到“ApplicationInsights.config”和“AiHandleErrorAttribute.cs”。  可手动删除这两个文件。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 

@@ -4,10 +4,10 @@ description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.openlocfilehash: ad7023f309f1ca948711eaa9bdf3867d2ef7a6f8
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100104903"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
@@ -20,8 +20,8 @@ ms.locfileid: "100104903"
 
 * 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集。
 * 如果没有移动虚拟网络中的所有资源，则无法将现有虚拟网络中的虚拟机移到新订阅。
-* 无法跨订阅移动基于附加了计划的市场资源创建的虚拟机。 有关可能的解决方法，请参阅 [具有 Marketplace 计划的虚拟机](#virtual-machines-with-marketplace-plans)。
-* 低优先级虚拟机和低优先级虚拟机规模集不能在资源组或订阅之间移动。
+* 无法跨订阅移动基于附加了计划的市场资源创建的虚拟机。 有关可能的解决方法，请参阅[具有 Azure 市场计划的虚拟机](#virtual-machines-with-marketplace-plans)。
+* 低优先级虚拟机与低优先级虚拟机规模集不能在资源组或订阅之间移动。
 * 可用性集中的虚拟机不能单独移动。
 
 ## <a name="azure-disk-encryption"></a>Azure 磁盘加密

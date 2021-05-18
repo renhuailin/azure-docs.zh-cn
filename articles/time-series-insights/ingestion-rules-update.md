@@ -3,19 +3,19 @@ title: 即将更改 Azure 时序见解 Gen2 中的引入和平展规则 |Microso
 description: 引入规则更改
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: lyrana
+ms.author: lyhughes
+manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 44553e2a57f796dcf48561ff3b273e25514247ae
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 56a1d5aab2f665f9c5bd8f6fa322f35e55483c7b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504526"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "95995227"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>即将针对新环境进行的 JSON 平展和转义规则更改
 

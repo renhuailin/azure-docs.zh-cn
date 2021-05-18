@@ -1,5 +1,5 @@
 ---
-title: 查看虚拟中心的有效路由： Azure 虚拟 WAN |Microsoft Docs
+title: 查看虚拟中心的有效路由：Azure 虚拟 WAN | Microsoft Docs
 description: 如何查看 Azure 虚拟 WAN 中的虚拟中心的有效路由
 services: virtual-wan
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90983657"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>查看虚拟中心有效路由
@@ -51,7 +51,7 @@ ms.locfileid: "90983657"
 
 * 查看 VM NIC 上的有效路由时，如果将下一跃点视为“虚拟网络网关”，则在 VM 处于连接到虚拟 WAN 中心的分支中时，这会表示虚拟中心路由器。
 
-* 仅当虚拟中心至少具有一种连接类型（ (VPN/ER/VNET) 连接到它）时，才会填充虚拟中心路由表的有效路由。
+* 仅当虚拟中心至少连接到一种连接类型 (VPN/ER/VNET) 时，才会填充“虚拟中心路由表的有效路由”视图。
 
 ## <a name="next-steps"></a>后续步骤
 

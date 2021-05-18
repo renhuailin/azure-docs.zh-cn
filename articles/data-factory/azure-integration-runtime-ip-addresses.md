@@ -1,18 +1,18 @@
 ---
 title: Azure Integration Runtime IP 地址
 description: 了解必须允许来自哪些 IP 地址的入站流量，以便正确配置防火墙来保护对数据存储的网络访问。
-ms.author: abnarain
-author: nabhishek
+ms.author: lle
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 7b663c8d6e5849d39bb8366c82f45e0fd66d77dd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 872a8b0124a8ad1c86b201ca90b391d03bb76921
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100371390"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485956"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP 地址
 

@@ -9,15 +9,15 @@ ms.subservice: extensions
 ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 381573ae40f6c31a1c7dbf18bc60be5944fff39e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84783038"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762886"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>配合使用虚拟机规模集和应用程序运行状况扩展
-监视应用程序的运行状况是管理和升级部署的重要信号。 Azure 虚拟机规模集支持[滚动升级](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)（包括[自动 OS-image 升级](virtual-machine-scale-sets-automatic-upgrade.md)），其依赖对各实例的运行状况监视来升级部署。 你还可以使用运行状况扩展来监视规模集中每个实例的应用程序运行状况，并使用 [自动实例修复](virtual-machine-scale-sets-automatic-instance-repairs.md)执行实例修复。
+监视应用程序的运行状况是管理和升级部署的重要信号。 Azure 虚拟机规模集支持[滚动升级](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)（包括[自动 OS-image 升级](virtual-machine-scale-sets-automatic-upgrade.md)），其依赖对各实例的运行状况监视来升级部署。 你还可使用运行状况扩展来监视规模集中每个实例的应用程序运行状况，并使用[自动实例修复](virtual-machine-scale-sets-automatic-instance-repairs.md)来执行实例修复。
 
 本文介绍如何使用应用程序运行状况扩展监控部署在虚拟机规模集上的应用程序的运行状况。
 
@@ -141,7 +141,7 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-使用 [az vmss 扩展集](/cli/azure/vmss/extension#az-vmss-extension-set)将应用程序运行状况扩展添加到规模集模型定义中。
+使用 [az vmss 扩展集](/cli/azure/vmss/extension#az_vmss_extension_set)将应用程序运行状况扩展添加到规模集模型定义中。
 
 下面的示例将应用程序运行状况扩展添加到基于 Linux 的规模集的规模集模型中。
 

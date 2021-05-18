@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
-manager: femila
-ms.openlocfilehash: 7de94bdd28b51b87b3b06d62685dcc1921a1c6f3
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+manager: lizross
+ms.openlocfilehash: b0fadcc592f5dd52bf1b72dc9d5658866ffba7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445289"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "88008468"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>使用 Android 客户端连接到 Windows 虚拟桌面（经典）
 
@@ -39,7 +39,7 @@ ms.locfileid: "106445289"
 3. 点击“下一步”。
 4. 在系统提示时提供凭据。
    - 对于“用户名”，指定有权访问资源的用户名。
-   - 对于“密码”，指定与用户名相关联的密码。
+   - 对于“密码”，指定与用户名关联的密码。
    - 如果管理员将身份验证配置为还需提供其他事实，则系统会为此做出提示。
 
 订阅之后，连接中心应该会显示远程资源。

@@ -13,10 +13,10 @@ ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
 ms.openlocfilehash: c63b71ad00a5621babe07597720a1e9ea87f1e4a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99260242"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何将 Azure API 管理与虚拟网络配合使用
@@ -52,7 +52,7 @@ ms.locfileid: "99260242"
 3. 选择“虚拟网络”。
 4. 配置要在虚拟网络内部署的 API 管理实例。
 
-    :::image type="content" source="media/api-management-using-with-vnet/api-management-menu-vnet.png" alt-text="在 Azure 门户中选择 &quot;虚拟网络&quot;。":::
+    :::image type="content" source="media/api-management-using-with-vnet/api-management-menu-vnet.png" alt-text="在 Azure 门户中选择虚拟网络。":::
     
 5. 选择所需的访问类型：
 
@@ -115,9 +115,9 @@ ms.locfileid: "99260242"
 | * / [80], 443                  | 入站            | TCP                | INTERNET/VIRTUAL_NETWORK            | 客户端与 API 管理的通信                      | 外部             |
 | * / 3443                     | 入站            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure 门户和 PowerShell 的管理终结点         | 外部和内部  |
 | * / 443                  | 出站           | TCP                | VIRTUAL_NETWORK / Storage             | **与 Azure 存储的依赖关系**                             | 外部和内部  |
-| * / 443                  | 出站           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) 和 Azure KeyVault 依赖关系                  | 外部和内部  |
+| * / 443                  | 出站           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) 和 Azure KeyVault 依赖项                  | 外部和内部  |
 | * / 1433                     | 出站           | TCP                | VIRTUAL_NETWORK / SQL                 | **访问 Azure SQL 终结点**                           | 外部和内部  |
-| * / 443                     | 出站           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **访问 Azure KeyVault**                           | 外部和内部  |
+| * / 443                     | 出站           | TCP                | VIRTUAL_NETWORK / AzureKeyVault                 | 访问 Azure KeyVault                           | 外部和内部  |
 | * / 5671, 5672, 443          | 出站           | TCP                | VIRTUAL_NETWORK / EventHub            | [事件中心策略日志](api-management-howto-log-event-hubs.md)和监视代理的依赖项 | 外部和内部  |
 | * / 445                      | 出站           | TCP                | VIRTUAL_NETWORK / Storage             | 与适用于 [GIT](api-management-configuration-repository-git.md) 的 Azure 文件共享的依赖关系                      | 外部和内部  |
 | * / 443, 12000                     | 出站           | TCP                | VIRTUAL_NETWORK / AzureCloud            | 运行状况和监视扩展         | 外部和内部  |
@@ -148,7 +148,7 @@ ms.locfileid: "99260242"
 + **区域服务标记**：允许与存储、SQL 和事件中心服务标记建立出站连接的 NSG 规则可以使用与包含 API 管理实例的区域对应的这些标记的区域版本（例如，美国西部区域中 API 管理实例对应 Storage.WestUS）。 在多区域部署中，每个区域中的 NSG 应该允许流量进入该区域和主要区域的服务标记。
 
     > [!IMPORTANT]
-    > 若要为虚拟网络中的 API 管理实例启用发布 [开发人员门户](api-management-howto-developer-portal.md) ，请确保还允许到美国西部区域的到 blob 存储的出站连接。 例如，在 NSG 规则中使用 **WestUS** 服务标记。 当前需要连接到美国西部区域中的 blob 存储，才能发布适用于任何 API 管理实例的开发人员门户。
+    > 为了能够在虚拟网络中为 API 管理实例发布[开发人员门户](api-management-howto-developer-portal.md)，请确保还允许与美国西部区域的 Blob 存储建立出站连接。 例如，在 NSG 规则中使用 Storage.WestUS 服务标记。 当前为任何 API 管理实例发布开发人员门户都需要与美国西部区域中的 Blob 存储建立连接。
 
 + **SMTP 中继**：在主机 `smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com`、`ies.global.microsoft.com` 下解析的 SMTP 中继的出站网络连接
 
@@ -181,14 +181,14 @@ ms.locfileid: "99260242"
   > [!IMPORTANT]
   > 在验证连接后，在将 API 管理部署到子网中之前，请确保删除子网中部署的所有资源。
 
-* **验证网络连接状态**：将 API 管理部署到子网后，请使用门户检查实例与 Azure 存储等依赖项的连接。 在门户的左侧菜单中的 " **部署和基础结构**" 下，选择 " **网络连接状态**"。
+* 验证网络连接状态：在将 API 管理部署到子网后，请使用门户来检查实例与依赖项（如 Azure 存储）之间的连接。 在门户的左侧菜单中的“部署和基础结构”下，选择“网络连接状态” 。
 
-   :::image type="content" source="media/api-management-using-with-vnet/verify-network-connectivity-status.png" alt-text="验证门户中的网络连接状态":::
+   :::image type="content" source="media/api-management-using-with-vnet/verify-network-connectivity-status.png" alt-text="在门户中验证网络连接状态":::
 
-    * 选择 " **必需** " 以查看与所需 Azure 服务的连接以进行 API 管理。 如果失败，则表示实例无法执行核心操作来管理 Api。
-    * 选择 " **可选** " 以查看与可选服务的连接。 任何故障仅指示特定功能将无法正常工作 (例如，SMTP) 。 故障可能会导致使用和监视 API 管理实例的能力降低，并提供承诺的 SLA。
+    * 选择“必需”，以查看与 API 管理所需的 Azure 服务之间的连接。 如果出现失败，则表示该实例无法执行核心操作来管理 API。
+    * 选择“可选”，以查看与可选服务之间的连接。 如果出现任何失败，只表示特定的功能将无法正常工作（例如 SMTP）。 失败可能导致使用和监视 API 管理实例以及提供已提交 SLA 的能力降级。
 
-若要解决连接问题，请查看 [常见网络配置问题](#network-configuration-issues) 并修复所需的网络设置。
+若要解决连接问题，请查看[常见网络配置问题](#network-configuration-issues)并修复所需的网络设置。
 
 * **增量更新**：对网络进行更改时，请参阅 [NetworkStatus API](/rest/api/apimanagement/2019-12-01/networkstatus)，验证 API 管理服务是否尚未丧失对所依赖的任何关键资源的访问权限。 连接状态应每 15 分钟更新一次。
 

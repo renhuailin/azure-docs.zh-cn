@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74048380"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>使用 Azure 门户自定义 Web 应用程序防火墙规则
@@ -26,9 +26,9 @@ Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序
 ## <a name="view-rule-groups-and-rules"></a>查看规则组和规则
 
 **查看规则组和规则**
-1. 浏览到应用程序网关并选择“Web 应用程序防火墙”  。  
+1. 浏览到应用程序网关并选择“Web 应用程序防火墙”。  
 2. 选择 **WAF 策略**。
-2. 选择“托管规则”  。
+2. 选择“托管规则”。
 
    此视图会在随所选规则集提供的所有规则组页上显示一个表。 已选中所有规则的复选框。
 
@@ -44,7 +44,7 @@ Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序
    1. 搜索想要禁用的规则或规则组。
    2. 选中与要禁用的规则对应的复选框。 
    3. 为所选规则选择页面顶部的操作（启用/禁用）。
-   2. 选择“保存”。  
+   2. 选择“保存”。 
 
 ![保存更改][3]
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: c0af6f3045a686f9ef73b7761b41e869d3ce9d6f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ca4860bea15c2290b0a3edbaaaed801cd4e36d86
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766378"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316022"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>计划 Microsoft Dynamics 365 产品/服务
 
@@ -83,10 +83,10 @@ ms.locfileid: "108766378"
 
 考虑上述计划项之后，请从下列选项之一以开始创建产品/服务。
 
-| 发布指南    | 说明  |
+| 发布指南    | 备注  |
 | :------------------- | :-------------------|
 | [Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md) | 为 Enterprise Edition 构建时，请先查看这些附加的[发布流程和指导原则](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)。 |
 | [Dynamics 365 for Business Central](partner-center-portal/create-new-business-central-offer.md) |   |
 | [适用于客户参与和 Power Apps 的 Dynamics 365](dynamics-365-customer-engage-offer-setup.md) | 先查看这些附加的[发布流程和指导原则](/dynamics365/customer-engagement/developer/publish-app-appsource)。 |
-| [Power BI](/azure/marketplace/partner-center-portal/create-power-bi-app-offer) | 先查看这些附加的[发布流程和指导原则](/power-bi/developer/office-store)。 |
+| [Power BI](/partner-center-portal/create-power-bi-app-offer.md) | 先查看这些附加的[发布流程和指导原则](/power-bi/developer/office-store)。 |
 |||

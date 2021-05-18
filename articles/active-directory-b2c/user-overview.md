@@ -11,10 +11,10 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c42b79cb8b92b5f96f31eb58f091ff0ce79b84f5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101652124"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户帐户概述
@@ -78,7 +78,7 @@ ms.locfileid: "101652124"
 
 使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。 使用者用户可以使用本地帐户或联合帐户，例如 Facebook 或 Twitter。 通过使用[注册或登录用户流](user-flow-overview.md)、使用 Microsoft Graph API 或使用 Azure 门户创建使用者帐户。
 
-可以指定在创建使用者用户帐户时收集的数据。 有关详细信息，请参阅 " [添加用户属性" 和 "自定义用户输入](configure-user-input.md)"。
+可以指定在创建使用者用户帐户时收集的数据。 有关详细信息，请参阅[添加用户属性和自定义用户输入](configure-user-input.md)。
 
 有关管理使用者帐户的详细信息，请参阅[使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](./microsoft-graph-operations.md)。
 

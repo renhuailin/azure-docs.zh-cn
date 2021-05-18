@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: 9e65e2736578ce04dfa79d5a7827e190d47fb312
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bf006c6ade92cc2d1286dc1173d09efea0294f50
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573823"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754462"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes 服务 (AKS) 中群集节点的出口流量
 
@@ -23,7 +23,7 @@ AKS 群集部署在虚拟网络上。 此网络可以是托管的（由 AKS 创�
 
 为了便于管理和操作，AKS 群集中的节点需要访问特定的端口和完全限定的域名 (FQDN)。 节点与 API 服务器进行通信，或者下载并安装核心 Kubernetes 群集组件和节点安全更新都需要这些终结点。 例如，群集需要从 Microsoft 容器注册表 (MCR) 请求基础系统容器映像。
 
-AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态地址。 缺少静态地址意味着无法使用网络安全组锁定来自 AKS 群集的出站流量。 
+AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态地址。 缺少静态地址意味着无法使用网络安全组锁定来自 AKS 群集的出站流量。
 
 默认情况下，AKS 群集具有不受限制的出站（出口）Internet 访问权限。 此级别的网络访问权限允许运行的节点和服务根据需要访问外部资源。 如果希望限制出口流量，则必须限制可访问的端口和地址数量，才能维护正常的群集维护任务。 保护出站地址的最简单解决方案在于使用可基于域名控制出站流量的防火墙设备。 例如，Azure 防火墙可以根据目标的 FQDN 限制出站 HTTP 和 HTTPS 流量。 还可配置首选的防火墙和安全规则，以允许所需的端口和地址。
 
@@ -37,10 +37,9 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 * IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 * 可将 FQDN HTTP/HTTPS 终结点放在防火墙设备中。
 * 通配符 HTTP/HTTPS 终结点是可以根据许多限定符随 AKS 群集一起变化的依赖项。
-* AKS 使用准入控制器将 FQDN 作为环境变量注入 kube-system 和 gatekeeper-system下的所有部署，确保节点和 API 服务器之间的所有系统通信使用 API 服务器 FQDN 而不是 API 服务器 IP。 
+* AKS 使用准入控制器将 FQDN 作为环境变量注入 kube-system 和 gatekeeper-system下的所有部署，确保节点和 API 服务器之间的所有系统通信使用 API 服务器 FQDN 而不是 API 服务器 IP。
 * 如果有需要与 API 服务器通信的应用或解决方案，则必须添加其他网络规则，以允许与 API 服务器 IP 的端口 443 进行 TCP 通信。
 * 在极少数情况下，如果存在维护操作，则 API 服务器 IP 可能更改。 始终会提前传达可以更改 API 服务器 IP 的计划内维护操作。
-
 
 ### <a name="azure-global-required-network-rules"></a>Azure 全球的必需网络规则
 
@@ -54,7 +53,7 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果使用的是自定义 DNS 服务器，必须确保群集节点可以访问这些服务器。 |
 | **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。 这不是[专用群集](private-clusters.md)所必需的  |
 
-### <a name="azure-global-required-fqdn--application-rules"></a>Azure 全球的必需 FQDN/应用程序规则 
+### <a name="azure-global-required-fqdn--application-rules"></a>Azure 全球的必需 FQDN/应用程序规则
 
 必须具有以下 FQDN/应用程序规则：
 
@@ -108,7 +107,7 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果使用的是自定义 DNS 服务器，必须确保群集节点可以访问这些服务器。 |
 | **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。  |
 
-### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure 美国政府的必需 FQDN/应用程序规则 
+### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure 美国政府的必需 FQDN/应用程序规则
 
 必须具有以下 FQDN/应用程序规则：
 
@@ -144,7 +143,7 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 | **`us.download.nvidia.com`**            | **`HTTPS:443`** | 此地址用于在基于 GPU 的节点上进行正确的驱动程序安装和操作。 |
 | **`apt.dockerproject.org`**             | **`HTTPS:443`** | 此地址用于在基于 GPU 的节点上进行正确的驱动程序安装和操作。 |
 
-## <a name="windows-server-based-node-pools"></a>基于 Windows Server 的节点池 
+## <a name="windows-server-based-node-pools"></a>基于 Windows Server 的节点池
 
 ### <a name="required-fqdn--application-rules"></a>必需的 FQDN/应用程序规则
 
@@ -190,7 +189,7 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 |----------------------------------------------------------------------------------|----------|---------|------|
 | [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureDevSpaces`  | TCP           | 443      | 此终结点用于将指标数据和日志发送到 Azure Monitor 和 Log Analytics。 |
 
-#### <a name="required-fqdn--application-rules"></a>必需的 FQDN/应用程序规则 
+#### <a name="required-fqdn--application-rules"></a>必需的 FQDN/应用程序规则
 
 启用了 Azure Dev Spaces 的 AKS 群集需要以下 FQDN/应用程序规则：
 
@@ -200,10 +199,9 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 | `gcr.io` | **`HTTPS:443`** | 此地址用于请求 helm/tiller 映像 |
 | `storage.googleapis.com` | **`HTTPS:443`** | 此地址用于请求 helm/tiller 映像 |
 
-
 ### <a name="azure-policy"></a>Azure Policy
 
-#### <a name="required-fqdn--application-rules"></a>必需的 FQDN/应用程序规则 
+#### <a name="required-fqdn--application-rules"></a>必需的 FQDN/应用程序规则
 
 启用了 Azure Policy 的 AKS 群集需要以下 FQDN/应用程序规则。
 
@@ -211,11 +209,9 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 |-----------------------------------------------|-----------|----------|
 | **`data.policy.core.windows.net`** | **`HTTPS:443`** | 此地址用于拉取 Kubernetes 策略，并向策略服务报告群集合规性状态。 |
 | **`store.policy.core.windows.net`** | **`HTTPS:443`** | 此地址用于拉取内置策略的 Gatekeeper 项目。 |
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | 此地址用于正确操作 Azure Policy。  |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | 此地址用于从 GitHub 请求内置策略，以确保正确操作 Azure Policy。 |
-| **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy 加载项，用于向应用程序见解终结点发送遥测数据。 |
+| **`dc.services.visualstudio.com`** | **`HTTPS:443`** | Azure Policy 加载项，用于向应用程序见解终结点发送遥测数据。 |
 
-#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure 中国世纪互联需要的 FQDN/应用程序规则 
+#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure 中国世纪互联的必需 FQDN/应用程序规则
 
 启用了 Azure Policy 的 AKS 群集需要以下 FQDN/应用程序规则。
 
@@ -235,7 +231,7 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>使用 Azure 防火墙限制出口流量
 
-Azure 防火墙提供 Azure Kubernetes 服务 (`AzureKubernetesService`) FQDN 标记以简化此配置。 
+Azure 防火墙提供 Azure Kubernetes 服务 (`AzureKubernetesService`) FQDN 标记以简化此配置。
 
 > [!NOTE]
 > FQDN 标记包含上面列出的所有 FQDN，并自动保持最新。
@@ -258,9 +254,7 @@ Azure 防火墙提供 Azure Kubernetes 服务 (`AzureKubernetesService`) FQDN �
 * 内部流量
   * 根据需要，除了[公共负载均衡器](load-balancer-standard.md)外，可以（改为）将[内部负载均衡器](internal-lb.md)用于内部流量，也可以在自身的子网中隔离它。
 
-
 以下步骤使用 Azure 防火墙的 `AzureKubernetesService` FQDN 标记限制来自 AKS 群集的出站流量，并提供如何通过防火墙配置公用入站流量的示例。
-
 
 ### <a name="set-configuration-via-environment-variables"></a>通过环境变量设置配置
 
@@ -326,7 +320,6 @@ az network vnet subnet create \
 
 ![防火墙和 UDR](media/limit-egress-traffic/firewall-udr.png)
 
-
 > [!IMPORTANT]
 > 如果群集或应用程序创建众多定向到相同目标或目标子集的出站连接，则可能需要更多的防火墙前端 IP 来避免用尽每个前端 IP 的端口。
 > 有关如何创建具有多个 IP 的 Azure 防火墙的详细信息，请参阅[此处](../firewall/quick-create-multiple-ip-template.md)
@@ -338,6 +331,7 @@ az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
 注册预览版 CLI 扩展以创建 Azure 防火墙。
+
 ```azurecli
 # Install Azure Firewall preview CLI extension
 
@@ -347,6 +341,7 @@ az extension add --name azure-firewall
 
 az network firewall create -g $RG -n $FWNAME -l $LOC --enable-dns-proxy true
 ```
+
 现在，可将前面创建的 IP 地址分配到防火墙前端。
 
 > [!NOTE]
@@ -448,7 +443,7 @@ az role assignment create --assignee $APPID --scope $VNETID --role "Network Cont
 可以在[此处](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)查看所需的详细权限。
 
 > [!NOTE]
-> 如果使用的是 kubenet 网络插件，则需要为预先创建的路由表提供 AKS 服务主体或托管标识权限，因为 kubenet 需要路由表来添加必要传递规则。 
+> 如果使用的是 kubenet 网络插件，则需要为预先创建的路由表提供 AKS 服务主体或托管标识权限，因为 kubenet 需要路由表来添加必要传递规则。
 > ```azurecli-interactive
 > RTID=$(az network route-table show -g $RG -n $FWROUTE_TABLE_NAME --query id -o tsv)
 > az role assignment create --assignee $APPID --scope $RTID --role "Network Contributor"
@@ -466,7 +461,6 @@ SUBNETID=$(az network vnet subnet show -g $RG --vnet-name $VNET_NAME --name $AKS
 
 > [!IMPORTANT]
 > 有关出站类型 UDR（包括限制）的详细信息，请参阅[流出量出站类型 UDR](egress-outboundtype.md#limitations)。
-
 
 > [!TIP]
 > 可向群集部署添加更多功能，例如 [**专用群集**](private-clusters.md)。 
@@ -499,16 +493,16 @@ CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 
 # Add to AKS approved list
 az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
-
 ```
 
- 使用 [az aks get-credentials][az-aks-get-credentials] 命令将 `kubectl` 配置为连接到新建的 Kubernetes 群集。 
+使用 [az aks get-credentials][az-aks-get-credentials] 命令将 `kubectl` 配置为连接到新建的 Kubernetes 群集。
 
- ```azurecli
- az aks get-credentials -g $RG -n $AKSNAME
- ```
+```azurecli
+az aks get-credentials -g $RG -n $AKSNAME
+```
 
 ### <a name="deploy-a-public-service"></a>部署公共服务
+
 现在可以开始公开服务并将应用程序部署到此群集。 此示例将公开公共服务，但也可以选择通过[内部负载均衡器](internal-lb.md)公开内部服务。
 
 ![公共服务 DNAT](media/limit-egress-traffic/aks-create-svc.png)
@@ -740,7 +734,6 @@ kubectl apply -f example.yaml
 > [!IMPORTANT]
 > 使用 Azure 防火墙限制出口流量并创建用户定义的路由 (UDR) 来强制所有出口流量时，请确保在防火墙中创建适当的 DNAT 规则，以正确允许入口流量。 结合使用 Azure 防火墙和 UDR 时，会因为路由不对称而中断入口设置。 （如果 AKS 子网具有指向防火墙专用 IP 地址的默认路由，但你使用的是公共负载均衡器 - 类型为 LoadBalancer 的入口或 Kubernetes 服务，则会出现此问题）。 在这种情况下，将通过负载均衡器的公共 IP 地址接收传入的负载均衡器流量，但返回路径将通过防火墙的专用 IP 地址。 由于防火墙是有状态的，并且无法识别已建立的会话，因此会丢弃返回的数据包。 若要了解如何将 Azure 防火墙与入口或服务负载均衡器集成，请参阅[将 Azure 防火墙与 Azure 标准负载均衡器集成](../firewall/integrate-lb.md)。
 
-
 若要配置入站连接，必须将一个 DNAT 规则写入到 Azure 防火墙。 为了测试与群集的连接，为防火墙前端公共 IP 地址定义了规则，以便路由到内部服务公开的内部 IP。
 
 可以自定义目标地址，因为它是防火墙上要访问的端口。 转换的地址必须是内部负载均衡器的 IP 地址。 转换的端口必须是 Kubernetes 服务的已公开端口。
@@ -762,11 +755,13 @@ voting-storage     ClusterIP      10.41.221.201   <none>        3306/TCP       9
 ```
 
 运行以下内容来获取服务 IP：
+
 ```bash
 SERVICE_IP=$(kubectl get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
 ```
 
 运行以下内容来添加 NAT 规则：
+
 ```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
 ```
@@ -777,9 +772,7 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 
 应看到 AKS 投票应用程序。 此示例中，防火墙公共 IP 为 `52.253.228.132`。
 
-
 ![屏幕截图显示了包含“猫”、“狗”、“重置”和“合计”按钮的 A K S Voting 应用。](media/limit-egress-traffic/aks-vote.png)
-
 
 ### <a name="clean-up-resources"></a>清理资源
 
@@ -791,7 +784,7 @@ az group delete -g $RG
 
 ## <a name="next-steps"></a>后续步骤
 
-通过学习这篇文章，了解了要限制群集的出口流量时可以使用的端口和地址。 还知道了如何使用 Azure 防火墙保护出站流量。 
+通过学习这篇文章，了解了要限制群集的出口流量时可以使用的端口和地址。 还知道了如何使用 Azure 防火墙保护出站流量。
 
 如果需要，可以将以上步骤推广到将流量转发到首选出口解决方案，根据[出站类型`userDefinedRoute`文档](egress-outboundtype.md)进行操作。
 
@@ -803,9 +796,9 @@ az group delete -g $RG
 [install-azure-cli]: /cli/azure/install-azure-cli
 [network-policy]: use-network-policies.md
 [azure-firewall]: ../firewall/overview.md
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [aks-upgrade]: upgrade-cluster.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
