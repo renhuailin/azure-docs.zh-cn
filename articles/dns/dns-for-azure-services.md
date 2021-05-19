@@ -1,6 +1,6 @@
 ---
 title: 将 Azure DNS 与其他 Azure 服务配合使用
-description: 在此学习路径中，开始了解如何使用 Azure DNS 解析其他 Azure 服务的名称
+description: 在此学习路径中，开始学习如何使用 Azure DNS 来解析其他 Azure 服务的名称
 services: dns
 documentationcenter: na
 author: rohinkoul
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: rohink
 ms.openlocfilehash: fa2c1ced6405c967ca33562d6215b304b8507e5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76937241"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS 如何与其他 Azure 服务一起工作
@@ -27,11 +27,11 @@ ms.locfileid: "76937241"
 Azure DNS 是一种托管的 DNS 管理和名称解析服务。 可以使用它为你在 Azure 中部署的其他应用程序和服务创建公共 DNS 名称。 在自定义域中为 Azure 服务创建名称非常简单。 只需要为你的服务添加一条正确类型的记录即可。
 
 * 对于动态分配的 IP 地址，可以创建一条 DNS CNAME 记录，该记录映射到 Azure 为服务创建的 DNS 名称。 DNS 标准将阻止你使用区域顶点的 CNAME 记录。 可以改用别名记录。 有关详细信息，请参阅[教程：配置表示 Azure 公共 IP 地址的别名记录](tutorial-alias-pip.md)。
-* 对于静态分配的 IP 地址，可以使用任何名称创建一条 DNS A 记录，该记录在区域顶点处包括一个*裸域*名称。
+* 对于静态分配的 IP 地址，可以使用任何名称创建一条 DNS A 记录，该记录在区域顶点处包括一个 *裸域* 名称。
 
 下表概述了可用于各种 Azure 服务的受支持的记录类型。 如此表所示，Azure DNS 仅支持面向 Internet 的网络资源的 DNS 记录。 Azure DNS 不能用于内部专用地址的名称解析。
 
-| Azure 服务 | 网络接口 | 说明 |
+| Azure 服务 | Linux | 说明 |
 | --- | --- | --- |
 | Azure 应用程序网关 |[前端公共 IP](dns-custom-domain.md#public-ip-address) |可以创建 DNS A 或 CNAME 记录。 |
 | Azure 负载均衡器 |[前端公共 IP](dns-custom-domain.md#public-ip-address) |可以创建 DNS A 或 CNAME 记录。 负载均衡器可以拥有一个动态分配的 IPv6 公共 IP 地址。 为 IPv6 地址创建 CNAME 记录。 |

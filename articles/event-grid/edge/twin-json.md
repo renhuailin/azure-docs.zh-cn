@@ -1,6 +1,6 @@
 ---
-title: 模块克隆-Azure 事件网格 IoT Edge |Microsoft Docs
-description: 通过模块克隆进行配置。
+title: 模块孪生 - Azure 事件网格 IoT Edge | Microsoft Docs
+description: 通过模块孪生进行配置。
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -8,24 +8,24 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: f39d22fe58d4375b3b68bacd237c1b200328c4b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171323"
 ---
-# <a name="module-twin-json-schema-azure-event-grid"></a>Azure 事件网格 (的模块克隆 JSON 架构) 
+# <a name="module-twin-json-schema-azure-event-grid"></a>模块孪生 JSON 架构（Azure 事件网格）
 
-IoT Edge 上的事件网格与 IoT Edge 生态系统集成，并支持通过模块克隆创建主题和订阅。 它还将报告所有主题和事件订阅的当前状态报告给模块克隆上的报告属性。
+IoT Edge 上的事件网格与 IoT Edge 生态系统集成，并支持通过模块孪生创建主题和订阅。 它还向模块孪生上报告的属性报告所有主题和事件订阅的当前状态。
 
 > [!WARNING]
-> 由于 IoT Edge 生态系统中的限制，以下 json 示例中的所有数组元素都编码为 json 字符串。 请 `EventSubscription.Filter.EventTypes` 参阅 `EventSubscription.Filter.AdvancedFilters` 以下示例中的和键。
+> 由于 IoT Edge 生态系统的限制，以下 json 示例中的所有数组元素都已被编码为 json 字符串。 请参阅以下示例中的 `EventSubscription.Filter.EventTypes` 和 `EventSubscription.Filter.AdvancedFilters` 键。
 
-## <a name="desired-properties-json"></a>所需属性 JSON
+## <a name="desired-properties-json"></a>“所需属性”JSON
 
-* 在创建主题时，主题部分中每个键值对的值都具有与用于 API 的相同的 JSON 架构 `Topic.Properties` 。
-* 在创建主题时， **EventSubscriptions** 部分中每个键值对的值都具有与用于 API 的相同的 json 架构 `EventSubscription.Properties` 。
-* 若要删除某个主题，请将其值设置为 `null` 所需的属性。
+* 主题部分中每个键值对的值使用的 JSON 架构与创建主题时 API 上用于 `Topic.Properties` 的 JSON 架构完全相同。
+* EventSubscriptions 部分中每个键值对的值使用的 json 架构与创建主题时 API 上用于 `EventSubscription.Properties` 的 json 架构完全相同。
+* 若要删除主题，请在所需属性中将其值设置为 `null`。
 * 不支持通过所需属性删除事件订阅。
 
 ```json
@@ -77,13 +77,13 @@ IoT Edge 上的事件网格与 IoT Edge 生态系统集成，并支持通过模�
 }
 ```
 
-## <a name="reported-properties-json"></a>报告的属性 JSON
+## <a name="reported-properties-json"></a>“报告的属性”JSON
 
-模块克隆的报告属性部分包括下列信息：
+模块孪生的“报告的属性”部分包括以下信息：
 
-* 模块的存储区中存在的主题和订阅集
-* 创建所需的主题/事件订阅时遇到的任何错误
-* 任何启动错误 (如所需属性 JSON 分析失败) 
+* 存在于模块存储中的主题和订阅集
+* 创建所需主题/事件订阅时遇到的任何错误
+* 任何启动错误（如“所需属性”JSON 分析失败）
 
 ```json
 {

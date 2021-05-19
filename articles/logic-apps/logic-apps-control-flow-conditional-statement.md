@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 19f42270e37c42cf56bbde04f73c01027a56ff63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89657386"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建控制工作流操作的条件语句
@@ -28,7 +28,7 @@ ms.locfileid: "89657386"
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 若要按照本文中的示例操作，请使用 Outlook.com 帐户或工作或学校帐户 [创建此示例逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 。
+* 若要执行本文中的示例，请使用 Outlook.com 帐户或者工作或学校帐户[创建此示例逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="add-condition"></a>添加条件
 
@@ -36,7 +36,7 @@ ms.locfileid: "89657386"
 
 1. 在所需的位置添加条件。 
 
-   若要在步骤之间添加条件，请将指针移到要添加条件的箭头上。 选择出现的**加号** ( **+** )，然后选择“添加操作”。 例如：
+   若要在步骤之间添加条件，请将指针移到要添加条件的箭头上。 选择出现的 **加号** ( **+** )，然后选择“添加操作”。 例如：
 
    ![在步骤之间添加操作](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 

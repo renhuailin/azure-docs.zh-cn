@@ -1,5 +1,5 @@
 ---
-title: 删除 Azure Sentinel |Microsoft Docs
+title: 删除 Azure Sentinel | Microsoft Docs
 description: 如何删除 Azure Sentinel 实例。
 services: sentinel
 documentationcenter: na
@@ -15,67 +15,67 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90885836"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>从工作区中删除 Azure Sentinel
 
-如果不再想要使用 Azure Sentinel，本文介绍了如何将其从工作区中删除。
+本文介绍不再需要使用 Azure Sentinel 时如何将其从工作区中删除。
 
 ## <a name="how-to-remove-azure-sentinel"></a>如何删除 Azure Sentinel
 
-按照此过程从工作区中删除 Azure Sentinel：
+请按照以下过程操作，从工作区中删除 Azure Sentinel：
 
-1. 中转到 **Azure Sentinel**，然后选择 " **设置**"，然后选择 " **删除 Azure sentinel**" 选项卡。
+1. 转到“Azure Sentinel”，然后转到“设置”，然后选择选项卡“删除 Azure Sentinel”  。
 
-1. 删除 Azure Sentinel 之前，请使用复选框告诉我们你为何要将其删除。
+1. 在删除 Azure Sentinel 之前，请使用复选框告知我们删除它的原因。
 
-1. 选择 " **从工作区中删除 Azure Sentinel**"。
+1. 选择“从工作区中删除 Azure Sentinel”。
     
     ![删除 SecurityInsights 解决方案](media/offboard/delete-solution.png)
 
-## <a name="what-happens-behind-the-scenes"></a>幕后会发生什么情况呢？
+## <a name="what-happens-behind-the-scenes"></a>后台会发生什么情况？
 
-删除解决方案时，Azure Sentinel 需要48小时才能完成删除过程的第一阶段。
+删除解决方案时，Azure Sentinel 最多需要 48 小时才能完成删除过程的第一阶段。
 
-确定断开连接后，将开始脱离进程。
+识别到断开连接后，将开始脱离过程。
 
-**这些连接器的配置已删除：**
+**连接器的配置已删除：**
 -   Office 365
 
 -   AWS
 
--   Microsoft 服务安全警报： Microsoft Defender for Identity (*以前的 AZURE ATP*) ，Microsoft Cloud App Security 包括 CLOUD DISCOVERY 影子 IT 报告、Azure AD Identity Protection、microsoft Defender for Endpoint (*以前的 microsoft defender ATP*) 、azure Defender 警报（来自 azure 安全中心）
+-   Microsoft 服务安全警报：Microsoft Defender for Identity（之前称为 Azure ATP）、包括 Cloud Discovery Shadow IT 报告的Microsoft Cloud App Security、Azure AD 标识保护、Microsoft Defender for Endpoint（以前称为 Microsoft Defender ATP）、来自 Azure 安全中心的 Azure Defender 警报
 
 -   威胁智能
 
--   常见安全日志 (包括基于 CEF 的日志、Barracuda 和 Syslog)  (如果从 Azure 安全中心获得 Azure Defender 警报，将继续收集这些日志。 ) 
+-   常见安全日志（包括基于 CEF 的日志、Barracuda 和 Syslog）（如果从 Azure 安全中心收到 Azure Defender 警报，则将继续收集这些日志。）
 
--   Windows 安全事件 (如果从 Azure 安全中心获得 Azure Defender 警报，将继续收集这些日志。 ) 
+-   Windows 安全事件（如果从 Azure 安全中心收到 Azure Defender 警报，则将继续收集这些日志。）
 
-在前48小时内，数据和分析规则 (包括实时自动化配置) 在 Azure Sentinel 中将不再可访问或可查询。
+在 48 个小时内，将不再能够在 Azure Sentinel 中访问或查询数据和分析规则（包括实时自动化配置）。
 
-**30天后，这些资源将被删除：**
+30 天后，将删除这些资源：
 
--   事件 (包括调查元数据) 
+-   事件（包括调查元数据）
 
 -   分析规则
 
 -   书签
 
-不会删除行动手册、保存的工作簿、保存的搜寻查询和笔记本。 **某些可能会因删除的数据而中断。您可以手动删除这些。**
+不会删除你的 playbook、已保存的工作簿、已保存的搜寻查询和笔记本。 一些可能因删除数据而中断。可以手动将其删除。
 
-删除服务后，会有30天的宽限期，在此期间，你可以重新启用该解决方案，你的数据和分析规则将会还原，但必须重新连接已断开连接的已配置连接器。
+删除服务后，有 30 天的宽限期，在此期间，你可以重新启用解决方案，并且数据和分析规则将会还原，但必须重新连接已断开连接的已配置连接器。
 
 > [!NOTE]
-> 如果删除解决方案，则会继续向 Azure Sentinel 资源提供程序注册订阅。 **您可以手动将其删除。**
+> 如果删除解决方案，则会继续向 Azure Sentinel 资源提供程序注册订阅。 **可以手动将其删除。**
 
 
 
 
 ## <a name="next-steps"></a>后续步骤
-本文档介绍了如何删除 Azure Sentinel 服务。 如果你改变主意并想要重新安装它：
-- 开始进行 [Azure Sentinel](quickstart-onboard.md)入门。
+在本文档中，你了解了如何删除 Azure Sentinel 服务。 如果改变主意并想再次安装它：
+- [装载 Azure Sentinel](quickstart-onboard.md) 入门。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 2bb80ba421617d5fd1699826deda00e56f1e43af
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 401124ed4b2794d891ca224ba3dc1c78edcae8d5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943668"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783406"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>添加或删除子网委托
 
@@ -42,11 +42,11 @@ ms.locfileid: "98943668"
     | 地址空间 | 输入 *10.0.0.0/16*。 |
     | 订阅 | 选择订阅。|
     | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
-    | 位置 | 选择 **EastUS**。|
+    | 位置 | 选择“EastUS”。|
     | 子网 - 名称 | 输入 *mySubnet*。 |
     | 子网 - 地址范围 | 输入 *10.0.0.0/24*。 |
     |||
-1. 将 rest 保留为默认值，然后选择 " **创建**"。
+1. 将其余的设置保留为默认值，然后选择“创建”。
 
 ### <a name="permissions"></a>权限
 
@@ -59,16 +59,16 @@ ms.locfileid: "98943668"
 在此部分，我们将上一部分创建的子网委托给 Azure 服务。
 
 1. 在门户的搜索栏中，输入 *myVirtualNetwork*。 当“myVirtualNetwork”出现在搜索结果中时，将其选中。
-2. 在搜索结果中，选择 " *myVirtualNetwork*"。
-3. 在 "**设置**" 下选择 **子网**，然后选择 " **mySubnet**"。
-4. 在 " *mySubnet* " 页上，对于 " **子网委派** 列表"，从 " **委托子网到服务** (" 下列出的服务中进行选择，例如 **DBforPostgreSQL/serversv2**) 。  
+2. 在搜索结果中，选择“myVirtualNetwork”。
+3. 在“设置”下选择“子网”，然后选择“mySubnet”。
+4. 在“mySubnet”页上，对于“子网委派”列表，从“将子网委派给服务”下列出的服务中进行选择，例如 DBforPostgreSQL/serversv2。  
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>从 Azure 服务中删除子网委托
 
 1. 在门户的搜索栏中，输入 *myVirtualNetwork*。 当“myVirtualNetwork”出现在搜索结果中时，将其选中。
-2. 在搜索结果中，选择 " *myVirtualNetwork*"。
-3. 在 "**设置**" 下选择 **子网**，然后选择 " **mySubnet**"。
-4. 在 " *mySubnet* " 页中，对于 "**子网委派** 列表"，请从 "**委托子网到服务**" 下列出的服务中选择 **None** 。 
+2. 在搜索结果中，选择“myVirtualNetwork”。
+3. 在“设置”下选择“子网”，然后选择“mySubnet”。
+4. 在“mySubnet”页中，对于“子网委派”列表，请从“将子网委派给服务”下列出的服务中选择“无”。 
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -81,7 +81,7 @@ ms.locfileid: "98943668"
 ### <a name="create-a-resource-group"></a>创建资源组
 使用 [az group create](/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 
@@ -113,7 +113,7 @@ ms.locfileid: "98943668"
 
 在此部分，我们将上一部分创建的子网委托给 Azure 服务。 
 
-使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) ，使用 Azure 服务的委派更新名为 **mySubnet** 的子网。  在此示例中，**Microsoft.DBforPostgreSQL/serversv2** 用于示例委托：
+使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update)，使用 Azure 服务的委派更新名为 mySubnet 的子网。  在此示例中，**Microsoft.DBforPostgreSQL/serversv2** 用于示例委托：
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -123,7 +123,7 @@ ms.locfileid: "98943668"
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-若要验证委派是否已应用，请使用 [az network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show)。 验证是否已将服务委托给属性 **serviceName** 下的子网：
+若要验证委派是否已应用，请使用 [az network vnet subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show)。 验证是否已将服务委派给属性 serviceName 下的子网：
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -152,7 +152,7 @@ ms.locfileid: "98943668"
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>从 Azure 服务中删除子网委托
 
-使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) 从名为 **mySubnet** 的子网中删除委派：
+使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) 从名为 mySubnet 的子网中删除委派：
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -161,7 +161,7 @@ ms.locfileid: "98943668"
   --vnet-name myVnet \
   --remove delegations
 ```
-若要验证委派是否已删除，请使用 [az network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show)。 验证服务是否已从属性 **serviceName** 下的子网中删除：
+若要验证委派是否已删除，请使用 [az network vnet subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show)。 验证服务是否已从属性 serviceName 下的子网中删除：
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -188,7 +188,7 @@ ms.locfileid: "98943668"
 ### <a name="create-a-resource-group"></a>创建资源组
 使用 [New-AzResourceGroup](/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurepowershell-interactive
   New-AzResourceGroup -Name myResourceGroup -Location eastus

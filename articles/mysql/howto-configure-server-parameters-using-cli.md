@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5a84d93400e713f66545387fd146148ee735c06
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.openlocfilehash: 94dd7f72f6411934587c76850a05d6885e9f6862
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541532"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763210"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Database for MySQL 中配置服务器参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MySQL 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。 
@@ -27,7 +27,7 @@ ms.locfileid: "94541532"
 - [Azure CLI](/cli/azure/install-azure-cli) 命令行实用工具或在浏览器中使用 Azure Cloud Shell。
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>列出 Azure Database for MySQL 服务器的服务器配置参数
-若要列出服务器中的所有可修改参数及其值，请运行 [az mysql server configuration list](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-list) 命令。
+若要列出服务器中的所有可修改参数及其值，请运行 [az mysql server configuration list](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_list) 命令。
 
 可以列出资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的服务器配置参数。
 ```azurecli-interactive
@@ -36,16 +36,16 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 有关每个列出参数的定义，请参阅[服务器系统变量](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)上的 MySQL 引用部分。
 
 ## <a name="show-server-configuration-parameter-details"></a>显示服务器配置参数详细信息
-若要显示服务器的某个特定配置参数的详细信息，请运行 [az mysql server configuration show](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-show) 命令。
+若要显示服务器的某个特定配置参数的详细信息，请运行 [az mysql server configuration show](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_show) 命令。
 
 本示例显示了资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的服务器配置参数 **slow\_query\_log** 的详细信息。
 ```azurecli-interactive
 az mysql server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-a-server-configuration-parameter-value"></a>修改服务器配置参数值
-此外，你还可以修改某个服务器配置参数的值，这会更新 MySQL 服务器引擎的基础配置值。 若要更新配置，请使用 [az mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) 命令。 
+此外，你还可以修改某个服务器配置参数的值，这会更新 MySQL 服务器引擎的基础配置值。 若要更新配置，请使用 [az mysql server configuration set](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_set) 命令。 
 
-更新资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的服务器配置参数 **slow\_query\_log** 。
+更新资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的服务器配置参数 **slow\_query\_log**。
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
@@ -58,7 +58,7 @@ az mysql server configuration set --name slow_query_log --resource-group myresou
 ## <a name="setting-parameters-not-listed"></a>设置参数未列出
 如果 Azure 门户中未列出你要更新的服务器参数，则可以选择性地使用 `init_connect` 在连接级别设置参数。 此项可为每个连接到服务器的客户端设置服务器参数。 
 
-更新资源组 **myresourcegroup** 下的服务器 **mydemoserver.mysql.database.azure.com** 的 **init \_ connect** 服务器配置参数，以设置诸如字符集之类的值。
+更新资源组 myresourcegroup 下的服务器 mydemoserver.mysql.database.azure.com 的 init\_connect 服务器配置参数，以设置字符集等值。
 ```azurecli-interactive
 az mysql server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
 ```
@@ -87,7 +87,7 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>设置全局级时区
 
-可以使用 [az mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) 命令来设置全局级时区。
+可以使用 [az mysql server configuration set](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_set) 命令来设置全局级时区。
 
 以下命令将资源组 myresourcegroup 下的服务器 mydemoserver.mysql.database.azure.com 的 time\_zone 服务器配置参数更新为“美国/太平洋”。
 

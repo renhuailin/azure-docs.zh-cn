@@ -1,6 +1,6 @@
 ---
 title: Striim 快速入门
-description: 通过 Striim 和 Azure Synapse Analytics 快速入门。
+description: 快速开始使用 Striim 和 Azure Synapse Analytics。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -12,17 +12,17 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d6b5fa1a42201479c5d426a5bbb9188d0cb8e03d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89485968"
 ---
-# <a name="striim-azure-synapse-analytics-marketplace-offering-install-guide"></a>Striim Azure Synapse Analytics Marketplace 产品安装指南
+# <a name="striim-azure-synapse-analytics-marketplace-offering-install-guide"></a>Striim Azure Synapse Analytics 市场产品/服务安装指南
 
-本快速入门假定你已有 Azure Synapse Analytics 的预先存在的实例。
+本快速入门假定你已有 Azure Synapse Analytics 的一个预先存在的实例。
 
-在 Azure Marketplace 中搜索 "Striim"，并选择 "将数据集成到 Azure Synapse 分析" 的 Striim (过渡) "选项 
+在 Azure 市场中搜索“Striim”，并选择“用于将数据集成到 Azure Synapse Analytics (已暂存)的 Striim”选项 
 
 ![安装 Striim][install]
 

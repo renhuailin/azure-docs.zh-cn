@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: fae95e6f3a73d7539f81e1486c4ad021f181aa11
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 69a4955f28bbd42cd7bf5651bd057412e15303de
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176325"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952909"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
@@ -25,8 +25,8 @@ ms.locfileid: "102176325"
 
 ## <a name="region-availability"></a>上市区域
 
-* 运行时间 SLA 适用于 [支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域和 Azure 政府区域。
-* 运行时间 SLA 适用于支持 AKS 的所有公共区域中的 [私有 AKS 群集][private-clusters] 。
+* [支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service) 的公共区域和 Azure 政府区域提供运行时间 SLA。
+* 在支持 AKS 的所有公共区域中，[专用 AKS 群集][private-clusters]都可以使用运行时间 SLA。
 
 ## <a name="sla-terms-and-conditions"></a>SLA 条款和条件
 
@@ -37,9 +37,6 @@ ms.locfileid: "102176325"
 * 安装 [Azure CLI](/cli/azure/install-azure-cli) 版本 2.8.0 或更高版本
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>创建具有运行时间 SLA 的新群集
-
-> [!NOTE]
-> 目前，如果启用运行时间 SLA，则无法将其从群集中删除。
 
 若要创建具有运行时间 SLA 的群集，请使用 Azure CLI。
 
@@ -106,6 +103,15 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
     "tier": "Paid"
   },
   ```
+
+## <a name="opt-out-of-uptime-sla"></a>选择退出运行时间 SLA
+
+你可以更新群集以更改为免费层，并选择退出运行时间 SLA。
+
+```azurecli-interactive
+# Update an existing cluster to opt out of Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --no-uptime-sla
+ ```
 
 ## <a name="clean-up"></a>清理
 

@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 681b635099d450f061e0bcdb5b2c5d60d56c20a3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: a58ec80c13ee9ae0eceb019ab2fd7909fd6f369b
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380710"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889274"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>将邻近放置组中运行的 Azure 虚拟机复制到另一个区域
 
@@ -31,55 +31,55 @@ ms.locfileid: "100380710"
 > [!NOTE]
 > Azure Site Recovery 不支持从 Hyper-V 的托管磁盘到 Azure 方案的故障回复。 因此，不支持从 Azure 中的邻近放置组到 Hyper-V 的故障回复。
 
-## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-portal"></a>通过门户为邻近组中的 Vm 设置灾难恢复
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-portal"></a>通过门户为邻近放置组中的 VM 设置灾难恢复
 
-### <a name="azure-to-azure-via-portal"></a>Azure 到 Azure 通过门户
+### <a name="azure-to-azure-via-portal"></a>通过门户实现 Azure 到 Azure 的灾难恢复
 
-你可以选择通过 "VM 灾难恢复" 页启用虚拟机的复制，或转到预先创建的保管库并导航到 "Site Recovery" 部分，然后启用复制。 让我们看看如何通过这两种方法在 PPG 内为 Vm 设置 Site Recovery：
+可以通过以下两种方法为虚拟机启用复制：通过 VM 灾难恢复页，或者转到预先创建的保管库并导航到“Site Recovery”部分，然后启用复制。 让我们了解如何通过这两种方法为 PPG 中的 VM 设置 Site Recovery：
 
-- 如何在 DR 区域中选择 PPG，同时通过 IaaS VM DR 边栏选项卡启用复制：
-  1. 请参阅虚拟机。 在左侧边栏选项卡上的 "操作" 下，选择 "灾难恢复"
-  2. 在 "基本信息" 选项卡中，选择要将 VM 复制到的 DR 区域。 中转到 "高级设置"
-  3. 在此处，可以看到 VM 的邻近度放置组，以及在 DR 区域中选择 PPG 的选项。 如果选择使用此默认选项，Site Recovery 还可以选择使用它为你创建的新的邻近位置组。 你可以选择所需的邻近位置组，然后再进入 "查看 + 开始复制"，最后启用复制。
+- 通过“IaaS VM DR”边栏选项卡启用复制时如何在 DR 区域中选择 PPG：
+  1. 转到虚拟机。 在左侧边栏选项卡上的“操作”下，选择“灾难恢复”
+  2. 在“基本信息”选项卡中，选择要将 VM 复制到的 DR 区域。 转到“高级设置”
+  3. 在此处可以看到 VM 的邻近放置组，以及用于在 DR 区域中选择 PPG 的选项。 如果你选择使用此默认选项，则 Site Recovery 还会提供一个选项来让你使用它创建的新邻近放置组。 可以任意选择所需的邻近放置组，然后转到“查看 + 开始复制”，最后启用复制。
 
    :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-1.png" alt-text="启用复制。":::
 
-- 如何在 DR 区域中选择 PPG，同时通过保管库边栏选项卡启用复制：
-  1. 中转到恢复服务保管库，并中转到 "Site Recovery" 选项卡
-  2. 单击 "+ Enable Site Recovery"，然后在 Azure 虚拟机下选择 "1：启用复制" (，因为你希望复制 Azure VM) 
-  3. 在 "源" 选项卡中填写必填字段，然后单击 "下一步"
-  4. 在 "虚拟机" 选项卡中选择要为其启用复制的 Vm 列表，并单击 "下一步"
-  5. 在此处，可以看到用于在 DR 区域中选择 PPG 的选项。 如果选择使用此默认选项，Site Recovery 还将为你提供使用它为你创建的新 PPG 的选项。 可以随意选择所需的 PPG，然后继续启用复制。
+- 通过保管库边栏选项卡启用复制时如何在 DR 区域中选择 PPG：
+  1. 转到你的恢复服务保管库，然后转到“Site Recovery”选项卡
+  2. 单击“+ 启用 Site Recovery”，然后在“Azure 虚拟机”下选择“1: 启用复制”（因为你想要复制 Azure VM）
+  3. 在“源”选项卡中填写必填字段，然后单击“下一步”
+  4. 在“虚拟机”选项卡中选择要为其启用复制的 VM 列表，然后单击“下一步”
+  5. 在此处，可以看到用于选择 DR 区域中的 PPG 的选项。 如果你选择使用此默认选项，则 Site Recovery 还会提供一个选项来让你使用它创建的新 PPG。 可以任意选择所需的 PPG，然后继续启用复制。
 
    :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-2.png" alt-text="通过保管库启用复制。":::
 
-请注意，在为 VM 启用复制后，可以轻松更新 DR 区域中的 PPG 选择。
+请注意，在为 VM 启用复制后，可以轻松更新在 DR 区域中所做的 PPG 选择。
 
-1. 请先前往虚拟机，然后在 "操作" 下，选择 "灾难恢复"，然后在左侧边栏选项卡
-2. 中转到 "计算和网络" 边栏选项卡，并单击页面顶部的 "编辑"
-3. 你可以看到用于编辑多个目标设置的选项，包括目标 PPG。 选择要将 VM 故障转移到的 PPG，然后单击 "保存"。
+1. 转到虚拟机，然后在左侧边栏选项卡上的“操作”下，选择“灾难恢复”
+2. 转到“计算和网络”边栏选项卡，然后单击页面顶部的“编辑”
+3. 可以看到用于编辑多个目标设置（包括目标 PPG）的选项。 选择要将 VM 故障转移到的 PPG，然后单击“保存”。
 
-### <a name="vmware-to-azure-via-portal"></a>通过门户将 VMware 到 Azure
+### <a name="vmware-to-azure-via-portal"></a>通过门户实现 VMware 到 Azure 的灾难恢复
 
-为 VM 启用复制后，可以设置目标 VM 的邻近位置组。 请确保根据你的要求在目标区域中单独创建 PPG。 然后，在为 VM 启用复制后，可以轻松地在 DR 区域中更新 PPG 选择。
+为 VM 启用复制后，可以设置目标 VM 的邻近放置组。 请确保根据要求在目标区域中单独创建 PPG。 在为 VM 启用复制后，以后可以轻松更新在 DR 区域中所做的 PPG 选择。
 
-1. 从保管库中选择虚拟机，并在左侧边栏选项卡上的 "操作" 下选择 "灾难恢复"
-2. 中转到 "计算和网络" 边栏选项卡，并单击页面顶部的 "编辑"
-3. 你可以看到用于编辑多个目标设置的选项，包括目标 PPG。 选择要将 VM 故障转移到的 PPG，然后单击 "保存"。
+1. 从保管库中选择虚拟机，然后在左侧边栏选项卡上的“操作”下，选择“灾难恢复”
+2. 转到“计算和网络”边栏选项卡，然后单击页面顶部的“编辑”
+3. 可以看到用于编辑多个目标设置（包括目标 PPG）的选项。 选择要将 VM 故障转移到的 PPG，然后单击“保存”。
 
-   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-v2a.png" alt-text="Update PPG V2A":::
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-v2a.png" alt-text="更新 PPG V2A":::
 
-### <a name="hyper-v-to-azure-via-portal"></a>通过门户将 hyper-v 到 Azure
+### <a name="hyper-v-to-azure-via-portal"></a>通过门户实现 Hyper-V 到 Azure 的灾难恢复
 
-为 VM 启用复制后，可以设置目标 VM 的邻近位置组。 请确保根据你的要求在目标区域中单独创建 PPG。 然后，在为 VM 启用复制后，可以轻松地在 DR 区域中更新 PPG 选择。
+为 VM 启用复制后，可以设置目标 VM 的邻近放置组。 请确保根据要求在目标区域中单独创建 PPG。 在为 VM 启用复制后，以后可以轻松更新在 DR 区域中所做的 PPG 选择。
 
-1. 从保管库中选择虚拟机，并在左侧边栏选项卡上的 "操作" 下选择 "灾难恢复"
-2. 中转到 "计算和网络" 边栏选项卡，并单击页面顶部的 "编辑"
-3. 你可以看到用于编辑多个目标设置的选项，包括目标 PPG。 选择要将 VM 故障转移到的 PPG，然后单击 "保存"。
+1. 从保管库中选择虚拟机，然后在左侧边栏选项卡上的“操作”下，选择“灾难恢复”
+2. 转到“计算和网络”边栏选项卡，然后单击页面顶部的“编辑”
+3. 可以看到用于编辑多个目标设置（包括目标 PPG）的选项。 选择要将 VM 故障转移到的 PPG，然后单击“保存”。
 
-   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-h2a.png" alt-text="Update PPG H2A":::
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-h2a.png" alt-text="更新 PPG H2A":::
 
-## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-powershell"></a>通过 PowerShell 为邻近位置组中的 Vm 设置灾难恢复
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-powershell"></a>通过 PowerShell 为邻近放置组中的 VM 设置灾难恢复
 
 ### <a name="prerequisites"></a>先决条件 
 
@@ -161,7 +161,7 @@ $RecoveryReplicaDiskAccountType = $OSdisk.Sku.Name
 $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id -DiskId $OSdiskId -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
 $diskconfigs = @()
-$diskconfigs.Add($OSDiskReplicationConfig)
+$diskconfigs += $OSDiskReplicationConfig
 
 #Data disk
 
@@ -175,7 +175,7 @@ Foreach( $disk in $VM.StorageProfile.DataDisks)
     $DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id `
          -DiskId $dataDiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
-    $diskconfigs.Add($DataDisk1ReplicationConfig)
+    $diskconfigs += $DataDisk1ReplicationConfig
 }
 
 #Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
@@ -183,7 +183,7 @@ Foreach( $disk in $VM.StorageProfile.DataDisks)
 $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
 
-当通过 PPG 启用区域到区域复制时，启动复制的命令将与 PowerShell cmdlet 进行交换-
+通过 PPG 实现区域到区域的复制时，用于启动复制的命令将改为以下 PowerShell cmdlet -
 
 ```azurepowershell
 $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id -RecoveryAvailabilityZone "2"
@@ -216,7 +216,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 
 14. 要禁用复制，请按照[此处](./azure-to-azure-powershell.md#disable-replication)步骤操作。
 
-### <a name="vmware-to-azure-via-powershell"></a>通过 PowerShell 将 VMware 到 Azure
+### <a name="vmware-to-azure-via-powershell"></a>通过 PowerShell 实现 VMware 到 Azure 的灾难恢复
 
 1. 确保[准备好本地 VMware 服务器](./vmware-azure-tutorial-prepare-on-premises.md)，以便能够灾难恢复到 Azure。
 2. 登录到你的帐户，并按照[此处](./vmware-azure-disaster-recovery-powershell.md#log-into-azure)的规定设置订阅。
@@ -254,7 +254,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 10. [运行](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover)测试故障转移。
 11. 使用[这些](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure)步骤故障转移到 Azure。
 
-### <a name="hyper-v-to-azure-via-powershell"></a>通过 PowerShell 将 hyper-v 到 Azure
+### <a name="hyper-v-to-azure-via-powershell"></a>通过 PowerShell 实现 Hyper-V 到 Azure 的灾难恢复
 
 1. 确保[准备好本地 Hyper-V 服务器](./hyper-v-prepare-on-premises-tutorial.md)，以便能够灾难恢复到 Azure。
 2. [登录](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account)到 Azure。

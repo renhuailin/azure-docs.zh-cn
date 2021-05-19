@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric 监视合作伙伴
-description: 了解如何使用合作伙伴监视解决方案监视 Azure Service Fabric 应用程序、群集和基础结构。
+description: 了解如何使用合作伙伴监视解决方案来监视 Azure Service Fabric 应用程序、群集和基础结构。
 author: srrengar
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: srrengar
 ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75645712"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 监视合作伙伴
@@ -34,11 +34,11 @@ New Relic 是与 Service Fabric 应用程序完美集成的另一个应用程序
 
 ## <a name="elk"></a>ELK 
 
-ELK stack 是开放源代码技术的集合： Elasticsearch、Logstash 和 Kibana。 结合使用这些技术，您可以收集、存储和分析 Service Fabric 监视和诊断数据。 我们在[此处](service-fabric-tutorial-java-elk.md)提供了有关如何对 Service Fabric 本机 Java 应用程序执行此操作的教程。 
+ELK 堆栈是一组开放源代码技术的集合：Elasticsearch、Logstash 和 Kibana。 通过结合使用这些技术，可以收集、存储和分析 Service Fabric 监视和诊断数据。 我们在[此处](service-fabric-tutorial-java-elk.md)提供了有关如何对 Service Fabric 本机 Java 应用程序执行此操作的教程。 
 
 ## <a name="humio"></a>Humio
 
-Humio 是一项日志收集服务，可以通过实时方式在云中或本地收集应用程序中的日志以及 Service Fabric 中的事件。 除了实时可观察性外，Humio 还提供了一些先进的分析和可视化功能，可用于查看和收集诊断信息。 Humio 具有经济有效的定价计划，构建后可以在保持超高速度的同时进行缩放。 它直接集成 Service Fabric 平台事件和应用程序遥测。 可以在[此处](https://github.com/humio/service-fabric-humio)详细了解 Humio 和 Service Fabric 集成。
+Humio 是一项日志收集服务，可以通过实时方式在云中或本地收集应用程序中的日志以及 Service Fabric 中的事件。 除了实时可观测性外，Humio 还提供了最先进的分析和可视化功能，可用于查看和收集诊断信息。 Humio 具有经济有效的定价计划，构建后可以在保持超高速度的同时进行缩放。 它直接集成 Service Fabric 平台事件和应用程序遥测。 可以在[此处](https://github.com/humio/service-fabric-humio)详细了解 Humio 和 Service Fabric 集成。
 
 ## <a name="next-steps"></a>后续步骤
 

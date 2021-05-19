@@ -4,10 +4,10 @@ description: 如何使用 Azure 事件网格将事件从 Auth0 发送到 Azure �
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: a66a60cb926b933a6b0628a67506d0d52ab7a905
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93077857"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>将 Azure 事件网格与 Auth0 集成
@@ -67,7 +67,7 @@ ms.locfileid: "93077857"
 1. 在你的 Auth0 集成的“合作伙伴主题”边栏选项卡上，选择顶部的“+ 事件订阅”。
 1. 在“创建事件订阅”页面上：
     1. 为事件订阅输入一个名称。
-    1. 选择为终结点类型创建的 Azure 服务或 Webhook。
+    1. 为“终结点类型”选择你创建的 Azure 服务或 WebHook。
     1. 按照适用于特定服务的说明进行操作。
     1. 单击“创建”。
 

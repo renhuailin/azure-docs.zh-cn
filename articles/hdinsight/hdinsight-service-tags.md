@@ -1,16 +1,16 @@
 ---
 title: Azure HDInsight 的网络安全组 (NSG) 服务标记
-description: 使用 HDInsight 服务标记允许来自运行状况和管理服务节点的群集的入站流量，而无需向你的 Nsg 添加 IP 地址。
+description: 使用 HDInsight 服务标记允许从运行状况和管理服务节点到群集的入站流量，而无需向 NSG 添加 IP 地址。
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 99a61d3e445bf6887db0c97e365e6e4489eb79e1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931762"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104872007"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服务标记
 
@@ -40,7 +40,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 
 1. 在“源服务标记”下拉列表中，选择“HDInsight”。 
 
-    ![从 Azure 门户添加服务标记](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    :::image type="content" source="./media/hdinsight-service-tags/azure-portal-add-service-tag.png" alt-text="从 Azure 门户添加服务标记":::
 
 此标记包含 HDInsight 可用的所有区域的运行状况和管理服务的 IP 地址。 此标记可确保无论群集创建于何处，群集都可以与必要的运行状况和管理服务通信。
 
@@ -57,7 +57,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 | 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
 | 澳大利亚 | 澳大利亚东部 | HDInsight.AustraliaEast |
-| &nbsp; | Australia Southeast | HDInsight.AustraliaSoutheast |
+| &nbsp; | 澳大利亚东南部 | HDInsight.AustraliaSoutheast |
 | &nbsp; | 澳大利亚中部 | HDInsight.AustraliaCentral |
 | 中国 | 中国东部 2 | HDInsight.ChinaEast2 |
 | &nbsp; | 中国北部 2 | HDInsight.ChinaNorth2 |
@@ -74,9 +74,9 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 | 法国 | 法国中部| HDInsight.FranceCentral |
 | 英国 | 英国南部 | HDInsight.UKSouth |
 | Azure Government | USDoD 中部 | HDInsight.USDoDCentral |
-| &nbsp; | USGov Texas | HDInsight.USGovTexas |
+| &nbsp; | US Gov 德克萨斯州 | HDInsight.USGovTexas |
 | &nbsp; | UsDoD 东部 | HDInsight.USDoDEast |
-| &nbsp; | USGov Arizona | USGovArizona |
+| &nbsp; | US Gov 亚利桑那州 | HDInsight.USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>使用多个区域性服务标记
 
@@ -86,18 +86,18 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 
 #### <a name="group-1"></a>组 1
 
-如果你的群集是在下表的其中一个区域中创建的，则允许服务标记 `HDInsight.WestUS` 和 `HDInsight.EastUS` 。 此外，还列出了区域服务标记。 本部分中的区域需要三个服务标记。
+如果你的群集是在下表中的某个区域中创建的，则允许服务标记 `HDInsight.WestUS` 和 `HDInsight.EastUS`。 此外，还列出了区域服务标记。 本部分中的区域需要三个服务标记。
 
-例如，如果你的群集是在该区域中创建的 `East US 2` ，则需要将以下服务标记添加到网络安全组：
+例如，如果你的群集是在 `East US 2` 区域中创建的，则需要将以下服务标记添加到网络安全组：
 
 - `HDInsight.EastUS2`
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Country | 区域 | 服务标记 |
+| 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
-| 美国 | 美国东部 2 | HDInsight.EastUS2 |
-| &nbsp; | 美国中部 | HDInsight.CentralUS |
+| United States | 美国东部 2 | HDInsight.EastUS2 |
+| &nbsp; | Central US | HDInsight.CentralUS |
 | &nbsp; | 美国中北部 | HDInsight. NorthCentralUS |
 | &nbsp; | 美国中南部 | HDInsight.SouthCentralUS |
 | &nbsp; | 美国东部 | HDInsight.EastUS |
@@ -106,7 +106,7 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 | 欧洲 | 北欧 | HDInsight.NorthEurope |
 | &nbsp; | 西欧| HDInsight.WestEurope |
 | 亚洲 | 东亚 | HDInsight.EastAsia |
-| &nbsp; | Southeast Asia | HDInsight.SoutheastAsia |
+| &nbsp; | 东南亚 | HDInsight.SoutheastAsia |
 | 澳大利亚 | 澳大利亚东部 | HDInsight.AustraliaEast |
 
 #### <a name="group-2"></a>组 2
@@ -115,11 +115,11 @@ HDInsight 服务会管理这些服务标记。 你无法创建自己的服务标
 
 #### <a name="group-3"></a>组 3
 
-*US Gov 爱荷华州* 和 *US Gov 弗吉尼亚州* 区域中的群集需要允许两个服务标记： `HDInsight.USGovIowa` 和 `HDInsight.USGovVirginia` 。
+US Gov 爱荷华州和 US Gov 弗吉尼亚州区域中的群集需要允许两个服务标记：`HDInsight.USGovIowa` 和 `HDInsight.USGovVirginia`。 
 
 #### <a name="group-4"></a>组 4
 
-*德国中部* 和 *德国东北部* 地区的群集需要允许两个服务标记： `HDInsight.GermanyCentral` 和 `HDInsight.GermanyNortheast` 。
+德国中部和德国东北部区域中的群集需要允许两个服务标记：`HDInsight.GermanyCentral` 和 `HDInsight.GermanyNortheast`。 
 
 ## <a name="next-steps"></a>后续步骤
 

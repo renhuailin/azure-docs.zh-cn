@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: conceptual
 ms.date: 02/11/2021
-ms.openlocfilehash: 6bbd7d37418af68065daa194d4ff4bd80f6fd09c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8669919192b1e6394043842d7d23f8829ec7c71e
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100654066"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589544"
 ---
 # <a name="overview-connection-options-for-azure-iot-device-developers"></a>概述：面向 Azure IoT 设备开发人员的连接选项
 身为使用设备的开发人员，你有多个选项来连接和管理 Azure IoT 设备。 本文概述了可帮助你连接和管理设备的最常用选项和工具。
@@ -35,10 +35,10 @@ Azure IoT 包含两项服务 - Azure IoT Central 和 Azure IoT 中心，它们�
 |---------|---------|---------|---------|
 |Central Web UI     | Central | [Central 快速入门](../iot-central/core/quick-deploy-iot-central.md) | 基于浏览器的 IoT Central 门户。 |
 |Azure 门户     | 中心、Central      | [使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)，[从 Azure 门户管理 IoT Central](../iot-central/core/howto-manage-iot-central-from-portal.md)| 适合 IoT 中心和设备的基于浏览器的门户。 还适用于其他 Azure 资源，包括 IoT Central。 |
+|Azure IoT 资源管理器     | 集线器 | [Azure IoT 资源管理器](https://github.com/Azure/azure-iot-explorer#azure-iot-explorer-preview) | 无法创建 IoT 中心。 连接到现有 IoT 中心来管理设备。 通常与 CLI 或门户一起使用。|
 |Azure CLI     | 中心、Central          | [使用 CLI 创建 IoT 中心](../iot-hub/iot-hub-create-using-cli.md)，[从 Azure CLI 管理 IoT Central](../iot-central/core/howto-manage-iot-central-from-cli.md) | 用于创建和管理 IoT 应用程序的命令行接口。 |
 |Azure PowerShell     | 中心、Central   | [使用 PowerShell 创建 IoT 中心](../iot-hub/iot-hub-create-using-powershell.md)，[从 Azure PowerShell 管理 IoT Central](../iot-central/core/howto-manage-iot-central-from-powershell.md) | 用于创建和管理 IoT 应用程序的 PowerShell 接口 |
 |适用于 VS Code 的 Azure IoT Tools  | 集线器 | [使用 Tools for VS Code 创建 IoT 中心](../iot-hub/iot-hub-create-use-iot-toolkit.md) | 适合 IoT 中心应用程序的 VS Code 扩展。 |
-|Azure IoT 资源管理器     | 集线器 | [Azure IoT 资源管理器](https://github.com/Azure/azure-iot-explorer) | 无法创建 IoT 中心。 连接到现有 IoT 中心来管理设备。 通常与 CLI 或门户一起使用。|
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解可用于将设备连接到 Azure IoT 的选项，请浏览以下快速入门：

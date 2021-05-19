@@ -7,17 +7,17 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.openlocfilehash: 919883025075ca38bcef6c23ac744528e7bd5502
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88510056"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>使用 Azure PowerShell 配置包含现有 Azure 负载均衡器的虚拟机规模集
 
 本文介绍如何配置包含现有 Azure 负载均衡器的虚拟机规模集。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。
 - 要将虚拟机规模集部署到的订阅中的现有标准 SKU 负载均衡器。
@@ -57,12 +57,12 @@ New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualN
 
 以下示例部署一个虚拟机规模集：
 
-- 该虚拟机规模集名为 myVMSS 
-- 其中包含名为 myLoadBalancer 的 Azure 负载均衡器 
-- 其中包含名为 myBackendPool 的负载均衡器后端池 
-- 其中包含名为 myVnet 的 Azure 虚拟网络 
-- 其中包含名为 mySubnet 的子网 
-- 其中包含名为 myResourceGroup 的资源组 
+- 该虚拟机规模集名为 myVMSS
+- 其中包含名为 myLoadBalancer 的 Azure 负载均衡器
+- 其中包含名为 myBackendPool 的负载均衡器后端池
+- 其中包含名为 myVnet 的 Azure 虚拟网络
+- 其中包含名为 mySubnet 的子网
+- 其中包含名为 myResourceGroup 的资源组
 
 ```azurepowershell-interactive
 

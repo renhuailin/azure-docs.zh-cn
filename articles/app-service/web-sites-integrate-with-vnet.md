@@ -6,13 +6,13 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 4666f03e529c568177ff56a2db84e226bc906132
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 42391a073d7cb1d7e6850e298c2be32d550bb813
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182904"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832061"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络集成
 
@@ -77,7 +77,7 @@ Azure 应用服务包含 VNet 集成功能的两种变体：
 
 * 通过 Azure ExpressRoute 连接的 VNet。
 * Linux 应用中。
-* 从 [Windows 容器](quickstart-custom-container.md)。
+* [Windows 容器中](quickstart-custom-container.md)。
 * 访问服务终结点保护的资源。
 * 既支持 ExpressRoute，也支持点到站点 VPN 或站点到站点 VPN 的共存网关。
 
@@ -150,7 +150,7 @@ Azure 应用服务包含 VNet 集成功能的两种变体：
 
 使用需要网关的 VNet 集成功能涉及三项费用：
 
-* **应用服务计划定价层费用**：应用需要处于标准、高级、PremiumV2 或 PremiumV3 应用服务计划中。 有关这些费用的详细信息，请参阅[应用服务定价][ASPricing]。
+* 应用服务计划定价层费用：应用必须属于“标准”、“高级”、“高级 V2”或“高级 V3”应用服务计划。 有关这些费用的详细信息，请参阅[应用服务定价][ASPricing]。
 * **数据传输费用**：传出数据会产生费用，即使 VNet 位于同一数据中心也是如此。 [数据传输定价详细信息][DataPricing]中对这些费用进行了说明。
 * **VPN 网关费用**：点到站点 VPN 所需的虚拟网关会产生费用。 有关详细信息，请参阅 [VPN 网关定价][VNETPricing]。
 

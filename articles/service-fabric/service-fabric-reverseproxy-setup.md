@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
 ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86256334"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>在 Azure Service Fabric 中设置和配置反向代理
@@ -74,7 +74,7 @@ ms.locfileid: "86256334"
         ...
     }
     ```
-3. 若要在反向代理的端口上配置 TLS/SSL 证书，请将证书添加到 Microsoft.ServiceFabric/clusters [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中的 reverseProxyCertificate 属性。
+3. 要在反向代理的端口上配置 TLS/SSL 证书，请将证书添加到 Microsoft.ServiceFabric/clusters [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中的 reverseProxyCertificate 属性。*__* 
 
     ```json
     {

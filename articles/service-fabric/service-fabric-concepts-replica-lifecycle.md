@@ -1,22 +1,22 @@
 ---
 title: Azure Service Fabric 中的副本和实例
-description: 了解 Service Fabric 中的副本和实例，包括其生命周期和功能的概述。
+description: 了解 Service Fabric 中的副本和实例，其中包括其生命周期和功能的概述。
 author: appi101
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84710739"
 ---
 # <a name="replicas-and-instances"></a>副本和实例 
 本文概述了有状态服务副本和无状态服务实例的生命周期。
 
 ## <a name="instances-of-stateless-services"></a>无状态服务的实例
-无状态服务的实例是在其中一个群集节点上运行的服务逻辑的副本。 分区内的实例由其 InstanceId 唯一标识  。 实例的生命周期可在以下图表中进行建模：
+无状态服务的实例是在其中一个群集节点上运行的服务逻辑的副本。 分区内的实例由其 InstanceId 唯一标识。 实例的生命周期可在以下图表中进行建模：
 
 ![实例生命周期](./media/service-fabric-concepts-replica-lifecycle/instance.png)
 
@@ -26,7 +26,7 @@ ms.locfileid: "84710739"
 如果此实例的应用程序主机或节点发生故障，它将转换为已删除状态。
 
 ### <a name="ready-rd"></a>就绪 (RD)
-在就绪状态下，实例已启动并且正在节点上运行。 如果此实例是可靠的服务，则已调用 RunAsync。  
+在就绪状态下，实例已启动并且正在节点上运行。 如果此实例是可靠的服务，则已调用 RunAsync。 
 
 如果此实例的应用程序主机或节点发生故障，它将转换为已删除状态。
 
@@ -97,7 +97,7 @@ InBuild 副本是创建或准备加入副本集的副本。 根据副本角色�
 副本角色在备用状态下不相关。
 
 > [!NOTE]
-> 任何未关闭或删除的副本将被视为可启动  的副本。
+> 任何未关闭或删除的副本将被视为可启动的副本。
 >
 
 > [!NOTE]
@@ -107,11 +107,11 @@ InBuild 副本是创建或准备加入副本集的副本。 根据副本角色�
 ## <a name="replica-role"></a>副本角色 
 副本的角色确定其在副本集内的功能：
 
-- **主要副本 (P)** ：副本集有一个主要副本，该副本负责执行读取和写入操作。 
-- **活动的次要副本 (S)** ：此类副本用于从主要副本接收状态更新、应用这些更新，然后发送回确认。 副本集内有多个活动的次要副本。 这些活动次要副本的数量确定服务可以处理的错误数量。
-- **空闲的次要副本 (I)** ：这些副本通过主要副本生成。 在将其升级到活动次要副本之前，它们接收来自主要副本的状态。 
-- **无 (N)** ：这些副本在副本集内没有任何职责。
-- **未知 (U)** ：在副本从 Service Fabric 接收任何 ChangeRole API 调用前，该角色为副本的初始角色  。
+- **主要副本 (P)**：副本集有一个主要副本，该副本负责执行读取和写入操作。 
+- **活动的次要副本 (S)**：此类副本用于从主要副本接收状态更新、应用这些更新，然后发送回确认。 副本集内有多个活动的次要副本。 这些活动次要副本的数量确定服务可以处理的错误数量。
+- **空闲的次要副本 (I)**：这些副本通过主要副本生成。 在将其升级到活动次要副本之前，它们接收来自主要副本的状态。 
+- **无 (N)**：这些副本在副本集内没有任何职责。
+- **未知 (U)**：在副本从 Service Fabric 接收任何 ChangeRole API 调用前，该角色为副本的初始角色。
 
 以下图表说明了副本角色转换以及可能发生此类转换的一些示例方案：
 

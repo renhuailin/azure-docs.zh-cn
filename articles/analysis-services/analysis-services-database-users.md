@@ -4,16 +4,16 @@ description: 了解如何在 Azure 中管理 Analysis Services 服务器上的�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/27/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.openlocfilehash: ad6bbd0fffaff3f4deb6b8a11e8b578336a80882
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054087"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130388"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -24,13 +24,13 @@ ms.locfileid: "99054087"
 角色权限包括：
 *  **管理员** - 用户对数据库具有完全的权限。 具有管理员权限的数据库角色不同于服务器管理员。
 *  **处理** - 用户可以连接到数据库并对其执行处理操作，分析模型数据库数据。
-*  **读取** -用户可以使用客户端应用程序连接到模型数据库数据并进行分析。
+*  读取 - 用户可以使用客户端应用程序连接到模型数据库数据并进行分析。
 
 创建表格模型项目时，可以通过将 Visual Studio 中的“角色管理器”与 Analysis Services 项目一起使用来创建角色并将用户或组添加到这些角色。 部署到服务器时，可以使用 SQL Server Management Studio (SSMS)、[Analysis Services PowerShell cmdlet](/analysis-services/powershell/analysis-services-powershell-reference) 或[表格模型脚本语言](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) 来添加或删除角色和用户成员。
 
 添加“安全组”时，请使用 `obj:groupid@tenantid`。
 
-添加 **服务主体** 使用时 `app:appid@tenantid` 。
+添加“服务主体”时，请使用 `app:appid@tenantid`。
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>在 Visual Studio 中添加或管理角色和用户  
   
@@ -135,7 +135,7 @@ ms.locfileid: "99054087"
   
 可仅为具有“读取”和“读取和处理”权限的角色定义行筛选器。 默认情况下，如果没有为特定表定义行筛选器，除非交叉筛选其他表中的适用项，否则成员可以查询表中的所有行。
   
- 行筛选器需要 DAX 公式，该公式的求值结果必须为 TRUE/FALSE，以定义该特定角色的成员可以查询的行。 无法查询未包含在 DAX 公式中的行。 例如，具有以下行筛选器表达式的 Customers 表 *= customers [Country] = "USA"*，Sales 角色的成员只能查看美国境内的客户。  
+ 行筛选器需要 DAX 公式，该公式的求值结果必须为 TRUE/FALSE，以定义该特定角色的成员可以查询的行。 无法查询未包含在 DAX 公式中的行。 例如，Customers 表的以下行筛选器表达式，=Customers [Country] = “USA”，Sales 角色的成员只能查看美国境内的客户。  
   
 行筛选器适用于指定的行和相关行。 如果表具有多个关系，筛选器将对处于活动状态的关系应用安全性。 行筛选器与为相关表定义的其他行筛选器相交，示例如下：  
   

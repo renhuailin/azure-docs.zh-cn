@@ -11,10 +11,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0fd693573858df095b62a7a7917563141ac19c5b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94579328"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>使用 .NET 获取存储帐户类型和 SKU 名称
@@ -23,9 +23,9 @@ ms.locfileid: "94579328"
 
 ## <a name="about-account-type-and-sku-name"></a>关于帐户类型和 SKU 名称
 
-**帐户类型** ：有效的帐户类型包括 `BlobStorage`、`BlockBlobStorage`、`FileStorage`、`Storage` 和 `StorageV2`。 [Azure 存储帐户概述](storage-account-overview.md)提供详细信息，包括对各种存储帐户的说明。
+**帐户类型**：有效的帐户类型包括 `BlobStorage`、`BlockBlobStorage`、`FileStorage`、`Storage` 和 `StorageV2`。 [Azure 存储帐户概述](storage-account-overview.md)提供详细信息，包括对各种存储帐户的说明。
 
-**Sku 名称** ：有效的 sku 名称包括 `Premium_LRS` 、 `Premium_ZRS` 、、 `Standard_GRS` `Standard_GZRS` 、、、 `Standard_LRS` `Standard_RAGRS` `Standard_RAGZRS` 和 `Standard_ZRS` 。 SKU 名称区分大小写，并且是 [SkuName 类](/dotnet/api/microsoft.azure.management.storage.models.skuname)中的字符串字段。
+SKU 名称：有效的 SKU 名称包括 `Premium_LRS`、`Premium_ZRS`、`Standard_GRS`、`Standard_GZRS`、`Standard_LRS`、`Standard_RAGRS`、`Standard_RAGZRS` 和 `Standard_ZRS`。 SKU 名称区分大小写，并且是 [SkuName 类](/dotnet/api/microsoft.azure.management.storage.models.skuname)中的字符串字段。
 
 ## <a name="retrieve-account-information"></a>检索帐户信息
 
@@ -33,7 +33,7 @@ ms.locfileid: "94579328"
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要获取与 blob 关联的存储帐户类型和 SKU 名称，请调用 [GetAccountInfo](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfo) 或 [GetAccountInfoAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfoasync) 方法。
+若要获取与 Blob 关联的存储帐户类型和 SKU 名称，请调用 [GetAccountInfo](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfo) 或 [GetAccountInfoAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfoasync) 方法。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Account.cs" id="Snippet_GetAccountInfo":::
 

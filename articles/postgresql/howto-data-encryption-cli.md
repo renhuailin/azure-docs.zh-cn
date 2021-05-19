@@ -1,6 +1,6 @@
 ---
-title: 数据加密 - Azure CLI - Azure Database for PostgreSQL - 单一服务器
-description: 了解如何通过 Azure CLI 为 Azure Database for PostgreSQL 单一服务器设置和管理数据加密。
+title: 数据加密 - Azure CLI - 适用于 Azure Database for PostgreSQL - 单一服务器
+description: 了解如何通过使用 Azure CLI 设置和管理 Azure Database for PostgreSQL（单一服务器）进行数据加密的操作。
 author: mksuni
 ms.author: sumuth
 ms.service: postgresql
@@ -8,32 +8,32 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 757782e8842fbcaca9c8d95ec8086dd5791a817b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240607"
 ---
-# <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>通过 Azure CLI 对 Azure Database for PostgreSQL 单一服务器进行数据加密
+# <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>使用 Azure CLI 对 Azure Database for PostgreSQL（单一服务器）进行数据加密
 
 了解如何通过 Azure CLI 为 Azure Database for PostgreSQL 单一服务器设置和管理数据加密。
 
 ## <a name="prerequisites-for-azure-cli"></a>Azure CLI 的先决条件
 
 * 必须有一个 Azure 订阅，并且是该订阅的管理员。
-* 创建要用于客户管理的密钥的密钥保管库和密钥。 此外，在密钥保管库上启用清除保护和软删除。
+* 创建密钥保管库和用于客户托管密钥的密钥。 同时启用密钥保管库上的清除保护和软删除。
 
    ```azurecli-interactive
    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
    ```
 
-* 在已创建的 Azure Key Vault 中，创建要用于 Azure Database for PostgreSQL 单一服务器的数据加密的密钥。
+* 在创建的 Azure Key Vault 中，创建将用于 Azure Database for PostgreSQL 单一服务器的数据加密的密钥。
 
    ```azurecli-interactive
    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
    ```
 
-* 为了使用现有的密钥保管库，必须具有以下属性才能用作客户管理的密钥：
+* 要使用现有的密钥保管库，现有密钥保管库必须具有以下属性以用作客户管理的密钥：
   * [软删除](../key-vault/general/soft-delete-overview.md)
 
       ```azurecli-interactive
@@ -49,7 +49,7 @@ ms.locfileid: "93240607"
 * 该密钥必须具有以下属性才能用作客户管理的密钥：
   * 无过期日期
   * 未禁用
-  * 执行“获取”、“包装”和“解包”操作
+  * 执行“get”、“wrap”和“unwrap”操作
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>为密钥操作设置正确的权限
 
@@ -61,13 +61,13 @@ ms.locfileid: "93240607"
     az postgres server create --name <server_name> -g <resource_group> --location <location> --storage-size <size>  -u <user> -p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled> --assign-identity
     ```
 
-    ### <a name="update-an-existing-the-azure-database-for-postgresql-server-to-get-a-managed-identity"></a>更新现有的 Azure Database for PostgreSQL 服务器以获取托管标识。
+    ### <a name="update-an-existing-the-azure-database-for-postgresql-server-to-get-a-managed-identity"></a>更新现有 Azure Database for PostgreSQL 服务器以获取托管标识。
 
     ```azurecli-interactive
     az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
-2. 为“主体”（即 PostgreSQL 单一服务器的名称）设置“密钥权限”（“获取”、“包装”、“解包”）。
+2. 为“主体”（PostgreSQL 单一服务器的名称）选择“密钥权限”（“Get”、“Wrap”、“Unwrap”）。    
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
@@ -75,7 +75,7 @@ ms.locfileid: "93240607"
 
 ## <a name="set-data-encryption-for-azure-database-for-postgresql-single-server"></a>为 Azure Database for PostgreSQL 单一服务器设置数据加密
 
-1. 使用 Azure Key Vault 中创建的密钥为 Azure Database for PostgreSQL 单一服务器启用数据加密。
+1. 使用 Azure Key Vault 中创建的密钥对 Azure Database for PostgreSQL 单一服务器启用数据加密。
 
     ```azurecli-interactive
     az postgres server key create --name <server_name> -g <resource_group> --kid <key_url>
@@ -83,16 +83,16 @@ ms.locfileid: "93240607"
 
     密钥 URL：`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
-## <a name="using-data-encryption-for-restore-or-replica-servers"></a>对还原服务器或副本服务器使用数据加密
+## <a name="using-data-encryption-for-restore-or-replica-servers"></a>对还原或副本服务器使用数据加密
 
-在使用 Key Vault 中存储的客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行加密后，还将所有新创建的服务器副本进行加密。 可通过本地或异地还原操作，或通过副本（本地/跨区域）操作创建这个新副本。 因此，对于加密的 PostgreSQL 单一服务器，可以使用以下步骤创建加密的还原服务器。
+在使用 Key Vault 中存储的客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行加密后，还将所有新创建的服务器副本进行加密。 可通过本地或异地还原操作，或通过副本（本地/跨区域）操作来创建这个新副本。 因此，对于加密的 PostgreSQL 单一服务器，可以使用以下步骤来创建加密的还原服务器。
 
 ### <a name="creating-a-restoredreplica-server"></a>创建还原/副本服务器
 
 * [创建还原服务器](howto-restore-server-cli.md)
 * [创建只读副本服务器](howto-read-replicas-cli.md)
 
-### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>还原服务器后，重新验证还原服务器的数据加密
+### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>服务器还原后，请重新验证还原服务器的数据加密
 
 *   为副本服务器分配标识
 ```azurecli-interactive
@@ -111,7 +111,7 @@ az postgres server key list --name  '<server_name>'  -g '<resource_group_name>'
 az keyvault set-policy --name <keyvault> -g <resoure_group> --key-permissions get unwrapKey wrapKey --object-id <principl id of the server returned by the step 1>
 ```
 
-* 重新验证还原/副本服务器的加密密钥
+* 用加密密钥重新验证还原/副本服务器
 
 ```azurecli-interactive
 az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
@@ -141,20 +141,20 @@ az postgres server key delete -g <resource_group> --kid <key url>
 
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>使用 Azure 资源管理器模板启用数据加密
 
-除了 Azure 门户之外，还可以使用新服务器和现有服务器的 Azure 资源管理器模板在 Azure Database for PostgreSQL 单一服务器上启用数据加密。
+除了 Azure 门户之外，还可以在 Azure Database for PostgreSQL 单一服务器上，使用 Azure 资源管理器模板为新服务器和现有服务器启用数据加密。
 
 ### <a name="for-a-new-server"></a>对于新服务器
 
-使用预先创建的 Azure 资源管理器模板之一来预配启用了数据加密的服务器：[数据加密示例](https://github.com/Azure/azure-postgresql/tree/master/arm-templates/ExampleWithDataEncryption)
+使用预先创建的 Azure 资源管理器模板之一来预配启用了数据加密的服务器：[包含数据加密的示例](https://github.com/Azure/azure-postgresql/tree/master/arm-templates/ExampleWithDataEncryption)
 
-此 Azure 资源管理器模板创建 Azure Database for PostgreSQL 单一服务器，并使用作为参数传递的 KeyVault 和 Key 在服务器上启用数据加密。
+此 Azure 资源管理器模板创建 Azure Database for PostgreSQL 单一服务器，并使用作为参数传递的 KeyVault 和 Key 在服务器上启用数据加密。 
 
 ### <a name="for-an-existing-server"></a>对于现有服务器
 此外，还可以使用 Azure 资源管理器模板在现有 Azure Database for PostgreSQL 单一服务器上启用数据加密。
 
-* 在 properties 对象中的 `Uri` 属性下，传递前面复制的 Azure Key Vault 资源 ID。
+* 在属性对象中的 `Uri` 属性下，传递你先前复制的 Azure Key Vault 密钥的资源 ID。
 
-* 使用 2020-01-01-preview 作为 API 版本。
+* 使用“2020-01-01-preview”作为 API 版本。
 
 ```json
 {
@@ -265,4 +265,4 @@ az postgres server key delete -g <resource_group> --kid <key url>
 
 ## <a name="next-steps"></a>后续步骤
 
- 若要详细了解数据加密，请参阅[使用客户管理的密钥进行 Azure Database for PostgreSQL 单一服务器数据加密](concepts-data-encryption-postgresql.md)。
+ 有关数据加密的详细信息，请参阅[使用客户托管的密钥进行的 Azure Database for PostgreSQL 单一服务器数据加密](concepts-data-encryption-postgresql.md)。

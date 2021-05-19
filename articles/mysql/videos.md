@@ -7,25 +7,25 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 4e264ddba0feb6597d71006f6544f0dd3745705b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94532403"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL 视频
 
-本页提供了用于了解 Azure Database for MySQL 的视频内容。
+本页提供了用于了解有关 Azure Database for MySQL 的视频内容。
 
 ## <a name="overview-azure-database-for-postgresql-and-mysql"></a>概述：Azure Database for PostgreSQL 和 MySQL
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player] 
-[在第9频道中打开](https://channel9.msdn.com/Events/Connect/2017/T147)
+[在第 9 频道中打开](https://channel9.msdn.com/Events/Connect/2017/T147)
 
 Azure Database for PostgreSQL 和 Azure Database for MySQL 将社区版数据库引擎和完全托管服务的功能组合在一起，因此你可以专注于应用而无需管理数据库。 收看以快速了解使用该服务的优点，并查看运行中的一些功能。
 
 ## <a name="create-a-postgresql-or-mysql-server"></a>创建 PostgreSQL 或 MySQL 服务器
-Azure Database for PostgreSQL 和 Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放高度可用的社区版数据库引擎。 这些视频教程介绍了如何使用 Azure 门户在大约3分钟内创建 PostgreSQL 或 MySQL 服务器。 如果还没有 Azure 订阅，可以在开始前[创建一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+Azure Database for PostgreSQL 和 Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放高度可用的社区版数据库引擎。 这些视频教程介绍如何使用 Azure 门户在大约 3 分钟内创建 PostgreSQL 或 MySQL 服务器。 如果还没有 Azure 订阅，可以在开始前[创建一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * [PostgreSQL 视频教程](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-postgresql-server-in-the-azure-portal)
 
@@ -34,13 +34,13 @@ Azure Database for PostgreSQL 和 Azure Database for MySQL 是一种托管服务
 ## <a name="deep-dive-on-managed-service-capabilities-for-mysql-and-postgresql"></a>深入了解 MySQL 和 PostgreSQL 的托管服务功能
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T148/player]
-[在第9频道中打开](https://channel9.msdn.com/Events/Connect/2017/T148)
+[在第 9 频道中打开](https://channel9.msdn.com/Events/Connect/2017/T148)
 
 Azure Database for PostgreSQL 和 Azure Database for MySQL 将社区版数据库引擎和完全托管服务的功能组合在一起。 收看以深入了解这些服务的工作方式 - 我们如何确保高可用性和快速缩放（在几秒中内），以便满足客户的需求。 还将了解在安全性和全球可用性方面的一些基础投资。
 
 ## <a name="how-to-get-started-with-the-new-azure-database-for-mysql-service"></a>如何开始使用新的 Azure Database for MySQL 服务
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/B8045/player]
-[在第9频道中打开](https://channel9.msdn.com/events/Build/2017/B8045)
+[在第 9 频道中打开](https://channel9.msdn.com/events/Build/2017/B8045)
 
 在来自 2017 年 5 月 Microsoft //Build 会议的本视频中，了解 Microsoft 在 Azure 中提供的托管 MySQL 产品/服务。 本视频将引导你了解 Microsoft 在 Azure 中支持开源数据库系统的策略。 视频将讨论，对于开发或部署使用 MySQL in Azure 的应用程序的开发人员而言，这意味着什么。 视频将展示该服务的体系结构的概览，并演示 Azure Database for MySQL 如何与其他 Azure 服务（例如 Web 应用）相集成。

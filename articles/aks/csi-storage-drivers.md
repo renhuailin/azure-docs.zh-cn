@@ -1,44 +1,44 @@
 ---
-title: '在 Azure Kubernetes Service 上 (CSI) 驱动程序启用容器存储接口 (AKS) '
-description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中，为 Azure 磁盘和 azure 文件 (CSI) 驱动程序启用容器存储接口。
+title: 在 Azure Kubernetes 服务 (AKS) 中启用容器存储接口 (CSI) 驱动程序
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中为 Azure 磁盘和 Azure 文件存储启用容器存储接口 (CSI) 驱动程序。
 services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: fa40ab22f0c1ebf47bb490a50f782a848d1441e1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: c9edfdf1c9740ec1fdaaeeedbc6ba92793eb0b3f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182105"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779950"
 ---
-# <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>为 azure Kubernetes Service 上的 Azure 磁盘和 Azure 文件 (CSI) 驱动程序启用容器存储接口 (AKS)  (预览版) 
+# <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes 服务 (AKS) 中为 Azure 磁盘和 Azure 文件存储启用容器存储接口 (CSI) 驱动程序（预览版）
 
- (CSI) 的容器存储接口是一种将任意块和文件存储系统公开给 Kubernetes 上容器化工作负荷的标准。 通过采用和使用 CSI，Azure Kubernetes Service (AKS) 可以编写、部署和循环访问插件以在 Kubernetes 中公开新的或改进现有存储系统，而无需接触核心 Kubernetes 代码并等待其发布周期。
+容器存储接口 (CSI) 是有关在 Kubernetes 上的容器化工作负载中公开任意块和文件存储系统的一套标准。 Azure Kubernetes 服务 (AKS) 可以采用 CSI 来编写、部署和迭代插件，以在 Kubernetes 中公开新的或改进现有的存储系统，而无需改动核心 Kubernetes 代码并等待经历代码发布周期。
 
-AKS 上的 CSI 存储驱动程序支持使你能够以本机方式使用：
-- 可用于创建 Kubernetes *DataDisk* 资源的 [*Azure 磁盘*](azure-disk-csi.md)。 磁盘可以使用 Azure 高级存储，支持高性能 Ssd 或 Azure 标准存储，由常规 Hdd 或标准 Ssd 支持。 对于大多数生产和开发工作负荷，请使用高级存储。 Azure 磁盘装载为 *ReadWriteOnce*，因此仅适用于单个 pod。 对于可同时由多个 Pod 访问的存储卷，请使用 Azure 文件存储。
-- [*Azure 文件*](azure-files-csi.md)，可用于将 azure 存储帐户支持的 SMB 3.0 共享装载到 pod。 借助 Azure 文件，你可以跨多个节点和盒共享数据。 Azure 文件可使用由通过高性能 Ssd 支持的常规 Hdd 或 Azure 高级存储支持的 Azure 标准存储。
+借助 AKS 中的 CSI 存储驱动程序支持，可在本地使用以下功能：
+- [Azure 磁盘](azure-disk-csi.md)，可用于创建 Kubernetes DataDisk 资源 。 Azure 磁盘可以使用由高性能 SSD 支持的 Azure 高级存储，也可以使用由普通 HDD 或标准 SSD 支持的 Azure 标准存储。 对于大部分生产和开发工作负载，请使用高级存储。 Azure 磁盘以 ReadWriteOnce 的形式装载，因此仅可用于单个 Pod。 对于可同时由多个 Pod 访问的存储卷，请使用 Azure 文件存储。
+- [Azure 文件存储](azure-files-csi.md)，可用于将 Azure 存储帐户支持的 SMB 3.0 共享装载到 Pod。 使用 Azure 文件存储可在多个节点和 Pod 之间共享数据。 Azure 文件存储可以使用由普通 HDD 支持的 Azure 标准存储，也可以使用由高性能 SSD 支持的 Azure 高级存储。
 
 > [!IMPORTANT]
-> 从 Kubernetes 版本1.21 开始，Kubernetes 将仅使用 CSI 驱动程序和默认使用。 这些驱动程序是 Kubernetes 中存储支持的将来。
+> 从 Kubernetes 版本 1.21 开始，Kubernetes 仅使用 CSI 驱动程序，这也是它的默认做法。 这些驱动程序代表了 Kubernetes 中将来所支持的存储的趋势。
 >
-> *树内驱动程序* 指作为核心 Kubernetes 代码的一部分的当前存储驱动程序与新的 CSI 驱动程序（即插件）。
+> “树中驱动程序”是指包含在核心 Kubernetes 代码中的当前存储驱动程序，而不是新的 CSI 驱动程序（插件）。
 
 ## <a name="limitations"></a>限制
 
-- 此功能只能在创建群集时设置。
-- 支持 CSI 驱动程序的最低 Kubernetes 次版本为 v 1.17。
-- 在预览期间，默认存储类仍将与 [树内存储类相同](concepts-storage.md#storage-classes)。 此功能正式发布后，默认存储类将为 `managed-csi` 存储类，并且将删除树状存储类。
+- 只能在创建群集时设置此功能。
+- 支持 CSI 驱动程序的最低 Kubernetes 次要版本为 v1.17。
+- 在预览期，默认存储类仍与[树中存储类相同](concepts-storage.md#storage-classes)。 在此功能推出正式版后，默认存储类将是 `managed-csi` 存储类，而树中存储类将被删除。
 - 在第一个预览阶段，仅支持 Azure CLI。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="register-the-enableazurediskfilecsidriver-preview-feature"></a>注册 `EnableAzureDiskFileCSIDriver` 预览功能
+### <a name="register-the-enableazurediskfilecsidriver-preview-feature"></a>注册 `EnableAzureDiskFileCSIDriver` 预览版功能
 
-若要创建可将 CSI 驱动程序用于 Azure 磁盘和 Azure 文件的 AKS 群集，必须 `EnableAzureDiskFileCSIDriver` 在订阅上启用功能标志。
+若要为 Azure 磁盘和 Azure 文件存储创建可使用 CSI 驱动程序的 AKS 群集，必须在订阅中启用 `EnableAzureDiskFileCSIDriver` 功能标志。
 
-`EnableAzureDiskFileCSIDriver`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
+使用 [az feature register][az-feature-register] 命令注册 `EnableAzureDiskFileCSIDriver` 功能标志，如以下示例所示：
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureDiskFileCSIDriver"
@@ -50,7 +50,7 @@ az feature register --namespace "Microsoft.ContainerService" --name "EnableAzure
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureDiskFileCSIDriver')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，请使用 [az provider register][az-provider-register]命令刷新 *ContainerService* 资源提供程序的注册：
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -60,7 +60,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要创建可使用 CSI 存储驱动程序的 AKS 群集或节点池，需要使用最新的 *AKS* Azure CLI 扩展。 使用 [az extension add][az-extension-add]命令安装 *aks-preview* Azure CLI 扩展。 或使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
+若要创建可使用 CSI 存储驱动程序的 AKS 群集或节点池，需要最新的 aks-preview Azure CLI 扩展。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展。 或者使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -73,7 +73,7 @@ az extension update --name aks-preview
 
 ## <a name="create-a-new-cluster-that-can-use-csi-storage-drivers"></a>创建可使用 CSI 存储驱动程序的新群集
 
-使用以下 CLI 命令创建一个新的群集，该群集可将 CSI 存储驱动程序用于 Azure 磁盘和 Azure 文件。 使用 `--aks-custom-headers` 标志设置 `EnableAzureDiskFileCSIDriver` 功能。
+使用以下 CLI 命令为 Azure 磁盘和 Azure 文件存储创建可使用 CSI 存储驱动程序的新群集。 使用 `--aks-custom-headers` 标志设置 `EnableAzureDiskFileCSIDriver` 功能。
 
 创建 Azure 资源组：
 
@@ -86,13 +86,13 @@ az group create --name myResourceGroup --location canadacentral
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
-az aks create -g MyResourceGroup -n MyManagedCluster --network-plugin azure -k 1.17.9 --aks-custom-headers EnableAzureDiskFileCSIDriver=true
+az aks create -g MyResourceGroup -n MyManagedCluster --network-plugin azure  --aks-custom-headers EnableAzureDiskFileCSIDriver=true
 ```
 
-如果要在树存储驱动程序而不是 CSI 存储驱动程序中创建群集，则可以通过省略自定义参数来执行此操作 `--aks-custom-headers` 。
+如果要在树存储驱动程序而不是 CSI 存储驱动程序中创建群集，可以省略自定义参数 `--aks-custom-headers`。
 
 
-通过运行以下内容来检查可以附加到此节点的基于 Azure 磁盘的卷的数量：
+运行以下命令检查可将多少个基于 Azure 磁盘的卷附加到此节点：
 
 ```console
 $ kubectl get nodes
@@ -106,9 +106,9 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要将 CSI 驱动器用于 Azure 磁盘，请参阅 [将 azure 磁盘与 csi 驱动程序配合使用](azure-disk-csi.md)。
-- 若要将 CSI 驱动器用于 Azure 文件，请参阅 [将 Azure 文件与 CSI 驱动程序配合使用](azure-files-csi.md)。
-- 有关存储最佳实践的详细信息，请参阅 [Azure Kubernetes 服务中存储和备份的最佳实践][operator-best-practices-storage]。
+- 若要将 CSI 驱动器用于 Azure 磁盘，请参阅[通过 CSI 驱动程序使用 Azure 磁盘](azure-disk-csi.md)。
+- 若要将 CSI 驱动器用于 Azure 文件存储，请参阅[通过 CSI 驱动程序使用 Azure 文件存储](azure-files-csi.md)。
+- 有关存储最佳做法的详细信息，请参阅[有关 Azure Kubernetes 服务中存储和备份的最佳做法][operator-best-practices-storage]。
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
@@ -122,18 +122,18 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/disks-types.md
-[az-disk-list]: /cli/azure/disk#az-disk-list
-[az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
-[az-disk-create]: /cli/azure/disk#az-disk-create
-[az-disk-show]: /cli/azure/disk#az-disk-show
+[az-disk-list]: /cli/azure/disk#az_disk_list
+[az-snapshot-create]: /cli/azure/snapshot#az_snapshot_create
+[az-disk-create]: /cli/azure/disk#az_disk_create
+[az-disk-show]: /cli/azure/disk#az_disk_show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

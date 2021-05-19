@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
-ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 201a7d1fce00323ef3f8eec1bdd415c4064d49ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68879553"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674982"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a> Azure 数据目录
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 本文介绍 Azure 数据目录资源的常见疑难解答问题。 
 
@@ -21,7 +23,7 @@ ms.locfileid: "68879553"
 
 使用 Azure 数据目录时，以下功能受到限制：
 
-- 不支持具有类型为 **Guest 角色** 的帐户。 不能将来宾帐户添加为 Azure 数据目录的用户，并且来宾用户无法使用中的门户 [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com) 。
+- 不支持具有“来宾角色”类型的帐户。 不能将来宾帐户添加为 Azure 数据目录的用户，并且来宾用户无法使用位于 [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com) 的门户。
 
 - 不支持使用 Azure 资源管理器模板或 Azure PowerShell 命令创建 Azure 数据目录资源。
 
@@ -29,11 +31,11 @@ ms.locfileid: "68879553"
 
 ## <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory 策略配置
 
-可能会遇到这种情况：可以登录 Azure 数据目录门户，但在尝试登录数据源注册工具时出现错误消息，导致无法登录。 当你在公司网络上或从公司网络外部进行连接时，可能会发生此错误。
+可能会遇到这种情况：可以登录 Azure 数据目录门户，但在尝试登录数据源注册工具时出现错误消息，导致无法登录。 在公司网络中操作或者从公司网络外部连接时，可能会发生此错误。
 
-注册工具使用 *窗体身份验证* 针对 Azure Active Directory 验证用户登录。 若要成功登录，Azure Active Directory 管理员必须在 *全局身份验证策略*中启用窗体验证。
+注册工具使用 *窗体身份验证* 针对 Azure Active Directory 验证用户登录。 若要成功登录，Azure Active Directory 管理员必须在 *全局身份验证策略* 中启用窗体验证。
 
-使用全局验证策略，可以单独为 Intranet 和 Extranet 连接启用身份验证，如下图所示。 如果未为要连接的网络启用表单身份验证，则可能会发生登录错误。
+使用全局验证策略，可以单独为 Intranet 和 Extranet 连接启用身份验证，如下图所示。 如果从中连接的网络未启用窗体身份验证，可能会发生登录错误。
 
  ![Azure Active Directory 全局身份验证策略](./media/troubleshoot-policy-configuration/global-auth-policy.png)
 

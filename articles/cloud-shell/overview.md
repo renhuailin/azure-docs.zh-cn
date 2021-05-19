@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
 ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89468651"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 
 Azure Cloud Shell 是一个用于管理 Azure 资源的、可通过浏览器访问的交互式经验证 shell。 它使用户能够灵活选择最适合自己工作方式的 shell 体验，无论是 Bash 还是 PowerShell。
 
-可以通过以下三种方式访问 Cloud Shell：
+可以通过三种方法访问 Cloud Shell：
 
-- **直接链接**：打开浏览器到 [https://shell.azure.com](https://shell.azure.com) 。
+- 直接链接：在浏览器中打开 [https://shell.azure.com](https://shell.azure.com)。
 
-- **Azure 门户**：选择 [Azure 门户](https://portal.azure.com)上的 Cloud Shell 图标：
+- Azure 门户：在 [Azure 门户](https://portal.azure.com)中选择 Cloud Shell 图标：
 
     ![用于从 Azure 门户启动 Cloud Shell 的图标](media/overview/portal-launch-icon.png)
 
-- **代码片段**：在 [Docs.microsoft.com]() 和 [Microsoft Learn](/learn/)上，选择与 Azure CLI 和 Azure PowerShell 代码片段一起显示的 " **试用** " 按钮：
+- 代码片段：在 [docs.microsoft.com]() 和 [Microsoft Learn](/learn/) 上，选择随 Azure CLI 和 Azure PowerShell 代码片段一起显示的“试调用”按钮：
 
     ```azurecli-interactive
     az account show
@@ -43,9 +43,9 @@ Azure Cloud Shell 是一个用于管理 Azure 资源的、可通过浏览器访�
     Get-AzSubscription
     ```
 
-    " **试用** " 按钮会直接打开 Cloud Shell，并使用 Bash (将 Azure CLI 代码段) 或 PowerShell (用于 Azure PowerShell 片段) 。
+    “试调用”按钮使用 Bash（对于 Azure CLI 代码片段）或 PowerShell（对于 Azure PowerShell 代码片段）在文档旁边直接打开 Cloud Shell。
 
-    若要运行此命令，请使用代码段中的 "**复制**"，使用**Ctrl** + **shift** + **v** (Windows/Linux) 或**Cmd** + **Shift** + **v** (macOS) 以粘贴命令，然后按**enter**。
+    若要运行命令，请在代码片段中使用“复制”，按 Ctrl+Shift+V (Windows/Linux) 或 Cmd+Shift+V (macOS) 粘贴命令，然后按 Enter。
 
 ## <a name="features"></a>功能
 
@@ -55,19 +55,19 @@ Cloud Shell 能够访问以执行 Azure 管理任务为宗旨构建的基于浏�
 
 ### <a name="choice-of-preferred-shell-experience"></a>选择偏好的 shell 体验
 
-用户可以在 Bash 或 PowerShell 之间进行选择。
+用户可以在 Bash 和 PowerShell 之间进行选择。
 
-1. 选择 **Cloud Shell**。
+1. 选择“Cloud Shell”。
 
     ![Cloud Shell 图标](media/overview/overview-cloudshell-icon.png)
 
-2. 选择 " **Bash** " 或 " **PowerShell**"。
+2. 选择“Bash”或“PowerShell”。
 
-    ![选择 Bash 或 PowerShell](media/overview/overview-choices.png)
+    ![选择“Bash”或“PowerShell”](media/overview/overview-choices.png)
 
-    首次启动后，可以使用 "shell 类型" 下拉控件在 Bash 和 PowerShell 之间切换：
+    在首次启动后，可以使用 shell 类型下拉列表控件在 Bash 和 PowerShell 之间进行切换：
 
-    ![用于选择 Bash 或 PowerShell 的下拉控件](media/overview/select-shell-drop-down.png)
+    ![用于选择 Bash 或 PowerShell 的下拉列表控件](media/overview/select-shell-drop-down.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>经身份验证的已配置 Azure 工作站
 
@@ -94,12 +94,12 @@ Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>连接 Microsoft Azure 文件存储
 
-Cloud Shell 计算机是临时的，但文件通过以下两种方式持久保存：通过磁盘映像，并通过名为的已装载文件共享 `clouddrive` 。 首次启动时，Cloud Shell 将提示它会代你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
+虽然 Cloud Shell 虚拟机是临时的，但文件以两种方式暂留：通过磁盘映像，以及通过名为 `clouddrive` 的已装载文件共享。 首次启动时，Cloud Shell 将提示它会代你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
 
-详细了解如何装载 [新的或现有的存储帐户](persisting-shell-storage.md) ，或了解 [Cloud Shell 中使用的持久性机制](persisting-shell-storage.md#how-cloud-shell-storage-works)。
+详细了解如何装载[新的或现有的存储帐户](persisting-shell-storage.md)，或了解 [Cloud Shell 中使用的暂留机制](persisting-shell-storage.md#how-cloud-shell-storage-works)。
 
 > [!NOTE]
-> Cloud shell 存储帐户不支持 Azure 存储防火墙。
+> Cloud Shell 存储帐户不支持 Azure 存储防火墙。
 
 ## <a name="concepts"></a>概念
 
@@ -119,5 +119,5 @@ Cloud Shell 计算机是临时的，但文件通过以下两种方式持久保�
 
 ## <a name="next-steps"></a>后续步骤
 
-[Cloud Shell 快速入门中的 Bash](quickstart.md) <br>
+[Bash in Cloud Shell 快速入门](quickstart.md) <br>
 [Cloud Shell 中的 PowerShell 快速入门](quickstart-powershell.md)

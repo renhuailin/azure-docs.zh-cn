@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 89673c14c38947dc5aeb91cacde1eb2755e84138
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94542603"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>处理暂时性错误并有效地连接到 Azure Database for MySQL
@@ -67,11 +67,11 @@ ms.locfileid: "94542603"
 
 ## <a name="configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections"></a>在客户端中配置验证机制以确认持久性连接的有效性
 
-服务器配置超时机制，以便在一段时间内关闭处于空闲状态的连接，以释放资源。 当客户端再次访问数据库时，这相当于在客户端和服务器之间创建新的连接请求。 为了确保在使用连接过程中的连接有效性，请在客户端中配置验证机制。 如以下示例中所示，可以使用 Tomcat JDBC 连接池来配置此验证机制。
+服务器将配置一个超时机制，以便在某个连接空闲一段时间后将其关闭，从而释放资源。 当客户端再次访问数据库时，相当于在客户端和服务器之间创建新的连接请求。 为了确保在使用连接过程中的连接有效性，请在客户端中配置验证机制。 如以下示例中所示，可以使用 Tomcat JDBC 连接池来配置此验证机制。
 
 设置 TestOnBorrow 参数后，当有新的请求时，连接池会自动验证任何可用空闲连接的有效性。 如果此类连接有效，它会直接返回，否则连接池将收回连接。 然后，连接池会创建新的有效连接并将其返回。 此过程可确保有效访问数据库。 
 
-有关具体设置的信息，请参阅 [JDBC 连接池官方简介文档](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes)。 主要需要设置以下三个参数： TestOnBorrow (设置为 true) ，ValidationQuery (设置为 SELECT 1) ，ValidationQueryTimeout (设置为 1) 。 具体的示例代码如下所示：
+有关具体设置的信息，请参阅 [JDBC 连接池官方简介文档](https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes)。 主要需要设置以下三个参数：TestOnBorrow（设置为 true）、ValidationQuery（设置为 SELECT 1）、ValidationQueryTimeout （设置为 1）。 具体的示例代码如下所示：
 
 ```java
 public class SimpleTestOnBorrowExample {

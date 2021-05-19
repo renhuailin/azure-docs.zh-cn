@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c1028d0a4a458746c08fd6fa4f16aa952d9962a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 1e49e787854069c2fcea30df7a43c3aacdd21b9e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282001"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502022"
 ---
 # <a name="azcopy-benchmark"></a>azcopy benchmark
 
@@ -38,6 +38,12 @@ ms.locfileid: "87282001"
 基准模式会自行调整为能够提供最大吞吐量的并行 TCP 连接数。 它会在结尾处显示该数字。 若要防止自动优化，请将 AZCOPY_CONCURRENCY_VALUE 环境变量设置为特定的连接数。 
 
 支持所有常用的身份验证类型。 但通常情况下，进行上传基准检验最方便的方法是创建一个包含 SAS 令牌的空容器并使用 SAS 身份验证。 （下载模式要求目标容器中存在一组测试数据。）
+
+## <a name="related-conceptual-articles"></a>相关概念性文章
+
+- [AzCopy 入门](storage-use-azcopy-v10.md)
+- [通过 Azure 存储优化 AzCopy v10 的性能](storage-use-azcopy-optimize.md)
+
 
 ## <a name="examples"></a>示例
 
@@ -103,7 +109,7 @@ azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-
 
 **--output-type** 字符串  命令输出的格式。 选项包括：text、json。 默认值为“text”。 （默认值为“text”）。
 
---trusted-microsoft-suffixes string 指定可向其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全，你只应在此处放置 Microsoft Azure 域。 用分号分隔多个条目。
+--trusted-microsoft-suffixes string 指定可向其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全起见，应只在此处放置 Microsoft Azure 域。 用分号分隔多个条目。
 
 
 ## <a name="see-also"></a>另请参阅

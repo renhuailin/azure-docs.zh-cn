@@ -4,7 +4,7 @@ description: 请查看常见问题解答 (FAQ)，了解 Microsoft 安全代码�
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 07/31/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,21 +12,25 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: 3bff42b9b82104909c79b75c7b1de51c9ddb6e0d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879909"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801309"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
+
+> [!Note]
+> Microsoft 安全代码分析 (MSCA) 扩展将会停用，于 2022 年 3 月 1 日生效。 在 2022 年 3 月 1 日之前，现有 MSCA 客户仍可访问 MSCA。 请参阅 [OWASP 源代码分析工具](https://owasp.org/www-community/Source_Code_Analysis_Tools)了解 Azure DevOps 中的替代选项。 计划迁移到 GitHub 的客户可以查看 [GitHub 高级安全性](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security)。
+
 遇到问题？ 请查看以下常见问题解答来了解详细信息。
 
 ## <a name="general-faq"></a>常见问题解答
 
-### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>能否在我的 Visual Studio Team Foundation Server 实例而不是在 Azure DevOps 实例上安装扩展？
+### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>是否可以在 Visual Studio Team Foundation Server 实例而不是 Azure DevOps 实例上安装该扩展？
 
-否。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
+不是。 不可以在 Visual Studio Team Foundation Server 上下载和安装该扩展。
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>是否必须对生成运行 Microsoft 安全代码分析？ 
 
@@ -44,18 +48,18 @@ ms.locfileid: "98879909"
 
 ### <a name="how-do-the-command-line-arguments-in-azure-devops-differ-from-those-arguments-in-the-standalone-desktop-tools"></a>Azure DevOps 中的命令行参数与独立桌面工具中的参数有何不同？ 
 
-大多数情况下，Azure DevOps 生成任务是有关安全工具的命令行参数的直接包装。 您可以将您通常传递到命令行工具的任何内容作为自变量传递给生成任务。
+大多数情况下，Azure DevOps 生成任务是安全工具命令行参数的直接包装器。 你可以像平时向命令行工具传递参数那样，将这些参数传递给生成任务。
 
-明显差异：
+明显的差异：
 
-- 工具将从代理 $ (的源文件夹中运行) 或% BUILD_SOURCESDIRECTORY%。 例如，C:\agent \_ work\1\s。
-- 自变量中的路径可以是相对于前面列出的源目录的根目录的相对路径。 路径也可以是绝对路径。 你可以使用 Azure DevOps 生成变量或运行本地代理和本地资源的已知部署位置来获取绝对路径。
-- 工具自动提供输出文件路径或文件夹。 如果提供生成任务的输出位置，则会将该位置替换为生成代理上的日志的众所周知位置的路径
-- 某些工具的其他命令行参数会被更改。 例如，添加或删除确保没有启动 GUI 的选项。
+- 工具将从代理的源文件夹 $(Build.SourcesDirectory) 运行，或者从 %BUILD_SOURCESDIRECTORY% 运行。 例如 C:\agent\_work\1\s。
+- 参数中的路径可以相对于上面所列源目录的根目录。 路径也可以是绝对路径。 可以通过使用 Azure DevOps 生成变量，或者通过使用本地资源的已知部署位置运行本地代理，来获取绝对路径。
+- 工具自动提供输出文件路径或文件夹。 如果为生成任务提供一个输出位置，该位置将替换为生成代理上日志的已知位置的路径
+- 其他一些命令行参数对于某些工具已更改。 例如，用于确保不启动 GUI 的选项的添加或删除参数。
 
-### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>能否在 Azure DevOps 生成中跨多个存储库运行一个生成任务（例如凭据扫描程序）？
+### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>是否可以跨 Azure DevOps 生成中的多个存储库运行一个生成任务（例如凭据扫描程序）？
 
-否。 不支持在单个管道中跨多个存储库运行安全开发工具。
+不是。 不支持在单个管道中跨多个存储库运行安全开发工具。
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>未创建我指定的输出文件，或者找不到我指定的输出文件
 
@@ -74,19 +78,19 @@ ms.locfileid: "98879909"
 >
 > 尽管不能在这些代理上更新特征，但特征的使用期限应始终小于三个小时。
 
-### <a name="can-i-run-these-build-tasks-as-part-of-a-release-pipeline-as-opposed-to-a-build-pipeline"></a>是否可以将这些生成任务作为发布管道的一部分运行，而不是作为生成管道运行？
+### <a name="can-i-run-these-build-tasks-as-part-of-a-release-pipeline-as-opposed-to-a-build-pipeline"></a>是否可以将这些生成任务作为发布管道而不是生成管道的一部分运行？
 
-在大多数情况下为 "是"。
+在大多数情况下可以。
 
-但是，Azure DevOps 不支持在发布管道中运行任务（当这些任务发布项目时）。 缺少此项支持会阻止发布安全分析日志任务在发布管道中成功运行。 该任务会失败，并出现描述性错误消息。
+但是，如果任务发布项目，则 Azure DevOps 不支持在发布管道中运行这些任务。 缺少这项支持会导致“发布安全分析日志”任务无法在发布管道中成功运行。 该任务将会失败并返回描述性的错误消息。
 
 ### <a name="from-where-do-the-build-tasks-download-the-tools"></a>生成任务从何处下载工具？
 
-生成任务可从 [Azure DevOps 包管理源](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json)下载工具的 NuGet 包。 生成任务还可以使用必须在生成代理上预先安装的 Node 包管理器。 此类安装的一个示例是 " **npm install tslint**" 命令。
+生成任务可以从 [Azure DevOps 包管理源](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json)下载工具的 NuGet 包。 生成任务还可以使用 Node 包管理器（必须在生成代理上预先安装）。 例如，使用命令 npm install tslint 即可完成这种安装。
 
-### <a name="what-effect-does-installing-the-extension-have-on-my-azure-devops-organization"></a>在我的 Azure DevOps 组织中安装扩展有什么影响？ 
+### <a name="what-effect-does-installing-the-extension-have-on-my-azure-devops-organization"></a>安装该扩展会对我的 Azure DevOps 组织造成哪种影响？ 
 
-在其安装过程中，扩展提供的安全生成任务将可供组织中的所有用户使用。 当你创建或编辑 Azure 管道时，"生成-任务集合" 列表中会提供这些任务。 否则，在 Azure DevOps 组织中安装扩展不起作用。 安装不会修改任何帐户设置、项目设置或管道。
+在安装过程中，该扩展提供的安全生成任务可供组织中的所有用户使用。 当你创建或编辑 Azure 管道时，可以从生成任务集合列表中使用这些任务。 除此之外，在 Azure DevOps 组织中安装该扩展不会造成其他影响。 安装过程不会修改任何帐户设置、项目设置或管道。
 
 ### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>安装此扩展是否会修改现有 Azure Pipelines？ 
 
@@ -220,12 +224,12 @@ CredScan 输出文件中机密的哈希键是必需的，如以下示例所示�
 
 ##### <a name="msbuild-and-vsbuild-logs-arent-found"></a>找不到 MSBuild 和 VSBuild 日志
 
-Roslyn 分析器生成任务需要从 MSBuild 生成任务中查询 MSBuild 日志的 Azure DevOps。 如果 analyzer 任务在 MSBuild 任务之后立即运行，则日志仍不可用。 在 MSBuild 任务和 Roslyn 分析器任务之间放置其他任务。 其他任务的示例包括 BinSkim 和反恶意软件扫描程序。
+Roslyn 分析器生成任务需要在 Azure DevOps 中查询 MSBuild 生成任务的 MSBuild 日志。 如果分析器任务紧接着在 MSBuild 任务之后运行，则暂时还不会提供日志。 请将其他任务放置在 MSBuild 任务与 Roslyn 分析器任务之间。 其他任务的示例包括 BinSkim 和反恶意软件扫描程序。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果你需要更多帮助，可以在周一到周五的太平洋标准时间上午 9:00 到下午 5:00 联系 Microsoft 安全代码分析支持人员。
 
-- 载入：请参阅我们的 [载入文档](security-code-analysis-onboard.md)
+- 加入：参阅[加入文档](security-code-analysis-onboard.md)
   
 - 支持：请通过 [Microsoft 安全代码分析支持](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)向我们的团队发送电子邮件

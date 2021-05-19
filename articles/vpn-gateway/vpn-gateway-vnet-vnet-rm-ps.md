@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7de83302dd91d7d679b9c35718d184a9767ba436
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94655351"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
 本文介绍如何使用 VNet 到 VNet 连接类型来连接虚拟网络。 虚拟网络可位于相同或不同的区域，来自相同或不同的订阅。 从不同的订阅连接 VNet 时，订阅不需要与相同的 Active Directory 租户相关联。
 
-本文中的步骤适用于 Resource Manager 部署模型并使用 PowerShell。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
+本文中的步骤适用于 Resource Manager 部署模型并使用 PowerShell。 也可使用不同的部署工具或部署模型创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -54,7 +54,7 @@ ms.locfileid: "94655351"
   * 使用 Azure 流量管理器和负载均衡器，可以设置支持跨多个 Azure 区域实现异地冗余的高可用性工作负荷。 一个重要的示例就是对分布在多个 Azure 区域中的可用性组设置 SQL Always On。
 * **具有隔离或管理边界的区域多层应用程序**
 
-  * 在同一区域中，由于存在隔离或管理要求，可以设置多个虚拟网络连接在一起的多层应用程序。
+  * 在同一区域中，由于存在隔离或管理要求，可以设置具有多个虚拟网络的多层应用程序，这些虚拟网络相互连接在一起。
 
 可以将 VNet 到 VNet 通信与多站点配置组合使用。 这样，便可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑。
 
@@ -67,13 +67,13 @@ ms.locfileid: "94655351"
 
 * [驻留在同一订阅中的 VNet](#samesub)：此配置的步骤使用 TestVNet1 和 TestVNet4。
 
-  ![此图显示了位于同一订阅中的 V 网络的 V Net 到 V Net 步骤。](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+  ![此图显示的 VNet 到 VNet 步骤适用于同一订阅中的 VNet。](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 * [驻留在不同订阅中的 VNet](#difsub)：此配置的步骤使用 TestVNet1 和 TestVNet5。
 
   ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
-## <a name="how-to-connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>如何连接同一订阅中的 VNet
+## <a name="how-to-connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>如何连接相同订阅中的 VNet
 
 ### <a name="before-you-begin"></a>准备阶段
 
@@ -87,7 +87,7 @@ ms.locfileid: "94655351"
 
 以下步骤将创建两个虚拟网络，以及它们各自的网关子网和配置。 然后在两个 VNet 之间创建 VPN 连接。 必须计划用于网络配置的 IP 地址范围。 请记住，必须确保没有任何 VNet 范围或本地网络范围存在任何形式的重叠。 在这些示例中，我们没有包括 DNS 服务器。 如果需要虚拟网络的名称解析，请参阅[名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
-示例中使用以下值：
+示例中使用了以下值：
 
 **TestVNet1 的值：**
 
@@ -101,9 +101,9 @@ ms.locfileid: "94655351"
 * GatewayName：VNet1GW
 * 公共 IP：VNet1GWIP
 * VPNType：RouteBased
-* Connection(1to4)：VNet1toVNet4
+* 连接（1 到 4）：VNet1 到 VNet4
 * Connection(1to5)：VNet1toVNet5（适用于不同订阅中的 VNet）
-* ConnectionType：VNet2VNet
+* 连接类型：VNet2VNet
 
 **TestVNet4 的值：**
 
@@ -117,8 +117,8 @@ ms.locfileid: "94655351"
 * GatewayName：VNet4GW
 * 公共 IP：VNet4GWIP
 * VPNType：RouteBased
-* 连接：VNet4toVNet1
-* ConnectionType：VNet2VNet
+* 连接：VNet4 到 VNet1
+* 连接类型：VNet2VNet
 
 
 ### <a name="step-2---create-and-configure-testvnet1"></a><a name="Step2"></a>步骤 2 - 创建并配置 TestVNet1
@@ -142,7 +142,7 @@ ms.locfileid: "94655351"
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName nameofsubscription
    ```
-2. 声明变量。 本示例使用此练习中的值来声明变量。 在大多数情况下，应将这些值替换为自己的值。 但是，如果执行这些步骤的目的是熟悉这种类型的配置，可以直接使用这些变量。 根据需要修改变量，并将其复制并粘贴到 PowerShell 控制台中。
+2. 声明变量。 此示例使用本练习中的值来声明变量。 在大多数情况下，应该将这些值替换为自己的值。 但是，如果执行这些步骤是为了熟悉此类型的配置，则可以使用这些变量。 根据需要修改变量，并将其复制并粘贴到 PowerShell 控制台中。
 
    ```azurepowershell-interactive
    $RG1 = "TestRG1"
@@ -166,9 +166,9 @@ ms.locfileid: "94655351"
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-4. 创建 TestVNet1 的子网配置。 本示例创建一个名为 TestVNet1 的虚拟网络和三个子网，这三个子网分别名为 GatewaySubnet、FrontEnd 和 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。 因此，名称不是通过下面的变量分配的。
+4. 创建 TestVNet1 的子网配置。 本示例创建一个名为 TestVNet1 的虚拟网络和三个子网：一个名为 GatewaySubnet、一个名为 FrontEnd，还有一个名为 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。 因此，名称不是通过下面的变量分配的。
 
-   下面的示例使用先前设置的变量。 在本示例中，网关子网使用 /27。 尽管创建的网关子网最小可为 /29，但建议至少选择 /28 或 /27，创建包含更多地址的更大子网。 这样便可以留出足够多的地址，满足将来可能需要使用的其他配置。
+   以下示例使用前面设置的变量。 在本示例中，网关子网使用 /27。 尽管创建的网关子网最小可为 /29，但建议至少选择 /28 或 /27，创建包含更多地址的更大子网。 这样便可以留出足够的地址，满足将来可能需要使用的其他配置。
 
    ```azurepowershell-interactive
    $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -181,13 +181,13 @@ ms.locfileid: "94655351"
    New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 `
    -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
    ```
-6. 请求一个公共 IP 地址，以分配给要为 VNet 创建的网关。 注意，AllocationMethod 是动态的。 无法指定要使用的 IP 地址。 它会动态分配到网关。 
+6. 请求一个公共 IP 地址，以分配给要为 VNet 创建的网关。 请注意，AllocationMethod 为 Dynamic。 无法指定要使用的 IP 地址。 它会动态分配到网关。 
 
    ```azurepowershell-interactive
    $gwpip1 = New-AzPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 `
    -Location $Location1 -AllocationMethod Dynamic
    ```
-7. 创建网关配置。 网关配置定义要使用的子网和公共 IP 地址。 使用本示例创建网关配置。
+7. 创建网关配置。 网关配置定义要使用的子网和公共 IP 地址。 使用该示例创建网关配置。
 
    ```azurepowershell-interactive
    $vnet1 = Get-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
@@ -195,7 +195,7 @@ ms.locfileid: "94655351"
    $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 `
    -Subnet $subnet1 -PublicIpAddress $gwpip1
    ```
-8. 为 TestVNet1 创建网关。 在此步骤中，将为 TestVNet1 创建虚拟网络网关。 VNet 到 VNet 配置需要基于路由的 VPN 类型。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
+8. 为 TestVNet1 创建网关。 本步骤为 TestVNet1 创建虚拟网络网关。 VNet 到 VNet 配置需要基于路由的 VPN 类型。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选网关 SKU。
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
@@ -203,11 +203,11 @@ ms.locfileid: "94655351"
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-完成命令后，创建此网关将需要多达 45 分钟的时间。 如果使用 Azure Cloud Shell，则可以通过单击 Cloud Shell 终端的左上角来重新启动 Cloud Shell 会话，并配置 TestVNet4。 无需等到 TestVNet1 网关创建完成。
+完成命令后，创建此网关将需要多达 45 分钟的时间。 如果使用的是 Azure Cloud Shell，可以单击 Cloud Shell 终端的右上角重启 Cloud Shell 会话，然后配置 TestVNet4。 无需等到 TestVNet1 网关创建完成。
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>步骤 3 - 创建并配置 TestVNet4
 
-配置 TestVNet1 后，即可创建 TestVNet4。 遵循以下步骤，并根据需要替换为自己的值。
+配置 TestVNet1 后，请创建 TestVNet4。 遵循以下步骤，并根据需要替换为自己的值。
 
 1. 连接并声明变量。 请务必将值替换为要用于配置的值。
 
@@ -258,7 +258,7 @@ ms.locfileid: "94655351"
    $subnet4 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet4
    $gwipconf4 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName4 -Subnet $subnet4 -PublicIpAddress $gwpip4
    ```
-7. 创建 TestVNet4 网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
+7. 创建 TestVNet4 网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选网关 SKU。
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4 `
@@ -276,7 +276,7 @@ ms.locfileid: "94655351"
    $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
    $vnet4gw = Get-AzVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4
    ```
-2. 创建 TestVNet1 到 TestVNet4 的连接。 在此步骤中，创建 TestVNet1 到 TestVNet4 的连接。 示例中引用了共享密钥。 可以对共享密钥使用自己的值。 共享密钥必须与两个连接匹配，这一点非常重要。 创建连接可能需要简短的一段时间才能完成。
+2. 创建 TestVNet1 到 TestVNet4 的连接。 本步骤创建从 TestVNet1 到 TestVNet4 的连接。 示例中引用了共享密钥。 可以对共享密钥使用自己的值。 共享密钥必须与两个连接匹配，这一点非常重要。 创建连接可能需要简短的一段时间才能完成。
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGatewayConnection -Name $Connection14 -ResourceGroupName $RG1 `
@@ -321,7 +321,7 @@ ms.locfileid: "94655351"
 * 公共 IP：VNet5GWIP
 * VPNType：RouteBased
 * 连接：VNet5toVNet1
-* ConnectionType：VNet2VNet
+* 连接类型：VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>步骤 7 - 创建并配置 TestVNet5
 

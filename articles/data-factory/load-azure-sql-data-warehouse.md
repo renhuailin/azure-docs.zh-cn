@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/29/2020
-ms.openlocfilehash: 94f5884cb9d1886a9e7aa6b09817b26bba6d47f7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 0ebbbcd7430a86ee431f67f7b6174b45d60056e5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370710"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593707"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 中
 
@@ -27,7 +27,7 @@ ms.locfileid: "100370710"
 * **轻松设置**：无需脚本的直观 5 步向导。
 * **丰富的数据存储支持**：对一组丰富的本地和基于云的数据存储的内置支持。 有关详细列表，请参阅表[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
 * **安全且合规**：通过 HTTPS 或 ExpressRoute 传输数据。 存在全局服务可确保数据永远不会离开地理边界。
-* **通过使用 PolyBase 提供无与伦比的性能**：使用 Polybase 是将数据移到 Azure Synapse Analytics 的最高效方法。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储和 Data Lake Store）的高加载速度。 默认情况下，Polybase 支持 Azure Blob 存储和 Azure Data Lake Store () 。有关详细信息，请参阅 [复制活动性能](copy-activity-performance.md)。
+* **通过使用 PolyBase 提供无与伦比的性能**：使用 Polybase 是将数据移到 Azure Synapse Analytics 的最高效方法。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储和 Data Lake Store）的高加载速度。 （默认情况下，Polybase 支持 Azure Blob 存储和 Azure Data Lake Store。）有关详细信息，请参阅[复制活动性能](copy-activity-performance.md)。
 
 本文介绍如何使用数据工厂复制数据工具将数据从 Azure SQL 数据库加载至 Azure Synapse Analytics。 可以遵循类似步骤，从其他类型的数据存储中复制数据。
 
@@ -53,10 +53,10 @@ ms.locfileid: "100370710"
     * **版本**：选择“V2”。
     * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Store、Azure 存储、Azure SQL 数据库，等等。
 
-3. 选择“创建” 。
+3. 选择“创建”  。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示：
 
-   ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
 
    选择“创作和监视”磁贴，在单独的选项卡中启动数据集成应用程序。
 
@@ -122,7 +122,7 @@ ms.locfileid: "100370710"
 
     b. 在“新建链接服务”页上，选择你的存储帐户，然后选择“创建”以部署链接服务 。
 
-    c. 取消选中 " **使用类型默认值** " 选项，然后选择 " **下一步**"。
+    c. 取消选择“使用类型默认值”选项，然后选择“下一步” 。
 
     ![配置 PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 

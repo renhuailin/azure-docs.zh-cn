@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94649256"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略
@@ -34,8 +34,9 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 > [!IMPORTANT]
 > 1. 请注意，IPsec/IKE 策略仅适用于以下网关 SKU：
->    * ***VpnGw1、VpnGw2、VpnGw3** _ (基于路由的) _ ***标准** _ 和 _*_高性能_*_ (基于路由的) 
-> 2. 对于给定的连接，只能指定 _*_一个_*_ 策略组合。
+>    * ***VpnGw1、VpnGw2、VpnGw3***（基于路由）
+>    * Standard*_ 和 HighPerformance_*（基于路由）
+> 2. 一个给定的连接只能指定一个策略组合。
 > 3. 必须指定 IKE（主模式）和 IPsec（快速模式）的所有算法和参数。 不允许指定部分策略。
 > 4. 请查阅 VPN 设备供应商规范，确保本地 VPN 设备支持该策略。 如果策略不兼容，则无法建立 S2S 或 VNet 到 VNet 的连接。
 
@@ -55,7 +56,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 下表列出了支持的加密算法和密钥强度，客户可自行配置：
 
-| _ *IPsec/IKEv2**  | **选项**    |
+| **IPsec/IKEv2**  | **选项**    |
 | ---  | --- 
 | IKEv2 加密 | AES256、AES192、AES128、DES3、DES  
 | IKEv2 完整性  | SHA384、SHA256、SHA1、MD5  |
@@ -63,7 +64,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 | IPsec 加密 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、无    |
 | IPsec 完整性  | GCMASE256、GCMAES192、GCMAES128、SHA256、SHA1、MD5 |
 | PFS 组        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、无 
-| QM SA 生存期   |  (**可选**：如果未指定，则使用默认值) <br>秒（整数；至少为 300 秒/默认为 27000 秒）<br>KB（整数；至少为 1024 KB/默认为 102400000 KB）   |
+| QM SA 生存期   | （**可选**：如果未指定，则使用默认值）<br>秒（整数；至少为 300 秒/默认为 27000 秒）<br>KB（整数；至少为 1024 KB/默认为 102400000 KB）   |
 | 流量选择器 | UsePolicyBasedTrafficSelectors**（$True/$False; **可选**，如果未指定，则使用默认值 $False）    |
 |  |  |
 
@@ -198,7 +199,7 @@ $ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -Dh
 
 如果将 GCMAES 用于 IPsec，必须为 IPsec 加密和完整性使用相同的 GCMAES 算法和密钥长度。 对于以上示例，使用 GCMAES256 时的对应参数会是“-IpsecEncryption GCMAES256 -IpsecIntegrity GCMAES256”。
 
-#### <a name="2-create-the-s2s-vpn-connection-with-the-ipsecike-policy"></a>2. 通过 IPsec/IKE 策略创建 S2S VPN 连接
+#### <a name="2-create-the-s2s-vpn-connection-with-the-ipsecike-policy"></a>2.创建采用 IPsec/IKE 策略的 S2S VPN 连接
 
 创建 S2S VPN 连接并应用之前创建的 IPsec/IKE 策略。
 
@@ -249,7 +250,7 @@ $Connection21 = "VNet2toVNet1"
 $Connection12 = "VNet1toVNet2"
 ```
 
-#### <a name="2-create-the-second-virtual-network-and-vpn-gateway-in-the-new-resource-group"></a>2. 在新资源组中创建第二个虚拟网络和 VPN 网关
+#### <a name="2-create-the-second-virtual-network-and-vpn-gateway-in-the-new-resource-group"></a>2.在新资源组中创建第二个虚拟网络和 VPN 网关
 
 ```powershell
 New-AzResourceGroup -Name $RG2 -Location $Location2
@@ -282,7 +283,7 @@ New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Lo
 $ipsecpolicy2 = New-AzIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption GCMAES128 -IpsecIntegrity GCMAES128 -PfsGroup PFS14 -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 ```
 
-#### <a name="2-create-vnet-to-vnet-connections-with-the-ipsecike-policy"></a>2. 通过 IPsec/IKE 策略创建 VNet 到 VNet 连接
+#### <a name="2-create-vnet-to-vnet-connections-with-the-ipsecike-policy"></a>2.创建采用 IPsec/IKE 策略的 VNet 到 VNet 的连接
 
 创建 VNet 到 VNet 的连接并应用创建的 IPsec/IKE 策略。 在此示例中，这两个网关位于同一订阅中。 因此，可在同一 PowerShell 会话中创建并配置采用相同 IPsec/IKE 策略的两个连接。
 

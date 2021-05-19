@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 点虚拟机
-description: 了解如何使用 Azure 点虚拟机节省成本。
+title: 使用 Azure 现成虚拟机
+description: 了解如何使用 Azure 现成虚拟机节省成本。
 author: JagVeerappan
 ms.author: jagaveer
 ms.service: virtual-machines
@@ -9,103 +9,103 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 0ed079dbfef50ae74914998c6b2e558b7e41aeae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: fb53fc37227e040ed7bd7fc8e47de9aed538bc2e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673941"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721386"
 ---
-# <a name="use-azure-spot-virtual-machines"></a>使用 Azure 点虚拟机 
+# <a name="use-azure-spot-virtual-machines"></a>使用 Azure 现成虚拟机 
 
-使用 Azure 点虚拟机，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出 Azure 点虚拟机。 因此，Azure 点虚拟机非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
+使用 Azure 现成虚拟机，可以利用未使用的容量，大幅降低成本。 每当 Azure 需要回收容量时，Azure 基础结构就会逐出 Azure 现成虚拟机。 因此，Azure 现成虚拟机非常适用于那些处理服务中断的工作负荷（例如批处理作业）、开发/测试环境、大型计算工作负荷等。
 
-可用容量可能因大小、区域、一天内的时间等因素而异。 部署 Azure 点虚拟机时，如果容量可用，Azure 将分配 Vm，但不会为这些 Vm 提供任何 SLA。 Azure 点虚拟机不提供高可用性保证。 当 Azure 需要恢复容量时，Azure 基础结构会在30秒的时间内逐出 Azure 点虚拟机。 
+可用容量可能因大小、区域、一天内的时间等因素而异。 部署 Azure 现成虚拟机时，如果有可用的容量，则 Azure 会分配 VM，但这些 VM 没有 SLA 的保障。 Azure 现成虚拟机不提供高可用性保证。 每当 Azure 需要回收容量时，Azure 基础结构就会发出 30 秒的通知，然后逐出 Azure 现成虚拟机。 
 
 
 ## <a name="eviction-policy"></a>逐出策略
 
-Vm 可根据容量或设置的最大价格进行逐出。 创建 Azure 点虚拟机时，可以将逐出策略设置为 *释放* (默认) 或 *删除*。 
+可以根据你设置的容量或最高价格逐出 VM。 创建 Azure 现成虚拟机时，可将逐出策略设置为“解除分配”（默认值）或“删除” 。 
 
-*解除分配* 策略会将 VM 移到停止解除分配状态，以便以后重新部署它。 但是，不保证分配将成功。 已释放的 Vm 将计入你的配额，并将对基础磁盘的存储成本进行收费。 
+“解除分配”策略可将 VM 移到已停止解除分配的状态，以允许后续进行重新部署。 但是，不保证分配将成功。 已解除分配的 VM 将计入配额，你需要支付基础磁盘的存储费用。 
 
-如果希望在逐出 VM 时删除 VM，可以将逐出策略设置为 " *删除*"。 逐出的 Vm 将连同它们的基础磁盘一起删除，因此你不会继续为存储付费。 
+如果希望在逐出 VM 后将其删除，可以将逐出策略设置为删除。 逐出的 VM 会连同其基础磁盘一起删除，因此可以避免继续支付存储费用。 
 
-你可以选择通过 [Azure Scheduled Events](./linux/scheduled-events.md)接收 VM 内通知。 这样，系统就会在你的 VM 被逐出时向你发送通知。在逐出之前，你将有 30 秒的时间来完成任何作业并执行关闭任务。 
+可以选择通过 [Azure Scheduled Events](./linux/scheduled-events.md) 来接收 VM 内通知。 这样，系统就会在你的 VM 被逐出时向你发送通知。在逐出之前，你将有 30 秒的时间来完成任何作业并执行关闭任务。 
 
 
 | 选项 | 业务成效 |
 |--------|---------|
-| 最大价格设置为 >= 当前价格。 | 如果容量和配额可用，则部署 VM。 |
-| 最大价格设置为 < 当前价格。 | VM 未部署。 您将收到一条错误消息，指出最大价格需要 >= 当前价格。 |
-| 如果最大价格 >= 当前价格，则重新启动停止/解除分配 VM | 如果有容量和配额，则部署 VM。 |
-| 如果最大价格 < 当前价格，则重新启动停止/解除分配 VM | 您将收到一条错误消息，指出最大价格需要 >= 当前价格。 | 
-| VM 的价格已开始，现在 > 最大价格。 | VM 将被逐出。 在实际逐出之前，会收到30秒通知。 | 
-| 逐出后，VM 的价格会退回 < 最大价格。 | VM 不会自动重新启动。 你可以自行重新启动 VM，并将按当前价格收费。 |
-| 如果最大价格设置为 `-1` | 出于定价原因，不会逐出 VM。 最大价格为当前价格，最高可达标准 Vm 的价格。 永远不会按标准价格收费。| 
-| 更改最大价格 | 需要解除分配 VM 以更改最大价格。 解除分配 VM，设置新的最大价格，并更新 VM。 |
+| 最高价格设置为 >= 当前价格。 | 如果有可用的容量和配额，则会部署 VM。 |
+| 最高价格设置为 < 当前价格。 | 不会部署 VM。 你将收到一条错误消息，指出最高价格需要 >= 当前价格。 |
+| 如果最高价格 >= 当前价格，则重启停止/解除分配 VM 的过程 | 如果有容量和配额，则会部署 VM。 |
+| 如果最高价格 < 当前价格，则重启停止/解除分配 VM 的过程 | 你将收到一条错误消息，指出最高价格需要 >= 当前价格。 | 
+| VM 的价格已提高，现在 > 最高价格。 | 将逐出 VM。 在实际逐出之前的 30 秒，你会收到通知。 | 
+| 逐出后，VM 的价格将回落到最高价格以下。 | VM 不会自动重启。 你可以自行重启 VM，这会按当前价格计费。 |
+| 如果最高价格设置为 `-1` | 不会出于定价原因而逐出 VM。 最高价格将是当前价格，最高为标准 VM 的价格。 永远不会以超过标准价格的价格向你收费。| 
+| 更改最高价格 | 需要解除分配 VM 才能更改最高价格。 解除分配 VM，设置新的最高价格，然后更新 VM。 |
 
 
 ## <a name="limitations"></a>限制
 
-Azure 点虚拟机不支持以下 VM 大小：
+Azure 现成虚拟机不支持以下 VM 大小：
  - B 系列
- - 任意大小 (促销版本，如 Dv2、NV、NC、H 促销大小) 
+ - 任意大小的促销版本（例如 Dv2、NV、NC、H 促销大小）
 
-Azure 点虚拟机可部署到除 Microsoft Azure 中国世纪地区以外的任何区域。
+Azure 现成虚拟机可以部署到除 Microsoft Azure 中国世纪互联以外的任何区域。
 
 <a name="channel"></a>
 
-目前支持以下 [产品/服务类型](https://azure.microsoft.com/support/legal/offer-details/) ：
+当前支持以下[套餐类型](https://azure.microsoft.com/support/legal/offer-details/)：
 
--   企业协议
--   即用即付产品/服务代码003P
--   赞助
-- 对于云服务提供商 (CSP) ，请联系你的合作伙伴
+-   企业协议 
+-   即用即付套餐代码 (003P)
+-   赞助（0036P 和 0136P）
+- 对于云服务提供商 (CSP)，请联系合作伙伴
 
 
 ## <a name="pricing"></a>定价
 
-基于区域和 SKU，Azure 点虚拟机的定价是可变的。 有关详细信息，请参阅适用于 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 和 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。 
+Azure 现成虚拟机的定价因地区和 SKU 而异。 有关详细信息，请参阅针对 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 和 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 的 VM 定价。 
 
-你还可以使用 [Azure 零售价格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) 查询定价信息，以查询有关专色定价的信息。 `meterName`和 `skuName` 都包含 `Spot` 。
+你还可以通过使用 [Azure 零售价格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) 查询 Spot 定价信息来查询定价信息。 `meterName` 和 `skuName` 都会包含 `Spot`。
 
-使用可变定价，你可以设置最高价格，以美元 (USD) 为单位，最多可使用 5 个小数位。 例如，值 `0.98765` 表示最高价格为 0.98765 美元/小时。 如果将最大价格设置为 `-1` ，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。
+使用可变定价，你可以设置最高价格，以美元 (USD) 为单位，最多可使用 5 个小数位。 例如，值 `0.98765` 表示最高价格为 0.98765 美元/小时。 如果将最高价格设置为 `-1`，则不会根据价格逐出 VM。 VM 的价格将是 Spot 的当前价格或是标准 VM 的价格（两者中的较低者，前提是有可用的容量和配额）。
 
 ## <a name="pricing-and-eviction-history"></a>定价和逐出历史记录
 
-可以在门户中的某个区域中查看每个大小的历史价格和逐出费率。 选择 " **查看定价历史记录" 和 "比较附近地区的价格"** 可查看表或特定大小的定价关系图。  以下图像中的定价和逐出率只是示例。 
+你可以在门户中的某个区域查看每个大小的历史定价和逐出速率。 选择“查看定价历史记录并比较附近区域的价格”，查看特定大小的定价图或定价表。  下图中的定价和逐出速率只是示例。 
 
 **图表**：
 
-:::image type="content" source="./media/spot-chart.png" alt-text="区域选项的屏幕截图，其中的定价和逐出率不同于图表。":::
+:::image type="content" source="./media/spot-chart.png" alt-text="地区选项的屏幕截图，其中以图表形式显示了不同的定价和逐出速率。":::
 
-**表**：
+**Table**：
 
-:::image type="content" source="./media/spot-table.png" alt-text="区域选项的屏幕截图，其中的定价和逐出率相差为表格。":::
+:::image type="content" source="./media/spot-table.png" alt-text="地区选项的屏幕截图，其中以表形式显示了不同的定价和逐出速率。":::
 
 
 
 ##  <a name="frequently-asked-questions"></a>常见问题
 
-**问：** 创建后，Azure 点虚拟机是否与常规标准 VM 相同？
+**问**：创建后，Azure 现成虚拟机是否与常规标准 VM 相同？
 
-**答：** 是，但 Azure 点虚拟机没有 SLA，可以随时将其逐出。
+**答**：是，但 Azure 现成虚拟机没有 SLA，可以随时将其逐出。
 
 
 **问：** 当被逐出但仍然需要容量时，该怎么办？
 
-**答：** 如果需要立即使用容量，建议使用标准 Vm，而不是 Azure 点虚拟机。
+**答**：如果马上需要容量，建议使用标准 VM，而不要使用 Azure 现成虚拟机。
 
 
-**问：** 如何管理 Azure 点虚拟机的配额？
+**问**：如何为 Azure 现成虚拟机管理配额？
 
-**答：** Azure 点虚拟机将具有单独的配额池。 将在 VM 与规模集实例之间共享 Spot 配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
+**答**：Azure 现成虚拟机将具有单独的配额池。 将在 VM 与规模集实例之间共享 Spot 配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 
-**问：** 能否为 Azure 点虚拟机请求额外的配额？
+**问**：是否可以为 Azure 现成虚拟机申请额外的配额？
 
-**答：** 是的，你将能够通过 [标准配额请求进程](../azure-portal/supportability/per-vm-quota-requests.md)提交请求以增加 Azure 点虚拟机的配额。
+**答**：是，可以通过[标准配额申请流程](../azure-portal/supportability/per-vm-quota-requests.md)提交申请，请求提高 Azure 现成虚拟机的配额。
 
 
 **问：** 我可以在何处发布问题？
@@ -113,13 +113,13 @@ Azure 点虚拟机可部署到除 Microsoft Azure 中国世纪地区以外的任
 **答:** 你可以在 [问答](/answers/topics/azure-spot.html)中发布问题并使用 `azure-spot` 来标记问题。 
 
 
-**问：** 如何更改专色 VM 的最大价格？
+**问**：如何更改现成 VM 的最高价格？
 
-**答：** 你需要先解除分配 VM，然后才能更改最大价格。 然后，可以从 VM 的 " **配置** " 部分更改门户中的最大价格。 
+**答**：需先解除分配 VM，然后才能更改最高价格。 然后，可以在 VM 的“配置”部分更改门户中的最高价格。 
 
 ## <a name="next-steps"></a>后续步骤
-使用 [CLI](./linux/spot-cli.md)、 [门户](spot-portal.md)、 [ARM 模板](./linux/spot-template.md)或 [PowerShell](./windows/spot-powershell.md) 部署 Azure 点虚拟机。
+使用 [CLI](./linux/spot-cli.md)、[门户](spot-portal.md)、[ARM 模板](./linux/spot-template.md)或 [PowerShell](./windows/spot-powershell.md) 部署 Azure 现成虚拟机。
 
-你还可以 [使用 Azure 点虚拟机实例部署规模集](../virtual-machine-scale-sets/use-spot.md)。
+你还可以部署[具有 Azure 现成虚拟机实例的规模集](../virtual-machine-scale-sets/use-spot.md)。
 
-如果遇到错误，请参阅 [错误代码](./error-codes-spot.md)。
+如果遇到错误，请参阅[错误代码](./error-codes-spot.md)。

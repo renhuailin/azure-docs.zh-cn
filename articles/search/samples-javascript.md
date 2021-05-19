@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: f83767813ea3923d85db2ca3f0164776c610525e
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
-ms.translationtype: MT
+ms.openlocfilehash: 85a4d6390087100d8d9521f6ac20dbace3a711eb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955014"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104955935"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 JavaScript 代码示例
 
-了解演示 Azure 认知搜索解决方案的功能和工作流的 JavaScript 代码示例。 这些示例使用 azure [**SDK For JavaScript**](/azure/developer/javascript/)的 [**azure 认知搜索客户端库**](/javascript/api/overview/azure/search-documents-readme)，你可以浏览以下链接。
+了解演示了 Azure 认知搜索解决方案的功能和工作流的 JavaScript 代码示例。 这些示例将 [Azure 认知搜索客户端库](/javascript/api/overview/azure/search-documents-readme)用于 [Azure SDK for JavaScript](/azure/developer/javascript/)，你可以通过以下链接浏览它们。
 
 | 目标 | 链接 |
 |--------|------|
@@ -28,7 +28,7 @@ ms.locfileid: "98955014"
 
 ## <a name="sdk-samples"></a>SDK 示例
 
-Azure SDK 开发团队中的代码示例演示了 API 使用。 你可以在 GitHub 上 [**的 azure-sdk/tree/master/sdk/搜索/搜索文档/示例**](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples) 中找到这些示例。
+Azure SDK 开发团队中的代码示例演示 API 用法。 可以在 GitHub 上的 [azure-sdk-for-js/tree/master/sdk/search/search-documents/samples](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples) 中找到这些示例。
 
 ### <a name="javascript-sdk-samples"></a>JavaScript SDK 示例
 
@@ -39,7 +39,6 @@ Azure SDK 开发团队中的代码示例演示了 API 使用。 你可以在 Git
 | [索引器](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  演示如何创建、更新、获取、列出、重置和删除[索引器](search-indexer-overview.md)。|
 | [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   演示如何创建、更新、获取、列出和删除[技能组](cognitive-search-working-with-skillsets.md)，这些技能组是附加的索引器，并且在编制索引期间执行基于 AI 的扩充。 |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | 演示如何创建、更新、获取、列出和删除[同义词映射](search-synonyms.md)。  |
-| [查询](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | 演示如何针对 Microsoft 托管的只读公共索引执行查询。  |
 
 ### <a name="typescript-samples"></a>TypeScript 示例
 
@@ -50,13 +49,12 @@ Azure SDK 开发团队中的代码示例演示了 API 使用。 你可以在 Git
 | [索引器](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  演示如何创建、更新、获取、列出、重置和删除[索引器](search-indexer-overview.md)。|
 | [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   演示如何创建、更新、获取、列出和删除[技能组](cognitive-search-working-with-skillsets.md)，这些技能组是附加的索引器，并且在编制索引期间执行基于 AI 的扩充。 |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | 演示如何创建、更新、获取、列出和删除[同义词映射](search-synonyms.md)。  |
-| [查询](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.ts) | 演示如何针对 Microsoft 托管的只读公共索引执行查询。  |
 
 ## <a name="doc-samples"></a>文档示例
 
-认知搜索团队中的代码示例演示了功能和工作流。 其中的许多示例在教程、快速入门和操作指南文章中进行了引用。 你可以在 GitHub 上的 [**Azure 示例/azure--**](https://github.com/Azure-Samples/azure-search-javascript-samples) ------javascript-示例中找到这些示例。
+认知搜索团队中的代码示例演示功能和工作流。 其中许多示例在教程、快速入门和操作说明文章中都有引用。 可以在 GitHub 上的 [Azure-Samples/azure-search-javascript-samples](https://github.com/Azure-Samples/azure-search-javascript-samples) 中找到这些示例。
 
-| 示例 | 文章 |
+| 示例 | 项目 |
 |---------|---------|
 | [quickstart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | [快速入门：在 JavaScript 中创建搜索索引](search-get-started-javascript.md)的源代码。 本文介绍了使用示例数据创建、加载和查询搜索索引的基本工作流。 |
 
@@ -65,7 +63,7 @@ Azure SDK 开发团队中的代码示例演示了 API 使用。 你可以在 Git
 
 ## <a name="other-samples"></a>其他示例
 
-以下示例也由认知搜索团队发布，但在文档中未被引用。 相关的自述文件提供了使用说明。
+以下示例也由认知搜索团队发布，但没有在文档中引用。 相关的自述文件提供了使用说明。
 
 | 示例 | 说明 |
 |---------|-------------|

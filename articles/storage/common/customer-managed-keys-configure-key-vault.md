@@ -11,21 +11,21 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 24fbe843986b732a04c9e356c54f3d768d6739be
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.openlocfilehash: 77a01a270f47ddacb71962188e7fedd0a0a9f6d0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558187"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790430"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>使用存储在 Azure Key Vault 中的客户管理的密钥配置加密
 
-Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，你可以管理自己的密钥。 客户托管的密钥必须存储在 Azure Key Vault 或 Key Vault 托管硬件安全模型 (HSM)  (预览版) 中。
+Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，你可以管理自己的密钥。 客户管理的密钥必须存储在 Azure Key Vault 或 Key Vault 托管硬件安全模型 (HSM)（预览）中。
 
-本文介绍了如何使用 Azure 门户、PowerShell 或 Azure CLI，通过存储在密钥保管库中的客户管理的密钥配置加密。 若要了解如何使用托管 HSM 中存储的客户托管密钥配置加密，请参阅 [使用 Azure Key Vault 托管 hsm (preview) 中存储的客户托管密钥配置加密 ](customer-managed-keys-configure-key-vault-hsm.md)。
+本文介绍了如何使用 Azure 门户、PowerShell 或 Azure CLI，通过存储在密钥保管库中的客户管理的密钥配置加密。 若要了解如何配置使用托管 HSM 中存储的客户管理的密钥进行加密，请参阅[配置使用 Azure Key Vault 托管 HSM（预览）中存储的客户管理的密钥进行加密](customer-managed-keys-configure-key-vault-hsm.md)。
 
 > [!NOTE]
-> Azure Key Vault 和 Azure Key Vault 托管 HSM 支持相同的 Api 和管理接口进行配置。
+> Azure 密钥保管库和 Azure 密钥保管库托管 HSM 支持使用相同的 API 和管理界面进行配置。
 
 ## <a name="configure-a-key-vault"></a>配置密钥保管库
 
@@ -83,7 +83,7 @@ Set-AzKeyVaultAccessPolicy `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 创建新的 Key Vault，请调用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create)。 请记得将括号中的占位符值替换为你自己的值：
+若要使用 Azure CLI 创建新的 Key Vault，请调用 [az keyvault create](/cli/azure/keyvault#az_keyvault_create)。 请记得将括号中的占位符值替换为你自己的值：
 
 ```azurecli-interactive
 az keyvault create \
@@ -97,7 +97,7 @@ az keyvault create \
 
 接下来，向存储帐户分配系统分配的托管标识。 将使用此托管标识授予存储帐户访问 Key Vault 的权限。 有关系统分配的托管标识的详细信息，请参阅[什么是 Azure 资源托管标识？](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-若要使用 Azure CLI 分配托管标识，请调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update)：
+若要使用 Azure CLI 分配托管标识，请调用 [az storage account update](/cli/azure/storage/account#az_storage_account_update)：
 
 ```azurecli-interactive
 az storage account update \
@@ -108,7 +108,7 @@ az storage account update \
 
 最后，配置密钥保管库的访问策略，使存储帐户有权访问密钥保管库。 此步骤使用前面分配给存储帐户的托管标识。
 
-若要设置密钥保管库的访问策略，请调用 [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy)：
+若要设置密钥保管库的访问策略，请调用 [az keyvault set-policy](/cli/azure/keyvault#az_keyvault_set_policy)：
 
 ```azurecli-interactive
 storage_account_principal=$(az storage account show \
@@ -129,7 +129,7 @@ az keyvault set-policy \
 
 接下来，在密钥保管库中添加密钥。
 
-Azure 存储加密支持2048、3072和4096大小的 RSA 和 RSA-HSM 密钥。 有关密钥的详细信息，请参阅[关于密钥](../../key-vault/keys/about-keys.md)。
+Azure 存储加密支持大小为 2048、3072 和 4096 的 RSA 和 RSA-HSM 密钥。 有关密钥的详细信息，请参阅[关于密钥](../../key-vault/keys/about-keys.md)。
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
@@ -147,7 +147,7 @@ $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 添加密钥，请调用 [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create)。 请记得将括号中的占位符值替换为你自己的值。
+若要使用 Azure CLI 添加密钥，请调用 [az keyvault key create](/cli/azure/keyvault/key#az_keyvault_key_create)。 请记得将括号中的占位符值替换为你自己的值。
 
 ```azurecli-interactive
 az keyvault key create \
@@ -175,11 +175,11 @@ Azure 存储可以自动更新客户管理的密钥（用于加密），以使�
 若要在 Azure 门户中配置客户管理的密钥并自动更新密钥版本，请执行以下步骤：
 
 1. 导航到存储帐户。
-1. 在存储帐户的“设置”边栏选项卡上，单击“加密”。 默认情况下，密钥管理设置为 **Microsoft 托管密钥**，如下图所示。
+1. 在存储帐户的“设置”边栏选项卡上，单击“加密”。 默认情况下，密钥管理设置为“Microsoft 管理的密钥”，如下图所示。
 
     ![显示加密选项的门户屏幕截图](./media/customer-managed-keys-configure-key-vault/portal-configure-encryption-keys.png)
 
-1. 选择 " **客户托管密钥** " 选项。
+1. 选择“客户管理的密钥”选项。
 1. 选择“从 Key Vault 中选择”选项。
 1. 选择“选择密钥保管库和密钥”。
 1. 选择包含要使用的密钥的密钥保管库。
@@ -213,7 +213,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 若要使用 Azure CLI 配置客户管理的密钥并自动更新密钥版本，请安装 [Azure CLI 2.4.0 版本](/cli/azure/release-notes-azure-cli#april-21-2020)或更高版本。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-若要自动更新客户管理的密钥的密钥版本，请在使用存储帐户的客户管理的密钥配置加密时省略密钥版本。 请调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update)，以便更新存储帐户的加密设置，如以下示例所示。 包括 `--encryption-key-source` 参数并将其设置为 `Microsoft.Keyvault` 即可为帐户启用客户管理的密钥。
+若要自动更新客户管理的密钥的密钥版本，请在使用存储帐户的客户管理的密钥配置加密时省略密钥版本。 请调用 [az storage account update](/cli/azure/storage/account#az_storage_account_update)，以便更新存储帐户的加密设置，如以下示例所示。 包括 `--encryption-key-source` 参数并将其设置为 `Microsoft.Keyvault` 即可为帐户启用客户管理的密钥。
 
 请记得将括号中的占位符值替换为你自己的值。
 
@@ -273,7 +273,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要配置客户管理的密钥并手动更新密钥版本，请在为存储帐户配置加密时显式提供密钥版本。 请调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update)，以便更新存储帐户的加密设置，如以下示例所示。 包括 `--encryption-key-source` 参数并将其设置为 `Microsoft.Keyvault` 即可为帐户启用客户管理的密钥。
+若要配置客户管理的密钥并手动更新密钥版本，请在为存储帐户配置加密时显式提供密钥版本。 请调用 [az storage account update](/cli/azure/storage/account#az_storage_account_update)，以便更新存储帐户的加密设置，如以下示例所示。 包括 `--encryption-key-source` 参数并将其设置为 `Microsoft.Keyvault` 即可为帐户启用客户管理的密钥。
 
 请记得将括号中的占位符值替换为你自己的值。
 
@@ -297,7 +297,7 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-手动更新密钥版本时，需要更新存储帐户的加密设置以使用新版本。 首先，通过调用 [az keyvault show](/cli/azure/keyvault#az-keyvault-show) 查询 Key Vault URI，并通过调用 [az keyvault key list-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions) 查询密钥版本。 然后调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update) 来更新存储帐户的加密设置，以使用新的密钥版本，如上一示例所示。
+手动更新密钥版本时，需要更新存储帐户的加密设置以使用新版本。 首先，通过调用 [az keyvault show](/cli/azure/keyvault#az_keyvault_show) 查询 Key Vault URI，并通过调用 [az keyvault key list-versions](/cli/azure/keyvault/key#az_keyvault_key_list-versions) 查询密钥版本。 然后调用 [az storage account update](/cli/azure/storage/account#az_storage_account_update) 来更新存储帐户的加密设置，以使用新的密钥版本，如上一示例所示。
 
 ---
 
@@ -319,7 +319,7 @@ az storage account update
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 更改密钥，请调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update)（如[使用客户托管密钥配置加密](#configure-encryption-with-customer-managed-keys)中所示），并提供新的密钥名称和版本。 如果新密钥位于不同的密钥保管库中，则还必须更新密钥保管库 URI。
+若要使用 Azure CLI 更改密钥，请调用 [az storage account update](/cli/azure/storage/account#az_storage_account_update)（如[使用客户托管密钥配置加密](#configure-encryption-with-customer-managed-keys)中所示），并提供新的密钥名称和版本。 如果新密钥位于不同的密钥保管库中，则还必须更新密钥保管库 URI。
 
 ---
 
@@ -342,7 +342,7 @@ Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-可以通过删除密钥保管库访问策略来撤销客户管理的密钥。 若要使用 Azure CLI 撤销客户托管密钥，请调用 [az keyvault delete-policy](/cli/azure/keyvault#az-keyvault-delete-policy) 命令，如下例所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
+可以通过删除密钥保管库访问策略来撤销客户管理的密钥。 若要使用 Azure CLI 撤销客户托管密钥，请调用 [az keyvault delete-policy](/cli/azure/keyvault#az_keyvault_delete_policy) 命令，如下例所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
 
 ```azurecli-interactive
 az keyvault delete-policy \
@@ -375,7 +375,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 禁用客户托管密钥，请调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update) 并将 `--encryption-key-source parameter` 设置为 `Microsoft.Storage`，如下例所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
+若要使用 Azure CLI 禁用客户托管密钥，请调用 [az storage account update](/cli/azure/storage/account#az_storage_account_update) 并将 `--encryption-key-source parameter` 设置为 `Microsoft.Storage`，如下例所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
 
 ```azurecli-interactive
 az storage account update
@@ -390,4 +390,4 @@ az storage account update
 
 - [静态数据的 Azure 存储加密](storage-service-encryption.md)
 - [用于 Azure 存储加密的客户管理的密钥](customer-managed-keys-overview.md)
-- [用 Azure Key Vault 托管 HSM (预览版中存储的客户托管密钥配置加密) ](customer-managed-keys-configure-key-vault-hsm.md)
+- [使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密（预览版）](customer-managed-keys-configure-key-vault-hsm.md)

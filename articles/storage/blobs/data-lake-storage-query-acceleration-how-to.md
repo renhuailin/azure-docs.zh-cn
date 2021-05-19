@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Lake Storage 查询加速来筛选数据 |Microsoft Docs
-description: 使用查询加速来检索存储帐户中的数据子集。
+description: 使用查询加速来检索存储帐户中的部分数据。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: a925d3f55395d094c7f19f65de4b72fd20a11a41
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 756258db1c6e91002bf3a7c2bd0f71f921ce655d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213668"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769924"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>使用 Azure Data Lake Storage 查询加速来筛选数据
 
-本文介绍如何使用查询加速从存储帐户检索数据的子集。 
+本文介绍如何使用查询加速来检索存储帐户中的部分数据。 
 
 查询加速使应用程序和分析框架可以通过仅检索执行给定操作所需的数据来大幅优化数据处理。 若要了解详细信息，请参阅 [Azure Data Lake Storage 查询加速](data-lake-storage-query-acceleration.md)。
 
@@ -26,9 +26,9 @@ ms.locfileid: "102213668"
 
 - 若要访问 Azure 存储，需要一个 Azure 订阅。 如果还没有订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- **常规用途 v2** 存储帐户。 请参阅 [创建存储帐户](../common/storage-account-create.md)。
+- 一个常规用途 v2 存储帐户。 请参阅[创建存储帐户](../common/storage-account-create.md)。
 
-- 选择一个选项卡以查看任何特定于 SDK 的必备组件。
+- 选择一个选项卡以查看任何特定于 SDK 的先决条件。
 
   ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -45,7 +45,7 @@ ms.locfileid: "102213668"
   - [Apache Maven](https://maven.apache.org/download.cgi) 
 
     > [!NOTE] 
-    > 本文假设已使用 Apache Maven 创建了一个 Java 项目。 有关如何使用 Apache Maven 创建项目的示例，请参阅 [设置](storage-quickstart-blobs-java.md#setting-up)。
+    > 本文假设已使用 Apache Maven 创建了一个 Java 项目。 有关如何使用 Apache Maven 创建项目的示例，请参阅[设置](storage-quickstart-blobs-java.md#setting-up)。
   
   ### <a name="python"></a>[Python](#tab/python)
 
@@ -59,11 +59,11 @@ ms.locfileid: "102213668"
 
 ## <a name="enable-query-acceleration"></a>启用查询加速
 
-若要使用查询加速，你必须将查询加速功能注册到你的订阅。 验证功能注册后，必须注册 Azure 存储资源提供程序。 
+若要使用查询加速，必须向订阅注册查询加速功能。 验证该功能已注册后，必须注册 Azure 存储资源提供程序。 
 
-### <a name="step-1-register-the-query-acceleration-feature"></a>步骤1：注册查询加速功能
+### <a name="step-1-register-the-query-acceleration-feature"></a>步骤 1：注册查询加速功能
 
-若要使用查询加速，必须先将查询加速功能注册到订阅。 
+若要使用查询加速，必须首先向订阅注册查询加速功能。 
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -75,7 +75,7 @@ ms.locfileid: "102213668"
    Connect-AzAccount
    ```
 
-2. 如果你的标识与多个订阅相关联，请设置你的活动订阅。
+2. 如果你的标识关联到多个订阅，请设置你的活动订阅。
 
    ```powershell
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
@@ -84,7 +84,7 @@ ms.locfileid: "102213668"
 
    将 `<subscription-id>` 占位符值替换为你的订阅 ID。
 
-3. 使用 [AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) 命令注册 query 加速功能。
+3. 使用 [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) 命令注册查询加速功能。
 
    ```powershell
    Register-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
@@ -94,7 +94,7 @@ ms.locfileid: "102213668"
 
 1. 打开 [Azure Cloud Shell](../../cloud-shell/overview.md)，或者，如果已在本地[安装](/cli/azure/install-azure-cli) Azure CLI，请打开命令控制台应用程序，如 Windows PowerShell。
 
-2. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为订阅存储帐户。
+2. 如果你的标识已关联到多个订阅，请将你的活动订阅设置为存储帐户的订阅。
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
@@ -102,7 +102,7 @@ ms.locfileid: "102213668"
 
    将 `<subscription-id>` 占位符值替换为你的订阅 ID。
 
-3. 使用 [az feature register](/cli/azure/feature#az-feature-register) 命令注册 query 加速功能。
+3. 使用 [az feature register](/cli/azure/feature#az_feature_register) 命令注册查询加速功能。
 
    ```azurecli
    az feature register --namespace Microsoft.Storage --name BlobQuery
@@ -110,11 +110,11 @@ ms.locfileid: "102213668"
 
 ---
 
-### <a name="step-2-verify-that-the-feature-is-registered"></a>步骤2：验证功能是否已注册
+### <a name="step-2-verify-that-the-feature-is-registered"></a>步骤 2：验证是否已注册功能
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要验证注册是否完成，请使用 [AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) 命令。
+若要验证注册是否完成，请使用 [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) 命令。
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
@@ -122,7 +122,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuer
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要验证注册是否已完成，请使用 [az feature](/cli/azure/feature#az-feature-show) 命令。
+若要验证注册是否完成，请使用 [az feature](/cli/azure/feature#az_feature_show) 命令。
 
 ```azurecli
 az feature show --namespace Microsoft.Storage --name BlobQuery
@@ -130,13 +130,13 @@ az feature show --namespace Microsoft.Storage --name BlobQuery
 
 ---
 
-### <a name="step-3-register-the-azure-storage-resource-provider"></a>步骤3：注册 Azure 存储资源提供程序
+### <a name="step-3-register-the-azure-storage-resource-provider"></a>步骤 3：注册 Azure 存储资源提供程序
 
-批准注册后，你必须重新注册 Azure 存储资源提供程序。 
+注册得到批准后，必须重新注册 Azure 存储资源提供程序。 
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要注册资源提供程序，请使用 [AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) 命令。
+若要注册资源提供程序，请使用 [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) 命令。
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
@@ -144,7 +144,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要注册资源提供程序，请使用 [az provider register](/cli/azure/provider#az-provider-register) 命令。
+若要注册资源提供程序，请使用 [az provider register](/cli/azure/provider#az_provider_register) 命令。
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
@@ -152,19 +152,19 @@ az provider register --namespace 'Microsoft.Storage'
 
 ---
 
-## <a name="set-up-your-environment"></a>设置你的环境
+## <a name="set-up-your-environment"></a>设置环境
 
-### <a name="step-1-install-packages"></a>步骤1：安装包 
+### <a name="step-1-install-packages"></a>步骤 1：安装包 
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-安装 Az module version 4.6.0 或更高版本。
+安装 Az 模块版本 4.6.0 或更高版本。
 
 ```powershell
 Install-Module -Name Az -Repository PSGallery -Force
 ```
 
-若要从 Az 的较早版本进行更新，请运行以下命令：
+若要从旧版 Az 更新，请运行以下命令：
 
 ```powershell
 Update-Module -Name Az
@@ -172,19 +172,19 @@ Update-Module -Name Az
 
 #### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. 打开命令提示符并将目录 () 更改为 `cd` 项目文件夹，例如：
+1. 请打开命令提示符或将目录 (`cd`) 更改为项目文件夹，例如：
 
    ```console
    cd myProject
    ```
 
-2. `12.5.0-preview.6`使用命令安装适用于 .net 的 Azure Blob 存储客户端库包的版本或更高版本 `dotnet add package` 。 
+2. 使用 `dotnet add package` 命令安装 `12.5.0-preview.6` 版本或更高版本的适用于 .NET 包的 Azure Blob 存储客户端库。 
 
    ```console
    dotnet add package Azure.Storage.Blobs -v 12.8.0
    ```
 
-3. 本文中显示的示例使用 [CsvHelper](https://www.nuget.org/packages/CsvHelper/) 库分析 CSV 文件。 若要使用该库，请使用以下命令。
+3. 本文中出现的示例使用 [CsvHelper](https://www.nuget.org/packages/CsvHelper/) 库分析 CSV 文件。 若要使用该库，请使用以下命令。
 
    ```console
    dotnet add package CsvHelper
@@ -192,7 +192,7 @@ Update-Module -Name Az
 
 #### <a name="java"></a>[Java](#tab/java)
 
-1. 在文本编辑器中打开项目的 *pom.xml* 文件。 将以下依赖项元素添加到依赖项组。 
+1. 在文本编辑器中打开项目的 pom.xml 文件。 将以下依赖项元素添加到依赖项组。 
 
    ```xml
    <!-- Request static dependencies from Maven -->
@@ -232,7 +232,7 @@ pip install azure-storage-blob==12.4.0
 
 ---
 
-### <a name="step-2-add-statements"></a>步骤2：添加语句
+### <a name="step-2-add-statements"></a>步骤 2：添加语句
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -248,7 +248,7 @@ using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
 ```
 
-查询加速检索 CSV 和 Json 格式的数据。 因此，请确保为选择使用的任何 CSV 或 Json 分析库添加 using 语句。 本文中显示的示例使用 NuGet 上提供的 [CsvHelper](https://www.nuget.org/packages/CsvHelper/) 库分析 CSV 文件。 因此，我们会将这些 `using` 语句添加到代码文件的顶部。
+查询加速检索 CSV 和 Json 格式的数据。 因此，请确保为选择使用的任何 CSV 或 Json 分析库添加 using 语句。 本文中出现的示例使用 NuGet 上提供的 [ CsvHelper ](https://www.nuget.org/packages/CsvHelper/) 库来分析 CSV 文件。 因此，我们会将这些 `using` 语句添加到代码文件的顶部。
 
 ```csharp
 using CsvHelper;
@@ -288,13 +288,13 @@ from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient, D
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-将 `storage-blob` 此语句放置在代码文件的顶部，以包含模块。 
+将此语句放置在代码文件的顶部，以加入 `storage-blob` 模块。 
 
 ```javascript
 const { BlobServiceClient } = require("@azure/storage-blob");
 ```
 
-查询加速检索 CSV 和 Json 格式的数据。 因此，请确保为选择使用的任何 CSV 或 Json 分析模块添加语句。 本文中显示的示例通过使用 [fast-csv](https://www.npmjs.com/package/fast-csv) 模块分析 CSV 文件。 因此，我们将此语句添加到代码文件的顶部。
+查询加速检索 CSV 和 Json 格式的数据。 因此，请确保为选择使用的任何 CSV 或 Json 分析模块添加语句。 本文中出现的示例使用 [fast-csv](https://www.npmjs.com/package/fast-csv) 库分析 CSV 文件。 因此，我们会将此语句添加到代码文件的顶部。
 
 ```javascript
 const csv = require('@fast-csv/parse');
@@ -302,13 +302,13 @@ const csv = require('@fast-csv/parse');
 
 ---
 
-## <a name="retrieve-data-by-using-a-filter"></a>使用筛选器检索数据
+## <a name="retrieve-data-by-using-a-filter"></a>使用筛选器来检索数据
 
-您可以使用 SQL 来指定查询加速请求中的行筛选器谓词和列投影。 下面的代码查询存储中的 CSV 文件，并返回其中第三列与该值匹配的所有数据行 `Hemingway, Ernest` 。 
+可以使用 SQL 来指定查询加速请求中的行筛选器谓词和列投影。 下面的代码查询存储中的 CSV 文件，并返回第三列中与值 `Hemingway, Ernest` 匹配的所有数据行。 
 
 - 在 SQL 查询中，关键字 `BlobStorage` 用于表示正在查询的文件。
 
-- 列引用被指定为 `_N` 第一列的位置 `_1` 。 如果源文件包含标题行，则可以按标题行中指定的名称来引用列。 
+- 列引用被指定为 `_N`，其中第一列是 `_1`。 如果源文件包含标题行，则可以按标题行中指定的名称来引用列。 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -328,7 +328,7 @@ Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Heming
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Async 方法 `BlobQuickQueryClient.QueryAsync` 将查询发送到查询加速 API，然后将结果作为 [流](/dotnet/api/system.io.stream) 对象传输回应用程序。
+Async 方法 `BlobQuickQueryClient.QueryAsync` 将查询发送到查询加速 API，然后将结果作为 [Stream](/dotnet/api/system.io.stream) 对象流式传输回应用程序。
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -375,7 +375,7 @@ private static async Task DumpQueryCsv(BlockBlobClient blob, string query, bool 
 
 ### <a name="java"></a>[Java](#tab/java)
 
-方法将 `BlobQuickQueryClient.openInputStream()` 查询发送到查询加速 API，然后将结果作为对象流式传输到应用程序， `InputStream` 该对象可像其他任何 InputStream 对象一样读取。
+方法 `BlobQuickQueryClient.openInputStream()` 将查询发送到查询加速 API，然后将结果作为 `InputStream` 对象流式传输回应用程序，该对象可以像任何其他 InputStream 对象一样读取。
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -437,7 +437,7 @@ def dump_query_csv(blob: BlobClient, query: str, headers: bool):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-此示例将查询发送到查询加速 API，然后对结果进行流式处理。 `blob`传递给 `queryHemingway` helper 函数的对象的类型为[BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient)。 若要了解有关如何获取 [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) 对象的详细信息，请参阅 [Node.js中的快速入门：使用 JavaScript v12 SDK 管理 blob ](storage-quickstart-blobs-nodejs.md)。
+此示例将查询发送到查询加速 API，然后流式传输回结果。 传递到 `queryHemingway` helper 函数中的 `blob` 对象的类型为 [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient)。 要详细了解如何获取 [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) 对象，请参阅[快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob](storage-quickstart-blobs-nodejs.md)。
 
 ```javascript
 async function queryHemingway(blob)
@@ -478,9 +478,9 @@ async function dumpQueryCsv(blob, query, headers)
 
 ## <a name="retrieve-specific-columns"></a>检索特定列
 
-您可以将结果的范围限定为列的子集。 这样一来，只需检索执行给定计算所需的列。 这可以提高应用程序性能并降低成本，因为通过网络传输的数据较少。 
+可以将结果的范围限定为部分列。 这样一来，只需检索执行给定计算所需的列。 这可以提高应用程序性能并降低成本，因为通过网络传输的数据较少。 
 
-此代码仅检索 `BibNum` 数据集中所有书籍的列。 它还使用源文件中的标题行中的信息来引用查询中的列。
+此代码仅检索数据集中所有书籍的 `BibNum` 列。 它还使用源文件的标题行中的信息来引用查询中的列。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

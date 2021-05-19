@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 01/12/2021
-ms.openlocfilehash: 087f284bed7ab0c9eb551c1629ab4f9196c80d76
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 1b4570b09994f292de2b175396e4b6d1882658d9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945695"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866482"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 
@@ -26,27 +26,27 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 
 ## <a name="connectivity"></a>连接
 
-你的 HDInsight 群集上提供了 Ambari Web UI `https://CLUSTERNAME.azurehdinsight.net` ，其中 `CLUSTERNAME` 是你的群集的名称。
+在 HDInsight 群集上从 `https://CLUSTERNAME.azurehdinsight.net` 可获得 Ambari Web UI，其中 CLUSTERNAME`CLUSTERNAME` 是你的群集名称。
 
 > [!IMPORTANT]  
 > 连接到 HDInsight 上的 Ambari 需要 HTTPS。 当提示进行身份验证时，请使用在创建群集时提供的管理员帐户名称和密码。 如果系统未提示你输入凭据，请检查网络设置以确认客户端与 Azure HDInsight 群集之间没有连接问题。
 
 ## <a name="ssh-tunnel-proxy"></a>SSH 隧道（代理）
 
-尽管可以直接通过 Internet 访问群集的 Ambari，但 Ambari Web UI 中的某些链接 (例如，JobTracker) 不会在 internet 上公开。 若要访问这些服务，必须创建一个 SSH 隧道。 有关详细信息，请参阅[将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)。
+尽管可以直接通过 Internet 访问群集的 Ambari，但 Ambari Web UI 中的某些链接（例如 JobTracker 的链接）并未在 Internet 上公开。 若要访问这些服务，必须创建一个 SSH 隧道。 有关详细信息，请参阅[将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)。
 
 ## <a name="ambari-web-ui"></a>Ambari Web UI
 
 > [!WARNING]  
 > 并非 Ambari Web UI 的所有功能都受 HDInsight 支持。 有关详细信息，请参阅本文档的[不受支持操作](#unsupported-operations)部分。
 
-连接到 Ambari Web UI 时，系统将提示你向页面进行身份验证。 请使用在创建群集过程中你使用的群集管理员用户（默认 Admin）和密码。
+连接到 Ambari Web UI 时，系统会提示进行页面验证。 请使用在创建群集过程中你使用的群集管理员用户（默认 Admin）和密码。
 
 当该页打开时，请注意顶栏。 此栏中包含以下信息和控件：
 
-![Apache Ambari 仪表板概述](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png" alt-text="Apache Ambari 仪表板概述":::
 
-|项目 |说明 |
+|项 |说明 |
 |---|---|
 |Ambari 徽标|打开仪表板，以便可以监视群集。|
 |群集名称 # 项操作|显示进行中的 Ambari 操作数目。 选择群集名称或“# 项操作”会显示后台操作列表。|
@@ -73,54 +73,54 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 
 警报已组织成若干个默认组，可以从“警报”页面进行查看。
 
-![Apache Ambari 警报页面摘要](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png" alt-text="Apache Ambari 警报页摘要":::
 
 可通过使用“操作”菜单并选择“管理警报组”来管理这些组。 
 
-![Apache Ambari 管理警报组](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png" alt-text="Apache Ambari 管理警报组":::
 
 管理发出警报的方式，并通过在“操作”菜单中选择“管理通知”来创建警报通知。 所有当前通知都会显示。 从此处创建通知。 出现特定的警报/严重性组合时，可通过 **电子邮件** 或 **SNMP** 发送通知。 例如，可在“YARN 默认设置”组中的任何警报设为“严重”时发送电子邮件消息。 
 
-![Apache Ambari 创建警报通知](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png" alt-text="Apache Ambari 创建警报通知":::
 
 最后，在“操作”菜单中选择“管理警报设置”可设置发送通知前出现警报的次数。  可以使用此设置来防止针对暂时性错误发出通知。
 
-有关使用免费 [SendGrid 帐户](../sendgrid-dotnet-how-to-send-email.md)的警报通知教程，请参阅 [在 Azure HDInsight 中配置 Apache Ambari 电子邮件通知](./apache-ambari-email.md)。
+有关使用免费 [SendGrid 帐户](../sendgrid-dotnet-how-to-send-email.md)的警报通知的教程，请参阅[在 Azure HDInsight 中配置 Apache Ambari 电子邮件通知](./apache-ambari-email.md)。
 
 ### <a name="cluster"></a>群集
 
 仪表板的“度量值”选项卡包含一系列 Widget，可让你一目了然地轻松监视群集状态。 “CPU 使用率”等多个 Widget 可在单击后提供更多信息。
 
-![具有指标的 Apache Ambari 仪表板](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png" alt-text="包含指标的 Apache Ambari 仪表板":::
 
 “热图”选项卡以绿色到红色的彩色热图显示度量值。
 
-![带有热图的 Apache Ambari 仪表板](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png" alt-text="包含热度地图的 Apache Ambari 仪表板":::
 
-若要了解群集内节点的详细信息，请选择“主机”。 然后选择你感兴趣的特定节点。
+若要了解群集内节点的详细信息，请选择“主机”。 然后选择感兴趣的具体节点。
 
-![Apache Ambari 主机摘要详细信息](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png" alt-text="Apache Ambari 主机摘要详细信息":::
 
 ### <a name="services"></a>服务
 
 仪表板上的“服务”边栏可让你快速了解群集上运行的服务的状态。 各种图标用来指示状态或应当采取的操作。 例如，如果某项服务需要再循环，则会显示一个黄色的再循环符号。
 
 
-![Apache Ambari services 侧栏](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png" alt-text="Apache Ambari 服务侧边栏":::
 
 > [!NOTE]  
 > 对于不同的 HDInsight 群集类型和版本，所显示的服务会有所不同。 此处显示的服务可能不同于针对群集所显示的服务。
 
 选择一个服务会显示有关该服务的更多详细信息。
 
-![Apache Ambari 服务摘要信息](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png" alt-text="Apache Ambari 服务摘要信息":::
 
 #### <a name="quick-links"></a>快速链接
 
 某些服务会在页面顶部显示“快速链接”链接。 此链接可用于访问服务专用 Web UI，例如：
 
 * **作业历史记录** - MapReduce 作业历史记录。
-* YARN 资源管理器 UI **资源管理器**。
+* **资源管理器** - YARN 资源管理器 UI。
 * **NameNode** - Hadoop 分布式文件系统 (HDFS) NameNode UI。
 * **Oozie Web UI** - Oozie UI。
 
@@ -136,13 +136,13 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 支持使用用户、组和权限。 有关本地管理，请参阅[授权用户访问 Apache Ambari 视图](./hdinsight-authorize-users-to-ambari.md)。 有关已加入域的群集，请参阅[管理已加入域的 HDInsight 群集](./domain-joined/hdinsight-security-overview.md)。
 
 > [!WARNING]  
-> 不要在基于 Linux 的 HDInsight 群集上删除或更改 Ambari 看门程序 (hdinsightwatchdog) 的密码。 更改密码将导致无法通过群集使用脚本操作或执行缩放操作。
+> 不要在基于 Linux 的 HDInsight 群集上删除或更改 Ambari 监视程序 (hdinsightwatchdog) 的密码。 更改密码将导致无法通过群集使用脚本操作或执行缩放操作。
 
 ### <a name="hosts"></a>主机
 
 “主机”页面列出群集中的所有主机。 若要管理主机，请遵循以下步骤。
 
-![Apache Ambari 主机页面概述](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png" alt-text="Apache Ambari 主机页概述":::
 
 > [!NOTE]  
 > 对于 HDInsight 群集，不应使用添加、停用和重用主机的功能。
@@ -179,7 +179,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 
 2. 在“摘要”选项卡的顶部，使用“服务操作”按钮，然后选择要执行的操作。  此操作会重启所有节点上的服务。
 
-    ![Apache Ambari 单个服务操作](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
+    :::image type="content" source="./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png" alt-text="Apache Ambari 单个服务操作":::
 
    > [!NOTE]  
    > 在群集运行时重启某些服务可能会生成警报。 若要避免生成警报，可使用“服务操作”按钮来为服务启用 **维护模式**，然后再执行重启。
@@ -195,7 +195,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 
 2. 选择“配置”选项卡。这会显示当前配置。 同时，还会显示以前的配置列表。
 
-    ![Apache Ambari 服务配置](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
+    :::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png" alt-text="Apache Ambari 服务配置":::
 
 3. 使用显示的字段修改配置，然后选择“保存”。 或者，选择以前的某个配置，然后选择“设为当前配置”以回滚到以前的设置。
 
@@ -209,7 +209,7 @@ Ambari 视图允许开发人员使用 Apache Ambari 视图框架将 UI 元素插
 
 ## <a name="unsupported-operations"></a>不受支持操作
 
-HDInsight 不支持以下 Ambari 操作：
+HDInsight 上不支持以下 Ambari 操作：
 
 * 移动指标收集器服务。 查看指标收集器服务上的信息时，“服务操作”菜单中的一个可用操作是移动指标收集器。 HDInsight 不支持此操作。
 

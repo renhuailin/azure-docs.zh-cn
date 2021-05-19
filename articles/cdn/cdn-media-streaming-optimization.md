@@ -1,6 +1,6 @@
 ---
 title: 通过 Azure CDN 进行媒体流式处理优化
-description: 了解用于在 Azure 内容分发网络中优化流媒体的选项，例如部分缓存共享和缓存填充等待时间。
+description: 了解 Azure 内容分发网络中优化流媒体的选项，如部分缓存共享和缓存填充等待时间。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192605"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>通过 Azure CDN 进行媒体流式处理优化 
@@ -32,9 +32,9 @@ ms.locfileid: "88192605"
 
 ## <a name="media-streaming-optimizations-for-azure-cdn-from-microsoft"></a>Microsoft 的 Azure CDN 的媒体流式处理优化
 
-**Microsoft 的 Azure CDN 标准版**终结点可通过使用常规 Web 交付优化类型直接交付流媒体资产。 
+**Microsoft 的 Azure CDN 标准版** 终结点可通过使用常规 Web 交付优化类型直接交付流媒体资产。 
 
-**Microsoft 的 Azure CDN 标准版**的媒体流式处理优化对于使用单个媒体片段进行交付的实时或点播视频流媒体很有效。 此过程与通过渐进式下载或使用字节范围请求进行传输的单个大型资产不同。 有关这种形式的媒体交付的信息，请参阅[使用 Azure CDN 进行大型文件下载优化](cdn-large-file-optimization.md)。
+**Microsoft 的 Azure CDN 标准版** 的媒体流式处理优化对于使用单个媒体片段进行交付的实时或点播视频流媒体很有效。 此过程与通过渐进式下载或使用字节范围请求进行传输的单个大型资产不同。 有关这种形式的媒体交付的信息，请参阅[使用 Azure CDN 进行大型文件下载优化](cdn-large-file-optimization.md)。
 
 常规媒体交付或点播视频媒体交付优化类型使用具备后端优化能力的 Azure 内容分发网络 (CDN) 来更快地交付媒体资产。 它们还基于随着时间推移总结出的最佳做法使用媒体资产的配置。
 
@@ -44,7 +44,7 @@ ms.locfileid: "88192605"
 
 ## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Verizon 的 Azure CDN 的流媒体优化
 
-**Verizon 的 Azure CDN 标准版**和 **Verizon 的 Azure CDN 高级版**终结点可通过使用常规 Web 交付优化类型直接交付流媒体资产。 默认情况下，CDN 上还有几个功能可直接协助交付媒体资产。
+**Verizon 的 Azure CDN 标准版** 和 **Verizon 的 Azure CDN 高级版** 终结点可通过使用常规 Web 交付优化类型直接交付流媒体资产。 默认情况下，CDN 上还有几个功能可直接协助交付媒体资产。
 
 ### <a name="partial-cache-sharing"></a>部分缓存共享
 
@@ -57,33 +57,33 @@ ms.locfileid: "88192605"
  
 ## <a name="media-streaming-optimizations-for-azure-cdn-from-akamai"></a>Akamai 的 Azure CDN 的流媒体优化
  
-**Akamai 的 Azure CDN 标准版**提供了一种功能，可在全球范围内大规模地向用户高效地交付流媒体资产。 该功能可减少延迟，因为它减少了源服务器上的负载。 此功能适用于标准 Akamai 定价层。 
+**Akamai 的 Azure CDN 标准版** 提供了一种功能，可在全球范围内大规模地向用户高效地交付流媒体资产。 该功能可减少延迟，因为它减少了源服务器上的负载。 此功能适用于标准 Akamai 定价层。 
 
-**Akamai 的 Azure CDN 标准版**的媒体流式处理优化对于使用单个媒体片段进行交付的实时或点播视频流媒体很有效。 此过程与通过渐进式下载或使用字节范围请求进行传输的单个大型资产不同。 有关这种形式的媒体交付的信息，请查看[大型文件优化](cdn-large-file-optimization.md)。
+**Akamai 的 Azure CDN 标准版** 的媒体流式处理优化对于使用单个媒体片段进行交付的实时或点播视频流媒体很有效。 此过程与通过渐进式下载或使用字节范围请求进行传输的单个大型资产不同。 有关这种形式的媒体交付的信息，请查看[大型文件优化](cdn-large-file-optimization.md)。
 
 常规媒体交付或点播视频媒体交付优化类型使用具备后端优化能力的 CDN 来更快地交付媒体资产。 它们还基于随着时间推移总结出的最佳做法使用媒体资产的配置。
 
 ### <a name="configure-an-akamai-cdn-endpoint-to-optimize-media-streaming"></a>配置 Akamai CDN 终结点来优化媒体流式处理
  
-你可以配置内容分发网络 (CDN) 终结点，以优化通过 Azure 门户的大型文件分发。 也可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户进行的 **Akamai 推出的 Azure CDN 标准版**配置文件的分发过程：
+你可以配置内容分发网络 (CDN) 终结点，以优化通过 Azure 门户的大型文件分发。 也可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户进行的 **Akamai 推出的 Azure CDN 标准版** 配置文件的分发过程：
 
-1. 若要添加新的终结点，请在 Akamai“CDN 配置文件”**** 页上选择“终结点”****。
+1. 若要添加新的终结点，请在 Akamai“CDN 配置文件”页上选择“终结点”。
   
     ![新建终结点](./media/cdn-media-streaming-optimization/cdn-new-akamai-endpoint.png)
 
-2. 在“针对以下项优化”**** 下拉列表中，针对点播视频资产选择“点播视频媒体流”****。 如果对实时流和点播视频流进行了组合，请选择“常规媒体流”****。
+2. 在“针对以下项优化”下拉列表中，针对点播视频资产选择“点播视频媒体流”。 如果对实时流和点播视频流进行了组合，请选择“常规媒体流”。
 
     ![已选择“流式处理”](./media/cdn-media-streaming-optimization/02_Creating.png) 
  
 创建 CDN 终结点后，它会将优化应用于符合特定条件的所有文件。 以下部分介绍了此过程。 
 
-### <a name="caching"></a>缓存
+### <a name="caching"></a>Caching
 
-如果 **Akamai 的 Azure CDN 标准版**检测到资产属于流式处理清单或片段，则使用与常规 Web 交付不同的缓存到期时间。  (查看下表中的完整列表。 ) 为 "始终"，则会遵守从来源发送的缓存控制或到期标头。 如果该资产不是媒体资产，则通过用于常规 Web 交付的过期时间进行缓存。
+如果 **Akamai 的 Azure CDN 标准版** 检测到资产属于流式处理清单或片段，则使用与常规 Web 交付不同的缓存到期时间。 （请参阅下表中的完整列表。）与往常一样，遵循从源发送的 Cache-Control 或 Expires 标头。 如果该资产不是媒体资产，则通过用于常规 Web 交付的过期时间进行缓存。
 
 如果多个用户请求尚不存在的片段，较短的负缓存时间对于源卸载很有用。 例如，在那一秒无法从源获取实时流的数据包。 较长的缓存间隔时间还有助于从源卸载请求，因为通常不会修改视频内容。
 
-| 缓存  | 常规 Web 传送 | 常规媒体流式处理 | 点播视频媒体流式处理  
+| Caching  | 常规 Web 传送 | 常规媒体流式处理 | 点播视频媒体流式处理  
 |--- | --- | --- | ---
 | 缓存：正 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |365 天 | 365 天   
 | 缓存：负 <br> HTTP 204、305、404 <br> 和 405 | 无 | 1 秒 | 1 秒

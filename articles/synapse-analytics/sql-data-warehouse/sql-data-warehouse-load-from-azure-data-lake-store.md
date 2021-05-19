@@ -1,34 +1,34 @@
 ---
 title: 从 Azure Data Lake Storage 加载数据的教程
-description: 使用 COPY 语句加载专用 SQL 池 Azure Data Lake Storage 的数据。
+description: 使用 COPY 语句从 Azure Data Lake Storage 为专用 SQL 池加载数据。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/20/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 0974e880b75cce69f2b5ac82e3c4b39de53e03ce
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: ca57c6200cf7006a89be4b1fd621974559e5b514
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677098"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606117"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>将数据从 Azure Data Lake Storage 加载到 Azure Synapse Analytics 中的专用 SQL 池
 
-本指南概述了如何使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) 从 Azure Data Lake Storage 中加载数据。 有关跨所有身份验证方法使用 COPY 语句的快速示例，请访问以下文档： [使用专用 SQL 池安全地加载数据](./quickstart-bulk-load-copy-tsql-examples.md)。
+本指南概述如何使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)从 Azure Data Lake Store 加载数据。 有关跨所有身份验证方法使用 COPY 语句的快速示例，请访问以下文档：[使用专用 SQL 池安全地加载数据](./quickstart-bulk-load-copy-tsql-examples.md)。
 
 > [!NOTE]  
-> 若要在 COPY 语句上提供反馈或报告问题，请将电子邮件发送到以下通讯组列表： sqldwcopypreview@service.microsoft.com 。
+> 若要提供有关 COPY 语句的反馈或报告相关问题，请将电子邮件发送到以下通讯组列表：sqldwcopypreview@service.microsoft.com。
 >
 > [!div class="checklist"]
 >
 > * 创建要从 Azure Data Lake Storage 加载数据的目标表。
-> * 创建 COPY 语句，以便将数据加载到数据仓库中。
+> * 创建 COPY 语句将数据加载到数据仓库。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -38,8 +38,8 @@ ms.locfileid: "98677098"
 
 若要运行本教程，需要：
 
-* 专用的 SQL 池。 请参阅 [创建专用 SQL 池和查询数据](create-data-warehouse-portal.md)。
-* Data Lake Storage 帐户。 请参阅 [Azure Data Lake Storage 入门](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 对于此存储帐户，你将需要配置或指定要加载的以下凭据之一：存储帐户密钥、共享访问签名 (SAS) 密钥、Azure 目录应用程序用户或拥有存储帐户相应 Azure 角色的 AAD 用户。
+* 专用 SQL 池。 请参阅[创建专用 SQL 池和查询数据](create-data-warehouse-portal.md)。
+* Data Lake Storage 帐户。 请参阅 [Azure Data Lake Storage 入门](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 对于此存储帐户，需要配置或指定以下凭据之一以进行加载：存储帐户密钥、共享访问签名 (SAS) 密钥、Azure Directory 应用程序用户或是具有存储帐户的相应 Azure 角色的 AAD 用户。
 
 ## <a name="create-the-target-table"></a>创建目标表
 
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>创建 COPY 语句
 
-连接到 SQL 专用池并运行 COPY 语句。 有关示例的完整列表，请访问以下文档： [使用专用 SQL 池安全地加载数据](./quickstart-bulk-load-copy-tsql-examples.md)。
+连接到 SQL 专用池并运行 COPY 语句。 要获得完整的示例列表，请访问以下文档：[使用专用 SQL 池安全地加载数据](./quickstart-bulk-load-copy-tsql-examples.md)。
 
 ```sql
 -- B: Create and execute the COPY statement

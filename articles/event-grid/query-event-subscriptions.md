@@ -1,13 +1,13 @@
 ---
 title: 查询 Azure 事件网格订阅
-description: 本文介绍如何列出 Azure 订阅中的事件网格订阅。 可以根据订阅类型提供不同的参数。
+description: 本文介绍了如何列出 Azure 订阅中的事件网格订阅。 你需要根据订阅类型提供不同的参数。
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 3d700f543bc5e3c7add2a346c10acf975e1c2462
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86120443"
 ---
 # <a name="query-event-grid-subscriptions"></a>查询事件网格订阅 

@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
 ms.openlocfilehash: f35f1d390762d3f83176d7b36db8959dc5ed0157
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92204871"
 ---
 # <a name="optimize-expressroute-routing"></a>优化 ExpressRoute 路由
-有多个 ExpressRoute 线路时，可以通过多个路径连接到 Microsoft。 结果就是，所采用的路由可能不是最理想的 - 也就是说，流量可能会经历较长的路径才能到达 Microsoft，而 Microsoft 的流量也可能会经历较长的路径才能到达网络。 网络路径越长，延迟越严重。 延迟对应用程序性能和用户体验有直接影响。 本文详述此问题，并说明如何使用标准路由技术来优化路由。
+有多个 ExpressRoute 线路时，可以通过多个路径连接到 Microsoft。 结果就是，所采用的路由可能不是最理想的 - 也就是说，流量可能会经历较长的路径才能到达 Microsoft，而 Microsoft 的流量也可能会经历较长的路径才能到达网络。 网络路径越长，延迟越严重。 延迟对应用程序性能和用户体验有直接影响。 本文将详述此问题，并说明如何使用标准路由技术来优化路由。
 
 ## <a name="path-selection-on-microsoft-and-public-peerings"></a>Microsoft 和公共对等互连的路径选择
-如果你有一个或多个 ExpressRoute 线路，以及通过 Internet Exchange (IX) 或 Internet 服务提供商 (ISP) 连接到 Internet 的路径，则在使用 Microsoft 或 公共对等互连时，确保流量在所需的路径上流动非常重要。 BGP 利用基于许多因素的最佳路径选择算法，包括最长前缀匹配 (LPM)。 为确保通过 Microsoft 或公共对等互连发往 Azure 的流量遍历 ExpressRoute 路径，客户必须实现“Local Preference”（本地优先级）  属性，以确保该路径始终是 ExpressRoute 上的首选路径。 
+如果你有一个或多个 ExpressRoute 线路，以及通过 Internet Exchange (IX) 或 Internet 服务提供商 (ISP) 连接到 Internet 的路径，则在使用 Microsoft 或 公共对等互连时，确保流量在所需的路径上流动非常重要。 BGP 利用基于许多因素的最佳路径选择算法，包括最长前缀匹配 (LPM)。 为确保通过 Microsoft 或公共对等互连发往 Azure 的流量遍历 ExpressRoute 路径，客户必须实现“Local Preference”（本地优先级）属性，以确保该路径始终是 ExpressRoute 上的首选路径。 
 
 > [!NOTE]
 > 默认的本地优先级通常为 100。 本地优先级越高越好。 
@@ -27,24 +27,24 @@ ms.locfileid: "92204871"
 
 请考虑以下示例场景：
 
-![此图显示了 ExpressRoute 案例 1-从客户到 Microsoft 的不理想问题路由](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+![此图显示了 ExpressRoute 案例 1 问题 - 从客户到 Microsoft 的路由欠佳](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
 在上面的示例中，要首选 ExpressRoute路径，请按如下所示配置“本地优先级”。 
 
 **从 R1 角度看 Cisco IOS-XE 配置：**
 
-- R1 (config) # 路由映射首选-.Exr 允许10
-- R1 (配置-路由) # set 本地-首选项150
+- R1(config)#route-map prefer-ExR permit 10
+- R1(config-route-map)#set local-preference 150
 
-- R1 (config) # 路由器 BGP 345
-- R1 (config) # 邻1.1.1.2 远程身份12076
-- R1 (config-路由器) # 邻居 1.1.1.2 activate
-- R1 (config-路由器) # 邻居1.1.1。2
+- R1(config)#router BGP 345
+- R1(config-router)#neighbor 1.1.1.2 remote-as 12076
+- R1(config-router)#neighbor 1.1.1.2 activate
+- R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
 
 **从 R1 角度看 Junos 配置：**
 
-- user@R1# 设置协议 bgp group ibgp 内部类型
-- user@R1# 设置协议 bgp group ibgp local-首选项150
+- user@R1# set protocols bgp group ibgp type internal
+- user@R1# set protocols bgp group ibgp local-preference 150
 
 
 
@@ -54,7 +54,7 @@ ms.locfileid: "92204871"
 ![ExpressRoute 案例 1 问题 - 从客户到 Microsoft 的路由欠佳](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
 ### <a name="solution-use-bgp-communities"></a>解决方案：使用 BGP 社区
-要优化两个办公室的用户的路由，需要知道哪个前缀来自 Azure 美国西部，哪个前缀来自 Azure 美国东部。 我们使用 [BGP 社区值](expressroute-routing.md)对此信息进行编码。 我们为每个 Azure 区域分配了唯一的 BGP 社区值，例如 "12076:51004" （对于美国东部，"12076:51006"）。 现在，知道了哪个前缀来自哪个 Azure 区域，因此可以配置哪个 ExpressRoute 线路应该为首选线路。 由于我们使用 BGP 来交换路由信息，因此可以使用 BGP 的“本地首选项”来影响路由。 在我们的示例中，可以在美国西部将比美国东部更高的本地首选项值分配给 13.100.0.0/16。类似地，可以在美国东部将比美国西部更高的本地首选项值分配给 23.100.0.0/16。 此配置将确保当通往 Microsoft 的两个路径都可用时，在洛杉矶的用户将使用美国西部的 ExpressRoute 线路连接到 Azure 美国西部，而你在纽约的用户将使用美国东部的 ExpressRoute 连接到 Azure 美国东部。 两边的路由都获得了优化。 
+要优化两个办公室的用户的路由，需要知道哪个前缀来自 Azure 美国西部，哪个前缀来自 Azure 美国东部。 我们使用 [BGP 社区值](expressroute-routing.md)对此信息进行编码。 我们向每个 Azure 区域分配了唯一的 BGP 社区值，例如：为美国东部分配“12076:51004”，为美国西部分配“12076:51006”。 现在，知道了哪个前缀来自哪个 Azure 区域，因此可以配置哪个 ExpressRoute 线路应该为首选线路。 由于我们使用 BGP 来交换路由信息，因此可以使用 BGP 的“本地首选项”来影响路由。 在我们的示例中，可以在美国西部将比美国东部更高的本地首选项值分配给 13.100.0.0/16。类似地，可以在美国东部将比美国西部更高的本地首选项值分配给 23.100.0.0/16。 此配置将确保当通往 Microsoft 的两个路径都可用时，在洛杉矶的用户将使用美国西部的 ExpressRoute 线路连接到 Azure 美国西部，而你在纽约的用户将使用美国东部的 ExpressRoute 连接到 Azure 美国东部。 两边的路由都获得了优化。 
 
 ![ExpressRoute 案例 1 解决方法 - 使用 BGP 社区](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
 

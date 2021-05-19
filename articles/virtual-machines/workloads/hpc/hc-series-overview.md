@@ -1,5 +1,5 @@
 ---
-title: HC 系列 VM 概述-Azure 虚拟机 |Microsoft Docs
+title: HC 系列 VM 概述 - Azure 虚拟机 | Microsoft Docs
 description: 了解 Azure 中 HC 系列 VM 大小的预览支持。
 author: vermagit
 ms.service: virtual-machines
@@ -8,56 +8,56 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 746c7ec91c888d9a55722c00f8765915d0043a98
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: c251634710811820ba920b72c1759938758f5d2e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666065"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802806"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虚拟机概述
 
-最大程度地提高 Intel 强处理器上的 HPC 应用程序性能在此新体系结构上处理放置的方法非常好。 在这里，我们将其实现概述为适用于 HPC 应用程序的 Azure HC 系列 Vm。 我们将使用术语 "pNUMA" 引用物理 NUMA 域，使用 "vNUMA" 来引用虚拟化 NUMA 域。 同样，我们将使用术语 "pCore" 来表示物理 CPU 内核，使用 "vCore" 来表示虚拟化的 CPU 内核。
+要在 Intel Xeon 可扩展处理器上最大限度提高 HPC 应用程序性能，需要一种周全的方法来处理这一新体系结构上的放置。 下文概述了如何在适用于 HPC 应用程序的 Azure HC 系列 VM 上实现它。 我们将使用术语“pNUMA”指代物理 NUMA 域，使用“vNUMA”指代虚拟化 NUMA 域。 同样，我们将使用术语“pCore”指代物理 CPU 核心，使用“vCore”指代虚拟化 CPU 核心。
 
-从物理上讲， [HC 系列](../../hc-series.md) 服务器是 2 * 24 核 Intel 强白金 8168 cpu，总共48个物理内核。 每个 CPU 都是单个 pNUMA 域，并且具有对两个 DRAM 通道的统一访问。 Intel 强白金 Cpu 比之前代 (256 KB/核心-> 1 MB/核心) 多4倍的 L2 缓存，同时还会将 L3 缓存与以前的 Intel Cpu 相比 (2.5 MB/内核 > 1.375 MB/核心) 。
+从物理上讲，[HC 系列](../../hc-series.md)服务器是 2 * 24 核 Intel Xeon Platinum 8168 CPU，总共 48 个物理核心。 每个 CPU 都是一个 pNUMA 域，它们对六个 DRAM 通道的访问权限相同。 Intel Xeon Platinum CPU 的 L2 缓存是前几代的 4 倍大（256 KB/核 -> 1 MB/核），同时相比以前的 Intel CPU 还减少了 L3 缓存（2.5 MB/核 -> 1.375 MB/核）。
 
-上述拓扑也会传输到 HC 系列虚拟机监控程序配置。 若要为 Azure 虚拟机监控程序提供空间以在不干扰 VM 的情况下运行，我们保留 pCores 0-1 和 24-25 (即每个套接字上的前 2 pCores) 。 然后，将所有剩余核心的 pNUMA 域分配给 VM。 这样，VM 就会看到：
+上面的拓扑结构也可继承到 HC 系列虚拟机监控程序配置中。 为了给 Azure 虚拟机监控程序提供运行空间而又不干扰 VM，我们预留了 pCore 0-1 和 24-25（即每个套接字上的前 2 个 pCore）。 然后，我们会将 pNUMA 域所有剩余的核心分配给 VM。 这样，VM 就会看到：
 
-`(2 vNUMA domains) * (22 cores/vNUMA) = 44` 每个 VM 的内核数
+每个 VM `(2 vNUMA domains) * (22 cores/vNUMA) = 44` 个核心
 
-VM 没有 pCores 0-1 和24-25 的知识。 因此，它公开每个 vNUMA，就像它在本机具有22个核心一样。
+VM 并不知道自己没有 pCore 0-1 和 24-25。 因此，它公开每个 vNUMA，就像它本身有 22 个核心一样。
 
-Intel （r）白金、黄金和银 Cpu 还引入了一个片上的2D 网格网络，用于在 CPU 插槽内部和外部进行通信。 强烈建议通过处理固定来实现最佳性能和一致性。 进程固定适用于 HC 系列 Vm，因为底层硅按原样公开给来宾 VM。
+Intel Xeon Platinum、Gold 和 Silver CPU 还引入了片上 2D 网格网络，用于在 CPU 插槽内部和外部进行通信。 强烈建议使用进程固定来实现最佳性能和一致性。 进程固定适用于 HC 系列 VM，因为底层硅按原样公开给来宾 VM。
 
-下图显示了为 Azure 虚拟机监控程序和 HC 系列 VM 保留的内核的隔离。
+下图显示了为 Azure 虚拟机监控程序和 HC 系列 VM 保留的核心的隔离。
 
-![为 Azure 虚拟机监控程序和 HC 系列 VM 保留的内核的隔离](./media/hc-series-overview/segregation-cores.png)
+![为 Azure 虚拟机监控程序和 HC 系列 VM 保留的核心的隔离](./media/architecture/hc-segregation-cores.png)
 
 ## <a name="hardware-specifications"></a>硬件规格
 
-| 硬件规范          | HC 系列 VM                     |
+| 硬件规格          | HC 系列 VM                     |
 |----------------------------------|----------------------------------|
-| 核心数                            | 44 (已禁用 HT)                  |
-| CPU                              | Intel 强白金8168         |
-|  (非 AVX) 的 CPU 频率          | 3.7 GHz (单核) ，2.7-3.4 GHz (所有核心)  |
-| 内存                           | 8 GB/核心 (352 总)             |
+| 核心数                            | 44（已禁用 HT）                 |
+| CPU                              | Intel Xeon Platinum 8168         |
+| CPU 频率（非 AVX）          | 3.7 GHz（单核），2.7-3.4 GHz（所有核心） |
+| 内存                           | 8 GB/核心（共 352）            |
 | 本地磁盘                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5   |
-| 网络                          | 50 gb 以太网 (40 Gb 可用) Azure 第二代 SmartNIC    |
+| 网络                          | 50 Gb 以太网（40 Gb 可用）Azure 第二代 SmartNIC    |
 
-## <a name="software-specifications"></a>软件规范
+## <a name="software-specifications"></a>软件规格
 
-| 软件规范     |HC 系列 VM           |
+| 软件规格     |HC 系列 VM           |
 |-----------------------------|-----------------------|
-| 最大 MPI 作业大小            | 13200核心 (使用 singlePlacementGroup = true 的单个虚拟机规模集中的 300 Vm)   |
-| MPI 支持                 | HPC-X，Intel MPI，OpenMPI，MVAPICH2，MPICH，平台 MPI  |
-| 其他框架       | 统一通信 X、libfabric、PGAS |
-| Azure 存储支持       | 标准磁盘和高级磁盘 (最多4个磁盘)  |
-| SRIOV RDMA 的操作系统支持   | CentOS/RHEL 7.6 +、SLES 12 SP4 +、WinServer 2016 +  |
-| Orchestrator 支持        | CycleCloud，Batch  |
+| 最大 MPI 作业大小            | 13200 个核心（单个虚拟机规模中 300 个 VM，且 singlePlacementGroup=true）  |
+| MPI 支持                 | HPC-X、Intel MPI、OpenMPI、MVAPICH2、MPICH、Platform MPI  |
+| 其他框架       | UCX、libfabric、PGAS |
+| Azure 存储支持       | 标准磁盘和高级磁盘（最多 4 个磁盘） |
+| SRIOV RDMA 的操作系统支持   | CentOS/RHEL 7.6+、Ubuntu 16.04+、SLES 12 SP4+、WinServer 2016+  |
+| Orchestrator 支持        | CycleCloud、Batch、AKS；[群集配置选项](../../sizes-hpc.md#cluster-configuration-options)  |
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关 [Intel 强 SP 体系结构](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html)的详细信息。
-- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告以及一些 HPC 示例和结果。
+- 详细了解 [Intel Xeon SP 体系结构](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html)。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
 - 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

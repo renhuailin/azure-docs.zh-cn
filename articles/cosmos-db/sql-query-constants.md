@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93339190"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL 查询常量  
@@ -19,17 +19,17 @@ ms.locfileid: "93339190"
 
  常量，也称为文字值或标量值，是表示一个特定数据值的符号。 常量的格式取决于它所表示的值的数据类型。  
   
- 受支持的标量数据类型：   
+ 受支持的标量数据类型：  
   
-|类型 |值顺序 |  
+|**类型**|值顺序|  
 |-|-|  
-|未定义 |单个值：未定义 |  
-|**Null**|单个值：null |  
-|**布尔值**|值："false"、"true"   。|  
+|**未定义**|单个值：未定义|  
+|**Null**|单个值：null|  
+|**布尔值**|值："false"、"true"。|  
 |**数字**|双精度浮点数，IEEE 754 标准。|  
 |**字符串**|零个或多个 Unicode 字符序列。 字符串必须用单引号或双引号括起来。|  
-|数组 |零个或多个元素序列。 每个元素可以是任何标量数据类型的值，但 **Undefined** 除外。|  
-|**Object**|零个或多个名称/值对的无序集。 当名称为一个Unicode字符串，值可以属于任何标量数据类型，“未定义”除外  。|  
+|数组 |零个或多个元素序列。 每个元素可以是任何标量数据类型的值，“未定义”除外。|  
+|**Object**|零个或多个名称/值对的无序集。 当名称为一个Unicode字符串，值可以属于任何标量数据类型，“未定义”除外。|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>语法
   
@@ -69,7 +69,7 @@ ms.locfileid: "93339190"
   
 * `<null_constant>; null`  
   
-  表示 Null 类型的 null 值 。  
+  表示 Null 类型的 null 值。  
   
 * `<boolean_constant>`  
   
@@ -77,11 +77,11 @@ ms.locfileid: "93339190"
   
 * `false`  
   
-  表示 Boolean 类型的 false 值  。  
+  表示 Boolean 类型的 false 值。  
   
 * `true`  
   
-  表示 Boolean 类型的 true 值  。  
+  表示 Boolean 类型的 true 值。  
   
 * `<number_constant>`  
   
@@ -120,5 +120,5 @@ ms.locfileid: "93339190"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)

@@ -1,102 +1,102 @@
 ---
-title: 管理区域冗余高可用性-Azure 门户 Azure Database for PostgreSQL-灵活服务器
-description: 本文介绍如何通过 Azure 门户在 Azure Database for PostgreSQL 灵活的服务器中启用或禁用区域冗余高可用性。
+title: 管理区域冗余高可用性 - Azure 门户 - Azure Database for PostgreSQL 灵活服务器
+description: 本文介绍如何通过 Azure 门户在 Azure Database for PostgreSQL 灵活服务器中启用或禁用区域冗余高可用性。
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90933339"
 ---
-# <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>管理灵活服务器中的区域冗余高可用性
+# <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>在灵活服务器中管理区域冗余高可用性
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL 灵活服务器以预览版提供
 
-本文介绍如何在灵活的服务器中启用或禁用区域冗余高可用性配置。
+本文介绍在灵活服务器中如何启用或禁用区域冗余高可用性配置。
 
-高可用性功能设置在不同区域中物理分隔主副本和备用副本。 有关更多详细信息，请参阅 [高可用性概念文档](./concepts-high-availability.md)。 你可以选择在创建灵活的服务器时或在创建后启用高可用性。 本页提供如何启用或禁用高可用性的指南。 此操作不会更改其他设置，包括 VNET 配置、防火墙设置和备份保留期。 同样，启用和禁用高可用性是一个联机操作，并且不会影响应用程序的连接和操作。
+高可用性功能预配在不同区域中物理分隔主副本和备用副本。 有关详细信息，请参阅[高可用性概念文档](./concepts-high-availability.md)。 可选择在灵活服务器创建时或创建后启用高可用性。 本页提供了如何启用或禁用高可用性的指南。 此操作不会更改其他设置，包括 VNET 配置、防火墙设置和备份保留。 同样，启用和禁用高可用性是一个联机操作，并且不会影响应用程序的连接和操作。
 
 ## <a name="pre-requisites"></a>先决条件
 
-区域冗余高可用性仅适用于支持多个区域的区域。 
+只有在支持多个区域的区域中才提供区域冗余高可用性。 
 
 ## <a name="enable-high-availability-during-server-creation"></a>在服务器创建过程中启用高可用性
 
-本部分详细介绍了 HA 相关的字段。 创建灵活的服务器时，可以按照以下步骤部署高可用性。
+本部分专门提供了与 HA 相关的字段的详细信息。 创建灵活服务器时，可以按照以下步骤部署高可用性。
 
-1.  在 [Azure 门户](https://portal.azure.com/)中，选择 "灵活服务器"，然后单击 "创建"。  有关如何填写 **订阅**、 **资源组**、 **服务器名称**、 **区域**和其他字段等详细信息的详细信息，请参阅服务器创建的操作方法文档。
+1.  在 [Azure 门户](https://portal.azure.com/)中，选择“灵活服务器”，然后单击“创建”。  有关如何填写“订阅”、“资源组”、“服务器名称”、“区域”和其他字段等详细信息的详细信息，请参阅服务器创建的操作方法文档   。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="查看订阅和区域&quot;:::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="查看订阅和区域":::
 
-2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " **无首选项** "。
-    ![AZ 选择 ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="查看订阅和区域&quot;:::
+2.  选择你的可用性区域。 如果希望将应用程序与数据库并置在相同的可用性区域中以缩短延迟，这非常有用。 如果希望灵活服务器可部署在任意可用性区域上，请选择“无首选项”。
+    ![AZ 选择]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="可用性区域选择":::  
 
-2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " 复选框。
+3.  在“可用性”选项中，单击“区域冗余高可用性”复选框。
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="查看订阅和区域&quot;:::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="“高可用性”复选框":::
 
-2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 "  **配置服务器**"。
+4.  如果要更改默认计算和存储，请单击“配置服务器”。
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="查看订阅和区域&quot;:::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="配置服务器 - 计算+存储":::  
 
-2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " 计算层。 然后，可以从下拉列表中选择所选的 **计算大小** 。
+5.  如果选中“高可用性”选项，将无法选择可突发层。 可选择“常规用途”或“内存优化”计算层 。 然后，可从下拉列表中选择所选的计算大小。
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="查看订阅和区域&quot;:::
-
-2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 ":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="计算层选择":::  
 
 
-6.  使用滑动条选择 GiB 中的 **存储大小** ，并选择7天到35天之间的 **备份保留期** 。
+6.  使用滑动条选择“存储大小”（单位为 GiB），然后选择 7 天到 35 天之间的“备份保持期” 。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="查看订阅和区域&quot;:::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="存储备份"::: 
 
-2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 "::: 
+7. 单击“保存”  。 
 
-7. 单击 **“保存”** 。 
+## <a name="enable-high-availability-post-server-creation"></a>在服务器创建后启用高可用性
 
-## <a name="enable-high-availability-post-server-creation"></a>启用后期服务器创建的高可用性
+按照以下步骤，为现有的灵活服务器启用高可用性。
 
-按照以下步骤为现有的灵活服务器启用高可用性。
+1.  在 [Azure 门户](https://portal.azure.com/)中，选择现有的 PostgreSQL 灵活服务器。
 
-1.  在 [Azure 门户](https://portal.azure.com/)中，选择现有的 PostgreSQL 灵活服务器。
-
-2.  在 "灵活服务器" 页上，单击左侧面板中的 " **高可用性** " 以打开 "高可用性" 页。
+2.  在“灵活服务器”页面上，单击左面板中的“高可用性”以打开“高可用性”页面。
    
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="查看订阅和区域&quot;:::
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="左面板选择"::: 
 
-2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 "   以保存更改。
+3.  单击“区域冗余高可用性”复选框以启用该选项，然后单击“保存”以保存更改  。
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="查看订阅和区域&quot;:::
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="启用高可用性"::: 
 
-2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " 按钮以启用高可用性。
+4.  此时将显示一个确认对话框，指出在启用高可用性后，由于额外的服务器和存储部署，你的成本将增加。
 
-6.  将显示一条通知，指出正在进行高可用性部署。
+5.  单击“启用 HA”按钮以启用高可用性。
+
+6.  此时将显示一条通知，指出高可用性部署正在进行中。
 
 ## <a name="disable-high-availability"></a>禁用高可用性
 
-请按照以下步骤来禁用已配置了区域冗余的灵活服务器的高可用性。
+按照以下步骤，为配置有区域冗余的灵活服务器禁用高可用性。
 
-1.  在 [Azure 门户](https://portal.azure.com/)中，选择现有的 Azure Database for PostgreSQL 灵活服务器。
+1.  在 [Azure 门户](https://portal.azure.com/)中，选择现有的 Azure Database for PostgreSQL 灵活服务器。
 
-2.  在 "灵活服务器" 页上，单击前面板中的 " **高可用性** " 以打开 "高可用性" 页。
+2.  在“灵活服务器”页面上，单击前面板中的“高可用性”以打开“高可用性”页面。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="查看订阅和区域&quot;:::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="左面板选择"::: 
 
-2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " 以保存更改。
+3.  单击“区域冗余高可用性”复选框以禁用该选项 。 然后，单击“保存”以保存更改。
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="查看订阅和区域&quot;:::
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="禁用高可用性"::: 
 
-2.  选择 **可用性区域**。 如果要在数据库所在的同一可用性区域中归置应用程序以降低延迟，这会很有用。 如果希望灵活服务器部署在任何可用性区域上，请选择 " 按钮，禁用高可用性。
+4.  此时将显示一个确认对话框，你可以在其中确认禁用高可用性。
 
-6.  将显示一条通知，指出正在进行高可用性部署。
+5.  单击“禁用 HA”按钮，以禁用高可用性。
+
+6.  此时将显示一条通知，指出正在解除高可用性部署。
 
 ## <a name="next-steps"></a>后续步骤
 
--   了解 [业务连续性](./concepts-business-continuity.md)
--   了解 [区域冗余高可用性](./concepts-high-availability.md)
+-   了解[业务连续性](./concepts-business-continuity.md)
+-   了解[区域冗余高可用性](./concepts-high-availability.md)

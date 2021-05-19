@@ -1,5 +1,5 @@
 ---
-title: 从 macOS 连接到 Windows 虚拟桌面-Azure
+title: 从 macOS 连接到 Windows 虚拟桌面 - Azure
 description: 如何使用 macOS 客户端连接到 Windows 虚拟桌面。
 author: Heidilohr
 ms.topic: how-to
@@ -7,24 +7,24 @@ ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f437c43c1e9ad960910e7576db4b3ddf3f6623ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89230868"
 ---
-# <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>通过 macOS 客户端连接到 Windows 虚拟桌面
+# <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>使用 macOS 客户端连接到 Windows 虚拟桌面
 
-> 适用于： macOS 10.12 或更高版本
+> 适用于：macOS 10.12 或更高版本
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/connect-macos-2019.md)。
 
-可以使用可下载的客户端从 macOS 设备访问 Windows 虚拟桌面资源。 本指南将说明如何设置客户端。
+你可以从 macOS 设备使用可下载的客户端访问 Windows 虚拟桌面资源。 本指南将介绍如何设置客户端。
 
 ## <a name="install-the-client"></a>安装客户端
 
-若要开始，请在 macOS 设备上 [下载](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) 并安装客户端。
+若要开始，请在 macOS 设备上[下载](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)并安装客户端。
 
 ## <a name="subscribe-to-a-feed"></a>订阅源
 
@@ -32,12 +32,12 @@ ms.locfileid: "89230868"
 
 若要订阅源，请执行以下操作：
 
-1. 在主页上选择 " **添加工作区** " 以连接到服务并检索资源。
+1. 选择主页上的“添加工作区”，以连接到服务，并检索资源。
 2. 输入“源 URL”。 该项可以是 URL 或电子邮件地址：
    - 如果使用 URL，请输入管理员提供给你的 URL。 此 URL 通常是 <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>。
    - 若要使用电子邮件地址，请输入你的电子邮件地址。 这会指示客户端搜索与你的电子邮件地址关联的 URL，前提是管理员已采用这种方式配置了服务器。
-   - 若要通过 US Gov 门户进行连接，请使用 <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> 。
-3. 选择“添加”  。
+   - 若要通过 US Gov 门户进行连接，请使用 <https://rdweb.wvd.azure.us/api/arm/feeddiscovery>。
+3. 选择 **添加** 。
 4. 出现提示时，请使用用户帐户登录。
 
 登录后，应该会看到可用资源的列表。
@@ -46,4 +46,4 @@ ms.locfileid: "89230868"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 macOS 客户端的详细信息，请查看 [macOS 客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/) 文档。
+若要详细了解 macOS 客户端，请查看 [macOS 客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/)文档。

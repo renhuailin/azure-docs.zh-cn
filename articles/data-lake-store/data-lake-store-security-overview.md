@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92146300"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的安全性
@@ -39,7 +39,7 @@ ms.locfileid: "92146300"
 
 Azure Active Directory 对用户进行身份验证，以便用户可以访问 Data Lake Storage Gen1。在此之后，授权控制 Data Lake Storage Gen1 的访问权限。 Data Lake Storage Gen1 按以下方式分隔帐户相关活动与数据相关活动的授权：
 
-* 用于帐户管理[ (AZURE RBAC) 的 azure 基于角色的访问控制](../role-based-access-control/overview.md)
+* 用于帐户管理的 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)
 * 用于访问存储区中数据的 POSIX ACL
 
 ### <a name="azure-rbac-for-account-management"></a>用于帐户管理的 Azure RBAC
@@ -52,8 +52,8 @@ Azure Active Directory 对用户进行身份验证，以便用户可以访问 Da
 
 | 角色 | 管理权限 | 数据访问权限 | 说明 |
 | --- | --- | --- | --- |
-| 未分配角色 |None |受 ACL 约束 |用户不能使用 Azure 门户或 Azure PowerShell cmdlet 来浏览 Data Lake Storage Gen1。 用户只可以使用命令行工具。 |
-| 所有者 |全部 |全部 |所有者角色为超级用户。 此角色可以管理所有内容，并具有对数据的完全访问权限。 |
+| 未分配角色 |无 |受 ACL 约束 |用户不能使用 Azure 门户或 Azure PowerShell cmdlet 来浏览 Data Lake Storage Gen1。 用户只可以使用命令行工具。 |
+| “所有者” |全部 |全部 |所有者角色为超级用户。 此角色可以管理所有内容，并具有对数据的完全访问权限。 |
 | 读取器 |只读 |受 ACL 约束 |Reader 角色可以查看与帐户管理相关的所有内容，例如，向角色分配的用户。 Reader 角色不能进行任何更改。 |
 | 参与者 |除了添加和删除角色的所有角色 |受 ACL 约束 |参与者角色可以管理帐户的某些方面，如部署、创建和管理警报。 参与者角色不能添加或删除角色。 |
 | 用户访问管理员 |添加和删除角色 |受 ACL 约束 |用户访问管理角色可以管理对帐户的用户访问权限。 |
@@ -74,7 +74,7 @@ Data Lake Storage Gen1 是一个类似于 Hadoop 分布式文件系统 (HDFS) �
 
 ![防火墙设置和 IP 访问](./media/data-lake-store-security-overview/firewall-ip-access.png "防火墙设置和 IP 地址")
 
-Azure 虚拟网络 (VNet) 支持 Data Lake 第1代服务标记。 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 有关详细信息，请参阅 [Azure 服务标记概述](../virtual-network/service-tags-overview.md)。
+Azure 虚拟网络 (VNet) 支持 Data Lake Gen 1 服务标记。 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 有关详细信息，请参阅 [Azure 服务标记概述](../virtual-network/service-tags-overview.md)。
 
 ## <a name="data-protection"></a>数据保护
 
@@ -105,7 +105,7 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 
 ### <a name="diagnostics-logs"></a>诊断日志
 
-可以在 Azure 门户中启用数据访问审核和诊断日志记录，并将日志发送到 Azure Blob 存储帐户、事件中心或 Azure Monitor 日志。
+可以在 Azure 门户中启用数据访问审核以及诊断日志记录，并将日志发送到 Azure Blob 存储帐户、事件中心或 Azure Monitor 日志。
 
 ![诊断日志](./media/data-lake-store-security-overview/diagnostic-logs.png "诊断日志")
 
@@ -117,7 +117,7 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 
 如果想要了解 Data Lake Storage Gen1 中的新功能，请在 [Data Lake Storage Gen1 UserVoice 论坛](https://feedback.azure.com/forums/327234-data-lake)中向我们发送反馈。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
