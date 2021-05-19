@@ -1,18 +1,15 @@
 ---
 title: 使用 Azure Monitor 日志监视 Azure Site Recovery
 description: 了解如何使用 Azure Monitor 日志 (Log Analytics) 监视 Azure Site Recovery
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
-ms.author: raynew
-ms.openlocfilehash: 308e1bcf042feb15179d32844d8c569af6166619
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: eb38f7c2df6a8ad00009a0b7fc9c03638c33034c
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571677"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581750"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 Site Recovery
 
@@ -28,7 +25,7 @@ Azure Monitor 日志提供一个日志数据平台用于收集活动和资源日
 支持结合 Site Recovery 使用 Azure Monitor 日志进行“Azure 到 Azure”的复制，以及“VMware VM/物理服务器到 Azure”的复制 。
 
 > [!NOTE]
-> 若要获取 VMware 和物理计算机的改动数据日志和上传速率日志，需要在进程服务器上安装 Microsoft monitoring agent。 此代理可将复制计算机的日志发送到工作区。 此功能仅适用于 9.30 移动代理版本和更高版本。
+> 若要获取 VMware 和物理计算机的变动数据日志和上传速率日志，需要在进程服务器上安装 Microsoft 监视代理。 此代理可将复制计算机的日志发送到工作区。 此功能仅适用于 9.30 移动代理版本和更高版本。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -55,9 +52,9 @@ Azure Monitor 日志提供一个日志数据平台用于收集活动和资源日
 
 Site Recovery 日志将开始馈送到选定工作区中的某个表 (**AzureDiagnostics**) 内。
 
-## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>在进程服务器上配置 Microsoft monitoring agent 以发送改动和上传速率日志
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>在进程服务器上配置 Microsoft 监视代理以发送变动和上传速率日志
 
-可以在本地捕获 VMware/物理计算机的数据变动速率信息和源数据上传速率信息。 若要启用此操作，需要在进程服务器上安装 Microsoft monitoring agent。
+可以在本地捕获 VMware/物理计算机的数据变动速率信息和源数据上传速率信息。 若要启用此功能，需要在进程服务器上安装 Microsoft 监视代理。
 
 1. 转到 Log Analytics 工作区并单击“高级设置”。
 2. 单击“连接的源”页面，然后选择“Windows Server” 。

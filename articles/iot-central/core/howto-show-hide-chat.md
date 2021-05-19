@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: f290395f4bd7afccace5067a97e63dda553f183c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91999722"
 ---
 # <a name="toggle-live-chat"></a>切换实时聊天
@@ -24,7 +24,7 @@ ms.locfileid: "91999722"
 
 ## <a name="chat-with-us"></a>与我们聊天
 
-若要获得技术支持，请打开 IoT Central 应用程序，然后选择“与我们聊天”  。
+若要获得技术支持，请打开 IoT Central 应用程序，然后选择“与我们聊天”。
 
 ![与我们聊天](media/howto-show-hide-chat/chat-with-us.png)
 

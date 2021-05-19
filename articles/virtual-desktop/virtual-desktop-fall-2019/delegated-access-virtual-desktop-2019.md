@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
-manager: femila
-ms.openlocfilehash: d683548c32baa37f9657541d90d7a58561a1d723
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+manager: lizross
+ms.openlocfilehash: 0152dc5102fd3f77418448234cab1234d25b97c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445017"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "88008145"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Windows 虚拟桌面（经典）中的委托访问
 
@@ -27,7 +27,7 @@ Windows 虚拟桌面有一个委托访问模型，可通过为特定用户分配
     * 服务主体
 * 角色定义
     * 内置角色
-* 范围
+* 作用域
     * 租户组
     * 租户
     * 主机池

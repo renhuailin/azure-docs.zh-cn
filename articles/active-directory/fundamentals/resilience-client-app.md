@@ -12,10 +12,10 @@ ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
 ms.openlocfilehash: bc3b041e44fad66a4edc6ff34c0e534dc423de86
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99226584"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>提高你开发的客户端应用程序中身份验证和授权的复原能力
@@ -97,7 +97,7 @@ return myMSALObj.acquireTokenSilent(request).catch(error => {
 
 ### <a name="cache-tokens"></a>缓存令牌
 
-应用应当正确缓存从 Microsoft 标识收到的令牌。 当你的应用接收令牌时，包含令牌的 HTTP 响应还会包含一个“expires_in”属性，该属性告知应用程序缓存和重复使用令牌的时间长度。 应用程序必须使用 "expires_in" 属性来确定令牌的使用期限，这一点非常重要。 应用程序绝对不得尝试对 API 访问令牌进行解码。
+应用应当正确缓存从 Microsoft 标识收到的令牌。 当你的应用接收令牌时，包含令牌的 HTTP 响应还会包含一个“expires_in”属性，该属性告知应用程序缓存和重复使用令牌的时间长度。 应用程序必须使用“expires_in”属性来确定令牌的有效期。 应用程序绝对不得尝试对 API 访问令牌进行解码。
 
 ![应用程序调用 Microsoft 标识，但该调用会通过运行此应用程序的设备上的令牌缓存来进行](media/resilience-client-app/token-cache.png)
 
@@ -165,7 +165,7 @@ Microsoft Graph 提供了一个统一的 API 终结点，用于访问描述组�
 
 ![某个应用程序调用 Microsoft 标识，但该调用通过运行该应用程序的设备上的令牌缓存以及令牌存储和身份验证代理来进行](media/resilience-client-app/authentication-broker.png)
 
-MSAL 自动支持代理身份验证。 可以在以下页上找到有关使用中转身份验证的详细信息：
+MSAL 自动支持代理身份验证。 可以在以下页面上找到有关使用中介身份验证的详细信息：
 
 - [在 macOS 和 iOS 上配置 SSO](../develop/single-sign-on-macos-ios.md#sso-through-authentication-broker-on-ios)
 - [如何使用 MSAL 在 Android 上启用跨应用 SSO](../develop/msal-android-single-sign-on.md)

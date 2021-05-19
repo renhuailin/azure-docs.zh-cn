@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/19/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d210da4b653a20dd273dfce723f0bf9d5dbf743b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101737811"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
@@ -20,7 +20,7 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 > [!NOTE]
 > Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授予对服务总线命名空间及其实体的访问权限。 使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供比共享访问签名 (SAS) 更高的安全性和易用性。 使用 Azure AD，不需要在代码中存储令牌，也不需要冒潜在的安全漏洞风险。
 >
-> Microsoft 建议尽可能将 Azure AD 用于 Azure 服务总线应用程序。 有关详细信息，请参阅以下文章：
+> Microsoft 建议尽量对 Azure 服务总线应用程序使用 Azure AD。 有关详细信息，请参阅以下文章：
 > - [使用 Azure Active Directory 对应用程序进行身份验证和授权，使之能够访问 Azure 服务总线实体](authenticate-application.md)。
 > - [使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源](service-bus-managed-service-identity.md)
 
@@ -63,7 +63,7 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 - **如果需要，让客户端自动续订 SAS**：客户端应在到期时间之前很久就续订 SAS，这样，即使提供 SAS 的服务不可用，客户端也有时间重试。 如果 SAS 旨在用于少量即时的短期操作，这些操作应在到期时间内完成，则上述做法可能是不必要的，因为不应续订 SAS。 但是，如果客户端定期通过 SAS 发出请求，则有效期可能就会起作用。 需要考虑的主要方面就是在以下两者间进行权衡：对短期 SAS 的需求（如前文所述）以及确保客户端尽早请求续订（以免在成功续订前因 SAS 到期而中断）。
 - **要注意 SAS 开始时间**：如果将 SAS 的开始时间设置为“现在”，则由于时钟偏移（根据不同计算机，当前时间的差异），在前几分钟将会间歇地观察到失败。 通常，将开始时间至少设置为 15 分钟前。 或者根本不设置，这会使它在所有情况下都立即生效。 同样的原则也适用于过期时间。 请记住，对于任何请求，在任一方向你可能会观察到最多 15 分钟的时钟偏移。 
 - **对要访问的资源要具体**：一种安全性最佳做法是向用户提供所需最小权限。 如果某一用户仅需要对单个实体的读取访问权限，则向该用户授予对该单个实体的读取访问权限，而不要授予针对所有实体的读取/写入/删除访问权限。 如果 SAS 泄露，这也有助于降低损失，因为攻击者手中掌握的 SAS 的权限较为有限。
-- **请勿始终使用 sas**：有时，与事件中心的特定操作相关的风险会超出 SAS 的优点。 对于此类操作，应创建一个中间层服务，该服务在执行业务规则验证、身份验证和审核后写入事件中心。
+- **不要总是使用 SAS**：有时，与针对事件中心的特定操作相关联的风险要超过 SAS 所带来的好处。 对于此类操作，应创建一个中间层服务，该服务在执行业务规则验证、身份验证和审核后写入事件中心。
 - **始终使用 HTTPs**：始终使用 HTTPs 创建或分发 SAS。 如果某一 SAS 通过 HTTP 传递并且被截取，则执行中间人攻击的攻击者将能够读取 SAS、并使用它，就像目标用户本可执行的操作一样，这可能会暴露敏感数据或者使恶意用户能够损坏数据。
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>共享访问签名身份验证的配置
@@ -130,9 +130,9 @@ SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>服务总线的共享访问签名身份验证
 
-如下所述的方案包括配置授权规则、生成 SAS 令牌和客户端授权。
+下面所述的方案包括配置授权规则、生成 SAS 令牌和客户端授权。
 
-有关演示配置和使用 SAS 授权的服务总线应用程序的示例，请参阅 [使用服务总线进行共享访问签名身份验证](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule)。
+有关演示配置和使用 SAS 授权的服务总线应用程序的示例，请参阅[服务总线的共享访问签名身份验证](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule)。
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>访问实体上的共享访问授权规则
 

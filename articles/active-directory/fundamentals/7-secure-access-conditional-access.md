@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64209a4d9ca200c69783a4ae317b38beef8ded89
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98222303"
 ---
 # <a name="manage-external-access-with-conditional-access-policies"></a>使用条件访问策略管理外部访问 
@@ -112,7 +112,7 @@ ms.locfileid: "98222303"
 
 4. [使用组以确保安全性](4-secure-access-groups.md)
 
-5. [过渡到 Azure AD B2B](5-secure-access-b2b.md)
+5. [转换到 Azure AD B2B](5-secure-access-b2b.md)
 
 6. [通过权利管理实现安全访问](6-secure-access-entitlement-managment.md)
 

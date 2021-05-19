@@ -1,17 +1,17 @@
 ---
 title: Azure 数据工厂中的复制活动
 description: 了解 Azure 数据工厂中的复制活动。 可以使用复制活动将数据从支持的源数据存储复制到支持的接收器数据存储。
-author: jianleishen
+author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.author: jianleishen
-ms.openlocfilehash: df26bdcc76b894991393019a12da71df2f893b6b
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.author: jingwang
+ms.openlocfilehash: d52a0bba5fddaa865b8fad74b778ba7a3838b2a4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488656"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100387897"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -42,11 +42,11 @@ ms.locfileid: "109488656"
 
 ## <a name="supported-data-stores-and-formats"></a>支持的数据存储和格式
 
-[!INCLUDE [data-factory-v2-supported-data-stores](includes/data-factory-v2-supported-data-stores.md)]
+[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores.md)]
 
 ### <a name="supported-file-formats"></a>支持的文件格式
 
-[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
 可以使用复制活动在两个基于文件的数据存储之间按原样复制文件，在这种情况下，无需任何序列化或反序列化即可高效复制数据。 此外，还可以分析或生成给定格式的文件。例如，可以执行以下操作：
 
@@ -62,7 +62,7 @@ ms.locfileid: "109488656"
 
 ## <a name="configuration"></a>配置
 
-[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 通常，若要使用 Azure 数据工厂中的复制活动，需要执行以下操作：
 

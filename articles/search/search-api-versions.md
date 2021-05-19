@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.openlocfilehash: d2308d065755df834a224ef3b1df202d7b7dc5ae
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100518940"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure 认知搜索中的 API 版本
@@ -76,7 +76,7 @@ Azure 认知搜索服务实例支持几个 REST API 版本，包括最新版本�
 |-------------------------|--------|------------------------------|
 | [管理 2020-08-01](/rest/api/searchmanagement/) | Stable | 管理 REST API 的最新稳定版本。 为所有出站访问的资源（预览版中注明的资源除外）添加通用的共享专用链接资源支持 |
 | [管理 2020-08-01-Preview](/rest/api/searchmanagement/index-preview) | 预览  | 当前处于预览状态：对 Azure Functions 和 Azure Database for MySQL 的共享专用链接资源支持。 |
-| 管理 2020-03-13  | Stable | 通过专用链接、新服务的[网络 IP 规则](service-configure-firewall.md)添加[专用终结点](service-create-private-endpoint.md)。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01)。 |
+| 管理 2020-03-13  | Stable | 通过专用链接添加[专用终结点](service-create-private-endpoint.md)，并为新服务添加[网络 IP 规则](service-configure-firewall.md)。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01)。 |
 | 管理 2019-10-01-Preview | 预览  | 此列表中没有引入预览功能。 此预览版在功能上等同于 2020-03-13。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview)。 |
 | 管理 2015-08-19  | Stable | 管理 REST API 的第一个正式发布版本。 提供服务预配、纵向扩展和 API 密钥管理。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)。 |
 | 管理 2015-08-19-Preview  | 预览 | 管理 REST API 的第一个预览版本。 有关详细信息，请参阅此 [swagger 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)。 |
@@ -87,7 +87,7 @@ Azure 认知搜索服务实例支持几个 REST API 版本，包括最新版本�
 
 | SDK 版本 | 状态 | 描述 |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Azure .NET SDK 中的新客户端库，2020 年 7 月发布。 面向搜索 REST api 版本 = 2020-06-30 REST API 但尚不提供对地域筛选器的本机支持。 建议为地理操作提供 [Microsoft 空间](https://www.nuget.org/packages/Microsoft.Spatial/) 包。 示例可用于 [System.Text.Js上](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) 的和 [Newtonsoft.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)。 |
+| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Azure .NET SDK 中的新客户端库，2020 年 7 月发布。 面向搜索 REST api-version=2020-06-30 REST API，但尚未提供对地理位置筛选的本机支持。 建议对地理操作使用 [Microsoft.Spatial](https://www.nuget.org/packages/Microsoft.Spatial/) 包。 示例可用于 [System.Text.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) 和 [Newtonsoft.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)。 |
 | [Microsoft.Azure.Search 10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | 2019 年 5 月发布。 面向搜索 REST api-version=2019-05-06。|
 | [Microsoft.Azure.Management.Search 4.0.0](/dotnet/api/overview/azure/search/management) | Stable | 针对管理 REST api-version=2020-08-01。  |
 | Microsoft.Azure.Management.Search 3.0.0 | Stable | 针对管理 REST api-version=2015-08-19。  |
@@ -96,19 +96,19 @@ Azure 认知搜索服务实例支持几个 REST API 版本，包括最新版本�
 
 | SDK 版本 | 状态 | 描述  |
 |-------------|--------|------------------------------|
-| [Java azure-search-documents 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Azure Java SDK 中的新客户端库，发布时间为2020年7月。 面向搜索 REST api-version=2019-05-06。 |
+| [Java azure-search-documents 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Azure Java SDK 中的新客户端库，2020 年 7 月发布。 面向搜索 REST api-version=2019-05-06。 |
 | [Java 管理客户端 1.35.0](/java/api/overview/azure/search/management) | Stable | 针对管理 REST api-version=2015-08-19。 |
 
 ## <a name="azure-sdk-for-javascript"></a>用于 JavaScript 的 Azure SDK
 
 | SDK 版本 | 状态 | 说明  |
 |-------------|--------|------------------------------|
-| [JavaScript @azure/search-documents 11。0](https://www.npmjs.com/package/@azure/search-documents) | Stable | 来自 Azure JavaScript & TypesScript SDK 的新客户端库，发布时间为2020年7月。 面向搜索 REST api-version=2016-09-01。 |
+| [JavaScript @azure/search-documents 11.0](https://www.npmjs.com/package/@azure/search-documents) | Stable | Azure JavaScript 与 TypesScript SDK 中的新客户端库，2020 年 7 月发布。 面向搜索 REST api-version=2016-09-01。 |
 | [JavaScript @azure/arm-search](https://www.npmjs.com/package/@azure/arm-search) | Stable | 针对管理 REST api-version=2015-08-19。 |
 
 ## <a name="azure-sdk-for-python"></a>用于 Python 的 Azure SDK
 
 | SDK 版本 | 状态 | 描述  |
 |-------------|--------|------------------------------|
-| [Python azure-search-documents 11.0](https://pypi.org/project/azure-search-documents/) | Stable | 从2020年7月发布的 Azure Python SDK 中的新客户端库。 面向搜索 REST api-version=2019-05-06。 |
-| [Python azure 管理-搜索8。0](https://pypi.org/project/azure-mgmt-search/) | Stable | 针对管理 REST api-version=2015-08-19。 |
+| [Python azure-search-documents 11.0](https://pypi.org/project/azure-search-documents/) | Stable | Azure Python SDK 中的新客户端库，2020 年 7 月发布。 面向搜索 REST api-version=2019-05-06。 |
+| [Python azure-mgmt-search 8.0](https://pypi.org/project/azure-mgmt-search/) | Stable | 针对管理 REST api-version=2015-08-19。 |

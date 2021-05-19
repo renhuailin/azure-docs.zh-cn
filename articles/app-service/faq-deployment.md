@@ -10,10 +10,10 @@ ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88080467"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的部署常见问题解答
@@ -33,7 +33,7 @@ ms.locfileid: "88080467"
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>尝试从 Visual Studio 进行部署时，收到了一条错误消息。 如何解决此错误？
 
-如果看到以下消息，则你可能在使用较旧版本的 SDK：“在部署资源组‘YourResourceGroup’中的资源‘YourResourceName’期间出错: MissingRegistrationForLocation: 未注册位置‘美国中部’中资源类型‘组件’的订阅。 重新注册此提供程序以便有权访问此位置。 " 
+如果看到以下消息，则你可能在使用较旧版本的 SDK：“在部署资源组‘YourResourceGroup’中的资源‘YourResourceName’期间出错: MissingRegistrationForLocation: 未注册位置‘美国中部’中资源类型‘组件’的订阅。 要访问此位置，请重新注册此提供程序。” 
 
 若要解决此错误，请升级到[最新 SDK](https://azure.microsoft.com/downloads/)。 如果使用的是最新 SDK 但也收到了此消息，请提交支持请求。
 

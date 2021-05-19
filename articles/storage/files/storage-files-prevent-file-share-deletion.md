@@ -4,16 +4,16 @@ description: 了解 Azure 文件共享的软删除，以及如何将其用于数
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 03/29/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 0fecc9fc954a1ac648e8f60badf69ad1d2e8f1cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-ms.translationtype: MT
+ms.openlocfilehash: a879aff7c3fcaa7ac2c15be295c6c5bdca25ccdf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126934"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937288"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>防止意外删除 Azure 文件共享
 
@@ -33,7 +33,7 @@ Azure 存储为文件共享提供软删除。 使用软删除，可在应用程�
 
 ### <a name="enabling-or-disabling-soft-delete"></a>启用或禁用软删除
 
-文件共享的软删除在存储帐户级别启用，因此软删除设置适用于存储帐户中的所有文件共享。 可以在任何时候启用或禁用软删除。 当你创建新的存储帐户时，默认情况下禁用文件共享的软删除功能，你可以在部署期间或之后的任何时间启用它。 默认情况下，将对现有存储帐户禁用软删除。 如果已为 Azure 文件共享配置 [azure 文件共享备份](../../backup/azure-file-share-backup-overview.md) ，则会在该共享的存储帐户上自动启用 azure 文件共享的软删除。
+文件共享的软删除在存储帐户级别启用，因此软删除设置适用于存储帐户中的所有文件共享。 默认为新存储帐户启用软删除，并且可随时禁用或启用软删除。 不为现有存储帐户自动启用软删除，除非已为该存储帐户中的 Azure 文件共享配置 [Azure 文件共享备份](../../backup/azure-file-share-backup-overview.md)。 如果配置了 Azure 文件共享备份，则会在该共享的存储帐户上自动启用对 Azure 文件共享的软删除。
 
 如果为文件共享启用软删除、删除一些文件共享，然后又禁用软删除，则在该时间段内保存的文件共享仍可供访问和恢复。 启用软删除时，还需配置保持期。
 

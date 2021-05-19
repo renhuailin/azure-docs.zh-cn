@@ -1,6 +1,6 @@
 ---
 title: 如何将 Azure Blob 存储装载为 Linux 上的文件系统 | Microsoft Docs
-description: 了解如何在 Linux 上使用 blobfuse （一个虚拟文件系统驱动程序）装载 Azure Blob 存储容器。
+description: 了解如何使用 blobfuse（Linux 上的虚拟文件系统驱动程序）装载 Azure Blob 存储容器。
 author: tamram
 ms.service: storage
 ms.subservice: blobs
@@ -9,16 +9,16 @@ ms.date: 2/1/2019
 ms.author: tamram
 ms.reviewer: twooley
 ms.openlocfilehash: 002e8650a5555b70caf09179e03ce1bad1acdef5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98737534"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 将 Blob 存储装载为文件系统
 
 ## <a name="overview"></a>概述
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是 Azure Blob 存储的虚拟文件系统驱动程序。 Blobfuse 允许通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 Blobfuse 使用包含正斜杠 "/" 的虚拟目录方案作为分隔符。  
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是 Azure Blob 存储的虚拟文件系统驱动程序。 Blobfuse 允许通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 Blobfuse 使用虚拟目录方案，并使用正斜杠“/”作为分隔符。  
 
 本指南介绍如何使用 Blobfuse，以及如何在 Linux 上装载 Blob 存储容器并访问数据。 若要详细了解 Blobfuse，请阅读 [Blobfuse 存储库](https://github.com/Azure/azure-storage-fuse)中的详细信息。
 
@@ -28,9 +28,9 @@ ms.locfileid: "98737534"
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>在 Linux 上安装 Blobfuse
-适用于适用于 Ubuntu、Debian、SUSE、CentoOS、Oracle Linux 和 RHEL 分发 [的适用于 Linux 的 Microsoft 软件存储库](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) 中提供了 Blobfuse 二进制文件。 若要在这些发行版上安装 blobfuse，请从列表中配置其中一个存储库。 如果你的发行版没有可用的二进制文件，还可以按照 [Azure 存储安装步骤](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)从源代码生成二进制文件。
+适用于 Ubuntu、Debian、SUSE、CentoOS、Oracle Linux 和 RHEL 发行版的 Blobfuse 二进制文件通过[适用于 Linux 的 Microsoft 软件存储库](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)提供。 若要在这些发行版上安装 blobfuse，请从列表中配置其中一个存储库。 如果你的发行版没有可用的二进制文件，还可以按照 [Azure 存储安装步骤](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)从源代码生成二进制文件。
 
-Blobfuse 支持在 Ubuntu 版本上安装：16.04、18.04 和20.04、RHELversions：7.5、7.8、8.0、8.1、8.2、CentOS 版本：7.0、8.0、Debian 版本：9.0、10.0、SUSE 版本：15、OracleLinux 8.1。 运行以下命令以确保你已部署了以下版本之一：
+支持安装 Blobfuse 的 Ubuntu 版本：16.04、18.04 和 20.04；RHEL 版本：7.5、7.8、8.0、8.1、8.2；CentOS 版本：7.0、8.0；Debian 版本：9.0、10.0；SUSE 版本：15、OracleLinux 8.1。 运行以下命令以确保你已部署了以下版本之一：
 ```
 lsb_release -a
 ```
@@ -38,14 +38,14 @@ lsb_release -a
 ### <a name="configure-the-microsoft-package-repository"></a>配置 Microsoft 包存储库
 配置 [Microsoft 产品的 Linux 包存储库](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)。
 
-例如，在企业 Linux 8 分发上：
+例如，在 Enterprise Linux 8 发行版中：
 ```bash
 sudo rpm -Uvh https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm
 ```
 
 类似地，将 URL 更改为 `.../rhel/7/...`，使之指向 Enterprise Linux 7 发行版。
 
-Ubuntu 20.04 分发上的另一个示例：
+Ubuntu 20.04 发行版上的另一个示例：
 ```bash
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
@@ -56,7 +56,7 @@ sudo apt-get update
 
 ### <a name="install-blobfuse"></a>安装 Blobfuse
 
-在 Ubuntu/Debian 分发上：
+在 Ubuntu/Debian 发行版中：
 ```bash
 sudo apt-get install blobfuse
 ```
@@ -99,15 +99,15 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
-`accountName`是存储帐户的前缀，而不是完整的 URL。
+`accountName` 是存储帐户的前缀，而不是完整的 URL。
 
-使用以下文件创建此文件：
+使用以下内容创建此文件：
 
 ```
 touch ~/fuse_connection.cfg
 ```
 
-创建并编辑此文件后，请确保限制访问，使其他用户不能读取。
+创建并编辑此文件以后，请确保限制对它的访问权限，防止其他用户读取它。
 ```bash
 chmod 600 fuse_connection.cfg
 ```

@@ -3,16 +3,16 @@ title: 使用托管标识进行身份验证
 description: 通过使用用户分配或系统分配的托管 Azure 标识，提供对专用容器注册表中映像的访问。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 213f49356fdc2444f8bc2cb4635e96015aff0a61
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041461"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781534"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 
 
-使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)从另一个 Azure 资源向 Azure 容器注册表验证身份，而无需提供或管理注册表凭据。 例如，在 Linux VM 上设置用户分配或系统分配的托管标识，以便从容器注册表访问容器映像，就像使用公共注册表一样容易。
+使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)从另一个 Azure 资源向 Azure 容器注册表验证身份，而无需提供或管理注册表凭据。 例如，在 Linux VM 上设置用户分配或系统分配的托管标识，以便从容器注册表访问容器映像，就像使用公共注册表一样容易。 或者，将 Azure Kubernetes 服务群集设置为使用其[托管标识](../aks/use-managed-identity.md)从用于 pod 部署的 Azure 容器注册表拉取容器映像。
 
 本文将详细介绍托管标识以及如何：
 
@@ -27,23 +27,14 @@ ms.locfileid: "102041461"
 
 ## <a name="why-use-a-managed-identity"></a>为什么使用托管标识？
 
-Azure 资源的托管标识可在 Azure Active Directory (Azure AD) 中为 Azure 服务提供一个自动托管标识。 你可以为[某些 Azure 资源](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)（包括虚拟机）配置托管标识。 然后使用该标识访问其他 Azure 资源，而无需在代码或脚本中传递凭据。
+如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](../active-directory/managed-identities-azure-resources/overview.md)。
 
-托管标识有两种类型：
+为所选的 Azure 资源设置托管标识后，便可以根据需要授予该标识对另一资源的访问权限，这一点与所有安全主体一样。 例如，为托管标识分配角色，该角色对 Azure 中的专用注册表具有拉取、推送和拉取或其他权限。 （有关完整的注册表角色列表，请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。）可以授予标识对一个或多个资源的访问权限。
 
-* *用户分配的标识*，可以将其分配给多个资源，并根据需要持久保存。 用户分配的标识现提供预览版。
+然后使用该标识向[支持 Azure AD 身份验证的任何服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)进行身份验证，而无需在代码中放入任何凭据。 选择如何使用托管标识进行身份验证，具体取决于你的方案。 若要使用该标识从虚拟机访问 Azure 容器注册表，请向 Azure 资源管理器验证身份。 
 
-* *系统托管标识*，对于特定资源（如单个虚拟机）是唯一的，并且在该资源的生存期内持久保存。
-
-为 Azure 资源设置托管标识后，便可以根据需要授予该标识对另一资源的访问权限，这一点与所有安全主体一样。 例如，为托管标识分配角色，该角色对 Azure 中的专用注册表具有拉取、推送和拉取或其他权限。 （有关完整的注册表角色列表，请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。）可以授予标识对一个或多个资源的访问权限。
-
-然后使用该标识向[支持 Azure AD 身份验证的任何服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)进行身份验证，而无需在代码中放入任何凭据。 若要使用该标识从虚拟机访问 Azure 容器注册表，请向 Azure 资源管理器验证身份。 选择如何使用托管标识进行身份验证，具体取决于你的方案：
-
-* 使用 HTTP 或 REST 调用以编程方式[获取 Azure AD 访问令牌](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
-
-* 使用 [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md)
-
-* 使用标识[登录 Azure CLI 或 PowerShell](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)。 
+> [!NOTE]
+> 目前，用于容器的 Azure Web 应用或 Azure 容器实例等服务在拉取容器映像以部署容器资源本身时，不能使用托管标识向 Azure 容器注册表进行身份验证。 该标识仅在容器运行后可用。 若要使用 Azure 容器注册表中的映像部署这些资源，建议使用不同的身份验证方法（如[服务主体](container-registry-auth-service-principal.md)）。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
@@ -230,8 +221,6 @@ az acr login --name myContainerRegistry
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
-> [!NOTE]
-> 系统分配的托管服务标识可用于与 ACR 交互，应用服务可以使用系统分配的托管服务标识。 但是，不能合并这些标识，因为应用服务无法使用 MSI 与 ACR 通信。 唯一方法是在 ACR 上启用管理员，并使用管理员用户名/密码。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -253,13 +242,13 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - Internal -->
-[az-login]: /cli/azure/reference-index#az-login
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-vm-create]: /cli/azure/vm#az-vm-create
-[az-vm-show]: /cli/azure/vm#az-vm-show
-[az-vm-identity-assign]: /cli/azure/vm/identity#az-vm-identity-assign
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-identity-show]: /cli/azure/identity#az-identity-show
+[az-login]: /cli/azure/reference-index#az_login
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-vm-create]: /cli/azure/vm#az_vm_create
+[az-vm-show]: /cli/azure/vm#az_vm_show
+[az-vm-identity-assign]: /cli/azure/vm/identity#az_vm_identity_assign
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-identity-show]: /cli/azure/identity#az_identity_show
 [azure-cli]: /cli/azure/install-azure-cli

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户管理 Azure 中 SQL Server 虚拟机 |Microsoft Docs
+title: 使用 Azure 门户管理 Azure 中的 SQL Server 虚拟机 | Microsoft Docs
 description: 了解如何在 Azure 门户中访问 Azure 上托管的 SQL Server VM 的 SQL 虚拟机资源。
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,24 +14,24 @@ ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 68c7805136a7361a64a6ff6dfbb9e7d910b2ea9b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97357936"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 中的 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-在 [Azure 门户](https://portal.azure.com)中， [**SQL 虚拟机**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 资源是一种独立的管理服务，用于在 Azure vm 上管理 SQL Server。 可以使用它同时查看所有 SQL Server VM，以及修改专用于 SQL Server 的设置： 
+在 [Azure 门户](https://portal.azure.com)中，[SQL 虚拟机资源](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines)是一种独立的管理服务，用于管理 Azure VM 上的 SQL Server。 可以使用它同时查看所有 SQL Server VM，以及修改专用于 SQL Server 的设置： 
 
 ![SQL 虚拟机资源](./media/manage-sql-vm-portal/sql-vm-manage.png)
 
 
 ## <a name="remarks"></a>备注
 
-- 建议使用 [**SQL 虚拟机**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 资源来查看和管理 Azure 中的 SQL Server vm。 但，SQL 虚拟机资源目前不支持管理[已终止支持](sql-server-2008-extend-end-of-support.md)的 SQL Server VM。 要管理已终止支持的 SQL Server VM 的设置，请改用已弃用的 [SQL Server 配置选项卡](#access-the-sql-server-configuration-tab)。 
-- **Sql 虚拟机** 资源仅适用于已 [注册到 SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)的 SQL Server vm。 
+- 我们建议在 Azure 中使用 [SQL 虚拟机](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines)资源来查看和管理 SQL Server VM。 但，SQL 虚拟机资源目前不支持管理[已终止支持](sql-server-2008-extend-end-of-support.md)的 SQL Server VM。 要管理已终止支持的 SQL Server VM 的设置，请改用已弃用的 [SQL Server 配置选项卡](#access-the-sql-server-configuration-tab)。 
+- SQL 虚拟机资源仅可用于[已向 SQL IaaS 代理扩展注册的](sql-agent-extension-manually-register-single-vm.md) SQL Server VM。 
 
 
 ## <a name="access-the-sql-virtual-machines-resource"></a>访问 SQL 虚拟机资源
@@ -58,7 +58,7 @@ ms.locfileid: "97357936"
 > SQL 虚拟机资源用于专用的 SQL Server 设置。 选择“虚拟机”框中的 VM 名称，以打开特定于该 VM 但不专用于 SQL Server 的设置。 
 
 ## <a name="access-the-sql-server-configuration-tab"></a>访问 SQL Server 配置选项卡
-“SQL Server 配置”选项卡已被弃用。 目前，这是唯一一种方法，用于管理 SQL Server Vm 的 [结尾](sql-server-2008-extend-end-of-support.md) ，以及 SQL Server 未 [注册到 SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)中的 vm。
+“SQL Server 配置”选项卡已被弃用。 目前，它是用于管理已[终止支持](sql-server-2008-extend-end-of-support.md)的 SQL Server VM 以及还未[向 SQL IaaS 代理扩展注册的](sql-agent-extension-manually-register-single-vm.md) SQL Server VM 的唯一方法。
 
 要访问已弃用的“SQL Server 配置”选项卡，请转到“虚拟机”资源 。 请使用以下步骤：
 

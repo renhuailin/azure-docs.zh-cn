@@ -12,12 +12,12 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 92da0b12a3119b048866eef5b18f658916595294
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2cde44ddb49ede8002b8a25ab47ae92ccd602a9d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101645919"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226364"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>使用 Application Insights 在 Azure AD B2C 中跟踪用户行为
 
@@ -252,7 +252,7 @@ ms.locfileid: "101645919"
 
 ### <a name="manipulate-claims"></a>操作声明
 
-在将输入声明发送到 Application Insights 之前，可以使用[输入声明转换](custom-policy-trust-frameworks.md#manipulating-your-claims)来修改输入声明或生成新声明。 在下面的示例中，技术配置文件包含 `CheckIsAdmin` 输入声明转换。
+在将输入声明发送到 Application Insights 之前，可以使用[输入声明转换](custom-policy-overview.md#manipulating-your-claims)来修改输入声明或生成新声明。 在下面的示例中，技术配置文件包含 `CheckIsAdmin` 输入声明转换。
 
 ```xml
 <TechnicalProfile Id="AppInsights-SignInComplete">
@@ -269,7 +269,7 @@ ms.locfileid: "101645919"
 
 ### <a name="add-events"></a>添加事件
 
-若要添加事件，请创建包含 `AppInsights-Common` 技术配置文件的新技术配置文件。 然后将新的技术配置文件作为业务流程步骤添加到[用户旅程](custom-policy-trust-frameworks.md#orchestration-steps)中。 准备就绪后，使用[前置条件](userjourneys.md#preconditions)元素触发事件。 例如，仅当用户通过多重身份验证运行时才报告事件。
+若要添加事件，请创建包含 `AppInsights-Common` 技术配置文件的新技术配置文件。 然后将新的技术配置文件作为业务流程步骤添加到[用户旅程](custom-policy-overview.md#orchestration-steps)中。 准备就绪后，使用[前置条件](userjourneys.md#preconditions)元素触发事件。 例如，仅当用户通过多重身份验证运行时才报告事件。
 
 ```xml
 <TechnicalProfile Id="AppInsights-MFA-Completed">

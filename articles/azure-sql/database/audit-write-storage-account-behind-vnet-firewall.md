@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
 ms.openlocfilehash: 908c9f1d05c83eaa58f77b79a32d956898c35076
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93348247"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>将审核内容写入到 VNet 和防火墙后面的存储帐户
@@ -40,7 +40,7 @@ ms.locfileid: "93348247"
 > [!div class="checklist"]
 >
 > * 一个常规用途 v2 存储帐户。 如果你有常规用途 v1 或 Blob 存储帐户，请[升级到常规用途 v2 存储帐户](../../storage/common/storage-account-upgrade.md)。 有关详细信息，请参阅[存储帐户的类型](../../storage/common/storage-account-overview.md#types-of-storage-accounts)。
-> * 存储帐户必须位于同一订阅上，并与 [逻辑 SQL Server](logical-servers.md)位于同一位置。
+> * 存储帐户必须位于[逻辑 SQL Server](logical-servers.md) 所在的同一订阅和位置。
 > * Azure 存储帐户需要 `Allow trusted Microsoft services to access this storage account`。 请在存储帐户的“防火墙和虚拟网络”中启用此设置。
 > * 你必须对所选存储帐户拥有 `Microsoft.Authorization/roleAssignments/write` 权限。 有关详细信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "93348247"
   >
   >如果未看到此消息，则表示存储帐户不在 VNet 后面。
 
-4. 选择保留期天数。 。 早于保持期的日志会被删除。
+4. 选择保留期天数。 。 早于保留期的日志会被删除。
 
 5. 在审核设置中选择“保存”。
 
@@ -118,7 +118,7 @@ ms.locfileid: "93348247"
    }
    ```
 
-2. 打开 [Azure 门户](https://portal.azure.com)。 导航到存储帐户。 找到“访问控制(IAM)”，然后单击“添加角色分配”。  将 **存储 Blob 数据参与者** Azure 角色分配到承载数据库的服务器，该数据库已注册到 Azure Active Directory (Azure AD) ，如前一步骤所示。
+2. 打开 [Azure 门户](https://portal.azure.com)。 导航到存储帐户。 找到“访问控制(IAM)”，然后单击“添加角色分配”。  将“存储 Blob 数据参与者”Azure 角色分配给托管数据库且已在上一步骤中注册到 Azure Active Directory (Azure AD) 的服务器。
 
    > [!NOTE]
    > 只有具有“所有者”特权的成员能够执行此步骤。 有关各种 Azure 内置角色，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
@@ -154,10 +154,10 @@ ms.locfileid: "93348247"
 > [!IMPORTANT]
 > 若要使用虚拟网络和防火墙后面的存储帐户，需将 isStorageBehindVnet 参数设置为 true
 
-- [部署启用了审核的 Azure SQL Server 以将审核日志写入 blob 存储](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+- [部署启用了审核的 Azure SQL Server，以将审核日志写入 Blob 存储](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
 
 > [!NOTE]
-> 链接示例位于外部公共存储库中，按 "原样" 提供，不含任何担保，在任何 Microsoft 支持计划/服务下均不受支持。
+> 链接的示例在外部公共存储库上并且“按现样”提供，不提供任何担保，并非在任何 Microsoft 支持计划/服务下都受支持。
 
 ## <a name="next-steps"></a>后续步骤
 

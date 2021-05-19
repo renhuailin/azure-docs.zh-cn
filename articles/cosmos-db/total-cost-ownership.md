@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
 ms.openlocfilehash: eb06d101170685bea5ff231612e9ffbf8df467da
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93079285"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Azure Cosmos DB 的总拥有成本 (TCO)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 中设计了精细的多租户和资源调控。 这种设计可让 Azure Cosmos DB 以明显降低的成本运行，并帮助用户节省成本。 目前，Azure Cosmos DB 支持在一台计算机上运行 280 多个客户工作负荷（密度还是不断提升），以及在一个群集中运行数千个客户工作负荷。 它对群集中不同计算机上的客户工作负载以及数据中心内多个群集中的客户工作负载进行负载均衡。 若要了解详细信息，请参阅 [Azure Cosmos DB：推送全球分布式数据库的边界](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)。 由于实施资源调控、多租户并与 Azure 基础结构的剩余部分原生集成，与 MongoDB、Cassandra 或者在 IaaS 上运行的其他 OSS NoSQL 相比，Azure Cosmos DB 的费用平均要便宜 4 到 6 倍；与本地运行的数据库引擎相比，则最多便宜 10 倍。 请参阅有关 [NoSQL 数据库云服务的总（非）拥有成本](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)的白皮书。
+Azure Cosmos DB 中设计了精细的多租户和资源调控。 这种设计可让 Azure Cosmos DB 以明显降低的成本运行，并帮助用户节省成本。 目前，Azure Cosmos DB 支持在一台计算机上运行 280 多个客户工作负荷（密度还是不断提升），以及在一个群集中运行数千个客户工作负荷。 它对群集中不同计算机上的客户工作负载以及数据中心内多个群集中的客户工作负载进行负载均衡。 若要了解详细信息，请参阅 [Azure Cosmos DB：扩大全球分布式数据库的边界](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)。 由于实施资源调控、多租户并与 Azure 基础结构的剩余部分原生集成，与 MongoDB、Cassandra 或者在 IaaS 上运行的其他 OSS NoSQL 相比，Azure Cosmos DB 的费用平均要便宜 4 到 6 倍；与本地运行的数据库引擎相比，则最多便宜 10 倍。 请参阅有关 [NoSQL 数据库云服务的总（非）拥有成本](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)的白皮书。
 
 Apache Cassandra、MongoDB、HBase、引擎等 OSS NoSQL 数据库解决方案是为本地设计的。 作为托管服务提供时，它们相当于一个资源管理器模板，其中包含用于管理预配群集和监视支持的租户数据库。 OSS NoSQL 体系结构需要很大的运营开销，了解其专业知识可能比较困难且费用不菲。 另一方面，Azure Cosmos DB 是完全托管式的云服务，可让开发人员专注于业务创新，而不是管理和维护数据库基础结构。
 
@@ -27,7 +27,7 @@ Apache Cassandra、MongoDB、HBase、引擎等 OSS NoSQL 数据库解决方案�
 
 Azure Cosmos DB 的无服务器预配模型消除了过度预配数据库基础结构的需求。 无需专业化的配置或许可即可提供 Azure Cosmos DB 资源。 因此，与 OSS NoSQL 数据库相比，Azure Cosmos DB 支持的应用程序的总拥有成本最多可以节省 70%。 有关部分实时示例，请参阅[客户用例](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc)。 Azure Cosmos DB 定价模型的其他优势包括：
 
-* **价格体现高价值：** 市场分析师、客户和合作伙伴已经确认，与自行实施或通过其他供应商实施这些解决方案相比，Azure Cosmos DB 提供的所有功能的价值更高，且价格要低得多。 此类数据库的功能包括：全局分发、多区域写入、定义完善且直观的一致性模型、Azure Cosmos DB 的自动索引，而无需任何复杂性、开销或停机时间。
+* **价格体现高价值：** 市场分析师、客户和合作伙伴已经确认，与自行实施或通过其他供应商实施这些解决方案相比，Azure Cosmos DB 提供的所有功能的价值更高，且价格要低得多。 使用 Azure Cosmos DB 可以大幅简化全局分布、多区域写入、妥善定义的直观一致性模型和自动索引等数据库功能，操作十分简单，不会产生任何开销，也不需要停机。
 
 * **无需进行 NoSQL DevOps 管理：** 使用 Azure Cosmos DB 时无需采用 DevOps 来管理部署以及执行维护、缩放或修补。 可以像对本地或云基础结构中托管的 OSS NoSQL 群集所做的那样来执行所有工作负荷。
 
@@ -55,7 +55,7 @@ Azure Cosmos DB 的无服务器预配模型消除了过度预配数据库基础�
 
 * **自动免费获得所有企业功能。** Azure Cosmos DB 免费提供极其全面的合规性认证、安全性以及静态和动态加密（与我们的竞争产品相比）。 在全球任何位置都可自动获得区域可用性。 可让数据库跨越任意数目的 Azure 区域，并随时可以添加或删除区域。
 
-* **通过保留容量可节省高达65% 的成本：** Azure Cosmos DB [预留容量](cosmos-db-reserved-capacity.md) 可通过预先支付一年或三年的 Azure Cosmos DB 资源来节省资金。 与采用一般定价相比，预付为期一年或三年的承诺费用可以享受 20-65% 的折扣，从而大幅节省成本。 对于任务关键型工作负荷，SLA 提供更有利的预配容量保障。
+* **使用预留容量可以节省高达 65% 的成本：使用** Azure Cosmos DB [预留容量](cosmos-db-reserved-capacity.md)，可预付为期一年或三年的 Azure Cosmos DB 资源费用，从而节省成本。 与采用一般定价相比，预付为期一年或三年的承诺费用可以享受 20-65% 的折扣，从而大幅节省成本。 对于任务关键型工作负荷，SLA 提供更有利的预配容量保障。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 45a7a146dd929408b50a0045fe2598726ee05505
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95544303"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>排查 Azure 专用链接的连接问题
 
 本文提供有关验证和诊断 Azure 专用链接连接设置的分步指导。
 
-使用 Azure 专用链接，可以通过虚拟网络中的专用终结点访问 Azure 平台即服务 (PaaS) 服务（例如 Azure 存储、Azure Cosmos DB 和 Azure SQL 数据库），以及 Azure 托管的客户服务或合作伙伴服务。 虚拟网络和服务之间的流量通过 Microsoft 主干网络进行遍历，这将消除公共 internet 的公开。 你还可以在虚拟网络中创建自己的专用链接服务，并将其专门提供给自己的客户。
+使用 Azure 专用链接，可以通过虚拟网络中的专用终结点访问 Azure 平台即服务 (PaaS) 服务（例如 Azure 存储、Azure Cosmos DB 和 Azure SQL 数据库），以及 Azure 托管的客户服务或合作伙伴服务。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 你还可以在虚拟网络中创建自己的专用链接服务，并将其专门提供给自己的客户。
 
 可以允许用户通过专用链接访问在 Azure 负载均衡器标准层后面运行的服务。 服务的使用者可在其虚拟网络中创建专用终结点，并将此终结点映射到此服务，然后以私密方式访问此服务。
 
@@ -47,7 +47,7 @@ ms.locfileid: "95544303"
 
 1. 通过浏览资源查看专用链接的配置。
 
-    a. 转到“专用链接中心”  。
+    a. 转到“专用链接中心”。
 
       ![专用链接中心](./media/private-link-tsg/private-link-center.png)
 
@@ -58,38 +58,38 @@ ms.locfileid: "95544303"
     c. 筛选并选择要诊断的专用链接服务。
 
     d. 查看专用终结点连接。
-     - 请确保要从中查找连接的专用终结点与 **已批准** 的连接状态一起列出。
-     - 如果状态为 " **挂起**"，请选择它并批准它。
+     - 确保从中查找连接性的专用终结点以“已批准”连接状态列出。
+     - 如果状态为“挂起”，请选择此连接并批准它。
 
        ![专用终结点连接](./media/private-link-tsg/pls-private-endpoint-connections.png)
 
-     - 通过选择名称，从连接到的专用终结点。 请确保连接状态显示为 " **已批准**"。
+     - 选择名称，转到要连接的专用终结点。 请确保连接状态显示为“已批准”。
 
        ![专用终结点连接概述](./media/private-link-tsg/pls-private-endpoint-overview.png)
 
      - 两端都获得批准后，再次尝试连接。
 
-    e. "**概述**" 选项卡上的 "**别名**" 和 "**属性**" 选项卡上的 **资源 ID** 。
-     - 请确保 **别名** 和 **资源 id** 信息与用于创建此服务的专用终结点的 **别名** 和 **资源 id** 相匹配。
+    e. 查看“概述”选项卡上的“别名”，以及“属性”选项卡上的“资源 ID”   。
+     - 确保该“别名”和“资源 ID”信息与用于创建此服务的专用终结点的“别名”和“资源 ID”相匹配   。
 
-       ![验证别名信息](./media/private-link-tsg/pls-overview-pane-alias.png)
+       ![验证“别名”信息](./media/private-link-tsg/pls-overview-pane-alias.png)
 
-       ![验证资源 ID 信息](./media/private-link-tsg/pls-properties-pane-resourceid.png)
+       ![验证“资源 ID”信息](./media/private-link-tsg/pls-properties-pane-resourceid.png)
 
-    f. 查看 "**概览**" 选项卡上的 **可见性** 信息。
-     - 请确保你的订阅处于 **可见性** 范围内。
+    f. 查看“概述”选项卡上的“可见性”信息 。
+     - 确保你的订阅属于“可见性”范围。
 
-       ![验证可见性信息](./media/private-link-tsg/pls-overview-pane-visibility.png)
+       ![验证“可见性”信息](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    g. 查看 "**概览**" 选项卡上的 **负载均衡器** 信息。
-     - 可以通过选择 "负载均衡器" 链接来前往负载均衡器。
+    g. 查看“概述”选项卡上的“负载均衡器”信息 。
+     - 可选择负载均衡器链接，转到负载均衡器。
 
-       ![验证负载均衡器信息](./media/private-link-tsg/pls-overview-pane-ilb.png)
+       ![验证“负载均衡器”信息](./media/private-link-tsg/pls-overview-pane-ilb.png)
 
      - 请确保负载均衡器设置按预期方式配置。
-       - 查看 **前端 IP 配置**。
-       - 查看 **后端池**。
-       - 查看 **负载均衡规则**。
+       - 查看“前端 IP 配置”。
+       - 查看“后端池”。
+       - 查看“负载均衡规则”。
 
        ![验证负载均衡器属性](./media/private-link-tsg/pls-ilb-properties.png)
 
@@ -102,8 +102,8 @@ ms.locfileid: "95544303"
 1. 使用 [Azure Monitor](../azure-monitor/overview.md) 查看是否有数据在流动。
 
     a. 在专用链接服务资源中选择“指标”  。
-     - 选择 **Bytes In** 或 **bytes Out**。
-     - 尝试连接到专用链接服务时，请查看数据是否流动。 预计延迟大约为 10 分钟。
+     - 选择“传入字节”或“传出字节” 。
+     - 查看在尝试连接到专用链接服务时是否有数据在流动。 预计延迟大约为 10 分钟。
 
        ![验证专用链接服务指标](./media/private-link-tsg/pls-metrics.png)
 

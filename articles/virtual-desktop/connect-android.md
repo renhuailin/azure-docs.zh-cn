@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
-manager: femila
-ms.openlocfilehash: 07e0754cc9fb940218999e2012a9cb87341557cb
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+manager: lizross
+ms.openlocfilehash: ebf91f68e45148d9a609ff671ffa4683bd74c82c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448077"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "89226108"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>使用 Android 客户端连接到 Windows 虚拟桌面
 
@@ -43,7 +43,7 @@ ms.locfileid: "106448077"
    - 对于“密码”，指定与用户名相关联的密码。
    - 如果管理员将身份验证配置为还需提供其他事实，则系统会为此做出提示。
 
-订阅之后，连接中心应该会显示远程资源。
+订阅之后，Connection Center 应该会显示远程资源。
 
 订阅源后，源的内容会定期自动更新。 资源可能会根据管理员所做的更改而进行添加、更改或删除。
 

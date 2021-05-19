@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: acacf617d3f1d9ab891d08b32fc2dfb14deb64a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91540517"
 ---
 # <a name="pii-detection-cognitive-skill"></a>PII 检测认知技能
@@ -20,7 +20,7 @@ ms.locfileid: "91540517"
 > [!IMPORTANT] 
 > 此技能目前为公共预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前不支持门户或 .NET SDK。
 
-**PII 检测**技巧从输入文本中提取个人信息，并提供对其进行屏蔽的选项。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
+“PII 检测”技能从输入文本中提取个人信息，并提供屏蔽该信息的选项。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
@@ -33,7 +33,7 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 ## <a name="data-limits"></a>数据限制
 
-记录的最大大小应为 50,000 个字符，通过 [`String.Length`](/dotnet/api/system.string.length) 进行测量。 如果在将数据发送给技能之前需要将数据分块，请考虑使用 [文本拆分技能](cognitive-search-skill-textsplit.md)。
+记录的最大大小应为 50,000 个字符，通过 [`String.Length`](/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到技能之前需要将其分块，请考虑使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-parameters"></a>技能参数
 
@@ -43,8 +43,8 @@ Microsoft.Skills.Text.PIIDetectionSkill
 |--------------------|-------------|
 | `defaultLanguageCode` |    输入文本的语言代码。 目前仅支持 `en`。 |
 | `minimumPrecision` | 一个介于 0.0 和 1.0 之间的值。 如果置信度分数（在 `piiEntities` 输出中）低于所设置的 `minimumPrecision` 值，则不会返回或屏蔽该实体。 默认值为 0.0。 |
-| `maskingMode` | 提供多种方法来屏蔽输入文本中检测到的个人信息的参数。 可以使用以下选项： <ul><li>`none` (默认) ：不会发生掩码，并且 `maskedText` 不会返回输出。 </li><li> `redact`：从输入文本中删除检测到的实体，而不会替换删除的值。 在这种情况下，输出中的偏移量 `piiEntities` 将与原始文本（而非掩码文本）相关。 </li><li> `replace`：用参数中给定的字符替换检测到的实体 `maskingCharacter` 。 将重复该字符，直至达到检测到的实体的长度，以便偏移量与输入文本和输出 `maskedText` 都正确对应。</li></ul> |
-| `maskingCharacter` | 如果 `maskingMode` 参数设置为，则为用于屏蔽文本的字符 `replace` 。 支持以下选项：`*`（默认值）、`#`、`X`。 如果 `maskingMode` 未设置为 `replace`，则此参数只能为 `null`。 |
+| `maskingMode` | 一个参数，提供各种方法来屏蔽在输入文本中检测到的个人信息。 可以使用以下选项： <ul><li>`none`（默认值）：不会发生屏蔽，并且不会返回 `maskedText` 输出。 </li><li> `redact`：从输入文本中删除检测到的实体，并且不替换已删除的值。 在这种情况下，`piiEntities` 输出中的偏移量将与原始文本（而非已屏蔽文本）相关。 </li><li> `replace`：使用 `maskingCharacter` 参数中给定的字符替换检测到的实体。 将重复该字符，直至达到检测到的实体的长度，以便偏移量与输入文本和输出 `maskedText` 都正确对应。</li></ul> |
+| `maskingCharacter` | 当 `maskingMode` 参数设置为 `replace` 时用来屏蔽文本的字符。 支持以下选项：`*`（默认值）、`#`、`X`。 如果 `maskingMode` 未设置为 `replace`，则此参数只能为 `null`。 |
 
 ## <a name="skill-inputs"></a>技能输入
 
@@ -128,7 +128,7 @@ Microsoft.Skills.Text.PIIDetectionSkill
 }
 ```
 
-对于此技能的输出中的实体，返回的偏移量直接从 [文本分析 API](../cognitive-services/text-analytics/overview.md)返回，这意味着，如果您使用它们来索引原始字符串，则应使用 .net 中的 [system.globalization.stringinfo>](/dotnet/api/system.globalization.stringinfo) 类来提取正确的内容。  [可在此处找到更多详细信息。](../cognitive-services/text-analytics/concepts/text-offsets.md)
+在此技能的输出中，针对实体返回的偏移量是直接从[文本分析 API](../cognitive-services/text-analytics/overview.md) 返回的，这意味着如果使用这些偏移量为原始字符串编制索引，则应使用 .NET 中的 [StringInfo](/dotnet/api/system.globalization.stringinfo) 类来提取正确的内容。  [此处提供了更多详细信息。](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="errors-and-warnings"></a>错误和警告
 
@@ -136,7 +136,7 @@ Microsoft.Skills.Text.PIIDetectionSkill
 如果文本为空，则返回警告。
 如果文本大于 50,000 个字符，只会分析前 50,000 个字符，并会发出警告。
 
-如果技能返回警告，则输出可能为 `maskedText` 空，这可能会影响任何预期输出的下游技能。 出于此原因，请确保在写入技能组合定义时调查与缺少的输出相关的所有警告。
+如果此技能返回警告，则输出 `maskedText` 可能为空，这可能会影响任何需要该输出的下游技能。 因此，在编写技能组定义时，一定要调查所有与缺少输出有关的警告。
 
 ## <a name="see-also"></a>另请参阅
 

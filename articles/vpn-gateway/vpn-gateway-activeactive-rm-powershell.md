@@ -9,10 +9,10 @@ ms.date: 09/03/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
 ms.openlocfilehash: 022ccaab0b210cd2d656b69f505791d1a2aa963f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89440773"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>配置与 Azure VPN 网关的主动-主动 S2S VPN 连接
@@ -47,12 +47,12 @@ ms.locfileid: "89440773"
 
 ### <a name="before-you-begin"></a>准备阶段
 * 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-* 如果不想在浏览器中使用 CloudShell，需要安装 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [Azure PowerShell 概述](/powershell/azure/)。
+* 如果不希望在浏览器中使用 CloudShell，则需要安装 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [Azure PowerShell 概述](/powershell/azure/)。
 
 ### <a name="step-1---create-and-configure-vnet1"></a>步骤 1 - 创建并配置 VNet1
 #### <a name="1-declare-your-variables"></a>1.声明变量
 
-对于本练习，我们首先要声明变量。 如果使用 "Cloud Shell 试用"，则会自动连接到你的帐户。 如果你在本地使用 PowerShell，请使用以下示例来帮助你连接：
+对于本练习，我们首先要声明变量。 如果使用“试用”Cloud Shell，你将被自动连接到你的帐户。 如果在本地使用 PowerShell，请参阅以下示例进行连接：
 
 ```powershell
 Connect-AzAccount
@@ -243,7 +243,7 @@ $BGPPeerIP52 = "10.52.255.254"
 New-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP52 -AddressPrefix $LNGPrefix52 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP52
 ```
 
-#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. 将 VNet 网关与第二个本地网络网关连接
+#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2.连接 VNet 网关与第二个本地网络网关
 创建从 TestVNet1 到 Site5_2 的连接，其“EnableBGP”设置为 $True
 
 ```azurepowershell-interactive

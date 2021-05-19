@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric 事件存储
 description: 了解 Azure Service Fabric 的 EventStore，通过它可以随时了解和监视群集或工作负荷的状态。
-author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
-ms.author: srrengar
-ms.openlocfilehash: 0b6258e160794eaf7d0c05775f8fd3b796e3ba47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: ef5049fd934a29fa1d96514c334b13358e6600cf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354813"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626548"
 ---
 # <a name="eventstore-overview"></a>EventStore 概述
 
@@ -26,7 +24,7 @@ EventStore 是有状态 Service Fabric 服务，它维护群集中的事件。 �
 * 确认正在正确处理对群集执行的管理操作
 * 获取 Service Fabric 如何与特定实体进行交互的“快照”
 
-![屏幕截图显示 "节点" 窗格中多个事件（包括 NodeDown 事件）的 "事件" 选项卡。](media/service-fabric-diagnostics-eventstore/eventstore.png)
+![屏幕截图显示“节点”窗格中多个事件（包括 NodeDown 事件）的“事件”选项卡。](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 若要查看 EventStore 中可用的事件的完整列表，请参阅 [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)。
 
@@ -76,7 +74,7 @@ EventStore 服务还能够将群集中的事件相关联。 通过查看在同�
 
 ### <a name="azure-cluster-version-64"></a>Azure 群集版本 6.4
 
-如果使用的是版本 6.4，则可以编辑 Azure 资源管理器模板，以启用 EventStore 服务。 这是通过执行 [群集配置升级](service-fabric-cluster-config-upgrade-azure.md) 并添加以下代码来完成的：你可以使用 PlacementConstraints 将 EventStore 服务的副本放在特定的 NodeType 上，例如，针对系统服务的节点。 `upgradeDescription` 部分配置配置升级，以触发节点上的重新启动。 可以在其他更新中删除该部分。
+如果使用的是版本 6.4，则可以编辑 Azure 资源管理器模板，以启用 EventStore 服务。 此操作通过执行[群集配置升级](service-fabric-cluster-config-upgrade-azure.md)和添加以下代码来完成。你可以使用 PlacementConstraints 将 EventStore 服务的副本放置在特定的 NodeType（例如专用于系统服务的 NodeType）上。 `upgradeDescription` 部分配置配置升级，以触发节点上的重新启动。 可以在其他更新中删除该部分。
 
 ```json
     "fabricSettings": [

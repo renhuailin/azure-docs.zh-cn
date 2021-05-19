@@ -1,18 +1,18 @@
 ---
 title: 将数据加载到 Azure Data Lake Storage Gen1 中
 description: 使用 Azure 数据工厂将数据复制到 Azure Data Lake Storage Gen1 中
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 1e75fc65b4afea9dc895580e4711e0050cb7c64f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 5269267f0fa786163b6c1fa1a4d4bfc8d0ff9af5
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716408"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483508"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure Data Lake Storage Gen1 加载数据
 
@@ -84,11 +84,11 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
    2. 指定“机密访问密钥”值。
    3. 选择“完成”。
    
-      ![屏幕截图显示 "新建链接服务" 窗格，你可以在其中输入值。](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+      ![屏幕截图显示了可以在其中输入值的“新建链接服务”窗格。](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
    4. 随即显示新的连接。 选择“**下一页**”。
    
-   ![屏幕截图显示你的新连接。](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
+   ![屏幕截图显示了新连接。](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
 5. 在“选择输入文件或文件夹”页上，浏览到要复制的文件夹和文件。 选中文件夹/文件，选择“选择”，然后选择“下一步”：
 
@@ -96,7 +96,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
 
 6. 通过选中“以递归方式复制文件”和“以二进制方式复制”（按原样复制文件）选项，选择复制行为 。 选择“下一步”：
 
-    ![屏幕截图显示选择输入文件或文件夹，您可以在其中选择 "以递归方式复制文件" 和 "二进制副本"。](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
+    ![屏幕截图显示了“选择输入文件或文件夹”，你可以在其中选择“以递归方式复制文件”和“以二进制方式复制”。](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
 7. 在“目标数据存储”页中，单击“+ 创建新连接”，然后选择“Azure Data Lake Storage Gen1”，并选择“继续”   ：
 

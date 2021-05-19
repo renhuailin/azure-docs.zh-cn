@@ -9,15 +9,15 @@ ms.topic: troubleshooting
 ms.date: 06/13/2019
 ms.author: alkohli
 ms.openlocfilehash: 5d977fe0b7459af35f678e77681d3b27c31431cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85849181"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>排查 Azure Data Box Disk 中的数据复制问题
 
-本文适用于 Microsoft Azure Data Box Disk，并介绍了如何排查在将数据复制到磁盘时遇到的任何问题。 本文还介绍了使用拆分复制工具时出现的问题。
+本文适用于 Microsoft Azure Data Box Disk，并介绍如何排查将数据复制到磁盘时看到的任何问题。 本文还介绍了使用拆分复制工具时出现的问题。
 
 
 ## <a name="data-copy-issues-when-using-a-linux-system"></a>使用 Linux 系统时的数据复制问题

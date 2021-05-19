@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 65f69cf492ec3e28d7f4aa86971dc6c91b34bdf5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101644165"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的资源角色
@@ -111,7 +111,7 @@ ms.locfileid: "101644165"
 
 为用户分配访问包后，可让 Azure AD 自动为用户分配对 Azure AD 企业应用程序（包括 SaaS 应用程序，以及联合到 Azure AD 的组织应用程序）的访问权限。 对于通过联合单一登录与 Azure AD 集成的应用程序，Azure AD 将为分配给该应用程序的用户颁发联合身份验证令牌。
 
-应用程序可以有多个角色。 将某个应用程序添加到访问包时，如果该应用程序有多个角色，则你需要为这些用户指定相应的角色。 如果要开发应用程序，可以在 [如何：配置在用于企业应用程序的 SAML 令牌中颁发的角色声明](../develop/active-directory-enterprise-app-role-management.md)中了解有关如何将这些角色添加到应用程序的详细信息。
+应用程序可以有多个角色。 将某个应用程序添加到访问包时，如果该应用程序有多个角色，则你需要为这些用户指定相应的角色。 如果要开发应用程序，可以在[如何：为企业应用程序配置 SAML 令牌中颁发的角色声明](../develop/active-directory-enterprise-app-role-management.md)中了解有关如何将这些角色添加到应用程序的详细信息。
 
 一旦应用程序角色成为访问包的一部分：
 
@@ -144,7 +144,7 @@ ms.locfileid: "101644165"
 
 1. 在“将资源角色添加到访问包”页上，单击“SharePoint 站点”打开“选择 SharePoint Online 站点”窗格。
 
-    :::image type="content" source="media/entitlement-management-access-package-resources/resource-sharepoint-add.png" alt-text="访问包-添加资源角色-选择 SharePoint 站点-门户视图":::
+    :::image type="content" source="media/entitlement-management-access-package-resources/resource-sharepoint-add.png" alt-text="访问包 - 添加资源角色 - 选择 SharePoint 站点 - 门户视图":::
 
 1. 选择要包含在访问包中的 SharePoint Online 站点。
 

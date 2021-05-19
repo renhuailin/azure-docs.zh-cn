@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
-ms.translationtype: MT
+ms.openlocfilehash: ed8775c6544791571746b0f3784a60ce2af0de7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707650"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726968"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>如何排查连接性问题和消息传送问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "97707650"
 
 <a name="default_mode_tsg"></a>
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="default-mode-troubleshooting"></a>默认模式故障排除
 
@@ -75,7 +75,7 @@ SignalR 服务器维护服务器与服务之间的服务器连接。   当应用
 
 查看服务器端网络跟踪，以找出服务器连接断开或被服务拒绝的状态代码和错误详细信息，并在[故障排除指南](./signalr-howto-troubleshoot-guide.md)中查找根本原因。
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ### <a name="how-to-add-logs"></a>如何添加日志
 
@@ -108,7 +108,7 @@ SignalR 服务器维护服务器与服务之间的服务器连接。   当应用
 
 ##### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>为 `ASP.NET Core SignalR` 启用服务器端日志记录
 
-`ASP.NET Core SignalR` 的服务器端日志记录与 `ASP.NET Core` Framework 中提供的基于 `ILogger` 的[日志记录](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1)集成。 你可以使用 `ConfigureLogging` 来启用服务器端日志记录，示例用法如下：
+`ASP.NET Core SignalR` 的服务器端日志记录与 `ASP.NET Core` Framework 中提供的基于 `ILogger` 的[日志记录](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&preserve-view=true&view=aspnetcore-2.1)集成。 你可以使用 `ConfigureLogging` 来启用服务器端日志记录，示例用法如下：
 
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
@@ -169,7 +169,7 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 
 <a name="serverless_mode_tsg"></a>
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="serverless-mode-troubleshooting"></a>无服务器模式故障排除
 
@@ -179,7 +179,7 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 
 <a name="classic_mode_tsg"></a>
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="classic-mode-troubleshooting"></a>经典模式故障排除
 
@@ -187,7 +187,7 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 
 排查 `classic` 模式连接性问题和消息传送问题与[排查默认模式问题](#default_mode_tsg)类似。
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="service-health"></a>服务运行状况
 
@@ -205,7 +205,7 @@ Azure SignalR 的记录器类别始终以 `Microsoft.Azure.SignalR` 开头。 �
 
 详细了解[灾难恢复](./signalr-concept-disaster-recovery.md)。
 
-[有关故障排除的问题或反馈？告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>后续步骤
 

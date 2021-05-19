@@ -12,10 +12,10 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
 ms.openlocfilehash: 91df89a69368056c1967e641562cf8515f44ade0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99582802"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>重定向 URI（回复 URL）限制和局限
@@ -34,7 +34,7 @@ ms.locfileid: "99582802"
 
 | 正在登录的帐户 | 最大重定向 URI 数 | 说明 |
 |--------------------------|---------------------------------|-------------|
-| 任何组织的 Azure Active Directory (Azure AD) 租户中的 Microsoft 工作或学校帐户 | 256 | 应用程序清单中的 `signInAudience` 字段设置为 *AzureADMyOrg* 或 *AzureADMultipleOrgs* |
+| 任何组织的 Azure Active Directory (Azure AD) 租户中的 Microsoft 工作或学校帐户 | 256 | 应用程序清单中的 `signInAudience` 字段设置为 AzureADMyOrg 或 AzureADMultipleOrgs |
 | 个人 Microsoft 帐户以及工作和学校帐户 | 100 | 应用程序清单中的 `signInAudience` 字段设置为 AzureADandPersonalMicrosoftAccount |
 
 ## <a name="maximum-uri-length"></a>最大 URI 长度
@@ -43,9 +43,9 @@ ms.locfileid: "99582802"
 
 ## <a name="supported-schemes"></a>支持的方案
 
-Azure Active Directory (Azure AD) 应用程序模型目前同时支持 HTTP 和 HTTPS 方案，这两种方案所针对的应用可以在任何组织的 Azure AD 租户中登录工作或学校帐户。 这些帐户类型由应用程序清单的 `signInAudience` 字段中的 `AzureADMyOrg` 和 `AzureADMultipleOrgs` 值指定。 对于登录到个人 Microsoft 帐户的应用 (MSA) *以及* 工作和学校帐户 (也就是说，将 `signInAudience` 设置为 `AzureADandPersonalMicrosoftAccount`) ，只允许使用 HTTPS 方案。
+Azure Active Directory (Azure AD) 应用程序模型目前同时支持 HTTP 和 HTTPS 方案，这两种方案所针对的应用可以在任何组织的 Azure AD 租户中登录工作或学校帐户。 这些帐户类型由应用程序清单的 `signInAudience` 字段中的 `AzureADMyOrg` 和 `AzureADMultipleOrgs` 值指定。 对于登录个人 Microsoft 帐户 (MSA) 以及工作和学校帐户的应用（即 `signInAudience` 设置为 `AzureADandPersonalMicrosoftAccount`），只允许使用 HTTPS 方案。
 
-若要将具有 HTTP 方案的重定向 Uri 添加到登录工作帐户或学校帐户的应用注册，请使用 Azure 门户中 [应用注册](https://go.microsoft.com/fwlink/?linkid=2083908) 的应用程序清单编辑器。 虽然可以使用清单编辑器来设置基于 HTTP 的重定向 URI，但我们强烈建议你为重定向 URI 使用 HTTPS 方案。
+若要将具有 HTTP 方案的重定向 URI 添加到用于登录工作帐户或学校帐户的应用注册，请使用 Azure 门户的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)中的应用程序清单编辑器。 虽然可以使用清单编辑器来设置基于 HTTP 的重定向 URI，但我们强烈建议你为重定向 URI 使用 HTTPS 方案。
 
 ## <a name="localhost-exceptions"></a>Localhost 例外
 
@@ -65,7 +65,7 @@ Azure Active Directory (Azure AD) 应用程序模型目前同时支持 HTTP 和 
 * 不要注册多个只有端口不同的重定向 URI。 登录服务器会任意选取一个，并使用与该重定向 URI 关联的行为（例如，不管它是 `web` 类型的、`native` 类型的还是 `spa` 类型的重定向，都会这样做）。
 
     当你想在同一应用程序注册中使用不同的身份验证流（例如，授权代码授予和隐式流）时，这尤其重要。 若要将正确的响应行为与每个重定向 URI 相关联，登录服务器必须能够区分重定向 URI，在只有端口不同的情况下不能这样做。
-* 若要在本地主机上注册多个重定向 Uri 以在开发过程中测试不同的流，请使用 URI 的 *路径* 组件来区分它们。 例如，`http://localhost/MyWebApp` 与 `http://localhost/MyNativeApp` 不匹配。
+* 若要在 localhost 上注册多个重定向 URI，以在开发过程中测试不同的流，请使用 URI 的 path 组件来区分它们。 例如，`http://localhost/MyWebApp` 与 `http://localhost/MyNativeApp` 不匹配。
 * 当前不支持 IPv6 环回地址 (`[::1]`)。
 
 #### <a name="prefer-127001-over-localhost"></a>首选 127.0.0.1，而不是 localhost
@@ -82,9 +82,9 @@ Azure Active Directory (Azure AD) 应用程序模型目前同时支持 HTTP 和 
 
 类似 `https://*.contoso.com` 的通配符 URI 可能看起来很方便，但由于安全方面的影响，应避免使用它们。 根据 OAuth 2.0 规范（[RFC 6749 第 3.1.2 部分](https://tools.ietf.org/html/rfc6749#section-3.1.2)），重定向终结点 URI 必须是绝对 URI。
 
-在配置为登录个人 Microsoft 帐户和工作或学校帐户的应用注册中，当前不支持通配符 Uri。 但是，对于组织的 Azure AD 租户中配置为仅将工作帐户或学校帐户登录的应用，允许使用通配符 URI。
+对于配置为登录个人 Microsoft 帐户以及工作或学校帐户的应用注册，目前不支持通配符 URI。 但是，对于组织的 Azure AD 租户中配置为仅将工作帐户或学校帐户登录的应用，允许使用通配符 URI。
 
-若要将带通配符的重定向 Uri 添加到登录工作帐户或学校帐户的应用注册，请使用 Azure 门户中 [应用注册](https://go.microsoft.com/fwlink/?linkid=2083908) 的应用程序清单编辑器。 尽管可以使用清单编辑器来设置具有通配符的重定向 URI，但我们强烈建议你遵循 [RFC 6749 的 3.1.2 节](https://tools.ietf.org/html/rfc6749#section-3.1.2)的要求，仅使用绝对 URI。
+若要将具有通配符的重定向 URI 添加到用于登录工作帐户或学校帐户的应用注册，请使用 Azure 门户的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)中的应用程序清单编辑器。 尽管可以使用清单编辑器来设置具有通配符的重定向 URI，但我们强烈建议你遵循 [RFC 6749 的 3.1.2 节](https://tools.ietf.org/html/rfc6749#section-3.1.2)的要求，仅使用绝对 URI。
 
 如果方案所需的重定向 URI 数目超过允许的最大限制，请考虑以下[状态参数方法](#use-a-state-parameter)，而不要添加通配符重定向 URI。
 

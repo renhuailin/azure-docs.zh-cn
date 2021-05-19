@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
 ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98108392"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>将 Azure API 管理与 Azure Kubernetes 服务中部署的微服务结合使用
@@ -39,7 +39,7 @@ AKS 和 API 管理结合使用时，共同提供一个平台用来部署、发�
 
 为了解决此问题，Kubernetes 引入了[服务](https://kubernetes.io/docs/concepts/services-networking/service/)的概念。 Kubernetes 服务是一个抽象层，它定义了 Pod 的逻辑组，并为这些 Pod 启用外部流量公开、负载均衡和服务发现。 
 
-当我们准备好通过 API 管理将微服务发布为 API 时，我们需要考虑如何将 Kubernetes 中的服务映射到 API 管理中的 API。 没有既定规则。 这取决于你在开始时如何设计业务功能或域并将其划分到微服务中。 例如，如果服务背后的 pod 负责给定资源的所有操作 (例如，客户) ，则该服务可能会映射到一个 API。 如果将对资源的操作划分到多个微服务（例如 GetOrder、PlaceOrder），则多个服务可能会以逻辑方式聚合到 API 管理中的单个 API（参见图 1）。 
+当我们准备好通过 API 管理将微服务发布为 API 时，我们需要考虑如何将 Kubernetes 中的服务映射到 API 管理中的 API。 没有既定规则。 这取决于你在开始时如何设计业务功能或域并将其划分到微服务中。 例如，如果某项服务背后的 Pod 负责给定资源（如客户）的所有操作，则该服务可能会映射到一个 API。 如果将对资源的操作划分到多个微服务（例如 GetOrder、PlaceOrder），则多个服务可能会以逻辑方式聚合到 API 管理中的单个 API（参见图 1）。 
 
 映射也会逐步发展。 由于 API 管理在微服务的前面创建了一个外观，因此我们可随着时间的推移重构微服务并调整其大小。 
 
@@ -97,7 +97,7 @@ AKS 和 API 管理结合使用时，共同提供一个平台用来部署、发�
 
 在某些情况下，由于公开的终结点，具有法规约束或严格安全要求的客户可能会发现选项 1 和 2 这两种解决方案不可行。 在其他情况下，AKS 群集和使用微服务的应用程序可能驻留在同一 VNet 中，因此没有理由公开群集，原因是所有 API 流量都将保留在 VNet 中。 在这些情况下，可将 API 管理部署到群集 VNet 中。 [API 管理高级层](https://aka.ms/apimpricing)支持 VNet 部署。 
 
-将 [API 管理部署到 VNet 中](./api-management-using-with-vnet.md) 的模式有两种：外部和内部。 
+可采用两种模式[将 API 管理部署到 VNet](./api-management-using-with-vnet.md) - 外部和内部。 
 
 如果 API 使用者不在群集 VNet 中，则应使用外部模式（图 4）。 在此模式下，API 管理网关会被注入到群集 VNet 中，但可通过外部负载均衡器从公共 Internet 进行访问。 它有助于完全隐藏群集，同时仍允许外部客户端使用微服务。 此外，还可使用网络安全组 (NSG) 等 Azure 网络功能来限制网络流量。
 

@@ -3,16 +3,16 @@ title: 配置服务器参数 - Azure CLI - Azure Database for MariaDB
 description: 本文介绍了如何使用 Azure CLI 命令行实用工具在 Azure Database for MariaDB 中配置服务参数。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c2c9d87c153563e2c33d15eda668469674f75494
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 4009d8047dae7bf8d9ba66566ff8797fa09a8878
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98662298"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Database for MariaDB 中配置服务器参数
@@ -62,7 +62,7 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 ## <a name="setting-parameters-not-listed"></a>设置参数未列出
 如果 Azure 门户中未列出你要更新的服务器参数，则可以选择性地使用 `init_connect` 在连接级别设置参数。 此项可为每个连接到服务器的客户端设置服务器参数。 
 
-更新资源组 **myresourcegroup** 下的服务器 **mydemoserver.mariadb.database.azure.com** 的 **init \_ connect** 服务器配置参数，以设置诸如字符集之类的值。
+更新资源组 myresourcegroup 下的服务器 mydemoserver.mariadb.database.azure.com 的 init\_connect 服务器配置参数，以设置字符集之类的值。
 ```azurecli-interactive
 az mariadb server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
 ```

@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.date: 01/15/2021
 ms.author: mbaldwin
 ms.openlocfilehash: 85aa9d355b2440535ea13c8c15e95500bac22352
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567252"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure 专用 HSM 高可用性
 
-Azure 专用 HSM 由 Microsoft 具有高可用性的数据中心提供支持。 但是，任何具有高可用性的数据中心都容易出现本地化故障，并且在极端情况下会出现区域级故障。 Microsoft 将 HSM 设备部署到区域中的不同数据中心以确保预配多个设备不会导致这些设备共享单个机架。 可以通过使用 Thales HA 组功能将这些 Hsm 与区域内的数据中心配对，实现更高的高可用性级别。 还可以在区域之间将设备配对以在进行灾难恢复的情况下解决区域性故障转移。 使用此多层高可用性配置时，会自动解决任何设备故障以使应用程序保持正常工作。 所有数据中心的现场还具有备用设备和组件，以便可以及时更换任何失败的设备。
+Azure 专用 HSM 由 Microsoft 具有高可用性的数据中心提供支持。 但是，任何具有高可用性的数据中心都容易出现本地化故障，并且在极端情况下会出现区域级故障。 Microsoft 将 HSM 设备部署到区域中的不同数据中心以确保预配多个设备不会导致这些设备共享单个机架。 通过使用“Thales HA 组”功能在区域中的数据中心之间将这些 HSM 进行配对，可实现更高级别的高可用性。 还可以在区域之间将设备配对以在进行灾难恢复的情况下解决区域性故障转移。 使用此多层高可用性配置时，会自动解决任何设备故障以使应用程序保持正常工作。 所有数据中心的现场还具有备用设备和组件，以便可以及时更换任何失败的设备。
 
 ## <a name="high-availability-example"></a>高可用性示例
 
-有关如何在软件级别配置 HSM 设备以实现高可用性的信息，请参阅 "Thales Luna 7 HSM 管理指南"。 此文档可在  [THALES HSM 页面](https://thalesdocs.com/gphsm/Content/luna/network/luna_network_releases.htm)上找到。
+“Thales Luna 7 HSM 管理指南”中提供了有关如何在软件级别配置 HSM 设备以实现高可用性的信息。 此文档在 [Thales HSM 页面](https://thalesdocs.com/gphsm/Content/luna/network/luna_network_releases.htm)提供。
 
 下图展示了一个具有高可用性的体系结构。 它在区域中使用了多个设备并且在每个单独的区域中使用了多个配对的设备。 此体系结构使用了四 HSM 设备的最低配置和虚拟网络组件。
 
@@ -42,4 +42,4 @@ Azure 专用 HSM 由 Microsoft 具有高可用性的数据中心提供支持。 
 * [可支持性](supportability.md)
 * [Monitoring](monitoring.md)
 
-有关配置 HSM 设备以实现高可用性的特定详细信息，请参阅管理员指南中的 Thales 客户支持门户，并参阅第6节。
+有关配置 HSM 设备以实现高可用性的具体详细信息，请参考 Thales 客户支持门户上的管理员指南并查看第 6 部分。

@@ -13,17 +13,17 @@ ms.date: 10/21/2020
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.openlocfilehash: 74321bc75fa760727e7896f47cdfc5b2929047e5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92366082"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 许可框架
 
 使用 Azure Active Directory (Azure AD) 许可框架可以轻松开发多租户 Web 应用程序和本机客户端应用程序。 这些应用程序允许用户帐户从与应用程序所注册到的租户不同的 Azure AD 租户登录。 这些帐户除了需要访问你自己的 Web API 以外，可能还需要访问 Microsoft Graph API 等 Web API（以访问 Azure AD、Intune，以及 Microsoft 365 中的服务）和其他 Microsoft 服务 API。
 
-该框架基于某个用户或管理员，该用户或管理员允许某个应用程序在其目录中注册，这可能涉及到访问目录数据。 例如，如果某个 Web 客户端应用程序需要从 Microsoft 365 中读取关于用户的日历信息，则该用户首先需要同意该客户端应用程序。 同意后，该客户端应用程序能够代表该用户调用 Microsoft Graph API，并根据需要使用日历信息。 [MICROSOFT GRAPH API](https://developer.microsoft.com/graph)提供对 Microsoft 365 (中的数据的访问，例如来自 Exchange 的日历和邮件、来自 SharePoint 的站点和列表、来自 OneDrive 的文档、来自 OneNote 的笔记本、) 计划器中的任务以及来自其他 Microsoft 云服务的 Azure AD 和其他数据对象。
+该框架基于某个用户或管理员，该用户或管理员允许某个应用程序在其目录中注册，这可能涉及到访问目录数据。 例如，如果某个 Web 客户端应用程序需要从 Microsoft 365 中读取关于用户的日历信息，则该用户首先需要同意该客户端应用程序。 同意后，该客户端应用程序能够代表该用户调用 Microsoft Graph API，并根据需要使用日历信息。 [Microsoft Graph API](https://developer.microsoft.com/graph) 可用来访问 Microsoft 365 中的数据（例如来自 Exchange 的日历和邮件、来自 SharePoint 的站点和列表、来自 OneDrive 的文档、来自 OneNote 的笔记本、来自 Planner 的任务以及来自 Excel 的工作簿）、Azure AD 中的用户和组以及更多 Microsoft 云服务中的其他数据对象。
 
 同意框架使用公共或机密客户端，建立在 OAuth 2.0 及其各种流程的基础之上，例如，代码授权和客户端凭据授权。 通过使用 OAuth 2.0，Azure AD 可生成多种不同类型的客户端应用程序（例如手机、平板电脑、服务器上的客户端应用程序或 Web 应用程序），并获取对所需资源的访问权限。
 

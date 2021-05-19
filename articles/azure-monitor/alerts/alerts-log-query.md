@@ -1,15 +1,15 @@
 ---
-title: 优化日志警报查询 |Microsoft Docs
+title: 优化日志警报查询 | Microsoft Docs
 description: 有关编写高效警报查询的建议
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: a7d65d7c65dabde3834458a36b50216878f7cf8d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031287"
 ---
 # <a name="optimizing-log-alert-queries"></a>优化日志警报查询
@@ -66,7 +66,7 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
-> 新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持[跨资源查询](../logs/cross-workspace-query.md)。 如果仍使用 [旧版 Log Analytics 警报 API](./api-alerts.md) 来创建日志警报，可以在 [此处](../alerts/alerts-log-api-switch.md)了解切换。
+> 新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持[跨资源查询](../logs/cross-workspace-query.md)。 如果仍使用[旧版 Log Analytics 警报 API](./api-alerts.md) 来创建日志警报，可在[此处](../alerts/alerts-log-api-switch.md)了解如何切换。
 
 ## <a name="examples"></a>示例
 以下示例包括使用 `search` 和 `union` 的日志查询，并提供可用于修改这些查询以与预警规则配合使用的步骤。

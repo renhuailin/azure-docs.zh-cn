@@ -15,10 +15,10 @@ ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2edc6fb98359c5360836bc369e5ae1928464df92
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861024"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>在 Azure Active Directory 中删除一个租户
@@ -32,13 +32,13 @@ ms.locfileid: "96861024"
 * 除了一位要删除组织的全局管理员外，Azure AD 组织（租户）中不得有任何用户。 在删除组织之前，必须先删除任何其他用户。 如果用户是从本地同步的，则必须先关闭同步，并且必须使用 Azure 门户或 Azure PowerShell cmdlet 从云组织中删除这些用户。
 * 该组织中不能有任何应用程序。 在删除组织之前，必须先删除任何应用程序。
 * 不能有任何多重身份验证提供程序链接到该组织。
-* 对于任何 Microsoft Online Services （例如 Microsoft Azure、Microsoft 365 或与组织关联的 Azure AD Premium），都不能有任何订阅。 例如，如果在 Azure 中创建了一个默认 Azure AD 组织，并且 Azure 订阅仍然依赖于此组织进行身份验证，则不能删除此组织。 类似地，如果其他用户已将订阅与某个组织相关联，则无法删除该组织。
+* 与该组织相关联的任何 Microsoft Online Services（例如 Microsoft Azure、Microsoft 365 或 Azure AD Premium）不存在任何订阅。 例如，如果在 Azure 中创建了一个默认 Azure AD 组织，并且 Azure 订阅仍然依赖于此组织进行身份验证，则不能删除此组织。 类似地，如果其他用户已将订阅与某个组织相关联，则无法删除该组织。
 
 ## <a name="delete-the-organization"></a>删除组织
 
 1. 使用组织的全局管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-2. 选择“Azure Active Directory” 。
+2. 选择“Azure Active Directory”。
 
 3. 切换到要删除的组织。
   
@@ -97,7 +97,7 @@ ms.locfileid: "96861024"
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>我有一个影响删除的试用订阅
 
-有一些 [自助注册产品](/office365/admin/misc/self-service-sign-up) ，如 Microsoft Power BI、Rights Management 服务、Microsoft Power Apps 或 Dynamics 365，单独的用户可以通过 Microsoft 365 注册，后者还会在你的 Azure AD 组织中创建一个用于身份验证的来宾用户。 这些自助服务产品会阻止删除目录，直到这些产品从组织中完全删除，以避免数据丢失。 它们只能由 Azure AD 管理员删除，无论用户是单独注册还是分配了产品。
+对于 Microsoft Power BI、Rights Management Services、Microsoft Power Apps 或 Dynamics 365 等[自助服务注册产品](/office365/admin/misc/self-service-sign-up)，个人用户可通过 Microsoft 365 注册，注册时还会在 Azure AD 组织中创建来宾用户以用于身份验证。 这些自助服务产品会阻止删除目录，直到这些产品从组织中完全删除，以避免数据丢失。 它们只能由 Azure AD 管理员删除，无论用户是单独注册还是分配了产品。
 
 自助服务注册产品的分配方式有两种： 
 

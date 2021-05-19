@@ -7,10 +7,10 @@ ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 6295a56abbf3466c68b968c935936dbc10e22fb5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101711410"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>排查 JavaScript Web 应用的 SDK 加载失败问题
@@ -68,7 +68,7 @@ Editor Note: This link name above "SDK Load Failure" has a direct references by 
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN 中断
 
-可以通过以下方式确认是否存在 Application Insights CDN 中断：尝试从浏览器中直接访问 CDN 终结点 (例如， https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js 或 https://js.monitor.azure.com/scripts/b/ai.2.min.js) 从你的最终用户可能来自你自己的开发计算机的不同位置 (假设你的组织尚未阻止此域) 。
+若要确认是否存在 Application Insights CDN 中断，可以尝试直接从与最终用户的位置不同的位置（可能是你自己的开发计算机，假定你的组织尚未阻止该域）通过浏览器来访问 CDN 终结点（例如 https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js 或 https://js.monitor.azure.com/scripts/b/ai.2.min.js) ）。
 
 如果确认发生了中断，可以[创建新的支持票证](https://azure.microsoft.com/support/create-ticket/)，或尝试更改用于下载 SDK 的 URL。
 

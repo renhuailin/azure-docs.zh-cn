@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f0aaa996d6520a69f5546976d89c7cc4aa802d38
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481347"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "81730758"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>使用 AMQP 协议来与 IoT 中心通信
 
@@ -32,9 +32,9 @@ Azure IoT 中心支持使用 [OASIS 高级消息队列协议 (AMQP) 版本 1.0](
 | 信息 | 值 |
 |-------------|--------------|
 | IoT 中心主机名 | `<iot-hub-name>.azure-devices.net` |
-| 项名称 | `service` |
+| 项名 | `service` |
 | 访问密钥 | 与服务关联的主要密钥或辅助密钥 |
-| 共享访问签名 | 采用以下格式的短生存期共享访问签名：`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要获取用于生成此签名的代码，请参阅[控制对 IoT 中心的访问](./iot-hub-dev-guide-sas.md#security-token-structure)。
+| 共享访问签名 | 采用以下格式的短生存期共享访问签名：`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要获取用于生成此签名的代码，请参阅[控制对 IoT 中心的访问](./iot-hub-devguide-security.md#security-token-structure)。
 
 以下代码片段使用 [Python 中的 uAMQP 库](https://github.com/Azure/azure-uamqp-python)通过发送方链接连接到 IoT 中心。
 
@@ -229,7 +229,7 @@ for msg in batch:
 |-------------|--------------|
 | IoT 中心主机名 | `<iot-hub-name>.azure-devices.net` |
 | 访问密钥 | 与设备关联的主要密钥或辅助密钥 |
-| 共享访问签名 | 采用以下格式的短生存期共享访问签名：`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要获取用于生成此签名的代码，请参阅[控制对 IoT 中心的访问](./iot-hub-dev-guide-sas.md#security-token-structure)。
+| 共享访问签名 | 采用以下格式的短生存期共享访问签名：`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。 若要获取用于生成此签名的代码，请参阅[控制对 IoT 中心的访问](./iot-hub-devguide-security.md#security-token-structure)。
 
 以下代码片段使用 [Python 中的 uAMQP 库](https://github.com/Azure/azure-uamqp-python)通过发送方链接连接到 IoT 中心。
 

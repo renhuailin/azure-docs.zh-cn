@@ -3,12 +3,12 @@ title: 如何管理容器见解代理 | Microsoft Docs
 description: 本文介绍如何使用容器见解所用的容器化 Log Analytics 代理来管理最常见的维护任务。
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 2a0c32ef797a953eca794e16fe0ace5e967f339f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6b485f4d49f0dd80f712d96779098c26be3f6de1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101713790"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442569"
 ---
 # <a name="how-to-manage-the-container-insights-agent"></a>如何管理容器见解代理
 
@@ -79,21 +79,6 @@ curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
 export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
 bash upgrade-monitoring.sh --resource-id $ azureAroV4ClusterResourceId
 ```
-
-若要详细了解如何通过此命令使用服务主体，请查看[启用对已启用 Azure Arc 的 Kubernetes 群集的监视](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script)中的“使用服务主体”。
-
-### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>在已启用 Azure Arc 的 Kubernetes 群集上升级代理
-
-执行以下命令，在已启用 Azure Arc 的 Kubernetes 群集上升级代理。
-
-```console
-curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
-export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
-bash upgrade-monitoring.sh --resource-id $azureArcClusterResourceId
-```
-
-若要详细了解如何通过此命令使用服务主体，请查看[启用对已启用 Azure Arc 的 Kubernetes 群集的监视](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script)中的“使用服务主体”。
-
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>如何禁用容器上的环境变量集合
 

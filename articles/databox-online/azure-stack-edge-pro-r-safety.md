@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro R 安全性指南 |Microsoft Docs
-description: 描述安全约定、指导原则、注意事项，并说明如何安全地安装和操作 Azure Stack Edge Pro R 设备。
+title: Azure Stack Edge Pro R 安全指南 | Microsoft Docs
+description: 描述安全约定、准则和注意事项，并说明如何安全安装和运行 Azure Stack Edge Pro R 设备。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,108 +8,109 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 7b3589349feed2e20711aa756d8be8ebc433ac0b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363060"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077595"
 ---
-# <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R 安全性说明
+# <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R 安全说明
 
 ![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
 ![阅读安全注意事项图标](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png)
 **阅读安全和运行状况信息**
 
-在使用 Azure Stack Edge Pro R 设备之前，请阅读本文中的所有安全信息。 如果未遵循说明，可能会导致火灾、电击、伤害或属性损坏。 使用 Azure Stack Edge Pro R 之前，请阅读下面的所有安全信息。
+在使用 Azure Stack Edge Pro R 设备之前，请阅读本文中的所有安全信息。 不遵照说明可能会导致火灾、电击、受伤或财产损坏。 使用 Azure Stack Edge Pro R 之前，请阅读下面的所有安全信息。
 
 ## <a name="safety-icon-conventions"></a>安全图标约定
 
-以下是危险警报迹象的信号：
+以下是危险警报标志的警示词：
 
 | 图标 | 说明 |
 |:--- |:--- |
-| ![危险符号](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)| **危险：** 表示一个危险情况，如果不避免这种情况，将导致死亡或严重伤害。 <br> **警告：** 表示一个危险情况，如果不避免这种情况，可能会导致死亡或严重伤害。 <br> **警告：** 表示一个危险情况，如果不避免这种情况，则可能会导致轻微或适度的伤害。|
+| ![危险符号](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)| 危险：指示危险情况，如果未能避免，将导致死亡或重伤。 <br> 警告：指示危险情况，如果未能避免，可能导致死亡或重伤。 <br> 小心：指示危险情况，如果未能避免，可能导致轻中度伤。|
 |
 
-在设置和运行 Azure Stack Edge Pro R 边缘设备时，将看到以下风险图标：
+在设置和运行 Azure Stack Edge Pro R 边缘设备时，将看到以下危险图标：
 
 | 图标 | 说明 |
 |:--- |:--- |
 | ![请首先阅读所有说明](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | 请首先阅读所有说明 |
-| ![注意图标](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **NOTICE:** | 指示应该给予重视但不涉及危险情况的信息。 || ![危险符号](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | 危险符号 |
+| ![注意图标](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **NOTICE:** | 指示应该给予重视但不涉及危险情况的信息。 |
+| ![危险符号](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | 危险符号 |
 | ![“尖端危险”图标](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | 倾覆危险|
-| ![“举重”图标](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | 重体重风险|
+| ![“举重”图标](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | 重物危险|
 | ![“电击”图标](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | 电击危险 |
-| ![“无用户可维修部件”图标](./media/azure-stack-edge-pro-r-safety/icon-safety-do-not-access.png) | 无用户维修部件。 除非经过适当的培训，否则请勿访问。 |
-| ![多个 Power 源图标](./media/azure-stack-edge-pro-r-safety/icon-safety-disconnect-all-power.png)  | 多个电源。 断开所有电源线，从设备上拔下电源。 |
-| ![收缩点图标](./media/azure-stack-edge-pro-r-safety/icon-pinching-points.png)  | 存在收缩点。 |
-| !["热组件" 或 "表面" 图标](./media/azure-stack-edge-pro-r-safety/icon-hot-component-surface.png)  | 指示热组件或图面。 |
-|
+| ![“无用户可维修部件”图标](./media/azure-stack-edge-pro-r-safety/icon-safety-do-not-access.png) | 无用户可维修部件。 除非经过适当的培训，否则请勿访问。 |
+| ![多个电源图标](./media/azure-stack-edge-pro-r-safety/icon-safety-disconnect-all-power.png)  | 多个电源。 断开所有电源线，以切断设备电源。 |
+| ![窄点图标](./media/azure-stack-edge-pro-r-safety/icon-pinching-points.png)  | 存在窄点。 |
+| ![热组件或表面图标](./media/azure-stack-edge-pro-r-safety/icon-hot-component-surface.png)  | 指示热组件或表面。 |
 
-## <a name="handling-precautions-and-site-selection"></a>处理防范措施和网站选择
 
-![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) **警告：**
+## <a name="handling-precautions-and-site-selection"></a>操作注意事项和站点选择
 
-* 例如，在移动和处理即付设备时，必须使用手套 (例如，托盘插孔) 和个人保护设备 (PPE) 。
+![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) 警告：
 
-![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)![ 提示危险图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png) **警告：**
+* 在移动和处理送达的设备时，必须使用适当的设备（例如，托盘搬运车）和个人防护设备 (PPE)（例如手套）。
 
-* 将设备置于平面、硬和稳定的表面上，以避免潜在的 tip 或 crushing 危险。
-* 不要堆栈超过2个设备。
-* 在堆栈之前确保系统是安全的。
-* 请勿重定位或移动堆积设备。
-* 不要将激发有外部电缆的设备堆积。
-* 确保在堆栈操作期间电源线不会冰或损坏。
-* 设备不能用作表或工作区。
+![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)![倾翻危险图标](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png) **警告：**
 
-![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
- ![ 电击图标 " ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png)
- ![ 无用户维修部件" 图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-do-not-access.png) **警告：**
+* 将设备放置在平坦、坚固、稳定的表面上，以免翻倒或造成挤伤。
+* 请勿堆叠超过 2 个设备。
+* 在堆叠之前确保系统是安全的。
+* 请勿重新安置或移动堆叠设备。
+* 请勿堆叠用外部电缆通电的设备。
+* 确保在堆叠操作过程中电源线不被挤压或损坏。
+* 请勿将设备用作桌面或工作台。
 
-* 检查收到的原始设备是否有损坏。 如果设备机箱损坏，请 [联系 Microsoft 支持部门](azure-stack-edge-contact-microsoft-support.md) 获取更换。 请勿尝试操作设备。
-* 如果怀疑设备出现故障，请 [联系 Microsoft 支持部门](azure-stack-edge-contact-microsoft-support.md) 获取更换。 请勿尝试自行维修设备。
+![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
+![电击图标](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png)
+![无用户可维修部件图标](./media/azure-stack-edge-pro-r-safety/icon-safety-do-not-access.png)**小心：**
+
+* 检查收到的原始设备是否有损坏。 如果设备机箱受损，请[联系 Microsoft 支持部门](azure-stack-edge-contact-microsoft-support.md)获取更换物件。 请勿尝试操作设备。
+* 如果怀疑设备不正常，请联系 [Microsoft 支持部门](azure-stack-edge-contact-microsoft-support.md)获取更换物件。 请勿尝试自行维修设备。
 * 设备不包含任何用户可维修部件。 内有危险电压、电流和能量。 请勿拆开机箱。 请将设备退回到 Microsoft 进行检修。
 
-![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) ![ 重型权重图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png) **警告：**
+![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) ![重物图标](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png) **警告：**
 
-* 删除 UPS 的电源模块会在 UPS 中显示激发的部件。 请勿将外部对象插入电源模块隔离舱中。
-* 不要尝试自行抬起 Azure Stack 边缘 Pro R Edge 设备。 机箱可以在52公斤到93千克之间进行权衡 (115 磅和205磅) ;移动和抬起设备时，请使用机械援助或其他合适的帮助。 在移动和抬起设备时遵循本地 occupational 健康和安全要求。
-* 请勿在没有正确机械辅助的情况下尝试抬起设备。 请注意，尝试提升此权重可能会导致严重伤害。
+* 卸下 UPS 的电源模块会暴露 UPS 内的通电部件。 请勿将异物插入电源模块盒槽。
+* 请勿尝试自行抬升 Azure Stack 边缘 Pro R Edge 设备。 机箱的重量在 52 公斤至 93 公斤（115 磅至 205磅）之间；移动和抬升设备时，请使用机械辅助或其他合适的辅助工具。 根据当地职业健康和安全要求移动和抬升设备。
+* 在没有适当机械辅助装备的情况下，请勿尝试抬升设备。 请注意，尝试自行抬升此重物可能会导致重伤。
 
-![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) **警告：**  
+![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)  **警告：**
 
-* 系统设计为在受控环境中操作。 请选择符合以下条件的场地：
+* 系统应在受控的办公环境中操作。 请选择符合以下条件的场地：
   * 有充足的通风且远离热源（包括阳光直射和散热器）。
-  * 未向湿气或 rain 公开。
-  * 位于可最大程度减少振动和物理触电的空间中。  根据 MIL-810G，系统设计为冲击和振动。
+  * 请勿暴露于潮湿的环境或遭雨淋。
+  * 放置在可最大程度减少振动和物理撞击的空间中。  该系统设计为可承受 MIL-STD-810G 标准下的撞击和振动。
   * 远离电气设备产生的强电磁场。
-  * 随附了正确接地的插座。
-  * 提供足够的空间来访问电源线 () ，因为它们用作产品的主电源断开连接。
-* 产品未提供以太网电缆。 为了减少电磁干扰，建议使用 Cat 6 屏蔽双绞线 (STP) 布线。
-* 在工作区域中设置设备，允许在设备周围实现充足的空气循环;确保在设备运行时完全删除前面和背面。
-* 产品未提供以太网电缆。 为了减少电磁干扰，建议使用 Cat 6 防护 (STP) 布线。
-* 将设备安装在温度控制区中，无导电污染物，并为设备提供充足的空气流通。
-* 让设备远离液体和过度 humid 的环境。
-* 不允许任何液体或任何异物输入系统。 请勿将饮料或任何其他液体容器置于系统或附近。
+  * 提供正确接地的插座。
+  * 提供足够的空间用于排布电源线，这些电源线充当本产品的主要断电装置。
+* 产品不附带以太网线缆。 为了减少电磁干扰，建议使用 Cat 6 屏蔽双绞线 (STP) 布线。
+* 将设备安装在空气流通充足的工作区域中；确保在设备运行时将前盖和后盖完全卸下。
+* 产品不附带以太网线缆。 为了减少电磁干扰，建议使用 Cat 6 屏蔽 (STP) 布线。
+* 请将设备安装在无传导性污染物、有充足气流且温度受控的区域。
+* 将设备定位在远离液体源的位置，并避免过于潮湿的环境。
+* 请勿让任何液体或任何异物进入系统。 请勿将饮料或任何其他液体容器放在系统上或其附近。
 
-## <a name="heater-precautions"></a>热水预防措施
+## <a name="heater-precautions"></a>加热器预防措施
 
-![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) ![ 热点组件或表面图标 1 ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告：** 
+![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) ![热组件或表面图标 1 ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告：** 
 
-* 系统开启时，自动热水操作可能会因为热水部件覆盖面上的温度过高而产生触摸危险。 当系统通电时，请勿触摸此表面。 关闭系统电源后，允许10分钟的冷却时间段。
+* 系统通电时，由于加热器组件盖表面的高温，自动加热器操作可能会产生触摸危险。 当系统通电时，请勿触摸此表面。 关闭系统电源后，请等待 10 分钟，让系统冷却。
 
-![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) ![ 收缩点图标 1 ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告：** 
+![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) ![窄点图标 1 ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告：** 
 
-* 系统打开后，传动的自动 plenum 可能会产生一个紧的危险。 当系统通电时，请保持对此区域的明显清晰。
+* 当系统通电时，后增压室门的自动致动可能会造成窄点危险。 当系统通电时，请保持双手远离此区域。
 
 ## <a name="electrical-precautions"></a>电力预防措施
 
-![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) ![ 电击图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告：**
+![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) ![电击图标](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告：**
 
-* 为电源线提供安全接地连接。 交替的当前 (交流) 电源线具有三线接地插头 (插头) 插头。 该插头只能插入已接地的交流电插座。 请勿违背接地插脚的设计用途。
+* 为电源线提供安全接地连接。 交流电源线 (alternating current, AC) 带有三线接地插头（带接地插脚的插头）。 该插头只能插入已接地的交流电插座。 请勿违背接地插脚的设计用途。
 * 如果电源线上的插头是主要断连装置，请确保将插座定位在靠近设备且易于插接的位置。
-* 拔下电源线 (s)  (，方法是拉动插头，) 而不要拔出电源线，如果满足以下任一条件，则拔下所有电缆：
+* 如果存在以下任何情况，请拔下电源线（拔下插头，不要拉拽电线），并断开所有线缆：
 
   * 电源线或插头已磨损或损坏。
   * 有液体溅入设备机箱中。
@@ -117,55 +118,55 @@ ms.locfileid: "100363060"
   * 设备跌落，并且设备机箱受损。
   * 你怀疑设备需要检修或维修。
 * 在移动之前，或者如果认为该设备出现了任何形式的损坏，请永久拔掉电源。
-* 若要防止高泄露电流，当单个传输案例具有多个不间断电源 (UPS) 时，建议将每个 UPS 连接到一个独立的分支线路。 但是，如果使用配电装置 (PDU) 或其他设备，而每个 UPS 的安全基础依赖于 PDU 的单个进纸器接地导线，则每个 UPS 外部的接地终端还必须与一座补充建筑地面导体一起使用。
+* 为了防止高泄漏电流，当一个运输箱具有多个不间断电源 (UPS) 时，建议将每个 UPS 连接到独立的分支电路。 但是，如果在每个 UPS 的安全接地都依赖于配电装置 (power distribution unit, PDU) 的单个馈线接地导体的情况下使用 PDU 或其他设备，则每个 UPS 外部的接地终端也必须与补充用的建筑物接地导体一起使用。
 
   > [!NOTE]
-  > 如果使用的 PDU 已有补充的接地导体，则不需要使用 UPS 上的其他接地终端。
+  > 如果使用的 PDU 已有补充用的接地导体，则无需在 UPS 上使用其他接地终端。
 
 * 根据以下电源规格提供带电力过载保护的合适电源：
 
-  * 电压：100到240伏交流
-  * 当前： 20 A，每个电源线的最大值。 电源线 (提供) 。
-  * 频率：50至 60 Hz
+  * 电压：100 到 240 伏 AC
+  * 电流：每条电源线最大为 20 A。 提供了电源线。
+  * 频率：50 到 60 Hz
 
 ![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
- ![ 电击图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png)
- ![ 多个 Power 源 ](./media/azure-stack-edge-pro-r-safety/icon-safety-disconnect-all-power.png) **警告：**
+ ![电击图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png)
+ ![多个电源](./media/azure-stack-edge-pro-r-safety/icon-safety-disconnect-all-power.png) **警告：**
 
-* 对于没有无间断电源的系统 (UPS) ，请拔下所有交流电源线 () ，以完全拔下设备的交流电源。
-* 对于带有 UPS 的系统，请拔下所有交流电源线 () 并使用 UPS 电源开关来消除系统的动力。 UPS 包含有害的交流和直流电压。
-* 如果系统包含 UPS，则使用受防护的输入电源线提供 UPS。 必须使用受防护的输入电源线，不要更换或修改电缆。
+* 对于没有无间断电源 (uninterrupted power supply, UPS) 的系统，请拔下所有交流电源线，以完全切断设备的交流电源。
+* 对于带有 UPS 的系统，请拔下所有交流电源线并使用 UPS 电源开关来为系统断电。 UPS 包含危险的交流和直流电压。
+* 如果系统包含 UPS，则 UPS 配有屏蔽输入电源线。 必须使用屏蔽输入电源线，请勿更换或改装电源线。
 
-![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
- ![ 电击图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告：**
+![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
+![电击图标](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告：**
 
-* 对于配备 UPS、AC 和/或直流电电压的系统，在电池或实用程序生成的 UPS 输出上，将始终涉及交流电压的潜在危险。 若要避免设备损坏或人身伤害，请始终假定 UPS 输出可能存在电压，即使断开了与主电源的连接也是如此。
-* 对于配备了 UPS 的系统，所有 UPS 激发外部连接都是插孔。 请勿删除此事例，也不会在 UPS 或 UPS 上的任何连接器中插入任何内容。
+* 对于配备了 UPS 的系统，交流和/或直流电压将始终存在电池或公共配电在 UPS 输出端产生交流电压的风险。 为避免设备损坏或人身伤害，即使与主电源断开连接，也不应排除 UPS 输出端存在电压的可能性。
+* 对于配备了 UPS 的系统，所有 UPS 通电的外部连接均为凹型。 请勿卸下机壳或将任何物体插入 UPS 的这些或任何连接器中。
 
-![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
- ![ 电击图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告：**
+![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
+![电击图标](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告：**
 
 * 请勿尝试改造交流电源线；只能使用设备随附的电源线。
 
 ![警告图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
- ![ 无用户维修部件图标 ](./media/azure-stack-edge-pro-r-safety/icon-safety-do-not-access.png) **警告：**
+ ![无用户可维修部件图标](./media/azure-stack-edge-pro-r-safety/icon-safety-do-not-access.png) **小心：**
 
-* 此设备包含锂硬币单元和/或锂熨斗 phosphate 电池。 不要尝试维修设备。 此设备中的电池无法进行用户维修。 如果使用不当的类型更换电池，将存在爆炸的风险。
-* 删除 UPS 的电池模块会在 UPS 中显示激发的部件。 请勿在电池模块隔离舱内插入外部对象。
+* 此设备包含纽扣锂电池和/或磷酸铁锂电池。 请勿尝试维修设备。 此设备中的电池不可由用户检修。 如果使用不当的类型更换电池，将存在爆炸的风险。
+* 卸下 UPS 的电池模块会暴露 UPS 内的通电部件。 请勿将异物插入电池模块盒槽。
 
 ## <a name="regulatory-information"></a>法规信息
 
-本部分包含 Azure Stack Edge Pro R 设备、规章型号的法规信息： Azure Stack Edge Pro R。
+本节包含有关 Azure Stack Edge Pro R 设备的法规信息，法规型号：Azure Stack Edge Pro R。
 
-Azure Stack 边缘 Pro R 边缘设备设计为与 (UL、CSA、ETL 等 ) ，以及标记为) 信息技术设备的 iec/EN 60950-1 或 IEC/EN 62368-1 (CE 一起使用。
+Azure Stack Edge Pro R Edge 设备的设计旨在与经过 NRTL （UL、CSA、ETL 等）认证和符合 IEC/EN 60950-1 或 IEC/EN 62368-1 规范（CE 标记）的信息技术设备配合使用。
 
-设备设计为在以下环境中运行：
+该设备设计为在以下环境中工作：
 
 | 环境 | 规范 |
 |:--- |:--- |
-|温度规格 | <ul><li>存储温度：– 33 &deg; C – 63 &deg; C ( – 28 &deg; f-145 &deg; f)  </li><li>连续操作： 5 &deg; c – 43 &deg; C (41 &deg; f – 110 &deg; F) </li><li>操作和存储) 的最大温度渐变 (： 20 &deg; C/h (68 &deg; F/h) </li></ul> |
-|相对湿度规范 | <ul><li>存储：5% 至 95% RH 33 &deg; C (91 &deg; F) 最大 dew 点。 大气始终必须为非冷凝状态。</li><li>操作：5% 至85% 相对湿度，含29个 &deg; (84.2 &deg; F) 最大 dew 点</li></ul> |
-| 最大海拔规范 | <ul><li>不带 UPS 的操作 () ： 15000 ft (4572 米) </li><li>与 UPS) 的操作 (： 10000 ft (3048 米) </li><li>存储： 40000 ft (12192 米) </li></ul> |
+|温度规范 | <ul><li>储存温度：–33&deg;C–63&deg;C (–28&deg;F-145&deg;F) </li><li>连续操作：5&deg;C–43&deg;C (41&deg;F–110&deg;F)</li><li>最大温度梯度（运行和存储）：20&deg;C/h (68&deg;F/h)</li></ul> |
+|相对湿度规范 | <ul><li>存储：相对湿度为 5% 至 95%，最大露点为 33 &deg;C (91&deg;F)。 大气须始终处于非冷凝状态。</li><li>运行：相对湿度为 5% 至 85%，最大露点为 29&deg;C (84.2&deg;F)</li></ul> |
+| 最大海拔规范 | <ul><li>运行（不带 UPS）：15,000 英尺（4,572 米）</li><li>运行（带 UPS）：10,000 英尺（3,048 米）</li><li>存储：40,000 英尺（12192 米）</li></ul> |
 
 <!--|Standard operating temperature specifications | <ul>Continuous operation (for altitude less than 950 m or 3117 ft): +5&deg;C–45&deg;C (41&deg;F–113&deg;F) with no direct sunlight on the equipment</ui>
 |Expanded operating temperature specifications | <ul><li>Continuous operation: 5&deg;C to 45&deg;C at 5% to 85% RH with 29&deg;C dew point.</li><li></= 1% of annual operating hours: –5&deg;C to 55&deg;C at 5% to 90% RH with 29&deg;C dew point. |
@@ -209,22 +210,22 @@ A device that has a UPS installed is designed to operate in the following enviro
 > Maximum corrosive contaminant levels measured at &lt;/= 50% relative humidity. --> 
 
 
-> ![注意图标-2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **通知：** 对 &nbsp; Microsoft 未明确批准的设备所做的更改或修改可能会使用户无权操作设备。
+> ![注意图标 - 2](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **注意：** &nbsp;用户在未经 Microsoft 明确准许的情况下对本设备进行变更或改造可能会失去对本设备的操作权限。
 
 #### <a name="canada-and-usa"></a>加拿大和美国：
 
-> ![注意图标-2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **通知：** &nbsp; 此设备已测试并发现符合 FCC 规则第15部分的数字设备限制。 这些限制旨在为商业环境中运行的设备提供合理的抗有害干扰保护。 本设备产生、使用并可能发射射频能量，如果不根据说明书安装和使用，可能会给无线电通信造成有害干扰。 在居民区操作本设备可能会造成有害干扰，在这种情况下，用户需要自费纠正干扰。
+> ![注意图标 - 2](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **注意：** &nbsp;根据 FCC 规则第 15 部分，本设备经测试符合 A 类数字设备的限制。 这些限制旨在为商业环境中运行的设备提供合理的抗有害干扰保护。 本设备产生、使用并可能发射射频能量，如果不根据说明书安装和使用，可能会给无线电通信造成有害干扰。 在居民区操作本设备可能会造成有害干扰，在这种情况下，用户需要自费纠正干扰。
 
 本设备符合 FCC 规则第 15 部分，以及加拿大工业部许可证豁免 RSS 标准。 操作时需满足以下两个条件：(1) 本设备不会造成有害干扰；(2) 本设备必须接受任何干扰，包括可能导致设备意外运行的干扰。
 
-![规章信息警告1](./media/azure-stack-edge-mini-r-safety/regulatory-information-1.png)
+![法规信息警告 1](./media/azure-stack-edge-mini-r-safety/regulatory-information-1.png)
 
 
-可以 () /NMB-3 () Microsoft 公司，一种 Microsoft 方法，Redmond，WA 98052，美国美国： (800) 426-9400 加拿大： (800) 933-4750
+CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA United States: (800) 426-9400 Canada: (800) 933-4750
 
 #### <a name="european-union"></a>欧盟：
 
-请求欧盟符合性声明的副本。 将电子邮件发送到 [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com)。
+请求获取欧盟符合性声明的副本。 将电子邮件发送到 [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com)。
 
 ![警告图标](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) **WARNING!**
 
@@ -232,15 +233,15 @@ A device that has a UPS installed is designed to operate in the following enviro
 
 处置废旧电池以及电力和电子设备：
 
-![警告图标14](./media/azure-stack-edge-mini-r-safety/icon-ewaste-disposal.png)
+![警告图标 14](./media/azure-stack-edge-mini-r-safety/icon-ewaste-disposal.png)
 
 本产品、其电池或包装上的此符号表示本产品包含的任何电池不可当作家庭垃圾进行处置。 你需要负责将此废弃物递送到适当的电池以及电力和电子设备回收点。 由于电池以及电力和电子设备中可能包含有害物质，这种独立的回收和循环利用有助于保护自然资源，并防止不当的处置可能对人类健康和环境造成的不利后果。 有关电池以及电力和电子废弃物投放点的详细信息，请联系当地的市政办公室、家庭垃圾处置服务部门，或销售本产品的商店。 联系 erecycle@microsoft.com 获取有关 WEEE 的更多信息。
 
 本产品包含钮扣电池。
 
-Microsoft 爱尔兰 Sandyford Ind Est 都柏林 D18 KX32 IRL 电话号码： + 353 1 295 3826 传真号码： + 353 1 706 4110
+Microsoft Ireland Sandyford Ind Est Dublin D18 KX32 IRL 电话号码：+353 1 295 3826 传真号码：+353 1 706 4110
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [准备部署 Azure Stack Edge Pro R 边缘](azure-stack-edge-pro-r-deploy-prep.md)
+- [准备部署 Azure Stack Edge Pro R Edge](azure-stack-edge-pro-r-deploy-prep.md)

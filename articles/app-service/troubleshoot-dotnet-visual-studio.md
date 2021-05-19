@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: f44d3eb84715233e6d9aa4a1d06d626d162973ee
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095709"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205262"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的应用进行故障排除
 ## <a name="overview"></a>概述
@@ -29,7 +29,7 @@ ms.locfileid: "101095709"
 如果有 Visual Studio Ultimate，还可以使用 [IntelliTrace](/visualstudio/debugger/intellitrace) 进行调试。 本教程未介绍 IntelliTrace。
 
 ## <a name="prerequisites"></a><a name="prerequisites"></a>先决条件
-本教程适用于在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中设置的开发环境、Web 项目和应用服务应用。 对于 WebJobs 部分，需要用到在 [Azure WebJobs SDK 入门][GetStartedWJ]中创建的应用程序。
+本教程适用于在[在 Azure 应用服务中创建 ASP.NET 应用](./quickstart-dotnetcore.md?tabs=netframework48)中设置的开发环境、Web 项目和应用服务应用。 对于 WebJobs 部分，需要用到在 [Azure WebJobs SDK 入门][GetStartedWJ]中创建的应用程序。
 
 在本教程中所示的代码示例适用于 C# MVC Web 应用程序，但对于 Visual Basic 和 Web 窗体应用程序，故障排除过程是一样的。
 
@@ -49,9 +49,9 @@ ms.locfileid: "101095709"
    >
    >
 
-    有关从 Visual Studio 连接到 Azure 资源的详细信息，请参阅 [使用 Azure 门户分配 azure 角色](../role-based-access-control/role-assignments-portal.md)。
+    若要详细了解如何从 Visual Studio 连接到 Azure 资源，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 2. 在“服务资源管理器”中，展开“Azure”，并展开“应用服务”。
-3. 展开包含在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中创建的应用的资源组，右键单击该应用节点，并单击“查看设置”。
+3. 展开包含在[在 Azure 应用服务中创建 ASP.NET 应用](./quickstart-dotnetcore.md?tabs=netframework48)中创建的应用的资源组，右键单击该应用节点，并单击“查看设置”。
 
     ![在服务器资源管理器中查看设置](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -108,9 +108,9 @@ ms.locfileid: "101095709"
 
 远程调试不适用于 Visual Studio Express 版。
 
-本部分介绍如何使用在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中创建的项目进行远程调试。
+本部分介绍如何使用在[在 Azure 应用服务中创建 ASP.NET 应用](./quickstart-dotnetcore.md?tabs=netframework48)中创建的项目进行远程调试。
 
-1. 打开在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中创建的 Web 项目。
+1. 打开在[在 Azure 应用服务中创建 ASP.NET 应用](./quickstart-dotnetcore.md?tabs=netframework48)中创建的 Web 项目。
 
 1. 打开 *Controllers\HomeController.cs*。
 
@@ -129,7 +129,7 @@ ms.locfileid: "101095709"
 
 1. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。
 
-1. 在“配置文件”下拉列表中，选择在[在 Azure 应用服务中创建 ASP.NET 应用](quickstart-dotnet-framework.md)中使用的相同配置文件。 然后，单击“设置”。
+1. 在“配置文件”下拉列表中，选择在[在 Azure 应用服务中创建 ASP.NET 应用](./quickstart-dotnetcore.md?tabs=netframework48)中使用的相同配置文件。 然后，单击“设置”。
 
 1. 在“发布”对话框中，单击“设置”选项卡，将“配置”更改为“调试”，然后单击“保存”    。
 
@@ -264,7 +264,7 @@ ms.locfileid: "101095709"
 ## <a name="create-and-view-application-trace-logs"></a><a name="apptracelogs"></a>创建并查看应用程序跟踪日志
 在本部分中执行以下任务：
 
-* 将跟踪语句添加到在 [Azure 和 ASP.NET 入门](quickstart-dotnet-framework.md)中创建的 Web 项目。
+* 将跟踪语句添加到在 [Azure 和 ASP.NET 入门](./quickstart-dotnetcore.md?tabs=netframework48)中创建的 Web 项目。
 * 在本地运行该项目时查看日志。
 * 查看由运行于 Azure 中的应用程序生成的日志。
 

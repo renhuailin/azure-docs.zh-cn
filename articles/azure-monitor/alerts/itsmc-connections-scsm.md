@@ -1,20 +1,20 @@
 ---
-title: 将 SCSM 连接 IT 服务管理连接器
-description: 本文提供了有关如何在 Azure Monitor 中 IT 服务管理连接器 SCSM (ITSMC) 的信息，以集中监视和管理 ITSM 工作项的信息。
+title: 将 SCSM 连接到 IT 服务管理连接器
+description: 本文介绍有关如何将 SCSM 与 Azure Monitor 中的 IT 服务管理连接器 (ITSMC) 相连接，从而集中监视和管理 ITSM 工作项的信息。
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
 ms.openlocfilehash: 3f80c42be217d062510c687075cf46b4e7539419
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102045337"
 ---
-# <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>将 System Center Service Manager 与 IT 服务管理连接器连接
+# <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>将 System Center Service Manager 连接到 IT 服务管理连接器
 
-本文提供了有关如何配置 System Center Service Manager 实例与 Log Analytics 中的 IT 服务管理连接器 () ITSMC 之间的连接以集中管理工作项的信息。
+本文介绍如何配置 System Center Service Manager 实例与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。
 
 以下部分提供有关如何将 System Center Service Manager 产品连接到 Azure 中的 ITSMC 的详细信息。
 
@@ -31,7 +31,7 @@ ms.locfileid: "102045337"
 
 > [!NOTE]
 > - ITSM 连接器只能连接到基于云的 ServiceNow 实例。 当前不支持本地 ServiceNow 实例。
-> - 为了使用自定义 [模板](./itsmc-definition.md#define-a-template) 作为操作的一部分，SCSM 模板中的参数 "ProjectionType" 应映射到 "servicemanager.incidentmanagement.configuration.xml！ProjectionType "。
+> - 为了使用自定义[模板](./itsmc-definition.md#define-a-template)作为操作的一部分，应将 SCSM 模板中的参数“ProjectionType”映射到“IncidentManagement!System.WorkItem.Incident.ProjectionType”
 
 ## <a name="connection-procedure"></a>连接过程
 

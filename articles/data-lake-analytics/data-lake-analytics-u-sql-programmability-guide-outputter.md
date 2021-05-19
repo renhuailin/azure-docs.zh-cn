@@ -1,15 +1,15 @@
 ---
-title: 用于 Azure Data Lake 的 U SQL 用户定义的输出器可编程性指南
-description: 了解有关 U-SQL UDO 可编程性 guide 用户定义的输出器。
+title: U-SQL 用户定义的输出器可编程性指南（适用于 Azure Data Lake）
+description: 了解 U-SQL UDO 可编程性指南 - 用户定义的输出器。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 56b104b5cc8f8923445455c71fe2418e39539b8e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96512517"
 ---
 # <a name="use-user-defined-outputter"></a>使用用户定义的输出器
@@ -296,5 +296,5 @@ USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [U-SQL 可编程性指南-概述](data-lake-analytics-u-sql-programmability-guide.md)
-* [U-SQL 可编程性指南-UDT 和 UDAGG](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)
+* [U-SQL 可编程性指南 - 概述](data-lake-analytics-u-sql-programmability-guide.md)
+* [U-SQL 可编程性指南 - UDT 和 UDAGG](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)

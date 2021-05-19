@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae802038626a1fbf8d533800a0b8eb43c4565e8c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100574178"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>条件访问见解和报告
@@ -98,20 +98,20 @@ ms.locfileid: "100574178"
 也可以通过在仪表板底部搜索登录来调查特定用户的登录。 左侧的查询显示最常登录的用户。 选择用户会向右筛选查询。  
 
 > [!NOTE]
-> 下载登录日志时，请选择 "JSON 格式" 以包含仅限条件访问报告结果数据。
+> 下载登录日志时，请选择 JSON 格式以包含条件访问仅限报告结果数据。
 
-## <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>在仅报告模式下配置条件访问策略
+## <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>在仅限报告模式下配置条件访问策略
 
-若要在仅限报表模式下配置条件访问策略，请执行以下操作：
+若要在仅限报告模式下配置条件访问策略，请执行以下操作：
 
-1. 以条件访问管理员、安全管理员或全局管理员身份登录到 **Azure 门户** 。
+1. 以条件访问管理员、安全管理员或全局管理员身份登录到 Azure 门户。
 1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
 1. 选择现有策略或创建新策略。
-1. 在 " **启用策略** " 下，将切换设置为 **仅报告** 模式。
+1. 在“启用策略”下将切换设置为“仅限报告”模式 。
 1. 选择“保存”
 
 > [!TIP]
-> 将中现有策略的 " **启用" 策略** 状态 **编辑为 "** **仅限报表** " 将禁用现有策略强制。 
+> 将现有策略的“启用策略”状态从“打开”编辑为“仅限报告”，以禁止现有策略实施  。 
 
 ## <a name="troubleshooting"></a>疑难解答
 
@@ -128,9 +128,9 @@ ms.locfileid: "100574178"
 
 若要详细了解如何将 Azure AD 登录日志流式传输到 Log Analytics 工作区，请参阅[将 Azure AD 日志与 Azure Monitor 日志集成](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)一文。
 
-### <a name="why-are-the-queries-in-the-workbook-failing"></a>为什么工作簿中的查询未通过？
+### <a name="why-are-the-queries-in-the-workbook-failing"></a>为什么工作簿中的查询失败了？
 
-客户注意到，如果错误或多个工作区与工作簿相关联，查询有时会失败。 若要解决此问题，请单击工作簿顶部的 " **编辑** "，然后设置齿轮。 选择并删除与工作簿无关的工作区。 应该只有一个工作区与每个工作簿关联。
+客户已注意到，如果工作簿与错误工作区或多个工作区相关联，查询有时会失败。 若要解决此问题，请单击工作簿顶部的“编辑”，然后单击“设置”齿轮。 选择与工作簿无关的工作区，然后将其删除。 每个工作簿应该只有一个工作区与之关联。
 
 ### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>为什么条件访问策略参数为空？
 
@@ -156,6 +156,6 @@ ms.locfileid: "100574178"
 
 - [条件访问“仅限报告”模式](concept-conditional-access-report-only.md)
 
-- 有关 Azure AD 工作簿的详细信息，请参阅 [如何使用 Azure Monitor 工作簿 Azure Active Directory 报表](../reports-monitoring/howto-use-azure-monitor-workbooks.md)。
+- 有关 Azure AD 工作簿的详细信息，请参阅[如何将 Azure Monitor 工作簿用于 Azure Active Directory 报告](../reports-monitoring/howto-use-azure-monitor-workbooks.md)一文。
 
 - [条件访问常见策略](concept-conditional-access-policy-common.md)

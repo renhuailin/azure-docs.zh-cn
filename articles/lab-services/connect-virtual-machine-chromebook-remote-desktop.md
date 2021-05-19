@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
 ms.openlocfilehash: 74135c0b36f533ebfbba6422bc79af47825a1a3b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97813218"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-chromebook"></a>在 Chromebook 上使用远程桌面协议连接到 VM
@@ -33,7 +33,7 @@ ms.locfileid: "97813218"
 
 1. 根据提示输入密码。
 
-    ![屏幕截图，显示输入用户名和密码的登录屏幕。](./media/how-to-use-classroom-lab/password-chromebook.png)
+    ![此屏幕截图显示了“登录”屏幕，你在其中输入用户名和密码。](./media/how-to-use-classroom-lab/password-chromebook.png)
 
 1. 如果收到以下警告，请选择“继续”。 
 

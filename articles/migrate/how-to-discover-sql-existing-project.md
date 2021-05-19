@@ -1,61 +1,58 @@
 ---
-title: 发现现有 Azure Migrate 项目中的 SQL Server 实例
-description: 了解如何发现现有 Azure Migrate 项目中的 SQL Server 实例。
-author: rashi-ms
-ms.author: rajosh
+title: 在现有的 Azure Migrate 项目中发现 SQL Server 实例
+description: 了解如何在现有的 Azure Migrate 项目中发现 SQL Server 实例。
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 11/23/2020
-ms.openlocfilehash: 3dc9b178b9aa22991230f4cc6a9d54b44cf09b4e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.date: 03/23/2021
+ms.openlocfilehash: 2de60880b511e43ffb2949a15fec2cf2a94f62fa
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098802"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567146"
 ---
-# <a name="discover-sql-server-instances-in-an-existing-project"></a>发现现有项目中的 SQL Server 实例 
+# <a name="discover-sql-server-instances-in-an-existing-project"></a>在现有的项目中发现 SQL Server 实例 
 
-本文介绍如何发现在 Azure SQL 评估预览功能之前创建的 [Azure Migrate](./migrate-services-overview.md) 项目中 SQL Server 实例和数据库。
+本文介绍如何在 Azure SQL 评估功能预览版推出之前创建的 [Azure Migrate](./migrate-services-overview.md) 项目中发现 SQL Server 实例和数据库。
 
-发现本地计算机上运行 SQL Server 实例和数据库有助于识别和定制 Azure SQL 的迁移路径。 Azure Migrate 设备使用域凭据或 SQL Server 身份验证凭据执行此发现，这些凭据具有对目标服务器上运行的 SQL Server 实例和数据库的访问权限。 此发现过程是无代理的，即目标服务器上未安装任何内容。
-
-> [!Note]
-> 在 VMware 环境中运行的 SQL Server 实例和数据库的发现和评估现在为预览版。 若要试用此功能，请使用 [**此链接**](https://aka.ms/AzureMigrate/SQL) 在 **澳大利亚东部** 区域中创建一个项目。 如果你已有一个澳大利亚东部的项目，并且想要尝试此功能，请确保已完成本文中的 [**先决条件**](how-to-discover-sql-existing-project.md) 。
+发现本地计算机上运行的 SQL Server 实例与数据库有助于识别和定制到 Azure SQL 的迁移路径。 Azure Migrate 设备使用有权访问目标服务器上运行的 SQL Server 实例和数据库的域凭据或 SQL Server 身份验证凭据来执行此发现。 此发现过程不使用代理，即，不在目标服务器上安装任何代理。
 
 ## <a name="before-you-start"></a>准备工作
 
-- 请确保已完成以下操作： 
-    - 在针对你所在区域的 SQL 评估功能公告之前创建了[Azure Migrate 项目](./create-manage-projects.md)
-    - 向项目添加了 [Azure Migrate：发现和评估](./how-to-assess.md) 工具
-- 查看 [应用发现支持和要求](./migrate-support-matrix-vmware.md#vmware-requirements)。
--  请确保运行应用发现的服务器安装了 PowerShell 2.0 版或更高版本，并且已安装 10.2.0) 之前的 VMware 工具 (。
-- 检查部署 Azure Migrate 设备的 [要求](./migrate-appliance.md) 。
-- 验证是否在订阅中拥有创建资源 [所需的角色](./create-manage-projects.md#verify-permissions) 。
-- 确保你的设备能够访问 internet
+- 请确保已完成以下操作：
+    - 在宣布推出适用于你所在区域的 SQL 评估功能之前已创建一个 [Azure Migrate 项目](./create-manage-projects.md)
+    - 已将 [Azure Migrate: 发现和评估](./how-to-assess.md)工具添加到项目
+- 查看[应用发现支持和要求](./migrate-support-matrix-vmware.md#vmware-requirements)。
+-  确保运行应用发现的服务器上安装了 PowerShell 2.0 或更高版本，并且已安装 VMware 工具（版本高于 10.2.0）。
+- 查看有关部署 Azure Migrate 设备的[要求](./migrate-appliance.md)。
+- 验证订阅中是否包含可创建资源的[所需角色](./create-manage-projects.md#verify-permissions)。
+- 确保设备能够访问 Internet
 
 ## <a name="enable-discovery-of-sql-server-instances-and-databases"></a>启用 SQL Server 实例和数据库的发现
 
-1. 在 Azure Migrate 项目中，
-    - 在 "中心" 磁贴上选择 " **未启用** "，或在   :::image type="content" source="./media/how-to-discover-sql-existing-project/hub-not-enabled.png" alt-text="未启用 SQL 发现的情况下 Azure Migrate 集线器磁贴":::
-    - 对于 "SQL 实例" 列下的 "服务器发现" 页中的任何条目，选择 " **未启用** "   :::image type="content" source="./media/how-to-discover-sql-existing-project/discovery-not-enabled.png" alt-text="Azure Migrate 发现的服务器边栏选项卡未启用 sql 发现":::
-2. 在发现 SQL Server 实例和数据库中，请按照以下步骤引起：
-    - 选择 " **升级**" 以创建所需的资源。
+1. 在 Azure Migrate 项目中执行以下操作之一：
+    - 在“中心”磁贴上选择“未启用”，或者   :::image type="content" source="./media/how-to-discover-sql-existing-project/hub-not-enabled.png" alt-text="Azure Migrate 中心磁贴，其中的 SQL 发现未启用":::
+    - 针对“服务器发现”页中“SQL 实例”列下的任何条目选择“未启用”   :::image type="content" source="./media/how-to-discover-sql-existing-project/discovery-not-enabled.png" alt-text="Azure Migrate“已发现的服务器”边栏选项卡，其中的 SQL 发现未启用":::
+2. 在“发现 SQL Server 实例和数据库”中执行所需的步骤：
+    - 选择“升级”以创建所需的资源。
         :::image type="content" source="./media/how-to-discover-sql-existing-project/discovery-upgrade-appliance.png" alt-text="用于升级 Azure Migrate 设备的按钮":::
-    - 验证是否已将设备上运行的服务更新为最新版本。 为此，请从设备服务器启动设备配置管理器，然后从 "设置先决条件" 面板中选择 "查看设备服务"。
-        - 设备及其组件会自动更新 :::image type="content" source="./media/how-to-discover-sql-existing-project/appliance-services-version.png" alt-text="检查设备版本":::
-    - 在设备配置管理器的 "管理凭据和发现源" 面板中，添加对要发现的 SQL Server 实例和数据库具有 Sysadmin 访问权限的域或 SQL Server 身份验证凭据。 
-    你可以利用设备的自动凭据映射功能，或手动将凭据映射到 [此处](https://review.docs.microsoft.com/azure/migrate/tutorial-discover-vmware?branch=release-migrate-sql-scenario#start-continuous-discovery)突出显示的相应服务器。
-        
+    - 验证设备上运行的服务是否已更新为最新版本。 为此，请从设备服务器启动设备配置管理器，然后在“设置必备组件”面板中选择“查看设备服务”。
+        - 设备及其组件将自动更新 :::image type="content" source="./media/how-to-discover-sql-existing-project/appliance-services-version.png" alt-text="检查设备版本":::
+    - 在设备配置管理器的“管理凭据和发现源”面板中，添加对要发现的 SQL Server 实例和数据库拥有 Sysadmin 访问权限的域凭据或 SQL Server 身份验证凭据。
+    可以利用设备的自动凭据映射功能，或者根据[此处](./tutorial-discover-vmware.md#start-continuous-discovery)的重点介绍手动将凭据映射到相应的服务器。
+
     一些需要注意的要点：
-    - 请确保已启用软件清单，或者提供域或非域凭据以启用相同的凭据。 若要发现 SQL Server 实例，必须执行软件清单。
-    - 设备将在添加时尝试验证 AD 的域凭据。 请确保设备服务器能够在与凭据关联的 AD 服务器上看到网络线路。 不会验证与 SQL Server 身份验证关联的凭据。 
+    - 请确保已启用软件盘点，或者提供域凭据或非域凭据来实现相同的效果。 必须执行软件盘点才能发现 SQL Server 实例。
+    - 添加域凭据后，设备会尝试在 AD 中验证这些凭据。 确保设备服务器与凭据关联到的 AD 服务器已建立通畅的网络连接。 不会验证与 SQL Server 身份验证关联的凭据。
 
-3. 添加所需的凭据后，请选择 "开始发现" 以开始扫描。
+3. 添加所需的凭据后，请选择“开始发现”以开始扫描。
 
-> [!Note] 
->请在创建 Azure SQL 评估之前，允许 SQL 发现运行一段时间。 如果不允许 SQL Server 实例和数据库的发现完成，则相应的实例会在评估报表中标记为 " **未知** "。
+> [!Note]
+>在创建 Azure SQL 评估之前，请允许 SQL 发现运行一段时间。 如果不允许 SQL Server 实例和数据库发现完成，相应的实例将在评估报告中标记为“未知”。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何创建 [AZURE SQL 评估](./how-to-create-azure-sql-assessment.md)
-- 了解有关[AZURE SQL 评估](./concepts-azure-sql-assessment-calculation.md)的详细信息
+- 了解如何创建 [Azure SQL 评估](./how-to-create-azure-sql-assessment.md)
+- 详细了解 [Azure SQL 评估](./concepts-azure-sql-assessment-calculation.md)

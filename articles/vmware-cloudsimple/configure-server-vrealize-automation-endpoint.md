@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 在私有云上为 vRealize 自动化设置 vCenter
 description: 介绍如何在 CloudSimple 私有云上将 VMware vCenter 服务器设置为 VMware vRealize 自动化的终结点
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9b6c6a320e6299808a91214476c8c0460f9f53d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 765e7616c5bea838ba093fb64e9b7e12e651ec69
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895047"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182401"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>在私有云上为 VMware vRealize 自动化设置 vCenter
 
@@ -27,7 +27,7 @@ ms.locfileid: "97895047"
 * [配置将本地 DNS 请求通过 DNS 转发](on-premises-dns-setup.md)到私有云的 DNS 服务器。
 * 请提交[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，以创建具有下表中列出的权限集的 vRealize 自动化 IaaS 管理员用户。
 
-| 特性值 | 权限 |
+| 属性值 | 权限 |
 ------------ | ------------- |  
 | 数据存储 |  分配空间 <br> 浏览数据存储 |
 | 数据存储群集 | 配置数据存储群集 |
@@ -64,7 +64,7 @@ ms.locfileid: "97895047"
         ![vRA 安装代理](media/configure-vra-endpoint-proxy.png)
 
     11. 单击“下一步”。
-    12. 单击“安装”  。
+    12. 单击“安装” 。
 
 ## <a name="configure-the-vsphere-agent"></a>配置 vSphere 代理
 

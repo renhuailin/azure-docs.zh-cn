@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: 3394754f2829018f7862b3775f8ab2cb2d07d005
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98051354"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升级 Azure 内部负载均衡器 - 需要出站连接
@@ -36,8 +36,8 @@ ms.locfileid: "98051354"
 ### <a name="caveatslimitations"></a>注意事项/限制
 
 * 脚本支持需要出站连接的内部负载均衡器升级。 如果任何 VM 都不需要出站连接，请参阅[此页](upgrade-basicInternal-standard.md)以获得最佳做法。
-* 标准负载均衡器使用新的公共地址。 不能将与现有基本内部负载均衡器关联的 IP 地址无缝移动到标准的公共负载均衡器，因为它们具有不同的 Sku。
-* 如果在不同的区域中创建标准负载均衡器，则无法将旧区域中的 Vm 关联到新创建的标准负载均衡器。 若要克服此限制，请确保在新区域中创建新的 VM。
+* 标准负载均衡器使用新的公共地址。 无法将与现有基本内部负载均衡器关联的 IP 地址无缝移动到标准公共负载均衡器，因为两者的 SKU 不同。
+* 如果标准负载均衡器是在不同的区域中创建的，则无法将旧区域中的 VM 关联到新建的标准负载均衡器。 若要克服此限制，请确保在新区域中创建新的 VM。
 * 如果负载均衡器没有任何前端 IP 配置或后端池，则运行脚本时可能会遇到错误。  确保负载均衡器不是空的。
 
 ## <a name="download-the-script"></a>下载脚本
@@ -84,7 +84,7 @@ ms.locfileid: "98051354"
     **示例**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg&quot; -oldLBName &quot;LBForPublic&quot; -newrgName &quot;test_userInput3_rg&quot; -newlocation &quot;centralus&quot; -newLbName &quot;LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>将 VM 添加到标准负载均衡器的后端池

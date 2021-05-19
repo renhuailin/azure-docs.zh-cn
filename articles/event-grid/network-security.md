@@ -1,29 +1,29 @@
 ---
 title: Azure 事件网格资源的网络安全
-description: 本文介绍如何使用服务标记进行出口，使用 IP 防火墙规则进行入口，并使用 Azure 事件网格引入专用终结点。
+description: 本文介绍如何通过 Azure 事件网格使用出口服务标签、入口 IP 防火墙规则以及入口专用终结点。
 author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 10c9b165041f0a4a1f09511f17bef3629353c3b2
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
-ms.translationtype: MT
+ms.openlocfilehash: d58e8b5ce9fb444fa501f897cca722613d9c51fe
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917522"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967568"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure 事件网格资源的网络安全
 本文介绍如何将以下安全功能与 Azure 事件网格配合使用： 
 
-- 出口服务标记
-- 入口的 IP 防火墙规则
-- 入口的专用终结点
+- 针对出口的服务标记
+- 针对入口的 IP 防火墙规则
+- 针对入口的专用终结点
 
 
 ## <a name="service-tags"></a>服务标记
 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记，从而尽量减少频繁更新网络安全规则所需的复杂操作。 有关服务标记的详细信息，请参阅[服务标记概述](../virtual-network/service-tags-overview.md)。
 
-可以在[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制。 创建安全规则时，请使用服务标记代替特定 IP 地址。 通过在规则的相应 "*源*" 或 "*目标*" 字段中指定服务标记名称 (例如 **AzureEventGrid**) ，可以允许或拒绝相应服务的流量。
+可以在[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制。 创建安全规则时，请使用服务标记代替特定 IP 地址。 通过在规则的相应“源”字段或“目标”字段中指定服务标记名（例如，AzureEventGrid），可以允许或拒绝相应服务的流量。
 
 | 服务标记 | 目的 | 可以使用入站还是出站连接？ | 可以支持区域范围？ | 是否可在 Azure 防火墙中使用？ |
 | --- | -------- |:---:|:---:|:---:|
@@ -35,17 +35,17 @@ Azure 事件网格支持对发布到主题和域进行基于 IP 的访问控制�
 
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问主题和域。 使用 IP 防火墙，可以将其进一步限制为采用 [CIDR（无类别域际路由选择）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法的一组 IP 地址或 IP 地址范围。 来自任何其他 IP 地址的发布者都将被拒绝，并将收到 403（禁止）响应。
 
-有关为主题和域配置 IP 防火墙的分步说明，请参阅 [配置 ip 防火墙](configure-firewall.md)。
+有关为主题和域配置 IP 防火墙的分步说明，请参阅[配置 IP 防火墙](configure-firewall.md)。
 
 ## <a name="private-endpoints"></a>专用终结点
-你可以使用 [专用终结点](../private-link/private-endpoint-overview.md) 将事件直接从你的虚拟网络直接发送到你的主题和域， [而无需](../private-link/private-link-overview.md) 通过公共 internet。 专用终结点是用于 VNet 中的 Azure 服务的特殊网络接口。 为主题或域创建专用终结点时，它会在 VNet 上的客户端与事件网格资源之间提供安全连接。 从 VNet 的 IP 地址范围为专用终结点分配 IP 地址。 专用终结点与事件网格服务之间的连接使用安全的专用链接。
+使用[专用终结点](../private-link/private-endpoint-overview.md)，可以允许事件通过[专用链接](../private-link/private-link-overview.md)安全地从虚拟网络直接进入主题和域，而无需通过公共 Internet。 专用终结点是用于 VNet 中的 Azure 服务的特殊网络接口。 为主题或域创建专用终结点时，它会在 VNet 上的客户端与事件网格资源之间提供安全连接。 从 VNet 的 IP 地址范围为专用终结点分配 IP 地址。 专用终结点与事件网格服务之间的连接使用安全的专用链接。
 
 ![体系结构关系图](./media/network-security/architecture-diagram.png)
 
 通过为事件网格资源使用专用终结点，你可以：
 
 - 通过 Microsoft 主干网络（而不是公共 Internet）从 VNet 安全地访问主题或域。
-- 使用 VPN 或通过专用对等互连连接到 VNet 的本地网络安全地连接到 VNet。
+- 使用 VPN 或 Express Routes 通过专用对等互连从连接到 VNet 的本地网络安全地进行连接。
 
 在 VNet 中创建用于主题或域的专用终结点时，系统会将申请批准的许可请求发送给资源所有者。 如果请求创建专用终结点的用户也是资源的所有者，则此许可请求会自动获得批准。 否则，连接将处于挂起状态，直到获得批准。 VNet 中的应用程序可以使用通过其他方式连接时所用的相同连接字符串和授权机制，通过专用终结点无缝地连接到事件网格服务。 资源所有者可以通过 Azure 门户中资源的“专用终结点”选项卡来管理许可请求和专用终结点。
 
@@ -96,8 +96,8 @@ Azure 事件网格支持对发布到主题和域进行基于 IP 的访问控制�
 事件网格的基本层和高级层都提供 IP 防火墙功能。 我们最多允许每个主题或域创建 16 条 IP 防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
-你可以将事件网格资源的 IP 防火墙配置为仅允许从一组选择的 IP 地址或 IP 地址范围通过公共 internet 进行访问。 有关分步说明，请参阅 [配置 IP 防火墙](configure-firewall.md)。
+可将事件网格资源的 IP 防火墙配置为仅限从所选一组 IP 地址或 IP 地址范围通过公共 Internet 进行访问。 有关分步说明，请参阅[配置 IP 防火墙](configure-firewall.md)。
 
-你可以配置专用终结点，以仅从所选的虚拟网络中限制访问。 有关分步说明，请参阅 [配置专用终结点](configure-private-endpoints.md)。
+可将专用终结点配置为仅限从所选虚拟网络进行访问。 有关分步说明，请参阅[配置专用终结点](configure-private-endpoints.md)。
 
-若要解决网络连接问题，请参阅 [排查网络连接问题](troubleshoot-network-connectivity.md)
+若要排查网络连接问题，请参阅[排查网络连接问题](troubleshoot-network-connectivity.md)

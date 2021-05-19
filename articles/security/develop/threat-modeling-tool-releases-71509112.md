@@ -9,10 +9,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
 ms.openlocfilehash: 7b0afdd90f2a1413c7f8364fc4518c4d1116454a
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92913579"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool 正式版 7.1.50911.2 - 2018 年 9 月 12 日
@@ -65,13 +65,13 @@ Microsoft Threat Modeling Tool 2016（可从 [Microsoft 下载中心](https://ww
 
 已删除预览版的“从 OneDrive 打开”功能。 使用“最近打开的模型”打开已保存到 OneDrive 的模型的用户会收到以下错误。
 
-![屏幕截图显示错误：打开文件对象引用未设置为对象实例时出错。](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
+![显示错误：“打开文件时出错，对象引用未设置为对象实例”的屏幕截图。](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
 
 #### <a name="workaround"></a>解决方法
 
 建议 OneDrive 用户使用 Microsoft 的 [OneDrive for Windows](https://onedrive.live.com/about/en-us/download/) 客户端，通过标准的“打开模型”对话框来访问 OneDrive 上存储的文件。
 
-![屏幕截图显示在 "打开模型" 对话框中选择的 OneDrive。](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
+![显示在“打开模型”对话框中选择“OneDrive”的屏幕截图。](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
 
 ### <a name="my-organization-uses-the-2016-version-of-the-tool-can-i-use-the-azure-stencil-set"></a>我的组织使用的是 2016 版工具，我是否可以使用 Azure 模具集？
 

@@ -7,10 +7,10 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 4fc2426189384856d2d2e95887cdabd2f9e9ebea
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98033772"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储输入绑定
@@ -349,7 +349,7 @@ public HttpResponseMessage get(
 }
 ```
 
-下面的示例使用筛选器在 Azure 表中查询具有特定名称的人员，并将可能的匹配项数目限制为10个结果。
+下面的示例使用 Filter 在 Azure 表中查询具有特定名称的人员，并将可能的匹配项数目限制为 10 个结果。
 
 ```java
 @FunctionName("getPersonsByName")
@@ -409,11 +409,11 @@ module.exports = function (context, myQueueItem) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-下面的函数使用 queue 触发器来读取单个表行作为函数的输入。
+下面的函数使用队列触发器读取单个表行作为函数的输入。
 
-在此示例中，绑定配置为表的显式值指定 `partitionKey` ，并使用表达式传递到 `rowKey` 。 `rowKey`表达式 `{queueTrigger}` 指示行键来自队列消息字符串。
+在此示例中，绑定配置为表的 `partitionKey` 指定一个显式值，并使用了一个要传递给 `rowKey` 的表达式。 `rowKey` 表达式 `{queueTrigger}` 指示行键来自队列消息字符串。
 
-_function.js上的_ 绑定配置：
+_function.json_ 中的绑定配置：
 
 ```json
 {
@@ -449,11 +449,11 @@ Write-Host "Person entity name: $($PersonEntity.Name)"
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的函数使用 queue 触发器来读取单个表行作为函数的输入。
+下面的函数使用队列触发器读取单个表行作为函数的输入。
 
-在此示例中，绑定配置为表的显式值指定 `partitionKey` ，并使用表达式传递到 `rowKey` 。 `rowKey`表达式 `{id}` 指示行键来自队列消息字符串。
+在此示例中，绑定配置为表的 `partitionKey` 指定一个显式值，并使用了一个要传递给 `rowKey` 的表达式。 `rowKey` 表达式 `{id}` 指示行键来自队列消息字符串。
 
-文件 _function.js上_ 的绑定配置：
+function.json 文件中的绑定配置：
 
 ```json
 {
@@ -489,7 +489,7 @@ Write-Host "Person entity name: $($PersonEntity.Name)"
 }
 ```
 
-*\_ \_ \_ \_ Py* 文件中的 Python 代码：
+\_\_init\_\_.py 文件中的 Python 代码：
 
 ```python
 import json
@@ -642,11 +642,11 @@ Python 不支持特性。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-数据将传递到 `name` *function.json* 文件中的键指定的输入参数。 指定 `partitionKey` 和可 `rowKey` 筛选特定记录。 有关更多详细信息，请参阅 [PowerShell 示例](#example) 。
+数据将传递给 function.json 文件中 `name` 键所指定的输入参数。 通过指定 `partitionKey` 和 `rowKey`，可以筛选到特定记录。 有关更多详细信息，请参阅 [PowerShell 示例](#example)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-表数据作为 JSON 字符串传递给函数。 通过调用来反序列化消息， `json.loads` 如输入 [示例](#example)中所示。
+表数据将作为 JSON 字符串传递给函数。 通过调用 `json.loads` 反序列化消息，如输入[示例](#example)所示。
 
 ---
 

@@ -8,15 +8,15 @@ ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: a9b2e8148586ec58ea6a7a033099e726920857b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84987926"
 ---
 # <a name="url-path-based-routing-overview"></a>基于 URL 路径的路由概述
 
-基于 URL 路径的路由用于根据请求的 URL 路径，将流量路由到后端服务器池。 
+基于 URL 路径的路由可让你根据请求的 URL 路径，将流量路由到后端服务器池。 
 
 方案之一是将针对不同内容类型的请求路由到不同的后端服务器池。
 
@@ -27,7 +27,7 @@ ms.locfileid: "84987926"
 对 http\://contoso.com/video/* 的请求会路由到 VideoServerPool，对 http\://contoso.com/images/* 的请求会路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
 
 > [!IMPORTANT]
-> 对于 v1 SKU，规则按照它们在门户中列出的顺序进行处理。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。 对于 v2 SKU，完全匹配具有更高的优先级。 但是，我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。 这确保将流量路由到适当的后端。
+> 对于 v1 SKU，规则按照它们在门户中列出的顺序进行处理。 如果基本侦听器先列出并且与传入请求匹配，则该侦听器将处理该请求。 对于 v2 SKU，完全匹配具有更高的优先级。 但我们强烈建议先配置多站点侦听器，再配置基本侦听器。 这确保将流量路由到适当的后端。
 
 ## <a name="urlpathmap-configuration-element"></a>UrlPathMap 配置元素
 

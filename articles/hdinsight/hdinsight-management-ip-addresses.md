@@ -1,15 +1,15 @@
 ---
 title: Azure HDInsight 管理 IP 地址
-description: 了解必须允许哪些 IP 地址的入站流量，以便通过 Azure HDInsight 为虚拟网络正确配置网络安全组和用户定义的路由。
+description: 了解必须允许来自哪些 IP 地址的入站流量，以便为 Azure HDInsight 中的虚拟网络正确配置网络安全组和用户定义的路由。
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 5f694dec6deffde9efb32fefbab91ae3b7a44a2c
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99490854"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
@@ -35,7 +35,7 @@ HDInsight 通过群集创建和扩展来验证这些规则，以防止进一步�
 
 ## <a name="health-and-management-services-all-regions"></a>运行状况和管理服务：所有区域
 
-允许来自以下 Azure HDInsight 运行状况和管理服务的 IP 地址的流量，适用于所有 Azure 区域：
+对于适用于所有 Azure 区域的 Azure HDInsight 运行状况和管理服务，允许来自其以下 IP 地址的流量：
 
 | 源 IP 地址 | 目标  | 方向 |
 | ---- | ----- | ----- |

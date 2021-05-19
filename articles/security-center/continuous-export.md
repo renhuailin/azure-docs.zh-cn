@@ -1,18 +1,19 @@
 ---
 title: 连续导出可以将 Azure 安全中心的警报和建议发送到 Log Analytics 工作区或 Azure 事件中心
 description: 了解如何配置到 Log Analytics 工作区或 Azure 事件中心的安全警报和建议的连续导出
+services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 3a64b385cbac972fd55eae5c341b4ecb7a431d5b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: fc3774a01665b88ccae2e25ae8382497f8010c35
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108732970"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102096966"
 ---
 # <a name="continuously-export-security-center-data"></a>连续导出安全中心数据
 
@@ -58,7 +59,7 @@ Azure 安全中心会生成详细的安全警报和建议。 可以通过门户�
 - 合规性数据
 
 > [!NOTE]
-> 导出安全分数和合规性数据是一项预览功能。 
+> 导出安全功能分数和法规合规性数据是一项预览功能，在政府云上不可用。 
 
 ## <a name="set-up-a-continuous-export"></a>设置连续导出 
 
@@ -170,7 +171,7 @@ API 提供了 Azure 门户中没有的其他功能，例如：
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics 表和架构
 
-安全警报和建议将分别存储在 SecurityAlert 和 SecurityRecommendation 表中 。 
+安全警报和建议分别存储在 SecurityAlert 和 SecurityRecommendation 表中 。 
 
 包含这些表的 Log Analytics 解决方案的名称取决于是否启用了 Azure Defender：Security（“安全和审核”）或 SecurityCenterFree。 
 
@@ -233,7 +234,7 @@ Azure Monitor 为各种 Azure 警报（包括诊断日志、指标警报以及�
 - 不会导出在启用导出之前收到的警报。
 - 当资源的合规性状态发生更改时就会发送建议。 例如，当某个资源的状态从正常变为不正常时。 因此，与警报一样，将不会导出针对自启用导出以来未更改状态的资源的建议。
 - 每个安全控制或订阅的安全分数（预览版）在一个安全控制的分数变化 0.01 或更大时发送。 
-- 合规性状态（预览版）在资源的合规性状态更改时发送。
+- 当资源的合规性状态发生更改时，将发送“法规合规性状态（预览版）”。
 
 
 

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77593761"
 ---
 # <a name="linkerd"></a>Linkerd
@@ -43,7 +43,7 @@ Linkerd 提供了由超轻 [Linkerd][linkerd-proxy] 专用代理挎斗组成的�
 
 在为工作负荷评估 Linkerd 时，请务必了解并考虑以下方面：
 
-- [设计原则](#design-principles)
+- [设计原理](#design-principles)
 - [功能](#capabilities)
 - [方案](#scenarios)
 
@@ -63,13 +63,13 @@ Linkerd 提供了由超轻 [Linkerd][linkerd-proxy] 专用代理挎斗组成的�
 
 Linkerd 提供了以下一组功能：
 
-- **网格** –内置调试选项
+- 网格 - 内置调试选项
 
-- **流量管理** -拆分、超时、重试、进入
+- 流量管理 - 拆分、超时、重试、流入量
 
-- **安全性** –加密 (mTLS) ，每24小时 autorotated 证书
+- 安全性 - 加密 (mTLS)，证书每 24 小时自动轮换一次
 
-- **可观察性** –金牌指标、点击、跟踪、服务配置文件和每个路由指标、具有拓扑图的 web 仪表板、prometheus、grafana
+- 可观测性 - 黄金指标、点击、跟踪、服务配置文件和每路由指标、带有拓扑图的 Web 仪表板、prometheus、grafana
 
 
 ### <a name="scenarios"></a>方案

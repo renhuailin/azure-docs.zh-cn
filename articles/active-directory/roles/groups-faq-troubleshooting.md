@@ -14,19 +14,19 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ff906654dc91c7b1980292efd2a737503e684e9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98742907"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>分配给云组的角色疑难解答
 
 以下是一些常见问题和疑难解答提示，用于在 Azure Active Directory (Azure AD) 中将角色分配给组。
 
-**问：** 我是组管理员，但看不 **到可以分配给组交换机的 Azure AD 角色** 。
+**问：** 我是组管理员，但看不到“Azure AD 角色可分配给组”开关。
 
-**答：** 只有特权角色管理员或全局管理员才能创建适合角色分配的组。 只有这些角色中的用户才会看到此控制。
+**答：** 只有特权角色管理员或全局管理员才能创建符合角色分配条件的组。 只有拥有这些角色的用户才会看到此控件。
 
 **问：** 谁可以修改分配给 Azure AD 角色的组的成员资格？
 

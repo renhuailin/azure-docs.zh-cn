@@ -1,7 +1,7 @@
 ---
-title: 如何使用 MSAL 在 Android 上启用跨应用 SSO |Microsoft
+title: 如何使用 MSAL 在 Android 上启用跨应用 SSO | Azure
 titleSuffix: Microsoft identity platform
-description: 如何使用 Microsoft 身份验证库 (MSAL) for Android 来跨应用程序启用单一登录。
+description: 如何使用适用于 Android 的 Microsoft 身份验证库 (MSAL) 启用跨应用程序的单一登录。
 services: active-directory
 author: hamiltonha
 manager: CelesteDG
@@ -15,40 +15,40 @@ ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
 ms.openlocfilehash: f3d4ec8db89e9bebfdcd594e842a6c19d3d66d54
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100104087"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>如何：使用 MSAL 在 Android 上启用跨应用 SSO
+# <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>操作指南：使用 MSAL 在 Android 上启用跨应用 SSO
 
-单一登录 (SSO) 允许用户仅输入其凭据一次，并在应用程序之间自动使用这些凭据。
+有了单一登录 (SSO)，用户只需输入一次凭据，这些凭据将能自动应用于多个应用程序上。
 
-[Microsoft 标识平台](./index.yml)和 Microsoft 身份验证库 (MSAL) 帮助你在自己的应用套件中启用 SSO。 利用 broker 功能和验证器应用程序，你可以在整个设备上扩展 SSO。
+[Microsoft 标识平台](./index.yml)和 Microsoft 身份验证库 (MSAL) 可帮助你在自己的一套应用中启用 SSO。 利用中转站功能和 Authenticator 应用程序，可以在整个设备上扩展 SSO。
 
-在本操作方法指南中，你将了解如何配置应用程序用来向客户提供 SSO 的 Sdk。
+本操作指南介绍了如何配置应用程序所使用的 SDK，以便向客户提供 SSO。
 
 ## <a name="prerequisites"></a>先决条件
 
-本操作指南假设你知道如何执行以下操作：
+本操作指南假定你知道如何执行以下操作：
 
-- 使用 Azure 门户预配应用。 有关本主题的详细信息，请参阅[Android 教程](./tutorial-v2-android.md#create-a-project)中的创建应用的说明
-- 将应用程序与 [适用于 Android 的 Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-android)集成。
+- 使用 Azure 门户预配应用。 有关本主题的详细信息，请参阅 [Android 教程](./tutorial-v2-android.md#create-a-project)中有关创建应用的说明
+- 将应用程序与[适用于 Android 的 Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-android)进行集成。
 
 ## <a name="methods-for-single-sign-on"></a>单一登录方法
 
-使用适用于 Android 的 MSAL 的应用程序可通过两种方式来实现 SSO：
+应用程序可通过两种方式，使用适用于 Android 的 MSAL 来实现 SSO：
 
-* 通过 [broker 应用程序](#sso-through-brokered-authentication)
-* 通过 [系统浏览器](#sso-through-system-browser)
+* 通过[中转站应用程序](#sso-through-brokered-authentication)
+* 通过[系统浏览器](#sso-through-system-browser)
 
 
-   建议将 broker 应用程序用于设备范围 SSO、帐户管理和条件性访问等权益。 但是，它要求用户下载其他应用程序。
+   为了实现设备范围的 SSO、帐户管理和条件访问等权益，建议使用中转站应用程序。 但是，它要求用户下载其他应用程序。
 
-## <a name="sso-through-brokered-authentication"></a>SSO 到中转身份验证
+## <a name="sso-through-brokered-authentication"></a>通过中转身份验证的 SSO
 
-我们建议使用 Microsoft 的一个身份验证代理参与设备范围的单一登录 (SSO) 并满足组织的条件性访问策略。 与中介集成可提供以下优势：
+建议使用 Microsoft 的某一个身份验证中介来参与设备范围的单一登录 (SSO)，并保证符合组织条件访问策略的要求。 与中介集成可提供以下优势：
 
 - 设备单一登录
 - 对以下功能进行条件访问：
@@ -59,7 +59,7 @@ ms.locfileid: "100104087"
   -  通过 Android AccountManager 和帐户设置
   - “工作帐户”- 自定义帐户类型
 
-在 Android 上，Microsoft 身份验证代理是 [Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) 和 [Intune 公司门户](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) 应用中包含的组件。
+在 Android 上，Microsoft 身份验证中介是随附在 [Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) 和 [Intune 公司门户](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)应用中的一个组件。
 
 下图演示了应用、Microsoft 身份验证库 (MSAL) 与 Microsoft 身份验证中介之间的关系。
 
@@ -87,7 +87,7 @@ ms.locfileid: "100104087"
 - 用户的帐户不再符合条件访问策略。
 - 用户撤销了应用与其帐户关联的许可。
 
-**多个代理** -如果设备上安装了多个代理，则首先安装的代理始终是活动 broker。 仅单个中介可以在设备上处于活动状态。
+**多个中转站** - 如果设备上安装了多个中转站，则第一个安装的中转站始终是活动中转站。 仅单个中介可以在设备上处于活动状态。
 
 #### <a name="when-a-broker-is-uninstalled"></a>已卸载中介时
 
@@ -97,7 +97,7 @@ ms.locfileid: "100104087"
 
 ### <a name="integrating-with-a-broker"></a>与中介集成
 
-#### <a name="generate-a-redirect-uri-for-a-broker"></a>为 broker 生成重定向 URI
+#### <a name="generate-a-redirect-uri-for-a-broker"></a>为中介生成重定向 URI
 
 必须注册与中介兼容的重定向 URI。 中介的重定向 URI 应该包含应用的包名称，以及应用签名的 base64 编码表示形式。
 
@@ -154,7 +154,7 @@ MSAL 首先使用中介绑定服务，因为调用此服务不需要任何 Andro
 - 要求用户禁用 Microsoft Authenticator 应用和 Intune 公司门户的超级优化。
 - 要求用户授予 `"READ_CONTACTS"` 权限
 
-### <a name="verify-broker-integration"></a>验证 broker 集成
+### <a name="verify-broker-integration"></a>验证中转站集成
 
 虽然可能无法立即弄清楚中介集成是否正在运行，但你可以使用以下步骤进行检查：
 
@@ -163,13 +163,13 @@ MSAL 首先使用中介绑定服务，因为调用此服务不需要任何 Andro
 
 如果要重复测试，可以从设置中删除该帐户。
 
-## <a name="sso-through-system-browser"></a>SSO 到系统浏览器
+## <a name="sso-through-system-browser"></a>通过系统浏览器的 SSO
 
-Android 应用程序可以选择使用 Web 视图、系统浏览器或 Chrome 自定义选项卡进行身份验证的用户体验。 如果应用程序未使用中转身份验证，则需要使用系统浏览器而不是本机 web 视图来实现 SSO。
+Android 应用程序可以选择使用 Web 视图、系统浏览器或 Chrome 自定义选项卡进行身份验证用户体验。 如果应用程序未使用中转身份验证，则需要使用系统浏览器，而不是本机 Web 视图来实现 SSO。
 
 ### <a name="authorization-agents"></a>授权代理
 
-为授权代理选择特定的策略属于可选操作，这是应用可以自定义的附加功能。 大多数应用将使用 MSAL 默认值 (请参阅 [了解 ANDROID MSAL 配置文件](msal-configuration.md) ，查看不同的默认) 。
+为授权代理选择特定的策略属于可选操作，这是应用可以自定义的附加功能。 大多数应用将使用 MSAL 默认设置（有关各项默认设置，请参阅[了解 Android MSAL 配置文件](msal-configuration.md)）。
 
 MSAL 支持使用 `WebView` 或系统浏览器授权。  下图显示了使用 `WebView` 或使用包含或不包含自定义标签页的系统浏览器进行授权的大致形式：
 
@@ -179,9 +179,9 @@ MSAL 支持使用 `WebView` 或系统浏览器授权。  下图显示了使用 `
 
 默认情况下，与 MSAL 集成的应用程序使用系统浏览器的自定义标签页进行授权。 与 WebView 不同，自定义标签页与默认系统浏览器共享 Cookie jar，可以减少与自定义标签页集成的 Web 应用或其他本机应用中的登录次数。
 
-如果应用程序使用 `WebView` 不将 Microsoft Authenticator 或公司门户支持集成到其应用中的策略，则用户将不会在设备上或在本机应用和 web 应用之间提供单一登录体验。
+如果应用程序使用 `WebView` 策略，不将 Microsoft Authenticator 或公司门户支持集成到其应用中，则用户将不会获得跨设备或在本机应用与 Web 应用之间的单一登录体验。
 
-如果应用程序将 MSAL 与代理（如 Microsoft Authenticator 或 Intune 公司门户）结合使用，则用户可以在应用程序之间具有的 SSO 体验，前提是他们具有其中一个应用的有效登录。
+如果应用程序使用具有中转站（例如 Microsoft Authenticator 或 Intune 公司门户）的 MSAL，并且用户在其中某一个应用中拥有一个有效的登录名，则用户可以获得跨应用程序的 SSO 体验。
 
 ### <a name="webview"></a>WebView
 
@@ -209,7 +209,7 @@ MSAL 默认使用浏览器和[自定义标签页](https://developer.chrome.com/m
 
 由于 MSAL 无法指定可在众多 Android 手机上使用的确切浏览器包，因此 MSAL 实施浏览器选择试探法，以尝试提供最佳的跨设备 SSO。
 
-MSAL 主要从包管理器检索默认浏览器，并检查它是否位于已测试的安全浏览器列表中。 否则，MSAL 将使用 Web 视图进行切换，而不是从安全列表启动其他非默认浏览器。 将选择默认浏览器，而不考虑它是否支持自定义选项卡。 如果浏览器支持自定义标签页，MSAL 将启动自定义标签页。自定义标签页的外观更接近应用中 `WebView`，允许基本的 UI 自定义。 有关详细信息，请参阅 [Android 中的自定义标签页](https://developer.chrome.com/multidevice/android/customtabs)。
+MSAL 主要从包管理器中检索默认浏览器，并检查它是否在已测试的安全浏览器列表中。 如果不在，MSAL 将退回到使用 Web 视图，而不是从安全列表启动其他非默认浏览器。 始终会选择默认浏览器，无论其是否支持自定义标签。 如果浏览器支持自定义标签页，MSAL 将启动自定义标签页。自定义标签页的外观更接近应用中 `WebView`，允许基本的 UI 自定义。 有关详细信息，请参阅 [Android 中的自定义标签页](https://developer.chrome.com/multidevice/android/customtabs)。
 
 如果设备上没有浏览器包，MSAL 将使用应用中 `WebView`。 如果设备默认设置未更改，则每次登录时应启动同一浏览器，以确保提供 SSO 体验。
 
@@ -220,8 +220,8 @@ MSAL 主要从包管理器检索默认浏览器，并检查它是否位于已测
 | 设备 | 内置浏览器 | Chrome | Opera  | Microsoft Edge | UC 浏览器 | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | Nexus 4 (API 17) | 通过 | 通过 |不适用 |不适用 |不适用 |不适用 |
-| Samsung S7 (API 25) | <sup>第 1</sup>步 | 通过 | 通过 | 通过 | 失败 |通过 |
-| Huawei (API 26) |传递<sup>2</sup> | 通过 | 失败 | 通过 | 通过 |通过 |
+| Samsung S7 (API 25) | 通过<sup>1</sup> | 通过 | 通过 | 通过 | 失败 |通过 |
+| Huawei (API 26) |通过<sup>2</sup> | 通过 | 失败 | 通过 | 通过 |通过 |
 | Vivo (API 26) |通过|通过|通过|通过|通过|失败|
 | Pixel 2 (API 26) |通过 | 通过 | 通过 | 通过 | 失败 |通过 |
 | Oppo | 通过 | 不适用<sup>3</sup>|不适用  |不适用 |不适用 | 不适用|
@@ -230,8 +230,8 @@ MSAL 主要从包管理器检索默认浏览器，并检查它是否位于已测
 |MI | 通过 | 通过 | 通过 | 通过 | 失败 |通过 |
 
 <sup>1</sup>Samsung 的内置浏览器是 Samsung Internet。<br/>
-<sup>2</sup>Huawei 的内置浏览器是 Huawei 浏览器。<br/>
-<sup>3</sup>默认浏览器无法在 Oppo 设备设置内进行更改。
+<sup>2</sup>Huawei 的内置浏览器是 Huawei Browser。<br/>
+<sup>3</sup>无法在 Oppo 设备设置中更改默认浏览器。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
 title: 将 StorSimple 5000-7000 系列上的数据迁移到 8000 系列设备 | Microsoft 文档
-description: 了解如何将 StorSimple 5000-7000 系列上的数据迁移到8000系列设备以及迁移过程的先决条件。
+description: 了解如何将 StorSimple 5000-7000 系列上的数据迁移到 8000 系列设备以及迁移过程的先决条件。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 09/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 58b7b67842e9ba385b34ea4d8fdbcac190076218
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99428160"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>将数据从 StorSimple 5000-7000 系列迁移到 8000 系列设备
@@ -55,7 +55,7 @@ ms.locfileid: "99428160"
 | 迁移过程可以按卷来分阶段完成。                                               | 以前的备份（在 5000/7000 系列进行的备份）将不能在 8000 系列设备上使用。                                                                                                       |
 | 允许在 Azure 上将数据合并到一个存储帐户。                                                       | 因为 8000 系列上的所有数据需要全部备份到 Azure，因此，第一次备份到 8000 系列上的云将需要较长的时间。                                                                     |
 | 在成功迁移后，所有数据都将迁移到本地设备上。 当访问数据时将不存在延迟。 | Azure 存储空间的使用将会增加，直到将数据从 5000/7000 设备中删除。                                                                                                        |
-|                                                                                                                           | 如果7000/5000 系列设备包含大量数据，则在迁移期间，需要从 Azure 下载此数据，这会产生与从 Azure 下载数据相关的成本和延迟 |
+|                                                                                                                           | 如果 7000/5000 系列设备包含大量数据，则在迁移期间，需要从 Azure 下载该数据，而这将产生与从 Azure 中下载数据相关的成本和延迟 |
 
 本文仅着重介绍从 5000/7000 到 8000 系列设备的迁移功能。 有关主机端迁移的详细信息，请转到[从其他存储设备中迁移](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf)。
 
@@ -80,8 +80,8 @@ ms.locfileid: "99428160"
 
     ![检查旧设备上的软件版本。](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * 如果你的当前设备运行的不是 v2.1.1.518 或更高版本，请将系统升级到所要求的最低版本。 你可能需要使用 Microsoft 支持部门来帮助你执行升级。
-    * 如果正在运行的是 v2.1.1.518，请转到 Web UI 查看是否存在有关注册表还原失败的任何通知。 如果注册表还原已失败，请运行注册表还原。 你可能需要使用 Microsoft 支持部门来帮助你还原注册表。
+    * 如果你的当前设备运行的不是 v2.1.1.518 或更高版本，请将系统升级到所要求的最低版本。 你可能需要与 Microsoft 支持部门合作来帮助你执行升级。
+    * 如果正在运行的是 v2.1.1.518，请转到 Web UI 查看是否存在有关注册表还原失败的任何通知。 如果注册表还原已失败，请运行注册表还原。 你可能需要与 Microsoft 支持部门合作来帮助你还原注册表。
     * 如果有出现故障的设备没有运行 v2.1.1.518，请将其故障转移到运行 v2.1.1.518 的替换设备上。 有关详细说明，请参阅 5000/7000 系列 StorSimple 设备的 DR。
     * 通过使用云快照备份设备的数据。
     * 检查在源设备上是否有运行的任何其他活动备份作业。 这包括在 StorSimple 数据保护控制台主机上的作业。 等待当前作业完成。

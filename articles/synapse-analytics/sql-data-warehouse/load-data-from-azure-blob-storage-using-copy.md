@@ -2,25 +2,25 @@
 title: 教程：加载纽约出租车数据
 description: 教程使用 Azure 门户和 SQL Server Management Studio 从 Synapse SQL 的 Azure Blob 加载纽约出租车数据。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/23/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 35d985ee31fba52a57614cf62668d5355caf5ffa
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
-ms.translationtype: MT
+ms.openlocfilehash: 1490a0e094c6ce2665e28f7d32540ad58d53cb2a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097617"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600133"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教程：加载纽约出租车数据集
 
-本教程使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) 从 Azure Blob 存储帐户加载纽约出租车数据集。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) 执行以下操作：
+本教程使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)从 Azure Blob 存储帐户加载纽约出租车数据集。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) 执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -31,7 +31,7 @@ ms.locfileid: "99097617"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS)。  
 
@@ -90,7 +90,7 @@ ms.locfileid: "99097617"
 
 ## <a name="create-tables-for-the-sample-data"></a>为示例数据创建表
 
-已准备好开始将数据加载到新的数据仓库。 本教程的此部分说明如何使用 COPY 语句从 Azure 存储 Blob 加载纽约市出租车数据。 要了解如何将数据获取到 Azure Blob 存储或直接从源加载数据，请参阅 [加载概述](design-elt-data-loading.md)。
+已准备好开始将数据加载到新的数据仓库。 本教程的此部分说明如何使用 COPY 语句从 Azure 存储 Blob 加载纽约市出租车数据。 若要获得进一步的参考以了解如何将数据置于 Azure Blob 存储或直接从源加载数据，请参阅[加载概述](design-elt-data-loading.md)。
 
 运行以下 SQL 脚本，并指定要加载的数据的相关信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。
 
@@ -387,7 +387,7 @@ ms.locfileid: "99097617"
 
 3. 若要删除数据仓库，以便不再为计算或存储付费，请选择“删除”。
 
-4. 若要删除创建的服务器，请在上一个映像中选择 **mynewserver-20180430.database.windows.net** ，然后选择 " **删除**"。  请审慎执行此操作，因为删除服务器会删除分配给该服务器的所有数据库。
+4. 要删除所创建的服务器，请选择上图所示的“mynewserver-20180430.database.windows.net”，然后选择“删除” 。  请审慎执行此操作，因为删除服务器会删除分配给该服务器的所有数据库。
 
 5. 若要删除资源组，请选择“myResourceGroup”，然后选择“删除资源组”。
 

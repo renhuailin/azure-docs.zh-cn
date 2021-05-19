@@ -8,10 +8,10 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 7f49bd23347b53f9a5287973c6b2aba82da50ca7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100608601"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>统一多个 Azure Monitor Application Insights 资源 
@@ -27,7 +27,7 @@ ms.locfileid: "100608601"
 可以通过导航到工作区中的查询资源管理器，然后选择要编辑的函数并保存，或使用 `SavedSearch` PowerShell cmdlet 来随时修改列出的应用程序。 
 
 >[!NOTE]
->此方法不能用于日志警报，因为警报规则资源（包括工作区和应用程序）的访问验证是在警报创建时执行的。 不支持在创建警报后将新资源添加到该函数。 如果更喜欢使用函数在日志警报中确定资源范围，则需要在门户中编辑警报规则或使用资源管理器模板来更新范围内的资源。 或者，可以在日志警报查询中包含资源列表。
+>此方法不能用于日志警报，因为警报规则资源（包括工作区和应用程序）的访问验证是在警报创建时执行的。 不支持在创建警报后将新资源添加到该函数。 若要使用函数在日志警报中限定资源范围，则需要在门户中或使用资源管理器模板来编辑警报规则，以更新范围内资源。 或者，可以在日志警报查询中包含资源列表。
 
 `withsource= SourceApp` 命令可向结果添加用于指定发送日志的应用程序的列。 本示例中的 parse 运算符为可选项，用于从 SourceApp 属性中提取应用程序名称。 
 
@@ -57,7 +57,7 @@ applicationsScoping
 ![跨查询结果示例](media/unify-app-resource-data/app-insights-query-results.png)
 
 >[!NOTE]
->仅当前 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持日志警报中的[跨资源查询](../logs/cross-workspace-query.md)。 如果使用的是旧的 Log Analytics 警报 API，则需要 [切换到当前 API](../alerts/alerts-log-api-switch.md)。 [请参阅示例模板](../alerts/alerts-log-create-templates.md)。
+>仅当前 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持日志警报中的[跨资源查询](../logs/cross-workspace-query.md)。 如果使用的是旧的 Log Analytics 警报 API，则需要[切换到当前 API](../alerts/alerts-log-api-switch.md)。 [请参阅示例模板](../alerts/alerts-log-create-templates.md)。
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Application Insights 和 Log Analytics 工作区的架构差异
 下表显示了 Log Analytics 和 Application Insights 之间的架构差异。  

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 40529df5195a29fbf2ff4887311932c2ffbf471d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96029889"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
@@ -63,18 +63,18 @@ ms.locfileid: "96029889"
 
 ### <a name="create-the-project"></a>创建项目
 
-1. 使用管理员特权启动 Visual Studio：右键单击“Visual Studio”  程序图标，并单击“以管理员身份运行”  。 本文后面所述的 Azure 计算仿真程序要求以管理员权限启动 Visual Studio。
+1. 使用管理员特权启动 Visual Studio：右键单击“Visual Studio”  程序图标，并单击“以管理员身份运行”  。 Azure 计算模拟器（本文后面会讨论）要求使用管理员权限启动 Visual Studio。
    
    在 Visual Studio 的“文件”菜单中，单击“新建”，并单击“项目”。
 2. 从“Visual C#”下的“已安装模板”中，单击“云”，并单击“Azure 云服务”。 **MultiTierApp**。 然后单击“确定”  。
    
    ![“新建项目”对话框的屏幕截图，其中选择了“云”，并突出显示了“Azure 云服务 Visual C#”并添加了红色边框。][9]
-3. 在 " **角色** " 窗格中，双击 " **ASP.NET Web 角色**"。
+3.  在“角色”窗格中，双击“ASP.NET Web 角色”。
    
-   ![选中 "ASP.NET" Web 角色并选择 "WebRole1" 的 "新建 Microsoft Azure 云服务" 对话框的屏幕截图。][10]
+   ![“新建 Microsoft Azure 云服务”对话框的屏幕截图，其中选择了“ASP.NET Web 角色”，同时还选择了“WebRole1”。][10]
 4. 将鼠标指针停留在“Azure 云服务解决方案”  下的“WebRole1”  上，单击铅笔图标，并将 Web 角色重命名为“FrontendWebRole”  。 然后单击“确定”  。 （请确保输入“Frontend”而不是“FrontEnd”，此处为小写“e”。）
    
-   ![新的 "Microsoft Azure 云服务" 对话框的屏幕截图，解决方案已重命名为 FrontendWebRole。][11]
+   ![“新建 Microsoft Azure 云服务”对话框的屏幕截图，其中解决方案已重命名为“FrontendWebRole”。][11]
 5. 从“新建 ASP.NET 项目”  对话框的“选择模板”  列表中，单击“MVC”  。
    
    ![“新建 ASP.NET 项目”对话框的屏幕截图，其中突出显示了“MVC”并添加了红色边框，还对“更改身份验证”选项添加了红色边框。][12]
@@ -82,7 +82,7 @@ ms.locfileid: "96029889"
    
     ![“更改身份验证”对话框的屏幕截图，其中选择了“无身份验证”选项并添加了红色边框。][16]
 7. 返回到“新建 ASP.NET 项目”  对话框，单击“确定”  以创建项目。
-8. 在 **解决方案资源管理器** 的 **FrontendWebRole** 项目中，右键单击 " **引用**"，然后单击 " **管理 NuGet 包**"。
+8. 在“解决方案资源管理器”的“FrontendWebRole”项目中，右键单击“引用”，并单击“管理 NuGet 包”。
 9. 单击“浏览”  选项卡，然后搜索“WindowsAzure.ServiceBus”  。 搜索 **WindowsAzure.ServiceBus** 包，单击“安装”，并接受使用条款。
    
    ![“管理 NuGet 包”对话框的屏幕快照，其中突出显示了“WindowsAzure.ServiceBus”，并对“安装”选项添加了红色边框。][13]
@@ -173,7 +173,7 @@ ms.locfileid: "96029889"
    ![“添加视图”对话框的屏幕截图，其中对“模板”和“模型类”下拉列表添加了红色边框。][15]
 7. 单击“添加”  。
 8. 现在，请更改应用程序的显示名称。 在“解决方案资源管理器”中，双击“views/shared\\_Layout.cshtml”文件以在 Visual Studio 编辑器中将其打开。
-9. 将 **ASP.NET 应用程序** 的所有匹配项替换为 **Northwind 商贸产品**。
+9. 将每一处 **My ASP.NET Application** 替换为 **Northwind Traders Products**。
 10. 删除“Home”  、“About”  和“Contact”  链接。 删除突出显示的代码：
     
     ![代码的截图，其中突出显示了三行 HTML 操作链接代码。][28]
@@ -303,7 +303,7 @@ ms.locfileid: "96029889"
 现在，将创建用于处理订单提交的辅助角色。 此示例使用“服务总线队列的辅助角色”  Visual Studio 项目模板。 已从门户中获取所需的凭据。
 
 1. 确保已将 Visual Studio 连接到 Azure 帐户。
-2. 在 Visual Studio 的 **解决方案资源管理器** 中，右键单击 **MultiTierApp** 项目下的 "**角色**" 文件夹。
+2. 在 Visual Studio 的“解决方案资源管理器”中，右键单击“MultiTierApp”项目下的“角色”文件夹。
 3. 单击“添加”  ，并单击“新建辅助角色项目”  。 此时会显示“添加新角色项目”  对话框。
    
    ![“解决方案资源管理器”窗格的屏幕截图，其中突出显示了“新建辅助角色项目”选项和“添加”选项。][26]
@@ -342,7 +342,7 @@ ms.locfileid: "96029889"
     
     ![单击模拟器图标时显示的内容的屏幕截图。 选项列表中列有“显示计算模拟器 UI”。][19]
     
-    ![Microsoft Azure 计算模拟器 (Express) "对话框的屏幕截图。][20]
+    ![Microsoft Azure 计算模拟器 (Express) 对话框的屏幕截图。][20]
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Service Bus 的详细信息，请参阅以下资源：  

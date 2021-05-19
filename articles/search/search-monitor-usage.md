@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100592373"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>监视 Azure 认知搜索的操作和活动
@@ -87,7 +87,7 @@ Azure 认知搜索按照连续 30 天的计划维护内部数据，以便报告�
 
 Azure Monitor 提供多个存储选项，你的选择将决定你如何使用数据：
 
-* 如果要可视化 Power BI 报表中的 [日志数据](search-monitor-logs-powerbi.md) ，请选择 "Azure Blob 存储"。
+* 如果要在 Power BI 报表中[可视化日志数据](search-monitor-logs-powerbi.md)，请选择 Azure Blob 存储。
 * 如果想要通过 Kusto 查询浏览数据，请选择“Log Analytics”。
 
 Azure Monitor 具有其自己的计费结构，此部分中引用的诊断日志具有相关的成本。 有关详细信息，请参阅[在 Azure Monitor 中监视使用情况和预估成本](../azure-monitor//usage-estimated-costs.md)。

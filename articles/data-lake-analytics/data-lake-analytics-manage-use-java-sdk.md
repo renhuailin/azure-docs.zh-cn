@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/20/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 86e84d825bd1dd3774cfd2774e0b96e540bb3cd2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92218470"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>使用 Java 应用管理 Azure Data Lake Analytics
@@ -19,18 +19,18 @@ ms.locfileid: "92218470"
 本文介绍如何通过使用 Azure Java SDK 编写的应用管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。 
 
 ## <a name="prerequisites"></a>先决条件
-* **Java 开发工具包 (JDK) 8** (使用 Java 版本 1.8) 。
-* **IntelliJ** 或其他合适的 Java 开发环境。 本文档中的说明使用 IntelliJ。
-* 创建 Azure Active Directory (AAD) 应用程序，并检索其**客户端 ID**、**租户 ID** 和**密钥**。 有关 AAD 应用程序的详细信息和如何获取客户端 ID 的说明，请参阅 [使用门户创建 Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 创建应用程序并生成密钥后，可从门户获取回复 URI 和密钥。
+* Java 开发工具包 (JDK) 8（使用 Java 1.8 版）。
+* IntelliJ 或其他合适的 Java 开发环境。 本文档中的说明使用 IntelliJ。
+* 创建 Azure Active Directory (AAD) 应用程序，并检索其 **客户端 ID**、**租户 ID** 和 **密钥**。 有关 AAD 应用程序的详细信息和如何获取客户端 ID 的说明，请参阅 [使用门户创建 Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 创建应用程序并生成密钥后，可从门户获取回复 URI 和密钥。
 
 ## <a name="authenticating-using-azure-active-directory"></a>使用 Azure Active Directory 进行身份验证
 
-以下代码片段提供了非交互式身份验证的代码，在这种验证方式中，应用程序提供自己的凭据****。
+以下代码片段提供了非交互式身份验证的代码，在这种验证方式中，应用程序提供自己的凭据。
 
 ## <a name="create-a-java-application"></a>创建 Java 应用程序
-1. 打开 IntelliJ，使用“命令行应用”模板创建 Java 项目****。
-2. 右键单击屏幕左侧的项目并单击“添加框架支持”****。 选择 “Maven”****，并单击“确定”****。
-3. 打开新创建的 **"pom.xml"** 文件，并在 **\</version>** 标记和标记之间添加以下文本片段 **\</project>** ：
+1. 打开 IntelliJ，使用“命令行应用”模板创建 Java 项目。
+2. 右键单击屏幕左侧的项目并单击“添加框架支持”。 选择 “Maven”，并单击“确定”。
+3. 打开新创建的“pom.xml”文件，并在 \</version> 标记和 \</project> 标记之间添加以下文本片段：
 
 ```xml
 <dependencies>
@@ -73,9 +73,9 @@ ms.locfileid: "92218470"
 </dependencies>
 ```
 
-转到“文件”>“设置”>“生成”>“执行”>“部署”****。 选择“生成工具”>“Maven”>“导入”****。 然后选中“自动导入 Maven 项目”****。
+转到“文件”>“设置”>“生成”>“执行”>“部署”。 选择“生成工具”>“Maven”>“导入”。 然后选中“自动导入 Maven 项目”。
 
-打开 `Main.java` 并将现有代码块替换为以下代码：
+打开 `Main.java`，将现有代码块替换为以下代码：
 
 ```java
 import com.microsoft.azure.CloudException;

@@ -8,15 +8,15 @@ ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 09dbe0fbefb8b90b4c4e1ddef57abf3b13856183
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92148086"
 ---
 # <a name="security-recommendations-for-app-service"></a>适用于应用服务的安全建议
 
-本文包含适用于 Azure 应用服务的安全建议。 实施这些建议将有助于你履行我们的共享职责模型中描述的安全职责，并改进 Web 应用解决方案的总体安全性。 若要详细了解 Microsoft 如何实现服务提供商责任，请阅读 [Azure 基础结构安全性](../security/fundamentals/infrastructure.md)。
+本文包含适用于 Azure 应用服务的安全建议。 实施这些建议将有助于你履行我们的共享职责模型中描述的安全职责，并改进 Web 应用解决方案的总体安全性。 若要详细了解 Microsoft 采取哪些措施来履行服务提供商责任，请阅读 [Azure 基础结构安全性](../security/fundamentals/infrastructure.md)。
 
 ## <a name="general"></a>常规
 
@@ -48,9 +48,9 @@ ms.locfileid: "92148086"
 | 建议 | 注释 |
 |-|-|
 | 使用静态 IP 限制 | 使用 Windows 上的 Azure 应用服务，可定义允许访问应用的 IP 地址的列表。 允许列表可包括单个 IP 地址或由子网掩码定义的 IP 地址范围。 有关详细信息，请参阅 [Azure 应用服务静态 IP 限制](app-service-ip-restrictions.md)。  |
-| 选择独立定价层 | 除了独立定价层，所有层都在 Azure 应用服务的共享网络基础结构上运行应用。 通过在专用 [应用服务环境](environment/intro.md)中运行应用，隔离层可提供完整的网络隔离。 应用服务环境在你自己的 [Azure 虚拟网络](../virtual-network/index.yml)实例中运行。|
-| 在访问本地资源时使用安全连接 | 你可以使用 [混合连接](app-service-hybrid-connections.md)、 [虚拟网络集成](web-sites-integrate-with-vnet.md)或 [应用服务环境](environment/intro.md) 来连接到本地资源。 |
-| 限制向入站网络流量公开 | 可以通过网络安全组限制网络访问并控制公开的终结点数。 有关详细信息，请参阅 [如何控制到应用服务环境的入站流量](environment/app-service-app-service-environment-control-inbound-traffic.md)。 |
+| 选择独立定价层 | 除了独立定价层，所有层都在 Azure 应用服务的共享网络基础结构上运行应用。 通过在专用的[应用服务环境](environment/intro.md)中运行应用，独立层可提供完整的网络隔离。 应用服务环境在你自己的 [Azure 虚拟网络](../virtual-network/index.yml)实例中运行。|
+| 在访问本地资源时使用安全连接 | 可使用[混合连接](app-service-hybrid-connections.md)、[虚拟网络集成](web-sites-integrate-with-vnet.md)或[应用服务环境](environment/intro.md)连接到本地资源。 |
+| 限制向入站网络流量公开 | 可以通过网络安全组限制网络访问并控制公开的终结点数。 有关详细信息，请参阅[如何控制应用服务环境的入站流量](environment/app-service-app-service-environment-control-inbound-traffic.md)。 |
 
 ## <a name="monitoring"></a>监视
 

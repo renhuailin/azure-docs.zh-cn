@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fca5c1a0aee6e62890d734e3233177549d932672
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581993"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643681"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -93,7 +93,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 ### <a name="clone-the-source-code-and-initialize"></a>克隆源代码并初始化
 
-1. 安装适用于 Visual Studio 2019 的[“使用 C++ 的桌面开发”工作负载](/cpp/build/vscpp-step-0-installation?view=vs-2019)。 Visual Studio 2017 和 2015 也受支持。
+1. 安装适用于 Visual Studio 2019 的[“使用 C++ 的桌面开发”工作负载](/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true)。 Visual Studio 2017 和 2015 也受支持。
 
 1. 安装 [CMake](https://cmake.org/)。 在命令提示符下键入 `cmake -version`，确保 CMake 位于 `PATH` 中。
 
@@ -169,7 +169,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
     cmake --build . --target iothub_ll_telemetry_sample --config Debug
     ```
 
-1. 运行应用程序。 设备将发送支持分布式跟踪的遥测数据。
+1. 运行该应用程序。 设备将发送支持分布式跟踪的遥测数据。
 
     ```cmd
     Debug/iothub_ll_telemetry_sample.exe
@@ -249,7 +249,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 }
 ```
 
-| 元素名称 | 必须 | 类型 | 描述 |
+| 元素名称 | 必须 | 类型 | 说明 |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | 是 | Integer | 目前支持使用两个模式值来启用和禁用采样。 `1` 表示启用，`2` 表示禁用。 |
 | `sampling_rate` | 是 | Integer | 此值是百分比。 只允许使用从 `0` 到 `100`（含）的值。  |

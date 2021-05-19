@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: c1ac3f2fa1ef3f1a24077064ad3ad3f3c30c5f3f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e6b7648188e2307da4ef40e0ab3daf6201f9d89d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048351"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101694863"
 ---
 # <a name="create-a-public-ip-address-using-the-azure-portal"></a>使用 Azure 门户创建公共 IP 地址
 
@@ -52,7 +52,7 @@ ms.locfileid: "105048351"
 
 > [!NOTE]
 > 可在具有[可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)的区域中使用这些选项。 </br>
-你可在这些区域中选择特定区域，但区域故障不可复原。 </br> 有关可用性区域的详细信息，请参阅[可用性区域概述](../availability-zones/az-overview.md)。
+你可在这些区域中选择特定区域，但区域故障不可复原。 </br> 有关可用性区域的详细信息，请参阅[可用性区域概述](https://docs.microsoft.com/azure/availability-zones/az-overview)。
 
 \* 表示层与[跨区域负载均衡器](../load-balancer/cross-region-overview.md)功能关联，目前为预览版。
 

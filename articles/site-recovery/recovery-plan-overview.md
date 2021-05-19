@@ -4,10 +4,10 @@ description: 了解 Azure Site Recovery 中的恢复计划。
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 8d191781cacc37242dd1be31d6cb87ef196e5e7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84343908"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
@@ -85,7 +85,7 @@ ms.locfileid: "84343908"
 
 ## <a name="watch-a-recovery-plan-video"></a>观看恢复计划视频
 
-观看快速示例视频，其中显示了针对两层 WordPress 应用的恢复计划的单击时故障转移。
+观看一个快速示例视频，其中展示了如何通过点击来对一个两层 WordPress 应用的恢复计划进行故障转移。
     
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 

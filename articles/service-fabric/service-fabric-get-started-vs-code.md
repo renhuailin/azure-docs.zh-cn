@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
-ms.openlocfilehash: a655199d854462285ca98a2d8f454c483c061f99
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d54b4b048632324a58708f893a4778a56137916
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92316659"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876072"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
 
@@ -48,7 +48,7 @@ ms.locfileid: "92316659"
 
 必须为 .NET Core/C# 开发安装以下必备组件：
 
-* [.NET Core](https://www.microsoft.com/net/learn/get-started)（2.0.0 或更高版本）
+* [.NET Core](https://dotnet.microsoft.com/download)（2.0.0 或更高版本）
 * 调试 C# 服务时所需的 [C# for Visual Studio Code (Powered by OmniSharp) VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。 可通过以下方法之一安装该扩展：在 VS Code 中的 **活动栏** 上单击“扩展”图标并搜索该扩展，或者从 VS Code 市场安装。
 
 ## <a name="setup"></a>设置

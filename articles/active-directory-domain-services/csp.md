@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: d8edafff9b6534e5f1ce1c4581595ee187dfd432
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96619893"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>适用于 Azure 云解决方案提供商的 Azure Active Directory 域服务部署和管理
 
-Azure 云解决方案提供商 (CSP) 是 Microsoft 合作伙伴的计划，并为各种 Microsoft 云服务提供许可证通道。 通过 Azure CSP，合作伙伴可以管理销售、打理自己的账单关系、提供技术和计费支持以及成为客户的单一联系点。 此外，Azure CSP 还会提供一套完整的工具，包括自助服务门户和相应的 API。 这些工具使 CSP 合作伙伴可以轻松地预配和管理 Azure 资源，并提供针对客户及其订阅的计费。
+Azure 云解决方案提供商 (CSP) 是面向 Microsoft 合作伙伴的一项计划，为各项 Microsoft 云服务提供许可通道。 通过 Azure CSP，合作伙伴可以管理销售、打理自己的账单关系、提供技术和计费支持以及成为客户的单一联系点。 此外，Azure CSP 还会提供一套完整的工具，包括自助服务门户和相应的 API。 这些工具使 CSP 合作伙伴可以轻松地预配和管理 Azure 资源，并提供针对客户及其订阅的计费。
 
 [合作伙伴中心门户](/partner-center/azure-plan-lp)是所有 Azure CSP 合作伙伴的入口点，它提供了丰富的客户管理功能、自动化处理和其他功能。 Azure CSP 合作伙伴可以通过多种方式使用合作伙伴中心功能，包括基于 Web 的 UI、PowerShell 及多种 API 调用。
 

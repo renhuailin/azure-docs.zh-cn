@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88949168"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory 标识保护术语表
@@ -45,7 +45,7 @@ Azure Active Directory 中的活动记录。
 必须通过基于条件（例如密码或证书等）的身份验证方式来验证个人或实体。
 
 ### <a name="identity-risk-detection"></a>标识风险检测
-Azure AD 由 Identity Protection 标记为异常的事件，并且可能表示标识已泄露。
+由“标识保护”标记为“异常”的 Azure AD 事件，可能指示标识已遭入侵。
 
 ### <a name="ignored-risk-detection"></a>已忽略（风险检测）
 “标识保护”用户手动设置的风险检测状态，表示此风险检测已关闭，无需采取补救措施。
@@ -72,7 +72,7 @@ Azure AD 由 Identity Protection 标记为异常的事件，并且可能表示�
 安全策略的一部分，定义策略中包含或排除的实体（组、用户、应用、设备平台、设备状态、IP 范围、客户端类型）。
 
 ### <a name="policy-rule"></a>策略规则
-安全策略的一部分，用于描述触发策略的情况，以及在触发策略时执行的操作。
+安全策略的一部分，说明触发此策略的情况，以及策略触发时采取的措施。
 
 ### <a name="prevention"></a>预防
 防止通过滥用疑似或已知遭到入侵的标识或设备来损害组织的措施。 预防措施无法保护设备或标识的安全，且无法解决以前的风险检测。

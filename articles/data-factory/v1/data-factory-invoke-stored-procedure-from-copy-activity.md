@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 6f06b84ac0807a37c7adc603a557894be85a4cea
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100374960"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>从 Azure 数据工厂中的复制活动调用存储过程
@@ -24,7 +24,7 @@ ms.locfileid: "100374960"
 以下示例演示如何从数据工厂管道（复制活动）调用 SQL Server 数据库中的存储过程：  
 
 ## <a name="output-dataset-json"></a>输出数据集 JSON
-在输出数据集 JSON 中，将 **type** 设置为：**SqlServerTable**。 将其设置为 **AzureSqlTable** 可用于 Azure SQL 数据库。 **tableName** 属性的值必须与存储过程的第一个参数的名称匹配。  
+在输出数据集 JSON 中，将 **type** 设置为：**SqlServerTable**。 将其设置为 **AzureSqlTable** 可配合 Azure SQL 数据库使用。 **tableName** 属性的值必须与存储过程的第一个参数的名称匹配。  
 
 ```json
 {
@@ -63,7 +63,7 @@ ms.locfileid: "100374960"
 ```
 
 ## <a name="stored-procedure-definition"></a>存储过程定义 
-在数据库中，用与 **SqlWriterStoredProcedureName** 相同的名称定义存储过程。 该存储过程处理来自源数据存储的输入数据，并将数据插入到目标数据库的表中。 存储过程的第一个参数的名称必须与数据集 JSON（市场营销部）中定义的 tableName 匹配。
+在数据库中，使用与 **SqlWriterStoredProcedureName** 相同的名称定义存储过程。 该存储过程处理来自源数据存储的输入数据，并将数据插入到目标数据库的表中。 存储过程的第一个参数的名称必须与数据集 JSON（市场营销部）中定义的 tableName 匹配。
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)
@@ -76,7 +76,7 @@ END
 ```
 
 ## <a name="table-type-definition"></a>表类型定义
-在数据库中，用与 **SqlWriterTableType** 相同的名称定义表类型。 表类型的架构必须与输入数据集的架构匹配。
+在数据库中，使用与 **SqlWriterTableType** 相同的名称定义表类型。 表类型的架构必须与输入数据集的架构匹配。
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(

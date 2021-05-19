@@ -4,14 +4,14 @@ description: 提供有关设置分布式协作开发环境以开发“开发测�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: caf4bd13f2ec9c45db392a027db269b492cbd802
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102550070"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>有关 Azure 开发测试实验室资源的分布式协作开发的最佳做法
-分布式协作开发允许不同的团队或人员开发和维护基本代码。 若要取得成功，开发过程需依赖于创建、共享和集成信息的能力。 可以在 Azure 开发测试实验室中运用这项关键开发原则。 实验室中存在多种类型的资源，这些资源通常分布于企业中的不同实验室之间。 不同类型的资源聚合在两个区域：
+分布式协作开发允许不同的团队或人员开发和维护基本代码。 若要取得成功，开发过程需依赖于创建、共享和集成信息的能力。 可以在 Azure 开发测试实验室中运用这项关键开发原则。 实验室中存在多种类型的资源，这些资源通常分布于企业中的不同实验室之间。 不同类型的资源集中在两个区域：
 
 - 在实验室内部存储的资源（基于实验室）
 - 在[连接到实验室的外部存储库](devtest-lab-add-artifact-repo.md)中存储的资源（基于代码存储库）。 

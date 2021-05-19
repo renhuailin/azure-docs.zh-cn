@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91444035"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库中的数据库或 Azure SQL 托管实例，并创建报表
@@ -37,7 +37,7 @@ ms.locfileid: "91444035"
 
    ![选择数据源：将 Excel 连接到 SQL 数据库。](./media/connect-excel/excel_data_source.png)
 
-3. 在 " **SQL Server 数据库**" 对话框中，键入要连接到的**服务器名称**，<格式为 " *servername* > **database.windows.net**"。 例如“msftestserver.database.windows.net”****。 输入数据库名称（可选）。 选择“确定”以打开凭据窗口。
+3. 在“SQL Server 数据库”对话框中，以 <服务器名称>.database.windows.net 这样的格式键入要连接的“服务器名称”。 例如“msftestserver.database.windows.net”。 输入数据库名称（可选）。 选择“确定”以打开凭据窗口。
 
    ![“连接到数据库服务器”对话框](./media/connect-excel/server-name.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "91444035"
 建立连接后，有多种加载数据的方式可供选择。 例如，以下步骤基于来自 SQL 数据库中数据库的数据创建数据透视表。
 
 1. 按照前一部分中的步骤进行操作，不过这次不再选择“加载”，而是改为从“加载”下拉列表中选择“加载至”  。
-2. 然后选择该数据在工作簿中的显示方式。 **将此数据添加到数据模型**。 也可以选择创建**新工作表**或**将此数据添加到数据模型**。 有关数据模型的详细信息，请参阅[在 Excel 中创建数据模型](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B)。
+2. 然后选择该数据在工作簿中的显示方式。 **将此数据添加到数据模型**。 也可以选择创建 **新工作表** 或 **将此数据添加到数据模型**。 有关数据模型的详细信息，请参阅[在 Excel 中创建数据模型](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B)。
 
     ![选择 Excel 中数据的格式](./media/connect-excel/import-data.png)
 

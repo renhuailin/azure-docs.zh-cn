@@ -1,6 +1,6 @@
 ---
 title: 添加自助注册用户流 - Azure AD
-description: 为组织构建的应用创建用户流。 然后，访问该应用的用户可以使用用户流中配置的选项获得来宾帐户。
+description: 为组织生成的应用创建用户流。 然后，访问该应用的用户就可以使用该用户流中配置的选项获得来宾帐户。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,10 +12,10 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a59e573c9b24d9a8b5577b55d143fcaca67952f0
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120753"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>向应用添加自助注册用户流
@@ -23,18 +23,18 @@ ms.locfileid: "102120753"
 > [!NOTE]
 > 本文中提到的某些功能是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-对于构建的应用程序，可以创建允许用户注册应用程序并创建新来宾帐户的用户流。 自助服务注册用户流定义用户在注册过程中将遵循的一系列步骤，你将允许他们使用的标识提供者，以及你想要收集的用户属性。 你可以将一个或多个应用程序与一个用户流相关联。
+对于你构建的应用程序，也可以创建用户流，以允许用户注册应用并创建新的来宾帐户。 自助服务注册用户流定义了用户在注册过程中将要遵循的一系列步骤、将允许他们使用的标识提供者，以及想要收集的用户属性。 可以将一个或多个应用程序与单个用户流相关联。
 
 > [!NOTE]
 > 可以将用户流与组织生成的应用相关联。 用户流不能用于 Microsoft 应用，如 SharePoint 或 Teams。
 
 ## <a name="before-you-begin"></a>开始之前
 
-### <a name="add-identity-providers-optional"></a>添加标识提供程序 (可选) 
+### <a name="add-identity-providers-optional"></a>添加标识提供者（可选）
 
-Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情况下，用户可以使用 Azure AD 帐户进行注册。 在自助注册用户流中，还可以包括 Google 和 Facebook 等社交标识提供者、Microsoft 帐户 (预览) 和电子邮件一次性密码 (预览) 。
+Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情况下，用户可以使用 Azure AD 帐户进行注册。 在自助注册用户流中，还可以包括 Google 和 Facebook 等社交标识提供者、Microsoft 帐户（预览版）以及电子邮件一次性密码（预览版）。
 
-- [Microsoft 帐户 (预览) 标识提供者](microsoft-account.md)
+- [Microsoft 帐户（预览版）标识提供者](microsoft-account.md)
 - [电子邮件一次性密码身份验证](one-time-passcode.md)
 - [向社交标识提供者列表添加 Facebook](facebook-federation.md)
 - [向社交标识提供者列表添加 Google](google-federation.md)
@@ -50,7 +50,7 @@ Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情�
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 选择“用户设置”，然后在“外部用户”下，选择“管理外部协作设置”。
-4. 设置 " **通过用户流启用来宾自助服务注册** " 切换到 **"是"**。
+4. 将“启用通过用户流进行来宾自助注册”切换按钮设置为“是”。
 
    ![启用来宾自助注册](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
 5. 选择“保存”。
@@ -61,7 +61,7 @@ Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情�
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
-4. 选择 " **用户流**"，然后选择 " **新建用户流**"。
+4. 选择“用户流”，然后选择“新建用户流”。
 
    ![“添加新用户流”按钮](media/self-service-sign-up-user-flow/new-user-flow.png)
 
@@ -72,17 +72,17 @@ Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情�
    ![“新建用户流”页](media/self-service-sign-up-user-flow/create-user-flow.png)
 
 > [!NOTE]
-> 仅可在用户首次注册时收集属性。 用户注册后，将不再提示他们收集属性信息，即使更改用户流也是如此。
+> 仅可在用户首次注册时收集属性。 用户注册后，将不再提示他们收集属性信息，即使更改用户流时也是如此。
 
-8. 选择“创建”。
-9. 新用户流将出现在 " **用户流** " 列表中。 如果需要，请刷新页面。
+8. 选择“创建”  。
+9. 此时，新的用户流将显示在“用户流”列表中。 如果需要，请刷新页面。
 
 ## <a name="select-the-layout-of-the-attribute-collection-form"></a>选择“属性集合”窗体的布局
 
 可以选择属性在注册页上显示的顺序。 
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“Azure Active Directory”。
-2. 选择 **外部标识**，选择 **用户流**。
+2. 依次选择“外部标识”和“用户流”。
 3. 从列表中选择自助注册用户流。
 4. 在“自定义”下选择“页面布局”。 
 5. 此时列出你选择收集的属性。 若要更改显示顺序，请选择一个属性，然后选择“上移”、“下移”、“移至顶部”或“移至底部”。
@@ -95,7 +95,7 @@ Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情�
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
-4. 在 " **自助服务注册**" 下，选择 " **用户流**"。
+4. 在“自助注册”下，选择“用户流”。
 5. 从列表中选择自助注册用户流。
 6. 在左侧菜单中的“使用”下，选择“应用”。
 7. 选择“添加应用程序”。
@@ -109,5 +109,5 @@ Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情�
 
 - [向社交标识提供者列表添加 Google](google-federation.md)
 - [向社交标识提供者列表添加 Facebook](facebook-federation.md)
-- [使用 API 连接器通过 web Api 自定义和扩展用户流](api-connectors-overview.md)
+- [使用 API 连接器，通过 Web API 自定义和扩展用户流](api-connectors-overview.md)
 - [向用户流中添加自定义审批工作流](self-service-sign-up-add-approvals.md)

@@ -4,10 +4,10 @@ description: 用于生成、运行和修补容器映像的示例 Azure 容器注
 ms.topic: article
 ms.date: 11/14/2019
 ms.openlocfilehash: 49df3bf565052a729ac3c587bd2ba11a299d05f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74456081"
 ---
 # <a name="acr-tasks-samples"></a>ACR 任务示例
@@ -18,19 +18,19 @@ ms.locfileid: "74456081"
 
 ## <a name="scenarios"></a>方案
 
-* **生成映像** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* 生成映像 - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **运行容器** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml)
+* 运行容器 - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml)
 
-* **生成和推送映像** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* 生成和推送映像 - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **生成和运行映像** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-run-hello-world.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* 生成和运行映像 - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-run-hello-world.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **生成和推送多个映像** -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world-multi.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* 生成和推送多个映像 -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world-multi.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **并行生成和测试映像** -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
+* 并行生成和测试映像 -  [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.dockerfile)
 
-* **生成映像并将其推送到多个注册表** - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/testtask.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/hello-world.dockerfile)
+* 生成映像并将其推送到多个注册表 - [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/testtask.yaml)、[Dockerfile](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/hello-world.dockerfile)
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -39,7 +39,7 @@ ms.locfileid: "74456081"
 
 * [多步骤任务](container-registry-tasks-multi-step.md) - 基于 ACR 任务的工作流，用于在云中生成、测试和修补容器映像。
 * [任务参考](container-registry-tasks-reference-yaml.md) - 任务步骤的类型、属性和用法。
-* [命令存储库](https://github.com/AzureCR/cmd) - 作为 ACR 任务命令的容器的集合。
+* [命令存储库](https://github.com/AzureCR/cmd) - 作为 ACR 任务命令的容器集合。
 
 
 <!-- LINKS - External -->

@@ -4,10 +4,10 @@ description: 了解如何在 Azure 订阅中创建实验室帐户、查看所有
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 65ff28401b73698e320735613b32c96bf3de58f2
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96434084"
 ---
 # <a name="create-and-manage-lab-accounts"></a>创建和管理实验室帐户
@@ -43,7 +43,7 @@ ms.locfileid: "96434084"
         ![创建实验室帐户 -> 高级](./media/how-to-manage-lab-accounts/create-lab-account-advanced.png)  
 6. 在页面底部选择“下一步:标记”，以切换到“标记”选项卡。添加要与实验室帐户关联的任何标记。 标记是名称/值对，通过将相同的标记应用到多个资源和资源组，可以对资源进行分类并查看合并的账单。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)。
 
-    ![显示 "创建实验室帐户" 页面并突出显示 "标签" 选项卡的屏幕截图。](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
+    ![显示“创建实验室帐户”页面的屏幕截图，其中突出显示了“标签”选项卡。](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
 7. 选择此页底部的“查看 + 创建”，切换到“查看 + 创建”选项卡。 
 4. 查看此页上的摘要信息，并选择“创建”。 
 

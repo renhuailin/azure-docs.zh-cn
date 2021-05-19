@@ -8,10 +8,10 @@ ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0f95b0d62bc81a8dddc72239491a05ca78945490
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100393371"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure 数据工厂复制向导
@@ -42,7 +42,7 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 某些情况下，输入数据的架构可能与输出数据的架构不匹配。 在这种情况下，需要将源架构中的列映射到目标架构中的列。
 
 > [!TIP]
-> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure Synapse Analytics 时，如果目标存储中不存在该表，则数据工厂支持使用源架构自动创建表。 了解有关 [使用 Azure 数据工厂将数据移入和移出 Azure Synapse 分析](./data-factory-azure-sql-data-warehouse-connector.md)的详细信息。
+> 将数据从 SQL Server 或 Azure SQL 数据库复制到 Azure Synapse Analytics 时，如果目标存储中不存在该表，数据工厂支持使用源架构自动创建表。 详细了解[使用 Azure 数据工厂将数据移出或移入 Azure Synapse Analytics](./data-factory-azure-sql-data-warehouse-connector.md)。
 
 使用下拉列表从源架构中选择列，映射到目标架构中的列。 复制向导尝试了解列映射的模式。 它将相同模式应用于其余列，从而不需要单独选择每个列以完成架构映射。 如需要，可通过使用下拉列表逐个映射列来替代这些映射。 映射的列越多，模式越准确。 复制向导不断更新模式，最终达到想要完成的列映射的正确模式。     
 
@@ -85,14 +85,14 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 
 ## <a name="troubleshooting"></a>疑难解答
 
-本部分探讨 Azure 数据工厂中复制向导的常见故障排除方法。
+本部分探讨 Azure 数据工厂中“复制向导”相关问题的常用排查方法。
 
 > [!NOTE] 
-> 这些故障排除提示适用于数据工厂版本1中的复制向导。 有关数据工厂 v2，请参阅 [Azure 数据工厂故障](../data-factory-ux-troubleshoot-guide.md)排除指南。
+> 这些故障排除提示适用于数据工厂版本 1 中的复制向导。 有关数据工厂 v2，请参阅[排查 Azure 数据工厂故障](../data-factory-ux-troubleshoot-guide.md)中的故障排除指南。
 
-### <a name="error-code-unable-to-validate-in-copy-wizard"></a>错误代码：无法在复制向导中验证
+### <a name="error-code-unable-to-validate-in-copy-wizard"></a>错误代码：无法在“复制向导”中验证
 
-- **症状**：在复制向导的第一步中，你遇到了 "无法验证" 的警告消息。
+- **症状**：在“复制向导”的第一步中，收到“无法验证”警告消息。
 - 原因：禁用所有第三方 Cookie 时可能会发生这种情况。
 - **解决方法**： 
     - 使用 Internet Explorer 或 Microsoft Edge 浏览器。
@@ -118,7 +118,7 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
 
 ### <a name="error-code-unable-to-open-login-page-and-enter-password"></a>错误代码：无法打开登录页并输入密码
 
-- **症状**：复制向导将您重定向到登录页，但登录页面未成功显示。
+- **症状**：“复制向导”重定向到登录页，但登录页无法成功显示。
 - 原因：如果将网络环境从办公室网络更改为家庭网络，则可能会发生此问题。 浏览器中有一些缓存。 
 - **解决方法**： 
     1.  请关闭浏览器并重试。 如果问题仍然存在，请继续执行下一步。   

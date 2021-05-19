@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: justinha
 ms.openlocfilehash: 8cc5f5ebf389d35df02474d0561dc7827cde4d0b
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96620080"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>在 Azure Active Directory 域服务中从经典部署模型迁移到资源管理器部署模型的优点
@@ -41,8 +41,8 @@ ms.locfileid: "96620080"
 * AD 帐户锁定保护。
 * [关于托管域的警报的电子邮件通知][email-alerts]。
 * [使用 Azure 工作簿和 Azure Monitor 查看审核日志和登录活动][workbooks]。
-* 在支持的区域中， [Azure 可用性区域][availability-zones]。
-* 与其他 Azure 产品（如 [Azure 文件][azure-files]、 [高清 Insights][hd-insights]和 [Windows 虚拟桌面][wvd]）的集成。
+* 在支持的区域中，[Azure 可用性区域][availability-zones]。
+* 与其他 Azure 产品集成，如 [Azure 文件][azure-files]、[HD Insights][hd-insights] 和 [Windows 虚拟桌面][wvd]。
 * 支持人员可以访问更多遥测并可以帮助更有效地解决问题。
 * 使用 [Azure 托管磁盘][managed-disks]对托管域控制器上的数据进行静态加密。
 

@@ -4,13 +4,13 @@ description: 了解如何配置 Azure Functions 中的函数应用设置。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.custom: cc996988-fb4f-47, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 6775fdf8d5174600344f3c7177a3130ef63e8f76
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.custom: cc996988-fb4f-47, devx-track-azurecli
+ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832673"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98875443"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -46,14 +46,14 @@ ms.locfileid: "107832673"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_list) 命令返回现有的应用程序设置，如以下示例所示：
+[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) 命令返回现有的应用程序设置，如以下示例所示：
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) 命令添加或更新某个应用程序设置。 以下示例创建的设置包含的键其名称为 `CUSTOM_FUNCTION_APP_SETTING`，其值为 `12345`：
+[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 命令添加或更新某个应用程序设置。 以下示例创建的设置包含的键其名称为 `CUSTOM_FUNCTION_APP_SETTING`，其值为 `12345`：
 
 
 ```azurecli-interactive
@@ -260,7 +260,7 @@ Linux 不支持此迁移。
 
 使用星号 (`*`) 时，会忽略所有其他的域。 
 
-使用 [`az functionapp cors add`](/cli/azure/functionapp/cors#az_functionapp_cors_add) 命令将域添加到“允许的域”列表。 以下示例添加 contoso.com 域：
+使用 [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) 命令将域添加到“允许的域”列表。 以下示例添加 contoso.com 域：
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -268,7 +268,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-使用 [`az functionapp cors show`](/cli/azure/functionapp/cors#az_functionapp_cors_show) 命令列出目前允许的域。
+使用 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) 命令列出目前允许的域。
 
 ### <a name="authentication"></a><a name="auth"></a>身份验证
 

@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: 8086ce0e5964d4e37a5ffc3082d5f2856058e4e5
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875478"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218037"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI 脚本示例 - 创建逻辑应用
 
-此脚本通过 [Azure CLI 逻辑应用扩展](/cli/azure/logic) (`az logic`) 创建一个示例逻辑应用。 有关通过 Azure CLI 创建和管理逻辑应用的详细指南，请参阅 [Azure CLI 的逻辑应用快速入门](quickstart-logic-apps-azure-cli.md)。
+此脚本通过 [Azure CLI 逻辑应用扩展](/cli/azure/ext/logic/logic) (`az logic`) 创建一个示例逻辑应用。 有关通过 Azure CLI 创建和管理逻辑应用的详细指南，请参阅 [Azure CLI 的逻辑应用快速入门](quickstart-logic-apps-azure-cli.md)。
 
 > [!WARNING]
 > Azure CLI 逻辑应用扩展当前是试验性的，未涵盖在客户支持中 。 请谨慎使用此 CLI 扩展，尤其是在生产环境中选择使用扩展时。
@@ -142,7 +142,7 @@ ms.locfileid: "107875478"
 
     1. 将连接参数 (`$connections`) 下连接标识符（`connectionId` 和 `id`）的占位符订阅值 (`00000000-0000-0000-0000-000000000000`) 替换为你自己的订阅值。
 
-1. 保存所做更改。
+1. 保存更改。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -195,10 +195,10 @@ az group delete --name testResourceGroup --yes
 
 此示例脚本使用以下命令创建新的资源组和逻辑应用。
 
-| 命令 | 说明 |
+| Command | 说明 |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group#az_group_create) | 创建存储逻辑应用资源的资源组。 |
-| [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) | 基于参数 `--definition` 中定义的工作流创建逻辑应用。 |
+| [`az group create`](/cli/azure/group#az-group-create) | 创建存储逻辑应用资源的资源组。 |
+| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | 基于参数 `--definition` 中定义的工作流创建逻辑应用。 |
 | [`az group delete`](/cli/azure/vm/extension) | 删除资源组及其所有嵌套资源。 |
 
 ## <a name="next-steps"></a>后续步骤

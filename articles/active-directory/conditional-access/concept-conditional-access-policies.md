@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d58c476a805b672a6ec8b4d8ec465eba17e559
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.openlocfilehash: 35d2bf33b4a22c14abfb61a87a3697b05188ed31
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169675"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579087"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件访问策略
 
@@ -32,7 +32,7 @@ ms.locfileid: "96169675"
 
 - 阶段 1：收集会话详细信息 
    - 收集会话详细信息，例如进行策略评估所需的网络位置和设备标识。 
-   - 针对 [仅报告模式下](concept-conditional-access-report-only.md)的已启用策略和策略进行策略评估的阶段1。
+   - 针对已启用的策略和[仅限报告模式](concept-conditional-access-report-only.md)下的策略执行策略评估的第 1 阶段。
 - 阶段 2：强制 
    - 使用在第 1 阶段收集的会话详细信息来识别尚未满足的任何要求。 
    - 如果有一个策略配置为阻止访问，则在使用阻止授权控制的情况下，将在此处停止强制，用户会被阻止。 
@@ -63,7 +63,7 @@ ms.locfileid: "96169675"
 
 #### <a name="sign-in-risk"></a>登录风险
 
-对于具有 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)的组织而言，生成的风险检测可能会影响你的条件访问策略。
+对于使用 [Azure AD 标识保护](../identity-protection/overview-identity-protection.md)的组织而言，生成的风险检测可能会影响条件访问策略。
 
 #### <a name="device-platforms"></a>设备平台
 
@@ -101,11 +101,13 @@ ms.locfileid: "96169675"
 
 授予控制可以触发一项或多项控制的实施。 
 
-- 需要多重身份验证 (Azure AD 多重身份验证) 
+- 需要多重身份验证（Azure AD 多重身份验证）
 - 要求将设备标记为合规 (Intune)
 - 要求使用加入混合 Azure AD 的设备
 - 需要批准的客户端应用
 - 需要应用保护策略
+- 要求更改密码
+- 需要使用条款
 
 管理员可以使用以下选项选择是需要上述控制之一还是所有已选控制。 多项控制的默认值为全部需要。
 

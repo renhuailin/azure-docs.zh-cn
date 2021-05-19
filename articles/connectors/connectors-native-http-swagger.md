@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 8bd46f013680d5cbc9e75a312206fdb2fdcac7ec
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109350"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101730875"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用调用 REST 终结点
 
@@ -44,7 +44,7 @@ ms.locfileid: "106109350"
 
 此内置触发器将一个 HTTP 请求发送到用于描述 REST API 的 Swagger 文件的 URL，并返回包含该文件的内容的响应。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
 1. 在设计器的搜索框中，输入“swagger”作为筛选器。 在“触发器”列表中选择“HTTP + Swagger”触发器。 
 
@@ -80,7 +80,7 @@ ms.locfileid: "106109350"
 
 此内置操作对用于描述 REST API 的 Swagger 文件的 URL 发出一个 HTTP 请求，并返回包含该文件的内容的响应。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
 
 1. 在要添加 HTTP + Swagger 操作的步骤下，选择“新建步骤”。
 
@@ -150,9 +150,9 @@ ms.locfileid: "106109350"
 | 属性名称 | 类型 | 说明 |
 |---------------|------|-------------|
 | headers | object | 请求中的标头 |
-| body | object | 包含请求中正文内容的对象 |
+| body | object | JSON 对象 | 包含请求中正文内容的对象 |
 | 状态代码 | int | 请求中的状态代码 |
-||||
+|||
 
 | 状态代码 | 说明 |
 |-------------|-------------|

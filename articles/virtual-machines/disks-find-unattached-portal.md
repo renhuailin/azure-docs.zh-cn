@@ -8,15 +8,15 @@ ms.date: 01/26/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 4d31ce4b6086c44de913afd1083bae25fa3d44cd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98898149"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>查找并删除未附加的 Azure 托管和非托管磁盘 - Azure 门户
 
-删除 Azure 中的虚拟机 (VM) 时，默认不删除附加到 VM 的任何磁盘。 这有助于防止意外删除 VM 而导致的数据丢失。 删除 VM 后，可继续支付未附加的磁盘。 本文演示了如何使用 Azure 门户查找并删除任何未附加的磁盘，以及如何减少不必要的成本。 删除是永久性的，删除磁盘后，将无法恢复数据。
+删除 Azure 中的虚拟机 (VM) 时，默认不删除附加到 VM 的任何磁盘。 这有助于防止意外删除 VM 而导致的数据丢失。 删除 VM 后，可继续支付未附加的磁盘。 本文演示了如何使用 Azure 门户查找并删除任何未附加的磁盘，以及如何减少不必要的成本。 删除是永久性操作，删除磁盘后，将无法恢复数据。
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>托管磁盘：查找并删除未附加的磁盘
 
@@ -27,7 +27,7 @@ ms.locfileid: "98898149"
 
     “磁盘”边栏选项卡上会显示所有磁盘的列表。 “所有者”列中含有“-”的任何磁盘都是未附加的磁盘 。
 
-    [!["托管磁盘" 边栏选项卡的屏幕截图，如果磁盘在 "所有者" 列中，则它是一个未附加的磁盘。](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
+    [![托管磁盘边栏选项卡的屏幕截图，如果磁盘的“所有者”列中包含“-”，表明它是一个未附加的磁盘。](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
 
 1. 选择要删除的未附加磁盘，随即会打开磁盘的边栏选项卡。
 1. 在磁盘的边栏选项卡上，确认磁盘状态为未附加，然后选择“删除”。

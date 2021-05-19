@@ -11,10 +11,10 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91631216"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 错误代码
@@ -55,7 +55,7 @@ Content-Length: 31
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>令牌缺少关联的适当资源。 
 
-从 Azure OAUTH 终结点请求访问令牌时，必须提供名为“resource”的参数。 该值对于令牌提供程序而言非常重要，因为它限定了令牌的目标使用范围。 用于访问 Key Vault 的 **所有** 令牌的资源是 *https： \/ /vault.keyvault.net* (，无尾随斜杠) 。
+从 Azure OAUTH 终结点请求访问令牌时，必须提供名为“resource”的参数。 该值对于令牌提供程序而言非常重要，因为它限定了令牌的目标使用范围。 用于访问 Key Vault 的所有令牌的资源为 https:\//vault.keyvault.net（不包括尾部斜杠）。
 
 ### <a name="the-token-is-expired"></a>令牌已过期
 
@@ -128,7 +128,7 @@ resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secr
 HTTP 403 表示请求已完成身份验证（知道请求方标识），但标识无权访问请求的资源。 此错误有两种原因：
 
 - 没有为标识设置访问策略。
-- 不会在密钥保管库的防火墙设置中批准请求资源的 IP 地址。
+- 请求资源的 IP 地址在密钥保管库的防火墙设置中未被批准。
 
 如果客户的应用程序未使用客户端 ID，但客户认为已使用，则往往会出现 HTTP 403。 这通常意味着，未为实际调用方标识正确设置访问策略。
 
@@ -142,7 +142,7 @@ HTTP 403 表示请求已完成身份验证（知道请求方标识），但标�
 
 “客户端地址(00.00.00.00)未获授权，调用方不是受信任的服务”
 
-有一个有限的“Azure 信任的服务”列表。 Azure 网站**不是**受信任的 Azure 服务。 有关详细信息，请参阅博客文章 [Key Vault 防火墙访问 Azure 应用 Services](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)。
+有一个有限的“Azure 信任的服务”列表。 Azure 网站 **不是** 受信任的 Azure 服务。 有关详细信息，请参阅博客文章：[通过 Azure 应用服务访问 Key Vault 防火墙](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)。
 
 必须将 Azure 网站的 IP 地址添加到 Key Vault 才能使其正常工作。
 

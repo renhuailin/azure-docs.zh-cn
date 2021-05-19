@@ -5,10 +5,10 @@ services: automation
 ms.date: 08/10/2020
 ms.topic: article
 ms.openlocfilehash: 3a52824a7030d78647d8a664819f439d92d7296d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100593954"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>使用指标警报监视 Runbook
@@ -46,7 +46,7 @@ ms.locfileid: "100593954"
 
 3. 在“警报逻辑”下，定义警报的条件和阈值。 下面会显示定义的条件预览。
 
-4. 在“评估依据”下，选择查询的时间范围，以及查询的运行频率。 例如，如果您在过去 **5 分钟** 内选择了 **时间段**，并且 **频率** 为 **1 分钟**，则警报将查找满足过去5分钟的条件的 runbook 的数目。 此查询每分钟运行一次，一旦在 5 分钟时间范围内找不到定义的警报条件，则警报会自行解决。 完成后，单击“完成”。
+4. 在“评估依据”下，选择查询的时间范围，以及查询的运行频率。 例如，如果为“期间”选择“过去 5 分钟”，为“频率”选择“每隔 1 分钟”，则警报会查找过去 5 分钟内满足条件的 Runbook 数   。 此查询每分钟运行一次，一旦在 5 分钟时间范围内找不到定义的警报条件，则警报会自行解决。 完成后，单击“完成”。
 
    ![选择警报的资源](./media/automation-alert-activity-log/configure-signal-logic.png)
 

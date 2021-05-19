@@ -1,6 +1,6 @@
 ---
 title: Verizon 中的核心报告 | Microsoft Docs
-description: 了解如何通过用于 Verizon 配置文件的管理门户访问和查看 Verizon Core 报表。
+description: 了解如何通过管理门户访问和查看 Verizon 配置文件的 Verizon 核心报告
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90985541"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon 中的核心报告
@@ -44,16 +44,16 @@ ms.locfileid: "90985541"
    
     ![CDN 管理门户 - 核心报告菜单](./media/cdn-reports/cdn-core-reports.png)
 
-3. 对于每份报告，请从“日期范围”列表中选择一个日期范围。**** 可选择预定义的日期范围，例如“今天”或“本周”，也可选择“自定义”，并通过单击日历图标手动输入日期范围************。 
+3. 对于每份报告，请从“日期范围”列表中选择一个日期范围。 可选择预定义的日期范围，例如“今天”或“本周”，也可选择“自定义”，并通过单击日历图标手动输入日期范围。 
 
-4. 选择日期范围后，单击“开始”生成报告****。 
+4. 选择日期范围后，单击“开始”生成报告。 
 
-4. 若要以 Excel 格式导出数据，请单击“执行”按钮上方的“Excel”图标。****
+4. 若要以 Excel 格式导出数据，请单击“执行”按钮上方的“Excel”图标。
 
 ## <a name="bandwidth"></a>带宽
 带宽报告包含一个图和一个数据表，说明了特定时段内 HTTP 和 HTTPS 的 CDN 带宽使用量，以 Mbps 为单位。 可以查看所有 POP 或特定 POP 的带宽使用量。 此报告允许查看整个 POP 的流量高峰和分布。
 
-在“边缘节点”列表中，选择“所有边缘节点”以查看所有节点的流量，或选择特定的区域。********
+在“边缘节点”列表中，选择“所有边缘节点”以查看所有节点的流量，或选择特定的区域。
 
 该报告每五分钟更新一次。
 
@@ -62,7 +62,7 @@ ms.locfileid: "90985541"
 ## <a name="data-transferred"></a>传输的数据
 该报告包含一个图和一个数据表，说明了特定时段内 HTTP 和 HTTPS 的 CDN 流量用量，以 GB 为单位。 可以查看所有 POP 或特定 POP 的流量用量。 此报告允许查看整个 POP 的流量高峰和分布情况。
 
-在“边缘节点”列表中，选择“所有边缘节点”以查看所有节点的流量，或选择特定的区域。********
+在“边缘节点”列表中，选择“所有边缘节点”以查看所有节点的流量，或选择特定的区域。
 
 该报告每五分钟更新一次。
 
@@ -119,7 +119,7 @@ ms.locfileid: "90985541"
 
 报告不包括：
 
-* 由于国家/地区筛选选项而被拒绝的请求。
+* 因国家/地区的筛选选项而被拒绝的请求。
 * 其标头指示不应进行缓存的资产所对应的请求。 例如，`Cache-Control: private`、`Cache-Control: no-cache` 或 `Pragma: no-cache` 标头会阻止缓存资产。
 * 针对部分缓存内容的字节范围请求。
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3766db0d5070f15216ac612353e2c25737ad092a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96741620"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>自定义 Azure Active Directory 自助式密码重置的用户体验
@@ -61,7 +61,7 @@ ms.locfileid: "96741620"
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>自定义登录页面和访问面板
 
-可以自定义登录页面，例如，添加一个与符合公司品牌形象的图像一起显示的徽标。 有关如何配置公司品牌的详细信息，请参阅 [Azure AD 中的将公司品牌添加到登录页](../fundamentals/customize-branding.md)。
+可以自定义登录页面，例如，添加一个与符合公司品牌形象的图像一起显示的徽标。 有关如何配置公司品牌的详细信息，请参阅[将公司品牌添加到 Azure AD 中的登录页面](../fundamentals/customize-branding.md)。
 
 在以下情况下会显示所选图形：
 

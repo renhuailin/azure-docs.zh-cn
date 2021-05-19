@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: 197423670ffe05f15fdc5bfd351efdfba33b53cd
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96533768"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
@@ -36,7 +36,7 @@ ms.locfileid: "96533768"
 
   在本文中，群集结点上运行的使用容器的 Windows Server 版本必须与开发计算机上的版本相匹配。 这是因为要在开发计算机上构建 Docker 映像，而容器 OS 和用来部署的主机 OS 的版本之间有兼容性限制。 有关详细信息，请参阅 [Windows Server 容器 OS 与主机 OS 的兼容性](#windows-server-container-os-and-host-os-compatibility)。 
   
-    若要确定群集所需的 Windows Server 的版本，请 `ver` 从开发计算机上的 Windows 命令提示符运行该命令。 [创建群集](service-fabric-cluster-creation-via-portal.md)之前，请参阅[WINDOWS Server 容器操作系统和主机操作系统兼容性](#windows-server-container-os-and-host-os-compatibility)。
+    若要确定使用容器的 Windows Server 版本，请在开发计算机上从 Windows 命令提示符运行 `ver` 命令。 [创建群集](service-fabric-cluster-creation-via-portal.md)之前，请参阅 [Windows Server 容器操作系统和主机操作系统兼容性](#windows-server-container-os-and-host-os-compatibility)。
 
 * 一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。
 
@@ -105,12 +105,12 @@ if __name__ == "__main__":
 
 <a id="Build-Containers"></a>
 
-## <a name="login-to-docker-and-build-the-image"></a>登录到 Docker 并构建映像
+## <a name="login-to-docker-and-build-the-image"></a>登录到 Docker 并生成映像
 
-接下来，我们将创建运行你的 web 应用程序的映像。 从 Docker (例如 `python:2.7-windowsservercore` ，在我们的 Dockerfile) 中提取公共映像时，最佳做法是使用 Docker 中心帐户进行身份验证，而不是发出匿名拉取请求。
+接下来，我们将创建运行你的 Web 应用程序的映像。 从 Docker（如 Dockerfile 中的 `python:2.7-windowsservercore`）拉取公共映像时，最佳做法是使用 Docker Hub 帐户进行身份验证，而不是发出匿名拉取请求。
 
 > [!NOTE]
-> 在频繁执行匿名拉取请求时，可能会看到类似于 `ERROR: toomanyrequests: Too Many Requests.` `You have reached your pull rate limit.` docker 中心或向 docker 中心进行身份验证的 docker 错误，以防出现这些错误。 有关详细信息，请参阅 [通过 Azure 容器注册表管理公共内容](../container-registry/buffer-gate-public-content.md) 。
+> 频繁发出匿名拉取请求时，你可能会看到 Docker 错误，类似于 `ERROR: toomanyrequests: Too Many Requests.` 或 `You have reached your pull rate limit.`。请对 Docker Hub 进行身份验证以避免这些错误。 有关详细信息，请参阅[通过 Azure 容器注册表管理公共内容](../container-registry/buffer-gate-public-content.md)。
 
 打开 PowerShell 窗口并导航到包含 Dockerfile 的目录。 然后运行以下命令：
 
@@ -131,7 +131,7 @@ helloworldapp                 latest              8ce25f5d6a79        2 minutes 
 ```
 
 ## <a name="run-the-application-locally"></a>在本地运行应用程序
-请先在本地验证映像，再将其推送到容器注册表。 
+请先在本地验证映像，然后再将其推送到容器注册表。 
 
 运行应用程序：
 
@@ -139,14 +139,14 @@ helloworldapp                 latest              8ce25f5d6a79        2 minutes 
 docker run -d --name my-web-site helloworldapp
 ```
 
-name 用于为运行的容器（而不是容器 ID）命名。
+*name* 为运行的容器（而不是容器 ID）命名。
 
 容器启动以后，查找其 IP 地址，以便通过浏览器连接到正在运行的容器：
 ```
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-如果该命令不返回任何内容，请运行以下命令并检查 IP 地址的 **NetworkSettings** -> **Networks** 元素：
+如果该命令未返回任何内容，请运行以下命令并检查 IP 地址的 **NetworkSettings**->**Networks** 元素：
 ```
 docker inspect my-web-site
 ```
@@ -193,11 +193,11 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>在 Visual Studio 中创建容器化服务
 Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程序。
 
-1. 启动 Visual Studio。 选择“文件” > “新建” > “项目”  。
-2. 选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，并单击“确定”。
-3. 从“服务模板”列表中选择“容器”。
+1. 启动 Visual Studio。 选择“文件” > “新建” > “项目”。
+2. 选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，并单击“确定”。  
+3. 从“服务模板”列表中选择“容器”。  
 4. 在“映像名称”中输入“myregistry.azurecr.io/samples/helloworldapp”，这是已推送到容器存储库中的映像。
-5. 为服务命名，并单击“确定” 。
+5. 为服务命名，并单击“确定”  。
 
 ## <a name="configure-communication"></a>配置通信
 容器化服务需要使用终结点进行通信。 请将 `Endpoint` 元素以及协议、端口和类型添加到 ServiceManifest.xml 文件。 在此示例中，使用固定端口 8081。 如果未指定端口，则从应用程序端口范围中选择一个随机端口。 
@@ -212,7 +212,7 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
 > [!NOTE]
 > 可以通过使用适用的属性值声明其他 EndPoint 元素来添加服务的其他终结点。 每个端口可以仅声明一个协议值。
 
-定义终结点后，Service Fabric 即可将该终结点发布到命名服务。 在群集中运行的其他服务可以解析此容器。 还可以使用[反向代理](service-fabric-reverseproxy.md)进行容器到容器通信。 将 HTTP 侦听端口和想要与其通信的服务名称作为环境变量提供给反向代理，以此方式进行通信。
+定义终结点后，Service Fabric 即可将该终结点发布到命名服务。 在群集中运行的其他服务可以解析此容器。 还可以使用[反向代理](service-fabric-reverseproxy.md)执行容器间的通信。 将 HTTP 侦听端口和想要与其通信的服务名称作为环境变量提供给反向代理，以此方式进行通信。
 
 该服务在特定端口（本例中为 8081）上进行侦听。 当应用程序部署到 Azure 中的群集时，该群集和应用程序都在 Azure 负载均衡器之后运行。 应用程序端口必须在 Azure 负载均衡器中打开，以便入站流量能够通过该服务。  可以在 Azure 负载均衡器中使用 [PowerShell 脚本](./scripts/service-fabric-powershell-open-port-in-load-balancer.md)来打开此端口，也可以在 [Azure 门户](https://portal.azure.com)中将其打开。
 
@@ -260,7 +260,7 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
 
 ## <a name="configure-container-repository-authentication"></a>配置容器存储库身份验证
 
-若要了解如何为容器映像下载配置不同类型的身份验证，请参阅 [容器存储库身份验证](configure-container-repository-credentials.md)。
+请参阅[容器存储库身份验证](configure-container-repository-credentials.md)，了解如何为容器映像的下载配置不同类型的身份验证。
 
 ## <a name="configure-isolation-mode"></a>配置隔离模式
 Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔离模式时，在同一台主机计算机上运行的所有容器将与主机共享内核。 使用 Hyper-V 隔离模式时，内核将在每个 Hyper-V 容器与容器主机之间隔离。 隔离模式在应用程序清单文件中的 `ContainerHostPolicies` 元素内指定。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 Windows Server 主机上默认采用进程隔离模式。 Windows 10 主机仅支持 Hyper-V 隔离模式，因此无论容器的离模式设置如何，它都在 Hyper-V 隔离模式下运行。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。
@@ -299,7 +299,7 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 
 ![HealthCheckUnhealthyDsp][5]
 
-可以通过将 **HealthConfig** 选项指定为 Applicationmanifest.xml 中 **ContainerHostPolicies** 的一部分，为每个容器配置 **HEALTHCHECK** 行为。
+可以为每个容器配置 **HEALTHCHECK** 行为，方法是在 ApplicationManifest 中将 **HealthConfig** 选项指定为 **ContainerHostPolicies** 的一部分。
 
 ```xml
 <ServiceManifestImport>
@@ -326,7 +326,7 @@ Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔
 
 在“连接终结点”中输入群集的管理终结点。 例如，`containercluster.westus2.cloudapp.azure.com:19000`。 在 [Azure 门户](https://portal.azure.com)中，可以在群集的“概览”选项卡中查找客户端连接终结点。
 
-单击“发布”。 
+单击“发布” 。
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 是一项基于 Web 的工具，用于检验和管理 Service Fabric 群集中的应用程序和节点。 打开浏览器，导航到 `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` ，并执行应用程序部署。 将映像下载到群集节点（这可能需要一段时间，具体时间取决于映像大小）之前，应用程序可部署但处于错误状态：![错误][1]
 
@@ -577,7 +577,7 @@ Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的�
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果未指定 **ContainersRetentionCount**  属性，则不会保留任何容器。 ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
+ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果不指定 **ContainersRetentionCount** 属性，则不会保留任何容器。 ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
 
 ## <a name="start-the-docker-daemon-with-custom-arguments"></a>使用自定义参数启动 Docker 守护程序
 

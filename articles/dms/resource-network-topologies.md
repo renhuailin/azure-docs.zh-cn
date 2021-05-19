@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: reference
 ms.date: 01/08/2020
 ms.openlocfilehash: 0799e8c76bc5d3969943d766aa83de40659a236a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101093355"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>使用 Azure 数据库迁移服务迁移 Azure SQL 托管实例的网络拓扑
@@ -31,7 +31,7 @@ ms.locfileid: "101093355"
 
 **要求**
 
-- 在此方案中，SQL 托管实例和 Azure 数据库迁移服务实例在同一 Microsoft Azure 虚拟网络中创建，但它们使用不同的子网。  
+- 在此方案中，SQL 托管实例和 Azure 数据库迁移服务实例位于同一 Microsoft Azure 虚拟网络中，但它们使用不同的子网。  
 - 本方案中使用的虚拟网络还使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 连接到本地网络。
 
 ## <a name="sql-managed-instance-isolated-from-the-on-premises-network"></a>SQL 托管实例与本地网络隔离
@@ -46,7 +46,7 @@ ms.locfileid: "101093355"
 
 **要求**
 
-- 对于此方案，Azure 数据库迁移服务使用的虚拟网络还必须使用 (或 VPN 连接到本地网络 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 。 [](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+- Azure 数据库迁移服务针对本方案使用的虚拟网络还需通过使用 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 连接到本地网络。
 - 在用于 SQL 托管实例的虚拟网络和 Azure 数据库迁移服务之间设置 [VNet 网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
 ## <a name="cloud-to-cloud-migrations-shared-virtual-network"></a>云到云的迁移：共享的虚拟网络
@@ -83,12 +83,12 @@ ms.locfileid: "101093355"
 
 | **NAME**                  | **PORT**                                              | **PROTOCOL** | **源** | **DESTINATION**           | **ACTION** | **规则的原因**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ServiceBus                | 443，ServiceTag：                           | TCP          | 任意        | 任意                       | Allow      | 通过服务总线进行的管理平面通信。 <br/>（如果启用了 Microsoft 对等互连，可能不需要此规则。）                                                             |
-| 存储                   | 443，ServiceTag：存储                              | TCP          | 任意        | 任意                       | Allow      | 使用 Azure blob 存储的管理平面。 <br/>（如果启用了 Microsoft 对等互连，可能不需要此规则。）                                                             |
-| 诊断               | 443，ServiceTag： AzureMonitor                         | TCP          | 任意        | 任意                       | 允许      | DMS 使用此规则收集诊断信息以进行故障排除。 <br/>（如果启用了 Microsoft 对等互连，可能不需要此规则。）                                                  |
+| ServiceBus                | 443，ServiceTag：ServiceBus                           | TCP          | 任意        | 任意                       | 允许      | 通过服务总线进行管理平面通信。 <br/>（如果启用了 Microsoft 对等互连，可能不需要此规则。）                                                             |
+| 存储                   | 443，ServiceTag：Storage                              | TCP          | 任意        | 任意                       | 允许      | 使用 Azure Blob 存储的管理平面。 <br/>（如果启用了 Microsoft 对等互连，可能不需要此规则。）                                                             |
+| 诊断               | 443，ServiceTag：AzureMonitor                         | TCP          | 任意        | 任意                       | 允许      | DMS 使用此规则收集诊断信息以进行故障排除。 <br/>（如果启用了 Microsoft 对等互连，可能不需要此规则。）                                                  |
 | SQL 源服务器         | 1433（或 SQL Server 正在侦听的 TCP IP 端口） | TCP          | 任意        | 本地地址空间 | 允许      | 来自 DMS 的 SQL Server 源连接 <br/>（如果使用站点到站点连接，则可能不需要此规则。）                                                                                       |
 | SQL Server 命名实例 | 1434                                                  | UDP          | 任意        | 本地地址空间 | 允许      | 来自 DMS 的 SQL Server 命名实例源连接 <br/>（如果使用站点到站点连接，则可能不需要此规则。）                                                                        |
-| SMB 共享                 | 445 (如果方案 neeeds)                              | TCP          | 任意        | 本地地址空间 | 允许      | DMS 的 SMB 网络共享用于存储数据库备份文件，以便迁移到 Azure VM 上的 Azure SQL 数据库 MI 和 SQL Server <br/>（如果使用站点到站点连接，则可能不需要此规则）。 |
+| SMB 共享                 | 445（如果方案需要）                             | TCP          | 任意        | 本地地址空间 | 允许      | DMS 的 SMB 网络共享用于存储数据库备份文件，以便迁移到 Azure VM 上的 Azure SQL 数据库 MI 和 SQL Server <br/>（如果使用站点到站点连接，则可能不需要此规则）。 |
 | DMS_subnet                | 任意                                                   | 任意          | 任意        | DMS_Subnet                | 允许      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>另请参阅

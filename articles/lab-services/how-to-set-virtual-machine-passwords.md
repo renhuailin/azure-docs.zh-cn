@@ -1,13 +1,13 @@
 ---
 title: 在 Azure 实验室服务中设置 VM 密码 | Microsoft Docs
-description: 了解如何在 Azure 实验室服务实验室) 为虚拟机 (Vm 设置和重置密码。
+description: 了解如何在 Azure 实验室服务的实验室中为虚拟机 (VM) 设置和重置密码。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 6ae577ee4c0c7e31760e0fb12afeaeac1ef8b7e2
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96434220"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>设置和管理虚拟机池 
@@ -24,7 +24,7 @@ ms.locfileid: "96434220"
 2. 输入实验室中所需的新“VM 数”。 此数字必须大于或等于实验室中注册的用户数。 
 3. 然后选择“保存”。 
 
-    ![屏幕截图显示 "实验室容量" 窗口，其中选择了 "实验室中的计算机数" 和 "保存" 按钮。](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+    ![屏幕截图显示“实验室容量”窗口，其中已选择“实验室中的最大计算机数”和“保存”按钮。](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. 如果增加了容量，则可以看到正在创建的 VM。 如果在列表中看不到新 VM，请刷新页面。 
 
     ![正在创建 VM](./media/how-to-set-virtual-machine-passwords/vm-being-created.png)
@@ -102,4 +102,4 @@ ms.locfileid: "96434220"
 ## <a name="next-steps"></a>后续步骤
 若要了解你（作为实验室所有者）可以配置的其他学生使用选项，请参阅以下文章：[学生使用配置](how-to-configure-student-usage.md)。
 
-若要了解学生如何重置其 Vm 的密码，请参阅 [在实验室中为虚拟机设置或重置密码 (学生) ](how-to-set-virtual-machine-passwords-student.md)。
+若要了解学生如何重置其 VM 密码，请参阅[为实验室中的虚拟机设置或重置密码（学生）](how-to-set-virtual-machine-passwords-student.md)。

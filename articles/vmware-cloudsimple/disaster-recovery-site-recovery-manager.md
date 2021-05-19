@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 通过使用 VMware Site Recovery Manager 将私有云设置为灾难恢复站点
 description: 介绍如何通过使用 VMware Site Recovery Manager 将 CloudSimple 私有云设置为灾难恢复站点。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3d71f8aec1f35514ac6c10b17b6f7b69b79b05bd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38e10de5644655c52b1a1a4399d5180eb8b5861d
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97897903"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176911"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>使用 VMware Site Recovery Manager 将私有云设置为灾难恢复目标
 

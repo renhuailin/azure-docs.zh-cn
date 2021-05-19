@@ -1,5 +1,5 @@
 ---
-title: '将 Azure Maps 室内地图模块与 Microsoft Creator 服务 (预览版一起使用) '
+title: 将 Azure Maps 室内定位模块与 Microsoft Creator 服务（预览版）搭配使用
 description: 了解如何使用 Microsoft Azure Maps 室内定位模块，通过嵌入模块的 JavaScript 库来呈现定位。
 author: anastasia-ms
 ms.author: v-stharr
@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: e527cf5fa6a7caaeaf56ea19d684dd0830d5ca8a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101708673"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>使用 Azure Maps 室内定位模块
@@ -22,7 +22,7 @@ ms.locfileid: "101708673"
 > Azure Maps Creator 服务目前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Azure Maps Web SDK 包括“Azure Maps 室内”模块。 *Azure Maps 室内* 模块可用于呈现在 Azure Maps Creator 服务 (预览中创建的室内地图)  
+Azure Maps Web SDK 包括“Azure Maps 室内”模块。 通过“Azure Maps 室内”模块，可以呈现在 Azure Maps Creator 服务（预览版）中创建的室内定位。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ Azure Maps Web SDK 包括“Azure Maps 室内”模块。 *Azure Maps 室内* �
 
  或者，你可以下载“Azure Maps 室内”模块。 “Azure Maps 室内”模块包含用于访问 Azure Maps 服务的客户端库。 按照以下步骤安装室内模块，并将其加载到 Web 应用程序中。  
   
-  1. 安装 [azure maps-室内包](https://www.npmjs.com/package/azure-maps-indoor)。
+  1. 安装 [azure-maps-indoor package](https://www.npmjs.com/package/azure-maps-indoor)。
   
       ```powershell
       >npm install azure-maps-indoor
@@ -151,7 +151,7 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 4. 初始化定位对象。 定位对象支持以下选项：
     - `Subscription key` 是 Azure Maps 主订阅密钥。
     - `center` 定义室内定位中心位置的纬度和经度。 如果你不希望为 `bounds` 提供值，则为 `center` 提供值。 格式应显示为 `center`：[-122.13315, 47.63637]。
-    - `bounds` 是包含图块集定位数据的最小矩形。 如果你不希望为 `center` 设置值，则为 `bounds` 设置值。 可以通过调用[图块集列表 API](/rest/api/maps/tileset/listpreview) 找到定位边界。 图块集列表 API 返回 `bbox`，可以对其进行分析并将其分配给 `bounds`。 格式应显示为 `bounds` ： [# west，# 南部，# 东，# 北部]。
+    - `bounds` 是包含图块集定位数据的最小矩形。 如果你不希望为 `center` 设置值，则为 `bounds` 设置值。 可以通过调用[图块集列表 API](/rest/api/maps/tileset/listpreview) 找到定位边界。 图块集列表 API 返回 `bbox`，可以对其进行分析并将其分配给 `bounds`。 格式应显示为`bounds`：[# west, # south, # east, # north]。
     - `style` 允许你设置背景颜色。 若要显示白色背景，请将 `style` 定义为“空白”。
     - `zoom` 允许你指定定位的最小和最大缩放级别。
 
@@ -245,7 +245,7 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 
   ![室内定位图像](media/how-to-use-indoor-module/indoor-map-graphic.png)
 
-[查看现场演示](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
+[观看实时演示](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -255,7 +255,7 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 > [绘图包要求](drawing-requirements.md)
 
 >[!div class="nextstepaction"]
-> [室内地图的 Creator (预览) ](creator-indoor-maps.md)
+> [用于室内定位的 Creator（预览版）](creator-indoor-maps.md)
 
 详细了解如何将更多数据添加到定位：
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
 ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100521435"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
@@ -41,7 +41,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure Functions Core Tools 当前依赖于 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/install-az-ps) ，以便通过 Azure 帐户进行身份验证。 这意味着，你必须安装其中一个工具才能从 Azure Functions Core Tools [发布到 Azure](#publish) 。 
+Azure Functions Core Tools 当前依靠 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/install-az-ps) 通过 Azure 帐户进行身份验证。 这意味着必须安装以下工具之一才能通过 Azure Functions Core Tools [发布到 Azure](#publish)。 
 
 ## <a name="install-the-azure-functions-core-tools"></a>安装 Azure Functions Core Tools
 
@@ -203,7 +203,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--language`** | 初始化特定于语言的项目。 当前在 `--worker-runtime` 设为 `node` 时受支持。 选项包括 `typescript` 和 `javascript`。 你也可使用 `--worker-runtime javascript` 或 `--worker-runtime typescript`。  |
 | **`--managed-dependencies`**  | 安装托管的依赖项。 目前只有 PowerShell 辅助运行时支持此功能。 |
 | **`--source-control`** | 控制是否创建 git 存储库。 默认不会创建存储库。 如果为 `true`，则会创建存储库。 |
-| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值包括： `csharp` 、 `dotnet` 、 `javascript` 、 `node` (JavaScript) 、 `powershell` 、 `python` 和 `typescript` 。 对于 Java 使用 [Maven](functions-reference-java.md#create-java-functions)。如果未设置，则初始化期间系统会提示你选择运行时。 |
+| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值为 `csharp`、`dotnet`、`javascript`、`node` (JavaScript)、`powershell`、`python` 和 `typescript`。 对于 Java 使用 [Maven](functions-reference-java.md#create-java-functions)。如果未设置，则初始化期间系统会提示你选择运行时。 |
 |
 > [!IMPORTANT]
 > 默认情况下，Core Tools 2.x 及更高版本会为 .NET 运行时创建函数应用项目作为 [C# 类项目](functions-dotnet-class-library.md) (.csproj)。 这些 C# 项目可以与 Visual Studio 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
@@ -245,7 +245,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 ### <a name="get-your-storage-connection-strings"></a>获取存储连接字符串
 
-即使使用 Microsoft Azure 存储模拟器进行开发，也可能需要使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-account-create.md)，则可以通过下列方式之一获取有效的存储连接字符串：
+即使在使用 Microsoft Azure 存储模拟器进行开发时，也可能需要使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-account-create.md)，则可以通过下列方式之一获取有效的存储连接字符串：
 
 - 在 [Azure 门户]中，搜索并选择“存储帐户”。 
   ![从 Azure 门户选择存储帐户](./media/functions-run-local/select-storage-accounts.png)
@@ -357,7 +357,7 @@ func start
 ```
 func start
 ```
-此命令必须 [在虚拟环境中运行](./create-first-function-cli-python.md)。
+此命令必须[在虚拟环境中运行](./create-first-function-cli-python.md)。
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -505,7 +505,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 Azure Functions Core Tools 支持两种类型的部署：通过 [Zip Deploy](functions-deployment-technologies.md#zip-deploy) 将函数项目文件直接部署到函数应用，以及[部署自定义 Docker 容器](functions-deployment-technologies.md#docker-container)。 必须已[在 Azure 订阅中创建了一个函数应用](functions-cli-samples.md#create)，你将向其部署代码。 应该生成需要编译的项目，以便部署二进制文件。
 
 >[!IMPORTANT]
->必须本地安装 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/install-az-ps) 才能从核心工具发布到 Azure。  
+>必须在本地安装 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/install-az-ps)，才能通过 Core Tools 发布到 Azure。  
 
 项目文件夹可能包含不应该发布的特定于语言的文件和目录。 排除的项在根项目文件夹的 .funcignore 文件中列出。     
 
@@ -520,7 +520,7 @@ func azure functionapp publish <FunctionAppName>
 >[!IMPORTANT]
 > Java 使用 Maven 将本地项目发布到 Azure。 使用以下命令发布到 Azure：`mvn azure-functions:deploy`。 Azure 资源是在初始部署期间创建的。
 
-此命令发布到 Azure 中的现有函数应用。 如果尝试发布到订阅中不存在的 `<FunctionAppName>`，则会收到错误。 若要了解如何使用 Azure CLI 或 Azure PowerShell 从命令提示符或终端窗口创建函数应用，请参阅 [创建无服务器执行的 Function App](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令使用[远程生成](functions-deployment-technologies.md#remote-build)并将应用部署为[从部署包运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
+此命令发布到 Azure 中的现有函数应用。 如果尝试发布到订阅中不存在的 `<FunctionAppName>`，则会收到错误。 若要了解如何使用 Azure CLI 或 Azure PowerShell 从命令提示符或终端窗口创建函数应用，请参阅[为无服务器执行创建函数应用](./scripts/functions-cli-create-serverless.md)。 默认情况下，此命令使用[远程生成](functions-deployment-technologies.md#remote-build)并将应用部署为[从部署包运行](run-functions-from-deployment-package.md)。 若要禁用此建议的部署模式，请使用 `--nozip` 选项。
 
 >[!IMPORTANT]
 > 在 Azure 门户中创建函数应用时，该应用默认使用 3.x 版函数运行时。 若要让函数应用使用 1.x 版运行时，请遵照[在版本 1.x 上运行](functions-versions.md#creating-1x-apps)中的说明操作。
@@ -530,7 +530,7 @@ func azure functionapp publish <FunctionAppName>
 
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是 Microsoft Azure 存储模拟器，请先将应用设置更改为 [实际的存储连接](#get-your-storage-connection-strings)。 |
+| **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是 Microsoft Azure 存储模拟器，请先将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 使用 `--publish-local-settings -i` 时隐藏覆盖应用设置的提示。|
 
 以下发布选项仅在 2.x 及更高版本中受支持：
@@ -541,12 +541,12 @@ func azure functionapp publish <FunctionAppName>
 |**`--list-ignored-files`** | 基于 .funcignore 文件显示发布期间忽略的文件列表。 |
 | **`--list-included-files`** | 基于 .funcignore 文件显示发布的文件列表。 |
 | **`--nozip`** | 关闭默认的 `Run-From-Package` 模式。 |
-| **`--build-native-deps`** | 发布 Python 函数应用时跳过生成车轮文件夹。 |
+| **`--build-native-deps`** | 发布 Python 函数应用时跳过生成 .wheels 文件夹。 |
 | **`--build`**, **`-b`** | 部署到 Linux 函数应用时执行生成操作。 接受：`remote` 和 `local`。 |
 | **`--additional-packages`** | 构建本机依赖项时要安装的包列表。 例如：`python3-dev libevent-dev`。 |
 | **`--force`** | 在某些情况下会忽略预发布验证。 |
 | **`--csx`** | 发布 C# 脚本 (.csx) 项目。 |
-| **`--no-build`** | 发布过程中不生成项目。 对于 Python，则 `pip install` 不执行。 |
+| **`--no-build`** | 发布过程中不生成项目。 对于 Python，不执行 `pip install`。 |
 | **`--dotnet-cli-params`** | 发布编译的 C# (.csproj) 函数时，Core Tools 将调用“dotnet build --output bin/publish”。 传递到此选项的任何参数将追加到命令行。 |
 
 ### <a name="deploy-custom-container"></a>部署自定义容器

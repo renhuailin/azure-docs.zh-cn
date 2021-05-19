@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88923392"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure 认知搜索中 `$filter`、`$orderby` 和 `$select` 的 OData 语言概述
 
-Azure 认知搜索支持一组适用于 **$filter**、 **$orderby** 和 **$select** 表达式的 OData 表达式语法。 筛选表达式在查询分析期间进行求值，将搜索范围限制为特定字段或添加索引扫描期间使用的匹配条件。 Order-by 表达式作为后处理步骤应用于结果集，对返回的文档进行排序。 Select 表达式确定要包含在结果集中的文档字段。 这些表达式的语法不同于**搜索**参数中使用的[简单](query-simple-syntax.md)或[完整](query-lucene-syntax.md)查询语法，但引用字段的语法中存在一定的重叠。
+Azure 认知搜索支持一组适用于 **$filter**、 **$orderby** 和 **$select** 表达式的 OData 表达式语法。 筛选表达式在查询分析期间进行求值，将搜索范围限制为特定字段或添加索引扫描期间使用的匹配条件。 Order-by 表达式作为后处理步骤应用于结果集，对返回的文档进行排序。 Select 表达式确定要包含在结果集中的文档字段。 这些表达式的语法不同于 **搜索** 参数中使用的 [简单](query-simple-syntax.md)或 [完整](query-lucene-syntax.md)查询语法，但引用字段的语法中存在一定的重叠。
 
 本文概述筛选器、order-by 和 select 表达式中使用的 OData 表达式语言。 该语言按“自下而上”的顺序演示，从最基本的元素及其上的构建基块开始。 有单独的文章会介绍每个参数的顶级语法：
 
@@ -42,11 +42,11 @@ Azure 认知搜索支持一组适用于 **$filter**、 **$orderby** 和 **$selec
 - **常量**：特定数据类型的文本值。
 
 > [!NOTE]
-> Azure 认知搜索中的术语在某些方面不同于 [OData 标准](https://www.odata.org/documentation/)。 Azure 认知搜索中所谓的**字段**在 OData 中称为**属性**，类似地，**字段路径**在 OData 中称为**属性路径**。 Azure 认知搜索中包含**文档**的**索引**在 OData 中更普遍地称为包含**实体**的**实体集**。 本参考文档使用 Azure 认知搜索的术语。
+> Azure 认知搜索中的术语在某些方面不同于 [OData 标准](https://www.odata.org/documentation/)。 Azure 认知搜索中所谓的 **字段** 在 OData 中称为 **属性**，类似地，**字段路径** 在 OData 中称为 **属性路径**。 Azure 认知搜索中包含 **文档** 的 **索引** 在 OData 中更普遍地称为包含 **实体** 的 **实体集**。 本参考文档使用 Azure 认知搜索的术语。
 
 ## <a name="field-paths"></a>字段路径
 
-以下 EBNF ([扩展 Backus-Naur 窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义字段路径的语法。
+以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义字段路径的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -64,9 +64,9 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 > [!NOTE]
 > 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
-字段路径由斜杠分隔的一个或多个**标识符**组成。 每个标识符是必须以 ASCII 字母或下划线开头的一系列字符，只能包含 ASCII 字母、数字或下划线。 字母可以采用大写或小写。
+字段路径由斜杠分隔的一个或多个 **标识符** 组成。 每个标识符是必须以 ASCII 字母或下划线开头的一系列字符，只能包含 ASCII 字母、数字或下划线。 字母可以采用大写或小写。
 
-标识符可以引用字段的名称，或者引用筛选器的[集合表达式](search-query-odata-collection-operators.md)上下文中的某个**范围变量**（`any` 或 `all`）。 范围变量类似于表示集合的当前元素的循环变量。 对于复杂集合，该变量表示某个对象，正因如此，你可以使用字段路径来引用变量的子字段。 这类似于许多编程语言中的点表示法。
+标识符可以引用字段的名称，或者引用筛选器的 [集合表达式](search-query-odata-collection-operators.md)上下文中的某个 **范围变量**（`any` 或 `all`）。 范围变量类似于表示集合的当前元素的循环变量。 对于复杂集合，该变量表示某个对象，正因如此，你可以使用字段路径来引用变量的子字段。 这类似于许多编程语言中的点表示法。
 
 下表显示了字段路径的示例：
 
@@ -79,9 +79,9 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 | `room/Type` | 引用 `room` 范围变量的 `Type` 子字段（例如，在筛选表达式 `Rooms/any(room: room/Type eq 'deluxe')` 中） |
 | `store/Address/Country` | 引用 `store` 范围变量的 `Address` 子字段的 `Country` 子字段（例如，在筛选表达式 `Stores/any(store: store/Address/Country eq 'Canada')` 中） |
 
-字段路径的含义因上下文而异。 在筛选器中，字段路径引用当前文档中某个字段的*单个实例*的值。 在其他上下文中（例如 **$orderby**、 **$select**，或[完整 Lucene 语法中的字段搜索](query-lucene-syntax.md#bkmk_fields)），字段路径引用该字段本身。 这种差异会根据你在筛选器中使用字段路径的方式而产生一些后果。
+字段路径的含义因上下文而异。 在筛选器中，字段路径引用当前文档中某个字段的 *单个实例* 的值。 在其他上下文中（例如 **$orderby**、 **$select**，或 [完整 Lucene 语法中的字段搜索](query-lucene-syntax.md#bkmk_fields)），字段路径引用该字段本身。 这种差异会根据你在筛选器中使用字段路径的方式而产生一些后果。
 
-以字段路径 `Address/City` 为例。 在筛选器中，此字段路径引用当前文档的单个城市，例如“旧金山”。 相比之下，`Rooms/Type` 引用许多客房的 `Type` 子字段（例如，“标准”表示第一间客房，“豪华”表示第二间客房，等等）。 由于 `Rooms/Type` 不引用子字段 `Type` 的*单个实例*，因此不能直接在筛选器中使用。 若要根据客房类型进行筛选，请使用包含范围变量的 [Lambda 表达式](search-query-odata-collection-operators.md)，如下所示：
+以字段路径 `Address/City` 为例。 在筛选器中，此字段路径引用当前文档的单个城市，例如“旧金山”。 相比之下，`Rooms/Type` 引用许多客房的 `Type` 子字段（例如，“标准”表示第一间客房，“豪华”表示第二间客房，等等）。 由于 `Rooms/Type` 不引用子字段 `Type` 的 *单个实例*，因此不能直接在筛选器中使用。 若要根据客房类型进行筛选，请使用包含范围变量的 [Lambda 表达式](search-query-odata-collection-operators.md)，如下所示：
 
 ```odata
 Rooms/any(room: room/Type eq 'deluxe')
@@ -96,16 +96,16 @@ Rooms/any(room: room/Type eq 'deluxe')
 | API | 参数名称 | 限制 |
 | --- | --- | --- |
 | [创建](/rest/api/searchservice/create-index)或[更新](/rest/api/searchservice/update-index)索引 | `suggesters/sourceFields` | 无 |
-| [创建](/rest/api/searchservice/create-index)或[更新](/rest/api/searchservice/update-index)索引 | `scoringProfiles/text/weights` | 只能引用**可搜索**字段 |
-| [创建](/rest/api/searchservice/create-index)或[更新](/rest/api/searchservice/update-index)索引 | `scoringProfiles/functions/fieldName` | 只能引用**可筛选**字段 |
-| [搜索](/rest/api/searchservice/search-documents) | 当 `queryType` 为 `full` 时，该参数为 `search` | 只能引用**可搜索**字段 |
-| [搜索](/rest/api/searchservice/search-documents) | `facet` | 只能引用**可分面**字段 |
-| [搜索](/rest/api/searchservice/search-documents) | `highlight` | 只能引用**可搜索**字段 |
-| [搜索](/rest/api/searchservice/search-documents) | `searchFields` | 只能引用**可搜索**字段 |
+| [创建](/rest/api/searchservice/create-index)或[更新](/rest/api/searchservice/update-index)索引 | `scoringProfiles/text/weights` | 只能引用 **可搜索** 字段 |
+| [创建](/rest/api/searchservice/create-index)或[更新](/rest/api/searchservice/update-index)索引 | `scoringProfiles/functions/fieldName` | 只能引用 **可筛选** 字段 |
+| [搜索](/rest/api/searchservice/search-documents) | 当 `queryType` 为 `full` 时，该参数为 `search` | 只能引用 **可搜索** 字段 |
+| [搜索](/rest/api/searchservice/search-documents) | `facet` | 只能引用 **可分面** 字段 |
+| [搜索](/rest/api/searchservice/search-documents) | `highlight` | 只能引用 **可搜索** 字段 |
+| [搜索](/rest/api/searchservice/search-documents) | `searchFields` | 只能引用 **可搜索** 字段 |
 | [建议](/rest/api/searchservice/suggestions)和[自动完成](/rest/api/searchservice/autocomplete) | `searchFields` | 只能引用属于[建议器](index-add-suggesters.md)的字段 |
-| [搜索](/rest/api/searchservice/search-documents)、[建议](/rest/api/searchservice/suggestions)和[自动完成](/rest/api/searchservice/autocomplete) | `$filter` | 只能引用**可筛选**字段 |
-| [搜索](/rest/api/searchservice/search-documents)和[建议](/rest/api/searchservice/suggestions) | `$orderby` | 只能引用**可排序**字段 |
-| [搜索](/rest/api/searchservice/search-documents)、[建议](/rest/api/searchservice/suggestions)和[查找](/rest/api/searchservice/lookup-document) | `$select` | 只能引用**可检索**字段 |
+| [搜索](/rest/api/searchservice/search-documents)、[建议](/rest/api/searchservice/suggestions)和[自动完成](/rest/api/searchservice/autocomplete) | `$filter` | 只能引用 **可筛选** 字段 |
+| [搜索](/rest/api/searchservice/search-documents)和[建议](/rest/api/searchservice/suggestions) | `$orderby` | 只能引用 **可排序** 字段 |
+| [搜索](/rest/api/searchservice/search-documents)、[建议](/rest/api/searchservice/suggestions)和[查找](/rest/api/searchservice/lookup-document) | `$select` | 只能引用 **可检索** 字段 |
 
 ## <a name="constants"></a>常量
 
@@ -117,7 +117,7 @@ OData 中的常量是给定[实体数据模型](/dotnet/framework/data/adonet/en
 | --- | --- |
 | `Edm.Boolean` | `true`, `false` |
 | `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
-| `Edm.Double` | `3.14159`、`-1.2e7`、`NaN`、`INF`、`-INF` |
+| `Edm.Double` | `3.14159`, `-1.2e7`, `NaN`, `INF`, `-INF` |
 | `Edm.GeographyPoint` | `geography'POINT(-122.131577 47.678581)'` |
 | `Edm.GeographyPolygon` | `geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'` |
 | `Edm.Int32` | `123`, `-456` |
@@ -131,11 +131,11 @@ OData 中的字符串常量由单引号分隔。 如果需要使用本身可能�
 例如，带有无格式撇号的短语（如“Alice's car”）将在 OData 中表示为字符串常量 `'Alice''s car'`。
 
 > [!IMPORTANT]
-> 以编程方式构建筛选器时，请记住转义来自用户输入的字符串常量，这一点很重要。 这是为了减小 [注入攻击](https://wikipedia.org/wiki/SQL_injection)的可能性，尤其是在使用筛选器实现 [安全修整](search-security-trimming-for-azure-search.md)时。
+> 以编程方式构建筛选器时，请记住转义来自用户输入的字符串常量，这一点很重要。 这是为了减少[注入攻击](https://wikipedia.org/wiki/SQL_injection)的可能性，特别是在使用筛选器实现[安全剪裁](search-security-trimming-for-azure-search.md)时。
 
 ### <a name="constants-syntax"></a>常量语法
 
-以下 EBNF ([扩展 Backus-Naur 窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form) ，) 为上表中所示的大部分常量定义语法。 可在 [Azure 认知搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)中找到地理空间类型的语法。
+以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义上表中所示的大多数常量的语法。 可在 [Azure 认知搜索中的 OData 地理空间函数](search-query-odata-geo-spatial-functions.md)中找到地理空间类型的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -211,7 +211,7 @@ boolean_literal ::= 'true' | 'false'
 
 但是，大多数情况下，需要使用更复杂的表达式来引用多个字段和常量。 这些表达式的生成方式根据参数而异。
 
-以下 EBNF ([扩展 Backus-Naur 窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义 **$filter**、 **$orderby**和 **$select** 参数的语法。 这些表达式是基于引用字段路径和常量的更简单表达式生成的：
+以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义 $filter、$orderby 和 $select 参数的语法  。 这些表达式是基于引用字段路径和常量的更简单表达式生成的：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

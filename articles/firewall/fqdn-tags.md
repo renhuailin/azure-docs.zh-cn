@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: c0bd2f6a021baae80dafcc3d544e1062d8e022e8
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94653328"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN 标记概述
@@ -35,8 +35,8 @@ FQDN 标记表示与已知的 Microsoft 服务关联的一组完全限定的域�
 |Microsoft 主动保护服务 (MAPS)|允许出站访问 [MAPS](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)。|
 |应用服务环境 (ASE)|允许出站访问 ASE 平台流量。 此标记未涵盖由 ASE 创建的特定于客户的存储和 SQL 终结点。 这些应通过[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用或手动添加。<br><br>有关将 Azure 防火墙与 ASE 集成的详细信息，请参阅[锁定应用服务环境](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)。|
 |Azure 备份|允许对 Azure 备份服务进行出站访问。|
-|Azure HDInsight|允许出站访问 HDInsight 平台流量。 此标记不会涵盖特定于客户的存储或来自 HDInsight 的 SQL 流量。 使用[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用这些项或手动添加它们。|
-|WindowsVirtualDesktop (WVD) |允许出站 Windows 虚拟桌面平台通信。 此标记不包括由 WVD 创建的部署特定的存储和服务总线终结点。 此外，还需要 DNS 和 KMS 网络规则。 有关将 Azure 防火墙与 WVD 集成的详细信息，请参阅 [使用 Azure 防火墙保护 Windows 虚拟桌面部署](protect-windows-virtual-desktop.md)。|
+|Azure HDInsight|允许出站访问 HDInsight 平台流量。 此标记未涵盖特定于客户的存储和来自 HDInsight 的 SQL 流量。 使用[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用这些项或手动添加它们。|
+|WindowsVirtualDesktop (WVD)|允许出站 Windows 虚拟桌面平台流量。 此标记不包括由 WVD 创建的特定于部署的存储和服务总线终结点。 此外，还需要 DNS 和 KMS 网络规则。 有关将 Azure 防火墙与 WVD 集成的详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](protect-windows-virtual-desktop.md)。|
 |Azure Kubernetes 服务 (AKS)|允许出站访问 AKS。 有关详细信息，请参阅[使用 Azure 防火墙保护 Azure Kubernetes 服务 (AKS) 部署](protect-azure-kubernetes-service.md)。|
 
 > [!NOTE]

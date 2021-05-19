@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 10/12/2020
 ms.openlocfilehash: cc5a5ec2bbfb64a1e787277bf67579bad0543cd6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739570"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 中 Windows Server 节点池的常见问题
@@ -54,7 +54,7 @@ AKS 群集中的主节点（控制平面）由 AKS 服务托管，不会向你�
 
 具有 Windows 节点池的 AKS 群集必须使用 Azure CNI（高级）网络模型。 不支持 Kubenet（基本）网络。 有关网络模型差异的详细信息，请参阅[适用于 AKS 中的应用程序的网络概念][azure-network-models]。 Azure CNI 网络模型需要对 IP 地址管理进行其他规划和考量。 有关如何规划和实现 Azure CNI 的详细信息，请参阅[在 AKS 中配置 Azure CNI 网络][configure-azure-cni]。
 
-当启用 Calico 时，AKS 群集上的 Windows 节点还 [ (DSR) 启用了直接服务器返回 ][dsr] 。
+启用 Calico 时，AKS 群集上的 Windows 节点还默认启用[直接服务器返回 (DSR)][dsr]。
 
 ## <a name="is-preserving-the-client-source-ip-supported"></a>是否支持保留客户端源 IP？
 
@@ -115,13 +115,13 @@ AKS 当前不提供组托管服务帐户 (gMSA) 支持。
 
 具有 Windows 节点的群集可以有大约 500 个服务，超过它就会导致端口耗尽。
 
-## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>是否可以将 Azure 混合权益用于 Windows 节点？
+## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>我是否可以将 Azure 混合权益用于 Windows 节点？
 
-是的。 Windows Server Azure 混合权益通过使你能够将本地 Windows Server 许可证用于 AKS Windows 节点，降低了运营成本。
+是的。 适用于 Windows Server 的 Azure 混合权益可让你将本地 Windows Server 许可证用于 AKS Windows 节点，从而降低运营成本。
 
-可以在整个 AKS 群集或单个节点上使用 Azure 混合权益。 对于各个节点，你需要导航到 [节点资源组][resource-groups] ，并直接将 Azure 混合权益应用到节点。 有关将 Azure 混合权益应用到各个节点的详细信息，请参阅 [Windows Server Azure 混合权益][hybrid-vms]。 
+可以在整个 AKS 群集或单个节点上使用 Azure 混合权益。 对于单个节点，你需要导航到[节点资源组][resource-groups]，并直接向节点应用 Azure 混合权益。 有关将 Azure 混合权益应用到单个节点的详细信息，请参阅[适用于 Windows Server 的 Azure 混合权益][hybrid-vms]。 
 
-若要在新 AKS 群集上使用 Azure 混合权益，请使用 `--enable-ahub` 参数。
+若要在新的 AKS 群集上使用 Azure 混合权益，请使用 `--enable-ahub` 参数。
 
 ```azurecli
 az aks create \
@@ -134,7 +134,7 @@ az aks create \
     --enable-ahub
 ```
 
-若要在现有 AKS 群集上使用 Azure 混合权益，请使用参数更新群集 `--enable-ahub` 。
+若要在现有 AKS 群集上使用 Azure 混合权益，请使用 `--enable-ahub` 参数更新群集。
 
 ```azurecli
 az aks update \
@@ -149,7 +149,7 @@ az aks update \
 az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
 ```
 
-如果 Azure 混合权益启用了群集，则的输出 `az vmss show` 将如下所示：
+如果群集启用了 Azure 混合权益，则 `az vmss show` 的输出将如下所示：
 
 ```console
 "platformFaultDomainCount": 1,

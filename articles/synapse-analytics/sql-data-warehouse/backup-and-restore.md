@@ -2,7 +2,7 @@
 title: 备份和还原 - 快照、异地冗余
 description: 了解 Azure Synapse Analytics 专用 SQL 池中的备份和还原的工作原理。 使用备份可以将数据仓库还原到主要区域的某个还原点。 使用异地冗余备份可还原到不同的地理区域。
 services: synapse-analytics
-author: kevinvngo
+author: joannapea
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 842f2f92133664f58ca60d6d30181d48d63271eb
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: 0fa6777dc5b587150f630ed8ccc110d16448cc21
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736299"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602241"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure Synapse 专用 SQL 池中的备份和还原
 
@@ -45,10 +45,10 @@ order by run_id desc
 
 ## <a name="user-defined-restore-points"></a>用户定义的还原点
 
-使用此功能，可以在大型修改之前和之后手动触发快照，以便创建数据仓库的还原点。 此功能可确保在出现工作负荷中断或用户错误的情况下，还原点在逻辑上是一致的，这样可以提供额外的数据保护，缩短恢复时间。 用户定义的还原点可以使用七天，然后系统会替你将它自动删除。 无法更改用户定义的还原点的保留期。 无论在任何时间点，均会保证 **42 个用户定义的还原点**，因此，它们必须在创建另一个还原点之前 [删除](/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint?viewFallbackFrom=azurermps-6.2.0)。 可以通过 [PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) 或 Azure 门户触发快照来创建用户定义的还原点。
+使用此功能，可以在大型修改之前和之后手动触发快照，以便创建数据仓库的还原点。 此功能可确保在出现工作负荷中断或用户错误的情况下，还原点在逻辑上是一致的，这样可以提供额外的数据保护，缩短恢复时间。 用户定义的还原点可以使用七天，然后系统会替你将它自动删除。 无法更改用户定义的还原点的保留期。 无论在任何时间点，均会保证 **42 个用户定义的还原点**，因此，它们必须在创建另一个还原点之前 [删除](/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint)。 可以通过 [PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) 或 Azure 门户触发快照来创建用户定义的还原点。
 
 > [!NOTE]
-> 如需将还原点保留 7 天以上，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points)为此功能投票。 此外，可以创建用户定义的还原点，然后从新建的还原点还原到新数据仓库。 还原后，你将拥有专用的 SQL 池，并可将其无限期暂停以节省计算成本。 暂停的数据库按 Azure 高级存储费率收取存储费用。 如需已还原数据仓库的活动副本，可以执行恢复，只需花费几分钟时间。
+> 如需将还原点保留 7 天以上，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points)为此功能投票。 此外，可以创建用户定义的还原点，然后从新建的还原点还原到新数据仓库。 还原后，专用 SQL 池将会联机，可以无限期将其暂停，以节省计算成本。 暂停的数据库按 Azure Synapse 存储费率收取存储费用。 如需已还原数据仓库的活动副本，可以执行恢复，只需花费几分钟时间。
 
 ### <a name="restore-point-retention"></a>还原点保留期
 
@@ -65,22 +65,22 @@ order by run_id desc
 删除专用 SQL 池时，系统会创建最终的快照并将其保存七天。 可以将专用 SQL 池还原至删除时所创建的最终还原点。 如果专用 SQL 池是在暂停状态下删除的，则不会创建快照。 在这种情况下，请确保在删除专用 SQL 池之前创建用户定义的还原点。
 
 > [!IMPORTANT]
-> 如果删除托管专用 SQL 池的服务器/工作区，则属于该服务器/工作区的所有数据库也会被删除且无法恢复。 无法还原已删除的服务器。
+> 如果删除托管专用 SQL 池的服务器/工作区，则属于该服务器/工作区的所有数据库也会被删除且不可恢复。 无法还原已删除的服务器。
 
 ## <a name="geo-backups-and-disaster-recovery"></a>异地备份和灾难恢复
 
 每日在[配对的数据中心](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)创建一次异地备份。 异地还原的 RPO 为 24 小时。 可以将异地备份还原到支持专用 SQL 池的任何其他区域的服务器。 使用异地备份可在无法访问主要区域中的还原点时还原数据仓库。
 
-如果你不需要专用 SQL 池的异地备份，则可以禁用它们并节省灾难恢复存储成本。 为此，请参阅 [操作方法指南：禁用专用 sql 池的异地备份 (以前的 SQL DW) ](disable-geo-backup.md)。 请注意，如果禁用异地备份，则在主 Azure 数据中心不可用时，将无法将专用 SQL 池恢复到配对的 Azure 区域。 
+如果专用 SQL 池不需要异地备份，则可以禁用这些备份，从而节省灾难恢复的存储成本。 为此，请参阅[操作方法指南：禁用专用 SQL 池（之前称为 SQL DW）的异地备份](disable-geo-backup.md)。 请注意，如果禁用异地备份，则在主 Azure 数据中心不可用时，将无法将专用 SQL 池恢复到配对的 Azure 区域。 
 
 > [!NOTE]
 > 如果希望异地备份的 RPO 更短，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse)为此功能投票。 此外，可以创建用户定义的还原点，然后从新建的还原点还原到其他区域中的新数据仓库。 还原后，数据仓库将会联机，可以无限期将其暂停，以节省计算成本。 暂停的数据库按 Azure 高级存储费率收取存储费用。 如需数据仓库的活动副本，可以执行恢复，只需花费几分钟时间。
 
 ## <a name="data-residency"></a>数据驻留 
 
-如果配对的数据中心位于地理边界之外，则可以通过在异地冗余存储中进行选择来确保你的数据保留在地理边界内。 此操作可通过异地冗余存储选项 (以前的 sql DW) 预配到 (以前的 SQL DW) 创建或还原专用 sql DW 时完成。 
+如果配对的数据中心位于地理边界之外，你可以通过选择退出地理冗余存储来确保你的数据保持在地理边界内。 创建或还原专用 SQL 池（原 SQL DW）时，可以通过地理冗余存储选项预配专用 SQL 池（原 SQL DW）来做到这一点。 
 
-若要确认配对的数据中心是否在不同的国家/地区，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+若要确认配对的数据中心是否位于不同的国家/地区，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ## <a name="backup-and-restore-costs"></a>备份和还原成本
 
@@ -104,7 +104,7 @@ Azure 帐单上将列出存储的明细项目，以及灾难恢复存储的明�
 
 ## <a name="cross-subscription-restore"></a>跨订阅还原
 
-如果需要在订阅之间直接还原，请在 [此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)投票此功能。 还原到不同的服务器，并跨订阅 ["移动"](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 服务器以执行跨订阅还原。
+如果需要跨订阅直接还原，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)为此功能投票。 还原到其他服务器，并跨订阅[“移动”](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)服务器以执行跨订阅还原。
 
 ## <a name="geo-redundant-restore"></a>异地冗余还原
 

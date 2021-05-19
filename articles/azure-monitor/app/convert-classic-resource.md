@@ -3,13 +3,12 @@ title: 将 Azure Monitor Application Insights 经典资源迁移到基于工作�
 description: 了解将 Azure Monitor Application Insights 经典资源升级到新的基于工作区的模型需要执行的步骤。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 329cfed646a2dbc2a417c1468895de62088058f6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316688"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100584262"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>迁移到基于工作区的 Application Insights 资源
 
@@ -115,7 +114,7 @@ az monitor app-insights component update --app
 az monitor app-insights component update --app your-app-insights-resource-name -g your_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/monitor/app-insights/component#az_monitor_app_insights_component_update)。
+有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-update)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

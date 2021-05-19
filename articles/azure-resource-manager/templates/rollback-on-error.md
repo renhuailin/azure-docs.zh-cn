@@ -3,12 +3,13 @@ title: 出错时回退以成功部署
 description: 指定失败的部署应回退到成功的部署。
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 742a8f16a2dce3204b48085759091540586a4522
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7a0c4deef5956804aa74ad24f072bc46e5c2a8cd
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99492206"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321494"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>出错时回退以成功部署
 

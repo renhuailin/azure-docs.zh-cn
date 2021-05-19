@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
 ms.openlocfilehash: cf9f9ca5b8690a38c6e5aa6f519378c0a2e3a4f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95026431"
 ---
 # <a name="distribute-and-modify-tables"></a>分发和修改表
@@ -103,7 +103,7 @@ NOTICE:  Copying data from local table...
  (1 row)
 ```
 
-在迁移数据时，对表的写入将被阻止，并且在函数提交后，将挂起写入作为分布式查询处理。 （如果函数失败，则查询再次变为本地查询。）读取不受影响，一旦函数提交它就变为分布式查询。
+在迁移数据时，对表的写入将被阻止，并且在函数提交后，将挂起写入作为分布式查询处理。 （如果该函数失败，则这些查询会再次成为本地查询。）读取可以继续正常运行，并且会在该函数提交后成为分布式查询。
 
 在分发表 A 和表 B（其中 A 具有 B 的外键）时，首先分发 key destination 表 B。 以错误的顺序执行操作会导致错误：
 
@@ -343,7 +343,7 @@ CREATE INDEX clicked_at_idx ON clicks USING BRIN (clicked_at);
 DROP INDEX clicked_at_idx;
 ```
 
-添加索引去除写入锁定，这在多租户 \"system-of-record.\" 中是不期望的。若要最小化应用程序故障时间，改为创建索引 [concurrently](https://www.postgresql.org/docs/current/static/sql-createindex.html#SQL-CREATEINDEX-CONCURRENTLY)。 此方法需要的总工作量超过标准索引构建的时间，并且需要更长的时间才能完成。 但是，因为它允许在构建索引时使正常操作继续，所以此方法对于在生产环境中添加新索引很有用。
+添加索引需要使用写锁，这在多租户\"记录系统\"中可能并不合适。为最大限度减少应用程序停机时间，请改为[并发](https://www.postgresql.org/docs/current/static/sql-createindex.html#SQL-CREATEINDEX-CONCURRENTLY)创建索引。 此方法需要的总工作量超过标准索引构建的时间，并且需要更长的时间才能完成。 但是，因为它允许在构建索引时使正常操作继续，所以此方法对于在生产环境中添加新索引很有用。
 
 ```postgresql
 -- Adding an index without locking table writes

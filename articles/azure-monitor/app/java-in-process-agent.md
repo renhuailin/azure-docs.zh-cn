@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dc6eaaec334e7373f1a673bd1513ef05b761fee6
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b32b1fb3e0e21374fab2068d337440003005b1e7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450015"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291309"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码应用程序监视 Azure Monitor Application Insights
 
@@ -92,9 +92,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 
 如需完整的详细信息，请参阅[配置选项](./java-standalone-config.md)。
 
-## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>自动收集的请求、依赖项、日志和指标
-
-### <a name="requests"></a>请求
+## <a name="auto-collected-requests"></a>自动收集的请求
 
 * JMS 使用者
 * Kafka 使用者
@@ -102,7 +100,9 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * Servlet
 * Spring 计划
 
-### <a name="dependencies-with-distributed-trace-propagation"></a>与分布式跟踪传播的依赖关系
+## <a name="auto-collected-dependencies"></a>自动收集的依赖项
+
+自动收集的依赖项和下游分布式跟踪传播：
 
 * Apache HttpClient 和 HttpAsyncClient
 * gRPC
@@ -112,27 +112,63 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * Netty 客户端
 * OkHttp
 
-### <a name="other-dependencies"></a>其他依赖项
+自动收集的依赖项（无下游分布式跟踪传播）：
 
 * Cassandra
 * JDBC
 * MongoDB（异步和同步）
 * Redis（Lettuce 和 Jedis）
 
-### <a name="logs"></a>日志
+## <a name="auto-collected-logs"></a>自动收集的日志
 
 * java.util.logging
 * Log4j（包含 MDC 属性）
 * SLF4J/Logback（包含 MDC 属性）
 
-### <a name="metrics"></a>指标
+## <a name="auto-collected-metrics"></a>自动收集的指标
 
 * Micrometer（包括 Spring Boot Actuator 指标）
 * JMX 指标
 
-### <a name="azure-sdks"></a>Azure SDK
+## <a name="azure-sdks-preview"></a>Azure SDK（预览版）
 
-* 此功能处于预览阶段，请参阅有关如何启用该功能的[配置选项](./java-standalone-config.md#auto-collected-azure-sdk-telemetry)。
+请参阅[配置选项](./java-standalone-config.md#auto-collected-azure-sdk-telemetry-preview)以启用此预览功能，并自动收集这些 Azure SDK 所发出的遥测数据：
+
+* [应用程序配置](/java/api/overview/azure/data-appconfiguration-readme) 1.1.10+
+* [认知搜索](/java/api/overview/azure/search-documents-readme) 11.3.0+
+* [通信聊天](/java/api/overview/azure/communication-chat-readme) 1.0.0+
+* [通信通用](/java/api/overview/azure/communication-common-readme) 1.0.0+
+* [通信标识](/java/api/overview/azure/communication-identity-readme) 1.0.0+
+* [通信短信](/java/api/overview/azure/communication-sms-readme) 1.0.0+
+* [Cosmos DB](/java/api/overview/azure/cosmos-readme) 4.13.0+
+* [事件网格](/java/api/overview/azure/messaging-eventgrid-readme) 4.0.0+
+* [事件中心](/java/api/overview/azure/messaging-eventhubs-readme) 5.6.0+
+* [事件中心 - Azure Blob 存储检查点存储](/java/api/overview/azure/messaging-eventhubs-checkpointstore-blob-readme) 1.5.1+
+* [表单识别器](/java/api/overview/azure/ai-formrecognizer-readme) 3.0.6+
+* [标识](/java/api/overview/azure/identity-readme) 1.2.4+
+* [密钥保管库 - 证书](/java/api/overview/azure/security-keyvault-certificates-readme) 4.1.6+
+* [密钥保管库 - 密钥](/java/api/overview/azure/security-keyvault-keys-readme) 4.2.6+
+* [密钥保管库 - 机密](/java/api/overview/azure/security-keyvault-secrets-readme) 4.2.6+
+* [服务总线](/java/api/overview/azure/messaging-servicebus-readme) 7.1.0+
+* [文本分析](/java/api/overview/azure/ai-textanalytics-readme) 5.0.4+
+
+[//]: # "从 https://azure.github.io/azure-sdk/releases/latest/java.html 抓取的上述名称和链接"
+[//]: # "与构建在 azure-core 1.14.0 上的 maven central 的最早版本手动执行版本同步"
+[//]: # ""
+[//]: # "var table = document.querySelector('#tg-sb-content > div > table')"
+[//]: # "var str = ''"
+[//]: # "for (var i = 1, row; row = table.rows[i]; i++) {"
+[//]: # "  var name = row.cells[0].getElementsByTagName('div')[0].textContent.trim()"
+[//]: # "  var stableRow = row.cells[1]"
+[//]: # "  var versionBadge = stableRow.querySelector('.badge')"
+[//]: # "  if (!versionBadge) {"
+[//]: # "   继续"
+[//]: # "  }"
+[//]: # "  var version = versionBadge.textContent.trim()"
+[//]: # "  var link = stableRow.querySelectorAll('a')[2].href"
+[//]: # "  str += '* [' + name + '](' + link + ') ' + version"
+[//]: # "}"
+[//]: # "console.log(str)"
 
 ## <a name="send-custom-telemetry-from-your-application"></a>从应用程序发送自定义遥测
 
@@ -344,7 +380,7 @@ requestTelemetry.setName("myname");
 </dependency>
 ```
 
-并在代码中获取请求遥测 ID 和操作 ID：
+同时在代码中获取请求遥测 ID 和操作 ID：
 
 ```java
 import com.microsoft.applicationinsights.web.internal.ThreadContext;

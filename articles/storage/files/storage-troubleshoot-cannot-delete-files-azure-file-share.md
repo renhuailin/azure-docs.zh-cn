@@ -11,24 +11,24 @@ ms.subservice: files
 services: storage
 tags: ''
 ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629676"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure 文件共享 - 无法从 Azure 文件共享中删除文件
 
 无法从 Azure 文件共享中删除文件可能有几种症状：
 
-**症状 1：**
+症状 1：
 
 由于以下两个问题之一，无法删除 Azure 文件共享中的文件：
 
 * 标记为删除的文件
 * SMB 客户端可能正在使用指定的资源
 
-**症状 2：**
+症状 2：
 
 处理此命令的配额不够
 

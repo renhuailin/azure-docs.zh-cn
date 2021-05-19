@@ -1,26 +1,26 @@
 ---
-title: 如何利用 VM insights 绘制性能图表
-description: 性能是 VM insights 的一项功能，可自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 本文详细介绍如何在各种场景中使用该功能。
+title: 如何利用 VM 见解绘制性能图表
+description: “性能”是 VM 见解的一项功能，可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文详细介绍如何在各种场景中使用该功能。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
 ms.openlocfilehash: 02cb6a0c69fef1a33dd9327ddbd86e02b376a60e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046459"
 ---
-# <a name="how-to-chart-performance-with-vm-insights"></a>如何利用 VM insights 绘制性能图表
+# <a name="how-to-chart-performance-with-vm-insights"></a>如何利用 VM 见解绘制性能图表
 
-VM insights 包含一组性能图表，这些图表以几个关键性能指标为 (Kpi) ，有助于确定虚拟机的性能。 这些图表显示一段时间内的资源利用率，可让你识别瓶颈和异常，或切换到列出每个计算机的透视图，以根据所选指标查看资源利用率。 尽管在处理性能时有很多因素需要考虑，但 VM insights 会监视与处理器、内存、网络适配器和磁盘利用率相关的关键操作系统性能指标。 “性能”对运行状况监视功能做了补充，可帮助揭示可能指示系统组件发生了故障的问题，支持调整和优化以提高效率，或支持容量规划。  
+VM 见解包含一组针对几项关键性能指标 (KPI) 的性能图表，帮助你确定虚拟机的性能状况。 这些图表显示一段时间内的资源利用率，可让你识别瓶颈和异常，或切换到列出每个计算机的透视图，以根据所选指标查看资源利用率。 处理性能时需要考虑大量的要素，而 VM 见解监视与处理器、内存、网络适配器和磁盘利用相关的关键操作系统性能指标。 “性能”对运行状况监视功能做了补充，可帮助揭示可能指示系统组件发生了故障的问题，支持调整和优化以提高效率，或支持容量规划。  
 
 ## <a name="limitations"></a>限制
-下面是有关 VM insights 的性能收集限制。
+下面是 VM 见解的性能收集方面的限制。
 
 - 可用内存不适用于运行 Red Hat Linux (RHEL) 6 的虚拟机。 此指标是从[内核版本 3.14](http://www.man7.org/linux/man-pages/man1/free.1.html) 中引入的 MemAvailable 计算得出的。
-- 度量值仅适用于使用 XFS filesystem 或 EXT filesystem 系列 (EXT2、EXT3、EXT4) 的 Linux 虚拟机上的数据磁盘。
+- 指标仅适用于使用 XFS 文件系统或 EXT 文件系统系列（EXT2、EXT3、EXT4）的 Linux 虚拟机上的数据磁盘。
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Azure Monitor 中的多 VM 透视图
 
@@ -44,7 +44,7 @@ VM insights 包含一组性能图表，这些图表以几个关键性能指标�
 * 字节发送速率 - 显示平均发送字节数最高的 5 台计算机 
 * 字节接收速率 - 显示平均接收字节数最高的 5 台计算机 
 
-单击五个图表中任何一个图表右上角的图钉图标，即可将所选图表固定到最近查看的 Azure 仪表板。  在仪表板中，可以调整图表的大小和重新定位图表。 从仪表板中选择图表会将你重定向到 VM insights，并加载正确的作用域和视图。  
+单击五个图表中任何一个图表右上角的图钉图标，即可将所选图表固定到最近查看的 Azure 仪表板。  在仪表板中，可以调整图表的大小和重新定位图表。 从仪表板中选择图表时，将重定向到 VM 见解并加载正确的范围和视图。  
 
 单击五个图表中任何一个图表上图钉图标左侧的图标，即可打开“前 N 项列表”视图。  在此处，可以查看列表视图中单个 VM 的性能指标对应的资源使用率，以及哪台计算机有攀升到最高值的趋势。  
 
@@ -103,7 +103,7 @@ VM insights 包含一组性能图表，这些图表以几个关键性能指标�
 * 字节发送速率 - 默认显示平均发送字节数 
 * 字节接收速率 - 默认显示平均接收字节数
 
-单击任意一个图表右上角的图钉图标，即可将所选图表固定到最近查看的 Azure 仪表板。 在仪表板中，可以调整图表的大小和重新定位图表。 从仪表板中选择图表会将用户重定向到 VM insights，并加载 VM 的性能详细信息视图。  
+单击任意一个图表右上角的图钉图标，即可将所选图表固定到最近查看的 Azure 仪表板。 在仪表板中，可以调整图表的大小和重新定位图表。 从仪表板中选择图表时，将重定向到 VM 见解并加载 VM 的性能详细信息视图。  
 
 ![直接从 VM 查看 VM insights 性能](./media/vminsights-performance/vminsights-performance-directvm-01.png)
 
@@ -116,7 +116,7 @@ VM insights 包含一组性能图表，这些图表以几个关键性能指标�
 
 此页将加载 Azure Monitor 性能视图，范围为所选规模集。 这样可以在受监视指标集内查看规模集中的前 N 项实例，查看规模集内的聚合性能，并查看规模集的各个实例中所选指标的趋势。 从列表视图中选择实例时，可以加载其映射或导航到该实例的详细性能视图。
 
-单击任意一个图表右上角的图钉图标，即可将所选图表固定到最近查看的 Azure 仪表板。 在仪表板中，可以调整图表的大小和重新定位图表。 从仪表板中选择图表会将用户重定向到 VM insights，并加载 VM 的性能详细信息视图。  
+单击任意一个图表右上角的图钉图标，即可将所选图表固定到最近查看的 Azure 仪表板。 在仪表板中，可以调整图表的大小和重新定位图表。 从仪表板中选择图表时，将重定向到 VM 见解并加载 VM 的性能详细信息视图。  
 
 ![VM 直接从虚拟机规模集视图查看性能](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
 
@@ -127,6 +127,6 @@ VM insights 包含一组性能图表，这些图表以几个关键性能指标�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用 VM 见解附带的 [工作簿](vminsights-workbooks.md) 进一步分析性能和网络指标。  
+- 了解如何使用 VM 见解附带的[工作簿](vminsights-workbooks.md)，进一步分析性能和网络指标。  
 
-- 若要了解已发现的应用程序依赖关系，请参阅 [查看 VM 见解 Map](vminsights-maps.md)。
+- 若要了解已发现的应用程序依赖项，请参阅[查看 VM 见解映射](vminsights-maps.md)。

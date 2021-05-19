@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: e2fa09ac8609310d4579590214bc25e5d7ee309f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641569"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "94841642"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>使用 Azure AD 多重身份验证连接到 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -113,7 +113,7 @@ ms.locfileid: "105641569"
   使用此值进行需要 Azure AD 用户名和密码的身份验证。 Azure SQL 数据库执行身份验证。 此方法不支持多重身份验证。
 
 > [!NOTE]
-> 如果使用的是 .NET Core，需要使用 [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient) 命名空间。 有关详细信息，请参阅以下[博客文章](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)。
+> 如果使用的是 .NET Core，需要使用 [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) 命名空间。 有关详细信息，请参阅以下[博客文章](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)。
 
 ## <a name="set-c-parameter-values-from-the-azure-portal"></a>在 Azure 门户中设置 C# 参数值
 
@@ -148,7 +148,7 @@ ms.locfileid: "105641569"
 ## <a name="c-code-example"></a>C# 代码示例
 
 > [!NOTE]
-> 如果使用的是 .NET Core，需要使用 [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient) 命名空间。 有关详细信息，请参阅以下[博客文章](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)。
+> 如果使用的是 .NET Core，需要使用 [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) 命名空间。 有关详细信息，请参阅以下[博客文章](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)。
 
 示例 C# 程序依赖于 [*Microsoft.IdentityModel.Clients.ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory) DLL 程序集。
 

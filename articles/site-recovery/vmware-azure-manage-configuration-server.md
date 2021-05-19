@@ -1,17 +1,18 @@
 ---
 title: 通过 Azure Site Recovery 管理配置服务器，以便进行灾难恢复
+description: 了解为了将 VMware VM 和物理服务器灾难恢复到 Azure，而使用 Azure Site Recovery 管理本地配置服务器的常见任务。
 author: Rajeswari-Mamilla
+ms.author: ramamill
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.author: ramamill
-ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 67f25c97e0b4433ed09cb8c6337afe671424ba0b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92546341"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048538"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理配置服务器以便进行 VMware VM/物理服务器灾难恢复
 

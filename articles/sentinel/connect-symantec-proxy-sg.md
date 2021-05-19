@@ -1,5 +1,5 @@
 ---
-title: 将 Symantec ProxySG 数据连接到 Azure Sentinel |Microsoft Docs
+title: 将 Symantec ProxySG 数据连接到 Azure Sentinel | Microsoft Docs
 description: 了解如何将 Symantec ProxySG 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: 902475ae3e60761fb30620c5ba2fa8cbd905c916
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100099177"
 ---
 # <a name="connect-your-symantec-proxysg-to-azure-sentinel"></a>将 Symantec ProxySG 连接到 Azure Sentinel
@@ -27,28 +27,28 @@ ms.locfileid: "100099177"
 > Azure Sentinel 中的 Symantec ProxySG 数据连接器目前为公共预览版。
 > 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文介绍如何将 [Symantec ProxySG](https://www.broadcom.com/products/cyber-security/network/gateway/proxy-sg-and-advanced-secure-gateway) 设备连接到 Azure Sentinel。 Symantec ProxySG 数据连接器可让你轻松地通过 Azure Sentinel 连接 Symantec ProxySG 日志、查看仪表板、创建自定义警报，以及改进调查。 Symantec ProxySG 和 Azure Sentinel 之间的集成利用 Syslog。
+本文介绍如何将 [Symantec ProxySG](https://www.broadcom.com/products/cyber-security/network/gateway/proxy-sg-and-advanced-secure-gateway) 设备连接到 Azure Sentinel。 通过 Symantec ProxySG 数据连接器，可以将 Symantec ProxySG 日志轻松连接到 Azure Sentinel，以查看仪表板、创建自定义警报和改进调查。 Symantec ProxySG 和 Azure Sentinel 之间的集成会使用 Syslog。
 
 > [!NOTE]
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
 
 ## <a name="forward-symantec-proxysg-logs-to-the-syslog-agent"></a>将 Symantec ProxySG 日志转发到 Syslog 代理  
 
-配置 Symantec ProxySG，以通过 Syslog 代理将 Syslog 消息转发到 Azure 工作区。
+将 Symantec ProxySG 配置为通过 Syslog 代理将 Syslog 消息转发到 Azure 工作区。
 
-1. 在 Azure Sentinel 门户中，单击 " **数据连接器** "，然后选择 " **Symantec ProxySG** connector"。
+1. 在 Azure Sentinel 门户中，单击“数据连接器”，然后选择“Symantec ProxySG”连接器 。
 
-1. 选择 " **打开连接器" 页面**。
+1. 选择“打开连接器页面”。
 
-1. 按照 **Symantec ProxySG** 页上的说明进行操作。
+1. 按照“Symantec ProxySG”页上的说明进行操作。
 
 ## <a name="find-your-data"></a>查找数据
 
-成功建立连接后，数据将显示在 Syslog 下的 Log Analytics 中。
+成功建立连接后，数据会显示在 Syslog 下的 Log Analytics 中。
 
 ## <a name="validate-connectivity"></a>验证连接
 
-可能需要长达20分钟的时间，日志才会开始出现在 Log Analytics 中。 
+可能需要长达 20 分钟的时间，日志才会开始显示在 Log Analytics 中。 
 
 ## <a name="next-steps"></a>后续步骤
 

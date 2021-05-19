@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/21/2021
 ms.openlocfilehash: a6f049670a6860bbc195b92458945d1a53029b4f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101732796"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>网络概述 - Azure Database for PostgreSQL 灵活服务器
@@ -44,7 +44,7 @@ ms.locfileid: "101732796"
 * 来自允许的 IP 地址的连接需要使用有效的凭据对 PostgreSQL 服务器进行身份验证
 * [连接加密](#tls-and-ssl)适用于网络流量
 * 服务器具有完全限定的域名 (FQDN)。 对于连接字符串中的 hostname 属性，建议使用 FQDN 而不是 IP 地址。
-* 这两个选项都是在服务器级别控制访问，而不是在数据库或表级别进行控制。 您将使用 PostgreSQL 的角色属性来控制数据库、表和其他对象访问权限。
+* 这两个选项都是在服务器级别控制访问，而不是在数据库或表级别进行控制。 你将使用 PostgreSQL 的角色属性来控制数据库、表和其他对象访问。
 
 
 ## <a name="private-access-vnet-integration"></a>专用访问（VNet 集成）
@@ -62,7 +62,7 @@ ms.locfileid: "101732796"
 
    PostgreSQL 灵活服务器必须位于委派为仅供 PostgreSQL 灵活服务器使用的子网中。 该委派意味着只有 Azure Database for PostgreSQL 灵活服务器才能使用该子网。 不能在委派子网中使用其他 Azure 资源类型。 通过将子网的委派属性指定为 Microsoft.DBforPostgreSQL/flexibleServers 来委派子网。
 
-   为 `Microsoft.Storage` 委托给灵活服务器的子网添加到服务终结点。 
+   将 `Microsoft.Storage` 添加到委派给灵活服务器的子网的服务终结点。 
 
 * 网络安全组 (NSG) - 使用网络安全组中的安全规则，可以筛选可流入和流出虚拟网络子网和网络接口的网络流量的类型。 有关详细信息，请参阅[网络安全组概述](../../virtual-network/network-security-groups-overview.md)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "101732796"
 了解如何在 [Azure 门户](how-to-manage-virtual-network-portal.md)或 [Azure CLI](how-to-manage-virtual-network-cli.md) 中创建具有专用访问（VNet 集成）的灵活服务器。
 
 > [!NOTE]
-> 如果使用的是自定义 DNS 服务器，则必须使用 DNS 转发器解析 Azure Database for PostgreSQL 灵活服务器的 FQDN。 有关详细信息，请参阅[使用你自己的 DNS 服务器的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
+> 如果使用自定义 DNS 服务器，则必须使用 DNS 转发器解析 Azure Database for PostgreSQL 灵活服务器的 FQDN。 有关详细信息，请参阅[使用你自己的 DNS 服务器的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
 ## <a name="public-access-allowed-ip-addresses"></a>公共访问（允许的 IP 地址）
 公共访问方法的特征包括：

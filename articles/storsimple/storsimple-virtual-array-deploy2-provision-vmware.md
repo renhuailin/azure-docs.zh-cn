@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9810a34021aa039354aad24f84aff373229c0190
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87021471"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>部署 StorSimple 虚拟阵列 - 在 VMware 中预配
@@ -151,10 +151,10 @@ ms.locfileid: "87021471"
 26. 在“高级选项”页上，接受默认值，并单击“下一步”。
 
     ![“高级选项”页的屏幕截图。 突出显示“下一步”按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image27.png)
-27. 在“准备完成”页上，查看与新虚拟机关联的所有设置。 选中“在完成前编辑虚拟机设置”。 单击“继续” 。
+27. 在“准备完成”页上，查看与新虚拟机关联的所有设置。 选中“在完成前编辑虚拟机设置”。 单击 **“继续”** 。
 
     ![“准备完成”页的屏幕截图，突出显示“继续”按钮。 已选中“在完成前编辑虚拟机设置”选项。](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. 在“虚拟机属性”页的“硬件”选项卡中，找到设备硬件。 选择“新建硬盘”。 单击“添加” 。
+28. 在“虚拟机属性”页的“硬件”选项卡中，找到设备硬件。 选择“新建硬盘”。 单击“添加”。
 
     ![“虚拟机属性”页的“硬件”选项卡的屏幕截图。 在硬件列表中选择了“新硬盘”。 突出显示“添加”按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. 此时会显示“添加硬件”窗口。 在“设备类型”页的“选择要添加的设备类型”下选择“硬盘”，并单击“下一步”。
@@ -169,15 +169,15 @@ ms.locfileid: "87021471"
 32. 在“高级选项”页上，接受默认值。
 
     ![“高级选项”页的屏幕截图。 “虚拟设备节点”设置为 SCSI (0:0)，并突出显示“下一步”按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. 在“准备完成”页上，查看磁盘选项。 单击“完成”  。
+33. 在“准备完成”页上，查看磁盘选项。 单击“完成”。
 
     ![“准备完成”页的屏幕截图。 显示磁盘选项的摘要，并突出显示“完成”按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击“完成”  。
+34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击“完成”。
 
     ![“虚拟机属性”页的屏幕截图。 硬件列表包含新硬盘，并突出显示“完成”按钮。](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. 在右窗格中选中虚拟机以后，导航到“摘要”选项卡。查看虚拟机的设置。
+35. 在右窗格中选择虚拟机后，导航到“摘要”选项卡。查看虚拟机的设置。
 
-    ![“vSphere 客户端摘要”选项卡的屏幕截图。突出显示新虚拟机，且显示其资源和常规属性。](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
+    ![“vSphere 客户端摘要”选项卡的屏幕截图。突出显示了新虚拟机，并且其资源和常规属性都可见。](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
 虚拟机现已预配好。 下一步是启动该虚拟机并获取 IP 地址。
 
@@ -191,15 +191,15 @@ ms.locfileid: "87021471"
 1. 启动虚拟设备。 在 vSphere 配置管理器的左窗格中选择设备，并右键单击以显示上下文菜单。 选择“电源”，并选择“启动”。 此时会启动虚拟机。 可以在 vSphere 客户端底部的“最新任务”窗格中查看状态。
 
    ![设备的快捷菜单的屏幕截图。 已选择“电源”项。 显示相邻菜单，其中已选择“开机”项。](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. 完成设置任务需要几分钟时间。 设备运行以后，导航到“控制台”选项卡。发送 Ctrl+Alt+Delete 登录到设备。 也可将光标指向控制台窗口，然后按 Ctrl+Alt+Insert。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
+2. 完成设置任务需要几分钟时间。 设备运行后，导航到“控制台”选项卡。发送 Ctrl+Alt+Delete 登录到设备。 也可将光标指向控制台窗口，然后按 Ctrl+Alt+Insert。 默认用户为 *StorSimpleAdmin*，默认密码为 *Password1*。
 
    ![“vSphere 客户端控制台”选项卡的屏幕截图。“密码”框为空。](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. 出于安全原因，设备管理员密码在第一次登录后过期。 系统会提示用户更改密码。
 
-   ![“vSphere 客户端控制台”选项卡的屏幕截图。页面上的文本显示必须更改密码。](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
+   ![“vSphere 客户端控制台”选项卡的屏幕截图。页面上的文本表明必须更改密码。](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
 4. 请输入至少包含 8 个字符的密码。 密码必须包含以下要求中 4 项内容中的 3 项：大写、小写、数字、特殊字符。 再次输入密码进行确认。 用户会收到密码已更改的通知。
 
-   ![“vSphere 客户端控制台”选项卡的屏幕截图。页面上的文本显示密码已经更改。](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
+   ![“vSphere 客户端控制台”选项卡的屏幕截图。页面上的文本表明密码已更改。](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
 5. 成功更改密码后，虚拟设备会重新启动。 等待重新启动完成。 会显示设备的 Windows PowerShell 控制台和进度栏。
 
    ![显示包含进度条的控制台窗口的屏幕截图。 窗口中的文本显示初始设置正在进行，并请求用户等待。](./media/storsimple-virtual-array-deploy2-provision-vmware/image41.png)

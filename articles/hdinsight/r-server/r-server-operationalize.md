@@ -1,22 +1,22 @@
 ---
 title: 操作 HDInsight 上的 ML Services - Azure
-description: 了解如何操作数据模型，以便在 Azure HDInsight 中通过 ML 服务进行预测。
+description: 了解如何操作数据模型，以使用 Azure HDInsight 中的 ML 服务进行预测。
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 7d597c4dbb81562050e9523c61d47d0020fc9059
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944001"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869457"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
 
 使用 HDInsight 中的 ML Services 群集完成数据建模后，可操作该模型进行预测。 本文提供如何执行此任务的说明。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 上的机器学习服务群集。 参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“机器学习服务”作为“群集类型”。
 
@@ -53,31 +53,31 @@ ms.locfileid: "98944001"
 
 1. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 ML Server 的操作化”。
 
-    ![R server 管理实用工具选择](./media/r-server-operationalize/admin-util-one-box-1.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-1.png" alt-text="R Server 管理实用工具 - 选择" border="true":::
 
 1. 现在将提供选项供你选择要操作 ML Server 的方式。 输入 **A** 从提供的选项中选择第一项。
 
-    ![R server 管理实用工具操作](./media/r-server-operationalize/admin-util-one-box-2.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-2.png" alt-text="R Server 管理实用工具 - 操作" border="true":::
 
 1. 出现提示时，输入然后再次输入本地管理员用户的密码。
 
 1. 应看到提示操作成功的输出。 系统还会提示你从菜单中选择另一个选项。 选择 E 以返回到主菜单。
 
-    ![R server 管理实用工具成功](./media/r-server-operationalize/admin-util-one-box-3.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-3.png" alt-text="R Server 管理实用工具 - 成功" border="true":::
 
 1. （可选）通过运行诊断测试来执行诊断检查，如下所示：
 
     a. 从主菜单中，选择 **6** 运行诊断测试。
 
-    ![R server 管理实用工具诊断](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic1.png" alt-text="R Server 管理实用工具 - 诊断" border="true":::
 
-    b. 从 "诊断测试" 菜单中 **，选择。** 出现提示时，输入为本地管理员用户提供的密码。
+    b. 从“诊断测试”菜单中选择 **A**。出现提示时，输入为本地管理员用户提供的密码。
 
-    ![R server 管理实用工具测试](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic2.png" alt-text="R Server 管理实用工具 - 测试" border="true":::
 
     c. 验证输出是否显示总体运行状况通过测试。
 
-    ![R server 管理实用工具通过](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic3.png" alt-text="R Server 管理实用工具 - 通过" border="true":::
 
     d. 从显示的菜单选项中，输入 **E** 返回到主菜单，然后输入 **8** 退出管理员实用程序。
 
@@ -152,17 +152,17 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
 1. 选择（要解除授权）的工作节点。
 
-1. 单击 **"**  >  **所选主机**" "主机  >    >  **" "打开维护模式"**。 例如，下图中，选择了对 wn3 和 wn4 解除授权。  
+1. 单击“操作” > “所选主机” > “主机” > “打开维护模式”。 例如，下图中，选择了对 wn3 和 wn4 解除授权。  
 
-   ![Apache Ambari 启用维护模式](./media/r-server-operationalize/get-started-operationalization.png)  
+   :::image type="content" source="./media/r-server-operationalize/get-started-operationalization.png" alt-text="Apache Ambari 开启维护模式" border="true":::  
 
-* 选择 **操作**  >  **选定的主机**  >  **DataNodes** > 单击 "**解除** 授权"。
-* 选择 **操作**  >  **选定的主机**  >  **NodeManagers** > 单击 "**解除** 授权"。
-* 选择 **操作** 已  >  **选择**  >  "**DataNodes** 主机" > 单击 "**停止**"。
-* 选择 **操作**  >  **选定的主机**  >  **NodeManagers** > 单击 "**停止**"。
-* 选择  >  "**所选** 操作" 主机  >   > 单击 "**停止所有组件**"。
+* 选择“操作” > “所选主机” > “DataNodes”> 单击“解除授权”。
+* 选择“操作” > “所选主机” > “NodeManagers”> 单击“解除授权”。
+* 选择“操作” > “所选主机” > “DataNodes”> 单击“停止”。
+* 选择“操作” > “所选主机” > “NodeManagers”> 单击“停止”。
+* 选择“操作” > “所选主机” > “主机”> 单击“停止所有组件”。
 * 取消选择辅助角色节点并选择头节点。
-* 选择 **操作** 选择  >  的 **主机**> "**主机**  >  **重新启动所有组件**。
+* 选择“操作” > “所选主机”>“主机” > “重启所有组件”。
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>步骤 2：在每个已解除授权的工作节点上配置计算节点
 
@@ -194,7 +194,7 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
     "Uris": {
         "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
         "Values": [
-            "http://localhost:12805", "http://[worker-node1-ip]:12805", "http://[workder-node2-ip]:12805"
+            "http://localhost:12805", "http://[worker-node1-ip]:12805", &quot;http://[workder-node2-ip]:12805"
         ]
     }
     ```

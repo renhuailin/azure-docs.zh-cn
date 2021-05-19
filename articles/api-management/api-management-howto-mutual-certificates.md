@@ -9,12 +9,13 @@ ms.service: api-management
 ms.topic: article
 ms.date: 01/26/2021
 ms.author: apimpm
-ms.openlocfilehash: 2e4a398ab71878134887fb8fba025cd8aa6122ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9d198f34abe826af2dce0c1ed9950600d4c7bbd3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99492804"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812284"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 
@@ -32,7 +33,7 @@ API 管理提供了两个选项来管理用于确保对后端服务进行安全�
 建议使用密钥保管库证书，因为它有助于提高 API 管理安全性：
 
 * 密钥保管库中存储的证书可以在服务上重复使用
-* 粒度[访问策略](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) 可应用到密钥保管库中存储的证书
+* 粒度[访问策略](../key-vault/general/security-features.md#privileged-access) 可应用到密钥保管库中存储的证书
 * 密钥保管库中更新的证书会在 API 管理中自动轮换。 在密钥保管库中更新后，API 管理中的证书会在 4 小时内更新。 你还可以使用 Azure 门户或通过管理 REST API 手动刷新证书。
 
 ## <a name="prerequisites"></a>先决条件

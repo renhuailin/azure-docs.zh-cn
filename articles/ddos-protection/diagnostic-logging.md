@@ -3,7 +3,7 @@ title: Azure DDoS 防护标准报表和流日志
 description: 了解如何配置报表和流日志。
 services: ddos-protection
 documentationcenter: na
-author: aletheatoh
+author: yitoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 7f8e3df927b74cff7e4dc8bf1456600740c07088
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567672"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100591876"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>查看和配置 DDoS 诊断日志记录
 
@@ -67,7 +67,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 # <a name="ddosprotectionnotifications"></a>[DDoSProtectionNotifications](#tab/DDoSProtectionNotifications)
 
-| 字段名 | 说明 |
+| 字段名称 | 说明 |
 | --- | --- |
 | **TimeGenerated** | 创建通知时的日期和时间 (UTC)。 |
 | **ResourceId** | 公共 IP 的资源 ID。 |
@@ -78,12 +78,12 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | **ResourceType** | 这将始终为 `PUBLICIPADDRESS`。 |
 | **OperationName** | 对于通知，这将为 `DDoSProtectionNotifications`。  |
 | **消息** | 攻击的详细信息。 |
-| **类型** | 通知的类型。 可能的值包括 `MitigationStarted`。 `MitigationStopped`. |
+| 类型 | 通知的类型。 可能的值包括 `MitigationStarted`。 `MitigationStopped`. |
 | **PublicIpAddress** | 你的公共 IP。 |
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
 
-| 字段名 | 说明 |
+| 字段名称 | 说明 |
 | --- | --- |
 | **TimeGenerated** | 创建流日志时的日期和时间 (UTC)。 |
 | **ResourceId** | 公共 IP 的资源 ID。 |
@@ -98,11 +98,11 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 | **SourcePort** | 端口号范围介于 0 到 65535 之间。 |
 | **DestPublicIpAddress** | 你的公共 IP。 |
 | **DestPort** | 端口号范围介于 0 到 65535 之间。 |
-| 协议  | 协议的类型。 可能的值包括 `tcp`、`udp`、`other`。|
+| **协议** | 协议的类型。 可能的值包括 `tcp`、`udp`、`other`。|
 
 # <a name="ddosmitigationreports"></a>[DDoSMitigationReports](#tab/DDoSMitigationReports)
 
-| 字段名 | 说明 |
+| 字段名称 | 说明 |
 | --- | --- |
 | **TimeGenerated** | 创建报表时的日期和时间 (UTC)。 |
 | **ResourceId** | 公共 IP 的资源 ID。 |
@@ -130,7 +130,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 此[模板](https://aka.ms/ddosdiaglogs)创建一个 Azure Policy 定义，用于在定义的范围内对所有公共 IP 日志自动启用诊断日志记录。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FPolicy%20-%20DDOS%20Enable%20Diagnostic%20Logging%2FAzure%20Policy%2FDDoSLogs.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
 
 ## <a name="view-log-data-in-workbooks"></a>查看工作簿中的日志数据
 
@@ -144,7 +144,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 可以使用[此 Azure 资源管理器 (ARM) 模板](https://aka.ms/ddosworkbook)来部署攻击分析工作簿。 利用此工作簿，可在多个可筛选面板上可视化攻击数据，以轻松了解面临的威胁。 
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FWorkbook%20-%20Azure%20DDOS%20monitor%20workbook%2FAzureDDoSWorkbook_ARM.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
 
 ![DDoS 保护工作簿](./media/ddos-attack-telemetry/ddos-attack-analytics-workbook.png)
 
@@ -154,7 +154,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
+在本教程中，你将了解：
 
 - 配置 DDoS 诊断日志，包括通知、风险缓解报表和缓解流日志。 
 - 在定义的范围内对所有公共 IP 启用诊断日志记录。

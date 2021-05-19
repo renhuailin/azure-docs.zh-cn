@@ -6,19 +6,19 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 9be1cb02c419314a33b9487bf183ef3659b2b549
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75651483"
 ---
 # <a name="reference-user-interface-elements-artifact"></a>参考：用户界面元素项目
 
-本文是 Azure 托管应用程序中 createUiDefinition.json  项目的参考。 有关创作用户界面元素的详细信息，请参阅[创建用户界面元素](create-uidefinition-elements.md)。
+本文是 Azure 托管应用程序中 createUiDefinition.json 项目的参考。 有关创作用户界面元素的详细信息，请参阅[创建用户界面元素](create-uidefinition-elements.md)。
 
 ## <a name="user-interface-elements"></a>用户界面元素
 
-以下 JSON 演示了 Azure 托管应用程序的 createUiDefinition.json  文件的示例：
+以下 JSON 演示了 Azure 托管应用程序的 createUiDefinition.json 文件的示例：
 
 ```json
 {
@@ -83,4 +83,4 @@ ms.locfileid: "75651483"
 
 - [教程：创建包含自定义操作和资源的托管应用程序](tutorial-create-managed-app-with-custom-provider.md)
 - [参考：部署模板项目](reference-main-template-artifact.md)
-- [参考：查看定义项目](reference-view-definition-artifact.md)
+- [参考：视图定义项目](reference-view-definition-artifact.md)

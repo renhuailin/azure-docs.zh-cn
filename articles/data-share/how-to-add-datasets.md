@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 3bfa911921e9bacde2649ee8c4f0d4bc31b56f54
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92910536"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>如何将数据集添加到 Azure Data Share 的现有共享中
@@ -21,7 +21,7 @@ ms.locfileid: "92910536"
 
 ## <a name="navigate-to-a-sent-data-share"></a>导航到已发送的数据共享
 
-在 Azure Data Share 中，导航到已发送的共享并选择“数据集”选项卡。单击“+ 添加数据集”添加更多数据集。
+在 Azure Data Share 中，导航到已发送的共享，然后选择“数据集”选项卡。单击“+ 添加数据集”按钮，添加更多数据集 。
 
 ![显示已选择“添加数据集”的屏幕截图。](./media/how-to/how-to-add-datasets/add-datasets.png)
 

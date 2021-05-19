@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 虚拟 WAN 从 Basic 升级到标准-Azure 门户 |Microsoft Docs
+title: 将 Azure 虚拟 WAN 从基本层级升级到标准层级 - Azure 门户 | Microsoft Docs
 description: 你可以升级虚拟 WAN 类型以获得更多功能。
 services: virtual-wan
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 6290d89ed0ee539b4df4c2c8bc9070097da98c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91447354"
 ---
 # <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>将虚拟 WAN 从基本层级升级到标准层级
@@ -26,13 +26,13 @@ ms.locfileid: "91447354"
 
 1. 在虚拟 WAN 的页面上，选择“配置”  以打开“配置”页面。
 
-   ![显示 "配置" 页面的屏幕截图，其中包含有关升级到底部突出显示的标准类型虚拟 WAN 的信息文本框。](./media/upgrade-virtual-wan/1.png)
-2. 对于 "虚拟 WAN 类型"，从下拉菜单中选择 " **标准** "。
+   ![此屏幕截图显示了“配置”页，在底部突出显示了有关如何升级到标准类型虚拟 WAN 的信息文本框。](./media/upgrade-virtual-wan/1.png)
+2. 对于“虚拟 WAN 类型”，请从下拉列表中选择“标准”。
 
-   ![显示 "虚拟 WAN 类型" 下拉菜单的屏幕截图。](./media/upgrade-virtual-wan/2.png)
+   ![此屏幕截图显示了“虚拟 WAN 类型”下拉菜单。](./media/upgrade-virtual-wan/2.png)
 3. 请注意，如果升级到标准虚拟 WAN，将无法还原到基本虚拟 WAN。 如果要升级，请选择“确认”  。
 
-   ![显示 "升级确认" 对话框的屏幕截图。](./media/upgrade-virtual-wan/4.png)
+   ![显示“升级确认”对话框的屏幕截图。](./media/upgrade-virtual-wan/4.png)
 4. 保存更改后，你的虚拟 WAN 页面将与此示例类似。
 
    ![虚拟 WAN 示意图](./media/upgrade-virtual-wan/5.png)

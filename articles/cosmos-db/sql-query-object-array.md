@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 02/02/2021
 ms.author: tisande
 ms.openlocfilehash: 1dccb8e51fbc578f8f218fe1582f95f7bcaf42d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99493781"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数组和对象
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB SQL API 的一个重要功能是创建数组和对象。 本文档使用可以通过[家庭数据集](sql-query-getting-started.md#upload-sample-data)重新创建的示例。
+Azure Cosmos DB SQL API 的一个重要功能是创建数组和对象。 本文档使用可通过[家庭数据集](sql-query-getting-started.md#upload-sample-data)重新创建的示例。
 
 下面是此数据集中的一个示例项：
 

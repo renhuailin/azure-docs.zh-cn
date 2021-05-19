@@ -14,10 +14,10 @@ ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a834d4d30c40b618b1601a7f8901c68143ef4912
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101648511"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>通过监视和分析实现复原能力
@@ -41,7 +41,7 @@ ms.locfileid: "101648511"
 
   - 成功率(%)：成功的请求数/请求总数。
 
-  访问[application insights](../../active-directory-b2c/analytics-with-application-insights.md)中的[关键指标](../../active-directory-b2c/view-audit-logs.md)，其中存储了 Azure AD B2C 基于策略的日志、[审核日志](../../active-directory-b2c/analytics-with-application-insights.md)和登录日志。  
+  访问 [application insights](../../active-directory-b2c/analytics-with-application-insights.md) 中的[关键指标](../../active-directory-b2c/view-audit-logs.md)，其中存储了 Azure AD B2C 基于策略的日志、[审核日志](../../active-directory-b2c/analytics-with-application-insights.md)和登录日志。  
 
    - 可视化效果：使用 Log analytics 构建面板来直观地监视关键指标。
 

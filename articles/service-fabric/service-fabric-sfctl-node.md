@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f2cf1011db37892f71bdd06f409cec1a76463507
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86257162"
 ---
 # <a name="sfctl-node"></a>sfctl node
@@ -17,35 +17,35 @@ ms.locfileid: "86257162"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|说明|
 | --- | --- |
-| add-configuration-parameter-overrides | 在指定节点上添加替代配置列表。 |
+| add-configuration-parameter-overrides | 添加指定节点上的配置替代列表。 |
 | disable | 根据指定的停用意图停用 Service Fabric 群集节点。 |
 | enable | 激活当前已停用的 Service Fabric 群集节点。 |
-| get-configuration-overrides | 获取指定节点上的替代配置列表。 |
+| get-configuration-overrides | 获取指定节点上的配置替代列表。 |
 | health | 获取 Service Fabric 节点的运行状况。 |
 | info | 获取有关 Service Fabric 群集中特定节点的信息。 |
 | list | 获取 Service Fabric 群集中的节点的列表。 |
 | load | 获取 Service Fabric 节点的负载信息。 |
-| remove-configuration-overrides | 删除指定节点上的替代配置。 |
+| remove-configuration-overrides | 删除指定节点上的配置替代。 |
 | remove-state | 告知 Service Fabric，节点上的保留状态已被永久删除或丢失。 |
 | report-health | 发送有关 Service Fabric 节点的运行状况报告。 |
 | restart | 重启 Service Fabric 群集节点。 |
-| transition | 启动或停止群集节点。 |
+| 过渡 | 启动或停止群集节点。 |
 | transition-status | 获取使用 StartNodeTransition 启动的操作的进度。 |
 
-## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl node add-configuration-parameter-overrides
-在指定节点上添加替代配置列表。
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl 节点 add-configuration-parameter-overrides
+添加指定节点上的配置替代列表。
 
-此 api 允许添加指定节点上的所有现有替代配置。
+此 api 允许添加指定节点上的所有现有配置替代。
 
 ### <a name="arguments"></a>参数
 
 |参数|说明|
 | --- | --- |
-| --config-parameter-override-list [必需] | 添加替代配置列表的说明。 |
+| --config-parameter-override-list [必需] | 添加配置替代列表的说明。 |
 | --node-name [必需] | 节点的名称。 |
-| --force | 在指定节点上强制添加替代配置。 |
+| --force | 强制添加指定节点上的配置替代。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
@@ -103,10 +103,10 @@ ms.locfileid: "86257162"
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
-## <a name="sfctl-node-get-configuration-overrides"></a>sfctl node get-configuration-overrides
-获取指定节点上的替代配置列表。
+## <a name="sfctl-node-get-configuration-overrides"></a>sfctl 节点 get-configuration-overrides
+获取指定节点上的配置替代列表。
 
-此 api 允许获取指定节点上的所有现有替代配置。
+此 api 允许获取指定节点上的所有现有配置替代。
 
 ### <a name="arguments"></a>参数
 
@@ -216,10 +216,10 @@ ms.locfileid: "86257162"
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
-## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl node remove-configuration-overrides
-删除指定节点上的替代配置。
+## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl 节点 remove-configuration-overrides
+删除指定节点上的配置替代。
 
-此 api 允许删除指定节点上的所有现有替代配置。
+此 api 允许删除指定节点上的所有现有配置替代。
 
 ### <a name="arguments"></a>参数
 
@@ -241,7 +241,7 @@ ms.locfileid: "86257162"
 ## <a name="sfctl-node-remove-state"></a>sfctl node remove-state
 告知 Service Fabric，节点上的保留状态已被永久删除或丢失。
 
-这意味着无法恢复该节点的保留状态。 如果硬盘已擦除干净或者硬盘崩溃，通常会出现这种情况。 节点必须已关闭，此操作才能成功。 此操作让 Service Fabric 知道该节点上的副本不再存在，并且 Service Fabric 应停止等待这些副本恢复。 如果未删除节点上的状态并且节点能够以原状态恢复，则不要运行此 cmdlet。 自 Service Fabric 6.5 起，若要将此 API 用于种子节点，请将这些种子节点更改为常规节点（非种子节点），然后调用此 API 以删除节点状态。 如果群集正在 Azure 上运行，当种子节点发生故障后，Service Fabric 将尝试自动将其更改为非种子节点。 若要实现这一点，请确保主节点类型中的非种子节点数不少于“发生故障”的种子节点数。 如有必要，请将更多节点添加到主节点类型以实现这一目标。 对于独立群集，如果不希望向下 seed 节点的状态保持不变，请从群集中删除节点，请参阅 https \: //docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
+这意味着无法恢复该节点的保留状态。 如果硬盘已擦除干净或者硬盘崩溃，通常会出现这种情况。 节点必须已关闭，此操作才能成功。 此操作让 Service Fabric 知道该节点上的副本不再存在，并且 Service Fabric 应停止等待这些副本恢复。 如果未删除节点上的状态并且节点能够以原状态恢复，则不要运行此 cmdlet。 自 Service Fabric 6.5 起，若要将此 API 用于种子节点，请将这些种子节点更改为常规节点（非种子节点），然后调用此 API 以删除节点状态。 如果群集正在 Azure 上运行，当种子节点发生故障后，Service Fabric 将尝试自动将其更改为非种子节点。 若要实现这一点，请确保主节点类型中的非种子节点数不少于“发生故障”的种子节点数。 如果需要，请将更多节点添加到主节点类型以实现这一目标。 对于独立群集，如果“发生故障”的种子节点在其状态保持不变的情况下预计不会恢复正常，请从该群集中删除此节点，请参阅 https\://docs.microsoft.com/zh-cn/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
 
 ### <a name="arguments"></a>参数
 

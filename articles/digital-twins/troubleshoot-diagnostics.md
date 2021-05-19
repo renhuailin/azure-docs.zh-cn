@@ -4,25 +4,25 @@ titleSuffix: Azure Digital Twins
 description: 了解如何使用诊断设置启用日志记录，以及查询可供立即查看的日志。
 author: baanders
 ms.author: baanders
-ms.date: 11/9/2020
+ms.date: 2/24/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 797de242b4b4464c0bfb5ae18af05710ab36bce6
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 4ca6989a6c446c543c35d8e35e5e27aefef118c2
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285473"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205676"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>排查 Azure 数字孪生问题：诊断日志记录
 
 Azure 数字孪生可以收集服务实例的日志，以监视其性能、访问和其他数据。 你可以使用这些日志来大致了解 Azure 数字孪生实例中发生的情况，并执行问题的根本原因分析，而无需联系 Azure 支持部门。
 
-本文介绍如何在 [Azure 门户](https://portal.azure.com)中 [**配置诊断设置**](#turn-on-diagnostic-settings)，以开始从 Azure 数字孪生实例收集日志。 你还可以指定要将日志存储到的位置（例如 Log Analytics，或者你选择的存储帐户）。
+本文介绍如何在 Azure 门户中[[配置诊断设置](#turn-on-diagnostic-settings)](https://portal.azure.com)，以开始从 Azure 数字孪生实例收集日志。 你还可以指定要将日志存储到的位置（例如 Log Analytics，或者你选择的存储帐户）。
 
 本文还包含 Azure 数字孪生收集的所有[日志类别](#log-categories)和[日志架构](#log-schemas)列表。
 
-设置日志后，还可以 [**查询日志**](#view-and-query-logs)以快速收集自定义见解。
+设置日志后，还可以[查询日志](#view-and-query-logs)以快速收集自定义见解。
 
 ## <a name="turn-on-diagnostic-settings"></a>启用诊断设置 
 
@@ -43,7 +43,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
         - QueryOperation
         - AllMetrics
         
-        有关这些类别及其包含的信息的更多详细信息，请参阅下面的[日志类别](#log-categories)部分。
+        有关这些类别及其包含的信息的更多详细信息，请参阅下面的日志类别部分。
      * **目标详细信息**：选择要将日志发送到的位置。 可选择以下三个选项的任意组合：
         - 发送到 Log Analytics
         - 存档到存储帐户
@@ -57,7 +57,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 
 新设置在大约 10 分钟后生效。 然后，日志将重新显示在实例的“诊断设置”页上已配置的目标中。 
 
-有关诊断设置及其设置选项的更多详细信息，请访问[创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/essentials/diagnostic-settings.md)。
+有关诊断设置及其设置选项的更多详细信息，请访问创建诊断设置以将平台日志和指标发送到不同的目标。
 
 ## <a name="log-categories"></a>日志类别
 
@@ -68,7 +68,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 | ADTModelsOperation | 记录与模型相关的所有 API 调用 |
 | ADTQueryOperation | 记录与查询相关的所有 API 调用 |
 | ADTEventRoutesOperation | 记录与事件路由相关的所有 API 调用，以及从 Azure 数字孪生流出到事件网格、事件中心和服务总线等终结点服务的事件 |
-| ADTDigitalTwinsOperation | 记录与 Azure 数字孪生相关的所有 API 调用 |
+| ADTDigitalTwinsOperation | 记录与单个孪生相关的所有 API 调用 |
 
 每个日志类别包括写入、读取、删除和动作操作。  这些操作按如下所示映射到 REST API 调用：
 
@@ -104,11 +104,13 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 
 每个日志类别都有一个架构，该架构定义如何报告该类别中的事件。 每个日志条目以文本形式存储，采用 JSON Blob 格式。 下面针对每种日志类型提供了日志中的字段和示例 JSON 正文。 
 
-`ADTDigitalTwinsOperation`、`ADTModelsOperation` 和 `ADTQueryOperation` 使用一致的 API 日志架构；`ADTEventRoutesOperation` 具有自身单独的架构。
+`ADTDigitalTwinsOperation`、`ADTModelsOperation` 和 `ADTQueryOperation` 使用一致的 API 日志架构。 `ADTEventRoutesOperation` 扩展架构以包含属性中的 `endpointName` 字段。
 
 ### <a name="api-log-schemas"></a>API 日志架构
 
-对于 `ADTDigitalTwinsOperation`、`ADTModelsOperation` 和 `ADTQueryOperation`，此日志架构是一致的。 其中包含与 Azure 数字孪生实例的 API 调用相关的信息。
+对于 `ADTDigitalTwinsOperation`、`ADTModelsOperation` 和 `ADTQueryOperation`，此日志架构是一致的。 同一架构还用于 `ADTEventRoutesOperation`，但 `Microsoft.DigitalTwins/eventroutes/action` 操作名称除外（有关该架构的详细信息，请查看下一部分：[流出量日志架构](#egress-log-schemas)）。
+
+该架构包含与 Azure 数字孪生实例的 API 调用相关的信息。
 
 下面是 API 日志的字段和属性说明。
 
@@ -125,9 +127,15 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 | `DurationMs` | 字符串 | 执行事件所花费的时间，以毫秒为单位 |
 | `CallerIpAddress` | 字符串 | 事件的掩码源 IP 地址 |
 | `CorrelationId` | Guid | 客户提供的事件唯一标识符 |
-| `Level` | 字符串 | 事件的日志记录严重性 |
+| `ApplicationId` | Guid | 持有者授权中使用的应用程序 ID |
+| `Level` | int | 事件的日志记录严重性 |
 | `Location` | 字符串 | 发生该事件的区域 |
 | `RequestUri` | Uri | 发生该事件期间利用的终结点 |
+| `TraceId` | 字符串 | `TraceId`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 用于唯一标识跨系统分布式跟踪的整个跟踪的 ID。 |
+| `SpanId` | 字符串 | `SpanId`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 跟踪中此请求的 ID。 |
+| `ParentId` | 字符串 | `ParentId`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 没有父 ID 的请求是跟踪的根。 |
+| `TraceFlags` | 字符串 | `TraceFlags`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 控制采样、跟踪级别等跟踪标志。 |
+| `TraceState` | 字符串 | `TraceState`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 跨越不同分布式跟踪系统的其他供应商特定跟踪标识信息。 |
 
 下面是这些类型的日志的示例 JSON 正文。
 
@@ -143,12 +151,25 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": "314",
+  "durationMs": 8,
   "callerIpAddress": "13.68.244.*",
   "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31"
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
 ```
 
@@ -164,12 +185,25 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
   "resultType": "Success",
   "resultSignature": "201",
   "resultDescription": "",
-  "durationMs": "935",
+  "durationMs": "80",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
 ```
 
@@ -185,18 +219,67 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": "255",
+  "durationMs": "314",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-10-31",
+  "properties": {},
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
+  }
 }
+```
+
+#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+
+下面是一个非 `Microsoft.DigitalTwins/eventroutes/action` 类型的 `ADTEventRoutesOperation` 的 JSON 正文示例（有关该架构的详细信息，请查看下一部分： [流出量日志架构](#egress-log-schemas)）。
+
+```json
+  {
+    "time": "2020-10-30T22:18:38.0708705Z",
+    "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+    "operationName": "Microsoft.DigitalTwins/eventroutes/write",
+    "operationVersion": "2020-10-31",
+    "category": "EventRoutesOperation",
+    "resultType": "Success",
+    "resultSignature": "204",
+    "resultDescription": "",
+    "durationMs": 42,
+    "callerIpAddress": "212.100.32.*",
+    "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
+    "identity": {
+      "claims": {
+        "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+      }
+    },
+    "level": "4",
+    "location": "southcentralus",
+    "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/EventRoutes/egressRouteForEventHub?api-version=2020-10-31",
+    "properties": {},
+    "traceContext": {
+      "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+      "spanId": "b630da57026dd046",
+      "parentId": "9f0de6dadae85945",
+      "traceFlags": "01",
+      "tracestate": "k1=v1,k2=v2"
+    }
+  },
 ```
 
 ### <a name="egress-log-schemas"></a>出口日志架构
 
-这是 `ADTEventRoutesOperation` 日志的架构。 这些日志包含有关连接到 Azure 数字孪生实例的出口终结点的异常和 API 操作的详细信息。
+这是特定于 `Microsoft.DigitalTwins/eventroutes/action` 操作名称的 `ADTEventRoutesOperation` 日志的架构。 这些日志包含有关连接到 Azure 数字孪生实例的出口终结点的异常和 API 操作的详细信息。
 
 |字段名称 | 数据类型 | 说明 |
 |-----|------|-------------|
@@ -205,28 +288,55 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 | `OperationName` | 字符串  | 发生该事件期间执行的操作类型 |
 | `Category` | 字符串 | 正在发出的资源的类型 |
 | `ResultDescription` | 字符串 | 有关事件的其他详细信息 |
-| `Level` | 字符串 | 事件的日志记录严重性 |
+| `CorrelationId` | Guid | 客户提供的事件唯一标识符 |
+| `ApplicationId` | Guid | 持有者授权中使用的应用程序 ID |
+| `Level` | int | 事件的日志记录严重性 |
 | `Location` | 字符串 | 发生该事件的区域 |
+| `TraceId` | 字符串 | `TraceId`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 用于唯一标识跨系统分布式跟踪的整个跟踪的 ID。 |
+| `SpanId` | 字符串 | `SpanId`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 跟踪中此请求的 ID。 |
+| `ParentId` | 字符串 | `ParentId`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 没有父 ID 的请求是跟踪的根。 |
+| `TraceFlags` | 字符串 | `TraceFlags`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 控制采样、跟踪级别等跟踪标志。 |
+| `TraceState` | 字符串 | `TraceState`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 跨越不同分布式跟踪系统的其他供应商特定跟踪标识信息。 |
 | `EndpointName` | 字符串 | 在 Azure 数字孪生中创建的出口终结点的名称 |
 
 下面是这些类型的日志的示例 JSON 正文。
 
-#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+#### <a name="adteventroutesoperation-for-microsoftdigitaltwinseventroutesaction"></a>Microsoft.DigitalTwins/eventroutes/action 的 ADTEventRoutesOperation
+
+下面是 `Microsoft.DigitalTwins/eventroutes/action` 类型的 `ADTEventRoutesOperation` 的示例 JSON 正文。
 
 ```json
 {
   "time": "2020-11-05T22:18:38.0708705Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/eventroutes/action",
+  "operationVersion": "",
   "category": "EventRoutesOperation",
-  "resultDescription": "Unable to send EventGrid message to [my-event-grid.westus-1.eventgrid.azure.net] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "resultType": "",
+  "resultSignature": "",
+  "resultDescription": "Unable to send EventHub message to [myPath] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "durationMs": -1,
+  "callerIpAddress": "",
   "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
-  "level": "3",
+  "identity": {
+    "claims": {
+      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
+    }
+  },
+  "level": "4",
   "location": "southcentralus",
+  "uri": "",
   "properties": {
-    "endpointName": "endpointEventGridInvalidKey"
+    "endpointName": "myEventHub"
+  },
+  "traceContext": {
+    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
+    "spanId": "b630da57026dd046",
+    "parentId": "9f0de6dadae85945",
+    "traceFlags": "01",
+    "tracestate": "k1=v1,k2=v2"
   }
-}
+},
 ```
 
 ## <a name="view-and-query-logs"></a>查看和查询日志
@@ -255,10 +365,10 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
     - “查询”选项卡包含可加载到编辑器中的示例查询。
     - 在“筛选器”选项卡中可以自定义查询返回的数据的筛选视图。
 
-有关日志查询以及如何编写日志查询的更多详细信息，请访问 [Azure Monitor 中的日志查询概述](../azure-monitor/logs/log-query-overview.md)。
+有关日志查询以及如何编写日志查询的更多详细信息，请访问 Azure Monitor 中的日志查询概述。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关配置诊断的详细信息，请参阅[收集和使用来自 Azure 资源的日志数据](../azure-monitor/essentials/platform-logs-overview.md)。
-* 有关 Azure 数字孪生指标的信息，请参阅[故障排除：使用 Azure Monitor 查看指标](troubleshoot-metrics.md)。
-* 若要了解如何对指标启用警报，请参阅[故障排除：设置警报](troubleshoot-alerts.md)。
+* 有关配置诊断的详细信息，请参阅[从 Azure 资源收集和使用日志数据](../azure-monitor/essentials/platform-logs-overview.md)。
+* 若要了解 Azure 数字孪生指标，请参阅故障排除：使用 Azure Monitor 查看指标。
+* 若要了解如何对指标启用警报，请参阅故障排除：设置警报。

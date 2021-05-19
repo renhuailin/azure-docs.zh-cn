@@ -3,12 +3,12 @@ title: 管理 Azure 实验室服务中的实验室 | Microsoft Docs
 description: 了解如何创建和配置教室实验室、如何查看所有实验室、如何与实验室用户共享注册链接，或者如何删除实验室。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: c6acb9609abac15b9ff92250e3d5d44c585881cc
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481797"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96434203"
 ---
 # <a name="manage-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的实验室 
 本文介绍如何创建和删除教室实验室。 它还说明了如何查看实验室帐户中的所有实验室。 
@@ -18,7 +18,7 @@ ms.locfileid: "107481797"
 
 ## <a name="create-a-classroom-lab"></a>创建课堂实验室
 
-1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。
+1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 尚不支持 Internet Explorer 11。 
 1. 选择“登录”并输入凭据。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码 。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
 1. 选择“新建实验室”。 
     

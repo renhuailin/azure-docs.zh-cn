@@ -1,5 +1,5 @@
 ---
-title: 利用 Azure DDoS 保护设计复原解决方案
+title: 利用 Azure DDoS 防护来设计复原解决方案
 description: 了解如何利用日志记录数据深入了解应用程序的情况。
 services: security
 author: terrylanfear
@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
 ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498925"
 ---
-# <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保护-设计复原解决方案
+# <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保护 - 设计复原解决方案
 
 本文面向 IT 决策人和安全管理人员。 预期读者熟悉 Azure、网络和安全性。
 DDoS 是企图耗尽应用程序资源的一种攻击。 其目的是影响应用程序的可用性和处理合法请求的能力。 此类攻击正变得越来越复杂，且规模和影响程度越来越高。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。 针对分布式拒绝服务 (DDoS) 复原能力进行设计需要规划和设计各种故障模式。 Azure 针对 DDoS 攻击提供持续保护。 这种保护默认已集成到 Azure 平台中，且不收取额外的费用。
@@ -54,7 +54,7 @@ DDoS 是企图耗尽应用程序资源的一种攻击。 其目的是影响应�
 
 深层防御的理念是通过多样化的防御策略来掌控风险。 应用程序中的分层安全防御可以减少攻击成功的可能性。 我们建议使用 Azure 平台的内置功能对其应用程序实施安全设计。
 
-例如，攻击风险会随着应用程序的规模（外围应用）的增大而增大。 你可以通过使用审批列表来关闭公开的 IP 地址空间，并将负载平衡器上不需要的侦听端口关闭 ([Azure 负载平衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) 和 [Azure 应用程序网关](../../application-gateway/application-gateway-create-probe-portal.md)) ，从而减少外围应用。 [网络安全组 (NSG)](../../virtual-network/network-security-groups-overview.md) 是缩小受攻击面的另一种方法。
+例如，攻击风险会随着应用程序的规模（外围应用）的增大而增大。 可以使用审批列表关闭负载均衡器（[Azure 负载均衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)和 [Azure 应用程序网关](../../application-gateway/application-gateway-create-probe-portal.md)）上不需要的公开 IP 地址空间和侦听端口，来减少外围应用。 [网络安全组 (NSG)](../../virtual-network/network-security-groups-overview.md) 是缩小受攻击面的另一种方法。
 可以使用[服务标记](../../virtual-network/network-security-groups-overview.md#service-tags)和[应用程序安全组](../../virtual-network/network-security-groups-overview.md#application-security-groups)来最大程度地简化安全规则的创建，并将网络安全性配置为应用程序结构的自然扩展。
 
 应尽可能地在[虚拟网络](../../virtual-network/virtual-networks-overview.md)中部署 Azure 服务。 这种做法可让服务资源通过专用 IP 地址通信。 来自虚拟网络的 Azure 服务流量默认使用公共 IP 地址作为源 IP 地址。 使用[服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)时，服务流量会在通过虚拟网络访问 Azure 服务时改用虚拟网络专用地址作为源 IP 地址。
@@ -73,7 +73,7 @@ Azure 提供两个可以防御网络攻击（第 3 层和第 4 层）的 DDoS �
 
 Azure 中的基本 DDoS 防护包括硬件和软件组件。 软件控制平面决定何时、何处的何种流量应该流过用于分析和消除攻击流量的硬件设备。 控制平面根据基础结构范围的 DDoS 防护策略做出此决定。 此策略是静态设置的，将全局应用到所有 Azure 客户。
 
-例如，DDoS 防护策略指定在生成多大的流量后应触发保护。  (即，应通过清理设备路由租户的流量。 ) 策略，然后指定清理设备应如何 *缓解* 攻击。
+例如，DDoS 防护策略指定在生成多大的流量后应触发保护。 （即，应该通过清理设备路由租户的流量。）然后，策略指定清理设备应以何种方式缓解攻击。
 
 Azure DDoS 防护基本服务用于实现基础结构保护和 Azure 平台保护。 当流量速率过大，从而可能影响到多租户环境中的多个客户时，该服务会降低流量。 它不提供警报或者按客户自定义的策略。
 
@@ -93,11 +93,11 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 #### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 防护遥测、监视和警报
 
-标准 DDoS 防护在 DDoS 攻击持续期间通过 [Azure Monitor](../../azure-monitor/overview.md) 公开丰富的遥测数据。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 可以通过 Azure Monitor 诊断界面将日志记录与 Splunk (Azure 事件中心) 、Azure Monitor 日志和 Azure 存储集成，以便进行高级分析。
+标准 DDoS 防护在 DDoS 攻击持续期间通过 [Azure Monitor](../../azure-monitor/overview.md) 公开丰富的遥测数据。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 可将日志记录集成到 Splunk（Azure 事件中心）、Azure Monitor 日志和 Azure 存储，以通过 Azure Monitor 诊断界面进行高级分析。
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 缓解策略
 
-在 Azure 门户中，选择 "**监视**  >  **指标**"。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。 DDoS 指标将显示在“可用指标”窗格中。
+在 Azure 门户中，选择“监视” > “指标”。  在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。 DDoS 指标将显示在“可用指标”窗格中。
 
 标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以选择“触发 DDoS 缓解措施的入站数据包数”指标来查看策略阈值。
 
@@ -127,7 +127,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 如果使用标准 DDoS 防护，请确保在面向 Internet 的终结点的虚拟网络上启用它。 配置 DDoS 警报有助于持续密切关注基础结构上存在的任何潜在攻击。 
 
-独立监视您的应用程序。 了解应用程序的正常行为。 如果应用程序在遇到 DDoS 攻击期间的行为不符合预期，请准备好采取措施。
+独立监视应用程序。 了解应用程序的正常行为。 如果应用程序在遇到 DDoS 攻击期间的行为不符合预期，请准备好采取措施。
 
 #### <a name="testing-through-simulations"></a>通过模拟进行测试
 
@@ -193,7 +193,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 - 某个行动者威胁针对你的资源发起 DDoS 攻击。
 
-- 如果需要允许列出 Azure DDoS 保护标准中的 IP 或 IP 范围。 常见的情况是，如果流量从外部云 WAF 路由到 Azure，则允许列出 IP。 
+- 如果需要允许列出 Azure DDoS 防护标准版中的 IP 或 IP 范围。 常见的情况是，如果流量从外部云 WAF 路由到 Azure，则允许列出 IP。 
 
 对于影响关键业务的攻击，请创建严重性为 A 的[支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

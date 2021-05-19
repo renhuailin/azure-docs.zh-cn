@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 833b6413cc5dfde1129075a286e5fe93a06e159f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92890915"
 ---
 # <a name="create-a-map"></a>创建地图
@@ -171,7 +171,7 @@ var map = new atlas.Map('myMap', {
 
 ## <a name="try-out-the-code"></a>试用代码
 
-查看代码示例。 可以在”JS“选项卡内编辑 JavaScript 代码，在”结果“选项卡上查看地图视图变化 。还可以单击右上角的“编辑 CodePen”来修改 CodePen 中的代码。
+查看代码示例。 你可以在“JS”选项卡中编辑 JavaScript 代码，然后在“结果”选项卡上查看地图视图更改。还可以单击右上角的“在 CodePen 上编辑”，然后在 CodePen 中更改代码  。
 
 <a id="relatedReference"></a>
 

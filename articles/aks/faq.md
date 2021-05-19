@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: references_regions
 ms.openlocfilehash: 6d7ea48722e6604fe67d7a4ddcb12870623d9354
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739621"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
@@ -133,13 +133,13 @@ Windows Server 对节点池的支持具有一些限制，Kubernetes 项目中的
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS 是否提供服务级别协议？
 
-AKS 提供 SLA 保证作为可选的附加功能，包括 [运行时间 SLA][uptime-sla]。 
+AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功能）。 
 
-默认提供的免费 SKU 没有关联的服务级别 *协议*，但其服务级别 *目标* 为99.5%。 发生暂时性连接问题时，可能会出现暂时性的连接问题、不正常的是节点、平台维护、应用程序对 API 服务器的请求等。如果你的工作负荷不能容忍 API 服务器重启，则建议使用运行时间 SLA。
+默认提供的免费 SKU 没有关联的服务级别协议，但具有 99.5% 的服务级别目标 。 在升级、底层节点运行不正常、平台维护、应用程序请求使 API 服务器不堪重负等情况下，可能会出现暂时性连接问题。如果你的工作负载不容许 API 服务器重启，那么建议使用运行时间 SLA。
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>是否可将 Azure 预留折扣应用于 AKS 代理节点？
 
-AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AKS 中使用的 VM 大小购买 [Azure 保留][reservation-discounts] ，则会自动应用这些折扣。
+AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AKS 中使用的 VM 大小购买了 [Azure 预留][reservation-discounts]，这些折扣会自动应用。
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>我可以在 Azure 租户之间移动/迁移群集吗？
 
@@ -182,7 +182,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 请确认你的服务主体尚未过期。  请参阅：[AKS 服务主体](./kubernetes-service-principal.md)和 [AKS 更新凭据](./update-credentials.md)。
 
 ## <a name="can-i-scale-my-aks-cluster-to-zero"></a>能否将 AKS 群集缩放为零？
-可以完全 [停止正在运行的 AKS 群集](start-stop-cluster.md)，并保存各自的计算成本。 此外，还可以选择将 [所有或特定 `User` 节点池缩放或自动缩放](scale-cluster.md#scale-user-node-pools-to-0) 到0，只维护必要的群集配置。
+可以完全[停止正在运行的 AKS 群集](start-stop-cluster.md)，从而节省相应的计算成本。 此外，还可以选择[将所有的或特定的 `User` 节点池缩放或自动缩放](scale-cluster.md#scale-user-node-pools-to-0)为 0，以仅维护必要的群集配置。
 你不能直接将[系统节点池](use-system-pools.md)缩放为零。
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>是否可以使用虚拟机规模集 API 手动进行缩放？
@@ -191,7 +191,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 ## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-zero-nodes"></a>是否可以使用虚拟机规模集手动缩放为 0 个节点？
 
-否。使用虚拟机规模集 API 进行的缩放操作不受支持。 你可以使用 AKS API 扩展到零个非系统节点池，或者改为 [停止群集](start-stop-cluster.md) 。
+否。使用虚拟机规模集 API 进行的缩放操作不受支持。 可以使用 AKS API 缩放到零个非系统节点池，或改为[停止群集](start-stop-cluster.md)。
 
 ## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>是否可以停止或解除分配我的所有 VM？
 
@@ -203,7 +203,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS 是否将任何客户数据存储在群集区域之外？
 
-启用将客户数据存储在单个区域中的功能目前仅适用于在巴西地区的亚太地域和巴西南部 () 圣保罗) 地区 (新加坡地区。 对于其他所有区域，客户数据存储在以下地域。
+将客户数据存储到一个区域的功能目前仅适用于亚太地区的东南亚区域（新加坡）和巴西地区的巴西南部区域（圣保罗州）。 对于其他所有区域，客户数据存储在以下地域。
 
 ## <a name="are-aks-images-required-to-run-as-root"></a>AKS 映像是否需要以根用户身份运行？
 
@@ -260,7 +260,7 @@ root@k8s-agentpool1-20465682-1:/#
 
 ## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>当卷中有很多文件时，如何避免权限所有权设置缓慢问题？
 
-通常情况下，如果你的 pod 作为非根用户运行 (应) ，则必须在 `fsGroup` pod 的安全上下文中指定，以便该卷可供盒读写。 [此处](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)将更详细地介绍此要求。
+通常情况下，如果 Pod 以非根用户（应为根用户）身份运行，则必须在 Pod 的安全上下文中指定一个 `fsGroup`，才能使该卷可供 Pod 读取和写入。 [此处](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)将更详细地介绍此要求。
 
 但是设置 `fsGroup` 的一个影响是，每次装载卷时，Kubernetes 都必须通过 `chown()` 和 `chmod()` 递归卷内的所有文件和目录（下面提到的一些情况例外）。 即使卷的组所有权已经与请求的 `fsGroup` 匹配，也会发生这种情况，而对于包含大量小文件的较大卷来说，价格可能会非常高昂，这会导致 Pod 需要花费很长时间才能启动。 在 v1.20 之前，这种情况是一个已知问题，解决方法是将 Pod 设置为以根用户身份运行：
 

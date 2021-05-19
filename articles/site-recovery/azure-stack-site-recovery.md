@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 将 Azure Stack VM 复制到 Azure | Microsoft
 description: 了解如何使用 Azure Site Recovery 服务为 Azure Stack VM 设置到 Azure 的灾难恢复。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 300b239de74c7d21e03eb0c3b059663b5074964c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96016892"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728379"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -166,7 +166,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
     ![“+配置服务器”对话框的屏幕截图，其中显示消息“在上面的命令栏中单击‘+配置服务器’以设置一个...”。](./media/azure-stack-site-recovery/plus-config-srv.png)
 
-3. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中    。
+3. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中。   
 5. 下载站点恢复统一安装程序安装文件。
 6. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为 5 天。
 
@@ -314,7 +314,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 ### <a name="fail-back-to-azure-stack"></a>故障回复到 Azure Stack
 
-主站点重新启动并运行后，可从 Azure 故障回复到 Azure Stack。 为此，请按照[此处](/azure-stack/operator/site-recovery-failback?view=azs-2005)列出的步骤操作。
+主站点重新启动并运行后，可从 Azure 故障回复到 Azure Stack。 为此，请按照[此处](/azure-stack/operator/site-recovery-failback)列出的步骤操作。
 
 ## <a name="conclusion"></a>结论
 

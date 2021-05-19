@@ -1,6 +1,6 @@
 ---
-title: RHEL 上适用于 SAP 的 Azure 大型实例高可用性
-description: 了解如何使用 Red Hat Enterprise Linux 中的 Pacemaker 群集自动执行 SAP HANA 数据库故障转移。
+title: SAP on RHEL 的 Azure 大型实例高可用性
+description: 了解如何在 Red Hat Enterprise Linux 中使用 Pacemaker 群集自动执行 SAP HANA 数据库故障转移。
 author: jaawasth
 ms.author: jaawasth
 ms.service: virtual-machines-linux
@@ -8,29 +8,29 @@ ms.subservice: workloads
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.openlocfilehash: 99e9994d01e4579bf6ef2e369e0fe85c48af52ef
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102182428"
 ---
-# <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>RHEL 上适用于 SAP 的 Azure 大型实例高可用性
+# <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>SAP on RHEL 的 Azure 大型实例高可用性
 
-本文介绍如何在 RHEL 7.6 中配置 Pacemaker 群集，以自动执行 SAP HANA 数据库故障转移。 若要完成本指南中的步骤，您需要充分了解 Linux、SAP HANA 和 Pacemaker。
+本文介绍如何在 RHEL 7.6 中配置 Pacemaker 群集，以自动执行 SAP HANA 数据库故障转移。 若要完成本指南中的步骤，需要充分了解 Linux、SAP HANA 和 Pacemaker。
 
-下表包含本文中使用的主机名。 本文中的代码块显示了需要运行的命令以及这些命令的输出。 请密切注意每个命令中引用的节点。
+下表包含本文中使用的主机名。 本文中的代码块显示了需要运行的命令以及这些命令的输出。 请特别注意每个命令中引用的节点。
 
 | 类型 | 主机名 | 节点|
 |-------|-------------|------|
-|主主机|`sollabdsm35`|节点1|
-|辅助主机|`sollabdsm36`|节点2|
+|主要主机|`sollabdsm35`|节点 1|
+|辅助主机|`sollabdsm36`|节点 2|
 
 ## <a name="configure-your-pacemaker-cluster"></a>配置 Pacemaker 群集
 
 
-在开始配置群集之前，请设置 SSH 密钥交换，在节点之间建立信任。
+在开始配置群集之前，请设置 SSH 密钥交换，以在节点之间建立信任。
 
-1. 使用以下命令 `/etc/hosts` 在两个节点上创建相同的。
+1. 使用以下命令在两个节点上创建相同的 `/etc/hosts`。
 
     ```
     root@sollabdsm35 ~]# cat /etc/hosts
@@ -55,14 +55,14 @@ ms.locfileid: "102182428"
 
     ```
 
-2.  创建和交换 SSH 密钥。
-    1. 生成 ssh 密钥。
+2.  创建并交换 SSH 密钥。
+    1. 生成 SSH 密钥。
 
        ```
        [root@sollabdsm35 ~]# ssh-keygen -t rsa -b 1024
        [root@sollabdsm36 ~]# ssh-keygen -t rsa -b 1024
        ```
-    2. 将密钥复制到无密码 ssh 的其他主机。
+    2. 将密钥复制到其他主机以实现无密码 SSH 通信。
     
        ```
        [root@sollabdsm35 ~]# ssh-copy-id -i /root/.ssh/id_rsa.pub sollabdsm35
@@ -102,8 +102,8 @@ ms.locfileid: "102182428"
     SELinux status: disabled
     ```
 
-5. 配置 NTP (网络时间协议) 。 两个群集节点的时间和时区必须匹配。 使用以下命令打开 `chrony.conf` 并验证文件的内容。
-    1. 应将以下内容添加到配置文件。 根据您的环境更改实际值。
+5. 配置 NTP（网络时间协议）。 两个群集节点的时间和时区必须匹配。 使用以下命令打开 `chrony.conf` 并验证该文件的内容。
+    1. 应将以下内容添加到配置文件。 根据你的环境更改实际值。
         ```
         vi /etc/chrony.conf
     
@@ -149,8 +149,8 @@ ms.locfileid: "102182428"
         ```
 
 6. 更新系统
-    1. 首先，在系统上安装最新的更新，然后再开始安装 SBD 设备。
-    1. 如果你不想完全更新系统，即使建议，也请至少更新以下包。
+    1. 在开始安装 SBD 设备之前，请先在系统上安装最新的更新。
+    1. 如果你不想要对系统进行全面更新（即使建议这样做），请至少更新以下包。
         1. `resource-agents-sap-hana`
         1. `selinux-policy`
         1. `iscsi-initiator-utils`
@@ -182,9 +182,9 @@ ms.locfileid: "102182428"
 
   ## <a name="configure-watchdog"></a>配置监视器
 
-本部分介绍如何配置监视器。 本部分使用的是相同的两个主机， `sollabdsm35` 并在 `sollabdsm36` 本文开头部分引用。
+本部分介绍如何配置监视器。 本部分使用本文开头所提到的两个主机：`sollabdsm35` 和 `sollabdsm36`。
 
-1. 请确保监视程序后台程序未在任何系统上运行。
+1. 请确保监视器守护程序未在任何系统上运行。
     ```
     [root@sollabdsm35 ~]# systemctl disable watchdog
     [root@sollabdsm36 ~]# systemctl disable watchdog
@@ -205,7 +205,7 @@ ms.locfileid: "102182428"
 
     ```
 
-2. 默认 Linux 监视器（将在安装过程中安装）是 UCS 和 HPE SDFlex 系统不支持的 iTCO 监视器。 因此，必须禁用此监视器。
+2. 在安装过程中安装的默认 Linux 监视器是 UCS 和 HPE SDFlex 系统所不支持的 iTCO 监视器。 因此必须禁用此监视器。
     1. 系统上安装并加载了错误的监视器：
        ```
    
@@ -223,7 +223,7 @@ ms.locfileid: "102182428"
        sollabdsm36:~ # modprobe -r iTCO_wdt iTCO_vendor_support
        ```  
         
-    3. 若要确保在下一次系统启动过程中未加载驱动程序，必须列入阻止列表驱动程序。 若要阻止列表 iTCO 模块，请将以下内容添加到文件的末尾 `50-blacklist.conf` ：
+    3. 为确保在下一次启动系统期间不会加载该驱动程序，必须将该驱动程序加入阻止列表。 若要将 iTCO 模块加入阻止列表，请将以下内容添加到 `50-blacklist.conf` 文件的末尾：
        ```
    
        sollabdsm35:~ # vi /etc/modprobe.d/50-blacklist.conf
@@ -234,13 +234,13 @@ ms.locfileid: "102182428"
    
        blacklist iTCO_vendor_support
        ```
-    4. 将文件复制到辅助主机。
+    4. 将该文件复制到辅助主机。
        ```
        sollabdsm35:~ # scp /etc/modprobe.d/50-blacklist.conf sollabdsm35:
        /etc/modprobe.d/50-blacklist.conf
        ```  
 
-    5. 测试 ipmi 服务是否已启动。 很重要的一点是，IPMI 计时器没有运行。 计时器管理将从 SBD pacemaker 服务中完成。
+    5. 测试 ipmi 服务是否已启动。 IPMI 计时器必须未运行。 将从 SBD pacemaker 服务执行计时器管理。
        ```
        sollabdsm35:~ # ipmitool mc watchdog get
    
@@ -260,7 +260,7 @@ ms.locfileid: "102182428"
    
        ``` 
 
-3. 默认情况下，将不会创建所需的设备/dev/watchdog。
+3. 默认不会创建所需的设备 /dev/watchdog。
 
     ```
     No watchdog device was created
@@ -270,7 +270,7 @@ ms.locfileid: "102182428"
     ls: cannot access /dev/watchdog: No such file or directory
     ```
 
-4. 配置 IPMI 监视程序。
+4. 配置 IPMI 监视器。
 
     ``` 
     sollabdsm35:~ # mv /etc/sysconfig/ipmi /etc/sysconfig/ipmi.org
@@ -286,7 +286,7 @@ ms.locfileid: "102182428"
     IPMI_POWERCYCLE=no
     IPMI_IMB=no
     ```
-5. 将监视程序配置文件复制到辅助数据库。
+5. 将监视器配置文件复制到辅助节点。
     ```
     sollabdsm35:~ # scp /etc/sysconfig/ipmi
     sollabdsm36:/etc/sysconfig/ipmi
@@ -309,8 +309,8 @@ ms.locfileid: "102182428"
 
     [root@sollabdsm36 ~]# systemctl start ipmi
     ```
-     现在，启动了 IPMI 服务并创建了设备/dev/watchdog，但计时器仍处于停止状态。 稍后，SBD 将管理监视器重置并启用 IPMI 计时器。
-7.  检查/dev/watchdog 是否存在，但未被使用。
+     现已启动 IPMI 服务并已创建设备 /dev/watchdog – 但计时器仍处于停止状态。 稍后 SBD 将管理监视器重置并启用 IPMI 计时器。
+7.  检查 /dev/watchdog 是否存在但未使用。
     ```
     [root@sollabdsm35 ~]# ipmitool mc watchdog get
     Watchdog Timer Use: SMS/OS (0x04)
@@ -327,10 +327,10 @@ ms.locfileid: "102182428"
     ```
 
 ## <a name="sbd-configuration"></a>SBD 配置
-本部分介绍如何配置 SBD。 本部分使用的是相同的两个主机， `sollabdsm35` 并在 `sollabdsm36` 本文开头部分引用。
+本部分介绍如何配置 SBD。 本部分使用本文开头所提到的两个主机：`sollabdsm35` 和 `sollabdsm36`。
 
-1.  请确保 iSCSI 或 FC 磁盘在两个节点上都可见。 此示例使用基于 FC 的 SBD 设备。 有关 SBD 防护的详细信息，请参阅 [参考文档](http://www.linux-ha.org/wiki/SBD_Fencing)。
-2.  LUN ID 必须在所有节点上都相同。
+1.  请确保 iSCSI 或 FC 磁盘在两个节点上均可见。 此示例使用基于 FC 的 SBD 设备。 有关 SBD 隔离的详细信息，请参阅[参考文档](http://www.linux-ha.org/wiki/SBD_Fencing)。
+2.  LUN-ID 在所有节点上必须相同。
   
 3.  检查 sbd 设备的多路径状态。
     ```
@@ -346,7 +346,7 @@ ms.locfileid: "102182428"
     `- 10:0:3:2 sdl 8:176 active ready running
     ```
 
-4.  创建 SBD 光盘并设置群集基元防护。 必须在第一个节点上执行此步骤。
+4.  创建 SBD 磁盘并设置群集基元隔离。 必须在第一个节点上执行此步骤。
     ```
     sbd -d /dev/mapper/3600a098038304179392b4d6c6e2f4b62 -4 20 -1 10 create 
 
@@ -359,7 +359,7 @@ ms.locfileid: "102182428"
     Device /dev/mapper/3600a098038304179392b4d6c6e2f4b62 is initialized.
     ```
 
-5.  将 SBD 配置复制到节点2。
+5.  将 SBD 配置复制到节点 2。
     ```
     vi /etc/sysconfig/sbd
 
@@ -376,7 +376,7 @@ ms.locfileid: "102182428"
     scp /etc/sysconfig/sbd node2:/etc/sysconfig/sbd
     ```
 
-6.  检查两个节点中是否显示了 SBD 磁盘。
+6.  检查 SBD 磁盘是否在两个节点中可见。
     ```
     sbd -d /dev/mapper/3600a098038304179392b4d6c6e2f4b62 dump
 
@@ -396,7 +396,7 @@ ms.locfileid: "102182428"
     ==Header on disk /dev/mapper/3600a098038304179392b4d6c6e2f4b62 is dumped
     ```
 
-7.  在 SBD config 文件中添加 SBD 设备。
+7.  在 SBD 配置文件中添加 SBD 设备。
 
     ```
     \# SBD_DEVICE specifies the devices to use for exchanging sbd messages
@@ -415,19 +415,19 @@ ms.locfileid: "102182428"
     ```
 
 ## <a name="cluster-initialization"></a>群集初始化
-在本部分中，将初始化群集。 本部分使用的是相同的两个主机， `sollabdsm35` 并在 `sollabdsm36` 本文开头部分引用。
+在本部分，你将初始化群集。 本部分使用本文开头所提到的两个主机：`sollabdsm35` 和 `sollabdsm36`。
 
-1.  设置群集用户密码 (所有节点) 。
+1.  设置群集用户密码（在所有节点上）。
     ```
     passwd hacluster
     ```
-2.  在所有系统上启动 PC。
+2.  在所有系统上启动 PCS。
     ```
     systemctl enable pcsd
     ```
   
 
-3.  停止并)  (所有节点上禁用防火墙。
+3.  停止并禁用防火墙（在所有节点上）。
     ```
     systemctl disable firewalld 
 
@@ -443,7 +443,7 @@ ms.locfileid: "102182428"
   
   
 
-5.  仅从节点1运行群集身份验证。
+5.  仅从节点 1 运行群集身份验证。
 
     ```
     pcs cluster auth sollabdsm35 sollabdsm36
@@ -504,24 +504,24 @@ ms.locfileid: "102182428"
     pcsd: active/disabled
     ```
 
-8. 如果一个节点未加入群集，请检查防火墙是否仍在运行。
+8. 如果某个节点未加入群集，请检查防火墙是否仍在运行。
 
   
 
-9. 创建和启用 SBD 设备
+9. 创建并启用 SBD 设备
     ```
     pcs stonith create SBD fence_sbd devices=/dev/mapper/3600a098038303f4c467446447a
     ```
   
 
-10. 停止群集) 在所有节点上重新启动群集服务 (。
+10. 停止群集并重启群集服务（在所有节点上）。
 
     ```
     pcs cluster stop --all
     ```
 
 
-11. ) 上的所有节点上重新启动群集服务 (。
+11. 重启群集服务（在所有节点上）。
 
     ```
     systemctl stop pcsd
@@ -546,7 +546,7 @@ ms.locfileid: "102182428"
     Active: active (running) since Wed 2021-01-20 01:43:41 EST; 9min ago
     ```
 
-13. 如果未从 pcsd 自动启动，请重新启动群集 () 。
+13. 重启群集（如果未从 pcsd 自动启动）。
 
     ```
     pcs cluster start –-all
@@ -569,7 +569,7 @@ ms.locfileid: "102182428"
     ```
   
 
-15. 立即通过一个资源检查新群集状态。
+15. 检查新群集状态现在是否显示为包含一个资源。
     ```
     pcs status
 
@@ -609,7 +609,7 @@ ms.locfileid: "102182428"
     ```
   
 
-16. 现在必须运行 IPMI 计时器，且必须由 sbd 打开/dev/watchdog 设备。
+16. 现在，IPMI 计时器必须已运行，并且 /dev/watchdog 设备必须已由 sbd 打开。
 
     ```
     ipmitool mc watchdog get
@@ -646,7 +646,7 @@ ms.locfileid: "102182428"
     ```
   
 
-18. 通过崩溃内核来测试 SBD 防护。
+18. 通过使内核崩溃来测试 SBD 隔离。
 
     * 触发内核崩溃。
 
@@ -657,34 +657,34 @@ ms.locfileid: "102182428"
       set as panic_wdt_timeout in the /etc/sysconfig/ipmi config file.
       ```
   
-    * 要运行的第二个测试是使用 PC 命令来界定节点。
+    * 要运行的第二项测试是使用 PCS 命令来隔离节点。
 
       ```
       pcs stonith fence sollabdsm36
       ```
   
 
-19. 对于其余的 SAP HANA 群集，可以通过设置以下内容禁用 STONITH：
+19. 对于其余的 SAP HANA 群集，可通过以下设置禁用 STONITH：
 
-   * pc 属性集 `stonith-enabled=false`
-   * 必须将此参数设置为 true，以提高工作效率。 如果此参数未设置为 true，则不支持群集。
-   * pc 属性集 `stonith-enabled=true`
+   * pcs property set `stonith-enabled=false`
+   * 必须将此参数设置为 true，以提高使用效率。 如果此参数未设置为 true，则不支持群集。
+   * pcs property set `stonith-enabled=true`
 
-## <a name="hana-integration-into-the-cluster"></a>HANA 到群集的集成
+## <a name="hana-integration-into-the-cluster"></a>将 HANA 集成到群集中
 
-在本部分中，将 HANA 集成到群集。 本部分使用的是相同的两个主机， `sollabdsm35` 并在 `sollabdsm36` 本文开头部分引用。
+在本部分，你要将 HANA 集成到群集中。 本部分使用本文开头所提到的两个主机：`sollabdsm35` 和 `sollabdsm36`。
 
-可以通过两个选项来集成 HANA。 第一种方法是成本优化的解决方案，可在其中使用辅助系统运行 QAS 系统。 我们不建议采用此方法，因为它不会在群集软件、操作系统或 HANA 上测试更新，并且配置更新可能会导致 PRD 系统的计划外停机。 此外，如果需要在辅助系统上激活 PRD 系统，则必须在辅助节点上关闭 QAS。 第二种方法是在一个群集上安装 QAS 系统，并为 PRD 使用第二个群集。 此选项还允许你在将所有组件投入生产之前对其进行测试。 本文介绍如何配置第二个选项。
+有两个选项可用于集成 HANA。 第一个选项是成本优化的解决方案，在其中可以使用辅助系统运行 QAS 系统。 我们不建议采用此方法，因为这样就没有任何系统可用于测试群集软件、操作系统或 HANA 的更新，并且配置更新可能导致 PRD 系统出现计划外的停机。 此外，如果需要在辅助系统上激活 PRD 系统，则必须在辅助节点上关闭 QAS。 第二个选项是在一个群集上安装 QAS 系统，并将另一个群集用于 PRD。 使用此选项还可以在将所有组件投放生产之前对其进行测试。 本文将介绍如何配置第二个选项。
 
 
-* 此过程是在页面上构建 RHEL 说明：
+* 此过程是根据以下页面上的 RHEL 说明建立的：
 
   * https://access.redhat.com/articles/3004101
 
- ### <a name="steps-to-follow-to-configure-hsr"></a>配置 HSR 需要遵循的步骤
+ ### <a name="steps-to-follow-to-configure-hsr"></a>配置 HSR 所要遵循的步骤
 
-1.  这些是在主) 节点 1 (节点上执行的操作。
-    1. 请确保数据库日志模式设置为 "正常"。
+1.  下面是需要在节点 1（主要节点）上执行的操作。
+    1. 确保数据库日志模式设置为“常规”。
 
        ```  
    
@@ -699,7 +699,7 @@ ms.locfileid: "102182428"
    
        "normal"
        ```
-    2. SAP HANA 系统复制将仅在执行初始备份后工作。 以下命令在目录中创建初始备份 `/tmp/` 。 为数据库选择正确的备份文件系统。 
+    2. 只有在执行初始备份之后，才会进行 SAP HANA 系统复制。 以下命令在 `/tmp/` 目录中创建初始备份。 为数据库选择适当的备份文件系统。 
        ```
        * hdbsql -i 00 -u system -p SAPhana10 "BACKUP DATA USING FILE
        ('/tmp/backup')"
@@ -734,7 +734,7 @@ ms.locfileid: "102182428"
    
        ```
 
-    4. 启用源系统上的 HSR 进程。
+    4. 在源系统上启用 HSR 过程。
        ```
        hdbnsutil -sr_enable --name=DC1
 
@@ -745,7 +745,7 @@ ms.locfileid: "102182428"
        done.
        ```
 
-    5. 检查主系统的状态。
+    5. 检查主要系统的状态。
        ```
        hdbnsutil -sr_state
     
@@ -793,7 +793,7 @@ ms.locfileid: "102182428"
        done.
        ```
 
- 2. 这些是在节点 2 (辅助) 上执行的操作。
+ 2. 下面是需要在节点 2（辅助节点）上执行的操作。
      1. 停止数据库。
        ```
        su – hr2adm
@@ -802,7 +802,7 @@ ms.locfileid: "102182428"
        ```
     
 
-     2. 仅适用于 SAP HANA 2.0，将 SAP HANA 系统 `PKI SSFS_HR2.KEY` 和 `SSFS_HR2.DAT` 文件从主节点复制到辅助节点。
+     2. （仅适用于 SAP HANA 2.0）将 SAP HANA 系统 `PKI SSFS_HR2.KEY` 和 `SSFS_HR2.DAT` 文件从主要节点复制到辅助节点。
        ```
        scp
        root@node1:/usr/sap/HR2/SYS/global/security/rsecssfs/key/SSFS_HR2.KEY
@@ -815,7 +815,7 @@ ms.locfileid: "102182428"
        /usr/sap/HR2/SYS/global/security/rsecssfs/data/SSFS_HR2.DAT
        ```
 
-     3. 启用辅助数据库作为复制站点。
+     3. 将辅助节点启用为复制站点。
        ``` 
        su - hr2adm
    
@@ -954,67 +954,67 @@ ms.locfileid: "102182428"
     ```
   
 
-#### <a name="log-replication-mode-description"></a>日志复制模式描述
+#### <a name="log-replication-mode-description"></a>日志复制模式说明
 
-有关日志复制模式的详细信息，请参阅 [官方 SAP 文档](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/c039a1a5b8824ecfa754b55e0caffc01.html)。
+有关日志复制模式的详细信息，请参阅[官方的 SAP 文档](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/c039a1a5b8824ecfa754b55e0caffc01.html)。
   
 
 #### <a name="network-setup-for-hana-system-replication"></a>HANA 系统复制的网络设置
 
 
-若要确保复制流量使用正确的 VLAN 进行复制，必须在中正确配置 `global.ini` 。 如果跳过此步骤，则 HANA 将使用访问 VLAN 进行复制，这可能是不可能的。
+为确保复制流量使用正确的 VLAN 进行复制，必须在 `global.ini` 中正确配置 VLAN。 如果跳过此步骤，则 HANA 将使用“访问 VLAN”进行复制，这可能不符合你的期望。
 
 
-以下示例显示了用于将系统复制到辅助站点的主机名解析配置。 可以标识三个不同的网络：
+以下示例显示了到辅助站点的系统复制的主机名解析配置。 可以标识三个不同的网络：
 
-* 具有10.0.1 范围内的地址的公用网络。 *
+* 使用 10.0.1.* 范围内的地址的公用网络
 
-* 用于在每个站点的主机之间进行内部 SAP HANA 通信的网络： 192.168.1. *
+* 用于在每个站点上的主机之间进行内部 SAP HANA 通信的网络：192.168.1.*
 
-* 用于系统复制的专用网络： 10.5.1. *
+* 用于系统复制的专用网络：10.5.1.*
 
-在第一个示例中， `[system_replication_communication]listeninterface` 参数已设置为 `.global` ，并且仅指定了相邻复制站点的主机。
+在第一个示例中，`[system_replication_communication]listeninterface` 参数已设置为 `.global`，并且仅指定了相邻复制站点的主机。
 
-在下面的示例中， `[system_replication_communication]listeninterface` 已将参数设置为 `.internal` ，并且指定了两个站点的所有主机。
-
-  
-
-### <a name="source-sap-ag-sap-hana-hrs-networking"></a>源 SAP AG SAP HANA 小时网络
+在后一个示例中，`[system_replication_communication]listeninterface` 参数已设置为 `.internal`，并且指定了两个站点的所有主机。
 
   
 
-对于系统复制，不需要编辑 `/etc/hosts` 文件，内部 ( "virtual" ) 主机名必须映射到文件中的 IP 地址， `global.ini` 才能创建用于系统复制的专用网络。 此操作的语法如下所示：
+### <a name="source-sap-ag-sap-hana-hrs-networking"></a>源 SAP AG SAP HANA HRS 网络
+
+  
+
+对于系统复制，不必要编辑 `/etc/hosts` 文件，内部（“虚拟”）主机名必须映射到 `global.ini` 文件中的 IP 地址，以创建专用网络用于系统复制。 此配置的语法如下：
 
 global.ini
 
 [system_replication_hostname_resolution]
 
-<的 ip-address_site>=<内部主机-name_site>
+<ip-address_site>=<internal-host-name_site>
 
 
 ## <a name="configure-sap-hana-in-a-pacemaker-cluster"></a>在 Pacemaker 群集中配置 SAP HANA
-本部分介绍如何在 Pacemaker 群集中配置 SAP HANA。 本部分使用的是相同的两个主机， `sollabdsm35` 并在 `sollabdsm36` 本文开头部分引用。
+本部分介绍如何在 Pacemaker 群集中配置 SAP HANA。 本部分使用本文开头所提到的两个主机：`sollabdsm35` 和 `sollabdsm36`。
 
-确保满足以下先决条件：  
+请确保满足以下先决条件：  
 
-* Pacemaker 群集是根据文档配置的，并且具有正确和工作的防护
+* Pacemaker 群集是根据文档配置的，具有适当且可正常运行的隔离
 
-* 在所有群集节点上，启动时 SAP HANA 启动处于禁用状态，因为启动和停止将由群集管理
+* 所有群集节点上已禁用 SAP HANA 引导时启动，因为启动和停止将由群集管理
 
-* 使用 SAP 中的工具进行 SAP HANA 系统复制和接管在群集节点之间工作正常
+* 在群集节点之间可以正常使用 SAP 提供的工具进行 SAP HANA 系统复制和接管
 
-* SAP HANA 包含群集可由两个群集节点中的群集使用的监视帐户
+* SAP HANA 包含可供两个群集节点中的群集使用的监视帐户
 
-* 这两个节点都已订阅 "高可用性" 和 "RHEL for SAP HANA" (RHEL 6，RHEL 7) 通道
+* 这两个节点均已订阅“高可用性”和“RHEL for SAP HANA”（RHEL 6、RHEL 7）通道
 
   
 
-* 一般情况下，请仅在节点上执行所有 pc 命令，因为 CIB 将从电脑 shell 自动更新。
+* 一般而言，请仅从一个节点执行所有 pcs 命令，因为 CIB 将自动从 pcs shell 更新。
 
 * [有关仲裁策略的详细信息](https://access.redhat.com/solutions/645843)
 
 ### <a name="steps-to-configure"></a>配置步骤 
-1. 配置 pc。
+1. 配置 pcs。
     ```
     [root@node1 ~]# pcs property unset no-quorum-policy (optional – only if it was set before)
     [root@node1 ~]# pcs resource defaults resource-stickiness=1000
@@ -1123,7 +1123,7 @@ global.ini
 
     ```
 
-3.  创建主/辅助 SAPHana 资源。
+3.  创建主要/辅助 SAPHana 资源。
 
     ```
     SAPHana resource is responsible for starting, stopping and relocating the SAP HANA database. This resource must be run as a Primary/    Secondary cluster resource. The resource has the following attributes.
@@ -1277,16 +1277,16 @@ global.ini
     pcs constraint colocation add vip_HR2_00 with primary SAPHana_HR2_00-primary 2000
     ```
 
-###  <a name="testing-the-manual-move-of-saphana-resource-to-another-node"></a>测试 SAPHana 资源手动移至另一个节点
+###  <a name="testing-the-manual-move-of-saphana-resource-to-another-node"></a>测试手动将 SAPHana 资源移到另一个节点
 
-#### <a name="sap-hana-takeover-by-cluster"></a>群集) 的 (SAP Hana 接管
+#### <a name="sap-hana-takeover-by-cluster"></a>（群集接管 SAP HANA）
 
 
-若要测试 SAPHana 资源从一个节点移到另一个节点，请使用以下命令。 请注意， `--primary` 运行以下命令时，不应使用选项，因为 SAPHana 资源在内部的工作方式。
+若要测试将 SAPHana 资源从一个节点移到另一个节点，请使用以下命令。 请注意，由于 SAPHana 资源在内部的工作方式，运行以下命令时，不应使用选项 `--primary`。
 ```pcs resource move SAPHana_HR2_00-primary```
 
-每个 pc 资源移动命令调用后，群集将创建位置约束来实现资源的移动。 若要允许在将来进行自动故障转移，必须删除这些约束。
-若要删除它们，可以使用以下命令。
+对每个 pcs 资源调用 move 命令后，群集将创建位置约束以实现资源移动。 要使以后能够自动故障转移，必须删除这些约束。
+若要删除这些约束，可使用以下命令。
 ```
 pcs resource clear SAPHana_HR2_00-primary
 crm_mon -A1
@@ -1317,9 +1317,9 @@ Node Attributes:
 ```
   
 
-* 作为验证登录到 HANA。
+* 登录到 HANA 进行验证。
 
-  * 降级的主机：
+  * 已降级的主机：
 
     ```
     hdbsql -i 00 -u system -p SAPhana10 -n 10.7.0.82
@@ -1330,7 +1330,7 @@ Node Attributes:
     failed, rc=111:Connection refused (10.7.0.82:30015))
     ```
   
-  * 提升的主机：
+  * 已提升的主机：
 
     ```
     hdbsql -i 00 -u system -p SAPhana10 -n 10.7.0.84
@@ -1354,9 +1354,9 @@ Node Attributes:
     ```
   
 
-如果选项为 `AUTOMATED_REGISTER=false` ，则不能来回切换。
+如果使用选项 `AUTOMATED_REGISTER=false`，则无法来回切换。
 
-如果将此选项设置为 "false"，则必须重新注册节点：
+如果此选项设置为 false，则必须重新注册节点：
 
   
 ```
@@ -1364,9 +1364,9 @@ hdbnsutil -sr_register --remoteHost=node2 --remoteInstance=00 --replicationMode=
 ```
   
 
-现在节点2是主节点，它充当辅助主机。
+原本是主要主机的节点 2 现在成了辅助主机。
 
-请考虑将此选项设置为 true，以自动注册降级的主机。
+请考虑将此选项设置为 true，以自动注册已降级的主机。
 
   
 ```

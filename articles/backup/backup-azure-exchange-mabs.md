@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务器将 Exchange Server 备份�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: f3a7fae5a1f5ec933c015546ddf2bdb2898e3904
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515492"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "91262988"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure
 
@@ -107,4 +107,4 @@ ms.locfileid: "107515492"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 备份常见问题](backup-azure-backup-faq.yml)
+* [Azure 备份常见问题](backup-azure-backup-faq.md)

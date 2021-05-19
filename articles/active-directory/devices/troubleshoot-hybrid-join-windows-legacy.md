@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18104f06e779046786a2c7794736d01c35139490
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 8aff3d31f13d329257a0a2872e0f8a84098a0276
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365797"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286881"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -39,7 +39,7 @@ ms.locfileid: "100365797"
 **应了解的内容：** 
 
 - 下层 Windows 设备混合 Azure AD 加入的工作方式与它在 Windows 10 中的工作方式略有不同。 许多客户没有意识到他们需要配置 AD FS（对于联合域）或无缝 SSO（对于托管域）。
-- 无缝 SSO 在 Firefox 和 Microsoft Edge 浏览器的隐私浏览模式下不起作用。 它在以增强保护模式下运行的 Internet Explorer 中也不起作用。
+- 无缝 SSO 在 Firefox 和 Microsoft Edge 浏览器的隐私浏览模式下不起作用。 如果浏览器以“增强保护”模式运行或启用了“增强的安全配置”，则无缝 SSO 在 Internet Explorer 上也不起作用。
 - 对于具有联合域的客户，如果服务连接点 (SCP) 配置为指向托管域名（例如 contoso.onmicrosoft.com 而非 contoso.com），则下层 Windows 设备混合 Azure AD 加入不会工作。
 - 当有多个域用户登录到加入了混合 Azure AD 的下层设备时，同一物理设备在 Azure AD 中出现多次。  例如：如果 *jdoe* 和 *jharnett* 登录到某个设备，会在“用户信息”选项卡中为其中每个用户单独创建一个注册 (DeviceID)。 
 - 由于操作系统的重新安装或手动重新注册，在用户信息选项卡上也可能会出现同一设备的多个条目。
@@ -106,4 +106,4 @@ ms.locfileid: "100365797"
 
 ## <a name="next-steps"></a>后续步骤
 
-如有问题，请参阅[设备管理常见问题解答](faq.md)  
+- [Microsoft 错误查找工具](/windows/win32/debug/system-error-code-lookup-tool)

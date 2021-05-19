@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: d05395f97aded0b57780f898e9cba6ddca491f95
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96005805"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 1.0
@@ -59,7 +59,7 @@ ms.locfileid: "96005805"
 * 安装更新或修补程序
 
 > [!IMPORTANT] 
-> **仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。**
+> 仅当运行 Update 0.6 (10.0.10293.0) 时才进行此更新。如果运行的是更早版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，再应用 Update 1。
 
 ### <a name="download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
@@ -77,7 +77,7 @@ ms.locfileid: "96005805"
    
     ![搜索目录](./media/storsimple-virtual-array-install-update-1/download1.png)
 
-4. 单击“下载”  。
+4. 单击“下载”。
 
 5. 将这两个文件下载到一个文件夹中。 也可以将该文件夹复制到可通过设备访问的网络共享。
 
@@ -100,7 +100,7 @@ ms.locfileid: "96005805"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
-1. 在本地 Web UI 中，转到“维护” > “软件更新”。 记下运行的软件版本。 **仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。**
+1. 在本地 Web UI 中，转到“维护” > “软件更新”。 记下运行的软件版本。 仅当运行 Update 0.6 (10.0.10293.0) 时才进行此更新。如果运行的是更早版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，再应用 Update 1。
    
     ![该屏幕截图显示从“维护”菜单中选择了“软件更新”。](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
@@ -110,11 +110,11 @@ ms.locfileid: "96005805"
 
 3. 显示一条警告。 假定 Virtual Array 为单节点设备，应用更新后，设备将重启并且会出现停机。 单击选中图标。
    
-   ![该屏幕截图显示了一个关于停机时间警告的对话框。](./media/storsimple-virtual-array-install-update-1/update3m.png)
+   ![该屏幕截图显示一个关于停机时间警告的对话框。](./media/storsimple-virtual-array-install-update-1/update3m.png)
 
 4. 更新开始。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
    
-    ![该屏幕截图显示了更新的成功消息。](./media/storsimple-virtual-array-install-update-1/update5m.png)
+    ![该屏幕截图显示更新的成功消息。](./media/storsimple-virtual-array-install-update-1/update5m.png)
 
 5. 重新启动完成后，会转到“登录”页。 若要验证设备软件是否已更新，请在本地 Web UI 中，转到“维护” > “软件更新”。 Update 1.0 显示的软件版本应为 10.0.0.0.0.10296。
    

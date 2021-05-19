@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: c0c1bf83bf5a816debe61cab0ceab856bfbd062f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: fbcff37185b2cba71c405e917653d52397479007
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181170"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779590"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups"></a>使用邻近放置组降低延迟
 
@@ -48,7 +48,7 @@ ms.locfileid: "102181170"
 
 ## <a name="create-a-new-aks-cluster-with-a-proximity-placement-group"></a>使用邻近放置组创建新的 AKS 群集
 
-以下示例使用 [az group create][az-group-create]命令在 *centralus* 区域中创建名为 *myResourceGroup* 的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。
+以下示例使用 [az group create][az-group-create] 命令在 centralus 区域中创建名为 myResourceGroup 的资源组 。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。
 
 加速网络可极大地提高虚拟机的网络性能。 理想情况是将邻近放置组与加速网络一起使用。 默认情况下，AKS 在[支持的虚拟机实例](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)上使用加速网络，其中包括具有两个或多个 vCPU 的大多数 Azure 虚拟机。
 
@@ -127,16 +127,16 @@ az group delete --name myResourceGroup --yes --no-wait
 [azure-ad-rbac]: azure-ad-rbac.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
-[az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
-[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-aks-get-upgrades]: /cli/azure/aks#az_aks_get_upgrades
+[az-aks-upgrade]: /cli/azure/aks#az_aks_upgrade
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [proximity-placement-groups]: ../virtual-machines/co-location.md#proximity-placement-groups
-[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
 [system-pool]: ./use-system-pools.md
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az_aks_nodepool_add
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-group-create]: /cli/azure/group#az_group_create
+[az-group-delete]: /cli/azure/group#az_group_delete

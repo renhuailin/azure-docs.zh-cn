@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
 ms.openlocfilehash: e28d21ed71cf5f485165c639a8bd519b3a2736e1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98928993"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 开发 Apache Storm 拓扑
@@ -67,7 +67,7 @@ Flux 需要 Python 脚本位于包含拓扑的 jar 文件内的 `/resources` 目
 </resource>
 ```
 
-如前文所述，有一个 `storm.py` 用于实现风暴的 Thrift 定义的文件。 Flux 框架在生成项目时自动包含 `storm.py`，无需额外执行操作。
+如前所述，存在实现 Storm 的 Thrift 定义的 `storm.py` 文件。 Flux 框架在生成项目时自动包含 `storm.py`，无需额外执行操作。
 
 ## <a name="build-the-project"></a>生成项目
 

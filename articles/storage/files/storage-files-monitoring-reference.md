@@ -1,6 +1,6 @@
 ---
-title: Azure 文件监视数据引用 |Microsoft Docs
-description: 用于监视来自 Azure 文件的数据的日志和指标参考。
+title: Azure 文件存储监视数据参考 | Microsoft Docs
+description: 有关 Azure 文件存储中的监视数据的日志和指标参考。
 author: normesta
 services: azure-monitor
 ms.service: azure-monitor
@@ -10,25 +10,25 @@ ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
 ms.openlocfilehash: 4575709a4fa7067b02228036fb2e2b4a60844e21
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100592325"
 ---
-# <a name="azure-files-monitoring-data-reference"></a>Azure 文件监视数据引用
+# <a name="azure-files-monitoring-data-reference"></a>Azure 文件存储监视数据参考
 
-有关收集和分析 Azure 文件的监视数据的详细信息，请参阅 [监视 Azure 文件](storage-files-monitoring.md) 。
+有关收集和分析 Azure 文件存储监视数据的详细信息，请参阅[监视 Azure 文件存储](storage-files-monitoring.md)。
 
 ## <a name="metrics"></a>指标
 
-下表列出了为 Azure 文件收集的平台指标。 
+下表列出了为 Azure 文件存储收集的平台指标。 
 
-### <a name="capacity-metrics"></a>容量指标
+### <a name="capacity-metrics"></a>容量度量值
 
-容量指标值每日刷新 (最多24小时) 。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
+容量指标值每天刷新（最多 24 小时）。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
 
-Azure 文件在 Azure Monitor 中提供了以下容量指标。
+Azure 文件存储在 Azure Monitor 中提供以下容量指标。
 
 #### <a name="account-level"></a>帐户级别
 
@@ -36,7 +36,7 @@ Azure 文件在 Azure Monitor 中提供了以下容量指标。
 
 #### <a name="azure-files"></a>Azure 文件
 
-下表显示了 [Azure 文件指标](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsfileservices)。
+下表显示 [Azure 文件存储指标](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsfileservices)。
 
 | 指标 | 说明 |
 | ------------------- | ----------------- |
@@ -45,12 +45,12 @@ Azure 文件在 Azure Monitor 中提供了以下容量指标。
 | FileShareCapacityQuota | Azure 文件服务可使用的存储量上限（以字节为单位）。 <br/><br/> 单元：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024|
 | FileShareCount | 存储帐户中的文件共享数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 | FileShareProvisionedIOPS | 文件共享上预配的 IOPS 数。 此指标仅适用于高级文件存储。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 |
-| FileShareSnapshotCount | 存储帐户的 Azure 文件服务中的共享上存在的快照数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 | 
-|FileShareSnapshotSize|存储帐户的 Azure 文件服务中的快照使用的存储量。 <br/><br/> 单元：字节 <br/> 聚合类型：平均值|
+| FileShareSnapshotCount | 存储帐户的 Azure 文件存储服务的共享中存在的快照数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 | 
+|FileShareSnapshotSize|存储帐户的 Azure 文件存储服务中的快照所用存储量。 <br/><br/> 单元：字节 <br/> 聚合类型：平均值|
 
 ### <a name="transaction-metrics"></a>事务指标
 
-从 Azure 存储到 Azure Monitor 的每个存储帐户请求都会发出事务指标。 如果存储帐户中没有任何活动，则在此期间不会有关于事务指标的数据。 所有事务指标都在帐户和 Azure 文件服务级别提供。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
+从 Azure 存储到 Azure Monitor 的每个存储帐户请求都会发出事务指标。 如果存储帐户中没有任何活动，则在此期间不会有关于事务指标的数据。 所有事务指标均可用于帐户和 Azure 文件存储服务级别。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
 
 [!INCLUDE [Transaction metrics](../../../includes/azure-storage-account-transaction-metrics.md)]
 
@@ -58,10 +58,10 @@ Azure 文件在 Azure Monitor 中提供了以下容量指标。
 
 ## <a name="metrics-dimensions"></a>指标维度
 
-对于 Azure Monitor 中的指标，Azure 文件支持以下维度。
+Azure 文件存储支持对 Azure Monitor 中的指标使用以下维度。
 
 > [!NOTE] 
-> 文件共享维度不可用于标准文件共享， (仅) 高级文件共享。 使用标准文件共享时，提供的指标适用于存储帐户中的所有文件共享。 若要获取标准文件共享的每个共享指标，请为每个存储帐户创建一个文件共享。
+> 文件共享维度不可用于标准文件共享（仅可用于高级文件共享）。 使用标准文件共享时，提供的指标适用于存储帐户中的所有文件共享。 若要获取标准文件共享的每个共享指标，请为每个存储帐户创建一个文件共享。
 
 [!INCLUDE [Metrics dimensions](../../../includes/azure-storage-account-metrics-dimensions.md)]
 
@@ -87,5 +87,5 @@ Azure 文件在 Azure Monitor 中提供了以下容量指标。
 
 ## <a name="see-also"></a>另请参阅
 
-- 有关监视 Azure 存储的说明，请参阅 [监视 Azure 文件](storage-files-monitoring-reference.md) 。
-- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。
+- 有关如何监视 Azure 存储，请参阅[监视 Azure 文件存储](storage-files-monitoring-reference.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。

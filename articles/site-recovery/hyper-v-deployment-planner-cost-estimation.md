@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8e5a1f727f32fda7740b958cb3f03a3a4a3ae03f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95999206"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727546"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
 
@@ -168,13 +168,13 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 Site Recovery 部署规划器可以使用以下任何货币生成成本报表。
 
 |货币|名称|货币|名称|货币|名称|
-|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 |ARS|阿根廷比索 ($)|AUD|澳大利亚元 ($)|BRL|巴西雷亚尔 (R$)|
 |CAD|加拿大元 ($)|CHF|瑞士法郎 (chf)|DKK|丹麦克朗 (kr)|
-|EUR|欧元 (€)|GBP|英镑 (£)|HKD|港元 (HK$)|
+|EUR|欧元 (&euro;)|GBP|英镑 (£)|HKD|港元 (HK$)|
 |IDR|印度尼西亚卢比 (Rp)|INR|印度卢比 (₹)|JPY|日元 (¥)|
 |KRW|韩元 (₩)|MXN|墨西哥比索 (MX$)|MYR|马来西亚林吉特 (RM$)|
-|NOK|挪威克朗 (kr)||NZD|新西兰元 ($)||RUB|俄罗斯卢布 (руб)|
+|NOK|挪威克朗 (kr)|NZD|新西兰元 ($)|RUB|俄罗斯卢布 (руб)|
 |SAR|沙特里亚尔 (SR)|SEK|瑞典克朗 (kr)|TWD|台币 (NT$)|
 |TRY|土耳其里拉 (TL)|USD| 美元 ($)|ZAR|南非兰特 (R)|
 

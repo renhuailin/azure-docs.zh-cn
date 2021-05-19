@@ -10,19 +10,26 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 02/22/2021
-ms.openlocfilehash: ce8d4bf36524e3e7e7b3b8c974aa189fa000d845
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.date: 04/09/2021
+ms.openlocfilehash: ae1b3cc41d709c28ba517d672eb98cb60a837a8d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773243"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779068"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
 本文介绍如何在预配的计算层级中缩放适用于 Azure SQL 数据库的计算和存储资源。 另外，[无服务器计算层级](serverless-tier-overview.md)提供自动缩放计算功能，并且按秒对使用的计算计费。
 
-最初选择 vCore 或 DTU 数量后，可以使用 [Azure 门户](single-database-manage.md#the-azure-portal)、[Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1)、 [PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update) 或 [REST API](/rest/api/sql/databases/update)，根据实际体验动态扩展或缩减单一数据库。
+最初选择 vCore 或 DTU 数量后，可以使用以下内容，根据实际体验动态地纵向扩展或缩减单一数据库：
+
+* [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
+* [Azure 门户](single-database-manage.md#the-azure-portal)
+* [PowerShell](/powershell/module/az.sql/set-azsqldatabase)
+* [Azure CLI](/cli/azure/sql/db#az_sql_db_update)
+* [REST API](/rest/api/sql/databases/update)
+
 
 下面的视频演示了如何动态更改服务层级和计算大小以增加单一数据库的可用 DTU。
 
@@ -55,13 +62,13 @@ ms.locfileid: "104773243"
 |**基本单一数据库，</br>标准 (S0-S1)**|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 5 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
 |**基本弹性池，</br>标准 (S2-S12)，</br>常规用途单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;对于单一数据库，延迟时间是恒定的，与已用空间无关</br>&bull; &nbsp;对于单一数据库，通常不超过 5 分钟</br>&bull; &nbsp;对于弹性池，与数据库数量成正比|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
 |**高级或业务关键型单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
-|**超大规模**|空值|不适用|空值|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常不到 2 分钟|
+|**超大规模**|空值|空值|空值|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常不到 2 分钟|
 
 > [!NOTE]
 > 此外，对于标准 (S2-S12) 和常规用途数据库，如果数据库使用高级文件共享 ([PFS](../../storage/files/storage-files-introduction.md)) 存储，则将数据库移入/移出弹性池或在弹性池之间移动数据库的延迟与数据库大小成正比。
 >
 > 若要确定数据库是否正在使用 PFS 存储，请在数据库的上下文中执行以下查询。 如果 AccountType 列中的值为 `PremiumFileStorage` 或 `PremiumFileStorage-ZRS`，则该数据库使用的是 PFS 存储。
- 
+
 ```sql
 SELECT s.file_id,
        s.type_desc,
@@ -70,6 +77,9 @@ SELECT s.file_id,
 FROM sys.database_files AS s
 WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
+
+> [!NOTE]
+> 从“业务关键”层缩放到“常规用途”层时，区域冗余属性默认保持不变。 此降级的延迟（启用了区域冗余时）以及为“常规用途”层切换到区域冗余的延迟与数据库大小成正比。
 
 > [!TIP]
 > 若要监视正在进行的操作，请参阅：[使用 SQL REST API 管理操作](/rest/api/sql/operations/list)、[使用 CLI 管理操作](/cli/azure/sql/db/op)、[使用 T-SQL 监视操作](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)及以下两个 PowerShell 命令：[Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) 和 [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
@@ -112,7 +122,7 @@ else {
 - 在启用了[异地复制](active-geo-replication-configure-portal.md)的情况下降级数据库时，请先将其主数据库降级到所需的服务层级和计算大小，然后再降级辅助数据库（用于实现最佳性能的常规指南）。 降级到另一版本时，需要先降级主数据库。
 - 各服务层级的还原服务不同。 如果要降级到基本层，则备份保持期也将缩短。 请参阅 [Azure SQL 数据库备份](automated-backups-overview.md)。
 - 更改完成前不会应用数据库的新属性。
-- 更改服务层时，如果需要复制数据以扩展数据库（请参阅[延迟](#latency)），那么随之发生的资源高利用率可能会让扩展所花的时间更长。 使用[加速数据库恢复 (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts)，长时间运行的事务回滚并不是引起延迟的原因，但随之发生的资源高利用率可能会减少用于扩展的计算、存储和网络带宽资源，尤其是对于较小的计算规模来说影响更大。
+- 更改服务层时，如果需要进行数据复制以缩放数据库（请参阅[延迟](#latency)），对缩放操作的高资源利用率可能会导致更长的缩放时间。 使用[加速数据库恢复 (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts)，长期事务的回滚并不是很重要的延迟源，但高并发资源使用率可能会降低计算、存储和网络带宽资源的缩放能力，尤其是对于较小的计算大小。
 
 ## <a name="billing"></a>计费
 
@@ -122,8 +132,8 @@ else {
 
 ### <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
 
-- 可以使用 1GB 作为增量，将存储预配到数据存储最大大小限制。 最小可配置数据存储为 1 GB。 有关每个服务目标中的数据存储最大大小限制，请参阅[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制文档页。
-- 可通过 [Azure 门户](https://portal.azure.com)、[Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update) 或 [REST API](/rest/api/sql/databases/update) 为单一数据库增加或减少大小上限，以预配数据存储。 如果最大大小值是以字节为单位指定的，则该值必须是 1 GB（1073741824 字节）的倍数。
+- 可以使用 1GB 作为增量，将存储预配到数据存储最大大小限制。 最小可配置数据存储为 1 GB。 有关各服务目标中数据存储的最大大小限制，请参阅资源限制文档页，了解[使用 vCore 购买模型的单一数据库的资源限制](resource-limits-vcore-single-databases.md)和[使用 DTU 购买模型的单一数据库的资源限制](resource-limits-dtu-single-databases.md)。
+- 可通过 [Azure 门户](https://portal.azure.com)、[Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az_sql_db_update) 或 [REST API](/rest/api/sql/databases/update) 为单一数据库增加或减少大小上限，以预配数据存储。 如果最大大小值是以字节为单位指定的，则该值必须是 1 GB（1073741824 字节）的倍数。
 - 可以存储在数据库的数据文件中的数据量受所配置的数据存储最大大小限制。 除了该存储之外，Azure SQL 数据库还会自动分配额外 30% 的存储用于事务日志。
 - 对于 `tempdb` 数据库，Azure SQL 数据库会自动为每个 vCore 分配 32 GB。 `tempdb` 位于所有服务层级的本地 SSD 存储中。
 - 单一数据库或弹性池的存储价格等于数据存储与事务日志存储量之和乘以服务层级的存储单价。 `tempdb` 的成本包括在该价格中。 有关存储价格的详细信息，请参阅 [Azure SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
@@ -134,7 +144,7 @@ else {
 ### <a name="dtu-based-purchasing-model"></a>基于 DTU 的购买模型
 
 - 单一数据库的 DTU 价格附送了一定容量的存储，无需额外费用。 超出附送的量后，可花费额外的费用预配额外的存储，但不能超过存储上限，不超过 1 TB 时，以 250 GB 为增量进行预配，超出 1 TB 时，以 256 GB 为增量进行预配。 有关包括的存储量和大小上限，请参阅[单一数据库：存储大小和计算大小](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)。
-- 可通过 Azure 门户、[Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update) 或 [REST API](/rest/api/sql/databases/update) 为单一数据库增加大小上限，以预配额外存储。
+- 可通过 Azure 门户、[Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az_sql_db_update) 或 [REST API](/rest/api/sql/databases/update) 为单一数据库增加大小上限，以预配额外存储。
 - 单一数据库的额外存储价格等于额外存储量乘以服务层级的额外存储单价。 有关额外存储价格的详细信息，请参阅 [Azure SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 > [!IMPORTANT]

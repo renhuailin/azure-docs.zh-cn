@@ -3,19 +3,14 @@ title: 还原 Azure 托管磁盘
 description: 了解如何从 Azure 门户还原 Azure 托管磁盘。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 995217cd17d1e2a16cd7a5f963ee88aa7116d4a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c57d60047a5bcef58c721ee25bd8a0b3ed523aa4
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101703743"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517192"
 ---
-# <a name="restore-azure-managed-disks-in-preview"></a>还原 Azure 托管磁盘（预览版）
-
->[!IMPORTANT]
->此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负载。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关区域可用性，请参阅[支持矩阵](disk-backup-support-matrix.md)。
->
->[填写此表格](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)以便注册预览版。
+# <a name="restore-azure-managed-disks"></a>还原 Azure 托管磁盘
 
 本文将讲解如何从 Azure 备份创建的还原点还原 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)。
 
@@ -133,4 +128,4 @@ ms.locfileid: "101703743"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 磁盘备份常见问题解答](disk-backup-faq.md)
+- [Azure 磁盘备份常见问题解答](disk-backup-faq.yml)

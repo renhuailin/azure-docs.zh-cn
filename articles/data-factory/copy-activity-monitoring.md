@@ -1,17 +1,17 @@
 ---
 title: 监视复制活动
 description: 了解如何监视 Azure 数据工厂中的复制活动执行情况。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.author: jingwang
-ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/22/2021
+ms.author: jianleishen
+ms.openlocfilehash: 1382d92b09bef59a7b9e79a758c41c6bbaec7343
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388288"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482626"
 ---
 # <a name="monitor-copy-activity"></a>监视复制活动
 
@@ -59,7 +59,7 @@ ms.locfileid: "100388288"
 | rowsCopied | 复制到接收器的行数。 此指标不适用于不进行分析而按原样复制文件的情况，例如，当源和接收器数据集是二进制格式类型或具有相同设置的其他格式类型时。  | Int64 值（未指定单位） |
 | rowsSkipped | 跳过的不兼容行数。 可通过将 `enableSkipIncompatibleRow` 设置为 true 来跳过不兼容的行。 | Int64 值（未指定单位） |
 | copyDuration | 复制运行的持续时间。 | Int32 值，以秒为单位 |
-| throughput | 数据传输速率。 | 浮点数，以 KBps 为单位 |
+| throughput | 数据传输速率，计算方法为 `dataRead` 除以 `copyDuration`。 | 浮点数，以 KBps 为单位 |
 | sourcePeakConnections | 复制活动运行期间与源数据存储建立的并发连接峰值数量。 | Int32 值（无单位） |
 | sinkPeakConnections| 复制活动运行期间与接收器数据存储建立的并发连接峰值数量。| Int32 值（无单位） |
 | sqlDwPolyBase | 将数据复制到 Azure Synapse Analytics 时是否使用了 PolyBase。 | 布尔 |
@@ -71,7 +71,7 @@ ms.locfileid: "100388288"
 | logPath | Blob 存储中跳过的数据的会话日志路径。 请参阅[容错](copy-activity-overview.md#fault-tolerance)。 | 文本（字符串） |
 | executionDetails | 有关复制活动经历的各个阶段、相应步骤、持续时间、配置等的更多详细信息。 不建议分析此节，因为它有可能发生更改。 若要更好地了解如何通过它来了解复制性能并排查其问题，请参阅[以视觉方式进行监视](#monitor-visually)部分。 | Array |
 | perfRecommendation | 复制性能优化提示。 有关详细信息，请参阅[性能优化提示](copy-activity-performance-troubleshooting.md#performance-tuning-tips)。 | Array |
-| billingReference | 给定运行的计费用量。 了解更多 [活动-运行级别的监视消耗量](plan-manage-costs.md#monitor-consumption-at-activity-run-level)。 | 对象 |
+| billingReference | 给定运行的计费用量。 若要了解详细信息，请参阅[监视活动运行级别的消耗情况](plan-manage-costs.md#monitor-consumption-at-activity-run-level)。 | 对象 |
 | durationInQueue | 复制活动开始执行之前的排队持续时间（秒）。 | 对象 |
 
 **示例：**

@@ -20,19 +20,19 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 83ab2c6b97435ace0d2bc508cbf522600391b60b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88926824"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $orderby 语法
 
- 可以使用 [OData **$orderby** 参数](query-odata-filter-orderby-syntax.md)对 Azure 认知搜索中的搜索结果应用自定义排序顺序。 本文详细介绍 **$orderby** 的语法。 有关如何在呈现搜索结果时使用 **$orderby** 的更多常规信息，请参阅[如何在 Azure 认知搜索中使用搜索结果](search-pagination-page-layout.md)。
+ 可以使用 [OData **$orderby** 参数](query-odata-filter-orderby-syntax.md)对 Azure 认知搜索中的搜索结果应用自定义排序顺序。 本文详细介绍 **$orderby** 的语法。 有关如何在呈现搜索结果时使用 **$orderby** 的更多常规信息，请参阅 [如何在 Azure 认知搜索中使用搜索结果](search-pagination-page-layout.md)。
 
 ## <a name="syntax"></a>语法
 
-**$orderby** 参数接受最多 32 个 **order-by 子句**的逗号分隔列表。 Order by 子句的语法由以下 EBNF ([扩展 Backus-Naur 窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 描述：
+**$orderby** 参数接受最多 32 个 **order-by 子句** 的逗号分隔列表。 以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）描述了 order-by 子句的语法：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

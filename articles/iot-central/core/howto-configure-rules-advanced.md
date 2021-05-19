@@ -7,16 +7,14 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: af6adcf408c9790b09830e986cd1cac00774a2ec
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 9cbcfa355198b94a60242503745f5cfc183e170d
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491927"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683749"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>使用工作流将 Azure IoT Central 应用程序与其他云服务相集成
-
-本文适用于解决方案构建人员。
 
 可以在 IoT Central 中创建规则，用于触发操作（例如发送电子邮件）来响应基于遥测数据的条件（例如设备温度超过阈值）。
 
@@ -27,9 +25,9 @@ ms.locfileid: "106491927"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本操作方法指南中的步骤需要有效的 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要完成本操作指南中的步骤，需要：
 
-设置解决方案要求 IoT Central 应用程序为 v3 版本。 若要了解如何检查应用程序版本，请参阅[关于您的应用程序](./howto-get-app-info.md)。 若要了解如何创建 IoT Central 应用程序，请参阅[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)。
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 > [!NOTE]
 > 如果使用的是 v2 版 IoT Central 应用程序，请在介绍先前版本的文档站点上参阅[用 Azure 逻辑应用中的 IoT Central 连接器建立工作流](/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps)，并使用 Azure IoT Central V2 连接器

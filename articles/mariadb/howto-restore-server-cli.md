@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a6e46efd7f998437c3998df9a989ef9e1500e888
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: af197f2dd144e7541f669fdd67b58c38d91b4400
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98664828"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777124"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MariaDB 中备份和还原服务器
 
@@ -57,7 +57,7 @@ az mariadb server update --name mydemoserver --resource-group myresourcegroup --
 
 可以将服务器还原到以前的某个时间点。 将还原的数据复制到新服务器，并且现有服务器将保持不变。 例如，如果某个表在今天中午意外删除，可以还原到就在中午之前的时间。 然后可以从服务器的已还原副本中检索缺少的表和数据。
 
-若要还原服务器，请使用 Azure CLI [az mariadb server restore](/cli/azure/mariadb/server#az-mariadb-server-restore) 命令。
+若要还原服务器，请使用 Azure CLI [az mariadb server restore](/cli/azure/mariadb/server#az_mariadb_server_restore) 命令。
 
 ### <a name="run-the-restore-command"></a>运行还原命令
 

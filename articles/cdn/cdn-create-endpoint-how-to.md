@@ -15,10 +15,10 @@ ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 7bbd54ed68863a4704319a25af96b6463ad2377b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98539712"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>创建 Azure CDN 终结点
@@ -36,7 +36,7 @@ ms.locfileid: "98539712"
    
     此时会显示“CDN 配置文件”窗格。
 
-2. 选择 " **终结点**"。
+2. 选择“终结点”。
    
     ![CDN 选定终结点](./media/cdn-create-endpoint-how-to/cdn-select-endpoint.png)
    
@@ -44,7 +44,7 @@ ms.locfileid: "98539712"
    
     ![“添加终结点”页](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. 至于“名称”，请输入新建 CDN 终结点的唯一名称。 此名称用于访问在 azureedge.net 的缓存资源。 _\<endpointname>_
+3. 至于“名称”，请输入新建 CDN 终结点的唯一名称。 此名称用于访问在 _\<endpointname>_ .azureedge.net 域中缓存的资源。
 
 4. 对于“源类型”，请选择下述源类型之一： 
    - **存储**：适用于 Azure 存储
@@ -62,7 +62,7 @@ ms.locfileid: "98539712"
    > 某些类型的原点（例如 Azure 存储和 Web 应用）需要主机头来匹配原点的域。 除非拥有的原点要求不同于其域的主机头，否则应当保留默认值。
    > 
     
-8. 至于“协议”和“源服务器端口”，请指定用于访问源服务器中资源的协议和端口。 必须至少选择一种协议（HTTP 或 HTTPS）。 使用 CDN 提供的域 (_\<endpointname>_ azureedge.net) 访问 HTTPS 内容。 
+8. 至于“协议”和“源服务器端口”，请指定用于访问源服务器中资源的协议和端口。 必须至少选择一种协议（HTTP 或 HTTPS）。 使用 CDN 提供的域 ( _\<endpointname>_ .azureedge.net) 来访问 HTTPS 内容。 
    
    > [!NOTE]
    > “源服务器端口”值只决定终结点用来从源服务器检索信息的端口。 终结点自身仅可用于默认 HTTP 和 HTTPS 端口（80 和 443）上的最终客户端，不管“源服务器端口”值如何。  
@@ -74,14 +74,14 @@ ms.locfileid: "98539712"
 9. 对于“优化对象”，请选择与方案和要通过终结点传送的内容类型最匹配的优化类型。 有关详细信息，请参阅[针对内容分发类型优化 Azure CDN](cdn-optimization-overview.md)。
 
     将根据配置文件类型为以下优化类型设置提供支持：
-    - **Microsoft 配置文件 Azure CDN 标准** ：
+    - **Microsoft 的 Azure CDN 标准版** 配置文件：
        - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
 
     - **Verizon 的 Azure CDN 标准版** 和 **Verizon 的 Azure CDN 高级版** 配置文件：
        - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
        - [**动态站点加速**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
-    - **从 Akamai 配置文件 Azure CDN 标准** ：
+    - **Akamai 的 Azure CDN 标准版** 配置文件：
        - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
        - [**常规媒体流式处理**](cdn-optimization-overview.md#general-media-streaming)
        - [**点播视频媒体流式处理**](cdn-optimization-overview.md#video-on-demand-media-streaming)
@@ -97,7 +97,7 @@ ms.locfileid: "98539712"
     终结点不会立即可供使用，因为注册传播需花时间： 
     - 对于 **Microsoft 推出的 Azure CDN 标准版** 配置文件，传播通常可在 10 分钟内完成。 
     - 对于 **Akamai 的 Azure CDN 标准版** 配置文件，传播通常可在一分钟内完成。 
-    - 对于 **来自 Verizon 的 Azure CDN 标准** 和 Verizon 配置文件中的 **高级 Azure CDN** ，传播通常在30分钟内完成。 
+    - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 30 分钟内完成 。 
    
     如果尝试在终结点配置传播到接入点 (POP) 服务器之前使用 CDN 域名，则可能会收到 HTTP 404 响应状态。 如果在创建终结点数小时后依然收到 404 响应状态，请参阅[排查 Azure CDN 终结点返回 404 状态代码的问题](cdn-troubleshoot-endpoint.md)。
 

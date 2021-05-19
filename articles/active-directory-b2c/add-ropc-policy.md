@@ -1,7 +1,7 @@
 ---
 title: 设置资源所有者密码凭据流
 titleSuffix: Azure AD B2C
-description: 了解如何在 Azure Active Directory B2C (ROPC) 流中设置资源所有者密码凭据。
+description: 了解如何在 Azure Active Directory B2C 中设置资源所有者密码凭据 (ROPC) 流。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -9,15 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 01/11/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 565d5203f057aab74cce30729b3e14494b1edf4d
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
-ms.translationtype: MT
+ms.openlocfilehash: 3a7c93bb0e0dcc51e35bc27fa0799d8410e66df6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126999"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104581875"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置资源所有者密码凭据流
 
@@ -43,9 +44,9 @@ ms.locfileid: "98126999"
 
 使用 ROPC 流时，请考虑以下事项：
 
-- 当需要用户交互的身份验证流发生任何中断时，ROPC 不起作用。 例如，当密码已过期或需要更改时，需要 [多重身份验证](multi-factor-authentication.md) ，或者当登录时需要收集更多的信息时 (例如，用户同意) 。
-- ROPC 仅支持本地帐户。 用户无法用 [联合标识提供者](add-identity-provider.md) （如 Microsoft、Google +、TWITTER、AD FS 或 Facebook）登录。
-- [会话管理](session-behavior.md)（包括 " [使我保持登录 (KMSI) ](session-behavior.md#enable-keep-me-signed-in-kmsi)）不适用。
+- 当需要用户交互的身份验证流发生任何中断时，ROPC 不起作用。 例如，当密码已过期或需要更改时、当需要[多重身份验证](multi-factor-authentication.md)时，或者在登录期间需要收集更多信息（例如，用户同意）时。
+- ROPC 仅支持本地帐户。 用户无法使用[联合身份提供程序](add-identity-provider.md)（如 Microsoft、Google+、Twitter、AD-FS 或 Facebook）登录。
+- [会话管理](session-behavior.md)（包括[使我保持登录状态 (KMSI)](session-behavior.md#enable-keep-me-signed-in-kmsi)）不适用。
 
 
 ## <a name="register-an-application"></a>注册应用程序

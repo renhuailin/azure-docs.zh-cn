@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1001d5524fe99783cda4d5b77bdaceacc6791848
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861367"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上 Azure Active Directory 基于证书的身份验证
@@ -27,7 +27,7 @@ ms.locfileid: "96861367"
 
 如果配置了此功能，就无需在移动设备上的某些邮件和 Microsoft Office 应用程序中输入用户名和密码组合。
 
-本主题提供了在 Android 设备上为 Office 365 企业版、商业版、教育版、美国政府版和德国计划中的租户用户配置 CBA 时的要求和受支持方案。
+本主题面向 Office 365 企业版、商业版、教育版、美国政府计划、中国计划和德国计划中的租户用户，提供在 Android 设备上配置 CBA 时的要求和受支持方案。
 
 此功能在 Office 365 US Government Defense 和 Federal 计划中以预览形式提供。
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 6aa960eb7aed7a579c3fc95748b6e32601201a61
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732031"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305117"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>将数据从 Windows Azure 诊断扩展发送到 Azure 事件中心
 Azure 诊断扩展是 Azure Monitor 中的一个代理，可从 Azure 虚拟机的来宾操作系统和工作负荷及其他计算资源收集监视数据。 本文介绍如何将数据从 Windows Azure 诊断扩展 (WAD) 发送到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，以便将其转发到 Azure 之外的位置。
@@ -38,7 +38,7 @@ Azure 诊断始终将日志和指标发送到 Azure 存储帐户。 可以配置
 | 属性 | 说明 |
 |:---|:---|
 | 名称 | 接收器的说明性名称。 在配置中用于指定要发送到接收器的数据源。 |
-| Url  | 事件中心的 Url，格式为 \<event-hubs-namespace\> servicebus.windows.net/ \<event-hub-name\> 。          |
+| Url  | 事件中心的 URL，格式为 \<event-hubs-namespace\>.servicebus.windows.net/\<event-hub-name\>。          |
 | SharedAccessKeyName | 事件中心的至少具有“发送”权限的共享访问策略的名称。 |
 | SharedAccessKey     | 事件中心的共享访问策略中的主密钥或辅助密钥。 |
 
@@ -177,7 +177,7 @@ Azure 诊断始终将日志和指标发送到 Azure 存储帐户。 可以配置
 
 * [事件中心概述](../../event-hubs/event-hubs-about.md)
 * [创建事件中心](../../event-hubs/event-hubs-create.md)
-* [事件中心常见问题](../../event-hubs/event-hubs-faq.md)
+* [事件中心常见问题](../../event-hubs/event-hubs-faq.yml)
 
 <!-- Images. -->
 [0]: ../../event-hubs/media/event-hubs-streaming-azure-diags-data/dashboard.png

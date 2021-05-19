@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/02/2018
 robots: noindex
 ms.openlocfilehash: 8142ec51f93a066faafa1f3e44d0f87517187425
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100387234"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 移动数据
@@ -24,7 +24,7 @@ ms.locfileid: "100387234"
 
 本文介绍如何使用 Azure 数据工厂中的复制活动从本地 Sybase 数据库移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
-可以将数据从本地 Sybase 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅 [支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 表。 数据工厂当前仅支持将数据从 Sybase 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 Sybase 数据存储。 
+可以将数据从本地 Sybase 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 Sybase 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 Sybase 数据存储。 
 
 ## <a name="prerequisites"></a>先决条件
 数据工厂服务支持通过数据管理网关连接到本地 Sybase 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
@@ -43,13 +43,13 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
 - 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 也可以使用以下工具创建管道：“Visual Studio”、“Azure PowerShell”、“Azure 资源管理器模板”、“.NET API”和“REST API”    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建 **链接服务** 以将输入和输出数据存储链接到数据工厂。
-2. 创建用于表示复制操作的输入和输出数据的 **数据集** 。 
-3. 创建包含复制活动的 **管道** ，该活动将数据集作为输入，并将数据集作为输出。 
+1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
+2. 创建数据集以表示复制操作的输入和输出数据。 
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 Sybase 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Sybase 复制到 Azure Blob](#json-example-copy-data-from-sybase-to-azure-blob) 部分。 
 
@@ -58,12 +58,12 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了有关 Sybase 链接服务专属 JSON 元素的描述。
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |“type”属性必须设置为：**OnPremisesSybase** |是 |
 | server |Sybase 服务器的名称。 |是 |
 | database |Sybase 数据库的名称。 |是 |
-| 架构 |数据库中架构的名称。 |否 |
+| schema |数据库中架构的名称。 |否 |
 | authenticationType |用于连接 Sybase 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
 | username |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
@@ -74,7 +74,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 Sybase 数据集）的 **typeProperties** 部分具有以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务指代的 Sybase 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
@@ -85,20 +85,20 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 当源属于 **RelationalSource** 类型（包括 Sybase）时，以下属性可在 **typeProperties** 节中使用：
 
-| properties | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否（如果指定了 **数据集** 的 **tableName**） |
 
 
 ## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON 示例：将数据从 Sybase 复制到 Azure Blob
-下面的示例提供示例 JSON 定义，可用于通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据从 Sybase 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。   
+以下示例提供示例 JSON 定义，可使用该定义通过 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何将数据从 Sybase 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。   
 
 此示例具有以下数据工厂实体：
 
 1. [OnPremisesSybase](data-factory-onprem-sybase-connector.md#linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
 3. [RelationalTable](data-factory-onprem-sybase-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](data-factory-onprem-sybase-connector.md#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此示例将数据从 Sybase 数据库中的查询结果复制到 blob，每小时进行一次。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
@@ -141,9 +141,9 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 **Sybase 输入数据集：**
 
-该示例假设已在 Sybase 中创建了表 "MyTable"，并且它包含了时序数据的名为 "timestamp" 的列。
+该示例假定已在 Sybase 中创建表“MyTable”，并且该表包含用于时序数据的名为“timestamp”的列。
 
-设置 "external"： true 将告知数据工厂服务：此数据集在数据工厂外部，且不由数据工厂中的活动生成。 请注意，链接服务的 **类型** 设置为：**RelationalTable**。
+“external”: “true” 设置将告知数据工厂服务：此数据集在数据工厂外部，且不由数据工厂中的活动生成。 请注意，链接服务的 **类型** 设置为：**RelationalTable**。
 
 ```JSON
 {
@@ -288,7 +288,7 @@ Sybase 支持 T-SQL 和 T-SQL 类型。 有关 SQL 类型到 .NET 类型的映�
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="repeatable-read-from-relational-sources"></a>从关系源进行可重复读取
-从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅 [从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
+从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

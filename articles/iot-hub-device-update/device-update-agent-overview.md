@@ -6,18 +6,18 @@ ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e932238849baf267983fb3ca1ebb082db169d9fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d97287657b1e1fe7d540e8811c90794aaa5fece
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101679121"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739559"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>IoT 中心设备更新代理概述
 
 Device Update 代理包含两个概念层：
 
-* 接口层是在 [Azure IoT 即插即用 (PnP)](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) 的基础上构建的，可让消息在 Device Update 代理和 Device Update 服务之间流动。
+* 接口层是在 [Azure IoT 即插即用 (PnP)](../iot-pnp/overview-iot-plug-and-play.md) 的基础上构建的，可让消息在 Device Update 代理和 Device Update 服务之间流动。
 * 平台层负责下载、安装和应用等高级更新操作（可能特定于平台或设备）。
 
 :::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="代理实现。" lightbox="media/understand-device-update/client-agent-reference-implementations.png":::
@@ -60,7 +60,7 @@ Device Update 代理包含两个概念层：
 * [映像更新模拟器](https://github.com/Azure/iot-hub-device-update/blob/main/src/content_handlers/swupdate_handler/inc/aduc/swupdate_simulator_handler.hpp)
 * [包更新 apt 模拟器](https://github.com/Azure/iot-hub-device-update/blob/main/src/content_handlers/apt_handler/inc/aduc/apt_simulator_handler.hpp)
 
-注意：AzureDeviceUpdateCore PnP 接口中的 InstalledCriteria 字段应为内容的 sha256 哈希。 这是[导入清单对象](import-update.md#create-device-update-import-manifest)中存在的相同哈希。 [详细了解](device-update-plug-and-play.md) `installedCriteria` 和 `AzureDeviceUpdateCore` 接口。
+注意：AzureDeviceUpdateCore PnP 接口中的 InstalledCriteria 字段应为内容的 sha256 哈希。 这是[导入清单对象](import-update.md#create-a-device-update-import-manifest)中存在的相同哈希。 [详细了解](device-update-plug-and-play.md) `installedCriteria` 和 `AzureDeviceUpdateCore` 接口。
 
 ### <a name="swupdate-update-handler"></a>`SWUpdate` 更新处理程序
 
@@ -72,8 +72,7 @@ APT 更新处理程序处理特定于 APT 的更新清单，并调用 APT 来安
 
 ## <a name="self-update-device-update-agent"></a>自行更新的 Device Update 代理
 
-Device Update 代理及其依赖项可通过 Device Update for IoT Hub 管道进行更新。 如果使用的是基于映像的更新，请在新映像中包含最新的 Device Update 代理。 如果使用的是基于包的更新，请在 apt 清单中包含 Device Update 代理及其所需版本，就像对其他任何包所做的那样。 [详细了解](device-update-apt-manifest.md) apt 清单。 你可在 [IoT 设备孪生](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)的“设备属性”部分中查看 Device Update 代理和传递优化代理的安装版本。 [详细了解 ADU Core 接口下的设备属性](device-update-plug-and-play.md#device-properties)。
+Device Update 代理及其依赖项可通过 Device Update for IoT Hub 管道进行更新。 如果使用的是基于映像的更新，请在新映像中包含最新的 Device Update 代理。 如果使用的是基于包的更新，请在 apt 清单中包含 Device Update 代理及其所需版本，就像对其他任何包所做的那样。 [详细了解](device-update-apt-manifest.md) apt 清单。 你可在 [IoT 设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)的“设备属性”部分中查看 Device Update 代理和传递优化代理的安装版本。 [详细了解 ADU Core 接口下的设备属性](device-update-plug-and-play.md#device-properties)。
 
 ## <a name="next-steps"></a>后续步骤
 [了解 Device Update 代理配置文件](device-update-configuration-file.md)
-

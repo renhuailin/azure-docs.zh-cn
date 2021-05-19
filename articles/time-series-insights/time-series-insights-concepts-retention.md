@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 26363031aea37c53cce098e2b6cbc2b4d93b918f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91535683"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307072"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>了解 Azure 时序见解 Gen1 中的数据保留
 
@@ -85,7 +85,7 @@ ms.locfileid: "91535683"
 当传入恢复时：
 
 - 数据会根据事件源的接收顺序流入
-- 根据事件的时间戳为事件编制索引，除非超出了针对事件源的保留策略。 有关事件源保留配置的详细信息，请参阅[事件中心常见问题解答](../event-hubs/event-hubs-faq.md)
+- 根据事件的时间戳为事件编制索引，除非超出了针对事件源的保留策略。 有关事件源保留配置的详细信息，请参阅[事件中心常见问题解答](../event-hubs/event-hubs-faq.yml)
 
 > [!IMPORTANT]
 > 应设置警报，以提供通知来帮助避免传入暂停。 由于 Azure 事件源的默认保留期为 1 天，因此可能丢失数据。 一旦传入暂停，除非采取其他措施，否则可能丢失最近的数据。 必须增大容量，或者将行为切换到“清除旧数据”才能避免潜在的数据丢失。 

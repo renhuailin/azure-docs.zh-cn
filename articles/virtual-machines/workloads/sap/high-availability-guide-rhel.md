@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/11/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 2f55df70b2ebdaed9b7f15c940d3f4f0553a2856
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cf71f180a1ce845df436391b98227ae173fe77f1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101676903"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303655"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性
 
@@ -131,7 +131,7 @@ SAP NetWeaver 要求对传输和配置文件目录使用共享存储。 阅读[R
 
 ### <a name="deploy-linux-via-azure-template"></a>通过 Azure 模板部署 Linux
 
-Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于部署新的虚拟机。 可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
+Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于部署新的虚拟机。 可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集等。按照以下步骤部署模板：
 
 1. 在 Azure 门户中打开 [ASCS/SCS 模板][template-multisid-xscs]  
 1. 输入以下参数
@@ -198,7 +198,6 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
          1. 输入新的负载均衡器规则的名称（例如“nw1-lb-ascs”）
          1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 nw1-ascs-frontend、nw1-backend 和 nw1-ascs-hp）
          1. 选择“HA 端口”
-         1. 将空闲超时增大到 30 分钟
          1. **确保启用浮动 IP**
          1. 单击“确定”
          * 重复上述步骤，为 ERS 创建负载均衡规则（例如，“nw1-lb-ers”）

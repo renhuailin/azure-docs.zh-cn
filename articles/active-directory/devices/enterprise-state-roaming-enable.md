@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a80a357b58ec7b17cc0da3e8247a668faf7ee413
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89268598"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286467"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 
@@ -93,7 +93,7 @@ ms.locfileid: "89268598"
 ## <a name="next-steps"></a>后续步骤
 
 * [企业状态漫游概述](enterprise-state-roaming-overview.md)
-* [设置和数据漫游的常见问题](enterprise-state-roaming-faqs.md)
+* [设置和数据漫游的常见问题](enterprise-state-roaming-faqs.yml)
 * [设置同步的组策略和 MDM 设置](enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 漫游设置参考](enterprise-state-roaming-windows-settings-reference.md)
 * [故障排除](enterprise-state-roaming-troubleshooting.md)

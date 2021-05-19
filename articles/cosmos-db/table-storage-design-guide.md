@@ -9,10 +9,10 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 603c891e53e5712d489fcef8415e3db55328c9ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99988440"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表存储表设计指南：可缩放的高性能表
@@ -40,7 +40,7 @@ ms.locfileid: "99988440"
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>时间戳</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -196,12 +196,12 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 | 列名称 | 数据类型 |
 | --- | --- |
-| `PartitionKey`（部门名称） |字符串 |
-| `RowKey`（员工 ID） |字符串 |
-| `FirstName` |字符串 |
-| `LastName` |字符串 |
+| `PartitionKey`（部门名称） |String |
+| `RowKey`（员工 ID） |String |
+| `FirstName` |String |
+| `LastName` |String |
 | `Age` |Integer |
-| `EmailAddress` |字符串 |
+| `EmailAddress` |String |
 
 下面是有关设计表存储查询的一般准则。 下述示例中所用的筛选器语法源自表存储 REST API。 有关详细信息，请参阅[查询实体](/rest/api/storageservices/Query-Entities)。  
 
@@ -1128,7 +1128,7 @@ foreach (var e in entities)
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>时间戳</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1220,7 +1220,7 @@ foreach (var e in entities)
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>时间戳</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>

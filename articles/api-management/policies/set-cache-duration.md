@@ -1,5 +1,5 @@
 ---
-title: API 管理策略示例-设置响应缓存持续时间
+title: API 管理策略示例 - 设置响应缓存持续时间
 titleSuffix: Azure API Management
 description: Azure API 管理策略示例 - 演示如何使用后端发送的 Cache-Control 标头中的 maxAge 值设置响应缓存持续时间。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 088dfbcbfe00357c47de4662ac31b52e83d1d8ab
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92070973"
 ---
 # <a name="set-response-cache-duration"></a>设置响应缓存持续时间

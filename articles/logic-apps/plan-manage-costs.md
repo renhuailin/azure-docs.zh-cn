@@ -5,13 +5,13 @@ ms.service: logic-apps
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
-ms.date: 01/29/2021
-ms.openlocfilehash: 44351497ed58c8d49404c094f6800b52186edabb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/24/2021
+ms.openlocfilehash: ec2e1098df4c21704ee7c17852b893630cd3fd27
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101709625"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761810"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>计划和管理 Azure 逻辑应用的成本
 
@@ -109,7 +109,7 @@ Azure 逻辑应用在 Azure 基础结构上运行，部署新资源时，该基�
 
 ## <a name="monitor-costs"></a>监视成本
 
-Azure 资源使用单位成本因时间间隔（如秒、分钟、小时和天）或单位使用量（如字节、MB 等）而异。 有些示例是按天、当月和上个月以及按年来统计的。 随着时间推移，切换到较长时间的视图，可帮助你确定支出趋势。 使用成本分析功能时，可以按各种时间间隔以图和表的形式查看成本。 如果创建了预算和成本预测，则还可以轻松查找超出预算以及可能发生超支的位置。
+Azure 资源使用单位成本因时间间隔（如秒、分钟、小时和天）或单位使用量（如字节、MB 等）而异。 有些示例是按天、当前、上个月和年划分的。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势。 使用成本分析功能时，可以按各种时间间隔以图和表的形式查看成本。 如果创建了预算和成本预测，则还可以轻松查找超出预算以及可能发生超支的位置。
 
 开始针对在 Azure 中创建或开始使用的资源产生成本后，可以通过以下方式查看和监视这些成本：
 
@@ -210,7 +210,7 @@ Otherwise, if no other cost-saving recommendations or best practices exist to re
 
 若要帮助降低逻辑应用和相关资源的成本，请尝试以下选项：
 
-* 如果可能，请使用[内置触发器和操作](../connectors/apis-list.md#built-in)，它们在每次执行时的运行成本要低于[托管连接器触发器和操作](../connectors/apis-list.md#managed-connectors)。
+* 如果可能，请使用[内置触发器和操作](../connectors/built-in.md)，它们在每次执行时的运行成本要低于[托管连接器触发器和操作](../connectors/managed.md)。
 
   例如，使用 [HTTP 操作](../connectors/connectors-native-http.md)或是通过调用使用 [Azure Functions 服务](../azure-functions/functions-overview.md)创建的函数并使用[内置 Azure Functions 操作](../logic-apps/logic-apps-azure-functions.md)来访问其他资源时，可能能够降低成本。 但是，使用 Azure Functions 也会产生成本，因此请确保对选项进行比较。
 

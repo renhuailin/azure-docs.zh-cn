@@ -6,13 +6,13 @@ ms.topic: troubleshooting
 ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: c31a32b32a685087c53198ec52af1188d0071cab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: 4d515e75aba9b3912507da07267c3dcb31f1ee34
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100652439"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445493"
 ---
 # <a name="host-pool-creation"></a>创建主机池
 
@@ -284,9 +284,9 @@ the VM.\\\"
 - 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
 - 若要排查与 Windows 虚拟桌面代理或会话连接有关的问题，请参阅[排查常见的 Windows 虚拟桌面代理问题](troubleshoot-agent.md)。
 - 若要排查 Windows 虚拟桌面客户端连接的问题，请参阅 [Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
-- 若要排查远程桌面客户端的问题，请参阅[排查远程桌面客户端](troubleshoot-client.md)
+- 若要排查有关远程桌面客户端的问题，请参阅[远程桌面客户端故障排除](troubleshoot-client.md)
 - 若要排查将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅 [Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
-- 若要详细了解服务，请参阅 [Windows 虚拟桌面环境](environment-setup.md)。
+- 若要详细了解该服务，请参阅 [Windows 虚拟桌面环境](environment-setup.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

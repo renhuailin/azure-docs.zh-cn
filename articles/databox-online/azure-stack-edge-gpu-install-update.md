@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 03/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 60c6d0b7c983aefbca3aec65a3f6562edb1d56ef
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: ac5ed0e5941c6251d632d029fe4c9f80bbcf12df
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956173"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612545"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新 Azure Stack Edge Pro GPU 
 
@@ -33,6 +33,7 @@ ms.locfileid: "104956173"
 >    
 >    有关此更新中新增功能的信息，请转到[发行说明](azure-stack-edge-gpu-2103-release-notes.md)。
 > - 若要应用 2103 更新，设备必须正在运行 2010。 如果未运行支持的最低版本，则会看到此错误：“无法安装更新包，因为不满足其依赖项”。
+> - 此更新要求按顺序应用两个更新。 首先应用设备软件更新，然后应用 Kubernetes 更新。
 > - 请记住，安装更新或修补程序会重新启动设备。 此更新包含设备软件更新和 Kubernetes 更新。 假设 Azure Stack Edge Pro 是一个单节点设备，任何正在进行的 I/O 都会被中断，并且你的设备将经历长达 1.5 小时的更新停机时间。
 
 若要在设备上安装更新，首先需要配置更新服务器的位置。 配置更新服务器后，可以通过 Azure 门户 UI 或本地 Web UI 应用更新。
@@ -60,7 +61,7 @@ ms.locfileid: "104956173"
 建议通过 Azure 门户安装更新。 设备每天自动扫描一次更新。 当更新可用时，你将在门户中看到通知。 然后可以下载并安装更新。
 
 > [!NOTE]
-> 在继续安装更新之前，请确保设备运行状况良好并且状态显示为“联机”。
+> 请确保在继续安装更新之前设备运行正常，状态显示 为“设备正在正常运行!”。
 
 1. 当更新可用于设备时，你将看到通知。 选择通知，或从顶部命令栏中选择“更新设备”。 这将允许你应用设备软件更新。
 
@@ -91,17 +92,9 @@ ms.locfileid: "104956173"
 
 4. 下载完成后，通知横幅会更新以指示完成。 如果选择下载并安装更新，则将自动开始安装。
 
-    ![更新 7 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
-
     如果选择仅下载更新，则选择该通知以打开“设备更新”边栏选项卡。 选择“安装”。
   
-    ![更新 8 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
-
-5. 你会看到一条通知，指示正在安装。
-
-    ![更新 9 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
- 
-    门户还会显示信息警报，指示正在安装。 设备脱机且处于维护模式。
+5. 你会看到一条通知，指示正在安装。 门户还会显示信息警报，指示正在安装。 设备脱机且处于维护模式。
    
     ![更新 10 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-9.png)
 
@@ -113,15 +106,29 @@ ms.locfileid: "104956173"
     
     ![更新 12 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-11.png)
 
-7. 重启后，如果从顶部命令栏中选择“更新设备”，则可以查看更新的进度。   
+7. 重新启动后，设备软件将完成更新。 更新完成后，可以从本地 Web UI 验证是否已更新设备软件。 Kubernetes 软件版本尚未更新。
 
-8. 安装更新后，设备状态将更新为“联机”。 
+    ![更新 13 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-12.png)
 
-    ![更新 13 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-14.png)
+8. 你将看到一条通知横幅，指出设备更新可用。 选择此横幅，开始更新设备上的 Kubernetes 软件。 
 
-    在顶部命令栏中，选择“设备更新”。 验证是否已成功安装更新，以及设备软件版本是否反映了此情况。
+    ![更新 13a 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-13.png) 
 
-    ![更新 14 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
+
+    ![更新 14 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-14-a.png) 
+
+    如果从顶部命令栏中选择“更新设备”，则可以查看更新的进度。  
+
+    ![更新 15 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-14-b.png) 
+
+
+8. 安装更新后，设备状态更新为“设备正在正常运行!”。 
+
+    ![更新 16 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-15.png)
+
+    转到本地 Web UI，然后转到“软件更新”页。 验证是否已成功安装 Kubernetes 更新，以及软件版本是否反映了此情况。
+
+    ![更新 17 后的软件版本](./media/azure-stack-edge-gpu-install-update/portal-update-16.png)
 
 
 成功安装设备软件和 Kubernetes 更新后，横幅通知就会消失。 你的设备现在具有最新版本的设备软件和 Kubernetes。

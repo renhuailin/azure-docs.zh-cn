@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
 ms.openlocfilehash: 1a99fbd3d3163808a364e8b26e770563a901dc18
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371322"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
@@ -49,7 +49,7 @@ ms.locfileid: "100371322"
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项：
 
-- **云场景**：在此场景中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务，例如 Azure 存储、Azure Synapse 分析、Azure SQL 数据库、Azure Data Lake Store、Amazon S3、Amazon Redshift、SaaS 服务（如 Salesforce）以及 web 协议（如 FTP 和 OData）。 可以在[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)中找到受支持数据源的完整列表。
+- **云场景**：在此场景中，源和目标都可通过 Internet 公开访问。 其中包括托管的云存储服务（如 Azure 存储、Azure Synapse Analytics、Azure SQL 数据库、Azure Data Lake Store、Amazon S3 和 Amazon Redshift）、SaaS 服务（如 Salesforce）以及 Web 协议（如 FTP 和 OData）。 可以在[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)中找到受支持数据源的完整列表。
 - **混合场景**：在此场景中，源或目标位于防火墙之后或本地公司网络中。 或者，数据存储位于专用网络或虚拟网络（通常是源）中，且不可公开访问。 虚拟机上托管的数据库服务器也属于这种情况。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -149,7 +149,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
-| 本地 | 具有公共终结点的基于 Azure 的服务 | ExpressRoute (Microsoft 对等互连)             | 自承载集成运行时可以在本地安装，也可以安装在 Azure 虚拟机上。 |
+| 本地 | 具有公共终结点的基于 Azure 的服务 | ExpressRoute（Microsoft 对等互连）            | 自承载集成运行时可以在本地安装，也可以安装在 Azure 虚拟机上。 |
 
 下图显示了如何使用自承载集成运行时通过 ExpressRoute 和 IPSec VPN（具有 Azure 虚拟网络）在本地数据库和 Azure 服务之间移动数据：
 
@@ -164,7 +164,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a> 防火墙配置和针对 IP 地址设置的允许列表
 
 > [!NOTE]
-> 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅使用 Azure SQL 数据库、Azure Synapse Analytics 和 Azure Data Lake Store 作为示例。
+> 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅以 Azure SQL 数据库、Azure Synapse Analytics 和 Azure Data Lake Store 为例。
 
 > [!NOTE]
 > 若要详细了解通过 Azure 数据工厂实施的数据访问策略，请参阅[此文](./data-access-strategies.md#data-access-strategies-through-azure-data-factory)。
@@ -178,7 +178,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE]
-> 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅使用 Azure SQL 数据库、Azure Synapse Analytics 和 Azure Data Lake Store 作为示例。   
+> 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅以 Azure SQL 数据库、Azure Synapse Analytics 和 Azure Data Lake Store 为例。   
 
 下表提供了 Windows 防火墙的入站端口要求：
 

@@ -1,19 +1,19 @@
 ---
 title: 快速入门 - 在私有云上创建 Azure VMware VM - Azure VMware Solution by CloudSimple
 description: 了解如何在 CloudSimple 私有云上创建 VMware 虚拟机。 从 Azure 门户访问 CloudSimple 门户。
-author: shortpatti
-ms.author: v-patsho
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 76dd3e6796b49cda5ae2a55582b102e41d231d07
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: c741f01ccc3e34ec991aa77fc850fd9f60c4d8aa
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176317"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97899280"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在私有云上创建 VMware 虚拟机
 
@@ -25,7 +25,7 @@ ms.locfileid: "108176317"
 
 ## <a name="access-the-cloudsimple-portal"></a>访问 CloudSimple 门户
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 2. 搜索“CloudSimple 服务”。
 3. 选择要在其上创建私有云的 CloudSimple 服务。
 4. 在“概述”页上，单击“转到CloudSimple 门户”，为 CloudSimple 门户打开一个新的浏览器选项卡 。  如果系统提示，请使用 Azure 登录凭据进行登录。  

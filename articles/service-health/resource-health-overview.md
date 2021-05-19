@@ -1,13 +1,13 @@
 ---
 title: Azure 资源运行状况概述
-description: 了解 Azure 资源运行状况如何帮助你诊断和获取影响 Azure 资源的服务问题。
+description: 了解 Azure 资源运行状况如何帮助你诊断和获得对影响 Azure 资源的服务问题的支持。
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90967872"
 ---
 # <a name="resource-health-overview"></a>资源运行状况概述
@@ -28,13 +28,13 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ### <a name="available"></a>可用
 
-“可用”表示服务尚未检测到影响资源运行状况的事件。** 如果过去 24 小时内资源在计划外停机后进行了恢复，则会看到“最近已解决”通知。
+“可用”表示服务尚未检测到影响资源运行状况的事件。 如果过去 24 小时内资源在计划外停机后进行了恢复，则会看到“最近已解决”通知。
 
 ![显示“最近已解决”通知的虚拟机的“可用”状态](./media/resource-health-overview/Available.png)
 
 ### <a name="unavailable"></a>不可用
 
-“不可用”** 表示服务已检测到影响资源运行状况的正在发生的平台或非平台事件。
+“不可用”表示服务已检测到影响资源运行状况的正在发生的平台或非平台事件。
 
 #### <a name="platform-events"></a>平台事件
 
@@ -52,17 +52,17 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ### <a name="unknown"></a>未知
 
-“未知”表示资源运行状况未收到此资源的相关信息已超过 10 分钟**。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。
+“未知”表示资源运行状况未收到此资源的相关信息已超过 10 分钟。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。
 
 如果资源正在按预期方式运行，资源状态会在几分钟后更改为“可用”。
 
-如果资源遇到问题，“未知”运行状态可能意味着平台中的事件正在影响资源**。
+如果资源遇到问题，“未知”运行状态可能意味着平台中的事件正在影响资源。
 
 ![虚拟机的“未知”状态](./media/resource-health-overview/Unknown.png)
 
 ### <a name="degraded"></a>已降级
 
-“已降级”表示资源已检测到性能降低，但仍可供使用**。
+“已降级”表示资源已检测到性能降低，但仍可供使用。
 
 对于何时将资源报告为已降级，不同的资源具有自己的标准。
 
@@ -70,7 +70,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ## <a name="reporting-an-incorrect-status"></a>报告不正确的状态
 
-如果你认为当前运行状况不正确，可以通过选择“报告不正确的运行状况”**** 告知我们。 如果某个 Azure 问题正在影响你，建议通过“资源运行状况”来联系支持人员。
+如果你认为当前运行状况不正确，可以通过选择“报告不正确的运行状况”告知我们。 如果某个 Azure 问题正在影响你，建议通过“资源运行状况”来联系支持人员。
 
 ![用于提交不正确状态相关信息的表单](./media/resource-health-overview/incorrect-status.png)
 
@@ -86,11 +86,11 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 1. 登录到 Azure 门户。
 2. 浏览资源。
-3. 在左窗格中的资源菜单上，选择“资源运行状况”****。
+3. 在左窗格中的资源菜单上，选择“资源运行状况”。
 
 ![通过资源视图打开“资源运行状况”](./media/resource-health-overview/from-resource-blade.png)
 
-此外，还可以通过选择“所有服务”****，并在筛选器文本框中键入“资源运行状况”**** 来访问“资源运行状况”。 在“帮助 + 支持”**** 窗格中，选择 [资源运行状况](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth)。
+此外，还可以通过选择“所有服务”，并在筛选器文本框中键入“资源运行状况”来访问“资源运行状况”。 在“帮助 + 支持”窗格中，选择 [资源运行状况](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth)。
 
 ![通过“所有服务”打开“资源运行状况”](./media/resource-health-overview/FromOtherServices.png)
 

@@ -1,14 +1,14 @@
 ---
 title: 在 Azure 开发测试实验室中管理成本和所有权
-description: 本文提供的信息可帮助你在整个环境中优化成本并协调所有权。
+description: 本文介绍如何在环境中进行成本优化并落实所有权。
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: dfac69a055c9b0c75032622caf7fb8502fad3406
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92328260"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure 开发测试实验室基础设施治理 - 管理成本和所有权
@@ -34,14 +34,14 @@ ms.locfileid: "92328260"
 
 如果决定使用开发测试套餐，则请注意，此权益专用于开发和应用程序测试。 订阅内的使用不带有财务支持的 SLA，Azure DevOps 和 HockeyApp 的使用除外。
 
-## <a name="define-role-based-access-across-your-organization"></a>定义跨组织的基于角色的访问
+## <a name="define-role-based-access-across-your-organization"></a>定义基于角色的跨组织访问权限
 ### <a name="question"></a>问题
-如何实现为我的开发测试实验室环境定义 Azure 基于角色的访问控制，以确保它可以在开发人员/测试可以执行其工作时进行控制？ 
+如何为我的开发测试实验室环境定义基于 Azure 基于角色的访问控制，以确保在开发人员/测试人员完成其工作时由 IT 部门进行治理？ 
 
 ### <a name="answer"></a>答案
 可以使用一种广泛的模式，但具体细节取决于你的组织。
 
-中心 IT 部门只应拥有必需的控制，让项目和应用程序团队拥有必需级别的控制。 通常情况下，这意味着中心 IT 部门拥有订阅并负责核心 IT 功能，例如网络配置。 订阅的**所有者**集应该小。 这些所有者可以在需要时指定其他所有者，或者应用订阅级别的策略，例如“禁止公共 IP”。
+中心 IT 部门只应拥有必需的控制，让项目和应用程序团队拥有必需级别的控制。 通常情况下，这意味着中心 IT 部门拥有订阅并负责核心 IT 功能，例如网络配置。 订阅的 **所有者** 集应该小。 这些所有者可以在需要时指定其他所有者，或者应用订阅级别的策略，例如“禁止公共 IP”。
 
 部分用户（例如第 1 层或第 2 层支持人员）可能需要在整个订阅中进行访问。 在这种情况下，建议为这些用户提供管理资源所需的“参与者”访问权限，但不提供用户访问权限，也不调整策略。
 
@@ -49,7 +49,7 @@ ms.locfileid: "92328260"
 
 应该将项目/应用程序团队成员添加到开发测试实验室用户角色中。 这些用户可以创建虚拟机（前提是遵循实验室和订阅级别的策略）。 他们也可以管理自己的虚拟机。 他们不能管理属于其他用户的虚拟机。
 
-有关详细信息，请参阅 [Azure 企业基架–说明性的订阅管理](/azure/architecture/cloud-adoption/appendix/azure-scaffold) 文档。
+有关详细信息，请参阅 [Azure 企业基架 - 规范性订阅治理](/azure/architecture/cloud-adoption/appendix/azure-scaffold)文档。
 
 
 ## <a name="next-steps"></a>后续步骤

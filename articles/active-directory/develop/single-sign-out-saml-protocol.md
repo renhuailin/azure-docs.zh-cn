@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/19/2017
+ms.date: 03/22/2021
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 2064ab7e759798d8934facb8d293e8ac60ec6c82
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
-ms.translationtype: MT
+ms.openlocfilehash: 040e49ee870704107e1d4118f1484119d98a9ebf
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703409"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781205"
 ---
 # <a name="single-sign-out-saml-protocol"></a>单一注销 SAML 协议
 
-Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配置文件。 要使单一注销正常工作，必须在应用程序注册期间向 Azure AD 显式注册应用程序的 **LogoutURL**。 Azure AD 使用 LogoutURL 在用户注销后将用户重定向。
+Azure Active Directory (Azure AD) 支持 SAML 2.0 Web 浏览器单一注销配置文件。 要使单一注销正常工作，必须在应用程序注册期间向 Azure AD 显式注册应用程序的 **LogoutURL**。 如果将应用[添加到 Azure 应用库](v2-howto-app-gallery-listing.md)，则默认情况下可以设置此值。 否则，必须由将应用添加到其 Azure AD 租户的人员确定和设置此值。 Azure AD 使用 LogoutURL 在用户注销后将用户重定向。 
 
-Azure AD 支持重定向绑定 (HTTP GET) ，而非 HTTP POST 绑定。
+Azure AD 支持重定向绑定 (HTTP GET)，而不支持非 HTTP POST 绑定。
 
 下图显示了 Azure AD 单一注销过程的工作流。
 
@@ -73,4 +73,4 @@ Azure AD 将此值设为 `https://login.microsoftonline.com/<TenantIdGUID>/`，�
 若要评估 `Issuer` 元素的值，请使用应用程序注册期间提供的 **应用 ID URI** 值。
 
 ### <a name="status"></a>状态
-Azure AD 使用 `StatusCode` 元素中的元素 `Status` 指示注销的成功或失败。当注销尝试失败时， `StatusCode` 元素还可以包含自定义错误消息。
+Azure AD 使用 `Status` 元素中的 `StatusCode` 元素指示注销的成功或失败。如果注销尝试失败，`StatusCode` 元素值还包含自定义错误消息。

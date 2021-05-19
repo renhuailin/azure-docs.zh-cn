@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 3d43a532f57feab361c6a3de79269991f46fc55d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cf15d6f669718cca8b99d67a7912d3959d9c191f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684016"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732498"
 ---
 # <a name="prepare-data-with-data-wrangling"></a>使用数据整理准备数据
 
@@ -20,7 +20,7 @@ ms.locfileid: "98684016"
 数据工厂中的数据整理能让你在 ADF 中本地构建交互式 Power Query 混合，然后在 ADF 管道内大规模执行。
 
 > [!NOTE]
-> ADF 中的 Power Query 活动目前在公共预览版中提供
+> ADF 中的 Power Query 活动目前以公共预览版提供
 
 ## <a name="create-a-power-query-activity"></a>创建 Power Query 活动
 
@@ -31,7 +31,7 @@ ms.locfileid: "98684016"
 
 ![显示工厂资源窗格中 Power Query 的屏幕截图。](media/data-flow/power-query-wrangling.png)
 
-另一种方法在管道画布的活动窗格中。 打开 Power Query 可折叠，将 Power Query 活动拖到画布上。
+另一种方法是在管道画布的“活动”窗格中进行。 打开 Power Query 可折叠，将 Power Query 活动拖到画布上。
 
 ![突出显示数据整理选项的屏幕截图。](media/data-flow/power-query-activity.png)
 

@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
 ms.openlocfilehash: 3c8b9444344e5bae414145e2b3367c265114a423
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100586849"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 表存储管理商业市场潜在顾客
@@ -36,9 +36,9 @@ ms.locfileid: "100586849"
 
 ## <a name="create-a-table-in-your-storage-account"></a>在存储帐户中创建表
 
-1. 在 Azure 门户的 " **主页** " 页上，选择 " **查看所有资源** " 以访问存储帐户。 也可以从 Azure 门户的左侧菜单栏中选择“所有资源”。
+1. 在 Azure 门户的主页中，选择“查看所有资源”以访问存储帐户 。 也可以从 Azure 门户的左侧菜单栏中选择“所有资源”。
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="访问你的 Azure 存储帐户。":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="访问 Azure 存储帐户。":::
 
 1. 从“存储帐户”窗格中，选择“访问密钥”，然后复制该密钥的“连接字符串”值 。 保存此值，因为它是需要在发布门户中提供的“存储帐户连接字符串”值，需要提供该值才可接收 Azure 市场产品/服务的潜在顾客。
 
@@ -108,7 +108,7 @@ ms.locfileid: "100586849"
 
    选择“创建”后，“获取实体”窗口随即显示 。 在此处，选择“显示高级选项”，并提供以下框的信息：
 
-   * **Table**：选择表的名称（从 [创建表](#create-a-table-in-your-storage-account)中）。 下图显示了在 `marketplaceleads` 此示例中选择了 "表" 时的提示。
+   * **Table**：选择表的名称（从 [创建表](#create-a-table-in-your-storage-account)中）。 下图显示了为本例选择“`marketplaceleads`”表时的提示。
 
      ![获取实体窗口](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "100586849"
    在接下来的几个步骤中，将根据条件的结果设置要采取的操作：
 
    * 如果条件解析为“如果否”，则不执行任何操作。
-   * 如果为 **"是"**，则会触发连接工作或学校帐户以发送电子邮件的操作。 
+   * 如果条件解析为“如果是”，则触发连接工作或学校帐户以发送电子邮件的操作。 
 
 1. 选择“如果是”下的“添加操作” 。
 
@@ -206,4 +206,4 @@ ms.locfileid: "100586849"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [潜在客户管理常见问题和故障排除](../lead-management-faq.md)
+- [潜在顾客管理常见问题解答和故障排除](../lead-management-faq.md)

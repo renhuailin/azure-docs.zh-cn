@@ -3,16 +3,16 @@ title: 备份和还原 - Azure PowerShell - Azure Database for MariaDB
 description: 了解如何使用 Azure PowerShell 在 Azure Database for MariaDB 中备份和还原服务器。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 211285a0ae8aaa9b82bca914f3add7fbaa700146
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 0207be2c983fd986d5852403e36462d2d7d2cdda
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664845"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>如何使用 PowerShell 来备份和还原 Azure Database for MariaDB 服务器
@@ -23,7 +23,7 @@ Azure Database for MariaDB 服务器定期进行备份以便启用还原功能�
 
 若要完成本操作指南，需要：
 
-- 在本地安装[Az PowerShell 模块](/powershell/azure/install-az-ps)或在浏览器中[Azure Cloud Shell](https://shell.azure.com/)
+- 本地安装 [Az PowerShell 模块](/powershell/azure/install-az-ps)或浏览器中有 [Azure Cloud Shell](https://shell.azure.com/)
 - [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
@@ -106,7 +106,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMariaDbServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-此示例将在 "美国东部" 区域中创建一个名为 **mydemoserver-georestored** 的新服务器，该服务器属于 **myresourcegroup**。 它是第 5 代常规用途服务器，具有 8 个 vCore。 该服务器是基于也在资源组 myresourcegroup 中的 mydemoserver 的异地冗余备份创建的 。
+此示例在美国东部区域创建一个名为 mydemoserver-georestored 且将属于 myresourcegroup 的新服务器 。 它是第 5 代常规用途服务器，具有 8 个 vCore。 该服务器是基于也在资源组 myresourcegroup 中的 mydemoserver 的异地冗余备份创建的 。
 
 若要在与现有服务器不同的资源组创建新服务器，请使用 ResourceGroupName 参数指定新资源组的名称，如以下示例所示：
 

@@ -1,13 +1,13 @@
 ---
 title: Azure Monitor 中的 Azure 服务总线指标 | Microsoft Docs
-description: 本文介绍如何使用 Azure Monitor 监视服务总线实体（队列、主题和订阅）。
+description: 本文介绍如何使用 Azure Monitor 来监视服务总线实体（队列、主题和订阅）。
 ms.topic: article
 ms.date: 02/12/2021
 ms.openlocfilehash: 1e57def2ee7409ae62cdbe065c36e8a53a140e18
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100570565"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 服务总线指标
@@ -145,7 +145,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
     2. 为警报输入 **说明**。
     3. 选择警报的 **严重性**。 
 
-        !["创建规则" 页的屏幕截图。 "定义警报详细信息" 已展开，并突出显示 "警报规则名称"、"说明" 和 "严重性" 的字段。](./media/service-bus-metrics-azure-monitor/alert-details.png)
+        ![“创建规则”页的屏幕截图。 “定义警报详细信息”已展开，并突出显示了“警报规则名称”、“说明”和“严重性”字段。](./media/service-bus-metrics-azure-monitor/alert-details.png)
 1. 在“创建规则”页面上，展开“定义操作组”，选择“新建操作组”，然后在“添加操作组”页面上执行以下操作。 
     1. 为操作组输入名称。
     2. 为操作组输入短名称。 
@@ -159,7 +159,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
         2. 键入 **电子邮件地址**。 
         3. 选择“确定”。
 
-            !["添加操作组" 页的屏幕截图。 向组中添加了操作类型为 "电子邮件/短信/推送/语音" 的名为 "发送电子邮件" 的操作。](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+            ![“添加操作组”页的屏幕截图。 正在将名为“发送电子邮件”且“操作类型”为“电子邮件/短信/推送/语音”的操作添加到组中。](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. 在“添加操作组”页面上，选择“确定”。 
 1. 在“创建规则”页面上，选择“创建警报规则”。 
 

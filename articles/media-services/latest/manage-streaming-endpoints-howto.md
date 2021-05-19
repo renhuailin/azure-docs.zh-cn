@@ -15,18 +15,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 8cdfc9e1243de831364bc6a8a11fe25453cc4931
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6cc48de93affb8873bff1264dd012d2a7933e99f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213855"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108177"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>通过媒体服务 v3 管理流式处理终结点
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-创建媒体服务帐户后，一个处于“已停止”状态的“默认”[流式处理终结点](streaming-endpoint-concept.md)会添加到帐户 。 若要开始对内容进行流式处理并利用[动态打包](dynamic-packaging-overview.md)和[动态加密](content-protection-overview.md)功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。
+创建媒体服务帐户后，一个处于“已停止”状态的“默认”[流式处理终结点](streaming-endpoint-concept.md)会添加到帐户 。 若要开始对内容进行流式处理并利用[动态打包](encode-dynamic-packaging-concept.md)和[动态加密](drm-content-protection-concept.md)功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。
 
 本文介绍如何使用不同的技术在流式处理终结点上执行 [start](/rest/api/media/streamingendpoints/start) 命令。 
  
@@ -39,7 +39,7 @@ ms.locfileid: "102213855"
 
 * [媒体服务概念](concepts-overview.md)
 * [流式处理终结点概念](streaming-endpoint-concept.md)
-* [动态打包](dynamic-packaging-overview.md)
+* [动态打包](encode-dynamic-packaging-concept.md)
 
 ## <a name="use-rest"></a>使用 REST
 
@@ -47,7 +47,7 @@ ms.locfileid: "102213855"
 POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/slitestmedia10/streamingEndpoints/myStreamingEndpoint1/start?api-version=2018-07-01
 ```
 
-有关详细信息，请参见: 
+有关详细信息，请参阅： 
 
 * [启动流式处理终结点](/rest/api/media/streamingendpoints/start)参考文档。
 * 启动流式处理终结点是一个异步操作。 
@@ -102,7 +102,7 @@ if (streamingEndpoint != null)
     }
 ```
 
-请参阅完整的 [.NET 代码示例](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/Program.cs#L112)。
+请参阅完整的 [.NET 代码示例](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Streaming/StreamHLSAndDASH/Program.cs#L112)。
 
 ---
 

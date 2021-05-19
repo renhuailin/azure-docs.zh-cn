@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
 ms.openlocfilehash: bff1eec0152ab0f57edd212adf6b14f7b588fb51
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100390158"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
@@ -75,7 +75,7 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
     ```
 
    > [!NOTE]
-   > 如果你使用的全局管理员帐户不是 Azure AD 租户的本机用户提供许可，请在 URL 中将 "common" 替换为 Azure AD 的目录 id。 还可能需要在某些其他情况下将 "common" 替换为目录 id。
+   > 如果你使用并非 Azure AD 租户本机的全局管理员帐户来授予同意，请在 URL 中将“common”替换为 Azure AD Directory ID。 在某些其他情况下，可能还需要将“common”替换为你的 Directory ID。
    >
 
 1. 如果出现提示，请选择“全局管理员”帐户。

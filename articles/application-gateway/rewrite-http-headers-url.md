@@ -2,21 +2,21 @@
 title: 使用 Azure 应用程序网关重写 HTTP 标头和 URL | Microsoft Docs
 description: 本文概述了如何在 Azure 应用程序网关中重写 HTTP 标头和 URL
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.author: surmb
-ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/05/2021
+ms.author: azhussai
+ms.openlocfilehash: b7cf7c98e71da215eb30dcab556a88d6d2701591
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726506"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789440"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>使用应用程序网关重写 HTTP 标头和 URL
 
- 可以通过应用程序网关重写请求和响应的所选内容。 使用此功能，你可以转换 URL、查询字符串参数以及修改请求标头和响应标头。 还可以通过它来添加条件，确保只有在满足特定条件的情况下才能重写 URL 或指定的标头。 这些条件基于请求和响应信息。
+可以通过应用程序网关重写请求和响应的所选内容。 使用此功能，你可以转换 URL、查询字符串参数以及修改请求标头和响应标头。 还可以通过它来添加条件，确保只有在满足特定条件的情况下才能重写 URL 或指定的标头。 这些条件基于请求和响应信息。
 
 >[!NOTE]
 >HTTP 标头和 URL 重写功能仅适用于[应用程序网关 v2 SKU](application-gateway-autoscaling-zone-redundant.md)
@@ -38,7 +38,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 可以重写请求和响应中的所有标头，但 Connection 和 Upgrade 标头除外。 还可以使用应用程序网关创建自定义标头，并将其添加到通过该网关路由的请求和响应。
 
-### <a name="url-path-and-query-string-preview"></a>URL 路径和查询字符串（预览版）
+### <a name="url-path-and-query-string"></a>URL 路径和查询字符串
 
 利用应用程序网关中的 URL 重写功能，你可以：
 
@@ -51,9 +51,6 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 若要了解如何使用 Azure 门户在应用程序网关中重写 URL，请参阅[此文](rewrite-url-portal.md)。
 
 ![此图描述了使用应用程序网关重写 URL 的过程。](./media/rewrite-http-headers-url/url-rewrite-overview.png)
-
->[!NOTE]
-> URL 重写功能为预览版，仅适用于 Standard_v2 和 WAF_v2 SKU 版应用程序网关。 不建议在生产环境中使用。 若要了解关于预览的详细信息，请参阅[此处的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="rewrite-actions"></a>重写操作
 
@@ -129,7 +126,20 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | ssl_enabled               | 如果连接在 TLS 模式下建立，则为“On”。 否则，将为空字符串。 |
 | uri_path                  | 标识 Web 客户端要访问的主机中特定资源。 这是请求 URI 中没有参数的部分。 示例：在请求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` 中，uri_path 值将为 `/article.aspx` |
 
- 
+### <a name="mutual-authentication-server-variables-preview"></a>相互身份验证服务器变量（预览）
+
+应用程序网关支持以下用于相互身份验证方案的服务器变量。 这些服务器变量的用法与上述服务器变量相同。 
+
+|   变量名称    |                   说明                                           |
+| ------------------------- | ------------------------------------------------------------ |
+| client_certificate        | 已建立的 SSL 连接的客户端证书，采用 PEM 格式。 |
+| client_certificate_end_date| 客户端证书的结束日期。 |
+| client_certificate_fingerprint| 已建立的 SSL 连接的客户端证书的 SHA1 指纹。 |
+| client_certificate_issuer | 已建立的 SSL 连接的客户端证书的“颁发者 DN”字符串。 |
+| client_certificate_serial | 已建立的 SSL 连接的客户端证书的序列号。  |
+| client_certificate_start_date| 客户端证书的开始日期。 |
+| client_certificate_subject| 已建立的 SSL 连接的客户端证书的“使用者 DN”字符串。 |
+| client_certificate_verification| 客户端证书验证结果为：“成功”、“失败:<reason>”或“无”（如果不存在证书）  。 | 
 
 ## <a name="rewrite-configuration"></a>重写配置
 
@@ -144,10 +154,29 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 * **重写类型**：有 3 种类型的重写可用：
    * 重写请求标头 
    * 重写响应标头
-   * 重写 URL：URL 重写类型有 3 个组件
+   * 重写 URL 组件
       * **URL 路径**：要将路径重写为的值。 
       * **URL 查询字符串**：要将查询字符串重写为的值。 
       * **重新评估路径映射**：用于确定是否重新评估 URL 路径映射。 如果保持未选中状态，则将使用原始 URL 路径来匹配 URL 路径映射中的路径模式。 如果设置为 true，则会重新评估 URL 路径映射，以检查它是否与重写的路径匹配。 启用此开关有助于在重写后将请求路由到不同的后端池。
+
+## <a name="rewrite-configuration-common-pitfalls"></a>重写配置常见缺陷
+
+* 不允许对基本请求路由规则启用“重新计算路径映射”。 这是为了防止基本路由规则出现无限评估循环。
+
+* 需要至少有 1 个条件重写规则或 1 个没有为基于路基的路由规则启用“重新评估路径映射”的重写规则，以防止基于路径的路由规则出现无限评估循环。
+
+* 如果循环是基于客户端输入动态创建的，系统将终止传入的请求并显示错误代码 500。 在这种情况下，应用程序网关继续为其他请求提供服务，而不进行任何降级。
+
+### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>将 URL 重写或主机头重写与 Web 应用程序防火墙 (WAF_v2 SKU) 结合使用
+
+配置 URL 重写或主机头重写时，WAF 评估将在修改请求头或 URL 参数之后（重写后）发生。 删除应用程序网关上的 URL 重写或主机头重写配置时，WAF 评估将在标头重写之前（重写前）完成。 此顺序可确保将 WAF 规则应用到后端池接收的最终请求。
+
+例如，假设标头 `"Accept" : "text/html"` 具有以下标头重写规则 - 如果标头的值 `"Accept"` 等于 `"text/html"`，则将值重写为 `"image/png"`。
+
+在此，只配置了标头重写，系统将在 `"Accept" : "text/html"` 上完成 WAF 评估。 但配置了 URL 重写或主机头重写时，则将在 `"Accept" : "image/png"` 上完成 WAF 评估。
+
+>[!NOTE]
+> URL 重写操作预计会导致 WAF 应用程序网关的 CPU 利用率出现小幅增加。 建议在 WAF 应用程序网关上启用 URL 重写规则后，在短暂的一段时间内监视 [CPU 利用率指标](high-traffic-support.md)。
 
 ### <a name="common-scenarios-for-header-rewrite"></a>标头重写的常见方案
 
@@ -162,7 +191,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 当后端应用程序发送重定向响应时，你可能希望将客户端重定向到不同的 URL，而不是后端应用程序指定的 URL。 例如，当应用服务托管在应用程序网关后面，并要求客户端重定向到其相对路径时，你可能希望这样做。 （例如，从 contoso.azurewebsites.net/path1 重定向到 contoso.azurewebsites.net/path2。）
 
-由于应用服务是多租户服务，因此它会使用请求中的主机标头将请求路由到正确的终结点。 应用服务的默认域名为 *.azurewebsites.net（例如 contoso.azurewebsites.net），它不同于应用程序网关的域名（例如 contoso.com）。 由于来自客户端的原始请求使用应用程序网关的域名 (contoso.com) 作为主机名，因此，应用程序网关会将主机名更改为 contoso.azurewebsites.net。 做出此更改的目的是使应用服务能够将请求路由到正确的终结点。
+由于应用服务是多租户服务，因此它会使用请求中的主机标头将请求路由到正确的终结点。 应用服务的默认域名为 \*.azurewebsites.net（例如 contoso.azurewebsites.net），它不同于应用程序网关的域名（例如 contoso.com）。 由于来自客户端的原始请求使用应用程序网关的域名 (contoso.com) 作为主机名，因此，应用程序网关会将主机名更改为 contoso.azurewebsites.net。 做出此更改的目的是使应用服务能够将请求路由到正确的终结点。
 
 当应用服务发送重定向响应时，它会在其响应的位置标头中，使用它从应用程序网关收到的请求中的相同主机名。 因此，客户端将直接向 `contoso.azurewebsites.net/path2` 发出请求，而不是通过应用程序网关 (`contoso.com/path2`) 发出请求。 不应该绕过应用程序网关。
 
@@ -197,7 +226,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 #### <a name="parameter-based-path-selection"></a>根据参数选择路径
 
-若要完成根据标头的值、URL 的一部分或请求中的查询字符串选择后端池的方案，可以组合使用 URL 重写功能和基于路径的路由。  例如，如果你有一个购物网站，并且产品类别作为查询字符串在 URL 中传递，并且你想要基于查询字符串将请求路由到后端，请执行以下步骤：
+若要完成根据标头的值、URL 的一部分或请求中的查询字符串选择后端池的方案，可以组合使用 URL 重写功能和基于路径的路由。 例如，如果你有一个购物网站，并且产品类别作为查询字符串在 URL 中传递，并且你想要基于查询字符串将请求路由到后端，请执行以下步骤：
 
 **步骤 1：** 创建如下图所示的路径映射
 
@@ -205,11 +234,11 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 **步骤 2 (a)：** 创建包含 3 条重写规则的重写集： 
 
-* 第一条规则有一个条件，用于检查 query_string 变量中是否有“category=shoes”，并且有一个操作，用于将 URL 路径重写为 /listing1，此外还启用了“重新评估路径映射”功能
+* 第一条规则有一个条件，用于检查 query_string 变量中是否有“category=shoes”，并且有一个操作，用于将 URL 路径重写为 /listing1，此外还启用了“重新评估路径映射”功能  
 
-* 第二条规则有一个条件，用于检查 query_string 变量中是否有“category=bags”，并且有一个操作，用于将 URL 路径重写为 /listing2，此外还启用了“重新评估路径映射”功能
+* 第二条规则有一个条件，用于检查 query_string 变量中是否有“category=bags”，并且有一个操作，用于将 URL 路径重写为 /listing2，此外还启用了“重新评估路径映射”功能  
 
-* 第三条规则有一个条件，用于检查 query_string 变量中是否有“category=accessories”，并且有一个操作，用于将 URL 路径重写为 /listing3，此外还启用了“重新评估路径映射”功能
+* 第三条规则有一个条件，用于检查 query_string 变量中是否有“category=accessories”，并且有一个操作，用于将 URL 路径重写为 /listing3，此外还启用了“重新评估路径映射”功能  
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL 重写方案 1-2。":::
 
@@ -221,7 +250,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 现在，如果用户请求 *contoso.com/listing?category=any*，则它会与默认路径匹配，因为路径映射中的任何路径模式（/listing1、/listing2、/listing3）都不匹配。 由于你已将上述重写集与此路径相关联，因此系统会对此重写集进行评估。 由于查询字符串不会匹配此重写集中这 3 个重写规则中任何一个的条件，因此不会执行重写操作。因此，请求将不做任何更改，并路由到与默认路径（即 GenericList）关联的后端。
 
- 如果用户请求了 *contoso.com/listing?category=shoes*，则也会匹配默认路径。 但在这种情况下，第一条规则中的条件会匹配，因此会执行与条件相关联的操作，这会将 URL 路径重写到 /listing1 并重新评估路径映射。 重新评估路径映射时，请求现在会匹配与模式 /listing1 相关联的路径，系统会将请求路由到与此模式关联的后端，即 ShoesListBackendPool
+如果用户请求了 contoso.com/listing?category=shoes，则也会匹配默认路径。 但在这种情况下，第一条规则中的条件会匹配，因此会执行与条件相关联的操作，这会将 URL 路径重写到 /listing1 并重新评估路径映射。 重新评估路径映射时，请求现在会匹配与模式 /listing1 相关联的路径，系统会将请求路由到与此模式关联的后端，即 ShoesListBackendPool。
 
 >[!NOTE]
 >可以根据所定义的条件将此方案扩展到任何标头或 Cookie 值、URL 路径、查询字符串或服务器变量。因此，实际上你能够根据这些条件路由请求。
@@ -246,7 +275,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 进行 URL 重写时，应用程序网关会在将请求发送到后端之前重写 URL。 这不会更改用户在浏览器中看到的内容，因为用户不会看到这些更改。
 
-进行 URL 重定向时，应用程序网关会将包含新 URL 的重定向响应发送到客户端。 这样一来，客户端就必须将其请求重新发送到重定向中提供的新 URL。 用户在浏览器中看到的 URL 会更新为新 URL
+进行 URL 重定向时，应用程序网关会将包含新 URL 的重定向响应发送到客户端。 这样一来，客户端就必须将其请求重新发送到重定向中提供的新 URL。 用户在浏览器中看到的 URL 会更新为新 URL。
 
 :::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="重写与重定向。":::
 
@@ -254,7 +283,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 - 如果响应中包含多个同名的标头，则重写其中某个标头的值会导致删除该响应中的其他标头。 这种情况往往出现于 Set-Cookie 标头，因为在一个响应中可以包含多个 Set-Cookie 标头。 例如，如果将应用服务与应用程序网关一起使用，并在应用程序网关上配置了基于 Cookie 的会话关联，则就会出现此类情况。 在这种情况下，响应将包含两个 Set-Cookie 标头：一个用于应用服务（例如 `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`），另一个用于应用程序网关关联（例如 `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`）。 在此情况下重写其中一个 Set-Cookie 标头可能会导致从响应中删除另一个 Set-Cookie 标头。
 - 当应用程序网关配置为重定向请求或显示自定义错误页时，不支持重写。
-- 标头名称可以包含任何字母数字字符和 [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) 中定义的特定符号。 目前不支持在标头名称中使用特殊字符下划线 (_)。
+- 标头名称可以包含任何字母数字字符和 [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) 中定义的特定符号。 目前不支持在标头名称中包含下划线 (\_) 特殊字符。
 - 无法重写 Connection 和 Upgrade 标头
 
 ## <a name="next-steps"></a>后续步骤

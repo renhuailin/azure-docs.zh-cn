@@ -9,10 +9,10 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 robots: noindex
 ms.openlocfilehash: 3832175910f3a6d3e6a7de8da932b32436cc2452
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100393014"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>在 Azure 数据工厂（版本 1）管道中使用自定义活动
@@ -45,7 +45,7 @@ ms.locfileid: "100393014"
 ### <a name="azure-batch-prerequisites"></a>Azure Batch 先决条件
 在本演练中，将 Azure Batch 用作计算资源运行自定义 .NET 活动。 **Azure Batch** 是一个平台服务，适用于在云中有效运行大规模并行和高性能计算 (HPC) 应用程序。 Azure Batch 可以计划要在托管的 **虚拟机集合** 上运行的计算密集型工作，并且可以缩放计算资源，使之符合作业的需求。 有关 Azure Batch 服务的详细概述，请参阅 [Azure Batch 基础知识][batch-technical-overview]一文。
 
-本教程会创建一个包含 VM 池的 Azure Batch 帐户。 步骤如下：
+本教程会创建一个包含 VM 池的 Azure Batch 帐户。 下面是相关步骤：
 
 1. 使用 [Azure 门户](https://portal.azure.com)创建 **Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户][batch-create-account]一文。
 2. 记下 Azure Batch 帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure Batch 链接服务。
@@ -454,7 +454,7 @@ test custom activity Microsoft test custom activity Microsoft
 4. 单击命令栏上的“部署”，部署链接服务。
 
 #### <a name="create-azure-batch-linked-service"></a>创建 Azure Batch 链接服务
-1. 在“数据工厂编辑器”中，单击“...**更多”** ，单击“新建计算”，并从菜单中选择“Azure Batch”。
+1. 在数据工厂编辑器中，单击命令栏上的“... 更多”，并从菜单中依次选择“新建计算”、“Azure Batch”  。
 
     ![新建计算 - Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. 对 JSON 脚本进行以下更改：
@@ -487,7 +487,7 @@ test custom activity Microsoft test custom activity Microsoft
 在此步骤中，创建表示输入和输出数据的数据集。
 
 #### <a name="create-input-dataset"></a>创建输入数据集
-1. 在数据工厂的“编辑器”中，单击命令栏上的“... **更多”** ，单击“新建数据集”，并从下拉菜单中选择“Azure Blob 存储”。
+1. 在数据工厂的“编辑器”中，单击命令栏上的“... 更多”，单击“新建数据集”，然后从下拉菜单中选择“Azure Blob 存储”   。
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段：
 
     ```json
@@ -520,7 +520,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 单击工具栏上的“部署”，创建并部署 **InputDataset**。 确认编辑器标题栏中显示了“已成功创建表”消息。
 
 #### <a name="create-an-output-dataset"></a>创建输出数据集
-1. 在“数据工厂编辑器”中，单击命令栏上的“...**更多”** ，单击“新建数据集”，并选择“Azure Blob 存储”。
+1. 在“数据工厂编辑器”中，单击命令栏中的“... 更多”，单击“新建数据集”，然后选择“Azure Blob 存储”   。
 2. 将右窗格中的 JSON 脚本替换为以下 JSON 脚本：
 
     ```JSON
@@ -567,7 +567,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 若要部署 **OutputDataset**，请在命令栏上单击“部署”。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>创建并运行使用自定义活动的管道
-1. 在“数据工厂编辑器”中，单击“...**更多”** ，并在命令栏上选择“新建管道”。
+1. 在数据工厂编辑器中，单击“… 更多”，然后选择命令栏上的“新建管道” 。
 2. 将右窗格中的 JSON 替换为以下 JSON 脚本：
 
     ```JSON
@@ -701,7 +701,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    单击活动运行时，会显示具有日志文件列表的“活动运行详细信息”边栏选项卡。 在 user_0.log 文件中会显示记录的消息。 发生错误后，会显示 3 个活动运行，因为管道/活动 JSON 中的重试计数设置为 3。 单击活动运行时，会显示日志文件，可查看文件解决该错误。
 
-   在日志文件列表中，单击“user-0.log”。 右侧面板中是使用 **IActivityLogger.Write** 方法的结果。 如果未看到所有消息，请检查是否具有多个名为：user_1.log, user_2.log 等的日志文件。否则，代码可能在上一次记录消息后出现故障。
+   在日志文件列表中，单击“user-0.log”。 右侧面板中是使用 **IActivityLogger.Write** 方法的结果。 如果看不到所有消息，请检查是否有更多名为 user_1.log、user_2.log 等的日志文件。否则，在上次记录消息后，代码可能已失败。
 
    此外，检查 **system-0.log** 中是否包含任何系统错误消息和异常。
 4. 将 **PDB** 文件包含在 zip 文件中，这样，在发生错误时，错误详细信息中会提供 **调用堆栈** 等信息。

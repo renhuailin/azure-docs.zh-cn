@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91565099"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>在 Azure 逻辑应用中交换 RosettaNet 消息以实现 B2B 企业集成
@@ -79,7 +79,7 @@ ms.locfileid: "91565099"
 
    ![添加 RosettaNet PIP 详细信息](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | **名称** | 是 | PIP 名称 |
    | **PIP 代码** | 是 | PIP 三位数代码。 有关详细信息，请参阅 [RosettaNet PIP](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)。 |
@@ -110,7 +110,7 @@ ms.locfileid: "91565099"
 
    ![添加协议详细信息](media/logic-apps-enterprise-integration-rosettanet/add-agreement-details.png)
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | **名称** | 是 | 协议的名称 |
    | **协议类型** | 是 | 选择“RosettaNet”。  |
@@ -129,7 +129,7 @@ ms.locfileid: "91565099"
 
    1. 若要为传入消息启用签名或加密，请在“消息”下，分别选择“应将消息签名”或“应将消息加密”。   
 
-      | 属性 | 必须 | 说明 |
+      | 属性 | 必选 | 说明 |
       |----------|----------|-------------|
       | **应对消息进行签名** | 否 | 使用所选证书为传入的消息签名。 |
       | **证书** | 是（如果已启用签名） | 用于签名的证书 |
@@ -145,7 +145,7 @@ ms.locfileid: "91565099"
 
    1. 若要为传出的消息启用签名或加密，请在“消息”下，分别选择“启用消息签名”或“启用消息加密”。    在每个选项下选择相应的算法，以及以前已添加到集成帐户的[证书](./logic-apps-enterprise-integration-certificates.md)用于签名或加密。
 
-      | 属性 | 必须 | 说明 |
+      | 属性 | 必选 | 说明 |
       |----------|----------|-------------|
       | **启用消息签名** | 否 | 使用所选签名算法和证书将传出的消息签名。 |
       | **签名算法** | 是（如果已启用签名） | 要使用的签名算法，基于所选的证书 |
@@ -157,7 +157,7 @@ ms.locfileid: "91565099"
 
    1. 在“终结点”下，指定用于发送操作消息和确认的所需 URL。 
 
-      | 属性 | 必须 | 说明 |
+      | 属性 | 必选 | 说明 |
       |----------|----------|-------------|
       | **操作 URL** |  是 | 用于发送操作消息的 URL。 该 URL 是同步和异步消息的必填字段。 |
       | **确认 URL** | 是 | 用于发送确认消息的 URL。 该 URL 是异步消息的必填字段。 |
@@ -197,9 +197,9 @@ ms.locfileid: "91565099"
 
 1. 提供操作属性的信息：
 
-   ![屏幕截图，显示你为操作属性提供信息的位置。](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
+   ![屏幕截图显示了为操作属性提供信息的位置。](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | **消息** | 是 | 要解码的 RosettaNet 消息  |
    | **标头** | 是 | 提供版本（RNIF 版本）值和响应类型（指示合作伙伴之间的通信类型，可以是同步或异步）的 HTTP 标头 |
@@ -228,7 +228,7 @@ ms.locfileid: "91565099"
 
    ![提供操作详细信息](media/logic-apps-enterprise-integration-rosettanet/encode-action-details.png)
 
-   | 属性 | 必须 | 说明 |
+   | 属性 | 必选 | 说明 |
    |----------|----------|-------------|
    | **消息** | 是 | 要编码的 RosettaNet 消息  |
    | **主方合作伙伴** | 是 | 主方合作伙伴名称 |

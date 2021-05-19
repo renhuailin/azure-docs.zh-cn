@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2eb109078728b8a9070b3991733450c1da790d9e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879589"
 ---
 # <a name="table-design-patterns"></a>表设计模式
@@ -533,7 +533,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 
 但是，此架构的问题是若要检索特定时间跨度的所有日志消息，必须搜索表中的每个分区。
 
-### <a name="solution"></a>解决方案
+### <a name="solution&quot;></a>解决方案
 前一部分重点介绍了尝试使用表服务来存储日志条目的问题，并建议了两个并不令人满意的设计。 一种解决方案会导致热分区并具有在写入日志消息时性能不佳的风险；另一种解决方案由于需要扫描表中的每个分区才能检索特定时间跨度的日志消息而导致查询性能不佳。 对于此类方案，Blob 存储提供了更好的解决方案，这就是 Azure Storage Analytics 存储它收集的日志数据的方式。  
 
 本部分通过概述 Storage Analytics 如何在 blob 存储中存储日志数据说明了此方法如何存储通常按范围查询的数据。  
@@ -546,24 +546,24 @@ Storage Analytics 以带分隔符格式将日志消息存储在多个 blob 中�
 
 如果要在应用程序中实现类似的解决方案，则必须考虑如何管理可靠性（在事件发生时向 blob 存储写入每个日志条目）与成本和伸缩性（在应用程序中缓冲更新，然后批量将其写入到 blob 存储）之间的权衡。  
 
-### <a name="issues-and-considerations"></a>问题和注意事项
+### <a name=&quot;issues-and-considerations&quot;></a>问题和注意事项
 在决定如何存储日志数据时，请考虑以下几点：  
 
 * 如果创建了可避免潜在热分区的表设计，则可能会发现无法高效地访问日志数据。  
 * 若要处理日志数据，客户端通常需要加载多个记录。  
 * 虽然日志数据通常结构化，但 blob 存储可能会是更好的解决方案。  
 
-## <a name="implementation-considerations"></a>实现注意事项
+## <a name=&quot;implementation-considerations&quot;></a>实现注意事项
 本部分讨论在实现前面的部分中所述的模式时，需要牢记的一些注意事项。 本部分的大部分内容使用以 C# 编写的示例，其中使用了存储客户端库（在撰写本文时为版本 4.3.0）。  
 
-## <a name="retrieving-entities"></a>检索实体
+## <a name=&quot;retrieving-entities&quot;></a>检索实体
 如“针对查询的设计”部分所述，最高效的查询是点查询。 但是，在某些情况下，可能需要检索多个实体。 本部分介绍使用存储客户端库检索实体的一些常用方法。  
 
-### <a name="executing-a-point-query-using-the-storage-client-library"></a>使用存储客户端库执行点查询
+### <a name=&quot;executing-a-point-query-using-the-storage-client-library&quot;></a>使用存储客户端库执行点查询
 执行点查询的最简单方法是使用 **Retrieve** 表操作，如以下 C# 代码段中所示，该代码片段检索 **PartitionKey** 值为“Sales”并且 **RowKey** 值为“212”的实体：  
 
 ```csharp
-TableOperation retrieveOperation = TableOperation.Retrieve<EmployeeEntity>("Sales", "212");
+TableOperation retrieveOperation = TableOperation.Retrieve<EmployeeEntity>(&quot;Sales&quot;, &quot;212");
 var retrieveResult = employeeTable.Execute(retrieveOperation);
 if (retrieveResult.Result != null)
 {
@@ -575,7 +575,7 @@ if (retrieveResult.Result != null)
 请注意此示例如何将它检索的实体要求为 **EmployeeEntity** 类型。  
 
 ### <a name="retrieving-multiple-entities-using-linq"></a>使用 LINQ 检索多个实体
-使用 Microsoft Azure Cosmos 表标准库时，可以使用 LINQ 从表服务中检索多个实体。 
+在使用 Microsoft Azure Cosmos 表标准库时，可以使用 LINQ 从表服务中检索多个实体。 
 
 ```azurecli
 dotnet add package Microsoft.Azure.Cosmos.Table
@@ -881,7 +881,7 @@ foreach (var e in entities)
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>系</td>
+<td>部门</td>
 <td></td>
 <td></td>
 </tr>

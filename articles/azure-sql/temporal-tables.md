@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 06/26/2019
 ms.openlocfilehash: ea037d12417c8fad9d80b77df69285ed2c8df31b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91618652"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>开始使用 Azure SQL 数据库和 Azure SQL 托管实例中的时态表
@@ -31,7 +31,7 @@ ms.locfileid: "91618652"
 
 ![架构](./media/temporal-tables/AzureTemporal1.png)
 
-幸运的是，无需对应用进行任何操作即可维护此活动信息。 可以使用时态表将过程自动化：使你在网站设计过程中保有完全的弹性并节省更多的时间，从而将重心放在数据分析本身。 只需确保将 **WebSiteInfo** 表配置为[版本由系统控制的临时表](/sql/relational-databases/tables/temporal-tables#what-is-a-system-versioned-temporal-table)即可。 下面描述了在此方案中使用时态表的确切步骤。
+幸运的是，无需对应用进行任何操作即可维护此活动信息。 可以使用时态表将过程自动化：使你在网站设计过程中保有完全的弹性并节省更多的时间，从而将重心放在数据分析本身。 只需确保将 **WebSiteInfo** 表配置为 [版本由系统控制的临时表](/sql/relational-databases/tables/temporal-tables#what-is-a-system-versioned-temporal-table)即可。 下面描述了在此方案中使用时态表的确切步骤。
 
 ## <a name="step-1-configure-tables-as-temporal"></a>步骤 1：将表配置为临时表
 
@@ -110,7 +110,7 @@ WITH (DROP_EXISTING = ON);
 
 时态表的主要优点是，不需要以任何方式更改或调整网站就可以执行更改跟踪。 创建时态表后，每当对数据进行修改时，以前的行版本都会自动保存。
 
-若要对此特定方案使用自动更改跟踪，只需在每次用户结束网站上的会话时更新列 **PagesVisited** ：
+若要为此特定方案利用自动更改跟踪功能，只需在每次用户在网站上结束其会话时更新列“PagesVisited”：
 
 ```sql
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5
@@ -200,5 +200,5 @@ ALTER TABLE dbo.WebsiteUserInfo
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关临时表的详细信息，请参阅签出 [临时表](/sql/relational-databases/tables/temporal-tables)。
-- 访问第9频道收听 [客户时态实现成功案例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) ，观看 [实时时态演示](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)。
+- 有关时态表的详细信息，请查看[时态表](/sql/relational-databases/tables/temporal-tables)。
+- 访问第 9 频道收听[客户实施时态表的成功案例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)，观看[时态表现场演示](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)。

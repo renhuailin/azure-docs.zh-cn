@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e10aa5d96722b414d7384ceb81f393575d57e2a2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101688767"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect：如何从 LocalDB 10 GB 的限制恢复
@@ -74,7 +74,7 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 
 4. 启动 **sqlcmd** 实用程序，方法是运行 `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` 命令并使用 sysadmin 或数据库 DBO 的凭据。
 
-5. 若要收缩数据库，请在 sqlcmd 提示符 (`1>`) ，输入 `DBCC Shrinkdatabase(ADSync,1);` ，然后 `GO` 在下一行中输入。
+5. 要收缩数据库，请在 sqlcmd 提示符 (`1>`) 处输入 `DBCC Shrinkdatabase(ADSync,1);`，并在下一行输入 `GO`。
 
 6. 如果操作成功，请尝试再次启动 Synchronization Service。 如果可以启动 Synchronization Service，请转到[删除运行历史记录数据](#delete-run-history-data)步骤。 否则，请联系支持部门。
 
@@ -104,4 +104,4 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 * 有关如何通过交叉迁移进行 Azure AD Connect 升级的说明，请参阅 [Azure AD Connect：从旧版升级到最新版本](./how-to-upgrade-previous-version.md#swing-migration)一文。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

@@ -1,5 +1,5 @@
 ---
-title: 处理限制问题，或 "429-请求太多" 错误
+title: 处理限制问题或“429 - 请求过多”错误
 description: 如何解决 Azure 逻辑应用中的限制问题或“HTTP 429 请求过多”错误
 services: logic-apps
 ms.suite: integration
@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: ea153b1927a337be29c2eb69e2417cc250abf5e8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94366043"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>处理 Azure 逻辑应用中的限制问题（429 -“请求过多”错误）
@@ -87,7 +87,7 @@ Azure 逻辑应用服务具有自身的[吞吐量限制](../logic-apps/logic-app
 
 尽管重试历史记录提供了有关错误的信息，但在区分连接器限制和[目标限制](#destination-throttling)时可能会遇到麻烦。 在这种情况下，可能必须查看响应的详细信息，或执行一些限制间隔计算来确定来源。
 
-对于全局多租户 Azure 逻辑应用服务中的逻辑应用，限制是在连接级别发生的。 例如，对于在 integration service 环境中运行的逻辑应用 [ (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，非 ise 连接仍会进行限制，因为这些应用在全局多租户逻辑应用服务中运行。 但是，ise 连接是由 ISE 连接器创建的，因为它们在 ISE 中运行。
+对于全局多租户 Azure 逻辑应用服务中的逻辑应用，限制是在连接级别发生的。 因此，例如，对于在[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中运行的逻辑应用，非 ISE 连接仍然会受到限制，因为它们在全局多租户逻辑应用服务中运行。 但是，由 ISE 连接器创建的 ISE 连接不会受到限制，因为它们在你的 ISE 中运行。
 
 若要处理在此级别发生的限制，可以使用以下选项：
 

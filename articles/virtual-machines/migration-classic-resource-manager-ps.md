@@ -11,10 +11,10 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: c750e34e8081cf5a8b3d41cc8c52584a4353a336
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101695152"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
@@ -165,7 +165,7 @@ ms.locfileid: "101695152"
     $validate.ValidationMessages
     ```
 
-    以下命令会显示任何阻止迁移的警告和错误。 如果验证消息不包含类型为 "错误" 的消息，则可以转到 "准备" 步骤。
+    以下命令会显示任何阻止迁移的警告和错误。 如果验证消息不包含错误类型的消息，则可转到“准备”步骤。
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
@@ -189,7 +189,7 @@ ms.locfileid: "101695152"
     $validate.ValidationMessages
     ```
 
-    以下命令会显示任何阻止迁移的警告和错误。 如果验证消息不包含错误，则可以继续执行以下准备步骤：
+    以下命令会显示任何阻止迁移的警告和错误。 如果验证消息不包含错误，则可执行以下“准备”步骤：
 
     ```powershell
         Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName `

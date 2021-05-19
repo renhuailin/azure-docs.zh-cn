@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
 ms.openlocfilehash: e7b696ba052b2aca9e14628327c07275845607ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94540580"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>使用 Azure CLI 注册对等互连服务连接
@@ -41,7 +41,7 @@ Azure 对等互连服务是一种网络服务，可增强客户与 Microsoft 云
 
 - 本文需要 Azure CLI 2.0.28 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
-### <a name="1-select-your-subscription"></a>1.选择订阅
+### <a name="1-select-your-subscription"></a>1. 选择订阅
 
 选择要为其注册对等互连服务连接的订阅。
 
@@ -55,7 +55,7 @@ az account set --subscription "<subscription ID>"
 az group create -n MyResourceGroup -l "West US"
 ```
 
-### <a name="2-register-your-subscription-with-the-resource-provider-and-feature-flag"></a>2.将订阅注册到资源提供程序和功能标志
+### <a name="2-register-your-subscription-with-the-resource-provider-and-feature-flag"></a>2. 将订阅注册到资源提供程序和功能标志
 
 在继续执行使用 Azure CLI 注册对等互连服务连接的步骤之前，请使用 Azure CLI 将订阅注册到资源提供程序和功能标志。 此处指定了 Azure CLI 命令：
 
@@ -65,7 +65,7 @@ az feature register --namespace Microsoft.Peering --name AllowPeeringService
 
 ```
 
-### <a name="3-register-the-peering-service-connection"></a>3.注册对等互连服务连接
+### <a name="3-register-the-peering-service-connection"></a>3. 注册对等互连服务连接
 
 使用以下命令集通过 Azure CLI 注册对等互连服务连接。 此示例注册名为 myPeeringService 的对等互连服务连接。
 
@@ -79,7 +79,7 @@ az peering service create : Create peering service\
   --tags
 ```
 
-### <a name="4-register-the-prefix"></a>4.注册前缀
+### <a name="4-register-the-prefix"></a>4. 注册前缀
 
 执行以下命令，通过 Azure CLI 注册连接服务提供商提供的前缀。 此示例注册名为 myPrefix 的前缀。
 

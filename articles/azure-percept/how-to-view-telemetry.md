@@ -1,18 +1,18 @@
 ---
 title: 查看 Azure Percept DK 的模型推理遥测
 description: 了解如何在 Azure IoT 资源管理器中查看 Azure Percept DK 的视觉模型推理遥测
-author: mimcco
-ms.author: mimcco
+author: elqu20
+ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 3e09646614d37a97400a7e90b380048d97c0369c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 07abbc5f5e85c75b73774d11b6b81dd2085735b7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754210"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102095317"
 ---
 # <a name="view-your-azure-percept-dks-model-inference-telemetry"></a>查看 Azure Percept DK 的模型推理遥测
 
@@ -37,7 +37,7 @@ ms.locfileid: "108754210"
 
     1. 转到 [Azure 门户](https://portal.azure.com)。
 
-    1. 选择“所有资源”。
+    1. 选择“所有资源”，
 
         :::image type="content" source="./media/how-to-view-telemetry/azure-portal.png" alt-text="Azure 门户主页。":::
 

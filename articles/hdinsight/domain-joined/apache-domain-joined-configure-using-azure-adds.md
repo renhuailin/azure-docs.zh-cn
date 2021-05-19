@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: 15869a547ec5debee939c956d7495bfa58357555
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 6f478b97464cd47e9d0e04bfe83bd48a2b3bfe7c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946922"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867094"
 ---
 # <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>为 Azure Active Directory 与企业安全性套餐的集成配置 HDInsight 群集
 
@@ -70,7 +70,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 在“管理”类别中选择“运行状况”，查看 Azure Active Directory 域服务的运行状况。  确保 Azure AD DS 的状态为绿色（正在运行），且同步已完成。
 
-![Azure AD DS 运行状况](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png" alt-text="Azure AD DS 运行状况" border="true":::
 
 ### <a name="create-and-authorize-a-managed-identity"></a>创建托管标识并为其授权
 
@@ -82,7 +82,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 接下来，在 Azure AD DS **访问控制** 中为托管标识分配“HDInsight 域服务参与者”角色。 你需要具有 Azure AD DS 管理员权限才能进行此角色分配。
 
-![Azure Active Directory 域服务访问控制](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png" alt-text="Azure Active Directory 域服务访问控制" border="true":::
 
 分配“HDInsight 域服务参与者”角色可确保此标识有适当的 (`on behalf of`) 访问权限，可以在 Azure AD DS 域上执行域服务操作。 这些操作包括创建和删除 OU。
 
@@ -90,7 +90,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 例如，Azure AD DS 管理员可以将此角色分配给“sjmsi”托管标识的“MarketingTeam”组。  下图中显示了一个示例。 此分配确保组织中的适当人员可以使用托管标识来创建 ESP 群集。
 
-![HDInsight 托管标识操作者角色分配](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png" alt-text="HDInsight 托管标识操作者角色分配" border="true":::
 
 ### <a name="network-configuration"></a>网络配置
 
@@ -99,17 +99,17 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 启用 Azure AD DS。 然后，本地域名系统 (DNS) 服务器会在 Active Directory 虚拟机 (VM) 上运行。 配置 Azure AD DS 虚拟网络来使用这些自定义 DNS 服务器。 若要找到正确的 IP 地址，请在“管理”类别中选择“属性”，然后在“虚拟网络上的 IP 地址”下查看。
 
-![找到本地 DNS 服务器的 IP 地址](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png" alt-text="找到本地 DNS 服务器的 IP 地址" border="true":::
 
 更改 Azure AD DS 虚拟网络中的 DNS 服务器的配置。 若要使用这些自定义 IP，请在“设置”类别中选择“DNS 服务器”。 然后选择“自定义”选项，在文本框中输入第一个 IP 地址，然后选择“保存”。  使用相同步骤添加更多的 IP 地址。
 
-![更新虚拟网络 DNS 配置](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png" alt-text="更新虚拟网络 DNS 配置" border="true":::
 
 将 Azure AD DS 实例和 HDInsight 群集放在同一 Azure 虚拟网络中会更方便。 如果打算使用不同的虚拟网络，必须将这些虚拟网络对等互连，以便 HDInsight VM 可以看见域控制器。 有关详细信息，请参阅[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)。
 
 将虚拟网络对等互连后，将 HDInsight 虚拟网络配置为使用自定义 DNS 服务器。 输入 Azure AD DS 专用 IP 作为 DNS 服务器地址。 当两个虚拟网络都使用相同的 DNS 服务器时，自定义域名将解析为正确的 IP 并可从 HDInsight 访问该域名。 例如，如果域名为 `contoso.com`，则在此步骤后，`ping contoso.com` 应能解析为正确的 Azure AD DS IP。
 
-![为对等互连的虚拟网络配置自定义 DNS 服务器](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png" alt-text="为对等互连的虚拟网络配置自定义 DNS 服务器" border="true":::
 
 如果在 HDInsight 子网中使用网络安全组 (NSG) 规则，应允许入站和出站流量[所需的 IP](../hdinsight-management-ip-addresses.md)。
 
@@ -126,11 +126,11 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 > [!NOTE]  
 > ESP 群集名称的前六个字符在环境中必须是唯一的。 例如，如果你在不同虚拟网络中有多个 ESP 群集，请选择一个命名约定，该命名约定确保群集名称中的前六个字符是唯一的。
 
-![Azure HDInsight 企业安全性套餐的域验证](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png" alt-text="Azure HDInsight 企业安全性套餐的域验证" border="true":::
 
 启用 ESP 后，会自动检测与 Azure AD DS 相关的常见错误配置并对其进行验证。 纠正这些错误后，可以继续执行下一步。
 
-![Azure HDInsight 企业安全性套餐域验证失败](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png" alt-text="Azure HDInsight 企业安全性套餐域验证失败" border="true":::
 
 创建带有 ESP 的 HDInsight 群集时，必须提供以下参数：
 
@@ -142,7 +142,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 创建新群集时，可以从 **用户分配的托管标识** 下拉列表中选择已创建的托管标识。
 
-![Azure HDInsight ESP Active Directory 域服务托管标识](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png" alt-text="Azure HDInsight ESP Active Directory 域服务托管标识" border="true":::。
 
 ## <a name="next-steps"></a>后续步骤
 

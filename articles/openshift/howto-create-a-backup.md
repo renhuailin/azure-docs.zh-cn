@@ -7,13 +7,13 @@ ms.date: 06/22/2020
 author: troy0820
 ms.author: b-trconn
 keywords: aro、openshift、az aro、red hat、cli
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1be3c1182ef5491f70d4010d4c7e73ef43b87853
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: mvc
+ms.openlocfilehash: bbfe280ed0b1b562e0f50b23a09ea159750c4a79
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883897"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102217085"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>创建 Azure Red Hat OpenShift 4 群集应用程序备份
 
@@ -25,7 +25,7 @@ ms.locfileid: "107883897"
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 ### <a name="install-velero"></a>安装 Velero
 

@@ -1,36 +1,36 @@
 ---
 title: 为混合环境启用 Azure Monitor
-description: 本文介绍如何为包含一个或多个虚拟机的混合云环境启用 VM insights。
+description: 本文介绍了如何为包含一个或多个虚拟机的混合云环境启用 VM insights。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: c3c8495b7355ee5d9ee8c28b4e0097a0080964d4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046630"
 ---
-# <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>为混合虚拟机启用 VM insights
-本文介绍如何为 Azure 外部的虚拟机（包括本地和其他云环境）启用 VM insights。
+# <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>为混合虚拟机启用 VM 见解
+本文介绍了如何为 Azure 外部的虚拟机（包括本地和其他云环境）启用 VM insights。
 
 > [!IMPORTANT]
-> 启用混合 Vm 的建议方法是首先为 [服务器启用 Azure Arc](../../azure-arc/servers/overview.md) ，以便可以使用类似于 Azure vm 的进程为 vm insights 启用 vm。 本文介绍如果选择不使用 Azure Arc，如何载入混合 Vm。
+> 启用混合 VM 时，建议首先启用 [Azure Arc for servers](../../azure-arc/servers/overview.md)，以便可以使用类似于 Azure VM 的进程为 VM insights 启用 VM。 本文介绍了如果选择不使用 Azure Arc 时，应如何载入混合 VM。
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建并配置 Log Analytics 工作区](./vminsights-configure-workspace.md)。
-- 请参阅 [支持的操作系统](./vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
+- [创建和配置 Log Analytics 工作区](./vminsights-configure-workspace.md)。
+- 请参阅[支持的操作系统](./vminsights-enable-overview.md#supported-operating-systems)，以确保正在启用的虚拟机或虚拟机规模集的操作系统是受支持的。 
 
 
 ## <a name="overview"></a>概述
-Azure 之外的虚拟机需要用于 Azure Vm 的相同 Log Analytics 代理和依赖项代理。 尽管你无法使用 VM 扩展来安装代理，但你必须手动将它们安装在来宾操作系统中，或通过其他方法安装它们。 
+Azure 之外的虚拟机必须使用与 Azure VM 相同的 Log Analytics 代理和 Dependency Agent。 尽管无法使用 VM 扩展来安装代理，但必须手动将它们安装在来宾操作系统中，或通过其他方法安装它们。 
 
-有关部署 Log Analytics 代理的详细信息，请参阅 [将 Windows 计算机连接到 Azure Monitor](../agents/agent-windows.md) 或 [将 Linux 计算机连接到 Azure Monitor](../agents/agent-linux.md) 。 本文提供了依赖关系代理的详细信息。 
+有关部署 Log Analytics 代理的详细信息，请参阅[将 Windows 计算机连接到 Azure Monitor](../agents/agent-windows.md) 或[将 Linux 计算机连接到 Azure Monitor](../agents/agent-linux.md)。 本文提供了有关 Dependency Agent 的详细信息。 
 
 ## <a name="firewall-requirements"></a>防火墙要求
-[Log Analytics 代理概述](../agents/log-analytics-agent.md#network-requirements)中提供了 Log Analytics 代理的防火墙要求。 VM insights 映射依赖关系代理不会传输任何数据本身，也不需要对防火墙或端口进行任何更改。 映射数据始终由 Log Analytics 代理传输到 Azure Monitor 服务 - 要么采用直接传输的方式，要么通过 [Operations Management Suite 网关](../../azure-monitor/agents/gateway.md)进行传输（如果 IT 安全策略不允许网络中的计算机连接到 Internet）。
+有关 Log Analytics 代理的防火墙要求，请参阅 [Log Analytics 代理概述](../agents/log-analytics-agent.md#network-requirements)。 VM insights Map Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 映射数据始终由 Log Analytics 代理传输到 Azure Monitor 服务 - 要么采用直接传输的方式，要么通过 [Operations Management Suite 网关](../../azure-monitor/agents/gateway.md)进行传输（如果 IT 安全策略不允许网络中的计算机连接到 Internet）。
 
 
 ## <a name="dependency-agent"></a>依赖关系代理
@@ -48,7 +48,7 @@ Azure 之外的虚拟机需要用于 Azure Vm 的相同 Log Analytics 代理和�
 
 ## <a name="install-the-dependency-agent-on-windows"></a>在 Windows 上安装依赖项代理
 
-可通过运行 `InstallDependencyAgent-Windows.exe` 在 Windows 计算机上手动安装 Dependency Agent。 如果在没有任何选项的情况下运行此可执行文件，它将启动一个安装向导，以交互方式指导用户安装代理。 需要来宾操作系统上的 *管理员* 权限才能安装或卸载代理。
+可通过运行 `InstallDependencyAgent-Windows.exe` 在 Windows 计算机上手动安装 Dependency Agent。 如果在没有任何选项的情况下运行此可执行文件，它将启动一个安装向导，以交互方式指导用户安装代理。 需要在来宾操作系统上具有“管理员”权限才能安装或卸载代理。
 
 下表突出显示了通过命令行安装代理时支持的参数。
 
@@ -62,7 +62,7 @@ Azure 之外的虚拟机需要用于 Azure Vm 的相同 Log Analytics 代理和�
 默认情况下，Windows Dependency Agent 的文件在 *C:\Program Files\Microsoft Dependency Agent* 中安装。 如果在安装完成后依赖项代理无法启动，请查看日志以获取详细的错误信息。 日志目录为 *%Programfiles%\Microsoft Dependency Agent\logs*。
 
 ### <a name="powershell-script"></a>PowerShell 脚本
-使用下面的示例 PowerShell 脚本下载并安装代理：
+使用下面的示例 PowerShell 脚本来下载并安装代理：
 
 ```powershell
 Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
@@ -79,7 +79,7 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 > 需要根目录访问才能安装或配置代理。
 >
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |:--|:--|
 | -help | 获取命令行选项列表。 |
 | -S | 执行无提示安装，无用户提示。 |
@@ -100,7 +100,7 @@ Dependency Agent 的文件放置在以下目录中：
 | 二进制存储文件 | /var/opt/microsoft/dependency-agent/storage |
 
 ### <a name="shell-script"></a>Shell 脚本 
-使用以下示例 shell 脚本下载并安装代理：
+使用下面的示例 shell 脚本下载并安装代理：
 
 ```
 wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
@@ -153,9 +153,9 @@ configuration VMInsights {
 
 1. Dependency Agent 是否已安装成功？ 可通过检查是否已安装并运行服务来验证这一点。
 
-    **Windows**：查找名为 "Microsoft 依赖关系代理" 的服务。
+    **Windows**：查找名为“Microsoft Dependency Agent”的服务。
 
-    **Linux**：查找正在运行的进程 "microsoft 依赖关系代理"。
+    **Linux**：查找正在运行的进程“microsoft-dependency-agent”
 
 2. 是否处于 [Log Analytics 的免费定价层](../insights/solutions.md)？ 免费计划最多允许五台仅有的计算机。 任何后续的计算机都不会出现在映射上，即使之前的五台计算机不再发送数据，也是如此。
 
@@ -176,8 +176,8 @@ configuration VMInsights {
 
 ## <a name="next-steps"></a>后续步骤
 
-为虚拟机启用监视后，可以使用 VM insights 分析此信息。
+现已为虚拟机启用监视，这些信息可供 VM insights 用于分析目的。
 
-- 若要查看已发现的应用程序依赖关系，请参阅 [查看 VM 见解 Map](vminsights-maps.md)。
+- 要查看已发现的应用程序依赖关系，请参阅[查看 VM insights 映射](vminsights-maps.md)。
 
 - 若要通过 VM 的性能了解瓶颈和整体利用率，请参阅[查看 Azure VM 性能](vminsights-performance.md)。

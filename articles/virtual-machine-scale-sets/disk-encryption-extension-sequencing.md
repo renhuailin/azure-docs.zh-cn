@@ -1,6 +1,6 @@
 ---
 title: Azure 磁盘加密和 Azure 虚拟机规模集扩展排序
-description: 本文介绍如何为 Linux IaaS Vm 启用 Microsoft Azure 磁盘加密。
+description: 本文介绍如何为 Linux IaaS VM 启用 Microsoft Azure 磁盘加密。
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -10,10 +10,10 @@ ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 1aff05e51bcbc99f33325efb905ade819ae22e02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90988020"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>将 Azure 磁盘加密与虚拟机规模集扩展排序配合使用
@@ -159,7 +159,7 @@ Azure 磁盘加密等扩展可以按指定顺序添加到 Azure 虚拟机规模�
 
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解扩展排序：[在虚拟机规模集中对扩展预配进行排序](virtual-machine-scale-sets-extension-sequencing.md)。
+- 详细了解扩展序列化：[虚拟机规模集中的序列扩展预配](virtual-machine-scale-sets-extension-sequencing.md)。
 - 详细了解 `provisionAfterExtensions` 属性：[Microsoft.Compute virtualMachineScaleSets/extensions 模板参考](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)。
 - [适用于虚拟机规模集的 Azure 磁盘加密](disk-encryption-overview.md)
 - [使用 Azure CLI 加密虚拟机规模集](disk-encryption-cli.md)

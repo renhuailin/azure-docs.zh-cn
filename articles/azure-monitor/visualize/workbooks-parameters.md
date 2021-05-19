@@ -8,17 +8,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.openlocfilehash: 95e810373ac5a591c530004e8d1175c3300656f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101700552"
 ---
 # <a name="workbook-parameters"></a>工作簿参数
 
-使用参数，工作簿作者可以收集来自使用者的输入并在工作簿的其他部分中引用该输入，通常用于确定结果集的范围或设置正确的视觉对象。 参数是一项重要功能，可让作者生成交互式报表和体验。 
+工作簿作者可以使用参数从使用者收集输入，并在工作簿的其他部分引用该输入 - 目的通常是限定结果集的范围或设置正确的视觉对象。 参数是一项重要功能，可让作者生成交互式报表和体验。 
 
-使用工作簿，可以控制如何将参数控件呈现给使用者–文本框与下拉框、从文本、JSON、KQL 或 Azure 资源图中选择的值，等等。  
+使用工作簿可以控制如何向使用者呈现参数控件 - 文本框与下拉列表、单选与多选、文本中的值、JSON、KQL 或 Azure Resource Graph 等。  
 
 支持的参数类型包括：
 * [时间](workbooks-time.md) - 可让用户从预填充的时间范围中进行选择，或选择自定义范围

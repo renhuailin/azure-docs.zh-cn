@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: duau
 ms.openlocfilehash: a1e1bd107e8b3b9209f99d1abfc4d7e391c3c4a6
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98184333"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理器的工作原理
@@ -62,8 +62,8 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 `ht
     - 每个终结点的当前运行状况，可通过流量管理器运行状况检查来确定。 有关详细信息，请参阅[流量管理器终结点监视](traffic-manager-monitoring.md)。
     - 所选的流量路由方法。 有关详细信息，请参阅[流量管理器路由方法](traffic-manager-routing-methods.md)。
 
-5. 选择的终结点以另一个 DNS CNAME 记录的形式返回。 在这种情况下，我们假设返回了 contoso-eu.cloudapp.net。
-6. 接下来，递归 DNS 服务将查找“cloudapp.net”域的名称服务器。 它会联系这些名称服务器以请求 "contoso-eu.cloudapp.net" DNS 记录。 返回一个 DNS "A" 记录，其中包含基于欧盟的服务终结点的 IP 地址。
+5. 选择的终结点以另一个 DNS CNAME 记录的形式返回。 在本例中，假设返回的是 contoso-eu.cloudapp.net。
+6. 接下来，递归 DNS 服务将查找“cloudapp.net”域的名称服务器。 它会联系这些名称服务器以请求“contoso-eu.cloudapp.net”DNS 记录。 返回的 DNS“A”记录包含位于欧洲的服务终结点的 IP 地址。
 7. 递归 DNS 服务将结果合并，向客户端返回单个 DNS 响应。
 8. 客户端接收 DNS 结果，并连接到给定的 IP 地址。 客户端直接连接到应用程序服务终结点，而不是通过流量管理器连接。 由于这是一个 HTTPS 终结点，客户端将执行必要的 SSL/TLS 握手，然后针对“/login.aspx”页面发出 HTTP GET 请求。
 

@@ -14,15 +14,15 @@ ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: cfbcc8523ff1d5858317a3654b58ec7b2d23607a
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99582020"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 标识平台应用程序身份验证证书凭据
 
-Microsoft 标识平台允许应用程序使用自己的凭据进行身份验证，以便在使用客户端密钥的任何位置进行身份验证，例如，在 OAuth 2.0  [客户端凭据授予](v2-oauth2-client-creds-grant-flow.md) 流和 [代表](v2-oauth2-on-behalf-of-flow.md) (OBO) 流中。
+Microsoft 标识平台允许应用程序在任何可以使用客户端机密的地方使用其自己的凭据进行身份验证，例如，在 OAuth 2.0 [客户端凭据授权](v2-oauth2-client-creds-grant-flow.md)流和[代理](v2-oauth2-on-behalf-of-flow.md) (OBO) 流中。
 
 应用程序可用于身份验证的一种凭据形式是使用应用程序拥有的证书签名的 [JSON Web 令牌](./security-tokens.md#json-web-tokens-and-claims) (JWT) 断言。
 
@@ -42,7 +42,7 @@ Microsoft 标识平台允许应用程序使用自己的凭据进行身份验证�
 
 声明类型 | 值 | 说明
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | “aud”（受众）声明标识 JWT 预期的收件人（在这里为 Azure AD）。请参阅 [RFC 7519 的 4.1.3 节](https://tools.ietf.org/html/rfc7519#section-4.1.3)。  在这种情况下，该收件人是 (login.microsoftonline.com) 的登录服务器。
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | “aud”（受众）声明标识 JWT 预期的收件人（在这里为 Azure AD）。请参阅 [RFC 7519 的 4.1.3 节](https://tools.ietf.org/html/rfc7519#section-4.1.3)。  在本例中，该收件人为登录服务器 (login.microsoftonline.com)。
 exp | 1601519414 | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请参阅 [RFC 7519 的 4.1.4 节](https://tools.ietf.org/html/rfc7519#section-4.1.4)。  这样就可以在这之前一直使用断言，所以时间要短 - 最多在 `nbf` 之后 5 - 10 分钟。  Azure AD 当前未对 `exp` 时间设置限制。 
 iss | {ClientID} | “iss”（颁发者）声明标识颁发了 JWT 的主体，在本例中是你的客户端应用程序。  使用 GUID 应用程序 ID。
 jti | （一个 GUID） | “jti”(JWT ID) 声明为 JWT 提供唯一标识符。 分配标识符值时，所用方式必须确保几乎不可能将同一值意外分配给不同的数据对象；如果应用程序使用多个颁发者，还必须防止在不同的颁发者生成的值之间发生冲突。 “jti”值是一个区分大小写的字符串。 [RFC 7519 的 4.1.7 节](https://tools.ietf.org/html/rfc7519#section-4.1.7)
@@ -89,7 +89,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ## <a name="register-your-certificate-with-microsoft-identity-platform"></a>向 Microsoft 标识平台注册证书
 
-可以通过使用以下任一方法，将证书凭据与 Microsoft 标识平台中的客户端应用程序相关联 Azure 门户：
+可以使用以下任意方法通过 Azure 门户将证书凭据与 Microsoft 标识平台中的客户端应用程序相关联：
 
 ### <a name="uploading-the-certificate-file"></a>上传证书文件
 
@@ -106,7 +106,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 - `$base64Thumbprint` - 证书哈希的 Base64 编码值
 - `$base64Value` - 证书原始数据的 Base64 编码值
 
-提供 GUID 来标识应用程序清单中的密钥， (`$keyId`) 。
+请提供 GUID 以标识应用程序清单中的密钥 (`$keyId`)。
 
 在客户端应用程序的 Azure 应用注册中：
 1. 选择“清单”以打开应用程序清单。
@@ -131,7 +131,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 客户端断言可以在任何使用客户端机密的地方使用。  例如，在[授权代码流](v2-oauth2-auth-code-flow.md)中，你可以传入一个 `client_secret` 来证明请求来自你的应用。 可以用 `client_assertion` 和 `client_assertion_type` 参数替换它。 
 
-| 参数 | Value | 说明|
+| 参数 | 值 | 说明|
 |-----------|-------|------------|
 |`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| 这是一个固定值，表示你正在使用证书凭据。 |
 |`client_assertion`| JWT |这是上面创建的 JWT。 |

@@ -4,15 +4,15 @@ description: 本文介绍如何使用 Kafka MirrorMaker 来创建 Azure 事件�
 ms.topic: how-to
 ms.date: 01/04/2021
 ms.openlocfilehash: 654e9e19dfde0d0c58d00e41cf8ab0ba8e1484d7
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97861001"
 ---
 # <a name="use-apache-kafka-mirrormaker-with-event-hubs"></a>将 Apache Kafka MirrorMaker 与事件中心配合使用
 
-本教程介绍如何使用 Kafka MirrorMaker 将 Kafka broker 镜像到 Azure 事件中心。 如果使用 CNCF Strimzi 运算符在 Kubernetes 上托管 Apache Kafka，则可以参阅 [此博客文章](https://strimzi.io/blog/2020/06/09/mirror-maker-2-eventhub/) 中的教程，了解如何使用 Strimzi 和 Mirror Maker 2 设置 Kafka。 
+本教程介绍如何使用 Kafka MirrorMaker 将 Kafka 中转站镜像到 Azure 事件中心。 如果使用 CNCF Strimzi 运算符在 Kubernetes 上托管 Apache Kafka，可以参阅[这篇博客文章](https://strimzi.io/blog/2020/06/09/mirror-maker-2-eventhub/)中的教程，了解如何使用 Strimzi 和 Mirror Maker 2 设置 Kafka。 
 
    ![事件中心的 Kafka MirrorMaker](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
@@ -31,11 +31,11 @@ ms.locfileid: "97861001"
 > * 运行 Kafka MirrorMaker
 
 ## <a name="introduction"></a>简介
-本教程介绍事件中心和 Kafka MirrorMaker 如何在事件中心服务中通过 "镜像" Kafka 输入流将现有 Kafka 管道集成到 Azure 中，这允许使用多个 [联合模式](event-hubs-federation-overview.md)集成 Apache Kafka 流。 
+本教程介绍事件中心和 Kafka MirrorMaker 如何在事件中心服务中通过“镜像”Kafka 输入流将现有 Kafka 管道集成到 Azure 中，从而允许使用多种[联合模式](event-hubs-federation-overview.md)集成 Apache Kafka 流。 
 
-通过 Azure 事件中心 Kafka 终结点，用户可以使用 Kafka 协议（即 Kafka 客户端）连接到 Azure 事件中心。 通过对 Kafka 应用程序进行少量更改，可以连接到 Azure 事件中心并利用 Azure 生态系统的好处。 事件中心目前支持 Apache Kafka 版本1.0 及更高版本的协议。
+通过 Azure 事件中心 Kafka 终结点，用户可以使用 Kafka 协议（即 Kafka 客户端）连接到 Azure 事件中心。 通过对 Kafka 应用程序进行少量更改，可以连接到 Azure 事件中心并利用 Azure 生态系统的好处。 事件中心当前支持 Apache Kafka 1.0 及更高版本的协议。
 
-可以使用 Apache Kafka 的 MirrorMaker 1 unidirectionally 从 Apache Kafka 到事件中心。 MirrorMaker 2 可在两个方向上使用，但可[ `MirrorCheckpointConnector` `MirrorHeartbeatConnector` 在 MirrorMaker 2 中配置的和](https://cwiki.apache.org/confluence/display/KAFKA/KIP-382%3A+MirrorMaker+2.0)都必须配置为指向 Apache Kafka broker，而不是事件中心。 本教程演示如何配置 MirrorMaker 1。
+可以使用 Apache Kafka 的 MirrorMaker 1 建立从 Apache Kafka 到事件中心的单向连接。 MirrorMaker 2 可双向使用，但[可在 MirrorMaker 2 中配置的 `MirrorCheckpointConnector` 和 `MirrorHeartbeatConnector`](https://cwiki.apache.org/confluence/display/KAFKA/KIP-382%3A+MirrorMaker+2.0) 都必须配置为指向 Apache Kafka 中转站，而不是事件中心。 本教程演示如何配置 MirrorMaker 1。
 
 ## <a name="prerequisites"></a>先决条件
 

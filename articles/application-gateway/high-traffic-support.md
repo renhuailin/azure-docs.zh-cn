@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
 ms.openlocfilehash: d8940d791920daca6ef0af186a4bb5e17009637b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100586110"
 ---
 # <a name="application-gateway-high-traffic-support"></a>应用程序网关高流量支持
@@ -140,7 +140,7 @@ v2 SKU 提供自动缩放功能，确保应用程序网关能够随着流量的�
 此间隔时间是根据从应用程序网关收到 HTTP 请求的第一个字节的时间，到将最后一个响应字节发送到客户端的时间计算的。 应该创建一个在后端响应延迟比常规值高出某个阈值时会发出的警报。 例如，用户可以将此项设置为在总时间延迟比常规值高出 30% 以上时发出警报。
 
 ## <a name="set-up-waf-with-geo-filtering-and-bot-protection-to-stop-attacks"></a>设置提供地理筛选和机器人防护的 WAF 来阻止攻击
-如果需要在应用程序的前面使用额外的安全层，请为 WAF 功能使用应用程序网关 WAF_v2 SKU。 可将 v2 SKU 配置为仅允许从给定的国家/地区访问你的应用程序。 设置一个 WAF 自定义规则，以基于地理位置明确允许或阻止流量。 有关详细信息，请参阅 [geo 筛选自定义规则](../web-application-firewall/ag/geomatch-custom-rules.md) 以及 [如何通过 PowerShell 在应用程序网关上配置自定义规则 WAF_v2 SKU](../web-application-firewall/ag/configure-waf-custom-rules.md)。
+如果需要在应用程序的前面使用额外的安全层，请为 WAF 功能使用应用程序网关 WAF_v2 SKU。 可将 v2 SKU 配置为仅允许从给定的国家/地区访问你的应用程序。 设置一个 WAF 自定义规则，以基于地理位置明确允许或阻止流量。 有关详细信息，请参阅[地理位置筛选自定义规则](../web-application-firewall/ag/geomatch-custom-rules.md)和[如何通过 PowerShell 在应用程序网关 WAF_v2 SKU 上配置自定义规则](../web-application-firewall/ag/configure-waf-custom-rules.md)。
 
 启用机器人防护以阻止已知恶意的机器人。 这应该可以减少进入应用程序的流量。 有关详细信息，请参阅[机器人防护和设置说明](../web-application-firewall/ag/configure-waf-custom-rules.md)。
 

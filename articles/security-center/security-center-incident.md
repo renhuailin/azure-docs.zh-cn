@@ -1,5 +1,5 @@
 ---
-title: 管理 Azure 安全中心的安全事件 |Microsoft Docs
+title: 在 Azure 安全中心管理安全事件 | Microsoft Docs
 description: 本文档可帮助你使用 Azure 安全中心管理安全事件。
 services: security-center
 author: memildin
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: memildin
 ms.openlocfilehash: 722a508679c74f9d62df07575ffa1006528f4398
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100652085"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>在 Azure 安全中心管理安全事件
@@ -29,19 +29,19 @@ ms.locfileid: "100652085"
 
 ## <a name="managing-security-incidents"></a>管理安全事件
 
-1. 在安全中心的 "警报" 页上，使用 " **添加筛选器** " 按钮按警报名称筛选到 **在多个资源上检测** 到的警报名称安全事件。 
+1. 在安全中心的警报页上，使用“添加筛选器”按钮按警报名称筛选到警报名称“在多个资源上检测到的安全事件” 。 
 
-    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="在 Azure 安全中心的 &quot;警报&quot; 页上查找事件":::
+    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="在 Azure 安全中心的“警报”页上查找事件":::
 
     现在，此列表已经过筛选，只显示事件。 请注意，安全事件与安全警报的图标不同。
 
-    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Azure 安全中心的 &quot;警报&quot; 页上的事件列表":::
+    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Azure 安全中心的“警报”页上的事件列表":::
 
-1. 若要查看事件的详细信息，请从列表中选择一个事件。 此时会出现一个侧窗格，其中包含有关事件的更多详细信息。
+1. 若要查看事件的详细信息，请从列表中选择一个事件。 此时会显示一个侧窗格，其中包含有关事件的更多详细信息。
 
     :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="显示事件详细信息的侧窗格":::
 
-1. 若要查看更多详细信息，请选择 " **查看完整详细信息**"。
+1. 若要查看更多详细信息，请选择“查看完整详细信息”。
 
     [![在 Azure 安全中心响应安全事件](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 
@@ -58,7 +58,7 @@ ms.locfileid: "100652085"
     - 缓解威胁 - 为此安全事件提供手动修正步骤
     - 防范未来的攻击 - 提供安全建议，帮助减少攻击面、提高安全状况和防范未来的攻击
     - 触发自动响应 - 提供触发逻辑应用以响应此安全事件的选项
-    - *禁止显示类似警报* -如果警报与组织无关，则提供禁止显示具有类似特征的未来警报的选项 
+    - 禁止显示类似的警报 - 如果警报与组织无关，还可禁止显示具有类似特征的未来警报 
 
    > [!NOTE]
    > 同一个警报可以作为事件的一部分存在，也可以作为独立警报显示。

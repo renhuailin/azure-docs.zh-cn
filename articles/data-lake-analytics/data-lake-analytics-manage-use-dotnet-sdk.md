@@ -1,16 +1,16 @@
 ---
 title: 使用 Azure .NET SDK 管理 Azure Data Lake Analytics
-description: 本文介绍如何使用 Azure .NET SDK 编写管理 Data Lake Analytics 作业、数据源 & 用户的应用。
+description: 本文介绍如何使用 Azure .NET SDK 来编写管理 Data Lake Analytics 作业、数据源和作业的应用。
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/18/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a9ece3fe54ca8596f610439f8a0dd228ae1ef907
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92220901"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>通过 .NET 应用管理 Azure Data Lake Analytics
@@ -21,8 +21,8 @@ ms.locfileid: "92220901"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **安装了 Visual C++ 的 Visual studio 2015、Visual Studio 2013 更新4或 Visual studio 2012**。
-* **用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本**。  使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)安装它。
+* **Visual Studio 2015、Visual Studio 2013 Update 4 或安装有 Visual C++ 的 Visual Studio 2012**。
+* **用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本**。  可以使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)安装它。
 * **所需的 NuGet 包**
 
 ### <a name="install-nuget-packages"></a>安装 NuGet 包
@@ -442,4 +442,4 @@ adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPo
 
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
-* [使用 Azure 门户监视 Azure Data Lake Analytics 作业并对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: e89189b22b144d9e92ee8315bc6fd9aabe699eec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91531643"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>监视并缩减限制，以减少 Azure 时序见解 Gen1 中的延迟
@@ -37,7 +37,7 @@ ms.locfileid: "91531643"
 
 ## <a name="video"></a>视频
 
-### <a name="learn-about-azure-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>了解 Azure 时序见解数据引入行为，以及如何对其进行规划。</br>
+### <a name="learn-about-azure-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>了解 Azure 时序见解数据入口行为以及如何对其进行规划。</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
@@ -65,9 +65,9 @@ ms.locfileid: "91531643"
    |入口收到的无效消息数      | 从所有 Azure 事件中心或 Azure IoT 中心事件源读取的无效消息的计数。      |
    |入口收到的消息数    | 从所有事件中心或 IoT 中心事件源读取的消息的计数。        |
    |入口存储的字节数      | 已存储且可用于查询的事件的总大小。 仅根据属性值计算大小。        |
-   |**入口存储的事件数**     |   已存储并可供查询的平展事件计数。      |
-   |**入口收到消息时间延迟**    |  消息在事件源中排队的时间与消息在入口中处理之间的时间差（以秒为单位）。      |
-   |**入口收到消息计数延迟**    |  上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异。      |
+   |**入口存储的事件数**     |   已存储并可供查询的平展事件计数。      |
+   |**入口收到消息时间延迟**    |  消息在事件源中排队的时间与消息在入口中处理之间的时间差（以秒为单位）。      |
+   |**入口收到消息计数延迟**    |  上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异。      |
 
    选择“完成”  。
 

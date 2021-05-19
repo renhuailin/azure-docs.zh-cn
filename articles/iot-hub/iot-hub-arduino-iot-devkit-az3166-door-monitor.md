@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: e3649ac786c07459695a1e6ca6ad52620e23d59f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92148805"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>门监视器 - 使用 Azure Functions 和 SendGrid 在门打开时发送电子邮件           
@@ -39,7 +39,7 @@ MXChip IoT DevKit 包含内置的磁传感器。 在此项目中，请检测附�
 
 一个有效的 Azure 订阅。 如果没有订阅，可以通过以下方法之一进行注册：
 
-* 激活 [30 天免费试用 Microsoft Azure 帐户](https://azure.microsoft.com/free/)。
+* 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/free/)。
 * 声明你的 [Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)（如果你是 MSDN 或 Visual Studio 订阅者）。
 
 ## <a name="deploy-the-sendgrid-service-in-azure"></a>在 Azure 中部署 SendGrid 服务
@@ -121,7 +121,7 @@ API 密钥仅显示一次。 请确保将其安全地复制和存储，因为下
 
 ### <a name="start-vs-code"></a>启动 VS Code
 
-- 确保 DevKit **未**连接到计算机。
+- 确保 DevKit **未** 连接到计算机。
 - 启动 VS Code。
 - 将 DevKit 连接到计算机。
 
@@ -178,13 +178,13 @@ DevKit 将重新启动并开始运行代码。
 > [!NOTE]
 > 偶尔可能会收到“错误:AZ3166:未知程序包”错误消息。 如果未正确刷新板包索引，则会出现此错误。 若要解决此错误，请参阅 [IoT DevKit 常见问题解答的开发部分](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
 
-## <a name="test-the-project"></a>测试项目
+## <a name="test-the-project&quot;></a>测试项目
 
 当 DevKit 所处环境中存在稳定的磁场时，此程序会首先初始化。
 
 初始化以后，屏幕上会显示 `Door closed`。 磁场变化时，状态更改为 `Door opened`。 门状态一变化，你就会收到电子邮件通知。 （收到这些电子邮件可能需要长达五分钟的时间。）
 
-![磁铁靠近传感器：门已关闭](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "磁铁靠近传感器：门关闭")
+![磁铁靠近传感器：门已关闭](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg &quot;磁铁靠近传感器：门关闭")
 
 ![磁铁从传感器移开：门已打开](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "磁铁从传感器移开：门打开")
 

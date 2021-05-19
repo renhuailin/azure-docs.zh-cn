@@ -3,12 +3,12 @@ title: 将模板规格部署为链接模板
 description: 了解如何在链接的部署中部署现有模板规格。
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: b30a99a469ec010dcc2e128bbeb446b493631608
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
-ms.translationtype: MT
+ms.openlocfilehash: 8d4ccd77c8b37a696fab7494a8d3f8052fc89b35
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518866"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889257"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>教程：将模板规格部署为链接模板（预览版）
 
@@ -19,7 +19,7 @@ ms.locfileid: "96518866"
 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 模板规格当前提供预览版。 若要将其与 Azure PowerShell 一起使用，必须安装 [版本5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用 [2.14.2 或更高版本](/cli/azure/install-azure-cli)。
+> 模板规格当前提供预览版。 若要将其与 Azure PowerShell 一起使用，必须安装[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-template-spec"></a>创建模板规格
 
@@ -27,7 +27,7 @@ ms.locfileid: "96518866"
 
 ## <a name="create-the-main-template"></a>创建主模板
 
-若要在 ARM 模板中部署模板规范，请将 [部署资源](/azure/templates/microsoft.resources/deployments) 添加到主模板。 在 `templateLink` 属性中，指定模板规格的资源 ID。使用以下名为 azuredeploy.json 的 JSON 创建模板。 本教程假设你已将模板保存到路径 c:\Templates\deployTS\azuredeploy.json，但你可以使用任何路径。
+若要在 ARM 模板中部署模板规格，请将[部署资源](/azure/templates/microsoft.resources/deployments)添加到主模板。 在 `templateLink` 属性中，指定模板规格的资源 ID。使用以下名为 azuredeploy.json 的 JSON 创建模板。 本教程假设你已将模板保存到路径 c:\Templates\deployTS\azuredeploy.json，但你可以使用任何路径。
 
 ```json
 {
@@ -91,7 +91,7 @@ ms.locfileid: "96518866"
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2020-10-01",
       "name": "createStorage",
       "properties": {
         "mode": "Incremental",
