@@ -1,21 +1,21 @@
 ---
-title: Azure Data Lake Storage Gen1 性能优化-PowerShell
-description: 有关在将 Azure PowerShell 用于 Azure Data Lake Storage Gen1 时如何提高性能的提示。
+title: Azure Data Lake Storage Gen1 性能优化 - PowerShell
+description: 有关如何在将 Azure PowerShell 与 Azure Data Lake Storage Gen1 配合使用时提高性能的建议。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: twooley
 ms.openlocfilehash: 4ac2bbb21fd1a987d544a536d0f52628824e0bf4
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97723773"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>将 PowerShell 与 Azure Data Lake Store Gen1 配合使用的性能优化指南
 
-本文介绍可以优化的属性，以便在使用 PowerShell 处理 Data Lake Storage Gen1 时获得更好的性能。
+本文介绍了在使用 PowerShell 处理 Data Lake Storage Gen1 时可通过调整来提高性能的属性。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -44,7 +44,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 接下来你可能会疑惑如何确定应为性能相关属性提供的值。 请参考下面的指导。
 
-* **步骤1：确定总线程计数** -开始，计算要使用的总线程数。 一般指导原则是，应为每个物理核心使用 6 个线程。
+* 步骤 1：确定线程总数 - 首先计算要使用的线程总数。 一般指导原则是，应为每个物理核心使用 6 个线程。
 
     `Total thread count = total physical cores * 6`
 
@@ -54,7 +54,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
     `Total thread count = 16 cores * 6 = 96 threads`
 
-* **步骤2：计算 PerFileThreadCount** -根据文件大小计算 PerFileThreadCount。 对于小于 2.5 GB 的文件，没有必要更改此参数，因为默认值 10 就已足够。 对于大于 2.5 GB 的文件，应为前 2.5 GB 使用 10 个线程作为基础，文件大小每增加 256 MB，就多使用 1 个线程。 如果要复制文件大小有很大变化的文件夹，请考虑根据类似的文件大小将这些文件分组。 文件大小有差异可能会导致性能不佳。 如果无法将类似大小的文件分组，应根据最大文件大小设置 PerFileThreadCount。
+* 步骤 2：计算 PerFileThreadCount - 根据文件的大小计算 PerFileThreadCount。 对于小于 2.5 GB 的文件，没有必要更改此参数，因为默认值 10 就已足够。 对于大于 2.5 GB 的文件，应为前 2.5 GB 使用 10 个线程作为基础，文件大小每增加 256 MB，就多使用 1 个线程。 如果要复制文件大小有很大变化的文件夹，请考虑根据类似的文件大小将这些文件分组。 文件大小有差异可能会导致性能不佳。 如果无法将类似大小的文件分组，应根据最大文件大小设置 PerFileThreadCount。
 
     `PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size`
 

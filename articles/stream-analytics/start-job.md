@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/03/2019
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 79149d8e9862ece24b4b2da4c2ca4afcceb23d63
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98016246"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>如何启动 Azure 流分析作业
@@ -38,7 +38,7 @@ ms.locfileid: "98016246"
 
 在作业视图中，选择绿色箭头按钮启动作业。 设置“作业输出启动模式”并选择“启动”。 作业状态将更改为“正在运行”。
 
-**作业输出启动模式** 有三个选项： *JobStartTime*、 *CustomTime* 和 *LastOutputEventTime*。 如果此属性不存在，则默认值为 *JobStartTime*。 有关这些选项的详细信息，请参阅上文。
+作业输出启动模式有三个选项：JobStartTime、CustomTime 和 LastOutputEventTime。 如果此属性不存在，则默认值为 *JobStartTime*。 有关这些选项的详细信息，请参阅上文。
 
 
 ## <a name="powershell"></a>PowerShell

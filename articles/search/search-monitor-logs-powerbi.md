@@ -1,25 +1,25 @@
 ---
-title: 通过 Power BI 直观显示 Azure 认知搜索日志和指标
-description: 通过 Power BI 直观显示 Azure 认知搜索日志和指标
-manager: eladz
+title: 通过 Power BI 直观显示日志和指标
+description: 通过 Power BI 直观显示 Azure 认知搜索日志和指标。
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: 4056e892855c06ce6c412ec4a592ebcd97fc11a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/07/2021
+ms.openlocfilehash: fbbeb861e50abfd393b416ddc46ff147fffb7b8e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96325377"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581630"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>通过 Power BI 直观显示 Azure 认知搜索日志和指标
-[Azure 认知搜索](./search-what-is-azure-search.md)允许你将有关搜索服务的操作日志和服务指标存储在 Azure 存储帐户中。 本页提供了有关如何通过 Power BI 模板应用来可视化该信息的说明。 该应用提供有关你的搜索服务的详细见解，包括有关搜索、索引编制、操作和服务指标的信息。
+
+[Azure 认知搜索](./search-what-is-azure-search.md)可以将操作日志和服务指标发送到 Azure 存储帐户，然后你可以在 Power BI 中直观显示这些日志和指标。 本文介绍了相关步骤以及如何使用 Power BI 模板应用来直观显示数据。 该模板可帮助你获取有关你的搜索服务的详细见解，包括有关查询、索引编制、操作和服务指标的信息。
 
 可以在 [Power BI 应用市场](https://appsource.microsoft.com/marketplace/apps)中找到 Power BI 模板应用“Azure 认知搜索: 分析日志和指标”。
 
-## <a name="how-to-get-started-with-the-app"></a>如何开始使用应用
+## <a name="set-up-the-app"></a>设置应用
 
 1. 为搜索服务启用指标和资源日志记录：
 
@@ -67,7 +67,8 @@ ms.locfileid: "96325377"
 
     :::image type="content" source="media/search-monitor-logs-powerbi/powerbi-search.png" alt-text="屏幕截图显示了 Azure 认知搜索 Power BI 报表。":::
 
-## <a name="how-to-change-the-app-parameters"></a>如何更改应用参数
+## <a name="modify-app-parameters"></a>修改应用参数
+
 如果要可视化其他存储帐户中的数据或更改要查询的数据天数，请按照以下步骤更改“天数”和“StorageAccount”参数。
 
 1. 导航到你的 Power BI 应用，找到你的 Azure 认知搜索应用，然后选择“编辑应用”按钮以查看工作区。
@@ -86,7 +87,8 @@ ms.locfileid: "96325377"
 
 1. 打开报表以查看更新后的数据。 你可能还需要刷新报表以查看最新数据。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting-report-issues"></a>故障排除报告问题
+
 如果你发现找不到你的数据，请执行以下故障排除步骤：
 
 1. 打开报表并刷新页面以确保查看最新数据。 报表中有一个用于刷新数据的选项。 请选择此选项以获取最新数据。
@@ -98,8 +100,7 @@ ms.locfileid: "96325377"
 1. 查看数据集是否仍在刷新。 上面的步骤 8 中显示了刷新状态指示器。 如果仍在刷新，请等待刷新完成，然后再打开并刷新报表。
 
 ## <a name="next-steps"></a>后续步骤
-[详细了解 Azure 认知搜索](./index.yml)
 
-[什么是 Power BI？](/power-bi/fundamentals/power-bi-overview)
-
-[Power BI 服务中设计器的基本概念](/power-bi/service-basic-concepts)
++ [监视搜索操作和活动](search-monitor-usage.md)
++ [什么是 Power BI？](/power-bi/fundamentals/power-bi-overview)
++ [Power BI 服务中设计器的基本概念](/power-bi/service-basic-concepts)

@@ -1,5 +1,5 @@
 ---
-title: StorSimple 地区可用性
+title: StorSimple 区域可用性
 description: 说明提供各种 StorSimple 设备模型的 Azure 区域。
 author: alkohli
 ms.service: storsimple
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: 5efb87ad674474b2e21b86b5cdc48785753a51dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90564145"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple 的可用区域
@@ -26,7 +26,7 @@ Azure 数据中心在全球多个地理位置运行，目的是满足客户对�
 具体说来，对于 StorSimple 解决方案，区域的选择取决于以下因素：
 
 - 提供 StorSimple 设备管理器服务的区域。
-- 提供 StorSimple 物理、云或虚拟设备的国家/地区。
+- 提供 StorSimple 物理设备、云设备或虚拟设备的国家/地区。
 - 存储 StorSimple 数据的存储帐户所在位置可以获得最佳性能的区域。
 
 本教程介绍 StorSimple 设备管理器服务、本地物理设备以及云设备的区域可用性。 本文中包含的信息适用于 StorSimple 8000 和 1200 系列设备。
@@ -39,7 +39,7 @@ Azure 数据中心在全球多个地理位置运行，目的是满足客户对�
 
 下面是一个区域列表，其中的 StorSimple 设备管理器服务适用于 Azure 公有云，可以进行部署。
 
-![屏幕截图显示 StorSimple 设备管理器，其中突出显示了 "位置" 列表。](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![屏幕截图显示了 StorSimple 设备管理器，其中突出显示了“位置”列表。](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
 对于 Azure 政府云，StorSimple 设备管理器服务在 US Gov 爱荷华州和 US Gov 弗吉尼亚州数据中心提供。
 
@@ -55,11 +55,11 @@ StorSimple 数据以物理方式存储在 Azure 存储帐户中，这些帐户�
 
 ## <a name="availability-of-storsimple-device"></a>StorSimple 设备的可用性
 
-根据型号，StorSimple 设备可以在不同的地理位置或国家/地区可用。
+StorSimple 设备在不同的地理位置或国家/地区可用，具体取决于型号。
 
 ### <a name="storsimple-physical-device-models-81008600"></a>StorSimple 物理设备（型号：8100/8600）
 
-如果使用的是 StorSimple 8100 或8600物理设备，则可以在以下国家/地区使用该设备。
+如果使用 StorSimple 8100 或 8600 物理设备，可在以下国家/地区购买。
 
 | #  | 国家/地区        | #  | 国家/地区     | #  | 国家/地区      | #  | 国家/地区             |
 |----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
@@ -79,18 +79,18 @@ StorSimple 数据以物理方式存储在 Azure 存储帐户中，这些帐户�
 | 14 | 德国               | 29 | 墨西哥             | 44 | 斯洛伐克            | 59 | 越南                    |
 | 15 | 希腊                | 30 | 荷兰        | 45 | 斯洛文尼亚            | 60 | 克罗地亚                    |
 
-添加的国家/地区越多，此列表也会随之更改。 如需地理位置的最新列表，请参阅[产品条款](https://www.microsoft.com/en-us/licensing/product-licensing/products)中的“存储阵列条款附录”。
+此列表会变化，因为会不断添加更多的国家/地区。 如需地理位置的最新列表，请参阅[产品条款](https://www.microsoft.com/en-us/licensing/product-licensing/products)中的“存储阵列条款附录”。
 
 Microsoft 可以向前述列表中的地理位置寄送 StorSimple 物理硬件并提供更换用的硬件备件。
 
 > [!IMPORTANT]
-> 请勿将 StorSimple 物理设备置于不支持 StorSimple 的区域。 对于不支持 StorSimple 的国家/地区，Microsoft 将无法向其交付任何更换部件。
+> 请勿将 StorSimple 物理设备置于不支持 StorSimple 的区域。 Microsoft 不会向 StorSimple 不受支持的国家/地区寄送任何更换部件。
 
 ### <a name="storsimple-cloud-appliance-models-80108020"></a>StorSimple 云设备（型号：8010/8020）
 
-如果使用 StorSimple 云设备 8010 或 8020，则支持基础 VM 的所有区域都会支持并提供该设备。 8010 使用在所有 Azure 区域都受支持的 __ Standard_A3 VM。
+如果使用 StorSimple 云设备 8010 或 8020，则支持基础 VM 的所有区域都会支持并提供该设备。 8010 使用在所有 Azure 区域都受支持的 Standard_A3 VM。
 
-8020 使用高级存储和 __ Standard_DS3 VM 来创建云设备。 8020 在支持高级存储和 __ Standard_DS3 Azure VM 的 Azure 区域受支持。 请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。********
+8020 使用高级存储和 Standard_DS3 VM 来创建云设备。 8020 在支持高级存储和 Standard_DS3 Azure VM 的 Azure 区域受支持。 请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。
 
 ### <a name="storsimple-virtual-array-model-1200"></a>StorSimple 虚拟阵列（型号：1200）
 

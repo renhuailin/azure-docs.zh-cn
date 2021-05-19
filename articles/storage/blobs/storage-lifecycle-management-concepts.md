@@ -1,20 +1,20 @@
 ---
 title: 通过自动执行 Azure Blob 存储访问层来优化成本
 description: 为在热层、冷层和存档层之间移动数据创建自动化规则。
-author: mhopkins-msft
-ms.author: mhopkins
-ms.date: 10/29/2020
+author: twooley
+ms.author: twooley
+ms.date: 04/23/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 76ea6b916cc52292e8b56523d91d92ebfc957a94
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96005276"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946099"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>通过自动执行 Azure Blob 存储访问层来优化成本
 
@@ -22,7 +22,7 @@ ms.locfileid: "96005276"
 
 生命周期管理策略允许：
 
-- 立即将所访问的 Blob 从冷层转移到热层，以便针对性能进行优化 
+- 立即将所访问的 Blob 从冷层转移到热层，以便针对性能进行优化
 - 将一段时间内未访问或修改的 Blob、Blob 版本和 Blob 快照转移到较冷的存储层（从热到冷、从热到存档，或者从冷到存档），以便针对成本进行优化
 - 在 Blob、Blob 版本和 Blob 快照的生命周期结束时将其删除
 - 在存储帐户级别定义每天运行一次的规则
@@ -45,12 +45,17 @@ ms.locfileid: "96005276"
 
 可以使用以下任一方法来添加、编辑或删除策略：
 
-* [Azure 门户](https://portal.azure.com)
-* [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
-* [Azure CLI](/cli/azure/install-azure-cli)
-* [REST API](/rest/api/storagerp/managementpolicies)
+- Azure 门户
+- Azure PowerShell
+   - [Add-AzStorageAccountManagementPolicyAction](/powershell/module/az.storage/add-azstorageaccountmanagementpolicyaction)
+   - [New-AzStorageAccountManagementPolicyFilter](/powershell/module/az.storage/new-azstorageaccountmanagementpolicyfilter)
+   - [New-AzStorageAccountManagementPolicyRule](/powershell/module/az.storage/new-azstorageaccountmanagementpolicyrule)
+   - [Set-AzStorageAccountManagementPolicy](/powershell/module/az.storage/set-azstorageaccountmanagementpolicy)
+   - [Remove-AzStorageAccountManagementPolicy](/powershell/module/az.storage/remove-azstorageaccountmanagementpolicy)
+- [Azure CLI](/cli/azure/storage/account/management-policy)
+- [REST API](/rest/api/storagerp/managementpolicies)
 
-可以完整读取或写入策略。 不支持部分更新。 
+可以完整读取或写入策略。 不支持部分更新。
 
 > [!NOTE]
 > 如果为存储帐户启用了防火墙规则，生命周期管理请求可能会被阻止。 可以通过针对受信任的 Microsoft 服务提供例外来取消阻止这些请求。 有关详细信息，请参阅[配置防火墙和虚拟网络](../common/storage-network-security.md#exceptions)中的“例外”部分。
@@ -59,16 +64,16 @@ ms.locfileid: "96005276"
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-可以在 Azure 门户中通过两种方式添加策略。 
+可以在 Azure 门户中通过两种方式添加策略。
 
-* [Azure 门户列表视图](#azure-portal-list-view)
-* [Azure 门户代码视图](#azure-portal-code-view)
+- [Azure 门户列表视图](#azure-portal-list-view)
+- [Azure 门户代码视图](#azure-portal-code-view)
 
 #### <a name="azure-portal-list-view"></a>Azure 门户列表视图
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 门户中，搜索并选择你的存储帐户。 
+1. 在 Azure 门户中，搜索并选择你的存储帐户。
 
 1. 在“Blob 服务”下，选择“生命周期管理”以查看或更改规则 。
 
@@ -91,7 +96,7 @@ ms.locfileid: "96005276"
    > [!IMPORTANT]
    > 上次访问时间跟踪预览版仅用作非生产用途。 生产服务级别协议 (SLA) 当前不可用。
    
-   若要使用“上次访问时间”选项，请在 Azure 门户的“生命周期管理”页上选择“启用访问跟踪”。 有关“上次访问时间”选项的详细信息，请参阅[基于上次访问日期移动数据（预览版）](#move-data-based-on-last-accessed-date-preview)。
+   若要使用“上次访问时间”选项，请在 Azure 门户的“生命周期管理”页面上选择“启用访问跟踪”。 有关“上次访问时间”选项的详细信息，请参阅[基于上次访问日期移动数据（预览版）](#move-data-based-on-last-accessed-date-preview)。
 
 1. 如果你在“详细信息”页上选择了“使用筛选器限制 Blob” ，请选择“筛选器集”来添加可选筛选器。 以下示例筛选“mylifecyclecontainer”容器中以“log”开头的 Blob。
 

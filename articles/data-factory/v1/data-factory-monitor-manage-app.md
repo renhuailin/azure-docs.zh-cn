@@ -1,23 +1,23 @@
 ---
-title: 监视和管理数据管道-Azure
+title: 监视和管理数据管道 - Azure
 description: 了解如何使用“监视和管理”应用来监视和管理 Azure 数据工厂和管道。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: be11f742eb99d25cb0e41a3dd0888d62417837dd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 3a9eb73aab381f90ae51300bff1250348916c2ab
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380366"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779590"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>使用“监视和管理”应用监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
 > * [使用 Azure 门户/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
-> * [使用监视和管理应用](data-factory-monitor-manage-app.md)
+> * [使用“监视和管理”应用](data-factory-monitor-manage-app.md)
 >
 >
 
@@ -119,7 +119,7 @@ ms.locfileid: "100380366"
 
 在右侧窗格中，切换到“活动窗口资源管理器”选项卡以查看更多详细信息。
 
-![显示如何访问 "活动窗口资源管理器" 选项卡的屏幕截图。](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+![屏幕截图显示如何访问“活动窗口资源管理器”选项卡。](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
 还可在“尝试”部分看到活动的每次运行尝试的 **已解析变量**。
 
@@ -188,7 +188,7 @@ ms.locfileid: "100380366"
 <td>正在处理活动窗口。</td>
 </tr>
 <tr>
-<td rowspan="4">已失败</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
+<td rowspan="4">失败</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
 </tr>
 <tr>
 <td>已取消</td><td>用户操作已取消活动窗口。</td>
@@ -212,7 +212,7 @@ ms.locfileid: "100380366"
 
 单击列表中的活动窗口时，可在右侧的“活动窗口资源管理器”或“属性”窗口中看到其详细信息。
 
-![显示如何查看有关活动窗口的详细信息的屏幕截图。](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+![屏幕截图显示如何查看有关活动窗口的详细信息。](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>刷新活动窗口
 详细信息不会自动刷新，因此请使用命令栏上的“刷新”按钮（第二个按钮）手动刷新活动窗口列表。  
@@ -225,7 +225,7 @@ ms.locfileid: "100380366"
 它会显示资源浏览器（树视图）、图示视图或“活动窗口”列表中所选项的属性。
 
 ### <a name="activity-window-explorer"></a>活动窗口资源管理器
-" **活动窗口资源管理器** " 窗口位于 "监视和管理" 应用的最右侧窗格中。 它显示“活动窗口”弹出窗口或“活动窗口”列表中所选活动窗口的相关详细信息。
+“活动窗口资源管理器”窗口位于“监视和管理”应用的最右侧窗格中。 它显示“活动窗口”弹出窗口或“活动窗口”列表中所选活动窗口的相关详细信息。
 
 ![活动窗口资源管理器](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
 
@@ -281,7 +281,7 @@ ms.locfileid: "100380366"
 
 ## <a name="perform-batch-actions"></a>执行批处理操作
 ### <a name="rerun-selected-activity-windows"></a>重新运行选定的活动窗口
-选择一个活动窗口，单击第一个命令栏按钮的向下箭头，然后选择 "**重新运行**  /  **管道中的上游**"。 选择“与管道中的上游一起重新运行”选项时，也将重新运行所有上游活动窗口。
+选择活动窗口，单击第一个命令栏按钮的向下键，并选择“重新运行” / “与管道中的上游一起重新运行”。 选择“与管道中的上游一起重新运行”选项时，也将重新运行所有上游活动窗口。
     ![重新运行活动窗口](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
 还可在列表中选择多个活动窗口，并同时重新运行它们。 可能希望基于状态筛选活动窗口（例如：**失败**），并在解决导致活动窗口失败的问题后重新运行失败的活动窗口。 有关在列表中筛选活动窗口的详细信息，请参阅以下部分。  

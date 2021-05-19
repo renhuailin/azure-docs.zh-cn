@@ -1,6 +1,6 @@
 ---
 title: Azure 存储符合性产品/服务 |Microsoft Docs
-description: 阅读有关 Azure 存储的符合性产品/服务的摘要，了解用于控制数据收集和使用的国家、地区和行业特定的要求。
+description: 阅读 Azure 存储符合性产品/服务的摘要，了解控制数据收集和使用的国家、地区和行业特定的要求。
 services: storage
 author: fhryo-msft
 ms.service: storage
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 7ec938a13d04cf3400e4d3df0eeda051c61d35ad
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: b3d308385a896d1051a843c1638506aa46c34c0e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724262"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740354"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure 存储符合性产品/服务
 
 为了帮助组织符合监管个人数据收集和使用的国家、地区和行业特定要求的标准，Microsoft Azure 和 Azure 存储提供了对任何云服务提供程序的全面认证和证明。
 
-你可以找到以下 Azure 存储上的符合性产品/服务，确保你的服务在使用 Azure 存储服务方面受到管控。 它们适用于以下 Azure 存储产品： Blob (ADLS Gen2) 、文件、队列、表、磁盘、冷存储和高级存储。
+你可以找到以下 Azure 存储上的符合性产品/服务，确保你的服务在使用 Azure 存储服务方面受到管控。 它们适用于以下 Azure 存储产品/服务：Blob (ADLS Gen2)、文件、队列、表、磁盘、冷存储和高级存储。
 
-## <a name="global"></a>Global
+## <a name="global"></a>全局
 
 * [CSA-STAR-Attestation](https://www.microsoft.com/trustcenter/compliance/csa-star-attestation)
 * [CSA-Star-Certification](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)
@@ -49,7 +49,7 @@ ms.locfileid: "101724262"
 ## <a name="industry"></a>行业
 
 * [23 NYCRR 第 500 编](https://www.microsoft.com/trustcenter/compliance/NYCRR)
-* [APRA（澳大利亚）](https://aka.ms/AzureCompliance)
+* [APRA（澳大利亚）](https://www.microsoft.com/trustcenter/compliance/apra)
 * [CDSA](https://www.microsoft.com/trustcenter/compliance/cdsa)
 * [DPP（英国）](https://aka.ms/AzureCompliance)
 * [（英国）](https://www.microsoft.com/trustcenter/compliance/fact)

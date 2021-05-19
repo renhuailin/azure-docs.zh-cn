@@ -4,15 +4,15 @@ description: 了解 Azure 应用服务中的网络功能，以及需要通过哪
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 10/18/2020
+ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.openlocfilehash: 9ba85ecfe2b57ceb1eed5c51929107a95f5a4669
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593123"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889138"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -49,8 +49,8 @@ Azure 应用服务是一种分布式系统。 处理传入 HTTP 或 HTTPS 请求
 | 支持应用的非共享专用入站地址 | 应用分配的地址 |
 | 从一组妥善定义的地址限制对应用的访问 | 访问限制 |
 | 限制从虚拟网络中的资源访问应用 | 服务终结点 </br> ILB ASE </br> 专用终结点 |
-| 在虚拟网络中的专用 IP 上公开你的应用 | ILB ASE </br> 专用终结点 </br> 使用服务终结点的应用程序网关实例上的入站流量的专用 IP |
-| 使用 Web 应用程序防火墙 (WAF) 保护应用 | 应用程序网关和 ILB ASE </br> 具有专用终结点的应用程序网关 </br> 包含服务终结点的应用程序网关 </br> 具有访问限制的 Azure Front Door |
+| 在虚拟网络中的专用 IP 上公开你的应用 | ILB ASE </br> 专用终结点 </br> 应用程序网关实例（包含服务终结点）上的入站流量的专用 IP |
+| 使用 Web 应用程序防火墙 (WAF) 保护应用 | 应用程序网关和 ILB ASE </br> 包含专用终结点的应用程序网关 </br> 包含服务终结点的应用程序网关 </br> 具有访问限制的 Azure Front Door |
 | 对发往不同区域中的应用的流量进行负载均衡 | 具有访问限制的 Azure Front Door | 
 | 对同一区域中的流量进行负载均衡 | [包含服务终结点的应用程序网关][appgwserviceendpoints] | 
 
@@ -110,51 +110,56 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 
 要限制可用于访问应用的 IP 地址时，基于 IP 的访问限制功能非常有用。 IPv4 和 IPv6 均受支持。 此功能的一些用例：
 * 从一组定义完善的地址限制对应用的访问。 
-* 限制对通过外部负载均衡服务或具有已知出口 IP 地址的其他网络设备的流量的访问。 
+* 仅允许通过外部负载均衡服务或其他具有已知出站 IP 地址的网络设备的流量访问。 
 
 若要了解如何启用此功能，请参阅[配置访问限制][iprestrictions]。
 
 > [!NOTE]
-> 基于 IP 的访问限制规则仅在应用处于应用服务环境时处理虚拟网络地址范围。 如果你的应用位于多租户服务中，则需要使用 [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md) 限制流量，以选择虚拟网络中的子网。
+> 基于 IP 的访问限制规则仅在应用位于应用服务环境中时处理虚拟网络地址范围。 如果应用位于多租户服务中，则需要使用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，以仅允许虚拟网络中选定子网的流量。
 
 #### <a name="access-restriction-rules-based-on-service-endpoints"></a>基于服务终结点的访问限制规则 
 
-使用服务终结点可以锁定对应用程序的 *入站* 访问，以便源地址必须来自所选的一组子网。 此功能与 IP 访问限制一起工作。 服务终结点与远程调试不兼容。 如果要对应用使用远程调试，则客户端不能位于启用了服务终结点的子网中。 设置服务终结点的过程与设置 IP 访问限制的过程类似。 可以在虚拟网络中构建包含公用地址和子网的访问规则的允许/拒绝列表。 
+使用服务终结点可以锁定对应用的入站访问，使源地址必须来自所选的一组子网。 此功能可与 IP 访问限制一起使用。 服务终结点与远程调试不兼容。 如果要对应用使用远程调试，则客户端不可位于启用了服务终结点的子网中。 设置服务终结点的过程与设置 IP 访问限制的过程类似。 你可构建包含虚拟网络中的公用地址和子网的访问规则允许/拒绝列表。 
 
 此功能的一些用例：
 
-* 使用应用程序设置应用程序网关，将入站流量锁定到你的应用。
-* 将对应用的访问限制为虚拟网络中的资源。 这些资源可以包含 Vm、Ase 甚至其他使用 VNet 集成的应用。 
+* 设置包含你的应用的应用程序网关，以锁定发往该应用的入站流量。
+* 仅限虚拟网络中的资源访问应用。 这些资源包括 VM、ASE，甚至其他使用 VNet 集成的应用。 
 
-![说明如何将服务终结点用于应用程序网关的关系图。](media/networking-features/service-endpoints-appgw.png)
+![图中显示了如何将服务终结点与应用程序网关结合使用。](media/networking-features/service-endpoints-appgw.png)
 
-若要详细了解如何使用应用配置服务终结点，请参阅 [Azure App Service 访问限制][serviceendpoints]。
-#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>基于服务标记的访问限制规则 (预览) 
-[Azure 服务标记][servicetags] 是定义完善的 AZURE 服务 IP 地址集。 服务标记将各种 Azure 服务中使用的 IP 范围分组，并且通常还会进一步作用于特定区域。 这允许你筛选来自特定 Azure 服务的 *入站* 流量。 
+若要详细了解如何在应用中配置服务终结点，请参阅 [Azure 应用服务访问限制][serviceendpoints]。
 
-有关标记和详细信息的完整列表，请访问上面的服务标记链接。 若要了解如何启用此功能，请参阅[配置访问限制][iprestrictions]。
-#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a> (预览的访问限制规则的 Http 标头筛选) 
-对于每个访问限制规则，可以添加其他 http 标头筛选。 这允许您根据特定的 http 标头值进一步检查传入请求和筛选。 每个规则的每个标头最多可以有8个值。 目前支持以下 http 标头列表： 
+#### <a name="access-restriction-rules-based-on-service-tags"></a>基于服务标记的访问限制规则
+
+[Azure 服务标记][servicetags]是一组明确定义的 Azure 服务 IP 地址。 服务标记负责将各种 Azure 服务中使用的 IP 范围进行分组，通常还会将范围进一步限定到特定的区域。 这样你就可以筛选来自特定 Azure 服务的入站流量。 
+
+有关标记的完整列表和详细信息，请访问上面的服务标记链接。 若要了解如何启用此功能，请参阅[配置访问限制][iprestrictions]。
+
+#### <a name="http-header-filtering-for-access-restriction-rules"></a>访问限制规则的 http 标头筛选
+
+对于每个访问限制规则，都可以添加额外的 http 标头筛选。 这样你可以进一步检查传入的请求并根据特定的 http 标头值进行筛选。 每个规则最多可以有 8 个标头值。 目前支持下面列出的 http 标头： 
 * X-Forwarded-For
 * X-Forwarded-Host
 * X-Azure-FDID
 * X-FD-HealthProbe
 
-Http 标头筛选的一些用例包括：
-* 限制对来自代理服务器的流量的访问转发主机名
-* 使用服务标记规则和 FDID 标头限制，限制对特定 Azure 前门实例的访问权限
+http 标头筛选的一些用例包括：
+* 仅允许转发主机名的代理服务器的流量访问
+* 仅允许具有服务标记规则和 X-Azure-FDID 标头限制的特定 Azure Front Door 实例访问
+
 ### <a name="private-endpoint"></a>专用终结点
 
-专用终结点是一个网络接口，可通过 Azure 专用链接将你私下安全地连接到你的 Web 应用。 专用终结点使用虚拟网络中的专用 IP 地址，从而有效地将 web 应用引入到虚拟网络。 此功能仅适用于 *入站* 流到 web 应用。
-有关详细信息，请参阅 [使用 Azure Web 应用的专用终结点][privateendpoints]。
+专用终结点是一个网络接口，可通过私密且安全的方式连接到 Azure 专用链接支持的 Web 应用。 专用终结点使用虚拟网络中的专用 IP 地址，从而将 Web 应用有效地引入虚拟网络。 此功能仅适用于发往 Web 应用的入站流量。
+有关详细信息，请参阅[对 Azure Web 应用使用专用终结点][privateendpoints]。
 
 此功能的一些用例：
 
-* 限制从虚拟网络中的资源对应用的访问。 
-* 在虚拟网络中的专用 IP 上公开你的应用程序。 
-* 使用 WAF 保护你的应用程序。
+* 限制从虚拟网络中的资源访问应用。 
+* 在虚拟网络中的专用 IP 上公开你的应用。 
+* 使用 WAF 保护应用。
 
-专用终结点可防止数据渗透，因为在专用终结点上唯一可以访问的内容就是配置它的应用。 
+专用终结点可防止数据外泄，因为在专用终结点上唯一可以访问的就是配置了该专用终结点的应用。 
  
 ### <a name="hybrid-connections"></a>混合连接
 
@@ -196,19 +201,19 @@ Http 标头筛选的一些用例包括：
 
 ### <a name="vnet-integration"></a>VNet 集成
 
-网关-必需的 VNet 集成非常有用，但它不能解决跨 ExpressRoute 访问资源的问题。 在需要跨 ExpressRoute 连接的情况下，应用程序可以调用服务终结点保护的服务。 另一种 VNet 集成功能可以满足这些需求。 
+需要网关的 VNet 集成功能非常有用，但它不能解决跨 ExpressRoute 访问资源的问题。 在需要跨 ExpressRoute 连接进行访问的情况下，应用需要能够调用服务终结点保护的服务。 另一种 VNet 集成功能可满足这些需求。 
 
-利用新的 VNet 集成功能，你可以将应用程序的后端放置在应用程序所在的同一区域中资源管理器虚拟网络的子网中。 此功能在虚拟网络中已有的应用服务环境不可用。 此功能的用例：
+利用新的 VNet 集成功能，你可将应用的后端放置在应用所在区域中资源管理器虚拟网络的子网中。 无法从已在虚拟网络中的应用服务环境使用此功能。 此功能的用例：
 
-* 访问同一区域中资源管理器虚拟网络中的资源。
+* 访问同一区域中的资源管理器虚拟网络中的资源。
 * 访问通过服务终结点保护的资源。 
 * 访问可跨 ExpressRoute 或 VPN 连接访问的资源。
 * 帮助保护所有出站流量。 
-* 强制隧道所有出站流量。 
+* 强制为所有出站流量建立隧道。 
 
-![阐释 VNet 集成的关系图。](media/networking-features/vnet-integration.png)
+![图中显示了 VNet 集成。](media/networking-features/vnet-integration.png)
 
-若要了解详细信息，请参阅 [应用服务 VNet 集成][vnetintegration]。
+有关详细信息，请参阅[应用服务 VNet 集成][vnetintegration]。
 
 ### <a name="app-service-environment"></a>应用服务环境 
 
@@ -251,7 +256,7 @@ ASE 提供最佳的隔离和专用应用托管，但它确实涉及了一些管�
 
 你可能想知道如何将应用放入虚拟网络。 如果将应用放入虚拟网络，则应用的入站和出站终结点将位于虚拟网络内。 ASE 是解决此问题的最佳方法。 但你可以通过组合功能来满足多租户服务中的大多数需求。 例如，可通过以下方式使用专用入站和出站地址托管仅限 Intranet 的应用程序：
 
-* 使用专用入站和出站地址创建应用程序网关。
+* 创建具有专用入站和出站地址的应用程序网关。
 * 使用服务终结点保护应用的入站流量。 
 * 使用新的 VNet 集成功能，以使应用的后端位于你的虚拟网络中。 
 

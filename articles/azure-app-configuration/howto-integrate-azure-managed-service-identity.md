@@ -7,13 +7,13 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
-ms.date: 2/25/2020
-ms.openlocfilehash: 2f446df95c795eaac378340ed0d5de7b31dfcfee
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 04/08/2021
+ms.openlocfilehash: 7a9eb992ff0cb98fdae2920da2beeda0bbd8941b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102219025"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877527"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用托管标识来访问应用程序配置
 
@@ -24,7 +24,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 本文介绍如何利用管理标识访问应用程序配置。 它建立在快速入门中介绍的 Web 应用之上。 在继续操作之前，先[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
 
 > [!NOTE]
-> 本文使用 Azure App Service 作为示例，但相同的概念适用于支持托管标识的任何其他 Azure 服务，例如 [Azure Kubernetes 服务](../aks/use-azure-ad-pod-identity.md)、 [azure 虚拟机](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)和 [azure 容器实例](../container-instances/container-instances-managed-identity.md)。 如果在其中某一种服务中托管工作负载，也可以利用该服务的托管标识支持。
+> 本文使用 Azure 应用服务作为示例，但相同的概念也适用于任何其他支持托管标识的 Azure 服务，例如 [Azure Kubernetes 服务](../aks/use-azure-ad-pod-identity.md)、[Azure 虚拟机](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)和 [Azure 容器实例](../container-instances/container-instances-managed-identity.md)。 如果在其中某一种服务中托管工作负载，也可以利用该服务的托管标识支持。
 
 本文还介绍如何将托管标识与应用程序配置的 Key Vaul 引用结合使用。 通过单个托管标识，可以无缝访问 Key Vault 的机密和“应用程序配置”的配置值。 如果希望了解此功能，请先完成[将 Key Vault 引用和 ASP.NET Core 结合使用](./use-key-vault-references-dotnet-core.md)。
 
@@ -41,8 +41,8 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 
 若要完成本教程，必须满足以下先决条件：
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows)。
-* [Azure Cloud Shell 配置](../cloud-shell/quickstart.md)。
+* [.NET Core SDK](https://dotnet.microsoft.com/download)。
+* [已配置的 Azure Cloud Shell](../cloud-shell/quickstart.md)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -140,12 +140,12 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
     ---
 
     > [!NOTE]
-    > 如果要使用 **用户分配的托管标识**，请确保在创建 [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential)时指定 clientId。
+    > 如果要使用用户分配的托管标识，请确保在创建 [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) 时指定 clientId。
     >```
     >config.AddAzureAppConfiguration(options =>
     >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
     >```
-    >如 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)中所述，有一种方法可以解决使用的托管标识。 在这种情况下，如果添加了新的用户分配的托管标识，或者) 启用了系统分配的托管标识，Azure 标识库将强制你指定所需的标识，以避免超过可能数的运行时 (问题。 因此，即使仅定义了一个用户分配的托管标识并且没有系统分配的托管标识，也需要指定 clientId。
+    >如“[Azure 资源的托管标识常见问题解答](../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)”中所述，系统将采用默认方法来解析使用的是哪个托管标识。 在这种情况下，Azure 标识库将强制你指定所需的标识，以免将来可能出现运行时问题（例如，如果添加了一个新的用户分配的托管标识，或启用了系统分配的托管标识）。 因此，即使只定义了一个用户分配的托管标识，并且没有系统分配的托管标识，也需要指定 clientId。
 
 
 1. 若要同时使用应用程序配置值和 Key Vault 引用，请更新 Program.cs，如下所示。 此代码调用了作为 `ConfigureKeyVault` 的一部分的 `SetCredential`，以告知配置提供程序在向 Key Vault 进行身份验证时使用哪一凭据。
@@ -203,13 +203,13 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
     > [!NOTE]
     > `ManagedIdentityCredential` 只适用于支持托管标识身份验证的服务的 Azure 环境。 它在本地环境中不起作用。 请使用 [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) 以使代码在本地和 Azure 环境中都能正常工作，因为它将会回退到包括托管标识在内的几个身份验证选项。
     > 
-    > 如果要在部署到 Azure 时将 **用户 asigned 的托管标识** 用于 `DefaultAzureCredential` ，请 [指定 clientId](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential)。
+    > 如果在部署到 Azure 时要对 `DefaultAzureCredential` 使用用户分配的托管标识，请[指定 clientId](/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential)。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-from-local-git"></a>从本地 Git 进行部署
 
-若要为应用程序使用 Kudu 生成服务器启用本地 Git 部署，最简单的方法是使用 [Azure Cloud Shell](https://shell.azure.com)。
+使用 Kudu 生成服务器为应用启用本地 Git 部署的最简单方法是：使用 [Azure Cloud Shelll](https://shell.azure.com)。
 
 ### <a name="configure-a-deployment-user"></a>配置部署用户
 
@@ -224,7 +224,7 @@ git add .
 git commit -m "Initial version"
 ```
 
-若要使用 Kudu 生成服务器为应用启用本地 Git 部署，请 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/#az-webapp-deployment-source-config-local-git) 在 Cloud Shell 中运行。
+要使用 Kudu 生成服务器为应用启用本地 Git 部署，请在 Cloud Shell 中运行 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/#az_webapp_deployment_source_config_local_git)。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>

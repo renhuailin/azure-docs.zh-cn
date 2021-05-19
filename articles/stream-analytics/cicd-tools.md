@@ -1,5 +1,5 @@
 ---
-title: 使用 CI/CD 工具自动执行 Azure 流分析作业的生成、测试和部署
+title: 使用 CI/CD 工具自动生成、测试和部署 Azure 流分析作业
 description: 本文介绍如何使用 Azure 流分析 CI/CD 工具自动生成、测试和部署 Azure 流分析项目。
 services: stream-analytics
 author: su-jie
@@ -8,36 +8,36 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.openlocfilehash: 2dbb491e77f132daf7b432f27705eba9e3e3cd3c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036956"
 ---
-# <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>使用 CI/CD 工具自动执行 Azure 流分析作业的生成、测试和部署
+# <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>使用 CI/CD 工具自动生成、测试和部署 Azure 流分析作业
 
-可以使用 Azure 流分析 CI/CD npm 包自动生成、测试和部署 Azure 流分析 Visual Studio Code 或 Visual Studio 项目。 可以使用开发工具创建项目，也可以从现有的流分析作业中导出这些项目。 本文介绍了如何将 npm 包与任何 CI/CD 系统一起使用。 有关 Azure Pipelines 的部署，请参阅 [使用 Azure DevOps 为流分析作业创建 CI/CD 管道](set-up-cicd-pipeline.md)。
+可使用 Azure 流分析 CI/CD npm 包自动生成、测试和部署 Azure 流分析 Visual Studio Code 或 Visual Studio 项目。 可使用开发工具创建项目，也可从现有的流分析作业中导出这些项目。 本文介绍如何在任何 CI/CD 系统中使用 npm 包。 有关使用 Azure Pipelines 进行的部署，请查看[使用 Azure DevOps 为流分析作业创建 CI/CD 管道](set-up-cicd-pipeline.md)。
 
 ## <a name="installation"></a>安装
 
-可以直接 [下载包](https://www.npmjs.com/package/azure-streamanalytics-cicd) ，也可以使用命令 [全局](https://docs.npmjs.com/downloading-and-installing-packages-globally) 安装包 `npm install -g azure-streamanalytics-cicd` 。 建议使用命令，该命令还可以在 **Azure Pipelines** 的生成管道的 PowerShell 或 Azure CLI 脚本任务中使用。
+可直接[下载包](https://www.npmjs.com/package/azure-streamanalytics-cicd)，也可使用 `npm install -g azure-streamanalytics-cicd` 命令[在全局](https://docs.npmjs.com/downloading-and-installing-packages-globally)安装它。 建议使用命令，它还可在 Azure Pipelines 中的生成管道的 PowerShell 或 Azure CLI 脚本任务中使用。
 
 ## <a name="build-the-project"></a>生成项目
 
-**Streamanalytics-default-central-us-cicd** npm 包提供了用于生成流分析 [Visual Studio Code 项目](./quick-create-visual-studio-code.md)或 [Visual Studio 项目](stream-analytics-quick-create-vs.md)的 Azure 资源管理器模板的工具。 你还可以在 Windows、macOS 和 Linux 上使用 npm 包，而无需安装 Visual Studio Code 或 Visual Studio。
+NPM 包 asa-streamanalytics-cicd 提供了用于生成流分析 [Visual Studio Code 项目](./quick-create-visual-studio-code.md)或 [Visual Studio 项目](stream-analytics-quick-create-vs.md)的 Azure 资源管理器模板的工具。 你也可在 Windows、macOS 和 Linux 上使用 npm 包，无需安装 Visual Studio Code 或 Visual Studio。
 
-安装程序包后，请使用以下命令生成流分析项目。
+安装包后，请使用以下命令生成流分析项目。
 
 ```powershell
 azure-streamanalytics-cicd build -project <projectFullPath> [-outputPath <outputPath>]
 ```
 
-" *生成* " 命令执行关键字语法检查并输出 Azure 资源管理器模板。
+build 命令会执行关键字语法检查并输出 Azure 资源管理器模板。
 
 | 参数 | 说明 |
 |---|---|
-| `-project` | Visual Studio Code 项目的文件的绝对 **asaproj.js** 路径，或 **[项目名称]. Asaproj** for Visual Studio 项目。 |
-| `-outputPath` | Azure 资源管理器模板的输出文件夹的路径。 如果未指定此项，则将模板放在当前目录中。 |
+| `-project` | asaproj.json 文件的绝对路径（针对 Visual Studio Code 项目），或者 [你的项目名称].asaproj 的绝对路径（针对 Visual Studio 项目） 。 |
+| `-outputPath` | Azure 资源管理器模板的输出文件夹的路径。 如果未指定，则将模板放在当前目录中。 |
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -53,7 +53,7 @@ azure-streamanalytics-cicd build -project "/Users/username/projects/samplejob/sa
 
 --- 
 
-当流分析项目成功生成时，它会在 output 文件夹下生成以下两个文件：
+成功生成流分析项目后，它会在输出文件夹下生成以下两个文件：
 
 * Azure 资源管理器模板文件
 
@@ -63,9 +63,9 @@ azure-streamanalytics-cicd build -project "/Users/username/projects/samplejob/sa
 
    `[ProjectName].JobTemplate.parameters.json`
 
-文件 parameters.js上的默认参数来自 Visual Studio Code 或 Visual Studio 项目中的设置。 如果要部署到其他环境，请相应地替换参数。
+parameters.json 文件中的默认参数来自 Visual Studio Code 或 Visual Studio 项目中的设置。 如果要部署到其他环境，请相应地替换参数。
 
-所有凭据的默认值均为 **null**。 在部署到 Azure 之前，需要设置这些值。
+所有凭据的默认值均为 null。 部署到 Azure 之前，必须先设置这些值。
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -73,11 +73,11 @@ azure-streamanalytics-cicd build -project "/Users/username/projects/samplejob/sa
     },
 ```
 
-若要将托管标识用于 Azure Data Lake Store Gen1 作为输出接收器，需要在部署到 Azure 之前，使用 PowerShell 提供对服务主体的访问权限。 了解有关如何[使用资源管理器模板部署具有托管标识的 ADLS Gen1](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment) 的详细信息。
+若要将 Azure Data Lake Store Gen1 的托管标识用作输出接收器，需要在部署到 Azure 之前使用 PowerShell 提供对服务主体的访问权限。 了解有关如何[使用资源管理器模板部署具有托管标识的 ADLS Gen1](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment) 的详细信息。
 
 ## <a name="local-run"></a>本地运行
 
-如果你的项目已指定本地输入文件，则可使用命令在本地运行流分析脚本 `localrun` 。
+如果项目已指定本地输入文件，则可使用 `localrun` 命令在本地运行流分析脚本。
 
 ```powershell
 azure-streamanalytics-cicd localrun -project <projectFullPath> [-outputPath <outputPath>] [-customCodeZipFilePath <zipFilePath>]
@@ -85,9 +85,9 @@ azure-streamanalytics-cicd localrun -project <projectFullPath> [-outputPath <out
 
 | 参数 | 说明 |
 |---|---|
-| `-project` | Visual Studio Code 项目的 **asaproj.js** 文件路径，或 **[项目名称]. Asaproj** for Visual Studio 项目。 |
-| `-outputPath` | 输出文件夹的路径。 如果未指定，则输出结果文件将放在当前目录中。 |
-| `-customCodeZipFilePath` | C # 自定义代码（如 UDF 或反序列化程序）的 zip 文件的路径（如果使用）。 将 Dll 打包到一个 zip 文件中，并指定此路径。 |
+| `-project` | asaproj.json 文件的路径（针对 Visual Studio Code 项目），或者 [你的项目名称].asaproj 的路径（针对 Visual Studio 项目） 。 |
+| `-outputPath` | 输出文件夹的路径。 如果未指定，则将输出结果文件放在当前目录中。 |
+| `-customCodeZipFilePath` | UDF 或反序列化程序（若使用）等 C# 自定义代码的 zip 文件的路径。 将 DLL 打包到一个 zip 文件中，并指定此路径。 |
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -108,11 +108,11 @@ azure-streamanalytics-cicd localrun -project "/Users/roger/projects/samplejob/sa
 
 ## <a name="automated-test"></a>自动测试
 
-可以使用 CI/CD npm 包来配置和运行流分析脚本的自动测试。
+可使用 CI/CD npm 包配置和运行流分析脚本的自动测试。
 
 ### <a name="add-a-test-case"></a>添加测试用例
 
-测试用例在测试配置文件中进行了介绍。 若要开始，请使用 `addtestcase` 命令将测试用例模板添加到测试配置文件中。 如果测试配置文件不存在，则默认情况下会创建一个。
+可在测试配置文件中查看测试用例。 若要开始，请使用 `addtestcase` 命令将测试用例模板添加到测试配置文件。 如果测试配置文件不存在，会默认创建一个。
 
 ```powershell
 azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPath <testConfigFileFullPath>]
@@ -120,11 +120,11 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 
 | 参数 | 说明 |
 |---|---|
-| `-project` | Visual Studio Code 项目的 **asaproj.js** 文件路径，或 **[项目名称]. Asaproj** for Visual Studio 项目。 |
-| `-testConfigPath` | 测试配置文件的路径。 如果未指定此值，则会在 **\test** 文件的当前 **asaproj.js** 目录下的文件中搜索文件，默认文件名 **testConfig.js为 on**。 如果不存在，则将创建新的文件。 |
+| `-project` | asaproj.json 文件的路径（针对 Visual Studio Code 项目），或者 [你的项目名称].asaproj 的路径（针对 Visual Studio 项目） 。 |
+| `-testConfigPath` | 测试配置文件的路径。 如果未指定，则会在 asaproj.json 文件的当前目录下的 \test 中搜索文件，默认文件名为 testConfig.json  。 如果不存在，则将创建一个新文件。 |
 
 > [!NOTE]
-> `Script`生成的 **testConfig.js** 文件中的值仅用于提供上下文;它不用于测试逻辑。 
+> 生成的 testConfig.json 文件中的 `Script` 值仅用于提供上下文，不用于测试逻辑。 
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -139,9 +139,9 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
 ```
 ---
 
-如果测试配置文件为空，则会将以下内容写入文件中。 否则，会将一个测试用例添加到 **测试用例** 的数组中。 必要的输入配置会根据输入配置文件（如果存在）自动填充。 否则，将配置默认值。 在运行测试之前，必须指定每个输入和预期输出的 **FilePath** 。 你可以手动修改配置。
+如果测试配置文件为空，会写入以下内容。 否则，测试用例会被添加到 TestCases 数组中。 必要的输入配置会根据输入配置文件自动填充（若存在）。 否则，将配置默认值。 在运行测试之前，必须指定每个输入和预期输出的 FilePath。 可手动修改配置。
 
-如果希望测试验证忽略特定输出，请将预期输出的 **必填** 字段设置为 **false**。
+如果希望测试验证忽略某个输出，请将预期输出的“必填”字段设置为 false 。
 
 ```json
 {
@@ -171,11 +171,11 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
 ```
 
 > [!NOTE]
-> 目前，该元素唯一允许的值 `ScriptType` 为 `InputMock` ，这也是默认值。 如果将其设置为任何其他值，将忽略该值，并使用默认值 (`InputMock`) 。 
+> 目前，`ScriptType` 元素唯一允许的值为 `InputMock`，这也是默认值。 如果将其设置为任何其他值，则会忽略该值并使用默认值 (`InputMock`)。 
 
 ### <a name="run-a-unit-test"></a>运行单元测试
 
-可以使用以下命令为项目运行多个测试用例。 在输出文件夹中生成测试结果的摘要。 对于所有已传递的测试，进程退出，代码为 **0** ;如果发生异常，则为 **-1** ; **-2** 个测试失败。
+可使用以下命令为项目运行多个测试用例。 输出文件夹中会生成测试结果摘要。 如果测试全部通过，则进程退出并显示代码 0；如果发生异常，则进程退出并显示代码 -1；如果测试失败，则进程退出并显示代码 -2  。
 
 ```powershell
 azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <testConfigFileFullPath>] [-outputPath <outputPath>] [-customCodeZipFilePath <zipFilePath>]
@@ -183,12 +183,12 @@ azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <tes
 
 | 参数 | 说明 |
 |---|---|
-| `-project` | Visual Studio Code 项目的 **asaproj.js** 文件路径，或 **[项目名称]. Asaproj** for Visual Studio 项目。 |
-| `-testConfigPath` | 测试配置文件的路径。 如果未指定此值，则会在 **\test** 文件的当前 **asaproj.js** 目录下的文件中搜索文件，默认文件名 **testConfig.js为 on**。
-| `-outputPath` | 测试结果输出文件夹的路径。 如果未指定，则输出结果文件将放在当前目录中。 |
-| `-customCodeZipFilePath` | 自定义代码（如 UDF 或反序列化程序）的 zip 文件的路径（如果使用）。 |
+| `-project` | asaproj.json 文件的路径（针对 Visual Studio Code 项目），或者 [你的项目名称].asaproj 的路径（针对 Visual Studio 项目） 。 |
+| `-testConfigPath` | 测试配置文件的路径。 如果未指定，则会在 asaproj.json 文件的当前目录下的 \test 中搜索文件，默认文件名为 testConfig.json  。
+| `-outputPath` | 测试结果输出文件夹的路径。 如果未指定，则将输出结果文件放在当前目录中。 |
+| `-customCodeZipFilePath` | UDF 或反序列化程序（若使用）等自定义代码的 zip 文件的路径。 |
 
-完成所有测试后，将在输出文件夹中生成 JSON 格式的测试结果的摘要。 摘要文件的名称为 **testResultSummary.js**。
+完成所有测试后，会在输出文件夹中生成 JSON 格式的测试结果摘要。 摘要文件名为 testResultSummary.json。
 
 ```json
 {
@@ -244,9 +244,9 @@ azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <tes
 
 ## <a name="deploy-to-azure"></a>部署到 Azure
 
-可以使用 "生成" 中生成的 Azure 资源管理器模板和参数文件将 [作业部署到 Azure](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md?tabs=azure-powershell#deploy-template)。
+可使用从生成管道生成的 Azure 资源管理器模板文件和参数文件[将作业部署到 Azure](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md?tabs=azure-powershell#deploy-template)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 流分析持续集成和持续部署](cicd-overview.md)
+* [Azure 流分析的持续集成和持续部署](cicd-overview.md)
 * [使用 Azure Pipelines 为流分析作业设置 CI/CD 管道](set-up-cicd-pipeline.md)

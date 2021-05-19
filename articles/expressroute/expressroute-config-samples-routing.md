@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：路由器配置示例
-description: 如要使用 Azure ExpressRoute，请使用适用于 Cisco IOS 的这些接口和路由配置示例。
+description: 以适用于 Cisco IOS-XE 和 Juniper MX 系列路由器的这些接口与路由配置示例为例，介绍如何处理 Azure ExpressRoute。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 04/27/2021
 ms.author: duau
-ms.openlocfilehash: 3bc850f02884ae0547c2ecf56a46a57a4e66a752
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 005dbf35dea53eafd3a0166f07cf4d6f07e3b40a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397400"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127634"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>用于设置和管理路由的路由器配置示例
 本页提供处理 Azure ExpressRoute 时适用于 Cisco IOS-XE 和 Juniper MX 系列路由器的接口与路由配置示例。
@@ -52,7 +52,7 @@ interface GigabitEthernet<Interface_Number>.<Number>
 
 ```console
 interface GigabitEthernet<Interface_Number>.<Number>
- encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+ encapsulation dot1Q <s-tag> second-dot1Q <c-tag>
  ip address <IPv4_Address><Subnet_Mask>
 ```
 
@@ -111,7 +111,7 @@ route-map <MS_Prefixes_Inbound> permit 10
 ```console
 interface GigabitEthernet<Interface_Number>.<Number>
  bfd interval 300 min_rx 300 multiplier 3
- encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+ encapsulation dot1Q <s-tag> second-dot1Q <c-tag>
  ip address <IPv4_Address><Subnet_Mask>
 
 router bgp <Customer_ASN>

@@ -1,105 +1,105 @@
 ---
-title: 通过 Azure Migrate 评估要迁移到 Azure 的大量 VMware Vm
-description: 介绍如何使用 Azure Migrate 服务评估大量 VMware Vm 以便迁移到 Azure。
+title: 使用 Azure Migrate 评估 VMware 环境中的大量服务器是否适合迁移到 Azure
+description: 介绍如何使用 Azure Migrate 服务评估 VMware 环境中的大量服务器是否适合迁移到 Azure。
 author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 206df399736dbd3b5d1d52531a249bbd37646514
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: MT
+ms.openlocfilehash: 10b8aaeaa25e49140dbf6f31c064c7f823d23e31
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753665"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778247"
 ---
-# <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>评估要迁移到 Azure 的大量 VMware Vm
+# <a name="assess-large-numbers-of-servers-in-vmware-environment-for-migration-to-azure"></a>评估 VMware 环境中的大量服务器是否适合迁移到 Azure
 
 
-本文介绍了如何使用 Azure Migrate 服务器评估工具来评估 (用于迁移到 Azure 的本地 VMware Vm) 大量。
+本文介绍如何使用 Azure Migrate 发现和评估工具来评估 VMware 环境中的大量本地服务器（1000-35,000 个）是否适合迁移到 Azure。
 
 [Azure Migrate](migrate-services-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。 
 
 在本文中，学习如何：
 > [!div class="checklist"]
-> * 大规模规划评估。
-> * 配置 Azure 权限，并准备 VMware 进行评估。
+> * 制定大规模评估计划。
+> * 配置 Azure 权限，并准备要进行评估的 VMware。
 > * 创建 Azure Migrate 项目，并创建评估。
-> * 在规划迁移时，请查看评估。
+> * 在计划迁移时查看评估。
 
 
 > [!NOTE]
-> 如果要在评估规模之前尝试使用概念证明来评估几个 Vm，请遵循我们的 [系列教程](./tutorial-discover-vmware.md)
+> 如果要在进行大规模评估之前先尝试使用概念证明来评估几台服务器，请按[教程系列](./tutorial-discover-vmware.md)的要求进行操作
 
-## <a name="plan-for-assessment"></a>规划评估
+## <a name="plan-for-assessment"></a>制定评估计划
 
-规划大量 VMware Vm 的评估时，需要考虑几个问题：
+计划在 VMware 环境中评估大量服务器时，需要考虑几个问题：
 
-- **规划 Azure Migrate 项目**：了解如何部署 Azure Migrate 项目。 例如，如果你的数据中心位于不同的地理位置，或者你需要在不同的地理位置存储发现、评估或与迁移相关的元数据，则可能需要多个项目。 
-- **计划设备**： Azure Migrate 使用部署为 VMware VM 的本地 Azure Migrate 设备来持续发现 vm。 设备会监视环境更改，如添加 Vm、磁盘或网络适配器。 它还会将有关它们的元数据和性能数据发送到 Azure。 需要找出需要部署的设备的数量。
-- **规划用于发现的帐户**： Azure Migrate 设备使用有权访问 vCenter Server 的帐户，以便发现用于评估和迁移的 vm。 如果发现超过10000个 Vm，请设置多个帐户，因为在项目中从任何两个设备发现的 Vm 之间没有重叠。 
+- **计划 Azure Migrate 项目**：了解如何部署 Azure Migrate 项目。 例如，如果数据中心位于不同的地理位置，或者需要在不同的地理位置存储发现、评估或与迁移相关的元数据，则可能需要多个项目。 
+- **计划设备**：Azure Migrate 使用部署为 VMware VM 的本地 Azure Migrate 设备来持续发现服务器。 该设备会监视环境的变化，例如，添加了服务器、磁盘或网络适配器。 它还会将元数据和性能数据发送到 Azure。 需要计算出要部署多少台设备。
+- **计划用于发现的帐户**：Azure Migrate 设备使用有权访问 vCenter Server 的帐户来发现用于评估和迁移的服务器。 如果发现超过 10,000 台服务器，请设置多个帐户，因为要求从一个项目中的任何两台设备发现的服务器之间没有重叠。 
 
 > [!NOTE]
-> 如果要设置多个设备，请确保 vCenter 帐户上的 Vm 之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现和出现问题。
+> 如果要设置多台设备，请确保提供的 vCenter 帐户上的服务器之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果一个服务器被多台设备发现，这将导致发现结果中有重复项，并且在服务器迁移中使用 Azure 门户为服务器启用复制时出现问题。
 
-## <a name="planning-limits"></a>规划限制
+## <a name="planning-limits"></a>计划限制
  
-使用此表中汇总的限制进行规划。
+请使用此表中汇总的限制来进行计划。
 
-规划 | **限制**
+**规划** | **限制**
 --- | --- 
-**Azure Migrate 项目** | 在项目中评估最多35000个 Vm。
-**Azure Migrate 设备** | 设备最多可以发现 vCenter Server 上的 10000 Vm。<br/> 设备只能连接到单个 vCenter Server。<br/> 设备只能与单个 Azure Migrate 项目相关联。<br/>  可以将任意数量的设备与单个 Azure Migrate 项目相关联。 <br/><br/> 
-**组** | 最多可以在一个组中添加35000个 Vm。
-**Azure Migrate 评估** | 一次评估中最多可以评估 35,000 个 VM。
+**Azure Migrate 项目** | 在一个项目中最多评估 35,000 个服务器。
+**Azure Migrate 设备** | 一台设备最多可在一个 vCenter Server 上发现 10,000 个服务器。<br/> 一台设备仅可连接到一个 vCenter Server。<br/> 一台设备只能与一个 Azure Migrate 项目关联。<br/>  一个 Azure Migrate 项目可以关联任意数量的设备。 <br/><br/> 
+**组** | 在一个组中最多可添加 35,000 个服务器。
+**Azure Migrate 评估** | 在一次评估中最多可评估 35,000 个服务器。
 
-考虑到这些限制，以下是一些示例部署：
+记住这些限制，下面是一些示例部署：
 
 
-**vCenter 服务器** | **服务器上的 Vm** | 建议 | **操作**
+**vCenter 服务器** | **服务器上的服务器数量** | 建议 | **操作**
 ---|---|---|---
-一个 | < 10000 | 一个 Azure Migrate 项目。<br/> 一台设备。<br/> 一个用于发现的 vCenter 帐户。 | 设置设备，使用帐户连接到 vCenter Server。
-一个 | > 10000 | 一个 Azure Migrate 项目。<br/> 多个设备。<br/> 多个 vCenter 帐户。 | 为每个 10000 Vm 设置设备。<br/><br/> 设置 vCenter 帐户，并划分清单，将帐户的访问权限限制为小于 10000 Vm。<br/> 使用帐户将每个设备连接到 vCenter 服务器。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。 <br/> <br/> 请确保 vCenter 帐户上的 Vm 之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现中出现重复和出现问题。
-多个 | < 10000 |  一个 Azure Migrate 项目。<br/> 多个设备。<br/> 一个用于发现的 vCenter 帐户。 | 设置设备，使用帐户连接到 vCenter Server。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。
-多个 | > 10000 | 一个 Azure Migrate 项目。<br/> 多个设备。<br/> 多个 vCenter 帐户。 | 如果 vCenter Server 发现 < 10000 Vm，请为每个 vCenter Server 设置一个设备。<br/><br/> 如果 vCenter Server 发现 > 10000 Vm，请为每个 10000 Vm 设置一个设备。<br/> 设置 vCenter 帐户，并划分清单，将帐户的访问权限限制为小于 10000 Vm。<br/> 使用帐户将每个设备连接到 vCenter 服务器。<br/> 你可以分析在不同设备上发现的计算机的依赖关系。 <br/><br/> 请确保 vCenter 帐户上的 Vm 之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果多个设备发现一个 VM，则在服务器迁移中使用 Azure 门户为 VM 启用复制时，这会导致发现中出现重复和出现问题。
+一个 | < 10,000 | 一个 Azure Migrate 项目。<br/> 一台设备。<br/> 一个用于发现的 vCenter 帐户。 | 设置设备，使用帐户连接到 vCenter Server。
+一个 | > 10,000 | 一个 Azure Migrate 项目。<br/> 多台设备。<br/> 多个 vCenter 帐户。 | 为每 10,000 个服务器设置设备。<br/><br/> 设置 vCenter 帐户并划分清单，将帐户的访问权限限制为小于 10,000 个服务器。<br/> 使用帐户将每个设备连接到 vCenter Server。<br/> 可分析使用不同设备发现的服务器之间的依赖关系。 <br/> <br/> 请确保提供的 vCenter 帐户上的服务器之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果一个服务器被多台设备发现，这将导致发现结果中有重复项，并且在服务器迁移中使用 Azure 门户为服务器启用复制时出现问题。
+多个 | < 10,000 |  一个 Azure Migrate 项目。<br/> 多台设备。<br/> 一个用于发现的 vCenter 帐户。 | 设置设备，使用帐户连接到 vCenter Server。<br/> 可分析使用不同设备发现的服务器之间的依赖关系。
+多个 | > 10,000 | 一个 Azure Migrate 项目。<br/> 多台设备。<br/> 多个 vCenter 帐户。 | 如果 vCenter Server 发现的服务器少于 10,000 个，则为每个vCenter Server 设置一台设备。<br/><br/> 如果 vCenter Server 发现的服务器多于 10,000 个，则为每 10,000 个服务器设置一台设备。<br/> 设置 vCenter 帐户并划分清单，将帐户的访问权限限制为小于 10,000 个服务器。<br/> 使用帐户将每个设备连接到 vCenter Server。<br/> 可分析使用不同设备发现的服务器之间的依赖关系。 <br/><br/> 请确保提供的 vCenter 帐户上的服务器之间没有重叠。 具有此类重叠的发现是不受支持的方案。 如果一个服务器被多台设备发现，这将导致发现结果中有重复项，并且在服务器迁移中使用 Azure 门户为服务器启用复制时出现问题。
 
 
 
-## <a name="plan-discovery-in-a-multi-tenant-environment"></a>在多租户环境中规划发现
+## <a name="plan-discovery-in-a-multi-tenant-environment"></a>在多租户环境中计划发现
 
-如果你计划使用多租户环境，则可以在 vCenter Server 上确定发现的范围。
+如果计划使用多租户环境，可 vCenter Server 上指定发现范围。
 
-- 可以将设备发现范围设置为 vCenter Server 数据中心、群集或群集文件夹、主机或主机的主机或单个 Vm。
-- 如果你的环境在租户之间共享，并且你想要单独发现每个租户，则可以将对该设备用于发现的 vCenter 帐户的访问范围进行限定。 
-    - 如果租户共享主机，你可能想要按 VM 文件夹来确定范围。 如果 vCenter 帐户有权访问 vCenter VM 文件夹级别，则 Azure Migrate 无法发现 Vm。 若要按 VM 文件夹限定发现范围，确保在 VM 级别为 vCenter 帐户分配只读访问权限即可实现此目的。 [了解详细信息](set-discovery-scope.md)。
+- 可将设备发现范围设置为 vCenter Server 数据中心、群集、群集文件夹、主机、主机文件夹或单个服务器。
+- 如果环境在租户之间共享，并且你想要单独发现每个租户，可将访问范围指定为设备用于发现的 vCenter 帐户。 
+    - 如果租户共享主机，则可能需要按 VM 文件夹来确定范围。 如果 vCenter 帐户在 vCenter VM 文件夹级别具有访问权限，则 Azure Migrate 无法发现服务器。 若要按 VM 文件夹指定发现范围，确保在服务器级别为 vCenter 帐户分配只读访问权限即可实现此目的。 [了解详细信息](set-discovery-scope.md)。
 
 ## <a name="prepare-for-assessment"></a>准备进行评估
 
-为服务器评估准备 Azure 和 VMware。 
+为发现和评估工具准备 Azure 和 VMware：
 
 1. 验证 [VMware 支持要求和限制](migrate-support-matrix-vmware.md)。
-2. 设置你的 Azure 帐户的权限以与 Azure Migrate 进行交互。
+2. 为 Azure 帐户设置用来与 Azure Migrate 交互的权限。
 3. 准备 VMware 以进行评估。
 
-按照 [本教程](./tutorial-discover-vmware.md) 中的说明配置这些设置。
+请按照[此教程](./tutorial-discover-vmware.md)中的说明来配置这些设置。
 
 
 ## <a name="create-a-project"></a>创建一个项目
 
-按照规划要求，执行以下操作：
+按照计划要求，执行以下操作：
 
 1. 创建 Azure Migrate 项目。
-2. 将 Azure Migrate 服务器评估工具添加到项目。
+2. 将 Azure Migrate 发现和评估工具添加到项目。
 
 [了解详细信息](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>创建和查看评估
 
-1. 为 VMware Vm 创建评估。
-1. 查看评估以准备迁移规划。
+1. 为 VMware 环境中的服务器创建评估。
+1. 在准备迁移计划时查看评估。
 
 
-按照 [本教程](./tutorial-assess-vmware-azure-vm.md) 中的说明配置这些设置。
+请按照[此教程](./tutorial-assess-vmware-azure-vm.md)中的说明来配置这些设置。
     
 
 ## <a name="next-steps"></a>后续步骤
@@ -107,9 +107,9 @@ ms.locfileid: "96753665"
 本文内容：
  
 > [!div class="checklist"] 
-> * 计划扩展 VMware Vm 的 Azure Migrate 评估
-> * 已准备好 Azure 和 VMware 以进行评估
-> * 创建 Azure Migrate 项目并运行评估
-> * 查看评估以准备迁移。
+> * 已计划对使用 Azure Migrate 评估 VMware 环境中的服务器的操作进行缩放
+> * 已准备好 Azure 和 VMware 来进行评估
+> * 已创建 Azure Migrate 项目并运行了评估
+> * 在准备迁移时查看了评估。
 
-现在， [了解如何](concepts-assessment-calculation.md) 计算评估，以及如何 [修改评估](how-to-modify-assessment.md)。
+现在，请[了解如何](concepts-assessment-calculation.md)计算评估，以及如何[修改评估](how-to-modify-assessment.md)。

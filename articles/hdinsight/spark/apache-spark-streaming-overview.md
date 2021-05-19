@@ -5,36 +5,36 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: bde6c5b2bad12df8642dd3c9b4a49548f7bc9a6d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: e8a9f771827b870f493d6b0d7590feee7fc52b20
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929521"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104870239"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 流式处理概述
 
 [Apache Spark](https://spark.apache.org/) 流式处理在 HDInsight Spark 群集上提供数据流式处理。 同时保证即便发生节点故障，任何输入事件也仅处理一次。 Spark 流是一个长时间运行的作业，接收各种来源（包括 Azure 事件中心）的输入数据。 此外：Azure IoT 中心、Apache Kafka、Apache Flume、Twitter、`ZeroMQ`、原始 TCP 套接字或来自监视 Apache Hadoop YARN 文件系统的输入数据。 与完全由事件驱动的进程不同，Spark 流以批处理方式将输入数据放入各时段。 例如 2 秒的切片，然后使用映射、减少、联接和提取操作转化每批数据。 然后，Spark 流将转换后的数据写入文件系统、数据库、仪表板和控制台。
 
-![使用 HDInsight 和 Spark 流式处理的流处理](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png" alt-text="使用 HDInsight 和 Spark 流式处理的流处理" border="false":::
 
-Spark 流式处理应用程序必须等待一小部分的时间来收集每个 `micro-batch` 事件，然后再发送该批处理进行处理。 与此相反，事件驱动应用程序会立即处理每个事件。 Spark 流式处理延迟一般为几秒钟。 微批处理方法的优点是数据处理效率更高和聚合计算更简单。
+Spark 流式处理应用程序必须先等待一会，以收集事件的每个`micro-batch`，才能发送该批处理进行处理。 与此相反，事件驱动应用程序会立即处理每个事件。 Spark 流式处理延迟一般为几秒钟。 微批处理方法的优点是数据处理效率更高和聚合计算更简单。
 
 ## <a name="introducing-the-dstream"></a>引入 DStream
 
-Spark 流式处理使用称为 DStream 的离散流表示传入数据的连续流。 可以通过输入源（如事件中心或 Kafka）创建 DStream。 或通过对其他 DStream 应用转换。
+Spark 流式处理使用称为 DStream 的离散流表示传入数据的连续流。 DStream 可从事件中心或 Kafka 等输入源创建。 或通过对其他 DStream 应用转换来创建。
 
 DStream 可提供基于原始事件数据的抽象层。
 
-从单一事件开始，例如已连接调温器的温度读数。 当此事件到达 Spark 流式处理应用程序时，将以可靠的方式存储事件，在该事件中，会将其复制到多个节点上。 这种容错可确保任何单个节点的故障不会导致事件丢失。 Spark 核心使用在群集中跨多个节点分发数据的数据结构。 其中每个节点通常在内存中维护自己的数据，以获得最佳性能。 此数据结构称为弹性分布式数据集 (RDD)。
+从单一事件开始，例如已连接调温器的温度读数。 此事件到达 Spark 流式处理应用程序后，系统将以可靠方式存储事件，即在多个节点上进行复制。 此容错功能可确保任何单个节点的故障都不会导致事件丢失。 Spark 核心使用在群集中的多个节点上分布数据的数据结构。 其中每个节点通常在内存中维护自己的数据，以获得最佳性能。 此数据结构称为弹性分布式数据集 (RDD)。
 
-每个 RDD 表示在用户定义的时间范围（称为 *批处理间隔*）内收集的事件。 每个批处理间隔后，将生成新的 RDD，其中包含该间隔的所有数据。 将连续的 Rdd 集收集到 DStream 中。 例如，如果批处理间隔为 1 秒，则 DStream 将每秒发出一个批处理，其中包含一个 RDD（包含该秒期间引入的所有数据）。 处理 DStream 时，温度事件将出现在其中一个批处理中。 Spark 流式处理应用程序处理包含事件的批处理并最终作用于每个 RDD 中存储的数据。
+每个 RDD 表示在用户定义的时间范围（称为 *批处理间隔*）内收集的事件。 每个批处理间隔后，将生成新的 RDD，其中包含该间隔的所有数据。 此连续 RDD 集将收集到 DStream 中。 例如，如果批处理间隔为 1 秒，则 DStream 将每秒发出一个批处理，其中包含一个 RDD（包含该秒期间引入的所有数据）。 处理 DStream 时，温度事件将出现在其中一个批处理中。 Spark 流式处理应用程序处理包含事件的批处理并最终作用于每个 RDD 中存储的数据。
 
-![温度事件的示例 DStream](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png" alt-text="温度事件的示例 DStream" border="false":::
 
 ## <a name="structure-of-a-spark-streaming-application"></a>Spark 流式处理应用程序的结构
 
-Spark 流式处理应用程序是一个长时间运行的应用程序，可从引入源接收数据。 应用转换来处理数据，然后将数据推送到一个或多个目标。 Spark 流式处理应用程序的结构包含静态部分和动态部分。 静态部分定义数据的来源、对数据进行的处理。 结果应出现的位置。 动态部分无限期运行应用程序，等待停止信号。
+Spark 流式处理应用程序是从引入源接收数据的长时间运行的应用程序。 应用转换以处理这些数据，然后将数据推送至一个或多个目标。 Spark 流式处理应用程序的结构包含静态部分和动态部分。 静态部分定义数据的来源，要对数据执行哪些处理， 以及结果应发送到何处。 动态部分无限期运行应用程序，等待停止信号。
 
 例如，下面的简单应用程序通过 TCP 套接字接收一行文本，并对每个单词出现的次数进行计数。
 
@@ -70,7 +70,7 @@ val lines = ssc.textFileStream("/uploads/Test/")
 
 #### <a name="apply-transformations"></a>应用转换
 
-通过对 DStream 应用转换来实现处理。 此应用程序每次从文件接收一行文本，并将每行拆分为多个单词。 然后使用地图缩减模式来计算每个单词出现的次数。
+通过对 DStream 应用转换来实现处理。 此应用程序一次从文件接收一行文本，将每行文本拆分成字。 然后使用映射化简模式来计算每个字出现的次数。
 
 ```
 val words = lines.flatMap(_.split(" "))
@@ -168,9 +168,9 @@ SELECT * FROM demo_numbers
 
 滑动窗口可以重叠，例如，可以定义长度为两秒的窗口，每一秒滑动一次。 该操作意味着每次执行聚合计算时，窗口将包括上一个窗口最后一秒的数据。 以及下一秒的任何新数据。
 
-![温度事件的示例初始窗口](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png" alt-text="温度事件的示例初始窗口" border="false":::
 
-![滑动后的温度事件的示例窗口](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png" alt-text="滑动后的温度事件的示例窗口" border="false":::
 
 下面的示例将更新使用 DummySource 的代码，将批处理收集到持续时间为一分钟且滑动为一分钟的窗口中。
 
@@ -244,7 +244,7 @@ Spark 流式传输 API 中可用的滑动窗口函数包括 window、countByWind
 
 通常将 Spark 流式处理应用程序本地生成到 JAR 文件中。 然后通过将 JAR 文件复制到默认的附加存储将其部署到 HDInsight 上的 Spark。 可以使用 POST 操作，通过群集上可用的 LIVY REST API 启动该应用程序。 POST 的正文包括提供 JAR 路径的 JSON 文档。 和其 main 方法定义并运行流式处理应用程序的类的名称以及可选的作业资源要求（例如执行器、内存和核心的数量）。 以及应用程序代码所需的任何配置设置。
 
-![部署 Spark 流式处理应用程序](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png" alt-text="部署 Spark 流式处理应用程序" border="false":::
 
 此外，可以使用 GET 请求针对 LIVY 终结点检查所有应用程序的状态。 最后，可以通过针对 LIVY 终结点发出 DELETE 请求终止正在运行的应用程序。 有关 LIVY API 的详细信息，请参阅[使用 Apache LIVY 执行远程作业](apache-spark-livy-rest-interface.md)
 

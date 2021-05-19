@@ -1,7 +1,7 @@
 ---
 title: UWP 注意事项 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解将通用 Windows 平台 (UWP) 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 有关的注意事项。
+description: 了解将通用 Windows 平台 (UWP) 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的注意事项。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,17 +14,17 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 8a8aab447007eb574a7a4bc532d8177bd0d8b345
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102122470"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>将通用 Windows 平台与 MSAL.NET 配合使用时的注意事项
 将通用 Windows 平台 (UWP) 与 MSAL.NET 配合使用的应用程序的开发人员应当考虑本文中所述的概念。
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork 属性
-在 Windows 运行时 (WinRT) 平台上，`PublicClientApplication` 具有布尔属性 `UseCorporateNetwork`。 如果用户登录到具有联合 Azure Active Directory (Azure AD) 租户的帐户，则通过此属性，Windows 10 应用程序和 UWP 应用程序可以受益于集成的 Windows 身份验证 (IWA) 。 已登录到操作系统的用户还可以使用单一登录 (SSO)。 设置 `UseCorporateNetwork` 属性后，MSAL.NET 将使用 Web 身份验证代理 (WAB)。
+在 Windows 运行时 (WinRT) 平台上，`PublicClientApplication` 具有布尔属性 `UseCorporateNetwork`。 使用此属性，Windows 10 应用程序和 UWP 应用程序在用户登录到具有联合 Azure Active Directory (Azure AD) 租户的帐户时可以利用集成 Windows 身份验证 (IWA)。 已登录到操作系统的用户还可以使用单一登录 (SSO)。 设置 `UseCorporateNetwork` 属性后，MSAL.NET 将使用 Web 身份验证代理 (WAB)。
 
 > [!IMPORTANT]
 > 将 `UseCorporateNetwork` 属性设置为 true 时，将假定应用程序开发人员已在应用程序中启用了 IWA。 若要启用 IWA，请执行以下操作：
@@ -64,4 +64,4 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execu
 示例 | 平台 | 说明 
 |------ | -------- | -----------|
 |[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | 一个使用 MSAL.NET 的 UWP 客户端应用程序。 它为使用 Azure AD 2.0 终结点进行身份验证的用户访问 Microsoft Graph。 <br>![拓扑](media/msal-net-uwp-considerations/topology-native-uwp.png)|
-|[active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 一个 Xamarin Forms 应用，演示如何通过 Microsoft 标识平台使用 MSAL 对 Microsoft 个人帐户和 Azure AD 进行身份验证。 它还展示了如何访问 Microsoft Graph 并显示了生成的令牌。 <br>![此图显示了如何使用 MSAL 通过 Microsoft 标识平台验证 Microsoft 个人帐户和 Azure AD。](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
+|[active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 一个 Xamarin Forms 应用，展示了如何使用 MSAL 通过 Microsoft 标识平台对 Microsoft 个人帐户和 Azure AD 进行身份验证。 它还展示了如何访问 Microsoft Graph 并显示了生成的令牌。 <br>![此图展示了如何使用 MSAL 通过 Microsoft 标识平台对 Microsoft 个人帐户和 Azure AD 进行身份验证。](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

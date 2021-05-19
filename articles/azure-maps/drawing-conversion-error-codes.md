@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: cecc19f0984ce1801d50e5cbda73e98a01e2825b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96906210"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>绘图转换错误和警告
@@ -35,7 +35,7 @@ ms.locfileid: "96906210"
 
 * 下面的两幅图展示了自相交多边形的示例。
 
-     ![自相交多边形的示例，示例1。](./media/drawing-conversion-error-codes/geometry-warning-1.png)
+     ![自相交多边形的示例，示例一。](./media/drawing-conversion-error-codes/geometry-warning-1.png)
 
      ![自相交多边形的示例，示例二。](./media/drawing-conversion-error-codes/geometry-warning-2.png)
 
@@ -330,7 +330,7 @@ ms.locfileid: "96906210"
 若要修复 invalidUserData 错误，请验证：
 
 * 是否为已上传包提供了正确的 `udid`。
-* 已为用于上载绘图包的 Azure Maps 帐户启用 Azure Maps Creator (预览版) 。
+* 是否已为用于上传绘图包的 Azure Maps 帐户启用 Azure Maps Creator（预览版）。
 * 对转换服务的 API 请求是否包含用于上传绘图包的 Azure Maps 帐户的订阅密钥。
 
 ### <a name="dwgerror"></a>**dwgError**
@@ -506,4 +506,4 @@ manifest.json 文件因 JSON 格式或语法错误而无法读取。 若要详�
 > [如何使用 Azure Maps 绘图错误可视化工具](drawing-error-visualizer.md)
 
 > [!div class="nextstepaction"]
-> [室内地图的 Creator (预览) ](creator-indoor-maps.md)
+> [适用于室内地图的 Creator（预览版）](creator-indoor-maps.md)

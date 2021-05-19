@@ -5,12 +5,12 @@ description: 了解如何与 Azure Kubernetes 服务 (AKS) 群集 Windows Server
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 4cfac73c66969148927897de7ed6da0c56aa276a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 62f29c0550b858e34d888da61f1bd7fbd358f82d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102173811"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782920"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>使用 RDP 连接到 Azure Kubernetes 服务 (AKS) 群集 Windows Server 节点以进行维护或故障排除
 
@@ -20,7 +20,7 @@ ms.locfileid: "102173811"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文假设你已有一个 AKS 群集，其中包含 Windows Server 节点。 如果需要 AKS 群集，请参阅有关[使用 Azure CLI 创建包含 Windows 容器的 AKS 群集][aks-windows-cli]的文章。 你需要用于想要进行故障排除的 Windows Server 节点的 Windows 管理员用户名和密码。 如果你不知道它们，则可以通过 [在 WINDOWS VM 中执行重置远程桌面服务或其管理员密码 ](../virtual-machines/troubleshooting/reset-rdp.md)进行重置。 你还需要一个 RDP 客户端，例如 [Microsoft 远程桌面][rdp-mac]。
+本文假设你已有一个 AKS 群集，其中包含 Windows Server 节点。 如果需要 AKS 群集，请参阅有关[使用 Azure CLI 创建包含 Windows 容器的 AKS 群集][aks-windows-cli]的文章。 你需要用于想要进行故障排除的 Windows Server 节点的 Windows 管理员用户名和密码。 如果不知道用户名和密码，则可以按照[在 Windows VM 中重置远程桌面服务或其管理员密码](/troubleshoot/azure/virtual-machines/reset-rdp)中所述的步骤进行重置。 你还需要一个 RDP 客户端，例如 [Microsoft 远程桌面][rdp-mac]。
 
 还需安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
@@ -30,7 +30,7 @@ AKS 群集的 Windows Server 节点没有可从外部访问的 IP 地址。 若�
 
 以下示例在 myResourceGroup 资源组中创建名为 myVM 的虚拟机。
 
-首先，获取 Windows Server 节点池使用的子网。 若要获取子网 ID，需要子网的名称。 若要获取子网的名称，需要 VNet 的名称。 通过查询群集的网络列表来获取 VNet 名称。 若要查询群集，需要其名称。 可以通过在 Azure Cloud Shell 中运行以下内容来获取所有这些内容：
+首先，获取 Windows Server 节点池使用的子网。 若要获取子网 ID，需要子网的名称。 若要获取子网的名称，需要 VNet 的名称。 通过查询群集的网络列表来获取 VNet 名称。 若要查询群集，需要其名称。 可以通过在 Azure Cloud Shell 中运行以下命令来获取所有这些信息：
 
 ```azurecli-interactive
 CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
@@ -39,7 +39,7 @@ SUBNET_NAME=$(az network vnet subnet list -g $CLUSTER_RG --vnet-name $VNET_NAME 
 SUBNET_ID=$(az network vnet subnet show -g $CLUSTER_RG --vnet-name $VNET_NAME --name $SUBNET_NAME --query id -o tsv)
 ```
 
-现在，你已有了 SUBNET_ID，请在相同的 Azure Cloud Shell 窗口中运行以下命令以创建 VM：
+现在，你已拥有 SUBNET_ID，接下来可以在同一 Azure Cloud Shell 窗口中运行以下命令来创建 VM：
 
 ```azurecli-interactive
 az vm create \
@@ -158,9 +158,9 @@ az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --n
 
 <!-- INTERNAL LINKS -->
 [aks-windows-cli]: windows-container-cli.md
-[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-vm-delete]: /cli/azure/vm#az-vm-delete
+[az-aks-install-cli]: /cli/azure/aks#az_aks_install_cli
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-vm-delete]: /cli/azure/vm#az_vm_delete
 [azure-monitor-containers]: ../azure-monitor/containers/container-insights-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [ssh-steps]: ssh.md

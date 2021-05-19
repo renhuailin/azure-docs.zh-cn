@@ -1,62 +1,62 @@
 ---
-title: 已启用磁盘加密的 Azure HDInsight 群集失去 Key Vault 访问权限
-description: 故障排除步骤，以及在与 Azure HDInsight 群集交互时 Key Vault 访问问题的可能解决方法。
+title: 具有磁盘加密的 Azure HDInsight 群集无法访问 Key Vault
+description: 针对与 Azure HDInsight 群集交互时出现的 Key Vault 访问问题的故障排除步骤和可能的解决方案。
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.openlocfilehash: ce2929ca84746de1ab8b51882f3004c3699f17ca
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943108"
 ---
-# <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>方案：已启用磁盘加密的 Azure HDInsight 群集失去 Key Vault 访问权限
+# <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>场景：具有磁盘加密的 Azure HDInsight 群集无法访问 Key Vault
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 
-当“创建自己的密钥”(BYOK) 群集节点失去客户 Key Vault (KV) 的访问权限时，会针对该群集显示资源运行状况中心 (RHC) 警报 `The HDInsight cluster is unable to access the key for BYOK encryption at rest`。 Apache Ambari UI 中也会显示类似的警报。
+当群集节点无法访问客户 Key Vault (KV) 时，会针对创建自己的密钥 (BYOK) 群集显示资源运行状况中心 (RHC) 警报 `The HDInsight cluster is unable to access the key for BYOK encryption at rest`。 Apache Ambari UI 上也会显示类似的警报。
 
 ## <a name="cause"></a>原因
 
-此警报确保可从群集节点访问 KV，从而确保网络连接、KV 运行状况以及用户分配的托管标识的访问策略正常。 此警报只是警告接下来在重新启动节点时中介即将关闭，但在重新启动节点之前，群集可继续正常运行。
+此警报确保可从群集节点访问 KV，从而确保用户分配的托管标识的网络连接、KV 运行状况和访问策略。 此警报只是关于后续节点重新启动时即将关闭代理的警告，群集会继续正常运行，直到节点重新启动。
 
-导航到 Apache Ambari UI，在“磁盘加密 Key Vault 状态”中找到有关警报的详细信息。  此警报会详细说明验证失败的原因。
+导航到 Apache Ambari UI，从“磁盘加密 Key Vault 状态”中找到关于警报的详细信息。 此警报会提供关于验证失败原因的详细信息。
 
 ## <a name="resolution"></a>解决方法
 
 ### <a name="kvaad-outage"></a>KV/AAD 中断
 
-查看 [Azure Key Vault 可用性和冗余](../../key-vault/general/disaster-recovery-guidance.md)以及 Azure 状态页了解更多详细信息 https://status.azure.com/
+有关更多详细信息，请查看 [Azure Key Vault 可用性和冗余](../../key-vault/general/disaster-recovery-guidance.md)和 Azure 状态页 https://status.azure.com/
 
 ### <a name="kv-accidental-deletion"></a>KV 意外删除
 
-* 还原 KV 上已删除的密钥，以自动进行恢复。 有关详细信息，请参阅[恢复已删除的密钥](/rest/api/keyvault/recoverdeletedkey)。
-* 联系 KV 团队，以便在意外删除后进行恢复。
+* 将 KV 上已删除的密钥还原为自动恢复。 有关详细信息，请参阅[恢复已删除的密钥](/rest/api/keyvault/recoverdeletedkey)。
+* 联系 KV 团队以恢复意外删除的密钥。
 
 ### <a name="kv-access-policy-changed"></a>KV 访问策略已更改
 
-还原分配到 HDI 群集的、用户分配的托管标识的访问策略，以便能够访问 KV。
+还原已分配到 HDI 群集的用户分配的托管标识的访问策略，以访问 KV。
 
-### <a name="key-permitted-operations"></a>密钥允许的操作
+### <a name="key-permitted-operations"></a>允许密钥执行的操作
 
-对于 KV 中的每个密钥，可以选择一组允许的操作。 确保为 BYOK 密钥启用包装和解包操作
+对于 KV 中的每个密钥，可选择一组允许的操作。 确保为 BYOK 密钥启用包装和解包.操作
 
 ### <a name="expired-key"></a>过期的密钥
 
-如果密钥已过期但尚未轮换密钥，请从备份 HSM 还原密钥，或者联系 KV 团队来清除过期日期。
+如果密钥已过期且未进行轮换，请从备份 HSM 中还原密钥，或联系 KV 团队以清除到期日期。
 
 ### <a name="kv-firewall-blocking-access"></a>KV 防火墙阻止访问
 
 修复 KV 防火墙设置，以允许 BYOK 群集节点访问 KV。
 
-### <a name="nsg-rules-on-virtual-network-blocking-access"></a>虚拟网络中的 NSG 规则阻止访问
+### <a name="nsg-rules-on-virtual-network-blocking-access"></a>虚拟网络上的 NSG 规则阻止访问
 
-检查与附加到群集的虚拟网络相关联的 NSG 规则。
+检查与连接到群集的虚拟网络相关联的 NSG 规则。
 
-## <a name="mitigation-and-prevention-steps"></a>缓解和预防措施
+## <a name="mitigation-and-prevention-steps"></a>缓解和防护步骤
 
 ### <a name="kv-accidental-deletion"></a>KV 意外删除
 
@@ -65,17 +65,17 @@ ms.locfileid: "98943108"
 
 ### <a name="key-deletion"></a>密钥删除
 
-删除密钥之前应删除群集。
+删除密钥之前，应先删除群集。
 
 ### <a name="kv-access-policy-changed"></a>KV 访问策略已更改
 
-定期审核并测试访问策略。
+定期审核和测试访问策略。
 
 ### <a name="expired-key"></a>过期的密钥
 
 * 将密钥备份到 HSM。
-* 使用未设置任何过期时间的密钥。
-* 如果需要设置过期时间，请在过期日期之前轮换密钥。
+* 使用未设置任何到期日期的密钥。
+* 如果需要设置到期日期，请在到期日期之前轮换密钥。
 
 ## <a name="next-steps"></a>后续步骤
 

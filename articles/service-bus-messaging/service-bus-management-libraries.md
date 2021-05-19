@@ -1,35 +1,35 @@
 ---
-title: 以编程方式创建 Azure 服务总线实体 |Microsoft Docs
-description: 本文介绍如何使用动态或以编程方式预配服务总线命名空间和实体。
+title: 以编程方式创建 Azure 服务总线实体 | Microsoft Docs
+description: 本文介绍如何以动态或编程方式预配服务总线命名空间和实体。
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/13/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 57192ab2ee1624cb18de832ac91c95290da727df
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98539880"
 ---
 # <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>动态预配服务总线命名空间和实体 
 Azure 服务总线管理库可以动态预配服务总线命名空间和实体。 这样可以实现复杂的部署和消息方案，并能以编程方式确定要预配的实体。 这些库目前可用于 .NET。
 
 ## <a name="overview"></a>概述
-有三个可用于创建和管理服务总线实体的管理库。 它们是：
+目前有 3 个管理库可用于创建和管理服务总线实体。 它们是：
 
-- [Azure. 消息传递. 管理](#azuremessagingservicebusadministration)
-- [Microsoft。](#microsoftazureservicebusmanagement)
+- [Azure.Messaging.ServiceBus.Administration](#azuremessagingservicebusadministration)
+- [Microsoft.Azure.ServiceBus.Management](#microsoftazureservicebusmanagement)
 - [Microsoft.Azure.Management.ServiceBus](#microsoftazuremanagementservicebus)
 
-所有这些包都支持对 **队列、主题和订阅** 创建、获取、列出、删除、更新、删除和更新操作。 但是 [，仅支持](#microsoftazuremanagementservicebus) 对 **命名空间** 进行创建、更新、列出、获取和删除操作、列出和重新生成 SAS 密钥等操作。 
+这些包都支持对队列、主题和订阅执行创建、获取、列出、删除和更新操作。 但只有 [Microsoft.Azure.Management.ServiceBus](#microsoftazuremanagementservicebus) 支持对命名空间执行创建、更新、列出、获取和删除操作，这会列出和重新生成 SAS 密钥等。 
 
-Microsoft Azure 管理库仅适用于 Azure Active Directory (Azure AD) 身份验证，并且不支持使用连接字符串。 另外两个库 () ，使用连接字符串将连接字符串用于向服务进行身份验证，并且更易于使用。 在这些库之间，Azure 传输是最新的，这就是我们建议使用的。
+Microsoft.Azure.Management.ServiceBus 库仅支持 Azure Active Directory (Azure AD) 身份验证，不支持使用连接字符串。 其他两个库（Azure.Messaging.ServiceBus 和 Microsoft.Azure.ServiceBus）支持使用连接字符串对服务进行身份验证，而且更易于使用。 在这些库中，Azure.Messaging.ServiceBus 是最新的，建议使用该库。
 
-以下各节提供了有关这些库的更多详细信息。 
+以下各部分更详细地介绍了这些库。 
 
-## <a name="azuremessagingservicebusadministration"></a>Azure. 消息传递. 管理
-可以使用 [ServiceBusAdministrationClient](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) 命名空间中的类来管理 [命名空间、](/dotnet/api/azure.messaging.servicebus.administration) 队列、主题和订阅。 下面是示例代码。 有关完整示例，请参阅 [CRUD 示例](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs)。
+## <a name="azuremessagingservicebusadministration"></a>Azure.Messaging.ServiceBus.Administration
+可使用 [Azure.Messaging.ServiceBus.Administration](/dotnet/api/azure.messaging.servicebus.administration) 命名空间中的 [ServiceBusAdministrationClient](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) 类来管理命名空间、队列、主题和订阅。 下面是示例代码。 如需查看完整示例，请参阅 [CRUD 示例](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs)。
 
 ```csharp
 using System;
@@ -91,11 +91,11 @@ namespace adminClientTrack2
 ```
 
 
-## <a name="microsoftazureservicebusmanagement"></a>Microsoft。 
-可以使用 [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) 命名空间中的类来管理 [命名空间、](/dotnet/api/microsoft.azure.servicebus.management) 队列、主题和订阅。 下面是示例代码： 
+## <a name="microsoftazureservicebusmanagement"></a>Microsoft.Azure.ServiceBus.Management 
+可使用 [Microsoft.Azure.ServiceBus.Management](/dotnet/api/microsoft.azure.servicebus.management) 命名空间中的 [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) 类来管理命名空间、队列、主题和订阅。 下面是示例代码： 
 
 > [!NOTE]
-> 建议使用库中的 `ServiceBusAdministrationClient` 类 `Azure.Messaging.ServiceBus.Administration` ，它是最新的 SDK。 有关详细信息，请参阅 [第一部分](#azuremessagingservicebusadministration)。 
+> 建议使用 `Azure.Messaging.ServiceBus.Administration` 库中的 `ServiceBusAdministrationClient` 类，这是最新的 SDK。 有关详细信息，请参阅[第一部分](#azuremessagingservicebusadministration)。 
 
 ```csharp
 using System;
@@ -287,13 +287,13 @@ namespace SBusADApp
 }
 ```
 
-## <a name="fluent-library"></a>流畅库
-有关使用熟知库来管理服务总线实体的示例，请参阅 [此示例](https://github.com/Azure/azure-libraries-for-net/tree/master/Samples/ServiceBus)。 
+## <a name="fluent-library"></a>Fluent 库
+有关使用 Fluent 库管理服务总线实体的示例，请参阅[此示例](https://github.com/Azure/azure-libraries-for-net/tree/master/Samples/ServiceBus)。 
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下参考主题： 
+请查看以下参考主题： 
 
-- [Azure. 消息传递. 管理](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient)
-- [Microsoft。](/dotnet/api/microsoft.azure.servicebus.management.managementclient)
+- [Azure.Messaging.ServiceBus.Administration](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient)
+- [Microsoft.Azure.ServiceBus.Management](/dotnet/api/microsoft.azure.servicebus.management.managementclient)
 - [Microsoft.Azure.Management.ServiceBus](/dotnet/api/microsoft.azure.management.servicebus.servicebusmanagementclient)
 - [Fluent](/dotnet/api/microsoft.azure.management.servicebus.fluent)

@@ -9,10 +9,10 @@ ms.date: 10/30/2020
 ms.author: duau
 ms.custom: include file
 ms.openlocfilehash: 1196ec0c3e92df6c359461ea7d1d53c8aea0bd88
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101750748"
 ---
 创建自己的证书时，以下 CA 获准：
@@ -55,8 +55,8 @@ ms.locfileid: "101750748"
 - Go Daddy 根证书颁发机构 - G2
 - Go Daddy 安全证书颁发机构 - G2
 - Hongkong Post 根 CA 1
-- 让我们来加密机构 X3
-- 毫秒 e-Szigno 根 CA 2009
+- 让我们加密颁发机构 X3
+- Microsec e-Szigno 根 CA 2009
 - QuoVadis 根 CA2 G3
 - RapidSSL RSA CA 2018
 - 安全通信 RootCA1

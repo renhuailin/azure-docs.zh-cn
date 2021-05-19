@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/10/2021
 tags: connectors
 ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100367412"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
@@ -163,13 +163,13 @@ ms.locfileid: "100367412"
 
 ## <a name="send-correlated-messages-in-order"></a>按顺序发送相关消息
 
-如果需要按特定顺序发送相关消息，可以使用 [Azure 服务总线连接器](../connectors/connectors-create-api-servicebus.md)来使用 [*顺序保护* 模式](/azure/architecture/patterns/sequential-convoy)。 相关消息具有一个可定义这些消息之间的关系的属性，例如服务总线中的[会话](../service-bus-messaging/message-sessions.md)的 ID。
+如果需要按特定顺序发送相关消息，则可通过 [Azure 服务总线连接器](../connectors/connectors-create-api-servicebus.md)使用[顺序保护](/azure/architecture/patterns/sequential-convoy)模式。 相关消息具有一个可定义这些消息之间的关系的属性，例如服务总线中的[会话](../service-bus-messaging/message-sessions.md)的 ID。
 
 创建逻辑应用时，可以选择“使用服务总线会话的相关的按序送达”模板，该模板可实现“顺序保护”模式。 有关详细信息，请参阅[按顺序发送相关消息](../logic-apps/send-related-messages-sequential-convoy.md)。
 
 ## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>逻辑应用的更新延迟生效
 
-如果服务总线触发器的轮询间隔很短（例如 10 秒），则对逻辑应用的更新可能会在长达 10 分钟的时间内不会生效。 若要解决此问题，可以禁用逻辑应用，进行更改，然后重新启用逻辑应用。
+如果服务总线触发器的轮询间隔很短（例如 10 秒），则对逻辑应用的更新可能会在长达 10 分钟的时间内不会生效。 若要解决此问题，可禁用逻辑应用，进行更改，然后重新启用逻辑应用。
 
 <a name="connector-reference"></a>
 

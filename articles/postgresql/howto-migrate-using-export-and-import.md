@@ -1,20 +1,21 @@
 ---
-title: Azure Database for PostgreSQL 单服务器迁移数据库
+title: 迁移数据库 - Azure Database for PostgreSQL（单一服务器）
 description: 介绍了如何将 PostgreSQL 数据库解压到脚本文件，以及如何将数据从该文件导入目标数据库。
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 080f444d50dcdf17be15d940002b745624b2f6a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 4ee296ae5f4d5036c1b0540dfb3eed3bc7f5e964
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708520"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135520"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>使用导入和导出功能迁移 PostgreSQL 数据库
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
+
 可以使用 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 将 PostgreSQL 数据库解压到脚本文件，并使用 [psql](https://www.postgresql.org/docs/current/static/app-psql.html) 将数据从该文件导入目标数据库。
 
 ## <a name="prerequisites"></a>必备条件
@@ -44,12 +45,12 @@ psql --file=<database>.sql --host=<server name> --port=5432 --username=<user> --
 ```
 此示例使用 psql 实用程序和前一步骤中名为 **testdb.sql** 的脚本文件，将数据导入到目标服务器 **mydemoserver.postgres.database.azure.com** 上的数据库 **mypgsqldb** 中。
 
-对于 **单一服务器**，使用此命令 
+对于单一服务器，请使用此命令 
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb
 ```
 
-对于 **灵活的服务器**，请使用此命令  
+对于灵活服务器，请使用此命令  
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin --dbname=mypgsqldb
 ```
@@ -57,5 +58,5 @@ psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --us
 
 
 ## <a name="next-steps"></a>后续步骤
-- 若要使用转储和还原迁移 PostgreSQL 数据库，请参阅 [使用转储和还原迁移 PostgreSQL 数据库](howto-migrate-using-dump-and-restore.md)。
-- 有关将数据库迁移到 Azure Database for PostgreSQL 的详细信息，请参阅[数据库迁移指南](https://aka.ms/datamigration)。
+- 若要通过转储和还原迁移 PostgreSQL 数据库，请参阅[通过转储和还原迁移 PostgreSQL 数据库](howto-migrate-using-dump-and-restore.md)。
+- 有关将数据库迁移到 Azure Database for PostgreSQL 的详细信息，请参阅[数据库迁移指南](/data-migration/)。

@@ -1,7 +1,7 @@
 ---
-title: 使用门户的 Exchange 合作伙伴与路由服务器的对等互连连接
+title: 使用门户实现 Exchange 合作伙伴与路由服务器的对等互连
 titleSuffix: Azure
-description: 使用 Azure 门户创建或修改路由服务器的 Exchange 对等互连
+description: 使用 Azure 门户创建或修改与路由服务器的 Exchange 对等互连
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
 ms.openlocfilehash: 7e10cd91eadd338217845b1504e8e9160bccfc98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91537185"
 ---
-# <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>在 Azure 门户中使用路由服务器创建或修改 Exchange 对等互连
+# <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>在 Azure 门户中创建或修改与路由服务器的 Exchange 对等互连
 
 本文介绍如何使用 Azure 门户创建与路由服务器的 Microsoft Exchange 对等互连。 本文还介绍如何查看资源状态，以及如何更新、删除和取消预配资源。
 
@@ -29,7 +29,7 @@ ms.locfileid: "91537185"
 ### <a name="sign-in-to-the-portal-and-select-your-subscription"></a>登录到门户，然后选择订阅
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name="create-an-exchange-peering-with-route-server"></a><a name=create></a>使用路由服务器创建 Exchange 对等互连
+### <a name="create-an-exchange-peering-with-route-server"></a><a name=create></a>创建与路由服务器的 Exchange 对等互连
 
 
 作为 Internet Exchange 提供程序，可以通过[创建对等互连]( https://go.microsoft.com/fwlink/?linkid=2129593)来创建 Exchange 对等互连请求。
@@ -59,59 +59,59 @@ ms.locfileid: "91537185"
 
 #### <a name="configure-connections-and-submit"></a>配置连接并提交
 
-1. 在 "创建对等互连" 页上的 "配置" 选项卡上，填写如下所示的框：
+1. 在“创建对等互连”页的“配置”选项卡上，按如下所示填写相应的框：
 
     > [!div class="mx-imgBorder"]
     > ![配置路由服务器](./media/setup-exchange-conf-tab-routeserver.png)
  
-    * 对于对等类型，请选择 "**直接**"
-    * 对于 Microsoft 网络，请选择 " **AS8075" 和 "exchange 路由服务器**"。 
-    * 选择 "SKU 为 **基本免费**"。 请勿选择 "高级免费"，因为它是为特殊应用程序保留的。
-    * 选择要设置对等互连的 **地铁** 位置。
+    * 为“对等互连类型”，选择“直接”
+    * 对于 Microsoft 网络，选择“带 exchange 路由服务器的 AS8075”。 
+    * 对于“SKU”，选择“基本免费”。 请勿选择“高级免费”，因为它是为特殊应用程序预留的。
+    * 选择要设置对等互连的“地铁”位置。
 
-1. 在 "对**等连接**" 下，选择 "**新建**"
+1. 在“对等连接”下，选择“新建” 
 
-1.  在 " **直接对等连接**" 下，填写以下 BGP 会话详细信息：
+1.  在“直接对等连接”下，填写以下 BGP 会话详细信息：
 
     > [!div class="mx-imgBorder"]
-    > ![屏幕截图显示添加了详细信息的 "直接对等连接" 窗格。](./media/setup-exchange-conf-tab-direct-route.png)
+    > ![屏幕截图显示添加了详细信息的“直接对等连接”窗格。](./media/setup-exchange-conf-tab-direct-route.png)
 
 
-     * 对等互连设施，为对等互连选择适当的物理位置
-     * 会话地址提供程序，选择对等
+     * “对等互连设施”，选择用于对等互连的适当物理位置
+     * “会话地址提供程序”，选择“对等方”
      * 会话 IPv4 前缀将由 exchange 提供商对等方提供
-     * 对于路由服务器，将从其 IP 前缀范围中选择对等会话 IPv4 地址。
-     * Microsoft 会话 IPv4 地址，将是从 IP 前缀范围分配的路由器 IP。
-     * 会话 IPv6 此时是可选的。
-     * 最大播发 IPv4 前缀最高可达20000。 
-     * 默认情况下禁用对等互连服务的使用。 一旦 exchange 提供商已使用 Microsoft 签署了对等互连服务协议，就可以启用此功能。
+     * 路由服务器的对等会话 IPv4 地址将由 exchange 对等方从其 IP 前缀范围中选出。
+     * Microsoft 会话 IPv4 地址，将为从 IP 前缀范围中分配的路由器 IP。
+     * 此时会话 IPv6 是可选的。
+     * 最大播发 IPv4 前缀最大可为 20000。 
+     * 默认情况下禁用对等互连服务。 Exchange 提供商与 Microsoft 签署对等互连服务协议后，可立即启用此功能。
 
-1. 完成后，单击 " **保存**"。 
+1. 完成后，单击“保存”。 
 
-1. 在 "创建对等互连" 下，会看到通过验证。 验证通过后，单击 "**创建**"
+1. 在“创建对等互连”下，会看到已通过验证。 通过验证后，单击“创建”
 
     > [!div class="mx-imgBorder"]
     > ![验证设置](./media/setup-exchange-conf-tab-validation.png)
 
     >[!NOTE]
-    >对于正常的 Internet 服务提供商 (ISP) 为 Microsoft 对等互连服务合作伙伴，需要注册客户 IP 前缀。 但是，对于具有路由服务器的 exchange 合作伙伴，需要注册客户 Asn 而不是前缀。 同一 ASN 密钥对于客户的前缀注册有效。
+    >身份是 Microsoft 对等互连服务合作伙伴的一般 Internet 服务提供商 (ISP) 需要注册客户 IP 前缀。 但如果是使用路由服务器的 exchange 合作伙伴，需要注册客户 ASN 而不是前缀。 相关的 ASN 密钥对于客户的前缀注册也是有效的。
 
-1. 在 "设置" 部分下选择 " **已注册的 asn** "。
-
-    > [!div class="mx-imgBorder"]
-    > ![屏幕截图显示了已注册的一个名为 "Ns" 菜单项的 "对等互连" 窗格。](./media/setup-exchange-registered-asn.png)
-
-1. 选择 " **添加注册的 ASN** "，在 exchange 订阅下创建新的客户 ASN。
+1. 选择“设置”部分下的“注册的 ASN”。
 
     > [!div class="mx-imgBorder"]
-    > ![屏幕截图显示了 "注册包含名称和 S 的 S" 窗格。](./media/setup-exchange-register-new-asn.png)
+    > ![屏幕截图显示了“对等互连”窗格，并调出了“注册的 A S N”菜单项。](./media/setup-exchange-registered-asn.png)
 
-1. 在 "注册 ASN" 下，选择名称，填充客户 ASN，并单击 "保存"。
-
-1. 在 "已注册的 Asn" 下，将有一个分配给每个 ASN 的关联前缀键。 作为 exchange 提供商，你将需要向你的客户提供此前缀密钥，以便他们可以在其订阅下注册对等互连服务。
+1. 选择“添加注册的 ASN”，在 Exchange 订阅下创建新的客户 ASN。
 
     > [!div class="mx-imgBorder"]
-    > ![屏幕截图显示注册了包含前缀键的的 Ns 窗格。](./media/setup-exchange-register-asn-prefixkey.png)
+    > ![屏幕截图显示带有“名称”和“A S N”文本框的“注册 A S N”窗格。](./media/setup-exchange-register-new-asn.png)
+
+1. 在“注册 ASN”下，选择“名称”，填充客户 ASN，然后单击“保存”。
+
+1. 在“注册的 ASN”下，将为每个 ASN 分配一个关联的前缀密钥。 作为 Exchange 提供商，你需要为客户提供此前缀密钥，以便他们可以在其订阅下注册对等互连服务。
+
+    > [!div class="mx-imgBorder"]
+    > ![屏幕截图显示带前缀密钥的“注册的 A S N”窗格。](./media/setup-exchange-register-asn-prefixkey.png)
 
 
 

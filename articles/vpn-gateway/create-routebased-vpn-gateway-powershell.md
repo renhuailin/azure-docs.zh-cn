@@ -1,6 +1,6 @@
 ---
 title: Azure VPN 网关：创建基于路由的网关：PowerShell
-description: 使用 PowerShell 快速创建基于路由的 Azure VPN 网关，用于连接到本地网络的 VPN 连接或连接虚拟网络。
+description: 使用 PowerShell 快速创建基于路由的 Azure VPN 网关，以便通过 VPN 连接到本地网络或连接虚拟网络。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8b6ab5dcbd38925afbd98381e427426d27110a53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89393507"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>使用 PowerShell 创建基于路由的 VPN 网关
@@ -28,7 +28,7 @@ ms.locfileid: "89393507"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建资源组。 如果在本地运行 PowerShell，请使用提升的权限打开 PowerShell 控制台，并使用命令连接到 Azure `Connect-AzAccount` 。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建资源组。 如果在本地运行 PowerShell，请使用提升的权限打开 PowerShell 控制台，然后使用 `Connect-AzAccount` 命令连接到 Azure。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name TestRG1 -Location EastUS
@@ -36,7 +36,7 @@ New-AzResourceGroup -Name TestRG1 -Location EastUS
 
 ## <a name="create-a-virtual-network"></a><a name="vnet"></a>创建虚拟网络
 
-使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 以下示例在“EastUS”位置创建一个名为“VNet1”的虚拟网络********：
+使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 以下示例在“EastUS”位置创建一个名为“VNet1”的虚拟网络：
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `

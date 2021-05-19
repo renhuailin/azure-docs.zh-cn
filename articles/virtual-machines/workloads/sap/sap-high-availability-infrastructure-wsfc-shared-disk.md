@@ -17,10 +17,10 @@ ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4218b4c00b79d78965eaf6e73028e63f52b1ff17
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101673627"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构
@@ -243,11 +243,11 @@ ERS2
 - 第 2 个负载均衡规则
     - 如果使用“标准负载均衡器”，请选择“HA 端口”
     - 如果使用“基本负载均衡器”，请为以下端口创建负载均衡规则
-        - 32nr TCP
+        - 32 **nr** TCP
         - 33nr TCP
-        - 5nr13 TCP
-        - 5nr14 TCP
-        - 5nr16 TCP
+        - 5 **nr** 13 TCP
+        - 5 **nr** 14 TCP
+        - 5 **nr** 16 TCP
 
     - 请确保将“空闲超时(分钟)”设置为最大值“30”，并将“浮动 IP (直接服务器返回)”设置为“启用”。
 
@@ -264,7 +264,7 @@ ERS2
 - KeepAliveTime
 - KeepAliveInterval
 
-| 路径| 变量名称 | 变量类型  | “值” | 文档 |
+| 路径| 变量名称 | 变量类型  | 值 | 文档 |
 | --- | --- | --- |---| ---|
 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD（十进制） |120000 |[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD（十进制） |120000 |[KeepAliveInterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |

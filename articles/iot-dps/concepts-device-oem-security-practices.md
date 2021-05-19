@@ -9,10 +9,10 @@ ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
 ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90527201"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>适用于 Azure IoT 设备制造商的安全做法
@@ -182,12 +182,12 @@ TPM 的缺点：
 #### <a name="step-5-device-is-installed-into-the-location"></a>步骤 5：将设备安装在目标位置
 设备抵达其最终目标位置后，将通过 DPS 完成自动预配过程。
 
-有关详细信息，请参阅 [预配](about-iot-dps.md#provisioning-process) 和 [TPM 证明](concepts-tpm-attestation.md)。 
+有关详细信息，请参阅[预配](about-iot-dps.md#provisioning-process)和 [TPM 证明](concepts-tpm-attestation.md)。 
 
 ## <a name="resources"></a>资源
 
 除了本文中建议的安全做法以外，Azure IoT 还提供了一些资源来帮助用户选择安全硬件和创建安全 IoT 部署： 
-- Azure IoT [安全建议](../iot-fundamentals/security-recommendations.md) ，指导部署过程。 
+- 指导部署过程的 Azure IoT [安全建议](../iot-fundamentals/security-recommendations.md)。 
 - [Azure 安全中心](https://azure.microsoft.com/services/security-center/)提供了一个服务来帮助创建安全 IoT 部署。 
 - 有关评估硬件环境的帮助，请参阅白皮书[评估 IoT 安全性](https://download.microsoft.com/download/D/3/9/D3948E3C-D5DC-474E-B22F-81BA8ED7A446/Evaluating_Your_IOT_Security_whitepaper_EN_US.pdf)。 
 - 如需有关选择安全硬件的帮助，请参阅[适用于 IoT 部署的安全硬件](https://download.microsoft.com/download/C/0/5/C05276D6-E602-4BB1-98A4-C29C88E57566/The_right_secure_hardware_for_your_IoT_deployment_EN_US.pdf)。 

@@ -4,12 +4,12 @@ description: 有关 Azure Functions 的网络的一些最常见问题解答和�
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
-ms.translationtype: MT
+ms.openlocfilehash: 24afeeee3207127bb9404156dc390433671dd5da
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578223"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592296"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>有关 Azure Functions 中的网络的常见问题解答
 
@@ -17,7 +17,9 @@ ms.locfileid: "94578223"
 
 ## <a name="how-do-i-set-a-static-ip-in-functions"></a>如何在 Functions 中设置静态 IP？
 
-目前，在应用服务环境中部署函数是为函数提供静态入站和出站 IP 的唯一方法。 有关如何使用应用服务环境的详细信息，请从[在应用服务环境中创建和使用内部负载均衡器](../app-service/environment/create-ilb-ase.md)一文着手。
+在应用服务环境中部署函数是为函数提供静态入站和出站 IP 地址的主要方法。 有关如何使用应用服务环境的详细信息，请从[在应用服务环境中创建和使用内部负载均衡器](../app-service/environment/create-ilb-ase.md)一文着手。
+
+也可以使用虚拟网络 NAT 网关通过你控制的公共 IP 地址来路由出站流量。 要了解详细信息，请参阅[教程：使用 Azure 虚拟网络 NAT 网关控制 Azure Functions 出站 IP](functions-how-to-use-nat-gateway.md)。 
 
 ## <a name="how-do-i-restrict-internet-access-to-my-function"></a>如何限制对我的函数的 Internet 访问？
 
@@ -33,7 +35,7 @@ ms.locfileid: "94578223"
 
 可以使用 [服务终结点](./functions-networking-options.md#use-service-endpoints)将函数应用的 **入站** 流量限制倒某个虚拟网络。 此配置仍然允许函数应用对 Internet 进行出站调用。
 
-若要完全限制某个函数以便所有流量流过虚拟网络，可以将 [专用终结点](./functions-networking-options.md#private-endpoint-connections) 与出站虚拟网络集成或应用服务环境一起使用。
+若要完全限制一个函数，使所有流量都通过一个虚拟网络，可以使用带有出站虚拟网络集成的[专用终结点](./functions-networking-options.md#private-endpoint-connections)或应用服务环境。 要了解更多信息，请参阅[使用专用终结点将 Azure Functions 与 Azure 虚拟网络集成](functions-create-vnet.md)。
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>如何从函数应用访问虚拟网络中的资源？
 
@@ -45,7 +47,7 @@ ms.locfileid: "94578223"
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>如何从虚拟网络中的资源触发函数？
 
-使用 [服务终结](./functions-networking-options.md#use-service-endpoints) 点或 [专用终结点连接](./functions-networking-options.md#private-endpoint-connections)，可以允许从虚拟网络调用 HTTP 触发器。 
+可以允许通过[服务终结点](./functions-networking-options.md#use-service-endpoints)或[专用终结点连接](./functions-networking-options.md#private-endpoint-connections)从虚拟网络调用 HTTP 触发器。 
 
 还可以通过将函数应用部署到高级计划、应用服务计划或应用服务环境，从虚拟网络中的所有其他资源触发函数。 有关详细信息，请参阅[非 HTTP 虚拟网络触发器](./functions-networking-options.md#virtual-network-triggers-non-http)
 

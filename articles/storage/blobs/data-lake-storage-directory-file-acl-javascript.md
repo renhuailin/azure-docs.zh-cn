@@ -1,26 +1,26 @@
 ---
-title: 使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的数据
-description: 使用 Azure Storage Data Lake 适用于 JavaScript 的客户端库来管理已启用分层命名空间的存储帐户中的目录和文件。
+title: 使用 JavaScript (Node.js) 管理 Azure Data Lake Storage Gen2 中的数据
+description: 使用适用于 JavaScript 的 Azure 存储数据湖客户端库在启用了分层命名空间的存储帐户中管理目录和文件。
 author: normesta
 ms.service: storage
-ms.date: 02/17/2021
+ms.date: 03/19/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: 8ce5df805ddce6cdb52e4225bb77e2d8dfa9b9b0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.openlocfilehash: 678af3e2fb4111593ece0cc2cdf3811cf0e793a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650161"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774756"
 ---
-# <a name="use-javascript-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的目录和文件
+# <a name="use-javascript-sdk-in-nodejs-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Node.js 中的 JavaScript SDK 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
-本文介绍如何使用 JavaScript 在具有分层命名空间的存储帐户中创建和管理目录和文件。
+本文介绍如何使用 Node.js 在具有分层命名空间的存储帐户中创建和管理目录与文件。
 
-若要了解如何获取、设置和更新访问控制列表 (ACL) 目录和文件，请参阅 [使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的 acl](data-lake-storage-acl-javascript.md)。
+若要了解如何获取、设置和更新目录与文件的访问控制列表 (ACL)，请参阅[使用 Node.js 中的 JavaScript SDK 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-javascript.md)。
 
 “[包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-file-datalake)” | ”[示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)” | ”[提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)”
 
@@ -28,7 +28,7 @@ ms.locfileid: "100650161"
 
 - Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-- 已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
+- 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
 - 如果在 Node.js 应用程序中使用此包，则需要 Node.js 8.0.0 或更高版本。
 
@@ -43,7 +43,11 @@ npm install @azure/storage-file-datalake
 将此语句放置在代码文件的顶部，以导入 `storage-file-datalake` 包。 
 
 ```javascript
-const AzureStorageDataLake = require("@azure/storage-file-datalake");
+const {
+AzureStorageDataLake,
+DataLakeServiceClient,
+StorageSharedKeyCredential
+} = require("@azure/storage-file-datalake");
 ```
 
 ## <a name="connect-to-the-account"></a>连接到帐户 
@@ -72,7 +76,7 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 ```
 
 > [!NOTE]
-> 此授权方法仅适用于 Node.js 应用程序。 如果打算在浏览器中运行代码，可以使用 Azure Active Directory (Azure AD) 进行授权。
+> 此授权方法仅适用于 Node.js 应用程序。 如果打算在浏览器中运行代码，则可以使用 Azure Active Directory (Azure AD) 进行授权。
 
 ### <a name="connect-by-using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory (Azure AD) 进行连接
 

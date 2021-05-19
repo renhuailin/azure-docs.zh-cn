@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 2f991dd93549cf73005127569af496df541eecde
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: af57bc396349286c3edcaefc8385ddbaec066226
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102549594"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199462"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 
@@ -49,21 +49,21 @@ ms.locfileid: "102549594"
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="显示“磁盘”窗格的屏幕截图，其中选择了一个磁盘名称。":::
 
-4. 在左侧菜单中的“设置”下选择“配置” 。
+4. 在左侧菜单中的“设置”下，选择“大小 + 性能” 。
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="该屏幕截图显示已在菜单的“设置”部分选择了“配置”选项。":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="此屏幕截图显示已在菜单的“设置”部分选择了“大小和性能”选项。":::
 
-5. 在“大小 (GiB)”中，选择所需的磁盘大小。
+5. 在“大小和性能”中，选择所需的磁盘大小。
    
    > [!WARNING]
    > 新大小应该大于现有磁盘大小。 对于 OS 磁盘来说，允许的最大值为 2,048 GB。 （可以扩展 VHD Blob，使之超出该大小，但操作系统只能使用空间的头 2,048 GB。）
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="显示“配置”窗格的屏幕截图，其中选择了磁盘大小。":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="此屏幕截图显示了“大小和性能”窗格，其中已选择磁盘大小。":::
 
-6. 选择“保存”。
+6. 在页面底部选择“重设大小”。
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="该屏幕截图显示“配置”窗格，其中“保存”按钮处于选中状态。":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="此屏幕截图显示了“大小和性能”窗格，其中已选择“重设大小”按钮。":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>使用 PowerShell 重设托管磁盘的大小

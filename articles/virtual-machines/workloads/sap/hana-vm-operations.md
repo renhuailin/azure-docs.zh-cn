@@ -16,10 +16,10 @@ ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4c27895c5163d59ca785aa15fa3739359e5be457
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101666601"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
@@ -135,7 +135,7 @@ ms.locfileid: "101666601"
 
 横向扩展配置中单个节点的典型基本设计如下所示：
 
-![显示扩展配置中单个节点的典型基本设计的关系图。](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
+![显示横向扩展配置中单个节点典型基本设计的关系图。](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 SAP HANA 横向扩展的 VM 节点基本配置如下所示：
 

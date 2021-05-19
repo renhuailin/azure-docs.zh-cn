@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
 ms.openlocfilehash: 78ec0af0acbb74436af16abba75d64de061d5268
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102202159"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>导入 Azure Key Vault 证书常见问题解答
@@ -64,7 +64,7 @@ ms.locfileid: "102202159"
 * 证书密码限制为 200 个字符。
 
 
-### <a name="error-the-specified-pem-x509-certificate-content-is-in-an-unexpected-format-please-check-if-certificate-is-in-valid-pem-format"></a>错误：指定的 PEM x.509 证书内容为意外格式。 请检查证书是否为有效的 PEM 格式。 "
+### <a name="error-the-specified-pem-x509-certificate-content-is-in-an-unexpected-format-please-check-if-certificate-is-in-valid-pem-format"></a>错误“指定的 PEM X.509 证书内容为意外格式。 请检查证书是否为有效的 PEM 格式。”
 请验证 PEM 文件中的内容是否使用 UNIX 样式的行分隔符 `(\n)`
 
 ### <a name="can-i-import-an-expired-certificate-to-azure-key-vault"></a>是否可以将过期的证书导入到 Azure Key Vault？

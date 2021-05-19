@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92055284"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>为何更新为 Microsoft 标识平台 (v2.0)？
@@ -29,10 +29,10 @@ ms.locfileid: "92055284"
 ![谁可以使用 v1.0 和 v2.0 终结点登录](media/azure-ad-endpoint-comparison/who-can-signin.svg)
 
 * v1.0 终结点仅允许使用工作和学校帐户登录到应用程序 (Azure AD)
-* Microsoft 标识平台终结点允许 Azure AD 和个人 Microsoft 帐户 (MSA) ，例如 hotmail.com、outlook.com 和 msn.com）登录。
+* Microsoft 标识平台终结点允许使用 Azure AD 中的工作和学校帐户以及 Microsoft 个人帐户 (MSA)（例如 hotmail.com、outlook.com 和 msn.com）登录。
 * 对于配置为[单租户](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)的应用程序，或者配置为指向租户特定的终结点 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 的多租户应用程序，这两个终结点还接受 Azure AD 目录的[来宾用户](../external-identities/what-is-b2b.md)登录。  
 
-Microsoft 标识平台终结点允许你编写应用，这些应用接受来自 Microsoft 个人帐户和工作和学校帐户的登录。 这样，你便可以编写完全不区分帐户的应用。 例如，如果应用调用 [Microsoft Graph](https://graph.microsoft.io)，则工作帐户可以使用某些附加功能和数据，如 SharePoint 站点或目录数据。 但对于许多操作（例如[读取用户的邮件](/graph/api/user-list-messages)），相同的代码可以访问个人帐户以及工作和学校帐户的电子邮件。
+Microsoft 标识平台终结点允许编写接受 Microsoft 个人帐户以及工作和学校帐户登录的应用。 这样，你便可以编写完全不区分帐户的应用。 例如，如果应用调用 [Microsoft Graph](https://graph.microsoft.io)，则工作帐户可以使用某些附加功能和数据，如 SharePoint 站点或目录数据。 但对于许多操作（例如[读取用户的邮件](/graph/api/user-list-messages)），相同的代码可以访问个人帐户以及工作和学校帐户的电子邮件。
 
 对于 Microsoft 标识平台终结点，可以使用 Microsoft 身份验证库 (MSAL) 来获取对使用者、教育和企业领域的访问权限。 Azure AD v1.0 终结点仅接受工作和学校帐户的登录。
 
@@ -42,7 +42,7 @@ Microsoft 标识平台终结点允许你编写应用，这些应用接受来自 
 
 ![显示权限注册 UI 的示例](./media/azure-ad-endpoint-comparison/app-reg-permissions.png)
 
-直接在应用程序注册中设置的权限是**静态的**。 尽管在 Azure 门户中定义应用的静态权限能保持代码的简洁性，但可能会给开发人员带来几个问题：
+直接在应用程序注册中设置的权限是 **静态的**。 尽管在 Azure 门户中定义应用的静态权限能保持代码的简洁性，但可能会给开发人员带来几个问题：
 
 * 应用需要在用户首次登录时请求可能需要的权限。 这可能会导致冗长的权限列表，而让最终用户在初始登录时打消审批应用程序访问权限的念头。
 
@@ -56,7 +56,7 @@ Microsoft 标识平台终结点允许你编写应用，这些应用接受来自 
 
 ## <a name="scopes-not-resources"></a>范围而非资源
 
-对于使用 v1.0 终结点的应用，应用可以充当**资源**或令牌接收者。 资源可定义它所了解的许多**范围**或 **oAuth2Permissions**，使客户端应用能够从该资源中为一组特定的范围请求令牌。 请考虑将 Microsoft Graph API 作为资源的示例：
+对于使用 v1.0 终结点的应用，应用可以充当 **资源** 或令牌接收者。 资源可定义它所了解的许多 **范围** 或 **oAuth2Permissions**，使客户端应用能够从该资源中为一组特定的范围请求令牌。 请考虑将 Microsoft Graph API 作为资源的示例：
 
 * 资源标识符，或 `AppID URI`：`https://graph.microsoft.com/`
 * 范围或 `oAuth2Permissions`：`Directory.Read`、`Directory.Write` 等等。
@@ -121,14 +121,14 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 
 下面是目前为开发人员提供的简明建议：
 
-* 如果你希望或需要在你的应用程序中支持个人 Microsoft 帐户，或者你正在编写新应用程序，请使用 Microsoft 标识平台。 但在此之前，请确保了解本文所述的限制。
+* 如果想要或者需要在应用程序中支持 Microsoft 个人帐户，或者要编写新应用程序，请使用 Microsoft 标识平台。 但在此之前，请确保了解本文所述的限制。
 * 若要迁移或更新依赖于 SAML 的应用程序，则不能使用 Microsoft 标识平台。 请改为参阅 [Azure AD v1.0 指南](v1-overview.md)。
 
 Microsoft 标识平台终结点将演变为消除此处列出的限制，因此你只需要使用 Microsoft 标识平台终结点。 在此期间，使用本文来确定 Microsoft 标识平台终结点是否适合你。 我们将持续更新本文，以反映 Microsoft 标识平台终结点当前的状态。 请不时返回查阅本文，重新评估 Microsoft 标识平台功能是否符合要求。
 
 ### <a name="restrictions-on-app-registrations"></a>应用注册限制
 
-对于你想要与 Microsoft 标识平台终结点集成的每个应用，可在 Azure 门户的新[**应用注册**体验](https://aka.ms/appregistrations)中创建应用注册。 现有的 Microsoft 帐户应用与门户不兼容，但所有 Azure AD 应用都兼容，无论它们是在何处或何时注册的。
+对于你想要与 Microsoft 标识平台终结点集成的每个应用，可在 Azure 门户的新 [**应用注册** 体验](https://aka.ms/appregistrations)中创建应用注册。 现有的 Microsoft 帐户应用与门户不兼容，但所有 Azure AD 应用都兼容，无论它们是在何处或何时注册的。
 
 支持工作和学校帐户以及个人帐户的应用注册的注意事项如下：
 
@@ -156,7 +156,7 @@ Microsoft 标识平台终结点将演变为消除此处列出的限制，因此�
 
 Microsoft 标识平台终结点不支持 SAML 或 WS 联合身份验证；它仅支持 OpenID Connect 和 OAuth 2.0。  相比 v1.0 终结点，OAuth 2.0 协议的重大变化包括：
 
-* 如果配置了可选声明，**或者**在请求中指定了 scope=email，则返回 `email` 声明。
+* 如果配置了可选声明，**或者** 在请求中指定了 scope=email，则返回 `email` 声明。
 * 现在支持使用 `scope` 参数来取代 `resource` 参数。
 * 许多响应已经过修改，因此更符合 OAuth 2.0 规范，例如，可正确返回整数而不是字符串形式的 `expires_in`。
 
@@ -164,8 +164,8 @@ Microsoft 标识平台终结点不支持 SAML 或 WS 联合身份验证；它仅
 
 #### <a name="saml-usage"></a>SAML 使用情况
 
-如果已在 Windows 应用程序中使用了 Active Directory 身份验证库 (ADAL)，则可能已利用了 Windows 集成身份验证，该身份验证使用安全断言标记语言 (SAML) 断言授予。 借助这种授权，联合 Azure AD 租户的用户可使用其本地 Active Directory 实例以静默方式进行身份验证，而无需输入凭据。 虽然 [SAML 仍是一](../develop/active-directory-saml-protocol-reference.md) 种与企业用户一起使用的受支持的协议，v2.0 终结点仅适用于 OAuth 2.0 应用程序。
+如果已在 Windows 应用程序中使用了 Active Directory 身份验证库 (ADAL)，则可能已利用了 Windows 集成身份验证，该身份验证使用安全断言标记语言 (SAML) 断言授予。 借助这种授权，联合 Azure AD 租户的用户可使用其本地 Active Directory 实例以静默方式进行身份验证，而无需输入凭据。 虽然 [SAML 仍然是供企业用户使用的受支持的协议](../develop/active-directory-saml-protocol-reference.md)，但 v2.0 终结点仅适用于 OAuth 2.0 应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请 [参阅 Microsoft 标识平台文档](../develop/index.yml)。
+有关详细信息，请参阅 [Microsoft 标识平台文档](../develop/index.yml)。

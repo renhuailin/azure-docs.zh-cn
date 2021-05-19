@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/25/2020
 ms.openlocfilehash: ad397b62adcbcf6a0e117950c0dc3be33e6522db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/22/2021
 ms.locfileid: "104779811"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
@@ -91,7 +91,7 @@ ms.locfileid: "104779811"
 
 下表概述了与翻转窗口触发器中的循环和计划相关的主要 JSON 元素：
 
-| JSON 元素 | 说明 | 类型 | 允许的值 | 必选 |
+| JSON 元素 | 说明 | 类型 | 允许的值 | 必须 |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | 触发器的类型。 类型为固定值“TumblingWindowTrigger”。 | String | "TumblingWindowTrigger" | 是 |
 | **runtimeState** | 触发器运行时的当前状态。<br/>**注意**：此元素是 \<readOnly>。 | String | “Started”、“Stopped”、“Disabled” | 是 |
@@ -252,4 +252,4 @@ ms.locfileid: "104779811"
 
 * 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#trigger-execution)。
 * [创建翻转窗口触发器依赖项](tumbling-window-trigger-dependency.md)。
-* 了解如何在管道中引用触发器元数据，请参阅[在管道运行中引用触发器元数据](how-to-use-trigger-parameterization.md)
+* 了解如何引用管道中的触发器元数据，详见[引用管道运行中的触发器元数据](how-to-use-trigger-parameterization.md)

@@ -1,5 +1,5 @@
 ---
-title: 监视 Key Vault 的 Azure Monitor Key Vault |Microsoft Docs
+title: 使用 Azure Monitor for Key Vault 监视 Key Vault | Microsoft Docs
 description: 本文介绍用于密钥保管库的 Azure Monitor。
 services: azure-monitor
 ms.topic: conceptual
@@ -7,10 +7,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
 ms.openlocfilehash: 91aed191e3bb165d6690759426a596df39f8c10f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100582288"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>使用 Azure Monitor for Key Vault 监视密钥保管库服务
@@ -42,11 +42,11 @@ Azure Monitor for Key Vault 通过提供 Key Vault 请求、性能、故障和�
 
 在所选订阅的“概览”工作簿中，表显示了分组到该订阅的密钥保管库的交互式密钥保管库指标。 你可以根据从下面的下拉列表中选择的选项来筛选结果：
 
-* 订阅–只列出具有密钥保管库的订阅。
+* 订阅 – 只列出包含密钥保管库的订阅。
 
-* Key vault –默认情况下，最多只能预选择5个密钥保管库。 如果在作用域选择器中选择全部或多个密钥保管库，则将返回最多 200 个密钥保管库。 例如，如果在你选择的三个订阅中共有 573 个密钥保管库，则将仅显示 200 个保管库。
+* Key Vault – 默认情况下，最多只会预先选择 5 个密钥保管库。 如果在作用域选择器中选择全部或多个密钥保管库，则将返回最多 200 个密钥保管库。 例如，如果在你选择的三个订阅中共有 573 个密钥保管库，则将仅显示 200 个保管库。
 
-* 时间范围–默认情况下，基于所做的相应选择显示最近24小时内的信息。
+* 时间范围 – 默认情况下，系统会根据你所做的选择显示过去 24 小时的相应信息。
 
 下拉列表下的计数器磁贴汇总了所选订阅中密钥保管库的总数并反映了选择的数目。 报告请求、故障和延迟指标的工作簿的列存在条件颜色编码的热度地图。 最深的颜色具有最高值，较浅的颜色基于最低值。
 

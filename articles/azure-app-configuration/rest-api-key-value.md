@@ -1,23 +1,23 @@
 ---
-title: Azure 应用配置 REST API-键值
-description: 使用 Azure 应用配置处理键值的参考页面 REST API
+title: Azure 应用程序配置 REST API - 键值
+description: 通过 Azure 应用程序配置 REST API 使用键值的参考页
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: 95081d6f8c2770d01f7836e08b6851860bf47ba8
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96932551"
 ---
 # <a name="key-values"></a>键-值
 
-键-值是由的唯一组合标识的资源 `key`  +  `label` 。 `label` 是可选项。 若要显式引用不带标签的键值，请使用 "\ 0" (URL 编码为 ``%00``) 。 请查看每个操作的详细信息。
+键值是由 `key` + `label` 的唯一组合标识的资源。 `label` 是可选项。 若要显式引用不带标签的键值，请使用“\0”（编码为 ``%00`` 的 URL）。 请查看每个操作的详细信息。
 
-本文适用于 API 版本1.0。
+本文适用于 API 版本 1.0。
 
 ## <a name="operations"></a>操作
 
@@ -45,10 +45,10 @@ ms.locfileid: "96932551"
 }
 ```
 
-## <a name="get-key-value"></a>获取键-值
+## <a name="get-key-value"></a>获取键值
 
-必需： ``{key}`` 、 ``{api-version}``  
-可选： ``label`` 如果省略此参数，则表示不带标签的键值 (。 ) 
+必需：``{key}``、``{api-version}``  
+可选：``label``（如果省略，则表示不带标签的键值。）
 
 ```http
 GET /kv/{key}?label={label}&api-version={api-version}
@@ -85,9 +85,9 @@ ETag: "4f6dd610dd5e4deebc7fbaef685fb903"
 HTTP/1.1 404 Not Found
 ```
 
-## <a name="get-conditionally"></a>按条件获取 () 
+## <a name="get-conditionally"></a>获取（有条件）
 
-若要改善客户端缓存，请使用 `If-Match` 或 `If-None-Match` 请求标头。 `etag` 参数是键表示形式的一部分。 有关详细信息，请参阅 [14.24 和14.26 部分](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。
+若要改善客户端缓存，请使用 `If-Match` 或 `If-None-Match` 请求标头。 `etag` 参数是键表示形式的一部分。 有关详细信息，请参阅[第 14.24 和 14.26节](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。
 
 仅在当前表示形式与指定的 `etag` 不匹配时，以下请求才检索键值：
 
@@ -109,9 +109,9 @@ HTTP/1.1 304 NotModified
 HTTP/1.1 200 OK
 ```
 
-## <a name="list-key-values"></a>列出键-值
+## <a name="list-key-values"></a>列出键值
 
-可选： ``key`` 如果未指定，则 (，它表示任何键。 ) 可选： ``label`` (如果未指定，则表示任意标签。 ) 
+可选：``key``（如果未指定，则表示任意键。）可选：``label``（如果未指定，则表示任意标签。）
 
 ```http
 GET /kv?label=*&api-version={api-version} HTTP/1.1
@@ -124,12 +124,12 @@ HTTP/1.1 200 OK
 Content-Type: application/vnd.microsoft.appconfig.kvset+json; charset=utf-8
 ```
 
-有关其他选项，请参阅本文后面的 "筛选" 一节。
+有关其他选项，请参阅本文后面的“筛选”一节。
 
 ## <a name="pagination"></a>分页
 
-如果返回的项数超过响应限制，则会对结果进行分页。 遵循可选的 `Link` 响应标头，并用于 `rel="next"` 导航。
-也可让内容以 `@nextLink` 属性的形式提供下一个链接。 链接 URI 包含 `api-version` 参数。
+如果返回的项数超过响应限制，则会对结果进行分页。 遵循可选的 `Link` 响应标头的要求，并使用 `rel="next"` 进行导航。
+也可让内容以 `@nextLink` 属性的形式提供下一个链接。 链接的 URI 包含 `api-version` 参数。
 
 ```http
 GET /kv?api-version={api-version} HTTP/1.1
@@ -163,7 +163,7 @@ GET /kv?key={key}&label={label}&api-version={api-version}
 
 ### <a name="supported-filters"></a>支持的筛选器
 
-|密钥筛选器|效果|
+|键筛选器|效果|
 |--|--|
 |省略 `key` 或 `key=*`|匹配任何键|
 |`key=abc`|匹配名为“abc”的键|
@@ -178,13 +178,13 @@ GET /kv?key={key}&label={label}&api-version={api-version}
 |`label=prod*`|匹配以“prod”开头的标签|
 |`label=prod,test`|匹配标签“prod”或“test”（限制为 5 个 CSV）|
 
-保留字符*_
+保留字符
 
-`_`, `\`, `,`
+`*`, `\`, `,`
 
-如果保留字符是值的一部分，则必须使用对其进行转义 `\{Reserved Character}` 。 非保留字符也可以进行转义。
+如果保留字符是值的一部分，则必须使用 `\{Reserved Character}` 对其进行转义。 非保留字符也可以进行转义。
 
-***筛选器验证** _
+筛选器验证
 
 如果出现筛选器验证错误，则响应为“HTTP `400`”，其错误详细信息如下：
 
@@ -203,7 +203,7 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-_*示例
+**示例**
 
 - 全部
 
@@ -211,7 +211,7 @@ _*示例
     GET /kv?api-version={api-version}
     ```
 
-- 项名称以 **abc** 开头，并包括所有标签
+- 键名称以“abc”开头，并且包括所有标签
 
     ```http
     GET /kv?key=abc*&label=*&api-version={api-version}
@@ -225,7 +225,7 @@ _*示例
 
 ## <a name="request-specific-fields"></a>请求特定的字段
 
-使用可选的 `$select` 查询字符串参数，并提供以逗号分隔的请求字段列表。 如果省略 `$select` 参数，则响应会包含默认集。
+使用可选的 `$select` 查询字符串参数，并提供逗号分隔的所请求字段列表。 如果省略 `$select` 参数，则响应会包含默认集。
 
 ```http
 GET /kv?$select=key,value&api-version={api-version} HTTP/1.1
@@ -233,7 +233,7 @@ GET /kv?$select=key,value&api-version={api-version} HTTP/1.1
 
 ## <a name="time-based-access"></a>基于时间的访问
 
-获得结果在过去的表现形式。 有关详细信息，请参阅 [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1)部分。 如本文前面所述，仍支持分页。
+获得结果在过去的表现形式。 有关详细信息，请参阅第 [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1) 节。 如本文前面所述，仍支持分页。
 
 ```http
 GET /kv?api-version={api-version} HTTP/1.1
@@ -260,7 +260,7 @@ Link: <{relative uri}>; rel="original"
 ## <a name="set-key"></a>设置键
 
 - 必需：``{key}``
-- 可选： ``label`` 如果未指定 (或标签 = %00，则它表示不带标签的键值。 ) 
+- 可选：``label``（如果未指定，或者 label=%00，则表示不带标签的键值。）
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -319,12 +319,12 @@ Content-Type: application/problem+json; charset="utf-8"
 }
 ```
 
-## <a name="set-key-conditionally"></a>设置键 (有条件地) 
+## <a name="set-key-conditionally"></a>设置键（有条件）
 
 若要防止出现争用情况，请使用 `If-Match` 或 `If-None-Match` 请求标头。 `etag` 参数是键表示形式的一部分。
-如果 `If-Match` `If-None-Match` 省略或，则操作为无条件。
+如果省略 `If-Match` 或 `If-None-Match`，则该操作是无条件的。
 
-仅当当前表示形式与指定的匹配时，以下响应才会更新值 `etag` ：
+仅在当前表示形式与指定的 `etag` 匹配时，才会更新以下响应：
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -332,7 +332,7 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json
 If-Match: "4f6dd610dd5e4deebc7fbaef685fb903"
 ```
 
-仅当当前表示形式与指定的不匹配时，以下响应才会更新值 `etag` ：
+仅在当前表示形式与指定的 `etag` 不匹配时，才会更新以下响应：
 
 ```http
 PUT /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -372,8 +372,8 @@ HTTP/1.1 412 PreconditionFailed
 
 ## <a name="delete"></a>删除
 
-- 必需： `{key}` 、 `{api-version}`
-- 可选： `{label}` 如果未指定 (或标签 = %00，则它表示不带标签的键值。 ) 
+- 必需：`{key}`、`{api-version}`
+- 可选：`{label}`（如果未指定，或者 label=%00，则表示不带标签的键值。）
 
 ```http
 DELETE /kv/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -393,6 +393,6 @@ Content-Type: application/vnd.microsoft.appconfig.kv+json; charset=utf-8
 HTTP/1.1 204 No Content
 ```
 
-## <a name="delete-key-conditionally"></a> (有条件地删除密钥) 
+## <a name="delete-key-conditionally"></a>删除键（有条件）
 
-这类似于本文前面的 "设置密钥 (有条件地) " 一节。
+这与本文前面的“设置密钥（有条件）”一节类似。

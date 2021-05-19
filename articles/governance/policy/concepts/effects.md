@@ -4,10 +4,10 @@ description: Azure Policy 定义具有各种效果，用来确定如何对符合
 ms.date: 02/17/2021
 ms.topic: conceptual
 ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101741814"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
@@ -24,13 +24,13 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 - [已禁用](#disabled)
 - [修改](#modify)
 
-_弃用_ 了以下效果：
+已弃用以下效果：
 
 - [EnforceOPAConstraint](#enforceopaconstraint)
 - [EnforceRegoPolicy](#enforceregopolicy)
 
 > [!IMPORTANT]
-> 使用 "_审核_" 和 "_拒绝_" 作为 "资源提供程序" 模式，而不是 **EnforceOPAConstraint** 或 **EnforceRegoPolicy** 影响 `Microsoft.Kubernetes.Data` 。 已更新内置策略定义。 当修改这些内置策略定义的现有策略分配时，必须将 _effect_ 参数更改为 "已更新 _allowedValues_ " 列表中的值。
+> 使用“审核”和“拒绝”效果结合资源提供程序模式代替 EnforceOPAConstraint 或 EnforceRegoPolicy  `Microsoft.Kubernetes.Data`。 已更新内置策略定义。 在修改这些内置策略定义的现有策略分配后，必须将 effect 参数更改为更新后 allowedValues 列表中的值。
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
@@ -43,7 +43,7 @@ Azure Policy 首先评估创建或更新资源的请求。 Azure Policy 会创�
 
 资源提供程序针对资源管理器模式请求返回成功代码后，AuditIfNotExists 和 DeployIfNotExists 将进行评估以确定是否需要其他符合性日志记录或操作 。
 
-此外， `PATCH` 请求仅修改 `tags` 相关字段会将策略评估限制为包含检查相关字段的条件的策略 `tags` 。
+此外，若 `PATCH` 请求仅修改 `tags` 相关字段，会限制对包含检查 `tags` 相关字段条件的策略执行策略评估。
 
 ## <a name="append"></a>附加
 
@@ -266,7 +266,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 评估
 
-在资源提供程序处理创建或更新订阅或资源请求并返回成功状态代码后，DeployIfNotExists 会运行大约15分钟。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。 部署持续时间取决于模板中包含资源的复杂性。
+在资源提供程序处理创建或更新订阅或资源请求并返回成功状态代码约 15 分钟后，运行 DeployIfNotExists。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。 部署持续时间取决于模板中包含资源的复杂性。
 
 在评估周期中，具有与资源匹配的 DeployIfNotExists 效果的策略定义被标记为不合规，但不对该资源执行任何操作。 使用[修正任务](../how-to/remediate-resources.md)来修正现有不符合资源。
 
@@ -376,7 +376,7 @@ enforcementMode 已禁用时，仍可评估资源。 日志（例如活动日志
 此效果与 `Microsoft.Kubernetes.Data` 的策略定义模式一起使用。 它用于对 Azure 上的 Kubernetes 群集将使用 [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) 定义的 Gatekeeper v3 许可控制规则传递到 [Open Policy Agent](https://www.openpolicyagent.org/) (OPA)。
 
 > [!IMPORTANT]
-> 不 _推荐_ 使用 **EnforceOPAConstraint** 效果和相关 **Kubernetes 服务** 类别的受限预览策略定义。 请改用 "使用 _审核_ 和 _拒绝_ " 作为资源提供程序模式 `Microsoft.Kubernetes.Data` 。
+> 具有“EnforceOPAConstraint”效果和相关“Kubernetes 服务”的有限预览策略定义已被弃用。 改为配合使用“审核”、“拒绝”效果和资源提供程序模式 `Microsoft.Kubernetes.Data`。
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint 评估
 
@@ -432,7 +432,7 @@ EnforceOPAConstraint 效果的 Details 属性具有描述 Gatekeeper v3 许可�
 此效果与 `Microsoft.ContainerService.Data` 的策略定义模式一起使用。 它用于在 [Azure Kubernetes](../../../aks/intro-kubernetes.md) 服务上将使用 [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) 定义的 Gatekeeper v2 许可控制规则传递到 [Open Policy Agent](https://www.openpolicyagent.org/) (OPA)。
 
 > [!IMPORTANT]
-> 具有“EnforceRegoPolicy”效果和相关“Kubernetes 服务”的有限预览策略定义已被弃用。 请改用 "使用 _审核_ 和 _拒绝_ " 作为资源提供程序模式 `Microsoft.Kubernetes.Data` 。
+> 具有“EnforceRegoPolicy”效果和相关“Kubernetes 服务”的有限预览策略定义已被弃用。 改为配合使用“审核”、“拒绝”效果和资源提供程序模式 `Microsoft.Kubernetes.Data`。
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy 评估
 
@@ -443,11 +443,11 @@ Open Policy Agent 许可控制器会实时评估群集上的任何新请求。
 
 EnforceRegoPolicy 效果的 Details 属性具有描述 Gatekeeper v2 许可控制规则的子属性。
 
-- **policyId** (必需) 
+- policyId（必选）
   - 作为参数传递给 Rego 许可控制规则的唯一名称。
-- **策略** (必需) 
+- policy（必选）
   - 指定 Rego 许可控制规则的 URI。
-- **policyParameters** (可选) 
+- policyParameters（可选）
   - 定义要传递给 Rego 策略的任何参数和值。
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy 示例
@@ -481,7 +481,7 @@ EnforceRegoPolicy 效果的 Details 属性具有描述 Gatekeeper v2 许可控�
 
 ## <a name="modify"></a>修改
 
-Modify 用于在创建或更新过程中添加、更新或删除订阅或资源的属性或标记。 常见的示例是在 costCenter 等资源上更新标记。 使用[修正任务](../how-to/remediate-resources.md)来修正现有不符合资源。 单个修改规则可以有任意数量的操作。
+Modify 用于在创建或更新期间在订阅或资源中添加、更新或删除属性或标记。 常见的示例是在 costCenter 等资源上更新标记。 使用[修正任务](../how-to/remediate-resources.md)来修正现有不符合资源。 单个修改规则可以有任意数量的操作。
 
 Modify 支持以下操作：
 

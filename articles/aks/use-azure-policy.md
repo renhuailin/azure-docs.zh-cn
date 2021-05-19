@@ -1,51 +1,51 @@
 ---
-title: 使用 Azure 策略保护群集
-description: 使用 Azure 策略来保护 Azure Kubernetes 服务 (AKS) 群集。
+title: 使用 Azure Policy 来保护群集
+description: 使用 Azure Policy 来保护 Azure Kubernetes 服务 (AKS) 群集。
 ms.service: container-service
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 46e92e6842204cd323992a2561e71302bb9cc722
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102193392"
 ---
-# <a name="secure-your-cluster-with-azure-policy"></a>通过 Azure 策略保护群集
+# <a name="secure-your-cluster-with-azure-policy"></a>通过 Azure Policy 保护群集
 
-若要提高 Azure Kubernetes 服务的安全性 (AKS) 群集，可以使用 Azure 策略在群集上应用和强制实施内置安全策略。 [Azure 策略][azure-policy] 可帮助实施组织标准并大规模评估符合性。 安装 [适用于 AKS 的 Azure 策略外接程序][kubernetes-policy-reference]后，你可以将名为 "计划" 的单个策略定义或策略定义组应用 (有时称为 policysets) 到群集。 有关 AKS 策略和计划定义的完整列表，请参阅适用 [于 AKS 的 Azure 策略内置定义][aks-policies] 。
+若要提升 Azure Kubernetes 服务 (AKS) 群集的安全性，可以使用 Azure Policy 在群集上应用和强制实施内置的安全策略。 [Azure Policy][azure-policy] 可帮助实施组织标准并大规模评估合规性。 安装[适用于 AKS 的 Azure Policy 加载项][kubernetes-policy-reference]后，可以将单个策略定义或名为“initiatives”的策略定义组（有时名为“policysets”）应用到群集。 请参阅[适用于 AKS 的 Azure Policy 内置定义][aks-policies]，查看 AKS 策略和计划定义的完整列表。
 
-本文介绍如何将策略定义应用于群集，并验证是否强制执行这些分配。
+本文介绍如何将策略定义应用于群集，并验证是否在强制执行这些分配。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
-- 在 AKS 群集上安装的适用于 AKS 的 Azure 策略外接程序。 按照以下 [步骤安装 Azure 策略外接程序][azure-policy-addon]。
+- AKS 群集上安装的适用于 AKS 的 Azure Policy 加载项。 按照以下[步骤安装 Azure Policy 加载项][azure-policy-addon]。
 
 ## <a name="assign-a-built-in-policy-definition-or-initiative"></a>分配内置策略定义或计划
 
-若要应用策略定义或计划，请使用 Azure 门户。
+通过使用 Azure 门户来应用策略定义或计划。
 
-1. 导航到 Azure 门户中的 Azure 策略服务。
+1. 导航到 Azure 门户中的 Azure Policy 服务。
 1. 在“Azure Policy”页面的左侧窗格中，选择“定义”。
-1. 在 " **类别** " 下选择 `Kubernetes` 。
-1. 选择要应用的策略定义或计划。 对于本示例，请选择该 `Kubernetes cluster pod security baseline standards for Linux-based workloads` 计划。
+1. 在“类别”下，选择 `Kubernetes`。
+1. 选择要应用的策略定义或计划。 对于此示例，选择 `Kubernetes cluster pod security baseline standards for Linux-based workloads` 计划。
 1. 选择“分配”。
-1. 将 **范围** 设置为启用了 Azure 策略外接程序的 AKS 群集的资源组。
-1. 选择 " **参数** " 页面并将 **效果** 从更新 `audit` 为 " `deny` 阻止新的部署违反基线计划"。 你还可以添加要从计算中排除的其他命名空间。 对于本示例，请保留默认值。
-1. 依次选择 " **查看** " 和 **"创建"** ，提交策略分配。
+1. 将“范围”设置为启用了 Azure Policy 加载项的 AKS 群集的资源组。
+1. 选择“参数”页面并将“效果”从 `audit` 更新为 `deny` 以阻止违反基线计划的新部署 。 还可以添加更多要从计算中排除的命名空间。 对于本示例，请保留默认值。
+1. 依次选择“查看 + 创建”和“创建”以提交策略分配 。
 
-## <a name="validate-a-azure-policy-is-running"></a>验证 Azure 策略是否正在运行
+## <a name="validate-a-azure-policy-is-running"></a>验证是否有 Azure Policy 正在运行
 
-通过运行以下内容确认策略分配已应用于群集：
+通过运行以下内容来确认策略分配已应用于群集：
 
 ```azurecli-interactive
 kubectl get constrainttemplates
 ```
 
 > [!NOTE]
-> 策略分配 [最多可能需要20分钟才能同步][azure-policy-assign-policy] 到每个群集。
+> 策略分配可能需要[最多 20 分钟来同步][azure-policy-assign-policy]到每个群集。
 
 输出应如下所示：
 
@@ -67,9 +67,9 @@ k8sazurereadonlyrootfilesystem           23m
 k8sazureserviceallowedports              23m
 ```
 
-### <a name="validate-rejection-of-a-privileged-pod"></a>验证特权 pod 的拒绝
+### <a name="validate-rejection-of-a-privileged-pod"></a>验证对特权 pod 的拒绝
 
-首先测试在使用 `privileged: true` 安全性上下文计划 Pod 时所发生的情况。 此安全性上下文会提升 Pod 的特权。 该计划不允许有特权箱，因此，请求将被拒绝，导致部署被拒绝。
+首先测试在使用 `privileged: true` 安全性上下文计划 Pod 时所发生的情况。 此安全性上下文会提升 Pod 的特权。 该计划不允许特权 pod，因此将拒绝请求，从而导致部署被拒绝。
 
 创建名为 `nginx-privileged.yaml` 的文件并粘贴以下 YAML 清单：
 
@@ -86,13 +86,13 @@ spec:
         privileged: true
 ```
 
-使用 [kubectl apply][kubectl-apply] 命令创建 pod，并指定 YAML 清单的名称：
+使用 [kubectl apply][kubectl-apply] 命令创建 Pod，并指定 YAML 清单的名称：
 
 ```console
 kubectl apply -f nginx-privileged.yaml
 ```
 
-如预期那样，无法计划 pod，如以下示例输出所示：
+与预期一致，未能计划 Pod，如以下示例输出所示：
 
 ```console
 $ kubectl apply -f privileged.yaml
@@ -104,7 +104,7 @@ Pod 不会到达计划阶段，因此在继续之前，没有要删除的资源�
 
 ### <a name="test-creation-of-an-unprivileged-pod"></a>测试非特权 Pod 的创建
 
-在上面的示例中，容器映像自动尝试使用根将 NGINX 绑定到端口 80。 策略计划拒绝了此请求，因此无法启动 pod。 现在，让我们尝试在无需访问权限的情况下运行相同的 NGINX pod。
+在上面的示例中，容器映像自动尝试使用根将 NGINX 绑定到端口 80。 此请求被策略计划拒绝，pod 无法启动。 现在尝试在没有特权访问权限的情况下运行同一 NGINX Pod。
 
 创建名为 `nginx-unprivileged.yaml` 的文件并粘贴以下 YAML 清单：
 
@@ -134,7 +134,7 @@ NAME                 READY   STATUS    RESTARTS   AGE
 nginx-unprivileged   1/1     Running   0          18s
 ```
 
-此示例显示了仅影响违反集合中策略的部署的基准计划。 允许的部署将继续工作。
+此示例显示了只影响违反了集合中策略的部署的基线计划。 允许的部署将继续正常运行。
 
 使用 [kubectl delete][kubectl-delete] 命令删除 NGINX 非特权 Pod，并指定 YAML 清单的名称：
 
@@ -144,20 +144,20 @@ kubectl delete -f nginx-unprivileged.yaml
 
 ## <a name="disable-a-policy-or-initiative"></a>禁用策略或计划
 
-删除基准计划：
+删除基线计划：
 
-1. 导航到 Azure 门户上的 "策略" 窗格。
-1. 从左窗格中选择 " **分配** "。
-1. 单击该计划旁边的 " **...** " 按钮。 `Kubernetes cluster pod security baseline standards for Linux-based workloads`
-1. 选择 " **删除分配**"。
+1. 导航到 Azure 门户上的“策略”窗格。
+1. 选择左侧窗格中的“分配”。
+1. 单击 `Kubernetes cluster pod security baseline standards for Linux-based workloads` 计划旁的“ **...** ”按钮。
+1. 选择“删除分配”。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 策略的工作方式的详细信息，请执行以下操作：
+详细了解 Azure Policy 的工作原理：
 
 - [Azure Policy 概述][azure-policy]
-- [适用于 AKS 的 Azure 策略计划和策略][aks-policies]
-- 删除 [Azure 策略附加项][azure-policy-addon-remove]。
+- [适用于 AKS 的 Azure Policy 计划和策略][aks-policies]
+- 删除 [Azure Policy 加载项][azure-policy-addon-remove]。
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

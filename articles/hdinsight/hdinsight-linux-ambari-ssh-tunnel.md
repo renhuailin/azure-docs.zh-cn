@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 5bbc770fa6ae5ac69b2aa939f9d2c70bb01f5403
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 60e1e06dfdc904683f2d65e984d3c752e1e6a055
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945289"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064676"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>使用 SSH 隧道访问 Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie 和其他 UI
 
@@ -76,11 +76,11 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 ## <a name="create-a-tunnel-using-putty"></a><a name="useputty"></a>使用 PuTTY 创建隧道
 
-[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) 是适用于 Windows 的图形 SSH 客户端。 如果你不熟悉 PuTTY，请参阅 [PuTTY 文档](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)。 执行以下步骤可使用 PuTTY 创建 SSH 隧道：
+[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) 是适用于 Windows 的图形 SSH 客户端。 如果不熟悉 PuTTY，请参阅 [PuTTY 文档](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)。 执行以下步骤可使用 PuTTY 创建 SSH 隧道：
 
 ### <a name="create-or-load-a-session"></a>创建或加载会话
 
-1. 打开 PuTTY，并确保在左侧菜单中选择“会话”。 如果已保存会话，请从 " **保存的会话** " 列表中选择会话名称，然后选择 " **加载**"。
+1. 打开 PuTTY，并确保在左侧菜单中选择“会话”。 如果已保存了一个会话，请从“已保存的会话”列表中选择该会话名称并选择“加载”。 
 
 1. 如果你没有已保存的会话，请输入你的连接信息：
 
@@ -92,7 +92,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 1. 选择“保存”
 
-    ![HDInsight 创建 putty 会话](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png" alt-text="HDInsight 创建 putty 会话":::
 
 1. 在对话框左侧的“类别”部分中，依次展开“连接”和“SSH”，并选择“隧道”。
 
@@ -104,7 +104,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     |目标|HDInsight 群集的 SSH 地址。 例如， **mycluster-ssh.azurehdinsight.net**。|
     |动态|启用动态 SOCKS 代理路由。|
 
-    ![PuTTY 配置隧道选项](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png" alt-text="PuTTY 配置隧道选项":::
 
 1. 选择“添加”以添加设置，然后选择“打开”以打开 SSH 连接。
 
@@ -117,7 +117,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 1. 将浏览器配置为使用 **localhost**，并将创建隧道时使用的端口配置为 **SOCKS v5** 代理。 Firefox 中的设置如下所示。 如果使用的端口不是 9876，请将端口更改为所用的端口：
 
-    ![firefox 浏览器代理设置](./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png" alt-text="firefox 浏览器代理设置":::
 
    > [!NOTE]  
    > 通过选择“远程 DNS”，可使用 HDInsight 群集解析域名系统 (DNS) 请求。 此设置使用群集的头节点解析 DNS。
@@ -135,11 +135,11 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 2. 在 Ambari Web UI 中，请选择页面左侧列表中的“HDFS”。
 
-    ![已选择 Apache Ambari hdfs 服务](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png" alt-text="已选择 Apache Ambari hdfs 服务":::
 
 3. 显示 HDFS 服务信息时，请选择“快速链接”。 会显示群集头节点列表。 选择其中一个头节点，并选择“NameNode UI”。
 
-    ![已展开“快速链接”菜单的截图](./media/hdinsight-linux-ambari-ssh-tunnel/namenode-drop-down-menu.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/namenode-drop-down-menu.png" alt-text="已展开“快速链接”菜单的截图":::
 
     > [!NOTE]  
     > 选择“快速链接”时，可能会看到等待指示器。 如果 Internet 连接速度慢，则可能会出现此情况。 请等待一两分钟，让系统从服务器接收数据，然后再次尝试列出节点列表。
@@ -148,10 +148,10 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 4. 随后将显示类似于下图的页面：
 
-    ![Hadoop NameNode UI 的图像](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png" alt-text="Hadoop NameNode UI 的图像":::
 
     > [!NOTE]  
-    > 请注意此页的 URL；它应类似于 `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`。 此 URI 使用节点的内部完全限定域名 (FQDN)，只能在使用 SSH 隧道的情况下访问它。
+    > 请注意此页的 URL；它应类似于 `http://hn*.randomcharacters.cx.internal.cloudapp.net:8088/cluster`。 此 URI 使用节点的内部完全限定域名 (FQDN)，只能在使用 SSH 隧道的情况下访问它。
 
 ## <a name="next-steps"></a>后续步骤
 

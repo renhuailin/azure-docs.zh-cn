@@ -7,7 +7,7 @@ author: msjuergent
 manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: SAP，Azure，Oracle，数据防护
+keywords: SAP、Azure、Oracle、Data Guard
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
@@ -16,13 +16,13 @@ ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 29b1bcec58d6350d0f63c3fe0ce11ef99a648019
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101668977"
 ---
-# <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure 虚拟机 SAP 工作负荷的 Oracle DBMS 部署
+# <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负载的 Azure 虚拟机 Oracle DBMS 部署
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -344,20 +344,20 @@ Windows 和 Oracle Linux 是 Oracle 和 Azure 上的 SAP 唯一支持的操作�
 
 ### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>在 Windows 上的 Azure VM 中安装 SAP 的 Oracle 配置准则
 
-根据 SAP 安装手册，不应安装与 Oracle 相关的文件，也不应将其放在 VM 的 OS 磁盘中 (驱动器 c： ) 。 不同大小的虚拟机支持附加不同数量的磁盘。 较小的虚拟机类型支持附加较少数量的磁盘。 
+根据 SAP 安装手册，所有与 Oracle 相关的文件都不应安装到或位于 VM 的 OS 磁盘（驱动器 c:）。 不同大小的虚拟机支持附加不同数量的磁盘。 较小的虚拟机类型支持附加较少数量的磁盘。 
 
-如果你有较小的 vm，并且将达到可附加到 VM 的磁盘数限制，则可以在 OS 磁盘中安装/查找 Oracle home、暂存、、、 `saptrace` `saparch` `sapbackup` `sapcheck` 或 `sapreorg` 。 这些 Oracle DBMS 组件部分对于 i/o 和 i/o 吞吐量并不太重要。 这意味着，OS 磁盘可以处理 I/O 要求。 OS 磁盘的默认大小应为 127 GB。 
+如果具有较小的 VM 并且将达到可附加到 VM 的磁盘数限制，则可在 OS 磁盘中安装/定位 Oracle Home、stage、`saptrace`、`saparch`、`sapbackup`、`sapcheck` 或 `sapreorg`。 Oracle DBMS 组件的这些部分在 I/O 和 I/O 吞吐量方面并不是太密集。 这意味着，OS 磁盘可以处理 I/O 要求。 OS 磁盘的默认大小应为 127 GB。 
 
-Oracle Database 和重做日志文件需要存储在单独的数据磁盘上。 Oracle 临时表空间会发生异常。 `Tempfiles` 可在 D：/ (非持久性驱动器) 上创建。 非持久性驱动器 D:\ 还提供更大的 I/O 延迟和吞吐量（除 A 系列 VM 外）。 
+Oracle Database 和重做日志文件需要存储在单独的数据磁盘上。 Oracle 临时表空间会发生异常。 可以在 D:/（非持久驱动器）上创建 `Tempfiles`。 非持久性驱动器 D:\ 还提供更大的 I/O 延迟和吞吐量（除 A 系列 VM 外）。 
 
-若要确定的空间 `tempfiles` 大小合适，可以 `tempfiles` 在现有系统上检查的大小。
+若要确定正确的 `tempfiles` 空间，可在现有系统上检查 `tempfiles` 的大小。
 
 ### <a name="storage-configuration"></a>存储配置
 仅支持一个使用 NTFS 格式化磁盘的 Oracle 实例。 所有数据库文件都必须存储在托管磁盘（推荐）或 VHD 的 NTFS 文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)或 [Azure 托管磁盘](../../managed-disks-overview.md)。 
 
-有关适用于 DBMS 工作负荷的特定 Azure 块存储类型的详细信息，请参阅 [azure 用于 SAP 工作负荷的存储类型](./planning-guide-storage.md) 一文。
+请查看[适用于 SAP 工作负载的 Azure 存储类型](./planning-guide-storage.md)一文，详细了解适用于 DBMS 工作负载的特定 Azure 块存储类型。
 
-我们强烈建议使用 [Azure 托管磁盘](../../managed-disks-overview.md)。 此外，我们强烈建议使用 [azure 高级存储或 Azure Ultra 磁盘](../../disks-types.md) 进行 Oracle Database 部署。
+我们强烈建议使用 [Azure 托管磁盘](../../managed-disks-overview.md)。 另外，我们强烈建议使用 [Azure 高级存储或 Azure 超级磁盘](../../disks-types.md)进行 Oracle Database 部署。
 
 Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文件。 有关详细信息，请参阅：
 
@@ -376,37 +376,37 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | Caching | 存储池 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA & mirrlogB | 高级或超磁盘 | 无 | 无需 |
-| \oracle\<SID>\origlogaB & mirrlogA | 高级或超磁盘 | 无 | 无需 |
-| \oracle\<SID>\sapdata1...n | 高级或超磁盘 | 只读 | 可用于高级 |
+| \oracle\<SID>\origlogaA & mirrlogB | 高级或超级磁盘 | 无 | 无需 |
+| \oracle\<SID>\origlogaB & mirrlogA | 高级或超级磁盘 | 无 | 无需 |
+| \oracle\<SID>\sapdata1...n | 高级或超级磁盘 | 只读 | 可用于高级磁盘 |
 | \oracle\<SID>\oraarch | Standard | 无 | 无需 |
-| Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | | 不需要 |
+| Oracle Home、`saptrace`… | OS 磁盘（高级） | | 无需 |
 
 
-用于托管联机重做日志的磁盘选择应由 IOPS 要求驱动。 只要大小、IOPS 和吞吐量满足要求，就可以将所有 sapdata1...n（表空间）存储在一个已装载的磁盘上。 
+托管联机重做日志的磁盘选择应由 IOPS 要求驱动。 只要大小、IOPS 和吞吐量满足要求，就可以将所有 sapdata1...n（表空间）存储在一个已装载的磁盘上。 
 
 性能配置如下：
 
 | 组件 | 磁盘 | Caching | 存储池 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | 高级或超磁盘 | None | 可用于高级  |
-| \oracle\<SID>\origlogaB | 高级或超磁盘 | None | 可用于高级 |
-| \oracle\<SID>\mirrlogAB | 高级或超磁盘 | None | 可用于高级 |
-| \oracle\<SID>\mirrlogBA | 高级或超磁盘 | None | 可用于高级 |
-| \oracle\<SID>\sapdata1...n | 高级或超磁盘 | 只读 | 建议用于高级  |
-| \oracle\SID\sapdata(n+1)* | 高级或超磁盘 | None | 可用于高级 |
-| \oracle\<SID>\oraarch* | 高级或超磁盘 | 无 | 无需 |
-| Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | 无需 |
+| \oracle\<SID>\origlogaA | 高级或超级磁盘 | None | 可用于高级磁盘  |
+| \oracle\<SID>\origlogaB | 高级或超级磁盘 | None | 可用于高级磁盘 |
+| \oracle\<SID>\mirrlogAB | 高级或超级磁盘 | None | 可用于高级磁盘 |
+| \oracle\<SID>\mirrlogBA | 高级或超级磁盘 | None | 可用于高级磁盘 |
+| \oracle\<SID>\sapdata1...n | 高级或超级磁盘 | 只读 | 建议用于高级磁盘  |
+| \oracle\SID\sapdata(n+1)* | 高级或超级磁盘 | None | 可用于高级磁盘 |
+| \oracle\<SID>\oraarch* | 高级或超级磁盘 | 无 | 无需 |
+| Oracle Home、`saptrace`… | OS 磁盘（高级） | 无需 |
 
 *(n+1)：托管 SYSTEM、TEMP 和 UNDO 表空间。 系统和撤消表空间的 I/O 模式与托管应用程序数据的其他表空间不同。 无缓存是系统和撤消表空间性能的最佳选择。
 
 *oraarch：性能视图中不需要存储池。 它可用于获取更多空间。
 
-如果在 Azure 高级存储中需要更多 IOPS，我们建议使用 Windows 存储池 (仅在 Windows Server 2012 和更高版本中提供，) 在多个已装载磁盘上创建一个大型逻辑设备。 这种方法可以简化磁盘空间的管理开销，帮助避免跨已装载的多个磁盘手动分发文件。
+如果 Azure 高级存储需要更多 IOPS，建议使用 Windows 存储池（仅适用于 Windows Server 2012 和更高版本），基于已装载的多个磁盘来创建一个大型逻辑设备。 这种方法可以简化磁盘空间的管理开销，帮助避免跨已装载的多个磁盘手动分发文件。
 
 
 #### <a name="write-accelerator"></a>写入加速器
-对于 Azure M 系列 Vm，与 Azure 高级存储进行比较时，写入联机重做日志的延迟时间可能会降低。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](../../how-to-enable-write-accelerator.md)。 或使用 Azure Ultra 磁盘进行联机重做日志卷。
+与 Azure 高级存储相比，Azure M 系列 VM 可通过多种因素减少写入联机重做日志的延迟。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](../../how-to-enable-write-accelerator.md)。 或者将 Azure 超级磁盘用于联机重做日志卷。
 
 
 ### <a name="backuprestore"></a>备份/还原
@@ -439,24 +439,24 @@ SAP 应用程序使用 Oracle Database 的特定方案也受支持。 详细信�
 
 根据 SAP 安装手册，与 Oracle 相关的文件不应安装到或位于 VM 的启动盘的系统驱动程序中。 不同大小的虚拟机支持附加不同数量的磁盘。 较小的虚拟机类型支持附加较少数量的磁盘。 
 
-在这种情况下，我们建议安装/定位 Oracle home、stage、、、、 `saptrace` `saparch` `sapbackup` `sapcheck` 或 `sapreorg` 以启动磁盘。 Oracle DBMS 组件的这些部分在 I/O 和 I/O 吞吐量方面并不密集。 这意味着，OS 磁盘可以处理 I/O 要求。 OS 磁盘的默认大小为 30 GB。 可以使用 Azure 门户、PowerShell 或 CLI 来扩展启动盘。 扩展启动盘后，可为 Oracle 二进制文件添加其他分区。
+在这种情况下，建议在启动磁盘中安装/定位 Oracle home、stage、`saptrace`、`saparch`、`sapbackup`、`sapcheck` 或 `sapreorg`。 Oracle DBMS 组件的这些部分在 I/O 和 I/O 吞吐量方面并不密集。 这意味着，OS 磁盘可以处理 I/O 要求。 OS 磁盘的默认大小为 30 GB。 可以使用 Azure 门户、PowerShell 或 CLI 来扩展启动盘。 扩展启动盘后，可为 Oracle 二进制文件添加其他分区。
 
 
 ### <a name="storage-configuration"></a>存储配置
 
-Ext4、xfs、NFSv 4.1 的文件系统 (仅 (和) ) 或 Oracle ASM 上的 Azure NetApp 文件中 (参阅 SAP 说明 [#2039619](https://launchpad.support.sap.com/#/notes/2039619) ，了解 azure 上的) 文件是否支持发布/版本要求 Oracle Database。 所有数据库文件都必须存储在基于 Vhd、托管磁盘或和的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [azure 页 blob 存储](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)、 [azure 托管磁盘](../../managed-disks-overview.md)或 [azure NetApp 文件](https://azure.microsoft.com/services/netapp/)。
+Azure 上的 Oracle Database 文件支持 ext4、xfs、NFSv4.1 的文件系统（仅在 Azure NetApp 文件 (ANF) 上）或 Oracle ASM（请参阅 SAP 说明[#2039619](https://launchpad.support.sap.com/#/notes/2039619)了解发布/版本要求）。 所有数据库文件都必须存储在基于 VHD、托管磁盘或 ANF 的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)、[Azure 托管磁盘](../../managed-disks-overview.md)或 [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)。
 
-最低要求列表，如下所示： 
+最低要求列表如下： 
 
 - 对于 Oracle Linux UEK 内核，支持 [Azure 高级 SSD](../../premium-storage-performance.md#disk-caching) 至少需要 UEK 版本 4。
-- 对于具有和的 Oracle，支持的最低 Oracle Linux 为8.2。
-- 对于具有和的 Oracle，受支持的最低 Oracle 版本为 19c (19.8.0.0) 
+- 对于带有 ANF 的 Oracle，支持的最低 Oracle Linux 为 8.2。
+- 对于带有 ANF 的 Oracle，支持的最低 Oracle 版本为 19c (19.8.0.0)
 
-若要查看适用于 DBMS 工作负荷的特定 Azure 块存储类型的详细信息，请查看 [有关 SAP 工作负荷的 Azure 存储类型](./planning-guide-storage.md) 一文。
+请查看[适用于 SAP 工作负载的 Azure 存储类型](./planning-guide-storage.md)一文，详细了解适用于 DBMS 工作负载的特定 Azure 块存储类型。
 
-强烈建议使用 Azure 块存储，为 Oracle Database 部署使用 [azure 托管磁盘](../../managed-disks-overview.md) 和 [azure 高级 ssd](../../disks-types.md) 。
+使用 Azure 块存储，强烈建议使用 [Azure 托管磁盘](../../managed-disks-overview.md)和 [Azure 高级 SSD](../../disks-types.md) 进行 Oracle Database 部署。
 
-除 Azure NetApp 文件、其他共享磁盘、网络驱动器或远程共享（例如 Azure 文件服务）外，Oracle Database 文件不支持 (AFS) 。 有关详细信息，请参阅以下主题： 
+除了 Azure NetApp 文件之外，Oracle Database 文件不支持其他共享磁盘、网络驱动器或远程共享（如 Azure 文件服务 (AFS)）。 有关详细信息，请参阅以下主题： 
 
 - [Microsoft Azure 文件服务简介](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -472,11 +472,11 @@ Ext4、xfs、NFSv 4.1 的文件系统 (仅 (和) ) 或 Oracle ASM 上的 Azure N
 
 | 组件 | 磁盘 | Caching | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA & mirrlogB | 高级、超级磁盘或和 | 无 | 无需 |
-| /oracle/\<SID>/origlogaB & mirrlogA | 高级、超级磁盘或和 | 无 | 无需 |
-| /oracle/\<SID>/sapdata1...n | 高级、超级磁盘或和 | 只读 | 可用于高级 |
-| /oracle/\<SID>/oraarch | Standard 或和 | 无 | 无需 |
-| Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | | 无需 |
+| /oracle/\<SID>/origlogaA & mirrlogB | 高级磁盘、超级磁盘或 ANF | 无 | 无需 |
+| /oracle/\<SID>/origlogaB & mirrlogA | 高级磁盘、超级磁盘或 ANF | 无 | 无需 |
+| /oracle/\<SID>/sapdata1...n | 高级磁盘、超级磁盘或 ANF | 只读 | 可用于高级磁盘 |
+| /oracle/\<SID>/oraarch | 标准或 ANF | 无 | 无需 |
+| Oracle Home、`saptrace`… | OS 磁盘（高级） | | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
 
@@ -486,14 +486,14 @@ Ext4、xfs、NFSv 4.1 的文件系统 (仅 (和) ) 或 Oracle ASM 上的 Azure N
 
 | 组件 | 磁盘 | Caching | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA | 高级、超级磁盘或和 | None | 可用于高级  |
-| /oracle/\<SID>/origlogaB | 高级、超级磁盘或和 | None | 可用于高级 |
-| /oracle/\<SID>/mirrlogAB | 高级、超级磁盘或和 | None | 可用于高级 |
-| /oracle/\<SID>/mirrlogBA | 高级、超级磁盘或和 | None | 可用于高级 |
-| /oracle/\<SID>/sapdata1...n | 高级、超级磁盘或和 | 只读 | 建议用于高级  |
-| /oracle/\<SID>/sapdata(n+1)* | 高级、超级磁盘或和 | None | 可用于高级 |
-| /oracle/\<SID>/oraarch* | 高级、超级磁盘或和 | 无 | 无需 |
-| Oracle Home， `saptrace` ，.。。 | OS 磁盘 (高级)  | 无需 |
+| /oracle/\<SID>/origlogaA | 高级磁盘、超级磁盘或 ANF | None | 可用于高级磁盘  |
+| /oracle/\<SID>/origlogaB | 高级磁盘、超级磁盘或 ANF | None | 可用于高级磁盘 |
+| /oracle/\<SID>/mirrlogAB | 高级磁盘、超级磁盘或 ANF | None | 可用于高级磁盘 |
+| /oracle/\<SID>/mirrlogBA | 高级磁盘、超级磁盘或 ANF | None | 可用于高级磁盘 |
+| /oracle/\<SID>/sapdata1...n | 高级磁盘、超级磁盘或 ANF | 只读 | 建议用于高级磁盘  |
+| /oracle/\<SID>/sapdata(n+1)* | 高级磁盘、超级磁盘或 ANF | None | 可用于高级磁盘 |
+| /oracle/\<SID>/oraarch* | 高级磁盘、超级磁盘或 ANF | 无 | 无需 |
+| Oracle Home、`saptrace`… | OS 磁盘（高级） | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
 
@@ -502,15 +502,15 @@ Ext4、xfs、NFSv 4.1 的文件系统 (仅 (和) ) 或 Oracle ASM 上的 Azure N
 *oraarch：性能视图中不需要存储池。
 
 
-使用 Azure 高级存储时，如果需要更多 IOPS，我们建议使用 LVM (逻辑卷管理器) 或 MDADM，通过多个已装载磁盘创建一个大型逻辑卷。 有关如何利用 LVM 或 MDADM 的准则和指针的详细信息，请参阅[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)。 这种方法可以简化磁盘空间的管理开销，帮助避免跨已装载的多个磁盘手动分发文件。
+如果使用 Azure 高级存储时需要更多 IOPS，我们建议使用 LVM（逻辑卷管理器）或 MDADM 跨多个已装载磁盘创建一个大型的逻辑卷。 有关如何利用 LVM 或 MDADM 的准则和指针的详细信息，请参阅[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)。 这种方法可以简化磁盘空间的管理开销，帮助避免跨已装载的多个磁盘手动分发文件。
 
-如果计划使用 Azure NetApp 文件，请确保正确配置 dNFS 客户端。 使用 dNFS 是具有受支持的环境所必需的。 在 [直接 NFS 上创建 Oracle Database 一](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA)文中介绍了 dNFS 配置。
+如果打算使用 Azure NetApp 文件，请确保正确配置 dNFS 客户端。 必须使用 dNFS 才能拥有受支持的环境。 [在 Direct NFS 上创建 Oracle Database](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) 一文中介绍了 dNFS 配置。
 
-此示例演示了用于 Oracle 数据库的基于 Azure NetApp 文件的 NFS 的使用情况，请在博客 [部署 SAP AnyDB (oracle 19c) 与 Azure NetApp 文件一起](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)介绍。
+博客[使用 Azure NetApp 文件部署 SAP AnyDB (Oracle 19c)](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043) 中提供了一个示例，该示例演示了适用于 Oracle 数据库的基于 Azure NetApp 文件的 NFS 的用法。
 
 
 #### <a name="write-accelerator"></a>写入加速器
-对于 Azure M 系列 Vm，使用 Azure 写入加速器时，在使用 Azure 高级存储时，写入联机重做日志的延迟可能会降低。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](../../how-to-enable-write-accelerator.md)。 或使用 Azure Ultra 磁盘进行联机重做日志卷。
+对于 Azure M 系列 VM，使用 Azure 写入加速器时，可通过使用 Azure 高级存储时的多种因素减少写入联机重做日志的延迟。 基于 Azure 高级存储（用于联机重做日志文件）为磁盘 (VHD) 启用 Azure 写入加速器。 有关详细信息，请参阅[写入加速器](../../how-to-enable-write-accelerator.md)。 或者将 Azure 超级磁盘用于联机重做日志卷。
 
 
 ### <a name="backuprestore"></a>备份/还原

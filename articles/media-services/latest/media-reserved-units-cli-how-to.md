@@ -1,24 +1,19 @@
 ---
-title: " (Mru) CLI 缩放媒体保留单位"
+title: 缩放媒体保留单位 (MRU) CLI
 description: 本主题演示如何使用 CLI 通过 Azure 媒体服务来缩放媒体处理能力。
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: a07c4a20b854e09daf3b320b8c99757ca99b2578
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: c5fa3aa8397ea6e13500717f035c414af8de8e3d
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213804"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121670"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>如何缩放媒体保留单位
 
@@ -26,11 +21,14 @@ ms.locfileid: "102213804"
 
 本文介绍如何缩放媒体保留单位 (MRS) 以加快编码速度。
 
-## <a name="prerequisites"></a>必备条件
+> [!WARNING]
+> 对于使用 API 的 2020-05-01 版本或更高版本创建的媒体服务帐户，此命令将不再适用。 这些帐户将不再需要媒体保留单位，因为系统会根据负载自动纵向扩展和缩减。 如果在 Azure 门户中看不到管理 MRU 的选项，则说明正在运行使用 2020-05-01 API 或更高版本创建的帐户。
 
-[创建媒体服务帐户](./create-account-howto.md)。
+## <a name="prerequisites"></a>先决条件
 
-了解 [媒体保留单位](concept-media-reserved-units.md)。
+[创建媒体服务帐户](./account-create-how-to.md)。
+
+了解[媒体保留单位](concept-media-reserved-units.md)。
 
 ## <a name="scale-media-reserved-units-with-cli"></a>使用 CLI 缩放媒体预留单位
 
@@ -48,8 +46,8 @@ az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 ## <a name="next-step"></a>后续步骤
 
-[分析视频](analyze-videos-tutorial-with-api.md)
+[分析视频](analyze-videos-tutorial.md)
 
 ## <a name="see-also"></a>另请参阅
 
-* [配额和限制](limits-quotas-constraints.md)
+* [配额和限制](limits-quotas-constraints-reference.md)

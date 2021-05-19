@@ -1,24 +1,18 @@
 ---
-title: Azure 安全中心的警报验证 |Microsoft Docs
+title: Azure 安全中心的警报验证 | Microsoft Docs
 description: 了解如何验证在 Azure 安全中心中正确配置了安全警报
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: f8f17a55-e672-4d86-8ba9-6c3ce2e71a57
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/17/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 74323c63ab8985dee2391a546d82258dcb8d0114
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: b90ca39d7bf01b84400464240bb581a5e7bc922a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099516"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104602377"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure 安全中心的警报验证
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
@@ -30,32 +24,32 @@ ms.locfileid: "102099516"
 
 ## <a name="generate-sample-azure-defender-alerts"></a>生成示例 Azure Defender 警报
 
-如果你使用的是 " [管理和响应 Azure 安全中心中的安全警报](security-center-managing-and-responding-alerts.md)" 中所述的新的 "预览警报" 体验，则可以通过在 Azure 门户的 "安全警报" 页中单击几下鼠标来创建示例警报。
+如果你使用的是[在 Azure 安全中心内管理和响应安全警报](security-center-managing-and-responding-alerts.md)中所述的新的预览警报体验，则可以通过在 Azure 门户的“安全警报”页中单击几下鼠标来创建示例警报。
 
-使用示例警报：
+使用示例警报可：
 
 - 评估 Azure Defender 的价值和功能
-- 验证你对安全警报所做的任何配置 (例如 SIEM 集成、工作流自动化和电子邮件通知) 
+- 验证对安全警报所做的任何配置（例如 SIEM 集成、工作流自动化和电子邮件通知）
 
 创建示例警报：
 
-1. 从 "警报" 页上的工具栏中，选择 " **创建示例警报**"。 
+1. 以具有角色“安全管理员”或“订阅参与者”的用户身份，从“警报”页上的工具栏中选择“创建示例警报”。
 1. 选择订阅。
 1. 选择要查看其警报的相关 Azure Defender 计划。 
-1. 选择 " **创建示例警报**"。
+1. 选择“创建示例警报”。
 
     :::image type="content" source="media/security-center-alert-validation/create-sample-alerts-procedures.png" alt-text="在 Azure 安全中心创建示例警报的步骤":::
     
     此时将显示一条通知，告知正在创建示例警报：
 
-    :::image type="content" source="media/security-center-alert-validation/notification-sample-alerts-creation.png" alt-text="通知：正在生成示例警报。":::
+    :::image type="content" source="media/security-center-alert-validation/notification-sample-alerts-creation.png" alt-text="正在生成示例警报的通知。":::
 
-    几分钟后，警报将出现在 "安全警报" 页中。 它们还将出现在配置为接收 Azure 安全中心安全警报 (连接的 Siem、电子邮件通知等) 上的其他任何位置。
+    几分钟后，警报将出现在“安全警报”页中。 它们还将出现在已配置为接收 Azure 安全中心安全警报（连接的 SIEM、电子邮件通知等）的其他任何位置。
 
     :::image type="content" source="media/security-center-alert-validation/sample-alerts.png" alt-text="安全警报列表中的示例警报":::
 
     > [!TIP]
-    > 警报适用于模拟资源。
+    > 警报用于模拟资源。
 
 ## <a name="simulate-alerts-on-your-azure-vms-windows"></a>模拟 Azure VM (Windows) 上的警报 <a name="validate-windows"></a>
 

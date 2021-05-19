@@ -14,10 +14,10 @@ ms.date: 05/07/2020
 ms.author: ryanwi
 ROBOTS: NOINDEX
 ms.openlocfilehash: 778523869715916bf1e4c32af59ea7a0081df91b
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100103305"
 ---
 # <a name="how-to-discover-endpoints"></a>如何发现终结点
@@ -32,7 +32,7 @@ ms.locfileid: "100103305"
     
     将与所用身份验证协议匹配的终结点与“应用程序(客户端) ID”结合使用，生成特定于应用程序的身份验证请求。
 
-**国家云** (例如 Azure AD 中国、德国和美国政府) 具有其自己的应用注册门户和 Azure AD 身份验证终结点。 有关详细信息，请参阅[国家云概述](authentication-national-cloud.md)。
+“国家云”（例如 Azure AD 中国、德国和美国政府）有自己的应用注册门户和 Azure AD 身份验证终结点。 有关详细信息，请参阅[国家云概述](authentication-national-cloud.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

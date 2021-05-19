@@ -1,18 +1,18 @@
 ---
 title: 安装 Microsoft Azure 恢复服务 (MARS) 代理
-description: 了解如何安装 Microsoft Azure 恢复服务 (MARS) 代理来备份 Windows 计算机。
+description: 了解如何安装用于备份 Windows 计算机的 Microsoft Azure 恢复服务 (MARS) 代理。
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: acf38fdf338fcdd0cd7902d4295f0f03310543a8
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98986864"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安装 Azure 备份 MARS 代理
 
-本文介绍如何将 Microsoft Azure 恢复服务 (MARS) 代理安装。 MARS 也称为 Azure 备份代理。
+本文介绍如何安装 Microsoft Azure 恢复服务 (MARS) 代理。 MARS 也称为 Azure 备份代理。
 
 ## <a name="about-the-mars-agent"></a>关于 MARS 代理
 
@@ -20,7 +20,7 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 
 * 直接在本地 Windows 计算机上。 这些计算机可直接备份到 Azure 中的备份恢复服务保管库。
 * 在运行 Windows（与 Azure VM 备份扩展一起运行）的 Azure VM 上。 代理将备份 VM 上的特定文件和文件夹。
-* 在 Microsoft Azure 备份 Server (MABS) 实例或 System Center Data Protection Manager (DPM) Server。 在此方案中，计算机和工作负荷将备份到 MABS 或 Data Protection Manager。 然后 MABS 或 Data Protection Manager 将通过 MARS 代理备份到 Azure 中的保管库。
+* 在 Microsoft Azure 备份服务器 (MABS) 实例或 System Center Data Protection Manager (DPM) 服务器上。 在此方案中，计算机和工作负荷将备份到 MABS 或 Data Protection Manager。 然后 MABS 或 Data Protection Manager 将通过 MARS 代理备份到 Azure 中的保管库。
 
 可备份的数据取决于代理的安装位置。
 

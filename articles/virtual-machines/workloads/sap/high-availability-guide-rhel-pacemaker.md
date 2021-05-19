@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2021
 ms.author: radeltch
 ms.openlocfilehash: af8523486b42af8c0722a56bdd813d6449692c14
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101676882"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
@@ -66,9 +66,9 @@ ms.locfileid: "101676882"
 * Azure 特定的 RHEL 文档：
   * [Support Policies for RHEL High Availability Clusters - Microsoft Azure Virtual Machines as Cluster Members](https://access.redhat.com/articles/3131341)（RHEL 高可用性群集的支持策略 - Microsoft Azure 虚拟机作为群集成员）
   * [Installing and Configuring a Red Hat Enterprise Linux 7.4 (and later) High-Availability Cluster on Microsoft Azure](https://access.redhat.com/articles/3252491)（在 Microsoft Azure 上安装和配置 Red Hat Enterprise Linux 7.4 [及更高版本] 高可用性群集）
-  * [采用 RHEL 8-高可用性和群集的注意事项](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
+  * [采用 RHEL 8 的注意事项 - 高可用性和群集](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [在 RHEL 7.6 的 Pacemaker 中将 SAP S/4HANA ASCS/ERS 配置为 Standalone Enqueue Server 2 (ENSA2)](https://access.redhat.com/articles/3974941)
-  * [RHEL 适用于 Azure 上的 SAP 产品](https://access.redhat.com/articles/5456301)
+  * [Azure 上的 RHEL for SAP 产品/服务](https://access.redhat.com/articles/5456301)
 
 ## <a name="cluster-installation"></a>群集安装
 
@@ -80,7 +80,7 @@ ms.locfileid: "101676882"
 
 以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2  。
 
-1. **[A]** 注册。 如果使用已启用 RHEL SAP HA 的映像，则不需要执行此步骤。  
+1. [A] 注册。 如果使用已启用 RHEL SAP HA 的映像，则不需要执行此步骤。  
 
    注册虚拟机，将其附加到包含适用于 RHEL 7 的存储库的池。
 
@@ -90,9 +90,9 @@ ms.locfileid: "101676882"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   通过将池附加到 Azure Marketplace PAYG RHEL 映像，你将能够有效地按 RHEL 使用情况进行双重计费：一次用于 PAYG 映像，一次用于附加的池中的 RHEL 权限。 为了缓解这种情况，Azure 现在提供了 BYOS RHEL 映像。 有关详细信息，请参阅[此处](../redhat/byos.md)。  
+   通过将池附加到 Azure 市场 PAYG RHEL 映像，可以有效地对 RHEL 使用情况进行双重计费：一次是对 PAYG 映像进行计费，另一次是对附加池中的 RHEL 权利进行计费。 为了缓解这种情况，Azure 现在提供了 BYOS RHEL 映像。 有关详细信息，请参阅[此处](../redhat/byos.md)。  
 
-1. **[A]** 启用 RHEL for SAP 存储库。 如果使用已启用 RHEL SAP HA 的映像，则不需要执行此步骤。  
+1. [A] 启用 RHEL for SAP 存储库。 如果使用已启用 RHEL SAP HA 的映像，则不需要执行此步骤。  
 
    为了安装所需的包，启用以下存储库。
 
@@ -110,7 +110,7 @@ ms.locfileid: "101676882"
 
    > [!IMPORTANT]
    > 如果资源停止故障或者群集节点无法互相通信，我们建议客户使用以下 Azure 隔离代理版本（或更高版本）以获取更快的故障转移时间：  
-   > RHEL 7.7 或更高版本使用最新的可用围栏-代理包版本  
+   > RHEL 7.7 或更高版本使用最新可用版本的 fence-agents 包  
    > RHEL 7.6：fence-agents-4.2.1-11.el7_6.8  
    > RHEL 7.5：fence-agents-4.0.11-86.el7_5.8  
    > RHEL 7.4：fence-agents-4.0.11-66.el7_4.12  
@@ -131,7 +131,7 @@ ms.locfileid: "101676882"
    请替换以下命令中的 IP 地址和主机名。  
 
    >[!IMPORTANT]
-   > 如果在群集配置中使用主机名，则必须具有可靠的主机名解析。 如果名称不可用并且可能导致群集故障转移延迟，则群集通信将失败。
+   > 如果在群集配置中使用主机名，则必须具有可靠的主机名解析。 如果名称不可用，可能导致故障转移延迟，群集通信就会失败。
    > 使用 /etc/hosts 的好处是群集可以独立于 DNS（也可能会成为单一故障点）。  
 
    <pre><code>sudo vi /etc/hosts
@@ -170,19 +170,19 @@ ms.locfileid: "101676882"
 
    运行以下命令以验证节点并创建群集。 将令牌设置为 30000，以允许内存保留维护。 有关详细信息，请参阅这篇[适用于 Linux][virtual-machines-linux-maintenance] 的文章。  
    
-   如果在 **RHEL 7、windows** 上构建群集，请使用以下命令：  
+   如果在 RHEL 7.x 上构建群集，请使用以下命令：  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
    </code></pre>
 
-   如果在 **RHEL** 2.x 上构建群集，请使用以下命令：  
+   如果在 RHEL 8.X 上构建群集，请使用以下命令：  
    <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
    sudo pcs cluster start --all
    </code></pre>
 
-   通过执行以下命令来验证群集状态：  
+   执行以下命令验证群集状态：  
    <pre><code> # Run the following command until the status of both nodes is online
    sudo pcs status
    # Cluster name: nw1-azr
@@ -205,7 +205,7 @@ ms.locfileid: "101676882"
    #   pcsd: active/enabled
    </code></pre>
 
-1. **[A]** 设置预期的投票。 
+1. [A] 设置预期投票。 
    
    <pre><code># Check the quorum votes 
     pcs quorum status
@@ -214,9 +214,9 @@ ms.locfileid: "101676882"
    </code></pre>
 
    >[!TIP]
-   > 如果构建多节点群集，该群集具有两个以上的节点，请不要将投票设置为2。    
+   > 如果构建多节点群集（即群集的节点超过两个），请勿将投票设置为 2。    
 
-1. **[1]** 允许并发隔离操作
+1. [1] 允许并发隔离操作
 
    <pre><code>sudo pcs property set concurrent-fencing=true
    </code></pre>
@@ -227,7 +227,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 1. 转到 <https://portal.azure.com>
 1. 打开“Azure Active Directory”边栏选项卡  
-   请参阅 "属性" 并记下目录 ID。 这是“租户 ID”。
+   转到“属性”并记下目录 ID。 这是“租户 ID”。
 1. 单击“应用注册”
 1. 单击“新建注册”
 1. 输入名称，选择“仅限此组织目录中的帐户” 
@@ -235,7 +235,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
    不会使用登录 URL，可为它输入任何有效的 URL
 1. 选择“证书和机密”，然后单击“新建客户端机密”
 1. 输入新密钥的说明，选择“永不过期”，并单击“添加”
-1. 将节点设置为值。 此值用作服务主体的 **密码**
+1. 记下该值。 此值用作服务主体的 **密码**
 1. 选择“概述”。 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 为隔离代理创建自定义角色
@@ -293,23 +293,23 @@ sudo pcs property set stonith-timeout=900
 </code></pre>
 
 > [!NOTE]
-> 如果 RHEL 主机名称和 Azure VM 名称不相同，则仅在命令中需要选项 "pcmk_host_map"。 以 **主机名： vm 名称** 格式指定映射。
-> 请参阅命令中的粗体部分。 有关详细信息，请参阅 [应使用哪种格式指定节点到 pcmk_host_map 中的 stonith 设备的映射](https://access.redhat.com/solutions/2619961)
+> 如果 RHEL 主机名和 Azure VM 名称不相同，则命令仅需要“pcmk_host_map”选项。 以 hostname:vm-name 格式指定映射。
+> 请参阅命令中的粗体部分。 有关详细信息，请参阅[应使用哪种格式在 pcmk_host_map 中指定节点到 stonith 设备的映射](https://access.redhat.com/solutions/2619961)
 
-对于 RHEL **7、windows**，使用以下命令来配置隔离设备：    
+对于 RHEL 7.X，请使用以下命令配置隔离设备：    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>
 
-对于 RHEL **2.x**，请使用以下命令来配置隔离设备：  
+对于 RHEL 8.X，请使用以下命令配置隔离设备：  
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>
 
 > [!IMPORTANT]
-> 对监视和防护操作进行反序列化。 因此，如果存在运行时间较长的监视操作和同时发生的防护事件，则群集故障转移不会延迟，因为已在运行监视操作。  
+> 对监视和隔离操作进行反序列化。 因此，如果存在运行时间较长的监视操作和同时发生的隔离事件，则群集故障转移不会延迟，因为监视操作已经在运行。  
 
 ### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]** 启用 STONITH 设备
 

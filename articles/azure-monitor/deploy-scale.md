@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
 ms.openlocfilehash: cc55cd17a547b9c63f2c26479d5797fae016d8d7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102044062"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>使用 Azure Policy 大规模部署 Azure Monitor
@@ -120,57 +120,57 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 ![计划修正](media/deploy-scale/initiative-remediation.png)
 
 
-## <a name="vm-insights"></a>VM insights
-[VM insights](vm/vminsights-overview.md) 是 Azure Monitor 用于监视虚拟机的主要工具。 启用 VM insights 会同时安装 Log Analytics 代理和依赖项代理。 使用 Azure 策略可以确保在创建每个虚拟机时配置每个虚拟机，而不是手动执行这些任务。
+## <a name="vm-insights"></a>VM 见解
+[VM 见解](vm/vminsights-overview.md)是 Azure Monitor 中用于监视虚拟机的主要工具。 启用 VM 见解会同时安装 Log Analytics 代理和依赖项代理。 使用 Azure Policy 可确保在创建每个虚拟机时对其进行配置，而不是手动执行这些任务。
 
 > [!NOTE]
-> VM insights 包含一项名为 **VM Insights 策略覆盖范围** 的功能，可用于在你的环境中发现并修正不相容的虚拟机。 你可以使用此功能，而不是直接使用 azure Vm 的 azure 策略以及使用 Azure Arc 连接的混合虚拟机。对于 Azure 虚拟机规模集，必须使用 Azure 策略创建分配。
+> VM 见解包含一项名为 VM 见解策略覆盖范围的功能，让你可在自己的环境中发现并修正不合规的虚拟机。 可以使用此功能，而不是直接针对 Azure VM 和与 Azure Arc 连接的混合虚拟机使用 Azure Policy。对于 Azure 虚拟机规模集，必须使用 Azure Policy 创建分配。
  
 
-VM insights 包括以下内置方案，这些方案可安装两个代理以实现完全监视。 
+VM 见解包括以下内置计划，这些计划可安装两个代理来实现完全监视。 
 
-|名称 |说明 |
+|名称 |描述 |
 |:---|:---|
-|启用 VM insights | 在 Azure Vm 上安装 Log Analytics 代理和依赖项代理，并将其与 Azure Arc 连接起来。 |
+|启用 VM 见解 | 在 Azure VM 和与 Azure Arc 连接的混合 VM 上安装 Log Analytics 代理和依赖项代理。 |
 |为虚拟机规模集启用 Azure Monitor | 在 Azure 虚拟机规模集上安装 Log Analytics 代理和依赖项代理。 |
 
 
 ### <a name="virtual-machines"></a>虚拟机
-VM insights 包含一项功能，可用于检查每个范围中的虚拟机数，以确定是否已应用该计划，而不是使用 Azure 策略界面为这些计划创建分配。 然后，你可以配置工作区，并使用该接口创建任何所需的分配。
+VM 见解包含一项功能，可用于检查每个范围中的虚拟机数，以确定是否已应用计划，而不是使用 Azure Policy 界面为这些计划创建分配。 然后，可以配置工作区，并使用该接口创建任何所需的分配。
 
-有关此过程的详细信息，请参阅 [使用 Azure 策略启用 VM 见解](./vm/vminsights-enable-policy.md)。
+有关此过程的详细信息，请参阅[使用 Azure Policy 启用 VM 见解](./vm/vminsights-enable-policy.md)。
 
-![VM insights 策略](media/deploy-scale/vminsights-policy.png)
+![VM 见解策略](media/deploy-scale/vminsights-policy.png)
 
 ### <a name="virtual-machine-scale-sets"></a>虚拟机规模集
-要使用 Azure 策略为虚拟机规模集启用监视，请根据要监视的资源的作用域，将 **虚拟机规模集** 计划的 "启用 Azure Monitor 分配给 Azure 管理组、订阅或资源组。 [管理组](../governance/management-groups/overview.md)特别适用于限定策略作用域，尤其是当你的组织有多个订阅时。
+若要使用 Azure Policy 为虚拟机规模集启用监视，请根据要监视的资源的范围，将“为虚拟机规模集启用 Azure Monitor”计划分配给 Azure 管理组、订阅或资源组。 [管理组](../governance/management-groups/overview.md)特别适用于限定策略作用域，尤其是当你的组织有多个订阅时。
 
-![Azure 门户中的 "分配计划" 页的屏幕截图。 计划定义已设置为虚拟机规模集启用 Azure Monitor。](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
+![Azure 门户中“分配计划”页面的屏幕截图。 计划定义设置为“为虚拟机规模集启用 Azure Monitor”。](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-选择要将数据发送到的工作区。 此工作区必须安装了 *VMInsights* 解决方案，如为 [VM insights 配置 Log Analytics 工作区](vm/vminsights-configure-workspace.md)中所述。
+选择要将数据发送到的工作区。 此工作区必须安装 VMInsights 解决方案，如[配置 VM 见解的 Log Analytics 工作区](vm/vminsights-configure-workspace.md)中所述。
 
 ![选择工作区](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
-如果有需要为其分配此策略的现有虚拟机规模集，请创建修正任务。
+如果现有虚拟机规模集需要分配此策略，请创建修正任务。
 
 ![修正任务](media/deploy-scale/virtual-machine-scale-set-remediation.png)
 
 ### <a name="log-analytics-agent"></a>Log Analytics 代理
-你可能需要安装 Log Analytics 代理，但不希望安装依赖关系代理。 仅适用于代理的内置计划，但你可以根据 VM insights 提供的内置策略定义自行创建。
+你可能遇到一些情况要安装 Log Analytics 代理但不安装依赖项代理。 没有内置计划仅仅用于代理，但你可根据 VM 见解提供的内置策略定义来创建自己的计划。
 
 > [!NOTE]
-> 由于它要求 Log Analytics 代理将其数据传递到 Azure Monitor，因此没有理由自行部署依赖关系代理。
+> 无需单独部署依赖项代理，因为它需要 Log Analytics 代理将其数据传递到 Azure Monitor。
 
 
-|名称 |说明 |
+|名称 |描述 |
 |-----|------------|
 |审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出 |如果 VM 映像 (OS) 未在列表中定义且未安装代理，则报告 VM 不合规。 |
 |为 Linux VM 部署 Log Analytics 代理 |如果 VM 映像 (OS) 在列表中定义但未安装代理，请为 Linux VM 部署 Log Analytics 代理。 |
 |为 Windows VM 部署 Log Analytics 代理 |如果 VM 映像 (OS) 在列表中定义但未安装代理，请为 Windows VM 部署 Log Analytics 代理。 |
-| [预览]：应在 Linux Azure Arc 计算机上安装 Log Analytics 代理 |如果在列表中定义了 VM 映像 (操作系统) 并且未安装代理，则会报告混合 Azure Arc 计算机不符合 Linux Vm。 |
-| [预览]：应在 Windows Azure Arc 计算机上安装 Log Analytics 代理 |如果在列表中定义了 VM 映像 (操作系统) 并且未安装代理，则会将混合 Azure Arc 计算机报告为不符合 Windows Vm。 |
-| [预览]：将 Log Analytics 代理部署到 Linux Azure Arc 计算机 |如果在列表中定义了 VM 映像 (OS) ，并且未安装代理，则部署适用于 Linux 混合 Azure Arc 计算机的 Log Analytics 代理。 |
-| [预览]：将 Log Analytics 代理部署到 Windows Azure Arc 计算机 |如果在列表中定义了 VM 映像 (OS) ，并且未安装代理，则部署适用于 Windows 混合 Azure Arc 计算机的 Log Analytics 代理。 |
+| [预览]：Log Analytics 代理应安装在 Linux Azure Arc 计算机中 |如果列表中定义了 VM 映像 (OS) 且未安装代理，则会报告混合 Azure Arc 计算机不符合 Linux VM。 |
+| [预览]：Log Analytics 代理应安装在 Windows Azure Arc 计算机中 |如果列表中定义了 VM 映像 (OS) 且未安装代理，则会报告混合 Azure Arc 计算机不符合 Windows VM。 |
+| [预览]：将 Log Analytics 代理部署到 Linux Azure Arc 计算机 |如果列表中定义了 VM 映像 (OS) 且未安装代理，请为 Linux 混合 Azure Arc 计算机部署 Log Analytics 代理。 |
+| [预览]：将 Log Analytics 代理部署到 Windows Azure Arc 计算机 |如果列表中定义了 VM 映像 (OS) 且未安装代理，请为 Windows 混合 Azure Arc 计算机部署 Log Analytics 代理。 |
 |审核虚拟机规模集中的依赖项代理部署 - VM 映像 (OS) 未列出 |如果虚拟机规模集映像 (OS) 未在列表中定义且未安装代理，则报告 VM 不合规。 |
 |审核虚拟机规模集中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出 |如果虚拟机规模集映像 (OS) 未在列表中定义且未安装代理，则报告 VM 不合规。 |
 |为 Linux 虚拟机规模集部署 Log Analytics 代理 |如果 VM 映像 (OS) 在列表中定义但未安装代理，请为 Linux 虚拟机规模集部署 Log Analytics 代理。 |

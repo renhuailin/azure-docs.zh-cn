@@ -1,6 +1,6 @@
 ---
 title: 处理地图事件 | Microsoft Azure Maps
-description: 了解用户与地图进行交互时要触发的事件。 查看所有受支持的地图事件的列表。 请参阅如何使用 Azure Maps Web SDK 来处理事件。
+description: 了解用户与地图交互时触发的事件。 查看所有受支持地图事件的列表。 请参阅“如何使用 Azure Maps Web SDK 处理事件”。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2019
@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 8121ceb68bdea9332316a9508bf6f4731e05b0ba
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92890779"
 ---
 # <a name="interact-with-the-map"></a>与地图交互
@@ -40,7 +40,7 @@ ms.locfileid: "92890779"
 
 ## <a name="interact-with-html-marker"></a>与 HTML 标记交互
 
-下面的代码将 JavaScript 映射事件添加到 HTML 标记。 它还突出显示了与 HTML 标记进行交互时触发的事件的名称。
+以下代码将 JavaScript 地图事件添加到 HTML 标记。 它还突出显示了与 HTML 标记进行交互时触发的事件的名称。
 
 <br/>
 
@@ -98,11 +98,11 @@ ms.locfileid: "92890779"
 | `sourceremoved`     | 在从地图移除 `DataSource` 或 `VectorTileSource` 时触发。|
 | `styledata`         | 在加载或更改地图的样式时触发。|
 | `styleimagemissing` | 在层尝试从不存在的图像子画面加载图像时触发 |
-| `tokenacquired`     | 获取 Azure Active Directory 访问令牌时触发。|
-| `touchcancel`       | 在 `touchcancel` 映射内发生事件时触发。|
-| `touchend`          | 在 `touchend` 映射内发生事件时触发。|
-| `touchmove`         | 在 `touchmove` 映射内发生事件时触发。|
-| `touchstart`        | 在 `touchstart` 映射内发生事件时触发。|
+| `tokenacquired`     | 在获取 Azure Active Directory 访问令牌时触发。|
+| `touchcancel`       | 在地图中发生 `touchcancel` 事件时触发。|
+| `touchend`          | 在地图中发生 `touchend` 事件时触发。|
+| `touchmove`         | 在地图中发生 `touchmove` 事件时触发。|
+| `touchstart`        | 在地图中发生 `touchstart` 事件时触发。|
 | `wheel`             | 在地图中发生鼠标滚轮事件时触发。|
 | `zoom`              | 因用户交互或方法而在从一个缩放级别到另一个缩放级别的动画过渡期间反复触发。|
 | `zoomend`           | 因用户交互或方法而在地图完成从一个缩放级别过渡到另一缩放级别后触发。|

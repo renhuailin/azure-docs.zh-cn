@@ -7,12 +7,12 @@ description: 使用 GitHub Actions 和 Azure Dev Spaces 直接在 Azure Kubernet
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, GitHub Actions, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 37ad621609f5a5631b498e55483e5d16e8ac4472
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 84d4f94cdb756b0bc11026baaa3acf065604c421
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202104"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777538"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub Actions 和 Azure Kubernetes 服务（预览版）
 
@@ -151,7 +151,7 @@ git push origin bike-images
 
 在推送完成后，导航到你在 GitHub 上的分叉存储库，以便在该分叉存储库（包含用作基础分支的主分支（相对于 bike-images 分支相而言））中创建拉取请求。
 
-在你的拉取请求打开后，导航到“操作”选项卡。验证是否有一个新操作已启动且正在构建 Bikes 服务。
+打开拉取请求后，导航到“操作”选项卡。验证新操作是否已启动并正在生成 Bikes 服务 。
 
 ## <a name="view-the-child-space-with-your-changes"></a>查看包含更改的子空间
 
@@ -178,10 +178,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [Azure Dev Spaces 工作原理](../how-dev-spaces-works.md)
 
 [azure-cli-installed]: /cli/azure/install-azure-cli
-[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
 [bikes-server-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/server.js#L232-L233
 [bike-sharing-gh]: https://github.com/Azure/dev-spaces/
 [bike-sharing-values-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml

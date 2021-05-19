@@ -6,13 +6,13 @@ ms.topic: include
 ms.date: 02/21/2021
 ms.author: alkohli
 ms.openlocfilehash: 112c30fdd242c20f11c43f42ba54e3717e074bbb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101706023"
 ---
-下面是 Data Box 设备支持的存储帐户和存储类型的列表。 有关所有类型的存储帐户的所有功能的完整列表，请参阅 [存储帐户的类型](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts)。
+下面是 Data Box 设备支持的存储帐户和存储类型的列表。 有关所有类型存储帐户的完整功能的完整列表，请参阅[存储帐户类型](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts)。
 
 对于导入顺序，下表显示了支持的存储帐户。
 
@@ -26,9 +26,9 @@ ms.locfileid: "101706023"
 | Azure Premium FileStorage |  |  | Y |  |  
 | Blob 存储标准 |Y | | |支持热和冷。 |
 
-\**-上传到页 blob 的数据必须为512字节，如 vhd。*
+\* - 上传到页 blob 的数据必须是 512 字节对齐，例如 VHD。
 
-对于出口订单，下表显示了支持的存储帐户。
+对于导出顺序，下表显示了支持的存储帐户。
 
 | **存储帐户/支持的存储类型** | **块 blob** |**页 blob** _ |_ *Azure 文件** |**支持的访问层**|
 | --- | --- | -- | -- | -- |
@@ -39,13 +39,13 @@ ms.locfileid: "101706023"
 | 常规用途 v2 高级  |  |Y | | |
 | Azure Premium FileStorage |  |  | Y |  |
 | Blob 存储标准 |Y | | |热、冷 |
-| 块 Blob 存储高级版 |Y | | |热、冷 |
-| 页 Blob 存储高级版 | |Y | | |
+| 块 Blob 存储高级 |Y | | |热、冷 |
+| 页 Blob 存储高级 | |Y | | |
 
 > [!IMPORTANT]
-> - 对于常规用途的帐户，Data Box 不支持导入订单的队列、表和磁盘存储类型。 对于出口订单，Data Box 不支持用于常规用途帐户的队列、表、磁盘和 Azure Data Lake 第2代存储类型。
-> - Data Box 不支持 Blob 存储和块 Blob 存储帐户的追加 blob。
-> - Data Box 不支持 Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持。
-> - 上传到页 blob 的数据必须为512字节，如 Vhd。
+> - 对于常规用途的帐户，Data Box 不支持队列、表和磁盘存储类型的导入顺序。 对于导出顺序，Data Box 不支持用于常规用途帐户的队列、表、磁盘和 Azure Data Lake Gen 2 存储类型。
+> - Data Box 不支持为 Blob 存储和块 Blob 存储帐户追加 Blob。
+> - Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持不受 Data Box 支持。
+> - 上传到页 blob 的数据必须是 512 字节对齐，例如 VHD。
 > - 最多可导出 80 TB。
 > - 不会导出文件历史记录和 blob 快照。

@@ -13,16 +13,16 @@ ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
 ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94989184"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL 数据库和 Azure SQL 托管实例安全功能概述
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文概述使用 [AZURE Sql 数据库](sql-database-paas-overview.md)、 [azure Sql 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)保护应用程序数据层的基础知识。 所述的安全策略遵循如下图所示的分层深度防御方法，并从外向内移动：
+本文概述使用 [Azure SQL 数据库](sql-database-paas-overview.md)、[Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 保护应用程序数据层的基础知识。 所述的安全策略遵循如下图所示的分层深度防御方法，并从外向内移动：
 
 ![分层深度防御的关系图。 客户数据将包含在网络安全层、访问管理层以及威胁和信息保护层中。](./media/security-overview/sql-security-layer.png)
 
@@ -46,7 +46,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 ## <a name="access-management"></a>访问管理
 
 > [!IMPORTANT]
-> 管理 Azure 中的数据库和服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中的 Azure 基于角色的访问控制](../../role-based-access-control/overview.md)。
+> 管理 Azure 中的数据库和服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中 Azure 基于角色的访问控制](../../role-based-access-control/overview.md)。
 
 ### <a name="authentication"></a>身份验证
 
@@ -65,7 +65,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
     其他可用的 Azure AD 身份验证选项包括[适用于 SQL Server Management Studio 的 Active Directory 通用身份验证](authentication-mfa-ssms-overview.md)连接，其中包括[多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)和[条件访问](conditional-access-configure.md)。
 
 > [!IMPORTANT]
-> 管理 Azure 中的数据库和服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 中基于角色的访问控制 Azure 门户](../../role-based-access-control/overview.md)。 使用防火墙规则控制访问权限不应用于“SQL 托管实例”。 有关所需网络配置的详细信息，请参阅以下有关[连接到托管实例](../managed-instance/connect-application-instance.md)的文章。
+> 管理 Azure 中的数据库和服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中 Azure 基于角色的访问控制](../../role-based-access-control/overview.md)。 使用防火墙规则控制访问权限不应用于“SQL 托管实例”。 有关所需网络配置的详细信息，请参阅以下有关[连接到托管实例](../managed-instance/connect-application-instance.md)的文章。
 
 ## <a name="authorization"></a>授权
 
@@ -97,9 +97,9 @@ SQL 数据库和 SQL 托管实例审核可跟踪数据库活动，通过将数�
 
 ### <a name="transport-layer-security-encryption-in-transit"></a>传输层安全性（传输中加密）
 
-SQL Database、SQL 托管实例和 Azure Synapse Analytics 通过使用 [传输层安全性 (TLS) ](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)对运动中的数据进行加密来保护客户数据。
+SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 通过使用[传输层安全性 (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) 加密动态数据来保护客户数据。
 
-SQL Database、SQL 托管实例和 Azure Synapse Analytics 始终对所有连接强制执行加密 (SSL/TLS) 。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 **Encrypt** 或 **TrustServerCertificate** 设置如何。
+对于所有连接，SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 始终强制执行加密 (SSL/TLS)。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 **Encrypt** 或 **TrustServerCertificate** 设置如何。
 
 作为最佳做法，建议在应用程序使用的连接字符串中指定加密的连接，而“不要”信任服务器证书。 这会强制应用程序验证服务器证书，从而防止应用程序容易受到中间人类型的攻击。
 
@@ -112,7 +112,7 @@ SQL Database、SQL 托管实例和 Azure Synapse Analytics 始终对所有连接
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>透明数据加密（静态加密）
 
-[透明数据加密 (适用于 Sql 数据库的 TDE) 、sql 托管实例和 Azure Synapse Analytics](transparent-data-encryption-tde-overview.md) 增加了一层安全保护，以帮助保护静态数据，防止未经授权或脱机访问原始文件或备份。 常见方案包括数据中心被盗或对硬件或媒体（如磁盘驱动器和备份磁带）的不安全处置。 TDE 使用 AES 加密算法加密整个数据库，无需应用程序开发人员对现有应用程序进行任何更改。
+[SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 的透明数据加密 (TDE)](transparent-data-encryption-tde-overview.md) 进一步加强了安全性，帮助保护静态数据不受未经授权或脱机访问原始文件或备份的影响。 常见方案包括数据中心被盗或对硬件或媒体（如磁盘驱动器和备份磁带）的不安全处置。 TDE 使用 AES 加密算法加密整个数据库，无需应用程序开发人员对现有应用程序进行任何更改。
 
 在 Azure 中，所有新创建的数据库都默认处于加密状态，且数据库加密密钥通过一个内置的服务器证书保护。  证书维护和轮换由服务管理，无需用户输入。 喜欢控制加密密钥的客户可以管理 [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) 中的密钥。
 
@@ -150,7 +150,7 @@ SQL Database、SQL 托管实例和 Azure Synapse Analytics 始终对所有连接
 
 ### <a name="compliance"></a>合规性
 
-除了上述有助于应用程序符合各项安全要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://www.microsoft.com/trust-center/compliance/compliance-overview) ，你可以在其中找到最新的 SQL 数据库符合性认证列表。
+除了上述有助于应用程序符合各项安全要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://www.microsoft.com/trust-center/compliance/compliance-overview)，你可在这里找到 SQL 数据库符合性认证的最新列表。
 
 ## <a name="next-steps"></a>后续步骤
 

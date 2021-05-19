@@ -1,7 +1,7 @@
 ---
 title: Xamarin iOS 注意事项 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解将 Xamarin iOS 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用的注意事项。
+description: 了解将 Xamarin iOS 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的注意事项。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -14,15 +14,15 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 62eb4ab9eb6e4b0e7be0f7aadae1173950d21615
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98064481"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>将 Xamarin iOS 与 MSAL.NET 配合使用时的注意事项
 
-在 Xamarin iOS 上使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 时，应执行以下操作：
+在 Xamarin iOS 上使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 时，应该：
 
 - 重写并实现 `AppDelegate` 中的 `OpenUrl` 函数。
 - 启用密钥链组。
@@ -116,7 +116,7 @@ Microsoft 已发布[安全公告](https://github.com/aspnet/AspNetCore/issues/46
 
 在 iOS 13 上，Apple 删除了应用程序在通过自定义 URL 方案从外部应用程序接收响应时读取源应用程序的功能，进行了一项重大的 API 更改。
 
-Apple 的 [UIApplicationOpenURLOptionsSourceApplicationKey](https://developer.apple.com/documentation/uikit/uiapplicationopenurloptionssourceapplicationkey?language=objc) 状态文档：
+Apple 关于 [UIApplicationOpenURLOptionsSourceApplicationKey](https://developer.apple.com/documentation/uikit/uiapplicationopenurloptionssourceapplicationkey?language=objc) 状态的文档：
 
 > 如果请求源自属于你的团队的另一个应用，UIKit 会将此键的值设置为该应用的 ID。如果源应用的团队标识符不同于当前应用的团队标识符，则该键的值为 nil。
 
@@ -153,6 +153,6 @@ Apple 的 [UIApplicationOpenURLOptionsSourceApplicationKey](https://developer.ap
 
 示例 | 平台 | 说明
 ------ | -------- | -----------
-[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、通用 Windows 平台 (UWP) | 一个简单的 Xamarin Forms 应用，演示如何通过 Azure AD 2.0 终结点使用 MSAL 对 Microsoft 个人帐户和 Azure AD 进行身份验证。 该应用还演示如何使用生成的令牌来访问 Microsoft Graph。
+[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、通用 Windows 平台 (UWP) | 一个简单的 Xamarin Forms 应用，展示了如何使用 MSAL 通过 Azure AD 2.0 终结点对 Microsoft 个人帐户和 Azure AD 进行身份验证。 该应用还演示如何使用生成的令牌来访问 Microsoft Graph。
 
 <!--- https://github.com/Azure-Samples/active-directory-xamarin-native-v2/blob/master/ReadmeFiles/Topology.png -->

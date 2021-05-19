@@ -13,28 +13,28 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101688461"
 ---
 # <a name="email-one-time-passcode-authentication"></a>电子邮件一次性密码身份验证
 
-本文介绍如何为 B2B 来宾用户启用电子邮件一次性密码身份验证。 电子邮件一次性密码功能在无法通过其他方式（例如 Azure AD、Microsoft 帐户 (MSA) 或 Google federation）进行身份验证时对 B2B 来宾用户进行身份验证。 使用一次性密码身份验证时，无需创建 Microsoft 帐户。 当来宾用户兑换邀请或访问共享资源时，他们可以请求临时代码，该代码会发送到他们的电子邮件地址。 他们输入此代码后，可以继续登录。
+本文介绍了如何启用适用于 B2B 来宾用户的电子邮件一次性密码身份验证。 在无法通过 Azure AD、Microsoft 帐户 (MSA) 或 Google 联合身份验证等其他方式对 B2B 来宾用户进行身份验证时，可以使用电子邮件一次性密码功能对其进行身份验证。 使用一次性密码身份验证时，无需创建 Microsoft 帐户。 当来宾用户兑换邀请或访问共享资源时，他们可以请求临时代码，该代码会发送到他们的电子邮件地址。 他们输入此代码后，可以继续登录。
 
-![电子邮件一次性密码概述示意图](media/one-time-passcode/email-otp.png)
+![电子邮件一次性密码功能概览图](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> - **从10月2021开始**，将为所有现有租户启用电子邮件一次性密码功能，并在默认情况下为新租户启用此功能。 如果不想允许此功能自动打开，可以禁用它。 请参阅下面 [的禁用电子邮件一次性密码](#disable-email-one-time-passcode) 。
-> - 电子邮件一次性密码设置已从 **外部协作设置** 移动到 **所有标识提供者** 的 Azure 门户。
+> - 从 2021 年 10 月开始，将为所有现有租户启用电子邮件一次性密码功能，并在默认情况下为新租户启用此功能。 如果不希望此功能自动启用，则可以禁用它。 请参阅下面的[禁用电子邮件一次性密码](#disable-email-one-time-passcode)。
+> - 电子邮件一次性密码设置已经在 Azure 门户中从“外部协作设置”移动到“所有标识提供者” 。
 
 > [!NOTE]
-> 一次性密码用户必须使用包含租户上下文的链接登录（例如，`https://myapps.microsoft.com/?tenantid=<tenant id>` 或 `https://portal.azure.com/<tenant id>`，或者经过验证的域 `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`）。 也可以使用应用程序和资源的直接链接，只要这些链接包含租户上下文即可。 来宾用户目前无法使用不包含租户上下文的终结点登录。 例如，使用 `https://myapps.microsoft.com` ， `https://portal.azure.com` 将导致错误。
+> 一次性密码用户必须使用包含租户上下文的链接登录（例如，`https://myapps.microsoft.com/?tenantid=<tenant id>` 或 `https://portal.azure.com/<tenant id>`，或者经过验证的域 `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`）。 也可以使用应用程序和资源的直接链接，只要这些链接包含租户上下文即可。 来宾用户目前无法使用不包含租户上下文的终结点登录。 例如，使用 `https://myapps.microsoft.com` 和 `https://portal.azure.com` 将会导致错误。
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>一次性密码来宾用户的用户体验
 
-启用电子邮件一次性密码功能后， [满足特定条件](#when-does-a-guest-user-get-a-one-time-passcode) 的新邀请用户将使用一次性密码身份验证。 如果来宾用户在电子邮件一次性密码启用之前兑换邀请，将继续使用相同的身份验证方法。
+启用电子邮件一次性密码功能后，[满足特定条件](#when-does-a-guest-user-get-a-one-time-passcode)的新邀请的用户将使用一次性密码身份验证。 在启用一次性密码之前已兑换邀请的来宾用户将继续使用同一身份验证方法。
 
 借助一次性密码身份验证，来宾用户可以通过单击直接链接或使用邀请电子邮件来兑换邀请。 在任一情况下，浏览器中的消息都指示代码将发送到来宾用户的电子邮件地址。 来宾用户选择“发送代码”：
 
@@ -59,7 +59,7 @@ ms.locfileid: "101688461"
 
 在邀请时，没有迹象表明你邀请的用户将使用一次性密码身份验证。 但是当来宾用户登录时，如果不能使用其他身份验证方法，则可以使用一次性密码身份验证作为应变方法。
 
-查看用户的详细信息中的 " **源** " 属性，可以查看 guest 用户是否通过一次性密码进行身份验证。 在 Azure 门户中，请参阅 " **Azure Active Directory**  >  **用户**"，然后选择用户以打开详细信息页。
+通过查看用户详细信息中的“源”属性，可以查看来宾用户是否使用一次性密码进行身份验证。 在 Azure 门户中，请转到“Azure Active Directory” > “用户”，然后选择用户以打开详细信息页 。
 
 ![显示具有 OTP 源值的一次性密码用户的屏幕截图](media/one-time-passcode/guest-user-properties.png)
 
@@ -72,13 +72,13 @@ ms.locfileid: "101688461"
 
 ## <a name="disable-email-one-time-passcode"></a>禁用电子邮件一次性密码
 
-从10月2021开始，将为所有现有租户启用电子邮件一次性密码功能，并在默认情况下为新租户启用此功能。 此时，Microsoft 将不再支持通过创建非托管 ( "病毒" 或 "实时" ) Azure AD 用于 B2B 协作方案的帐户和租户来兑换邀请。 我们正在启用电子邮件一次性密码功能，因为它为你的来宾用户提供了无缝的回退身份验证方法。 但是，如果您选择不使用此功能，则可以禁用此功能。
+从 2021 年 10 月开始，将为所有现有租户启用电子邮件一次性密码功能，并在默认情况下为新租户启用此功能。 届时，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管（“病毒性”或“即时”）Azure AD 帐户和租户进行的邀请。 我们将启用电子邮件一次性密码功能，因为它为你的来宾用户提供了一种无缝的回退身份验证方法。 但如果你选择不使用此功能，则可以禁用此功能。
 
 > [!NOTE]
 >
-> 如果已在租户中启用电子邮件一次性密码功能，并将其关闭，则已兑换一次性密码的任何来宾用户将无法登录。 你可以删除来宾用户并将其 reinvite，以便他们可以使用另一种身份验证方法再次登录。
+> 如果电子邮件一次性密码功能已在租户中启用，而你将其关闭，则已兑换一次性密码的任何来宾用户将无法登录。 你可以删除来宾用户，然后重新邀请他们，以便他们可以使用另一种身份验证方法重新登录。
 
-### <a name="to-disable-the-email-one-time-passcode-feature"></a>禁用电子邮件一次性密码功能
+### <a name="to-disable-the-email-one-time-passcode-feature"></a>若要禁用电子邮件一次性密码功能
 
 1. 以 Azure AD 全局管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -86,48 +86,48 @@ ms.locfileid: "101688461"
 
 3. 选择“外部标识” > “所有标识提供者”。
 
-4. 选择 " **电子邮件一次性密码**"，然后选择 " **禁用来宾的电子邮件一次性密码**"。
+4. 选择“电子邮件一次性密码”，然后再选择“为来宾禁用电子邮件一次性密码” 。
 
    > [!NOTE]
-   > 电子邮件一次性密码设置已从 **外部协作设置** 移动到 **所有标识提供者** 的 Azure 门户。
-   > 如果你看到切换，而不是电子邮件一次性密码选项，这意味着你之前已启用、禁用或选择加入功能预览。 选择 " **否** " 以禁用该功能。
+   > 电子邮件一次性密码设置已经在 Azure 门户中从“外部协作设置”移动到“所有标识提供者” 。
+   > 如果看到切换而不是电子邮件一次性密码选项，这意味着你之前已启用、禁用或选择进行功能预览。 选择“否”以禁用该功能。
    >
-   >![电子邮件一次性密码切换禁用](media/one-time-passcode/enable-email-otp-disabled.png)
+   >![禁用的电子邮件一次性密码切换](media/one-time-passcode/enable-email-otp-disabled.png)
 
 5. 选择“保存”。
 
 ## <a name="note-for-public-preview-customers"></a>公共预览版客户注意事项
 
-如果你之前已选择使用电子邮件一次性密码公共预览版，则自动功能启用10月2021日期不适用于你，因此你的相关业务流程将不会受到影响。 此外，在 Azure 门户中，在 " **来宾的电子邮件一次性密码** " 属性下，你将不会看到 " **自动为2021年10月开始的来宾启用电子邮件一次性密码**" 选项。 相反，你将看到以下 **"是" 或 "** **否** " 切换：
+如果之前已选择加入电子邮件一次性密码公共预览版，则在 2021 年 10 月不会为你自动启用功能，因此你的相关业务流程不会受影响。 此外，在 Azure 门户中的“来宾电子邮件一次性密码”属性下，将不会显示“从 2021 年 10 月开始自动为来宾启用电子邮件一次性密码”选项 ， 而会显示以下“是”或“否”的切换 ：
 
 ![已选择加入电子邮件一次性密码](media/one-time-passcode/enable-email-otp-opted-in.png)
 
-但是，如果想要选择退出功能并允许在10月2021中自动启用该功能，则可以使用 Microsoft Graph API [电子邮件身份验证方法配置资源类型](/graph/api/resources/emailauthenticationmethodconfiguration)，恢复到默认设置。 恢复到默认设置后，以下选项将在 " **来宾的电子邮件一次性密码**" 下提供：
+但如果倾向于选择退出该功能，并允许在 2021 年 10 月自动启用，则可以使用 Microsoft Graph API [电子邮件身份验证方法配置类型](/graph/api/resources/emailauthenticationmethodconfiguration)，还原到默认设置。 还原到默认设置后，“来宾电子邮件一次性密码”下将提供以下选项：
 
-![启用选择的电子邮件一次性密码](media/one-time-passcode/email-otp-options.png)
+![启用“已选择加入电子邮件一次性密码”](media/one-time-passcode/email-otp-options.png)
 
-- **自动为从10月2021开始的来宾启用电子邮件一次性密码**。  (默认值) 如果尚未为你的租户启用电子邮件一次性密码功能，则会在10月2021开始自动启用。 如果要在此时启用此功能，则无需执行任何其他操作。 如果已启用或禁用该功能，则此选项将不可用。
+- 自 2021 年 10 月起，自动为来宾启用电子邮件一次性密码。 （默认）如果尚未为租户启用电子邮件一次性密码功能，则会从 2021 年 10 开始自动启用该功能。 如果届时要启用该功能，无需执行任何其他操作。 如果已启用或禁用该功能，此选项将不可用。
 
-- **立即为来宾启用电子邮件一次性密码**。 为租户启用 "一次性密码" 电子邮件功能。
+- 立即为来宾启用电子邮件一次性密码。 为租户启用电子邮件一次性密码功能。
 
-- **对来宾禁用电子邮件一次性密码**。 关闭租户的电子邮件一次性密码功能，并阻止该功能在10月2021启用。
+- 为来宾禁用电子邮件一次性密码。 为租户关闭电子邮件一次性密码功能，并阻止该功能在 2021 年 10 月启用。
 
-## <a name="note-for-azure-us-government-customers"></a>Azure 美国政府客户的注意事项
+## <a name="note-for-azure-us-government-customers"></a>Azure 美国政府客户注意事项
 
-默认情况下，Azure 美国政府版云中会禁用电子邮件一次性密码功能。  
+在 Azure 美国政府云中，默认禁用电子邮件一次性密码功能。  
 
- ![电子邮件一次性密码已禁用](media/one-time-passcode/enable-email-otp-disabled.png)
+ ![已禁用电子邮件一次性密码](media/one-time-passcode/enable-email-otp-disabled.png)
 
-若要在 Azure 美国政府云中启用电子邮件一次性密码功能：
+要在 Azure 美国政府云中启用电子邮件一次性密码功能：
 
 1. 以 Azure AD 全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。
-3. 选择 "**组织关系**   >  **设置**"。
+3. 选择“组织关系” >“设置” **** 。
 
    > [!NOTE]
-   > - 如果看不到 **组织关系**，请在顶部搜索栏中搜索 "外部标识"。
+   > - 如果未看到“组织关系”，请在顶部的搜索栏中搜索“外部标识”。
 
-4. 选择 " **电子邮件一次性密码**"，然后选择 **"是"**。
+4. 选择“电子邮件一次性密码”，然后选择“是” 。
 5. 选择“保存”。
 
-有关当前限制的详细信息，请参阅 [AZURE 美国政府云](current-limitations.md#azure-us-government-clouds)。
+有关当前限制的详细信息，请参阅 [Azure 美国政府云](current-limitations.md#azure-us-government-clouds)。

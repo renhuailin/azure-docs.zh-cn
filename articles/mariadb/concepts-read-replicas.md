@@ -3,15 +3,15 @@ title: 只读副本 - Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 中的只读副本：选择区域、创建副本、连接到副本、监视复制和停止复制。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 375db7e5c113c2a48642365624207ce3acbde8a2
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 39547e3156a684293a0624f974a8b0930f656485
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664208"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
@@ -23,7 +23,7 @@ ms.locfileid: "98664208"
 若要详细了解 GTID 复制，请参阅 [MariaDB 复制文档](https://mariadb.com/kb/en/library/gtid/)。
 
 > [!NOTE]
-> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="when-to-use-a-read-replica"></a>何时使用只读副本
 
@@ -39,28 +39,28 @@ ms.locfileid: "98664208"
 
 可以在与源服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
 
-可以在任何 [Azure Database for MariaDB 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)中拥有源服务器。  源服务器可以在其配对区域或通用副本区域中拥有副本。 下图显示了根据源区域可用的副本区域。
+可以在任何 [Azure Database for MariaDB 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)中拥有源服务器。  源服务器可以在其配对区域或通用副本区域中拥有副本。 下图显示了哪些副本区域可用，具体取决于你的源区域。
 
-[![读取副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![只读副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>通用副本区域
 
-无论源服务器位于何处，都可以在以下任何区域中创建读取副本。 支持的通用副本区域包括：
+无论源服务器位于何处，在以下任何区域均可创建只读副本。 支持的通用副本区域包括：
 
-澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国中部、东亚、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部2、美国中部。
+澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国中部、东亚、美国东部、美国东部 2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部 2、美国中西部。
 
 ### <a name="paired-regions"></a>配对区域
 
-除通用副本区域外，还可以在源服务器的 Azure 配对区域中创建读取副本。 如果你不知道所在区域的配对，可以从 [Azure 配对区域](../best-practices-availability-paired-regions.md)一文中了解更多信息。
+除通用副本区域外，还可以在源服务器的 Azure 配对区域中创建只读副本。 如果你不知道所在区域的配对，可以从 [Azure 配对区域](../best-practices-availability-paired-regions.md)一文中了解更多信息。
 
 如果你使用跨区域副本进行灾难恢复规划，建议你在配对区域而不是其他某个区域中创建副本。 配对区域可避免同时进行更新，并会优先考虑物理隔离和数据驻留。  
 
 但是，需要考虑以下限制： 
 
-* 区域可用性： Azure Database for MariaDB 在法国中部、阿拉伯联合酋长国北部和德国中部提供。 但是，它们的配对区域不可用。
+* 区域可用性：Azure Database for MariaDB 可在法国中部、阿拉伯联合酋长国北部和德国中部使用。 但是，它们的配对区域不可用。
 
 * 单向对：某些 Azure 区域仅在一个方向上配对。 这些区域包括印度西部、巴西南部和 US Gov 弗吉尼亚州。 
-   这意味着印度西部的源服务器可以在印度南部创建副本。 但是，印度的源服务器不能在印度西部创建副本。 这是因为印度西部的次要区域是印度南部，但印度南部的次要区域不是印度西部。
+   这意味着，印度西部的源服务器可以在印度南部创建副本。 但是，印度南部的源服务器无法在印度西部创建副本。 这是因为印度西部的次要区域是印度南部，但印度南部的次要区域不是印度西部。
 
 ## <a name="create-a-replica"></a>创建副本
 
@@ -80,7 +80,7 @@ ms.locfileid: "98664208"
 
 创建时，副本会继承源服务器的防火墙规则。 之后，这些规则将独立于源服务器。
 
-副本会从源服务器继承管理员帐户。 源服务器上的所有用户帐户都会复制到只读副本。 只能使用源服务器上可用的用户帐户连接到只读副本。
+副本会从源服务器继承管理员帐户。 源服务器上的所有用户帐户都会复制到只读副本。 只能通过使用源服务器上可用的用户帐户来连接到只读副本。
 
 可以使用主机名和有效的用户帐户连接到副本，就像在常规的 Azure Database for MariaDB 服务器上连接一样。 对于名称为 **myreplica**、管理员用户名为 **myadmin** 的服务器，可以使用 mysql CLI 连接到副本：
 
@@ -119,17 +119,17 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 > [!Tip]
 > 如果你故障转移到副本，在取消副本与源的链接时的滞后时间将表明会丢失多少数据。
 
-确定要故障转移到副本后，
+决定要故障转移到某个副本后，
 
-1. 停止复制到副本。
+1. 请停止将数据复制到副本。
 
-   此步骤是使副本服务器能够接受写入所必需的。 作为此过程的一部分，将从主副本服务器 delinked 副本服务器。 启动停止复制后，后端进程通常需要大约2分钟的时间才能完成。 请参阅本文的[停止复制](#stop-replication)部分，了解此操作的潜在影响。
+   此步骤是使副本服务器能够接受写入所必需的。 在此过程中，副本服务器与主服务器之间的链接会取消。 在启动了停止复制操作之后，后端进程通常需要大约 2 分钟才能完成。 请参阅本文的[停止复制](#stop-replication)部分，了解此操作的潜在影响。
 
-2. 将应用程序指向 (以前) 副本。
+2. 将应用程序指向（以前的）副本。
 
    每个服务器都有唯一的连接字符串。 更新应用程序，使之指向（以前的）副本而不是主服务器。
 
-应用程序成功处理读取和写入后，即已完成故障转移。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
+在应用程序成功处理了读取和写入操作之后，故障转移即已完成。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
 
 ## <a name="considerations-and-limitations"></a>注意事项和限制
 
@@ -150,10 +150,10 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 
 ### <a name="replica-configuration"></a>副本配置
 
-使用与主副本相同的服务器配置创建副本。 创建副本后，可以独立于源服务器更改多项设置：计算代系、vCore 数、存储、备份保留期和 MariaDB 引擎版本。 定价层也可以独立更改，但“基本”层除外。
+副本是使用与主服务器相同的服务器配置创建的。 创建副本后，可以独立于源服务器更改多项设置：计算代系、vCore 数、存储、备份保留期和 MariaDB 引擎版本。 定价层也可以独立更改，但“基本”层除外。
 
 > [!IMPORTANT]
-> 将源服务器的配置更新为新值之前，请将副本配置更新为与这些新值相等或更大的值。 此操作可确保副本能够跟上对主副本所做的任何更改。
+> 将源服务器的配置更新为新值之前，请将副本配置更新为与这些新值相等或更大的值。 此操作可确保副本可以跟得上主服务器的变化。
 
 在创建副本时，防火墙规则和参数设置会从源服务器继承到副本。 之后，副本的规则便会独立。
 
@@ -180,7 +180,7 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 
 副本服务器上的 [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) 参数处于锁定状态。
 
-若要在源服务器上更新上述参数之一，请删除副本服务器，更新主副本上的参数值，然后重新创建副本。
+若要在源服务器上更新上述某个参数，请删除副本服务器，更新主服务器上的参数值，然后重新创建副本。
 
 ### <a name="other"></a>其他
 

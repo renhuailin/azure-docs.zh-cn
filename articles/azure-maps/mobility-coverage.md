@@ -1,6 +1,6 @@
 ---
-title: 'Microsoft Azure 地图移动服务 (预览版中的移动性 (传输) 覆盖率) '
-description: 了解 Azure Maps 移动服务 (预览版) 为哪些区域提供公共传输功能，如路由和服务警报。
+title: Microsoft Azure Maps 出行服务（预览版）中的出行（交通）功能覆盖范围
+description: 了解 Azure Maps 出行服务（预览版）在哪些区域为公共交通功能（例如路线规划和营运告示）提供哪种覆盖程度。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -9,162 +9,162 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: e902f313edf22d75f6b183575c3dc8d0dd94bc1f
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96904748"
 ---
-# <a name="azure-maps-mobility-services-preview-coverage"></a>Azure Maps 移动服务 (预览版) 覆盖率
+# <a name="azure-maps-mobility-services-preview-coverage"></a>Azure Maps 出行服务（预览版）的覆盖范围
 
 > [!IMPORTANT]
-> Azure Maps 移动服务目前为公共预览版。
+> Azure Maps 出行服务目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
-Azure Maps [移动服务](/rest/api/maps/mobility) 可提高具有公共传输功能的应用程序的开发时间，如中转路由和搜索附近的公共传输停止。 用户可以检索有关公交站点、线路和时刻表的详细信息。 移动服务还允许用户检索停止和行几何、停止、行和服务区域的警报，以及实时公共传输到达和服务警报。 此外，移动服务还提供了具有多种模行程计划选项的路由功能。 多式联运行程规划在一个行程中融合了步行、骑行和公共交通选项。 用户还可以访问详细的多式联运分步行程。
+Azure Maps [出行服务](/rest/api/maps/mobility)缩短了具有公共交通功能（例如公交路线规划和搜索附近的公交站点）的应用程序的开发时间。 用户可以检索有关公交站点、线路和时刻表的详细信息。 通过出行服务，用户还可以检索停靠站点和线路的几何形状，接收到站、线路切换和服务区的提醒，以及实时的公交抵达时间和营运告示。 此外，出行服务还提供具有多式联运行程规划选项的路线规划功能。 多式联运行程规划在一个行程中融合了步行、骑行和公共交通选项。 用户还可以访问详细的多式联运分步行程。
 
-Azure Maps 不提供与所有城市和国家/地区相同的信息和准确性。 调用公共传输数据的能力取决于大都市区。 此外，地图数据可能不包括为地铁区域提供服务的所有公共传输选项和机构。
+Azure Maps 不能为所有城市和国家/地区提供同一级别的信息和准确度。 能否调用公共交通数据取决于所在的都市圈。 此外，地图数据不一定包括为都市圈提供服务的所有公交选项和营运公司。
 
-下表提供了 Azure Maps 移动服务的覆盖范围信息。
+下表提供了 Azure Maps 出行服务的覆盖范围信息。
 
 | 符号 | 含义 |
 |--------|---------|
-| *      |此国家/地区几乎完全覆盖了。|
+| *      |在该国家/地区几乎完全覆盖。|
 
 ## <a name="americas"></a>美洲
 
-| 国家/地区 |  城市 (地铁区域)  |
+| 国家/地区 |  城市（都市圈） |
 |----------------|---------|
-| 安提瓜和巴布达 | 安提瓜和巴布达 * |
-| 阿根廷       | <p>Azul、Bahía Blanca、布宜诺斯艾利斯、Caleta Olivia、Catamarca、Chivilcoy、Comodoro Rivadavia、Concordia、Córdoba、Corrientes、General Pico、Gualeguaychu、La 奥、三月 del Plata、门多萨、Miramar、Necochea、Neuquén、Oberá、Olavarría、Paraná、Posadas、Rafaela、Rio Tercero、Rosario、Salta、Carlos Bariloche、Luis、Miguel、Tucumán、Pedro、Tandil、乌、Viedma、Villa、维多利亚、María、</p>|
-| 巴巴多斯       |  岛 |
-| 巴西         | <p>Angra dos Reis、Anápolis、Apucarana、Aracaju、Araraquara、Araxa、Araçatuba、Atibaia、Bage、Barretos、Bauru、Bebedouro、贝伦、Belo Horizonte、Blumenau、博阿维斯塔 Vista、Botucatu、巴西利亚、Caldas Novas、Campina 坎普、Campinas、大 Belo、大坎普、Caraguatatuba、Caratinga、Cascavel、Cataguases、Caxias、Leopoldina、Região、Catalão、Caxias、格兰德、Chapecó、Cianorte、Conselheiro、Lafaiete、Corumbá、Criciúma、Cruzeiro、格兰德、Cuiabá、Curitiba、Curitibanos、Curvelo、Divinópolis、Dourados、Estrela、Feira de Santana、Fernando de 诺罗尼亚、Florianópolis、Fortaleza、Foz do Iguaçu、语言、Garanhuns、Goiania、Governador、Valadares、Guarapuava、Imperatriz、Ipatinga、Irati、Itabira、Itabuna、Itajaí、Itajuba、Ituiutaba、Jaguarao、Jaraguá、、、、、、、、格兰德、Joao Pessoa、Joinville、Juazeiro do 格兰德、Juiz de 针对、Jundiaí、Lages、Lavras、Regiao、Lucas、Rio、Londrina、Macapa、Macaé、Maceió、Mafra、Rio、Negro、马瑙斯、Manhuacu、Maringá、Marília、Monte、Carmelo、、、、、、，Montes Claros，Mossoró，Natal，Osorio、Ourinhos、Ouro Preto、Palmas、Paracatu、Paranaguá、Parnaíba、Passo Fundo、Passos、Pato 布朗库、Patos de 米、Patrocínio、Pelotas、Picos Piracicaba、Pirapora、poco、Caldas de Ponta、Grossa 韦、Alegre 韦、Ferreira 韦、Seguro 韦、柳港 Praia、坎普 Recife、Ribeirão Preto、Rio Rio、布朗库、Rio、Rondonópolis Salinas、、、加利福尼亚州 Cruz do 格兰德，圣诞老人 Rita 她 Sapucaí，Santarem，圣地亚哥 del Estero，Santos，圣保罗 Gabriel do Oeste，圣多美 Joao del Rei，Tiradentes e Regiao，圣保罗，Rio Preto，圣多美 Mateus，圣保罗，Sorocaba，圣保罗 Carlos，圣保罗 do 格兰德，圣多美 José dos Campos，圣多美 Lourenço，圣多美 Luís，Taubaté，Telemaco Borba，Teofilo Otoni，Teresina，吧，Três Lagoas，Tucurui，Ubatuba，Uberaba，Uberlândia，Ubá，Uruguaiana，Varginha，Vicosa，Videira & Fraiburgo、Vitória、Vitória da Conquista、Volta Redonda、Votuporanga </p>|
-| 加拿大 | Banff (AB) ，Brandon (MB) ，卡尔加里 (AB) ，Chatham-Kent ()  (，Comox 低谷) BC (，Cowichan 低谷) BC (，Cranbrook) BC (，埃德蒙顿) AB (，Fort，Fredericton) NB (，Sudbury) 哈里法克斯 (，坎卢普斯) bc (，Kelowna-Vernon (BC) ，Kingston (在 (上，伦敦) 在 (上，Moncton) NB (，蒙特利尔) QC (，Nanaimo) bc (，渥太华) ON (，Prince George BC) ) ，Québec City (QC) ，Red Deer (AB) ，里贾纳 (SK) ，Rimouski (QC) ，Saskatoon (SK) ，Sherbrooke (QC) ，西南部英属哥伦比亚 (BC) ，Squamish (BC) ，圣 John 的 (NL) ，阳光海岸，大的大图标托架， (上) 、维多利亚 (、维多利亚) BC (、西 Kootenay) BC (、Whistler) BC (、Windsor) 、温尼伯 (MB) </p>|
-| 智利  | <p>Antofagasta，Arica，Aysén，Chillán，Concepción，Constitución，Copiapó，Curicó，Iquique，La Serena y Coquimbo，Linares，洛杉矶 (智利) ，洛杉矶拉各斯，蓬纳斯，Rancagua，圣地亚哥，Talca，Temuco，Valdivia，Valparaíso，Viña del 三月</p>|
-| 哥伦比亚 | <p>Barranquilla、Bogotá、Bucaramanga、Cali、Cartagena、Ibagué、Medellín、Pasto、Popayán、圣诞老人 Marta、Sincelejo、Valledupar</p>|  
+| 安提瓜和巴布达 | 安提瓜和巴布达* |
+| 阿根廷       | <p>Azul、Bahía Blanca、Buenos Aires、Caleta Olivia、Catamarca、Chivilcoy、Comodoro Rivadavia、Concordia、Córdoba、Corrientes、General Pico、Gualeguaychu、La Rioja、Mar del Plata、Mendoza、Miramar、Necochea、Neuquén、Oberá、Olavarría、Paraná、Posadas、Rafaela、Rio Tercero、Rosario、Salta、San Carlos de Bariloche、San Luis、San Miguel de Tucumán、San Pedro、Santa Fe、Tandil、Ushuaia、Victoria、Viedma、Villa María</p>|
+| 巴巴多斯       |  巴巴多斯* |
+| 巴西         | <p>Angra dos Reis、Anápolis、Apucarana、Aracaju、Araraquara、Araxa、Araçatuba、Atibaia、Bage、Barretos、Bauru、Bebedouro、Belem、Belo Horizonte、Blumenau、Boa Vista、Botucatu、Brasilia、Caldas Novas、Campina Grande、Campinas、Campo Belo、Campo Grande、Caraguatatuba、Caratinga、Cascavel、Cataguases、Caxias、Leopoldina e Região、Catalão、Caxias do Sul、Chapecó、Cianorte、Conselheiro Lafaiete、Corumbá、Criciúma、Cruzeiro do Sul、Cuiabá、Curitiba、Curitibanos、Curvelo、Diamantina、Divinópolis、Dourados、Estrela、Feira de Santana、Fernando de Noronha、Florianópolis、Fortaleza、Foz do Iguaçu、Franca、Garanhuns、Goiania、Governador Valadares、Guarapuava、Imperatriz、Ipatinga、Irati、Itabira、Itabuna、Itajaí、Itajuba、Ituiutaba、Jaguarao、Jaraguá do Sul、Joao Pessoa、Joinville、Juazeiro do Norte、Juiz de Fora、Jundiaí、Lages、Lavras e Regiao、Lucas do Rio Verde、Londrina、Macapa、Macaé、Maceió、Mafra e Rio Negro、Manaus、Manhuacu、Maringá、Marília、Monte Carmelo、Montes Claros、Mossoró、Natal、Osorio、Ourinhos、Ouro Preto、Palmas、Paracatu、Paranaguá、Parnaíba、Passo Fundo、Passos、Pato Branco、Patos de Minas、Patrocínio、Pelotas、Picos、Piracicaba、Pirapora、Pocos de Caldas、Ponta Grossa、Porto Alegre、Porto Ferreira、Porto Seguro、Porto Velho、Praia Grande、Recife、Ribeirão Preto、Rio、Rio Branco、Rio Verde、Rondonópolis、Salinas、Salvador、Santa Cruz do Sul、Santa Maria、Santa Rita do Sapucaí、Santarem、Santiago del Estero、Santos、Sao Gabriel do Oeste、Sao Joao del Rei、Tiradentes e Regiao、Sao Jose do Rio Preto、Sao Mateus、Sao Paulo、Sorocaba、São Carlos、São Francisco do Sul、São José dos Campos、São Lourenço、São Luís、Taubaté、Telemaco Borba、Teofilo Otoni、Teresina、Toledo 、Três Lagoas、Tucurui、Ubatuba、Uberaba、Uberlândia、Ubá、Uruguaiana、Varginha、Vicosa、Videira & Fraiburgo、Vitória、Vitória da Conquista、Volta Redonda、Votuporanga </p>|
+| 加拿大 | Banff (AB)、Brandon (MB)、Calgary (AB)、Chatham-Kent (ON)、Comox Valley (BC)、Cowichan Valley (BC)、Cranbrook (BC),Edmonton (AB)、Fort St. John、Fredericton (NB)、Greater Sudbury (ON)、Greater Vancouver (BC)、Halifax (NS)、Kamloops (BC)、Kelowna - Vernon (BC)、Kingston (ON)、London (ON)、Moncton (NB)、Montreal (QC)、Nanaimo (BC)、Ottawa (ON)、Prince George (BC)、Québec City (QC)、Red Deer (AB)、Regina (SK)、Rimouski (QC)、Saskatoon (SK)、Sherbrooke (QC)、Southwest British Columbia (BC)、Squamish (BC)、St. John's (NL)、Sunshine Coast、Thunder Bay (ON)、Toronto (ON)、Victoria (BC)、West Kootenay (BC)、Whistler (BC)、Windsor (ON)、Winnipeg (MB)、Woodstock</p>|
+| 智利  | <p>Antofagasta、Arica、Aysén、Chillán、Concepción、Constitución、Copiapó、Curicó、Iquique、La Serena y Coquimbo、Linares、Los Angeles (Chile)、Los Lagos、Punta Arenas、Rancagua、Santiago、Talca、Temuco、Valdivia、Valparaíso、Viña del Mar</p>|
+| 哥伦比亚 | <p>Barranquilla、Bogotá、Bucaramanga、Cali、Cartagena、Ibagué、Medellín、Pasto、Popayán、Santa Marta、Sincelejo、Valledupar</p>|  
 | 哥斯达黎加 | San José|
-| 多米尼加共和国 | 图圣多明各 |
-| 厄瓜多尔 | Cuenca、瓜亚基尔、Loja、Manta、Milagro|
-| 萨尔瓦多 | 圣马力诺 |
- | 危地马拉 | 墨西哥 de (GT)  |
-| 墨西哥 | Acapulco，Aguascalientes，Cancun，Durango，墨西哥城，瓜达拉哈拉，Lion，Merida，蒙特雷，Puebla，波多黎各 Vallarta，塔罗，San Luis Potosi，蒂华纳，Torreon|
-| 尼加拉瓜 | 马那瓜 |
-| 巴拿马 | 巴拿马|
-| 秘鲁 | Cusco，利马 |
+| 多米尼加共和国 | Santo Domingo |
+| 厄瓜多尔 | Cuenca、Guayaquil、Loja、Manta、Milagro|
+| 萨尔瓦多 | San Salvador |
+ | 危地马拉 | Ciudad de Guatemala (GT) |
+| 墨西哥 | Acapulco、Aguascalientes、Cancun、Durango、Mexico City、Guadalajara、Lion、Merida、Monterrey、Puebla、Puerto Vallarta、Querétaro、San Luis Potosi、Tijuana、Torreon|
+| 尼加拉瓜 | Managua |
+| 巴拿马 | 巴拿马*|
+| 秘鲁 | Cusco、Lima |
 | 波多黎各 | San Juan |
-| 苏里南 | 帕拉马里博 |
-| 乌拉圭 | 蒙得维的亚、Paysandu、蓬 del Este、Salto |
-| 美国 | <p>Albany (GA) ，Albany (NY) ，Albuquerque (NM) ，Anchorage (AK) ，王 Arbor (MI) Appleton-Oshkosh-Neenah (WI) ，Asheville (NC) ，雅典 (GA) ，雅典 ()  (，Bakersfield)  (、德克萨斯) TX (、)  () 、Berkshire 县 Bend-Redmond MA (Birmingham (AL) ，Bloomington () ，Boise (ID) ，波士顿 (MA) ，Boulder (合作) ，保龄球绿色 (KY) ，瓦德县市 (佛罗里达) ，，，Butte (MT) ，佛得角货 (MA) ，中心县 (PA) ， () ，Charlotte (NC) ，Charlottesville (VA) ，Chattanooga (TN) ，Cheyenne (WY) ，芝加哥 (IL) ，辛辛那提 (，柑橘县) 佛罗里达 (，Cleveland) Coachella，TN， (CA) ，科罗拉多，俄亥俄州哥伦布 () ，语料库 (CHRISTI) ， (TX) 达拉斯/提 (TX) ，Dayton (，) ，特拉华州，丹佛 (CO) ，Des Moines (IA) ，Detroit (MI) ，德卢斯 (MN) ，El Paso (TX) ，Eugene (，) ，Fairbanks (AK) ，Fargo (Fayetteville) Flagstaff (，Fort 堡 (在) ，Fresno (CA) ，Gainesville (FL) ，总计叉 (ND) ，总计 Rapids (英里) ，绿色托架 (WI) ，Greensboro (NC) ，Greenville (SC) ，Gunnison (CO) ，Hampton 公路 (VA) ，Hanford (Honolulu () ，休斯顿 (TX) ，Humboldt 县 (CA) ，亚拉巴马 (AL) ，印第安纳波利斯 () ，Ithaca (NY) ，Jackson (MS) ，Jackson (TN) ，杰克逊维尔 Johnson (TN) ，Jonesboro (AR) ，Joplin (，Kalispell (MT) ，堪萨斯城 City (MO) ，Kauai (你好) ，Ketchum (ID) ，Knoxville (TN) ，Lafayette (在) ，兰卡斯特 (PA) ，Lansing (MI) ，Laredo (TX) ，内华达州 (NV) ，Lawrence (KS) 先生市市 (FL) ，Lexington (KY) ，Lincoln 县 (或) ，少量摇滚 (AR) ，洛杉矶 (CA) ，路易斯维尔 (KY) ，Lubbock (TX) ，Madison (WI) ，曼彻斯特 (NH) ，McAllen (得克萨斯) ，Memphis (TN) Paul (MN) ，Missoula (MT) ，Modesto (USA) ，Moline (IL) ，Monroe 县 (PA) ，Montgomery (AL) ，Morgantown (WV) ，纳什维尔 (TN) ，印地安黄国) ，NYC (Ocala) ，Okaloosa 县 (佛罗里达)  () Oklahoma City (确定) ，Omaha (NE) ，奥兰多 (佛罗里达) ，Palm 沙漠 (CA) ，巴拿马城 (佛罗里达) ，Pensacola (佛罗里达) ，Peoria (IL) ，Philadelphia (PA) ，Phoenix (AZ) ，Pittsburgh (pa) ，Racine (，Reno & Lake Tahoe (NV) ，Richmond (VA) ，Roanoke 低谷 (VA-Lynchburg) ，Rochester (NY) ，Rockford (IL) ，软糖 Mount (，软糖山地国 Roseburg) CO (，Roseville) CA (，Sacramento)  (，塞勒姆) 或 (，盐 Lake City (不到) ，San Antonio (TX) ，圣马力诺 (CA) ，San Luis Obispo (CA) ，北京 Barbara (CA) ，Savannah (GA) ，Seacoast 区域 (NH) ，西雅图-Tacoma-Bellevue (WA) ，SF (ca) ，SF-San ()  (，Sioux 将 (SD) ，Sitka (AK) ，Spokane ()  (，Springfield) MA (，南折弯) ， (，Springfield) IL (，Springfield) 大容量 (，圣 George) Stockton (，) MO (，佛罗里达) Tampa Syracuse-Utica， (圣彼得堡 (FL) ，Terre Haute (IN) ，吧 () ，Topeka (KS) ，遍历城市 (MI) Tucson (AZ) ，Tulsa (确定) ，佛蒙特州，Victorville (CA) ，Volusia 县 (佛罗里达) ，Waco (TX) ，华盛顿 (DC) ，Waterbury (CT) ，Wichita (KS) ，Wichita 将 (TX) Wilmington (，Yakima)  ()  (，Youngstown 县) AZ (</p>|
-| + 美属维尔京群岛 | 美属维尔京群岛 * |
-| 委内瑞拉 | 加拉加斯 |
+| 苏里南 | Paramaribo |
+| 乌拉圭 | Montevideo、Paysandu、Punta del Este、Salto |
+| 美国 | <p>Albany (GA)、Albany (NY)、Albuquerque (NM)、Anchorage (AK)、Ann Arbor (MI)  Appleton-Oshkosh-Neenah (WI)、Asheville (NC)、Athens (GA)、Athens (OH)、Atlanta (GA)、Austin (TX)、Bakersfield (CA)、Baltimore (MD)、Bend-Redmond (OR)、Berkshire County (MA)、Birmingham (AL)、Bloomington (IN)、Boise (ID)、Boston (MA)、Boulder (CO)、Bowling Green (KY)、Brevard County (FL)、Buffalo (NY)、Butte (MT)、Cape Cod (MA)、Centre County (PA)、Champaign-Urbana (IL)、Charleston (SC)、Charleston (WV)、Charlotte (NC)、Charlottesville (VA)、Chattanooga (TN)、Cheyenne (WY)、Chicago (IL)、Cincinnati (OH)、Citrus County (FL)、Cleveland (OH)、Coachella Valley (CA)、Colorado Springs (CO)、Columbia (TN)、Columbia (SC)、Columbus (OH)、Corpus Christi (TX)、Dallas/Forth Worth (TX)、Dayton (OH)、Delaware、Denver (CO)、Des Moines (IA)、Detroit (MI)、Duluth (MN)、El Paso (TX)、Eugene (OR)、Fairbanks (AK)、Fargo (ND)、Fayetteville (NC)、Flagstaff (AZ)、Flint (MI) Fort Collins (CO)、Fort Wayne (IN)、Fresno (CA)、Gainesville (FL)、Grand Forks (ND)、Grand Rapids (MI)、Green Bay (WI)、Greensboro (NC)、Greenville (SC)、Gunnison (CO)、Hampton Roads (VA)、Hanford (CA)、Hartford (CT)、Hernando County (FL)、Hinesville (GA)、Honolulu (HI)、Houston (TX)、Humboldt County (CA)、Huntsville (AL)、Indianapolis (IN)、Ithaca (NY)、Jackson (MS)、Jackson (TN)、Jacksonville - St. John's County (FL)、Johnson city (TN)、Jonesboro (AR)、Joplin (MO)、Juneau (AK)、Kalamazoo (MI)、Kalispell (MT)、Kansas City (MO)、Kauai (HI)、Ketchum (ID)、Knoxville (TN)、Lafayette (IN)、Lancaster (PA)、Lansing (MI)、Laredo (TX)、Las Vegas (NV)、Lawrence (KS)、Lee County (FL)、Lexington (KY)、Lincoln County (OR)、Little Rock (AR)、Los Angeles (CA)、Louisville (KY)、Lubbock (TX)、Madison (WI)、Manchester (NH)、McAllen (TX)、Memphis (TN)、Miami (FL)、Milwaukee-Waukesha (WI)、Minneapolis-St. Paul (MN)、Missoula (MT)、Modesto (USA)、Moline (IL)、Monroe County (PA)、Montgomery (AL)、Morgantown (WV)、Nashville (TN)、Navajo Nation)、New Haven (CT)、New Orleans (LA)、NYC-NJ Area(NY)、Ocala (FL)、Okaloosa County (FL)、Oklahoma City (OK)、Omaha (NE)、Orlando (FL)、Palm Desert (CA)、Panama City (FL)、Pensacola (FL)、Peoria (IL)、Philadelphia (PA)、Phoenix (AZ)、Pittsburgh (PA)、Portland (ME)、Portland (OR)、Racine (WI)、Raleigh (NC)、Redding (CA)、Reno & Lake Tahoe (NV)、Richmond (VA)、Roanoke Valley (VA - Lynchburg)、Rochester (NY)、Rockford (IL)、Rocky Mount (NC)、Rocky Mountain National Park (CO)、Rogue Valley (OR)、Roseburg (OR)、Roseville (CA)、Sacramento (CA)、Salem (OR)、Salt Lake City (UT)、San Antonio (TX)、San Diego (CA)、San Luis Obispo (CA)、Santa Barbara (CA)、Santa Fe (NM)、Sarasota (FL)、Savannah (GA)、Seacoast Region (NH)、Seattle-Tacoma-Bellevue (WA)、SF Bay Area (CA)、SF-San Jose Area (CA)、Sioux City (IA)、Sioux Falls (SD)、Sitka (AK)、Spokane (WA)、Springfield (MA)、South Bend (IN)、Springfield (IL)、Springfield (Mass)、St. George (UT)、St. Louis (MO)、Stockton (CA)、Syracuse-Utica (NY)、Tallahassee (FL)、Tampa-St. Petersburg (FL)、Terre Haute (IN)、Toledo (OH)、Topeka (KS)、Traverse City (MI)、Tucson (AZ)、Tulsa (OK)、Vermont、Victorville (CA)、Volusia County (FL)、Waco (TX)、Washington (DC)、Waterbury (CT)、Wichita (KS)、Wichita Falls (TX) Wilmington (NC)、Yakima (WA)、Youngstown (OH)、York County (PA)、Yuma County (AZ)</p>|
+| +美属维尔京群岛 | 美国维尔京群岛* |
+| 委内瑞拉 | Caracas |
 
 ## <a name="asia-pacific"></a>亚太区
 
-| 国家/地区 |  城市 (地铁区域)  |
+| 国家/地区 |  城市（都市圈） |
 |--------|---------|
-| 澳大利亚 | <p>阿德莱德，Alice 弹簧，Bowen，布里斯班，Bundaberg QLD，Burnie，Cairns，堪培拉，达尔文，Gladstone，霍巴特，Innisfail，Launceston，Mercer-mackay，磁岛，Maryborough-Hervey 托架，墨尔本，新南威尔士，，RockHampton，Queensland，维多利亚，Toowoomba，Townsville</p> |
+| 澳大利亚 | <p>Adelaide、Alice Springs、Bowen、Brisbane、Bundaberg QLD、Burnie、Cairns、Canberra、Darwin、Gladstone、Hobart、Innisfail、Launceston、Mackay、Magnetic Island、Maryborough-Hervey Bay、Melbourne、New South Wales、Perth、RockHampton、South East Queensland、Sydney、Toowoomba、Townsville、Victoria、Warwick、Yeppoon</p> |
 | 文莱 | Bandar Seri Begawan |
-| 中国 | <p> Changchun、Changsha、Chengdu、重庆、Dalian、Datong、Dongguan、杭州、Harbin、Jiangyin、Jinan、南京、Nantong、Ningbo、Pingdingshan、Qingdao、Shenyang、Suzhou、Tangshan、Tianjin、Weifang、Wuhan、Wuxi、Yantai、Yixing、Zhuhai、Shenzhen、Zhengzhou、、、、、、</P>|
-| 香港特别行政区 | 香港特别行政区 *|
-| 澳门特别行政区 | 中国澳门特别行政区 *|
+| 中国 | <p> 长春、长沙、成都、重庆、大连、大同、东莞、杭州、哈尔滨、江阴、济南、南京、南通、宁波、平顶山、青岛、沈阳、苏州、唐山、天津、潍坊、武汉、无锡、烟台、宜兴、珠海、上海、北京、广州、深圳、郑州</P>|
+| 香港特别行政区 | 香港特别行政区*|
+| 澳门特别行政区 | 澳门特别行政区*|
 | 马尔代夫 | 男 |
-| 印度 | Ahmedabad，Bengaluru，新德里，海得拉巴，孟买，Mysuru，Pune|
-| 印度尼西亚 | 万隆、Banjarmasin、Banyuwangi、巴淡岛、Denpasar、雅加达、Kediri、Malang、Palembang、Semarang、Surabaya、Surakarta、Yogyakarta |
-| 日本 | Hokkaido、Shizuoka 县、东京、Wakkanai、Yamanashi 县 |
-| 马来西亚 | Ipoh、Johar Bahru、吉隆坡、Kuantan、Penang |
-| 新西兰 | 奥克兰、Christchurch、Dunedin、Queenstown、Timaru、惠灵顿|
+| 印度 | Ahmedabad、Bengaluru、Delhi、Hyderabad、Mumbai、Mysuru、Pune|
+| 印度尼西亚 | Bandung、Banjarmasin、Banyuwangi、Batam、Denpasar、Jakarta、Kediri、Malang、Palembang、Semarang、Surabaya、Surakarta、Yogyakarta |
+| 日本 | Hokkaido、Shizuoka Prefecture、Tokyo、Wakkanai、Yamanashi Prefecture |
+| 马来西亚 | Ipoh、Johar Bahru、Kuala Lumpur、Kuantan、Penang |
+| 新西兰 | Auckland、Christchurch、Dunedin、Queenstown、Timaru、Wellington|
 | 菲律宾 | 马尼拉 |
-| 新加坡 | 新加坡 |
+| 新加坡 | 新加坡* |
 | 韩国 | 釜山、首尔 |
-| 台湾 | Changhua 县，台北 |
-| 泰国 | 曼谷，Chiang Mai |
+| 中国台湾 | 彰化县、台北 |
+| 泰国 | Bangkok、Chiang Mai |
 | 乌兹别克斯坦 | Samarkand |
-| 越南 | 河内，Ho Chi 胡志明市 City |
+| 越南 | Hanoi、Ho Chi Minh City |
 
 ## <a name="europe"></a>欧洲
 
-| 国家/地区 |  城市 (地铁区域)  |
+| 国家/地区 |  城市（都市圈） |
 |----------------|---------|
-| 安道尔        | 安道尔 la Vella |
+| 安道尔        | Andorra la Vella |
 | 奥地利        | 维也纳 |
-| 白俄罗斯        | Gomel、Grodno、Polotsk & Novopolotsk、Zhlobin、Vileyka、Maladziečna、明斯克、Rechytsa |
-| 比利时        | 比利时 |
-| 玻利维亚        | La 巴斯，圣 Cruz |
-| 波斯尼亚和黑塞哥维那 | 萨拉热窝 |
-| 保加利亚       | <p>Balchik、Blagoevgrad、Burgas、Dobrich、Gabrovo、Haskovo、Kardzhali、Lovech、Nessebar、Pazardzhik、Pernik、Pleven、Plovdiv、Ruse、Shumen、Sliven、Stara Zagora、Vratsa、Yambol、Varna、Veliko、索非亚</P> |
-| 克罗地亚 | Crikvenica、Dubrovnik、Rijeka、Slovanski Brod、萨格勒布 |
-| 塞浦路斯 | Larnaca、Limassol、尼科西亚 |
-| 捷克共和国 | Brno，Jablonec，Karlovy Vary，Liberec，Ostrava，布拉格 |
-| 丹麦   | 丹麦 |
-| 爱沙尼亚   | 爱沙尼亚 |
-| 芬兰   | Hämeenlinna、赫尔辛基、Joensuu、Jyväskylä、Kajaani、Kouvola-Kotka、Kuopio、Lappeenranta、Mikkeli、Oulu、Pori、Rovaniemi、Seinäjoki、Tampere、Turku、Vaasa|
-| 法国    | <p>Amberieu-Bugey、Amiens、Angers、Annecy、Annonay、Arras、Aubenas、Bayonne、Besançon、Blois、Bordeaux、Boulogne .sur Mer、Brest、Briançon、cannes、Châlons、香槟、Chartres、Clermont、Ferrand、Colmar、d'Azur、Dijon、Grenoble、Haguenau、Rochelle、Mans、、、、、、、、Lille，Lorient，Lyon，MAC，马赛 & Provence，Wired，Millau，Mont，Marsan，Montpellier，Mulhouse，南，Nantes，Nice，美妙 d'Azur，Nimes，诺曼底，Nyons，巴黎，Poitiers，Privas，Quimper，Rennes，Malo，Étienne，Nazaire，Saintes，Sarrebourg，Sete，游览</P> |
-| + 法属圭亚那 | 卡宴 |
-| + 新喀里多尼亚 | Nouméa  |
-| 格鲁吉亚 | 第比利斯 |
-| 德国 | <p>柏林，Brandenburg，Bremen & Niedersachsen，Cologne，Eisenach，法兰克福，汉堡，Karlsruhe，Mainz，Rhein-Ruhr Rhein-Neckar München，Stuttgart，Titisee，Neustadt，Ulm，</P> |
-| 希腊 | <p>Agrinio、Aigio、雅典、Arta、Amorgos、Chania、Corfu、Chios Kos、Heraklion、Ioannina、Kavala、Kalamata、Khios、Komotini、Kos、Larissa、Meganisi、Milos、Mykonos、Patra、Rethimno、Rhodes、Santorini、Serres、Syros、Tinos、Thessaloniki、Veria、Volos、Xanthi、、、、、、、 </P> |
-| 匈牙利 | 布达佩斯、Gyor、Miskolc、Nograd 县、Pesc、Szeged、Székesfehérvár |
-| 冰岛 | Ísland-冰岛 * |
-| 爱尔兰 | 爱尔兰 |
-| 意大利   | <p>Agrigento、Alessandria、Ancona、Bari、Bologna-Bologne、Cagliari、Sardinia、Campobasso、Catania e Messina、Cosenza、Crema、Cremona、Crotone、Cuneo、之前-Florence、Foggia、Genova-Genoa、Iglesias、La Spezia、Lecce、Matera、Milano-Milan、Napoli、Naples、Padova、Palermo、Parma、Perugia、Pescara、Pisa、Potenza、Roma、Siena、Grosseto、Siracusa、Syracuse、Taranto、Torino、意大利都灵、Trento、Trieste、Udine、留、Venice、、 </p> |
+| 白俄罗斯        | Gomel、Grodno、Polotsk & Novopolotsk、Zhlobin、Vileyka、Maladziečna、Minsk、Rechytsa |
+| 比利时        | 比利时* |
+| 玻利维亚        | La Paz、Santa Cruz de la Sierra |
+| 波斯尼亚和黑塞哥维那 | Sarajevo |
+| 保加利亚       | <p>Balchik、Blagoevgrad、Burgas、Dobrich、Gabrovo、Haskovo、Kardzhali、Lovech、Nessebar、Pazardzhik、Pernik、Pleven、Plovdiv、Ruse、Shumen、Sliven、Stara Zagora、Vratsa、Yambol、Varna、Veliko、Sofia</P> |
+| 克罗地亚 | Crikvenica、Dubrovnik、Rijeka、Slovanski Brod、Zagreb |
+| 塞浦路斯 | Larnaca、Limassol、Nicosia |
+| 捷克共和国 | Brno、Jablonec、Karlovy Vary、Liberec、Ostrava、Prague |
+| 丹麦   | 丹麦* |
+| 爱沙尼亚   | 爱沙尼亚* |
+| 芬兰   | Hämeenlinna、Helsinki、Joensuu、Jyväskylä、Kajaani、Kouvola - Kotka、Kuopio、Lappeenranta、Mikkeli、Oulu、Pori、Rovaniemi、Seinäjoki、Tampere、Turku、Vaasa|
+| 法国    | <p>Amberieu-en-Bugey、Amiens、Angers、Annecy、Annonay、Arras、Aubenas、Bayonne、Besançon、Blois、Bordeaux、Boulogne sur Mer、Brest、Briançon、cannes、Châlons-en-Champagne、Chartres、Clermont-Ferrand、Colmar、Côte d’Azur、Dax、Dijon、Grenoble、Haguenau、La Rochelle、Le Mans、Lens、Lille、Lorient、Lyon、MACS、Marseille & Provence、Metz、Millau、Mont-de-Marsan、Montpellier、Mulhouse、Nancy、Nantes、Nice、Nice Côte d’Azur、Nimes、Normandy、Nyons、Paris、Poitiers、Privas、Quimper、Rennes、Saint Malo、Saint-Étienne、Saint-Nazaire、Saintes、Sarrebourg、Sete、Strasbourg、Tarbes、Toulouse、Tours</P> |
+| +法属圭亚那 | Cayenne |
+| +新喀里多尼亚 | Nouméa  |
+| 格鲁吉亚 | Tbilisi |
+| 德国 | <p>Berlin、Brandenburg、Bremen & Niedersachsen、Cologne、Eisenach、Frankfurt、Hamburg、Karlsruhe、Mainz、München - Munich、Rhein-Neckar Region、Rhein-Ruhr Region、Stuttgart、Titisee-Neustadt、Ulm</P> |
+| 希腊 | <p>Agrinio、Aigio、Athens、Arta、Amorgos、Chania、Corfu、Chios Kos、Heraklion、Ioannina、Kavala、Kalamata、Khios、Komotini、Kos、Larissa、Meganisi、Milos、Mykonos、Patra、Rethimno、Rhodes、Santorini、Serres、Syros、Tinos、Thessaloniki、Veria、Volos、Xanthi </P> |
+| 匈牙利 | Budapest、Gyor、Miskolc、Nograd County、Pesc、Szeged、Székesfehérvár |
+| 冰岛 | 冰岛* |
+| 爱尔兰 | 爱尔兰* |
+| 意大利   | <p>Agrigento、Alessandria、Ancona、Bari、Bologna - Bologne、Cagliari - Sardinia、Campobasso、Catania e Messina、Cosenza、Crema、Cremona、Crotone、Cuneo、Firenze - Florence、Foggia、Genova - Genoa、Iglesias、La Spezia、Lecce、Matera、Milano - Milan、Napoli - Naples、Padova、Palermo、Parma、Perugia、Pescara、Pisa、Potenza、Roma - Rome、Siena e Grosseto、Siracusa - Syracuse、Taranto、Torino - Turin、Trento、Trieste、Udine、Venezia - Venice </p> |
 | 拉脱维亚 | Rīga |
-| 列支敦士登 | 列支敦士登 |
-| 立陶宛 | Druskininkai、Kauno、Klaipėda、Panevėžys、维尔纽斯 |
-| 卢森堡 | 公国 |
+| 列支敦士登 | 列支敦士登* |
+| 立陶宛 | Druskininkai、Kauno、Klaipėda、Panevėžys、Vilnius |
+| 卢森堡 | 卢森堡* |
 | 摩尔多瓦 | Chisinau |
 | 黑山 | Podgorica |
-| 荷兰 | 荷兰 |
-| 挪威 | 挪威 |
-| 波兰 | <p>Wrocław、Białystok、Bydgoszcz、Elbląg、Elk、Gorzow、Kętrzyna、Krakow、Leszno、Lodz、Lublin、Mrągowo、Olsztyn、Poznań、Rzeszów、Sanok、Starachowice、Świonujście、Szczecin、Tricity、Wodzisław、Śląski Wrocław、Zakopane、</p> |
-| 葡萄牙 | Bragança、Coimbra、Funchal、Leiria、Lisboa、Portimao、韦|
-| 马耳他 | 马耳他 |
-| 罗马尼亚 | <p>Alba Iulia、Arad、Bistrița、Brăila、Braşov、布加勒斯特、Buzau、Cluj Napoca、Constanța、Craiova、Deva、Focșani、Galati、Iaşi、Miercurea Ciuc、Oradea、Piatra Neamt、Pitești、Ploieşti、Reșița、Satu Mare、Sibiu、Suceava、Targu Mures、Timisoara、Tulcea、Zalau</p> | 
-| 俄罗斯  | 加里格勒，Rostov，伏尔加格勒，伏尔加格勒，Kazan，Kirov，Krasnodar，莫斯科，Nalchik，Nizhny Novgorod，新西伯利亚，Noyabrsk，鄂木斯克，Oryol，永久状态，Pyatigorsk，Tver，托木斯克， |
+| 荷兰 | 荷兰* |
+| 挪威 | 挪威* |
+| 波兰 | <p>Wrocław、Białystok、Bydgoszcz、Elbląg、Elk、Gorzow、Kętrzyna、Krakow、Leszno、Lodz、Lublin、Mrągowo、Olsztyn、Poznań、Rzeszów、Sanok、Starachowice、Świonujście、Szczecin、Tricity、Warsaw、Wodzisław Śląski、Wrocław、Zakopane</p> |
+| 葡萄牙 | Bragança、Coimbra、Funchal、Leiria、Lisboa、Portimao、Porto|
+| 马耳他 | 马耳他* |
+| 罗马尼亚 | <p>Alba Iulia、Arad、Bistrița、Brăila、Braşov、Bucharest、Buzau、Cluj Napoca、Constanța、Craiova、Deva、Focșani、Galati、Iaşi、Miercurea Ciuc、Oradea、Piatra Neamt、Pitești、Ploieşti、Reșița、Satu Mare、Sibiu、Suceava、Targu Mures、Timisoara、Tulcea、Zalau</p> | 
+| 俄罗斯  | Kaliningrad、Rostov-on-Don、Volgograd、Yekaterinburg、Kazan、Kirov、Krasnodar、Moscow、Nalchik、Nizhny Novgorod、Novosibirsk、Noyabrsk、Omsk、Oryol、Perm、St Petersburg、Pyatigorsk、Tver、Tomsk |
 | 塞尔维亚  | Beograd、Kragujevac、Nis、Novi Sad、Valjevo、Subotica | 
-| 斯洛伐克 | Banská Bystrica、Bratislava、Kosice、Presov、Prievidza、Ruzomberok Liptovsky Mikulas、StaráĽubovňa、Trencin |
-| 斯洛文尼亚 | Koper、卢布尔雅那 |
-| 西班牙    | <p>Albacete，Corunna，Alicante，Almería，Asturias，Avila，Badajoz，Cadiz，巴塞罗纳，Bilbao，Burgos，Caceres，大 de 直布罗陀，Castellon de la Plan，休达，墨西哥 Real，科尔多瓦，Cuenca，El Hierro，Ferrol，Fuerteventura，Gran Canaria，Granada，Huelva，Huesca，Ibiza，Jaén-Úbeda，La Gomera，La Palma，Lanzarote，莱昂，Lleida，Logroño，Lugo，Malaga，马略卡岛，Majorca，Melilla，Menorca，Merida，Murcia，Ourense，Palencia，Pamplona，Salamanca，Sebastian，San，Santander，圣地亚哥 de Compostela，Segovia，Seville，Soria，Tarragona-Reus，Tenerife，吧，瓦伦西亚，Valladolid，Vigo，Vitoria-Gasteiz，Zaragoza-Saragossa</p> |
-| 瑞典 | Goteborg/Gothenburg/Jonkoping、Malmö kommun-Malmö、Norrköping och Linköping、斯德哥尔摩、Sundsvall |
-| 瑞士 | Basel、Geneva、Yverdon-les-Bains、苏黎世 | 
-| 土耳其 | Adana-Mersin，Ankara，Antalya，Balıkesir，Bilecik，Bolu，Bursa，Çorum，Denizli，Duzce，Edirne，Elazig，Eskisehir，伊斯坦布尔，Izmir，Aydin，Kahramanmaras，Kayseri，Konya，Malatya，Muğla，Samsun，Şanlıurfa，Trabzon |
-| 英国 | 东 Anglia，东 Midlands，伦敦和东，东东，西北，北爱尔兰，苏格兰，西南，威尔士，西 Midlands，Yorkshire |
-| 乌克兰 | Kharkiv、Zhytomyr、基辅、Lviv、Chernivtsi |
+| 斯洛伐克 | Banská Bystrica、Bratislava、Kosice、Presov、Prievidza、Ruzomberok a Liptovsky Mikulas、Stará Ľubovňa、Trencin |
+| 斯洛文尼亚 | Koper、Ljubljana |
+| 西班牙    | <p>Albacete、Corunna、Alicante、Almería、Asturias、Avila、Badajoz、Bay of Cadiz、Barcelona、Bilbao、Burgos、Caceres、Campo de Gibraltar、Castellon de la Plana、Ceuta、Ciudad Real、Cordoba、Cuenca、El Hierro、Ferrol、Fuerteventura、Gran Canaria、Granada、Huelva、Huesca、Ibiza、Jaén - Úbeda、La Gomera、La Palma、Lanzarote、León、Lleida、Logroño、Lugo、Madrid、Malaga、Mallorca - Majorca、Melilla、Menorca、Merida、Murcia、Ourense、Palencia、Pamplona、Salamanca、San Sebastian、Santander、Santiago de Compostela、Segovia、Seville、Soria、Tarragona - Reus、Tenerife、Toledo、Valencia、Valladolid、Vigo、Vitoria-Gasteiz、Zaragoza - Saragossa</p> |
+| 瑞典 | Goteborg/Gothenburg/Jonkoping、Malmö kommun - Malmö、Norrköping och Linköping、Stockholm、Sundsvall |
+| 瑞士 | Basel、Geneva、Yverdon-les-Bains、Zurich | 
+| 土耳其 | Adana-Mersin、Ankara、Antalya、Balıkesir、Bilecik、Bolu、Bursa、Çorum、Denizli、Duzce、Edirne、Elazig、Eskisehir、Istanbul、Izmir-Aydin、Kahramanmaras、Kayseri、Konya、Malatya、Muğla、Samsun、Şanlıurfa、Trabzon |
+| 英国 | East Anglia、East Midlands、London and South East、North East、North West、Northern Ireland、Scotland、South West、Wales、West Midlands、Yorkshire |
+| 乌克兰 | Kharkiv、Zhytomyr、Kyiv、Lviv、Chernivtsi |
 
 ## <a name="middle-east-and-africa"></a>中东和非洲
 
-| 国家/地区 |  城市 (地铁区域)  |
+| 国家/地区 |  城市（都市圈） |
 |---------|---------|
-| 巴林 | 巴林 |
+| 巴林 | 巴林* |
 | 布基纳法索 | Ouagadougou |
-| 刚果 | 金沙萨 |
+| 刚果 | Kinshasa |
 | 埃及 | 开罗    |
-| 以色列| 以色列  |
-| 肯尼亚 | 内罗毕  |
+| 以色列| 以色列*  |
+| 肯尼亚 | Nairobi  |
 | 马达加斯加 | Antananarivo |
 | 摩洛哥 | Casablanca、Essaouira、Khouribga、Tétouan|
 | 卡塔尔| Doha|
 | 沙特阿拉伯 | Thuwal |
-| 塞内加尔 | 达喀尔 |
+| 塞内加尔 | Dakar |
 | 南非 | 开普敦 |
 | 突尼斯 | Kairouan |
-| 阿拉伯联合酋长国  | 阿尔阿布扎比，Dubai |
+| 阿拉伯联合酋长国  | Abu Dhabi、Dubai |
 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用移动服务 (预览) 请求传输数据：
+了解如何使用出行服务（预览版）请求交通数据：
 
 > [!div class="nextstepaction"]
-> [如何请求传输数据](how-to-request-transit-data.md)
+> [如何请求交通数据](how-to-request-transit-data.md)
 
-了解如何使用移动服务 (预览) 请求实时数据：
+了解如何使用出行服务（预览版）请求实时数据：
 
 > [!div class="nextstepaction"]
 > [如何请求实时数据](how-to-request-real-time-data.md)
 
-浏览 Azure Maps 移动服务 (预览版) API 文档
+浏览 Azure Maps 出行服务（预览版）API 文档
 
 > [!div class="nextstepaction"]
-> [移动服务 API 文档](/rest/api/maps/mobility)
+> [出行服务 API 文档](/rest/api/maps/mobility)

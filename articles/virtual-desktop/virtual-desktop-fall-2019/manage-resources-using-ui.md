@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 资源管理器模板部署管理工具 - Azure
-description: 如何使用 Azure 资源管理器模板安装用户界面工具，以管理 Windows 虚拟桌面 (经典) 资源。
+description: 如何使用 Azure 资源管理器模板安装用户界面工具以便管理 Windows 虚拟桌面（经典）资源。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f96365bcdf64d19dc0b894f2f1230233b3137bc7
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94842645"
 ---
-# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Windows 虚拟桌面 (经典) 管理工具
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Windows 虚拟桌面（经典）管理工具
 
 >[!IMPORTANT]
 >本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。
@@ -36,7 +36,7 @@ ms.locfileid: "94842645"
 
 在部署管理工具之前，需要一个 Azure Active Directory (Azure AD) 用户创建应用注册并部署管理 UI。 此用户必须：
 
--  (MFA) 禁用 Azure AD 多重身份验证
+- 已禁用 Azure AD 多重身份验证 (MFA)
 - 有权在 Azure 订阅中创建资源
 - 有权创建 Azure AD 应用程序 按照[所需的权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)中的说明，执行这些步骤检查用户是否具有所需的权限。
 
@@ -83,7 +83,7 @@ GitHub Azure 资源管理器模板完成后，你会在 Azure 门户中看到一
 
 决定要使用哪个用户提供许可后，请遵照以下说明为工具提供许可：
 
-1. 转到你的 Azure 资源，选择具有你在模板中提供的名称的 Azure 应用服务资源 (例如，Apr3UX) 并导航到与其关联的 URL;例如，  `https://rdmimgmtweb-210520190304.azurewebsites.net` 。
+1. 转到 Azure 资源，选择具有模板中提供的名称（例如 Apr3UX）的 Azure 应用服务资源，然后导航到与它关联的 URL，例如 `https://rdmimgmtweb-210520190304.azurewebsites.net`。
 2. 使用相应的 Azure Active Directory 用户帐户登录。
 3. 如果已使用全局管理员帐户进行身份验证，则现在可以选中“代表组织提供许可”复选框。 选择“接受”以提供许可。
 

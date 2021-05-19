@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
-ms.translationtype: MT
+ms.openlocfilehash: e3c9296a909ba23ee8a3475149911af629a01b1a
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387830"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167458"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>使用 azureiotsolutions.com 站点来部署解决方案加速器
 
@@ -26,9 +26,9 @@ ms.locfileid: "97387830"
 
 可在以下配置中部署解决方案加速器：
 
-* **标准**：用于开发生产环境的扩展基础结构部署。 Azure 容器服务将微服务部署到多个 Azure 虚拟机。 Kubernetes 会协调托管单个微服务的 Docker 容器。
-* **基本**：用于演示的降低成本版本或测试部署。 所有微服务都部署到一个 Azure 虚拟机。
-* **Local**：用于测试和开发的本地计算机部署。 此方法将微服务部署到本地 Docker 容器，并连接到云中的 IoT 中心、Azure Cosmos DB 和 Azure 存储服务。
+* 标准：扩展的基础结构部署，适用于开发生产环境。 Azure 容器服务将微服务部署到多个 Azure 虚拟机。 Kubernetes 会协调托管单个微服务的 Docker 容器。
+* 基本：降低成本版本，适用于演示或部署测试。 所有微服务都部署到一个 Azure 虚拟机。
+* 本地：用于测试和开发的本地计算机部署。 此方法将微服务部署到本地 Docker 容器，并连接到云中的 IoT 中心、Azure Cosmos DB 和 Azure 存储服务。
 
 每个解决方案加速器都使用 IoT 中心、Azure 流分析和 Cosmos DB 等 Azure 服务的不同组合。 有关详细信息，请访问 [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) 并选择解决方案加速器。
 
@@ -38,14 +38,14 @@ ms.locfileid: "97387830"
 
 部署解决方案加速器、管理用户以及管理 Azure 服务的权限取决于你在所选目录中的角色。 与解决方案加速器关联的常见 Azure AD 角色包括：
 
-* **全局管理员**：每个 Azure AD 租户可以有多个 [全局管理员](../active-directory/roles/permissions-reference.md) ：
+* 全局管理员：每个 Azure AD 租户可以有多个[全局管理员](../active-directory/roles/permissions-reference.md)：
 
   * 创建某个 Azure AD 租户时，默认情况下会成为该租户的全局管理员。
   * 全局管理员可以部署基本和标准解决方案加速器。
 
-* **域用户**：每个 Azure AD 租户可以有多个域用户。 域用户可以部署基本解决方案加速器。
+* 域用户：每个 Azure AD 租户可以有多个域用户。 域用户可以部署基本解决方案加速器。
 
-* **Guest 用户**：每个 Azure AD 租户可以有多个来宾用户。 来宾用户不能在 Azure AD 租户中部署解决方案加速器。
+* 来宾用户：每个 Azure AD 租户可以有多个来宾用户。 来宾用户不能在 Azure AD 租户中部署解决方案加速器。
 
 有关 Azure AD 中用户及角色的详细信息，请参阅以下资源：
 
@@ -54,7 +54,7 @@ ms.locfileid: "97387830"
 
 ## <a name="choose-your-device"></a>选择设备
 
-AzureIoTSolutions.com 站点链接到 [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)。
+AzureIoTSolutions.com 站点链接到 [Azure IoT 认证设备目录](https://devicecatalog.azure.com/)。
 
 该目录列出数百个 IoT 认证硬件设备，可供连接到解决方案加速器，以开始生成 IoT 解决方案。
 
@@ -64,4 +64,4 @@ AzureIoTSolutions.com 站点链接到 [Azure IoT 认证设备目录](https://cat
 
 ## <a name="next-steps"></a>后续步骤
 
-若要试用一个 IoT 解决方案加速器，请查看快速入门： [试用已连接的工厂解决方案](quickstart-connected-factory-deploy.md)。
+若要试用 IoT 解决方案加速器之一，请参阅快速入门：[尝试使用联网工厂解决方案](quickstart-connected-factory-deploy.md)。

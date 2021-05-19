@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: 0a80c731e4245b1a295364e5b8c87f90290f7f74
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98223302"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将 Azure 虚拟网络移到另一个区域
@@ -40,11 +40,11 @@ ms.locfileid: "98223302"
 
 若要使用 Azure 门户导出虚拟网络并部署目标虚拟网络，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。
 1. 找到包含源虚拟网络的资源组并选择它。
-1. 选择“设置” > “导出模板”。  
-1. 在“导出模板”窗格中选择“部署”。  
-1. 若要在在线编辑器中打开 *parameters.json* 文件，请选择“模板” > “编辑参数”。  
+1. 选择“设置” > “导出模板”。 
+1. 在“导出模板”窗格中选择“部署”。
+1. 若要在在线编辑器中打开 *parameters.json* 文件，请选择“模板” > “编辑参数”。
 1. 若要编辑虚拟网络名称的参数，请更改 **parameters** 下的 **value** 属性：
 
     ```json
@@ -61,9 +61,9 @@ ms.locfileid: "98223302"
 
 1. 在编辑器中，将源虚拟网络名称值更改为所需的目标虚拟网络名称。 请务必将名称括在引号中。
 
-1. 在编辑器中选择“保存”。 
+1. 在编辑器中选择“保存”。
 
-1. 若要在在线编辑器中打开 *template.json* 文件，请选择“模板” > “编辑模板”。  
+1. 若要在在线编辑器中打开 *template.json* 文件，请选择“模板” > “编辑模板”。
 
 1. 在在线编辑器中，若要编辑要将虚拟网络移到的目标区域，请更改 **resources** 下的 **location** 属性：
 
@@ -85,11 +85,11 @@ ms.locfileid: "98223302"
 
     ```
 
-1. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是区域名称，不包含空格 (例如， **Central US**  =  **centralus**) 。
+1. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域代码是不带空格的区域名称（例如，美国中部 = **centralus**）。
 
 1. （可选）还可以根据要求更改模板中的其他参数：
 
-    * **地址空间**：在保存该文件之前，可以更改虚拟网络的地址空间，方法是修改 **resources** > **addressSpace** 节并更改 **addressPrefixes** 属性：
+    * **地址空间**：在保存该文件之前，可以通过修改 resources > addressSpace 节并更改 addressPrefixes 属性来更改虚拟网络的地址空间  ：
 
         ```json
                 "resources": [
@@ -109,7 +109,7 @@ ms.locfileid: "98223302"
 
         ```
 
-    * **子网**：可以通过更改该模板的 **subnets** 节来更改子网名称和子网地址空间或在其中添加内容。 可以通过更改 **name** 属性来更改子网名称。 可以通过更改 **addressPrefix** 属性来更改子网地址空间：
+    * **子网**：可以通过更改该模板的 subnets 节来更改子网名称和子网地址空间或在其中添加内容。 可以通过更改 **name** 属性来更改子网名称。 可以通过更改 **addressPrefix** 属性来更改子网地址空间：
 
         ```json
                 "subnets": [
@@ -176,33 +176,33 @@ ms.locfileid: "98223302"
          ]
         ```
 
-1. 在在线编辑器中选择“保存”。 
+1. 在在线编辑器中选择“保存”。
 
-1. 若要选择要将目标虚拟网络部署到的订阅，请选择“基本信息” > “订阅”。  
+1. 若要选择要将目标虚拟网络部署到的订阅，请选择“基本信息” > “订阅”。 
 
-1. 若要选择要将目标虚拟网络部署到的资源组，请选择“基本信息” > “资源组”。   
+1. 若要选择要将目标虚拟网络部署到的资源组，请选择“基本信息” > “资源组”。  
 
-    如果需要为目标虚拟网络创建新的资源组，请选择“新建”。  确保该名称不同于现有虚拟网络中的源资源组名称。
+    如果需要为目标虚拟网络创建新的资源组，请选择“新建”。 确保该名称不同于现有虚拟网络中的源资源组名称。
 
-1. 确认“基本信息” > “位置”是否设置为要将虚拟网络部署到的目标位置。  
+1. 确认“基本信息” > “位置”是否设置为要将虚拟网络部署到的目标位置。 
 
-1. 在“设置”下，确认名称是否与先前在 parameters 编辑器中输入的名称相匹配。 
+1. 在“设置”下，确认名称是否与先前在 parameters 编辑器中输入的名称相匹配。
 
-1. 选中“条款和条件”复选框。 
+1. 选中“条款和条件”复选框。
 
-1. 若要部署目标虚拟网络，请选择“购买”。 
+1. 若要部署目标虚拟网络，请选择“购买”。
 
 ## <a name="delete-the-target-virtual-network"></a>删除目标虚拟网络
 
 若要丢弃目标虚拟网络，请删除包含目标虚拟网络的资源组。 为此，请执行以下操作：
 1. 在 Azure 门户仪表板上，选择该资源组。
-1. 在“概述”窗格的顶部，选择“删除”。  
+1. 在“概述”窗格的顶部，选择“删除”。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要提交更改并完成虚拟网络的移动，请删除源虚拟网络或资源组。 为此，请执行以下操作：
 1. 在 Azure 门户仪表板上，选择该虚拟网络或资源组。
-1. 在每个窗格的顶部，选择“删除”。 
+1. 在每个窗格的顶部，选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,83 +1,83 @@
 ---
 title: 升级 Log Analytics 仪表板可视化效果
-description: 了解如何通过可提供强大见解的查询升级 Log Analytics 仪表板的可视化效果。
+description: 了解如何通过可提供强大见解的查询升级 Log Analytics 仪表板可视化效果。
 ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
 ms.openlocfilehash: 276ea1e2f083da7ab4a6ab44e60bc7e0832e8651
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030930"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>升级 Log Analytics 仪表板可视化效果
 
-2020年2月，我们引入了改进的可视化技术。 提高和增强你的可视化查询结果的可视化能力，并快速获得强大的见解。 
+2020 年 2 月，我们引入了改进的可视化技术。 快速改进和增强直观显示查询结果并获得强大见解的功能。 
 
-有关此升级的详细信息，请参阅此 [Azure 更新](https://azure.microsoft.com/updates/azure-monitor-log-analytics-upgraded-results-visualization/)。 
+有关此升级的详细信息，可参阅[此 Azure 更新](https://azure.microsoft.com/updates/azure-monitor-log-analytics-upgraded-results-visualization/)。 
 
-这一新的可视化技术存在了新的和改进的查询结果集体验。 
+这项新的可视化技术为围绕查询结果集的新体验和改进体验铺平了道路。 
 
 ## <a name="dashboards-in-azure"></a>Azure 中的仪表板
 
-Azure 仪表板是一种可视化整个 Azure surface 区域的状态的方法。 它们旨在为你的 Azure 房地产状态提供单个窗格，并允许使用多种快捷方式执行常见操作。 
+通过 Azure 仪表板可直观显示整个 Azure 外围应用的状态。 Azure 仪表板旨在为你的 Azure 资产状态提供单一管理平台，允许使用各种常见操作快捷方式。 
 
 有关详细信息，请参阅 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)
 
 
-## <a name="upgrading-log-analytics-dashboard-parts"></a>升级 Log Analytics 面板部件
+## <a name="upgrading-log-analytics-dashboard-parts"></a>升级 Log Analytics 仪表板部件
 
-新的可视化技术解决了旧实现的一些常见问题，并引入了一些新的功能来固定 Log Analytics 部分： 
+新的可视化技术解决了旧实现的一些常见问题，并为固定的 Log Analytics 部件引入了一些新功能： 
 
-- **相同的可用类型** -在 "仪表板" 上，Log Analytics 中的所有可视化效果类型都作为固定部分提供。
+- 相同可用类型 - Log Analytics 中所有可用的可视化类型都可以作为仪表板上固定的部件使用。
 
-- **一致的外观** -对于固定的部分，可视化效果外观与 Log Analytics 中的外观几乎相同。 不同之处在于优化要求视觉对象的数据内容之间的差异。 若要深入了解这些差异，请参阅本文档的注意事项部分。
+- 一致的外观 - 固定部件的可视化外观现在几乎与 Log Analytics 中的外观相同。 差异是由于优化导致的，优化要求视觉对象的数据内容存在细微差异。 若要深入了解这些差异，请参阅本文档的注意事项部分。
 
-- **工具提示和标签** -新固定 Log Analytics 可视化效果支持工具提示。 饼图和圆环图现在支持标签。
+- 工具提示和标签 - 新的固定 Log Analytics 可视化效果支持工具提示。 饼图和圆环图现在支持标签。
 
-- **交互式图例** –单击可视化效果图例可在 Log Analytics 中添加/删除固定视觉对象中的维度。
+- 交互式图例 - 单击可视化效果图例可以在固定的视觉对象中添加/删除维度，就如同在 Log Analytics 中一样。
 
-## <a name="stage-1---opt-in-upgrade-message"></a>阶段 1-选择加入升级消息
+## <a name="stage-1---opt-in-upgrade-message"></a>阶段 1 - 选择启用升级消息
 
-当可以升级 Log Analytics 固定部件时，将在仪表板中 Log Analytics 固定部分显示新的 *选择加入* 通知，以允许用户升级其视觉对象。 如果要体验新的可视化效果，以便在其仪表板中升级选定的可视化效果。
+当 Log Analytics 固定部件能够升级时，一个新的“选择启用”通知将出现在仪表板的 Log Analytics 固定部件上，允许用户升级其可视化效果。 如果想要体验新的可视化效果，请升级其仪表板中选定的可视化效果。
 
  
 ![边栏](media/dashboard-upgrade/update-message-1.png)
  
-![显示如何更新磁贴可视化的屏幕截图。](media/dashboard-upgrade/update-message-2.png)
+![此屏幕截图显示如何更新磁贴可视化效果。](media/dashboard-upgrade/update-message-2.png)
 
 > [!WARNING]
-> 发布仪表板后，升级是不可逆的。 但是，如果离开仪表板而不重新发布，则会放弃更改。  
+> 发布仪表板后，升级是不可逆的。 但是，如果你离开仪表板而不重新发布，则更改会被放弃。  
 
-单击后，可视化将更新为新技术。 可视化效果中的细微差异可能发生在 Log Analytics 的外观上。
+单击后，可视化效果将更新为新技术。 在 Log Analytics 中，可视化效果可能会出现细微差异，以与其外观保持一致。
 
 升级可视化效果后，需要重新发布仪表板以使更改生效。
 
-![显示升级的可视化效果的屏幕截图。](media/dashboard-upgrade/update-message-3.png)
+![此屏幕截图显示升级后的可视化效果。](media/dashboard-upgrade/update-message-3.png)
 
-## <a name="stage-2---migration-of-all-dashboards"></a>阶段 2-迁移所有仪表板
+## <a name="stage-2---migration-of-all-dashboards"></a>阶段 2 - 迁移所有仪表板
 
-初始选择加入期结束后，Log Analytics 团队将升级系统中的所有仪表板。 通过协调所有 Azure 仪表板，团队可以在整个板中引入更多可视化效果和体验改进。
+初始选择启用期结束后，Log Analytics 团队会升级系统中的所有仪表板。 通过调整所有 Azure 仪表板，团队可以在整个板中引入更多可视化效果和体验改进。
 
 ## <a name="considerations"></a>注意事项
 
-固定到仪表板的 Log Analytics 可视化效果是设计为获得最佳体验的特定行为。 将可视化效果固定到仪表板时，请查看以下设计注意事项。
+固定到仪表板的 Log Analytics 可视化效果有一些特定行为，旨在实现最佳体验。 将可视化效果固定到仪表板时，请查看以下设计注意事项。
 
-### <a name="query-time-scope---30-day-limit"></a>查询时间范围-30 天限制
+### <a name="query-time-scope---30-day-limit"></a>查询时间范围 - 30 天限制
 
-由于仪表板可能包含来自多个查询的多个可视化效果，因此单个固定查询的时间范围限制为 30 天。 单个查询只能在小于或等于30天的时间范围内运行。 此限制旨在确保面板加载时间合理。
+由于仪表板可能包含来自多个查询的多个可视化效果，因此单个固定查询的时间范围限制为 30 天。 单个查询只能针对小于或等于 30 天的时间范围运行。 此限制是为了确保仪表板加载时间合理。
 
-### <a name="query-data-values---25-values-and-other-grouping"></a>查询数据值-25 个值和其他分组
+### <a name="query-data-values---25-values-and-other-grouping"></a>查询数据值 - 25 个值和其他分组
 
-仪表板可以更丰富且复杂。 为了减少查看仪表板时的认知负载，我们通过将显示限制为25个不同的数据类型来优化可视化。 如果有25个以上的，Log Analytics 会优化数据。 它单独显示25种类型，其中的大多数数据是单独的，然后将其余值分组为 "其他" 值。 下图显示了这种情况。  
+仪表板可以在视觉上密集而复杂。 为了减少查看仪表板时的认知负担，我们通过将显示限制为 25 种不同的数据类型来优化可视化效果。 如果有 25 种以上的数据类型，Log Analytics 会优化数据。 它分别显示了 25 种类型（其中大多数数据是单独的），然后将其余的值分组为一个“其他”值。 下面的图表显示了这种情况。  
 
-![显示具有25个不同数据类型的仪表板的屏幕截图。](media/dashboard-upgrade/values-25-limit.png)
+![此屏幕截图显示了具有 25 种不同数据类型的仪表板。](media/dashboard-upgrade/values-25-limit.png)
 
-### <a name="dashboard-refresh-on-load"></a>负载上的仪表板刷新
+### <a name="dashboard-refresh-on-load"></a>加载时刷新仪表板
 
-加载时，将刷新仪表板。 将执行与仪表板固定 Log Analytics 可视化对象相关的所有查询，并在加载后刷新仪表板。 如果 "仪表板" 页保持打开状态，则仪表板中的数据每60分钟刷新一次。
+仪表板在加载时刷新。 将执行与仪表板中固定的 Log Analytics 可视化效果相关的所有查询，并在加载后刷新仪表板。 如果仪表板页保持打开状态，则仪表板中的数据每 60 分钟刷新一次。
 
 ## <a name="next-steps"></a>后续步骤
 

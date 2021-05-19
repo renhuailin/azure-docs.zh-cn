@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: c028dcf6649da9abd196997d077b58386a5e6dd9
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101092795"
 ---
 # <a name="azure-active-directory-authorization---rest-api-reference"></a>Azure Active Directory 授权 - REST API 参考
@@ -43,4 +43,4 @@ HTTP/1.1 403 Forbidden
 
 ## <a name="managing-role-assignments"></a>管理角色分配
 
-可以通过使用在所有 Azure 服务中均为标准的 [AZURE RBAC 过程](../role-based-access-control/overview.md) 来管理角色分配。 可以通过 Azure CLI、PowerShell 和 Azure 门户执行此操作。 有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+用户可以按照所有 Azure 服务的标准 [Azure RBAC 过程](../role-based-access-control/overview.md)来管理角色分配。 可以通过 Azure CLI、PowerShell 和 Azure 门户执行此操作。 有关详细信息，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。

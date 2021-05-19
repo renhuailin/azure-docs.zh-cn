@@ -1,6 +1,6 @@
 ---
-title: 向 Android 地图添加线条层 |Microsoft Azure 映射
-description: 了解如何向 maps 添加行。 请参阅使用 Azure Maps Android SDK 将线条图层添加到地图以及使用符号和颜色渐变自定义线条的示例。
+title: 向 Android 地图添加线条层 | Microsoft Docs
+description: 了解如何向地图添加线条。 请参阅示例，了解如何使用 Azure Maps Android SDK 向地图添加线条层并使用符号和颜色渐变自定义线条。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 2/26/2021
@@ -10,26 +10,26 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: ff071d03e00a0380d1ab6642828b0940931d3302
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097442"
 ---
-# <a name="add-a-line-layer-to-the-map-android-sdk"></a>向地图添加线条层 (Android SDK) 
+# <a name="add-a-line-layer-to-the-map-android-sdk"></a>向地图添加线条层 (Android SDK)
 
 线条层可用于将 `LineString` 和 `MultiLineString` 特征呈现为地图上的路径或路由。 线条层还可用于呈现 `Polygon` 和 `MultiPolygon` 特征的轮廓。 数据源连接到线条层以向它提供要呈现的数据。
 
 > [!TIP]
-> 默认情况下，线条层将呈现数据源中的多边形和线条的坐标。 若要将该层限制为仅呈现 LineString 几何特征，请将 `filter` 层的选项设置为 `eq(geometryType(), "LineString")` 。 如果还想要包含 MultiLineString 功能，请将层的 `filter` 选项设置为 `any(eq(geometryType(), "LineString"), eq(geometryType(), "MultiLineString"))` 。
+> 默认情况下，线条层将呈现数据源中的多边形和线条的坐标。 若要限制层以便仅呈现 LineString 几何图形功能，请将层的 `filter` 选项设置为 `eq(geometryType(), "LineString")`。 如果还需要包含 MultiLineString 特征，请将层的 `filter` 选项设置为 `any(eq(geometryType(), "LineString"), eq(geometryType(), "MultiLineString"))`。
 
 ## <a name="prerequisites"></a>先决条件
 
-请确保完成 [快速入门：创建 Android 应用](quick-android-map.md) 文档中的步骤。 本文中的代码块可以插入到 maps `onReady` 事件处理程序中。
+请务必完成[快速入门：创建 Android 应用](quick-android-map.md)文档中的步骤。 可以将本文中的代码块插入到地图的 `onReady` 事件处理程序中。
 
 ## <a name="add-a-line-layer"></a>添加线条层
 
-以下代码演示如何创建线条。 将行添加到数据源，然后使用类以线条层呈现 `LineLayer` 。
+以下代码演示如何创建线条。 将线条添加到数据源，然后使用 `LineLayer` 类通过线条层呈现它。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -87,11 +87,11 @@ map.layers.add(layer)
 
 以下屏幕截图显示了在线条层中呈现线条的上述代码。
 
-![使用线条层绘制的线条的地图](media/android-map-add-line-layer/android-line-layer.png)
+![地图，通过线条层呈现线条](media/android-map-add-line-layer/android-line-layer.png)
 
-## <a name="data-driven-line-style"></a>数据驱动线条样式
+## <a name="data-driven-line-style"></a>数据驱动的线条样式
 
-下面的代码创建两个行功能，并将速度限制值作为属性添加到每行。 线条层根据速度限制值使用数据驱动器样式表达式颜色。 由于直线数据覆盖沿公路，下面的代码会将线条层添加到标签层下方，以便仍可以清楚地阅读道路标签。
+下面的代码创建两个行特征，并将速度限制值作为属性添加到每一行。 线条层使用数据驱动样式表达式根据速度限制值为线条着色。 由于线条数据沿道路叠加，下面的代码将线条层添加到标签层下方，以便仍然可以清楚地读取道路标签。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -202,13 +202,13 @@ map.layers.add(layer, "labels")
 
 ::: zone-end
 
-以下屏幕截图显示了上面的代码，该代码在线条层中呈现两行颜色，并根据行功能中的属性从数据驱动样式表达式中检索其颜色。
+以下屏幕截图显示上述代码在线条层中呈现两行，其颜色基于行特征中的属性从数据驱动样式表达式中检索。
 
-![使用在线条层中呈现的数据驱动器样式线条映射](media/android-map-add-line-layer/android-line-layer-data-drive-style.png)
+![地图，具有线条层中呈现的数据驱动样式的线条](media/android-map-add-line-layer/android-line-layer-data-drive-style.png)
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>向线条添加笔划渐变
 
-可以将一种笔划颜色应用于线条。 还可以使用颜色渐变填充线条，以显示从一个线段到下一个线段的转换。 例如，线条渐变可用于表示随时间和距离推移的变化，或是一连串连接的对象间的不同温度。 为了将此功能应用到行，数据源必须将 `lineMetrics` 选项设置为 `true` ，然后可以将颜色渐变表达式传递到 `strokeColor` 行的选项。 笔划渐变表达式必须引用将计算线条指标公开给表达式的 `lineProgress` 数据表达式。
+可以将一种笔划颜色应用于线条。 还可以使用颜色渐变填充线条，以显示从一个线段到下一个线段的转换。 例如，线条渐变可用于表示随时间和距离推移的变化，或是一连串连接的对象间的不同温度。 若要将此特征应用于线条，数据源必须将 `lineMetrics` 选项设置为 `true`，随后可以将颜色渐变表达式传递到线条的 `strokeColor` 选项。 笔划渐变表达式必须引用将计算线条指标公开给表达式的 `lineProgress` 数据表达式。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -323,13 +323,13 @@ map.layers.add(
 
 ::: zone-end
 
-以下屏幕截图显示了上面的代码，其中显示了使用渐变笔划颜色呈现的行。
+以下屏幕截图显示了上述代码，该代码显示使用渐变笔划颜色呈现的行。
 
-![使用在线条层中呈现为渐变路径的线条映射](media/android-map-add-line-layer/android-line-layer-gradient.jpg)
+![地图，具有呈现为线条层中的渐变路径的线条](media/android-map-add-line-layer/android-line-layer-gradient.jpg)
 
 ## <a name="add-symbols-along-a-line"></a>沿线条添加符号
 
-此示例演示如何沿地图上的线条添加箭头图标。 使用符号层时，请将 `symbolPlacement` 选项设置为 `SymbolPlacement.LINE` 。 此选项会沿线条呈现符号并旋转图标（0 度 = 右）。
+此示例演示如何沿地图上的线条添加箭头图标。 使用符号层时，将 `symbolPlacement` 选项设置为 `SymbolPlacement.LINE`。 此选项会沿线条呈现符号并旋转图标（0 度 = 右）。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -451,15 +451,15 @@ map.layers.add(
 
 ::: zone-end
 
-对于本示例，以下图像已加载到应用程序的 "图形" 文件夹中。
+对于本示例，以下图像已加载到应用的可绘制资源文件夹中。
 
 | ![紫色箭头图标图像](media/android-map-add-line-layer/purple-arrow-right.png)|
 |:-----------------------------------------------------------------------:|
 |                           `purple_arrow_right.png`                       |
 
-下面的屏幕截图显示了上面的代码，其中显示了一条线条，其中显示了箭头图标。
+以下屏幕截图显示了上述代码，该代码显示一行，沿其显示箭头图标。
 
-![使用数据驱动器样式线条映射，线条图层中呈现箭头](media/android-map-add-line-layer/android-symbols-along-line-path.png)
+![地图，具有线条层中呈现的带有箭头的数据驱动样式的线条](media/android-map-add-line-layer/android-symbols-along-line-path.png)
 
 ## <a name="next-steps"></a>后续步骤
 

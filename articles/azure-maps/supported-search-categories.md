@@ -1,6 +1,6 @@
 ---
 title: 搜索类别 | Microsoft Azure Maps
-description: 了解 Azure Maps 支持哪些搜索类别。 查看所有支持的类别代码，以及每个类别代码所表示的感兴趣的点类型。
+description: 了解 Azure Maps 中支持哪些搜索类别。 查看所有支持的类别代码，以及每个代码所代表的兴趣点类型。
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: b9cf9e031c73b1412ab9fc20f5ffe94736d28eb4
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92896899"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps 支持的类型

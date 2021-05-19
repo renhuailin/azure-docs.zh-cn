@@ -8,10 +8,10 @@ ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 3d69b72012819e3d9099e447b9048fe07aea86d3
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97858699"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR 服务进行 Azure Functions 开发和配置
@@ -49,11 +49,11 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 ### <a name="handle-messages-sent-from-signalr-service"></a>处理从 SignalR 服务发送的消息
 
-使用 SignalR 触发器绑定来处理从 SignalR 服务发送的消息。 当客户端发送消息或客户端连接或断开连接时，你可以获得通知。
+使用 SignalR 触发器绑定来处理从 SignalR 服务发送的消息。 可在客户端发送消息或客户端连接或断开连接时收到通知。
 
 有关详细信息，请参阅 [SignalR 触发器绑定参考](../azure-functions/functions-bindings-signalr-service-trigger.md)。
 
-还需要将函数终结点配置为上游，以便在有来自客户端的消息时，服务将触发该函数。 有关如何配置上游的详细信息，请参阅此[文档](concept-upstream.md)。
+还需要将函数终结点配置为上游，让服务在收到来自客户端的消息时触发函数。 有关如何配置上游的详细信息，请参阅此[文档](concept-upstream.md)。
 
 ### <a name="sending-messages-and-managing-group-membership"></a>发送消息和管理组成员身份
 
@@ -212,7 +212,7 @@ connection.send('method1', 'arg1', 'arg2');
 
 ## <a name="azure-functions-configuration"></a>Azure Functions 配置
 
-与 Azure SignalR 服务集成的 azure Function apps 可以像使用 [持续部署](../azure-functions/functions-continuous-deployment.md)、 [zip 部署](../azure-functions/deployment-zip-push.md)和 [从包运行](../azure-functions/run-functions-from-deployment-package.md)这样的技术一样部署，如任何典型的 azure function app。
+与 Azure SignalR 服务集成的 Azure 函数应用可以像任何常用 Azure 函数应用一样，使用[持续部署](../azure-functions/functions-continuous-deployment.md)、[zip 部署](../azure-functions/deployment-zip-push.md)和[从包运行](../azure-functions/run-functions-from-deployment-package.md)等技术进行部署。
 
 但是，对于使用 SignalR 服务绑定的应用，需要注意几个特殊事项。 如果客户端在浏览器中运行，则必须启用 CORS。 如果应用需要身份验证，则你可以将协商终结点与应用服务身份验证集成。
 
@@ -247,7 +247,7 @@ JavaScript/TypeScript 客户端向 negotiate 函数发出 HTTP 请求，以启�
 若要在 Azure 函数应用中启用 CORS，请在 Azure 门户中函数应用的“平台功能”选项卡下，转到 CORS 配置屏幕。
 
 > [!NOTE]
-> CORS 配置在 Azure Functions Linux 消耗计划中尚不可用。 使用 [AZURE API 管理](#cloud---azure-api-management) 启用 CORS。
+> CORS 配置在 Azure Functions Linux 消耗计划中尚不可用。 使用 [Azure API Management](#cloud---azure-api-management) 启用 CORS。
 
 必须启用支持 Access-Control-Allow-Credentials 的 CORS 才能让 SignalR 客户端调用 negotiate 函数。 选中相应的复选框以启用 CORS。
 
@@ -283,7 +283,7 @@ Azure API 管理提供一个可向现有后端服务添加功能的 API 网关�
 
 ### <a name="using-app-service-authentication"></a>使用应用服务身份验证
 
-Azure Functions 提供内置身份验证，支持 Facebook、Twitter、Microsoft 帐户、Google 和 Azure Active Directory 等常用访问接口。 此功能可与 *SignalRConnectionInfo* 绑定集成，以便与已使用用户 ID 进行身份验证的 Azure SignalR 服务建立连接。 应用程序可以使用 *SignalR* 输出绑定来发送以该用户 ID 为目标的消息。
+Azure Functions 内置身份验证，支持 Facebook、Twitter、Microsoft 帐户、Google 和 Azure Active Directory 等常见提供程序。 此功能可与 *SignalRConnectionInfo* 绑定集成，以便与已使用用户 ID 进行身份验证的 Azure SignalR 服务建立连接。 应用程序可以使用 *SignalR* 输出绑定来发送以该用户 ID 为目标的消息。
 
 在 Azure 门户中函数应用的“平台功能”选项卡上，打开“身份验证/授权”设置窗口。  遵循[应用服务身份验证](../app-service/overview-authentication-authorization.md)文档使用所选的标识提供者配置身份验证。
 

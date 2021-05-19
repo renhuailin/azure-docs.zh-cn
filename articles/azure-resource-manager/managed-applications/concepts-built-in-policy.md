@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: ec0fe8f66ef2ad2458b4ffad0e848591793e5b05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75650937"
 ---
 # <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>使用 Azure Policy 为托管应用程序部署关联
@@ -39,15 +39,15 @@ DeployIfNotExists 评估 它在资源提供程序处理了所选资源类型的�
 
 ## <a name="getting-help"></a>获取帮助
 
-如果有关于 Azure 自定义资源提供程序开发的问题，请尝试 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)。 该论坛上可能已有类似问题的解答，因此，在发贴之前请先查看以往的提问。 添加标记 ```azure-custom-providers``` 可以快速得到回复！
+如果你遇到了 Azure 自定义资源提供程序开发方面的问题，请尝试在 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers) 上提问。 该论坛上可能已有类似问题的解答，因此，在发贴之前请先查看以往的提问。 添加标记 ```azure-custom-providers``` 可以快速得到回复！
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍如何使用内置策略来部署关联。 请参阅以下文章了解详细信息：
+本文介绍了如何使用内置策略来部署关联项。 请查看以下文章了解详细信息：
 
-- [概念： Azure 自定义提供程序资源载入](../custom-providers/concepts-resource-onboarding.md)
-- [教程：资源加入自定义提供程序](../custom-providers/tutorial-resource-onboarding.md)
+- [概念：Azure 自定义提供程序资源加入](../custom-providers/concepts-resource-onboarding.md)
+- [教程：使用自定义提供程序进行资源加入](../custom-providers/tutorial-resource-onboarding.md)
 - [教程：在 Azure 中创建自定义操作和资源](../custom-providers/tutorial-get-started-with-custom-providers.md)
-- [快速入门：创建自定义资源提供程序并部署自定义资源](../custom-providers/create-custom-provider.md)
-- [如何：向 Azure REST API 添加自定义操作](../custom-providers/custom-providers-action-endpoint-how-to.md)
-- [如何：向 Azure REST API 添加自定义资源](../custom-providers/custom-providers-resources-endpoint-how-to.md)
+- [快速入门：创建自定义资源提供程序和部署自定义资源](../custom-providers/create-custom-provider.md)
+- [操作说明：将自定义操作添加到 Azure REST API](../custom-providers/custom-providers-action-endpoint-how-to.md)
+- [操作说明：将自定义资源添加到 Azure REST API](../custom-providers/custom-providers-resources-endpoint-how-to.md)

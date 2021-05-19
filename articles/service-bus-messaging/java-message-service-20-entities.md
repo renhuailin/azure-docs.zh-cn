@@ -1,24 +1,24 @@
 ---
-title: Azure 服务总线消息传送-Java 消息服务实体
+title: Azure 服务总线消息传递 - Java 消息服务实体
 description: 本文概述了可通过 Java 消息服务 API 访问的 Azure 服务总线消息传递实体。
 ms.topic: article
 ms.date: 07/20/2020
 ms.openlocfilehash: ee4e0124dced16b86d5292c647e129aa87645f22
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100652575"
 ---
 # <a name="java-message-service-jms-20-entities"></a>Java 消息服务 (JMS) 2.0 实体
 
-连接到 Azure 服务总线高级版和使用 [Azure 服务总线 JMS 库](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms) 的客户端应用程序可以使用以下实体。
+连接到 Azure 服务总线高级版并使用 [Azure 服务总线 JMS 库](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms)的客户端应用程序可以使用以下实体。
 
 ## <a name="queues"></a>队列
 
 JMS 中的队列在语义上与传统的[服务总线队列](service-bus-queues-topics-subscriptions.md#queues)类似。
 
-若要创建队列，请在类中使用以下方法 `JMSContext` -
+若要创建队列，请使用 `JMSContext` 类中的以下方法 -
 
 ```java
 Queue createQueue(String queueName)
@@ -28,7 +28,7 @@ Queue createQueue(String queueName)
 
 JMS 中的主题在语义上与传统的[服务总线主题](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)类似。
 
-若要创建主题，请在类中使用以下方法 `JMSContext` -
+若要创建主题，请使用 `JMSContext` 类中的以下方法 -
 
 ```java
 Topic createTopic(String topicName)
@@ -36,9 +36,9 @@ Topic createTopic(String topicName)
 
 ## <a name="temporary-queues"></a>临时队列
 
-如果客户端应用程序需要在应用程序的生存期内存在的临时实体，则可以使用临时队列。 这些实体用于 [请求-答复](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) 模式。
+如果客户端应用程序需要在应用程序的生存期内存在的临时实体，它可以使用临时队列。 这些实体以[请求-回复](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html)模式使用。
 
-若要创建临时队列，请在类中使用以下方法 `JMSContext` -
+若要创建临时队列，请使用 `JMSContext` 类中的以下方法 -
 
 ```java
 TemporaryQueue createTemporaryQueue()
@@ -48,7 +48,7 @@ TemporaryQueue createTemporaryQueue()
 
 就像临时队列一样，可以使用临时主题通过在应用程序生存期内存在的临时实体来启用发布/订阅。
 
-若要创建临时主题，请在类中使用以下方法 `JMSContext` -
+若要创建临时主题，请使用 `JMSContext` 类中的以下方法 -
 
 ```java
 TemporaryTopic createTemporaryTopic()
@@ -56,10 +56,10 @@ TemporaryTopic createTemporaryTopic()
 
 ## <a name="java-message-service-jms-subscriptions"></a>Java 消息服务 (JMS) 订阅
 
-尽管它们在语义上类似于 [订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) (即，存在于主题上并启用发布/订阅语义) ，但 Java 消息服务规范介绍了给定订阅的 **共享**、非 **共享**、* * 持久性和 **非持久** 属性的概念。
+尽管它们在语义上类似于[订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)（即存在于主题上并启用发布/订阅语义），但 Java 消息服务规范引入了给定订阅的共享、非共享、**持久和非持久特性概念  。
 
 > [!NOTE]
-> 以下订阅适用于使用 [Azure 服务总线 JMS 库](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms)连接到 Azure 服务总线的客户端应用程序的 Azure 服务总线高级层。
+> 以下订阅在 Azure 服务总线高级层中可用，用于通过 [Azure 服务总线 JMS 库](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms)连接到 Azure 服务总线的客户端应用程序。
 >
 > 只有持久订阅才能使用 Azure 门户创建。
 >
@@ -68,7 +68,7 @@ TemporaryTopic createTemporaryTopic()
 
 当某个主题上发布的所有消息都要由某个应用程序接收并处理时，可使用共享持久订阅，无论该应用程序是否任何时候都主动使用该订阅中的消息。
 
-从服务总线接收身份验证的任何应用程序都可以从共享持久订阅接收。
+通过身份验证后可以从服务总线接收消息的任何应用程序都可以从共享持久订阅中接收消息。
 
 若要创建共享持久订阅，请使用 `JMSContext` 类中的以下方法：
 
@@ -86,7 +86,7 @@ void unsubscribe(String name)
 
 ### <a name="unshared-durable-subscriptions"></a>非共享持久订阅
 
-与共享持久订阅一样，当某个主题上发布的所有消息都要由应用程序接收并处理时，将使用非共享持久订阅，而不管应用程序是否正在积极地从订阅中使用。
+与共享持久订阅一样，当某个主题上发布的所有消息都要由某个应用程序接收并处理时，可使用非共享持久订阅，无论该应用程序是否主动使用该订阅中的消息。
 
 不过，由于这是一个非共享的订阅，因此只有创建该订阅的应用程序才能从其中接收消息。
 
@@ -152,48 +152,48 @@ JMSConsumer createConsumer(Destination destination, String messageSelector, bool
 
 消息选择器可在每个 JMS 订阅上设置，并作为消息标头属性的筛选条件存在。 只会传递其标头属性与消息选择器表达式匹配的消息。 如果值为 null 或空字符串，则表示不存在与 JMS 订阅/使用者对应的消息选择器。
 
-## <a name="additional-concepts-for-java-message-service-jms-20-subscriptions"></a>Java 消息服务 (JMS) 2.0 订阅的其他概念
+## <a name="additional-concepts-for-java-message-service-jms-20-subscriptions"></a>Java 消息服务 JMS (2.0) 订阅的其他概念
 
 ### <a name="client-scoping"></a>客户端范围
 
-在 Java 消息服务 (JMS) 2.0 API 中指定的订阅，不一定会 *作用于特定的客户端应用程序/* (，用适当的 `clientId`) 标识。
+根据 Java 消息服务 (JMS) 2.0 API 中指定的订阅，其范围可能限定为或不限定为特定客户端应用程序（由 `clientId` 进行标识）。
 
-一旦对订阅进行了限定，就只能从具有相同客户端 id 的客户端应用程序 **访问** 它。 
+订阅限定范围后，只能从具有相同客户端 ID 的客户端应用程序对其进行访问。 
 
-尝试访问特定客户端 id 范围内的订阅的任何访问权限 () 说到 clientId2) 的应用程序中具有另一个客户端 (ID 的应用程序将导致创建另一个作用域为其他客户端 ID (clientId2) 的订阅。
+尝试访问范围为特定客户端 ID（例如 clientId1）的订阅时，从具有另一个客户端 ID（例如 clientId2）的应用程序进行的任何尝试都会导致创建范围为另一个客户端 ID (clientId2) 的另一个订阅。
 
 > [!NOTE]
-> 客户端 ID 可以为 null 或为空，但它必须与 JMS 客户端应用程序上设置的客户端 ID 匹配。 从 Azure 服务总线角度来看，空的客户端 ID 和空的客户端 id 具有相同的行为。
+> 客户端 ID 可为 NULL 或空，但必须与 JMS 客户端应用程序上设置的客户端 ID 匹配。 从 Azure 服务总线的角度来看，NULL 客户端 ID 和空客户端 ID 具有相同的行为。
 >
-> 如果客户端 ID 设置为 null 或为空，则仅客户端应用程序的客户端应用程序也被设置为 null 或空。
+> 如果客户端 ID 设置为 NULL 或空，则只有客户端 ID 也设置为 NULL 或空的客户端应用程序才能对其进行访问。
 >
 
 ### <a name="shareability"></a>可共享性
 
-**共享** 订阅允许多个客户端/使用者 (也就是说，JMSConsumer 对象) 从它们接收消息。
+共享订阅允许多个客户端/使用者（即 JMSConsumer 对象）接收来自它们的消息。
 
 >[!NOTE]
-> 作用域为特定客户端 ID 的共享订阅仍可由多个客户端/使用者访问 (例如 JMSConsumer 对象) ，但是每个客户端应用程序必须具有相同的客户端 ID。
+> 范围为特定客户端 ID 的共享订阅仍可由多个客户端/使用者访问（即 JMSConsumer 对象），但每个客户端应用程序必须具有相同的客户端 ID。
 >
  
 
-**非共享** 订阅只允许使用单个客户端/使用者 (也就是说，) 接收消息的 JMSConsumer 对象。 如果 `JMSConsumer` 在非共享订阅上创建了，而该订阅已具有活动的 `JMSConsumer` 侦听消息，则 `JMSException` 会引发。
+非共享订阅仅允许一个客户端/使用者（即 JMSConsumer 对象）接收来自它们的消息。 如果在非共享订阅上创建了一个 `JMSConsumer`，同时它已有一个活跃的 `JMSConsumer` 在侦听其消息，则会抛出 `JMSException`。
 
 
 ### <a name="durability"></a>持续性
 
-即使应用程序 () 使用消息，**持久** 订阅仍可保留并继续从主题收集消息 `JMSConsumer` 。
+持久订阅具有持久性，并持续从主题中收集消息，而不考虑应用程序 (`JMSConsumer`) 是否在使用来自该主题的消息。
 
-无论应用程序 () 使用消息，**非持久** 订阅都不会持久保存并从主题收集消息 `JMSConsumer` 。 
+非持久订阅不具有持久性，只有应用程序 (`JMSConsumer`) 在使用来自主题的消息时才会从该主题收集消息。 
 
-## <a name="representation-of-client-scoped-subscriptions"></a>客户端范围的订阅的表示形式
+## <a name="representation-of-client-scoped-subscriptions"></a>客户端范围内订阅的表示形式
 
-假定客户端范围 (JMS) 订阅必须与现有的 [订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)共存，则会用以下格式表示客户端范围 (JMS) 订阅的方式。
+鉴于客户端范围内 (JMS) 订阅必须与现有[订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)共存，客户端范围内 (JMS) 订阅的表示方式会遵循以下格式。
 
-   * **\<SUBSCRIPTION-NAME\>**$**\<CLIENT-ID\>**$**D** (持久订阅) 
-   * **\<SUBSCRIPTION-NAME\>**$**\<CLIENT-ID\>**$非持久订阅的 **ND** () 
+   * **\<SUBSCRIPTION-NAME\>** $ **\<CLIENT-ID\>** $**D**（持久订阅）
+   * **\<SUBSCRIPTION-NAME\>** $ **\<CLIENT-ID\>** $**ND**（非持久订阅）
 
-此处 **$** 为分隔符。
+此处，$ 为分隔符。
 
 ## <a name="next-steps"></a>后续步骤
 

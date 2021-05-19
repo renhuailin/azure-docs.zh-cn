@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 3af48c93633709c9b5814caa99c222e24e402a4a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: cb5230ae42703d19726fb8ea0d6c88aa70e589a8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945226"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104864136"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Phoenix
 
@@ -34,7 +34,7 @@ HBase 使用根据主行键按字典顺序排序的单个索引。 只能通过�
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-与执行单一索引查询相比，此方法可以大幅提升性能。 这种类型的辅助索引是 **涵盖索引**，包含查询中包括的所有列。 因此，表查找不是必需的，并且索引满足整个查询的要求。
+与执行单一索引查询相比，此方法可以大幅提升性能。 这种类型的辅助索引是 **涵盖索引**，包含查询中包括的所有列。 因此，不需要执行表查找，索引能够满足整个查询的需求。
 
 ### <a name="views"></a>视图
 
@@ -67,7 +67,7 @@ WHERE metric_type = 'm';
 
 跳过扫描使用组合索引的一个或多个列来查找非重复值。 与范围扫描不同，跳过扫描实施行内扫描，因此可以[提高性能](https://phoenix.apache.org/performance.html#Skip-Scan)。 扫描时，将会连同索引一起跳过第一个匹配值，直到找到下一个值。
 
-跳过扫描使用 HBase 筛选器的 `SEEK_NEXT_USING_HINT` 枚举。 跳过扫描使用 `SEEK_NEXT_USING_HINT` 来跟踪在每个列中搜索的键集或键范围。 然后，跳过扫描将使用在筛选器评估期间传递给它的键，并确定它是否为组合之一。 如果不是，则跳过扫描会评估要跳转到的下一个最高键。
+跳过扫描使用 HBase 筛选器的 `SEEK_NEXT_USING_HINT` 枚举。 跳过扫描使用 `SEEK_NEXT_USING_HINT` 来跟踪在每个列中搜索的键集或键范围。 然后，跳过扫描将使用在评估筛选器期间传递给它的键，并确定该键是否为组合之一。 如果不是，则跳过扫描会评估要跳转到的下一个最高键。
 
 ### <a name="transactions"></a>事务
 
@@ -94,7 +94,7 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 ### <a name="salted-tables"></a>加盐表
 
-向 HBase 写入包含顺序键的记录时，可能会出现 *区域服务器热点*。 即使群集中包含多个区域服务器，也只会在一个服务器中进行写入。 这种集中化会产生热点问题，即，写入工作负荷不会分散在所有可用的区域服务器之间，而是只有一个服务器处理该负载。 由于每个区域都具有预定义的最大大小，因此当某个区域达到该大小限制时，它将被拆分为两个小区域。 在这种情况下，其中一个新区域会接收所有新记录，因而变成了新的热点。
+将包含有序键的记录写入 HBase 时，可能会发生区域服务器热点。 即使群集中包含多个区域服务器，也只会在一个服务器中进行写入。 这种集中化会产生热点问题，即，写入工作负荷不会分散在所有可用的区域服务器之间，而是只有一个服务器处理该负载。 由于每个区域都具有预定义的最大大小，所以当某个区域达到该大小限制时，它将会拆分为两个较小区域。 在这种情况下，其中一个新区域会接收所有新记录，因而变成了新的热点。
 
 若要缓解此问题并提高性能，请预先拆分表，以便均衡使用所有的区域服务器。 Phoenix 提供加盐表，以透明方式将加盐字节添加到特定表的行键。 该表已在加盐字节边界上预先拆分，确保在表的初始阶段，在区域服务器之间均衡分配负载。 此方法可在所有可用的区域服务器之间分配写入工作负荷，从而提高了写入和读取性能。 若要给表加盐，请在创建表时指定 `SALT_BUCKETS` 表属性：
 
@@ -125,11 +125,11 @@ HDInsight HBase 群集提供 [Ambari UI](hdinsight-hadoop-manage-ambari.md) 用�
 
 2. 在左侧菜单中的服务列表内选择“HBase”，然后选择“配置”选项卡。
 
-    ![Apache Ambari HBase 配置](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
+    :::image type="content" source="./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png" alt-text="Apache Ambari HBase 配置":::
 
 3. 找到“Phoenix SQL”配置部分，启用或禁用 Phoenix，并设置查询超时。
 
-    ![Ambari“Phoenix SQL”配置部分](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
+    :::image type="content" source="./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png" alt-text="Ambari“Phoenix SQL”配置部分":::
 
 ## <a name="see-also"></a>另请参阅
 

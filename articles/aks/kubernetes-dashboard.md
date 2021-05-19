@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
 ms.openlocfilehash: acaeaa2e5338c86fa59d0e2941719f8fa2708ef1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176815"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
@@ -20,7 +20,7 @@ Kubernetes 包含一个可用于基本管理操作的 Web 仪表板。 使用此
 有关 Kubernetes 仪表板的详细信息，请参阅 [Kubernetes Web UI 仪表板][kubernetes-dashboard]。 AKS 使用版本 2.0 及更高版本的开源仪表板。
 
 > [!WARNING]
-> **AKS 仪表板外接程序设置为弃用。改 [为使用 Azure 门户中的 Kubernetes 资源视图 (预览版)][kubernetes-portal] 。** 
+> AKS 仪表板加载项已设置为弃用。请改用 [Azure 门户中的 Kubernetes 资源视图（预览版）][kubernetes-portal]。 
 > * 默认情况下，为运行的 Kubernetes 版本低于 1.18 的群集启用 Kubernetes 仪表板。
 > * 默认情况下，在 Kubernetes 1.18 或更高版本上创建的所有新群集都将禁用仪表板加载项。 
  > * 从 Kubernetes 1.19 预览版开始，AKS 将不再支持安装托管的 kube-dashboard 加载项。 
@@ -43,8 +43,8 @@ az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ## <a name="start-the-kubernetes-dashboard"></a>启动 Kubernetes 仪表板
 
 > [!WARNING]
-> 版本 1.19 + 的 AKS 仪表板外接程序已弃用。 请改用 [Azure 门户 (preview) 中的 Kubernetes 资源视图 ][kubernetes-portal] 。 
-> * 现在，下面的命令将打开 Azure 门户资源视图，而不是版本1.19 及更高版本的 kubernetes 仪表板。
+> AKS 仪表板加载项在版本 1.19+ 中已弃用。 请改用 [Azure 门户中的 Kubernetes 资源视图（预览版）][kubernetes-portal]。 
+> * 以下命令现在将打开 Azure 门户资源视图，而不是 1.19 及更高版本的 kubernetes 仪表板。
 
 若要在群集上启动 Kubernetes 仪表板，请使用 [az aks browse][az-aks-browse] 命令。 此命令要求在群集上安装 kube-dashboard 加载项，运行任何低于 Kubernetes 1.18 的版本的群集都默认包含该加载项。
 

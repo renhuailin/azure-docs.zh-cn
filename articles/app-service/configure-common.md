@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: a865c1070150b31399b5b738a0a469a07e0b13de
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102122351"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
@@ -206,7 +206,7 @@ ms.locfileid: "102122351"
       > [!NOTE]
       > 借助 Always On 功能，前端负载均衡器会将请求发送到应用程序根目录。 无法配置应用服务的此应用程序终结点。
     - **托管管道版本**：IIS [管道模式]。 如果某个旧式应用需要旧版 IIS，请将此选项设置为“经典”。 
-    - **HTTP 版本**：设置为 **2.0** 以启用对 [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) 协议的支持。
+    - **HTTP 版本**：设置为“2.0”，以启用对 [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) 协议的支持。
     > [!NOTE]
     > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 若要确保客户端浏览器使用 HTTP/2 连接到应用，请保护自定义 DNS 名称。 有关详细信息，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
     - **ARR 相关性**：在多实例部署中，请确保在会话的整个生存期内，将客户端路由到同一实例。 对于无状态应用程序，请将此选项设置为“关闭”。 
@@ -238,7 +238,7 @@ ms.locfileid: "102122351"
 
 对于 Windows 应用，可以自定义 IIS 处理程序映射和虚拟应用程序与目录。
 
-使用处理程序映射可以添加自定义脚本处理程序用于处理特定文件扩展名的请求。 若要添加自定义处理程序，请单击 " **新建处理程序映射**"。 按如下所述配置处理程序：
+使用处理程序映射可以添加自定义脚本处理程序用于处理特定文件扩展名的请求。 若要添加自定义处理程序，请单击“新建处理程序映射”。 按如下所述配置处理程序：
 
 - **扩展名**。 要处理的扩展名，例如 *\*.php* 或 *handler.fcgi*。
 - **脚本处理程序**。 脚本处理程序的绝对路径。 与文件扩展名匹配的文件请求由脚本处理程序处理。 使用路径 `D:\home\site\wwwroot` 表示应用的根目录。
@@ -246,16 +246,16 @@ ms.locfileid: "102122351"
 
 每个应用具有已映射到 `D:\home\site\wwwroot`（代码的默认部署位置）的默认根路径 (`/`)。 如果应用根位于其他文件夹中，或者存储库包含多个应用程序，则你可以在此处编辑或添加虚拟应用程序和目录。 
 
-从 " **路径映射** " 选项卡中，单击 " **新建虚拟应用程序或目录**"。 
+从“路径映射”选项卡中，单击“新建虚拟应用程序或目录”。 
 
-- 若要将虚拟目录映射到物理路径，请将 " **目录** " 复选框保持选中状态。 指定虚拟目录，并将相应的相对 (物理) 路径指定为网站根目录 (`D:\home`) 。
-- 若要将虚拟目录标记为 web 应用程序，请清除 " **目录** " 复选框。
+- 若要将虚拟目录映射到物理路径，请将“目录”复选框保持选中状态。 指定虚拟目录，以及网站根目录相应的相对（物理）路径 (`D:\home`)。
+- 若要将虚拟目录标记为 Web 应用程序，请清除“目录”复选框。
   
-  ![目录 "复选框](./media/configure-common/directory-check-box.png)
+  ![“目录”复选框](./media/configure-common/directory-check-box.png)
 
 ### <a name="containerized-apps"></a>容器化应用
 
-你可以 [为容器化应用添加自定义存储](configure-connect-to-azure-storage.md)。 容器化应用包括所有 Linux 应用，还包括在应用服务上运行的 Windows 和 Linux 自定义容器。 单击“新 Azure 存储装载”，然后按如下所示配置自定义存储：
+你可以[为容器化应用添加自定义存储](configure-connect-to-azure-storage.md)。 容器化应用包括所有 Linux 应用，还包括在应用服务上运行的 Windows 和 Linux 自定义容器。 单击“新 Azure 存储装载”，然后按如下所示配置自定义存储：
 
 - **名称**：显示名称。
 - **配置选项**：“基本”或“高级”。
@@ -268,7 +268,7 @@ ms.locfileid: "102122351"
 - **访问密钥**：对于高级配置，为访问密钥。
 - **装载路径**：容器中用于装载自定义存储的绝对路径。
 
-有关详细信息，请参阅 [从应用服务中的容器访问 Azure 存储为网络共享](configure-connect-to-azure-storage.md)。
+有关详细信息，请参阅[从应用服务中的容器以网络共享形式访问 Azure 存储](configure-connect-to-azure-storage.md)。
 
 ## <a name="configure-language-stack-settings"></a>配置语言堆栈设置
 
@@ -281,7 +281,7 @@ ms.locfileid: "102122351"
 
 ## <a name="configure-custom-containers"></a>配置自定义容器
 
-请参阅 [为 Azure App Service 配置自定义 Linux 容器](configure-custom-container.md)
+请参阅[为 Azure 应用服务配置自定义 Linux 容器](configure-custom-container.md)
 
 ## <a name="next-steps"></a>后续步骤
 

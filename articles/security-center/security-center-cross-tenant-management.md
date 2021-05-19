@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心中的跨租户管理 |Microsoft Docs
-description: 了解如何在安全中心使用 Azure 委托资源管理设置跨租户管理，以管理多个租户的安全状况。
+title: Azure 安全中心的跨租户管理 | Microsoft Docs
+description: 了解如何在安全中心使用 Azure 委派资源管理设置跨租户管理，以管理多个租户的安全状况。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,41 +14,41 @@ ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
 ms.openlocfilehash: 493a06e85ad6c8260c342cf8167386394835b1c6
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102099482"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>安全中心的跨租户管理
 
-跨租户管理使你可以利用 [Azure 委派的资源管理](../lighthouse/concepts/azure-delegated-resource-management.md) 来查看和管理安全中心内多个租户的安全状况。 通过单一视图有效管理多个租户，而无需登录到每个租户的目录。
+跨租户管理使你可以利用 [Azure 委派资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)在安全中心查看和管理多个租户的安全状况。 从单个视图中高效管理多个租户，无需登录每个租户的目录。
 
-- 服务提供商可以在自己的租户中为多个客户管理资源的安全状况。
+- 服务提供商可以在其自己的租户中管理多个客户的资源安全状况。
 
-- 具有多个租户的组织的安全团队可从单个位置查看和管理其安全状况。
+- 具有多个租户的组织的安全团队可在一个位置集中查看和管理其安全状况。
 
 ## <a name="set-up-cross-tenant-management"></a>设置跨租户管理
 
-Azure 委派资源管理是 Azure Lighthouse 的关键组成部分之一。 使用 Azure Lighthouse 文档中的以下说明，通过将托管租户资源的访问权限委派给你自己的租户来设置跨租户管理： [azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)。
+Azure 委派资源管理是 Azure Lighthouse 的关键组成部分之一。 使用 Azure Lighthouse 的文档（[Azure 委派资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)）中的说明，通过将托管租户的资源访问权限委派给你自己的租户来设置跨租户管理。
 
 
 ## <a name="how-does-cross-tenant-management-work-in-security-center"></a>跨租户管理如何在安全中心工作
 
-你可以通过与在单个租户中管理多个订阅相同的方式查看和管理多个租户的订阅。
+可以跨多个租户查看和管理订阅，方法与在单个租户中管理多个订阅相同。
 
-在顶部菜单栏中，单击 "筛选器" 图标，然后从每个租户的目录中选择要查看的订阅。
+在顶部菜单栏中，单击筛选器图标，然后从每个租户的目录中选择要查看的订阅。
 
   ![筛选租户](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-视图和操作基本上相同。 下面是一些示例：
+视图和操作基本相同。 下面是一些示例：
 
-- **管理安全策略**：从一个视图中，使用 [策略](tutorial-security-policy.md)管理多个资源的安全状况，采取安全建议的操作，以及收集和管理与安全相关的数据。
-- **提高安全分数和符合性状况**：跨租户可见性使你可以查看所有租户的总体安全状态，以及如何最好地提高每个租户的 [安全分数](secure-score-security-controls.md) 和 [符合性](security-center-compliance-dashboard.md) 状态。
-- **修正建议**：一次监视和修正来自不同租户的多个资源的 [建议](security-center-recommendations.md) 。 然后，你可以立即解决所有租户面临的风险最高的漏洞。
-- **管理警报**：在不同租户中检测 [警报](security-center-alerts-overview.md) 。 对不符合可操作 [更正步骤](security-center-managing-and-responding-alerts.md)的资源执行操作。
+- **管理安全策略**：在一个视图中，使用[策略](tutorial-security-policy.md)管理大量资源的安全状况，对安全建议采取措施，并收集和管理安全相关数据。
+- **提高安全分数和改进合规性状况**：跨租户可见性使你能够查看所有租户的总体安全状况以及在何处以何种方式最大程度地提高每个租户的[安全分数](secure-score-security-controls.md)和改进其[合规性状况](security-center-compliance-dashboard.md)。
+- **修正建议**：同时监视和修正来自不同租户的许多资源的[建议](security-center-recommendations.md)。 然后，可以立即解决所有租户中风险最高的漏洞。
+- **管理警报**：检测不同租户中的[警报](security-center-alerts-overview.md)。 对不符合可操作[修正步骤](security-center-managing-and-responding-alerts.md)的资源执行操作。
 
-- **管理高级云防御功能等**：管理各种威胁防护服务，例如实时 [ (JIT) VM 访问](security-center-just-in-time.md)、 [自适应网络强化](security-center-adaptive-network-hardening.md)、 [自适应应用程序控件](security-center-adaptive-application.md)等。
+- **管理高级云防御功能和更多功能**：管理各种威胁防护服务，例如[实时 (JIT) VM 访问](security-center-just-in-time.md)、[自适应网络强化](security-center-adaptive-network-hardening.md)、[自适应应用程序控制](security-center-adaptive-application.md)等。
  
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何在安全中心进行跨租户管理。 若要了解 Azure Lighthouse 如何简化使用多 Azure AD 租户的企业内的跨租户管理，请参阅 [企业应用场景中的 Azure Lighthouse](../lighthouse/concepts/enterprise.md)。
+本文介绍了如何在安全中心进行跨租户管理。 若要了解 Azure Lighthouse 如何简化使用多个 Azure AD 租户的企业中的跨租户管理，请参阅[企业应用场景中的 Azure Lighthouse](../lighthouse/concepts/enterprise.md)。

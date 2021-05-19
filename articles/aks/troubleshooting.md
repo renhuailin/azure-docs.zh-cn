@@ -4,12 +4,12 @@ description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 5a0e907ef27f125a9903b3d9e6079e3c8a288a97
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 0892f11a79c62669d77cceb2dbc4f9a9f86c623a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714521"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765928"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -20,16 +20,16 @@ ms.locfileid: "101714521"
 请尝试 [Kubernetes 群集故障排除的官方指南](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)。
 还可尝试由 Microsoft 工程师发布的[故障排除指南](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)，用于对 Pod、节点、群集和其他功能进行故障排除。
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>我 `quota exceeded` 在创建或升级过程中遇到错误。 我该怎么办？ 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>在创建或升级期间遇到 `quota exceeded` 错误。 我该怎么办？ 
 
  [请求更多核心](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>`insufficientSubnetSize`部署具有高级网络的 AKS 群集时遇到错误。 我该怎么办？
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>在使用高级网络部署 AKS 群集时收到 `insufficientSubnetSize` 错误。 我该怎么办？
 
 此错误表示用于群集的子网在其 CIDR 中不再具有用于成功分配资源的可用 IP。 对于 Kubenet 群集，需要为群集中的每个节点提供足够的 IP 空间。 对于 Azure CNI 群集，需要为群集中的每个节点和 Pod 提供足够的 IP 空间。
 阅读并详细了解如何[设计为 Pod 分配 IP 的 Azure CNI](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)。
 
-这些错误还会在 [AKS 诊断](concepts-diagnostics.md)中出现，它们主动地显示了子网大小不足等问题。
+这些错误还出现在 [AKS 诊断](concepts-diagnostics.md)中，该诊断主动显示子网大小不足等问题。
 
 以下三 (3) 种情况会导致子网大小不足的错误：
 
@@ -41,7 +41,7 @@ ms.locfileid: "101714521"
    1. 如果使用的是 Kubenet，当 `number of free IPs in the subnet` 小于 `number of buffer nodes needed to upgrade` 时就会发生这种情况。
    1. 如果使用的是 Azure CNI，当 `number of free IPs in the subnet` 小于 `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` 时就会发生这种情况。
    
-   默认情况下，AKS 群集将最大冲击 (升级缓冲区) 一个 (1) 的值，但可以通过设置节点池的 "最大浪涌值" 自定义此升级行为，这将增加完成升级所需的可用 Ip 的数目。
+   默认情况下，AKS 群集将最大激增（升级缓冲区）值设置为一 (1)，但可以通过设置节点池的最大激增值来自定义此升级行为，节点池的最大激增值将增加完成升级所需的可用 IP 数。
 
 1. 创建 AKS 或添加 AKS 节点池
    1. 如果使用的是 Kubenet，当 `number of free IPs in the subnet` 小于 `number of nodes requested for the node pool` 时就会发生这种情况。
@@ -89,7 +89,7 @@ AKS 具有 HA 控制平面，可以根据内核数进行垂直缩放，以确保
 
 确保端口 22、9000 和 1194 已打开，以便连接到 API 服务器。 使用 `kubectl get pods --namespace kube-system` 命令检查 `tunnelfront` 或 `aks-link` Pod 是否正在 kube-system 命名空间中运行。 如果没有，请强制删除 Pod，它会重启。
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>当连接到 AKS API 时，我从客户端收到 `"tls: client offered only unsupported versions"`。   应采取何种操作？
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>当连接到 AKS API 时，我从客户端收到 `"tls: client offered only unsupported versions"`。 我该怎么办？
 
 AKS 支持的最低 TLS 版本是 TLS 1.2。
 
@@ -181,7 +181,7 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 
 ## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>我无法在 Azure 门户的 Kubernetes 资源查看器中查看配置了 API 服务器授权 IP 范围的群集的资源。 如何修复此问题？
 
-[Kubernetes 资源查看器](kubernetes-portal.md)需要 `--api-server-authorized-ip-ranges` 包含对要从中浏览门户) 的本地客户端计算机或 IP 地址范围 (的访问。 请参阅[使用经授权的 IP 地址范围保护对 API 服务器的访问](api-server-authorized-ip-ranges.md)中的“如何查找我的 IP”部分。
+[Kubernetes 资源查看器](kubernetes-portal.md)需要 `--api-server-authorized-ip-ranges` 来包含对本地客户端计算机或 IP 地址范围（在此范围内浏览门户）的访问权限。 请参阅[使用经授权的 IP 地址范围保护对 API 服务器的访问](api-server-authorized-ip-ranges.md)中的“如何查找我的 IP”部分。
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>在限制出口流量后收到错误消息
 
@@ -197,7 +197,7 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
 ```
 
-这些限制错误在[此处](../azure-resource-manager/management/request-limits-and-throttling.md)和[此处](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md)进行了详细说明
+这些限制错误在[此处](../azure-resource-manager/management/request-limits-and-throttling.md)和[此处](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors)进行了详细说明
 
 AKS 工程团队的建议是确保运行的版本至少是 1.18.x（其中包含许多改进功能）。 有关这些改进的更多详细信息，可参阅[此文](https://github.com/Azure/AKS/issues/1413)和[此文](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)。
 
@@ -253,7 +253,7 @@ spec:
 ```yaml
 initContainers:
 - name: volume-mount
-  image: busybox
+  image: mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
   command: ["sh", "-c", "chown -R 100:100 /data"]
   volumeMounts:
   - name: <your data volume>
@@ -439,7 +439,7 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>为什么使用带有 kubernetes.io 前缀的节点标签时升级到 Kubernetes 1.16 失败
 
-从 Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) [开始，kubelet 只能将已定义的带有 kubernetes.io 前缀的标签子集](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/)应用于节点。 未经许可，AKS 无法代表你删除活动标签，因为这可能导致受影响的工作负载发生故障。
+从 Kubernetes 1.16开始，kubelet [只能将已定义的带有 kubernetes.io 前缀的标签子集](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/)应用于节点。 未经许可，AKS 无法代表你删除活动标签，因为这可能导致受影响的工作负载发生故障。
 
 因此，要缓解这种问题，可以执行以下操作：
 

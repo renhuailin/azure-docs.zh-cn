@@ -1,22 +1,22 @@
 ---
-title: 分析 HDInsight Apache Spark Azure Data Lake Storage Gen1
-description: 运行 Apache Spark 作业来分析存储在 Azure Data Lake Storage Gen1 中的数据
+title: 使用 HDInsight Apache Spark 分析 Azure Data Lake Storage Gen1
+description: 运行 Apache Spark 作业以分析 Azure Data Lake Storage Gen1 中存储的数据
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: ad8239b3403d37a9e4c79de481fb9cb26306e243
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: e79c2f361108f1daa3c4a125491d1b399e050648
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946322"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863694"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据
 
-本文介绍如何使用 HDInsight Spark 群集可用 [Jupyter Notebook](https://jupyter.org/) 来运行从 Data Lake Storage 帐户读取数据的作业。
+本文使用随 HDInsight Spark 群集提供的 [Jupyter Notebook](https://jupyter.org/) 运行作业，以便从 Data Lake Storage 帐户中读取数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure Data Lake Storage Gen1 帐户。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-get-started-portal.md) 中的说明进行操作。
 
@@ -59,7 +59,7 @@ ms.locfileid: "98946322"
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>使用包含 Data Lake Store Gen1 的 HDInsight Spark 群集
 
-1. 从 " [Azure 门户](https://portal.azure.com/)的" 启动板 "中，单击 Apache Spark 群集 (的磁贴（如果已将它固定到启动板) 。 还可在 "**浏览所有**  >  **HDInsight 群集**" 下导航到群集。
+1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Apache Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。
 
 2. 在 Spark 群集边栏选项卡中单击“快速链接”，并在“群集仪表板”边栏选项卡中单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
 
@@ -70,7 +70,7 @@ ms.locfileid: "98946322"
 
 3. 创建新的笔记本。 单击“新建”，并单击“PySpark”。
 
-    ![创建新 Jupyter Notebook](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "创建新 Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png " alt-text="创建新的 Jupyter Notebook" border="true":::
 
 4. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 为此，请将以下代码片段粘贴到某个单元中，然后按 **SHIFT + ENTER**。
 
@@ -80,7 +80,7 @@ ms.locfileid: "98946322"
 
     每次在 Jupyter 中运行作业时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和笔记本标题。 右上角“PySpark”文本的旁边还会出现一个实心圆。 作业完成后，实心圆将变成空心圆。
 
-     ![Jupyter Notebook 作业的状态](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter Notebook 作业的状态")
+     :::image type="content" source="./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png " alt-text="Jupyter Notebook 作业的状态" border="true":::
 
 5. 使用已复制到 Data Lake Storage Gen1 帐户的 **HVAC.csv** 文件将示例数据加载到临时表。 可使用以下 URL 模式访问 Data Lake Storage 帐户中的数据。
 
@@ -121,7 +121,7 @@ ms.locfileid: "98946322"
       hvacdf.registerTempTable("hvac")
       ```
 
-6. 由于使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关神奇的详细信息以及 `%%sql` 可用于 PySpark 内核的其他 magic，请参阅 [Jupyter 笔记本上提供的具有 Apache Spark HDInsight 群集的内核](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
+6. 由于使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅[包含 Apache Spark HDInsight 群集的 Jupyter Notebook 上可用的内核](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
 
     ```sql
     %%sql
@@ -129,11 +129,11 @@ ms.locfileid: "98946322"
     ```
 7. 作业成功完成后，默认情况下会显示以下表格输出。
 
-      ![查询结果的表输出](./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "查询结果的表输出")
+      :::image type="content" source="./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png " alt-text="查询结果的表输出" border="true":::
 
      也可以在其他视觉效果中查看结果。 例如，同一输出的分区图看起来如下所示。
 
-     ![查询结果分区图](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "查询结果分区图")
+     :::image type="content" source="./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png " alt-text="查询结果分区图" border="true":::
 
 8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这会关闭笔记本。
 

@@ -1,19 +1,19 @@
 ---
 title: Apache Ambari UI 显示 Azure HDInsight 中的主机和服务已关闭
-description: 当 Apache Ambari UI 问题显示 Azure HDInsight 中的主机和服务时，对其进行故障排除
+description: 当 Apache Ambari UI 问题显示 Azure HDInsight 中的主机和服务已关闭时，对其进行故障排除
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/02/2019
 ms.openlocfilehash: 0d3a393dc1cbd51b83edc0b6989bb5e7a5670a29
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943272"
 ---
 # <a name="scenario-apache-ambari-ui-shows-down-hosts-and-services-in-azure-hdinsight"></a>方案：Apache Ambari UI 显示 Azure HDInsight 中的主机和服务已关闭
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 

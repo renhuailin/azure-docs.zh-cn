@@ -1,15 +1,15 @@
 ---
 title: 在 Azure 仪表板上使用自定义 Markdown 磁贴
 description: 了解如何向 Azure 仪表板添加 Markdown 磁贴，以便显示静态内容
-ms.date: 01/08/2020
+ms.date: 03/19/2021
 ms.topic: how-to
 ms.custom: devx-track-js
-ms.openlocfilehash: 5121142ecf568aa1ac9a7ec19f7211c6f9a6253f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.openlocfilehash: 8324b736565cfa353e48cf49b76e2784866f47f7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745751"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774450"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>在 Azure 仪表板上使用 Markdown 磁贴显示自定义内容
 
@@ -21,7 +21,7 @@ ms.locfileid: "96745751"
 
    ![屏幕截图，显示门户边栏](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. 如果已创建任何自定义仪表板，请在仪表板视图中通过下拉列表选择会显示自定义 Markdown 磁贴的仪表板。 选择用于打开 **磁贴库** 的编辑图标。
+1. 在“仪表板”视图中，选择显示自定义 markdown 磁贴的仪表板，然后选择“编辑”。
 
    ![屏幕截图，显示仪表板编辑视图](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "96745751"
       ![屏幕截图，显示输入 URL](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > 为了增加安全性，可以创建一个 Markdown 文件，将其存储在[启用了加密的 Azure 存储帐户 Blob](../storage/common/storage-service-encryption.md) 中，然后使用 URL 选项指向该文件。 通过存储帐户的加密选项来加密 Markdown 内容。 只有有权访问文件的用户才能查看仪表板上的 Markdown 内容。 你可能需要在存储帐户上设置 [跨域资源共享 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 规则，以便 Azure 门户 (_https://portal.azure.com/_) 可以访问 blob 中的 markdown 文件。
+      > 为了增加安全性，可以创建一个 Markdown 文件，将其存储在[启用了加密的 Azure 存储帐户 Blob](../storage/common/storage-service-encryption.md) 中，然后使用 URL 选项指向该文件。 通过存储帐户的加密选项来加密 Markdown 内容。 只有有权访问文件的用户才能查看仪表板上的 Markdown 内容。 你可能需要在存储帐户上设置 [跨域资源共享 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 规则，以便 Azure 门户 ( _https://portal.azure.com/_ ) 可以访问 blob 中的 Markdown 文件。
 
 1. 选择“完成”，关闭“编辑 Markdown”窗格。 内容会显示在 Markdown 磁贴上，该磁贴可以通过在右下角拖动图柄来重设大小。
 
@@ -54,7 +54,7 @@ ms.locfileid: "96745751"
 
 * JavaScript - `<script>` 标记以及内联的 JavaScript 评估会被删除。
 * iframe - `<iframe>` 标记会被删除。
-* 样式 - `<style>` 标记会被删除。 HTML 元素上的内联样式属性没有获得正式支持。 你可能会发现，某些内联样式属性可以使用，但如果它们干扰门户的布局，系统可能会随时停用它们。 Markdown 磁贴适用于基本的静态内容，该内容使用门户的默认样式。
+* Style - `<style>` 标记会被删除。 HTML 元素上的内联样式属性没有获得正式支持。 你可能会发现，某些内联样式属性可以使用，但如果它们干扰门户的布局，系统可能会随时停用它们。 Markdown 磁贴适用于基本的静态内容，该内容使用门户的默认样式。
 
 ## <a name="next-steps"></a>后续步骤
 

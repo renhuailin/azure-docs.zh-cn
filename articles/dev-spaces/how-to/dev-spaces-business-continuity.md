@@ -5,14 +5,14 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.date: 01/28/2019
 ms.topic: conceptual
-description: 了解如何使用 Azure Dev Spaces 和 Azure Kubernetes 服务提供业务连续性并为灾难恢复做好准备
+description: 了解如何使用 Azure Dev Spaces 和 Azure Kubernetes 服务提供业务连续性并做好灾难恢复的准备
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 77425d294dcea0546259b152b793cec291940c53
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96929593"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 的业务连续性和灾难恢复
@@ -45,7 +45,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>选择用于 Dev Spaces 的正确 AKS 群集
 
-一旦正确配置运行团队基线的备份群集，就可以随时快速切换到备份群集。 然后，你可以在子开发人员空间中重新运行正在处理的单个服务。
+一旦正确配置运行团队基线的备份群集，就可以随时快速切换到备份群集。 然后可以在子 Dev Spaces 中重新运行正在处理的各个服务。
 
 使用以下 CLI 命令选择不同的群集：
 

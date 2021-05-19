@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 633f01d813fe4e6c56d88052cbc7440c43f350dc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940840"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104870494"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
 
@@ -34,7 +34,7 @@ ms.locfileid: "98940840"
 
 下图演示了镜像过程以及群集之间的通信流动方式：
 
-![镜像过程图示](./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png)
+:::image type="content" source="./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png" alt-text="镜像过程图示" border="false":::
 
 主要和辅助群集在节点与分区数目方面可以不同，主题中的偏移也可以不同。 镜像维护用于分区的密钥值，因此会按密钥来保留记录顺序。
 
@@ -65,7 +65,7 @@ ms.locfileid: "98940840"
 
     |资源组 | 位置 |
     |---|---|
-    | kafka-primary-rg | 美国中部 |
+    | kafka-primary-rg | Central US |
     | kafka-secondary-rg | 美国中北部 |
 
 1. 在 **kafka-primary-rg** 中创建新的虚拟网络 **kafka-primary-vnet**。 保留默认设置。
@@ -84,14 +84,14 @@ ms.locfileid: "98940840"
     1. 选择 **添加** 。
     1. 在“添加对等互连”屏幕上输入详细信息，如以下屏幕截图所示。
 
-        ![HDInsight Kafka 添加 vnet 对等互连](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        :::image type="content" source="./media/apache-kafka-mirroring/hdi-add-vnet-peering.png" alt-text="HDInsight Kafka 添加 vnet 对等互连" border="true":::
 
 ### <a name="configure-ip-advertising"></a>配置 IP 播发
 
 配置 IP 播发，使客户端可以使用中转站 IP 地址而不是域名进行连接。
 
 1. 转到主要群集的 Ambari 仪表板：`https://PRIMARYCLUSTERNAME.azurehdinsight.net`。
-1. 选择“服务” > “Kafka”。  单击“配置”选项卡 。
+1. 选择“服务” > “Kafka”。  选择“配置”选项卡。
 1. 将以下配置行添加到底部的 **kafka-env template** 节。 选择“保存”。
 
     ```
@@ -107,7 +107,7 @@ ms.locfileid: "98940840"
 1. 在“保存配置更改”屏幕上选择“确定”。
 1. 在“需要重启”通知中，选择“重启” > “重启所有受影响的服务”。   选择“确认全部重启”。
 
-    ![Apache Ambari 重新启动所有受影响的服务](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    :::image type="content" source="./media/apache-kafka-mirroring/ambari-restart-notification.png" alt-text="Apache Ambari 重新启动所有受影响的服务" border="true":::
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>将 Kafka 配置为侦听所有网络接口。
     
@@ -120,7 +120,7 @@ ms.locfileid: "98940840"
 1. 在 Ambari 仪表板上选择“主机”。
 1. 记下代理和 Zookeeper 的 IP 地址。 代理节点主机名的前两个字母为 **wn**，Zookeeper 节点主机名的前两个字母为 **zk**。
 
-    ![Apache Ambari 查看节点 ip 地址](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+    :::image type="content" source="./media/apache-kafka-mirroring/view-node-ip-addresses2.png" alt-text="Apache Ambari 查看节点 ip 地址" border="true":::
 
 1. 对第二个群集 **kafka-secondary-cluster** 重复上述三个步骤：配置 IP 播发、设置侦听器并记下代理和 Zookeeper 的 IP 地址。
 
@@ -136,7 +136,7 @@ ms.locfileid: "98940840"
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-1. 使用以下命令创建一个变量，其中包含主要群集的 Apache Zookeeper 主机。 必须将类似于 `ZOOKEEPER_IP_ADDRESS1` 的字符串替换为前面记下的实际 IP 地址，例如 `10.23.0.11` 和 `10.23.0.7`。 如果对自定义 DNS 服务器使用 FQDN 解析，请按照 [以下步骤](apache-kafka-get-started.md#getkafkainfo) 获取 broker 和 zookeeper 名称。：
+1. 使用以下命令创建一个变量，其中包含主要群集的 Apache Zookeeper 主机。 必须将类似于 `ZOOKEEPER_IP_ADDRESS1` 的字符串替换为前面记下的实际 IP 地址，例如 `10.23.0.11` 和 `10.23.0.7`。 如果对自定义 DNS 服务器使用 FQDN 解析，请遵循[这些步骤](apache-kafka-get-started.md#getkafkainfo)获取代理和 zookeeper 名称：
 
     ```bash
     # get the zookeeper hosts for the primary cluster
@@ -167,7 +167,7 @@ ms.locfileid: "98940840"
 
     `10.23.0.11:2181,10.23.0.7:2181,10.23.0.9:2181`
 
-    请保存此信息。 下一节将使用它。
+    请保存此信息。 在下一部分中使用。
 
 ## <a name="configure-mirroring"></a>配置镜像
 
@@ -200,7 +200,7 @@ ms.locfileid: "98940840"
 
     要保存文件，请使用 **Ctrl + X**、**Y**，并按 **Enter**。
 
-1. 在配置与辅助群集通信的生成者之前，请为 **辅助** 群集的 broker IP 地址设置一个变量。 使用以下命令创建此变量：
+1. 在配置与辅助群集通信的生成者之前，请为 **辅助** 群集的代理 IP 地址设置一个变量。 使用以下命令创建此变量：
 
     ```bash
     export SECONDARY_BROKERHOSTS='BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092'
@@ -234,7 +234,7 @@ ms.locfileid: "98940840"
     export SECONDARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181,ZOOKEEPER_IP_ADDRESS2:2181,ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-1. Kafka on HDInsight 的默认配置不允许自动创建主题。 在开始镜像过程之前，你必须使用以下选项之一：
+1. Kafka 在 HDInsight 上的默认配置不允许自动创建主题。 在开始镜像过程之前，你必须使用以下选项之一：
 
     * **在辅助群集上创建主题**：此选项还允许设置分区和复制因子的数目。
 
@@ -256,7 +256,7 @@ ms.locfileid: "98940840"
         1. 更改的值`auto.create.topics.enable`为 true，然后选择 __保存__。 添加注释，然后选择 __保存__。
         1. 选择 __Kafka__ 服务，选择 __重启__，然后选择 __重启所有受影响的__。 出现提示时，选择“确认全部重启”。
 
-        ![kafka 启用自动创建主题](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        :::image type="content" source="./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png" alt-text="kafka 启用自动创建主题" border="true":::
 
 ## <a name="start-mirrormaker"></a>启动 MirrorMaker
 
@@ -305,7 +305,7 @@ ms.locfileid: "98940840"
 本文档已介绍如何使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 创建 [Apache Kafka](https://kafka.apache.org/) 群集的副本。 使用以下链接来发现与 Kafka 配合使用的其他方式：
 
 * cwiki.apache.org 上的 [Apache Kafka MirrorMaker 文档](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)。
-* [Kafka 镜像 Maker 最佳实践](https://community.cloudera.com/t5/Community-Articles/Kafka-Mirror-Maker-Best-Practices/ta-p/249269)
+* [Kafka Mirror Maker 最佳做法](https://community.cloudera.com/t5/Community-Articles/Kafka-Mirror-Maker-Best-Practices/ta-p/249269)
 * [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)
 * [将 Apache Spark 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-spark-with-kafka.md)
 * [通过 Azure 虚拟网络连接到 Apache Kafka](apache-kafka-connect-vpn-gateway.md)

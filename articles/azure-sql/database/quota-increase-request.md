@@ -1,6 +1,6 @@
 ---
 title: 请求增加配额
-description: 本页介绍如何创建支持请求以增加 Azure SQL 数据库和 Azure SQL 托管实例的配额。
+description: 本页介绍如何创建增加 Azure SQL 数据库和 Azure SQL 托管实例配额的支持请求。
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
@@ -10,20 +10,20 @@ ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
 ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98251840"
 ---
-# <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的请求配额增加
+# <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>请求增加 Azure SQL 数据库和 SQL 托管实例配额
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-本文介绍如何针对 Azure SQL 数据库和 Azure SQL 托管实例请求增加配额。 它还说明了如何启用对某个区域的订阅访问以及如何请求在某个区域启用特定的硬件。
+本文介绍如何请求增加 Azure SQL 数据库和 Azure SQL 托管实例的配额。 本文还介绍如何启用对区域的订阅访问以及如何请求启用区域中的特定硬件。
 
 ## <a name="create-a-new-support-request"></a><a id="newquota"></a> 创建新的支持请求
 
-使用以下步骤从 SQL Database Azure 门户创建新的支持请求。
+使用以下步骤在 Azure 门户中为 SQL 数据库创建新的支持请求。
 
 1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“帮助 + 支持”。
 
@@ -33,50 +33,50 @@ ms.locfileid: "98251840"
 
     ![创建新的支持请求](./media/quota-increase-request/new-support-request.png)
 
-1. 对于 " **问题类型**"，请选择 " **服务和订阅限制")  (配额**。
+1. 对于“问题类型”，选择“服务和订阅限制(配额)” 。
 
    ![选择问题类型](./media/quota-increase-request/select-quota-issue-type.png)
 
-1. 对于 " **订阅**"，请选择要增加其配额的订阅。
+1. 对于“订阅”，请选择要增加其配额的订阅。
 
    ![选择已增加配额的订阅](./media/quota-increase-request/select-subscription-support-request.png)
 
-1. 对于 " **配额类型**"，请选择以下配额类型之一：
+1. 对于“配额类型”，请选择以下配额类型之一：
 
-   - 适用于单一数据库和弹性池配额的 **SQL 数据库**。
-   - 托管实例的 **SQL 数据库托管实例**。
+   - **SQL 数据库**，适用于单一数据库和弹性池配额。
+   - **SQL 数据库托管实例**，适用于托管实例。
 
    然后选择“下一步:**解决方案 >>** 。
 
    ![选择配额类型](./media/quota-increase-request/select-quota-type.png)
 
-1. 在 **详细信息** 窗口中，选择 " **输入详细** 信息" 以输入其他信息。
+1. 在“详细信息”窗口中，选择“输入详细信息”以输入其他信息 。
 
    ![输入详细信息链接](./media/quota-increase-request/provide-details-link.png)
 
-单击 " **输入详细信息** " 将显示允许您添加其他信息的 " **配额详细信息** " 窗口。 以下各节介绍了 **SQL 数据库** 和 **SQL 数据库托管实例** 配额类型的不同选项。
+单击“输入详细信息”将显示“配额详细信息”窗口，可在其中添加其他信息 。 以下各部分介绍适用于 SQL 数据库和 SQL 数据库托管实例配额类型的不同选项 。
 
 ## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a> SQL 数据库配额类型
 
-以下部分介绍了 **SQL 数据库** 配额类型的配额增加选项：
+以下各部分介绍适用于 SQL 数据库配额类型的配额增加选项：
 
-- 每台服务器的数据库事务单位 (Dtu) 
+- 每个服务器的数据库事务单位 (DTU) 数
 - 每个订阅的服务器数
-- 订阅或特定硬件的区域访问
+- 订阅或特定硬件的区域访问权限
 
-### <a name="database-transaction-units-dtus-per-server"></a>每台服务器的数据库事务单位 (Dtu) 
+### <a name="database-transaction-units-dtus-per-server"></a>每个服务器的数据库事务单位 (DTU) 数
 
-使用以下步骤来请求增加每个服务器的 Dtu 数。
+使用以下步骤来请求增加每个服务器的 DTU 数。
 
-1. 选择 **数据库事务单位 (dtu) 每个服务器** 配额类型。
+1. 选择“每个服务器的数据库事务单位 (DTU)”配额类型。
 
 1. 在“资源”列表中，选择要作为目标的资源。
 
-1. 在 " **新建配额** " 字段中，输入你请求的新 DTU 限制。
+1. 在“新建配额”字段中，输入你请求的新 DTU 限制。
 
    ![DTU 配额详细信息](./media/quota-increase-request/quota-details-dtus.png)
 
-有关详细信息，请参阅使用 dtu 购买模型的弹性池的 [单数据库资源限制](resource-limits-dtu-single-databases.md) 和 [弹性池的资源](resource-limits-dtu-elastic-pools.md)限制。
+有关详细信息，请参阅[使用 DTU 购买模型的单一数据库的资源限制](resource-limits-dtu-single-databases.md)和[使用 DTU 购买模型的弹性池的资源限制](resource-limits-dtu-elastic-pools.md)。
 
 ### <a name="servers-per-subscription"></a>每个订阅的服务器数
 
@@ -98,25 +98,25 @@ ms.locfileid: "98251840"
 
 `Your subscription does not have access to create a server in the selected region. For the latest information about region availability for your subscription, go to aka.ms/sqlcapacity. Please try another region or create a support ticket to request access.`
 
-如果你的订阅需要特定区域的访问权限，请选择 " **区域访问** " 选项。 在请求中，指定要为区域启用的产品/服务和 SKU 详细信息。 若要浏览产品/服务和 SKU 选项，请参阅 [AZURE SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/single/)。
+如果你的订阅需要访问特定区域，请选择“区域访问”选项。 在请求中，指定要为区域启用的产品/服务和 SKU 详细信息。 若要浏览产品/服务和 SKU 选项，请参阅 [Azure SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/single/)。
 
-1. 选择 " **区域访问** 配额类型"。
+1. 选择“区域访问”配额类型。
 
-1. 在 " **选择位置** " 列表中，选择要使用的 Azure 区域。 配额按每个区域的每个订阅设置。
+1. 在“选择位置”列表中，选择要使用的 Azure 区域。 配额按每个区域的每个订阅设置。
 
-1. 输入 **采购模型** 和 **预期消耗** 详细信息。
+1. 输入“购买模型”和“预期使用量”详细信息 。
 
-   ![请求区域访问](./media/quota-increase-request/quota-request.png)
+   ![请求区域访问权限](./media/quota-increase-request/quota-request.png)
 
 ### <a name="request-enabling-specific-hardware-in-a-region"></a>请求启用区域中的特定硬件
 
-如果你想要使用的 [硬件生成](service-tiers-vcore.md#hardware-generations) 在你的区域中不可用 (请参阅 [硬件可用性](service-tiers-vcore.md#hardware-availability)) ，你可以使用以下步骤来请求它。
+如果想要使用的[硬件生成](service-tiers-vcore.md#hardware-generations)在你所处的区域中不可用（请参阅[硬件可用性](service-tiers-vcore.md#hardware-availability)），你可能需要使用以下步骤来进行请求。
 
-1. 选择 **其他配额请求** 配额类型。
+1. 选择“其他配额请求”配额类型。
 
-1. 在 " **描述** " 字段中，陈述您的请求，包括硬件生成的名称以及您需要它的区域的名称。
+1. 在“说明”字段中，说明请求，其中需包括硬件生成的名称以及需要在其中使用它的区域的名称。
 
-   ![请求新区域中的硬件](./media/quota-increase-request/hardware-in-new-region.png)
+   ![请求新区域的硬件](./media/quota-increase-request/hardware-in-new-region.png)
 
 ## <a name="submit-your-request"></a>提交请求
 
@@ -126,4 +126,4 @@ ms.locfileid: "98251840"
 
 提交请求后，可查看该请求。 系统会根据你在表单中提供的信息与你联系。
 
-有关其他 Azure 限制的详细信息，请参阅 [azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
+有关其他 Azure 限制的详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。

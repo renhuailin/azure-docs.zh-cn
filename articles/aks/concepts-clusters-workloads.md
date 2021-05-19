@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.openlocfilehash: 2a1718d906ab5f51ea71be9b304028576c9fffa0
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102122436"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
@@ -31,8 +31,8 @@ Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署�
 
 Kubernetes 群集分为两个组件：
 
-- *控制平面* 提供应用程序工作负载的核心 Kubernetes 服务和业务流程。
-- 运行应用程序工作负荷的 *节点*。
+- 控制平面提供 Kubernetes 核心服务和应用程序工作负载的业务流程。
+- 节点用于运行应用程序工作负载。
 
 ![Kubernetes 控制平面和节点组件](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 
@@ -67,9 +67,9 @@ AKS 提供单租户控制平面、专用 API 服务器、计划程序等。你�
 
 节点的 Azure VM 大小定义了 CPU 数量、内存大小以及可用存储的大小和类型（如高性能 SSD 或常规 HDD）。 如果预计需要大量 CPU 和内存或高性能存储的应用程序，则相应地规划节点大小。 还可以根据需要横向扩展 AKS 群集中的节点数。
 
-在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或横向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需执行手动配置。 代理节点按标准虚拟机计费，因此，你所使用的 VM 大小的任何折扣 (包括 [Azure 预订][reservation-discounts]) 会自动应用。
+在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或横向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需执行手动配置。 代理节点按标准虚拟机计费，因此，会自动应用你正在使用的 VM 大小所拥有的任何折扣（包括 [Azure 预留][reservation-discounts]）。
 
-如果需要使用不同的主机 OS、容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果想要使用或小鲸鱼以外的容器运行时 `containerd` ，可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
+如果需要使用不同的主机 OS、容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 `containerd` 或 Moby 之外的容器运行时，可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
 
 ### <a name="resource-reservations"></a>资源预留
 
@@ -205,7 +205,7 @@ spec:
 
 在 Kubernetes 中管理应用程序的常用方法是使用 [Helm][helm]。 可以生成和使用包含应用程序代码打包版本和 Kubernetes YAML 清单的现有公共 Helm chart 来部署资源。 这些 Helm chart 可以存储在本地，通常也可以存储在远程存储库中，例如 [Azure 容器注册表 Helm chart 存储库][acr-helm]。
 
-若要使用 Helm，请在计算机上安装 Helm 客户端，或使用 [Azure Cloud Shell][azure-cloud-shell]中的 Helm 客户端。 可以使用客户端搜索或创建 Helm chart，然后将其安装到 Kubernetes 群集。 有关详细信息，请参阅[在 AKS 中使用 Helm 安装现有应用程序][aks-helm]。
+要使用 Helm，请在计算机上安装 Helm 客户端，或使用 [Azure Cloud Shell][azure-cloud-shell] 中的 Helm 客户端。 可以使用客户端搜索或创建 Helm chart，然后将其安装到 Kubernetes 群集。 有关详细信息，请参阅[在 AKS 中使用 Helm 安装现有应用程序][aks-helm]。
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSet 和 DaemonSet
 
@@ -237,7 +237,7 @@ Deployment 控制器使用 Kubernetes 计划程序在具有可用资源的任何
 有关详细信息，请参阅 [Kubernetes DaemonSet][kubernetes-daemonset]。
 
 > [!NOTE]
-> 如果使用 [虚拟节点外接程序](virtual-nodes-cli.md#enable-virtual-nodes-addon)，daemonset 将不会在虚拟节点上创建 pod。
+> 如果使用[虚拟节点附加产品](virtual-nodes-cli.md#enable-virtual-nodes-addon)，DaemonSet 将不会在虚拟节点上创建 Pod。
 
 ## <a name="namespaces"></a>命名空间
 

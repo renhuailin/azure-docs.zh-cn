@@ -11,10 +11,10 @@ ms.date: 03/03/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ace0ccb8372ff21a2d3e8721baf09bab539846c2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033652"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>使用 Azure 门户在 Azure AD B2C 中创建和删除使用者用户
@@ -35,16 +35,16 @@ ms.locfileid: "102033652"
 
 ## <a name="create-a-consumer-user"></a>创建使用者用户
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 在“管理”下，选择“用户” 。
-1. 选择“新建用户”。 
+1. 选择“新建用户”。
 1. 选择“创建 Azure AD B2C 用户”。
 1. 选择“登录方法”，然后输入新用户的 **电子邮件** 地址或 **用户名**。 在此处选择的登录方法必须与你为 Azure AD B2C 租户的“本地帐户”标识提供者指定的设置匹配（请参阅 Azure AD B2C 租户中的“管理” > “标识提供者”）。
 1. 输入该用户的“名称”。 该名称通常是用户的完整名称（姓和名）。
 1. （可选）如果希望延迟用户登录，可以选择“阻止登录”。 可以稍后在 Azure 门户中通过编辑用户的“配置文件”来启用登录。
-1. 选择 "自动 **生成密码** " 或 **创建密码**。
+1. 选择“自动生成密码”或“让我创建密码”。 
 1. 指定用户的 **名字** 和 **姓氏**。
 1. 选择“创建”  。
 
@@ -52,15 +52,15 @@ ms.locfileid: "102033652"
 
 ## <a name="reset-a-users-password"></a>重置用户密码
 
-作为管理员，你可以重置用户的密码（如果用户忘记了密码）。 当你重置用户的密码时，将自动为用户自动生成一个临时密码。 临时密码永不过期。 用户下次登录时，无论自生成临时密码以来已经过了多长时间，密码仍然有效。 然后，用户必须将密码重置为永久密码。 
+管理员可以重置用户的密码（如果用户忘记了密码）。 重置用户的密码时，将自动为用户自动生成一个临时密码。 临时密码永不过期。 用户下次登录时，无论自生成临时密码以来已经过了多长时间，密码仍然有效。 然后，用户必须将密码重置为永久密码。 
 
 > [!IMPORTANT]
-> 在重置用户的密码之前，请 [在 Azure Active Directory B2C 中设置一个强制密码重置流](force-password-reset.md)，否则用户将无法登录。
+> 在重置用户的密码之前，请[在 Azure Active Directory B2C 中设置一个强制密码重置流](force-password-reset.md)，否则用户将无法登录。
 
-若要重置用户的密码：
+重置用户的密码：
 
-1. 在 Azure AD B2C 目录中，选择 " **用户**"，然后选择要重置密码的用户。
-1. 搜索并选择需要重置的用户，然后选择 " **重置密码**"。
+1. 在 Azure AD B2C 目录中，选择“用户”，然后选择要重置密码的用户。
+1. 搜索并选择需要重置的用户，然后选择“重置密码”。
 
     将显示“Alain Charon - 配置文件”页面，其中包含“重置密码”选项。
 
@@ -79,4 +79,4 @@ ms.locfileid: "102033652"
 
 ## <a name="next-steps"></a>后续步骤
 
-对于自动用户管理方案，例如，将用户从其他标识提供者迁移到 Azure AD B2C 目录，请参阅 [Azure AD B2C：用户迁移](user-migration.md)。
+有关自动用户管理方案（例如，将用户从其他标识提供者迁移到 Azure AD B2C 目录），请参阅 [Azure AD B2C：用户迁移](user-migration.md)。
