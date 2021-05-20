@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: ramamill
 ms.openlocfilehash: a31a28728dd0521262bd0518cc49a385f4314302
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87416224"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>为 Hyper-V VM 运行故障回复
@@ -29,7 +29,7 @@ ms.locfileid: "87416224"
 2. 确保 Azure VM 使用存储帐户而非托管磁盘。 不支持使用托管磁盘故障回复复制的 Hyper-V VM。
 3. 检查并确保本地 Hyper-V 主机（如果与 Site Recovery 配合使用，则为 System Center VMM 服务器）正在运行并已连接到 Azure。 
 4. 确保 VM 的故障转移和提交已完成。 无需设置任何特定的 Site Recovery 组件即可从 Azure 故障回复 Hyper-V VM。
-5. 完成数据同步和启动本地 VM 所需的时间将取决于多个因素。 若要加快数据下载速度，可将 Microsoft 恢复服务代理配置为使用多个线程并行下载。 [了解详细信息](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage)。
+5. 完成数据同步和启动本地 VM 所需的时间将取决于多个因素。 若要加快数据下载，可将 Microsoft 恢复服务代理配置为使用更多线程来并行化下载。 [了解详细信息](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage)。
 
 
 ## <a name="fail-back-to-the-original-location"></a>故障回复到原始位置

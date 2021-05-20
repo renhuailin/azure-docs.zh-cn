@@ -1,5 +1,5 @@
 ---
-title: 编写用于登录/注销用户的 web 应用 |Microsoft
+title: 编写可使用户登录/注销的 Web 应用 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何生成可使用户登录/注销用户的 Web 应用
 services: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 10ddee404de21c5bc04672fdb6dd32c30f481ba3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937848"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578237"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>用于登录用户的 Web 应用：登录和注销
 
@@ -95,6 +95,16 @@ else
 </html>
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+在 Node.js 快速入门中，没有登录按钮。 进入 Web 应用的根目录时，code-behind 会自动提示用户登录。
+
+```javascript
+app.get('/', (req, res) => {
+    // authentication logic
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 快速入门中没有登录按钮。 进入 Web 应用的根目录时，code-behind 会自动提示用户登录。 请参阅 [app.py#L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18)。
@@ -160,6 +170,43 @@ public class AuthPageController {
     // More code omitted for simplicity
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+与其他平台不同，此处的 MSAL Node 负责让用户从登录页登录。
+
+```javascript
+
+// 1st leg of auth code flow: acquire a code
+app.get('/', (req, res) => {
+    const authCodeUrlParameters = {
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    // get url to sign user in and consent to scopes needed for application
+    pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+        res.redirect(response);
+    }).catch((error) => console.log(JSON.stringify(error)));
+});
+
+// 2nd leg of auth code flow: exchange code for token
+app.get('/redirect', (req, res) => {
+    const tokenRequest = {
+        code: req.query.code,
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send(error);
+    });
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 与其他平台不同，MSAL Python 将负责处理让用户从登录页登录的过程。 请参阅 [app.py#L20-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L20-L28)。
@@ -214,7 +261,7 @@ def _get_token_from_cache(scope=None):
 从 Web 应用注销不仅仅涉及到从 Web 应用的状态中删除有关已登录帐户的信息。
 该 Web 应用还必须将用户重定向到 Microsoft 标识平台 `logout` 终结点才能注销。
 
-当 Web 应用将用户重定向到 `logout` 终结点时，此终结点将从浏览器中清除用户的会话。 如果应用尚未进入 `logout` 终结点，则用户不需要再次输入凭据就能重新通过应用的身份验证。 原因是它们将具有 Microsoft 标识平台的有效单一登录会话。
+当 Web 应用将用户重定向到 `logout` 终结点时，此终结点将从浏览器中清除用户的会话。 如果应用尚未进入 `logout` 终结点，则用户不需要再次输入凭据就能重新通过应用的身份验证。 原因是他们将与 Microsoft 标识平台建立有效的单一登录会话。
 
 有关详细信息，请参阅 [Microsoft 标识平台和 OpenID Connect 协议](v2-protocols-oidc.md)文档中的[发送注销请求](v2-protocols-oidc.md#send-a-sign-out-request)部分。
 
@@ -222,19 +269,23 @@ def _get_token_from_cache(scope=None):
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在应用程序注册过程中，将注册一个前声道注销 URL。 在本教程中，你已在 `https://localhost:44321/signout-oidc` "**身份验证**" 页上的 "**前端通道注销 URL** " 字段中进行注册。 有关详细信息，请参阅[注册 webApp 应用](scenario-web-app-sign-user-app-registration.md#register-an-app-by-using-the-azure-portal)。
+在应用程序注册期间，需要注册一个前向通道注销 URL。 在本教程中，你已在“身份验证”页面上的“前向通道注销 URL”字段中注册了 `https://localhost:44321/signout-oidc` 。 有关详细信息，请参阅[注册 webApp 应用](scenario-web-app-sign-user-app-registration.md#register-an-app-by-using-the-azure-portal)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在应用程序注册过程中，无需注册额外的前端通道注销 URL。 将在应用的主 URL 上回调应用。 
+在应用程序注册期间，无需注册额外的前向通道注销 URL。 将在应用的主 URL 上回调应用。 
 
 # <a name="java"></a>[Java](#tab/java)
 
-在应用程序注册中不需要前声道注销 URL。
+应用程序注册中不需要前向通道注销 URL。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+应用程序注册中不需要前向通道注销 URL。
 
 # <a name="python"></a>[Python](#tab/python)
 
-在应用程序注册过程中，无需注册额外的前端通道注销 URL。 将在应用的主 URL 上回调应用。
+在应用程序注册期间，无需注册额外的前向通道注销 URL。 将在应用的主 URL 上回调应用。
 
 ---
 
@@ -305,6 +356,10 @@ else
 ...
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+此示例应用程序不实现注销。
+
 # <a name="python"></a>[Python](#tab/python)
 
 在 Python 快速入门中，注销按钮位于 [templates/index.html#L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) 文件中。
@@ -336,7 +391,7 @@ else
 - 调用 `Signout()`，让 OpenID Connect 中间件联系 Microsoft 标识平台 `logout` 终结点。 然后，终结点将会：
 
   - 从浏览器中清除会话 Cookie。
-  - 回调注销后重定向 URI。 默认情况下，注销后的重定向 URI 显示注销视图页面 [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)。 此页还作为 Microsoft 的一部分提供。
+  - 回调注销后重定向 URI。 默认情况下，注销后重定向 URI 会显示已注销视图页面 [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)。 该页面也作为 Microsoft.Identity.Web 的一部分提供。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -376,6 +431,10 @@ public void SignOut()
                 URLEncoder.encode(redirectUrl, "UTF-8"));
     }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+此示例应用程序不实现注销。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -420,6 +479,10 @@ public class AccountController : Controller
 # <a name="java"></a>[Java](#tab/java)
 
 在 Java 快速入门中，注销后的重定向 URI 只显示 index.html 页。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+此示例应用程序不实现注销。
 
 # <a name="python"></a>[Python](#tab/python)
 

@@ -1,16 +1,16 @@
 ---
-title: Azure 工具包：远程调试 Apache Spark 应用-Azure HDInsight
+title: Azure 工具包：远程调试 Apache Spark 应用 - Azure HDInsight
 description: 了解如何使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具通过 VPN 远程调试 HDInsight 群集上运行的 Spark 应用程序。
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 1daf59c47bf71ad019011036bf42bf6727754345
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: e6ed52f89c38a9c4c5476bd1db0f5a67326954e4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940358"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866261"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用 Azure Toolkit for IntelliJ 通过 VPN 在 HDInsight 中远程调试 Apache Spark 应用程序
 
@@ -50,19 +50,19 @@ ms.locfileid: "98940358"
 
 1. 获取头节点的 IP 地址。 打开群集的 Ambari UI。 在群集边栏选项卡中，选择“仪表板”  。
 
-    ![选择 Apache Ambari 中的仪表板](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png" alt-text="在 Apache Ambari 中选择“仪表板”" border="true":::
 
 1. 在 Ambari UI 中，选择“主机”。 
 
-    ![选择 Apache Ambari 中的主机](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png" alt-text="在 Apache Ambari 中选择“主机”" border="true":::
 
-1. 此时会显示头节点、工作节点和 zookeeper 节点的列表。 头节点带有 **hn** _ 前缀。 选择第一个头节点。
+1. 此时会显示头节点、工作节点和 zookeeper 节点的列表。 头节点带有 **hn*** 前缀。 选择第一个头节点。
 
-    ![在 Apache Ambari 中查找头节点](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png" alt-text="在 Apache Ambari 中查找头节点" border="true":::
 
-1. 在打开的页面底部的“摘要”窗格中，复制头节点的“IP 地址”和“主机名”。 
+1. 在打开的页面底部的“摘要”窗格中，复制头节点的“IP 地址”和“主机名”。  
 
-    ![查找 Apache Ambari 中的 IP 地址](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png" alt-text="在 Apache Ambari 中查找 IP 地址" border="true":::
 
 1. 将头节点的 IP 地址和主机名添加到要从中运行和远程调试 Spark 作业的计算机上的 **hosts** 文件中。 这样，便可以使用 IP 地址和主机名来与头节点通信。
 
@@ -93,7 +93,7 @@ ms.locfileid: "98940358"
 
 1. 打开 IntelliJ IDEA 并创建一个新项目。 在“新建项目”  对话框中执行以下操作：
 
-    ![在于 IntelliJ IDEA 中选择新建项目模板](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png" alt-text="在于 IntelliJ IDEA 中选择新建项目模板" border="true":::
 
     a. 选择“HDInsight”   >   “Spark on HDInsight (Scala)”
 
@@ -106,7 +106,7 @@ ms.locfileid: "98940358"
 
     - 在“Spark 版本”下拉列表中，Scala 项目创建向导集成了 Spark SDK 和 Scala SDK 的适当版本。  如果 Spark 群集版本低于 2.0，请选择“Spark 1.x”  。 否则，请选择“Spark 2.x”  。 此示例使用“Spark 2.0.2 (Scala 2.11.8)”  。
   
-   ![选择项目 SDK 和 Spark 版本](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png" alt-text="选择项目 SDK 和 Spark 版本" border="true":::
   
 1. Spark 项目自动为你创建项目。 若要查看项目，请执行以下操作：
 
@@ -114,7 +114,7 @@ ms.locfileid: "98940358"
 
     b. 在“项目结构”对话框中，选择“项目”以查看创建的默认项目   。 也可以通过选择加号 (+) 来创建自己的项目。
 
-   ![IntelliJ 创意项目创建 jar](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png" alt-text="IntelliJ IDEA 项目创建 jar" border="true":::
 
 1. 将库添加到项目。 若要添加库，请执行以下操作：
 
@@ -122,7 +122,7 @@ ms.locfileid: "98940358"
 
     b. 在“项目结构”对话框中选择“库”，选择 (**+**) 符号，并选择“从 Maven”。
 
-    ![IntelliJ 创意下载库](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png" alt-text="IntelliJ IDEA 下载库" border="true":::
 
     c. 在“从 Maven 存储库下载库”  对话框中，搜索并添加以下库：
 
@@ -178,11 +178,11 @@ ms.locfileid: "98940358"
 
 1. 添加应用程序的 main 类。 在“项目资源管理器”中，右键单击“src”，指向“新建”，并选择“Scala 类”。    
 
-    ![IntelliJ 创意选择主类](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png" alt-text="IntelliJ IDEA 选择主类" border="true":::
 
 1. 在“新建 Scala 类”  对话框中提供名称，在“种类”  对话框中选择“对象”  ，并选择“确定”  。
 
-    ![IntelliJ 构思创建新的 Scala 类](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png" alt-text="IntelliJ IDEA 创建新的 Scala 类" border="true":::
 
 1. 在 `MyClusterAppMain.scala` 文件中粘贴以下代码。 此代码创建 Spark 上下文，并从 `SparkSample` 对象打开 `executeJob` 方法。
 
@@ -254,47 +254,47 @@ ms.locfileid: "98940358"
 
 1. 在 `*RemoteClusterDebugging` 类中，右键单击 `test` 关键字，并选择“创建 RemoteClusterDebugging 配置”。
 
-    ![IntelliJ 构思创建远程配置](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png" alt-text="IntelliJ IDEA 创建远程配置" border="true":::
 
 1. 在“创建 RemoteClusterDebugging 配置”对话框中，为配置提供名称，并选择选择“测试种类”作为“测试名称”。 将其他所有值保留默认设置。 依次选择“应用”、“确定” 。
 
-    ![创建 RemoteClusterDebugging 配置](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png" alt-text="创建 RemoteClusterDebugging 配置" border="true":::
 
 1. 现在，菜单栏中应会显示“远程运行”配置下拉列表。
 
-    ![IntelliJ "远程运行" 下拉列表](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png" alt-text="IntelliJ“远程运行”下拉列表" border="true":::
 
 ## <a name="step-5-run-the-application-in-debug-mode"></a>步骤 5：在调试模式下运行应用程序
 
 1. 在 IntelliJ IDEA 项目中打开 `SparkSample.scala` 并在 `val rdd1` 旁边创建一个断点。 在“在为以下对象创建断点”弹出菜单中，选择“line in function executeJob”。
 
-    ![IntelliJ 构思添加断点](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png" alt-text="IntelliJ IDEA 添加断点" border="true":::
 
 1. 若要运行应用程序，请选择“远程运行”配置下拉列表旁边的“调试运行”按钮。
 
-    ![IntelliJ 创意选择 "调试" 运行按钮](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png" alt-text="IntelliJ IDEA 选择“调试运行”按钮" border="true":::
 
 1. 程序执行步骤到达断点时，底部窗格中应会显示“调试程序”选项卡。
 
-    ![IntelliJ 主意查看 "调试器" 选项卡](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png" alt-text="IntelliJ IDEA 查看“调试程序”选项卡" border="true":::
 
 1. 若要添加监视，请选择 ( **+** ) 图标。
 
-    ![IntelliJ 调试-添加监视-变量](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png" alt-text="IntelliJ debug-add-watch-variable" border="true":::
 
     在此示例中，应用程序在创建变量 `rdd1` 之前已中断。 使用此监视可查看变量 `rdd` 中的前五行。 选择 **Enter**。
 
-    ![IntelliJ 在调试模式下运行程序](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png" alt-text="IntelliJ 在调试模式下运行程序" border="true":::
 
     从上图可以看到，在运行时，可以查询 TB 量级的数据，并可以逐步调试应用程序。 例如，在上图显示的输出中，可以看到输出的第一行是标头。 基于此输出，可以修改应用程序代码，以根据需要跳过标头行。
 
 1. 现在可以选择“恢复程序”图标继续运行应用程序。
 
-    ![IntelliJ 创意选择恢复程序](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png" alt-text="IntelliJ IDEA 选择“恢复程序”" border="true":::
 
 1. 如果应用程序成功完成，应会显示类似于下面的输出：
 
-    ![IntelliJ 构思调试器控制台输出](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png" alt-text="IntelliJ IDEA 调试程序控制台输出" border="true":::
 
 ## <a name="next-steps"></a><a name="seealso"></a>后续步骤
 
@@ -323,8 +323,8 @@ ms.locfileid: "98940358"
 * [使用 Azure Toolkit for IntelliJ 通过 SSH 远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [使用 Azure Toolkit for Eclipse 中的 HDInsight 工具创建 Apache Spark 应用程序](./apache-spark-eclipse-tool-plugin.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
-* [适用于 HDInsight 的 Apache Spark 群集中的 Jupyter Notebook 可用的内核](apache-spark-jupyter-notebook-kernels.md)
-* [将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
+* [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
+* [将外部包与 Jupyter Notebook 配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理资源

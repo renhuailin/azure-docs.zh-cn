@@ -3,19 +3,19 @@ title: 使用 .NET 获取存储帐户类型和 SKU 名称
 titleSuffix: Azure Storage
 description: 了解如何使用 .NET 客户端库获取 Azure 存储帐户类型和 SKU 名称。
 services: storage
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 11/12/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0fd693573858df095b62a7a7917563141ac19c5b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 26ce4a77e02e62a1a204529ce8652fbba3aab2c9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94579328"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277141"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>使用 .NET 获取存储帐户类型和 SKU 名称
 

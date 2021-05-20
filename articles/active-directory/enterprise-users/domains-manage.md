@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/20/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b8867a137e38e7400da877f4c239e517cbebe05
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.openlocfilehash: a201452a9c708d898ee1762385955b63684876c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859974"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577965"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 
@@ -27,7 +27,7 @@ ms.locfileid: "96859974"
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-organization"></a>设置 Azure AD 组织的主域名
 
-创建组织后，初始域名（例如 "contoso.onmicrosoft.com"）也是主域名。 创建新用户时，主域名是新用户的默认域名。 设置主域名简化了管理员在门户中创建新用户的过程。 若要更改主域名，请执行以下操作：
+创建组织后，初始域名（例如“contoso.onmicrosoft.com”）也是主域名。 创建新用户时，主域名是新用户的默认域名。 设置主域名简化了管理员在门户中创建新用户的过程。 若要更改主域名，请执行以下操作：
 
 1. 使用组织全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory” 。
@@ -43,13 +43,13 @@ ms.locfileid: "96859974"
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>将自定义域名添加到 Azure AD 组织
 
-最多可以添加 900 个托管域名。 若要配置所有域以便与本地 Active Directory 联合，最多可在每个组织中添加 450 个域名。
+最多可以添加 5000 个托管域名。 若要配置所有域以便与本地 Active Directory 联合，最多可在每个组织中添加 2500 个域名。
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>添加自定义域的子域
 
-如果要向组织添加子域名称（如 "europe.contoso.com"），则应首先添加并验证根域，如 contoso.com。 子域由 Azure AD 自动验证。 若要查看添加的子域是否已验证，请在浏览器中刷新域列表。
+如果想要将子域名（如“europe.contoso.com”）添加到组织，则应首先添加并验证根域，例如 contoso.com。 子域由 Azure AD 自动验证。 若要查看添加的子域是否已验证，请在浏览器中刷新域列表。
 
-如果已将 contoso.com 域添加到一个 Azure AD 组织，还可以在不同的 Azure AD 组织中验证子域 europe.contoso.com。 添加子域时，系统将提示你在 DNS 宿主提供程序中添加 TXT 记录。
+如果已将 contoso.com 域添加到某个 Azure AD 组织，则还可以在另一个 Azure AD 组织中验证子域 europe.contoso.com。 添加子域时，系统将提示你在 DNS 宿主提供程序中添加 TXT 记录。
 
 
 
@@ -111,7 +111,7 @@ ms.locfileid: "96859974"
 Azure Active Directory 中的大多数域名管理任务也可以使用 Microsoft PowerShell 完成，或者使用 Microsoft Graph API 以编程方式完成。
 
 * [使用 PowerShell 管理 Azure AD 中的域名](/powershell/module/azuread/#domains&preserve-view=true)
-* [域资源类型](/graph/api/resources/domain?view=graph-rest-1.0&preserve-view=true)
+* [域资源类型](/graph/api/resources/domain)
 
 ## <a name="next-steps"></a>后续步骤
 

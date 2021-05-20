@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
-manager: femila
-ms.openlocfilehash: 62686589b03f7187ec473dab8fba602eaf7176f2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+manager: lizross
+ms.openlocfilehash: 420c507361e3e2437366e6ccf2d46a8b78684e59
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445238"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "88008350"
 ---
 # <a name="connect-with-the-windows-desktop-classic-client"></a>使用 Windows 桌面（经典）客户端进行连接
 
@@ -64,7 +64,7 @@ ms.locfileid: "106445238"
      - Windows 虚拟桌面（经典）：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows 虚拟桌面：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - 如果改用“电子邮件”字段，请输入你的电子邮件地址。 这会指示客户端搜索与你的电子邮件地址关联的 URL，前提是管理员已设置[电子邮件发现](/windows-server/remote/remote-desktop-services/rds-email-discovery)。
-3. 选择“下一步”  。
+3. 选择“**下一页**”。
 4. 出现提示时，请使用用户帐户登录。
 5. 资源应该会显示在连接中心，并按工作区分组。
 

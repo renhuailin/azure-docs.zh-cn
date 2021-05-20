@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 逻辑应用中添加和调用函数
-description: 在 azure 中通过 Azure 逻辑应用中的自动化任务和工作流调用并运行自定义代码
+title: 从 Azure 逻辑应用添加和调用函数
+description: 通过 Azure 逻辑应用中的自动化任务和工作流，调用和运行 Azure 中创建的函数中的自定义代码
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,21 +8,21 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 7df9f7d072af7c5f6523fd1be0432ce51954fa10
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791873"
 ---
 # <a name="call-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用函数
 
-若要在逻辑应用中运行执行特定作业的代码，可以使用 [Azure Functions](../azure-functions/functions-overview.md) 创建自己的函数。 该服务有助于创建 Node.js、C# 和 F# 函数，使你无需为运行代码而构建完整的应用或基础结构。 还可以 [从函数内部调用逻辑应用](#call-logic-app)。 Azure Functions 在云中提供无服务器计算，且对执行任务非常有用，如以下示例：
+若要在逻辑应用中运行执行特定作业的代码，可以使用 [Azure Functions](../azure-functions/functions-overview.md) 创建自己的函数。 该服务有助于创建 Node.js、C# 和 F# 函数，使你无需为运行代码而构建完整的应用或基础结构。 还可以[从函数内部调用逻辑应用](#call-logic-app)。 Azure Functions 在云中提供无服务器计算，且对执行任务非常有用，如以下示例：
 
 * 通过 Node.js 或 C# 函数扩展逻辑应用的行为。
 * 在逻辑应用工作流中执行计算。
 * 在逻辑应用中应用高级格式设置或计算字段。
 
-若要在不使用 Azure Functions 的情况下运行代码片段，请学习如何 [添加和运行内联代码](../logic-apps/logic-apps-add-run-inline-code.md)。
+若要在不使用 Azure Functions 的情况下运行代码片段，请参阅如何[添加和运行内联代码](../logic-apps/logic-apps-add-run-inline-code.md)。
 
 > [!NOTE]
 > 在逻辑应用和 Azure Functions 之间集成目前不适用于槽已启用的情况。
@@ -31,7 +31,7 @@ ms.locfileid: "98791873"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 函数应用，它是在 Azure Functions 中创建的函数的容器，以及你创建的函数。 若没有函数应用，请先[创建函数应用](../azure-functions/functions-get-started.md)。 然后才可以在逻辑应用外部（在 Azure 门户中）或[逻辑应用内部](#create-function-designer)（在逻辑应用设计器中）创建函数。
+* 一个函数应用，是在 Azure Functions 中创建的函数以及你创建的函数的容器。 若没有函数应用，请先[创建函数应用](../azure-functions/functions-get-started.md)。 然后才可以在逻辑应用外部（在 Azure 门户中）或[逻辑应用内部](#create-function-designer)（在逻辑应用设计器中）创建函数。
 
 * 使用逻辑应用时，同样的要求适用于函数应用和函数，不管它们是现有的还是全新的：
 
@@ -41,7 +41,7 @@ ms.locfileid: "98791873"
 
   * 你的函数使用 **HTTP 触发器** 模板。
 
-    此 HTTP 触发器模板可从逻辑应用接受具有 `application/json` 类型的内容。 将函数添加到逻辑应用时，逻辑应用设计器会显示在 Azure 订阅中从此模板创建的自定义函数。
+    此 HTTP 触发器模板可从逻辑应用接受具有 `application/json` 类型的内容。 当你向逻辑应用添加函数时，逻辑应用设计器会显示 Azure 订阅内基于此模板创建的自定义函数。
 
   * 函数不使用自定义路由，除非你定义了 [OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（旧称为“[Swagger 文件](https://swagger.io/)”）。
 
@@ -96,15 +96,15 @@ function convertToDateString(request, response){
    body: data.date.ToDateString();
    ```
 
-现在，你已在 Azure 中创建函数，接下来请按照将 [函数添加到逻辑应用](#add-function-logic-app)中的步骤操作。
+现已在 Azure 中创建了自己的函数，请按步骤[将函数添加到逻辑应用](#add-function-logic-app)。
 
 <a name="create-function-designer"></a>
 
 ## <a name="create-functions-inside-logic-apps"></a>在逻辑应用内部创建函数
 
-可以使用逻辑应用设计器中的内置 Azure Functions 操作直接从逻辑应用的工作流创建函数，但只能对用 JavaScript 编写的函数使用此方法。 对于其他语言，可以通过 Azure 门户中的 Azure Functions 体验创建函数。 有关详细信息，请参阅[在 Azure 门户中创建首个函数](../azure-functions/functions-get-started.md)。
+使用逻辑应用设计器中的内置 Azure Functions 操作，可以直接通过逻辑应用的工作流创建函数，但这种方法只能用于使用 JavaScript 编写的函数。 对于其他语言，可以通过 Azure 门户中的 Azure Functions 体验来创建函数。 有关详细信息，请参阅[在 Azure 门户中创建首个函数](../azure-functions/functions-get-started.md)。
 
-但是，在 Azure 中创建函数之前，必须已有一个函数应用，它是函数的容器。 若没有函数应用，请先创建一个。 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-get-started.md)。
+不过，必须已经有函数应用（即函数容器），然后才能在 Azure 中创建函数。 若没有函数应用，请先创建一个。 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-get-started.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
@@ -118,7 +118,7 @@ function convertToDateString(request, response){
 
    ![在 Azure 门户中查找函数。](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. 从函数应用列表中选择自己的函数应用。 打开操作列表后，选择此操作： " **新建函数**"。
+1. 从函数应用列表中选择自己的函数应用。 在操作列表打开后，选择此操作：“新建函数”。
 
    ![选择函数应用](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -155,13 +155,13 @@ function convertToDateString(request, response){
 
    ![将对象强制转换为字符串](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 若要指定其他详细信息，例如要使用的方法、请求标头、查询参数或身份验证，请打开“添加新参数”列表，然后选择所需选项。 身份验证的选项因所选函数而异。 请参阅 [Enable authentication for 函数](#enable-authentication-functions)。
+1. 若要指定其他详细信息，例如要使用的方法、请求标头、查询参数或身份验证，请打开“添加新参数”列表，然后选择所需选项。 身份验证的选项因所选函数而异。 请参阅[为函数启用身份验证](#enable-authentication-functions)。
 
 <a name="add-function-logic-app"></a>
 
 ## <a name="add-existing-functions-to-logic-apps"></a>将现有函数添加至逻辑应用
 
-若要从逻辑应用调用现有函数，可以添加函数，如逻辑应用设计器中的任何其他操作。
+若要从逻辑应用调用现有函数，可以添加函数，具体方法与在逻辑应用设计器中执行的任何其他操作一样。
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
@@ -177,7 +177,7 @@ function convertToDateString(request, response){
 
    对于具备 API 定义（Swagger 描述）的函数以及那些[设置为可供逻辑应用查找和访问](#function-swagger)的函数，可以选择“Swagger 操作”。
 
-   ![选择函数应用、"Swagger 操作" 和函数](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
+   ![依次选择函数应用、“Swagger 操作”和函数](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
 1. 在“请求正文”框中，提供函数的输入，其格式必须为 JavaScript 对象表示法 (JSON) 对象。
 
@@ -189,13 +189,13 @@ function convertToDateString(request, response){
 
    ![将对象强制转换为字符串](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 若要指定其他详细信息，例如要使用的方法、请求标头、查询参数或身份验证，请打开“添加新参数”列表，然后选择所需选项。 身份验证的选项因所选函数而异。 请参阅 [在函数中启用身份验证](#enable-authentication-functions)。
+1. 若要指定其他详细信息，例如要使用的方法、请求标头、查询参数或身份验证，请打开“添加新参数”列表，然后选择所需选项。 身份验证的选项因所选函数而异。 请参阅[在函数中启用身份验证](#enable-authentication-functions)。
 
 <a name="call-logic-app"></a>
 
 ## <a name="call-logic-apps-from-functions"></a>从函数调用逻辑应用
 
-如果要在函数中触发逻辑应用，则逻辑应用必须以提供可调用终结点的触发器开头。 例如，可使用 HTTP 触发器、请求触发器、Azure 队列触发器或事件网格触发器启动逻辑应用   。 在函数内，向触发器的 URL 发送一个 HTTP POST 请求，并加入需要逻辑应用处理的有效负载。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。
+若要从函数内部触发逻辑应用，则必须使用提供可调用终结点的触发器启动该逻辑应用。 例如，可使用 HTTP 触发器、请求触发器、Azure 队列触发器或事件网格触发器启动逻辑应用   。 在函数内，向触发器的 URL 发送一个 HTTP POST 请求，并加入需要逻辑应用处理的有效负载。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。
 
 <a name="enable-authentication-functions"></a>
 
@@ -203,13 +203,13 @@ function convertToDateString(request, response){
 
 为了轻松验证对 Azure Active Directory (Azure AD) 保护的其他资源的访问，而无需登录并提供凭据或机密，逻辑应用可以使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（旧称为“托管服务标识 (MSI)”）。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 详细了解[支持 Azure AD 身份验证的托管标识的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
-如果将逻辑应用设置为使用系统分配的标识或手动创建的用户分配的标识，则逻辑应用中的函数还可以使用该相同标识进行身份验证。 有关对逻辑应用中的函数的身份验证支持的详细信息，请参阅 [将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
+如果你将逻辑应用设置为使用系统分配标识或手动创建的用户分配标识，那么逻辑应用中的函数也可以使用同一标识进行身份验证。 若要详细了解逻辑应用中函数的身份验证支持，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
 若要设置托管标识并用于函数，请按照以下步骤操作：
 
 1. 在逻辑应用上启用托管标识，并设置此标识对目标资源的访问权限。 请参阅[在 Azure 逻辑应用中使用托管标识验证对 Azure 资源的访问](../logic-apps/create-managed-service-identity.md)。
 
-1. 通过执行以下步骤，在函数和函数应用中启用身份验证：
+1. 若要在函数和函数应用中启用身份验证，请按照以下步骤操作：
 
    * [在函数中设置匿名身份验证](#set-authentication-function-app)
    * [在函数应用中设置 Azure AD 身份验证](#set-azure-ad-authentication)
@@ -218,7 +218,7 @@ function convertToDateString(request, response){
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>在函数中设置匿名身份验证
 
-若要在函数中使用逻辑应用的托管标识，必须将函数的身份验证级别设置为 "匿名"。 否则，逻辑应用会抛出“BadRequest”错误。
+若要在函数中使用逻辑应用的托管标识，则必须将函数的身份验证级别设置为“匿名”。 否则，逻辑应用会抛出“BadRequest”错误。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，找到并选择你的函数应用。 这些步骤使用“FabrikamFunctionApp”作为示例函数应用。
 

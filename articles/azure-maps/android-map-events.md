@@ -1,6 +1,6 @@
 ---
-title: 在 Android maps 中处理地图事件 |Microsoft Azure 映射
-description: 了解用户与地图进行交互时要触发的事件。 查看所有受支持的地图事件的列表。 请参阅如何使用 Azure Maps Android SDK 来处理事件。
+title: 在 Android 地图中处理地图事件 | Microsoft Azure Maps
+description: 了解用户与地图交互时触发的事件。 查看所有受支持地图事件的列表。 了解如何使用 Azure Maps Android SDK 处理事件。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 2/26/2021
@@ -10,39 +10,39 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 86d1b9ec8a507a5cfaa5502efcb239bceabca665
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097340"
 ---
-# <a name="interact-with-the-map-android-sdk"></a>与地图 (Android SDK 交互) 
+# <a name="interact-with-the-map-android-sdk"></a>与地图交互 (Android SDK)
 
-本文介绍如何使用 maps 事件管理器。
+本文介绍如何使用地图事件管理器。
 
 ## <a name="interact-with-the-map"></a>与地图交互
 
-地图通过其属性管理所有事件 `events` 。 下表列出了所有支持的映射事件。
+地图通过其 `events` 属性管理所有事件。 下表列出了所有受支持的地图事件。
 
 | 事件                  | 事件处理程序格式 | 说明 |
 |------------------------|----------------------|-------------|
 | `OnCameraIdle`         | `()`                 | <p>在地图进入“空闲”状态之前呈现的最后一帧之后触发：<ul><li>没有正在进行的照相机转换。</li><li>当前请求的所有图块均已加载。</li><li>所有淡入/过渡动画均已完成。</li></ul></p> |
 | `OnCameraMove`         | `()`                 | 因用户交互或方法而在从一个视图到另一个视图的动画过渡期间反复触发。 |
-| `OnCameraMoveCanceled` | `()`                 | 在取消对照相机的移动请求时触发。 |
-| `OnCameraMoveStarted`  | `(int reason)`       | 因用户交互或方法而在地图开始从一个视图过渡到另一个视图前触发。 `reason`事件侦听器的自变量返回一个整数值，它提供了有关如何启动照相机移动的详细信息。 下表列出了可能的原因：<ul><li>1：手势</li><li>2：开发人员动画</li><li>3： API 动画</li></ul>   |
-| `OnClick`              | `(double lat, double lon)` | 在地图上按下并释放地图时激发。 |
-| `OnFeatureClick`       | `(List<Feature>)`    | 在功能上按下并释放地图时激发。  |
+| `OnCameraMoveCanceled` | `()`                 | 取消对相机的移动请求时触发。 |
+| `OnCameraMoveStarted`  | `(int reason)`       | 因用户交互或方法而在地图开始从一个视图过渡到另一个视图前触发。 事件侦听器的 `reason` 参数返回一个整数值，该值提供有关如何开始相机移动的详细信息。 以下列表概述了可能的原因：<ul><li>1：手势</li><li>2：开发人员动画</li><li>3：API 动画</li></ul>   |
+| `OnClick`              | `(double lat, double lon)` | 在地图上的同一点按下并释放地图时触发。 |
+| `OnFeatureClick`       | `(List<Feature>)`    | 在功能上的同一点按下并释放地图时触发。  |
 | `OnLayerAdded` | `(Layer layer)` | 在向地图添加层时触发。 |
 | `OnLayerRemoved` | `(Layer layer)` | 在从地图移除层时触发。 |
 | `OnLoaded` | `()` | 在下载了所有必需的资源并进行了第一次视觉上完整的地图呈现后立即触发。 |
-| `OnLongClick`          | `(double lat, double lon)` | 在按下地图时触发，并在地图上的同一点释放。 |
-| `OnLongFeatureClick `  | `(List<Feature>)`    | 在按下地图时触发，并在某一特征的同一点释放。 |
-| `OnReady`              | `(AzureMap map)`     | 当最初加载映射时，或在应用程序方向发生变化并且加载了所需的最小映射资源并且映射可以以编程方式与进行交互时触发。 |
+| `OnLongClick`          | `(double lat, double lon)` | 在地图上的同一点按下地图并保持一段时间，然后将其释放时触发。 |
+| `OnLongFeatureClick `  | `(List<Feature>)`    | 在功能上的同一点按下地图并保持一段时间，然后将其释放时触发。 |
+| `OnReady`              | `(AzureMap map)`     | 最初加载地图时，或应用方向发生更改并加载了所需的最少地图资源，并且地图已经可以通过编程方式进行交互时，便会触发。 |
 | `OnSourceAdded` | `(Source source)` | 在向地图添加 `DataSource` 或 `VectorTileSource` 时触发。 |
 | `OnSourceRemoved` | `(Source source)` | 在从地图移除 `DataSource` 或 `VectorTileSource` 时触发。 |
 | `OnStyleChange` | `()` | 在加载或更改地图的样式时触发。 |
 
-下面的代码演示如何将 `OnClick` 、 `OnFeatureClick` 和 `OnCameraMove` 事件添加到映射。
+以下代码演示如何将 `OnClick`、`OnFeatureClick` 和 `OnCameraMove` 事件添加到地图。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -80,11 +80,11 @@ map.events.add(OnCameraMove {
 
 ::: zone-end
 
-有关详细信息，请参阅有关如何与 map 和 trigger 事件交互的 [导航图](how-to-use-android-map-control-library.md#navigating-the-map) 文档。
+有关详细信息，请参阅[导航地图](how-to-use-android-map-control-library.md#navigating-the-map)文档，了解如何与地图交互和触发事件。
 
-## <a name="scope-feature-events-to-layer"></a>将功能事件作用域分层
+## <a name="scope-feature-events-to-layer"></a>将功能事件范围划分为层
 
-`OnFeatureClick`向映射添加或 `OnLongFeatureClick` 事件时，可以将层实例或层 ID 作为第二个参数传入。 当传入层时，只有该事件发生在该层上时才会触发事件。 作用域为层的事件受符号、气泡、线条和多边形层支持。
+将 `OnFeatureClick` 或 `OnLongFeatureClick` 事件添加到地图时，可以将层实例或层 ID 作为第二个参数传递。 传入层时，事件只有在该层上才会触发。 符号层、气泡层、直线层和多边形层均支持范围为层的事件。
 
 ::: zone pivot="programming-language-java-android"
 

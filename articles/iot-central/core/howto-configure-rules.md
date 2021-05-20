@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c78b95e7651117f85f3cf38f5cbff1b890145dae
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 378a1dbcfbc89cdf9b24dc2490db583f1135b9a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108759538"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97796782"
 ---
 # <a name="configure-rules"></a>配置规则
+
+*本文适用于操作员、构建者和管理员。*
 
 IoT Central 中的规则充当可自定义的响应工具，针对已连接设备的主动监视事件进行触发。 以下部分介绍如何评估规则。
 

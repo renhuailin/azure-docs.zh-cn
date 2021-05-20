@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI - sfctl store
-description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于对群集映像存储执行文件级别操作的命令列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于对群集映像存储执行文件级别操作的命令的列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: af5399be44d2946775622598c5c1db3d8355f7cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86257064"
 ---
 # <a name="sfctl-store"></a>sfctl store
@@ -17,7 +17,7 @@ ms.locfileid: "86257064"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|说明|
 | --- | --- |
 | delete | 删除现有的映像存储内容。 |
 | root-info | 获取映像存储根目录中的内容信息。 |

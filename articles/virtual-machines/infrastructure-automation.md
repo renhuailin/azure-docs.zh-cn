@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
 ms.openlocfilehash: 7a702fbf405011a9df3e7e77936a9a37f0fdfad7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98730632"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中将基础结构自动化工具与虚拟机配合使用
@@ -134,7 +134,7 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 
 了解如何：
 
-- [使用 Jenkins、GitHub 和 Docker 在 Azure 中的 LINUX VM 上创建开发基础结构](/azure/developer/jenkins/pipeline-with-github-and-docker)。
+- [使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构](/azure/developer/jenkins/pipeline-with-github-and-docker)。
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
@@ -142,7 +142,7 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 
 了解如何：
 
-- [使用资源管理器模板部署专色 vm](./linux/spot-template.md)。
+- [使用资源管理器模板部署现成 VM](./linux/spot-template.md)。
 - [通过资源管理器模板创建 Windows 虚拟机](./windows/ps-template.md)。
 - [下载 VM 模板](/previous-versions/azure/virtual-machines/windows/download-template)。
 - [创建 Azure 映像生成器模板](./linux/image-builder-json.md)。

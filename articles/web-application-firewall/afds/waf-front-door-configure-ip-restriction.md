@@ -6,13 +6,13 @@ author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 ms.date: 12/22/2020
-ms.author: victorh
-ms.openlocfilehash: cb45120f55cd55ae129599a4179f0cd1a60c8648
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.author: tyao
+ms.openlocfilehash: 65e378c0380804c13e4b42d855aede7781b93592
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732643"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102211662"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>配置适用于 Azure Front Door 的 Web 应用程序防火墙的 IP 限制规则
 
@@ -33,8 +33,8 @@ ms.locfileid: "109732643"
 1. 在 Azure 门户中，选择“创建资源”，在搜索框中键入“Web 应用程序防火墙”，然后选择“Web 应用程序防火墙(WAF)”  。
 2. 选择“创建”  。
 3. 在“创建 WAF 策略”页上，使用以下值完成“基本信息”选项卡 ：
-
-   |设置  |值  |
+   
+   |设置  |“值”  |
    |---------|---------|
    |策略适用于     |全球 WAF (Front Door)|
    |订阅     |选择订阅|
@@ -50,7 +50,7 @@ ms.locfileid: "109732643"
 4. 选择“添加自定义规则”。
 5. 在“添加自定义规则”页上，使用以下测试值创建自定义规则：
 
-   |设置  |值  |
+   |设置  |“值”  |
    |---------|---------|
    |自定义规则名称     |FdWafCustRule|
    |状态     |Enabled|
@@ -58,13 +58,13 @@ ms.locfileid: "109732643"
    |优先级    |100|
    |匹配类型     |IP 地址|
    |匹配变量|RemoteAddr|
-   |Operation|不包含|
+   |操作|不包含|
    |IP 地址或范围|10.10.10.0/24|
    |Then|拒绝流量|
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="自定义规则":::
 
-   选择 **添加** 。
+   选择“添加”。
 6. 选择“下一步: 关联”。
 7. 选择“添加前端主机”。
 8. 对于“前端主机”，选择你的前端主机，然后选择“添加” 。
@@ -95,10 +95,9 @@ ms.locfileid: "109732643"
 
 ### <a name="create-a-waf-policy"></a>创建 WAF 策略
 
-使用 [az network front-door waf-policy create](/cli/azure/network/front-door/waf-policy#az_network_front_door_waf_policy_create) 命令创建 WAF 策略。
-在下面的示例中，将策略名称 IPAllowPolicyExampleCLI 替换为唯一策略名称。
+使用 [az network front-door waf-policy create](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-create) 命令创建 WAF 策略。 在下面的示例中，将策略名称 IPAllowPolicyExampleCLI 替换为唯一策略名称。
 
-```azurecli-interactive
+```azurecli-interactive 
 az network front-door waf-policy create \
   --resource-group <resource-group-name> \
   --subscription <subscription ID> \
@@ -106,13 +105,13 @@ az network front-door waf-policy create \
   ```
 ### <a name="add-a-custom-ip-access-control-rule"></a>添加自定义 IP 访问控制规则
 
-使用 [az network front-door waf-policy custom-rule create](/cli/azure/network/front-door/waf-policy/rule#az_network_front_door_waf_policy_rule_create) 命令为刚创建的 WAF 策略添加自定义 IP 访问控制规则。
+使用 [az network front-door waf-policy custom-rule create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule#ext-front-door-az-network-front-door-waf-policy-rule-create) 命令为刚创建的 WAF 策略添加自定义 IP 访问控制规则。
 
 在以下示例中：
 -  将 IPAllowPolicyExampleCLI 替换为前面创建的唯一策略。
 -  将 ip-address-range-1、ip-address-range-2 替换为你自己的范围 。
 
-首先，为在上一步中创建的策略创建 IP 允许规则。
+首先，为在上一步中创建的策略创建 IP 允许规则。 
 > [!NOTE]
 > --defer 是必需的，因为规则必须具有匹配条件才能在下一步中添加。
 
@@ -135,11 +134,11 @@ az network front-door waf-policy rule match-condition add \
 --negate true \
 --name IPAllowListRule \
   --resource-group <resource-group-name> \
-  --policy-name IPAllowPolicyExampleCLI
+  --policy-name IPAllowPolicyExampleCLI 
   ```
-
-### <a name="find-the-id-of-a-waf-policy"></a>查找 WAF 策略的 ID
-使用 [az network front-door waf-policy show](/cli/azure/network/front-door/waf-policy#az_network_front_door_waf_policy_show) 命令查找 WAF 策略的 ID。 将以下示例中的 IPAllowPolicyExampleCLI 替换为前面创建的唯一策略。
+                                                   
+### <a name="find-the-id-of-a-waf-policy"></a>查找 WAF 策略的 ID 
+使用 [az network front-door waf-policy show](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-show) 命令查找 WAF 策略的 ID。 将以下示例中的 IPAllowPolicyExampleCLI 替换为前面创建的唯一策略。
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -149,7 +148,7 @@ az network front-door waf-policy rule match-condition add \
 
 ### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>将 WAF 策略链接到 Azure Front Door 前端主机
 
-使用 [az network front-door update](/cli/azure/network/front-door#az_network_front_door_update) 命令将 Azure Front Door WebApplicationFirewallPolicyLink ID 设置为策略 ID。 将 IPAllowPolicyExampleCLI 替换为前面创建的唯一策略。
+使用 [az network front-door update](/cli/azure/ext/front-door/network/front-door#ext-front-door-az-network-front-door-update) 命令将 Azure Front Door WebApplicationFirewallPolicyLink ID 设置为策略 ID。 将 IPAllowPolicyExampleCLI 替换为前面创建的唯一策略。
 
    ```azurecli
    az network front-door update \
@@ -179,10 +178,10 @@ Azure PowerShell 提供一组使用 [Azure 资源管理器](../../azure-resource
 
     ```
     Install-Module PowerShellGet -Force -AllowClobber
-    ```
+    ``` 
 
-3. 使用以下命令安装 Az.FrontDoor 模块。
-
+3. 使用以下命令安装 Az.FrontDoor 模块。 
+    
     ```
     Install-Module -Name Az.FrontDoor
     ```
@@ -191,7 +190,7 @@ Azure PowerShell 提供一组使用 [Azure 资源管理器](../../azure-resource
 
 ### <a name="define-an-ip-match-condition"></a>定义 IP 匹配条件
 使用 [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) 命令定义 IP 匹配条件。
-在以下示例中，将 ip-address-range-1、ip-address-range-2 替换为你自己的范围 。
+在以下示例中，将 ip-address-range-1、ip-address-range-2 替换为你自己的范围 。    
 ```powershell
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `
@@ -199,7 +198,7 @@ $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchValue "ip-address-range-1", "ip-address-range-2"
 -NegateCondition 1
 ```
-
+     
 ### <a name="create-a-custom-ip-allow-rule"></a>创建自定义 IP 允许规则
 
 使用 [New-AzFrontDoorWafCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) 命令定义操作并设置优先级。 在下面的示例中，将阻止与列表匹配但不是来自客户端 IP 的请求。
@@ -241,7 +240,7 @@ $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 
 
 ## <a name="configure-a-waf-policy-with-a-resource-manager-template"></a>使用资源管理器模板配置 WAF 策略
-若要查看使用自定义 IP 限制规则创建 Azure Front Door 和 WAF 策略的模板，请转到 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-waf-clientip)。
+若要查看使用自定义 IP 限制规则创建 Azure Front Door 和 WAF 策略的模板，请转到 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,41 +1,41 @@
 ---
-title: Microsoft 团队内的 Azure 实验室服务
-description: 概述了如何在 Microsoft 团队中使用 Azure 实验室服务。
+title: Microsoft Teams 中的 Azure 实验室服务
+description: 概述如何在 Microsoft Teams 中使用 Azure 实验室服务。
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.openlocfilehash: f39613427ed174dfca80d4a48be9473ab7025e79
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96433913"
 ---
-# <a name="azure-lab-services-within-microsoft-teams"></a>Microsoft 团队内的 Azure 实验室服务
+# <a name="azure-lab-services-within-microsoft-teams"></a>Microsoft Teams 中的 Azure 实验室服务
 
-可以在 Microsoft 团队中使用 **Azure 实验室服务** 团队应用来利用 Azure 实验室服务。 拥有实验室/参与者/创建者访问权限的任何团队所有者都将能够创建实验室并将虚拟机预配到团队中的每个人。
+可以使用 Azure 实验室服务 Teams 应用在 Microsoft Teams 中利用 Azure 实验室服务。 任何拥有所有者/参与者/创建者对实验室帐户的访问权限的团队所有者都将能够创建实验室，并预配团队中每个人的的虚拟机。
 
-本文概述在团队内使用 Azure 实验室服务的优点，并提供指向其他文章的链接，以获取有关如何在团队内创建和管理实验室的说明。 
+本文概述在 Teams 中使用 Azure 实验室服务的好处，并提供指向有关如何在 Teams 中创建和管理实验室的说明的其他文章的链接。 
 
 > [!NOTE]
->**Azure 实验室服务** 团队应用只能添加到团队，不能将其添加到个人聊天或群聊天。
+>Azure 实验室服务 Teams 应用只能添加到团队中，不能添加到个人聊天或群组群聊中。
 
 ## <a name="benefits"></a>优点
 
-Azure 实验室服务与 Microsoft 团队的集成将帮助教师设置课堂环境并在团队内提供虚拟实验室环境 (类) ： 
+Azure 实验室服务与 Microsoft Teams 的集成将帮助教师设置课堂环境并在团队中提供虚拟实验室环境（课程）： 
 
-* 教师可以设置实验室，使学生可以从团队内访问其 Vm，而无需离开团队并导航到 [Azure 实验室服务网站](https://labs.azure.com)。
-* 单一登录 (从团队到 Azure 实验室服务的 SSO) 。
-* 团队和实验室所有者不需要在两个不同的系统中维护类花名册-实验室用户列表会自动填充于团队成员身份，每24小时自动执行一次同步。 
-* 首次发布模板 VM 后，实验室容量 (即，实验室中的 Vm 数) 会根据团队成员身份添加/删除用户自动进行调整。 
-* 团队和实验室所有者将仅查看与团队相关的实验室，并且学生只会查看为特定团队预配的 Vm。 
-* 用户将自动注册到实验室，并将在发布实验室后首次登录时自动分配 Vm。 教师无需发送邀请，学生无需单独注册实验室。  
+* 教师可以设置实验室，使学生可以从 Teams 中访问他们的 VM，而无需离开 Teams，也无需导航到 [Azure 实验室服务网站](https://labs.azure.com)。
+* 从 Teams 到 Azure 实验室服务的单一登录 (SSO)。
+* 团队和实验室所有者无需在两个不同的系统中维护班级名册 - 实验室用户列表从团队成员身份自动填充，并且每 24 小时自动执行一次同步。 
+* 在首次发布模板 VM 之后，将根据从团队成员身份中添加/删除的用户数自动调整实验室容量（即实验室中的 VM 数）。 
+* 团队和实验室所有者将仅查看与团队相关的实验室，而学生将仅查看为特定团队预配的 VM。 
+* 发布实验室后，用户首次登录时将自动注册到实验室，并且自动分配 VM。 教师无需发送邀请，学生也无需单独注册实验室。  
 
 ## <a name="next-steps"></a>后续步骤
 
 请参阅以下文章：
 
-- [开始使用并在团队内创建实验室](how-to-get-started-create-lab-within-teams.md)
-- [管理团队中的实验室用户列表](how-to-manage-user-lists-within-teams.md)
-- [管理团队中实验室的 VM 池](how-to-manage-vm-pool-within-teams.md)
-- [在团队内创建和管理实验室计划](how-to-create-schedules-within-teams.md)
-- [在团队内访问 VM –学生视图](how-to-access-vm-for-students-within-teams.md)
+- [开始在 Teams 中创建实验室](how-to-get-started-create-lab-within-teams.md)
+- [在 Teams 中管理实验室用户列表](how-to-manage-user-lists-within-teams.md)
+- [在 Teams 中管理实验室的 VM 池](how-to-manage-vm-pool-within-teams.md)
+- [在 Teams 中创建和管理实验室计划](how-to-create-schedules-within-teams.md)
+- [在 Teams 中访问 VM -“学生”视图](how-to-access-vm-for-students-within-teams.md)

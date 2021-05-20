@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 478f8be017ced99776a0b69ef034d54ba8075c6e
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: a3f423a144738fdaa4462606de6ad4a4e34d6775
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076790"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97563409"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 进行持续交付
 
@@ -248,7 +248,7 @@ Azure DevOps 中的模板是用于生成或部署应用的预定义任务组。
 
 ## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>使用 Azure CLI 创建生成管道
 
-若要在 Azure 中创建生成管道，请使用 `az functionapp devops-pipeline create` [命令](/cli/azure/functionapp/devops-pipeline#az_functionapp_devops_pipeline_create)。 创建生成管道是为了生成和发布在存储库中所做的任何代码更改。 此命令生成一个新的 YAML 文件（用于定义生成和发布管道），然后将该文件提交到存储库。 此命令的先决条件取决于代码的位置。
+若要在 Azure 中创建生成管道，请使用 `az functionapp devops-pipeline create` [命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)。 创建生成管道是为了生成和发布在存储库中所做的任何代码更改。 此命令生成一个新的 YAML 文件（用于定义生成和发布管道），然后将该文件提交到存储库。 此命令的先决条件取决于代码的位置。
 
 - 如果代码位于 GitHub 中：
 

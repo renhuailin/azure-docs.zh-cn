@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps 搜索服务中的地理编码覆盖率
-description: 查看 Azure Maps 搜索涵盖哪些区域。 地理编码类别包括地址点、房屋编号、街道级别、城市级别和兴趣点。
+title: Microsoft Azure Maps 搜索服务中的地理编码覆盖区域
+description: 查看 Azure Maps 搜索覆盖哪些区域。 地理编码类别包括地址点、门牌号、街道级别、城市级别和兴趣点。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/28/2019
@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3cf27319fa84ff5d693e74e90664b7a86f4d934a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92897205"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps 地理编码覆盖区域
 
-Azure Maps [搜索服务](/rest/api/maps/search) 支持地理编码，这意味着 API 请求可以具有搜索词（如地址或位置名称），并将结果返回为纬度和经度坐标。 例如，Azure Maps [获取搜索地址 API](/rest/api/maps/search/getsearchaddress) 接收包含位置信息的查询，并将结果返回为纬度和经度坐标。
+Azure Maps [搜索服务](/rest/api/maps/search)支持地理编码，这意味着 API 请求可以具有搜索词（如地址或位置名称），并将结果返回为纬度和经度坐标。 例如，Azure Maps [获取搜索地址 API](/rest/api/maps/search/getsearchaddress) 接收包含位置信息的查询，并将结果返回为纬度和经度坐标。
 
-不过，Azure Maps [搜索服务](/rest/api/maps/search) 对所有地区和国家没有相同级别的信息和准确性。 使用本文确定可在每个区域中可靠搜索的位置类型。
+但是，Azure Maps [搜索服务](/rest/api/maps/search)并非对所有区域和国家/地区提供相同级别的信息和准确性。 使用本文确定可在每个区域中可靠搜索的位置类型。
 
-在国家/地区地理编码的能力取决于地理编码服务的公路数据覆盖和地理编码精度。 以下分类用于在每个国家/地区指定地理编码支持的级别。
+在国家/地区中进行地理编码的能力取决于道路数据覆盖范围和地理编码服务的地理编码精度。 下列分类用来指定每个国家/地区中的地理编码支持级别。
 
-* **地址点** -地址数据可解析为地址包内的纬度/经度坐标 (属性边界) 。 地址点通常称为 "屋顶"，这是地址的最高级别的准确性。
+* 地址点 - 可以将地址数据解析为地址包裹中的经度/维度坐标（地产边界）。 地址点通常称为“屋顶”准确性，这是可用于地址的最高级别的准确性。
 * **门牌号** - 地址内插到街道上的纬度/经度坐标。
 * **街道级别** - 地址解析为包含地址的街道的纬度/经度坐标。 门牌号码可能不会处理。
 * **城市级别** - 支持城市位置名称。
@@ -299,6 +299,6 @@ Azure Maps [搜索服务](/rest/api/maps/search) 支持地理编码，这意味�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 Azure Maps 地理编码的详细信息：
+详细了解 Azure Maps 地理编码：
 > [!div class="nextstepaction"]
 > [Azure Maps 搜索服务](/rest/api/maps/search)

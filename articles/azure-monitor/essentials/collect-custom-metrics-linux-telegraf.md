@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.openlocfilehash: 204124240c6831ebb2c1df436736f475c48d98a8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048929"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
@@ -24,7 +24,7 @@ ms.locfileid: "102048929"
  ![Telegraph 代理概述](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> 所有区域都不支持自定义指标。 [此处](./metrics-custom-overview.md#supported-regions)列出了支持的区域
+> 并非所有区域都支持自定义指标。 [此处](./metrics-custom-overview.md#supported-regions)列出了支持的区域
 
 ## <a name="send-custom-metrics"></a>发送自定义指标 
 

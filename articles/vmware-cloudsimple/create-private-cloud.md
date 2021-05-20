@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 创建 CloudSimple 私有云
 description: 介绍了如何创建 CloudSimple 私有云，以将 VMware 工作负载扩展到具有操作灵活性和连续性的云中
-author: shortpatti
-ms.author: v-patsho
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 02cab9ee72dcd13b2ed8cd255ec4bb555b3894cc
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 2f4af4a36e719cbf15b3f0af77db81a32f2f2e42
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177793"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97896271"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>创建 CloudSimple 私有云
 
@@ -47,9 +47,9 @@ ms.locfileid: "108177793"
 
 ## <a name="create-a-new-private-cloud"></a>新建私有云
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 2. 搜索“CloudSimple 服务”。
-3. 选择要在其上创建私有云的 CloudSimple 服务。
+3. 选择要在上面创建私有云的 CloudSimple 服务。
 4. 在“概述”中，单击“创建私有云”，为 CloudSimple 门户打开新的浏览器标签页。 如果出现提示，请使用 Azure 登录凭据进行登录。
 
     ![在 Azure 中创建私有云](media/create-private-cloud-from-azure.png)

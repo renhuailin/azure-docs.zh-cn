@@ -10,10 +10,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df8560bec3671a9f05628ee6ed8ea95c31e9b16f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88998044"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>适用于 iOS 13 的 Azure 通知中心更新
@@ -24,7 +24,7 @@ Apple 最近对其公共推送服务做了一些更改；这些更改主要与 i
 
 ### <a name="apns-push-type"></a>APNS 推送类型
 
-Apple 现在要求开发人员通过 APNS API 中的新 `apns-push-type` 标头将通知标识为警报或后台通知。 [Apple 文档](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)中指出：“此标头的值必须准确反映通知有效负载的内容。 如果存在不匹配的情况，或者如果所需系统上缺少该标头，APNs 可能会返回错误，延迟通知的传送，或删除整个通知。”
+Apple 现在要求开发人员通过 APNS API 中的新 `apns-push-type` 标头将通知标识为警报或后台通知。 根据 [Apple 的文档](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)：“此标头的值必须准确反映通知的有效负载的内容。 如果存在不匹配的情况，或者如果所需系统上缺少该标头，APNs 可能会返回错误，延迟通知的传送，或删除整个通知。”
 
 现在，开发人员必须在通过 Azure 通知中心发送通知的应用程序中设置此标头。 由于技术限制，对于包含此属性的请求，客户必须将基于令牌的身份验证用于 APNS 凭据。 如果将基于证书的身份验证用于 APNS 凭据，则必须改用基于令牌的身份验证。
 

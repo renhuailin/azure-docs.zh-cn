@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23598a3901e23290b860b9b0ab280710aab9b9b6
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 69e87fc919893a544f5d0b1b615a110f25486e57
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175831"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96168740"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>使用 Azure Active Directory 进行基于标头的身份验证
 
@@ -48,7 +48,7 @@ ms.locfileid: "108175831"
 
 ## <a name="implement-header-based-authentication-with-azure-ad"></a>使用 Azure AD 执行基于标头的身份验证
 
-* [添加一个本地应用程序以通过 Azure AD 中的应用程序代理进行远程访问](../app-proxy/application-proxy-add-on-premises-application.md)  
+* [添加一个本地应用程序以通过 Azure AD 中的应用程序代理进行远程访问](../manage-apps/application-proxy-add-on-premises-application.md)  
 
 * [使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md) 
 

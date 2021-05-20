@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: ff0dbf31f6f428b23e00f9366d55703416847b90
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 2c469324db11d2e65f8eb958e68f77fd77020865
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767684"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "99491039"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>快速入门：使用 Azure CLI 创建公共 IP 地址
 
@@ -30,7 +30,7 @@ ms.locfileid: "107767684"
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-使用 [az group create](/cli/azure/group#az_group_create) 在 eastus2 位置创建名为“myResourceGroup”的资源组。
+使用 [az group create](/cli/azure/group#az-group-create) 在 eastus2 位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive
   az group create \
@@ -46,7 +46,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 >[!NOTE]
 >以下命令适用于 API 版本 2020-08-01 或更高版本。  有关当前正在使用的 API 版本的详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 在 myResourceGroup 中创建名为“myStandardZRPublicIP”的标准区域冗余公共 IP 地址。
+使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 在 myResourceGroup 中创建名为“myStandardZRPublicIP”的标准区域冗余公共 IP 地址。
 
 ```azurecli-interactive
   az network public-ip create \
@@ -76,7 +76,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 >[!NOTE]
 >以下命令适用于 API 版本 2020-08-01 或更高版本。  有关当前正在使用的 API 版本的详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 在 myResourceGroup 中创建一个标准公共 IP 地址作为名为 myStandardPublicIP 的非区域性资源 。
+使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 在 myResourceGroup 中创建一个标准公共 IP 地址作为名为 myStandardPublicIP 的非区域性资源 。
 
 ```azurecli-interactive
   az network public-ip create \
@@ -88,7 +88,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 # <a name="basic-sku"></a>[**基本 SKU**](#tab/option-create-public-ip-basic)
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 在 myResourceGroup 中创建名为“myBasicPublicIP”的基本静态公共 IP 地址 。  基本公共 IP 没有可用性区域的概念。
+使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 在 myResourceGroup 中创建名为“myBasicPublicIP”的基本静态公共 IP 地址 。  基本公共 IP 没有可用性区域的概念。
 
 ```azurecli-interactive
   az network public-ip create \

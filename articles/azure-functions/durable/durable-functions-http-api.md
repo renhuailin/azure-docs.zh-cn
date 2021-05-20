@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84697837"
 ---
 # <a name="http-api-reference"></a>HTTP API 引用
@@ -21,7 +21,7 @@ Durable Functions 扩展公开一组内置的 HTTP API，这些 API 可以用来
 | 参数        | 参数类型  | 说明 |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | 查询字符串    | [任务中心](durable-functions-task-hubs.md)的名称。 如果未指定，则使用当前函数应用的任务中心名称。 |
-| **`connection`** | 查询字符串    | 用于存储帐户的连接字符串的名称  。 如果未指定，则使用函数应用的默认连接字符串。 |
+| **`connection`** | 查询字符串    | 用于存储帐户的连接字符串的名称。 如果未指定，则使用函数应用的默认连接字符串。 |
 | **`systemKey`**  | 查询字符串    | 需要授权密钥才可调用 API。 |
 
 `systemKey` 是 Azure Functions 主机自动生成的授权密钥。 它可专门向 Durable Task 扩展 API 授予访问权限，且可通过与管理[其他授权密钥](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)相同的方式进行管理。 可以使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client) API（例如 .NET 中的 `CreateCheckStatusResponse` 和 `CreateHttpManagementPayload` API，或者 JavaScript 中的 `createCheckStatusResponse` 和 `createHttpManagementPayload` API）生成包含正确的 `taskHub`、`connection` 和 `systemKey` 查询字符串值的 URL。
@@ -64,8 +64,8 @@ POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
 
 可返回若干可能的状态代码值。
 
-* **HTTP 202 (已接受)** ：指定的业务流程协调程序函数已计划开始运行。 `Location` 响应标头包含一个 URL，用于轮询业务流程状态。
-* **HTTP 400 (错误请求)** ：指定的业务流程协调程序函数不存在、指定的实例 ID 无效，或者请求内容不是有效的 JSON。
+* HTTP 202 (已接受)：指定的业务流程协调程序函数已计划开始运行。 `Location` 响应标头包含一个 URL，用于轮询业务流程状态。
+* HTTP 400 (错误请求)：指定的业务流程协调程序函数不存在、指定的实例 ID 无效，或者请求内容不是有效的 JSON。
 
 下面是一个示例请求，该请求启动一个 `RestartVMs` 业务流程协调程序函数，并且包含 JSON 对象有效负载：
 
@@ -80,7 +80,7 @@ Content-Length: 83
 }
 ```
 
-值为 HTTP 202 时的响应有效负载是包含以下字段的 JSON 对象  ：
+值为 HTTP 202 时的响应有效负载是包含以下字段的 JSON 对象：
 
 | 字段                       | 说明                          |
 |-----------------------------|--------------------------------------|
@@ -105,10 +105,10 @@ Content-Length: 83
 }
 ```
 
-HTTP 响应旨在与轮询使用者模式兼容  。 它还包括以下值得注意的响应标头：
+HTTP 响应旨在与轮询使用者模式兼容。 它还包括以下值得注意的响应标头：
 
-* **位置**：状态终结点的 URL。 此 URL 包含的值与 `statusQueryGetUri` 字段的值相同。
-* **Retry-After**：在执行下一个轮询操作之前应等待的秒数。 默认值为 `10`。
+* 位置：状态终结点的 URL。 此 URL 包含的值与 `statusQueryGetUri` 字段的值相同。
+* 重试间隔：在执行下一个轮询操作之前应等待的秒数。 默认值为 `10`。
 
 有关异步 HTTP 轮询模式的详细信息，请参阅 [HTTP 异步操作跟踪](durable-functions-http-features.md#async-operation-tracking)文档。
 
@@ -158,22 +158,22 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 可返回若干可能的状态代码值。
 
-* **HTTP 200 (正常)** ：指定的实例处于已完成状态。
-* **HTTP 202 (已接受)** ：指定实例正在进行中。
-* **HTTP 400 (错误请求)** ：指定的实例已失败或被终止。
-* **HTTP 404 (找不到)** ：指定的实例不存在或未开始运行。
-* **HTTP 500 (内部服务器错误)** ：指定的实例因未处理的异常而失败。
+* HTTP 200 (正常)：指定实例的状态为已完成。
+* HTTP 202 (已接受)：指定实例正在进行中。
+* HTTP 400 (错误请求)：指定实例失败或已终止。
+* HTTP 404 (找不到)：指定实例不存在或未开始运行。
+* **HTTP 500 (内部服务器错误)**：指定实例因未处理的异常而失败。
 
-值为 HTTP 200 和 HTTP 202 时的响应负载是包含以下字段的 JSON 对象   ：
+值为 HTTP 200 和 HTTP 202 时的响应负载是包含以下字段的 JSON 对象：
 
 | 字段                 | 数据类型 | 说明 |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | string    | 实例的运行时状态。 相关的值为：正在运行、挂起、失败、已取消、已终止和已完成       。 |
+| **`runtimeStatus`**   | 字符串    | 实例的运行时状态。 相关的值为：正在运行、挂起、失败、已取消、已终止和已完成。 |
 | **`input`**           | JSON      | 用于初始化实例的 JSON 数据。 如果 `showInput` 查询字符串参数设置为 `false`，则此字段为 `null`。|
 | **`customStatus`**    | JSON      | 用于自定义业务流程状态的 JSON 数据。 如果未设置，此字段为 `null`。 |
 | **`output`**          | JSON      | 实例的 JSON 输出。 如果实例不是已完成状态，则该字段为 `null`。 |
-| **`createdTime`**     | string    | 创建实例的时间。 使用 ISO 8601 扩展表示法。 |
-| **`lastUpdatedTime`** | string    | 实例持续的时间。 使用 ISO 8601 扩展表示法。 |
+| **`createdTime`**     | 字符串    | 创建实例的时间。 使用 ISO 8601 扩展表示法。 |
+| **`lastUpdatedTime`** | 字符串    | 实例持续的时间。 使用 ISO 8601 扩展表示法。 |
 | **`historyEvents`**   | JSON      | 包含业务流程执行历史记录的 JSON 数组。 除非 `showHistory` 查询字符串参数设置为 `true`，否则此字段为 `null`。 |
 
 下面是包括业务流程执行历史记录和活动输出的示例响应有效负载（为提高可读性已设置格式）：
@@ -231,13 +231,13 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 }
 ```
 
-HTTP 202 响应还包括 Location 响应标头，该标头引用了与上文提及的 `statusQueryGetUri` 字段相同的 URL   。
+HTTP 202 响应还包括 Location 响应标头，该标头引用了与上文提及的 `statusQueryGetUri` 字段相同的 URL。
 
 ## <a name="get-all-instances-status"></a>获取所有实例状态
 
 此外，可以通过从“获取实例状态”请求中删除 `instanceId`，来查询所有实例的状态。 在这种情况下，基本参数与“获取实例状态”相同。 也支持使用查询字符串参数进行筛选。
 
-要记住的一件事是 `connection` 和 `code` 是可选的。 如果你在函数上有匿名身份验证，则不需要 `code`。
+请务必牢记 `connection` 和 `code` 可选。 如果你在函数上有匿名身份验证，则不需要 `code`。
 如果你不想要使用 AzureWebJobsStorage 应用设置中未定义的其他存储连接字符串，则可以安全地忽略连接查询字符串参数。
 
 ### <a name="request"></a>请求
@@ -378,8 +378,8 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 可以返回以下 HTTP 状态代码值。
 
-* **HTTP 200 (正常)** ：已成功清除实例历史记录。
-* **HTTP 404 (找不到)** ：指定的实例不存在。
+* HTTP 200 (正常)：已成功清除实例历史记录。
+* HTTP 404 (找不到)：指定的实例不存在。
 
 值为 **HTTP 200** 时的响应有效负载是包含以下字段的 JSON 对象：
 
@@ -440,8 +440,8 @@ DELETE /runtime/webhooks/durabletask/instances
 
 可以返回以下 HTTP 状态代码值。
 
-* **HTTP 200 (正常)** ：已成功清除实例历史记录。
-* **HTTP 404 (找不到)** ：找不到与筛选表达式匹配的实例。
+* HTTP 200 (正常)：已成功清除实例历史记录。
+* HTTP 404 (找不到)：未找到与筛选器表达式匹配的实例。
 
 值为 **HTTP 200** 时的响应有效负载是包含以下字段的 JSON 对象：
 
@@ -493,12 +493,12 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 可返回若干可能的状态代码值。
 
-* **HTTP 202 (已接受)** ：已接受引发的事件，正在处理。
-* **HTTP 400 (错误请求)** ：请求内容不属于 `application/json` 类型或不是有效的 JSON。
-* **HTTP 404 (找不到)** ：找不到指定的实例。
-* **HTTP 410 (消失)** ：指定的实例已完成或失败，且无法处理任何引发的事件。
+* HTTP 202 (已接受)：已接受引发的事件，正在处理。
+* HTTP 400 (错误请求)：请求内容不属于 `application/json` 类型或不是有效的 JSON。
+* HTTP 404 (找不到)：找不到指定的实例。
+* HTTP 410 (消失)：指定的实例已完成或失败，且无法处理任何引发的事件。
 
-下面的请求示例向等待名为 operation 的事件的实例发送 JSON 字符串 `"incr"` ：
+下面的请求示例向等待名为 operation 的事件的实例发送 JSON 字符串 `"incr"`：
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -547,11 +547,11 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
 
 可返回若干可能的状态代码值。
 
-* **HTTP 202 (已接受)** ：已接受终止请求，正在处理。
-* **HTTP 404 (找不到)** ：找不到指定的实例。
-* **HTTP 410 (消失)** ：指定的实例已完成或失败。
+* HTTP 202 (已接受)：已接受终止请求，正在处理。
+* HTTP 404 (找不到)：找不到指定的实例。
+* HTTP 410 (消失)：指定的实例已完成或失败。
 
-下面的示例请求终止正在运行的实例，并将原因指定为 buggy  ：
+下面的示例请求终止正在运行的实例，并将原因指定为 buggy：
 
 ```
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -559,9 +559,9 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 此 API 的响应不包含任何内容。
 
-## <a name="rewind-instance-preview"></a>后退实例（预览版）
+## <a name="rewind-instance-preview"></a>回退实例（预览版）
 
-通过重播最近的失败操作，将失败的业务流程实例还原到运行状态。
+通过重播最近的失败操作，将失败的业务流程实例还原为运行状态。
 
 ### <a name="request"></a>请求
 
@@ -590,17 +590,17 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 | 字段             | 参数类型  | 说明 |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | 业务流程实例的 ID。 |
-| **`reason`**      | 查询字符串    | 可选。 后退业务流程实例的原因。 |
+| **`reason`**      | 查询字符串    | 可选。 回退业务流程实例的原因。 |
 
 ### <a name="response"></a>响应
 
 可返回若干可能的状态代码值。
 
-* **HTTP 202 (已接受)** ：已接受回退请求，正在处理。
-* **HTTP 404 (找不到)** ：找不到指定的实例。
-* **HTTP 410 (消失)** ：指定的实例已完成或被终止。
+* **HTTP 202 (已接受)**：已接受回退请求，正在处理。
+* HTTP 404 (找不到)：找不到指定的实例。
+* **HTTP 410 (消失)**：指定的实例已完成或已终止。
 
-以下是一个示例请求，它会后退失败的实例并指定**修复**的原因：
+下面的示例请求回退失败的实例，并将原因指定为 **已修复**：
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -652,9 +652,9 @@ Content-Type: application/json
 
 此操作有多种可能的响应：
 
-* **HTTP 202 (已接受)** ：已接受对信号操作进行异步处理。
-* **HTTP 400 (错误请求)** ：请求内容不是 `application/json` 类型、不是有效的 JSON，或者使用了无效的 `entityKey` 值。
-* **HTTP 404 (找不到)** ：找不到指定的 `entityName`。
+* HTTP 202 (已接受)：已接受对信号操作进行异步处理。
+* HTTP 400 (错误请求)：请求内容不是 `application/json` 类型、不是有效的 JSON，或者使用了无效的 `entityKey` 值。
+* HTTP 404 (找不到)：找不到指定的 `entityName`。
 
 成功的 HTTP 请求在响应中不包含任何内容。 失败的 HTTP 请求可能会在响应内容中包含 JSON 格式的错误信息。
 
@@ -677,8 +677,8 @@ GET /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
 
 此操作有两种可能的响应：
 
-* **HTTP 200 (正常)** ：指定的实体存在。
-* **HTTP 404 (找不到)** ：找不到指定的实体。
+* HTTP 200 (正常)：指定的实体存在。
+* HTTP 404 (找不到)：找不到指定的实体。
 
 成功的响应包含实体的 JSON 序列化状态作为其内容。
 
@@ -697,7 +697,7 @@ GET /runtime/webhooks/durabletask/entities/Counter/steps
 }
 ```
 
-## <a name="list-entities"></a>列表实体
+## <a name="list-entities"></a>列出实体
 
 可以按实体名称或按上次操作日期查询多个实体。
 
@@ -794,4 +794,4 @@ GET /runtime/webhooks/durabletask/entities/counter?top=2&fetchState=true
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解如何使用 Application Insights 来监视持久函数](durable-functions-diagnostics.md)
+> [了解如何使用 Application Insights 监视持久函数](durable-functions-diagnostics.md)

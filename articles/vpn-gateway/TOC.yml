@@ -172,7 +172,11 @@
             - name: 配置多重身份验证 (MFA)
               href: openvpn-azure-ad-mfa.md
             - name: 配置 VPN 客户端
-              href: openvpn-azure-ad-client.md
+              items:
+                - name: Windows
+                  href: openvpn-azure-ad-client.md
+                - name: macOS - 预览
+                  href: openvpn-azure-ad-client-mac.md
             - name: 使用 VPN 客户端配置文件
               href: about-vpn-profile-download.md
             - name: Intune - 部署 VPN 客户端配置文件

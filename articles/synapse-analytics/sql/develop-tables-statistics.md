@@ -11,22 +11,22 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 218803d0b7e1f5add2f033a7ce01e0a8f6ffc956
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674101"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594778"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL 中的统计信息
 
-本文提供了有关使用 Synapse SQL 资源创建和更新查询优化统计信息的建议和示例：专用 SQL 池和无服务器 SQL 池。
+本文介绍了有关使用 Synapse SQL 资源创建和更新查询优化统计信息的建议和示例：专用 SQL 池和无服务器 SQL 池。
 
 ## <a name="statistics-in-dedicated-sql-pool"></a>专用 SQL 池中的统计信息
 
 ### <a name="why-use-statistics"></a>为何使用统计信息
 
-更为专用的 SQL 池知道您的数据，它可以更快地执行查询。 在将数据加载到专用的 SQL 池中之后，收集数据的统计信息是可以为查询优化所做的最重要的一项操作。  
+专用 SQL 池对数据了解得越多，它执行查询的速度就越快。 将数据加载到专用 SQL 池后，收集有关数据的统计信息就是对查询优化而言最重要的操作之一。  
 
 专用 SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，所选计划也是执行速度最快的计划。
 
@@ -34,7 +34,7 @@ ms.locfileid: "101674101"
 
 ### <a name="automatic-creation-of-statistics"></a>自动创建统计信息
 
-当数据库 AUTO_CREATE_STATISTICS 选项设置为时，专用 SQL 池引擎将分析传入的用户查询是否缺少统计信息 `ON` 。  如果缺少统计信息，查询优化器会在查询谓词或联接条件中各个列上创建统计信息。 
+当数据库 AUTO_CREATE_STATISTICS 选项设置为 `ON` 时，专用 SQL 池引擎会分析传入的用户查询，确定是否缺少统计信息。  如果缺少统计信息，查询优化器会在查询谓词或联接条件中各个列上创建统计信息。 
 
 此功能用于改进查询计划的基数估计。
 
@@ -92,7 +92,7 @@ Table_name 是包含要显示的统计信息的表的名称，该表不会是外
 
 下面是关于更新统计信息的建议：
 
-|||
+|类型|建议|
 |-|-|
 | **统计信息更新频率**  | 保守：每日 </br> 加载或转换数据之后 |
 | **采样** |  如果行数少于 10 亿，则使用默认采样率 (20%)。 </br> 如果超过 10 亿行，使用百分之二的采样比例。 |
@@ -166,7 +166,7 @@ WHERE
 #### <a name="create-single-column-statistics-with-default-options"></a>使用默认选项创建单列统计信息
 
 若要基于某个列创建统计信息，需要提供统计信息对象的名称和列的名称。
-此语法使用所有默认选项。 默认情况下，专用 SQL 池在创建统计信息时对 **20%** 的表采样。
+此语法使用所有默认选项。 默认情况下，专用 SQL 池在创建统计信息时对 20% 的表采样。
 
 ```sql
 CREATE STATISTICS [statistics_name]
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() 差异
 
-`DBCC SHOW_STATISTICS()` 与 SQL Server 相比，在专用的 SQL 池中更严格地实现了：
+与在 SQL Server 中相比，`DBCC SHOW_STATISTICS()` 在专用 SQL 池中的实现相对更严格：
 
 - 未阐述的功能不受支持。
 - 不能使用 Stats_stream。
@@ -566,7 +566,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="why-use-statistics"></a>为何使用统计信息
 
-更多无服务器 SQL 池知道您的数据，对其执行查询的速度就越快。 收集数据统计信息对于查询优化而言是最重要的操作之一。 
+无服务器 SQL 池对数据了解得越多，其针对数据执行查询的速度就越快。 收集数据统计信息对于查询优化而言是最重要的操作之一。 
 
 无服务器 SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。 
 
@@ -574,7 +574,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="automatic-creation-of-statistics"></a>自动创建统计信息
 
-无服务器 SQL 池会分析传入的用户查询是否缺少统计信息。 如果缺少统计信息，查询优化器在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。
+无服务器 SQL 池会分析传入的用户查询，确定是否缺少统计信息。 如果缺少统计信息，查询优化器在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。
 
 SELECT 语句将触发“自动创建统计信息”。
 
@@ -585,7 +585,7 @@ SELECT 语句将触发“自动创建统计信息”。
 
 ### <a name="manual-creation-of-statistics"></a>手动创建统计信息
 
-无服务器 SQL 池允许您手动创建统计信息。 对于 CSV 文件，需要手动创建统计信息，因为未对 CSV 文件启用“自动创建统计信息”。 
+使用无服务器 SQL 池，可以手动创建统计信息。 对于 CSV 文件，需要手动创建统计信息，因为未对 CSV 文件启用“自动创建统计信息”。 
 
 有关如何手动创建统计信息的说明，请参见以下示例。
 
@@ -593,7 +593,7 @@ SELECT 语句将触发“自动创建统计信息”。
 
 更改文件中的数据、删除和添加文件会导致数据分发更改并使统计信息过时。 在这种情况下，需要更新统计信息。
 
-如果数据发生了重大更改，无服务器 SQL 池会自动重新创建统计信息。 每次自动创建统计信息时，会同时保存数据集的当前状态：文件路径、大小、上次修改日期。
+如果数据发生了重大更改，则无服务器 SQL 池会自动重新创建统计信息。 每次自动创建统计信息时，会同时保存数据集的当前状态：文件路径、大小、上次修改日期。
 
 当统计信息已过时，将创建新的统计信息。 相关算法会遍历数据，并将其与数据集的当前状态进行比较。 如果更改内容的大小超过特定阈值，会删除旧的统计信息，并在新数据集上重新创建统计信息。
 
@@ -616,7 +616,7 @@ SELECT 语句将触发“自动创建统计信息”。
 下面提供了有关更新统计信息的一些指导原则：
 
 - 确保数据集至少更新了一个统计信息对象。 这会在统计信息更新过程中更新大小（行计数和页计数）信息。
-- 专注于参与 WHERE、JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的列。
+- 将重点放在参与 WHERE、JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的列上。
 - 更频繁地更新“递增键”列（例如事务日期），因为这些值不包含在统计信息直方图中。
 - 相对不那么频繁地更新静态分布列。
 
@@ -629,7 +629,7 @@ SELECT 语句将触发“自动创建统计信息”。
 > [!NOTE]
 > 目前只能创建单列统计信息。
 >
-> 执行 sp_create_openrowset_statistics 和 sp_drop_openrowset_statistics 需要以下权限：管理大容量操作或管理数据库大容量操作。
+> 执行 sp_create_openrowset_statistics 和 sp_drop_openrowset_statistics 需要以下权限：ADMINISTER BULK OPERATIONS 或 ADMINISTER DATABASE BULK OPERATIONS。
 
 以下存储过程用于创建统计信息：
 
@@ -650,7 +650,7 @@ sys.sp_create_openrowset_statistics [ @stmt = ] N'statement_text'
 
 若要对列创建统计信息，请提供一个查询，该查询返回需要统计信息的列。
 
-默认情况下，如果未指定其他设置，则无服务器 SQL 池在创建统计信息时将使用数据集中提供的数据的100%。
+默认情况下，如果未指定列，则无服务器 SQL 池在创建统计信息时会使用数据集中提供的全部数据。
 
 例如，若要使用默认选项 (FULLSCAN) 为基于“人口.csv”文件的数据集的“年份”列创建统计信息：
 
@@ -716,7 +716,7 @@ sys.sp_drop_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 > [!NOTE]
-> 执行 sp_create_openrowset_statistics 和 sp_drop_openrowset_statistics 需要以下权限：管理大容量操作或管理数据库大容量操作。
+> 执行 sp_create_openrowset_statistics 和 sp_drop_openrowset_statistics 需要以下权限：ADMINISTER BULK OPERATIONS 或 ADMINISTER DATABASE BULK OPERATIONS。
 
 参数：[ @stmt = ] N'statement_text' - 指定创建统计信息时使用的同一 Transact-SQL 语句。
 
@@ -819,7 +819,7 @@ CREATE STATISTICS sState
 可以使用多个系统视图和函数来查找有关统计信息的信息。 例如，可通过使用 STATS_DATE() 函数，了解统计信息对象是否可能已过时。 使用 STATS_DATE()，可以查看上次创建或更新统计信息的时间。
 
 > [!NOTE]
-> 统计信息元数据仅适用于外部表列。 统计信息元数据不可用于 OPENROWSET 列。
+> 统计信息元数据仅适用于外部表列。 统计信息元数据不适用于 OPENROWSET 列。
 
 #### <a name="catalog-views-for-statistics"></a>统计信息的目录视图
 
@@ -884,6 +884,6 @@ WHERE   st.[user_created] = 1
 
 ## <a name="next-steps"></a>后续步骤
 
-若要进一步改善专用 SQL 池的查询性能，请参阅监视[专用 sql 池](best-practices-sql-pool.md#maintain-statistics)的[工作负荷](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)和最佳实践。
+若要进一步改进专用 SQL 池的查询性能，请参阅[监视工作负载](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)和[适用于专用 SQL 池的最佳做法](best-practices-dedicated-sql-pool.md#maintain-statistics)。
 
-若要进一步提高无服务器 SQL 池的查询性能，请参阅 [无服务器 sql 池的最佳实践](best-practices-sql-on-demand.md)
+若要进一步改进无服务器 SQL 池的查询性能，请参阅[适用于无服务器 SQL 池的最佳做法](best-practices-serverless-sql-pool.md)

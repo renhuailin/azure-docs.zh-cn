@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91929636"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>升级到 Azure 认知搜索服务中最新的 REST API
@@ -40,7 +40,7 @@ ms.locfileid: "91929636"
 
 ## <a name="upgrade-to-2020-06-30"></a>升级到 2020-06-30
 
-版本 2020-06-30 是 REST API 的新正式版。 存在一个重大更改和几个行为差异。 
+版本 2020-06-30 是 REST API 的新正式版。 存在一个中断性变更和几个行为差异。 
 
 此 API 版本中现在通常可用的功能包括：
 
@@ -48,9 +48,9 @@ ms.locfileid: "91929636"
 
 ### <a name="breaking-change"></a>重大更改
 
-如果代码包含以下功能，则针对早期 API 版本编写的现有代码将在 API 版本 = 2020-06-30 和更高版本上中断：
+如果代码包含以下功能，针对早期 API 版本编写的现有代码会在遇到 api-version=2020-06-30 及更高版本时中断运行：
 
-* 任何 Edm。日期文字 (由月份日期组成的日期，例如 `2020-12-12` 筛选器表达式中的) 必须遵循 Edm. DateTimeOffset 格式： `2020-12-12T00:00:00Z` 。 需要进行此更改才能处理错误或意外的查询结果，因为存在时区差异。
+* 筛选器表达式中的任何 Edm.Date 文本（由年、月、日组成的日期，例如 `2020-12-12`）必须遵循 Edm.DateTimeOffset 格式：`2020-12-12T00:00:00Z`。 由于时区不同，需要进行此更改才能处理错误的或意外的查询结果。
 
 ### <a name="behavior-changes"></a>行为更改
 
@@ -149,7 +149,7 @@ API 版本 2017-11-11-Preview 中引入了一种更新的用于定义索引字�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看搜索 REST API 参考文档。 如果遇到问题，请向我们提供有关 [Stack Overflow](https://stackoverflow.com/) 的帮助或 [联系支持人员](https://azure.microsoft.com/support/community/?product=search)。
+查看搜索 REST API 参考文档。 如果遇到问题，请通过 [Stack Overflow](https://stackoverflow.com/) 向我们寻求帮助，或[联系支持人员](https://azure.microsoft.com/support/community/?product=search)。
 
 > [!div class="nextstepaction"]
 > [搜索服务 REST API 参考](/rest/api/searchservice/)

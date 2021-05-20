@@ -1,6 +1,6 @@
 ---
-title: 合作伙伴中心的 Microsoft 商业 marketplace 分析中的 "下载" 仪表板-Azure Marketplace
-description: 了解如何访问适用于 marketplace 产品/服务的下载请求。
+title: 合作伙伴中心的 Microsoft 商业市场分析中的“下载”仪表板 - Azure 市场
+description: 了解如何访问市场产品/服务的下载请求。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
@@ -8,48 +8,48 @@ ms.date: 08/21/2020
 author: shganesh-dev
 ms.author: shganesh
 ms.openlocfilehash: d36043d74da1aa75b32867d4efeebc9729f4a119
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96457764"
 ---
-# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>商业 marketplace 分析中的下载仪表板
+# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“下载”仪表板
 
-本文提供了有关在合作伙伴中心下载仪表板的信息。 此仪表板显示过去30天内下载请求的列表。
+本文介绍了合作伙伴中心的“下载”仪表板。 此仪表板显示了过去 30 天内的下载请求列表。
 
-若要访问下载仪表板，请在商业市场下打开 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** " 仪表板。
+若要访问“下载”仪表板，请在商业市场下打开[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)仪表板。
 
 >[!NOTE]
 > 有关分析术语的详细定义，请参阅[适用于商业市场分析的常见问题和术语](../analytics-faq.md)。
 
 ## <a name="downloads-dashboard"></a>下载仪表板
 
-"**分析**" 菜单的 "**下载**" 仪表板显示对包含超过1000行的客户或订单数据的任何下载的请求。
+“分析”菜单的“下载”仪表板显示了包含 1000 多行客户或订单数据的下载请求。 
 
-当你请求下载包含超过1000行的数据的下载时，你将收到一个弹出通知，其中包含指向 " **下载** " 仪表板的链接。 这些数据下载将在30天内可用，然后将被删除。
+每当请求包含 1000 多行数据的下载时，你将收到一个弹出通知，其中包含一个指向“下载”仪表板的链接。 这些数据下载将在 30 天内可用，然后将被删除。
 
-## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>商业 marketplace 分析报表的生存期导出
+## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>商业市场 Analytics 报表的生存期导出
 
-在 "下载" 页上，最终用户可以执行以下操作：
+在“下载”页上，最终用户可以执行以下操作：
 
-- 采用 csv 和 tsv 格式的商业 marketplace 分析报表的生存期导出。
-- 导出任何日期范围的商业 marketplace 分析报表。
-- 6个月或12个月的商用 marketplace 分析报表导出。
+- 商业市场 Analytics 报表的生存期导出（csv 和 tsv 格式）。
+- 导出任何日期范围的商业市场 Analytics 报表。
+- 导出时长为 6 或 12 个月的商业市场 Analytics 报表。
 
-支持分析报表的生存期导出功能：
+支持 Analytics 报表的生存期导出功能：
 
-| 报表 | 生存期导出 | 基于日期的任何持续时间 |
+| 报表 | 生存期导出 | 基于日期的任何时长 |
 | - | - | - |
 | Orders | ![绿色的选中标记](media/check-green-yes.png) | ![绿色的选中标记](media/check-green-yes.png) |
 | 客户 | ![绿色的选中标记](media/check-green-yes.png) | ![绿色的选中标记](media/check-green-yes.png) |
-| Marketplace 见解 | ![绿色的选中标记](media/check-green-yes.png) | ![绿色的选中标记](media/check-green-yes.png) |
-| 使用情况 | ![黑色 X 标记](media/check-black-no.png) | 最多一年 |
+| 市场见解 | ![绿色的选中标记](media/check-green-yes.png) | ![绿色的选中标记](media/check-green-yes.png) |
+| 使用情况 | ![黑色 X 标记](media/check-black-no.png) | 最长一年 |
 |
 
-用户可以计划从 "下载" 部分下载报表的异步操作：
+用户可以从“下载”部分计划报表的异步下载：
 
-[![从 "下载" 部分计划异步下载报表](media/download-reports.png)](media/download-reports.png#lightbox)
+[![从“下载”部分计划报表的异步下载](media/download-reports.png)](media/download-reports.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
