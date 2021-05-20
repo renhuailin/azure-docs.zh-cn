@@ -7,15 +7,14 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
-ms.reviewer: tyao
-ms.openlocfilehash: fcd7a0fe60639bbb17661a906d15136996b325e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 8a579c2e895e69fd36866d8c3df380d1ea10aa26
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005440"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633656"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door-service"></a>Azure 前门服务的域中的地域筛选是什么？
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door-service"></a>什么是 Azure Front Door 服务的域中的地区筛选？
 
 默认情况下，无论发出请求的用户位于哪里，Azure Front Door 服务都会响应用户请求。 但是，在某些情况下，可能需要按国家/地区限制对 Web 应用程序的访问。 Front Door 上的 Web 应用程序防火墙 (WAF) 服务使你可以使用终结点上特定路径的自定义访问规则来定义策略，以允许或阻止来自指定国家/地区的访问。 
 

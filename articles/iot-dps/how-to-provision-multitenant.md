@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101727424"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
@@ -246,7 +246,7 @@ ms.locfileid: "101727424"
 
 在组注册中使用对称密钥证明时，不会直接使用注册组密钥。 相反，你为每个设备创建唯一派生的密钥，并在[使用对称密钥进行组注册](concepts-symmetric-key-attestation.md#group-enrollments)中提及。
 
-若要生成设备密钥，请使用组主密钥来计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ，并将结果转换为 Base64 格式。
+若要生成设备密钥，请使用组主键计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。
 
 不要在设备代码中包含你的组主键。
 
@@ -418,7 +418,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> 若要了解有关重新设置的详细信息，请参阅 [IoT 中心设备重新设置概念](concepts-device-reprovision.md)
+> 若要详细了解如何重新预配，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md)
 
 > [!div class="nextstepaction"]
-> 若要了解有关取消设置的详细信息，请参阅 [如何取消预配以前自动预配的设备](how-to-unprovision-devices.md)
+> 若要详细了解如何取消预配，请参阅[如何取消预配先前自动预配的设备](how-to-unprovision-devices.md)

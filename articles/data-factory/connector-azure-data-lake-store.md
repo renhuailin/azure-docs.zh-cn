@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/31/2020
-ms.openlocfilehash: 29ca77e5d707fc6207308492d0ea882b9881e31b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/17/2021
+ms.openlocfilehash: 2b064412fab7b81a3e0cd164456e8fc5c3b35ae2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386809"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597549"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen1 复制数据
 
@@ -57,7 +57,7 @@ ms.locfileid: "100386809"
 
 Azure Data Lake Store 链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | `type` 属性必须设置为 **AzureDataLakeStore**。 | 是 |
 | dataLakeStoreUri | Azure Data Lake Store 帐户相关信息。 此信息采用以下格式之一：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
@@ -82,7 +82,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 支持以下属性：
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 `SecureString` 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -158,7 +158,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 在基于格式的数据集中的 `location` 设置下，Azure Data Lake Store Gen1 支持以下属性：
 
-| properties   | 说明                                                  | 必须 |
+| properties   | 说明                                                  | 必需 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中的 `location` 下的 type 属性必须设置为 AzureDataLakeStoreLocation。 | 是      |
 | folderPath | 文件夹路径。 若要使用通配符来筛选文件夹，请跳过此设置，并在活动源设置中指定它。 | 否       |
@@ -200,13 +200,13 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 在基于格式的复制源中的 `storeSettings` 设置下，Azure Data Lake Store Gen1 支持以下属性：
 
-| properties                 | 说明                                                  | 必须                                     |
+| properties                 | 说明                                                  | 必需                                     |
 | ------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为 AzureDataLakeStoreReadSettings。 | 是                                          |
 | 找到要复制的文件： |  |  |
 | 选项 1：静态路径<br> | 从数据集中指定的给定文件夹/文件路径复制。 若要复制文件夹中的所有文件，请另外将 `wildcardFileName` 指定为 `*`。 |  |
-| 选项2：名称范围<br>- listAfter | 检索其名称在此值之后 (独占) 的文件夹/文件。 它利用 ADLS Gen1 的服务端筛选器，该筛选器提供比通配符筛选器更好的性能。 <br/>数据工厂将此筛选器应用于数据集中定义的路径，并且仅支持一个实体级别。 请参阅 [名称范围筛选器示例](#name-range-filter-examples)中的更多示例。 | 否 |
-| 选项2：名称范围<br/>- listBefore | 检索其名称在此值之前的文件夹/文件 (包含) 中按字母顺序排列。 它利用 ADLS Gen1 的服务端筛选器，该筛选器提供比通配符筛选器更好的性能。<br>数据工厂将此筛选器应用于数据集中定义的路径，并且仅支持一个实体级别。 请参阅 [名称范围筛选器示例](#name-range-filter-examples)中的更多示例。 | 否 |
+| 选项 2：名称范围<br>- listAfter | 按字母顺序检索名称在此值之后的文件夹/文件（独有）。 它利用 ADLS Gen1 的服务端筛选器，相比通配符筛选器，服务端筛选器可提供更好的性能。 <br/>数据工厂将此筛选器应用于数据集中定义的路径，并且仅支持一个实体级别。 请参阅[名称范围筛选器示例](#name-range-filter-examples)中的更多示例。 | 否 |
+| 选项 2：名称范围<br/>- listBefore | 按字母顺序检索名称在此值之前的文件夹/文件（独有）。 它利用 ADLS Gen1 的服务端筛选器，相比通配符筛选器，服务端筛选器可提供更好的性能。<br>数据工厂将此筛选器应用于数据集中定义的路径，并且仅支持一个实体级别。 请参阅[名称范围筛选器示例](#name-range-filter-examples)中的更多示例。 | 否 |
 | 选项 3：通配符<br>- wildcardFolderPath | 带有通配符的文件夹路径，用于筛选源文件夹。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 否                                            |
 | 选项 3：通配符<br>- wildcardFileName | 给定 folderPath/wildcardFolderPath 下带有通配符的文件名，用于筛选源文件。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件名中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 是 |
 | 选项 4：文件列表<br>- fileListPath | 指明复制给定文件集。 指向包含要复制的文件列表的文本文件，每行一个文件（即数据集中所配置路径的相对路径）。<br/>使用此选项时，请不要在数据集中指定文件名。 请参阅[文件列表示例](#file-list-examples)中的更多示例。 |否 |
@@ -217,7 +217,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 | modifiedDatetimeEnd      | 同上。                                               | 否                                           |
 | enablePartitionDiscovery | 对于已分区的文件，请指定是否从文件路径分析分区，并将它们添加为附加的源列。<br/>允许的值为 false（默认）和 true 。 | 否                                            |
 | partitionRootPath | 启用分区发现时，请指定绝对根路径，以便将已分区文件夹读取为数据列。<br/><br/>如果未指定，默认情况下，<br/>- 在数据集或源的文件列表中使用文件路径时，分区根路径是在数据集中配置的路径。<br/>- 使用通配符文件夹筛选器时，分区根路径是第一个通配符前的子路径。<br/><br/>例如，假设你将数据集中的路径配置为“root/folder/year=2020/month=08/day=27”：<br/>- 如果将分区根路径指定为“root/folder/year=2020”，则除了文件内的列外，复制活动还将生成另外两个列 `month` 和 `day`，其值分别为“08”和“27”。<br/>- 如果未指定分区根路径，则不会生成额外的列。 | 否                                            |
-| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否                                           |
+| maxConcurrentConnections | 活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接的数量时，才指定具体值。| 否                                           |
 
 **示例：**
 
@@ -266,12 +266,12 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 在基于格式的复制接收器中的 `storeSettings` 设置下，Azure Data Lake Store Gen1 支持以下属性：
 
-| properties                 | 说明                                                  | 必须 |
+| properties                 | 说明                                                  | 必需 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为 AzureDataLakeStoreWriteSettings。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
 | expiryDateTime | 指定已写入文件的到期时间。 此时间在应用时采用 UTC 时间，格式为“2020-03-01T08:00:00Z”。 默认值为 NULL；也就是说，已写入文件永不到期。 | 否 |
-| maxConcurrentConnections | 可以同时连接到数据存储的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接的数量时，才指定具体值。| 否       |
 
 **示例：**
 
@@ -309,11 +309,11 @@ Azure Data Lake Store 链接服务支持以下属性：
 ```
 ### <a name="name-range-filter-examples"></a>名称范围筛选器示例
 
-本部分介绍了名称范围筛选器的结果行为。
+本部分介绍名称范围筛选器的结果行为。
 
 | 示例源结构 | ADF 配置 | 结果 |
 |:--- |:--- |:--- |
-|root<br/>&nbsp;&nbsp;&nbsp;&nbsp;的<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax150<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;b<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;bx.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ansi-c<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;cx.csv| 在数据集中：<br>- 文件夹路径：`root`<br><br>在复制活动源中：<br>-列表后： `a`<br>-前面列出： `b`| 然后，将复制以下文件：<br><br>root<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax150<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;b<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv |
+|root<br/>&nbsp;&nbsp;&nbsp;&nbsp;a<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;b<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;bx.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;c<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;cx.csv| 在数据集中：<br>- 文件夹路径：`root`<br><br>在复制活动源中：<br>- 列出该值以后的文件：`a`<br>- 列出该值以前的文件：`b`| 然后，将复制以下文件:<br><br>root<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;b<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv |
 
 ### <a name="folder-and-file-filter-examples"></a>文件夹和文件筛选器示例
 
@@ -358,7 +358,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-在映射数据流时转换数据时，可以从 Azure Data Lake Storage Gen1 读取和写入以下格式的文件：
+在映射数据流中转换数据时，可以在 Azure Data Lake Storage Gen1 中读取和写入以下格式的文件：
 * [Avro](format-avro.md#mapping-data-flow-properties)
 * [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)
 * [Excel](format-excel.md#mapping-data-flow-properties)
@@ -369,7 +369,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 ### <a name="source-transformation"></a>源转换
 
-在源转换中，可以在 Azure Data Lake Storage Gen1 的容器、文件夹或单独的文件中进行读取。 通过“源选项”选项卡，可以管理如何读取文件。 
+在源转换中，可以从 Azure Data Lake Storage Gen1 中的容器、文件夹或单个文件进行读取。 通过“源选项”选项卡，可以管理如何读取文件。 
 
 ![源选项](media/data-flow/sourceOptions1.png "源选项")
 
@@ -462,7 +462,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureDataLakeStoreFile。 |是 |
 | folderPath | Data Lake Store 中的文件夹的路径。 如果未指定，它指向根目录。 <br/><br/>支持通配符筛选器。 允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。 如果实际文件夹名称内有通配符或 `^`，请使用此转义字符进行转义。 <br/><br/>例如，rootfolder/subfolder/。 请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |否 |
@@ -507,11 +507,11 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 `type` 属性必须设置为 AzureDataLakeStoreSource。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 `recursive` 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | 否 |
-| maxConcurrentConnections | 可以同时连接到数据存储的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否 |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接的数量时，才指定具体值。| 否 |
 
 **示例：**
 
@@ -547,11 +547,11 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 ### <a name="legacy-copy-activity-sink-model"></a>旧复制活动接收器模型
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 `type` 属性必须设置为 AzureDataLakeStoreSink。 |是 |
 | copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，会自动生成文件名。 | 否 |
-| maxConcurrentConnections | 可以同时连接到数据存储的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否 |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接的数量时，才指定具体值。| 否 |
 
 **示例：**
 

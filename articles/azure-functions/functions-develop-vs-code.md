@@ -4,12 +4,12 @@ description: 了解如何使用 Visual Studio Code 的 Azure Functions 扩展开
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: d4353e6be313d61716933879efa930e22472781b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c2869b2b30722495523a9f0dfb2d70a17a205854
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99493934"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871266"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions
 
@@ -85,7 +85,7 @@ Azure Functions 扩展提供以下优势：
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)（建议）。 有关版本信息，请参阅 [PowerShell 版本](functions-reference-powershell.md#powershell-versions)。
 
-+ [.NET Core 3.1 运行时](https://www.microsoft.com/net/download)和 [.NET Core 2.1 运行时](https://dotnet.microsoft.com/download/dotnet-core/2.1)  
++ [.NET Core 3.1 运行时](https://dotnet.microsoft.com/download)和 [.NET Core 2.1 运行时](https://dotnet.microsoft.com/download/dotnet/2.1)  
 
 + [Visual Studio Code 的 PowerShell 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)。  
 
@@ -326,7 +326,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 1. 按提示操作并提供以下信息：
 
-    | Prompt | 值 | 说明 |
+    | Prompt | Value | 说明 |
     | ------ | ----- | ----------- |
     | 选择 Azure 中的函数应用 | 在 Azure 中创建新的函数应用 | 在下一个提示中，键入用于标识新函数应用的全局唯一名称，然后按 Enter。 函数应用名称的有效字符包括 `a-z`、`0-9` 和 `-`。 |
     | 选择 OS | Windows | 函数应用在 Windows 上运行。 |

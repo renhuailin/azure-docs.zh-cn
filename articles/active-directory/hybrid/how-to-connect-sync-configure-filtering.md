@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 595cf2c1dbc105634d33b426c67e5123b9751e6e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95996536"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
@@ -47,7 +47,7 @@ ms.locfileid: "95996536"
 
 为了防止意外删除许多对象，默认情况下已打开[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)功能。 如果由于筛选而删除了许多对象（默认为 500 个），则需要遵循本文中的步骤来允许将删除结果传播到 Azure AD。
 
-如果使用11月 2015 ([1.0.9125](reference-connect-version-history.md)) 之前的内部版本、更改筛选器配置和使用密码哈希同步，则在完成配置之后，需要触发所有密码的完全同步。 有关如何触发密码完全同步的步骤，请参阅[触发所有密码的完全同步](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)。 如果使用内部版本 1.0.9125 或更高版本，则常规的 **完全同步** 操作也会计算是否应同步密码，因此不再需要执行这个额外的步骤。
+如果使用 2015 年 11 月 ([1.0.9125](reference-connect-version-history.md)) 之前的内部版本、更改筛选器配置或使用密码哈希同步，则在完成配置之后，需要触发所有密码的完全同步。 有关如何触发密码完全同步的步骤，请参阅[触发所有密码的完全同步](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)。 如果使用内部版本 1.0.9125 或更高版本，则常规的 **完全同步** 操作也会计算是否应同步密码，因此不再需要执行这个额外的步骤。
 
 如果在 Azure AD 中由于筛选错误导致用户对象被不慎删除，可以通过删除筛选配置在 Azure AD 中重新创建用户对象  。 然后再次同步目录。 此操作可以从 Azure AD 的回收站中还原用户。 但是，无法取消删除其他对象类型。 例如，如果意外删除了某个安全组，而该组用于将资源加入 ACL，则无法恢复该组及其 ACL。
 
@@ -80,7 +80,7 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
 
 * [**基于组**](#group-based-filtering)：只能在初始安装时使用安装向导配置基于单个组的筛选。
 * [**基于域**](#domain-based-filtering)：使用此选项，可以选择要同步到 Azure AD 的域。 在安装 Azure AD Connect 同步之后对本地基础结构进行更改时，还可以在同步引擎配置中添加和删除域。
-* [**组织单位 (OU)**](#organizational-unitbased-filtering)：通过使用此选项，你可以选择要同步到 Azure AD 的 ou。 此选项适用于所选 OU 中的所有对象类型。
+* [**基于组织单位(OU)** ](#organizational-unitbased-filtering)：使用此选项，可以选择要同步到 Azure AD 的 OU。 此选项适用于所选 OU 中的所有对象类型。
 * [**基于属性**](#attribute-based-filtering)：使用此选项，可以根据对象属性值筛选对象。 也可以对不同的对象类型使用不同的筛选器。
 
 可以同时使用多个筛选选项。 例如，可以使用基于 OU 的筛选以便只包含某个 OU 中的对象。 同时，可以使用基于属性的筛选进一步筛选这些对象。 使用多个筛选方法时，筛选器之间使用逻辑“AND”。
@@ -202,7 +202,7 @@ Azure AD Connect 安装向导始终创建此配置。
 使用此配置时，在 ManagedObjects 下创建的新 OU 不会同步。
 
 ## <a name="attribute-based-filtering"></a>基于属性的筛选
-请确保使用11月 2015 ([1.0.9125](reference-connect-version-history.md)) 或更高版本，以便执行这些步骤。
+为了正常执行这些步骤，请确保使用 2015 年 11 月 ([1.0.9125](reference-connect-version-history.md)) 或更高版本。
 
 > [!IMPORTANT]
 >Microsoft 建议不要修改由 **Azure AD Connect** 创建的默认规则。 如果想要修改规则，请克隆它，然后禁用原始规则。 对克隆的规则进行任何更改。 请注意，这样做（禁用原始规则）会丢失通过该规则启用的任何 bug 修复或功能。
@@ -230,7 +230,7 @@ Azure AD Connect 安装向导始终创建此配置。
 1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从“开始”菜单启动“同步规则编辑器”。  
 3. 确保选择了“入站”，然后单击“添加新规则”。  
-4. 为规则指定一个描述性名称，例如 "*In FROM AD – User DoNotSyncFilter*"。 依次选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。     在“链接类型”中选择“联接”。   在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 50），然后单击“下一步”。    
+4. 为规则指定一个描述性名称，如“*In from AD – User DoNotSyncFilter*”。 依次选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。     在“链接类型”中选择“联接”。   在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 50），然后单击“下一步”。    
    ![入站 1 说明](./media/how-to-connect-sync-configure-filtering/inbound1.png)  
 5. 在“范围筛选器”中，单击“添加组”，然后单击“添加子句”。    在“属性”中选择“ExtensionAttribute15”。   确保“运算符”设置为“等于”，在“值”框中键入值“NoSync”。     单击“下一步”  。  
    ![入站 2 范围](./media/how-to-connect-sync-configure-filtering/inbound2.png)  
@@ -249,7 +249,7 @@ Azure AD Connect 安装向导始终创建此配置。
 1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从“开始”菜单启动“同步规则编辑器”。  
 3. 确保选择了“入站”，然后单击“添加新规则”。  
-4. 为规则指定一个描述性名称，例如 "*In FROM AD – User Sales sync*"。 依次选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。     在“链接类型”中选择“联接”。   在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 51），然后单击“下一步”。    
+4. 为规则指定一个描述性名称，如“In from AD – User Sales sync”。 依次选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。     在“链接类型”中选择“联接”。   在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 51），然后单击“下一步”。    
    ![入站 4 说明](./media/how-to-connect-sync-configure-filtering/inbound4.png)  
 5. 在“范围筛选器”中，单击“添加组”，然后单击“添加子句”。    在“属性”中选择“department”。   确保“运算符”设置为“等于”，在“值”框中键入值“Sales”。    单击“下一步”  。  
    ![入站 5 范围](./media/how-to-connect-sync-configure-filtering/inbound5.png)  
@@ -257,7 +257,7 @@ Azure AD Connect 安装向导始终创建此配置。
 7. 单击“添加转换”，选择“Constant”作为“FlowType”，选择“cloudFiltered”作为“目标属性”。      在“源”框中键入“False”。    单击“添加”保存规则。  
    ![入站 6 转换](./media/how-to-connect-sync-configure-filtering/inbound6.png)  
    这是一种特殊情况，在此将 cloudFiltered 显式设置为“False”。 
-8. 我们现在必须创建全方位同步规则。 为规则指定一个描述性名称，例如 "*In FROM AD – User Catch filter*"。 依次选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。     在“链接类型”中选择“联接”。   在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 99）。  现在选择的优先顺序值比之前同步规则的值更高（优先性更低）。 但同时也预留了一些空间，以便可以在稍后想要开始同步其他部门时添加其他筛选同步规则。 单击“配置目录分区”  。  
+8. 我们现在必须创建全方位同步规则。 为规则指定一个描述性名称，如“In from AD – User Catch-all filter”。 依次选择正确的林，选择“用户”作为“CS 对象类型”，选择“人员”作为“MV 对象类型”。     在“链接类型”中选择“联接”。   在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 99）。  现在选择的优先顺序值比之前同步规则的值更高（优先性更低）。 但同时也预留了一些空间，以便可以在稍后想要开始同步其他部门时添加其他筛选同步规则。 单击“配置目录分区”  。  
    ![入站 7 说明](./media/how-to-connect-sync-configure-filtering/inbound7.png)  
 9. 让“范围筛选器”保留空白，然后单击“下一步”。   空白筛选器表示规则将应用到所有对象。
 10. 将“联接”规则留空，然后单击“下一步”。  
@@ -275,7 +275,7 @@ Azure AD Connect 安装向导始终创建此配置。
 1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从“开始”菜单启动“同步规则编辑器”。  
 3. 在“规则类型”下，单击“出站”。  
-4. 根据所使用的连接版本，查找名为 " **Out to Azure AD – User join** " 或 " **out To Azure AD-user join SOAInAD**" 的规则，然后单击 " **编辑**"。
+4. 查找名为“出站到 Azure AD - 用户加入”或“出站到 Azure AD - 用户加入 SOAInAD”的规则（具体视使用的 Connect 版本而定），然后单击“编辑”。
 5. 在弹出窗口中，回答“是”，以创建规则的副本。 
 6. 在“说明”页上，将“优先顺序”更改为某个尚未使用的值，例如 50。  
 7. 单击左侧导航栏中的“范围筛选器”，然后单击“添加子句”。   在“属性”中选择“mail”。   在“运算符”中选择“ENDSWITH”。   在“值”中键入 **\@contoso.com**，然后单击“添加子句”。   在“属性”中选择“userPrincipalName”。   在“运算符”中选择“ENDSWITH”。   在“值”  中，键入 **\@contoso.com**。
@@ -300,7 +300,7 @@ Azure AD Connect 安装向导始终创建此配置。
 
 1. 启动命令提示符并转到 `%ProgramFiles%\Microsoft Azure AD Sync\bin`。
 2. 运行 `csexport "Name of Connector" %temp%\export.xml /f:x`。  
-   在同步服务中可以找到连接器名称。 它的名称类似于 "contoso.com – Azure AD" Azure AD。
+   在同步服务中可以找到连接器名称。 对于 Azure AD，它的名称类似于“contoso.com - Azure AD”。
 3. 运行 `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`。
 4. 现在在 %temp% 中已经有名为 export.csv 的文件，可在 Microsoft Excel 中检查。 此文件包含要导出的所有更改。
 5. 对数据或配置进行必要的更改并再次运行这些步骤（导入、同步和验证），直到要导出的更改都按预期进行。

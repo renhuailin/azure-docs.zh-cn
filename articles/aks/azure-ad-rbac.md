@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure Active Directory 组成员身份在 Azure Kubernetes 服务 (AKS) 中通过 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 来限制对群集资源的访问
 services: container-service
 ms.topic: article
-ms.date: 07/21/2020
-ms.openlocfilehash: 585e51f5131bf20d39cf43ab2e843774d61a708f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.date: 03/17/2021
+ms.openlocfilehash: 0d5171e9e9a5d7f033ff615a3f1205b8dc93966f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178229"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769546"
 ---
 # <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问
 
@@ -81,15 +81,27 @@ az role assignment create \
 
 在 Azure AD 中为应用程序开发人员和 SRE 创建两个示例组后，接下来让我们创建两个示例用户。 在本文结束时若要测试 Kubernetes RBAC 集成，需要使用这些帐户登录到 AKS 群集。
 
+为应用程序开发人员设置用户主体名称 (UPN) 和密码。 以下命令提示你输入 UPN，并将其设置为 AAD_DEV_UPN 以供在之后的命令中使用（请记住，本文中的命令输入到 BASH shell 中）。 该 UPN 必须包含租户的已验证域名，例如 `aksdev@contoso.com`。
+
+```azurecli-interactive
+echo "Please enter the UPN for application developers: " && read AAD_DEV_UPN
+```
+
+以下命令提示你输入密码，并将其设置为 AAD_DEV_PW 以供在之后的命令中使用。
+
+```azurecli-interactive
+echo "Please enter the secure password for application developers: " && read AAD_DEV_PW
+```
+
 使用 [az ad user create][az-ad-user-create] 命令在 Azure AD 中创建第一个用户帐户。
 
-以下示例使用显示名称 *AKS Dev* 和用户主体名称 (UPN) `aksdev@contoso.com` 创建一个用户。 请更新该 UPN 以包含 Azure AD 租户的验证域（请将 *contoso.com* 替换为你自己的域），并提供自己的安全 `--password` 凭据：
+以下示例通过显示名称 AKS Dev 以及 UPN 和安全密码（使用 AAD_DEV_UPN 和 AAD_DEV_PW 中的值）创建用户  ：
 
 ```azurecli-interactive
 AKSDEV_ID=$(az ad user create \
   --display-name "AKS Dev" \
-  --user-principal-name aksdev@contoso.com \
-  --password P@ssw0rd1 \
+  --user-principal-name $AAD_DEV_UPN \
+  --password $AAD_DEV_PW \
   --query objectId -o tsv)
 ```
 
@@ -99,14 +111,26 @@ AKSDEV_ID=$(az ad user create \
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
 
-创建第二个用户帐户。 以下示例使用显示名称 *AKS SRE* 和用户主体名称 (UPN) `akssre@contoso.com` 创建一个用户。 同样，请更新该 UPN 以包含 Azure AD 租户的验证域（请将 *contoso.com* 替换为你自己的域），并提供自己的安全 `--password` 凭据：
+为 SRE 设置 UPN 和密码。 以下命令提示你输入 UPN，并将其设置为 AAD_SRE_UPN 以供在之后的命令中使用（请记住，本文中的命令输入到 BASH shell 中）。 该 UPN 必须包含租户的已验证域名，例如 `akssre@contoso.com`。
+
+```azurecli-interactive
+echo "Please enter the UPN for SREs: " && read AAD_SRE_UPN
+```
+
+以下命令提示你输入密码，并将其设置为 AAD_SRE_PW 以供在之后的命令中使用。
+
+```azurecli-interactive
+echo "Please enter the secure password for SREs: " && read AAD_SRE_PW
+```
+
+创建第二个用户帐户。 以下示例通过显示名称 AKS SRE 以及 UPN 和安全密码（使用 AAD_SRE_UPN 和 AAD_SRE_PW 中的值）创建用户  ：
 
 ```azurecli-interactive
 # Create a user for the SRE role
 AKSSRE_ID=$(az ad user create \
   --display-name "AKS SRE" \
-  --user-principal-name akssre@contoso.com \
-  --password P@ssw0rd1 \
+  --user-principal-name $AAD_SRE_UPN \
+  --password $AAD_SRE_PW \
   --query objectId -o tsv)
 
 # Add the user to the opssre Azure AD group
@@ -164,7 +188,7 @@ kubectl apply -f role-dev-namespace.yaml
 az ad group show --group appdev --query objectId -o tsv
 ```
 
-现在，为 *appdev* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-dev-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，将 *g*  替换为上一命令中的组对象 ID 输出：
+现在，为 *appdev* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-dev-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，请将“groupObjectId”替换为前一命令的组对象 ID 输出：
 
 ```yaml
 kind: RoleBinding
@@ -229,7 +253,7 @@ kubectl apply -f role-sre-namespace.yaml
 az ad group show --group opssre --query objectId -o tsv
 ```
 
-为 *opssre* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-sre-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，将 *g*  替换为上一命令中的组对象 ID 输出：
+为 *opssre* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-sre-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，请将“groupObjectId”替换为前一命令的组对象 ID 输出：
 
 ```yaml
 kind: RoleBinding
@@ -266,13 +290,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 在 dev 命名空间中使用 [kubectl run][kubectl-run] 命令计划一个基本的 NGINX Pod：
 
 ```console
-kubectl run nginx-dev --image=nginx --namespace dev
+kubectl run nginx-dev --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
 ```
 
 根据登录提示，输入在本文开头部分创建的 `appdev@contoso.com` 帐户的凭据。 成功登录后，帐户令牌将会缓存，供将来的 `kubectl` 命令使用。 如以下示例输出中所示，现已成功计划 NGINX：
 
 ```console
-$ kubectl run nginx-dev --image=nginx --namespace dev
+$ kubectl run nginx-dev --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
 
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code B24ZD6FP8 to authenticate.
 
@@ -313,7 +337,7 @@ Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cann
 同样，尝试在不同的命名空间（例如 *sre* 命名空间）中计划 pod。 该用户的组成员身份与 Kubernetes 角色和角色绑定不相符，无法授予这些权限，如以下示例输出中所示：
 
 ```console
-$ kubectl run nginx-dev --image=nginx --namespace sre
+$ kubectl run nginx-dev --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace sre
 
 Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cannot create resource "pods" in API group "" in the namespace "sre"
 ```
@@ -331,14 +355,14 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 尝试分配的 *sre* 命名空间中计划和查看 pod。 出现提示时，请使用在本文开头部分创建的 `opssre@contoso.com` 凭据登录：
 
 ```console
-kubectl run nginx-sre --image=nginx --namespace sre
+kubectl run nginx-sre --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace sre
 kubectl get pods --namespace sre
 ```
 
 如以下示例输出中所示，可以成功创建和查看 pod:
 
 ```console
-$ kubectl run nginx-sre --image=nginx --namespace sre
+$ kubectl run nginx-sre --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace sre
 
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BM4RHP3FD to authenticate.
 
@@ -354,7 +378,7 @@ nginx-sre   1/1     Running   0
 
 ```console
 kubectl get pods --all-namespaces
-kubectl run nginx-sre --image=nginx --namespace dev
+kubectl run nginx-sre --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
 ```
 
 如以下示例输出中所示，这些 `kubectl` 命令失败： 用户的组成员身份和 Kubernetes 角色与角色绑定无法授予在其他命名空间中创建或管理资源的权限：
@@ -363,7 +387,7 @@ kubectl run nginx-sre --image=nginx --namespace dev
 $ kubectl get pods --all-namespaces
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot list pods at the cluster scope
 
-$ kubectl run nginx-sre --image=nginx --namespace dev
+$ kubectl run nginx-sre --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot create pods in the namespace "dev"
 ```
 
@@ -401,14 +425,14 @@ az ad group delete --group opssre
 [kubectl-run]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run
 
 <!-- LINKS - internal -->
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
 [azure-ad-aks-cli]: azure-ad-integration-cli.md
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-ad-group-create]: /cli/azure/ad/group#az-ad-group-create
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-ad-user-create]: /cli/azure/ad/user#az-ad-user-create
-[az-ad-group-member-add]: /cli/azure/ad/group/member#az-ad-group-member-add
-[az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-ad-group-create]: /cli/azure/ad/group#az_ad_group_create
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-ad-user-create]: /cli/azure/ad/user#az_ad_user_create
+[az-ad-group-member-add]: /cli/azure/ad/group/member#az_ad_group_member_add
+[az-ad-group-show]: /cli/azure/ad/group#az_ad_group_show
+[rbac-authorization]: concepts-identity.md#kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md

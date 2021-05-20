@@ -1,5 +1,5 @@
 ---
-title: 向 VNet 添加多个 VPN 网关站点到站点连接： Azure 门户
+title: 向 VNet 添加多个 VPN 网关站点到站点连接：Azure 门户
 description: 将多站点 S2S 连接添加到包含现有连接的 VPN 网关
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,20 +9,20 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
 ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890136"
 ---
-# <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>将其他 S2S 连接添加到 VNet： Azure 门户
+# <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>将其他 S2S 连接添加到 VNet：Azure 门户
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell（经典）](vpn-gateway-multi-site.md)
 >
 
-本文可帮助你将其他站点到站点 (S2S) 连接添加到已有连接的 VPN 网关。 此体系结构通常称为 "多站点" 配置。 可将 S2S 连接添加到已有 S2S 连接、点到站点连接或 VNet 到 VNet 连接的 VNet。 添加连接时，请注意一些限制。 在开始配置之前，请查看本文中的 " [先决条件](#before) " 部分以验证。
+本文可帮助你将其他站点到站点 (S2S) 连接添加到现已有连接的 VPN 网关。 此体系结构通常称为“多站点”配置。 可将 S2S 连接添加到已有 S2S 连接、点到站点连接或 VNet 到 VNet 连接的 VNet。 添加连接时，请注意一些限制。 在开始配置之前，请查看本文的[先决条件](#before)部分以进行验证。
 
 本文适用于具有基于路由的 VPN 网关的资源管理器 VNet。 本文中的步骤不适用于新的 ExpressRoute/站点到站点共存连接配置。 但是，如果只是将新的 VPN 连接添加到已有的共存配置，则可以使用这些步骤。 有关共存连接的信息，请参阅 [ExpressRoute/S2S 共存连接](../expressroute/expressroute-howto-coexist-resource-manager.md)。
 
@@ -40,12 +40,12 @@ ms.locfileid: "92890136"
 ## <a name="configure-a-connection"></a><a name="configure"></a>配置连接
 
 1. 从浏览器导航到 [Azure 门户](https://portal.azure.com)，并在必要时用 Azure 帐户登录。
-1. 选择 " **所有资源** "，从资源列表中找到 **虚拟网络网关** 并将其选中。
-1. 在 " **虚拟网关** " 页上，选择 " **连接** "。
+1. 选择“所有资源”，从资源列表中找到“虚拟网络网关”并选择它。
+1. 在“虚拟网络网关”页上，选择“连接” 。
 
    :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connections.png" alt-text="VPN 网关连接":::
-1. 在 " **连接** " 页上，选择 " **+ 添加** "。
-1. 这将打开 " **添加连接** " 页。
+1. 在“连接”页上，选择“+添加” 。
+1. 此时会打开“添加连接”页。
 
    :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="“添加连接”页":::
 1. 在“添加连接”页面上，填写以下字段：
@@ -55,8 +55,8 @@ ms.locfileid: "92890136"
 
 ## <a name="add-a-local-network-gateway"></a><a name="local"></a>添加本地网关
 
-1. 对于 " **本地网络网关** " 字段，请选择 " **_选择本地网络网关_ " *。这将打开 "* 选择本地网络网关"** 页。
-1. 选择 " **+ 新建** " 打开 " **创建本地网络网关** " 页。
+1. 对于“本地网关”字段，请选择“选择本地网关”***。此时会打开“选择本地网关”页***。
+1. 选择“+ 新建”，打开“创建本地网关”页 。
 
    :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="“创建本地网络网关”页":::
 1. 在“创建本地网络网关”页面上，填写以下字段：
@@ -64,16 +64,16 @@ ms.locfileid: "92890136"
    * **名称：** 要分配给本地网络网关资源的名称。
    * **终结点：** 要连接到的站点上的 VPN 设备的公共 IP 地址，或终结点的 FQDN。
    * **地址空间：** 要路由到新本地网络站点的地址空间。
-1. 选择 " **创建本地网络网关** " 页上的 **"确定"** 以保存更改。
+1. 在“创建本地网关”页上选择“确定”，保存所做的更改 。
 
 ## <a name="add-the-shared-key"></a><a name="part3"></a>添加共享密钥
 
-1. 创建本地网络网关后，返回到 " **添加连接** " 页。
-1. 填写其余字段。 对于 **共享密钥 (PSK)** ，你可以从 VPN 设备获取共享密钥，或者在此处创建一个共享密钥，然后将 vpn 设备配置为使用相同的共享密钥。 重要的一点是，这两个密钥必须完全相同。
+1. 创建本地网关后，请返回到“添加连接”页。
+1. 填写其余字段。 对于“共享密钥(PSK)”，可以从 VPN 设备获取共享密钥，也可以在此处创建一个共享密钥，并将 VPN 设备配置为使用这个共享密钥。 重要的一点是，这两个密钥必须完全相同。
 
 ## <a name="create-the-connection"></a><a name="create"></a>创建连接
 
-1. 在页面底部，选择 **"确定"** 以创建连接。 连接将立即开始创建。
+1. 在页面底部，选择“确定”以创建连接。 此时将立即开始创建该连接。
 1. 连接完成后，可以查看并验证它。
 
 ## <a name="view-and-verify-the-vpn-connection"></a><a name="verify"></a>查看并验证 VPN 连接
@@ -82,4 +82,4 @@ ms.locfileid: "92890136"
 
 ## <a name="next-steps"></a>后续步骤
 
-连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅 [虚拟机学习路径](/learn/paths/deploy-a-website-with-azure-virtual-machines/)。
+连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机学习路径](/learn/paths/deploy-a-website-with-azure-virtual-machines/)。

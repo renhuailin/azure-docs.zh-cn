@@ -1,6 +1,6 @@
 ---
-title: 使用主领域发现配置登录自动加速
-description: 了解如何为联合用户配置用于 Azure Active Directory 身份验证的主领域发现策略，包括自动加速和域提示。
+title: 使用主页领域发现策略配置登录自动加速
+description: 了解如何为联合用户配置关于 Azure Active Directory 身份验证的主页领域发现策略，包括自动加速和域提示。
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -15,22 +15,22 @@ ms.date: 02/12/2021
 ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a21b6f5e7d2976bda0efd37577b7cca90469aea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 6ed101282a69120162d6e3b526693c0a83df45b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686438"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607103"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
 
-本文介绍了如何使用主领域发现 (HRD) 策略为联合用户配置 Azure Active Directory 身份验证行为。  它介绍如何使用自动加速来跳过用户名输入屏幕并自动将用户转发到联合登录终结点。  Microsoft 不建议再配置自动加速，因为它可以防止使用更强的身份验证方法，如 FIDO 和阻碍协作。
+本文介绍了如何使用主页领域发现 (HRD) 策略为联合用户配置 Azure Active Directory 身份验证行为。  它涉及使用自动加速来跳过用户名输入屏幕，并自动将用户转发到联合登录终结点。  Microsoft 不再建议配置自动加速，因为它会阻止使用更强的身份验证方法（如 FIDO），并阻碍协作。
 
 ## <a name="home-realm-discovery"></a>主领域发现
 
-主领域发现 (HRD) 是 Azure Active Directory (Azure AD) 来确定 ( 用户需要在登录时进行身份验证的标识提供者 ) "IdP" 的过程。  登录 Azure AD 租户访问资源或 Azure AD 公共登录页时，用户需键入用户名 (UPN)。 Azure AD 以此来发现用户需要在何处登录。
+主页领域发现 (HRD) 是一种进程，便于 Azure Active Directory (Azure AD) 确定用户在登录时需要使用哪个标识提供程序（“IdP”）进行身份验证。  登录 Azure AD 租户访问资源或 Azure AD 公共登录页时，用户需键入用户名 (UPN)。 Azure AD 以此来发现用户需要在何处登录。
 
-用户将转到以下标识提供者之一进行身份验证：
+用户将被转到以下标识提供程序之一进行身份验证：
 
 - 用户的主租户（可能是与用户尝试访问的资源相同的租户）。
 
@@ -51,13 +51,13 @@ ms.locfileid: "101686438"
 在租户被联合到另一个 IdP 以进行登录的情况下，自动加速可进一步简化用户登录。  可以为单个应用程序配置自动加速。
 
 >[!NOTE]
->如果将应用程序配置为自动加速，则用户不能使用 (例如 FIDO) 的管理凭据，来宾用户无法登录。 如果将用户直接转到联合 IdP 进行身份验证，他们将无法返回到 Azure Active Directory 登录页。 来宾用户可能需要进入其他租户或外部 IdP（如 Microsoft 帐户），而不能登录该应用程序，因为他们会跳过主领域发现步骤。  
+>如果你为应用程序配置自动加速，那么用户就不能使用托管凭据（如 FIDO），来宾用户也不能登录。 如果将用户直接转到联合 IdP 进行身份验证，他们将无法返回到 Azure Active Directory 登录页。 来宾用户可能需要进入其他租户或外部 IdP（如 Microsoft 帐户），而不能登录该应用程序，因为他们会跳过主领域发现步骤。  
 
-可以通过三种方法控制联合 IdP 的自动加速：
+有三种方法可以控制自动加速到联合 IdP：
 
-- 对应用程序的身份验证请求使用 [域提示](#domain-hints) 。
-- 配置主领域发现策略以 [强制自动加速](#home-realm-discovery-policy-for-auto-acceleration)。
-- 配置主领域发现策略，以忽略特定应用程序或某些域的 [域提示](prevent-domain-hints-with-home-realm-discovery.md) 。
+- 在应用程序的身份验证请求中使用[域提示](#domain-hints)。
+- 将主页领域发现策略配置为[强制自动加速](#home-realm-discovery-policy-for-auto-acceleration)。
+- 将主页领域发现策略配置为[忽略来自特定应用程序或特定域的域提示](prevent-domain-hints-with-home-realm-discovery.md)。
 
 ### <a name="domain-hints"></a>域提示
 
@@ -67,35 +67,35 @@ ms.locfileid: "101686438"
 
 域提示语法因所用协议而异，通常在应用程序中配置。
 
-**WS 联合身份验证**：查询字符串中的里瓦
+**WS-Federation**：查询字符串中的 whr=contoso.com。
 
 **SAML**：包含域提示的 SAML 身份验证请求，或查询字符串 whr=contoso.com。
 
-**OPEN ID Connect**：查询字符串 domain_hint = contoso .com。
+**Open ID Connect**：查询字符串 domain_hint=contoso.com。
 
-默认情况下，如果满足以下 **两** 个条件，Azure AD 会尝试将登录重定向到为域配置的 IdP：
+默认情况下，如果满足以下两个条件，则 Azure AD 会尝试将登录重定向到为域配置的 IdP：
 
-- 域提示包含 **在应用程序** 的身份验证请求中
-- 租户与该域联合。
+- 域提示包含在应用程序的身份验证请求中；且
+- 租户与相应域联合。
 
-如果域提示未引用已验证的联合域，则将忽略它。
+如果域提示不引用已验证的联合域，则忽略它。
 
 有关使用 Azure Active Directory 支持的域提示实现自动加速的详细信息，请参阅[企业移动性 + 安全性博客](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/11/using-azure-ad-to-land-users-on-their-custom-login-page-from-within-your-app/)。
 
 >[!NOTE]
->如果在身份验证请求中包含域提示并且 [应遵守](#home-realm-discovery-policy-to-prevent-auto-acceleration)，则其状态将覆盖在 HRD 策略中为应用程序设置的自动加速。
+>如果域提示包含在身份验证请求中并且[应生效](#home-realm-discovery-policy-to-prevent-auto-acceleration)，那么它会替代在 HRD 策略中为应用程序设置的自动加速。
 
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>自动加速的主领域发现策略
 
-某些应用程序不提供配置其发出的身份验证请求的方法。 在此情况下，域提示不能用来控制自动加速。 可以通过 Home 领域发现策略配置自动加速以实现相同的行为。  
+某些应用程序不提供配置其发出的身份验证请求的方法。 在此情况下，域提示不能用来控制自动加速。 自动加速可以通过主页领域发现策略进行配置，以实现相同的行为。  
 
-### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>用于阻止自动加速的主领域发现策略
+### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>用于阻止自动加速的主页领域发现策略
 
-某些 Microsoft 和 SaaS 应用程序会自动包括 domain_hints (例如， `https://outlook.com/contoso.com` 使用追加的) 生成登录请求 `&domain_hint=contoso.com` ，这可能会中断 FIDO 等托管凭据的推出。  你可以使用 [主领域发现策略](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) 来忽略某些应用的域提示，或在部署托管凭据期间忽略某些域的域提示。  
+一些 Microsoft 和 SaaS 应用程序自动包含 domain_hint（例如，`https://outlook.com/contoso.com` 会生成追加了 `&domain_hint=contoso.com` 的登录请求），这可能会中断 FIDO 等托管凭据的推出。  在托管凭据的推出期间，可以使用[主页领域发现策略](/graph/api/resources/homeRealmDiscoveryPolicy)来忽略来自特定应用或特定域的域提示。  
 
-## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>为旧版应用程序的联合用户启用直接 ROPC 身份验证
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>为旧的应用程序启用对联合用户进行直接 ROPC 身份验证
 
-最佳做法是让应用程序使用 AAD 库和交互式登录对用户进行身份验证。 库会处理联合用户流。  通常，旧版应用程序（尤其是那些使用 ROPC 的应用程序）会直接将用户名和密码提交到 Azure AD，而不会写入来了解联合身份验证。 它们不会执行主领域发现，并且不会通过与正确的联合终结点交互来对用户进行身份验证。 如果你选择，则可以使用 HRD 策略来启用使用 ROPC 授予直接与 Azure Active Directory 进行身份验证的特定旧版应用程序，这些应用程序使用授予来提交用户名/密码凭据。 必须启用密码哈希同步。
+最佳做法是让应用程序使用 AAD 库和交互式登录对用户进行身份验证。 库会处理联合用户流。  有时，旧的应用程序（尤其是使用 ROPC 授权的应用程序）会直接将用户名和密码提交到 Azure AD，而不是为了理解联合而编写的。 它们不会执行主领域发现，并且不会通过与正确的联合终结点交互来对用户进行身份验证。 如果选择这样做，可以使用 HRD 策略为使用 ROPC 授权提交用户名/密码凭据的特定旧的应用程序启用直接向 Azure Active Directory 进行身份验证。 必须启用密码哈希同步。
 
 > [!IMPORTANT]
 > 仅当已启用密码哈希同步，并且知道可对此应用程序进行身份验证，且本地 IdP 未实施任何策略时，才启用直接身份验证。 如果禁用密码哈希同步，或出于任何原因禁用使用 AD Connect 的目录同步，则应删除此策略，以防止使用过期的密码哈希进行直接身份验证。
@@ -114,7 +114,7 @@ ms.locfileid: "101686438"
 
 服务主体中每次只有一个 HRD 策略处于活动状态。  
 
-你可以使用 Azure Active Directory PowerShell cmdlet 来创建和管理 HRD 策略。
+可以使用 Azure Active Directory PowerShell cmdlet 来创建和管理 HRD 策略。
 
 以下是 HRD 策略定义示例：
 
@@ -129,27 +129,27 @@ ms.locfileid: "101686438"
    }
 ```
 
-策略类型为 "[HomeRealmDiscoveryPolicy](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy)"。
+策略类型为“[HomeRealmDiscoveryPolicy](/graph/api/resources/homeRealmDiscoveryPolicy)”。
 
 **AccelerateToFederatedDomain** 是可选的。 如果 **AccelerateToFederatedDomain** 为 false，则策略对自动加速不起作用。 如果 **AccelerateToFederatedDomain** 为 true 并且租户中只有一个已验证的联合域，则用户将直接转到联合 IdP 进行登录。 如果此属性为 true 并且租户中有多个已验证的域，则必须指定 **PreferredDomain**。
 
 **PreferredDomain** 是可选的。 “PreferredDomain”应指示需要加速的域。 如果租户仅有一个联合域，可省略此项。  如果在有多个已验证的联合域的情况下省略，则策略无效。
 
- 如果指定“PreferredDomain”，必须与租户的某个已验证的联合域匹配。 应用程序的所有用户都必须能够登录到该域-无法在联合域中登录的用户将被捕获，无法完成登录。
+ 如果指定“PreferredDomain”，必须与租户的某个已验证的联合域匹配。 应用程序的所有用户都必须能够登录此域 - 无法在联合域登录的用户将被困住，无法完成登录。
 
 **AllowCloudPasswordValidation** 是可选的。 如果 **AllowCloudPasswordValidation** 为 true，则允许应用程序通过直接向 Azure Active Directory 令牌终结点提供用户名/密码凭据，来对联合用户进行身份验证。 仅当已启用密码哈希同步时，才可以做到这一点。
 
-另外，还存在两个租户级别的 HRD 选项，但上面未显示：
+另外，还存在两个租户级别 HRD 选项（上面没有显示）：
 
-- **AlternateIdLogin** 是可选的。  如果启用，则允许用户在 Azure AD 登录页上 [以其电子邮件地址而不是 UPN 登录](../authentication/howto-authentication-use-email-signin.md) 。  备用 Id 依赖于不自动加速到联合 IDP 的用户。
+- “AlternateIdLogin”是可选的。  如果启用，[用户可以在 Azure AD 登录页上使用电子邮件地址（而不是 UPN）登录](../authentication/howto-authentication-use-email-signin.md)。  备用 ID 依赖于不自动加速到联合 IDP 的用户。
 
-- **DomainHintPolicy** 是一种可选的复杂对象， [*可防止* 域提示自动加速用户使用联合域](prevent-domain-hints-with-home-realm-discovery.md)。 此租户范围设置用于确保发送域提示的应用程序不会阻止用户使用云管理的凭据登录。
+- DomainHintPolicy 是可选的复杂对象，它[阻止域提示将用户自动加速到联合域](prevent-domain-hints-with-home-realm-discovery.md)。 此租户范围内的设置用于确保发送域提示的应用程序不会阻止用户使用云管理的凭据登录。
 
 ### <a name="priority-and-evaluation-of-hrd-policies"></a>HRD 策略的优先级和评估
 
-可以创建 HRD 策略，并将其分配到特定组织和服务主体。 这意味着，可以将多个策略应用到特定的应用程序，因此 Azure AD 必须决定哪个策略优先。 一组规则决定 (多个应用) 的 HRD 策略生效：
+可以创建 HRD 策略，并将其分配到特定组织和服务主体。 这意味着，可以将多个策略应用到一个特定的应用程序，因此 Azure AD 必须决定哪个策略优先。 一组规则决定（应用的许多策略中的）哪个 HRD 策略生效：
 
-- 如果身份验证请求中包含域提示，则会检查租户的 HRD 策略 (设置为租户默认) 的策略，以确定是否 [应忽略域提示](prevent-domain-hints-with-home-realm-discovery.md)。 如果允许域提示，则使用由域提示指定的行为。
+- 如果身份验证请求中有域提示，则会检查租户的 HRD 策略（策略被设置为租户默认值），以确定是否[应忽略域提示](prevent-domain-hints-with-home-realm-discovery.md)。 如果允许域提示，则使用域提示指定的行为。
 
 - 或者，如果向服务主体显式分配了某个策略，则强制实施该策略。
 
@@ -189,7 +189,7 @@ ms.locfileid: "101686438"
 
 如果未返回任何内容，则表示租户中未创建任何策略。
 
-### <a name="example-set-an-hrd-policy-for-an-application"></a>示例：为应用程序设置 HRD 策略
+### <a name="example-set-an-hrd-policy-for-an-application"></a>示例：设置应用程序的 HRD 策略
 
 此示例创建一个策略。将此策略分配到应用程序后，它会：
 
@@ -217,7 +217,7 @@ New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFe
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuthPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
-若要查看新策略并获取其 **ObjectID**，请运行以下命令：
+若要查看新策略并获取其“ObjectID”，请运行以下命令：
 
 ``` powershell
 Get-AzureADPolicy
@@ -231,7 +231,7 @@ Get-AzureADPolicy
 
 可以使用门户，或查询 [Microsoft Graph](/graph/api/resources/serviceprincipal?view=graph-rest-beta)。 还可以转到 [Graph 浏览器工具](https://developer.microsoft.com/graph/graph-explorer)，并登录到 Azure AD 帐户，查看组织的所有服务主体。
 
-因为你使用的是 PowerShell，你可以使用以下 cmdlet 列出服务主体及其 Id。
+由于使用的是 PowerShell，因此可以运行下面的 cmdlet 来列出服务主体及其 ID。
 
 ``` powershell
 Get-AzureADServicePrincipal
@@ -298,5 +298,5 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 Azure AD 中的身份验证工作原理的详细信息，请参阅 [Azure AD 的身份验证方案](../develop/authentication-vs-authorization.md)。
-- 有关用户单一登录的详细信息，请参阅 [对应用程序的单一登录 Azure Active Directory](what-is-single-sign-on.md)。
-- 有关与开发人员相关的所有内容的概述，请访问 [Microsoft 标识平台](../develop/v2-overview.md) 。
+- 若要详细了解用户单一登录，请参阅[在 Azure Active Directory 中单一登录应用程序](what-is-single-sign-on.md)。
+- 若要概览与开发人员相关的所有内容，请访问 [Microsoft 标识平台](../develop/v2-overview.md)。

@@ -1,6 +1,6 @@
 ---
 title: 如何扫描 Azure 数据资源管理器
-description: 本操作方法指南介绍了如何扫描 Azure 数据资源管理器的详细信息。
+description: 本操作指南详细介绍了如何扫描 Azure 数据资源管理器。
 author: nayenama
 ms.author: nayenama
 ms.service: purview
@@ -8,28 +8,28 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/9/2020
 ms.openlocfilehash: 7adc7f568fb82692f2c96f610575076e397bd99c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896086"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>注册并扫描 Azure 数据资源管理器
 
-本文概述了如何在 Azure 监控范围中注册 Azure 数据资源管理器帐户并设置扫描。
+本文概述了如何在 Azure Purview 中注册 Azure 数据资源管理器帐户并设置扫描。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-Azure 数据资源管理器支持完整和增量扫描来捕获元数据和架构。 扫描还会根据系统和自定义分类规则自动对数据进行分类。
+Azure 数据资源管理器支持完整和增量扫描以捕获元数据和架构。 扫描还根据系统和自定义分类规则自动分类数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- 在注册数据源之前，请创建一个 Azure 监控范围帐户。 有关创建监控范围帐户的详细信息，请参阅 [快速入门：创建 Azure 监控范围帐户](create-catalog-portal.md)。
-- 你需要成为 Azure 监控范围数据源管理员
+- 在注册数据源之前，先创建一个 Azure Purview 帐户。 有关创建 Purview 帐户的详细信息，请参阅[快速入门：创建 Azure Purview 帐户](create-catalog-portal.md)。
+- 你需要是 Azure Purview 数据源管理员
 
 ## <a name="setting-up-authentication-for-a-scan"></a>为扫描设置身份验证
 
-仅有一种方法可以设置 Azure 数据资源管理器的身份验证：
+仅有一种方法可用来为 Azure 数据资源管理器设置身份验证：
 
 - Service Principal
 
@@ -63,28 +63,28 @@ Azure 数据资源管理器支持完整和增量扫描来捕获元数据和架�
 
 1. 导航到 Azure 门户。 然后导航到 Azure 数据资源管理器实例。
 
-1. 在 "**权限**" 选项卡中将服务主体添加到 **AllDatabasesViewer** 角色，如以下屏幕截图所示。
+1. 将服务主体添加到“权限”选项卡中的“AllDatabasesViewer”角色，如下面的屏幕截图所示。 
 
-    :::image type="content" source="./media/register-scan-azure-data-explorer/permissions-auth.png" alt-text="用于在权限中添加服务主体的屏幕截图" border="true":::
+    :::image type="content" source="./media/register-scan-azure-data-explorer/permissions-auth.png" alt-text="在权限中添加服务主体的屏幕截图" border="true":::
 
 ## <a name="register-an-azure-data-explorer-account"></a>注册 Azure 数据资源管理器帐户
 
-若要在数据目录中注册新的 Azure 数据资源管理器 (Kusto) 帐户，请执行以下操作：
+要在数据目录中注册新的 Azure 数据资源管理器 (Kusto) 帐户，请执行以下操作：
 
 1. 导航到你的 Purview 帐户
 1. 在左侧导航区域中选择“源”
 1. 选择“注册”
-1. 在 " **注册源**" 中，选择 " **Azure 数据资源管理器**
+1. 在“注册源”上选择“Azure 数据资源管理器” 
 1. 选择“继续”
 
 :::image type="content" source="media/register-scan-azure-data-explorer/register-new-data-source.png" alt-text="注册新数据源" border="true":::
 
-在 " **注册源 (Azure 数据资源管理器 (Kusto) # B3** 屏幕上，执行以下操作：
+在“注册源(Azure 数据资源管理器 (Kusto))”屏幕上，执行以下操作：
 
 1. 输入数据源将在目录中列出的名称。
 1. 选择要指向所需存储帐户的方式：
-   1. 选择 " **从 azure** 订阅"，从 " **azure 订阅** " 下拉框中选择适当的订阅，并从 " **群集** " 下拉框中选择相应的群集。
-   1. 或者，可以选择 " **手动输入** "，然后输入服务终结点 (URL) 。
+   1. 选择“从 Azure 订阅中”，然后从“Azure 订阅”下拉框中选择相应订阅，并从“群集”下拉框中选择相应群集  。
+   1. 也可选择“手动输入”并输入服务终结点 (URL)。
 1. 选择“完成”以注册数据源。
 
 :::image type="content" source="media/register-scan-azure-data-explorer/register-sources.png" alt-text="注册源选项" border="true":::

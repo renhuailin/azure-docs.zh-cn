@@ -4,10 +4,10 @@ description: 了解有关 Azure Service Fabric 群集的安全性方案，以及
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.openlocfilehash: 6f7bb785184938fe5c1e20e3c915b0112c7723ee
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96573062"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
@@ -59,7 +59,7 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 
 客户端到节点证书安全性是在通过 Azure 门户、资源管理器模板或独立的 JSON 模板创建群集时设置的。 要创建证书，请指定管理员客户端证书或用户客户端证书。 作为最佳做法，指定的管理员客户端证书和用户客户端证书应该不同于为[节点到节点安全性](#node-to-node-security)指定的主证书和辅助证书。 群集证书与客户端管理员证书具有相同的权限。 但是，它们只应由群集使用，而不应作为安全最佳做法由管理用户使用。
 
-客户端如果使用管理员证书连接到群集，则拥有管理功能的完全访问权限。 客户端如果使用只读的用户客户端证书连接到群集，则只拥有管理功能的只读访问权限。 这些证书用于 Service Fabric RBAC，本文稍后将对此进行介绍。
+客户端如果使用管理员证书连接到群集，则拥有管理功能的完全访问权限。 客户端如果使用只读的用户客户端证书连接到群集，则只拥有管理功能的只读访问权限。 这些证书用于本文后面部分介绍的 Service Fabric RBAC。
 
 若要了解如何在群集中为 Azure 设置证书安全性，请参阅[使用 Azure 资源管理器模板设置群集](service-fabric-cluster-creation-via-arm.md)。
 
@@ -90,7 +90,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 被分配为管理员角色的用户对管理功能（包括读取和写入功能）拥有完全访问权限。 默认情况下，被分配为用户角色的用户只有管理功能的读取访问权限（例如查询功能）， 以及解析应用程序和服务的能力。
 
-创建群集时，请设置管理员和用户客户端角色。 通过提供单独的标识（例如使用证书或 Azure AD），为每种角色类型分配角色。 有关默认访问控制设置以及如何更改默认设置的详细信息，请参阅 [Service Fabric Service Fabric 客户端的基于角色的访问控制](service-fabric-cluster-security-roles.md)。
+创建群集时，请设置管理员和用户客户端角色。 通过提供单独的标识（例如使用证书或 Azure AD），为每种角色类型分配角色。 若要详细了解默认访问控制设置以及如何更改默认设置，请参阅 [Service Fabric 客户端的 Service Fabric 基于角色的访问控制](service-fabric-cluster-security-roles.md)。
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 证书和 Service Fabric
 
@@ -113,7 +113,7 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 
 * 证书必须包含私钥。 这些证书通常使用扩展名 .pfx 或 .pem  
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-* **证书的使用者名称必须与用于访问 Service Fabric 群集的域匹配**。 只有满足此匹配，才能为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 TLS。 你无法从证书颁发机构获取 cloudapp.azure.com 域的证书颁发机构 (CA) 的 TLS/SSL 证书。 必须获取群集的自定义域名。 从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
+* **证书的使用者名称必须与用于访问 Service Fabric 群集的域匹配**。 只有满足此匹配，才能为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 TLS。 无法从证书颁发机构 (CA) 处获取针对 *.cloudapp.azure.com 域的 TLS/SSL 证书。 必须获取群集的自定义域名。 从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
 
 其他注意事项：
 

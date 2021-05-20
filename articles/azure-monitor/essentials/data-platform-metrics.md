@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 8ecfd74a4d486a83add490501c2f7af4a4003b85
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101700968"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Azure Monitor 指标概述
@@ -49,7 +49,7 @@ Azure Monitor 从三个基本源收集指标。 只要在 Azure Monitor 指标�
 
 **虚拟机代理**。 指标从虚拟机的来宾操作系统收集。 使用 [Windows 诊断扩展 (WAD)](../agents/diagnostics-extension-overview.md) 为 Windows 虚拟机启用来宾 OS 指标，并使用 [InfluxData Telegraf 代理](https://www.influxdata.com/time-series-platform/telegraf/)为 Linux 虚拟机启用来宾 OS 指标。
 
-**自定义指标**。 除了自动可用的标准指标之外，还可以定义指标。 可以在 Application Insights 监视的[应用中定义自定义指标](../app/api-custom-events-metrics.md)，也可以使用[自定义指标 API](./metrics-store-custom-rest-api.md) 为 Azure 服务创建自定义指标。
+自定义指标。 可以定义除了自动可用的标准指标之外的指标。 可以在 Application Insights 监视的[应用中定义自定义指标](../app/api-custom-events-metrics.md)，也可以使用[自定义指标 API](./metrics-store-custom-rest-api.md) 为 Azure 服务创建自定义指标。
 
 - 有关将数据发送到 Azure Monitor 指标的数据源的完整列表，请参阅 [Azure Monitor 监视哪些内容？](../monitor-reference.md)。
 
@@ -77,7 +77,7 @@ Azure Monitor 指标收集的数据存储在更适合分析带有时间戳的数
 
 ### <a name="network-throughput"></a>网络吞吐量
 
-| 时间戳     | 指标值 |
+| Timestamp     | 指标值 |
 | ------------- |:-------------|
 | 8/9/2017 8:14 | 1,331.8 Kbps |
 | 8/9/2017 8:15 | 1,141.4 Kbps |
@@ -87,7 +87,7 @@ Azure Monitor 指标收集的数据存储在更适合分析带有时间戳的数
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>网络吞吐量 + 两个维度（“IP 地址”和“方向”）
 
-| 时间戳     | “IP”维度   | “方向”维度 | 指标值|
+| Timestamp     | “IP”维度   | “方向”维度 | 指标值|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Send"    | 646.5 Kbps |
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Receive" | 420.1 Kbps |

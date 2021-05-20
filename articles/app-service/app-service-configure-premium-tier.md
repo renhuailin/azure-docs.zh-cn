@@ -5,13 +5,13 @@ keywords: 应用服务, azure 应用服务, 缩放, 可缩放, 应用服务计�
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
-ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8fbd841626e2a074bc0a35cd1b4ac094e267b34a
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: c187a1521762c0b69d42c81f464694729d3c02f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833339"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "100594219"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>为 Azure 应用服务配置 PremiumV3 层
 

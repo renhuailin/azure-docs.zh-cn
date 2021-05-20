@@ -120,14 +120,14 @@
               items:
                 - name: 什么是自定义神经语音？
                   href: custom-neural-voice.md
-                - name: 自定义语音入门
+                - name: 自定义神经语音入门
                   displayName: 'custom voice, neural voice'
                   href: how-to-custom-voice.md
-                - name: 准备数据
+                - name: 准备要训练的数据
                   href: how-to-custom-voice-prepare-data.md
-                - name: 创建并使用自定义语音模型
+                - name: 创建和使用语音模型
                   href: how-to-custom-voice-create-voice.md
-                - name: 录制语音示例
+                - name: 如何录制语音示例
                   href: record-custom-voice-samples.md
             - name: 音频内容创建
               items:
@@ -295,12 +295,16 @@
       items:
         - name: 说话人识别 REST API
           href: /rest/api/speakerrecognition/
-- name: 自定义关键字
+- name: 关键字识别
   items:
-    - name: 自定义关键字概述
-      href: custom-keyword-overview.md
-    - name: 自定义关键字基础知识
+    - name: 关键字识别概述
+      href: keyword-recognition-overview.md
+    - name: 自定义关键字快速入门
       href: custom-keyword-basics.md
+    - name: 建议和指南
+      href: keyword-recognition-guidelines.md
+    - name: 区域支持
+      href: keyword-recognition-region-support.md
 - name: 场景深入介绍
   items:
     - name: 对话方案

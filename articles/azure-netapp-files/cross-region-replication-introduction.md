@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp 文件卷的跨区域复制 |Microsoft Docs
+title: Azure NetApp 文件卷的跨区域复制 | Microsoft Docs
 description: 介绍 Azure NetApp 文件跨区域复制的功能、支持的区域对、服务级别目标、数据持续性和成本模型。
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,31 +12,31 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/10/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: 4d4cf7a0dc73070f4f48ed87f60a2458bc925b13
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ac0f9e6e5e1a1988386cc85c2d7576719acbd6e6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707347"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590953"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp 文件卷的跨区域复制
 
-Azure NetApp 文件复制功能通过跨区域卷复制提供数据保护。 可将数据从一个区域中的 Azure NetApp 文件卷 (源) 异步复制到另一个区域中的另一个 Azure NetApp 文件卷 (目标) 。  此功能使你能够在发生区域范围的服务中断或灾难时故障转移关键应用程序。
+Azure NetApp 文件复制功能通过跨区域卷复制提供数据保护。 可以以异步方式将数据从一个区域中的 Azure NetApp 文件卷（源）复制到另一个区域中的 Azure NetApp 文件卷（目标）。  此功能可用于在发生区域范围的服务中断或灾难时故障转移关键应用程序。
 
 > [!IMPORTANT]
-> 跨区域复制功能目前为公共预览版。 需要提交候补请求，以便通过 [Azure NetApp 文件跨区域复制候补提交页](https://aka.ms/anfcrrpreviewsignup)访问该功能。 使用跨区域复制功能之前，请先从 Azure NetApp 文件团队等待官方确认电子邮件。
+> 跨区域复制功能目前为公共预览版。 需要提交候补名单请求，以通过 [Azure NetApp 文件跨区域复制候补名单提交页](https://aka.ms/anfcrrpreviewsignup)访问该功能。 在使用跨区域复制功能之前，请先等待来自 Azure NetApp 文件团队的官方确认电子邮件。
 
 ## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>支持的跨区域复制对
 
-Azure NetApp 文件在不同的 [azure 区域对](../best-practices-availability-paired-regions.md#azure-regional-pairs) 与非对之间进行复制。 Azure NetApp 文件卷复制当前在以下区域之间可用：  
+在各种 [Azure 区域对](../best-practices-availability-paired-regions.md#azure-regional-pairs)和非对之间支持 Azure NetApp 文件卷复制。 Azure NetApp 文件卷复制目前在以下区域之间可用：  
 
 ### <a name="azure-regional-pairs"></a>Azure 区域对
 
 * 美国东部和美国西部
-* 美国东部2和美国中部
+* 美国东部 2 和美国中部
 * 澳大利亚东部和澳大利亚东南部
 * 加拿大中部和加拿大东部
 * 印度南部和印度中部 
@@ -47,82 +47,83 @@ Azure NetApp 文件在不同的 [azure 区域对](../best-practices-availability
 
 ### <a name="azure-regional-non-pairs"></a>Azure 区域非对
 
-*   美国西部2和美国东部
+*   美国西部 2 和美国东部
 *   美国中南部和美国中部
 *   美国中南部和美国东部
-*   美国中南部和美国东部2
-*   美国东部和美国东部2
-*   美国东部2和美国西部2
+*   美国中南部和美国东部 2
+*   美国东部和美国东部 2
+*   美国东部 2 和美国西部 2
 *   澳大利亚东部和东南亚 
 *   德国中西部和英国南部
 
 ## <a name="service-level-objectives"></a>服务级别目标
 
-恢复点目标 (RPO) 或可承受的最大数据丢失数定义为复制计划的两倍。  观察到的实际 RPO 可能因多种因素而异，例如，数据集总大小以及更改率、数据覆盖百分比以及可传输的复制带宽。   
+恢复点目标 (RPO) 或可容忍的最大数据丢失定义为复制计划的两倍。  观察到的实际 RPO 可能因多种因素而异，例如，数据集总大小以及更改率、数据覆盖百分比以及可用于传输的复制带宽。   
 
-* 对于10分钟的复制计划，最大 RPO 为20分钟。  
+* 对于 10 分钟的复制计划，最大 RPO 为 20 分钟。  
 * 对于每小时复制计划，最大 RPO 为两小时。  
 * 对于每日复制计划，最大 RPO 为两天。  
 
-恢复时间目标 (RTO) ，或可容忍的最大业务应用程序停机时间取决于引入应用程序的因素，并提供对第二个站点中的数据的访问。 用于中断对等关系以激活目标卷并在第二个站点中提供读取和写入数据访问的 RTO 存储部分应在一分钟内完成。
+恢复时间目标 (RTO) 或可容忍的最长业务应用程序停机时间，由引入应用程序并在第二个站点中提供对数据的访问权限的因素确定。 用于中断对等关系以激活目标卷并在第二个站点中提供读取和写入数据访问权限的 RTO 的存储部分应在一分钟内完成。
 
 ## <a name="cost-model-for-cross-region-replication"></a>跨区域复制的成本模型  
 
-通过 Azure NetApp 文件跨区域复制，只需为复制的数据量付费。 不收取任何费用，也没有最低的使用费用。 复制价格基于在初始复制配置期间选择的 *目标* 卷的复制频率和区域。 有关详细信息，请参阅 [Azure NetApp 文件定价](https://azure.microsoft.com/pricing/details/netapp/) 页。  
+通过 Azure NetApp 文件跨区域复制，只需为复制的数据量付费。 不会收取任何设置费用，也没有最低的使用费用。 复制价格基于在初始复制配置期间选择的目标卷的复制频率和区域。 有关详细信息，请参阅 [Azure NetApp 文件定价](https://azure.microsoft.com/pricing/details/netapp/)页。  
 
-常规 Azure NetApp 文件存储容量费用适用于复制目标卷 (也称为 *数据保护* 卷) 。 
+常规 Azure NetApp 文件存储容量费用适用于复制目标卷（也称为数据保护卷）。 
 
 ### <a name="pricing-examples"></a>定价示例
 
-在一个月中，按跨区域复制功能复制的数据量是按月计费的跨区域复制量。 复制的数据量以 GiB 度量。 它表示从源卷到目标卷的所有常规复制期间，以及从目标卷到源卷的所有重新同步复制期间跨两个区域复制的数据的总和。
+按月收费的跨区域复制量基于当月通过跨区域复制功能复制的数据量。 复制的数据量以 GiB 度量。 它表示从源卷到目标卷的所有常规复制期间以及从目标卷到源卷的所有重新同步复制期间跨两个区域复制的数据总量。
 
-#### <a name="example-1-month-1-baseline-replication-and-incremental-replications"></a>示例1：第1个月的基线复制和增量复制
+#### <a name="example-1-month-1-baseline-replication-and-incremental-replications"></a>示例1：第 1 个月的基线复制和增量复制
 
-假设出现以下情况：
+假设以下情况：
 
-* *源* 卷来自 Azure NetApp 文件 *高级* 服务级别。 在一个月的第一天开始时，它的卷配额大小为 1000 GiB，卷使用大小为 500 GiB。 该卷位于 *美国中南部* 区域。
-* *目标* 卷来自 Azure NetApp 文件 *标准* 服务级别。 它位于 *美国东部 2* 区域。
-* 在上述两个卷之间配置了基于 *小时* 的跨区域复制。 因此，复制价格为每个 GiB $0.12。
-* 为简单起见，假设源卷每隔0.5 一小时会更改一个 GiB 的数据，但总使用的卷大小不会增长 (保持为 500 GiB) 。 
+* 源卷来自 Azure NetApp 文件高级服务级别。 在当月第一天的开始时间，它的卷配额大小为 1000 GiB，卷已使用大小为 500 GiB。 该卷位于美国中南部区域。
+* 目标卷来自 Azure NetApp 文件标准服务级别。 它位于美国东部 2 区域。
+* 在上述两个卷之间配置了每小时的跨区域复制。 因此，每个 GiB 的复制价格为 0.12 美元。
+* 为简单起见，假设源卷以每小时 0.5-GiB 的数据更改常量更改数据，但卷已使用总大小不会增长（保持为 500 GiB）。 
 
-初始设置完成后，基线复制会立即进行。  
+初始设置完成后，会立即进行基线复制。  
 
-* 基线复制期间复制的数据量： `500 GiB`
-* 基线复制费用： `500 GiB * $0.12 = $60`
+* 基线复制期间复制的数据量：`500 GiB`
+* 基线复制费用：`500 GiB * $0.12 = $60`
 
-完成基线复制后，只会复制更改的块。 因此，在后续的增量复制中，每小时只能复制 0.5 GiB 的数据。
+基线复制完成后，只会复制已更改的块。 因此，在后续增量复制中，每小时只会复制 0.5 GiB 的数据。
 
-* 每月30天跨增量复制复制的数据量总计： `0.5 GiB * 24 hours * 30 days = 360 GiB`
-* 增量复制费用： `360 GiB * $0.12 = $43.2`
+* 一个月（30 天）增量复制复制的数据总量：`0.5 GiB * 24 hours * 30 days = 360 GiB`
+* 增量复制费用：`360 GiB * $0.12 = $43.2`
 
-在第1个月结束时，总的跨区域复制费用如下所示：  
+在第 1 个月结束时，跨区域复制总费用如下所示：  
 
-*  每月1： `$60 + $43.2 = $103.2`
+*  第 1 个月的跨区域复制总费用：`$60 + $43.2 = $103.2`
 
-常规 Azure NetApp 文件存储容量费用适用于目标卷。 但是，目标卷可以使用不同于源卷层)  (和更便宜的存储层。
+常规 Azure NetApp 文件存储容量费用适用于目标卷。 但是，目标卷可以使用不同于源卷层（比源卷层更便宜）的存储层。
 
-#### <a name="example-2-month-2-incremental-replications-and-resync-replications"></a>示例2：第2个月2个增量复制和重新同步复制  
+#### <a name="example-2-month-2-incremental-replications-and-resync-replications"></a>示例 2：第 2 个月的增量复制和重新同步复制  
 
-假设你有一个源卷、一个目标卷和两个设置之间的复制关系，如示例1中所述。 在第二个月的29天 (每月30天) ，按预期方式发生了每小时副本。
+假设你有一个源卷、一个目标卷和两者之间的复制关系，请按示例 1 中所述进行设置。 在第二个月（30 天为一月）的 29 天中，按预期发生了每小时复制。
 
-* 在29天内增量复制间复制的数据量的总和： `0.5 GiB * 24 hours * 29 days = 348 GiB`
+* 29 天增量复制复制的数据总量：`0.5 GiB * 24 hours * 29 days = 348 GiB`
 
-假设在该月的最后一天，在源区域中发生计划外故障，并故障转移到目标卷。 2小时后，源区域恢复，并执行从目标卷到源卷的重新同步复制。 在2小时内，在目标卷上发生了 0.8 GiB 的数据更改，需要 resynced 到源中。
+假设在该月的最后一天，在源区域中发生了计划外故障转移，并故障转移到目标卷。 2 小时后，源区域恢复，并执行从目标卷到源卷的重新同步复制。 在 2 小时内，在目标卷上发生了 0.8 GiB 的数据更改，这些数据需要重新同步到源中。
 
-* 过去一天在22小时内通过常规复制复制的数据量总计： `0.5 GiB * 22 hours = 11 GiB`
-* 在一个重新同步复制期间复制的数据量： `0.8 GiB`
+* 过去一天的 22 小时内跨常规复制复制的数据总量：`0.5 GiB * 22 hours = 11 GiB`
+* 在一个重新同步复制期间复制的数据量：`0.8 GiB`
 
-因此，在第2月结束时，跨区域复制费用总计如下所示：  
+因此，在第 2 个月结束时，跨区域复制总费用如下所示：  
 
-* 每月2： `(348 GiB + 11 GiB + 0.8 GiB) * $0.12 = $43.18`
+* 第 2 个月的跨区域复制总费用：`(348 GiB + 11 GiB + 0.8 GiB) * $0.12 = $43.18`
 
-第2个月的常规 Azure NetApp 文件存储容量费用适用于目标卷。
+第 2 个月的常规 Azure NetApp 文件存储容量费用适用于目标卷。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)
 * [创建卷复制](cross-region-replication-create-peering.md)
 * [显示复制关系的运行状况](cross-region-replication-display-health-status.md)
 * [管理灾难恢复](cross-region-replication-manage-disaster-recovery.md)
+* [重设跨区域复制目标卷的大小](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [卷复制指标](azure-netapp-files-metrics.md#replication)
 * [删除卷复制或卷](cross-region-replication-delete.md)
 * [跨区域复制故障排除](troubleshoot-cross-region-replication.md)

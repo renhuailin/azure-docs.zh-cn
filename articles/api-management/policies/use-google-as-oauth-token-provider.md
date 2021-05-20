@@ -1,5 +1,5 @@
 ---
-title: API 管理策略示例-使用 Google OAuth 令牌授予访问权限
+title: API 管理策略示例 - 使用 Google OAuth 标记授予访问权限
 titleSuffix: Azure API Management
 description: Azure API 管理策略示例 - 演示如何使用 Google 作为 OAuth 令牌提供程序授予对终结点的访问权限。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 0f6c9fe2146414f78e90d6ade1a00045cdf3a04f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92078011"
 ---
 # <a name="authorize-access-using-google-oauth-token"></a>使用 Google OAuth 令牌授予访问权限
@@ -26,7 +26,7 @@ ms.locfileid: "92078011"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中****。
+将代码粘贴到“入站”块中  。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Simple Google OAuth validate-jwt.policy.xml)]
 

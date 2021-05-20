@@ -1,22 +1,22 @@
 ---
-title: Azure 队列存储监视数据引用
-description: 用于监视 Azure 队列存储中的数据的日志和指标参考。
+title: Azure 队列存储监视数据参考
+description: 有关 Azure 队列存储监视数据的日志和指标参考。
 author: normesta
 services: azure-monitor
 ms.author: normesta
-ms.date: 10/02/2020
+ms.date: 04/20/2021
 ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
-ms.custom: monitoring
-ms.openlocfilehash: 95f20737b044140fe12ea939e71cd2397cb4826d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.custom: subject-monitoring
+ms.openlocfilehash: 506f5a46688f597b8ac5db341c5bbe5eb5fb67c8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576687"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763138"
 ---
-# <a name="azure-queue-storage-monitoring-data-reference"></a>Azure 队列存储监视数据引用
+# <a name="azure-queue-storage-monitoring-data-reference"></a>Azure 队列存储监视数据参考
 
 请参阅[监视 Azure 存储](monitor-queue-storage.md)，详细了解如何收集和分析 Azure 存储的监视数据。
 
@@ -26,7 +26,7 @@ ms.locfileid: "100576687"
 
 ### <a name="capacity-metrics"></a>容量度量值
 
-容量指标值每日刷新 (最多24小时) 。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
+容量指标值每天（最长 24 小时）刷新一次。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
 
 Azure 存储在 Azure Monitor 中提供以下容量指标。
 
@@ -36,17 +36,17 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 #### <a name="queue-storage-metrics"></a>队列存储指标
 
-此表显示了 [队列存储指标](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)。
+下表列出了[队列存储指标](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)。
 
 | 指标 | 说明 |
 | ------------------- | ----------------- |
-| **QueueCapacity** | 存储帐户使用的队列存储量。 <br><br> 单位：`Bytes` <br> 聚合类型： `Average` <br> 值示例： `1024` |
-| **QueueCount** | 存储帐户中的队列数目。 <br><br> 单位：`Count` <br> 聚合类型： `Average` <br> 值示例： `1024` |
-| **QueueMessageCount** | 存储帐户中队列消息的大致数目。 <br><br> 单位：`Count` <br> 聚合类型： `Average` <br> 值示例： `1024` |
+| **QueueCapacity** | 存储帐户使用的队列存储量。 <br><br> 单位：`Bytes` <br> 聚合类型：`Average` <br> 值示例：`1024` |
+| **QueueCount** | 存储帐户中的队列数目。 <br><br> 单位：`Count` <br> 聚合类型：`Average` <br> 值示例：`1024` |
+| **QueueMessageCount** | 存储帐户中未失效的队列消息数目。 <br><br> 单位：`Count` <br> 聚合类型：`Average` <br> 值示例：`1024` |
 
 ### <a name="transaction-metrics"></a>事务指标
 
-从 Azure 存储到 Azure Monitor 的每个存储帐户请求都会发出事务指标。 如果存储帐户中没有任何活动，则在此期间不会有关于事务指标的数据。 所有事务指标均可在帐户和队列存储服务级别上使用。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
+从 Azure 存储到 Azure Monitor 的每个存储帐户请求都会发出事务指标。 如果存储帐户中没有任何活动，则在此期间不会有关于事务指标的数据。 所有事务指标都在帐户级别和队列存储服务级别可用。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
 
 [!INCLUDE [Transaction metrics](../../../includes/azure-storage-account-transaction-metrics.md)]
 
@@ -79,5 +79,5 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 
 ## <a name="see-also"></a>另请参阅
 
-- 有关监视 Azure 队列存储的说明，请参阅 [监视 Azure 队列存储](monitor-queue-storage.md) 。
-- 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。
+- 有关监视 Azure 队列存储的说明，请参阅[监视 Azure 队列存储](monitor-queue-storage.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。

@@ -1,6 +1,6 @@
 ---
 title: 混合标识设计 - 管理任务 Azure | Microsoft Docs
-description: Azure AD 检查在对用户进行身份验证时选择的特定条件，并允许使用条件性访问控制访问应用程序。
+description: 借助条件访问控制，Azure AD 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c416bf19acb1736eeed679c16dbd87de1cc98537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90986520"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>规划混合标识生命周期
@@ -61,10 +61,10 @@ ms.locfileid: "90986520"
 ## <a name="synchronization-management"></a>同步管理
 标识管理员的目标之一是启用所有标识提供者并保持其同步状态。 可以根据权威的主标识提供者保持数据的同步状态。 在混合标识方案中，可以通过同步的管理模型在本地服务器中管理所有用户和设备标识，并将帐户同步到云（以及选择性地同步密码）。 用户在本地中输入的密码与在云中相同，登录时，标识解决方案会验证密码。 此模型使用目录同步工具。
 
-![目录同步 ](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) 到适当设计混合标识解决方案的同步确保了以下问题的答案：
-*    适用于混合标识解决方案的同步解决方案有哪些？
-*    可用的单一登录功能有哪些？
-*    B2B 和 B2C 之间的联合身份验证有哪些选项？
+![目录同步](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) 若要恰当地设计混合标识解决方案的同步，请务必回答以下问题：
+*    适用于混合标识解决方案的同步解决方案是什么？
+*    可用的单一登录功能是什么？
+*    B2B 和 B2C 之间的标识联合选项是什么？
 
 ## <a name="next-steps"></a>后续步骤
 [确定混合标识管理采用策略](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)

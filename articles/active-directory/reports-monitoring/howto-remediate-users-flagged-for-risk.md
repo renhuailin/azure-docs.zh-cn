@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 门户中标记为有风险的用户 |Microsoft Docs
+title: Azure Active Directory 门户中“标记为风险用户”的用户 | Microsoft Docs
 description: 了解 Azure Active Directory 门户中“标记为风险用户”的用户的安全报告
 services: active-directory
 author: MarkusVi
@@ -16,10 +16,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92308944"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
@@ -32,7 +32,7 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>访问标记为存在风险的用户的报告
 
-可以在 Azure 门户中通过[“有风险的用户”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)报告查看已标记为存在风险的用户。 如果没有 Azure AD，可以免费注册 [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) 。 
+可以在 Azure 门户中通过[“有风险的用户”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)报告查看已标记为存在风险的用户。 如果你没有 Azure AD，可以在 [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) 上免费注册。 
 
 从“已标记为存在风险的用户”报告中，你可以针对每个用户采取以下操作：
 
@@ -42,18 +42,18 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 有关详细信息，请参阅[“已标记为存在风险的用户”安全报告](../identity-protection/overview-identity-protection.md)。
 
-### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Microsoft 365 客户 Azure AD 订阅
+### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Microsoft 365 客户的 Azure AD 订阅
 
-你还可以使用你的 Microsoft 365 凭据访问 **Azure 管理中心**。 激活对 Azure AD 的访问权限以后，就会重定向到 Azure AD 门户。 在基本订阅级别，报告中提供的详细信息量是受限制的。 Azure 高级订户可获取其他的数据和分析。
+还可以使用 Microsoft 365 凭据访问 Azure 管理中心。 激活对 Azure AD 的访问权限以后，就会重定向到 Azure AD 门户。 在基本订阅级别，报告中提供的详细信息量是受限制的。 Azure 高级订户可获取其他的数据和分析。
 
-若要访问 Microsoft 365 管理中心中 **标记为风险** 报告的用户：
+若要在 Microsoft 365 管理中心内访问“已标记为存在风险的用户”报告，请执行以下操作：
 
-1.  在左侧导航菜单中，选择“管理中心”****。 
-2.  选择 **Azure AD**。
+1.  在左侧导航菜单中，选择“管理中心”。 
+2.  选择“Azure AD”。
 3.  登录到 **Azure Active Directory 管理中心**。
-4.  如果页面顶部显示一个横幅，要求“查看新门户”，请选择相应的链接。****
-4.  在左侧导航菜单中，选择“Azure Active Directory”。**** 
-5.  在导航窗格中，从“安全性”部分中选择“已标记为存在风险的用户”。********
+4.  如果页面顶部显示一个横幅，要求“查看新门户”，请选择相应的链接。
+4.  在左侧导航菜单中，选择“Azure Active Directory”。 
+5.  在导航窗格中，从“安全性”部分中选择“已标记为存在风险的用户”。
 
 ## <a name="remediation-actions"></a>修正操作
 
@@ -79,7 +79,7 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
     h. 生成审核日志供管理员查看。
 
-4. 调查 Microsoft 365 租户和其他 IT 基础结构，包括查看所有租户设置、用户帐户以及每用户的配置设置，以便进行可能的修改。 查看是否存在使用持久性方法的痕迹，以及是否存在入侵者利用初始据点获取 VPN 凭据或访问其他组织资源的痕迹。 
+4. 调查 Microsoft 365 租户和其他 IT 基础结构，包括查看所有租户设置、用户帐户以及单个用户的配置设置中是否有可能需要修改的地方。 查看是否存在使用持久性方法的痕迹，以及是否存在入侵者利用初始据点获取 VPN 凭据或访问其他组织资源的痕迹。 
 
 5.  在调查过程中，考虑是否应当通知政府机构，包括执法机构。
 

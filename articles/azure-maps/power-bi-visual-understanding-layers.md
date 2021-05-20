@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure Maps Power BI 视觉对象中的层 |Microsoft Azure 映射
-description: 本文介绍 Power BI Microsoft Azure Map 视觉对象中提供的不同层。
+title: 了解 Azure Maps Power BI 视觉对象中的图层 | Microsoft Azure Maps
+description: 本文介绍适用于 Power BI 的 Microsoft Azure Maps 视觉对象中的不同图层。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 06/26/2020
@@ -10,47 +10,47 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a5c7296a0e7b7f6ea33c1f4a669675efd90f9e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86261620"
 ---
-# <a name="understanding-layers-in-the-azure-maps-power-bi-visual"></a>了解 Azure Maps Power BI 视觉对象中的层
+# <a name="understanding-layers-in-the-azure-maps-power-bi-visual"></a>了解 Azure Maps Power BI 视觉对象中的图层
 
-Azure Maps 视觉对象中提供了两种类型的层。 第一种类型侧重于呈现数据，该数据将传递到视觉对象的 " **字段** " 窗格中，其中包含以下各层：我们将调用这些数据呈现层。
+Azure Maps 视觉对象有两种类型的图层。 第一种类型侧重于呈现传递到视觉对象的“字段”窗格的数据，包含以下图层，称为数据呈现层。
 
 :::row:::
     :::column span="":::
         **气泡层**
 
-        将点呈现为地图上的缩放圆圈。
+        在地图上以缩放圆的形式呈现这些点。
 
-        ![地图上的气泡图层](media/power-bi-visual/bubble-layer-thumb.png)
+        ![地图上的气泡层](media/power-bi-visual/bubble-layer-thumb.png)
     :::column-end:::
     :::column span="":::
         **条形图层**
 
-        将点呈现为地图上的3D 条。
+        在地图上将点呈现为三维图条。
         
         ![地图上的条形图层](media/power-bi-visual/bar-chart-layer-thumb.png)
     :::column-end:::
 :::row-end:::
 
-第二种类型的层连接添加外部数据源以进行映射，以提供更多上下文，并且包含以下各层。
+第二种类型的图层将额外的外部数据源连接到地图以提供更多上下文，其包含以下图层。
 
 :::row:::
     :::column span="":::
-        **参考层**
+        **引用层**
 
-        在地图的顶层覆盖已上传的 GeoJSON 文件。
+        将上传的 GeoJSON 文件覆盖在地图顶层。
 
         ![地图上的参考层](media/power-bi-visual/reference-layer-thumb.png)
     :::column-end:::
     :::column span="":::
         **图块层**
 
-        覆盖位于地图顶部的自定义图块层。
+        覆盖位于地图顶层的自定义图块层。
         
         ![地图上的图块层](media/power-bi-visual/tile-layer-thumb.png)
     :::column-end:::
@@ -63,21 +63,21 @@ Azure Maps 视觉对象中提供了两种类型的层。 第一种类型侧重�
     :::column-end:::
 :::row-end:::
 
-所有数据呈现层和 **图块层**都具有用于指定缩放级别范围的最小和最大缩放级别选项，这些层应显示在这些层中。 这允许在一个缩放级别使用一种类型的呈现层，并在另一个缩放级别上转换到另一个呈现层。
+所有数据呈现层以及图块层都有最小和最大缩放级别选项，用于指定这些图层应显示的缩放级别范围。 这样，一种类型的呈现层可以使用一个缩放级别，并过渡到使用另一个缩放级别的另一个呈现层。
 
-这些层还具有一个可相对于地图中其他层定位的选项。 当使用多个数据呈现层时，它们添加到地图的顺序决定了它们在具有相同 **层位置** 值时的相对分层顺序。
+这些图层还可以选择相对于地图中的其他图层放置。 使用多个数据呈现层时，如果它们具有相同的“图层位置”值，这些图层添加到地图的顺序将确定其相对分层顺序。
 
 ## <a name="general-layer-settings"></a>常规层设置
 
-" **格式** " 窗格的 "常规层" 部分是适用于连接到 "字段" 窗格中 " **字段** " 窗格中的 Power BI 数据集的层的常见设置 (气泡层、条形图) 。
+“格式”窗格的“常规层”部分是常见设置，适用于连接到“字段”窗格中的 Power BI 数据集的图层（气泡层，条形图）。
 
-| 设置     | 描述   |
+| 设置     | 说明   |
 |-------------|---------------|
-| 未选定透明度 | 选择了一个或多个形状时未选定的形状的透明度。  |
+| 未选择的透明度 | 选择一个或多个形状时未选择的形状的透明度。  |
 | 显示零              | 指定是否应使用最小半径在地图上显示大小值为零的点。 |
-| 显示负片          | 指定是否应绘制负大小值的绝对值。   |
-| 最小数据值          | 要缩放的输入数据的最小值。 适用于剪辑离群值。  |
-| 最大数据值          | 要缩放的输入数据的最大值。 适用于剪辑离群值。  |
+| 显示负值          | 指定是否应绘制负数大小值的绝对值。   |
+| 最小数据值          | 用作缩放依据的输入数据的最小值。 适用于剪切离群值。  |
+| 最大数据值          | 用作缩放依据的输入数据的最大值。 适用于剪切离群值。  |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -89,7 +89,7 @@ Azure Maps 视觉对象中提供了两种类型的层。 第一种类型侧重�
 > [!div class="nextstepaction"]
 > [添加条形图层](power-bi-visual-add-bar-chart-layer.md)
 
-向映射添加更多上下文：
+向地图添加更多上下文：
 
 > [!div class="nextstepaction"]
 > [添加引用层](power-bi-visual-add-reference-layer.md)

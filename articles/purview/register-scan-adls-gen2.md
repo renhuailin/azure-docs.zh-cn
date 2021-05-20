@@ -1,6 +1,6 @@
 ---
 title: 注册和扫描 Azure Data Lake Storage (ADLS) Gen2
-description: 本教程介绍了如何扫描 Azure Data Lake Storage Gen2。
+description: 本教程介绍如何扫描 Azure Data Lake Storage Gen2。
 author: shsandeep123
 ms.author: sandeepshah
 ms.service: purview
@@ -8,61 +8,61 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98882393"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>注册和扫描 Azure Data Lake Storage Gen2
 
-本文概述了如何在 Azure 监控范围中注册 Azure Data Lake Storage Gen2 作为数据源，并设置扫描。
+本文概括性介绍如何将 Azure Data Lake Storage Gen2 注册为 Azure Purview 中的数据源并设置扫描。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 Azure Data Lake Storage Gen2 数据源支持以下功能：
 
-- 用于捕获 Azure Data Lake Storage Gen2 中的元数据和分类的 **完全和增量扫描**
+- 完全扫描和增量扫描，用于捕获 Azure Data Lake Storage Gen2 中的元数据和分类
 
-- ADF 复制/数据流活动的数据资产之间的 **沿袭**
+- 在数据资产之间建立链接，以用于 ADF 复制/数据流活动
 
 ## <a name="prerequisites"></a>先决条件
 
-在注册数据源之前，请创建一个 Azure 监控范围帐户。 有关创建监控范围帐户的详细信息，请参阅 [快速入门：创建 Azure 监控范围帐户](create-catalog-portal.md)。
+在注册数据源之前，先创建一个 Azure Purview 帐户。 有关创建 Purview 帐户的详细信息，请参阅[快速入门：创建 Azure Purview 帐户](create-catalog-portal.md)。
 
 ### <a name="setting-up-authentication-for-a-scan"></a>为扫描设置身份验证
 
-Azure Data Lake Storage Gen2 支持以下身份验证方法：
+支持为 Azure Data Lake Storage Gen2 使用以下身份验证方法：
 
 - 托管标识
 - 服务主体
 - 帐户密钥
 
-#### <a name="managed-identity-recommended"></a>建议 (托管标识) 
+#### <a name="managed-identity-recommended"></a>托管标识（推荐）
 
-当你选择 " **托管标识**" 时，若要设置连接，必须首先向监控范围帐户授予扫描数据源的权限：
+当选择“托管标识”时，若要设置连接，需要先向 Purview 帐户授予扫描数据源的权限：
 
 1. 导航到 ADLS Gen2 存储帐户。
 1. 在左侧导航栏菜单中，选择“访问控制 (IAM)”。 
-1. 选择“+添加”。
-1. 将 **角色** 设置为 " **存储 Blob 数据读取器** "，然后在 " **选择** 输入框" 下输入 Azure 监控范围帐户名称。 然后，选择“保存”，将此角色分配给 Purview 帐户。
+1. 选择“+ 添加”。
+1. 将“角色”设置为“存储 Blob 数据读取者”，然后在“选择”输入框下输入 Azure Purview 帐户名。 然后，选择“保存”，将此角色分配给 Purview 帐户。
 
 > [!Note]
-> 有关更多详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](../storage/common/storage-auth-aad.md)中的步骤
+> 有关更多详情，请参阅[使用 Azure Active Directory 授予对 Blob 和队列的访问权限](../storage/common/storage-auth-aad.md)中的步骤
 
 #### <a name="account-key"></a>帐户密钥
 
-如果选择了 "身份验证方法"，则需要获取访问 **密钥，并** 将其存储在密钥保管库中：
+如果选择的身份验证方法是“帐户密钥”，则需要获取访问密钥，并将其存储在密钥保管库中：
 
 1. 导航到 ADLS Gne2 存储帐户
-1. 选择 **设置 > 访问密钥**
-1. 复制 *密钥* 并将其保存到某个位置，以执行后续步骤
+1. 依次选择“设置”>“访问密钥”
+1. 复制密钥，并将其保存在某个位置，以备后续步骤使用
 1. 导航到你的密钥保管库
 1. 选择“设置”>“机密”
-1. 选择 " **+ 生成/导入**"，并输入存储帐户中的 *密钥***名称** 和 **值**
+1. 选择“+ 生成/导入”，然后输入“名称”和“值”作为存储帐户中的密钥
 1. 选择“创建”以完成
 1. 如果密钥保管库尚未连接到 Purview，则需要[创建新的密钥保管库连接](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
-1. 最后，使用密钥 [创建新凭据](manage-credentials.md#create-a-new-credential) 以设置扫描
+1. 最后，使用密钥[新建凭据](manage-credentials.md#create-a-new-credential)来创建扫描
 
 #### <a name="service-principal"></a>服务主体
 
@@ -90,23 +90,23 @@ Azure Data Lake Storage Gen2 支持以下身份验证方法：
 1. 如果密钥保管库尚未连接到 Purview，则需要[创建新的密钥保管库连接](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
 1. 最后，使用服务主体[创建新凭据](manage-credentials.md#create-a-new-credential)以设置扫描
 
-##### <a name="granting-the-service-principal-access-to-your-adls-gen2-account"></a>授予服务主体对 ADLS gen2 帐户的访问权限
+##### <a name="granting-the-service-principal-access-to-your-adls-gen2-account"></a>向服务主体授予对 ADLS gen2 帐户的访问权限
 
 1. 导航到自己的存储帐户。
 1. 在左侧导航栏菜单中，选择“访问控制 (IAM)”。 
-1. 选择“+添加”。
-1. 将 **角色** 设置为 " **存储 Blob 数据读取器** "，然后在 " **选择** 输入框" 下输入服务主体名称或对象 ID。 然后，选择 " **保存** "，将此角色分配给服务主体。
+1. 选择“+ 添加”。
+1. 将“角色”设置为“存储 Blob 数据读取者”，然后在“选择”输入框下输入服务主体名称或对象 ID。 然后，选择“保存”，以将此角色分配给服务主体。
 ### <a name="firewall-settings"></a>防火墙设置
 
 > [!NOTE]
-> 如果为存储帐户启用了防火墙，则必须在设置扫描时使用 **托管标识** 身份验证方法。
+> 如果为存储帐户启用了防火墙，则必须在创建扫描时使用“托管标识”身份验证方法。
 
-1. 进入[Azure 门户](https://portal.azure.com)中的 ASLS Gen2 存储帐户
-1. 导航到 " **设置" > 网络** 和
-1. **从 "允许访问**" 下选择 **所选网络**
-1. 在 "**例外**" 部分中，选择 "**允许受信任的 Microsoft 服务访问此存储帐户**" 并单击 "**保存**"
+1. 在 [Azure 门户](https://portal.azure.com)中，转到 ASLS Gen2 存储帐户
+1. 依次转到“设置”>“网络”
+1. 在“允许的访问来源”下，选中“选定网络”
+1. 在“异常”部分中，选中“允许受信任的 Microsoft 服务访问此存储帐户”，然后单击“保存”
 
-:::image type="content" source="./media/register-scan-adls-gen2/firewall-setting.png" alt-text="显示防火墙设置的屏幕截图":::
+:::image type="content" source="./media/register-scan-adls-gen2/firewall-setting.png" alt-text="屏幕截图中显示了防火墙设置":::
 
 ## <a name="register-azure-data-lake-storage-gen2-data-source"></a>注册 Azure Data Lake Storage Gen2 数据源
 
@@ -115,13 +115,13 @@ Azure Data Lake Storage Gen2 支持以下身份验证方法：
 1. 导航到你的 Purview 帐户
 2. 在左侧导航区域中选择“源”
 3. 选择“注册”
-4. 在 " **注册源**" 中，选择 **Azure Data Lake Storage Gen2**
+4. 在“注册源”中，选择“Azure Data Lake Storage Gen2” 
 5. 选择“继续”
 
-在 " **注册源" (Azure Data Lake Storage Gen2)** "屏幕上，执行以下操作：
+在“注册源(Azure Data Lake Storage Gen2)”屏幕上，执行以下操作：
 
 1. 输入数据源将在目录中列出的名称。
-2. 选择订阅以筛选存储帐户
+2. 选择你的订阅来筛选存储帐户
 3. 选择存储帐户
 4. 选择一个集合或创建新集合（可选）
 5. 选择“完成”以注册数据源。

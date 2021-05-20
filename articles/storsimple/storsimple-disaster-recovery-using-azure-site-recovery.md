@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
-ms.translationtype: MT
+ms.openlocfilehash: c6152d4b9ee28554efcb5b08b7a2d161a0723852
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301936"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670898"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
 
@@ -37,14 +37,14 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 ## <a name="supported-azure-site-recovery-deployment-options"></a>支持的 Azure Site Recovery 部署选项
 客户可以将文件服务器部署为在 Hyper-V 或 VMware 上运行的物理服务器或虚拟机 (VM)，然后基于从 StorSimple 存储中划分出来的卷创建文件共享。 Azure Site Recovery 可以保护辅助站点或 Azure 中的物理部署与虚拟部署。 本文档详细介绍某个 DR 解决方案，它使用 Azure 作为 Hyper-V 上托管的文件服务器 VM 的恢复站点，在 StorSimple 存储中使用文件共享。 文件服务器 VM 位于 VMware VM 或物理计算机上的其他方案也可以通过类似的方式实现。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 使用 Azure Site Recovery 针对 StorSimple 存储上托管的文件共享实现单键灾难恢复解决方案时，必须满足以下先决条件：
 
    - 已在 Hyper-V 或 VMware 或物理计算机上托管本地 Windows Server 2012 R2 文件服务器 VM
    - 已在 Azure StorSimple Manager 中注册本地 StorSimple 存储设备
    - 已在 Azure StorSimple Manager 中创建 StorSimple 云设备。 设备可以一直处于关闭状态。
    - 已在 StorSimple 存储设备上配置的卷中托管文件共享
-   - 已在 Microsoft Azure 订阅中创建 [Azure Site Recovery 服务保管库](/azure/site-recovery/hyper-v-vmm-azure-tutorial)
+   - 已在 Microsoft Azure 订阅中创建 [Azure Site Recovery 服务保管库](../site-recovery/hyper-v-vmm-azure-tutorial.md)
 
 此外，如果 Azure 是恢复站点，则可以在 VM 上运行 [Azure 虚拟机准备情况评估工具](https://azure.microsoft.com/downloads/vm-readiness-assessment/)，确保这些 VM 与 Azure VM 和 Azure Site Recovery 服务兼容。
 
@@ -93,7 +93,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
       
 1. 单击“下一步”。
 1. 接受 **协议条款**，并单击“下一步”。
-1. 单击“完成”。
+1. 单击“完成”  。
 1. 使用从 StorSimple 存储中划分出来的卷创建文件共享。 有关详细信息，请参阅 [Use the StorSimple Manager service to manage volumes](./index.yml)（使用 StorSimple Manager 服务管理卷）。
    
    1. 在本地 VM 上，按 Windows 键 + Q 并搜索 **iSCSI**。
@@ -104,7 +104,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    1. 创建卷容器，并创建卷。 （这些卷供文件服务器 VM 上的文件共享使用）。 创建卷时，请复制发起程序名称并为“访问控制记录”提供适当的名称。
    1. 选择“配置”选项卡并记下设备的 IP 地址。
    1. 在本地 VM 上，再次转到“iSCSI 发起程序”，并在“快速连接”部分中输入 IP。 单击“快速连接”（设备现在应已连接）。
-   1. 打开 Azure 门户，然后选择 " **卷和设备** " 选项卡。单击 " **自动配置**"。 此时，应该会看到自己创建的卷。
+   1. 打开 Azure 门户，并选择“卷和设备”选项卡。单击“自动配置”。 此时，应该会看到自己创建的卷。
    1. 在门户中选择“设备”选项卡，并选择“创建新虚拟设备”。 （此虚拟设备会在发生故障转移时使用）。 可将此新虚拟设备保持脱机状态，以免产生额外的费用。 要使虚拟机脱机，请转到门户的“虚拟机”部分，并关闭该虚拟机。
    1. 返回本地 VM 并打开磁盘管理（按 Windows 键 + X 并选择“磁盘管理”）。
    1. 可以看到一些附加的磁盘（数量取决于创建的卷数）。 右键单击第一个磁盘，选择“初始化磁盘”，并选择“确定”。 右键单击“未分配”部分，选择“新建简单卷”，为卷分配一个盘符，并完成向导操作。
@@ -112,7 +112,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    1. 使用文件和存储服务角色在这些卷上创建文件共享。
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>创建和准备 Azure Site Recovery 保管库
-在保护文件服务器 VM 之前，请参阅 [Azure Site Recovery 文档](/azure/site-recovery/)了解 Azure Site Recovery。
+在保护文件服务器 VM 之前，请参阅 [Azure Site Recovery 文档](../site-recovery/index.yml)了解 Azure Site Recovery。
 
 #### <a name="to-enable-protection"></a>启用保护
 1. 通过 Azure Site Recovery 将 iSCSI 目标与要保护的本地 VM 断开连接：
@@ -124,7 +124,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    > [!NOTE]
    > 这会导致文件共享暂时不可用。
    
-1. 通过 Azure Site Recovery 门户为文件服务器 VM [启用虚拟机保护](/azure/site-recovery/hyper-v-azure-tutorial)。
+1. 通过 Azure Site Recovery 门户为文件服务器 VM [启用虚拟机保护](../site-recovery/hyper-v-azure-tutorial.md)。
 1. 初始同步开始时，可以再次重新连接目标。 转到 iSCSI 发起程序，选择 StorSimple 设备，并单击“连接”。
 1. 当同步完成且 VM 的状态为“受保护”时，请选择 VM，选择“配置”选项卡，并相应地更新 VM 的网络（这是已故障转移的 VM 所属的网络）。 如果网络未显示，则表示同步仍在进行。
 
@@ -170,14 +170,14 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    
 1. 在自动化帐户中，依次单击“变量”**“添加变量”** &gt; ，再添加以下变量。 可以选择将这些资产加密。 这些变量为恢复计划专属。 如果恢复计划（将在下一步中创建）名为 TestPlan，变量应为 TestPlan-StorSimRegKey、TestPlan-AzureSubscriptionName 等。
 
-   - **BaseUrl**：Azure 云的资源管理器 URL。 使用 **AzEnvironment | Select-Object 名称、ResourceManagerUrl** cmdlet 获取。
+   - **BaseUrl**：Azure 云的资源管理器 URL。 使用“Get-AzEnvironment | Select-Object Name, ResourceManagerUrl”cmdlet 获取。
    - RecoveryPlanName-ResourceGroupName：包含 StorSimple 资源的资源管理器组。
-   - _RecoveryPlanName_**-ManagerName**：包含 storsimple 设备的 storsimple 资源。
-   - _RecoveryPlanName_**-DeviceName**：需要进行故障转移的 StorSimple 设备。
+   - RecoveryPlanName-ManagerName：包含 StorSimple 设备的 StorSimple 资源。
+   - RecoveryPlanName-DeviceName：必须进行故障转移的 StorSimple 设备。
    - RecoveryPlanName-DeviceIpAddress：设备的 IP 地址（可以“StorSimple 设备管理器”部分“设置”&gt; **“网络”** &gt; **“DNS 设置”** &gt; 组下的“设备”选项卡中找到）。
-   - _RecoveryPlanName_**-VolumeContainers**：需要进行故障转移的设备上出现的卷容器的逗号分隔字符串;例如： volcon1、volcon2、volcon3。
-   - _RecoveryPlanName_**-TargetDeviceName**：要对其进行故障转移的 StorSimple 云设备。
-   - _RecoveryPlanName_**-TargetDeviceIpAddress**：目标设备的 IP 地址 (此项可在 " **虚拟机** " 部分的 " &gt; **设置** " "组" " &gt; **网络** " 选项卡) 中找到。
+   - RecoveryPlanName-VolumeContainers：需要进行故障转移的设备上卷容器的逗号分隔字符串。例如，volcon1、volcon2、volcon3。
+   - _RecoveryPlanName_ **-TargetDeviceName**：容器故障转移之后所在的 StorSimple Cloud Appliance。
+   - _RecoveryPlanName_ **-TargetDeviceIpAddress**：目标设备的 IP 地址（可在“虚拟机”部分&gt;“设置”组&gt;“网络”选项卡中找到此地址）。
    - _RecoveryPlanName_**-StorageAccountName**：存储脚本（必须在已故障转移的 VM 上运行）的存储帐户名。 可以是具有一些空间暂时存储脚本的任何存储帐户。
    - _RecoveryPlanName_**-StorageAccountKey**：上述存储帐户的访问密钥。
    - _RecoveryPlanName_**-VMGUIDS**：保护 VM 时，Azure Site Recovery 将为每个 VM分配唯一 ID，该 ID 可提供已故障转移的 VM 的详细信息。 若要获取 VMGUID，请选择“恢复服务”选项卡，然后依次单击“受保护的项”**“保护组”** &gt; **“计算机”** &gt; **“属性”** &gt; 。 如果有多个 VM，请以逗号分隔字符串的形式添加 GUID。
@@ -262,9 +262,9 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
       - Mount-volumes-after-failover Runbook  
       - Uninstall-custom-script-extension Runbook  
         
-   - 在同一个“组 1: 后续步骤”部分中，在上面 4 个脚本后面添加一个手动操作。 通过此操作可以确认所有配置是否正常运行。 此操作只需作为测试故障转移的一部分进行添加 (因此仅) 选择 " **测试故障转移** " 复选框。
+   - 在同一个“组 1: 后续步骤”部分中，在上面 4 个脚本后面添加一个手动操作。 通过此操作可以确认所有配置是否正常运行。 只需为测试故障转移添加此操作（因此选中“测试故障转移”复选框即可）。
     
-   - 执行手动操作后，请使用用于其他 runbook 的相同过程添加 **清理** 脚本。 **保存** 恢复计划。
+   - 执行手动操作后，使用针对其他 runbook 执行的相同过程添加 **Cleanup** 脚本。 **保存** 恢复计划。
     
    > [!NOTE]
    > 运行测试故障转移时，应在手动操作步骤中验证所有配置，因为在目标设备上克隆的 StorSimple 卷会在手动操作完成后执行清理的过程中被删除。

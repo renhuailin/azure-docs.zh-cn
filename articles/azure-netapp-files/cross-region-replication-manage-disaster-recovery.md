@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure NetApp 文件跨区域复制来管理灾难恢复 |Microsoft Docs
+title: 使用 Azure NetApp 文件跨区域复制来管理灾难恢复 | Microsoft Docs
 description: 介绍如何使用 Azure NetApp 文件跨区域复制来管理灾难恢复。
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,96 +12,97 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: eab55f881c250c2e07717604d4ba00587a8b6031
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
-ms.translationtype: MT
+ms.openlocfilehash: 5b1c1a5216b7a1ad5b23167e776f2b0bbb0a578f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243199"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104590987"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>使用跨区域复制管理灾难恢复 
 
-源卷和目标卷之间正在进行复制 (请参阅 [创建卷复制](cross-region-replication-create-peering.md)) 为灾难恢复事件做好准备。 
+源卷和目标卷之间正在进行的复制（请参阅[创建卷复制](cross-region-replication-create-peering.md)）会为灾难恢复事件做好准备。 
 
-发生此类事件时，可以 [故障转移到目标卷](#fail-over-to-destination-volume)，使客户端能够读取和写入目标卷。 
+发生此类事件时，可以[故障转移到目标卷](#fail-over-to-destination-volume)，使客户端能够读取和写入目标卷。 
 
-灾难恢复之后，您可以执行重新 [同步](#resync-replication) 操作，以便故障回复到源卷。 然后，重新 [建立源到目标复制](#reestablish-source-to-destination-replication) 并重新装载源卷以供客户端访问。 
+灾难恢复后，可以执行[重新同步](#resync-replication)操作，将故障转移回源卷。 然后，[重新建立源到目标的复制](#reestablish-source-to-destination-replication)并重新装载源卷以供客户端访问。 
 
 详细信息如下所述。 
 
 ## <a name="fail-over-to-destination-volume"></a>故障转移到目标卷
 
-需要激活目标卷时 (例如，要故障转移到目标区域) 时，需要中断复制对等互连，并装载目标卷。  
+需要激活目标卷时（例如要故障转移到目标区域时）时，需要中断复制对等互连，然后装载目标卷。  
 
-1. 若要中断复制对等互连，请选择目标卷。 在 "存储服务" 下单击 " **复制** "。  
+1. 若要中断复制对等互连，请选择目标卷。 单击“存储服务”下的“复制”。  
 
-2.  继续之前，请检查以下字段：  
-    * 确保镜像状态显示为 "已 **镜像**"。   
-        如果镜像状态显示 _Uninitialized *，请不要尝试中断复制对等互连。
-    * 确保 "关系状态" 显示 * "**空闲**"。   
-        如果关系状态显示 _Transferring *，请不要尝试中断复制对等互连。   
+2.  继续操作前，请检查以下字段：  
+    * 确保镜像状态显示为“已进行镜像处理”。   
+        如果镜像状态显示为“未初始化”，请不要尝试中断复制对等互连。
+    * 确保关系状态显示为“空闲”。   
+        如果关系状态显示“正在传输”，请不要尝试中断复制对等互连。   
 
-    请参阅 [显示复制关系的运行状况状态](cross-region-replication-display-health-status.md)。 
+    请参阅[显示复制关系的运行状况](cross-region-replication-display-health-status.md)。 
 
-3.  单击 " **中断对等互连**"。  
+3.  单击“中断对等互连”。  
 
-4.  在出现提示时键入 **Yes** ，然后单击 " **中断** " 按钮。 
+4.  在出现提示时键入“是”，然后单击“中断”按钮 。 
 
     ![中断复制对等互连](../media/azure-netapp-files/cross-region-replication-break-replication-peering.png)
 
-5.  按照为 [Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)中的步骤，装载目标卷。   
+5.  请按照[为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)中的步骤装载目标卷。   
     此步骤使客户端能够访问目标卷。
 
 ## <a name="resync-volumes-after-disaster-recovery"></a><a name="resync-replication"></a>灾难恢复后重新同步卷
 
-灾难恢复之后，可以通过执行重新同步操作来重新激活源卷。  重新同步操作将反转复制过程，并将数据从目标卷同步到源卷。  
+灾难恢复后，可以通过执行重新同步操作来重新激活源卷。  重新同步操作将反向执行复制过程，并将数据从目标卷同步到源卷。  
 
 > [!IMPORTANT] 
-> 重新同步操作用目标卷数据覆盖源卷数据。  UI 会提醒您可能会丢失数据。 在操作开始之前，系统将提示您确认重新同步操作。
+> 重新同步操作会使用目标卷数据覆盖源卷数据。  UI 会向发出警告，提示这可能丢失数据。 在操作开始前，系统将提示你确认重新同步操作。
 
-1. 若要重新同步复制，请选择 *源* 卷。 在 "存储服务" 下单击 " **复制** "。 然后单击 "重新 **同步**"。  
+1. 若要重新同步复制，请选择“源”卷。 单击“存储服务”下的“复制”。 然后单击“重新同步”。  
 
-2. 在出现提示时键入 Yes，然后单击 "重新 **同步** **"** 。 
+2. 在出现提示时键入“是”，然后单击“重新同步” 。 
  
-    ![重新同步复制](../media/azure-netapp-files/cross-region-replication-resync-replication.png)
+    ![重新同步复制内容](../media/azure-netapp-files/cross-region-replication-resync-replication.png)
 
-3. 按照 " [复制关系的运行状况状态](cross-region-replication-display-health-status.md)" 中的步骤，监视源卷运行状况状态。   
-    当 "源卷运行状况" 状态显示以下值时，将完成重新同步操作，并在源卷上捕获在目标卷上所做的更改：   
+3. 通过执行[显示复制关系的运行状况](cross-region-replication-display-health-status.md)中的步骤来监视源卷运行状况。   
+    当源卷运行状况状态显示以下值时，则表示重新同步操作已完成，目标卷上所做的更改现已在源卷上捕获：   
 
-    * 镜像状态： *镜像*  
-    * 传输状态： *空闲*  
+    * 镜像状态：已进行镜像处理  
+    * 传输状态：空闲  
 
-## <a name="reestablish-source-to-destination-replication"></a>重新建立源到目标复制
+## <a name="reestablish-source-to-destination-replication"></a>重新建立源到目标的复制
 
-在从目标到源的重新同步操作完成后，需要再次中断复制对等互连，以便重新建立源到目标复制。 还应重新装载源卷，以便客户端可以访问它。  
+从目标到源的重新同步操作完成后，需要再次中断复制对等互连以重新建立源到目标的复制。 此外，还应重新装载源卷，以便客户端可对其进行访问。  
 
 1. 中断复制对等互连：  
-    a. 选择 *目标* 卷。 在 "存储服务" 下单击 " **复制** "。  
-    b. 继续之前，请检查以下字段：   
-    * 确保镜像状态显示为 "已 **镜像**"。   
-    如果镜像状态显示 _uninitialized *，请不要尝试中断复制对等互连。  
-    * 确保 "关系状态" 显示 * "**空闲**"。   
-    如果关系状态显示 _transferring *，请不要尝试中断复制对等互连。    
+    a. 选择目标卷。 单击“存储服务”下的“复制”。  
+    b. 继续操作前，请检查以下字段：   
+    * 确保镜像状态显示为“已进行镜像处理”。   
+    如果镜像状态显示为“未初始化”，请不要尝试中断复制对等互连。  
+    * 确保关系状态显示为“空闲”。   
+    如果关系状态显示“正在传输”，请不要尝试中断复制对等互连。    
 
-        请参阅 [显示复制关系的运行状况状态](cross-region-replication-display-health-status.md)。 
+        请参阅[显示复制关系的运行状况](cross-region-replication-display-health-status.md)。 
 
-    c. 单击 " **中断对等互连**"。   
-    d. 在出现提示时键入 **Yes** ，然后单击 " **中断** " 按钮。  
+    c. 单击“中断对等互连”。   
+    d. 在出现提示时键入“是”，然后单击“中断”按钮 。  
 
 2. 将源卷与目标卷重新同步：  
-    a. 选择 *目标* 卷。 在 "存储服务" 下单击 " **复制** "。 然后单击 "重新 **同步**"。   
-    b. 在出现提示时键入 **Yes** ，然后单击 "重新 **同步** " 按钮。
+    a. 选择目标卷。 单击“存储服务”下的“复制”。 然后单击“重新同步”。   
+    b. 在出现提示时键入“是”，然后单击“重新同步”按钮 。
 
-3. 按照为 [Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)中的步骤，重新装载源卷。  
-    此步骤使客户端可以访问源卷。
+3. 请按照[为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)中的步骤重新装载源卷。  
+    此步骤使客户端能够访问源卷。
 
 ## <a name="next-steps"></a>后续步骤  
 
 * [跨区域复制](cross-region-replication-introduction.md)
 * [使用跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)
 * [显示复制关系的运行状况](cross-region-replication-display-health-status.md)
+* [重设跨区域复制目标卷的大小](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [卷复制指标](azure-netapp-files-metrics.md#replication)
 * [删除卷复制或卷](cross-region-replication-delete.md)
 * [跨区域复制故障排除](troubleshoot-cross-region-replication.md)

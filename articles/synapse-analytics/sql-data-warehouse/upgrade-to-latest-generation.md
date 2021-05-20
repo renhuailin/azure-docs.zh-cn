@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b5a9d1781bd0498ac6ad74439b1572c52e3c345a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 12ac49154fabbc0ce96390d5fffa5d02d7886324
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96459261"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165994"
 ---
 # <a name="optimize-performance-by-upgrading-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>通过升级 Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）来优化性能
 
@@ -94,7 +94,7 @@ ms.locfileid: "96459261"
 
    原始 Gen1 T-SQL 命令：
 
-   ```SQL
+   ```sql
    ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300') ;
    ```
 
@@ -222,7 +222,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 5. 为数据库创建恢复请求，指定一个第 2 代 ServiceObjectiveName。
 6. 验证异地还原的数据库的状态。
 
-```Powershell
+```powershell
 Connect-AzAccount
 Get-AzSubscription
 Select-AzSubscription -SubscriptionName "<Subscription_name>"

@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: mainframe-rehosting
 ms.openlocfilehash: 84682514d83de9d6a613581d68301efe33cd44ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/24/2021
 ms.locfileid: "104954388"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>将大型机计算转移到 Azure
@@ -97,7 +97,7 @@ M 系列 VM 可纵向扩展为 128 个 vCPU（在编写本文时）。 使用保
 
 - **跨群集负载均衡。** 在此方案中，应用程序可以使用[负载均衡器](../../../../load-balancer/load-balancer-overview.md)或资源管理器将工作负载分散到群集中的多个 VM。 如果需要更多计算容量，可将更多 VM 添加到群集中。
 
-- **虚拟机规模集。** 在此突增方案中，应用程序可以根据 VM 的用途扩展为使用更多[计算资源](../../../../virtual-machine-scale-sets/overview.md)。 当需求下降时，规模集中的 VM 数目也可以下降，从而确保有效利用计算能力。
+- **虚拟机规模集。** 在此突增方案中，应用程序可以根据 VM 使用情况扩展到更多[计算资源](../../../../virtual-machine-scale-sets/overview.md)。 当需求下降时，规模集中的 VM 数目也可以下降，从而确保有效利用计算能力。
 
 - **PaaS 缩放。** Azure PaaS 产品/服务可以缩放计算资源。 例如，[Azure Service Fabric](../../../../service-fabric/service-fabric-overview.md) 可以分配计算资源以适应请求量的增加。
 

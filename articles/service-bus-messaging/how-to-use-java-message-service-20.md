@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/17/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 894821444f74248b73578595df943cb3a0025360
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101698393"
 ---
 # <a name="use-java-message-service-20-api-with-azure-service-bus-premium"></a>将 Java 消息服务 2.0 API 与 Azure 服务总线高级版配合使用
@@ -16,7 +16,7 @@ ms.locfileid: "101698393"
 本文介绍如何使用热门的 **Java 消息服务 (JMS) 2.0** API 通过高级消息队列协议 (AMQP 1.0) 协议与 Azure 服务总结交互。
 
 > [!NOTE]
-> 对 Java 消息服务 (JMS) 2.0 API 的支持仅在 **Azure 服务总线高级层** 上可用。
+> 仅在 Azure 服务总线高级层支持 Java 消息服务 (JMS) 2.0 API。
 >
 
 ## <a name="pre-requisites"></a>先决条件
@@ -29,12 +29,12 @@ ms.locfileid: "101698393"
 
 ### <a name="set-up-a-java-development-environment"></a>设置 Java 开发环境
 
-若要开发 Java 应用程序，需要设置相应的开发环境- 
-   * 安装了 JDK (Java 开发工具包) 或 JRE (Java Runtime Environment) 。
-   * 将 JDK 或 JRE 添加到生成路径和适当的系统变量。
+若要开发 Java 应用程序，需要设置适当的开发环境 - 
+   * 安装 JDK（Java 开发工具包）或 JRE (Java Runtime Environment)。
+   * 在生成路径和适当的系统变量中添加 JDK 或 JRE。
    * 安装 Java IDE 以利用 JDK 或 JRE。 例如 Eclipse 或 IntelliJ。
 
-若要详细了解如何在 Azure 上为 Java 准备开发人员环境，请使用 [本指南](/azure/developer/java/fundamentals/)。
+若要详细了解如何在 Azure 上准备适用于 Java 的开发人员环境，请使用[本指南](/azure/developer/java/fundamentals/)。
 
 ## <a name="what-jms-features-are-supported"></a>支持哪些 JMS 功能？
 
@@ -84,18 +84,18 @@ ms.locfileid: "101698393"
     ```
 
     >[!IMPORTANT]
-    > 尽管名称类似，但 JMS "会话" 和 "服务总线" 会话是完全独立的。
+    > 虽然 JMS“会话”和服务总线“会话”的名称相似，但它们完全不相关。
     >
-    > 在 JMS 1.1 中，Session 是 API 的基本构建基块，它允许创建 MessageProducer、MessageConsumer 和消息本身。 有关更多详细信息，请查看 [JMS API 编程模型](https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html)
+    > 在 JMS 1.1 中，会话是允许创建 MessageProducer、MessageConsumer 和消息本身的 API 的基本构建基块。 有关详细信息，请参阅 [JMS API 编程模型](https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html)
     >
-    > 在服务总线中， [会话](message-sessions.md) 是服务和客户端构造，可对队列和订阅启用 FIFO 处理。
+    > 在服务总线中，[会话](message-sessions.md)是对队列和订阅实现 FIFO 处理的服务和客户端构造。
     >
 
 ### <a name="write-the-jms-application"></a>编写 JMS 应用程序
 
 `Session` 或 `JMSContext` 经过实例化后，对于管理和数据这两方面的操作，应用程序都可以使用熟悉的 JMS API 来执行。
 
-若要查看受支持的 Api，请参阅 [支持的 JMS 功能](how-to-use-java-message-service-20.md#what-jms-features-are-supported) 的列表。
+请参阅[支持的 JMS 功能](how-to-use-java-message-service-20.md#what-jms-features-are-supported)的列表，以了解哪些 API 受支持。
 
 下面是一些用于开始使用 JMS 的示例代码片段 -
 

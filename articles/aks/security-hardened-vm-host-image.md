@@ -8,10 +8,10 @@ ms.date: 09/11/2019
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86244032"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS 代理节点主机 OS 的安全强化
@@ -26,7 +26,7 @@ AKS 群集部署在运行安全优化 OS 的虚拟主机上，该 OS 用于在 A
 经过安全强化的主机 OS 的目标是减少受攻击面，并以安全的方式优化容器部署。
 
 > [!Important]
-> 安全强化 OS 未进行 CIS 基准测试。 虽然存在与 CIS 基准重叠的情况，但此目标不需符合 CIS 标准。 主机操作系统强化的目标是在与 Microsoft 自己的内部主机安全标准一致的安全级别上聚合。
+> 安全强化 OS 未进行 CIS 基准测试。 虽然存在与 CIS 基准重叠的情况，但此目标不需符合 CIS 标准。 主机 OS 强化的目标是在与 Microsoft 自己的内部主机安全标准一致的安全级别上进行聚合。
 
 ## <a name="security-hardening-features"></a>安全强化功能
 

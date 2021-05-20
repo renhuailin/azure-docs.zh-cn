@@ -1,5 +1,5 @@
 ---
-title: Azure 安全日志记录和审核 |Microsoft Docs
+title: Azure 安全日志记录和审核 | Microsoft Docs
 description: 了解 Azure 中提供的日志以及可获取的安全见解。
 services: security
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
 ms.openlocfilehash: 0d85cf6ae501a7d50f20e48543e361149f4b57d0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100580552"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure 安全日志记录和审核

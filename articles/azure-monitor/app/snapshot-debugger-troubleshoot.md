@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102217408"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
@@ -18,25 +18,25 @@ ms.locfileid: "102217408"
 
 可能有许多不同的原因导致未生成快照。 可以先运行快照运行状况检查，确定一些可能的常见原因。
 
-## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>请确保使用适当的 Snapshot Debugger 终结点
+## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>请确保使用了适当的 Snapshot Debugger 终结点
 
 目前唯一需要修改终结点的区域是 [Azure 政府](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights)和 [Azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide)。
 
-对于使用 Application Insights SDK 的应用服务和应用程序，必须使用以下定义的 Snapshot Debugger 支持的替代来更新连接字符串：
+对于使用 Application Insights SDK 的应用服务和应用程序，必须使用如下定义的 Snapshot Debugger 支持的替代来更新连接字符串：
 
 |连接字符串属性    | 美国政府云 | 中国云 |   
 |---------------|---------------------|-------------|
 |SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-有关其他连接替代的详细信息，请参阅 [Application Insights 文档](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides)。
+若要详细了解其他连接替代，请参阅 [Application Insights 文档](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides)。
 
-若要 Function App，必须 `host.json` 使用以下支持的替代更新：
+对于函数应用，必须使用下面支持的替代来更新 `host.json`：
 
 |属性    | 美国政府云 | 中国云 |   
 |---------------|---------------------|-------------|
 |AgentEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-下面是 `host.json` 使用美国政府云代理终结点更新的示例：
+下面是使用美国政府云代理终结点更新的 `host.json` 示例：
 ```json
 {
   "version": "2.0",
@@ -72,9 +72,9 @@ ms.locfileid: "102217408"
 
 请确保在发布的应用程序中使用正确的检测密钥。 通常，从 ApplicationInsights.config 文件中读取检测密钥。 请验证该值是否与在门户中看到的 Application Insights 资源的检测密钥相同。
 
-## <a name="check-tlsssl-client-settings-aspnet"></a><a id="SSL"></a>检查 TLS/SSL 客户端设置 (ASP.NET) 
+## <a name="check-tlsssl-client-settings-aspnet"></a><a id="SSL"></a>检查 TLS/SSL 客户端设置 (ASP.NET)
 
-如果你有一个 ASP.NET 应用程序，该应用程序在虚拟机上 Azure App Service 或 IIS 中承载，则由于缺少 SSL 安全协议，因此应用程序可能无法连接到 Snapshot Debugger 服务。
+如果有 ASP.NET 应用程序托管在虚拟机上的 Azure 应用服务或 IIS 中，则应用程序可能因缺少 SSL 安全协议而无法连接到 Snapshot Debugger 服务。
 
 [Snapshot Debugger 终结点需要 TLS 版本 1.2](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json)。 SSL 安全协议集是由 web.config 的 system.web 部分中的 httpRuntime targetFramework 值启用的规定之一。如果 httpRuntime targetFramework 为 4.5.2 或更低版本，则默认不包含 TLS 1.2。
 
@@ -104,8 +104,8 @@ ms.locfileid: "102217408"
 如果通过门户中的 [Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用了 Snapshot Debugger，则它是由诊断服务站点扩展启用的。
 
 > [!NOTE]
-> Application Insights Snapshot Debugger 的无代码置备安装遵循 .NET Core 支持策略。
-> 有关支持的运行时的详细信息，请参阅 [.Net Core 支持策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
+> Application Insights Snapshot Debugger 的无代码安装遵循 .NET Core 支持策略。
+> 若要详细了解支持的运行时，请参阅 [.Net Core 支持策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
 
 可以转到以下 url 来查看此扩展的“状态”页：`https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 

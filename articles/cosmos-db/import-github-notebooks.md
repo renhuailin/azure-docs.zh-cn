@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.openlocfilehash: f7002b3968e91447a26315f31347ad469aa5daca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101690645"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>将笔记本从 GitHub 存储库导入 Azure Cosmos DB
@@ -57,7 +57,7 @@ ms.locfileid: "101690645"
 
 :::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="编辑笔记本并将更改提交到 GitHub":::
 
-编辑笔记本后，可以将 [其发布到笔记本库](publish-notebook-gallery.md)。 
+编辑笔记本后，可以[将其发布到笔记本库](publish-notebook-gallery.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

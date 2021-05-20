@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂存储过程活动调用 SSIS 包
+title: 使用 Azure 数据工厂调用 SSIS 包 - 存储过程活动
 description: 本文介绍如何使用存储过程活动从 Azure 数据工厂管道调用 SQL Server Integration Services (SSIS) 包。
 author: linda33wj
 ms.service: data-factory
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: 6c831fa1c6351840693f2b10a22f59c5cc424d0f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100392878"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
@@ -23,7 +23,7 @@ ms.locfileid: "100392878"
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="azure-sql-database"></a>Azure SQL 数据库 
-本文中的演练使用 Azure SQL 数据库。 你还可以使用 Azure SQL 托管实例。
+本文中的演练使用 Azure SQL 数据库。 还可使用 Azure SQL 托管实例。
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>创建 Azure-SSIS 集成运行时
 如果还没有 Azure-SSIS 集成运行时，请按照[教程：部署 SSIS 包](../tutorial-deploy-ssis-packages-azure.md)。 无法使用数据工厂版本 1 创建 Azure-SSIS 集成运行时。 
@@ -60,7 +60,7 @@ ms.locfileid: "100392878"
     $DataFactoryName = "ADFTutorialFactory";
     ```
 
-5. 若要创建数据工厂，请运行以下 **AzDataFactory** cmdlet，并使用 $ResGrp 变量中的 Location 和 ResourceGroupName 属性： 
+5. 要创建数据工厂，请运行下面的 New-AzDataFactory cmdlet，使用 $ResGrp 变量中的 Location 和 ResourceGroupName 属性： 
     
     ```powershell       
     $df = New-AzDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
@@ -76,7 +76,7 @@ ms.locfileid: "100392878"
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于 **参与者** 或 **所有者** 角色，或者是 Azure 订阅的 **管理员**。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
-创建链接服务，以将承载 SSIS 目录的 Azure SQL 数据库中的数据库链接到数据工厂。 数据工厂使用此链接服务中的信息连接到 SSISDB 数据库，并执行存储过程来运行 SSIS 包。 
+创建一个链接服务，将托管 SSIS 目录的 Azure SQL 数据库中的数据库链接到数据工厂。 数据工厂使用此链接服务中的信息连接到 SSISDB 数据库，并执行存储过程来运行 SSIS 包。 
 
 1. 在 C:\ADF\RunSSISPackage 文件夹中创建一个名为 AzureSqlDatabaseLinkedService.json 的 JSON 文件，并在其中包含以下内容 ： 
 
@@ -95,7 +95,7 @@ ms.locfileid: "100392878"
         }
     ```
 2. 在 Azure PowerShell 中，切换到 C:\ADF\RunSSISPackage 文件夹 。
-3. 运行 **AzDataFactoryLinkedService** cmdlet 创建链接服务： **AzureSqlDatabaseLinkedService**。 
+3. 运行 New-AzDataFactoryLinkedService cmdlet，创建链接服务：AzureSqlDatabaseLinkedService 。 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
@@ -120,7 +120,7 @@ ms.locfileid: "100392878"
         }
     }
     ```
-2. 运行 **AzDataFactoryDataset** cmdlet 以创建数据集。 
+2. 运行 New-AzDataFactoryDataset cmdlet，创建一个数据集。 
 
     ```powershell
     New-AzDataFactoryDataset $df -File ".\OutputDataset.json"
@@ -162,7 +162,7 @@ ms.locfileid: "100392878"
     }    
     ```
 
-2. 若要创建管道： **RunSSISPackagePipeline**，请运行 **AzDataFactoryPipeline** cmdlet。
+2. 要创建管道 RunSSISPackagePipeline，请运行 New-AzDataFactoryPipeline cmdlet 。
 
     ```powershell
     $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -170,7 +170,7 @@ ms.locfileid: "100392878"
 
 ### <a name="monitor-the-pipeline-run"></a>监视管道运行
 
-1. 运行 **AzDataFactorySlice** 以获取输出数据集的所有切片的详细信息 * *，它是管道的输出表。
+1. 运行 Get-AzDataFactorySlice，获取有关输出数据集**（管道的输出表）的所有切片的详细信息。
 
     ```powershell
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
@@ -184,7 +184,7 @@ ms.locfileid: "100392878"
 
     可以继续运行此 cmdlet，直到切片进入“就绪”状态或“失败”状态。  
 
-    你可以对服务器中的 SSISDB 数据库运行以下查询，以验证是否已执行此包。 
+    可在服务器中针对 SSISDB 数据库运行以下查询，验证是否执行了该包。 
 
     ```sql
     select * from catalog.executions

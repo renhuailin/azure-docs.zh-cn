@@ -1,6 +1,6 @@
 ---
-title: 向 Android 地图添加多边形层 |Microsoft Azure 映射
-description: 了解如何将多边形或圆添加到地图中。 了解如何使用 Azure Maps Android SDK 自定义几何形状，并使其易于更新和维护。
+title: 向 Android 地图添加多边形层 | Microsoft Azure Maps
+description: 了解如何向地图添加多边形或圆形。 了解如何使用 Azure Maps Android SDK 自定义几何形状，并使其易于更新和维护。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 2/26/2021
@@ -10,23 +10,23 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 68d68424e71bcf60bf504ae174b84b9c361b8637
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097255"
 ---
-# <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>向地图添加多边形层 (Android SDK) 
+# <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>向地图添加多边形层 (Android SDK)
 
 本文介绍如何使用多边形层渲染地图上的 `Polygon` 和 `MultiPolygon` 特征几何图形区域。
 
 ## <a name="prerequisites"></a>先决条件
 
-请确保完成 [快速入门：创建 Android 应用](quick-android-map.md) 文档中的步骤。 本文中的代码块可以插入到 maps `onReady` 事件处理程序中。
+请务必完成[快速入门：创建 Android 应用](quick-android-map.md)文档中的步骤。 可以将本文中的代码块插入到地图的 `onReady` 事件处理程序中。
 
 ## <a name="use-a-polygon-layer"></a>使用多边形层
 
-将多边形层连接到数据源并加载到地图上时，它将渲染具有 `Polygon` 和 `MultiPolygon` 特征的区域。 若要创建多边形，请将其添加到数据源，并使用类在多边形层中进行呈现 `PolygonLayer` 。
+将多边形层连接到数据源并加载到地图上时，它将渲染具有 `Polygon` 和 `MultiPolygon` 特征的区域。 要创建多边形，请将其添加到数据源，并使用多边形层通过 `PolygonLayer` 类对其进行渲染。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -91,9 +91,9 @@ map.layers.add(
 
 ::: zone-end
 
-以下屏幕截图显示了使用多边形层呈现多边形区域的上述代码。
+以下屏幕截图显示上述代码使用多边形层渲染了多边形区域。
 
-![呈现填充区域的多边形](media/how-to-add-shapes-to-android-map/android-polygon-layer.png)
+![渲染了填充区域的多边形](media/how-to-add-shapes-to-android-map/android-polygon-layer.png)
 
 ## <a name="use-a-polygon-and-line-layer-together"></a>结合使用多边形和线条层
 
@@ -175,16 +175,16 @@ map.layers.add(
 
 ::: zone-end
 
-下面的屏幕截图显示了上面的代码，该代码使用线条图层渲染了其轮廓。
+以下屏幕截图显示上述代码渲染了一个多边形，并使用线条层渲染了多边形的轮廓。
 
-![呈现填充区域和轮廓的多边形](media/how-to-add-shapes-to-android-map/android-polygon-and-line-layer.png)
+![渲染了填充区域和轮廓的多边形](media/how-to-add-shapes-to-android-map/android-polygon-and-line-layer.png)
 
 > [!TIP]
-> 当使用线条层来显示多边形的轮廓时，请确保在多边形中关闭所有环，使每个点数组具有相同的起点和终点。 如果未执行此操作，则线条层可能不会将多边形的最后一个点连接到第一个点。
+> 当使用线条层勾勒多边形轮廓时，请确保闭合多边形中的所有环，使每组点的起点和终点相同。 如果不这样做，线条层可能不会将多边形的最后一个点连接到第一个点。
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>使用图案填充多边形
 
-除了为多边形填充颜色之外，还可以使用图像图案来进行填充。 将图像模式加载到地图图像 sprite 资源，然后使用多边形层的选项引用此图像 `fillPattern` 。
+除了为多边形填充颜色之外，还可以使用图像图案来进行填充。 将图像图案加载到地图图像子画面资源中，然后使用多边形层的 `fillPattern` 选项引用该图像。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -253,15 +253,15 @@ map.layers.add(
 
 ::: zone-end
 
-对于本示例，以下图像已加载到应用程序的 "图形" 文件夹中。
+对于本示例，以下图像已加载到应用的可绘制资源文件夹中。
 
 | ![紫色箭头图标图像](media/how-to-add-shapes-to-android-map/fill-checker-red.png)|
 |:-----------------------------------------------------------------------:|
 | fill_checker_red.png                                                    |
 
-下面是上面代码的屏幕截图，它在地图上呈现一个带有填充模式的多边形。
+以下屏幕截图显示上述代码在地图上渲染了一个带有填充图案的多边形。
 
-![在地图上呈现填充模式的多边形](media/how-to-add-shapes-to-android-map/android-polygon-pattern.jpg)
+![地图上渲染了填充图案的多边形](media/how-to-add-shapes-to-android-map/android-polygon-pattern.jpg)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 教程：为 HelloID 配置自动用户预配 Azure Active Directory |Microsoft Docs
-description: 了解如何自动将用户 Azure AD 帐户预配到 HelloID 以及取消其预配。
+title: 教程：使用 Azure Active Directory 为 HelloID 配置自动用户预配 | Microsoft Docs
+description: 了解如何将用户帐户从 Azure AD 自动预配到 HelloID 及如何取消预配。
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 01/15/2021
 ms.author: Zhchia
 ms.openlocfilehash: 58de459002b449ecc50840ee7e217c6a01b9676e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101643884"
 ---
 # <a name="tutorial-configure-helloid-for-automatic-user-provisioning"></a>教程：为 HelloID 配置自动用户预配
 
-本教程介绍了需要在 HelloID 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到 [HelloID](https://www.helloid.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
+本教程介绍在 HelloID 和 Azure Active Directory (Azure AD) 中配置自动用户预配所要执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [HelloID](https://www.helloid.com/) 并自动取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
 > * 在 HelloID 中创建用户
-> * 当用户不再需要访问权限时，删除 HelloID 中的用户
-> * 使用户属性在 Azure AD 和 HelloID 之间保持同步
+> * 在用户不再有访问需求的情况下，在 HelloID 中删除用户
+> * 使用户属性在 Azure AD 与 HelloID 之间保持同步
 > * 在 HelloID 中预配组和组成员身份
 
 ## <a name="prerequisites"></a>先决条件
@@ -46,50 +46,50 @@ ms.locfileid: "101643884"
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
-3. 确定要 [在 Azure AD 与 HelloID 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
+3. 确定要[在 Azure AD 与 HelloID 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-helloid-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 HelloID 以支持 Azure AD 的预配
+## <a name="step-2-configure-helloid-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 HelloID 以支持通过 Azure AD 进行预配
 
 1. 登录到 HelloID 管理员仪表板。
 
     ![HelloID 管理员登录](media/helloid-provisioning-tutorial/admin-sign-in.png)
 
-2. 中转到 **目录**  >  **Azure AD**。
+2. 转到“目录” > “Azure AD” 。
 
-    ![Directory > Azure AD](media/helloid-provisioning-tutorial/directory-azure-ad.png)
+    ![“目录”>“Azure AD”](media/helloid-provisioning-tutorial/directory-azure-ad.png)
 
-3. 选择 " **新建密钥** " 按钮。 
+3. 选择“新建机密”按钮。 
 
-    ![新建机密按钮](media/helloid-provisioning-tutorial/new-secret.png)
+    ![“新建机密”按钮](media/helloid-provisioning-tutorial/new-secret.png)
 
-4. 将自动填充 " **URL** " 和 " **机密** " 字段。 复制并保存 URL 和密码。 这些值将输入到 Azure 门户中的 HelloID 应用程序的 "设置" 选项卡上的 " **租户 URL** " 和 " **机密令牌** " 字段中。
+4. 系统会自动填充“URL”和“机密”字段 。 复制并保存 URL 和机密。 在 Azure 门户的 HelloID 应用程序“预配”选项卡中，会将这些值输入“租户 URL”和“机密令牌”字段 。
 
     ![URL 和生成的机密](media/helloid-provisioning-tutorial/url-secret.png)
 
 ## <a name="step-3-add-helloid-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 HelloID
 
-从 Azure AD 应用程序库中添加 HelloID，开始管理预配到 HelloID。 如果以前为 SSO 设置了 HelloID，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
+从 Azure AD 应用程序库添加 HelloID，开始管理 HelloID 的预配。 如果之前已经为 SSO 设置过 HelloID，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
 使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
-* 将用户和组分配到 HelloID 时，必须选择 " **默认" 访问权限** 以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
+* 将用户和组分配到 HelloID 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-helloid"></a>步骤 5。 配置 HelloID 的自动用户预配 
 
-本部分将指导你完成以下步骤：配置 Azure AD 预配服务，以便基于 Azure AD 中的用户和/或组分配在 HelloID 中创建、更新和禁用用户和/或组。
+本部分逐步介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和/或组分配在 HelloID 中创建、更新和禁用用户和/或组。
 
-### <a name="to-configure-automatic-user-provisioning-for-helloid-in-azure-ad"></a>若要在 Azure AD 中配置 HelloID 的自动用户预配：
+### <a name="to-configure-automatic-user-provisioning-for-helloid-in-azure-ad"></a>要在 Azure AD 中为 HelloID 配置自动用户预配，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择 " **HelloID**"。
+2. 在应用程序列表中，选择“HelloID”。
 
     ![应用程序列表中的 HelloID 链接](common/all-applications.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "101643884"
 
     ![“预配”选项卡“自动”](common/provisioning-automatic.png)
 
-5. 在 " **管理员凭据** " 部分中，输入你的 HELLOID 租户 URL 和机密令牌。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 HelloID。 如果连接失败，请确保 HelloID 帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分，输入 HelloID 租户 URL 和机密令牌。 单击“测试连接”以确保 Azure AD 可以连接到 HelloID。 如果连接失败，请确保 HelloID 帐户具有管理员权限，然后重试。
 
     ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -111,9 +111,9 @@ ms.locfileid: "101643884"
 
 7. 选择“保存”。
 
-8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 HelloID**"。
+8. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 HelloID” 。
 
-9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 HelloID 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 HelloID 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](../app-provisioning/customize-application-attributes.md)，将需要确保 HelloID API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改  。
+9. 在“特性映射”部分中，查看从 Azure AD 同步到 HelloID 的用户特性。 选为“匹配”属性的特性用于匹配 HelloID 中的用户帐户以执行更新操作。 如果选择更改[匹配目标特性](../app-provisioning/customize-application-attributes.md)，需要确保 HelloID API 支持基于该特性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|支持筛选|
    |---|---|---|
@@ -125,9 +125,9 @@ ms.locfileid: "101643884"
    |name.familyName|字符串|
    |externalId|字符串|
 
-10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 HelloID**"。
+10. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 HelloID” 。
 
-11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 HelloID 的组属性。 选为 " **匹配** " 属性的特性用于匹配 HelloID 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
+11. 在“属性映射”部分中，查看从 Azure AD 同步到 HelloID 的组属性。 选为“匹配”属性的特性用于匹配 HelloID 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|支持筛选|
       |---|---|---|
@@ -137,11 +137,11 @@ ms.locfileid: "101643884"
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-13. 若要为 HelloID 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
+13. 若要为 HelloID 启用 Azure AD 预配服务，请在“设置”部分将“预配状态”更改为“打开”  。
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-14. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 HelloID 的用户和/或组。
+14. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 HelloID 的用户和/或组 。
 
     ![预配范围](common/provisioning-scope.png)
 

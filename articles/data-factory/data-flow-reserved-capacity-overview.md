@@ -1,49 +1,49 @@
 ---
-title: 节省预留容量的计算成本
-description: 了解如何购买 Azure 数据工厂数据流保留容量以节省计算成本。
+title: 通过预留容量节省计算成本
+description: 了解如何购买 Azure 数据工厂数据流预留容量以节省计算成本。
 ms.topic: conceptual
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: c4d6ebc8d57857deeb2a5cc71867484bd3519ea6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 26a4692603d8e8a80a52ea77bdd56617131cea5d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699668"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104593877"
 ---
-# <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>节省预留容量的资源成本-Azure 数据工厂数据流
+# <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>通过预留容量节省资源成本 - Azure 数据工厂数据流
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-与即用即付价格相比，通过提交到计算资源的预留来节省 Azure 数据工厂的数据流成本。 利用预留容量，你可以在一年或三年的时间内对 ADF 数据流使用作出承诺，以获得有关计算成本的重要折扣。 若要购买保留容量，需要指定 Azure 区域、计算类型、核心计数数量和期限。
+与即用即付价格相比，通过提交计算资源预留可节省 Azure 数据工厂数据流成本。 通过预留容量，可以承诺为期一年或三年的 ADF 数据流使用情况，以获得可观的计算成本折扣。 若要购买预留容量，需要指定 Azure 区域、计算类型、内核计数和期限。
 
-不需要将保留分配给特定的工厂或集成运行时。 现有工厂或新部署的工厂自动获得权益。 通过购买预留，你可以在一年或三年的时间内提交数据流计算成本的使用情况。 一旦购买了预订，就不再按即用即付费率对与预订属性匹配的计算费用收费。 
+无需将预留分配给特定工厂或集成运行时。 现有工厂或新部署的工厂自动获得权益。 购买预留，你承诺在一年或三年内使用的数据流计算成本。 购买预留后，不再像即用即付资费一样收取与预留属性相应的计算费用。 
 
-您可以通过选择[前面或按月支付](../cost-management-billing/reservations/prepare-buy-reservation.md)来购买[预留容量](https://portal.azure.com)。 购买预留容量：
+可以通过选择[提前预留或每月付款](https://portal.azure.com)购买[预留](../cost-management-billing/reservations/prepare-buy-reservation.md)。 购买预留容量：
 
-- 对于至少一个企业或个人订阅，你必须以即用即付费率作为所有者角色。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。 保留容量。
+- 你必须至少是一个采用即用即付费率的企业或个人订阅的所有者角色。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。 预留容量。
 
-有关企业客户和即用即付客户如何针对预订购买付费的详细信息，请参阅 [了解企业注册的 azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 和 [了解即用即付订阅的 azure 保留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
+有关预留购买如何针对企业客户和即用即付客户进行计费的详细信息，请参阅[了解适用于企业注册的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)和[了解即用即付订阅的 Azure 预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
 > [!NOTE]
-> 购买保留容量不会为你使用)  (虚拟机或群集预分配或保留特定的基础结构资源。
+> 购买预留容量不会在你使用时预分配或保留特定的基础结构资源（虚拟机或群集）。
 
-## <a name="determine-proper-azure-ir-sizes-needed-before-purchase"></a>确定在购买前需要适当的 Azure IR 大小
+## <a name="determine-proper-azure-ir-sizes-needed-before-purchase"></a>在购买前确定所需的合适的 Azure IR 大小
 
-预留的大小应基于使用相同计算层的现有或即将部署的数据流所使用的计算总量。
+预留大小应基于使用同一个计算层的现有或即将部署的数据流使用的总计算量。
 
-例如，假设你正在使用使用32核心优化的内存每小时执行一次管道。 接下来，假设你计划在下个月中部署使用常规用途为64核心的其他管道。 我们还假设你知道在至少 1 年的时间内，都需要这些资源。 在这种情况下，请输入每个计算类型所需的核心数为1小时。 在 Azure 门户中，搜索 "预订"。 选择 "数据工厂" > 数据流，并为 "内存优化" 和 "64" 输入32。
+例如，假设使用经 32 核优化的内存每小时执行一个管道。 接下来，假设你计划在下个月部署使用常规用途 64 内核的其他管道。 我们还假设你知道在至少 1 年的时间内，都需要这些资源。 在这种情况下，请输入每个计算类型 1 小时所需的内核数。 在 Azure 门户中，搜索“预留”。 选择“数据工厂”>“数据流”，并为经优化的内存输入“32”，为常规用途输入“64”。
 
 ## <a name="buy-reserved-capacity"></a>购买预留容量
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择“所有服务” > “预订”。
-3. 选择 " **添加** "，然后在 " **购买保留** " 窗格中，选择 " **ADF** 数据流"，为 ADF 数据流购买新的保留。
-4. 填写所选的必填字段和属性，以获取预留容量折扣。 获取折扣的实际数据流数取决于所选的范围和数量。
-5. 在 " **成本** " 部分中查看容量预留的成本。
+3. 选择“添加”，然后在“购买预留”窗格中，选择“ADF 数据流”，为 ADF 数据流购买新的预留。
+4. 填写所选的必填字段和属性，以获取预留容量折扣。 实际获得折扣的数据流数取决于所选范围和数量。
+5. 在“成本”部分查看容量预留成本。
 6. 选择“购买”。
 7. 选择“查看此预订”以查看购买的状态。
 

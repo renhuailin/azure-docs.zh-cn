@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 25ad696ad345fbf672f6bf26eb3f35a13fb03ea5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98019493"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>在 Visual Studio Code 中使用作业关系图在本地调试 Azure 流分析查询
@@ -58,7 +58,7 @@ ms.locfileid: "98019493"
 3. 从下拉列表中选择输入数据源的名称，以查看输入指标。 下方屏幕截图中的输入源名为“quotes”。 有关输入指标的详细信息，请参阅[了解流分析作业监视以及如何监视查询](stream-analytics-monitoring.md)。
 
    > [!div class="mx-imgBorder"]
-   > ![作业关系图输入指标](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
+   > ![作业图输入指标](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
 
 4. 从作业关系图中选择一个查询步骤，或者从下拉列表中选择步骤名称，以查看步骤级别指标。 水印延迟是唯一可用的步骤指标。
 

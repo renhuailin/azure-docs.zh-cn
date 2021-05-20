@@ -1,6 +1,6 @@
 ---
-title: 查找并使用 Azure Marketplace 映像和计划
-description: 使用 Azure PowerShell 查找并使用适用于 Marketplace VM 映像的发布者、产品/服务、SKU、版本和计划信息。
+title: 查找并使用 Azure 市场映像和计划
+description: 使用 Azure PowerShell 来查找并使用发布服务器、产品/服务、SKU 以及市场 VM 映像的版本和计划信息。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -9,15 +9,15 @@ ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
 ms.openlocfilehash: 45e6b157dba5ef7410d8a5c0223fd3ecb52f39d0
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96906261"
 ---
-# <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>使用 Azure Marketplace VM 映像查找并使用 Azure PowerShell     
+# <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>使用 Azure PowerShell 查找并使用 Azure 市场 VM 映像     
 
-本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 然后，你可以在创建 VM 时指定 Marketplace 映像和计划信息。
+本文介绍如何使用 Azure PowerShell 在 Azure 市场中查找 VM 映像。 然后，可以在创建 VM 时指定市场映像和计划信息。
 
 你还可以使用 [Azure 市场](https://azuremarketplace.microsoft.com/)店面、[Azure 门户](https://portal.azure.com)或 [Azure CLI](../linux/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
 
@@ -27,9 +27,9 @@ ms.locfileid: "96906261"
 
 ## <a name="create-a-vm-from-vhd-with-plan-information"></a>使用计划信息从 VHD 创建 VM
 
-如果现有的 VHD 是使用 Azure Marketplace 映像创建的，则在从该 VHD 创建新的 VM 时，可能需要提供购买计划信息。
+如果你有使用 Azure 市场映像创建的现有 VHD，则在从该 VHD 创建新的 VM 时，可能需要提供购买计划信息。
 
-如果仍有原始 VM，或从同一映像创建了另一个 VM，则可以使用 New-azvm 从其获取计划名称、发布者和产品信息。 此示例获取 myResourceGroup 资源组中名为 myVM 的 VM，然后显示购买计划信息 。
+如果你仍有原始 VM 或从同一映像创建的其他 VM，则可以使用 Get-AzVM 从其中获取计划名称、发布者和产品信息。 此示例获取 myResourceGroup 资源组中名为 myVM 的 VM，然后显示购买计划信息 。
 
 ```azurepowershell-interactive
 $vm = Get-azvm `
@@ -38,9 +38,9 @@ $vm = Get-azvm `
 $vm.Plan
 ```
 
-如果在删除原始 VM 之前未获得计划信息，可以 [发出支持请求](https://ms.portal.azure.com/#create/Microsoft.Support)。 它们将需要 VM 名称、订阅 Id 和删除操作的时间戳。
+如果在删除原始 VM 之前未获得计划信息，则可提交[支持请求](https://ms.portal.azure.com/#create/Microsoft.Support)。 他们将需要 VM 名称、订阅 ID 和删除操作的时间戳。
 
-若要使用 VHD 创建 VM，请参阅此文章 [从专用 Vhd 创建 vm](create-vm-specialized.md) ，并添加一行，使用 [AzVMPlan](/powershell/module/az.compute/set-azvmplan) ，将计划信息添加到 vm 配置：
+若要使用 VHD 创建 VM，请参阅[从专用 VHD 创建 VM](create-vm-specialized.md) 一文，并添加一行，使用 [Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) 将计划信息添加到 VM 配置，如下所示：
 
 ```azurepowershell-interactive
 $vmConfig = Set-AzVMPlan `
@@ -50,11 +50,11 @@ $vmConfig = Set-AzVMPlan `
    -Name "planName"
 ```
 
-## <a name="create-a-new-vm-from-a-marketplace-image"></a>从 marketplace 映像创建新 VM
+## <a name="create-a-new-vm-from-a-marketplace-image"></a>从市场映像创建新 VM
 
-如果你已有要使用的映像的相关信息，可以将该信息传递到 [AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) cmdlet，以便将映像信息添加到 VM 配置。 请参阅下一节，了解如何搜索和列出 marketplace 中提供的映像。
+如果已有要使用的映像的相关信息，可以将该信息传递到 [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) cmdlet，以将映像信息添加到 VM 配置。 请参阅后续部分，了解如何搜索和列出市场中可用的映像。
 
-某些付费图像还要求使用 [AzVMPlan](/powershell/module/az.compute/set-azvmplan)提供购买计划信息。 
+某些付费映像还要求使用 [Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) 提供购买计划信息。 
 
 ```powershell
 ...
@@ -76,9 +76,9 @@ $vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $produ
 ...
 ```
 
-然后，将 VM 配置与其他配置对象一起传递给 `New-AzVM` cmdlet。 有关将 VM 配置与 PowerShell 配合使用的详细示例，请参阅此 [脚本](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine/create-vm-detailed/create-windows-vm-detailed.ps1)。
+然后将 VM 配置与其他配置对象一起传递给 `New-AzVM` cmdlet。 有关将 VM 配置与 PowerShell 配合使用的详细示例，请参阅此[脚本](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine/create-vm-detailed/create-windows-vm-detailed.ps1)。
 
-如果收到有关接受映像的条款的消息，请参阅本文后面的 [接受条款](#accept-the-terms) 部分。
+如果收到有关接受映像条款的消息，请参阅本文后面的[接受条款](#accept-the-terms)部分。
 
 ## <a name="list-images"></a>列出映像
 
@@ -242,7 +242,7 @@ DataDiskImages   : []
 
 ```
 
-下面的示例显示了一个与 *Data Science Virtual Machine-Windows 2016* 映像类似的命令，该命令具有以下 `PurchasePlan` 属性： `name` 、 `product` 和 `publisher` 。 某些映像还具有 `promotion code` 属性。 若要部署此映像，请参阅以下部分，以接受条款并启用编程式部署。
+以下示例显示了适用于 *Data Science Virtual Machine - Windows 2016* 映像的类似命令，该映像具有以下 `PurchasePlan` 属性：`name`、`product` 和 `publisher`。 某些映像还具有 `promotion code` 属性。 若要部署此映像，请参阅以下部分，以接受条款并启用编程式部署。
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"

@@ -12,21 +12,21 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
 ms.openlocfilehash: 17ea6716f090144e8dfef16721bfb69dc23e9912
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100589329"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>使用智能见解排查 Azure SQL 数据库和 Azure SQL 托管实例的性能问题
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-本页提供有关通过[智能见解](intelligent-insights-overview.md)资源日志检测到的 Azure SQL 数据库和 Azure SQL 托管实例性能问题的信息。 可以将指标和资源日志流式传输到 [Azure Monitor 日志](../../azure-monitor/insights/azure-sql.md)、 [azure 事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)、 [azure 存储](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
+本页提供有关通过[智能见解](intelligent-insights-overview.md)资源日志检测到的 Azure SQL 数据库和 Azure SQL 托管实例性能问题的信息。 指标和资源日志可以流式传输到 [Azure Monitor 日志](../../azure-monitor/insights/azure-sql.md)、[Azure 事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)、[Azure 存储](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或用于自定义 DevOps 警报和报告功能的第三方解决方案中。
 
 > [!NOTE]
-> 有关使用智能见解的快速性能故障排除指南，请参阅本文档中的 [建议的故障排除流程](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) 流程图。
+> 有关使用智能见解快速排查性能问题的指南，请参阅本文档中的[建议故障排除流](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)流程图。
 >
-> 智能见解是一项预览功能，在以下区域中不可用：西欧、北欧、美国西部1和美国东部1。
+> 智能见解是一项预览功能，在以下区域中不可用：欧洲西部、欧洲北部、美国西部 1 和美国东部 1。
 
 ## <a name="detectable-database-performance-patterns"></a>可检测的数据库性能模式
 
@@ -323,16 +323,16 @@ MAXDOP 服务器配置选项用于控制并行执行同一查询时可以使用�
 
 通过在 Azure 门户中转到 Azure SQL Analytics 来访问 Intelligent Insights。 尝试找到传入的性能警报并选择它。 在检测页上确定发生了什么情况。 观察提供的问题根本原因分析、查询文本、查询时间趋势和事件演变情况。 使用用于缓解性能问题的 Intelligent Insights 建议来尝试解决问题。
 
-[![流程图疑难解答](./media/intelligent-insights-troubleshoot-performance/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
+[![故障排除流程图](./media/intelligent-insights-troubleshoot-performance/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
 > [!TIP]
 > 选择可下载 PDF 版本的流程图。
 
-Intelligent Insights 通常需要花费一小时来针对性能问题执行根本原因分析。 如果在 Intelligent Insights 中找不到问题，而该问题又很重要，则请使用查询存储手动确定性能问题的根本原因。  (通常情况下，这些问题早于一小时。 ) 有关详细信息，请参阅 [使用查询存储监视性能](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
+Intelligent Insights 通常需要花费一小时来针对性能问题执行根本原因分析。 如果在 Intelligent Insights 中找不到问题，而该问题又很重要，则请使用查询存储手动确定性能问题的根本原因。 （通常情况下，这些问题是不到一小时之前的问题。）有关详细信息，请参阅[使用查询存储监视性能](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [Intelligent Insights](intelligent-insights-overview.md) 概念。
 - 使用[智能见解性能诊断日志](intelligent-insights-use-diagnostics-log.md)。
-- 使用 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md)进行监视。
+- 使用 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) 进行监视。
 - 了解如何[从 Azure 资源收集和使用日志数据](../../azure-monitor/essentials/platform-logs-overview.md)。

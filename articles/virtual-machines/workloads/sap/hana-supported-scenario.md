@@ -3,7 +3,7 @@ title: Azure SAP HANA（大型实例）的支持方案 | Microsoft Docs
 description: Azure SAP HANA（大型实例）的支持方案及其体系结构详细信息
 services: virtual-machines-linux
 documentationcenter: ''
-author: Ajayan1008
+author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/26/2019
-ms.author: madhukan
+ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e1868514919cdb40a0ac607b446ab944e8c36da
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: a49c55da0bb8018b3faa7c6f70b02e79d9478603
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738835"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101666683"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型实例的支持方案
 本文介绍了 HANA 大型实例 (HLI) 的支持方案和体系结构详细信息。

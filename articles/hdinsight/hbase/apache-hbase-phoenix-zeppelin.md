@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: ff963e661a2b258c1eb452ed63f41f4e7d84c6a0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944765"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867774"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>使用 Apache Zepperin 在 Azure HDInsight 中的 Apache HBase 上运行 Apache Phoenix 查询
 
@@ -28,70 +28,70 @@ HDInsight 上的 Apache HBase 群集。 请参阅 [Apache HBase 入门](./apache
 
 1. 请将以下 URL 中的 `CLUSTERNAME` 替换为你的群集的名称：`https://CLUSTERNAME.azurehdinsight.net/zeppelin`。 然后在 Web 浏览器中输入该 URL。 输入群集登录用户名和密码。
 
-1. 在 Zeppelin 页上，选择“创建新笔记”  。
+1. 在 Zeppelin 页上，选择“创建新笔记”。
 
-    ![HDInsight 交互式查询 zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png" alt-text="HDInsight 交互式查询 zeppelin" border="true":::
 
-1. 在“创建新笔记”对话框中，键入或选择以下值： 
+1. 在“创建新笔记”对话框中，键入或选择以下值：
 
-    - 笔记名称：输入笔记的名称。
-    - 默认解释器：从下拉列表中选择“jdbc”。 
+   - 笔记名称：输入笔记的名称。
+   - 默认解释器：从下拉列表中选择“jdbc”。
 
-    然后选择“创建笔记”  。
+   然后选择“创建笔记”。
 
 1. 确保笔记本标题显示“已连接”状态。 该状态由右上角的一个绿点表示。
 
-    ![Zeppelin 笔记本状态](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin 笔记本状态")
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png" alt-text="Zeppelin 笔记本状态" border="true":::
 
 1. 创建一个 HBase 表。 输入以下命令，然后按 **Shift + Enter**：
 
-    ```sql
-    %jdbc(phoenix)
-    CREATE TABLE Company (
-        company_id INTEGER PRIMARY KEY,
-        name VARCHAR(225)
-    );
-    ```
+   ```sql
+   %jdbc(phoenix)
+   CREATE TABLE Company (
+       company_id INTEGER PRIMARY KEY,
+       name VARCHAR(225)
+   );
+   ```
 
-    第一行中的 **%jdbc(phoenix)** 语句告诉笔记本使用 Phoenix JDBC 解释器。
+   第一行中的 **%jdbc(phoenix)** 语句告诉笔记本使用 Phoenix JDBC 解释器。
 
 1. 查看已创建的表。
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT DISTINCT table_name
-    FROM SYSTEM.CATALOG
-    WHERE table_schem is null or table_schem <> 'SYSTEM';
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT DISTINCT table_name
+   FROM SYSTEM.CATALOG
+   WHERE table_schem is null or table_schem <> 'SYSTEM';
+   ```
 
 1. 在表中插入值。
 
-    ```sql
-    %jdbc(phoenix)
-    UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
-    UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
-    ```
+   ```sql
+   %jdbc(phoenix)
+   UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
+   UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
+   ```
 
 1. 查询表。
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT * FROM dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT * FROM dbo.Company;
+   ```
 
 1. 删除记录。
 
-    ```sql
-    %jdbc(phoenix)
-    DELETE FROM dbo.Company WHERE COMPANY_ID=1;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DELETE FROM dbo.Company WHERE COMPANY_ID=1;
+   ```
 
 1. 删除表。
 
-    ```sql
-    %jdbc(phoenix)
-    DROP TABLE dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DROP TABLE dbo.Company;
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 

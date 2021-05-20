@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e9c4489f59f72e4d0b5c7a0b911da188eb0828c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89280190"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
@@ -34,21 +34,21 @@ ms.locfileid: "89280190"
 
 - 用户登录到基于 Web 浏览器的应用程序。
 - 用户使用旧版协议（例如 Exchange ActiveSync、EAS、SMTP、POP 和 IMAP）登录 Outlook 客户端。
-- 用户登录到旧版 Office 客户端应用程序和支持 [新式身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)的 office 应用程序： Office 2013 和2016版本。
+- 用户登录到旧版 Office 客户端应用程序和支持[新式身份验证](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)的 Office 应用程序：Office 2013 和 2016 版本。
 - 用户登录到旧版协议的应用程序，例如 PowerShell 1.0 版本等。
 - 适用于 Windows 10 设备的 Azure AD 联接。
 - 进行多重身份验证的应用密码。
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
-_不_支持以下方案：
+_不_ 支持以下方案：
 
 - 检测[凭据泄露](../identity-protection/overview-identity-protection.md)的用户。
-- Azure AD 域服务需要在租户上启用密码哈希同步。 因此，_仅_使用传递身份验证的租户不适用于需要 Azure AD 域服务的方案。
+- Azure AD 域服务需要在租户上启用密码哈希同步。 因此，_仅_ 使用传递身份验证的租户不适用于需要 Azure AD 域服务的方案。
 - 直通身份验证未与 [Azure AD Connect Health](./whatis-azure-ad-connect.md) 集成。
 
 > [!IMPORTANT]
-> 仅__ 作为不支持方案的变通方法（除 Azure AD Connect Health 集成），可在 Azure AD Connect 向导中的[可选功能](how-to-connect-install-custom.md#optional-features)页上启用“密码哈希同步”。
+> 仅作为不支持方案的变通方法（除 Azure AD Connect Health 集成），可在 Azure AD Connect 向导中的[可选功能](how-to-connect-install-custom.md#optional-features)页上启用“密码哈希同步”。
 > 
 > [!NOTE]
 > 此外，启用“密码哈希同步”还可以选择在本地基础结构被破坏的情况下故障转移身份验证。 这种从传递身份验证到密码哈希同步的故障转移不是自动进行的。 需要使用 Azure AD Connect 手动切换登录方法。 如果运行 Azure AD Connect 的服务器出现故障，则需要 Microsoft 支持部门的帮助以关闭传递身份验证。
