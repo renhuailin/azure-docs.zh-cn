@@ -5,15 +5,15 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
 ms.openlocfilehash: f9b6e0d862d17badb1caa672852214cdd86abb49
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98930822"
 ---
 # <a name="scenario-reducer-is-slow-in-azure-hdinsight"></a>方案：Azure HDInsight 中的化简器速度缓慢
 
-本文介绍在 Azure HDInsight 群集中使用交互式查询组件时出现的问题的故障排除步骤和可能的解决方法。
+本文介绍在 Azure HDInsight 群集中使用交互式查询组件时出现的问题的故障排除步骤和可能的解决方案。
 
 ## <a name="issue"></a>问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "98930822"
 
 1. 尝试将要规范化的数据重新分区成多个分区。
 
-1. 如果方法 #1 不可行，请在 beeline 会话中将配置值设置为 false，然后重试查询。 `set hive.optimize.sort.dynamic.partition=false`。 不建议在群集级别将值设置为 false。 `true` 值是最佳的；请根据数据和查询的性质按需设置参数。
+1. 如果方法 #1 不可行，请在 beeline 会话中将配置值设置为 false，然后重试查询。 `set hive.optimize.sort.dynamic.partition=false`. 不建议在群集级别将值设置为 false。 `true` 值是最佳的；请根据数据和查询的性质按需设置参数。
 
 ## <a name="next-steps"></a>后续步骤
 

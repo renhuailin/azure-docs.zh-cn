@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 管理 Azure CDN | Microsoft Docs
-description: 使用本教程来了解如何使用 PowerShell 管理 Azure 内容分发网络终结点配置文件和终结点的各个方面。
+description: 使用本教程来学习如何使用 PowerShell 管理 Azure 内容分发网络终结点配置文件和终结点的各个方面。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,16 +15,16 @@ ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
 ms.openlocfilehash: b5fa1cedf4cc5e87d11dc4b5c453d9cb2a307c3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88192655"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>使用 PowerShell 管理 Azure CDN
 PowerShell 提供了一种最灵活的方法来管理 Azure CDN 配置文件和终结点。  可以使用 PowerShell 以交互方式或通过编写脚本来自动执行管理任务。  本教程演示了使用 PowerShell 可以完成的几个最常见的任务来管理 Azure CDN 配置文件和终结点。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -251,7 +251,7 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Start-AzCdnEndpoint
 ```
 
 ## <a name="creating-standard-rules-engine-policy-and-applying-to-an-existing-cdn-endpoint"></a>创建标准规则引擎策略并将其应用于现有 CDN 终结点
-`New-AzCdnDeliveryRule`、 `New=AzCdnDeliveryRuleCondition` 和 `New-AzCdnDeliveryRuleAction` 可用于在 Microsoft 配置文件 Azure CDN 上配置 Azure CDN 标准规则引擎。 
+`New-AzCdnDeliveryRule`、`New=AzCdnDeliveryRuleCondition` 和 `New-AzCdnDeliveryRuleAction` 可用于从 Microsoft 配置文件配置 Azure CDN 上的 Azure CDN 标准规则引擎。 
 
 ```powershell
 # Create a new http to https redirect rule

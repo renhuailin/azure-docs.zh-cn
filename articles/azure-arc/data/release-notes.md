@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 04/29/2021
+ms.date: 05/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: f062782ec2b28ca155b49c9d6ecd5c169c0430eb
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 58dd7baa612e2dcf302ce87b2d77cd0e71f90187
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286827"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763840"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>发行说明 - 已启用 Azure Arc 的数据服务（预览版）
 
@@ -60,6 +60,7 @@ ms.locfileid: "108286827"
 - 在直接连接模式下，使用 `azdata arc dc upload` 上传使用量、指标和日志当前已被阻止。 使用量会自动上传。 在间接连接模式下创建的数据控制器的上传应继续工作。
 - 如果通过 `–proxy-cert <path-t-cert-file>` 使用代理，则在直接连接模式下自动上传使用量数据将失败。
 - 已启用 Azure Arc 的 SQL 托管实例和已启用 Azure Arc 的超大规模 PostgreSQL 均未通过 GB18030 认证。
+- 目前，在直接连接模式下仅支持每个 kubernetes 群集有一个 Azure Arc 数据控制器。
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例
 

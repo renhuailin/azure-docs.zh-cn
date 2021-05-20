@@ -1,6 +1,6 @@
 ---
-title: 设计用于数据修改的 Azure 表存储 |Microsoft Docs
-description: 用于在 Azure 表存储中进行数据修改的设计表。 优化插入、更新和删除操作。 确保存储实体中的一致性。
+title: 针对数据修改设计 Azure 表存储 | Microsoft Docs
+description: 针对 Azure 表存储中的数据修改对表进行设计。 优化插入、更新和删除操作。 确保存储实体中的一致性。
 services: storage
 ms.service: storage
 author: tamram
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: 25785bc4b945f469e67f2a71eb6676940e091d56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88236754"
 ---
 # <a name="design-for-data-modification"></a>针对数据修改的设计
@@ -33,14 +33,14 @@ ms.locfileid: "88236754"
 
 [表设计模式](table-storage-design-patterns.md)一文的以下模式解决了管理一致性的问题：  
 
-* [内分区的第二索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) -使用不同的 **RowKey** 值存储每个实体的多个副本)  (在同一分区中，从而实现快速高效的查找，并通过使用不同的 **RowKey** 值替换排序顺序。  
-* [内分区的第二索引模式](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 RowKey 值替换排序顺序****。  
+* [内分区的第二索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) - 利用同一分区中的 **RowKey** 值存储每个实体的多个副本，实现快速、高效的查询，并借助不同的 **RowKey** 值替换排序顺序。  
+* [内分区的第二索引模式](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 RowKey 值替换排序顺序。  
 * [最终一致性事务模式](table-storage-design-patterns.md#eventually-consistent-transactions-pattern) - 使用 Azure 队列，使不同分区边界或存储系统中的行为达到最终一致。
-* [索引实体模式](table-storage-design-patterns.md#index-entities-pattern) -维护索引实体以启用返回实体列表的高效搜索。  
+* [索引实体模式](table-storage-design-patterns.md#index-entities-pattern) - 维护索引实体，实现返回实体列表的高效搜索。  
 * [反规范模式](table-storage-design-patterns.md#denormalization-pattern) - 将相关数据组合放在单个实体中，使用户可通过单个点查询检索全部所需数据。  
 * [数据系列模式](table-storage-design-patterns.md#data-series-pattern) - 将完整的数据系列存储在单个实体中，最大限度地减少发出请求的次数。  
 
-有关实体组事务的信息，请参阅 [实体组事务](table-storage-design.md#entity-group-transactions)部分。  
+有关实体组事务的信息，请参阅[实体组事务](table-storage-design.md#entity-group-transactions)部分。  
 
 ## <a name="ensure-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>确保用于高效修改的设计便于高效查询
 在许多情况下，用于高效查询的设计会产生高效修改的效果，但你应始终评估这是否适用于特定方案。 [表设计模式](table-storage-design-patterns.md)一文中的某些模式明确评估了查询实体和修改实体之间的折衷方案，你应该始终考虑每种操作的数量。  

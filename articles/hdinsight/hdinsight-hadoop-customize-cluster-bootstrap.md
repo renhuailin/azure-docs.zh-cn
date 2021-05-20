@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: 306ebcf7db3c11f783af8cf4c1779bd3d1a013a4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 55792cc1890702b904db00b7e3cb3ac3a78c63f1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945749"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866516"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 
@@ -105,7 +105,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 
 ## <a name="use-net-sdk"></a>使用 .NET SDK
 
-请参阅[用于 .NET 的 Azure HDInsight SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)。
+请参阅[用于 .NET 的 Azure HDInsight SDK](/dotnet/api/overview/azure/hdinsight)。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
 
@@ -121,7 +121,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 }
 ```
 
-![Hadoop 自定义群集启动 Azure 资源管理器模板](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+:::image type="content" source="./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png" alt-text="Hadoop 自定义群集启动 Azure 资源管理器模板":::
 
 spark2-defaults 中用于切换配置的示例资源管理器模板代码片段会定期清除存储中的事件日志。  
 

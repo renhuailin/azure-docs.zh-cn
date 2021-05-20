@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724146"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器
@@ -77,7 +77,7 @@ ms.locfileid: "98724146"
 
 以下步骤针对虚拟机的公共 IP 地址创建服务器级 IP 防火墙规则，并启用从虚拟机的连接。
 
-1. 在左侧菜单中选择“SQL 数据库”，然后在“SQL 数据库”页上选择你的数据库。  此时会打开数据库的 "概述" 页，其中显示了完全限定的服务器名称 (例如 **servername.database.windows.net**) 并提供了进一步配置的选项。
+1. 在左侧菜单中选择“SQL 数据库”，然后在“SQL 数据库”页上选择你的数据库。  此时会打开数据库的概述页，其中显示了完全限定的服务器名称（例如 servername.database.windows.net），并提供了其他配置的选项。
 
 2. 请复制此完全限定的服务器名称，以便在连接到服务器及其数据库时使用。
 

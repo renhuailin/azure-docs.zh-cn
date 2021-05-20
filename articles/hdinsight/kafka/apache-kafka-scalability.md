@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
-ms.openlocfilehash: f22642ae94ea01a798b1eab639c93fda31f87581
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 9aa11be42aca59458fea0462a90b6aeb70df893d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944055"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863133"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上为 Apache Kafka 配置存储和可伸缩性
 
@@ -20,18 +20,18 @@ Kafka on HDInsight 在 HDInsight 群集中使用虚拟机的本地磁盘。 由�
 
 下图提供不带托管磁盘的 Kafka on HDInsight 与带托管磁盘的 Kafka on HDInsight 之间的比较：
 
-![具有托管磁盘体系结构的 kafka](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
+:::image type="content" source="./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png" alt-text="具有托管磁盘体系结构的 kafka" border="false":::
 
 ## <a name="configure-managed-disks-azure-portal"></a>配置托管磁盘：Azure 门户
 
 1. 按照[创建 HDInsight 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)中的步骤操作，了解使用门户创建群集的常用步骤。 请勿完成门户创建过程。
 
-2. 在“配置和定价”  部分中，使用“节点数”  字段配置磁盘数。
+2. 在“配置和定价”部分中，使用“节点数”字段配置磁盘数。
 
     > [!NOTE]  
-    > 托管磁盘的类型可以为“标准”  (HDD) 或“高级”  (SSD)。 高级磁盘可与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
+    > 托管磁盘的类型可以为“标准”(HDD) 或“高级”(SSD)。 高级磁盘可与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
 
-    ![“群集大小”部分，其中突出显示了每个工作器节点的磁盘数](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka-disks.png)
+    :::image type="content" source="./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka-disks.png" alt-text="“群集大小”部分，其中突出显示了每个工作器节点的磁盘数" border="true":::
 
 ## <a name="configure-managed-disks-resource-manager-template"></a>配置托管磁盘：Resource Manager 模板
 

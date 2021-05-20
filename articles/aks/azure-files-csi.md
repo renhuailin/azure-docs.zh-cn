@@ -1,59 +1,59 @@
 ---
-title: '使用容器存储接口 (CSI) Azure 上的 Azure 文件的驱动程序 (AKS) '
-description: 了解如何在 Azure Kubernetes 服务中使用 Azure 文件 (CSI) 驱动程序 (AKS) 群集中使用容器存储接口。
+title: 在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文件存储的容器存储接口 (CSI) 驱动程序
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中使用 Azure 文件存储的容器存储接口 (CSI) 驱动程序。
 services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
 ms.openlocfilehash: 93f7f7a3c59beca362145ac16f7cf727df773f81
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102174055"
 ---
-# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>使用 azure 文件容器存储接口 (CSI) Azure Kubernetes Service 中的驱动程序 (AKS)  (预览版) 
+# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文件存储容器存储接口 (CSI) 驱动程序（预览版）
 
-Azure 文件容器存储接口 (CSI) 驱动程序是一个 [csi 规范](https://github.com/container-storage-interface/spec/blob/master/spec.md)兼容的驱动程序，由 Azure Kubernetes SERVICE (AKS) 用于管理 azure 文件共享的生命周期。
+Azure 文件存储容器存储接口 (CSI) 驱动程序是符合 [CSI 规范](https://github.com/container-storage-interface/spec/blob/master/spec.md)的驱动程序，供 Azure Kubernetes 服务 (AKS) 用来管理 Azure 文件共享的生命周期。
 
-CSI 是一种将任意块和文件存储系统公开给 Kubernetes 上容器化工作负荷的标准。 通过采用和使用 CSI，AKS 现在可以编写、部署和循环访问插件以在 Kubernetes 中公开新的或改进现有存储系统，而无需接触核心 Kubernetes 代码并等待其发布周期。
+CSI 是有关对 Kubernetes 上的容器化工作负载公开任意块和文件存储系统的一个标准。 现在，AKS 可以采用和使用 CSI 来编写、部署和迭代插件，以在 Kubernetes 中公开新的存储系统或改进现有的存储系统，而无需改动核心 Kubernetes 代码并等待经历代码发布周期。
 
-若要创建具有 CSI 驱动程序支持的 AKS 群集，请参阅 [在 AKS 上为 azure 磁盘和 Azure 文件启用 CSI 驱动程序](csi-storage-drivers.md)。
+若要创建提供 CSI 驱动程序支持的 AKS 群集，请参阅[在 AKS 上为 Azure 磁盘和 Azure 文件存储启用 CSI 驱动程序](csi-storage-drivers.md)。
 
 >[!NOTE]
-> *树内驱动程序* 指作为核心 Kubernetes 代码的一部分的当前存储驱动程序与新的 CSI 驱动程序（即插件）。
+> “树中驱动程序”是指包含在核心 Kubernetes 代码中的当前存储驱动程序，而不是新的 CSI 驱动程序（插件）。
 
-## <a name="use-a-persistent-volume-with-azure-files"></a>使用 Azure 文件的持久卷
+## <a name="use-a-persistent-volume-with-azure-files"></a>通过 Azure 文件存储使用永久性卷
 
-[永久性卷 (PV) ](concepts-storage.md#persistent-volumes)表示预配的一段存储，用于 Kubernetes pod。 PV 可由一个或多个 pod 使用，并可动态或静态预配。 如果多个 pod 需要同时访问同一存储卷，则可以使用 Azure 文件通过使用 [服务器消息块 (SMB) 协议][smb-overview]进行连接。 本文介绍如何动态创建 Azure 文件共享以供 AKS 群集中多个 pod 使用。 有关静态设置，请参阅 [手动创建和使用具有 Azure 文件共享的卷](azure-files-volume.md)。
+[永久性卷 (PV)](concepts-storage.md#persistent-volumes) 表示已经过预配的可用于 Kubernetes Pod 的存储块。 一个 PV 可供一个或多个 Pod 使用，并可动态或静态预配。 如果多个 Pod 需要同时访问同一存储卷，你可以使用 Azure 文件存储通过[服务器消息块 (SMB) 协议][smb-overview]进行连接。 本文将介绍如何动态创建 Azure 文件共享以供 AKS 群集中的多个 Pod 使用。 有关静态预配，请参阅[通过 Azure 文件共享手动创建并使用卷](azure-files-volume.md)。
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>使用内置存储类动态创建 Azure 文件 PVs
+## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>使用内置存储类动态创建 Azure 文件存储 PV
 
-存储类用于定义如何创建 Azure 文件共享。 将在 [节点资源组][node-resource-group] 中自动创建一个存储帐户，以便与存储类一起用于保存 Azure 文件共享。 选择以下适用于 *skuName* 的 [Azure 存储冗余 sku][storage-skus]之一：
+存储类用于定义如何创建 Azure 文件共享。 系统会在[节点资源组][node-resource-group]中自动创建一个存储帐户，以便与存储类一起用来保存 Azure 文件共享。 为“skuName”选择以下 [Azure 存储冗余 SKU][storage-skus] 之一：
 
-* **Standard_LRS**：标准本地冗余存储
-* **Standard_GRS**：标准异地冗余存储
-* **Standard_ZRS**：标准区域冗余存储
-* **Standard_RAGRS**：标准读取访问异地冗余存储
-* **Premium_LRS**：高级本地冗余存储
+* Standard_LRS：标准本地冗余存储
+* Standard_GRS：标准异地冗余存储
+* Standard_ZRS：标准区域冗余存储
+* Standard_RAGRS：标准读取访问异地冗余存储
+* Premium_LRS：高级本地冗余存储
 
 > [!NOTE]
-> Azure 文件支持 Azure 高级存储。 最低级别的高级文件共享为 100 GB。
+> Azure 文件存储支持 Azure 高级存储。 最小的高级文件共享为 100 GB。
 
-在 AKS 上使用存储 CSI 驱动程序时，有两个 `StorageClasses` 使用 Azure 文件 CSI 存储驱动程序的附加内置。 其他 CSI 存储类随群集的默认存储类一起创建。
+在 AKS 中使用存储 CSI 驱动程序时，有两个附加的内置 `StorageClasses` 使用 Azure 文件存储 CSI 存储驱动程序。 这些附加的 CSI 存储类是使用群集连同树中默认的存储类一起创建的。
 
 - `azurefile-csi`：使用 Azure 标准存储创建 Azure 文件共享。
 - `azurefile-csi-premium`：使用 Azure 高级存储创建 Azure 文件共享。
 
-对于这两个存储类的回收策略，可确保在删除各自的 PV 时删除基础 Azure 文件共享。 存储类还会将文件共享配置为可展开，只需编辑具有新大小 (PVC) 的永久性卷声明。
+针对这两个存储类的回收策略可确保在删除相应的 PV 时删除基础 Azure 文件共享。 这些存储类还会将文件共享配置为可扩展，你只需使用新的大小编辑永久性卷声明 (PVC) 即可。
 
-若要使用这些存储类，请创建用于引用和使用它们的 [PVC](concepts-storage.md#persistent-volume-claims) 和各自的 pod。 PVC 用于基于存储类自动预配存储。 PVC 可以使用预先创建的存储类之一或用户定义的存储类，为所需的 SKU 和大小创建 Azure 文件共享。 创建 pod 定义时，将指定 PVC 来请求所需的存储。
+若要使用这些存储类，请创建一个引用并使用这些类的 [PVC](concepts-storage.md#persistent-volume-claims) 和相应 Pod。 PVC 用于基于存储类自动预配存储。 PVC 可以使用一个预先创建的存储类或用户定义的存储类，为所需的 SKU 和大小创建 Azure 文件共享。 创建 Pod 定义时，将指定 PVC 来请求所需的存储。
 
-创建一个使用[kubectl apply][kubectl-apply]命令将[当前日期输出到 `outfile` 的示例 PVC 和 pod](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) ：
+使用 [kubectl apply][kubectl-apply] 命令创建一个[可将当前日期输出到 `outfile` 的示例 PVC 和 Pod](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml)：
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/pvc-azurefile-csi.yaml
@@ -63,7 +63,7 @@ persistentvolumeclaim/pvc-azurefile created
 pod/nginx-azurefile created
 ```
 
-在 pod 处于运行状态后，你可以通过运行以下命令来验证是否已正确装载了文件共享，并验证输出中是否包含 `outfile` ：
+在 Pod 处于运行状态后，可以通过运行以下命令并验证输出中是否包含 `outfile`，来验证是否正确装载了文件共享：
 
 ```console
 $ kubectl exec nginx-azurefile -- ls -l /mnt/azurefile
@@ -74,11 +74,11 @@ total 29
 
 ## <a name="create-a-custom-storage-class"></a>创建自定义存储类
 
-默认存储类适合最常见的方案，但并非全部。 在某些情况下，你可能希望使用自己的参数自定义自己的存储类。 例如，使用以下清单来配置 `mountOptions` 文件共享的。
+默认存储类适合最常见的方案，但并非适合所有方案。 在某些情况下，你可能想要使用自己的参数来自定义自己的存储类。 例如，使用以下清单配置文件共享的 `mountOptions`。
 
-对于 Kubernetes 装入的文件共享，"DirMode *" 和 "*  " 的默认值为 *0777* 。 可以在存储类对象上指定不同的装载选项。
+对于 Kubernetes 装载的文件共享，fileMode 和 dirMode 的默认值为 0777  。 可以在存储类对象中指定不同的装载选项。
 
-创建一个名为 `azure-file-sc.yaml` 的文件，并粘贴下面的示例清单：
+创建名为 `azure-file-sc.yaml` 的文件，并粘贴以下示例清单：
 
 ```yaml
 kind: StorageClass
@@ -109,9 +109,9 @@ kubectl apply -f azure-file-sc.yaml
 storageclass.storage.k8s.io/my-azurefile created
 ```
 
-Azure 文件 CSI 驱动程序支持创建 [持久卷](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) 和基础文件共享的快照。
+Azure 文件存储 CSI 驱动程序支持创建[持久性卷和基础文件共享的快照](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)。
 
-使用[kubectl apply][kubectl-apply]命令创建[卷快照类](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshotclass-azurefile.yaml)：
+使用 [kubectl apply][kubectl-apply] 命令创建[卷快照类](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshotclass-azurefile.yaml)：
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/snapshot/volumesnapshotclass-azurefile.yaml
@@ -119,7 +119,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-c
 volumesnapshotclass.snapshot.storage.k8s.io/csi-azurefile-vsc created
 ```
 
-从[我们在本教程开头动态创建](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes)的 PVC 创建[卷快照](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) `pvc-azurefile` 。
+基于[我们在本教程开头动态创建](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes)的 PVC `pvc-azurefile` 创建[卷快照](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml)。
 
 
 ```bash
@@ -158,14 +158,14 @@ Status:
 Events:                                <none>
 ```
 
-## <a name="resize-a-persistent-volume"></a>调整持久卷的大小
+## <a name="resize-a-persistent-volume"></a>调整永久性卷的大小
 
-可以为 PVC 请求更大的卷。 编辑 PVC 对象，并指定更大的大小。 此更改触发了支持 PV 的基础卷的扩展。
+可为 PVC 请求较大的卷。 编辑 PVC 对象，并指定较大的大小。 此项更改会触发为 PV 提供支持的基础卷的扩展。
 
 > [!NOTE]
-> 永远不会创建新的 PV 来满足声明。 相反，会调整现有卷的大小。
+> 永远不会创建新的 PV 来满足声明， 而是会调整现有卷的大小。
 
-在 AKS 中，内置 `azurefile-csi` 存储类已支持扩展，因此请使用先前使用 [此存储类创建的 PVC](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes)。 PVC 请求了100Gi 文件共享。 可以通过运行以下内容来确认：
+在 AKS 中，内置的 `azurefile-csi` 存储类已经能够支持扩展，因此请使用[先前通过此存储类创建的 PVC](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes)。 PVC 请求了 100Gi 文件共享。 可通过运行以下命令来确认一点：
 
 ```console 
 $ kubectl exec -it nginx-azurefile -- df -h /mnt/azurefile
@@ -174,7 +174,7 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  100G  128K  100G   1% /mnt/azurefile
 ```
 
-通过增加字段来展开 PVC `spec.resources.requests.storage` ：
+通过增大 `spec.resources.requests.storage` 字段值来扩展 PVC：
 
 ```console
 $ kubectl patch pvc pvc-azurefile --type merge --patch '{"spec": {"resources": {"requests": {"storage": "200Gi"}}}}'
@@ -182,7 +182,7 @@ $ kubectl patch pvc pvc-azurefile --type merge --patch '{"spec": {"resources": {
 persistentvolumeclaim/pvc-azurefile patched
 ```
 
-验证 pod 中的 PVC 和文件系统是否显示新的大小：
+验证 Pod 中的 PVC 和文件系统是否都显示新的大小：
 
 ```console
 $ kubectl get pvc pvc-azurefile
@@ -196,17 +196,17 @@ Filesystem                                                                      
 
 
 ## <a name="nfs-file-shares"></a>NFS 文件共享
-[Azure 文件现在提供对 NFS v2.0 协议的支持](../storage/files/storage-files-how-to-create-nfs-shares.md)。 NFS 4.1 对 Azure 文件的支持为你提供了一个完全托管的 NFS 文件系统，它是基于高度可用且高度持久的分布式弹性存储平台构建的服务。
+[Azure 文件存储现在支持 NFS v4.1 协议。](../storage/files/storage-files-how-to-create-nfs-shares.md) Azure 文件存储的 NFS 4.1 支持以服务形式提供了一个完全托管的 NFS 文件系统，该系统建立在高度可用且高度持久的分布式弹性存储平台基础之上。
 
- 此选项针对使用就地数据更新的随机访问工作负荷进行了优化，并提供完整的 POSIX 文件系统支持。 本部分介绍如何在 AKS 群集上通过 Azure 文件 CSI 驱动程序使用 NFS 共享。
+ 此选项已针对包含就地数据更新的随机访问工作负载进行优化，提供全面的 POSIX 文件系统支持。 本部分将介绍如何在 AKS 群集上通过 Azure 文件存储 CSI 驱动程序使用 NFS 共享。
 
-请确保在预览阶段检查 [限制](../storage/files/storage-files-compare-protocols.md#limitations) 和 [区域可用性](../storage/files/storage-files-compare-protocols.md#regional-availability) 。
+请务必查看预览阶段的[限制](../storage/files/storage-files-compare-protocols.md#limitations)和[区域可用性](../storage/files/storage-files-compare-protocols.md#regional-availability)。
 
-### <a name="register-the-allownfsfileshares-preview-feature"></a>注册 `AllowNfsFileShares` 预览功能
+### <a name="register-the-allownfsfileshares-preview-feature"></a>注册 `AllowNfsFileShares` 预览版功能
 
-若要创建利用 NFS 4.1 的文件共享，必须 `AllowNfsFileShares` 在订阅上启用功能标志。
+若要创建利用 NFS 4.1 的文件共享，必须在订阅中启用 `AllowNfsFileShares` 功能标志。
 
-`AllowNfsFileShares`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
+使用 [az feature register][az-feature-register] 命令注册 `AllowNfsFileShares` 功能标志，如以下示例所示：
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
@@ -218,22 +218,22 @@ az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
 az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，请使用 [az provider register][az-provider-register]命令刷新 *Microsoft 存储* 资源提供程序的注册：
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.Storage 资源提供程序的注册状态：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Storage
 ```
 
-### <a name="create-a-storage-account-for-the-nfs-file-share"></a>创建 NFS 文件共享的存储帐户
+### <a name="create-a-storage-account-for-the-nfs-file-share"></a>为 NFS 文件共享创建存储帐户
 
-[创建一个 `Premium_LRS`](../storage/files/storage-how-to-create-file-share.md)具有以下配置的 Azure 存储帐户支持 NFS 共享：
-- 帐户类型： FileStorage
-- 需要安全传输 (仅启用 HTTPS 流量) ： false
-- 选择防火墙和虚拟网络中代理节点的虚拟网络-因此，你可能更愿意在 MC_ 资源组中创建存储帐户。
+使用以下配置[创建一个 `Premium_LRS` Azure 存储帐户](../storage/files/storage-how-to-create-file-share.md)用于支持 NFS 共享：
+- 帐户类型：FileStorage
+- 需要安全传输(仅启用 HTTPS 流量)：false
+- 需要在防火墙和虚拟网络中选择你的代理节点的虚拟网络 - 因此，你可能希望在 MC_ 资源组中创建存储帐户。
 
 ### <a name="create-nfs-file-share-storage-class"></a>创建 NFS 文件共享存储类
 
-在编辑相应的占位符后，保存 `nfs-sc.yaml` 包含清单的文件。
+编辑相应的占位符，然后保存包含以下清单的 `nfs-sc.yaml` 文件。
 
 ```yml
 apiVersion: storage.k8s.io/v1
@@ -247,7 +247,7 @@ parameters:
   protocol: nfs
 ```
 
-编辑并保存文件后，使用 [kubectl apply][kubectl-apply] 命令创建存储类：
+编辑并保存该文件后，使用 [kubectl apply][kubectl-apply] 命令创建存储类：
 
 ```console
 $ kubectl apply -f nfs-sc.yaml
@@ -255,8 +255,8 @@ $ kubectl apply -f nfs-sc.yaml
 storageclass.storage.k8s.io/azurefile-csi created
 ```
 
-### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>使用支持 NFS 的文件共享创建部署
-可以[](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) `data.txt` 通过使用[kubectl apply][kubectl-apply]命令部署以下命令，部署将时间戳保存到文件中的示例有状态集：
+### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>使用 NFS 支持的文件共享创建部署
+可使用以下 [kubectl apply][kubectl-apply] 命令，部署一个可将时间戳保存到 `data.txt` 文件中的示例 [StatefulSet](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml)：
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
@@ -264,7 +264,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-c
 statefulset.apps/statefulset-azurefile created
 ```
 
-通过运行以下内容来验证卷的内容：
+运行以下命令验证卷的内容：
 
 ```console
 $ kubectl exec -it statefulset-azurefile-0 -- df -h
@@ -277,14 +277,14 @@ accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-55660
 ```
 
 >[!NOTE]
-> 请注意，由于 NFS 文件共享是高级帐户，因此最小文件共享大小为100GB。 如果创建的 PVC 的存储大小较小，则可能会遇到 "无法创建文件共享 ..." 错误size (5) ... "。
+> 请注意，由于 NFS 文件共享是高级帐户，因此最小文件共享大小为100GB。 如果使用较小的存储大小创建 PVC，可能会遇到错误“无法创建文件共享 ...大小 (5)...”。
 
 
 ## <a name="windows-containers"></a>Windows 容器
 
-Azure 文件 CSI 驱动程序还支持 Windows 节点和容器。 如果要使用 Windows 容器，请按照 [windows 容器教程](windows-container-cli.md) 添加 windows 节点池。
+Azure 文件存储 CSI 驱动程序还支持 Windows 节点和容器。 如果你要使用 Windows 容器，请遵循 [Windows 容器教程](windows-container-cli.md)添加 Windows 节点池。
 
-使用 Windows 节点池后，请使用内置的存储类，例如 `azurefile-csi` 或创建自定义的存储类。 你可以部署 [基于 Windows 的有状态集](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) 示例，该程序集 `data.txt` 通过使用 [kubectl apply][kubectl-apply] 命令部署以下命令将时间戳保存到文件中：
+添加 Windows 节点池后，使用内置的存储类（例如 `azurefile-csi`）或创建自定义的存储类。 可使用以下 [kubectl apply][kubectl-apply] 命令，部署一个可将时间戳保存到 `data.txt` 文件中的[基于 Windows 的示例 StatefulSet](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml)：
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
@@ -292,7 +292,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-c
 statefulset.apps/busybox-azurefile created
 ```
 
-通过运行以下内容来验证卷的内容：
+运行以下命令验证卷的内容：
 
 ```console
 $ kubectl exec -it busybox-azurefile-0 -- cat c:\\mnt\\azurefile\\data.txt # on Linux/MacOS Bash
@@ -306,8 +306,8 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何将 CSI 驱动程序用于 Azure 磁盘，请参阅 [将 azure 磁盘与 csi 驱动程序配合使用](azure-disk-csi.md)。
-- 有关存储最佳实践的详细信息，请参阅 [Azure Kubernetes 服务中存储和备份的最佳实践][operator-best-practices-storage]。
+- 若要了解如何为 Azure 磁盘使用 CSI 驱动程序，请参阅[通过 CSI 驱动程序使用 Azure 磁盘](azure-disk-csi.md)。
+- 有关存储最佳做法的详细信息，请参阅[有关 Azure Kubernetes 服务中存储和备份的最佳做法][operator-best-practices-storage]。
 
 
 <!-- LINKS - external -->

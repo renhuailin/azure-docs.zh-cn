@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 01/12/2021
 ms.openlocfilehash: fe974a96b7f349c9d525d0cd0bb01a83ace57a4f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98939277"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
@@ -33,7 +33,7 @@ ms.locfileid: "98939277"
 
 * 是否需要将 HDInsight 安装到现有的虚拟网络？ 或者，你是否在创建新的网络？
 
-    如果使用现有的虚拟网络，则可能需要修改网络配置，然后才能安装 HDInsight。 有关详细信息，请参阅[将 HDInsight 添加到现有的虚拟网络](#existingvnet)部分。
+    如果使用的是现有的虚拟网络，则可能需要修改网络配置，然后才能安装 HDInsight。 有关详细信息，请参阅[将 HDInsight 添加到现有的虚拟网络](#existingvnet)部分。
 
 * 是否需要将包含 HDInsight 的虚拟网络连接到另一个虚拟网络或本地网络？
 
@@ -49,7 +49,7 @@ ms.locfileid: "98939277"
 
 > [!NOTE]  
 > - 无法将现有 HDInsight 群集添加到虚拟网络中。
-> - 正在创建的 VNET 和群集必须位于同一订阅中。
+> - 要创建的 VNET 和群集必须在同一订阅中。
 
 1. 是否对虚拟网络使用经典或 Resource Manager 部署模型？
 
@@ -63,7 +63,7 @@ ms.locfileid: "98939277"
 
     作为托管服务，HDInsight 要求对 Azure 数据中心的多个 IP 地址进行不受限制的访问。 请更新任何现有的网络安全组或用户定义路由，以便与这些 IP 地址通信。
 
-    HDInsight 托管多个服务，这些服务使用不同的端口。 不要阻止发往这些端口的流量。 有关虚拟设备防火墙的允许端口列表，请参阅“安全”一节。
+    HDInsight 托管多个服务，这些服务使用不同的端口。 请勿阻止发往这些端口的流量。 有关虚拟设备防火墙的允许端口列表，请参阅“安全”一节。
 
     若要查找现有的安全配置，请使用以下 Azure PowerShell 或 Azure CLI 命令：
 
@@ -123,7 +123,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
     这两个节点均可使用内部 DNS 名称直接相互通信，以及与 HDInsight 中的其他节点通信。
 
-默认名称解析不允许 HDInsight 解析连接到虚拟网络的网络中的资源的名称。 例如，将本地网络加入虚拟网络很常见。 如果仅使用默认名称解析，HDInsight 将无法通过名称访问本地网络中的资源。 相反，本地网络中的资源不能按名称访问虚拟网络中的资源。
+默认名称解析不允许 HDInsight 解析连接到虚拟网络的网络中的资源的名称。 例如，将本地网络加入到虚拟网络是很常见的。 仅通过默认名称解析，HDInsight 无法按名称访问本地网络中的资源。 反过来也是如此，本地网络中的资源也不能按名称访问虚拟网络中的资源。
 
 > [!WARNING]  
 > 必须在创建 HDInsight 群集之前，先创建自定义 DNS 服务器并将虚拟网络配置为使用该服务器。

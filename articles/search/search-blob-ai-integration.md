@@ -1,5 +1,5 @@
 ---
-title: 使用 AI 丰富 blob 内容
+title: 使用 AI 扩充 blob 内容
 titleSuffix: Azure Cognitive Search
 description: 了解 Azure 认知搜索中的自然语言和图像分析功能，以及这些过程如何应用于存储在 Azure Blob 中的内容。
 manager: nitinme
@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.openlocfilehash: 3d427d80e502eed0825165e640acc0755515c5b0
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99222042"
 ---
-# <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>使用 AI 处理和分析 Azure 认知搜索中的 Blob 内容
+# <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>在 Azure 认知搜索中使用 AI 处理和分析 blob 内容
 
-Azure Blob 存储中由图像或长无差别文本组成的内容可以进行深入学习分析，以揭示和提取对下游应用程序有用的有用信息。 通过使用 [AI 扩充](cognitive-search-concept-intro.md)，你可以：
+Azure Blob 存储中的内容由图像或无差异长文本组成，可以进行深度学习分析，以揭示和提取对下游应用程序有用的有价值信息。 使用 [AI 扩充](cognitive-search-concept-intro.md)，你可以：
 
 + 使用光学字符识别 (OCR) 从图像中提取文本
 + 基于照片生成场景说明或标记
@@ -26,23 +26,23 @@ Azure Blob 存储中由图像或长无差别文本组成的内容可以进行深
 
 尽管你可能只需要其中的一项 AI 功能，但常见的做法是将其中的多项功能组合到同一管道中（例如，从扫描的图像中提取文本，然后查找文本中引用的所有日期和地点）。 通常会根据你的数据和要求，以先进的外部包和内部模型的形式添加自定义 AI 或机器学习处理。
 
-尽管可以将 AI 扩充应用到搜索索引器支持的任何数据源，但 blob 是扩充管道中最常使用的结构。 结果将被拉入搜索索引以进行全文搜索，或重新路由回 Azure 存储，以实现新的应用程序体验，包括探索用于发现或分析方案的数据。 
+尽管可以对搜索索引器支持的任何数据源应用 AI 扩充，但 blob 是扩充管道中最常用的结构。 结果会被拉取到搜索索引中进行全文搜索，或被重新路由回 Azure 存储，以支持新的应用程序体验，包括探索数据以用于发现或分析方案。 
 
 在本文中，我们将从一个宽广的角度审视 AI 扩充，以便快速掌握整个过程：将 Blob 中的原始数据转换为搜索索引或知识存储中的可查询信息。
 
 ## <a name="what-it-means-to-enrich-blob-data-with-ai"></a>使用 AI“扩充”Blob 数据是什么意思？
 
-*AI 扩充* 是 Azure 认知搜索的索引体系结构的一部分，它将机器学习模型与您提供的 Microsoft 或自定义学习模型相集成。 AI 扩充可帮助实现端到端的方案，在其中，你需要处理 Blob（传入的或更新的现有 Blob 和新 Blob），破解所有文件格式以提取图像和文本，使用各种 AI 功能提取所需的信息，在搜索索引中为这些信息编制索引以便快速执行搜索、检索和浏览。 
+AI 扩充是 Azure 认知搜索的索引编制体系结构的一部分，它集成了 Microsoft 提供的机器学习模型或你提供的自定义学习模型。 AI 扩充可帮助实现端到端的方案，在其中，你需要处理 Blob（传入的或更新的现有 Blob 和新 Blob），破解所有文件格式以提取图像和文本，使用各种 AI 功能提取所需的信息，在搜索索引中为这些信息编制索引以便快速执行搜索、检索和浏览。 
 
 输入是 Azure Blob 存储中单个容器内的 Blob。 Blob 几乎可以是任何类型的文本或图像数据。 
 
 输出始终是搜索索引，用于在客户端应用程序中快速执行搜索、检索和浏览。 此外，输出还可以是[知识存储](knowledge-store-concept-intro.md)，知识存储将扩充的文档投影到 Azure Blob 或 Azure 表中，以便在 Power BI 等工具或数据科学工作负荷中进行下游分析。
 
-输入与输出之间是管道体系结构本身。 管道基于 [*索引器*](search-indexer-overview.md)，你可以为其分配 [*技能组合*](cognitive-search-working-with-skillsets.md)，这是由提供 AI 的一项或多项 *技能* 组成的。 管道的用途是生成 *丰富的文档* ，这些文档将管道作为原始内容输入，但在通过管道移动时选取其他结构、上下文和信息。 在编制索引期间，将使用扩充文档来创建要在全文搜索或者浏览和分析中使用的倒排索引与其他结构。
+输入与输出之间是管道体系结构本身。 管道基于[索引器](search-indexer-overview.md)，可以为其分配[技能集](cognitive-search-working-with-skillsets.md)（由一个或多个提供 AI 的技能组成）。 管道的目的是生成扩充的文档，这些文档作为原始内容进入管道，但在整个管道内移动时获取额外的结构、上下文和信息。 在编制索引期间，将使用扩充文档来创建要在全文搜索或者浏览和分析中使用的倒排索引与其他结构。
 
 ## <a name="required-resources"></a>所需资源
 
-除了 Azure Blob 存储和 Azure 认知搜索之外，还需要提供 AI 的第三种服务或机制：
+除了 Azure Blob 存储和 Azure 认知搜索之外，你还需要第三种服务或机制来提供 AI：
 
 + 对于内置 AI，认知搜索与 Azure 认知服务视觉和自然语言处理 API 集成。 可以[附加认知服务资源](cognitive-search-attach-cognitive-services.md)来添加光学字符识别 (OCR)、图像分析或自然语言处理（语言检测、文本翻译、实体识别、关键短语提取）。 
 

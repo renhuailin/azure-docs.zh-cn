@@ -1,7 +1,7 @@
 ---
-title: 使用受信任的服务异常对 Azure 存储空间进行索引器访问
+title: 使用受信任的服务异常对 Azure 存储进行索引器访问
 titleSuffix: Azure Cognitive Search
-description: 通过 Azure 认知搜索中的索引器启用数据访问，以便安全地存储在 Azure 存储中的数据。
+description: 允许 Azure 认知搜索中的索引器访问安全地存储在 Azure 存储中的数据。
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,30 +9,30 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: e139c15ef6de00376a4e1a88000d263c3486994b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92101369"
 ---
-# <a name="indexer-access-to-azure-storage-using-the-trusted-service-exception-azure-cognitive-search"></a>使用受信任的服务例外对 Azure 存储空间进行索引器访问 (Azure 认知搜索) 
+# <a name="indexer-access-to-azure-storage-using-the-trusted-service-exception-azure-cognitive-search"></a>使用受信任的服务异常对 Azure 存储进行索引器访问（Azure 认知搜索）
 
-Azure 认知搜索服务中访问 Azure 存储帐户中的数据的索引器可以利用 [受信任的服务异常](../storage/common/storage-network-security.md#exceptions) 功能来安全地访问数据。 此机制为不能 [使用 IP 防火墙规则授予索引器访问权限](search-indexer-howto-access-ip-restricted.md) 的客户提供了一种简单、安全和免费的替代方法，可用于访问存储帐户中的数据。
+Azure 认知搜索服务中用于访问 Azure 存储帐户中的数据的索引器可以利用[受信任的服务异常](../storage/common/storage-network-security.md#exceptions)功能来安全地访问数据。 此机制为无法授予[使用 IP 防火墙规则进行索引器访问](search-indexer-howto-access-ip-restricted.md)的客户提供了一种简单、安全且免费的替代方法来访问存储帐户中的数据。
 
 > [!NOTE]
-> 支持通过受信任的服务例外访问存储帐户中的数据仅限于 Azure Blob 存储和 Azure Data Lake Gen2 存储。 不支持 Azure 表存储。
+> 支持通过受信任的服务异常访问存储帐户中的数据仅限于 Azure Blob 存储和 Azure Data Lake Gen2 存储。 不支持 Azure 表存储。
 
-## <a name="step-1-configure-a-connection-using-a-managed-identity"></a>步骤1：使用托管标识配置连接
+## <a name="step-1-configure-a-connection-using-a-managed-identity"></a>步骤 1：使用托管标识配置连接
 
-按照 [使用托管标识设置到 Azure 存储帐户的连接](search-howto-managed-identities-storage.md)中的说明进行操作。 完成后，你将使用 Azure Active Directory 作为受信任的服务注册你的搜索服务，并且你将在 Azure 存储中授予权限，以便为搜索标识提供访问数据或信息的特定权限。
+按照[使用托管标识设置到 Azure 存储帐户的连接](search-howto-managed-identities-storage.md)中的说明进行操作。 完成后，你将搜索服务作为受信任的服务向 Azure Active Directory 注册，并且你将在 Azure 存储中具有授予的权限，以便为搜索标识提供访问数据或信息的特定权限。
 
-## <a name="step-2-allow-trusted-microsoft-services-to-access-the-storage-account"></a>步骤2：允许受信任的 Microsoft 服务访问存储帐户
+## <a name="step-2-allow-trusted-microsoft-services-to-access-the-storage-account"></a>步骤 2：允许受信任的 Microsoft 服务访问存储帐户
 
-在 Azure 门户中，导航到存储帐户的 " **防火墙和虚拟网络** " 选项卡。 确保选中 " **允许受信任的 Microsoft 服务访问此存储帐户** " 选项。 此选项只允许特定的搜索服务实例对存储帐户进行基于角色的访问， (强身份验证) 来访问存储帐户中的数据，即使该实例受 IP 防火墙规则保护，也是如此。
+在 Azure 门户中，导航到存储帐户的“防火墙和虚拟网络”选项卡。 确保已选中“允许受信任的 Microsoft 服务访问此存储帐户”选项。 此选项仅允许特定搜索服务实例（对存储帐户(强身份验证)具有基于适宜角色的访问权限）访问存储帐户中的数据，即使存储帐户是通过 IP 防火墙规则保护的也是如此。
 
 ![受信任的服务异常](media\search-indexer-howto-secure-access\exception.png "受信任的服务异常")
 
-索引器现在能够访问存储帐户中的数据，即使该帐户是通过 IP 防火墙规则保护的。
+索引器现在能够访问存储帐户中的数据，即使存储帐户是通过 IP 防火墙规则保护的也是如此。
 
 ## <a name="next-steps"></a>后续步骤
 

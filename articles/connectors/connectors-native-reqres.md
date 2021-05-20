@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
 ms.openlocfilehash: 83ffccb7bae4fabc10796c36e782e72c661bd346
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99063006"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
@@ -28,7 +28,7 @@ ms.locfileid: "99063006"
 
 本文介绍如何使用请求触发器和响应操作，以便逻辑应用可以接收和响应入站调用。
 
-有关对逻辑应用的入站调用的安全、授权和加密的详细信息（例如 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，以前称为安全套接字层 (SSL) ）， [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)，使用 Azure API 管理公开逻辑应用，或限制发起入站调用的 IP 地址，请参阅 [对基于请求的触发器的入站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
+若要详细了解对逻辑应用的入站调用的安全性、授权和加密（如[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)（旧称为“安全套接字层 (SSL)”）、[Azure Active Directory 开放式身份验证 (Azure AD OAuth)](../active-directory/develop/index.yml)），使用 Azure API Management 公开逻辑应用，或限制源自入站调用的 IP 地址，请参阅[保护访问和数据 - 对基于请求的触发器的入站调用的访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -194,7 +194,7 @@ ms.locfileid: "99063006"
 
    例如，可以使用 [Postman](https://www.getpostman.com/) 之类的工具来发送 HTTP 请求。 有关触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅以下主题：[请求触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[通过 Azure 逻辑应用中的 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
 
-有关对逻辑应用的入站调用的安全、授权和加密的详细信息（例如 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，以前称为安全套接字层 (SSL) ）， [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)，使用 Azure API 管理公开逻辑应用，或限制发起入站调用的 IP 地址，请参阅 [对基于请求的触发器的入站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
+若要详细了解对逻辑应用的入站调用的安全性、授权和加密（如[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)（旧称为“安全套接字层 (SSL)”）、[Azure Active Directory 开放式身份验证 (Azure AD OAuth)](../active-directory/develop/index.yml)），使用 Azure API Management 公开逻辑应用，或限制源自入站调用的 IP 地址，请参阅[保护访问和数据 - 对基于请求的触发器的入站调用的访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
 ## <a name="trigger-outputs"></a>触发器输出
 
@@ -210,13 +210,13 @@ ms.locfileid: "99063006"
 
 ## <a name="add-a-response-action"></a>添加响应操作
 
-使用请求触发器处理入站请求时，可以使用内置[响应操作](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)对响应进行建模并将有效负载结果发送回调用方。 只能将响应操作与请求触发器配合使用。 这种与 "请求触发器" 和 "响应" 操作的结合会创建 [请求-响应模式](https://en.wikipedia.org/wiki/Request%E2%80%93response)。 除了 Foreach 循环和循环内以及并行分支以外，可以在工作流中的任意位置添加响应操作。
+使用请求触发器处理入站请求时，可以使用内置[响应操作](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)对响应进行建模并将有效负载结果发送回调用方。 只能将响应操作与请求触发器配合使用。 这种与请求触发器和响应操作的结合会创建[请求-响应模式](https://en.wikipedia.org/wiki/Request%E2%80%93response)。 除了 Foreach 循环和循环内以及并行分支以外，可以在工作流中的任意位置添加响应操作。
 
 > [!IMPORTANT]
 > 如果响应操作包含这些标头，则逻辑应用会从生成的响应消息中删除这些标头，且不显示任何警告或错误：
 >
 > * `Allow`
-> * `Content-*``Content-Disposition` `Content-Encoding` `Content-Type` 当你使用 POST 和 PUT 操作，但不包括在获取操作中时，、和以外的标头
+> * `Content-*` 标头（使用 POST 和 PUT 操作时的 `Content-Disposition`、`Content-Encoding` 和 `Content-Type` 除外），但 GET 操作不包括这些标头
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`

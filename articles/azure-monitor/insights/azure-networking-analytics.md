@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: b8b03378e82810bc2b9680805bacf8360f322a94
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b1434a166e715acfdfa1d2510c335cdc42f00c34
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708129"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320162"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络监视解决方案
 
@@ -46,9 +47,9 @@ Azure Monitor 提供了以下用于监视网络的解决方案：
 ## <a name="azure-application-gateway-analytics"></a>Azure 应用程序网关分析
 
 1. 启用诊断以将诊断信息定向到 Azure Monitor 中的 Log Analytics 工作区。
-2. 使用应用程序网关的工作簿模板来使用资源的详细摘要。
+2. 通过应用程序网关的工作簿模板来使用资源的详细摘要。
 
-如果未对应用程序网关启用诊断日志，则仅在工作簿中填充默认的指标数据。
+如果未对应用程序网关启用诊断日志，则只会在工作簿中填充默认指标数据。
 
 
 > [!NOTE]
@@ -69,11 +70,11 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 ### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>在门户中启用 Azure 应用程序网关诊断
 
 1. 在 Azure 门户中，转到要监视的应用程序网关资源。
-2. 选择 " *诊断设置* " 打开以下页面。
+2. 选择“诊断设置”，打开以下页面。
 
-   ![应用程序网关资源的诊断设置配置屏幕截图。](media/azure-networking-analytics/diagnostic-settings-1.png)
+   ![应用程序网关资源的诊断设置配置的屏幕截图。](media/azure-networking-analytics/diagnostic-settings-1.png)
 
-   [![用于配置诊断设置的页的屏幕截图。](media/azure-networking-analytics/diagnostic-settings-2.png)](media/azure-networking-analytics/application-gateway-diagnostics-2.png#lightbox)
+   [ ![诊断设置配置页面的屏幕截图。](media/azure-networking-analytics/diagnostic-settings-2.png)](media/azure-networking-analytics/application-gateway-diagnostics-2.png#lightbox)
 
 5. 单击选中“发送到 Log Analytics”复选框。
 6. 选择现有 Log Analytics 工作区，或创建一个工作区。
@@ -94,45 +95,45 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 
 #### <a name="accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights"></a>通过 Azure Monitor 网络见解访问 Azure 应用程序网关分析
 
-可以通过应用程序网关资源中的 "见解" 选项卡访问 application insights。
+可以通过应用程序网关资源中的“见解”选项卡访问 Application Insights。
 
 ![应用程序网关见解的屏幕截图 ](media/azure-networking-analytics/azure-appgw-insights.png
 )
 
-"查看详细指标" 选项卡将打开预填充的工作簿，并汇总应用程序网关上的数据。
+可通过“查看详细指标”选项卡打开预填充的工作簿，并汇总应用程序网关中的数据。
 
-[![应用程序网关工作簿的屏幕截图](media/azure-networking-analytics/azure-appgw-workbook.png)](media/azure-networking-analytics/application-gateway-workbook.png#lightbox)
+[ ![应用程序网关工作簿的屏幕截图](media/azure-networking-analytics/azure-appgw-workbook.png)](media/azure-networking-analytics/application-gateway-workbook.png#lightbox)
 
 ### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Azure Monitor 网络见解工作簿的新功能
 
 > [!NOTE]
-> Azure Monitor Insights 工作簿不会产生额外的费用。 根据使用情况，Log Analytics 工作区将继续计费。
+> Azure Monitor 见解工作簿不会产生额外的费用。 Log Analytics 工作区将根据使用情况持续计费。
 
-网络见解工作簿允许您充分利用 Azure Monitor 和 Log Analytics 的最新功能，包括：
+通过网络见解工作簿，可以利用 Azure Monitor 和 Log Analytics 的最新功能，其中包括：
 
-* 集中式控制台，用于监视和故障排除 [指标](../insights/network-insights-overview.md#resource-health-and-metrics) 和日志数据。
+* 集中式控制台，用于监视[指标](../insights/network-insights-overview.md#resource-health-and-metrics)和日志数据，并对其进行故障排除。
 
-* 用于支持创建自定义丰富 [可视化效果](../visualize/workbooks-overview.md#visualizations)的灵活画布。
+* 用于支持创建丰富的自定义[可视化效果](../visualize/workbooks-overview.md#visualizations)的灵活画布。
 
-* 能够通过更广泛的社区使用和 [共享工作簿模板](../visualize/workbooks-overview.md#workbooks-versus-workbook-templates) 。
+* 通过更广泛的社区使用和[共享工作簿模板](../visualize/workbooks-overview.md#workbooks-versus-workbook-templates)的功能。
 
-若要了解有关新工作簿解决方案的功能的详细信息，请参阅 [工作簿-概述](../visualize/workbooks-overview.md)
+若要详细了解新工作簿解决方案的功能，请参阅[工作簿 - 概述](../visualize/workbooks-overview.md)
 
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>从 Azure 网关分析解决方案迁移到 Azure Monitor 工作簿
 
 > [!NOTE]
-> Azure Monitor 网络见解工作簿是用于访问应用程序网关资源的指标和 log analytics 的推荐解决方案。
+> Azure Monitor 网络见解工作簿是用于访问应用程序网关资源的指标和日志分析的推荐解决方案。
 
-1. 确保 [启用诊断设置](#enable-azure-application-gateway-diagnostics-in-the-portal) ，以便将日志存储到 Log Analytics 工作区中。 如果已配置，则 Azure Monitor Network Insights 工作簿将能够使用同一位置中的数据，并且不需要进行其他更改。
+1. 确保[启用诊断设置](#enable-azure-application-gateway-diagnostics-in-the-portal)，以便将日志存储到 Log Analytics 工作区中。 如果已配置该项，则 Azure Monitor 网络见解工作簿将能够使用同一位置中的数据，并且不需要进行其他更改。
 
 > [!NOTE]
-> 所有过去的数据都已在工作簿中从初始启用点诊断设置中可用。 不需要数据传输。
+> 工作簿中已提供自最初启用诊断设置起，所有过去的数据。 无需传输数据。
 
-2. 访问应用程序网关资源的 [默认见解工作簿](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) 。 应用程序网关分析解决方案支持的所有现有见解都将存在于工作簿中。 可以通过添加基于指标 & 日志数据的自定义 [可视化效果](../visualize/workbooks-overview.md#visualizations) 来扩展此功能。
+2. 访问应用程序网关资源的[默认见解工作簿](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights)。 应用程序网关分析解决方案支持的所有现有见解都会已经存在于工作簿中。 可根据指标和日志数据来添加自定义[可视化效果](../visualize/workbooks-overview.md#visualizations)以扩展此内容。
 
-3. 查看所有指标和日志见解后，若要从工作区清理 Azure 网关分析解决方案，可以从解决方案资源页中删除解决方案。
+3. 能够查看所有指标和日志见解后，若要从工作区中清理 Azure 网关分析解决方案，可以从解决方案资源页中删除解决方案。
 
-[![Azure 应用程序网关分析解决方案的删除选项的屏幕截图。](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
+[ ![Azure 应用程序网关分析解决方案的删除选项的屏幕截图。](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络安全组分析解决方案
 
@@ -160,10 +161,10 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 1. 在 Azure 门户中，导航到要监视的网络安全组资源
 2. 选择“诊断日志”打开以下页面
 
-   ![网络安全组资源的 "诊断日志" 页的屏幕截图，其中显示了启用诊断的选项。](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
+   ![网络安全组资源的“诊断日志”页面的屏幕截图，其中显示了“启用诊断”选项。](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
 3. 单击“打开诊断”打开以下页面
 
-   ![用于配置诊断设置的页的屏幕截图。 状态设置为 "打开"，将选择 "发送到 Log Analytics" 并选择两种日志类型。](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
+   ![诊断设置配置页面的屏幕截图。 状态设置为"打开"，选中了“发送到 Log Analytics”和两种日志类型。](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
 4. 若要打开诊断，请单击“状态”下面的“打开” 
 5. 单击“发送到 Log Analytics”对应的复选框
 6. 选择现有的 Log Analytics 工作区，或创建一个工作区
@@ -191,9 +192,9 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
   * 具有允许流的网络安全组规则
   * 具有允许流的 MAC 地址
 
-![磁贴的屏幕截图，其中包含网络安全组阻止流的数据，其中包括具有阻止的流的规则以及具有阻止流的 MAC 地址。](media/azure-networking-analytics/log-analytics-nsg01.png)
+![屏幕截图显示网络安全组阻止的流的数据图块，其中包括具有阻止的流的规则和具有阻止的流的 MAC 地址。](media/azure-networking-analytics/log-analytics-nsg01.png)
 
-![磁贴包含网络安全组允许流的数据的磁贴的屏幕截图，其中包括具有允许流的允许流和 MAC 地址的规则。](media/azure-networking-analytics/log-analytics-nsg02.png)
+![屏幕截图显示网络安全组允许的流的数据图块，其中包括具有允许的流的规则和具有允许的流的 MAC 地址。](media/azure-networking-analytics/log-analytics-nsg02.png)
 
 在“Azure 网络安全组分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，并单击一项摘要，在日志搜索页查看其详细信息。
 

@@ -1,6 +1,6 @@
 ---
-title: 支持的发行者国家和地区
-description: 可向 Microsoft 商业应用商店发布产品/服务的国家/地区列表。
+title: 支持的发布者国家和地区
+description: 可从中将产品/服务发布到 Microsoft 商业市场的国家/地区的列表。
 ms.reviewer: nanef
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -10,15 +10,15 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 01/04/2021
 ms.openlocfilehash: 48a0c3484b6cbeac4d71d3fbf383bb1c14466a9d
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97897325"
 ---
-# <a name="supported-publisher-countries-and-regions"></a>支持的发行者国家和地区
+# <a name="supported-publisher-countries-and-regions"></a>支持的发布者国家和地区
 
-若要将产品/服务发布到 Microsoft 商用 marketplace，你的公司必须在以下国家或地区之一合法：
+若要将产品/服务发布到 Microsoft 商业市场，你的公司必须合法驻留在下列国家/地区之一：
 
 - 阿富汗
 - 奥兰岛
@@ -47,7 +47,7 @@ ms.locfileid: "97897325"
 - 百慕大
 - 不丹
 - 玻利维亚
-- 博内尔岛、圣尤斯特歇斯和萨巴岛
+- 博内尔、圣尤斯特歇斯和萨巴
 - 波斯尼亚和黑塞哥维那
 - 博茨瓦纳
 - 布韦岛
@@ -223,7 +223,7 @@ ms.locfileid: "97897325"
 - 索马里
 - 南非
 - 南乔治亚岛和南桑威奇群岛
-- 韩国 (韩国) 
+- 韩国（大韩民国）
 - 南苏丹
 - 西班牙
 - 斯里兰卡

@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
-ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 2ddba95f9ccc25d536638dbc68c41027d26e71c7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 79b7dfe84628b2f883614ed37fe7688c852add1d
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341002"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069902"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置生存时间
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -118,7 +118,7 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>使用 SDK 在容器上设置生存时间
 
-若要在容器上设置生存时间，需提供一个非零正数来指示时间段（以秒为单位）。 在项的上次修改的时间戳 (`_ts`) 过后，将会删除容器中的所有值，具体取决于配置的 TTL 值。 您可以选择性地设置 `TimeToLivePropertyPath` ，这将使用不同的属性而不是系统生成的属性，根据 `_ts` TTL 确定要删除的项。
+若要在容器上设置生存时间，需提供一个非零正数来指示时间段（以秒为单位）。 在项的上次修改的时间戳 (`_ts`) 过后，将会删除容器中的所有值，具体取决于配置的 TTL 值。 可以选择设置 `TimeToLivePropertyPath`，它将使用不同的属性而不是系统生成的 `_ts` 属性来确定要基于 TTL 删除的项目。
 
 ### <a name="net-sdk"></a><a id="dotnet-enable-withexpiry"></a> .NET SDK
 

@@ -5,13 +5,13 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: 了解如何配置 Azure Dev Spaces 以使用自定义 traefik 入口控制器以及如何使用该入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.custom: devx-track-js
-ms.openlocfilehash: 76a89545b8edc700928c1c2fe0e91dfc5d3127b9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 036725f3c1eb909407e157d33ece05b1f55213ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777484"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102204093"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>使用自定义 traefik 入口控制器并配置 HTTPS
 
@@ -19,7 +19,7 @@ ms.locfileid: "107777484"
 
 本文介绍了如何配置 Azure Dev Spaces 以使用自定义 traefik 入口控制器 本文还介绍了如何配置该自定义入口控制器以使用 HTTPS。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有帐户，可以[创建一个免费帐户][azure-account-create]。
 * [已安装 Azure CLI][az-cli]。
@@ -306,7 +306,7 @@ helm upgrade bikesharingsampleapp . --namespace dev --atomic
 > [!IMPORTANT]
 > DNS 更改完成以及你的示例应用程序可供访问可能需要 30 分钟或更长时间。
 
-另请注意页面加载，但浏览器显示一些错误。 打开浏览器控制台时，会显示与尝试加载 HTTP 资源的 HTTPS 页相关的错误。 例如：
+另请注意页面加载，但浏览器显示一些错误。 打开浏览器控制台时，显示与尝试加载 HTTP 资源的 HTTPS 页相关的错误。 例如：
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
@@ -372,9 +372,9 @@ azds up
 
 
 [az-cli]: /cli/azure/install-azure-cli
-[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a#az_network_dns_record_set_a_add_record
-[az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a#az_network_dns_record_set_a_remove_record
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a#az-network-dns-record-set-a-add-record
+[az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a#az-network-dns-record-set-a-remove-record
 [custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml

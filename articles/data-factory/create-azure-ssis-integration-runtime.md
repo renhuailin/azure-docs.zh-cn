@@ -7,10 +7,10 @@ ms.date: 02/22/2021
 author: swinarko
 ms.author: sawinark
 ms.openlocfilehash: 4b26abe1d1340e4e8c5f034fad72f612f0b246a2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739397"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
@@ -38,7 +38,7 @@ ms.locfileid: "101739397"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 订阅**。 如果还没有订阅，可以创建一个 [免费试用](https://azure.microsoft.com/pricing/free-trial/) 帐户。
+- **Azure 订阅**。 如果还没有订阅，则可以创建[免费试用](https://azure.microsoft.com/pricing/free-trial/)帐户。
 
 - Azure SQL 数据库服务器或 SQL 托管实例（可选）。 如果还没有数据库服务器或托管实例，请在启动之前在 Azure 门户中创建一个。 数据工厂进而会在此数据库服务器上创建一个 SSISDB 实例。 
 
@@ -115,7 +115,7 @@ ms.locfileid: "101739397"
 
    4. 对于“节点大小”，请选择集成运行时群集中的节点大小。 仅显示支持的节点大小。 如果需要运行多个计算密集型或内存密集型包，请选择较大的节点大小（纵向扩展）。
    > [!NOTE]
-   > 如果需要 [计算隔离](../azure-government/azure-secure-isolation-guidance.md#compute-isolation)，请选择 **Standard_E64i_v3** 的节点大小。 此节点大小代表了使用其整个物理主机的隔离虚拟机，并提供某些工作负载所需的隔离级别（如美国国防部的影响级别 5 (IL5) 工作负荷。
+   > 如果需要[计算隔离](../azure-government/azure-secure-isolation-guidance.md#compute-isolation)，请选择“Standard_E64i_v3”节点大小。 此节点大小表示隔离的虚拟机，这些虚拟机使用其整个物理主机，并提供某些工作负载（如美国国防部的影响级别 5 (IL5) 工作负载）所需的必要隔离级别。
    
    5. 对于“节点数”，请选择集成运行时群集中的节点数。 仅显示支持的节点数。 如果需要并行运行多个包，请选择包含许多节点的大型群集（横向扩展）。
 
@@ -157,11 +157,11 @@ ms.locfileid: "101739397"
 
    1. 对于“管理员密码”，请输入用于承载 SSISDB 的数据库服务器的 SQL 身份验证密码。 
 
-   1. 选中 " **将双备用 Azure-SSIS Integration Runtime 与 SSISDB 故障转移结合使用** " 复选框，以配置与 Azure SQL 数据库/托管实例故障转移组同步使用的双备用 AZURE SSIS IR 对，以实现业务连续性和灾难恢复 (BCDR) 。
+   1. 选中“结合使用双备用 Azure-SSIS Integration Runtime 对与 SSISDB 故障转移”复选框可配置双备用 Azure-SSIS IR 对，该对与 Azure SQL 数据库/托管实例故障转移组同步工作，以实现业务连续性和灾难恢复 (BCDR)。
    
-      如果选中该复选框，请在 " **双重备用对名称** " 文本框中输入名称以标识主要和辅助 AZURE-SSIS IRs 对。 创建主要和辅助 Azure-SSIS IRs 时，需要输入相同的对名称。
+      如果选中该复选框，请在“双备用对名称”文本框中输入名称以标识主要和辅助 Azure-SSIS IR 对。 创建主要和辅助 Azure-SSIS IR 时，需要输入相同的对名称。
 
-      有关详细信息，请参阅 [Configure a Azure-SSIS IR FOR BCDR](./configure-bcdr-azure-ssis-integration-runtime.md)。
+      有关详细信息，请参阅[配置 Azure-SSIS IR 以实现 BCDR](./configure-bcdr-azure-ssis-integration-runtime.md)。
 
    1. 对于“目录数据库服务层级”，请选择用于承载 SSISDB 的数据库服务器的服务层级。 选择“基本”、“标准”或“高级”层级，或选择弹性池名称。
 

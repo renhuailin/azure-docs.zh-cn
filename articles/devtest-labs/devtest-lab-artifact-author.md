@@ -1,13 +1,13 @@
 ---
 title: 为开发测试实验室虚拟机创建自定义项目 | Microsoft Docs
-description: 了解如何在预配虚拟机后，创建与 Azure 开发测试实验室一起使用来部署和设置应用程序的项目。
+description: 了解在预配虚拟机后，如何创建项目以与 Azure 开发测试实验室一起使用来部署和设置应用程序。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88270676"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>为开发测试实验室虚拟机创建自定义项目
@@ -19,7 +19,7 @@ ms.locfileid: "88270676"
 >
 
 ## <a name="overview"></a>概述
-预配 VM 后，可使用项目来部署和设置应用程序**。 项目由项目定义文件和存储在 Git 存储库的文件夹中的其他脚本文件组成。 项目定义文件包含 JSON 和可用于指定要在 VM 上安装的内容的表达式。 例如，可以定义项目名称、要运行的命令，以及运行命令时可用的参数。 可以按名称引用项目定义文件中的其他脚本文件。
+预配 VM 后，可使用项目来部署和设置应用程序。 项目由项目定义文件和存储在 Git 存储库的文件夹中的其他脚本文件组成。 项目定义文件包含 JSON 和可用于指定要在 VM 上安装的内容的表达式。 例如，可以定义项目名称、要运行的命令，以及运行命令时可用的参数。 可以按名称引用项目定义文件中的其他脚本文件。
 
 ## <a name="artifact-definition-file-format"></a>项目定义文件格式
 以下示例显示组成定义文件基本结构的各个部分：
@@ -83,7 +83,7 @@ ms.locfileid: "88270676"
 * 数组（任何有效的 JSON 数组）
 
 ## <a name="secrets-as-secure-strings"></a>安全字符串形式的机密
-将机密声明为安全字符串。 下面是 `parameters` 在文件的 **artifactfile.js** 部分中声明安全字符串参数的语法：
+将机密声明为安全字符串。 以下是用于在 artifactfile.json 文件的 `parameters` 部分中声明安全字符串参数的语法：
 
 ```json
 
@@ -95,7 +95,7 @@ ms.locfileid: "88270676"
     },
 ```
 
-对于 "项目安装" 命令，请运行 PowerShell 脚本，该脚本采用通过使用 ConvertTo-SecureString 命令创建的安全字符串。 
+对于项目安装命令，请运行 PowerShell 脚本，该脚本采用使用 ConvertTo-SecureString 命令创建的安全字符串。 
 
 ```json
   "runCommand": {
@@ -103,9 +103,9 @@ ms.locfileid: "88270676"
   }
 ```
 
-有关完整的示例，请参阅 [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)上的 artifactfile.js和 artifact.ps1 (PowerShell 脚本) 。
+有关完整的示例 artifactfile.json 和 artifact.ps1（PowerShell 脚本）的信息，请参阅 [GitHub 上的此示例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
 
-需要注意的另一个重要事项是，为用户调试捕获输出时不将机密记录到控制台。 
+另一个需要注意的重要事项是，为用户调试捕获输出时请勿将机密记录到控制台。 
 
 ## <a name="artifact-expressions-and-functions"></a>项目表达式和函数
 可以使用表达式和函数构建项目安装命令。
@@ -114,7 +114,7 @@ ms.locfileid: "88270676"
 
 以下列表显示常见函数：
 
-* parameters(parameterName)：返回运行项目命令时提供的参数值****。
+* parameters(parameterName)：返回运行项目命令时提供的参数值。
 * **concat(arg1, arg2, arg3,….. )**：合并多个字符串值。 此函数可结合使用各种类型的参数。
 
 以下示例显示如何使用表达式和函数构造值：
@@ -132,7 +132,7 @@ ms.locfileid: "88270676"
 
 1. 安装 JSON 编辑器。 需要一个 JSON 编辑器来处理项目定义文件。 建议使用 [Visual Studio Code](https://code.visualstudio.com/)，它适用于 Windows、Linux 和 OS X。
 2. 获取示例 artifactfile.json 定义文件。 查看开发测试实验室团队在我们的 [GitHub 存储库](https://github.com/Azure/azure-devtestlab)中创建的项目。 我们已创建资源丰富的项目库，可帮助你创建自己的项目。 下载项目定义文件并对其进行更改以创建自己的项目。
-3. 利用 IntelliSense。 使用 IntelliSense 查看可用于构建项目定义文件的有效元素。 此外还可以查看元素值的不同选项。 例如，编辑“targetOsType”元素时，IntelliSense 显示 Windows 或 Linux 两种选择****。
+3. 利用 IntelliSense。 使用 IntelliSense 查看可用于构建项目定义文件的有效元素。 此外还可以查看元素值的不同选项。 例如，编辑“targetOsType”元素时，IntelliSense 显示 Windows 或 Linux 两种选择。
 4. 将项目存储在[开发测试实验室的公共 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)或[自己的 Git 存储库](devtest-lab-add-artifact-repo.md)中。 在公共存储库中，可以查看他人共享的项目，可以直接使用或自定义它们来满足自己的需求。
    
    1. 为每个项目创建单独的目录。 目录名称应与项目名称相同。

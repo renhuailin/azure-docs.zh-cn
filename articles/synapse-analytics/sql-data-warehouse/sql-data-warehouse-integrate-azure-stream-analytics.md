@@ -2,21 +2,21 @@
 title: 在专用 SQL 池中使用 Azure 流分析
 description: 提示涉及如何将 Azure 流分析与 Azure Synapse 中的专用 SQL 池配合使用以开发实时解决方案。
 services: synapse-analytics
-author: julieMSFT
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 9/25/2020
-ms.author: jrasnick
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 0c7f139b50cd43e3e8862fda3f5401a853ced8d0
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 023cf55a01f34277dd5c5707d0d123f54c1674df
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566573"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600082"
 ---
 # <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>将 Azure 流分析与 Azure Synapse Analytics 中的专用 SQL 池配合使用
 

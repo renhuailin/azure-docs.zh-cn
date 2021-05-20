@@ -1,6 +1,6 @@
 ---
-title: 有用的诊断查询-超大规模 (Citus) -Azure Database for PostgreSQL
-description: 用于了解分布式数据和更多的查询
+title: 有用的诊断查询 - 超大规模 (Citus) - Azure Database for PostgreSQL
+description: 用于了解分布式数据和其他信息的查询
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,19 +8,19 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/5/2021
 ms.openlocfilehash: 4858f650aca1b704ac79482e0158fd83fc0264b8
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98165235"
 ---
 # <a name="useful-diagnostic-queries"></a>有用的诊断查询
 
-## <a name="finding-which-node-contains-data-for-a-specific-tenant"></a>查找哪个节点包含特定租户的数据
+## <a name="finding-which-node-contains-data-for-a-specific-tenant"></a>确定哪个节点包含特定租户的数据
 
-在多租户用例中，我们可以确定哪些辅助角色节点包含特定租户的行。  超大规模 (Citus) 将分布式表的行分组为分片，并将每个分片放在服务器组中的辅助节点上。 
+在多租户用例中，我们可以确定哪个工作器节点包含特定租户的行。  超大规模 (Citus) 将分布式表的行分组成分片，并将每个分片放在服务器组中的某个工作器节点上。 
 
-假设我们的应用程序的租户是商店，我们想要查找哪些辅助节点包含商店 ID = 4 的数据。  换句话说，我们想要查找分片的位置，其中包含分布列的值为4的行：
+假设应用程序的租户是商店，而我们想要确定哪个工作器节点包含指定了商店 ID=4 的数据。  换言之，我们想要查找包含分布列中具有值 4 的行的分片：
 
 ``` postgresql
 SELECT shardid, shardstate, shardlength, nodename, nodeport, placementid
@@ -33,7 +33,7 @@ SELECT shardid, shardstate, shardlength, nodename, nodeport, placementid
    );
 ```
 
-输出包含辅助数据库的主机和端口。
+输出将包含工作器数据库的主机和端口。
 
 ```
 ┌─────────┬────────────┬─────────────┬───────────┬──────────┬─────────────┐
@@ -45,9 +45,9 @@ SELECT shardid, shardstate, shardlength, nodename, nodeport, placementid
 
 ## <a name="finding-the-distribution-column-for-a-table"></a>查找表的分布列
 
-超大规模 (Citus) 中的每个分布式表都有一个 "分布列"。  (有关详细信息，请参阅 [分布式数据建模](concepts-hyperscale-choose-distribution-column.md)。 ) 了解它是哪个列会很重要。 例如，联接或筛选表时，可能会看到错误消息，如 "向分布列添加筛选器"。
+超大规模 (Citus) 中的每个分布式表都有一个“分布列”。 （有关详细信息，请参阅[分布式数据建模](concepts-hyperscale-choose-distribution-column.md)。）知道哪个列是分布列非常重要。 例如，在联接或筛选表时，可能会现错误消息，其中包含类似于“将筛选器添加到分布列”的提示。
 
-`pg_dist_*`协调器节点上的表包含有关分布式数据库的不同元数据。 特别 `pg_dist_partition` 保存每个表的分布列的相关信息。 您可以使用便利的实用工具函数在元数据中的低级别详细信息中查找分布列名。 下面是一个示例及其输出：
+协调器节点上的 `pg_dist_*` 表包含有关分布式数据库的各种元数据。 具体而言，`pg_dist_partition` 包含有关每个表的分布列的信息。 可以使用便捷的实用工具函数在元数据的低级别详细信息中查找分布列名。 下面是一个示例及其输出：
 
 ``` postgresql
 -- create example table
@@ -84,7 +84,7 @@ SELECT column_to_column_name(logicalrelid, partkey) AS dist_col_name
 
 ## <a name="detecting-locks"></a>检测锁
 
-此查询将跨所有工作节点运行，并确定锁、打开的时间以及有问题的查询：
+此查询将对所有工作器节点运行，并识别锁、锁保持打开状态的时长，以及有问题的查询：
 
 ``` postgresql
 SELECT run_command_on_workers($cmd$
@@ -136,7 +136,7 @@ $cmd$);
 
 ## <a name="querying-the-size-of-your-shards"></a>查询分片的大小
 
-此查询将向你提供给定分布式表的每个分片的大小（称为 `my_distributed_table` ：
+此查询将提供名为 `my_distributed_table` 的给定分布式表的每个分片大小：
 
 ``` postgresql
 SELECT *
@@ -163,7 +163,7 @@ $cmd$);
 
 ## <a name="querying-the-size-of-all-distributed-tables"></a>查询所有分布式表的大小
 
-此查询将获取每个分布式表的大小列表以及索引的大小。
+此查询获取每个分布式表的大小及其索引大小的列表。
 
 ``` postgresql
 SELECT
@@ -188,11 +188,11 @@ WHERE schemaname = 'public';
 └───────────────┴────────────┘
 ```
 
-请注意，还有其他超大规模 (Citus) 函数用于查询分布式表的大小，请参阅 [确定表大小](howto-hyperscale-table-size.md)。
+请注意，其他某些超大规模 (Citus) 函数也可用于查询分布式表的大小，具体请参阅[确定表大小](howto-hyperscale-table-size.md)。
 
-## <a name="identifying-unused-indices"></a>标识未使用的索引
+## <a name="identifying-unused-indices"></a>识别未使用的索引
 
-以下查询将标识给定分布式表的辅助角色节点上的未使用索引 (`my_distributed_table`) 
+以下查询将识别给定分布式表 (`my_distributed_table`) 的工作器节点上未使用的索引
 
 ``` postgresql
 SELECT *
@@ -233,7 +233,7 @@ $cmd$);
 
 ## <a name="monitoring-client-connection-count"></a>监视客户端连接计数
 
-下面的查询对协调器上打开的连接进行计数，并按类型对它们进行分组。
+以下查询统计协调器上打开的连接数，并按类型将这些连接分组。
 
 ``` sql
 SELECT state, count(*)
@@ -255,7 +255,7 @@ GROUP BY state;
 
 ## <a name="index-hit-rate"></a>索引命中率
 
-此查询将为您提供跨所有节点的索引命中率。 索引命中速率有助于确定查询时使用索引的频率：
+此查询将提供所有节点中的索引命中率。 索引命中率有助于确定查询时使用索引的频率：
 
 ``` postgresql
 SELECT nodename, result as index_hit_rate
@@ -281,9 +281,9 @@ $cmd$);
 
 ## <a name="cache-hit-rate"></a>缓存命中率
 
-大多数应用程序通常只是一次访问其总数据的一小部分。 PostgreSQL 在内存中保留频繁访问的数据，以避免磁盘读取速度缓慢。 可以在 " [pg_statio_user_tables](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STATIO-ALL-TABLES-VIEW) " 视图中查看有关它的统计信息。
+大多数应用程序通常只是一次性地访问其总数据的一小部分。 PostgreSQL 将频繁访问的数据保存在内存中，以避免从磁盘缓慢读取数据。 可以在 [pg_statio_user_tables](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STATIO-ALL-TABLES-VIEW) 视图中查看相关统计信息。
 
-一项重要的度量是：内存缓存与工作负荷中的磁盘相比，数据的百分比是多少：
+一个重要的度量是内存缓存中的数据与工作负载的磁盘中的数据的百分比：
 
 ``` postgresql
 SELECT
@@ -302,8 +302,8 @@ FROM
          1 |      132 | 0.99248120300751879699
 ```
 
-如果发现自己的比率明显低于99%，则可能需要考虑增加数据库的可用缓存。
+如果你发现比率明显低于 99%，则可能需要考虑增加可供数据库使用的缓存。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解适用于诊断的其他[系统表](reference-hyperscale-metadata.md)
+* 了解可用于诊断的其他[系统表](reference-hyperscale-metadata.md)

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: b875936e13edfe0eff12f253836b093796951308
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98876320"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>对 Azure Database for PostgreSQL（单一数据库）使用虚拟网络服务终结点和规则
@@ -32,9 +32,9 @@ ms.locfileid: "98876320"
 
 **虚拟网络：** 可以让虚拟网络与 Azure 订阅相关联。
 
-**子网：** 虚拟网络包含 **子网**。 VNet 中 (Vm) 的任何 Azure 虚拟机都将分配给子网。 子网可以包含多个 Vm 和/或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+**子网：** 虚拟网络包含 **子网**。 VNet 中的任何 Azure 虚拟机 (VM) 都将分配给子网。 一个子网可能包含多个 VM 和/或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
-**虚拟网络服务终结点：** [虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for PostgreSQL 和 MySQL 服务。 在将 **Microsoft .sql** 服务标记应用到 VNet 服务终结点时，务必要注意，它会为 Azure 数据库服务配置服务终结点流量： Sql 数据库、Azure Synapse Analytics、Azure Database for PostgreSQL 和子网上 Azure Database for MySQL 服务器。 
+**虚拟网络服务终结点：** [虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for PostgreSQL 和 MySQL 服务。 务必要注意的一点是，将 Microsoft.Sql 服务标记应用到 VNet 服务终结点时，它将为子网上的 Azure 数据库服务（SQL 数据库、Azure Synapse Analytics、Azure Database for PostgreSQL 和 Azure Database for MySQL 服务器）配置服务终结点通信。 
 
 **虚拟网络规则：** 适用于 Azure Database for PostgreSQL 服务器的虚拟网络规则是一个子网，该子网列在 Azure Database for PostgreSQL 服务器的访问控制列表 (ACL) 中。 该子网必须包含“Microsoft.Sql”类型名称才会列在 Azure Database for PostgreSQL 服务器的 ACL 中。
 
@@ -44,7 +44,7 @@ ms.locfileid: "98876320"
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>虚拟网络规则的优势
 
-在采取措施之前，子网中的 Vm (s) 无法与 Azure Database for PostgreSQL 服务器进行通信。 建立通信的一项操作是创建虚拟网络规则。 若要弄清楚为何选择 VNet 规则方法，必须进行一个比较和对比式的讨论，其中涉及到防火墙提供的竞争性安全选项。
+在你执行相应操作之前，子网中的 VM 不能与 Azure Database for PostgreSQL 服务器通信。 建立通信的一项操作是创建虚拟网络规则。 若要弄清楚为何选择 VNet 规则方法，必须进行一个比较和对比式的讨论，其中涉及到防火墙提供的竞争性安全选项。
 
 ### <a name="allow-access-to-azure-services"></a>允许访问 Azure 服务
 

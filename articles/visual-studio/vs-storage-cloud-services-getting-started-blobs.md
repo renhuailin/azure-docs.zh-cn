@@ -1,5 +1,5 @@
 ---
-title: '使用 Visual Studio (云服务开始使用 blob 存储) '
+title: 开始在 Visual Studio（云服务）中使用 Blob 存储
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的云服务项目中使用 Azure Blob 存储
 services: storage
 author: ghogen
@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 89e0d6873ebfd8f8396c36185730c57a66af0dd9
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96007015"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（云服务项目）
@@ -100,7 +100,7 @@ Internet 中的所有人都可以查看公共容器中的 Blob，但是，仅在
 ## <a name="upload-a-blob-into-a-container"></a>将 Blob 上传到容器中
 Azure 存储支持块 Blob 和页 Blob。 大多数情况下，推荐使用块 Blob。
 
-要将文件上传到块 Blob，请获取容器引用，并使用它获取块 Blob 引用。 拥有 blob 引用后，可以通过调用 **UploadFromStream** 方法将任何数据流上载到该 blob。 如果之前不存在 Blob，此操作将创建一个；如果存在 Blob，此操作将覆盖它。 下面的示例演示了如何将 Blob 上传到容器中，并假定已创建容器。
+要将文件上传到块 Blob，请获取容器引用，并使用它获取块 Blob 引用。 获取 Blob 引用后，可以通过调用 **UploadFromStream** 方法，将任何数据流上传到该 Blob。 如果之前不存在 Blob，此操作将创建一个；如果存在 Blob，此操作将覆盖它。 下面的示例演示了如何将 Blob 上传到容器中，并假定已创建容器。
 
 ```csharp
 // Retrieve a reference to a blob named "myblob".
@@ -113,8 +113,8 @@ using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 }
 ```
 
-## <a name="list-the-blobs-in-a-container"></a>列出容器中的 blob
-若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 **ListBlobs** 方法检索其中的 blob 和/或目录。 要访问返回的 **IListBlobItem** 的丰富属性和方法，必须将它转换为 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。 如果类型未知，可以使用类型检查来确定要将其转换为哪种类型。 下面的代码演示如何检索和输出 **照片** 容器中每一项的 URI：
+## <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
+若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 **ListBlobs** 方法来检索其中的 Blob 和/或目录。 要访问返回的 **IListBlobItem** 的丰富属性和方法，必须将它转换为 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。 如果类型未知，可以使用类型检查来确定要将其转换为哪种类型。 以下代码演示了如何检索和输出 **photos** 容器中每项的 URI：
 
 ```csharp
 // Loop over items within the container and output the length and URI.
@@ -143,7 +143,7 @@ foreach (IListBlobItem item in container.ListBlobs(null, false))
 }
 ```
 
-如前一代码示例所示，还可将 Blob 服务视为容器中的目录。 这是为了让用户能够以更类似于文件夹的结构来组织 Blob。 例如，请考虑名为 " **照片**" 的容器中的以下块 blob 集：
+如前一代码示例所示，还可将 Blob 服务视为容器中的目录。 这是为了让用户能够以更类似于文件夹的结构来组织 Blob。 例如，请考虑名为 **photos** 的容器中包含的下面一组块 Blob：
 
 ```output
 photo1.jpg
@@ -191,7 +191,7 @@ Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/
 有关详细信息，请参阅 [CloudBlobContainer.ListBlobs](/rest/api/storageservices/List-Blobs)。
 
 ## <a name="download-blobs"></a>下载 Blob
-若要下载 blob，请首先检索 blob 引用，然后调用 **DownloadToStream** 方法。 下面的示例使用 **DownloadToStream** 方法将 blob 内容传输到一个流对象，然后你可以将该对象保存到本地文件。
+要下载 Blob，请首先检索 Blob 引用，然后调用 **DownloadToStream** 方法。 以下示例使用 **DownloadToStream** 方法将 Blob 内容传输到一个流对象，然后可以将该对象保存到本地文件。
 
 ```csharp
 // Get a reference to a blob named "photo1.jpg".

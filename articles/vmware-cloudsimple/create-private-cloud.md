@@ -1,41 +1,41 @@
 ---
-title: Azure VMware 解决方案（按 CloudSimple）-创建 CloudSimple 私有云
-description: 介绍如何创建 CloudSimple 私有云，以将 VMware 工作负荷扩展到云，从而提高操作灵活性和连续性
-author: Ajayan1008
-ms.author: v-hborys
+title: Azure VMware Solution by CloudSimple - 创建 CloudSimple 私有云
+description: 介绍了如何创建 CloudSimple 私有云，以将 VMware 工作负载扩展到具有操作灵活性和连续性的云中
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2f4af4a36e719cbf15b3f0af77db81a32f2f2e42
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
-ms.translationtype: MT
+ms.openlocfilehash: 02cab9ee72dcd13b2ed8cd255ec4bb555b3894cc
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896271"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177793"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>创建 CloudSimple 私有云
 
-私有云是支持 ESXi 主机、vCenter、vSAN 和 NSX 的独立 VMware 堆栈。 私有云通过 CloudSimple 门户进行管理。 它们在自己的管理域中具有自己的 vCenter 服务器。 堆栈在专用节点和隔离的裸机硬件节点上运行。
+私有云是支持 ESXi 主机、vCenter、vSAN 和 NSX 的独立 VMware 堆栈。 私有云通过 CloudSimple 门户进行管理。 它们在各自的管理域中有各自的 vCenter 服务器。 堆栈运行在专用节点和独立裸机硬件节点上。
 
-创建私有云有助于满足网络基础结构的各种常见需求：
+创建私有云有助于满足对网络基础结构的各种常见需求：
 
-* **增长**。 如果已达到现有基础结构的硬件刷新点，则可以使用私有云进行扩展，无需新的硬件投资。
+* 增长。 如果已达到现有基础结构的硬件刷新点，那么使用私有云可以进行扩展，而不需要新的硬件投资。
 
-* **快速扩展**。 如果出现任何临时或计划外的容量需求，可以使用私有云创建额外的容量，而无需延迟。
+* 快速扩展。 如果出现任何临时或计划外的容量需求，那么使用私有云可以在没有延迟的情况下创建额外容量。
 
-* **增强的保护**。 使用三个或更多节点的私有云，可以获得自动冗余和高可用性保护。
+* 增加保护。 使用包含三个或更多节点的私有云，可以获得自动冗余和高可用性保护。
 
-* 长期 **基础结构需求**。 如果你的数据中心处于容量上，或者你希望重新构建以降低成本，则私有云使你可以停用数据中心并迁移到基于云的解决方案，同时保持与企业运营的兼容。
+* 长期基础结构需求。 如果数据中心容量已满，或你要通过重构来降低成本，那么使用私有云可以停用数据中心，并迁移到基于云的解决方案，同时与企业运营保持兼容。
 
-在创建私有云时，你将获得单个 vSphere 群集和在该群集中创建的所有管理 Vm。
+如果创建私有云，则会得到一个 vSphere 群集以及在此群集中创建的所有管理 VM。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-必须先设置节点，然后才能创建私有云。 有关预配节点的详细信息，请参阅 [通过 CloudSimple 预配 Azure VMware 解决方案的节点](create-nodes.md)。
+必须先预配节点，然后才能创建私有云。 若要详细了解如何预配节点，请参阅[为 Azure VMware Solution by CloudSimple 预配节点](create-nodes.md)。
 
-为私有云分配 vSphere/vSAN 子网的 CIDR 范围。 私有云是作为独立的 VMware stack 环境创建的， (包含由 vCenter 服务器托管的 ESXi 主机、vCenter、vSAN 和 NSX) 。 管理组件部署在为 vSphere/vSAN 子网 CIDR 选择的网络中。 在部署过程中，网络 CIDR 范围分为不同的子网。 VSphere/vSAN 子网地址空间必须是唯一的。 它不得与任何与 CloudSimple 环境通信的网络重叠。 与 CloudSimple 通信的网络包括本地网络和 Azure 虚拟网络。 有关 vSphere/vSAN 子网的详细信息，请参阅 Vlan 和子网概述。
+为私有云的 vSphere/vSAN 子网分配 CIDR 范围。 私有云创建为由 vCenter 服务器管理的独立 VMware 堆栈环境（包含 ESXi 主机、vCenter、vSAN 和 NSX）。 管理组件部署在为 vSphere/vSAN 子网 CIDR 选择的网络中。 在部署过程中，网络 CIDR 范围被划分为不同的子网。 vSphere/vSAN 子网地址空间必须是唯一的。 它不得与任何与 CloudSimple 环境通信的网络重叠。 与 CloudSimple 通信的网络包括本地网络和 Azure 虚拟网络。 若要详细了解 vSphere/vSAN 子网，请参阅 VLAN 和子网概述。
 
 * 最小 vSphere/vSAN 子网 CIDR 范围前缀：/24
 * 最大 vSphere/vSAN 子网 CIDR 范围前缀：/21
@@ -45,34 +45,34 @@ ms.locfileid: "97896271"
 
 访问 [CloudSimple 门户](access-cloudsimple-portal.md)。
 
-## <a name="create-a-new-private-cloud"></a>创建新的私有云
+## <a name="create-a-new-private-cloud"></a>新建私有云
 
-1. 选择“所有服务”  。
-2. 搜索 " **CloudSimple Services**"。
+1. 选择“所有服务”。
+2. 搜索“CloudSimple 服务”。
 3. 选择要在其上创建私有云的 CloudSimple 服务。
-4. 从 " **概述**" 中，单击 " **创建私有云** " 以打开 CloudSimple 门户的新浏览器选项卡。 如果系统提示，请用 Azure 登录凭据登录。
+4. 在“概述”中，单击“创建私有云”，为 CloudSimple 门户打开新的浏览器标签页。 如果出现提示，请使用 Azure 登录凭据进行登录。
 
-    ![从 Azure 创建私有云](media/create-private-cloud-from-azure.png)
+    ![在 Azure 中创建私有云](media/create-private-cloud-from-azure.png)
 
-5. 在 CloudSimple 门户中，提供私有云的名称。
-6. 选择私有云的 " **位置** "。
-7. 选择 " **节点类型**"，与在 Azure 上预配的类型一致。
-8. 指定 **节点计数**。  至少需要三个节点才能创建私有云。
+5. 在 CloudSimple 门户中，命名私有云。
+6. 选择私有云的“位置”。
+7. 选择与在 Azure 上预配的类型一致的“节点类型”。
+8. 指定“节点计数”。  至少需要三个节点才能创建私有云。
 
-    ![创建私有云-基本信息](media/create-private-cloud-basic-info.png)
+    ![创建私有云 - 基本信息](media/create-private-cloud-basic-info.png)
 
-9. 单击 " **下一步：高级选项**"。
-10. 输入 vSphere/vSAN 子网的 CIDR 范围。 请确保 CIDR 范围不与任何本地或其他 Azure 子网 (虚拟网络) 或网关子网重叠。
+9. 单击“下一步: 高级选项”。
+10. 输入 vSphere/vSAN 子网的 CIDR 范围。 请确保 CIDR 范围不与任何本地或其他 Azure 子网（虚拟网络）或网关子网重叠。
 
-    **CIDR 范围选项：** /24、/23、/22 或/21。 A/24 CIDR 范围支持最多9个节点，/23 个 CIDR 范围最多支持41个节点，并且/22 和/21 CIDR 范围最多支持64个节点 (私有云) 中的最大节点数。
+    CIDR 范围选项：/24、/23、/22 或 /21。 /24 CIDR 范围支持最多 9 个节点，/23 CIDR 范围支持最多 41 个节点，而 /22 和 /21 CIDR 范围支持最多 64 个节点（私有云中的最大节点数）。
 
     > [!IMPORTANT]
-    > VSphere/vSAN CIDR 范围中的 IP 地址保留供私有云基础结构使用。  请勿在任何虚拟机上使用此范围内的 IP 地址。
+    > vSphere/vSAN CIDR 范围中的 IP 地址预留给私有云基础结构使用。  请不要在任何虚拟机上使用此范围内的 IP 地址。
 
-11. 单击 " **下一步"：查看和创建**。
-12. 查看设置。 如果需要更改任何设置，请单击 " **上一步**"。
+11. 单击“下一步: 审阅并创建”。
+12. 查看设置。 如果需要更改任何设置，请单击“上一步”。
 13. 单击“创建”。
 
-私有云预配过程开始。 预配私有云可能需要长达两个小时。
+此时，私有云预配过程开始。 预配私有云最长可能需要两个小时才能完成。
 
-有关扩展现有私有云的说明，请参阅 [扩展私有云](expand-private-cloud.md)。
+有关扩展现有私有云的说明，请参阅[扩展私有云](expand-private-cloud.md)。

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: bb9a0351b6f1de47f3687995c65060a23bdb2874
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93336106"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 查询地理空间数据
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-本文介绍了如何使用 SQL 和 LINQ 查询 Azure Cosmos DB 中的地理空间数据。 目前，只有 Azure Cosmos DB SQL API 帐户支持存储和访问地理空间数据。 Azure Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 (OGC) 内置函数。 有关 SQL 语言中的整套内置函数的详细信息，请参阅 [Azure Cosmos DB 中的查询系统函数](sql-query-system-functions.md)。
+本文介绍了如何使用 SQL 和 LINQ 查询 Azure Cosmos DB 中的地理空间数据。 目前，只有 Azure Cosmos DB SQL API 帐户支持存储和访问地理空间数据。 Azure Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 (OGC) 内置函数。 有关 SQL 语言中的整套内置函数的详细信息，请参阅[查询 Azure Cosmos DB 中的查询系统函数](sql-query-system-functions.md)。
 
 ## <a name="spatial-sql-built-in-functions"></a>空间 SQL 内置函数
 
@@ -29,7 +29,7 @@ ms.locfileid: "93336106"
 |ST_WITHIN (spatial_expr, spatial_expr) | 返回一个布尔表达式，指示第一个 GeoJSON 对象（点、多边形或 LineString）是否在第二个 GeoJSON 对象 （点、多边形或 LineString）内。|
 |ST_INTERSECTS (spatial_expr, spatial_expr)| 返回一个布尔表达式，指示两个指定的 GeoJSON 对象 （点、多边形或 LineString）是否相交。|
 |ST_ISVALID| 返回一个布尔值，指示指定的 GeoJSON 点、多边形或 LineString 表达式是否有效。|
-| ST_ISVALIDDETAILED| 返回一个 JSON 值，其中包含一个布尔值，该值指示指定的 GeoJSON 点、多边形或 LineString 表达式是否有效。 如果无效，则它将原因返回为字符串值。|
+| ST_ISVALIDDETAILED| 返回一个包含布尔值的 JSON 值，指示指定的 GeoJSON 点、多边形或 LineString 表达式是否有效。 如果无效，将以字符串值的形式返回原因。|
 
 空间函数可用于对空间数据执行邻近查询。 例如，以下查询使用 `ST_DISTANCE` 内置函数返回所有家族文档，且这些文档在指定位置的 30 公里内。
 
@@ -49,7 +49,7 @@ ms.locfileid: "93336106"
     }]
 ```
 
-如果在索引策略中包含空间索引，则将通过索引有效地进行“距离查询”。 有关空间索引编制的详细信息，请参阅[地理空间索引编制](sql-query-geospatial-index.md)。 如果不存在指定路径的空间索引，则查询将扫描容器。
+如果在索引策略中包含空间索引，则将通过索引有效地进行“距离查询”。 有关空间索引的详细信息，请参阅[地理空间索引](sql-query-geospatial-index.md)。 如果没有指定路径的空间索引，则查询将扫描该容器。
 
 `ST_WITHIN` 可用于检查点是否在多边形内。 多边形通常用来表示边界，例如邮政编码、省/自治区边界或自然构成物。 再次说明，如果在索引策略中包含空间索引，则将通过索引有效地进行“within”查询。
 
@@ -75,7 +75,7 @@ ms.locfileid: "93336106"
 ```
 
 > [!NOTE]
-> 与 Azure Cosmos DB 查询中不匹配类型的工作方式类似，如果任一参数中指定的位置值格式不正确或无效，则会评估为“未定义”  ，并且会在查询结果中跳过已评估的文档。 如果查询没有返回任何结果，请运行 `ST_ISVALIDDETAILED` 进行调试，以了解空间类型无效的原因。
+> 与 Azure Cosmos DB 查询中不匹配类型的工作方式类似，如果任一参数中指定的位置值格式不正确或无效，则会评估为“未定义”，并且会在查询结果中跳过已评估的文档。 如果查询没有返回任何结果，请运行 `ST_ISVALIDDETAILED` 进行调试，以了解空间类型无效的原因。
 >
 >
 
@@ -101,7 +101,7 @@ Azure Cosmos DB 还支持执行反向查询，即可在 Azure Cosmos DB 中索�
     }]
 ```
 
-`ST_ISVALID` 和 `ST_ISVALIDDETAILED` 可用来检查空间对象是否有效。 例如，下列查询检查纬度值 (-132.8) 超出范围的点的有效性。 `ST_ISVALID` 仅返回一个布尔值，`ST_ISVALIDDETAILED` 则返回布尔值和字符串，字符串中包含认为它无效的原因。
+`ST_ISVALID` 和 `ST_ISVALIDDETAILED` 可用来检查空间对象是否有效。 例如，下列查询检查纬度值 (-132.8) 超出范围的点的有效性。 `ST_ISVALID` 仅返回一个布尔值，`ST_ISVALIDDETAILED` 则返回布尔值和字符串，字符串中包含被视为无效的原因。
 
 **查询**
 
@@ -142,7 +142,7 @@ Azure Cosmos DB 还支持执行反向查询，即可在 Azure Cosmos DB 中索�
 
 SQL .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用户在 LINQ 表达式中使用。 SQL LINQ 提供程序会将这些方法调用转换为等效的 SQL 内置函数调用（分别为 ST_DISTANCE 和 ST_WITHIN）。
 
-以下是 LINQ 查询的示例，该查询使用 LINQ 在 Azure Cosmos 容器中查找其 `location` 值在指定点的 30 公里半径内的所有文档。
+以下是 LINQ 查询的示例，该查询使用 LINQ 在 Azure Cosmos 容器中查找所有文档，这些文档的“`location`”值在指定点的 30 公里半径内。
 
 **LINQ 距离查询**
 
@@ -154,7 +154,7 @@ SQL .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用户在 LI
     }
 ```
 
-同样地，以下查询查找所有文档，这些文档的 `location` 均在指定的方框/多边形内。
+同样地，以下查询查找所有文档，这些文档的“`location`”均在指定的方框/多边形内。
 
 **LINQ Within 查询**
 
@@ -182,6 +182,6 @@ SQL .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用户在 LI
 
 已经学会如何开始使用 Azure Cosmos DB 中的地理空间支持，下一步现在可以：
 
-* 深入了解 [Azure Cosmos DB 查询](sql-query-getting-started.md)
+* 详细了解 [Azure Cosmos DB 查询](sql-query-getting-started.md)
 * 详细了解 [Azure Cosmos DB 中的地理空间数据和 GeoJSON 位置数据](sql-query-geospatial-intro.md)
 * 详细了解如何[使用 Azure Cosmos DB 为空间数据编制索引](sql-query-geospatial-index.md)

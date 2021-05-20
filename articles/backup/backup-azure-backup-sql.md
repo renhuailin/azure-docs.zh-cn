@@ -4,17 +4,17 @@ description: 有关使用 Azure 备份服务备份 SQL Server 数据库的简介
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: 592a51051a0d02a6c1d491db0fe559e2e62babb2
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96327043"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>将 SQL Server 备份到 Azure 作为 DPM 工作负荷
 
 本文将引导你使用 Azure 备份完成 SQL Server 数据库的备份配置步骤。
 
-若要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有，只需几分钟就能创建一个免费帐户。 有关详细信息，请参阅 [创建 Azure 免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+若要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有帐户，则只需花费几分钟就能创建一个免费帐户。 有关详细信息，请参阅[创建 Azure 免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 若要将 SQL Server 数据库备份到 Azure 并从 Azure 恢复该数据库：
 
@@ -24,7 +24,7 @@ ms.locfileid: "96327043"
 
 >[!NOTE]
 >DPM 2019 UR2 支持使用群集共享卷 (CSV) 的 SQL Server 故障转移群集实例 (FCI)。<br><br>
->此功能支持保护 [azure 上的存储空间直通 SQL Server 故障转移群集实例](../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)  和 [具有 azure 共享磁盘的 SQL Server 故障转移群集实例](../azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md) 。 DPM 服务器必须部署在 Azure 虚拟机中，才能保护在 Azure VM 上部署的 SQL FCI 实例。 
+>此功能支持保护[具有 Azure 上的存储空间直通的 SQL Server 故障转移群集实例](../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)和[具有 Azure 共享磁盘的 SQL Server 故障转移群集实例](../azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)。 DPM 服务器必须部署在 Azure 虚拟机中，才能保护在 Azure VM 上部署的 SQL FCI 实例。 
 
 ## <a name="prerequisites-and-limitations"></a>先决条件和限制
 

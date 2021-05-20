@@ -1,28 +1,28 @@
 ---
 title: 从 Azure SQL 数据库和 Azure Synapse Analytics 共享和接收数据
-description: 了解如何在 Azure SQL 数据库和 Azure Synapse Analytics 中共享和接收数据
+description: 了解如何从 Azure SQL 数据库和 Azure Synapse Analytics 共享和接收数据
 author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/24/2021
 ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740369"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>从 Azure SQL 数据库和 Azure Synapse Analytics 共享和接收数据
 
 [!INCLUDE[appliesto-sql](includes/appliesto-sql.md)]
 
-Azure 数据共享支持基于快照的共享 Azure SQL 数据库和 Azure Synapse 分析。 本文介绍如何从这些源共享和接收数据。
+Azure Data Share 支持基于快照的 Azure SQL 数据库和 Azure Synapse Analytics 共享。 本文介绍如何共享和接收来自这些源的数据。
 
-Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中共享表和视图 (以前称为 Azure SQL DW) ，以及从 Azure Synapse Analytics (工作区) 专用 SQL 池共享表。 当前不支持从 Azure Synapse Analytics 共享 (工作区) 无服务器 SQL 池。 数据使用者可以选择接受将数据作为 csv 或 parquet 文件的 Azure Data Lake Storage Gen2 或 Azure Blob 存储，以及作为表的 Azure SQL 数据库和 Azure Synapse 分析。
+Azure Data Share 支持共享 Azure SQL 数据库和 Azure Synapse Analytics（以前的 Azure SQL DW）中的表和视图，也支持共享 Azure Synapse Analytics（工作区）专用 SQL 池中的表。 当前不支持从 Azure Synapse Analytics（工作区）无服务器 SQL 池共享。 数据使用者可以选择将数据作为 csv 或 parquet 文件接受到 Azure Data Lake Storage Gen2 或 Azure Blob 存储中，也可以选择将数据作为表接受到 Azure SQL 数据库和 Azure Synapse Analytics 中。
 
-在将数据接收到 Azure Data Lake Store Gen2 或 Azure Blob 存储时，如果已存在，则完全快照将覆盖目标文件的内容。
-如果将数据接收到 SQL 表中，并且如果目标表尚不存在，则 Azure 数据共享会创建包含源架构的 SQL 表。 如果已存在具有相同名称的目标表，则将删除该目标表并使用最新的完整快照覆盖它。 当前不支持增量快照。
+当使用者接受数据并存储到 Azure Data Lake Storage Gen2 或 Azure Blob 存储中时，系统会使用完整快照覆盖目标文件的内容（如果存在）。
+在将数据接收到 SQL 表中且目标表尚不存在时，Azure Data Share 会使用源架构创建 SQL 表。 如果已存在名称相同的目标表，会将其删除并使用最新的完整快照进行覆盖。 目前不支持增量快照。
 
 ## <a name="share-data"></a>共享数据
 
@@ -116,7 +116,7 @@ Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中�
 
 1. 选择“开始共享数据”  。
 
-1. 选择“创建”。   
+1. 选择“创建”  。   
 
 1. 填写共享的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
 
@@ -132,11 +132,11 @@ Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中�
 
     ![AddDatasets](./media/add-datasets.png "添加数据集")    
 
-1. 选择 SQL server 或 Synapse 工作区，在出现提示时提供凭据，然后选择 " **下一步** " 以导航到要共享的对象，然后选择 "添加数据集"。 你可以从 Azure SQL 数据库和 Azure Synapse Analytics 中选择表和视图， (以前的 Azure SQL DW) 或 Azure Synapse Analytics (工作区中的表) 专用 SQL 池。 
+1. 选择 SQL 服务器或 Synapse 工作区，在出现提示时提供凭据，然后选择“下一步”以导航到要共享的对象，然后选择“添加数据集”。 可以从 Azure SQL 数据库和 Azure Synapse Analytics（以前的 Azure SQL DW）中选择表和视图，或从 Azure Synapse Analytics（工作区）专用 SQL 池中选择表。 
 
     ![SelectDatasets](./media/select-datasets-sql.png "选择数据集")    
 
-1. 在“接收者”选项卡中，选择“+ 添加接收者”，输入数据使用者的电子邮件地址。 电子邮件地址需要是收件人的 Azure 登录电子邮件。
+1. 在“接收者”选项卡中，选择“+ 添加接收者”，输入数据使用者的电子邮件地址。 电子邮件地址需为收件人的 Azure 登录电子邮件。
 
     ![AddRecipients](./media/add-recipient.png "添加收件人") 
 
@@ -166,11 +166,11 @@ Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中�
 * 在你将在其中创建 Data Share 资源的 Azure 订阅以及目标 Azure 数据存储所在的 Azure 订阅中注册 [Microsoft.DataShare 资源提供程序](concepts-roles-permissions.md#resource-provider-registration)。
 
 ### <a name="prerequisites-for-target-storage-account"></a>目标存储帐户的先决条件
-如果选择将数据接收到 Azure 存储，以下是先决条件列表。
+如果选择将数据接收到 Azure 存储中，请查看以下相关先决条件的列表。
 
 * 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](../storage/common/storage-account-create.md)。 
 * 向存储帐户进行写入的权限，此权限位于 *Microsoft.Storage/storageAccounts/write* 中。 “参与者”角色有此权限。 
-* 向存储帐户添加对数据共享资源的托管标识的角色分配的权限，该存储帐户位于 *Microsoft. 授权/角色分配/写入* 中。 “所有者”角色有此权限。  
+* 将数据共享资源托管标识的角色分配添加到存储帐户所需的权限，此权限位于 Microsoft.Authorization/role assignments/write 中。 “所有者”角色有此权限。  
 
 ### <a name="prerequisites-for-sql-target"></a>SQL 目标的先决条件
 如果选择将数据接收到 Azure SQL 数据库和 Azure Synapse Analytics，请查看以下相关先决条件的列表。 
@@ -253,7 +253,7 @@ Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中�
 
    ![接受选项](./media/accept-options.png "接受选项") 
 
-   这会转到你的数据共享帐户中接收的共享。 
+   这会转到数据共享帐户中接收的共享。 
 
    如果不想接受邀请，请选择“拒绝”。 
 
@@ -264,7 +264,7 @@ Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中�
 
    ![映射到目标](./media/dataset-map-target.png "映射到目标") 
 
-1. 选择要将数据置于其中的目标数据存储。 目标数据存储中具有相同路径和名称的任何数据文件或表将被覆盖。 
+1. 选择要用于保存数据的目标数据存储。 目标数据存储中具有相同路径和名称的任何数据文件或表将被覆盖。 
 
    ![目标存储帐户](./media/dataset-map-target-sql.png "目标数据存储") 
 
@@ -275,7 +275,7 @@ Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中�
 ### <a name="trigger-a-snapshot"></a>触发快照
 这些步骤仅适用于基于快照的共享。
 
-1. 可以通过依次选择“详细信息”选项卡、“触发快照”来触发快照 。 在这里，可以触发数据的完整或增量快照。 如果是首次从数据提供者处接收数据，请选择完整副本。 对于 SQL 源，仅支持完整快照。 当执行快照时，后续快照将不会启动，直到上一个快照完成为止。
+1. 可以通过依次选择“详细信息”选项卡、“触发快照”来触发快照 。 在这里，可以触发数据的完整或增量快照。 如果是首次从数据提供者处接收数据，请选择完整副本。 对于 SQL 源，仅支持完整快照。 正在执行快照时，在上一个快照完成之前，后续快照无法启动。
 
    ![触发快照](./media/trigger-snapshot.png "触发快照") 
 
@@ -287,9 +287,9 @@ Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中�
 此步骤仅适用于基于快照的共享。 若要查看快照历史记录，请选择“历史记录”选项卡。在这里可以找到包含过去 30 天生成的所有快照的历史记录。 
 
 ## <a name="supported-data-types"></a>支持的数据类型
-当你从 SQL 源共享数据时，以下映射用于从 SQL Server 数据类型到 Azure 数据共享快照过程中的临时数据类型。 
+从 SQL 源共享数据时，将在快照过程中使用以下从 SQL Server数据类型映射到 Azure Data Share 临时数据类型的映射。 
 
-| SQL Server 数据类型 | Azure 数据共享临时数据类型 |
+| SQL Server 数据类型 | Azure Data Share 临时数据类型 |
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
@@ -325,23 +325,23 @@ Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics 中�
 | xml |String |
 
 >[!NOTE]
-> 1. 对于映射到小数过渡类型的数据类型，当前快照最多支持精度为28。 如果数据需要的精度大于28，请考虑将转换为字符串。 
-> 1.  如果要将数据从 Azure SQL 数据库共享到 Azure Synapse Analytics，并非所有数据类型都受支持。 有关详细信息，请参阅 [专用 SQL 池中的表数据类型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) 。 
+> 1. 对于映射到十进制临时类型的数据类型，目前快照支持的最大精度为 28。 如果数据需要的精度大于 28，请考虑将其转换为字符串。 
+> 1.  在将数据从 Azure SQL 数据库共享到 Azure Synapse Analytics 时，并非所有数据类型都受支持。 有关详细信息，请参阅[专用 SQL 池中的表数据类型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md)。 
 
 ## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>SQL Always Encrypted 或动态数据掩码
-Azure 数据共享目前不支持配置了 Always Encrypted 的 Azure SQL 数据库。 
+Azure Data Share 目前不支持配置了 Always Encrypted 的 Azure SQL 数据库。 
 
-对于包含动态数据掩码的源 SQL 表，数据将在收件人端显示为掩码。
+对于包含动态数据掩码的源 SQL 表，数据在收件人端会显示为掩码。
 
 ## <a name="sql-snapshot-performance"></a>SQL 快照性能
-SQL 快照性能受多种因素的影响。 我们始终建议你执行自己的性能测试。 下面是影响性能的一些示例因素。
+SQL 快照性能受多种因素的影响。 始终建议执行你自己的性能测试。 下面是影响性能的一些因素的示例。
 
-* 硬件配置 (例如，源和目标 SQL 数据存储的 Vcore、内存、DWU) 。 
-* 对源和目标数据存储区的并行访问。 如果要从同一 SQL 数据存储区共享多个表和视图，或者将多个表和视图接收到同一个 SQL 数据存储中，则性能会受到影响。   
-* 源和目标数据存储区的位置。 
+* 源和目标 SQL 数据存储的硬件配置（例如 vCore、内存、DWU） 
+* 并行访问源数据存储和目标数据存储。 如果要从同一个 SQL 数据存储共享多个表和视图，或者将多个表和视图接收到同一个 SQL 数据存储中，则性能会受到影响。   
+* 源数据存储和目标数据存储的位置。 
 
-## <a name="troubleshoot-sql-snapshot-failure"></a>排查 SQL 快照故障
-快照失败的最常见原因是数据共享没有源或目标数据存储的权限。 若要将数据共享权限授予源或目标 Azure SQL 数据库或 Azure Synapse Analytics (以前的 Azure SQL DW) ，必须在使用 Azure Active Directory authentication 连接到 SQL 数据库时运行提供的 SQL 脚本。 若要解决其他 SQL 快照故障，请参阅 [快照故障排除](data-share-troubleshoot.md#snapshots)。
+## <a name="troubleshoot-sql-snapshot-failure"></a>排查 SQL 快照失败问题
+快照失败的最常见原因是 Data Share 对源或目标数据存储的权限不够。 为了向 Data Share 提供所需的对源或目标 Azure SQL 数据库或 Azure Synapse Analytics（以前的 Azure SQL DW）的权限，必须在使用 Azure Active Directory 身份验证连接到 SQL 数据库时运行提供的 SQL 脚本。 若要排查其他 SQL 快照故障，请参阅[排查快照故障](data-share-troubleshoot.md#snapshots)。
 
 ## <a name="next-steps"></a>后续步骤
-已了解如何使用 Azure 数据共享服务共享和接收来自 SQL 源的数据。 若要了解有关其他数据源的共享的详细信息，请继续阅读 [支持的数据存储](supported-data-stores.md)。
+你已了解如何使用 Azure Data Share 服务从 SQL 源共享和接收数据。 若要详细了解如何从其他数据源共享，请阅读[支持的数据存储](supported-data-stores.md)。

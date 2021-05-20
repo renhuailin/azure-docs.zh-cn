@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: references_regions
 ms.openlocfilehash: 60371888dbc4f0cbc33f1ad1b2a685dbb071c01a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101670712"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure 认知搜索的性能缩放
@@ -43,7 +43,7 @@ ms.locfileid: "101670712"
 + Azure 认知搜索不会在后台运行索引编制任务。 如果服务同时处理查询和索引编制工作负荷，请考虑到这一点：将索引编制作业引入查询测试，或者探讨在非高峰期运行索引编制作业的选项。
 
 > [!Tip]
-> 您可以使用负载测试工具来模拟真实的查询负载。 尝试使用 [Azure DevOps 进行负载测试，](/azure/devops/test/load-test/get-started-simple-cloud-load-test) 或使用其中一种 [替代方法](/azure/devops/test/load-test/overview#alternatives)。
+> 你可以使用负载测试工具来模拟真实的查询负载。 尝试[使用 Azure DevOps 进行负载测试](/azure/devops/test/load-test/get-started-simple-cloud-load-test)或使用[替代方法](/azure/devops/test/load-test/overview#alternatives)中的一种。
 
 ## <a name="scale-for-high-query-volume"></a>针对高查询量的缩放
 
@@ -91,26 +91,26 @@ ms.locfileid: "101670712"
 
 ### <a name="availability-zones"></a>可用性区域
 
-[可用性区域](../availability-zones/az-overview.md) 将区域的数据中心分成不同的物理位置组，以在同一区域内提供高可用性。 对于认知搜索，各个副本是区域分配的单位。 搜索服务在一个区域中运行;其副本在不同的区域中运行。
+[可用性区域](../availability-zones/az-overview.md)将区域的数据中心分成不同的物理位置组，以在同一区域内提供高可用性。 对于认知搜索，各个副本是区域分配单元。 搜索服务在一个区域中运行；其副本在不同的区域中运行。
 
-可以通过将两个或多个副本添加到搜索服务来利用 Azure 认知搜索可用性区域。 每个副本都将放置在该区域内的不同可用性区域中。 如果副本数多于可用性区域，副本将在可用性区域之间平均分布。
+可以通过将两个或多个副本添加到搜索服务来利用 Azure 认知搜索的可用性区域。 每个副本都将放置在该区域内不同的可用性区域中。 如果副本数多于可用性区域，将尽可能在可用性区域之间平均分布副本。
 
-Azure 认知搜索当前支持为标准层或更高版本的搜索服务可用性区域，这些服务在以下某个区域中创建：
+Azure 认知搜索当前支持在以下一个区域中创建的标准层或更高层搜索服务的可用性区域：
 
-+ 澳大利亚东部 (创建2021年1月30日，或更高版本) 
-+ 加拿大中部 (创建2021年1月30日，或更高版本) 
-+ 美国中部 (创建2020年12月4日或更高版本) 
-+ 2021年1月27日，美国东部 (创建) 
-+ 2021年1月30日，美国东部 2 (创建) 
-+ 法国中部 (于10月23日（2020或更高版本）创建) 
-+ 日本东部 (创建2021年1月30日，或更高版本) 
-+ 2021年1月28日北欧创建 () 
-+ 2021年1月31日，或更高版本创建的南部 (东亚) 
-+ 2021年1月30日或更高版本创建的英国南部 () 
-+ 2021年1月29日西欧创建 () 
-+ 2021年1月30日，或更高) 版本创建的美国西部 2 (
++ 澳大利亚东部（2021 年 1 月 30 日或之后创建）
++ 加拿大中部（2021 年 1 月 30 日或之后创建）
++ 美国中部（2020 年 12 月 4 日或之后创建）
++ 美国东部（2021 年 1 月 27 日或之后创建）
++ 美国东部 2（2021 年 1 月 30 日或之后创建）
++ 法国中部（2020 年 10 月 23 日或之后创建）
++ 日本东部（2021 年 1 月 30 日或之后创建）
++ 北欧（2021 年 1 月 28 日或之后创建）
++ 东南亚（2021 年 1 月 31 日或之后创建）
++ 英国南部（2021 年 1 月 30 日或之后创建）
++ 西欧（2021 年 1 月 29 日或之后创建）
++ 美国西部 2（2021 年 1 月 30 日或之后创建）
 
-可用性区域不会影响 [Azure 认知搜索服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。 你仍需要3个或更多个副本来实现查询高可用性。
+可用性区域不会影响 [Azure 认知搜索服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。 仍需 3 个或更多个副本来实现查询高可用性。
 
 ## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>针对地理分散的工作负荷和异地冗余进行缩放
 

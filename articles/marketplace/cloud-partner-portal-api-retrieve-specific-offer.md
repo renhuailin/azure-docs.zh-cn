@@ -1,6 +1,6 @@
 ---
-title: 检索特定的产品/服务 API-Azure Marketplace
-description: 用于检索发布服务器命名空间中指定的产品/服务的 API。
+title: 检索特定产品/服务 API - Azure 市场
+description: 用于在发布者命名空间中检索指定产品/服务的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
@@ -8,16 +8,16 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 9f3ba6b2f13b9f2bb1d538db84723e3a9baaef12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87271835"
 ---
 # <a name="retrieve-a-specific-offer"></a>检索特定产品/服务
 
 > [!NOTE]
-> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看 [云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md) 中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
+> 云合作伙伴门户 API 已与合作伙伴中心集成，并将继续在其中运行。 本次转换引入的变更很少。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保转换到合作伙伴中心后代码继续正常工作。 CPP API 应仅用于在转换到合作伙伴中心之前已经集成的现有产品；新产品应使用合作伙伴中心提交 API。
 
 检索发布者命名空间中指定的产品/服务。  
 
@@ -37,18 +37,18 @@ ms.locfileid: "87271835"
 
 ## <a name="uri-parameters"></a>URI 参数
 
-| **名称**    | **描述**                                                                          | **Data type** |
+| **名称**    | **说明**                                                                          | **Data type** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | publisherId。 例如，Contoso                                                        | 字符串        |
 | offerId     | 唯一标识产品/服务的 Guid。                                                 | 字符串        |
-| 版本     | 所检索的产品/服务的版本。 默认情况下，将检索最新的产品/服务版本。 | 整数       |
+| 版本     | 所检索的产品/服务的版本。 默认情况下，将检索最新的产品/服务版本。 | Integer       |
 | slotId      | 要从中检索产品/服务的槽，可以是以下值之一：      <br/>  - `Draft`（默认值）检索当前处于草稿状态的产品/服务版本。  <br/>  -  `Preview` 检索当前处于预览状态的产品/服务版本。     <br/>  -  `Production` 检索当前处于生产状态的产品/服务版本。          |      enum |
 | api-version | API 的最新版本                                                                    | Date          |
 |  |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>标头
 
-|  **Name**          |   **值**            |
+|  **名称**          |   **值**            |
 |  ---------------   |  --------------        |
 |  Content-Type      | `application/json`     |
 |  授权     | `Bearer YOUR_TOKEN`    |
@@ -171,11 +171,11 @@ ms.locfileid: "87271835"
 
 ### <a name="response-body-properties"></a>响应正文属性
 
-|  **名称**       |   **描述**                                                                                                               |
+|  **名称**       |   **说明**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
 |  offerTypeId    | 标识产品/服务的类型                                                                                                    |
 |  publisherId    | 发布者的唯一标识符                                                                                              |
-|  status         | 产品/服务的状态。 有关可能值的列表，请参阅下面的[产品/服务状态](#offer-status)。                                  |
+|  状态         | 产品/服务的状态。 有关可能值的列表，请参阅下面的[产品/服务状态](#offer-status)。                                  |
 |  ID             | 唯一标识产品/服务的 GUID                                                                                         |
 |  版本        | 该产品/服务的当前版本。 客户端无法修改版本属性。 它在每次发布后都会递增。    |
 |  定义     | 工作负载的实际定义                                                                                               |
@@ -184,7 +184,7 @@ ms.locfileid: "87271835"
 
 ### <a name="response-status-codes"></a>响应状态代码
 
-| **代码**  | **描述**                                                                                                                 |
+| **代码**  | **说明**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK` - 已成功处理请求，发布者下的所有产品/服务都已返回给客户端。               |
 |  400      | `Bad/Malformed request` - 错误响应正文可能包含更多信息。                                                 |
@@ -194,13 +194,13 @@ ms.locfileid: "87271835"
 
 ### <a name="offer-status"></a>产品/服务状态
 
-|  **名称**                   |   **描述**                             |
+|  **名称**                   |   **说明**                             |
 | --------------------------- |  -------------------------------------------- |
 |  NeverPublished             | 产品/服务从未发布过。               |
 |  NotStarted                 | 产品/服务是新的，但未启动。              |
 |  WaitingForPublisherReview  | 产品/服务正在等待发布者批准。      |
-|  运行                    | 正在处理产品/服务提交。          |
+|  正在运行                    | 正在处理产品/服务提交。          |
 |  已成功                  | 产品/服务提交已完成处理。    |
 |  已取消                   | 产品/服务提交已取消。                |
-|  已失败                     | 产品/服务提交失败。                      |
+|  失败                     | 产品/服务提交失败。                      |
 |  |  |

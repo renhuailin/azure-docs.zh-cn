@@ -1,17 +1,17 @@
 ---
-title: 在 Apache HBase 群集中限定 CPU-Azure HDInsight
+title: Apache HBase 群集中的 CPU 使用率居高不下 - Azure HDInsight
 description: 排查 Azure HDInsight Apache HBase 群集中区域服务器上的 CPU 使用率居高不下问题
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/01/2019
 ms.openlocfilehash: 7d0cf139f06bb296b486d2932d95b53fc1167a5d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98937017"
 ---
-# <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>方案：Azure HDInsight Apache HBase 群集中区域服务器上的 CPU 使用率居高不下
+# <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>场景：Azure HDInsight Apache HBase 群集中区域服务器上的 CPU 使用率居高不下
 
 本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
@@ -33,7 +33,7 @@ Apache HBase 区域服务器进程开始占用接近 200% 的 CPU 使用率，�
 
 1. 转到 Ambari UI - `https://<clusterdnsname>.azurehdinsight.net`。
 
-1. 导航到“HBase”->“配置”->“高级”->“高级 `hbase-env configs`”，并将变量 `JAVA_HOME` 更改为 `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`。  保存配置更改。
+1. 导航到“HBase”->“配置”-->“高级”->“高级 `hbase-env configs`”，并将变量 `JAVA_HOME` 更改为 `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`。 保存配置更改。
 
 1. [可选但建议] [刷新群集上的所有表](/archive/blogs/azuredatalake/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables)。
 

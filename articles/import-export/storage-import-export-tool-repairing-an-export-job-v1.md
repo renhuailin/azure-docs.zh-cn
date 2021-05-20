@@ -9,10 +9,10 @@ ms.date: 01/19/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: d84f26b2764a103a9b504c1480e88b58fed3c201
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98706241"
 ---
 # <a name="repairing-an-export-job"></a>修复导出作业
@@ -40,7 +40,7 @@ ms.locfileid: "98706241"
 |**/sk:<StorageAccountKey\>**|当且仅当未指定容器 SAS 时才是必需的。 导出作业的存储帐户的帐户密钥。|  
 |**/csas:<ContainerSas\>**|当且仅当未指定存储帐户密钥时才是必需的。 用于访问与导出作业关联的 Blob 的容器 SAS。|  
 |**/CopyLogFile:<DriveCopyLogFile\>**|必需。 驱动器复制日志文件的路径。 该文件由 Microsoft Azure 导入/导出服务生成，可以从与该作业关联的 Blob 存储下载。 复制日志文件包含要修复的失败 Blob 或文件的相关信息。|  
-|**/ManifestFile:<DriveManifestFile\>**|可选。 导出驱动器的清单文件的路径。 此文件由 Microsoft Azure 导入/导出服务生成，存储在导出驱动器上。 （可选）在与作业关联的存储帐户中的 blob 中。<br /><br /> 将使用在此文件中包含的 MD5 哈希验证导出驱动器上文件的内容。 将下载已损坏的所有文件并将其重新写入目标目录。|  
+|**/ManifestFile:<DriveManifestFile\>**|可选。 导出驱动器的清单文件的路径。 此文件由 Windows Azure 导入/导出服务生成，存储在导出驱动器上。 （可选）在与作业关联的存储帐户中的 blob 中。<br /><br /> 将使用在此文件中包含的 MD5 哈希验证导出驱动器上文件的内容。 将下载已损坏的所有文件并将其重新写入目标目录。|  
   
 ## <a name="using-repairexport-mode-to-correct-failed-exports"></a>使用 RepairExport 模式更正失败的导出  
 可以使用 Azure 导入/导出工具来下载未能导出的文件。 复制日志文件包含未能导出的文件列表。  

@@ -13,10 +13,10 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
 ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98755015"
 ---
 # <a name="authentication-flows"></a>身份验证流
@@ -181,7 +181,7 @@ Microsoft 身份验证库 (MSAL) 支持在不同的应用程序场景中使用�
 除了 [集成 Windows 身份验证约束](#integrated-windows-authentication)以外，还存在以下约束：
 
 - 用户名/密码流与条件访问和多重身份验证不兼容。 因此，如果应用在租户管理员要求多重身份验证的 Azure AD 租户中运行，则无法使用此流。 许多组织都会要求多重身份验证。
-- ROPC 仅适用于工作帐户和学校帐户。 不能将 ROPC 用于 Microsoft (MSA) 的帐户。
+- ROPC 仅适用于工作帐户和学校帐户。 不能将 ROPC 用于 Microsoft 帐户 (MSA)。
 - 可在 .NET Desktop 和 .NET Core 中使用该流，但不能在通用 Windows 平台中使用。
 - 在 Azure AD B2C 中，ROPC 流仅适用于本地帐户。 若要了解 MSAL.NET 和 Azure AD B2C 中的 ROPC，请参阅[将 ROPC 与 Azure AD B2C 配合使用](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc)。
 
@@ -209,7 +209,7 @@ IWA 不会绕过多重身份验证。 如果配置了多重身份验证，需要
 构造公共客户端应用程序时传入的颁发机构必须为以下其中一项：
 
 - 租户化（采用 `https://login.microsoftonline.com/{tenant}/,` 格式，其中，`{tenant}` 为表示租户 ID 的 GUID 或与该租户关联的域名）。
-- 适用于任何工作和学校帐户 (`https://login.microsoftonline.com/organizations/`)。 Microsoft 个人帐户 (MSA) 不受支持;不能使用 `/common` 或 `/consumers` 租户。
+- 适用于任何工作和学校帐户 (`https://login.microsoftonline.com/organizations/`)。 不支持 Microsoft 个人帐户 (MSA)；不能使用 `/common` 或 `/consumers` 租户。
 
 由于 IWA 是一个静默流，因此必须符合以下条件之一：
 

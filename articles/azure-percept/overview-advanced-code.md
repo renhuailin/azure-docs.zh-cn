@@ -5,28 +5,27 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: f40d9a1285f1eb625a9e33387f2cc9fafcbc3322
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: 4abe8e07a8311bab9b6e98746d0fc05bd2e89395
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098394"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104956105"
 ---
 # <a name="advanced-development-with-azure-percept"></a>使用 Azure Percept 进行高级开发
-使用 Azure Percept，软件开发人员和数据科学家能够使用高级代码工作流进行 AI 生命周期管理。 通过不断增长的开源库，他们可以使用示例开始使用 AI 开发旅程，并构建生产就绪解决方案。
 
-## <a name="get-started-with-the-advanced-development-tutorials"></a>高级开发教程入门
+使用 Azure Percept，软件开发人员和数据科学家可以使用高级代码工作流进行 AI 生命周期管理。 借助不断增长的开放源代码库，他们可以使用示例开始 AI 开发之旅，并生成生产就绪的解决方案。
 
-了解所有可用的 [Azure PERCEPT AI 模型](./overview-ai-models.md)。
+## <a name="get-started-with-advanced-development"></a>高级开发入门
 
-如需了解最新的指南、教程和示例，请参阅 [Azure PERCEPT 深色高级开发 GitHub](https://github.com/microsoft/azure-percept-advanced-development) ：
+有关以下方面的最新指南、教程和示例，请参阅 [Azure Percept DK 高级开发 GitHub](https://github.com/microsoft/azure-percept-advanced-development)：
 
-* 将自定义 AI 模型引入设备
-* 更新已支持传输学习的模型
-* 及其他信息
+- 将自定义 AI 模型部署到 Azure Percept DK
+- 使用迁移学习更新受支持的模型
+- 及其他信息
 
 ## <a name="next-steps"></a>后续步骤
 
-了解所有可用的 [Azure PERCEPT AI 模型](./overview-ai-models.md)。 如果这些模型都不能满足您的需求，则可以随时使用高级代码旅程将您自己的模型或计算机视觉管道带入 Percept 深色，如果您认为它可以帮助其他人，还应打开拉取请求！
+详细了解可用的 [Azure Percept AI 模型](./overview-ai-models.md)。 如果这些模型都不能满足你的需要，请使用高级代码旅程将你自己的模型或计算机视觉管道引入 Percept DK。 如果你可以提供对其他人有帮助的内容，也可以随时打开拉取请求。

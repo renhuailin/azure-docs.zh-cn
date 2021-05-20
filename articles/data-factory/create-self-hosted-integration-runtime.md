@@ -7,10 +7,10 @@ author: lrtoyou1223
 ms.author: lle
 ms.date: 02/10/2021
 ms.openlocfilehash: 3e61b6a0f17d2d21aaaebc5ff42b0221cf851a4b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389482"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
@@ -73,7 +73,7 @@ ms.locfileid: "100389482"
 - 复制活动按特定的频率运行。 计算机上的处理器和 RAM 使用率遵循相同的高峰期和空闲期模式。 此外，资源使用率在很大程度上取决于移动的数据量。 进行多个复制作业时，会看到资源使用率在高峰期上升。
 - 在提取 Parquet、ORC 或 Avro 格式的数据时，任务可能会失败。 有关 Parquet 的详细信息，请参阅 [Azure 数据工厂中的 Parquet 格式](./format-parquet.md#using-self-hosted-integration-runtime)。 文件创建活动在自承载集成计算机上运行。 必须满足以下先决条件才能按预期方式运行文件创建活动：
   - [Visual C++ 2010 Redistributable](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) 包 (x64)
-  - [Adopt OpenJDK](https://adoptopenjdk.net/) 等 JRE 提供商提供的 Java Runtime (JRE) 版本 8。 确保 `JAVA_HOME` 将环境变量设置为 JRE 文件夹 (而不只是 JDK 文件夹) 。
+  - [Adopt OpenJDK](https://adoptopenjdk.net/) 等 JRE 提供商提供的 Java Runtime (JRE) 版本 8。 确保将 `JAVA_HOME` 环境变量设置为 JRE 文件夹（而不只是 JDK 文件夹）。
 
 ## <a name="setting-up-a-self-hosted-integration-runtime"></a>设置自承载集成运行时
 
@@ -332,7 +332,7 @@ dmgcmd ACTION args...
 > [!IMPORTANT]
 > 不要忘记同时更新 diahost.exe.config 和 diawp.exe.config。
 
-还需要确保 Microsoft Azure 在公司的允许列表中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=41653)下载有效的 Azure IP 地址列表。
+还需要确保 Microsoft Azure 列于公司的允许列表中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=41653)下载有效的 Azure IP 地址列表。
 
 ### <a name="possible-symptoms-for-issues-related-to-the-firewall-and-proxy-server"></a>防火墙和代理服务器相关问题的可能症状
 
@@ -385,15 +385,15 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 [!INCLUDE [domain-and-outbound-port-requirements](./includes/domain-and-outbound-port-requirements-external.md)]
 
-对于某些云数据库（例如 Azure SQL 数据库和 Azure Data Lake），可能需要在其防火墙配置中允许自承载集成运行时计算机的 IP 地址。
+对于部分云数据库（例如 Azure SQL 数据库和 Azure Data Lake），可能需要在其防火墙配置中将自承载集成运行时计算机的 IP 地址列入允许列表。
 
 ### <a name="get-url-of-azure-relay"></a>获取 Azure 中继的 URL
 
-需要放在防火墙允许列表中的一个必需域和端口用于与 Azure 中继进行通信。 自承载集成运行时将其用于交互式创作，如测试连接、浏览文件夹列表和表列表、获取架构和预览数据。 如果你不想要允许 **servicebus.windows.net** ，并且想要具有更具体的 url，则可从 ADF 门户中查看自承载集成运行时所需的所有 fqdn。 请执行下列步骤：
+需要放在防火墙允许列表中的一个必需域和端口用于与 Azure 中继进行通信。 自承载集成运行时使用它进行交互式创作，例如测试连接、浏览文件夹列表和表列表、获取架构，以及预览数据。 如果你不想允许 .servicebus.windows.net，而希望拥有更特定的 URL，那么可从 ADF 门户查看自承载集成运行时所需的所有 FQDN。 执行以下步骤：
 
 1. 转到 ADF 门户并选择你的自承载集成运行时。
 2. 在“编辑”页面中，选择“节点”。
-3. 选择 " **查看服务 url** " 以获取所有 fqdn。
+3. 选择“查看服务 URL”以获取所有 FQDN。
 
    ![Azure 中继 URL](media/create-self-hosted-integration-runtime/Azure-relay-url.png)
 
@@ -417,7 +417,7 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 - 在主机上为自承载集成运行时配置电源计划，使计算机不会休眠。 如果主机进入休眠状态，则自承载集成运行时将会脱机。
 - 定期备份与自承载集成运行时相关的凭据。
-- 若要自动执行自承载 IR 设置操作，请参阅 [通过 PowerShell 设置现有的自承载 ir](#setting-up-a-self-hosted-integration-runtime)。
+- 若要将自承载安装操作自动化，请参阅[通过 PowerShell 安装现有自承载 IR](#setting-up-a-self-hosted-integration-runtime)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,9 +1,9 @@
 ---
-title: 查看和配置适用于 Azure DDoS 保护标准的 DDoS 保护遥测
-description: 了解如何查看和配置适用于 Azure DDoS 保护标准的 DDoS 保护遥测。
+title: 查看和配置适用于 Azure DDoS 防护标准的 DDoS 防护遥测
+description: 了解如何查看和配置适用于 Azure DDoS 防护标准的 DDoS 防护遥测。
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,33 +11,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0be184921ff0bd6b98dd2975acb4e0d5c8b26ba0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 0a04c6c58f8bfa5370a6529b81a5a85090413a2a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716187"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107527"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>查看和配置 DDoS 防护遥测
 
-Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可视化效果。 保护其虚拟网络免受 DDoS 攻击的客户可通过攻击缓解报告和缓解流日志来详细了解攻击流量以及缓解攻击的操作。 丰富的遥测通过 Azure Monitor 公开，包括在 DDoS 攻击期间的详细指标。 可以针对 DDoS 防护公开的任何 Azure Monitor 指标配置警报。 可以通过 Azure Monitor 诊断接口，将日志记录与 [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)、Splunk (Azure 事件中心) 、OMS Log Analytics 和 azure 存储进行进一步集成，以实现高级分析。
+Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可视化效果。 保护其虚拟网络免受 DDoS 攻击的客户可通过攻击缓解报告和缓解流日志来详细了解攻击流量以及缓解攻击的操作。 在 DDoS 攻击期间通过 Azure Monitor 公开丰富的遥测数据（包括详细的指标）。 可以针对 DDoS 防护公开的任何 Azure Monitor 指标配置警报。 可将记录与 [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)、Splunk（Azure 事件中心）、OMS Log Analytics 和 Azure 存储进一步集成，以通过 Azure Monitor 诊断界面进行高级分析。
 
 本教程介绍以下操作：
 
 > [!div class="checklist"]
-> * 查看 DDoS 保护遥测
+> * 查看 DDoS 防护遥测
 > * 查看 DDoS 缓解策略
-> * 验证并测试 DDoS 保护遥测
+> * 验证和测试 DDoS 防护遥测
 
 ### <a name="metrics"></a>指标
 
 > [!NOTE]
-> 在 Azure 门户上显示 **聚合** 的多个选项时，每个度量值仅支持下表中列出的聚合类型。 对于这种混乱，我们深表歉意，我们正在努力解决此问题。
+> 尽管“聚合”的多个选项显示在 Azure 门户上，但每个指标仅支持下表中列出的聚合类型。 我们对于这给你造成的困惑表示歉意，我们正在努力解决此问题。
 
-以下 [指标](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses) 适用于 Azure DDoS 保护标准。 这些指标也可通过诊断设置导出 (参阅 [查看和配置 DDoS 诊断日志记录](diagnostic-logging.md)) 。
+以下[指标](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses)适用于 Azure DDoS 防护标准。 这些指标也可以通过诊断设置导出（请参阅[查看和配置 DDoS 诊断日志记录](diagnostic-logging.md)）。
 
 
-| 指标 | 指标显示名称 | 计价单位 | 聚合类型 | 说明 |
+| 指标 | 指标显示名称 | 单位 | 聚合类型 | 说明 |
 | --- | --- | --- | --- | --- |
 | BytesDroppedDDoS | 丢弃的入站字节 DDoS | 每秒字节数 | 最大值 | 丢弃的入站字节 DDoS| 
 | BytesForwardedDDoS | 转发的入站字节 DDoS | 每秒字节数 | 最大值 | 转发的入站字节 DDoS |
@@ -65,17 +65,17 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 ## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 在完成本教程中的步骤之前，必须先创建 [Azure DDoS 标准保护计划](manage-ddos-protection.md) ，并且必须在虚拟网络上启用 DDoS 保护标准。
-- DDoS 监视分配给虚拟网络中的资源的公共 IP 地址。 如果虚拟网络中没有任何具有公共 IP 地址的资源，必须首先创建具有公共 IP 地址的资源。 你可以通过 [azure 服务的虚拟网络](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) 中列出的资源管理器 (非经典) 来监视部署的所有资源的公共 IP 地址 (包括) 环境除外的虚拟网络中的后端虚拟机所在的 Azure 负载平衡器。 可快速创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机继续本教程的内容。  
+- 在完成本教程中的步骤之前，必须先创建 [Azure DDoS 标准防护计划](manage-ddos-protection.md)，并且必须在虚拟网络上启用 DDoS 防护标准。
+- DDoS 监视分配给虚拟网络中的资源的公共 IP 地址。 如果虚拟网络中没有任何具有公共 IP 地址的资源，必须首先创建具有公共 IP 地址的资源。 你可以监视 [Azure 服务的虚拟网络](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)中列出的通过资源管理器（非经典）部署的所有资源（包括后端虚拟机位于虚拟网络中的 Azure 负载均衡器）的公共 IP，但 Azure 应用服务环境除外。 可快速创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机继续本教程的内容。  
 
-## <a name="view-ddos-protection-telemetry"></a>查看 DDoS 保护遥测
+## <a name="view-ddos-protection-telemetry"></a>查看 DDoS 防护遥测
 
-对攻击的遥测是通过 Azure Monitor 实时提供的。 遥测仅在公共 IP 地址被缓解时可用。 
+对攻击的遥测是通过 Azure Monitor 实时提供的。 只有在公共 IP 地址处于缓解状态时，遥测才可用。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com/) 并浏览到 DDoS 保护计划。
+1. 登录到 [Azure 门户](https://portal.azure.com/)，然后浏览到 DDoS 防护计划。
 2. 在“监视”下，选择“指标”。
-3. 选择“范围”。 选择包含要记录的公共 IP 地址的 **订阅**，选择 "**资源类型** 的 **公共 ip 地址**"，然后选择要为其记录指标的特定公共 Ip 地址，然后选择 "**应用**"。
-4. 选择 "**最大值**"**聚合** 类型。
+3. 选择“范围”。 选择包含要记录的公共 IP 地址的“订阅”，为“资源类型”选择“公共 IP 地址”，然后选择要记录指标的特定公共 IP 地址，最后选择“应用”   。
+4. 选择“最大值”作为“聚合”类型 。
 
 指标名称提供不同的数据包类型和字节数与数据包数，每个指标都有如下所示的标记名称基本构造：
 
@@ -85,7 +85,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ## <a name="view-ddos-mitigation-policies"></a>查看 DDoS 缓解策略
 
-标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP 地址，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以通过选择 "**入站 TCP 数据包" 来** 查看策略阈值，以便触发 ddos 缓解和 **入站 UDP 数据包，以触发****聚合** 类型为 "Max" 的 ddos 缓解指标，如下图所示：
+标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP 地址，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 通过选择“聚合”类型为“最大值”的“触发 DDoS 缓解的入站 TCP 数据包”和“触发 DDoS 缓解的入站 UDP 数据包”指标，可查看策略阈值，如下图中所示  ：
 
 ![查看缓解策略](./media/manage-ddos-protection/view-mitigation-policies.png)
 
@@ -93,18 +93,18 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ## <a name="validate-and-test"></a>验证并测试
 
-若要模拟 DDoS 攻击来验证 DDoS 保护遥测，请参阅 [验证 ddos 检测](test-through-simulations.md)。
+要模拟 DDoS 攻击以验证 DDoS 防护遥测，请参阅[验证 DDoS 检测](test-through-simulations.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你了解了如何执行以下操作：
 
 - 配置针对 DDoS 防护指标的警报
-- 查看 DDoS 保护遥测
+- 查看 DDoS 防护遥测
 - 查看 DDoS 缓解策略
-- 验证并测试 DDoS 保护遥测
+- 验证和测试 DDoS 防护遥测
 
-若要了解如何配置攻击缓解报告和流日志，请继续学习下一教程。
+要了解如何配置攻击缓解报告和流日志，请继续学习下一个教程。
 
 > [!div class="nextstepaction"]
 > [查看和配置 DDoS 诊断日志记录](diagnostic-logging.md)

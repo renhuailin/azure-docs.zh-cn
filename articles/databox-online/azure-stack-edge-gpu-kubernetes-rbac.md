@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: 1b38a9807e05385a378fa6103710fb6b393c7b1f
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102443142"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备上的 Kubernetes 基于角色的访问控制
@@ -56,7 +56,7 @@ Azure Stack Edge Pro 设备具有以下命名空间：
  
 - **IoT Edge 命名空间** - 可连接到此 `iotedge` 命名空间以管理通过 IoT Edge 部署的应用程序。
 
-- **Azure Arc 命名空间** - 可连接到此 `azure-arc` 命名空间以管理通过 Azure Arc 部署的应用程序。通过 Azure Arc，还可以在其他用户命名空间中部署应用程序。 
+- **Azure Arc 命名空间** - 可连接到此 `azure-arc` 命名空间以管理通过 Azure Arc 部署的应用程序。利用 Azure Arc，还可以将应用程序部署到其他用户命名空间中。 
 
 ## <a name="namespaces-and-users"></a>命名空间和用户
 

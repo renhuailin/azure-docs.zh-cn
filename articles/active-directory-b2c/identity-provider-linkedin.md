@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ce5e8cfda4a9f51a90c8f26133a710f4d1c258b6
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 51a9635d42b07eb27b05312d292ca890c7963b4f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448262"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028224"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 LinkedIn 帐户注册与登录
 
@@ -43,8 +43,8 @@ ms.locfileid: "102448262"
 1. 输入 **应用名称**、**LinkedIn 页**、**隐私策略 URL** 和 **应用徽标**。
 1. 同意 LinkedIn 的“API 使用条款”并单击“创建应用”。
 1. 选择“身份验证”选项卡。在“身份验证密钥”下，复制“客户端 ID”和“客户端密码”的值。   将 LinkedIn 配置为租户中的标识提供者时需要这两个值。 “客户端密钥”是一个很重要的安全凭据。
-1. 选择“应用的授权重定向 URL”旁边的编辑铅笔，然后选择“添加重定向 URL”。 输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`，将 `your-tenant-name` 替换为你的租户的名称。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。 选择“更新”。
-2. 默认情况下，LinkedIn 应用未获准使用与登录相关的作用域。 若要请求评审，请选择“产品”选项卡，然后选择“使用 LinkedIn 登录”。 评审完成后，所需作用域会添加到你的应用程序。
+1. 选择“应用的授权重定向 URL”旁边的编辑铅笔，然后选择“添加重定向 URL”。 输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称，将 `your-domain-name` 替换为你的自定义域。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。 选择“更新”。
+1. 默认情况下，LinkedIn 应用未获准使用与登录相关的作用域。 若要请求评审，请选择“产品”选项卡，然后选择“使用 LinkedIn 登录”。 评审完成后，所需作用域会添加到你的应用程序。
    > [!NOTE]
    > 可以在“OAuth 2.0 作用域”部分的“身份验证”选项卡上查看目前允许应用使用的作用域。
 
@@ -62,6 +62,8 @@ ms.locfileid: "102448262"
 1. 选择“保存”。
 
 ## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>将 LinkedIn 标识提供者添加到用户流 
+
+此时，LinkedIn 标识提供者已设置，但还不能在任何登录页中使用。 将 LinkedIn 标识提供者添加到用户流：
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要添加 LinkedIn 标识提供者的用户流。
@@ -219,7 +221,7 @@ LinkedIn 技术配置文件要求将 ExtractGivenNameFromLinkedInResponse 和 Ex
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，请选择[之前注册的](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页面上，选择“LinkedIn”以使用 LinkedIn 帐户登录。
 

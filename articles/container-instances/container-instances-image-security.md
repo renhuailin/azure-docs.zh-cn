@@ -4,12 +4,12 @@ description: 有关保护 Azure 容器实例的映像和机密的建议，以及
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: cbceeea24501bc9815cb07e1b0a054914ba8e964
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 40284c6e42cf1060906c6248495d08e133bda5bb
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579276"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812653"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器实例的安全注意事项
 
@@ -32,15 +32,15 @@ ms.locfileid: "100579276"
 
 ### <a name="monitor-and-scan-container-images"></a>监视和扫描容器映像
 
-利用解决方案来扫描专用注册表中的容器映像并识别潜在漏洞。 了解不同解决方案提供的威胁检测的深度很重要。
+利用解决方案来扫描专用注册表中的容器映像并识别潜在漏洞。 请务必了解不同解决方案提供的威胁检测的深度。
 
 例如，Azure 容器注册表可以选择[与 Azure 安全中心](../security-center/defender-for-container-registries-introduction.md)集成，以便自动扫描已推送到注册表的所有 Linux 映像。 Azure 安全中心的集成 Qualys 扫描程序可以检测映像漏洞、对其进行分类，并提供修正指导。
 
-还可以通过 Azure Marketplace 使用安全监视和图像扫描解决方案，如 [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) 和 [浅绿安全性](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) 。  
+安全监视和映像扫描解决方案（如 [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) 和 [Aqua Security](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview)）也可以通过 Azure 市场获得。  
 
 ### <a name="protect-credentials"></a>保护凭据
 
-容器可能分散在多个群集和 Azure 区域之间。 因此，必须保护登录或 API 访问所需的凭据，例如密码或令牌。 确保只有特权用户能够在传输中和静态状态下访问这些容器。 清点所有凭据机密，并要求开发人员使用专为容器平台设计的新兴机密管理工具。  确保解决方案包含加密的数据库、针对传输中机密数据的 TLS 加密，以及最低特权的 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)。 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 是一种云服务，用于保护容器化应用程序的加密密钥和机密（例如证书、连接字符串和密码）。 由于这些数据极其机密且对企业至关重要，因此请保护对 Key Vault 的访问，以便只有经过授权的应用程序和用户才能访问它们。
+容器可能分散在多个群集和 Azure 区域之间。 因此，必须保护登录或 API 访问所需的凭据，例如密码或令牌。 确保只有特权用户能够在传输中和静态状态下访问这些容器。 清点所有凭据机密，并要求开发人员使用专为容器平台设计的新兴机密管理工具。  确保解决方案包含加密的数据库、针对传输中机密数据的 TLS 加密，以及最低特权的 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)。 [Azure Key Vault](../key-vault/general/security-features.md) 是一种云服务，用于保护容器化应用程序的加密密钥和机密（例如证书、连接字符串和密码）。 由于这些数据极其机密且对企业至关重要，因此请保护对 Key Vault 的访问，以便只有经过授权的应用程序和用户才能访问它们。
 
 ## <a name="considerations-for-the-container-ecosystem"></a>容器生态系统的注意事项
 
@@ -63,7 +63,7 @@ ms.locfileid: "100579276"
 
 ### <a name="ensure-that-only-approved-images-are-used-in-your-environment"></a>确保在环境中仅使用已批准的映像 
 
-容器生态系统中有足够的更改和变动，同时也不允许使用未知容器。 仅允许已批准的容器映像。 部署用于监视和阻止使用未经批准的容器映像的工具与流程。 
+容器生态系统有足够的变化和波动，不允许未知的容器存在。 仅允许已批准的容器映像。 部署用于监视和阻止使用未经批准的容器映像的工具与流程。 
 
 减小受攻击面并防止开发人员出现严重安全错误的有效方式是控制容器映像流入开发环境 例如，可以批准将单个 Linux 分发版用作基础映像，最好是精简的映像（Alpine 或 CoreOS，而不是 Ubuntu），以最大程度地减少潜在受攻击面。 
 
@@ -79,7 +79,7 @@ ms.locfileid: "100579276"
 
 * 不应该允许在生产环境中运行包含漏洞的映像（即使是轻微的漏洞）。 最好是将生产环境中部署的所有映像保存在只有少数人可以访问的专用注册表中。 保存少量的生产映像，确保能够有效地对其进行管理。
 
-* 由于很难从公开提供的容器映像中找出软件源，因此请从源构建映像，以确保了解层的来源。 自制容器映像中出现漏洞时，客户可以更快地找到解决途径。 使用公共映像时，客户需要找到公共映像的根才能修复漏洞，或者需要从发布者获取另一个安全映像。 
+* 由于很难从公开可用的容器映像中确定软件的源，因此请从源生成映像，以确保能够确定层的源。 自制容器映像中出现漏洞时，客户可以更快地找到解决途径。 使用公共映像时，客户需要找到公共映像的根才能修复漏洞，或者需要从发布者获取另一个安全映像。 
 
 * 在生产环境中部署的、经过全面扫描的映像并不能保证在应用程序的生存期内保持最新状态。 系统可能会针对映像的层报告以前并不知道的或者在生产部署后才引入的安全漏洞。 
 
@@ -87,7 +87,7 @@ ms.locfileid: "100579276"
 
 * 使用集成了安全扫描的持续集成 (CI) 管道生成安全映像并将其推送到专用注册表。 CI 解决方案中内置的漏洞扫描可确保将通过所有测试的映像推送到从中部署了生产工作负荷的专用注册表中。 
 
-  CI 管道故障确保不会将易受攻击的映像推送到用于生产工作负荷部署的专用注册表。 如果有大量映像，它还会自动执行映像安全扫描。 相比之下，在映像中手动审核安全漏洞的过程可能相当繁琐且容易出错。 
+  CI 管道故障可以确保易受攻击的映像不会被推送到用于生产工作负载部署的专用注册表中。 如果有大量映像，它还会自动执行映像安全扫描。 相比之下，在映像中手动审核安全漏洞的过程可能相当繁琐且容易出错。 
 
 ### <a name="enforce-least-privileges-in-runtime"></a>在运行时中强制实施最低特权 
 
@@ -101,7 +101,7 @@ ms.locfileid: "100579276"
 
 减少可变因素或未知因素的数量有助于维持稳定可靠的环境。 限制容器以使其只能访问或运行已预先批准的或已加入安全列表的文件和可执行文件，是限制风险因素的已证实方法。  
 
-从一开始就实现了一个安全的安全管理程序，这种方法很容易。 安全列表提供控制措施和管理功能，因为你知道正常运行应用程序需要哪些文件和可执行文件。 
+如果安全列表从一开始就被实现，管理它会容易得多。 安全列表提供控制措施和管理功能，因为你知道正常运行应用程序需要哪些文件和可执行文件。 
 
 安全列表不仅可以减小受攻击面，而且还能提供异常状况的基线，并防止出现“干扰邻居”和容器入侵情形的用例。 
 
@@ -109,7 +109,7 @@ ms.locfileid: "100579276"
 
 为了防范一个子网中的容器在另一个子网中遇到安全风险，请在运行的容器之间保持网络分段（或 nano 分段）或隔离。 若要在需要满足合规要求的行业中使用容器，可能还需要保持网络分段。  
 
-例如，"合作伙伴" 工具 [水绿色](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) 为 nano 分段提供自动化方法。 浅绿色监视运行时中的容器网络活动。 它标识与其他容器、服务、IP 地址和公共 internet 之间的所有入站和出站网络连接。 Nano-根据监视的流量自动创建分段。 
+例如，合作伙伴工具 [Aqua](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) 提供了一种自动 nano 分段方法。 Aqua 监视运行时中的容器网络活动。 它标识与其他容器、服务、IP 地址和公共 Internet 之间的所有入站和出站网络连接。 nano 分段是基于监视的流量自动创建的。 
 
 ### <a name="monitor-container-activity-and-user-access"></a>监视容器活动和用户访问 
 

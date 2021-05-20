@@ -1,19 +1,19 @@
 ---
-title: Windows 虚拟桌面 (经典) 诊断问题-Azure
-description: 如何使用 Windows 虚拟桌面 (经典) 诊断功能来诊断问题。
+title: Windows 虚拟桌面（经典）诊断问题 - Azure
+description: 如何使用 Windows 虚拟桌面（经典）诊断功能来诊断问题。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 7e652f04b42b132e7c1307503b1764dda7b2036b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+manager: femila
+ms.openlocfilehash: e23a1e9a2a0118402df0d9b8869f170762a52284
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009335"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106444949"
 ---
-# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>确定和诊断 Windows 虚拟桌面 (经典) 中的问题
+# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面（经典）中识别和诊断问题
 
 >[!IMPORTANT]
 >本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../diagnostics-role-service.md)。

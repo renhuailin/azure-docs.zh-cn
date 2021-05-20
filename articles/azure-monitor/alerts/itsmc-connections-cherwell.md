@@ -1,23 +1,23 @@
 ---
-title: 将 Cherwell 连接 IT 服务管理连接器
-description: 本文提供了有关如何在 Azure Monitor 中 IT 服务管理连接器 Cherwell (ITSMC) 的信息，以集中监视和管理 ITSM 工作项的信息。
+title: 将 Cherwell 连接到 IT 服务管理连接器
+description: 本文介绍如何将 Cherwell 与 Azure Monitor 中的 IT 服务管理连接器 (ITSMC) 相连接，从而集中监视和管理 ITSM 工作项。
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: d1fe5e20c06648aa6efc899fabb3ced3345ab41f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 0f488b047cf1323619d9603204877a55b413c295
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045405"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802465"
 ---
-# <a name="connect-cherwell-with-it-service-management-connector"></a>将 Cherwell 连接 IT 服务管理连接器
+# <a name="connect-cherwell-with-it-service-management-connector"></a>将 Cherwell 连接到 IT 服务管理连接器
 
-本文提供了有关如何在 Cherwell 实例与 IT 服务管理连接器 (ITSMC) Log Analytics 中配置连接以集中管理工作项的信息。
+本文介绍如何配置 Cherwell 实例与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。
 
 > [!NOTE]
-> 从2020年10月 Cherwell ITSM 集成 Azure 警报将不再为新客户启用。 不支持新的 ITSM 连接。
+> 自 2020 年 10 月 1 日起，将不再为新客户提供 Cherwell ITSM 与 Azure 警报集成服务。 将不支持新的 ITSM 连接。
 > 将支持现有的 ITSM 连接。
 
 以下部分提供有关如何将 Cherwell 产品连接到 Azure 中的 ITSMC 的详细信息。
@@ -37,7 +37,7 @@ ms.locfileid: "102045405"
 1. 在 Azure 门户中，转到“所有资源”，查找“ServiceDesk(YourWorkspaceName)”
 
 2. 在“工作区数据源”下，单击“ITSM 连接”。
-    ![新建连接](/media/itsmc-overview/add-new-itsm-connection.png)
+    ![新建连接](/azure/azure-monitor/alerts/media/itsmc-connections-scsm/add-new-itsm-connection.png)
 
 3. 在右窗格的顶部，单击“添加”。
 

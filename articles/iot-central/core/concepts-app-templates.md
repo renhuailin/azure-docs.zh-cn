@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 27f054cb085e5064ffed0e75b77d53a1406b566e
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97797122"
 ---
 # <a name="what-are-application-templates"></a>什么是应用程序模板？
@@ -26,11 +26,11 @@ Azure IoT Central 中的应用程序模板是一项工具，可帮助解决方�
 - 预配置的规则和作业
 - 包含教程和操作方法在内的富文档
 
-创建应用程序时，可以选择应用程序模板。 创建应用程序后不能更改模板。
+在创建应用程序时，可以选择应用程序模板。 在应用程序创建后，就不能更改模板了。
 
 ## <a name="custom-templates"></a>自定义模板
 
-若要从头开始创建应用程序，请选择一个 **自定义应用程序** 模板。
+若要从头开始创建应用程序，请选择“自定义应用程序”模板之一。
 
 ## <a name="industry-focused-templates"></a>行业关注的模板
 
@@ -50,12 +50,12 @@ Azure IoT Central 是与行业无关的应用程序平台。 应用程序模板�
   - 互联废物管理
   - 水消耗量监视
   - 水质监视
-- [医疗保健](../healthcare/overview-iot-central-healthcare.md)。
+- [医疗](../healthcare/overview-iot-central-healthcare.md)。
   - 持续患者监视
 
 ## <a name="application-versions"></a>应用程序版本
 
-模板与特定 IoT Central 应用程序版本关联。 您可以从 "**帮助**" 链接的 "[关于应用](./howto-get-app-info.md)程序" 页找到应用程序的版本。
+模板与特定的 IoT Central 应用程序版本相关联。 可以在[“关于你的应用”](./howto-get-app-info.md)页上的“帮助”链接中找到应用程序版本。
 
 ## <a name="next-steps"></a>后续步骤
 

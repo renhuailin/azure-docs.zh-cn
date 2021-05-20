@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 355d36d58935372e9d8a92599e8f810fec9ebf19
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 4c50c7de84f92f1050b88a9c5c7179c69211bb42
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104785336"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766926"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Azure 数据工厂中的数据集（版本 1）
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -140,7 +140,7 @@ AzureSqlLinkedService 定义如下：
 ## <a name="dataset-type"></a><a name="Type"></a> 数据集类型
 数据集的类型取决于所用的数据存储。 请参阅下表，获取数据工厂支持的数据存储的列表。 单击数据存储，了解如何创建链接服务和该数据存储的数据集。
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
 > 包含 * 的数据存储可为本地，也可为 Azure 基础结构即服务 (IaaS)。 这些数据存储要求安装[数据管理网关](data-factory-data-management-gateway.md)。
@@ -277,7 +277,7 @@ structure:
 | 策略名称 | 说明 | 适用对象 | 必须 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |验证 Azure Blob 存储中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob 存储 |否 |NA |
-| minimumRows |验证 **Azure SQL 数据库** 中的数据或 **Azure 表** 是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
+| minimumRows |验证 **Azure SQL 数据库** 中的数据或 **Azure 表** 是否包含最小行数。 |<ul><li>Azure SQL Database</li><li>Azure 表</li></ul> |否 |NA |
 
 #### <a name="examples"></a>示例
 **minimumSizeMB：**

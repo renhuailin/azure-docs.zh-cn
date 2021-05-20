@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89744b63a555cc02d35815b4066ce572b7f77e38
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531894"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98725172"
 ---
 # <a name="manage-external-access-with-entitlement-management"></a>通过权利管理来管理外部访问 
 
@@ -96,13 +96,13 @@ ms.locfileid: "107531894"
 
 可[使用 Microsoft Graph 执行权利管理功能](/graph/tutorial-access-package-api)，包括
 
-* [管理访问包](/graph/api/resources/accesspackage?view=graph-rest-beta&preserve-view=true)
+* [管理访问包](/graph/api/resources/accesspackage?view=graph-rest-beta)
 
-* [管理访问评审](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)
+* [管理访问评审](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
 
-* [管理已连接组织](/graph/api/resources/connectedorganization?view=graph-rest-beta&preserve-view=true)
+* [管理已连接组织](/graph/api/resources/connectedorganization?view=graph-rest-beta)
 
-* [管理权利管理设置](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta&preserve-view=true)
+* [管理权利管理设置](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
 
 ## <a name="recommendations"></a>建议 
 
@@ -112,7 +112,7 @@ ms.locfileid: "107531894"
 
 * 如果目录中已有 B2B 用户，还可以直接向其分配相应的访问包。
 
-* 可通过 [Azure 门户](../governance/entitlement-management-access-package-assignments.md)或 [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta&preserve-view=true) 分配访问权限。
+* 可通过 [Azure 门户](../governance/entitlement-management-access-package-assignments.md)或 [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta) 分配访问权限。
 
 如果用户的访问包过期，请使用标识治理设置从目录中删除这些用户。
 

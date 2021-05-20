@@ -1,14 +1,14 @@
 ---
 title: 将 Azure Policy 大规模部署到委托订阅
 description: 了解 Azure Lighthouse 如何便于跨多个租户部署策略定义和策略分配。
-ms.date: 03/02/2021
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 48354c3cca7574b1d5acf71865218564591bc23e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7b94816361e795d6333bdca63c5e2aab977190e8
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049774"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786104"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>将 Azure Policy 大规模部署到委托订阅
 
@@ -17,7 +17,7 @@ ms.locfileid: "102049774"
 本主题说明如何按照 [Azure Policy](../../governance/policy/index.yml) 使用 PowerShell 命令在多个租户中部署策略定义和策略分配。 在此示例中，策略定义确保通过允许仅 HTTPS 流量来保护存储帐户。
 
 > [!TIP]
-> 尽管在本主题中我们指的是服务提供商和客户，但[管理多个租户的企业](../concepts/enterprise.md)也可以使用相同的过程。
+> 尽管本主题中只是提到了服务提供商和客户，但[管理多个租户的企业](../concepts/enterprise.md)也可以使用相同的过程。
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>使用 Azure Resource Graph 在客户租户之间执行查询
 

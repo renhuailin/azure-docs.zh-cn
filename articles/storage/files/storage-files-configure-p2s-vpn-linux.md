@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 74422318718e318a00d7bd7ebaf8e4093ef75aa6
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629268"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>在 Linux 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用
@@ -119,7 +119,7 @@ Azure 虚拟网络网关是本地 Linux 计算机将连接到的服务。 部署
 > [!Note]  
 > 部署 Azure 虚拟网络网关最多需要 45 分钟。 部署此资源时，此 bash script 脚本将阻止部署完成。
 >
-> **基本** SKU 不支持 P2S IKEv2/OpenVPN 连接。 此脚本将对虚拟网络网关使用 **VpnGw1** SKU。
+> 基本 SKU 不支持 P2S IKEv2/OpenVPN 连接。 因此，此脚本将 VpnGw1 SKU 用于虚拟网络网关。
 
 ```bash
 vpnName="<desired-vpn-name-here>"
@@ -210,7 +210,7 @@ smbPath="//$storageAccountPrivateIP/$fileShareName"
 sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 - [Azure 文件存储网络概述](storage-files-networking-overview.md)
 - [在 Windows 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用](storage-files-configure-p2s-vpn-windows.md)
 - [配置站点到站点 (S2S) VPN 以与 Azure 文件存储一起使用](storage-files-configure-s2s-vpn.md)

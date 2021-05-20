@@ -1,16 +1,16 @@
 ---
-title: " (MARS) 代理升级 Microsoft Azure 恢复服务"
-description: 了解如何 (MARS) 代理升级 Microsoft Azure 恢复服务。
+title: 升级 Microsoft Azure 恢复服务 (MARS) 代理
+description: 了解如何升级 Microsoft Azure 恢复服务 (MARS) 代理。
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: a1ee26db962781643e9599069282647658301bac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89181470"
 ---
-# <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a> (MARS) 代理升级 Microsoft Azure 恢复服务
+# <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>升级 Microsoft Azure 恢复服务 (MARS) 代理
 
 在本文中，你将学习如何：
 
@@ -27,7 +27,7 @@ ms.locfileid: "89181470"
 
     ![在安装 Azure 备份服务器过程中一起安装的 MARS 代理列表](./media/upgrade-mars-agent/backup-management-servers.png)
 
-1. 若要检查 Microsoft Azure 恢复服务 (MARS) 代理安装或 Azure 备份代理的代理版本，请在 "**管理服务器**" 下，选择 "**受保护的服务器**"。 然后选择“备份管理类型”下的“Azure 备份代理”。 此时会列出包含 Azure 备份代理安装的服务器以及安装的版本号。
+1. 若要检查 Microsoft Azure 恢复服务 (MARS) 代理安装或 Azure 备份代理的代理版本，请转到“管理服务器”下的“受保护的服务器”。 然后选择“备份管理类型”下的“Azure 备份代理”。 此时会列出包含 Azure 备份代理安装的服务器以及安装的版本号。
 
     ![装有 MARS 代理的服务器列表](./media/upgrade-mars-agent/protected-servers.png)
 
@@ -54,11 +54,11 @@ ms.locfileid: "89181470"
 
 1. 输入管理登录详细信息并登录。
 
-1. 如果服务器或服务器的代理具有有限的 internet 访问权限，请确保将服务器/代理上的防火墙设置配置为允许使用适用于你正在使用的 Azure 云的 URL：
+1. 如果服务器或服务器代理的 Internet 访问受限，请确保服务器/代理上的防火墙设置配置为允许与正在使用的 Azure 云对应的 URL：
 
-    Azure 云 | URL
+    Azure 云 | 代码
     --- | ---
-    Azure 云 (公有)  |   `https://login.windows.net`
+    Azure 云（公有） |   `https://login.windows.net`
     Azure 中国世纪互联云   | `https://login.chinacloudapi.cn`
     Azure 美国政府云 |   `https://login.microsoftonline.us`
     Azure 德国云  |  `https://login.microsoftonline.de`
@@ -67,7 +67,7 @@ ms.locfileid: "89181470"
 
     ![将 Azure 备份代理更新安装程序复制到服务器](./media/upgrade-mars-agent/copy-agent-installer.png)
 
-1. 运行安装程序。 Microsoft Azure 恢复服务代理升级向导将打开。
+1. 运行安装程序。 此时，“Microsoft Azure 恢复服务代理升级向导”打开。
 
     ![Microsoft Azure 恢复服务代理升级向导](./media/upgrade-mars-agent/agent-upgrade-wizard.png)
 
