@@ -1,6 +1,6 @@
 ---
-title: 映射适用于 MongoDB Azure Cosmos DB API 的一致性级别
-description: 映射适用于 MongoDB Azure Cosmos DB API 的一致性级别。
+title: 映射 Azure Cosmos DB API for MongoDB 的一致性级别
+description: 映射 Azure Cosmos DB API for MongoDB 的一致性级别。
 author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
@@ -9,33 +9,33 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.openlocfilehash: e8ac3e376c8d67e82def3a57910707c6b1433912
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93333148"
 ---
-# <a name="consistency-levels-for-azure-cosmos-db-and-the-api-for-mongodb"></a>Azure Cosmos DB 和 MongoDB API 的一致性级别
+# <a name="consistency-levels-for-azure-cosmos-db-and-the-api-for-mongodb"></a>Azure Cosmos DB 和 API for MongoDB 的一致性级别
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 与 Azure Cosmos DB 不一样，本机 MongoDB 并不提供精确定义的一致性保证。 与之相反，本机 MongoDB 允许用户配置下述一致性保证：写入关注、读取关注以及 isMaster 指令 - 目的是将读取操作定向到主副本或辅助副本，以便实现所需的一致性级别。
 
-使用 Azure Cosmos DB 的 MongoDB API 时，MongoDB 驱动程序将写入区域视为主副本，而所有其他区域都是读取副本。 可以选择将哪个与 Azure Cosmos 帐户关联的区域作为主副本。
+使用 Azure Cosmos DB 的适用于 MongoDB 的 API 时，MongoDB 驱动程序会将写入区域视为主要副本，所有其他区域为只读副本。 可以选择将哪个与 Azure Cosmos 帐户关联的区域作为主副本。
 
 > [!NOTE]
 > Azure Cosmos DB 的默认一致性模型是会话。 会话是一种以客户端为中心的一致性模型，未受到 Cassandra 或 MongoDB 的本机支持。 有关选择哪种一致性模型的详细信息，请参阅 [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
 
-使用 Azure Cosmos DB 的 MongoDB API 时：
+在使用 Azure Cosmos DB 的适用于 MongoDB 的 API 时：
 
 * 写入关注映射到在 Azure Cosmos 帐户上配置的默认一致性级别。
 
 * Azure Cosmos DB 会将 MongoDB 客户端驱动程序指定的读取关注动态映射到根据读取请求动态配置的某个 Azure Cosmos DB 一致性级别。  
 
-* 你可以通过将区域作为第一个可写区域来为与 Azure Cosmos 帐户关联的特定区域添加注释 "主要"。 
+* 可以将与 Azure Cosmos 帐户关联的特定区域批注为“主区域”，方法是将该区域设置为第一个可写区域。 
 
 ## <a name="mapping-consistency-levels"></a>映射一致性级别
 
-下表说明了在使用 Azure Cosmos DB 的适用于 MongoDB 的 API 时，如何将本机 MongoDB 写入/读取问题映射到 Azure Cosmos 一致性级别：
+下表演示了在使用 Azure Cosmos DB 的适用于 MongoDB 的 API 时，如何将本机 MongoDB 写入/读取关注映射到 Azure Cosmos 的一致性级别：
 
 :::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="MongoDB 一致性模型映射" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
 

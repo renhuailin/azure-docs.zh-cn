@@ -1,59 +1,57 @@
 ---
-title: 使用主领域发现策略阻止在 Azure AD 中登录自动加速
-description: 了解如何防止 domain_hint 自动加速到联合 Idp。
+title: 使用“主领域发现”策略禁止 Azure AD 中的登录自动加速
+description: 了解如何阻止到联合 IDP 的 domain_hint 自动加速。
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.author: hirsin
-ms.openlocfilehash: 67cb1003e139a085d45d01617cd44647bad420f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.author: iangithinji
+ms.reviewer: hirsin
+ms.openlocfilehash: b89e0e1c8bd8109fac8b4b7c05a845a3e234b617
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693007"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375544"
 ---
-# <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>在使用主领域发现策略的用户登录过程中禁用到联合 IDP 的自动加速
+# <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>在用户使用主领域发现策略登录过程中禁用到联合 IDP 的自动加速
 
-[主领域发现策略](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) 为管理员提供多种方式来控制其用户身份验证的方式和位置。 `domainHintPolicy`HRD 策略的部分用于帮助将联合用户迁移到云托管凭据（如[FIDO](../authentication/howto-authentication-passwordless-security-key.md)），方法是确保它们始终访问 Azure AD 登录页，且不会因域提示而自动加速到联合 IDP。
+[主领域发现策略](/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) 为管理员提供多种方式来控制对用户进行身份验证的方式和位置。 HRD 策略的 `domainHintPolicy` 部分用于帮助将联合用户迁移到云托管凭据（如 [FIDO](../authentication/howto-authentication-passwordless-security-key.md)），方法是确保它们始终访问 Azure AD 登录页，且不会因域提示而自动加速到联合 IDP。
 
-此策略在以下情况下需要：管理员无法在登录期间控制或更新添加域提示。  例如， `outlook.com/contoso.com` 将用户发送到追加了参数的登录页 `&domain_hint=contoso.com` ，以便将用户直接自动加速到域的联合 IDP `contoso.com` 。 使用发送到联合 IDP 的托管凭据的用户不能使用其托管凭据登录，从而降低安全性并使用户具有随机登录体验。 管理员推出托管凭据 [还应设置此策略](#suggested-use-within-a-tenant) ，以确保用户始终可以使用其托管凭据。
+管理员无法控制应用程序或在登录期间更新添加域提示时，需要使用此策略。  例如，`outlook.com/contoso.com` 将用户发送到追加了 `&domain_hint=contoso.com` 参数的登录页，以便将用户直接自动加速到 `contoso.com` 域的联合 IDP。 使用发送到联合 IDP 的托管凭据的用户不能使用其托管凭据登录，这会降低安全性，并会使具有随机登录体验的用户感到沮丧。 推出托管凭据的管理员[还应设置此策略](#suggested-use-within-a-tenant)，以确保用户始终可以使用其托管凭据。
 
 ## <a name="domainhintpolicy-details"></a>DomainHintPolicy 详细信息
 
-HRD 策略的 DomainHintPolicy 部分是一个 JSON 对象，它允许管理员从域提示使用中选择退出某些域和应用程序。  在功能上，这会告诉 Azure AD 登录页的行为就像 `domain_hint` 登录请求上的参数不存在一样。
+HRD 策略的 DomainHintPolicy 部分是一个 JSON 对象，它允许管理员从域提示使用情况中选择排除某些域和应用程序。  从功能上讲，这会告知 Azure AD 登录页按照登录请求上的参数 `domain_hint` 不存在那样行事。
 
-### <a name="the-respect-and-ignore-policy-sections"></a>"尊重和忽略策略" 部分
+### <a name="the-respect-and-ignore-policy-sections"></a>“遵循和忽略策略”部分
 
 |部分 | 含义 | 值 |
 |--------|---------|--------|
-|`IgnoreDomainHintForDomains` |如果在请求中发送此域提示，则忽略它。 |域地址的数组 (例如 `contoso.com`) 。 还支持 `all_domains`|
-|`RespectDomainHintForDomains`| 如果此域提示是在请求中发送的，则对其进行尊重，即使 `IgnoreDomainHintForApps` 指示请求中的应用不应自动加速。 这用于减缓网络内的弃用域提示的推出–你可以指示某些域应仍为已加速。 | 域地址的数组 (例如 `contoso.com`) 。 还支持 `all_domains`|
-|`IgnoreDomainHintForApps`| 如果来自此应用程序的请求附带了域提示，请将其忽略。 | Guid)  (的应用程序 Id 的数组。 还支持 `all_apps`|
-|`RespectDomainHintForApps` |如果来自此应用程序的请求附带了域提示，则即使其中包含该域也是如此 `IgnoreDomainHintForDomains` 。 用于确保某些应用在没有域提示的情况下中断时继续工作。 | Guid)  (的应用程序 Id 的数组。 还支持 `all_apps`|
+|`IgnoreDomainHintForDomains` |如果此域提示是在请求中发送的，请忽略它。 |域地址的数组（例如 `contoso.com`）。 它还支持 `all_domains`|
+|`RespectDomainHintForDomains`| 如果此域提示是在请求中发送的，则遵循它，即使 `IgnoreDomainHintForApps` 指示请求中的应用不应自动加速。 这用于减缓在网络内推出弃用域提示的速度，你可以指出某些域应仍为已加速。 | 域地址的数组（例如 `contoso.com`）。 它还支持 `all_domains`|
+|`IgnoreDomainHintForApps`| 如果来自此应用程序的请求附带了域提示，请忽略它。 | 应用程序 ID (GUID) 的数组。 它还支持 `all_apps`|
+|`RespectDomainHintForApps` |如果来自此应用程序的请求附带了域提示，则遵循它，即使 `IgnoreDomainHintForDomains` 包含该域也是如此。 用于确保在发现某些应用没有域提示的情况下中断时继续工作。 | 应用程序 ID (GUID) 的数组。 它还支持 `all_apps`|
 
 ### <a name="policy-evaluation"></a>策略评估
 
-DomainHintPolicy 逻辑在包含域提示的每个传入请求上运行，并基于请求中的两个数据片段（域提示中的域，以及应用)  (的客户端 ID 进行加速。 对于域或应用程序，"尊重" 优先于指定域或应用程序的 "忽略" 域提示。
+DomainHintPolicy 逻辑在包含域提示的每个传入请求上运行，并基于请求中的两个数据片段 – 域提示中的域以及客户端 ID（应用）。 简而言之，对于域或应用，“遵循”优先于“忽略”给定域或应用程序的域提示的指令。
 
-1. 在没有任何域提示策略的情况下，或者如果4个部分都未引用所述的应用或域提示， [将评估其余的 HRD 策略](configure-authentication-for-federated-users-portal.md#priority-and-evaluation-of-hrd-policies)。
-1. 如果或部分中有一项 (或全部) 都 `RespectDomainHintForApps` `RespectDomainHintForDomains` 包含请求中的应用或域提示，则用户将根据请求自动加速到联合 IDP。
-1. 如果两个或其中一个 (或) 同时 `IgnoreDomainHintsForApps` `IgnoreDomainHintsForDomains` 引用请求中的应用或域提示，且未被 "尊重" 部分所引用，则该请求将不会自动加速，用户将保留在 Azure AD 登录页面以提供用户名。
+1. 在没有任何域提示策略的情况下，或者如果 4 个部分都未引用所述的应用或域提示，将[评估其余的 HRD 策略](configure-authentication-for-federated-users-portal.md#priority-and-evaluation-of-hrd-policies)。
+1. 如果 `RespectDomainHintForApps` 或 `RespectDomainHintForDomains` 部分中的任何一个（或两者）在请求中包含应用或域提示，则将根据请求将用户自动加速到联合 IDP。
+1. 如果 `IgnoreDomainHintsForApps` 或 `IgnoreDomainHintsForDomains` 中的任何一个（或两者）在请求中引用应用或域提示，并且“遵循”部分未引用它们，则请求不会自动加速，并且用户将保留在 Azure AD 登录页以提供用户名。
 
-用户在登录页上输入用户名后，他们可以使用其托管凭据（如果有）。  如果他们选择不使用托管凭据，或它们都未注册，则会将它们视为其联合 IDP 的凭据条目。
+用户在登录页上输入用户名后，他们可以使用托管凭据（如有注册）。  如果他们选择不使用托管凭据，或者他们没有注册任何凭据，则会像往常一样将他们转到联合 IDP 进行凭据输入。
 
-## <a name="suggested-use-within-a-tenant"></a>租户内的建议使用
+## <a name="suggested-use-within-a-tenant"></a>租户内的建议用途
 
-联合域的管理员应在四阶段计划中设置 HRD 策略的此部分。 此计划的目标是最终让租户中的所有用户都有机会使用其托管凭据，而不考虑域或应用程序，请保存对使用情况很难依赖的应用 `domain_hint` 。  此计划可帮助管理员查找这些应用，将其从新策略中免除，并继续向租户的其余部分推出更改。
+联合域的管理员应在包含四个阶段的计划中设置 HRD 策略的此部分。 此计划的目标是最终让租户中的所有用户都有机会使用托管凭据，而不考虑域或应用程序，并保存那些对 `domain_hint` 使用情况有硬依赖关系的应用。  此计划可帮助管理员查找这些应用，将其从新策略中免除，并继续向租户的其余部分推出更改。
 
-1. 选择最初要将此更改的滚动到的域。  这将是你的测试域，因此，请选择一个可能更 receptive 的 (更改（例如，查看不同的登录页面) ）。  这将忽略使用此域名的所有应用程序的所有域提示。 在租户中[设置](#configuring-policy-through-graph-explorer)此策略-默认 HRD 策略：
+1. 选择最初要向其推出此更改的域。  这将是你的测试域，因此，请选择一个可能更容易接受 UX （即查看不同的登录页）更改的域。  这将忽略使用此域名的所有应用程序的所有域提示。 在租户的默认 HRD 策略中[设置](#configuring-policy-through-graph-explorer)此策略：
 
 ```json
  "DomainHintPolicy": { 
@@ -64,7 +62,7 @@ DomainHintPolicy 逻辑在包含域提示的每个传入请求上运行，并基
 } 
 ```
 
-2. 收集来自测试域用户的反馈。 收集由于此更改而中断的应用程序的详细信息-它们依赖于域提示用法，并且应进行更新。 现在，请将它们添加到 `RespectDomainHintForApps` 部分：
+2. 收集来自测试域用户的反馈。 收集由于此更改而中断的应用程序的详细信息 - 它们依赖于域提示使用情况，并且应进行更新。 现在，请将它们添加到 `RespectDomainHintForApps` 部分：
 
 ```json
  "DomainHintPolicy": { 
@@ -75,7 +73,7 @@ DomainHintPolicy 逻辑在包含域提示的每个传入请求上运行，并基
 } 
 ```
 
-3. 继续将策略部署扩展到新域，并收集更多反馈。
+3. 继续将策略的推出扩展到新域，并收集更多反馈。
 
 ```json
  "DomainHintPolicy": { 
@@ -86,7 +84,7 @@ DomainHintPolicy 逻辑在包含域提示的每个传入请求上运行，并基
 } 
 ```
 
-4. 完成你的部署-面向所有域，豁免那些应该继续加快的域：
+4. 完成面向所有域的推出，豁免那些应该继续加速的域：
 
 ```json
  "DomainHintPolicy": { 
@@ -97,17 +95,17 @@ DomainHintPolicy 逻辑在包含域提示的每个传入请求上运行，并基
 } 
 ```
 
-完成步骤4后，除了中的用户外，所有用户 `guestHandlingDomain.com` 都可以在 Azure AD 登录页登录，即使域提示会导致联合 IDP 自动加速。  这种情况的例外是，如果请求登录的应用是已免除的应用之一（对于这些应用），仍将接受所有域提示。
+完成步骤 4 后，除了 `guestHandlingDomain.com` 中的用户外，所有用户都可以在 Azure AD 登录页登录，即使域提示会导致对联合 IDP 的自动加速。  这种情况的例外是，如果请求登录的应用是已豁免的应用之一，对于这些应用，仍将接受所有域提示。
 
-## <a name="configuring-policy-through-graph-explorer"></a>通过图形资源管理器配置策略
+## <a name="configuring-policy-through-graph-explorer"></a>通过 Graph 浏览器配置策略
 
-使用 Microsoft Graph 按常规方式设置 [HRD 策略](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) 。  
+使用 Microsoft Graph 按常规方式设置 [HRD 策略](/graph/api/resources/homeRealmDiscoveryPolicy)。  
 
-1. 在 [图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)中授予 ApplicationConfiguration 权限。  
+1. 在 [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中授予 Policy.ReadWrite.ApplicationConfiguration 权限。  
 1. 使用 URL `https://graph.microsoft.com/v1.0/policies/homeRealmDiscoveryPolicies`
-1. 将新策略发布到此 URL，或将其修补为 `/policies/homerealmdiscoveryPolicies/{policyID}` 覆盖现有策略。
+1. 将新策略发布到此 URL，或者如果要覆盖现有策略，请将其修补到 `/policies/homerealmdiscoveryPolicies/{policyID}`。
 
-POST 或 PATCH 内容：
+发布或修补内容：
 
 ```json
 {
@@ -119,9 +117,9 @@ POST 或 PATCH 内容：
 }
 ```
 
-使用 "图形" 时，请务必使用斜杠来转义 `Definition` JSON 部分。  
+使用 Graph 时，请务必使用斜杠来转义 `Definition` JSON 部分。  
 
-`isOrganizationDefault` 必须为 true，但 displayName 和定义可能会更改。
+`isOrganizationDefault` 必须为 true，但 displayName 和定义可以更改。
 
 ## <a name="next-steps"></a>后续步骤
 

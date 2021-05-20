@@ -1,5 +1,5 @@
 ---
-title: 使用 Java 保护服务远程处理通信
+title: 使用 Java 保护服务远程通信
 description: 了解如何保护 Azure Service Fabric 群集中运行的 Java 可靠服务的基于服务远程处理的通信。
 author: PavanKunapareddyMSFT
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 06/30/2017
 ms.custom: devx-track-java
 ms.author: pakunapa
 ms.openlocfilehash: 01a64fbcfef9f56abb0e1aa6cf7f5d821dd3763b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87325706"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>保护 Java 服务的服务远程处理通信
@@ -20,7 +20,7 @@ ms.locfileid: "87325706"
 >
 >
 
-安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先构建的通信堆栈和工具，可用来提高安全性。 本文介绍如何在 Java 服务中使用服务远程处理时提高安全性。 它基于现有的[示例](service-fabric-reliable-services-communication-remoting-java.md)构建，该示例解释了如何为使用 Java 编写的可靠服务设置远程处理。 
+安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先生成的通信堆栈和工具供你用来提高安全性。 本文介绍如何在 Java 服务中使用服务远程处理时提高安全性。 它基于现有的[示例](service-fabric-reliable-services-communication-remoting-java.md)构建，该示例解释了如何为使用 Java 编写的可靠服务设置远程处理。 
 
 若要在 Java 服务中使用服务远程处理时帮助保护服务，请遵循以下步骤：
 

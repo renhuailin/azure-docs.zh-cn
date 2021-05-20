@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102172403"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署槽
@@ -38,7 +38,7 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 1. **应用设置：** 目标槽的设置将应用到源槽的所有实例。 例如，生产设置将应用到过渡实例。 应用的设置包括以下类别：
     - [特定于槽的](#manage-settings)应用设置和连接字符串（如果适用）
-    - 如果启用) ，则[持续部署](../app-service/deploy-continuous-deployment.md)设置 (
+    - [持续部署](../app-service/deploy-continuous-deployment.md)设置（如果已启用）
     - [应用服务身份验证](../app-service/overview-authentication-authorization.md)设置（如果已启用）
 
 1. **等待重启和可用性：** 交换操作会等待源槽中的每个实例完成其重启并可用于请求。 如果有任何实例无法重启，交换操作将会还原对源槽所做的所有更改，并停止操作。
@@ -230,7 +230,7 @@ Azure Functions 部署槽存在以下限制：
 | Windows 高级计划           | 正式版  |
 | Windows 专用计划         | 正式版 |
 | Linux 消耗计划         | 不支持          |
-| Linux 高级版             | 正式版  |
+| Linux 高级计划             | 正式版  |
 | Linux 专用计划           | 正式版 |
 
 ## <a name="next-steps"></a>后续步骤

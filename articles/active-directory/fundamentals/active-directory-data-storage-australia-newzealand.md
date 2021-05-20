@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 7/21/2020
 ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d7c37e64e4f1b339ae66fe3d9135b1874476eb3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 55504cf893081b7de4cced7afc43b46127f5bdfd
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94836965"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478720"
 ---
 # <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory 澳大利亚和新西兰客户的客户数据存储 
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) 根据你注册 Microsoft Online 服务时提�
 
 有关 Azure AD 和其他 Microsoft 服务数据所在位置的信息，请参阅 Microsoft 信任中心的[数据的存储位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。
 
-自 2020 年 2 月 26 日起，Microsoft 开始将帐单邮寄地址位于澳大利亚或新西兰的新租户的 Azure AD 客户数据存储在澳大利亚数据中心中。 在 2020 年 5 月 1 日到 2021 年 3 月 31 日期间，Microsoft 将帐单邮寄地址位于澳大利亚或新西兰的现有租户迁移到澳大利亚数据中心，而客户无需执行任何操作。 此迁移过程不会导致客户停机，不会影响租户在迁移期间的功能。
+自 2020 年 2 月 26 日起，Microsoft 开始将帐单邮寄地址位于澳大利亚或新西兰的新租户的 Azure AD 客户数据存储在澳大利亚数据中心中。
 
 此外，某些 Azure AD 功能尚不支持将客户数据存储在澳大利亚。 请访问 [Azure AD 数据映射](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9)，了解特定功能信息。 例如，Microsoft Azure AD 多重身份验证将客户数据存储在美国，并在全球处理该数据。 请参阅 [Azure AD 多重身份验证的数据驻留和客户数据](../authentication/concept-mfa-data-residency.md)。
 

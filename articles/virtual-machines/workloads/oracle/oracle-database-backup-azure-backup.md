@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 备份来备份和恢复 Azure Linux VM 上的 Oracle Database 19c 数据库
+title: 使用 Azure 备份在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库
 description: 了解如何使用 Azure 备份服务来备份和恢复 Oracle Database 19c 数据库。
 author: cro27
 ms.service: virtual-machines
@@ -10,25 +10,25 @@ ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
 ms.openlocfilehash: 90f86a198ad36c2961f77336092d863953ee45ba
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101673890"
 ---
-# <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>使用 Azure 备份来备份和恢复 Azure Linux VM 上的 Oracle Database 19c 数据库
+# <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>使用 Azure 备份在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库
 
-本文演示如何使用 Azure 备份获取 VM 磁盘的磁盘快照，其中包括数据库文件和快速恢复区域。 使用 Azure 备份，可以将完整的磁盘快照作为备份存储在 [恢复服务保管库](../../../backup/backup-azure-recovery-services-vault-overview.md)中。  Azure 备份还提供了应用程序一致的备份，以确保在还原数据时不需要其他修补程序。 还原应用程序一致型数据可减少还原时间，因此可快速恢复到运行状态。
+本文展示了如何使用 Azure 备份来创建 VM 磁盘的磁盘快照，其中包括数据库文件和快速恢复区域。 使用 Azure 备份时，可以创建适合作为备份的完整磁盘快照，这些快照存储在[恢复服务保管库](../../../backup/backup-azure-recovery-services-vault-overview.md)中。  Azure 备份还提供了应用程序一致性备份，确保还原数据不需要额外的修复。 还原应用程序一致型数据可减少还原时间，因此可快速恢复到运行状态。
 
 > [!div class="checklist"]
 >
-> * 备份具有应用程序一致性备份的数据库
+> * 使用应用程序一致性备份来备份数据库
 > * 从恢复点还原和恢复数据库
 > * 从恢复点还原 VM
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
-若要执行备份和恢复过程，必须首先创建一个 Oracle Database 19c 的已安装实例的 Linux VM。 当前用于创建 VM 的 Marketplace 映像是  **oracle： oracle-数据库-19-3： oracle-0904：最新版本**。 按照 [oracle 创建数据库快速入门](./oracle-database-quick-create.md) 中的步骤创建 oracle 数据库来完成本教程。
+若要执行备份和恢复过程，必须先创建已安装 Oracle Database 19c 实例的 Linux VM。 当前用于创建 VM 的市场映像为 Oracle:oracle-database-19-3:oracle-database-19-0904:latest。 请按照 [Oracle 创建数据库快速入门](./oracle-database-quick-create.md)中的步骤操作，以创建 Oracle 数据库来完成本教程。
 
 
 ## <a name="prepare-the-environment"></a>准备环境
@@ -46,13 +46,13 @@ ms.locfileid: "101673890"
    ssh azureuser@<publicIpAddress>
    ```
    
-1. 切换到 *根* 用户：
+1. 切换到根用户：
 
    ```bash
    sudo su -
    ```
     
-1. 将 oracle 用户添加到 */etc/sudoers* 文件：
+1. 将 oracle 用户添加到 /etc/sudoers 文件中：
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
@@ -60,9 +60,9 @@ ms.locfileid: "101673890"
 
 ### <a name="prepare-the-database"></a>准备数据库
 
-此步骤假定你有一个在名为 *vmoracle19c* 的 VM 上运行的 Oracle 实例 (*测试*) 。
+为了更好地执行此步骤，请确保你已有在名为“vmoracle19c”的 VM 上运行的 Oracle 实例（“test”）。
 
-1. 将用户切换到 *oracle* 用户：
+1. 切换到 oracle 用户：
  
    ```bash
     sudo su - oracle
@@ -80,7 +80,7 @@ ms.locfileid: "101673890"
     echo "export ORACLE_SID=test" >> ~oracle/.bashrc
     ```
     
-3. 如果 Oracle 侦听器尚未运行，请启动它：
+3. 启动 Oracle 侦听器（如果它还没有运行的话）：
 
     ```output
     $ lsnrctl start
@@ -120,7 +120,7 @@ ms.locfileid: "101673890"
     The command completed successfully
     ```
 
-4.   (FRA) 位置创建快速恢复区域：
+4.  创建快速恢复区域 (FRA) 位置：
 
     ```bash
     mkdir /u02/fast_recovery_area
@@ -132,22 +132,22 @@ ms.locfileid: "101673890"
     SQL> sqlplus / as sysdba
     ```
 
-6.  如果数据库尚未运行，则启动它：
+6.  启动数据库（如果它还没有运行的话）：
 
     ```bash
     SQL> startup
     ```
 
-7.  为快速恢复区域设置数据库环境变量：
+7.  设置快速恢复区域的数据库环境变量：
 
     ```bash
     SQL> alter system set db_recovery_file_dest_size=4096M scope=both;
     SQL> alter system set db_recovery_file_dest='/u02/fast_recovery_area' scope=both;
     ```
     
-8.  请确保数据库处于存档日志模式，以启用联机备份。
+8.  确保数据库处于存档日志模式，以启用联机备份。
 
-    首先检查日志存档状态：
+    首先，检查日志存档状态：
 
     ```bash
     SQL> SELECT log_mode FROM v$database;
@@ -179,7 +179,7 @@ ms.locfileid: "101673890"
     SQL> quit
     ```
 
-10. 将 RMAN 配置为备份到位于 VM 磁盘上的快速恢复区域：
+10. 将 RMAN 配置为备份到 VM 磁盘上的快速恢复区域：
 
     ```bash
     $ rman target /
@@ -194,21 +194,21 @@ ms.locfileid: "101673890"
     RMAN> show all;
     ```    
 
-12.  现在运行备份。 以下命令将采用压缩格式的 backupset 进行完整数据库备份，包括存档日志文件：
+12.  现在，运行备份。 下面的命令将创建完整数据库备份（包括存档日志文件）作为压缩格式的备份集：
 
      ```bash
      RMAN> backup as compressed backupset database plus archivelog;
      ```
 
-## <a name="using-azure-backup-preview"></a>使用 Azure 备份 (预览) 
+## <a name="using-azure-backup-preview"></a>使用 Azure 备份（预览）
 
 Azure 备份服务提供简单、安全且经济高效的解决方案来备份数据，并从 Microsoft Azure 云恢复数据。 Azure 备份提供独立且隔离的备份，可以防范原始数据的意外破坏。 备份存储在提供恢复点内置管理的恢复服务保管库中。 配置和可伸缩性很简单，备份经过优化，可以轻松地根据需要还原。
 
-Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-app-consistent.md) ，用于在 Windows 和 Linux vm 的备份过程中实现应用程序一致性，这些应用程序包括 Oracle、MySQL、Mongo DB 和 PostGreSQL。 这涉及到在拍摄磁盘快照之前调用一个预脚本 (来静止应用程序) ，并调用后脚本 (命令在完成快照后将应用程序解除冻结) ，以将应用程序恢复到正常模式。 虽然在 GitHub 上提供了示例前脚本和后脚本，但你有责任来创建和维护这些脚本。
+Azure 备份服务为 Oracle、MySQL、Mongo DB 和 PostGreSQL 等多种应用程序提供了[框架](../../../backup/backup-azure-linux-app-consistent.md)来实现 Windows 和 Linux VM 备份期间的应用程序一致性。 这包括在创建磁盘快照之前调用前脚本（以静止应用程序），并在快照完成后调用后脚本（用于取消冻结应用程序的命令），以使应用程序恢复到正常模式。 虽然 GitHub 上提供了示例前脚本和后脚本，但这些脚本的创建和维护仍由你负责。
 
-现在，Azure 备份提供了增强的预脚本和后脚本框架 (， **该框架当前为预览版**) ，Azure 备份服务将为所选应用程序提供打包的前脚本和后脚本。 Azure 备份用户只需命名应用程序，Azure VM 备份就会自动调用相关的预先发布脚本。 打包后脚本和操作后脚本将由 Azure 备份团队维护，因此用户可以确保这些脚本的支持、所有权和有效性。 目前，增强型框架支持的应用程序是 *Oracle* 和 *MySQL*。
+现在，Azure 备份提供了增强的前脚本和后脚本框架（目前处于预览阶段），即 Azure 备份服务为选定的应用程序提供打包的前脚本和后脚本。 Azure 备份用户只需要对应用程序进行命名，Azure VM 备份就会自动调用相关的前脚本和后脚本。 打包的前脚本和后脚本将由 Azure 备份团队维护，这样就可以向用户保证这些脚本的支持、所有权和有效性。 目前，增强型框架支持的应用程序为 Oracle 和 MySQL。
 
-在本部分中，你将使用 Azure Backup 增强框架来获取正在运行的 VM 和 Oracle 数据库的应用程序一致性快照。 当 Azure 备份拍摄 VM 磁盘的快照时，数据库将被置于备份模式，以便进行事务一致的联机备份。 快照将是存储的完整副本，而不是增量备份或副本写入快照，因此它是从还原数据库的有效介质。 使用 Azure 备份应用程序一致性快照的优点在于，无论数据库的大小如何，都非常快速，并且快照可用于还原操作，而无需等待将其传输到恢复服务保管库中的时间。
+在此部分中，你将使用 Azure 备份增强型框架为正在运行的 VM 和 Oracle 数据库创建应用程序一致性快照。 当 Azure 备份创建 VM 磁盘的快照时，数据库被置于备份模式，以便进行事务一致性联机备份。 此快照是存储的完整副本，而不是增量快照或写入时复制快照，因此它是还原数据库的有效介质。 使用 Azure 备份应用程序一致性快照的优点是，无论数据库多大，都可以极快速地创建快照，且快照在创建后就可用于还原操作，而无需等待被传输到恢复服务保管库中。
 
 若要使用 Azure 备份来备份数据库，请完成以下步骤：
 
@@ -218,19 +218,19 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
 
 ### <a name="prepare-the-environment-for-an-application-consistent-backup"></a>为应用程序一致性备份准备环境
 
-1. 切换到 *根* 用户：
+1. 切换到根用户：
 
    ```bash
    sudo su -
    ```
 
-1. 创建新的备份用户：
+1. 新建备份用户：
 
    ```bash
    useradd -G backupdba azbackup
    ```
    
-2. 设置备份用户环境：
+2. 创建备份用户环境：
 
    ```bash
    echo "export ORACLE_SID=test" >> ~azbackup/.bashrc
@@ -238,15 +238,15 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
    echo export PATH='$ORACLE_HOME'/bin:'$PATH' >> ~azbackup/.bashrc
    ```
    
-3. 为新的备份用户设置外部身份验证。 备份用户需要能够使用外部身份验证访问数据库，因此不受密码的挑战。
+3. 为新的备份用户设置外部身份验证。 备份用户需要能够使用外部身份验证来访问数据库，以免受到密码质询。
 
-   首先，切换回 *oracle* 用户：
+   首先，切换回 oracle 用户：
 
    ```bash
    su - oracle
    ```
 
-   使用 sqlplus 登录到数据库，并检查外部身份验证的默认设置：
+   使用 sqlplus 来登录数据库，并检查外部身份验证的默认设置：
    
    ```bash
    sqlplus / as sysdba
@@ -254,7 +254,7 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
    SQL> show parameter remote_os_authent
    ```
    
-   输出应如下例所示： 
+   输出应如下面的示例所示： 
 
    ```output
    NAME                                 TYPE        VALUE
@@ -263,7 +263,7 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
    remote_os_authent                    boolean     FALSE
    ```
 
-   现在，创建 *azbackup* 在外部进行身份验证的数据库用户，并授予 sysbackup 权限：
+   现在，创建在外部进行身份验证的数据库用户 azbackup，并授予 sysbackup 特权：
    
    ```bash
    SQL> CREATE USER ops$azbackup IDENTIFIED EXTERNALLY;
@@ -271,13 +271,13 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
    ```
 
    > [!IMPORTANT] 
-   > 如果在 `ORA-46953: The password file is not in the 12.2 format.`  运行该语句时收到错误 `GRANT` ，请按照以下步骤将 orapwd 文件迁移为12.2 格式：
+   > 如果在运行 `GRANT` 语句时看到错误 `ORA-46953: The password file is not in the 12.2 format.`，请按以下步骤操作，将 orapwd 文件迁移到 12.2 格式：
    >
    > 1. 退出 sqlplus。
-   > 1. 将具有旧格式的密码文件移动到新名称。
+   > 1. 将旧格式的密码文件迁移到新名称。
    > 1. 迁移密码文件。
    > 1. 删除旧文件。
-   > 1. 运行以下命令：
+   > 1. 运行下面的命令：
    >
    >    ```bash
    >    mv $ORACLE_HOME/dbs/orapwtest $ORACLE_HOME/dbs/orapwtest.tmp
@@ -285,10 +285,10 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
    >    rm $ORACLE_HOME/dbs/orapwtest.tmp
    >    ```
    >
-   > 1. `GRANT`在 sqlplus 中重新运行该操作。
+   > 1. 在 sqlplus 中重新运行 `GRANT` 操作。
    >
    
-4. 创建存储过程以将备份消息记录到数据库警报日志：
+4. 创建存储过程，以将备份消息记录到数据库警报日志中：
 
    ```bash
    sqlplus / as sysdba
@@ -309,13 +309,13 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
    
 ### <a name="set-up-application-consistent-backups"></a>设置应用程序一致性备份  
 
-1. 切换到 *根* 用户：
+1. 切换到根用户：
 
    ```bash
    sudo su -
    ```
 
-2. 检查 "etc/azure" 文件夹。 如果不存在，请创建应用程序一致性备份工作目录：
+2. 检查是否有“etc/azure”文件夹。 如果没有，请创建应用程序一致性备份工作目录：
 
    ```bash
    if [ ! -d "/etc/azure" ]; then
@@ -323,7 +323,7 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
    fi
    ```
 
-3. 检查文件夹中的 "工作负荷"。 如果该文件不存在，请在 */etc/azure* 目录中创建一个名为 *工作负荷* 的文件，其中包含以下内容，这些内容必须以开头 `[workload]` 。 如果文件已存在，则只需编辑字段，使其与以下内容匹配。 否则，以下命令将创建文件并填充内容：
+3. 在此文件夹中，检查是否有“workload.conf”。 如果没有，请在 /etc/azure 目录中创建包含以下内容的文件 workload.conf，这些内容必须以 `[workload]` 开头。 如果文件已存在，则只需编辑字段，使其与以下内容匹配即可。 否则，下面的命令将创建此文件并填充内容：
 
    ```bash
    echo "[workload]
@@ -337,19 +337,19 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1.  在 Azure 门户中，请前往资源组 **rg-oracle** ，并单击虚拟机 **vmoracle19c**。
+1.  在 Azure 门户中，转到资源组 rg-oracle，然后单击虚拟机 vmoracle19c。
 
-2.  在 "**备份**" 边栏选项卡上，在资源组 **rg-oracle** 中创建新的 **恢复服务保管库**，名称为 **myVault**。
-    对于 " **选择备份策略**"，请使用 **(new) DailyPolicy**。 如果要更改备份频率或保持期，请选择 " **创建新策略** "。
+2.  在“备份”边栏选项卡上，在资源组 rg-oracle 中新建名为 myVault 的恢复服务保管库。
+    对于“选择备份策略”，选择“(新) DailyPolicy”。 若要更改备份频率或保持期，请改为选择“新建策略”。
 
     ![恢复服务保管库“添加”页](./media/oracle-backup-recovery/recovery-service-01.png)
 
-3.  若要继续，请单击 " **启用备份**"。
+3.  若要继续操作，请单击“启用备份”。
 
     > [!IMPORTANT]
     > 在单击“启用备份”后，备份过程将不会在计划时间到期前启动。 若要设置即时备份，请完成下一步。
 
-4. 在 "资源组" 页上，单击新创建的恢复服务保管库 **myVault**。 提示：可能需要刷新页面才能看到它。
+4. 在资源组页上，单击新创建的恢复服务保管库 myVault。 提示：可能需要刷新页面才能看到它。
 
 5.  在“myVault - 备份项”边栏选项卡中，在“备份项计数”下选择备份项计数。
 
@@ -359,9 +359,9 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
 
     ![恢复服务保管库“立即备份”命令](./media/oracle-backup-recovery/recovery-service-03.png)
 
-7.  接受默认的 "保留备份截止值"，然后单击 **"确定"** 按钮。 等待备份过程结束。 
+7.  接受默认的“保留备份截止日期”值，然后单击“确定”按钮。 等待备份过程结束。 
 
-    若要查看备份作业的状态，请单击 " **备份作业**"。
+    若要查看备份作业的状态，请单击“备份作业”。
 
     ![恢复服务保管库“作业”页](./media/oracle-backup-recovery/recovery-service-04.png)
 
@@ -369,9 +369,9 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
 
     ![显示有状态的恢复服务保管库作业页](./media/oracle-backup-recovery/recovery-service-05.png)
     
-    请注意，虽然只需要几秒钟的时间来执行快照，但可能需要一些时间才能将其传输到保管库，并且在完成传输之前，不会完成备份作业。
+    请注意，虽然执行快照只需要几秒钟，但将它传输到存储库可能需要一些时间，并且备份作业在传输完成之前不会完成。
 
-8. 对于应用程序一致性备份，请解决日志文件中的所有错误。 该日志文件位于/var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/extension.log。
+8. 对于应用程序一致性备份，请解决日志文件中的所有错误。 日志文件位于 /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/extension.log。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -391,7 +391,7 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
       --policy-name DefaultPolicy
    ```
 
-3. 触发备份以立即运行，而不是等待备份按默认计划触发 (上午5点 UTC) ： 
+3. 触发立即运行备份，而不是等待备份按默认计划（凌晨 5 点 UTC）触发： 
 
    ```azurecli
    az backup protection backup-now \
@@ -402,7 +402,7 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
       --item-name vmoracle19c 
    ```
 
-   你可以使用和监视备份作业的进度 `az backup job list` `az backup job show` 。
+   可以使用 `az backup job list` 和 `az backup job show` 来监视备份作业的进度。
 
 ---
 
@@ -441,23 +441,23 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 在 Azure 门户中，搜索 " *myVault* 恢复服务保管库" 项并将其选中。
+1. 在 Azure 门户中，搜索并选择“myVault”恢复服务保管库项。
 
     ![恢复服务保管库 myVault 备份项](./media/oracle-backup-recovery/recovery-service-06.png)
 
-2. 在 " **概述** " 边栏选项卡上，选择 " **备份项** " 和 "选择 **Azure 虚拟机**"，其中列出了 "Anon-零" 备份项计数。
+2. 在“概述”边栏选项卡上，依次选择“备份项”和“Azure 虚拟机”，其中应列出非零的“备份项计数”。
 
     ![恢复服务保管库 Azure 虚拟机备份项计数](./media/oracle-backup-recovery/recovery-service-07.png)
 
-3. 在 (Azure 虚拟机) 上的 "备份项" 页上，将列出 VM **vmoracle19c** 。 单击右侧的省略号以打开菜单，然后选择 " **文件恢复**"。
+3. 在“备份项”（“Azure 虚拟机”）页上，你的 VM vmoracle19c 列出。 单击右边的省略号，以打开菜单并选择“文件恢复”。
 
     ![恢复服务保管库“文件恢复”页的屏幕快照](./media/oracle-backup-recovery/recovery-service-08.png)
 
-4. 在“文件恢复(预览)”窗格中，单击“下载脚本”。 然后，将 () 文件下载到客户端计算机上的某个文件夹中。 将为运行脚本生成一个密码。 将密码复制到文件，以备以后使用。 
+4. 在“文件恢复(预览)”窗格中，单击“下载脚本”。 然后，将下载的文件 (.py) 保存到客户端计算机上的文件夹中。 为运行脚本而生成密码。 将密码复制到文件中，以供稍后使用。 
 
     ![下载脚本文件保存选项](./media/oracle-backup-recovery/recovery-service-09.png)
 
-5. 将 py 文件复制到 VM。
+5. 将 .py 文件复制到 VM 中。
 
     以下示例演示如何使用安全复制 (scp) 命令将文件移动到 VM。 还可先将内容复制到剪贴板，再粘贴到 VM 上设置的新文件中。
 
@@ -471,7 +471,7 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要列出 VM 的恢复点，请使用 az backup recovery point list。 在本示例中，我们为在 myRecoveryServicesVault 中受保护的名为 myVM 的 VM 选择最近的恢复点：
+若要列出 VM 的恢复点，请使用 az backup recoverypoint list。 在本示例中，我们为在 myRecoveryServicesVault 中受保护的名为 myVM 的 VM 选择最近的恢复点：
 
 ```azurecli
    az backup recoverypoint list \
@@ -503,7 +503,7 @@ Azure 备份服务提供了一个 [框架](../../../backup/backup-azure-linux-ap
    File downloaded: vmoracle19c_eus_4598131610710119312_456133188157_6931c635931f402eb543ee554e1cf06f102c6fc513d933.py. Use password c4487e40c760d29
 ```
 
-将 py 文件复制到 VM。
+将 .py 文件复制到 VM 中。
 
 以下示例演示如何使用安全复制 (scp) 命令将文件移动到 VM。 还可先将内容复制到剪贴板，再粘贴到 VM 上设置的新文件中。
 
@@ -518,9 +518,9 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 ### <a name="mount-the-restore-point"></a>装载还原点
 
-1. 创建一个还原装入点，并将该脚本复制到其中。
+1. 创建还原装入点，并将脚本复制到其中。
 
-    在下面的示例中，为要装载到的快照创建 */restore* 目录，将该文件移动到目录，并更改该文件，使其由根用户拥有并使其成为可执行文件。
+    在下面的示例中，创建 /restore 目录，以便将快照装载到其中，将文件移动到此目录中，然后将文件更改为被根用户所有的可执行文件。
 
     ```bash 
     ssh azureuser@<publicIpAddress>
@@ -532,7 +532,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
     chmod 755 /restore/vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py
     ```
     
-    现在执行脚本以还原备份。 系统会要求你提供在 Azure 门户中生成的密码。 
+    现在，执行脚本来还原备份。 系统会要求你提供在 Azure 门户中生成的密码。 
   
    ```bash
     ./vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py
@@ -584,7 +584,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 2. 确认访问已安装的卷。
 
-    若要退出，请输入“q”，然后搜索已安装的卷。 若要创建添加的卷的列表，请在命令提示符下输入 **df-h**。
+    若要退出，请输入“q”，然后搜索已安装的卷。 若要创建已添加卷的列表，请在命令提示符处输入“df -h”。
     
     ```
     [root@vmoracle19c restore]# df -h
@@ -606,7 +606,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 ### <a name="perform-recovery"></a>执行恢复
 
-1. 将缺少的备份文件复制回快速恢复区域：
+1. 将缺失的备份文件复制回快速恢复区域：
 
     ```bash
     cd /restore/vmoracle19c-2020XXXXXXXXXX/Volume1/fast_recovery_area/TEST
@@ -615,7 +615,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
     chown -R oracle:oinstall *
     ```
 
-2. 以下命令使用 RMAN 还原缺少的数据文件并恢复数据库：
+2. 下面的命令使用 RMAN 来还原缺失的数据文件并恢复数据库：
 
     ```bash
     sudo su - oracle
@@ -642,7 +642,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
     ![卸载磁盘命令](./media/oracle-backup-recovery/recovery-service-10.png)
     
-    还可以通过使用 **-clean** 选项再次运行 python 脚本来卸载恢复卷。
+    也可以通过使用 -clean 选项再次运行 python 脚本，以卸载恢复卷。
 
 ## <a name="restore-the-entire-vm"></a>还原整个 VM
 
@@ -654,15 +654,15 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 1. 恢复 VM。
 1. 设置公共 IP 地址。
 1. 连接到 VM。
-1. 启动数据库以装入阶段并执行恢复。
+1. 启动数据库来装载阶段并执行恢复。
 
 ### <a name="stop-and-delete-vmoracle19c"></a>停止并删除 vmoracle19c
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 在 Azure 门户中，请切换到 **vmoracle19c** 虚拟机，然后选择 " **停止**"。
+1. 在 Azure 门户中，转到 vmoracle19c 虚拟机，然后选择“停止”。
 
-1. 如果虚拟机不再运行，请选择 " **删除** "，然后选择 **"是"**。
+1. 当虚拟机不再运行时，依次选择“删除”和“是”。
 
    ![保管库“删除”命令](./media/oracle-backup-recovery/recover-vm-01.png)
 
@@ -674,7 +674,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
     az vm deallocate --resource-group rg-oracle --name vmoracle19c
     ```
 
-2. 删除 VM。 出现提示时，输入 "y"：
+2. 删除 VM。 出现提示时输入“Y”：
 
     ```azurecli
     az vm delete --resource-group rg-oracle --name vmoracle19c
@@ -686,36 +686,36 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 在 Azure 门户中创建用于过渡的存储帐户。
+1. 在 Azure 门户中创建用于暂存的存储帐户。
 
-   1. 在 Azure 门户中，选择 " **+ 创建资源** "，搜索并选择 " **存储帐户**"。
+   1. 在 Azure 门户中，选择“+ 创建资源”，然后搜索并选择“存储帐户”。
     
-      ![显示创建资源的位置的屏幕截图。](./media/oracle-backup-recovery/storage-1.png)
+      ![展示了资源创建位置的屏幕截图。](./media/oracle-backup-recovery/storage-1.png)
     
     
-   1. 在 "创建存储帐户" 页中，选择现有的资源组 **rg-oracle**，将存储帐户命名为 **oracrestore** ，然后选择 " **存储 V2" (generalpurpose V2)** 帐户类型。 将复制更改为 **本地冗余存储 (LRS)** 并将性能设置为 **Standard**。 确保将 "位置" 设置为与资源组中的所有其他资源相同的区域。 
+   1. 在“创建存储帐户”页中，选择现有的资源组 rg-oracle，将存储帐户命名为 oracrestore，然后选择“存储 V2 (generalpurpose V2)”作为“帐户类型”。 将“复制”更改为“本地冗余存储(LRS)”，并将“性能”设置为“标准”。 请确保“位置”被设置为与资源组中的其他所有资源相同的区域。 
     
-      ![存储帐户添加页](./media/oracle-backup-recovery/recovery-storage-1.png)
+      ![存储帐户添加页面](./media/oracle-backup-recovery/recovery-storage-1.png)
    
    1. 依次单击“查看 + 创建”、“创建”。
 
-2. 在 Azure 门户中，搜索 " *myVault* 恢复服务保管库" 项，然后单击它。
+2. 在 Azure 门户中，搜索并单击“myVault”恢复服务保管库项。
 
     ![恢复服务保管库 myVault 备份项](./media/oracle-backup-recovery/recovery-service-06.png)
     
-3.  在 " **概述** " 边栏选项卡上，选择 " **备份项** " 和 "选择 **Azure 虚拟机**"，其中列出了 "Anon-零" 备份项计数。
+3.  在“概述”边栏选项卡上，依次选择“备份项”和“Azure 虚拟机”，其中应列出非零的“备份项计数”。
 
     ![恢复服务保管库 Azure 虚拟机备份项计数](./media/oracle-backup-recovery/recovery-service-07.png)
 
-4.  在 (Azure 虚拟机) 上的 "备份项" 页上，将列出 VM **vmoracle19c** 。 单击 VM 名称。
+4.  在“备份项”（“Azure 虚拟机”）页上，你的 VM vmoracle19c 列出。 单击 VM 名称。
 
     ![恢复 VM 页](./media/oracle-backup-recovery/recover-vm-02.png)
 
-5.  在 " **vmoracle19c** " 边栏选项卡上，选择一致性类型为 " **应用程序** 一致性" 的还原点，然后单击右侧的 **省略号 ("**) " 打开菜单。  从菜单中，单击 " **还原 VM**"。
+5.  在“vmoracle19c”边栏选项卡上，选择“一致性”类型为“应用程序一致性”的还原点，然后单击右边的省略号 (...) 来打开菜单。  在菜单中，单击“还原 VM”。
 
     ![还原 VM 命令](./media/oracle-backup-recovery/recover-vm-03.png)
 
-6.  在 " **还原虚拟机** " 边栏选项卡中，选择 " **新建** "，然后 **创建新的虚拟机**。 输入虚拟机名称 **vmoracle19c** ，并选择 vnet **vmoracle19cVNET**，将根据 vnet 选择自动填充子网。 还原 VM 进程需要同一资源组和区域中的 Azure 存储帐户。 你可以选择之前设置的存储帐户 **orarestore** 。
+6.  在“还原虚拟机”边栏选项卡中，依次选择“新建”和“新建虚拟机”。 输入虚拟机名称“vmoracle19c”，并选择 VNet“vmoracle19cVNET”，子网会根据你选择的 VNet 自动填充。 “还原 VM”进程要求 Azure 存储帐户在同一个资源组和区域中。 可以选择之前创建的存储帐户“orarestore”。
 
     ![还原配置值](./media/oracle-backup-recovery/recover-vm-04.png)
 
@@ -725,15 +725,15 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
     ![备份作业状态命令](./media/oracle-backup-recovery/recover-vm-05.png)
 
-    单击 **正在进行** 的还原操作以显示还原过程的状态：
+    单击处于“正在进行”状态的还原操作，以显示还原进程的状态：
 
     ![还原过程的状态](./media/oracle-backup-recovery/recover-vm-06.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要设置存储帐户和文件共享，请在 Azure CLI 中运行以下命令。
+若要创建存储帐户和文件共享，请在 Azure CLI 中运行以下命令。
 
-1. 在与 VM 相同的资源组和位置中创建存储帐户：
+1. 在 VM 所在的资源组和位置中创建存储帐户：
 
    ```azurecli
    az storage account create -n orarestore -g rg-oracle -l eastus --sku Standard_LRS
@@ -752,7 +752,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
       --output tsv
    ```
 
-3. 将恢复点还原到存储帐户。 将替换为 `<myRecoveryPointName>` 上一步骤中生成的列表中的恢复点：
+3. 将恢复点还原到存储帐户。 将 `<myRecoveryPointName>` 替换为在上一步中生成的列表中的恢复点：
 
    ```azurecli
    az backup restore restore-disks \
@@ -765,7 +765,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
       --target-resource-group rg-oracle
    ```
 
-4. 检索还原作业的详细信息。 以下命令将获取触发的还原作业的更多详细信息，包括检索模板 URI 所需的名称。 
+4. 检索还原作业详细信息。 下面的命令获取已触发的还原作业的更多详细信息，包括检索模板 URI 所需的作业名称。 
 
    ```azurecli
    az backup job list \
@@ -774,7 +774,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
        --output table
    ```
 
-   输出将如下所 `(Note down the name of the restore job)` 示：
+   输出类似于此 `(Note down the name of the restore job)`：
 
    ```output
    Name                                  Operation        Status     Item Name    Start Time UTC                    Duration
@@ -784,7 +784,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
    502bc7ae-d429-4f0f-b78e-51d41b7582fc  ConfigureBackup  Completed  vmoracle19c  2021-01-07T09:43:55.298755+00:00  0:00:30.839674
    ```
 
-5. 检索用于重新创建 VM 的 URI 的详细信息。 将上一步中的还原作业名称替换为 `<RestoreJobName>` 。
+5. 检索用于重新创建 VM 的 URI 的详细信息。 将 `<RestoreJobName>` 替换为上一步中的还原作业名称。
 
     ```azurecli
       az backup job show \
@@ -794,7 +794,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
         --query properties.extendedInfo.propertyBag
     ```
 
-   输出类似于以下内容：
+   输出如下所示：
 
    ```output
    {
@@ -809,9 +809,9 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
    }
    ```
 
-   模板名称（在本示例中为 `azuredeployc009747a-0d2e-4ac9-9632-f695bf874693.json` ），并且列出了 blob 容器名称（在此示例中为） `vmoracle19c-75aefd4b34c64dd39fdcd3db579783f2` 。 
+   列出了模板 Blob URI 末尾的模板名称（在此示例中为 `azuredeployc009747a-0d2e-4ac9-9632-f695bf874693.json`）和 Blob 容器名称（在此示例中为 `vmoracle19c-75aefd4b34c64dd39fdcd3db579783f2`）。 
 
-   在以下命令中使用这些值来分配变量，以便为创建 VM 做准备。 对于持续时间为30分钟的存储容器，会生成一个 SAS 密钥。  
+   在下面的命令中使用这些值来分配变量，为创建 VM 做准备。 为存储容器生成持续时间为 30 分钟的 SAS 密钥。  
 
 
    ```azurecli
@@ -834,7 +834,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
     --output tsv)
    ```
 
-   现在部署模板来创建 VM。
+   现在，部署模板来创建 VM。
 
    ```azurecli
    az deployment group create \
@@ -842,17 +842,17 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
       --template-uri $url?$token
    ```
 
-   系统将提示你提供 VM 的名称。
+   系统会提示你提供 VM 名称。
 
 ---
 
 ### <a name="set-the-public-ip-address"></a>设置公共 IP 地址
 
-恢复 VM 后，应将原始 IP 地址重新分配到新的 VM。
+在 VM 恢复后，应将原始 IP 地址重新分配给新 VM。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1.  在 Azure 门户中转到虚拟机 **vmoracle19c**。 你会注意到，已为其分配了新的公共 IP 和 NIC，类似于 vmoracle19c，但没有 DNS 地址。 删除原始 VM 时，将保留其公共 IP 和 NIC，接下来的步骤会将它们重新附加到新的 VM。
+1.  在 Azure 门户中，转到虚拟机 vmoracle19c。 你会注意到，它已经被分配了新的公共 IP 和 NIC（类似于 vmoracle19c-nic-XXXXXXXXXXXX），但没有 DNS 地址。 在原始 VM 被删除后，它的公共 IP 和 NIC 被保留，后续步骤会将它们重新附加到新 VM。
 
     ![公共 IP 地址列表](./media/oracle-backup-recovery/create-ip-01.png)
 
@@ -860,23 +860,23 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
     ![创建 IP 地址](./media/oracle-backup-recovery/create-ip-02.png)
 
-3.  中转到 **网络**
+3.  转到“网络”
 
     ![关联 IP 地址](./media/oracle-backup-recovery/create-ip-03.png)
 
-4.  单击 " **附加网络接口**"，选择原始公共 IP 地址仍关联到的原始 NIC * * vmoracle19cVMNic，并单击 **"确定"**
+4.  单击“附加网络接口”，选择原始公共 IP 地址仍关联到的原始 NIC **vmoracle19cVMNic，然后单击“确定”
 
     ![选择资源类型和 NIC 值](./media/oracle-backup-recovery/create-ip-04.png)
 
-5.  现在，必须分离用 VM 还原操作创建的 NIC，因为它被配置为主接口。 单击 " **分离网络接口** "，然后选择类似于 **VMORACLE19C** 的新 NIC，并单击 **"确定"**
+5.  现在，必须拆离使用 VM 还原操作创建的 NIC，因为它被配置为主接口。 单击“拆离网络接口”，选择类似于 vmoracle19c-nic-XXXXXXXXXXXX 的新 NIC，然后单击“确定”
 
-    ![显示在何处选择分离网络接口的屏幕截图。](./media/oracle-backup-recovery/create-ip-05.png)
+    ![展示了“拆离网络接口”选择位置的屏幕截图。](./media/oracle-backup-recovery/create-ip-05.png)
     
-    重新创建的 VM 现在将具有原始 NIC，该 NIC 与原始 IP 地址和网络安全组规则关联
+    重新创建的 VM 现在有与原始 IP 地址和网络安全组规则关联的原始 NIC
     
     ![IP 地址值](./media/oracle-backup-recovery/create-ip-06.png)
     
-6.  返回到 "**概述**"，然后单击 "**开始**" 
+6.  返回到“概述”，然后单击“开始” 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -886,13 +886,13 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
    az vm deallocate --resource-group rg-oracle --name vmoracle19c
    ```
 
-2. 列出当前、还原生成的 VM NIC
+2. 列出还原生成的当前 VM NIC
 
    ```azurecli
    az vm nic list --resource-group rg-oracle --vm-name vmoracle19c
    ```
 
-   输出将与下图类似，其中列出了还原生成的 NIC 名称 `vmoracle19cRestoredNICc2e8a8a4fc3f47259719d5523cd32dcf`
+   输出如下所示，其中将还原生成的 NIC 名称列为 `vmoracle19cRestoredNICc2e8a8a4fc3f47259719d5523cd32dcf`
 
    ```output
    {
@@ -902,13 +902,13 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
    }
    ```
 
-3. `<VMName>VMNic`在这种情况下，附加名为的原始 NIC `vmoracle19cVMNic` 。 原始公共 IP 地址仍附加到此 NIC，并将在重新附加 NIC 时还原到 VM。 
+3. 附加名为 `<VMName>VMNic`（在此示例中为 `vmoracle19cVMNic`）的原始 NIC。 原始公共 IP 地址仍附加到此 NIC，并将在重新附加 NIC 时还原到 VM。 
 
    ```azurecli
    az vm nic add --nics vmoracle19cVMNic --resource-group rg-oracle --vm-name vmoracle19c
    ```
 
-4. 分离还原生成的 NIC
+4. 拆离还原生成的 NIC
 
    ```azurecli
    az vm nic remove --nics vmoracle19cRestoredNICc2e8a8a4fc3f47259719d5523cd32dcf --resource-group rg-oracle --vm-name vmoracle19c
@@ -930,9 +930,9 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 ssh <publicIpAddress>
 ```
 
-### <a name="start-the-database-to-mount-stage-and-perform-recovery"></a>启动数据库以装载阶段并执行恢复
+### <a name="start-the-database-to-mount-stage-and-perform-recovery"></a>启动数据库来装载阶段并执行恢复
 
-1. 你可能会发现实例正在运行，因为自动启动已尝试在 VM 启动时启动数据库。 但是，数据库需要恢复，并且可能只是装载阶段，因此先运行准备的关闭。
+1. 你可能会发现实例正在运行，因为自动启动尝试在 VM 启动后启动数据库。 但是，数据库需要恢复，而且很可能只处于装载阶段，因此先运行预备关机。
 
     ```bash
     $ sudo su - oracle
@@ -949,7 +949,7 @@ ssh <publicIpAddress>
     SQL> select * from scott.scott_table;
     ```
 
-现在已完成在 Azure Linux VM 上 Oracle Database 19c 数据库的备份和恢复。
+现已完成在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库。
 
 ## <a name="delete-the-vm"></a>删除 VM
 

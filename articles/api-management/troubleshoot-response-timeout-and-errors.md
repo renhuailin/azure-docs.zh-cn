@@ -7,15 +7,15 @@ ms.date: 12/04/2020
 ms.author: apimpm
 ms.service: api-management
 ms.openlocfilehash: 6cace4a02c8d45cacbbc34e9778b5c4a78ada27f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100576527"
 ---
 # <a name="troubleshooting-client-response-timeouts-and-errors-with-api-management"></a>排查 API 管理的客户端响应超时和错误问题
 
-本文帮助你排查 [Azure API 管理](./api-management-key-concepts.md)中的间歇性连接错误和相关延迟问题。 具体而言，本文将提供有关源地址网络转换 (SNAT) 端口耗尽的信息及其故障排除方法。 如果需要更多帮助，请联系 azure [社区支持](https://azure.microsoft.com/support/community/) 部门的 azure 专家，或向 [azure 支持](https://azure.microsoft.com/support/options/)人员提供支持请求。
+本文帮助你排查 [Azure API 管理](./api-management-key-concepts.md)中的间歇性连接错误和相关延迟问题。 具体而言，本文将提供有关源地址网络转换 (SNAT) 端口耗尽的信息及其故障排除方法。 如果需要更多帮助，请联系 [Azure 社区支持](https://azure.microsoft.com/support/community/) 的 Azure 专家，或向 [Azure 支持](https://azure.microsoft.com/support/options/)提交支持请求。
 
 ## <a name="symptoms"></a>症状
 
@@ -59,7 +59,7 @@ Azure 负载均衡器文档中的[排查出站连接故障](../load-balancer/tro
 
 ### <a name="place-your-apim-and-backend-service-in-the-same-vnet"></a>将 APIM 和后端服务置于同一 VNet 中
 
-如果后端 API 托管在支持 *服务终结点* （如应用服务）的 Azure 服务上，则可以通过将 APIM 实例和后端服务放在同一虚拟网络中，并通过 [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md) 或 [专用终结点](../private-link/private-endpoint-overview.md)来公开它，来避免 SNAT 端口耗尽问题。 使用公用 VNet 并将服务终结点置于集成子网中时，从 APIM 实例到这些服务的出站流量会绕过 Internet，从而避免 SNAT 端口限制。 同样，如果你使用 VNet 和专用终结点，则向该目标发送流量的出站 SNAT 端口将不会有任何问题。
+如果后端 API 托管在支持服务终结点的 Azure 服务（如应用服务）上，则可以将 APIM 实例和后端服务置于同一虚拟网络中，并通过[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)或[专用终结点](../private-link/private-endpoint-overview.md)公开，从而避免 SNAT 端口耗尽问题。 使用公用 VNet 并将服务终结点置于集成子网中时，从 APIM 实例到这些服务的出站流量会绕过 Internet，从而避免 SNAT 端口限制。 同样，如果你使用 VNet 和专用终结点，则向该目标发送流量的出站 SNAT 端口将不会有任何问题。
 
 有关详细信息，请参阅[如何将 Azure API 管理与虚拟网络配合使用](api-management-using-with-vnet.md)和[将应用服务与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)。
 

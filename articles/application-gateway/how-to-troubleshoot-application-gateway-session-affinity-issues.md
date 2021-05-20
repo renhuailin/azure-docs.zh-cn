@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 548bda36ed2b167c159d32a575b63ecbf10b16dd
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397563"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>排查 Azure 应用程序网关会话相关性问题
@@ -82,7 +82,7 @@ ms.locfileid: "93397563"
 1. 在连接到应用程序网关后面的应用程序的“客户端”上提取 Web 调试器跟踪（本示例使用 Fiddler）。
     **提示** 如果你不知道如何使用 Fiddler，请选中底部的“我想要收集网络流量并使用 Web 调试器分析它”选项。 
 
-2. 检查并分析会话日志，确定客户端提供的 Cookie 是否包含 ARRAffinity 详细信息。 如果在 Cookie 集中找不到类似于 " **ARRAffinity=** *ARRAffinityValue* " 的 ARRAffinity 详细信息，则表示客户端未使用应用程序网关提供的 ARRA Cookie 做出回复。
+2. 检查并分析会话日志，确定客户端提供的 Cookie 是否包含 ARRAffinity 详细信息。 如果在 Cookie 集中找不到类似于 "**ARRAffinity=** *ARRAffinityValue*" 的 ARRAffinity 详细信息，则表示客户端未使用应用程序网关提供的 ARRA Cookie 做出回复。
     例如：
 
     ![屏幕截图显示了一个会话日志，其中突出显示了一个条目。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
@@ -141,13 +141,13 @@ ms.locfileid: "93397563"
 
 5. 检查以下数据：
 
-- **ClientIP** –这是连接客户端中的客户端 IP 地址。
+- ClientIP - 这是连接方客户端的客户端 IP 地址。
 - **ClientPort** - 这是发出请求的连接方客户端的源端口。
-- **RequestQuery** –这表示接收请求的目标服务器。
-- **Server-Routed** ：收到请求的后端池实例。
-- **X-AzureApplicationGateway-LOG-ID** ：用于请求的相关 ID。 可用于排查后端服务器上的流量问题。 例如：X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
+- RequestQuery - 表示收到请求的目标服务器。
+- **Server-Routed**：收到请求的后端池实例。
+- **X-AzureApplicationGateway-LOG-ID**：用于请求的相关 ID。 可用于排查后端服务器上的流量问题。 例如：X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
 
-  - **SERVER-STATUS** ：应用程序网关接收从后端的 HTTP 响应代码。
+  - **SERVER-STATUS**：应用程序网关接收从后端的 HTTP 响应代码。
 
   ![屏幕截图以纯文本形式显示了服务器状态，其中大部分文本模糊，但突出显示了 clientPort 和 SERVER-ROUTED。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
 
@@ -190,7 +190,7 @@ Fiddler 之类的 Web 调试工具可以捕获 Internet 与测试计算机之间
 
     例如：
 
-- **示例 A：** 在会话日志中，你发现请求是从客户端发出的，该请求发送到了应用程序网关的公共 IP 地址。于是你单击此日志以查看详细信息。  右侧下框中的数据是应用程序网关返回给客户端的数据。 选择“RAW”选项卡，并确定客户端是否正在接收“ **Set-Cookie:ARRAffinity=** *ARRAffinityValue* ”。 如果未看到任何 Cookie，则表示未设置会话相关性，或者应用程序网关未将 Cookie 应用回到客户端。
+- **示例 A：** 在会话日志中，你发现请求是从客户端发出的，该请求发送到了应用程序网关的公共 IP 地址。于是你单击此日志以查看详细信息。  右侧下框中的数据是应用程序网关返回给客户端的数据。 选择“RAW”选项卡，并确定客户端是否正在接收“**Set-Cookie:ARRAffinity=** *ARRAffinityValue*”。 如果未看到任何 Cookie，则表示未设置会话相关性，或者应用程序网关未将 Cookie 应用回到客户端。
 
    > [!NOTE]
    > 此 ARRAffinity 值是应用程序网关为客户端设置的 Cookie ID，它将发送到特定的后端服务器。

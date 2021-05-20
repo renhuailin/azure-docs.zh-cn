@@ -5,15 +5,15 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 10/02/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 9ec900f0537030d3ed0d1c875e8125806159bd51
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
-ms.translationtype: MT
+manager: femila
+ms.openlocfilehash: 2c1ce95f9eba8c31b20d8e992fa1880a5d33da8d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251448"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447840"
 ---
-# <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 创建 Windows 虚拟机主机池
+# <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 创建 Windows 虚拟桌面主机池
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md)。
@@ -101,7 +101,7 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
     > 如果要将 VM 加入到 Azure Active Directory 域服务 (Azure AD DS) 环境，请确保你的域加入用户也是 [AAD DC 管理员组](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)的成员。
 
 >[!IMPORTANT]
->建议你不要启用任何禁用 Windows Installer 的策略或配置。 如果你禁用 Windows Installer，则该服务将无法在你的会话主机上安装代理更新，并且你的会话主机将无法正常运行。
+>建议不要启用任何禁用 Windows Installer 的策略或配置。 如果禁用 Windows Installer，则该服务将无法在会话主机上安装代理更新，并且会话主机将无法正常运行。
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>将虚拟机注册到 Windows 虚拟机主机池
 
@@ -112,7 +112,7 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 1. 用创建虚拟机时提供的凭据[连接到虚拟机](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 2. 下载并安装 Windows 虚拟桌面代理。
    - 下载 [Windows 虚拟桌面代理](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv)。
-   - 运行安装程序。 当安装程序要求你提供注册令牌时，请输入从 **AzWvdRegistrationInfo** cmdlet 获取的值。
+   - 运行安装程序。 当安装程序要求你提供注册令牌时，请输入从 Get-AzWvdRegistrationInfo cmdlet 获取的值。
 3. 下载并安装 Windows 虚拟桌面代理引导加载程序。
    - 下载 [Windows 虚拟桌面代理引导加载程序](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH)。
    - 运行安装程序。
@@ -122,28 +122,28 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 
 ## <a name="update-the-agent"></a>更新代理
 
-如果你在以下情况之一，则需要更新代理：
+如果发生以下情况之一，则需要更新代理：
 
-- 要将以前注册的会话主机迁移到新的主机池
-- 更新后，会话主机不会显示在主机池中
+- 你想要将先前注册的会话主机迁移到新的主机池
+- 更新后，会话主机未出现在主机池中
 
-更新代理：
+若要更新代理，请执行以下操作：
 
 1. 以管理员身份登录到 VM。
-2. 请先执行 " **服务**"，然后停止 **Rdagent** 和 **远程桌面代理加载** 器进程。
-3. 接下来，查找代理和加载程序 Msi。 它们将位于 **C:\DeployAgent** 文件夹中或在安装时保存到的任何位置。
-4. 找到以下文件并将其卸载：
+2. 转到“服务”，然后停止“Rdagent”和“远程桌面代理加载程序”进程。
+3. 接下来，找到代理和引导加载程序 MSI。 它们要么位于 C:\DeployAgent 文件夹中，要么位于安装它时保存到的任何位置。
+4. 找到以下文件并卸载它们：
      
-     - RDInfra. RDAgent-x64-verx. x
-     - RDInfra. RDAgentBootLoader-x64
+     - Microsoft.RDInfra.RDAgent.Installer-x64-verx.x.x
+     - Microsoft.RDInfra.RDAgentBootLoader.Installer-x64
 
-   若要卸载这些文件，请右键单击每个文件名，然后选择 " **卸载**"。
-5. 还可以选择删除以下注册表设置：
+   若要卸载这些文件，请右键单击每个文件名，然后选择“卸载”。
+5. （可选）还可以删除以下注册表设置：
      
      - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDInfraAgent
      - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDAgentBootLoader
 
-6. 卸载这些项后，这会删除与旧主机池的所有关联。 如果要将此主机重新注册到服务，请按照将 [虚拟机注册到 Windows 虚拟机主机池](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)中的说明进行操作。
+6. 卸载这些项后，这将删除与旧主机池的所有关联。 如果要将此主机重新注册到服务，请按照[将虚拟机注册到 Windows 虚拟桌面主机池](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)中的说明进行操作。
 
 
 ## <a name="next-steps"></a>后续步骤

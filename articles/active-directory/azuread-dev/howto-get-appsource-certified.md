@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: d9a4da6fe65fda07609c7399518fa324017ea44c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101649339"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何使 AppSource 通过 Azure Active Directory 的认证
@@ -30,7 +30,7 @@ ms.locfileid: "101649339"
 
 ## <a name="guides-and-code-samples"></a>指南和代码示例
 
-如果要了解如何使用 Open ID connect 将应用程序与 Azure AD 集成，请参阅 [Azure Active Directory 开发人员指南](v1-overview.md#get-started "开发人员 Azure AD 入门")中的指南和代码示例。
+若要了解如何使用 OpenID Connect 将应用程序与 Azure AD 集成，请遵循 [Azure Active Directory 开发人员指南](v1-overview.md#get-started "面向开发人员的 Azure AD 入门")中的指南和代码示例。
 
 ## <a name="multi-tenant-applications"></a>多租户应用程序
 
@@ -55,10 +55,10 @@ ms.locfileid: "101649339"
 
 ### <a name="free-trial-customer-led-trial-experience"></a>免费试用（客户导向型试用体验）
 
-客户导向型试用是 AppSource 所推荐的体验，因为它提供对应用程序的单击访问。 以下示例显示了此体验的外观：
+客户导向型试用是 AppSource 所推荐的体验，因为它提供对应用程序的单击访问。 下面的示例展示了这种体验：
 
 <table >
-<tr>    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt="Shows Free trial for customer-led trial experience."/><ul><li>用户在 AppSource 网站中查找你的应用程序</li><li>选择 "免费试用版" 选项</li></ul></td>
+<tr>    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt="Shows Free trial for customer-led trial experience."/><ul><li>用户在 AppSource 网站中查找你的应用程序</li><li>选择“免费试用”选项</li></ul></td>
     <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt="Shows how user is redirected to a URL in your web site."/><ul><li>AppSource 将用户重定向到你网站中的 URL</li><li>网站将自动开始<i>单一登录</i>过程（页面加载中）</li></ul></td>
     <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt="Shows the Microsoft sign-in page."/><ul><li>用户被重定向到 Microsoft 登录页</li><li>用户提供凭据以登录</li></ul></td>
 </tr>
@@ -75,7 +75,7 @@ ms.locfileid: "101649339"
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt="Shows Contact me for partner-led trial experience"/><ul><li>用户在 AppSource 网站中查找你的应用程序</li><li>选择 "与我联系" 选项</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt="Shows Contact me for partner-led trial experience"/><ul><li>用户在 AppSource 网站中查找你的应用程序</li><li>选择“联系我”选项</li></ul></td>
     <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt="Shows an example form with contact info"/><ul><li>在表单中填写联系信息</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">
@@ -113,9 +113,9 @@ ms.locfileid: "101649339"
 
 ## <a name="get-support"></a>获取支持
 
-对于 Azure AD 集成，我们使用与社区 [&的 Microsoft Q](/answers/products/) 来提供支持。
+对于 Azure AD 集成，我们使用 [Microsoft Q&A](/answers/products/) 与社区一起提供支持。
 
-我们强烈建议你先提问&第一次，浏览现有问题，查看是否有人在之前提出过你的问题。 请确保已将你的问题或评论标记为 [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) 。
+强烈建议先在 Microsoft Q&A 上提问，然后浏览现有的问题，看看是否有人之前问过你的问题。 请务必用 [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) 标记你的提问或评论。
 
 使用以下评论部分提供反馈，帮助我们改进内容。
 

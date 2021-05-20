@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 tags: connectors
 ms.openlocfilehash: dab5b755347e46d8d509e8014bba8f496ca9c900
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101719434"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>从 Azure 逻辑应用通过 HTTP 或 HTTPS 调用服务终结点
@@ -26,7 +26,7 @@ ms.locfileid: "101719434"
 
 本文介绍如何使用 HTTP 触发器和 HTTP 操作，以便逻辑应用可以将出站调用发送到其他服务和系统。
 
-有关逻辑应用的出站调用的加密、安全和授权（例如 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)，以前称为安全套接字层 (SSL) 、自签名证书或 [Azure Active Directory 开放式身份验证 (Azure AD OAuth) ](../active-directory/develop/index.yml)），请参阅对 [其他服务和系统的出站调用的安全访问和数据访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。
+若要了解来自逻辑应用的出站调用的加密、安全性和授权（如[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)（旧称为“安全套接字层 (SSL)”）、自签名证书或 [Azure Active Directory 开放式身份验证 (Azure AD OAuth)](../active-directory/develop/index.yml)），请参阅[保护访问和数据 - 对其他服务和系统的出站调用的访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -249,8 +249,8 @@ HTTP 请求有一个[超时限制](../logic-apps/logic-apps-limits-and-config.md
 
 * `Accept-*` 标头（`Accept-version` 除外）
 * `Allow`
-* `Content-*` 标头（和）除外，在 `Content-Disposition` `Content-Encoding` `Content-Type` 使用 POST 和 PUT 操作时，将遵循这些标头。 但是，当你使用 GET 操作时，逻辑应用将删除这些标头。
-* `Cookie` 标头，但逻辑应用接受使用 **Cookie** 属性指定的任何值。
+* `Content-*` 头（`Content-Disposition`、`Content-Encoding` 和 `Content-Type` 除外），在使用 POST 和 PUT 操作时使用。 但是，当你使用 GET 操作时，逻辑应用会删除这些头。
+* `Cookie` 头，但逻辑应用使用你使用 Cookie 属性指定的任何值。
 * `Expires`
 * `Host`
 * `Last-Modified`

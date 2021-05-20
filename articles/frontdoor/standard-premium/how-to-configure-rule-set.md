@@ -1,6 +1,6 @@
 ---
-title: Azure 前门：配置前门规则集
-description: 本文提供了有关如何配置规则集的指导。
+title: Azure Front Door：配置 Front Door 规则集
+description: 本文提供有关如何配置规则集的指导。
 services: frontdoor
 author: duongau
 ms.service: frontdoor
@@ -8,112 +8,112 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
 ms.openlocfilehash: 6863c492059ccee152ecf3d03a09e61793576bcb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101715592"
 ---
-# <a name="configure-a-rule-set-with-azure-front-door-standardpremium-preview"></a>使用 Azure 前门标准/高级 (预览版配置规则集) 
+# <a name="configure-a-rule-set-with-azure-front-door-standardpremium-preview"></a>在 Azure Front Door 标准版/高级版（预览版）中配置规则集
 
 > [!Note]
-> 本文档适用于 Azure 前门标准/高级 (预览版) 。 正在寻找有关 Azure 前门的信息？ 查看 [此处](../front-door-overview.md)。
+> 本文档适用于 Azure Front Door 标准/高级（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看[此处](../front-door-overview.md)。
 
-本文介绍如何在 Azure 门户中创建规则集和第一组规则。 然后，你将学习如何将规则集与规则集页面或终结点管理器相关联。
+本文介绍如何在 Azure 门户中创建规则集和第一组规则。 然后，你将了解如何通过“规则集”页或 Endpoint Manager 将规则集与路由关联。
 
 > [!IMPORTANT]
-> Azure 前门标准/高级 (预览版) 目前为公共预览版。
+> Azure Front Door 标准版/高级版（预览版）目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 必须先创建 Azure 前门标准/高级版，然后才能配置规则集。 有关详细信息，请参阅 [快速入门：创建 Azure 前门标准/高级配置文件](create-front-door-portal.md)。
+* 必须先创建 Azure Front Door 标准版/高级版，然后才能配置规则集。 有关详细信息，请参阅[快速入门：创建 Azure Front Door 标准版/高级版配置文件](create-front-door-portal.md)。
 
 ## <a name="configure-rule-set-in-azure-portal"></a>在 Azure 门户中配置规则集
 
-1. 在前门配置文件中，选择 "**设置**" 下的 "**规则集**"。 选择 " **添加** "，并为其指定一个规则集名称。
+1. 在 Front Door 配置文件中的“设置”下，选择“规则集” 。 选择“添加”，并指定规则集名称。
 
-   :::image type="content" source="../media/how-to-configure-rule-set/front-door-create-rule-set-1.png" alt-text="规则集登录页的屏幕截图。":::
+   :::image type="content" source="../media/how-to-configure-rule-set/front-door-create-rule-set-1.png" alt-text="规则集登陆页的屏幕截图。":::
     
-1. 选择 " **添加规则** "，创建第一个规则。 为其指定一个规则名称。 然后，选择 " **添加条件** " 或 " **添加操作** " 来定义规则。 对于一个规则，最多可以添加10个条件和5个操作。 在此示例中，我们使用服务器变量为 URL 中包含 *contoso* 的请求添加响应标头8Geo。
+1. 选择“添加规则”，创建你的一个规则。 为其指定规则名称。 然后，选择“添加条件”或“添加操作”来定义规则 。 一个规则最多可添加 10 个条件和 5 个操作。 本示例使用服务器变量为 URL 中包含 contoso 的请求添加响应头 8Geo-country*。
 
    :::image type="content" source="../media/how-to-configure-rule-set/front-door-create-rule-set.png" alt-text="规则集配置页的屏幕截图。":::
     
     > [!NOTE]
-    > * 若要从规则中删除条件或操作，请使用特定条件或操作右侧的 "垃圾箱"。
+    > * 若要从规则中删除条件或操作，请使用特定条件或操作右侧的垃圾桶。
     > * 若要创建适用于所有传入流量的规则，请不要指定任何条件。
-    > * 若要在满足特定规则时停止计算剩余规则，请选中 " **停止计算剩余规则**"。 如果选中此选项，则不会执行规则集中的所有剩余规则，而不管是否满足匹配条件。  
+    > * 若要在满足某个特定规则后停止对其余规则进行评估，请选中“停止评估剩余规则”。 如果选中此选项，不论是否满足匹配条件，都不会执行规则集内的所有剩余规则。  
 
-1. 您可以通过使用箭头按钮在优先级较高或更低的情况下移动规则，来确定规则集中规则的优先级。 此列表按升序排序，因此最重要的规则排在第一位。
+1. 你可以使用箭头按钮更改规则集中各个规则的优先级，以降低或升高规则的优先级。 列表按升序排序，即最重要的规则列于最前面。
 
    :::image type="content" source="../media/how-to-configure-rule-set/front-door-rule-set-change-orders.png" alt-text="规则集优先级的屏幕截图。" lightbox="../media/how-to-configure-rule-set/front-door-rule-set-change-orders-expanded.png":::
 
-1. 创建一个或多个规则后，请选择 " **保存** " 以完成创建规则集。
+1. 创建一个或多个规则后，请选择“保存”以完成规则集的创建。
 
-1. 现在，将规则集关联到路由，使其生效。 你可以通过 "规则集" 页关联规则集，也可以通过 "终结点管理器" 创建关联。
+1. 现在，将规则集与路由关联，使其生效。 你可通过“规则集”页关联规则集，也可转到“Endpoint Manager”来创建关联。
  
-    **规则集页**： 
+    **“规则集”页**： 
     
     1. 选择要关联的规则集。
     
-    1. 选择未 *关联* 的链接。
+    1. 选择“未关联”链接。
      
 
-    1. 然后在 " **关联路由** " 页上，选择要与该规则集关联的终结点和路由。 
+    1. 然后在“关联路由”页中，选择要与该规则集关联的终结点和路由。 
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set.png" alt-text="创建路由页的屏幕截图。":::    
         
-    1. 如果所选路由下有多个规则集，请选择 " *下一步* " 以更改规则集顺序。 将从上到下执行规则集。 您可以通过选择规则集并将其上移或下移来更改顺序。 然后选择 " *关联*"。
+    1. 如果所选路由下有多个规则集，请选择“下一步”，更改规则集顺序。 系统将自上而下执行规则集。 选中规则集并将其上移或下移，即可更改顺序。 然后选择“关联”。
     
         > [!Note]
-        > 在此页上，只能将一个规则集与一个路由关联。 若要将规则集与多个路由关联，请使用终结点管理器。
+        > 在此页中，只能将一个规则集与一个路由关联。 若要将规则集与多个路由关联，请使用 Endpoint Manager。
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-2.png" alt-text="规则集顺序的屏幕截图。":::
     
-    1. 现在，规则集与路由关联。 您可以查看 "响应" 标头，并看到 "地理国家/地区已添加"。
+    1. 现在，规则集已与路由关联。 你可以查看响应头，并看到已添加 Geo-country。
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-3.png" alt-text="与路由关联的规则的屏幕截图。":::
 
-   **终结点管理器**： 
+   **Endpoint Manager**： 
     
-    1. 单击 "终结点管理器"，选择要与规则集关联的终结点。
+    1. 转到“Endpoint Manager”，选择要与规则集关联的终结点。
     
-        :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1.png" alt-text="终结点管理器中选择终结点的屏幕截图。" lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1-expanded.png":::
+        :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1.png" alt-text="在 Endpoint Manager 中选择终结点的屏幕截图。" lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1-expanded.png":::
 
-    1. 选择 " *编辑终结点*"。  
+    1. 选择“编辑终结点”。  
     
-        :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2.png" alt-text="在终结点管理器中选择 &quot;编辑终结点&quot; 的屏幕截图。" lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2-expanded.png":::
+        :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2.png" alt-text="在 Endpoint Manager 中选择“编辑终结点”的屏幕截图。" lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2-expanded.png":::
 
-    1. 选择路由。 
+    1. 选择“路由”。 
     
-         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-3.png" alt-text="选择路由的屏幕截图。":::
+         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-3.png" alt-text="选择“路由”的屏幕截图。":::
     
-    1. 在 " *更新路由* " 页上的 " *规则*" 中，从下拉列表中选择要与路由关联的规则集。 然后，可以通过移动规则集来更改订单。 
+    1. 在“更新路由”页的“规则”中，从下拉列表中选择要与路由关联的规则集 。 然后，可通过上移和下移规则集来更改顺序。 
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-4.png" alt-text="更新路由页的屏幕截图。":::
     
-    1. 然后选择 " *更新* " 或 " *添加* " 完成关联。
+    1. 然后选择“更新”或“添加”来完成关联 。
 
-## <a name="delete-a-rule-set-from-your-azure-front-door-profile"></a>从 Azure 前门配置文件中删除规则集
+## <a name="delete-a-rule-set-from-your-azure-front-door-profile"></a>从 Azure Front Door 配置文件中删除规则集
 
-在前面的步骤中，你配置了一个规则集，并将其关联到了你的路由。 如果不再需要将规则集关联到前门，可以通过完成以下步骤来删除规则集：
+在前述步骤中，你已配置规则集并将其关联到路由。 如果不再需要将规则集与 Front Door 关联，可完成以下步骤来删除规则集：
 
-1. 中转到 "**设置**" 下的 "**规则集" 页**，将规则集与所有关联的路由解除关联。
+1. 转到“规则集”页的“设置”下，将规则集与所有关联的路由解除关联 。
 
-1. 展开路由，选择三个点。 然后选择 *"编辑路由"*。
+1. 展开“路由”，选择三个点。 然后选择”编辑路由”。
 
-   :::image type="content" source="../media/how-to-configure-rule-set/front-door-disassociate-rule-set-1.png" alt-text="在规则集中展开路由的屏幕截图。":::
+   :::image type="content" source="../media/how-to-configure-rule-set/front-door-disassociate-rule-set-1.png" alt-text="规则集中展开的路由的屏幕截图。":::
 
-1. 在 "路由" 页上，选择 "规则" 部分，选择规则集，然后在 " *删除* " 按钮上选择。 
+1. 转到“路由”页的“规则”部分，选择规则集，然后选择“删除”按钮。 
 
-   :::image type="content" source="../media/how-to-configure-rule-set/front-door-disassociate-rule-set-2.png" alt-text="用于删除规则集的 &quot;更新路由&quot; 页的屏幕截图。" lightbox="../media/how-to-configure-rule-set/front-door-disassociate-rule-set-2-expanded.png":::
+   :::image type="content" source="../media/how-to-configure-rule-set/front-door-disassociate-rule-set-2.png" alt-text="要删除规则集的“更新路由”页的屏幕截图。" lightbox="../media/how-to-configure-rule-set/front-door-disassociate-rule-set-2-expanded.png":::
 
-1. 选择 " *更新* "，规则集将与路由解除关联。
+1. 选择“更新”，规则集随即将解除与路由的关联。
 
-1. 重复步骤2-5 以断开与此规则集关联的其他路由，直到看到 "路由状态 *" 显示为 "未关联"*。
+1. 重复步骤 2-5，将此规则集关联的其他路由解除关联，直到看到“路由状态”显示“未关联”。
 
-1. 对于未 *关联* 的规则集，可以通过单击右侧的三个点，然后选择 " *删除*" 来删除规则集。 
+1. 对于“未关联”的规则集，你可单击右侧的三个点并选择“删除”来删除该规则集 。 
 
    :::image type="content" source="../media/how-to-configure-rule-set/front-door-disassociate-rule-set-3.png" alt-text="如何删除规则集的屏幕截图。":::
 
@@ -121,4 +121,4 @@ ms.locfileid: "101715592"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何添加 [包含规则集的安全标头](how-to-add-security-headers.md)。
+了解如何使用规则集添加[安全性标头](how-to-add-security-headers.md)。

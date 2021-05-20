@@ -6,13 +6,13 @@ ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: fea189952b1452c680255ceb99e38609775a8bd6
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 541af6d0051d06de5721b22616fbf1e2867b71d6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502682"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833357"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>设置 Azure 应用服务访问限制
 
@@ -97,26 +97,25 @@ ms.locfileid: "102502682"
 > [!NOTE]
 > - 使用 IP 安全套接字层 (SSL) 虚拟 IP (VIP) 的 Web 应用当前不支持服务终结点。
 >
-#### <a name="set-a-service-tag-based-rule-preview"></a>设置基于服务标记的规则（预览版）
+#### <a name="set-a-service-tag-based-rule"></a>设置基于服务标记的规则
 
-* 在步骤 4 的“类型”下拉列表中，选择“服务标记(预览版)” 。
+* 在步骤 4 的“类型”下拉列表中，选择“服务标记”。
 
-   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png" alt-text="“添加限制”窗格的屏幕截图，其中“服务标记类型”处于选中状态。":::
+   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png?v2" alt-text="“添加限制”窗格的屏幕截图，其中“服务标记类型”处于选中状态。":::
 
 每个服务标记代表 Azure 服务中的 IP 范围列表。 这些服务的列表以及指向特定范围的链接可以在[服务标记文档][servicetags]中找到。
 
-在预览阶段，访问限制规则支持以下服务标记列表：
+访问限制规则支持所有可用服务标记。 为简单起见，只能通过 Azure 门户获得最常见标记的列表。 使用 Azure 资源管理器模板或脚本配置更高级的规则，如区域范围内的规则。 可以通过 Azure 门户获取以下标记：
+
 * ActionGroup
+* ApplicationInsightsAvailability
 * AzureCloud
 * AzureCognitiveSearch
-* AzureConnectors
 * AzureEventGrid
 * AzureFrontDoor.Backend
 * AzureMachineLearning
-* AzureSignalR
 * AzureTrafficManager
 * LogicApps
-* ServiceFabric
 
 ### <a name="edit-a-rule"></a>编辑规则
 
@@ -137,6 +136,31 @@ ms.locfileid: "102502682"
 
 ## <a name="access-restriction-advanced-scenarios"></a>访问限制高级方案
 以下各部分说明一些使用访问限制的高级方案。
+
+### <a name="filter-by-http-header"></a>按 http 标头筛选
+
+作为任何规则的一部分，你可以添加其他 http 标头筛选器。 支持以下 http 标头：
+* X-Forwarded-For
+* X-Forwarded-Host
+* X-Azure-FDID
+* X-FD-HealthProbe
+
+对于每个标头名称，最多可以添加 8 个以逗号分隔的值。 在规则本身之后评估 http 标头筛选器，并且必须满足两个条件才能应用规则。
+
+### <a name="multi-source-rules"></a>多源规则
+
+多源规则允许在单个规则中合并多达 8 个 IP 范围或 8 个服务标记。 如果你有 512 个以上的 IP 范围，或者想要创建将多个 IP 范围与单个 http 标头筛选器组合在一起的逻辑规则，则可以使用此项。
+
+多源规则定义方式与单源规则的定义方式相同，但每个范围用逗号分隔。
+
+PowerShell 示例：
+
+  ```azurepowershell-interactive
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Multi-source rule" -IpAddress "192.168.1.0/24,192.168.10.0/24,192.168.100.0/24" `
+    -Priority 100 -Action Allow
+  ```
+
 ### <a name="block-a-single-ip-address"></a>阻止单个 IP 地址
 
 添加第一个访问限制规则时，服务将添加优先级为 2147483647 的显式“全部拒绝”规则。 实际上，显式“全部拒绝”规则将是最后执行的规则，并将阻止访问未被“允许”规则明确允许的任何 IP 地址 。
@@ -151,17 +175,20 @@ ms.locfileid: "102502682"
 
 :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-scm-browse.png" alt-text="Azure 门户中“访问限制”页的屏幕截图，显示没有为 SCM 站点或应用设置访问限制。":::
 
-### <a name="restrict-access-to-a-specific-azure-front-door-instance-preview"></a>限制对特定 Azure Front Door 实例的访问（预览版）
-从 Azure Front Door 流向应用程序的流量始发自 AzureFrontDoor.Backend 服务标记中定义的一组已知 IP 范围。 使用服务标记限制规则，可以限制流量只能来自 Azure Front Door。 为确保流量仅来自特定实例，需要根据 Azure Front Door 发送的唯一 http 标头进一步筛选传入的请求。 在预览期间，可以使用 PowerShell 或 REST/ARM 实现此目的。 
+### <a name="restrict-access-to-a-specific-azure-front-door-instance"></a>限制对特定 Azure Front Door 实例的访问
+从 Azure Front Door 流向应用程序的流量始发自 AzureFrontDoor.Backend 服务标记中定义的一组已知 IP 范围。 使用服务标记限制规则，可以限制流量只能来自 Azure Front Door。 为确保流量仅来自特定实例，需要根据 Azure Front Door 发送的唯一 http 标头进一步筛选传入的请求。
 
-* PowerShell 示例（可以在 Azure 门户中找到 Front Door ID）：
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png?v2" alt-text="Azure 门户中的“访问限制”页的屏幕截图，显示如何添加 Azure Front Door 限制。":::
 
-   ```azurepowershell-interactive
-    $frontdoorId = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
-      -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
-      -HttpHeader @{'x-azure-fdid' = $frontdoorId}
-    ```
+PowerShell 示例：
+
+  ```azurepowershell-interactive
+  $afd = Get-AzFrontDoor -Name "MyFrontDoorInstanceName"
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
+    -HttpHeader @{'x-azure-fdid' = $afd.FrontDoorId}
+  ```
+
 ## <a name="manage-access-restriction-rules-programmatically"></a>以编程方式管理访问限制规则
 
 可通过以下任一方法以编程方式添加访问限制： 
@@ -181,7 +208,7 @@ ms.locfileid: "102502682"
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
    > [!NOTE]
-   > 使用服务标记、http 头或多源规则至少需要版本 5.1.0。 可以通过以下方式来验证已安装模块的版本：Get-InstalledModule -Name Az
+   > 使用服务标记、http 头或多源规则至少需要版本 5.7.0。 可以通过以下方式来验证已安装模块的版本：Get-InstalledModule -Name Az
 
 还可通过以下任一方法手动设置值：
 

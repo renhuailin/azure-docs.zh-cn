@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 4a95e7c74fac7043d0adb5f31d2bdcdd73b9577a
-ms.sourcegitcommit: 489ce69c0ff3f5188889ecfef5ffa76f7121e0d3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97766322"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions 中的自定义业务流程状态 (Azure Functions)
@@ -18,7 +18,7 @@ ms.locfileid: "97766322"
 ## <a name="sample-use-cases"></a>示例用例
 
 > [!NOTE]
-> 下面的示例演示如何在 c #、JavaScript 和 Python 中使用自定义状态功能。 C# 示例是针对 Durable Functions 2.x 编写的，与 Durable Functions 1.x 不兼容。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
+> 以下示例演示如何在 C#、JavaScript 和 Python 中使用自定义状态功能。 C# 示例是针对 Durable Functions 2.x 编写的，与 Durable Functions 1.x 不兼容。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
 ### <a name="visualize-progress"></a>显示进度
 
@@ -201,7 +201,7 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 ```
 
 > [!NOTE]
-> 在 Python 中， `custom_status` 将在计划下一个 or 操作时设置字段 `yield` `return` 。
+> 在 Python 中，在计划下一个 `yield` 或 `return` 操作时设置 `custom_status` 字段。
 
 ---
 

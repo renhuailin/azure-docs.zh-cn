@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
 ms.openlocfilehash: 3a678f6280b5f2d0fd372e75bfbeb6eb2e9b1577
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100634288"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>创建并使用活动异地复制 - Azure SQL 数据库
@@ -27,7 +27,7 @@ ms.locfileid: "100634288"
 > Azure SQL 托管实例不支持活动异地复制。 对于 SQL 托管实例的实例的地理故障转移，请使用[自动故障转移组](auto-failover-group-overview.md)。
 
 > [!NOTE]
-> 若要使用活动异地复制从 Azure 德国迁移 SQL 数据库，请参阅 [使用活动异地复制迁移 Sql 数据库](../../germany/germany-migration-databases.md#migrate-sql-database-using-active-geo-replication)。
+> 若要使用活动异地复制从 Azure 德国迁移 SQL 数据库，请参阅[使用活动异地复制迁移 SQL 数据库](../../germany/germany-migration-databases.md#migrate-sql-database-using-active-geo-replication)。
 
 活动异地复制旨在充当业务连续性解决方案，允许应用程序在发生区域性灾难或大规模中断时执行各个数据库的快速灾难恢复。 如果启用了异地复制，则应用程序可以向其他 Azure 区域中的辅助数据库启动故障转移。 在相同或不同的区域中最多支持四个辅助数据库，并且辅助数据库也可以用于只读访问查询。 故障转移必须由应用程序或用户手动启动。 故障转移后，新的主数据库具有不同的连接终结点。
 
@@ -86,7 +86,7 @@ ms.locfileid: "100634288"
 > 如果主数据库上有架构更新，则日志重播会在辅助数据库上延迟。 因为架构更新需要在辅助数据库上有架构锁。
 
 > [!IMPORTANT]
-> 可以使用异地复制在与主数据库相同的区域中创建辅助数据库。 可以使用此辅助数据库对同一区域中的只读工作负荷进行负载均衡。 但是，同一区域中的辅助数据库不能提供额外的故障恢复能力，因此不适合用作灾难恢复的故障转移目标。 它也不保证可用性区域的隔离。 使用具有 [区域冗余配置](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) 的业务关键或高级服务层，或常规用途服务层 [区域冗余配置](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) 来实现可用性区域隔离。
+> 可以使用异地复制在与主数据库相同的区域中创建辅助数据库。 可以使用此辅助数据库对同一区域中的只读工作负荷进行负载均衡。 但是，同一区域中的辅助数据库不能提供额外的故障恢复能力，因此不适合用作灾难恢复的故障转移目标。 它也不保证可用性区域隔离。 使用具有[区域冗余配置](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)的业务关键层或高级服务层或者常规用途服务层[区域冗余配置](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)来实现可用性区域隔离。
 >
 
 - **计划的故障转移**
@@ -129,29 +129,29 @@ ms.locfileid: "100634288"
 
 由于辅助数据库上的计算大小较小而在主数据库上进行的事务日志速率限制是使用 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等待类型报告的，可通过 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 数据库视图查看。
 
-默认情况下，辅助数据库的备份存储冗余与主数据库相同。 你可以选择使用不同的备份存储冗余配置辅助数据库。 备份始终在主数据库上执行。 如果使用不同的备份存储冗余配置辅助数据库，则在故障转移后，辅助数据库升级到主副本后，将根据新主 (上一个辅助) 上选择的存储冗余对备份进行计费。 
+默认情况下，辅助数据库的备份存储冗余与主数据库的备份存储冗余相同。 可以选择使用不同的备份存储冗余配置辅助数据库。 备份始终在主数据库上执行。 如果使用不同的备份存储冗余配置辅助数据库，则在故障转移后，当辅助数据库升级到主数据库时，将根据新的主数据库（上一个辅助数据库）上选择的存储冗余对备份进行计费。 
 
 > [!NOTE]
-> 主数据库上的事务日志速率也可能会因与辅助数据库上计算大小较小无关的原因而受限制。 即使辅助数据库上的计算大小等于或大于主数据库上的计算大小，也可能会发生这种限制。 有关详细信息（包括不同类型的日志速率限制的等待类型），请参阅 [事务日志速率管理](resource-limits-logical-server.md#transaction-log-rate-governance)。
+> 主数据库上的事务日志速率也可能会因与辅助数据库上计算大小较小无关的原因而受限制。 即使辅助数据库上的计算大小等于或大于主数据库上的计算大小，也可能会发生这种限制。 有关详细信息（包括不同类型的日志速率限制的等待类型），请参阅[事务日志速率调控](resource-limits-logical-server.md#transaction-log-rate-governance)。
 
 > [!NOTE]
-> Azure SQL 数据库可配置的备份存储冗余目前在巴西南部公共预览版中提供，并且仅在东南亚 Azure 区域公开发布。 使用本地冗余或区域冗余备份存储冗余创建源数据库时，不支持在不同的 Azure 区域中创建辅助数据库。 
+> Azure SQL 数据库可配置备份存储冗余目前在巴西南部提供公共预览版，且仅在 Azure 东南亚地区正式发布。 如果源数据库是使用本地冗余或区域冗余备份存储冗余创建的，则不支持在不同的 Azure 区域中创建辅助数据库。 
 
 有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层级](purchasing-models.md)。
 
 ## <a name="cross-subscription-geo-replication"></a>跨订阅异地复制
 
-若要在属于不同订阅的两个数据库之间设置活动异地复制 (是在同一租户下，还是不) ，则必须遵循本部分中所述的特殊步骤。  此过程基于 SQL 命令，要求：
+若要在属于不同订阅（是在同一租户下还是不在同一租户下）的两个数据库之间设置活动异地复制，必须执行本部分中所述的特殊过程。  此过程基于 SQL 命令，要求：
 
 - 在两个服务器上创建特权登录
-- 将 IP 地址添加到在两个服务器上执行更改的客户端允许列表， (如运行 SQL Server Management Studio) 的主机的 IP 地址。
+- 将 IP 地址添加到在两个服务器上执行更改的客户端的允许列表中（如运行 SQL Server Management Studio 的主机的 IP 地址）。
 
-执行更改的客户端需要对主服务器的网络访问。 尽管客户端的相同 IP 地址必须添加到辅助服务器上的允许列表中，但并不严格要求与辅助服务器建立网络连接。
+执行更改的客户端需要对主服务器进行网络访问。 尽管必须将客户端的相同 IP 地址添加到辅助服务器上的允许列表中，但并不严格要求与辅助服务器建立网络连接。
 
-### <a name="on-the-master-of-the-primary-server"></a>在主服务器的主服务器上
+### <a name="on-the-master-of-the-primary-server"></a>在主服务器的主数据库上
 
-1. 将 IP 地址添加到执行更改的客户端允许列表中 (有关详细信息，请参阅 [配置防火墙](firewall-configure.md)) 。
-1. 创建专用于设置活动异地复制 (的登录名，并根据需要调整凭据) ：
+1. 将 IP 地址添加到执行更改的客户端的允许列表中（有关详细信息，请参阅[配置防火墙](firewall-configure.md)）。
+1. 创建专用于设置活动异地复制的登录名（并根据需要调整凭据）：
 
    ```sql
    create login geodrsetup with password = 'ComplexPassword01'
@@ -170,7 +170,7 @@ ms.locfileid: "100634288"
    select sid from sys.sql_logins where name = 'geodrsetup'
    ```
 
-### <a name="on-the-source-database-on-the-primary-server"></a>在主服务器上的源数据库上
+### <a name="on-the-source-database-on-the-primary-server"></a>在主服务器的源数据库上
 
 1. 为同一个登录名创建一个用户：
 
@@ -184,9 +184,9 @@ ms.locfileid: "100634288"
    alter role db_owner add member geodrsetup
    ```
 
-### <a name="on-the-master-of-the-secondary-server"></a>辅助服务器的主服务器上
+### <a name="on-the-master-of-the-secondary-server"></a>在辅助服务器的主数据库上
 
-1. 将客户端 IP 地址添加到辅助服务器的 "防火墙规则" 下的 "允许" 列表中。 验证是否已将在主服务器上添加的客户端 IP 地址完全相同的客户端 IP 地址添加到辅助副本。 在运行 ALTER DATABASE ADD 辅助命令以启动异地复制之前，必须执行此步骤。
+1. 将客户端 IP 地址添加到辅助服务器的防火墙规则下的允许列表中。 验证已在主服务器上添加的完全相同的客户端 IP 地址是否也已添加到辅助服务器。 这是在运行 ALTER DATABASE ADD SECONDARY 命令以启动异地复制之前需要执行的步骤。
 
 1. 使用相同的用户名密码和 SID，在主服务器上创建相同的登录名：
 
@@ -201,10 +201,10 @@ ms.locfileid: "100634288"
    alter role dbmanager add member geodrsetup
    ```
 
-### <a name="on-the-master-of-the-primary-server"></a>在主服务器的主服务器上
+### <a name="on-the-master-of-the-primary-server"></a>在主服务器的主数据库上
 
-1. 使用新登录名登录到主服务器的主服务器。
-1. 在辅助服务器上创建源数据库的辅助副本 (根据需要调整数据库名称和 servername) ：
+1. 使用新登录名登录到主服务器的主数据库。
+1. 在辅助服务器上创建源数据库的辅助副本（根据需要调整数据库名称和服务器名称）：
 
    ```sql
    alter database dbrep add secondary on server <servername>

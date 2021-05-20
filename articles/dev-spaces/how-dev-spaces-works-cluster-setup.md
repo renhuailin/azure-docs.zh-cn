@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 描述如何为 Azure Dev Spaces 设置 Azure Kubernetes 服务群集
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 ms.openlocfilehash: 841e67b96e95aa251fa5bf1ef469b68de30f54d9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91972673"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>如何为 Azure Dev Spaces 设置群集
@@ -20,7 +20,7 @@ Azure Dev Spaces 为你提供了多种方法来快速循环访问和调试 Kuber
 
 ## <a name="prepare-your-aks-cluster"></a>准备 AKS 群集
 
-若要为 Dev Spaces 准备 AKS 群集，请验证 AKS 群集位于 [Azure Dev Spaces 支持的][supported-regions]区域中，并且你正在运行 Kubernetes 1.10.3 或更高版本。 可以通过运行从 Azure CLI 启用 Azure Dev Spaces `az aks use-dev-spaces` 。
+若要为 Dev Spaces 准备 AKS 群集，请验证 AKS 群集位于 [Azure Dev Spaces 支持的][supported-regions]区域中，并且你正在运行 Kubernetes 1.10.3 或更高版本。 可以通过运行 `az aks use-dev-spaces` 从 Azure CLI 启用 Azure Dev Spaces。
 
 在 AKS 群集上启用 Azure Dev Spaces 时，它将为群集安装控制器。 控制器位于 AKS 群集外部， 并且驱动客户端工具与 AKS 群集之间的行为和通信。 启用控制器后，你便可以使用客户端工具与控制器进行交互。
 

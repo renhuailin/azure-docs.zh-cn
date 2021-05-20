@@ -1,6 +1,6 @@
 ---
-title: Azure 前门：常见问题
-description: 本页提供有关 Azure 前门标准/高级版常见问题的解答。
+title: Azure Front Door：常见问题解答
+description: 本页提供有关 Azure Front Door 标准版/高级版的常见问题的解答。
 services: frontdoor
 author: duongau
 ms.service: frontdoor
@@ -9,101 +9,101 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
 ms.openlocfilehash: 6f6d71dec9726f009ab9a56e0a49ba21f5d218fd
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102181017"
 ---
-# <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure 前门标准/高级 (预览版常见问题解答) 
+# <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure Front Door 标准版/高级版（预览版）常见问题解答
 
-本文解答了有关 Azure 前门功能的常见问题。
+本文解答有关 Azure Front Door 特性和功能的常见问题。
 
 ## <a name="general"></a>常规
 
 ### <a name="what-is-azure-front-door"></a>什么是 Azure Front Door？
 
-Azure 前门是一种快速、可靠且安全的新式云 CDN，具有智能威胁防护。 它提供静态和动态内容加速、全局负载均衡，以及具有智能威胁防护功能的全局超大规模应用程序、Api、网站和云服务的增强安全性。
+Azure Front Door 是可提供智能威胁防护的快速、可靠且安全的新式云 CDN。 它为全球超大规模应用程序、API、网站和云服务提供静态和动态内容加速、全局负载均衡和增强的安全性，并具备智能威胁防护功能。
 
-### <a name="what-features-does-azure-front-door-support"></a>Azure 前门支持哪些功能？
+### <a name="what-features-does-azure-front-door-support"></a>Azure Front Door 支持哪些功能？
 
-Azure 前门支持：
+Azure Front Door 支持：
 
 * 静态内容和动态应用程序加速
 * TLS/SSL 卸载和端到端 TLS
 * Web 应用程序防火墙
 * 基于 Cookie 的会话关联
-* 基于 Url 路径的路由
-* 免费证书和多个域管理
+* 基于 URL 路径的路由
+* 免费证书和多域管理
 
-有关支持的功能的完整列表，请参阅 [Azure 前门概述](overview.md)。
+有关支持的功能的完整列表，请参阅 [Azure Front Door 概述](overview.md)。
 
-### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Azure 前门与 Azure 应用程序网关之间的区别是什么？
+### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Azure Front Door 和 Azure 应用程序网关有什么差别？
 
-尽管前门和应用程序网关是第7层 (HTTP/HTTPS) 负载均衡器，但主要差别在于，前门是一项全局服务。 应用程序网关是一种区域服务。 尽管前门可以在不同区域中的不同缩放单位/分类/戳记单元之间进行负载平衡，但应用程序网关允许在规模单位内的 Vm/容器之间进行负载平衡。
+Front Door 和应用程序网关都是第 7 层 (HTTP/HTTPS) 负载均衡器，两者的主要差别在于，Front Door 是全球性的服务。 应用程序网关是区域性的服务。 Front Door 可以在各区域中的不同缩放单元/群集/服务器组单元之间进行负载均衡，而应用程序网关可用于在缩放单元内部的 VM/容器之间进行负载均衡。
 
-### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>何时应在前门后部署应用程序网关？
+### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>何时应在 Front Door 后面部署应用程序网关？
 
-关键情况是应该使用应用程序网关的前端的情况如下：
+为何应在 Front Door 后面使用应用程序网关的重要原因是：
 
-* 前门只能在全局级别执行基于路径的负载均衡，但如果要在虚拟网络中进一步平衡流量 (VNET) ，则应使用应用程序网关。
-* 由于前门在 VM/容器级别不起作用，因此不能进行连接排出。 但是，应用程序网关允许进行连接排出。 
-* 使用前门之前的应用程序网关，可以实现100% 的 TLS/SSL 卸载并仅在其虚拟网络 (VNET) 中路由 HTTP 请求。
-* 前门和应用程序网关都支持会话相关性。 前门可以将来自用户会话的流量定向到给定区域中的同一群集或后端。 应用程序网关可以将流量定向到群集中的同一服务器。关联  
+* Front Door 只能在全球级别执行基于路径的负载均衡，但如果用户要在其虚拟网络 (VNET) 中进一步对流量进行负载均衡，则应使用应用程序网关。
+* 由于 Front Door 不是在 VM/容器级别工作，因此无法执行连接排出。 但是，应用程序网关可用于执行连接排出。 
+* 在 Front Door 后面使用应用程序网关，用户可以实现 100% 的 TLS/SSL 卸载，并仅在其虚拟网络 (VNET) 内部路由 HTTP 请求。
+* Front Door 和应用程序网关都支持会话亲和性。 Front Door 可将亲和后生成的流量从用户会话定向到给定区域中的相同群集或后端。 应用程序网关可将亲和的流量定向到群集中的相同服务器。  
 
-### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>是否可以在前门后部署 Azure 负载均衡器？
+### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>是否可以在 Front Door 后面部署 Azure 负载均衡器？
 
-Azure 前门需要公共 VIP 或公开提供的 DNS 名称才能将流量路由到。 在前门后部署 Azure 负载均衡器是一个常见的用例。
+Azure Front Door 需要一个可将流量路由到的公共 VIP 或公用 DNS 名称。 在 Front Door 后面部署 Azure 负载均衡器是一个常见用例。
 
-### <a name="what-protocols-does-azure-front-door-support"></a>Azure 前门支持哪些协议？
+### <a name="what-protocols-does-azure-front-door-support"></a>Azure Front Door 支持哪些协议？
 
-Azure 前门支持 HTTP、HTTPS 和 HTTP/2。
+Azure Front Door 支持 HTTP、HTTPS 和 HTTP/2。
 
-### <a name="how-does-azure-front-door-support-http2"></a>Azure 前门如何支持 HTTP/2？
+### <a name="how-does-azure-front-door-support-http2"></a>Azure Front Door 如何支持 HTTP/2？
 
-HTTP/2 协议支持仅适用于连接到 Azure 前门的客户端。 与后端池中后端的通信通过 HTTP/1.1 进行。 默认情况下，启用 HTTP/2 支持。
+HTTP/2 协议支持仅适用于连接到 Azure Front Door 的客户端。 与后端池中后端的通信是通过 HTTP/1.1 进行的。 默认已启用 HTTP/2 支持。
 
-### <a name="what-resources-are-supported-today-as-part-of-origin-group"></a>目前支持哪些资源作为源组的一部分？
+### <a name="what-resources-are-supported-today-as-part-of-origin-group"></a>目前支持将哪些资源用作源组的一部分？
 
-源组可以包含存储、Web 应用、Kubernetes 实例或具有公共连接的任何其他自定义主机名。 Azure 前门要求源通过公共 IP 或可公开解析的 DNS 主机名进行定义。 源组的成员可以跨区域、区域甚至在 Azure 外部，前提是它们具有公用连接。
+源组可以由存储、Web 应用、Kubernetes 实例或者已建立公共连接的任何其他自定义主机名组成。 Azure Front Door 要求通过公共 IP 或可公开解析的 DNS 主机名定义源。 源组的成员可以跨局部区域、地理区域，甚至在 Azure 外部，前提是它们已建立公共连接。
 
 ### <a name="what-regions-is-the-service-available-in"></a>该服务已在哪些区域推出？
 
-Azure 前门是一种全球服务，并不受限于任何特定的 Azure 区域。 为资源组创建前门时需要指定的唯一位置。 此位置本质上指定了将存储资源组元数据的位置。 前门资源本身作为全局资源创建，并将配置全局部署到所有 Pop (点) 。 
+Azure Front Door 是一个全球性的服务，并不局限于任何特定的 Azure 区域。 在创建 Front Door 时唯一需要指定的位置是资源组的位置。 该位置在本质上是指定资源组元数据要存储到的位置。 Front Door 资源本身是作为全局资源创建的，其配置将全局部署到所有 POP（接入点）。 
 
-### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure 前门的 POP 位置有哪些？
+### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure Front Door 的 POP 位置有哪些？
 
-Azure 前门与 Microsoft 中的 Azure CDN 具有相同的 POP (点列表) 位置。 有关 Pop 的完整列表，请参阅 [Microsoft AZURE CDN pop 位置](../../cdn/cdn-pop-locations.md)。
+Azure Front Door 的 POP（接入点）位置与 Microsoft 的 Azure CDN 相同。 有关 POP 的完整列表，请参阅 [Microsoft 的 Azure CDN POP 位置](../../cdn/cdn-pop-locations.md)。
 
-### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure 前门是应用的专用部署，还是在客户之间共享？
+### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure Front Door 是应用程序的专用部署还是在客户之间共享？
 
-Azure 前门是全球分布的多租户服务。 前门的基础结构在其所有客户之间共享。 通过创建前门配置文件，可以定义应用程序所需的特定配置。 对前门所做的更改不会影响其他前门配置。
+Azure Front Door 是全球分布式多租户服务。 Front Door 的基础结构在其所有客户之间共享。 创建 Front Door 配置文件可以定义应用程序所需的特定配置。 对你的 Front Door 所做的更改不会影响其他 Front Door 配置。
 
 ### <a name="is-http-https-redirection-supported"></a>是否支持 HTTP 到 HTTPS 的重定向？
 
-是的。 事实上，Azure 前门支持主机、路径、查询字符串重定向和 URL 重定向的一部分。 了解有关 [URL 重定向](concept-rule-set-url-redirect-and-rewrite.md)的详细信息。 
+是。 事实上，Azure Front Door 支持主机、路径、查询字符串重定向，以及一部分 URL 重定向。 详细了解 [URL 重定向](concept-rule-set-url-redirect-and-rewrite.md)。 
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>如何实现锁定对我的后端的访问仅限于 Azure 前门？
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>如何锁定为仅限通过 Azure Front Door 访问我的后端？
 
-锁定应用程序以仅接受来自特定前门实例的流量的最佳方式是通过私有终结点发布应用程序。 前门与应用程序之间的网络流量通过 VNet 和 Microsoft 主干网络上的专用链接进行遍历，从而消除了公共 internet 的泄露。
+将应用程序锁定为仅接受来自特定 Front Door 实例的流量的最佳方式是通过专用终结点发布应用程序。 Front Door 与应用程序之间的网络流量通过 VNet 和 Microsoft 主干网络上的专用链接进行传输，避免暴露给公共 Internet。
 
-了解有关 [带专用链接的前门的保护源](concept-private-link.md)的详细信息。  
+详细了解如何[使用专用链接保护 Front Door 的源](concept-private-link.md)。  
 
-锁定应用程序的另一种方法是仅接受来自特定前门的流量，需要为后端设置 IP Acl。 然后将后端的流量限制为前门发送的标头 "FDID" 的特定值。 下面详细说明了这些步骤：
+将应用程序锁定为仅接受来自特定 Front Door 的流量的替代方式是为后端设置 IP ACL。 然后，使用 Front Door 发送的“X-Azure-FDID”头的特定值限制后端流量。 下面详细说明了这些步骤：
 
-* 为后端配置 IP Acl，以接受来自 Azure 前门的后端 IP 地址空间和 Azure 的基础结构服务的流量。 有关 Acl 后端的信息，请参阅以下 IP 详细信息：
+* 为后端配置 IP ACL，以仅接受来自 Azure Front Door 后端 IP 地址空间和 Azure 基础结构服务的流量。 有关为后端配置 ACL 的信息，请参阅以下 IP 详细信息：
  
-    * 请参阅 [AZURE IP 范围](https://www.microsoft.com/download/details.aspx?id=56519)中的 *AzureFrontDoor* ，以及前门的 IPv4 后端 IP 地址范围的服务标记。 你还可以使用 [网络安全组](../../virtual-network/network-security-groups-overview.md#security-rules)中的服务标记 *AzureFrontDoor* 。
-    * Azure 的 [基本基础结构服务](../../virtual-network/network-security-groups-overview.md#azure-platform-considerations) ，通过虚拟化主机 IP 地址： `168.63.129.16` 和 `169.254.169.254` 。
+    * 有关 Front Door 的 IPv4 后端 IP 地址范围，参阅 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)中的“AzureFrontDoor.Backend”部分。 还可以在[网络安全组](../../virtual-network/network-security-groups-overview.md#security-rules)中使用服务标记 AzureFrontDoor.Backend。
+    * 通过虚拟化主机 IP 地址 `168.63.129.16` 和 `169.254.169.254` 配置 Azure 的[基本基础结构服务](../../virtual-network/network-security-groups-overview.md#azure-platform-considerations)。
 
     > [!WARNING]
-    > 前端的后端 IP 空间可能会更改，但在此之前，我们将确保我们已与 [AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)集成。 建议订阅 [AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519) 以进行任何更改或更新。
+    > Front Door 的后端 IP 空间今后可能会更改，但在此之前，我们会确保与 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)相集成。 我们建议你订阅 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，以随时了解任何更改或更新。
 
-* 使用 API 版本或更高版本在前门上执行 GET 操作 `2020-01-01` 。 在 API 调用中，查找 " `frontdoorID` 字段"。 筛选由前门发送到后端的传入标头 "**X-FDID**"，其值为 "字段" `frontdoorID` 。 你还可以 `Front Door ID` 在前门门户页面的 "概述" 部分下找到值。 
+* 使用 API `2020-01-01` 或更高版本在 Front Door 上执行 GET 操作。 在 API 调用中查看 `frontdoorID` 字段。 根据 Front Door 发送到后端的、包含 `frontdoorID` 字段值的传入头“X-Azure-FDID”进行筛选。 还可以在 Front Door 门户页的“概述”部分下找到 `Front Door ID` 值。 
 
-* 应用后端 web 服务器中的规则筛选，基于生成的 "FDID" 标头值限制流量。
+* 在后端 Web 服务器中应用规则筛选，以基于生成的“X-Azure-FDID”头值限制流量。
 
-  下面是 [Microsoft Internet Information Services (IIS) ](https://www.iis.net/)的示例：
+  下面是 [Microsoft Internet Information Services (IIS)](https://www.iis.net/) 的示例：
 
     ``` xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -124,80 +124,80 @@ Azure 前门是全球分布的多租户服务。 前门的基础结构在其所�
     </configuration>
     ```
 
-### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>可播 IP 是否可以在前端的生存期内更改？
+### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>任意播 IP 在 Front Door 的生存期内是否可能更改？
 
-前门的前端任意播 IP 通常不会更改，并且可能会在前门的生存期内保持静态。 但是， **不保证** 相同。 请不要对 IP 进行任何直接依赖。
+Front Door 的前端任意播 IP 通常不会更改，在 Front Door 的生存期内可能保持静态。 但是，我们不能保证这一点。 敬请不要对 IP 有任何直接依赖。
 
-### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Azure 前门是否支持静态或专用 Ip？
+### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Azure Front Door 是否支持静态或专用 IP？
 
-不，Azure 前门目前不支持静态或专用前端任意播 Ip。 
+否，Azure Front Door 目前不支持静态或专用前端任意播 IP。 
 
-### <a name="does-azure-front-door-support-x-forwarded-for-headers"></a>Azure 前门是否支持 x 转发的标头？
+### <a name="does-azure-front-door-support-x-forwarded-for-headers"></a>Azure Front Door 是否支持 x-forwarded-for 头？
 
-是的，Azure 前门支持 X 转发的、X 转发的主机和 X 转发的标头。 对于 X 转发-如果标头已存在，则前门会将客户端套接字 IP 追加到该标头。 否则，会添加标头，其中包含客户端套接字 IP 作为值。 对于 X 转发主机和 X-正向-Proto，该值将被重写。  
+是，Azure Front Door 支持 X-Forwarded-For、X-Forwarded-Host 和 X-Forwarded-Proto 头。 对于 X-Forwarded-For，如果该头已存在，则 Front Door 会将客户端套接字 IP 追加到其中。 否则，它会添加该头，并在其中包含客户端套接字 IP 作为值。 对于 X-Forwarded-Host 和 X-Forwarded-Proto，将替代值。  
 
-### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>部署 Azure 前门需要多长时间？ 更新时，前门是否仍然有效？
+### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>部署 Azure Front Door 需要多长时间？ 更新 Front Door 时，它是否仍可正常工作？
 
-对于全球部署，新的前门创建或对现有前门的任何更新大约需要3到5分钟。 这意味着，在大约3到5分钟内，你的前门配置将在整个所有 Pop 中进行部署。
+对于全局部署，创建新的 Front Door 或者对现有 Front Door 进行任何更新大约需要 3 到 5 分钟。 这意味着，在大约 3 到 5 分钟后，Front Door 配置将会全局部署到所有 POP 中。
 
-注意-自定义 TLS/SSL 证书更新需要在全球部署大约30分钟。
+注意 - 全局部署自定义 TLS/SSL 证书更新需要大约 30 分钟。
 
-路由或后端池的任何更新都是无缝的，如果新配置是正确的) ，将导致零停机 (。 证书更新不会导致任何中断，除非你要从 "管理的 Azure 前门" 切换到 "使用你自己的证书" 或其他方法。
+对路由或后端池的任何更新是无缝的，完全不会导致停机（如果新配置正确）。 除非你从“Azure Front Door 托管”切换到“使用自己的证书”或采用其他方法，否则证书更新不会导致任何服务中断。
 
 
 ## <a name="configuration"></a>配置
 
-### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure 前门是否可以在虚拟网络中对流量进行负载均衡或路由
+### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure Front Door 是否可以对虚拟网络内部的流量进行负载均衡或路由？
 
-Azure 前门 (AFD) 需要公共 IP 或可公开解析的 DNS 名称来路由流量。 Azure 前门无法直接路由到虚拟网络中的资源。 可以使用应用程序网关或带有公共 IP 的 Azure 负载均衡器来解决此问题。
+Azure Front Door (AFD) 需要通过一个公共 IP 或可公开解析的 DNS 名称来路由流量。 Azure Front Door 无法直接路由到虚拟网络中的资源。 可以使用具有公共 IP 的应用程序网关或 Azure 负载均衡器来解决此问题。
 
-### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure 前门有哪些不同的超时和限制？
+### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure Front Door 有哪些超时设置和限制？
 
-了解 Azure 前门的所有已记录的 [超时和限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits)。
+了解文档中所述的所有 [Azure Front Door 的超时和限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits)。
 
-### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>将规则添加到前门规则引擎后，规则需要多长时间？
+### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>将某个规则添加到 Front Door 规则引擎后，该规则在多久后生效？
 
-规则引擎配置需要大约10到15分钟的时间来完成更新。 当更新完成后，你可能会希望该规则生效。 
+规则引擎配置需要大约 10 到 15 分钟时间来完成更新。 更新完成后，规则应该就会立即生效。 
 
-### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-front-door-behind-my-azure-cdn"></a>是否可以在我的 Azure CDN 后配置前门配置文件或前门后 Azure CDN？
+### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-front-door-behind-my-azure-cdn"></a>是否可以在 Front Door 配置文件后面配置 Azure CDN，或者在 Azure CDN 后面配置 Front Door？
 
-Azure 前门和 Azure CDN 无法一起配置，因为在响应请求时，两个服务使用相同的 Azure 边缘站点。 
+不能同时配置 Azure Front Door 和 Azure CDN，因为这两个服务在响应请求时使用相同的 Azure 边缘站点。 
 
 ## <a name="performance"></a>性能
 
-### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Azure 前门如何支持高可用性和可伸缩性？
+### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Azure Front Door 如何支持高可用性和可伸缩性？
 
-Azure 前门是全球分布的多租户平台，具有巨大的容量，可满足应用程序的可伸缩性需求。 从 Microsoft 全球网络的边缘提供，前门提供全局负载平衡功能，使你可以故障转移整个应用程序甚至跨区域或不同云的单个微服务。
+Azure Front Door 是全球分布式多租户平台，具有巨大的容量，可满足应用程序的可伸缩性需求。 Front Door 部署在 Microsoft 全球网络的边缘，提供全局负载均衡功能，可让你跨区域或不同的云故障转移整个应用程序甚至单个微服务。
 
 ## <a name="tls-configuration"></a>TLS 配置
 
-### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Azure 前门支持哪些 TLS 版本？
+### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Azure Front Door 支持哪些 TLS 版本？
 
-2019年9月之后创建的所有前门配置文件都使用 TLS 1.2 作为默认的最小值。
+在 2019 年 9 月之后创建的所有 Front Door 配置文件使用 TLS 1.2 作为默认的最低版本。
 
-前门支持 TLS 版本1.0、1.1 和1.2。 目前尚不支持 TLS 1.3。
+Front Door 支持 TLS 版本 1.0、1.1 和 1.2。 目前尚不支持 TLS 1.3。
 
-### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure 前门支持哪些证书？
+### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure Front Door 支持哪些证书？
 
-若要在前端自定义域上启用 HTTPS 协议，可以选择由 Azure 前门管理的证书，也可以使用自己的证书。
-前门托管选项通过 Digicert 预配标准的 TLS/SSL 证书，并将其存储在前门的 Key Vault 中。 如果选择使用你自己的证书，则可以从受支持的 CA 载入证书，并且可以是标准 TLS、扩展验证证书，甚至是通配符证书。 不支持自签名证书。
+若要在 Front Door 自定义域上启用 HTTPS 协议，可以选择由 Azure Front Door 管理的证书，或使用自己的证书。
+Front Door 托管选项通过 Digicert 预配标准的 TLS/SSL 证书，并将其存储在 Front Door 的密钥保管库中。 如果你选择使用自己的证书，则可以从支持的 CA 加入证书，该证书可以是标准 TLS、扩展的验证证书，甚至通配符证书。 不支持自签名证书。
 
-### <a name="does-front-door-support-autorotation-of-certificates"></a>前门是否支持证书 autorotation？
+### <a name="does-front-door-support-autorotation-of-certificates"></a>Front Door 是否支持自动轮换证书？
 
-对于前门托管证书选项，证书是由前门 autorotated 的。 如果你使用的是前门托管证书，并发现证书到期日期小于60天，请提交支持票证。
+使用 Front Door 托管证书选项时，Front Door 会自动轮换证书。 如果你使用 Front Door 托管的证书并发现证书过期日期少于 60 天，请提交支持票证。
 
-对于自定义的 TLS/SSL 证书，不支持 autorotation。 与第一次为给定自定义域设置的方式类似，需要将前门指向 Key Vault 中正确的证书版本。 确保前门的服务主体仍有权访问 Key Vault。 此更新后的证书推出操作不会导致任何生产停止时间，前提是证书的使用者名称或 SAN 不会更改。
+使用你自己的自定义 TLS/SSL 证书时，不支持自动轮换。 与首次设置给定的自定义域时一样，需要将 Front Door 指向密钥保管库中的正确证书版本。 确保 Front Door 的服务主体仍有权访问密钥保管库。 只要证书的使用者名称或 SAN 不会更改，Front Door 执行的这项已更新的证书推出操作就不会在生产过程中造成任何停机时间。
 
-### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure 前门支持哪些当前密码套件？
+### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure Front Door 支持哪些最新的加密套件？
 
-对于 TLS 1.2，支持以下密码套件： 
+对于 TLS1.2，支持的加密套件如下： 
 
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 
-使用启用了 TLS 1.0/1.1 的自定义域时，支持以下密码套件：
+在启用 TLS1.0/1.1 的情况下使用自定义域时，支持以下加密套件：
 
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -220,59 +220,59 @@ Azure 前门是全球分布的多租户平台，具有巨大的容量，可满�
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>能否配置 TLS 策略来控制 TLS 协议版本？
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>是否可以配置 TLS 策略来控制 TLS 协议版本？
 
-你可以使用 Azure 门户或 [azure REST API](/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)在 azure 前门中配置最小 TLS 版本。 目前，可以在1.0 和1.2 之间进行选择。
+可以使用 Azure 门户或 [Azure REST API](/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion) 在自定义域 HTTPS 设置中配置 Azure Front Door 中的最低 TLS 版本。 目前可以在 1.0 和 1.2 之间进行选择。
 
-### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>是否可以将前门配置为仅支持特定密码套件？
+### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>是否可以将 Front Door 配置为仅支持特定的加密套件？
 
-否，不支持配置特定密码套件的前门。 你可以从证书颁发机构获取自定义的 TLS/SSL 证书， (例如 Verisign、Entrust 或 Digicert) 。 然后，在生成证书时对其标记特定密码套件。 
+否，不支持将 Front Door 配置为使用特定的加密套件。 你可以从证书颁发机构（例如 Verisign、Entrust 或 Digicert）获取自己的自定义 TLS/SSL 证书。 然后在生成证书时，在证书中标记特定的加密套件。 
 
-### <a name="does-front-door-support-ocsp-stapling"></a>前门是否支持 OCSP 装订？
+### <a name="does-front-door-support-ocsp-stapling"></a>Front Door 是否支持 OCSP 装订？
 
-是的，前端默认支持 OCSP 装订，无需进行任何配置。
+是，默认情况下，Front Door 无需经过任何配置即可支持 OCSP 装订。
 
-### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure 前门是否还支持向后端重新加密流量？
+### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure Front Door 是否也支持重新加密发往后端的流量？
 
-是的，Azure 前门支持 TLS/SSL 卸载和端到端 TLS，这会将流量重新加密到后端。 由于连接到后端是通过公共 IP 进行的，因此建议您将前门配置为使用 HTTPS 作为转发协议。
+是的，Azure Front Door 支持 TLS/SSL 卸载和端到端 TLS，这会重新加密发往后端的流量。 由于与后端的连接是通过公共 IP 进行的，因此建议你将 Front Door 配置为使用 HTTPS 作为转发协议。
 
-### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>前门是否支持 HTTPS 连接的后端上的自签名证书？
+### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Front Door 是否支持在后端上使用自签名证书进行 HTTPS 连接？
 
-不支持，在前门上不支持自签名证书，并且此限制适用于这两种证书：
+否，Front Door 不支持自签名证书，此项限制适用于以下两者：
 
-* **后端**：如果要将流量转发为 HTTPS 或 https 运行状况探测，或为启用了缓存的路由规则填充源缓存，则无法使用自签名证书。
-* **前端**：使用自定义的 TLS/SSL 证书时，不能使用自签名证书在自定义域上启用 HTTPS。
+* 后端：将流量作为 HTTPS 或 HTTPS 运行状况探测转发时，或者在启用缓存的情况下为路由规则的来源填充缓存时，不能使用自签名证书。
+* 前端：使用自己的自定义 TLS/SSL 证书在自定义域上启用 HTTPS 时，时，不能使用自签名证书。
 
-### <a name="why-is-https-traffic-to-my-backend-failing"></a>为什么 HTTPS 到后端的通信失败？
+### <a name="why-is-https-traffic-to-my-backend-failing"></a>发送到后端的 HTTPS 流量为何失败？
 
-若要使 HTTPS 与后端的 HTTPS 连接成功，无论是针对运行状况探测还是转发请求，可能有两个原因导致 HTTPS 通信失败：
+与后端成功建立 HTTPS 连接（不管是出于转发运行状况探测还是转发请求的目的）后，有两个可能的原因会导致 HTTPS 流量失败：
 
-* **证书使用者名称不匹配**：对于 HTTPS 连接，前门要求后端从有效 CA 提供证书，该证书的使用者名称 (s) 与后端主机名匹配。 例如，如果后端主机名设置为 `myapp-centralus.contosonews.net` ，并且你后端在 TLS 握手期间提供的证书不具有 `myapp-centralus.contosonews.net` 或 `*myapp-centralus*.contosonews.net` 。 然后，前门将拒绝连接，并导致错误。 
-    * **解决** 方法：不建议从合规性角度来解决此错误，只需对前门禁用证书使用者名称检查即可。 可以在 "设置" 下的 "Azure 门户" 和 "API 中的 BackendPoolsSettings" 下找到此选项。
-* **后端托管证书来自无效 CA**：只有 [有效证书颁发机构](troubleshoot-allowed-certificate-authority.md) 提供的证书才能在前门上用于前门。 不允许来自内部 Ca 或自签名证书的证书。
+* 证书使用者名称不匹配：对于 HTTPS 连接，Front Door 预期后端会出示来自有效 CA 的证书，该证书中的使用者名称与后端主机名匹配。 例如，如果后端主机名设置为 `myapp-centralus.contosonews.net`，而后端在 TLS 握手期间出示的证书的使用者名称不包含 `myapp-centralus.contosonews.net` 或 `*myapp-centralus*.contosonews.net`。 那么，Front Door 将拒绝连接并生成错误。 
+    * 解决方法：对 Front Door 禁用证书使用者名称检查可以解决此错误，不过，从合规的角度讲，我们不建议这样做。 可以在 Azure 门户中的“设置”下以及在 API 中的“BackendPoolsSettings”下找到此选项。
+* 后端宿主证书来自无效的 CA：在包含 Front Door 的后端上只能使用来自[有效证书颁发机构](troubleshoot-allowed-certificate-authority.md)的证书。 不允许来自内部 CA 的证书或自签名证书。
 
-### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>能否对 Azure 前门使用客户端/相互身份验证？
+### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>是否可以对 Azure Front Door 使用客户端/相互身份验证？
 
-否。 尽管 Azure 前门支持 TLS 1.2，后者引入了 [RFC 5246](https://tools.ietf.org/html/rfc5246)中的客户端/相互身份验证，但目前，azure 前门不支持客户端/相互身份验证。
+不知道。 尽管 Azure Front Door 支持 [RFC 5246](https://tools.ietf.org/html/rfc5246) 中的 TLS 1.2（引入了客户端/相互身份验证），但目前 Azure Front Door 并不支持客户端/相互身份验证。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 
-### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door"></a>Azure 前门提供哪些类型的指标和日志？
+### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door"></a>Azure Front Door 提供哪些类型的指标和日志？
 
-有关日志和其他诊断功能的信息，请参阅为前门监视指标和日志。
+有关日志和其他诊断功能的信息，请参阅“监视 Front Door 的指标和日志”。
 
 ### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>什么是诊断日志的保留策略？
 
-诊断日志将发往客户存储帐户，客户可以根据偏好设置保留策略。 此外，可将诊断日志发送到事件中心或 Azure Monitor 日志。 有关详细信息，请参阅 [Azure 前门日志记录](how-to-logs.md)。
+诊断日志将发往客户存储帐户，客户可以根据偏好设置保留策略。 此外，可将诊断日志发送到事件中心或 Azure Monitor 日志。 有关详细信息，请参阅 [Azure Front Door 日志记录](how-to-logs.md)。
 
-### <a name="how-do-i-get-audit-logs-for-azure-front-door"></a>如何实现获取 Azure 前门的审核日志？
+### <a name="how-do-i-get-audit-logs-for-azure-front-door"></a>如何获取 Azure Front Door 的审核日志？
 
-审核日志适用于 Azure 前门。 在门户中，在前门的菜单页中选择 " **活动日志** "，以访问审核日志。 
+为 Azure Front Door 提供了审核日志。 在门户中，在 Front Door 的菜单页中选择“活动日志”即可访问审核日志。 
 
-### <a name="can-i-set-alerts-with-azure-front-door"></a>能否通过 Azure 前门设置警报？
+### <a name="can-i-set-alerts-with-azure-front-door"></a>是否可对 Azure Front Door 设置警报？
 
-是，Azure 前门支持警报。 警报是针对指标配置的。 
+是，Azure Front Door 支持警报。 警报是针对指标配置的。 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何 [创建前门标准/高级版](create-front-door-portal.md)。
+了解如何[创建 Front Door 标准版/高级版](create-front-door-portal.md)。

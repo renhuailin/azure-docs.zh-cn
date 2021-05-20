@@ -6,15 +6,15 @@ ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 0b79fa22d3203504e63161aba03b32830d74d016
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93131269"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>从“更改跟踪和清单”中删除 VM
 
-跟踪环境中 Vm 的更改后，可以停止通过 [更改跟踪和清单](overview.md) 功能对它们进行管理。 若要停止管理 VM，需在关联到自动化帐户的 Log Analytics 工作区中编辑已保存的搜索查询 `MicrosoftDefaultComputerGroup`。
+完成对环境中 VM 更改的跟踪后，可以停止使用[更改跟踪和清单](overview.md)功能来管理它们。 若要停止管理 VM，需在关联到自动化帐户的 Log Analytics 工作区中编辑已保存的搜索查询 `MicrosoftDefaultComputerGroup`。
 
 ## <a name="sign-into-the-azure-portal"></a>登录到 Azure 门户
 
@@ -22,7 +22,7 @@ ms.locfileid: "93131269"
 
 ## <a name="to-remove-your-vms"></a>删除 VM
 
-1. 在 Azure 门户中，从 Azure 门户的顶部导航开始 **Cloud Shell** 。 如果不熟悉 Azure Cloud Shell，请参阅 [Azure Cloud Shell 概述](../../cloud-shell/overview.md)。
+1. 在 Azure 门户中，从 Azure 门户的顶部导航栏启动 Cloud Shell。 如果不熟悉 Azure Cloud Shell，请参阅 [Azure Cloud Shell 概述](../../cloud-shell/overview.md)。
 
 2. 使用以下命令识别希望从管理中删除的计算机的 UUID。
 
@@ -45,4 +45,4 @@ ms.locfileid: "93131269"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要重新启用此功能，请参阅 [从自动化帐户启用更改跟踪和清单](enable-from-automation-account.md)， [通过浏览 Azure 门户启用更改跟踪和清单](enable-from-portal.md)， [启用从 runbook 进行更改跟踪和清点](enable-from-runbook.md)，或者 [从 Azure VM 启用更改跟踪和清单](enable-from-vm.md)。
+要重新启用此功能，请参阅[从自动化帐户启用更改跟踪和清单](enable-from-automation-account.md)、[通过浏览 Azure 门户启用更改跟踪和清单](enable-from-portal.md)、[从 runbook 启用更改跟踪和清单](enable-from-runbook.md)或者[从 Azure VM 启用更改跟踪和清单](enable-from-vm.md)。

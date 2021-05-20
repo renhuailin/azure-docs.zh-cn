@@ -1,5 +1,5 @@
 ---
-title: 配置企业 Azure AD 应用的角色声明 |Microsoft
+title: 为企业 Azure AD 应用配置角色声明 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何在 Azure Active Directory 中为企业应用程序配置 SAML 令牌中颁发的角色声明
 services: active-directory
@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 02/15/2021
 ms.author: jeedes
 ms.openlocfilehash: 3c1b4b3d57bdce4a66adb35717f46d8989ee2453
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101648809"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
@@ -29,11 +29,11 @@ ms.locfileid: "101648809"
 - 启用了单一登录 (SSO) 的订阅。 必须使用应用程序配置 SSO。
 
 > [!NOTE]
-> 本文介绍如何在 Azure AD 中使用 Api 在服务主体上创建/更新/删除应用程序角色。 如果要使用应用角色的新用户界面，请在 [此处](./howto-add-app-roles-in-azure-ad-apps.md)查看详细信息。
+> 本文介绍了如何在 Azure AD 中使用 API 在服务主体上创建/更新/删除应用程序角色。 如果要使用应用角色的新用户界面，请在[此处](./howto-add-app-roles-in-azure-ad-apps.md)查看详细信息。
 
 ## <a name="when-to-use-this-feature"></a>何时使用此功能
 
-如果你的应用程序需要 Azure AD 返回的 SAML 响应中的自定义角色，请使用此功能。 您可以根据需要创建任意数量的角色。
+如果你的应用程序需要 Azure AD 返回的 SAML 响应中的自定义角色，请使用此功能。 可以根据需要创建任意多个角色。
 
 ## <a name="create-roles-for-an-application"></a>为应用程序创建角色
 
@@ -57,7 +57,7 @@ ms.locfileid: "101648809"
 
     ![“属性”页](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. 在另一个窗口中打开 [Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer) ，然后执行以下步骤：
+6. 在另一个窗口中打开 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)，然后执行以下步骤：
 
     1. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
@@ -88,7 +88,7 @@ ms.locfileid: "101648809"
 
         ![用于获取需修改的服务主体的查询](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    1. 从服务主体对象中提取 **appRoles** 属性。
+    1. 从服务主体对象提取 **appRoles** 属性。
 
         ![appRoles 属性的详细信息](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "101648809"
 
         ![包含成功消息的修补操作](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
 
-1. 在使用更多角色修补服务主体后，可以将用户分配到相应的角色。 若要分配用户，可先转到门户，然后浏览到应用程序。 选择 " **用户和组** " 选项卡。此选项卡列出了已分配给该应用的所有用户和组。 可以在新角色上添加新用户。 还可以选择现有用户，然后再选择“编辑”来更改角色。
+1. 在使用更多角色修补服务主体后，可以将用户分配到相应的角色。 若要分配用户，可先转到门户，然后浏览到应用程序。 选择“用户和组”选项卡。此选项卡会列出已分配到应用的所有用户和组。 可以在新角色上添加新用户。 还可以选择现有用户，然后再选择“编辑”来更改角色。
 
     ![“用户和组”选项卡](./media/active-directory-enterprise-app-role-management/graph-explorer-new5.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "101648809"
     ![“编辑分配”窗格和“选择角色”窗格](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
     
-    刷新 Azure 门户中的会话，以查看新角色。
+    在 Azure 门户中刷新会话才能看到新角色。
 
 1. 更新“属性”表以定义角色声明的自定义映射。
 
@@ -154,11 +154,11 @@ ms.locfileid: "101648809"
 
     如果角色声明值为 null，则 Azure AD 将不会在令牌中发送此值，这是默认设置。
 
-    1. 单击 " **编辑** " 图标，打开 "& 声明" 对话框中的 " **用户属性** "。
+    1. 单击“编辑”图标以打开“用户属性和声明”对话框 。
 
-        ![用于突出显示 "编辑" 图标的屏幕截图，用于打开 "& 声明" 对话框中的 "用户属性"。](./media/active-directory-enterprise-app-role-management/editattribute.png)
+        ![高亮显示“编辑”图标的屏幕截图，该图标用于打开“用户属性和声明”对话框。](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    1. 在 " **管理用户声明** " 对话框中，单击 " **添加新声明**" 添加 "SAML 令牌" 属性。
+    1. 在“管理用户声明”对话框中，通过单击“添加新声明”添加 SAML 令牌属性。
 
         ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
@@ -178,7 +178,7 @@ ms.locfileid: "101648809"
 
 若要更新现有角色，请执行以下步骤：
 
-1. 打开 [Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)"。
+1. 打开 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)。
 
 1. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
@@ -196,7 +196,7 @@ ms.locfileid: "101648809"
 
     ![用于获取需修改的服务主体的查询](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-1. 从服务主体对象中提取 **appRoles** 属性。
+1. 从服务主体对象提取 **appRoles** 属性。
 
     ![appRoles 属性的详细信息](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
@@ -234,7 +234,7 @@ ms.locfileid: "101648809"
 
     ![用于获取需修改的服务主体的查询](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-1. 从服务主体对象中提取 **appRoles** 属性。
+1. 从服务主体对象提取 **appRoles** 属性。
 
     ![服务主体对象中 appRoles 属性的详细信息](./media/active-directory-enterprise-app-role-management/graph-explorer-new7.png)
 

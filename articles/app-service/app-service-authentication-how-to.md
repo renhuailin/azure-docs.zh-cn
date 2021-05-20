@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 50587feff29e1c02a639d63d0c99156dcec4f68e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102180864"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
@@ -115,7 +115,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 GET /.auth/logout?post_logout_redirect_uri=/index.html
 ```
 
-建议你对的值 [进行编码](https://wikipedia.org/wiki/Percent-encoding) `post_logout_redirect_uri` 。
+建议对 `post_logout_redirect_uri` 的值进行[编码](https://wikipedia.org/wiki/Percent-encoding)。
 
 使用完全限定的 URL 时，URL 必须托管在同一域中，或配置为允许应用访问的外部重定向 URL。 在以下示例中，若要重定向到未托管在同一域中的 `https://myexternalurl.com`：
 
@@ -123,7 +123,7 @@ GET /.auth/logout?post_logout_redirect_uri=/index.html
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-在 [Azure Cloud Shell](../cloud-shell/quickstart.md)中运行以下命令：
+在 [Azure Cloud Shell](../cloud-shell/quickstart.md) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -131,7 +131,7 @@ az webapp auth update --name <app_name> --resource-group <group_name> --allowed-
 
 ## <a name="preserve-url-fragments"></a>保留 URL 片段
 
-用户登录应用后，通常希望会重定向到同一页面的同一部分，例如 `/wiki/Main_Page#SectionZ`。 不过，由于 [URL 片段](https://wikipedia.org/wiki/Fragment_identifier) (例如， `#SectionZ`) 永远不会发送到服务器，因此，在 OAuth 登录完成后，默认情况下不保留它们，并重定向回你的应用程序。 然后，当用户需再次导航到所需定位点时，他们无法获得最佳体验。 此限制存在于所有服务器端身份验证解决方案中。
+用户登录应用后，通常希望会重定向到同一页面的同一部分，例如 `/wiki/Main_Page#SectionZ`。 然而，由于从未向服务器发送 [URL 片段](https://wikipedia.org/wiki/Fragment_identifier)（例如，`#SectionZ`），因此默认情况下，OAuth 登录完成并重定向回应用后，会保留这些片段。 然后，当用户需再次导航到所需定位点时，他们无法获得最佳体验。 此限制存在于所有服务器端身份验证解决方案中。
 
 在应用服务身份验证中，可跨 OAuth 登录保留 URL 片段。 为此，请将名为 `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` 的应用设置设为 `true`。 可在 [Azure 门户](https://portal.azure.com) 中执行此操作，或只需在 [Azure Cloud Shell](../cloud-shell/quickstart.md) 中运行以下命令：
 
@@ -148,7 +148,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 使用任何语言或框架编写的代码均可从这些标头获取所需信息。 对于 ASP.NET 4.6 应用， **ClaimsPrincipal** 会自动设置为相应的值。 但是，ASP.NET Core 不提供与应用服务用户声明集成的身份验证中间件。 有关解决方法，请参阅 [MaximeRouiller.Azure.AppService.EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
 
-如果已为你的应用启用 [令牌存储](overview-authentication-authorization.md#token-store) ，你还可以通过调用获取经过身份验证的用户的其他详细信息 `/.auth/me` 。 移动应用服务器 SDK 提供处理该数据的帮助器方法。 有关详细信息，请参阅[如何使用 Azure 移动应用 Node.js SDK](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity) 和[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info)。
+如果已为应用启用[令牌存储](overview-authentication-authorization.md#token-store)，你还可以通过调用 `/.auth/me` 获得有关经过身份验证的用户的其他详细信息。 移动应用服务器 SDK 提供处理该数据的帮助器方法。 有关详细信息，请参阅[如何使用 Azure 移动应用 Node.js SDK](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity) 和[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info)。
 
 ## <a name="retrieve-tokens-in-app-code"></a>检索应用代码中的令牌
 
@@ -178,9 +178,9 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 - **Microsoft 帐户**：[配置 Microsoft 帐户身份验证设置](configure-authentication-provider-microsoft.md)时，请选择 `wl.offline_access` 范围。
 - **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中执行以下步骤：
     1. 在页面顶部，选择“读/写”。
-    2. 在左侧浏览器中，导航到 "**订阅**" > * *_\<subscription\_name_** > **resourceGroups** > *_* \<resource\_group\_name> _>**提供商**">  >    >   >。_ \<app\_name>   >   
+    2. 在左侧浏览器中，导航到“subscriptions > ** _\<subscription\_name_** > resourceGroups > **_ _**\<resource\_group\_name> > providers > Microsoft.Web > sites > **_ _**\<app\_name> > config > authsettings”。 
     3. 单击 **“编辑”** 。
-    4. 修改以下属性。 替换 _\<app\_id>_ 为要访问的服务的 Azure Active Directory 应用程序 ID。
+    4. 修改以下属性。 将 \<app\_id> 替换为要访问的服务的 Azure Active Directory 应用程序 ID。
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
@@ -225,9 +225,9 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_、_live.com_ 和 _hotmail.com_ 帐户。 Azure AD 允许对登录帐户使用任意数量的自定义域。 但是，建议将用户直接转到自己品牌的 Azure AD 登录页面（如 `contoso.com`）。 若要推荐登录帐户的域名，请执行以下步骤。
 
-在中 [https://resources.azure.com](https://resources.azure.com) ，导航到 "**订阅**" > * *_\<subscription\_name_** > **resourceGroups** > *_* \<resource\_group\_name> _>**提供商**">  >    >   >。_ \<app\_name>   >   
+在 [https://resources.azure.com](https://resources.azure.com) 中，导航到“subscriptions > ** _\<subscription\_name_** > resourceGroups > \<resource\_group\_name> **_ _** > providers >  Microsoft.Web >  sites > **_ _**\<app\_name> > config >  authsettings ”。 
 
-单击“编辑”，修改以下属性，然后单击“放置”。 请确保将替换为所 _\<domain\_name>_ 需的域。
+单击“编辑”，修改以下属性，然后单击“放置”。 请务必将 \<domain\_name> 替换为所需的域。
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
@@ -271,10 +271,10 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 ### <a name="identity-provider-level"></a>标识提供者级别
 
-标识提供者可能会提供某些密钥授权。 例如：
+标识提供者可能提供某种统包授权。 例如：
 
-- 对于 [Azure App Service](configure-authentication-provider-aad.md)，你可以直接在 Azure AD 中 [管理企业级访问权限](../active-directory/manage-apps/what-is-access-management.md) 。 有关说明，请参阅 [如何删除用户对应用程序的访问权限](../active-directory/manage-apps/methods-for-removing-user-access.md)。
-- 对于 [google](configure-authentication-provider-google.md)，可以将属于 [组织](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) 的 Google API 项目配置为仅允许组织中的用户访问 (参阅 [Google **设置 OAuth 2.0** 支持页](https://support.google.com/cloud/answer/6158849?hl=en)) 。
+- 对于 [Azure 应用服务](configure-authentication-provider-aad.md)，你可以直接在 Azure AD 中[管理企业级访问权限](../active-directory/manage-apps/what-is-access-management.md)。 有关说明，请参阅[如何删除用户对应用程序的访问权限](../active-directory/manage-apps/methods-for-removing-user-access.md)。
+- 对于 [Google](configure-authentication-provider-google.md)，可以将属于[组织](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)的 Google API 项目配置为仅允许组织中的用户访问（请参阅 [Google 的“设置 OAuth 2.0”支持页](https://support.google.com/cloud/answer/6158849?hl=en)）。
 
 ### <a name="application-level"></a>应用程序级别
 
@@ -302,9 +302,9 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
    在生成的 JSON 有效负载中，记下已配置的每个提供程序所用的机密值：
 
    * AAD：`clientSecret`
-   * Google `googleClientSecret`
-   * Facebook `facebookAppSecret`
-   * Twitter `twitterConsumerSecret`
+   * Google：`googleClientSecret`
+   * Facebook：`facebookAppSecret`
+   * Twitter：`twitterConsumerSecret`
    * Microsoft 帐户：`microsoftAccountClientSecret`
 
    > [!IMPORTANT]
@@ -330,9 +330,9 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 1. 向 `authsettings.json` 添加一个属性，该属性指向之前为每个提供程序创建的应用程序设置名称：
  
    * AAD：`clientSecretSettingName`
-   * Google `googleClientSecretSettingName`
-   * Facebook `facebookAppSecretSettingName`
-   * Twitter `twitterConsumerSecretSettingName`
+   * Google：`googleClientSecretSettingName`
+   * Facebook：`facebookAppSecretSettingName`
+   * Twitter：`twitterConsumerSecretSettingName`
    * Microsoft 帐户：`microsoftAccountClientSecretSettingName`
 
    完成这一操作后的示例文件可能类似于以下内容，本例中仅对 AAD 进行了配置：
@@ -397,9 +397,9 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 现在，你已迁移应用，以将标识提供者机密存储为应用程序设置。
 
-### <a name="support-for-microsoft-account-registrations"></a>支持 Microsoft 帐户注册
+### <a name="support-for-microsoft-account-registrations"></a>对于 Microsoft 帐户注册的支持
 
-V2 API 目前不支持将 Microsoft 帐户作为不同的提供程序。 相反，它利用汇聚 [Microsoft 标识平台](../active-directory/develop/v2-overview.md) 通过个人 microsoft 帐户登录用户。 切换到 V2 API 时，V1 Azure Active Directory 配置用于配置 Microsoft 标识平台提供程序。
+V2 API 目前不支持将 Microsoft 帐户作为不同的提供程序。 相反，它利用聚合 [Microsoft 标识平台](../active-directory/develop/v2-overview.md)，让用户通过个人 Microsoft 帐户登录。 切换到 V2 API 时，V1 Azure Active Directory 配置将用于配置 Microsoft 标识平台提供程序。
 
 如果现有配置包含 Microsoft 帐户提供程序而不包含 Azure Active Directory 提供程序，则可以将配置切换到 Azure Active Directory 提供程序，然后执行迁移。 要执行此操作：
 
@@ -420,9 +420,9 @@ V2 API 目前不支持将 Microsoft 帐户作为不同的提供程序。 相反�
 
 ### <a name="switching-to-v2"></a>切换到 V2
 
-执行上述步骤后，请导航到 Azure 门户中的应用。 选择 "身份验证 (预览) " 部分。 
+执行上述步骤后，请在 Azure 门户中导航到应用。 选择“身份验证(预览)”部分。 
 
-或者，你可以对 `config/authsettingsv2` 站点资源下的资源发出 PUT 请求。 负载的架构与 " [使用文件配置](#config-file) " 部分中捕获的相同。
+或者，也可以对站点资源下的 `config/authsettingsv2` 资源发出 PUT 请求。 有效负载的架构与[使用文件配置](#config-file)部分中捕获的内容相同。
 
 ## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>使用文件进行配置（预览）
 

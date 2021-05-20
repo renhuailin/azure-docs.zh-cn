@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 SAP 业务仓库移动数据
+title: 使用 Azure 数据工厂从 SAP Business Warehouse 移动数据
 description: 了解如何使用 Azure 数据工厂从 SAP Business Warehouse 移动数据。
 author: linda33wj
 ms.author: jingwang
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
 ms.openlocfilehash: 513d6b28908b99594eaa525e86690fa75bffb103
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100386962"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 移动数据
@@ -25,7 +25,7 @@ ms.locfileid: "100386962"
 
 本文介绍如何使用 Azure 数据工厂中的复制活动从本地 SAP Business Warehouse (BW) 移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
-可以将数据从本地 SAP Business Warehouse 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅 [支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 表。 数据工厂当前仅支持将数据从 SAP Business Warehouse 移至其他数据存储，而不支持将数据从其他数据存储移至 SAP Business Warehouse。 
+可以将数据从本地 SAP Business Warehouse 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 SAP Business Warehouse 移至其他数据存储，而不支持将数据从其他数据存储移至 SAP Business Warehouse。 
 
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
 此连接器支持 SAP Business Warehouse 版本 7.x。 它支持使用 MDX 查询从 InfoCubes 和 QueryCubes（包括 BEx 查询）复制数据。
@@ -41,13 +41,13 @@ ms.locfileid: "100386962"
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
 - 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API** 和 **REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 也可以使用以下工具创建管道：“Visual Studio”、“Azure PowerShell”、“Azure 资源管理器模板”、“.NET API”和“REST API”    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建 **链接服务** 以将输入和输出数据存储链接到数据工厂。
-2. 创建用于表示复制操作的输入和输出数据的 **数据集** 。 
-3. 创建包含复制活动的 **管道** ，该活动将数据集作为输入，并将数据集作为输出。 
+1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
+2. 创建数据集以表示复制操作的输入和输出数据。 
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 SAP Business Warehouse 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 SAP Business Warehouse 复制到 Azure Blob](#json-example-copy-data-from-sap-business-warehouse-to-azure-blob) 部分。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "100386962"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了 SAP Business Warehouse (BW) 链接服务专属 JSON 元素的说明。
 
-properties | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 server | SAP BW 实例所驻留的服务器的名称。 | 字符串 | 是
 systemNumber | SAP BW 系统的系统编号。 | 用字符串表示的两位十进制数。 | 是
@@ -79,13 +79,13 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 SAP BW）时，以下属性在 typeProperties 节中可用：
 
-| properties | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | 查询 | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | MDX 查询。 | 是 |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON 示例：将数据从 SAP Business Warehouse 复制到 Azure Blob
-下面的示例提供示例 JSON 定义，可用于通过使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 此示例演示如何将数据从本地 SAP Business Warehouse 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接** 将数据复制到 [此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。  
+以下示例提供示例 JSON 定义，可使用该定义通过 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 此示例演示如何将数据从本地 SAP Business Warehouse 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接** 将数据复制到 [此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。  
 
 > [!IMPORTANT]
 > 此示例提供 JSON 代码段。 它不包括创建数据工厂的分步说明。 请参阅文章[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)以获取分步说明。
@@ -93,10 +93,10 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 此示例具有以下数据工厂实体：
 
 1. [SapBw](#linked-service-properties) 类型的链接服务。
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务。
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
 3. [RelationalTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
-5. 包含复制活动的 [管道](data-factory-create-pipelines.md) ，该复制活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此示例每小时将数据从 SAP Business Warehouse 实例复制到 Azure blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
@@ -274,7 +274,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ```
 
 ### <a name="type-mapping-for-sap-bw"></a>SAP BW 的类型映射
-如 [数据移动活动](data-factory-data-movement-activities.md) 一文中所述，复制活动通过以下两步方法执行从源类型到接收器类型的自动类型转换：
+如[数据移动活动](data-factory-data-movement-activities.md)一文所述，复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换：
 
 1. 从本机源类型转换为 .NET 类型
 2. 从 .NET 类型转换为本机接收器类型

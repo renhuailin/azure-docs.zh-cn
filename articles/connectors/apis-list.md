@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
 ms.date: 02/12/2021
 ms.openlocfilehash: 4b431220dbab49b74f38a8f37be8aac1a0c5c460
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382882"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
@@ -59,18 +59,18 @@ ms.locfileid: "100382882"
 
 <a name="integration-service-environment"></a>
 
-### <a name="connect-from-an-integration-service-environment-ise"></a>从 integration service 环境连接 (ISE) 
+### <a name="connect-from-an-integration-service-environment-ise"></a>从集成服务环境 (ISE) 连接
 
-对于需要直接访问 Azure 虚拟网络中的资源的逻辑应用，你可以 [ (ISE) 创建专用 integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ，你可以在该环境中生成、部署和运行针对专用资源的逻辑应用。 在逻辑应用设计器中，当你在 ISE 中浏览要用于逻辑应用的连接器时，内置触发器和操作上将显示一个 **核心** 标签，而 **ISE** 标签显示在某些连接器上。
+对于需要直接访问 Azure 虚拟网络中的资源的逻辑应用，你可以创建专用的[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，在该环境中可以针对专用资源生成、部署和运行逻辑应用。 在逻辑应用设计器中，当你浏览要在 ISE 中用于逻辑应用的连接器时，内置触发器和操作上会显示“CORE”标签，而某些连接器上会显示“ISE”标签 。
 
 > [!NOTE]
-> 在 ISE 及其连接器中运行的逻辑应用，不管这些连接器的运行位置如何，都遵循固定定价计划与基于消耗的定价计划。 有关详细信息，请参阅 [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md) 和 [逻辑应用定价详细](https://azure.microsoft.com/pricing/details/logic-apps/)信息。
+> 在 ISE 及其连接器中运行的逻辑应用（无论这些连接器在何处运行）遵循固定定价计划与基于消耗量的定价计划。 有关详细信息，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)和[逻辑应用定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
 | Label | 示例 | 说明 |
 |-------|---------|-------------|
-| **转储** | ![示例核心连接器](./media/apis-list/example-core-connector.png) | 此标签的内置触发器和操作与逻辑应用在同一 ISE 中运行。 |
-| **ISE** | ![ISE 连接器示例](./media/apis-list/example-ise-connector.png) | 此标签的托管连接器与逻辑应用在同一 ISE 中运行。 如果你的本地系统已连接到 Azure 虚拟网络，则 ISE 允许你的逻辑应用直接访问该系统，而无需使用 [本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 相反，你可以使用该系统的 **ISE** 连接器（如果有）、HTTP 操作或 [自定义连接器](#custom)。 对于没有 **ISE** 连接器的本地系统，请使用本地数据网关。 若要查看可用的 ISE 连接器，请参阅 [ise 连接器](#ise-connectors)。 |
-| 无标签 | ![多租户连接器示例](./media/apis-list/example-multi-tenant-connector.png) | 无 **核心** 或 **ISE** 标签的所有其他连接器，你可以继续使用该标签，在全局多租户逻辑应用服务中运行。 |
+| CORE | ![CORE 连接器示例](./media/apis-list/example-core-connector.png) | 具有此标签的内置触发器和操作与逻辑应用在同一 ISE 中运行。 |
+| **ISE** | ![ISE 连接器示例](./media/apis-list/example-ise-connector.png) | 具有此标签的托管连接器与逻辑应用在同一 ISE 中运行。 如果你拥有连接到 Azure 虚拟网络的本地系统，则 ISE 允许逻辑应用直接访问该系统，而无需使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 你可以改为使用该系统的 ISE 连接器（如果有）、HTTP 操作或[自定义连接器](#custom)。 对于不具有 ISE 连接器的本地系统，请使用本地数据网关。 若要查看可用的 ISE 连接器，请参阅 [ISE 连接器](#ise-connectors)。 |
+| 无标签 | ![多租户连接器示例](./media/apis-list/example-multi-tenant-connector.png) | 你可以继续使用的所有其他不带“CORE”或“ISE”标签的连接器都可以在全局多租户逻辑应用服务中运行 。 |
 |||
 
 <a name="built-ins"></a>
@@ -97,7 +97,7 @@ ms.locfileid: "100382882"
 | 名称 | 说明 |
 |------|-------------|
 | [![Azure Functions 内置连接器][azure-functions-icon]<br>Azure Functions][azure-functions-doc] | 从逻辑应用调用运行自定义代码片段（C# 或 Node.js）的 Azure 函数。 |
-| [![内联代码内置连接器 ][inline-code-icon]<br> **内联代码**][inline-code-doc] | 从逻辑应用添加和运行 JavaScript 代码片段。 |
+| [![内联代码内置连接器][inline-code-icon]<br>内联代码][inline-code-doc] | 从逻辑应用添加和运行 JavaScript 代码片段。 |
 |||
 
 ### <a name="control-workflow"></a>控制工作流
@@ -108,7 +108,7 @@ ms.locfileid: "100382882"
 |------|-------------|
 | [![“条件”内置操作][condition-icon]<br>条件][condition-doc] | 评估条件，并根据条件是 true 还是 false 运行不同的操作。 |
 | [![“全部应用”内置操作][for-each-icon]<br>全部应用][for-each-doc] | 对数组中的每个项执行相同的操作。 |
-| [![范围内置操作 ][scope-icon]<br> **范围**][scope-doc] | 将操作分组到范围，以便在该范围内的操作完成运行后，获取这些操作的自身状态。 |
+| [![范围内置操作][scope-icon]<br>范围][scope-doc] | 将操作分组到范围，以便在该范围内的操作完成运行后，获取这些操作的自身状态。 |
 | [![“切换”内置操作][switch-icon]<br>切换][switch-doc] | 将操作分组到案例，而案例分配有唯一的值（默认案例除外）。 仅运行其分配值与表达式、对象或令牌的结果相匹配的案例。 如果不存在任何匹配项，则运行默认案例。 |
 | [![“终止”内置操作][terminate-icon]<br>终止][terminate-doc] | 停止当前正在运行的逻辑应用工作流。 |
 | [![“截止”内置操作][until-icon]<br>截止][until-doc] | 重复操作，直到指定的条件为 true 或某个状态发生更改。 |
@@ -141,9 +141,9 @@ ms.locfileid: "100382882"
 | [![SharePoint Online 托管连接器][sharepoint-online-icon]<br>SharePoint<br>Online][sharepoint-online-doc] | 连接到 SharePoint Online，以便可以管理文件、附件、文件夹，等等。 |
 | [![“Azure 队列”托管连接器][azure-queues-icon]<br>Azure <br>队列][azure-queues-doc] | 连接到 Azure 存储帐户，以便创建和管理队列与消息。 |
 | [![FTP 托管连接器][ftp-icon]<br>FTP][ftp-doc] | 连接到可从 Internet 访问的 FTP 服务器，以便可以处理文件和文件夹。 |
-| [![文件系统托管连接器 ][file-system-icon]<br> **文件 <br> 系统**][file-system-doc] | 连接到本地文件共享，以便可以创建和管理文件。 |
+| [![文件系统托管连接器][file-system-icon]<br>文件<br>系统][file-system-doc] | 连接到本地文件共享，以便可以创建和管理文件。 |
 | [![“Azure 事件中心”托管连接器][azure-event-hubs-icon]<br>Azure 事件中心][azure-event-hubs-doc] | 通过事件中心使用和发布事件。 例如，通过事件中心获取逻辑应用的输出，然后将输出发送到实时分析提供程序。 |
-| [![Azure 事件网格托管连接器 ][azure-event-grid-icon]<br> **azure 事件** <br> **网格**][azure-event-grid-doc] | 监视事件网格发布的事件（例如，当 Azure 资源或第三方资源发生更改时）。 |
+| [![Azure 事件网格托管连接器][azure-event-grid-icon]<br>Azure 事件<br>网格][azure-event-grid-doc]  | 监视事件网格发布的事件（例如，当 Azure 资源或第三方资源发生更改时）。 |
 | [![Salesforce 托管连接器][salesforce-icon]<br>Salesforce][salesforce-doc] | 连接到 Salesforce 帐户，以便可以创建和管理记录、作业、对象，等等。 |
 |||
 
@@ -160,13 +160,13 @@ ms.locfileid: "100382882"
         [![BizTalk Server 连接器][biztalk-server-icon]<br>BizTalk <br>Server][biztalk-server-doc]
     :::column-end:::
     :::column:::
-        [![文件系统连接器 ][file-system-icon]<br> **文件 <br> 系统**][file-system-doc]
+        [![文件系统连接器][file-system-icon]<br>文件<br>系统][file-system-doc]
     :::column-end:::
     :::column:::
-        [![DB2 连接器 ][ibm-db2-icon]<br> **IBM db2**][ibm-db2-doc]
+        [![DB2 连接器][ibm-db2-icon]<br>IBM DB2][ibm-db2-doc]
     :::column-end:::
     :::column:::
-        [![Informix 连接器 ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
+        [![Informix 连接器][ibm-informix-icon]<br>IBM <br>Informix][ibm-informix-doc] 
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -255,7 +255,7 @@ ms.locfileid: "100382882"
 
 :::row:::
     :::column:::
-        [![IBM 3270 连接器 ][ibm-3270-icon]<br> **ibm 3270**][ibm-3270-doc]
+        [![IBM 3270 连接器][ibm-3270-icon]<br>IBM 3270][ibm-3270-doc]
     :::column-end:::
     :::column:::
         [![MQ 连接器][ibm-mq-icon]<br>IBM MQ][ibm-mq-doc]
@@ -272,90 +272,90 @@ ms.locfileid: "100382882"
 
 ## <a name="ise-connectors"></a>ISE 连接器
 
-对于在 [ (ISE) 的专用 integration service 环境](#integration-service-environment)中创建和运行的逻辑应用，逻辑应用设计器通过使用 " **核心** " 标签来标识在 ISE 中运行的内置触发器和操作。 在 ISE 中运行的托管连接器会显示 **ISE** 标签，而在全局多租户逻辑应用服务中运行的连接器不会显示任何一个标签。 此列表显示当前具有 ISE 版本的连接器：
+对于你在专用的[集成服务环境 (ISE)](#integration-service-environment) 中创建并运行的逻辑应用，逻辑应用设计器会通过使用“CORE”标签来标识在 ISE 中运行的内置触发器和操作。 在 ISE 中运行的托管连接器显示“ISE”标签，而在全局多租户逻辑应用服务中运行的连接器则不显示任何标签。 此列表显示当前具有 ISE 版本的连接器：
 
 :::row:::
     :::column:::
-        [![AS2 ISE 连接器 ][as2-icon]<br> **as2**][as2-doc]
+        [![AS2 ISE 连接器][as2-icon]<br>AS2][as2-doc]
     :::column-end:::
     :::column:::
-        [![Azure 自动化 ISE 连接器 ][azure-automation-icon]<br> **azure <br> 自动化**][azure-automation-doc]
+        [![Azure 自动化 ISE 连接器][azure-automation-icon]<br>Azure <br>自动化][azure-automation-doc]
     :::column-end:::
     :::column:::
-        [![Azure Blob 存储 ISE 连接器 ][azure-blob-storage-icon]<br> **azure blob <br> 存储**][azure-blob-storage-doc]
+        [![Azure Blob 存储 ISE 连接器][azure-blob-storage-icon]<br>Azure Blob<br>存储][azure-blob-storage-doc]
     :::column-end:::
     :::column:::
-        [![Azure Cosmos DB ISE 连接器 ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![Azure 事件中心 ISE 连接器 ][azure-event-hubs-icon]<br> **azure 事件 <br> 中心**][azure-event-hubs-doc]
-    :::column-end:::
-    :::column:::
-        [![Azure 事件网格 ISE 连接器 ][azure-event-grid-icon]<br> **azure 事件 <br> 网格**][azure-event-grid-doc]
-    :::column-end:::
-    :::column:::
-        [![Azure 文件存储 ISE 连接器 ][azure-file-storage-icon]<br> **azure 文件 <br> 存储**][azure-file-storage-doc]
-    :::column-end:::
-    :::column:::
-        [![Azure Key Vault ISE 连接器 ][azure-key-vault-icon]<br> **Azure 密钥 <br> 保管库**][azure-key-vault-doc]
+        [![Azure Cosmos DB ISE 连接器][azure-cosmos-db-icon]<br>Azure Cosmos <br> DB][azure-cosmos-db-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![Azure Monitor 记录 ISE 连接器 ][azure-monitor-logs-icon]<br> **Azure Monitor <br> 日志**][azure-monitor-logs-doc]
+        [![Azure 事件中心 ISE 连接器][azure-event-hubs-icon]<br>Azure 事件<br>中心][azure-event-hubs-doc]
     :::column-end:::
     :::column:::
-        [![Azure 服务总线 ISE 连接器 ][azure-service-bus-icon]<br> **azure 服务 <br> 总线**][azure-service-bus-doc]
+        [![Azure 事件网格 ISE 连接器][azure-event-grid-icon]<br>Azure 事件<br>网格][azure-event-grid-doc]
     :::column-end:::
     :::column:::
-        [![Azure Synapse Analytics ISE 连接器 ][azure-sql-data-warehouse-icon]<br> **Azure SQL 数据 <br> 仓库**][azure-sql-data-warehouse-doc]
+        [![Azure 文件存储 ISE 连接器][azure-file-storage-icon]<br>Azure 文件<br>存储][azure-file-storage-doc]
     :::column-end:::
     :::column:::
-        [![Azure 表存储 ISE 连接器 ][azure-table-storage-icon]<br> **azure 表 <br> 存储**][azure-table-storage-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![Azure 队列 ISE 连接器 ][azure-queues-icon]<br> **azure <br> 队列**][azure-queues-doc]
-    :::column-end:::
-    :::column:::
-        [![EDIFACT ISE 连接器 ][edifact-icon]<br> **EDIFACT**][edifact-doc]
-    :::column-end:::
-    :::column:::
-        [![文件系统 ISE 连接器 ][file-system-icon]<br> **文件 <br> 系统**][file-system-doc]
-    :::column-end:::
-    :::column:::
-        [![FTP ISE 连接器 ][ftp-icon]<br> **ftp**][ftp-doc]
+        [![Azure Key Vault ISE 连接器][azure-key-vault-icon]<br> Azure Key <br>Vault][azure-key-vault-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![IBM 3270 ISE 连接器 ][ibm-3270-icon]<br> **ibm 3270**][ibm-3270-doc]
+        [![Azure Monitor 日志 ISE 连接器][azure-monitor-logs-icon]<br>Azure Monitor <br>日志][azure-monitor-logs-doc]
     :::column-end:::
     :::column:::
-        [![DB2 ISE 连接器 ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+        [![Azure 服务总线 ISE 连接器][azure-service-bus-icon]<br>Azure 服务<br>总线][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![MQ ISE 连接器 ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+        [![Azure Synapse Analytics ISE 连接器][azure-sql-data-warehouse-icon]<br>Azure SQL 数据<br>仓库][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
-        [![SAP ISE 连接器 ][sap-icon]<br> **sap**][sap-connector-doc]
+        [![Azure 表存储 ISE 连接器][azure-table-storage-icon]<br>Azure 表<br>存储][azure-table-storage-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![SFTP-SSH ISE 连接器 ][sftp-ssh-icon]<br> **SFTP-ssh**][sftp-ssh-doc]
+        [![Azure 队列 ISE 连接器][azure-queues-icon]<br>Azure <br>队列][azure-queues-doc]
     :::column-end:::
     :::column:::
-        [![SMTP ISE 连接器 ][smtp-icon]<br> **smtp**][smtp-doc]
+        [![EDIFACT ISE 连接器][edifact-icon]<br>EDIFACT][edifact-doc]
     :::column-end:::
     :::column:::
-        [![SQL Server ISE 连接器 ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+        [![文件系统 ISE 连接器][file-system-icon]<br>文件<br>系统][file-system-doc]
     :::column-end:::
     :::column:::
-        [![X12 ISE 连接器 ][x12-icon]<br> **X12**][x12-doc]
+        [![FTP ISE 连接器][ftp-icon]<br>FTP][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![IBM 3270 ISE 连接器][ibm-3270-icon]<br>IBM 3270][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![DB2 ISE 连接器][ibm-db2-icon]<br>IBM DB2][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![MQ ISE 连接器][ibm-mq-icon]<br>IBM MQ][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![SAP ISE 连接器][sap-icon]<br>SAP][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SFTP-SSH ISE 连接器][sftp-ssh-icon]<br>SFTP-SSH][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![SMTP ISE 连接器][smtp-icon]<br>SMTP][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![SQL Server ISE 连接器][sql-server-icon]<br>SQL <br>Server][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![X12 ISE 连接器][x12-icon]<br>X12][x12-doc]
     :::column-end:::
 :::row-end:::
 
@@ -403,13 +403,13 @@ ms.locfileid: "100382882"
 
 ### <a name="recurrence-for-built-in-triggers"></a>内置触发器的定期触发
 
-定期内置触发器遵循你设置的计划，包括你指定的任何时区。 但是，如果某个定期触发未指定任何其他高级计划选项（例如具体时间）来运行将来的定期触发，则这些将来的定期触发会以上一次触发器执行为基础。 因此，这些定期触发的开始时间可能会因存储调用期间的延迟等因素而发生偏移。 此外，如果未选择时区，则 (DST) 的夏令时可能会影响触发器运行的时间，例如，在 DST 开始时，将开始时间向前移动一小时，在 DST 结束时将开始时间向后移动一小时。
+定期内置触发器遵循你设置的计划，包括你指定的任何时区。 但是，如果某个定期触发未指定任何其他高级计划选项（例如具体时间）来运行将来的定期触发，则这些将来的定期触发会以上一次触发器执行为基础。 因此，这些定期触发的开始时间可能会因存储调用期间的延迟等因素而发生偏移。 此外，如果未选择时区，则夏令时 (DST) 可能会影响触发器运行的时间，例如，在 DST 开始时，将开始时间前移一小时，在 DST 结束时将开始时间向后移动一小时。
 
 为了确保逻辑应用在你指定的开始时间运行并且不会错过定期触发（特别是在频率为几天（或更长时间）一次的情况下），请尝试以下解决方案：
 
-* 确保选择一个时区，以便逻辑应用在你指定的开始时间运行。 否则，DST 可能会影响触发器运行的时间，例如，在 DST 开始时，将开始时间前移一小时，在 DST 结束时，将开始时间向后移动一小时。
+* 确保选择一个时区，以便逻辑应用在你指定的开始时间运行。 否则，DST 可能会影响触发器运行的时间，例如，在 DST 开始时，将开始时间前移一小时，在 DST 结束时将开始时间向后移动一小时。
 
-  计划作业时，逻辑应用会将要处理的消息放入队列中，并指定该消息何时变得可用，具体取决于运行上次作业的 UTC 时间和计划运行下次作业的 UTC 时间。 指定时区后，逻辑应用的 UTC 时间也会发生偏移以应对季节性时间变化。 但是，当时间发生变化时，windows 可能会导致问题。 有关详细信息和示例，请参阅 [夏令时和标准时间定期](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)。
+  计划作业时，逻辑应用会将要处理的消息放入队列中，并指定该消息何时变得可用，具体取决于运行上次作业的 UTC 时间和计划运行下次作业的 UTC 时间。 指定时区后，逻辑应用的 UTC 时间也会发生偏移以应对季节性时间变化。 但是，当时间发生调整时，有时 Windows 可能会导致问题。 有关详细信息和示例，请参阅[夏令时和标准时间循环](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)。
 
 * 使用定期触发器，并提供定期触发的开始日期和时间，以及运行后续定期触发的具体时间，这可以通过“在这些小时”和“在这些分钟”属性来进行，仅适用于“日”和“周”频率。
 
@@ -427,7 +427,7 @@ ms.locfileid: "100382882"
 
 * 调用存储期间的延迟。
 
-* 当夏令时 (DST) 开始和结束时，不保留指定的计划。
+* 夏令时 (DST) 开始和结束时，未维护指定的计划。
 
 * 可能影响下次运行时的出现时间的其他因素。
 
@@ -435,7 +435,7 @@ ms.locfileid: "100382882"
 
 * 若要确保重复周期时间在 DST 生效时不会移动，请手动调整重复周期，使逻辑应用继续按预期时间运行。 否则，开始时间将在 DST 开始时向前移动 1 小时，在 DST 结束时向后移动 1 小时。
 
-* 使用定期触发器，以便指定时区、开始日期和时间，以及运行后续定期触发的具体时间，这可以通过“在这些小时”和“在这些分钟”属性来进行，仅适用于“日”和“周”频率。    但是，当时间发生变化时，windows 可能仍会出现问题。 有关详细信息和示例，请参阅 [夏令时和标准时间定期](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)。
+* 使用定期触发器，以便指定时区、开始日期和时间，以及运行后续定期触发的具体时间，这可以通过“在这些小时”和“在这些分钟”属性来进行，仅适用于“日”和“周”频率。    但是，当时间发生调整时，有时 Windows 可能仍会导致问题。 有关详细信息和示例，请参阅[夏令时和标准时间循环](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)。
 
 * 为了避免错过定期触发，请使用[滑动窗口触发器](../connectors/connectors-native-sliding-window.md)，而不是使用定期触发器。
 
@@ -446,11 +446,11 @@ ms.locfileid: "100382882"
 若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。 若要使自定义 API 应用或连接器可供任何人在 Azure 中使用，可以[提交连接器进行 Microsoft 认证](/connectors/custom-connectors/submit-certification)。
 
 > [!NOTE]
-> 在 integration service 环境中部署和运行的逻辑应用 [ (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 可以直接访问 Azure 虚拟网络中的资源。 如果你有需要本地数据网关的自定义连接器，并且你在 ISE 外部创建了这些连接器，则 ISE 中的逻辑应用还可以使用这些连接器。
+> 你在[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中部署和运行的逻辑应用可以直接访问 Azure 虚拟网络中的资源。 如果你有需要使用本地数据网关的自定义连接器，并且在 ISE 外部创建了这些连接器，则 ISE 中的逻辑应用也可以使用这些连接器。
 >
-> 在 ISE 中创建的自定义连接器不适用于本地数据网关。 但是，这些连接器可以直接访问连接到托管 ISE 的 Azure 虚拟网络的本地数据源。 因此，在与这些资源通信时，ISE 中的逻辑应用最有可能不需要数据网关。
+> 在 ISE 中创建的自定义连接器无法与本地数据网关一起使用。 但是，这些连接器可以直接访问连接到托管 ISE 的 Azure 虚拟网络的本地数据源。 因此，与这些资源进行通信时，ISE 中的逻辑应用很可能不需要数据网关。
 >
-> 有关创建 ISEs 的详细信息，请参阅 [从 Azure 逻辑应用连接到 azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
+> 若要详细了解如何创建 ISE，请参阅[从 Azure 逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
 
 ## <a name="get-ready-for-deployment"></a>准备部署
 
@@ -464,9 +464,9 @@ ms.locfileid: "100382882"
 
 ## <a name="known-issues"></a>已知问题
 
-#### <a name="error-badgateway-client-request-id-guid"></a>错误： BadGateway。 客户端请求 id： "{GUID}"
+#### <a name="error-badgateway-client-request-id-guid"></a>错误：BadGateway。 客户端请求 ID：“{GUID}”
 
-此错误是由于在一个或多个连接不支持 Azure Active Directory (Azure AD) OAuth 身份验证（如 SFTP AD SQL）中断这些连接的逻辑应用上更新标记导致的。 若要防止此行为，请避免更新这些标记。
+当一个或多个连接不支持 Azure Active Directory (Azure AD) OAuth 身份验证（如 SFTP 和 SQL）时，更新逻辑应用上的标记会生成此错误。 若要防止此行为，请避免更新这些标记。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -602,7 +602,7 @@ ms.locfileid: "100382882"
 [http-response-doc]: ./connectors-native-reqres.md "响应来自逻辑应用的 HTTP 请求"
 [http-swagger-doc]: ./connectors-native-http-swagger.md "从逻辑应用调用 REST 终结点"
 [http-webhook-doc]: ./connectors-native-webhook.md "等待来自 HTTP 或 HTTPS 终结点的特定事件"
-[inline-code-doc]: ../logic-apps/logic-apps-add-run-inline-code.md "从逻辑应用添加和运行 JavaScript 代码片段"
+[inline-code-doc]: ../logic-apps/logic-apps-add-run-inline-code.md从逻辑应用添加和运行 JavaScript 代码片段 ""
 [nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "将逻辑应用与嵌套工作流集成"
 [query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "通过查询操作选择和筛选数组"
 [schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "按计划运行逻辑应用"
@@ -645,8 +645,8 @@ ms.locfileid: "100382882"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "连接到 Mandrill 进行通信"
 [mysql-doc]: /connectors/mysql/ "连接到本地 MySQL 数据库，以便读取和写入数据"
 [office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "连接到工作或学校帐户，以便发送和接收电子邮件、管理日历和联系人，以及执行其他操作"
-[onedrive-doc]: ./connectors-create-api-onedrive.md "连接到个人 Microsoft OneDrive，以便上传、删除、列出文件，等等"
-[onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "连接到企业 Microsoft OneDrive，以便上传、删除、列出文件，等等"
+[onedrive-doc]: ./connectors-create-api-onedrive.md "连接到个人 Microsoft OneDrive，以便上传、删除、列出文件，以及执行其他操作"
+[onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "连接到企业 Microsoft OneDrive，以便上传、删除、列出文件，以及执行其他操作"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "连接到 Oracle 数据库，以便添加、插入、删除行，以及执行其他操作"
 [outlook.com-doc]: ./connectors-create-api-outlook.md "连接到 Outlook 邮箱，以便管理电子邮件、日历、联系人，以及执行其他操作"
 [postgre-sql-doc]: /connectors/postgresql/ "连接到 PostgreSQL 数据库，以便从表中读取数据"

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
 ms.openlocfilehash: f63b0b523184917097c73c852a7624b366fbbb24
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100595205"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中进行监视
@@ -61,7 +61,7 @@ ms.locfileid: "100595205"
 
 ## <a name="planned-maintenance-notification"></a>计划内维护通知
 
-[计划内维护通知](./concepts-planned-maintenance-notification.md) 可用于接收有关即将进行的计划内维护到 Azure Database for MariaDB 的警报。 这些通知与[服务运行状况](../service-health/overview.md)计划内维护集成，允许你在同一位置查看你的订阅的所有计划内维护。 它还有助于将通知扩展到不同资源组的适当受众，因为你可能有不同的联系人负责不同的资源。 你将在事件发生前的 72 小时收到有关即将进行的维护的通知。
+[计划内维护通知](./concepts-planned-maintenance-notification.md)允许你接收有关 Azure Database for MariaDB 即将进行的计划内维护的警报。 这些通知与[服务运行状况](../service-health/overview.md)计划内维护集成，允许你在同一位置查看你的订阅的所有计划内维护。 它还有助于将通知扩展到不同资源组的适当受众，因为你可能有不同的联系人负责不同的资源。 你将在事件发生前的 72 小时收到有关即将进行的维护的通知。
 
 在[计划内维护通知](./concepts-planned-maintenance-notification.md)文档中详细了解如何设置通知。
 
@@ -69,4 +69,4 @@ ms.locfileid: "100595205"
 
 - 若要深入了解如何使用 Azure 门户、REST API 或 CLI 访问和导出指标，请参阅 [Azure 指标概述](../azure-monitor/data-platform.md)。
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-metric.md)。
-- 详细了解 Azure Database for MariaDB 中的 [计划内维护通知](./concepts-planned-maintenance-notification.md) 。
+- 详细了解 Azure Database for MariaDB 中的[计划内维护通知](./concepts-planned-maintenance-notification.md)。

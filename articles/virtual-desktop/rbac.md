@@ -1,45 +1,45 @@
 ---
-title: 内置角色 Windows 虚拟桌面-Azure
-description: 适用于 Azure RBAC 的 Windows 虚拟桌面的内置角色概述。
+title: Windows 虚拟桌面内置角色 - Azure
+description: 适用于 Azure RBAC 的 Windows 虚拟桌面内置角色的概述。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 52f0151fd4be7505cf7beea0eeb54f8e34404997
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: MT
+manager: femila
+ms.openlocfilehash: a1094004bc523a59c3fcf7eb77c6f11bc4554080
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577617"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445850"
 ---
-# <a name="built-in-roles-for-windows-virtual-desktop"></a>Windows 虚拟桌面的内置角色
+# <a name="built-in-roles-for-windows-virtual-desktop"></a>Windows 虚拟桌面内置角色
 
-Windows 虚拟桌面使用 Azure 基于角色的访问控制 (RBAC) 将角色分配给用户和管理员。 这些角色授予管理员权限来执行特定任务。 若要了解有关 Azure RBAC 的内置角色的详细信息，请参阅 [azure 内置角色](../role-based-access-control/built-in-roles.md)。
+Windows 虚拟桌面使用 Azure 基于角色的访问控制 (RBAC) 为用户和管理员分配角色。 这些角色授予管理员权限来执行某些任务。 若要了解有关适用于 Azure RBAC 的内置角色的详细信息，请参阅 [Azure 内置角色](../role-based-access-control/built-in-roles.md)。
 
-Azure 的标准内置角色为所有者、参与者和读者。 但是，Windows 虚拟桌面具有其他角色，使你可以为主机池、应用组和工作区分隔管理角色。 这种分离使你可以更精细地控制管理任务。 这些角色的命名遵循 Azure 的标准角色和最小特权方法。
+Azure 的标准内置角色为所有者、参与者和读取者。 但是，Windows 虚拟桌面具有其他角色，用于将主机池、应用程序组和工作区的管理角色分离开来。 这种分离使你可以更精细地控制管理任务。 这些角色的命名遵循 Azure 的标准角色和最低特权方法。
 
 Windows 虚拟桌面没有特定的所有者角色。 但是，你可以对服务对象使用标准所有者角色。
 
 ## <a name="desktop-virtualization-contributor"></a>桌面虚拟化参与者
 
-桌面虚拟化参与者角色可用于管理部署的各个方面。 但是，它不会授予你对计算资源的访问权限。 还需要用户访问管理员角色才能向用户或用户组发布应用程序组。
+桌面虚拟化参与者角色允许你管理部署的所有方面。 但是，它不会授予你对计算资源的访问权限。 你还需要用户访问管理员角色，以向用户或用户组发布应用程序组。
 
 
-- DesktopVirtualization/\* 
+- Microsoft.DesktopVirtualization/\* 
 - Microsoft.Resources/subscriptions/resourceGroups/read
 - Microsoft.Resources/deployments/\*
 - Microsoft.Authorization/\*/read
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="desktop-virtualization-reader"></a>桌面虚拟化读者
+## <a name="desktop-virtualization-reader"></a>桌面虚拟化读取者
 
-桌面虚拟化读者角色允许您查看部署中的所有内容，但不允许进行任何更改。
+桌面虚拟化读取者角色允许你查看部署中的所有内容，但不允许进行任何更改。
 
-- DesktopVirtualization/ \* /read
+- Microsoft.DesktopVirtualization/\*/read
 - Microsoft.Resources/subscriptions/resourceGroups/read
 - Microsoft.Resources/deployments/read
 - Microsoft.Authorization/\*/read
@@ -48,22 +48,22 @@ Windows 虚拟桌面没有特定的所有者角色。 但是，你可以对服�
 
 ## <a name="host-pool-contributor"></a>主机池参与者
 
-主机池参与者角色可用于管理主机池的所有方面，包括对资源的访问权限。 你将需要额外的参与者角色 "虚拟机参与者" 来创建虚拟机。 你将需要 AppGroup 和工作区参与者角色才能使用门户创建主机池，或者可以使用桌面虚拟化参与者角色。
+主机池参与者角色允许你管理主机池的所有方面，包括对资源的访问。 你将需要额外的参与者角色“虚拟机参与者”来创建虚拟机。 你将需要应用程序组和工作区参与者角色，以使用门户创建主机池，或者可以使用桌面虚拟化参与者角色。
 
 以下列表描述了此角色可以访问的权限：
 
-- DesktopVirtualization/hostpools/\*
+- Microsoft.DesktopVirtualization/hostpools/\*
 - Microsoft.Resources/subscriptions/resourceGroups/read
 - Microsoft.Resources/deployments/\*
 - Microsoft.Authorization/\*/read
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="host-pool-reader"></a>主机池读取器
+## <a name="host-pool-reader"></a>主机池读取者
 
-主机池读取者角色允许您查看主机池中的所有内容，但不允许您进行任何更改。
+主机池读取者角色允许你查看主机池中的所有内容，但不允许进行任何更改。
 
-- DesktopVirtualization/hostpools/ \* /read
+- Microsoft.DesktopVirtualization/hostpools/\*/read
 - Microsoft.Resources/subscriptions/resourceGroups/read
 - Microsoft.Resources/deployments/read
 - Microsoft.Authorization/\*/read
@@ -72,29 +72,29 @@ Windows 虚拟桌面没有特定的所有者角色。 但是，你可以对服�
 
 ## <a name="application-group-contributor"></a>应用程序组参与者
 
-利用应用程序组参与者角色，你可以管理应用组的所有方面。 如果要将应用组发布到用户或用户组，则需要 "用户访问管理员" 角色。
+应用程序组参与者角色允许你管理应用程序组的所有方面。 如果要向用户或用户组发布应用程序组，则需要用户访问管理员角色。
 
 以下列表描述了此角色可以访问的权限：
 
-- DesktopVirtualization/applicationgroups/\*
-- DesktopVirtualization/hostpools/read
-- DesktopVirtualization/hostpools/sessionhosts/read
+- Microsoft.DesktopVirtualization/applicationgroups/\*
+- Microsoft.DesktopVirtualization/hostpools/read
+- Microsoft.DesktopVirtualization/hostpools/sessionhosts/read
 - Microsoft.Resources/subscriptions/resourceGroups/read
 - Microsoft.Resources/deployments/\*
 - Microsoft.Authorization/\*/read
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="application-group-reader"></a>应用程序组读取器
+## <a name="application-group-reader"></a>应用程序组读取者
 
-利用应用程序组读取者角色，你可以查看应用组中的所有内容，并且不会允许你进行任何更改。
+应用程序组读取者角色允许你查看应用程序组中的所有内容，但不允许进行任何更改。
 
 以下列表描述了此角色可以访问的权限：
 
-- DesktopVirtualization/applicationgroups/ \* /read
-- DesktopVirtualization/applicationgroups/read
-- DesktopVirtualization/hostpools/read
-- DesktopVirtualization/hostpools/sessionhosts/read
+- Microsoft.DesktopVirtualization/applicationgroups/\*/read
+- Microsoft.DesktopVirtualization/applicationgroups/read
+- Microsoft.DesktopVirtualization/hostpools/read
+- Microsoft.DesktopVirtualization/hostpools/sessionhosts/read
 - Microsoft.Resources/subscriptions/resourceGroups/read
 - Microsoft.Resources/deployments/read
 - Microsoft.Authorization/\*/read
@@ -103,26 +103,26 @@ Windows 虚拟桌面没有特定的所有者角色。 但是，你可以对服�
 
 ## <a name="workspace-contributor"></a>工作区参与者
 
-工作区参与者角色使你可以管理工作区的所有方面。 若要获取添加到应用组中的应用程序的信息，还需要为应用程序组读取者角色分配。
+工作区参与者角色允许你管理工作区的所有方面。 若要获取有关添加到应用程序组中的应用程序的信息，还需具备“应用程序组读取者”角色。
 
 以下列表描述了此角色可以访问的权限：
 
-- DesktopVirtualization/工作区/\*
-- DesktopVirtualization/applicationgroups/read
+- Microsoft.DesktopVirtualization/workspaces/\*
+- Microsoft.DesktopVirtualization/applicationgroups/read
 - Microsoft.Resources/subscriptions/resourceGroups/read
 - Microsoft.Resources/deployments/\*
 - Microsoft.Authorization/\*/read
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="workspace-reader"></a>工作区读者
+## <a name="workspace-reader"></a>工作区读取者
 
-工作区读者角色使你可以查看工作区中的所有内容，但不允许你进行任何更改。
+工作区读取者角色允许你查看工作区中的所有内容，但不允许进行任何更改。
 
 以下列表描述了此角色可以访问的权限：
 
-- DesktopVirtualization/工作区/读取
-- DesktopVirtualization/applicationgroups/read
+- Microsoft.DesktopVirtualization/workspaces/read
+- Microsoft.DesktopVirtualization/applicationgroups/read
 - Microsoft.Resources/subscriptions/resourceGroups/read
 - Microsoft.Resources/deployments/read
 - Microsoft.Authorization/\*/read
@@ -131,27 +131,27 @@ Windows 虚拟桌面没有特定的所有者角色。 但是，你可以对服�
 
 ## <a name="user-session-operator"></a>用户会话操作员
 
-用户会话操作员角色允许您发送消息、断开连接会话，并使用 "注销" 功能对会话主机以外的会话进行签名。 但是，此角色不允许执行会话主机管理，如删除会话主机、更改排出模式等。 此角色可以查看分配，但不能修改管理员。 建议将此角色分配给特定的主机池。 如果在资源组级别授予此权限，则管理员将对资源组下的所有主机池具有读取权限。
+用户会话操作员角色允许你发送消息、断开会话，并使用“注销”功能将会话从会话主机中注销。 但是，此角色不允许你执行会话主机管理，如删除会话主机、更改排出模式等。 此角色可以查看分配，但不能修改管理员。 建议将此角色分配给特定的主机池。 如果在资源组级别授予此权限，则管理员将对资源组下的所有主机池具有读取权限。
 
 以下列表描述了此角色可以访问的权限：
 
-- DesktopVirtualization/hostpools/read
-- DesktopVirtualization/hostpools/sessionhosts/read
-- DesktopVirtualization/hostpools/sessionhosts/usersessions/\*
+- Microsoft.DesktopVirtualization/hostpools/read
+- Microsoft.DesktopVirtualization/hostpools/sessionhosts/read
+- Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions/\*
 - Microsoft.Resources/subscriptions/resourceGroups/read
 - Microsoft.Resources/deployments/read
 - Microsoft.Authorization/\*/read
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="session-host-operator"></a>Session Host 运算符
+## <a name="session-host-operator"></a>会话主机操作员
 
-"会话主机参与者" 角色允许您查看和删除会话主机，以及更改排出模式。 它们不能使用 Azure 门户添加会话主机，因为它们对主机池对象没有写入权限。 如果注册令牌有效 (生成且未过期) ，则可以使用此角色将会话主机添加到外部 Azure 门户的主机池（如果管理员通过虚拟机参与者角色提供了计算权限）。
+会话主机操作员角色允许你查看和删除会话主机，以及更改排出模式。 它们不能使用 Azure 门户添加会话主机，因为它们没有对主机池对象的写入权限。 如果注册令牌有效（生成且未过期），并且管理员通过虚拟机参与者角色获得了计算权限，则可以使用此角色将会话主机添加到 Azure 门户外部的主机池。
 
 以下列表描述了此角色可以访问的权限：
 
-- DesktopVirtualization/hostpools/read
-- DesktopVirtualization/hostpools/sessionhosts/\*
+- Microsoft.DesktopVirtualization/hostpools/read
+- Microsoft.DesktopVirtualization/hostpools/sessionhosts/\*
 - Microsoft.Resources/subscriptions/resourceGroups/read
 - Microsoft.Resources/deployments/read
 - Microsoft.Authorization/\*/read

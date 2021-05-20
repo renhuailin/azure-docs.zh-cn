@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 09/21/2016
+ms.date: 05/03/2021
 ms.author: rohink
-ms.openlocfilehash: fa2c1ced6405c967ca33562d6215b304b8507e5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c9360555ff108937b51f9b9b491b6eec006b4f2e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "76937241"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745048"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS 如何与其他 Azure 服务一起工作
 
@@ -40,3 +40,8 @@ Azure DNS 是一种托管的 DNS 管理和名称解析服务。 可以使用它�
 | Azure 应用服务 | [外部 IP](dns-custom-domain.md#app-service-web-apps) |对于外部 IP 地址，可以创建一条 DNS A 记录。 否则，必须创建一条映射到 azurewebsites.net 名称的 CNAME 记录。 有关详细信息，请参阅[将自定义域名映射到 Azure 应用](../app-service/app-service-web-tutorial-custom-domain.md)。 |
 | Azure 资源管理器 VM |[公共 IP](dns-custom-domain.md#public-ip-address) |资源管理器 VM 可以具有公共 IP 地址。 具有公共 IP 地址的 VM 还可以位于负载均衡器后面。 可以为公共地址创建 DNS A、CNAME 或别名记录。 可以使用此自定义名称绕过负载均衡器中的 VIP。 |
 | 经典 VM |[公共 IP](dns-custom-domain.md#public-ip-address) |可以为使用 PowerShell 或 CLI 创建的经典 VM 配置动态或静态的（保留）虚拟地址。 可以分别创建 DNS CNAME 或 A 记录。 |
+
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解如何在 DNS 区域中[管理记录集和记录](./dns-getstarted-portal.md)。

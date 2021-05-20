@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 58616b647affd33e96357e556ab61f85d1c62129
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752271"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
@@ -23,10 +23,10 @@ Azure Key Vault 提供了两种类型的容器来存储和管理云应用程序�
 
 |容器类型|支持的对象类型|数据平面终结点|
 |--|--|--|
-| **保管库**|<ul><li>受软件保护的密钥</li><li>与高级 SKU (的 HSM 保护密钥) </li><li>证书</li><li>存储帐户密钥</li></ul> | https://{vault-name}.vault.azure.net
+| **保管库**|<ul><li>受软件保护的密钥</li><li>受 HSM 保护的密钥（含高级 SKU）</li><li>证书</li><li>存储帐户密钥</li></ul> | https://{vault-name}.vault.azure.net
 |**托管的 HSM** |<ul><li>HSM 保护的密钥</li></ul> | https://{hsm-name}.managedhsm.azure.net
 
-下面是用于访问每个对象类型的 URL 后缀
+下面是用于访问每种对象的 URL 后缀
 
 |对象类型|URL 后缀|
 |--|--|
@@ -55,8 +55,8 @@ Azure Key Vault 支持 JSON 格式的请求和响应。 Azure Key Vault 请求�
 - 若要在 Key Vault 中使用名为 TESTKEY 的密钥签名摘要，请使用 - `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
 - 对 Key Vault 请求的授权始终如下所示：
-  - 对于保管库： `https://{keyvault-name}.vault.azure.net/`
-  - 对于托管的 Hsm： `https://{HSM-name}.managedhsm.azure.net/`
+  - 对于保管库：`https://{keyvault-name}.vault.azure.net/`
+  - 对于托管 HSM：`https://{HSM-name}.managedhsm.azure.net/`
 
   密钥始终存储在 /keys 路径下，机密始终存储在 /secrets 路径下。  
 
@@ -136,4 +136,4 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 -   resource：要在授权请求中使用的资源 (`https://vault.azure.net`) 的名称。
 
 > [!NOTE]
-> 第一次调用时，Key Vault SDK 客户端提供密钥、证书和密钥 Key Vault 不提供访问令牌来检索租户信息。 应该会使用 Key Vault SDK 客户端接收 HTTP 401，其中 Key Vault 向应用程序显示包含资源的 WWW-Authenticate 标头和要求提供令牌的租户。 如果所有内容都已正确配置，则从应用程序到 Key Vault 的第二次调用将包含有效的令牌，并将成功。 
+> 在第一次调用 Key Vault 时，对于机密、证书和密钥，Key Vault SDK 客户端不提供访问令牌来检索租户信息。 预计会使用 Key Vault SDK 客户端接收 HTTP 401，其中 Key Vault 向应用程序显示包含资源的 WWW-Authenticate 标头和要去请求令牌的租户。 如果所有内容都已正确配置，则从应用程序到 Key Vault 的第二次调用将包含有效令牌，并将取得成功。 

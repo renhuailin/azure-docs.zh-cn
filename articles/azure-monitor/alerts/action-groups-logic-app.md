@@ -6,10 +6,10 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 02/19/2021
 ms.openlocfilehash: a1371e00a6d4c5db609466e25c9d94aad5e73398
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102045711"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
@@ -46,56 +46,56 @@ ms.locfileid: "102045711"
 
     ```json
         {
-            "schemaId": "Microsoft.Insights/activityLogs",
-            "data": {
-                "status": "Activated",
-                "context": {
-                "activityLog": {
-                    "authorization": {
-                    "action": "microsoft.insights/activityLogAlerts/write",
-                    "scope": "/subscriptions/…"
+            "schemaId&quot;: &quot;Microsoft.Insights/activityLogs&quot;,
+            &quot;data&quot;: {
+                &quot;status&quot;: &quot;Activated&quot;,
+                &quot;context&quot;: {
+                &quot;activityLog&quot;: {
+                    &quot;authorization&quot;: {
+                    &quot;action&quot;: &quot;microsoft.insights/activityLogAlerts/write&quot;,
+                    &quot;scope&quot;: &quot;/subscriptions/…&quot;
                     },
-                    "channels": "Operation",
-                    "claims": "…",
-                    "caller": "logicappdemo@contoso.com",
-                    "correlationId": "91ad2bac-1afa-4932-a2ce-2f8efd6765a3",
-                    "description": "",
-                    "eventSource": "Administrative",
-                    "eventTimestamp": "2018-04-03T22:33:11.762469+00:00",
-                    "eventDataId": "ec74c4a2-d7ae-48c3-a4d0-2684a1611ca0",
-                    "level": "Informational",
-                    "operationName": "microsoft.insights/activityLogAlerts/write",
-                    "operationId": "61f59fc8-1442-4c74-9f5f-937392a9723c",
-                    "resourceId": "/subscriptions/…",
-                    "resourceGroupName": "LOGICAPP-DEMO",
-                    "resourceProviderName": "microsoft.insights",
-                    "status": "Succeeded",
-                    "subStatus": "",
-                    "subscriptionId": "…",
-                    "submissionTimestamp": "2018-04-03T22:33:36.1068742+00:00",
-                    "resourceType": "microsoft.insights/activityLogAlerts"
+                    &quot;channels&quot;: &quot;Operation&quot;,
+                    &quot;claims&quot;: &quot;…&quot;,
+                    &quot;caller&quot;: &quot;logicappdemo@contoso.com&quot;,
+                    &quot;correlationId&quot;: &quot;91ad2bac-1afa-4932-a2ce-2f8efd6765a3&quot;,
+                    &quot;description&quot;: &quot;&quot;,
+                    &quot;eventSource&quot;: &quot;Administrative&quot;,
+                    &quot;eventTimestamp&quot;: &quot;2018-04-03T22:33:11.762469+00:00&quot;,
+                    &quot;eventDataId&quot;: &quot;ec74c4a2-d7ae-48c3-a4d0-2684a1611ca0&quot;,
+                    &quot;level&quot;: &quot;Informational&quot;,
+                    &quot;operationName&quot;: &quot;microsoft.insights/activityLogAlerts/write&quot;,
+                    &quot;operationId&quot;: &quot;61f59fc8-1442-4c74-9f5f-937392a9723c&quot;,
+                    &quot;resourceId&quot;: &quot;/subscriptions/…&quot;,
+                    &quot;resourceGroupName&quot;: &quot;LOGICAPP-DEMO&quot;,
+                    &quot;resourceProviderName&quot;: &quot;microsoft.insights&quot;,
+                    &quot;status&quot;: &quot;Succeeded&quot;,
+                    &quot;subStatus&quot;: &quot;&quot;,
+                    &quot;subscriptionId&quot;: &quot;…&quot;,
+                    &quot;submissionTimestamp&quot;: &quot;2018-04-03T22:33:36.1068742+00:00&quot;,
+                    &quot;resourceType&quot;: &quot;microsoft.insights/activityLogAlerts&quot;
                 }
                 },
-                "properties": {}
+                &quot;properties&quot;: {}
             }
         }
     ```
 
 9. “逻辑应用设计器”将显示一个弹出窗口，提醒发送到逻辑应用的请求必须将 **Content-Type** 标头设置为 **application/json**。 关闭该弹出窗口。 Azure Monitor 警报将设置该标头。
 
-    ![设置 Content-Type 标头](media/action-groups-logic-app/content-type-header.png "设置 Content-Type 标头")
+    ![设置 Content-Type 标头](media/action-groups-logic-app/content-type-header.png &quot;设置 Content-Type 标头")
 
 10. 依次选择“+ 新建步骤”、“添加操作”  。
 
     ![添加操作](media/action-groups-logic-app/add-action.png "添加操作")
 
-11. 搜索并选择 Microsoft Teams 连接器。 选择 " **Microsoft 团队-Post 消息** " 操作。
+11. 搜索并选择 Microsoft Teams 连接器。 选择“Microsoft Teams - 发布消息”操作。
 
     ![Microsoft Teams 操作](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams 操作")
 
-12. 配置 Microsoft Teams 操作。 **逻辑应用设计器** 要求您向工作或学校帐户进行身份验证。 选择要向其发送消息的“团队 ID”和“通道 ID”。
+12. 配置 Microsoft Teams 操作。 “逻辑应用设计器”将要求对你的工作或学校帐户进行身份验证。 选择要向其发送消息的“团队 ID”和“通道 ID”。
 
-13. 使用静态文本的组合和对动态内容中的的引用来配置消息 \<fields\> 。 将以下文本复制并粘贴到“消息”字段：
+13. 通过结合使用静态文本和动态内容中对 \<fields\> 的引用来配置消息。 将以下文本复制并粘贴到“消息”字段：
 
     ```text
       Activity Log Alert: <eventSource>
@@ -104,16 +104,16 @@ ms.locfileid: "102045711"
       resourceId: <resourceId>
     ```
 
-    然后搜索并将替换为 \<fields\> 具有相同名称的动态内容标记。
+    然后，搜索 \<fields\> 并将其替换为同名的动态内容标记。
 
     > [!NOTE]
     > 有两个名为 **status** 的动态字段。 将这两个字段添加到消息。 使用 **activityLog** 属性包中的字段，并删除另一个字段。 将鼠标悬停在 **status** 字段上以查看完全限定的字段引用，如以下屏幕截图所示：
 
-    ![Microsoft 团队操作：发布消息](media/action-groups-logic-app/teams-action-post-message.png "Microsoft 团队操作：发布消息")
+    ![Microsoft Teams 操作：发布消息](media/action-groups-logic-app/teams-action-post-message.png "Microsoft Teams 操作：发布消息")
 
 14. 在“逻辑应用设计器”的顶部，选择“保存”以保存逻辑应用。
 
-15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果你没有现有操作组，请参阅 [在 Azure 门户中创建和管理操作组](./action-groups.md) 以创建一个。 切勿忘记保存更改。
+15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果还没有操作组，请参阅[在 Azure 门户中创建和管理操作组](./action-groups.md)来创建一个。 切勿忘记保存更改。
 
     ![更新操作组](media/action-groups-logic-app/update-action-group.png "更新操作组")
 
@@ -123,8 +123,8 @@ ms.locfileid: "102045711"
 
 Azure Service Health 条目包含在活动日志中。 创建警报的过程类似于[创建活动日志警报](#create-an-activity-log-alert-administrative)，但存在几处差别：
 
-- 步骤1到3是相同的。
-- 对于步骤4，请对 HTTP 请求触发器使用以下示例有效负载：
+- 第 1 步到第 3 步相同。
+- 在第 4 步中，对 HTTP 请求触发器使用以下示例有效负载：
 
     ```json
     {
@@ -168,15 +168,15 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
     }
     ```
 
--  步骤5和6相同。
--  对于步骤7到11，请使用以下过程：
+-  第 5 步和第 6 步相同。
+-  对于第 7 步到第 11 步，请使用以下过程：
 
-   1. 选择 " **+** **新建步骤** "，然后选择 " **添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。  在文本框中输入版本值时，请在其周围加上引号 ("0.1.1") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。   
+   1. 依次选择“+ 新建步骤”和“添加条件”。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。  在文本框中输入版本值时，请在其周围加上引号 ("0.1.1") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。   
        - `schemaId == Microsoft.Insights/activityLogs`
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
 
-      !["服务运行状况负载条件"](media/action-groups-logic-app/service-health-payload-condition.png "服务运行状况有效负载条件")
+      ![“服务运行状况有效负载条件”](media/action-groups-logic-app/service-health-payload-condition.png "服务运行状况有效负载条件")
 
    1. 在 **if true** 条件中，遵照 [创建活动日志警报](#create-an-activity-log-alert-administrative)的步骤 11 到 13 中的说明添加 Microsoft Teams 操作。
 
@@ -193,9 +193,9 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
        <p>[communication]</p>
        ```
 
-       !["服务运行状况 true 条件后操作"](media/action-groups-logic-app/service-health-true-condition-post-action.png "服务运行状况 true 条件下的发布操作")
+       ![“服务运行状况 true 条件下的发布操作”](media/action-groups-logic-app/service-health-true-condition-post-action.png "服务运行状况 true 条件下的发布操作")
 
-   1. 对于 **If false** 条件，提供有用的消息：
+   1. 对于 **If false** 条件，请提供有用的消息：
 
        ```html
        <p><strong>Service Health Alert</strong></p>
@@ -203,7 +203,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
        <p><a href="https://ms.portal.azure.com/#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues">For details, log in to the Azure Service Health dashboard.\</a></p>
        ```
 
-       !["服务运行状况错误，发布操作"](media/action-groups-logic-app/service-health-false-condition-post-action.png "服务运行状况 false 条件下的发布操作")
+       ![“服务运行状况 false 条件下的发布操作”](media/action-groups-logic-app/service-health-false-condition-post-action.png "服务运行状况 false 条件下的发布操作")
 
 - 步骤 15 相同。 遵照说明保存逻辑应用并更新操作组。
 
@@ -211,8 +211,8 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 
 创建指标警报的过程类似于[创建活动日志警报](#create-an-activity-log-alert-administrative)，但存在几处差别：
 
-- 步骤1到3是相同的。
-- 对于步骤4，请对 HTTP 请求触发器使用以下示例有效负载：
+- 第 1 步到第 3 步相同。
+- 在第 4 步中，对 HTTP 请求触发器使用以下示例有效负载：
 
     ```json
     {
@@ -256,22 +256,22 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
     }
     ```
 
-- 步骤5和6相同。
-- 对于步骤7到11，请使用以下过程：
+- 第 5 步和第 6 步相同。
+- 对于第 7 步到第 11 步，请使用以下过程：
 
-  1. 选择 " **+** **新建步骤** "，然后选择 " **添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。 在文本框中输入版本值时，请在其周围加上引号 ("2.0") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。 
+  1. 依次选择“+ 新建步骤”和“添加条件”。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。 在文本框中输入版本值时，请在其周围加上引号 ("2.0") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。 
      - `schemaId == AzureMonitorMetricAlert`
      - `version == "2.0"`
        
-       !["指标警报负载条件"](media/action-groups-logic-app/metric-alert-payload-condition.png "指标警报有效负载条件")
+       ![“指标警报有效负载条件”](media/action-groups-logic-app/metric-alert-payload-condition.png "指标警报有效负载条件")
 
   1. 在 **if true** 条件中，添加 **For each** 循环和 Microsoft Teams 操作。 使用 HTML 和动态内容的组合定义消息。
 
-      !["指标警报事实 post 操作"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "指标警报 true 条件下的发布操作")
+      ![“指标警报 true 条件下的发布操作”](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "指标警报 true 条件下的发布操作")
 
-  1. 在 " **如果为 false** " 条件下，定义 Microsoft 团队操作以传达指标警报与逻辑应用的预期不符。 包含 JSON 有效负载。 注意如何在 `json()` 表达式中引用 `triggerBody` 动态内容。
+  1. 在“If false”条件中，定义 Microsoft Teams 操作，以指出指标警报不符合逻辑应用的预期。 包含 JSON 有效负载。 注意如何在 `json()` 表达式中引用 `triggerBody` 动态内容。
 
-      !["指标警报错误情况 post 操作"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "指标警报 false 条件下的发布操作")
+      ![“指标警报 false 条件下的发布操作”](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "指标警报 false 条件下的发布操作")
 
 - 步骤 15 相同。 遵照说明保存逻辑应用并更新操作组。
 

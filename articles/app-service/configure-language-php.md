@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90055293"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>为 Azure 应用服务配置 PHP 应用
@@ -56,7 +56,7 @@ az webapp list-runtimes --linux | grep PHP
 
 ::: zone pivot="platform-windows"  
 
-在 [Cloud Shell](https://shell.azure.com) 中运行以下命令，将 PHP 版本设置为7.4：
+在 [Cloud Shell](https://shell.azure.com) 中运行以下命令，将 PHP 版本设置为 7.4：
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --php-version 7.4
@@ -267,7 +267,7 @@ az resource update --name web --resource-group <group-name> --namespace Microsof
 </IfModule>
 ```
 
-如果不希望使用 *.htaccess* 重写，可以改用[自定义 Docker 映像](quickstart-custom-container.md)来部署 Laravel 应用程序。
+如果不希望使用 *.htaccess* 重写，可以改用 [自定义 Docker 映像](quickstart-custom-container.md)来部署 Laravel 应用程序。
 
 ::: zone-end
 
@@ -408,7 +408,7 @@ echo "expose_php = Off" >> ini/setting.ini
 
 若要启用其他扩展，请执行下列步骤：
 
-将 `bin` 目录添加到应用的根目录，并将 `.dll` 扩展文件放入 (例如 *mongodb.dll*) 。 确保扩展与 Azure 中的 PHP 版本兼容，并且与 VC9 和非线程安全 (nts) 兼容。
+在应用的根目录中添加 `bin` 目录，并在其中放入 `.dll` 扩展文件（例如 mongodb.dll）。 确保扩展与 Azure 中的 PHP 版本兼容，并且与 VC9 和非线程安全 (nts) 兼容。
 
 部署所做的更改。
 

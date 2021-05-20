@@ -1,30 +1,30 @@
 ---
 title: 使用 Azure Monitor 监视 B2B 消息
-description: 通过设置 Azure Monitor 日志和收集 Azure 逻辑应用的诊断数据来对 AS2、X12 和 EDIFACT 消息进行故障排除
+description: 通过为 Azure 逻辑应用设置 Azure Monitor 日志并收集诊断数据，对 AS2、X12 和 EDIFACT 消息进行故障排除
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 765c15897bd5d435503d3bef07e76a93b148971c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100596852"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>为 Azure 逻辑应用中的 B2B 消息设置 Azure Monitor 日志并收集诊断数据
 
-在集成帐户中设置贸易合作伙伴之间的 B2B 通信后，这些合作伙伴可以使用 AS2、X12 和 EDIFACT 等协议来交换消息。 若要检查此通信是否按预期方式工作，可以为集成帐户设置 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md) 。 [Azure Monitor](../azure-monitor/overview.md) 可帮助你监视云和本地环境，使你能够更轻松地保持其可用性和性能。 通过使用 Azure Monitor 日志，可以在 [Log Analytics 工作区](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)中记录和存储有关运行时数据和事件的数据，例如触发器事件、运行事件和操作事件。 对于消息，日志记录还会收集以下信息：
+在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可通过使用 AS2、X12 和 EDIFACT 等协议交换消息。 若要检查此通信是否按预期方式工作，可为集成帐户设置 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md)。 [Azure Monitor](../azure-monitor/overview.md) 可帮助你监视云和本地环境，使你能够更轻松地保持其可用性和性能。 通过使用 Azure Monitor 日志，可记录和存储有关运行时数据和事件的数据，例如 [Log Analytics 工作区](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)中的触发器事件、运行事件和操作事件。 对于消息，日志记录还会收集如下信息：
 
 * 消息计数和状态
 * 确认状态
 * 消息与确认之间的关联
 * 有关故障的详细错误说明
 
-Azure Monitor 允许您创建 [日志查询](../azure-monitor/logs/log-query-overview.md) 以帮助您查找和查看此信息。 你还可以 [将此诊断数据用于其他 azure 服务](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)，例如 azure 存储和 Azure 事件中心。
+通过 Azure Monitor，可创建有助于查找和查看此信息的[日志查询](../azure-monitor/logs/log-query-overview.md)。 还可以[将此诊断数据与其他 Azure 服务一起使用](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)，例如 Azure 存储和 Azure 事件中心。
 
-若要为集成帐户设置日志记录，请在 Azure 门户中 [安装逻辑应用 B2B 解决方案](#install-b2b-solution) 。 此解决方案提供了 B2B 消息事件的聚合信息。 然后，若要为此信息启用日志记录和创建查询，请设置 [Azure Monitor 日志](#set-up-resource-logs)。
+若要为集成帐户设置日志记录，请在 Azure 门户中[安装逻辑应用 B2B 解决方案](#install-b2b-solution)。 此解决方案提供 B2B 消息事件的聚合信息。 然后，若要为此信息启用日志记录和创建查询的功能，请设置 [Azure Monitor 日志](#set-up-resource-logs)。
 
 本文介绍如何为集成帐户启用 Azure Monitor 日志记录。
 
@@ -34,45 +34,45 @@ Azure Monitor 允许您创建 [日志查询](../azure-monitor/logs/log-query-ove
 
 * Log Analytics 工作区。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
 
-* 使用 Azure Monitor 日志记录设置的逻辑应用，并将该信息发送到 Log Analytics 工作区。 了解 [如何为逻辑应用设置 Azure Monitor 日志](../logic-apps/monitor-logic-apps.md)。
+* 设置了 Azure Monitor 日志记录并将该信息发送至 Log Analytics 工作区的逻辑应用。 了解[如何为逻辑应用设置 Azure Monitor 日志](../logic-apps/monitor-logic-apps.md)。
 
-* 关联到逻辑应用的集成帐户。 了解 [如何将集成帐户链接到逻辑应用](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
+* 关联到逻辑应用的集成帐户。 了解[如何将集成帐户链接到逻辑应用](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
 
 <a name="install-b2b-solution"></a>
 
 ## <a name="install-logic-apps-b2b-solution"></a>安装逻辑应用 B2B 解决方案
 
-在 Azure Monitor 日志可以跟踪逻辑应用的 B2B 消息之前，请将 **逻辑应用 B2B** 解决方案添加到 Log Analytics 工作区。
+先将逻辑应用 B2B 解决方案添加到 Log Analytics 工作区，Azure Monitor 日志方可跟踪逻辑应用的 B2B 消息。
 
-1. 在 [Azure 门户](https://portal.azure.com)的 "搜索" 框中，输入 `log analytics workspaces` ，然后选择 " **Log Analytics 工作区**"。
+1. 在 [Azure 门户](https://portal.azure.com)的搜索框中，输入 `log analytics workspaces`，然后选择“Log Analytics 工作区”。
 
-   ![选择 "Log Analytics 工作区"](./media/monitor-b2b-messages-log-analytics/find-select-log-analytics-workspaces.png)
+   ![选择“Log Analytics 工作区”](./media/monitor-b2b-messages-log-analytics/find-select-log-analytics-workspaces.png)
 
-1. 在 **Log Analytics 工作区**"下，选择工作区。
+1. 在“Log Analytics 工作区”下，选择工作区。
 
    ![选择你的 Log Analytics 工作区](./media/monitor-b2b-messages-log-analytics/select-log-analytics-workspace.png)
 
-1. 在 "概述" 窗格的 " **Log Analytics**  >  **配置监视解决方案**" 下面，选择 "**查看解决方案**"。
+1. 在“概述”窗格上，在“开始使用 Log Analytics” > “配置监视解决方案”下，选择“查看解决方案”  。
 
-   ![在 "概述" 窗格上，选择 "查看解决方案"](./media/monitor-b2b-messages-log-analytics/log-analytics-workspace.png)
+   ![在“概述”窗格上，选择“查看解决方案”](./media/monitor-b2b-messages-log-analytics/log-analytics-workspace.png)
 
-1. 在 "概述" 窗格上，选择 " **添加**"。
+1. 在“概述”窗格中，选择“添加”。
 
-   ![在 "概述" 窗格中添加新的解决方案](./media/monitor-b2b-messages-log-analytics/add-logic-apps-management-solution.png)
+   ![在“概述”窗格上，添加新解决方案](./media/monitor-b2b-messages-log-analytics/add-logic-apps-management-solution.png)
 
-1. 打开 **Marketplace** 后，在 "搜索" 框中输入 `logic apps b2b` ，然后选择 " **逻辑应用 B2B**"。
+1. “市场”打开后，在搜索框中输入 `logic apps b2b`，然后选择“逻辑应用 B2B” 。
 
-   ![从 Marketplace 选择 "逻辑应用管理"](./media/monitor-b2b-messages-log-analytics/select-logic-apps-b2b-solution.png)
+   ![从“市场”中，选择“逻辑应用管理”](./media/monitor-b2b-messages-log-analytics/select-logic-apps-b2b-solution.png)
 
-1. 在解决方案说明窗格上，选择 " **创建**"。
+1. 在解决方案说明窗格上，选择“创建”。
 
-   ![选择 "创建" 以添加 "逻辑应用 B2B" 解决方案](./media/monitor-b2b-messages-log-analytics/create-logic-apps-b2b-solution.png)
+   ![选择“创建”以添加“逻辑应用 B2B”解决方案](./media/monitor-b2b-messages-log-analytics/create-logic-apps-b2b-solution.png)
 
-1. 查看并确认要安装解决方案的 Log Analytics 工作区，并再次选择 " **创建** "。
+1. 查看并确认要在其中安装解决方案的 Log Analytics 工作区，然后再次选择“创建”。
 
-   ![为 "逻辑应用 B2B" 选择 "创建"](./media/monitor-b2b-messages-log-analytics/confirm-log-analytics-workspace.png)
+   ![对“逻辑应用 B2B”，选择“创建”](./media/monitor-b2b-messages-log-analytics/confirm-log-analytics-workspace.png)
 
-   Azure 将解决方案部署到包含 Log Analytics 工作区的 Azure 资源组后，解决方案将显示在工作区的 "摘要" 窗格中。 处理 B2B 消息时，将更新此窗格上的消息计数。
+   Azure 将解决方案部署到包含 Log Analytics 工作区的 Azure 资源组后，解决方案会显示在工作区的摘要窗格中。 处理 B2B 消息时，此窗格上消息计数随之更新。
 
    ![工作区摘要窗格](./media/monitor-b2b-messages-log-analytics/b2b-overview-messages-summary.png)
 
@@ -80,27 +80,27 @@ Azure Monitor 允许您创建 [日志查询](../azure-monitor/logs/log-query-ove
 
 ## <a name="set-up-azure-monitor-logs"></a>设置 Azure Monitor 日志
 
-可以直接从集成帐户启用 Azure Monitor 日志记录。
+可直接从集成帐户启用 Azure Monitor 日志记录。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“集成帐户”。
 
    ![查找并选择你的集成帐户](./media/monitor-b2b-messages-log-analytics/find-integration-account.png)
 
-1. 在集成帐户的菜单的 " **监视**" 下，选择 " **诊断设置**"。 选择“添加诊断设置”。
+1. 在集成帐户的菜单上的“监视”下，选择“诊断设置” 。 选择“添加诊断设置”。
 
-   ![在 "监视" 下，选择 "诊断设置"](./media/monitor-b2b-messages-log-analytics/monitor-diagnostics-settings.png)
+   ![在“监视”下，选择“诊断设置”](./media/monitor-b2b-messages-log-analytics/monitor-diagnostics-settings.png)
 
 1. 若要创建设置，请执行以下步骤：
 
-   1. 提供设置的名称。
+   1. 为设置提供名称。
 
    1. 选择“发送到 Log Analytics”。
 
-   1. 对于 " **订阅**"，请选择与 Log Analytics 工作区关联的 Azure 订阅。
+   1. 对于“订阅”，选择与 Log Analytics 工作区关联的 Azure 订阅。
 
-   1. 对于 **Log Analytics 工作区**，请选择要使用的工作区。
+   1. 对于“Log Analytics 工作区”，选择要使用的工作区。
 
-   1. 在 " **日志**" 下，选择 " **IntegrationAccountTrackingEvents** " 类别，其中指定要记录的事件类别。
+   1. 在“日志”下，选择“IntegrationAccountTrackingEvents”类别，该类别指定要记录的事件类别 。
 
    1. 完成后，选择“保存”。
 
@@ -112,24 +112,24 @@ Azure Monitor 允许您创建 [日志查询](../azure-monitor/logs/log-query-ove
 
 ## <a name="view-message-status"></a>查看消息状态
 
-逻辑应用运行后，你可以在 Log Analytics 工作区中查看有关这些消息的状态和数据。
+逻辑应用运行后，可在 Log Analytics 工作区中查看有关这些消息的状态和数据。
 
-1. 在 [Azure 门户](https://portal.azure.com) 搜索框中，找到并打开 Log Analytics 工作区。
+1. 在 [Azure 门户](https://portal.azure.com)搜索框中，找到并打开你的 Log Analytics 工作区。
 
-1. 在工作区菜单中，选择 "**工作区摘要**  >  **逻辑应用 B2B**。
+1. 在工作区的菜单中，选择“工作区摘要” > “逻辑应用 B2B” 。
 
    ![工作区摘要窗格](./media/monitor-b2b-messages-log-analytics/b2b-overview-messages-summary.png)
 
    > [!NOTE]
-   > 如果在运行后逻辑应用 B2B 磁贴不会立即显示结果，请尝试选择 **刷新** 或等待一小段时间，然后重试。
+   > 如果“逻辑应用 B2B”磁贴在运行后未立即显示结果，请尝试选择“刷新”或等待一小段时间，然后再重试。
 
-   默认情况下，“逻辑应用 B2B”磁贴显示一天的数据。 若要将数据范围更改为其他间隔，请选择页面顶部的范围控件：
+   默认情况下，“逻辑应用 B2B”磁贴显示一天的数据。 若要将数据范围更改为其他时间间隔，请选择页面顶部的范围控件：
 
    ![更改时间间隔](./media/monitor-b2b-messages-log-analytics/change-summary-interval.png)
 
-1. 当消息状态仪表板显示后，可以查看特定消息类型的更多详细信息（显示的也是一天数据）。 选择 **AS2**、 **X12** 或 **EDIFACT** 的磁贴。
+1. 当消息状态仪表板显示后，可以查看特定消息类型的更多详细信息（显示的也是一天数据）。 选择“AS2”、“X12”或“EDIFACT”磁贴  。
 
-   ![查看消息状态](./media/monitor-b2b-messages-log-analytics/workspace-summary-b2b-messages.png)
+   ![查看消息的状态](./media/monitor-b2b-messages-log-analytics/workspace-summary-b2b-messages.png)
 
    系统会针对选择的磁贴显示消息列表。 例如，AS2 消息列表如下所示：
 
@@ -183,7 +183,7 @@ Azure Monitor 允许您创建 [日志查询](../azure-monitor/logs/log-query-ove
 | 属性 | 说明 |
 |----------|-------------|
 | **发送方** | “接收设置”中指定的来宾合作伙伴，或 AS2 协议的“发送设置”中指定的托管合作伙伴 |
-| **端** | “接收设置”中指定的托管合作伙伴，或 AS2 协议的“发送设置”中指定的来宾合作伙伴 |
+| **接收方** | “接收设置”中指定的托管合作伙伴，或 AS2 协议的“发送设置”中指定的来宾合作伙伴 |
 | **逻辑应用** | 设置了 AS2 操作的逻辑应用 |
 | **Status** | AS2 消息状态 <br>成功 = 收到或发送了有效的 AS2 消息。 未设置 MDN。 <br>成功 = 收到或发送了有效的 AS2 消息。 设置并收到了 MDN，或已发送 MDN。 <br>失败 = 收到的 AS2 消息无效。 未设置 MDN。 <br>挂起 = 收到或发送了有效的 AS2 消息。 已设置 MDN，且 MDN 符合预期。 |
 | **ACK** | MDN 消息状态 <br>已接受 = 收到或发送了肯定的 MDN。 <br>挂起 = 等待接收或发送 MDN。 <br>已拒绝 = 收到或发送了否定的 MDN。 <br>不需要 = 协议中未设置 MDN。 |
@@ -216,7 +216,7 @@ Here are the name formats for each downloaded AS2 message folder and files.
 | 属性 | 说明 |
 |----------|-------------|
 | **发送方** | “接收设置”中指定的来宾合作伙伴，或 X12 协议的“发送设置”中指定的托管合作伙伴 |
-| **端** | “接收设置”中指定的托管合作伙伴，或 X12 协议的“发送设置”中指定的来宾合作伙伴 |
+| **接收方** | “接收设置”中指定的托管合作伙伴，或 X12 协议的“发送设置”中指定的来宾合作伙伴 |
 | **逻辑应用** | 设置了 X12 操作的逻辑应用 |
 | **Status** | X12 消息状态 <br>成功 = 收到或发送了有效的 X12 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 X12 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送的 X12 消息无效。 <br>挂起 = 收到或发送了有效的 X12 消息。 已设置功能确认，且功能确认符合预期。 |
 | **ACK** | 功能确认 (997) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
@@ -251,7 +251,7 @@ Here are the name formats for each downloaded X12 message folder and files.
 | 属性 | 说明 |
 |----------|-------------|
 | **发送方** | “接收设置”中指定的来宾合作伙伴，或 EDIFACT 协议的“发送设置”中指定的托管合作伙伴 |
-| **端** | “接收设置”中指定的托管合作伙伴，或 EDIFACT 协议的“发送设置”中指定的来宾合作伙伴 |
+| **接收方** | “接收设置”中指定的托管合作伙伴，或 EDIFACT 协议的“发送设置”中指定的来宾合作伙伴 |
 | **逻辑应用** | 设置了 EDIFACT 操作的逻辑应用 |
 | **Status** | EDIFACT 消息状态 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送了的 EDIFACT 消息无效 <br>挂起 = 收到或发送了有效的 EDIFACT 消息。 已设置功能确认，且功能确认符合预期。 |
 | **ACK** | 功能确认 (CONTRL) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |

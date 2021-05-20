@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.openlocfilehash: d728dfb364cb0f82326a472196cb28d79b85b1e9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031429"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
@@ -48,11 +48,11 @@ ms.locfileid: "102031429"
 ### <a name="view-metrics-across-multiple-resources"></a>查看多个资源的指标
 某些资源类型可以查询多个资源的指标。 这些资源必须位于相同的订阅和位置中。 可以在“资源类型”菜单顶部找到这些资源类型。 
 
-有关详细信息，请参阅 [选择多个资源](./metrics-dynamic-scope.md#select-multiple-resources)。
+有关详细信息，请参阅[选择多个资源](./metrics-dynamic-scope.md#select-multiple-resources)。
 
 ![屏幕截图，显示跨资源的类型。](./media/metrics-charts/multi-resource-scope.png)
 
-对于兼容多个资源的类型，你可以查询跨订阅或跨多个资源组的指标。 有关详细信息，请参阅 [选择资源组或订阅](./metrics-dynamic-scope.md#select-a-resource-group-or-subscription)。
+对于兼容多个资源的类型，你可以查询跨订阅或跨多个资源组的指标。 有关详细信息，请参阅[选择资源组或订阅](./metrics-dynamic-scope.md#select-a-resource-group-or-subscription)。
 
 ## <a name="multiple-metric-lines-and-charts"></a>多个指标行和图表
 
@@ -71,11 +71,11 @@ ms.locfileid: "102031429"
 > [!NOTE]
 > 通常，图表不应混合那些使用不同度量单位的指标。 例如，应避免将一个使用毫秒的指标与另一个使用千字节的指标混合使用。 还应避免混合使用尺度差别很大的指标。 
 >
-> 在这些情况下，请考虑改用多个图表。 在指标资源管理器中，选择 " **添加图表** " 以创建新图表。
+> 在这些情况下，请考虑改用多个图表。 在指标资源管理器中，选择“添加图表”以创建新的图表。
 
 ### <a name="multiple-charts"></a>多个图表
 
-若要创建另一个使用不同指标的图表，请选择 " **添加图表**"。
+若要使用另一指标创建另一图表，请选择“添加图表”。
 
 若要对多个图表重新排序或将其删除，请选择省略号 ( **...** ) 按钮以打开图表菜单。 然后，选择“上移”、“下移”或“删除”。
 
@@ -128,11 +128,11 @@ ms.locfileid: "102031429"
 
    ![该屏幕截图显示了可筛选的维度（属性）。](./media/metrics-charts/028.png)
 
-3. 选择要应用于维度 (属性) 的运算符。 默认运算符为 = (等于) 
+3. 选择要对维度（属性）应用的运算符。 默认运算符为 =（等于）
 
-   ![显示可与筛选器一起使用的运算符的屏幕截图。](./media/metrics-charts/filter-operator.png)
+   ![显示可与筛选器结合使用的运算符的屏幕截图。](./media/metrics-charts/filter-operator.png)
 
-4. 选择要在绘制图表时应用于筛选器的维度值 (此示例显示筛选出成功的存储事务) ：
+4. 选择在绘制图表时要应用于筛选器的维度值（本示例显示筛选出了成功的存储事务）：
 
    ![屏幕截图，显示已筛选的成功的存储事务。](./media/metrics-charts/029.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "102031429"
 
    ![屏幕截图，显示已失败的存储事务数。](./media/metrics-charts/030.png)
 
-6. 您可以重复步骤1-5，将多个筛选器应用于相同的图表。
+6. 可以重复步骤 1-5 将多个筛选器应用于相同的图表。
 
 
 ## <a name="metric-splitting"></a>指标拆分
@@ -162,13 +162,13 @@ ms.locfileid: "102031429"
 
    ![该屏幕截图显示了多个折线图，每个维度部分均有一个。](./media/metrics-charts/segment-dimension.png)
    
-3. 选择按选定维度拆分后要显示的值的数量限制。 默认限制为10，如上图所示。 限制范围为 1-50。
+3. 选择在按选定维度拆分后要显示的值数限制。 默认限制为 10，如上图所示。 限制范围为 1-50。
    
-   ![显示拆分限制的屏幕截图，用于限制拆分后的值数。](./media/metrics-charts/segment-dimension-limit.png)
+   ![显示拆分限制（用于限制拆分后的值数）的屏幕截图。](./media/metrics-charts/segment-dimension-limit.png)
    
-4. 选择段上的排序顺序：升序或降序。 默认选择为 "降序"。
+4. 选择段的排序顺序：升序或降序。 默认选择为降序。
    
-   ![显示拆分值的排序顺序的屏幕截图。](./media/metrics-charts/segment-dimension-sort.png)
+   ![显示拆分值排序顺序的屏幕截图。](./media/metrics-charts/segment-dimension-sort.png)
 
 5. 在“分组选择器”之外单击以将其关闭。
    
@@ -230,17 +230,17 @@ ms.locfileid: "102031429"
 有关详细信息，请参阅[创建、查看和管理指标警报](../alerts/alerts-metric.md)。
 
 ## <a name="correlate-metrics-to-logs"></a>将指标关联到日志
-为了帮助客户诊断其指标图表中异常的根本原因，我们已创建了深化日志。 深化日志使客户能够将指标图表中的峰值与日志和查询相关联。 
+为了帮助客户诊断其指标图表中异常的根本原因，我们已创建“深入查看日志”。 使用“深入查看日志”，客户能将指标图表中的峰值与日志和查询相关联。 
 
-在我们深入探讨经验之前，我们首先要介绍提供的不同类型的日志和查询。 
+在深入探讨该体验之前，我们首先要介绍提供的不同类型的日志和查询。 
 
 | 术语             | 定义  | 
 |------------------|-------------|
-| 活动日志    | 了解从外部（管理平台）  对订阅中的每个 Azure 资源执行的操作，以及对服务运行状况事件进行的更新。 使用活动日志来确定任何写入操作 (PUT、POST、DELETE) 对订阅中的资源执行的操作。 每个 Azure 订阅都有一个活动日志。  |   
-| 诊断日志   | 提供对 Azure 资源中执行的操作的深入了解 (数据平面) ，例如从 Key Vault 获取机密或向数据库发出请求。 资源日志的内容因 Azure 服务和资源类型而异。 **注意：** 必须由服务提供并由客户启用  | 
-| 建议日志 | 客户可利用的基于方案的查询来调查指标资源管理器中的异常。  |
+| 活动日志    | 了解从外部（管理平台）  对订阅中的每个 Azure 资源执行的操作，以及对服务运行状况事件进行的更新。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作”、“谁操作”和“操作时间”等信息。 每个 Azure 订阅都有一个活动日志。  |   
+| 诊断日志   | 深入了解在 Azure 资源（数据平面）内执行的操作，例如，从 Key Vault 获取机密，或向数据库发出请求。 资源日志的内容因 Azure 服务和资源类型而异。 **注意：** 必须由服务提供并由客户启用  | 
+| 推荐的日志 | 基于场景的查询，客户可将其用于调查指标资源管理器中的异常。  |
 
-目前，钻取日志可供选择资源提供程序使用。 具有完整的日志记录体验的资源提供程序包括： 
+目前，“深入查看日志”可供选定的资源提供程序使用。 具有完整的“深入查看日志”体验的资源提供程序包括： 
 
 * Application Insights 
 * 自动缩放 
@@ -249,20 +249,20 @@ ms.locfileid: "102031429"
 
 下面是 Application Insights 资源提供程序的示例体验。
 
-![App insights 指标边栏选项卡中的故障高峰](./media/metrics-charts/drill-into-log-ai.png)
+![“App Insights 指标”边栏选项卡中的失败峰值](./media/metrics-charts/drill-into-log-ai.png)
 
-若要诊断失败请求中的峰值，请单击 "深化日志"。
+若要诊断失败的请求的峰值，请单击“深入查看日志”。
 
-![钻取日志下拉列表的屏幕截图](./media/metrics-charts/drill-into-logs-dropdown.png)
+![“深入查看日志”下拉菜单的屏幕截图](./media/metrics-charts/drill-into-logs-dropdown.png)
 
-单击 "失败" 选项后，会出现 "自定义故障" 边栏选项卡，该边栏选项卡提供失败的操作操作、顶级异常类型和依赖关系。 
+单击“失败”选项可打开一个自定义的“失败”边栏选项卡，该边栏选项卡提供失败的操作、最多的异常类型以及依赖项。 
 
-![App insights 故障边栏选项卡的屏幕截图](./media/metrics-charts/ai-failure-blade.png)
+![“App Insights 失败”边栏选项卡的屏幕截图](./media/metrics-charts/ai-failure-blade.png)
 
-### <a name="common-problems-with-drill-into-logs"></a>深化日志的常见问题
+### <a name="common-problems-with-drill-into-logs"></a>“深入查看日志”的常见问题
 
-* 日志和查询已禁用-若要查看建议的日志和查询，必须将诊断日志路由到 Log Analytics。 阅读 [本文档](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 以了解如何执行此操作。 
-* 仅提供活动日志-"深化日志" 功能仅适用于选择资源提供程序。 默认情况下，会提供活动日志。 
+* 日志和查询已禁用 - 若要查看推荐的日志和查询，必须将诊断日志路由到 Log Analytics。 阅读[本文档](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)了解如何执行此操作。 
+* 仅提供活动日志 -”深入查看日志”功能仅适用于选定的资源提供程序。 默认情况下会提供活动日志。 
 
  
 ## <a name="troubleshooting"></a>故障排除

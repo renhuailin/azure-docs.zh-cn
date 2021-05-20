@@ -1,7 +1,7 @@
 ---
-title: 在技能组中引用输入和输出
+title: 引用技能组中的输入和输出
 titleSuffix: Azure Cognitive Search
-description: 说明了注释语法，以及在 Azure 认知搜索的 AI 扩充管道中如何在技能组的输入和输出中引用注释。
+description: 说明了注释语法，以及如何在 Azure 认知搜索的 AI 扩充管道中引用技能组的输入和输出中的注释。
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88935528"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>如何在 Azure 认知搜索技能组中引用注释
 
 本文介绍如何在技能定义中引用注释，并使用示例演示各种方案。 当文档的内容流经一组技能时，它将通过注释进行扩充。 注释可以用作进一步下游扩充的输入，也可以映射到索引中的输出字段。 
  
-本文中的示例基于 *content* 字段，该字段由 [Azure Blob 索引器](search-howto-indexing-azure-blob-storage.md)在文档破解阶段中自动生成。 从 Blob 容器引用文档时，使用 `"/document/content"` 等格式，其中 *content* 字段是*文档*的一部分。 
+本文中的示例基于 *content* 字段，该字段由 [Azure Blob 索引器](search-howto-indexing-azure-blob-storage.md)在文档破解阶段中自动生成。 从 Blob 容器引用文档时，使用 `"/document/content"` 等格式，其中 *content* 字段是 *文档* 的一部分。 
 
 ## <a name="background-concepts"></a>背景概念
 

@@ -1,24 +1,24 @@
 ---
 title: 链接的 Log Analytics 工作区支持的区域
-description: 本文介绍自动化帐户与 Log Analytics 工作区之间受支持的区域映射，因为它与 Azure 自动化的某些功能相关。
+description: 本文介绍了自动化帐户与 Log Analytics 工作区之间受支持的区域映射，因为它与 Azure 自动化的某些功能相关。
 ms.date: 02/17/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
 ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101720165"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>链接的 Log Analytics 工作区支持的区域
 
-在 Azure 自动化中，你可以为你的服务器和虚拟机启用更新管理、更改跟踪和清点以及在空闲时间启动/停止 VM 功能。 这些功能与 Log Analytics 工作区有依赖关系，因此需要将工作区链接到自动化帐户。 但是，只有某些区域才支持将它们链接在一起。 通常，如果你计划将自动化帐户链接到不会启用这些功能的工作区，则该映射不适用。
+在 Azure 自动化中，可以为服务器和虚拟机启用更新管理、更改跟踪和清单以及在空闲时间启动/停止 VM 功能。 这些功能依赖于 Log Analytics 工作区，因此需要将工作区与自动化帐户链接起来。 但是，只有某些区域才支持将它们链接在一起。 通常，如果你计划将自动化帐户链接到不会启用这些功能的工作区，则该映射不适用。
 
-此处所述的映射仅适用于将 Log Analytics 工作区链接到自动化帐户。 它们不适用于连接到已链接到自动化帐户的工作区 (Vm) 的虚拟机。 Vm 并不限于给定 Log Analytics 工作区所支持的区域。 它们可以位于任何区域中。 请记住，在不同区域中的 Vm 可能会影响状态、本地和国家/地区的法规要求，或公司的符合性要求。 在不同的区域中具有 Vm 还会导致数据带宽费用。
+此处所述的映射只适用于将 Log Analytics 工作区链接到自动化帐户。 并不适用于连接到与自动化帐户链接的工作区的虚拟机 (VM)。 VM 并不局限于给定 Log Analytics 工作区支持的区域。 它们可以位于任何区域。 请注意，将 VM 放置在不同的区域可能会影响州、本地和国家/地区的法规要求，或公司的合规性要求。 将 VM 放置在不同的区域也可能会引入数据带宽费用。
 
-在将 Vm 连接到其他区域中的工作区之前，应查看要求和可能的成本，以确认并了解法律和成本影响。
+在将 VM 连接到不同区域中的工作区之前，应先查阅相关要求和潜在成本，以确认并理解可能产生的法律和成本后果。
 
 本文提供了支持的映射，以便在自动化帐户中成功启用和使用这些功能。
 
@@ -27,7 +27,7 @@ ms.locfileid: "101720165"
 ## <a name="supported-mappings"></a>支持的映射
 
 > [!NOTE]
-> 如下表中所示，Log Analytics 和 Azure Automation 之间只能存在一个映射。
+> 如下表所示，Log Analytics 与 Azure 自动化之间只能有一个映射。
 
 下表显示了受支持的映射：
 
@@ -36,10 +36,10 @@ ms.locfileid: "101720165"
 |**美国**||
 |EastUS<sup>1</sup>|EastUS2|
 |EastUS2<sup>2</sup>|EastUS|
-|WestUS|WestUS|
+|美国西部|美国西部|
 |美国西部 2|美国西部 2|
 |CentralUS|CentralUS|
-|Default-machinelearning-southcentralus|Default-machinelearning-southcentralus|
+|SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
 |**加拿大**||
 |CanadaCentral|CanadaCentral|
@@ -65,9 +65,9 @@ ms.locfileid: "101720165"
 
 <sup>1</sup> Log Analytics 工作区到自动化帐户的 EastUS 映射不是精确的区域到区域的映射，但它是正确的映射。
 
-<sup>2</sup> EastUS2 将工作区 Log Analytics 映射到自动化帐户不是精确的区域到区域的映射，但它是正确的映射。
+<sup>2</sup> 从 Log Analytics 工作区到自动化帐户的 EastUS2 映射不是精确的区域到区域映射，但却是正确的映射。
 
-<sup>3</sup> 在此区域中，仅支持更新管理，而其他功能（如更改跟踪和库存）目前不可用。
+<sup>3</sup> 在此区域中，仅支持更新管理，而其他功能（如更改跟踪和清单）目前不可用。
 
 ## <a name="unlink-a-workspace"></a>取消链接工作区
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92677726"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
@@ -121,7 +121,7 @@ ms.locfileid: "92677726"
 
 1. 当系统提示创建连接时，请提供以下信息：
 
-   | 属性 | 必须 | Value | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | <*connection-name*> | 将要为连接创建的名称 |
    | **存储帐户** | 是 | <*storage-account*> | 从列表中选择存储帐户。 |
@@ -140,15 +140,15 @@ ms.locfileid: "92677726"
 有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/azureblobconnector/)。
 
 > [!NOTE]
-> 对于 [integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用 (ISE) ，此连接器的基于 ise 标记的版本改为使用 [ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
+> 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本使用 [ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 <a name="storage-firewalls"></a>
 
 ## <a name="access-storage-accounts-behind-firewalls"></a>访问防火墙后的存储帐户
 
-可以通过使用 [防火墙和防火墙规则](../storage/common/storage-network-security.md)来限制访问，从而将网络安全添加到 Azure 存储帐户。 但是，此设置会为需要访问存储帐户的 Azure 和其他 Microsoft 服务带来挑战。 数据中心内的本地通信会抽象内部 IP 地址，因此无法设置具有 IP 限制的防火墙规则。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../storage/common/storage-network-security.md)。
+使用[防火墙和防火墙规则](../storage/common/storage-network-security.md)限制访问可以提高 Azure 存储帐户的网络安全性。 但是，此设置会给需要访问存储帐户的 Azure 和其他 Microsoft 服务带来挑战。 数据中心内的本地通信会抽取内部 IP 地址，因此无法设置实施 IP 限制的防火墙规则。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../storage/common/storage-network-security.md)。
 
-以下是使用 Azure Blob 存储连接器或其他解决方案从 Azure 逻辑应用访问防火墙后的存储帐户的各种选项：
+下面是使用 Azure Blob 存储连接器或其他解决方案从 Azure 逻辑应用访问防火墙后的存储帐户的各种选项：
 
 * Azure 存储 Blob 连接器
 
@@ -157,52 +157,52 @@ ms.locfileid: "92677726"
 
 * 其他解决方案
 
-  * [使用托管标识访问存储帐户作为受信任的服务](#access-trusted-service)
+  * [使用托管标识访问用作受信任服务的存储帐户](#access-trusted-service)
   * [通过 Azure API 管理访问存储帐户](#access-api-management)
 
 <a name="access-other-regions"></a>
 
 ### <a name="problems-accessing-storage-accounts-in-the-same-region"></a>访问同一区域中的存储帐户时出现问题
 
-如果逻辑应用位于同一区域中，则它们不能直接访问位于防火墙后面的存储帐户。 作为一种解决方法，请将逻辑应用置于不同于你的存储帐户的区域中，并为 [你所在地区的托管连接器提供对出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)的访问权限。
+如果逻辑应用和防火墙后的存储帐户位于同一区域，则逻辑应用无法直接访问这些存储帐户。 解决方法是将逻辑应用与存储帐户放在不同的区域，并为[你所在区域中的托管连接器授予对出站 IP 地址的访问权限](../logic-apps/logic-apps-limits-and-config.md#outbound)。
 
 > [!NOTE]
-> 此解决方案不适用于 Azure 表存储连接器和 Azure 队列存储连接器。 相反，若要访问表存储或队列存储，请使用内置的 HTTP 触发器和操作。
+> 此解决方案不适用于 Azure 表存储连接器和 Azure 队列存储连接器。 若要访问表存储或队列存储，请改用内置的 HTTP 触发器和操作。
 
 <a name="access-trusted-virtual-network"></a>
 
 ### <a name="access-storage-accounts-through-a-trusted-virtual-network"></a>通过受信任的虚拟网络访问存储帐户
 
-可以将存储帐户放在你管理的 Azure 虚拟网络中，然后将该虚拟网络添加到受信任的虚拟网络列表中。 若要让逻辑应用通过 [受信任的虚拟网络](../virtual-network/virtual-networks-overview.md)访问存储帐户，需要将该逻辑应用部署到 [integration SERVICE 环境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，该环境可以连接到虚拟网络中的资源。 然后，可以将该 ISE 中的子网添加到受信任列表。 Azure 存储连接器（例如 Blob 存储连接器）可直接访问存储容器。 此设置与使用 ISE 中的服务终结点的体验相同。
+可以将存储帐户放置在你管理的 Azure 虚拟网络中，然后将相应虚拟网络添加到受信任的虚拟网络列表中。 为了让逻辑应用通过[受信任的虚拟网络](../virtual-network/virtual-networks-overview.md)访问存储帐户，你需要将相应逻辑应用部署到[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，此环境可以连接到虚拟网络中的资源。 然后，可以将相应 ISE 中的子网添加到受信任列表。 Azure 存储连接器（如 Blob 存储连接器）可以直接访问存储容器。 这种设置与从 ISE 使用服务终结点的体验相同。
 
 <a name="access-trusted-service"></a>
 
-### <a name="access-storage-accounts-as-a-trusted-service-with-managed-identities"></a>使用托管标识访问存储帐户作为受信任的服务
+### <a name="access-storage-accounts-as-a-trusted-service-with-managed-identities"></a>使用托管标识访问用作受信任服务的存储帐户
 
-若要通过防火墙为 Microsoft 受信任的服务授予对存储帐户的访问权限，可以在该存储帐户上为这些服务设置一个例外。 此解决方案允许支持 [托管身份验证](../active-directory/managed-identities-azure-resources/overview.md) 的 Azure 服务将防火墙后面的存储帐户访问为受信任的服务。 具体而言，对于全局多租户 Azure 中的逻辑应用访问这些存储帐户，首先要在逻辑应用上 [启用托管标识支持](../logic-apps/create-managed-service-identity.md) 。 然后，在逻辑应用中使用 HTTP 操作或触发器，并 [将其身份验证类型设置为使用逻辑应用的托管标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 对于此方案， *只能使用 HTTP* 操作或触发器。
+若要授予 Microsoft 受信任服务通过防火墙访问某个存储帐户的权限，可在该存储帐户中为这些服务设置一个例外。 此解决方案允许支持[使用托管标识进行身份验证](../active-directory/managed-identities-azure-resources/overview.md)的 Azure 服务访问防火墙后用作受信任服务的存储帐户。 具体而言，要使全球多租户 Azure 中的逻辑应用能够访问这些存储帐户，首先请在该逻辑应用中[启用托管标识支持](../logic-apps/create-managed-service-identity.md)。 然后，在逻辑应用中使用 HTTP 操作或触发器，并[将其身份验证类型设置为使用该逻辑应用的托管标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 对于此方案，只能使用 HTTP 操作或触发器。 
 
-若要设置异常和托管标识支持，请执行下列常规步骤：
+若要设置例外和托管标识支持，请执行以下常规步骤：
 
-1. 在存储帐户的 " **设置** " 下，选择 " **防火墙和虚拟网络** "。 在 " **允许访问** " 下，选择 " **所选网络** " 选项，以便显示相关设置。
+1. 在存储帐户的“设置”下，选择“防火墙和虚拟网络”。   在“允许从以下位置访问”下，选择“选定的网络”选项，以显示相关设置。  
 
-1. 在 " **例外** " 下，选择 " **允许受信任的 Microsoft 服务访问此存储帐户** "，然后选择 " **保存** "。
+1. 在“例外”下，选择“允许受信任的 Microsoft 服务访问此存储帐户”，然后选择“保存”。   
 
    ![选择允许 Microsoft 受信任服务的例外](./media/connectors-create-api-azureblobstorage/allow-trusted-services-firewall.png)
 
-1. 在逻辑应用的设置中， [启用对托管标识的支持](../logic-apps/create-managed-service-identity.md)。
+1. 在逻辑应用的设置中，[启用对托管标识的支持](../logic-apps/create-managed-service-identity.md)。
 
-1. 在逻辑应用的工作流中，添加并设置 HTTP 操作或触发器，以访问存储帐户或实体。
+1. 在逻辑应用的工作流中，添加并设置 HTTP 操作或触发器以访问存储帐户或实体。
 
    > [!IMPORTANT]
-   > 对于传出 HTTP 操作或触发对 Azure 存储帐户的调用，请确保请求标头包含 `x-ms-version` 要在存储帐户上运行的操作的属性和 API 版本。 有关详细信息，请参阅使用[Azure 存储服务](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)的托管标识和版本控制对[访问进行身份验证](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。
+   > 若要对 Azure 存储帐户执行传出 HTTP 操作或触发器调用，请确保请求标头包含要对存储帐户运行的操作的 `x-ms-version` 属性和 API 版本。 有关详细信息，请参阅[使用托管标识对访问进行身份验证](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)和 [Azure 存储服务的版本控制](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)。
 
-1. 在该操作中，选择要用于身份验证的 [托管标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) 。
+1. 在该操作中，[选择用于身份验证的托管标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。
 
 <a name="access-api-management"></a>
 
 ### <a name="access-storage-accounts-through-azure-api-management"></a>通过 Azure API 管理访问存储帐户
 
-如果使用专用层进行 [Api 管理](../api-management/api-management-key-concepts.md)，则可以通过使用 api 管理并允许通过防火墙使用后端的 IP 地址，来存储 api 的前端。 基本上，将 API 管理使用的 Azure 虚拟网络添加到存储帐户的防火墙设置。 然后使用 API 管理操作或 HTTP 操作调用 Azure 存储 API 即可。 但是，如果选择此选项，则需自行处理身份验证过程。 有关详细信息，请参阅[简单的企业集成体系结构](/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration)。
+如果使用 [API 管理](../api-management/api-management-key-concepts.md)的专用层，则可支持存储 API，方法是使用 API 管理并允许其 IP 地址通过防火墙。 简单而言，将 API 管理使用的 Azure 虚拟网络添加到存储帐户的防火墙设置， 然后使用 API 管理操作或 HTTP 操作调用 Azure 存储 API 即可。 但是，如果选择此选项，则需自行处理身份验证过程。 有关详细信息，请参阅[简单的企业集成体系结构](/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration)。
 
 ## <a name="next-steps"></a>后续步骤
 

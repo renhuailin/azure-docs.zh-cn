@@ -16,10 +16,10 @@ ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev, devx-track-java
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9d1faf7aed5cf4c4975925c7a56d169dc99a7bd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87313585"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>如何：使用 ADAL 在 Android 上启用跨应用 SSO
@@ -32,18 +32,18 @@ ms.locfileid: "87313585"
 
 在本操作指南中，你将学习如何在应用程序中配置 SDK，以便向客户提供 SSO。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本操作指南假定你知道如何：
 
-- 使用 Azure Active Directory (Azure AD) 的旧门户预配你的应用。 有关详细信息，请参阅 [注册应用](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
+- 使用 Azure Active Directory (Azure AD) 的旧门户预配你的应用。 有关详细信息，请参阅[注册应用](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 - 将你的应用程序与 [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) 进行集成。
 
 ## <a name="single-sign-on-concepts"></a>单一登录概念
 
 ### <a name="identity-brokers"></a>标识中转站
 
-Microsoft 为每个移动平台提供了应用程序，可在来自不同供应商的应用程序之间桥接凭据，并支持需要一个安全位置来验证凭据的特殊增强功能。 这些被称为**中转站**。
+Microsoft 为每个移动平台提供了应用程序，可在来自不同供应商的应用程序之间桥接凭据，并支持需要一个安全位置来验证凭据的特殊增强功能。 这些被称为 **中转站**。
 
 在 iOS 和 Android 平台上，中转站通过可下载的应用程序提供，客户可以独立安装这些应用程序，也可以由负责管理其员工的部分或全部设备的公司推送到设备。 中转站支持仅为某些应用程序管理安全性，或者为整个设备管理安全性，具体取决于 IT 管理配置。 在 Windows 中，此功能由内置于操作系统的帐户选择器提供，在技术上被称为 Web 身份验证中转站。
 
@@ -60,7 +60,7 @@ Microsoft 为每个移动平台提供了应用程序，可在来自不同供应�
 
 #### <a name="how-microsoft-ensures-the-application-is-valid"></a>Microsoft 如何确保应用程序有效
 
-确保调用 broker 的应用程序的标识对于 broker 辅助登录中提供的安全性至关重要。 iOS 和 Android 都不会强制实施仅对给定应用程序有效的唯一标识符，因此恶意应用程序可能“假冒”合法应用程序的标识符，并接收对合法应用程序适用的令牌。 为了确保在运行时 Microsoft 始终与适当的应用程序进行通信，我们会要求开发人员在将其应用程序注册到 Microsoft 时提供自定义重定向 URI。 **下面详细讨论开发人员应如何设计此重定向 URI。** 此自定义 redirectURI 包含应用程序的证书指纹，并由 Google Play Store 确保其对应用程序是唯一的。 当应用程序调用中转站时，中转站会请求 Android 操作系统为其提供调用中转站的证书指纹。 在调用我们的标识系统时，中转站会向 Microsoft 提供此证书指纹。 如果应用程序的证书指纹与开发人员在注册期间提供给我们的证书指纹不匹配，我们将拒绝应用程序访问所请求的资源的令牌。 此检查可确保只有开发人员注册的应用程序收到令牌。
+必须确保调用中转站的应用程序的标识有效，这对于维护中转站辅助登录的安全性至关重要。 iOS 和 Android 都不会强制实施仅对给定应用程序有效的唯一标识符，因此恶意应用程序可能“假冒”合法应用程序的标识符，并接收对合法应用程序适用的令牌。 为了确保在运行时 Microsoft 始终与适当的应用程序进行通信，我们会要求开发人员在将其应用程序注册到 Microsoft 时提供自定义重定向 URI。 **下面详细讨论开发人员应如何设计此重定向 URI。** 此自定义 redirectURI 包含应用程序的证书指纹，并由 Google Play Store 确保其对应用程序是唯一的。 当应用程序调用中转站时，中转站会请求 Android 操作系统为其提供调用中转站的证书指纹。 在调用我们的标识系统时，中转站会向 Microsoft 提供此证书指纹。 如果应用程序的证书指纹与开发人员在注册期间提供给我们的证书指纹不匹配，我们将拒绝应用程序访问所请求的资源的令牌。 此检查可确保只有开发人员注册的应用程序收到令牌。
 
 SSO 中转登录具有以下优点：
 
@@ -116,7 +116,7 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 #### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>步骤 2：使用 URL 方案建立新的重定向 URI
 
-若要确保正确的应用程序收到返回的凭据令牌，需要确保以 Android 操作系统可以验证的方式返回到应用程序中。 Android 操作系统使用 Google Play Store 中的证书哈希。 恶意应用程序无法欺骗此证书哈希。 结合中转站应用程序的 URI，Microsoft 可确保令牌返回到正确的应用程序。 必须在应用程序中注册唯一的重定向 URI。
+为了确保由正确的应用程序接收返回的凭据令牌，我们需要确保以 Android 操作系统可以验证的方式回调应用程序。 Android 操作系统使用 Google Play Store 中的证书哈希。 恶意应用程序无法欺骗此证书哈希。 结合中转站应用程序的 URI，Microsoft 可确保令牌返回到正确的应用程序。 必须在应用程序中注册唯一的重定向 URI。
 
 重定向 URI 必须采用正确的格式：
 

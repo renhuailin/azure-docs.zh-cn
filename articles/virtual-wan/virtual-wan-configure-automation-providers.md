@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟 WAN 合作伙伴自动化指南 |Microsoft Docs
+title: Azure 虚拟 WAN 合作伙伴自动化指南 | Microsoft Docs
 description: 设置自动化环境以连接和配置 Azure 虚拟 WAN 的本地 VPN 或 SD-WAN CPE 或分支设备。
 services: virtual-wan
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.openlocfilehash: 29fff3a6a430e3bc1a0b3a13876b55d22f7cb545
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94566463"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>适用于虚拟 WAN 合作伙伴的自动化指南
@@ -97,7 +97,7 @@ ms.locfileid: "94566463"
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * Vpngateway 连接配置详细信息，例如 BGP、预共享密钥等  。PSK 是自动生成的预共享密钥。 始终可以在“概述”页中为自定义 PSK 编辑连接。
+    * Vpngateway 连接配置详细信息，例如 BGP、预共享密钥等。PSK 是自动生成的预共享密钥。 始终可以在“概述”页中为自定义 PSK 编辑连接。
   
 **示例设备配置文件**
 

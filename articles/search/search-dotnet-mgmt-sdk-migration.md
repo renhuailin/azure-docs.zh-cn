@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88936701"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>升级 Azure 搜索 .NET 管理 SDK 的版本
@@ -26,7 +26,7 @@ ms.locfileid: "88936701"
 
 | SDK 版本 | 相应的 REST API 版本 | 功能添加或行为变更 |
 |-------------|--------------------------------|-------------------------------------|
-| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api 版本 = 2020-30-20 | 添加端点安全 (IP 防火墙并与 [Azure Private Link](../private-link/private-endpoint-overview.md) 集成)  |
+| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api-version=2020-30-20 | 添加终结点安全（IP 防火墙并与 [Azure 专用链接](../private-link/private-endpoint-overview.md)集成） |
 | [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api-version=2019-10-01 | 可用性改进。 针对[列出查询密钥](/rest/api/searchmanagement/querykeys/listbysearchservice)的中断性变更（GET 已停用）。 |
 | [1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api-version=2015-08-19  | 第一个版本 |
 
@@ -40,23 +40,23 @@ ms.locfileid: "88936701"
 
 1. 在修复了任何生成错误后，可以对应用程序进行更改，以利用新功能。 
 
-## <a name="upgrade-to-30"></a>升级到3。0
+## <a name="upgrade-to-30"></a>升级到 3.0
 
-版本3.0 通过限制对 IP 范围的访问来添加私有终结点保护，并可选择与在公共 internet 上不可见的搜索服务的 Azure 专用链接集成。
+版本 3.0 通过限制对 IP 范围的访问，以及（可选）与 Azure 专用链接集成来提供在公共 Internet 上不可见的搜索服务，从而增加专用终结点保护。
 
 ### <a name="new-apis"></a>新 API
 
 | API | 类别| 详细信息 |
 |-----|--------|------------------|
-| [NetworkRuleSet](/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP 防火墙 | 将对服务终结点的访问限制到允许的 IP 地址的列表。 请参阅 [配置 IP 防火墙](service-configure-firewall.md) 了解概念和门户说明。 |
+| [NetworkRuleSet](/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP 防火墙 | 将对服务终结点的访问限制为允许的 IP 地址的列表。 有关概念和门户说明，请参阅[配置 IP 防火墙](service-configure-firewall.md)。 |
 | [共享的专用链接资源](/rest/api/searchmanagement/sharedprivatelinkresources) | 专用链接 | 创建要由搜索服务使用的共享专用链接资源。  |
-| [专用终结点连接](/rest/api/searchmanagement/privateendpointconnections) | 专用链接 | 通过专用终结点建立和管理搜索服务的连接。 请参阅创建概念和门户说明的 [专用终结点](service-create-private-endpoint.md) 。|
-| [专用链接资源](/rest/api/searchmanagement/privatelinkresources/) | 专用链接 | 对于具有专用终结点连接的搜索服务，获取同一个虚拟网络中使用的所有服务的列表。 如果搜索解决方案包括从 Azure 数据源提取的索引器 (Azure 存储、Cosmos DB、Azure SQL) ，或者使用认知服务或 Key Vault，则所有这些资源都应在虚拟网络中具有终结点，并且此 API 应返回列表。 |
-| [PublicNetworkAccess](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| 专用链接 | 这是创建或更新服务请求的属性。 禁用时，专用链接是唯一的访问模态。 |
+| [专用终结点连接](/rest/api/searchmanagement/privateendpointconnections) | 专用链接 | 通过专用终结点建立和管理与搜索服务的连接。 有关概念和门户说明，请参阅[创建专用终结点](service-create-private-endpoint.md)。|
+| [专用链接资源](/rest/api/searchmanagement/privatelinkresources/) | 专用链接 | 对于具有专用终结点连接的搜索服务，获取同一个虚拟网络中使用的所有服务的列表。 如果搜索解决方案包括从 Azure 数据源（Azure 存储、Cosmos DB、Azure SQL）拉取的索引器，或者使用认知服务或密钥保管库，则所有这些资源都应在虚拟网络中具有终结点，并且此 API 应返回列表。 |
+| [PublicNetworkAccess](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| 专用链接 | 这是有关创建或更新服务请求的属性。 禁用时，专用链接是唯一的访问模态。 |
 
 ### <a name="breaking-changes"></a>中断性变更
 
-你不能再对 [列出查询密钥](/rest/api/searchmanagement/querykeys/listbysearchservice) 请求使用 GET。 在以前的版本中，你可以使用 GET 或 POST，在此版本中，在所有发布中，只支持 POST。 
+你不能再对[列出查询密钥](/rest/api/searchmanagement/querykeys/listbysearchservice)请求使用 GET。 在以前的版本中，你可以使用 GET 或 POST，在此版本中以及以后的所有版本中，仅支持 POST。 
 
 ## <a name="upgrade-to-20"></a>升级到 2.0
 

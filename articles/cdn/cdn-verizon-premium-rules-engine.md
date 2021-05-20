@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87040211"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>在 Verizon Premium 规则引擎中使用 Azure CDN 覆盖 HTTP 行为
@@ -55,7 +55,7 @@ Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，
     ![CDN 新规则选项](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > 多个规则的列出顺序会影响处理它们的方式。 后一个规则可能会覆盖前一个规则所指定的操作。 例如，如果你有一个规则，该规则允许基于请求属性访问某个资源，而该规则拒绝对所有请求的访问，则第二个规则将覆盖第一个规则。 仅当规则与相同的属性交互时，规则才会重写早期规则。
+   > 多个规则的列出顺序会影响处理它们的方式。 后一个规则可能会覆盖前一个规则所指定的操作。 例如，如果你有一个允许基于请求属性访问资源的规则和一个拒绝访问所有请求的规则，则第二个规则将替代第一个规则。 规则只有与相同属性进行交互时，才会替代以前的规则。
    >
 
 3. 在“**名称/描述**”文本框中输入一个名称。

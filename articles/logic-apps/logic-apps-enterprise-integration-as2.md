@@ -9,27 +9,27 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/08/2020
 ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91856664"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
 
 > [!IMPORTANT]
-> 不推荐使用原始 AS2 连接器，因此除非需要跟踪功能，否则请改用 **AS2 (v2) ** 连接器。 除跟踪外，v2 连接器提供与原始版本相同的功能，是逻辑应用运行时的固有功能，并且在消息大小、吞吐量和延迟方面有显著的性能改进。 此外，v2 连接器不需要创建与集成帐户的连接。 但要求执行先决条件中所述的操作，确保将集成帐户关联到你计划在其中使用连接器的逻辑应用。
+> 原始 AS2 连接器已被弃用，因此除非你需要跟踪功能，否则请改用 AS2 (v2) 连接器。 除跟踪外，v2 连接器提供与原始版本相同的功能，是逻辑应用运行时固有的，并且在消息大小、吞吐量和延迟方面有显著的性能改进。 另外，v2 连接器不要求与集成帐户建立连接。 但要求执行先决条件中所述的操作，确保将集成帐户关联到你计划在其中使用连接器的逻辑应用。
 
-若要在 Azure 逻辑应用中使用 AS2 消息，可以使用 AS2 连接器，此连接器提供支持和管理 AS2 (版本 1.2) 通信的触发器和操作。 例如，若要在传输消息时确保安全性和可靠性，可以使用以下操作：
+若要在 Azure 逻辑应用中使用 AS2 消息，可以使用 AS2 连接器，它提供支持和管理 AS2（版本 1.2）通信的触发器和操作。 例如，若要在传输消息时确保安全性和可靠性，可以使用以下操作：
 
-* [**AS2 编码**操作](#encode)：可以通过消息处置通知 (MDN) 提供加密、数字签名和确认功能，这有助于为不可否认性提供支持。 例如，此操作会应用 AS2/HTTP 标头并执行以下任务（在配置好以后）：
+* [**AS2 编码** 操作](#encode)：可以通过消息处置通知 (MDN) 提供加密、数字签名和确认功能，这有助于为不可否认性提供支持。 例如，此操作会应用 AS2/HTTP 标头并执行以下任务（在配置好以后）：
 
   * 对传出消息进行签名。
   * 加密传出消息。
   * 压缩消息。
   * 在 MIME 标头中传输文件名。
 
-* [**AS2 解码**操作](#decode)：可以通过消息处置通知 (MDN) 提供解密、数字签名和确认功能。 例如，该操作执行以下任务：
+* [**AS2 解码** 操作](#decode)：可以通过消息处置通知 (MDN) 提供解密、数字签名和确认功能。 例如，该操作执行以下任务：
 
   * 处理 AS2/HTTP 标头。
   * 协调收到的 MDN 和原始的出站消息。

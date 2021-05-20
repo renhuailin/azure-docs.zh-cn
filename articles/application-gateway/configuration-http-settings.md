@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: c0c939a6a8323dfdfafddb46ccdb7d7ef3dd2f2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89652776"
 ---
 # <a name="application-gateway-http-settings-configuration"></a>应用程序网关 HTTP 设置配置
@@ -31,7 +31,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 请注意，默认关联 Cookie 名称是 *ApplicationGatewayAffinity*，可以对其进行更改。 如果使用自定义相关性 Cookie 名称，则会添加一个以 CORS 为后缀的附加 Cookie。 例如，*CustomCookieNameCORS*。
 
 > [!NOTE]
-> 如果设置了属性 *SameSite = None*，则 Cookie 还必须包含 *Secure* 标志，并且必须通过 HTTPS 发送。  如果需要基于 CORS 的会话相关性，则必须将工作负载迁移到 HTTPS。 请参阅此处的应用程序网关的 TLS 卸载和端到端 TLS 文档– [概述](ssl-overview.md)： [使用 AZURE 门户配置具有 TLS 终止的应用程序网关](create-ssl-portal.md)， [并通过门户使用应用程序网关配置端到端 tls](end-to-end-ssl-portal.md)。
+> 如果设置了属性 *SameSite = None*，则 Cookie 还必须包含 *Secure* 标志，并且必须通过 HTTPS 发送。  如果需要基于 CORS 的会话相关性，则必须将工作负载迁移到 HTTPS。 请参阅此处提供的适用于应用程序网关的 TLS 卸载和端到端 TLS 文档 - [概述](ssl-overview.md)、[使用 Azure 门户配置支持 TLS 终止的应用程序网关](create-ssl-portal.md)、[在门户中使用应用程序网关配置端到端 TLS](end-to-end-ssl-portal.md)。
 
 ## <a name="connection-draining"></a>连接清空
 
@@ -93,7 +93,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 
 例如，使用多租户服务作为后端时。 应用服务是使用共享空间和单个 IP 地址的多租户服务。 因此，只能通过自定义域设置中配置的主机名访问应用服务。
 
-默认情况下，自定义域名为 *example.azurewebsites.net*。 若要通过未显式注册到应用服务中的主机名或者通过应用程序网关的 FQDN 使用应用程序网关访问应用服务，请将原始请求中的主机名替代为应用服务的主机名。 为此，请启用“从后端地址中选取主机名”设置。
+自定义域名默认为 example.azurewebsites.net。 若要通过未显式注册到应用服务中的主机名或者通过应用程序网关的 FQDN 使用应用程序网关访问应用服务，请将原始请求中的主机名替代为应用服务的主机名。 为此，请启用“从后端地址中选取主机名”设置。
 
 对于其现有自定义 DNS 名称已映射到应用服务的自定义域，不需要启用此设置。
 

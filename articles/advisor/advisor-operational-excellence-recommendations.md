@@ -4,10 +4,10 @@ description: 使用 Azure 顾问为 Azure 订阅优化和完善卓越运营。
 ms.topic: article
 ms.date: 10/24/2019
 ms.openlocfilehash: 0b938a0c7a42182bb8d2a50b48d65a0844d952a6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100579950"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>使用 Azure 顾问实现卓越运营
@@ -56,7 +56,7 @@ Azure Policy 是 Azure 中的一项服务，可用于创建、分配和管理策
 
 顾问会建议一些单独的 Azure 策略，以帮助客户通过采用最佳做法来实现卓越运营。 如果客户决定分配建议的策略，则我们会取消该建议。 如果客户决定稍后删除策略，则顾问将继续取消该建议，因为我们会将其删除视为以下强信号：
 
-1.  客户删除了该策略，因为虽然顾问的建议，但它不适用于其特定用例。 
+1.  客户删除了策略，因为尽管有顾问的建议，但它并不适用于客户的特定用例。 
 2.  客户在分配和删除策略后就会了解并熟悉该策略，如果策略以后与客户用例相关，则客户可以在没有指导的情况下按需再次分配或删除策略。 如果客户发现再次分配相同的策略可以使其利益最大化，则可以在 Azure Policy 中执行此操作，而无需顾问的建议。 请注意，此逻辑仅适用于“卓越运营”类别中的策略建议。 这些规则不适用于安全建议。  
 
 

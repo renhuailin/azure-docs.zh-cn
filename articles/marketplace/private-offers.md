@@ -1,6 +1,6 @@
 ---
-title: Microsoft 商业应用商店中的专用产品/服务
-description: 适用于应用和服务发布者的 Microsoft 商用 marketplace 中的私有产品/服务。
+title: Microsoft 商业市场中的专用产品/服务
+description: Microsoft 商业市场中面向应用和服务发布者的专用产品/服务。
 ms.subservice: partnercenter-marketplace-publisher
 ms.service: marketplace
 ms.topic: article
@@ -8,74 +8,74 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 02/22/2021
 ms.openlocfilehash: 7c02c41379cfb886fd7e6f84486d815d3cdbfb5b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097170"
 ---
-# <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商业应用商店中的专用产品/服务
+# <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商业市场中的专用产品/服务
 
-专用产品/服务也称为专用计划，使发布者能够创建仅对目标客户可见的计划。 本文介绍专用产品/服务的选项和优点。
+专用产品/服务也称为专用计划，可使发布者能够创建仅对目标客户可见的计划。 本文介绍专用产品/服务的选项和优势。
 
-## <a name="unlock-enterprise-deals-with-private-offers"></a>通过专用产品/服务解锁企业交易
+## <a name="unlock-enterprise-deals-with-private-offers"></a>让企业使用专用产品/服务达成交易
 
-通过创建专用产品/服务，发布者可以为具有企业所需功能的目标客户提供自定义解决方案：
+通过创建专用产品/服务，发布者可为目标客户专门提供具有企业所需功能的自定义解决方案：
 
 - 议价：让发布者进一步开放公开销售套餐的折扣和还价。
 - 专属条款和条件：让发布者针对特定的客户定制条款和条件。
-- 通过 *专用配置*，发布者可以将其虚拟机、Azure 应用程序和软件即服务作为服务 (SaaS) 到单个客户的需求。 在将新产品功能启动到所有客户之前，此选项还允许发布者提供对新产品功能的预览访问权限。
+- 专业配置：让发布者根据单个客户的需求定制其虚拟机、Azure 应用程序和软件即服务 (SaaS)。 在向所有客户推出新产品之前，此选项还可让发布者提供产品功能的预览访问。
 
-专用产品/服务允许发布者利用公有 marketplace 的规模和全球可用性，并提供所需的灵活性和控制度来协商和交付自定义交易和配置。 企业现在可以按预期方式购买和销售。
+专用产品/服务使发布者能够利用公开市场的规模和全球可用性，使用所需的控制机制灵活协商和提供自定义的交易方式与配置。 现在，企业可根据自己的预期采购和销售解决方案。
 
 ## <a name="create-private-offers-using-plans"></a>使用计划创建专用产品/服务
 
-对于 *具有计划的新的或现有的产品/服务*，发布者可以通过创建新计划 (以前称为 sku) 并将它们标记为专用，来轻松创建新的专用变体。 每个产品/服务最多可以有45个私有计划。
+对于包含计划的新的或现有产品/服务，发布者可以通过创建新计划（以前称为 SKU）轻松创建新的专用变体，并将其标记为专用。 每个产品/服务最多可以有 45 个专用计划。
 
 <!--- [Private SKUs]() --->
 
-私有计划适用于以下产品/服务类型：
+专用计划适用于以下产品/服务类型：
 
 - Azure 虚拟机
-- 作为解决方案模板或托管应用程序实现 Azure 应用程序 () 
+- Azure 应用程序（作为解决方案模板或托管应用程序实现）
 - 托管服务
 - SaaS 产品/服务
 
-私人计划是产品/服务的组成部分，只由目标客户可购买。 专用计划仅供目标客户查看和可购买。 在 Azure Global 和 Azure 政府版中，客户可以使用私有计划。
+专用计划是产品/服务的组成部分，只能由目标客户看到和购买。 专用计划只能由目标客户查看和购买。 在 Azure 全球云和 Azure 政府云中，客户可以使用专用计划。
 
-私有计划可以重复使用基本映像和/或提供已为公用计划发布的元数据。 此选项可让发布者创建公共产品/服务的多个专用变体，而无需发布同一基础映像的多个版本并提供元数据。 仅对于 Azure 虚拟机和 Azure 应用程序提供，当专用计划与公共计划共享基本映像时，对产品/服务的基本映像所做的任何更改都将使用该基本映像传播到所有公用和专用计划。
+专用计划可以重复使用已为公共计划发布的基础映像和/或产品（服务）元数据。 此选项可让发布者创建公共产品/服务的多个专用变体，而无需发布相同基本映像和产品/服务元数据的多个版本。 （仅适用于 Azure 虚拟机和 Azure 应用程序产品/服务）当某个专用计划与公共计划共享基本映像时，对产品/服务基本映像所做的任何更改将使用该基本映像在所有公共和专用计划之间传播。
 
-对于 *仅包含私有计划的新产品*/服务，发布者可以创建其产品/服务作为任何其他产品/服务，然后将计划标记为私有。 只有不与产品/服务关联的客户才能在 [Azure 门户](https://azure.microsoft.com/features/azure-portal/) 中发现或访问仅具有私有计划的产品/服务。
+对于仅包含专用计划的新产品/服务，发布者可与往常一样创建产品/服务，然后将计划标记为专用。 对于仅包含专用计划的产品/服务，不与该产品/服务关联的客户无法在 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)中发现或访问它。
 
 >[!NOTE]
->仅包含私有计划的产品/服务将不会显示在公共 Azure Marketplace 或 AppSource 中。
+>仅包含专用计划的产品/服务不会显示在公共 Azure 市场或 AppSource 中。
 
-## <a name="target-customers-with-private-offers"></a>提供专用产品/服务的目标客户
+## <a name="target-customers-with-private-offers"></a>确定专用产品/服务的目标客户
 
-对于新的和现有的专用套餐，发布者可以使用订阅标识符来确定目标客户。 对于 Azure 虚拟机、Azure 应用程序和托管服务产品/服务，发布者可以将私有计划的可用性限制为单个 Azure 订阅 ID，或上传最多10000个 Azure 订阅 Id 的 CSV。 对于 SaaS 产品/服务，发布者可以使用手动或 CSV 上传方法关联 Azure Active Directory 租户 ID，以限制私有计划的可用性。
+对于新的和现有的专用套餐，发布者可以使用订阅标识符来确定目标客户。 对于 Azure 虚拟机、Azure 应用程序和托管服务产品/服务，发布者可将专用计划的可用性限制为单个 Azure 订阅 ID，或上传最多包含 10,000 个 Azure 订阅 ID 的 CSV。 对于 SaaS 产品/服务，发布者可以关联 Azure Active Directory 租户 ID，以通过手动方法或 CSV 上传方法来限制专用计划的可用性。
 
-一旦产品/服务已通过认证和发布，就可以使用 "同步专用订阅" 功能在计划中更新或删除客户。 利用此功能，发布者可以快速轻松地更新显示了私有计划的客户列表，而无需证明或再次发布该产品/服务。
+认证并发布产品/服务后，可以使用“同步专用订阅”功能，在计划中更新或删除客户。 此功能可让发布者快速轻松地更新可以看到专用计划的客户列表，且无需再次认证或发布产品/服务。
 
 ## <a name="deploying-private-offers"></a>部署专用产品/服务
 
-登录到 Azure 门户后，客户可以按照以下步骤选择你的专用产品/服务。
+登录到 Azure 门户后，客户可按照以下步骤选择你的专用产品/服务。
 
 1. 登录到 [Azure 门户](https://ms.portal.azure.com/)。
-1. 在 " **Azure 服务**" 下，选择 " **创建资源**"。
-1. 在 " **新建** " 页上的 " **Azure Marketplace**" 旁边，选择 " **查看全部**"。 此时将显示 "Marketplace" 页。
-1. 在左侧导航栏中，选择 " **专用产品/服务**"。
+1. 在“Azure 服务”下，选择“创建资源” 。
+1. 在“新建”页上的“Azure 市场”旁边，选择“全部查看”  。 此时会显示“市场”页。
+1. 在左侧导航栏中，选择“专用产品/服务”。
 
 > [!NOTE]
-> 只能在 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)中发现专用产品/服务。 它们不显示在 [Microsoft AppSource](https://appsource.microsoft.com/) 或 [Azure Marketplace](https://azuremarketplace.microsoft.com)中。 若要了解有关发布到不同的商业 marketplace 在线商店的详细信息，请参阅 [列表选项简介](./determine-your-listing-type.md)。
+> 只能在 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)中发现专用产品/服务。 它们不会显示在 [Microsoft AppSource](https://appsource.microsoft.com/) 或 [Azure 市场](https://azuremarketplace.microsoft.com)中。 若要详细了解如何发布到不同的商业市场在线商店，请参阅[列表选项简介](./determine-your-listing-type.md)。
 
-专用产品/服务还将显示在搜索结果中，并可通过命令行和 Azure 资源管理器模板进行部署，就像任何其他产品。
+专用产品/服务也会显示在搜索结果中，并与其他任何产品/服务一样，可以通过命令行和 Azure 资源管理器模板进行部署。
 
-[![[在搜索结果中出现的专用产品/服务。]](media/marketplace-publishers-guide/private-offer.png)](media/marketplace-publishers-guide/private-offer.png#lightbox)
+[![[搜索结果中显示的专用产品/服务。]](media/marketplace-publishers-guide/private-offer.png)](media/marketplace-publishers-guide/private-offer.png#lightbox)
 
-专用套餐也会显示在搜索结果中。 只需查找 **专用** 徽章即可。
+专用套餐也会显示在搜索结果中。 只需查看“专用”徽章即可。
 
 >[!Note]
->通过云解决方案提供商的经销商 (CSP) program 建立的订阅不支持专用产品/服务。
+>通过云解决方案提供商 (CSP) 计划的经销商建立的订阅不支持专用产品/服务。
 
 <!---
 ## Next steps

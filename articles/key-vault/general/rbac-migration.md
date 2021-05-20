@@ -3,18 +3,17 @@ title: 迁移到 Azure 基于角色的访问控制 | Microsoft Docs
 description: 了解如何从保管库访问策略迁移到 Azure 角色。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e7a8fd53e78e1aeab9db5af0432d0c3f1d786823
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
-ms.translationtype: MT
+ms.openlocfilehash: a369ed26ca91dbf951b28b99250c6307608c5eb3
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526946"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749071"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>从保管库访问策略迁移到 Azure 基于角色的访问控制权限模型
 
@@ -40,12 +39,12 @@ Azure RBAC 基于角色的访问控制有多个 Azure 内置角色，可将其�
 
 用于密钥、证书和机密访问管理的 Key Vault 内置角色：
 - Key Vault 管理员
-- Key Vault 读取器
-- Key Vault 证书官员
-- Key Vault 加密官
+- Key Vault 读取者
+- 密钥保管库证书管理人员
+- Key Vault 加密管理人员
 - Key Vault 加密用户
 - 密钥保管库加密服务加密用户
-- Key Vault 秘密官员
+- Key Vault 机密管理人员
 - Key Vault 机密用户
 
 有关现有内置角色的详细信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)
@@ -70,11 +69,11 @@ Azure RBAC 基于角色的访问控制有多个 Azure 内置角色，可将其�
 | 访问策略模板 | 操作 | Azure 角色 |
 | --- | --- | --- |
 | 密钥、机密、证书管理 | 密钥：所有操作 <br>证书：所有操作<br>机密：所有操作 | Key Vault 管理员 |
-| 密钥和机密管理 | 密钥：所有操作 <br>机密：所有操作| Key Vault 加密官 <br> Key Vault 秘密官员 |
-| 机密和证书管理 | 证书：所有操作 <br>机密：所有操作| Key Vault 证书官员 <br> Key Vault 秘密官员|
-| 密钥管理 | 密钥：所有操作| Key Vault 加密官|
-| 机密管理 | 机密：所有操作| Key Vault 秘密官员|
-| 证书管理 | 证书：所有操作 | Key Vault 证书官员|
+| 密钥和机密管理 | 密钥：所有操作 <br>机密：所有操作| Key Vault 加密管理人员 <br> Key Vault 机密管理人员 |
+| 机密和证书管理 | 证书：所有操作 <br>机密：所有操作| Key Vault 证书管理人员 <br> Key Vault 机密管理人员|
+| 密钥管理 | 密钥：所有操作| Key Vault 加密管理人员|
+| 机密管理 | 机密：所有操作| Key Vault 机密管理人员|
+| 证书管理 | 证书：所有操作 | Key Vault 证书管理人员|
 | SQL Server 连接器 | 密钥：获取、列出、包装密钥、解包密钥 | 密钥保管库加密服务加密用户|
 | Azure Data Lake Storage 或 Azure 存储 | 密钥：获取、列出、解包密钥 | 空值<br> 所需的自定义角色|
 | Azure 备份 | 密钥：获取、列出、备份<br> 证书：获取、列出、备份 | 空值<br> 所需的自定义角色|
@@ -103,13 +102,13 @@ Azure RBAC 基于角色的访问控制有多个 Azure 内置角色，可将其�
 ## <a name="vault-access-policy-to-azure-rbac-migration-steps"></a>将保管库访问策略迁移到 Azure RBAC 的步骤
 Azure RBAC 和保管库访问策略权限模型之间存在很多差异。 为了避免迁移过程中出现中断，建议执行以下步骤。
  
-1. **识别并分配角色**：根据上面的映射表标识内置角色并根据需要创建自定义角色。 根据范围映射指南，在范围内分配角色。 有关如何将角色分配到密钥保管库的详细信息，请参阅 [使用 Azure 基于角色的访问控制提供对 Key Vault 的访问权限](rbac-guide.md)
+1. **识别并分配角色**：根据上面的映射表标识内置角色并根据需要创建自定义角色。 根据范围映射指南，在范围内分配角色。 若要详细了解如何将角色分配到密钥保管库，请参阅[通过 Azure 基于角色的访问控制提供对 Key Vault 的访问权限](rbac-guide.md)
 1. **验证角色分配**：Azure RBAC 中的角色分配可能需要几分钟才能传播。 有关如何检查角色分配的指南，请参阅[列出范围内的角色分配](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope)
 1. **在密钥保管库上配置监视和警报**：请务必启用日志记录并针对拒绝访问异常设置警报。 有关详细信息，请参阅 [Azure Key Vault 的监视和警报](./alert.md)
 1. **在 Key Vault 上设置 Azure 基于角色的访问控制权限模型**：启用 Azure RBAC 权限模型将使所有现有的访问策略失效。 如果出现错误，则可以在所有现有访问策略保持不变的情况下切换回权限模型。
 
 > [!NOTE]
-> 更改权限模型需要 "Microsoft Authorization/roleAssignments/write" 权限，这是 " [所有者](../../role-based-access-control/built-in-roles.md#owner) " 和 " [用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator) " 角色的一部分。 不支持经典订阅管理员角色，如 "服务管理员" 和 "共同管理员"。
+> 更改权限模型需要具有“Microsoft.Authorization/roleAssignments/write”权限，该权限是[所有者](../../role-based-access-control/built-in-roles.md#owner)和[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色的一部分。 不支持经典订阅管理员角色（如“服务管理员”和“共同管理员”）。
 
 > [!NOTE]
 > 启用 Azure RBAC 权限模型后，尝试更新访问策略的所有脚本都将失败。 请务必更新这些脚本以使用 Azure RBAC。

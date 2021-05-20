@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.openlocfilehash: de34c2921c7829cb6d7e7354a1ebcff44271efd3
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100545541"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>为 Azure 认知搜索配置 IP 防火墙
 
 Azure 认知搜索支持“入站防火墙支持”的 IP 规则。 此模型为搜索服务提供了额外的安全层，类似于 Azure 虚拟网络安全组中的 IP 规则。 利用这些 IP 规则，可以配置为仅允许从一组已批准的计算机和/或云服务访问搜索服务。 从这些已批准的计算机和服务访问搜索服务中存储的数据仍需调用方提供有效的授权令牌。
 
-如本文中所述，可以在 Azure 门户中设置 IP 规则。 或者，你可以使用 [管理 REST API 版本 2020-03-13](/rest/api/searchmanagement/)、 [Azure PowerShell](/powershell/module/az.search)或 [Azure CLI](/cli/azure/search)。
+如本文中所述，你可以在 Azure 门户中设置 IP 规则。 或者，你可以使用[管理 REST API 版本 2020-03-13](/rest/api/searchmanagement/)、[Azure PowerShell](/powershell/module/az.search) 或 [Azure CLI](/cli/azure/search)。
 
 ## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> 使用 Azure 门户配置 IP 防火墙
 
@@ -30,7 +30,7 @@ Azure 认知搜索支持“入站防火墙支持”的 IP 规则。 此模型为
 Azure 门户提供了以 CIDR 格式指定 IP 地址和 IP 地址范围的功能。 CIDR 表示法的示例是 8.8.8.0/24，它表示范围从 8.8.8.0 到 8.8.8.255 的 IP。
 
 > [!NOTE]
-> 为 Azure 认知搜索服务启用 IP 访问控制策略后，将拒绝从 IP 地址范围允许列表中不包含的计算机向数据平面发出的所有请求。 配置 IP 规则时，将禁用 Azure 门户的某些功能。 你将能够查看和管理服务级别信息，但出于安全方面的考虑，已限制对索引数据以及此服务中的各种组件（如索引、索引器和技能集定义）的门户访问。 作为门户的替代方法，可以使用 [VS Code 扩展](https://aka.ms/vscode-search) 与服务中的各种组件进行交互。
+> 为 Azure 认知搜索服务启用 IP 访问控制策略后，将拒绝从 IP 地址范围允许列表中不包含的计算机向数据平面发出的所有请求。 配置 IP 规则时，将禁用 Azure 门户的某些功能。 你将能够查看和管理服务级别信息，但出于安全方面的考虑，已限制对索引数据以及此服务中的各种组件（如索引、索引器和技能集定义）的门户访问。 可以使用 [VS Code 扩展](https://aka.ms/vscode-search)与服务中的各种组件进行交互，以此替代门户。
 
 ### <a name="requests-from-your-current-ip"></a>来自当前 IP 的请求
 
@@ -56,6 +56,6 @@ Azure 门户提供了以 CIDR 格式指定 IP 地址和 IP 地址范围的功能
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何通过专用链接访问搜索服务，请参阅以下文章：
+有关如何通过专用链接访问搜索服务的详细信息，请参阅以下文章：
 
 * [创建专用终结点以建立到 Azure 认知搜索的安全连接](service-create-private-endpoint.md)

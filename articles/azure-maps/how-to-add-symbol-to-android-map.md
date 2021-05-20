@@ -1,6 +1,6 @@
 ---
-title: 向 Android maps 添加符号层 |Microsoft Azure 映射
-description: 了解如何向地图添加标记。 查看一个示例，该示例使用 Azure Maps Android SDK 添加一个符号层，其中包含来自数据源的基于点的数据。
+title: 向 Android 地图添加符号层 | Microsoft Azure Maps
+description: 了解如何向地图添加标记。 来看一个示例，该示例使用 Azure Maps Android SDK 添加包含数据源中基于点的数据的符号层。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 2/26/2021
@@ -10,28 +10,28 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: edb758469a06dcb7914025ea449b9d952e939533
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097204"
 ---
-# <a name="add-a-symbol-layer-android-sdk"></a>Android SDK 添加符号层 () 
+# <a name="add-a-symbol-layer-android-sdk"></a>添加符号层 (Android SDK)
 
-本文说明如何使用 Azure Maps Android SDK 将数据源中的点数据呈现为地图上的符号层。 符号层将点呈现为地图上的图像和文本。
+本文介绍如何使用 Azure Maps Android SDK 将数据源中的点数据呈现为地图上的符号层。 符号层将点呈现为地图上的图像和文本。
 
 > [!TIP]
-> 默认情况下，符号层将呈现数据源中所有几何图形的坐标。 若要将该层限制为仅呈现点几何特征，请将 `filter` 层的选项设置为 `eq(geometryType(), "Point")` 。 如果还想要包含 MultiPoint 功能，请将层的 `filter` 选项设置为 `any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint"))` 。
+> 默认情况下，符号层将呈现数据源中所有几何图形的坐标。 若要限制层，使其仅呈现点几何图形特征，请将层的 `filter` 选项设置为 `eq(geometryType(), "Point")`。 如果还需要包含 MultiPoint 特征，请将层的 `filter` 选项设置为 `any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint"))`。
 
 ## <a name="prerequisites"></a>先决条件
 
-请确保完成 [快速入门：创建 Android 应用](quick-android-map.md) 文档中的步骤。 本文中的代码块可以插入到 maps `onReady` 事件处理程序中。
+请务必完成[快速入门：创建 Android 应用](quick-android-map.md)文档中的步骤。 可以将本文中的代码块插入到地图的 `onReady` 事件处理程序中。
 
 ## <a name="add-a-symbol-layer"></a>添加符号层
 
-你需要先执行几个步骤，然后才能将符号层添加到地图中。 首先，创建一个数据源，并将其添加到地图中。 创建符号层。 然后，将数据源传递到符号层，以从数据源中检索数据。 最后，将数据添加到数据源，以便呈现一些内容。
+在可以将符号层添加到地图之前，你需要先执行几个步骤。 首先，创建一个数据源，并将其添加到地图。 创建符号层。 然后，将数据源传入符号层以从数据源中检索数据。 最后，将数据添加到数据源，便可呈现一些内容。
 
-下面的代码演示了加载后应添加到映射的内容。 此示例使用符号层在地图上呈现一个点。
+下面的代码演示在加载地图后应添加到地图的内容。 此示例使用符号层在地图上呈现单个点。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -71,15 +71,15 @@ map.layers.add(layer)
 
 ::: zone-end
 
-有三种不同类型的点数据可以添加到地图中：
+有三种可添加到地图的不同类型的点数据：
 
-- GeoJSON 点几何-此对象只包含一个点的坐标，而不包含其他任何内容。 `Point.fromLngLat`静态方法可用于轻松创建这些对象。
-- GeoJSON MultiPoint geometry-此对象包含多个点的坐标，而不包含其他任何点。 将一个点数组传递到 `MultiPoint` 类，以创建这些对象。
-- GeoJSON 功能-此对象包含任何 GeoJSON 几何和一组属性，其中包含与几何图形关联的元数据。
+- GeoJSON Point 几何 - 此对象仅包含点的坐标，而不包含其他任何内容。 可使用 `Point.fromLngLat` 静态方法轻松创建这些对象。
+- GeoJSON MultiPoint 几何 - 此对象仅包含多点的坐标，而不包含其他任何内容。 将点数组传递到 `MultiPoint` 类以创建这些对象。
+- GeoJSON Feature - 此对象包含任何 GeoJSON 几何和一组包含与几何关联的元数据的属性。
 
-有关详细信息，请参阅创建 [数据源](create-data-source-android-sdk.md) 文档，并在地图上创建和添加数据。
+有关详细信息，请参阅[创建数据源](create-data-source-android-sdk.md)文档，了解创建数据并将数据添加到地图。
 
-下面的代码示例将创建一个 GeoJSON 点几何图形，并将其传递给 GeoJSON 功能，并将一个 `title` 值添加到其属性中。 此 `title` 属性显示为地图上符号图标上方的文本。
+下面的代码示例创建 GeoJSON Point 几何图形，并传递给 GeoJSON Feature，并在其属性中添加 `title` 值。 `title` 属性在地图的符号图标上方显示为文本。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -137,16 +137,16 @@ map.layers.add(layer)
 
 ::: zone-end
 
-以下屏幕截图显示了上面的代码呈现使用带有符号层的图标和文本标签的点功能。
+以下屏幕截图显示了使用带有符号层的图标和文本标签来呈现点特征的上述代码。
 
-![使用符号层呈现的使用符号层的地图，其中显示了点功能的图标和文本标签](media/how-to-add-symbol-to-android-map/android-map-pin.png)
+![带有使用符号层呈现的点的地图，其中显示了点特征的图标和文本标签](media/how-to-add-symbol-to-android-map/android-map-pin.png)
 
 > [!TIP]
-> 默认情况下，符号层通过隐藏重叠的符号来优化符号的呈现。 放大时，隐藏的符号将变为可见。 若要禁用此功能并始终呈现所有符号，请将 `iconAllowOverlap` 和 `textAllowOverlap` 选项设置为 `true` 。
+> 默认情况下，符号层通过隐藏重叠的符号来优化符号的呈现。 放大时，隐藏的符号将变为可见。 若要禁用此功能并始终呈现所有符号，请将 `textAllowOverlap` 和 `iconAllowOverlap` 选项设置为 `true`。
 
-## <a name="add-a-custom-icon-to-a-symbol-layer"></a>将自定义图标添加到符号层
+## <a name="add-a-custom-icon-to-a-symbol-layer&quot;></a>将自定义图标添加到符号层
 
-符号层是使用 WebGL 呈现的。 因此，所有资源（例如图标图像）必须载入 WebGL 上下文。 此示例演示如何将自定义图标添加到地图资源。 然后，此图标用于使用地图上的自定义符号呈现点数据。 符号层的 `textField` 属性要求指定一个表达式。 在这种情况下，我们想要呈现温度属性。 由于温度为数字，因此需要将其转换为字符串。 此外，我们还需要在其中追加 "° F"。 表达式可用于执行此串联; `concat(Expression.toString(get("temperature")), literal("°F"))`.
+符号层是使用 WebGL 呈现的。 因此，所有资源（例如图标图像）必须载入 WebGL 上下文。 此示例演示如何将自定义图标添加到地图资源。 然后，此图标用于使用自定义符号在地图上呈现点数据。 符号层的 `textField` 属性要求指定一个表达式。 在本例中，我们希望呈现温度属性。 由于温度为数字，因此需要将其转换为字符串。 此外，我们还需要在其后追加“°F”。 可使用表达式执行此串联；`concat(Expression.toString(get(&quot;temperature")), literal("°F"))`。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -211,28 +211,28 @@ val layer = SymbolLayer(
 
 ::: zone-end
 
-对于本示例，以下图像已加载到应用程序的 "图形" 文件夹中。
+对于本示例，以下图像已加载到应用的可绘制资源文件夹中。
 
-| ![Rain 淋浴的天气图标图像](media/how-to-add-symbol-to-android-map/showers.png)|
+| ![阵雨的天气图标图像](media/how-to-add-symbol-to-android-map/showers.png)|
 |:-----------------------------------------------------------------------:|
 | showers.png                                                  |
 
-以下屏幕截图显示了上面的代码呈现点功能，其中使用自定义图标和带符号层的带格式文本标签。
+以下屏幕截图显示了使用带有符号层的自定义图标和带格式的文本标签来呈现点特征的上述代码。
 
-![使用符号层绘制的点映射，其中显示自定义图标和点功能的格式化文本标签](media/how-to-add-symbol-to-android-map/android-custom-symbol-layer.png)
+![带有使用符号层呈现的点的地图，其中显示了点特征的自定义图标和带格式的文本标签](media/how-to-add-symbol-to-android-map/android-custom-symbol-layer.png)
 
 > [!TIP]
-> 如果只希望使用符号层呈现文本，则可以通过将 `iconImage` 图标选项的属性设置为来隐藏该图标 `"none"` 。
+> 如果希望使用符号层仅呈现文本，则可以通过将图标选项的 `iconImage` 属性设置为 `"none&quot;` 来隐藏该图标。
 
-## <a name="modify-symbol-colors"></a>修改符号颜色
+## <a name=&quot;modify-symbol-colors&quot;></a>修改符号颜色
 
-Azure Maps Android SDK 附带了一组默认标记图标的预定义颜色变体。 例如， `marker-red` 可以将传递到 `iconImage` 符号层的选项，以呈现该层中标记图标的红色版本。
+Azure Maps Android SDK 附带了一组默认标记图标的预定义颜色变体。 例如，可以将 `marker-red` 传递到符号层的 `iconImage` 选项，以呈现该层中标记图标的红色版本。
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
 SymbolLayer layer = new SymbolLayer(source,
-    iconImage("marker-red")
+    iconImage(&quot;marker-red")
 );
 ```
 
@@ -248,7 +248,7 @@ val layer = SymbolLayer(source,
 
 ::: zone-end
 
-下表列出了所有可用的内置图标映像名称。 所有这些标记均从可以重写的颜色资源中提取其颜色。 除了覆盖此标记的主要填充颜色。 但请注意，重写其中一个标记的颜色将应用于所有使用该图标图像的层。
+下表列出了所有可用的内置图标图像名称。 所有这些标记均从可以替代的颜色资源中提取其颜色。 除了替代此标记的主要填充颜色。 但请注意，替代其中一个标记的颜色将应用于所有使用该图标图像的层。
 
 | 图标图像名称 | 颜色资源名称 |
 |-----------------|---------------------|
@@ -259,7 +259,7 @@ val layer = SymbolLayer(source,
 | `marker-red` | `mapcontrol_marker_red` |
 | `marker-yellow` | `mapcontrol_marker_yellow` |
 
-还可以使用颜色资源名称替代所有标记的边框颜色 `mapcontrol_marker_border` 。 可以通过在应用的文件中添加具有相同名称的颜色来重写这些标记的颜色 `colors.xml` 。 例如，以下 `colors.xml` 文件会使默认标记颜色为浅绿色。
+还可使用 `mapcontrol_marker_border` 颜色资源名称替代所有标记的边框颜色。 可以通过在应用的 `colors.xml` 文件中添加同名的颜色来替代这些标记的颜色。 例如，以下 `colors.xml` 文件会使默认标记颜色为亮绿色。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -268,7 +268,7 @@ val layer = SymbolLayer(source,
 </resources>
 ```
 
-下面是默认标记矢量 XML 的修改版本，你可以修改该版本以创建默认标记的其他自定义版本。 可以将修改后的版本添加到 `drawable` 应用的文件夹，并使用将其添加到地图图像 sprite `map.images.add` ，然后将其与符号层一起使用。
+下面是默认标记向量 XML 的已修改版本，你可以修改该版本以创建默认标记的其他自定义版本。 修改后的版本可以添加到应用的 `drawable` 文件夹中，然后使用 `map.images.add` 添加到地图图像子画面中，然后与符号层一起使用。
 
 ```xml
 <vector xmlns:android="http://schemas.android.com/apk/res/android"

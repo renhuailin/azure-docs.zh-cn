@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84692513"
 ---
 # <a name="manage-vmware-vcenter-server"></a>管理 VMware vCenter 服务器
@@ -26,7 +26,7 @@ ms.locfileid: "84692513"
 为本地 VMware VM 设置灾难恢复时，Site Recovery 需要访问 vCenter Server/vSphere 主机。 然后，Site Recovery 进程服务器就可以自动发现 VM，并根据需要对其进行故障转移。 默认情况下，进程服务器在 Site Recovery 配置服务器上运行。 为配置服务器添加一个帐户以连接到 vCenter Server/vSphere 主机，如下所示：
 
 1. 登录到配置服务器。
-1. 使用桌面快捷方式打开配置服务器工具 (_cspsconfigtool.exe_) 。
+1. 使用桌面快捷方式打开配置服务器工具 (cspsconfigtool.exe)。
 1. 在“管理帐户”选项卡上，单击“添加帐户”   。
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
@@ -42,7 +42,7 @@ ms.locfileid: "84692513"
 |--- | --- | --- | ---|
 |**VM 发现/迁移（无故障回复）** | 至少一个只读用户帐户。 | 数据中心对象 –> 传播到子对象、角色=只读 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请在选中“传播到子对象”  的情况下将“无访问权”  角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。|
 |**复制/故障转移** | 至少一个只读用户帐户。 | 数据中心对象 –> 传播到子对象、角色=只读 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请在选中“传播到子对象”  的情况下将“无访问权”  角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。<br/><br/> 用于迁移，但不用于完全复制、故障转移和故障回复。|
-|**复制/故障转移/故障回复** | 建议创建一个拥有所需权限的角色 (AzureSiteRecoveryRole)，然后将它分配到 VMware 用户或组。 | 数据中心对象 –> 传播到子对象、角色=AzureSiteRecoveryRole<br/><br/> 数据存储 -> 分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/> 网络 -> 网络分配<br/><br/> 资源 -> 将 VM 分配到资源池、迁移已关机的 VM、迁移已开机的 VM<br/><br/> 任务 -> 创建任务、更新任务<br/><br/> 虚拟机 -> 配置<br/><br/> 虚拟机 -> 交互 -> 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关闭电源、打开电源、安装 VMware 工具<br/><br/> 虚拟机 -> 清单 -> 创建、注册、取消注册<br/><br/> 虚拟机 -> 预配 -> 允许虚拟机下载、允许虚拟机文件上传<br/><br/> 虚拟机 -> 快照 -> 删除快照 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请在选中“传播到子对象”  的情况下将“无访问权”  角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。|
+|**复制/故障转移/故障回复** | 建议创建一个拥有所需权限的角色 (AzureSiteRecoveryRole)，然后将它分配到 VMware 用户或组。 | 数据中心对象 –> 传播到子对象、角色=AzureSiteRecoveryRole<br/><br/> 数据存储->分配空间、浏览数据存储、低级别文件操作、删除文件、更新虚拟机文件<br/><br/> 网络 -> 网络分配<br/><br/> 资源 -> 将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM<br/><br/> 任务 -> 创建任务、更新任务<br/><br/> 虚拟机 -> 配置<br/><br/> 虚拟机 -> 交互 -> 回答问题、设备连接、配置 CD 媒体、配置软盘媒体、关闭电源、打开电源、安装 VMware 工具<br/><br/> 虚拟机 -> 清单 -> 创建、注册、取消注册<br/><br/> 虚拟机 -> 预配 -> 允许虚拟机下载、允许虚拟机文件上传<br/><br/> 虚拟机 -> 快照 -> 删除快照 | 在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。<br/><br/> 若要限制访问权限，请在选中“传播到子对象”  的情况下将“无访问权”  角色分配给子对象（vSphere 主机、数据存储、虚拟机和网络）。|
 
 ## <a name="add-vmware-server-to-the-vault"></a>将 VMware 服务器添加到保管库
 
@@ -60,7 +60,7 @@ ms.locfileid: "84692513"
 如果需要，可修改用于连接 vCenter Server/vSphere 主机的凭据，如下所示：
 
 1. 登录到配置服务器。
-1. 使用桌面快捷方式打开配置服务器工具 (_cspsconfigtool.exe_) 。
+1. 使用桌面快捷方式打开配置服务器工具 (cspsconfigtool.exe)。
 1. 在“管理帐户”  选项卡中，单击“添加帐户”  。
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
@@ -87,7 +87,7 @@ ms.locfileid: "84692513"
 
 1. 在保管库 >“Site Recovery 基础结构” > “配置服务器”中，单击添加 vCenter Server 的配置服务器   。
 1. 在“vCenter Server”部分，单击要修改的 vCenter Server  。
-1. 在 " **摘要**" 中，更新 IP 地址和端口，并保存所做的更改。
+1. 在“摘要”中，更新 IP 地址和端口，然后保存更改。
 
    ![add_ip_new_vcenter](media/vmware-azure-manage-vcenter/add-ip.png)
 

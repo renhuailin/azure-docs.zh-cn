@@ -1,27 +1,27 @@
 ---
 title: 将 Azure Policy 大规模部署到委托订阅
-description: 了解 Azure Lighthouse 如何允许跨多个租户部署策略定义和策略分配。
+description: 了解 Azure Lighthouse 如何便于跨多个租户部署策略定义和策略分配。
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.openlocfilehash: 48354c3cca7574b1d5acf71865218564591bc23e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102049774"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>将 Azure Policy 大规模部署到委托订阅
 
-作为服务提供商，你可能已将多个客户租户载入 [Azure Lighthouse](../overview.md)。 Azure Lighthouse 允许服务提供商同时在多个租户之间大规模执行操作，从而提高管理任务的效率。
+作为服务提供商，你可能已经将多个客户租户载入了 [Azure Lighthouse](../overview.md)。 Azure Lighthouse 允许服务提供商同时在多个租户之间大规模执行操作，从而提高管理任务的效率。
 
 本主题说明如何按照 [Azure Policy](../../governance/policy/index.yml) 使用 PowerShell 命令在多个租户中部署策略定义和策略分配。 在此示例中，策略定义确保通过允许仅 HTTPS 流量来保护存储帐户。
 
 > [!TIP]
-> 尽管我们指的是本主题中的服务提供商和客户，但 [管理多个租户的企业](../concepts/enterprise.md) 可以使用相同的过程。
+> 尽管在本主题中我们指的是服务提供商和客户，但[管理多个租户的企业](../concepts/enterprise.md)也可以使用相同的过程。
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>使用 Azure Resource Graph 在客户租户之间执行查询
 
-你可以使用 [Azure Resource Graph](../../governance/resource-graph/index.yml) 在所管理的客户租户的所有订阅中执行查询。 在此示例中，我们将确定这些订阅中当前不需要 HTTPS 通信的任何存储帐户。  
+你可以使用 [Azure Resource Graph](../../governance/resource-graph/index.yml) 在所管理的客户租户的所有订阅中执行查询。 在此示例中，我们将在这些订阅中识别当前不需要 HTTPS 流量的所有存储帐户。  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -35,7 +35,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 ## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>跨多个客户租户部署策略
 
-以下示例演示如何使用 [Azure 资源管理器模板](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json)跨多个客户租户中的委托订阅部署策略定义和策略分配。 此策略定义要求所有存储帐户都使用 HTTPS 流量，阻止创建不符合要求并标记现有存储帐户的任何新存储帐户，而不将设置为不符合。
+以下示例演示如何使用 [Azure 资源管理器模板](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json)跨多个客户租户中的委托订阅部署策略定义和策略分配。 此策略定义要求所有存储帐户都使用 HTTPS 流量，防止创建任何不符合要求的新存储帐户，并标记现有存储帐户，而不设置为不合规。
 
 ```powershell
 Write-Output "In total, there are $($ManagedSubscriptions.Count) delegated customer subscriptions to be managed"
@@ -52,11 +52,11 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 ```
 
 > [!NOTE]
-> 虽然可以跨多个租户部署策略，但目前无法查看这些租户中不符合资源的 [符合性详细信息](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) 。
+> 虽然可以跨多个租户部署策略，但目前无法[查看这些租户中不合规资源的合规性详细信息](../../governance/policy/how-to/determine-non-compliance.md#compliance-details)。
 
 ## <a name="validate-the-policy-deployment"></a>验证策略部署
 
-部署 Azure 资源管理器模板之后，可以通过尝试在某个委派的订阅中创建 **EnableHttpsTrafficOnly** 设置为 **false** 的存储帐户来确认策略定义已成功应用。 由于策略分配，你应该无法创建此存储帐户。  
+在部署了 Azure 资源管理器模板之后，可以通过尝试在其中一个委托订阅中创建 EnableHttpsTrafficOnly 设置为 false 的存储帐户，确认策略定义是否已成功应用。 由于策略分配，你应该无法创建此存储帐户。  
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -Location eastus -Force).ResourceGroupName `
@@ -98,4 +98,4 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 - 了解 [Azure Policy](../../governance/policy/index.yml)。
 - 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。
-- 了解如何 [部署可](deploy-policy-remediation.md) 在委托订阅中修正的策略。
+- 了解如何在委托订阅中[部署可以修正的策略](deploy-policy-remediation.md)。

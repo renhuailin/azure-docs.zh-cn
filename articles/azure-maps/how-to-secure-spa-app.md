@@ -1,7 +1,7 @@
 ---
-title: 如何使用非交互式登录保护单页面应用程序
+title: 如何通过非交互式登录保护单页应用程序
 titleSuffix: Azure Maps
-description: 如何使用非交互式 Azure 基于角色的访问控制配置单个页面应用程序 (Azure RBAC) 和 Azure Maps Web SDK。
+description: 如何使用非交互式 Azure 基于角色的访问控制 (Azure RBAC) 和 Azure Maps Web SDK 配置单页应用程序。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -11,36 +11,36 @@ services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
 ms.openlocfilehash: 9d2af0bf731ab069a8512cb10feccf5ba18d3fa0
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101092724"
 ---
-# <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非交互式登录保护单页面应用程序
+# <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何通过非交互式登录保护单页应用程序
 
-以下指南适用于使用 Azure Active Directory (Azure AD) 的应用程序，以便在用户无法登录 Azure Maps 时提供访问令牌，以 Azure AD 应用程序。 此流需要托管 web 服务，该服务必须受保护才能仅由单页 web 应用程序访问。 有多个实现可实现 Azure AD 的身份验证。 本指南利用产品和 Azure 函数获取访问令牌。
+以下指南适用于使用 Azure Active Directory (Azure AD) 在用户无法登录到 Azure AD 时向 Azure Maps 应用程序提供访问令牌的应用程序。 此流需要托管必须只允许单页 Web 应用程序访问的 Web 服务。 有多个实现可以完成对 Azure AD 的身份验证。 本指南利用 Azure 函数产品获取访问令牌。
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
 > [!Tip]
-> Azure maps 可支持用户登录/交互式流中的访问令牌。 交互式流支持更受限制的访问吊销和机密管理的范围。
+> Azure Maps 可以支持来自用户登录/交互式流的访问令牌。 交互式流使访问吊销和机密管理的范围受到更严格的限制。
 
 ## <a name="create-azure-function"></a>创建 Azure 函数
 
-创建安全的 web 服务应用程序，该应用程序负责 Azure AD 的身份验证。 
+创建一个受保护的 Web 服务应用程序，用于负责对 Azure AD 进行身份验证。 
 
-1. 在 Azure 门户中创建函数。 有关详细信息，请参阅 [Create Azure Function](../azure-functions/functions-get-started.md)。
+1. 在 Azure 门户中创建函数。 有关详细信息，请参阅[创建 Azure 函数](../azure-functions/functions-get-started.md)。
 
-2. 在 Azure 函数上配置 CORS 策略，使其可供单个页面 web 应用程序访问。 这将使浏览器客户端安全地成为你的 web 应用程序的允许来源。 请参阅 [添加 CORS 功能](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality)。
+2. 在 Azure 函数上配置 CORS 策略，供单页 Web 应用程序访问。 这可确保浏览器客户端仅访问允许的 Web 应用程序来源。 请参阅[添加 CORS 功能](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality)。
 
-3. 在 Azure 函数中[添加系统分配的标识](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)，以允许创建服务主体，以便对 Azure AD 进行身份验证。  
+3. 在 Azure 函数上[添加系统分配的标识](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)，以便创建用于对 Azure AD 进行身份验证的服务主体。  
 
-4. 向 Azure Maps 帐户授予系统分配的标识的基于角色的访问权限。 有关详细信息，请参阅 [授予基于角色的访问权限](#grant-role-based-access) 。
+4. 向系统分配的标识授予对 Azure Maps 帐户的基于角色的访问权限。 有关详细信息，请参阅[授予基于角色的访问权限](#grant-role-based-access)。
 
-5. 编写 Azure 函数的代码，以使用系统分配的标识和支持的机制之一或 REST 协议获取 Azure Maps 访问令牌。 请参阅 [获取 Azure 资源的令牌](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
+5. 为 Azure 函数编写代码，以使用系统分配的标识通过受支持的机制之一或 REST 协议获取 Azure Maps 访问令牌。 请参阅[获取 Azure 资源的令牌](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
-    示例 REST 协议示例：
+    示例 REST 协议：
 
     ```http
     GET /MSI/token?resource=https://atlas.microsoft.com/&api-version=2019-08-01 HTTP/1.1
@@ -62,12 +62,12 @@ ms.locfileid: "101092724"
     }
     ```
 
-6. 配置 Azure function HttpTrigger 的安全性
+6. 为 Azure 函数 HttpTrigger 配置安全性
 
    * [创建函数访问密钥](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#authorization-keys)
-   * 在生产环境中保护 Azure 功能的[HTTP 终结点](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)。
+   * 在生产环境中[保护 Azure 函数的 HTTP 终结点](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)。
    
-7. 配置 web 应用程序 Azure Maps Web SDK。 
+7. 配置 Web 应用程序 Azure Maps Web SDK。 
 
     ```javascript
     //URL to custom endpoint to fetch Access token
@@ -102,30 +102,30 @@ ms.locfileid: "101092724"
 
 ## <a name="grant-role-based-access"></a>授予基于角色的访问权限
 
-可以通过将系统分配的标识分配给一个或多个 Azure 角色定义，将 *基于角色的访问控制授予 AZURE RBAC) access (* 。 若要查看可用于 Azure Maps 的 Azure 角色定义，请 **访问 (IAM) 的 "访问控制**"。 选择 " **角色**"，然后搜索以 *Azure Maps* 开头的角色。
+可以通过将系统分配的标识分配到一个或多个 Azure 角色定义，授予 *Azure 基于角色的访问控制 (Azure RBAC)* 访问权限。 若要查看可用于 Azure Maps 的 Azure 角色定义，请转到“访问控制(IAM)”。 选择“角色”，然后搜索以“Azure Maps”开头的角色。
 
-1. 中转到你的 **Azure Maps 帐户**。 **(IAM)**  >  **角色分配** 选择 "访问控制"。
+1. 转到你的 Azure Maps 帐户。 选择“访问控制(IAM)” > “角色分配” 。
 
     > [!div class="mx-imgBorder"]
     > ![使用 Azure RBAC 授予访问权限](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 " **角色分配** " 选项卡上的 " **角色**" 下，选择内置 Azure Maps 角色定义，如 **Azure Maps 数据读取器** 或 **Azure Maps 数据参与者**。 在 " **分配访问权限**" 下，选择 **Function App**。 按名称选择主体。 再选择“保存”。
+2. 在“角色分配”选项卡上的“角色”下，选择一个内置 Azure Maps 角色定义，例如“Azure Maps 数据读取器”或“Azure Maps 数据参与者”   。 在“将访问权限分配给”下，选择“函数应用” 。 按名称选择主体。 再选择“保存”。
 
-   * 请参阅 [分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)的详细信息。
+   * 有关详细信息，请参阅[分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 > [!WARNING]
-> Azure Maps 内置角色定义提供对许多 Azure Maps REST Api 的一种非常大的授权访问权限。 若要限制对 Api 的访问权限，请参阅 [创建自定义角色定义和将系统分配的标识分配](../role-based-access-control/custom-roles.md) 给自定义角色定义。 这将允许应用程序访问 Azure Maps 所需的最小特权。
+> Azure Maps 内置角色定义提供了一种范围很广的授权访问权限，可以访问许多 Azure Maps REST API。 若要将 API 访问权限限制为最小范围，请参阅[创建自定义角色定义并将系统分配的标识分配给自定义角色定义](../role-based-access-control/custom-roles.md)。 这样即可将访问权限限制为应用程序访问 Azure Maps 所需的最少特权。
 
 ## <a name="next-steps"></a>后续步骤
 
-进一步了解单页面应用程序方案：
+进一步了解单页应用程序场景：
 > [!div class="nextstepaction"]
 > [单页应用程序](../active-directory/develop/scenario-spa-overview.md)
 
-查找 Azure Maps 帐户的 API 使用情况指标：
+查找 Azure Maps 帐户的 API 使用指标：
 > [!div class="nextstepaction"]
 > [查看使用情况指标](how-to-view-api-usage.md)
 
-探索其他演示如何将 Azure AD 与 Azure Maps 集成的示例：
+了解演示如何将 Azure AD 与 Azure Maps 集成的其他示例：
 > [!div class="nextstepaction"]
 > [Azure Maps 示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ClientGrant)

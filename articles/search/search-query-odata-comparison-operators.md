@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88934865"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure 认知搜索中的 OData 比较运算符 - `eq`、`ne`、`gt`、`lt`、`ge` 和 `le`
@@ -32,15 +32,15 @@ ms.locfileid: "88934865"
 
 相等性运算符：
 
-- `eq`：测试某个字段是否**等于**某个常量值
-- `ne`：测试某个字段是否**不等于**某个常量值
+- `eq`：测试某个字段是否 **等于** 某个常量值
+- `ne`：测试某个字段是否 **不等于** 某个常量值
 
 范围运算符：
 
-- `gt`：测试某个字段是否**大于**某个常量值
-- `lt`：测试某个字段是否**小于**某个常量值
-- `ge`：测试某个字段是否**大于或等于**某个常量值
-- `le`：测试某个字段是否**小于或等于**某个常量值
+- `gt`：测试某个字段是否 **大于** 某个常量值
+- `lt`：测试某个字段是否 **小于** 某个常量值
+- `ge`：测试某个字段是否 **大于或等于** 某个常量值
+- `le`：测试某个字段是否 **小于或等于** 某个常量值
 
 可以结合使用范围运算符和[逻辑运算符](search-query-odata-logical-operators.md)来测试某个字段是否在特定的值范围内。 请参阅本文稍后提供的[示例](#examples)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "88934865"
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF ([扩展 Backus-Naur 窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义使用比较运算符的 OData 表达式的语法。
+以下 EBNF（[扩展巴科斯-诺尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义了一个使用比较运算符的 OData 表达式的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -71,7 +71,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 > [!NOTE]
 > 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
-比较表达式有两种形式。 它们之间的唯一差别在于，常量是显示在运算符的左侧还是右侧。 运算符另一侧的表达式必须是**变量**或函数调用。 变量可以是字段名称，或者 [Lambda 表达式](search-query-odata-collection-operators.md)中的范围变量。
+比较表达式有两种形式。 它们之间的唯一差别在于，常量是显示在运算符的左侧还是右侧。 运算符另一侧的表达式必须是 **变量** 或函数调用。 变量可以是字段名称，或者 [Lambda 表达式](search-query-odata-collection-operators.md)中的范围变量。
 
 ## <a name="data-types-for-comparisons"></a>可比较的数据类型
 

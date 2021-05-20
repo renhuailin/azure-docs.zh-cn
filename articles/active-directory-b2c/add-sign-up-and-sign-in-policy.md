@@ -1,7 +1,7 @@
 ---
-title: 设置注册和登录流
+title: 创建注册和登录流
 titleSuffix: Azure AD B2C
-description: 了解如何在 Azure Active Directory B2C 中设置注册和登录流。
+description: 了解如何在 Azure Active Directory B2C 中创建注册和登录流。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -13,22 +13,22 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 29dd67e9e6e15aaafec0cc47d89da32cbf369938
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97618699"
 ---
-# <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置注册和登录流
+# <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中创建注册和登录流
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 ## <a name="sign-up-and-sign-in-flow"></a>注册和登录流
 
-注册和登录策略使用户能够： 
+使用注册和登录策略，用户可以： 
 
-* 注册本地帐户
-* 用本地帐户登录
+* 使用本地帐户注册
+* 使用本地帐户登录
 * 使用社交帐户注册或登录
 * 密码重置
 
@@ -36,7 +36,7 @@ ms.locfileid: "97618699"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果尚未这样做，请 [在 Azure Active Directory B2C 中注册 web 应用程序](tutorial-register-applications.md)。
+[在 Azure Active Directory B2C 中注册 Web 应用程序](tutorial-register-applications.md)（如果尚未这样做）。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -60,8 +60,8 @@ ms.locfileid: "97618699"
     ![在 Azure 门户中创建用户流页面（其中，属性突出显示）](./media/add-sign-up-and-sign-in-policy/select-version.png)
 
 1. 输入该用户流的 **名称**。 例如 *signupsignin1*。
-1. 对于 **标识提供者**，请选择 " **电子邮件注册**"。
-1. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”所对应的属性和声明。 单击“确定”。
+1. 对于“标识提供者”，选择“电子邮件注册”。
+1. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”所对应的属性和声明。 单击 **“确定”** 。
 
     ![属性和声明选择页，有三个声明处于选中状态](./media/add-sign-up-and-sign-in-policy/signup-signin-attributes.png)
 
@@ -89,11 +89,11 @@ ms.locfileid: "97618699"
 
 ## <a name="create-a-sign-up-and-sign-in-policy"></a>创建注册或登录策略
 
-自定义策略是上传到 Azure AD B2C 租户的一组 XML 文件，用于定义用户旅程。 我们提供了包含若干预先构建的策略的初学者包，其中包括：注册和登录、密码重置和配置文件编辑策略。 有关详细信息，请参阅 [Azure AD B2C 中的自定义策略入门](custom-policy-get-started.md)。
+自定义策略是上传到 Azure AD B2C 租户的一组 XML 文件，用于定义用户旅程。 我们提供了初学者包，其中有多个预构建策略，包括注册和登录、密码重置以及配置文件编辑策略。 有关详细信息，请参阅 [Azure AD B2C 中的自定义策略入门](custom-policy-get-started.md)。
 
 ::: zone-end
 
 ## <a name="next-steps"></a>后续步骤
 
-* 添加 [使用社交标识提供者的登录](add-identity-provider.md)。
-* 设置 [密码重置流](add-password-reset-policy.md)。
+* 添加[使用社交标识提供者登录](add-identity-provider.md)。
+* 创建[密码重置流](add-password-reset-policy.md)。

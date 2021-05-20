@@ -1,54 +1,54 @@
 ---
-title: 在 Azure 开发测试实验室中为 VM 配置自动启动设置 |Microsoft Docs
-description: 了解如何在实验室中为 Vm 配置自动启动设置。 此设置允许实验室中的 Vm 按计划自动启动。
+title: 在 Azure 开发测试实验室中为 VM 配置自动启动设置 | Microsoft Docs
+description: 了解如何在实验室中为 VM 配置自动启动设置。 此设置使实验室中的 VM 能够根据计划自动启动。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 83e7b0836273a59eaaf66471bd0cb42d63ccf1c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91328473"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>自动启动实验室虚拟机  
-Azure 开发测试实验室允许在实验室中配置虚拟机，使其根据计划自动启动和关闭。 有关配置自动关闭设置的信息，请参阅 [在 Azure 开发测试实验室中管理实验室的自动关闭策略](devtest-lab-auto-shutdown.md)。 
+通过 Azure 开发测试实验室可以在实验室中配置虚拟机，使其根据计划自动启动和关闭。 有关配置自动关闭设置的信息，请参阅[管理 Azure 开发测试实验室中的某个实验室的自动关闭策略](devtest-lab-auto-shutdown.md)。 
 
-与自动关闭不同，当启用策略时，所有 Vm 都包含在其中，自动启动策略需要实验室用户显式选择 VM 并选择加入此计划。 这样一来，您就不会轻易地遇到不需要的 Vm 意外自动启动并导致意外支出的情况。
+启用自动关闭策略时，所有 VM 都包含在内，与自动关闭不同，自动启动策略要求实验室用户显式选择 VM 并选择加入此计划。 这样一来，就不容易遇到不需要的 VM 意外自动启动并导致意外支出的情况。
 
-本文介绍如何为实验室配置自动启动策略。
+本文介绍如何配置实验室的自动启动策略。
 
 ## <a name="configure-autostart-settings-for-a-lab"></a>为实验室配置自动启动设置 
 1. 导航到实验室的主页。 
-2. 在左侧菜单中选择 " **配置和策略** "。 
+2. 在左侧菜单中选择“配置和策略”。 
 
-    ![显示开发测试实验室中的 "配置和策略" 菜单的屏幕截图。](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
-3. 在 " **配置和策略** " 页上，执行以下步骤：
+    ![显示开发测试实验室中“配置和策略”菜单的屏幕截图。](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
+3. 在“配置和策略”页上，执行以下步骤：
     
-    1. 对于 **"** **允许将虚拟机计划为自动启动** "，选择 "启用" 以启用此实验室的自动启动功能。 
-    2. 为 " **计划开始** " 字段选择开始时间 (例如： 8:00:00 AM) 。 
-    3. 选择要**使用的时区。** 
-    4. 选择需要自动启动 Vm **的周日期** 。 
-    5. 然后，在工具栏上选择 " **保存** " 以保存设置。 
+    1. 为“允许将虚拟机计划为自动启动”选择“打开”，以为此实验室启用自动启动功能 。 
+    2. 为“计划启动”字段选择启动时间（例如：上午 8:00:00）。 
+    3. 选择要使用的时区。 
+    4. 选择需要自动启动 VM 的一周中的某些天。 
+    5. 然后在工具栏上选择“保存”以保存设置。 
 
-        ![自动启动设置](./media/devtest-lab-auto-startup-vm/auto-start-configuration.png)
+        ![“自动启动”设置](./media/devtest-lab-auto-startup-vm/auto-start-configuration.png)
 
         > [!IMPORTANT]
-        > 此策略不会自动将自动启动应用于实验室中的任何虚拟机。 若要选择单独的虚拟机，请 **在** "虚拟机" 页上，为该 VM 启用 " **自动启动** "。
+        > 此策略不会自动将自动启动应用于实验室中的任何虚拟机。 若要选择加入单独的虚拟机，请转到虚拟机页，然后为该 VM 启用“自动启动” 。
 
 ## <a name="enable-autostart-for-a-vm-in-the-lab"></a>在实验室中为 VM 启用自动启动
-以下过程提供了有关在实验室中选择 VM 的步骤。 
+以下过程提供了将虚拟机选择加入实验室的自动启动策略的步骤。 
 
-1. 在实验室的主页上，选择 "**我的虚拟机**" 列表中的**VM** 。 
+1. 在实验室的主页上，在“我的虚拟机”列表中选择“VM” 。 
 
-    !["配置和策略" 菜单](./media/devtest-lab-auto-startup-vm/select-vm.png)
-2. 在 "**虚拟机**" 页上，从左侧菜单或在 "**计划**" 列表中选择 "**自动启动**"。 
+    ![“配置和策略”菜单](./media/devtest-lab-auto-startup-vm/select-vm.png)
+2. 在“虚拟机”页上，从左侧菜单或在“计划”列表中选择“自动启动”  。 
 
-    ![选择自动启动菜单](./media/devtest-lab-auto-startup-vm/select-auto-start.png)
-3. 在 "**自动**启动" 页上，为 "**允许将此虚拟机计划为自动启动**" 选项选择 **"打开**"。
+    ![选择“自动启动”菜单](./media/devtest-lab-auto-startup-vm/select-auto-start.png)
+3. 在“自动启动”页上，为“允许将此虚拟机计划为自动启动”选项选择“打开”  。
 
     ![为 VM 启用自动启动](./media/devtest-lab-auto-startup-vm/auto-start-vm.png)
-4. 然后，在工具栏上选择 " **保存** " 以保存设置。 
+4. 然后在工具栏上选择“保存”以保存设置。 
 
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关实验室的配置自动关闭策略，请参阅 [在 Azure 开发测试实验室中管理实验室的自动关闭策略](devtest-lab-auto-shutdown.md)
+若要了解为实验室配置自动关闭策略的信息，请参阅[管理 Azure 开发测试实验室中的某个实验室的自动关闭策略](devtest-lab-auto-shutdown.md)

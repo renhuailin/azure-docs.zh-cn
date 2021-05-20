@@ -5,20 +5,20 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: devx-track-js, devx-track-azurecli
 ms.openlocfilehash: 264fc7314c78088ebfefb9ddb8edbe38fa16581a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92736625"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>使用 Cloud Native Buildpack 从应用生成映像并推送该映像
 
 Azure CLI 命令 `az acr pack build` 使用 [`pack`](https://github.com/buildpack/pack) CLI 工具（来自 [Buildpack](https://buildpacks.io/)）生成应用，并将此应用的映像推送到 Azure 容器注册表中。 此功能提供一个选项，用于从以 Node.js、Java 和其他语言编写的应用程序源代码快速生成容器映像，而无需定义 Dockerfile。
 
-您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的示例。 若要在本地使用 Azure CLI，需要安装 2.0.70 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装来运行本文中的示例。 若要在本地使用 Azure CLI，需要安装 2.0.70 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 > [!IMPORTANT]
-> 此功能目前以预览版提供。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前处于预览状态。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="use-the-build-command"></a>使用 build 命令
 
@@ -96,7 +96,7 @@ docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 `az acr pack build` 生成并推送容器映像后，可以像部署任何其他映像一样将其部署到所选目标。 Azure 部署选项包括在 [应用服务](../app-service/tutorial-custom-container.md) 或 [azure Kubernetes 服务](../aks/tutorial-kubernetes-deploy-cluster.md)中运行它，等等。
+使用 `az acr pack build` 生成并推送容器映像后，可以像部署任何其他映像一样将其部署到所选目标。 Azure 部署选项包括在[应用服务](../app-service/tutorial-custom-container.md)或 [Azure Kubernetes 服务](../aks/tutorial-kubernetes-deploy-cluster.md)中运行等。
 
 有关 ACR 任务功能的详细信息，请参阅[使用 ACR 任务自动执行容器映像的生成和维护](container-registry-tasks-overview.md)。
 

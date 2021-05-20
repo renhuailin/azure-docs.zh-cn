@@ -4,10 +4,10 @@ description: 使用 Azure 门户从订阅中的资源导出 Azure 资源管理�
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.openlocfilehash: ee97953a337bbb7cc9a8d1f042a3beae7bccdcae
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96185685"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>在 Azure 门户中将单资源和多资源导出到模板
@@ -74,7 +74,7 @@ ms.locfileid: "96185685"
 
    ![显示模板](./media/export-template-portal/show-template.png)
 
-   “包括参数”默认情况下已选中。  如果选中，生成模板时将包括所有模板参数。 如果希望创作自己的参数，请切换此复选框，使其不包括在内。
+   “包括参数”默认情况下已选中。  如果选中，生成模板时将包括所有模板参数。 如果希望创作自己的参数，请将此复选框切换为不包括参数。
 
 ## <a name="export-template-from-a-resource"></a>从资源导出模板
 
@@ -88,7 +88,7 @@ ms.locfileid: "96185685"
 
    ![导出资源](./media/export-template-portal/export-single-resource.png)
 
-1. 此时将显示导出的模板，并且该模板可供下载和部署。 模板只包含单个资源。 “包括参数”默认情况下已选中。  如果选中，生成模板时将包括所有模板参数。 如果希望创作自己的参数，请切换此复选框，使其不包括在内。
+1. 此时将显示导出的模板，并且该模板可供下载和部署。 模板只包含单个资源。 “包括参数”默认情况下已选中。  如果选中，生成模板时将包括所有模板参数。 如果希望创作自己的参数，请将此复选框切换为不包括参数。
 
 ## <a name="export-template-before-deployment"></a>在部署之前导出模板
 

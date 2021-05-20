@@ -4,10 +4,10 @@ description: Service Fabric Explorer 是一个用于检验和管理 Microsoft Az
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.openlocfilehash: a45aff305f97610cb2660c2e3f4b4427b905d7d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96574049"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
@@ -45,7 +45,7 @@ Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点�
 >
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>连接到 Service Fabric 群集
-若要连接到 Service Fabric 群集，需要群集管理终结点 (FQDN/IP) 和 HTTP 管理终结点端口（默认情况下为 19080）。 例如，https \: //mysfcluster.westus.cloudapp.azure.com:19080。 使用“连接到 localhost”复选框，连接到工作站上的本地群集。
+若要连接到 Service Fabric 群集，需要群集管理终结点 (FQDN/IP) 和 HTTP 管理终结点端口（默认情况下为 19080）。 例如，https\://mysfcluster.westus.cloudapp.azure.com:19080。 使用“连接到 localhost”复选框，连接到工作站上的本地群集。
 
 ### <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 可以使用证书或 Azure Active Directory (AAD) 控制客户端对 Service Fabric 群集的访问。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
 ms.openlocfilehash: a7a03ff1a58f50f16ebefce48b9e2772a16a011a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100386333"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>使用映射数据流处理数据工厂中的 SQL 截断错误行
@@ -37,7 +37,7 @@ ms.locfileid: "100386333"
     
 3. 问题在于，电影标题无法全部放在接收器列中，这一列只能容纳 5 个字符。 在执行此数据流时，你将收到如下错误：```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
 
-此视频演示在数据流中设置错误行处理逻辑的示例：
+此视频演示了在数据流中设置错误行处理逻辑的示例：
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4uOHj]
 
 ## <a name="how-to-design-around-this-condition"></a>如何围绕此情况进行设计

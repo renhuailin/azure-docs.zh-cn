@@ -3,12 +3,12 @@ title: Azure Monitor 警报的通用警报架构
 description: 了解通用警报架构、应该使用它的原因以及启用它的方法
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 39ea469b4109f4715db0d0a73ad069121058a46f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: ea05c010ff9ee732302054a07c8157e02e3e0034
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038251"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739792"
 ---
 # <a name="common-alert-schema"></a>常见警报架构
 
@@ -32,7 +32,6 @@ ms.locfileid: "102038251"
 
 | 操作 | 增强功能|
 |:---|:---|
-| SMS | 一个适用于所有警报类型的一致的 SMS 模板。 |
 | Email | 一个一致且详细的电子邮件模板，可以轻松快捷地诊断问题。 嵌入式深度链接指向门户中的警报实例和受影响的资源，确保你可以快速跳转到修正过程。 |
 | Webhook/逻辑应用/Azure Functions/自动化 Runbook | 一个适用于所有警报类型的一致的 JSON 结构，用于轻松地跨不同警报类型构建集成。 |
 
@@ -51,7 +50,7 @@ ms.locfileid: "102038251"
 > 1. 以下警报类型默认支持通用架构（不需选择加入）：
 >     * 智能检测警报
 > 1. 以下警报类型目前不支持通用架构：
->     * [VM insights](../vm/vminsights-overview.md)生成的警报
+>     * [由 VM 见解](../vm/vminsights-overview.md)生成的警报
 >     * 由 [Azure 成本管理](../../cost-management-billing/manage/cost-management-budget-scenario.md)生成的警报
 
 ### <a name="through-the-azure-portal"></a>通过 Azure 门户

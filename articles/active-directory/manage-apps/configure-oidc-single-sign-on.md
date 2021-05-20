@@ -1,35 +1,35 @@
 ---
-title: '了解 Azure Active Directory 中应用的基于 OIDC 的单一登录 (SSO) '
-description: 了解 Azure Active Directory 中应用的 (SSO) 的基于 OIDC 的单一登录。
+title: 了解 Azure Active Directory 中应用的基于 OIDC 的单一登录 (SSO)
+description: 了解 Azure Active Directory 中应用的基于 OIDC 的单一登录 (SSO)。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/19/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arajpathak7
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ffaa55d4aa482e8f0eda93b1b32db6310d17e2a3
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.openlocfilehash: 990e0c09f8a49b83bc68d7123f5f8146a3551575
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255243"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374533"
 ---
 # <a name="understand-oidc-based-single-sign-on"></a>了解基于 OIDC 的单一登录
-在应用程序管理的 [快速入门系列](view-applications-portal.md) 中，已了解如何使用 Azure AD 作为标识提供程序 (IdP) 应用程序。 本文详细介绍了使用 OpenID Connect 标准实现单一登录的应用。 
+在应用程序管理的[快速入门系列](view-applications-portal.md)中，你已了解如何使用 Azure AD 作为应用程序的标识提供者 (IdP)。 本文详细介绍了使用 OpenID Connect 标准实现单一登录的应用。 
 
 ## <a name="before-you-begin"></a>在开始之前
-将应用添加到 Azure Active Directory 租户的过程取决于实现的应用程序的单一登录类型。 若要详细了解可用于身份管理 Azure AD 的应用的单一登录选项，请参阅 [单一登录选项](sso-options.md)。 本文介绍了基于 OIDC 的应用。
+将应用添加到 Azure Active Directory 租户的过程取决于实现的应用程序的单一登录类型。 若要详细了解关于可以使用 Azure AD 进行标识管理的应用的单一登录选项，请参阅[单一登录选项](sso-options.md)。 本文介绍了基于 OIDC 的应用。
 
 
 ## <a name="basic-oidc-configuration"></a>基本 OIDC 配置
-在 [快速入门系列](add-application-portal-setup-oidc-sso.md)中，有一篇文章介绍了如何配置单一登录。 在此示例中，你将了解如何将基于 OIDC 的应用添加到 Azure 租户。
+在[快速入门系列](add-application-portal-setup-oidc-sso.md)中，有一篇文章介绍了如何配置单一登录。 在这篇文章中，你将了解如何将基于 OIDC 的应用添加到 Azure 租户。
 
-添加使用 OIDC 标准进行单一登录的应用程序是一项很好的做法，那就是配置是最小的。 下面展示了如何将基于 OIDC 的应用添加到租户的简短视频。
+添加使用 OIDC 标准进行单一登录的应用的好处是，只需进行极少的配置工作。 下面的简短视频展示了如何将基于 OIDC 的应用添加到租户。
 
 在 Azure Active Directory 中添加基于 OIDC 的应用
 

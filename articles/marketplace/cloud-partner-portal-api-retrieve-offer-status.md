@@ -1,6 +1,6 @@
 ---
-title: 检索产品/服务状态-Azure Marketplace
-description: 用于检索产品/服务的当前状态的 API。
+title: 检索产品/服务状态 - Azure 市场
+description: API 可检索产品/服务的当前状态。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
@@ -8,16 +8,16 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 336f23f83c33bcee1887d0e41710e686b794a663
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87272005"
 ---
 # <a name="retrieve-offer-status"></a>检索产品/服务状态
 
 > [!NOTE]
-> 云合作伙伴门户 Api 与集成，并将在合作伙伴中心继续工作。 转换引入了少量更改。 查看 [云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md) 中列出的更改，确保你的代码在转换到合作伙伴中心后继续工作。 CPP Api 仅适用于过渡到合作伙伴中心之前已集成的现有产品;新产品应使用合作伙伴中心提交 Api。
+> 云合作伙伴门户 API 已与合作伙伴中心集成，并将继续在其中工作。 本次转换引入的变更很少。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保转换到合作伙伴中心后代码继续正常工作。 CPP API 应仅用于在转换到合作伙伴中心之前已经集成的现有产品；新产品应使用合作伙伴中心提交 API。
 
 检索产品/服务的当前状态。
 
@@ -25,14 +25,14 @@ ms.locfileid: "87272005"
 
 ## <a name="uri-parameters"></a>URI 参数
 
-|  **名称**       |   **描述**                            |  **Data type** |
+|  **名称**       |   **说明**                            |  **Data type** |
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | 发布者标识符，例如 `Contoso`  |     字符串     |
 |  offerId        | 唯一标识产品/服务的 GUID      |     字符串     |
 |  api-version    | API 的最新版本                        |     Date       |
 |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>标头
 
 
 |  名称           |  值               |
@@ -118,26 +118,26 @@ ms.locfileid: "87272005"
 
 ### <a name="response-body-properties"></a>响应正文属性
 
-|  **名称**             |    **描述**                                                                             |
+|  **名称**             |    **说明**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
-|  status               | 产品/服务的状态。 有关可能值的列表，请参阅下面的[产品/服务状态](#offer-status)。 |
-|  messages             | 与产品/服务关联的消息数组                                                    |
+|  状态               | 产品/服务的状态。 有关可能值的列表，请参阅下面的[产品/服务状态](#offer-status)。 |
+|  计数             | 与产品/服务关联的消息数组                                                    |
 |  steps                | 产品/服务在发布期间所经历的一系列步骤                      |
 |  estimatedTimeFrame   | 以友好的格式估算完成此步骤所需的时间                       |
 |  id                   | 步骤的标识符                                                                         |
 |  stepName             | 步骤的名称                                                                               |
 |  description          | 步骤的说明                                                                        |
-|  status               | 步骤的状态。 有关可能值的列表，请参阅下面的[步骤状态](#step-status)。    |
-|  messages             | 与步骤相关的消息数组                                                          |
+|  状态               | 步骤的状态。 有关可能值的列表，请参阅下面的[步骤状态](#step-status)。    |
+|  计数             | 与步骤相关的消息数组                                                          |
 |  processPercentage    | 步骤的完成百分比                                                              |
 |  previewLinks         | *当前未实现*                                                                    |
 |  liveLinks            | *当前未实现*                                                                    |
-|  notificationEmails   | 对于迁移到合作伙伴中心的产品/服务已弃用。 已迁移产品的通知电子邮件将发送到 "帐户设置" 中 "卖方联系人信息" 下指定的电子邮件。<br><br>对于未迁移的产品/服务，则以逗号分隔的电子邮件地址列表，通知操作的进度        |
+|  notificationEmails   | 已弃用迁移到合作伙伴中心的产品/服务。 已迁移产品/服务的通知电子邮件将被发送到“帐户设置”中“卖家联系信息”下指定的电子邮件。<br><br>对于未迁移的产品/服务，以逗号分隔的电子邮件地址列表将用于通知操作进度        |
 |  |  |
 
 ### <a name="response-status-codes"></a>响应状态代码
 
-| **代码** |   **描述**                                                                                 |
+| **代码** |   **说明**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
 |  200     |  `OK` - 请求已成功处理，并且已返回产品/服务的当前状态。 |
 |  400     | `Bad/Malformed request` - 错误响应正文可能包含更多信息。                 |
@@ -146,20 +146,20 @@ ms.locfileid: "87272005"
 
 ### <a name="offer-status"></a>产品/服务状态
 
-|  **名称**                    |    **描述**                                       |
+|  **名称**                    |    **说明**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
 |  NeverPublished              | 产品/服务从未发布过。                          |
 |  NotStarted                  | 产品/服务是新的，且未启动。                            |
 |  WaitingForPublisherReview   | 产品/服务正在等待发布者批准。                 |
-|  运行                     | 正在处理产品/服务提交。                     |
+|  正在运行                     | 正在处理产品/服务提交。                     |
 |  已成功                   | 产品/服务提交已完成处理。               |
 |  已取消                    | 产品/服务提交已取消。                           |
-|  已失败                      | 产品/服务提交失败。                                 |
+|  失败                      | 产品/服务提交失败。                                 |
 |  |  |
 
 ### <a name="step-status"></a>步骤状态
 
-|  **名称**                    |    **描述**                           |
+|  **名称**                    |    **说明**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | 步骤尚未开始。                        |
 |  正在进行                  | 步骤正在运行。                             |

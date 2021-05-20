@@ -6,15 +6,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-ummehabiba
 ms.openlocfilehash: c45b6196b82682b37e253a33eed3940b68b4d61e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102172978"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>排查 Azure FarmBeats 问题
 
-本文提供常见 Azure FarmBeats 问题的解决方案。 有关更多帮助，请与我们 [的 Q&支持论坛](/answers/topics/azure-farmbeats.html) 联系，或通过电子邮件发送给我们 farmbeatssupport@microsoft.com 。
+本文提供常见 Azure FarmBeats 问题的解决方案。 有关更多帮助，请通过 [Q&A 支持论坛](/answers/topics/azure-farmbeats.html)联系我们，或通过 farmbeatssupport@microsoft.com 向我们发送电子邮件。
 
 > [!NOTE]
   > 如果你在 4 月安装了 FarmBeats，但作业失败且错误消息为空，则你的安装可能尚未分配有任何批处理配额，无法优先支持关键运行状况和安全组织。 有关详细信息，请参阅 [此处](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) 。 需要请求将 VM 分配给 Batch 帐户才能成功运行作业。
@@ -58,8 +58,8 @@ ms.locfileid: "102172978"
 
 **纠正措施**
 
-1. 中转到 FarmBeats 资源组。
-2. 选择 **事件中心** 命名空间 ( "传感器-eh-命名空间-xxxx" ) ，单击 "事件中心"，然后检查分配给伙伴的事件中心内的传入消息数。
+1. 请转到“FarmBeats”资源组。
+2. 选择“事件中心”命名空间（“sensor-partner-eh-namespace-xxxx”），单击“事件中心”，然后检查分配给合作伙伴的事件中心内的传入消息数
 3. 执行下列任一操作：
 
    - 如果没有传入消息，请联系你的设备合作伙伴。  
@@ -110,7 +110,7 @@ ms.locfileid: "102172978"
 > [!NOTE]
 > 你感兴趣的传感器合作伙伴的 ID。
 
-3. 返回到合作伙伴 API，然后选择 "**获取/ \<ID>**"。
+3. 返回到合作伙伴 API，然后选择“Get/\<ID>”。
 4. 指定步骤 3 中的合作伙伴 ID，然后选择“执行”。
 
    API 响应应包含事件中心连接字符串。
@@ -174,7 +174,7 @@ ms.locfileid: "102172978"
 
 如果你已获得访问权限，但遇到此错误，请尝试刷新页面。 如果错误仍然存在，请联系我们并提供错误消息/日志。
 
-![显示授权错误的屏幕截图。](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
+![显示身份验证错误的屏幕截图。](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
 ### <a name="accelerator-issues"></a>加速器问题  
 
@@ -250,7 +250,7 @@ ms.locfileid: "102172978"
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel：达到最大连接数
 
-**作业失败消息**： "用户 ' ' 实现的两个并发流的最大数目 \<username> 。"
+作业失败消息：“用户 ‘\<username>’ 已达到两个并发流的最大数量。”
 
 **含义**：如果作业由于已达到最大连接数而失败，则表示同一 Sentinel 帐户正在多个作业中使用。
 
@@ -289,7 +289,7 @@ ms.locfileid: "102172978"
 2. 在“搜索”框中，搜索“FarmBeats 数据中心”资源组。
 3. 在资源组上，搜索“datahublogs\*”存储帐户， 例如 datahublogsmvxmq。  
 4. 在“名称”列中，选择该存储帐户，查看“存储帐户”仪表板 。
-5. 在 " **datahubblogs" \* *窗格中，选择*"在资源管理器中打开**" 以查看 **打开的 Azure 存储资源管理器** 应用程序。
+5. 在“datahubblogs\*”窗格中，选择“在资源管理器中打开”，查看“打开 Azure 存储资源管理器”应用程序 。
 6. 在左窗格中，选择“Blob 容器”，然后选择“job-logs”（针对 Azure 数据工厂日志）或“appinsights-logs”（针对应用服务日志）  。
 7. 选择“下载”，并将日志下载到计算机上的本地文件夹。
 
@@ -301,7 +301,7 @@ ms.locfileid: "102172978"
 2. 在“搜索”框中，搜索“FarmBeats 加速器”资源组。
 3. 在资源组上，搜索“storage\*”存储帐户， 例如 storagedop4k\*。
 4. 在“名称”列中选择该存储帐户，查看“存储帐户”仪表板 。
-5. 在 "**存储" \* *窗格中，选择 "* 在资源管理器中打开**" 以打开 Azure 存储资源管理器应用程序。
+5. 在“storage\*”窗格中，选择“在资源管理器中打开”，打开 Azure 存储资源管理器应用程序。
 6. 在左窗格中，选择“Blob 容器”，然后选择“job-logs”（针对 Azure 数据工厂日志）或“appinsights-logs”（针对应用服务日志）  。
 7. 选择“下载”，并将日志下载到计算机上的本地文件夹。
 
@@ -317,36 +317,36 @@ ms.locfileid: "102172978"
 
 ## <a name="weather-data-job-failures"></a>天气数据作业失败
 
-**错误**：您运行作业以获取天气数据，但该作业失败
+错误：运行作业以获取天气数据，但该作业失败
 
-### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>收集用于排查天气数据失败的日志
+### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>收集用于排查天气数据作业失败的日志
 
-1. 在 Azure 门户中，请参阅 FarmBeats 资源组。
-2. 单击属于资源组的数据工厂服务。 该服务将有标记 "sku： Datahub"
+1. 转到 Azure 门户中的 FarmBeats 资源组。
+2. 单击属于资源组的数据工厂服务。 该服务将带有标记“sku: Datahub”
 
 > [!NOTE]
-> 若要查看资源组中服务的标记，请单击 "编辑列" 并向资源组视图添加 "标记"。
+> 若要查看资源组内服务的标记，请单击“编辑列”并向资源组视图添加“标记”
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="突出显示 sku： Datahub 标记的屏幕截图。":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="突出显示 sku:Datahub 标记的屏幕截图。":::
 
-3. 在数据工厂的 "概述" 页上，单击 " **创作和监视**"。 此时会在浏览器中打开一个新选项卡。 单击 **监视器**
+3. 在数据工厂的“概述”页面上，单击“创作和监视”。 此时会在浏览器中打开一个新选项卡。 单击“监视”
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="突出显示 &quot;监视&quot; 菜单选项的屏幕截图。":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="突出显示“监视”菜单选项的屏幕截图。":::
 
-4. 你将看到一个管道运行列表，其中包含天气作业执行的一部分。 单击要为其收集日志的作业
+4. 你将看到一个管道运行列表，这些管道运行是天气作业执行的一部分。 单击要为其收集日志的作业
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="突出显示 &quot;管道运行&quot; 菜单选项和所选作业的屏幕截图。":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="突出显示“管道运行”菜单选项和所选作业的屏幕截图。":::
 
-5. 在 "管道概述" 页上，你将看到活动运行的列表。 记下要为其收集日志的活动的运行 Id
+5. 在“管道概述”页上，你将看到活动运行的列表。 记下要为其收集日志的活动的运行 ID
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="屏幕截图，显示活动运行的列表。":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="显示活动运行列表的屏幕截图。":::
 
-6. 返回到 Azure 门户中的 FarmBeats 资源组，并单击名为 **datahublogs** 的存储帐户
+6. 返回到 Azure 门户中的 FarmBeats 资源组，并单击名为“datahublogs-XXXX”的存储帐户
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="突出显示名称为 datahublogs 的存储帐户的屏幕截图。":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="突出显示名为“datahublogs-XXXX”的存储帐户的屏幕截图。":::
 
-7. 单击 "**容器**  ->  **adfjobs**"。 在搜索框中，输入前面步骤5中记下的作业运行 ID。
+7. 单击“容器” -> “adfjobs” 。 在搜索框中，输入上述步骤5 中注明的作业运行 ID。
  
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="FarmBeats 项目":::
 
-8. 搜索结果将包含包含与作业相关的日志的文件夹。 下载日志并将其发送到， farmbeatssupport@microsoft.com 以便在调试问题时获得帮助。
+8. 搜索结果将包含内有与作业相关的日志的文件夹。 下载日志并将其发送到 farmbeatssupport@microsoft.com，以便在调试问题时获得帮助。

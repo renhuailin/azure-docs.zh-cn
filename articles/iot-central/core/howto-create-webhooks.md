@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: b2ac4bbf1457144d23a91c4e83b554b3ee806119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: ae1289c7ff9e66bf3b67577f815eaa55e12a0873
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337222"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772362"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>在 Azure IoT Central 中基于规则创建 Webhook 操作
-
-本主题适用于构建者和管理员  。
 
 使用 Webhook 可以将 IoT Central 应用连接到其他应用程序和服务，以便进行远程监视和通知。 只要在 IoT Central 应用中触发了规则，Webhook 就会自动通知你连接的其他应用程序和服务。 每当触发规则时，IoT Central 应用就会向其他应用程序的 HTTP 终结点发送 POST 请求。 有效负载包含设备详细信息和规则触发详细信息。
 
@@ -29,7 +27,7 @@ ms.locfileid: "87337222"
 
 1. 创建一个新的 RequestBin 并复制 **Bin URL**。
 
-1. 创建[遥测规则](tutorial-create-telemetry-rules.md)。 保存规则并添加新操作。
+1. 创建一个[遥测规则](tutorial-create-telemetry-rules.md)。 保存规则并添加新操作。
 
     ![Webhook 创建屏幕](media/howto-create-webhooks/webhookcreate.png)
 
@@ -95,7 +93,7 @@ ms.locfileid: "87337222"
     }
 }
 ```
-如果规则监视一段时间内的聚合遥测数据，则负载会包含不同的遥测部分。
+如果该规则监视一段时间的聚合遥测，有效负载将包含不同的遥测部分。
 
 ```json
 {
@@ -111,9 +109,9 @@ ms.locfileid: "87337222"
 
 ## <a name="data-format-change-notice"></a>数据格式更改通知
 
-如果在 **2020 年4月 3**日之前创建并保存了一个或多个 webhook，则需要删除 webhook 并创建新的 webhook。 这是因为，较旧的 webhook 使用的是将来将弃用的旧有效负载格式。
+如果在 2020 年 4 月 3 日之前创建并保存了一个或多个 Webhook，则需要删除该 Webhook 并创建新的 Webhook。 这是因为较旧的 Webhook 使用较旧的有效负载格式，该格式将来会弃用。
 
-### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>从2020年4月3日起，Webhook 负载 (格式弃用) 
+### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>Webhook 有效负载（从 2020 年 4 月 3 日起弃用的格式）
 
 ```json
 {
@@ -154,7 +152,7 @@ ms.locfileid: "87337222"
 
 目前，没有通过 API 订阅/取消订阅这些 Webhook 的编程方式。
 
-如果你有关于如何改进此功能的建议，请将你的建议发布到 [用户语音论坛](https://feedback.azure.com/forums/911455-azure-iot-central)。
+如果你对如何改进此功能有任何想法，请将你的建议发布到我们的 [UserVoice 论坛](https://feedback.azure.com/forums/911455-azure-iot-central)。
 
 ## <a name="next-steps"></a>后续步骤
 

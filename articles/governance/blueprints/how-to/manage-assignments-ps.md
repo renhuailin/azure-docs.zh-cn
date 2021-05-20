@@ -1,22 +1,22 @@
 ---
-title: 如何通过 PowerShell 管理分配
-description: 了解如何通过官方 Azure 蓝图 PowerShell 模块 Az. 蓝图管理蓝图分配。
-ms.date: 01/27/2021
+title: 如何使用 PowerShell 管理分配
+description: 了解如何通过正式的 Azure 蓝图 PowerShell 模块 Az.Blueprint 管理蓝图分配。
+ms.date: 05/01/2021
 ms.topic: how-to
-ms.openlocfilehash: d60fb887e07b4697b8e86a4e2fd74a735ac0bb58
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.openlocfilehash: 81c3c3a5fa7a472a9fddebff1ac83a3814d68656
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919370"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325402"
 ---
-# <a name="how-to-manage-assignments-with-powershell"></a>如何通过 PowerShell 管理分配
+# <a name="how-to-manage-assignments-with-powershell"></a>如何使用 PowerShell 管理分配
 
-可以使用 **Az** Azure PowerShell module 管理蓝图分配。 模块支持提取、创建、更新和删除分配。 模块还可以获取有关现有蓝图定义的详细信息。 本文介绍如何安装该模块并开始使用它。
+可以使用 Azure PowerShell 模块 Az.Blueprint 管理蓝图分配。 此模块支持提取、创建、更新和删除分配。 此模块还可以提取现有蓝图定义的详细信息。 本文介绍了如何安装此模块以及如何开始使用它。
 
-## <a name="add-the-azblueprint-module"></a>添加 Az module 模块
+## <a name="add-the-azblueprint-module"></a>添加 Az.Blueprint 模块
 
-若要启用 Azure PowerShell 来管理蓝图分配，必须添加模块。 此模块可以与在本地安装的 PowerShell 以及 [Azure Cloud Shell](https://shell.azure.com) 一起使用，也可以与 [Azure PowerShell Docker 映像](https://hub.docker.com/r/azuresdk/azure-powershell/)一起使用。
+必须添加 Azure PowerShell，才能启用此模块来管理蓝图分配。 此模块可以与在本地安装的 PowerShell 以及 [Azure Cloud Shell](https://shell.azure.com) 一起使用，也可以与 [Azure PowerShell Docker 映像](https://hub.docker.com/r/azuresdk/azure-powershell/)一起使用。
 
 ### <a name="base-requirements"></a>基本要求
 
@@ -27,7 +27,7 @@ Azure 蓝图模块需要以下软件：
 
 ### <a name="install-the-module"></a>安装模块
 
-适用于 PowerShell 的 Azure 蓝图模块为 **Az. 蓝图**。
+用于 PowerShell 的 Azure 蓝图模块是 Az.Blueprint。
 
 1. 从管理 PowerShell 提示符运行以下命令：
 
@@ -37,9 +37,9 @@ Azure 蓝图模块需要以下软件：
    ```
 
    > [!NOTE]
-   > 如果 **Az** 已安装，则可能需要使用 `-AllowClobber` 来强制安装。
+   > 如果已安装 Az.Accounts，则可能需要使用 `-AllowClobber` 来强制执行安装。
 
-1. 验证是否已导入该模块，并验证 (0.2.6) 的版本是否正确：
+1. 验证该模块是否已导入且是否为正确版本 (0.2.6)：
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
@@ -48,10 +48,10 @@ Azure 蓝图模块需要以下软件：
 
 ## <a name="get-blueprint-definitions"></a>获取蓝图定义
 
-处理赋值的第一步通常是获取对蓝图定义的引用。
-`Get-AzBlueprint`Cmdlet 获取一个或多个蓝图定义。 Cmdlet 可以从管理组或使用订阅获取蓝图定义 `-ManagementGroupId {mgId}` `-SubscriptionId {subId}` 。 **Name** 参数获取蓝图定义，但必须与 **ManagementGroupId** 或 **SubscriptionId** 一起使用。 **版本** 可与 **名称** 一起使用，以便更明确地了解返回的蓝图定义。 开关用于获取最近发布的版本，而不是 **版本** `-LatestPublished` 。
+处理分配的第一步通常是获取对蓝图定义的引用。
+`Get-AzBlueprint` cmdlet 可获取一个或多个蓝图定义。 此 cmdlet 可以使用 `-ManagementGroupId {mgId}` 从管理组获取蓝图定义，也可以使用 `-SubscriptionId {subId}` 从订阅获取。 “Name”参数可获取蓝图定义，但必须与 ManagementGroupId 或 SubscriptionId 一起使用  。 “Version”可以与“Name”一起使用，以便进一步明确要返回的蓝图定义。  开关 `-LatestPublished`（而非“Version”）可以获取最新发布的版本。
 
-下面的示例使用 `Get-AzBlueprint` 从表示为的特定订阅获取名为 "101-蓝图-定义-订阅" 的所有版本的蓝图定义 `{subId}` ：
+下面的示例使用 `Get-AzBlueprint` 从 `{subId}` 表示的特定订阅中获取蓝图定义“101-blueprints-definition-subscription”的所有版本：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -63,7 +63,7 @@ $blueprints = Get-AzBlueprint -SubscriptionId '{subId}' -Name '101-blueprints-de
 $blueprints
 ```
 
-具有多个版本的蓝图定义的示例输出如下所示：
+具有多个版本的蓝图定义的输出如下所示：
 
 ```output
 Name                 : 101-blueprints-definition-subscription
@@ -78,7 +78,7 @@ Parameters           : {storageAccount_storageAccountType, storageAccount_locati
 ResourceGroups       : ResourceGroup
 ```
 
-可以展开蓝图定义上的 [蓝图参数](../concepts/parameters.md#blueprint-parameters) 以提供详细信息。
+可以展开蓝图定义的[蓝图参数](../concepts/parameters.md#blueprint-parameters)，以便提供更多信息。
 
 ```azurepowershell-interactive
 $blueprints.Parameters
@@ -95,9 +95,9 @@ allowedlocations_listOfAllowedLocations                Microsoft.Azure.Commands.
 
 ## <a name="get-blueprint-assignments"></a>获取蓝图分配
 
-如果蓝图分配已存在，可以使用 cmdlet 获取对它的引用 `Get-AzBlueprintAssignment` 。 Cmdlet 采用 **SubscriptionId** 和 **Name** 作为可选参数。 如果未指定 **SubscriptionId** ，则使用当前的订阅上下文。
+如果蓝图分配已存在，可以使用 `Get-AzBlueprintAssignment` cmdlet 获取对它的引用。 此 cmdlet 采用 SubscriptionId 和 Name 作为可选参数。  如果未指定 SubscriptionId，则将使用当前的订阅上下文。
 
-下面的示例使用 `Get-AzBlueprintAssignment` 从表示为的特定订阅获取名为 "分配-锁定资源组" 的单一蓝图分配 `{subId}` ：
+下面的示例使用 `Get-AzBlueprintAssignment` 从 `{subId}` 表示的特定订阅获取单个蓝图分配“Assignment-lock-resource-groups”：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -109,7 +109,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -SubscriptionId '{subId}' -Name
 $blueprintAssignment
 ```
 
-蓝图分配的示例输出如下所示：
+蓝图分配的输出如下所示：
 
 ```output
 Name              : Assignment-lock-resource-groups
@@ -125,50 +125,50 @@ ResourceGroups    : ResourceGroup
 
 ## <a name="create-blueprint-assignments"></a>创建蓝图分配
 
-如果蓝图分配尚不存在，则可以用 `New-AzBlueprintAssignment` cmdlet 创建。 此 cmdlet 使用以下参数：
+如果蓝图分配尚不存在，则可以使用 `New-AzBlueprintAssignment` cmdlet 创建它。 此 cmdlet 使用以下参数：
 
-- **名称** [必需]
+- Name [必填]
   - 指定蓝图分配的名称
-  - 必须是唯一的，且 **SubscriptionId** 中不存在
-- **蓝图** [必需]
+  - 必须是唯一的，并且不是 SubscriptionId 中已存在的
+- Blueprint [必填]
   - 指定要分配的蓝图定义
-  - 用于 `Get-AzBlueprint` 获取 reference 对象
-- **位置** [必需]
-  - 指定要在其中创建系统分配的托管标识和订阅部署对象的区域。
-- **订阅** (可选) 
-  - 指定将分配部署到的订阅
+  - 使用 `Get-AzBlueprint` 获取引用对象
+- Location [必填]
+  - 指定区域，以便在其中创建系统分配的托管标识和订阅部署对象
+- Subscription（可选）
+  - 指定要将分配部署到的订阅
   - 如果未提供，则默认为当前订阅上下文
-- **锁定** (可选) 
-  - 定义要用于已部署资源的[蓝图资源锁定](../concepts/resource-locking.md)
-  - 支持的选项： _None_、 _AllResourcesReadOnly_、 _AllResourcesDoNotDelete_
-  - 如果未提供，默认值为 "_无_"
-- **SystemAssignedIdentity** (可选) 
-  - 选择此项可为分配创建系统分配的托管标识并部署资源
-  - "Identity" 参数集的默认值
-  - 不能与 **UserAssignedIdentity** 一起使用
-- **UserAssignedIdentity** (可选) 
-  - 指定用于分配并部署资源的用户分配的托管标识
-  - "Identity" 参数集的一部分
-  - 不能与 **SystemAssignedIdentity** 一起使用
-- **参数** (可选) 
-  - 用于在蓝图分配上设置[动态参数](../concepts/parameters.md#dynamic-parameters)的键/值对的[哈希表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 动态参数的默认值是定义中的 **defaultValue**
-  - 如果未提供参数且没有 **defaultValue**，则参数不是可选的
+- Lock（可选）
+  - 定义要用于部署的资源的[蓝图资源锁](../concepts/resource-locking.md)
+  - 支持的选项有：None、AllResourcesReadOnly、AllResourcesDoNotDelete  
+  - 如果未提供，则默认为 None
+- SystemAssignedIdentity（可选）
+  - 选择此参数创建系统分配的托管标识，以用于分配并用于部署资源
+  - “Identity”参数集的默认值
+  - 不能与 UserAssignedIdentity 一起使用
+- UserAssignedIdentity （可选）
+  - 指定用户分配的托管标识，以用于分配并用于部署资源
+  - “identity”参数集的一部分
+  - 不能与 SystemAssignedIdentity 一起使用
+- Parameter（可选）
+  - 用于设置蓝图分配的[动态参数](../concepts/parameters.md#dynamic-parameters)的键/值对的[哈希表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+  - 动态参数的默认值是定义中的 defaultValue
+  - 如果某个参数未提供且没有 defaultValue，则此参数不是可选的
 
     > [!NOTE]
-    > **参数** 不支持 secureStrings。
+    > Parameter 不支持 secureStrings。
 
-- **ResourceGroupParameter** (可选) 
+- ResourceGroupParameter（可选）
   - 资源组项目的[哈希表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 每个资源组项目占位符都具有用于动态设置该资源组项目中的 **名称** 和 **位置** 的键/值对
-  - 如果未提供资源组参数并且没有 **defaultValue**，则资源组参数不是可选的
-- **AssignmentFile** (可选) 
+  - 每个资源组项目占位符都具有用于动态设置该资源组项目的 Name 和 Location 的键/值对 
+  - 如果某个资源组参数未提供并且没有 defaultValue，则此资源组参数不是可选的
+- AssignmentFile（可选）
   - 蓝图分配的 JSON 文件表示形式的路径
-  - 此参数是 PowerShell 参数集的一部分，该参数集仅包含 **名称**、 **蓝图** 和 **SubscriptionId** 以及通用参数。
+  - 此参数是 PowerShell 参数集的一部分，该参数集仅包含 Name、Blueprint 和 SubscriptionId 以及常用参数  。
 
-### <a name="example-1-provide-parameters"></a>示例1：提供参数
+### <a name="example-1-provide-parameters"></a>示例 1：提供参数
 
-下面的示例创建一个新分配的 "我的蓝图" 蓝图定义的版本 "1.1" `Get-AzBlueprint` ，将托管标识和分配对象位置设置为 "westus2"，使用 _AllResourcesReadOnly_ 锁定资源，并在特定订阅上设置 **参数** 和 **ResourceGroupParameter** 的哈希表，表示为 `{subId}` ：
+下面的示例为使用 `Get-AzBlueprint` 提取的“my-blueprint”蓝图定义版本“1.1”创建新的分配，设置托管标识并将分配对象位置后设置为“westus2”，使用 AllResourcesReadOnly 锁定资源，并在 `{subId}` 表示的特定订阅中设置 Parameter 和 ResourceGroupParameter 的哈希表 ：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -189,7 +189,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -Parameter $bpParameters -ResourceGroupParameter $bpRGParameters
 ```
 
-用于创建蓝图分配的示例输出如下所示：
+创建蓝图分配的输出如下所示：
 
 ```output
 Name              : my-blueprint-assignment
@@ -203,9 +203,9 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-### <a name="example-2-use-a-json-assignment-definition-file"></a>示例2：使用 JSON 赋值定义文件
+### <a name="example-2-use-a-json-assignment-definition-file"></a>示例 2：使用 JSON 分配定义文件
 
-下面的示例创建了几乎与 [示例 1](#example-1-provide-parameters)相同的分配。 该示例演示如何使用 JSON 赋值定义文件和 **AssignmentFile** 参数，而不是将参数传递给 cmdlet。 此外，将 **excludedPrincipals** 属性配置为 **锁定** 的一部分。 没有适用于 **excludedPrincipals** 的 PowerShell 参数，只能通过 JSON 赋值定义文件设置属性来配置属性。
+下面的示例创建了几乎与[示例 1](#example-1-provide-parameters)的输出相同的分配。 该示例说明了如何使用 JSON 分配定义文件和 AssignmentFile 参数，而未将参数传递给 cmdlet。 此外，它将 excludedPrincipals 属性配置为锁的一部分。  excludedPrincipals 没有相应的 PowerShell 参数，若要配置此属性，只能通过 JSON 分配定义文件设置它。
 
 ```json
 {
@@ -246,52 +246,52 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
     -AssignmentFile '.\assignment.json'
 ```
 
-有关用户分配的托管标识的 JSON 分配定义文件的示例，请参阅 [示例正文：示例：使用用户分配的托管标识](/rest/api/blueprints/assignments/createorupdate#examples) 对 REST API 进行分配。
+有关用户分配的托管标识的 JSON 分配定义文件的示例，请参阅适用于 REST API 的[示例：用户分配的托管标识的分配](/rest/api/blueprints/assignments/createorupdate#examples)中的请求正文。
 
 ## <a name="update-blueprint-assignments"></a>更新蓝图分配
 
-有时，必须更新已创建的蓝图分配。 `Set-AzBlueprintAssignment`Cmdlet 处理此操作。 该 cmdlet 将使用该 cmdlet 执行的大部分相同参数 `New-AzBlueprintAssignment` ，从而允许更新在分配上设置的任何内容。 例外情况包括： _名称_、 _蓝图_ 和 _SubscriptionId_。 仅更新所提供的值。
+有时需要更新已创建的蓝图分配。 `Set-AzBlueprintAssignment` cmdlet 可处理此操作。 该 cmdlet 将使用 `New-AzBlueprintAssignment` cmdlet 所用的大部分相同参数，以便更新在分配上设置的任何内容。 其中不包括以下参数：Name、Blueprint 和 SubscriptionId  。 它将仅更新所提供的值。
 
-若要了解更新蓝图分配时所发生的情况，请参阅 [更新分配的规则](./update-existing-assignments.md#rules-for-updating-assignments)。
+若要了解更新蓝图分配时所执行的操作，请参阅[更新分配的规则](./update-existing-assignments.md#rules-for-updating-assignments)。
 
-- **名称** [必需]
+- Name [必填]
   - 指定要更新的蓝图分配的名称
-  - 用于查找要更新的分配，而不是更改分配
-- **蓝图** [必需]
+  - 用于查找要更新的分配，而不用于更改分配
+- Blueprint [必填]
   - 指定蓝图分配的蓝图定义
-  - 用于 `Get-AzBlueprint` 获取 reference 对象
-  - 用于查找要更新的分配，而不是更改分配
-- **位置** (可选) 
-  - 指定要在其中创建系统分配的托管标识和订阅部署对象的区域。
-- **订阅** (可选) 
-  - 指定将分配部署到的订阅
+  - 使用 `Get-AzBlueprint` 获取引用对象
+  - 用于查找要更新的分配，而不用于更改分配
+- Location（可选）
+  - 指定区域，以便在其中创建系统分配的托管标识和订阅部署对象
+- Subscription（可选）
+  - 指定要将分配部署到的订阅
   - 如果未提供，则默认为当前订阅上下文
-  - 用于查找要更新的分配，而不是更改分配
-- **锁定** (可选) 
-  - 定义要用于已部署资源的[蓝图资源锁定](../concepts/resource-locking.md)
-  - 支持的选项： _None_、 _AllResourcesReadOnly_、 _AllResourcesDoNotDelete_
-- **SystemAssignedIdentity** (可选) 
-  - 选择此项可为分配创建系统分配的托管标识并部署资源
-  - "Identity" 参数集的默认值
-  - 不能与 **UserAssignedIdentity** 一起使用
-- **UserAssignedIdentity** (可选) 
-  - 指定用于分配并部署资源的用户分配的托管标识
-  - "Identity" 参数集的一部分
-  - 不能与 **SystemAssignedIdentity** 一起使用
-- **参数** (可选) 
-  - 用于在蓝图分配上设置[动态参数](../concepts/parameters.md#dynamic-parameters)的键/值对的[哈希表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 动态参数的默认值是定义中的 **defaultValue**
-  - 如果未提供参数且没有 **defaultValue**，则参数不是可选的
+  - 用于查找要更新的分配，而不用于更改分配
+- Lock（可选）
+  - 定义要用于部署的资源的[蓝图资源锁](../concepts/resource-locking.md)
+  - 支持的选项有：None、AllResourcesReadOnly、AllResourcesDoNotDelete  
+- SystemAssignedIdentity（可选）
+  - 选择此参数创建系统分配的托管标识，以用于分配并用于部署资源
+  - “Identity”参数集的默认值
+  - 不能与 UserAssignedIdentity 一起使用
+- UserAssignedIdentity （可选）
+  - 指定用户分配的托管标识，以用于分配并用于部署资源
+  - “identity”参数集的一部分
+  - 不能与 SystemAssignedIdentity 一起使用
+- Parameter（可选）
+  - 用于设置蓝图分配的[动态参数](../concepts/parameters.md#dynamic-parameters)的键/值对的[哈希表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
+  - 动态参数的默认值是定义中的 defaultValue
+  - 如果某个参数未提供且没有 defaultValue，则此参数不是可选的
 
     > [!NOTE]
-    > **参数** 不支持 secureStrings。
+    > Parameter 不支持 secureStrings。
 
-- **ResourceGroupParameter** (可选) 
+- ResourceGroupParameter（可选）
   - 资源组项目的[哈希表](/powershell/module/microsoft.powershell.core/about/about_hash_tables)
-  - 每个资源组项目占位符都具有用于动态设置该资源组项目中的 **名称** 和 **位置** 的键/值对
-  - 如果未提供资源组参数并且没有 **defaultValue**，则资源组参数不是可选的
+  - 每个资源组项目占位符都具有用于动态设置该资源组项目的 Name 和 Location 的键/值对 
+  - 如果某个资源组参数未提供并且没有 defaultValue，则此资源组参数不是可选的
 
-下面的示例 `Get-AzBlueprint` 通过更改锁定模式，更新通过获取的 "我的蓝图" 蓝图定义的版本 "1.1" 的分配：
+下面的示例通过更改锁模式更新使用 `Get-AzBlueprint` 提取的“my-blueprint”蓝图定义版本“1.1”的分配：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -304,7 +304,7 @@ $bpAssignment = Set-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -SubscriptionId '{subId}' -Lock AllResourcesDoNotDelete
 ```
 
-用于创建蓝图分配的示例输出如下所示：
+创建蓝图分配的输出如下所示：
 
 ```output
 Name              : my-blueprint-assignment
@@ -320,9 +320,9 @@ ResourceGroups    : ResourceGroup
 
 ## <a name="remove-blueprint-assignments"></a>删除蓝图分配
 
-当需要删除蓝图分配时，该 `Remove-AzBlueprintAssignment` cmdlet 将处理此操作。 该 cmdlet 使用 **Name** 或 **InputObject** 来指定要删除的蓝图分配。 **SubscriptionId** 是 _必需_ 的，并且必须在所有情况下提供。
+要删除蓝图分配时，`Remove-AzBlueprintAssignment` cmdlet 将处理此操作。 该 cmdlet 使用 Name 或 InputObject 来指定要删除的蓝图分配 。 SubscriptionId 是必需的参数，在任何情况下都必须提供它。
 
-下面的示例使用获取现有蓝图分配 `Get-AzBlueprintAssignment` ，然后将其从表示为的特定订阅中删除 `{subId}` ：
+下面的示例使用 `Get-AzBlueprintAssignment` 提取现有的蓝图分配，然后从 `{subId}` 表示的特定订阅中删除它：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -336,7 +336,7 @@ Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '
 
 ## <a name="code-example"></a>代码示例
 
-将所有步骤组合在一起后，以下示例将获取蓝图定义，然后创建、更新和删除特定订阅中表示为的蓝图分配 `{subId}` ：
+通过将所有步骤组合在一起，以下示例将获取蓝图定义，然后在 `{subId}` 表示的特定订阅中创建、更新和删除蓝图分配：
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

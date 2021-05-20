@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792083"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>跨具有不同架构的云数据库进行查询（预览版）
@@ -59,11 +59,11 @@ SECRET = '<password>'
 
 语法：
 
-<External_Data_Source>：： = 创建外部数据源 <data_source_name> 类型 = RDBMS，LOCATION = ' (<fully_qualified_server_name "，> = ' DATABASE_NAME <remote_database_name"，  
+<External_Data_Source> ::= CREATE EXTERNAL DATA SOURCE <data_source_name> WITH (TYPE = RDBMS, LOCATION = ’<fully_qualified_server_name>’, DATABASE_NAME = ‘<remote_database_name>’,  
     CREDENTIAL = <credential_name> ) [;]
 
 > [!IMPORTANT]
-> TYPE 参数必须设置为 **RDBMS** 。
+> TYPE 参数必须设置为 **RDBMS**。
 
 ### <a name="example"></a>示例
 
@@ -120,8 +120,8 @@ select * from sys.external_tables;
 
 弹性查询将扩展现有的外部表语法以定义使用 RDBMS 类型的外部数据源的外部表。 垂直分区的外部表定义涉及以下几个方面：
 
-* **架构** ：外部表 DDL 定义了查询可以使用的架构。 外部表定义中提供的架构需要与存储实际数据的远程数据库中的表的架构相匹配。
-* **远程数据库引用** ：外部表 DDL 引用外部数据源。 外部数据源指定存储实际表数据的远程数据库的服务器名称和数据库名称。
+* **架构**：外部表 DDL 定义了查询可以使用的架构。 外部表定义中提供的架构需要与存储实际数据的远程数据库中的表的架构相匹配。
+* **远程数据库引用**：外部表 DDL 引用外部数据源。 外部数据源指定存储实际表数据的远程数据库的服务器名称和数据库名称。
 
 使用上一节中所述的外部数据源时，用于创建外部表的语法如下：
 
@@ -135,7 +135,7 @@ DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分�
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-**CREATE/DROP EXTERNAL TABLE 的权限** ：外部表 DDL 需要 ALTER ANY EXTERNAL DATA SOURCE 权限，在引用基础数据源时也需要该权限。  
+**CREATE/DROP EXTERNAL TABLE 的权限**：外部表 DDL 需要 ALTER ANY EXTERNAL DATA SOURCE 权限，在引用基础数据源时也需要该权限。  
 
 ## <a name="security-considerations"></a>安全注意事项
 

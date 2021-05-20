@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
 ms.openlocfilehash: c3a821156074727d02ab36cf88f3e998756b8cc4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100389444"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>阻止无关联的 DNS 项并避免子域接管
@@ -144,15 +144,15 @@ ms.locfileid: "100389444"
 
 一些 Azure 服务提供了相关功能来帮助创建预防措施，下面是详细介绍。 必须根据贵组织的最佳做法或标准操作程序来建立防止此问题的其他方法。
 
-### <a name="enable-azure-defender-for-app-service"></a>为应用服务启用 Azure Defender
+### <a name="enable-azure-defender-for-app-service"></a>启用适用于应用服务的 Azure Defender
 
-Azure 安全中心的集成云工作负荷保护平台 (CWPP) ，Azure Defender 提供一系列计划来保护 Azure、混合和多云资源和工作负荷。
+Azure 安全中心的集成云工作负载保护平台 (CWPP) Azure Defender 提供一系列计划来保护 Azure、混合和多云资源和工作负载。
 
-**适用于应用服务计划的 Azure Defender** 包含无关联的 DNS 检测。 启用此计划后，如果你解除应用服务网站的授权，但不从 DNS 注册机构删除其自定义域，你会收到安全警报。
+适用于应用服务的 Azure Defender 计划包含无关联的 DNS 检测。 启用此计划后，如果你停用应用服务网站，但未从 DNS 注册器删除其自定义域，则会收到安全警报。
 
-无论你的域是使用 Azure DNS 还是外部域注册机构来管理，并且适用于 Windows 和 Linux 上的应用服务，Azure Defender 的无关联 DNS 保护功能可用。
+无论你的域是由 Azure DNS 托管还是由外部域注册器托管，可都使用 Azure Defender 无关联 DNS 防护；该服务既适用于 Windows 上的应用服务，也适用于 Linux 上的应用服务。
 
-若要深入了解 azure defender 计划，请参阅 [Azure Defender 应用服务简介](../../security-center/defender-for-app-service-introduction.md)。
+若要深入了解此 Azure Defender 计划的相关优势，请参阅[适用于应用服务的 Azure Defender 简介](../../security-center/defender-for-app-service-introduction.md)。
 
 ### <a name="use-azure-dns-alias-records"></a>使用 Azure DNS 别名记录
 
@@ -195,7 +195,7 @@ Azure DNS 的[别名记录](../../dns/dns-alias.md#scenarios)通过将 DNS 记�
 
     - 定期查看 DNS 记录，确保所有子域都映射到以下 Azure 资源：
 
-        - 存在-在 DNS 区域中查询指向 Azure 子域的资源，例如 *. azurewebsites.net 或 *. cloudapp.azure.com (参阅 [azure 域) 的参考列表](azure-domains.md) 。
+        - 存在 - 在 DNS 区域中查询指向 Azure 子域的资源，例如 *.azurewebsites.net 或 *.cloudapp.azure.com（请参阅 [Azure 域的参考列表](azure-domains.md)）。
         - You own - 确认拥有 DNS 子域面向的所有资源。
 
     - 维护包含 Azure 完全限定的域名 (FQDN) 终结点和应用程序所有者的服务目录。 若要生成服务目录，请运行以下 Azure Resource Graph 查询脚本。 此脚本阐述你有权访问的资源的 FQDN 终结点信息，并将其以 CSV 文件形式输出。 如果你可访问租户的所有订阅，则脚本将考虑所有这些订阅，如以下示例脚本所示。 若要将结果限制为一组特定的订阅，请如下所示编辑脚本。
@@ -211,7 +211,7 @@ Azure DNS 的[别名记录](../../dns/dns-alias.md#scenarios)通过将 DNS 记�
 
 若要详细了解可用于防止子域接管的相关服务和 Azure 功能，请参阅以下页面。
 
-- [启用用于应用服务的 Azure Defender](../../security-center/defender-for-app-service-introduction.md) -在检测到无关联 DNS 条目时接收警报
+- [启用适用于应用服务的 Azure Defender](../../security-center/defender-for-app-service-introduction.md) - 在检测到无关联 DNS 条目时接收警报
 
 - [防止与 Azure DNS 无关联的 DNS 记录](../../dns/dns-alias.md#prevent-dangling-dns-records)
 

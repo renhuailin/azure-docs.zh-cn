@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.openlocfilehash: 2448609b1184c8e91947bffbd13cfea8e3fe5d52
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100390855"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 认知搜索中的增量扩充和缓存
@@ -114,7 +114,7 @@ PUT https://[search service].search.windows.net/datasources/[data source name]?a
 
 ### <a name="reset-documents"></a>重置文档
 
-[重置索引器](/rest/api/searchservice/reset-indexer) 将导致搜索语料库中的所有文档被重新处理。 在只需要重新处理几个文档的情况下，无法更新数据源时，请使用 " [重置文档 (预览") 强制重新 ](/rest/api/searchservice/preview-api/reset-documents) 处理特定文档。 重置文档时，索引器将使该文档的缓存失效，并通过从数据源中读取来重新处理文档。 有关详细信息，请参阅 [运行或重置索引器、技能和文档](search-howto-run-reset-indexers.md)。
+[重置索引器](/rest/api/searchservice/reset-indexer)将导致重新处理搜索语料库中的所有文档。 在只需要重新处理几个文档的情况下，无法更新数据源时，请使用[重置文档（预览）](/rest/api/searchservice/preview-api/reset-documents)强制执行对特定文档的重新处理。 重置文档时，索引器将使该文档的缓存失效，并通过从数据源中读取它来重新处理文档。 有关详细信息，请参阅[运行或重置索引器、技能和文档](search-howto-run-reset-indexers.md)。
 
 ## <a name="change-detection"></a>更改检测
 
