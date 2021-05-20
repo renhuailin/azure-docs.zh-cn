@@ -209,8 +209,6 @@
               href: azure-disk-csi.md
             - name: Azure 文件存储 CSI 驱动程序（预览版）
               href: azure-files-csi.md
-            - name: CSI 机密存储驱动程序（预览版）
-              href: csi-secrets-store-driver.md
     - name: 配置网络
       items:
         - name: 创建虚拟网络或使用现有虚拟网络
@@ -295,6 +293,8 @@
           href: azure-disk-customer-managed-keys.md
         - name: 启用基于主机的加密
           href: enable-host-encryption.md
+        - name: CSI 机密存储驱动程序（预览版）
+          href: csi-secrets-store-driver.md
     - name: 监视和日志记录
       items:
         - name: 查看群集指标
@@ -389,7 +389,7 @@
           href: deployment-center-launcher.md
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 常见问题
           href: troubleshooting.md
@@ -440,5 +440,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md

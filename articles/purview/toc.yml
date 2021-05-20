@@ -104,7 +104,7 @@ items:
               - name: Azure Data Lake Storage Gen 2
                 href: register-scan-adls-gen2.md
                 displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
-              - name: Azure SQL Database
+              - name: Azure SQL 数据库
                 href: register-scan-azure-sql-database.md
                 displayName: Register and scan Azure SQL DB
               - name: Azure SQL 数据库托管实例
@@ -112,6 +112,8 @@ items:
                 displayName: Register and scan Azure SQL DB Managed Instance
               - name: Azure 专用 SQL 池（以前称为 SQL DW）
                 href: register-scan-azure-synapse-analytics.md
+              - name: Hive 元存储数据库
+                href: register-scan-hive-metastore-source.md
               - name: 本地 SQL Server
                 href: register-scan-on-premises-sql-server.md
               - name: Oracle
@@ -184,6 +186,8 @@ items:
         items:
           - name: 管理专用终结点
             href: catalog-private-link.md
+          - name: Azure Purview 专用终结点常见问题解答
+            href: catalog-private-link-faqs.md
       - name: 灾难恢复
         items:
           - name: 灾难恢复

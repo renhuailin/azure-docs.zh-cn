@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: af6234a81e8f79424cc3b1ec4178a175d9ff0146
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b0eeb73ffb5436284f4f23cef943db0a3307a2b2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98706238"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564562"
 ---
 # <a name="repairing-an-import-job"></a>修复导入作业
 Microsoft Azure 导入/导出服务可能无法将某些文件或某个文件的部分内容复制到 Windows Azure Blob 服务。 失败的部分原因包括：  
@@ -30,7 +30,7 @@ Microsoft Azure 导入/导出服务可能无法将某些文件或某个文件的
 
 可以使用 **RepairImport** 指定以下参数： 
   
-|||  
+| 参数 | 说明 |  
 |-|-|  
 |**/r:** <RepairFile\>|**必需。** 修复文件的路径。该文件用于跟踪修复进度，以及恢复已中断的修复。 每个驱动器都必须有且仅有一个修复文件。 在开始对给定驱动器进行修复时，会传入尚不存在的修复文件的路径。 若要恢复已中断的修复，应该传入现有修复文件的名称。 始终指定与目标驱动器对应的修复文件。|  
 |**/logdir:**<LogDirectory\>|**可选。** 日志目录。 详细日志文件将写入此目录。 如果未指定任何日志目录，将使用当前目录作为日志目录。|  

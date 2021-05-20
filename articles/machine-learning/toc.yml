@@ -500,6 +500,9 @@
         - name: 高级入口脚本创作
           displayName: swagger inference schema binary cors
           href: how-to-deploy-advanced-entry-script.md
+        - name: 推理 HTTP 服务器
+          href: how-to-inference-server-http.md
+          displayName: local debug
         - name: 监视 Web 服务
           items:
             - name: 收集和评估模型数据

@@ -1,31 +1,33 @@
 ### YamlMime:Landing
 title: 异常检测器 API 文档
-summary: 了解如何使用异常检测器 API 在一段时间内监视数据，并通过机器学习检测异常。 深入了解数据，而无论数据量、行业或场景如何。
+summary: 了解如何使用异常检测器单变量和多变量 API 在一段时间内监视数据，并通过机器学习检测异常。 深入了解数据，而无论数据量、行业或场景如何。
 metadata:
   title: 异常检测器 API - 教程、快速入门和 API 参考
   titleSuffix: Azure Cognitive Services
-  description: 使用异常检测器 API 可在一段时间内监视数据，并通过机器学习检测异常。 深入了解数据，而无论数据量、行业或场景如何。
+  description: 使用异常检测器单变量和多变量 API 在一段时间内监视数据，并通过机器学习检测异常。 深入了解数据，而无论数据量、行业或场景如何。
   services: cognitive-services
-  author: aahill
+  author: mrbullwinkle
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 09/10/2019
-  ms.author: aahi
-  ms.openlocfilehash: 24f6ec0afc0760b2f57f7ac9409f0b84f2e630da
-  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.date: 05/12/2021
+  ms.author: mbullwin
+  ms.openlocfilehash: 5737b7c44231053a3de0665bd4fd147729b53a3a
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/20/2021
-  ms.locfileid: "107789098"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110082299"
 landingContent:
 - title: 关于异常检测器 API
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是异常检测器 API？
+    - text: 什么是异常检测器单变量？
       url: overview.md
+    - text: 什么是异常检测器多变量？
+      url: overview-multivariate.md
   - linkListType: get-started
     links:
     - text: 异常探测器演示
@@ -48,12 +50,20 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 使用 C#
+    - text: 使用 C#（单变量）
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-csharp
-    - text: 使用 JavaScript
+    - text: 使用 JavaScript（单变量）
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-javascript
-    - text: 使用 Python
+    - text: 使用 Python（单变量）
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-python
+    - text: 使用 C#（多变量）
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-csharp
+    - text: 使用 JavaScript（多变量）
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-javascript
+    - text: 使用 Python（多变量）
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-python
+    - text: 使用 Java（多变量）
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-java
   - linkListType: tutorial
     links:
     - text: 使用批量检测和 Power BI 将异常可视化
