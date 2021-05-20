@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 74d2654c54d1ab2ac5d47aa24449c41c20a90b74
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791132"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的定价层
@@ -37,7 +37,7 @@ ms.locfileid: "98791132"
 
 ## <a name="compute-generations-and-vcores"></a>计算代数和 vCore 数
 
-计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 中国东部1、中国北部1、US DoD 中部和 US DoD 东部利用基于 Intel E5-2673 v3 的第4代逻辑 Cpu (Haswell) 2.4 GHz 处理器。 所有其他区域均利用基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器的第 5 代逻辑 CPU。
+计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 中国东部 1、中国北部 1、美国 DoD 中部和美国 DoD 东部利用基于 Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器的第 4 代逻辑 CPU。 所有其他区域均利用基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器的第 5 代逻辑 CPU。
 
 ## <a name="storage"></a>存储
 
@@ -51,9 +51,9 @@ ms.locfileid: "98791132"
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
 
 > [!NOTE]
-> 以下区域支持最大的存储和 20000 IOPS：澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国中北部、中国东部2、中国北部2、东亚、美国东部、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中南部、北欧、美国中南部、东南亚、瑞士北部、瑞士西部、US Gov 东、US Gov SouthCentral、US Gov 西南、英国南部、英国西部、西欧、美国中北部、美国西部和美国西部2。
+> 以下区域支持高达 16 TB 的存储和 20000 IOPS：澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国中部、中国东部 2、中国北部 2、东亚、美国东部、美国东部 1、美国东部 2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、瑞士北部、瑞士西部、US Gov 东部、US Gov 中南部、US Gov 西南部、英国南部、英国西部、西欧、美国中西部、美国西部和美国西部 2。
 >
-> 所有其他区域支持最高4TB 的存储和 6000 IOPS。
+> 其他所有区域支持最大 4 TB 的存储和 6000 IOPS。
 >
 
 在创建服务器的过程中和之后，可以添加更多的存储容量，这样系统就可以根据工作负荷的存储使用情况自动增加存储。
@@ -87,7 +87,7 @@ ms.locfileid: "98791132"
 
 ## <a name="backup-storage"></a>备份存储
 
-Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 使用的任何备份存储量超过此数量将按每月 GB 量收费。 例如，如果你预配的服务器的存储空间为 250 GB，则可以免费为服务器备份提供 250 GB 的附加存储。 超过 250GB 的备份存储量按[定价模型](https://azure.microsoft.com/pricing/details/postgresql/)收费。 若要了解影响备份存储使用率的因素、监视和控制备份存储成本，可以参考[备份文档](concepts-backup.md)。
+Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存储作为备份存储，不收取任何额外费用。 使用的任何备份存储量超过此数量将按每月 GB 量收费。 例如，如果为服务器配置了 250 GB 的存储空间，则可以为服务器备份提供 250 GB 的额外存储空间，而不收取任何费用。 超过 250GB 的备份存储量按[定价模型](https://azure.microsoft.com/pricing/details/postgresql/)收费。 若要了解影响备份存储使用率的因素、监视和控制备份存储成本，可以参考[备份文档](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>缩放资源
 

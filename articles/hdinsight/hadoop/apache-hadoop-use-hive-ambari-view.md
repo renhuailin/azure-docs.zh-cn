@@ -1,16 +1,16 @@
 ---
-title: 在 Azure HDInsight 中将 Apache Ambari Hive 视图与 Apache Hadoop 配合使用
+title: 将 Apache Ambari Hive 视图用于 Azure HDInsight 中的 Apache Hadoop
 description: 了解如何从 Web 浏览器中使用 Hive 视图来提交 Hive 查询。 Hive 视图是随基于 Linux 的 HDInsight 群集提供的 Ambari Web UI 的一部分。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 1f2dbef014f1b48b554e6bc30af83b936fe532a7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 87a4d3960937450713747fa16bd473b4c34eff0e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944870"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867859"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用
 
@@ -30,11 +30,11 @@ HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./ap
 
 1. 在视图列表中，选择“Hive 视图”。
 
-    ![Apache Ambari 选择 Apache Hive 视图](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png" alt-text="Apache Ambari 选择 Apache Hive 视图" border="true":::
 
     Hive 视图页面类似于下图：
 
-    ![Hive 视图查询工作表图像](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png" alt-text="Hive 视图查询工作表图像" border="true":::
 
 1. 将以下 HiveQL 语句从“查询”选项卡粘贴到工作表中：
 
@@ -99,19 +99,19 @@ HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./ap
 
 “作业”选项卡显示 Hive 查询的历史记录。
 
-![Apache Hive 查看作业 "选项卡历史记录](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png" alt-text="Apache Hive 视图“作业”选项卡历史记录" border="true":::
 
 ## <a name="database-tables"></a>数据库表
 
 可使用“表”选项卡处理 Hive 数据库内的表。
 
-!["Apache Hive 表" 选项卡的图像](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png" alt-text="Apache Hive“表”选项卡的图像" border="true":::
 
 ## <a name="saved-queries"></a>已保存的查询
 
 在“查询”选项卡中，可以按需要保存查询。 保存查询后，可通过“已保存的查询”选项卡对其重复进行使用。
 
-![Apache Hive 查看已保存的查询 "选项卡](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png" alt-text="Apache Hive 视图“已保存的查询”选项卡" border="true":::
 
 > [!TIP]  
 > 保存的查询存储在默认群集存储中。 可在路径 `/user/<username>/hive/scripts` 下找到保存的查询。 它们存储为纯文本 `.hql` 文件。
@@ -124,11 +124,11 @@ HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./ap
 
 使用 Hive 视图顶部的“UDF”选项卡，声明并保存一组 UDF。 可以在 **查询编辑器** 中使用这些 UDF。
 
-![Apache Hive 查看 Udf 选项卡显示](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png" alt-text="Apache Hive 视图“UDF”选项卡显示" border="true":::
 
 “插入 UDF”按钮显示在“查询编辑器”的底部 。 此项将显示 Hive 视图中定义的 UDF 的下拉列表。 选择一个 UDF 可向查询添加 HiveQL 语句以启用 UDF。
 
-例如，如果您定义了具有以下属性的 UDF：
+例如，如果定义了具有以下属性的 UDF：
 
 * 资源名称：myudfs
 

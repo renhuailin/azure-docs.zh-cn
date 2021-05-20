@@ -1,16 +1,16 @@
 ---
 title: Azure FarmBeats 体系结构
 description: 介绍 Azure FarmBeats 的体系结构
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: ebc1cdc7c762117851072037624f11e9fa98b6f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.openlocfilehash: 64c76c9dd92aa8e39225a5e4a2789ad2b6bdf350
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182598"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768870"
 ---
 # <a name="integration-patterns"></a>集成模式
 

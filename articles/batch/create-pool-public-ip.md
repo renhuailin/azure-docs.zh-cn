@@ -3,12 +3,12 @@ title: 创建具有指定公共 IP 地址的池
 description: 了解如何创建使用你自己的公共 IP 地址的 Batch 池。
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: e822311718847e173763847d503335f71457308b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 82a37f96a91bdad37c1a7828ef0cf71b3581ca82
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849322"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768388"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>创建具有指定公共 IP 地址的 Azure Batch 池
 
@@ -16,7 +16,7 @@ ms.locfileid: "91849322"
 
 你可以创建用于池中的虚拟机的静态公共 IP 地址的列表。 这样，你就可以控制公共 IP 地址的列表，确保它们不会意外更改。 如果你在使用仅限特定 IP 地址访问的任何外部服务（如数据库），这会特别有用。
 
-有关创建没有公共 IP 地址的池的信息，请参阅 [创建没有公共 ip 地址的 Azure Batch 池](./batch-pool-no-public-ip-address.md)。
+有关创建没有公共 IP 地址的池的信息，请参阅[创建没有公共 IP 地址的 Azure Batch 池](./batch-pool-no-public-ip-address.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +24,7 @@ ms.locfileid: "91849322"
 
 - **一个 Azure VNet**。 必须使用你在其中创建池 和 IP 地址的同一 Azure 订阅中的[虚拟网络](batch-virtual-network.md)。 只能使用基于 Azure 资源管理器的 VNet。 确保 VNet 满足所有[一般要求](batch-virtual-network.md#vnet-requirements)。
 
-- **至少一个 Azure 公共 IP 地址**。 若要创建一个或多个公共 IP 地址，可以使用 [Azure 门户](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)、[Azure 命令行界面 (CLI)](/cli/azure/network/public-ip#az-network-public-ip-create) 或 [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress)。 请务必遵循下面列出的要求。
+- **至少一个 Azure 公共 IP 地址**。 若要创建一个或多个公共 IP 地址，可以使用 [Azure 门户](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)、[Azure 命令行界面 (CLI)](/cli/azure/network/public-ip#az_network_public_ip_create) 或 [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress)。 请务必遵循下面列出的要求。
 
 > [!NOTE]
 > Batch 自动在包含公共 IP 地址的资源组中分配其他网络资源。 通常情况下，每 100 个专用节点 Batch 会分配 1 个网络安全组 (NSG) 和 1 个负载均衡器。 这些资源受订阅的资源配额限制。 当使用较大的池时，可能需要为一个或多个此类资源[请求增加配额](batch-quota-limit.md#increase-a-quota)。
@@ -99,5 +99,4 @@ client-request-id: 00000000-0000-0000-0000-000000000000
 
 - 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)（如池、节点、作业和任务）。
 - 了解如何[在 Azure 虚拟网络的子网中创建池](batch-virtual-network.md)。
-- 了解如何 [创建不带公共 IP 地址的 Azure Batch 池](./batch-pool-no-public-ip-address.md)。
-
+- 了解如何[创建没有公共 IP 地址的 Azure Batch 池](./batch-pool-no-public-ip-address.md)。

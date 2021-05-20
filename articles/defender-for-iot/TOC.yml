@@ -120,14 +120,6 @@
             - name: 安装软件
               displayName: 'setup, deployment, virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate, NIC, second, secondary, network, interface, network interface, appliance, Nuvo 5006LP, Fitlet2, BIOS, sanity, mirroring, port, ports'
               href: how-to-install-software.md
-        - name: 准备传感器
-          items:
-            - name: 加入传感器
-              displayName: 'onboard, cloud, register, version, activate, offboard, subscription, threat intelligence, packages, connected'
-              href: how-to-manage-sensors-on-the-cloud.md
-            - name: 激活和设置传感器
-              displayName: 'deployment, onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
-              href: how-to-activate-and-set-up-your-sensor.md
         - name: 准备本地管理控制台
           items:
             - name: 管理订阅
@@ -142,7 +134,7 @@
         - name: 准备传感器
           items:
             - name: 加入传感器
-              displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions'
+              displayName: 'onboard, cloud, register, version, activate, offboard, subscription, threat intelligence, packages, connected'
               href: how-to-manage-sensors-on-the-cloud.md
             - name: 激活和设置传感器
               displayName: 'deployment, onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'

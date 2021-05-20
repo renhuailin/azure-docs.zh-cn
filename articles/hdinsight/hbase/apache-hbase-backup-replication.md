@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 1d5bcf9c04ad02eaf297f8971aa0f4ff599888c7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98942996"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>在 HDInsight 上为 Apache HBase 和 Apache Phoenix 设置备份与复制
@@ -39,7 +39,7 @@ HDInsight 中的 HBase 使用创建群集时选择的默认存储：Azure 存储
 
   `wasbs://<containername>@<accountname>.blob.core.windows.net/hbase`
 
-* 在 Azure Data Lake Storage 中，该 `hbase` 文件夹位于预配群集时指定的根路径下。 此根路径通常包含一个 `clusters` 文件夹，而该文件夹包含一个与 HDInsight 群集同名的子文件夹：
+* 在 Azure Data Lake Storage 中，`hbase` 文件夹位于预配群集时指定的根路径下。 此根路径通常包含一个 `clusters` 文件夹，而该文件夹包含一个与 HDInsight 群集同名的子文件夹：
 
   `/clusters/<clusterName>/hbase`
 
@@ -134,7 +134,7 @@ CopyTable 将会扫描要复制到目标表的整个源表内容。 因此，在
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>手动收集 Apache ZooKeeper 仲裁列表
 
-如果两个 HDInsight 群集位于同一个虚拟网络中，如前所述，内部主机名解析会自动进行。 若要在通过 VPN 网关连接的两个不同虚拟网络中的 HDInsight 群集上使用 CopyTable，需要提供仲裁中 Zookeeper 节点的主机 IP 地址。
+如果两个 HDInsight 群集位于同一个虚拟网络中，如前所述，内部主机名解析会自动进行。 若要对通过 VPN 网关连接的两个不同虚拟网络中的 HDInsight 群集使用 CopyTable，需要提供仲裁中 Zookeeper 节点的主机 IP 地址。
 
 若要获取仲裁主机名，请运行以下 curl 命令：
 
@@ -224,7 +224,7 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.<ac
 
 导出快照后，通过 SSH 连接到目标群集的头节点，然后根据前面所述使用 `restore_snapshot` 命令还原快照。
 
-快照提供执行 `snapshot` 命令时的表的完整备份。 快照不提供按时间窗口执行增量快照的功能，也无法指定要包含在快照中的列系列子集。
+快照提供执行 `snapshot` 命令时的表的完整备份。 快照不提供按时间范围执行增量快照的功能，也不允许指定要包含在快照中的列系列子集。
 
 ## <a name="replication"></a>复制
 

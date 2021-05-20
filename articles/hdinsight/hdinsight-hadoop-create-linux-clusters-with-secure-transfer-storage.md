@@ -1,18 +1,18 @@
 ---
-title: Apache Hadoop & 安全传输存储-Azure HDInsight
+title: Apache Hadoop 和安全传输存储 - Azure HDInsight
 description: 了解如何使用启用安全传输的 Azure 存储帐户创建 HDInsight 群集。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: a02da7237252811d89e2c19a29f49f0bf9bb3804
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 22804015ebf0344c00e60c88f780fe22ba440b52
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945725"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774982"
 ---
-# <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中具有安全传输存储帐户的 Apache Hadoop 群集
+# <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全传输存储帐户的 Apache Hadoop 群集
 
 [需要安全传输](../storage/common/storage-require-secure-transfer.md)功能强制提交到帐户的所有请求都通过安全连接来进行，从而增强 Azure 存储帐户的安全性。 仅 HDInsight 群集 3.6 或更高版本支持此功能和 wasbs 方案。
 
@@ -23,21 +23,21 @@ ms.locfileid: "98945725"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-默认情况下，在 Azure 门户中创建存储帐户时，将启用 "需要安全传输" 属性。
+默认情况下，在 Azure 门户中创建存储帐户时，会启用“需要安全传输”属性。
 
-若要使用 Azure 门户更新现有的存储帐户，请参阅 [需要安全传输与 Azure 门户](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-for-an-existing-storage-account)。
+若要使用 Azure 门户更新现有存储帐户，请参阅[需要使用 Azure 门户进行安全传输](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-for-an-existing-storage-account)。
 
 ### <a name="powershell"></a>PowerShell
 
-对于 PowerShell cmdlet [AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)，请确保 `-EnableHttpsTrafficOnly` 将参数设置为 `1` 。
+对于 PowerShell cmdlet [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)，请确保将参数 `-EnableHttpsTrafficOnly` 设置为 `1`。
 
-若要使用 PowerShell 更新现有的存储帐户，请参阅 [要求使用 powershell 进行安全传输](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)。
+若要使用 PowerShell 更新现有存储帐户，请参阅[需要使用 PowerShell 进行安全传输](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-对于 Azure CLI 命令 [az storage account create](/cli/azure/storage/account#az-storage-account-create)，请确保 `--https-only` 将参数设置为 `true` 。
+对于 Azure CLI 命令 [az storage account create](/cli/azure/storage/account#az_storage_account_create)，请确保将 `--https-only` 参数设置为 `true`。
 
-若要使用 Azure CLI 更新现有的存储帐户，请参阅 [需要安全传输与 Azure CLI](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)。
+若要使用 Azure CLI 更新现有存储帐户，请参阅[需要使用 Azure CLI 进行安全传输](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)。
 
 ## <a name="add-additional-storage-accounts"></a>添加其他存储帐户
 

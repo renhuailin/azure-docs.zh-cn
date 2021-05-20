@@ -1,27 +1,24 @@
 ---
-title: 在 Azure Stack 上运行 Azure 流分析（预览版）
+title: 在 Azure Stack 上运行 Azure 流分析
 description: 创建 Azure 流分析 Edge 作业，然后通过 IoT Edge 运行时将其部署到 Azure Stack Hub。
 ms.service: stream-analytics
 author: an-emma
 ms.author: raan
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 03/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.openlocfilehash: 315b2efa042721a19fa779794c4921f9ced1fc83
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020122"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104589797"
 ---
-# <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>在 Azure Stack 上运行 Azure 流分析（预览版）
-
-> [!IMPORTANT]
-> 此功能以预览版提供，建议不要在生产环境中使用。
+# <a name="run-azure-stream-analytics-on-azure-stack"></a>在 Azure Stack 上运行 Azure 流分析 
 
 可以将 Azure Stack Hub 上的 Azure 流分析作为 IoT Edge 模块运行。 已将配置添加到 IoT Edge 模块中，这使该模块可以通过每次利用 Azure Stack Hub 时找到的自定义 URL 与 Azure Stack Hub 订阅中运行的 Blob 存储、事件中心和 IoT 中心进行交互。
 
-通过 Azure Stack 上的流分析，可以在自己的专用、自治云（可通过本地使用一致的 Azure 服务与云本机应用连接或断开连接）中为流处理生成真正的混合体系结构。 
+借助 Azure Stack 上的流分析，你可以在自己的私有自治云中构建用于流处理的真正的混合体系结构，这些体系结构可以使用一致的 Azure 服务在本地与云本机应用连接或断开连接。 
 
 本文介绍如何将数据从 IoT 中心或事件中心流式传输到 Azure Stack Hub 订阅中的另一个事件中心或 Blob 存储，以及如何使用流分析进行处理。
 
@@ -41,7 +38,7 @@ Azure 流分析是 Azure Stack Hub 上的混合服务。 它是在 Azure 中配�
 
 若要在 Azure Stack Hub 上运行 Azure 流分析，你的设备必须具有 IoT Edge 运行时，且必须通过网络与 Azure Stack Hub 连接，或者必须是在 Azure Stack Hub 上运行的 VM。 IoT Edge 运行时支持将流分析 Edge 作业与 Azure Stack Hub 上运行的 Azure 存储和 Azure 事件中心集成。 有关详细信息，请参阅 [IoT Edge 上的 Azure 流分析](stream-analytics-edge.md) 
 
-除了对 Azure Stack 集线器资源的网络访问，IoT Edge 设备 (或 VM) 需要访问 Azure 公有云中的 Azure IoT 中心，才能配置流分析模块。 
+除了需要具有对 Azure Stack Hub 资源的网络访问权限外，IoT Edge 设备（或 VM）还需要在 Azure 公有云中访问 Azure IoT 中心来配置流分析模块。 
 
 以下指南介绍了如何在设备或 VM 上设置 IoT Edge 运行时：
 
@@ -61,7 +58,7 @@ ASA Edge 作业在部署到 Azure IoT Edge 设备的容器中运行。 它们由
 1. 在 Azure 门户中，转到“创建资源”>“存储”>“存储帐户 - Blob、文件、表、列”。
 2. 提供以下值来创建存储帐户：
 
-   | 字段 | Value |
+   | 字段 | 值 |
    | --- | --- |
    | 名称 | 为存储帐户提供唯一的名称。 |
    | 位置 | 选择靠近你的位置。|
