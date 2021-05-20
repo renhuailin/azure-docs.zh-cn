@@ -1,16 +1,16 @@
 ---
 title: 使用外部元数据存储 - Azure HDInsight
-description: 在 Azure HDInsight 群集中使用外部元数据存储。
+description: 将外部元数据存储用于 Azure HDInsight 群集。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: d36c8f1f592bbe714a9e31cad8131523049f29ad
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: a3bfcfbe59ccc15278b30470c6a060a9c1dd609c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931356"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871738"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
@@ -18,7 +18,7 @@ HDInsight 允许通过外部数据存储来控制数据和元数据。 此功能
 
 HDInsight 中的 Apache Hive 元存储是 Apache Hadoop 体系结构的必备部分。 元存储是中心架构存储库。 其他大型数据访问工具（例如 Apache Spark、Interactive Query [LLAP]、Presto 或 Apache Pig）使用元存储。 HDInsight 使用 Azure SQL 数据库作为 Hive 元存储。
 
-![HDInsight Hive 元数据存储体系结构](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png" alt-text="HDInsight Hive 元数据存储体系结构" border="false":::
 
 可使用以下两种方式为 HDInsight 存储设置元存储：
 
@@ -56,7 +56,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 * 群集和外部元存储必须托管在同一区域中。
 
-![HDInsight Hive 元数据存储使用案例](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png" alt-text="HDInsight Hive 元数据存储使用案例" border="false":::
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>针对自定义元存储创建并配置 Azure SQL 数据库
 
@@ -64,17 +64,17 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 创建群集时，HDInsight 服务需要连接到外部元存储并验证你的凭据。 配置 Azure SQL 数据库防火墙规则以允许 Azure 服务和资源访问服务器。 通过选择“设置服务器防火墙”来在 Azure 门户中启用此选项。 然后针对 Azure SQL 数据库在“拒绝公用网络访问”下选择“否”，在“允许 Azure 服务和资源访问此服务器”下选择“是”。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
-仅在使用 `outbound` ResourceProviderConnection 创建的群集上支持 SQL 存储的专用终结点。 若要了解详细信息，请参阅此 [documentationa](./hdinsight-private-link.md)。
+仅在使用 `outbound` ResourceProviderConnection 创建的群集上支持 SQL 存储的专用终结点。 若要了解详细信息，请参阅这篇[文档](./hdinsight-private-link.md)。
 
-![“设置服务器防火墙”按钮](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png" alt-text="“设置服务器防火墙”按钮":::
 
-![允许 Azure 服务访问](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png" alt-text="允许 Azure 服务访问":::
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>在群集创建期间选择自定义元存储
 
 可以随时将群集指向之前创建的 Azure SQL 数据库。 若要通过门户创建群集，请从“存储”>“元存储设置”指定该选项。
 
-![HDInsight Hive 元数据存储 Azure 门户](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png" alt-text="HDInsight Hive 元数据存储 Azure 门户":::
 
 ## <a name="hive-metastore-guidelines"></a>Hive 元存储指南
 

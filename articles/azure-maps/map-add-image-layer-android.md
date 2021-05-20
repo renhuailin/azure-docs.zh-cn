@@ -1,6 +1,6 @@
 ---
-title: 向 Android 地图添加图像层 |Microsoft Azure 映射
-description: 了解如何将图像添加到地图中。 请参阅如何使用 Azure Maps Android SDK 自定义图像层并覆盖固定坐标集上的图像。
+title: 向 Android 地图添加图像层 | Microsoft Azure Maps
+description: 了解如何向地图添加图像。 了解如何使用 Azure Maps Android SDK 自定义图像层并将图像覆盖在固定坐标集上。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 02/26/2021
@@ -10,27 +10,27 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: e1d99297c0357039606149bdf7e5a526258fc7c5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102054458"
 ---
-# <a name="add-an-image-layer-to-a-map-android-sdk"></a>向地图添加图像层 (Android SDK) 
+# <a name="add-an-image-layer-to-a-map-android-sdk"></a>向地图添加图像层 (Android SDK)
 
-本文介绍如何将图像叠加到一组固定的坐标。 下面是可以在地图上重叠的不同图像类型的几个示例：
+本文介绍如何将图像覆盖到固定坐标集。 下面是可以在地图上覆盖的不同图像类型的几个示例：
 
-* 从无人机捕获的映像
-* 构建 floorplans
-* 历史或其他专用地图图像
-* 作业站点的蓝图
+* 从无人机捕获的图像
+* 建筑平面图
+* 历史或其他专门的地图图像
+* 工作地点蓝图
 
 > [!TIP]
-> 使用图像层可以轻松地在地图上覆盖图像。 请注意，大图像可能会占用大量内存，并可能会导致性能问题。 在这种情况下，请考虑将图像分解为磁贴，并将其作为图块层加载到地图中。
+> 借助图像层，可以轻松将图像覆盖在地图上。 请注意，大幅图像可能会占用大量内存，并可能导致性能问题。 在这种情况下，请考虑将图像分解为图块并将其作为图块层加载到地图中。
 
 ## <a name="add-an-image-layer"></a>添加图像层
 
-下面的代码在地图上覆盖 [1922 的纽瓦克、New Jersey 的图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) 的图像。 此图像将添加到 `drawable` 项目的文件夹中。 图像层是通过设置格式中四个角的图像和坐标来创建的 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 。 通常需要在层下方添加图像层 `label` 。
+下面的代码在地图上覆盖 [1922 年新泽西州纽瓦克地图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的图像。 此图像将添加到项目的 `drawable` 文件夹中。 通过设置图像并以 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 格式设置四个角的坐标来创建图像层。 通常需要在 `label` 层下方添加图像层。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -76,7 +76,7 @@ map.layers.add(layer, "labels")
 
 ::: zone-end
 
-此外，还可以指定联机承载的图像的 URL。 但是，如果你的方案允许，请将映像添加到你 `drawable` 的项目文件夹，这将更快加载，因为映像将在本地可用且无需下载。
+或者，可以指定联机托管图像的 URL。 但是，如果方案允许，将图像添加到项目的 `drawable` 文件夹，这样加载速度会更快，因为图像将在本地提供，不需要下载。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -122,13 +122,13 @@ map.layers.add(layer, "labels")
 
 ::: zone-end
 
-以下屏幕截图显示了使用图像层从1922重叠的纽瓦克、新 Jersey 的地图。
+以下屏幕截图显示了使用图像层覆盖的 1922 年新泽西州纽瓦克的地图。
 
-![使用图像层从1922重叠的纽瓦克、New Jersey 的映射](media/map-add-image-layer-android/android-image-layer.gif)
+![使用图像层覆盖的 1922 年新泽西州纽瓦克的地图](media/map-add-image-layer-android/android-image-layer.gif)
 
 ## <a name="import-a-kml-file-as-ground-overlay"></a>导入 KML 文件作为地面覆盖
 
-此示例演示如何将 KML 地面叠加信息添加为地图上的图像层。 KML 地面叠加提供北方、南部、东和西坐标以及逆时针旋转。 但图像层需要图像每个角的坐标。 本示例中的 KML 地面覆盖适用于 Chartres cathedral，其来源为 [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
+此示例演示如何将 KML 地面覆盖信息覆盖为地图上的图像层。 KML 地面覆盖提供东、南、西、北坐标和逆时针旋转。 但图像层需要图像每个角的坐标。 此示例中的 KML 地面覆盖是来自[维基媒体](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)的 Chartres 大教堂。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -150,7 +150,7 @@ map.layers.add(layer, "labels")
 </kml>
 ```
 
-此代码使用 `getCoordinatesFromEdges` 类中的静态方法 `ImageLayer` 。 此方法使用 KML 地面叠加的北部、南部、东、西和旋转信息来计算图像的四个角。
+此代码使用 `ImageLayer` 类中的静态 `getCoordinatesFromEdges` 方法。 此方法使用 KML 地面覆盖的东、南、西、北和旋转信息来计算图像的四个角。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -201,16 +201,16 @@ map.layers.add(layer, "labels")
 
 ::: zone-end
 
-以下屏幕截图显示了一个地图，其中包含使用图像层重叠的 KML 地面重叠。
+以下屏幕截图显示了使用图像层覆盖的 KML 地面覆盖的地图。
 
-![使用图像层 KML 地面覆盖的地图](media/map-add-image-layer-android/android-ground-overlay.jpg)
+![使用图像层覆盖的 KML 地面覆盖的地图](media/map-add-image-layer-android/android-ground-overlay.jpg)
 
 > [!TIP]
-> 使用 `getPixels` `getPositions` 图像层类的和方法来转换定位图像层和本地图像像素坐标的地理坐标。
+> 使用图像层类的 `getPixels` 和 `getPositions` 方法在定位图像层的地理坐标和本地图像像素坐标之间转换。
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下文章，了解有关在地图上覆盖图像的方法的详细信息。
+请参阅以下文章，详细了解在地图上覆盖图像的方法。
 
 > [!div class="nextstepaction"]
 > [添加图块层](how-to-add-tile-layer-android-map.md)

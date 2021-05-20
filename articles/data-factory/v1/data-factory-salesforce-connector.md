@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 61ba29c656859f21c135b0466e5d48440f7a8d17
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ccc20f415d13356de755af5d1d3afc5b29de72f2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741558"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100387047"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -61,7 +61,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了针对 Salesforce 链接服务的 JSON 元素说明。
 
-| 属性 | 说明 | 必需 |
+| Property | 说明 | 必需 |
 | --- | --- | --- |
 | type |类型属性必须设置为：**Salesforce** |是 |
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> - 默认值为“https:\//login.salesforce.com”。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
@@ -74,7 +74,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型的数据集的 typeProperties 部分具有以下属性：
 
-| 属性 | 说明 | 必需 |
+| Property | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |在 Salesforce 中表的名称。 |否（如果指定了 **RelationalSource** 的 **query**） |
 
@@ -90,7 +90,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 Salesforce）时，以下属性在 typeProperties 部分中可用：
 
-| 属性 | 说明 | 允许的值 | 必须 |
+| Property | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 92 查询或 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询。 例如：`select * from MyTable__c`。 |否（如果指定了 **数据集** 的 **tableName**） |
 
@@ -303,7 +303,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 > [!NOTE]
 > 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
-[!INCLUDE [data-factory-structure-for-rectangular-datasets](includes/data-factory-structure-for-rectangular-datasets.md)]
+[!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素以及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

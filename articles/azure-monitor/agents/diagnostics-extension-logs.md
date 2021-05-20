@@ -1,25 +1,25 @@
 ---
-title: 将 blob 存储用于 IIS 和表存储 Azure Monitor 中的事件 |Microsoft Docs
+title: 在 Azure Monitor 中使用适用于 IIS 的 blob 存储和适用于事件的表存储 | Microsoft Docs
 description: Azure Monitor 可以读取将诊断写入到表存储的 Azure 服务的日志或写入到 Blob 存储的 IIS 日志。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: deb6b5f3718c1a7c84e3591bf9abcceb72b785da
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102054508"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>将 Azure 诊断扩展中的数据收集到 Azure Monitor 日志
-Azure 诊断扩展是 [Azure Monitor 中](../agents/agents-overview.md) 的一个代理，可从 Azure 计算资源（包括虚拟机）的来宾操作系统中收集监视数据。 本文介绍如何从 Azure 存储收集诊断扩展收集的数据，以便 Azure Monitor 日志。
+Azure 诊断扩展是 [Azure Monitor 中的代理](../agents/agents-overview.md)，可从 Azure 计算资源（包括虚拟机）的来宾操作系统中收集监视数据。 本文介绍了如何将诊断扩展收集的数据从 Azure 存储收集到 Azure Monitor 日志。
 
 > [!NOTE]
-> Azure Monitor 中的 Log Analytics 代理通常是将来宾操作系统中的数据收集到 Azure Monitor 日志的首选方法。 有关代理的详细比较，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md) 。
+> Azure Monitor 中的 Log Analytics 代理通常是用于将来宾操作系统中的数据收集到 Azure Monitor 日志的首选方法。 请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)来详细比较各个代理。
 
 ## <a name="supported-data-types"></a>支持的数据类型
-Azure 诊断扩展将数据存储在 Azure 存储帐户中。 对于 Azure Monitor 日志收集此数据，该数据必须位于以下位置：
+Azure 诊断扩展将数据存储在 Azure 存储帐户中。 要使 Azure Monitor 日志收集此数据，它必须位于以下位置：
 
 | 日志类型 | 资源类型 | 位置 |
 | --- | --- | --- |
@@ -33,30 +33,30 @@ Azure 诊断扩展将数据存储在 Azure 存储帐户中。 对于 Azure Monit
 
 ## <a name="data-types-not-supported"></a>不支持的数据类型
 
-- 来自来宾操作系统的性能数据
+- 来宾操作系统中的性能数据
 - Azure 网站中的 IIS 日志
 
 
 ## <a name="enable-azure-diagnostics-extension"></a>启用 Azure 诊断扩展
-有关安装和配置诊断扩展的详细信息，请参阅 [安装和配置 Windows Azure 诊断扩展 (WAD) ](../agents/diagnostics-extension-windows-install.md) 或 [使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md) 。 这将允许你指定存储帐户并配置要转发到 Azure Monitor 日志的数据收集。
+请参阅[安装并配置 Windows Azure 诊断扩展 (WAD)](../agents/diagnostics-extension-windows-install.md) 或[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md)，了解有关安装和配置诊断扩展的详细信息。 这将允许你指定存储帐户并配置要转发到 Azure Monitor 日志的数据集合。
 
 
 ## <a name="collect-logs-from-azure-storage"></a>从 Azure 存储收集日志
-使用以下过程从 Azure 存储帐户中启用诊断扩展数据收集：
+请使用以下过程启用从 Azure 存储帐户收集诊断扩展数据：
 
-1. 在 Azure 门户中转到 **Log Analytics 工作** 区并选择工作区。
-1. 在菜单的 "**工作区数据源**" 部分中，单击 "**存储帐户日志**"。
+1. 在 Azure 门户中，转到 **Log Analytics 工作区** 并选择你的工作区。
+1. 在菜单的“工作区数据源”部分中单击“存储帐户日志”。
 2. 单击“添加”  。
-3. 选择包含要收集的数据的 **存储帐户** 。
-4. 选择要收集的 **数据类型** 。
-5. 将基于数据类型自动填充源的值。
+3. 选择包含要收集的数据的 **存储帐户**。
+4. 选择要收集的 **数据类型**。
+5. “源”的值将基于数据类型自动填充。
 6. 单击“确定”以保存配置。
-7. 对于其他数据类型，重复此操作。
+7. 针对其他数据类型重复操作。
 
 在大约 30 分钟过后，能够在 Log Analytics 工作区中看到存储帐户中的数据。 在应用了配置后，只能看到写入到存储中的数据。 工作区不会从存储帐户中读取预先存在的数据。
 
 > [!NOTE]
-> 门户不会验证源是否存在于存储帐户中，或者是否正在写入新数据。
+> 该门户不会验证源是否存在于存储帐户中，也不会验证是否正在写入新数据。
 
 
 

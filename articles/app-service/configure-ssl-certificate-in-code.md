@@ -6,10 +6,10 @@ ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: b4e184f827875ebebd40ab976ef63e77ee702d49
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93126033"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>在 Azure 应用服务中通过代码使用 TLS/SSL 证书
@@ -39,7 +39,7 @@ ms.locfileid: "93126033"
 
 ## <a name="make-the-certificate-accessible"></a>使证书可供访问
 
-若要在应用代码中访问证书，请 `WEBSITE_LOAD_CERTIFICATES` 在 <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令，将其指纹添加到应用设置：
+若要在应用代码中访问证书，请在 <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> 中运行以下命令，将其指纹添加到 `WEBSITE_LOAD_CERTIFICATES` 应用设置：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -49,7 +49,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="load-certificate-in-windows-apps"></a>在 Windows 应用中加载证书
 
-`WEBSITE_LOAD_CERTIFICATES`应用设置使指定的证书可在[当前 User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)中 windows 证书存储中的 windows 托管应用程序中访问。
+[Current User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) 中的 Windows 证书存储中的 Windows 托管应用可以通过 `WEBSITE_LOAD_CERTIFICATES` 应用设置访问指定的证书。
 
 在 C# 代码中，可按证书指纹访问证书。 以下代码加载具有指纹 `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` 的证书。
 
@@ -109,7 +109,7 @@ PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCha
 例如，如需加载手动上传的证书文件，则最好是使用 [FTPS](deploy-ftp.md) 而不是 [Git](deploy-local-git.md) 上传证书。 应将专用证书之类的敏感信息置于源代码管理之外。
 
 > [!NOTE]
-> 即使从文件加载证书，Windows 上的 ASP.NET 和 ASP.NET Core 也必须访问证书存储。 若要在 Windows .NET 应用中加载证书文件，请在 <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中使用以下命令加载当前用户配置文件：
+> 即使从文件加载证书，Windows 上的 ASP.NET 和 ASP.NET Core 也必须访问证书存储。 若要在 Windows .NET 应用中加载证书文件，请在 <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> 中使用以下命令加载当前用户配置文件：
 >
 > ```azurecli-interactive
 > az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
@@ -148,7 +148,7 @@ var cert = new X509Certificate2(bytes);
 > 应用服务将证书路径作为以下环境变量 `WEBSITE_PRIVATE_CERTS_PATH`、`WEBSITE_INTERMEDIATE_CERTS_PATH`、`WEBSITE_PUBLIC_CERTS_PATH` 和 `WEBSITE_ROOT_CERTS_PATH` 注入到 Windows 容器中。 最好使用环境变量引用证书路径，而不是对证书路径进行硬编码，以防将来证书路径发生更改。
 >
 
-此外， [Windows Server Core 容器](configure-custom-container.md#supported-parent-images) 自动将证书加载到 **LocalMachine\My** 中的证书存储中。 若要加载证书，请遵循与 [Windows 应用中的加载证书](#load-certificate-in-windows-apps)相同的模式。 对于基于 Windows Nano 的容器，请使用上面提供的文件路径 [直接从文件加载证书](#load-certificate-from-file)。
+此外，[Windows Server Core 容器](configure-custom-container.md#supported-parent-images)自动将证书加载到 LocalMachine\My 中的证书存储中。 若要加载证书，请遵循与[在 Windows 应用中加载证书](#load-certificate-in-windows-apps)相同的模式。 对于基于 Windows Nano 的容器，请使用上面提供的文件路径[直接从文件加载证书](#load-certificate-from-file)。
 
 以下 C# 代码演示了如何在 Linux 应用中加载公共证书。
 

@@ -3,18 +3,18 @@ title: 使用共享库共享 VM 映像
 description: 了解如何使用共享映像库在整个组织中共享 Linux VM 映像。
 author: axayjo
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: baba35bd29ec6708aca77bd9c6d74401a365014a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 32b4cf1555a2d0e074ae1551a5c0085f2758fa2b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091895"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609135"
 ---
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
 
@@ -73,7 +73,7 @@ ms.locfileid: "101091895"
 - Eula - 可用于指向特定于映像定义的最终用户许可协议。
 - 隐私声明和发行说明 - 将发行说明和隐私声明存储在 Azure 存储中，并提供在映像定义中用于访问它们的 URI。
 - 生命周期结束日期 - 将生命周期结束日期附加到映像定义，以便能够使用自动化功能删除旧的映像定义。
-- 标记 - 可以在创建映像定义时添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../azure-resource-manager/management/tag-resources.md)。
+- 标记 - 可以在创建映像定义时添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../azure-resource-manager/management/tag-resources.md)
 - 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
 - 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合标准 HDD 磁盘，请将其添加到禁止列表。
 - 市场映像的购买计划信息 `-PurchasePlanPublisher`、`-PurchasePlanName` 和 `-PurchasePlanProduct`。 若要详细了解购买计划信息，请参阅[在 Azure 市场中查找映像](./windows/cli-ps-findimage.md)和[在创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。
@@ -104,7 +104,7 @@ ms.locfileid: "101091895"
 
 ## <a name="regional-support"></a>区域支持
 
-所有公共区域都可以是目标区域，要复制到澳大利亚中部和澳大利亚中部 2，需要将订阅添加到允许列表。 若要请求将订阅添加到允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
+所有公共区域都可以是目标区域，但某些区域要求客户完成请求过程才能获得访问权限。 若要请求将订阅添加到区域（如澳大利亚中部或澳大利亚中部 2）的允许列表，请提交[访问请求](/troubleshoot/azure/general/region-access-request-process)
 
 ## <a name="limits"></a>限制 
 
@@ -146,14 +146,14 @@ ms.locfileid: "101091895"
 
 ## <a name="access"></a>访问
 
-由于共享映像库、映像定义和映像版本都是资源，因此，可以使用内置的本机 Azure RBAC 控件来共享这些资源。 使用 Azure RBAC 可以将这些资源共享给其他用户、服务主体和组。 甚至可以与创建这些资源的租户外部的个人共享访问权限。 一旦用户有权访问共享的映像版本，他们就可以部署 VM 或虚拟机规模集。  以下共享矩阵可以帮助你了解用户有权访问哪些资源：
+由于共享映像库、映像定义和映像版本都是资源，因此，可以使用内置的本机 Azure RBAC 控件来共享这些资源。 使用 Azure RBAC 可与其他用户、服务主体和组共享这些资源。 甚至可以与创建这些资源的租户外部的个人共享访问权限。 一旦用户有权访问共享的映像版本，他们就可以部署 VM 或虚拟机规模集。  以下共享矩阵可以帮助你了解用户有权访问哪些资源：
 
 | 与用户共享     | 共享的映像库 | 映像定义 | 映像版本 |
 |----------------------|----------------------|--------------|----------------------|
 | 共享的映像库 | 是                  | 是          | 是                  |
 | 映像定义     | 否                   | 是          | 是                  |
 
-建议在库级别共享以获得最佳体验。 我们建议不要共享单个映像版本。 有关 Azure RBAC 的详细信息，请参阅 [分配 azure 角色](../role-based-access-control/role-assignments-portal.md)。
+建议在库级别共享以获得最佳体验。 我们建议不要共享单个映像版本。 有关 Azure RBAC 的详细信息，请参阅[分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 此外，还可以使用多租户应用注册大规模共享映像，甚至是跨租户共享。 有关在租户之间共享映像的详细信息，请参阅“如何使用 [Azure CLI](./linux/share-images-across-tenants.md) 或 [PowerShell](./windows/share-images-across-tenants.md) 在 Azure 租户之间共享库 VM 映像”。
 
@@ -317,12 +317,11 @@ ms.locfileid: "101091895"
 
 是的，你可以将规模集映像引用从托管映像更新为共享映像库映像，前提是这些映像之间的 OS 类型、Hyper-V 生成和数据磁盘布局均匹配。
 
-## <a name="troubleshoot-shared-image-gallery-issues"></a>排查共享图像库问题
-如果对共享映像库资源执行任何操作时遇到问题，请参阅 [故障排除指南](troubleshooting-shared-images.md)中的常见错误列表。
+## <a name="troubleshoot-shared-image-gallery-issues"></a>排查共享映像库问题
+如果对共享映像库资源执行任何操作时遇到问题，请参阅[故障排除指南](troubleshooting-shared-images.md)中的常见错误列表。
 
-此外，你还可以使用 `azure-virtual-machines-images` [Q&](/answers/topics/azure-virtual-machines-images.html)来发布和标记问题。
+此外，你可以在[问答](/answers/topics/azure-virtual-machines-images.html)中发布问题并使用 `azure-virtual-machines-images` 来标记问题。
 
 ## <a name="next-steps"></a>后续步骤
 
 了解如何使用 [Azure CLI](shared-images-cli.md) 或 [PowerShell](shared-images-powershell.md) 部署共享映像。
-

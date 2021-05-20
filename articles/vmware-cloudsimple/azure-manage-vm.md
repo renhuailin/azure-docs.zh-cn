@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 在 Azure 中管理私有云 VM
 description: 介绍如何在 Azure 门户中管理 CloudSimple 私有云 VM，包括添加磁盘、更改 VM 容量和添加网络接口
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 090b7711ab061b989eae13113fe7048e8dd875ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c505ad4edb6ee13a81e3d575ad11e1bf526166df
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895183"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182545"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>在 Azure 中管理 CloudSimple 私有云虚拟机
 
@@ -23,7 +23,7 @@ ms.locfileid: "97895183"
 
 所选虚拟机的“概述”页中提供了以下控件。
 
-| 控制 | 说明 |
+| 控件 | 说明 |
 | ------------ | ------------- |
 | 连接 | 连接到指定的 VM。  |
 | 开始 | 启动指定的 VM。  |
@@ -49,7 +49,7 @@ ms.locfileid: "97895183"
 
 ## <a name="manage-vm-disks"></a>管理 VM 磁盘
 
-若要添加 VM 磁盘，请打开所选 VM 的“磁盘”页。 若要添加磁盘，请单击“添加磁盘”。 通过输入或选择内联选项来配置以下每个设置。 单击“保存”  。
+若要添加 VM 磁盘，请打开所选 VM 的“磁盘”页。 若要添加磁盘，请单击“添加磁盘”。 通过输入或选择内联选项来配置以下每个设置。 单击“保存” 。
 
    | 项 | 说明 |
    | ------------ | ------------- |
@@ -72,9 +72,9 @@ ms.locfileid: "97895183"
 
 ## <a name="manage-network-interfaces"></a>管理网络接口
 
-若要添加接口，请单击“添加网络接口”。 通过输入或选择内联选项来配置以下每个设置。 单击“保存”  。
+若要添加接口，请单击“添加网络接口”。 通过输入或选择内联选项来配置以下每个设置。 单击“保存” 。
 
-   | 控制 | 说明 |
+   | 控件 | 说明 |
    | ------------ | ------------- |
    | 名称 | 输入一个名称用于标识接口。  |
    | 网络 | 从私有云 vSphere 中配置的网络列表中进行选择。  |

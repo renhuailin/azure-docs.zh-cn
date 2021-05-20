@@ -1,80 +1,80 @@
 ---
-title: Confluent 云的故障排除 Apache Kafka-Azure 合作伙伴解决方案
-description: 本文提供了有关 Azure 上的 Confluent Cloud () 常见问题的疑难解答和常见问题的信息。
+title: Apache Kafka for Confluent Cloud 故障排除 - Azure 合作伙伴解决方案
+description: 本文提供有关 Azure 上 Confluent Cloud 的故障排除和常见问题解答 (FAQ) 信息。
 ms.service: partner-services
 ms.topic: conceptual
 ms.date: 02/18/2021
 author: tfitzmac
 ms.author: tomfitz
 ms.openlocfilehash: b1e4b06fcbecf11d7d5f58a583fe3bd6643d99ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101709387"
 ---
-# <a name="troubleshooting-apache-kafka-for-confluent-cloud-solutions"></a>Confluent 云解决方案的故障排除 Apache Kafka
+# <a name="troubleshooting-apache-kafka-for-confluent-cloud-solutions"></a>Apache Kafka for Confluent Cloud 解决方案故障排除
 
-本文档包含有关解决使用 Confluent Cloud Apache Kafka 的解决方案的信息。
+本文档包含有关对使用 Apache Kafka for Confluent Cloud 的解决方案进行故障排除的信息。
 
-如果找不到答案或无法解决问题，请 [通过 Azure 门户创建请求](manage.md#get-support) 或联系 [Confluent 支持人员](https://support.confluent.io)。
+如果在本文中找不到解答或无法解决问题，请[通过 Azure 门户创建请求](manage.md#get-support)或联系 [Confluent 支持人员](https://support.confluent.io)。
 
-## <a name="cant-find-offer-in-the-marketplace"></a>在 Marketplace 中找不到产品/服务
+## <a name="cant-find-offer-in-the-marketplace"></a>在市场中找不到产品/服务
 
-若要查找 Azure Marketplace 中的产品/服务，请执行以下步骤：
+若要在 Azure 市场中查找产品/服务，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”。
-1. _在 Confluent Cloud 上搜索 Apache Kafka_。
-1. 选择 "应用程序" 磁贴。
+1. 搜索 Apache Kafka on Confluent Cloud。
+1. 选择应用程序磁贴。
 
-如果产品/服务未显示，请联系 [Confluent 支持](https://support.confluent.io)。 你的 Azure Active Directory 租户 ID 必须在允许的租户列表上。 若要了解如何查找你的租户 ID，请参阅 [如何查找你的 Azure Active Directory 租户 id](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)。
+如果该产品/服务未显示，请联系 [Confluent 支持人员](https://support.confluent.io)。 你的 Azure Active Directory 租户 ID 必须已列在允许的租户列表中。 若要了解如何查找租户 ID，请参阅[如何查找 Azure Active Directory 租户 ID](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)。
 
-## <a name="purchase-errors"></a>采购错误
+## <a name="purchase-errors"></a>购买错误
 
-* 购买失败，因为有效的信用卡未连接到 Azure 订阅，或者付款方法与订阅无关。
+* 购买失败，因为该 Azure 订阅未连接有效信用卡，或该订阅未关联付款方式。
 
-  使用其他 Azure 订阅。 或者，为订阅添加或更新信用卡或支付方法。 有关详细信息，请参阅 [更新信用和支付方法](../../cost-management-billing/manage/change-credit-card.md)。
+  使用其他 Azure 订阅。 或者，为订阅添加或更新信用卡或付款方式。 有关详细信息，请参阅[更新信用卡和付款方式](../../cost-management-billing/manage/change-credit-card.md)。
 
-* EA 订阅不允许 Marketplace 购买。
+* EA 订阅不允许在市场中购买。
 
-  使用其他订阅。 或者，检查是否为 Marketplace 购买启用了你的 EA 订阅。 有关详细信息，请参阅 [启用 Marketplace 购买](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases)。 如果这些选项不能解决问题，请联系 [Confluent 支持](https://support.confluent.io)。
+  使用其他订阅。 或者，检查你的 EA 订阅是否启用了市场购买。 有关详细信息，请参阅[启用市场购买](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases)。 如果这些方法不能解决问题，请联系 [Confluent 支持人员](https://support.confluent.io)。
 
 ## <a name="conflict-error"></a>冲突错误
 
-如果你以前已注册了 Confluent 云，则必须使用新的电子邮件地址来创建另一个 Confluent 云组织资源。 使用以前注册的电子邮件地址时，会收到 **冲突** 错误。 重新注册，但这一次使用新的电子邮件地址。
+如果你以前已注册了 Confluent Cloud，则必须使用新电子邮件地址创建另一个 Confluent Cloud 组织资源。 使用以前注册的电子邮件地址会出现“冲突”错误。 重新注册，但这一次请使用新电子邮件地址。
 
 ## <a name="deploymentfailed-error"></a>DeploymentFailed 错误
 
-如果遇到 **DeploymentFailed** 错误，请检查 Azure 订阅的状态。 请确保它未挂起，并且没有任何计费问题。
+如果遇到 DeploymentFailed 错误，请检查 Azure 订阅的状态。 请确保该订阅未暂停，并且不存在任何计费问题。
 
-## <a name="resource-isnt-displayed"></a>未显示资源
+## <a name="resource-isnt-displayed"></a>不显示资源
 
-如果门户中未显示 " **概述** " 或 " **删除** Confluent" 云，请尝试刷新页面。 此错误可能是门户出现间歇性问题。 如果这不起作用，请联系 [Confluent 支持](https://support.confluent.io)。
+如果门户中不显示 Confluent Cloud 的“概述”或“删除”边栏选项卡，请尝试刷新页面 。 此错误可能是门户的间歇性问题造成的。 如果刷新不起作用，请联系 [Confluent 支持人员](https://support.confluent.io)。
 
-如果在 "Azure **所有资源** " 列表中找不到 Confluent 云资源，请联系 [Confluent 支持](https://support.confluent.io)。
+如果在 Azure“所有资源”列表中找不到 Confluent Cloud 资源，请联系 [Confluent 支持人员](https://support.confluent.io)。
 
-## <a name="resource-creation-takes-long-time"></a>资源创建花费了很长时间
+## <a name="resource-creation-takes-long-time"></a>创建资源花费了很长时间
 
-如果部署过程需要超过三个小时才能完成，请联系支持人员。
+如果部署过程需要三个小时以上才能完成，请联系支持人员。
 
-如果部署失败并且 Confluent 云资源的状态为 `Failed` ，则删除资源。 删除后，请重试创建资源。
+如果部署失败并且 Confluent Cloud 资源的状态为 `Failed`，请删除该资源。 删除后，重试创建该资源。
 
-## <a name="offer-plan-doesnt-load"></a>产品/服务计划未加载
+## <a name="offer-plan-doesnt-load"></a>产品/服务计划不加载
 
-此错误可能是 Azure 门户的间歇性问题。 再次尝试部署该产品/服务。
+此错误可能是 Azure 门户的间歇性问题造成的。 重试部署产品/服务。
 
 ## <a name="unable-to-delete"></a>无法删除
 
-如果无法删除 Confluent 资源，请验证是否有权删除该资源。 必须允许你获取 Confluent/*/Delete 操作。 有关查看权限的信息，请参阅 [使用 Azure 门户列出 Azure 角色分配](../../role-based-access-control/role-assignments-list-portal.md)。
+如果无法删除 Confluent 资源，请验证你是否有权删除该资源。 必须有权执行 Microsoft.Confluent/*/Delete 操作。 有关查看权限的信息，请参阅[使用 Azure 门户列出 Azure 角色分配](../../role-based-access-control/role-assignments-list-portal.md)。
 
-如果您具有正确的权限，但仍无法删除资源，请联系 [Confluent 支持](https://support.confluent.io)。 这种情况可能与 Confluent 的保留策略有关。 Confluent 支持可删除组织和电子邮件地址。
+如果你拥有正确的权限，但仍无法删除该资源，请联系 [Confluent 支持人员](https://support.confluent.io)。 这种状况可能与 Confluent 的保留策略有关。 Confluent 支持人员可为你删除组织和电子邮件地址。
 
 ## <a name="unable-to-use-single-sign-on"></a>无法使用单一登录
 
-如果 SSO 对于 Confluent Cloud SaaS 门户不起作用，请确认你使用的是正确的 Azure Active Directory 电子邮件。 你还必须同意允许 (SaaS) 门户的服务访问 Confluent 云软件即服务。 有关详细信息，请参阅 [单一登录指南](manage.md#single-sign-on)。
+如果 SSO 在 Confluent Cloud SaaS 门户中不起作用，请验证是否使用了正确的 Azure Active Directory 电子邮件。 此外，必须同意在 Confluent Cloud 软件即服务 (SaaS) 门户中进行访问。 有关详细信息，请参阅[单一登录指南](manage.md#single-sign-on)。
 
-如果问题仍然存在，请联系 [Confluent 支持](https://support.confluent.io)。
+如果该问题依然出现，请联系 [Confluent 支持人员](https://support.confluent.io)。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何 [管理](manage.md) Confluent Cloud Apache Kafka 的实例。
+了解如何[管理 Apache Kafka for Confluent Cloud 的实例](manage.md)。

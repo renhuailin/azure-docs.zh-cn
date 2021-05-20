@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 03/01/2021
+ms.date: 04/26/2021
 ms.author: alkohli
-ms.openlocfilehash: e7c8653b39a3e0333ff6e98783a6e9a1437dba22
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 19b30681632c63657accf130888ee1251366fee6
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739205"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072687"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway 系统要求
 
@@ -32,7 +32,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 | 规范                                          | 说明              |
 |---------------------------------------------------------|--------------------------|
 | 虚拟处理器（核心数）   | 最低为 4 核 |
-| 内存  | 最低 8 GB。 强烈建议至少 16 GB。 |
+| 内存  | 最低为 8 GB。 强烈建议至少配置 16 GB。 |
 | 可用性|单节点|
 | 磁盘| OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、预配精简，并且必须由 SSD 提供支持|
 | 网络接口|1 个或多个虚拟网络接口|
@@ -48,7 +48,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 ## <a name="supported-virtualization-platforms-for-device"></a>设备支持的虚拟化平台
 
-| **操作系统/平台**  |**版本**   |**备注**  |
+| **操作系统/平台**  |**版本**   |**说明**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
 |VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |不支持 VMware 工具。         |
@@ -81,11 +81,11 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 > [!NOTE]
 > - 设备（源）IP 应始终设置为所有已启用云的网络接口。
-> - 目标 Ip 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
+> - 目标 IP 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-azure-government"></a>Azure 政府版的 URL 模式
+### <a name="url-patterns-for-azure-government"></a>Azure 政府的 URL 模式
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 

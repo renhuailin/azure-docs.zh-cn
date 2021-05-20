@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5521b1785bb38e6985e4619e1eec22cb19da151d
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 7329962d547fcb0635e3a9af3d80e562da59f7f2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214773"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199774"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的实例
 
@@ -18,13 +18,13 @@ ms.locfileid: "102214773"
 
 例如，可以启动和终止实例，并可以查询实例，包括查询所有实例，或者使用筛选器查询实例。 此外，可将事件发送到实例、等待业务流程完成，以及检索 HTTP 管理 Webhook URL。 本文还会介绍其他管理操作，包括回退实例、清除实例历史记录和删除任务中心。
 
-在 Durable Functions 中，可以使用相应的选项来执行其中的每项管理操作。 本文提供了使用 .NET (c # ) 、JavaScript 和 Python 的 [Azure Functions Core Tools](../functions-run-local.md) 的示例。
+在 Durable Functions 中，可以使用相应的选项来执行其中的每项管理操作。 本文中的示例使用适用于 .NET (C#)、JavaScript 和 Python 的 [Azure Functions Core Tools](../functions-run-local.md)。
 
 ## <a name="start-instances"></a>启动实例
 
 必须能够启动业务流程的实例。 在另一个函数触发器中使用 Durable Functions 绑定时，通常会启动实例。
 
-`StartNewAsync` `startNew` 业务流程客户端绑定上的 ( .net) 、 (JavaScript) 或 `start_new` ([](durable-functions-bindings.md#orchestration-client) Python) 方法将启动一个新实例。 在内部，此方法将消息排入控制队列，然后触发具有指定名称且使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的函数的启动。
+[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)上的 `StartNewAsync` (.NET)、`startNew` (JavaScript) 或 `start_new` (Python) 方法会启动新实例。 在内部，此方法将消息排入控制队列，然后触发具有指定名称且使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的函数的启动。
 
 当业务流程成功计划时，此异步操作完成。
 
@@ -137,7 +137,7 @@ module.exports = async function(context, input) {
 > [!NOTE]
 > 此示例以 Durable Functions 2.x 版为目标。 在 1.x 版中，使用 `orchestrationClient` 而不是 `durableClient`。
 
-**py**
+__init__.py
 
 ```python
 import logging
@@ -177,7 +177,7 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 在管理业务流程的过程中，你很可能需要收集有关业务流程实例状态的信息（例如，该实例是正常完成还是失败）。
 
-`GetStatusAsync` `getStatus` 业务流程客户端绑定上的 ( .net) 、 (JavaScript) 或 `get_status` (Python [](durable-functions-bindings.md#orchestration-client)) 方法查询业务流程实例的状态。
+[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)上的 `GetStatusAsync` (.NET)、`getStatus` (JavaScript) 或 `get_status` (Python) 方法会查询业务流程实例的状态。
 
 它采用 `instanceId`（必需）、`showHistory`（可选）、`showHistoryOutput`（可选）和 `showInput`（可选）作为参数。
 
@@ -203,7 +203,10 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
   * **已终止**：实例突然停止。
 * **History**：业务流程的执行历史记录。 仅当 `showHistory` 设置为 `true` 时，才填充此字段。
 
-`null`如果实例不存在，此方法将返回 ( .net) 、 `undefined` (JavaScript) 或 `None` (Python) 。
+> [!NOTE]
+> 业务流程协调程序在其所有计划的任务完成并且业务流程协调程序返回后才会标记为 `Completed`。 换句话说，业务流程协调程序到达其 `return` 语句不足以将其标记为 `Completed`。 这尤其适用于使用 `WhenAny` 的情况；这些业务流程协调程序经常在执行所有计划的任务之前 `return`。
+
+如果实例不存在，此方法会返回 `null` (.NET)、`undefined` (JavaScript) 或 `None` (Python)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -283,7 +286,7 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 你可能会发现，一次性查询业务流程中的所有实例比逐个查询更加有效。
 
-可以使用 [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) ( .net) 、 [getStatusAll](/javascript/api/durable-functions/durableorchestrationclient#getstatusall--) (JavaScript) 或 `get_status_all` (Python) 方法来查询所有业务流程实例的状态。 在 .NET 中，如果要取消该查询，可以传递 `CancellationToken` 对象。 方法会返回对象列表，这些对象表示与查询参数匹配的业务流程实例。
+可以使用 [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET)、[getStatusAll](/javascript/api/durable-functions/durableorchestrationclient#getstatusall--) (JavaScript) 或 `get_status_all` (Python) 方法来查询所有业务流程实例的状态。 在 .NET 中，如果要取消该查询，可以传递 `CancellationToken` 对象。 方法会返回对象列表，这些对象表示与查询参数匹配的业务流程实例。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -366,7 +369,7 @@ func durable get-instances
 
 如果你实际上并不需要标准实例查询可以提供的所有信息，应该怎样做？ 例如，你只需要查找业务流程的创建时间或业务流程的运行时状态。 为此，可以通过应用筛选器来缩小查询范围。
 
-使用 [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET) 或 [getStatusBy](/javascript/api/durable-functions/durableorchestrationclient#getstatusby-date---undefined--date---undefined--orchestrationruntimestatus---) (JavaScript) 方法获取与一组预定义筛选器匹配的业务流程实例的列表。
+使用 [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET) 或 [getStatusBy](/javascript/api/durable-functions/durableorchestrationclient#getstatusby-date---undefined--date---undefined--orchestrationruntimestatus---) (JavaScript) 方法获取与一组预定义筛选器匹配的业务流程实例的列表。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -477,7 +480,7 @@ func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before
 
 如果需要花费太长的时间来运行某个业务流程实例，或者出于某种原因需要提前将其停止，可以选择将其终止。
 
-您可以使用 `TerminateAsync` ( .net) 、 `terminate` (JavaScript) 或 `terminate` [业务流程客户端绑定](durable-functions-bindings.md#orchestration-client) 的 (Python) 方法来终止实例。 两个参数为 `instanceId` 和 `reason` 字符串，将写入日志和实例状态。
+可以使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `TerminateAsync` (.NET)、`terminate` (JavaScript) 或 `terminate` (Python) 方法来终止实例。 两个参数为 `instanceId` 和 `reason` 字符串，将写入日志和实例状态。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

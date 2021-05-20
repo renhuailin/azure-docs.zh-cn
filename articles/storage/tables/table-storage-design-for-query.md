@@ -1,6 +1,6 @@
 ---
-title: 为查询设计 Azure 表存储 |Microsoft Docs
-description: 在 Azure 表存储中设计查询的表。 选择适当的分区键，优化查询，并对表服务的数据进行排序。
+title: 针对查询设计 Azure 表存储 | Microsoft Docs
+description: 针对 Azure 表存储中的查询设计表。 选择适当的分区键，优化查询，并对表服务的数据进行排序。
 services: storage
 author: tamram
 ms.author: tamram
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: 43ae21d97bc9d8292270ae62006e649f4bcf540b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93316157"
 ---
 # <a name="design-for-querying"></a>针对查询的设计
@@ -37,8 +37,8 @@ ms.locfileid: "93316157"
 
 | *列名* | *Data type* |
 | --- | --- |
-| **PartitionKey** （部门名称） |字符串 |
-| **RowKey** (员工 ID)  |字符串 |
+| **PartitionKey**（部门名称） |字符串 |
+| RowKey（员工 ID） |字符串 |
 | **名字** |字符串 |
 | **姓氏** |字符串 |
 | **年龄** |Integer |
@@ -46,13 +46,13 @@ ms.locfileid: "93316157"
 
 有关一些直接影响查询设计的主要 Azure 表服务功能，请参阅文章：[Azure 表存储概述](table-storage-overview.md)。 这些功能产生了以下设计表服务查询的通用准则。 请注意，下述示例中所用的筛选器语法源自表服务 REST API，详细信息请参阅 [Query Entities](/rest/api/storageservices/Query-Entities)（查询实体）。  
 
-* * **点查询** 是最高效的查找，建议用于大容量查找或要求最低延迟的查找。 此类查询可以通过同时指定 _ *PartitionKey* * 和 **RowKey** 值，使用索引来非常高效地查找单个实体。 例如：$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')  
-* 第二个最佳做法是使用 _ *PartitionKey* * 的 * **范围查询** _，并对 **RowKey** 值的范围进行筛选以返回多个实体。 **PartitionKey** 值确定特定分区， **RowKey** 值确定该分区中的实体子集。 例如：$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'  
-* 第三种是 * **分区扫描** _，它使用 _ *PartitionKey* * 并筛选另一个非键属性，这可能会返回多个实体。 **PartitionKey** 值确定特定分区，而属性值将选择该分区中的实体子集。 例如：$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'  
-* * **表扫描** _ 不包含 _ *PartitionKey* *，而且非常低效，因为它会依次搜索构成表的所有分区，以查找任何匹配的实体。 无论筛选器是否使用 **RowKey** 它都将执行表扫描。 例如：$filter=LastName eq 'Jones'  
-* 返回多个实体的查询将按 **PartitionKey** 和 **RowKey** 顺序返回实体。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 **RowKey** 。  
+* 点查询是最高效的一种查找方式，可用于且建议用于大容量查找或要求最低延迟的查找。 通过指定 PartitionKey 和 RowKey 值，此类查询可极为高效地利用索引查找单个实体。 例如：$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')  
+* 其次是范围查询，它使用 PartitionKey 并筛选一系列 RowKey 值，从而返回多个实体。 **PartitionKey** 值确定特定分区，**RowKey** 值确定该分区中的实体子集。 例如：$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'  
+* 然后是分区扫描，它使用 PartitionKey 并根据另一个非键属性进行筛选，可能会返回多个实体。 **PartitionKey** 值确定特定分区，而属性值将选择该分区中的实体子集。 例如：$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'  
+* 表扫描不包括 PartitionKey 且效率极低，因为它会依次搜索构成表的所有分区，查找所有匹配的实体。 无论筛选器是否使用 **RowKey** 它都将执行表扫描。 例如：$filter=LastName eq 'Jones'  
+* 返回多个实体的查询将按 **PartitionKey** 和 **RowKey** 顺序返回实体。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 **RowKey**。  
 
-请注意，使用“ **or** ”指定基于 **RowKey** 值的筛选器将导致分区扫描，而不会视为范围查询。 因此，应避免使用筛选器 （如查询：$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')  
+请注意，使用“**or**”指定基于 **RowKey** 值的筛选器将导致分区扫描，而不会视为范围查询。 因此，应避免使用筛选器 （如查询：$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')  
 
 有关使用存储客户端库执行高效查询的客户端代码的示例，请参阅：  
 
@@ -83,12 +83,12 @@ ms.locfileid: "93316157"
 
 许多设计必须满足要求，才能允许根据多个条件查找实体。 例如，根据电子邮件、员工 ID 或姓氏查找员工实体。 [表设计模式](table-storage-design-patterns.md)中所述的模式解决了这些类型的要求，并介绍了相关方式来处理表服务不提供辅助索引的问题：  
 
-* [内分区的第二索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) -使用不同的 **RowKey** 值存储每个实体的多个副本)  (在同一分区中，从而实现快速高效的查找，并通过使用不同的 **RowKey** 值替换排序顺序。  
+* [内分区的第二索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) - 利用同一分区中的 **RowKey** 值存储每个实体的多个副本，实现快速、高效的查询，并借助不同的 **RowKey** 值替换排序顺序。  
 * [内分区的第二索引模式](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 RowKey 值替换排序顺序。  
 * [索引实体模式](table-storage-design-patterns.md#index-entities-pattern) - 维护索引实体，实现返回实体列表的高效搜索。  
 
 ## <a name="sorting-data-in-the-table-service"></a>对表服务中的数据进行排序
-表服务依次按 **PartitionKey** 和 **RowKey** 以升序排序返回实体。 这些键是字符串值，以确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 **RowKey** 的员工 ID 值是整数值，则应将员工 id **123** 转换为 **00000123** 。  
+表服务依次按 **PartitionKey** 和 **RowKey** 以升序排序返回实体。 这些键是字符串值，以确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 RowKey 的员工 ID 值是个整数值，则应将员工 ID 123 转换为 00000123。  
 
 许多应用程序要求使用按不同顺序排序的数据：例如，按名称或按加入日期对员工进行排序。 以下模式解决了如何替换实体的排序顺序的问题：  
 

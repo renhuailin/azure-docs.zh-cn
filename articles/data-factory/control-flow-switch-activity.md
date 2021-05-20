@@ -1,18 +1,18 @@
 ---
 title: Azure 数据工厂中的 Switch 活动
 description: Switch 活动允许你控制基于条件的处理流。
-author: dcstwh
-ms.author: weetok
+author: chez-charlie
+ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 08d93bd3d49dc345b35a942d4d5db4eef937d3de
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: dee7e7b21f3f7deb3d76bf36e07a82eeb84ed35a
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786135"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906253"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Switch 活动
 
@@ -65,10 +65,10 @@ Switch 活动提供的功能与编程语言中 switch 语句提供的功能相�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
-name | switch 活动的名称。 | String | 是
-type | 必须设置为 Switch* | String | 是
+name | switch 活动的名称。 | 字符串 | 是
+type | 必须设置为 Switch* | 字符串 | 是
 表达式 | 必须评估为字符串值的表达式 | 具有结果类型字符串的表达式 | 是
 cases | 一组 case，其中包含一个值和一组在该值与表达式求值匹配时要执行的活动。 必须至少提供一个 case。 最大限制为 25 个 case。 | Case 对象数组 | 是
 defaultActivities | 不满足表达式求值时执行的一组活动。 | 活动数组 | 是

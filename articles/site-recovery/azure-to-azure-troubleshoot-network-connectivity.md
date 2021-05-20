@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
 ms.openlocfilehash: 24ffce1528aa5c82fec9666fa0cb7b8717107f54
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97652256"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>排查 Azure 到 Azure VM 网络连接性问题
@@ -18,7 +18,7 @@ ms.locfileid: "97652256"
 
 要使 Site Recovery 复制正常运行，必须具有从 VM 到特定 URL 或 IP 范围的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。
 
-| **Name**                  | 商用                               | 政府                                 | **说明** |
+| **名称**                  | 商用                               | 政府                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 VM 的所有缓存存储帐户，则可以对特定存储帐户 URL 使用允许列表。 例如，使用 `cache1.blob.core.windows.net` 和 `cache2.blob.core.windows.net` 而不是 `*.blob.core.windows.net`。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。 |
@@ -51,7 +51,7 @@ ms.locfileid: "97652256"
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>问题 2：Site Recovery 配置失败 (151196)
 
 > [!NOTE]
-> 如果 Vm 位于 **标准** 内部负载均衡器后面，则默认情况下，它无法访问 Microsoft 365 的 ip，如 `login.microsoftonline.com` 。 可以将其更改为“基本”内部负载均衡器类型，也可以按照[使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)一文中所述创建出站访问权限。
+> 如果 VM 位于“**标准**”内部负载均衡器之后，则默认情况下，它将无法访问 Microsoft 365 IP（如 `login.microsoftonline.com`）。 可以将其更改为“基本”内部负载均衡器类型，也可以按照[使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)一文中所述创建出站访问权限。
 
 #### <a name="possible-cause"></a>可能的原因
 
@@ -60,7 +60,7 @@ ms.locfileid: "97652256"
 #### <a name="resolution"></a>解决方法
 
 - Azure Site Recovery 需要访问 Microsoft 365 IP 范围才能进行身份验证。
-- 如果使用 Azure 网络安全组 (NSG) 规则/防火墙代理来控制 VM 上的出站网络连接，请确保允许与 Microsoft 365 IP 范围通信。 创建一个基于 [Azure Active Directory (Azure AD) 服务标记](../virtual-network/network-security-groups-overview.md#service-tags)的 NSG 规则，该规则允许访问与 Azure AD 对应的所有 IP 地址。
+- 如果使用 Azure 网络安全组 (NSG) 规则/防火墙代理控制 VM 上的出站网络连接，请确保允许到 Microsoft 365 IP 范围的通信。 创建一个基于 [Azure Active Directory (Azure AD) 服务标记](../virtual-network/network-security-groups-overview.md#service-tags)的 NSG 规则，该规则允许访问与 Azure AD 对应的所有 IP 地址。
 - 如果将来向 Azure AD 添加新地址，则需创建新的 NSG 规则。
 
 ### <a name="example-nsg-configuration"></a>NSG 配置示例
@@ -68,11 +68,11 @@ ms.locfileid: "97652256"
 此示例演示如何为要复制的 VM 配置 NSG 规则。
 
 - 如果使用 NSG 规则控制出站连接，请对所有必需的 IP 地址范围使用端口 443 的“允许 HTTPS 出站”规则。
-- 此示例假设 VM 源位置是 " **美国东部** "，目标位置是 " **美国中部**"。
+- 此示例假设 VM 源位置是“美国东部”，目标位置是“美国中部”。 
 
 #### <a name="nsg-rules---east-us"></a>NSG 规则 - 美国东部
 
-1. 为 NSG 创建 HTTPS 出站安全规则，如以下屏幕截图所示。 此示例使用 **目标服务标记**： _EastUS_ 和 **目标端口范围**： _443_。
+1. 为 NSG 创建 HTTPS 出站安全规则，如以下屏幕截图所示。 此示例使用“目标服务标记”：“Storage.EastUS”和“目标端口范围”：“443”。
 
      :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="屏幕截图，其中显示了“为存储点美国东部安全规则的安全规则添加出站安全规则窗格”。":::
 
@@ -80,16 +80,16 @@ ms.locfileid: "97652256"
 
      :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="屏幕截图，其中显示了“为 Azure Active Directory 安全规则的安全规则 添加出站安全规则窗格”。":::
 
-1. 与上述安全规则类似，为 NSG 上的 "CentralUS" 创建出站 HTTPS (443) 安全规则，该规则对应于目标位置。 这样就可以访问 Site Recovery 监视功能。
+1. 与上述安全规则类似，为 NSG 上的“EventHub.CentralUS”（对应于目标位置）创建出站 HTTPS (443) 安全规则。 这样就可以访问 Site Recovery 监视功能。
 1. 在 NSG 上为“AzureSiteRecovery”创建出站 HTTPS (443) 安全规则。 这样就可以在任何区域访问 Site Recovery 服务。
 
 #### <a name="nsg-rules---central-us"></a>NSG 规则 - 美国中部
 
 对于此示例，这些 NSG 规则是必需的，用于在故障转移后启用从目标区域到源区域的复制：
 
-1. 为存储创建 HTTPS 出站安全规则 _。 CentralUS_：
+1. 为“Storage.CentralUS”创建 HTTPS 出站安全规则：
 
-   - **目标服务标记**： _CentralUS_
+   - 目标服务标记：Storage.CentralUS
    - **目标端口范围**：_443_
 
 1. 为 AzureActiveDirectory 创建 HTTPS 出站安全规则。
@@ -97,7 +97,7 @@ ms.locfileid: "97652256"
    - **目标服务标记**：_AzureActiveDirectory_
    - **目标端口范围**：_443_
 
-1. 与上述安全规则类似，为 NSG 上的 "EastUS" 创建出站 HTTPS () 443 安全规则，该规则对应于源位置。 这样就可以访问 Site Recovery 监视功能。
+1. 与上述安全规则类似，为 NSG 上的“EventHub.EastUS”（对应于源位置）创建出站 HTTPS (443) 安全规则。 这样就可以访问 Site Recovery 监视功能。
 1. 在 NSG 上为“AzureSiteRecovery”创建出站 HTTPS (443) 安全规则。 这样就可以在任何区域访问 Site Recovery 服务。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>问题 3：Site Recovery 配置失败 (151197)

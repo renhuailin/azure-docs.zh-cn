@@ -7,10 +7,10 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040237"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>从 Application Insights Java 2.x SDK 升级
@@ -219,7 +219,7 @@ Java 3.0 代理会检测到它，并捕获和关联你通过 2.x SDK 发送的�
 
 以前在 2.x SDK 中，请求遥测中的操作名称也设置在依赖项遥测上。
 Application Insights Java 3.0 不再在依赖项遥测上填充操作名称。
-若要查看作为依赖项遥测的父项的请求的操作名称，可以编写一个日志 (Kusto) 查询，以从依赖关系表联接到请求表，例如
+若要查看作为依赖项遥测父级的请求的操作名称，则可以编写日志 (Kusto) 查询来将依赖项表联接到请求表，例如：
 
 ```
 let start = datetime('...');
@@ -236,13 +236,13 @@ dependencies
 
 ## <a name="2x-sdk-logging-appenders"></a>2.x SDK 日志记录追加器
 
-3.0 代理 [自动收集日志记录](./java-standalone-config.md#auto-collected-logging) ，无需配置任何日志记录追加器。
-如果使用的是 2.x SDK 日志记录追加器，则可以将其删除，因为3.0 代理仍会将其取消。
+3\.0 代理[自动收集日志记录](./java-standalone-config.md#auto-collected-logging)，无需配置任何日志记录追加器。
+如果使用的是 2.x SDK 日志记录追加器，则这些可以被删除，因为 3.0 代理仍会抑制它们。
 
-## <a name="2x-sdk-spring-boot-starter"></a>2.x SDK 春季 boot 入门
+## <a name="2x-sdk-spring-boot-starter"></a>2.x SDK Spring Boot Starter
 
-没有3.0 春季 boot 入门版。
-无论你使用的是春季 boot，3.0 代理安装和配置都遵循相同的 [简单步骤](./java-in-process-agent.md#quickstart) 。
+没有 3.0 Spring Boot Starter。
+无论你是否使用 Spring Boot，3.0 代理安装和配置都会遵循相同的[简单步骤](./java-in-process-agent.md#quickstart)。
 
-从 1.x SDK 弹簧 boot 入门升级时，请注意，云角色名称将不再默认为 `spring.application.name` 。
-有关通过 json config 或环境变量设置云角色3.0 名称，请参阅 [3.0 配置文档](./java-standalone-config.md#cloud-role-name) 。
+当从 2.x SDK Spring Boot Starter 升级时，请注意，云角色名称将不再默认为 `spring.application.name`。
+若要了解如何通过 json config 或环境变量来设置 3.0 中的云角色名称，请参阅 [3.0 配置文档](./java-standalone-config.md#cloud-role-name)。

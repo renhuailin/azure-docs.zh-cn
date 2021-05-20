@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: cc7c70fa2e7131f09f621e992d537e0b120061ef
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102210727"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis 的故障转移和修补
@@ -73,9 +73,9 @@ Azure Cache for Redis 服务定期使用最新的平台功能和修补程序更�
 
 若要测试客户端应用程序的复原能力，请使用[重新启动](cache-administration.md#reboot)作为连接中断时的手动触发器。 此外，我们建议针对缓存[计划更新](cache-administration.md#schedule-updates)。 告知管理服务在指定的每周时段应用 Redis 运行时修补程序。 通常，这些时段是客户端应用程序流量较低的时段，目的是避免潜在的事件。
 
-### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>能否提前通知计划内维护？
+### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>能否提前得到计划内维护的通知？
 
-Azure Cache for Redis 现在会在计划更新 [前大约 30](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) 秒的发布/订阅通道上发布通知。 这些是运行时通知，它们特别适用于可使用断路器绕过缓存或缓冲区命令的应用程序，例如，在计划的更新期间。 这不是一种可以提前通知你几天或几小时的机制。
+Azure Cache for Redis 现在会在计划内更新前约 30 秒在名为 [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) 的发布/订阅通道上发布通知。 这些是运行时通知，专门为可使用断路器绕过缓存或缓冲区命令的应用程序而生成，例如，在计划内更新期间。 该机制不能提前几天或几小时通知你。
 
 ### <a name="client-network-configuration-changes"></a>客户端网络配置更改
 

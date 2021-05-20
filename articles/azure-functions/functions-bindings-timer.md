@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: dbcd6d55ee921c7fabd8e746e0fdcd6f1427733c
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: f99f9d240a0a9220d3b7f57cddd0a4f8ba6b6101
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210700"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104595974"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器
 
@@ -128,7 +128,7 @@ module.exports = function (context, myTimer) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-下面的示例演示如何在 [PowerShell](./functions-reference-powershell.md)中配置计时器触发器的 *function.js* 和 *run.ps1* 文件。
+以下示例演示如何在 [PowerShell](./functions-reference-powershell.md) 中配置用于计时器触发器的 function.json 和 run.ps1 文件。
 
 ```json
 {
@@ -299,11 +299,11 @@ Azure Functions 使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来�
 
 |类型  |示例  |何时触发  |
 |---------|---------|---------|
-|一个具体值 |<nobr>`0 5 * * * *`</nobr>| 每小时的第一天的每小时一次 |
-|所有值 (`*`)|<nobr>`0 * 5 * * *`</nobr>| 每分钟的时间（从小时5开始） |
-|一个范围（`-` 运算符）|<nobr>`5-7 * * * * *`</nobr>| 每隔一小时的每分钟在每分钟的第5到7秒的三倍 |
-|一组值（`,` 运算符）|<nobr>`5,8,10 * * * * *`</nobr>| 每隔一小时的每分钟在每分钟的第5、8和10秒内运行三次 |
-|一个间隔值（`/` 运算符）|<nobr>`0 */5 * * * *`</nobr>| 每小时12次，每隔5分钟的第二个小时，每隔一小时 |
+|一个具体值 |<nobr>`0 5 * * * *`</nobr>| 一天中每小时的第 5 分钟 |
+|所有值 (`*`)|<nobr>`0 * 5 * * *`</nobr>| 一小时的每一分钟（从第 5 小时开始） |
+|一个范围（`-` 运算符）|<nobr>`5-7 * * * * *`</nobr>| 一分钟三次 - 每天每小时的每分钟的第 5 到 7 秒 |
+|一组值（`,` 运算符）|<nobr>`5,8,10 * * * * *`</nobr>| 一分钟三次 - 每天每小时的每分钟的第 5、8 和 10 秒 |
+|一个间隔值（`/` 运算符）|<nobr>`0 */5 * * * *`</nobr>| 一小时 12 次 - 每天每小时的每 5分钟的第 0 秒 |
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -322,7 +322,7 @@ Azure Functions 使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来�
 | `0 30 9 * Jan Mon` | 在一月份每星期一的上午 9:30 |
 
 > [!NOTE]
-> NCRONTAB 表达式需要 **六个字段** 格式。 第六个字段位置是秒的值，该值置于表达式的开头。 Azure 不支持五字段 cron 表达式。
+> NCRONTAB 表达式需要一个六字段的格式。 第六个字段的位置是秒的值，该值置于表达式的开头。 Azure 不支持五字段 cron 表达式。
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB 时区
 
@@ -342,7 +342,7 @@ CRON 表达式中的数字指的是时间和日期，而不是时间跨度。 �
 |--------------|----------------|
 | "01:00:00"   | 每小时     |
 | "00:01:00"   | 每分钟   |
-| "25:00:00"   | 每25天  |
+| "25:00:00"   | 每 25 天  |
 | "1.00:00:00" | 每天      |
 
 ## <a name="scale-out"></a>横向扩展
@@ -365,6 +365,16 @@ CRON 表达式中的数字指的是时间和日期，而不是时间跨度。 �
 ## <a name="retry-behavior"></a>重试行为
 
 与队列触发器不同，计时器触发器在函数失败后不会重试。 函数失败时，在计划的下次时间到来前，不会再次调用该函数。
+
+## <a name="manually-invoke-a-timer-trigger"></a>手动调用计时器触发器
+
+Azure Functions 的计时器触发器提供了 HTTP Webhook，可以通过调用它来手动触发函数。 这在以下方案中非常有用。
+
+* 集成测试
+* 槽交换是冒烟测试或预热活动的一部分
+* 函数的初始部署，以立即在数据库中填充缓存或查找表
+
+若要详细了解如何手动调用计时器触发的函数，请参阅[手动运行非 HTTP 触发的函数](./functions-manually-run-non-http.md)。
 
 ## <a name="troubleshooting"></a>故障排除
 

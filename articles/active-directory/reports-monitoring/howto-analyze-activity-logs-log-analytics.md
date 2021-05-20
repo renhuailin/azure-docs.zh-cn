@@ -4,7 +4,7 @@ description: 了解如何使用 Azure Monitor 日志分析 Azure Active Director
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 05/06/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 905261058c2de0afae18cbc5572c64962bef8834
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 0f444fefcd29620d9ccd91f58e1f198cab459f7d
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580020"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795128"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志分析 Azure AD 活动日志
 
@@ -61,7 +61,6 @@ ms.locfileid: "100580020"
 1. 在上一节中的默认查询视图中，选择“架构”并展开工作区。 
 
 2. 展开“日志管理”部分，然后展开“AuditLogs”或“SigninLogs”以查看日志架构  。
-    ![Audit logs](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![Signin logs](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>查询 Azure AD 活动日志
 
@@ -102,11 +101,11 @@ AuditLogs
 
 ## <a name="use-pre-built-workbooks-for-azure-ad-activity-logs"></a>将预建的工作簿用于 Azure AD 活动日志
 
-工作簿提供了若干与常见方案相关的报告，涉及审核、登录和预配事件。 还可使用上一节中所述步骤，针对报表中提供的任何数据设置警报。
+这些工作簿提供与涉及审核、登录和预配事件的常见方案相关的多个报表。 还可使用上一节中所述步骤，针对报表中提供的任何数据设置警报。
 
-* **预配分析**：此 [工作簿](../app-provisioning/application-provisioning-log-analytics.md) 显示与审核预配活动相关的报告，如预配的新用户数和预配失败数、已更新的用户数和更新失败数，以及取消设置的用户和相应失败的次数。    
+* 预配分析：此[工作簿](../app-provisioning/application-provisioning-log-analytics.md)显示与审核预配活动相关的报表，例如，预配的新用户数和预配失败情况、更新的用户数和更新失败情况以及取消预配的用户数和相应失败情况。    
 * **登录事件**：此工作簿显示与监视登录活动最相关的报表，例如，分别按应用程序、用户、设备统计的登录情况，以及随时间推移跟踪登录数的摘要视图。
-* **条件性访问见解**：条件性访问见解和报表 [工作簿](../conditional-access/howto-conditional-access-insights-reporting.md) 使你可以了解条件访问策略在一段时间内的影响。 
+* 条件访问见解：使用条件访问见解和报告[工作簿](../conditional-access/howto-conditional-access-insights-reporting.md)，可以了解条件访问策略在一定时间段内在组织中的影响。 
 
 ## <a name="next-steps"></a>后续步骤
 

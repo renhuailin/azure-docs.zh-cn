@@ -1,6 +1,6 @@
 ---
-title: 导入/导出 Azure IoT 中心设备标识 |Microsoft Docs
-description: 如何使用 Azure IoT 服务 SDK 针对标识注册表执行批量操作，以导入和导出设备标识。 借助导入操作，可批量创建、更新和删除设备标识。
+title: 导入/导出 Azure IoT 中心设备标识 | Microsoft Docs
+description: 如何使用 Azure IoT 服务 SDK 针对标识注册表运行批量操作，以导入和导出设备标识。 借助导入操作，可批量创建、更新和删除设备标识。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.openlocfilehash: 8e7de74a75bc0cf2a298b7ff75cf7b6b92eaec9d
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536073"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109716107"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>批量导入和导出 IoT 中心设备标识
 
 每个 IoT 中心都有一个标识注册表，可以使用该注册表在服务中创建每设备资源。 标识注册表还可用于控制对面向设备的终结点的访问。 本文介绍如何从标识注册表批量导入和导出设备标识。 若要查看 C# 的工作示例并了解在将中心克隆到其他区域时如何使用此功能，请参阅[如何克隆 IoT 中心](iot-hub-how-to-clone.md)。
 
 > [!NOTE]
-> IoT 中心最近添加了数量有限的区域的虚拟网络支持。 此功能保护了导入和导出操作的安全，无需传递密钥即可进行身份验证。  最初，虚拟网络支持仅在以下区域提供： *WestUS2* 、 *EastUS* 和 *default-machinelearning-southcentralus* 。 若要详细了解虚拟网络支持以及用于实现它的 API 调用，请参阅 [IoT 中心对虚拟网络的支持](virtual-network-support.md)。
+> IoT 中心最近在数量有限的区域中添加了虚拟网络支持。 此功能保护了导入和导出操作的安全，无需传递密钥即可进行身份验证。  最初，仅在以下区域提供虚拟网络支持：WestUS2、EastUS 和 SouthCentralUS。 若要详细了解虚拟网络支持以及用于实现该支持的 API 调用，请参阅 [IoT 中心对虚拟网络的支持](virtual-network-support.md)。
 
 *作业* 的上下文中发生导入和导出操作，可允许对 IoT 中心执行批量服务操作。
 
@@ -37,7 +37,7 @@ ms.locfileid: "92536073"
 
 * 向用户返回大量数据。
 
-操作将以异步方式为该 IoT 中心创建 **作业** ，而不是对操作结果进行单一的 API 调用等待或阻塞。 然后，操作立即返回 **JobProperties** 对象。
+操作将以异步方式为该 IoT 中心创建 **作业**，而不是对操作结果进行单一的 API 调用等待或阻塞。 然后，操作立即返回 **JobProperties** 对象。
 
 以下 C# 代码段演示如何创建导出作业：
 
@@ -50,7 +50,7 @@ JobProperties exportJob = await
 > [!NOTE]
 > 若要在 C# 代码中使用 **RegistryManager** 类，请将 **Microsoft.Azure.Devices** NuGet 包添加到项目。 **RegistryManager** 类位于 **Microsoft.Azure.Devices** 命名空间。
 
-可使用 **RegistryManager** 类，查询使用返回的 **JobProperties** 元数据的 **作业** 的状态。 若要创建 **RegistryManager** 类的实例，请使用 **CreateFromConnectionString** 方法。
+可使用 **RegistryManager** 类，查询使用返回的 **JobProperties** 元数据的 **作业** 的状态。 若要创建 RegistryManager 类的实例，请使用 CreateFromConnectionString 方法 。
 
 ```csharp
 RegistryManager registryManager =
@@ -87,7 +87,7 @@ while(true)
 ```
 
 > [!NOTE]
-> 如果你的存储帐户具有限制 IoT 中心连接的防火墙配置，请考虑使用 "使用托管服务标识) 的 IoT 中心" 的 "选择区域" 中提供的 [Microsoft 受信任第一方异常](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) (。
+> 如果你的存储帐户具有限制 IoT 中心连接的防火墙配置，请考虑使用 [Microsoft 受信任第一方例外情况](./virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources)（在选定区域的提供托管服务标识的 IoT 中心中适用）。
 
 
 ## <a name="device-importexport-job-limits"></a>设备导入/导出作业限制
@@ -109,7 +109,7 @@ while(true)
      | SharedAccessBlobPermissions.Delete
    ```
 
-* 指示你是否要在导出数据中排除身份验证密钥的 *布尔值* 。 如果为 **false** ，则身份验证密钥包含在导出输出中。 否则，密钥导出为 **null** 。
+* 指示你是否要在导出数据中排除身份验证密钥的 *布尔值*。 如果为 **false**，则身份验证密钥包含在导出输出中。 否则，密钥导出为 **null**。
 
 下面的 C# 代码段演示了如何启动在导出数据中包含设备身份验证密钥的导出作业，并对完成情况进行轮询：
 
@@ -211,7 +211,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 ## <a name="import-devices"></a>导入设备
 
-通过 **RegistryManager** 类中的 **ImportDevicesAsync** 方法，可以在 IoT 中心标识注册表中执行批量导入和同步操作。 如同 **ExportDevicesAsync** 方法， **ImportDevicesAsync** 方法也使用 **作业** 框架。
+通过 **RegistryManager** 类中的 **ImportDevicesAsync** 方法，可以在 IoT 中心标识注册表中执行批量导入和同步操作。 如同 **ExportDevicesAsync** 方法，**ImportDevicesAsync** 方法也使用 **作业** 框架。
 
 请小心使用 **ImportDevicesAsync** 方法，因为除了在标识注册表中预配新设备以外，它还可以更新和删除现有设备。
 
@@ -226,7 +226,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
    SharedAccessBlobPermissions.Read
    ```
 
-* 一个 *字符串* ，包含要用作作业的 *输出* 的 [AZURE 存储](https://azure.microsoft.com/documentation/services/storage/)blob 容器的 URI。 作业在此容器中创建块 Blob，用于存储已完成的导入 **作业** 中的任何错误信息。 SAS 令牌必须包含这些权限：
+* 一个字符串，其中包含作为作业中的输出使用的 [Azure 存储](https://azure.microsoft.com/documentation/services/storage/) Blob 容器的 URI。 作业在此容器中创建块 Blob，用于存储已完成的导入 **作业** 中的任何错误信息。 SAS 令牌必须包含这些权限：
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
@@ -273,7 +273,7 @@ JobProperties importJob =
 | **deleteIfMatchETag** |如果具有指定 ID 的设备已存在，则只有当 ETag 匹配时才删除该设备 。 如果设备不存在，则在日志文件中写入错误。 <br/>如果 ETag 不匹配，则将错误写入日志文件。 |
 
 > [!NOTE]
-> 如果序列化数据未显式定义设备的 **importMode** 标志，则该标志在导入操作过程中默认为 **createOrUpdate** 。
+> 如果序列化数据未显式定义设备的 **importMode** 标志，则该标志在导入操作过程中默认为 **createOrUpdate**。
 
 ## <a name="import-devices-example--bulk-device-provisioning"></a>导入设备示例 – 批量预配设备
 

@@ -1,35 +1,34 @@
 ---
-title: 用 Azure 前门为 Web 应用程序防火墙 (WAF) 配置自定义响应
-description: 了解如何在 WAF 阻止请求时配置自定义响应代码和消息。
+title: 使用 Azure Front Door 为 Web 应用程序防火墙 (WAF) 配置自定义响应
+description: 了解如何配置在 WAF 阻止请求时显示的自定义响应代码和消息。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: victorh
-ms.reviewer: tyao
-ms.openlocfilehash: 8fc6e71494df36cd6f823661b18e4a3d8ce2938c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
-ms.translationtype: MT
+ms.openlocfilehash: c764193e92884ac2431cac8f2d6592e173e59e19
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563675"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632288"
 ---
-# <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>配置 Azure Web 应用程序防火墙 (WAF 的自定义响应) 
+# <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>为 Azure Web 应用程序防火墙 (WAF) 配置自定义响应
 
-默认情况下，当 WAF 由于匹配规则而阻止请求时，它将返回403状态代码， **请求被阻止** 消息。 默认消息还包括可用于链接到请求的 [日志条目](./waf-front-door-monitor.md) 的跟踪引用字符串。  您可以使用用例的引用字符串来配置自定义响应状态代码和自定义消息。 本文介绍如何在 WAF 阻止请求时配置自定义响应页面。
+默认情况下，当 WAF 由于匹配规则而阻止请求时，它将返回 403 状态代码以及“请求被阻止”消息。 默认消息还包括跟踪参考字符串，可用于链接到该请求的[日志条目](./waf-front-door-monitor.md)。  你可以为用例配置自定义响应状态代码和带有参考字符串的自定义消息。 本文介绍如何配置在 WAF 阻止请求时显示的自定义响应页面。
 
-## <a name="configure-custom-response-status-code-and-message-use-portal"></a>配置自定义响应状态代码和消息使用门户
+## <a name="configure-custom-response-status-code-and-message-use-portal"></a>使用门户配置自定义响应状态代码和消息
 
-可以从 WAF 门户中的 "策略设置" 下配置自定义响应状态代码和正文。
+可以从 WAF 门户中的“策略设置”下配置自定义响应状态代码和正文。
 
 :::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response-settings.png" alt-text="WAF 策略设置":::
 
-在上面的示例中，我们将响应代码保存为403，并配置一个简短的 "联系我们" 消息，如下图所示：
+在上面的示例中，我们将响应代码保留为 403，并配置了一个简短的“请联系我们”消息，如下图所示：
 
 :::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="自定义响应示例":::
 
-"{{azure-ref}}" 在响应正文中插入唯一引用字符串。 此值与和日志中的 TrackingReference 字段匹配 `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` 。
+“{{azure-ref}}”在响应正文中插入唯一引用字符串。 此值与 `FrontdoorAccessLog` 和 `FrontdoorWebApplicationFirewallLog` 日志中的 TrackingReference 字段匹配。
 
 ## <a name="configure-custom-response-status-code-and-message-use-powershell"></a>使用 PowerShell 配置自定义响应状态代码和消息
 
@@ -58,7 +57,7 @@ Install-Module -Name Az.FrontDoor
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-在 Azure 中，可将相关的资源分配到资源组。 在这里，我们将使用 [AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup)创建一个资源组。
+在 Azure 中，可将相关的资源分配到资源组。 在这里，我们使用 [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) 创建资源组。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupWAF
@@ -66,7 +65,7 @@ New-AzResourceGroup -Name myResourceGroupWAF
 
 ### <a name="create-a-new-waf-policy-with-custom-response"></a>使用自定义响应创建新的 WAF 策略 
 
-下面的示例创建了一个新的 WAF 策略，并将自定义响应状态代码设置为405，并 **阻止了向你** 发送的消息。使用 [AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)
+下面的示例创建了一个新的 WAF 策略，并将自定义响应状态代码设置为 405，并且使用 [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) 发送“你被阻止”的消息。
 
 ```azurepowershell
 # WAF policy setting
@@ -79,7 +78,7 @@ New-AzFrontDoorWafPolicy `
 -CustomBlockResponseBody "<html><head><title>You are blocked.</title></head><body></body></html>"
 ```
 
-使用 [AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/Update-AzFrontDoorWafPolicy)修改现有 WAF 策略的自定义响应代码或响应正文设置。
+使用 [Update-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/Update-AzFrontDoorWafPolicy) 修改现有 WAF 策略的自定义响应代码或响应正文设置。
 
 ```azurepowershell
 # modify WAF response code
@@ -100,4 +99,4 @@ Update-AzFrontDoorFireWallPolicy `
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关[Azure 前门的 Web 应用程序防火墙的](../afds/afds-overview.md)详细信息
+- 详细了解 [Azure Front Door 的 Web 应用程序防火墙](../afds/afds-overview.md)

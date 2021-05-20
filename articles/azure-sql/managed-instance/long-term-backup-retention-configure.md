@@ -12,36 +12,36 @@ ms.author: shkale
 ms.reviewer: mathoma, sstein
 ms.date: 02/25/2021
 ms.openlocfilehash: f298f0f9d76750be932db79b5a08b6385e984f88
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102051991"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL 托管实例长期备份保留 (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-在 Azure SQL 托管实例中，可以 (LTR) 为公共预览功能，配置 [长期备份保留](../database/long-term-retention-overview.md) 策略。 这样就可以在单独的 Azure Blob 存储容器中自动将数据库备份保留长达 10 年的时间。 然后，可以通过 PowerShell 使用这些备份来恢复数据库。
+在 Azure SQL 托管实例中，可以配置[长期备份保留](../database/long-term-retention-overview.md)策略 (LTR)，这是一项公共预览功能。 这样就可以在单独的 Azure Blob 存储容器中自动将数据库备份保留长达 10 年的时间。 然后，可以通过 PowerShell 使用这些备份来恢复数据库。
 
    > [!IMPORTANT]
-   > 对于托管实例，LTR 当前在 Azure 公共区域的公共预览版中提供。 
+   > 托管实例的 LTR 当前在 Azure 公共区域中以公共预览版提供。 
 
 以下各部分展示了如何使用 PowerShell 配置长期备份保留、查看 Azure SQL 存储中的备份，以及从 Azure SQL 存储中的备份进行还原。
 
 
 ## <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-以下部分说明了如何使用 Azure 门户来设置长期保留策略、管理可用的长期保留备份，并从可用备份中还原。
+以下各部分说明如何使用 Azure 门户设置长期保留策略、管理可用的长期保留备份以及从可用备份进行还原。
 
 ### <a name="configure-long-term-retention-policies"></a>配置长期保留策略
 
-可以将 SQL 托管实例配置为 [保留自动备份](../database/long-term-retention-overview.md) ，使其保留时间长于服务层的保留期。
+可以对 SQL 托管实例进行配置，使其[保留自动备份](../database/long-term-retention-overview.md)的时间长于你的服务层级的保留期。
 
-1. 在 Azure 门户中，选择托管实例，并单击 " **备份**"。 在 " **保留策略** " 选项卡上，选择要在其上设置或修改长期备份保留策略的数据库 () 。 更改将不会应用于未选择的任何数据库。 
+1. 在 Azure 门户中，选择你的托管实例，然后单击“备份”。 在“保留策略”选项卡上，选择要为其设置或修改长期备份保留策略的数据库。 更改将不会应用于未选择的任何数据库。 
 
    ![管理备份链接](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
-2. 在 " **配置策略** " 窗格中，为每周、每月或每年备份指定所需的保留期。 选择 "0" 的保留期，指示不应设置长期备份保留。
+2. 在“配置策略”窗格中，为每周、每月或每年备份指定所需的保留期。 选择的保留期为“0”表明不应设置长期备份保留期。
 
    ![配置策略](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
 
@@ -54,27 +54,27 @@ ms.locfileid: "102051991"
 
 查看通过 LTR 策略为特定数据库保留的备份，并从这些备份进行还原。
 
-1. 在 Azure 门户中，选择托管实例，并单击 " **备份**"。 在“可用备份”选项卡上，选择要查看其可用备份的数据库。 单击“管理”。 
+1. 在 Azure 门户中，选择你的托管实例，然后单击“备份”。 在“可用备份”选项卡上，选择要查看其可用备份的数据库。 单击“管理”。 
 
    ![选择数据库](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
 
-1. 在 " **管理备份** " 窗格中，查看可用的备份。
+1. 在“管理备份”窗格中，查看可用备份。
 
    ![查看备份](./media/long-term-backup-retention-configure/ltr-available-backups.png)
 
-1. 选择要从中还原的备份，单击 " **还原**"，然后在 "还原" 页上指定新的数据库名称。 备份和源将在此页上预填充。 
+1. 选择要从中进行还原的备份，单击“还原”，然后在还原页面上指定新的数据库名称。 备份和源将在此页面上预填充。 
 
    ![选择要还原的备份](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
    
    ![还原](./media/long-term-backup-retention-configure/ltr-restore.png)
 
-1. 单击 " **查看 + 创建** " 以查看还原详细信息。 然后单击 " **创建** " 以从所选备份中还原数据库。
+1. 单击“审阅并创建”查看还原详细信息。 然后单击“创建”，以便从所选备份还原数据库。
 
 1. 在工具栏上，单击通知图标可查看还原作业的状态。
 
    ![还原作业进度](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
 
-1. 还原作业完成后，打开 " **托管实例概述** " 页，查看新还原的数据库。
+1. 完成还原作业后，打开“托管实例概述”页面以查看新还原的数据库。
 
 > [!NOTE]
 > 可以在此处使用 SQL Server Management Studio 连接到还原的数据库以执行所需的任务，例如 [从还原的数据库提取一些数据，以便将其复制到现有的数据库中；或者删除现有的数据库，并将还原的数据库重命名为现有的数据库名称](../database/recovery-using-backups.md#point-in-time-restore)。
@@ -84,7 +84,7 @@ ms.locfileid: "102051991"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器模块，但将来的开发将在 Az .Sql 模块中完成。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
+> Azure SQL 数据库仍然支持 PowerShell Azure 资源管理器模块，但后续开发将在 Az.Sql 模块中完成。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 以下各部分展示了如何使用 PowerShell 配置长期备份保留、查看 Azure 存储中的备份，以及从 Azure 存储中的备份进行还原。
 
@@ -150,7 +150,7 @@ Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy @LTRPolicy
 
 ### <a name="view-ltr-policies"></a>查看 LTR 策略
 
-此示例演示如何在单个数据库的实例内列出 LTR 策略
+此示例展示了如何列出单个数据库的实例内的 LTR 策略
 
 ```powershell
 # gets the current version of LTR policy for a database

@@ -1,5 +1,5 @@
 ---
-title: 分层安全性 v1
+title: 分层安全 v1
 description: 了解如何在应用服务环境中实现分层安全体系结构。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: stefsch
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
@@ -8,10 +8,10 @@ ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 813160ee19c8447fdfcb705e7a9162a41a0c308c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739502"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>使用应用服务环境实现分层的安全体系结构
@@ -36,7 +36,7 @@ ms.locfileid: "101739502"
 * **后端 API 应用是否需要调用本身？**  后端应用程序有时候需要调用本身，这是常被忽略且难以察觉的情况。  如果应用服务环境中的后端 API 应用程序需要调用本身，这也被视为“Internet”调用。  在示例体系结构中，这还需要允许从“apiase”应用服务环境的出站 IP 地址进行访问。
 
 ## <a name="setting-up-the-network-security-group"></a>设置网络安全组
-知道出站 IP 地址集后，下一步是构建网络安全组。  可以为这两个基于 Resource Manager 的虚拟网络以及经典虚拟网络创建网络安全组。  下面的示例演示如何使用 PowerShell 在经典虚拟网络上创建和配置 NSG。
+知道出站 IP 地址集后，下一步是构建网络安全组。  可以为这两个基于 Resource Manager 的虚拟网络以及经典虚拟网络创建网络安全组。  下面的示例展示了如何使用 PowerShell 在经典虚拟网络中创建和配置 NSG。
 
 在示例体系结构中，环境位于美国中南部，因此请在该区域中创建空的 NSG：
 
@@ -66,7 +66,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 ```
 
-对于第二个和第三个上游应用服务环境，请 ( "fe2ase" 和 "fe3ase" ) 的 Rinse 和重复。
+对第二个和第三个上游应用服务环境（“fe2ase”和“fe3ase”）重复上述步骤。
 
 ```azurepowershell-interactive
 #Grant access to requests from the second upstream web front-end

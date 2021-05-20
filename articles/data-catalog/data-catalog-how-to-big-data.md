@@ -1,25 +1,27 @@
 ---
-title: 如何在 Azure 数据目录中编录大数据
+title: 如何在 Azure 数据目录中对大数据进行分类
 description: 操作指南文章着重说明通过“大数据”数据源使用 Azure 数据目录的模式，包括 Azure Blob 存储、Azure Data Lake 和 Hadoop HDFS。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: e79e5e16b300fd02b9c9124f9677747834f22813
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 3e898542c25f6ed1a9e6c811ada47220733abb12
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009426"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674659"
 ---
-# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 数据目录中编录大数据
+# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 数据目录中对大数据进行分类
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>简介
 
 **Microsoft Azure 数据目录** 是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 它旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据源（包括大数据）中获取更多价值。
 
-**Azure 数据目录** 支持注册 azure 存储 blob 和目录以及 Hadoop HDFS 文件和目录。 这些数据源的半结构化特性提供了极大的灵活性。 但是，若要通过使用 **Azure 数据目录** 注册它们来获取最大的价值，用户必须考虑如何组织数据源。
+Azure 数据目录支持注册 Azure 存储 blob 和目录以及 Hadoop HDFS 文件和目录。 这些数据源的半结构化特性提供了极大的灵活性。 但是，若要通过使用 **Azure 数据目录** 注册它们来获取最大的价值，用户必须考虑如何组织数据源。
 
 ## <a name="directories-as-logical-data-sets"></a>将目录视为逻辑数据集
 
@@ -66,6 +68,6 @@ ms.locfileid: "96009426"
 
 上述模式只是大数据存储的两种可能的组织方式，但执行效果各不相同。 无论怎样构造你的数据源，使用 Azure 数据目录注册大数据源时，重点注册表示对组织中其他人有价值的数据集的文件和目录。 注册所有文件和目录会使目录变得混乱，用户难以找到所需内容。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 使用 **Azure 数据目录** 注册数据源使其更易发现和理解。 通过注册和批注代表逻辑数据集的大数据和目录，可帮助用户发现和使用所需大数据源。

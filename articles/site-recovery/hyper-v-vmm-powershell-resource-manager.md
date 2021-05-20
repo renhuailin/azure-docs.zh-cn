@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: a4f7d330db9a4a0d9b435ebe7527e55e37c254e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87086211"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell（资源管理器）设置 Hyper-V VM 到辅助站点的灾难恢复
@@ -20,7 +20,7 @@ ms.locfileid: "87086211"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 查看[方案体系结构和组件](hyper-v-vmm-architecture.md)。
 - 查看所有组件的[支持要求](./vmware-physical-secondary-support-matrix.md)。
@@ -89,7 +89,7 @@ ms.locfileid: "87086211"
    $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    ```
 
-   可以在创建保管库对象后使用 `Get-AzRecoveryServicesVault` cmdlet 来检索它。
+   可以在创建保管库对象后使用 `Get-AzRecoveryServicesVault` 来检索它。
 
 ## <a name="set-the-vault-context"></a>设置保管库上下文
 
@@ -227,7 +227,7 @@ ms.locfileid: "87086211"
    > [!NOTE]
    > 在服务器数组中，源 Virtual Machine Manager 服务器可以是一个，也可以是第二个。 检查 Virtual Machine Manager 服务器名称，并相应地检索网络。
 
-1. 此 cmdlet 在主网络与恢复网络之间创建映射。 它将主网络指定为 `$PrimaryNetworks` 的第一个元素。 它将恢复网络指定为 `$RecoveryNetworks` 的第一个元素。
+1. 此 cmdlet 在主网络与恢复网络之间创建映射。 此 cmdlet 将主网络指定为 `$PrimaryNetworks` 的第一个元素。 此 cmdlet 将恢复网络指定为 `$RecoveryNetworks` 的第一个元素。
 
    ```azurepowershell
    New-AzRecoveryServicesAsrNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]

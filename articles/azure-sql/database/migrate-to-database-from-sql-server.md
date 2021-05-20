@@ -13,16 +13,16 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/11/2019
 ms.openlocfilehash: fab52fcea03a2f65c868cfac27f8a8cef115b2be
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94917641"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>将 SQL Server 数据库迁移到 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-本文介绍将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库的主要方法。 有关迁移到 Azure SQL 托管实例的信息，请参阅[将 SQL Server 实例迁移到 Azure SQL 托管实例](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)。 有关选择迁移选项和迁移到 Azure SQL 的工具的指南，请参阅 [迁移到 AZURE sql](../migration-guides/index.yml)
+本文介绍将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库的主要方法。 有关迁移到 Azure SQL 托管实例的信息，请参阅[将 SQL Server 实例迁移到 Azure SQL 托管实例](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)。 有关如何选择迁移选项和工具以迁移到 Azure SQL 的指南，请参阅[迁移到 Azure SQL](../migration-guides/index.yml)
 
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>迁移到单一数据库或共用数据库
@@ -115,7 +115,7 @@ ms.locfileid: "94917641"
 - [SQL Server 2008 R2 中已停用的数据库引擎功能](/previous-versions/sql/sql-server-2008-r2/ms144262(v=sql.105))
 - [SQL Server 2005 中已停用的数据库引擎功能](/previous-versions/sql/sql-server-2005/ms144262(v=sql.90))
 
-除了搜索 Internet 和使用这些资源以外，还可使用[AZURE SQL 数据库或 StackOverflow 的 Microsoft Q&问题页面](/answers/topics/azure-sql-database.html)。 [StackOverflow](https://stackoverflow.com/)
+除了搜索 Internet 和使用这些资源，还可以使用[有关 Azure SQL 数据库的 Microsoft Q&A 问题页面](/answers/topics/azure-sql-database.html)或 [StackOverflow](https://stackoverflow.com/)。
 
 > [!IMPORTANT]
 > 使用 Azure SQL 托管实例可迁移现有 SQL Server 实例及其数据库，而几乎不会出现兼容性问题。 请参阅[什么是托管实例](../managed-instance/sql-managed-instance-paas-overview.md)。

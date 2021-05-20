@@ -1,62 +1,62 @@
 ---
-title: 将 Azure 文件共享还原 REST API
+title: 使用 REST API 还原 Azure 文件共享
 description: 了解如何使用 REST API 从 Azure 备份创建的还原点还原 Azure 文件共享或特定文件
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88761791"
 ---
-# <a name="restore-azure-file-shares-using-rest-api"></a>使用 REST API 还原 Azure 文件共享
+# <a name="restore-azure-file-shares-using-rest-api"></a>使用 Rest API 还原 Azure 文件共享
 
-本文介绍如何使用 REST API 从 [Azure 备份](./backup-overview.md) 创建的还原点还原整个文件共享或特定文件。
+本文介绍如何使用 REST API 从 [Azure 备份](./backup-overview.md)所创建的还原点来还原整个文件共享或特定文件。
 
-本文末尾介绍了如何使用 REST API 执行以下操作：
+完成本文的学习后，你将了解如何使用 REST API 执行以下操作：
 
-* 查看备份的 Azure 文件共享的还原点。
+* 查看已备份 Azure 文件共享的还原点。
 * 还原完整的 Azure 文件共享。
 * 还原单个文件或文件夹。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-假设你已有一个要还原的已备份文件共享。 如果不这样做，请 [使用 REST API 选中 "备份 Azure 文件共享](backup-azure-file-share-rest-api.md) " 以了解如何创建一个。
+假设你已具有一个已备份的文件共享，并且你想要还原它。 如果你没有此类文件共享，请查看[使用 REST API 备份 Azure 文件共享](backup-azure-file-share-rest-api.md)，以了解如何创建一个。
 
-对于本文，我们将使用以下资源：
+本文将使用以下资源：
 
-* **RecoveryServicesVault**： *azurefilesvault*
-* **资源组**： *azurefiles*
-* **存储帐户**： *afsaccount*
-* **文件共享**： *azurefiles*
+* **RecoveryServicesVault**：azurefilesvault
+* **资源组**：azurefiles
+* **存储帐户**：afsaccount
+* **文件共享**：azurefiles
 
-## <a name="fetch-containername-and-protecteditemname"></a>提取容器和 ProtectedItemName
+## <a name="fetch-containername-and-protecteditemname"></a>提取 ContainerName 和 ProtectedItemName
 
-对于大多数还原相关的 API 调用，需要传递 {容器} 和 {protectedItemName} URI 参数的值。 使用 [GET backupprotectableitems](/rest/api/backup/protecteditems/get) 操作的响应正文中的 ID 属性来检索这些参数的值。 在我们的示例中，要保护的文件共享的 ID 是：
+多数与还原相关的 API 调用都需要传递 {containerName} 和 {protectedItemName} URI 参数的值。 使用 [GET backupprotectableitems](/rest/api/backup/protecteditems/get) 操作的响应正文中的 ID 属性检索这些参数的值。 在我们的示例中，要保护的文件共享的 ID 是：
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
-因此，这些值的转换方式如下：
+因此这些值转换为以下内容：
 
-* { *storagecontainer; storage; azurefiles; afsaccount*
-* {protectedItemName}- *azurefileshare; azurefiles*
+* {containername} - storagecontainer;storage;azurefiles;afsaccount
+* {protectedItemName} - azurefileshare;azurefiles
 
-## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>提取已备份 Azure 文件共享的恢复点
+## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>提取备份的 Azure 文件共享的恢复点
 
-若要还原任何备份的文件共享或文件，请首先选择一个恢复点来执行还原操作。 可以使用 [恢复点列表](/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API 调用列出备份项的可用恢复点。 它是具有所有相关值的 GET 操作。
+若要还原任何备份的文件共享或文件，请首先选择一个恢复点以执行还原操作。 可以使用 [Recovery Point-List](/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API 调用列出备份项的可用恢复点。 这是一个使用所有相关值执行的 GET 操作。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13&$filter={$filter}
 ```
 
-设置 URI 值，如下所示：
+将 URI 值设置如下：
 
-* {fabricName}： *Azure*
-* {vaultName}： *azurefilesvault*
-* { *storagecontainer; storage; azurefiles; afsaccount*
-* {protectedItemName}： *azurefileshare; azurefiles*
-* {ResourceGroupName}： *azurefiles*
+* {fabricName}：Azure
+* {vaultName}：azurefilesvault
+* {containername}：storagecontainer;storage;azurefiles;afsaccount
+* {protectedItemName}：azurefileshare;azurefiles
+* {ResourceGroupName}：azurefiles
 
 GET URI 包含所有必需的参数。 无需额外提供请求正文。
 
@@ -66,7 +66,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ### <a name="example-response-for-fetch-recovery-points"></a>提取恢复点的示例响应
 
-提交 GET URI 后，将返回200响应：
+提交 GET URI 后，将返回 200 响应：
 
 ```http
 HTTP/1.1" 200 None
@@ -139,18 +139,18 @@ HTTP/1.1" 200 None
   },
 ```
 
-在上述响应中，用 {name} 字段标识恢复点。
+上述响应中的 {name} 字段标识了恢复点。
 
-## <a name="full-share-recovery-using-rest-api"></a>使用 REST API 完全共享恢复
+## <a name="full-share-recovery-using-rest-api"></a>使用 REST API 恢复完整的共享
 
-使用此还原选项可还原原始或备用位置中的完整文件共享。
-触发还原是 POST 请求，你可以使用 [触发器还原](/rest/api/backup/restores/trigger) REST API 执行此操作。
+使用此还原选项在原始或备用位置还原完整的文件共享。
+触发还原是 POST 请求，你可以使用[触发还原](/rest/api/backup/restores/trigger) REST API 执行此操作。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-[此处](#fetch-containername-and-protecteditemname)设置的值为 {protectedItemName} 和 {}，recoveryPointID 是上面提到的恢复点的 {name} 字段。
+值 {containerName} 和 {protectedItemName} 的设置方式如[此处](#fetch-containername-and-protecteditemname)，recoveryPointID 是前面所述的恢复点的 {name} 字段。
 
 ```http
 POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare%3Bazurefiles/recoveryPoints/932886657837421071/restore?api-version=2019-05-13'
@@ -158,17 +158,17 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 ### <a name="create-request-body"></a>创建请求正文
 
-若要触发 Azure 文件共享的还原，以下是请求正文的组件：
+若要触发对 Azure 文件共享的还原，请求正文要包含以下组成部分：
 
 名称 |  类型   |   说明
 --- | ---- | ----
 属性 | AzureFileShareRestoreRequest | RestoreRequestResource 属性
 
-有关请求正文定义和其他详细信息的完整列表，请参阅 [触发器还原 REST API 文档](/rest/api/backup/restores/trigger#request-body)。
+有关请求正文的完整定义列表和其他详细信息，请参阅[“触发还原”REST API 文档](/rest/api/backup/restores/trigger#request-body)。
 
 ### <a name="restore-to-original-location"></a>还原到原始位置
 
-#### <a name="request-body-example-for-restore-to-original-location"></a>还原到原始位置的请求正文示例
+#### <a name="request-body-example-for-restore-to-original-location"></a>用于还原到原始位置的请求正文示例
 
 以下请求正文定义触发 Azure 文件共享还原所需的属性：
 
@@ -188,13 +188,13 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 为备用位置恢复指定以下参数：
 
-* **targetResourceId**：将备份的内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
-* **名称**：已备份的内容要还原到的目标存储帐户中的文件共享。
-* **targetFolderPath**：要将数据还原到的文件共享上的文件夹。
+* **targetResourceId**：要将备份内容还原到的存储帐户。 目标存储帐户应与保管库位于同一位置。
+* **名称**：目标存储帐户中要将备份内容还原到的文件共享。
+* **targetFolderPath**：文件共享中要将数据还原到的文件夹。
 
-#### <a name="request-body-example-for-restore-to-alternate-location"></a>还原到备用位置的请求正文示例
+#### <a name="request-body-example-for-restore-to-alternate-location"></a>用于还原到备用位置的请求正文示例
 
-以下请求正文将*afsaccount*存储帐户中的*azurefiles*文件共享还原到*afaccount1*存储帐户中的*azurefiles1*文件共享。
+以下请求正文将 afsaccount 存储帐户中的 azurefiles 文件共享还原到 afaccount1 存储帐户中的 azurefiles1 文件共享。   
 
 ```json
 {
@@ -219,12 +219,12 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 ### <a name="response"></a>响应
 
-触发还原操作是一个 [异步操作](../azure-resource-manager/management/async-operations.md)。 此操作创建需要单独跟踪的其他操作。
-它将返回两个响应： 202 (在创建另一个操作时接受) ，200在该操作完成时)  ("确定"。
+触发还原操作是一个[异步操作](../azure-resource-manager/management/async-operations.md)。 此操作会创建另一个需要单独跟踪的操作。
+它将返回两个响应：创建另一个操作时为 202 (已接受)，该操作完成时为 200 (确定)。
 
 #### <a name="response-example"></a>响应示例
 
-提交用于触发还原的 *POST* URI 后，初始响应为 202 (接受的) 具有位置标头或 Azure async 标头。
+提交用于触发还原的 POST URI 后，初始响应为包含位置标头或 Azure-async-header 的 202 (已接受)。
 
 ```http
 HTTP/1.1" 202
@@ -245,7 +245,7 @@ HTTP/1.1" 202
 'Date': 'Wed, 05 Feb 2020 07:43:47 GMT'
 ```
 
-然后使用 location 标头或带 GET 命令的 Azure-AsyncOperation 标头跟踪所产生的操作。
+然后通过 GET 命令并使用位置标头或 Azure-AsyncOperation 标头跟踪生成的操作。
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/68ccfbc1-a64f-4b29-b955-314b5790cfa9?api-version=2016-12-01
@@ -304,7 +304,7 @@ HTTP/1.1" 200
 }
 ```
 
-对于备用位置恢复，响应正文将如下所示：
+对于备用位置恢复，响应正文如下所示：
 
 ```http
 {
@@ -352,33 +352,33 @@ HTTP/1.1" 200
 
 由于备份作业是长时间运行的操作，因此应该根据[使用 REST API 监视作业](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job)文档中所述对其进行跟踪。
 
-## <a name="item-level-recovery-using-rest-api"></a>使用 REST API 进行项目级恢复
+## <a name="item-level-recovery-using-rest-api"></a>使用 REST API 执行项级别恢复
 
-您可以使用此还原选项还原原始或备用位置中的单个文件或文件夹。
+可以使用此还原选项来还原原始或备用位置中的单个文件或文件夹。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-[此处](#fetch-containername-and-protecteditemname)设置的值为 {protectedItemName} 和 {}，recoveryPointID 是上面提到的恢复点的 {name} 字段。
+值 {containerName} 和 {protectedItemName} 的设置方式如[此处](#fetch-containername-and-protecteditemname)，recoveryPointID 是前面所述的恢复点的 {name} 字段。
 
 ```http
 POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare%3Bazurefiles/recoveryPoints/932886657837421071/restore?api-version=2019-05-13'
 ```
 
-### <a name="create-request-body-for-item-level-recovery-using-rest-api"></a>使用 REST API 创建项目级恢复的请求正文
+### <a name="create-request-body-for-item-level-recovery-using-rest-api"></a>使用 REST API 创建实现项级别恢复的请求正文
 
-若要触发 Azure 文件共享的还原，以下是请求正文的组件：
+若要触发对 Azure 文件共享的还原，请求正文要包含以下组成部分：
 
 名称 |  类型   |   说明
 --- | ---- | ----
 属性 | AzureFileShareRestoreRequest | RestoreRequestResource 属性
 
-有关请求正文定义和其他详细信息的完整列表，请参阅 [触发器还原 REST API 文档](/rest/api/backup/restores/trigger#request-body)。
+有关请求正文的完整定义列表和其他详细信息，请参阅[“触发还原”REST API 文档](/rest/api/backup/restores/trigger#request-body)。
 
-### <a name="restore-to-original-location-for-item-level-recovery-using-rest-api"></a>使用 REST API 还原到项目级恢复的原始位置
+### <a name="restore-to-original-location-for-item-level-recovery-using-rest-api"></a>使用 REST API 还原到原始位置以执行项级别恢复
 
-以下请求正文用于在*afsaccount*存储帐户中还原*azurefiles*文件共享中的*Restoretest.txt*文件。
+以下请求正文用于还原 afsaccount 存储帐户中 azurefiles 文件共享的 Restoretest.txt 文件。  
 
 创建请求正文
 
@@ -402,9 +402,9 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 }
 ```
 
-### <a name="restore-to-alternate-location-for-item-level-recovery-using-rest-api"></a>使用 REST API 还原到项目级恢复的备用位置
+### <a name="restore-to-alternate-location-for-item-level-recovery-using-rest-api"></a>使用 REST API 还原到备用位置以执行项级别恢复
 
-以下请求正文是将*afsaccount*存储帐户中*azurefiles*文件共享中的*Restoretest.txt*文件还原到*afaccount1*存储帐户中*azurefiles1*文件共享的*restoredata*文件夹中。
+以下请求正文用于将 afsaccount 存储帐户中 azurefiles 文件共享的 Restoretest.txt 文件还原到 afaccount1 存储帐户中 azurefiles1 文件共享的 restoredata 文件夹中。     
 
 创建请求正文
 
@@ -431,8 +431,8 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 }
 ```
 
-应按照与上述 [完全共享还原](#full-share-recovery-using-rest-api)相同的方式来处理响应。
+应该按照上文所述的实现[完整共享还原](#full-share-recovery-using-rest-api)的相同方式处理响应。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何 [使用 REST API 管理 Azure 文件共享备份](manage-azure-file-share-rest-api.md)。
+* 了解如何[使用 Rest API 管理 Azure 文件共享备份](manage-azure-file-share-rest-api.md)。

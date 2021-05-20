@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
 ms.openlocfilehash: cb91d269f6b166510db54637d17d776e71137408
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102456144"
 ---
 # <a name="map-data-fields-to-entities-in-azure-sentinel"></a>将数据字段映射到 Azure Sentinel 中的实体 
 
 > [!IMPORTANT]
 >
-> - 新版本的实体映射功能处于预览阶段。 请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+> - 新版本的实体映射功能处于预览阶段。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
 > [!IMPORTANT]
 >
@@ -39,7 +39,7 @@ ms.locfileid: "102456144"
 
 ## <a name="how-to-map-entities"></a>如何映射实体
 
-1. 从 Azure Sentinel 导航菜单中选择“分析”。
+1. 从 Azure Sentinel 导航菜单中，选择“分析”。
 
 1. 选择计划的查询规则，再单击“编辑”。 或者单击屏幕顶部的“创建”&#10132;“计划的查询规则”，创建一个新规则。
 
@@ -57,7 +57,7 @@ ms.locfileid: "102456144"
 
     如果改变了主意或出错，可以通过单击实体下拉列表旁边的 “垃圾桶”图标来删除实体映射。
 
-1. 完成实体映射后，单击“查看并创建”选项卡。规则验证成功后，单击“保存”。
+1. 完成实体映射后，请单击“查看并创建”选项卡。成功验证规则后，单击“保存”。
 
 ## <a name="notes-on-the-new-version"></a>新版本的说明
 

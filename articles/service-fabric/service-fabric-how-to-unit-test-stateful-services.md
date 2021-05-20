@@ -1,14 +1,14 @@
 ---
-title: 为有状态服务开发单元测试
-description: 了解如何在 Azure Service Fabric 中进行有状态服务的单元测试，以及在开发过程中需要牢记的特殊注意事项。
+title: 为有状态服务部署单元测试
+description: 了解 Azure Service Fabric 中有状态服务的单元测试，以及在开发期间要牢记的特殊注意事项。
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 287c0544daa3c44d91fd336b502c496b9b4bb266
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89011389"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>为有状态服务创建单元测试
@@ -26,7 +26,7 @@ ms.locfileid: "89011389"
 [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
 [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
-*ServiceFabric 不由 Microsoft 拥有或维护。但是，这是 Microsoft 建议的用于单元测试有状态服务的库。*
+*ServiceFabric.Mocks 不归 Microsoft 所有或维护。但是，这是当前 Microsoft 建议用于对有状态服务进行单元测试的库。*
 
 ## <a name="set-up-the-mock-orchestration-and-state"></a>设置模拟业务流程和状态
 作为测试的排列部分的一部分，将创建模拟副本集和状态管理器。 然后，副本集将自己为每个副本创建已测试服务的实例。 它还将自己执行生命周期事件，例如 `OnChangeRole` 和 `RunAsync`。 模拟状态管理器将确保对状态管理器执行的任何操作均按照实际状态管理器那样运行和保持。

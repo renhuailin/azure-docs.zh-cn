@@ -1,26 +1,26 @@
 ---
-title: 用于 Azure Data Lake 的 U SQL 用户定义的化简器可编程性指南
-description: 了解有关化简器的详细信息。
+title: 适用于 Azure Data Lake 的 U-SQL 用户定义减速器可编程性指南
+description: 了解 U-SQL UDO 可编程性指南 - 用户定义的减速器。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 52d44685678c3e89dc820042a7925d284500cef8
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96512516"
 ---
 # <a name="use-user-defined-reducer"></a>使用用户定义的化简器
 
-## <a name="u-sql-udo-user-defined-reducer"></a>U-SQL UDO：用户定义的化简器
+## <a name="u-sql-udo-user-defined-reducer"></a>U-SQL UDO：用户定义的减速器
 
 使用 U-SQL 可在 C# 中编写自定义行集化简器的功能，方法是通过实现 IReducer 接口来使用用户定义的运算符扩展性框架。
 
 用户定义的化简器 (UDR) 可用于在数据提取（导入）期间消除不必要的行。 它还可用于操作和评估行与列。 它还可根据可编程性逻辑定义需要提取的行。
 
-## <a name="how-to-define-and-use-user-defined-reducer"></a>如何定义和使用用户定义的化简器
+## <a name="how-to-define-and-use-user-defined-reducer"></a>如何定义和使用用户定义的减速器
 若要定义 UDR 类，需要使用可选的 `SqlUserDefinedReducer` 属性创建 `IReducer` 接口。
 
 此类接口应包含 `IEnumerable` 接口行集重写的定义。
@@ -141,5 +141,5 @@ OUTPUT @rs2
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [U-SQL 可编程性指南-概述](data-lake-analytics-u-sql-programmability-guide.md)
-* [U-SQL 可编程性指南-UDT 和 UDAGG](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)
+* [U-SQL 可编程性指南 - 概述](data-lake-analytics-u-sql-programmability-guide.md)
+* [U-SQL 可编程性指南 - UDT 和 UDAGG](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)

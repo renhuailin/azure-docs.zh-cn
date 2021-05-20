@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 在启用了 Azure Arc 的 Kubernetes 群集上使用 Azure RBAC 进行授权检查
-ms.openlocfilehash: f0275e1516e8487b5a00fb08c885b09b6df1684c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 63621391da3dec966e9d0375a8671b7413a0b222
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145692"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804545"
 ---
 # <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>将 Azure Active Directory 与已启用 Azure Arc 的 Kubernetes 群集集成
 
@@ -398,6 +398,112 @@ az connectedk8s proxy -n <clusterName> -g <resourceGroupName>
 
     管理员必须创建新的角色分配，授权该用户访问该资源。
 
+## <a name="use-conditional-access-with-azure-ad"></a>配合使用条件访问和 Azure AD
+
+将 Azure AD 与已启用 Arc 的 Kubernetes 群集集成后，还可以使用[条件访问](../../active-directory/conditional-access/overview.md)来控制对群集的访问。
+
+> [!NOTE]
+> Azure AD 条件访问是一项 Azure AD 高级版功能。
+
+若要创建用于群集的示例条件访问策略，请完成以下步骤：
+
+1. 从 Azure 门户的顶部，搜索并选择“Azure Active Directory”。
+1. 在左侧的 Azure Active Directory 菜单中，选择“企业应用程序”。
+1. 在左侧的“企业应用程序”菜单中，选择“条件访问”。
+1. 在左侧的“条件访问”菜单中，选择“策略”，然后选择“新建策略”。
+1. 在左侧的“条件访问”菜单中，选择“策略”，然后选择“新建策略”。
+    
+    [ ![正在添加条件访问策略](./media/azure-rbac/conditional-access-new-policy.png) ](./media/azure-rbac/conditional-access-new-policy.png#lightbox)
+
+1. 为策略输入名称，例如“arc-k8s-policy”。
+1. 选择“用户和组”，然后在“包括”下选择“选择用户和组”。 选择要应用策略的用户和组。 对于此示例，请选择对你的群集具有管理访问权限的同一个 Azure AD 组。
+
+    [ ![选择要应用条件访问策略的用户或组](./media/azure-rbac/conditional-access-users-groups.png) ](./media/azure-rbac/conditional-access-users-groups.png#lightbox)
+
+1. 选择“云应用或操作”，然后在“包括”下选择“选择应用”。 搜索并选择之前创建的服务器应用程序。
+
+    [ ![选择要应用条件访问策略的服务器应用程序](./media/azure-rbac/conditional-access-apps.png) ](./media/azure-rbac/conditional-access-apps.png#lightbox)
+
+1. 在“访问控制”  下，选择“授予”  。 选择“授予访问权限”，然后选择“需要标记为兼容的设备”。
+
+    [ ![选择此设置将仅允许符合条件访问策略的设备](./media/azure-rbac/conditional-access-grant-compliant.png) ](./media/azure-rbac/conditional-access-grant-compliant.png#lightbox)
+    
+1. 在“启用策略”下，选择“开”，然后选择“创建”  。
+
+    [ ![启用条件访问策略](./media/azure-rbac/conditional-access-enable-policies.png) ](./media/azure-rbac/conditional-access-enable-policies.png#lightbox)
+
+再次访问群集。 例如，通过运行 `kubectl get nodes` 命令来查看群集中的节点：
+
+```console
+kubectl get nodes
+```
+
+再次按照说明进行登录。 请注意，一条错误消息会指明你已成功登录，但若要访问资源，你的管理员要求请求访问的设备受 Azure AD 管理。
+
+在 Azure 门户中，导航到 Azure Active Directory，选择“企业应用程序”，然后在“活动”下选择“登录”。请注意，顶部有一个条目，其中的“状态”为“失败”，“条件访问”为“成功”。    选择该条目，然后在“详细信息”中选择“条件访问”。  请注意，你的条件访问策略已列出。
+
+[ ![由于条件访问策略而失败的登录条目](./media/azure-rbac/conditional-access-sign-in-activity.png) ](./media/azure-rbac/conditional-access-sign-in-activity.png#lightbox)
+
+## <a name="configure-just-in-time-cluster-access-with-azure-ad"></a>使用 Azure AD 配置即时群集访问
+
+用于群集访问控制的另一个选项是对即时请求使用 Privileged Identity Management (PIM)。
+
+>[!NOTE]
+> PIM 是一个需要 Premium P2 SKU 的 Azure AD Premium 功能。 有关 Azure AD SKU 的详细信息，请参阅[定价指南](https://azure.microsoft.com/pricing/details/active-directory/)。
+
+若要为群集配置即时访问请求，请完成以下步骤：
+
+1. 从 Azure 门户的顶部，搜索并选择“Azure Active Directory”。
+1. 记下租户 ID，在本文余下的说明中称为 `<tenant-id>
+
+    [ ![AAD 租户详细信息](./media/azure-rbac/jit-get-tenant-id.png) ](./media/azure-rbac/jit-get-tenant-id.png#lightbox)
+
+1. 在左侧的 Azure Active Directory 菜单中的“管理”下，依次选择“组”、“新建组”。  
+
+    [ ![选择“新建组”](./media/azure-rbac/jit-create-new-group.png) ](./media/azure-rbac/jit-create-new-group.png#lightbox)
+
+1. 确保已选择“安全性”组类型，输入组的名称，例如 *myJITGroup*。 在“可将 Azure AD 角色分配到此组(预览版)”下，选择“是”。  最后，选择“创建”。
+
+    [ ![新组创建](./media/azure-rbac/jit-new-group-created.png) ](./media/azure-rbac/jit-new-group-created.png#lightbox)
+
+1. 你将返回到“组”页。 选择新建的组，并记下“对象 ID”（在本文余下的说明中称为 `<object-id>`）。
+
+    [ ![已创建组](./media/azure-rbac/jit-get-object-id.png) ](./media/azure-rbac/jit-get-object-id.png#lightbox)
+
+1. 返回 Azure 门户，在左侧的“活动”菜单中，依次选择“特权访问(预览版)”、“启用特权访问”。  
+
+    [ ![启用特权访问 ](./media/azure-rbac/jit-enabling-priv-access.png) ](./media/azure-rbac/jit-enabling-priv-access.png#lightbox)
+
+1. 选择“添加分配”开始授予访问权限。
+
+    [ ![添加活动分配](./media/azure-rbac/jit-add-active-assignment.png) ](./media/azure-rbac/jit-add-active-assignment.png#lightbox)
+
+1. 选择成员的角色，然后选择要向其授予群集访问权限的用户和组。 组管理员可随时修改这些分配。准备好继续时，选择“下一步”。
+
+    [ ![正在添加分配](./media/azure-rbac/jit-adding-assignment.png) ](./media/azure-rbac/jit-adding-assignment.png#lightbox)
+
+1. 选择“活动”分配类型和所需的持续时间，并提供理由。 准备好继续操作时，选择“分配”。 有关分配类型的详细信息，请参阅[在 Privileged Identity Management 中为特权访问组分配资格（预览版）](../../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group)。
+
+    [ ![为分配选择属性](./media/azure-rbac/jit-set-active-assignment.png) ](./media/azure-rbac/jit-set-active-assignment.png#lightbox)
+
+完成分配后，通过访问群集来验证是否可以正常进行即时访问。 例如：
+
+使用 `kubectl get nodes` 命令查看群集中的节点：
+
+```console
+kubectl get nodes
+```
+
+请注意身份验证要求，并按照步骤完成身份验证。 如果成功，应会看到类似于下面的输出：
+
+```output
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code AAAAAAAAA to authenticate.
+
+NAME      STATUS   ROLES    AGE      VERSION
+node-1    Ready    agent    6m36s    v1.18.14
+node-2    Ready    agent    6m42s    v1.18.14
+node-3    Ready    agent    6m33s    v1.18.14
+```
 
 ## <a name="next-steps"></a>后续步骤
 

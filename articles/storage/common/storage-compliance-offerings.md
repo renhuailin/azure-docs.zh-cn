@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: b3d308385a896d1051a843c1638506aa46c34c0e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7ec938a13d04cf3400e4d3df0eeda051c61d35ad
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740354"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101724262"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure 存储符合性产品/服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "108740354"
 
 你可以找到以下 Azure 存储上的符合性产品/服务，确保你的服务在使用 Azure 存储服务方面受到管控。 它们适用于以下 Azure 存储产品/服务：Blob (ADLS Gen2)、文件、队列、表、磁盘、冷存储和高级存储。
 
-## <a name="global"></a>全局
+## <a name="global"></a>Global
 
 * [CSA-STAR-Attestation](https://www.microsoft.com/trustcenter/compliance/csa-star-attestation)
 * [CSA-Star-Certification](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)
@@ -49,7 +49,7 @@ ms.locfileid: "108740354"
 ## <a name="industry"></a>行业
 
 * [23 NYCRR 第 500 编](https://www.microsoft.com/trustcenter/compliance/NYCRR)
-* [APRA（澳大利亚）](https://www.microsoft.com/trustcenter/compliance/apra)
+* [APRA（澳大利亚）](https://aka.ms/AzureCompliance)
 * [CDSA](https://www.microsoft.com/trustcenter/compliance/cdsa)
 * [DPP（英国）](https://aka.ms/AzureCompliance)
 * [（英国）](https://www.microsoft.com/trustcenter/compliance/fact)

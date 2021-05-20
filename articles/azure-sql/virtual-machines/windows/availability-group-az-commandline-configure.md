@@ -1,6 +1,6 @@
 ---
-title: " (PowerShell & Az CLI 中配置可用性组) "
-description: 使用 PowerShell 或 Azure CLI 在 Azure 中的 SQL Server VM 上创建 Windows 故障转移群集、可用性组侦听器和内部负载均衡器。
+title: 配置可用性组 (PowerShell & Az CLI)
+description: 使用 PowerShell 或 Azure CLI 在 Azure 中的 SQL Server VM 上创建 Windows 故障转移群集、可用性组侦听程序和内部负载均衡器。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -15,30 +15,30 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.openlocfilehash: 865ee3a5aeb8a2dd06d8759ba04d02259d2b4bee
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359959"
 ---
-# <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 PowerShell 或 Az CLI 为 Azure VM 上的 SQL Server 配置可用性组 
+# <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 PowerShell 或 Az CLI 在 Azure VM 上为 SQL Server 配置可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文介绍如何使用 [PowerShell](/powershell/scripting/install/installing-powershell) 或 [Azure CLI](/cli/azure/sql/vm) 来部署 Windows 故障转移群集、将 SQL Server vm 添加到群集，并为 Always On 可用性组创建内部负载均衡器和侦听器。 
+本文介绍如何使用 [PowerShell](/powershell/scripting/install/installing-powershell) 或 [Azure CLI](/cli/azure/sql/vm) 部署 Windows 故障转移群集，将 SQL Server VM 添加到群集，以及为 Always On 可用性组创建内部负载均衡器和侦听程序。 
 
-可用性组的部署仍可通过 SQL Server Management Studio (SSMS) 或 Transact-sql (T-sql) 手动完成。 
+始终通过 SQL Server Management Studio (SSMS) 或 Transact-SQL (T-SQL) 手动完成可用性组的部署。 
 
-尽管本文使用 PowerShell 和 Az CLI 来配置可用性组环境，但是也可以使用[Azure 快速入门模板](availability-group-quickstart-template-configure.md)或[手动](availability-group-manually-configure-tutorial.md)方式从[Azure 门户](availability-group-azure-portal-configure.md)执行此操作。 
+尽管本文使用 PowerShell 和 Az CLI 来配置可用性组环境，但也可使用 [Azure 快速启动模板](availability-group-quickstart-template-configure.md)或以[手动](availability-group-manually-configure-tutorial.md)方式从 [Azure 门户](availability-group-azure-portal-configure.md)进行配置。 
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Always On 可用性组，必须具备以下先决条件： 
+若要配置 Always On 可用性组，必须满足以下先决条件： 
 
 - 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
 - 一个具有域控制器的资源组。 
-- Azure 中一个或多个已加入域的 [vm 正在运行 SQL Server 2016 (或) 更高版本](./create-sql-vm-portal.md) 在 *同一* 可用性集中或 *不同* 的可用性区域中， [并已注册到 SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)。  
+- Azure 中的一个或多个已加入域的 VM，它们[运行 SQL Server 2016 Enterprise 版本（或更高版本）](./create-sql-vm-portal.md)，位于[已注册到 SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)的同一个可用性集或不同可用性区域中 。  
 - 最新版本的 [PowerShell](/powershell/scripting/install/installing-powershell) 或 [Azure CLI](/cli/azure/install-azure-cli)。 
-- 两个可用的（未被任何实体使用的）IP 地址。 一个用于内部负载均衡器。 另一个用于与可用性组位于同一子网中的可用性组侦听器。 如果使用现有的负载均衡器，则只需一个可用性组侦听器的可用 IP 地址。 
+- 两个可用的（未被任何实体使用的）IP 地址。 一个用于内部负载均衡器。 另一个用于与可用性组位于同一子网中的可用性组侦听器。 如果使用现有的负载均衡器，则可用性组侦听程序只需要一个有效的 IP 地址。 
 
 ## <a name="permissions"></a>权限
 
@@ -83,7 +83,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ---
 
-## <a name="define-cluster-metadata"></a>定义分类元数据
+## <a name="define-cluster-metadata"></a>定义群集元数据
 
 Azure CLI [az sql vm group](/cli/azure/sql/vm/group) 命令组管理托管可用性组的 Windows Server 故障转移群集 (WSFC) 服务的元数据。 群集元数据包括 Active Directory 域、群集帐户、要用作云见证的存储帐户和 SQL Server 版本。 使用 [az sql vm group create](/cli/azure/sql/vm/group#az-sql-vm-group-create) 定义 WSFC 的元数据，以便在添加第一个 SQL Server VM 时，按定义创建群集。 
 
@@ -128,7 +128,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ---
 
-## <a name="add-vms-to-the-cluster"></a>将 Vm 添加到群集
+## <a name="add-vms-to-the-cluster"></a>向群集添加 VM
 
 将第一个 SQL Server VM 添加到群集将创建群集。 [az sql vm add-to-group](/cli/azure/sql/vm#az-sql-vm-add-to-group) 命令使用先前指定的名称创建群集，在 SQL Server VM 上安装群集角色，然后将其添加到群集中。 继续使用 `az sql vm add-to-group` 命令将更多 SQL Server VM 添加到新创建的群集中。 
 
@@ -190,9 +190,9 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 
 ## <a name="validate-cluster"></a>验证群集 
 
-要使故障转移群集受 Microsoft 支持，它必须通过群集验证。 使用首选方法（如远程桌面协议 () RDP）连接到 VM，并验证群集是否通过验证，然后再继续。 否则，群集将处于不受支持状态。 
+故障转移群集必须通过群集验证才能得到 Microsoft 的支持。 使用首选方法（例如远程桌面协议 (RDP)）连接到 VM，并验证群集是否通过验证，然后再进行下一步。 否则，群集将处于不受支持状态。 
 
-你可以使用故障转移群集管理器 (FCM) 或以下 PowerShell 命令来验证群集：
+用户可使用故障转移群集管理器 (FCM) 或以下 PowerShell 命令来验证群集：
 
    ```powershell
    Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
@@ -308,7 +308,7 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 将 SQL Server VM 添加到群集组：
+1. 将 SQL Server VM 添加到群集组中：
    ```azurecli-interactive
 
    # Add the SQL Server VM to the cluster group
@@ -333,7 +333,7 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. 将 SQL Server VM 添加到群集组：
+1. 将 SQL Server VM 添加到群集组中：
 
    ```powershell-interactive
    # Add the SQL Server VM to the cluster group
@@ -424,9 +424,9 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 ---
 
 ## <a name="remove-listener"></a>删除侦听器
-如果以后需要删除使用 Azure CLI 配置的可用性组侦听器，则必须通过 SQL IaaS 代理扩展。 由于侦听器是通过 SQL IaaS 代理扩展注册的，因此只需通过 SQL Server Management Studio 删除即可。 
+如果以后需要删除使用 Azure CLI 配置的可用性组侦听程序，则必须通过 SQL IaaS 代理扩展执行整个操作。 由于该侦听程序是通过 SQL IaaS 代理扩展注册的，因此仅仅通过 SQL Server Management Studio 删除它是不够的。 
 
-最佳方法是使用 Azure CLI 中的以下代码片段，通过 SQL IaaS 代理扩展将其删除。 这样做将从 SQL IaaS 代理扩展中删除可用性组侦听器元数据。 同时还会从根本上删除可用性组中的侦听器。 
+最佳方法是在 Azure CLI 中使用以下代码片段，通过 SQL IaaS 代理扩展将其删除。 这样就会从 SQL IaaS 代理扩展中删除可用性组侦听程序元数据。 同时还会从根本上删除可用性组中的侦听器。 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -452,12 +452,12 @@ Remove-AzAvailabilityGroupListener -Name <Listener> `
 
 ## <a name="remove-cluster"></a>删除群集
 
-从群集中删除所有节点以销毁该群集，然后从 SQL IaaS 代理扩展中删除该群集元数据。 可以通过使用 Azure CLI 或 PowerShell 来执行此操作。 
+从群集中删除所有节点以销毁该群集，然后从 SQL IaaS 代理扩展中删除该群集元数据。 可以使用 Azure CLI 或 PowerShell 完成上述操作。 
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-首先，从群集中删除所有 SQL Server Vm： 
+首先，从群集中删除所有 SQL Server VM： 
 
 ```azurecli-interactive
 # Remove the VM from the cluster metadata
@@ -467,7 +467,7 @@ az sql vm remove-from-group --name <VM1 name>  --resource-group <resource group 
 az sql vm remove-from-group --name <VM2 name>  --resource-group <resource group name>
 ```
 
-如果这些是群集中的唯一 Vm，则该群集将被销毁。 如果群集中的任何其他 Vm 除了删除的 SQL Server Vm，则不会删除其他 Vm，并且不会销毁群集。 
+如果这些 VM 是群集中仅有的 VM，则该群集将被销毁。 如果群集中除了删除的 SQL Server VM 之外，还有其他 VM，则不会删除其他的 VM，并且群集不会销毁。 
 
 接下来，从 SQL IaaS 代理扩展中删除群集元数据： 
 
@@ -482,7 +482,7 @@ az sql vm group delete --name <cluster name> Cluster --resource-group <resource 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-首先，从群集中删除所有 SQL Server Vm。 这会在物理上从群集中删除节点并销毁群集： 
+首先，从群集中删除所有 SQL Server VM。 该操作将删除群集中的节点并销毁群集： 
 
 ```powershell-interactive
 # Remove the SQL VM from the cluster
@@ -496,7 +496,7 @@ $sqlvm = Get-AzSqlVM -Name <VM Name> -ResourceGroupName <Resource Group Name>
    Update-AzSqlVM -ResourceId $sqlvm -SqlVM $sqlvm
 ```
 
-如果这些是群集中的唯一 Vm，则该群集将被销毁。 如果群集中的任何其他 Vm 除了删除的 SQL Server Vm，则不会删除其他 Vm，并且不会销毁群集。 
+如果这些 VM 是群集中仅有的 VM，则该群集将被销毁。 如果群集中除了删除的 SQL Server VM 之外，还有其他 VM，则不会删除其他的 VM，并且群集不会销毁。 
 
 接下来，从 SQL IaaS 代理扩展中删除群集元数据： 
 

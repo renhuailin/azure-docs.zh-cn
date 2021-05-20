@@ -2,7 +2,7 @@
 title: 在访问评审中评审自己对组和应用的访问权限 - Azure AD
 description: 了解如何在 Azure Active Directory 访问评审中评审自己对组或应用程序的访问权限。
 services: active-directory
-author: ajburnle
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/22/2020
-ms.author: ajburnle
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5532ec5cb0f619199749621d71f7d2165dfe2776
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: b3fef2f85ca7e7b4034c8582477796d49446ea44
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787376"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97746773"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中评审自己对组或应用程序的访问权限
 
@@ -108,7 +108,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 >[!IMPORTANT]
 > 接收电子邮件可能存在延迟，在某些情况下，可能需要长达 24 小时来接收。 将 azure-noreply@microsoft.com 添加到安全收件人列表以确保收到所有电子邮件。
 
-1. 查找要求你执行访问评审的 Microsoft 电子邮件。 可以看到如下所示的示例电子邮件：
+1. 查找要求你执行访问评审的 Microsoft 电子邮件。 可以看到如下所示的示例电子邮件消息：
 
  ![要求评审对某个组的访问权限的 Microsoft 示例电子邮件](./media/review-your-access/access-review-email-preview.png)
 
@@ -134,7 +134,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 1. 在“组和应用”下，可以看到：
     
     - 名称：访问评审的名称。
-    - 截止日期：评审的截止日期。 在此日期后，可能会从正在评审的组或应用中删除被拒绝的用户。
+    - 截止日期：评审的截止日期。 在此日期后，被拒绝的用户将从正在评审的组或应用中删除。
     - 资源：正在评审的资源的名称。
     - 进度：此访问评审的用户总数中已评审的用户数。
     

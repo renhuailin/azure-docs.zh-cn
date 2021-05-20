@@ -1,5 +1,5 @@
 ---
-title: 使用 IPv6 创建面向 Internet 的负载均衡器 - Azure PowerShell
+title: 创建使用 IPv6 的面向 Internet 的负载均衡器 - Azure PowerShell
 titleSuffix: Azure Load Balancer
 description: 了解如何使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
 services: load-balancer
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 43203a756bcb42c7d00de9c11e9223f1d8b9e2a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87001564"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>开始使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
@@ -56,7 +56,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 若要部署负载均衡器，需要创建并配置以下对象：
 
 * 前端 IP 配置 - 包含传入网络流量的公共 IP 地址。
-* 后端地址池 - 包含从负载均衡器接收网络流量的虚拟机网络接口 (NIC)。
+* 后端地址池 - 包含从负载均衡器接收网络流量的虚拟机的网络接口 (NIC)。
 * 负载均衡规则 - 包含将负载均衡器上的公共端口映射到后端地址池中的端口的规则。
 * 入站 NAT 规则 - 包含将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
 * 探测器 - 包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
@@ -102,7 +102,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. 为前端 IP 地址池创建 Azure 公共 IP 地址 (PIP) 资源。 运行以下命令之前，请务必更改 `-DomainNameLabel` 的值。 该值在 Azure 区域中必须唯一。
+2. 为前端 IP 地址池创建 Azure 公共 IP 地址 (PIP) 资源。 请确保在运行以下命令之前更改 `-DomainNameLabel` 的值。 此值在 Azure 区域中必须具有唯一性。
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4

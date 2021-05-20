@@ -1,5 +1,5 @@
 ---
-title: 利用 Azure Vm 重启以实现 SAP 系统的 "更高可用性" |Microsoft Docs
+title: 利用 Azure VM 重启来实现 SAP 系统的“更高可用性”| Microsoft Docs
 description: 利用 Azure 基础结构 VM 重启来实现 SAP 应用程序的“更高可用性”
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a107453e040c1b4e31b833fedca0d2017e983740
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101672997"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>利用 Azure 基础结构 VM 重启来实现 SAP 系统的“更高可用性”
@@ -228,7 +228,7 @@ Azure 托管磁盘自动放置在其附加到的虚拟机的容错域中。 如�
 
 使用 Azure 基础结构高可用性和存储帐户的 SAP NetWeaver 系统的示例体系结构可能如下所示：
 
-![此图显示了使用 Azure 基础结构高可用性和存储帐户的 SAP NetWeaver 系统的体系结构。][planning-guide-figure-2900]
+![展示了使用 Azure 基础结构高可用性和存储帐户的 SAP NetWeaver 系统的体系结构的图。][planning-guide-figure-2900]
 
 使用 Azure 基础结构高可用性和托管磁盘的 SAP NetWeaver 系统的示例体系结构可能如下所示：
 
@@ -278,7 +278,7 @@ SAP 提供了一项设置，用于在启动 VM 中的 OS 后立即启动 SAP 实
   有关 SAP 实例的 Autostart 的详细信息，请参阅以下文章：
 
   * [Start or stop SAP along with your Unix Server Start/Stop](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)（在 Unix 服务器启动/停止时也启动或停止 SAP）
-  * [启动和停止 SAP NetWeaver 管理代理](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
+  * [Starting and stopping SAP NetWeaver management agents](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)（启动和停止 SAP NetWeaver 管理代理）
 
 ## <a name="next-steps"></a>后续步骤
 

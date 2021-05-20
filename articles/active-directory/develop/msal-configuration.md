@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: aa0ce6a5f909e67f0551c8667bb7e5c5e6d7eb04
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92275613"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft 身份验证库配置文件
@@ -32,7 +32,7 @@ Android Microsoft 身份验证库 (MSAL) 随附了一个[默认的配置 JSON �
 
 | 属性 | 数据类型 | 必须 | 注释 |
 |-----------|------------|-------------|-------|
-| `client_id` | String | 是 | [应用程序注册页](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的应用客户端 ID |
+| `client_id` | 字符串 | 是 | [应用程序注册页](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的应用客户端 ID |
 | `redirect_uri`   | String | 是 | [应用程序注册页](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的应用重定向 URI |
 | `broker_redirect_uri_registered` | 布尔 | 否 | 可能的值：`true`、`false` |
 | `authorities` | List\<Authority> | 否 | 应用所需的颁发机构列表 |
@@ -50,7 +50,7 @@ Android Microsoft 身份验证库 (MSAL) 随附了一个[默认的配置 JSON �
 
 ### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
 
-如果要使用中转身份验证，则 `broker_redirect_uri_registered` 必须将属性设置为 `true` 。 在中转身份验证方案中，如果应用程序未采用用于 [公共客户端应用的重定向 uri](msal-client-application-configuration.md#redirect-uri-for-public-client-apps)中所述的正确格式与 broker 通信，则应用程序会验证重定向 uri，并在启动时引发异常。
+若要使用中介身份验证，则必须将 `broker_redirect_uri_registered` 属性设置为 `true`。 在中介身份验证方案中，如果应用程序的格式不正确，无法按照[公共客户端应用的重定向 URI](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) 中所述与代理进行对话，则该应用程序会验证重定向 URI 并在它启动时引发异常。
 
 ### <a name="authorities"></a>authorities
 
@@ -97,19 +97,19 @@ Android Microsoft 身份验证库 (MSAL) 随附了一个[默认的配置 JSON �
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | 只有 contoso.com 中的帐户才能获取令牌。 任何已验证的域或租户 GUID 都可用作租户 ID。 |
 | AAD | AzureADMultipleOrgs | | | `https://login.microsoftonline.com/organizations` | 在此终结点上只能使用 Azure Active Directory 帐户。 Microsoft 帐户可以是组织的成员。 若要使用 Microsoft 帐户获取组织中资源的令牌，请指定要从中获取令牌的组织租户。 |
 | AAD | PersonalMicrosoftAccount | | | `https://login.microsoftonline.com/consumers` | 只有 Microsoft 帐户才能使用此终结点。 |
-| B2C | | | 参阅“生成的终结点” | `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/` | 只有 contoso.onmicrosoft.com 租户中的帐户才能获取令牌。 在此示例中，B2C 策略是颁发机构 URL 路径的一部分。 |
+| B2C | | | 参阅“生成的终结点” | `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/` | 只有 contoso.onmicrosoft.com 租户中存在的帐户才能获取令牌。 在此示例中，B2C 策略是颁发机构 URL 路径的一部分。 |
 
 > [!NOTE]
 > 在 MSAL 中无法启用和禁用授权机构验证。
 > 颁发机构是开发人员已知的、通过配置指定的颁发机构，或者是 Microsoft 已知的、通过元数据指定的颁发机构。
 > 如果 MSAL 收到了向未知颁发机构获取令牌的请求，将导致 `UnknownAuthority` 类型的 `MsalClientException`。
-> 对于 Azure AD B2C，中转身份验证不起作用。
+> 对于 Azure AD B2C，中介身份验证不起作用。
 
 #### <a name="authority-properties"></a>颁发机构属性
 
 | 属性 | 数据类型  | 必须 | 注释 |
 |-----------|-------------|-----------|--------|
-| `type` | String | 是 | 镜像应用面向的受众或帐户类型。 可能的值：`AAD`、`B2C` |
+| `type` | 字符串 | 是 | 镜像应用面向的受众或帐户类型。 可能的值：`AAD`、`B2C` |
 | `audience` | Object | 否 | 仅当 type=`AAD` 时才适用。 指定应用面向的标识。 使用应用注册中的值 |
 | `authority_url` | String | 是 | 仅当 type =`B2C` 时才是必需的。 指定应用应该使用的颁发机构 URL 或策略  |
 | `default` | boolean | 是 | 指定了一个或多个颁发机构时，需要指定单个 `"default":true`。 |
@@ -118,8 +118,8 @@ Android Microsoft 身份验证库 (MSAL) 随附了一个[默认的配置 JSON �
 
 | 属性 | 数据类型  | 必须 | 注释 |
 |-----------|-------------|------------|-------|
-| `type` | String | 是 | 指定应用要面向的受众。 可能的值： `AzureADandPersonalMicrosoftAccount` 、 `PersonalMicrosoftAccount` 、 `AzureADMultipleOrgs` 、 `AzureADMyOrg` |
-| `tenant_id` | String | 是 | 仅当指定 `"type":"AzureADMyOrg"` 时才是必需的。 如果指定其他 `type` 值，则是可选的。 这可以是类似于 `contoso.com` 的租户域，或类似于 `72f988bf-86f1-41af-91ab-2d7cd011db46` 的租户 ID |
+| `type` | 字符串 | 是 | 指定应用要面向的受众。 可能的值：`AzureADandPersonalMicrosoftAccount`、`PersonalMicrosoftAccount`、`AzureADMultipleOrgs`、`AzureADMyOrg` |
+| `tenant_id` | 字符串 | 是 | 仅当指定 `"type":"AzureADMyOrg"` 时才是必需的。 如果指定其他 `type` 值，则是可选的。 这可以是类似于 `contoso.com` 的租户域，或类似于 `72f988bf-86f1-41af-91ab-2d7cd011db46` 的租户 ID |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -138,7 +138,7 @@ Android Microsoft 身份验证库 (MSAL) 随附了一个[默认的配置 JSON �
 
 一个布尔值，指示是否正在使用 Microsoft 标识中介兼容的中介内重定向 URI。 如果不想要在应用中使用中介，请设置为 `false`。
 
-如果你使用的是将受众设置为的 AAD 颁发机构 `"MicrosoftPersonalAccount"` ，则不会使用 broker。
+如果使用的是将受众设置为 `"MicrosoftPersonalAccount"` 的 AAD 颁发机构，则不会使用代理。
 
 ### <a name="http"></a>http
 

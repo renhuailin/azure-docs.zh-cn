@@ -1,16 +1,16 @@
 ---
-title: Azure Data Lake Storage Gen1 性能优化-MapReduce
-description: 了解 Azure Data Lake Storage Gen1 中的 MapReduce 性能优化，包括参数、指南、示例计算和限制。
+title: Azure Data Lake Storage Gen1 性能优化 - MapReduce
+description: 了解 Azure Data Lake Storage Gen1 中 MapReduce 的性能优化，包括参数、指导、示例计算和限制。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: twooley
 ms.openlocfilehash: 2549413241e422fb1e0e5e1f079c287e0b7cf005
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97723722"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>MapReduce on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
@@ -18,10 +18,10 @@ ms.locfileid: "97723722"
 ## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 HDInsight 上使用 MapReduce**。 有关详细信息，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](../hdinsight/hadoop/hdinsight-use-mapreduce.md)
-* **查看 Data Lake Storage Gen1 的性能优化指南**。 有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](./data-lake-store-performance-tuning-guidance.md)
+* 查看 Data Lake Storage Gen1 的性能优化指南。 有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](./data-lake-store-performance-tuning-guidance.md)
 
 ## <a name="parameters"></a>参数
 
@@ -29,36 +29,36 @@ ms.locfileid: "97723722"
 
 |参数      | 说明  |
 |---------|---------|
-|`Mapreduce.map.memory.mb`  |  要分配给每个映射器的内存量。  |
+|`Mapreduce.map.memory.mb`  |  分配给每个映射器的内存量。  |
 |`Mapreduce.job.maps`     |  每个作业的映射任务数。  |
-|`Mapreduce.reduce.memory.mb`     |  要分配给每个化简器的内存量。  |
+|`Mapreduce.reduce.memory.mb`     |  分配给每个减速器的内存量。  |
 |`Mapreduce.job.reduces`    |   每个作业的减少任务数。  |
 
-### <a name="mapreducemapmemory--mapreducereducememory"></a>Mapreduce .map。内存/Mapreduce. 减少内存
+### <a name="mapreducemapmemory--mapreducereducememory"></a>Mapreduce.map.memory/Mapreduce.reduce.memory
 
-根据映射和/或缩减任务所需的内存量调整此数字。 可以 `mapreduce.map.memory` `mapreduce.reduce.memory` 通过 Yarn 配置在 Ambari 中查看和的默认值。 在 Ambari 中，导航到 "YARN" 并查看 "配置 **" 选项卡** 。将显示 YARN 内存。
+根据映射和/或减少任务所需的内存量调整此数目。 可以通过 Yarn 配置查看 Ambari 中 `mapreduce.map.memory` 和 `mapreduce.reduce.memory` 的默认值。 在 Ambari 中，导航到 YARN 并查看“配置”选项卡。随即显示 YARN 内存。
 
-### <a name="mapreducejobmaps--mapreducejobreduces"></a>Mapreduce. maps/Mapreduce。
+### <a name="mapreducejobmaps--mapreducejobreduces"></a>Mapreduce.job.maps/Mapreduce.job.reduces
 
-这会确定要创建的映射器或化简器的最大数目。 拆分数确定为 MapReduce 作业创建了多少个映射器。 因此，如果拆分次数少于请求的映射器数，则可能会获得比所请求的映射器更少的值。
+这可确定要创建的映射器或减速器的最大数目。 拆分数决定为 MapReduce 作业创建的映射器数。 因此，如果拆分数少于所请求的映射器数，则得到的映射器数可能会少于所请求的数量。
 
 ## <a name="guidance"></a>指南
 
 ### <a name="step-1-determine-number-of-jobs-running"></a>步骤 1：确定运行的作业数
 
-默认情况下，MapReduce 会将整个群集用于作业。 使用的映射器可以比可用容器更少。 本文档中的指南假定应用程序是在群集上运行的唯一应用程序。
+默认情况下，MapReduce 会将整个群集用于作业。 可以通过让使用的映射器数少于可用的容器数，来使用更少的群集。 本文档中的指南假定应用程序是在群集上运行的唯一应用程序。
 
 ### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>步骤 2：设置 mapreduce.map.memory/mapreduce.reduce.memory
 
-用于映射和化简任务的内存大小将取决于特定作业。 如果要提高并发性，可以减少内存大小。 并发运行的任务数取决于容器数。 减少每个映射器或化简器的内存量，可以创建多个容器，从而使更多映射器或化简器可以并发运行。 减少过多的内存量可能会导致某些进程内存不足。 如果在运行作业时出现堆错误，请增加每个映射器或化简器的内存。 请考虑添加更多容器会增加每个额外容器的额外开销，这可能会降低性能。 另一种替代方法是通过使用具有更高内存量的群集或增加群集中的节点数来获得更多内存。 有更多内存将可以使用更多容器，这意味着可实现更高并发性。
+用于映射和化简任务的内存大小将取决于特定作业。 如果要提高并发性，可以减少内存大小。 并发运行的任务数取决于容器数。 减少每个映射器或化简器的内存量，可以创建多个容器，从而使更多映射器或化简器可以并发运行。 减少过多的内存量可能会导致某些进程内存不足。 如果在运行作业时出现堆错误，请增加每个映射器或减速器的内存。 考虑到添加更多容器会添加每个附加容器的额外开销，这可能会降低性能。 另一种替代方法是通过使用具有更高内存量的群集或增加群集中的节点数来获得更多内存。 有更多内存将可以使用更多容器，这意味着可实现更高并发性。
 
-### <a name="step-3-determine-total-yarn-memory"></a>步骤3：确定总 YARN 内存
+### <a name="step-3-determine-total-yarn-memory"></a>步骤 3：确定总 YARN 内存量
 
-若要优化 mapreduce/mapreduce，请考虑可供使用的总 YARN 内存量。 该信息在 Ambari 中提供。 导航到 YARN 并 **查看 "配置" 选项卡** 。YARN 内存显示在此窗口中。 将 YARN 内存与群集中的节点数相乘，以获取总 YARN 内存。
+要优化 mapreduce.job.maps/mapreduce.job.reduces，请考虑可供使用的总 YARN 内存量。 该信息在 Ambari 中提供。 导航到 YARN 并查看“配置”选项卡。YARN 内存量会显示在此窗口中。 将 YARN 内存量与群集中的节点数相乘，获得总 YARN 内存量。
 
 `Total YARN memory = nodes * YARN memory per node`
 
-如果使用的是空群集，则内存可以是群集的总 YARN 内存。 如果其他应用程序正在使用内存，则可以通过将映射器或化简器的数目减少到要使用的容器数来选择仅使用群集的一部分内存。
+如果使用的是空群集，则内存量可能会是群集的总 YARN 内存量。 如果其他应用程序正在使用内存，则可以通过将映射器或化简器的数目减少到要使用的容器数来选择仅使用群集的一部分内存。
 
 ### <a name="step-4-calculate-number-of-yarn-containers"></a>步骤 4：计算 YARN 容器数
 
@@ -78,15 +78,15 @@ CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内�
 
 ### <a name="step-1-determine-number-of-jobs-running"></a>步骤 1：确定运行的作业数
 
-对于我们的示例，我们假设作业是唯一运行的作业。
+对于本示例，假定我们的作业是唯一正在运行的作业。
 
 ### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>步骤 2：设置 mapreduce.map.memory/mapreduce.reduce.memory
 
-在我们的示例中，你运行的是一个 i/o 密集型作业，并决定为映射任务使用了 3 GB 内存。
+对于本示例，你正在运行一个 I/O 密集型作业，并确定将 3 GB 的内存用于映射任务已足够。
 
 `mapreduce.map.memory = 3GB`
 
-### <a name="step-3-determine-total-yarn-memory"></a>步骤3：确定总 YARN 内存
+### <a name="step-3-determine-total-yarn-memory"></a>步骤 3：确定总 YARN 内存量
 
 `total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB`
 
@@ -110,11 +110,11 @@ CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内�
 
 2. 重新启动所有节点/服务使配置生效。
 
-3. 如果受到限制，将在 YARN 日志文件中看到 HTTP 429 错误代码。 YARN 日志文件位于 /tmp/&lt;用户&gt;/yarn.log 中
+3. 如果受到限制，会在 YARN 日志文件中看到 HTTP 429 错误代码。 YARN 日志文件位于 /tmp/&lt;用户&gt;/yarn.log 中
 
 ## <a name="examples-to-run"></a>要运行的示例
 
-为了演示 MapReduce 如何在 Data Lake Storage Gen1 上运行，以下是在具有以下设置的群集上运行的一些示例代码：
+为了演示 MapReduce 在 Data Lake Storage Gen1 上的运行方式，下面提供一些示例代码，这些代码在具有下列设置的群集上运行：
 
 * 16 个节点 D14v2
 * 运行 HDI 3.6 的 Hadoop 群集

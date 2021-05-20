@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 4e1f4c7272c3db3b1e4cd834a621b66f519c6f69
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364573"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952807"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件访问：用户和组
 
-条件访问策略必须包括用户分配，作为决策过程中的信号之一。 可以在条件访问策略中包括或排除用户。 Azure Active Directory 会评估所有策略，确保只有满足所有要求才向用户授予访问权限。
+条件访问策略必须包括用户分配，作为决策过程中的信号之一。 可以在条件访问策略中包括或排除用户。 Azure Active Directory 会评估所有策略，确保只有满足所有要求才向用户授予访问权限。 
 
-![用户作为条件访问所做决策中的信号](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
+> [!VIDEO https://www.youtube.com/embed/5DsW1hB3Jqs]
 
 ## <a name="include-users"></a>包括用户
 
@@ -38,12 +38,12 @@ ms.locfileid: "100364573"
    - 所有来宾用户和外部用户
       - 此选择包括所有 B2B 来宾和外部用户，包括将 `user type` 特性设置为 `guest` 的任何用户。 此选择也适用于从其他组织（例如云解决方案提供商 (CSP)）登录的任何外部用户。 
    - 目录角色
-      - 允许管理员选择用于确定分配的特定 Azure AD 目录角色。 例如，组织可以对分配有全局管理员角色的用户创建更严格的策略。
+      - 允许管理员选择用于确定策略分配的特定内置 Azure AD 目录角色。 例如，组织可以对分配有全局管理员角色的用户创建更严格的策略。 不支持其他角色类型，包括管理单元范围的角色和自定义角色。
    - 用户和组
       - 允许以特定用户集为目标。 例如，将某个人力资源应用选作云应用时，组织可以选择包含人力资源部所有成员的组。 某个组可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。 策略将应用于嵌套的用户和组。
 
 > [!IMPORTANT]
-> 选择条件性访问策略中包含的用户和组时，可直接添加到条件访问策略中的单个用户的数量有限制。 如果需要将大量单独的用户直接添加到条件访问策略，则建议将用户放在组中，并改为将该组分配到条件访问策略。
+> 选择条件访问策略中包含的用户和组时，可直接添加到条件访问策略中的单独用户数量存在限制。 如果需要将大量单独用户直接添加到条件访问策略，则建议将用户归为一组，并改为将该组分配到条件访问策略。
 
 > [!WARNING]
 > 如果用户或组是 2048 个以上的组的成员，则其访问可能会被阻止。 此限制适用于直接组和嵌套组成员身份。
@@ -77,7 +77,7 @@ ms.locfileid: "100364573"
 
 ![警告：别把自己锁在外面！](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
-[如果你被锁定在 Azure 门户之外，该怎么办？](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
+如果发现自己被锁在外面[如果自己被锁在 Azure 门户外面该怎么办？](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>后续步骤
 

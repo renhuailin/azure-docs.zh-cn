@@ -1,20 +1,20 @@
 ---
-title: 在 Azure 开发测试实验室中将环境连接到实验室的 vnet |Microsoft Docs
-description: 了解如何在 Azure 开发测试实验室中将环境 (如 Service Fabric 群集) 连接到实验室的虚拟网络
+title: 在 Azure 开发测试实验室中将环境连接到实验室的 VNet | Microsoft Docs
+description: 了解如何在 Azure 开发测试实验室中将环境（如 Service Fabric 群集）连接到实验室的虚拟网络
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 980c6317ded70db374c2b948075f060754168b0f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97511954"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中将环境连接到实验室的虚拟网络
-使用 Azure 开发测试实验室，可以在具有 [内置网络](devtest-lab-configure-vnet.md)的实验室中轻松创建 vm。 它有很大的灵活性，能够 [创建多 VM 环境](devtest-lab-test-env.md)。 本文介绍如何将环境中的 Vm 连接到实验室虚拟网络。 使用此功能的一种情况是，使用连接到实验室 VNet 的 SQL Server 数据层设置 N 层应用，使实验室中的测试 Vm 能够访问它。  
+使用 Azure 开发测试实验室，可以在具有[内置网络](devtest-lab-configure-vnet.md)的实验室中轻松创建 VM。 它有很大的灵活性，能够[创建多 VM 环境](devtest-lab-test-env.md)。 本文介绍了如何将环境中的 VM 连接到实验室虚拟网络。 使用此功能的一种方案是，为 n 层应用设置连接到实验室 VNet 的 SQL Server 数据层，以便实验室中的测试 VM 能够访问它。  
 
 ## <a name="sample-environment-that-uses-lab-vnet"></a>使用实验室 VNet 的示例环境
-下面是一个简单的环境模板，用于连接实验室的子网。 在此示例中， `DTLSubnetId` 参数表示实验室所在的子网的 ID。 它分配给： `$(LabSubnetId)` ，它由开发测试 Labs 自动解析为实验室子网的 ID。 此定义中 VM 的 **网络接口** 的 "**子网**" 属性设置为， `DTLSubnetId` 以便它加入同一子网。 
+下面是连接实验室子网的简单环境模板。 在此示例中，`DTLSubnetId` 参数表示实验室所在的子网的 ID。 它被分配给 `$(LabSubnetId)`，开发测试实验室自动将其解析为实验室子网的 ID。 此定义中 VM 的网络接口的 subnet 属性设置为 `DTLSubnetId`，以便加入同一子网。 
 
 ```json
 {
@@ -152,4 +152,4 @@ ms.locfileid: "97511954"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章，了解如何使用 Azure 门户执行以下操作： [重新启动 VM](devtest-lab-restart-vm.md)。
+请参阅以下文章，了解如何使用 Azure 门户执行这些操作：[重启 VM](devtest-lab-restart-vm.md)。
