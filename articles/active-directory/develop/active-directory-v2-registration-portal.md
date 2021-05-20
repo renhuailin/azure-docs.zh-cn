@@ -15,10 +15,10 @@ ms.reviewer: lenalepa
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 6a33da602eaa9bee20f155eaa550e558e5dcbeca
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98755563"
 ---
 # <a name="app-registration-reference"></a>应用注册参考
@@ -27,7 +27,7 @@ ms.locfileid: "98755563"
 
 ## <a name="my-applications-or-converged-applications"></a>我的应用程序或聚合应用程序
 
-此列表包含所有已注册的用于 Microsoft 标识平台的应用程序。 这些应用程序能够让用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure Active Directory 登录。 若要了解有关 Microsoft 标识平台的详细信息，请参阅 v2.0 [概述](./v2-overview.md)。 这些应用程序也可以用来与 Microsoft 帐户身份验证终结点 `https://login.live.com` 集成。
+此列表包含所有注册以用于 Microsoft 标识平台的应用程序。 这些应用程序能够让用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure Active Directory 登录。 若要详细了解 Microsoft 标识平台，请参阅 [v2.0 概述](./v2-overview.md)。 这些应用程序也可以用来与 Microsoft 帐户身份验证终结点 `https://login.live.com` 集成。
 
 ## <a name="azure-ad-only-applications"></a>Azure AD 专用应用程序
 
@@ -39,11 +39,11 @@ ms.locfileid: "98755563"
 
 ## <a name="application-secrets"></a>应用程序密码
 
-应用程序密码是允许应用程序通过 Microsoft 标识平台执行可靠的 [客户端身份验证](https://tools.ietf.org/html/rfc6749#section-2.3) 的凭据。 在 OAuth 和 OpenID Connect 中，应用程序密码通常称为 `client_secret`。 在 v2.0 协议中，任何在 web 可寻址位置接收安全令牌的应用程序 (使用 `https` 方案) 在兑换该安全令牌时，必须使用应用程序机密来向 Microsoft 标识平台标识自身。 此外，设备上接收令牌的任何本机客户端都将禁止使用应用程序密码来执行客户端身份验证。 这样可防止在不安全的环境中存储密码。
+应用程序机密是便于应用程序利用 Microsoft 标识平台执行可靠的[客户端身份验证](https://tools.ietf.org/html/rfc6749#section-2.3)的凭据。 在 OAuth 和 OpenID Connect 中，应用程序密码通常称为 `client_secret`。 在 v2.0 协议中，任何在 Web 可寻址位置（使用 `https` 方案）接收安全令牌的应用程序都必须在兑换安全令牌后使用应用程序机密向 Microsoft 标识平台标识自己。 此外，设备上接收令牌的任何本机客户端都将禁止使用应用程序密码来执行客户端身份验证。 这样可防止在不安全的环境中存储密码。
 
 每个应用都能在任何指定时间包含两个有效的应用程序密码。 通过维护两个密码，就能够在应用程序的整个环境中执行定期的密钥滚动更新。 将应用程序的全部内容移迁移到新密码之后，可能会删除旧密码，并预配一个新密码。
 
-目前，应用注册门户中只允许两种类型的应用程序密码。 如果选择“生成新密码”，将生成一个共享密码并存储在各自的数据存储中，可以在应用程序中使用该密码。 选择 " **生成新密钥对** "，将创建一个新的公钥/私钥对，该密钥对可下载并用于客户端身份验证到 Microsoft 标识平台。 如果选择“上载公钥”，则可以使用自己的公钥对/私钥对。
+目前，应用注册门户中只允许两种类型的应用程序密码。 如果选择“生成新密码”，将生成一个共享密码并存储在各自的数据存储中，可以在应用程序中使用该密码。 如果选择“生成新密钥对”，则会新建公钥/私钥对，它们可下载并用来向 Microsoft 标识平台进行客户端身份验证。 如果选择“上载公钥”，则可以使用自己的公钥对/私钥对。
 你需要上载包含公钥的证书。
 
 ## <a name="profile"></a>配置文件

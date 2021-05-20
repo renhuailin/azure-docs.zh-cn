@@ -4,10 +4,10 @@ description: 本文提供了有关开发并部署 gRPC 推理服务器的指导�
 ms.topic: how-to
 ms.date: 12/02/2020
 ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881646"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>操作指南 - 开发并部署 gRPC 推理服务器
@@ -138,11 +138,11 @@ gRPC 扩展模块：
 ```
 
 > [!NOTE]
-> 确保可以访问 grpcExtension 中 "container： lvaEdge" 的共享内存区域。
+> 请确保你可以访问 grpcExtension 中的“container:lvaEdge”共享内存区域。
 
 ## <a name="sample-grpc-server"></a>示例 gRPC 服务器
 
-若要了解如何开发 gRPC 服务器的详细信息，请查看我们的代码示例。
+若要详细了解如何开发 gRPC 服务器，请查看我们的代码示例。
 
 1. 从 GitHub 链接 [https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp) 克隆存储库。
 1. 启动 VSCode 并导航到 /src/edge/modules/grpcExtension 文件夹。
@@ -156,7 +156,7 @@ gRPC 扩展模块：
         }
         ```
     1. Services\MediaGraphExtensionService.cs：此类负责处理 [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) 消息。 它会读取消息中的帧，调用 ImageProcessor 并写入推理结果。
-现在，我们已配置并初始化了 gRPC 服务器端口连接，接下来让我们看看如何处理传入的 gRPC 消息。
+至此，已配置并初始化 gRPC 服务器端口连接；接下来将探讨如何处理传入的 gRPC 消息。
 
         * 建立 gRPC 会话后，gRPC 服务器从客户端（实时视频分析）收到的第一条消息将是在 [extension.proto](https://github.com/Azure/live-video-analytics/blob/master/contracts/grpc/extension.proto) 文件中定义的 MediaStreamDescriptor。 
 
@@ -174,7 +174,7 @@ gRPC 扩展模块：
               }
             }
             ```
-        * 在我们的服务器实现中，方法 `ProcessMediaStreamDescriptor` 将验证视频文件的 MediaStreamDescriptor 的 MediaDescriptor 属性，然后将使用共享内存或使用嵌入帧传输) 模式 (来设置数据传输模式，具体取决于你在拓扑中指定的内容和使用的部署模板文件。 
+        * 在服务器实现中，方法 `ProcessMediaStreamDescriptor` 会为视频文件验证 MediaStreamDescriptor 的 MediaDescriptor 属性，然后会根据你在拓扑中指定的内容和所使用的部署模板文件设置数据传输模式（使用共享内存还是嵌入式帧传输模式）。 
         * 在收到消息并成功设置数据传输模式后，gRPC 服务器会将 MediaStreamDescriptor 消息作为确认返回客户端，从而在服务器与客户端之间建立连接。    
         * 实时视频分析收到确认后，它会开始将媒体流传输到 gRPC 服务器。 在我们的服务器实现中，方法 `ProcessMediaStream` 会处理传入的 MediaStreamMessage。 [extension.proto](https://github.com/Azure/live-video-analytics/blob/master/contracts/grpc/extension.proto) 中也定义了 MediaStreamMessage。
 
@@ -199,7 +199,7 @@ gRPC 扩展模块：
             我们使用的示例处理器仅支持 JPG 编码的图像帧和“无”像素格式。 如果你的自定义处理器支持另一种编码和/或格式，请更新 processor 类的 `IsMediaFormatSupported` 方法。
         1. 使用 [ColorMatrix 类](/dotnet/api/system.drawing.imaging.colormatrix?preserve-view=true&view=dotnet-plat-ext-3.1)，将图像转换为灰度。 请参阅方法：`ToGrayScale(Image source)`。
         1. 获取灰度图像后，我们将计算灰度字节的平均值。
-        1. 如果平均值 < 127，则将图像归类为 "深色"，否则我们会将其分类为 "light"，置信度值为1.0。 请参阅方法：`ProcessImage(List<Image> images)`。
+        1. 如果平均值小于 127，则将图像分类为“深色”，否则分类为“浅色”（置信度值为 1.0）。 请参阅方法：`ProcessImage(List<Image> images)`。
 
     通过修改此类或添加一个新类并实现以下方法，你可以添加自己的处理器逻辑：
 

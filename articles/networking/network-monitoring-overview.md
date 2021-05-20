@@ -1,5 +1,5 @@
 ---
-title: 关于 Azure Monitor 日志中的网络监视 |Microsoft Docs
+title: 关于 Azure Monitor 日志中的网络监视 | Microsoft Docs
 description: 概述了网络监视解决方案，包括 NPM，它们用来在云、本地和混合环境中管理网络。
 services: monitoring-and-diagnostics
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: a92c6789723dc42ac8f3a9c471e494079dc19328
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98233434"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
@@ -65,7 +65,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 * 检测从本地到你的云应用程序的网络拓扑
 * 容量规划、带宽利用率分析
 * 针对主要路径和辅助路径进行监视并发出警报
-* 监视与 Azure 服务的连接，例如 Microsoft 365、Dynamics 365 .。。over ExpressRoute
+* 监视通过 ExpressRoute 与 Azure 服务（如 Microsoft 365、Dynamics 365 等）的连接
 * 检测与 VNet 的连接的降级
 
 ![显示各区域流量的地图](./media/network-monitoring-overview/expressroute-topology-map.png) 
@@ -84,7 +84,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 * 从全球的多个用户位置测试应用程序可访问性
 * 确定你的业务线和 SaaS 应用程序的网络延迟和包丢失
 * 确定网络上可能会导致应用程序性能变差的热点
-* 使用内置测试 Microsoft 365、Dynamics 365、Skype for Business 和其他 Microsoft 服务监视 Microsoft 365 应用程序的可访问性
+* 通过针对 Microsoft 365、Dynamics 365、Skype for Business 和其他 Microsoft 服务的内置测试，监视对 Microsoft 365 应用程序的可访问性。
 
 有关详细信息，请参阅以下文章：
 
@@ -103,7 +103,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 流量分析可以提供可操作的信息，帮助你审核组织的网络活动、保护应用程序和数据、优化工作负荷性能和保持符合性。
 
-![显示跨区域的流量的地图](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![展示了跨区域 2 流量的地图](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 相关链接：
 * [博客文章](https://aka.ms/trafficanalytics)、[文档](../network-watcher/traffic-analytics.md)、[常见问题解答](../network-watcher/traffic-analytics-faq.md)

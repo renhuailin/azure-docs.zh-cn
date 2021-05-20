@@ -1,15 +1,15 @@
 ---
 title: Azure HDInsight 中的 Phoenix 性能
-description: 优化 Azure HDInsight 群集 Apache Phoenix 性能的最佳做法
+description: 为 Azure HDInsight 群集优化 Apache Phoenix 性能的最佳做法
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
 ms.openlocfilehash: ffba3b986b35c375d0404d9d2bae5af79f93c54f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98944797"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix 性能最佳做法
@@ -24,7 +24,7 @@ Phoenix 表的架构设计包括主键设计、列系列设计、单个列的设
 
 ### <a name="primary-key-design"></a>主键设计
 
-在 Phoenix 中的表上定义的主键确定如何将数据存储在基础 HBase 表的行键中。 在 HBase 中，访问特定行的唯一方法就是使用行键。 此外，存储在 HBase 表中的数据已按行键排序。 Phoenix 通过将行中每个列的值与主键中定义的顺序连接来生成 rowkey 值。
+在 Phoenix 中的表上定义的主键确定如何将数据存储在基础 HBase 表的行键中。 在 HBase 中，访问特定行的唯一方法就是使用行键。 此外，存储在 HBase 表中的数据已按行键排序。 Phoenix 通过按主键中定义的顺序将行中每个列的值进行串联来生成行键值。
 
 例如，联系人表包含名字、姓氏、电话号码和地址，所有这些数据都包含在同一个列系列中。 可以基于不断递增的序列号定义主键：
 
@@ -49,7 +49,7 @@ Phoenix 使用此新主键生成的行键是：
 
 在上面的第一行中，行键的数据按如下方式表示：
 
-|rowkey|       key|   value|
+|rowkey|       key|   值|
 |------|--------------------|---|
 |  Dole-John-111|address |1111 San Gabriel Dr.|  
 |  Dole-John-111|phone |1-425-000-0002|  
@@ -69,8 +69,8 @@ Phoenix 使用此新主键生成的行键是：
 
 ### <a name="column-design"></a>列设计
 
-* 由于大型列的 I/O 开销较大，请将 VARCHAR 列保持在大约 1 MB 以下。 处理查询时，HBase 会将单元格作为一个整体具体化，然后将其发送到客户端。客户端会作为一个整体接收这些单元格，然后将其转交到应用程序代码。
-* 使用 protobuf、Avro、msgpack 或 BSON 等紧凑格式存储列值。 不建议使用 JSON，因为它比较庞大。
+* 由于大型列的 I/O 开销较大，请将 VARCHAR 列保持为大约 1 MB 以下。 处理查询时，HBase 会将单元格作为一个整体具体化，然后将其发送到客户端。客户端会作为一个整体接收这些单元格，然后将其转交到应用程序代码。
+* 使用 protobuf、Avro、msgpack 或 BSON 等紧凑格式存储列值。 不建议使用 JSON，因为它更大。
 * 在存储之前考虑压缩数据，以降低延迟和 I/O 开销。
 
 ### <a name="partition-data"></a>将数据分区
@@ -110,7 +110,7 @@ Phoenix 索引是一个 HBase 表，存储索引表中的部分或全部数据�
 
 ### <a name="use-covered-indexes"></a>使用涵盖索引
 
-涵盖索引是包含行中的数据以及已编制索引的值的索引。 查找所需的索引条目后，无需访问主表。
+涵盖索引是包含行中的数据以及已编制索引的值的索引。 找到所需的索引条目后，不需要访问主表。
 
 例如，在示例联系人表中，可以只是基于 socialSecurityNum 列创建辅助索引。 此辅助索引可以加速按 socialSecurityNum 值执行筛选的查询，但检索其他字段值需要针对主表执行另一次读取。
 
@@ -160,7 +160,7 @@ CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName
 
 举个例子，假设有一个名为 FLIGHTS 的表，其中存储了航班延迟信息。
 
-若要选择 airlineid 为的所有航班 `19805` ，其中 airlineid 是不在主键或任何索引中的字段：
+若要选择 airlineid 为 `19805` 的所有航班（其中 airlineid 是不在主键或任何索引中的字段）：
 
 ```sql
 select * from "FLIGHTS" where airlineid = '19805';
@@ -233,15 +233,15 @@ CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
 
 ### <a name="read-heavy-workloads"></a>读取密集型工作负荷
 
-对于读取繁重用例，请确保使用的是索引。 此外，为了节省读取时间开销，请考虑创建涵盖索引。
+对于读取密集型的用例，请确保使用索引。 此外，为了节省读取时间开销，请考虑创建涵盖索引。
 
 ### <a name="write-heavy-workloads"></a>写入密集型工作负荷
 
-对于主键单调递增的写入繁重的工作负荷，请创建 salt 存储桶，以帮助避免写入热点，因为需要进行额外的扫描，所以需要支付总体读取吞吐量。 此外，在使用 UPSERT 写入大量记录时，请关闭 autoCommit 并批处理记录。
+对于包含单调递增主键的写入密集型工作负荷，请创建盐桶来帮助避免产生写入热点，代价是：因需要执行更多扫描而导致总体读取吞吐量降低。 此外，在使用 UPSERT 写入大量记录时，请关闭 autoCommit 并批处理记录。
 
 ### <a name="bulk-deletes"></a>批量删除
 
-删除大型数据集时，在发出删除查询之前打开自动提交，使客户端无需记住所有已删除行的行键。 AutoCommit 会阻止客户端缓冲受 DELETE 影响的行，因此，Phoenix 可以直接在区域服务器上删除这些行，且无需将其返回到客户端。
+删除大型数据集时，请先打开 autoCommit，然后再发出 DELETE 查询，使客户端不需要记住所有已删除行的行键。 AutoCommit 会阻止客户端缓冲受 DELETE 影响的行，因此，Phoenix 可以直接在区域服务器上删除这些行，且无需将其返回到客户端。
 
 ### <a name="immutable-and-append-only"></a>不可变和仅限追加
 

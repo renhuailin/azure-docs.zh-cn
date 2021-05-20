@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
 ms.openlocfilehash: eff9103f476e6074ab46198ff8cc78588675569f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98020037"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>在门户中测试 Azure 流分析作业
@@ -115,14 +115,14 @@ Azure 流分析自动从流输入中提取事件。 可以针对默认示例运�
 
 ## <a name="troubleshooting"></a>疑难解答
 
-1.  如果出现此错误，则提取结果时出现网络连接问题。 请检查你的网络和防火墙设置。 "，请执行以下步骤：
+1.  如果遇到“提取结果时出现网络连接问题。 请检查你的网络和防火墙设置。”错误，请按照以下步骤操作：
 
   * 若要检查与服务的连接，请在浏览器中打开 [https://queryruntime.azurestreamanalytics.com/api/home/index](https://queryruntime.azurestreamanalytics.com/api/home/index)。 如果无法打开此链接，请更新防火墙设置。
   
 2. 如果遇到“请求大小过大。 请减小输入数据大小，然后重试。”错误，请执行以下步骤：
 
-  * 减小输入大小–使用较小的大小示例文件或较小的时间范围测试查询。
-  * 缩小查询大小–若要测试选定的查询，请选择部分查询，然后单击 " **测试选定的查询**"。
+  * 减小输入大小 - 使用更小的示例文件或更小的时间范围测试查询。
+  * 减小查询大小 - 若要测试选定的查询，请选择查询的一部分，然后单击“测试选定的查询”。
 
 
 ## <a name="next-steps"></a>后续步骤

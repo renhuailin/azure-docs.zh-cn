@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric 监视合作伙伴
 description: 了解如何使用合作伙伴监视解决方案来监视 Azure Service Fabric 应用程序、群集和基础结构。
-author: srrengar
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: srrengar
-ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 92ac0627f02ccefdd4c93aa51cac7c9dd7790460
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "75645712"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627721"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 监视合作伙伴
 

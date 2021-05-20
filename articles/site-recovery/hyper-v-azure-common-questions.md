@@ -4,10 +4,10 @@ description: 本文汇总了有关使用 Azure Site Recovery 站点设置本地 
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.openlocfilehash: 649bd69f14cdf8d81fe05d3a5f5cac3389419fc3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98879438"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
@@ -146,12 +146,12 @@ Site Recovery 通过公共终结点或使用 ExpressRoute Microsoft 对等互连
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>是否可以使用 ExpressRoute 复制到 Azure？
 
-可以使用 ExpressRoute 将 VM 复制到 Azure。 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户，并且需要为 Site Recovery 复制设置 [Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) 。 将 VM 故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#privatepeering)访问这些 VM。
+可以使用 ExpressRoute 将 VM 复制到 Azure。 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。需要设置 [Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)才能进行 Site Recovery 复制。 将 VM 故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#privatepeering)访问这些 VM。
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
 
-复制到 Azure 时，复制流量将到达 Azure 存储帐户的公共终结点。 因此，只能使用 ExpressRoute (Microsoft 对等互连) 在公共 internet 上进行复制，并且 VPN 不起作用。 
+复制到 Azure 时，复制流量将到达 Azure 存储帐户的公共终结点。 因此，只能使用 ExpressRoute（Microsoft 对等互连）通过公共 Internet 进行复制，VPN 不起作用。 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>复制的 VM 要满足哪些要求？
 
@@ -159,7 +159,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute Microsoft 对等互连
 
 ### <a name="why-is-an-additional-standard-storage-account-required-if-i-replicate-my-virtual-machine-disks-to-premium-storage"></a>为什么将虚拟机磁盘复制到高级存储需要使用额外的标准存储帐户？
 
-将本地虚拟机/物理服务器复制到高级存储时，位于受保护计算机的磁盘上的所有数据都将复制到高级存储帐户。 需要额外的标准存储帐户来存储复制日志。 复制磁盘数据的初始阶段完成之后，将持续跟踪对本地磁盘数据的所有更改，并将其作为复制日志存储到这一额外的标准存储帐户中。
+将本地虚拟机/物理服务器复制到高级存储时，驻留在受保护计算机磁盘上的所有数据都将复制到高级存储帐户。 需要额外的标准存储帐户来存储复制日志。 复制磁盘数据的初始阶段完成之后，将持续跟踪对本地磁盘数据的所有更改，并将其作为复制日志存储到这一额外的标准存储帐户中。
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
 

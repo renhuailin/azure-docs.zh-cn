@@ -15,10 +15,10 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: ba639bc023affc7c2e6b2b675cdedc1229636893
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99581034"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>适用于 Android 的 ADAL 到 MSAL 迁移指南
@@ -32,7 +32,7 @@ ADAL 适用于 Azure Active Directory v1.0 终结点。 Microsoft 身份验证�
 支持：
   - 组织标识 (Azure Active Directory)
   - 非组织标识，如 Outlook.com、Xbox Live 等
-  -  (Azure AD B2C 仅) 与 Google、Facebook、Twitter 和 Amazon 联合登录
+  - （仅 Azure AD B2C）使用 Google、Facebook、Twitter 和 Amazon 的联合登录
 
 - 与以下协议的标准兼容：
   - OAuth v2.0
@@ -71,7 +71,7 @@ MSAL 公共 API 引入了重要的更改，其中包括：
 首次使用 ADAL 和 Azure AD v1 终结点时，就会授予用户对其拥有的资源的许可。 通过 MSAL 和 Microsoft 标识平台时，可以增量请求许可。 对于被用户视为高特权的权限，或者对为何需要某个权限提供明确的解释时，增量许可非常有用。 在 ADAL 中，这些权限可能导致用户放弃应用登录。
 
 > [!TIP]
-> 使用增量式同意向用户提供有关应用需要权限的原因的其他上下文。
+> 使用增量许可来向用户提供关于为何你的应用需要权限的额外的上下文。
 
 ### <a name="admin-consent"></a>管理员同意
 

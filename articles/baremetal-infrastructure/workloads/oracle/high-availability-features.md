@@ -4,12 +4,12 @@ description: 了解 BareMetal 中适用于 Oracle 数据库的功能。
 ms.topic: overview
 ms.subservice: workloads
 ms.date: 04/16/2021
-ms.openlocfilehash: b27dc4b857d553be791528cbd91aee70b2294a92
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 91ec416c6f7c98100bf8ee00af2c060219e54693
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600210"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109518335"
 ---
 # <a name="high-availability-features-for-oracle-on-azure-baremetal"></a>Azure BareMetal 上的 Oracle 的高可用性功能
 
@@ -59,7 +59,7 @@ Oracle Database 服务的另一个关键功能是仅根据服务角色启动服�
 
 BareMetal 中使用的 NetApp 文件存储解决方案可用于创建卷的快照。 快照可让你快速将文件系统还原到特定时间点。 快照技术支持恢复时间目标 (RTO) 时间（还原数据库备份所需的一小部分时间）。
 
-可通过 Azure NetApp SnapCenter 获得 Oracle 数据库的快照功能。 SnapCenter 启用快照用于备份，SnapVault 提供脱机保管库，而 Snap Clone 支持自助式还原和其他操作。
+可通过 Azure NetApp SnapCenter 获得 Oracle 数据库的快照功能。 SnapCenter 启用快照用于备份，SnapVault 提供脱机保管库，而 Snap Clone 支持自助式还原和其他操作。 有关详细信息，请查看 [BareMetal 基础结构上 Oracle 的 SnapCenter 集成](netapp-snapcenter-integration-oracle-baremetal.md)。
 
 ## <a name="recovery-manager"></a>恢复管理器
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: d4353e6be313d61716933879efa930e22472781b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99493934"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions
@@ -53,11 +53,11 @@ Azure Functions 扩展提供以下优势：
 
 ### <a name="run-local-requirements"></a>运行本地要求
 
-仅在 [本地运行和调试函数](#run-functions-locally)时需要这些先决条件。 它们不需要创建项目或将项目发布到 Azure Functions。
+仅在本地运行和调试函数时需要这些[先决条件](#run-functions-locally)。 不需要它们创建项目或将项目发布到 Azure Functions。
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-+ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)版本2.x 或更高版本。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 版本 2.x 或更高版本。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
 
 + Visual Studio Code 的 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。 
 
@@ -65,25 +65,25 @@ Azure Functions 扩展提供以下优势：
 
 # <a name="java"></a>[Java](#tab/java)
 
-+ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)版本2.x 或更高版本。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 版本 2.x 或更高版本。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
 
-+ [Java 扩展调试器](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)。
++ [适用于 Java 的调试器扩展](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)。
 
-+ 建议使用[Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) 。 有关其他受支持的版本，请参阅 [Java 版本](functions-reference-java.md#java-versions)。
++ [Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)（建议）。 有关其他受支持的版本，请参阅 [Java 版本](functions-reference-java.md#java-versions)。
 
 + [Maven 3 或更高版本](https://maven.apache.org/)
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-+ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)版本2.x 或更高版本。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 版本 2.x 或更高版本。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
 
 + [Node.js](https://nodejs.org/)，活动 LTS 和维护 LTS 版本（建议使用 10.14.1）。 可以使用 `node --version` 命令检查你的版本。 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-+ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)版本2.x 或更高版本。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 版本 2.x 或更高版本。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
 
-+ 建议使用[PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows) 。 有关版本信息，请参阅 [PowerShell 版本](functions-reference-powershell.md#powershell-versions)。
++ [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)（建议）。 有关版本信息，请参阅 [PowerShell 版本](functions-reference-powershell.md#powershell-versions)。
 
 + [.NET Core 3.1 运行时](https://www.microsoft.com/net/download)和 [.NET Core 2.1 运行时](https://dotnet.microsoft.com/download/dotnet-core/2.1)  
 
@@ -91,9 +91,9 @@ Azure Functions 扩展提供以下优势：
 
 # <a name="python"></a>[Python](#tab/python)
 
-+ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)版本2.x 或更高版本。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 版本 2.x 或更高版本。 在本地启动项目时，系统会自动下载并安装 Core Tools 包。 Core Tools 包含整个 Azure Functions 运行时，因此下载和安装可能需要一段时间。
 
-+ [Python](https://www.python.org/downloads/)3.x。 有关版本信息，请参阅使用 Azure Functions 运行时的 [Python 版本](functions-reference-python.md#python-version) 。
++ [Python 3.x](https://www.python.org/downloads/)。 有关版本信息，请参阅 Azure Functions 运行时使用的 [Python 版本](functions-reference-python.md#python-version)。
 
 + 适用于 Visual Studio Code 的 [Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。
 
@@ -142,9 +142,9 @@ Azure Functions 扩展提供以下优势：
 
 # <a name="java"></a>[Java](#tab/java)
 
-+ 根文件夹中的一个 pom.xml 文件，用于定义项目和部署参数，包括项目依赖项和 [Java 版本](functions-reference-java.md#java-versions)。 pom.xml 还包含有关部署期间创建的 Azure 资源的信息。   
++ 根文件夹中定义项目和部署参数的 pom.xml 文件，包括项目依赖项和 [Java 版本](functions-reference-java.md#java-versions)。 pom.xml 还包含有关在部署期间创建的 Azure 资源的信息。   
 
-+ Src 路径中的一个 [函数 .java 文件](functions-reference-java.md#triggers-and-annotations) ，用于实现函数。
++ src 路径中实现函数的 [Functions.java](functions-reference-java.md#triggers-and-annotations) 文件。
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
@@ -154,17 +154,17 @@ Azure Functions 扩展提供以下优势：
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-* 一个 HttpExample 文件夹，其中包含 [ 定义文件function.js](functions-reference-powershell.md#folder-structure) 和 run.ps1 文件，其中包含函数代码。
+* HttpExample 文件夹，包含 [function.json 定义文件](functions-reference-powershell.md#folder-structure)和 run.ps1 文件（包含函数代码）。
  
 # <a name="python"></a>[Python](#tab/python)
     
-* 项目级 requirements.txt 文件，其中列出了函数所需的包。
+* 项目级别 requirements.txt 文件，其中列出了 Functions 所需的包。
     
-* 一个 HttpExample 文件夹，其中包含[定义文件function.js](functions-reference-python.md#folder-structure)和 \_ \_ \_ \_ py 文件，其中包含函数代码。
+* HttpExample 文件夹，其中包含 [function.json 定义文件](functions-reference-python.md#folder-structure)和 \_\_init\_\_.py 文件（包含函数代码）。
 
 ---
 
-此时，可以 [向函数添加输入和输出绑定](#add-input-and-output-bindings) 。 还可以[将新函数添加到项目](#add-a-function-to-your-project)。
+此时，可以[将输入和输出绑定添加到函数](#add-input-and-output-bindings)。 还可以[将新函数添加到项目](#add-a-function-to-your-project)。
 
 ## <a name="install-binding-extensions"></a>安装绑定扩展
 
@@ -208,7 +208,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 # <a name="java"></a>[Java](#tab/java)
 
-新的 Java ( .java) 文件添加到项目。
+新的 Java (.java) 文件将被添加到项目。
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
@@ -216,17 +216,17 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-此时会在项目中创建一个新文件夹。 此文件夹包含文件的新 function.js和新的 PowerShell 代码文件。
+此时会在项目中创建一个新文件夹。 该文件夹包含新的 function.json 文件和新的 PowerShell 代码文件。
 
 # <a name="python"></a>[Python](#tab/python)
 
-此时会在项目中创建一个新文件夹。 文件夹包含新的 function.js文件和新的 Python 代码文件。
+此时会在项目中创建一个新文件夹。 此文件夹包含新的 function.json 文件和新的 Python 代码文件。
 
 ---
 
 ## <a name="connect-to-services"></a><a name="add-input-and-output-bindings"></a>连接到服务
 
-可以通过添加输入和输出绑定将函数连接到其他 Azure 服务。 绑定将函数连接到其他服务，无需编写连接代码。 添加绑定的过程取决于项目的语言。 有关绑定的详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
+可以添加输入和输出绑定将函数连接到其他 Azure 服务。 绑定将函数连接到其他服务，而无需编写连接代码。 添加绑定的过程取决于项目的语言。 有关绑定的详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
 
 以下示例连接到名为 `outqueue` 的存储队列，其中，存储帐户的连接字符串已在 local.settings.json 中的 `MyStorageConnection` 应用程序设置内进行设置。
 
@@ -236,13 +236,13 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="17":::
 
-`msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 下面的代码将消息添加到集合中：
+`msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 以下代码将消息添加到集合：
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="30-31":::
 
- 当函数完成时，消息将发送到队列。
+ 函数完成后，这些消息被发送到队列。
 
-若要了解详细信息，请参阅 [队列存储输出绑定参考文章](functions-bindings-storage-queue-output.md?tabs=csharp) 文档。 若要了解有关可添加到函数的绑定的详细信息，请参阅 [在 Azure Functions 中将绑定添加到现有函数](add-bindings-existing-function.md?tabs=csharp)。 
+有关详细信息，请参阅[队列存储输出绑定参考文章](functions-bindings-storage-queue-output.md?tabs=csharp)文档。 若要进一步了解有关可添加到函数的绑定的常规信息，请参阅[向 Azure Functions 中的现有函数添加绑定](add-bindings-existing-function.md?tabs=csharp)。 
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -250,13 +250,13 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 :::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java" range="20-21":::
 
-`msg`参数是一个 `OutputBinding<T>` 类型，其中是 `T` 一个在函数完成时写入到输出绑定的字符串。 下面的代码在输出绑定中设置消息：
+`msg` 参数是 `OutputBinding<T>` 类型，其中 `T` 是函数完成时写入到输出绑定的字符串。 可使用下面的代码在输出绑定中设置消息：
 
 :::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java" range="33-34":::
 
-当函数完成时，此消息将发送到队列。
+函数完成后，此消息将被发送到队列。
 
-若要了解详细信息，请参阅 [队列存储输出绑定参考文章](functions-bindings-storage-queue-output.md?tabs=java) 文档。 若要了解有关可添加到函数的绑定的详细信息，请参阅 [在 Azure Functions 中将绑定添加到现有函数](add-bindings-existing-function.md?tabs=java)。 
+有关详细信息，请参阅[队列存储输出绑定参考文章](functions-bindings-storage-queue-output.md?tabs=java)文档。 若要进一步了解有关可添加到函数的绑定的常规信息，请参阅[向 Azure Functions 中的现有函数添加绑定](add-bindings-existing-function.md?tabs=java)。 
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
@@ -266,9 +266,9 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 :::code language="javascript" range="5-7" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/index.js":::
 
-当函数完成时，此消息将发送到队列。
+函数完成后，此消息将被发送到队列。
 
-若要了解详细信息，请参阅 [队列存储输出绑定参考文章](functions-bindings-storage-queue-output.md?tabs=javascript) 文档。 若要了解有关可添加到函数的绑定的详细信息，请参阅 [在 Azure Functions 中将绑定添加到现有函数](add-bindings-existing-function.md?tabs=javascript)。 
+有关详细信息，请参阅[队列存储输出绑定参考文章](functions-bindings-storage-queue-output.md?tabs=javascript)文档。 若要进一步了解有关可添加到函数的绑定的常规信息，请参阅[向 Azure Functions 中的现有函数添加绑定](add-bindings-existing-function.md?tabs=javascript)。 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -276,15 +276,15 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 :::code language="powershell" range="18-19" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/run.ps1":::
 
-当函数完成时，此消息将发送到队列。
+函数完成后，此消息将被发送到队列。
 
-若要了解详细信息，请参阅 [队列存储输出绑定参考文章](functions-bindings-storage-queue-output.md?tabs=powershell) 文档。 若要了解有关可添加到函数的绑定的详细信息，请参阅 [在 Azure Functions 中将绑定添加到现有函数](add-bindings-existing-function.md?tabs=powershell)。 
+有关详细信息，请参阅[队列存储输出绑定参考文章](functions-bindings-storage-queue-output.md?tabs=powershell)文档。 若要进一步了解有关可添加到函数的绑定的常规信息，请参阅[向 Azure Functions 中的现有函数添加绑定](add-bindings-existing-function.md?tabs=powershell)。 
 
 # <a name="python"></a>[Python](#tab/python)
 
 [!INCLUDE [functions-add-output-binding-vs-code](../../includes/functions-add-output-binding-vs-code.md)]
 
-更新 `Main` 定义以添加 output 参数， `msg: func.Out[func.QueueMessage]` 使定义类似于以下示例：
+更新 `Main` 定义来添加输出参数 `msg: func.Out[func.QueueMessage]`，以便定义如下面的示例所示：
 
 :::code language="python" range="6" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
 
@@ -292,9 +292,9 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 :::code language="python" range="18" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
 
-当函数完成时，此消息将发送到队列。
+函数完成后，此消息将被发送到队列。
 
-若要了解详细信息，请参阅 [队列存储输出绑定参考文章](functions-bindings-storage-queue-output.md?tabs=python) 文档。 若要了解有关可添加到函数的绑定的详细信息，请参阅 [在 Azure Functions 中将绑定添加到现有函数](add-bindings-existing-function.md?tabs=python)。 
+有关详细信息，请参阅[队列存储输出绑定参考文章](functions-bindings-storage-queue-output.md?tabs=python)文档。 若要进一步了解有关可添加到函数的绑定的常规信息，请参阅[向 Azure Functions 中的现有函数添加绑定](add-bindings-existing-function.md?tabs=python)。 
 
 ---
 
@@ -304,7 +304,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 使用 Visual Studio Code 可以将 Functions 项目直接发布到 Azure。 在此过程中，将在 Azure 订阅中创建函数应用和相关的资源。 函数应用为函数提供了执行上下文。 该项目将打包并部署到 Azure 订阅中的新函数应用。
 
-当你从 Visual Studio Code 发布到 Azure 中的新函数应用时，可以选择快速函数应用使用默认值或高级路径创建路径，这样你可以更好地控制创建的远程资源。 
+从 Visual Studio Code 发布到 Azure 中的新函数应用时，可以选择使用默认路径快速创建函数应用路径，也可使用对所创建的远程资源具有更多控制权的高级路径来创建。 
 
 从 Visual Studio Code 发布时，可以利用 [Zip 部署](functions-deployment-technologies.md#zip-deploy)技术。 
 
@@ -318,9 +318,9 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 以下步骤使用高级创建选项将项目发布到创建的新函数应用：
 
-1. 在命令托盘中，输入 **Azure Functions：部署到 function app**。
+1. 在命令面板中，输入“Azure Functions: 部署到函数应用”。
 
-1. 如果你未登录，系统会提示“登录到 Azure”。 你还可以 **创建免费的 Azure 帐户**。 从浏览器登录后，返回到 Visual Studio Code。
+1. 如果你未登录，系统会提示“登录到 Azure”。 还可以 **创建免费 Azure 帐户**。 从浏览器登录后，返回到 Visual Studio Code。
 
 1. 如果你有多个订阅，请为函数应用 **选择一个订阅**，然后选择“+ 在 Azure 中创建新的函数应用...”**_“高级”_**。 使用此“高级”选项可以更好地控制在 Azure 中创建的资源。 
 
@@ -338,9 +338,9 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
     创建函数应用并应用了部署包之后，会显示一个通知。 在此通知中选择“查看输出”以查看创建和部署结果，其中包括你创建的 Azure 资源。
 
-### <a name="get-the-url-of-an-http-triggered-function-in-azure"></a><a name="get-the-url-of-the-deployed-function"></a>获取 Azure 中的 HTTP 触发函数的 URL
+### <a name="get-the-url-of-an-http-triggered-function-in-azure"></a><a name="get-the-url-of-the-deployed-function"></a>在 Azure 中获取 HTTP 触发的函数的 URL
 
-若要从客户端调用 HTTP 触发的函数，需要将函数的 URL 部署到 function app。 此 URL 包含全部所需的函数密钥。 可以使用扩展获取已部署的函数的这些 URL。 如果只是想要在 Azure 中运行远程函数，请使用扩展的 [Execute 函数 now](#run-functions-in-azure) 功能。
+若要从客户端调用 HTTP 触发的函数，需要部署到函数应用的函数的 URL。 此 URL 包含全部所需的函数密钥。 可以使用扩展获取已部署的函数的这些 URL。 如果只是想在 Azure 中运行远程函数，可[使用立即执行函数](#run-functions-in-azure)扩展功能。
 
 1. 按 F1 打开命令面板，然后搜索并运行命令“Azure Functions:**Copy Function URL**。
 
@@ -348,11 +348,11 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 函数 URL 将复制到剪贴板，同时，将使用 `code` 查询参数传递全部所需的密钥。 使用 HTTP 工具提交 POST 请求，或使用浏览器对远程函数发出 GET 请求。  
 
-获取 Azure 中的函数的 URL 时，该扩展使用 Azure 帐户自动检索启动该函数所需的密钥。 [了解有关函数访问密钥的详细信息](security-concepts.md#function-access-keys)。 启动非 HTTP 触发的函数需要使用管理密钥。
+在 Azure 中获取函数的 URL 时，该扩展使用 Azure 帐户自动检索启动该函数所需的密钥。 [详细了解函数访问密钥](security-concepts.md#function-access-keys)。 启动非 HTTP 触发的函数需要使用管理密钥。
 
 ## <a name="republish-project-files"></a>重新发布项目文件
 
-设置 [连续部署](functions-continuous-deployment.md)时，会在更新连接的源位置中的源文件时更新 Azure 中的函数应用。 建议持续部署，但也可以从 Visual Studio Code 重新发布项目文件更新。
+当你设置[持续部署](functions-continuous-deployment.md)时，如果你在连接的源位置更新源文件，则会更新 Azure 中的函数应用。 建议持续部署，但你也可以从 Visual Studio Code 重新发布项目文件更新。
 
 > [!IMPORTANT]
 > 发布到现有函数应用将覆盖该应用在 Azure 中的内容。
@@ -361,29 +361,29 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ## <a name="run-functions"></a>运行函数
 
-Azure Functions 扩展使你能够在本地开发计算机或 Azure 订阅中的项目中运行各个函数。 
+通过 Azure Functions 扩展，你可以在本地开发计算机上的项目或 Azure 订阅中运行单个函数。 
 
-对于 HTTP 触发器函数，该扩展调用 HTTP 终结点。 对于其他类型的触发器，它会调用管理员 Api 来启动该函数。 发送到函数的请求的消息正文取决于触发器的类型。 如果触发器需要测试数据，则系统会提示以特定的 JSON 格式输入数据。
+对于 HTTP 触发器函数，该扩展会调用 HTTP 终结点。 对于其他类型的触发器，它会调用管理员 API 来启动函数。 发送到函数的请求的消息正文取决于触发器的类型。 当触发器需要测试数据时，系统会提示你以特定的 JSON 格式输入数据。
 
 ### <a name="run-functions-in-azure"></a>在 Azure 中运行函数
 
-从 Visual Studio Code 在 Azure 中执行函数。 
+在 Azure 中从 Visual Studio Code 执行函数。 
 
-1. 在命令托盘中，输入 **Azure Functions：立即执行函数** ，然后选择你的 Azure 订阅。 
+1. 在命令面板中，输入“Azure Functions: 立即执行函数”，然后选择 Azure 订阅。 
 
-1. 从列表中选择 "Azure 中的函数应用"。 如果看不到 function app，请确保已登录到正确的订阅。 
+1. 在 Azure 中从列表选择函数应用。 如果看不到函数应用，请确保你已登录到正确的订阅。 
 
-1. 从列表中选择要运行的函数，然后在 " **输入请求正文**" 中键入请求的消息正文。 按 Enter 将此请求消息发送到函数。 **输入请求正文** 中的默认文本应指示正文的格式。 如果函数应用没有函数，则会出现一个通知错误，其中包含此错误。 
+1. 选择要从列表中运行的函数，并在“输入请求正文”中键入请求的消息正文。 按 Enter 将此请求消息发送给函数。 “输入请求正文”中的默认文本应指示正文的格式。 如果你的函数应用没有函数，则会显示包含此错误的通知错误。 
 
-1. 当函数在 Azure 中执行并返回响应时，将在 Visual Studio Code 中引发通知。
+1. 当函数在 Azure 中执行并返回响应时，Visual Studio Code 中将引发通知。
  
-你还可以从 **azure：** function 区域运行函数，方法是右键单击 (按 Ctrl 并单击 Mac) 你要从 Azure 订阅中的 function app 运行的函数，然后选择 " **立即执行函数 ...**"。
+你也可以通过右键单击（在 Mac 上为按住 Ctrl 单击）想要从 Azure 订阅的函数应用中运行的函数，并选择“立即执行函数...”来运行函数 。
 
-在 Azure 中运行函数时，该扩展使用 Azure 帐户自动检索启动该函数所需的密钥。 [了解有关函数访问密钥的详细信息](security-concepts.md#function-access-keys)。 启动非 HTTP 触发的函数需要使用管理密钥。
+在 Azure 中运行函数时，扩展使用 Azure 帐户自动检索启动该函数所需的密钥。 [详细了解函数访问密钥](security-concepts.md#function-access-keys)。 启动非 HTTP 触发的函数需要使用管理密钥。
 
 ### <a name="run-functions-locally"></a>在本地运行函数
 
-本地运行时是在 Azure 中托管函数应用的同一个运行时。 将从 [local.settings.json 文件](#local-settings-file)读取本地设置。 若要在本地运行函数项目，必须满足 [其他要求](#run-local-requirements)。
+本地运行时是在 Azure 中托管函数应用的同一个运行时。 将从 [local.settings.json 文件](#local-settings-file)读取本地设置。 若要在本地运行 Functions 项目，必须满足以下[附加要求](#run-local-requirements)。
 
 #### <a name="configure-the-project-to-run-locally"></a>将项目配置为在本地运行
 
@@ -401,17 +401,17 @@ Azure Functions 扩展使你能够在本地开发计算机或 Azure 订阅中的
 
 有关详细信息，请参阅[本地设置文件](#local-settings-file)。
 
-#### <a name="debug-functions-locally"></a><a name="debugging-functions-locally"></a>本地调试函数  
+#### <a name="debug-functions-locally"></a><a name="debugging-functions-locally"></a>在本地调试函数  
 
-若要调试函数，请按 F5。 如果你尚未下载 [Core Tools][Azure Functions Core Tools]，系统会提示你下载。 安装后运行 Core Tools 时，输出将显示在终端中。 这与 `func host start` 从终端运行 "核心工具" 命令相同，但具有额外的生成任务和附加的调试器。  
+若要调试函数，请按 F5。 如果你尚未下载 [Core Tools][Azure Functions Core Tools]，系统会提示你下载。 安装后运行 Core Tools 时，输出将显示在终端中。 这与从终端运行 `func host start` Core Tools 命令的结果相同，不过，此处使用了其他生成任务和附加的调试器。  
 
-项目运行时，可以使用扩展的 **Execute 函数 Now ...** 功能来触发函数，就像将项目部署到 Azure 时一样。 在调试模式下运行项目时，断点会按预期的方式命中 Visual Studio Code。 
+当项目正在运行时，你可以使用“立即执行函数...”扩展功能，以触发函数，就像将项目部署到 Azure 时一样。 在调试模式下运行项目时，将按预期命中 Visual Studio Code 中的断点。 
 
-1. 在命令托盘中，输入 **Azure Functions：立即执行函数** ，然后选择 " **本地项目**"。 
+1. 在命令面板中，输入“Azure Functions: 立即执行函数”，然后选择“本地项目” 。 
 
-1. 选择要在项目中运行的函数，然后在 " **输入请求正文**" 中键入请求的消息正文。 按 Enter 将此请求消息发送到函数。 **输入请求正文** 中的默认文本应指示正文的格式。 如果函数应用没有函数，则会出现一个通知错误，其中包含此错误。 
+1. 选择要在项目中运行的函数，并在“输入请求正文”中键入请求的消息正文。 按 Enter 将此请求消息发送给函数。 “输入请求正文”中的默认文本应指示正文的格式。 如果你的函数应用没有函数，则会显示包含此错误的通知错误。 
 
-1. 当函数本地运行以及收到响应后，会在 Visual Studio Code 中引发通知。 有关函数执行的信息显示在 " **终端** 面板" 中。
+1. 当函数在本地运行并在收到响应后，Visual Studio Code 中将引发通知。 函数执行的相关信息将显示在“终端”面板中。
 
 在本地运行函数不需要使用密钥。 
 
@@ -432,7 +432,7 @@ Azure Functions 扩展使你能够在本地开发计算机或 Azure 订阅中的
 
 ## <a name="application-settings-in-azure"></a>Azure 中的应用程序设置
 
-项目中 local.settings.json 文件内的设置应与 Azure 中函数应用内的应用程序设置相同。 添加到 local.settings.js上的任何设置还必须添加到 Azure 中的函数应用。 发布项目时，不会自动上传这些设置。 同样，通过[门户](functions-how-to-use-azure-function-app-settings.md#settings)在函数应用中创建的任何设置必须下载到本地项目。
+项目中 local.settings.json 文件内的设置应与 Azure 中函数应用内的应用程序设置相同。 还必须将添加到 local.settings.json 的任何设置添加到 Azure 函数应用中。 发布项目时，不会自动上传这些设置。 同样，通过[门户](functions-how-to-use-azure-function-app-settings.md#settings)在函数应用中创建的任何设置必须下载到本地项目。
 
 ### <a name="publish-application-settings"></a>发布应用程序设置
 
@@ -508,11 +508,11 @@ Azure Functions 扩展在区域提供一个有用的图形界面，用于与 Azu
 |**删除函数**  | 从 Azure 中的函数应用内删除现有的函数。 由于此删除操作不会影响本地项目，因此请考虑在本地删除函数，然后[重新发布项目](#republish-project-files)。 |
 | **删除代理** | 从 Azure 中的函数应用内删除 Azure Functions 代理。 有关代理的详细信息，请参阅[使用 Azure Functions 代理](functions-proxies.md)。 |
 | **删除设置** | 删除 Azure 中的函数应用设置。 此操作不影响 local.settings.json 文件中的设置。 |
-| **从存储库断开连接**  | 删除 Azure 中的函数应用与源代码管理存储库之间的 [连续部署](functions-continuous-deployment.md) 连接。 |
+| **从存储库断开连接**  | 删除 Azure 中的函数应用与源代码管理存储库之间的[持续部署](functions-continuous-deployment.md)连接。 |
 | **下载远程设置** | 将 Azure 中所选函数应用的设置下载到 local.settings.json 文件中。 如果本地文件已加密，则会将其解密、更新，然后再次加密。 如果两个位置中的设置使用了有冲突的值，系统会提示你选择如何继续。 在运行此命令之前，请确保已保存对 local.settings.json 文件所做的更改。 |
 | **编辑设置** | 更改 Azure 中现有函数应用设置的值。 此命令不影响 local.settings.json 文件中的设置。  |
 | **加密设置** | 加密[本地设置](#local-settings-file)中 `Values` 数组内的单个项。 在此文件中，`IsEncrypted` 也设置为 `true`，指定本地运行时在使用设置之前先将其解密。 加密本地设置可以减少泄露重要信息的风险。 在 Azure 中，应用程序设置始终以加密的形式进行存储。 |
-| **立即执行函数** | 使用管理 Api 手动启动函数。 此命令用于在调试期间和在 Azure 中运行的函数进行本地测试。 在 Azure 中触发函数时，扩展会首先自动获取管理密钥，该密钥用于调用在 Azure 中启动函数的远程管理 Api。 发送到 API 的消息的正文取决于触发器的类型。 计时器触发器不需要传递任何数据。 |
+| **立即执行函数** | 使用管理员 API 手动启动函数。 此命令用于在调试过程中和针对 Azure 中运行的函数的本地测试。 在 Azure 中触发函数时，扩展首先会自动获得管理密钥，此密钥用于调用在 Azure 中启动函数的远程管理员 API。 发送到 API 的消息正文取决于触发器的类型。 计时器触发器不需要传递任何数据。 |
 | **初始化项目以便与 VS Code 配合使用** | 将所需的 Visual Studio Code 项目文件添加到现有的 Functions 项目。 运行此命令可以使用 Core Tools 处理创建的项目。 |
 | **安装或更新 Azure Functions Core Tools** | 安装或更新用于在本地运行函数的 [Azure Functions Core Tools]。 |
 | **重新部署**  | 用于将项目文件从连接的 Git 存储库重新部署到 Azure 中的特定部署。 若要从 Visual Studio Code 重新发布本地更新，请[重新发布项目](#republish-project-files)。 |

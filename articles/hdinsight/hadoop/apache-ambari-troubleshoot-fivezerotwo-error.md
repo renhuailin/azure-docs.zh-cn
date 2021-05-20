@@ -1,23 +1,23 @@
 ---
 title: Azure HDInsight 中的 Apache Ambari UI 502 错误
-description: 尝试访问 Azure HDInsight 群集时，出现 Apache Ambari UI 502 错误
+description: 尝试访问 Azure HDInsight 群集时出现 Apache Ambari UI 502 错误
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/05/2019
 ms.openlocfilehash: 750232b19bd5ef0674a9df79fdf3972a679eda7d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946786"
 ---
-# <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>方案：Azure HDInsight 中的 Apache Ambari UI 502 错误
+# <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>场景：Azure HDInsight 中的 Apache Ambari UI 502 错误
 
 本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 
-尝试访问 HDInsight 群集的 Apache Ambari UI 时收到如下所示的消息：“502 - Web 服务器在充当网关或代理服务器时收到了无效响应。”
+在尝试访问 HDInsight 群集的 Apache Ambari UI 时，收到如下类似消息：“502 - Web 服务器在充当网关或代理服务器时收到了无效响应”。
 
 ## <a name="cause"></a>原因
 

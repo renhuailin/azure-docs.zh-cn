@@ -1,25 +1,26 @@
 ---
-title: Azure 云服务 (经典) NetworkConfiguration 架构 |Microsoft Docs
+title: Azure 云服务（经典）NetworkConfiguration 架构 | Microsoft Docs
 description: 了解服务配置文件的 NetworkConfiguration 元素的子元素，该元素指定虚拟网络和 DNS 值。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 '---thor': tagore
-ms.openlocfilehash: acf4c050ade21a6e5fc51ee6ace512eff00360ab
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: e3e9d5ebc7e4e2aa1119f4b840aa1d8b94d93aa4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743451"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935118"
 ---
-# <a name="azure-cloud-services-classic-config-networkconfiguration-schema"></a>Azure 云服务 (经典) Config NetworkConfiguration 架构
+# <a name="azure-cloud-services-classic-config-networkconfiguration-schema"></a>Azure 云服务（经典）的配置 NetworkConfiguration 架构
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 服务配置文件的 `NetworkConfiguration` 元素指定虚拟网络和 DNS 值。 对于云服务，这些设置是可选的。
 

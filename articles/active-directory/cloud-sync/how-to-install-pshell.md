@@ -12,14 +12,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c20cfb96b5cd6e1d05e332fa7157fe6e0cde8656
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98613155"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent-using-powershell-cmdlets"></a>使用 powershell cmdlet 安装 Azure AD Connect 预配代理 
-以下文档将指导你介绍如何使用 PowerShell cmdlet 安装 Azure AD Connect 预配代理。
+以下文档将介绍和指导如何使用 PowerShell cmdlet 安装 Azure AD Connect 预配代理。
  
 
 ## <a name="prerequisite"></a>先决条件： 
@@ -28,21 +28,21 @@ ms.locfileid: "98613155"
 >[!IMPORTANT]
 >以下安装说明假定已满足所有[先决条件](how-to-prerequisites.md)。
 >
-> Windows server 需要启用 TLS 1.2，然后才能使用 powershell cmdlet 安装 Azure AD Connect 预配代理。 若要启用 TLS 1.2，你可以使用 [此处](how-to-prerequisites.md#tls-requirements)所述的步骤。
+> Windows 服务器需要启用 TLS 1.2，然后才能使用 powershell cmdlet 安装 Azure AD Connect 预配代理。 若要启用 TLS 1.2，可以使用[此处](how-to-prerequisites.md#tls-requirements)所述的步骤。
 
  
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent-using-powershell-cmdlets"></a>使用 powershell cmdlet 安装 Azure AD Connect 预配代理 
 
 
- 1. 登录到 Azure 门户，然后 **Azure Active Directory**"。
- 2. 在左侧菜单中，选择 " **Azure AD Connect**"。
+ 1. 登录到 Azure 门户，然后转到“Azure Active Directory”。
+ 2. 在左侧菜单中，选择“Azure AD Connect”。
  3. 选择“管理预配(预览版)” > “查看所有代理”。
  4. 将 Azure AD Connect 预配代理从 Azure 门户下载到本地。  
 
    ![下载本地代理](media/how-to-install/install-9.png)</br>
- 5. 对于这些说明，代理已下载到以下文件夹： "C:\ProvisioningSetup" 文件夹。 
- 6. 在静默模式下安装 ProvisioningAgent
+ 5. 出于这些说明的目的，该代理已下载到以下文件夹：“C:\ProvisioningSetup”文件夹。 
+ 6. 在静默模式下安装预配代理
 
    ```
    $installerProcess = Start-Process c:\temp\AADConnectProvisioningAgent.Installer.exe /quiet -NoNewWindow -PassThru 
@@ -61,7 +61,7 @@ ms.locfileid: "98613155"
    $globalAdminCreds = New-Object System.Management.Automation.PSCredential -ArgumentList ("GlobalAdmin@contoso.onmicrosoft.com", $globalAdminPassword) 
    ```
 
-   Connect-AADCloudSyncAzureAD-Credential $globalAdminCreds 
+   Connect-AADCloudSyncAzureAD -Credential $globalAdminCreds 
 
  9. 添加 gMSA 帐户，提供域管理员的凭据以创建默认的 gMSA 帐户 
  
@@ -72,7 +72,7 @@ ms.locfileid: "98613155"
 
    Add-AADCloudSyncGMSA -Credential $domainAdminCreds 
    ```
- 10. 或使用下面的 cmdlet 来提供预先创建的 gMSA 帐户 
+ 10. 或如下使用上述 cmdlet 来提供预创建的 gMSA 帐户 
 
  
    ```
@@ -87,7 +87,7 @@ ms.locfileid: "98613155"
 
    Add-AADCloudSyncADDomain -DomainName contoso.com -Credential $contosoDomainAdminCreds 
    ```
- 12. 或使用上述 cmdlet 来配置首选域控制器 
+ 12. 或如下使用上述 cmdlet 来配置首选域控制器 
 
    ```
    $preferredDCs = @("PreferredDC1", "PreferredDC2", "PreferredDC3") 
@@ -99,10 +99,10 @@ ms.locfileid: "98613155"
    ```
    Restart-Service -Name AADConnectProvisioningAgent  
    ```
- 15.  请通过 azure 门户创建云同步配置。
+ 15.  转到 Azure 门户创建云同步配置。
 
-## <a name="provisioning-agent-gmsa-powershell-cmdlets"></a>GMSA PowerShell cmdlet 的预配代理
-现在，你已安装了代理，你可以将更细化的权限应用到 gMSA。  有关配置权限的详细信息和分步说明，请参阅 [Azure AD Connect 云预配代理 GMSA PowerShell cmdlet](how-to-gmsa-cmdlets.md) 。
+## <a name="provisioning-agent-gmsa-powershell-cmdlets"></a>预配代理 gMSA PowerShell cmdlet
+既然已经安装了代理，则可以将更精细的权限应用到 gMSA。  有关配置权限的信息和分步说明，请参阅 [Azure AD Connect 云预配代理 gMSA PowerShell cmdlet](how-to-gmsa-cmdlets.md)。
 
 ## <a name="next-steps"></a>后续步骤 
 

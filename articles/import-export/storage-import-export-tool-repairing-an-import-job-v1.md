@@ -9,10 +9,10 @@ ms.date: 01/19/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: af6234a81e8f79424cc3b1ec4178a175d9ff0146
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98706238"
 ---
 # <a name="repairing-an-import-job"></a>修复导入作业
@@ -24,7 +24,7 @@ Microsoft Azure 导入/导出服务可能无法将某些文件或某个文件的
   
 -   存储帐户密钥在传输文件时已更改。  
   
-可以通过导入作业的复制日志文件来运行 Microsoft Azure 导入/导出工具。 该工具会将缺少的文件或部分文件上传到你的 Windows Azure 存储帐户，以完成导入作业。  
+可以使用导入作业的复制日志文件运行 Microsoft Azure 导入/导出工具。 该工具会将缺少的文件（或某个文件的部分内容）上传到 Windows Azure 存储帐户，从而完成导入作业。  
   
 ## <a name="repairimport-parameters"></a>RepairImport 参数
 

@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 399d2f71fa20d63dce89cf3be5c12ffd63264895
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724704"
 ---
 # <a name="build-resilience-with-credential-management"></a>通过凭据管理来构建复原能力
@@ -49,21 +49,21 @@ ms.locfileid: "98724704"
 
 ## <a name="how-do-multiple-credentials-help-resilience"></a>多个凭据如何帮助复原？
 
-预配多个凭据类型可为用户提供适合其首选项和环境约束的选择。 因此，对于在请求时不可用的特定依赖项，提示用户进行多重身份验证的交互式身份验证将更具复原能力。 你可以 [优化多重身份验证的身份验证提示](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)。
+预配多个凭据类型可为用户提供适合其首选项和环境约束的选择。 因此，对于在请求时不可用的特定依赖项，提示用户进行多重身份验证的交互式身份验证将更具复原能力。 可以[优化多重身份验证的重新身份验证提示](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)。
 
 除了上面所述的单个用户复原能力外，企业还应针对引入错误配置的操作错误、自然灾害或本地联合身份验证服务（尤其是在用于多重身份验证时）的企业级资源中断等大规模中断做出应变计划。 
 
 ## <a name="how-do-i-implement-resilient-credentials"></a>如何实现实现具有复原能力的凭据？
 
-* 部署 [无密码凭据](../authentication/howto-authentication-passwordless-deployment.md) ，如 Windows Hello 企业版、手机身份验证和 FIDO2 安全密钥，以减少依赖项。
+* 部署[无密码凭据](../authentication/howto-authentication-passwordless-deployment.md)（如 Windows Hello 企业版、电话身份验证和 FIDO2 安全密钥）以减少依赖项。
 
-* 将 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md) 部署为第二个因素。
+* 将 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)部署为第二个因素。
 
 * 为从 Windows Server Active Directory 同步的混合帐户启用[密码哈希同步](../hybrid/whatis-phs.md)。 此选项可以随联合身份验证服务（如 AD FS）一起启用，并将在联合身份验证服务发生故障时提供回退。
 
 * [分析多重身份验证方法的使用情况](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)以改善用户体验。
 
-* [实现弹性访问控制策略](../authentication/concept-resilient-controls.md)
+* [实现可复原的访问控制策略](../authentication/concept-resilient-controls.md)
 
 ## <a name="next-steps"></a>后续步骤
 面向管理员和架构师的复原能力资源
@@ -72,11 +72,11 @@ ms.locfileid: "98724704"
 
 * [使用连续访问评估 (CAE) 构建复原能力](resilience-with-continuous-access-evaluation.md)
 
-* [在外部用户身份验证中构建复原能力](resilience-b2b-authentication.md)
+* [构建外部用户身份验证的复原能力](resilience-b2b-authentication.md)
 
 * [在混合身份验证中构建复原能力](resilience-in-hybrid.md)
 
-* [使用应用程序代理通过应用程序访问生成恢复能力](resilience-on-premises-access.md)
+* [利用应用程序代理构建应用程序访问的复原能力](resilience-on-premises-access.md)
 
 适用于开发人员的复原能力资源
 

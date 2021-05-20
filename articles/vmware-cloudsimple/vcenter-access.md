@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 访问 vSphere 客户端
 description: 介绍如何访问私有云的 vCenter。
-author: shortpatti
-ms.author: v-patsho
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/30/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e3f827bbd1e500c9cea809939194757bb9fe7881
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 2e62042a84f7ac2615762e3d9b036e4340bd8c73
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181051"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97899110"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>访问私有云 vCenter 门户
 
@@ -36,7 +36,7 @@ ms.locfileid: "108181051"
 
 可以从 Azure 门户启动私有云的 vCenter 门户。
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 
 2. 搜索“CloudSimple 服务”。
 

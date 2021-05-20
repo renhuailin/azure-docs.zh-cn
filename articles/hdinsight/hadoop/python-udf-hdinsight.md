@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
 ms.openlocfilehash: 593b809813f949cd1d0bcc17e1d1b7255ea19130
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98944280"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)
@@ -22,20 +22,20 @@ Python2.7 默认安装在 HDInsight 3.0 和更高版本上。 可以结合此 Py
 
 HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython 直接在 Java 虚拟机上运行，不使用流式处理。 将 Python 与 Pig 配合使用时，我们建议将 Jython 用作 Python 解释器。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * **HDInsight 上的 Hadoop 群集**。 请参阅 [Linux 上的 HDInsight 入门](apache-hadoop-linux-tutorial-get-started.md)。
 * **SSH 客户端**。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 这适用 `wasb://` 于 Azure 存储， `abfs://` 适用于 Azure Data Lake Storage Gen1 的 Azure Data Lake Storage Gen2 或 adl://。 如果为 Azure 存储启用安全传输，则 URI 将为 wasbs://。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，这将是 `wasb://`，对于 Azure Data Lake Storage Gen2，这将是 `abfs://`，对于 Azure Data Lake Storage Gen1，这将是 adl://。 如果为 Azure 存储启用安全传输，则 URI 将为 wasbs://。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 * **对存储配置所做的可能更改。**  如果使用 `BlobStorage` 类型的存储帐户，请参阅[存储配置](#storage-configuration)。
-* 可选。  如果计划使用 PowerShell，则需要安装 [AZ 模块](/powershell/azure/new-azureps-module-az) 。
+* 可选。  如果计划使用 PowerShell，则需要安装 [AZ 模块](/powershell/azure/new-azureps-module-az)。
 
 > [!NOTE]  
 > 本文中使用的存储帐户是启用了[安全传输](../../storage/common/storage-require-secure-transfer.md)的 Azure 存储，因此，本文通篇使用 `wasbs`。
 
 ## <a name="storage-configuration"></a>存储配置
 
-如果使用 `Storage (general purpose v1)` 或 `StorageV2 (general purpose v2)` 类型的存储帐户，则不需要执行任何操作。  本文中的过程至少向 `/tezstaging` 生成输出。  默认的 Hadoop 配置将在 `core-site.xml` 中的 `fs.azure.page.blob.dir` 配置变量内包含服务 `HDFS` 的 `/tezstaging`。  此配置将导致目录的输出为页 blob，而不支持存储帐户类型 `BlobStorage` 。  若要在本文中使用 `BlobStorage`，请删除 `fs.azure.page.blob.dir` 配置变量中的 `/tezstaging`。  可以通过 [Ambari UI](../hdinsight-hadoop-manage-ambari.md) 访问配置。  否则，你将收到以下错误消息： `Page blob is not supported for this account type.`
+如果使用 `Storage (general purpose v1)` 或 `StorageV2 (general purpose v2)` 类型的存储帐户，则不需要执行任何操作。  本文中的过程至少向 `/tezstaging` 生成输出。  默认的 Hadoop 配置将在 `core-site.xml` 中的 `fs.azure.page.blob.dir` 配置变量内包含服务 `HDFS` 的 `/tezstaging`。  此配置会导致将页 Blob 输出到目录，而 `BlobStorage` 类型的存储帐户不支持页 Blob。  若要在本文中使用 `BlobStorage`，请删除 `fs.azure.page.blob.dir` 配置变量中的 `/tezstaging`。  可以通过 [Ambari UI](../hdinsight-hadoop-manage-ambari.md) 访问配置。  否则，会收到错误消息：`Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > 本文档中的步骤基于以下假设：  
@@ -43,7 +43,7 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython
 > * 在本地开发环境中创建 Python 脚本。
 > * 使用 `scp` 命令或使用提供的 PowerShell 脚本将脚本上传到 HDInsight。
 >
-> 如果要使用 [Azure Cloud Shell (bash) ](../../cloud-shell/overview.md) 与 HDInsight 配合使用，则必须执行以下操作：
+> 如果使用 [Azure Cloud Shell (bash)](../../cloud-shell/overview.md) 来操作 HDInsight，则必须：
 >
 > * 在 Cloud Shell 环境内部创建脚本。
 > * 使用 `scp` 将文件从 Cloud Shell 上传到 HDInsight。
@@ -297,8 +297,8 @@ Get-AzHDInsightJobOutput `
 
 若要指定 Python 解释器，请在引用 Python 脚本时使用 `register`。 以下示例将脚本作为 `myfuncs` 注册到 Pig：
 
-* **使用 Jython**： `register '/path/to/pigudf.py' using jython as myfuncs;`
-* **使用 C Python**： `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **使用 Jython**：`register '/path/to/pigudf.py' using jython as myfuncs;`
+* **使用 C Python**：`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > 使用 Jython 时，pig_jython 文件的路径可以是本地路径或 WASBS:// 路径。 但是，使用 C Python 时，必须引用用于提交 Pig 作业的节点的本地文件系统上的文件。
@@ -338,7 +338,7 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-在 Pig 拉丁语示例中， `LINE` 输入定义为 chararray，因为输入没有一致的架构。 Python 脚本将数据转换成用于输出的一致架构。
+在 Pig Latin 示例中，已将 `LINE` 输入定义为 chararray，因为此输入没有一致的架构。 Python 脚本将数据转换成用于输出的一致架构。
 
 1. `@outputSchema` 语句定义返回到 Pig 的数据的格式。 在本例中，该格式为 **数据袋**，这是一种 Pig 数据类型。 该数据袋包含以下字段，所有这些字段都是 chararray（字符串）：
 
@@ -420,7 +420,7 @@ def create_structure(input):
     #from pig_util import outputSchema
     ```
 
-    此行会修改 Python 脚本以使用 C Python 而不是 Jython。 更改后，请使用 Ctrl+X 退出编辑器。 选择 " **Y**"，然后按 **Enter** 保存更改。
+    此行会修改 Python 脚本以使用 C Python 而不是 Jython。 更改后，请使用 Ctrl+X 退出编辑器。 选择 Y，然后选择 Enter 保存更改 。
 
 6. 使用 `pig` 命令再次启动 shell。 在 `grunt>` 提示符下，使用以下命令运行带有 Jython 解释器的 Python 脚本。
 
@@ -578,7 +578,7 @@ Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An e
 
 ### <a name="powershell-scripts"></a>PowerShell 脚本
 
-用于运行示例的两个示例 PowerShell 脚本都包含一个带注释的行，该行显示作业的错误输出。 如果未看到作业的预期输出，请取消注释以下行，并查看错误信息是否指明了问题。
+用于运行示例的两个示例 PowerShell 脚本都包含一个带注释的行，该行显示作业的错误输出。 如果未看到作业的预期输出，请取消注释以下行，并查看错误信息中是否指明了问题。
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=135-139)]
 

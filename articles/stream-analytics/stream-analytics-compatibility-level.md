@@ -5,29 +5,30 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
-ms.translationtype: MT
+ms.date: 03/18/2021
+ms.openlocfilehash: a040aecbdee40832bd21256e26a140a986b65e39
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094071"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104606236"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
-本文介绍 Azure 流分析中的兼容性级别选项。 流分析是一个托管服务，它会定期进行功能更新和性能改进。 该服务的大多数运行时更新会自动提供给最终用户。 
+本文介绍 Azure 流分析中的兼容性级别选项。
 
-但是，该服务中的某些新功能可能会引入重大更改，例如，现有作业的行为更改，或正在运行的作业中使用数据的方式更改。 可以通过降低兼容性级别设置，使现有流分析作业保持运行状态而不会发生重大更改。 如果已准备使用最新的运行时行为，可以选择提高兼容性级别。 
+流分析是托管的服务，会[定期进行功能更新和持续性能改进](https://azure.microsoft.com/updates/?product=stream-analytics)。 该服务的大多数运行时更新会自动提供给最终用户，独立于兼容性级别。 但是，当新功能在现有作业的行为中引入更改，或在运行作业中使用数据的方式中引入更改时，我们将在新的兼容性级别下引入此更改。 可以通过降低兼容性级别设置，使现有流分析作业保持运行状态而不会发生重大更改。 如果已准备使用最新的运行时行为，可以选择提高兼容性级别。
+
 
 ## <a name="choose-a-compatibility-level"></a>选择兼容性级别
 
-兼容性级别控制流分析作业的运行时行为。 
+兼容性级别控制流分析作业的运行时行为。
 
 Azure 流分析目前支持三种兼容性级别：
 
-* 1.0 - 最初的兼容性级别，几年前正式发布 Azure 流分析期间引入。
-* 1.1 - 以前的行为
 * 1.2 - 最新行为和最新改进
+* 1.1 - 以前的行为
+* 1.0 - 最初的兼容性级别，几年前正式发布 Azure 流分析期间引入。 
 
 创建新的流分析作业时，最佳做法是使用最新的兼容性级别来创建它。 依赖于最新的行为着手作业设计，以免将来添加更改和增大复杂性。
 
@@ -65,7 +66,7 @@ Azure 流分析支持地理空间参考数据索引编制。 可为包含地理�
 
 更新的地理空间函数提供已知文本 (WKT) 地理空间格式的完整表达能力。 可以指定以前在 GeoJson 中所不支持的其他地理空间组件。
 
-有关详细信息，请参阅 [Azure 流分析中的地理空间功能更新-云和 IoT Edge](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)。
+有关详细信息，请参阅 [Azure 流分析中的地理空间功能更新 - 云和 IoT Edge](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)。
 
 ### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>针对使用多个分区的输入源的并行执行查询
 

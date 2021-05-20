@@ -1,5 +1,5 @@
 ---
-title: Azure 中的子网扩展 |Microsoft Docs
+title: Azure 中的子网扩展 | Microsoft Docs
 description: 了解 Azure 中的子网扩展。
 services: virtual-network
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
 ms.openlocfilehash: 555c903dc3375080a8b0d006d2aac7216854c939
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99539292"
 ---
 # <a name="subnet-extension"></a>子网扩展
@@ -31,9 +31,9 @@ ms.locfileid: "99539292"
 
 尽管在一般情况下扩展网络并非良好的做法，在对于以下用例，可能有必要这样做。
 
-- **分阶段迁移**：最常见的场景是分阶段完成迁移。 需要先迁移几个应用程序，然后逐渐将剩余的应用程序迁移到 Azure。
+- **分阶段迁移**：最常见的场景是要分阶段完成迁移。 需要先迁移几个应用程序，然后逐渐将剩余的应用程序迁移到 Azure。
 - **延迟**：低延迟要求可能是在本地保留某些应用程序的另一个原因，这可以确保它们尽量靠近你的数据中心。
-- **符合性**：另一种用例是，需要根据法规要求在本地保留某些应用程序。
+- **合规性**：另一种用例是，需要根据合规性要求在本地保留某些应用程序。
  
 > [!NOTE] 
 > 除非必要，否则不应扩展子网。 如果确实需要扩展子网，应尽量将此措施作为一个中间步骤来实施。 如果有时间，应尝试为本地网络中的应用程序重新编号，然后将其迁移到 Azure。

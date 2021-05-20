@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: victorh
 ms.openlocfilehash: e63336b0e84d303b51eda56f90ca6fb453d8ae0d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99831835"
 ---
 # <a name="monitor-logs-using-azure-firewall-workbook"></a>使用 Azure 防火墙工作簿监视日志
@@ -30,7 +30,7 @@ Azure 防火墙工作簿为 Azure 防火墙数据分析提供了一个灵活的�
 
 ## <a name="overview-page"></a>概述页
 
-概述页面提供了跨工作区、时间和防火墙进行筛选的方法。 它按时间跨防火墙和日志类型显示事件 (应用程序、网络、威胁 intel、DNS proxy) 。
+概述页面提供了跨工作区、时间和防火墙进行筛选的方法。 概述页面跨防火墙和日志类型（应用程序、网络、威胁情报、DNS 代理）按时间显示事件。
 
 :::image type="content" source="./media/firewall-workbook/firewall-workbook-overview.png" alt-text="Azure 防火墙工作簿概述":::
 
@@ -42,7 +42,7 @@ Azure 防火墙工作簿为 Azure 防火墙数据分析提供了一个灵活的�
 
 ## <a name="network-rule-log-statistics"></a>网络规则日志统计信息
 
-此页提供按规则操作-允许/拒绝、目标端口按 IP 和 DNAT 进行查看的视图。 你还可以按操作、端口和目标类型进行筛选。
+此页面提供了一段时间内按规则操作（允许/拒绝）、不同 IP 的目标端口以及 DNAT 筛选的视图。 你还可以按操作、端口和目标类型进行筛选。
 
 :::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule.png" alt-text="Azure 防火墙工作簿网络规则日志":::
 

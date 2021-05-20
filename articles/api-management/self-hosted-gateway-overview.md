@@ -1,5 +1,5 @@
 ---
-title: 自承载网关概述 |Microsoft Docs
+title: 自托管网关概述 | Microsoft Docs
 description: 了解 Azure API 管理的自托管网关功能如何帮助组织管理混合环境和多云环境中的 API。
 services: api-management
 documentationcenter: ''
@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: apimpm
 ms.openlocfilehash: 48abce693ca22163c0a1742ba71faf36fc6156a1
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99989101"
 ---
 # <a name="self-hosted-gateway-overview"></a>自托管网关概述
@@ -43,13 +43,13 @@ ms.locfileid: "99989101"
 
 ## <a name="packaging-and-features"></a>打包和功能
 
-自承载网关是作为每个 API 管理服务的一部分部署到 Azure 的托管网关的容器化、功能等效版本。 自托管网关在 Microsoft 容器注册表中以基于 Linux 的 Docker [容器](https://aka.ms/apim/sputnik/dhub)的形式提供。 它可以部署到 Docker、Kubernetes，或任何其他在本地服务器节点上、云基础结构上或出于评估和开发目的在个人计算机上运行的容器业务流程解决方案。
+自托管网关是作为每个 API 管理服务的一部分部署到 Azure 的托管网关的功能等效容器化版本。 自托管网关在 Microsoft 容器注册表中以基于 Linux 的 Docker [容器](https://aka.ms/apim/sputnik/dhub)的形式提供。 它可以部署到 Docker、Kubernetes，或任何其他在本地服务器节点上、云基础结构上或出于评估和开发目的在个人计算机上运行的容器业务流程解决方案。
 
 托管网关中的以下功能在自托管网关中不可用：
 
 - Azure Monitor 日志
 - 上游（后端）TLS 版本和密码管理
-- 使用上传到 API 管理服务的 [CA 根证书](api-management-howto-ca-certificates.md)验证服务器和客户端证书。 有关详细信息，请参阅 [自承载网关上的证书验证](api-management-howto-mutual-certificates-for-clients.md#certificate-validation-in-self-hosted-gateway)。
+- 使用上传到 API 管理服务的 [CA 根证书](api-management-howto-ca-certificates.md)验证服务器和客户端证书。 有关详细信息，请参阅[自托管网关中的证书验证](api-management-howto-mutual-certificates-for-clients.md#certificate-validation-in-self-hosted-gateway)。
 - 与 [Service Fabric](../service-fabric/service-fabric-api-management-overview.md) 集成
 - TLS 会话恢复
 - 客户端证书重新协商。 这意味着要使[客户端证书身份验证](api-management-howto-mutual-certificates-for-clients.md)起作用，API 使用者必须出示其证书作为初始 TLS 握手的一部分。 为确保这一点，请在配置自托管网关自定义主机名时启用协商客户端证书设置。

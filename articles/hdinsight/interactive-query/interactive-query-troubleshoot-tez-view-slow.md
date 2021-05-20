@@ -1,17 +1,17 @@
 ---
 title: Apache Ambari Tez 视图在 Azure HDInsight 中加载缓慢
-description: Apache Ambari Tez 视图可能会加载缓慢或根本不会加载到 Azure HDInsight 中
+description: Apache Ambari Tez 视图可能在 Azure HDInsight 中加载缓慢或根本无法加载
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
 ms.openlocfilehash: 4fe66b3104be0351a9b0e1df6b6545f71ff276ab
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98930774"
 ---
-# <a name="scenario-apache-ambari-tez-view-loads-slowly-in-azure-hdinsight"></a>方案：Apache Ambari Tez 视图在 Azure HDInsight 中加载缓慢
+# <a name="scenario-apache-ambari-tez-view-loads-slowly-in-azure-hdinsight"></a>场景：Apache Ambari Tez 视图在 Azure HDInsight 中加载缓慢
 
 本文介绍在 Azure HDInsight 群集中使用交互式查询组件时出现的问题的故障排除步骤和可能的解决方案。
 

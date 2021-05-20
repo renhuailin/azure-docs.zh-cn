@@ -6,20 +6,20 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 58148e3a20ba41ae9707543be290f2d632cb1185
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 9d11d17f90dcd6335fcaf6bd48a44037777a087e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375283"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601379"
 ---
-# <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>为 Redis 实例的高级 Azure 缓存配置数据暂留
+# <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>为高级 Azure Cache for Redis 实例配置数据暂留
 
 [Redis 暂留](https://redis.io/topics/persistence)可让你保留存储在 Redis 中的数据。 还可以获取快照并备份数据，以便在出现硬件故障时进行加载。 这相对于基本级别或标准级别是一项巨大优势，因为基本级别或标准级别将所有数据存储在内存中，在出现故障的情况下，如果缓存节点停机，则可能导致数据丢失。 
 
 Azure Redis 缓存使用以下模型提供 Redis 暂留：
 
-* **RDB 暂留** - 配置 RDB（Redis 数据库）暂留以后，Azure Redis 缓存按照可配置的备份频率，将 Azure Redis 缓存的快照以 Redis 二进制格式暂留在磁盘上。 如果发生了灾难性事件，导致主缓存和副缓存都无法使用，则会使用最新快照重新构造缓存。 详细了解 RDB 暂留的[优点](https://redis.io/topics/persistence#rdb-advantages)和[缺点](https://redis.io/topics/persistence#rdb-disadvantages)。
+* **RDB 暂留** - 配置 RDB（Redis 数据库）暂留以后，Azure Cache for Redis 按照可配置的备份频率，将 Azure Cache for Redis 的快照以 Redis 二进制格式暂留在磁盘上（在 Azure 存储帐户中）。 如果发生了灾难性事件，导致主缓存和副缓存都无法使用，则会使用最新快照重新构造缓存。 详细了解 RDB 暂留的[优点](https://redis.io/topics/persistence#rdb-advantages)和[缺点](https://redis.io/topics/persistence#rdb-disadvantages)。
 * **AOF 暂留** - 配置 AOF（仅追加文件）暂留后，Azure Redis 缓存将每个写入操作保存到日志，此日志每秒至少保存到 Microsoft Azure 存储帐户一次。 如果发生了灾难性事件，导致主缓存和副缓存都无法使用，则会使用存储的写入操作重新构造缓存。 详细了解 AOF 暂留的[优点](https://redis.io/topics/persistence#aof-advantages)和[缺点](https://redis.io/topics/persistence#aof-disadvantages)。
 
 暂留将 Redis 数据写入你拥有和管理的 Azure 存储帐户。 可在缓存创建过程中通过“新建 Azure Redis 缓存”边栏选项卡进行配置，也可以在现有高级缓存的“资源”菜单上配置。
@@ -30,7 +30,7 @@ Azure Redis 缓存使用以下模型提供 Redis 暂留：
 > 
 > 
 
-## <a name="set-up-data-persistence"></a>设置数据暂留
+## <a name="set-up-data-persistence"></a>设置数据持久性
 
 1. 若要创建高级缓存，请登录到 [Azure 门户](https://portal.azure.com)并选择“创建资源”。 除了在 Azure 门户中创建缓存以外，也可以使用 Resource Manager 模板、PowerShell 或 Azure CLI 创建。 有关创建 Azure Redis 缓存的详细信息，请参阅[创建缓存](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
 
@@ -69,7 +69,7 @@ Azure Redis 缓存使用以下模型提供 Redis 暂留：
     备份频率间隔的时间过后，将启动第一次备份。
     
    > [!NOTE]
-   > 将 RDB 文件备份到存储时，它们将存储为页 blob 的形式。
+   > 当 RDB 文件备份到存储时，它们以页 blob 的形式存储。
 
 9. 若要启用 AOF 暂留，请单击“AOF”并配置设置。 
    
@@ -100,7 +100,7 @@ Azure Redis 缓存使用以下模型提供 Redis 暂留：
 * [应该选择哪个暂留模型？](#which-persistence-model-should-i-choose)
 * [如果我缩放到不同大小并还原了缩放操作之前生成的备份，会发生什么情况？](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
 * [能否在两个不同的缓存中使用同一存储帐户进行保留？](#can-i-use-the-same-storage-account-for-persistence-across-two-different-caches)
-* [是否需要为数据暂留中使用的存储付费](#will-i-be-charged-for-the-storage-being-used-in-data-persistence)
+* [是否需要为数据暂留中使用存储付费](#will-i-be-charged-for-the-storage-being-used-in-data-persistence)
 
 ### <a name="rdb-persistence"></a>RDB 暂留
 * [创建缓存后是否可更改 RDB 备份频率？](#can-i-change-the-rdb-backup-frequency-after-i-create-the-cache)
@@ -190,9 +190,9 @@ AOF 文件中存储的数据在每个节点分为多个页 Blob，以便提升�
 
 重写后，存储中存在 2 个 AOF 文件集。 重写在后台进行，并附加到第一个文件集，而重写期间发送至缓存的设置操作会附加到第二个文件集。 重写期间会暂时存储备份以防发生故障，但是备份在重写结束后会立即删除。
 
-### <a name="will-i-be-charged-for-the-storage-being-used-in-data-persistence"></a>是否需要支付数据暂留中使用的存储费用？
+### <a name="will-i-be-charged-for-the-storage-being-used-in-data-persistence"></a>是否需要为数据暂留中使用的存储付费？
 
-是的，将根据所使用的存储帐户的定价模型，对正在使用的存储进行收费。
+是的，将按照正在使用的存储帐户的定价模型，为使用的存储付费。
 
 
 ## <a name="next-steps"></a>后续步骤

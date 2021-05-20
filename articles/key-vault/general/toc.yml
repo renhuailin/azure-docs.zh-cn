@@ -49,8 +49,6 @@
       items:
         - name: 安全功能
           href: security-features.md
-        - name: Key Vault 身份验证基础知识
-          href: authentication.md
         - name: Key Vault 身份验证
           href: authentication.md
         - name: 安全体系和地理区域

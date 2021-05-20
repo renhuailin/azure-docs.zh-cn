@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: 324852a967b5de015a9b1e9b465d4b4703e573cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98929679"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>从 Spark Shell 运行 Apache Spark
@@ -24,7 +24,7 @@ ms.locfileid: "98929679"
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Spark 为 Scala (spark-shell) 和 Python (pyspark) 提供 shell。 在 SSH 会话中，输入以下命令 *之一* ：
+1. Spark 为 Scala (spark-shell) 和 Python (pyspark) 提供 shell。 在 SSH 会话中，输入以下命令之一：
 
     ```bash
     spark-shell
@@ -40,9 +40,9 @@ ms.locfileid: "98929679"
     # pyspark --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
     ```
 
-    如果打算使用任何可选配置，请确保首先查看 [Apache Spark 的 OutOfMemoryError 异常](./apache-spark-troubleshoot-outofmemory.md)。
+    如果打算使用任何可选配置，请确保先查阅 [Apache Spark 的 OutOfMemoryError 异常](./apache-spark-troubleshoot-outofmemory.md)。
 
-1. 几个基本的示例命令。 选择相关语言：
+1. 一些基本的示例命令。 选择相关语言：
 
     ```spark-shell
     val textFile = spark.read.textFile("/example/data/fruits.txt")
@@ -56,13 +56,13 @@ ms.locfileid: "98929679"
     textFile.filter(textFile.value.contains("apple")).show()
     ```
 
-1. 查询 CSV 文件。 请注意，以下语言适用于 `spark-shell` 和 `pyspark`。
+1. 查询 CSV 文件。 请注意，下面的语言适用于 `spark-shell` 和 `pyspark`。
 
     ```scala
     spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
     ```
 
-1. 查询 CSV 文件并将结果存储在变量中：
+1. 查询 CSV 文件，并将结果存储在变量中：
 
     ```spark-shell
     var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")

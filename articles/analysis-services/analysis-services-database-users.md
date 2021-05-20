@@ -4,16 +4,16 @@ description: 了解如何在 Azure 中管理 Analysis Services 服务器上的�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: ad6bbd0fffaff3f4deb6b8a11e8b578336a80882
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130388"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "99054087"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 

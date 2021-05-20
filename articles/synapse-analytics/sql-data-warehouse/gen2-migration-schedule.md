@@ -1,6 +1,6 @@
 ---
-title: 将专用 SQL DW (以前的 SQL DW) 迁移到 Gen2
-description: 说明如何将现有专用 SQL 池 (以前的 SQL DW) 迁移到 Gen2 和按区域的迁移计划。
+title: 将专用 SQL 池（以前称为 SQL DW）迁移到 Gen2
+description: 将现有专用 SQL 池（以前称为 SQL DW）迁移到 Gen2 以及按区域对迁移进行计划的说明。
 services: synapse-analytics
 author: mlee3gsd
 ms.author: anjangsh
@@ -13,15 +13,15 @@ ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 0ce07ff3ca5fbcc9776792129d3bfb4ef54efe7d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98120115"
 ---
-# <a name="upgrade-your-dedicated-sql-pool-formerly-sql-dw-to-gen2"></a>将专用 SQL DW (以前的 SQL DW) 升级到 Gen2
+# <a name="upgrade-your-dedicated-sql-pool-formerly-sql-dw-to-gen2"></a>将专用 SQL 池（以前称为 SQL DW）升级到 Gen2
 
-Microsoft 正在帮助降低 (以前的 SQL DW) 运行专用 SQL 池的入门级成本。  可用于处理要求最高的查询的更低计算层现在适用于专用 SQL 池 (以前的 SQL DW) 。 请阅读完整的公告：[针对 Gen2 的较低计算层级支持](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/)。 新套餐在下表所示区域提供。 对于受支持的区域，现有的 Gen1 专用 SQL 池 (以前的 SQL DW) 可以通过以下方法之一升级到 Gen2：
+Microsoft 有助于降低运行专用 SQL 池（以前称为 SQL DW）的入门级成本。  能够处理高要求查询的较低计算层级现在适用于专用 SQL 池（以前称为 SQL DW）。 请阅读完整的公告：[针对 Gen2 的较低计算层级支持](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/)。 新套餐在下表所示区域提供。 对于支持的区域，现有的 Gen1 专用 SQL 池（以前称为 SQL DW）可以通过以下任一方式升级到 Gen2：
 
 - **自动升级过程：** 只要服务在某个地区可用，就不会启动自动升级。  当自动升级在特定区域启动时，将在所选维护计划期间进行单独的数据仓库升级。
 - [**自行升级至 Gen2：**](#self-upgrade-to-gen2)可以通过自行升级至 Gen2 来控制何时升级。 如果你的区域尚不受支持，可以从某个还原点直接还原到受支持区域中的 Gen2 实例。
@@ -43,9 +43,9 @@ Microsoft 正在帮助降低 (以前的 SQL DW) 运行专用 SQL 池的入门级
 
 ## <a name="automatic-upgrade-process"></a>自动升级过程
 
-我们会根据上面的可用性图表，为你的 Gen1 实例安排自动升级。 若要避免对专用 SQL 池可用性 (以前的 SQL DW) 的任何意外中断，将在维护计划期间计划自动升级。 在正自动升级到 Gen2 的区域，将禁用新建 Gen1 实例的功能。 自动升级完成后，将弃用 Gen1。 有关计划的详细信息，请参阅[查看维护计划](maintenance-scheduling.md#view-a-maintenance-schedule)
+我们会根据上面的可用性图表，为你的 Gen1 实例安排自动升级。 为了避免专用 SQL 池（以前称为 SQL DW）的可用性发生任何意外中断，将在维护日程安排期间安排自动升级。 在正自动升级到 Gen2 的区域，将禁用新建 Gen1 实例的功能。 自动升级完成后，将弃用 Gen1。 有关计划的详细信息，请参阅[查看维护计划](maintenance-scheduling.md#view-a-maintenance-schedule)
 
-升级过程将涉及短暂的连接 (大约5分钟) ，因为我们在以前的 SQL DW)  (重启专用 SQL 池。  当专用 SQL 池 (以前的 SQL DW) 重新启动后，它将完全可供使用。 但是，升级过程继续在后台升级数据文件时，可能会出现性能下降的情况。 性能下降的总时间将根据数据文件的大小而有所不同。
+重启专用 SQL 池（以前称为 SQL DW）时，升级过程会导致连接短暂断开（大约 5 分钟）。  重启专用 SQL 池（以前称为 SQL DW）后，它将完全可用。 但是，升级过程继续在后台升级数据文件时，可能会出现性能下降的情况。 性能下降的总时间将根据数据文件的大小而有所不同。
 
 还可以通过在重启后使用更大的 SLO 和资源类在所有主列存储表上运行 [Alter Index rebuild](sql-data-warehouse-tables-index.md) 来加快数据文件升级过程。
 
@@ -54,12 +54,12 @@ Microsoft 正在帮助降低 (以前的 SQL DW) 运行专用 SQL 池的入门级
 
 ## <a name="self-upgrade-to-gen2"></a>自行升级至 Gen2
 
-可以通过在现有的 Gen1 专用 SQL 池 (以前的 SQL DW) 上执行以下步骤，选择自行升级。 如果选择自行升级，则必须在自动升级过程开始之前在所在区域完成它。 这样做可确保避免任何导致冲突的自动升级风险。
+可以选择自行升级，方法是在现有 Gen1 专用 SQL 池（以前称为 SQL DW）中执行以下步骤。 如果选择自行升级，则必须在自动升级过程开始之前在所在区域完成它。 这样做可确保避免任何导致冲突的自动升级风险。
 
-进行自行升级时有两种选择。  可以 (以前的 SQL DW) 升级当前的专用 SQL 池，也可以将 Gen1 专用 SQL 池 (以前的 SQL DW) 还原到 Gen2 实例中。
+进行自行升级时有两种选择。  你可以就地升级当前的专用 SQL 池（以前称为 SQL DW），也可以将 Gen1 专用 SQL 池（以前称为 SQL DW）还原成 Gen2 实例。
 
-- [就地升级](upgrade-to-latest-generation.md) -此选项会将现有的 GEN1 专用 sql 池 (以前的 sql DW) 升级到 Gen2。 升级过程将涉及短暂的连接 (大约5分钟) ，因为我们在以前的 SQL DW)  (重启专用 SQL 池。  重新启动后，它将完全可供使用。 如果在升级过程中遇到问题，请打开 [支持请求](sql-data-warehouse-get-started-create-support-ticket.md) 并引用 "Gen2 upgrade" 作为可能的原因。
-- [从还原点升级](sql-data-warehouse-restore-points.md) -在当前 GEN1 专用 sql 池 (以前的 sql DW) 中创建用户定义的还原点，然后直接还原为 Gen2 实例。 现有的 Gen1 专用 SQL 池 (以前的 SQL DW) 会保持不变。 完成还原后，Gen2 专用 SQL DW (以前的 SQL DW) 将完全可供使用。  在已还原的 Gen2 实例上运行所有测试和验证过程后，可以删除原始 Gen1 实例。
+- [就地升级](upgrade-to-latest-generation.md) - 此选项会将现有的 Gen1 专用 SQL 池（以前称为 SQL DW）升级到 Gen2。 重启专用 SQL 池（以前称为 SQL DW）时，升级过程会导致连接短暂断开（大约 5 分钟）。  重启后，它将完全可用。 如果在升级过程中遇到问题，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)并引用“Gen2 升级”作为可能原因。
+- [从还原点升级](sql-data-warehouse-restore-points.md) - 在当前 Gen1 专用 SQL 池（以前称为 SQL DW）中创建用户定义的还原点，然后直接还原到 Gen2 实例。 现有的 Gen1 专用 SQL 池（以前称为 SQL DW）会保留原样。 还原完成后，Gen2 专用 SQL 池（以前称为 SQL DW）将完全可用。  在已还原的 Gen2 实例上运行所有测试和验证过程后，可以删除原始 Gen1 实例。
 
   - 步骤 1：在 Azure 门户中，[创建用户定义的还原点](sql-data-warehouse-restore-active-paused-dw.md)。
   - 步骤 2：从用户定义的还原点还原时，将“性能级别”设置为首选的 Gen2 层。
@@ -71,7 +71,7 @@ Microsoft 正在帮助降低 (以前的 SQL DW) 运行专用 SQL 池的入门级
 > [!NOTE]
 > Alter Index rebuild 是一项脱机操作，在重新生成完成之前，这些表将不可用。
 
-如果你的专用 SQL 池 (以前的 SQL DW) 时遇到任何问题，请创建 [支持请求](sql-data-warehouse-get-started-create-support-ticket.md) 并引用 "Gen2 upgrade" 作为可能的原因。
+如果遇到与专用 SQL 池（以前称为“SQL DW”）相关的任何问题，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)并引用“Gen2 升级”作为可能原因。
 
 有关详细信息，请参阅[升级到 Gen2](upgrade-to-latest-generation.md)。
 
@@ -89,12 +89,12 @@ Microsoft 正在帮助降低 (以前的 SQL DW) 运行专用 SQL 池的入门级
 
 - 答：可以就地升级或从还原点升级。
 
-  - 就地升级将导致专用 SQL 池 (以前的 SQL DW) ，以暂时暂停和恢复。  当专用 SQL 池 (以前的 SQL DW) 处于联机状态时，后台进程将继续。  
+  - 就地升级会导致专用 SQL 池（以前称为 SQL DW）短时间暂停和恢复。  专用 SQL 池（以前称为 SQL DW）联机后，后台进程会继续。  
   - 如果要通过还原点进行升级，则需要更长时间，因为升级将完成整个还原过程。
 
 **问：自动升级需要多长时间？**
 
-- 答：升级的实际停机时间仅为暂停和恢复服务所需的时间，即 5 到 10 分钟。 在短暂的停机时间之后，后台进程将运行存储迁移。 后台进程的时间长度取决于专用 SQL 池的大小 (以前的 SQL DW) 。
+- 答：升级的实际停机时间仅为暂停和恢复服务所需的时间，即 5 到 10 分钟。 在短暂的停机时间之后，后台进程将运行存储迁移。 后台进程的时间长度取决于专用 SQL 池（以前称为 SQL DW）的大小。
 
 **问：这种自动升级何时进行？**
 
@@ -110,7 +110,7 @@ Microsoft 正在帮助降低 (以前的 SQL DW) 运行专用 SQL 池的入门级
 
 **问：我可以禁用异地备份吗？**
 
-- 答：否。 异地备份是一种企业功能，用于在某个区域变为不可用时，将专用 SQL 仓库 (以前的 SQL DW) 可用性。 若有其他疑虑，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)。
+- 答：否。 异地备份是一项企业功能，可在区域变得不可用时保留专用 SQL 池（以前称为 SQL DW）的可用性。 若有其他疑虑，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 **问：Gen1 和 Gen2 之间的 T-SQL 语法有区别吗？**
 
@@ -133,4 +133,4 @@ Microsoft 正在帮助降低 (以前的 SQL DW) 运行专用 SQL 池的入门级
 - [就地升级和从还原点升级](upgrade-to-latest-generation.md)
 - [创建用户定义的还原点](sql-data-warehouse-restore-points.md)
 - [了解如何还原到 Gen2](sql-data-warehouse-restore-active-paused-dw.md)
-- [打开 Azure Synapse Analytics 支持请求](./sql-data-warehouse-get-started-create-support-ticket.md)
+- [创建 Azure Synapse Analytics 支持请求](./sql-data-warehouse-get-started-create-support-ticket.md)

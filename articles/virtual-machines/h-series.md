@@ -1,23 +1,23 @@
 ---
-title: H 系列-Azure 虚拟机
-description: H 系列 Vm 的规格。
-author: ju-shim
+title: H 系列 - Azure 虚拟机
+description: H 系列 VM 的规格。
+author: vermagit
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 274399e5c124bcf9d925a483584d4f501e6b5106
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: b3e3beb51256bbf22d29d74b51c52ca3a6bee0c4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672482"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774773"
 ---
 # <a name="h-series"></a>H 系列
 
-H 系列 Vm 针对按高 CPU 频率驱动的应用程序和每个核心要求提供较大内存的优化。 H 系列 Vm 功能8或 16 Intel 至强 E5 2667 v3 处理器核心，每个 CPU 核心最多 14 GB RAM，无超线程。 H 系列功能 56 Gb/秒，FDR 不会阻止 fat 树配置，以实现一致的 RDMA 性能。 H 系列 Vm 目前不支持 SR-IOV，并支持 Intel MPI 1.x 和 MS-CHAP。
+H 系列 VM 针对由高 CPU 频率或每核心大内存要求驱动的应用程序进行了优化。 H 系列 VM 具有 8 或 16 个 Intel Xeon E5 2667 v3 处理器核心，每个 CPU 核心最多 14 GB RAM，无超线程。 H 系列提供 56 Gb/秒的 Mellanox FDR InfiniBand，具有无阻塞的丰富树配置，可实现一致的 RDMA 性能。 H 系列 VM 目前不支持 SR-IOV，支持 Intel MPI 5.x 和 MS-MPI。
 
 [ACU](acu.md)：290-300<br>
 [高级存储](premium-storage-performance.md)：不支持<br>
@@ -29,21 +29,32 @@ H 系列 Vm 针对按高 CPU 频率驱动的应用程序和每个核心要求提
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
-| 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz)  | 所有核心频率 (GHz，峰值)  | 单核频率 (GHz，峰值)  | RDMA 性能 (Gb/s)  | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 磁盘最大吞吐量：IOPS | 最大以太网 Vnic |
+| 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率（GHz，峰值） | 单一核心频率（GHz，峰值） | RDMA 性能（Gb/秒） | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 磁盘最大吞吐量：IOPS | 最大以太网 vNIC 数 |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8   | 8  | Intel 至强 E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 1.x，MS-MPI | 1000 | 32 | 32 x 500 | 2 |
-| Standard_H16  | 16 | Intel 至强 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 1.x，MS-MPI | 2000 | 64 | 64 x 500 | 4 |
-| Standard_H8m  | 8  | Intel 至强 E5 2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 1.x，MS-MPI | 1000 | 32 | 32 x 500 | 2 |
-| Standard_H16m | 16 | Intel 至强 E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 1.x，MS-MPI | 2000 | 64 | 64 x 500 | 4 |
-| Standard_H16r <sup>1</sup>  | 16 | Intel 至强 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 1.x，MS-MPI | 2000 | 64 | 64 x 500 | 4 |
-| Standard_H16mr <sup>1</sup> | 16 | Intel 至强 E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 1.x，MS-MPI | 2000 | 64 | 64 x 500 | 4 |
+| Standard_H8   | 8  | Intel Xeon E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-MPI | 1000 | 32 | 32 x 500 | 2 |
+| Standard_H16  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-MPI | 2000 | 64 | 64 x 500 | 4 |
+| Standard_H8m  | 8  | Intel Xeon E5 2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-MPI | 1000 | 32 | 32 x 500 | 2 |
+| Standard_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-MPI | 2000 | 64 | 64 x 500 | 4 |
+| Standard_H16r <sup>1</sup>  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x、MS-MPI | 2000 | 64 | 64 x 500 | 4 |
+| Standard_H16mr <sup>1</sup> | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x、MS-MPI | 2000 | 64 | 64 x 500 | 4 |
 
-<sup>1</sup> 对于 MPI 应用程序，专用 RDMA 后端网络是通过 FDR 无限网络启用的。
-
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+<sup>1</sup> 对于 MPI 应用程序来说，专用 RDMA 后端网络是通过 FDR InfiniBand 网络启用的。
 
 > [!NOTE]
-> 在 [支持 RDMA 的 vm](sizes-hpc.md#rdma-capable-instances)之间，H 系列不启用 sr-iov。 因此，支持的 [Vm 映像](./workloads/hpc/configure.md#vm-images)、未受支持的 [驱动程序](./workloads/hpc/enable-infiniband.md) 要求和受支持的 [MPI 库](./workloads/hpc/setup-mpi.md) 不同于启用 sr-iov 的 vm。
+> [支持 RDMA 的 VM](sizes-hpc.md#rdma-capable-instances) 中的 H 系列不支持 SR-IOV。 因此，支持的 [VM 映像](./workloads/hpc/configure.md#vm-images)、[InfiniBand 驱动程序](./workloads/hpc/enable-infiniband.md)的要求和支持的 [MPI 库](./workloads/hpc/setup-mpi.md)与支持 SR-IOV 的 VM 不同。
+
+## <a name="software-specifications"></a>软件规格
+
+| 软件规格     |HC 系列 VM           |
+|-----------------------------|-----------------------|
+| 最大 MPI 作业大小            | 4800 个内核（单个虚拟机规模中的 300 个虚拟机，且 singlePlacementGroup = true）  |
+| MPI 支持                 | Intel MPI 5.x、MS-MPI  |
+| 非 SRIOV RDMA 的操作系统支持   | CentOS/RHEL 6.5 - 7.4、SLES 12 SP4+、WinServer 2012 - 2016  |
+| Orchestrator 支持        | CycleCloud、Batch、AKS  |
+
+[!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="other-sizes"></a>其他大小
 
@@ -56,7 +67,6 @@ H 系列 Vm 针对按高 CPU 频率驱动的应用程序和每个核心要求提
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何在[HPC 工作负荷](./workloads/hpc/overview.md)中[配置 Vm](./workloads/hpc/configure.md)、[启用无限](./workloads/hpc/enable-infiniband.md)，为 Azure[设置 MPI](./workloads/hpc/setup-mpi.md)和优化 hpc 应用程序。
-- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告以及一些 HPC 示例和结果。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
 - 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。
 - 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

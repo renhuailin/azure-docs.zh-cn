@@ -5,19 +5,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
 ms.openlocfilehash: 2cc6556f681ece170bdfe02b985f56274c0faa1e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936973"
 ---
-# <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>方案：Azure HDInsight 中的 Apache Phoenix 连接问题
+# <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>场景：Azure HDInsight 中的 Apache Phoenix 连接问题
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 
-无法使用 Apache Phoenix 连接到 Apache HBase。 原因可能各不相同。
+无法使用 Apache Phoenix 连接到 Apache HBase。 原因可能有所不同。
 
 ## <a name="cause-incorrect-ip"></a>原因：IP 不正确
 
@@ -25,7 +25,7 @@ ms.locfileid: "98936973"
 
 ### <a name="resolution"></a>解决方法
 
-可以通过打开指向“HBase”   > “快速链接”   > “ZK(活动)”   > “ZooKeeper 信息”  的链接，从 Ambari UI 确定活动 ZooKeeper 节点的 IP。 根据需要更正 IP。
+可以通过打开指向“HBase” > “快速链接” > “ZK(活动)” > “ZooKeeper 信息”的链接，从 Ambari UI 确定活动 ZooKeeper 节点的 IP。    根据需要更正 IP。
 
 ---
 
@@ -47,11 +47,11 @@ ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,
 
 从 Apache Ambari UI 完成以下步骤，以在所有 ZooKeeper 节点上重启 HMaster 服务：
 
-1. 从 HBase 的“摘要”部分，转到“HBase” > “Active HBase Master”。   
+1. 从 HBase 的“摘要”部分，转到“HBase” > “Active HBase Master”。
 
-1. 从“组件”部分重启 HBase Master 服务。 
+1. 从“组件”部分重启 HBase Master 服务。
 
-1. 为所有剩余的“Standby HBase Master”服务重复以上步骤。 
+1. 为所有剩余的“Standby HBase Master”服务重复以上步骤。
 
 HBase Master 服务最多可能需要五分钟才能稳定下来并完成恢复。 在 `SYSTEM.CATALOG` 表恢复正常后，与 Apache Phoenix 的连接问题应该会自动得到解决。
 

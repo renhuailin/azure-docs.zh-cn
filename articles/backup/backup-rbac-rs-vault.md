@@ -4,12 +4,12 @@ description: 使用 Azure 基于角色的访问控制来管理对恢复服务保
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 179cb6efcff4bcf50a64a6d58f861622e853b02b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0b321a5f33bd75ce8615d6d2a90442a83d9fff67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553402"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102613436"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用 Azure 基于角色的访问控制来管理 Azure 备份恢复点
 
@@ -39,7 +39,7 @@ Azure 备份提供三个用于控制备份管理操作的内置角色。 详细�
 | | 虚拟机参与者 | VM 资源 |  你也可以考虑具有以下权限的自定义角色而不是内置角色：Microsoft.Compute/virtualMachines/write |
 | 按需 VM 备份 | 备份操作员 | 恢复服务保管库 |   |
 | 还原 VM | 备份操作员 | 恢复服务保管库 |   |
-| | 参与者 | 将在其中部署 VM 的资源组 |   你也可以考虑具有以下权限的自定义角色而不是内置角色：Microsoft.Resources/subscriptions/resourceGroups/write、Microsoft.DomainRegistration/domains/write、Microsoft.Compute/virtualMachines/write、Microsoft.Network/virtualNetworks/read、Microsoft.Network/virtualNetworks/subnets/join/action | 
+| | 参与者 | 将在其中部署 VM 的资源组 |   你也可以考虑具有以下权限的自定义角色而不是内置角色：Microsoft.Resources/subscriptions/resourceGroups/write、Microsoft.DomainRegistration/domains/write、Microsoft.Compute/virtualMachines/write、Microsoft.Network/virtualNetworks/read、Microsoft.Network/virtualNetworks/subnets/join/action |
 | | 虚拟机参与者 | 已备份的源 VM |   你也可以考虑具有以下权限的自定义角色而不是内置角色：Microsoft.Compute/virtualMachines/write |
 | 还原非托管磁盘 VM 备份 | 备份操作员 | 恢复服务保管库 |
 | | 虚拟机参与者 | 已备份的源 VM | 你也可以考虑具有以下权限的自定义角色而不是内置角色：Microsoft.Compute/virtualMachines/write |
@@ -50,6 +50,7 @@ Azure 备份提供三个用于控制备份管理操作的内置角色。 详细�
 | | 参与者 | 托管磁盘将还原到的资源组 | 你也可以考虑具有以下权限的自定义角色而不是内置角色：Microsoft.Resources/subscriptions/resourceGroups/write|
 | 从 VM 备份还原单个文件 | 备份操作员 | 恢复服务保管库 |
 | | 虚拟机参与者 | 已备份的源 VM | 你也可以考虑具有以下权限的自定义角色而不是内置角色：Microsoft.Compute/virtualMachines/write |
+| 跨区域还原 | 备份操作员 | 恢复服务保管库的订阅 | 这是除上面提到的还原权限之外的权限。 专用于 CRR，可考虑具有以下权限的自定义角色，而不是内置角色：   "Microsoft.RecoveryServices/locations/backupAadProperties/read" "Microsoft.RecoveryServices/locations/backupCrrJobs/action"         "Microsoft.RecoveryServices/locations/backupCrrJob/action" "Microsoft.RecoveryServices/locations/backupCrossRegionRestore/action"          "Microsoft.RecoveryServices/locations/backupCrrOperationResults/read" "Microsoft.RecoveryServices/locations/backupCrrOperationsStatus/read" |
 | 创建 Azure VM 备份的备份策略 | 备份参与者 | 恢复服务保管库 |
 | 修改 Azure VM 备份的备份策略 | 备份参与者 | 恢复服务保管库 |
 | 删除 Azure VM 备份的备份策略 | 备份参与者 | 恢复服务保管库 |

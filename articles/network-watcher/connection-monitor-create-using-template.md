@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
 ms.openlocfilehash: 46bdaf932d4224bf97b46e7713d49d815ca1bcdd
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99832991"
 ---
 # <a name="create-a-connection-monitor-using-the-arm-template"></a>使用 ARM 模板创建连接监视器
 
 > [!IMPORTANT]
-> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在 (经典) 的连接监视器中添加新的连接监视器。 你可以继续使用在2021年7月1日之前创建的测试和连接监视器。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前，将 [测试从网络性能监视器 ](migrate-to-connection-monitor-from-network-performance-monitor.md) 或  [从连接监视器迁移 (经典) ](migrate-to-connection-monitor-from-connection-monitor-classic.md) 升级到 Azure 网络观察程序中的新连接监视器。
+> 自 2021 年 7 月 1 日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在连接监视器（经典版）中添加新的连接监视器。 可以继续使用在 2021 年 7 月 1 日之前创建的测试和连接监视器。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[将测试从网络性能监视器迁移到新连接监视器](migrate-to-connection-monitor-from-network-performance-monitor.md)或[从连接监视器（经典版）迁移到新连接监视器](migrate-to-connection-monitor-from-connection-monitor-classic.md)。
 
 了解如何使用 ARMClient 创建连接监视器以监视资源之间的通信。 它支持混合部署和 Azure 云部署。
 
@@ -362,18 +362,18 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 * location - 将在其中创建连接监视器的区域
 
 * 终结点
-    * 名称–每个终结点的唯一名称
-    * resourceId –对于 Azure 终结点，资源 ID 是指虚拟机的 Azure 资源管理器资源 ID。对于非 Azure 终结点，资源 ID 是指链接到非 Azure 代理的 Log Analytics 工作区的 Azure 资源管理器资源 ID。
-    * address-仅当未指定资源 ID 或资源 ID Log Analytics 工作区时适用。 如果与 Log Analytics 资源 ID 一起使用，则是指可用于监视的代理的 FQDN。 如果在没有资源 ID 的情况下使用，则可以是任何公共终结点的 URL 或 IP。
-    * 筛选器–对于非 Azure 终结点，请使用筛选器从将用于监视连接监视器资源的 Log Analytics 工作区中选择 "代理"。 如果未设置筛选器，则属于 Log Analytics 工作区的所有代理均可用于监视
-        * 类型–将类型设置为 "代理地址"
-        * address –将 address 设置为本地代理的 FQDN
+    * name – 每个终结点的唯一名称
+    * resourceId – 对于 Azure 终结点，资源 ID 是指虚拟机的 Azure 资源管理器资源 ID。对于非 Azure 终结点，资源 ID 是指链接到非 Azure 代理的 Log Analytics 工作区的 Azure 资源管理器资源 ID。
+    * address – 仅当未指定资源 ID 或资源 ID 为 Log Analytics 工作区时适用。 如果与 Log Analytics 资源 ID 一起使用，则是指可用于监视的代理的 FQDN。 如果在没有资源 ID 的情况下使用，则可以是任何公共终结点的 URL 或 IP。
+    * filter – 对于非 Azure 终结点，使用筛选器从 Log Analytics 工作区中选择代理，该代理将用于在连接监视资源中进行监视。 如果未设置筛选器，则属于 Log Analytics 工作区的所有代理均可用于监视
+        * type – 将类型设置为“代理地址”
+        * address – 将地址设置为本地代理的 FQDN
 
 * 测试组
     * name - 命名测试组。
     * testConfigurations - 根据哪些源终结点连接到目标终结点来测试配置
     * sources - 从上面创建的终结点中进行选择。 基于 Azure 的源终结点需要安装 Azure 网络观察程序扩展，基于非 Azure 的源终结点需要安装 Azure Log Analytics 代理。 若要为源安装代理，请参阅[安装监视代理](./connection-monitor-overview.md#install-monitoring-agents)。
-    * 目标-从上面创建的终结点中进行选择。 可以通过将 Azure VM 或任何终结点（公共 IP、URL 或 FQDN）指定为目标，从而监视其连接。 单个测试组中可以添加 Azure VM、Office 365 URL、Dynamics 365 URL 和自定义终结点。
+    * destinations - 从上面创建的终结点中进行选择。 可以通过将 Azure VM 或任何终结点（公共 IP、URL 或 FQDN）指定为目标，从而监视其连接。 单个测试组中可以添加 Azure VM、Office 365 URL、Dynamics 365 URL 和自定义终结点。
     * disable - 选择此字段为测试组指定的所有源和目标禁用监视。
 
 * 测试配置

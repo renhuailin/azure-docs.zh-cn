@@ -6,21 +6,21 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 3c3d1930234c178a56227830ef0702450ddf4a8c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 174f177080a421ec65f4ba79c550292737284de4
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580661"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734785"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>监视 Azure 逻辑应用的运行状态、查看其触发历史记录并为其设置警报
 
 在[创建并运行逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)后，可以检查该逻辑应用的运行状态、[运行历史记录](#review-runs-history)、[触发历史记录](#review-trigger-history)和性能。 要获取关于故障或其他可能问题的通知，请设置[警报](#add-azure-alerts)。 例如，可以创建一个警报，用于检测“一小时内运行失败超过五次的情况”。
 
-若要进行实时事件监视和更丰富的调试，可以使用 [Azure Monitor 日志](../azure-monitor/overview.md)为逻辑应用设置诊断日志记录。 此 Azure 服务可帮助你监视云和本地环境，使你能够更轻松地维持其可用性和性能。 然后，可以查找和查看事件，例如触发事件、运行事件和操作事件。 将此信息存储在 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md)中，可以创建[日志查询](../azure-monitor/logs/log-query-overview.md)来帮助查找和分析此信息。 还可以将此诊断数据与其他 Azure 服务一起使用，例如 Azure 存储和 Azure 事件中心。 有关详细信息，请参阅 [使用 Azure Monitor 监视逻辑应用](../logic-apps/monitor-logic-apps-log-analytics.md)。
+若要进行实时事件监视和更丰富的调试，可以使用 [Azure Monitor 日志](../azure-monitor/overview.md)为逻辑应用设置诊断日志记录。 此 Azure 服务可帮助你监视云和本地环境，使你能够更轻松地维持其可用性和性能。 然后，可以查找和查看事件，例如触发事件、运行事件和操作事件。 将此信息存储在 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md)中，可以创建[日志查询](../azure-monitor/logs/log-query-overview.md)来帮助查找和分析此信息。 还可以将此诊断数据与其他 Azure 服务一起使用，例如 Azure 存储和 Azure 事件中心。 有关详细信息，请参阅[使用 Azure Monitor 监视逻辑应用](../logic-apps/monitor-logic-apps-log-analytics.md)。
 
 > [!NOTE]
-> 如果逻辑应用在 [集成服务环境中运行 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 已创建为使用 [内部访问终结点](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)，则只能 *从虚拟网络内部* 查看和访问逻辑应用的运行历史记录中的输入和输出。 请确保专用终结点与要从中访问运行历史记录的计算机之间存在网络连接。 例如，你的客户端计算机可以位于 ISE 的虚拟网络中，也可以存在于连接到 ISE 虚拟网络的虚拟网络中，例如通过对等互连或虚拟专用网络。 有关详细信息，请参阅 [ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
+> 如果逻辑应用程序在为使用[内部访问终结点](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)而创建的[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中运行，则只能从虚拟网络内部查看和访问逻辑应用的运行历史记录中的输入和输出。 请确保专用终结点与要从中访问运行历史记录的计算机之间存在网络连接。 例如，客户端计算机可能位于 ISE 的虚拟网络中，也可能存在于通过对等互连或虚拟专用网络等连接到 ISE 的虚拟网络的某个虚拟网络中。 有关详细信息，请参阅 [ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。
 
 <a name="review-runs-history"></a>
 
@@ -43,21 +43,22 @@ ms.locfileid: "100580661"
    在概述窗格中的“运行历史记录”下，显示了逻辑应用的所有以往、当前和任何等待中的运行。 如果列表显示多次运行，且你找不到所需条目，请尝试筛选列表。
 
    > [!TIP]
-   > 如果未显示运行状态，请尝试通过选择 " **刷新**" 来刷新 "概述" 页。 由于不符合条件或找不到任何数据而跳过的触发器不会运行。
+   > 如果未显示运行状态，请尝试通过选择“刷新”来刷新概述页。
+   > 如果由于不符合条件或找不到数据而跳过了触发器，则不会发生运行。
 
    ![概述、运行历史记录和其他逻辑应用信息](./media/monitor-logic-apps/overview-pane-logic-app-details-run-history.png)
 
-   下面是可能的运行状态：
+   可能的运行状态如下：
 
    | 运行状态 | 说明 |
    |------------|-------------|
-   | **Aborted** | 由于外部问题（例如，系统中断或过期的 Azure 订阅），运行已停止或未完成。 |
+   | **Aborted** | 由于外部问题（例如，系统中断或 Azure 订阅过期），运行已停止或未完成。 |
    | 已取消 | 运行已触发并已启动，但收到了取消请求。 |
-   | 失败 | 运行中的至少一个操作失败。 未设置工作流中的后续操作来处理失败。 |
-   | **正在运行** | 运行已触发并正在进行中，但对于由于 [操作限制](logic-apps-limits-and-config.md) 或 [当前定价计划](https://azure.microsoft.com/pricing/details/logic-apps/)而受到限制的运行，也可能显示此状态。 <p><p>**提示**：如果设置 [诊断日志记录](monitor-logic-apps-log-analytics.md)，则可以获取发生的任何限制事件的相关信息。 |
-   | 成功 | 运行成功。 如果任何操作失败，工作流中的后续操作会处理失败。 |
-   | **已超时** | 运行超时，因为当前持续时间超过了运行持续时间限制，该限制由 " [**运行历史记录保持期（天**](logic-apps-limits-and-config.md#run-duration-retention-limits)）" 设置控制。 运行的持续时间是使用运行的开始时间和开始时间的运行持续时间限制来计算的。 <p><p>**注意**：如果此运行的持续时间还超出了当前 *运行历史记录保留限制*，而此限制也是由 " [**运行历史记录保持期（天**](logic-apps-limits-and-config.md#run-duration-retention-limits)）" 设置控制的，则每日清除作业将从运行历史记录中清除运行。 无论运行超时还是完成，始终都将使用运行的开始时间和 *当前* 保留限制来计算保持期。 因此，如果您缩短正在进行的运行的持续时间限制，则运行将超时。但是，运行会根据运行的持续时间是否超出保留限制，从运行历史记录中清除运行。 |
-   | **正在等待** | 运行未启动或已暂停，例如，由于仍在运行的工作流实例较早而暂停。 |
+   | **已失败** | 运行中的至少一个操作失败。 工作流中未设置后续操作来处理失败。 |
+   | **正在运行** | 运行已被触发并正在进行，但如果运行由于[操作限制](logic-apps-limits-and-config.md)或[当前定价计划](https://azure.microsoft.com/pricing/details/logic-apps/)而被限制，也可能会显示此状态。 <p><p>**提示**：如果你设置了 [诊断日志记录](monitor-logic-apps-log-analytics.md)，则可以获取发生的任何限制事件的相关信息。 |
+   | 成功 | 运行已成功。 如果有任何操作失败，工作流中的后续操作已处理了该失败。 |
+   | **已超时** | 运行超时，因为当前持续时间超出了运行持续时间限制，该限制由 [ **“运行历史记录保留期(天)”** 设置](logic-apps-limits-and-config.md#run-duration-retention-limits)控制。 运行持续时间是使用运行开始时间和在该开始时间有效的运行持续时间限制来计算的。 <p><p>**注意**：如果运行的持续时间还超出了当前的运行历史记录保留期限制（该限制也由 [ **“运行历史记录保留期(天)”** 设置](logic-apps-limits-and-config.md#run-duration-retention-limits)控制），则每日清理作业会将该运行从运行历史记录中清除。 无论运行是超时还是完成，始终都将使用运行的开始时间和当前保留期限制来计算保留期。 因此，如果你减小进行中的某个运行的持续时间限制，则该运行将超时。但是，运行将保留或从运行历史记录中清除，具体取决于运行持续时间是否超出了保留期限制。 |
+   | **正在等待** | 运行尚未启动或已暂停，例如，由于前一个工作流实例仍在运行。 |
    |||
 
 1. 若要查看特定运行的步骤和其他信息，请在“运行历史记录”下选择该运行。
@@ -91,7 +92,9 @@ ms.locfileid: "100580661"
      现在可以查看该步骤的信息（例如输入和输出），例如：
 
    > [!NOTE]
-   > 所有运行时详细信息和事件都在逻辑应用服务中进行加密。 只有当用户请求查看该数据时，才会进行解密。 可以 [在运行历史记录中隐藏输入和输出，](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) 也可以通过 azure [RBAC) 使用 azure 基于角色的访问 (控制 ](../role-based-access-control/overview.md)来控制用户对此信息的访问权限。
+   > 所有运行时详细信息和事件都在逻辑应用服务中进行加密。
+   > 只有当用户请求查看该数据时，才会进行解密。
+   > 可以[在运行历史记录中隐藏输入和输出](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate)，或使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 来控制用户对此信息的访问。
 
 <a name="review-trigger-history"></a>
 
@@ -119,13 +122,13 @@ ms.locfileid: "100580661"
 
    ![针对不同项的多次触发尝试](./media/monitor-logic-apps/logic-app-trigger-history.png)
 
-   下面是可能的触发器尝试状态：
+   可能的触发器尝试状态如下：
 
    | 触发器状态 | 说明 |
    |----------------|-------------|
    | 失败 | 出现了错误。 若要查看失败触发器生成的任何错误消息，请选择该触发器尝试并选择“输出”。 例如，你可能发现输入无效。 |
-   | 已跳过 | 触发器已检查终结点，但找不到满足指定条件的数据。 |
-   | 成功 | 触发器已检查终结点并找到可用数据。 通常，已 **触发** 状态也会显示在此状态旁。 如果没有，触发器定义可能未满足某一条件或 `SplitOn` 命令。 <p><p>此状态可应用于手动触发器、定期触发器或轮询触发器。 如果操作生成未处理的错误，尽管可以成功运行触发器，但运行本身可能仍会失败。 |
+   | 已跳过 | 触发器检查了终结点，但找不到满足指定条件的数据。 |
+   | 成功 | 触发器已检查终结点并找到可用数据。 通常，此状态还会伴随出现“已触发”状态。 如果没有，触发器定义可能未满足某一条件或 `SplitOn` 命令。 <p><p>此状态可应用于手动触发器、定期触发器或轮询触发器。 如果操作生成未处理的错误，尽管可以成功运行触发器，但运行本身可能仍会失败。 |
    |||
 
    > [!TIP]
@@ -189,10 +192,10 @@ ms.locfileid: "100580661"
 
 > [!TIP]
 > 要从警报运行逻辑应用，可以在工作流中包括[请求触发器](../connectors/connectors-native-reqres.md)，从而可以执行类似以下示例的任务：
-> 
+>
 > * [发布到 Slack](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
-> * [发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
-> * [向队列添加消息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
+> * [发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-text-message-with-logic-app)
+> * [向队列添加消息](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-queue-with-logic-app)
 
 ## <a name="next-steps"></a>后续步骤
 
