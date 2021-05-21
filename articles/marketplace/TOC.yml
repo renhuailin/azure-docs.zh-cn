@@ -419,6 +419,8 @@
       href: /legal/marketplace/mpa-change-history
 - name: 参考
   items:
+    - name: 市场 API 指南
+      href: marketplace-apis-guide.md
     - name: CPP API 参考
       items:
         - name: CPP API 概述

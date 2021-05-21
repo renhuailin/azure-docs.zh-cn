@@ -81,6 +81,10 @@
       items:
         - name: 对远程文件 CLI 进行编码和流式传输
           href: stream-files-cli-quickstart.md
+        - name: 使用 Key Vault 密钥来加密数据
+          href: security-encrypt-data-managed-identity-cli-tutorial.md
+        - name: 使用托管标识访问存储
+          href: security-access-storage-managed-identity-cli-tutorial.md
     - name: Node.js
       items:
         - name: 对远程文件 Node.js 进行编码和流式传输
@@ -380,7 +384,7 @@
           href: job-multiple-transform-outputs-how-to.md
         - name: HTTPS 作为作业输入
           href: job-input-from-http-how-to.md
-    - name: 缩放媒体预留单位 (CLI)
+    - name: 使用 CLI 缩放媒体保留单位
       href: media-reserved-units-cli-how-to.md
     - name: 实时流式处理
       items:
@@ -455,6 +459,10 @@
           href: security-trusted-storage-rest-tutorial.md
         - name: REST API 的客户管理的密钥
           href: security-customer-managed-keys-rest-postman-tutorial.md
+        - name: 使用 Key Vault 密钥来加密数据
+          href: security-encrypt-data-managed-identity-cli-tutorial.md
+        - name: 使用托管标识访问存储
+          href: security-access-storage-managed-identity-cli-tutorial.md
     - name: 使用媒体播放器
       items:
         - name: Azure Media Player 完全设置

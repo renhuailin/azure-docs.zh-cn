@@ -203,8 +203,8 @@
           href: core/howto-create-iot-central-application.md
         - name: 设置设备模板
           href: core/howto-set-up-template.md
-        - name: 对设备模板进行版本控制
-          href: core/howto-version-device-template.md
+        - name: 编辑设备模板
+          href: core/howto-edit-device-template.md
         - name: 如何使用属性
           href: core/howto-use-properties.md
         - name: 如何使用命令

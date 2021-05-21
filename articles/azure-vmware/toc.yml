@@ -55,7 +55,7 @@
 - name: 操作指南
   items:
     - name: 为 Azure VMware 解决方案请求主机配额
-      href: enable-azure-vmware-solution.md
+      href: request-host-quota-azure-vmware-solution.md
     - name: 移动资源
       items:
         - name: 移动 Azure VMware 解决方案订阅
@@ -64,8 +64,10 @@
       href: reserved-instance.md
     - name: 创建 Azure VMware 解决方案评估
       href: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
-    - name: 管理 DHCP
-      href: manage-dhcp.md
+    - name: 配置和管理 DHCP
+      href: configure-dhcp-azure-vmware-solution.md
+    - name: 在 L2 延伸 VMware HCX 网络上配置 DHCP
+      href: configure-l2-stretched-vmware-hcx-networks.md
     - name: 配置 NSX 网络组件
       href: configure-nsx-network-components-azure-portal.md
     - name: 配置 GitHub Enterprise 服务器
@@ -147,7 +149,7 @@
     - name: 常见问题
       items:
         - name: 常规
-          href: /azure/azure-vmware/faq#general
+          href: faq.yml
         - name: 客户通信
           href: /azure/azure-vmware/faq#customer-communication
         - name: 配置和设置

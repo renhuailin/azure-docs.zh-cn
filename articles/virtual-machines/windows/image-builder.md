@@ -1,36 +1,36 @@
 ---
-title: '使用 Azure 映像生成器创建 Windows VM (预览) '
+title: 使用 Azure 映像生成器创建 Windows VM（预览版）
 description: 使用 Azure 映像生成器创建 Windows VM。
-author: cynthn
-ms.author: cynthn
-ms.date: 03/02/2020
+author: kof-f
+ms.author: kofiforson
+ms.date: 04/23/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: 918cee723bfde69d08532aee6fe4f395dbddb4ee
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: cd941868cd03a456ba78b57bcfeae5f8adfb59f4
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695441"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107948196"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>预览：使用 Azure 映像生成器创建 Windows VM
+# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>预览版：使用 Azure 映像生成器创建 Windows VM
 
-本文介绍如何使用 Azure VM 映像生成器创建自定义的 Windows 映像。 本文中的示例使用 [定制](../linux/image-builder-json.md#properties-customize) 程序自定义映像：
-- PowerShell (ScriptUri) -下载并运行 [powershell 脚本](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)。
-- Windows 重新启动-重新启动 VM。
-- PowerShell (内联) -运行特定命令。 在此示例中，它使用在 VM 上创建一个目录 `mkdir c:\\buildActions` 。
-- 文件-将 GitHub 中的文件复制到 VM。 此示例将 [index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) 复制到 `c:\buildArtifacts\index.html` VM 上的。
-- buildTimeoutInMinutes-增加生成时间以允许较长时间运行的生成，默认值为240分钟，可以增加生成时间以允许较长时间运行的生成。
-- vmProfile-指定 vmSize 和网络属性
-- osDiskSizeGB-可以增加映像的大小
-- 标识-提供要在生成过程中使用的 Azure 映像生成器的标识
+本文介绍如何使用 Azure VM 映像生成器创建自定义的 Windows 映像。 本文中的示例使用[自定义程序](../linux/image-builder-json.md#properties-customize)来自定义映像：
+- PowerShell (ScriptUri) - 下载并运行 [PowerShell 脚本](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)。
+- Windows 重启 - 重启 VM。
+- PowerShell（内联）- 运行特定的命令。 本示例将使用 `mkdir c:\\buildActions` 在 VM 上创建一个目录。
+- 文件 - 将 GitHub 中的文件复制到 VM。 本示例将 [index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) 复制到 VM 上的 `c:\buildArtifacts\index.html` 中。
+- buildTimeoutInMinutes - 增大生成时间，使长时间运行的生成能够完成。默认值为 240 分钟，但你可以增大生成时间，使长时间运行的生成能够完成。
+- vmProfile - 指定 vmSize 和 Network 属性
+- osDiskSizeGB - 可以增大映像的大小
+- identity - 提供在生成过程中要使用的 Azure 映像生成器标识
 
 
-你还可以指定 `buildTimeoutInMinutes` 。 默认值为240分钟，可以增加生成时间以允许较长的运行生成。
+也可以指定 `buildTimeoutInMinutes`。 默认值为 240 分钟，但你可以增大生成时间，使长时间运行的生成能够完成。
 
-我们将使用一个示例 .json 模板来配置映像。 此处使用的 json 文件是： [helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json)。 
+我们将使用一个示例 .json 模板来配置映像。 我们将使用的 .json 文件位于：[helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json)。 
 
 
 > [!IMPORTANT]
@@ -105,7 +105,7 @@ az group create -n $imageResourceGroup -l $location
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>创建用户分配的标识，并在资源组上设置权限
-映像生成器将使用提供的 [用户标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) 将图像注入资源组。 在此示例中，你将创建一个 Azure 角色定义，其中包含用于对映像进行分布的精细操作。 然后将此角色定义分配给用户标识。
+映像生成器使用提供的 [user-identity](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) 将映像注入到资源组中。 在本示例中，你将创建一个 Azure 角色定义，其中包含分发映像时要执行的精细操作。 然后将此角色定义分配给用户标识。
 
 ## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>创建用户分配的托管标识并授予权限 
 ```bash
@@ -143,7 +143,7 @@ az role assignment create \
 
 ## <a name="download-the-image-configuration-template-example"></a>下载映像配置模板示例
 
-已创建一个参数化图像配置模板供你试用。 下载示例 json 文件，并将其配置为先前设置的变量。
+我们已经创建了一个参数化映像配置模板供你试用。 请下载示例 .json 文件，并使用先前设置的变量对其进行配置。
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json -o helloImageTemplateWin.json
@@ -157,19 +157,19 @@ sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateWin.json
 
 ```
 
-您可以使用文本编辑器（如）在终端中修改此示例 `vi` 。
+可以使用 `vi` 等文本编辑器在终端中修改此示例。
 
 ```azurecli-interactive
 vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> 对于源映像，必须始终 [指定版本](../linux/image-builder-troubleshoot.md#build--step-failed-for-image-version)，不能使用 `latest` 。
-> 如果添加或更改将映像分发到的资源组，则必须在资源组中 [设置权限](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group) 。
+> 对于源映像，始终必须[指定一个版本](../linux/image-builder-troubleshoot.md#build--step-failed-for-image-version)，而不能使用 `latest`。
+> 如果添加或更改映像所分发到的资源组，则必须[设置对资源组的权限](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group)。
  
 ## <a name="create-the-image"></a>创建映像
 
-将映像配置提交给 VM 映像生成器服务
+将映像配置提交到 VM 映像生成器服务
 
 ```azurecli-interactive
 az resource create \
@@ -180,16 +180,16 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-完成后，这将向控制台返回一条成功消息，并 `Image Builder Configuration Template` 在中创建一个 `$imageResourceGroup` 。 如果启用 "显示隐藏的类型"，则可以在 Azure 门户的资源组中看到此资源。
+完成后，此命令会在控制台中返回成功消息，并在 `$imageResourceGroup` 中创建 `Image Builder Configuration Template`。 如果启用了“显示隐藏的类型”，则可以在 Azure 门户上的资源组中看到此资源。
 
-在后台，映像生成器还会在您的订阅中创建一个暂存资源组。 此资源组用于生成映像。 它将采用以下格式： `IT_<DestinationResourceGroup>_<TemplateName>`
+在后台，映像生成器还会在你的订阅中创建一个暂存资源组。 此资源组用于映像生成过程。 它采用以下格式：`IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
-> 不能直接删除过渡资源组。 首先删除映像模板项目，这将导致删除暂存资源组。
+> 切勿直接删除暂存资源组。 请先删除映像模板项目，这样就会删除暂存资源组。
 
-如果服务在映像配置模板提交期间报告失败：
--  查看这些 [故障排除](../linux/image-builder-troubleshoot.md#troubleshoot-image-template-submission-errors) 步骤。 
-- 重试提交之前，需要使用以下代码片段删除模板。
+如果在提交映像配置模板期间服务报告失败：
+-  请查看这些[故障排除](../linux/image-builder-troubleshoot.md#troubleshoot-image-template-submission-errors)步骤。 
+- 在重试提交之前，需使用以下代码片段删除模板。
 
 ```azurecli-interactive
 az resource delete \
@@ -199,7 +199,7 @@ az resource delete \
 ```
 
 ## <a name="start-the-image-build"></a>启动映像生成
-使用 [az 资源 invoke](/cli/azure/resource#az-resource-invoke-action)启动映像生成过程。
+使用 [az resource invoke-action](/cli/azure/resource#az_resource_invoke_action) 启动映像生成过程。
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -209,14 +209,14 @@ az resource invoke-action \
      --action Run 
 ```
 
-等待生成完成。 这可能需要大约15分钟。
+等待生成完成。 这可能需要大约 15 分钟。
 
-如果遇到任何错误，请查看这些 [故障排除](../linux/image-builder-troubleshoot.md#troubleshoot-common-build-errors) 步骤。
+如果遇到任何错误，请查看这些[故障排除](../linux/image-builder-troubleshoot.md#troubleshoot-common-build-errors)步骤。
 
 
 ## <a name="create-the-vm"></a>创建 VM
 
-使用生成的映像创建 VM。 将替换为 *\<password>* VM 上的你自己的密码 `aibuser` 。
+使用生成的映像创建 VM。 请将 \<password> 替换为你自己的、在 VM 上使用的 `aibuser` 的密码。
 
 ```azurecli-interactive
 az vm create \
@@ -236,15 +236,15 @@ az vm create \
 dir c:\
 ```
 
-在映像自定义期间，应看到这两个目录是创建的：
+在自定义映像期间，应会看到创建了以下两个目录：
 - buildActions
 - buildArtifacts
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
-完成后，删除资源。
+完成后，请删除资源。
 
-### <a name="delete-the-image-builder-template"></a>删除图像生成器模板
+### <a name="delete-the-image-builder-template"></a>删除映像生成器模板
 
 ```azurecli-interactive
 az resource delete \
@@ -253,7 +253,7 @@ az resource delete \
     -n helloImageTemplateWin01
 ```
 
-### <a name="delete-the-role-assignment-role-definition-and-user-identity"></a>删除角色分配、角色定义和用户标识。
+### <a name="delete-the-role-assignment-role-definition-and-user-identity"></a>删除角色分配、角色定义和用户标识 (user-identity)。
 ```azurecli-interactive
 az role assignment delete \
     --assignee $imgBuilderCliId \
@@ -274,4 +274,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解本文中使用的 json 文件的组件，请参阅 [图像生成器模板参考](../linux/image-builder-json.md)。
+若要详细了解本文中使用的 .json 文件的组件，请参阅[映像生成器模板参考](../linux/image-builder-json.md)。
