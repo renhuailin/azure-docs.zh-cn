@@ -68,17 +68,17 @@ ms.locfileid: "88860795"
     4. 输入新的**命名空间名称**。
     1. 选择“查看 + 创建”  。 
 
-        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="下载资源管理器模板" **创建** "。 
+        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="下载资源管理器模板" **创建** ":::。 
     
 ## <a name="verify"></a>验证
 1. 在部署成功后，选择“转到资源组”。
 
-    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="下载资源管理器模板" 页上，选择服务总线命名空间。 
+    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="下载资源管理器模板"::: 页上，选择服务总线命名空间。 
 
-    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="下载资源管理器模板" 页上，验证你是否看到了源区域中的队列、主题和订阅。 
+    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="下载资源管理器模板"::: 页上，验证你是否看到了源区域中的队列、主题和订阅。 
     1. 在右侧窗格底部的命名空间中可以看到 **队列** 。         
     
-        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="下载资源管理器模板" 选项卡以查看命名空间中的主题
+        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="下载资源管理器模板"::: 选项卡以查看命名空间中的主题
     
         :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="下载资源管理器模板":::
     3. 选择用于验证是否已创建订阅的主题。 
