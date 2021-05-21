@@ -33,18 +33,18 @@ Microsoft 负责的控件为 `type` [静态](./definition-structure.md#type)。
 
 新选项卡上，将 **控件** 添加到页面。 筛选功能按 **符合性域** 提供，策略定义按 `title` **policyMetadata** 对象中的字段进行分组。 每一行都表示一个控件，该 **控件** 显示其符合性状态、它所属的 **符合性域** 、责任信息以及组成该 **控制**的不符合和合规性策略定义的数量。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="用于显示符合和不符合性控件的 NIST SP 800-53 R4 内置定义的规章遵从性概述的屏幕截图。&quot;:::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="用于显示符合和不符合性控件的 NIST SP 800-53 R4 内置定义的规章遵从性概述的屏幕截图。":::
 
 选择 **控件** 将打开有关该控件的详细信息页。 **概述**包含来自和的信息 `description` `requirements` 。 &quot; **策略** &quot; 选项卡下是参与此 **控制**的计划中的各个策略定义。 &quot; **资源符合性** " 选项卡提供按当前查看的 **控件**的成员策略计算的每个资源的粒度视图。
 
 > [!NOTE]
 > **Microsoft 托管**的评估类型适用于[静态](./definition-structure.md#type)策略定义 `type` 。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="用于显示符合和不符合性控件的 NIST SP 800-53 R4 内置定义的规章遵从性概述的屏幕截图。&quot;:::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="用于显示符合和不符合性控件的 NIST SP 800-53 R4 内置定义的规章遵从性概述的屏幕截图。":::
 
 选择 **控件** 将打开有关该控件的详细信息页。 **概述**包含来自和的信息 `description` `requirements` 。 &quot; **策略** &quot; 选项卡下是参与此 **控制**的计划中的各个策略定义。 &quot; **资源符合性** " 选项卡将显示此 **控件**的策略定义所包含的所有资源。 筛选器可用于名称或 ID、符合性状态、资源类型和位置。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="用于显示符合和不符合性控件的 NIST SP 800-53 R4 内置定义的规章遵从性概述的屏幕截图。&quot;:::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="用于显示符合和不符合性控件的 NIST SP 800-53 R4 内置定义的规章遵从性概述的屏幕截图。":::
 
 选择 **控件** 将打开有关该控件的详细信息页。 **概述**包含来自和的信息 `description` `requirements` 。 &quot; **策略** &quot; 选项卡下是参与此 **控制**的计划中的各个策略定义。 &quot; **资源符合性** ":::
 
