@@ -12,10 +12,10 @@ ms.author: sstein
 ms.date: 10/15/2020
 ms.reviewer: ''
 ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793171"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
@@ -34,30 +34,30 @@ ms.locfileid: "92793171"
 
 选择服务层级首要考虑的是业务连续性、存储和性能需求。
 
-||基本|标准|高级|
+||基本|Standard|高级|
 | :-- | --: |--:| --:|
 |**目标工作负荷**|开发和生产|开发和生产|开发和生产|
 |**运行时间 SLA**|99.99%|99.99%|99.99%|
 |**最大备份保留期**|7 天|35 天|35 天|
 |**CPU**|低|低、中、高|中、高|
-|**(大致) 的 IOPS**\* |每个 DTU 1-4 IOPS| 每个 DTU 1-4 IOPS | 每个 DTU 25 IOPS|
+|**IOPS（近似）** \* |每个 DTU 1-4 IOPS| 每个 DTU 1-4 IOPS | 每个 DTU 25 IOPS|
 |**IO 延迟（近似）**|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
 |**列存储索引** |空值|S3 及更高版本|支持|
 |**内存中 OLTP**|空值|空值|支持|
 
-\* 数据文件的所有读取和写入 IOPS，包括后台 IO (检查点和惰性编写器) 
+\* 针对数据文件的所有读取和写入 IOPS，包括后台 IO（检查点和惰性编写器）
 
 > [!IMPORTANT]
-> 基本、S0、S1 和 S2 服务目标提供少于一个 vCore (CPU) 。  对于占用大量 CPU 的工作负荷，建议使用 S3 或更高的服务目标。 
+> 基本、S0、S1 和 S2 服务目标提供的 vCore (CPU) 不到一个。  对于 CPU 密集型工作负载，建议使用 S3 或更高的服务目标。 
 >
-> 在基本、S0 和 S1 服务目标中，数据库文件存储在 Azure 标准存储中，该存储使用硬盘驱动器 (HDD) 存储介质。 这些服务目标最适合用于对性能变化不太敏感的开发、测试和其他不常访问的工作负载。
+> 在基本、S0 和 S1 服务目标中，数据库文件存储在 Azure 标准存储中，该存储使用基于硬盘驱动器 (HDD) 的存储介质。 这些服务目标最适合用于对性能变化不太敏感的开发、测试和其他不频繁访问的工作负载。
 >
 
 > [!TIP]
-> 若要查看数据库或弹性池的实际 [资源调控](resource-limits-logical-server.md#resource-governance) 限制，请查询 [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 视图。
+> 若要查看数据库或弹性池的实际[资源调控](resource-limits-logical-server.md#resource-governance)限制，请查询 [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 视图。
 
 > [!NOTE]
-> 你可以在 azure SQL 数据库中的 Azure SQL 数据库中获取免费数据库，并将其与 Azure 免费帐户结合使用以浏览 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
+> 可以将在“基本”服务层级获得的免费 Azure SQL 数据库与 Azure 免费帐户结合使用来探索 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
 
 ## <a name="single-database-dtu-and-storage-limits"></a>单一数据库 DTU 和存储限制
 
@@ -82,7 +82,7 @@ ms.locfileid: "92793171"
 | **每个池的数据库数目上限** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
-> 高级层中超过 1 TB 的存储目前在除：中国东部、中国北部、德国中部和德国东北部以外的所有区域中都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
+> 除了中国东部、中国北部、德国中部和德国东北部区域外，其他所有区域目前均可提供高级层超过 1 TB 的存储。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。
 

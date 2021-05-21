@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: rolyon
 ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97617317"
 ---
 # <a name="azure-custom-roles"></a>Azure 自定义角色
@@ -25,7 +25,7 @@ ms.locfileid: "97617317"
 
 如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 与内置角色一样，可将自定义角色分配到管理组、订阅和资源组范围内的用户、组与服务主体。
 
-自定义角色可在信任同一 Azure AD 目录的订阅之间共享。 每个目录都有 **5,000** 个自定义角色的限制。  (适用于 Azure 德国和 Azure 中国世纪互联，此限制为2000个自定义角色。 ) 可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
+自定义角色可在信任同一 Azure AD 目录的订阅之间共享。 每个目录都有 **5,000** 个自定义角色的限制。 （对于 Azure 德国和 Azure 中国世纪互联，限制为 2,000 个自定义角色。）可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
 
 ## <a name="steps-to-create-a-custom-role"></a>创建自定义角色的步骤
 
@@ -35,11 +35,11 @@ ms.locfileid: "97617317"
 
     创建自定义角色时，需要清楚可以执行的操作以定义权限。 通常，我们会从一个现有的内置角色着手，并根据需要对其进行修改。 你将操作添加到[角色定义](role-definitions.md)的 `Actions` 或 `NotActions` 属性。 如果有数据操作，请将这些操作添加到 `DataActions` 或 `NotDataActions` 属性。
 
-    有关详细信息，请参阅下一节 [如何确定你所需的权限](#how-to-determine-the-permissions-you-need)。
+    有关详细信息，请参阅下一部分：[如何确定所需的权限](#how-to-determine-the-permissions-you-need)。
 
 1. 确定如何创建自定义角色。
 
-    您可以使用 [Azure 门户](custom-roles-portal.md)、 [Azure PowerShell](custom-roles-powershell.md)、 [Azure CLI](custom-roles-cli.md)或 [REST API](custom-roles-rest.md)创建自定义角色。
+    可以使用 [Azure 门户](custom-roles-portal.md)、[Azure PowerShell](custom-roles-powershell.md)、[Azure CLI](custom-roles-cli.md) 或 [REST API](custom-roles-rest.md) 创建自定义角色。
 
 1. 创建自定义角色。
 
@@ -49,25 +49,25 @@ ms.locfileid: "97617317"
 
     创建自定义角色后，必须对其进行测试，以验证它是否按预期工作。 如果以后需要进行调整，可以更新自定义角色。
 
-## <a name="how-to-determine-the-permissions-you-need"></a>如何确定所需权限
+## <a name="how-to-determine-the-permissions-you-need"></a>如何确定所需的权限
 
-Azure 具有数千个权限，你可将这些权限包含在自定义角色中。 下面是一些可帮助你确定要添加到自定义角色的权限的方法：
+Azure 具有数千个权限，你可将这些权限包含在自定义角色中。 可通过一些方法来确定要添加到自定义角色的权限：
 
-- 查看现有的 [内置角色](built-in-roles.md)。
+- 查看现有的[内置角色](built-in-roles.md)。
 
     你可能需要修改现有角色或组合多个角色中使用的权限。
 
-- 列出要授予访问权限的 Azure 服务。
+- 列出要授予对其的访问权限的 Azure 服务。
 
-- 确定 [映射到 Azure 服务的资源提供程序](../azure-resource-manager/management/azure-services-resource-providers.md)。
+- 确定[映射到 Azure 服务的资源提供程序](../azure-resource-manager/management/azure-services-resource-providers.md)。
 
-    Azure 服务通过 [资源提供程序](../azure-resource-manager/management/overview.md)公开其功能和权限。 例如，Microsoft. 计算资源提供程序提供虚拟机资源，而 Microsoft. 计费资源提供程序提供订阅和计费资源。 了解资源提供程序可以帮助你缩小和确定自定义角色所需的权限。
+    Azure 服务通过[资源提供程序](../azure-resource-manager/management/overview.md)公开其功能和权限。 例如，Microsoft.Compute 资源提供程序提供虚拟机资源，而 Microsoft.Billing 资源提供程序提供订阅和计费资源。 了解资源提供程序可以帮助你缩小和确定自定义角色所需的权限。
 
     使用 Azure 门户创建自定义角色时，还可以通过搜索关键字来确定资源提供程序。 [使用 Azure 门户创建或更新 Azure 自定义角色](custom-roles-portal.md#step-4-permissions)中介绍了此搜索功能。
 
     ![包含资源提供程序的“添加权限”窗格](./media/custom-roles-portal/add-permissions-provider.png)
 
-- 搜索 [可用权限](resource-provider-operations.md) ，查找想要包括的权限。
+- 搜索[可用权限](resource-provider-operations.md)，找到要包括的权限。
 
     使用 Azure 门户创建自定义角色时，可以按关键字搜索权限。 例如，可以搜索“虚拟机”或“计费”权限。  你还可以将所有权限下载为 CSV 文件，然后搜索此文件。 [使用 Azure 门户创建或更新 Azure 自定义角色](custom-roles-portal.md#step-4-permissions)中介绍了此搜索功能。
 
@@ -155,7 +155,7 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 
 下表说明了自定义角色属性的含义。
 
-| 属性 | 必选 | 类型 | 说明 |
+| 属性 | 必须 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | `Name`</br>`roleName` | 是 | String | 自定义角色的显示名称。 虽然角色定义是管理组或订阅级资源，但角色定义可以在共享同一 Azure AD 目录的多个订阅中使用。 此显示名称在 Azure AD 目录范围内必须是唯一的。 可以包含字母、数字、空格和特殊字符。 最多包含 128 个字符。 |
 | `Id`</br>`name` | 是 | String | 自定义角色的唯一 ID。 如果使用 Azure PowerShell 和 Azure CLI，在创建新角色时会自动生成此 ID。 |
@@ -208,7 +208,7 @@ Microsoft.CostManagement/*/query/*
 - 每个目录最多可以有 **5000** 个自定义角色。
 - Azure 德国和 Azure 中国世纪互联的每个目录最多可以有 2000 个自定义角色。
 - 不能将 `AssignableScopes` 设置为根范围 (`"/"`)。
-- 不能 `*` 在中使用 () 通配符 `AssignableScopes` 。 此通配符限制有助于确保用户不可能通过更新角色定义来获取对某个范围的访问权限。
+- 不能在 `AssignableScopes` 中使用通配符 (`*`)。 此通配符限制有助于确保用户不可能通过更新角色定义来获取对某个范围的访问权限。
 - 只能在自定义角色的 `AssignableScopes` 中定义一个管理组。 将管理组添加到 `AssignableScopes` 的功能目前为预览版。
 - 无法在管理组范围内分配具有 `DataActions` 的自定义角色。
 - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。

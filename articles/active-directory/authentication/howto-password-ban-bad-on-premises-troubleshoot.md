@@ -1,6 +1,6 @@
 ---
 title: 排查本地 Azure AD 密码保护问题
-description: 了解如何排查 Azure AD 本地 Active Directory 域服务环境的密码保护
+description: 了解如何为本地 Active Directory 域服务环境排查 Azure AD 密码保护问题
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,105 +11,105 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2bbc1c555824d4c632c5bf85a9cd0aa83087fc8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 5b34194c0b9afa622d6ae751752092ed3f750f0b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101648719"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285747"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>故障排除：本地 Azure AD 密码保护
 
 部署 Azure AD 密码保护后，可能需要进行故障排除。 本文详细介绍如何帮助你了解一些常见的故障排除步骤。
 
-## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>DC 代理在目录中找不到代理
+## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>DC 代理无法在目录中找到代理
 
-此问题的主要症状是 DC 代理管理事件日志中的30017事件。
+此问题的主要症状为 DC 代理管理事件日志中的 30017 事件。
 
-此问题的常见原因是尚未注册代理。 如果代理已经注册，可能会由于 AD 复制延迟而导致某些延迟，直到特定 DC 代理可以查看该代理。
+此问题的常见原因是尚未注册代理。 如果已注册代理，可能会由于 AD 复制延迟而一直延迟到特定 DC 代理能够看到该代理为止。
 
-## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>DC 代理无法与代理进行通信
+## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>DC 代理无法与代理通信
 
-此问题的主要症状是 DC 代理管理事件日志中的30018事件。 此问题可能有几个可能的原因：
+此问题的主要症状为 DC 代理管理事件日志中的 30018 事件。 此问题可能由多种原因造成：
 
-1. DC 代理位于网络的隔离部分，不允许与 () 的已注册代理建立网络连接。 此问题可能是良性的，只要其他 DC 代理可以与代理 () ，以便从 Azure 下载密码策略。 下载之后，这些策略将通过复制 sysvol 共享中的策略文件，由独立 DC 获得。
+1. DC 代理位于网络的隔离部分，该部分不允许与已注册的代理建立网络连接。 只要其他 DC 代理能够与该代理通信，从 Azure 下载密码策略，这个问题就有可能是良性的。 下载策略后，被隔离的 DC 将通过复制 sysvol 共享中的策略文件来获取这些策略。
 
-1. 代理主机正在阻止访问 RPC 终结点映射器终结点 (端口 135) 
+1. 代理主机阻止访问 RPC 终结点映射程序终结点（端口 135）
 
-   Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则，以允许访问端口135。 如果以后删除或禁用此规则，DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙而不是另一个防火墙产品，则必须配置该防火墙以允许访问端口135。
+   Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则，该规则允许访问端口 135。 如果之后删除或禁用此规则，DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙，而使用另一个防火墙产品，则必须将该防火墙配置为允许访问端口 135。
 
-1. 代理主机正在阻止访问 RPC 终结点， (代理服务侦听的动态或静态) 
+1. 代理主机阻止访问代理服务侦听的 RPC 终结点（动态或静态）
 
-   Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则，该规则允许访问 Azure AD 密码保护代理服务侦听的任何入站端口。 如果以后删除或禁用此规则，DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙而不是另一个防火墙产品，则必须将该防火墙配置为允许 Azure AD 密码保护代理服务访问所侦听的任何入站端口。 如果已将代理服务配置为侦听特定的静态 RPC 端口 (使用 cmdlet) ，则此配置可能会变得更为具体 `Set-AzureADPasswordProtectionProxyConfiguration` 。
+   Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则，该规则允许访问 Azure AD 密码保护代理服务侦听的任何入站端口。 如果之后删除或禁用此规则，DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙，而使用另一个防火墙产品，则必须将该防火墙配置为允许访问 Azure AD 密码保护代理服务侦听的任何入站端口。 如果已将代理服务配置为侦听特定的静态 RPC 端口（使用 `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet），则可以更具体地设置此配置。
 
-1. 代理主机未配置为允许域控制器登录到计算机。 此行为是通过 "从网络访问此计算机" 用户权限分配来控制的。 林中所有域中的所有域控制器都必须被授予此权限。 此设置通常会被约束为更大的网络强化工作量。
+1. 未将代理主机配置为允许域控制器登录到该主机。 可以通过“从网络访问此计算机”用户特权分配控制此行为。 必须为林中所有域中的所有域控制器授予此特权。 在较大型网络的强化工作中，通常会限制此设置。
 
 ## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>代理服务无法与 Azure 通信
 
-1. 确保代理计算机已连接到 [部署要求](howto-password-ban-bad-on-premises-deploy.md)中列出的终结点。
+1. 确保代理计算机与[部署要求](howto-password-ban-bad-on-premises-deploy.md)中列出的终结点建立连接。
 
-1. 确保为同一 Azure 租户注册了林和所有代理服务器。
+1. 确保将林和所有代理服务器注册到同一 Azure 租户。
 
-   可以通过运行和 PowerShell cmdlet 来检查此要求  `Get-AzureADPasswordProtectionProxy` `Get-AzureADPasswordProtectionDCAgent` ，并比较 `AzureTenant` 每个返回项的属性。 对于正确的操作，报告的租户名称在所有 DC 代理和代理服务器上必须相同。
+   你可以通过运行 `Get-AzureADPasswordProtectionProxy` 和 `Get-AzureADPasswordProtectionDCAgent` PowerShell cmdlet 来检查此要求，然后比较每个返回项的 `AzureTenant` 属性。 为了正确操作，所有 DC 代理和代理服务器上报告的租户名称必须相同。
 
-   如果存在 Azure 租户注册不匹配条件，可以 `Register-AzureADPasswordProtectionProxy` 根据需要运行和/或 PowerShell cmdlet 来解决此问题 `Register-AzureADPasswordProtectionForest` ，并确保使用同一 Azure 租户中的凭据进行所有注册。
+   如果确实存在 Azure 租户注册不匹配的情况，可以通过以下方式解决此问题：根据需要运行 `Register-AzureADPasswordProtectionProxy` 和/或 `Register-AzureADPasswordProtectionForest` PowerShell cmdlet，确保对所有注册使用同一 Azure 租户中的凭据。
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>DC 代理无法加密或解密密码策略文件
 
-Azure AD 密码保护对 Microsoft 密钥分发服务提供的加密和解密功能有重要的依赖性。 加密或解密失败可能会导致各种症状，并有几个可能的原因。
+Azure AD 密码保护极度依赖于 Microsoft 密钥分发服务提供的加密和解密功能。 加密或解密失败可以表现为各种症状，并且有几个潜在的原因。
 
-1. 确保已在域中的所有 Windows Server 2012 和更高版本的域控制器上启用并运行 KDS 服务。
+1. 确保在域中所有 Windows Server 2012 及更高版本的域控制器上，KDS 服务已启用且正常运行。
 
-   默认情况下，KDS 服务的服务启动模式配置为手动 (触发器开始) 。 此配置意味着，当客户端首次尝试使用该服务时，它将按需启动。 此默认服务启动模式可用于 Azure AD 密码保护才能工作。
+   默认情况下，KDS 服务的服务启动模式配置为“手动”（触发启动）。 此配置意味着客户端第一次尝试使用该服务时，它将按需启动。 若要让 Azure AD 密码保护正常工作，可以使用此默认服务启动模式。
 
-   如果已将 KDS 服务启动模式配置为 "已禁用"，则必须先修复此配置，然后 Azure AD 密码保护才能正常工作。
+   如果 KDS 服务启动模式已配置为“已禁用”，则必须修复此配置，Azure AD 密码保护才能正常工作。
 
-   此问题的简单测试是通过服务管理 MMC 控制台手动启动 KDS 服务，或使用其他管理工具 (例如，从命令提示符控制台) 运行 "net start kdssvc.dll"。 KDS 服务应成功启动并保持运行状态。
+   若要对此问题进行简单测试，可通过服务管理 MMC 控制台或使用其他管理工具（例如，从命令提示符控制台运行“net start kdssvc”）来手动启动 KDS 服务。 KDS 服务应成功启动并保持运行状态。
 
-   KDS 服务无法启动的最常见根本原因是 Active Directory 域控制器对象位于默认域控制器 OU 外。 此配置不受 KDS 服务支持，且不受 Azure AD 密码保护的限制。 此问题的解决方法是将域控制器对象移动到默认域控制器 OU 下的某个位置。
+   KDS 服务无法启动的最常见的根本原因是，Active Directory 域控制器对象位于默认域控制器 OU 之外。 此配置既不受 KDS 服务支持，也不是 Azure AD 密码保护施加的限制。 若要解决此问题，请将域控制器对象移到默认域控制器 OU 下的某个位置。
 
-1. 从 Windows Server 2012 R2 到 Windows Server 2016 的 KDS 加密缓冲区格式更改不兼容
+1. 不兼容的 KDS 加密缓冲区格式变化（从 Windows Server 2012 R2 到 Windows Server 2016）
 
-   Windows Server 2016 中引入了 KDS 安全修补程序，用于修改 KDS 加密缓冲区的格式;有时，这些缓冲区在 Windows Server 2012 和 Windows Server 2012 R2 上无法解密。 反向方向是 KDS 在 Windows Server 2012 上加密的缓冲区，Windows Server 2012 R2 在 Windows server 2016 及更高版本上始终会成功解密。 如果 Active Directory 域中的域控制器运行的是这些操作系统的混合，则可能会报告偶尔 Azure AD 密码保护解密失败。 由于安全修补程序的性质，无法准确预测这些故障的时间或症状，并且假设它是不确定的，这 Azure AD 密码保护 DC 代理，在该代理上，域控制器将在给定的时间对数据进行加密。
+   Windows Server 2016 引入了 KDS 安全修补程序，可修改 KDS 加密缓冲区的格式；这些缓冲区有时在 Windows Server 2012 和 Windows Server 2012 R2 上无法解密。 反过来可行 - 在 Windows Server 2012 和 Windows Server 2012 R2 上经过 KDS 加密的缓冲区在 Windows Server 2016 及更高版本上始终可以成功解密。 如果 Active Directory 域中的域控制器混合运行这些操作系统，偶尔可能会报告 Azure AD 密码保护解密失败。 鉴于安全修补程序的性质，并且由于不确定哪个域控制器上的哪个 Azure AD 密码保护 DC 代理将在给定时间加密数据，因此，无法准确预测这些失败发生的时间或症状。
 
-   除了在 Active Directory 域 (s) 中混合使用这些不兼容的操作系统以外，此问题没有解决方法。 换句话说，你应该只运行 Windows Server 2012 和 Windows Server 2012 R2 域控制器，或者只应运行 Windows Server 2016 及更高版本的域控制器。
+   除了不在 Active Directory 域中混合运行这些不兼容的操作系统外，此问题没有其他解决方法。 换句话说，要么只运行 Windows Server 2012 和 Windows Server 2012 R2 域控制器，要么只运行 Windows Server 2016 及更高版本的域控制器。
 
 ## <a name="dc-agent-thinks-the-forest-has-not-been-registered"></a>DC 代理认为林尚未注册
 
-此问题的症状是在 DC Agent\Admin 通道中记录的30016事件，其中包含：
+此问题的症状为 DC Agent\Admin 通道中记录的 30016 事件，其中部分内容为：
 
 ```text
 The forest has not been registered with Azure. Password policies cannot be downloaded from Azure unless this is corrected.
 ```
 
-此问题有两个可能的原因。
+导致出现此问题的可能原因有两个。
 
-1. 林尚未注册。 若要解决此问题，请运行 " [部署要求](howto-password-ban-bad-on-premises-deploy.md)" 中所述的 Register-AzureADPasswordProtectionForest 命令。
-1. 林已注册，但 DC 代理无法对林注册数据进行解密。 这种情况的根本原因与上面列出的 " [DC 代理无法加密或解密密码策略文件](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files)" 中 #2 的问题相同。 确认这一理论的一种简单方法是，你只会在运行 Windows server 2012 或 Windows Server 2012R2 域控制器上的 DC 代理上看到此错误，而在 Windows Server 2016 和更高版本的域控制器上运行的 DC 代理可以正常进行。 解决方法是相同的：将所有域控制器升级到 Windows Server 2016 或更高版本。
+1. 林确实尚未注册。 若要解决此问题，请按照[部署要求](howto-password-ban-bad-on-premises-deploy.md)中所述运行 Register-AzureADPasswordProtectionForest 命令。
+1. 林已注册，但是 DC 代理无法解密林注册数据。 这种情况与上面列出的 [DC 代理无法加密或解密密码策略文件](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files)中的问题 2 的根本原因相同。 可通过一种简单的方法来证实此推测：仅在 Windows Server 2012 或 Windows Server 2012R2 域控制器上运行的 DC 代理上看到此错误，而在 Windows Server 2016 及更高版本的域控制器上运行的 DC 代理一切正常。 解决方法也相同：将所有域控制器升级到 Windows Server 2016 或更高版本。
 
-## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>正在接受弱密码，但不应
+## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>弱密码已被接受，但不应接受
 
-此问题可能有几个原因。
+此问题可能有多种原因。
 
-1. 你的 DC 代理 () 运行的公共预览版软件版本已过期。 请参阅 [公共预览版 DC 代理软件已过期](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)。
+1. DC 代理运行的公共预览软件版本已过期。 请参阅[公共预览版 DC 代理软件已过期](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)。
 
-1. DC 代理 (s) 无法下载策略或者无法解密现有策略。 检查上述主题中的可能原因。
+1. DC 代理无法下载策略或无法解密现有策略。 请检查上述主题中的可能原因。
 
-1. 密码策略强制模式仍设置为“审核”。 如果此配置有效，请将其重新配置为使用 Azure AD 密码保护门户。 有关详细信息，请参阅 [操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
+1. 密码策略强制模式仍设置为“审核”。 如果此配置已经生效，请使用 Azure AD 密码保护门户将其重新配置为“强制”。 有关详细信息，请参阅[操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
-1. 密码策略已被禁用。 如果此配置生效，请使用 Azure AD 密码保护门户将其重新配置为启用。 有关详细信息，请参阅 [操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
+1. 密码策略已被禁用。 如果此配置已经生效，请使用 Azure AD 密码保护门户将其重新配置为启用。 有关详细信息，请参阅[操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
-1. 你未在域中的所有域控制器上安装 DC 代理软件。 在这种情况下，很难确保远程 Windows 客户端在密码更改操作过程中以特定的域控制器为目标。 如果你认为已成功将安装了 DC 代理软件的特定 DC 作为目标，则可以通过双重检查 DC 代理管理事件日志进行验证：无论结果如何，都至少要有一个事件来记录密码验证的结果。 如果用户的密码更改不存在任何事件，则可能是由另一个域控制器处理密码更改。
+1. 未在域中的所有域控制器上安装 DC 代理软件。 在这种情况下，很难确保远程 Windows 客户端在更改密码的操作中瞄准特定域控制器。 如果你认为已成功瞄准安装了 DC 代理软件的特定 DC，可以通过仔细检查 DC 代理管理事件日志来进行验证：无论结果如何，至少会有一个事件记录密码验证的结果。 如果密码已更改的用户没有对应的事件，则表示密码更改可能是由其他域控制器处理的。
 
-   作为替代方案，请在登录 DC 代理软件时，尝试 setting\changing 密码，并将密码直接登录到 DC。 对于生产 Active Directory 域，不建议使用此方法。
+   作为一种替代测试，请在直接登录安装了 DC 代理软件的 DC 时，尝试设置\更改密码。 对于生产 Active Directory 域，不建议使用此方法。
 
-   尽管支持对 DC 代理软件进行增量部署，但受到这些限制的限制，但 Microsoft 强烈建议尽快在域中的所有域控制器上安装 DC 代理软件。
+   尽管支持 DC 代理软件的增量部署，但受这些限制的影响，Microsoft 强烈建议尽快在域中的所有域控制器上安装 DC 代理软件。
 
-1. 密码验证算法实际可能按预期方式工作。 请参阅 [如何计算密码](concept-password-ban-bad.md#how-are-passwords-evaluated)。
+1. 密码验证算法实际上可能按预期方式工作。 请参阅[如何评估密码](concept-password-ban-bad.md#how-are-passwords-evaluated)。
 
-## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Ntdsutil.exe 无法设置弱 DSRM 密码
+## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Ntdsutil.exe 无法设置 DSRM 弱密码
 
-Active Directory 将始终验证新的目录服务修复模式密码，确保它满足域的密码复杂性要求;此验证还会调用密码筛选器 dll，例如 Azure AD 密码保护。 如果拒绝新的 DSRM 密码，则会出现以下错误消息：
+Active Directory 将始终验证新的目录服务修复模式密码，确保它符合域的密码复杂性要求；此验证还会调用诸如 Azure AD 密码保护之类的密码筛选器 dll。 如果新的 DSRM 密码被拒绝，则会出现以下错误消息：
 
 ```text
 C:\>ntdsutil.exe
@@ -122,39 +122,39 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-如果 Azure AD 密码保护将密码验证事件日志事件 (s) 用于 Active Directory DSRM 密码，则事件日志消息应该不包含用户名。 出现此行为的原因是 DSRM 帐户是不属于实际 Active Directory 域的本地帐户。  
+当 Azure AD 密码保护为 Active Directory DSRM 密码记录密码验证事件日志事件时，预计事件日志消息将不包含用户名。 出现这种行为是因为 DSRM 帐户是本地帐户，而不是实际 Active Directory 域的一部分。  
 
-## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>由于使用弱 DSRM 密码，域控制器副本升级失败
+## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>由于使用 DSRM 弱密码，域控制器副本升级失败
 
-在 DC 升级过程中，会将新的目录服务修复模式密码提交到域中的现有 DC 进行验证。 如果拒绝新的 DSRM 密码，则会出现以下错误消息：
+在 DC 升级过程中，新的目录服务修复模式密码将提交到域中的现有 DC 进行验证。 如果新的 DSRM 密码被拒绝，则会出现以下错误消息：
 
 ```powershell
 Install-ADDSDomainController : Verification of prerequisites for Domain Controller promotion failed. The Directory Services Restore Mode password does not meet a requirement of the password filter(s). Supply a suitable password.
 ```
 
-正如以上问题中所示，任何 Azure AD 密码保护密码验证结果事件都将在此方案中包含空的用户名。
+就像上面的问题一样，在这种情况下，任何 Azure AD 密码保护密码验证结果事件都会出现空用户名。
 
-## <a name="domain-controller-demotion-fails-due-to-a-weak-local-administrator-password"></a>由于本地管理员密码弱，域控制器降级失败
+## <a name="domain-controller-demotion-fails-due-to-a-weak-local-administrator-password"></a>域控制器降级因本地管理员弱密码而失败
 
-支持降级仍在运行 DC 代理软件的域控制器。 但管理员应注意，在降级过程中，DC 代理软件会继续实施当前密码策略。 将像验证其他任何密码一样验证（降级操作过程中指定的）新本地管理员帐户密码。 Microsoft 建议为本地管理员帐户选择安全密码作为 DC 降级过程的一部分。
+支持降级仍在运行 DC 代理软件的域控制器。 但管理员应注意，在降级过程中，DC 代理软件会继续实施当前密码策略。 将像验证其他任何密码一样验证（降级操作过程中指定的）新本地管理员帐户密码。 Microsoft 建议在 DC 降级过程中为本地管理员帐户选择安全密码。
 
 成功降级后，如果域控制器已重新启动并再次以普通成员服务器的形式运行，则 DC 代理软件将恢复为以被动模式运行。 然后，随时可将其卸载。
 
 ## <a name="booting-into-directory-services-repair-mode"></a>启动进入目录服务修复模式
 
-如果域控制器已启动到目录服务修复模式，则 DC 代理密码筛选器 dll 会检测到这种情况，并将导致所有密码验证或强制活动处于禁用状态，而不考虑当前活动的策略配置。 DC 代理密码筛选器 dll 会将10023警告事件记录到管理事件日志，例如：
+如果域控制器启动进入目录服务修复模式，则无论当前处于活动状态的策略配置是什么，DC 代理密码筛选器 dll 都会检测此情况，并导致所有密码验证或实施活动被禁用。 DC 代理密码筛选器 dll 会在管理事件日志中记录 10023 警告事件，例如：
 
 ```text
 The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
 ```
-## <a name="public-preview-dc-agent-software-has-expired"></a>公共预览版 DC 代理软件已过期
+## <a name="public-preview-dc-agent-software-has-expired"></a>公开预览版 DC 代理软件已过期
 
-在 Azure AD 密码保护公共预览版期间，DC 代理软件进行了硬编码，以便在以下日期停止处理密码验证请求：
+在 Azure AD 密码保护公共预览期间，DC 代理软件进行了硬编码，以便在以下日期停止处理密码验证请求：
 
-* 版本1.2.65.0 将停止在 1 2019 年9月处理密码验证请求。
-* 版本1.2.25.0 和先前在7月 1 2019 处理密码验证请求。
+* 版本 1.2.65.0 将于 2019 年 9 月 1 日停止处理密码验证请求。
+* 1\.2.25.0 及以前的版本已于 2019 年 7 月 1 日停止处理密码验证请求。
 
-截止到截止时间，在启动时，所有限时的 DC 代理版本都将在 DC agent 管理事件日志中发出10021事件，如下所示：
+随着截止日期的临近，所有有时间限制的 DC 代理版本都会在启动时在 DC 代理管理事件日志中发出 10021 事件，如下所示：
 
 ```text
 The password filter dll has successfully loaded and initialized.
@@ -166,7 +166,7 @@ Expiration date:  9/01/2019 0:00:00 AM
 This message will not be repeated until the next reboot.
 ```
 
-截止到截止时间之后，所有受时间限制的 DC 代理版本都将在启动时在 DC 代理管理事件日志中发出10022事件，如下所示：
+截止日期过后，所有有时间限制的 DC 代理版本都会在启动时在 DC 代理管理事件日志中发出 10022 事件，如下所示：
 
 ```text
 The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
@@ -174,12 +174,12 @@ The password filter dll is loaded but the allowable trial period has expired. Al
 No further messages will be logged until after the next reboot.
 ```
 
-由于仅在初始启动时检查截止时间，因此在日历截止时间过去之前，你可能看不到这些事件。 一旦识别到截止时间，就不会再对域控制器或更大的环境产生负面影响。
+由于仅在首次启动时检查了截止日期，因此可能在日历截止日期过后很久才会看到这些事件。 一旦识别到截止日期，除了自动批准所有密码外，不会对域控制器或较大环境产生任何负面影响。
 
 > [!IMPORTANT]
-> Microsoft 建议将过期的公共预览版 DC 代理立即升级到最新版本。
+> Microsoft 建议立即将过期的公共预览版 DC 代理升级到最新版本。
 
-若要在需要升级的环境中发现 DC 代理，一种简单的方法是运行 `Get-AzureADPasswordProtectionDCAgent` cmdlet，例如：
+可通过一种简单的方法发现环境中需要升级的 DC 代理，即，运行 `Get-AzureADPasswordProtectionDCAgent` cmdlet，例如：
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -193,26 +193,26 @@ HeartbeatUTC          : 8/1/2019 10:00:00 PM
 AzureTenant           : bpltest.onmicrosoft.com
 ```
 
-对于本主题，SoftwareVersion 字段显然是要查看的关键属性。 你还可以使用 PowerShell 筛选来筛选出已在所需基准版本或更高版本上的 DC 代理，例如：
+在本主题中，SoftwareVersion 字段显然是要查看的关键属性。 你还可以使用 PowerShell 筛选功能筛选出已达到或高于所需基准版本的 DC 代理，例如：
 
 ```powershell
 PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
 PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
 ```
 
-在任何版本中，Azure AD 密码保护代理软件不受时间限制。 Microsoft 仍建议将 DC 和代理代理发布到最新版本。 `Get-AzureADPasswordProtectionProxy`Cmdlet 可用于查找需要升级的代理程序，类似于针对 DC 代理的示例。
+在任何版本中，Azure AD 密码保护代理软件均不受时间限制。 Microsoft 仍然建议 DC 和代理都应升级到发布的最新版本。 `Get-AzureADPasswordProtectionProxy` cmdlet 可用于查找需要升级的代理，类似于上面的 DC 代理示例。
 
-有关具体的升级过程的详细信息，请参阅 [升级 DC 代理](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) 和 [升级代理服务](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service) 。
+有关具体升级过程的更多详细信息，请参阅[升级 DC 代理](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)和[升级代理服务](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service)。
 
 ## <a name="emergency-remediation"></a>紧急补救
 
 如果 DC 代理服务造成了问题，可以立即关闭 DC 代理服务。 DC 代理密码筛选器 dll 仍会尝试调用未运行的服务并记录警告事件（10012、10013），但在此期间会接受所有传入的密码。 然后，也可以通过 Windows 服务控制管理器并根据需要使用启动类型“Disabled”来配置 DC 代理服务。
 
-另一种补救措施是在 Azure AD 密码保护门户中将“启用”模式设置为“否”。 下载更新的策略后，各 DC 代理服务将进入静默模式，在这种模式下，将按原样接受所有密码。 有关详细信息，请参阅 [操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
+另一种补救措施是在 Azure AD 密码保护门户中将“启用”模式设置为“否”。 下载更新的策略后，各 DC 代理服务将进入静默模式，在这种模式下，将按原样接受所有密码。 有关详细信息，请参阅[操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
 ## <a name="removal"></a>删除
 
-如果决定卸载 Azure AD 密码保护软件并从域 (s) 和林的所有相关状态中清除，则可以使用以下步骤完成此任务：
+如果决定卸载 Azure AD 密码保护软件并从域和林中清理所有相关状态，可使用以下步骤完成此任务：
 
 > [!IMPORTANT]
 > 必须按顺序执行这些步骤。 如果代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象。 如果 DC 代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象和 sysvol 状态。
@@ -231,7 +231,7 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
    然后，可通过管道将 `Get-ADObject` 命令找到的结果对象传送到 `Remove-ADObject`，或手动将其删除。
 
-4. 在每个域命名上下文中手动删除所有 DC 代理连接点。 林中每个域控制器可能有一个这样的对象，具体取决于软件的部署范围。 可使用以下 Active Directory PowerShell 命令发现该对象的位置：
+4. 在每个域命名上下文中手动删除所有 DC 代理连接点。 根据软件的部署范围，林中的每个域控制器可能存在其中的一个对象。 可使用以下 Active Directory PowerShell 命令发现该对象的位置：
 
    ```powershell
    $scp = "serviceConnectionPoint"
@@ -260,19 +260,19 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
    如果在非默认位置配置了 sysvol 共享，则此路径不同。
 
-## <a name="health-testing-with-powershell-cmdlets"></a>PowerShell cmdlet 的运行状况测试
+## <a name="health-testing-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 进行运行状况测试
 
-AzureADPasswordProtection PowerShell 模块包括两个与运行状况相关的 cmdlet，这些 cmdlet 执行软件已安装且正常工作的基本验证。 在设置新部署之后、之后定期完成，以及在调查问题时，最好运行这些 cmdlet。
+AzureADPasswordProtection PowerShell 模块包括两个与运行状况相关的 cmdlet，这些 cmdlet 可对软件是否已安装且正常运行进行基本验证。 建议在设置新部署之后运行这些 cmdlet（此后定期运行），以及在调查问题时运行这些 cmdlet。
 
-每个单独的运行状况测试返回基本通过或失败的结果，以及失败时的可选消息。 如果失败的原因不明确，请查找错误事件日志消息，这些消息可能说明失败。 启用文本日志消息也可能会很有用。 有关更多详细信息，请参阅 [Monitor Azure AD Password Protection](howto-password-ban-bad-on-premises-monitor.md)。
+每个运行状况测试都会返回基本的“通过”或“失败”结果，以及失败时的可选消息。 如果无法确定失败的原因，请查找可能解释该失败的错误事件日志消息。 启用文本日志消息可能也很有用。 有关更多详细信息，请参阅[监视 Azure AD 密码保护](howto-password-ban-bad-on-premises-monitor.md)。
 
 ## <a name="proxy-health-testing"></a>代理运行状况测试
 
-Test-AzureADPasswordProtectionProxyHealth cmdlet 支持两个可单独运行的运行状况测试。 第三种模式允许运行所有不需要输入参数的测试。
+Test-AzureADPasswordProtectionProxyHealth cmdlet 支持两个可以单独运行的运行状况测试。 第三种模式允许运行所有不需要参数输入的测试。
 
 ### <a name="proxy-registration-verification"></a>代理注册验证
 
-此测试验证是否已将代理程序正确地注册到 Azure，并能够在 Azure 中进行身份验证。 成功的运行将如下所示：
+此测试验证代理是否已在 Azure 上正确注册，并且能够向 Azure 进行身份验证。 成功的运行如下所示：
 
 ```powershell
 PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
@@ -282,7 +282,7 @@ DiagnosticName          Result AdditionalInfo
 VerifyProxyRegistration Passed
 ```
 
-如果检测到错误，则测试将返回失败的结果和可选的错误消息。 下面是一个可能发生的失败的示例：
+如果检测到错误，测试将返回“失败”结果和可选的错误消息。 下面是一个可能失败的示例：
 
 ```powershell
 PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
@@ -292,11 +292,11 @@ DiagnosticName          Result AdditionalInfo
 VerifyProxyRegistration Failed No proxy certificates were found - please run the Register-AzureADPasswordProtectionProxy cmdlet to register the proxy.
 ```
 
-### <a name="proxy-verification-of-end-to-end-azure-connectivity"></a>端对端 Azure 连接的代理验证
+### <a name="proxy-verification-of-end-to-end-azure-connectivity"></a>端到端 Azure 连接的代理验证
 
-此测试是-VerifyProxyRegistration 测试的超集。 它要求代理程序正确地注册到 Azure，能够在 Azure 中进行身份验证，最后添加一条检查消息是否可成功发送到 Azure，从而验证完全的端到端通信是否正常工作。
+此测试是 -VerifyProxyRegistration 测试的超集。 它要求代理在 Azure 上正确注册，能够向 Azure 进行身份验证，最后还添加一项检查，确保可以向 Azure 成功发送消息，从而验证完整的端到端通信是否正常。
 
-成功的运行将如下所示：
+成功的运行如下所示：
 
 ```powershell
 PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyAzureConnectivity
@@ -308,7 +308,7 @@ VerifyAzureConnectivity Passed
 
 ### <a name="proxy-verification-of-all-tests"></a>所有测试的代理验证
 
-此模式允许对不需要参数输入的 cmdlet 支持的所有测试进行大容量运行。 成功的运行将如下所示：
+此模式允许批量运行 cmdlet 支持的所有不需要参数输入的测试。 成功的运行如下所示：
 
 ```powershell
 PS C:\> Test-AzureADPasswordProtectionProxyHealth -TestAll
@@ -322,11 +322,11 @@ VerifyAzureConnectivity Passed
 
 ## <a name="dc-agent-health-testing"></a>DC 代理运行状况测试
 
-Test-AzureADPasswordProtectionDCAgentHealth cmdlet 支持多个可单独运行的运行状况测试。 第三种模式允许运行所有不需要输入参数的测试。
+Test-AzureADPasswordProtectionDCAgentHealth cmdlet 支持多个可以单独运行的运行状况测试。 第三种模式允许运行所有不需要参数输入的测试。
 
 ### <a name="basic-dc-agent-health-tests"></a>基本 DC 代理运行状况测试
 
-以下测试可以单独运行且不接受。 简要说明
+以下测试都可以单独运行，并且不接受参数输入。 简短说明
 
 |DC 代理运行状况测试|说明|
 | --- | :---: |
@@ -334,9 +334,9 @@ Test-AzureADPasswordProtectionDCAgentHealth cmdlet 支持多个可单独运行�
 |-VerifyForestRegistration|验证林当前是否已注册|
 |-VerifyEncryptionDecryption|使用 Microsoft KDS 服务验证基本加密和解密是否正常工作|
 |-VerifyDomainIsUsingDFSR|验证当前域是否正在使用 DFSR 进行 sysvol 复制|
-|-VerifyAzureConnectivity|使用任何可用的代理验证 Azure 的端到端通信是否正常工作|
+|-VerifyAzureConnectivity|使用任意可用代理验证与 Azure 的端到端通信是否正常|
 
-下面是通过的-VerifyPasswordFilterDll 测试的示例。其他测试在成功时将如下所示：
+下面是 -VerifyPasswordFilterDll 测试通过的示例；其他测试成功时会显示相似的内容：
 
 ```powershell
 PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyPasswordFilterDll
@@ -348,7 +348,7 @@ VerifyPasswordFilterDll Passed
 
 ### <a name="dc-agent-verification-of-all-tests"></a>所有测试的 DC 代理验证
 
-此模式允许对不需要参数输入的 cmdlet 支持的所有测试进行大容量运行。 成功的运行将如下所示：
+此模式允许批量运行 cmdlet 支持的所有不需要参数输入的测试。 成功的运行如下所示：
 
 ```powershell
 PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -TestAll
@@ -362,13 +362,13 @@ VerifyDomainIsUsingDFSR    Passed
 VerifyAzureConnectivity    Passed
 ```
 
-### <a name="connectivity-testing-using-specific-proxy-servers"></a>使用特定代理服务器进行的连接测试
+### <a name="connectivity-testing-using-specific-proxy-servers"></a>使用特定代理服务器的连接测试
 
-许多故障排除情况都涉及调查 DC 代理和代理之间的网络连接。 有两种运行状况测试可专门用于此类问题。 这些测试需要指定特定的代理服务器。
+许多故障排除情况都涉及调查 DC 代理与代理之间的网络连接。 有两种运行状况测试可专门针对此类问题。 这些测试要求指定特定的代理服务器。
 
-#### <a name="verifying-connectivity-between-a-dc-agent-and-a-specific-proxy"></a>验证 DC 代理和特定代理之间的连接
+#### <a name="verifying-connectivity-between-a-dc-agent-and-a-specific-proxy"></a>验证 DC 代理与特定代理之间的连接
 
-此测试验证从 DC 代理到代理的第一条通信支线的连接。 它验证代理是否收到呼叫，但不涉及与 Azure 的通信。 成功的运行如下所示：
+此测试验证从 DC 代理到代理的第一个通信分支上的连接性。 它验证代理是否收到调用，但不涉及与 Azure 的通信。 成功的运行如下所示：
 
 ```powershell
 PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
@@ -378,7 +378,7 @@ DiagnosticName          Result AdditionalInfo
 VerifyProxyConnectivity Passed
 ```
 
-下面是在目标服务器上运行的代理服务已停止的示例失败条件：
+下面是一个失败情况示例，其中目标服务器上运行的代理服务已停止：
 
 ```powershell
 PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
@@ -388,9 +388,9 @@ DiagnosticName          Result AdditionalInfo
 VerifyProxyConnectivity Failed The RPC endpoint mapper on the specified proxy returned no results; please check that the proxy service is running on that server.
 ```
 
-#### <a name="verifying-connectivity-between-a-dc-agent-and-azure-using-a-specific-proxy"></a>使用特定代理验证 DC 代理和 Azure (之间的连接) 
+#### <a name="verifying-connectivity-between-a-dc-agent-and-azure-using-a-specific-proxy"></a>验证 DC 代理与 Azure 之间的连接（使用特定代理）
 
-此测试使用特定代理验证 DC 代理与 Azure 之间的完全端到端连接。 成功的运行如下所示：
+此测试使用特定代理验证 DC 代理与 Azure 之间的完整端到端连接。 成功的运行如下所示：
 
 ```powershell
 PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyAzureConnectivityViaSpecificProxy bpl2.bpl.com
@@ -402,6 +402,6 @@ VerifyAzureConnectivityViaSpecificProxy Passed
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure AD 密码保护的常见问题解答](howto-password-ban-bad-on-premises-faq.md)
+[Azure AD 密码保护的常见问题解答](howto-password-ban-bad-on-premises-faq.yml)
 
 有关全局和自定义禁止密码列表的详细信息，请参阅[禁止错误的密码](concept-password-ban-bad.md)一文

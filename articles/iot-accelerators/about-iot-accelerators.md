@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: c966051ed5699d408fe83f1e9c862ca78b3282c4
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 8a89462ca132ddbf20ecc7f70502747d4a664b58
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714535"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486010"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT 解决方案加速器是什么？
 
 基于云的 IoT 解决方案通常使用自定义代码和云服务来管理设备连接、数据处理、分析和呈现。
 
-IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以实现常见的 IoT 方案。 方案包括联网工厂和设备模拟。 部署解决方案加速器时，部署将包括全部所需的基于云的服务，以及全部所需的应用程序代码。
+IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以实现常见的 IoT 方案。 部署解决方案加速器时，部署将包括全部所需的基于云的服务，以及全部所需的应用程序代码。
 
 解决方案加速器是你自己的 IoT 解决方案的起点。 所有解决方案加速器的源代码都是开源的，并已在 GitHub 中提供。 建议按要求下载并自定义解决方案加速器。
 
@@ -33,7 +33,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 
 ## <a name="supported-iot-scenarios"></a>支持的 IoT 方案
 
-目前，有两个解决方案加速器可供部署：
+目前，有一个解决方案加速器可供部署：
 
 ### <a name="connected-factory"></a>互连工厂
 
@@ -42,14 +42,6 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 可以使用互联工厂仪表板来监视和管理工业设备：
 
 :::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="显示“连接工厂解决方案”仪表板的屏幕截图。" lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
-
-### <a name="device-simulation"></a>设备模拟
-
-使用[设备模拟解决方案加速器](iot-accelerators-device-simulation-overview.md)可以运行能够生成真实遥测数据的模拟设备。 可以使用此解决方案加速器测试其他解决方案加速器的行为，或测试自己的自定义 IoT 解决方案。
-
-可以使用设备模拟 Web 应用来配置并运行模拟：
-
-:::image type="content" source="./media/about-iot-accelerators/ds-dashboard-inline.png" alt-text="显示设备模拟解决方案仪表板的屏幕截图。" lightbox="./media/about-iot-accelerators/ds-dashboard-expanded.png":::
 
 ## <a name="design-principles"></a>设计原理
 
@@ -68,7 +60,6 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 | 解决方案加速器   | 体系结构  | Languages     |
 | ---------------------- | ------------- | ------------- |
 | 互连工厂      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
-| 设备模拟      | 微服务 | [.NET](https://github.com/Azure/azure-iot-pcs-device-simulation)          |
 
 若要了解有关微服务体系结构的详细信息，请参阅 [Azure IoT 参考体系结构简介](/azure/architecture/reference-architectures/iot/)。
 

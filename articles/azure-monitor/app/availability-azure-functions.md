@@ -4,10 +4,10 @@ description: 本文档将介绍如何使用 TrackAvailability() 创建一个 Azu
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 98d9eaadb31ffdeabe85752f7c76bdd4f7c0d4f3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100589937"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 创建和运行自定义可用性测试
@@ -43,10 +43,10 @@ ms.locfileid: "100589937"
 >![Azure 门户中 Azure 函数的 run.csx](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> 对于“终结点地址”，你将使用 `EndpointAddress= https://dc.services.visualstudio.com/v2/track`。 除非你的资源位于 Azure 政府版或 Azure 中国等区域，否则请参阅此文，了解如何 [覆盖默认终结点](./custom-endpoints.md#regions-that-require-endpoint-modification) ，并选择适用于你所在区域的相应遥测通道终结点。
+> 对于“终结点地址”，你将使用 `EndpointAddress= https://dc.services.visualstudio.com/v2/track`。 除非你的资源位于 Azure 政府或 Azure 中国等区域，在这种情况下，请查阅[覆盖默认终结点](./custom-endpoints.md#regions-that-require-endpoint-modification)的相关文章，并选择适用于你所在区域的相应遥测通道终结点。
 
 ```C#
-#load "runAvailabilityTest.csx"
+#load "runAvailabilityTest.csx&quot;
  
 using System;
 using System.Diagnostics;
@@ -57,7 +57,7 @@ using Microsoft.ApplicationInsights.Extensibility;
  
 // The Application Insights Instrumentation Key can be changed by going to the overview page of your Function App, selecting configuration, and changing the value of the APPINSIGHTS_INSTRUMENTATIONKEY Application setting.
 // DO NOT replace the code below with your instrumentation key, the key's value is pulled from the environment variable/application setting key/value pair.
-private static readonly string instrumentationKey = Environment.GetEnvironmentVariable("APPINSIGHTS_INSTRUMENTATIONKEY");
+private static readonly string instrumentationKey = Environment.GetEnvironmentVariable(&quot;APPINSIGHTS_INSTRUMENTATIONKEY");
  
 //[CONFIGURATION_REQUIRED]
 // If your resource is in a region like Azure Government or Azure China, change the endpoint address accordingly.

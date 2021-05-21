@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b8f613cb7c75d9dd6af1fcf62f9d484398072c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89279459"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
@@ -59,18 +59,18 @@ ms.locfileid: "89279459"
 
 - 支持用户登录到所有基于 Web 浏览器的应用程序和使用[新式身份验证](https://aka.ms/modernauthga)的 Microsoft Office 客户端应用程序。
 - 登录用户名可以是本地默认用户名 (`userPrincipalName`)，也可以是 Azure AD Connect 中配置的另一个属性（称为 `Alternate ID`）。
-- 此功能可与 [条件性访问](../conditional-access/overview.md) 功能（例如多重身份验证 (MFA) 无缝结合使用，以帮助保护用户。
+- 此功能与[条件访问](../conditional-access/overview.md)功能（如多重身份验证 (MFA)）无缝配合使用，以帮助保护用户安全。
 - 与基于云的[自助密码管理](../authentication/concept-sspr-howitworks.md)集成，包括本地 Active Directory 的密码写回和通过禁止常用密码的密码保护。
 - 如果 AD 林之间存在信任关系并且正确配置了名称后缀路由，则支持多林环境。
 - 这是一项免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。
-- 可以通过 [Azure AD Connect](whatis-hybrid-identity.md)启用此功能。
+- 可通过 [Azure AD Connect](whatis-hybrid-identity.md) 启用它。
 - 该功能使用轻型本地代理侦听和响应密码验证请求。
 - 安装多个代理可提供登录请求的高可用性。
 - 该功能[保护](../authentication/howto-password-smart-lockout.md)云中的本地帐户免受密码搜索攻击。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门](how-to-connect-pta-quick-start.md) -Azure AD 直通身份验证获取并运行。
+- [快速入门](how-to-connect-pta-quick-start.md) - 启动并运行 Azure AD 直通身份验证。
 - [从 AD FS 迁移到传递身份验证](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md) - 在租户中配置智能锁定功能以保护用户帐户。
 - [当前限制](how-to-connect-pta-current-limitations.md) - 了解支持和不支持的方案。

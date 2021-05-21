@@ -6,10 +6,10 @@ ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92744168"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>为 Azure 应用服务配置 ASP.NET 应用
@@ -41,7 +41,7 @@ ls "D:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\"
 
 ## <a name="show-current-net-framework-runtime-version"></a>显示当前的 .NET Framework 运行时版本
 
-在 [Cloud Shell](https://shell.azure.com)中运行以下命令：
+在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query netFrameworkVersion
@@ -51,7 +51,7 @@ az webapp config show --resource-group <resource-group-name> --name <app-name> -
 
 ## <a name="set-net-framework-runtime-version"></a>设置 .NET Framework 运行时版本
 
-默认情况下，应用服务使用受支持的最新 .NET Framework 版本来运行 ASP.NET 应用。 若要改为使用 .NET Framework 3.5 运行应用，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令 (V2.0 表示 CLR 2) ：
+默认情况下，应用服务使用受支持的最新 .NET Framework 版本来运行 ASP.NET 应用。 若要改用 .NET Framework 3.5 来运行应用，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令（v2.0 表示 CLR 2）：
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --net-framework-version v2.0
@@ -75,7 +75,7 @@ ConfigurationManager.ConnectionStrings["MyConnection"];
 
 ## <a name="deploy-multi-project-solutions"></a>部署多项目解决方案
 
-如果 Visual Studio 解决方案包含多个项目，则说明 Visual Studio 发布过程已包括选择要部署的项目的操作。 当你部署到应用服务部署引擎（例如，使用 Git 或 ZIP 部署）时，如果启用了“生成自动化”，则应用服务部署引擎会选取它发现的第一个网站或 Web 应用程序项目作为应用服务应用。 你可以通过指定 `PROJECT` 应用设置来指定应用服务应当使用哪个项目。 例如，在 [Cloud Shell](https://shell.azure.com)中运行以下内容：
+如果 Visual Studio 解决方案包含多个项目，则说明 Visual Studio 发布过程已包括选择要部署的项目的操作。 当你部署到应用服务部署引擎（例如，使用 Git 或 ZIP 部署）时，如果启用了“生成自动化”，则应用服务部署引擎会选取它发现的第一个网站或 Web 应用程序项目作为应用服务应用。 你可以通过指定 `PROJECT` 应用设置来指定应用服务应当使用哪个项目。 例如，在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings PROJECT="<project-name>/<project-name>.csproj"

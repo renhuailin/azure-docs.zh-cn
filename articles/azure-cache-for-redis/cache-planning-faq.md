@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398b567e173691068e6dd932e075d6598dcfe601
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92537399"
 ---
 # <a name="azure-cache-for-redis-planning-faqs"></a>Azure Cache for Redis 规划常见问题解答
@@ -24,7 +24,7 @@ ms.locfileid: "92537399"
 * [我应该将缓存放在哪个区域？](#in-what-region-should-i-locate-my-cache)
 * [我的缓存数据位于何处？](#where-do-my-cached-data-reside)
 * [Azure Redis 缓存如何计费？](#how-am-i-billed-for-azure-cache-for-redis)
-* [是否可以将 Azure Cache 用于 Redis 与 Azure 政府云、Azure 中国世纪互联云或 Microsoft Azure 德国？](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany)
+* [能否将 Azure Redis 缓存用于 Azure 政府云、Azure 中国世纪互联云或 Microsoft Azure 德国？](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany)
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure Redis 缓存性能
 下表显示了在 IaaS VM 中使用 `redis-benchmark.exe` 针对 Azure Redis 缓存终结点测试各种大小的标准缓存和高级缓存时，所观测到的最大带宽值。 对于 TLS 吞吐量，请将 redis 基准用于 stunnel 以连接到 Azure Cache for Redis 终结点。
@@ -72,7 +72,7 @@ Azure Cache for Redis 将应用程序数据存储在托管缓存的 VM 的 RAM �
 ### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Azure Redis 缓存如何计费？
 Azure Redis 缓存的定价在[此处](https://azure.microsoft.com/pricing/details/cache/)。 定价页列出每小时和每月费率。 缓存按分钟计费，从创建缓存时开始，到删除缓存时为止。 没有提供用于停止或暂停缓存的计费选项。
 
-### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany"></a>是否可以将 Azure Cache 用于 Redis 与 Azure 政府云、Azure 中国世纪互联云或 Microsoft Azure 德国？
+### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany"></a>能否将 Azure Redis 缓存用于 Azure 政府云、Azure 中国世纪互联云或 Microsoft Azure 德国？
 可以，Azure Cache for Redis 可用于 Azure 政府云、Azure 中国世纪互联云和 Microsoft Azure 德国。 与 Azure 公有云相比，这些云中用于访问和管理 Azure Redis 缓存的 URL 有所不同。
 
 | 云   | Redis 的 Dns 后缀            |

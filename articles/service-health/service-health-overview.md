@@ -1,13 +1,13 @@
 ---
 title: 服务运行状况概述 | Microsoft Docs
-description: 了解服务运行状况如何为你提供可自定义的仪表板，用于跟踪 Azure 服务在使用区域中的运行状况。
+description: 了解服务运行状况如何为你提供可定制的仪表板，用于跟踪 Azure 服务在使用区域中的运行状况。
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 8246b0ab93b95c13858e4ff96d0f24b255d05e55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90967790"
 ---
 # <a name="service-health-overview"></a>服务运行状况概述
@@ -74,4 +74,4 @@ ms.locfileid: "90967790"
 
 ## <a name="next-steps"></a>后续步骤
 
-设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅 [设置 Azure 服务运行状况警报的最佳实践](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s)。 
+设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅[关于设置 Azure 服务运行状况警报的最佳做法](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s)。 

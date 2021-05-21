@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 4abe1e9c6f9d7b62792936f816b9c46a937be41a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96499418"
 ---
 # <a name="connecting-to-servers"></a>连接到服务器
@@ -44,7 +44,7 @@ ms.locfileid: "96499418"
 ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
 > [!NOTE]
-> 美国东部2地区的协议为 **aspaaseastus2**。
+> 美国东部 2 区域的协议为“aspaaseastus2”。
 
 ## <a name="connection-string"></a>连接字符串
 

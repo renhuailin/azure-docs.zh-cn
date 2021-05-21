@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015908"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>使用 Azure 门户为 VM 配置专用 IP 地址
@@ -30,7 +30,7 @@ ms.locfileid: "96015908"
 
 完成以下示例步骤需要事先创建一个简单的环境。 若要运行本文档中所述的步骤，请先[创建一个虚拟网络](quick-create-portal.md#create-a-virtual-network)。 不过，在步骤 3 中，请改用以下值：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 名称 | *TestVNet* |
 | 地址空间 | *192.168.0.0/16* |
@@ -46,12 +46,12 @@ ms.locfileid: "96015908"
 1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“创建资源”  。
 
     ![创建资源，Azure 门户](./media/virtual-networks-static-ip-arm-pportal/create-a-resource.png)
-2. 选择 "**计算**" "  >  **虚拟机**"。
+2. 选择“计算” > “虚拟机” 。
 
     ![创建 VM，Azure 门户](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
 3. 在“基本信息”中，按下表中所述指定项的值。  然后依次选择“下一步: 磁盘”、“下一步: 网络”。 **&nbsp;&nbsp;** **&nbsp;&nbsp;**
 
-    | 项目 | Value |
+    | 项目 | 值 |
     | --- | --- |
     | **订阅** | 你的当前订阅 |
     | **资源组** | **TestRG**（从下拉列表中选择） |

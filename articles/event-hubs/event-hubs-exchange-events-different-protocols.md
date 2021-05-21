@@ -1,14 +1,14 @@
 ---
-title: Azure 事件中心-使用不同协议的 Exchange 事件
+title: Azure 事件中心 - 使用不同协议的 Exchange 事件
 description: 本文介绍使用不同协议（AMQP、Apache Kafka 和 HTTPS）的使用者和生成者在使用 Azure 事件中心时如何交换事件。
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cbc6999e3ede73b948ce034769966922b4b0f282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89010313"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>在使用不同协议（AMQP、Kafka 和 HTTPS）的使用者与生成者之间交换事件
@@ -335,5 +335,5 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 * [了解事件中心](./event-hubs-about.md)
 * [了解适用于 Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 * [在适用于 Kafka 的事件中心 GitHub 上浏览更多示例](https://github.com/Azure/azure-event-hubs-for-kafka)
-* 使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 将 [事件从本地 Kafka 流式传输到云上的事件中心。](event-hubs-kafka-mirror-maker-tutorial.md)
-* 了解如何使用[本机 Kafka 应用程序](event-hubs-quickstart-kafka-enabled-event-hubs.md)、 [Apache Flink](event-hubs-kafka-flink-tutorial.md)或[Akka 流](event-hubs-kafka-akka-streams-tutorial.md)流式传输到事件中心
+* 使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)[ 将事件从本地 Kafka 流式传输到云端事件中心](event-hubs-kafka-mirror-maker-tutorial.md)。
+* 了解如何使用[本机 Kafka 应用程序](event-hubs-quickstart-kafka-enabled-event-hubs.md)、[Apache Flink](event-hubs-kafka-flink-tutorial.md) 或 [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) 流式传输到事件中心

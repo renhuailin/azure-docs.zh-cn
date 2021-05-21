@@ -1,6 +1,6 @@
 ---
-title: 'Microsoft Azure 地图移动服务 (预览版请求传输数据) '
-description: 了解如何使用 Azure Maps 移动服务 (预览版) 请求公用传输数据，如地铁区域 Id、传输停止、路由和路由路线。
+title: 使用 Microsoft Azure Maps 出行服务（预览版）请求交通数据
+description: 了解如何使用 Azure Maps 出行服务（预览版）请求公共交通数据，如都市区域 ID、交通停靠站、路线和路线行程。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -10,27 +10,27 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 740080d742f535f868b2ae194b24bebe5ac6ac24
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96906023"
 ---
-# <a name="request-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>使用 Azure Maps 移动服务 (预览版请求公共传输数据)  
+# <a name="request-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>使用 Azure Maps 出行服务（预览版）请求公共交通数据 
 
 > [!IMPORTANT]
-> Azure Maps 移动服务目前为公共预览版。
+> Azure Maps 出行服务目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
-本文介绍如何使用 Azure Maps [移动服务](/rest/api/maps/mobility) 来请求公共传输数据。 传输数据包括传输停止、路由信息以及旅行时间估算。
+本文介绍如何使用 Azure Maps [出行服务](/rest/api/maps/mobility)来请求公共交通数据。 交通数据包括交通停靠站、路线信息和旅行时间估算。
 
-在本文中，你将学习如何：
+在本文中，你将了解如何：
 
-* 使用 "[获取地铁区域 API](/rest/api/maps/mobility/getmetroareapreview) " 获取地铁区域 ID
-* 使用 " [获取附近的传输](/rest/api/maps/mobility/getnearbytransitpreview) 服务" 请求附近的传输停止。
-* 查询 [获取传输路由 API](/rest/api/maps/mobility/gettransitroutepreview) ，使用公共传输计划路由。
-* 使用 [获取传输路线 API](https://aka.ms/https://azure.microsoft.com/services/azure-maps/)请求传输路由几何和路由的详细计划。
+* 使用[获取都市区域 API](/rest/api/maps/mobility/getmetroareapreview)来获取都市区域 ID
+* 使用[获取附近交通](/rest/api/maps/mobility/getnearbytransitpreview)服务请求获取附近的交通停靠站。
+* 查询[获取交通路线 API](/rest/api/maps/mobility/gettransitroutepreview) 以使用公共交通计划路线。
+* 使用[获取路线行程 API](https://aka.ms/https://azure.microsoft.com/services/azure-maps/) 请求获取交通路线几何图形和路线的详细日程安排。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,25 +39,25 @@ ms.locfileid: "96906023"
 
 本教程使用 [Postman](https://www.postman.com/) 应用，但你也可以选择其他 API 开发环境。
 
-## <a name="get-a-metro-area-id"></a>获取地铁区域 ID
+## <a name="get-a-metro-area-id"></a>获取都市区域 ID
 
-若要为特定大都市区请求有关转口机构和支持的传输类型的详细信息，需要使用 `metroId` 该区域。 " [获取地铁区域 API](/rest/api/maps/mobility/getmetroareapreview) " 允许您请求大都市区域，其中 Azure Maps 移动服务可用。 响应包括详细信息 `metroId` ，如 `metroName` GeoJSON 格式的地铁区域几何的表示形式。
+若要请求获取有关特定都市区域的交通机构和受支持交通类型的详细信息，需要该区域的 `metroId`。 [获取都市区域 API](/rest/api/maps/mobility/getmetroareapreview) 使你可以请求获取提供 Azure Maps 出行服务的都市区域。 响应包含 `metroId`、`metroName` 和都市区域几何形状的表示形式（GeoJSON 格式）等详细信息。
 
-接下来，我们将请求获取 Seattle-Tacoma 地铁区域 ID 的地铁区域。 若要请求地铁区域的 ID，请完成以下步骤：
+我们来请求获取西雅图-塔科马都市区域 ID 的都市区域。 若要请求获取都市区域的 ID，请完成以下步骤：
 
-1. 打开 Postman 应用，让我们创建一个集合来存储请求。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。
+1. 打开 Postman 应用，创建用于存储这些请求的集合。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。
 
-2. 若要创建请求，请再次选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 选择你在上一步中创建的集合，作为要保存请求的位置。 然后选择“保存”。
+2. 若要创建请求，请再次选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 选择在上一步创建的集合，作为保存请求的位置。 然后选择“保存”。
   
     ![在 Postman 中创建请求](./media/how-to-request-transit-data/postman-new.png)
 
-3. 在 "生成器" 选项卡上选择 " **获取** HTTP" 方法，然后输入以下 URL 创建 GET 请求。 `{subscription-key}`将替换为 Azure Maps 的主键。
+3. 在生成器选项卡上选择 GET HTTP 方法，并输入以下 URL 来创建 GET 请求。 将 `{subscription-key}` 替换为 Azure Maps 主密钥。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/metroArea/id/json?subscription-key={subscription-key}&api-version=1.0&query=47.63096,-122.126
     ```
 
-4. 成功请求后，会收到以下响应：
+4. 在请求成功之后，会收到以下响应：
 
     ```JSON
     {
@@ -114,15 +114,15 @@ ms.locfileid: "96906023"
     }
     ```
 
-## <a name="request-nearby-transit-stops"></a>请求附近传输停止
+## <a name="request-nearby-transit-stops"></a>请求获取附近的交通停靠站
 
-Azure Maps [获取附近的传输](/rest/api/maps/mobility/getnearbytransitpreview) 服务，可以搜索传输对象。 该 API 将返回传输对象的详细信息，如公用传输停止以及围绕给定位置的共享自行车。 接下来，我们将向服务发出请求，搜索附近的公共传输在给定位置附近的300米的 radius 内停止。
+Azure Maps [获取附近交通](/rest/api/maps/mobility/getnearbytransitpreview)服务使你可以搜索交通对象。 该 API 会返回交通对象详细信息，如公用交通停靠站以及给定位置周围的共享单车。 接下来，我们会请求服务在给定位置周围 300 米半径内搜索附近的公共交通停靠站。
 
-若要向 [附近传输](/rest/api/maps/mobility/getnearbytransitpreview)请求，请执行以下步骤：
+若要发出[获取附近交通](/rest/api/maps/mobility/getnearbytransitpreview)请求，请执行以下步骤：
 
-1. 在 Postman 中，单击 "**新建请求**  |  **获取请求**" 并将其命名为 "**附近停止**"。
+1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“获取附近停靠站”。  
 
-2. 在 "生成器" 选项卡上，选择 " **获取** HTTP" 方法，输入 API 终结点的以下请求 URL，然后单击 " **发送**"。
+2. 在“生成器”选项卡上，选择“GET”HTTP 方法，为 API 终结点输入以下请求 URL，然后单击“发送”。 
 
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&query=47.63096,-122.126&radius=300&objectType=stop
@@ -215,29 +215,29 @@ Azure Maps [获取附近的传输](/rest/api/maps/mobility/getnearbytransitprevi
     } 
     ```
 
-如果仔细观察响应结构，则会看到它包含每个传输对象的参数。 每个中转对象都具有对象的参数，如 `id` 、、、、 `type` `stopName` `mainTransitType` `mainAgencyName` 和。
+如果仔细观察响应结构，会看到它包含每个交通对象的参数。 每个交通对象都具有参数，如对象的 `id`、`type`、`stopName`、`mainTransitType``mainAgencyName` 和位置（以坐标表示）。
 
-出于学习的目的，我们将 `id` 在下一节中将总线停止作为起点。  
+为了进行学习，我们会在下一部分中将公交车站的 `id` 用作路线起源。  
 
-## <a name="request-a-transit-route"></a>请求传输路由
+## <a name="request-a-transit-route"></a>请求获取交通路线
 
-Azure Maps [获取传输路由 API](/rest/api/maps/mobility/gettransitroutepreview) 允许行程计划。 它会返回从源到目标的最佳路由选项。 此服务提供不同种类的旅行模式，包括行走、biking 和公共交通。 接下来，我们将搜索从最近的总线停止位置到西雅图的空间针塔的路线。
+通过 Azure Maps [获取交通路线 API](/rest/api/maps/mobility/gettransitroutepreview) 可以进行行程计划。 它会返回从起源到目标的最佳可能路线选项。 该服务提供不同类型的旅行模式，包括步行、骑自行车和公共交通。 接下来，我们会搜索从最近公交车站到西雅图的太空针塔的路线。
 
 ### <a name="get-location-coordinates-for-destination"></a>获取目标的位置坐标
 
-若要获取太空针塔式的位置坐标，我们将使用 Azure Maps [模糊搜索服务](/rest/api/maps/search/getsearchfuzzy)。
+为了获取太空针塔的位置坐标，我们会使用 Azure Maps [模糊搜索服务](/rest/api/maps/search/getsearchfuzzy)。
 
-若要向模糊搜索服务发出请求，请执行以下步骤：
+若要发出模糊搜索服务请求，请执行以下步骤：
 
-1. 在 Postman 中，单击 "**新建请求**  |  **获取请求** 并将其命名为 **获取位置坐标**"。
+1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“获取位置坐标”。  
 
-2. 在 "生成器" 选项卡上，选择 " **获取** HTTP" 方法，输入以下请求 URL，然后单击 " **发送**"。
+2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入以下请求 URL，然后单击“发送”。 
 
     ```HTTP
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
     ```
 
-3. 如果仔细查看响应，则它在空间针搜索的结果中包含多个位置。 每个结果 **包含位置坐标。** 将和复制到 `lat` `lon` 第一个结果的 **位置** 。
+3. 如果仔细查看响应，它会在太空针搜索的结果中包含多个位置。 每个结果都在 position 下包含位置坐标。 复制第一个结果的 position 下的 `lat` 和 `lon`。
 
    ```JSON
    {
@@ -332,17 +332,17 @@ Azure Maps [获取传输路由 API](/rest/api/maps/mobility/gettransitrouteprevi
     }
     ```
 
-### <a name="request-route"></a>请求路由
+### <a name="request-route"></a>请求获取路线
 
-若要发出路由请求，请完成以下步骤：
+若要发出路线请求，请完成以下步骤：
 
-1. 在 Postman 中，单击 "**新建请求**  |  **获取请求** 并将其命名为 **获取路由信息**"。
+1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“获取路线信息”。  
 
-2. 在 "生成器" 选项卡上，选择 " **获取** HTTP" 方法，输入 API 终结点的以下请求 URL，然后单击 " **发送**"。
+2. 在“生成器”选项卡上，选择“GET”HTTP 方法，为 API 终结点输入以下请求 URL，然后单击“发送”。 
 
-    我们将通过指定和参数来请求总线的公共传输 `modeType` 路由 `transitType` 。 请求 URL 包含之前部分中检索到的位置。 对于 `originType` ，我们现在有了一个 **stopId**。 对于 `destionationType` ，我们有了 **位置**。
+    我们会通过指定 `modeType` 和 `transitType` 参数来请求获取公共汽车的交通路线。 请求 URL 包含前面部分中检索到的位置。 对于 `originType`，我们现在具有 stopId。 对于 `destionationType`，我们具有 position。
 
-    查看可在请求中用于[获取传输路由 API](/rest/api/maps/mobility/gettransitroutepreview)的[URI 参数的列表](/rest/api/maps/mobility/gettransitroutepreview#uri-parameters)。
+    查看可在请求中用于[获取交通路线 API](/rest/api/maps/mobility/gettransitroutepreview) 的[URI 参数列表](/rest/api/maps/mobility/gettransitroutepreview#uri-parameters)。
   
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/route/json?subscription-key={subscription-key}&api-version=1.0&originType=stopId&origin=522---2060603&destionationType=position&destination=47.62039,-122.34928&modeType=publicTransit&transitType=bus
@@ -525,23 +525,23 @@ Azure Maps [获取传输路由 API](/rest/api/maps/mobility/gettransitrouteprevi
     }
     ```
 
-4. 如果仔细观察，响应中会有多个 **总线** 路由。 每个路由都有唯一的 **路线 ID**、描述每个路线的每个阶段的摘要，以及 `itineraryFare` 同时提供了总线票证的详细和价格。 路由段是两个停止 waypoints 之间的路由部分。 接下来，我们将在响应中使用来请求最快路由的详细信息 `itineraryId` 。
+4. 如果仔细观察，响应中会有多个 bus 路线。 每个路线都具有唯一的行程 ID、描述路线的每个路段的摘要以及提供公交车票的明细价格和总价的 `itineraryFare`。 路线路段是两个停靠站航点之间的路线部分。 接下来，我们会使用响应中的 `itineraryId` 来请求获取最快路线的详细信息。
 
-## <a name="request-fastest-route-itinerary"></a>请求最快路线路线
+## <a name="request-fastest-route-itinerary"></a>请求获取最快路线行程
 
-通过 Azure Maps [获取传输路线](/rest/api/maps/mobility/gettransititinerarypreview)服务，可以使用 [获取传输路由 API](/rest/api/maps/mobility/gettransitroutepreview)服务返回的路由 **行程 ID** 请求特定路由的数据。 若要发出请求，请完成以下步骤：
+Azure Maps [获取交通行程](/rest/api/maps/mobility/gettransititinerarypreview)服务使你可以使用[获取交通路线 API](/rest/api/maps/mobility/gettransitroutepreview) 服务返回的路线行程 ID 来请求获取特定路线的数据。 若要发出请求，请完成以下步骤：
 
-1. 在 Postman 中，单击 "**新建请求**  |  **获取请求** 并将其命名为 **获取传输信息**"。
+1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“获取交通信息”。  
 
-2. 在 "生成器" 选项卡上，选择 " **获取** HTTP" 方法。 输入 API 终结点的以下请求 URL，然后单击 " **发送**"。
+2. 在“生成器”选项卡上，选择“GET”HTTP 方法。 为 API 终结点输入以下请求 URL，然后单击“发送”。
 
-    我们会将 `detailType` 参数设置为 **geometry** ，以使响应包含公共传输的停止信息，并为路线的 "审核" 和 "自行车" 条启用 "轮流导航"。
+    我们会将 `detailType` 参数设置为 geometry，以便响应包含公共交通的停靠站信息，以及路线的步行和骑自行车路段的逐段导航。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/itinerary/json?api-version=1.0&subscription-key={subscription-key}&query={itineraryId}&detailType=geometry
     ```
 
-3. 成功请求后，响应结构应如下所示。  如果观察到 JSON 响应，会注意到每个总线引线都包含一个 `legfare` 元素。 `legfare`元素包含单独购买的每个总线路由的成本（以美分为计算）。 在响应结束时，你将看到一个元素， `itineraryFare` 其中包含整个路由的成本（以美分为货币）。 在此示例中，每个都有四个总线路由 `$2.75` 。 但是，如果您购买了整个路线的单个票证，则成本为 `$5.50` 。
+3. 成功请求后，响应结构应如下所示。  如果观察 JSON 响应，则会注意到每个公共汽车路段都包含一个 `legfare` 元素。 `legfare` 元素包含单独购买的每个公共汽车路线的成本（以美分为单位）。 在响应结尾处，你会看到一个 `itineraryFare` 元素，其中包含整个路线的成本（以美分为单位）。 在此示例中，有四个公共汽车路线，各自为 `$2.75`。 但是，如果为整个路线购买一张票，则成本为 `$5.50`。
 
     ```JSON
    {
@@ -801,12 +801,12 @@ Azure Maps [获取传输路由 API](/rest/api/maps/mobility/gettransitrouteprevi
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用移动服务 (预览) 请求实时数据：
+了解如何使用出行服务（预览版）请求实时数据：
 
 > [!div class="nextstepaction"]
 > [如何请求实时数据](how-to-request-real-time-data.md)
 
-浏览 Azure Maps 移动服务 (预览版) API 文档
+浏览 Azure Maps 出行服务（预览版）API 文档
 
 > [!div class="nextstepaction"]
-> [移动服务文档](/rest/api/maps/mobility)
+> [出行服务文档](/rest/api/maps/mobility)

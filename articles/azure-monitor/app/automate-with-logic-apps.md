@@ -1,13 +1,13 @@
 ---
-title: 使用逻辑应用自动执行 Azure 应用程序 Insights 过程
+title: 使用逻辑应用自动执行 Azure Application Insights 过程
 description: 了解如何通过将 Application Insights 连接器添加到逻辑应用来快速自动执行可重复的过程。
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: d7ff75be3cb847235405a740df4a20803cdc87b3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100589922"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
@@ -15,7 +15,7 @@ ms.locfileid: "100589922"
 是否发现自己曾对遥测数据重复运行相同的查询以检查服务是否正常运行？ 是否希望自动执行这些查询以查找趋势和异常，然后针对这些信息构建你自己的工作流？ 用于逻辑应用的 Azure Application Insights 连接器是适用于此用途的合适工具。
 
 > [!NOTE]
-> Azure 应用程序 Insights 连接器已替换为与 Azure Active Directory 集成的 [Azure Monitor 连接器](../logs/logicapp-flow-connector.md) ，而不需要 API 密钥，还可用于从 Log Analytics 工作区中检索数据。
+> Azure Application Insights 连接器已替换为，与 Azure Active Directory 集成的 [Azure Monitor 连接器](../logs/logicapp-flow-connector.md)，而不需要 API 密钥，并且还便于你从 Log Analytics 工作区中检索数据。
 
 通过这种集成，无需编写任何代码就可以自动执行许多过程。 可以使用 Application Insights 连接器创建逻辑应用，快速自动执行任何 Application Insights 过程。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "100589922"
     ![逻辑应用设计器“重复周期”窗口](./media/automate-with-logic-apps/3recurrence.png)
 
 ### <a name="step-3-add-an-application-insights-action"></a>步骤 3：添加 Application Insights 操作
-1. 单击 " **新建步骤**"。
+1. 单击“新建步骤”。
 
 1. 在“选择操作”搜索框中，键入“Azure Application Insights”。
 
@@ -53,7 +53,7 @@ ms.locfileid: "100589922"
 
 若要完成此步骤，需要为资源提供应用程序 ID 和 API 密钥。 可从 Azure 门户检索它们，如下图所示：
 
-![屏幕截图显示 "Azure 门户中的" API 访问 "页，其中选择了" 创建 API 密钥 "按钮。](./media/automate-with-logic-apps/5apiaccess.png)
+![屏幕截图展示了 Azure 门户中的“API 访问”页，其中选择了“创建 API 密钥”按钮。](./media/automate-with-logic-apps/5apiaccess.png)
 
 ![Azure 门户中的应用程序 ID](./media/automate-with-logic-apps/6apikey.png)
 
@@ -85,11 +85,11 @@ ms.locfileid: "100589922"
 
 ### <a name="step-6-configure-the-logic-app-to-send-email"></a>步骤 6：配置逻辑应用以发送电子邮件
 
-1. 单击 " **新建步骤**"。
+1. 单击“新建步骤”。
 
 1. 在搜索框中键入 Office 365 Outlook。
 
-1. 单击 " **Office 365 Outlook-发送电子邮件**"。
+1. 单击“Office 365 Outlook - 发送电子邮件”。
 
     ![Office 365 Outlook 选择](./media/automate-with-logic-apps/9sendemail.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "100589922"
     
    d. 单击“添加新参数”下拉列表，然后选择“附件”和“是 HTML”。
 
-      ![屏幕截图显示 "发送电子邮件" 窗口，其中突出显示了 "正文" 框，而 "动态内容" 菜单显示在右侧。](./media/automate-with-logic-apps/10emailbody.png)
+      ![屏幕截图展示了“发送电子邮件”窗口（其中突出显示了“正文”框）和“动态内容”菜单（其中右侧突出显示了“正文”）。](./media/automate-with-logic-apps/10emailbody.png)
 
       ![Office 365 Outlook 配置](./media/automate-with-logic-apps/11emailparameter.png)
 

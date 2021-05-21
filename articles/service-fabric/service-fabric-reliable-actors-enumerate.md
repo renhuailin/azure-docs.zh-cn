@@ -1,14 +1,14 @@
 ---
 title: 枚举 Azure Service Fabric 中的执行组件
-description: 了解如何按照示例在 Azure Service Fabric 应用程序中枚举 Reliable Actors 及其元数据。
+description: 了解如何使用示例在 Azure Service Fabric 应用程序中枚举 Reliable Actors 及其元数据。
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11742d1a1c0837588e7122ee615f3f7929aae363
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96571344"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>枚举 Service Fabric Reliable Actors
@@ -61,7 +61,7 @@ while (continuationToken != null);
 * [执行组件状态管理](service-fabric-reliable-actors-state-management.md)
 * [执行组件生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
 * [执行组件 API 参考文档](/previous-versions/azure/dn971626(v=azure.100))
-* [.NET 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [.NET 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

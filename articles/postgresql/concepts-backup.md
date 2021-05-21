@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.openlocfilehash: db3b62e7ce07c1e10bc5030c37cb8957d281ea05
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100517291"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
@@ -66,13 +66,13 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 - **时间点还原**：可以与任一备份冗余选项配合使用，所创建的新服务器与原始服务器位于同一区域。
 - **异地还原**：只能在已将服务器配置为进行异地冗余存储的情况下使用，用于将服务器还原到另一区域。
 
-估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间因上次数据备份和需要执行恢复量的不同而异。 通常不到12小时。
+估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间因上次数据备份和需要执行恢复量的不同而异。 通常不到 12 个小时。
 
 > [!NOTE] 
-> 如果源 PostgreSQL 服务器是用客户管理的密钥加密的，请参阅 [文档](concepts-data-encryption-postgresql.md) 以了解其他注意事项。 
+> 如果源 PostgreSQL 服务器使用客户管理的密钥进行加密，请参阅这篇[文档](concepts-data-encryption-postgresql.md)来了解额外的注意事项。 
 
 > [!NOTE]
-> 如果要还原已删除的 PostgreSQL 服务器，请按照 [此处](howto-restore-dropped-server.md)所述的过程进行操作。
+> 若要还原已删除的 PostgreSQL 服务器，请遵循[此处](howto-restore-dropped-server.md)的过程。
 
 ### <a name="point-in-time-restore"></a>时间点还原
 
@@ -82,15 +82,15 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 
 可能需要等到下一个事务日志备份进行后，才能还原到上一个五分钟内的某个时间点。
 
-如果要还原已删除的表， 
+若要还原已删除的表，请执行以下操作： 
 1. 使用时间点方法还原源服务器。
 2. 使用 `pg_dump` 从还原的服务器转储表。
-3. 重命名原始服务器上的源表。
-4. 在原始服务器上使用 psql 命令行导入表。
-5. 您可以选择删除还原后的服务器。
+3. 在原始服务器上重命名源表。
+4. 在原始服务器上，使用 psql 命令行来导入表。
+5. 可以视需要选择删除还原的服务器。
 
 >[!Note]
-> 建议不要同时为同一服务器创建多个还原。 
+> 建议不要在同一时间为同一台服务器创建多个还原。 
 
 ### <a name="geo-restore"></a>异地还原
 
@@ -101,13 +101,13 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 在异地还原过程中，可以更改的服务器配置包括计算的代、vCore、备份保持期和备份冗余选项。 不支持更改定价层（“基本”、“常规用途”或“内存优化”）或存储大小。
 
 > [!NOTE]
-> 如果源服务器使用基础结构双加密，则在还原服务器时有一些限制，包括可用区域。 有关更多详细信息，请参阅 [基础结构双加密](concepts-infrastructure-double-encryption.md) 。
+> 如果源服务器使用基础结构双重加密，那么对于还原服务器，会有一些限制，包括可用区域。 如需了解更多详情，请参阅[基础结构双重加密](concepts-infrastructure-double-encryption.md)。
 
 ### <a name="perform-post-restore-tasks"></a>执行还原后任务
 
 从任一恢复机制还原后，都应执行以下任务，然后用户和应用程序才能重新运行：
 
-- 如果需要使用新的服务器来替换原始服务器，请将客户端和客户端应用程序重定向到新服务器。 还将 "用户名" 更改为 "" `username@new-restored-server-name` 。
+- 如果需要使用新的服务器来替换原始服务器，请将客户端和客户端应用程序重定向到新服务器。 将用户名也更改为 `username@new-restored-server-name`。
 - 对于要进行连接的用户，请确保设置适当的服务器级防火墙规则和 VNet 规则。 不会从源服务器复制这些规则。
 - 确保设置适当的登录名和数据库级权限
 - 视情况配置警报

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: b-juche
 ms.openlocfilehash: 7eac6a40476cffe875a03de49c9c9311ffbf4d39
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96017060"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp 文件的服务级别
@@ -26,26 +26,26 @@ ms.locfileid: "96017060"
 
 ## <a name="supported-service-levels"></a>支持的服务级别
 
-Azure NetApp 文件支持三个服务级别： *Ultra*、 *高级* 和 *标准*。 
+Azure NetApp 文件支持三种服务级别：超级、高级和标准。 
 
-* <a name="Ultra"></a>超存储器
+* <a name="Ultra"></a>超级存储
 
-    超存储层提供了高达 128 MiB/秒的吞吐量，每 1 TiB 容量预配。 
+    超级存储层提供每 1 TiB 预配容量高达 128 MiB/秒的吞吐量。 
 
 * <a name="Premium"></a>高级存储
 
-    高级存储层提供高达 64 MiB/秒的吞吐量，每 1 TiB 容量预配。 
+    高级存储层提供每 1 TiB 预配容量高达 64 MiB/秒的吞吐量。 
 
 * <a name="Standard"></a>标准存储
 
-    标准存储层提供了高达每秒 16 MiB/秒的吞吐量，每 1 TiB 容量预配。
+    标准存储层提供每 1 TiB 预配容量高达 16 MiB/秒的吞吐量。
 
 ## <a name="throughput-limits"></a>吞吐量限制
 
 卷的吞吐量限制由以下因素的组合确定：
 * 卷所属的容量池的服务级别
 * 分配给卷的配额  
-* QoS 类型 (*自动* 或 *手动*) 容量池  
+* 容量池的 QoS 类型（自动或手动）  
 
 ### <a name="throughput-limit-examples-of-volumes-in-an-auto-qos-capacity-pool"></a>吞吐量限制了自动 QoS 容量池中的卷的示例
 
@@ -53,22 +53,22 @@ Azure NetApp 文件支持三个服务级别： *Ultra*、 *高级* 和 *标准*�
 
 ![服务级别说明](../media/azure-netapp-files/azure-netapp-files-service-levels.png)
 
-* 在示例1中，将为自动 QoS 容量池中分配了 2 TiB 配额的自动 QoS 容量池分配一个卷，其吞吐量限制为 128 MiB/秒 (2 TiB * 64 MiB/秒) 。 无论容量池大小还是实际容量消耗，此方案都适用。
+* 在示例 1 中，自动 QoS 容量池（高级存储层分配到 2 TiB 配额）中的一个卷将分配限制为 128 MiB/秒（2 TiB * 64 MiB/秒）的吞吐量。 无论容量池大小或实际卷消耗情况如何，此方案均适用。
 
-* 在示例2中，将为自动 QoS 容量池中具有分配了 100 GiB 配额的高级存储层分配的卷的吞吐量限制为 6.25 MiB/s (0.09765625 TiB * 64 MiB/s) 。 无论容量池大小还是实际容量消耗，此方案都适用。
+* 在示例 2 中，自动 QoS 容量池（高级存储层分配到 100 GiB 配额）中的一个卷将分配限制为 6.25 MiB/秒（0.09765625 TiB * 64 MiB/秒）的吞吐量。 无论容量池大小或实际卷消耗情况如何，此方案均适用。
 
-### <a name="throughput-limit-examples-of-volumes-in-a-manual-qos-capacity-pool"></a>吞吐量限制手动 QoS 容量池中的卷的示例 
+### <a name="throughput-limit-examples-of-volumes-in-a-manual-qos-capacity-pool"></a>吞吐量限制了手动 QoS 容量池中的卷的示例 
 
-如果使用手动 QoS 容量池，则可以单独为卷分配容量和吞吐量。 在手动 QoS 容量池中创建卷时，可以 (MiB/秒) 值来指定吞吐量。 分配给手动 QoS 容量池中的卷的总吞吐量取决于池的大小和服务级别。 它在 TiB x 服务级别吞吐量/TiB) 中 (容量池大小的上限。 例如，具有 "超" 服务级别的 TiB 容量池具有 1280 MiB/s 的总吞吐量容量 (10 TiB x 128 MiB/s/TiB) 可用于卷。
+如果使用手动 QoS 容量池，可以单独为卷分配容量和吞吐量。 在手动 QoS 容量池中创建卷时，可以指定吞吐量（MiB/秒）值。 分配给手动 QoS 容量池中的卷的总吞吐量取决于池的大小和服务级别。 上限为（TiB x 服务级别吞吐量/TiB 中的容量池大小）。 例如，具有“超级”服务级别的 10-TiB 容量池可为卷提供 1280 MiB/秒 (10 TiB x 128 MiB/s/TiB) 的总吞吐容量。
 
-例如，对于 SAP HANA 系统，此容量池可用于创建以下卷。 每个卷都提供单个大小和吞吐量，以满足应用程序的要求：
+例如，对于 SAP HANA 系统，此容量池可用于创建以下卷。 每个卷都提供单独的大小和吞吐量，以满足应用程序的要求：
 
-* SAP HANA 数据量：大小为 4 TiB，最多 704 MiB/秒
-* SAP HANA 日志卷： Size 0.5 TiB，最多 256 MiB/秒
-* SAP HANA 共享卷：大小为1的 TiB，最多 64 MiB/秒
-* 备份卷 SAP HANA： Size 4.5 TiB，最多 256 MiB/秒
+* SAP HANA 数据卷：大小为 4 TiB，最多 704 MiB/秒
+* SAP HANA 日志卷：大小为 0.5 TiB，最多 256 MiB/秒
+* SAP HANA 数据卷：大小为 1 TiB，最多 64 MiB/秒
+* SAP HANA 日志卷：大小为 4.5 TiB，最多 256 MiB/秒
 
-下图说明了 SAP HANA 卷的方案：
+下图说明了适用于 SAP HANA 卷的方案：
 
 ![QoS SAP HANA 卷方案](../media/azure-netapp-files/qos-sap-hana-volume-scenarios.png) 
 
@@ -77,6 +77,6 @@ Azure NetApp 文件支持三个服务级别： *Ultra*、 *高级* 和 *标准*�
 - [Azure NetApp 文件定价页](https://azure.microsoft.com/pricing/details/storage/netapp/)
 - [Azure NetApp 文件的成本模型](azure-netapp-files-cost-model.md) 
 - [创建容量池](azure-netapp-files-set-up-capacity-pool.md)
-- [Azure NetApp 文件服务级别协议 (SLA) ](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [Azure NetApp 文件的服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)
 - [动态更改卷的服务级别](dynamic-change-volume-service-level.md) 
 - [跨区域复制的服务级别目标](cross-region-replication-introduction.md#service-level-objectives)

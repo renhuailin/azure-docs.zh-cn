@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: bd36434bbfe435a53567c46728610627f99f987f
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98127781"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>升级和缩放 Azure API 管理实例  
@@ -80,7 +80,7 @@ ms.locfileid: "98127781"
 若要从开发人员层缩放或缩放到开发人员层，将会出现停机时间。 否则，不会出现停机时间。 
 
 ## <a name="compute-isolation"></a>计算隔离
-如果安全要求包括 [计算隔离](../azure-government/azure-secure-isolation-guidance.md#compute-isolation)，则可以使用 **隔离** 定价层。 此层可确保 API 管理服务实例的计算资源消耗整个物理主机，并提供支持所需的隔离级别，例如，美国国防部影响级别 5 (IL5) 工作负荷。 若要访问隔离层，请 [创建支持票证](../azure-portal/supportability/how-to-create-azure-support-request.md)。 
+如果安全要求包括[计算隔离](../azure-government/azure-secure-isolation-guidance.md#compute-isolation)，则可以使用“隔离”定价层。 该层可确保 API 管理服务实例的计算资源使用整个物理主机，并提供支持工作负载（例如美国国防部影响级别 5 (IL5) 工作负载）所需的必要隔离级别。 要获取隔离层访问权限，请[创建支持票证](../azure-portal/supportability/how-to-create-azure-support-request.md)。 
 
 
 
@@ -88,5 +88,5 @@ ms.locfileid: "98127781"
 
 - [如何将 Azure API 管理服务实例部署到多个 Azure 区域](api-management-howto-deploy-multi-region.md)
 - [如何自动缩放 Azure API 管理服务实例](api-management-howto-autoscale.md)
-- [规划和管理 API 管理的成本](plan-manage-costs.md)
+- [规划和管理 API 管理成本](plan-manage-costs.md)
 - [API 管理限制](../azure-resource-manager/management/azure-subscription-service-limits.md#api-management-limits)

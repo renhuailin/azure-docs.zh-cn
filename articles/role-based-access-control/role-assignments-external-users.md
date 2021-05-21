@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户将 Azure 角色分配给外部来宾用户 - Azure RBAC
+title: 使用 Azure 门户向外部来宾用户分配 Azure 角色 - Azure RBAC
 description: 了解如何使用 Azure 门户和 Azure 基于角色的访问控制 (Azure RBAC) 向组织外部的用户授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: it-pro
 ms.openlocfilehash: d834f4ccd8dba26c895e0578f161813fc49332ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100556289"
 ---
-# <a name="assign-azure-roles-to-external-guest-users-using-the-azure-portal"></a>使用 Azure 门户将 Azure 角色分配给外部来宾用户
+# <a name="assign-azure-roles-to-external-guest-users-using-the-azure-portal"></a>使用 Azure 门户向外部来宾用户分配 Azure 角色
 
 [Azure 基于角色的访问控制 (RBAC)](overview.md) 可以为大型组织和中小型企业提供更好的安全管理，与中小企业合作的外部协作者、供应商或自由职业者需要访问你环境中的特定资源，但不一定需要访问整个基础架构或任何与计费相关的范围。 你可以使用 [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) 中的功能与外部来宾用户合作，并且可以使用 Azure RBAC 仅授予来宾用户在你的环境中需要的权限。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要分配 Azure 角色或删除角色分配，必须拥有以下权限：
+若要分配 Azure 角色或删除角色分配，必须满足以下条件：
 
 - `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](built-in-roles.md#user-access-administrator)或[所有者](built-in-roles.md#owner)
 
@@ -67,7 +67,7 @@ ms.locfileid: "100556289"
 
 ## <a name="assign-a-role-to-a-guest-user"></a>向来宾用户分配角色
 
-在 Azure RBAC 中，若要授予访问权限，需分配一个角色。 若要为来宾用户分配角色，请执行与适用于成员用户、组、服务主体或托管标识的步骤[相同的步骤](role-assignments-portal.md)。 按照以下步骤在不同范围为来宾用户分配角色。
+在 Azure RBAC 中，若要授予访问权限，需分配一个角色。 若要向来宾用户分配角色，则需要按照与处理成员用户、组、服务主体或托管标识[相同的步骤](role-assignments-portal.md)。 若要向不同作用域的来宾用户分配角色，请按以下步骤操作。
 
 1. 在 Azure 门户中，单击“所有服务”。
 
@@ -83,7 +83,7 @@ ms.locfileid: "100556289"
 
 1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配。
 
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。 
 
     如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
@@ -101,9 +101,9 @@ ms.locfileid: "100556289"
 
     ![“虚拟机参与者”角色分配](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="assign-a-role-to-a-guest-user-not-yet-in-your-directory"></a>为还不在目录中的来宾用户分配角色
+## <a name="assign-a-role-to-a-guest-user-not-yet-in-your-directory"></a>向目录中尚未包含的来宾用户分配角色
 
-若要为来宾用户分配角色，请执行与适用于成员用户、组、服务主体或托管标识的步骤[相同的步骤](role-assignments-portal.md)。
+若要向来宾用户分配角色，则需要按照与处理成员用户、组、服务主体或托管标识[相同的步骤](role-assignments-portal.md)。
 
 如果来宾用户还不在你的目录中，则可直接从“添加角色分配”窗格邀请用户。
 
@@ -187,7 +187,7 @@ ms.locfileid: "100556289"
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>来宾用户无法浏览用户、组或服务主体来分配角色
 
-来宾用户的目录权限受到限制。 即使来宾用户在某个范围是[所有者](built-in-roles.md#owner)，但如果他们尝试通过分配角色向他人授予访问权限，他们也无法浏览用户、组或服务主体的列表。
+来宾用户的目录权限受到限制。 即使来宾用户是作用域中的[所有者](built-in-roles.md#owner)，但如果他们尝试通过分配角色向他人授予访问权限，则也无法浏览用户、组或服务主体的列表。
 
 ![来宾用户无法浏览安全主体来分配角色](./media/role-assignments-external-users/directory-no-browse.png)
 

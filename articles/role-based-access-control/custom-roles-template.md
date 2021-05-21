@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
 ms.openlocfilehash: 0626a9e36d05ac9cb51f62652dbe6f3133bbc6d7
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101095911"
 ---
 # <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>使用 ARM 模板创建或更新 Azure 自定义角色
@@ -69,7 +69,7 @@ ms.locfileid: "101095911"
     New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
     ```
 
-1. 输入部署的位置，例如 `centralus` 。
+1. 输入部署的位置，例如 chinanorth。
 
 1. 以逗号分隔的列表（如 `Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read`）形式输入自定义角色的操作列表。
 

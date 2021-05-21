@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 在本地和私有云之间配置 VPN
 description: 介绍如何配置本地网络与 CloudSimple 私有云之间的站点到站点或点到站点 VPN 连接
-author: shortpatti
-ms.author: v-patsho
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 49dc804e4dc482f49ca21354d594a84092b8868b
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: b7a119b538ee07b961011bfa98d748f92cc76f0e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108180889"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97899212"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>配置到 CloudSimple 私有云的 VPN 连接
 

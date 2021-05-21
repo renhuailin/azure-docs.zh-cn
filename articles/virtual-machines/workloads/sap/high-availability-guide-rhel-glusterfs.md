@@ -1,5 +1,5 @@
 ---
-title: RHEL 上的 Azure Vm 上的 GlusterFS for SAP NetWeaver |Microsoft Docs
+title: 适用于 SAP NetWeaver 的 RHEL 上的 Azure VM 上的 GlusterFS | Microsoft Docs
 description: 适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
 ms.openlocfilehash: 3ebc125fe6802ffbe4192c0250ec9adc2ceceb0b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101668718"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
@@ -86,7 +86,7 @@ ms.locfileid: "101668718"
 ### <a name="deploy-linux-via-azure-template"></a>通过 Azure 模板部署 Linux
 
 Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于部署新的虚拟机。
-可以使用 github 上的某个快速启动模板部署全部所需资源。 模板部署虚拟机、可用性集等。按照以下步骤部署模板：
+可以使用 github 上的某个快速启动模板部署全部所需资源。 该模板部署虚拟机、可用性集等。请遵照以下步骤部署模板：
 
 1. 在 Azure 门户中打开 [SAP 文件服务器模板][template-file-server]
 1. 输入以下参数
@@ -98,7 +98,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    4. 管理员用户名、管理员密码或 SSH 密钥  
       创建可用于登录计算机的新用户。
    5. 子网 ID  
-      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于/subscriptions/**&lt; 订阅 ID &gt;**/ResourceGroups/**&lt; 资源组名称 &gt;**/providers/Microsoft.Network/virtualNetworks/**&lt; 虚拟网络名称 &gt;**/subnets/**&lt; 子网名称 &gt;**
+      如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;   
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 

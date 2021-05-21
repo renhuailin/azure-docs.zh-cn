@@ -7,17 +7,17 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 09/23/2020
-ms.openlocfilehash: f5fc77b65f6a83f4f7ca8ed8b8c9294b95307735
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 374cc3398d1037b19ceddcbdaafd333f643e44ff
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107306"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "91261152"
 ---
 # <a name="api-prerequisites"></a>API 先决条件
 
 > [!NOTE]
-> 云合作伙伴门户 API 已与合作伙伴中心集成，并将继续在其中运行。 本次转换引入的变更很少。 请查阅[云合作伙伴门户 API 参考](cloud-partner-portal-api-overview.md)中列出的更改，以确保代码在转换到合作伙伴中心后能够继续正常运行。 只对在转换到合作伙伴中心之前已经集成的现有产品使用 CPP API；新产品应使用合作伙伴中心提交 API。
+> 云合作伙伴门户 API 已与合作伙伴中心集成，并将继续在其中运行。 本次转换带来了少量更改。 请查阅[云合作伙伴门户 API 参考](cloud-partner-portal-api-overview.md)中列出的更改，以确保代码在转换到合作伙伴中心后能够继续正常运行。 只对在转换到合作伙伴中心之前已经集成的现有产品使用 CPP API；新产品应使用合作伙伴中心提交 API。
 
 若要使用云合作伙伴门户 API，需要两个必需的编程资产：服务主体和 Azure Active Directory (Azure AD) 访问令牌。
 
@@ -31,4 +31,4 @@ ms.locfileid: "107107306"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[管理 Azure AD 应用程序](manage-aad-apps.md)。
+请参阅[管理 Azure AD 应用程序](partner-center-portal/manage-account.md#manage-azure-ad-applications)。

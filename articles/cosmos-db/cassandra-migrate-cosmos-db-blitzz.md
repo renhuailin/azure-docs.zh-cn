@@ -9,10 +9,10 @@ ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: c26d21e74e9808fe65890b7f4eba31ee742552a4
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93339978"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>使用 Blitzz 将数据从 Cassandra 迁移到 Azure Cosmos DB Cassandra API 帐户
@@ -22,7 +22,7 @@ Azure Cosmos DB 中的 Cassandra API 已成为在 Apache Cassandra 上运行的�
 
 * **无管理和监视开销：** 它不需管理和监视跨 OS、JVM 和 yaml 文件的大量设置，也不需进行交互。
 
-* **显著节省成本：** 可以通过 Azure Cosmos DB 节省成本，包括 VM 的成本、带宽和任何适用的许可证。 此外，无需管理数据中心、服务器、SSD 存储、网络和电力成本。 
+* 显著节省成本：使用 Azure Cosmos DB 可以节省成本，其中包括 VM、带宽以及任何适用许可证的成本。 另外，你无需管理数据中心、服务器、SSD 存储、网络以及电力成本。 
 
 * **能够使用现有的代码和工具：** Azure Cosmos DB 提供的线路协议级别与现有 Cassandra SDK 和工具兼容。 此兼容性确保只需经过细微的更改，就可以将现有代码库用于 Azure Cosmos DB Cassandra API。
 
@@ -30,13 +30,13 @@ Azure Cosmos DB 中的 Cassandra API 已成为在 Apache Cassandra 上运行的�
 
 ## <a name="benefits-using-blitzz-for-migration"></a>使用 Blitzz 进行迁移的优势
 
-Blitzz 的迁移解决方案遵循迁移复杂的操作工作负荷的分步方法。 下面是 Blitzz 的零停机迁移计划的一些关键方面：
+Blitzz 的迁移解决方案按照分步方法迁移复杂的运营工作负荷。 下面是 Blitzz 的零停机迁移计划的一些重要方面：
 
 * 它可以自动将业务逻辑（表、索引、视图）从 Apache Cassandra 数据库迁移到 Azure Cosmos DB。 无需手动创建架构。
 
 * Blitzz 提供大规模并行数据库复制。 它可以使用名为“变更数据捕获 (CDC)”的技术，让源平台和目标平台在迁移过程中保持同步状态。 Blitzz 可以通过 CDC 从源数据库 (Apache Cassandra) 持续拉取更改流，并将其应用到目标数据库 (Azure Cosmos DB)。
 
-* 它具有容错能力，并且仅在系统中出现硬件或软件故障时提供一次数据传输。
+* 它具有容错功能，可以保证数据的准确传输，即使系统出现硬件或软件故障。
 
 * 它可以在传输过程中使用各种安全方法（例如 TLS、加密）对数据进行保护。
 
@@ -116,9 +116,9 @@ Blitzz 的迁移解决方案遵循迁移复杂的操作工作负荷的分步方�
 
 1. 接下来，使用 Blitzz 迁移数据。 可以按“完全”或“快照”模式运行 Blizz 复制器：  
 
-   * **完全模式** –在此模式下，replicant 将继续在迁移后运行，并侦听源 Apache Cassandra 系统中的任何更改。 如果它检测到任何更改，则会将更改实时复制到目标 Azure Cosmos 帐户。
+   * “完全”模式 - 在此模式下，复制器会在迁移后继续运行，并侦听在源 Apache Cassandra 系统上发生的任何更改。 如果它检测到任何更改，则会将更改实时复制到目标 Azure Cosmos 帐户。
 
-   * **快照模式** –在此模式下，你可以执行架构迁移和一次性数据复制。 此选项不支持实时复制。
+   * “快照模式“ - 在此模式下，可以执行架构迁移和一次性数据复制。 此选项不支持实时复制。
 
    可以通过上述两种模式进行迁移，不会造成停机。 
 

@@ -1,5 +1,5 @@
 ---
-title: '将虚拟机移动到另一个区域 (Azure Site Recovery) '
+title: 将虚拟机移到另一个区域 (Azure Site Recovery)
 description: 了解如何在 Azure 中将 SQL Server 虚拟机从一个区域迁移到另一个区域。
 services: virtual-machines-windows
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97360146"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>使用 Azure Site Recovery 将 SQL Server VM 移到 Azure 中的另一个区域
@@ -30,7 +30,7 @@ ms.locfileid: "97360146"
 将 SQL Server VM 移到另一个区域需要执行以下操作：
 1. [准备](#prepare-to-move)：确认源 SQL Server VM 和目标区域都已做好充分的迁移准备。 
 1. [配置](#configure-azure-site-recovery-vault)：如果要移动 SQL Server VM，该 VM 必须是 Azure Site Recovery 保管库中的复制对象。 需要将 SQL Server VM 添加到 Azure Site Recovery 保管库中。 
-1. [测试](#test-move-process)：如果要迁移 SQL Server VM，必须将它从源区域故障转移到复制的目标区域。 若要确保移动过程成功，需要先测试 SQL Server VM 是否可以成功故障转移到目标区域。 这将有助于发现任何问题，并在执行实际移动时避免这些问题。 
+1. [测试](#test-move-process)：如果要迁移 SQL Server VM，必须将它从源区域故障转移到复制的目标区域。 为了确保移动过程成功，首先需要测试 SQL Server VM 是否可以成功故障转移到目标区域。 这将有助于发现任何问题，并在执行实际移动时避免这些问题。 
 1. [移动](#move-the-sql-server-vm)：如果测试故障转移通过，并且你知道可以安全地迁移 SQL Server VM，就可以将 VM 移动到目标区域。 
 1. [清理](#clean-up-source-resources)：若要避免计费，请从保管库中删除 SQL Server VM，并删除资源组中留下的所有不必要的资源。 
 
@@ -51,7 +51,7 @@ ms.locfileid: "97360146"
 ### <a name="prepare-the-source-sql-server-vm"></a>准备源 SQL Server VM
 
 - 请确保要移动的 SQL Server VM 上存在所有最新的根证书。 如果不存在最新的根证书，则安全性约束将阻止数据复制到目标区域。 
-- 对于 Windows VM，请在 VM 上安装所有最新的 Windows 更新，使所有受信任的根证书位于该计算机上。 在断开连接的环境中，按照组织的标准 Windows 更新和证书更新过程进行操作。 
+- 对于 Windows VM，请在 VM 上安装所有最新的 Windows 更新，使所有受信任的根证书位于该计算机上。 在离线环境中，请遵循组织的标准 Windows 更新和证书更新过程。 
 - 对于 Linux VM，请遵循 Linux 分销商提供的指导，在 VM 上获取最新的受信任根证书和证书吊销列表。 
 - 确保未使用身份验证代理来控制要移动的 VM 的网络连接。 
 - 如果尝试移动的 VM 无法访问 Internet，或使用防火墙代理来控制出站访问，请检查要求。 
@@ -74,7 +74,7 @@ ms.locfileid: "97360146"
 
 以下步骤演示如何使用 Azure Site Recovery 将数据复制到目标区域。 在源区域以外的任何区域中创建恢复服务保管库。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 1. 从导航窗格的左上角选择“创建资源”。 
 1. 选择“IT 和管理工具”，然后选择“备份和 Site Recovery” 。 
 1. 在“基本”选项卡上的“项目详细信息”下，在目标区域中创建新的资源组或在目标区域中选择现有的资源组 。 
@@ -127,12 +127,12 @@ ms.locfileid: "97360146"
    ![启动故障转移](./media/move-sql-vm-different-region/initiate-failover.png)
 
 1. 在“恢复点”下选择“最新的应用一致”恢复点 。 
-1. 选中 " **在开始故障转移之前关闭计算机**" 旁边的复选框。 Site Recovery 在触发故障转移之前会尝试关闭源 VM。 即使关闭失败，故障转移也仍会继续。 
+1. 选中“在开始故障转移之前关闭计算机”旁边的复选框。 Site Recovery 在触发故障转移之前会尝试关闭源 VM。 即使关闭失败，故障转移也仍会继续。 
 1. 选择“确定”以启动故障转移。
 1. 可以从上一节中监视故障转移测试时查看的同一“Site Recovery 作业”页监视故障转移过程。 
 1. 该作业完成后，检查 SQL Server VM 是否按预期显示在目标区域中。 
 1. 导航回保管库，依次选择“复制的项”、“SQL Server VM”和“提交”以完成到目标区域的移动过程 。 请等待提交作业完成。 
-1. 向 SQL IaaS 代理扩展注册 SQL Server VM，以在 Azure 门户中启用 **SQL 虚拟机** 可管理性以及与该扩展相关联的功能。 有关详细信息，请参阅 [向 SQL IaaS 代理扩展注册 SQL Server VM](sql-agent-extension-manually-register-single-vm.md)。 
+1. 为 SQL Server VM 注册 SQL IaaS 代理扩展，以在 Azure 门户中启用 SQL 虚拟机可管理性以及与此扩展关联的功能。 有关详细信息，请参阅[为 SQL Server VM 注册 SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)。 
 
   > [!WARNING]
   > 只有应用一致的快照才能保证 SQL Server 数据一致性。 最新处理的快照不能用于 SQL Server 故障转移，因为故障恢复快照不能保证 SQL Server 数据一致性。 

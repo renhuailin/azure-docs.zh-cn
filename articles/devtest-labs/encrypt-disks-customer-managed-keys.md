@@ -4,10 +4,10 @@ description: 了解如何在 Azure 开发测试实验室中使用客户管理的
 ms.topic: article
 ms.date: 09/01/2020
 ms.openlocfilehash: 26ef4ff1529483da9956c6dcc43807af0ffd6463
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96341201"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中使用客户管理的密钥来加密操作系统 (OS) 磁盘
@@ -70,7 +70,7 @@ ms.locfileid: "96341201"
 1. 在工具栏上选择“保存”。 
 
     :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="启用通过客户管理的密钥进行加密的功能":::
-1. 在具有以下文本的消息框上选择“确定”：“此设置将应用于实验室中新建的计算机。旧的 OS 磁盘仍将使用旧的磁盘加密集进行加密”。 
+1. 在包含以下文本的消息框上选择“确定”：此设置将应用于实验室中新创建的计算机。旧 OS 磁盘仍将使用旧磁盘加密集保持加密。 
 
     配置完成后，将使用通过磁盘加密集提供的客户管理的密钥来加密实验室 OS 磁盘。 
    

@@ -71,6 +71,8 @@
           href: enable-rdp.md
         - name: 应用 WAD 扩展
           href: enable-wad.md
+        - name: 应用 Key Vault 扩展
+          href: enable-key-vault-virtual-machine.md
     - name: 启用警报
       href: enable-alerts.md
     - name: 配置缩放

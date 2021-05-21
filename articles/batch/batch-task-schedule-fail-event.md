@@ -1,20 +1,20 @@
 ---
 title: Azure Batch 任务计划失败事件
-description: Batch 任务计划失败事件的参考。 当任务计划失败并且稍后将重试时，将发出此事件。
+description: Batch 任务计划失败事件参考。 当任务计划失败并且稍后将重试时，将发出此事件。
 ms.topic: reference
 ms.date: 09/20/2020
 ms.openlocfilehash: 549281d2b2c371e8f09c584e771cf44f7abc8a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91852111"
 ---
 # <a name="task-schedule-fail-event"></a>任务计划失败事件
 
- 当任务计划失败并且稍后将重试时，将发出此事件。 这是由于资源限制导致任务计划时间的暂时性故障，例如，节点上没有足够的可用槽来运行指定的任务 `requiredSlots` 。
+ 当任务计划失败并且稍后将重试时，将发出此事件。 这是由于资源限制而导致的任务计划时间出现的暂时性失败，例如，节点上没有足够的槽用于运行指定了 `requiredSlots` 的任务。
 
- 下面的示例显示任务计划失败事件的正文。
+ 以下示例显示任务计划失败事件的正文。
 
 ```
 {
@@ -49,7 +49,7 @@ ms.locfileid: "91852111"
 |`systemTaskVersion`|Int32|这是任务上的内部重试计数器。 批处理服务可能会在内部重试任务来解决暂时性问题。 这些问题可能包括内部计划错误或尝试恢复处于错误状态的计算节点。|
 |`requiredSlots`|Int32|运行任务所需的槽。|
 |[`nodeInfo`](#nodeInfo)|复杂类型|包含有关运行任务的计算节点的信息。|
-|[`multiInstanceSettings`](#multiInstanceSettings)|复杂类型|指定任务是需要多个计算节点的多实例任务。  [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task)有关详细信息，请参阅。|
+|[`multiInstanceSettings`](#multiInstanceSettings)|复杂类型|指定任务是需要多个计算节点的多实例任务。  有关详细信息，请参阅 [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task)。|
 |[`constraints`](#constraints)|复杂类型|应用到此任务的执行约束。|
 |[`schedulingError`](#schedulingError)|复杂类型|包含有关任务计划错误的信息。|
 
@@ -66,7 +66,7 @@ ms.locfileid: "91852111"
 |------------------|----------|-----------|
 |`numberOfInstances`|Int32|任务所需的计算节点数。|
 
-###  <a name="constraints"></a><a name="constraints"></a> 约束
+###  <a name="constraints"></a><a name="constraints"></a> constraints
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|

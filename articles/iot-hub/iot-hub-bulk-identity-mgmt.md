@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e7de74a75bc0cf2a298b7ff75cf7b6b92eaec9d
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716107"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "92536073"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>批量导入和导出 IoT 中心设备标识
 
@@ -87,7 +87,7 @@ while(true)
 ```
 
 > [!NOTE]
-> 如果你的存储帐户具有限制 IoT 中心连接的防火墙配置，请考虑使用 [Microsoft 受信任第一方例外情况](./virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources)（在选定区域的提供托管服务标识的 IoT 中心中适用）。
+> 如果你的存储帐户具有限制 IoT 中心连接的防火墙配置，请考虑使用 [Microsoft 受信任第一方例外情况](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)（在选定区域的提供托管服务标识的 IoT 中心中适用）。
 
 
 ## <a name="device-importexport-job-limits"></a>设备导入/导出作业限制

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: afaac48d263082a17c7ba58996f4000366de0211
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 68617d86fda940c5d3752f2389088a8c729aebec
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256542"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97108342"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 TypingDNA 配置教程
 
@@ -192,8 +192,8 @@ REST API 调用在 `LocalAccountSignUpWithLogonEmail-TDNA` 中使用 `validation
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多信息，请参阅以下文章：
+有关详细信息，请查看以下文章：
 
 - [AAD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [AAD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
+- [AAD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

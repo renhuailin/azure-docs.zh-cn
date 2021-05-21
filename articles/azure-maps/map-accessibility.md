@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 954dd8ad65d0a9c90e19530d541c19b5034bc175
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88006207"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208106"
 ---
 # <a name="building-an-accessible-application"></a>生成可访问的应用程序
 
@@ -179,4 +179,4 @@ map.getMapContainer().classList.contains("high-contrast-light")
 > [WebAim 颜色对比度检查程序](https://webaim.org/resources/contrastchecker/)
 
 > [!div class="nextstepaction"]
-> [NoCoffee 视觉模拟器](https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl?hl=en-US)
+> [NoCoffee 视觉模拟器](https://uxpro.cc/toolbox/nocoffee/)

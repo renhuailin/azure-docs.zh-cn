@@ -1,6 +1,6 @@
 ---
 title: 将警报从 Azure 安全中心流式传输到安全信息和事件管理 (SIEM) 系统和其他监视解决方案
-description: 了解如何将安全警报流式传输到 Azure Sentinel、第三方 Siem、之忠诚度或 ITSM 解决方案
+description: 了解如何将安全警报流式传输到 Azure Sentinel、第三方 SIEM、SOAR 或 ITSM 解决方案
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
 ms.openlocfilehash: 3ddc385b9d489e0c2ab4abf35a6ade011970342b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100572957"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>将警报流式传输到 SIEM、SOAR 或 IT 服务管理解决方案
@@ -31,11 +31,11 @@ Azure 本机工具可确保你可以查看当前使用的所有最常用解决�
 
 ## <a name="stream-alerts-to-azure-sentinel"></a>将警报流式传输到 Azure Sentinel 
 
-安全中心本机集成了 Azure Sentinel、Azure 的云本机 SIEM 和之忠诚度解决方案。 
+安全中心以本机方式集成到 Azure Sentinel、Azure 的云原生 SIEM 和 SOAR 解决方案。 
 
 [了解有关 Azure Sentinel 的详细信息](../sentinel/overview.md)。
 
-### <a name="azure-sentinels-connectors-for-security-center"></a>用于安全中心的 Azure Sentinel 连接器
+### <a name="azure-sentinels-connectors-for-security-center"></a>适用于安全中心的 Azure Sentinel 连接器
 
 Azure Sentinel 包括 Azure 安全中心在订阅和租户级别的内置连接器：
 
@@ -50,7 +50,7 @@ Azure Sentinel 包括 Azure 安全中心在订阅和租户级别的内置连接�
     - [连接 Azure 活动日志中的数据](../sentinel/connect-azure-activity.md)
 
 > [!TIP]
-> Azure Sentinel 根据 Azure Sentinel 中用于分析的数据引入量计费，并存储在 "Azure Monitor Log Analytics" 工作区中。 Azure Sentinel 提供灵活且可预测的定价模型。 有关详细信息，请参阅[Azure Sentinel 定价页](https://azure.microsoft.com/pricing/details/azure-sentinel/)。
+> 我们将根据 Azure Sentinel 中为分析引入的数据量和 Azure Monitor Log Analytics 工作区中存储的数据量对 Azure Sentinel 进行计费。 Azure Sentinel 提供灵活、可预测的定价模型。 [有关详细信息，请参阅 Azure Sentinel 定价页面](https://azure.microsoft.com/pricing/details/azure-sentinel/)。
 
 
 ## <a name="stream-alerts-with-microsoft-graph-security-api"></a>使用 Microsoft Graph 安全性 API 流式传输警报

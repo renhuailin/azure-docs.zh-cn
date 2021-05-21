@@ -1,33 +1,33 @@
 ---
-title: 使用 Azure 开发测试实验室中的共享映像添加 VM |Microsoft Docs
-description: '了解如何使用 Azure 开发测试实验室中附加的共享映像库中的映像添加虚拟机 (VM) '
+title: 在 Azure 开发测试实验室中使用共享映像添加 VM | Microsoft Docs
+description: 了解如何在 Azure 开发测试实验室中使用附加的共享映像库中的映像添加虚拟机 (VM)
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85483850"
 ---
-# <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>使用连接的共享映像库中的映像添加 VM
-Azure 开发测试实验室允许将共享映像库附加到实验室，然后使用库中的映像作为实验室中创建的 Vm 的基础。 若要了解如何将共享映像库附加到实验室，请参阅 [配置共享映像库](configure-shared-image-gallery.md)。 本文介绍如何使用附加的共享映像库中的映像作为基准，将 VM 添加到实验室。 
+# <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>使用附加的共享映像库中的映像添加 VM
+Azure 开发测试实验室允许你将共享映像库附加到实验室，然后将库中的映像用作在实验室中创建的 VM 的基础。 若要了解如何将共享映像库附加到实验室，请参阅[配置共享映像库](configure-shared-image-gallery.md)。 本文介绍如何通过使用附加的共享映像库中的映像作为基础将 VM 添加到实验室。 
 
 ## <a name="azure-portal"></a>Azure 门户
-在本部分中，将了解如何使用 Azure 门户基于连接的共享映像库中的映像将 VM 添加到实验室。 本部分不提供使用 Azure 门户创建 VM 的详细分步说明。 有关详细信息，请参阅 [创建 VM-Azure 门户](devtest-lab-add-vm.md)。 它仅重点介绍从附加的共享映像库中选择映像的步骤，并选择要使用的映像版本。 
+本部分介绍如何使用 Azure 门户基于附加的共享映像库中的映像将 VM 添加到实验室。 本部分不提供使用 Azure 门户创建 VM 的详细分步说明。 有关这些详细信息，请参阅[创建 VM - Azure 门户](devtest-lab-add-vm.md)。 它仅突出显示从附加的共享映像库中选择映像并选择想要使用的映像版本的步骤。 
 
-向实验室添加 VM 时，可以从附加的共享映像库中选择一个映像作为基本映像： 
+将 VM 添加到实验室时，可以从附加的共享映像库中选择一个映像作为基础映像： 
 
-![为基选择共享映像](./media/add-vm-use-shared-image/select-shared-image-for-base.png)
+![选择一个共享映像作为基础](./media/add-vm-use-shared-image/select-shared-image-for-base.png)
 
-然后，在 "**创建实验室资源**" 页的 "**高级设置**" 选项卡上，可以选择要用作基础映像的映像版本：
+然后，在“创建实验室资源”页的“高级设置”选项卡上，可以选择要用作基础映像的映像版本：
 
 ![选择映像版本](./media/add-vm-use-shared-image/select-version-shared-image.png)
 
 创建 VM 后，可以切换到使用不同版本的映像。 
 
 ## <a name="resource-manager-template"></a>资源管理器模板
-如果使用 Azure 资源管理器模板创建使用共享映像库映像的虚拟机，请在 "**属性**" 部分中指定**sharedImageId**的值。 请参阅以下示例： 
+如果使用 Azure 资源管理器模板来使用共享映像库映像创建虚拟机，请在“属性”部分中为 sharedImageId 指定一个值。 请参阅以下示例： 
 
 ```json
 "resources": [
@@ -42,16 +42,16 @@ Azure 开发测试实验室允许将共享映像库附加到实验室，然后�
 ],
 ```
 
-有关完整的资源管理器模板示例，请参阅 GitHub 存储库中的 [使用共享映像库映像创建虚拟机图像](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-sharedimage) 示例。 
+有关完整的资源管理器模板示例，请参阅 GitHub 存储库中的[使用共享映像库映像创建虚拟机](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-sharedimage)示例。 
 
 ## <a name="rest-api"></a>REST API
 
-1. 首先，需要获取共享映像库中的映像的 ID。 一种方法是使用以下 GET 命令列出附加的共享映像库中的所有映像。 
+1. 首先，需要获取共享映像库中映像的 ID。 一种方式是通过使用以下 GET 命令列出附加的共享映像库中的所有映像。 
 
     ```rest
     GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}/sharedimages?api-version= 2018-10-15-preview
     ```
-2. 通过将从上一次调用时收到的共享映像的 ID 传递给，在虚拟机上调用 PUT 方法 `properties.SharedImageId` 。
+2. 通过将从上一次调用中收到的共享映像的 ID 传递到 `properties.SharedImageId`，在虚拟机上调用 PUT 方法。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解如何将共享映像库附加到实验室并对其进行配置，请参阅 [配置共享映像库](configure-shared-image-gallery.md)。
+若要了解如何将共享映像库附加到实验室并对其进行配置，请参阅[配置共享映像库](configure-shared-image-gallery.md)。

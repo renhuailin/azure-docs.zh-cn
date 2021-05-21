@@ -1,26 +1,26 @@
 ---
-title: 使用 SAML 协议设置 Salesforce SAML 提供程序登录
+title: 使用 SAML 协议设置通过 Salesforce SAML 提供者进行的登录
 titleSuffix: Azure AD B2C
-description: 使用 Azure Active Directory B2C 中的 SAML 协议设置 Salesforce SAML 提供程序的登录。
+description: 通过在 Azure Active Directory B2C 中使用 SAML 协议来设置通过 Salesforce SAML 提供者进行的登录。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cfdd96ffa9e7758fc594f7e7ae53c84495b8b2e8
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: cf2f0cdf8b7c540e569067d68374eef55d3479fe
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095402"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028190"
 ---
-# <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 SAML 协议设置 Salesforce SAML 提供程序的登录
+# <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>通过在 Azure Active Directory B2C 中使用 SAML 协议来设置使用 Salesforce SAML 提供程序的登录
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -33,7 +33,7 @@ ms.locfileid: "102095402"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文展示了如何在 Azure Active Directory B2C (Azure AD B2C) 中使用[自定义策略](custom-policy-overview.md)为来自 Salesforce 组织的用户实现登录。 可以通过将 [SAML 标识提供者](identity-provider-generic-saml.md) 添加到自定义策略来启用登录。
+本文展示了如何在 Azure Active Directory B2C (Azure AD B2C) 中使用[自定义策略](custom-policy-overview.md)为来自 Salesforce 组织的用户实现登录。 可通过将 [SAML 标识提供者](identity-provider-generic-saml.md)添加到自定义策略来实现登录。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,11 +60,24 @@ ms.locfileid: "102095402"
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
       ```
 
+      使用[自定义域](custom-domain.md)时，请使用以下格式：
+
+      ```
+      https://your-domain-name/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
+      ```
+
 6. 在“ACS URL”字段中，输入以下 URL。 确保将 `your-tenant` 的值替换为你的 Azure AD B2C 租户的名称。
 
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
+
+      使用[自定义域](custom-domain.md)时，请使用以下格式：
+
+      ```
+      https://your-domain-name/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
+      ```
+
 7. 滚动到列表底部，然后单击“保存”。
 
 ### <a name="get-the-metadata-url"></a>获取元数据 URL
@@ -100,7 +113,7 @@ ms.locfileid: "102095402"
 
 如果希望用户使用 Salesforce 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
-可以通过在策略的扩展文件中将 Salesforce 帐户添加到 **ClaimsProvider** 元素，将该帐户定义为声明提供程序。 有关详细信息，请参阅 [定义 SAML 标识提供者](identity-provider-generic-saml.md)。
+可以通过在策略的扩展文件中将 Salesforce 帐户添加到 **ClaimsProvider** 元素，将该帐户定义为声明提供程序。 有关详细信息，请参阅[定义 SAML 标识提供者](identity-provider-generic-saml.md)。
 
 1. 打开 *TrustFrameworkExtensions.xml*。
 1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
@@ -186,6 +199,13 @@ ms.locfileid: "102095402"
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>测试自定义策略
+
+1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“立即运行”按钮。
+1. 在注册或登录页上，选择“Salesforce”以使用 Salesforce 帐户登录。
+
+如果登录过程是成功的，则你的浏览器会被重定向到 `https://jwt.ms`，其中显示 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end

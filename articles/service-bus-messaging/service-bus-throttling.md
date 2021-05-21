@@ -4,10 +4,10 @@ description: 概述了服务总线限制 - 标准层和高级层。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85340945"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure 服务总线中的限制操作
@@ -18,7 +18,7 @@ ms.locfileid: "85340945"
 
 ## <a name="throttling-in-azure-service-bus-standard-tier"></a>Azure 服务总线标准层中的限制
 
-Azure 服务总线标准级别作为使用即用即付定价模型的多租户设置运行。 此处，同一群集中的多个命名空间共享已分配的资源。 标准层是建议用于开发人员、测试和 QA 环境以及低吞吐量生产系统的选项。
+Azure 服务总线标准层以多租户设置形式运行，采用即用即付定价模型。 此处，同一群集中的多个命名空间共享已分配的资源。 标准层是建议用于开发人员、测试和 QA 环境以及低吞吐量生产系统的选项。
 
 过去，Azure 服务总线根据资源利用率严格实施粗略限制。 但是，仍有机会优化限制逻辑，并为共享这些资源的所有命名空间提供可预测的限制行为。
 
@@ -115,7 +115,7 @@ Azure 服务总线已针对持久性进行优化，我们会确保在服务确�
 
 一旦服务总线成功“ACK”（确认）请求，即表示服务总线已成功处理该请求。 如果服务总线返回“NACK”（失败），则表示服务总线无法处理该请求，客户端应用程序必须重试该请求。
 
-但是，如果某个请求受到限制，则表示服务当前无法接受并处理该请求，因为存在资源限制。 这并**不**意味着发生了任何形式的数据丢失，因为服务总线只是未查看该请求。 在这种情况下，依赖于服务总线 SDK 的默认重试策略可确保该请求最终会得到处理。
+但是，如果某个请求受到限制，则表示服务当前无法接受并处理该请求，因为存在资源限制。 这并 **不** 意味着发生了任何形式的数据丢失，因为服务总线只是未查看该请求。 在这种情况下，依赖于服务总线 SDK 的默认重试策略可确保该请求最终会得到处理。
 
 ## <a name="next-steps"></a>后续步骤
 

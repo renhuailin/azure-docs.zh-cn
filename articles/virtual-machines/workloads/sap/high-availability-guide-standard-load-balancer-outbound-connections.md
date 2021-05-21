@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: radeltch
 ms.openlocfilehash: 6f2268ae9a86978e9266ea0e35411727b238d4b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101671645"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接
@@ -40,10 +40,10 @@ Azure 负载均衡器的基本 SKU 和标准 SKU 之间有一些重要的区别�
 
 如果 VM 分配有公共 IP 地址，或者 VM 位于具有公共 IP 地址的负载均衡器的后端池中，它就会出站连接到公共终结点。  
 
-SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm，可通过公共 IP 地址进行访问，这种做法很少。 同时，有一些方案需要从 VM 出站连接到公共终结点。  
+SAP 系统通常包含敏感的业务数据。 托管 SAP 系统的 VM 通过公共 IP 地址访问是很难接受的。 同时，有一些方案需要从 VM 出站连接到公共终结点。  
 
 需要访问 Azure 公共终结点的方案示例包括：  
-- Azure 隔离代理需要访问 **management.azure.com** 和 **login.microsoftonline.com**  
+- Azure 围墙代理需要访问 management.azure.com 和 login.microsoftonline.com  
 - [Azure 备份](../../../backup/tutorial-backup-sap-hana-db.md#set-up-network-connectivity)
 - [Azure Site Recovery](../../../site-recovery/azure-to-azure-about-networking.md#outbound-connectivity-for-urls)  
 - 使用公共存储库修补操作系统
@@ -68,7 +68,7 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm，�
 * [虚拟网络 - 用户定义规则](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) - Azure 路由概念和规则  
 * [安全组服务标记](../../../virtual-network/network-security-groups-overview.md#service-tags) - 如何使用服务标记来简化网络安全组和防火墙配置
 
-## <a name="option-1-additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>选项1：针对 internet 的出站连接的其他外部 Azure 标准负载均衡器
+## <a name="option-1-additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>选项 1：用于出站连接到 Internet 的其他外部 Azure 标准负载均衡器
 
 若要在不允许从公共终结点入站连接到 VM 的情况下实现出站连接到公共终结点，一种方式是创建具有公共 IP 地址的第二个负载均衡器，将 VM 添加到第二个负载均衡器的后端池，并且只定义[出站规则](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)。  
 使用[网络安全组](../../../virtual-network/network-security-groups-overview.md)来控制可供来自 VM 的出站调用进行访问的公共终结点。  
@@ -118,7 +118,7 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm，�
 
    若要详细了解 Azure 网络安全组，请参阅[安全组](../../../virtual-network/network-security-groups-overview.md)。 
 
-## <a name="option-2-azure-firewall-for-outbound-connections-to-internet"></a>选项2：用于连接到 internet 的出站连接的 Azure 防火墙
+## <a name="option-2-azure-firewall-for-outbound-connections-to-internet"></a>选项 2：用于出站连接到 Internet 的 Azure 防火墙
 
 若要在不允许从公共终结点入站连接到 VM 的情况下实现出站连接到公共终结点，另一种方式是使用 Azure 防火墙。 Azure 防火墙是一种托管服务，具有内置的高可用性，可以跨越多个可用性区域。  
 还需要部署[用户定义路由](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes)，它与其中部署 VM 和 Azure 负载均衡器的子网相关联，同时指向 Azure 防火墙，以便通过 Azure 防火墙路由流量。  
@@ -161,14 +161,14 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm，�
    1. 输入名称“MyRouteTable”，依次选择“订阅”、“资源组”和“位置”（与虚拟网络和防火墙的位置匹配）。  
    1. 保存  
 
-   防火墙规则如下所示： ![ 显示防火墙外观的关系图。](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
+   防火墙规则如下所示：![关系图显示防火墙的外观。](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. 创建从 VM 的子网指向 MyAzureFirewall 的专用 IP 的用户定义路由。
    1. 当你在“路由表”上时，单击“路由”。 选择“添加”。 
    1. 路由名称：ToMyAzureFirewall，地址前缀：0.0.0.0/0。 下一个跃点类型：选择“虚拟设备”。 下一个跃点地址：输入你配置的防火墙的专用 IP 地址，即11.97.1.4。  
    1. 保存
 
-## <a name="option-3-using-proxy-for-pacemaker-calls-to-azure-management-api"></a>选项3：使用代理进行 Pacemaker 调用 Azure 管理 API
+## <a name="option-3-using-proxy-for-pacemaker-calls-to-azure-management-api"></a>选项 3：使用代理实现对 Azure 管理 API 的 Pacemaker 调用
 
 可以使用代理允许对 Azure 管理 API 公共终结点进行 Pacemaker 调用。  
 
@@ -223,7 +223,7 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm，�
 
 如果出站流量通过第三方路由，则基于 URL 的防火墙代理：
 
-- 如果使用 Azure 隔离代理，请确保防火墙配置允许与 Azure 管理 API 建立出站连接： `https://management.azure.com` 和 `https://login.microsoftonline.com`   
+- 如果使用 Azure 围墙代理，请确保防火墙配置允许与 Azure 管理 API 建立出站连接：`https://management.azure.com` 和 `https://login.microsoftonline.com`   
 - 如果使用 SUSE 的 Azure 公有云更新基础结构来应用更新和修补程序，请参阅 [Azure 公有云更新基础结构 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
 ## <a name="next-steps"></a>后续步骤

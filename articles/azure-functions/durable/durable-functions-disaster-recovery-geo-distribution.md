@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 01c400f51cce85ef39e9d39bcad1221253c6942d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89071204"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Durable Functions 中的灾难恢复和异地分布
@@ -79,7 +79,7 @@ Microsoft 致力于确保 Azure 服务一直可用。 不过，可能会发生�
 从功能上讲，此方案提供的优势与方案 1 相同，但它可以实现更大的数据恢复优势：
 
 - 异地冗余存储 (GRS) 和读取访问 GRS (RA-GRS) 可最大程度地提高存储帐户的可用性。
-- 如果存储服务发生地区性中断，可以 [手动启动到辅助副本的故障转移](../../storage/common/storage-initiate-account-failover.md)。 在由于重大灾难而导致区域丢失的极端情况下，Microsoft 可能会启动区域故障转移。 在此情况下，不需要采取任何操作。
+- 如果存储服务的区域中断，你可以[手动启动对次要副本的故障转移](../../storage/common/storage-initiate-account-failover.md)。 在由于重大灾难而导致区域丢失的极端情况下，Microsoft 可能会启动区域故障转移。 在此情况下，不需要采取任何操作。
 - 发生故障转移时，Durable Functions 的状态最长可保留到上次复制存储帐户为止（存储帐户通常每隔几分钟就会复制一次）。
 
 与其他方案一样，需注意以下重要事项：

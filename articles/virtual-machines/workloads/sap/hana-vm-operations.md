@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c27895c5163d59ca785aa15fa3739359e5be457
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dd70bccde30c2b844cfa6188a3fb06a075558a91
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666601"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142992"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
 本文档提供有关配置 Azure 基础结构以及操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档还包含有关 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -290,9 +290,9 @@ SAP HANA 认证的 M 系列 VM 与受支持的 DT 2.0 VM（M64-32ms 和 E32sv3�
 ### <a name="back-up-and-restore-operations-on-azure-vms"></a>Azure VM 上的备份和还原操作
 以下文档介绍如何备份和还原 SAP HANA 部署：
 
-- [SAP HANA 备份概述](./sap-hana-backup-guide.md)
-- [SAP HANA 文件级备份](./sap-hana-backup-file-level.md)
-- [SAP HANA 存储快照基准](./sap-hana-backup-guide.md)
+- [SAP HANA 备份概述](../../../backup/sap-hana-db-about.md)
+- [SAP HANA 文件级备份](../../../backup/sap-hana-db-about.md)
+- [SAP HANA 存储快照基准](../../../backup/sap-hana-db-about.md)
 
 
 ### <a name="start-and-restart-vms-that-contain-sap-hana"></a>启动并重启包含 SAP HANA 的 VM

@@ -1,6 +1,6 @@
 ---
 title: 将 HTML 标记添加到地图 | Microsoft Azure Maps
-description: 了解如何向 maps 添加 HTML 标记。 了解如何使用 Azure Maps Web SDK 自定义标记，以及向标记添加弹出窗口和鼠标事件。
+description: 了解如何向地图添加 HTML 标记。 了解如何使用 Azure Maps Web SDK 自定义标记，以及向标记添加弹出窗口和鼠标事件。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/29/2019
@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 1c4367e2a649f4e239e2dab374afc4fb867e517b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92891187"
 ---
 # <a name="add-html-markers-to-the-map"></a>向地图添加 HTML 标记

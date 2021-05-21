@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
 ms.openlocfilehash: fd9a811fd1c19d115f3ff15194b7e632114140df
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790247"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>使用 DTU 购买模型的单一数据库的资源限制 - Azure SQL 数据库
@@ -54,10 +54,10 @@ ms.locfileid: "92790247"
 
 | **计算大小** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
-| 最大 DTU | 10 个 | 20 个 | 50 | 100 |
+| 最大 DTU | 10 | 20 | 50 | 100 |
 | 包含的存储 (GB) <sup>1</sup> | 250 | 250 | 250 | 250 |
 | 最大存储 (GB) | 250 | 250 | 250 | 1024 |
-| 最大内存中 OLTP 存储 (GB) | 空值 | 空值 | 空值 | 空值 |
+| 最大内存中 OLTP 存储 (GB) | 空值 | 不适用 | 不适用 | 空值 |
 | 最大并发工作线程数（请求数）| 60 | 90 | 120 | 200 |
 | 最大并发会话数 |600 | 900 | 1200 | 2400 |
 ||||||
@@ -77,7 +77,7 @@ ms.locfileid: "92790247"
 | 最大 DTU 数 | 200 | 400 | 800 | 1600 | 3000 |
 | 包含的存储 (GB) <sup>1</sup> | 250 | 250 | 250 | 250 | 250 |
 | 最大存储 (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
-| 最大内存中 OLTP 存储 (GB) | 空值 | 空值 | 空值 | 空值 |空值 |
+| 最大内存中 OLTP 存储 (GB) | 空值 | 不适用 | 不适用 | 不适用 |空值 |
 | 最大并发工作线程数（请求数）| 400 | 800 | 1600 | 3200 |6000 |
 | 最大并发会话数 |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
@@ -101,7 +101,7 @@ ms.locfileid: "92790247"
 <sup>2</sup> 从 1024 GB 到 4096 GB，以 256 GB 为增量。
 
 > [!IMPORTANT]
-> 高级层中超过 1 TB 的存储目前在除：中国东部、中国北部、德国中部和德国东北部以外的所有区域中都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
+> 除了中国东部、中国北部、德国中部和德国东北部区域外，其他所有区域目前均可提供高级层超过 1 TB 的存储。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
 > [!NOTE]
 > 有关 `tempdb` 限制，请参阅 [tempdb 限制](/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)。
 

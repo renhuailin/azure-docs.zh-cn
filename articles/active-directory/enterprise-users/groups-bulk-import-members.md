@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22d39a2ee66f2c63612ad2cb3cf9ae61f1660de3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96547740"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>在 Azure Active Directory 中批量添加组成员
@@ -34,9 +34,9 @@ ms.locfileid: "96547740"
 
 下载的 CSV 模板中的行如下所示：
 
-- **版本号**：第一行包含版本号，上传 CSV 中必须有它。
-- **列标题**：列标题的格式为：&lt;项名称&gt; [属性名称] &lt;必需或空白&gt; 。 例如，`Member object ID or user principal name [memberObjectIdOrUpn] Required` 。 模板的一些较旧版本可能略有不同。 对于组成员身份更改，你可选择要使用的标识符：成员对象 ID 还是用户主体名称。
-- **示例行**：我们已经在模板中包含了一行示例，展示了每个列的可接受值。 你必须删除示例行并将其替换为你自己的项。
+- **版本号**：包含版本号的第一行必须包含在上传的 CSV 中。
+- 列标题：列标题的格式为：&lt;项名称&gt; [PropertyName] &lt;必需或空白&gt;。 例如，`Member object ID or user principal name [memberObjectIdOrUpn] Required`。 模板的一些较旧版本可能略有不同。 对于组成员身份更改，你可选择要使用的标识符：成员对象 ID 还是用户主体名称。
+- **示例行**：我们已经在模板中包含了一行示例，展示了每个列的可接受值。 必须删除示例行并将其替换为你自己的项。
 
 ### <a name="additional-guidance"></a>其他指南
 
@@ -44,7 +44,7 @@ ms.locfileid: "96547740"
 - 所需的列会先列出。
 - 建议不要将新列添加到模板。 所添加的任何其他列都会被忽略，不进行处理。
 - 建议尽可能频繁地下载 CSV 模板的最新版本。
-- 添加至少两个用户的 Upn 或对象 Id 以成功上传文件。
+- 添加至少两个用户的 UPN 或对象 ID 以成功上传文件。
 
 ## <a name="to-bulk-import-group-members"></a>批量导入组成员
 
@@ -75,7 +75,7 @@ ms.locfileid: "96547740"
 
 ## <a name="bulk-import-service-limits"></a>“批量导入”服务限制
 
-导入组成员列表的每个批量活动最多可运行一小时。 这允许导入最多40000个成员的列表。
+导入组成员列表的每个批量活动最多可运行一小时。 这样可导入至多包含 40000 名成员的列表。
 
 ## <a name="next-steps"></a>后续步骤
 

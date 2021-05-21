@@ -6,10 +6,10 @@ ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: d88bf65f1bd94e29bd9f60f5597d655f0040623b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101725732"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探究适用于 Azure Cosmos DB 的 Azure Monitor
@@ -37,7 +37,7 @@ ms.locfileid: "101725732"
 
 若要查看所有订阅中的存储帐户的利用率和性能，请执行以下步骤。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 搜索“Monitor”并选择“Monitor”。
 
@@ -101,37 +101,37 @@ ms.locfileid: "101725732"
 
 :::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-search.png" alt-text="搜索 Azure Cosmos DB。" border="true":::
 
-2. 导航到 Azure Cosmos DB 帐户后，请在 "监视" 部分中选择 " **Insights (预览")** 或 **工作簿** ，对吞吐量、请求、存储、可用性、延迟、系统和帐户管理执行进一步的分析。
+2. 在转到 Azure Cosmos DB 帐户后，选择“监视”部分中的“见解(预览)”或“工作簿”，以对吞吐量、请求、存储、可用性、延迟、系统和帐户管理进行进一步分析。
 
-:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-overview.png" alt-text="Cosmos DB Insights 概述。" border="true":::
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-overview.png" alt-text="Cosmos DB 见解概述。" border="true":::
 
 ### <a name="time-range"></a>时间范围
 
-默认情况下，" **时间范围** " 字段显示 **最近24小时** 内的数据。 您可以修改时间范围，以在最近5分钟到过去7天的任何时间显示数据。 时间范围选择器还包括一个 **自定义** 模式，可让你键入开始/结束日期，以根据所选帐户的可用数据查看自定义时间范围。
+默认情况下，“时间范围”字段显示“过去 24 小时”的数据。 可以修改时间范围，以显示过去 5 分钟到过去 7 天的数据。 时间范围选择器还包括“自定义”模式，便于你键入开始日期/结束日期，以查看所选帐户基于自定义期限的可用数据。
 
 :::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-time-range.png" alt-text="Cosmos DB 时间范围。" border="true":::
 
 ### <a name="insights-overview"></a>见解概述
 
-" **概述** " 选项卡为所选 Azure Cosmos DB 帐户提供最常见的指标，包括：
+“概述”选项卡提供了所选 Azure Cosmos DB 帐户的最常见指标，包括：
 
 * 请求总数
-*  (429s 的失败请求) 
-* 规范化 RU 消耗量 (最大) 
-* 数据 & 索引使用情况
-* 按集合 Cosmos DB 帐户指标
+* 失败的请求数(429)
+* 规范化 RU 使用量(最大值)
+* 数据和索引使用情况
+* Cosmos DB 帐户指标(按集合)
 
-**请求总数：** 此图提供按状态代码细分的帐户请求总数。 图底部的单位是该时间段的总请求数之和。
+请求总数：此图提供了按状态代码细分的帐户请求总数的视图。 图底部的单位是这段时间内所有请求的总和。
 
-:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-total-requests.png" alt-text="Cosmos DB 请求总数图。" border="true":::
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-total-requests.png" alt-text="Cosmos DB“请求总数”图。" border="true":::
 
-**(429s) 失败的请求**：此图提供了状态代码为429的失败请求的视图。 图底部的单位是该时间段内失败请求总数的总和。
+失败的请求数(429)：此图提供了状态代码为 429 的失败请求数的视图。 图底部的单位是这段时间内所有失败请求的总和。
 
-:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-429.png" alt-text="Cosmos DB 失败请求图形。" border="true":::
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-429.png" alt-text="Cosmos DB“失败的请求数”图。" border="true":::
 
-**规范化 Ru 消耗量 (max)**：此图提供指定时间段内0-100% 的规范化 ru 消耗单位的最大百分比。
+规范化 RU 使用量(最大值)：此图提供了指定时间段内规范化 RU 使用量单位在 0-100% 之间的最大百分比。
 
-:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-normalized-ru.png" alt-text="Cosmos DB 规范化 RU 消耗量。" border="true":::
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-normalized-ru.png" alt-text="Cosmos DB“规范化 RU 使用量”。" border="true":::
 
 ## <a name="pin-export-and-expand"></a>固定、导出和展开
 

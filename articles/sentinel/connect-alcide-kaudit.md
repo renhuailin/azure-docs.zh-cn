@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 6d1314b79f09f1bed2de5d6964b0a6224b5962ca
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b146e228de13109975a76b0e4c6c9fd183fd362d
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100096865"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600398"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>将 Alcide kAudit 连接到 Azure Sentinel
 
@@ -32,7 +32,7 @@ ms.locfileid: "100096865"
 > [!NOTE]
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 - 你必须具有对 Azure Sentinel 工作区的读取和写入权限。
 
@@ -46,7 +46,7 @@ Alcide kAudit 可以将日志直接导出到 Azure Sentinel。
 
 1. 从库中选择“Alcide kAudit”，然后单击“打开连接器页”按钮 。
 
-1. 请按照 [Alcide kAudit 安装指南](https://get.alcide.io/hubfs/Azure%20Sentinel%20Integration%20with%20kAudit.pdf)中的分步说明操作。
+1. 请按照 [Alcide kAudit 安装指南](https://awesomeopensource.com/project/alcideio/kaudit?categoryPage=29#before-installing-alcide-kaudit)中的分步说明操作。
 
 1. 系统要求提供工作区 ID 和主键时，你可以从 Alcide kAudit 数据连接器页面复制。
 

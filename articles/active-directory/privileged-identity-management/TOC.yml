@@ -19,8 +19,6 @@
     - name: 电子邮件通知
       href: pim-email-notifications.md
     - name: PIM API 概念
-      href: pim-apis-concept.md
-    - name: Microsoft Graph API 和 PIM
       href: pim-apis.md
 - name: 操作指南
   expanded: true

@@ -1,6 +1,6 @@
 ---
-title: Azure 通知中心和 Google Firebase Cloud 消息传递 (FCM) 迁移
-description: 介绍 Azure 通知中心如何将 Google GCM 寻址到 FCM 迁移。
+title: Azure 通知中心和 Google Firebase Cloud Messaging (FCM) 迁移
+description: 介绍 Azure 通知中心如何解决从 Google GCM 到 FCM 的迁移。
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -15,50 +15,50 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/10/2019
 ms.openlocfilehash: 2f2ca4b56445b3f399477e396de579d8a8c539e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80127025"
 ---
-# <a name="azure-notification-hubs-and-google-firebase-cloud-messaging-migration"></a>Azure 通知中心和 Google Firebase 云消息传送迁移
+# <a name="azure-notification-hubs-and-google-firebase-cloud-messaging-migration"></a>Azure 通知中心和 Google Firebase Cloud Messaging 迁移
 
 ## <a name="current-state"></a>当前状态
 
-当 Google 从 Google Cloud Messaging (GCM) 迁移到 Firebase 云消息传送 (FCM) 时，推送服务（如我们）必须调整如何将通知发送到 Android 设备以适应更改。
+Google 宣布从 Google Cloud Messaging (GCM) 迁移到 Firebase Cloud Messaging (FCM) 时，像我们这样的推送服务必须调整向 Android 设备发送通知的方式，以适应这种变化。
 
-我们更新了服务后端，并根据需要将更新发布到我们的 API 和 Sdk。 利用我们的实现方式，我们决定保持与现有 GCM 通知架构的兼容性，以最大程度地减少对客户的影响。 这意味着我们目前使用 FCM 旧版模式下的 FCM 将通知发送到 Android 设备。 最终，我们想要添加对 FCM 的真正支持，包括新功能和有效负载格式。 这是一项较长的更改，当前迁移的重点是保持与现有应用程序和 Sdk 的兼容性。 你可以使用应用中的 GCM 或 FCM Sdk (以及 SDK) ，并确保通知发送正确。
+我们更新了服务后端，然后根据需要发布了对 API 和 SDK 的更新。 在我们的实现中，我们决定保持与现有 GCM 通知架构的兼容性，以最大程度地减少对客户的影响。 这意味着我们当前在 FCM 旧模式下使用 FCM 向 Android 设备发送通知。 最终，我们想要添加对 FCM 的真正支持，包括新功能和有效负载格式。 这是一项长期的更改，当前的迁移重点是保持与现有应用程序和 SDK 的兼容性。 你可以在你的应用中使用 GCM 或 FCM SDK（连同我们的 SDK），我们会确保正确发送通知。
 
-一些客户最近收到了来自 Google 的一封电子邮件，其中介绍了有关使用 GCM 终结点通知的应用。 这只是一条警告，不会有任何损坏–应用的 Android 通知仍会发送到 Google 进行处理，Google 仍会处理它们。 某些已在其服务配置中明确指定 GCM 终结点的客户仍在使用已弃用的终结点。 我们已经认识到了这种缺口，并致力于在 Google 发送电子邮件时解决问题。
+一些客户最近收到了来自 Google 的电子邮件，包含对使用 GCM 终结点进行通知的应用的警告。 这只是一条警告，没有实际问题；应用的 Android 通知仍会发送给 Google 进行处理，而 Google 也依旧会处理。 一些在其服务配置中显式指定 GCM 终结点的客户仍在使用已弃用的终结点。 当 Google 发送电子邮件时，我们已经发现了这种缺口，并正在努力解决此问题。
 
-我们取代了弃用的终结点，并部署了修补程序。
+我们替换了弃用的终结点，并部署了修补程序。
 
 ## <a name="going-forward"></a>今后
 
-Google 的 FCM FAQ 指出，无需执行任何操作。 在 [FCM FAQ](https://developers.google.com/cloud-messaging/faq)中，Google 说 "客户端 SDK 和 GCM 令牌将继续无限期地工作。 但是，除非迁移到 FCM，否则不能在 Android 应用程序中定位最新版本的 Google Play Services。
+Google 的 FCM FAQ 表示你无需执行任何操作。 Google 在 [FCM FAQ](https://developers.google.com/cloud-messaging/faq) 中表示：“客户端 SDK 和 GCM 令牌将继续无限期地工作。 但是，除非迁移到 FCM，否则无法在 Android 应用中定位最新版本的 Google Play Services。”
 
-如果你的应用使用 GCM 库，请继续操作并按照 Google 的说明升级到你的应用中的 FCM 库。 我们的 SDK 与兼容，因此你无需在我们的 (上更新应用程序中的任何内容，只要你是最新的 SDK 版本) 即可。
+如果应用使用 GCM 库，请继续按照 Google 的说明升级到应用中的 FCM 库。 我们的 SDK 与其中任何一个都兼容，因此你不需要在我们这边更新应用中的任何内容（只要你是最新的 SDK 版本）。
 
 ## <a name="questions-and-answers"></a>问题与解答
 
-下面是我们为客户提供的一些常见问题的解答：
+下面是对客户反馈的一些常见问题的解答：
 
-**问：** 需要执行哪些操作才能与截止日期兼容 (Google 当前截止日期是5月29日，可以更改) ？
+**问：** 在截止日期（Google 当前的截止日期是 5 月 29 日，可能会更改）前，需执行什么操作才能具备兼容性？
 
-**答：** 没. 我们将保持与现有 GCM 通知架构的兼容性。 与应用程序使用的任何 GCM Sdk 和库一样，GCM 密钥仍能正常工作。
+**答：** 无需执行任何操作。 我们将保持与现有 GCM 通知架构的兼容性。 GCM 密钥将继续像应用程序使用的任何 GCM SDK 和库一样正常工作。
 
-如果你决定升级到 FCM Sdk 和库以利用新功能，你的 GCM 密钥仍将正常工作。 如果需要，你可以切换到使用 FCM 键，但请确保在创建新的 Firebase 项目时向现有 GCM 项目添加 Firebase。 这将保证与正在运行旧版本应用的客户的向后兼容性，仍使用 GCM Sdk 和库。
+如果/当你决定升级到 FCM SDK 和库以利用新功能时，GCM 密钥仍然有效。 如果需要，可以切换为使用 FCM 密钥，但是请确保在创建新的 Firebase 项目时将 Firebase 添加到现有的 GCM 项目中。 这将保证与运行仍使用 GCM SDK 和库的旧版应用的客户向后兼容。
 
-如果要创建新的 FCM 项目，而不是附加到现有 GCM 项目，则在使用新的 FCM 密码更新通知中心后，将失去将通知推送到当前应用安装的功能，因为新的 FCM 项没有指向旧 GCM 项目的链接。
+如果你正在创建新的 FCM 项目并且未附加到现有 GCM 项目，则一旦使用新 FCM 机密更新了通知中心，便无法再将通知推送到当前应用安装，因为新的 FCM 密钥没有执行旧 GCM 项目的链接。
 
-**问：** 为什么要收到有关使用旧 GCM 终结点的这封电子邮件？ 我需要做些什么？
+**问：** 为什么我收到关于旧 GCM 终结点被使用的电子邮件？ 我该怎么做？
 
-**答：** 没. 我们已经迁移到新的终结点，即将完成，因此不需要进行任何更改。 不会有任何中断，我们缺少一个终结点，只是导致来自 Google 的警告消息。
+**答：** 无需执行任何操作。 我们已经迁移到新的终结点，很快就会完成，所以不需要进行任何更改。 没有任何问题，只是一个遗漏的终结点导致 Google 发送警告消息。
 
-**问：** 如何在不破坏现有用户的情况下切换到新的 FCM Sdk 和库？
+**问：** 如何在不中断现有用户的情况下转换到新的 FCM SDK 和库？
 
-答：随时升级。 Google 尚未公布现有 GCM Sdk 和库的任何弃用。 若要确保不会向现有用户中断推送通知，请确保在创建新的 Firebase 项目时，将其与现有 GCM 项目相关联。 这将确保使用 GCM Sdk 和库为运行较旧版本的应用的用户以及使用 FCM Sdk 和库的应用的新用户提供新的 Firebase 机密。
+答：随时升级。 Google 尚未宣布弃用现有的 GCM SDK 和库。 为确保不会中断向现有用户推送通知，请确保在创建新的 Firebase 项目时将其与现有 GCM 项目相关联。 这将确保新的 Firebase 机密适用于使用 GCM SDK 和库运行旧版应用的用户，以及使用 FCM SDK 和库运行应用的新用户。
 
-**问：** 何时可以使用新的 FCM 功能和架构来接收通知？
+**问：** 何时可以使用新的 FCM 功能和架构进行通知？
 
-**答：** 将更新发布到我们的 API 和 Sdk 后，请继续进行优化–我们预计会在未来的几个月内提供一些内容。
+**答：** 敬请关注有关 API 和 SDK 的更新，我们预计会在未来的几个月内提供一些内容。

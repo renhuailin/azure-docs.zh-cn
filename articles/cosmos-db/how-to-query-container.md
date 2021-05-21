@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.openlocfilehash: 5cd90e994e620960e0d974ef7609a67f8a5eb58b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335885"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448536"
 ---
 # <a name="query-an-azure-cosmos-container"></a>查询 Azure Cosmos 容器
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,19 +26,19 @@ ms.locfileid: "93335885"
 例如，请考虑以下针对 `DeviceId` 使用等式筛选器的查询。 如果对按 `DeviceId` 分区的容器运行此查询，则此查询将筛选到单个物理分区。
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
 与前面的示例一样，此查询也将筛选到单个分区。 添加针对 `Location` 的其他筛选器不会更改此行为：
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
 ```
 
 下面的查询有一个针对分区键的范围筛选器，该查询的作用域不会限定于单个物理分区。 为了成为分区中查询，该查询必须具有包含分区键的等式筛选器：
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 ```
 
 ## <a name="cross-partition-query"></a>跨分区查询
@@ -46,12 +46,12 @@ ms.locfileid: "93335885"
 下面的查询没有针对分区键 (`DeviceId`) 的筛选器。 因此，它必须根据每个分区的索引扇出到运行它的所有物理分区：
 
 ```sql
-    SELECT * FROM c WHERE c.Location = 'Seattle`
+SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
 每个物理分区都有其自己的索引。 因此，当你在容器上运行跨分区查询时，你可以高效地针对每个物理分区运行一个查询。 Azure Cosmos DB 会自动聚合不同物理分区的结果。
 
-不同物理分区中的索引彼此独立。 Azure Cosmos DB 中没有全局索引。
+不同物理分区中的索引彼此独立。 Azure Cosmos DB 中不存在全局索引。
 
 ## <a name="parallel-cross-partition-query"></a>并行跨分区查询
 
@@ -59,9 +59,9 @@ Azure Cosmos DB SDK 1.9.0 及更高版本支持并行查询执行选项。 并�
 
 可以通过调整以下参数来管理并行查询执行：
 
-- **MaxConcurrency** ：设置容器分区的最大并发网络连接数。 如果将此属性设置为 `-1`，则由 SDK 管理并行度。 如果  `MaxConcurrency` 设置为 `0`，则与容器的分区之间存在单个网络连接。
+- **MaxConcurrency**：设置容器分区的最大并发网络连接数。 如果将此属性设置为 `-1`，则由 SDK 管理并行度。 如果  `MaxConcurrency` 设置为 `0`，则与容器的分区之间存在单个网络连接。
 
-- **MaxBufferedItemCount** ：权衡查询延迟与客户端内存利用率。 如果省略此选项或将其设置为 -1，则由 SDK 管理并行查询执行过程中缓冲的项目数。
+- **MaxBufferedItemCount**：权衡查询延迟与客户端内存利用率。 如果省略此选项或将其设置为 -1，则由 SDK 管理并行查询执行过程中缓冲的项目数。
 
 由于 Azure Cosmos DB 能够并行执行跨分区查询，因此，随着系统增加[物理分区](partitioning-overview.md#physical-partitions)，查询延迟通常增加得不多。 但是，随着物理分区总数的增加，RU 开销会明显增大。
 

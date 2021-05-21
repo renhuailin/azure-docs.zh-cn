@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
-manager: femila
-ms.openlocfilehash: 4014de262490259ed2e61eb17c80b40679e62773
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+manager: lizross
+ms.openlocfilehash: a0d2bd6a07cfc9e5ebe205322550c9e898022846
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445204"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "88008434"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-macos-client"></a>使用 macOS 客户端连接到 Windows 虚拟桌面（经典）
 
@@ -36,7 +36,7 @@ ms.locfileid: "106445204"
 2. 输入“源 URL”。 该项可以是 URL 或电子邮件地址：
    - 如果使用 URL，请输入管理员提供给你的 URL。 此 URL 通常是 <https://rdweb.wvd.microsoft.com>。
    - 若要使用电子邮件地址，请输入你的电子邮件地址。 这会指示客户端搜索与你的电子邮件地址关联的 URL，前提是管理员已采用这种方式配置了服务器。
-3. 选择 **添加** 。
+3. 选择“添加”。
 4. 出现提示时，请使用用户帐户登录。
 
 登录后，应该会看到可用资源的列表。

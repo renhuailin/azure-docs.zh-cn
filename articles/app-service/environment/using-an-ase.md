@@ -8,10 +8,10 @@ ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594048"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
@@ -104,14 +104,14 @@ ms.locfileid: "100594048"
 
 ## <a name="app-access"></a>应用访问
 
-在外部 ASE 中，用于创建应用的域后缀是 *。 &lt;asename &gt; . p.azurewebsites.net*。 如果 ASE 名为 external-ase 并且其中托管了名为 contoso 的应用，可以通过以下 URL 访问该应用： 
+在外部 ASE 中，用于创建应用的域后缀是 .&lt;asename&gt;.p.azurewebsites.net。 如果 ASE 名为 external-ase 并且其中托管了名为 contoso 的应用，可以通过以下 URL 访问该应用： 
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
 有关如何创建外部 ASE 的信息，请参阅[创建应用服务环境][MakeExternalASE]。
 
-在 ILB ASE 中，用于创建应用的域后缀是 *。 &lt;asename &gt; . appserviceenvironment.net*。 如果 ASE 名为 ilb-ase 并且其中托管了名为 contoso 的应用，可以通过以下 URL 访问该应用： 
+在 ILB ASE 中，用于创建应用的域后缀是 .&lt;asename&gt;.appserviceenvironment.net。 如果 ASE 名为 ilb-ase 并且其中托管了名为 contoso 的应用，可以通过以下 URL 访问该应用： 
 
 - contoso.ilb-ase.appserviceenvironment.net
 - contoso.scm.ilb-ase.appserviceenvironment.net
@@ -171,10 +171,10 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 
 | 场景 | Message |
 |---------|----------|
-| ASE 运行不正常 | 由于虚拟网络配置无效，指定的 ASE 运行不正常。 如果持续出现不正常状态，ASE 将会挂起。 请确保遵循此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
+| ASE 运行不正常 | 由于虚拟网络配置无效，指定的 ASE 运行不正常。 如果持续出现不正常状态，ASE 将会挂起。 确保遵守此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
 | ASE 子网空间几乎已耗尽 | 指定的 ASE 位于一个几乎耗尽了空间的子网中。 还剩下 {0} 个地址。 一旦这些地址耗尽，ASE 就无法缩放。  |
 | ASE 即将达到实例总数限制 | 指定的 ASE 即将达到 ASE 的实例总数限制。 它目前包含 {0} 个应用服务计划实例，最多可以包含 201 个实例。 |
-| ASE 无法访问某个依赖项 | 指定的 ASE 无法访问 {0}。  请确保遵循此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
+| ASE 无法访问某个依赖项 | 指定的 ASE 无法访问 {0}。  确保遵守此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
 | ASE 已挂起 | 指定的 ASE 已挂起。 ASE 挂起的可能原因是帐户不足，或虚拟网络配置无效。 解决根本原因并恢复 ASE，以继续为流量提供服务。 |
 | ASE 升级已启动 | 已开始对指定的 ASE 进行平台升级。 预期缩放操作会出现延迟。 |
 | ASE 升级已完成 | 对指定的 ASE 进行平台升级已完成。 |
@@ -213,18 +213,18 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 - **Early**：ASE 将在应用服务升级过程的上半阶段升级。
 - **Late**：ASE 将在应用服务升级过程的下半阶段升级。
 
-如果使用的是 https://resources.azure.com ，请按照以下步骤设置 **upgradePreferences** 值：
+如果使用的是 https://resources.azure.com ，请按以下步骤操作来设置 upgradePreferences 值：
 
-1. 请参阅 resources.azure.com，然后用 Azure 帐户登录。
-1. 浏览资源到订阅 \/ \[ 订阅名称 \] \/ resourceGroups \/ \[ 资源组名称 \] \/ 提供程序 \/ \/ hostingEnvironments \/ \[ ASE 名称 \] 。
-1. 在顶部选择 " **读/写** "。
+1. 转到 resources.azure.com，然后使用 Azure 帐户登录。
+1. 浏览资源到 subscriptions\/\[subscription name\]\/resourceGroups\/\[resource group name\]\/providers\/Microsoft.Web\/hostingEnvironments\/\[ASE name\]。
+1. 在顶部选择“读/写”。
 1. 选择“编辑”。
-1. 将 **upgradePreference** 设置为所需的三个值中的任何一个。
-1. 选择 " **修补**"。
+1. 将 upgradePreference 设置为所需的三个值之一。
+1. 选择“补丁”。
 
 ![azure com 显示的资源][5]
 
-当你有多个 Ase 时， **upgradePreferences** 功能最有意义，因为你的 "早期" ase 将在 "延迟" ase 之前升级。 当你有多个 Ase 时，应将你的开发和测试 Ase 设置为 "提前"，并将生产 Ase 设置为 "延迟"。
+upgradePreferences 功能在有多个 ASE 时最有意义，因为“早期”ASE 将在“晚期”ASE 之前升级。 当你有多个 ASE 时，应将开发和测试 ASE 设置为“早期”，而将生产 ASE 设置为“晚期”。
 
 ## <a name="pricing"></a>定价
 

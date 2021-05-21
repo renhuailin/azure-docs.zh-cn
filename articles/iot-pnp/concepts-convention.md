@@ -1,55 +1,55 @@
 ---
-title: IoT 即插即用约定 |Microsoft Docs
-description: 约定 IoT 即插即用的说明在发送遥测和属性时需要设备使用，并处理命令和属性更新。
+title: IoT 即插即用约定 | Microsoft Docs
+description: 描述 IoT 即插即用在设备发送遥测和属性以及处理命令和属性更新时预期设备使用的约定。
 author: rido-min
 ms.author: rmpablos
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
-ms.translationtype: MT
+ms.openlocfilehash: 88297671dedec5b4001677f88ac5b9f86de107e3
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302603"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325728"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT 即插即用约定
 
 IoT 即插即用设备在与 IoT 中心交换消息时应遵循一组约定。 IoT 即插即用设备使用 MQTT 协议与 IoT 中心通信。
 
-设备可以包含 [模块](../iot-hub/iot-hub-devguide-module-twins.md)，也可以在 IoT Edge 运行时承载的 [IoT Edge 模块](../iot-edge/about-iot-edge.md) 中实现。
+设备可以包含[模块](../iot-hub/iot-hub-devguide-module-twins.md)，或在由 IoT Edge 运行时托管的 [IoT Edge 模块](../iot-edge/about-iot-edge.md)中实现。
 
-使用 [数字孪生定义语言 v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) _模型_ 来描述 IoT 即插即用设备实现的遥测、属性和命令。 本文中引用的模型分为两种类型：
+介绍 IoT 即插即用设备使用[数字孪生定义语言 v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) 模型实现的遥测、属性和命令。 本文中引用了两种类型的模型：
 
-- **无组件** -没有组件的模型。 该模型在主接口的内容部分中将遥测、属性和命令声明为顶级属性。 在 Azure IoT 资源管理器工具中，此模型显示为单个 _默认组件_。
-- **多个组件** -由两个或多个接口组成的模型。 主接口，它显示为 _默认组件_，具有遥测、属性和命令。 将一个或多个接口声明为包含附加遥测、属性和命令的组件。
+- **无组件** - 没有组件的模型。 此模型将遥测、属性和命令声明为主接口的内容部分中的顶级属性。 在 Azure IoT 资源管理器工具中，此模型显示为单个默认组件。
+- **多组件** - 由两个或多个接口组成的模型。 主接口显示为默认组件，包含遥测、属性和命令。 一个或多个接口声明为包含其他遥测、属性和命令的组件。
 
-有关详细信息，请参阅 [IoT 即插即用模型中的组件](concepts-components.md)。
+有关详细信息，请参阅 [IoT 即插即用建模指南](concepts-modeling-guide.md)。
 
-## <a name="identify-the-model"></a>标识模型
+## <a name="identify-the-model"></a>识别模型
 
-若要公布它实现的模型，IoT 即插即用设备或模块通过添加到字段，在 MQTT 连接数据包中包含模型 ID `model-id` `USERNAME` 。
+为了宣布实现的模型，IoT 即插即用设备或模块通过将 `model-id` 添加到 `USERNAME` 字段，在 MQTT 连接数据包中包含模型 ID。
 
-若要标识设备或模块实现的模型，服务可以从以下各内容获取模型 ID：
+若要标识设备或模块实现的模型，服务可以从以下项获取模型 ID：
 
-- 设备克隆 `modelId` 字段。
-- 数字双子 `$metadata.$model` 字段。
-- 数字克隆更改通知。
+- 设备孪生 `modelId` 字段。
+- 数字孪生体 `$metadata.$model` 字段。
+- 数字孪生体更改通知。
 
-## <a name="telemetry"></a>遥测
+## <a name="telemetry"></a>遥测技术
 
-从无组件设备发送的遥测无需任何额外的元数据。 系统添加 `dt-dataschema` 属性。
+从无组件设备发送的遥测不需要任何额外的元数据。 系统添加 `dt-dataschema` 属性。
 
-从多个组件设备发送的遥测必须 `$.sub` 作为消息属性添加。 系统添加 `dt-subject` 和 `dt-dataschema` 属性。
+从多组件设备发送的遥测必须添加 `$.sub` 为消息属性。 系统添加 `dt-subject` 和 `dt-dataschema` 属性。
 
 ## <a name="read-only-properties"></a>只读属性
 
-### <a name="sample-no-component-read-only-property"></a>示例无组件只读属性
+### <a name="sample-no-component-read-only-property"></a>无组件只读属性示例
 
 设备或模块可以发送遵循 DTDL v2 规则的任何有效 JSON。
 
-DTDL:
+DTDL：
 
 ```json
 {
@@ -66,7 +66,7 @@ DTDL:
 }
 ```
 
-报告的示例属性负载：
+报告的属性有效负载示例：
 
 ```json
 "reported" :
@@ -75,9 +75,9 @@ DTDL:
 }
 ```
 
-### <a name="sample-multiple-components-read-only-property"></a>示例多个组件只读属性
+### <a name="sample-multiple-components-read-only-property"></a>多组件只读属性示例
 
-设备或模块必须添加 `{"__t": "c"}` 标记，以指示元素引用组件。
+设备或模块必须添加 `{"__t": "c"}` 标记以指示元素引用组件。
 
 引用组件的 DTDL：
 
@@ -114,7 +114,7 @@ DTDL:
 }
 ```
 
-报告的示例属性负载：
+报告的属性有效负载示例：
 
 ```json
 "reported": {
@@ -127,16 +127,16 @@ DTDL:
 
 ## <a name="writable-properties"></a>可写属性
 
-设备或模块应通过发送报告的属性来确认它已接收到属性。 报告的属性应包括：
+设备或模块应通过发送报告的属性来确认已接收到属性。 报告的属性应包括：
 
-- `value` -属性的实际值 (通常是接收到的值，但设备可能决定报告不同的值) 。
-- `ac` -使用 HTTP 状态代码的确认代码。
-- `av` -引用所 `$version` 需属性的的确认版本。 可以在所需的属性 JSON 有效负载中找到此值。
-- `ad` -可选确认说明。
+- `value` - 属性的实际值（通常是接收到的值，但设备可能决定报告不同的值）。
+- `ac` - 使用 HTTP 状态代码的确认代码。
+- `av` - 引用所需属性的 `$version` 的确认版本。 可在所需的属性 JSON 有效负载中找到该值。
+- `ad` - 可选确认说明。
 
-设备启动时，应该请求设备克隆，并检查是否有可写的属性更新。 如果在设备处于脱机状态时增加了可写属性的版本，则设备应发送报告的属性响应，以确认收到更新。
+设备启动时，应该请求设备孪生，并检查是否有可写属性更新。 如果在设备处于脱机状态时增加了可写属性的版本，则设备应发送报告的属性响应，以确认接收到更新。
 
-当设备首次启动时，如果它没有从中心接收到初始所需属性，则可以为报告的属性发送初始值。 在这种情况下，设备应设置 `av` 为 `1` 。 例如：
+设备首次启动时，如果没有从中心接收到初始所需属性，则可以为报告的属性发送初始值。 在这种情况下，设备应将 `av` 设置为 `1`。 例如：
 
 ```json
 "reported": {
@@ -149,7 +149,7 @@ DTDL:
 }
 ```
 
-设备可以使用报告的属性向中心提供其他信息。 例如，设备可能会使用一系列正在进行的消息（例如）进行响应：
+设备可以使用报告的属性向中心提供其他信息。 例如，设备可能会使用一系列正在进行的消息进行响应，如：
 
 ```json
 "reported": {
@@ -162,7 +162,7 @@ DTDL:
 }
 ```
 
-当设备达到目标温度时，它将发送以下消息：
+设备达到目标温度时会发送以下消息：
 
 ```json
 "reported": {
@@ -175,7 +175,7 @@ DTDL:
 }
 ```
 
-设备可能会报告错误，如：
+设备可能会报告如下错误：
 
 ```json
 "reported": {
@@ -190,11 +190,11 @@ DTDL:
 
 ### <a name="sample-no-component-writable-property"></a>无组件可写属性示例
 
-当设备在单个有效负载中接收多个报告属性时，它可以跨多个有效负载发送报告的属性响应。
+设备在单个有效负载中接收到多个报告属性时，可以跨多个有效负载发送报告的属性响应。
 
 设备或模块可以发送遵循 DTDL v2 规则的任何有效 JSON：
 
-DTDL:
+DTDL：
 
 ```json
 {
@@ -212,18 +212,18 @@ DTDL:
 }
 ```
 
-所需的属性负载示例：
+所需的属性有效负载示例：
 
 ```json
 "desired" :
 {
   "targetTemperature" : 21.3,
-  "targetHumidity" : 80
-},
-"$version" : 3
+  "targetHumidity" : 80,
+  "$version" : 3
+}
 ```
 
-报告的示例属性优先负载：
+报告的属性第一个有效负载示例：
 
 ```json
 "reported": {
@@ -236,7 +236,7 @@ DTDL:
 }
 ```
 
-报告的示例属性第二个负载：
+报告的属性第二个有效负载示例：
 
 ```json
 "reported": {
@@ -249,15 +249,15 @@ DTDL:
 }
 ```
 
-### <a name="sample-multiple-components-writable-property"></a>示例多组件可写属性
+### <a name="sample-multiple-components-writable-property"></a>多组件可写属性示例
 
-设备或模块必须添加 `{"__t": "c"}` 标记，以指示元素引用组件。
+设备或模块必须添加 `{"__t": "c"}` 标记以指示元素引用组件。
 
-仅为在组件中定义的属性更新发送标记。 对默认组件中定义的属性的更新不包括标记，请参阅 [示例无组件可写属性](#sample-no-component-writable-property)
+发送标记仅用于更新组件中定义的属性。 对默认组件中定义的属性的更新不包括标记，请参阅[无组件可写属性示例](#sample-no-component-writable-property)
 
-当设备在单个有效负载中接收多个报告属性时，它可以跨多个有效负载发送报告的属性响应。
+设备在单个有效负载中接收到多个报告属性时，可以跨多个有效负载发送报告的属性响应。
 
-设备或模块应通过发送报告的属性来确认它已接收到属性：
+设备或模块应通过发送报告的属性来确认已接收到属性：
 
 引用组件的 DTDL：
 
@@ -295,20 +295,20 @@ DTDL:
 }
 ```
 
-所需的属性负载示例：
+所需的属性有效负载示例：
 
 ```json
 "desired": {
   "thermostat1": {
     "__t": "c",
     "targetTemperature": 21.3,
-    "targetHumidity": 80
+    "targetHumidity": 80,
+    "$version" : 3
   }
-},
-"$version" : 3
+}
 ```
 
-报告的示例属性优先负载：
+报告的属性第一个有效负载示例：
 
 ```json
 "reported": {
@@ -324,7 +324,7 @@ DTDL:
 }
 ```
 
-报告的示例属性第二个负载：
+报告的属性第二个有效负载示例：
 
 ```json
 "reported": {
@@ -342,15 +342,15 @@ DTDL:
 
 ## <a name="commands"></a>命令
 
-没有组件接口使用不带前缀的命令名。
+无组件接口使用不带前缀的命令名称。
 
-在设备或模块上，多个组件接口使用命令名称，格式如下： `componentName*commandName` 。
+在设备或模块上，多组件接口使用以下格式的命令名称：`componentName*commandName`。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解 IoT 即插即用约定，下面是一些其他资源：
+现在，你已经了解了 IoT 即插即用约定，下面是一些额外的资源：
 
 - [数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C 设备 SDK](/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](/rest/api/iothub/device)
-- [模型组件](./concepts-components.md)
+- [IoT 即插即用建模指南](concepts-modeling-guide.md)

@@ -17,10 +17,10 @@ ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f539a63907bb7cbe9d04dc3249427357d79d7c87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101673599"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
@@ -246,11 +246,11 @@ ms.locfileid: "101673599"
 
 若要准备 Azure 基础结构，请完成以下操作：
 
-* [部署 vm][sap-high-availability-infrastructure-wsfc-shared-disk]。
+* [部署 VM][sap-high-availability-infrastructure-wsfc-shared-disk]。
 
 * [创建和配置适用于 SAP ASCS 的 Azure 负载均衡器][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。
 
-* [如果使用排入队列复制服务器 2 (ERS2) ，请执行 ERS2 的 Azure 负载均衡器配置 ][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。 
+* [如果使用排队复制服务器 2 (ERS2)，请为 ERS2 执行 Azure 负载均衡器配置][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。 
 
 * [将 Windows 虚拟机添加到域][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
 
