@@ -34,13 +34,13 @@ ms.locfileid: "90934221"
 
 2.  单击左侧面板中的 "**概述**"，然后单击 "**还原**"
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="还原概述&quot;:::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="还原概述":::
 
 3.  &quot;还原&quot; 页将显示一个选项，用于在最早的还原点和自定义还原点之间进行选择。
 
 4.  选择 &quot; **最早还原点** &quot; 并在 &quot; **还原到新服务器** " 字段中提供新的服务器名称。 显示可以还原到的最早时间戳。 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="还原概述&quot;:::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="还原概述":::
 
 3.  &quot;还原&quot; 页将显示一个选项，用于在最早的还原点和自定义还原点之间进行选择。
 
@@ -55,13 +55,13 @@ ms.locfileid: "90934221"
 1.  在 [Azure 门户](https://portal.azure.com/)中，选择要从中还原备份的灵活服务器。
 
 2.  在 "概述" 页上，单击 " **还原**"。
- :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="还原概述&quot;:::
+ :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="还原概述":::
 
 3.  &quot;还原&quot; 页将显示一个选项，用于在最早的还原点和自定义还原点之间进行选择。
 
 4.  选择 &quot; **最早还原点** &quot; 并在 &quot; **还原到新服务器** " 字段中提供新的服务器名称。 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="还原概述&quot;:::
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="还原概述":::
 
 3.  &quot;还原&quot; 页将显示一个选项，用于在最早的还原点和自定义还原点之间进行选择。
 
