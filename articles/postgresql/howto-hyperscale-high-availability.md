@@ -23,13 +23,13 @@ Azure Database for PostgreSQL-超大规模 (Citus) 提供高可用性 (HA) 以�
 
 在创建服务器组的过程中，或之后在服务器组的 " **计算 + 存储** " 选项卡中，启用 HA 是可能的 Azure 门户。 在这两种情况下，用户界面的外观类似。 从 "无" 拖动滑块以实现 **高可用性** ：
 
-:::image type="content" source="./media/howto-hyperscale-high-availability/01-ha-slider.png" alt-text="ha 滑块&quot;:::
+:::image type="content" source="./media/howto-hyperscale-high-availability/01-ha-slider.png" alt-text="ha 滑块":::
 
 单击 &quot; **保存** &quot; 按钮以应用您的选择。 启用 HA 可能需要一些时间，因为服务器组预配待机并流式传输数据。
 
 服务器组的 &quot; **概览** &quot; 选项卡将列出所有节点及其待机，以及一个 &quot; **高可用性** " 列，指示是否为每个节点成功启用了 HA。
 
-:::image type="content" source="./media/howto-hyperscale-high-availability/02-ha-column.png" alt-text="ha 滑块&quot;:::
+:::image type="content" source="./media/howto-hyperscale-high-availability/02-ha-column.png" alt-text="ha 滑块":::
 
 单击 &quot; **保存** &quot; 按钮以应用您的选择。 启用 HA 可能需要一些时间，因为服务器组预配待机并流式传输数据。
 
