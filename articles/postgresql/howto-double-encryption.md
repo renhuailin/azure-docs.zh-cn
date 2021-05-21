@@ -29,21 +29,21 @@ ms.locfileid: "93242222"
 
 2. 选择“数据库” > “用于 PostgreSQL 的 Azure 数据库”。 您还可以在搜索框中输入 PostgreSQL 来查找该服务。 启用了 **单一服务器** 部署选项。
 
-   :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="菜单中的 Azure Database for PostgreSQL&quot;:::
+   :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
 3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** " 复选框，以设置参数。
 
-    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png" alt-text="菜单中的 Azure Database for PostgreSQL&quot;:::
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-selected.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
 3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** ":::
 
 4. 选择“查看 + 创建”  以预配服务器。
 
-    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png" alt-text="菜单中的 Azure Database for PostgreSQL&quot;:::
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-summary.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
 3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** " 边栏选项卡中的状态来验证基础结构双加密。
 
-    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png" alt-text="菜单中的 Azure Database for PostgreSQL&quot;:::
+    :::image type="content" source="./media/howto-infrastructure-double-encryption/infrastructure-encryption-validation.png" alt-text="菜单中的 Azure Database for PostgreSQL":::
 
 3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** ":::
 
@@ -65,4 +65,3 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver  
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关数据加密的详细信息，请参阅 [Azure Database for PostgreSQL 数据基础结构双加密](concepts-Infrastructure-double-encryption.md)"。
-
