@@ -101,6 +101,8 @@
           href: how-to-create-azure-function.md
         - name: 查询孪生图
           href: how-to-query-graph.md
+        - name: 使用记号标记创建孪生级别 RBAC
+          href: how-to-create-twin-level-role-based-access-control.md
     - name: 开发客户端应用
       items:
         - name: 通过 Postman 发出请求
@@ -141,6 +143,8 @@
           href: troubleshoot-diagnostics.md
         - name: 启用警报
           href: troubleshoot-alerts.md
+        - name: 排查性能问题
+          href: troubleshoot-performance.md
         - name: 了解资源运行状况
           href: troubleshoot-resource-health.md
         - name: 已知问题
@@ -162,21 +166,21 @@
         - name: 控制面板
           items:
             - name: .NET (C#) SDK
-              href: /dotnet/api/overview/azure/digitaltwins/management
+              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true
             - name: Java SDK
-              href: /java/api/overview/azure/digitaltwins/resourcemanagement
+              href: /java/api/overview/azure/digitaltwins/resourcemanagement?view=azure-java-stable&preserve-view=true
         - name: 数据平面
           items:
             - name: .NET (C#) SDK
-              href: /dotnet/api/overview/azure/digitaltwins/client
+              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true
             - name: Java SDK
-              href: /java/api/overview/azure/digitaltwins/client
+              href: /java/api/overview/azure/digitaltwins/client?view=azure-java-stable&preserve-view=true
             - name: JavaScript SDK
-              href: /javascript/api/@azure/digital-twins-core/
+              href: /javascript/api/@azure/digital-twins-core/?view=azure-node-latest&preserve-view=true
             - name: Python SDK
-              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core
+              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true
     - name: 数字孪生 CLI
-      href: /cli/azure/dt
+      href: /cli/azure/dt?view=azure-cli-latest&preserve-view=true
     - name: DTDL v2 规范
       href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
     - name: 查询语言参考

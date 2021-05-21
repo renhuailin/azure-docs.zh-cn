@@ -3,12 +3,12 @@ title: 将 SQL Server 备份到 Azure 作为 DPM 工作负荷
 description: 有关使用 Azure 备份服务备份 SQL Server 数据库的简介
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 592a51051a0d02a6c1d491db0fe559e2e62babb2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 03763c3bee5ee4ca5239c49c99fdbeedc242b24d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96327043"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515169"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>将 SQL Server 备份到 Azure 作为 DPM 工作负荷
 
@@ -196,4 +196,4 @@ ms.locfileid: "96327043"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [Azure 备份常见问题解答](backup-azure-backup-faq.md)。
+有关详细信息，请参阅 [Azure 备份常见问题解答](backup-azure-backup-faq.yml)。

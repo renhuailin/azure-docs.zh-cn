@@ -387,3 +387,5 @@
       href: 'https://azure.microsoft.com/pricing/details/azure-sentinel/'
     - name: 美国政府云的功能可用性
       href: /azure/security/fundamentals/feature-availability
+    - name: 存档新功能（早于 6 个月）
+      href: whats-new-archive.md

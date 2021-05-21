@@ -32,8 +32,6 @@
       href: quickstart-custom-container.md
     - name: 多容器应用
       href: quickstart-multi-container.md
-    - name: Azure Arc 上的应用（预览）
-      href: quickstart-arc.md
 - name: 教程
   items:
     - name: 保护访问存储和 Microsoft Graph 的应用
@@ -88,6 +86,10 @@
       href: tutorial-send-email.md
     - name: 排查错误
       href: tutorial-troubleshoot-monitor.md
+    - name: GitHub 操作
+      items:
+        - name: ASP.NET Core 与容器
+          href: app-service-sql-github-actions.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -108,8 +110,6 @@
       href: operating-system-functionality.md
     - name: 部署最佳做法
       href: deploy-best-practices.md
-    - name: Azure Arc 托管（预览）
-      href: overview-arc-integration.md
     - name: 安全性
       items:
         - name: 建议
@@ -279,8 +279,6 @@
           href: app-service-undelete.md
         - name: 从关闭的区域还原
           href: manage-disaster-recovery.md
-        - name: 在 Azure Arc 上启用
-          href: manage-create-arc-environment.md
     - name: 移动应用
       items:
         - name: 在区域之间移动
@@ -340,7 +338,7 @@
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: 部署脚本
           href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 排查间歇性出站连接错误
           href: troubleshoot-intermittent-outbound-connection-errors.md

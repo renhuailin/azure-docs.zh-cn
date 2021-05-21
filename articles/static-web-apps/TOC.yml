@@ -4,6 +4,8 @@
   items:
     - name: 关于静态 Web 应用
       href: overview.md
+    - name: 托管计划
+      href: plans.md
 - name: 快速入门
   expanded: true
   items:

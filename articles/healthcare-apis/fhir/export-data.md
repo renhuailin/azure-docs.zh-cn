@@ -5,14 +5,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 3/18/2021
+ms.date: 5/17/2021
 ms.author: cavoeg
-ms.openlocfilehash: 7df88f1a425b563733310d69fc14d85f9251ae44
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 50f79d8b73b6c716e14504d6d763d900a7bed488
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108794369"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078646"
 ---
 # <a name="how-to-export-fhir-data"></a>如何导出 FHIR 数据
 
@@ -74,15 +74,35 @@ Azure API for FHIR 支持以下查询参数。 所有参数都是可选的：
 
 ## <a name="secure-export-to-azure-storage"></a>安全导出到 Azure 存储
 
-Azure API for FHIR 支持安全导出操作。 运行安全导出的一种方法是允许与 Azure API for FHIR 关联的特定 IP 地址访问 Azure 存储帐户。 根据存储帐户所在位置与 Azure API for FHIR 所在位置是否相同，配置会有所不同。
+Azure API for FHIR 支持安全导出操作。 选择以下两个选项之一：
 
-### <a name="when-the-azure-storage-account-is-in-a-different-region"></a>Azure 存储帐户位于不同区域时
+* 允许Azure API for FHIR Microsoft 受信任的服务访问 Azure 存储帐户。
+ 
+* 允许与 Azure 存储Azure API for FHIR关联的特定 IP 地址访问 Azure 存储帐户。 此选项提供两种不同的配置，具体取决于存储帐户是位于与 存储帐户位于同一位置，还是与存储帐户位于Azure API for FHIR。
 
-从 **门户** 中选择"Azure 存储帐户的网络"。 
+### <a name="allowing-azure-api-for-fhir-as-a-microsoft-trusted-service"></a>允许 Azure API for FHIR 作为 Microsoft 可信服务
 
-   :::image type="content" source="media/export-data/storage-networking.png" alt-text="Azure 存储网络设置。" lightbox="media/export-data/storage-networking.png":::
+从 "Azure 门户中选择存储帐户，然后选择" **网络** "边栏选项卡。 在 "**防火墙和虚拟网络**" 选项卡下选择 **所选网络**。
+
+> [!IMPORTANT]
+> 确保已使用托管标识向 Azure API for FHIR 的存储帐户授予访问权限。 有关更多详细信息，请参阅 [配置导出设置和设置存储帐户](https://docs.microsoft.com/azure/healthcare-apis/fhir/configure-export-data)。
+
+  :::image type="content" source="media/export-data/storage-networking.png" alt-text="Azure 存储网络设置。" lightbox="media/export-data/storage-networking.png":::
+
+在 " **例外** " 部分下，选中 " **允许受信任的 Microsoft 服务访问此存储帐户** " 框，并保存设置。 
+
+:::image type="content" source="media/export-data/exceptions.png" alt-text="允许受信任的 Microsoft 服务访问此存储帐户。":::
+
+你现在已准备好将 FHIR 数据导出到存储帐户。 请注意，存储帐户位于所选网络上，并且不可公开访问。 若要访问这些文件，可以启用和使用存储帐户的专用终结点，也可以在短时间内启用存储帐户的所有网络。
+
+> [!IMPORTANT]
+> 稍后将更新用户界面，以允许你选择用于 FHIR 的 Azure API 和特定服务实例的资源类型。
+
+### <a name="allowing-specific-ip-addresses-for-the-azure-storage-account-in-a-different-region"></a>允许在不同区域中的 Azure 存储帐户使用特定 IP 地址
+
+从门户中选择 Azure 存储帐户的 **网络** 。 
    
-选择“所选网络”。 在"防火墙"部分下，在"地址范围"框中 **指定 IP** 地址。 添加 IP 范围以允许从 Internet 或本地网络访问。 可以在下表中查找预配了托管服务的 Azure Azure API for FHIR IP 地址。
+选择“所选网络”。 在 "防火墙" 部分下的 " **地址范围** " 框中指定 IP 地址。 添加 IP 范围以允许从 internet 或本地网络进行访问。 可以在下表中找到用于预配 Azure API for FHIR 服务的 Azure 区域的 IP 地址。
 
 |**Azure 区域**         |**公共 IP 地址** |
 |:----------------------|:-------------------|
@@ -111,16 +131,16 @@ Azure API for FHIR 支持安全导出操作。 运行安全导出的一种方法
 > [!NOTE]
 > 以上步骤类似于文档如何将数据转换为 FHIR (预览) 中所述的配置步骤。 有关详细信息，请参阅 [宿主和使用模板](https://docs.microsoft.com/azure/healthcare-apis/fhir/convert-data#host-and-use-templates)
 
-### <a name="when-the-azure-storage-account-is-in-the-same-region"></a>Azure 存储帐户位于同一区域时
+### <a name="allowing-specific-ip-addresses-for-the-azure-storage-account-in-the-same-region"></a>允许同一区域中的 Azure 存储帐户具有特定 IP 地址
 
 除改用 CIDR 格式的特定 IP 地址范围 100.64.0.0/10 以外，配置过程与上述过程相同。 必须指定 IP 地址范围（包括 100.64.0.0 - 100.127.255.255）的原因如下：对于每一个 $export 请求，服务使用的实际 IP 地址会有所不同，但会处于该范围内。
 
 > [!Note] 
-> 可以改用 10.0.2.0/24 范围内的专用 IP 地址。 在这种情况下，$export 操作不会成功。 可以重试 $export 请求，但不能保证下一次使用 100.64.0.0/10 范围内的 IP 地址。 这是众所周知的默认网络行为。 变通方法是在其他区域配置存储帐户。
+> 可以改用 10.0.2.0/24 范围内的专用 IP 地址。 在这种情况下，$export 操作不会成功。 可以重试$export请求，但不保证下次使用 100.64.0.0/10 范围内的 IP 地址。 这是众所周知的默认网络行为。 变通方法是在其他区域配置存储帐户。
     
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你了解了如何使用 $export 命令导出 FHIR 资源。 接下来，若要了解如何导出已取消识别的数据，请参阅：
+在本文中，你了解了如何使用 $export 命令导出 FHIR 资源。 接下来，若要了解如何导出已取消标识的数据，请参阅：
  
 >[!div class="nextstepaction"]
 >[导出去识别的数据](de-identified-export.md)

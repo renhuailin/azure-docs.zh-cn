@@ -1,19 +1,19 @@
 ---
 title: 适用于 FHIR 的 Azure API 的 azure 策略法规遵从性控制
 description: 列出可用于 FHIR 的 Azure API 的 Azure 策略规章符合性控件。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.topic: sample
 author: matjazl
 ms.author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 55958b2d6243a9809d7d0f1424e8504b8014c628
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e470fd12cc08893e5694f13c0beeaf80fcb717c6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756821"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094721"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-api-for-fhir"></a>适用于 FHIR 的 Azure API 的 azure 策略法规遵从性控制
 

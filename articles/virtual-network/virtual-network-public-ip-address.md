@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: d52430c87d99f8837c78fcff89d8b214e45350ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 65883d34a6161a0bd0faf2a11a0ab528c7e12191
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98934937"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883951"
 ---
 # <a name="manage-public-ip-addresses"></a>管理公共 IP 地址
 
@@ -38,7 +38,7 @@ ms.locfileid: "98934937"
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用门户，请打开 https://portal.azure.com ，并使用 Azure 帐户登录。
-- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 登录或连接到 Azure 所用的帐户必须分配有[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或者分配有可执行[权限](#permissions)中列出的适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
@@ -83,17 +83,17 @@ ms.locfileid: "98934937"
    
 |操作|Azure 门户|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|查看 | 在公共 IP 的“概述”部分中 |使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 来检索公共 IP 地址对象并查看其设置| 使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) 来显示设置|
-|列出 | 在“公共 IP 地址”类别下 |使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 来检索一个或多个公共 IP 地址对象并查看其设置|使用 [az network public-ip list](/cli/azure/network/public-ip#az-network-public-ip-list) 来列出公共 IP 地址|
-|修改 | 对于取消关联的 IP，请选择“配置”来修改空闲超时、DNS 名称标签，或将基本 IP 的分配方式从静态更改为动态  |使用 [Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) 来更新设置 |使用 [az network public-ip update](/cli/azure/network/public-ip#az-network-public-ip-update) 进行更新 |
+|查看 | 在公共 IP 的“概述”部分中 |使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 来检索公共 IP 地址对象并查看其设置| 使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) 来显示设置|
+|列出 | 在“公共 IP 地址”类别下 |使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 来检索一个或多个公共 IP 地址对象并查看其设置|使用 [az network public-ip list](/cli/azure/network/public-ip#az_network_public_ip_list) 来列出公共 IP 地址|
+|修改 | 对于取消关联的 IP，请选择“配置”来修改空闲超时、DNS 名称标签，或将基本 IP 的分配方式从静态更改为动态  |使用 [Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) 来更新设置 |使用 [az network public-ip update](/cli/azure/network/public-ip#az_network_public_ip_update) 进行更新 |
 
    - **删除**：若要删除公共 IP，需要该公共 IP 对象不与任何 IP 配置或虚拟机 NIC 关联。 有关详细信息，请参阅下表。
 
 |资源|Azure 门户|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|[虚拟机](./remove-public-ip-address-vm.md)|选择“取消关联”，以将该 IP 地址与 NIC 配置取消关联，然后选择“删除” 。|使用 [Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) 来将该 IP 地址与 NIC 配置取消关联；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除|使用 [az network public-ip update --remove](/cli/azure/network/public-ip#az-network-public-ip-update) 来将该 IP 地址与 NIC 配置取消关联；使用 [az network public-ip delete](/cli/azure/network/public-ip#az-network-public-ip-delete) 来删除 |
+|[虚拟机](./remove-public-ip-address-vm.md)|选择“取消关联”，以将该 IP 地址与 NIC 配置取消关联，然后选择“删除” 。|使用 [Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) 来将该 IP 地址与 NIC 配置取消关联；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除|使用 [az network public-ip update --remove](/cli/azure/network/public-ip#az_network_public_ip_update) 来将该 IP 地址与 NIC 配置取消关联；使用 [az network public-ip delete](/cli/azure/network/public-ip#az_network_public_ip_delete) 来删除 |
 |负载均衡器前端 | 导航到未使用的公共 IP 地址并选择“关联”，然后选择具有相关的前端 IP 配置的负载均衡器来替换该地址（然后可使用与用于 VM 的同一方法来删除旧 IP）  | 使用 [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) 将新的前端 IP 配置关联到公共负载均衡器；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除；也可以使用 [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) 来删除前端 IP 配置（如果有多个） |使用 [az network lb frontend-ip update](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_update) 将新的前端 IP 配置关联到公共负载均衡器；使用 [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) 来删除，也可以使用 [az network lb frontend-ip delete](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_delete) 来删除前端 IP 配置（如果有多个）|
-|防火墙|空值| 使用 [Deallocate()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) 来解除分配防火墙并删除所有 IP 配置 | 使用 [az network firewall ip-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) 来删除 IP（但必须先使用 PowerShell 来解除分配）|
+|防火墙|空值| 使用 [Deallocate()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) 来解除分配防火墙并删除所有 IP 配置 | 使用 [az network firewall ip-config delete](/cli/azure/network/firewall/ip-config#az_network_firewall_ip_config_delete) 来删除 IP（但必须先使用 PowerShell 来解除分配）|
 
 ## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 
@@ -112,6 +112,8 @@ ms.locfileid: "98934937"
 - [应用程序网关](../application-gateway/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [使用 VPN 网关的站点到站点连接](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [虚拟机规模集](../virtual-machine-scale-sets/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="permissions"></a>权限
 
