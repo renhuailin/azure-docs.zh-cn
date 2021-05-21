@@ -29,21 +29,21 @@ ms.locfileid: "93241746"
 
 2. 选择“数据库”   >   “Azure Database for MySQL”。 还可以在搜索框中输入“MySQL”  以查找该服务。
 
-   :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="Azure Database for MySQL 选项&quot;:::
+   :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="Azure Database for MySQL 选项":::
 
 3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** " 复选框，以设置参数。
 
-    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-selected.png" alt-text="Azure Database for MySQL 选项&quot;:::
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-selected.png" alt-text="Azure Database for MySQL 选项":::
 
 3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** ":::
 
 4. 选择“查看 + 创建”  以预配服务器。
 
-    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-summary.png" alt-text="Azure Database for MySQL 选项&quot;:::
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-summary.png" alt-text="Azure Database for MySQL 选项":::
 
 3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** " 边栏选项卡中的状态来验证基础结构双加密。
 
-    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-validation.png" alt-text="Azure Database for MySQL 选项&quot;:::
+    :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-validation.png" alt-text="Azure Database for MySQL 选项":::
 
 3. 提供服务器的基本信息。 选择 &quot; **其他设置** &quot;，并启用 &quot; **基础结构双加密** ":::
 
