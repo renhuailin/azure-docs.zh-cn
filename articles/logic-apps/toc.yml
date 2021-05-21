@@ -66,11 +66,19 @@
     - name: 单租户 Azure 逻辑应用（预览）
       items:
         - name: 单租户概述（预览）
-          href: logic-apps-overview-preview.md
-        - name: 创建预览版逻辑应用 - 门户
-          href: create-stateful-stateless-workflows-azure-portal.md
-        - name: 创建预览版逻辑应用 - Visual Studio Code
-          href: create-stateful-stateless-workflows-visual-studio-code.md
+          href: single-tenant-overview-compare.md
+        - name: 创建单租户工作流 - 门户
+          href: create-single-tenant-workflows-azure-portal.md
+        - name: 创建单租户工作流 - Visual Studio Code
+          href: create-single-tenant-workflows-visual-studio-code.md
+        - name: 面向单租户的 DevOps 部署
+          href: devops-deployment-single-tenant-azure-logic-apps.md
+        - name: 设置面向单租户的 DevOps 部署
+          href: set-up-devops-deployment-single-tenant-azure-logic-apps.md
+        - name: 保护单租户工作流与虚拟网络之间的流量
+          href: secure-single-tenant-workflow-virtual-network-private-endpoint.md
+        - name: 估算单租户工作流的存储成本
+          href: estimate-storage-costs.md
     - name: 开发
       items:
         - name: 从预构建的模板创建
@@ -350,7 +358,7 @@
           href: test-logic-apps-mock-data-static-results.md
     - name: 部署
       items:
-        - name: 概述 - 自动执行逻辑应用部署
+        - name: 关于自动化部署（多租户）
           href: logic-apps-azure-resource-manager-templates-overview.md
         - name: 创建逻辑应用模板
           href: logic-apps-create-azure-resource-manager-templates.md

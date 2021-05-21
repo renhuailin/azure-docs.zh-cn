@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d68f83bd042af6612b91807f2adeed54d24bfe01
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bcacfc8cede0ab91241fd431aace10cbbfbea916
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101648606"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709678"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>将 Facebook 添加为外部标识的标识提供者
 
@@ -36,7 +36,7 @@ ms.locfileid: "101648606"
 
 > [!NOTE]  
 > 在下面的第 9 步和第 16 步中使用以下 URL。
-> - 对于“站点 URL”，输入应用程序的地址，例如 `https://contoso.com`。
+> - 对于“站点 URL”，输入应用程序地址，例如 `https://contoso.com`。
 > - 对于“有效 OAuth 重定向 URI”，输入“`https://login.microsoftonline.com/te/<tenant-id>/oauth2/authresp`”。 可以在“Azure Active Directory 概述”边栏选项卡中找到 `<tenant-ID>`。
 
 
@@ -82,7 +82,7 @@ ms.locfileid: "101648606"
    `New-AzureADMSIdentityProvider -Type Facebook -Name Facebook -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > 使用在 Facebook 开发者控制台中创建的应用客户端 ID 和客户端密码。 有关详细信息，请参阅 [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) 一文。 
+   > 使用在 Facebook 开发者控制台中创建的应用客户端 ID 和客户端密码。 有关详细信息，请参阅 [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview&preserve-view=true) 一文。 
 
 ## <a name="how-do-i-remove-facebook-federation"></a>如何删除 Facebook 联合身份验证？
 可以删除 Facebook 联合身份验证设置。 这样做的话，任何已经在用户流中使用 Facebook 帐户注册的用户都将无法再登录。 
@@ -103,7 +103,7 @@ ms.locfileid: "101648606"
     `Remove-AzureADMSIdentityProvider -Id Facebook-OAUTH`
 
    > [!NOTE]
-   > 有关详细信息，请参阅 [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview)。 
+   > 有关详细信息，请参阅 [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview&preserve-view=true)。 
 
 ## <a name="next-steps"></a>后续步骤
 

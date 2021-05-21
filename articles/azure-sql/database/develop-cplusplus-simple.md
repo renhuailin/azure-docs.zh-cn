@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
-ms.translationtype: MT
+ms.openlocfilehash: 0460317a47a1cf01707990b6f92532d4ade01439
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674770"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643285"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>使用 C 和 C++ 连接到 SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "92674770"
 
 * 有效的 Azure 帐户。 如果没有，可以注册 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * [Visual Studio](https://www.visualstudio.com/downloads/)。 必须安装 C++ 语言组件才能生成和运行此示例。
-* [Visual Studio Linux 开发](/cpp/linux/?view=vs-2019)。 如果基于 Linux 开发，还必须安装 Visual Studio Linux 扩展。
+* [Visual Studio Linux 开发](/cpp/linux/)。 如果基于 Linux 开发，还必须安装 Visual Studio Linux 扩展。
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL 数据库和虚拟机上的 SQL Server
 
@@ -43,7 +43,7 @@ Azure 目前有两个选项可用于托管 SQL Server 工作负载：Azure SQL �
 
 ## <a name="step-1--creating-your-azure-sql-database"></a><a id="Create"></a>步骤 1：创建 Azure SQL 数据库
 
-请参阅[入门页](single-database-create-quickstart.md)，以了解如何创建示例数据库。  或者，你可以遵循这 [一短两分钟的视频](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) ，通过 Azure 门户创建 Azure SQL 数据库。
+请参阅[入门页](single-database-create-quickstart.md)，以了解如何创建示例数据库。  或者，可以遵循此[两分钟短视频](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/)使用 Azure 门户创建 Azure SQL 数据库。
 
 ## <a name="step-2--get-connection-string"></a><a id="ConnectionString"></a>步骤 2：获取连接字符串
 
@@ -147,5 +147,5 @@ Azure 目前有两个选项可用于托管 SQL Server 工作负载：Azure SQL �
 
 ## <a name="additional-resources"></a>其他资源
 
-* [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)
+* [包含 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)
 * 浏览所有 [SQL 数据库的功能](https://azure.microsoft.com/services/sql-database/)。

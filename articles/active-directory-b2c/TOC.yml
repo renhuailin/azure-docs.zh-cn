@@ -274,12 +274,26 @@
           href: configure-tokens.md
     - name: 定义自定义属性
       href: user-flow-custom-attributes.md
-    - name: 基于风险的身份验证
+    - name: 安全和威胁管理
       items:
         - name: 通过标识保护调查风险
           href: identity-protection-investigate-risk.md
         - name: 配置条件访问
           href: conditional-access-user-flow.md
+        - name: 缓解凭据攻击
+          displayName: 'smart lockout, account lockout, password attack'
+          href: threat-management.md
+        - name: 欺诈防护合作伙伴
+          items:
+            - name: Arkose Labs
+              href: partner-arkose-labs.md
+              displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection'
+            - name: BioCatch
+              href: partner-biocatch.md
+              displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection, user behavior'
+            - name: Microsoft Dynamics 365 反欺诈
+              href: partner-dynamics-365-fraud-protection.md
+              displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
     - name: 配置年龄限制
       href: age-gating.md
     - name: API 连接器
@@ -322,17 +336,6 @@
           href: partner-lexisnexis.md
         - name: Onfido
           href: partner-onfido.md
-    - name: 欺诈防护合作伙伴
-      items:
-        - name: Arkose Labs
-          href: partner-arkose-labs.md
-          displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection'
-        - name: BioCatch
-          href: partner-biocatch.md
-          displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection, user behavior'
-        - name: Microsoft Dynamics 365 反欺诈
-          href: partner-dynamics-365-fraud-protection.md
-          displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
     - name: 保护对旧应用和本地应用的访问
       items:
         - name: Ping 标识
@@ -417,7 +420,7 @@
             - name: ClaimsTransformations
               href: claimstransformations.md
               items:
-                - name: 布尔
+                - name: Boolean
                   href: boolean-transformations.md
                 - name: Date
                   href: date-transformations.md
@@ -538,8 +541,6 @@
           href: ../active-directory/fundamentals/resilience-b2c-developer-best-practices.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
         - name: 监视和分析
           href: ../active-directory/fundamentals/resilience-with-monitoring-alerting.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
-    - name: 威胁管理
-      href: threat-management.md
       displayName: security
     - name: 用户流版本
       href: user-flow-versions.md
