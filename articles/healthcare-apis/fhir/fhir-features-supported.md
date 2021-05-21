@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: 92f6f5c449b5f47b0a9a59f432c130446b324091
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: b36937b61b5508dfc933ef15b316d1d1da7b7acc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783560"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078627"
 ---
 # <a name="features"></a>功能
 
@@ -88,8 +88,6 @@ FHIR 服务器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 
 * [**请求单位 (ru)**](../../cosmos-db/concepts-limits.md) -可在门户中为 FHIR 的 Azure API 配置最多10000个 ru。 至少需要 400 个 400 个 US 或 40 个 US/GB（以较大者为准）。 如果需要超过 10，000 个 US，可以放入支持票证来增加此数量。 可用最大值为 1，000，000。
 
-* **并发连接****和实例**- 默认情况下，群集中的两个实例上具有五个并发连接 (总共 10 个并发) 。 如果认为需要更多并发请求，请打开支持票证，并详细说明你的需求。
-
 * **捆绑大小** - 每个捆绑限制为 500 个项。
 
 * **数据大小** - 每个数据/文档必须略小于 2 MB。
@@ -107,9 +105,9 @@ FHIR 服务器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 | 400      | 5-10          |     10   |
 | 1,000    | 100-150       |      25  |
 | 10,000   | 225-400       |      250  |
-| 100,000  | 2500-4000   |      2,500  |
+| 100,000  | 2,500-4,000   |      2,500  |
 
-注意：根据 Cosmos DB 要求，每 GB 存储要求最小吞吐量为 40 RU/秒。 
+注意：Cosmos DB要求，每 GB 存储的最小吞吐量为 40 RU/s。 
 
 ## <a name="next-steps"></a>后续步骤
 

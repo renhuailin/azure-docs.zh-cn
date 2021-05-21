@@ -1,23 +1,23 @@
 ---
 title: Azure HDInsight 中的 Apache Ambari 目录警报
-description: 讨论和分析 HDInsight 中 Apache Ambari 目录警报的可能原因和解决方案。
+description: 讨论和分析 HDInsight 中导致 Apache Ambari 目录警报的可能原因和解决方法。
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 47d1f9797a44d7dc918677c21ffc7a124808525d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943287"
 ---
-# <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>方案：Azure HDInsight 中的 Apache Ambari 目录警报
+# <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>场景：Azure HDInsight 中的 Apache Ambari 目录警报
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 
-从 Apache Ambari 收到类似于以下内容的错误：
+收到来自 Apache Ambari 的错误，这些错误类似于：
 
 ```
 1/1 local-dirs have errors: [ /mnt/resource/hadoop/yarn/local : Cannot create directory: /mnt/resource/hadoop/yarn/local ]
@@ -47,7 +47,7 @@ ms.locfileid: "98943287"
     chgrp -R hadoop /mnt/resource/hadoop/yarn/log
     ```
 
-1. 从 Apache Ambari UI 禁用然后启用警报。
+1. 从 Apache Ambari UI 中禁用，然后启用警报。
 
 ## <a name="next-steps"></a>后续步骤
 

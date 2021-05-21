@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8f329b6377915a3df6e3f3e212cbd8d41f9ed80d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6a144f674f95317f425fd8ba2eb9dda730ed3e28
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90017654"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750124"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>如何使用分析功能来分析设备数据
-
-*本文适用于操作员、构建者和管理员。*
 
 Azure IoT Central 提供丰富的分析功能用于分析历史趋势以及关联设备中的各个遥测项。 若要开始，请访问左侧窗格中的“Analytics”。
 
@@ -57,9 +55,9 @@ Analytics 用户界面由三个主要组件构成：
     - 内部日期范围滑块工具：通过拖动两个端点控件来使用它们选择所需的时间跨度。 此内部日期范围内受外部日期范围滑块控件约束。
     
    
-    - 外部数据范围滑块控件：使用端点控件来选择外部日期范围，此范围可用于内部日期范围控件。
+    - 外部数据范围滑块控件：使用终结点控件选择可用于内部日期范围控件的外部日期范围。
 
-    - 增加和减少日期范围按钮：通过选择所需间隔对应的两个按钮之一来增加或减少时间跨度。
+    - 增加和减少日期范围按钮：通过选择任一按钮来增加或减少时间跨度，从而获得所需间隔。
 
     - 间隔大小滑块：使用它来放大和缩小同一时间跨度的间隔。 通过此操作可更精确地控制较大时间片段之间的移动。 可以使用该控件查看数据的高分辨率精细视图（精度可达毫秒）。 滑块的默认起点设置为所选数据的最佳视图，可平衡分辨率、查询速度和粒度。
     

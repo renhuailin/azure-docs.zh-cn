@@ -1,23 +1,23 @@
 ---
-title: 无法在 Azure HDInsight 中读取 Apache Yarn 日志
+title: 在 Azure HDInsight 中无法读取 Apache Yarn 日志
 description: 与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: 02a79de8aee169f5f702d5fae67194c62363e8c4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943052"
 ---
-# <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>方案：无法在 Azure HDInsight 中读取 Apache Yarn 日志
+# <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>场景：在 Azure HDInsight 中无法读取 Apache Yarn 日志
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 
-从存储帐户找到的 Apache Yarn 日志用户不可读。 文件分析程序无法工作，生成以下错误消息：
+从存储帐户找到的 Apache Yarn 日志无法人工读取。 文件分析程序不起作用，并产成以下错误消息：
 
 ```
 java.io.IOException: Not a valid BCFile.
@@ -25,17 +25,17 @@ java.io.IOException: Not a valid BCFile.
 
 ## <a name="cause"></a>原因
 
-Apache Yarn 日志聚合为文件分析程序不支持的 `IndexFile` 格式。
+Apache Yarn 日志被聚合为 `IndexFile` 格式，但文件分析程序不支持该格式。
 
 ## <a name="resolution"></a>解决方法
 
-1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
+1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中的 `CLUSTERNAME` 是群集的名称。
 
-1. 在 Ambari UI 中，导航到“YARN”   > “配置”   > “高级”   > “高级 yarn-site”  。
+1. 在 Ambari UI 中，导航到“YARN” > “配置” > “高级” > “高级 Yarn 站点”。   
 
-1. 对于 WASB 存储：`yarn.log-aggregation.file-formats` 的默认值为 `IndexedFormat,TFile`。 将该值更改为 `TFile`。
+1. 对于 WASB 存储：`yarn.log-aggregation.file-formats` 的默认值为 `IndexedFormat,TFile`。 将值更改为 `TFile`。
 
-1. 对于 ADLS 存储：`yarn.nodemanager.log-aggregation.compression-type` 的默认值为 `gz`。 将该值更改为 `none`。
+1. 对于 ADLS 存储：`yarn.nodemanager.log-aggregation.compression-type` 的默认值为 `gz`。 将值更改为 `none`。
 
 1. 保存更改并重启所有受影响的服务。
 

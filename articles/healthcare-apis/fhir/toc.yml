@@ -106,6 +106,8 @@
           href: export-data.md
         - name: 去标识化导出
           href: de-identified-export.md
+        - name: 将数据导出到 Synapse
+          href: export-to-synapse.md
     - name: 转换数据
       expanded: false
       items:

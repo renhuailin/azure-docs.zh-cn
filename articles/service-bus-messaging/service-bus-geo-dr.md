@@ -3,12 +3,12 @@ title: Azure 服务总线异地灾难恢复 | Microsoft 文档
 description: 如何使用地理区域进行故障转移并在 Azure 服务总线中执行灾难恢复
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 2aa7ed118d0ba179ffff4f72a4d4df787edc9d88
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3e8050cdaaae7e16a0f5125292df4b89b3690ed3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933749"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102035388"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure 服务总线异地灾难恢复
 
@@ -67,7 +67,7 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 1. 在“启动配对”页上执行以下步骤：
     1. 选择现有的辅助命名空间，或在不同区域中创建一个。 在此示例中，现有命名空间用作辅助命名空间。  
     1. 对于“别名”，请输入异地灾难恢复配对的别名。 
-    1. 然后选择“创建”  。 
+    1. 然后选择“创建”。 
 
         :::image type="content" source="./media/service-bus-geo-dr/initiate-pairing-page.png" alt-text="选择辅助命名空间":::        
 1. 应会看到“服务总线异地灾难恢复别名”页，如下图所示。 此外，还可以通过在左侧菜单中选择“异地恢复”，从主命名空间页导航到“异地灾难恢复别名”页 。 
@@ -156,7 +156,7 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 4. 同步实体可能需要一些时间，每分钟大约 50-100 个实体。 订阅和规则也计为实体。
 
-## <a name="availability-zones"></a>可用性区域
+### <a name="availability-zones"></a>可用性区域
 
 服务总线高级 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在同一 Azure 区域内提供故障隔离位置。 服务总线管理消息存储的三个副本（1 个主副本和 2 个辅助副本）。 服务总线使所有这三个副本保持同步，以用于数据和管理操作。 如果主副本发生故障，则可将其中一个辅助副本提升为主副本，而不会产生故障时间。 如果应用程序发现服务总线有暂时性中断，则 SDK 中的重试逻辑将自动重新连接到服务总线。 
 

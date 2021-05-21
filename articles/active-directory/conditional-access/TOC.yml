@@ -25,7 +25,7 @@
           href: concept-conditional-access-users-groups.md
         - name: 云应用或操作
           href: concept-conditional-access-cloud-apps.md
-        - name: Conditions
+        - name: 条件
           href: concept-conditional-access-conditions.md
     - name: 访问控制
       items:
@@ -39,6 +39,8 @@
       href: service-dependencies.md
     - name: 位置条件
       href: location-condition.md
+    - name: 设备筛选器
+      href: concept-condition-filters-for-devices.md
     - name: 假设分析工具
       href: what-if-tool.md
     - name: 连续访问评估
@@ -92,13 +94,13 @@
       href: terms-of-use.md
     - name: 登录频率和浏览器持久性控制
       href: howto-conditional-access-session-lifetime.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 排查登录问题
           href: troubleshoot-conditional-access.md
         - name: 使用 What If 工具排查问题
           href: troubleshoot-conditional-access-what-if.md
-        - name: 常见问题解答
+        - name: 常见问题
           href: faqs.md
     - name: 迁移经典策略
       href: policy-migration-mfa.md

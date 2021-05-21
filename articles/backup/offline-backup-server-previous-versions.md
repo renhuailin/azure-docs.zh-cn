@@ -1,13 +1,13 @@
 ---
-title: 脱机备份 Data Protection Manager (DPM) 和 Microsoft Azure 备份 Server (MABS) -早期版本
+title: Data Protection Manager (DPM) 和 Microsoft Azure 备份服务器 (MABS) 的脱机备份 - 早期版本
 description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网外发送数据。 本文介绍了早期版本的 DPM 和 Azure 备份服务器的脱机备份工作流。
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 0405ab66b7714f00349419e94bb064267ca711a6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98702179"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 和 Azure 备份服务器（早期版本）的脱机备份工作流
@@ -37,7 +37,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../import
 
 ## <a name="supported-configurations"></a>支持的配置
 
-将数据备份到 Microsoft 云的 Azure 备份的所有部署模型都支持脱机备份。 这些模型包括：
+将数据从本地备份到 Microsoft 云的 Azure 备份的所有部署模型都支持脱机备份。 这些模型包括：
 
 > [!div class="checklist"]
 >
@@ -107,7 +107,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../import
 
 1. 选择应用程序。 在左侧窗格中的“管理”下，转到“证书和机密”。 
 1. 检查现有的证书或公钥。 如果没有证书或公钥，可以选择应用程序“概述”页上的“删除”按钮安全删除该应用程序。  然后，可以重试[为脱机备份准备服务器](#prepare-the-server-for-the-offline-backup-process)过程中的步骤，并跳过后面的步骤。 否则，请在要配置脱机备份的 DPM 实例或 Azure 备份服务器服务器中继续执行以下步骤。
-1. 从 " **开始** " – " **运行**"，键入 *certlm.msc*。 在 "**证书-本地计算机**" 窗口中，选择 "**证书–本地计算机**  >  **个人**" 选项卡。查找名称为的证书 `CB_AzureADCertforOfflineSeeding_<ResourceId>` 。
+1. 从“开始”–“运行”，键入“Certlm.msc”。 在“证书 - 本地计算机”窗口中，选择“证书 - 本地计算机” > “个人”选项卡 。按名称 `CB_AzureADCertforOfflineSeeding_<ResourceId>` 查找输入证书。
 1. 选择该证书，右键单击“所有任务”并选择“导出”，以导出 .cer 格式的不包含私钥的证书。 
 1. 在 Azure 门户中转到 Azure 脱机备份应用程序。
 1. 选择“管理” > “证书和机密” > “上传证书”。   上传在上一步骤中导出的证书。

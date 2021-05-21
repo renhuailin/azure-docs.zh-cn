@@ -5,15 +5,15 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/16/2019
 ms.openlocfilehash: c0a7bc7629b5c2a2e458ba94d62e341f578fdd25
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946390"
 ---
-# <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>方案：BindException - 地址已在 Azure HDInsight 中使用
+# <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>场景：BindException - 地址已在 Azure HDInsight 中使用
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 
@@ -43,7 +43,7 @@ Caused by: java.net.BindException: Address already in use
 
 ## <a name="resolution"></a>解决方法
 
-在发起重启之前，减少 HBase 区域服务器上的负载。 另外，最好是先刷新所有表。 有关如何刷新表的参考信息，请参阅 [HDInsight HBase：如何通过刷新表改进 Apache HBase 群集重启时间](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)。
+在发起重启之前，减少 HBase 区域服务器上的负载。 另外，最好是先刷新所有表。 有关如何刷新表的参考信息，请参阅 [HDInsight HBase：如何通过刷新表来改善 Apache HBase 群集重启时间](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)。
 
 或者，尝试使用以下命令，手动重启工作器节点上的区域服务器：
 

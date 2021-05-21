@@ -9,26 +9,36 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9ec1e59a5599ca2e95578eacc1484932956ebf16
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: 62035b2fe6c3db71e392a05946ea3f230dfa030e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204008"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604608"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>如何启用 Key Vault 日志记录
 
 在创建一个或多个 Key Vault 之后，可能需要监视 Key Vault 的访问方式、时间和访问者。 有关该功能的完整详细信息，请参阅 [Key Vault 日志记录](logging.md)。
+
+记录的内容：
+
+* 所有已经过身份验证的 REST API 请求，包括由于访问权限、系统错误或错误请求而发生的失败请求。
+* 对 Key Vault 本身执行的操作，包括创建、删除、设置 Key Vault 访问策略，以及更新 Key Vault 属性（例如标记）。
+* 对 Key Vault 中的密钥和机密执行的操作，包括：
+  * 创建、修改或删除这些密钥或机密。
+  * 签名、验证、加密、解密、包装和解包密钥、获取机密、列出密钥和机密（及其版本）。
+* 导致出现 401 响应的未经身份验证的请求。 例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。  
+* 即将过期、已过期和保管库访问策略已更改的事件网格通知事件（不记录新版本事件）。 无论是否在密钥保管库上创建了事件订阅，都会记录事件。 有关详细信息，请参阅 [Key Vault 的事件网格事件架构](../../event-grid/event-schema-key-vault.md)
 
 ## <a name="prerequisites"></a>先决条件
 
 要完成本教程，必须满足下列要求：
 
 * 正在使用的现有密钥保管库。  
-* [Azure Cloud Shell](https://shell.azure.com) Bash 环境
+* [Azure Cloud Shell](https://shell.azure.com) - Bash 环境
 * 足够的 Azure 存储用于保存密钥保管库日志。
 
-此指南命令的格式设置为使用 Bash 作为环境 [Cloud Shell](https://shell.azure.com) 。
+该指导命令针对 [Cloud Shell](https://shell.azure.com) 设置了格式，并将 Bash 用作环境。
 
 ## <a name="connect-to-your-key-vault-subscription"></a>连接到 Key Vault 订阅
 
@@ -42,7 +52,7 @@ az account list
 az account set --subscription "<subscriptionID>"
 ```
 
-在 Azure PowerShell 中，可以先使用 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?view=azps-4.7.0) cmdlet 列出订阅，然后使用 [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-4.7.0) cmdlet 连接一个订阅： 
+在 Azure PowerShell 中，可以先使用 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) cmdlet 列出订阅，然后使用 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) cmdlet 连接一个订阅： 
 
 ```powershell-interactive
 Get-AzSubscription
@@ -58,19 +68,19 @@ Set-AzContext -SubscriptionId "<subscriptionID>"
 
 我们还需要提供存储帐户名称。 存储帐户名称必须唯一的，长度介于 3 到 24 个字符，只能使用数字和小写字母。  最后，我们将创建“Standard_LRS”SKU 的存储帐户。
 
-在 Azure CLI 中，使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令。
+在 Azure CLI 中，使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令。 
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
 ```
 
-在 Azure PowerShell 中使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount?view=azps-4.7.0) cmdlet。 你将需要提供与资源组相对应的位置。
+在 Azure PowerShell 中使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet。 你将需要提供与资源组相对应的位置。
 
 ```powershell
  New-AzStorageAccount -ResourceGroupName myResourceGroup -Name "<your-unique-storage-account-name>" -Type "Standard_LRS" -Location "eastus"
 ```
 
-无论哪种情况，请注意存储帐户的“id”。 Azure CLI 操作在输出中返回“id”。 若要使用 Azure PowerShell 获取“id”，请使用 [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-4.7.0)，然后将输出分配给变量 $sa。 然后，你可以看到具有 $sa.id 的存储帐户。（下文中还将使用“$sa.Context”属性。）
+无论哪种情况，请注意存储帐户的“id”。 Azure CLI 操作在输出中返回“id”。 若要使用 Azure PowerShell 获取“id”，请使用 [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount)，然后将输出分配给变量 $sa。 然后，你可以看到具有 $sa.id 的存储帐户。（下文中还将使用“$sa.Context”属性。）
 
 ```powershell-interactive
 $sa = Get-AzStorageAccount -Name "<your-unique-storage-account-name>" -ResourceGroup "myResourceGroup"
@@ -84,7 +94,7 @@ $sa.id
 
 ## <a name="obtain-your-key-vault-resource-id"></a>获取密钥保管库资源 ID
 
-在 [CLI 快速入门](quick-create-cli.md)和 [PowerShell 快速入门](quick-create-powershell.md)中，你创建了具有唯一名称的密钥。  在以下步骤中再次使用该名称。  如果忘记密钥保管库的名称，可以使用 Azure CLI [az keyvault list](/cli/azure/keyvault#az_keyvault_list) 命令或 Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) cmdlet 将其列出。
+在 [CLI 快速入门](quick-create-cli.md)和 [PowerShell 快速入门](quick-create-powershell.md)中，你创建了具有唯一名称的密钥。  在以下步骤中再次使用该名称。  如果忘记密钥保管库的名称，可以使用 Azure CLI [az keyvault list](/cli/azure/keyvault#az_keyvault_list) 命令或 Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault) cmdlet 将其列出。
 
 使用密钥保管库的名称查找其资源 ID。  在 Azure CLI 中，使用 [az keyvault show](/cli/azure/keyvault#az_keyvault_show) 命令。
 
@@ -92,7 +102,7 @@ $sa.id
 az keyvault show --name "<your-unique-keyvault-name>"
 ```
 
-在 Azure PowerShell 中，使用 [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) cmdlet。
+在 Azure PowerShell 中，使用 [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault) cmdlet。
 
 ```powershell-interactive
 Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
@@ -100,15 +110,31 @@ Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
 
 密钥保管库的资源 ID 将采用如下格式："/subscriptions/<your-subscription-ID>/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/<your-unique-keyvault-name>"。 在下一步骤中请注意这一点。
 
-## <a name="enable-logging-using-azure-powershell"></a>使用 Azure PowerShell 启用日志记录
+## <a name="enable-logging"></a>启用日志记录
 
-为启用 Key Vault 日志记录，我们将使用 Azure CLI [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings) 命令或 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) cmdlet，以及存储帐户 ID 和密钥保管库资源 ID。
+可以使用 Azure CLI、Azure PowerShell 或 Azure 门户为密钥保管库启用日志记录。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="azure-cli"></a>Azure CLI
+
+结合存储帐户 ID 和密钥保管库资源 ID 使用 Azure CLI [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings) 命令。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-在 Azure PowerShell 中，我们将使用 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) cmdlet，并将 -Enabled 标志设为 $true，将类别设为 `AuditEvent`（Key Vault 日志记录的唯一类别） ：
+可以根据需要为日志设置保留策略，确保在指定时间后自动删除较旧的日志。 例如，可以将保留策略设置为自动删除超过 90 天的日志。
+
+通过 Azure CLI，使用 [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) 命令。 
+
+```azurecli-interactive
+az monitor diagnostic-settings update --name "Key vault retention policy" --resource "<key-vault-resource-id>" --set retentionPolicy.days=90
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+使用 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet，并将 -Enabled 标志设为 $true，将类别设为 `AuditEvent`（密钥保管库日志记录的唯一类别）： 
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
@@ -116,28 +142,35 @@ Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId 
 
 可以根据需要为日志设置保留策略，确保在指定时间后自动删除较旧的日志。 例如，可以将保留策略设置为自动删除超过 90 天的日志。
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
-
-```azurecli-interactive
-az monitor diagnostic-settings update 
-```
--->
-
-在 Azure PowerShell 中，使用 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) cmdlet。 
+在 Azure PowerShell 中，使用 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet。
 
 ```powershell-interactive
 Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
-记录的内容：
+# <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
-* 所有已经过身份验证的 REST API 请求，包括由于访问权限、系统错误或错误请求而发生的失败请求。
-* 对 Key Vault 本身执行的操作，包括创建、删除、设置 Key Vault 访问策略，以及更新 Key Vault 属性（例如标记）。
-* 对 Key Vault 中的密钥和机密执行的操作，包括：
-  * 创建、修改或删除这些密钥或机密。
-  * 签名、验证、加密、解密、包装和解包密钥、获取机密、列出密钥和机密（及其版本）。
-* 导致出现 401 响应的未经身份验证的请求。 例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。  
-* 即将过期、已过期和保管库访问策略已更改的事件网格通知事件（不记录新版本事件）。 无论是否在密钥保管库上创建了事件订阅，都会记录事件。 有关详细信息，请参阅 [Key Vault 的事件网格事件架构](../../event-grid/event-schema-key-vault.md)
+若要在门户中配置诊断设置，请执行以下步骤。
+
+1. 从“资源”边栏选项卡菜单中选择“诊断设置”。
+
+    :::image type="content" source="../media/diagnostics-portal-1.png" alt-text="诊断门户 1":::
+
+1. 单击“+ 添加诊断设置”
+
+    :::image type="content" source="../media/diagnostics-portal-2.png" alt-text="诊断门户 2":::
+ 
+1. 为你的诊断设置选择一个名称。 若要为密钥保管库配置 Azure Monitor 日志记录，请选择“AuditEvent”选项和“发送到 Log Analytics 工作区”。 然后选择要将日志发送到的订阅和 Log Analytics 工作区。
+
+    :::image type="content" source="../media/diagnostics-portal-3.png" alt-text="诊断门户 3":::
+
+    否则，请选择与你要选择的日志相关的选项
+
+1. 选择所需选项后，选择“保存”。
+
+    :::image type="content" source="../media/diagnostics-portal-4.png" alt-text="诊断门户 4":::
+
+---
 
 ## <a name="access-your-logs"></a>访问日志
 
@@ -149,7 +182,7 @@ Key Vault 日志存储在提供的存储帐户的“insights-logs-auditevent”�
 az storage blob list --account-name "<your-unique-storage-account-name>" --container-name "insights-logs-auditevent"
 ```
 
-在 Azure PowerShell 中，使用 [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) 列出此容器中的所有 Blob，然后输入：
+在 Azure PowerShell 中，使用 [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob) 列出此容器中的所有 Blob，然后输入：
 
 ```powershell
 Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
@@ -165,7 +198,7 @@ Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
 az storage blob download --container-name "insights-logs-auditevent" --file <path-to-file> --name "<blob-name>" --account-name "<your-unique-storage-account-name>"
 ```
 
-在 Azure PowerShell 中，使用 [Gt-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) cmdlet 获取 Blob 列表，然后将其通过管道传输到 [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent?view=azps-4.7.0) cmdlet，以将日志下载到所选路径。
+在 Azure PowerShell 中，使用 [Gt-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob) cmdlet 获取 Blob 列表，然后将其通过管道传输到 [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent) cmdlet，以将日志下载到所选路径。
 
 ```powershell-interactive
 $blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c6ec162ceb51c3bf19be42219b054d8371ff221
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98247346"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步解决密码哈希同步问题
@@ -296,7 +296,7 @@ ms.locfileid: "98247346"
 9. 在列表中，输入应由 Connect 用于密码同步的域控制器。同一列表也用于导入和导出。 对所有域执行这些步骤。
 
 > [!NOTE]
-> 若要应用这些更改，请重新启动 **Microsoft Azure AD 同步** (ADSync) 服务。
+> 若要应用这些更改，请重启 Microsoft Azure AD Sync (ADSync) 服务。
 
 10. 如果脚本显示没有检测信号，请运行 [触发所有密码的完全同步](#trigger-a-full-sync-of-all-passwords) 中的脚本。
 

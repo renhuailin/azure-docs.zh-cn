@@ -6,27 +6,27 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 66faa2b3e6d24c264e2fe26ab42eeaffd48384f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 08c66fe33da78d9b07931c37653b07ba07b22746
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732830"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813787"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密
 
-默认情况下，Azure PostgreSQL 利用 [Azure 存储加密](../storage/common/storage-service-encryption.md)通过 Microsoft 管理的密钥来加密静态数据。 对于 Azure PostgreSQL 用户，这与其他数据库（例如 SQL Server）中的透明数据加密 (TDE) 非常相似。 许多组织要求使用客户管理的密钥来完全控制对数据的访问权限。 通过使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密，让你能够创建自己的密钥 (BYOK) 来保护静态数据。 通过它，组织还可在管理密钥和数据时实现职责分离。 通过客户托管的加密，密钥的生命周期、密钥使用权限以及对密钥操作的审核都由你负责和完全控制。
+Azure PostgreSQL 利用 [Azure 存储加密](../storage/common/storage-service-encryption.md)通过 Microsoft 管理的密钥来默认加密静态数据。 对于 Azure PostgreSQL 用户，这与其他数据库（例如 SQL Server）中的透明数据加密 (TDE) 非常类似。 许多组织需要使用客户管理的密钥完全控制对数据的访问。 通过使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密，让你能够创建自己的密钥 (BYOK) 来保护静态数据。 通过它，组织还可在管理密钥和数据时实现职责分离。 通过客户托管的加密，密钥的生命周期、密钥使用权限以及对密钥操作的审核都由你负责和完全控制。
 
-在服务器级别使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密。 客户管理的密钥被称为密钥加密密钥 (KEK)，它在给定的服务器中用于对该服务使用的数据加密密钥 (DEK) 进行加密。 KEK 是一种非对称密钥，它存储在客户自有和客户管理的 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 实例中。 本文稍后将更详细地描述密钥加密密钥 (KEK) 和数据加密密钥 (DEK)。
+在服务器级别使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密。 客户管理的密钥被称为密钥加密密钥 (KEK)，它在给定的服务器中用于对该服务使用的数据加密密钥 (DEK) 进行加密。 KEK 是一种非对称密钥，它存储在客户自有和客户管理的 [Azure Key Vault](../key-vault/general/security-features.md) 实例中。 本文稍后将更详细地描述密钥加密密钥 (KEK) 和数据加密密钥 (DEK)。
 
 Key Vault 是一种基于云的外部密钥管理系统。 它具有高可用性，并为 RSA 加密密钥提供可扩展的安全存储，根据需要由 FIPS 140-2 级别 2 验证的硬件安全模块 (HSM) 提供支持。 它不允许直接访问存储的密钥，而是为已获授权的实体提供加密和解密服务。 Key Vault 可生成密钥并将其导入，或者[从本地 HSM 设备传输密钥](../key-vault/keys/hsm-protected-keys.md)。
 
 > [!NOTE]
 > 此功能适用于所有 Azure 区域，其中 Azure Database for PostgreSQL 单一服务器支持“常规用途”和“内存优化”定价层。 有关其他限制，请参阅[限制](concepts-data-encryption-postgresql.md#limitations)部分。
 
-## <a name="benefits"></a>好处
+## <a name="benefits"></a>优点
 
-使用客户管理的密钥为 Azure Database for PostgreSQL 单一服务器进行数据加密具有以下优势：
+使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密提供以下优势：
 
 * 数据访问完全由你控制，你可删除密钥并使数据库无法访问 
 *    可完全控制密钥生命周期，包括根据公司策略轮替密钥
@@ -60,9 +60,9 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 下面是 Key Vault 的配置要求：
 
 * Key Vault 和 Azure Database for PostgreSQL 单一服务器必须属于同一个 Azure Active Directory (Azure AD) 租户。 不支持跨租户的 Key Vault 和服务器交互。 之后若要移动 Key Vault 资源，需要重新配置数据加密。
-* 密钥保管库的“已删除保管库的保留天数”必须设置为 90 天。 如果现有的密钥保管库配置为了较小的数字，则需要创建一个新的密钥保管库，因为创建后无法对其进行修改。
+* 必须将“已删除保管库的保留天数”设为 90 天来设置密钥保管库。 如果已将现有的密钥保管库配置为较小的数字，则需要创建新的密钥保管库，因为在创建后不能对其进行修改。
 * 启用 Key Vault 上的软删除功能，防止在意外删除密钥（或 Key Vault）时丢失数据。 被软删除的资源将保留 90 天，除非用户在此期间恢复或清除它们。 “恢复”和“清除”操作均自带与 Key Vault 访问策略关联的权限。 软删除功能默认关闭，但你可通过 PowerShell 或 Azure CLI 启用它（请注意，无法通过 Azure 门户启用）。 
-* 启用清除保护以对已删除的保管库和保管库对象执行强制保留期
+* 启用清除保护对已删除的保管库和保管库对象执行强制保留期
 * 通过唯一托管标识，使用 get、wrapKey 和 unwrapKey 权限授权 Azure Database for PostgreSQL 单一服务器访问 Key Vault。 在 Azure 门户中，当 PostgreSQL 单一服务器上启用数据加密时，将自动创建唯一“服务”标识。 有关使用 Azure 门户时的详细分步说明，请参阅[通过 Azure 门户对 Azure Database for PostgreSQL 单一服务器进行数据加密](howto-data-encryption-portal.md)。
 
 下面是客户管理的密钥的配置要求：
@@ -70,7 +70,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * 用于加密 DEK 的客户管理的密钥只能是非对称的 RSA 2048。
 * 密钥激活日期（如果已设置）必须是过去的日期和时间。 到期日期（若已设置）必须是将来的日期和时间。
 * 密钥必须处于“已启用”状态。
-* 要[将现有密钥导入](/rest/api/keyvault/ImportKey/ImportKey)密钥保管库，请确保以受支持的文件格式（`.pfx`、`.byok`、`.backup`）提供该密钥。
+* 若要[导入现有密钥](/rest/api/keyvault/ImportKey/ImportKey)到密钥保管库，请确保以受支持的文件格式（`.pfx`、`.byok`、`.backup`）提供该密钥。
 
 ## <a name="recommendations"></a>建议
 
@@ -97,7 +97,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * 如果为 Azure Database for PostgreSQL 单一服务器创建只读副本，而该服务器启用了数据加密，则副本服务器将处于“无法访问”状态。 可通过 [Azure 门户](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers)或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 修复服务器状态。
 * 如果删除 KeyVault，Azure Database for PostgreSQL 单一服务器将无法访问密钥，并将转为“无法访问”状态。 请恢复 [Key Vault](../key-vault/general/key-vault-recovery.md) 并重新验证数据加密，使服务器的状态变为“可用”。
 * 如果从 KeyVault 中删除密钥，Azure Database for PostgreSQL 单一服务器将无法访问密钥，并将转为“无法访问”状态。 请恢复[密钥](../key-vault/general/key-vault-recovery.md)并重新验证数据加密，使服务器的状态变为“可用”。
-* 如果 Azure KeyVault 中存储的密钥过期，则该密钥将失效，且 Azure Database for PostgreSQL 单一服务器将变为“无法访问”状态。 请使用 [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) 将密钥到期日期延后，然后重新验证数据加密，使服务器的状态变为“可用”。
+* 如果 Azure KeyVault 中存储的密钥过期，则该密钥将失效，且 Azure Database for PostgreSQL 单一服务器将变为“无法访问”状态。 请使用 [CLI](/cli/azure/keyvault/key#az_keyvault_key_set_attributes) 将密钥到期日期延后，然后重新验证数据加密，使服务器的状态变为“可用”。
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>从 Key Vault 意外撤消密钥访问
 
@@ -125,20 +125,20 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 
 为避免在还原或只读副本创建期间设置客户管理的数据加密时出现问题，有必要在主服务器和还原/副本服务器上执行以下步骤：
 
-* 通过主 Azure Database for PostgreSQL 单一服务器启动还原或只读副本创建过程。
+* 通过主要 Azure Database for PostgreSQL 单一服务器启动还原或只读副本创建过程。
 * 使新创建的（还原/副本）服务器保持在无法访问的状态，因为其唯一标识尚无权访问 Key Vault。
 * 在还原/副本服务器上，重新验证数据加密设置中客户管理的密钥。 这可确保为新创建的服务器授予对 Key Vault 中存储的密钥进行包装和取消包装的权限。
 
 ## <a name="limitations"></a>限制
 
-对于 Azure Database for PostgreSQL，使用客户管理的密钥 (CMK) 对静态数据进行加密支持有少数限制 -
+对于 Azure Database for PostgreSQL，对使用客户管理的密钥 (CMK) 加密静态数据的支持有少数限制 -
 
-* 对此功能的支持仅限于“常规用途”和“内存优化”定价层 。
-* 此功能仅在支持高达 16 TB 的存储的区域和服务器上受支持。 有关支持存储最多 16TB 的 Azure 区域列表，请参阅[此处](concepts-pricing-tiers.md#storage)文档中的“存储”部分
+* 对此功能的支持仅限“常规用途”和“内存优化”定价层。
+* 此功能仅在支持高达 16 TB 的存储的区域和服务器上受支持。 有关支持存储最多 16 TB 的 Azure 区域的列表，请参阅[此处](concepts-pricing-tiers.md#storage)文档中的“存储”部分
 
     > [!NOTE]
-    > - 在上面列出的区域中创建的所有新 PostgreSQL 服务器都提供对使用客户管理的密钥进行加密的支持。 时间点还原 (PITR) 服务器或只读副本不符合条件，尽管其在理论上是“新的”。
-    > - 要验证预配的服务器是否支持最大 16TB，可以在门户中访问“定价层”边栏选项卡，并查看预配服务器支持的最大存储大小。 如果可以将滑块向上移动到 4TB，则服务器可能不支持通过客户管理的密钥进行加密。 但是，始终使用服务托管密钥对数据进行加密。 如果有任何疑问，请联系 AskAzureDBforPostgreSQL@service.microsoft.com。
+    > - 在上面列出的区域中创建的所有新 PostgreSQL 服务器都提供对使用客户管理器密钥进行加密的支持。 时间点还原 (PITR) 服务器或只读副本不符合条件，尽管其在理论上是“新的”。
+    > - 若要验证预配的服务器是否最多支持 16 TB，可以转到门户中的“定价层”边栏选项卡，并查看预配服务器支持的最大存储大小。 如果可以将滑块向上移动到 4 TB，则服务器可能不支持使用客户管理的密钥进行加密。 但是，始终使用服务托管密钥对数据进行加密。 如果有任何疑问，请联系 AskAzureDBforPostgreSQL@service.microsoft.com。
 
 * 仅支持使用 RSA 2048 加密密钥进行加密。
 

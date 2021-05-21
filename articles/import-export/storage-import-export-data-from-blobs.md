@@ -10,10 +10,10 @@ ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
 ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177506"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
@@ -28,7 +28,7 @@ ms.locfileid: "102177506"
 - 拥有可用于导入/导出服务的有效 Azure 订阅。
 - 拥有至少一个 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](../storage/common/storage-account-create.md)。
 - 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。
-- 具有 FedEx/DHL 帐户。 如果要使用 FedEx/DHL 以外的运营商，请联系 Azure Data Box 运营团队 `adbops@microsoft.com` 。
+- 具有 FedEx/DHL 帐户。 如果想使用 FedEx/DHL 以外的承运商，请通过 `adbops@microsoft.com` 与 Azure Data Box 运营团队联系。
   - 该帐户必须是有余额的有效帐户，且有退货功能。
   - 生成导出作业的跟踪号。
   - 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。
@@ -43,68 +43,68 @@ ms.locfileid: "102177506"
 在 Azure 门户中执行以下步骤来创建导出作业。
 
 1. 登录到 <https://portal.azure.com/> 。
-2. 搜索 **导入/导出作业**。
+2. 搜索“导入/导出作业”。
 
-    ![搜索导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
+    ![搜索“导入/导出作业”](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
 3. 选择“+ 新建”  。
 
-    ![选择 "+ 新建" 以创建新的 ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
+    ![选择“新建”以创建一个新作业 ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. 在“基本信息”中：
 
    1. 选择一个订阅。
-   1. 选择一个资源组，或选择 " **新建** " 并创建一个新的资源组。
+   1. 选择一个资源组，或选择“新建”，创建新资源组。
    1. 输入导入作业的描述性名称。 可使用此名称来跟踪作业进度。
        * 此名称只能包含小写字母、数字和连字符。
        * 此名称必须以字母开头，并且不得包含空格。
 
    1. 选择“从 Azure 导出”。
 
-    ![导出顺序的基本选项](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+    ![导出作业的基本选项](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
 
-    选择 " **下一步：作业详细信息" >** 继续。
+    选择“下一步: 作业详细信息 >”以继续。
 
 5. 在“作业详细信息”中：
 
    1. 选择数据当前所在的 Azure 区域。
-   1. 选择要从中导出数据的存储帐户。 使用靠近你所在位置的存储帐户。
+   1. 选择要从中导出数据的存储帐户。 请使用靠近你所在位置的存储帐户。
 
       放置位置根据选定存储帐户所属的区域自动进行填充。
 
-   1. 指定要从存储帐户导出到空驱动器或驱动器的 blob 数据。 选择以下三种方法之一。
+   1. 指定要从存储帐户导出到空驱动器的 Blob 数据。 选择以下三种方法之一。
 
       - 选择“全部导出”以导出存储帐户中的所有 blob 数据。
 
         ![全部导出](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
 
-      - 选择 **所选的容器和 blob**，并指定要导出的容器和 blob。 您可以使用多个选择方法。 选择 " **添加** " 选项将打开右侧的面板，可以在其中添加选择字符串。
+      - 选择“所选容器和 Blob”，并指定要导出的容器和 Blob。 可以使用多种选择方法。 选择“添加”选项会在右侧打开一个面板，可在其中添加选择字符串。
 
         |选项|说明|
         |------|-----------|      
-        |**添加容器**|导出容器中的所有 blob。<br>选择 " **添加容器**"，并输入每个容器名称。|
-        |**添加 blob**|指定要导出的各个 blob。<br>选择 " **添加 blob**"。 然后指定 blob 的相对路径，以容器名称开头。 使用 *$root* 指定根容器。<br>必须以有效格式提供 blob 路径，以免在处理过程中出现错误，如以下屏幕截图所示。 有关详细信息，请参阅[有效 blob 路径示例](#examples-of-valid-blob-paths)。|
-        |**添加前缀**|使用前缀在容器中选择一组具有相似名称的容器或类似名称的 blob。 前缀可以是容器名称的前缀、完整容器名称，或后跟 blob 名称前缀的完整容器名称。 |
+        |添加容器|导出容器中的所有 Blob。<br>选择“添加容器”并输入每个容器名称。|
+        |添加 Blob|指定要导出的各个 Blob。<br>选择“添加 Blob”。 然后指定 Blob 的相对路径，以容器名称开头。 使用 *$root* 指定根容器。<br>必须以有效格式提供 blob 路径，以免在处理过程中出现错误，如以下屏幕截图所示。 有关详细信息，请参阅[有效 blob 路径示例](#examples-of-valid-blob-paths)。|
+        |添加前缀|使用前缀在容器中选择一组具有相似名称的容器，或者容器中具有相似名称的 Blob。 该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。 |
 
         ![导出所选容器和 blob](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
 
-    - 选择 " **从 blob 列表文件导出" (xml 格式 ")**，然后选择一个 xml 文件，其中包含要从存储帐户导出的 blob 的路径和前缀列表。 必须构造 XML 文件并将其存储在存储帐户的容器中。 文件不能为空。
+    - 选择“从 Blob 列表文件导出(XML 格式)”并选择一个 XML 文件，其中包含要从存储帐户导出的 Blob 的路径和前缀列表。 必须构造该 XML 文件并将其存储在存储帐户的容器中。 该文件不能为空。
 
       > [!IMPORTANT]
-      > 如果使用 XML 文件选择要导出的 blob，请确保 XML 包含有效路径和/或前缀。 如果文件无效或没有任何数据与指定的路径相匹配，则该顺序将以部分数据终止或未导出任何数据。
+      > 如果使用 XML 文件选择要导出的 Blob，请确保 XML 包含有效的路径和/或前缀。 如果该文件无效或没有任何数据与指定的路径相匹配，则订单导出操作将会终止，此时只导出了一部分数据或者未导出任何数据。
 
-       若要查看如何将 XML 文件添加到容器，请参阅 [使用 XML 文件导出顺序](../databox/data-box-deploy-export-ordered.md#export-order-using-xml-file)。
+       若要查看如何将 XML 文件添加到容器，请参阅[使用 XML 文件导出订单](../databox/data-box-deploy-export-ordered.md#export-order-using-xml-file)。
 
       ![从 blob 列表文件导出](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
 
    > [!NOTE]
-   > 如果在数据复制过程中要导出的 blob 正在使用中，Azure 导入/导出服务会拍摄 blob 快照，并复制快照。
+   > 如果要导出的 Blob 正在数据复制的过程中使用，则 Azure 导入/导出服务将生成该 Blob 的快照并复制该快照。
 
-   选择 **下一步：送货 >** 继续。
+   选择“下一步: 寄送 >”以继续。
 
-6. **装运**：
+6. 在“寄送”中：
 
-    - 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系， `adbops@microsoft.com`  并提供有关计划使用的电信公司的信息。
+    - 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的承运商，请从下拉列表中选择现有的选项。 请通过 `adbops@microsoft.com` 与 Azure Data Box 运营团队联系，提供计划使用的承运商的信息。
     - 输入你已在该承运商那里创建的有效承运商帐户编号。 导出作业完成后，Microsoft 将使用此帐户寄回驱动器。
     - 提供完整且有效的联系人姓名、电话、电子邮件、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 
@@ -113,7 +113,7 @@ ms.locfileid: "102177506"
 
     选择“查看 + 创建”以继续。
 
-7. **查看和创建**：
+7. 在“查看 + 创建”中：
 
    1. 查看作业详细信息。
    1. 记下作业名称以及为将磁盘寄送到 Azure 而提供的 Azure 数据中心寄送地址。
@@ -121,9 +121,9 @@ ms.locfileid: "102177506"
       > [!NOTE]
       > 始终将磁盘发送到 Azure 门户中记录的数据中心。 如果磁盘寄送到错误的数据中心，则不会处理该作业。
 
-   1. 查看你的隐私和源数据删除顺序的 **条款** 。 如果同意条款，请选中条款下面的复选框。 订单的验证开始。
+   1. 查看有关隐私和删除源数据的订单“条款”。 如果你同意这些条款，请选中条款下面的复选框。 订单验证随即开始。
 
-   ![查看并创建你的导出顺序](./media/storage-import-export-data-from-blobs/export-from-blob-6-a.png)
+   ![查看并创建导出订单](./media/storage-import-export-data-from-blobs/export-from-blob-6-a.png)
 
  1. 通过验证后，选择“创建”。
 
@@ -385,11 +385,11 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="check-the-number-of-drives"></a>检查驱动器数量
 
-此 *可选* 步骤可帮助你确定导出作业所需的驱动器数。 在运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统上执行此步骤。
+此可选步骤有助于确定导出作业所需的驱动器数量。 在运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统上执行此步骤。
 
 1. 在 Windows 系统上[下载 WAImportExport 版本 1](https://www.microsoft.com/download/details.aspx?id=42659)。
 2. 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1`。
-3. 使用管理权限打开 PowerShell 或命令行窗口。 若要将目录切换到解压缩的文件夹，请运行以下命令：
+3. 使用管理员权限打开 PowerShell 或命令行窗口。 若要将目录切换到解压缩的文件夹，请运行以下命令：
 
    `cd C:\WaImportExportV1`
 
@@ -401,12 +401,12 @@ Install-Module -Name Az.ImportExport
 
     |命令行参数|说明|
     |--------------------------|-----------------|
-    |**/logdir**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定，则使用当前目录作为日志目录。|
-    |**/sn**|必需。 导出作业的存储帐户的名称。|
-    |**/sk**|仅当未指定容器 SAS 时才是必需的。 导出作业的存储帐户的帐户密钥。|
+    |**/logdir:**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定，则使用当前目录作为日志目录。|
+    |**/sn:**|必需。 导出作业的存储帐户的名称。|
+    |**/sk:**|仅当未指定容器 SAS 时才是必需的。 导出作业的存储帐户的帐户密钥。|
     |**/csas:**|仅当未指定存储帐户密钥时才是必需的。 用于列出要在导出作业中导出的 Blob 的容器 SAS。|
     |**/ExportBlobListFile:**|必需。 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 导入/导出服务 REST API 的[放置作业](/rest/api/storageimportexport/jobs)操作的 `BlobListBlobPath` 元素中使用的文件格式。|
-    |**/DriveSize:**|必需。 用于导出作业的驱动器大小， *例如* 500 GB、1.5 TB。|
+    |**/DriveSize:**|必需。 用于导出作业的驱动器大小，例如 500 GB、1.5 TB。|
 
     请参阅 [PreviewExport 命令示例](#example-of-previewexport-command)。
 

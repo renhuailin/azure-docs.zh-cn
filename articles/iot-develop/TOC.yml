@@ -9,17 +9,17 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 设备应用程序开发入门
+    - name: 设备应用程序开发
       items:
         - name: 将遥测数据发送到 IoT Central
           href: quickstart-send-telemetry-central.md
         - name: 将遥测数据发送到 IoT 中心
           href: quickstart-send-telemetry-iot-hub.md
-    - name: 嵌入式开发入门
+    - name: 嵌入式设备开发
       items:
         - name: 嵌入式设备开发快速入门
           href: quickstart-device-development.md
-        - name: 将 MXCHIP AZ3166 连接到 IoT Central
+        - name: MXCHIP AZ3166
           href: quickstart-devkit-mxchip-az3166.md
 - name: 教程
   items:

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jlian
 ms.openlocfilehash: 1e28c7767868904fb20ae6d27c6aea9e7077eb62
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98630287"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中心支持具有专用链接和托管标识的虚拟网络
@@ -36,9 +36,9 @@ IoT 中心的功能，包括[消息路由](./iot-hub-devguide-messages-d2c.md)�
 
 ## <a name="ingress-connectivity-to-iot-hub-using-azure-private-link"></a>使用 Azure 专用链接实现到 IoT 中心的出口连接
 
-专用终结点是在客户拥有的 VNet 内部分配的专用 IP 地址，可通过该地址访问 Azure 资源。 通过 Azure 专用链接，可以为 IoT 中心设置专用终结点，以允许 VNet 中的服务访问 IoT 中心，而无需将流量发送到 IoT 中心的公共终结点。 同样，本地设备可以使用[虚拟专用网络 (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 对等互连，通过其专用终结点，连接到 VNet 和 IoT 中心。 因此，你可以使用 [IoT 中心 IP 筛选器](./iot-hub-ip-filtering.md) 或 [公共网络访问切换](iot-hub-public-network-access.md)功能限制或完全阻止与 iot 中心公共终结点的连接。 此方法使用设备的专用终结点来保持与中心的连接。 此设置主要适用于本地网络中的设备。 对于广域网中部署的设备，不建议使用此设置。
+专用终结点是在客户拥有的 VNet 内部分配的专用 IP 地址，可通过该地址访问 Azure 资源。 通过 Azure 专用链接，可以为 IoT 中心设置专用终结点，以允许 VNet 中的服务访问 IoT 中心，而无需将流量发送到 IoT 中心的公共终结点。 同样，本地设备可以使用[虚拟专用网络 (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 对等互连，通过其专用终结点，连接到 VNet 和 IoT 中心。 这样，便可以通过使用 [IoT 中心 IP 筛选器](./iot-hub-ip-filtering.md)或[公共网络访问切换](iot-hub-public-network-access.md)，来限制或完全阻止与 IoT 中心公共终结点的连接。 此方法使用设备的专用终结点来保持与中心的连接。 此设置主要适用于本地网络中的设备。 对于广域网中部署的设备，不建议使用此设置。
 
-![IoT 中心虚拟网络 engress](./media/virtual-network-support/virtual-network-ingress.png)
+![IoT 中心虚拟网络出口](./media/virtual-network-support/virtual-network-ingress.png)
 
 在继续操作之前，请确保满足以下先决条件：
 
@@ -48,7 +48,7 @@ IoT 中心的功能，包括[消息路由](./iot-hub-devguide-messages-d2c.md)�
 
 ### <a name="set-up-a-private-endpoint-for-iot-hub-ingress"></a>设置一个用于 IoT 中心入口的专用终结点
 
-专用终结点适用于 IoT 中心设备 Api (例如设备到云的消息) 和服务 Api (如创建和更新设备) 。
+专用终结点适用于 IoT 中心设备 API（例如设备到云的消息）和服务 API（如创建和更新设备）。
 
 1. 在 Azure 门户中，依次选择“网络”、“专用终结点连接”，然后单击 “+专用终结点”  。
 
@@ -66,13 +66,13 @@ IoT 中心的功能，包括[消息路由](./iot-hub-devguide-messages-d2c.md)�
 
 ### <a name="built-in-event-hub-compatible-endpoint"></a>内置的与事件中心兼容的终结点 
 
-还可以通过专用终结点访问 [内置的与事件中心兼容的终结点](iot-hub-devguide-messages-read-builtin.md) 。 配置 "专用" 链接后，你应该会看到内置终结点的其他专用终结点连接。 它 `servicebus.windows.net` 在 FQDN 中。
+[内置的与事件中心兼容的终结点](iot-hub-devguide-messages-read-builtin.md)也可以通过专用终结点进行访问。 配置专用链接后，你应该会看到内置终结点的其他专用终结点连接。 此连接的 FQDN 中包含 `servicebus.windows.net`。
 
-:::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="显示每个 IoT 中心专用链接的两个专用终结点的图像":::
+:::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="显示提供每个 IoT 中心专用链接的两个专用终结点的图像":::
 
-IoT 中心的 [IP 筛选器](iot-hub-ip-filtering.md) 可以选择控制对内置终结点的公共访问。 
+IoT 中心的 [IP 筛选器](iot-hub-ip-filtering.md)可以视情况控制对内置终结点的公共访问。 
 
-若要完全阻止公共网络对 IoT 中心的访问，请 [关闭 "公共网络访问](iot-hub-public-network-access.md) " 或 "使用 ip 筛选器" 以阻止所有 IP，并选择将规则应用到内置终结点的选项。
+若要完全阻止公共网络访问 IoT 中心，请[关闭公共网络访问](iot-hub-public-network-access.md)或使用 IP 筛选器以阻止所有 IP，并选择将规则应用于内置终结点的选项。
 
 ### <a name="pricing-for-private-link"></a>专用链接定价
 
@@ -92,7 +92,7 @@ IoT 中心可以通过（后述资源的）公共终结点连接到 Azure blob �
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="屏幕截图显示如何为 IoT 中心启用托管标识":::
 
-使用 Azure CLI 打开托管标识：
+若要使用 Azure CLI 打开托管标识，请执行以下操作：
 
 ```azurecli-interactive
 az iot hub update --name <iot-hub-resource-name> --set identity.type="SystemAssigned"
@@ -100,7 +100,7 @@ az iot hub update --name <iot-hub-resource-name> --set identity.type="SystemAssi
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>使用 ARM 模板在创建时将托管标识分配给 IoT 中心
 
-若要在资源预配时将托管标识分配到 IoT 中心，请使用下面的 ARM 模板。 此 ARM 模板具有两个所需的资源，并且两者都需要在创建其他资源之前进行部署，如 `Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups` 。 
+若要在资源预配时将托管标识分配给 IoT 中心，请使用下面的 ARM 模板。 此 ARM 模板具有两个必需的资源，两者都需要在创建其他资源（如 `Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups`）之前进行部署。 
 
 ```json
 {
@@ -156,7 +156,7 @@ az iot hub update --name <iot-hub-resource-name> --set identity.type="SystemAssi
 }
 ```
 
-替换资源、和的值后 `name` ， `location` `SKU.name` `SKU.tier` 可以使用 Azure CLI 在现有资源组中部署资源，使用：
+替换资源 `name`、`location`、`SKU.name` 和 `SKU.tier` 的值后，可以在 Azure CLI 中使用以下命令在现有资源组中部署资源：
 
 ```azurecli-interactive
 az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
@@ -174,7 +174,7 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
 
 ### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>指向用于路由的存储帐户终结点的出口连接
 
-IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由功能在启用了防火墙限制的情况下访问存储帐户，IoT 中心需要具有[托管标识](#turn-on-managed-identity-for-iot-hub)。 预配托管标识后，请按照以下步骤，将 Azure RBAC 权限授予你中心的资源标识，以便访问你的存储帐户。
+IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由功能在启用了防火墙限制的情况下访问存储帐户，IoT 中心需要具有[托管标识](#turn-on-managed-identity-for-iot-hub)。 预配托管标识后，请按照以下步骤为你的中心的资源标识提供 Azure RBAC 权限，用于访问你的存储帐户。
 
 1. 在 Azure 门户中，导航到存储帐户的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 
@@ -186,13 +186,13 @@ IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由
 
 5. 导航到“自定义终结点”部分，然后单击“添加” 。 选择“存储”作为终结点类型。
 
-6. 在显示的页面上，为终结点提供名称，选择要在 blob 存储中使用的容器，提供编码，以及文件名格式。 选择 " **基于身份** " 作为存储终结点的 **身份验证类型** 。 单击“创建”  按钮。
+6. 在显示的页面上，为终结点提供名称，选择要在 blob 存储中使用的容器，提供编码，以及文件名格式。 选择“基于标识”作为存储终结点的“身份验证类型” 。 单击“创建”  按钮。
 
 现在，已将自定义存储终结点设置为使用中心的系统分配的标识，且即使存在防火墙限制，它仍有权访问存储资源。 现在可以使用此终结点来设置路由规则。
 
 ### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>指向用于路由的事件中心终结点的出口连接
 
-可以将 IoT 中心配置为将消息路由到客户拥有的事件中心命名空间。 为了允许路由功能在启用了防火墙限制的情况下访问事件中心资源，IoT 中心需要具有托管标识。 创建托管标识后，请按照以下步骤，将 Azure RBAC 权限授予中心的资源标识，以访问事件中心。
+可以将 IoT 中心配置为将消息路由到客户拥有的事件中心命名空间。 为了允许路由功能在启用了防火墙限制的情况下访问事件中心资源，IoT 中心需要具有托管标识。 创建托管标识后，请按照以下步骤为你的中心的资源标识提供 Azure RBAC 权限，用于访问你的事件中心。
 
 1. 在 Azure 门户中，导航到事件中心的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 
@@ -204,13 +204,13 @@ IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由
 
 5. 导航到“自定义终结点”部分，然后单击“添加” 。 选择“事件中心”作为终结点类型。
 
-6. 在显示的页面上，为终结点提供名称，选择事件中心命名空间和实例。 选择 " **基于身份** " 作为 " **身份验证类型**"，然后单击 " **创建** " 按钮。
+6. 在显示的页面上，为终结点提供名称，选择事件中心命名空间和实例。 选择“基于标识”作为存储终结点的“身份验证类型” ，然后单击“创建”按钮。
 
 现在，已将自定义事件中心终结点设置为使用中心的系统分配的标识，且即使存在防火墙限制，它仍有权访问事件中心资源。 现在可以使用此终结点来设置路由规则。
 
 ### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>指向用于路由的服务总线终结点的出口连接
 
-可以将 IoT 中心配置为将消息路由到客户拥有的服务总线命名空间。 为了允许路由功能在启用了防火墙限制的情况下访问服务总线中心资源，IoT 中心需要具有托管标识。 预配托管标识后，请按照以下步骤，将 Azure RBAC 权限授予中心的资源标识，以访问服务总线。
+可以将 IoT 中心配置为将消息路由到客户拥有的服务总线命名空间。 为了允许路由功能在启用了防火墙限制的情况下访问服务总线中心资源，IoT 中心需要具有托管标识。 预配托管标识后，请按照以下步骤为你的中心的资源标识提供 Azure RBAC 权限，用于访问你的服务总线。
 
 1. 在 Azure 门户中，导航到服务总线的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 
@@ -222,13 +222,13 @@ IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由
 
 5. 导航到“自定义终结点”部分，然后单击“添加” 。 选择“服务总线队列”或“服务总线主题”（如果适用）作为终结点类型 。
 
-6. 在显示的页面上，为终结点提供名称，选择服务总线的命名空间和队列或主题（如果适用）。 选择 " **基于身份** " 作为 " **身份验证类型**"，然后单击 " **创建** " 按钮。
+6. 在显示的页面上，为终结点提供名称，选择服务总线的命名空间和队列或主题（如果适用）。 选择“基于标识”作为存储终结点的“身份验证类型” ，然后单击“创建”按钮。
 
 现在，已将自定义服务总线终结点设置为使用中心的系统分配的标识，且即使存在防火墙限制，它仍有权访问服务总线资源。 现在可以使用此终结点来设置路由规则。
 
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>指向用于上传文件的存储帐户的出口连接
 
-IoT 中心的文件上传功能允许设备将文件上传到客户拥有的存储帐户。 若要正常上传文件，设备和 IoT 中心都需要连接到存储帐户。 如果存储帐户上存在防火墙限制，你的设备需要使用任何支持的存储帐户机制（包括[专用终结点](../private-link/tutorial-private-endpoint-storage-portal.md)、[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)或[直接防火墙配置](../storage/common/storage-network-security.md)）来实现连接。 同样，如果存储帐户上存在防火墙限制，需要将 IoT 中心配置为通过受信任的 Microsoft 服务异常功能来访问存储资源。 出于此目的，IoT 中心必须具有一个托管标识。 预配托管标识后，请按照以下步骤，将 Azure RBAC 权限授予你中心的资源标识，以便访问你的存储帐户。
+IoT 中心的文件上传功能允许设备将文件上传到客户拥有的存储帐户。 若要正常上传文件，设备和 IoT 中心都需要连接到存储帐户。 如果存储帐户上存在防火墙限制，你的设备需要使用任何支持的存储帐户机制（包括[专用终结点](../private-link/tutorial-private-endpoint-storage-portal.md)、[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)或[直接防火墙配置](../storage/common/storage-network-security.md)）来实现连接。 同样，如果存储帐户上存在防火墙限制，需要将 IoT 中心配置为通过受信任的 Microsoft 服务异常功能来访问存储资源。 出于此目的，IoT 中心必须具有一个托管标识。 预配托管标识后，请按照以下步骤为你的中心的资源标识提供 Azure RBAC 权限，用于访问你的存储帐户。
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
@@ -240,7 +240,7 @@ IoT 中心的文件上传功能允许设备将文件上传到客户拥有的存�
 
 4. 在 IoT 中心的“资源”页上，导航到“文件上传”选项卡。
 
-5. 在显示的页面上，选择要在 blob 存储中使用的容器，根据需要配置“文件通知设置”、“SAS TTL”、“默认 TT”和“最大传送计数”   。 选择 " **基于身份** " 作为存储终结点的 **身份验证类型** 。 单击“创建”  按钮。 如果在此步骤中遇到错误，请暂时将存储帐户设置为允许从 **所有网络** 访问，然后重试。 文件上传配置完成后，可以在存储帐户上配置防火墙。
+5. 在显示的页面上，选择要在 blob 存储中使用的容器，根据需要配置“文件通知设置”、“SAS TTL”、“默认 TT”和“最大传送计数”   。 选择“基于标识”作为存储终结点的“身份验证类型” 。 单击“创建”  按钮。 如果在此步骤中遇到错误，请暂时将存储帐户设置为允许从所有网络访问，然后重试。 文件上传配置完成后，可以在存储帐户上配置防火墙。
 
 现在，已将用于上传文件的存储终结点设置为使用中心的系统分配的标识，且即使存在防火墙限制，它仍有权访问存储资源。
 
@@ -248,7 +248,7 @@ IoT 中心的文件上传功能允许设备将文件上传到客户拥有的存�
 
 IoT 中心支持从/向客户提供的存储 blob 批量[导入/导出](./iot-hub-bulk-identity-mgmt.md)设备的信息。 若要正常使用批量导入/导出功能，设备和 IoT 中心都需要连接到存储帐户。
 
-若要使用此功，需要从 IoT 中心连接到存储帐户。 为了在启用了防火墙限制的情况下访问服务总线资源，IoT 中心需要具有托管标识。 预配托管标识后，请按照以下步骤，将 Azure RBAC 权限授予中心的资源标识，以访问服务总线。
+若要使用此功，需要从 IoT 中心连接到存储帐户。 为了在启用了防火墙限制的情况下访问服务总线资源，IoT 中心需要具有托管标识。 预配托管标识后，请按照以下步骤为你的中心的资源标识提供 Azure RBAC 权限，用于访问你的服务总线。
 
 1. 在 Azure 门户中，导航到存储帐户的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 

@@ -1,32 +1,32 @@
 ---
 title: 将 ScaleR 和 SparkR 与 Azure HDInsight 配合使用
-description: 使用 ScaleR 和 SparkR 在 Azure HDInsight 上通过 ML 服务进行数据操作和模型开发
+description: 将用于数据操作和模型开发的 ScaleR 和 SparkR 与 Azure HDInsight 上的 ML 服务配合使用
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
 ms.openlocfilehash: 95fcca289b0776cc19464b13eb7d243ca4f8d5ed
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98945514"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
 
 本文档演示如何使用 **ScaleR** 逻辑回归模型来预测航班抵达延误时间。 此示例使用通过 **SparkR** 联接的航班延误数据和天气数据。
 
-尽管这两个包都在 Apache Hadoop 的 Spark 执行引擎上运行，但它们会阻止内存中数据共享，因为它们每个包都需要各自的 Spark 会话。 在即将发布的 ML Server 版本中解决此问题之前，解决方法是维护不重叠的 Spark 会话，并通过中间文件交换数据。 从此处的说明可以看到，这些要求的实现都相当直截了当。
+尽管这两个包在 Apache Hadoop 的 Spark 执行引擎上运行，但它们需要自身的 Spark 会话，因此无法共享内存中的数据。 在即将发布的 ML Server 版本中解决此问题之前，解决方法是维护不重叠的 Spark 会话，并通过中间文件交换数据。 从此处的说明可以看到，这些要求的实现都相当直截了当。
 
 此示例最初由 Mario Inchiosa 和 Roni Burd 在 Strata 2016 研讨会中分享。 也可在 [Building a Scalable Data Science Platform with R](https://channel9.msdn.com/blogs/Cloud-and-Enterprise-Premium/Building-A-Scalable-Data-Science-Platform-with-R-and-Hadoop)（使用 R 构建可缩放的数据科学平台）中找到此研讨会。
 
 此代码原本是针对 Azure 上 HDInsight 群集中的 Spark 上运行的 ML Server 编写的。 但在一个脚本中混合使用 SparkR 和 ScaleR 的思路同样适用于本地环境。
 
-本文档中的步骤假定你对 R 和 ML Server 的 [ScaleR](/machine-learning-server/r/concept-what-is-revoscaler) 库有中等水平的了解。 在完成此方案时，你会 [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) 。
+本文档中的步骤假定你对 R 和 ML Server 的 [ScaleR](/machine-learning-server/r/concept-what-is-revoscaler) 库有中等水平的了解。 在演练此方案时还会介绍 [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html)。
 
 ## <a name="the-airline-and-weather-datasets"></a>航班和天气数据集
 
-航班数据是从[美国政府存档](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的。 它还可作为 [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)的 zip。
+航班数据是从[美国政府存档](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的。 也可从 [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip) 获取 zip 文件形式的该数据。
 
 可以从[美国海洋与大气管理存储库](https://www.ncdc.noaa.gov/orders/qclcd/)下载原始格式的每月天气数据 zip 文件。 就此示例来说，请下载 2007 年 5 月 – 2012 年 12 月期间的数据。 使用每个 zip 中的每小时数据文件和 `YYYYMMMstation.txt` 文件。
 
@@ -111,7 +111,7 @@ sqlContext <- sparkRSQL.init(sc)
 
 然后添加与气象站关联的机场代码，将测量值从当地时间转换为 UTC。
 
-先创建一个文件，用于将气象站 (WBAN) 信息映射到机场代码。 以下代码将读取每小时原始天气数据文件、将内容子集到所需的列、合并气象站映射文件、将测量值的日期时间调整为 UTC，然后写出文件的新版本：
+先创建一个文件，用于将气象站 (WBAN) 信息映射到机场代码。 以下代码读取每小时原始天气数据文件、将文件放入所需的列、合并气象站映射文件、将测量值的日期时间调整为 UTC，然后写出文件的新版本：
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
@@ -191,7 +191,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>将航班和天气数据导入 Spark DataFrames
 
-现在，使用 SparkR [read.df()](https://spark.apache.org/docs/latest/api/R/read.df.html) 函数将天气和航班数据导入 Spark DataFrame。 与许多其他 Spark 方法一样，此函数是惰式执行的，这意味着它们将排队等待执行，但在需要之前不会执行。
+现在，使用 SparkR [read.df()](https://spark.apache.org/docs/latest/api/R/read.df.html) 函数将天气和航班数据导入 Spark DataFrame。 与其他许多 Spark 方法一样，此函数是延迟执行的，也就是说，它会排入执行队列，但只在需要时才会执行。
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -264,7 +264,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>联接天气和航班数据
 
-现在，使用 SparkR [join()](https://spark.apache.org/docs/latest/api/R/join.html) 函数根据出发地 AirportID 和日期时间，针对航班数据和天气数据执行左外部联接。 外部联接使我们可以保留所有航班数据记录，即使没有匹配的天气数据。 联接后，删除一些多余的列，并重命名保留的列，以删除联接时传入的 DataFrame 前缀。
+现在，使用 SparkR [join()](https://spark.apache.org/docs/latest/api/R/join.html) 函数根据出发地 AirportID 和日期时间，针对航班数据和天气数据执行左外部联接。 使用外部联接可以保留所有航班数据记录，即使没有匹配的天气数据。 联接后，删除一些多余的列，并重命名保留的列，以删除联接时传入的 DataFrame 前缀。
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
@@ -346,7 +346,7 @@ rxHadoopRemove(file.path(dataDir, "joined5Csv/_SUCCESS"))
 
 ## <a name="import-to-xdf-for-use-by-scaler"></a>导入到 XDF 供 ScaleR 使用
 
-可以通过 ScaleR 文本数据源按原样使用已联接航班数据和天气数据的 CSV 文件来建模。 但我们首先将其导入 XDF，因为在对数据集运行多个操作时，此方法更高效：
+可以通过 ScaleR 文本数据源按原样使用已联接航班数据和天气数据的 CSV 文件来建模。 但首先将该文件导入 XDF，因为在针对数据集运行多个操作时，XDF 的效率更高：
 
 ```
 logmsg('Import the CSV to compressed, binary XDF format') 
@@ -456,7 +456,7 @@ rxGetInfo(testDS)
 
 ## <a name="train-and-test-a-logistic-regression-model"></a>训练并测试逻辑回归模型
 
-现在，我们已准备好构建模型。 为了查看天气数据对抵达时间延迟的影响，我们使用了 ScaleR 的逻辑回归例程。 我们用它来建模，确定超过 15 分钟的抵达延误是否受到了出发地和目的地机场天气的影响：
+现在可以开始构建模型了。 为了查看天气数据对抵达时间延迟的影响，我们使用了 ScaleR 的逻辑回归例程。 我们用它来建模，确定超过 15 分钟的抵达延误是否受到了出发地和目的地机场天气的影响：
 
 ```
 logmsg('train a logistic regression model for Arrival Delay > 15 minutes') 
@@ -503,7 +503,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>在其他位置评分
 
-还可以使用该模型在另一个平台上为数据评分： 将其保存到 RDS 文件，然后将该 RDS 传输并导入到目标计分环境（例如 Microsoft SQL Server R Services）。 必须确保要评分的数据的系数级别与构建模型的数据级别相匹配。 为此，可以通过 ScaleR 的 `rxCreateColInfo()` 函数来提取并保存与建模数据关联的列信息，然后将该列信息应用到预测用的输入数据源。 在下面的代码示例中，我们保存几行测试数据集，并在预测脚本中提取并使用本示例中的列信息：
+还可以使用该模型在另一个平台上为数据评分： 将数据保存到 RDS 文件，然后将该 RDS 传输并导入到 Microsoft SQL Server R Services 等目标评分环境。 必须确保要评分的数据的系数级别与构建的模型上的级别匹配。 为此，可以通过 ScaleR 的 `rxCreateColInfo()` 函数来提取并保存与建模数据关联的列信息，然后将该列信息应用到预测用的输入数据源。 在下面的代码示例中，保存了测试数据集的几行数据，接下来将从此示例中提取列信息并在预测脚本中使用：
 
 ```
 # save the model and a sample of the test dataset 
@@ -526,18 +526,18 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 在本文中，我们展示了如何在 Hadoop Spark 中将用于数据操作的 SparkR 和用于模型开发的 ScaleR 配合使用。 此方案要求保留单独的 Spark 会话，一次只运行一个会话，并通过 CSV 文件交换数据。 尽管此过程现已相当简单直接，但在将来的 ML Services 版本中还会得到进一步简化，因为到时 SparkR 和 ScaleR 可以共享 Spark 会话，因而也能共享 Spark DataFrame。
 
 ## <a name="next-steps-and-more-information"></a>后续步骤和详细信息
 
-- 有关 Apache Spark 使用 ML Server 的详细信息，请参阅 [入门指南](/machine-learning-server/r/how-to-revoscaler-spark)。
+- 有关使用 Apache Spark 上 ML Server 的详细信息，请参阅[入门指南](/machine-learning-server/r/how-to-revoscaler-spark)。
 
-- 有关 HDInsight 上的 ML 服务的信息，请参阅 [hdinsight 上的 Ml 服务概述](r-server/r-server-overview.md)。
+- 有关 HDInsight 上的 ML 服务的信息，请参阅 [HDInsight 上的 ML 服务概述](r-server/r-server-overview.md)。
 
 有关 SparkR 用法的详细信息，请参阅：
 
 - [Apache SparkR 文档](https://spark.apache.org/docs/2.1.0/sparkr.html)。
 
-- [SparkR 概述](/azure/databricks/spark/latest/sparkr/overview)
+- [SparkR Overview](/azure/databricks/spark/latest/sparkr/overview)（SparkR 概述）

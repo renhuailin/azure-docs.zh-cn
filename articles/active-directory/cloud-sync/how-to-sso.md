@@ -1,6 +1,6 @@
 ---
 title: 如何将单一登录用于云同步
-description: 本文介绍如何安装和使用与云同步的 sso。
+description: 本文介绍如何安装和使用 sso 进行云同步。
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,14 +12,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c052b0f2ac822de20cf543152f56d4956015a935
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98613152"
 ---
-# <a name="using-single-sign-on-with-cloud-sync"></a>通过云同步使用单个 Sign-On
-以下文档介绍了如何将单一登录与云同步配合使用。
+# <a name="using-single-sign-on-with-cloud-sync"></a>将单一登录用于云同步
+以下文档介绍了如何将单一登录用于云同步。
 
 [!INCLUDE [active-directory-cloud-provisioning-sso.md](../../../includes/active-directory-cloud-provisioning-sso.md)]
 

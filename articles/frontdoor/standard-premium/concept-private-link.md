@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 前门标准/高级 () 预览版中，通过专用链接保护源
-description: 本页提供有关如何使用专用链接确保与源的连接安全的信息。
+title: 在 Azure Front Door 标准版/高级版（预览版）中使用专用链接保护源
+description: 本页提供有关如何使用专用链接保护与源的连接的信息。
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -9,47 +9,47 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: 6a1ec6e0b8862c6ad2b884b019e908e7d2a59a1e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 88c000c96e632f970db075fafb13ea5eb4bbddfc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715507"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799917"
 ---
-# <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>在 Azure 前门标准/高级 () 预览版中，通过专用链接保护源
+# <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>在 Azure Front Door 标准版/高级版（预览版）中使用专用链接保护源
 
 > [!Note]
-> 本文档适用于 Azure 前门标准/高级 (预览版) 。 正在寻找有关 Azure 前门的信息？ 查看 [Azure 前门文档](../front-door-overview.md)。
+> 本文档适用于 Azure Front Door 标准版/高级版（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看 [Azure Front Door 文档](../front-door-overview.md)。
 
 ## <a name="overview"></a>概述
 
-使用[Azure 专用链接](../../private-link/private-link-overview.md)，可以通过虚拟网络中的专用终结点访问 Azure PaaS 服务和 azure 托管服务。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。
+使用 [Azure 专用链接](../../private-link/private-link-overview.md)，可以通过虚拟网络中的专用终结点访问 Azure PaaS 服务和 Azure 托管服务。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。
 
 > [!IMPORTANT]
-> Azure 前门标准/高级 (预览版) 目前为公共预览版。
+> Azure Front Door 标准版/高级版（预览版）目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Azure 前门高级 SKU 可以使用专用链接服务连接到 Web 应用和存储帐户的源，从而无需公开访问源。
+Azure Front Door 高级版 SKU 可以通过专用链接服务连接到源。 应用程序可以托管在专用 VNet 中，也可以托管在 PaaS 服务（如 Web 应用和存储帐户）之后，因此无需公开访问源。
 
-:::image type="content" source="../media/concept-private-link/front-door-private-endpoint-architecture.png" alt-text="前门专用终结点体系结构":::
+:::image type="content" source="../media/concept-private-link/front-door-private-endpoint-architecture.png" alt-text="Front Door 专用终结点体系结构":::
 
-当你在 Azure 前门 Premium 配置中启用到你的来源的专用链接时，前门会根据你的前门区域专用网络创建专用终结点。 此终结点由 Azure 前门管理。 你将收到源的 Azure 前门专用终结点请求，用于审批消息。 批准请求后，将从前门的虚拟网络分配一个专用 IP 地址，Azure 前门与源之间的流量将通过 Azure 网络主干遍历已建立的专用链接。 当来自你的 Azure 前门时，源的传入流量现在受到保护。
+在 Azure Front Door 高级版配置中启用到源的专用链接时，Front Door 将代表你从 Front Door 的区域专用网络创建一个专用终结点。 此终结点由 Azure Front Door 管理。 你将在源收到 Azure Front Door 专用终结点请求批准的消息。 批准请求后，会从 Front Door 的虚拟网络分配一个专用 IP 地址，Azure Front Door 和源之间的流量将遍历与 Azure 网络主干间建立的专用链接。 现在，从 Azure Front Door 传入你的源的流量将得到保护。
 
 :::image type="content" source="../media/concept-private-link/enable-private-endpoint.png" alt-text="启用专用终结点":::
 
 > [!NOTE]
-> 启用专用链接来源并批准专用终结点之间后，建立连接需要几分钟时间。 在此期间，对源的请求将收到前门错误消息。 建立连接后，错误消息将消失。
+> 启用专用链接源并批准专用终结点连接后，需要几分钟时间才能建立连接。 在此期间，对源的请求将收到 Front Door 错误消息。 建立连接后，错误消息将消失。
 
 ## <a name="limitations"></a>限制
 
-公共预览版期间，Azure 前门专用终结点在以下区域提供：美国东部、美国西部和美国中南部。
+Azure Front Door 公共预览版期间，以下区域提供专用终结点：美国东部、美国西部 2 和美国中南部。
 
-为获得最佳延迟，选择启用前门专用链接终结点时，应始终选取离源最近的 Azure 区域。
+为获得最佳延迟，在选择启用 Front Door 专用链接终结点时，应始终选择一个最接近源的 Azure 区域。
 
-Azure 前门专用终结点由平台和 Azure 前门的订阅进行管理。 Azure 前门允许将专用链接连接到用于创建前门配置文件的同一客户订阅。
+Azure Front Door 专用终结点由平台管理，位于 Azure Front Door 订阅下。 通过 Azure Front Door，可以将专用链接连接到用于创建 Front Door 配置文件的同一客户订阅。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要通过专用链接服务将 Azure 前门高级版连接到 Web 应用，请参阅 [使用专用终结点连接到 web 应用](../../private-link/tutorial-private-endpoint-webapp-portal.md)。
-* 若要通过专用链接服务将 Azure 前门高级版连接到存储帐户，请参阅 [使用专用终结点连接到存储帐户](../../private-link/tutorial-private-endpoint-storage-portal.md)。
+* 若要通过专用链接服务将 Azure Front Door 高级版连接到 Web 应用，请参阅[使用专用终结点连接到 Web 应用](../../private-link/tutorial-private-endpoint-webapp-portal.md)。
+* 若要通过专用链接服务将 Azure Front Door 高级版连接到存储帐户，请参阅[使用专用终结点连接到存储帐户](../../private-link/tutorial-private-endpoint-storage-portal.md)。

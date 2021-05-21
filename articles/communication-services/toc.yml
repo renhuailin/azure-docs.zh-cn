@@ -51,11 +51,11 @@
     - name: UI 框架
       items:
         - name: 复合组件入门
-          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-composites--page'
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/story/quickstarts-get-started-with-composites--page'
         - name: 有状态客户端入门
-          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-stateful-client--page'
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/story/quickstarts-get-started-with-stateful-client--page'
         - name: UI 组件入门
-          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-ui-components--page'
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/story/quickstarts-get-started-with-ui-components--page'
 - name: 教程
   expanded: false
   items:
@@ -106,12 +106,12 @@
           href: concepts/call-flows.md
         - name: 调用流拓扑
           href: concepts/detailed-call-flows.md
-    - name: UI 框架
+    - name: UI 库
       items:
-        - name: UI 框架概述
-          href: concepts/ui-framework/ui-sdk-overview.md
-        - name: UI 框架功能
-          href: concepts/ui-framework/ui-sdk-features.md
+        - name: UI 库概述
+          href: concepts/ui-library/ui-library-overview.md
+        - name: UI 库用例
+          href: concepts/ui-library/ui-library-use-cases.md
     - name: SDK 和 REST API
       href: concepts/sdk-options.md
     - name: 客户端和服务器体系结构
@@ -173,6 +173,8 @@
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-chat'
         - name: 聊天 (Python)
           href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-chat'
+        - name: 聊天 (iOS)
+          href: 'https://azure.github.io/azure-sdk-for-ios/AzureCommunicationChat/index.html'
     - name: 短信库
       items:
         - name: 短信 (JavaScript)

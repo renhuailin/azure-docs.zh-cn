@@ -3,12 +3,12 @@ title: 估算 Azure Functions 中的消耗计划成本
 description: 了解如何更好地估算在 Azure 的消耗计划中运行函数应用时可能产生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 648be6325cce5bad36795b113c8bbccb3e21d37b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578560"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773996"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估算消耗计划成本
 
@@ -63,7 +63,7 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
 
 ## <a name="viewing-cost-related-data"></a>查看与成本相关的数据
 
-在 [您的发票](../cost-management-billing/understand/download-azure-invoice.md)中，可以查看所有执行的与成本相关的数据 **-函数** 和 **执行时间-函数** 以及实际计费的成本。 但是，此发票数据是过去发票周期的每月聚合。 
+在[你的发票](../cost-management-billing/understand/download-azure-invoice.md)中，可以查看“执行总次数 - 函数”和“执行时间 - 函数”的与成本相关的数据，以及实际的计费费用。 但是，此发票数据是过去发票期限的每月聚合。 
 
 ### <a name="function-app-level-metrics"></a>函数应用级指标
 
@@ -105,7 +105,7 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
 
 #### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI](/cli/azure/) 提供了用于检索指标的命令。 可以从本地命令环境使用 CLI，也可以直接从门户使用 [Azure Cloud Shell](../cloud-shell/overview.md)。 例如，以下 [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令返回以前使用的同一时间段内的每小时数据。
+[Azure CLI](/cli/azure/) 提供了用于检索指标的命令。 你可以从本地命令环境中使用 CLI，也可以直接从门户中使用 [Azure Cloud Shell](../cloud-shell/overview.md)。 例如，以下 [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) 命令返回以前使用的同一时间段内的每小时数据。
 
 请务必将 `<AZURE_SUBSCRIPTON_ID>` 替换为运行该命令的 Azure 订阅 ID。
 

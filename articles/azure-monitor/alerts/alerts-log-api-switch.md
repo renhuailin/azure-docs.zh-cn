@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 101a575d9acac5da4a8c0399f60e8f32e591d2cf
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: b91560f09b30cc5d3089e5beca4d670f94f33402
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285352"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102031304"
 ---
 # <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>从旧版 Log Analytics 警报 API 升级到当前日志警报 API
 
@@ -22,7 +22,7 @@ ms.locfileid: "107285352"
 
 过去，用户使用[旧版 Log Analytics 警报 API](./api-alerts.md) 来管理日志警报规则。 当前工作区使用 [ScheduledQueryRules API](/rest/api/monitor/scheduledqueryrules)。 本文介绍从旧版 API 切换到当前 API 的好处和过程。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>好处
 
 - 用于创建警报规则的单个模板（以前需要三个单独的模板）。
 - 同时适用于 Log Analytics 工作区或 Application Insights 资源的单个 API。
@@ -37,7 +37,7 @@ ms.locfileid: "107285352"
 - 必须使用当前 API 创建/编辑所有新规则。 请参阅[通过 Azure 资源模板的示例用法](alerts-log-create-templates.md)和[通过 PowerShell 的示例用法](./alerts-log.md#managing-log-alerts-using-powershell)。
 - 随着规则成为当前 API 中 Azure 资源管理器跟踪的资源，并且必须是唯一的，规则资源 ID 将更改为以下结构：`<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`。 警报规则的显示名称将保持不变。
 
-## <a name="process"></a>过程
+## <a name="process"></a>进程
 
 在大多数情况下，切换过程不是交互式的，不需要手动步骤。 在切换期间或之后，警报规则不会停止或停滞。
 执行以下调用切换与特定 Log Analytics 工作区关联的所有警报规则：
@@ -57,7 +57,7 @@ PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers
 下面是使用 [ARMClient](https://github.com/projectkudu/ARMClient)（一种开源命令行工具）的示例，它简化了调用上述 API 调用的过程：
 
 ```powershell
-$switchJSON = '{"scheduledQueryRulesEnabled": true}'
+$switchJSON = '{"scheduledQueryRulesEnabled": "true"}'
 armclient PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $switchJSON
 ```
 
