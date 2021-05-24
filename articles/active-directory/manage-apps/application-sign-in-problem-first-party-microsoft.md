@@ -2,30 +2,26 @@
 title: 登录 Microsoft 应用程序时出现的问题 | Microsoft Docs
 description: 排查使用 Azure AD 登录到第一方 Microsoft 应用程序（如 Microsoft 365）时遇到的常见问题。
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
-ms.assetid: ''
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79c8d6d072379853d6eca561d372f61dbb8acc8a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.openlocfilehash: c56e356a9bacc6479d3a3a33be905457c26e732e
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260005"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378170"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
 
-Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方 SaaS 应用程序或与单一登录 Azure AD 集成的其他应用程序不同 ) 。
+Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和管理与集成到 Azure AD 进行单一登录的第三方 SaaS 应用程序或其他应用程序略有不同。
 
 用户访问 Microsoft 发布的应用程序的方法主要有三种。
 
@@ -117,13 +113,13 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 若要检查是否存在某个用户帐户，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
 2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  单击导航菜单中的 " **用户和组** "。
+4.  在导航菜单中，单击“用户和组”。
 
 5.  单击“所有用户”。
 
@@ -135,13 +131,13 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 若要检查用户帐户的状态，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
 2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  单击导航菜单中的 " **用户和组** "。
+4.  在导航菜单中，单击“用户和组”。
 
 5.  单击“所有用户”。
 
@@ -161,7 +157,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  单击导航菜单中的 " **用户和组** "。
+4.  在导航菜单中，单击“用户和组”。
 
 5.  单击“所有用户”。
 
@@ -193,7 +189,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 单击导航菜单中的 " **用户和组** "。
+4. 在导航菜单中，单击“用户和组”。
 
 5. 单击“所有用户”。
 
@@ -217,7 +213,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  单击导航菜单中的 " **用户和组** "。
+4.  在导航菜单中，单击“用户和组”。
 
 5.  单击“所有用户”。
 
@@ -239,7 +235,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  单击导航菜单中的 " **用户和组** "。
+4.  在导航菜单中，单击“用户和组”。
 
 5.  单击“所有用户”。
 
@@ -257,7 +253,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  单击导航菜单中的 " **用户和组** "。
+4.  在导航菜单中，单击“用户和组”。
 
 5.  单击“所有用户”。
 
@@ -275,7 +271,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  单击导航菜单中的 " **用户和组** "。
+4.  在导航菜单中，单击“用户和组”。
 
 5.  单击“所有用户”。
 
@@ -315,7 +311,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  单击导航菜单中的 " **用户和组** "。
+4.  在导航菜单中，单击“用户和组”。
 
 5.  单击“所有组”。
 
@@ -333,7 +329,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  单击导航菜单中的 " **用户和组** "。
+4.  在导航菜单中，单击“用户和组”。
 
 5.  单击“所有组”。
 
@@ -353,7 +349,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  单击导航菜单中的 " **用户和组** "。
+4.  在导航菜单中，单击“用户和组”。
 
 5.  单击“所有组”。
 
@@ -371,7 +367,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 单击导航菜单中的 " **用户和组** "。
+4. 在导航菜单中，单击“用户和组”。
 
 5. 单击“所有组”。
 
@@ -396,7 +392,7 @@ Microsoft 应用程序 (（如 Exchange、SharePoint、Yammer 等）与第三方
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 单击导航菜单中的 " **用户和组** "。
+4. 在导航菜单中，单击“用户和组”。
 
 5. 单击“所有组”。
 

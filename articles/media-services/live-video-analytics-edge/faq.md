@@ -76,7 +76,7 @@ ms.locfileid: "106275951"
 * [Shaka Player](https://github.com/google/shaka-player)
 * [ExoPlayer](https://github.com/google/ExoPlayer)
 * [Apple 本机 HTTP Live Streaming](https://developer.apple.com/streaming/)
-* HTML5 视频播放机中内置的 Edge、Chrome 或 Safari
+* HTML5 视频播放机中内置的 Microsoft Edge、Chrome 或 Safari
 * 支持 HLS 或 DASH 播放的商业播放器
 
 **对媒体图形资产进行流式处理存在哪些限制？**

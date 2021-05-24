@@ -1,5 +1,5 @@
 ---
-title: 将桌面应用程序调用 web Api 移动到生产环境 |Microsoft
+title: 将桌面应用调用 Web API 移至生产环境 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何将调用 Web API 的桌面应用移到生产环境
 services: active-directory
@@ -13,10 +13,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 22e61ea767d781dc9da54d61143c1b2524e06e94
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99584408"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>用于调用 Web API 的桌面应用：移到生产环境
@@ -30,9 +30,9 @@ ms.locfileid: "99584408"
 ## <a name="have-the-user-consent-upfront-for-several-resources"></a>让用户提前许可多个资源
 
 > [!NOTE]
-> 向 Microsoft 标识平台（而不是 Azure Active Directory (Azure AD) B2C）获取多个资源的同意。 Azure AD B2C 仅支持管理员同意，不支持用户同意。
+> 获得多个资源的同意适用于 Microsoft 标识平台，但不适用于 Azure Active Directory (Azure AD) B2C。 Azure AD B2C 仅支持管理员同意，不支持用户同意。
 
-你不能同时使用 Microsoft 标识平台为多个资源获取令牌。 `scopes` 参数只能包含单个资源的范围。 可以使用 `extraScopesToConsent` 参数确保用户预先同意多个资源。
+不能使用 Microsoft 标识平台一次获取多个资源的令牌。 `scopes` 参数只能包含单个资源的范围。 可以使用 `extraScopesToConsent` 参数确保用户预先同意多个资源。
 
 例如，你可能有两个资源（每个资源有两个范围）：
 
@@ -96,21 +96,21 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 此调用为你获得第一个 Web API 的访问令牌。
 
-调用第二个 web API 时，调用 `AcquireTokenSilent` API。
+调用第二个 Web API 时，请调用 `AcquireTokenSilent` API。
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>每次应用运行时，Microsoft 个人帐户都需要 reconsent
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>每次应用运行时，Microsoft 个人帐户都需要重新同意
 
-对于 Microsoft 个人帐户用户，reprompting 在每个 (桌面或移动应用的 native client 上同意) 调用授权是预期的行为。 本机客户端标识本质上是不安全的，这与机密客户端应用程序标识相反。 机密客户端应用程序通过 Microsoft 标识平台交换机密，以证明其身份。 Microsoft 标识平台选择通过在应用程序每次获得授权时提示用户进行同意，来缓解消费者服务的安全。
+对于 Microsoft 个人帐户用户，预期的行为是在每次本机客户端（桌面或移动应用）申请授权时再次提示用户同意。 本机客户端标识本质上是不安全的，这与机密客户端应用程序标识相反。 机密客户端应用程序通过 Microsoft 标识平台交换机密，以证明其身份。 Microsoft 标识平台选择通过在每次向应用程序授权时提示用户同意来减轻消费者服务的这种不安全性。
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-若要尝试其他示例，请参阅 [桌面和移动公用客户端应用](sample-v2-code.md#desktop-and-mobile-public-client-apps)。
+若要尝试其他示例，请参阅[桌面和移动公共客户端应用](sample-v2-code.md#desktop-and-mobile-public-client-apps)。
 
 
 

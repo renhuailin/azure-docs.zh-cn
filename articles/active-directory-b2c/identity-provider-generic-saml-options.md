@@ -372,7 +372,7 @@ WantsSignedAssertions 元数据控制 SAML 元数据标记 WantAssertionsSigned�
 
 ## <a name="debug-saml-protocol"></a>调试 SAML 协议
 
-若要帮助配置和调试使用 SAML 标识提供者的联合身份验证，可以使用 SAML 协议的浏览器扩展，例如 Chrome 的 [SAML DevTools 扩展](https://chrome.google.com/webstore/detail/saml-devtools-extension/jndllhgbinhiiddokbeoeepbppdnhhio)、FireFox 的 [SAML 跟踪程序](https://addons.mozilla.org/es/firefox/addon/saml-tracer/)或 [Edge 或 IE 开发人员工具](https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/gathering-a-saml-token-using-edge-or-ie-developer-tools/ba-p/320957)。
+若要帮助配置和调试使用 SAML 标识提供者的联合身份验证，可以使用 SAML 协议的浏览器扩展，例如 Chrome 的 [SAML DevTools 扩展](https://chrome.google.com/webstore/detail/saml-devtools-extension/jndllhgbinhiiddokbeoeepbppdnhhio)、FireFox 的 [SAML 跟踪程序](https://addons.mozilla.org/es/firefox/addon/saml-tracer/)或 [Microsoft Edge 或 IE 开发人员工具](https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/gathering-a-saml-token-using-edge-or-ie-developer-tools/ba-p/320957)。
 
 使用这些工具，可以检查 Azure AD B2C 与 SAML 标识提供者之间的集成。 例如：
 

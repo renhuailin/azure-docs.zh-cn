@@ -1770,7 +1770,7 @@ ms.locfileid: "106097785"
     :::column span="":::
         **实体**
 
-        台湾国民身份证
+        台湾居民身份证
 
     :::column-end:::
     :::column span="2":::

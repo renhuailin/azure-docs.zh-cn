@@ -1,39 +1,39 @@
 ---
 title: Azure Percept Vision 数据表
-description: 查看 Azure Percept 远景数据表了解详细设备规范
+description: 有关详细设备规格，请查看 Azure Percept Vision 数据表
 author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
 ms.openlocfilehash: 7bbb3a88bbc3011ec5dd917cdb0c1e49f7556aab
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177158"
 ---
 # <a name="azure-percept-vision-datasheet"></a>Azure Percept Vision 数据表
 
-下面列出的规格适用于 azure Percept 远景设备，包括在 [Azure PERCEPT 深色](./azure-percept-dk-datasheet.md)中。
+下面列出的规格适用于 [Azure Percept DK](./azure-percept-dk-datasheet.md) 中包括的 Azure Percept Vision 设备。
 
 |产品规格           |“值”     |
 |--------------------------------|---------------------|
-|目标行业               |制造 <br> 智能建筑物 <br> 自动 <br> 零售 |
-|英雄方案                  |购物者分析 <br> 保质期可用性 <br> 缩减缩减 <br> 工作区监视|
-|维度                      |42mm x 42mm x 40mm (的 Azure Percept 远景 SoM 程序集)  <br> 42mm x 42mm x 6mm (愿景 SoM 芯片) |
-|管理控制平面        |Azure 设备更新 (ADU)           |
-|支持的软件和服务 |[Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) <br> [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/) <br> [ONNX 运行时](https://www.onnxruntime.ai/) <br> [OpenVINO](https://docs.openvinotoolkit.org/latest/index.html) <br> Azure 设备更新 |
-|AI 加速                 |Intel Movidius 无数 X (MA2085) 视觉处理单元 (VPU) 与 Intel 相机 ISP 集成，0.7 顶部 |
-|传感器和视觉指示器   |索尼 IMX219 相机传感器与周一至镜头<br>解决方法：在30FPS 上的8MP，距离： 50cm-无限大<br>FoV：120度对角线，颜色：宽动态范围，固定焦点滚动百叶窗|
-|照相机支持                  |RGB <br> 2个照相机可以同时运行 |
-|安全 Crypto-Controller      |ST-Micro STM32L462CE      |
+|目标行业               |制造 <br> 智能建筑 <br> Auto <br> Retail |
+|Hero 方案                  |购物者分析 <br> 保质期 <br> 收缩减少 <br> 工作区监视|
+|维度                      |42mm x 42mm x 40mm（Azure Percept Vision SoM 组件，带外壳） <br> 42mm x 42mm x 6mm（Vision SoM 芯片）|
+|管理控制平面        |Azure Device Update (ADU)          |
+|受支持的软件和服务 |[Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) <br> [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/) <br> [ONNX 运行时](https://www.onnxruntime.ai/) <br> [OpenVINO](https://docs.openvinotoolkit.org/latest/index.html) <br> Azure Device Update |
+|AI 加速                 |Intel Movidius Myriad X (MA2085) 视觉处理单元 (VPU)，集成 Intel 相机 ISP，0.7 TOPS |
+|传感器和视觉对象指示器   |带有 6P 镜头的 Sony IMX219 相机传感器<br>分辨率：8MP/30FPS；距离：50cm - 无限<br>FoV：120 度对角线；颜色：宽动态范围，定焦卷帘快门|
+|相机支持                  |RGB <br> 可以同时运行 2 个相机 |
+|安全加密控制器      |ST-Micro STM32L462CE      |
 |版本控制/ID 组件       |64kb EEPROM |
 |内存                          |LPDDR4 2GB     |
 |强力                           |3.5 W     |
-|端口                           |1x USB 3.0 类型 C <br> 2 MIPI 4 通道 (每个通道 1.5 Gbps)      |
-|控制接口              |2x I2C <br> 2x SPI <br> 6倍 PWM (GPIOs：2x 时钟、2x 帧同步、未使用的 2x)  <br> 2x 备用 GPIO |
-|认证                   |FCC <br> IC <br> RoHS <br> 触及 <br> UL   |
-|操作温度           |0到27摄氏度 (Azure Percept 愿景 SoM assembly with 壳体)  <br> -10 到70摄氏度 (愿景 SoM 芯片)  |
+|端口                           |1 个 USB 3.0 Type C <br> 2 个 MIPI 4 通道（每个通道高达 1.5 Gbps）     |
+|控制接口              |2 个 I2C <br> 2 个 SPI <br> 6 个 PWM（GPIO：2 个用于时钟，2 个用于帧同步，2 个未使用） <br> 2 个备用 GPIO |
+|认证                   |FCC <br> IC <br> RoHS <br> REACH <br> UL   |
+|工作温度           |0 到 27 摄氏度（Azure Percept Vision SoM 组件，带外壳） <br> -10 到 70 摄氏度（Vision SoM 芯片） |
 |触摸温度               |<= 48 摄氏度 |
-|相对湿度               |8% 至90%    |
+|相对湿度               |8% 到 90%    |

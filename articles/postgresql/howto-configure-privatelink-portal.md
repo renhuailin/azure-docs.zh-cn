@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 23b9774f28f915596abafbd8c1f6c38fc4f55748
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75defcf88128e1b100e403d74f76577525f0bdeb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95995278"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642119"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>使用门户创建和管理 Azure Database for PostgreSQL（单一服务器）的专用链接
 
@@ -201,7 +201,7 @@ ms.locfileid: "95995278"
         > [!NOTE]
         > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
-1. 选择“确定”  。
+1. 选择“确定”。
 
 1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
@@ -222,7 +222,7 @@ ms.locfileid: "95995278"
     Address:  10.1.3.4
     ```
 
-3. 使用任何可用的客户端测试 PostgreSQL 服务器的专用链接连接。 在以下示例中，我使用了 [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) 来执行该操作。
+3. 使用任何可用的客户端测试 PostgreSQL 服务器的专用链接连接。 在以下示例中，我使用了 [Azure Data Studio](/sql/azure-data-studio/download) 来执行该操作。
 
 4. 在“新建连接”中，输入或选择以下信息：
 

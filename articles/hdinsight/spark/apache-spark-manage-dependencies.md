@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f0673523c74a0ea298e7d2d520952c3e98877e91
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: f4940da47b832c2b3c39ab2fa225a229d1d730bf
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930047"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062703"
 ---
 # <a name="manage-spark-application-dependencies"></a>管理 Spark 应用程序依赖项
 
@@ -43,7 +43,7 @@ ms.locfileid: "98930047"
 
 从 Maven 存储库中找到包后，收集 **GroupId**、**ArtifactId** 和 **Version** 的值。 串连这三个值并以冒号分隔 ( **:** )。
 
-   ![连接包架构](./media/apache-spark-manage-dependencies/spark-package-schema.png "连接包架构")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/spark-package-schema.png " alt-text="连接包架构" border="true":::kage schema" border="true":::
 
 确保收集的值与群集相匹配。 在本例中，我们使用适用于 Scala 2.11 的 Spark Cosmos DB 连接器包，以及适用于 HDInsight 3.6 Spark 群集的 Spark 2.3。 如果不确定，请在 Spark 内核上运行代码单元中的 `scala.util.Properties.versionString` 以获取群集 Scala 版本。 运行 `sc.version` 以获取群集 Spark 版本。
 
@@ -70,7 +70,7 @@ import com.microsoft.azure.cosmosdb.spark._
 ### <a name="use-azure-toolkit-for-intellij"></a>使用 Azure Toolkit for IntelliJ
 [Azure Toolkit for IntelliJ 插件](./apache-spark-intellij-tool-plugin.md)提供将 Spark Scala 应用程序提交到 HDInsight 群集的 UI 体验。 它提供 `Referenced Jars` 和 `Referenced Files` 属性，用于在提交 Spark 应用程序时配置 jar 库路径。 如需更多详细信息，请参阅[如何使用适用于 HDInsight 的 Azure Toolkit for IntelliJ 插件](./apache-spark-intellij-tool-plugin.md#run-a-spark-scala-application-on-an-hdinsight-spark-cluster)。
 
-![“Spark 提交”对话框](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
+:::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png" alt-text="“Spark 提交”对话框" border="true":::
 
 ## <a name="jar-libs-for-cluster"></a>用于群集的 Jar 库
 在某些情况下，你可能希望在群集级别配置 jar 依赖项，以便每个应用程序都默认设有相同的依赖项。 方法是将 jar 路径添加到 Spark 驱动程序和执行程序类路径。
@@ -89,11 +89,11 @@ import com.microsoft.azure.cosmosdb.spark._
     spark.executor.extraClassPath=/usr/libs/sparklibs/*
     ```
 
-   ![更改 Spark 默认配置](./media/apache-spark-manage-dependencies/change-spark-default-config.png "更改 Spark 默认配置")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/change-spark-default-config.png " alt-text="更改 Spark 默认配置" border="true":::ult config" border="true":::
 
 3. 保存更改的配置并重启受影响的服务。
 
-   ![重启受影响的服务](./media/apache-spark-manage-dependencies/restart-impacted-services.png "重启受影响的服务")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/restart-impacted-services.png " alt-text="重启受影响的服务" border="true":::ted services" border="true":::
 
 可以使用[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)自动执行这些步骤。 可以参考用于[添加 Hive 自定义库](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)的脚本操作。 更改 Spark 服务配置时，请确保使用 Ambari API，而不是直接修改配置文件。 
 

@@ -20,7 +20,7 @@ ArrInspector 是一个基于 Web 的工具，用于检查正在运行的 Azure �
 
 ## <a name="connecting-to-the-arrinspector"></a>连接到 ArrInspector
 
-获取 ARR 服务器的主机名（以 `mixedreality.azure.com` 结尾）后，使用 [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector) 进行连接。 此函数在运行应用程序的设备上创建一个 `StartArrInspector.html`。 若要启动 ArrInspector，请在电脑上使用某个浏览器（Edge、Firefox 或 Chrome）打开该文件。 该文件的有效期仅为 24 小时。
+获取 ARR 服务器的主机名（以 `mixedreality.azure.com` 结尾）后，使用 [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector) 进行连接。 此函数在运行应用程序的设备上创建一个 `StartArrInspector.html`。 若要启动 ArrInspector，请在电脑上使用某个浏览器（Microsoft Edge、Firefox 或 Chrome）打开该文件。 该文件的有效期仅为 24 小时。
 
 如果调用 `ConnectToArrInspectorAsync` 的应用已在电脑上运行：
 

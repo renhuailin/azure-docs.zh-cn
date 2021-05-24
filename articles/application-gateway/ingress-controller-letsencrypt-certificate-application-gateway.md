@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 638b8f24f8cf72f5c6a594a3c5a6eaacf469df8f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807035"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056668"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>将 LetsEncrypt.org 的证书用在 AKS 群集的应用程序网关上
 
@@ -25,7 +25,7 @@ ms.locfileid: "84807035"
     请运行以下脚本来安装 `cert-manager` Helm Chart。 这会：
 
     - 在 AKS 上创建新的 `cert-manager` 命名空间
-    - 创建以下 CRD：证书、质询、ClusterIssuer、颁发者、顺序
+    - 创建以下 CRD：Certificate、Challenge、ClusterIssuer、Issuer、Order
     - 安装 cert-manager Chart（来自 [docs.cert-manager.io](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps)）
 
     ```bash
@@ -47,11 +47,23 @@ ms.locfileid: "84807035"
     helm repo update
 
     # Install the cert-manager Helm chart
+    # Helm v3+
+    helm install \
+      cert-manager jetstack/cert-manager \
+      --namespace cert-manager \
+      --version v1.0.4 \
+      # --set installCRDs=true
+
+    # Helm v2
     helm install \
       --name cert-manager \
       --namespace cert-manager \
-      --version v0.8.0 \
-      jetstack/cert-manager
+      --version v1.0.4 \
+      jetstack/cert-manager \
+      # --set installCRDs=true
+      
+    #To automatically install and manage the CRDs as part of your Helm release, 
+    #   you must add the --set installCRDs=true flag to your Helm installation command.
     ```
 
 2. ClusterIssuer 资源
@@ -101,7 +113,7 @@ ms.locfileid: "84807035"
     注意注释 `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`，它告知 cert-manager 处理标记的入口资源。
 
     > [!IMPORTANT] 
-    > `<PLACEHOLDERS.COM>`在下面的 YAML 中将更新为您自己的域 (或应用程序网关一，例如 "kh-aks-ingress.westeurope.cloudapp.azure.com" ) 
+    > 将下面 YAML 中的 `<PLACEHOLDERS.COM>` 更新为你自己的域（或应用程序网关域，例如“kh-aks-ingress.westeurope.cloudapp.azure.com”）
 
     ```bash
     kubectl apply -f - <<EOF
@@ -127,7 +139,7 @@ ms.locfileid: "84807035"
     EOF
     ```
 
-    几秒钟后，可以使用自动颁发的**暂存** `Lets Encrypt` 证书通过应用程序网关 HTTPS URL 访问 `guestbook` 服务。
+    几秒钟后，可以使用自动颁发的 **暂存** `Lets Encrypt` 证书通过应用程序网关 HTTPS URL 访问 `guestbook` 服务。
     浏览器可能会警告你：证书颁发机构无效。 暂存证书由 `CN=Fake LE Intermediate X1` 颁发。 这表示系统的运行符合预期，你可以获取生产证书了。
 
 4. 生产证书

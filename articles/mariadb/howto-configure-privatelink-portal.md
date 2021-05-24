@@ -3,14 +3,14 @@ title: 专用链接 - Azure 门户 - Azure Database for MariaDB
 description: 了解如何从 Azure 门户为 Azure Database for MariaDB 配置专用链接
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 127a1c83525c4a9c457f551c05045a63a3c4347a
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98659618"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>使用门户创建和管理用于 Azure Database for MariaDB 的专用链接
@@ -35,7 +35,7 @@ ms.locfileid: "98659618"
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”  。
 2. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16。 |
@@ -53,7 +53,7 @@ ms.locfileid: "98659618"
 
 2. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -80,7 +80,7 @@ ms.locfileid: "98659618"
 
 1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。|
@@ -103,7 +103,7 @@ ms.locfileid: "98659618"
 
 1. 在“Azure Database for MariaDB”中，提供以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -137,7 +137,7 @@ ms.locfileid: "98659618"
 
 1. 在“创建专用终结点 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -149,7 +149,7 @@ ms.locfileid: "98659618"
 5. 在完成时选择“下一步:资源”。
 6. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |
@@ -160,18 +160,18 @@ ms.locfileid: "98659618"
 7. 在完成时选择“下一步:配置”。
 8. 在“创建专用终结点 - 配置”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |**网络**| |
     | 虚拟网络| 选择“MyVirtualNetwork”。 |
     | 子网 | 选择“mySubnet”。 ** |
     |**专用 DNS 集成**||
     |与专用 DNS 区域集成 |请选择“是”。 |
-    |专用 DNS 区域 |选择 *(新建) privatelink.mariadb.database.azure.com* |
+    |专用 DNS 区域 |选择“(新)privatelink.mariadb.database.azure.com” |
     |||
 
     > [!Note] 
-    > 为服务使用预定义的专用 DNS 区域，或提供首选的 DNS 区域名称。 有关详细信息，请参阅 [Azure 服务 DNS 区域配置](../private-link/private-endpoint-dns.md) 。
+    > 为服务使用预定义的专用 DNS 区域，或提供首选的 DNS 区域名称。 有关详细信息，请参阅 [Azure 服务 DNS 区域配置](../private-link/private-endpoint-dns.md)。
 
 1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
 2. 看到“验证通过”消息时，选择“创建” 。 
@@ -227,10 +227,10 @@ ms.locfileid: "98659618"
 
 4. 在“新建连接”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 服务器类型| 选择“MariaDB”。|
-    | 服务器名称| 选择 *mydemoserver.privatelink.mariadb.database.azure.com* |
+    | 服务器名称| 选择“mydemoserver.privatelink.mariadb.database.azure.com” |
     | 用户名 | 输入 username@servername 作为用户名，这是在 MariaDB 服务器创建过程中提供的。 |
     |密码 |输入创建 MariaDB 服务器期间提供的密码。 |
     |SSL|选择“必需”。|
@@ -251,7 +251,7 @@ ms.locfileid: "98659618"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本操作方法中，你在虚拟网络上创建了一个虚拟机、一个 Azure Database for MariaDB 和一个私有终结点用于专用访问。 你从 internet 连接到一个 VM，并使用专用链接安全地传达到 MariaDB 服务器。 若要了解有关专用终结点的详细信息，请参阅 [什么是 Azure 专用终结点](../private-link/private-endpoint-overview.md)。
+在本操作指南中，你已在虚拟网络中创建了一个 VM，还创建了一个 Azure Database for MariaDB 和一个用于专用访问的专用终结点。 你已从 Internet 连接到一个 VM，并使用专用链接安全地与 MariaDB 服务器通信。 若要详细了解专用终结点，请参阅[什么是 Azure 专用终结点](../private-link/private-endpoint-overview.md)。
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

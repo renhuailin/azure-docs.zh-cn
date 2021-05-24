@@ -11,12 +11,12 @@ metadata:
   author: jonburchel
   ms.author: jburchel
   ms.date: 10/02/2019
-  ms.openlocfilehash: 719d57bbc676e699a82104f9a341bd443cf768ff
-  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.openlocfilehash: 00cf99e97df08bde67e31250b4222fc68f0140c6
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "108293127"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110074991"
 landingContent:
 - title: 关于 Azure 数据工厂
   linkLists:
@@ -56,6 +56,10 @@ landingContent:
       url: ./quickstart-create-data-factory-rest-api.md
     - text: 资源管理器模板
       url: ./quickstart-create-data-factory-resource-manager-template.md
+  - linkListType: learn
+    links:
+    - text: Azure 数据工厂简介
+      url: https://docs.microsoft.com/learn/modules/intro-to-azure-data-factory/
 - title: 数据移动
   linkLists:
   - linkListType: concept
