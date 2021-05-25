@@ -3,12 +3,12 @@ title: 开发并部署 gRPC 推理服务器 - Azure
 description: 本文提供了有关开发并部署 gRPC 推理服务器的指导。
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dbf46a26626a4143d76385968d092c4f238729da
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98881646"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105034854"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>操作指南 - 开发并部署 gRPC 推理服务器
 
@@ -242,7 +242,7 @@ gRPC 扩展模块：
         * 在 GraphInstanceSet 下，编辑图形拓扑的名称以匹配前面链接中的值：<br/>`"topologyName": "InferencingWithGrpcExtension"`
         * 在 GraphTopologyDelete 下，编辑名称：<br/>`"name": "InferencingWithGrpcExtension"`
 
-            此拓扑（例如 `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json`）必须定义一个扩展地址：
+            此拓扑（例如 `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json`）必须定义一个扩展地址：
     * 扩展地址参数
 
         ```
@@ -308,4 +308,4 @@ gRPC 扩展模块：
 
 ## <a name="next-steps"></a>后续步骤
 
-按照[使用你的模型分析实时视频](use-your-model-quickstart.md)快速入门中提到的“准备监视事件”步骤来运行示例并解释结果。 另外，请查看我们的示例 gRPC 拓扑：[gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json)、[CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json)、[EVRtoAssetsByGrpcExtension 和 [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json)。
+按照[使用你的模型分析实时视频](use-your-model-quickstart.md)快速入门中提到的“准备监视事件”步骤来运行示例并解释结果。 另外，请查看我们的示例 gRPC 拓扑：[gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json)、[CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json)、[EVRtoAssetsByGrpcExtension 和 [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json)。

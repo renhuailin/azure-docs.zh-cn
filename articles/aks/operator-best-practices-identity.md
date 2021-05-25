@@ -8,10 +8,10 @@ ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 8e0c7324f5b73b3a2ac5e5fd6fa256202035077a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790963"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
@@ -96,44 +96,44 @@ roleRef:
 要查看如何控制对 AKS 资源和 kubeconfig 的访问权限，请参阅[限制对群集配置文件的访问](control-kubeconfig-access.md)。
 
 2. 访问 Kubernetes API。 此访问级别可通过 [Kubernetes RBAC](#use-kubernetes-role-based-access-control-kubernetes-rbac)（传统上）进行控制，或通过将 Azure RBAC 与 AKS 集成以实现 Kubernetes 授权来进行控制。
-若要了解如何使用 Azure RBAC 以粒度方式向 Kubernetes API 提供权限，请参阅 [使用 AZURE rbac 进行 Kubernetes 授权](manage-azure-rbac.md)。
+若要了解如何使用 Azure RBAC 向 Kubernetes API 精细授予权限，请参阅[使用 Azure RBAC 进行 Kubernetes 授权](manage-azure-rbac.md)。
 
 ## <a name="use-pod-managed-identities"></a>使用 Pod 托管标识
 
 **最佳做法指导** - 不要在 pod 或容器映像中使用固定的凭据，因为它们存在泄漏或滥用的风险。 应该使用 pod 标识通过中心 Azure AD 标识解决方案来自动请求访问权限。 Pod 标识仅适用于 Linux Pod 和容器映像。
 
 > [!NOTE]
-> Pod Windows 容器的托管标识支持即将推出。
+> 对 Windows 容器的 Pod 托管标识支持即将推出。
 
 当 pod 需要访问其他 Azure 服务（例如 Cosmos DB、Key Vault 或 Blob 存储）时，pod 需要访问凭据。 可以使用容器映像定义这些访问凭据或将其注入为 Kubernetes 机密，但需要手动创建并分配这些凭据。 通常，凭据会在不同的 pod 之间重复使用，并且不会定期轮换。
 
-Pod-Azure 资源的托管标识使你可以通过 Azure AD 自动请求访问服务。 Pod 托管标识目前以预览版提供 Azure Kubernetes 服务。 若要开始使用，请参阅 [Azure Kubernetes Service 中的使用 Azure Active Directory pod 管理的标识 (预览版) ]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) 文档。 使用 Pod 托管标识，你不会手动定义 Pod 的凭据，而是会实时请求访问令牌，并且可以使用它来仅访问分配给他们的服务。 在 AKS 中，有两个组件用于处理允许 pod 使用托管标识的操作：
+使用 Azure 资源的 Pod 托管标识，可以通过 Azure AD 自动请求对服务的访问。 对于 Azure Kubernetes 服务，Pod 托管标识目前处于预览阶段。 若要开始使用，请参阅[在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 托管标识（预览）]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)文档。 借助 Pod 托管标识，你不必为 Pod 手动定义凭据，相反，它们会实时请求获取访问令牌，并只能使用它来访问分配给它们的服务。 在 AKS 中，有两个组件处理操作，以便 Pod 使用托管标识：
 
 * **节点管理标识 (NMI) 服务器** 是在 AKS 群集中每个节点上作为守护程序集运行的 pod。 NMI 服务器侦听发送到 Azure 服务的 pod 请求。
-* **Azure 资源提供程序** 将查询 Kubernetes API 服务器，并检查与 pod 相对应的 Azure 标识映射。
+* Azure 资源提供程序查询 Kubernetes API 服务器，并检查是否有与 Pod 相对应的 Azure 标识映射。
 
-当 pod 请求 Azure 服务访问权限时，网络规则会将流量重定向到节点管理标识 (NMI) 服务器。 NMI 服务器根据其远程地址来识别请求访问 Azure 服务的 pod，并查询 Azure 资源提供程序。 Azure 资源提供程序会检查 AKS 群集中的 Azure 标识映射，NMI 服务器会根据 pod 的标识映射从 Azure Active Directory (AD) 请求访问令牌。 Azure AD 提供对 NMI 服务器的访问权限，该访问权限将返回给 pod。 然后，pod 可以使用此访问令牌请求对 Azure 中服务的访问权限。
+当 pod 请求 Azure 服务访问权限时，网络规则会将流量重定向到节点管理标识 (NMI) 服务器。 NMI 服务器根据远程地址识别请求访问 Azure 服务的 Pod，并查询 Azure 资源提供程序。 Azure 资源提供程序检查 AKS 群集中是否有 Azure 标识映射，然后 NMI 服务器根据 Pod 的标识映射从 Azure Active Directory (AD) 请求获取访问令牌。 Azure AD 提供对 NMI 服务器的访问权限，该访问权限将返回给 pod。 然后，pod 可以使用此访问令牌请求对 Azure 中服务的访问权限。
 
 在以下示例中，开发人员创建使用托管标识请求 Azure SQL 数据库访问权限的 Pod：
 
 ![pod 标识可让 pod 自动请求对其他服务的访问权限](media/operator-best-practices-identity/pod-identities.png)
 
 1. 群集操作员首先创建一个服务帐户，当 pod 请求服务访问权限时，可以使用该帐户来映射标识。
-1. 将 NMI 服务器部署为与 Azure 资源提供程序一起中继所有 pod 请求，以便 Azure AD 的访问令牌。
+1. NMI 服务器与 Azure 资源提供程序一起部署，以将任何关于访问令牌的 Pod 请求中继到 Azure AD。
 1. 开发人员使用托管标识部署一个 pod，该 pod 可通过 NMI 服务器请求访问令牌。
 1. 该令牌将返回给 Pod，并用于访问 Azure SQL 数据库
 
 > [!NOTE]
 > Pod 托管标识目前处于预览状态。
 
-若要使用 Pod 托管标识，请参阅 [在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 管理的标识 (预览版) ]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)。
+若要使用 Pod 托管标识，请参阅[在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 托管标识（预览）]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)。
 
 ## <a name="next-steps"></a>后续步骤
 
 本最佳做法文章重点介绍了群集和资源的身份验证与授权。 若要实施其中的某些最佳做法，请参阅以下文章：
 
 * [将 Azure Active Directory 与 AKS 集成][aks-aad]
-* [在 Azure Kubernetes Service (预览版中使用 Azure Active Directory pod 托管标识) ]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+* [在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 托管标识（预览）]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
 
 有关 AKS 中的群集操作的详细信息，请参阅以下最佳做法：
 

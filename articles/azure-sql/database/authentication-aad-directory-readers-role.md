@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 5764a8df862610fc076ce2810fcc0d4bf8dbda3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d764c6b6cff6a0ba23d659d4fda63e21aac9b155
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99094550"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644182"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Azure SQL 的 Azure Active Directory 中的目录读取者角色
 
@@ -25,13 +25,13 @@ ms.locfileid: "99094550"
 
 Azure Active Directory (Azure AD) 推出了[使用云组来管理 Azure Active Directory 中的角色分配（预览版）](../../active-directory/roles/groups-concept.md)。 这可以实现向组分配 Azure AD 角色。
 
-为 Azure SQL 数据库、Azure SQL 托管实例或 Azure Synapse Analytics 启用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)时，必须向标识分配 Azure AD [目录读取者](../../active-directory/roles/permissions-reference.md#directory-readers)角色，以实现对 [Azure AD 图形 API](../../active-directory/develop/active-directory-graph-api.md) 的读取访问。 SQL 数据库和 Azure Synapse 的托管标识称为服务器标识。 SQL 托管实例的托管标识称为托管实例标识，在创建实例时会自动分配。 有关向 SQL 数据库或 Azure Synapse 分配服务器标识的详细信息，请参阅[启用服务主体以创建 Azure AD 用户](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users)。
+为 Azure SQL 数据库、Azure SQL 托管实例或 Azure Synapse Analytics 启用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)时，必须向标识分配 Azure AD [目录读取者](../../active-directory/roles/permissions-reference.md#directory-readers)角色，以实现对 [Azure AD 图形 API](/graph/migrate-azure-ad-graph-planning-checklist) 的读取访问。 SQL 数据库和 Azure Synapse 的托管标识称为服务器标识。 SQL 托管实例的托管标识称为托管实例标识，在创建实例时会自动分配。 有关向 SQL 数据库或 Azure Synapse 分配服务器标识的详细信息，请参阅[启用服务主体以创建 Azure AD 用户](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users)。
 
 目录读取者角色是执行以下操作所必需的：
 
 - 为 SQL 托管实例创建 Azure AD 登录名
 - 在 Azure SQL 中模拟 Azure AD 用户
-- 将使用 Windows 身份验证的 SQL Server 用户迁移到使用 Azure AD 身份验证的 SQL 托管实例（使用 [ALTER USER (Transact-SQL)](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration) 命令）
+- 将使用 Windows 身份验证的 SQL Server 用户迁移到使用 Azure AD 身份验证的 SQL 托管实例（使用 [ALTER USER (Transact-SQL)](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration) 命令）
 - 更改 SQL 托管实例的 Azure AD 管理员
 - 允许[服务主体（应用程序）](authentication-aad-service-principal.md)在 Azure SQL 中创建 Azure AD 用户
 

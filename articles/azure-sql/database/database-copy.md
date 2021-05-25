@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: stevestein
 ms.author: sashan
-ms.reviewer: ''
-ms.date: 10/30/2020
-ms.openlocfilehash: 7f053b1984a2d838deb14bacd10cdc071e19d8a1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: MT
+ms.reviewer: wiassaf
+ms.date: 03/10/2021
+ms.openlocfilehash: 1a86522975ffb7b5b2bd514402dd97a76aa2506e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035132"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014581"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>复制 Azure SQL 数据库中数据库的事务一致性副本
 
@@ -26,10 +26,10 @@ ms.locfileid: "98035132"
 
 ## <a name="overview"></a>概述
 
-数据库副本是源数据库在发起复制请求后的某个时间点的事务一致快照。 可以为副本选择同一服务器或其他服务器。 还可以选择保留源数据库的备份冗余、服务层和计算大小，或者在相同或不同的服务层中使用不同的备份存储冗余和/或计算大小。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 复制的数据库中的登录名、用户和权限独立于源数据库进行管理。 副本使用异地复制技术创建。 副本种子设定完成后，异地复制链接会自动终止。 使用异地复制的所有要求都适用于数据库复制操作。 有关详细信息，请参阅[活动异地复制概述](active-geo-replication-overview.md)。
+数据库副本是源数据库在发起复制请求后的某个时间点的事务一致快照。 可以为副本选择同一服务器或其他服务器。 此外，你还可以选择保留源数据库的备份冗余、服务层和计算大小，或在相同或不同服务层中使用不同的备份存储冗余和/或计算大小。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 复制的数据库中的登录名、用户和权限独立于源数据库进行管理。 副本使用异地复制技术创建。 副本种子设定完成后，异地复制链接会自动终止。 使用异地复制的所有要求都适用于数据库复制操作。 有关详细信息，请参阅[活动异地复制概述](active-geo-replication-overview.md)。
 
 > [!NOTE]
-> Azure SQL 数据库可配置的备份存储冗余目前在巴西南部公共预览版中提供，并且仅在东南亚 Azure 区域公开发布。 在预览中，如果使用本地冗余或区域冗余备份存储冗余创建了源数据库，则不支持将数据库复制到其他 Azure 区域中的服务器。 
+> Azure SQL 数据库可配置备份存储冗余目前在巴西南部提供公共预览版，且仅在 Azure 东南亚地区正式发布。 在预览中，如果源数据库是使用本地冗余或区域冗余备份存储冗余创建的，则不支持将数据库副本复制到其他 Azure 区域中的服务器。 
 
 ## <a name="logins-in-the-database-copy"></a>数据库副本中的登录名
 
@@ -89,7 +89,7 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 >
 
 > [!IMPORTANT]
-> 使用 T-sql 创建数据库时选择备份存储冗余 .。。目前尚不支持命令的副本。 
+> 使用 T-SQL CREATE DATABASE 时选择备份存储冗余…尚不支持 AS COPY OF 命令。 
 
 ### <a name="copy-to-the-same-server"></a>复制到同一服务器
 
@@ -98,7 +98,7 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 此命令将 Database1 复制到同一服务器上名为 Database2 的新数据库。 根据数据库的大小，复制操作可能需要一些时间才能完成。
 
    ```sql
-   -- execute on the master database to start copying
+   -- Execute on the master database to start copying
    CREATE DATABASE Database2 AS COPY OF Database1;
    ```
 
@@ -108,13 +108,13 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 
 此命令将 Database1 复制到名为 pool1 的弹性池中名为 Database2 的新数据库。 根据数据库的大小，复制操作可能需要一些时间才能完成。
 
-Database1 可以是单个或共用的数据库。 支持在不同的层池之间进行复制，但有些跨层副本将不会成功。 例如，你可以将单个或弹性标准 db 复制到常规用途池中，但无法将标准弹性数据库复制到高级池。 
+Database1 可以是单一数据库或共用数据库。 支持在不同层级的池之间进行复制，但有些跨层复制不会成功。 例如，可以将单一数据库或弹性标准数据库复制到常规用途的池中，但无法将标准弹性数据库复制到高级池中。 
 
    ```sql
-   -- execute on the master database to start copying
+   -- Execute on the master database to start copying
    CREATE DATABASE "Database2"
    AS COPY OF "Database1"
-   (SERVICE_OBJECTIVE = ELASTIC_POOL( name = "pool1" ) ) ;
+   (SERVICE_OBJECTIVE = ELASTIC_POOL( name = "pool1" ) );
    ```
 
 ### <a name="copy-to-a-different-server"></a>复制到其他服务器
@@ -136,43 +136,45 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 可以按[将 SQL 数据库复制到其他服务器](#copy-to-a-different-server)部分中的步骤操作，使用 T-SQL 将数据库复制到其他订阅中的服务器。 确保所用登录名的名称和密码与源数据库的数据库所有者的名称和密码相同。 此外，登录名在源服务器和目标服务器上都必须是 `dbmanager` 角色的成员或者是服务器管理员。
 
 ```sql
-Step# 1
-Create login and user in the master database of the source server.
+--Step# 1
+--Create login and user in the master database of the source server.
 
 CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx'
 GO
-CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo];
+GO
+ALTER ROLE dbmanager ADD MEMBER loginname;
 GO
 
-Step# 2
-Create the user in the source database and grant dbowner permission to the database.
+--Step# 2
+--Create the user in the source database and grant dbowner permission to the database.
 
-CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo];
 GO
-exec sp_addrolemember 'db_owner','loginname'
-GO
-
-Step# 3
-Capture the SID of the user “loginname” from master database
-
-SELECT [sid] FROM sysusers WHERE [name] = 'loginname'
-
-Step# 4
-Connect to Destination server.
-Create login and user in the master database, same as of the source server.
-
-CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx', SID = [SID of loginname login on source server]
-GO
-CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
-GO
-exec sp_addrolemember 'dbmanager','loginname'
+ALTER ROLE db_owner ADD MEMBER loginname;
 GO
 
-Step# 5
-Execute the copy of database script from the destination server using the credentials created
+--Step# 3
+--Capture the SID of the user "loginname" from master database
+
+SELECT [sid] FROM sysusers WHERE [name] = 'loginname';
+
+--Step# 4
+--Connect to Destination server.
+--Create login and user in the master database, same as of the source server.
+
+CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx', SID = [SID of loginname login on source server];
+GO
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo];
+GO
+ALTER ROLE dbmanager ADD MEMBER loginname;
+GO
+
+--Step# 5
+--Execute the copy of database script from the destination server using the credentials created
 
 CREATE DATABASE new_database_name
-AS COPY OF source_server_name.source_database_name
+AS COPY OF source_server_name.source_database_name;
 ```
 
 > [!NOTE]
@@ -194,7 +196,7 @@ AS COPY OF source_server_name.source_database_name
 > [!IMPORTANT]
 > 如果需要使用比源小得多的服务目标创建副本，则目标数据库可能没有足够的资源来完成种子设定过程，这可能会导致复制操作失败。 在这种情况下，请使用异地还原请求在不同服务器和/或不同区域中创建副本。 有关详细信息，请参阅[使用数据库备份恢复 Azure SQL 数据库](recovery-using-backups.md#geo-restore)。
 
-## <a name="azure-roles-to-manage-database-copy"></a>用于管理数据库副本的 Azure 角色
+## <a name="azure-rbac-roles-and-permissions-to-manage-database-copy"></a>管理数据库副本的 Azure RBAC 角色和权限
 
 若要创建数据库副本，需要具有以下角色
 

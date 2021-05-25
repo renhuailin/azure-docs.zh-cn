@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b56313183ba3bf39313ec06ddb9cdb36ac445aee
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92744168"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204506"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>为 Azure 应用服务配置 ASP.NET 应用
 
@@ -19,7 +19,7 @@ ms.locfileid: "92744168"
 
 必须将 ASP.NET 应用作为编译的二进制文件部署到 Azure 应用服务。 Visual Studio 发布工具先构建解决方案，然后直接部署已编译的二进制文件，而应用服务部署引擎则先部署代码存储库，然后编译二进制文件。
 
-本指南为 ASP.NET 开发者提供了重要概念和说明。 如果你从未使用过 Azure 应用服务，则应首先按照 [ASP.NET 快速入门](quickstart-dotnet-framework.md)和[将 ASP.NET 与 SQL 数据库配合使用教程](app-service-web-tutorial-dotnet-sqldatabase.md)进行操作。
+本指南为 ASP.NET 开发者提供了重要概念和说明。 如果你从未使用过 Azure 应用服务，则应首先按照 [ASP.NET 快速入门](./quickstart-dotnetcore.md?tabs=netframework48)和[将 ASP.NET 与 SQL 数据库配合使用教程](app-service-web-tutorial-dotnet-sqldatabase.md)进行操作。
 
 ## <a name="show-supported-net-framework-runtime-versions"></a>显示受支持的 .NET Framework 运行时版本
 

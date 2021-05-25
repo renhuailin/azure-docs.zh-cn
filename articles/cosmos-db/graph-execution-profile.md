@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: chrande
 ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93087479"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>如何使用执行配置文件步骤来评估 Gremlin 查询
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
-本文概述如何使用适用于 Azure Cosmos DB Gremlin API 图形数据库的执行配置文件步骤。 此步骤提供故障排除和查询优化的相关信息，适用于可以针对 Cosmos DB Gremlin API 帐户执行的任何 Gremlin 查询。
+本文概述了如何为 Azure Cosmos DB Gremlin API 图形数据库使用“执行配置文件”步骤。 此步骤提供有关疑难解答和查询优化的相关信息，并且它与可针对 Cosmos DB Gremlin API 帐户执行的任何 Gremlin 查询兼容。
 
-若要使用此步骤，只需在 Gremlin 查询的末尾追加 `executionProfile()` 函数调用即可。 **将执行你的 Gremlin 查询** ，操作结果将返回包含查询执行配置文件的 JSON 响应对象。
+若要使用此步骤，只需在 Gremlin 查询的末尾追加 `executionProfile()` 函数调用即可。 **将执行你的 Gremlin 查询**，操作结果将返回包含查询执行配置文件的 JSON 响应对象。
 
 例如：
 
@@ -139,21 +139,21 @@ ms.locfileid: "93087479"
 ## <a name="execution-profile-response-objects"></a>执行配置文件响应对象
 
 executionProfile() 函数的响应将生成采用以下结构的 JSON 对象层次结构：
-  - **Gremlin 操作对象** ：表示已执行的整个 Gremlin 操作。 包含以下属性。
+  - **Gremlin 操作对象**：表示已执行的整个 Gremlin 操作。 包含以下属性。
     - `gremlin`：已执行的显式 Gremlin 语句。
     - `totalTime`：执行该步骤所花费的时间（以毫秒为单位）。 
     - `metrics`：一个数组，其中包含为了完成查询而执行的每个 Cosmos DB 运行时运算符。 此列表已按执行顺序排序。
     
-  - **Cosmos DB 运行时运算符** ：表示整个 Gremlin 操作的每个组件。 此列表已按执行顺序排序。 每个对象包含以下属性：
+  - **Cosmos DB 运行时运算符**：表示完整 Gremlin 运算的每个组件。 此列表已按执行顺序排序。 每个对象包含以下属性：
     - `name`：运算符的名称。 这是已评估和执行的步骤的类型。 请在下表中了解详细信息。
     - `time`：给定的运算符所花费的时间（以毫秒为单位）。
     - `annotations`：包含特定于已执行的运算符的其他信息。
-    - `annotations.percentTime`：执行特定运算符所花费的时间占总时间的百分比。
+    - `annotations.percentTime`：执行特定运算符所用总时间的百分比。
     - `counts`：此运算符从存储层返回的对象数。 此值包含在内部的 `counts.resultCount` 标量值中。
     - `storeOps`：表示可以跨一个或多个分区的存储操作。
     - `storeOps.fanoutFactor`：表示此特定存储操作访问的分区数。
     - `storeOps.count`：表示此存储操作返回的结果数。
-    - `storeOps.size`：表示给定存储操作的结果大小（以字节为单位）。
+    - `storeOps.size`：表示给定存储操作的结果的大小（以字节为单位）。
 
 Cosmos DB Gremlin 运行时运算符|说明
 ---|---

@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: f2d5d618fabbe7400ce825f984ace1622a524f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88004023"
 ---
 # <a name="send-secure-push-notifications-with-azure-notification-hubs"></a>通过 Azure 通知中心发送安全推送通知
@@ -47,18 +47,18 @@ ms.locfileid: "88004023"
   * 此 Android 设备将联系请求安全有效负载的后端。
   * 此应用可以将有效负载显示为设备上的通知。
 
-请务必注意，在之前的流程（以及本教程中）中，假设此设备会在用户登录后在本地存储中存储身份验证令牌。 此方法可保证无缝体验，因为设备可以使用此令牌检索通知的安全有效负载。 如果你的应用程序未在设备上存储身份验证令牌，或者如果这些令牌可能已过期，则在收到推送通知时，设备应用会显示一般通知，提示用户启动应用。 然后，应用对用户进行身份验证并显示通知有效负载。
+请务必注意，在之前的流程（以及本教程中）中，假设此设备会在用户登录后在本地存储中存储身份验证令牌。 此方法可以保证无缝的体验，因为该设备可以使用此令牌检索通知的安全有效负载。 如果应用程序未在设备上存储身份验证令牌，或者如果这些令牌可能已过期，那么此设备应用程序在收到推送通知时应显示一般性通知，提示用户启动此应用程序。 然后，应用对用户进行身份验证并显示通知有效负载。
 
-本教程介绍如何发送安全推送通知。 它以 [通知用户](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) 教程为基础，因此你应该先完成该教程中的步骤。
+本教程介绍如何发送安全推送通知。 它以[通知用户](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md)教程为基础，因此应先完成该教程中的步骤。
 
 > [!NOTE]
-> 本教程假定你已创建并配置了通知中心，如通知中心 [入门 (Android) ](notification-hubs-android-push-notification-google-gcm-get-started.md)中所述。
+> 本教程假设已按照[通知中心入门 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) 中所述创建并配置了通知中心。
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-android-project"></a>修改 Android 项目
 
-现在，你已将应用后端修改为只发送推送通知的 ID，必须更改 Android 应用程序以处理该通知并回调后端以检索要显示的安全消息。
+现在，已将应用程序后端修改为只发送推送通知的 ID，因此，必须更改 Android 应用程序以处理此通知，并回调后端以检索要显示的安全消息。
 若要实现此目标，必须确保 Android 应用在收到推送通知时知道如何使用后端对自身进行身份验证。
 
 现在，请修改登录流程，以在应用的共享首选项中保存身份验证标头值。 可以使用类似机制来存储应用需要使用的任何身份验证令牌（例如 OAuth 令牌），从而无需用户凭据。

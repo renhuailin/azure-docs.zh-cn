@@ -13,10 +13,10 @@ ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
 ms.openlocfilehash: 80be5ca22f3dfb673f09327108e66fccc9de6ddd
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98918037"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和账户限制
@@ -41,9 +41,9 @@ ms.locfileid: "98918037"
 
 ## <a name="azure-ad-password-policies"></a><a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Azure AD 密码指南
 
-密码策略应用于直接在 Azure AD 中创建和管理的所有用户帐户。 尽管可以 [为 Azure AD 密码保护或帐户锁定参数配置自定义禁止密码](tutorial-configure-custom-password-protection.md) ，但无法修改某些密码策略设置。
+密码策略应用于直接在 Azure AD 中创建和管理的所有用户帐户。 尽管可以[为 Azure AD 密码保护或帐户锁定参数配置自定义禁止密码](tutorial-configure-custom-password-protection.md)，但无法修改其中某些密码策略设置。
 
-默认情况下，使用错误的密码尝试登录 10 次失败后，帐户会被锁定。 用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 [智能锁定](howto-password-smart-lockout.md) 跟踪最后三个错误密码哈希，以避免为同一密码增加锁定计数器的值。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。你可以定义智能锁定阈值和持续时间。
+默认情况下，使用错误的密码尝试登录 10 次失败后，帐户会被锁定。 用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 [智能锁定](howto-password-smart-lockout.md)跟踪最后三个错误的密码哈希，以避免对相同密码增大锁定计数器。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。你可以定义智能锁定阈值和持续时间。
 
 除非启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，否则 Azure AD 密码策略不适用于使用 Azure AD Connect 从本地 AD DS 环境同步的用户帐户。
 
@@ -86,7 +86,7 @@ ms.locfileid: "98918037"
   * 安全管理员
   * 特权角色管理员
   * Intune 管理员
-  * Azure AD 联接的设备本地管理员
+  * 已加入 Azure AD 的设备的本地管理员
   * 应用程序代理服务器管理员
   * Dynamics 365 管理员
   * Power BI 服务管理员
@@ -105,12 +105,12 @@ ms.locfileid: "98918037"
 单门策略需要一条身份验证数据，如电子邮件地址或电话号码。 单门策略在以下情况下适用：
 
 * 它在试用订阅的前 30 天中；或
-* 尚未为 Azure AD 租户配置自定义域，因此使用默认的 **. onmicrosoft.com*。 不建议在生产环境中使用默认的 **. onmicrosoft.com* 域;与
+* 尚未为 Azure AD 租户配置自定义域，因此使用的是默认值（即，*.onmicrosoft.com）。 建议不要将默认的“*.onmicrosoft.com”域用于生产环境；并且
 * Azure AD Connect 未同步标识
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>密码过期策略
 
-*全局管理员* 或 *用户管理员* 可以使用 [用于 Windows PowerShell 的 Microsoft Azure AD 模块](/powershell/module/Azuread/)将用户密码设置为永不过期。
+一个“全局管理员”或“用户管理员”可使用[用于 Windows PowerShell 的 Microsoft Azure AD 模块](/powershell/module/Azuread/)将用户密码设置为不过期。
 
 还可以使用 PowerShell cmdlet 删除永不过期配置，或者查看已将哪些用户密码设置为永不过期。
 
@@ -130,7 +130,7 @@ ms.locfileid: "98918037"
 1. 使用“全局管理员”或“用户管理员”帐户打开 PowerShell 提示符，并[连接到 Azure AD 租户](/powershell/module/azuread/connect-azuread#examples) 。
 1. 为单个用户或所有用户运行以下命令之一：
 
-   * 若要查看单个用户的密码是否设置为永不过期，请运行以下 cmdlet。 `<user ID>`将替换为要检查的用户的用户 ID，如 *driley \@ contoso.onmicrosoft.com*：
+   * 若要查看单个用户的密码是否设置为永不过期，请运行以下 cmdlet。 将 `<user ID>` 替换为要检查的用户的用户 ID，如 driley\@contoso.onmicrosoft.com：
 
        ```powershell
        Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
@@ -147,7 +147,7 @@ ms.locfileid: "98918037"
 1. 使用“全局管理员”或“用户管理员”帐户打开 PowerShell 提示符，并[连接到 Azure AD 租户](/powershell/module/azuread/connect-azuread#examples) 。
 1. 为单个用户或所有用户运行以下命令之一：
 
-   * 若要将某一用户的密码设置为会过期的密码，请运行以下 cmdlet。 替换 `<user ID>` 为要检查的用户的用户 ID，如 *driley \@ contoso.onmicrosoft.com*
+   * 若要将某一用户的密码设置为会过期的密码，请运行以下 cmdlet。 将 `<user ID>` 替换为要检查的用户的用户 ID，如 driley\@contoso.onmicrosoft.com
 
        ```powershell
        Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
@@ -164,7 +164,7 @@ ms.locfileid: "98918037"
 1. 使用“全局管理员”或“用户管理员”帐户打开 PowerShell 提示符，并[连接到 Azure AD 租户](/powershell/module/azuread/connect-azuread#examples) 。
 1. 为单个用户或所有用户运行以下命令之一：
 
-   * 若要将某一用户的密码设置为永不过期，请运行以下 cmdlet。 替换 `<user ID>` 为要检查的用户的用户 ID，如 *driley \@ contoso.onmicrosoft.com*
+   * 若要将某一用户的密码设置为永不过期，请运行以下 cmdlet。 将 `<user ID>` 替换为要检查的用户的用户 ID，如 driley\@contoso.onmicrosoft.com
 
        ```powershell
        Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration

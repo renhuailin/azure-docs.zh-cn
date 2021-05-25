@@ -398,14 +398,20 @@
   items:
     - name: 使用 Service Fabric 托管群集
       items:
+        - name: 配置托管群集
+          href: how-to-managed-cluster-configuration.md
         - name: 将 VM 规模集扩展添加到托管群集节点类型
           href: how-to-managed-cluster-vmss-extension.md
         - name: 添加 NSG 规则和其他托管群集网络选项
           href: how-to-managed-cluster-networking.md
         - name: 配置托管群集可用性区域范围
           href: how-to-managed-cluster-availability-zones.md
-        - name: 配置托管群集
-          href: how-to-managed-cluster-configuration.md
+        - name: 为托管的群集节点启用磁盘加密
+          href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: 针对托管群集节点选择托管磁盘类型
+          href: how-to-managed-cluster-managed-disk.md
+        - name: 配置托管群集升级选项
+          href: how-to-managed-cluster-upgrades.md
         - name: 部署托管群集应用程序机密
           href: how-to-managed-cluster-application-secrets.md
         - name: 使用 ARM 模板部署托管群集应用程序
@@ -414,10 +420,6 @@
           href: how-to-managed-cluster-application-managed-identity.md
         - name: 将仅无状态节点类型部署到托管群集
           href: how-to-managed-cluster-stateless-node-type.md
-        - name: 为托管的群集节点启用磁盘加密
-          href: how-to-enable-managed-cluster-disk-encryption.md
-        - name: 针对托管群集节点选择托管磁盘类型
-          href: how-to-managed-cluster-managed-disk.md
         - name: 将托管标识用于托管群集节点
           href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: 设置开发环境
@@ -954,13 +956,11 @@
       href: release-notes.md
     - name: 示例代码
       href: /samples/browse/?products=azure
-    - name: 支持选项
-      href: service-fabric-support.md
     - name: Service Fabric 版本
       href: service-fabric-versions.md
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=service-fabric'
-    - name: 疑难解答指南
-      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'
+- name: 支持和疑难解答
+  href: service-fabric-support.md

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 05/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 329df78bb5829695b95fcca5b7ed7e1439ced821
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85a5c9f08304c98b544fef2ccb7818d96613b3d4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688359"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748126"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>创建 Azure Arc 数据控制器
 
@@ -57,7 +57,7 @@ ms.locfileid: "101688359"
 - 连接模式 - 连接模式确定从已启用 Azure Arc 的数据服务环境到 Azure 的连接度。 预览版目前仅支持间接连接和直接连接模式。  有关详细信息，请参阅[连接模式](./connectivity.md)。 
 - Azure 订阅 ID - 要在其中创建 Azure 数据控制器资源的 Azure 订阅 GUID。
 - Azure 资源组名称 - 要在其中创建 Azure 数据控制器资源的资源组的名称。
-- Azure 位置 - 要将数据控制器资源元数据存储到的 Azure 位置。 有关可用区域的列表，请参阅 [Azure 全球基础结构/各区域的产品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)。
+- Azure 位置 - 要将数据控制器资源元数据存储到的 Azure 位置。 有关可用区域的列表，请参阅 [Azure 全球基础结构/各区域的产品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)。 有关要部署的数据控制器管理的 Azure 资源的元数据和计费信息将仅存储在 Azure 中指定为位置参数的位置。 如果要在直接连接模式下部署，则数据控制器的位置参数将与目标自定义位置资源的位置相同。
 
 ## <a name="next-steps"></a>后续步骤
 
