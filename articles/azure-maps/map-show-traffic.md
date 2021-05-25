@@ -1,6 +1,6 @@
 ---
 title: 在地图上显示交通信息 | Microsoft Azure Maps
-description: 了解如何将流量数据添加到 maps。 了解流数据，并了解如何使用 Azure Maps Web SDK 将事件数据和流数据添加到 Maps。
+description: 了解如何将交通数据添加到地图。 了解流量数据，并参阅如何使用 Azure Maps Web SDK 将事件数据和流量数据添加到地图。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/29/2019
@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: b6fcf39e05c4649503f0b7a80aadaaa16df24674
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98599563"
 ---
 # <a name="show-traffic-on-the-map"></a>在地图上显示交通信息
@@ -21,14 +21,14 @@ ms.locfileid: "98599563"
 Azure Maps 中提供了两种类型的交通数据：
 
 - 事件数据 - 由基于点和线的数据组成，针对诸如施工、道路封闭和事故等事项。
-- 流量数据 - 提供有关道路交通流量的指标。 通常，交通流量流数据用于为道路着色。 这些颜色基于相对于速度限制或其他指标而言，多大的交通会减慢流量。 有四个可传递到映射的流量选项的值 `flow` 。
+- 流量数据 - 提供有关道路交通流量的指标。 通常，交通流量流数据用于为道路着色。 这些颜色基于相对于速度限制或其他指标而言，多大的交通会减慢流量。 有四个可传递到地图交通 `flow` 选项的值。
 
-    |流值 | 说明|
+    |流量值 | 说明|
     | :-- | :-- |
-    | `none` | 不显示地图上的流量数据 |
-    | `relative` | 显示相对于旅途的自由流动速度的流量数据 |
-    | `relative-delay` | 显示比平均预计延迟慢的区域 |
-    | `absolute` | 显示路上的所有车辆的绝对速度 |
+    | `none` | 不在地图上显示交通数据 |
+    | `relative` | 显示相对于道路的自由流量速度的交通数据 |
+    | `relative-delay` | 显示比平均预期延迟更慢的区域 |
+    | `absolute` | 显示道路中所有车辆的绝对速度 |
 
 下面的代码演示如何在地图上显示交通数据。
 
@@ -58,11 +58,11 @@ map.setTraffic({
 </iframe>
 
 
-## <a name="add-traffic-controls"></a>添加流量控件
+## <a name="add-traffic-controls"></a>添加交通控件
 
-可以将两个不同的流量控件添加到地图中。 第一个控件 `TrafficControl` 添加可用于打开和关闭流量的切换按钮。 此控件的选项允许您指定显示流量时要使用的流量设置。 默认情况下，此控件将显示相对的流量流和事件数据，但是，你可以将其更改为显示绝对流量流，而不显示事件（如果需要）。 第二个控件 `TrafficLegendControl` 将向地图添加一个流量流图例，该图例可帮助用户了解颜色代码的突出显示含义。 仅当流量在地图上显示时，此控件才会出现在地图上，并且在其他所有时间都将隐藏。
+有两种可添加到地图的不同交通控件。 第一个控件 `TrafficControl` 添加可用于打开和关闭流量的切换按钮。 此控件的选项允许你指定显示流量时要使用的流量设置。 默认情况下，此控件将显示相对的交通流量和事件数据，但是，你可以将其更改为显示绝对交通流量，而不显示事件（如果需要）。 第二个控件 `TrafficLegendControl` 将向地图添加一个交通流量图例，该图例可帮助用户了解突出显示的颜色代码道路的含义。 仅当地图上显示交通流量数据时，此控件才会出现在地图上，而在其他所有时间都将被隐藏。
 
-下面的代码演示如何将流量控件添加到映射。
+下面的代码演示了如何将交通控件添加到地图。
 
 ```JavaScript
 //Att the traffic control toogle button to the top right corner of the map.
@@ -74,8 +74,8 @@ map.controls.add(new atlas.control.TrafficLegendControl(), { position: 'bottom-l
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="流量控制" src="https://codepen.io/azuremaps/embed/ZEWaeLJ?height500&theme-id=0&default-tab=js,result&embed-version=2&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>流量控制</a>" Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'></a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="交通控件" src="https://codepen.io/azuremaps/embed/ZEWaeLJ?height500&theme-id=0&default-tab=js,result&embed-version=2&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
+请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的触笔<a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>交通控件</a>。
 </iframe>
 
 

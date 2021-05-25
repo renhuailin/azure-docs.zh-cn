@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: a61d6ba1f908a7dae56db066bfae329fc26f1c5c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e37b0a2657c3e3f388ad94eb7da864c1b03023bb
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97696128"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790012"
 ---
 # <a name="register-for-azure-netapp-files"></a>注册 Azure NetApp 文件
 
@@ -53,13 +53,13 @@ ms.locfileid: "97696128"
 
 2. 如果你的 Azure 帐户上有多个订阅，请选择已批准用于 Azure NetApp 文件的订阅：
     
-    ```azurepowershell
+    ```azurecli
     az account set --subscription <subscriptionId>
     ```
 
 3. 在 Azure Cloud Shell 控制台中，输入以下命令来验证你的订阅是否已获批准：
     
-    ```azurepowershell
+    ```azurecli
     az feature list | grep NetApp
     ```
 
@@ -76,7 +76,7 @@ ms.locfileid: "97696128"
 
 4. 在 Azure Cloud Shell 控制台中，输入以下命令来注册 Azure 资源提供程序： 
     
-    ```azurepowershell
+    ```azurecli
     az provider register --namespace Microsoft.NetApp --wait
     ```
 
@@ -84,7 +84,7 @@ ms.locfileid: "97696128"
 
 5. 在 Azure Cloud Shell 控制台中，输入以下命令来验证 Azure 资源提供程序是否已注册： 
     
-    ```azurepowershell
+    ```azurecli
     az provider show --namespace Microsoft.NetApp
     ```
 

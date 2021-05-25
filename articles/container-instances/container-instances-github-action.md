@@ -4,12 +4,12 @@ description: 配置一个 GitHub 操作，用于自动执行生成容器映像�
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 1409d8fc1430cd9bf67bd735d9826a74979d495b
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
-ms.translationtype: MT
+ms.openlocfilehash: df8f7a546767f1198cee6fc6ceb6032645c14989
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762959"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868980"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>配置 GitHub 操作以创建容器实例
 
@@ -34,7 +34,7 @@ ms.locfileid: "98762959"
 ## <a name="prerequisites"></a>先决条件
 
 * **GitHub 帐户** - 如果没有帐户，请在 https://github.com 上创建一个帐户。
-* **Azure CLI** -可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装来完成 Azure CLI 步骤。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+* Azure CLI - 可以使用 Azure Cloud Shell 或本地安装的 Azure CLI 完成 Azure CLI 步骤。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 * **Azure 容器注册表** - 如果没有 Azure 容器注册表，请使用 [Azure CLI](../container-registry/container-registry-get-started-azure-cli.md)、[Azure 门户](../container-registry/container-registry-get-started-portal.md)或其他方法在基本层中创建一个容器注册表。 记下用于部署的资源组，因为在 GitHub 工作流中需要使用它。
 
 ## <a name="set-up-repo"></a>设置存储库
@@ -119,7 +119,7 @@ az role assignment create \
 |Secret  |Value  |
 |---------|---------|
 |`AZURE_CREDENTIALS`     | 创建服务主体步骤后显示的整个 JSON 输出 |
-|`REGISTRY_LOGIN_SERVER`   | 注册表的登录服务器名称（全小写）。 示例： *myregistry.azurecr.io*        |
+|`REGISTRY_LOGIN_SERVER`   | 注册表的登录服务器名称（全小写）。 示例：myregistry.azurecr.io        |
 |`REGISTRY_USERNAME`     |  创建服务主体后显示的 JSON 输出中的 `clientId`       |
 |`REGISTRY_PASSWORD`     |  创建服务主体后显示的 JSON 输出中的 `clientSecret` |
 | `RESOURCE_GROUP` | 用来限定服务主体作用域的资源组名称 |
@@ -310,13 +310,13 @@ az group delete \
 <!-- LINKS - internal -->
 
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-group-show]: /cli/azure/group#az-group-show
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-container-create]: /cli/azure/container#az-container-create
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-container-show]: /cli/azure/container#az-container-show
-[az-container-delete]: /cli/azure/container#az-container-delete
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-container-app-up]: /cli/azure/ext/deploy-to-azure/container/app#ext-deploy-to-azure-az-container-app-up
+[az-group-show]: /cli/azure/group#az_group_show
+[az-group-delete]: /cli/azure/group#az_group_delete
+[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-container-create]: /cli/azure/container#az_container_create
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-container-show]: /cli/azure/container#az_container_show
+[az-container-delete]: /cli/azure/container#az_container_delete
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-container-app-up]: /cli/azure/container/app#az_container_app_up

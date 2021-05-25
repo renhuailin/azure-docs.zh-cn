@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: bf9e802e2485e84211044ce650c7748e789e752e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: fa4fa1c43ab9d31b879bdec8e724e896bd16e14c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762598"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102123885"
 ---
 # <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>预览版：Azure 中 VM 和规模集的自动扩展升级
 
-适用于 Azure VM 和 Azure 虚拟机规模集的自动扩展升级以预览版提供。 在 VM 或规模集中启用自动扩展升级后，每当扩展发行商发布了扩展的新版本，该扩展就会自动升级。
+适用于 Azure VM 和 Azure 虚拟机规模集的自动扩展升级以预览版提供。 在 VM 或规模集中启用自动扩展升级后，每当扩展发布者发布了扩展的新版本，该扩展就会自动升级。
 
  自动扩展升级具有以下特性：
 - 支持 Azure VM 和 Azure 虚拟机规模集。 目前不支持 Service Fabric 虚拟机规模集。
@@ -122,7 +122,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-使用 [az feature register](/cli/azure/feature#az_feature_register) 为订阅启用预览版。
+使用 [az feature register](/cli/azure/feature#az-feature-register) 为订阅启用预览版。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name AutomaticExtensionUpgradePreview

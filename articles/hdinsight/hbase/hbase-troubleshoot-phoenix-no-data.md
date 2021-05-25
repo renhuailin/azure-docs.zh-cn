@@ -1,19 +1,19 @@
 ---
-title: HDP upgrade & Azure HDInsight Apache Phoenix 视图中没有数据
+title: HDP 升级和 Azure HDInsight 的 Apache Phoenix 视图中没有数据
 description: HDP 升级导致 Azure HDInsight 的 Apache Phoenix 视图中没有数据
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/08/2019
 ms.openlocfilehash: f68e227e10a85b7e1d98dcabbfb870933059ec04
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936932"
 ---
 # <a name="scenario-hdp-upgrade-causes-no-data-in-apache-phoenix-views-in-azure-hdinsight"></a>方案：HDP 升级导致 Azure HDInsight 的 Apache Phoenix 视图中没有数据
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 

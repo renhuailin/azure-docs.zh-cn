@@ -8,10 +8,10 @@ ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
 ms.openlocfilehash: 1664656f82492e664b7574339893cd688f0a061d
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100097307"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>适用于 Azure Functions 的 RabbitMQ 输出绑定概述
@@ -160,7 +160,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示了文件 *function.js* 中的 RabbitMQ 输出绑定，以及使用绑定的 Python 函数。 该函数从 HTTP 触发器读取消息，并将其输出到 RabbitMQ 队列。
+以下示例演示 function.json 文件中的一个 RabbitMQ 输出绑定以及使用该绑定的 Python 函数。 该函数从 HTTP 触发器读取消息，并将其输出到 RabbitMQ 队列。
 
 下面是 function.json 文件中的绑定数据：
 
@@ -194,7 +194,7 @@ module.exports = function (context, input) {
 }
 ```
 
-在 *_\__ \_ py* 中：
+在 _\_init_\_.py 中：
 
 ```python
 import azure.functions as func
@@ -207,7 +207,7 @@ def main(req: func.HttpRequest, outputMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下 Java 函数使用 `@RabbitMQOutput` [java RabbitMQ 类型](https://mvnrepository.com/artifact/com.microsoft.azure.functions/azure-functions-java-library-rabbitmq) 中的注释来描述 RabbitMQ 队列输出绑定的配置。 当 TimerTrigger 每5分钟触发一次时，函数会将消息发送到 RabbitMQ 队列。
+以下 Java 函数使用 [Java RabbitMQ 类型](https://mvnrepository.com/artifact/com.microsoft.azure.functions/azure-functions-java-library-rabbitmq)中的 `@RabbitMQOutput` 注释来说明 RabbitMQ 队列输出绑定的配置。 该函数由 TimerTrigger 每 5 分钟触发一次，并在触发时将消息发送到 RabbitMQ 队列。
 
 ```java
 @FunctionName("RabbitMQOutputExample")
@@ -268,7 +268,7 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为“RabbitMQ”。|
+|type | 不适用 | 必须设置为“RabbitMQ”。|
 |**direction** | 不适用 | 必须设置为“out”。 |
 |name | 不适用 | 表示函数代码中的队列的变量的名称。 |
 |**queueName**|**QueueName**| 要向其发送消息的队列的名称。 |

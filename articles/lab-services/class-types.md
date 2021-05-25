@@ -4,25 +4,25 @@ description: 提供可以使用 Azure 实验室服务为其设置实验室的某
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5a90fb128f5954f3eb713714ff22ff40a3beab36
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627427"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>类类型概述 - Azure 实验室服务
 
-使用 Azure 实验室服务可以在云中快速设置课堂实验室环境。 本部分中的文章提供了有关如何使用 Azure 实验室服务设置几种类型的实验室的指导。
+使用 Azure 实验室服务可以在云中快速设置课堂实验室环境。 本部分列出的文章提供了有关如何使用 Azure 实验室服务设置多种类型的实验室的指导。
 
 ## <a name="arcgis"></a>ArcGIS
-[ArcGIS](https://www.esri.com/en-us/arcgis/products/arcgis-solutions/overview) 是一种 (GIS) 的地理信息系统。  可以设置一个使用 ArcGIS 桌面的各种应用程序（如 [ArcMap](https://desktop.arcgis.com/en/arcmap/latest/map/main/what-is-arcmap-.htm) ）进行、编辑和分析2d 地图的实验室。
+[ArcGIS](https://www.esri.com/en-us/arcgis/products/arcgis-solutions/overview) 是地理信息系统 (GIS) 的一个类型。  你可以设置一个使用 ArcGIS Desktop 的各种应用程序（如 [ArcMap](https://desktop.arcgis.com/en/arcmap/latest/map/main/what-is-arcmap-.htm)）创建、编辑和分析 2D 地图的实验室。
 
-有关如何设置此类型的实验室的详细信息，请参阅 [设置适用于 ArcMap\ArcGIS Desktop 的实验室](class-type-arcgis.md)。
+有关如何设置此类实验室的详细信息，请参阅[设置 ArcMap\ArcGIS Desktop 实验室](class-type-arcgis.md)。
 
 ## <a name="big-data-analytics"></a>大数据分析
-可以设置 GPU 实验室来讲授大数据分析类。 使用此类类，学员可以了解如何处理大量数据，并应用计算机和统计学习算法来获取数据见解。 学生的主要目标是了解如何使用数据分析工具，例如 Apache Hadoop 的开源软件包，该软件包提供存储、管理和处理大数据的工具。 
+你可以设置 GPU 实验室以教授大数据分析课程。 通过此类课程，学生可以了解如何处理大量数据，并应用计算机和统计学习算法来获取数据见解。 学生的主要目标是了解如何使用数据分析工具，例如 Apache Hadoop 的开源软件包，该软件包提供用于存储、管理和处理大数据的工具。 
 
-有关如何设置此类实验室的详细信息，请参阅 [使用 HortonWorks 数据平台的 Docker 部署为大数据分析设置实验室](class-type-big-data-analytics.md)。
+有关如何设置此类实验室的详细信息，请参阅[设置使用 HortonWorks 数据平台的 Docker 部署进行大数据分析的实验室](class-type-big-data-analytics.md)。
 
 ## <a name="database-management"></a>数据库管理
 数据库概念是大学的大多数计算机系讲授的入门课程之一。 可以在 Azure 实验室服务中为基本数据库管理类设置实验室。 例如，可以通过 [MySQL](https://www.mysql.com/) 数据库服务器或 [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) 服务器在实验室中设置一个虚拟机模板。
@@ -42,19 +42,19 @@ ms.locfileid: "99627427"
 有关如何设置此类实验室的详细信息，请参阅[设置实验室以教授道德黑客课程](class-type-ethical-hacking.md)。
 
 ## <a name="matlab"></a>MATLAB
-[MATLAB](https://www.mathworks.com/products/matlab.html)（代表矩阵实验室）是 [MathWorks](https://www.mathworks.com/)的编程平台。  它结合了计算能力和视觉对象，使其成为数学、工程、物理学和化学字段的常用工具。
+[MATLAB](https://www.mathworks.com/products/matlab.html)（代表矩阵实验室）是 [MathWorks](https://www.mathworks.com/) 的编程平台。  它结合了计算能力和可视化效果，是数学、工程、物理和化学领域的常用工具。
 
-有关如何设置此类型的实验室的详细信息，请参阅 [设置实验室来讲授 MATLAB](class-type-matlab.md)。
+有关如何设置此类实验室的详细信息，请参阅[设置实验室以教授 MATLAB](class-type-matlab.md)。
 
 ## <a name="networking-with-gns3"></a>GNS3 的网络
-您可以为某个类设置一个实验室，使学生可以使用 [GNS3](https://www.gns3.com/) software 来模拟、配置、测试和排查虚拟网络和真实网络。 
+你可以设置实验室以教授这样的课程：着重于使学生能够使用 [GNS3](https://www.gns3.com/) 软件来模拟、配置、测试虚拟和真实的网络并排查其中的问题。 
 
-有关如何设置此类型的实验室的详细信息，请参阅 [设置实验室来讲授网络类](class-type-networking-gns3.md)。
+有关如何设置此类实验室的详细信息，请参阅[设置实验室以教授网络课程](class-type-networking-gns3.md)。
 
-## <a name="project-lead-the-way-pltw"></a> (PLTW 的方式的项目主管) 
-[项目主管 (PLTW) ](https://www.pltw.org/) 是一个非赢利组织，它在计算机科学、工程和生物医学科学美国提供 PreK-12 个课程。  在每个 PLTW 类中，学生使用各种软件应用程序作为其动手学习体验的一部分。
+## <a name="project-lead-the-way-pltw"></a>项目导向 (PLTW)
+[项目导向 (PLTW)](https://www.pltw.org/) 是一个非赢利组织，在美国提供计算机科学、工程和生物医学科学领域的 PreK-12 课程。  在每节 PLTW 课中，学生使用各种软件应用程序作为其实践学习体验的一部分。
 
-有关如何设置这些类型实验室的详细信息，请参阅为 [项目主管设置实验室](class-type-pltw.md)。
+有关如何设置这些类型的实验室的详细信息，请参阅[设置“项目导向”课程实验室](class-type-pltw.md)。
 
 ## <a name="python-and-jupyter-notebooks"></a>Python 和 Jupyter Notebooks
 可以使用向学生讲授 [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) 使用方法所需的工具，在 Azure 实验室服务中设置模板计算机。 Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记本”的单张画布上组合使用丰富的文本和可执行的 [Python](https://www.python.org/) 源代码。 运行笔记本会生成输入和输出的线性记录。  这些输出可能包括文本、信息表、散点图等。
@@ -69,12 +69,12 @@ ms.locfileid: "99627427"
 有关如何设置此类实验室的详细信息，请参阅 [Linux 上的 Shell 脚本](class-type-shell-scripting-linux.md)。
 
 ## <a name="solidworks-computer-aided-design-cad"></a>SolidWorks 计算机辅助设计 (CAD)
-可以设置一个 GPU 实验室，使工程学生可以访问 [SolidWorks](https://www.solidworks.com/)。  SolidWorks 提供用于对实体对象进行建模的 3D CAD 环境。  借助 SolidWorks，工程师可以轻松创建、直观显示、模拟和记录其设计。
+你可以设置一个 GPU 实验室，使工程学生可以访问 [SolidWorks](https://www.solidworks.com/)。  SolidWorks 提供用于对固体物体进行建模的 3D CAD 环境。  借助 SolidWorks，工程师可以轻松地创建、直观显示、模拟和记录自己的设计。
 
-有关如何设置此类型的实验室的详细信息，请参阅 [使用 SolidWorks 设置工程设计类的实验室](class-type-solidworks.md)。
+有关如何设置此类实验室的详细信息，请参阅[设置使用 SolidWorks 的工程课程实验室](class-type-solidworks.md)。
 
 ## <a name="sql-database-and-management"></a>SQL 数据库和管理
-结构化查询语言 (SQL) 是关系数据库管理的标准语言，包括在数据库中添加、访问和管理内容。  你可以使用 [MySQL](https://www.mysql.com/) 数据库服务器和 [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) 服务器设置实验室来讲授数据库概念。
+结构化查询语言 (SQL) 是一种用于关系数据库管理（包括在数据库中添加、访问和管理内容）的标准语言。  你可以设置一个实验室来通过 [MySQL](https://www.mysql.com/) 数据库服务器和 [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) 服务器教授数据库概念。
 
 有关如何设置此类实验室的详细信息，请参阅[设置实验室来讲授关系数据库的数据库管理](class-type-database-management.md)。
 

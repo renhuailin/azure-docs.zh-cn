@@ -1,5 +1,5 @@
 ---
-title: 获取用于调用 web API 的令牌 (后台应用) -Microsoft 标识平台 |Microsoft
+title: 获取用于调用 Web API（守护程序应用）的令牌 - Microsoft 标识平台 | Azure
 description: 了解如何构建调用 Web API 的守护程序应用（获取令牌）
 services: active-directory
 author: jmprieur
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 295897be03a7dd8e397e8202ff1cf10e6d59cdfb
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.openlocfilehash: 19ead7fe063992e95588641f7fd739081cf54a2f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753872"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578407"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 Web API 的守护程序应用 - 获取令牌
 
@@ -33,6 +33,20 @@ ResourceId = "someAppIDURI";
 var scopes = new [] {  ResourceId+"/.default"};
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+```Java
+final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```JavaScript
+const tokenRequest = {
+    scopes: [process.env.GRAPH_ENDPOINT + '.default'], // e.g. 'https://graph.microsoft.com/.default'
+};
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 在 MSAL Python 中，该配置文件应该如以下代码片段所示：
@@ -43,12 +57,6 @@ var scopes = new [] {  ResourceId+"/.default"};
 }
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-```Java
-final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
-```
-
 ---
 
 ### <a name="azure-ad-v10-resources"></a>Azure AD (v1.0) 资源
@@ -57,7 +65,7 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 > [!IMPORTANT]
 > 当 MSAL 向接受 1.0 版访问令牌的资源请求访问令牌时，Azure AD 将获取最后一个斜杠前面的所有内容并将其用作资源标识符，从请求的范围内分析所需的受众。
-> 因此，如果使用 Azure SQL 数据库 (**https： \/ /database.windows.net**) ，则资源需要使用以斜杠 (（对于 azure SQL 数据库，) ）结尾的受众 `https://database.windows.net/` `https://database.windows.net//.default` 。 （请注意双斜杠。）另请参阅 MSAL.NET 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
+> 因此，就像 Azure SQL 数据库 (https:\//database.windows.net) 一样，如果资源需要以斜杠结尾的受众（对于 Azure SQL 数据库为 `https://database.windows.net/`），你将需要请求作用域 `https://database.windows.net//.default`。 （请注意双斜杠。）另请参阅 MSAL.NET 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
@@ -95,30 +103,6 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 ### <a name="acquiretokenforclient-uses-the-application-token-cache"></a>AcquireTokenForClient 使用应用程序令牌缓存
 
 在 MSAL.NET 中，`AcquireTokenForClient` 使用应用程序令牌缓存。 （所有其他 AcquireToken *XX* 方法都使用用户令牌缓存。）不要在调用 `AcquireTokenForClient` 之前调用 `AcquireTokenSilent`，因为 `AcquireTokenSilent` 使用“用户”  令牌缓存。 `AcquireTokenForClient` 会检查 *应用程序* 令牌缓存本身并对其进行更新。
-
-# <a name="python"></a>[Python](#tab/python)
-
-```Python
-# The pattern to acquire a token looks like this.
-result = None
-
-# First, the code looks up a token from the cache.
-# Because we're looking for a token for the current app, not for a user,
-# use None for the account parameter.
-result = app.acquire_token_silent(config["scope"], account=None)
-
-if not result:
-    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
-    result = app.acquire_token_for_client(scopes=config["scope"])
-
-if "access_token" in result:
-    # Call a protected API with the access token.
-    print(result["token_type"])
-else:
-    print(result.get("error"))
-    print(result.get("error_description"))
-    print(result.get("correlation_id"))  # You might need this when reporting a bug.
-```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -167,6 +151,43 @@ private static IAuthenticationResult acquireToken() throws Exception {
      }
      return result;
  }
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+下面的代码片段说明了 MSAL 节点机密客户端应用程序中的令牌获取：
+
+```JavaScript
+try {
+    const authResponse = await cca.acquireTokenByClientCredential(tokenRequest);
+    console.log(authResponse.accessToken) // display access token
+} catch (error) {
+    console.log(error);
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+# The pattern to acquire a token looks like this.
+result = None
+
+# First, the code looks up a token from the cache.
+# Because we're looking for a token for the current app, not for a user,
+# use None for the account parameter.
+result = app.acquire_token_silent(config["scope"], account=None)
+
+if not result:
+    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
+    result = app.acquire_token_for_client(scopes=config["scope"])
+
+if "access_token" in result:
+    # Call a protected API with the access token.
+    print(result["token_type"])
+else:
+    print(result.get("error"))
+    print(result.get("error_description"))
+    print(result.get("correlation_id"))  # You might need this when reporting a bug.
 ```
 
 ---
@@ -241,12 +262,16 @@ Content: {
 
 转到此方案中的下一篇文章：[调用 Web API](./scenario-daemon-call-api.md?tabs=dotnet)。
 
-# <a name="python"></a>[Python](#tab/python)
-
-转到此方案中的下一篇文章：[调用 Web API](./scenario-daemon-call-api.md?tabs=python)。
-
 # <a name="java"></a>[Java](#tab/java)
 
 转到此方案中的下一篇文章：[调用 Web API](./scenario-daemon-call-api.md?tabs=java)。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+转到此方案中的下一篇文章：[调用 Web API](./scenario-daemon-call-api.md?tabs=nodejs)。
+
+# <a name="python"></a>[Python](#tab/python)
+
+转到此方案中的下一篇文章：[调用 Web API](./scenario-daemon-call-api.md?tabs=python)。
 
 ---

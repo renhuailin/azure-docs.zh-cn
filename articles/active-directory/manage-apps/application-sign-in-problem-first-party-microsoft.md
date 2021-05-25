@@ -2,22 +2,26 @@
 title: 登录 Microsoft 应用程序时出现的问题 | Microsoft Docs
 description: 排查使用 Azure AD 登录到第一方 Microsoft 应用程序（如 Microsoft 365）时遇到的常见问题。
 services: active-directory
-author: iantheninja
-manager: CelesteDG
+documentationcenter: ''
+author: kenwith
+manager: daveba
+ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: iangithinji
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c56e356a9bacc6479d3a3a33be905457c26e732e
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 79c8d6d072379853d6eca561d372f61dbb8acc8a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378170"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "99260005"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
 

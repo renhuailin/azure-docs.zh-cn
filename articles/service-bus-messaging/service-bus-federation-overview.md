@@ -1,13 +1,13 @@
 ---
-title: 消息复制和跨区域联合-Azure 服务总线 |Microsoft Docs
+title: 消息复制和跨区域联合 - Azure 服务总线 | Microsoft Docs
 description: 本文概述了使用 Azure 服务总线的事件复制和跨区域联合。
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: e47f633fcd9248eab6f47936aa7c45877decc1fe
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98880821"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>消息复制和跨区域联合
@@ -16,7 +16,7 @@ ms.locfileid: "98880821"
 
 许多复杂的解决方案还要求跨命名空间边界复制消息，以便实现这些模式和其他模式。 消息可能需要在与多个不同应用程序租户相关的命名空间之间流动，或者跨多个不同的 Azure 区域流动。 
 
-解决方案将在不同区域中维护多个服务总线命名空间，并在队列和主题之间复制消息，并/或将消息与源和目标（如 [Azure 事件中心](../event-hubs/event-hubs-about.md)、 [azure IoT 中心](../iot-fundamentals/iot-introduction.md)或 [Apache Kafka](https://kafka.apache.org)）交换。 
+解决方案将在不同区域中维护多个服务总线命名空间，并在队列和主题之间复制消息，并且/或者你将与源和目标（如 [Azure 事件中心](../event-hubs/event-hubs-about.md)、[Azure IoT 中心](../iot-fundamentals/iot-introduction.md)或 [Apache Kafka](https://kafka.apache.org)）交换消息。 
 
 本文重点介绍了这些场景。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "98880821"
 
 与[事件中心](../service-bus-messaging/service-bus-federation-overview.md)的类似模式相比，类似队列的实体的联合更复杂，因为消息队列承诺其使用者对任何单个消息具有独占所有权，且应在消息传递中保持到达顺序，并使代理在[竞争性使用者](/azure/architecture/patterns/competing-consumers)之间协调消息的公平分发。 
 
-存在一些切实可行的障碍，其中包括 [CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)的约束，这使得在多个区域中同时提供队列的统一视图非常困难，并允许突破分散的 [竞争使用者](/azure/architecture/patterns/competing-consumers) 对消息进行独占访问。 此类异地分布式队列不仅要求对消息进行完全一致的复制，而且要求对每个消息的传递状态进行完全一致的复制，然后才能将消息提供给使用者。 假设的区域分布式队列的完全一致性目标与所有 Azure 服务总线客户在考虑联合场景时的关键目标存在直接冲突：其解决方案的最大可用性和可靠性。 
+存在一些实际的障碍，包括 [CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)的约束，因而很难提供在多个区域同时可用的队列的统一视图，并且允许区域分布式[竞争性使用者](/azure/architecture/patterns/competing-consumers)获得消息的独占所有权。 此类异地分布式队列不仅要求对消息进行完全一致的复制，而且要求对每个消息的传递状态进行完全一致的复制，然后才能将消息提供给使用者。 假设的区域分布式队列的完全一致性目标与所有 Azure 服务总线客户在考虑联合场景时的关键目标存在直接冲突：其解决方案的最大可用性和可靠性。 
 
 此处所示的模式侧重于可用性和可靠性，同时也旨在最好地避免信息丢失和消息的重复处理。 
 

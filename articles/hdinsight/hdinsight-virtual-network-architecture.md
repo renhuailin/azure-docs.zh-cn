@@ -4,12 +4,12 @@ description: 了解在 Azure 虚拟网络中创建 HDInsight 群集时可用的�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: d5b8bdf5577642290cee7250e0f21f8a69dfd248
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 43640a9de91b6b44a236090ff029a49313ee0247
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931148"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871667"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虚拟网络体系结构
 
@@ -43,7 +43,7 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 
 下图显示了 HDInsight 节点和网络资源在 Azure 中的位置。
 
-![在 Azure 自定义 VNET 中创建的 HDInsight 实体示意图](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
+:::image type="content" source="./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png" alt-text="在 Azure 自定义 VNET 中创建的 HDInsight 实体示意图" border="false":::
 
 Azure 虚拟网络中的默认资源包括上表中提到的群集节点类型。 同时包括支持虚拟网络和外部网络之间的通信的网络设备。
 
@@ -70,7 +70,7 @@ Azure 虚拟网络中的默认资源包括上表中提到的群集节点类型�
 
 - 虚拟网络 (`CLUSTERNAME.azurehdinsight.net`) 外部的 HTTPS 终结点。
 - 直接连接到位于 `CLUSTERNAME-ssh.azurehdinsight.net` 中的头节点的 SSH 终结点。
-- 虚拟网络 (`CLUSTERNAME-int.azurehdinsight.net`) 内部的 HTTPS 终结点。 请注意 `-int` 此 URL 中的 ""。 此终结点将解析为该虚拟网络中的专用 IP，无法从公共 Internet 访问。
+- 虚拟网络 (`CLUSTERNAME-int.azurehdinsight.net`) 内部的 HTTPS 终结点。 请注意此 URL 中的“`-int`”。 此终结点将解析为该虚拟网络中的专用 IP，无法从公共 Internet 访问。
 
 在这 3 个终结点中，每个终结点分配有一个负载均衡器。
 

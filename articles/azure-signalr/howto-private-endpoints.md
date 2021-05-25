@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 92e93c3746308d2d6c1a489efc6b5c866b0ad2d9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98682624"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>为 Azure SignalR 服务使用专用终结点
 
-你可以使用 Azure SignalR 服务的 [专用终结点](../private-link/private-endpoint-overview.md) ，以允许虚拟网络 (VNet) 上的客户端通过 [专用链接](../private-link/private-link-overview.md)安全地访问数据。 专用终结点为 Azure SignalR 服务使用 VNet 地址空间中的 IP 地址。 VNet 和 Azure SignalR 服务上的客户端之间的网络流量通过 Microsoft 主干网络上的专用链接进行传输，避免暴露给公共 Internet。
+可以为 Azure SignalR 服务使用[专用终结点](../private-link/private-endpoint-overview.md)，以便虚拟网络 (VNet) 上的客户端能够通过[专用链接](../private-link/private-link-overview.md)安全地访问数据。 专用终结点为 Azure SignalR 服务使用 VNet 地址空间中的 IP 地址。 VNet 和 Azure SignalR 服务上的客户端之间的网络流量通过 Microsoft 主干网络上的专用链接进行传输，避免暴露给公共 Internet。
 
 通过为 Azure SignalR 服务使用专用终结点，你可以：
 

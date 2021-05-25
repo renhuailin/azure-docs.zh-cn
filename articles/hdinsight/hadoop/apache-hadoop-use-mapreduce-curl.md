@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: e90dc2c7220caf5bd72b7086adc275934652e150
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98939693"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
@@ -80,7 +80,7 @@ ms.locfileid: "98939693"
      * **class**：包含 MapReduce 逻辑的类
      * **arg**：要传递到 MapReduce 作业的参数。 在此示例中是用于输出的输入文本文件和目录
 
-    此命令应返回可用来检查作业状态的作业 ID： `job_1415651640909_0026` 。
+    此命令应返回作业 ID，可用来检查作业的状态：`job_1415651640909_0026`。
 
 1. 若要检查作业的状态，请使用以下命令。 将 `JOBID` 的值替换为上一步返回的 **实际** 值。 根据需要修改 **jq** 的位置。
 
@@ -100,7 +100,7 @@ ms.locfileid: "98939693"
     $creds = Get-Credential -UserName admin -Message "Enter the cluster login password"
     ```
 
-1. 使用以下命令验证是否可以连接到 HDInsight 群集：
+1. 使用以下命令来验证你能否连接到 HDInsight 群集：
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clustername.azurehdinsight.net/templeton/v1/status" `
@@ -141,7 +141,7 @@ ms.locfileid: "98939693"
     * **class**：包含 MapReduce 逻辑的类
     * **arg**：要传递到 MapReduce 作业的参数。 在此示例中是用于输出的输入文本文件和目录
 
-   此命令应返回可用来检查作业状态的作业 ID： `job_1415651640909_0026` 。
+   此命令应返回作业 ID，可用来检查作业的状态：`job_1415651640909_0026`。
 
 1. 若要检查作业的状态，请使用以下命令：
 
