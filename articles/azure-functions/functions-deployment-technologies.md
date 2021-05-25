@@ -5,10 +5,10 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: 4a65a00c28a20c9381d3dcc6fd7545137528d5c0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943636"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
@@ -24,7 +24,7 @@ ms.locfileid: "98943636"
 | 部署类型 | 方法 | 最适用于... |
 | -- | -- | -- |
 | 基于工具 | &bull;&nbsp;[Visual&nbsp;Studio&nbsp;Code&nbsp;发布](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio 发布](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[核心工具发布](functions-run-local.md#publish) | 开发期间的部署和其他临时部署。 部署由工具在本地进行管理。 | 
-| 应用服务-托管| &bull;&nbsp;[部署 &nbsp; 中心 &nbsp; (CI/CD) ](functions-continuous-deployment.md)<br/>&bull;&nbsp;[容器 &nbsp; 部署](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |   (CI/CD) 从源代码管理或从容器注册表进行持续部署。 部署由应用服务平台 (Kudu) 进行管理。|
+| 托管的应用服务| &bull;&nbsp;[部署&nbsp;中心&nbsp;(CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[容器&nbsp;部署](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  从源代码管理或从容器注册表进行持续部署 (CI/CD)。 部署由应用服务平台 (Kudu) 进行管理。|
 | 外部管道|&bull;&nbsp;[Azure Pipelines](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub 操作](functions-how-to-github-actions.md) | 生产和 DevOps 管道，包含其他验证、测试和作为自动部署的一部分运行的其他操作。 部署由管道进行管理。 |
 
 虽然特定的 Functions 部署使用基于其上下文的最佳技术，但大多数部署方法都基于 [zip 部署](#zip-deploy)。
@@ -39,7 +39,7 @@ Azure Functions 支持跨平台的本地开发以及使用 Windows 和 Linux 作
 
 每种计划有不同的行为。 并非所有部署技术都适用于每种风格的 Azure Functions。 以下图表显示了哪些部署技术适用于操作系统和托管计划的每种组合：
 
-| 部署技术 | Windows 消耗计划 | Windows 高级计划 | Windows 专用计划  | Linux 消耗计划 | Linux 高级版 | Linux 专用计划 |
+| 部署技术 | Windows 消耗计划 | Windows 高级计划 | Windows 专用计划  | Linux 消耗计划 | Linux 高级计划 | Linux 专用计划 |
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
 | 外部包 URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | 压缩部署 |✔|✔|✔|✔|✔|✔|
@@ -106,7 +106,7 @@ Azure Functions 中提供了以下部署方法。
 
 可以使用外部包 URL 来引用包含函数应用的远程包 (.zip) 文件。 可从提供的 URL 下载该文件，应用将在[“从包运行”](run-functions-from-deployment-package.md)模式下运行。
 
->__如何使用：__ 将添加 [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) 到应用程序设置。 此设置的值应是一个 URL（要运行的特定包文件的位置）。 可以[在门户中](functions-how-to-use-azure-function-app-settings.md#settings)或[使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 来添加设置。
+>如何使用：将 [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) 添加到应用程序设置。 此设置的值应是一个 URL（要运行的特定包文件的位置）。 可以[在门户中](functions-how-to-use-azure-function-app-settings.md#settings)或[使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 来添加设置。
 >
 >如果使用 Azure Blob 存储，请结合[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 使用专用容器，使 Functions 能够访问该包。 每当应用程序重启时，都会提取内容的副本。 引用必须在应用程序的整个生存期内有效。
 
@@ -118,7 +118,7 @@ Azure Functions 中提供了以下部署方法。
 
 >__如何使用：__ 使用偏爱的客户端工具进行部署：[Visual Studio Code](functions-develop-vs-code.md#publish-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)，或从命令行使用 [Azure Functions Core Tools](functions-run-local.md#project-file-deployment)。 默认情况下，这些工具使用 zip 部署并[从包运行](run-functions-from-deployment-package.md)。 Core Tools 和 Visual Studio Code 扩展在部署到 Linux 时都启用[远程生成](#remote-build)。 若要手动将 .zip 文件部署到函数应用，请遵照[从 .zip 文件或 URL 进行部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)中的说明操作。
 
->使用压缩部署方法时，可将应用设置为[从包运行](run-functions-from-deployment-package.md)。 若要从包中运行，请将 [ `WEBSITE_RUN_FROM_PACKAGE` ] (函数-app.config # website_run_from_package 应用程序设置值设置为 `1` 。 我们建议使用压缩部署。 此方法可以缩短应用程序加载时间，并且是 VS Code、Visual Studio 和 Azure CLI 的默认部署方法。
+>使用压缩部署方法时，可将应用设置为[从包运行](run-functions-from-deployment-package.md)。 若要从包运行，请将 [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package 应用程序设置值设置为 `1`。 我们建议使用压缩部署。 此方法可以缩短应用程序加载时间，并且是 VS Code、Visual Studio 和 Azure CLI 的默认部署方法。
 
 >__何时使用：__ 压缩部署是建议用于 Azure Functions 的部署技术。
 
@@ -126,14 +126,14 @@ Azure Functions 中提供了以下部署方法。
 
 可以部署包含函数应用的 Linux 容器映像。
 
->__如何使用：__ 在高级或专用计划中创建 Linux 函数应用，并指定要从中运行的容器映像。 可通过两种方式实现此目的：
+>如何使用：在高级或专用计划中创建 Linux 函数应用，并指定要从中运行的容器映像。 可通过两种方式实现此目的：
 >
 >* 在 Azure 门户上的 Azure 应用服务计划中创建一个 Linux 函数应用。 对于“发布”，请选择“Docker 映像”，然后配置容器。 输入映像所在的位置。
->* 使用 Azure CLI 在应用服务计划中创建 Linux 函数应用。 若要了解如何操作，请参阅 [在 Linux 上使用自定义映像创建函数](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)。
+>* 使用 Azure CLI 在应用服务计划中创建 Linux 函数应用。 要了解如何操作，请参阅[在 Linux 上使用自定义映像创建函数](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)。
 >
 >若要使用自定义容器部署到现有应用，请在 [Azure Functions Core Tools](functions-run-local.md) 中使用 [`func deploy`](functions-run-local.md#publish) 命令。
 
->__何时使用它：__ 需要更好地控制运行函数应用的 Linux 环境时，可使用 Docker 容器选项。 此部署机制仅适用于在 Linux 上运行的 Functions。
+>何时使用：在需要更好地控制运行函数应用的 Linux 环境时，请使用 Docker 容器选项。 此部署机制仅适用于在 Linux 上运行的 Functions。
 
 ### <a name="web-deploy-msdeploy"></a>Web 部署 (MSDeploy)
 
@@ -165,7 +165,7 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 
 使用云同步可将 Dropbox 和 OneDrive 中的内容同步到 Azure Functions。
 
->__如何使用：__ 按照 [同步云文件夹](../app-service/deploy-content-sync.md)中的内容中的说明进行操作。
+>如何使用：请按照[同步云文件夹内容](../app-service/deploy-content-sync.md)中的说明进行操作。
 
 >__何时使用：__ 一般而言，我们建议使用其他部署方法。 使用云同步发布时，必须[手动同步触发器](#trigger-syncing)。
 
@@ -181,7 +181,7 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 
 在基于门户的编辑器中，可以直接编辑函数应用中的文件（基本上每次保存更改都要进行部署）。
 
->__如何使用：__ 若要在 Azure 门户中编辑函数，必须事先 [在门户中创建函数](./functions-get-started.md)。 若要保留单一事实源，使用任何其他部署方法会使函数变为只读，并会阻止在门户中继续编辑。 若要返回到可在 Azure 门户中编辑文件的状态，可以手动将编辑模式改回， `Read/Write` 并删除任何与部署相关的应用程序设置 (例如 [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) 。
+>__如何使用：__ 若要在 Azure 门户中编辑函数，必须事先 [在门户中创建函数](./functions-get-started.md)。 若要保留单一事实源，使用任何其他部署方法会使函数变为只读，并会阻止在门户中继续编辑。 若要恢复到可在 Azure 门户中编辑文件的状态，可手动将编辑模式改回 `Read/Write`，并删除与部署相关的任何应用程序设置（例如 [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package)）。
 
 >__何时使用：__ 在门户中可以十分方便地开始使用 Azure Functions。 对于更密集的开发工作，我们建议使用以下客户端工具之一：
 >
@@ -191,7 +191,7 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 
 下表显示了支持门户编辑的操作系统和语言：
 
-| Language | Windows 消耗计划 | Windows 高级计划 | Windows 专用计划 | Linux 消耗计划 | Linux 高级版 | Linux 专用计划 |
+| Language | Windows 消耗计划 | Windows 高级计划 | Windows 专用计划 | Linux 消耗计划 | Linux 高级计划 | Linux 专用计划 |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C# 脚本 |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
@@ -202,7 +202,7 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 | PowerShell（预览版） |✔|✔|✔| | | |
 | TypeScript (Node.js) | | | | | | |
 
-<sup>*</sup> 仅对 Linux 上使用高级和专用计划的 HTTP 和计时器触发器启用门户编辑。
+<sup>*</sup>仅对使用 Linux 高级和专用计划的 Functions 的 HTTP 和计时器触发器，启用门户编辑。
 
 ## <a name="deployment-behaviors"></a>部署行为
 

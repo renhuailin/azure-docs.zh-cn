@@ -3,23 +3,23 @@ title: 使用 Azure RBAC 向应用程序授予访问 Azure Key Vault 的权限 |
 description: 了解如何使用 Azure 基于角色的访问控制提供对密钥、机密和证书的访问权限。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 8/30/2020
+ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 886b87adeabdc0aadde04c189b78739435aabede
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: e2a8e8f2abeb58cdfce53cc4578d15ace1fbff5f
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100527003"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634592"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限
 
 > [!NOTE]
-> Key Vault 资源提供程序支持两种资源类型： **保管库** 和 **托管的 hsm**。 本文中所述的访问控制仅适用于 **保管库**。 若要了解有关托管 HSM 的访问控制的详细信息，请参阅 [托管 hsm 访问控制](../managed-hsm/access-control.md)。
+> 密钥保管库资源提供程序支持两种资源类型：保管库和托管 HSM。 本文中所述的访问控制仅适用于保管库。 若要详细了解托管 HSM 的访问控制，请参阅[托管 HSM 访问控制](../managed-hsm/access-control.md)。
 
 Azure 基于角色的访问控制 (Azure RBAC) 是在 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)基础上构建的授权系统，针对 Azure 资源提供精细的访问权限管理。
 
@@ -41,7 +41,7 @@ Azure RBAC 模型提供了在不同范围级别设置权限的功能：管理组
 
 有关 Azure Key Vault 管理指南的详细信息，请参阅：
 
-- [Azure Key Vault 安全性概述](security-overview.md)
+- [Azure Key Vault 最佳做法](best-practices.md)
 - [Azure Key Vault 服务限制](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>用于 Key Vault 数据平面操作的 Azure 内置角色
@@ -51,12 +51,12 @@ Azure RBAC 模型提供了在不同范围级别设置权限的功能：管理组
 | 内置角色 | 说明 | ID |
 | --- | --- | --- |
 | Key Vault 管理员| 对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理密钥保管库资源或管理角色分配。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-| Key Vault 证书官员 | 对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
-| Key Vault 加密官 | 对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+| Key Vault 证书管理人员 | 对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
+| Key Vault 加密管理人员 | 对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
 | 密钥保管库加密服务加密用户 | 读取密钥的元数据并执行包装/展开操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
 | Key Vault 加密用户  | 使用密钥执行加密操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
-| Key Vault 读取器 | 读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
-| Key Vault 秘密官员| 对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+| Key Vault 读取者 | 读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
+| Key Vault 机密管理人员| 对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
 | Key Vault 机密用户 | 读取机密内容。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 4633458b-17de-408a-b874-0445c86b69e6 |
 
 有关 Azure 内置角色定义的详细信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
@@ -75,7 +75,7 @@ Azure RBAC 模型提供了在不同范围级别设置权限的功能：管理组
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>对密钥保管库启用 Azure RBAC 权限
 
 > [!NOTE]
-> 更改权限模型需要 "Microsoft Authorization/roleAssignments/write" 权限，这是 " [所有者](../../role-based-access-control/built-in-roles.md#owner) " 和 " [用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator) " 角色的一部分。 不支持经典订阅管理员角色，如 "服务管理员" 和 "共同管理员"。
+> 更改权限模型需要具有“Microsoft.Authorization/roleAssignments/write”权限，该权限是[所有者](../../role-based-access-control/built-in-roles.md#owner)和[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色的一部分。 不支持经典订阅管理员角色（如“服务管理员”和“共同管理员”）。
 
 1.  对新密钥保管库启用 Azure RBAC 权限：
 
@@ -93,11 +93,22 @@ Azure RBAC 模型提供了在不同范围级别设置权限的功能：管理组
 > [!Note]
 > 建议在脚本中使用唯一的角色 ID，而不是角色名称。 这样一来，即使角色重命名，脚本仍可以继续使用。 此文档中的角色名称仅用于提高可读性。
 
-用于创建角色分配的 Azure CLI 命令：
+运行以下命令创建角色分配：
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope <scope>
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName <role_name> -SignInName <assignee_upn> -Scope <scope>
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Reader -ApplicationId <applicationId> -Scope <scope>
+```
+---
 
 在 Azure 门户中，Azure 角色分配屏幕可用于访问控制 (IAM) 选项卡上的所有资源。
 
@@ -110,14 +121,24 @@ az role assignment create --role <role_name_or_id> --assignee <assignee> --scope
 
 2.  单击“访问控制(IAM)”\>“添加角色分配”\>“添加”
 
-3.  为当前用户创建 Key Vault 读者角色 "Key Vault 读者"
+3.  为当前用户创建 Key Vault 读取者角色“Key Vault 读取者”
 
     ![添加角色 - 资源组](../media/rbac/image-5.png)
 
-Azure CLI：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Reader" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Reader' -SignInName {i.e user@microsoft.com} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Reader' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
+```
+---
 
 上述角色分配提供了在密钥保管库中列出密钥保管库对象的功能。
 
@@ -127,15 +148,24 @@ az role assignment create --role "Key Vault Reader" --assignee {i.e user@microso
 
 2. 单击“添加角色分配”\>“添加”
 
-3. 为当前用户创建关键机密官角色 "Key Vault 秘密专员"。
+3. 为当前用户创建 Key Vault 机密管理人员角色“Key Vault 机密管理人员”。
 
     ![角色分配 - 密钥保管库](../media/rbac/image-6.png)
 
- Azure CLI：
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -SignInName {i.e user@microsoft.com} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+```
+---
 
 创建上述角色分配后，你可以创建/更新/删除机密。
 
@@ -145,19 +175,28 @@ az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e jal
 
 ### <a name="secret-scope-role-assignment"></a>机密范围角色分配
 
-1. 打开以前创建的机密之一，请注意 (IAM) 的概述和访问控制 
+1. 打开一个以前创建的机密，找到“概述和访问控制(IAM)” 
 
-2. 单击 "访问控制 (IAM) " 选项卡
+2. 单击“访问控制(IAM)”选项卡
 
     ![角色分配 - 机密](../media/rbac/image-8.png)
 
-3. 为当前用户创建关键机密官角色 "Key Vault 秘密监察官"，就像上述 Key Vault 所做的一样。
+3. 为当前用户创建 Key Vault 机密管理人员角色“Key Vault 机密管理人员”，与上面对 Key Vault 所做的操作相同。
 
-Azure CLI：
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -SignInName {i.e user@microsoft.com} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
+```
+---
 
 ### <a name="test-and-verify"></a>测试和验证
 
@@ -167,7 +206,7 @@ az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e use
 
 1. 验证在密钥库级别上没有“Key Vault 机管理人员”角色的情况下添加新机密。
 
-请访问 key vault 访问控制 (IAM) "选项卡，然后删除此资源的" Key Vault 密码官 "角色分配。
+转到密钥保管库“访问控制(IAM)”选项卡，删除此资源的“Key Vault 机密管理人员”角色分配。
 
 ![删除分配 - 密钥保管库](../media/rbac/image-9.png)
 
@@ -181,7 +220,7 @@ az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e use
 
 2.  验证在机密级别上没有“Key Vault 机密管理人员”角色的情况下编辑机密。
 
--   请访问以前创建的机密访问控制 (IAM) "选项卡，然后删除此资源的" Key Vault 密码官 "角色分配。
+-   转到先前创建的机密“访问控制(IAM)”选项卡，删除此资源的“Key Vault 机密管理人员”角色分配。
 
 -   导航到以前创建的机密。 你可以看到机密属性。
 
@@ -189,7 +228,7 @@ az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e use
 
 3. 验证在密钥库级别没有读取者角色的情况下读取机密。
 
--   请访问 key vault 资源组访问控制 (IAM) "选项卡，删除" Key Vault 读取器 "角色分配。
+-   转到密钥保管库资源组“访问控制(IAM)”选项卡，删除“Key Vault 读取者”角色分配。
 
 -   若导航到密钥保管库的“机密”选项卡，应会看到以下错误：
 
@@ -197,9 +236,9 @@ az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e use
 
 ### <a name="creating-custom-roles"></a>创建自定义角色 
 
-[az role definition create 命令](/cli/azure/role/definition#az-role-definition-create)
+[az role definition create 命令](/cli/azure/role/definition#az_role_definition_create)
 
-（CLI bash 脚本）</br>
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role definition create --role-definition '{ \
    "Name": "Backup Keys Operator", \
@@ -216,6 +255,31 @@ az role definition create --role-definition '{ \
     "AssignableScopes": ["/subscriptions/{subscriptionId}"] \
 }'
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$roleDefinition = @"
+{ 
+   "Name": "Backup Keys Operator", 
+   "Description": "Perform key backup/restore operations", 
+    "Actions": [ 
+    ], 
+    "DataActions": [ 
+        "Microsoft.KeyVault/vaults/keys/read ", 
+        "Microsoft.KeyVault/vaults/keys/backup/action", 
+         "Microsoft.KeyVault/vaults/keys/restore/action" 
+    ], 
+    "NotDataActions": [ 
+   ], 
+    "AssignableScopes": ["/subscriptions/{subscriptionId}"] 
+}
+"@
+
+$roleDefinition | Out-File role.json
+
+New-AzRoleDefinition -InputFile role.json
+```
+---
 
 有关如何创建自定义角色的详细信息，请参阅：
 

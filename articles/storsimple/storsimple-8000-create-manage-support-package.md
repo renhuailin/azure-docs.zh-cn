@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96017162"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>创建和管理 StorSimple 8000 系列支持包
@@ -108,7 +108,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    ![编辑支持包2](./media/storsimple-8000-create-manage-support-package/IC750707.png)
+    ![编辑支持包 2](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. 出现提示时，为已修改的支持包提供加密密码。
    
     ```powershell

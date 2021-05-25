@@ -2,17 +2,18 @@
 title: 将数据磁盘附加到 Linux VM
 description: 使用门户将新的或现有数据磁盘附加到 Linux VM。
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 647564a9b9ca909d2f45ae66673d8beac168a4aa
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
-ms.translationtype: MT
+ms.collection: linux
+ms.openlocfilehash: 0fe584ea8559c285ee7e25caca958ff56aa9454d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575968"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601818"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md)。 
@@ -80,7 +81,7 @@ sdc     3:0:0:0       4G
 
 对于更复杂的示例，多个数据磁盘在门户中显示如下：
 
-:::image type="content" source="./media/attach-disk-portal/create-new-md.png" alt-text="检查磁盘设置。":::
+:::image type="content" source="./media/attach-disk-portal/find-disk.png" alt-text="门户中显示的多个磁盘的屏幕截图。":::
 
 在图片中，可以看到有 3 个数据磁盘：LUN 0 为 4 GB，LUN 1 为 16 GB，LUN 2 为 32G。
 
@@ -226,6 +227,6 @@ sdc     3:0:0:0       4G
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，以及为了帮助排查磁盘问题，请参阅 [排查 LINUX VM 设备名称更改](../troubleshooting/troubleshoot-device-names-problems.md)问题。
+若要了解详细信息，或者要帮助排查磁盘问题，请参阅 [Linux VM 设备名称更改故障排除](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)。
 
 还可使用 Azure CLI [附加数据磁盘](add-disk.md)。

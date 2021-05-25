@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 数据工厂中的复制活动保留元数据和 ACL
 description: 了解如何使用 Azure 数据工厂中的复制活动在复制期间保留元数据和 ACL。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.author: jingwang
-ms.openlocfilehash: 396a598d143e85687f9dfbf765b3c18736627e41
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: jianleishen
+ms.openlocfilehash: 15221c5884ca52d5560fe46dc36ba1647bdea394
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100387710"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488584"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的复制活动保留元数据和 ACL
 

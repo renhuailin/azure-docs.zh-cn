@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Purview 发现、连接和浏览 Synapse 中的数据
 description: 有关如何发现、连接和浏览 Synapse 中的数据的指南
-author: Jejiang
+services: synapse-analytics
+author: ArnoMicrosoft
 ms.service: synapse-analytics
-ms.subservice: purview
 ms.topic: how-to
 ms.date: 12/16/2020
-ms.author: jejiang
+ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 125855a4efd8c369cf067c64b034cb23d3adde7f
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: a3ed7979584787627c97cfec3bb2e19c147f7152
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716071"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98872650"
 ---
 # <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>使用 Azure Purview 发现、连接和浏览 Synapse 中的数据 
 
@@ -27,11 +27,11 @@ ms.locfileid: "109716071"
 
 ## <a name="using-azure-purview-in-synapse"></a>在 Synapse 中使用 Azure Purview 
 
-若要在 Synapse 中使用 Azure Purview，你必须有权访问该 Purview 帐户。 Synapse 会传递 Purview 权限。 例如，如果你拥有策划人权限角色，你将能够编辑 Azure Purview 扫描的元数据。 
+若要在 Synapse 中使用 Azure Purview，你必须有权访问该 Purview 帐户。 Synapse 会传递 Purview 权限。 例如，如果你拥有策展人权限角色，你将能够编辑 Azure Purview 扫描的元数据。 
 
 ### <a name="data-discovery-search-datasets"></a>数据发现：搜索数据集 
 
-若要发现 Azure Purview 注册和扫描的数据，可以使用 Synapse 工作区顶部中心的搜索栏。 请确保选择“Azure Purview”以搜索所有组织数据。 
+若要发现 Azure Purview 注册和扫描的数据，可以使用 Synapse 工作区顶部中心的搜索栏。 请确保选择 Azure Purview 以搜索所有组织数据。 
 
 [![搜索 Azure Purview 资产](./media/purview-access.png)](./media/purview-access.png#lightbox)
 

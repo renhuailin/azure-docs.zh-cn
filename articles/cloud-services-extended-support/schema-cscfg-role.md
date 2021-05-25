@@ -1,6 +1,6 @@
 ---
-title: Azure 云服务 (扩展支持) 角色架构 |Microsoft Docs
-description: '与云服务的角色架构相关的信息 (扩展支持) '
+title: Azure 云服务（外延支持）角色架构 | Microsoft Docs
+description: 与云服务（外延支持）的角色架构相关的信息
 ms.topic: article
 ms.service: cloud-services-extended-support
 ms.date: 10/14/2020
@@ -9,19 +9,19 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 2567f5bb817a34f6274d5e265a266d67a9c81413
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98744222"
 ---
-# <a name="azure-cloud-services-extended-support-config-role-schema"></a>Azure 云服务 (扩展支持) config 角色架构
+# <a name="azure-cloud-services-extended-support-config-role-schema"></a>Azure 云服务（外延支持）配置角色架构
 
 配置文件的 `Role` 元素指定要为服务中的每个角色部署的角色实例数，任何配置设置的值，以及与角色关联的任何证书的缩略图。
 
-有关 Azure 服务配置架构的详细信息，请参阅 [云服务 (扩展支持) 配置架构](schema-cscfg-file.md)。 有关 Azure 服务定义架构的详细信息，请参阅 [云服务 (扩展支持) 定义架构](schema-csdef-file.md)。
+有关 Azure 服务配置架构的详细信息，请参阅[云服务（外延支持）配置架构](schema-cscfg-file.md)。 有关 Azure 服务定义架构的详细信息，请参阅[云服务（外延支持）定义架构](schema-csdef-file.md)。
 
-##  <a name="role-element"></a><a name="Role"></a> role 元素
+##  <a name="role-element"></a><a name="Role"></a> 角色元素
 下面的示例显示了 `Role` 元素及其子元素。
 
 ```xml 
@@ -54,4 +54,4 @@ ms.locfileid: "98744222"
 | 证书 | 可选。 指定要与角色关联的服务证书的名称、指纹和算法。 证书名称是由用于 `name` 属性的字符串定义的。 证书指纹是由用于 `thumbprint` 属性的一串不含空格的十六进制数字定义的。 必须使用数字和大写字母字符来表示十六进制数字。 证书算法是由用于 `thumbprintAlgorithm` 属性的字符串定义的。|
 
 ## <a name="see-also"></a>另请参阅
-[云服务 (扩展支持) 配置架构](schema-cscfg-file.md)。
+[云服务（外延支持）配置架构](schema-cscfg-file.md)。

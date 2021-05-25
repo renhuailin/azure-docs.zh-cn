@@ -1,15 +1,15 @@
 ---
-title: 使用 Apache Maven 生成适用于 Azure HDInsight 的 Java HBase 客户端
+title: 使用 Apache Maven 构建适用于 Azure HDInsight 的 Java HBase 客户端
 description: 了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，然后将其部署到 Azure HDInsight 上的 HBase。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
 ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98942965"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
@@ -69,7 +69,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>更新项目对象模型
 
-有关 pom.xml 文件的完整参考，请参阅 https://maven.apache.org/pom.html 。  输入以下命令打开 `pom.xml`：
+有关 pom.xml 文件的完整参考，请参阅 https://maven.apache.org/pom.html。  输入以下命令打开 `pom.xml`：
 
 ```cmd
 notepad pom.xml
@@ -92,7 +92,7 @@ notepad pom.xml
 </dependency>
 ```  
 
-此部分指示项目需要 **hbase-client** 和 **phoenix-core** 组件。 在编译时，会从默认 Maven 存储库下载这些依赖项。 可以使用 [Maven 中央存储库](https://search.maven.org/artifact/org.apache.hbase/hbase-client/1.1.2/jar) 搜索来了解有关此依赖性的详细信息。
+此部分指示项目需要 **hbase-client** 和 **phoenix-core** 组件。 在编译时，会从默认 Maven 存储库下载这些依赖项。 可以使用 [Maven 中央存储库](https://search.maven.org/artifact/org.apache.hbase/hbase-client/1.1.2/jar)搜索来了解有关此依赖项的详细信息。
 
 > [!IMPORTANT]  
 > hbase-client 的版本号必须与 HDInsight 群集随附的 Apache HBase 版本匹配。 可以使用下表来查找正确的版本号。

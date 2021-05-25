@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alkohli
 ms.openlocfilehash: c4e2894d193309c169adbea96491e0754d479a8a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98786801"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>管理 Azure Data Box Gateway 的访问、电源和连接模式
@@ -29,11 +29,11 @@ ms.locfileid: "98786801"
 
 ## <a name="manage-device-access"></a>管理对设备的访问
 
-对 Data Box Gateway 设备的访问通过使用设备密码进行控制。 可以通过本地 web UI 更改密码。 你还可以在 Azure 门户中重置设备密码。
+使用设备密码来控制对 Data Box Gateway 设备的访问。 可以通过本地 Web UI 更改密码。 还可以在 Azure 门户中重置设备密码。
 
 ### <a name="change-device-password"></a>更改设备密码
 
-请在本地 UI 中执行以下步骤，以更改设备密码。
+在本地 UI 中遵循以下步骤更改设备密码。
 
 1. 在本地 Web UI 中，转到“维护”>“密码更改”。
 2. 依次输入当前密码和新密码。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 确认新密码。
@@ -53,34 +53,34 @@ ms.locfileid: "98786801"
  
 2. 输入新密码并确认。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 单击“重置”。
 
-    ![重置密码2](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![重置密码 2](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>管理资源访问
 
-若要创建 Azure Data Box Gateway、IoT 中心和 Azure 存储资源，需要具有资源组级别的参与者或更高级别的权限。 还需要注册相应的资源提供程序。 对于涉及激活密钥和凭据的任何操作，还需要 Azure Active Directory 图形 API 的权限。 以下部分介绍了这些内容。
+若要创建 Azure / Data Box Gateway、IoT 中心和 Azure 存储资源，需要拥有资源组级别的参与者或更高权限。 还需要注册相应的资源提供程序。 对于涉及激活密钥和凭据的任何操作，还需要拥有对 Azure Active Directory Graph API 的权限。 这些在下面各部分中介绍。
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>管理 Microsoft Graph API 权限
 
-为设备生成激活密钥，或执行需要凭据的任何操作时，需要 Microsoft Graph API 的权限。 需要凭据的操作可以是：
+为设备生成激活密钥或执行需要凭据的任何操作时，需要拥有对 Microsoft Graph API 的权限。 需要凭据的操作可能是：
 
 -  使用关联的存储帐户创建共享。
 -  创建可访问设备上的共享的用户。
 
-你应具有 `User` Active Directory 租户的访问权限，以便可以 `Read all directory objects` 。 来宾用户无权访问 `Read all directory objects` 。 如果你是来宾，则生成激活密钥、在设备上创建共享以及创建用户的操作将失败。
+应在 Active Directory 租户上具有 `User` 权限，以便可以 `Read all directory objects`。 来宾用户无权 `Read all directory objects`。 如果你是来宾，将无法执行生成激活密钥、在设备上创建共享和创建用户等操作。
 
-有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅 [Microsoft Graph 权限参考](/graph/permissions-reference)。
+如需详细了解如何向用户提供对 Microsoft Graph API 的访问权限，请参阅 [Microsoft Graph 权限参考](/graph/permissions-reference)。
 
 ### <a name="register-resource-providers"></a>注册资源提供程序
 
-若要在 azure 资源管理器模型) 的 Azure 中预配资源，需要一个支持创建该资源的资源提供程序 (。 例如，要设置虚拟机，订阅中应提供 "Microsoft. 计算" 资源提供程序。
+如果要在 Azure（在 Azure 资源管理器模型中）中预配资源，需要支持创建资源的资源提供程序。 例如，要预配虚拟机，订阅中应提供“Microsoft.Compute”资源提供程序。
  
-资源提供程序在订阅级别注册。 默认情况下，任何新的 Azure 订阅都预注册到一组常用的资源提供程序中。 "DataBoxEdge" 的资源提供程序未包含在此列表中。
+资源提供程序在订阅级别注册。 默认情况下，任何新的 Azure 订阅都预注册到一组常用的资源提供程序中。 这组资源提供程序不包含适用于“Microsoft.DataBoxEdge”的资源提供程序。
 
-您无需在订阅级别授予访问权限，用户能够在其拥有所有者权限的资源组中创建诸如 "DataBoxEdge" 之类的资源，前提是这些资源的资源提供程序已注册。
+无需在订阅级别授予访问权限，即可让用户在其拥有所有者权限的资源组中创建类似于“Microsoft.DataBoxEdge”的资源，前提是这些资源的资源提供程序已注册。
 
-尝试创建任何资源之前，请确保在订阅中注册了资源提供程序。 如果未注册资源提供程序，则需要确保创建新资源的用户具有足够的权限在订阅级别注册所需的资源提供程序。 如果还没有这样做，则会看到以下错误：
+尝试创建任何资源之前，请确保在订阅中注册了资源提供程序。 如果未注册资源提供程序，则需要确保创建新资源的用户拥有足够的权限，可在订阅级别注册所需的资源提供程序。 如果还没有这样做，则会看到以下错误：
 
-*订阅无权 \<Subscription name> 注册资源提供程序 () ： DataBoxEdge。*
+订阅\<Subscription name>没有注册资源提供程序 Microsoft.DataBoxEdge 的权限。
 
 
 若要获取当前订阅中已注册资源提供程序的列表，请运行以下命令：
@@ -89,23 +89,23 @@ ms.locfileid: "98786801"
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-对于 Data Box Gateway 设备， `Microsoft.DataBoxEdge` 应注册。 若要注册 `Microsoft.DataBoxEdge` ，订阅管理员应运行以下命令：
+对于 Data Box Gateway 设备，应注册 `Microsoft.DataBoxEdge`。 若要注册 `Microsoft.DataBoxEdge`，订阅管理员应运行以下命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-有关如何注册资源提供程序的详细信息，请参阅 [解决资源提供程序注册的错误](../azure-resource-manager/templates/error-register-resource-provider.md)。
+如需详细了解如何注册资源提供程序，请参阅[解决资源提供程序注册错误](../azure-resource-manager/templates/error-register-resource-provider.md)。
 
 ## <a name="manage-connectivity-mode"></a>管理连接模式
 
-除了默认的正常模式，你的设备还可以在部分断开连接或断开连接的模式下运行：
+除了在默认的正常模式下运行以外，设备还可以在部分离线或完全离线模式下运行：
 
-- **部分断开** –在此模式下，设备无法将任何数据上载到共享。 但是，可以通过 Azure 门户来管理它。
+- 部分离线 - 在此模式下，设备无法将任何数据上传到共享。 但是，可以通过 Azure 门户来管理它。
 
-    此模式通常用于在按流量计费的卫星网络上最大程度地减少网络带宽消耗。 执行设备监视操作时，仍有可能会消耗少量的网络带宽。
+    使用按流量计费的卫星网络时，通常会使用此模式，以便尽量减少网络带宽消耗。 执行设备监视操作时，仍有可能会消耗少量的网络带宽。
 
-- **断开连接** –在此模式下，设备已从云完全断开连接，并且云上传和下载均处于禁用状态。 只能通过本地 Web UI 管理设备。
+- 离线 – 在此模式下，设备完全与云断开连接，此时会禁用云上传和下载。 只能通过本地 Web UI 管理设备。
 
     想要使设备脱机时，通常会使用此模式。
 
@@ -119,14 +119,14 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
  
 4. 若要在离线模式下运行设备，请禁用“Azure 门户管理”。 现在，只能通过本地 Web UI 管理设备。
 
-    ![连接模式2](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-2.png)
+    ![连接模式 2](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-2.png)
 
 ## <a name="manage-power"></a>管理电源
 
-可使用本地 Web UI 关闭或重启虚拟设备。 建议在重新启动设备之前，将共享上的共享与设备共享。 此操作可以最大程度地减少发生数据损坏的可能性。
+可使用本地 Web UI 关闭或重启虚拟设备。 在重启设备之前，建议使共享依次在主机和设备上脱机。 此操作可以最大程度地减少发生数据损坏的可能性。
 
 1. 在本地 Web UI 中，转到“维护”>“电源设置”。
-2. 单击 " **关闭** " 或 " **重新启动** "，具体取决于你想要执行的操作。
+2. 根据意图单击“关机”或“重启”。 
 
     ![电源设置](media/data-box-gateway-manage-access-power-connectivity-mode/shut-down-restart-1.png)
 

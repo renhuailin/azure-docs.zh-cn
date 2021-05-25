@@ -4,12 +4,12 @@ description: 了解如何使用企业安全性套餐管理 Azure HDInsight 群�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/04/2019
-ms.openlocfilehash: b0f8ba4adfa4b08c23d3f69fa4e2b01f4580bb19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: bc31c3d71590a6b8c0b324ffcb8c10129a9f8699
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742205"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863235"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企业安全性套餐管理 HDInsight 群集
 
@@ -43,7 +43,7 @@ ms.locfileid: "101742205"
 
 企业安全包（以前称为 HDInsight Premium）提供对群集的多用户访问，其中身份验证通过 Active Directory 以及 Apache Ranger 和存储 ACL (ADLS ACL) 授权来完成。 授权提供多个用户之间的安全边界，并仅允许特权用户根据授权策略访问数据。
 
-安全和用户隔离对于使用企业安全包的 HDInsight 群集很重要。 为了满足这些要求，在创建群集时，为在创建群集时选择的本地用户以及 AAD-DS (（即 Kerberos) ）提供的用户支持 SSH 访问企业安全性套餐群集。 下表显示了对于每种群集类型建议的访问方法：
+安全和用户隔离对于使用企业安全包的 HDInsight 群集很重要。 为了满足这些要求，在创建群集时选择的本地用户以及 AAD-DS（即 Kerberos）提供的用户支持通过 SSH 访问具有企业安全包的群集。 下表显示了对于每种群集类型建议的访问方法：
 
 |工作负载|方案|访问方法|
 |--------|--------|-------------|
@@ -59,7 +59,7 @@ ms.locfileid: "101742205"
 使用标准 API 从安全角度获得帮助。 你还可以获得以下优势：
 
 - **管理** - 可以使用标准 API（Livy、HS2 等）管理代码和自动执行作业。
-- **审核** - 使用 SSH 时，没有办法审核哪些用户已通过 SSH 登录到群集。 如果作业是通过标准终结点构造的，则不会出现这种情况，因为它们会在用户上下文中执行。
+- **审核** - 使用 SSH 时，没有办法审核哪些用户已通过 SSH 登录到群集。 通过标准终结点构造作业时就不会出现这种情况，因为这些作业将在用户上下文中执行。
 
 ### <a name="use-beeline"></a><a name="beeline"></a>使用 Beeline
 
@@ -116,7 +116,7 @@ HDInsight 企业安全性套餐具有以下角色：
 2. 在左侧菜单中，选择“角色”。
 3. 选择蓝色问号以查看权限：
 
-    ![ESP HDInsight 角色权限](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png" alt-text="ESP HDInsight 角色权限" border="true":::
 
 ## <a name="open-the-ambari-management-ui"></a>打开 Ambari 管理 UI
 
@@ -124,25 +124,25 @@ HDInsight 企业安全性套餐具有以下角色：
 1. 使用群集管理员域用户名和密码登录到 Ambari。
 1. 在右上角选择“管理员”下拉菜单，然后选择“管理 Ambari”。
 
-    ![ESP HDInsight 管理 Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png" alt-text="ESP HDInsight 管理 Apache Ambari" border="true":::
 
     该 UI 如下所示：
 
-    ![ESP HDInsight Apache Ambari 管理 UI](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png" alt-text="ESP HDInsight Apache Ambari 管理 UI" border="true":::
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>列出从 Active Directory 同步的域用户
 
 1. 打开 Ambari 管理 UI。  请参阅 [打开 Ambari 管理 UI](#open-the-ambari-management-ui)。
 2. 从左侧菜单中选择“用户”。 可看到从 Active Directory 同步到 HDInsight 群集的所有用户。
 
-    ![ESP HDInsight Ambari 管理 UI 列表用户](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png" alt-text="ESP HDInsight Ambari 管理 UI 列表用户" border="true":::
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>列出从 Active Directory 同步的域组
 
 1. 打开 Ambari 管理 UI。  请参阅 [打开 Ambari 管理 UI](#open-the-ambari-management-ui)。
 2. 从左侧菜单中选择“组”。 可看到从 Active Directory 同步到 HDInsight 群集的所有组。
 
-    ![ESP HDInsight Ambari 管理 UI 列表组](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png" alt-text="ESP HDInsight Ambari 管理 UI 列表组" border="true":::
 
 ## <a name="configure-hive-views-permissions"></a>配置 Hive 视图权限
 
@@ -150,12 +150,12 @@ HDInsight 企业安全性套餐具有以下角色：
 2. 从左侧菜单中选择“视图”。
 3. 选择“HIVE”以显示详细信息。
 
-    ![ESP HDInsight Ambari 管理 UI Hive 视图](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png" alt-text="ESP HDInsight Ambari 管理 UI Hive 视图" border="true":::
 
 4. 选择“Hive 视图”链接以配置 Hive 视图。
 5. 向下滚动到“权限”部分  。
 
-    ![ESP HDInsight Ambari 管理 UI Hive 视图配置权限](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png" alt-text="ESP HDInsight Ambari 管理 UI Hive 视图配置权限" border="true":::
 
 6. 选择“添加用户”或“添加组”，然后指定可以使用 Hive 视图的用户或组。
 

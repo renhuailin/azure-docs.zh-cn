@@ -4,10 +4,10 @@ description: 使用示例仪表板演练 Azure 仪表板的 JSON 结构。 包�
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.openlocfilehash: d37e2fd9c9f6ef6e7ddea6dea002f26f20cd66a7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96745955"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
@@ -285,7 +285,7 @@ ms.locfileid: "96745955"
 
 ### <a name="the-id-property"></a>ID 属性
 
-Azure 资源 ID，遵循 [azure 资源的命名约定](/azure/architecture/best-practices/resource-naming)。 当门户创建仪表板时，它通常选择 guid 形式的 ID，但当你以编程方式创建仪表板时，可以随意使用任何有效名称。 
+Azure 资源 ID 服从 [Azure 资源命名约定](/azure/architecture/best-practices/resource-naming)。 当门户创建仪表板时，它通常选择 guid 形式的 ID，但当你以编程方式创建仪表板时，可以随意使用任何有效名称。 
 
 ### <a name="the-name-property"></a>“名称”属性
 名称是资源 ID 中不包含订阅、资源类型或资源组信息的那部分。 实质上，它是资源 ID 的最后一段。
@@ -308,7 +308,7 @@ Azure 资源 ID，遵循 [azure 资源的命名约定](/azure/architecture/best-
 “可重用功能区”属性包含仪表板  。 请注意，此示例中的可重用功能区对象包含名为“0”的单个属性。 可重用功能区是一个分组概念，当前未在仪表板中实现。 现在，所有仪表板在可重用功能区对象上具有此单个属性，即“0”。
 
 ### <a name="the-lens-object"></a>可重用功能区对象
-"0" 下的对象包含两个属性： " __顺序__ " 和 " __部件__"。  在当前版本的仪表板中，顺序始终为 0  。 __parts__ 属性包含一个对象，该对象定义仪表板上的各个部件（也称为“磁贴”）。
+“0”下面的对象包含两个属性：顺序和部件 。  在当前版本的仪表板中，顺序始终为 0  。 __parts__ 属性包含一个对象，该对象定义仪表板上的各个部件（也称为“磁贴”）。
 
 部件对象包含每个部件的一个属性，其中属性名称为一个数字  。 此数字并不重要。 
 

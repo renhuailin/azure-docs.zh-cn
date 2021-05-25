@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
-ms.openlocfilehash: ad802b2bdf08a8e43179beece5f52d869513aff3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: eb97e209bc7bb9bc1a15ecadc88593e4c0573b5c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933039"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104870596"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Apache Kafka on HDInsight
 
@@ -60,7 +60,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 若要创建可与本地网络通信的 Kafka 群集，请遵循[将 HDInsight 连接到本地网络](./../connect-on-premises-network.md)文档中所述的步骤。
 
 > [!IMPORTANT]  
-> 创建 HDInsight 群集时，请选择“Kafka”群集类型。 
+> 创建 HDInsight 群集时，请选择“Kafka”群集类型。
 
 这些步骤创建以下配置：
 
@@ -239,23 +239,23 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 默认情况下，Apache Zookeeper 向客户端返回 Kafka 中转站的域名。 此配置不使用 VPN 软件客户端，因为它无法对虚拟网络中的实体使用名称解析。 对于此配置，请使用以下步骤来配置 Kafka，以播发 IP 地址而不是域名：
 
-1. 使用 Web 浏览器转到 `https://CLUSTERNAME.azurehdinsight.net` 。 将替换 `CLUSTERNAME` 为 Kafka On HDInsight 群集的名称。
+1. 使用 Web 浏览器转到 `https://CLUSTERNAME.azurehdinsight.net`。 将 `CLUSTERNAME` 替换为 HDInsight 群集中 Kafka 的名称。
 
     出现提示时，使用群集的 HTTPS 用户名称密码。 将显示群集的 Ambari Web UI。
 
-2. 要查看 Kafka 的相关信息，请从左侧列表中选择“Kafka”  。
+2. 要查看 Kafka 的相关信息，请从左侧列表中选择“Kafka”。
 
-    ![Kafka 突出显示的服务列表](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png" alt-text="Kafka 突出显示的服务列表" border="true":::
 
-3. 要查看 Kafka 配置，请在顶端的中间位置选择“配置”  。
+3. 要查看 Kafka 配置，请在顶端的中间位置选择“配置”。
 
-    ![Apache Ambari 服务配置](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png" alt-text="Apache Ambari 服务配置" border="true":::
 
 4. 要查找“kafka-env” 配置，请在右上方的“筛选器”字段中输入 `kafka-env`。
 
-    ![Kafka 配置，适用于 kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png" alt-text="Kafka 配置，适用于 kafka-env" border="true":::
 
-5. 要配置 Kafka 来播发 IP 地址，请将下列文本添加到“kafka-env-template”  字段的底部：
+5. 要配置 Kafka 来播发 IP 地址，请将下列文本添加到“kafka-env-template”字段的底部：
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -269,19 +269,19 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 7. 要将 Kafka 配置为侦听所有网络接口，请将“侦听器”字段的值更改为 `PLAINTEXT://0.0.0.0:9092`。
 
-8. 单击“保存”  按钮保存配置。 输入描述更改的文本消息。 保存更改后，请选择“确定”  。
+8. 单击“保存”按钮保存配置。 输入描述更改的文本消息。 保存更改后，请选择“确定”。
 
-    ![Apache Ambari 保存配置](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png" alt-text="Apache Ambari 保存配置" border="true":::
 
-9. 要防止在重启 Kafka 时出错，请使用“服务操作”  按钮，并选择“打开维护模式”  。 选择“确定”完成操作。
+9. 要防止在重启 Kafka 时出错，请使用“服务操作”按钮，并选择“打开维护模式”。 选择“确定”完成操作。
 
-    ![服务操作，其中已突出显示“打开维护”](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png" alt-text="服务操作，其中已突出显示“打开维护”" border="true":::
 
-10. 要重启 Kafka，请使用“重启”  按钮，并选择“重启所有受影响的项”  。 确认重启，在操作完成后再使用“确定”  按钮。
+10. 要重启 Kafka，请使用“重启”按钮，并选择“重启所有受影响的项”。 确认重启，在操作完成后再使用“确定”按钮。
 
-    ![重启按钮，其中突出显示了所有受影响的重启项](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/restart-required-button.png" alt-text="重启按钮，其中突出显示了所有受影响的重启项" border="true":::
 
-11. 要禁用维护模式，请使用“服务操作”  按钮，并选择“关闭维护模式”  。 选择“确定”  完成操作。
+11. 要禁用维护模式，请使用“服务操作”按钮，并选择“关闭维护模式”。 选择“确定”完成操作。
 
 ### <a name="connect-to-the-vpn-gateway"></a>连接到 VPN 网关
 

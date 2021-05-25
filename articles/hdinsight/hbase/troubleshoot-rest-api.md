@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/08/2020
 ms.openlocfilehash: 636f84c4c6aa097288dc2fb5481dcedd6863409d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98942869"
 ---
 # <a name="rest-api-to-query-apache-hbase-in-azure-hdinsight"></a>用于在 Azure HDInsight 中查询 Apache HBase 的 REST API

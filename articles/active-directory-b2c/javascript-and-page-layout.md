@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/22/2021
 ms.custom: project-no-code, devx-track-js
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6bb478038d398226db38dc20e49ed7a14e5d5d0a
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.openlocfilehash: d234e57f7c11b0d9f2cd212bde93a8b8e478ef41
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592800"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104781358"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 JavaScript 和页面布局版本
 
@@ -36,7 +36,7 @@ Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaSc
 
 * 选择[页面布局](page-layout.md)
 * 使用 Azure 门户在用户流上启用它
-* 在请求中使用[b2clogin.com](b2clogin.md)
+* 在请求中使用 [b2clogin.com](b2clogin.md)
 
 ::: zone-end
 
@@ -44,7 +44,7 @@ Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaSc
 
 * 选择[页面布局](page-layout.md)
 * 向[自定义策略](custom-policy-overview.md)添加一个元素
-* 在请求中使用[b2clogin.com](b2clogin.md)
+* 在请求中使用 [b2clogin.com](b2clogin.md)
 
 ::: zone-end
 
@@ -59,11 +59,11 @@ Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaSc
 
 ::: zone pivot="b2c-user-flow"
 
-若要为用户流页面指定页面布局版本，请执行以下操作： 
+为用户流页面指定页面布局版本： 
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 选择策略（例如，“B2C_1_SignupSignin”）将其打开。
-1. 选择“页面布局”。 选择 **布局名称**，然后选择 " **页面布局版本 (预览")**。
+1. 选择“页面布局”。 选择“布局名称”，然后选择“页面布局版本（预览版）”。
 
 若要了解不同的页面布局版本，请参阅[页面布局版本更改日志](page-layout.md)。
 
@@ -75,7 +75,7 @@ Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaSc
 
 为应用程序的用户界面元素选择[页面布局](contentdefinitions.md#select-a-page-layout)。
 
-[](contentdefinitions.md#migrating-to-page-layout) `contract` 为自定义策略中的 *所有* 内容定义定义页面布局版本和页面版本。 值的格式必须包含单词 `contract`：_urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 了解如何使用页面版本[迁移到页面布局](contentdefinitions.md#migrating-to-page-layout)。
+为自定义策略中的所有内容定义定义[页面布局版本](contentdefinitions.md#migrating-to-page-layout)和页面`contract`版本。 值的格式必须包含单词 `contract`：_urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 了解如何使用页面版本[迁移到页面布局](contentdefinitions.md#migrating-to-page-layout)。
 
 以下示例显示了内容定义标识符以及对应的包含页面协定的 DataUri： 
 
@@ -127,7 +127,7 @@ Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaSc
 通过向 [RelyingParty](relyingparty.md)元素添加 ScriptExecution 元素来启用脚本执行。
 
 1. 打开自定义策略文件。 例如，SignUpOrSignin.xml。
-1. 将 **ScriptExecution** 元素添加到 **RelyingParty** 元素：
+1. 将 **ScriptExecution** 元素添加到 **RelyingParty** 元素中：
 
     ```xml
     <RelyingParty>
@@ -155,7 +155,7 @@ Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaSc
     - 不直接使用 JavaScript 来调用Azure AD B2C 终结点。
 - 可以嵌入 JavaScript，也可以链接到外部 JavaScript 文件。 如果是使用外部 JavaScript 文件，请确保使用 绝对 URL，而不是相对 URL。
 - JavaScript 框架：
-    - Azure AD B2C 使用 jQuery 的特定版本。 不包括 jQuery 的其他版本。 在同一页面上使用多个版本会造成问题。
+    - Azure AD B2C 使用 [jQuery 的特定版本](page-layout.md#jquery-version)。 不包括 jQuery 的其他版本。 在同一页面上使用多个版本会造成问题。
     - 不支持使用 RequireJS。
     - Azure AD B2C 不支持大多数 JavaScript 框架。
 - 可通过调用 `window.SETTINGS`、`window.CONTENT` 对象读取 Azure AD B2C 设置，例如当前的 UI 语言。 勿更改这些对象的值。
@@ -241,4 +241,4 @@ function addTermsOfUseLink() {
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何自定义应用程序的用户界面，请在 [Azure Active Directory B2C 中自定义应用程序的用户界面](customize-ui-with-html.md)。
+有关如何自定义应用程序用户界面的详细信息，请参阅[在 Azure Active Directory B2C 中自定义应用程序的用户界面](customize-ui-with-html.md)。

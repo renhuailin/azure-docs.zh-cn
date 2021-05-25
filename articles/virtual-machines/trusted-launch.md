@@ -10,10 +10,10 @@ ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
 ms.openlocfilehash: 5e500eca601d21f106dbe31236e9b5c2aa76b0d2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/23/2021
 ms.locfileid: "104801921"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Azure 虚拟机的受信任启动（预览版）
@@ -38,7 +38,7 @@ Azure 提供受信任启动作为一种无缝提高[第 2 代](generation-2.md) 
 
 ## <a name="public-preview-limitations"></a>公共预览版限制
 
-**大小支持**：除以下系列之外的所有 [第 2 代](generation-2.md) VM 大小：
+**大小支持**：除以下系列之外的所有[第 2 代](generation-2.md) VM 大小：
 
 - Lsv2 系列 
 - M 系列 
@@ -112,7 +112,7 @@ HVCI 是功能强大的系统缓解机制，可以防范在 Windows 内核模式
     > [!NOTE]
     >  此警报适用于已启用 vTPM 并已安装“证明”扩展的 VM。 若要通过证明，必须启用安全启动。 如果禁用安全启动，证明将会失败。 如果必须禁用安全启动，可以禁止显示此警报以避免误报。
 
-- **针对不受信任的 Linux 内核模块的警报** - 如果在启用安全启动的情况下使用受信任启动，即使内核驱动程序通不过验证并被禁止加载，VM 也可以启动。 如果发生这种情况，Azure Defender 将发出低严重性警报。 尽管不会遭受直接威胁（因为不受信任的驱动程序尚未加载），但应该调查这些事件。 考虑以下情况：
+- 针对不受信任的 Linux 内核模块的警报 - 对于启用了安全启动的受信任启动，即使内核驱动程序没有通过验证并被禁止加载，VM 也可以启动。 如果发生这种情况，Azure Defender 将发出低严重性警报。 尽管不会遭受直接威胁（因为不受信任的驱动程序尚未加载），但应该调查这些事件。 考虑以下情况：
     - 哪个内核驱动程序失败？ 我是否知悉此驱动程序，并且已意料到会加载它？
     - 它是否为我确切预期的驱动程序版本？ 驱动程序二进制文件是否未经改动？ 如果它是第三方驱动程序，供应商是否通过了 OS 合规性测试，可对其进行签名？
 
@@ -137,7 +137,7 @@ HVCI 是功能强大的系统缓解机制，可以防范在 Windows 内核模式
 
 Azure 虚拟机的受信任启动将受到监视，以识别高级威胁。 如果检测到此类威胁，将触发警报。 警报仅在 Azure 安全中心的[标准层](../security-center/security-center-pricing.md)中提供。
 Azure 安全中心定期执行证明。 如果证明失败，将触发中等严重性警报。 受信任启动证明可能出于以下原因而失败： 
-- 证明的信息（包括受信任计算基础 (TCB) 的日志）与受信任基线（例如是否启用了安全启动）相背离。 这可能表示加载了不受信任的模块，并且 OS 可能已遭入侵。
+- 证明的信息（包括受信任计算基础 (TCB) 的日志）偏离受信任基线（如启用安全启动时）。 这可能表示加载了不受信任的模块，并且 OS 可能已遭入侵。
 - 无法验证证明引述是否源自被证明 VM 的 vTPM。 这可能表示存在恶意软件，它可能正在截获发送到 TPM 的流量。 
 - VM 上的证明扩展未做出响应。 这可能表示恶意软件或 OS 管理员发起了拒绝服务攻击。
 

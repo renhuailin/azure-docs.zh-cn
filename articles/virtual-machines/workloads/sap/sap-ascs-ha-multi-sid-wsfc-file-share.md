@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/24/2020
+ms.date: 03/15/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 125563255bac48de5b4b293ab00004e151fec950
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 8b1a29b0f94c5009d0535ca92363c25ad5c6c884
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673668"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103493486"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>在 Azure 上使用 Windows Server 故障转移群集和文件共享实现 SAP ASCS/SCS 实例的多 SID 高可用性
 
@@ -53,15 +53,16 @@ ms.locfileid: "101673668"
 
 ![图 1：在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS][sap-ha-guide-figure-8007]
 
-_**图1：** 在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
+_图 1：在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
 
 > [!IMPORTANT]
 > 该设置必须满足以下条件：
 > * SAP ASCS/SCS 实例必须共享同一个 WSFC 群集。
 > * 属于不同 SAP SID 的不同 SAP 全局主机文件共享必须共享相同的 SOFS 群集。
+> * SAP ASCS/SCS 实例和 SOFS 共享不得合并在同一群集中。 
 > * 每个数据库管理系统 (DBMS) SID 都必须有自己专用的 WSFC 群集。
 > * 属于一个 SAP 系统 SID 的 SAP 应用程序服务器必须有自身的专用 VM。
-> * 不支持在同一个群集中混合使用排队复制服务器1和排队复制服务器2。  
+> * 不支持在同一个群集中混合使用排队复制服务器 1 和排队复制服务器 2。  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>使用文件共享实现的 SAP ASCS/SCS 多 SID 体系结构
 
@@ -69,19 +70,19 @@ _**图1：** 在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
 
 ![图 2：两个群集中的 SAP 多 SID 配置][sap-ha-guide-figure-8008]
 
-_**图2：** 两个群集中的 SAP 多 SID 配置_
+_图 2：两个群集中的 SAP 多 SID 配置_
 
-安装其他 **SAP \<SID2>** 系统与安装一个系统完全相同 \<SID> 。 还需要在 ASCS/SCS 群集和文件共享 SOFS 群集上完成额外两步准备操作。
+安装更多 **SAP \<SID2>** 系统与安装一个 \<SID> 系统的过程完全相同。 还需要在 ASCS/SCS 群集和文件共享 SOFS 群集上完成额外两步准备操作。
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>为 SAP 多 SID 方案准备基础结构
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>在域控制器上准备基础结构
 
-创建域组 **\<Domain> \ SAP_ \<SID2> _GlobalAdmin**，例如，with \<SID2> = pr2) 。 域组名称是 \<Domain> \ SAP_PR2_GlobalAdmin。
+创建域组 **\<Domain>\SAP_\<SID2>_GlobalAdmin**，例如，指定 \<SID2> = PR2。 域组名为 \<Domain>\SAP_PR2_GlobalAdmin。
 
 ### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>在 ASCS/SCS 群集上准备基础结构
 
-必须在现有 ASCS/SCS 群集上为第二个 SAP 准备基础结构 \<SID> ：
+必须在现有的 ASCS/SCS 群集上为另一个 SAP \<SID> 准备基础结构：
 
 * 在 DNS 服务器上创建 SAP ASCS/SCS 群集实例的虚拟主机名。
 * 使用 PowerShell 将 IP 地址添加到现有 Azure 内部负载均衡器。
@@ -91,22 +92,22 @@ _**图2：** 两个群集中的 SAP 多 SID 配置_
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>通过使用现有的 SAP 全局主机在 SOFS 群集上准备基础结构
 
-你可以重复使用 \<SAPGlobalHost> 第一个 SAP 系统的现有和 Volume1 \<SID1> 。
+可以重复使用第一个 SAP \<SID1> 系统的现有 \<SAPGlobalHost> 和 Volume1。
 
 ![图 3：多 SID SOFS 使用相同的 SAP 全局主机名][sap-ha-guide-figure-8014]
 
 _图 3：多 SID SOFS 使用相同的 SAP 全局主机名_
 
 > [!IMPORTANT]
->对于第二 **个 \<SID2> SAP** 系统，使用相同的 Volume1 和相同的 **\<SAPGlobalHost>** 网络名称。
->由于已将 **SAPMNT** 设置为各种 SAP 系统的共享名，因此，若要重用 **\<SAPGlobalHost>** 网络名称，必须使用相同的 **Volume1**。
+>对于第二个 **SAP \<SID2>** 系统，使用相同的 Volume1 和 **\<SAPGlobalHost>** 网络名称。
+>由于已设置 **SAPMNT** 作为各种 SAP 系统的共享名称，若要重复使用 **\<SAPGlobalHost>** 网络名称，必须使用相同的 **Volume1**。
 >
->全局主机的文件路径 \<SID2> 是 C:\ClusterStorage \\ **Volume1**\usr\sap \<SID2> \SYS\.
+>\<SID2> 全局主机的文件路径为 C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\.
 >
 
-对于 \<SID2> 系统，必须准备 SAP 全局主机。\SYS \. 。 SOFS 群集上的文件夹。
+对于 \<SID2> 系统，必须准备 SAP 全局主机 ..\SYS\.。 SOFS 群集上的文件夹。
 
-若要为实例准备 SAP 全局主机 \<SID2> ，请执行以下 PowerShell 脚本：
+若要为 \<SID2> 实例准备 SAP 全局主机，请执行以下 PowerShell 脚本：
 
 
 ```powershell
@@ -157,13 +158,13 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>通过使用不同的 SAP 全局主机，在 SOFS 群集上准备基础结构
 
-可以配置第二个 SOFS (例如，第二个 SOFS 群集角色， **\<SAPGlobalHost2>** 并为第二个) 配置不同的 **Volume2** **\<SID2>** 。
+可以配置第二个 SOFS（例如，第二个 SOFS 群集角色，其中为第二个 **\<SID2>** 配置 **\<SAPGlobalHost2>** 和不同的 **Volume2**）。
 
 ![图 4：多 SID SOFS 使用相同的 SAP 全局主机名 2][sap-ha-guide-figure-8015]
 
 _图 4：多 SID SOFS 使用相同的 SAP 全局主机名 2_
 
-若要创建第二个 SOFS 角色 \<SAPGlobalHost2> ，请执行以下 PowerShell 脚本：
+若要创建使用 \<SAPGlobalHost2> 的第二个 SOFS 角色，请执行以下 PowerShell 脚本：
 
 ```powershell
 # Create SOFS with SAP Global Host Name 2
@@ -181,7 +182,7 @@ New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_
 
 图 5：故障转移群集管理器中的第二个 Volume2
 
-为第二个创建 SAP 全局文件夹 \<SID2> ，并设置文件安全性。
+为第二个 \<SID2> 创建 SAP 全局文件夹，并设置文件安全性。
 
 执行下面的 PowerShell 脚本：
 
@@ -224,7 +225,7 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-若要在 Volume2 上为 *\<SAPGlobalHost2>* 第二个 SAP 的主机名创建 SAPMNT 文件共享 \<SID2> ，请在故障转移群集管理器中启动 " **添加文件共享** " 向导。
+若要在 Volume2 上为第二个 SAP \<SID2> 创建使用 *\<SAPGlobalHost2>* 主机名的 SAPMNT 文件共享，请在故障转移群集管理器中启动“添加文件共享”向导。
 
 右键单击 saoglobal2 SOFS 群集组，然后选择“添加文件共享”。
 
@@ -234,7 +235,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 <br>
 
-![图7： "选择 SMB 共享-快速"][sap-ha-guide-figure-8018]
+![图 7：选择“SMB 共享 - 快速”][sap-ha-guide-figure-8018]
 
 _图 7：选择“SMB 共享 - 快速”_
 
@@ -246,9 +247,9 @@ _图 8：选择“sapglobalhost2”，并指定 Volume2 上的路径_
 
 <br>
 
-![图9：将文件共享名设置为 "sapmnt"][sap-ha-guide-figure-8020]
+![图 9：将文件共享名设置为“sapmnt”][sap-ha-guide-figure-8020]
 
-_**图9：** 将文件共享名设置为 "sapmnt"_
+_图 9：将文件共享名设置为“sapmnt”_ 
 
 <br>
 
@@ -259,7 +260,7 @@ _**图9：** 将文件共享名设置为 "sapmnt"_
 <br>
 
 为以下项分配对文件和 sapmnt 共享的“完全控制”权限：
-* **SAP_ \<SID> _GlobalAdmin** 域用户组
+* **SAP_\<SID>_GlobalAdmin** 域用户组
 * ASCS/SCS 群集节点 ascs-1$ 和 ascs-2$ 的计算机对象
 
 ![图 11：为用户组和计算机帐户分配完全控制权限][sap-ha-guide-figure-8022]
@@ -270,7 +271,7 @@ _图 11：为用户组和计算机帐户分配“完全控制”权限_
 
 ![图 12：选择“创建”][sap-ha-guide-figure-8023]
 
-_**图12：** 选择 "创建"_
+_图 12：选择“创建”_ 
 
 <br>
 
@@ -284,7 +285,7 @@ _**图12：** 选择 "创建"_
 
 ### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>安装 SAP \<SID2> ASCS/SCS 和 ERS 实例
 
-按照之前针对某个 SAP 所述的相同安装和配置步骤进行操作 \<SID> 。
+遵循上述适用于一个 SAP \<SID> 的相同安装和配置步骤。
 
 ### <a name="install-dbms-and-sap-application-servers"></a>安装 DBMS 和 SAP 应用程序服务器
 安装 DBMS 和 SAP 应用程序服务器，如上所述。
@@ -468,4 +469,4 @@ _**图12：** 选择 "创建"_
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
-[virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
+[virtual-machines-manage-availability]:../../availability.md

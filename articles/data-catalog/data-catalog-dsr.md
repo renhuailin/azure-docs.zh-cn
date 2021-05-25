@@ -1,19 +1,21 @@
 ---
 title: Azure 数据目录中支持的数据源
-description: 本文列出了 Azure 数据目录当前支持的数据源的规格。
+description: 本文列出 Azure 数据目录当前支持的数据源的规范。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 12d68a9539420c77cc23722e1b7b7175d08459e9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439078"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674625"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 数据目录中支持的数据源
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 要发布元数据，可使用公共 API、单击一次的注册工具或直接手动将信息输入到 Azure 数据目录 Web 门户。 下表汇总了目录当前支持的所有数据源以及每个数据源的发布功能。 还列出了外部数据工具（每个数据源都可从门户“open-in”体验启动它）。 第二个表包含每个数据源连接属性的详细技术规范。
 
@@ -26,10 +28,10 @@ ms.locfileid: "89439078"
        <td><b>手动输入</b></td>
        <td><b>注册工具</b></td>
        <td><b>Open-in 工具</b></td>
-       <td><b>说明</b></td>
+       <td><b>备注</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store 目录仅 (第1代) </td>
+      <td>Azure Data Lake Store 目录（仅 Gen 1）</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -37,7 +39,7 @@ ms.locfileid: "89439078"
       <td></td>
     </tr>
     <tr>
-      <td>仅 (第1代 Azure Data Lake Store 文件) </td>
+      <td>Azure Data Lake Store 文件（仅 Gen 1）</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -124,7 +126,7 @@ ms.locfileid: "89439078"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td>Oracle 10 和更高版本。</td>
+      <td>Oracle 10 及更高版本。</td>
     </tr>
     <tr>
       <td>Oracle Database 视图</td>
@@ -132,7 +134,7 @@ ms.locfileid: "89439078"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td>Oracle 10 和更高版本。</td>
+      <td>Oracle 10 及更高版本。</td>
     </tr>
     <tr>
       <td>其他（通用资产）</td>
@@ -143,7 +145,7 @@ ms.locfileid: "89439078"
       <td></td>
     </tr>
     <tr>
-      <td>Azure Synapse 分析表</td>
+      <td>Azure Synapse Analytics 表</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -151,7 +153,7 @@ ms.locfileid: "89439078"
       <td></td>
     </tr>
     <tr>
-      <td>Azure Synapse 分析视图</td>
+      <td>Azure Synapse Analytics 视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -196,7 +198,7 @@ ms.locfileid: "89439078"
       <td>✓</td>
       <td>✓</td>
       <td>浏览者</td>
-      <td>仅本机模式服务器。 不支持 SharePoint 模式。 仅 SQL Server 2008 和更高版本</td>
+      <td>仅本机模式服务器。 不支持 SharePoint 模式。 仅 SQL Server 2008 及更高版本</td>
     </tr>
     <tr>
       <td>SQL Server 表</td>
@@ -236,7 +238,7 @@ ms.locfileid: "89439078"
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>仅适用于英语。 度量值不受支持。</td>
+      <td>仅提供英文版本。 不支持度量值。</td>
     </tr>
     <tr>
       <td>SAP HANA 视图</td>
@@ -445,7 +447,7 @@ ms.locfileid: "89439078"
 
 ## <a name="data-source-reference-specification"></a>数据源引用规范
 > [!NOTE]
-> 下表中的 **DSL 结构**列仅列出了 Azure 数据目录使用的“地址”属性包的连接属性。 也就是说，“地址”属性包可能包含 Azure 数据目录仍然保留但未使用的数据源的其他连接属性。
+> 下表中的 **DSL 结构** 列仅列出了 Azure 数据目录使用的“地址”属性包的连接属性。 也就是说，“地址”属性包可能包含 Azure 数据目录仍然保留但未使用的数据源的其他连接属性。
 
 <table>
     <tr>

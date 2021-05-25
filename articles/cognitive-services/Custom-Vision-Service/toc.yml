@@ -5,6 +5,8 @@
   items:
     - name: 什么是自定义视觉？
       href: overview.md
+    - name: 定价和限制
+      href: limits-and-quotas.md
     - name: 新增功能
       href: whats-new.md
 - name: 快速入门
@@ -97,8 +99,6 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context
     - name: 示例
       href: /samples/browse/?products=azure&term=vision
-    - name: 限制和配额
-      href: limits-and-quotas.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 发行说明
