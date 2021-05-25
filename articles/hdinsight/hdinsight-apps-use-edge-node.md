@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: 4061df2dfcfb4cf993e2312fb3438de66863a476
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 717c3c8052c89825b161f77614d7411c5912d1cd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942667"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799898"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
 
@@ -58,7 +58,7 @@ ms.locfileid: "98942667"
 > [!WARNING]
 > 安装在空边缘节点上的自定义组件将从 Microsoft 得到商业上合理的支持。 这或许可解决遇到的问题。 或者也可参考社区资源，获取更多帮助。 以下是一些可获得社区帮助的最活跃站点：
 >
-> * [Microsoft Q&HDInsight 的问题页面] (/answers/topics/azure-hdinsight.html
+> * [有关 HDInsight 的 Microsoft 问答页](/answers/topics/azure-hdinsight.html)
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
 > 如果在使用 Apache 技术，可通过 [https://apache.org](https://apache.org) 上的 Apache 项目站点（如 [Apache Hadoop](https://hadoop.apache.org/) 站点）获取帮助。
@@ -76,7 +76,7 @@ ms.locfileid: "98942667"
 
 1. 配置以下属性：
 
-    |properties |说明 |
+    |属性 |说明 |
     |---|---|
     |订阅|选择用于创建此群集的 Azure 订阅。|
     |资源组|选择用于现有 HDInsight 群集的资源组。|
@@ -161,10 +161,10 @@ ms.locfileid: "98942667"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何添加边缘节点以及如何访问边缘节点。 要了解更多信息，请参阅下列文章：
+本文介绍了如何添加边缘节点以及如何访问边缘节点。 若要了解详细信息，请参阅以下文章：
 
 * [安装 HDInsight 应用程序](hdinsight-apps-install-applications.md)：了解如何在群集上安装 HDInsight 应用程序。
-* [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md)（安装自定义 HDInsight 应用程序）：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。
+* [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。
 * [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 市场。
 * [MSDN：安装 HDInsight 应用程序](/rest/api/hdinsight/hdinsight-application)：了解如何定义 HDInsight 应用程序。
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。

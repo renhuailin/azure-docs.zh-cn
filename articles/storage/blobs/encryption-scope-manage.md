@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: d5590ff275ce821c81f5751f4d92972c49adaafc
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102209585"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>创建和管理加密范围（预览）
@@ -23,7 +23,7 @@ ms.locfileid: "102209585"
 本文介绍如何创建加密范围。 本文还介绍如何在创建 blob 或容器时指定加密范围。
 
 > [!IMPORTANT]
-> 加密范围目前为 **预览版**。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ，它们适用于适用于 beta、preview 或其他尚未公开上市的 Azure 功能的法律条款。
+> 加密范围目前为预览版。 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
 > 为避免意外费用，请确保禁用当前不需要的任何加密范围。
 
@@ -31,7 +31,7 @@ ms.locfileid: "102209585"
 
 ## <a name="create-an-encryption-scope"></a>创建加密范围
 
-你可以使用 Microsoft 管理的密钥或使用客户管理的密钥（存储在 Azure Key Vault 或 Azure Key Vault 托管硬件安全模型 (HSM)  (preview) ）来创建加密作用域。 若要使用客户托管的密钥创建加密作用域，必须先创建密钥保管库或托管 HSM，并添加要用于作用域的密钥。 Key vault 或托管 HSM 必须启用清除保护，并且必须与存储帐户位于同一区域。
+你可以使用 Microsoft 管理的密钥或使用客户管理的密钥（存储在 Azure Key Vault 或 Azure Key Vault 托管硬件安全模型 (HSM) (预览版)）来创建加密范围。 若要使用客户管理的密钥创建加密范围，必须先创建密钥保管库或托管 HSM，并添加要用于此范围的密钥。 密钥保管库或托管 HSM 必须已启用清除保护，并且必须与存储帐户位于同一区域中。
 
 创建加密范围时会自动启用它。 创建加密范围后，可以在创建 blob 时指定它。 还可以在创建容器时指定默认的加密范围，它将自动应用于容器中的所有 blob。
 
@@ -46,7 +46,7 @@ ms.locfileid: "102209585"
 1. 在“创建加密范围”窗格输入新范围的名称。
 1. 选择加密的类型，Microsoft 托管密钥或客户管理的密钥 。
     - 如果选择了“Microsoft 管理的密钥”，请单击“创建”以创建加密范围 。
-    - 如果已选择 " **客户管理的密钥**"，请指定要用于此加密作用域的密钥保管库或托管 HSM、密钥和密钥版本，如下图所示。
+    - 如果选择了“客户管理的密钥”，请指定要用于此加密范围的密钥保险库或托管 HSM、密钥和密钥版本，如下图所示。
 
     :::image type="content" source="media/encryption-scope-manage/create-encryption-scope-customer-managed-key-portal.png" alt-text="显示如何在 Azure 门户中创建加密范围的屏幕截图":::
 
@@ -79,9 +79,9 @@ New-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 ### <a name="create-an-encryption-scope-protected-by-customer-managed-keys"></a>创建由客户管理的密钥保护的加密范围
 
-若要创建由存储在密钥保管库或托管 HSM 中的客户托管密钥保护的新加密范围，请首先为存储帐户配置客户管理的密钥。 必须将托管标识分配给存储帐户，然后使用托管标识为密钥保管库或托管 HSM 配置访问策略，以便存储帐户有权访问它。
+若要创建受密钥保管库或托管 HSM 中存储的客户管理的密钥保护的新加密范围，请首先为存储帐户配置客户管理的密钥。 必须为存储帐户分配一个托管标识，然后使用该托管标识配置密钥保管库或托管 HSM 的访问策略，使存储帐户有权访问该密钥保管库。
 
-若要配置客户管理的密钥以便与加密作用域一起使用，必须在密钥保管库或托管 HSM 上启用清除保护。 密钥保管库或托管 HSM 必须位于存储帐户所在的同一区域。
+若要配置与加密范围一起使用的客户管理的密钥，必须在密钥保管库或托管 HSM 上启用清除保护。 密钥保管库或托管 HSM 必须与存储帐户位于同一区域中。
 
 请务必将示例中的占位符值替换为你自己的值：
 
@@ -135,9 +135,9 @@ az storage account encryption-scope create \
 
 若要创建受 Microsoft 托管密钥保护的新加密范围，请调用 [az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-create) 命令，并将 `--key-source` 参数指定为 `Microsoft.Storage`。 请务必将占位符值替换为你自己的值：
 
-若要在密钥保管库或托管 HSM 中创建受客户管理的密钥保护的新加密范围，请首先为存储帐户配置客户管理的密钥。 必须为存储帐户分配一个托管标识，然后使用该托管标识配置密钥保管库的访问策略，使存储帐户有权访问该密钥保管库。 有关详细信息，请参阅[用于 Azure 存储加密的客户管理的密钥](../common/customer-managed-keys-overview.md)。
+若要创建受密钥保管库或托管 HSM 中的客户管理的密钥保护的新加密范围，请首先为存储帐户配置客户管理的密钥。 必须为存储帐户分配一个托管标识，然后使用该托管标识配置密钥保管库的访问策略，使存储帐户有权访问该密钥保管库。 有关详细信息，请参阅[用于 Azure 存储加密的客户管理的密钥](../common/customer-managed-keys-overview.md)。
 
-若要配置客户管理的密钥以便与加密作用域一起使用，必须在密钥保管库或托管 HSM 上启用清除保护。 密钥保管库或托管 HSM 必须位于存储帐户所在的同一区域。
+若要配置与加密范围一起使用的客户管理的密钥，必须在密钥保管库或托管 HSM 上启用清除保护。 密钥保管库或托管 HSM 必须与存储帐户位于同一区域中。
 
 请务必将示例中的占位符值替换为你自己的值：
 
@@ -176,7 +176,7 @@ az storage account encryption-scope create \
 
 ---
 
-若要了解如何使用密钥保管库中的客户管理的密钥来配置 Azure 存储加密，请参阅[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](../common/customer-managed-keys-configure-key-vault.md)。 若要在托管 HSM 中配置客户管理的密钥，请参阅 [使用 Azure Key Vault 托管 hsm (预览版) 中存储的客户托管密钥配置加密 ](../common/customer-managed-keys-configure-key-vault-hsm.md)。
+若要了解如何使用密钥保管库中的客户管理的密钥来配置 Azure 存储加密，请参阅[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](../common/customer-managed-keys-configure-key-vault.md)。 若要在托管 HSM 中配置客户管理的密钥，请参阅[使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密（预览版）](../common/customer-managed-keys-configure-key-vault-hsm.md)。
 
 ## <a name="list-encryption-scopes-for-storage-account"></a>列出存储帐户的加密范围
 
@@ -318,7 +318,7 @@ az storage blob upload \
 
 ## <a name="change-the-encryption-key-for-a-scope"></a>更改范围的加密密钥
 
-若要将保护加密作用域的密钥从 Microsoft 托管的密钥更改为客户托管的密钥，请首先确保已启用客户管理的密钥，Azure Key Vault 或 Key Vault HSM 用于存储帐户。 有关详细信息，请参阅[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](../common/customer-managed-keys-configure-key-vault.md)或[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](../common/customer-managed-keys-configure-key-vault.md)。
+若要将保护加密范围的密钥从 Microsoft 管理的密钥更改为客户管理的密钥，请首先确保已使用 Azure Key Vault 或 Key Vault HSM 为存储帐户启用了客户管理的密钥。 有关详细信息，请参阅[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](../common/customer-managed-keys-configure-key-vault.md)或[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](../common/customer-managed-keys-configure-key-vault.md)。
 
 # <a name="portal"></a>[Portal](#tab/portal)
 

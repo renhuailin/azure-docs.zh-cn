@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 965e7c92e17d5ba689fccc0ee6eb321fe2a36695
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 59dd953b2116bc1ec7bd0a581cc181df64fbf49e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138073"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721147"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>HBv2 系列虚拟机概述 
 
@@ -44,22 +44,22 @@ VM 本身不会意识到 pNUMA 0 和 16 已保留。 它将看到的 vNUMA 枚�
 | 内存                           | 4 GB/核心（总共 480 GB）         | 
 | 本地磁盘                       | 960 GB NVMe（块）、480 GB SSD（页面文件） | 
 | Infiniband                       | 200 Gb/s EDR Mellanox ConnectX-6 | 
-| 网络                          | 50 Gb/秒以太网（40 Gb/秒可用）Azure 第二代 SmartNIC | 
+| 网络                          | 50 Gb/s 以太网（40 Gb/s 可用）Azure 第二代 SmartNIC | 
 
 
-## <a name="software-specifications"></a>硬件规格 
+## <a name="software-specifications"></a>软件规格 
 
 | 软件规格     | HBv2 系列 VM                                            | 
 |-----------------------------|-----------------------------------------------------------|
 | 最大 MPI 作业大小            | 36,000 个核心（单个虚拟机规模中 300 个 VM，且 singlePlacementGroup=true） |
-| MPI 支持                 | HPC-X、Intel MPI、OpenMPI、MVAPICH2、MPICH、Platform MPI  |
-| 其他框架       | UCX, libfabric, PGAS |
+| MPI 支持                 | HPC-X、Intel MPI、OpenMPI、MVAPICH2、MPICH、平台 MPI  |
+| 其他框架       | UCX、libfabric、PGAS |
 | Azure 存储支持       | 标准磁盘和高级磁盘（最多 8 个磁盘） |
 | SRIOV RDMA 的操作系统支持   | CentOS/RHEL 7.6+、Ubuntu 16.04+、SLES 12 SP4+、WinServer 2016+  |
 | Orchestrator 支持        | CycleCloud、Batch、AKS；[群集配置选项](../../sizes-hpc.md#cluster-configuration-options)  |
 
 > [!NOTE] 
-> 在 HBv2 和大于 64（虚拟或物理）核的其他 VM 上，不支持 Windows Server 2012 R2。 请参阅[此处](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)了解详细信息。
+> 在 HBv2 和大于 64（虚拟或物理）核的其他 VM 上，不支持 Windows Server 2012 R2。 请参阅[此处](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

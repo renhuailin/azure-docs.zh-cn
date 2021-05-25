@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d041f864c6c8cd3ae9c522d79447d71c86f9ac04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ab19bb1c6cc43334a3d0d427b6aff6ced2d6cc69
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98875598"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789656"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>使用门户或 Azure CLI 创建快照
 
@@ -26,7 +26,7 @@ ms.locfileid: "98875598"
 
 以下步骤说明如何使用带有 **--source-disk** 参数的 **az snapshot create** 命令创建快照。 以下示例假设 *myResourceGroup* 资源组中存在名为 *myVM* 的 VM。
 
-使用 [az vm show](/cli/azure/vm#az-vm-show) 获取磁盘 ID。
+使用 [az vm show](/cli/azure/vm#az_vm_show) 获取磁盘 ID。
 
 ```azurecli-interactive
 osDiskId=$(az vm show \
@@ -36,7 +36,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-使用 [az snapshot create](/cli/azure/snapshot#az-snapshot-create) 创建名为 *osDisk-backup* 的快照。
+使用 [az snapshot create](/cli/azure/snapshot#az_snapshot_create) 创建名为 *osDisk-backup* 的快照。
 
 ```azurecli-interactive
 az snapshot create \
@@ -48,7 +48,7 @@ az snapshot create \
 > [!NOTE]
 > 如果希望将快照存储在具有区域复原能力的存储中，需要在支持 [可用性区域](../../availability-zones/az-overview.md)的区域中创建该快照并包括 **--sku Standard_ZRS** 参数。
 
-可以使用 [az snapshot list](/cli/azure/snapshot#az-snapshot-list) 查看快照列表。
+可以使用 [az snapshot list](/cli/azure/snapshot#az_snapshot_list) 查看快照列表。
 
 ```azurecli-interactive
 az snapshot list \

@@ -3,12 +3,12 @@ title: 删除映像资源
 description: 详细介绍如何通过使用 Azure CLI 命令删除容器映像数据有效管理注册表大小。
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: af277d0c02960c989b4e9119f2ecbfd8f6d7ce07
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783982"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "78403347"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>使用 Azure CLI 删除 Azure 容器注册表中的容器映像
 
@@ -289,6 +289,6 @@ if ($enableDelete) {
 [portal]: https://portal.azure.com
 
 <!-- LINKS - Internal -->
-[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests
-[az-acr-repository-untag]: /cli/azure/acr/repository#az_acr_repository_untag
+[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
+[az-acr-repository-untag]: /cli/azure/acr/repository#az-acr-repository-untag

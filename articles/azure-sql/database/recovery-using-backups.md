@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
-ms.translationtype: MT
+ms.openlocfilehash: 670176d7478ddab3d17e15526df512dfa7e99fd4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98795332"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762058"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自动数据库备份进行恢复 - Azure SQL 托管实例和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -141,7 +141,7 @@ ms.locfileid: "98795332"
 ## <a name="geo-restore"></a>异地还原
 
 > [!IMPORTANT]
-> 异地还原仅适用于配置了异地冗余 [备份存储](automated-backups-overview.md#backup-storage-redundancy)的 SQL 数据库或托管实例。
+> 异地还原仅适用于配置了异地冗余[备份存储](automated-backups-overview.md#backup-storage-redundancy)的 SQL 数据库或托管实例。
 
 你可以在任何 Azure 区域中，从最新的异地复制备份还原任何 SQL 数据库服务器上的数据库或任何托管实例上的实例数据库。 异地还原使用异地复制的备份作为源。 即使由于服务中断而无法访问数据库或数据中心，也依然能够请求异地还原。
 
@@ -247,11 +247,11 @@ ms.locfileid: "98795332"
 
 #### <a name="sql-database"></a>SQL 数据库
 
-若要使用 Azure CLI 还原数据库，请参阅 [az sql db restore](/cli/azure/sql/db#az-sql-db-restore)。
+若要使用 Azure CLI 还原数据库，请参阅 [az sql db restore](/cli/azure/sql/db#az_sql_db_restore)。
 
 #### <a name="sql-managed-instance"></a>SQL 托管实例
 
-若要使用 Azure CLI 还原托管实例数据库，请参阅 [az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)。
+若要使用 Azure CLI 还原托管实例数据库，请参阅 [az sql midb restore](/cli/azure/sql/midb#az_sql_midb_restore)。
 
 ## <a name="summary"></a>摘要
 

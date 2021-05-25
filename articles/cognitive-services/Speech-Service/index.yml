@@ -89,7 +89,7 @@ conceptualContent:
       links:
         - itemType: overview
           text: 关于自定义关键字
-          url: custom-keyword-overview.md
+          url: keyword-recognition-overview.md
         - itemType: quickstart
           text: 自定义关键字入门
           url: custom-keyword-basics.md

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
-ms.openlocfilehash: 17264fc2a7d0a51de545e329ccf12ad45ad49d46
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 032c070a9485fc4720ae7966a0991bc0c5ae3921
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927240"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867842"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 运行 Apache Hive 查询
 
@@ -21,16 +21,16 @@ ms.locfileid: "98927240"
 > [!NOTE]  
 > 必须从 Windows 客户端执行本文中的步骤。 有关使用 Linux、OS X 或 Unix 客户端来使用 Hive 的信息，请使用本文顶部显示的选项卡选择器。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-在开始阅读本文前，必须具有以下项目：
+在开始阅读本文前，必须具有以下项：
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅[在 HDInsight 中使用基于 Linux 的 Hadoop](apache-hadoop-linux-tutorial-get-started.md)。
 
     > [!IMPORTANT]  
     > 自 2017 年 9 月 15 日起，HDInsight .NET SDK 仅支持从 Azure 存储帐户返回 Hive 查询结果。 如果将此示例用于使用 Azure Data Lake Storage 作为主存储的 HDInsight 群集，则无法使用 .NET SDK 检索搜索结果。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013 及更高版本。 至少应安装“.NET 桌面开发”  工作负荷。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013 及更高版本。 至少应安装工作负载 .NET 桌面开发。
 
 ## <a name="run-a-hive-query"></a>运行 Hive 查询
 
@@ -44,7 +44,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-1. 编辑下面的代码以初始化以下变量的值：`ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`。 然后，在 Visual Studio 中使用修改后的代码作为 **Program.cs** 的全部内容。
+1. 编辑以下代码以初始化变量的值：`ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`。 然后，在 Visual Studio 中使用修改后的代码作为 Program.cs 的全部内容。
 
     ```csharp
     using System.Collections.Generic;
@@ -131,15 +131,15 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
     }
     ```
 
-1. 按 **F5** 运行应用程序。
+1. 按 **F5** 运行该应用程序。
 
 应用程序的输出应类似于：
 
-![HDInsight Hadoop Hive 作业输出](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png" alt-text="HDInsight Hadoop Hive 作业输出" border="true":::
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何使用 HDInsight .NET SDK 提交 Apache Hive 查询。 若要了解详细信息，请参阅以下文章：
+本文介绍了如何使用 HDInsight .NET SDK 提交 Apache Hive 查询。 若要了解更多信息，请参阅下列文章：
 
 * [Azure HDInsight 入门](apache-hadoop-linux-tutorial-get-started.md)
 * [在 HDInsight 中创建 Apache Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)

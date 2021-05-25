@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 6fb0b6f38869192e89bb849950e8822a157b23c8
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
-ms.translationtype: MT
+ms.openlocfilehash: 1b272755652d018a0d5364e4d67c783774c68da8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241933"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104655234"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的 SSL/TLS 连接
 
@@ -21,7 +21,7 @@ Azure Database for MySQL 支持使用安全套接字层 (SSL) 将数据库服务
 > 更新 `require_secure_transport` 服务器参数值不会影响 MySQL 服务的行为。 使用本文中概述的 SSL 和 TLS 增强功能来保护与数据库的连接。
 
 >[!NOTE]
-> 根据客户的反馈，我们已在2021年2月15日到 (02/15/2021) 扩展了现有巴尔的摩根 CA 的根证书弃用。
+> 根据客户的反馈，我们已将现有 Baltimore 根 CA 颁发的根证书的弃用时间延长至 2021 年 2 月 15 日 (2021/02/15)。
 
 > [!IMPORTANT] 
 > SSL 根证书设置为 2021 年 2 月 15 日 (2021/02/15) 到期。 请更新应用程序以使用[新证书](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)。 若要了解详细信息，请参阅[计划内证书更新](concepts-certificate-rotation.md)
@@ -34,9 +34,9 @@ Azure Database for MySQL 支持使用安全套接字层 (SSL) 将数据库服务
 
 Azure 门户中显示了各种编程语言的连接字符串。 这些连接字符串包含连接到数据库所需的 SSL 参数。 在 Azure 门户中，选择服务器。 在“设置”标题下，选择“连接字符串” 。 SSL 参数因连接器而异，例如“ssl=true”、“sslmode=require”或“sslmode=required”，以及其他变体。
 
-在某些情况下，应用程序需要具备从受信任的证书颁发机构 (CA) 证书文件生成的本地证书文件才能实现安全连接。 目前，客户 **只能使用** 预定义的证书来连接到位于的 Azure Database for MySQL 服务器 https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem 。 
+在某些情况下，应用程序需要具备从受信任的证书颁发机构 (CA) 证书文件生成的本地证书文件才能实现安全连接。 目前，客户只能使用预定义的证书来连接位于 Azure 中国https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem的 Azure Database For MySQL 服务器。 
 
-同样，以下链接指向主权云中的服务器证书： [Azure 政府](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)版、 [azure 中国](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)版和 [azure 德国](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)版。
+同样，这些链接指向主权云中的服务器证书：[Azure 政府](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)、[Azure 中国](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)和 [Azure 德国](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)。
 
 若要了解如何在开发应用程序期间启用或禁用 SSL 连接，请参阅[如何配置 SSL](howto-configure-ssl.md)。
 
@@ -63,7 +63,7 @@ Azure Database for MySQL 提供了为客户端连接强制使用 TLS 版本的�
 >
 > 一旦强制实施最低 TLS 版本要求后，以后将无法禁用最低版本强制实施。
 
-若要了解如何为 Azure Database for MySQL 设置 TLS 设置，请参阅 [如何配置 TLS 设置](howto-tls-configurations.md)。
+服务器处于联机状态时，不需要重启服务器，即可设置最低 TLS 版本设置。 若要了解如何为 Azure Database for MySQL 设置 TLS 设置，请参阅 [如何配置 TLS 设置](howto-tls-configurations.md)。
 
 ## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>Azure Database for MySQL 单一服务器提供的密码支持
 

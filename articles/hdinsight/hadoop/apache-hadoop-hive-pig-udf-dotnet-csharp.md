@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: b5682ff58ad827f5a165342f11f03fb49bbe6d2d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946545"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867876"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 用户定义函数与 Apache Hive 和 Apache Pig 配合使用
 
@@ -27,7 +27,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
     使用任何需要的 IDE。 我们建议使用 [Visual Studio](https://www.visualstudio.com/vs) 或 [Visual Studio Code](https://code.visualstudio.com/)。 本文档中的步骤使用 Visual Studio 2019。
 
-* 将 .exe 文件上传到群集以及运行 Pig 和 Hive 作业的方法。 建议 [Data Lake 用于 Visual Studio 的工具](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md)、 [Azure PowerShell](/powershell/azure)和 [Azure CLI](/cli/azure/install-azure-cli)。 本文档中的各个步骤都使用针对 Visual Studio 的 Data Lake 工具上传文件和运行 Hive 查询示例。
+* 将 .exe 文件上传到群集以及运行 Pig 和 Hive 作业的方法。 建议使用[针对 Visual Studio 的 Data Lake 工具](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md)、[Azure PowerShell](/powershell/azure) 和 [Azure CLI](/cli/azure/install-azure-cli)。 本文档中的各个步骤都使用针对 Visual Studio 的 Data Lake 工具上传文件和运行 Hive 查询示例。
 
     有关运行 Hive 查询的其他方法的信息，请参阅 [Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hdinsight-use-hive.md)。
 
@@ -171,7 +171,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
 1. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”  的条目。
 
-    ![默认存储帐户，HDInsight 群集，服务器资源管理器](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
+    :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png" alt-text="默认存储帐户，HDInsight 群集，服务器资源管理器" border="true":::
 
     * 如果可以展开此项，则表示你正在使用 **Azure 存储帐户** 作为群集的默认存储。 如果要查看该群集的默认存储上的文件，请展开该条目，并双击“（默认容器）”  。
 
@@ -181,7 +181,7 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 
     * 如果使用的是 **Azure 存储帐户**，请选择“上传 Blob”图标。 
 
-        ![新项目的 HDInsight 上传图标](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
+        :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png" alt-text="新项目的 HDInsight 上传图标" border="true":::
 
         在“上传新文件”对话框中的“文件名”下，选择“浏览”。    在“上传 Blob”对话框中，转到“HiveCSharp”项目的“bin\debug”文件夹，然后选择“HiveCSharp.exe”文件。     最后，依次选择“打开”、“确定”完成上传。  
 

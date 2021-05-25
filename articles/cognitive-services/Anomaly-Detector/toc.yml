@@ -60,8 +60,6 @@
       href: concepts/anomaly-detection-best-practices.md
     - name: 预测性维护体系结构（多变量）
       href: concepts/multivariate-architecture.md
-    - name: 多变量故障排除
-      href: concepts/troubleshoot.md
     - name: 谱残差 (SR) 和卷积神经网络 (CNN) 异常检测
       href: 'https://arxiv.org/abs/1906.03821'
     - name: 通过图注意力网络进行多变量时序异常情况检测
@@ -104,7 +102,9 @@
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Azure 更新
       href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
-    - name: 技术博客
+    - name: 多变量故障排除
+      href: concepts/troubleshoot.md
+    - name: 技术文章
       items:
         - name: Azure 异常检测器 API 简介
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'

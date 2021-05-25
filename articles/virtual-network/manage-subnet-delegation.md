@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 401124ed4b2794d891ca224ba3dc1c78edcae8d5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 2bb80ba421617d5fd1699826deda00e56f1e43af
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783406"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98943668"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>添加或删除子网委托
 
@@ -113,7 +113,7 @@ ms.locfileid: "107783406"
 
 在此部分，我们将上一部分创建的子网委托给 Azure 服务。 
 
-使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update)，使用 Azure 服务的委派更新名为 mySubnet 的子网。  在此示例中，**Microsoft.DBforPostgreSQL/serversv2** 用于示例委托：
+使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)，使用 Azure 服务的委派更新名为 mySubnet 的子网。  在此示例中，**Microsoft.DBforPostgreSQL/serversv2** 用于示例委托：
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -123,7 +123,7 @@ ms.locfileid: "107783406"
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-若要验证委派是否已应用，请使用 [az network vnet subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show)。 验证是否已将服务委派给属性 serviceName 下的子网：
+若要验证委派是否已应用，请使用 [az network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show)。 验证是否已将服务委派给属性 serviceName 下的子网：
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -152,7 +152,7 @@ ms.locfileid: "107783406"
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>从 Azure 服务中删除子网委托
 
-使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) 从名为 mySubnet 的子网中删除委派：
+使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) 从名为 mySubnet 的子网中删除委派：
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -161,7 +161,7 @@ ms.locfileid: "107783406"
   --vnet-name myVnet \
   --remove delegations
 ```
-若要验证委派是否已删除，请使用 [az network vnet subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show)。 验证服务是否已从属性 serviceName 下的子网中删除：
+若要验证委派是否已删除，请使用 [az network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show)。 验证服务是否已从属性 serviceName 下的子网中删除：
 
 ```azurecli-interactive
   az network vnet subnet show \

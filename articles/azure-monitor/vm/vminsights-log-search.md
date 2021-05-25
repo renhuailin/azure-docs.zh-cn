@@ -1,35 +1,35 @@
 ---
-title: 如何从 VM insights 查询日志
-description: VM insights 解决方案将指标和日志数据收集到，本文介绍了这些记录，并包括示例查询。
+title: 如何从 VM 见解查询日志
+description: VM 见解解决方案收集指标和日志数据，本文介绍了这些记录并包含了示例查询。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 28ee7f3d327c09f5837c7dc9e2f39c0f2ca4d888
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046527"
 ---
-# <a name="how-to-query-logs-from-vm-insights"></a>如何从 VM insights 查询日志
+# <a name="how-to-query-logs-from-vm-insights"></a>如何从 VM 见解查询日志
 
-VM insights 收集性能和连接指标、计算机和进程清单数据以及健康状况信息，并将其转发到 Azure Monitor 中的 Log Analytics 工作区。  此数据可用于 Azure Monitor 中的[查询](../logs/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+VM 见解收集性能和连接指标、计算机和进程库存数据以及运行状况信息，并将其转发到 Azure Monitor 中的 Log Analytics 工作区。  此数据可用于 Azure Monitor 中的[查询](../logs/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 ## <a name="map-records"></a>映射记录
 
-除了在进程或计算机启动或载入到 VM insights 地图功能时生成的记录外，还会针对每个唯一计算机和进程每小时生成一个记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
+除了在进程或计算机启动或载入 VM 见解映射功能时生成的记录外，还针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
 
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
 - 计算机：使用 *ResourceId* 或 *ResourceName_s* 唯一标识 Log Analytics 工作区中的计算机。
-- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行进程的计算机的上下文中是唯一的 (MachineResourceName_s)  
+- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加 `| summarize arg_max(TimeGenerated, *) by ResourceId`。
 
 ### <a name="connections-and-ports"></a>连接和端口
 
-“连接指标”功能在 Azure Monitor 日志中引入两个新表 - VMConnection 和 VMBoundPort。 这两个表提供有关计算机的连接（入站和出站）的信息，以及在其上处于打开/活动状态的服务器端口的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。 由于侦听套接字上的 *接受* 导致的 TCP 连接是入站的，而通过 *连接* 到给定的 IP 和端口创建的连接是出站的。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
+“连接指标”功能在 Azure Monitor 日志中引入两个新表 - VMConnection 和 VMBoundPort。 这两个表提供有关计算机的连接（入站和出站）的信息，以及在其上处于打开/活动状态的服务器端口的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。 在侦听套接字上接受后生成的 TCP 连接是入站连接，而通过连接到某个给定的 IP 和端口创建的 TCP 连接则是出站连接。  连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
 
 这些表中的记录是基于依赖项代理报告的数据生成的。 每条记录表示 1 分钟时间间隔内观测到的结果。 TimeGenerated 属性表示时间间隔的开始时间。 每条记录包含用于识别相应实体（即连接或端口）以及与该实体关联的指标的信息。 目前，只会报告使用“基于 IPv4 的 TCP”发生的网络活动。 
 
@@ -37,16 +37,16 @@ VM insights 收集性能和连接指标、计算机和进程清单数据以及�
 
 以下字段和约定仅适用于 VMConnection 和 VMBoundPort： 
 
-- 计算机：报告计算机的完全限定的域名 
+- 计算机：报告计算机的完全限定域名 
 - AgentId：具有 Log Analytics 代理的计算机的唯一标识符  
-- 计算机： ServiceMap 公开的计算机的 Azure 资源管理器资源的名称。 它的格式为 *m-{GUID}*，其中 *guid* 与 AgentId 的 guid 相同  
-- 进程： ServiceMap 公开的进程的 Azure 资源管理器资源的名称。 它采用 *p-{十六进制字符串}* 格式。 流程在计算机作用域内是独一无二的，用于生成在多个计算机中唯一的进程 ID，以及组合计算机和进程字段。 
+- 计算机：ServiceMap 公开的计算机的 Azure 资源管理器资源的名称。 它采用 m-{GUID} 格式，其中的 GUID 与 AgentId 的 GUID 相同   
+- 进程：ServiceMap 公开的进程的 Azure 资源管理器资源的名称。 它采用 *p-{十六进制字符串}* 格式。 流程在计算机作用域内是独一无二的，用于生成在多个计算机中唯一的进程 ID，以及组合计算机和进程字段。 
 - ProcessName：报告进程的可执行文件名称。
 - 所有 IP 地址都是 IPv4 规范格式的字符串，例如 *13.107.3.160* 
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection 中的一个逻辑记录内。 
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--|:--|
 |方向 |连接方向，值为 *inbound* 或 *outbound* |
 |计算机 |计算机 FQDN |
@@ -87,7 +87,7 @@ VM insights 收集性能和连接指标、计算机和进程清单数据以及�
 1. 如果进程在相同的 IP 地址上接受连接，但通过多个网络接口接受连接，则为每个接口单独报告一条记录。 
 2. 带通配符 IP 的记录不包含任何活动。 包含此类记录的目的是表示在计算机上为入站流量开放了某个端口这一事实。
 3. 为了降低详细程度和数据量，存在带有特定 IP 地址的匹配记录（适用于相同的进程、端口和协议）时，将省略带通配符 IP 的记录。 省略了通配符 IP 记录后，具有特定 IP 地址的 IsWildcardBind 记录属性将设置为“True”，表示已通过报告计算机的每个接口公开了该端口。
-4. 仅在特定接口上绑定的端口的 IsWildcardBind 设置为 *False*。
+4. 仅在特定接口上绑定的端口的 IsWildcardBind 设置为“False”。
 
 #### <a name="naming-and-classification"></a>命名和分类
 
@@ -99,7 +99,7 @@ VM insights 收集性能和连接指标、计算机和进程清单数据以及�
 
 | 属性 | 说明 |
 |:--|:--|
-|RemoteCountry |托管 RemoteIp 的国家/地区的名称。  例如， *美国* |
+|RemoteCountry |托管 RemoteIp 的国家/地区的名称。  例如 *United States* |
 |RemoteLatitude |地理位置的纬度。 例如 *47.68* |
 |RemoteLongitude |地理位置的经度。 例如 *-122.12* |
 
@@ -114,7 +114,7 @@ VM insights 收集性能和连接指标、计算机和进程清单数据以及�
 |说明 |观察到的威胁说明。 |
 |TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
 |置信度 |值介于 0 和 100 之间。 |
-|严重性 |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 *3*。  |
+|严重性 |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
 |FirstReportedDateTime |提供程序第一次报告指标。 |
 |LastReportedDateTime |Interflow 最后一次看到指标。 |
 |IsActive |使用值 True 或 False 指明是否停用标志。 |
@@ -149,62 +149,62 @@ VMBoundPort 中的每个记录按以下字段标识：
 - 如果进程在相同的 IP 地址上接受连接，但通过多个网络接口接受连接，则为每个接口单独报告一条记录。  
 - 带通配符 IP 的记录不包含任何活动。 包含此类记录的目的是表示在计算机上为入站流量开放了某个端口这一事实。 
 - 为了降低详细程度和数据量，存在带有特定 IP 地址的匹配记录（适用于相同的进程、端口和协议）时，将省略带通配符 IP 的记录。 省略了通配符 IP 记录后，具有特定 IP 地址的记录的 *IsWildcardBind* 属性将设置为 *True*。  这表示已通过报告计算机的每个接口公开了该端口。 
-- 仅在特定接口上绑定的端口的 IsWildcardBind 设置为 *False*。 
+- 仅在特定接口上绑定的端口的 IsWildcardBind 设置为“False”。 
 
 ### <a name="vmcomputer-records"></a>VMComputer 记录
 
-类型为 *VMComputer* 的记录具有具有依赖关系代理的服务器的清单数据。 这些记录的属性在下表中列出：
+类型为 VMComputer 的记录包含具有 Dependency Agent 的服务器的库存数据。 这些记录的属性在下表中列出：
 
 | 属性 | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *Insights* | 
-|TimeGenerated | 记录的时间戳 (UTC)  |
+|TimeGenerated | 记录的时间戳 (UTC) |
 |Computer | 计算机 FQDN | 
 |AgentId | Log Analytics 代理的唯一 ID |
-|计算机 | ServiceMap 公开的计算机的 Azure 资源管理器资源的名称。 它的格式为 *m-{GUID}*，其中 *Guid* 是与 AgentId 相同的 guid。 | 
+|计算机 | ServiceMap 公开的计算机的 Azure 资源管理器资源的名称。 它采用 m-{GUID} 格式，其中的 GUID 与 AgentId 的 GUID 相同。  | 
 |DisplayName | 显示名称 | 
 |FullDisplayName | 完整显示名称 | 
 |HostName | 不带域名的计算机的名称 |
-|BootTime | 计算机启动时间 (UTC)  |
-|TimeZone | 规范化时区 |
-|VirtualizationState | *虚拟**机监控程序*、*物理* |
+|BootTime | 计算机启动时间 (UTC) |
+|TimeZone | 标准化时区 |
+|VirtualizationState | 虚拟、虚拟机监控程序、物理   |
 |Ipv4Addresses | IPv4 地址的数组 | 
-|Ipv4SubnetMasks | IPv4 子网掩码的数组， (的顺序与 Ipv4Addresses) 相同。 |
+|Ipv4SubnetMasks | IPv4 子网掩码的数组（顺序与 Ipv4Addresses 相同）。 |
 |Ipv4DefaultGateways | IPv4 网关的数组 | 
 |Ipv6Addresses | IPv6 地址的数组 | 
-|MacAddresses | MAC 地址数组 | 
+|MacAddresses | MAC 地址的数组 | 
 |DnsNames | 与计算机关联的 DNS 名称的数组。 |
-|DependencyAgentVersion | 计算机上运行的依赖项代理的版本。 | 
-|OperatingSystemFamily | *Linux*、 *Windows* |
+|DependencyAgentVersion | 计算机上运行的 Dependency Agent 的版本。 | 
+|OperatingSystemFamily | Linux、Windows  |
 |OperatingSystemFullName | 操作系统的全名 | 
-|PhysicalMemoryMB | 物理内存（以 mb 为单位） | 
-|Cpu | 处理器的数目 | 
+|PhysicalMemoryMB | 物理内存（以 MB 为单位） | 
+|Cpus | 处理器的数目 | 
 |CpuSpeed | CPU 速度（以 MHz 为单位） | 
-|VirtualMachineType | *hyperv*、 *vmware*、 *xen* |
+|VirtualMachineType | “hyperv”、“vmware”、“xen”   |
 |VirtualMachineNativeId | 由虚拟机监控程序分配的 VM ID | 
 |VirtualMachineNativeName | VM 的名称 |
 |VirtualMachineHypervisorId | 托管 VM 的虚拟机监控程序的唯一标识符 |
-|HypervisorType | *hyperv* |
+|HypervisorType | hyperv |
 |HypervisorId | 虚拟机监控程序的唯一 ID | 
-|HostingProvider | *microsoft* |
+|HostingProvider | *Azure* |
 |_ResourceId | Azure 资源的唯一标识符 |
 |AzureSubscriptionId | 标识订阅的全局唯一标识符 | 
-|New-azureresourcegroup | 计算机所属的 Azure 资源组的名称。 |
+|AzureResourceGroup | 计算机所属的 Azure 资源组的名称。 |
 |AzureResourceName | Azure 资源的名称 |
-|Get-azurelocation | Azure 资源的位置 |
+|AzureLocation | Azure 资源的位置 |
 |AzureUpdateDomain | Azure 更新域的名称 |
 |AzureFaultDomain | Azure 容错域的名称 |
 |AzureVmId | Azure 虚拟机的唯一标识符 |
 |AzureSize | Azure 虚拟机的大小 |
 |AzureImagePublisher | Azure VM 发布服务器的名称 |
 |AzureImageOffering | Azure VM 产品/服务类型的名称 | 
-|AzureImageSku | Azure VM 映像的 SKU | 
-|AzureImageVersion | Azure VM 映像的版本 | 
+|AzureImageSku | Azure VM 图像的 SKU | 
+|AzureImageVersion | Azure VM 图像的版本 | 
 |AzureCloudServiceName | Azure 云服务的名称 |
 |AzureCloudServiceDeployment | 云服务的部署 ID |
 |AzureCloudServiceRoleName | 云服务角色名称 |
-|AzureCloudServiceRoleType | 云服务角色类型： *辅助* 角色或 *web* |
+|AzureCloudServiceRoleType | 云服务角色类型：辅助角色或 Web  |
 |AzureCloudServiceInstanceId | 云服务角色实例 ID |
 |AzureVmScaleSetName | 虚拟机规模集的名称 |
 |AzureVmScaleSetDeployment | 虚拟机规模集部署 ID |
@@ -215,20 +215,20 @@ VMBoundPort 中的每个记录按以下字段标识：
 
 ### <a name="vmprocess-records"></a>VMProcess 记录
 
-类型为 *VMProcess* 的记录具有具有依赖关系代理的服务器上的 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
+类型为 VMProcess 的记录包含具有 Dependency Agent 的服务器上 TCP 连接进程的库存数据。 这些记录的属性在下表中列出：
 
 | 属性 | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *Insights* | 
-|TimeGenerated | 记录的时间戳 (UTC)  |
+|TimeGenerated | 记录的时间戳 (UTC) |
 |Computer | 计算机 FQDN | 
 |AgentId | Log Analytics 代理的唯一 ID |
-|计算机 | ServiceMap 公开的计算机的 Azure 资源管理器资源的名称。 它的格式为 *m-{GUID}*，其中 *Guid* 是与 AgentId 相同的 guid。 | 
-|进程 | 服务映射进程的唯一标识符。 它采用 *p-{GUID}* 的形式。 
+|计算机 | ServiceMap 公开的计算机的 Azure 资源管理器资源的名称。 它采用 m-{GUID} 格式，其中的 GUID 与 AgentId 的 GUID 相同。  | 
+|进程 | 服务映射进程的唯一标识符。 其形式为 p-{GUID}。 
 |ExecutableName | 进程可执行文件的名称 | 
 |DisplayName | 进程显示名称 |
-|角色 | 进程角色： *web* 服务器、 *microsoft.windows.appserver.2008*、 *databaseServer*、 *ldapServer*、 *smbServer* |
+|角色 | 进程角色：webserver、appServer、databaseServer、ldapServer、smbServer     |
 |组 | 进程组名称。 同一组中的进程在逻辑上是相关的，例如同一个产品或系统组件的一部分。 |
 |StartTime | 进程池启动时间 |
 |FirstPid | 进程池中的第一个 PID |
@@ -236,7 +236,7 @@ VMBoundPort 中的每个记录按以下字段标识：
 |CompanyName | 公司名称 |
 |InternalName | 内部名称 |
 |ProductName | 产品名称 |
-|ProductVersion | 产品版本 |
+|ProductVersion | 产品的版本 |
 |FileVersion | 文件的版本 |
 |ExecutablePath |可执行文件的路径 |
 |CommandLine | 命令行 |
@@ -267,7 +267,7 @@ let Today = now(); VMComputer | extend DaysSinceBoot = Today - BootTime | summar
 VMComputer | where AzureLocation != "" | summarize by Computer, AzureImageOffering, AzureLocation, AzureImageSku
 ```
 
-### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>列出所有被管理的计算机的物理内存容量
+### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>列出所有托管计算机的物理内存容量
 
 ```kusto
 VMComputer | summarize arg_max(TimeGenerated, *) by _ResourceId | project PhysicalMemoryMB, Computer
@@ -430,48 +430,48 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="performance-records"></a>性能记录
-类型为 *InsightsMetrics* 的记录包含来自虚拟机的来宾操作系统的性能数据。 这些记录的属性在下表中列出：
+类型为 InsightsMetrics 的记录包含虚拟机的来宾操作系统的性能数据。 这些记录的属性在下表中列出：
 
 
 | 属性 | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *Insights* | 
-|TimeGenerated | 收集值的时间 (UTC)  |
+|TimeGenerated | 值的收集时间 (UTC) |
 |Computer | 计算机 FQDN | 
-|源 | *vm.azm.ms* |
+|源 | vm.azm.ms |
 |命名空间 | 性能计数器的类别 | 
 |名称 | 性能计数器的名称 |
 |Val | 收集的值 | 
-|标记 | 有关记录的相关详细信息。 请参阅下表，了解用于不同记录类型的标记。  |
+|Tags | 有关记录的相关详细信息。 请查看下表，了解与不同记录类型一起使用的标记。  |
 |AgentId | 每台计算机的代理的唯一标识符 |
 |类型 | *InsightsMetrics* |
 |_ResourceId_ | 虚拟机的资源 ID |
 
-下表列出了当前收集到 *InsightsMetrics* 表中的性能计数器：
+下表列出了当前收集到 InsightsMetrics 表中的性能计数器：
 
-| 命名空间 | 名称 | 说明 | 计价单位 | 标记 |
+| 命名空间 | 名称 | 说明 | 计价单位 | Tags |
 |:---|:---|:---|:---|:---|
 | Computer    | 检测信号             | 计算机检测信号                        | | |
-| 内存      | AvailableMB           | 内存可用字节数                    | 兆字节      | memorySizeMB-内存总大小|
-| 网络     | WriteBytesPerSecond   | 每秒网络写入字节数            | 每秒字节数 | NetworkDeviceId-设备 Id<br>字节-发送的字节总数 |
-| 网络     | ReadBytesPerSecond    | 每秒网络读取字节数             | 每秒字节数 | networkDeviceId-设备 Id<br>字节-接收的字节总数 |
-| 处理器   | UtilizationPercentage | 处理器使用率百分比          | 百分比        | totalCpus-Cpu 总数 |
-| LogicalDisk | WritesPerSecond       | 每秒逻辑磁盘写入数            | 每秒计数 | mountId-设备的装载 ID |
-| LogicalDisk | WriteLatencyMs        | 逻辑磁盘写入延迟毫秒    | 毫秒   | mountId-设备的装载 ID |
-| LogicalDisk | WriteBytesPerSecond   | 逻辑磁盘每秒写入的字节数       | 每秒字节数 | mountId-设备的装载 ID |
-| LogicalDisk | TransfersPerSecond    | 每秒逻辑磁盘传输数         | 每秒计数 | mountId-设备的装载 ID |
-| LogicalDisk | TransferLatencyMs     | 逻辑磁盘传输延迟毫秒 | 毫秒   | mountId-设备的装载 ID |
-| LogicalDisk | ReadsPerSecond        | 逻辑磁盘每秒读取数             | 每秒计数 | mountId-设备的装载 ID |
-| LogicalDisk | ReadLatencyMs         | 逻辑磁盘读取延迟毫秒     | 毫秒   | mountId-设备的装载 ID |
-| LogicalDisk | ReadBytesPerSecond    | 逻辑磁盘每秒读取的字节数        | 每秒字节数 | mountId-设备的装载 ID |
-| LogicalDisk | FreeSpacePercentage   | 逻辑磁盘可用空间百分比        | 百分比        | mountId-设备的装载 ID |
-| LogicalDisk | FreeSpaceMB           | 逻辑磁盘可用空间字节数             | 兆字节      | mountId-设备的装载 ID<br>diskSizeMB-总磁盘大小 |
-| LogicalDisk | 每秒字节数        | 每秒逻辑磁盘字节数             | 每秒字节数 | mountId-设备的装载 ID |
+| 内存      | AvailableMB           | 内存可用字节数                    | 兆字节      | memorySizeMB - 内存总大小|
+| 网络     | WriteBytesPerSecond   | 网络每秒写入字节数            | 每秒字节数 | NetworkDeviceId - 设备 Id<br>字节 - 发送的总字节数 |
+| 网络     | ReadBytesPerSecond    | 网络每秒读取字节数             | 每秒字节数 | networkDeviceId - 设备 Id<br>字节 - 收到的总字节数 |
+| 处理器   | UtilizationPercentage | 处理器利用率百分比          | 百分比        | totalCpus - CPU 总数 |
+| LogicalDisk | WritesPerSecond       | 逻辑磁盘每秒写入次数            | 每秒计数 | mountId - 设备的装载 ID |
+| LogicalDisk | WriteLatencyMs        | 逻辑磁盘写入延迟毫秒    | 毫秒   | mountId - 设备的装载 ID |
+| LogicalDisk | WriteBytesPerSecond   | 逻辑磁盘每秒写入的字节数       | 每秒字节数 | mountId - 设备的装载 ID |
+| LogicalDisk | TransfersPerSecond    | 逻辑磁盘每秒传输次数         | 每秒计数 | mountId - 设备的装载 ID |
+| LogicalDisk | TransferLatencyMs     | 逻辑磁盘传输延迟毫秒 | 毫秒   | mountId - 设备的装载 ID |
+| LogicalDisk | ReadsPerSecond        | 逻辑磁盘每秒磁盘读取次数             | 每秒计数 | mountId - 设备的装载 ID |
+| LogicalDisk | ReadLatencyMs         | 逻辑磁盘读取延迟毫秒     | 毫秒   | mountId - 设备的装载 ID |
+| LogicalDisk | ReadBytesPerSecond    | 逻辑磁盘每秒读取的字节数        | 每秒字节数 | mountId - 设备的装载 ID |
+| LogicalDisk | FreeSpacePercentage   | 逻辑磁盘可用空间百分比        | 百分比        | mountId - 设备的装载 ID |
+| LogicalDisk | FreeSpaceMB           | 逻辑磁盘可用空间字节数             | 兆字节      | mountId - 设备的装载 ID<br>diskSizeMB - 总磁盘大小 |
+| LogicalDisk | 每秒字节数        | 逻辑磁盘每秒字节数             | 每秒字节数 | mountId - 设备的装载 ID |
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 如果不了解如何在 Azure Monitor 中编写日志查询，请参阅 Azure 门户中的[如何使用 Log Analytics](../logs/log-analytics-tutorial.md) 来编写日志查询。
 
-* 了解如何 [编写搜索查询](../logs/get-started-queries.md)。
+* 了解如何[编写搜索查询](../logs/get-started-queries.md)。

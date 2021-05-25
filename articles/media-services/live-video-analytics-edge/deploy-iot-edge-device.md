@@ -3,12 +3,12 @@ title: 在 IoT Edge 设备上部署实时视频分析 - Azure
 description: 本文列出了将帮助你在 IoT Edge 设备上部署实时视频分析的步骤。 你可能会在以下情况下执行此操作，例如：如果你有权访问本地 Linux 计算机并且/或之前创建了 Azure 媒体服务帐户。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 466cc236c1482b2ae6a31b40b6f3461a2c2fbfc1
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718924"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280286"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 设备上部署实时视频分析
 
@@ -25,9 +25,9 @@ ms.locfileid: "101718924"
 * [创建和设置 IoT 中心](../../iot-hub/iot-hub-create-through-portal.md)
 * [注册 IoT Edge 设备](../../iot-edge/how-to-register-device.md)
 * [在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge.md)
-* [创建 Azure 媒体服务帐户](../latest/create-account-howto.md)
+* [创建 Azure 媒体服务帐户](../latest/account-create-how-to.md)
 
-    * 使用以下区域之一：美国东部2、美国东部、美国中部、美国中北部、日本东部、美国西部、美国西部2、美国中部、加拿大东部、英国南部、法国中部、法国南部、瑞士北部、瑞士西部和日本西部。
+    * 使用以下区域之一：美国东部 2、美国东部、美国中部、美国中北部、日本东部、美国西部、美国西部 2、美国中西部、加拿大东部、英国南部、法国中部、法国南部、瑞士北部、瑞士西部和日本西部。
     * 建议使用常规用途 v2 (GPv2) 存储帐户
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>配置 Azure 资源以使用实时视频分析
@@ -38,7 +38,7 @@ ms.locfileid: "101718924"
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>设置高级流式处理终结点
 
-如果你打算使用实时视频分析将视频录制到云中，然后在重播之前按顺序使用[查询 API](playback-recordings-how-to.md#query-api)，则建议更新媒体服务以使用[高级流式处理终结点](../latest/streaming-endpoint-concept.md#types)。  
+如果你打算使用实时视频分析将视频录制到云中，然后在重播之前按顺序使用[查询 API](playback-recordings-how-to.md#query-api)，则建议更新媒体服务以使用[高级流式处理终结点](../latest/stream-streaming-endpoint-concept.md#types)。  
 
 这是可选步骤。 可以使用此 Azure CLI 命令执行此操作：
 

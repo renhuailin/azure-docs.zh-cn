@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: 22804015ebf0344c00e60c88f780fe22ba440b52
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a02da7237252811d89e2c19a29f49f0bf9bb3804
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774982"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98945725"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全传输存储帐户的 Apache Hadoop 群集
 
@@ -35,7 +35,7 @@ ms.locfileid: "107774982"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-对于 Azure CLI 命令 [az storage account create](/cli/azure/storage/account#az_storage_account_create)，请确保将 `--https-only` 参数设置为 `true`。
+对于 Azure CLI 命令 [az storage account create](/cli/azure/storage/account#az-storage-account-create)，请确保将 `--https-only` 参数设置为 `true`。
 
 若要使用 Azure CLI 更新现有存储帐户，请参阅[需要使用 Azure CLI 进行安全传输](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)。
 

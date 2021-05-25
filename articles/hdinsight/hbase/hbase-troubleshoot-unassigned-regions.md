@@ -5,17 +5,17 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/16/2019
 ms.openlocfilehash: 968a0c6e1717245171bf84821a58cad4e440046e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936610"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight 中的区域服务器问题
 
 本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
-## <a name="scenario-unassigned-regions"></a>方案：未分配的区域
+## <a name="scenario-unassigned-regions"></a>场景：未分配区域
 
 ### <a name="issue"></a>问题
 
@@ -33,11 +33,11 @@ multiple regions being unassigned or holes in the chain of regions
 
 ### <a name="resolution"></a>解决方法
 
-修复分配。 执行以下步骤，让未分配区域重新回到正常状态：
+修复分配。 请遵循以下步骤使未分配的区域恢复为正常状态：
 
 1. 使用 SSH 登录到 HDInsight HBase 群集。
 
-1. 运行 `hbase zkcli` 命令以连接到 ZooKeeper shell。
+1. 运行 `hbase zkcli` 命令连接 ZooKeeper shell。
 
 1. 运行 `rmr /hbase/regions-in-transition` 或 `rmr /hbase-unsecure/regions-in-transition` 命令。
 
@@ -49,7 +49,7 @@ multiple regions being unassigned or holes in the chain of regions
 
 ---
 
-## <a name="scenario-dead-region-servers"></a>方案：区域服务器死机
+## <a name="scenario-dead-region-servers"></a>场景：区域服务器死机
 
 ### <a name="issue"></a>问题
 

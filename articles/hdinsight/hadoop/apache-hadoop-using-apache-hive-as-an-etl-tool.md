@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e2b76fbc2afaad465773860ff45f18261edad138
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: bcf2f39423f033ccd5bfdb6bf51ebc89e254f802
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933428"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867808"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>将 Apache Hive 用作提取、转换和加载 (ETL) 工具
 
@@ -20,9 +20,9 @@ ms.locfileid: "98933428"
 
 下图提供 ETL 自动化用例和模型的概述。 将转换输入数据以生成适当的输出。  在转换期间，数据会更改形状、数据类型甚至语言。  ETL 过程可将英制转换为公制、更改时区和提高精确度，以便与目标中现有的数据相符。 ETL 过程还可将新数据与现有数据相结合来更新报告，或者提供现有数据的更深入见解。 然后，应用程序（例如报告工具和服务）能以所需的格式使用此数据。
 
-![Apache Hive 为 ETL 体系结构](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
+:::image type="content" source="./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png" alt-text="将 Apache Hive 用作 ETL 体系结构" border="false":::
 
-Hadoop 通常用于导入大量文本文件 (如 Csv) 的 ETL 进程。 或更小但经常更改的文本文件数量，或同时使用这两种方法。  Hive 是一个很好的工具，可以在将数据载入数据目标之前先准备好数据。  在 Hive 中，可以基于 CSV 创建架构，然后使用类似于 SQL 的语言来生成与数据交互的 MapReduce 程序。
+在导入大量文本文件（例如 CSV）或数量较少但经常更改的文本文件。 或上述两者兼具的 ETL 过程中，通常使用 Hadoop。  Hive 是一个很好的工具，可以在将数据载入数据目标之前先准备好数据。  在 Hive 中，可以基于 CSV 创建架构，然后使用类似于 SQL 的语言来生成与数据交互的 MapReduce 程序。
 
 使用 Hive 执行 ETL 的典型步骤如下：
 
@@ -66,7 +66,7 @@ Hadoop 通常用于导入大量文本文件 (如 Csv) 的 ETL 进程。 或更�
 可以使用 Hive 将数据输出到不同种类的目标，其中包括：
 
 * 关系数据库，例如 SQL Server 或 Azure SQL 数据库。
-* 数据仓库，例如 Azure Synapse Analytics。
+* 数据仓库，如 Azure Synapse Analytics。
 * Excel。
 * Azure 表和 Blob 存储。
 * 要求将数据处理成特定格式或处理成包含特定类型的信息结构的应用程序或服务。
@@ -76,11 +76,11 @@ Hadoop 通常用于导入大量文本文件 (如 Csv) 的 ETL 进程。 或更�
 
 有以下需要时，通常可以使用 ETL 模型：
 
-`*` 将流数据或大量半结构化或非结构化数据从外部源加载到现有数据库或信息系统中。
-`*` 在加载数据之前对其进行清理、转换和验证，可能通过群集使用多个转换。
+`*` 将流数据或大量半结构化或非结构化数据从外部源载入现有数据库或信息系统。
+`*` 在加载数据之前，先清理、转换和验证这些数据（也许是通过群集使用多个转换阶段执行此操作）。
 `*` 生成定期更新的报表和可视化效果。 例如，如果在日间生成报表耗时太长，可以安排在夜间运行报告。 若要自动运行 Hive 查询，可以使用 [Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)和 PowerShell。
 
-如果数据的目标不是数据库，则可以在查询中以适当的格式（例如 CSV）生成文件。 然后，可将此文件导入 Excel 或 Power BI。
+如果数据目标不是数据库，可以在查询中以相应格式（例如 CSV）生成文件。 然后，可将此文件导入 Excel 或 Power BI。
 
 如果需要在 ETL 过程中对数据执行多个操作，请考虑如何管理这些操作。 由于操作由外部程序而不是解决方案中的工作流控制，因此需确定某些操作是否可以并行执行。 还应检测每项作业何时完成。 与使用外部脚本或自定义程序来尝试协调一系列操作相比，使用工作流机制（例如 Hadoop 中的 Oozie）可能更方便。
 

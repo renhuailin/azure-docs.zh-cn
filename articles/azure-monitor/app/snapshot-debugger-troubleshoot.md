@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd83367ae073e03f03188cdf62cb60faaad7ac97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217408"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026447"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
 如果为应用程序启用了 Application Insights Snapshot Debugger，但未看到出现异常的快照，则可以使用以下说明进行故障排除。
@@ -20,7 +20,7 @@ ms.locfileid: "102217408"
 
 ## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>请确保使用了适当的 Snapshot Debugger 终结点
 
-目前唯一需要修改终结点的区域是 [Azure 政府](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights)和 [Azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide)。
+目前唯一需要修改终结点的区域是 [Azure 政府](../../azure-government/compare-azure-government-global-azure.md#application-insights)和 [Azure 中国](/azure/china/resources-developer-guide)。
 
 对于使用 Application Insights SDK 的应用服务和应用程序，必须使用如下定义的 Snapshot Debugger 支持的替代来更新连接字符串：
 
@@ -28,7 +28,7 @@ ms.locfileid: "102217408"
 |---------------|---------------------|-------------|
 |SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-若要详细了解其他连接替代，请参阅 [Application Insights 文档](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides)。
+若要详细了解其他连接替代，请参阅 [Application Insights 文档](./sdk-connection-string.md?tabs=net#connection-string-with-explicit-endpoint-overrides)。
 
 对于函数应用，必须使用下面支持的替代来更新 `host.json`：
 

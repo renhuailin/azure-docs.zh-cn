@@ -4,18 +4,19 @@ description: 了解如何创建和配置 Azure SQL 托管实例的托管实例�
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
+ms.custom: devx-track-azurecli
 ms.devlang: ''
 ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 571e48b7090f9ad6d74c672d84df3546f2bfa0a2
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: cf100861705bf1654b7206445c884b5fe315b06d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070346"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "92792627"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Azure SQL 托管实例的托管 API 参考
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,18 +60,18 @@ ms.locfileid: "108070346"
 
 | Cmdlet | 说明 |
 | --- | --- |
-|[az sql mi create](/cli/azure/sql/mi#az_sql_mi_create) |创建托管实例。|
-|[az sql mi list](/cli/azure/sql/mi#az_sql_mi_list)|列出可用的托管实例。|
-|[az sql mi show](/cli/azure/sql/mi#az_sql_mi_show)|获取托管实例的详细信息。|
-|[az sql mi update](/cli/azure/sql/mi#az_sql_mi_update)|更新托管实例。|
-|[az sql mi delete](/cli/azure/sql/mi#az_sql_mi_delete)|删除托管实例。|
+|[az sql mi create](/cli/azure/sql/mi#az-sql-mi-create) |创建托管实例。|
+|[az sql mi list](/cli/azure/sql/mi#az-sql-mi-list)|列出可用的托管实例。|
+|[az sql mi show](/cli/azure/sql/mi#az-sql-mi-show)|获取托管实例的详细信息。|
+|[az sql mi update](/cli/azure/sql/mi#az-sql-mi-update)|更新托管实例。|
+|[az sql mi delete](/cli/azure/sql/mi#az-sql-mi-delete)|删除托管实例。|
 |[az sql mi op list](/cli/azure/sql/mi/op#az_sql_mi_op_list)|获取对托管实例执行的管理操作的列表。|
 |[az sql mi op show](/cli/azure/sql/mi/op#az_sql_mi_op_show)|获取对托管实例执行的特定管理操作。|
 |[az sql mi op cancel](/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|取消对托管实例执行的特定管理操作。|
-|[az sql midb create](/cli/azure/sql/midb#az_sql_midb_create) |创建托管数据库。|
-|[az sql midb list](/cli/azure/sql/midb#az_sql_midb_list)|列出可用的托管数据库。|
-|[az sql midb restore](/cli/azure/sql/midb#az_sql_midb_restore)|还原托管数据库。|
-|[az sql midb delete](/cli/azure/sql/midb#az_sql_midb_delete)|删除托管数据库。|
+|[az sql midb create](/cli/azure/sql/midb#az-sql-midb-create) |创建托管数据库。|
+|[az sql midb list](/cli/azure/sql/midb#az-sql-midb-list)|列出可用的托管数据库。|
+|[az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)|还原托管数据库。|
+|[az sql midb delete](/cli/azure/sql/midb#az-sql-midb-delete)|删除托管数据库。|
 
 ## <a name="transact-sql-create-and-configure-instance-databases"></a>Transact-SQL：创建和配置实例数据库
 

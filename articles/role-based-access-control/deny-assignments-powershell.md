@@ -14,10 +14,10 @@ ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 6cf379b051ba42be2d7df7d288f07cdc2a0002a1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94657629"
 ---
 # <a name="list-azure-deny-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 拒绝分配
@@ -32,7 +32,7 @@ ms.locfileid: "94657629"
 如要获取拒绝分配的相关信息，必须具有：
 
 - `Microsoft.Authorization/denyAssignments/read` 权限，大多数 [Azure 内置角色](built-in-roles.md)都包含该权限
-- Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [中的 PowerShell](../cloud-shell/overview.md)
+- [Azure Cloud Shell 中的 PowerShell](../cloud-shell/overview.md) 或 [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-deny-assignments"></a>列出拒绝分配
 

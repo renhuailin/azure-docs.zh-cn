@@ -1,17 +1,17 @@
 ---
 title: 限制 - Azure Database for PostgreSQL 灵活服务器
 description: 本文介绍了 Azure Database for PostgreSQL 灵活服务器中的限制，例如连接数和存储引擎选项。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 0221022c342735744d59f956d6047b4abf23b5cf
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.openlocfilehash: 351c959a4d3b6cc53064b9d1b65c1282647f308e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516509"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605393"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的限制
 
@@ -68,10 +68,10 @@ PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而�
 
 ### <a name="storage"></a>存储
 
-- 配置完成后，将无法减少存储大小。
-- 目前，存储自动增长功能不可用。 请监视使用情况，并将存储增加到更大的大小。 
-- 当存储使用率达到95% 或可用容量小于 5 GiB 时，服务器会自动切换为 **只读模式** ，以避免与磁盘完全相同的情况下出现的错误。 
-- 建议为或设置警报规则， `storage used` `storage percent` 使其超过特定阈值，以便您可以主动采取措施，例如增加存储大小。 例如，可以在存储百分比超过80% 时设置警报。
+- 配置完成后，将无法减少存储大小。 你必须新建具有所需存储大小的服务器，执行手动[转储和还原](../howto-migrate-using-dump-and-restore.md)，并将数据库迁移到新服务器。
+- 目前暂时无法使用存储自动增长功能。 请监视使用情况，并增加存储大小。 
+- 当存储使用率达到 95% 或可用容量小于 5 GiB 时，服务器会自动切换为只读模式，目的是避免因磁盘已满而发生的错误。 
+- 建议针对 `storage used` 或 `storage percent` 超过特定阈值的情况设置警报规则，以便能主动提前采取措施，例如增加存储大小。 例如，可以设置一个在存储使用率超过 80% 时触发的警报。
   
 ### <a name="networking"></a>网络
 
@@ -80,17 +80,17 @@ PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而�
 - VNET 不支持防火墙规则，可以改为使用网络安全组。
 - 公共访问数据库服务器可以连接到公共 Internet（例如通过 `postgres_fdw`），并且不能限制此访问。 基于 VNET 的服务器可以使用网络安全组限制出站访问。
 
-### <a name="high-availability-ha"></a>高可用性 (HA) 
+### <a name="high-availability-ha"></a>高可用性 (HA)
 
-- 可突增服务器当前不支持 HA Zone-Redundant。
-- 服务器故障转移到 HA 备用服务器时，数据库服务器的 IP 地址会发生变化。 确保使用 DNS 记录而不是服务器 IP 地址。
-- 如果为逻辑复制配置了 HA 配置灵活的服务器，则在故障转移到备用服务器时，不会将逻辑复制槽复制到备用服务器。 
-- 有关区域冗余 HA 包括限制的更多详细信息，请参阅 [概念-HA 文档](concepts-high-availability.md) 页。
+- 可突发服务器目前不支持区域冗余 HA。
+- 服务器故障转移到 HA 备用服务器时，数据库服务器的 IP 地址会发生变化。 请确保使用 DNS 记录而不是服务器 IP 地址。
+- 如果使用已配置 HA 的灵活服务器配置逻辑复制，那么当故障转移到备用服务器时，逻辑复制槽不会复制到备用服务器。 
+- 若要更详细地了解区域冗余 HA（包括限制），请查看[概念 - HA 文档](concepts-high-availability.md)页面。
 
 ### <a name="availability-zones"></a>可用性区域
 
-- 当前不支持将服务器手动移到不同的可用性区域。
-- 不能手动配置 HA 备用服务器的可用性区域。
+- 目前不支持将服务器手动移动到不同的可用性区域。
+- 无法手动配置 HA 备用服务器的可用性区域。
 
 ### <a name="postgres-engine-extensions-and-pgbouncer"></a>Postgres 引擎、扩展和 PgBouncer
 
@@ -100,7 +100,7 @@ PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而�
 
 ### <a name="stopstart-operation"></a>停止/启动操作
 
-- 服务器不能停止超过7天。
+- 服务器不能停止超过 7 天。
 
 ### <a name="scheduled-maintenance"></a>计划性维护
 

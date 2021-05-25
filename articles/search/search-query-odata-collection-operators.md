@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 4c1243d5d9122539466e94b6bbfdd5ced588e69a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88934899"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure 认知搜索中的 OData 集合运算符 - `any` 和 `all`
@@ -32,7 +32,7 @@ ms.locfileid: "88934899"
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF ([扩展 Backus-Naur 窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定义使用或的 OData 表达式的语法 `any` `all` 。
+以下 EBNF（[扩展的巴科斯范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义了使用 `any` 或 `all` 的 OData 表达式的语法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -60,7 +60,7 @@ lambda_expression ::= identifier ':' boolean_expression
   - 如果集合的至少一个元素的谓词为 true，则使用 `any` 的表达式将返回 `true`。
 - 第三种形式的集合筛选器使用不带 lambda 表达式的 `any` 来测试集合字段是否为空。 如果集合有任何元素，则返回 `true`。 如果集合为空，则返回 `false`。
 
-集合筛选器中的 **lambda 表达式**类似于编程语言中的循环体。 它定义了一个变量，称为**范围变量**，它在迭代期间保存集合的当前元素。 它还定义了另一个布尔表达式，该表达式是应用于集合的每个元素的范围变量的筛选条件。
+集合筛选器中的 **lambda 表达式** 类似于编程语言中的循环体。 它定义了一个变量，称为 **范围变量**，它在迭代期间保存集合的当前元素。 它还定义了另一个布尔表达式，该表达式是应用于集合的每个元素的范围变量的筛选条件。
 
 ## <a name="examples"></a>示例
 

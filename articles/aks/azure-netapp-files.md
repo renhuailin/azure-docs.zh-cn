@@ -4,18 +4,18 @@ description: 了解如何将 Azure NetApp 文件与 Azure Kubernetes 服务集�
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 1d5aa8232b5d0aaa68e6d7e3dcbb9a7d70d0e8f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 28c5b77f06bc48bf06575e45194adfaed068b30f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182139"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776044"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>将 Azure NetApp 文件与 Azure Kubernetes 服务集成
 
 [Azure NetApp 文件][anf]是 Azure 上运行的一种企业级高性能计量式文件存储服务。 本文介绍如何将 Azure NetApp 文件与 Azure Kubernetes 服务 (AKS) 集成。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 > [!IMPORTANT]
@@ -272,12 +272,12 @@ Filesystem             Size  Used Avail Use% Mounted on
 [anf-quickstart]: ../azure-netapp-files/
 [anf-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all
 [anf-waitlist]: https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-netappfiles-account-create]: /cli/azure/netappfiles/account#az-netappfiles-account-create
-[az-netappfiles-pool-create]: /cli/azure/netappfiles/pool#az-netappfiles-pool-create
-[az-netappfiles-volume-create]: /cli/azure/netappfiles/volume#az-netappfiles-volume-create
-[az-netappfiles-volume-show]: /cli/azure/netappfiles/volume#az-netappfiles-volume-show
-[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-netappfiles-account-create]: /cli/azure/netappfiles/account#az_netappfiles_account_create
+[az-netappfiles-pool-create]: /cli/azure/netappfiles/pool#az_netappfiles_pool_create
+[az-netappfiles-volume-create]: /cli/azure/netappfiles/volume#az_netappfiles_volume_create
+[az-netappfiles-volume-show]: /cli/azure/netappfiles/volume#az_netappfiles_volume_show
+[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_create
 [install-azure-cli]: /cli/azure/install-azure-cli
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

@@ -3,17 +3,19 @@
 - name: 概述
   expanded: true
   items:
+    - name: 什么是翻译器？
+      href: translator-info-overview.md
     - name: 语言支持
       href: language-support.md
     - name: 定价
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/translator'
+    - name: 新增功能
+      href: whats-new.md
+    - name: 翻译工具常见问题解答
+      href: translator-faq.md
 - name: 文本翻译
   expanded: true
   items:
-    - name: 什么是翻译器？
-      href: translator-info-overview.md
-    - name: 翻译工具常见问题解答
-      href: 'https://www.microsoft.com/translator/faq.aspx'
     - name: 快速入门
       href: quickstart-translator.md
     - name: 示例
@@ -50,10 +52,6 @@
           href: dynamic-dictionary.md
         - name: 在防火墙后面翻译
           href: firewalls.md
-    - name: 概念
-      items:
-        - name: API 如何对字符计数
-          href: character-counts.md
     - name: 教程
       items:
         - name: 通过 C# 创建一个使用翻译器的 WPF 应用
@@ -66,8 +64,6 @@
           href: reference/v3-0-reference.md
         - name: Languages
           href: reference/v3-0-languages.md
-        - name: 区域可用性
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: 请求限制
           href: request-limits.md
         - name: Translate
@@ -82,6 +78,36 @@
           href: reference/v3-0-dictionary-lookup.md
         - name: 字典示例
           href: reference/v3-0-dictionary-examples.md
+- name: 文档翻译
+  items:
+    - name: 什么是文档翻译？
+      href: document-translation/overview.md
+    - name: 快速入门
+      href: document-translation/get-started-with-document-translation.md
+    - name: 操作指南
+      items:
+        - name: 为文档翻译创建 SAS 令牌
+          href: document-translation/create-sas-tokens.md
+    - name: 参考
+      items:
+        - name: 获取支持的文档格式
+          href: document-translation/reference/get-supported-document-formats.md
+        - name: 获取支持的词汇表格式
+          href: document-translation/reference/get-supported-glossary-formats.md
+        - name: 获取支持的存储源
+          href: document-translation/reference/get-supported-storage-sources.md
+        - name: 开始翻译
+          href: document-translation/reference/start-translation.md
+        - name: 获取文档状态
+          href: document-translation/reference/get-documents-status.md
+        - name: 获取文档状态
+          href: document-translation/reference/get-document-status.md
+        - name: 获取翻译状态
+          href: document-translation/reference/get-translations-status.md
+        - name: 获取翻译状态
+          href: document-translation/reference/get-translation-status.md
+        - name: 取消翻译
+          href: document-translation/reference/cancel-translation.md
 - name: 自定义翻译
   items:
     - name: 自定义翻译是什么？
@@ -140,45 +166,9 @@
       items:
         - name: 发行说明
           href: custom-translator/release-notes.md
-- name: 文档翻译
-  items:
-    - name: 什么是文档翻译？
-      href: document-translation/overview.md
-    - name: 快速入门
-      href: document-translation/get-started-with-document-translation.md
-    - name: 操作指南
-      items:
-        - name: 为文档翻译创建 SAS 令牌
-          href: document-translation/create-sas-tokens.md
-    - name: 参考
-      items:
-        - name: 获取支持的文档格式
-          href: document-translation/reference/get-supported-document-formats.md
-        - name: 获取支持的词汇表格式
-          href: document-translation/reference/get-supported-glossary-formats.md
-        - name: 获取支持的存储源
-          href: document-translation/reference/get-supported-storage-sources.md
-        - name: 开始翻译
-          href: document-translation/reference/start-translation.md
-        - name: 获取文档状态
-          href: document-translation/reference/get-documents-status.md
-        - name: 获取文档状态
-          href: document-translation/reference/get-document-status.md
-        - name: 获取翻译状态
-          href: document-translation/reference/get-translations-status.md
-        - name: 获取翻译状态
-          href: document-translation/reference/get-translation-status.md
-        - name: 取消翻译
-          href: document-translation/reference/cancel-translation.md
 - name: 资源
   items:
-    - name: 区域支持
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 符合性和认证
       href: 'https://www.microsoft.com/translator/business/notrace/'
-    - name: 支持和帮助选项
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
     - name: GitHub 上的代码示例
       href: 'https://aka.ms/TranslatorGitHub'
-    - name: 隐私和 Cookie
-      href: 'https://privacy.microsoft.com/en-US/privacystatement'

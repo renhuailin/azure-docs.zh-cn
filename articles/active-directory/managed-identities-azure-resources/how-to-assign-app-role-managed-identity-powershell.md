@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2d844054e3744aafa01f43ded354a5b5d9f8b4b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5150c26d67b77008c11764cc6e51ca7085ffcb31
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732041"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784904"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>使用 PowerShell 向应用程序角色分配托管标识访问权限
 
@@ -35,7 +36,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 若要运行示例脚本，有两个选项：
-    - 使用 " [Azure Cloud Shell](../../cloud-shell/overview.md)"，可以使用代码块右上角的 " **试用** " 按钮打开。
+    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，你可使用代码块右上角的“试用”按钮打开它。
     - 通过安装最新版的 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) 在本地运行脚本。
 
 ## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>将托管标识访问权限分配给另一应用程序的应用角色

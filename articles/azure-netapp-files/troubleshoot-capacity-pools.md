@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure NetApp 文件的容量池问题 |Microsoft Docs
-description: 介绍管理容量池时可能遇到的潜在问题，并提供问题的解决方案。
+title: 排除 Azure NetApp 文件的容量池故障 | Microsoft Docs
+description: 介绍了管理容量池时可能出现的潜在问题，并提供了问题的解决方案。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,31 +15,31 @@ ms.topic: troubleshooting
 ms.date: 01/14/2021
 ms.author: b-juche
 ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98251533"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>排查容量池问题
 
-本文介绍管理容量池（包括池更改操作）时可能遇到的问题的解决方法。 
+本文介绍了管理容量池（包括更改池）时可能出现的问题的解决方案。 
 
-## <a name="issues-managing-a-capacity-pool"></a>管理容量池时的问题 
-
-|     添加状态    |     解决方法    |
-|-|-|
-| 创建容量池时出现问题 |  请确保容量池计数不超过限制。 请参阅 [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)。  如果计数低于限制并且仍遇到问题，请提交支持票证并指定容量池名称。 |
-| 删除容量池时出现问题  |  请确保在尝试删除容量池的订阅中删除所有 Azure NetApp 文件的卷和快照。 <br> 如果已删除所有卷和快照并且仍无法删除容量池，则对资源的引用可能仍然存在，而不会在门户中显示。 在这种情况下，请提交支持票证，并指定已执行上述建议步骤。 |
-| 卷创建或修改失败，出现 `Requested throughput not available` 错误 | 卷的可用吞吐量取决于容量池的大小和服务级别。 如果没有足够的吞吐量，则应增加池大小或调整现有的卷吞吐量。 | 
-
-## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>更改卷的容量池时遇到的问题 
+## <a name="issues-managing-a-capacity-pool"></a>管理容量池时出现的问题 
 
 |     添加状态    |     解决方法    |
 |-|-|
-| 不允许更改卷的容量池。 | 你可能尚未获得使用此功能的授权。 <br> 将卷移动到另一个容量池的功能当前处于预览阶段。 如果是首次使用此功能，则需要先注册该功能，然后再设置 `-FeatureName ANFTierChange` 。 请参阅 [动态更改卷的服务级别](dynamic-change-volume-service-level.md)中的注册步骤。 |
-| 容量池大小太小，无法限制总的卷大小。 |  此错误是由于目标容量池没有要移动的卷的可用容量而导致的。  <br> 增加目标池的大小，或选择更大的另一个池。  请参阅 [调整容量池或卷的大小](azure-netapp-files-resize-capacity-pools-or-volumes.md)。   |
-|  池更改无法完成，因为 `'{source pool name}'` 目标池中已存在一个名为的卷 `'{target pool name}'` | 发生此错误的原因是目标容量池中已存在具有相同名称的卷。  请选择没有相同名称的卷的另一个容量池。   | 
+| 创建容量池时出现的问题 |  请确保容量池计数不超过限制。 请参阅 [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)。  如果计数低于限制并且仍出现问题，请提交支持票证并指定容量池名称。 |
+| 删除容量池时出现的问题  |  请确保在尝试删除容量池的订阅中删除所有 Azure NetApp 文件卷和快照。 <br> 如果已删除所有卷和快照并且仍无法删除容量池，则对资源的引用可能仍然存在，但不会在门户中显示。 在这种情况下，请提交支持票证，并注明你已执行上述建议步骤。 |
+| 创建卷失败或修改卷失败，出现 `Requested throughput not available` 错误 | 卷的可用吞吐量由容量池的大小和服务级别决定。 如果吞吐量不足，则应增加池大小或调整现有的卷吞吐量。 | 
+
+## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>更改卷的容量池时出现的问题 
+
+|     添加状态    |     解决方法    |
+|-|-|
+| 不允许更改卷的容量池。 | 你可能尚未获得使用此功能的授权。 <br> 将卷移动到另一个容量池的功能目前以预览版提供。 如果你是首次使用此功能，则需要先注册该功能并设置 `-FeatureName ANFTierChange`。 请参阅[动态更改卷的服务级别](dynamic-change-volume-service-level.md)中的注册步骤。 |
+| 容量池的大小对于卷的总大小来说太小。 |  此错误是由于目标容量池不具备要移动的卷所需的容量而导致的。  <br> 增加目标池的大小，或选择另一个更大的池。  请参阅[重设容量池或卷的大小](azure-netapp-files-resize-capacity-pools-or-volumes.md)。   |
+|  池更改无法完成，因为目标池 `'{target pool name}'` 中已经存在一个名为 `'{source pool name}'` 的卷 | 发生此错误的原因是目标容量池中已经存在具有相同名称的卷。  请选择另一个不存在同名卷的容量池。   | 
 
 ## <a name="next-steps"></a>后续步骤  
 

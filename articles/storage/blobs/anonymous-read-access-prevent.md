@@ -11,15 +11,15 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: 53f29c2b8f7a17ac2a23cc081660e8dcb4b9f387
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101701852"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>阻止对容器和 Blob 的匿名公共读取访问
 
-对 Azure 存储中的容器和 blob 进行匿名公共读取访问虽然是共享数据的一种简便方法，但也可能会带来安全风险。 请务必谨慎管理匿名访问，并了解如何评估对数据的匿名访问。 操作复杂性、人为错误或对可公共访问的数据的恶意攻击可能会导致代价高昂的数据泄露。 Microsoft 建议仅在需要时为应用程序方案启用匿名访问。
+对 Azure 存储中的容器和 blob 进行匿名公共读取访问虽然是共享数据的一种简便方法，但也可能会带来安全风险。 请务必谨慎管理匿名访问，并了解如何评估对数据的匿名访问。 操作复杂性、人为错误或对可公共访问的数据的恶意攻击可能会导致代价高昂的数据泄露。 Microsoft 建议仅在必要时为应用程序方案启用匿名访问。
 
 默认情况下，始终会禁止对 blob 数据的公共访问。 但是，存储帐户的默认配置允许具有适当权限的用户配置对存储帐户中的容器和 blob 的公共访问。 为增强安全性，无论单个容器的公共访问设置如何，都可以禁止对存储帐户的所有公共访问。 禁止对存储帐户进行公共访问可以阻止用户启用帐户中的容器的公共访问权限。 若非有必要，Microsoft 建议禁止对存储帐户进行公共访问。 禁止公共访问有助于防止意外的匿名访问产生的数据泄露。
 
@@ -31,7 +31,7 @@ ms.locfileid: "101701852"
 
 如果你禁止对存储帐户的公共读取访问，系统可能会拒绝对当前配置了公共访问的容器和 blob 的请求。 禁止对存储帐户的公共访问将替代该存储帐户中各个容器的公共访问设置。 禁止对存储帐户的公共访问后，将来对该帐户的任何匿名请求都会失败。
 
-为了理解禁止公共访问可能会对客户端应用程序产生何种影响，Microsoft 建议你启用该帐户的日志记录和度量值，并在时间间隔内分析匿名请求的模式。 使用指标来确定对存储帐户的匿名请求数，并使用日志来确定匿名访问了哪些容器。
+为了了解禁止公共访问可能会对客户端应用程序造成的影响，Microsoft 建议你为该帐户启用日志记录和指标，并分析一段时间间隔内的匿名请求的模式。 使用指标来确定对存储帐户的匿名请求数，并使用日志来确定匿名访问了哪些容器。
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>使用指标资源管理器监视匿名请求
 
@@ -65,39 +65,39 @@ ms.locfileid: "101701852"
 
 ### <a name="analyze-logs-to-identify-containers-receiving-anonymous-requests"></a>分析日志以识别接收匿名请求的容器
 
-Azure 存储日志捕获有关针对存储帐户发出的请求的详细信息，包括请求的授权方式。 你可以分析这些日志，以确定接收匿名请求的容器。
+Azure 存储日志会捕获有关针对存储帐户发出的请求的详细信息，包括请求的授权方式。 可以分析这些日志，以确定接收匿名请求的容器。
 
-若要将请求记录到 Azure 存储帐户，以便评估匿名请求，可以使用 Azure 存储日志记录 Azure Monitor (预览 ") 中。 有关详细信息，请参阅 [监视 Azure 存储](./monitor-blob-storage.md)。
+若要记录针对 Azure 存储帐户发出的请求以评估匿名请求，可以使用 Azure Monitor 中的 Azure 存储日志记录（预览版）。 有关详细信息，请参阅[监视 Azure 存储](./monitor-blob-storage.md)。
 
-Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析日志数据。 若要查询日志，可以使用 Azure Log Analytics 工作区。 若要了解有关日志查询的详细信息，请参阅 [教程： Log Analytics 查询入门](../../azure-monitor/logs/log-analytics-tutorial.md)。
+Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析日志数据。 若要查询日志，可以使用 Azure Log Analytics 工作区。 若要详细了解日志查询，请参阅[教程：Log Analytics 查询入门](../../azure-monitor/logs/log-analytics-tutorial.md)。
 
 > [!NOTE]
-> 仅在 Azure 公有云中支持 Azure Monitor 中的 Azure 存储日志记录预览。 政府云不支持 Azure Monitor 的 Azure 存储的日志记录。
+> Azure Monitor 中的 Azure 存储日志记录预览版仅在 Azure 公有云中受支持。 政府云不支持 Azure Monitor 的 Azure 存储日志记录。
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>在 Azure 门户中创建诊断设置
 
-若要使用 Azure Monitor 记录 Azure 存储数据并使用 Azure Log Analytics 对其进行分析，必须首先创建诊断设置，以指示要为其记录数据的请求类型和存储服务。 若要在 Azure 门户中创建诊断设置，请执行以下步骤：
+若要使用 Azure Monitor 记录 Azure 存储数据并使用 Azure Log Analytics 对其进行分析，必须先创建一项诊断设置，用于指示要记录其数据的请求类型和存储服务。 若要在 Azure 门户中创建诊断设置，请执行以下步骤：
 
-1. 在订阅中创建一个包含你的 Azure 存储帐户的新 Log Analytics 工作区。 配置存储帐户的日志记录后，日志将在 "Log Analytics" 工作区中可用。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)。
+1. 在包含你的 Azure 存储帐户的订阅中创建一个新 Log Analytics 工作区。 配置存储帐户的日志记录后，日志将在 Log Analytics 工作区中提供。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)。
 1. 导航到 Azure 门户中的存储帐户。
-1. 在 "监视" 部分，选择 " **诊断设置" (预览 ")**。
-1. 选择 " **blob** "，记录对 Blob 存储发出的请求。
+1. 在“监视”部分选择“诊断设置(预览版)”。
+1. 选择“Blob”以记录针对 Blob 存储发出的请求。
 1. 选择“添加诊断设置”。
-1. 提供诊断设置的名称。
-1. 在 " **类别详细信息**" 下的 " **日志** " 部分中，选择要记录的请求的类型。 所有匿名请求都是读取请求，因此请选择 " **StorageRead** " 以捕获匿名请求。
-1. 在 " **目标详细信息**" 下，选择 " **发送到 Log Analytics**"。 选择之前创建的 "订阅" 和 "Log Analytics" 工作区，如下图所示。
+1. 为该诊断设置提供一个名称。
+1. 在“类别详细信息”下的“日志”部分，选择要记录的请求类型。 所有匿名请求都是读取请求，因此请选择“StorageRead”以捕获匿名请求。
+1. 在“目标详细信息”下选择“发送到 Log Analytics” 。 选择你的订阅以及前面创建的 Log Analytics 工作区，如下图所示。
 
-    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="显示如何为日志记录请求创建诊断设置的屏幕截图":::
+    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="展示如何创建用于记录请求的诊断设置的屏幕截图":::
 
-创建诊断设置后，随后会根据该设置记录对存储帐户的请求。 有关详细信息，请参阅 [创建诊断设置以收集 Azure 中的资源日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)。
+创建诊断设置后，今后会根据该设置记录对存储帐户发出的请求。 有关详细信息，请参阅[创建诊断设置以收集 Azure 中的资源日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)。
 
-有关 Azure Monitor 中的 Azure 存储日志中可用的字段的参考，请参阅 [资源日志 (预览版) ](./monitor-blob-storage-reference.md#resource-logs-preview)。
+有关 Azure Monitor 的 Azure 存储日志中可用字段的参考，请参阅[资源日志（预览版）](./monitor-blob-storage-reference.md#resource-logs-preview)。
 
-#### <a name="query-logs-for-anonymous-requests"></a>匿名请求的查询日志
+#### <a name="query-logs-for-anonymous-requests"></a>查询匿名请求的日志
 
-Azure Monitor 中的 Azure 存储日志包含用于向存储帐户发出请求的授权类型。 在日志查询中，筛选 **AuthenticationType** 属性以查看匿名请求。
+Azure Monitor 中的 Azure 存储日志包括用于对存储帐户发出请求的授权类型。 在日志查询中，根据 AuthenticationType 属性筛选以查看匿名请求。
 
-若要检索过去7天对 Blob 存储的匿名请求的日志，请打开 Log Analytics 工作区。 接下来，将以下查询粘贴到新的日志查询中并运行：
+若要检索过去 7 天针对 Blob 存储发出的匿名请求的日志，请打开你的 Log Analytics 工作区。 接下来，将以下查询粘贴到新的日志查询中并运行该查询：
 
 ```kusto
 StorageBlobLogs
@@ -105,7 +105,7 @@ StorageBlobLogs
 | project TimeGenerated, AccountName, AuthenticationType, Uri
 ```
 
-你还可以根据此查询配置警报规则，以通知你有关匿名请求的信息。 有关详细信息，请参阅 [使用 Azure Monitor 创建、查看和管理日志警报](../../azure-monitor/alerts/alerts-log.md)。
+还可以基于此查询配置警报规则，以接收有关匿名请求的通知。 有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理日志警报](../../azure-monitor/alerts/alerts-log.md)。
 
 ## <a name="remediate-anonymous-public-access"></a>修正匿名公共访问
 
@@ -289,13 +289,13 @@ Azure Policy 可以确保 Azure 资源符合要求和标准，从而为云治理
 
 ## <a name="permissions-for-allowing-or-disallowing-public-access"></a>允许或禁止公共访问的权限
 
-若要为存储帐户设置 AllowBlobPublicAccess 属性，用户必须有权创建和管理存储帐户。 Azure RBAC) 角色提供这些权限的基于角色的访问控制 (，其中包括 storageAccounts/ **/write** 或 **\* storageAccounts/** action。 具有此操作的内置角色包括：
+若要为存储帐户设置 AllowBlobPublicAccess 属性，用户必须有权创建和管理存储帐户。 提供这些权限的 Azure 基于角色的访问控制 (Azure RBAC) 角色包含 Microsoft.Storage/storageAccounts/write 或 Microsoft.Storage/storageAccounts/\* 操作 。 具有此操作的内置角色包括：
 
 - Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色
 - Azure 资源管理器[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色
 - [存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色
 
-这些角色不提供通过 Azure Active Directory (Azure AD) 对存储帐户中数据的访问权限。 但是，它们包括 storageAccounts/ **listkeys/action**，后者授予对帐户访问密钥的访问权限。 借助此权限，用户可以使用帐户访问密钥访问存储帐户中的所有数据。
+这些角色不提供通过 Azure Active Directory (Azure AD) 对存储帐户中数据的访问权限。 但是，它们包含 Microsoft.Storage/storageAccounts/listkeys/action，可以授予对帐户访问密钥的访问权限。 借助此权限，用户可以使用帐户访问密钥访问存储帐户中的所有数据。
 
 角色分配的范围必须设定为存储帐户级别或更高级别，以允许用户启用或禁用存储帐户的公共访问。 有关角色作用域的详细信息，请参阅[了解 Azure RBAC 的作用域](../../role-based-access-control/scope-overview.md)。
 

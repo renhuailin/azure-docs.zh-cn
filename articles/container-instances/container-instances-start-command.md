@@ -3,12 +3,12 @@ title: 替代容器实例中的入口点
 description: 部署 Azure 容器实例时，设置一个命令行来替代容器映像中的入口点
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: 5898decbf4108d48bb9e84019d659075b18fd043
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771076"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "86169623"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>在容器实例中设置命令行来替代默认的命令行操作
 
@@ -118,8 +118,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 [aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS Internal -->
-[az-container-create]: /cli/azure/container#az_container_create
-[az-container-logs]: /cli/azure/container#az_container_logs
-[az-container-show]: /cli/azure/container#az_container_show
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show
 [new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 [portal]: https://portal.azure.com

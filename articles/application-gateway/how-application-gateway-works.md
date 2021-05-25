@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 9166125fac28f43a93cbee2875b91bee986b1400
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.openlocfilehash: d2055bf812c3dc986a907d4358fa0e74e8af20fa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397461"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104599657"
 ---
 # <a name="how-an-application-gateway-works"></a>应用程序网关的工作原理
 
@@ -30,7 +30,7 @@ ms.locfileid: "93397461"
 
 4. 如果正在使用 Web 应用程序防火墙 (WAF)，则应用程序网关会根据 WAF 规则检查请求标头和正文（如果有）。 此操作确定请求是有效的请求还是安全威胁。 如果请求有效，则将请求路由到后端。 如果请求无效，并且 WAF 处于预防模式，则会将其作为安全威胁予以阻止。 如果 WAF 处于检测模式，则将评估并记录请求，但仍将其转发到后端服务器。
 
-可以使用 Azure 应用程序网关作为内部应用程序负载均衡器或面向 Internet 的应用程序负载均衡器。 面向 Internet 的应用程序网关使用公共 IP 地址。 面向 Internet 的应用程序网关的 DNS 名称可公开解析为其公共 IP 地址。 因此，面向 Internet 的应用程序网关可将客户端请求路由到 Internet。
+可以使用 Azure 应用程序网关作为内部应用程序负载均衡器或面向 Internet 的应用程序负载均衡器。 面向 Internet 的应用程序网关使用公共 IP 地址。 面向 Internet 的应用程序网关的 DNS 名称可公开解析为其公共 IP 地址。 因此，面向 Internet 的应用程序网关可以路由来自 Internet 的客户端请求。
 
 内部应用程序网关仅使用专用 IP 地址。 如果使用的是自定义或[专用 DNS 区域](../dns/private-dns-overview.md)，则域名应在内部可解析为应用程序网关的专用 IP 地址。 因此，内部负载均衡器只能路由有权访问应用程序网关虚拟网络的客户端发出的请求。
 
@@ -52,9 +52,9 @@ HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器
 
  >[!NOTE]
 >如果后端池：
-> - **是公共终结点** ，则应用程序网关会使用其前端公共 IP 来访问服务器。 如果没有前端公共 IP 地址，系统会分配一个公共 IP 地址来建立出站外部连接。
-> - **包含可以在内部解析的 FQDN 或专用 IP 地址** ，则应用程序网关会使用其实例的专用 IP 地址将请求路由到后端服务器。
-> - **包含外部终结点或者可以在外部解析的 FQDN** ，则应用程序网关会使用其前端的公共 IP 地址将请求路由到后端服务器。 DNS 解析基于专用 DNS 区域或自定义 DNS 服务器（如果已配置），或者会使用 Azure 提供的默认 DNS。 如果没有前端公共 IP 地址，系统会分配一个公共 IP 地址来建立出站外部连接。
+> - **是公共终结点**，则应用程序网关会使用其前端公共 IP 来访问服务器。 如果没有前端公共 IP 地址，系统会分配一个公共 IP 地址来建立出站外部连接。
+> - **包含可以在内部解析的 FQDN 或专用 IP 地址**，则应用程序网关会使用其实例的专用 IP 地址将请求路由到后端服务器。
+> - **包含外部终结点或者可以在外部解析的 FQDN**，则应用程序网关会使用其前端的公共 IP 地址将请求路由到后端服务器。 DNS 解析基于专用 DNS 区域或自定义 DNS 服务器（如果已配置），或者会使用 Azure 提供的默认 DNS。 如果没有前端公共 IP 地址，系统会分配一个公共 IP 地址来建立出站外部连接。
 
 ### <a name="modifications-to-the-request"></a>对请求的修改
 

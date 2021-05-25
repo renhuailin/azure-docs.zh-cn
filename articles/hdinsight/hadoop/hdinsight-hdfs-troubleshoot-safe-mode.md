@@ -1,19 +1,19 @@
 ---
 title: 本地 HDFS 在 Azure HDInsight 群集上的安全模式下停止响应
-description: 排查本地 Apache HDFS 在 Azure HDInsight Apache 群集上的安全模式下停止响应的问题
+description: 排查本地 Apache HDFS 在 Azure HDInsight 中的 Apache 群集上的安全模式下停止响应的问题
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
 ms.openlocfilehash: d34bf8d82aee14f5ba835f68a061555d24ee2621
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98944444"
 ---
-# <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>方案：本地 HDFS 在 Azure HDInsight 群集上的安全模式下停止响应
+# <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>场景：本地 HDFS 在 Azure HDInsight 群集上的安全模式下停止响应
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
 
 ## <a name="issue"></a>问题
 
@@ -47,7 +47,7 @@ HDInsight 群集已纵向缩减为以下非常少的节点，或者节点数接�
     hdiuser@spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
     ```
 
-1. 如果确定没有块处于缺失、损坏或复制状态，或者确定可以忽略这些块，请运行以下命令，使指定节点脱离安全模式：
+1. 如果确定没有缺失、损坏或正在复制的块，或者这些块可以忽略，请运行以下命令使名称节点退出安全模式：
 
     ```bash
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave

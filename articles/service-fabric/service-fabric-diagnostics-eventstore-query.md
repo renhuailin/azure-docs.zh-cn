@@ -1,15 +1,17 @@
 ---
 title: 使用 EventStore API 查询群集事件
 description: 了解如何使用 Azure Service Fabric EventStore API 查询平台事件
+author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
+ms.author: srrengar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bc8909a6f25c3adcba60de639d822769baff703f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6bed26227542cbf3ffc13ecc018aef9e659d026e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628792"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98791622"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>查询群集事件的 EventStore API
 

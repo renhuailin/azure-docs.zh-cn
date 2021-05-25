@@ -1,21 +1,21 @@
 ---
 title: Microsoft Azure StorSimple 数据管理器 UI
-description: 了解如何使用 StorSimple 数据管理器 UI 转换驻留在 StorSimple 8000 系列设备上的数据。
+description: 了解如何使用 StorSimple 数据管理器 UI 来转换驻留在 StorSimple 8000 系列设备上的数据。
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 802f732e8d62f5df861be525316b3c31ab4d0655
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94957922"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>管理 Azure 门户中的 StorSimple 数据管理器服务
 
-本文介绍如何使用 StorSimple 数据管理器 UI 来转换驻留在 StorSimple 8000 系列设备上的数据。 然后，其他 Azure 服务（例如 Azure 媒体服务、Azure HDInsight、Azure 机器学习和 Azure 认知搜索）可以使用转换后的数据。
+本文介绍如何使用 StorSimple 数据管理器 UI 来转换驻留在 StorSimple 8000 系列设备上的数据。 然后，Azure 媒体服务、Azure HDInsight、Azure 机器学习和 Azure 认知搜索等其他 Azure 服务可以使用转换的数据。
 
 
 ## <a name="use-storsimple-data-transformation"></a>使用 StorSimple 数据转换
@@ -40,7 +40,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
 
    1. 为 StorSimple 数据管理器提供一个唯一的“服务名称”。 这是可用于标识该服务的友好名称。 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 名称必须以字母或数字开头和结尾。
 
-   2. 从下拉列表中选择一个 **订阅** 。 该订阅将链接到计费帐户。 如果你只有一个订阅，则该字段将自动填充（并且不可选）。
+   2. 从下拉列表中选择一个“订阅”。 该订阅将链接到计费帐户。 如果你只有一个订阅，则该字段将自动填充（并且不可选）。
 
    3. 选择现有的资源组，或创建一个新的组。 有关详细信息，请参阅 [Azure 资源组](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 
@@ -62,7 +62,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
 
 1. 导航到已创建的服务。 转到“管理”>“作业定义”。
 
-2. 单击 " **+ 作业定义**"。
+2. 单击“+ 作业定义”。
 
     ![单击“+作业定义”](./media/storsimple-data-manager-ui/create-job-definition-1.png)
 
@@ -102,9 +102,9 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
 
    3. 在“筛选器”子节中，以 \MyRootDirectory\Data 格式输入包含目标数据的根目录。 不支持诸如 \C:\Data 的驱动器号。 还可以在此处添加任何文件筛选器。
 
-   4. 数据转换服务仅适用于推送到 Azure 的数据的最新快照。
+   4. 数据转换服务仅处理推送到 Azure 的数据的最新快照。
 
-   5. 单击“确定”。
+   5. 单击 **“确定”** 。
 
       ![配置源数据存储库 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -121,7 +121,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
     
     1. 从“目标帐户名称”的下拉列表中选择创建的存储库作为目标。
 
-    2. 选择 blob 或文件作为存储类型。 指定已转换的数据所在的存储容器的名称。 单击“确定”。
+    2. 选择 blob 或文件作为存储类型。 指定已转换的数据所在的存储容器的名称。 单击 **“确定”** 。
 
         ![配置目标数据存储库存储帐户](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
@@ -139,7 +139,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
      
      ![启动作业运行 1](./media/storsimple-data-manager-ui/start-job-run1.png)
 
-2. 单击 " **立即运行**"。
+2. 单击 **“立即运行”** 。
      
      ![启动作业运行 2](./media/storsimple-data-manager-ui/start-job-run2.png)
 
@@ -151,10 +151,10 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
 
     ![启动作业运行 4](./media/storsimple-data-manager-ui/start-job-run4.png)
 
-### <a name="view-logs-after-job-completion"></a>作业完成后查看日志
+### <a name="view-logs-after-job-completion"></a>完成作业后查看日志
 
-完成作业后，可以查看作业的状态。 作业状态可以为 " **成功**"、" **部分成功** " 和 " **失败**"。 您可以查看已成功复制的文件列表和无法复制的文件。 这些列表位于目标存储帐户中名为 **"joblogs"** 的容器中。 在此容器中，可以查找与作业定义同名的文件夹。 在此中，将为包含列表的每个作业运行创建一个文件夹。 此文件夹的名称将是作业的 GUID，您可以从 "作业详细信息" 页获取该 GUID。 或者，在大多数情况下，你会在 "作业" 页中看到复制日志的链接。
-此文件夹中将显示2组 csv 文件。 所有以 **copiedfilelist** 开头的文件都将包含已成功复制的文件列表。 所有以 **failedfilelist** 开头的文件都包含无法复制的文件，以及一条错误消息。
+完成作业后，可以查看作业的状态。 作业状态可以是“成功”、“部分成功”和“失败”。 可以查看已成功复制的和无法复制的文件的列表。 这些列表位于目标存储帐户中名为“storsimple-data-manager-joblogs”的容器中。 在此容器中，可以查找与作业定义同名的文件夹。 在此容器中，将为包含列表的每个作业运行创建一个文件夹。 此文件夹的名称将是作业的 GUID，可以从“作业详细信息”页获取该 GUID。 或者，在大多数情况下，“作业”页中就会显示复制日志的链接。
+此文件夹中将显示 2 组 csv 文件。 所有以“copiedfilelist...”开头的文件都将包含已成功复制的文件的列表。 所有以“failedfilelist...”开头的文件都包含无法复制的文件，以及一条错误消息。
 
 
 ## <a name="next-steps"></a>后续步骤

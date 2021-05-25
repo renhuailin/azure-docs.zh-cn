@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 图中的缩放级别和磁贴网格
-description: 了解如何在 Azure Maps 中设置缩放级别。 请参阅如何将地理坐标转换为像素坐标、图块坐标和 quadkeys。 查看代码示例。
+title: Microsoft Azure Maps 中的缩放级别和图块网格
+description: 了解如何在 Azure Maps 中设置缩放级别。 了解如何将地理坐标转换为像素坐标、图块坐标和 quadkey。 查看代码示例。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/14/2020
@@ -9,32 +9,32 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 21c2329ec58e414ebfedaa4c49d5f690f47cac72
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92913885"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>缩放级别和磁贴网格
 
-Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。 投影是用于将球面地球转换为平面地图的数学模型。 球状 Mercator 投影在两极处拉伸地图，以创建正方形图。 此投影会明显扭曲地图的刻度和面积，但具有两个比此扭曲更重要的重要属性：
+Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。 投影是用于将地球球体转换为平面地图的数学模型。 球面墨卡托投影在两极处拉伸地图，以创建正方形地图。 此投影会明显扭曲地图的比例和面积，但相比此扭曲，有两个关键属性更重要：
 
-- 它是一个 conformal 投影，这意味着它将保留相对较小对象的形状。 在显示高空图像时，保留小对象的形状尤其重要。 例如，我们希望避免使建筑物的形状变形。 方形建筑应显示为方形，而不是矩形。
-- 这是一个圆柱投影。 北部和南部始终为向上和向下，而西部和东始终是左和右。 
+- 它是一种保形投影，这意味着它将保留相对较小的对象的形状。 在显示航拍图像时，保留较小对象的形状尤其重要。 例如，我们希望避免扭曲建筑物的形状。 正方形建筑应显示为正方形，而不是矩形。
+- 它是一种柱面投影。 北部和南部始终是上和下，而西部和东部始终是左和右。 
 
-为了优化地图检索和显示的性能，地图分成了方块图块。 对于公路地图，Azure Maps SDK 使用大小为 512 x 512 像素的磁贴，为卫星图像使用较小的 256 x 256 像素。 Azure Maps 提供23个缩放级别的光栅和矢量磁贴，编号为0到22。 在缩放级别为 0 时，单个磁贴可以容纳整个世界：
+为了优化地图的检索和显示性能，地图分成了正方形图块。 对于道路地图，Azure Maps SDK 使用大小为 512 x 512 像素的图块，对于卫星图像使用较小的 256 x 256 像素。 Azure Maps 提供 23 个缩放级别（编号为 0 到 22）的光栅图块和矢量图块。 在缩放级别为 0 时，单个磁贴可以容纳整个世界：
 
-:::image type="content" source="./media/zoom-levels-and-tile-grid/world0.png" alt-text="世界地图磁贴":::
+:::image type="content" source="./media/zoom-levels-and-tile-grid/world0.png" alt-text="世界地图图块":::
 
 缩放级别 1 使用 4 个磁贴来呈现世界：一个 2 x 2 的正方形
 
-:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="世界地图磁贴":::
+:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="2x2 地图图块布局":::
 
-每个附加的缩放级别四分割上一个的平铺，创建 2<sup>缩放</sup> x 2<sup>缩放</sup>的网格。 缩放级别 22 是一个 2<sup>22</sup> x 2<sup>22</sup> 的网格，或有 4,194,304 x 4,194,304 个磁贴（共有 17,592,186,044,416 个磁贴）。
+每个递增的缩放级别都将前一个缩放级别的图块分为四份，从而创建一个 2 <sup>zoom</sup> x 2 <sup>zoom</sup> 的网格。 缩放级别 22 是一个 2<sup>22</sup> x 2<sup>22</sup> 的网格，或有 4,194,304 x 4,194,304 个磁贴（共有 17,592,186,044,416 个磁贴）。
 
-适用于 web 和 Android 的 Azure Maps 交互式地图控件支持25个缩放级别，其编号为0到24。 尽管仅当磁贴可用时，路上数据才会出现在中的缩放级别。
+适用于 Web 和 Android 的 Azure Maps 交互式地图控件支持 25 个缩放级别，其编号为 0 到 24。 但是只有当图块可用时，才会提供缩放级别的道路数据。
 
-下表提供了缩放级别的值的完整列表，其中，磁贴大小为512像素正方形，位于纬度0：
+下表提供了缩放级别的值的完整列表，其中纬度 0 处的图块大小为 512 x 512 像素：
 
 |缩放级别|计量/像素|计量/磁贴边|
 |--- |--- |--- |
@@ -66,7 +66,7 @@ Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。 投影是用
 
 ## <a name="pixel-coordinates"></a>像素坐标
 
-选择要在每个缩放级别使用的投影和缩放时，可以将地理坐标转换为像素坐标。 特定缩放级别的世界地图图像的完整像素宽度和高度将计算如下：
+选择要在每个缩放级别使用的投影和比例后，可以将地理坐标转换为像素坐标。 按以下方式计算特定缩放级别的世界地图图像的完整像素宽度和高度：
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -74,11 +74,11 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-由于地图的宽度和高度在每个缩放级别都不同，因此是像素坐标。 地图左上角的像素始终具有像素坐标 (0，0) 。 地图右下角的像素坐标 *(width-1、height-1)* 或引用上一部分中的方程式， *(tileSize \* 2 <sup>zoom</sup>–1，tileSize \* 2 <sup>zoom</sup>– 1)* 。 例如，在级别2使用512正方形磁贴时，像素坐标范围为 (0，0) 到 (2047，2047) ，如下所示：
+由于每个缩放级别的地图宽度和高度都不同，因此像素坐标也不相同。 地图左上角的像素的像素坐标始终为 (0, 0)。 地图右下角的像素的像素坐标为 (宽度-1, 高度-1)；或参照上一部分中的方程式：(tileSize \* 2<sup>zoom</sup>–1, tileSize \* 2<sup>zoom</sup>–1)。  例如，在级别 2 使用 512 x 512 图块时，像素坐标的范围为 (0, 0) 到 (2047, 2047)，如下所示：
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="世界地图磁贴":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="显示像素维度的地图":::
 
-给定纬度和经度（以度为单位）和详细程度，像素 XY 坐标的计算方法如下：
+给定纬度和经度（以度为单位）和详细级别时，按以下方式计算像素 XY 坐标：
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -88,11 +88,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-纬度和经度值假设在 WGS 84 基准上。 尽管 Azure Maps 使用球面投影，但将所有地理坐标转换为通用基准非常重要。 WGS 84 是所选的基准。 假定该经度值的范围介于-180 度到 + 180 度之间，并且纬度值必须从-85.05112878 到85.05112878。 坚持这些值可避免在两极中使用奇点，并确保投影的地图为方形形状。
+纬度值和经度值假定在 WGS 84 基准上。 即使 Azure Maps 使用球面投影，也务必将所有地理坐标转换为普通基准。 WGS 84 是所选的基准。 假定经度值的范围为 -180 度到 + 180 度，并且纬度值的范围必须裁剪为 -85.05112878 到 85.05112878。 采用这些值可避免两极处出现奇点，并确保投影地图为正方形。
 
-## <a name="tile-coordinates"></a>磁贴坐标
+## <a name="tile-coordinates"></a>图块坐标
 
-为了优化地图检索和显示的性能，会将呈现的地图剪切为磁贴。 每个缩放级别上的像素数和磁贴数不同：
+为优化地图的检索和显示性能，呈现的地图会分割为图块。 每个缩放级别的像素数和图块数都不同：
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -100,11 +100,11 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-为每个图块指定了 XY 坐标，范围为从左上角的 (0，0) 到右下角 *(2 <sup>zoom</sup>–1、2 <sup>zoom</sup>-1)* 。 例如，在缩放级别3，磁贴坐标范围从 (0，0) 到 (7、7) 如下：
+每个图块都具有 XY 坐标，坐标范围为 (0, 0)（左上角）到 (2<sup>zoom</sup>–1, 2<sup>zoom</sup>–1)（右下角）。 例如，在缩放级别 3 中，图块坐标的范围为 (0, 0) 到 (7, 7)，如下所示：
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="世界地图磁贴":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="图块坐标图":::
 
-给定一对像素 XY 坐标，可以轻松确定包含该像素的图块的图块 XY 坐标：
+给定一对像素 XY 坐标时，可以轻松确定包含该像素的图块的图块 XY 坐标：
 
 ```javascript
 var tileX = Math.floor(pixelX / tileSize);
@@ -112,26 +112,26 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-磁贴由缩放级别调用。 X 和 y 坐标对应于该缩放级别在网格上的位置。
+图块按缩放级别调用。 x 和 y 坐标对应图块在该缩放级别的网格中的位置。
 
-确定要使用的缩放级别时，请记住每个位置都在其磁贴上的固定位置。 因此，显示给定范围的区域所需的磁贴数取决于世界地图上缩放网格的特定位置。 例如，如果有两个点相距 900 米，则可能仅在缩放级别 17 使用三个磁贴来显示这两点之间的路线。  但是，如果西边的点在磁贴的右边，而东边的点在磁贴的左边，则需要四个磁贴：
+在确定要使用的缩放级别时，请记住每个位置在其图块上是固定的。 因此，要显示给定区域范围所需的图块数量取决于世界地图上缩放网格的具体位置。 例如，如果有两个点相距 900 米，则可能仅在缩放级别 17 使用三个磁贴来显示这两点之间的路线。 但是，如果西边的点在磁贴的右边，而东边的点在磁贴的左边，则需要四个磁贴：
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="世界地图磁贴":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="缩放演示比例":::
 
-缩放级别确定后，可以计算 x 和 y 值。 每个缩放网格中左上的磁贴为 x = 0、y = 0;右下方的平铺处于 x = 2<sup>缩放-1</sup>、y = 2<sup>缩放-1</sup>。
+缩放级别确定后，可以计算 x 和 y 值。 每个缩放网格的左上方图块为 x=0, y=0，右下方图块为 x=2<sup>zoom-1</sup>, y=2<sup>zoom-1</sup>。
 
 以下是缩放级别 1 的缩放网格：
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="世界地图磁贴":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="缩放级别 1 的缩放网格":::
 
 ## <a name="quadkey-indices"></a>Quadkey 索引
 
-某些映射平台使用 `quadkey` 索引命名约定，该约定将磁贴 ZY 坐标合并为一维字符串（称为 `quadtree` 键或 `quadkeys` short）。 每个 `quadkey` 磁贴在特定的详细级别上唯一标识一个磁贴，并且可用作公用数据库 B 树索引中的键。 Azure Maps Sdk `quadkey` 除了 [添加图块层](map-add-tile-layer.md) 文档中所述的其他命名约定外，还支持使用命名约定覆盖图块层。
+某些映射平台使用 `quadkey` 索引命名约定，该约定将图块 ZY 坐标合并为一维字符串（称为 `quadtree` 键，或简称为 `quadkeys`）。 每个 `quadkey` 唯一地标识特定详细级别的单个图块，并且它可用作常用数据库 B 树索引中的键。 Azure Maps SDK 支持覆盖使用 `quadkey` 命名约定的图块层，以及使用[添加图块层](map-add-tile-layer.md)文档中介绍的其他命名约定的图块层。
 
 > [!NOTE]
-> `quadkeys`命名约定仅适用于一个或更高的缩放级别。 Azure Maps SDK 的支持缩放级别0，它是整个世界的单个地图图块。 
+> `quadkeys` 命名约定仅适用于级别 1 或更高的缩放级别。 Azure Maps SDK 支持缩放级别 0，此级别是表示整个世界的单个地图图块。 
 
-若要将图块坐标转换为 `quadkey` ，则 Y 和 X 坐标的位是交错的，而结果将被解释为 (以) 保留前导零，并转换为字符串的十进制数。 例如，给定的图块 XY 坐标 (3，5) ，级别3，按 `quadkey` 如下所示确定：
+若要将图块坐标转换为 `quadkey`，要交错 Y 和 X 坐标的位，将结果表示为 base-4 数值（保留前导 0）并转换为字符串。 例如，给定级别 3 中的图块 XY 坐标 (3, 5)，按以下方式确定 `quadkey`：
 
 ```
 tileX = 3 = 011 (base 2)
@@ -141,15 +141,15 @@ tileY = 5 = 101 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys` 有几个有趣的属性。 首先， `quadkey` (的位数) 等于相应磁贴的缩放级别。 其次， `quadkey` 任何图块的从 `quadkey` 其父图块的开始， (上一级) 包含图块。 如以下示例中所示，磁贴2是磁贴20到23的父级：
+`Qquadkeys` 具有几个有趣的属性。 首先，`quadkey` 的长度（位数）等于相应图块的缩放级别。 其次，任何图块的 `quadkey` 都以其父图块（上一级别的包含图块）的 `quadkey` 开头。 如下面示例所示，图块 2 是图块 20 到23 的父图块：
 
-:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="世界地图磁贴":::
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="Quadkey 图块棱锥图":::
 
-最后， `quadkeys` 提供一维索引键，通常在 XY 空间中保留磁贴的邻近性。 换句话说，具有附近 XY 坐标的两个磁贴通常具有 `quadkeys` 相对接近的点。 这对于优化数据库性能非常重要，因为相邻磁贴通常是在组中请求的，因此最好将这些磁贴保存在相同的磁盘块上，以最大程度地减少磁盘读取次数。
+最后，`quadkeys` 提供的一维索引键通常保留图块在 XY 空间中的邻近性。 换句话说，如果两个图块的 XY 坐标相邻，通常它们的 `quadkeys` 也相对接近。 这对于优化数据库性能至关重要，因为通常会按组请求相邻图块，因此最好将这些图块保存在相同的磁盘块上，以最大程度地减少磁盘读取次数。
 
-## <a name="tile-math-source-code"></a>磁贴数学源代码
+## <a name="tile-math-source-code"></a>图块数学源代码
 
-下面的示例代码演示如何实现本文档中所述的函数。 根据需要，可以轻松地将这些函数翻译成其他编程语言。
+下面的示例代码演示如何实现本文档中所述的函数。 可以根据需要轻松地将这些函数转换为其他编程语言。
 
 #### <a name="c"></a>[C#](#tab/csharp)
 
@@ -932,23 +932,23 @@ module AzureMaps {
 * * *
 
 > [!NOTE]
-> Azure Maps SDK 中的交互式地图控件包含 helper 函数，用于在地理空间位置和视区之间进行转换。 
+> Azure Maps SDK 中的交互式地图控件包含 helper 函数，该函数用于在地理位置和视区像素之间进行转换。 
 > - [Web SDK：地图像素和位置计算](/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>后续步骤
 
-直接从 Azure Maps REST 服务访问地图磁贴：
+直接从 Azure Maps REST 服务访问地图图块：
 
 > [!div class="nextstepaction"]
-> [获取地图磁贴](/rest/api/maps/render/getmaptile)
+> [获取地图图块](/rest/api/maps/render/getmaptile)
 
 > [!div class="nextstepaction"]
-> [获取流量磁贴](/rest/api/maps/traffic/gettrafficflowtile)
+> [获取交通流量图块](/rest/api/maps/traffic/gettrafficflowtile)
 
 > [!div class="nextstepaction"]
-> [获取流量事件磁贴](/rest/api/maps/traffic/gettrafficincidenttile)
+> [获取交通事故图块](/rest/api/maps/traffic/gettrafficincidenttile)
 
-详细了解地理空间概念：
+详细了解地理概念：
 
 > [!div class="nextstepaction"]
 > [Azure Maps 术语表](glossary.md)

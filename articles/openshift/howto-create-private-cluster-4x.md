@@ -9,10 +9,10 @@ ms.author: suvetriv
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 5a6eafa6b2380ee61c0de2e329a1751ec7d59c1f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102216065"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>创建 Azure Red Hat OpenShift 4 专用群集
@@ -229,13 +229,13 @@ az aro list-credentials \
 
 在浏览器中启动控制台 URL，使用 `kubeadmin` 凭据登录。
 
-![显示 Azure Red Hat OpenShift 登录屏幕的屏幕截图。](media/aro4-login.png)
+![展示了 Azure Red Hat OpenShift 登录屏幕的屏幕截图。](media/aro4-login.png)
 
 ## <a name="install-the-openshift-cli"></a>安装 OpenShift CLI
 
 登录到 OpenShift Web 控制台后，单击右上角的“?”，  然后单击“命令行工具”。  下载适用于你的计算机的版本。
 
-![图像显示 Azure Red Hat OpenShift 登录屏幕](media/aro4-download-cli.png)
+![展示了 Azure Red Hat OpenShift 登录屏幕的图像](media/aro4-download-cli.png)
 
 也可从 <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> 下载适用于你的计算机的最新 CLI 版本。
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f670af1fca4b4638988e53075f092ca1bbac55b2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a026d1c0c70fb210a1a24dd4a8d85beba97b9612
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578254"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124206"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>用于登录用户的 Web 应用：移到生产环境
 
@@ -49,11 +49,11 @@ Microsoft.Identity.Web NuGet 包处理最常见的 SameSite 问题。
 - [Azure AD B2C](../../active-directory-b2c/overview.md)
 - 国家云
 
-## <a name="tutorial-nodejs-web-app"></a>教程：Node.js web 应用
+## <a name="tutorial-nodejs-web-app"></a>教程：Node.js Web
 
-在本教程中详细了解 Node.js web：
+在本教程中可详细了解 Node.js Web：
 
-[教程：在 Node.js 和 Express Web 应用中让用户登录](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-nodejs-webapp-msal)
+[教程：在 Node.js 和 Express Web 应用中让用户登录](./tutorial-v2-nodejs-webapp-msal.md)
 
 ## <a name="sample-code-java-web-app"></a>示例代码：Java Web 应用
 
