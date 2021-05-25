@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.openlocfilehash: 1716db0476169e12822b3f47f7199bf6e2c4ee92
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96753767"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>准备使用 ISV 工具或 Movere
@@ -43,7 +43,7 @@ ms.locfileid: "96753767"
 
 ## <a name="allow-access-to-urls"></a>允许访问 URL
 
-对于 ISV 工具和 Azure 数据库迁移助手，允许访问表中汇总的公有云 Url。 如果使用基于 URL 的代理连接到 Internet，请确保代理在查找 URL 时会解析接收到的任何 CNAME 记录。 
+对于 ISV 工具和 Azure 数据库迁移助手，允许访问表中汇总的公有云 URL。 如果使用基于 URL 的代理连接到 Internet，请确保代理在查找 URL 时会解析接收到的任何 CNAME 记录。 
 
 **URL** | **详细信息**
 --- | ---
@@ -51,7 +51,7 @@ ms.locfileid: "96753767"
 *.windows.net<br/> *.msftauth.net<br/> *.msauth.net <br/> *.microsoft.com<br/> *.live.com   | 登录到 Azure 订阅。 
 *.microsoftonline.com<br/> *.microsoftonline-p.com | 为设备创建 Azure Active Directory (AD) 应用，以便与 Azure Migrate 通信。 
 management.azure.com | 对 Azure Migrate 项目进行 Azure 资源管理器调用。
-*.servicebus.windows.net | 设备与 EventHub 之间用于发送消息的通信。
+*.servicebus.windows.net | 设备与 EventHub 之间进行通信以发送消息。
 
 
 ## <a name="start-using-the-tool"></a>开始使用该工具

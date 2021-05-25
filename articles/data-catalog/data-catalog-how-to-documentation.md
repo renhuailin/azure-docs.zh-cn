@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 3674c316e34b1e54ed8282ac7d2c228a2b774c06
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 21168e403ffa8fb1472a5bfcac1fcd2079a52e2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019015"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104674914"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中记录数据源
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>简介
 **Microsoft Azure 数据目录** 是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，**Azure 数据目录** 旨在帮助人们发现、了解,和使用数据源，并帮助组织从其现有数据中获取更多价值。
@@ -24,7 +26,7 @@ ms.locfileid: "96019015"
 
 标记和说明非常适合简单批注。 但是，为了帮助数据使用者更好地了解数据源的用法和数据源的业务方案，专家可以提供完整且详尽的文档。 记录数据源很简单。 选择数据资产或容器，并选择“文档”。
 
-![数据目录中的文档选项卡](media/data-catalog-documentation/data-catalog-documentation.png)
+![数据目录中的“文档”选项卡](media/data-catalog-documentation/data-catalog-documentation.png)
 
 ## <a name="documenting-data-assets"></a>记录数据资产
 **Azure 数据目录** 文档的优点让可以使用数据目录作为内容存储库，创建完整的数据资产叙述。 可以浏览描述容器和表的详细内容。 如果其他内容存储库中已有内容（例如 SharePoint 或文件共享），可以添加资产文档链接来参考现有内容。 此功能使现有文档更容易被发现。
@@ -33,7 +35,7 @@ ms.locfileid: "96019015"
 > 文档不包括在搜索索引中。
 >
 
-![文档选项卡和到 web 链接的超链接](media/data-catalog-documentation/data-catalog-documentation2.png)
+![“文档”选项卡和 Web 链接的超链接](media/data-catalog-documentation/data-catalog-documentation2.png)
 
 文档级别范围可以从描述数据资产的特性和值到容器中表架构的详细说明。 应根据业务需求提供相应的文档级别。 但通常情况下，记录数据资产存在以下几种利弊：
 
@@ -41,5 +43,5 @@ ms.locfileid: "96019015"
 * 只记录表：内容特定于相应对象，但用户有多个用于放置文档的位置。
 * 记录容器和表：最全面的方法，但可能会需要更多的文档维护。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 使用 **Azure 数据目录** 记录数据源可以根据需要尽可能详细地叙述数据资产。  通过使用链接，可以链接到现有内容存储库中存储的内容，将现有文档和数据资产结合起来。 用户发现合适的数据资产后，就可以获取一组完整的文档。

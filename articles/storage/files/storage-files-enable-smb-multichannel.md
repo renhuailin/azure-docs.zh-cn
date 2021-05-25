@@ -4,15 +4,15 @@ description: 了解如何在 Azure 高级文件共享上启用 SMB 多通道。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2f867fa6d4b7e1d864a85106b5d957a53d38eb76
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: da4e1a58aef28e5c47100a0311ff81a5af04a918
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732526"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718965"
 ---
 # <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>在 FileStorage 帐户上启用 SMB 多通道（预览版） 
 
@@ -66,7 +66,7 @@ Get-AzProviderFeature -FeatureName AllowSMBMultichannel -ProviderNamespace Micro
 1. 选择“文件服务”下的“文件共享”，然后选择“文件共享设置”。
 1. 将“SMB 多通道”切换为“打开”（或切换为“关闭”以禁用），并选择“保存” 。
 
-:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="存储帐户的屏幕截图，SMB 多通道已切换为“打开”。":::
+:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="存储帐户的屏幕截图，SMB 多通道已切换为“打开”。"  lightbox="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png":::
 
 如果在“文件共享设置”下未显示“SMB 多通道”选项，或者在更新配置时无法更新设置错误，请确保你的订阅已注册，并且你的帐户位于受支持的帐户类型和复制的其中一个[受支持区域](#regional-availability)中。
 

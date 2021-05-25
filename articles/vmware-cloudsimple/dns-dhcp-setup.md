@@ -1,23 +1,23 @@
 ---
-title: Azure VMware 解决方案（按 CloudSimple）-设置私有云的工作负荷 DNS 和 DHCP
-description: 描述如何为 CloudSimple 私有云环境中运行的应用程序和工作负荷设置 DNS 和 DHCP
-author: Ajayan1008
-ms.author: v-hborys
+title: Azure VMware Solution by CloudSimple - 为私有云设置工作负载 DNS 和 DHCP
+description: 描述如何为在 CloudSimple 私有云环境中运行的应用程序和工作负载设置 DNS 和 DHCP
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cdcb3cd7afa660909fad416ca455c041dc50321e
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
-ms.translationtype: MT
+ms.openlocfilehash: 4b8e5cddb8616cc346cce16cc64c6770699a94c6
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896986"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176893"
 ---
-# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>在 CloudSimple 私有云中设置 DNS 和 DHCP 应用程序和工作负荷
+# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>在 CloudSimple 私有云中设置 DNS 和 DHCP 应用程序和工作负载
 
-在私有云环境中运行的应用程序和工作负荷需要进行名称解析，并使用 DHCP 服务进行查找和 IP 地址分配。  需有适当的 DHCP 和 DNS 基础结构才能提供这些服务。  你可以配置虚拟机以在私有云环境中提供这些服务。  
+在私有云环境中运行的应用程序和工作负载需要使用名称解析和 DHCP 服务来进行查找和 IP 地址分配。  需有适当的 DHCP 和 DNS 基础结构才能提供这些服务。  在私有云环境中，可以配置一个虚拟机来提供这些服务。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,11 +27,11 @@ ms.locfileid: "97896986"
 
 ## <a name="linux-based-dns-server-setup"></a>基于 Linux 的 DNS 服务器设置
 
-Linux 提供了用于设置 DNS 服务器的各种包。  下面是 [DigitalOcean 的示例设置](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) ，说明了如何设置开源绑定 DNS 服务器。
+Linux 提供了用于设置 DNS 服务器的各种包。  下面是 [DigitalOcean 的示例设置](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04)，其中包含有关如何设置开放源代码 BIND DNS 服务器的说明。
 
-## <a name="windows-based-setup"></a>基于 Windows 的安装
+## <a name="windows-based-setup"></a>基于 Windows 的设置
 
-这些 Microsoft 主题介绍如何将 Windows server 设置为 DNS 服务器和 DHCP 服务器。
+这些 Microsoft 主题介绍如何将 Windows 服务器设置为 DNS 服务器和 DHCP 服务器。
 
-* [Windows Server 作为 DNS 服务器](/windows-server/networking/dns/dns-top)
-* [Windows Server 作为 DHCP 服务器](/windows-server/networking/technologies/dhcp/dhcp-top)
+* [将 Windows Server 作为 DNS 服务器](/windows-server/networking/dns/dns-top)
+* [将 Windows Server 作为 DHCP 服务器](/windows-server/networking/technologies/dhcp/dhcp-top)

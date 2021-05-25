@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: c2d5310d1a664aa2e22d4241d8066e41d9c82bd1
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97796714"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
@@ -56,7 +56,7 @@ IoT Central 为 IoT Edge 设备启用以下功能：
   - 不存储在 IoT Edge 设备上的云属性。
   - 属于 IoT Central 应用程序的自定义、仪表板和窗体。
 
-  有关详细信息，请参阅 " [将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序" 一](./concepts-iot-edge.md) 文。
+  有关详细信息，请参阅[将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序](./concepts-iot-edge.md)一文。
 
 - 使用 Azure IoT 设备预配服务大规模预配 Azure IoT Edge 设备的功能
 - 规则和操作。
@@ -117,7 +117,7 @@ Azure IoT Central 在云中存储应用程序数据。 存储的应用程序数�
 
 Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备提供的时序数据供分析服务使用。
 
-## <a name="analytics"></a>Analytics
+## <a name="analytics"></a>分析
 
 分析服务负责生成应用程序显示的自定义报告数据。 操作员可以[自定义在应用程序中显示的分析](howto-create-analytics.md)。 分析服务在 [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)基础上构建，可以处理从设备发送的度量数据。
 
@@ -131,12 +131,12 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ![模板体系结构](media/concepts-architecture/template-architecture.png)
 
-在 IoT Central [设备模板](concepts-device-templates.md) 中包含：
+在 IoT Central 中，[设备模板](concepts-device-templates.md)包含：
 
-- 一种 **设备模型** ，用于指定设备的功能，如它发送的遥测、定义设备状态的属性，以及设备所响应的命令。 设备功能已组织到一个或多个界面中。
+- 设备模型，指定设备的功能，例如它发送的遥测数据、用于定义设备状态的属性，以及设备响应的命令。 设备功能已组织到一个或多个界面中。
 - **云属性** 指定 IoT Central 为设备存储的属性。 这些属性只存储在 IoT Central 中，而不会发送到设备。
 - **视图** 指定生成器创建的、让操作员监视和管理设备的仪表板和窗体。
-- **自定义** 使生成器可以覆盖设备模型中的某些定义，使其更与 IoT Central 应用程序相关。
+- 自定义，构建人员可利用自定义替代设备模型中的某些定义，使其与 IoT Central 应用程序更相关。
 
 一个应用程序可以有一个或多个基于每个设备模板的模拟设备和真实设备。
 
@@ -150,7 +150,7 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 
-每个 IoT Central 应用程序都有自己的内置 RBAC 系统。 管理员可以使用预定义角色之一或通过创建自定义角色来定义 Azure IoT Central 应用程序的 [访问规则](howto-manage-users-roles.md) 。 角色决定了用户有权访问哪些应用程序区域以及可执行哪些操作。
+每个 IoT Central 应用程序都有自己的内置 RBAC 系统。 [管理员可以使用预定义的角色之一或通过创建自定义角色来定义适用于 Azure IoT Central 应用程序的访问规则](howto-manage-users-roles.md)。 角色决定了用户有权访问哪些应用程序区域以及可执行哪些操作。
 
 ## <a name="security"></a>安全性
 

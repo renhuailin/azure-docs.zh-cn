@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.openlocfilehash: 2ac4b81a284ed8c38bc9cefccd08db5afa51d600
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575935"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
@@ -32,7 +32,7 @@ Service Fabric 是分布式系统平台，可借助它轻松打包、部署和�
 
 **应用程序**：应用程序是网格应用程序的部署、版本控制和生存期的单位。 每个应用程序实例的生命周期可以单独管理。  应用程序由一个或多个服务代码包和设置组成。 应用程序是使用 Azure 资源模型 (RM) 架构定义的。  服务被描述为 RM 模板中的应用程序资源的属性。  应用程序使用的网络和卷由应用程序引用。  创建应用程序时，应用程序、服务、网络和卷均使用 Service Fabric 资源模型建模。
 
-**服务**：应用程序中的服务代表微服务并执行完整且独立的功能。 每个服务都包含一个或多个代码包，用于描述运行与代码包关联的容器映像所需的所有内容。  应用程序中的服务数量可以增大和减小。
+**服务**：应用程序中的服务代表微服务并执行完整且独立的功能。 每个服务由一个或多个代码包组成，这些代码包描述运行与代码包关联的容器映像所需的所有内容。  应用程序中的服务数量可以增大和减小。
 
 **网络**：网络资源为应用程序创建专用网络，并独立于可能引用它的应用程序或服务。 同一网络可以包含来自不同应用程序的多个服务。 网络是应用程序引用的可部署资源。
 

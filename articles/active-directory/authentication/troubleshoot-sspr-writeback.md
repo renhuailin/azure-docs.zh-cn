@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0620304de1866d24719b137836419502cd25bee9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98682231"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>排查 Azure Active Directory 中的自助式密码重置写回问题
@@ -40,15 +40,15 @@ ms.locfileid: "98682231"
 
 对于 Azure AD Connect 1.1.443.0 及更高版本，需要对以下地址的出站 HTTPS 访问权限：
 
-* *\*。 passwordreset.microsoftonline.com*
-* *\*。 servicebus.windows.net*
+* \*.passwordreset.microsoftonline.com
+* \*.servicebus.windows.net
 
 Azure [GOV 终结点](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers)：
 
-* *\*。 passwordreset.microsoftonline.us*
-* *\*。 servicebus.usgovcloudapi.net*
+* \*.passwordreset.microsoftonline.us
+* \*.servicebus.usgovcloudapi.net
 
-如果需要更多详细信息，请参阅 [Microsoft Azure 数据中心 IP 范围的列表](https://www.microsoft.com/download/details.aspx?id=41653)。 此列表每周三更新一次，并在下个星期一生效。
+如果需要更细的粒度，请参阅 [Microsoft Azure 数据中心 IP 范围的列表](https://www.microsoft.com/download/details.aspx?id=41653)。 此列表每周三更新一次，并在下个星期一生效。
 
 有关详细信息，请参阅 [Azure AD Connect 的连接先决条件](../hybrid/how-to-connect-install-prerequisites.md)。
 

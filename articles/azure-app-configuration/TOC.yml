@@ -90,6 +90,12 @@
           href: howto-feature-filters-aspnet-core.md
         - name: 为指定用户/组启用功能
           href: howto-targetingfilter-aspnet-core.md
+    - name: 启用 Azure 监视
+      items:
+        - name: 监视应用程序配置
+          href: monitor-app-configuration.md
+        - name: 监视数据参考
+          href: monitor-app-configuration-reference.md
 - name: 示例
   items:
     - name: Azure CLI

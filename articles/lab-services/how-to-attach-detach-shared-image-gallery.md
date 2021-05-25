@@ -4,17 +4,17 @@ description: 本文介绍了如何在 Azure 实验室服务中将共享映像库
 ms.topic: article
 ms.date: 09/11/2020
 ms.openlocfilehash: 99b944ad85e311cd66b0a1cec4e585de37f83500
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98786395"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 实验室服务中附加或分离共享映像库
 本文介绍了如何将共享映像库附加到实验室帐户或与之分离。 
 
 > [!NOTE]
-> 将 Azure 实验室服务中的 [实验室模板映像保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) 到共享映像库时，会将该映像作为专用映像上载到库。 [专用映像](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) 保留计算机特定的信息和用户配置文件。 你仍可以直接将通用化映像上传到 Azure 实验室服务之外的库。 
+> 在 Azure 实验室服务中[将实验室的模板映像保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery)到共享映像库时，会将该映像作为专用映像上传到库。 [专用映像](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)保留计算机特定的信息和用户配置文件。 你仍可以直接将通用映像上传到 Azure 实验室服务外部的库。 
 >
 > 实验室创建者可以基于 Azure 实验室服务中的通用映像和专用映像创建模板 VM。 
 
@@ -27,7 +27,7 @@ ms.locfileid: "98786395"
     将映像保存到共享映像库时，Azure 实验室服务会将已保存的映像复制到同一[地域](https://azure.microsoft.com/global-infrastructure/geographies/)中可用的其他区域。 它确保映像可用于在同一地域中的其他区域中创建的实验室。 将映像保存到共享映像库会产生额外费用，其中包括所有复制映像的成本。 此成本不同于 Azure 实验室服务的使用成本。 有关共享映像库定价的详细信息，请参阅[共享映像库 – 计费](../virtual-machines/shared-image-galleries.md#billing)。
 
 > [!IMPORTANT]
-> 使用共享映像库时，Azure 实验室服务仅支持少于 128 GB 操作系统磁盘空间的映像。 在创建实验室的过程中，将不会在虚拟机映像列表中显示超过 128 GB 磁盘空间或多个磁盘的映像。
+> 使用共享映像库时，Azure 实验室服务仅支持 OS 磁盘空间小于 128 GB 的映像。 在创建实验室期间，具有超过 128 GB 的磁盘空间或多个磁盘的映像将不会显示在虚拟机映像列表中。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>在创建实验室帐户时配置
 在创建实验室帐户时，可以将共享映像库附加到实验室帐户。 可以从下拉列表中选择现有的共享映像库，也可以新建一个。 若要创建共享映像库，并将其附加到实验室帐户，请选择“新建”，输入库名称，然后按“确定”。 

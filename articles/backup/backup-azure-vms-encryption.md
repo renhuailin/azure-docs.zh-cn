@@ -4,10 +4,10 @@ description: 介绍如何使用 Azure 备份服务备份和还原已加密的 Az
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.openlocfilehash: db06b64fba203fb3d2ed54d34235504ac6aa4e2d
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99223451"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>备份和还原加密的 Azure 虚拟机
@@ -22,9 +22,9 @@ ms.locfileid: "99223451"
 
 ## <a name="encryption-using-customer-managed-keys"></a>使用客户管理的密钥进行加密
 
-使用客户管理的密钥加密磁盘时 (CMK) ，用于对磁盘进行加密的密钥存储在 Azure Key Vault 中并由你进行管理。 使用 CMK 的存储服务加密 (SSE) 不同于 Azure 磁盘加密 (ADE) 加密。 ADE 使用操作系统的加密工具。 SSE 对存储服务中的数据进行加密，使你可以将任何 OS 或映像用于 VM。
+使用客户管理的密钥 (CMK) 对磁盘进行加密时，用于对磁盘进行加密的密钥存储在 Azure Key Vault 中，由你进行管理。 使用 CMK 的存储服务加密 (SSE) 不同于 Azure 磁盘加密 (ADE) 加密。 ADE 使用操作系统的加密工具。 SSE 对存储服务中的数据进行加密，使你可以将任何 OS 或映像用于 VM。
 
-对于使用客户托管密钥来加密其磁盘的 Vm，无需执行任何显式操作。 将使用与 [保管库中使用的加密](encryption-at-rest-with-cmk.md)相同的方法对存储在保管库中的 vm 的备份数据进行加密。
+对于使用客户管理的密钥加密磁盘的虚拟机的备份或还原，无需执行任何显式操作。 存储在保管库中的这些 VM 的备份数据将使用[保管库上使用的加密](encryption-at-rest-with-cmk.md)方法进行加密。
 
 有关使用客户管理的密钥对托管磁盘进行加密的详细信息，请[参阅本文](../virtual-machines/disk-encryption.md#customer-managed-keys)。
 
@@ -44,11 +44,11 @@ Azure 备份可以在使用或者不使用 Azure AD 应用的情况下，通过 
 
 ### <a name="limitations"></a>限制
 
-- 可以在同一订阅和区域中备份和还原 ADE 加密的 Vm。
+- 可以备份和还原同一订阅和区域中的 ADE 加密的 VM。
 - Azure 备份支持使用独立密钥加密的 VM。 目前不支持属于用于加密 VM 的证书的任何密钥。
-- 可以在与恢复服务备份保管库相同的订阅和区域中备份和还原 ADE 加密的 Vm。
-- 无法在文件/文件夹级别恢复 ADE 加密的 Vm。 需要恢复整个 VM 才能还原文件和文件夹。
-- 恢复 VM 时，不能对已加密的 Vm 使用 " [替换现有 VM](backup-azure-arm-restore-vms.md#restore-options) " 选项。 只有未加密的托管磁盘才支持此选项。
+- 可以备份和还原恢复服务备份保管库所在的同一订阅和区域中的 ADE 加密的 VM。
+- 无法在文件/文件夹级别恢复 ADE 加密的 VM。 需要恢复整个 VM 才能还原文件和文件夹。
+- 还原 VM 时，无法对 ADE 加密的 VM 使用[替换现有 VM](backup-azure-arm-restore-vms.md#restore-options) 选项。 只有未加密的托管磁盘才支持此选项。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -131,7 +131,7 @@ Azure 备份需要拥有只读访问权限才能备份密钥和机密以及关�
     >
     >`Get-AzVm -ResourceGroupName "MyResourceGroup001" -VMName "VM001" -Status`
     >
-    > 在此行中查找 key vault 名称：
+    > 在此行中查找密钥保管库名称：
     >
     >`SecretUrl            : https://<keyVaultName>.vault.azure.net`
     >

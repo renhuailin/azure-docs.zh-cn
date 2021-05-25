@@ -1,21 +1,21 @@
 ---
-title: 使用 Azure 流分析进行实时 Twitter 情绪分析
-description: 本文说明如何使用流分析进行实时 Twitter 情绪分析。 在实时仪表板上提供从事件生成到数据的分步指南。
+title: 使用 Azure 流分析进行社交媒体分析
+description: 本文介绍如何通过 Twitter 客户端 API 使用流分析进行社交媒体分析。 在实时仪表板上提供从事件生成到数据的分步指南。
 services: stream-analytics
 author: enkrumah
 ms.author: ebnkruma
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 02/10/2020
-ms.openlocfilehash: 6a461ad906f7611c8a13e2ee495f4d2f62fedd53
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.date: 03/16/2021
+ms.openlocfilehash: e2369e8f4349a3b4a83c1729c6414d319dd8419e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734826"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104589661"
 ---
-# <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
+# <a name="social-media-analysis-with-azure-stream-analytics"></a>使用 Azure 流分析进行社交媒体分析
 
 本文教你如何通过将实时 Twitter 事件引入 Azure 事件中心来生成社交媒体情绪分析解决方案。 可以编写 Azure 流分析查询来分析数据并存储结果以供将来使用，或者创建 [Power BI](https://powerbi.com/) 面板来实时提供见解。
 
@@ -43,7 +43,7 @@ ms.locfileid: "98734826"
 
 下面是要实现的解决方案体系结构。
 
-   ![显示用于生成解决方案的不同服务和应用程序的关系图。](./media/stream-analytics-twitter-sentiment-analysis-trends/solution-diagram.png "解决方案关系图")
+   ![显示用于生成解决方案的不同服务和应用的示意图。](./media/stream-analytics-twitter-sentiment-analysis-trends/solution-diagram.png "解决方案示意图")
 
 ## <a name="create-an-event-hub-for-streaming-input"></a>为流式处理输入创建事件中心
 
@@ -110,13 +110,13 @@ ms.locfileid: "98734826"
 
 1. 在 Web 浏览器中，转到[面向开发人员的 Twitter](https://developer.twitter.com/en/apps)，创建开发者帐户，然后选择“创建应用”。 可能会看到一条消息，指出你需要申请 Twitter 开发人员帐户。 可以随意执行此操作，在你的申请获得批准后，应该会看到一封确认电子邮件。 批准开发人员帐户可能需要几天时间。
 
-   ![屏幕截图显示 "创建应用程序" 按钮。](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Twitter 应用程序详细信息")
+   ![屏幕截图显示“创建应用程序”按钮。](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Twitter 应用程序详细信息")
 
-2. 在“创建应用程序”页中提供新应用的详细信息，然后选择“创建 Twitter 应用程序”。
+2. 在“创建应用程序”  页中提供新应用的详细信息，然后选择“创建 Twitter 应用程序”  。
 
-   ![屏幕截图显示应用程序详细信息窗格，可在其中输入应用的值。](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Twitter 应用程序详细信息")
+   ![屏幕截图显示应用程序详细信息窗格，可在其中输入应用程序的值。](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Twitter 应用程序详细信息")
 
-3. 在应用程序页中选择“密钥和令牌”选项卡，复制“使用者 API 密钥”和“使用者 API 密钥”的值。 此外，在“访问令牌和访问令牌机密”下选择“创建”以生成访问令牌。 复制“访问令牌”和“访问令牌机密”的值。
+3. 在应用程序页中选择“密钥和令牌”  选项卡，复制“使用者 API 密钥”  和“使用者 API 密钥”  的值。 此外，在“访问令牌和访问令牌机密”下选择“创建”以生成访问令牌。 复制“访问令牌”和“访问令牌机密”的值。
 
    保存 Twitter 应用程序的检索值。 在后面的步骤中会用到这些值。
 

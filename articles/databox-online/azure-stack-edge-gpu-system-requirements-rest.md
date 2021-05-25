@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 887aaf32592c74a5884916bc7ad63d79544fb554
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7deba32eb9d0e098b75f98cc81fac2c01b8bb7f8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99575849"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567247"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Azure Stack Edge Blob 存储要求
 
@@ -70,7 +70,7 @@ Azure Stack Edge Blob 存储支持以下 Azure 客户端库版本。
 
 ## <a name="endpoint-declaration"></a>终结点声明
 
-在 Azure Stack Edge Blob 存储 SDK 中，终结点后缀 `<device serial number>.microsoftdatabox.com` 标识 Azure Stack Edge 域。 若要详细了解 blob 服务终结点，请转到[使用 Azure Stack Edge Pro GPU 通过存储帐户传输数据](azure-stack-edge-j-series-deploy-add-storage-accounts.md)。
+在 Azure Stack Edge Blob 存储 SDK 中，终结点后缀 `<device serial number>.microsoftdatabox.com` 标识 Azure Stack Edge 域。 若要详细了解 blob 服务终结点，请转到[使用 Azure Stack Edge Pro GPU 通过存储帐户传输数据](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)。
 
 
 ## <a name="examples"></a>示例

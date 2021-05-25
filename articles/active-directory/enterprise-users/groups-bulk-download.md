@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory 门户中下载组的列表 |Microsoft Docs
-description: 在 Azure Active Directory 的 Azure 管理中心中批量下载组属性。
+title: 在 Azure Active Directory 门户中下载组列表 | Microsoft Docs
+description: 在 Azure Active Directory 中的 Azure 管理中心批量下载组属性。
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,23 +14,23 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 98c61679fed04c0a696b60bb7ee53009a8a530e0
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96547672"
 ---
-# <a name="bulk-download-a-list-of-groups-in-azure-active-directory"></a>批量下载 Azure Active Directory 中的组列表
+# <a name="bulk-download-a-list-of-groups-in-azure-active-directory"></a>在 Azure Active Directory 中批量下载组列表
 
-使用) 门户 Azure AD Azure Active Directory (，你可以将组织中所有组的列表大容量下载到以逗号分隔的值 (CSV) 文件。
+使用 Azure Active Directory (Azure AD) 门户，可将组织中的所有组列表批量下载到以逗号分隔的值 (CSV) 文件。
 
-## <a name="to-download-a-list-of-groups"></a>下载组列表
+## <a name="to-download-a-list-of-groups"></a>若要下载组列表
 
-1. 使用组织中的管理员帐户登录到 [Azure 门户](https://portal.azure.com) 。
-1. 在 Azure AD 中，选择 "**组**" "  >  **下载组**"。
-1. 在 " **组下载** " 页上，选择 " **启动** " 以接收列出组的 CSV 文件。
+1. 使用组织中的管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 在 Azure AD 中，选择“组” > “下载组” 。
+1. 在“组下载”页面上，选择“开始”以接收列举组的 CSV 文件。
 
-   !["所有组" 页上的 "下载组" 命令](./media/groups-bulk-download/bulk-download.png)
+   ![下载组命令位于“所有组”页面上](./media/groups-bulk-download/bulk-download.png)
 
 ## <a name="check-download-status"></a>检查下载状态
 
@@ -40,7 +40,7 @@ ms.locfileid: "96547672"
 
 ## <a name="bulk-download-service-limits"></a>批量下载服务限制
 
-下载组列表的每个批量活动最多可以运行一小时。 这使你可以下载至少300000个组的列表。
+下载组列表的每个批量活动最多可运行一小时。 这使你可以下载至少包含 300000 万个组的列表。
 
 ## <a name="next-steps"></a>后续步骤
 

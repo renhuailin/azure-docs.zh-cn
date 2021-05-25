@@ -9,10 +9,10 @@ ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
 ms.openlocfilehash: d1632c66791dd5e697b95a2c5aaaddea81629abf
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99052816"
 ---
 # <a name="using-snat-for-outbound-connections"></a>使用 SNAT 进行出站连接
@@ -22,10 +22,10 @@ ms.locfileid: "99052816"
 SNAT 启用后端实例的 IP 伪装。 此伪装可以防止外部源直接访问后端实例。 在后端实例之间共享 IP 地址可降低静态公共 IP 的成本，并支持简化带有来自已知公共 IP 的流量的 IP 允许列表等场景。 
 
 >[!Note]
-> 对于需要大量出站连接的应用程序或需要在给定虚拟网络中使用一组 Ip 的企业客户，建议使用 [虚拟网络 NAT](../virtual-network/nat-overview.md) 作为建议解决方案。 通过它的动态分配，可进行简单配置，并最有效地使用每个 IP 地址的 SNAT 端口。 该方案还允许虚拟网络中的所有资源共享一组 IP 地址，而无需共享负载均衡器。
+> 对于需要大量出站连接的应用程序或需要从给定虚拟网络使用一组 IP 的企业用户，[虚拟网络 NAT](../virtual-network/nat-overview.md) 是推荐的解决方案。 通过它的动态分配，可进行简单配置，并最有效地使用每个 IP 地址的 SNAT 端口。 该方案还允许虚拟网络中的所有资源共享一组 IP 地址，而无需共享负载均衡器。
 
 >[!Important]
-> 即使未配置出站 SNAT，同一区域中的 Azure 存储帐户仍可访问，后端资源仍将有权访问 Microsoft 服务（如 Windows 更新）。
+> 即使未配置出站 SNAT，仍可以访问同一区域内的 Azure 存储帐户，后端资源也仍然可以访问 Microsoft 服务（如 Windows 更新）。
 
 >[!NOTE] 
 >本文仅涵盖了 Azure 资源管理器部署。 有关 Azure 中的所有经典部署方案，请查看[出站连接（经典）](/previous-versions/azure/load-balancer/load-balancer-outbound-connections-classic)。
@@ -103,18 +103,18 @@ SNAT 启用后端实例的 IP 伪装。 此伪装可以防止外部源直接访�
 
  在此情况下，用于 SNAT 的临时端口被称为 SNAT 端口。 强烈建议显式配置[出站规则](./outbound-rules.md)。 如果通过负载均衡规则使用默认 SNAT，则按照[默认 SNAT 端口分配表](#snatporttable)中所述预先分配 SNAT 端口。
 
- ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-standard-internal-load-balancer"></a><a name="scenario3"></a>方案3：没有公共 IP 和标准内部负载均衡器的虚拟机
+ ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-standard-internal-load-balancer"></a><a name="scenario3"></a>场景 3：没有公共 IP 且在标准内部负载均衡器之后的虚拟机
 
 
  | 关联 | 方法 | IP 协议 |
  | ------------ | ------ | ------------ |
- | 标准内部负载均衡器 | 无 internet 连接。| 无 |
+ | 标准内部负载均衡器 | 未建立 Internet 连接。| 无 |
 
  #### <a name="description"></a>说明
  
-使用标准内部负载均衡器时，不会为 SNAT 使用临时 IP 地址。 这是为了在默认情况下支持安全性，并确保资源使用的所有 IP 地址都可配置并可保留。 若要在使用标准内部负载均衡器时实现到 internet 的出站连接，请将实例级别的公共 IP 地址配置为遵循 (方案 1) [#scenario1] 中的行为，或将后端实例添加到标准的公共负载均衡器，并将另外中配置的出站规则添加到内部负载均衡器，以遵循 (方案 2) [#scenario2] 中 
+使用标准内部负载均衡器时，不会使用临时 IP 地址用于 SNAT。 这是为了在默认情况下支持安全性，并确保资源使用的所有 IP 地址都是可配置的且可以保留。 若要在使用标准内部负载均衡器时实现到 Internet 的出站连接，请配置实例层级公共 IP 地址来遵循（场景 1）[#scenario1] 中的行为，或将后端实例添加到标准公共负载均衡器且为内部负载均衡器配置出站规则来遵循（场景 2）[#scenario2] 中的行为. 
 
- ### <a name="scenario-4-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario4"></a>方案4：没有公共 IP 和基本负载均衡器的虚拟机
+ ### <a name="scenario-4-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario4"></a>应用场景 4：没有公共 IP 且在基本负载均衡器之后的虚拟机
 
 
  | 关联 | 方法 | IP 协议 |
@@ -197,7 +197,7 @@ Azure 负载均衡器出站规则和虚拟网络 NAT 是用于虚拟网络流出
 *   每个端口都可以用于到目标 IP 地址的 TCP 和 UDP 连接
   * 无论目标端口是否唯一，都需要 UDP SNAT 端口。 对于每个到目标 IP 的 UDP 连接，将使用一个 UDP SNAT 端口。
   * 如果目标端口不同，则可以将一个 TCP SNAT 端口用于到同一目标 IP 的多个连接。
-*   当后端实例用完给定的 SNAT 端口时，会发生 SNAT 耗尽。 负载均衡器仍然可以有未使用的 SNAT 端口。 如果后端实例的已使用 SNAT 端口超过其给定的 SNAT 端口，则无法建立新的出站连接。
+*   当后端实例用完给定的 SNAT 端口时，会发生 SNAT 耗尽。 负载均衡器仍然可以有未使用的 SNAT 端口。 如果后端实例的已用 SNAT 端口超过其给定的 SNAT 端口，它将无法建立新的出站连接。
 
 ## <a name="next-steps"></a>后续步骤
 
