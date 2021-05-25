@@ -48,3 +48,13 @@
       href: verifiable-credentials-faq.md
     - name: 如何创建开发者帐户
       href: how-to-create-a-free-developer-account.md
+    - name: 负责万物的行业工作组 - 分散式 ID (DID)
+      href: 'https://identity.foundation'
+    - name: Microsoft DID 白皮书
+      href: 'http://aka.ms/didwhitepaper'
+    - name: DID 营销概述
+      href: 'http://aka.ms/didexplained'
+    - name: 分散式标识博客
+      href: 'https://techcommunity.microsoft.com/t5/tag/decentralized%20identity/tg-p'
+    - name: 有关分散式标识的视频概述
+      href: 'https://www.youtube.com/watch?v=Whc9Im-U0Wg'

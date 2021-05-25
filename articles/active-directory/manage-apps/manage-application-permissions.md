@@ -2,22 +2,22 @@
 title: 管理用户和管理员权限 - Azure Active Directory | Microsoft Docs
 description: 了解如何在 Azure AD 上查看和管理应用程序的权限。 例如，撤消授予应用程序的所有权限。
 services: active-directory
-author: msmimart
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 7/10/2020
-ms.author: mimart
+ms.author: iangithinji
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbd2bc7b9ccc9efe0c6fdf8de02665160667cb8f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7e8cf0459ecdf93251d1d59a9396b6ee11b7701c
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99256926"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108160810"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>对 Azure Active Directory 中拥有过度特权的或可疑的应用程序采取措施
 
@@ -32,14 +32,13 @@ ms.locfileid: "99256926"
 若要限制对应用程序的访问，你需要要求用户分配，然后将用户或组分配到应用程序。  有关详细信息，请参阅[分配用户和组的方法](./assign-user-or-group-access-portal.md)。
 
 可以访问 Azure AD 门户，获取上下文 PowerShell 脚本来执行这些操作。
- 
+
 1. 以全局管理员、应用程序管理员或云应用程序管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory” > “企业应用程序”。 
 3. 选择想要限制访问的应用程序。
 4. 选择“权限”。 在命令栏中，选择“检查权限”。
 
 ![“检查权限”窗口的屏幕截图。](./media/manage-application-permissions/review-permissions.png)
-
 
 ## <a name="control-access-to-an-application"></a>控制对应用程序的访问
 
@@ -86,8 +85,7 @@ ms.locfileid: "99256926"
 
 也可以禁用应用程序以阻止用户访问，并阻止此应用程序访问数据。
 
-
-## <a name="disable-a-malicious-application"></a>禁用恶意应用程序 
+## <a name="disable-a-malicious-application"></a>禁用恶意应用程序
 
 建议禁用应用程序以阻止用户访问，并阻止此应用程序访问数据。 如果你改为删除此应用程序，则用户可以再次同意该应用程序并授权其访问你的数据。
 
@@ -98,7 +96,6 @@ ms.locfileid: "99256926"
 
 ### <a name="powershell-commands"></a>PowerShell 命令
 
-
 检索服务主体对象 ID。
 
 1. 以全局管理员、应用程序管理员或云应用程序管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
@@ -106,12 +103,14 @@ ms.locfileid: "99256926"
 3. 选择想要限制访问的应用程序。
 4. 选择“属性”，然后复制对象 ID。
 
-```powershell
-$sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
-$sp.ObjectId
-```
+   ```powershell
+   $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
+   $sp.ObjectId
+   ```
+
 删除分配给应用程序的所有用户。
- ```powershell
+
+```powershell
 Connect-AzureAD
 
 # Get Service Principal using objectId
@@ -128,7 +127,7 @@ $assignments | ForEach-Object {
         Remove-AzureADGroupAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
     }
 }
- ```
+```
 
 撤消授予应用程序的权限。
 
@@ -154,7 +153,9 @@ $spApplicationPermissions | ForEach-Object {
     Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
 }
 ```
+
 使刷新令牌失效。
+
 ```powershell
 Connect-AzureAD
 
@@ -169,7 +170,9 @@ $assignments | ForEach-Object {
     Revoke-AzureADUserAllRefreshToken -ObjectId $_.PrincipalId
 }
 ```
+
 ## <a name="next-steps"></a>后续步骤
+
 - [管理对应用程序的同意并评估同意请求](manage-consent-requests.md)
 - [配置用户同意](configure-user-consent.md)
 - [配置管理员同意工作流](configure-admin-consent-workflow.md)
