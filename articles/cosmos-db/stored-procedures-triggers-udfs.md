@@ -9,10 +9,10 @@ ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: ad9e6b99b396465c2cff95bd6ab340ef9d668085
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99575951"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>存储过程、触发器和用户定义的函数
@@ -65,14 +65,14 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 
 ### <a name="data-consistency"></a>数据一致性
 
-存储过程和触发器始终在 Azure Cosmos 容器的主要副本上执行。 此功能可确保从存储过程执行的读取提供[非常一致性](./consistency-levels.md)。 使用用户定义的函数的查询可以在主要副本或任何辅助副本上执行。 存储过程和触发器旨在支持事务写入–同时，只读逻辑最好作为应用程序端逻辑和使用 [AZURE COSMOS DB SQL API sdk](sql-api-dotnet-samples.md)的查询来实现，这将有助于您使数据库的吞吐量饱和。 
+存储过程和触发器始终在 Azure Cosmos 容器的主要副本上执行。 此功能可确保从存储过程执行的读取提供[非常一致性](./consistency-levels.md)。 使用用户定义的函数的查询可以在主要副本或任何辅助副本上执行。 存储过程和触发器旨在支持事务写入 - 同时，最好是将只读逻辑实现为应用程序端逻辑，使用 [Azure Cosmos DB SQL API SDK](sql-api-dotnet-samples.md) 的查询有助于最大程度地利用数据库吞吐量。 
 
 > [!TIP]
 > 在存储过程或触发器中执行的查询可能看不到同一脚本事务对项目所做的更改。 此语句同时适用于 SQL 查询（如 `getContent().getCollection.queryDocuments()`）以及集成语言查询（如 `getContext().getCollection().filter()`）。
 
 ## <a name="bounded-execution"></a>绑定的执行
 
-所有 Azure Cosmos DB 操作必须在指定的超时持续时间内完成。 存储过程的超时限制为5秒。 此约束适用于 JavaScript 函数 - 存储过程、触发器和用户定义的函数。 如果某个操作未在该时间限制内完成，事务将会回滚。
+所有 Azure Cosmos DB 操作必须在指定的超时持续时间内完成。 存储过程的超时限制为 5 秒。 此约束适用于 JavaScript 函数 - 存储过程、触发器和用户定义的函数。 如果某个操作未在该时间限制内完成，事务将会回滚。
 
 可以确保 JavaScript 函数在时间限制内完成，或者实施一个基于延续的模型来批处理/恢复执行。 为了简化存储过程和触发器的开发以应对时间限制，Azure Cosmos 容器下的所有函数（例如，项的创建、读取、更新和删除）将返回表示该操作是否完成的布尔值。 如果此值为 false，则表示过程必须结束执行，因为脚本占用的时间或预配吞吐量超过了配置的值。 如果存储过程及时完成且没有任何更多请求在排队的话，将保证完成排在第一个拒绝存储操作之前的操作。 因此，应该使用 JavaScript 的回调约定管理脚本的控制流，以将操作逐个排队。 由于脚本在服务器端环境中执行，因此受到严格的调控。 反复违反执行边界的脚本可标记为非活动状态且不可执行，应根据执行边界重新创建它们。
 

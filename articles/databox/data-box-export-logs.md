@@ -1,6 +1,6 @@
 ---
-title: 跟踪和记录 Azure Data Box，Azure Data Box Heavy 导出顺序的事件 |Microsoft Docs
-description: 介绍如何在 Azure Data Box 的各个阶段跟踪和记录事件，并 Azure Data Box Heavy 导出顺序。
+title: 在导出订单中跟踪和记录 Azure Data Box 与 Azure Data Box Heavy 事件 | Microsoft Docs
+description: 介绍如何在 Azure Data Box 和 Azure Data Box Heavy 导出订单的各个处理阶段跟踪和记录事件。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,32 +9,32 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94337502"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Azure Data Box 和 Azure Data Box Heavy 导出订单的跟踪和事件日志记录
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>跟踪 Azure Data Box 和 Azure Data Box Heavy 导出订单并记录其事件
 
-Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、数据复制、返回和数据擦除。 对于每个订单步骤，可以采取多种措施来控制对订单的访问、审核事件、跟踪订单，以及解释生成的各种日志。
+Data Box 或 Data Box Heavy 导出订单会经历以下步骤：订购、设置、数据复制、返回和数据擦除。 对于每个订单步骤，可以采取多种措施来控制对订单的访问、审核事件、跟踪订单，以及解释生成的各种日志。
 
-本文详细介绍了可用于跟踪和审核 Data Box 或 Data Box Heavy 的出口订单的各种机制或工具。 本文中的信息同时适用于 Data Box 和 Data Box Heavy。 在后续部分，有关 Data Box 的任何参考信息也适用于 Data Box Heavy。
+本文将详细介绍用于跟踪和审核 Data Box 或 Data Box Heavy 导出订单的各种机制或工具。 本文中的信息同时适用于 Data Box 和 Data Box Heavy。 在后续部分，有关 Data Box 的任何参考信息也适用于 Data Box Heavy。
 
 下表显示了 Data Box 导出订单步骤的摘要，以及在每个步骤中可用于跟踪和审核订单的工具。
 
-| Data Box 出口订单阶段       | 用于跟踪和审核的工具                                                                        |
+| Data Box 导出订单阶段       | 用于跟踪和审核的工具                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| 创建订单               | [通过 Azure RBAC 按顺序设置访问控制](#set-up-access-control-on-the-order) <br> [按顺序启用详细日志](#enable-verbose-log-in-the-order)                                                    |
+| 创建订单               | [通过 Azure RBAC 对订单设置访问控制](#set-up-access-control-on-the-order) <br> [在订单中启用详细日志](#enable-verbose-log-in-the-order)                                                    |
 | 订单已处理            | 通过以下方式[跟踪订单](#track-the-order) <ul><li> Azure 门户 </li><li> 承运商网站 </li><li>电子邮件通知</ul> |
 | 设置设备              | 在[活动日志](#query-activity-logs-during-setup)中记录的设备访问凭据              |
-| 从设备复制数据        | [查看复制日志](#copy-log) <br> 在复制数据之前[查看详细日志](#verbose-log)            |
+| 从设备复制数据        | [查看复制日志](#copy-log) <br> 在复制数据前[查看详细日志](#verbose-log)            |
 | 从设备中擦除数据   | [查看监护日志链](#get-chain-of-custody-logs-after-data-erasure)，包括审核日志和订单历史记录                |
 
 
 ## <a name="set-up-access-control-on-the-order"></a>针对订单设置访问控制
 
-首次创建订单时，可以控制谁能够访问你的订单。 在不同范围中设置 Azure 角色，以控制对 Data Box 顺序的访问。 Azure 角色确定对操作子集的访问（读写、只读、读写）的类型。
+首次创建订单时，可以控制谁能够访问你的订单。 在不同范围内设置 Azure 角色，以控制对 Data Box 订单的访问。 Azure 角色决定访问的类型 - 读写、只读、读写至操作子集。
 
 可为 Azure Data Box 服务定义的两个角色：
 
@@ -46,17 +46,17 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 - 在订单级别分配一个角色。 用户只拥有角色定义的权限，只能与该特定的 Data Box 订单交互，而没有任何其他权限。
 - 在资源组级别分配一个角色，这样，用户便有权访问资源组中的所有 Data Box 订单。
 
-有关建议使用的 Azure RBAC 的详细信息，请参阅 [AZURE rbac 的最佳实践](../role-based-access-control/best-practices.md)。
+有关 Azure RBAC 建议用法的详细信息，请参阅 [Azure RBAC 的最佳做法](../role-based-access-control/best-practices.md)。
 
-## <a name="enable-verbose-log-in-the-order"></a>按顺序启用详细日志
+## <a name="enable-verbose-log-in-the-order"></a>在订单中启用详细日志
 
-在为 Data Box 放置出口订单时，可以选择启用详细日志的集合。 下面是可以在其中启用详细日志的订单屏幕：
+下达 Data Box 导出订单时，可以选择启用详细日志收集。 下面是可以在其中启用详细日志的订单屏幕：
 
 ![选择导出选项](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-当你选择 " **包括详细日志** " 选项时，将在从 Azure 存储帐户复制数据时生成详细日志文件。 此日志包含已成功导出的所有文件的列表。
+选择“包括详细日志”选项时，将在从 Azure 存储帐户复制数据时生成详细日志文件。 此日志包含已成功导出的所有文件的列表。
 
-有关导出顺序的详细信息，请参阅 [为 Data Box 创建导出订单](data-box-deploy-export-ordered.md)
+有关导出订单的详细信息，请参阅[为 Data Box 创建导出订单](data-box-deploy-export-ordered.md)
 
 ## <a name="track-the-order"></a>跟踪订单
 
@@ -77,17 +77,17 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 
     ![查询活动日志](media/data-box-logs/query-activity-log-1.png)
 
-- 每次登录 Data Box 都有实时的记录。 但是，此信息仅在订单成功完成后在 [保管审核日志链](#chain-of-custody-audit-logs) 中可用。
+- 每次登录 Data Box 都有实时的记录。 但是，此信息只会在成功完成订单之后才显示在[保管链审核日志](#chain-of-custody-audit-logs)中。
 
-## <a name="view-logs-during-data-copy"></a>在数据复制期间查看日志
+## <a name="view-logs-during-data-copy"></a>查看数据复制期间的日志
 
-在从 Data Box 复制数据之前，你可以下载并查看复制到 Data Box 的数据的 *复制日志* 和 *详细日志* 。 从 Azure 中的存储帐户将数据复制到 Data Box 时，将生成这些日志。 
+从 Data Box 复制数据之前，可以下载并查看已复制到 Data Box 的数据的复制日志和详细日志。 将数据从 Azure 中的存储帐户复制到 Data Box 时将生成这些日志。 
 
 ### <a name="copy-log"></a>复制日志
 
-从 Data Box 复制数据之前，请从 " **连接和复制** " 页面下载复制日志。
+从 Data Box 复制数据之前，从“连接和复制”页中下载复制日志。
 
-下面是在从 Azure 到 Data Box 设备的数据复制期间， *复制日志* 的示例输出。
+下面是以下情况的复制日志的示例输出：在数据复制过程中没有出现任何错误且所有文件已从 Azure 复制到了 Data Box 设备。
 
 ```output
 <CopyLog Summary="Summary">
@@ -97,7 +97,7 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 </CopyLog>
 ``` 
     
-下面是 *复制日志* 出错并且某些文件未能从 Azure 复制时的示例输出。
+下面是在复制日志包含错误且某些文件未能从 Azure 复制时的示例输出。
 
 ```output
 <ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
@@ -175,22 +175,22 @@ Data Box 或 Data Box Heavy 导出顺序完成以下步骤：订单、设置、�
 
 <!-- add a screenshot-->
 
-你可以使用这些日志来验证从 Azure 复制的文件与复制到本地服务器的数据是否匹配。 
+可以使用这些日志来验证从 Azure 复制的文件与复制到本地服务器的数据是否匹配。 
 
-使用您的详细日志文件：
+使用详细日志文件：
 
-- 验证实际名称以及从 Data Box 复制的文件数。
-- 验证文件的实际大小。
-- 验证 *crc64* 是否与非零字符串相对应。 循环冗余检查 (CRC) 计算在 Azure 导出期间完成。 在将数据从 Data Box 复制到本地服务器后，可以从导出和 CRCs 进行比较。 CRC 不匹配指示相应的文件未能正确地复制。
+- 检查已从 Data Box 复制的文件的实际名称和数目。
+- 检查文件的实际大小。
+- 检查 crc64 是否对应于某个非零字符串。 在从 Azure 导出期间，会执行循环冗余检查 (CRC) 计算。 可以比较导出过程中的 CRC 以及将数据从 Data Box 复制到本地服务器后的 CRC。 如果 CRC 不匹配，则表示相应的文件无法正确复制。
 
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>擦除数据后获取监管日志链
 
-根据 NIST SP 800-88 修订版 1 准则从 Data Box 磁盘中擦除数据后，会提供监管日志链。 这些日志包括保管链、审核日志和订单历史记录。 BOM 或清单文件也会随审核日志一起复制。
+根据 NIST SP 800-88 修订版 1 准则从 Data Box 磁盘中擦除数据后，会提供监管日志链。 这些日志包括保管链审核日志和订单历史记录。 BOM 或清单文件也会随审核日志一起复制。
 
 ### <a name="chain-of-custody-audit-logs"></a>保管链审核日志
 
-保管链审核日志包含有关在 Data Box 上打开和访问共享的信息，或在该资源超出 Azure 数据中心时 Data Box Heavy 的信息。 这些日志位于：`storage-account/azuredatabox-chainofcustodylogs`
+保管链审核日志包含有关当 Data Box 或 Data Box Heavy 在 Azure 数据中心外部时如何启动它和访问其上共享的信息。 这些日志位于：`storage-account/azuredatabox-chainofcustodylogs`
 
 下面是 Data Box 中的审核日志示例：
 
