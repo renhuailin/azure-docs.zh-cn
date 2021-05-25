@@ -16,10 +16,14 @@
           href: Quickstarts/quickstart-sdk.md
 - name: 教程
   items:
-    - name: 与 Power Virtual Agent 集成
-      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: 使用 Azure 机器人服务创建 FAQ 机器人
       href: Tutorials/create-faq-bot-with-azure-bot-service.md
+    - name: 自定义机器人
+      items:
+        - name: 向 FAQ 机器人添加多个域
+          href: Tutorials/create-faq-bot-for-multiple-domains.md
+    - name: 与 Power Virtual Agent 集成
+      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
 - name: 概念
   items:
     - name: 规划知识库

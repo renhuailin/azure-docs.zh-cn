@@ -1,5 +1,5 @@
 ---
-title: HBv2 系列 VM 概述-Azure 虚拟机 |Microsoft Docs
+title: HBv2 系列 VM 概述 - Azure 虚拟机 | Microsoft Docs
 description: 了解 Azure 中的 HBv2 系列 VM 大小。
 services: virtual-machines
 author: vermagit
@@ -11,56 +11,58 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6648f77c5eacf40f848bc9b24aa6e257d8adf626
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 965e7c92e17d5ba689fccc0ee6eb321fe2a36695
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674647"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138073"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>HBv2 系列虚拟机概述 
 
  
-最大程度提高高性能计算 (HPC) 应用程序性能 下面概述了 AMD EPYC 体系结构，以及如何在 Azure 上实现 HPC 应用程序。 我们将使用术语 **pNUMA** 来引用物理 numa 域，并使用 **vNUMA** 引用虚拟化 numa 域。 
+要在 AMD EPYC 上最大程度地提高高性能计算 (HPC) 应用程序性能，需要考虑周全的方法内存位置和进程放置。 下面概述了 AMD EPYC 体系结构，以及如何在 Azure 上为 HPC 应用程序实现它。 我们将使用术语“pNUMA”指代物理 NUMA 域，使用“vNUMA”指代虚拟化 NUMA 域 。 
 
-从物理上讲， [HBv2 系列](../../hbv2-series.md) 服务器是 2 * 64 核心 EPYC 7742 cpu，总共128个物理内核。 这些128核心分为32个 pNUMA 域 (每套接字) 16 个，其中每个都是4个核心，由 AMD 称为 **核心复杂** (或 **CCX**) 。 每个 CCX 都有其自己的 L3 缓存，这是操作系统将如何看到 pNUMA/vNUMA 边界的。 四个相邻 CCXs 共享对两个物理 DRAM 通道的访问。 
+从物理上讲，[HBv2 系列](../../hbv2-series.md)服务器是 2 * 64 核 EPYC 7742 CPU，总共 128 个物理内核。 这 128 个核心分为 32 个 pNUMA 域（每套接字 16 个），其中每个都是 4 个核心，被 AMD 称为“CPU Complex”（或“CCX”） 。 每个 CCX 都有自己的 L3 缓存，这是操作系统对 pNUMA/vNUMA 边界的理解。 四个相邻 CCX 共享对 2 个通道的物理 DRAM 的访问。 
 
-若要为 Azure 虚拟机监控程序提供空间来操作而不干扰 VM，我们保留了物理 pNUMA 域0和 16 (即每个 CPU 插槽) 的第一个 CCX。 所有剩余的30个 pNUMA 域将分配给 VM，此时它们将变为 vNUMA。 这样，VM 就会看到：
+为了给 Azure 虚拟机监控程序提供运行空间而又不干扰 VM，我们预留了物理 pNUMA 域 0 和 16（即，每个 CPU 套接字的第一个 CCX）。 所有剩余的 30 个 pNUMA 域将分配给 VM，此时它们会变为 vNUMA。 这样，VM 就会看到：
 
-`(30 vNUMA domains) * (4 cores/vNUMA) = 120` 每个 VM 的内核数 
+每个 VM `(30 vNUMA domains) * (4 cores/vNUMA) = 120` 个核心 
 
-VM 本身不会意识到 pNUMA 0 和16已保留。 它将它看到的 vNUMA 枚举为0-29，并以 15-29 0-14 对称方式为每个套接字 vNUMA 15 个 在下一部分中，有关于如何最好地在此非对称 NUMA 布局上运行 MPI 应用程序的说明。 
+VM 本身不会意识到 pNUMA 0 和 16 已保留。 它将看到的 vNUMA 枚举为 0-29，每个套接字对称地有 15 个 vNUMA，vSocket 0上有 vNUMA 0-14，而 vSocket 1 上有 vNUMA 15-29。 下一部分介绍了如何以最佳方式在此非对称 NUMA 布局上运行 MPI 应用程序。 
 
-进程固定适用于 HBv2 系列 Vm，因为我们会向来宾 VM 公开基础硅。 强烈建议通过处理固定来实现最佳性能和一致性。 
+进程固定适用于 HBv2 系列 VM，因为我们会将底层硅按原样公开给来宾 VM。 强烈建议使用进程固定来实现最佳性能和一致性。 
 
 
 ## <a name="hardware-specifications"></a>硬件规格 
 
-| 硬件规范          | HBv2 系列 VM                   | 
+| 硬件规格          | HBv2 系列 VM                   | 
 |----------------------------------|----------------------------------|
-| 核心数                            | 120 (SMT 禁用)                | 
+| 核心数                            | 120（已禁用 SMT）               | 
 | CPU                              | AMD EPYC 7742                    | 
-|  (非 AVX) 的 CPU 频率          | ~ 3.1 GHz (单个 + 所有核心)     | 
-| 内存                           | 4 GB/核心 (480 GB 总)          | 
-| 本地磁盘                       | 960 GB NVMe (块) ，480 GB SSD (页面文件)  | 
-| Infiniband                       | 200 Gb/秒 EDR Mellanox ConnectX-6 | 
-| 网络                          | 50 gb/s 以太网 (40 Gb/s 可用) Azure 第二代 SmartNIC | 
+| CPU 频率（非 AVX）          | ~3.1 GHz（单个 + 所有核心）    | 
+| 内存                           | 4 GB/核心（总共 480 GB）         | 
+| 本地磁盘                       | 960 GB NVMe（块）、480 GB SSD（页面文件） | 
+| Infiniband                       | 200 Gb/s EDR Mellanox ConnectX-6 | 
+| 网络                          | 50 Gb/秒以太网（40 Gb/秒可用）Azure 第二代 SmartNIC | 
 
 
-## <a name="software-specifications"></a>软件规范 
+## <a name="software-specifications"></a>硬件规格 
 
-| 软件规范     | HBv2 系列 VM                                            | 
+| 软件规格     | HBv2 系列 VM                                            | 
 |-----------------------------|-----------------------------------------------------------|
-| 最大 MPI 作业大小            | 36000核心 (使用 singlePlacementGroup = true 的单个虚拟机规模集中的 300 Vm)  |
-| MPI 支持                 | HPC-X，Intel MPI，OpenMPI，MVAPICH2，MPICH，平台 MPI  |
-| 其他框架       | 统一通信 X、libfabric、PGAS                  |
-| Azure 存储支持       | 标准磁盘和高级磁盘 (最多8个磁盘)               |
-| SRIOV RDMA 的操作系统支持   | CentOS/RHEL 7.6 +、SLES 12 SP4 +、WinServer 2016 +           |
-| Orchestrator 支持        | CycleCloud，Batch                                         | 
+| 最大 MPI 作业大小            | 36,000 个核心（单个虚拟机规模中 300 个 VM，且 singlePlacementGroup=true） |
+| MPI 支持                 | HPC-X、Intel MPI、OpenMPI、MVAPICH2、MPICH、Platform MPI  |
+| 其他框架       | UCX, libfabric, PGAS |
+| Azure 存储支持       | 标准磁盘和高级磁盘（最多 8 个磁盘） |
+| SRIOV RDMA 的操作系统支持   | CentOS/RHEL 7.6+、Ubuntu 16.04+、SLES 12 SP4+、WinServer 2016+  |
+| Orchestrator 支持        | CycleCloud、Batch、AKS；[群集配置选项](../../sizes-hpc.md#cluster-configuration-options)  |
 
+> [!NOTE] 
+> 在 HBv2 和大于 64（虚拟或物理）核的其他 VM 上，不支持 Windows Server 2012 R2。 请参阅[此处](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关 [AMD EPYC 体系结构](https://bit.ly/2Epv3kC) 和 [多芯片体系](https://bit.ly/2GpQIMb)结构的详细信息。 有关更多详细信息，请参阅 [AMD EPYC 处理器的 HPC 优化指南](https://bit.ly/2T3AWZ9)。
-- 阅读有关 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)中的最新公告和一些 HPC 示例。
+- 详细了解 [AMD EPYC 体系结构](https://bit.ly/2Epv3kC)和[多芯片体系结构](https://bit.ly/2GpQIMb)。 有关详细信息，请参阅 [AMD EPYC 处理器的 HPC 优化指南](https://bit.ly/2T3AWZ9)。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
 - 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

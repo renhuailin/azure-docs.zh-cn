@@ -1,15 +1,17 @@
 ---
 title: 使用 EventFlow 聚合 Azure Service Fabric 事件
 description: 了解通过使用 EventFlow 集合和收集事件来监视和诊断 Azure Service Fabric 群集。
+author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
+ms.author: srrengar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a502fe05a862893d2c4879a6976d8d8d1044cbf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a80eea5a50aa7b1e441049eeb2cae381994cd3ec
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627755"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96006330"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 进行事件聚合和收集
 

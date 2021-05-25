@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何安装和配置 NGINX 入口控制器，该控制器使用 Let's Encrypt 在 Azure Kubernetes 服务 (AKS) 群集中自动生成 TLS 证书。
 services: container-service
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 1faabdda869bbaba8027df121d080b0fb421e9f1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.date: 04/23/2021
+ms.openlocfilehash: 74a44a4f3cb17084c0c2f433ad66a77928e037a6
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728886"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108006793"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建 HTTPS 入口控制器
 
@@ -30,7 +30,7 @@ ms.locfileid: "98728886"
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-本文还假定你在 AKS 群集所在的资源组中有一个包含[DNS 区域][dns-zone]的[自定义域][custom-domain]。
+本文还假定你在 AKS 群集所在的资源组中有一个具有 [DNS 区域][dns-zone]的[自定义域][custom-domain]。
 
 本文使用 [Helm 3][helm] 安装 NGINX 入口控制器和证书管理器。 请确保使用最新版本的 Helm，并且有权访问 ingress-nginx 和 jetstack Helm 存储库 。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
@@ -128,7 +128,6 @@ helm repo update
 # Install the cert-manager Helm chart
 helm install cert-manager jetstack/cert-manager \
   --namespace ingress-basic \
-  --version v0.16.1 \
   --set installCRDs=true \
   --set nodeSelector."kubernetes\.io/os"=linux \
   --set webhook.nodeSelector."kubernetes\.io/os"=linux \
@@ -144,7 +143,7 @@ helm install cert-manager jetstack/cert-manager \
 使用以下示例清单创建群集证书颁发者，例如 `cluster-issuer.yaml`。 将电子邮件地址更新为组织提供的有效地址：
 
 ```yaml
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt
@@ -263,15 +262,15 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 两个应用程序现在都在 Kubernetes 群集中运行。 但是，它们使用类型为 `ClusterIP` 的服务进行配置，并且无法从 Internet 进行访问。 若要公开发布这两个应用程序，请创建 Kubernetes 入口资源。 该入口资源配置将流量路由到这两个应用程序之一的规则。
 
-在下面的示例中，流量为 " *hello-世界"。MY_CUSTOM_DOMAIN* 将路由到 *helloworld* 服务。 到地址 *hello-world-ingress.MY_CUSTOM_DOMAIN/hello-world-two* 的流量会路由到 *aks-helloworld-two* 服务。 到 *世界各地的流量。MY_CUSTOM_DOMAIN/静态* 将路由到名为 aks 的服务 *-helloworld-一个* 用于静态资产。
+在以下示例中，到地址 hello-world-ingress.MY_CUSTOM_DOMAIN 的流量会路由到 aks-helloworld-one 服务 。 到地址 *hello-world-ingress.MY_CUSTOM_DOMAIN/hello-world-two* 的流量会路由到 *aks-helloworld-two* 服务。 到 hello-world-ingress.MY_CUSTOM_DOMAIN/static 的流量会路由到静态资产的名为 aks-helloworld-one 的服务 。
 
 > [!NOTE]
-> 如果为入口控制器 IP 地址（而不是自定义域）配置了 FQDN，请使用 FQDN 而不是 hello-world-ingress.MY_CUSTOM_DOMAIN。 例如，如果你的 FQDN 是 *demo-aks-ingress.eastus.cloudapp.azure.com*，则替换 *hello-world。MY_CUSTOM_DOMAIN* 中的 demo-aks-ingress.eastus.cloudapp.azure.com `hello-world-ingress.yaml` 。
+> 如果为入口控制器 IP 地址（而不是自定义域）配置了 FQDN，请使用 FQDN 而不是 hello-world-ingress.MY_CUSTOM_DOMAIN。 例如，如果 FQDN 为“demo-aks-ingress.eastus.cloudapp.azure.com”，则将“hello-world-ingress.MY_CUSTOM_DOMAIN”替换为 `hello-world-ingress.yaml` 中的“demo-aks-ingress.eastus.cloudapp.azure.com”。
 
 使用下面的示例 YAML 创建名为 `hello-world-ingress.yaml` 的文件。 将 *hosts* 和 *host* 更新为在前面步骤中创建的 DNS 名称。
 
 ```yaml
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -289,20 +288,29 @@ spec:
   - host: hello-world-ingress.MY_CUSTOM_DOMAIN
     http:
       paths:
-      - backend:
-          serviceName: aks-helloworld-one
-          servicePort: 80
-        path: /hello-world-one(/|$)(.*)
-      - backend:
-          serviceName: aks-helloworld-two
-          servicePort: 80
-        path: /hello-world-two(/|$)(.*)
-      - backend:
-          serviceName: aks-helloworld-one
-          servicePort: 80
-        path: /(.*)
+      - path: /hello-world-one(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-helloworld-one
+            port:
+              number: 80
+      - path: /hello-world-two(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-helloworld-two
+            port:
+              number: 80
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-helloworld-one
+            port:
+              number: 80
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-world-ingress-static
@@ -320,9 +328,13 @@ spec:
   - host: hello-world-ingress.MY_CUSTOM_DOMAIN
     http:
       paths:
-      - backend:
-          serviceName: aks-helloworld-one
-          servicePort: 80
+      - path:
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-helloworld-one
+            port: 
+              number: 80
         path: /static(/|$)(.*)
 ```
 
@@ -424,7 +436,7 @@ kubectl delete namespace ingress-basic
 - [创建一个使用 Let's Encrypt 的入口控制器，以自动生成具有静态公共 IP 地址的 TLS 证书][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/#az-network-dns-record-set-a-add-record
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/#az_network_dns_record_set_a_add_record
 [custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../dns/dns-getstarted-cli.md
 [helm]: https://helm.sh/
@@ -441,8 +453,8 @@ kubectl delete namespace ingress-basic
 <!-- LINKS - internal -->
 [use-helm]: kubernetes-helm.md
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az_network_public_ip_create
 [aks-ingress-internal]: ingress-internal-ip.md
 [aks-ingress-static-tls]: ingress-static-ip.md
 [aks-ingress-basic]: ingress-basic.md

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 8305b2190cf3b157973f5844c3237ffe73adba66
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 70951dc1c1934bcbb2721512175e7d314168ce91
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96619910"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175453"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>在 Azure Active Directory 域服务托管域中部署 Azure AD 应用程序代理，以用于安全访问内部应用程序
 
@@ -113,7 +113,7 @@ Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount 
 
 ## <a name="next-steps"></a>后续步骤
 
-将 Azure AD 应用程序代理与 Azure AD DS 集成后，发布应用程序供用户访问。 有关详细信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](../active-directory/manage-apps/application-proxy-add-on-premises-application.md)。
+将 Azure AD 应用程序代理与 Azure AD DS 集成后，发布应用程序供用户访问。 有关详细信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](../active-directory/app-proxy/application-proxy-add-on-premises-application.md)。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
@@ -121,5 +121,5 @@ Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount 
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
 [azure-bastion]: ../bastion/tutorial-create-host-portal.md
-[Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
-[Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer
+[Get-ADComputer]: /powershell/module/activedirectory/get-adcomputer
+[Set-ADComputer]: /powershell/module/activedirectory/set-adcomputer

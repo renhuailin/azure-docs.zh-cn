@@ -3,18 +3,18 @@ title: 创建自定义 Azure 资源管理器角色并将其分配给服务主体
 description: 本文提供有关如何使用 Azure CLI 创建自定义 Azure 资源管理器角色，并将其分配给 IoT Edge 上实时视频分析的服务主体的指南。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 80974c111dd451314635d06334766322bc68e437
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 6c33f6703522fc0b28237e22c16c96587467df40
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210438"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788504"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>创建自定义 Azure 资源管理器角色并将其分配给服务主体
 
 IoT Edge 模块实例上的实时视频分析需要可用的 Azure 媒体服务帐户，才能正常工作。 IoT Edge 模块上的实时视频分析与 Azure 媒体服务帐户之间的关系是通过一组模块孪生属性建立的。 其中一个孪生属性是[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)，它使模块实例能够与媒体服务帐户进行通信并触发必要的操作。 为了最大程度地减少来自边缘设备滥用和/或意外数据泄露的可能性，此服务主体应拥有最少的权限。
 
-本文介绍使用 Azure Cloud Shell 创建自定义 Azure 资源管理器角色的步骤，然后使用该角色创建服务主体。
+本文介绍使用 Azure Cloud Shell 创建自定义 Azure 资源管理器角色的步骤，该角色用于创建服务主体。
 
 ## <a name="prerequisites"></a>先决条件  
 
@@ -29,7 +29,7 @@ IoT Edge 模块实例上的实时视频分析需要可用的 Azure 媒体服务�
 
 我们将按照以下顺序介绍创建自定义角色并将其与服务主体关联的步骤：
 
-1. 如果还没有媒体服务帐户，请创建一个。
+1. 如果你没有媒体服务帐户，请创建一个。
 1. 创建服务主体。
 1. 创建具有有限权限的自定义 Azure 资源管理器角色。
 1. 使用创建的自定义角色“限制”服务主体权限。
@@ -38,18 +38,18 @@ IoT Edge 模块实例上的实时视频分析需要可用的 Azure 媒体服务�
 
 ### <a name="create-a-media-services-account"></a>创建媒体服务帐户  
 
-如果没有媒体服务帐户，请使用以下步骤创建一个。
+如果你没有媒体服务帐户，请使用以下步骤创建一个。
 
 1. 浏览到 [Cloud Shell](https://shell.azure.com/)。
-1. 在 shell 窗口左侧的下拉框中，选择 "Bash" 作为环境
+1. 在 shell 窗口左侧的下拉列表中选择“Bash”作为环境
 
-    ![屏幕 capturs 显示从 shell 窗口中选择的 Bash。](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
+    ![屏幕截图显示从 shell 窗口中选择的 Bash。](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
 1. 使用以下命令模板将 Azure 订阅设置为默认帐户：
     
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. 创建[资源组](/cli/azure/group#az-group-create)和[存储帐户](/cli/azure/storage/account#az-storage-account-create)。
+1. 创建[资源组](/cli/azure/group#az_group_create)和[存储帐户](/cli/azure/storage/account#az_storage_account_create)。
 1. 现在，通过在 Cloud Shell 中使用以下命令模板来创建 Azure 媒体服务帐户：
 
     ```
@@ -60,7 +60,7 @@ IoT Edge 模块实例上的实时视频分析需要可用的 Azure 媒体服务�
 
 现在，我们将创建一个新的服务主体并将其关联到媒体服务帐户。
 
-如果没有任何身份验证参数，则将基于密码的身份验证与服务主体的随机密码配合使用。 在 Cloud Shell 中，使用以下命令模板：
+如果没有任何身份验证参数，则将基于密码的身份验证与服务主体的随机密码配合使用。 在 Cloud Shell 中使用以下命令模板：
 
 ```
 az ams account sp create --account-name < yourAMSAccountName > --resource-group < yourResouceGroup >
@@ -83,10 +83,10 @@ az ams account sp create --account-name < yourAMSAccountName > --resource-group 
 }
 
 ```
-1. 带有密码身份验证的服务主体的输出包含 password 密钥，在此示例中为 "AadSecret" 参数。 
+1. 具有密码身份验证的服务主体的输出包括密码密钥，在本例中，此密码密钥为“AadSecret”参数。 
 
     请确保复制此值 - 它不可检索。 如果忘记了密码，请[重置服务主体凭据](/cli/azure/create-an-azure-service-principal-azure-cli#reset-credentials)。
-1. AppId 和租户密钥分别显示为 "AadClientId" 和 "AadTenantId"。 它们用于服务主体身份验证。 请记录其值，但它们随时可以通过 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 检索。
+1. appId 和租户密钥分别在输出中显示为“AadClientId”和“AadTenantId”。 它们用于服务主体身份验证。 请记录其值，但它们随时可以通过 [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) 检索。
 
 ### <a name="create-a-custom-role-definition"></a>创建自定义角色定义  
 
@@ -171,7 +171,7 @@ az ad sp show --id "<appId>" | Select-String "objectId"
 “objectId” : “<yourObjectId>”,
 ```
 
-使用 [az role assignment create 命令](/cli/azure/role/assignment#az-role-assignment-create)模板将自定义角色与服务主体关联：
+使用 [az role assignment create 命令](/cli/azure/role/assignment#az_role_assignment_create)模板将自定义角色与服务主体关联：
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    

@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d8cc0cb7df4bb7bfff5a6b9d2f159cb674532927
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94629676"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789746"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure 文件共享 - 无法从 Azure 文件共享中删除文件
 
@@ -92,4 +92,4 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 * [在 Windows 中排查 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)
 * [在 Linux 中排查 Azure 文件问题](storage-troubleshoot-linux-file-connection-problems.md)
-* [对 Azure 文件同步进行故障排除](storage-sync-files-troubleshoot.md)
+* [对 Azure 文件同步进行故障排除](../file-sync/file-sync-troubleshoot.md)
