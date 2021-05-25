@@ -9,12 +9,12 @@ metadata:
   author: mikben
   ms.author: mikben
   ms.date: 03/10/2021
-  ms.openlocfilehash: 151e97123c2704a06a994b3b6fd742ba9373af21
-  ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+  ms.openlocfilehash: ec0a4ebaebecf9cf5fac95ca1b3bded1ba759958
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/13/2021
-  ms.locfileid: "109845557"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110092271"
 landingContent:
 - title: 关于 Azure 通信服务
   linkLists:
@@ -64,20 +64,14 @@ landingContent:
       url: concepts/voice-video-calling/calling-sdk-features.md
     - text: 呼叫流
       url: concepts/call-flows.md
-- title: UI 框架
+- title: UI 库
   linkLists:
-  - linkListType: quickstart
-    links:
-    - text: 复合组件入门
-      url: https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-composites--page
-    - text: UI 组件入门
-      url: https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-ui-components--page
   - linkListType: concept
     links:
-    - text: UI 框架概述
-      url: concepts/ui-framework/ui-sdk-overview.md
-    - text: UI 框架功能
-      url: concepts/ui-framework/ui-sdk-features.md
+    - text: UI 库概述
+      url: concepts/ui-library/ui-library-overview.md
+    - text: UI 库用例
+      url: concepts/ui-library/ui-library-use-cases.md
 - title: 电话服务和短信
   linkLists:
   - linkListType: quickstart

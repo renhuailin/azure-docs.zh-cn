@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 215ff68cd560062d15a90c52847c7f1a0ec6b4a0
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100650672"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684624"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 将 API 添加到 Azure 静态 Web 应用预览版
 
@@ -251,13 +251,7 @@ Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions
 
 1. 单击“转到资源”按钮，转到 Web 应用的“概述”页面。
 
-    在后台生成应用时，可以单击包含用于查看生成状态的链接的横幅。
-
-    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub 工作流":::
-
-1. 部署完成后，可以通过单击“概述”页面上显示的“URL”链接导航到 Web 应用 。
-
-    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="从 Azure 门户访问静态应用 URL":::
+[!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 

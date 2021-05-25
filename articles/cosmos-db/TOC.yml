@@ -41,7 +41,7 @@
             - name: 自动缩放简介
               href: provision-throughput-autoscale.md
             - name: 自动缩放常见问题解答
-              href: autoscale-faq.md
+              href: autoscale-faq.yml
         - name: 无服务器
           href: serverless.md
         - name: 在自动缩放吞吐量和标准（手动）吞吐量之间选择
@@ -116,6 +116,8 @@
           href: optimize-dev-test.md
         - name: 借助保留容量优化成本
           href: cosmos-db-reserved-capacity.md
+        - name: 使用速率限制进行优化
+          href: rate-limiting-requests.md
     - name: 更改源概述
       href: change-feed.md
     - name: 内置的 Jupyter 笔记本
@@ -637,21 +639,6 @@
           href: sql-sdk-connection-modes.md
     - name: 操作指南
       items:
-        - name: 管理 Azure Cosmos DB 资源
-          items:
-            - name: 管理 Azure Cosmos 帐户
-              href: how-to-manage-database-account.md
-            - name: 使用 PowerShell
-              href: manage-with-powershell.md
-            - name: 使用 Azure CLI
-              href: manage-with-cli.md
-            - name: 使用资源管理器模板
-              href: manage-with-templates.md
-              displayName: ARM
-            - name: 在区域之间移动
-              href: how-to-move-regions.md
-            - name: 阻止更改或删除
-              href: resource-locks.md
         - name: 全球分布
           items:
             - name: 配置多区域写入
@@ -924,7 +911,7 @@
             - name: Java 批量执行程序库 v2
               href: sql-api-sdk-bulk-executor-java.md
         - name: Azure CLI
-          href: /cli/azure/cosmosdb
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
         - name: Node.js
           href: sql-api-sdk-node.md
         - name: Python
@@ -978,7 +965,7 @@
           href: cassandra-import-data.md
     - name: 概念
       items:
-        - name: 常见问题解答
+        - name: 常见问题
           href: cassandra-faq.yml
         - name: 弹性缩放
           href: manage-scale-cassandra.md
@@ -1055,6 +1042,8 @@
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: 资源管理器模板
           href: /azure/templates/microsoft.documentdb/allversions
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: MongoDB API
   items:
     - name: 概述
@@ -1110,7 +1099,7 @@
         - name: API 版本 3.2
           href: mongodb-feature-support.md
         - name: 常见问题解答
-          href: mongodb-api-faq.md
+          href: mongodb-api-faq.yml
         - name: 映射一致性级别
           href: mongodb-consistency.md
     - name: 操作指南
@@ -1187,6 +1176,8 @@
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: 资源管理器模板
           href: /azure/templates/microsoft.documentdb/allversions
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: Gremlin API
   displayName: 'graph, graph database'
   items:
@@ -1216,8 +1207,8 @@
           href: tutorial-query-graph.md
     - name: 概念
       items:
-        - name: 常见问题解答
-          href: gremlin-api-faq.md
+        - name: 常见问题
+          href: gremlin-api-faq.yml
         - name: 响应头
           href: gremlin-headers.md
         - name: 限制
@@ -1267,6 +1258,8 @@
           href: /rest/api/cosmos-db-resource-provider/2021-03-15/gremlinresources
         - name: 资源管理器模板
           href: /azure/templates/microsoft.documentdb/allversions
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: 表 API
   items:
     - name: 概述
@@ -1315,8 +1308,8 @@
           maintainContext: true
     - name: 概念
       items:
-        - name: 常见问题解答
-          href: table-api-faq.md
+        - name: 常见问题
+          href: table-api-faq.yml
     - name: 操作指南
       items:
         - name: 使用表 API 构建应用
@@ -1351,8 +1344,25 @@
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: 表存储 REST API
           href: /rest/api/storageservices/table-service-rest-api
+        - name: Azure CLI
+          href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: 操作指南
   items:
+    - name: 管理 Azure Cosmos DB 资源
+      items:
+        - name: 管理 Azure Cosmos 帐户
+          href: how-to-manage-database-account.md
+        - name: 使用 PowerShell
+          href: manage-with-powershell.md
+        - name: 使用 Azure CLI
+          href: manage-with-cli.md
+        - name: 使用资源管理器模板
+          href: manage-with-templates.md
+          displayName: ARM
+        - name: 在区域之间移动
+          href: how-to-move-regions.md
+        - name: 阻止更改或删除
+          href: resource-locks.md
     - name: 使用开发人员工具
       items:
         - name: 通过仿真器在本地开发
@@ -1470,8 +1480,8 @@
       href: query-cheat-sheet.md
     - name: SQL 演练
       href: 'https://www.documentdb.com/sql/demo'
-    - name: 常见问题解答
-      href: faq.md
+    - name: 常见问题
+      href: faq.yml
     - name: 白皮书
       href: whitepapers.md
     - name: 合作伙伴
