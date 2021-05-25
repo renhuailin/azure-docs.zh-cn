@@ -1,6 +1,6 @@
 ---
-title: 向 Android 地图添加气泡层 |Microsoft Azure 映射
-description: 了解如何将地图上的点呈现为固定大小的圆圈。 若要实现此目的，请参阅如何使用 Azure Maps Android SDK 添加和自定义气泡图层。
+title: 向 Android 地图添加气泡层 | Microsoft Azure Maps
+description: 了解如何将地图上的点呈现为固定大小的圆。 请参阅如何使用 Azure Maps Android SDK 添加和自定义气泡图层以实现此目标。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 2/26/2021
@@ -10,26 +10,26 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: f3c175f30c5c0e6206f4fee274e0f3f000e55a74
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102100162"
 ---
-# <a name="add-a-bubble-layer-to-a-map-android-sdk"></a>将气泡图层添加到地图 (Android SDK) 
+# <a name="add-a-bubble-layer-to-a-map-android-sdk"></a>向地图添加气泡层 (Android SDK)
 
-本文介绍如何将数据源中的点数据呈现为地图上的气泡图层。 气泡图层用固定像素半径将点呈现为地图上的圆圈。
+本文介绍如何将数据源中的点数据呈现为地图上的气泡层。 气泡层将点呈现为地图上具有固定像素半径的圆。
 
 > [!TIP]
-> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 若要将该层限制为仅呈现点几何特征，请将 `filter` 层的选项设置为 `eq(geometryType(), "Point")` 。 如果还想要包含 MultiPoint 功能，请将层的 `filter` 选项设置为 `any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint"))` 。
+> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 若要限制层以便仅呈现点几何图形功能，请将层的 `filter` 选项设置为 `eq(geometryType(), "Point")`。 如果还需要包含 MultiPoint 特征，请将层的 `filter` 选项设置为 `any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint"))`。
 
 ## <a name="prerequisites"></a>先决条件
 
-请确保完成 [快速入门：创建 Android 应用](quick-android-map.md) 文档中的步骤。 本文中的代码块可以插入到 maps `onReady` 事件处理程序中。
+请务必完成[快速入门：创建 Android 应用](quick-android-map.md)文档中的步骤。 可以将本文中的代码块插入到地图的 `onReady` 事件处理程序中。
 
 ## <a name="add-a-bubble-layer"></a>添加气泡层
 
-下面的代码将一个点数组加载到数据源中。 然后，它将数据点连接到气泡图层。 气泡图层用5个像素呈现每个气泡的半径，并使用白色填充颜色。 和，颜色为蓝色，笔划宽度为六个像素。
+下面的代码将一个点数组加载到数据源中。 然后会将数据点连接到气泡层。 气泡层用五像素呈现每个气泡的半径，并使用白色为填充色。 描边色为蓝色，描边宽度为六像素。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -96,13 +96,13 @@ map.layers.add(layer)
 
 ::: zone-end
 
-以下屏幕截图显示了冒泡层中的上述代码呈现点。
+下面的屏幕截图展示上述代码在气泡层中呈现的点。
 
-![使用气泡图层呈现的点地图](media/map-add-bubble-layer-android/android-bubble-layer.png)
+![带有使用气泡层呈现的点的地图](media/map-add-bubble-layer-android/android-bubble-layer.png)
 
 ## <a name="show-labels-with-a-bubble-layer"></a>显示具有气泡层的标签
 
-此代码演示如何使用气泡图层呈现地图上的点。 以及如何使用符号层呈现标签。 若要隐藏符号层的图标，请将 `iconImage` 选项设置为 `"none"` 。
+此代码演示如何使用气泡图层呈现地图上的点。 以及如何使用符号层呈现标签。 若要隐藏符号层的图标，请将 `iconImage` 选项设置为 `"none"`。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -169,9 +169,9 @@ map.layers.add(
 
 ::: zone-end
 
-以下屏幕截图显示了上面的代码呈现气泡图层中的一个点和一个带有符号层的点的文本标签。
+下面的屏幕截图展示上述代码在气泡层中呈现了一个点，以及使用符号层的点文本标签。
 
-![使用气泡图层和带有符号层的文本标签呈现的点映射](media/map-add-bubble-layer-android/android-bubble-symbol-layer.png)
+![包含使用气泡层呈现的点和使用符号层的文本标签的地图](media/map-add-bubble-layer-android/android-bubble-symbol-layer.png)
 
 ## <a name="next-steps"></a>后续步骤
 

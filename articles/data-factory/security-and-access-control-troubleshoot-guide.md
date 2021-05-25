@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: 5e94ea989002d3d3c6d0e96123d5b8ddb5f078c3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568029"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101706114"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>排查 Azure 数据工厂安全性和访问控制问题
 
@@ -182,7 +182,7 @@ Azure 资源管理器和 ADF 使用相同的专用区域，这会在客户的私
 
 #### <a name="cause"></a>原因
 
-ADF 仍可使用托管 VNet IR，但你可能会遇到此类错误，因为根据测试结果，托管 VNet 中 Azure Blob 存储的公共终结点不可靠，并且根据 [托管的虚拟网络和托管的专用终结点](./managed-virtual-network-private-endpoint.md#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)，不支持从 ADF 托管虚拟网络通过公共终结点连接 Azure Blob 存储和 Azure Data Lake Gen2。
+ADF 仍可使用托管 VNet IR，但你可能会遇到此类错误，因为根据测试结果，托管 VNet 中 Azure Blob 存储的公共终结点不可靠，并且根据 [托管的虚拟网络和托管的专用终结点](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)，不支持从 ADF 托管虚拟网络通过公共终结点连接 Azure Blob 存储和 Azure Data Lake Gen2。
 
 #### <a name="solution"></a>解决方案
 

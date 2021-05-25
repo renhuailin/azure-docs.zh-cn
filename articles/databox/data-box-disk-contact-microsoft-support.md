@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91744145"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>为 Azure Data Box 开具支持票证
@@ -35,7 +35,7 @@ ms.locfileid: "91744145"
     1. 从“颁发类型”下拉列表中，选择“技术” 。
     2. 选择“订阅”。
     3. 在“服务”下，选中“所有服务”。  从下拉列表中，选择“Data Box”。 
-    4. 指定**支持计划**。
+    4. 指定 **支持计划**。
     5. 单击“下一步”。
 
         ![基础](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
@@ -44,8 +44,8 @@ ms.locfileid: "91744145"
 
     1. 选择“C - 轻微影响”作为“严重性”。  支持人员会根据需要更新严重性。
     2. 从下拉列表中选择“问题类型”。
-    3. 根据所选问题类型，选择相应的**类别**。
-    4. 提供问题的**标题**和其他**详细信息**。
+    3. 根据所选问题类型，选择相应的 **类别**。
+    4. 提供问题的 **标题** 和其他 **详细信息**。
     5. 提供问题的开始日期和时间。
     6. 在“文件上传”中单击文件夹图标，浏览要上传的其他任何文件。
     7. 选中“共享诊断信息”。
@@ -76,7 +76,7 @@ ms.locfileid: "91744145"
 
 2. “帮助 + 支持”中会显示“最近的支持请求”表格。 
 
-    ![管理支持请求2](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
+    ![管理支持请求 2](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
 
 3. 选择并单击某个支持请求。 可以查看此请求的状态和详细信息。 如果想要跟进此请求，请单击“+ 新建消息”。
 

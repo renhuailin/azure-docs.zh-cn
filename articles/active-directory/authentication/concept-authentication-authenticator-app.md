@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3175b1292a7e69506b9193d1182e184e257ebda3
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 8e33c87d53580d96363ba15bccbc889370f2479d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530507"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102212903"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Azure Active Directory 中的身份验证方法 - Microsoft Authenticator 应用
 
@@ -62,4 +62,4 @@ Authenticator 应用可用作生成 OATH 验证码所需的软件令牌。 输�
 
 若要开始使用无密码登录，请参阅[启用使用 Microsoft Authenticator 应用进行无密码登录](howto-authentication-passwordless-phone.md)。
 
-详细了解如何使用 [Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview) 配置身份验证方法。
+详细了解如何使用 [Microsoft Graph REST API beta 版本](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)配置身份验证方法。

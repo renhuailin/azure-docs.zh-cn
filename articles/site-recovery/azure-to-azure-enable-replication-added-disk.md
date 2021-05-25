@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
 ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75973796"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>为添加到 Azure VM 的磁盘启用复制
@@ -29,7 +29,7 @@ ms.locfileid: "75973796"
 
 
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
 本文假定你已经为要添加磁盘的 VM 设置了灾难恢复。 如果你还没有这样做，请按照 [Azure 到 Azure 灾难恢复教程](azure-to-azure-tutorial-enable-replication.md)进行操作。
 
@@ -37,9 +37,9 @@ ms.locfileid: "75973796"
 
 若要为添加的磁盘启用复制，请执行以下操作：
 
-1. 在保管库 >“复制的项”  中，单击已向其添加磁盘的 VM。
-2. 单击“磁盘”  ，然后选择要为其启用复制的数据磁盘（这些磁盘具有“未受保护”  状态）。
-3.  在“磁盘详细信息”  中，单击“启用复制”  。
+1. 在保管库 >“复制的项”中，单击已向其添加磁盘的 VM。
+2. 单击“磁盘”，然后选择要为其启用复制的数据磁盘（这些磁盘具有“未受保护”状态）。
+3.  在“磁盘详细信息”中，单击“启用复制”。
 
     ![为添加的磁盘启用复制](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
 

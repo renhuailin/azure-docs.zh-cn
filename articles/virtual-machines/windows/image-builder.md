@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 映像生成器创建 Windows VM（预览版）
 description: 使用 Azure 映像生成器创建 Windows VM。
-author: kof-f
-ms.author: kofiforson
-ms.date: 04/23/2021
+author: cynthn
+ms.author: cynthn
+ms.date: 03/02/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: cd941868cd03a456ba78b57bcfeae5f8adfb59f4
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 918cee723bfde69d08532aee6fe4f395dbddb4ee
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107948196"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101695441"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>预览版：使用 Azure 映像生成器创建 Windows VM
 
@@ -182,7 +182,7 @@ az resource create \
 
 完成后，此命令会在控制台中返回成功消息，并在 `$imageResourceGroup` 中创建 `Image Builder Configuration Template`。 如果启用了“显示隐藏的类型”，则可以在 Azure 门户上的资源组中看到此资源。
 
-在后台，映像生成器还会在你的订阅中创建一个暂存资源组。 此资源组用于映像生成过程。 它采用以下格式：`IT_<DestinationResourceGroup>_<TemplateName>`
+在后台，映像生成器还会在你的订阅中创建一个暂存资源组。 此资源组用于映像生成。 它采用以下格式：`IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
 > 切勿直接删除暂存资源组。 请先删除映像模板项目，这样就会删除暂存资源组。
@@ -199,7 +199,7 @@ az resource delete \
 ```
 
 ## <a name="start-the-image-build"></a>启动映像生成
-使用 [az resource invoke-action](/cli/azure/resource#az_resource_invoke_action) 启动映像生成过程。
+使用 [az resource invoke-action](/cli/azure/resource#az-resource-invoke-action) 启动映像生成过程。
 
 ```azurecli-interactive
 az resource invoke-action \

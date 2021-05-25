@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 6ba9a4d5ac427533c2ce005a74fe43b0ce80de79
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291540"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109435"
 ---
 # <a name="filters"></a>筛选器
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-将内容传送到客户（实时传送视频流事件或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 Azure 媒体服务根据预定义的筛选器提供[动态清单](filters-dynamic-manifest-overview.md)。 
+将内容传送到客户（实时传送视频流事件或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 Azure 媒体服务根据预定义的筛选器提供[动态清单](filters-dynamic-manifest-concept.md)。 
 
 筛选器是服务器端的规则，可让客户执行以下操作： 
 
@@ -34,7 +34,7 @@ ms.locfileid: "89291540"
 - 只传送内容播放设备所支持的指定再现内容和/或指定的语言轨道（“再现内容筛选”）。 
 - 调整演播窗口，以便在播放器中提供长度有限的 DVR 窗口（“调整演播窗口”）。
 
-使用媒体服务可为内容创建**帐户筛选器**和**资产筛选器**。 此外，可将预先创建的筛选器关联到**流定位符**。
+使用媒体服务可为内容创建 **帐户筛选器** 和 **资产筛选器**。 此外，可将预先创建的筛选器关联到 **流定位符**。
 
 ## <a name="defining-filters"></a>定义筛选器
 
@@ -43,7 +43,7 @@ ms.locfileid: "89291540"
 * [帐户筛选器](/rest/api/media/accountfilters)（全局）- 可应用到 Azure 媒体服务帐户中所有的资产，生存期与帐户相同。
 * [资产筛选器](/rest/api/media/assetfilters)（本地）- 在创建后只能应用到与筛选器关联的资产，生存期与资产相同。 
 
-**帐户筛选器**和**资产筛选器**类型的用于定义/描述筛选器的属性完全相同。 需要指定要与筛选器关联的资产名称，但创建**资产筛选器**时除外。
+**帐户筛选器** 和 **资产筛选器** 类型的用于定义/描述筛选器的属性完全相同。 需要指定要与筛选器关联的资产名称，但创建 **资产筛选器** 时除外。
 
 根据具体的方案确定哪种类型的筛选器更合适（资产筛选器或帐户筛选器）。 帐户筛选器适用于设备配置文件（再现内容筛选），而资产筛选器可用于修剪特定的资产。
 
@@ -57,7 +57,7 @@ ms.locfileid: "89291540"
 
 ### <a name="presentationtimerange"></a>presentationTimeRange
 
-请将此属性用于**资产筛选器**。 不建议对**帐户筛选器**设置该属性。
+请将此属性用于 **资产筛选器**。 不建议对 **帐户筛选器** 设置该属性。
 
 |名称|说明|
 |---|---|
@@ -76,11 +76,11 @@ ms.locfileid: "89291540"
 
 |名称|说明|
 |---|---|
-|**Bitrate**|使用轨迹的比特率进行筛选。<br/><br/>建议的值为一系列比特率，以比特/秒为单位。 例如“0-2427000”。<br/><br/>注意：尽管可以使用特定的比特率值（例如 250000 比特/秒），但不建议使用此方法，因为确切的比特率可能根据资产的不同而波动。|
-|**FourCC**|使用轨迹的 FourCC 值进行筛选。<br/><br/>该值是 [RFC 6381](https://tools.ietf.org/html/rfc6381) 中指定的编解码器格式的第一个元素。 目前支持以下编解码器： <br/>视频：“avc1”、“hev1”、“hvc1”<br/>音频：“mp4a”、“ec-3”<br/><br/>若要确定资产中轨迹的 FourCC 值，请获取并检查清单文件。|
+|Bitrate |使用轨迹的比特率进行筛选。<br/><br/>建议的值为一系列比特率，以比特/秒为单位。 例如“0-2427000”。<br/><br/>注意：尽管可以使用特定的比特率值（例如 250000 比特/秒），但不建议使用此方法，因为确切的比特率可能根据资产的不同而波动。|
+|FourCC |使用轨迹的 FourCC 值进行筛选。<br/><br/>该值是 [RFC 6381](https://tools.ietf.org/html/rfc6381) 中指定的编解码器格式的第一个元素。 目前支持以下编解码器： <br/>视频：“avc1”、“hev1”、“hvc1”<br/>音频：“mp4a”、“ec-3”<br/><br/>若要确定资产中轨迹的 FourCC 值，请获取并检查清单文件。|
 |**语言**|使用轨迹的语言进行筛选。<br/><br/>该值是 RFC 5646 中指定的、要包含的语言的标记。 例如，“en”。|
 |**名称**|使用轨迹的名称进行筛选。|
-|类型 |使用轨迹的类型进行筛选。<br/><br/>允许以下值：“video”、“audio”或“text”。|
+|**类型**|使用轨迹的类型进行筛选。<br/><br/>允许以下值：“video”、“audio”或“text”。|
 
 ### <a name="example"></a>示例
 
@@ -141,25 +141,25 @@ ms.locfileid: "89291540"
 
 ## <a name="associating-filters-with-streaming-locator"></a>将筛选器与流定位符相关联
 
-可以在[流定位符](/rest/api/media/streaminglocators/create#request-body)中指定[资产或帐户筛选器](filters-concept.md)列表。 [动态打包器](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位符上指定的“URL + 筛选器”中的筛选器。 
+可以在[流定位符](/rest/api/media/streaminglocators/create#request-body)中指定[资产或帐户筛选器](filters-concept.md)列表。 [动态打包器](encode-dynamic-packaging-concept.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-concept.md)，该清单基于你在流定位符上指定的“URL + 筛选器”中的筛选器。 
 
 请看以下示例：
 
-* [将筛选器与流定位符相关联 - .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
-* [将筛选器与流定位符相关联 - CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+* [将筛选器与流定位符相关联 - .NET](filters-dynamic-manifest-dotnet-how-to.md#associate-filters-with-streaming-locator)
+* [将筛选器与流定位符相关联 - CLI](filters-dynamic-manifest-cli-how-to.md#associate-filters-with-streaming-locator)
 
 ## <a name="updating-filters"></a>更新筛选器
  
-尽管筛选器可更新，但**流定位符**不可更新。 
+尽管筛选器可更新，但 **流定位符** 不可更新。 
 
-不建议更新与主动发布的 **流式处理定位符**相关联的筛选器的定义，尤其是在启用 CDN 时。 流式处理服务器和 Cdn 可能有可能会导致返回过时缓存数据的内部缓存。 
+不建议更新与实际发布的流定位符关联的筛选器的定义，尤其是在启用 CDN 时。 流服务器和 CDN 可以有内部缓存，这可能会导致返回过时的缓存数据。 
 
-如果需要更改筛选器定义，请考虑创建一个新的筛选器，并将其添加到**流定位符** URL，或发布直接引用筛选器的新**流定位符**。
+如果需要更改筛选器定义，请考虑创建一个新的筛选器，并将其添加到 **流定位符** URL，或发布直接引用筛选器的新 **流定位符**。
 
 ## <a name="next-steps"></a>后续步骤
 
 以下文章介绍了如何以编程方式创建筛选器。  
 
 - [使用 REST API 创建筛选器](filters-dynamic-manifest-rest-howto.md)
-- [使用 .NET 创建筛选器](filters-dynamic-manifest-dotnet-howto.md)
-- [使用 CLI 创建筛选器](filters-dynamic-manifest-cli-howto.md)
+- [使用 .NET 创建筛选器](filters-dynamic-manifest-dotnet-how-to.md)
+- [使用 CLI 创建筛选器](filters-dynamic-manifest-cli-how-to.md)

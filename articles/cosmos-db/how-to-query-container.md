@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5cd90e994e620960e0d974ef7609a67f8a5eb58b
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448536"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "93335885"
 ---
 # <a name="query-an-azure-cosmos-container"></a>查询 Azure Cosmos 容器
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,19 +26,19 @@ ms.locfileid: "106448536"
 例如，请考虑以下针对 `DeviceId` 使用等式筛选器的查询。 如果对按 `DeviceId` 分区的容器运行此查询，则此查询将筛选到单个物理分区。
 
 ```sql
-SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
+    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
 与前面的示例一样，此查询也将筛选到单个分区。 添加针对 `Location` 的其他筛选器不会更改此行为：
 
 ```sql
-SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
+    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
 ```
 
 下面的查询有一个针对分区键的范围筛选器，该查询的作用域不会限定于单个物理分区。 为了成为分区中查询，该查询必须具有包含分区键的等式筛选器：
 
 ```sql
-SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
+    SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 ```
 
 ## <a name="cross-partition-query"></a>跨分区查询
@@ -46,7 +46,7 @@ SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 下面的查询没有针对分区键 (`DeviceId`) 的筛选器。 因此，它必须根据每个分区的索引扇出到运行它的所有物理分区：
 
 ```sql
-SELECT * FROM c WHERE c.Location = 'Seattle`
+    SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
 每个物理分区都有其自己的索引。 因此，当你在容器上运行跨分区查询时，你可以高效地针对每个物理分区运行一个查询。 Azure Cosmos DB 会自动聚合不同物理分区的结果。

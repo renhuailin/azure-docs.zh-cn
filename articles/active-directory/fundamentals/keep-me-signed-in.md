@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89320250"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>为 Azure AD 帐户 配置“保持登录状态？”提示
@@ -40,24 +40,24 @@ ms.locfileid: "89320250"
    * 如果选择“否”，则在用户成功登录后隐藏“保持登录状态？”选项，用户在浏览器每次关闭并重新打开时都需要登录 。
    * 如果选择“是”，则向用户显示“保持登录状态？”选项 。
 
-    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="显示托管与联合租户的用户登录流的图示":::
+    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="显示“显示保持登录状态的选项”的屏幕截图":::
 
 ## <a name="troubleshoot-sign-in-issues"></a>排查登录问题
 
 如果用户未在显示“保持登录状态？”提示时进行操作，如下图所示，而是放弃登录尝试，你将看到一个指示过程中断的登录日志条目。
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="显示托管与联合租户的用户登录流的图示":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="显示“保持登录状态？”提示":::
 
 有关登录错误的详细信息如下所示，并在示例中突出显示。
 
 * **登录错误代码**：50140
 * **失败原因**：此错误是由于用户登录时出现“使我保持登录状态”中断而发生的。
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="显示托管与联合租户的用户登录流的图示":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="包含“使我保持登录状态”过程中断信息的登录日志条目示例":::
 
 你可以通过在高级品牌设置中将“显示保持登录状态的选项”设置为“否”来阻止用户看到中断信息 。 对于 Azure AD 目录中的所有用户，这会禁用 KMSI 提示。
 
-你还可以在条件访问中使用持久性浏览器会话控件来防止用户查看 KMSI 提示。 使用此选项可以对选择的用户组（例如全局管理员）禁用 KMSI 提示，而不会影响目录中其他用户的登录行为。 有关详细信息，请参阅 [用户登录频率](../conditional-access/howto-conditional-access-session-lifetime.md)。 
+你还可以在条件访问中使用持久性浏览器会话控件来防止用户查看 KMSI 提示。 使用此选项可以对选择的用户组（例如全局管理员）禁用 KMSI 提示，而不会影响目录中其他用户的登录行为。 有关详细信息，请参阅[用户登录频率](../conditional-access/howto-conditional-access-session-lifetime.md)。 
 
 为了确保 KMSI 提示只在有益于用户的情况下显示，在以下情况下我们有意不显示 KMSI 提示：
 
@@ -72,6 +72,6 @@ ms.locfileid: "89320250"
 
 了解影响登录会话超时的其他设置：
 
-* Microsoft 365 – [空闲会话超时](/sharepoint/sign-out-inactive-users)
-* Azure AD 条件访问- [用户登录频率](../conditional-access/howto-conditional-access-session-lifetime.md)
-* Azure 门户– [目录级非活动超时](../../azure-portal/set-preferences.md#change-the-directory-timeout-setting-admin)
+* Microsoft 365 - [空闲会话超时](/sharepoint/sign-out-inactive-users)
+* Azure AD 条件访问 - [用户登录频率](../conditional-access/howto-conditional-access-session-lifetime.md)
+* Azure 门户 - [目录级别非活动超时](../../azure-portal/set-preferences.md#change-the-directory-timeout-setting-admin)

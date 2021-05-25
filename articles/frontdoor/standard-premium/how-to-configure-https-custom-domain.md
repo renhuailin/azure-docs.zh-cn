@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 5b14ac194d3cf08a11edc47a84825f447be79e34
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: c2edf11939996156c2b589b0b7876ae1b01466e5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109516589"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101740811"
 ---
 # <a name="configure-https-on-a-front-door-standardpremium-sku-preview-custom-domain-using-the-azure-portal"></a>使用 Azure 门户在 Front Door 标准/高级版 SKU（预览版）自定义域中配置 HTTPS
 
 > [!NOTE]
-> 本文档适用于 Azure Front Door 标准/高级（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看[此处](../front-door-overview.md)。
+> 本文档适用于 Azure Front Door 标准版/高级版（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看[此处](../front-door-overview.md)。
 
 默认情况下，Azure Front Door 标准/高级版允许在添加自定义域时，将安全 TLS 传递到应用程序。 通过在自定义域上使用 HTTPS 协议，可以确保敏感数据在通过 Internet 发送时可以通过 TLS/SSL 加密安全地进行分发。 Web 浏览器通过 HTTPS 连接到网站时，它会验证网站的安全证书并验证该证书是否是由合法的证书颁发机构颁发的。 此过程提供安全性并保护 Web 应用程序免受攻击。
 

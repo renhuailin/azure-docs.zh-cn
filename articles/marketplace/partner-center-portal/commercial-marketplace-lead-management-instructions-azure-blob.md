@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 05/01/2020
 ms.openlocfilehash: bd2f3d40b1aea1c0133f95e069ebfd527d30bd59
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94491097"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure Blob 存储管理商业市场潜在顾客
@@ -37,7 +37,7 @@ ms.locfileid: "94491097"
 
     ![创建 Azure 存储帐户的步骤](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
-    有关存储帐户的详细信息，请参阅此 [快速入门](../../storage/blobs/storage-quickstart-blobs-portal.md)。  有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
+    有关存储帐户的详细信息，请参阅此[快速入门](../../storage/blobs/storage-quickstart-blobs-portal.md)。  有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 4. 等待存储帐户预配完成，该过程通常需要几分钟时间。  然后从 Azure 门户的“主页”页面访问你的存储帐户，方法是选择“查看所有资源”或选择 Azure 门户左侧导航菜单栏中的“所有资源”  。
 
@@ -45,17 +45,17 @@ ms.locfileid: "94491097"
 
 5. 从“存储帐户”窗格中，选择“访问密钥”，然后复制该密钥的“连接字符串”值。 保存此值，因为它是接收市场产品/服务潜在顾客时需要在发布门户中提供的“存储帐户连接字符串”值。
 
-     连接字符串的示例如下：
+     连接字符串的示例为：
 
      ```sql
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
      ```
 
-    ![显示 "访问密钥" 页面并突出显示 "连接字符串" 文本框的屏幕截图。](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
+    ![屏幕截图显示了“访问键”页，其中突出显示了“连接字符串”文本框。](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
 6. 从“存储帐户”页面上，选择 blob。
 
-   ![选择了 Blob 的 Azure 存储帐户页的屏幕截图](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
+   ![屏幕截图显示了选择了 Blob 的 Azure 存储帐户页](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
 7. 在 blob 页上，选择“+ 容器”按钮。
 

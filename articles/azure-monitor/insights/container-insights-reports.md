@@ -1,20 +1,20 @@
 ---
-title: 容器见解中的报表
-description: 描述可用于分析由容器 insights 收集的数据的报告。
+title: 容器见解报表
+description: 描述可用于分析由容器见解收集的数据的报表。
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.openlocfilehash: ca74521a08d4edaa498e00e6452d8f69912e4bb9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102032784"
 ---
-# <a name="reports-in-container-insights"></a>容器见解中的报表
-容器见解中的报表是推荐使用的 [Azure 工作簿](../visualize/workbooks-overview.md)。 本文介绍了可用的各种报表以及如何访问这些报表。
+# <a name="reports-in-container-insights"></a>容器见解报表
+容器见解报表是推荐的现成 [Azure 工作簿](../visualize/workbooks-overview.md)。 本文介绍了可用的各种报表以及如何访问这些报表。
 
 ## <a name="viewing-reports"></a>查看报告
-从 Azure 门户上的 Azure Monitor 菜单中，选择“容器” 。 在 "**监视**" 部分选择 "**见解**"，选择特定群集，然后选择 "**报表**" 页。 
+从 Azure 门户上的 Azure Monitor 菜单中，选择“容器” 。 在“监视”部分中选择“见解”，选择一个特定的群集，然后选择“报表”页面。   
 
 [![报表页](media/container-insights-reports/reports-page.png)](media/container-insights-reports/reports-page.png#lightbox)
 

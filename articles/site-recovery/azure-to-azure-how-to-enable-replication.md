@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
 ms.openlocfilehash: 427b471158e89b2b3ae4ea6477133f1e69247078
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100518838"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>将 Azure VM 复制到另一个 Azure 区域
@@ -53,10 +53,10 @@ ms.locfileid: "100518838"
    - **目标虚拟网络**：默认情况下，Site Recovery 会在目标位置中创建一个名称带“asr”后缀的新虚拟网络。 这会映射到源网络并会用于任何将来的保护。 [详细了解](./azure-to-azure-network-mapping.md)网络映射。
    - **目标存储帐户（源 VM 不使用托管磁盘）** ：默认情况下，Site Recovery 会创建模拟源 VM 存储配置的新目标存储帐户。 如果存储帐户已存在，则重复使用。
    - **副本托管磁盘（源 VM 使用托管磁盘）** ：Site Recovery 在目标区域新建托管磁盘副本，以生成和源 VM 的托管磁盘存储类型一致（标准或高级）的镜像磁盘。
-   - **缓存存储帐户**：Site Recovery 需要源区域中称为“缓存存储”的额外存储帐户。 在复制到目标位置之前，会跟踪源 Vm 上发生的所有更改并将其发送到缓存存储帐户。 此存储帐户应是标准存储帐户。
+   - **缓存存储帐户**：Site Recovery 需要源区域中称为“缓存存储”的额外存储帐户。 在被复制到目标位置之前，源 VM 上发生的所有更改都会被跟踪并发送到缓存存储帐户。 此存储帐户应是标准存储帐户。
    - **目标可用性集**：默认情况下，Site Recovery 会在目标区域中创建一个名称带“asr”后缀（针对源区域中属于可用性集的 VM）的新可用性集。 如果 Site recovery 创建的可用性集已存在，则重复使用它。
      >[!NOTE]
-     >配置目标可用性集时，请为不同大小的 Vm 配置不同的可用性集。 
+     >在配置目标可用性集时，请为不同大小的 VM 配置不同的可用性集。 
      >
    - **目标可用性区域**：默认情况下，Site Recovery 会在目标区域中分配与源区域相同的区域编号，前提是目标区域支持可用性区域。
 
@@ -66,7 +66,7 @@ ms.locfileid: "100518838"
      >在启用复制以后，不能更改可用性类型 - 单一实例、可用性集或可用性区域。 若要更改可用性类型，需要先禁用复制，然后再启用复制。
      >
 
-   - **复制策略**：定义恢复点保留期历史记录和应用一致性快照频率的设置。 默认情况下，Azure Site Recovery 会创建一个新的复制策略，其中默认设置为 "24 小时"，对于 "应用一致性快照频率" 为 "4 小时"。
+   - **复制策略**：定义恢复点保留期历史记录和应用一致性快照频率的设置。 默认情况下，Azure Site Recovery 新建复制策略，默认设置为“24 小时”的恢复点保留期、“4 小时”的应用一致性快照频率。
 
      ![启用复制](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 

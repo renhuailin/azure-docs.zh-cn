@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/18/2019
 ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88213452"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>排查 Azure Cache for Redis 超时问题
@@ -72,7 +72,7 @@ StackExchange.Redis 使用名为 `synctimeout` 的配置设置进行同步操作
 
     有关详细信息，请参阅[使用 StackExchange.Redis 连接到缓存](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)。
 
-1. 确保服务器和客户端应用程序位于 Azure 中的同一区域。 例如，你可能会在你的缓存位于美国东部但客户端在美国西部，但请求未在此间隔内完成， `synctimeout` 或者当你从本地开发计算机进行调试时，你可能会遇到超时。 
+1. 确保服务器和客户端应用程序位于 Azure 中的同一区域。 例如，如果缓存位于美国东部但客户端位于美国西部，而且请求没有在 `synctimeout` 时间间隔内完成，则可能出现超时；或者，如果从本地开发计算机进行调试，也可能出现超时。 
 
     强烈建议将缓存和客户端置于同一 Azure 区域。 如果方案中包括跨区域调用，则应将 `synctimeout` 时间间隔设置为比默认的 5000 毫秒时间间隔更高的值，方法是在连接字符串中包括 `synctimeout` 属性。 以下示例演示了 Azure Redis 缓存提供的 StackExchange.Redis 连接字符串代码片段，其中的 `synctimeout` 为 2000 毫秒。
 

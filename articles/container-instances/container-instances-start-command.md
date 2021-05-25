@@ -3,12 +3,12 @@ title: 替代容器实例中的入口点
 description: 部署 Azure 容器实例时，设置一个命令行来替代容器映像中的入口点
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 5898decbf4108d48bb9e84019d659075b18fd043
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86169623"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771076"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>在容器实例中设置命令行来替代默认的命令行操作
 
@@ -18,9 +18,9 @@ ms.locfileid: "86169623"
 
 ## <a name="command-line-guidelines"></a>命令行准则
 
-* 默认情况下，命令行在容器中指定*不通过 shell 启动的单个进程*。 例如，命令行可能运行某个 Python 脚本或可执行文件。 该进程可以指定其他参数或自变量。
+* 默认情况下，命令行在容器中指定 *不通过 shell 启动的单个进程*。 例如，命令行可能运行某个 Python 脚本或可执行文件。 该进程可以指定其他参数或自变量。
 
-* 若要执行多个命令，请通过设置容器操作系统中支持的 shell 环境来开始命令行。 示例:
+* 若要执行多个命令，请通过设置容器操作系统中支持的 shell 环境来开始命令行。 示例：
 
   |操作系统  |默认 shell  |
   |---------|---------|
@@ -40,11 +40,11 @@ ms.locfileid: "86169623"
 
 命令行语法根据用于创建实例的 Azure API 或工具而有所不同。 如果指定某个 shell 环境，还应遵守该 shell 的命令语法约定。
 
-* [az container create][az-container-create] 命令：通过 `--command-line` 参数传递一个字符串。 示例：`--command-line "python myscript.py arg1 arg2"`）。
+* [az container create][az-container-create] 命令：传递包含 `--command-line` 参数的字符串。 示例：`--command-line "python myscript.py arg1 arg2"`）。
 
-* [New-AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell cmdlet：通过 `-Command` 参数传递一个字符串。 示例：`-Command "echo hello"`。
+* [New-AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell cmdlet：传递包含 `-Command` 参数的字符串。 示例：`-Command "echo hello"`。
 
-* Azure 门户：在容器配置的“命令替代”  属性中，提供一个逗号分隔的字符串（不带引号）。 示例：`python, myscript.py, arg1, arg2`）。 
+* Azure 门户：在容器配置的“命令替代”属性中，提供一个逗号分隔的字符串列表（不带引号）。 示例：`python, myscript.py, arg1, arg2`）。 
 
 * 资源管理器模板或 YAML 文件或 Azure SDK 之一：将命令行属性指定为字符串数组。 示例：资源管理器模板中的 JSON 数组 `["python", "myscript.py", "arg1", "arg2"]`。 
 
@@ -54,12 +54,12 @@ ms.locfileid: "86169623"
 
 |    |  Azure CLI   | 门户 | 模板 | 
 | ---- | ---- | --- | --- |
-| **单个命令** | `--command-line "python myscript.py arg1 arg2"` | **命令替代**：`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| **多个命令** | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**命令替代**：`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| **单个命令** | `--command-line "python myscript.py arg1 arg2"` | **命令重写**：`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| **多个命令** | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**命令重写**：`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Azure CLI 示例
 
-例如，修改 [microsoft/aci-wordcount][aci-wordcount] 容器映像的行为，该映像分析莎士比亚的《哈姆雷特》  中的文本来查找最常出现的单词。 你可以设置一个指向不同文本源的命令行，而不是分析《哈姆雷特》  。
+例如，修改 [microsoft/aci-wordcount][aci-wordcount] 容器映像的行为，该映像分析莎士比亚的《哈姆雷特》中的文本来查找最常出现的单词。 你可以设置一个指向不同文本源的命令行，而不是分析《哈姆雷特》。
 
 若要查看 [microsoft/aci-wordcount][aci-wordcount] 容器在分析默认文本时的输出，请使用以下 [az container create][az-container-create] 命令来运行它。 未指定任何启动命令行，因此将运行默认容器命令。 为了进行说明，此示例设置了[环境变量](container-instances-environment-variables.md)来查找长度至少为五个字母且排名前 3 的单词：
 
@@ -86,7 +86,7 @@ az container logs --resource-group myResourceGroup --name mycontainer1
 
 现在，通过指定一个不同的命令行来分析不同文本。 容器执行的 Python 脚本 *wordcount.py* 接受一个 URL 作为参数，并处理该页面的内容而不是默认内容。
 
-例如，若要确定《罗密欧和朱丽叶》  中长度至少为五个字母且排名前 3 的单词，请使用以下命令：
+例如，若要确定《罗密欧和朱丽叶》中长度至少为五个字母且排名前 3 的单词，请使用以下命令：
 
 ```azurecli-interactive
 az container create \
@@ -118,8 +118,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 [aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-logs]: /cli/azure/container#az-container-logs
-[az-container-show]: /cli/azure/container#az-container-show
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
 [new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 [portal]: https://portal.azure.com

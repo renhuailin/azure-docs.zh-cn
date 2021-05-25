@@ -1,5 +1,5 @@
 ---
-title: '使用 Visual Studio (云服务开始使用表存储) '
+title: 开始在 Visual Studio（云服务）中使用表存储
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的云服务项目中使用 Azure 表存储
 services: storage
 author: ghogen
@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e5e687b172b49fec5f77615e332d0a2204162c43
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95545767"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure 表存储和 Visual Studio 连接服务（云服务项目）
@@ -28,7 +28,7 @@ ms.locfileid: "95545767"
 
 Azure 表存储服务使用户可以存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。
 
-若要开始，首先需要在存储帐户中创建表。 我们将展示如何使用代码创建 Azure 表，以及如何执行基本的表和实体操作，例如添加、修改、读取和删除表实体。 示例是用 C 代码编写的 \# ，并使用了 [适用于 .net 的 Microsoft Azure 存储客户端库](/previous-versions/azure/dn261237(v=azure.100))。
+若要开始，首先需要在存储帐户中创建表。 我们将展示如何使用代码创建 Azure 表，以及如何执行基本的表和实体操作，例如添加、修改、读取和删除表实体。 示例是使用 C\# 代码编写的并使用了[适用于 .NET 的 Microsoft Azure 存储客户端库](/previous-versions/azure/dn261237(v=azure.100))。
 
 **注意：** 执行 Azure 存储调用的一些 API 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](/previous-versions/hh191443(v=vs.140))。 下面的代码假定正在使用异步编程方法。
 
@@ -101,7 +101,7 @@ public class CustomerEntity : TableEntity
 }
 ```
 
-将使用之前在“使用代码访问表”中创建的 **CloudTable** 对象完成涉及实体的表操作。 **TableOperation** 对象表示将完成的操作。 以下代码示例演示如何创建 **CloudTable** 对象和 **CustomerEntity** 对象。 为准备此操作，会创建一个 **TableOperation** 以将客户实体插入该表中。 最后，通过调用 **CloudTable.ExecuteAsync** 来执行该操作。
+将使用之前在“使用代码访问表”中创建的 **CloudTable** 对象完成涉及实体的表操作。 **TableOperation** 对象表示将完成的操作。 以下代码示例演示如何创建 **CloudTable** 对象和 **CustomerEntity** 对象。 为准备此操作，会创建一个 **TableOperation** 以将客户实体插入该表中。 最后，将通过调用 **CloudTable.ExecuteAsync** 执行此操作。
 
 ```csharp
 // Create a new customer entity.
@@ -169,7 +169,7 @@ return View();
 
 
 ## <a name="get-a-single-entity"></a>获取单个实体
-可以编写查询以获取单个特定实体。 以下代码使用 **TableOperation** 对象来指定名为“Ben Smith”的客户。 此方法只返回一个实体，而不是一个集合，并且 **tableresult.result** 中的返回值是一个 **CustomerEntity** 对象。 在查询中同时指定分区键和行键是从 **表** 服务中检索单个实体的最快方法。
+可以编写查询以获取单个特定实体。 以下代码使用 **TableOperation** 对象来指定名为“Ben Smith”的客户。 此方法仅返回一个实体，而不是一个集合，并且 **TableResult.Result** 中的返回值是一个 **CustomerEntity** 对象。 在查询中指定分区键和行键是从 **表** 服务中检索单个实体的最快方法。
 
 ```csharp
 // Create a retrieve operation that takes a customer entity.

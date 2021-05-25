@@ -2,27 +2,27 @@
 title: 调试基于 SAML 的单一登录 - Azure Active Directory
 description: 在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录。
 services: active-directory
-ms.author: kenwith
-author: kenwith
-manager: daveba
+ms.author: iangithinji
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 02/18/2019
 ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: 4a5fbef3380db8c9b357c83b4cb8240a41a0012c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: aa86bbcec0dc6523ae701e5237f2c55d14db38e4
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99259281"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374312"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
 
 了解如何在 Azure Active Directory (Azure AD) 中为使用基于 SAML 的单一登录的应用程序查找和解决[单一登录](what-is-single-sign-on.md)问题。 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 我们建议安装[我的应用安全登录扩展](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension)。 使用此浏览器扩展可轻松收集解决单一登录问题时所需的 SAML 请求和 SAML 响应信息。 如果无法安装该扩展，本文介绍了在已安装和未安装该扩展的情况下如何解决问题。
 

@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91950663"
 ---
 # <a name="single-sign-on-saml-protocol"></a>单一登录 SAML 协议
@@ -55,13 +55,13 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | ForceAuthn | 可选 | 一个布尔值。 如果为 true，意味着用户会被强制重新验证，即使他们具有与 Azure AD 之间的有效会话。 |
 | IsPassive | 可选 | 一个布尔值，指定 Azure AD 是否应该在没有用户交互的情况下使用会话 cookie（如果存在）以无提示方式验证用户。 如果为 true，Azure AD 会尝试使用会话 cookie 验证用户。 |
 
-其他所有 `AuthnRequest` 属性（例如 Consent、Destination、AssertionConsumerServiceIndex、AttributeConsumerServiceIndex 和 ProviderName）会被**忽略**。
+其他所有 `AuthnRequest` 属性（例如 Consent、Destination、AssertionConsumerServiceIndex、AttributeConsumerServiceIndex 和 ProviderName）会被 **忽略**。
 
 Azure AD 还会忽略 `AuthnRequest` 中的 `Conditions` 元素。
 
 ### <a name="issuer"></a>颁发者
 
-`AuthnRequest` 中的 `Issuer` 元素必须与 Azure AD 中云服务的一个 **ServicePrincipalNames** 完全匹配。 通常，此参数设置为应用程序注册期间指定的**应用 ID URI**。
+`AuthnRequest` 中的 `Issuer` 元素必须与 Azure AD 中云服务的一个 **ServicePrincipalNames** 完全匹配。 通常，此参数设置为应用程序注册期间指定的 **应用 ID URI**。
 
 包含 `Issuer` 元素的 SAML 摘录如以下示例所示：
 
@@ -86,7 +86,7 @@ Azure AD 还会忽略 `AuthnRequest` 中的 `Conditions` 元素。
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`：此值允许 Azure Active Directory 选择声明格式。 Azure Active Directory 以成对标识符形式发出 NameID。
 * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`：Azure Active Directory 以随机生成的值形式发出 NameID 声明，该值对当前的 SSO 操作是唯一的。 这意味着该值是临时的，且不能用于标识正在进行身份验证的用户。
 
-如果 `SPNameQualifier` 指定了，Azure AD 将 `SPNameQualifier` 在响应中包含相同的。
+如果指定了 `SPNameQualifier`，则 Azure AD 将在响应中包括相同的 `SPNameQualifier`。
 
 Azure AD 将忽略 `AllowCreate` 属性。
 
@@ -99,7 +99,7 @@ Azure AD 将忽略 `AllowCreate` 属性。
 如果提供，请不要包含 `ProxyCount` 属性、`IDPListOption` 或 `RequesterID` 元素，因为它们不受支持。
 
 ### <a name="signature"></a>签名
-`Signature`元素中的元素 `AuthnRequest` 是可选的。 如果存在签名，Azure AD 不会验证签名的身份验证请求。 仅通过响应已注册的断言使用者服务 URL 来提供请求者验证。
+`AuthnRequest` 元素中的 `Signature` 元素是可选的。 如果签名存在，则 Azure AD 不会验证已签名的身份验证请求。 仅通过响应已注册的断言使用者服务 URL 来提供请求者验证。
 
 ### <a name="subject"></a>主题
 请勿包含 `Subject` 元素。 Azure AD 不支持为请求指定主题，如果提供主题，则将返回错误。

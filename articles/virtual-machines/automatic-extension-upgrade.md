@@ -1,6 +1,6 @@
 ---
-title: Azure 中 Vm 和规模集的自动扩展升级
-description: 了解如何在 Azure 中为虚拟机和虚拟机规模集启用自动扩展升级。
+title: Azure 中 VM 和规模集的自动扩展升级
+description: 了解如何为 Azure 中的虚拟机和虚拟机规模集启用自动扩展升级。
 author: mayanknayar
 ms.service: virtual-machines
 ms.subservice: automatic-extension-upgrade
@@ -8,133 +8,133 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: fa4fa1c43ab9d31b879bdec8e724e896bd16e14c
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.openlocfilehash: bf9e802e2485e84211044ce650c7748e789e752e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123885"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762598"
 ---
-# <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>预览版： Azure 中 Vm 和规模集的自动扩展升级
+# <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>预览版：Azure 中 VM 和规模集的自动扩展升级
 
-Azure Vm 和 Azure 虚拟机规模集的预览中提供了自动扩展升级功能。 当在 VM 或规模集上启用自动扩展升级时，只要扩展发布服务器释放该扩展插件的新版本，就会自动升级扩展。
+适用于 Azure VM 和 Azure 虚拟机规模集的自动扩展升级以预览版提供。 在 VM 或规模集中启用自动扩展升级后，每当扩展发行商发布了扩展的新版本，该扩展就会自动升级。
 
- 自动扩展升级具有以下功能：
-- 支持 Azure Vm 和 Azure 虚拟机规模集。 当前不支持 Service Fabric 虚拟机规模集。
-- 升级在可用性优先的部署模型中应用 (下面) 详细说明。
-- 对于虚拟机规模集，不超过20% 的规模集虚拟机将在单个批处理中升级。 最小批处理大小为一台虚拟机。
-- 适用于所有 VM 大小，适用于 Windows 和 Linux 扩展。
-- 你可以随时选择退出自动升级。
-- 可在任意大小的虚拟机规模集上启用自动扩展升级。
-- 每个受支持的扩展都是单独注册的，你可以选择自动升级的扩展。
+ 自动扩展升级具有以下特性：
+- 支持 Azure VM 和 Azure 虚拟机规模集。 目前不支持 Service Fabric 虚拟机规模集。
+- 在可用性优先部署模型中应用升级（详情如下）。
+- 对于虚拟机规模集，在一个批次中升级的规模集虚拟机数不超过总数的 20%。 最小批次大小为一个虚拟机。
+- 适用于所有 VM 大小，并且适用于 Windows 和 Linux 扩展。
+- 随时可以选择停用自动升级。
+- 可在任意大小的虚拟机规模集中启用自动扩展升级。
+- 每个受支持的扩展将单独注册，可以选择要自动升级哪些扩展。
 - 在所有公有云区域中均受支持。
 
 
 > [!IMPORTANT]
-> 自动扩展升级目前为公共预览版。 使用下述公共预览功能需要使用选择过程。
+> 自动扩展升级目前为公共预览版。 需要执行一个选用过程才能使用下述公共预览版功能。
 > 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
-## <a name="how-does-automatic-extension-upgrade-work"></a>自动扩展升级如何工作？
-扩展升级过程会将 VM 上的现有扩展版本替换为扩展发布服务器发布时具有相同扩展插件的新版本。 安装新扩展后，将监视 VM 的运行状况。 如果在升级完成后的5分钟内 VM 未处于正常状态，则扩展版本将回滚到以前的版本。
+## <a name="how-does-automatic-extension-upgrade-work"></a>自动扩展升级的工作原理是什么？
+扩展升级过程会将 VM 上的现有扩展版本替换为扩展发布者为同一扩展发布的新版本。 安装新扩展后，VM 的运行状况会受到监视。 如果 VM 在升级完成后的 5 分钟内处于不正常状态，则扩展版本将回滚到前一个版本。
 
-自动重试失败的扩展更新。 每隔几天自动尝试一次，无需用户干预。
+系统会自动重试失败的扩展更新。 它会每隔几天自动重试，无需用户的干预。
 
 ### <a name="availability-first-updates"></a>可用性优先更新
-适用于平台的更新的第一个可用性模型将确保 Azure 中的可用性配置跨多个可用性级别。
+适用于由平台协调的更新的可用性优先模型可确保在多个可用性级别遵循 Azure 中的可用性配置。
 
-对于正在进行更新的一组虚拟机，Azure 平台将协调更新：
+对于正在更新的一组虚拟机，Azure 平台将协调更新：
 
-**跨区域：**
-- 更新将以分阶段的方式跨全局移动，以防止 Azure 范围内的部署失败。
-- "阶段" 可以有一个或多个区域，并且仅当上一阶段中符合条件的 Vm 成功更新时，更新才会移动到各个阶段。
-- 地域配对区域不会同时更新，并且不能在同一区域阶段中进行更新。
-- 更新的成功率是通过跟踪 VM 后期更新的运行状况来衡量的。 VM 运行状况通过 VM 的平台运行状况指标进行跟踪。 对于虚拟机规模集，如果应用于规模集，则会通过应用程序运行状况探测或应用程序运行状况扩展跟踪 VM 运行状况。
+跨区域：
+- 更新将以分阶段的方式在整个 Azure 中全局推进，以防出现 Azure 范围的部署失败。
+- 一个“阶段”可以涵盖一个或多个区域，仅当前一阶段中符合条件的 VM 成功更新时，更新才会进入下一阶段。
+- 地理配对的区域不会并发更新，因此它们不能处于同一区域阶段。
+- 更新是否成功是通过跟踪 VM 在更新后的运行状况来衡量的。 VM 运行状况是通过 VM 的平台运行状况指示器跟踪的。 对于虚拟机规模集，将通过应用程序运行状况探测或应用程序运行状况扩展（如果已在规模集中应用）跟踪 VM 运行状况。
 
-**在区域内：**
-- 不同可用性区域中的 Vm 不会同时更新。
-- 不属于可用性集的单个 Vm 会尽力进行批处理，以避免对订阅中的所有 Vm 进行并发更新。  
+在区域内部：
+- 位于不同可用性区域中的 VM 不会并发更新。
+- 不在可用性集内的单个 VM 将按照尽力而为的原则进行批处理，以避免对订阅中的所有 VM 进行并发更新。  
 
-**在 "集" 内：**
-- 公共可用性集中的所有 Vm 或规模集不会同时更新。  
-- 公共可用性集中的 Vm 在更新域边界内更新，不会同时更新多个更新域中的 Vm。  
-- 公用虚拟机规模集中的 Vm 按批分组，并在更新域边界内更新。
+在“集”内部：
+- 公用可用性集或规模集中的所有 VM 不会并发更新。  
+- 公用可用性集中的 VM 在更新域边界内更新，跨多个更新域的 VM 不会并发更新。  
+- 公用虚拟机规模集中的 VM 将分组成批，并在更新域边界内更新。
 
 ### <a name="upgrade-process-for-virtual-machine-scale-sets"></a>虚拟机规模集的升级过程
-1. 在开始升级过程之前，协调器将确保整个规模集中的 Vm 数不能超过 20% (出于任何原因) 不正常。
+1. 在开始升级过程之前，业务流程协调程序将确保整个规模集内（出于任何原因）不正常的 VM 不会超过 20%。
 
-2. 升级 orchestrator 会确定要升级的 VM 实例的批处理。 升级批处理最多可以有20% 的 VM 总数，受限于一个虚拟机的最小批处理大小。
+2. 升级业务流程协调程序将识别要升级的一批 VM 实例。 一个升级批最多可以包含 VM 总数的 20%，最小批大小限制为一个虚拟机。
 
-3. 对于已配置应用程序运行状况探测或应用程序运行状况扩展的规模集，升级最多会等待5分钟 (或定义的运行状况探测配置) ，以便在升级下一批之前，VM 变为正常。 如果 VM 不在升级后恢复其运行状况，则默认情况下会重新安装 VM 上的以前的扩展版本。
+3. 对于配置了应用程序运行状况探测或应用程序运行状况扩展的规模集，升级过程最多会等待 5 分钟（或定义的运行状况探测配置）来让 VM 变正常，然后再升级下一批。 如果 VM 在升级后未恢复其正常运行状况，则默认情况下，会在该 VM 上重新安装前一个扩展版本。
 
-4. 升级 orchestrator 还跟踪升级后变为不正常的 Vm 的百分比。 如果升级过程中超过 20% 的已升级实例变得不正常，升级将会停止。
+4. 升级业务流程协调程序还会跟踪升级后变为不正常的 VM 百分比。 如果升级过程中超过 20% 的已升级实例变得不正常，升级将会停止。
 
 上述过程会持续到升级了规模集中的所有实例为止。
 
-规模集升级 orchestrator 会在升级每个批次之前检查总体规模集的运行状况。 升级批时，可能会影响规模集虚拟机的运行状况的其他并发计划或计划外维护活动。 在这种情况下，如果规模集的实例数超过20%，则规模集升级将在当前批处理结束时停止。
+规模集升级业务流程协调程序在升级每个批之前会检查规模集总体运行状况。 升级某一批时，可能有其他并发的计划内或计划外维护活动，这些活动可能会影响规模集虚拟机的运行状况。 在这种情况下，如果超过 20% 的规模集实例不正常，则当前批结束时，规模集升级将会停止。
 
 ## <a name="supported-extensions"></a>支持的扩展
-自动扩展升级的预览支持以下扩展 (并且会定期添加更多的) ：
+自动扩展升级预览版支持以下扩展（以后会定期添加更多扩展）：
 - Dependency Agent – [Windows](./extensions/agent-dependency-windows.md) 和 [Linux](./extensions/agent-dependency-linux.md)
 - [应用程序运行状况扩展](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md) – Windows 和 Linux
 
 
 ## <a name="enabling-preview-access"></a>启用预览版访问
-若要启用预览功能，只需为每个订阅 **AutomaticExtensionUpgradePreview** 功能一次，如下所述。
+启用预览版功能需要根据下面的详述为每个订阅一次性选用 AutomaticExtensionUpgradePreview 功能。
 
 ### <a name="rest-api"></a>REST API
-下面的示例说明如何为订阅启用预览：
+以下示例说明如何为订阅启用预览版：
 
 ```
 POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticExtensionUpgradePreview/register?api-version=2015-12-01`
 ```
 
-功能注册可能最多需要15分钟。 若要检查注册状态，请使用以下命令：
+功能注册最多可能需要 15 分钟。 若要检查注册状态，请使用以下命令：
 
 ```
 GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticExtensionUpgradePreview?api-version=2015-12-01`
 ```
 
-为订阅注册此功能后，通过将更改传播到计算资源提供程序来完成选择加入过程。
+为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。
 
 ```
 POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2020-06-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-使用 [AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) cmdlet 为你的订阅启用预览。
+使用 [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) cmdlet 为订阅启用预览版。
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName AutomaticExtensionUpgradePreview -ProviderNamespace Microsoft.Compute
 ```
 
-功能注册可能最多需要15分钟。 若要检查注册状态，请使用以下命令：
+功能注册最多可能需要 15 分钟。 若要检查注册状态，请使用以下命令：
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -FeatureName AutomaticExtensionUpgradePreview -ProviderNamespace Microsoft.Compute
 ```
 
-为订阅注册此功能后，通过将更改传播到计算资源提供程序来完成选择加入过程。
+为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-使用 [az feature register](/cli/azure/feature#az-feature-register) 为你的订阅启用预览。
+使用 [az feature register](/cli/azure/feature#az_feature_register) 为订阅启用预览版。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name AutomaticExtensionUpgradePreview
 ```
 
-功能注册可能最多需要15分钟。 若要检查注册状态，请使用以下命令：
+功能注册最多可能需要 15 分钟。 若要检查注册状态，请使用以下命令：
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.Compute --name AutomaticExtensionUpgradePreview
 ```
 
-为订阅注册此功能后，通过将更改传播到计算资源提供程序来完成选择加入过程。
+为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
@@ -142,11 +142,11 @@ az provider register --namespace Microsoft.Compute
 
 
 ## <a name="enabling-automatic-extension-upgrade"></a>启用自动扩展升级
-若要为扩展启用自动扩展升级，必须确保将属性 *enableAutomaticUpgrade* 设置为 *true* 并分别添加到每个扩展定义。
+若要为扩展启用自动扩展升级，必须确保属性 enableAutomaticUpgrade 设置为 true 并已分别添加到每个扩展定义 。
 
 
-### <a name="rest-api-for-virtual-machines"></a>虚拟机的 REST API
-若要为扩展启用自动扩展升级 (在此示例中，Dependency Agent 扩展) Azure VM，请使用以下内容：
+### <a name="rest-api-for-virtual-machines"></a>适用于虚拟机的 REST API
+若要在 Azure VM 上为扩展（在本示例中为 Dependency Agent 扩展）启用自动扩展升级，请使用以下命令：
 
 ```
 PUT on `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachines/<vmName>/extensions/<extensionName>?api-version=2019-12-01`
@@ -167,8 +167,8 @@ PUT on `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/provi
 }
 ```
 
-### <a name="rest-api-for-virtual-machine-scale-sets"></a>虚拟机规模集的 REST API
-使用以下内容将扩展添加到规模集模型：
+### <a name="rest-api-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 REST API
+使用以下命令将扩展添加到规模集模型：
 
 ```
 PUT on `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<vmssName>?api-version=2019-12-01`
@@ -198,8 +198,8 @@ PUT on `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/provi
 }
 ```
 
-### <a name="azure-powershell-for-virtual-machines"></a>虚拟机的 Azure PowerShell
-使用 [AzVMExtension](/powershell/module/az.compute/set-azvmextension) cmdlet：
+### <a name="azure-powershell-for-virtual-machines"></a>适用于虚拟机的 Azure PowerShell
+使用 [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) cmdlet：
 
 ```azurepowershell-interactive
 Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
@@ -213,8 +213,8 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
 ```
 
 
-### <a name="azure-powershell-for-virtual-machine-scale-sets"></a>虚拟机规模集的 Azure PowerShell
-使用 [AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet 将扩展添加到规模集模型：
+### <a name="azure-powershell-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure PowerShell
+使用 [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet 将扩展添加到规模集模型：
 
 ```azurepowershell-interactive
 Add-AzVmssExtension -VirtualMachineScaleSet $vmss
@@ -225,7 +225,7 @@ Add-AzVmssExtension -VirtualMachineScaleSet $vmss
     -EnableAutomaticUpgrade $true
 ```
 
-添加扩展后，使用 [AzVmss](/powershell/module/az.compute/update-azvmss) 更新规模集。
+添加扩展后，使用 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) 更新规模集。
 
 
 ### <a name="azure-cli-for-virtual-machines"></a>适用于虚拟机的 Azure CLI
@@ -241,7 +241,7 @@ az vm extension set \
     --enable-auto-upgrade true
 ```
 
-### <a name="azure-cli-for-virtual-machine-scale-sets"></a>虚拟机规模集的 Azure CLI
+### <a name="azure-cli-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure CLI
 使用 [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) cmdlet 将扩展添加到规模集模型：
 
 ```azurecli-interactive
@@ -254,13 +254,13 @@ az vmss extension set \
     --enable-auto-upgrade true
 ```
 
-## <a name="extension-upgrades-with-multiple-extensions"></a>具有多个扩展的扩展升级
+## <a name="extension-upgrades-with-multiple-extensions"></a>对多个扩展进行扩展升级
 
-VM 或虚拟机规模集可以有多个启用了自动扩展升级的扩展。 同一 VM 或规模集也可以包含未启用自动扩展升级的其他扩展。  
+一个 VM 或虚拟机规模集可以包含多个已启用自动扩展升级的扩展。 同一个 VM 或规模集还可以包含其他未启用自动扩展升级的扩展。  
 
-如果有多个扩展升级可用于虚拟机，则可以将升级一起分批进行，但会在虚拟机上单独应用每个扩展升级。 一个扩展的失败不会影响可能正在升级)  (的其他扩展。 例如，如果为升级计划了两个扩展，并且第一个扩展升级失败，则仍将升级第二个扩展。
+如果虚拟机有多个可用的扩展升级，可将这些升级一起进行批处理，但每个扩展升级将单独在一个虚拟机上应用。 一个扩展发生失败不会影响到可能正在升级的其他扩展。 例如，如果已计划升级两个扩展，而第一个扩展升级失败，在这种情况下，仍会升级第二个扩展。
 
-当 VM 或虚拟机规模集具有多个配置有 [扩展序列](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md)的扩展时，也可以应用自动扩展升级。 扩展排序适用于首次部署 VM，并且扩展的任何未来扩展升级都是独立应用的。
+当 VM 或虚拟机规模集包含配置了[扩展排序](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md)的多个扩展时，也可以应用自动扩展升级。 扩展排序适用于 VM 的首次部署，以后对扩展进行的扩展升级将独立应用。
 
 
 ## <a name="next-steps"></a>后续步骤

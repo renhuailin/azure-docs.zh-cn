@@ -5,12 +5,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 46e92e6842204cd323992a2561e71302bb9cc722
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6462c2987155925b7df5241d8fb6aa13c1e37b89
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102193392"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777718"
 ---
 # <a name="secure-your-cluster-with-azure-policy"></a>通过 Azure Policy 保护群集
 
@@ -18,7 +18,7 @@ ms.locfileid: "102193392"
 
 本文介绍如何将策略定义应用于群集，并验证是否在强制执行这些分配。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 - AKS 群集上安装的适用于 AKS 的 Azure Policy 加载项。 按照以下[步骤安装 Azure Policy 加载项][azure-policy-addon]。
@@ -175,5 +175,5 @@ kubectl delete -f nginx-unprivileged.yaml
 [azure-policy-addon]: ../governance/policy/concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-aks
 [azure-policy-addon-remove]: ../governance/policy/concepts/policy-for-kubernetes.md#remove-the-add-on-from-aks
 [azure-policy-assign-policy]: ../governance/policy/concepts/policy-for-kubernetes.md#assign-a-built-in-policy-definition
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md

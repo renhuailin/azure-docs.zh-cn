@@ -4,12 +4,12 @@ description: 自定义映像池是配置计算节点以运行 Batch 工作负载
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: a9ff30f52ae19e3d6a7bc58ca81eabeb91d21146
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8623c47952540717ae50538fd7b0282c9c8629bb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024058"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102124238"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共享映像库创建自定义映像池
 
@@ -67,7 +67,7 @@ ms.locfileid: "105024058"
 若要为映像创建新 VM，请使用 Batch 支持的第一方 Azure 市场映像作为托管映像的基础映像。 仅第一方映像可以用作基础映像。 若要获取 Azure Batch 支持的 Azure 市场映像参考的完整列表，请参阅[列出节点代理 SKU](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) 操作。
 
 > [!NOTE]
-> 不能使用具有附加许可和购买条款的第三方映像作为基础映像。 有关这些市场图像的信息，请参阅 [Linux](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information) 或 [Windows](../virtual-machines/windows/cli-ps-findimage.md#view-purchase-plan-properties) VM 指南。
+> 不能使用具有附加许可和购买条款的第三方映像作为基础映像。 有关这些市场映像的信息，请参阅 [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) 或 [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM 指南。
 
 创建 VM 时，请遵循这些准则：
 

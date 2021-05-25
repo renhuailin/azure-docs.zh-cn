@@ -1,6 +1,6 @@
 ---
-title: Azure 威胁防护 |Microsoft Docs
-description: 了解 Azure 的内置威胁防护功能，如 Azure AD Identity Protection 服务。
+title: Azure 威胁防护 | Microsoft Docs
+description: 了解 Azure 的内置威胁防护功能，例如 Azure AD 标识保护服务。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
 ms.openlocfilehash: 81b2227ac519de4d03bb63907d14c23b9c34dc64
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102101029"
 ---
 # <a name="azure-threat-protection"></a>Azure 威胁防护
 
-Azure 通过服务（如 Azure Active Directory (Azure AD) 、Azure Monitor 日志和 Azure 安全中心）提供内置的威胁防护功能。 安全服务和功能的此集合提供了一种简单快速了解 Azure 部署运行状况的方法。
+Azure 通过 Azure Active Directory (Azure AD)、Azure Monitor 日志和 Azure 安全中心等服务提供内置的威胁防护功能。 安全服务和功能的此集合提供了一种简单快速了解 Azure 部署运行状况的方法。
 
 Azure 提供多种安全性配置和自定义选项，以满足应用部署的要求。 本文介绍如何满足这些要求。
 
@@ -84,7 +84,7 @@ PIM 可帮助用户进行以下操作：
 
 ### <a name="holistic-security-and-compliance-posture"></a>安全性与符合性总体情况
 
-[Azure 安全中心](../../security-center/security-center-introduction.md) 提供了组织的 IT 安全状况的综合视图，内置搜索查询需要你关注的重要问题。 它提供计算机安全状态的高级洞见。 还可以查看过去24小时、7天或任何其他自定义时间范围内的所有事件。
+借助 [Azure 安全中心](../../security-center/security-center-introduction.md)，可全面了解组织的 IT 安全状况，并可通过其内置的搜索查询查找需要注意的问题。 它提供计算机安全状态的高级洞见。 还可以查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
 
 Azure Monitor 日志有助于用户快速轻松了解任何环境中的总体安全情况，在 IT 操作的上下文中即可实现，这些操作包括软件更新评估、反恶意软件评估和配置基线。 可访问现成的安全日志数据，简化安全性和符合性审核过程。
 
@@ -104,7 +104,7 @@ Azure Monitor 日志有助于用户快速轻松了解任何环境中的总体安
 
 解决方案向 Azure Monitor 日志添加功能。 解决方案主要在云中运行，并提供对日志分析存储库所收集数据的分析。 解决方案也可以定义要收集的新记录类型，可使用日志搜索或通过解决方案在日志分析仪表板中提供的其他用户界面对这些记录类型进行分析。
 
-安全中心就是这些类型的解决方案的一个示例。
+安全中心是这些类型的解决方案的一个示例。
 
 ### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>自动化与控制：安全配置偏移警报
 
@@ -348,7 +348,7 @@ Cloud App Security 通过以下方式将可见性与云集成：
 
 从这些源收集数据时，Cloud App Security 会对其运行复杂的分析。 它会立即向你发出有关异常活动的警报，帮助你获得对云环境的深度了解。 可以在 Cloud App Security 中配置策略，并使用它来保护云环境中的所有内容。
 
-## <a name="third-party-threat-protection-capabilities-through-the-azure-marketplace"></a>通过 Azure Marketplace 的第三方威胁防护功能
+## <a name="third-party-threat-protection-capabilities-through-the-azure-marketplace"></a>通过 Azure 市场获取的第三方威胁防护功能
 
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
 

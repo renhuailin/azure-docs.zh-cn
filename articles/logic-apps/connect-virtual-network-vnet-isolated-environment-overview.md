@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: 3070083040424b877159955dc2138f15319f05c8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 01/11/2021
+ms.openlocfilehash: 4d83609eea57c2350881360ef757b1a291627c23
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766382"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100374722"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -33,7 +33,7 @@ ms.locfileid: "107766382"
 
 * 直接访问虚拟网络内部或与之连接的资源
 
-  在 ISE 中创建和运行的逻辑应用可以使用[专门设计的在 ISE 中运行的连接器](../connectors/managed.md#ise-connectors)。 如果某个本地系统或数据源存在 ISE 连接器，则无需使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)即可直接连接。 有关详细信息，请参阅本主题后面部分中的[专用与多租户](#difference)以及[访问本地系统](#on-premises)。
+  在 ISE 中创建和运行的逻辑应用可以使用[专门设计的在 ISE 中运行的连接器](../connectors/apis-list.md#ise-connectors)。 如果某个本地系统或数据源存在 ISE 连接器，则无需使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)即可直接连接。 有关详细信息，请参阅本主题后面部分中的[专用与多租户](#difference)以及[访问本地系统](#on-premises)。
 
 * 继续访问虚拟网络外部或未与之连接的资源
 
@@ -53,7 +53,7 @@ ms.locfileid: "107766382"
 
 * 内置触发器和操作（例如 HTTP）显示 **CORE** 标签，并在与逻辑应用相同的 ISE 中运行。
 
-* 显示 **ISE** 标签的托管连接器是专门设计用于 ISE，并且始终在与逻辑应用相同的 ISE 中运行。 例如，以下是一些[提供了 ISE 版本的连接器](../connectors/managed.md#ise-connectors)：<p>
+* 显示 **ISE** 标签的托管连接器是专门设计用于 ISE，并且始终在与逻辑应用相同的 ISE 中运行。 例如，以下是一些[提供了 ISE 版本的连接器](../connectors/apis-list.md#ise-connectors)：<p>
 
   * Azure Blob 存储、文件存储和表存储
   * Azure 服务总线、Azure 队列、Azure 事件中心
@@ -79,7 +79,7 @@ ms.locfileid: "107766382"
 
 * 适用于本地系统或数据源的 **ISE** 连接器（如果可用）
 
-  如果 ISE 连接器可用，则无需[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)即可直接访问系统或数据源。 但是，如果需要从 ISE 访问 SQL Server 并使用 Windows 身份验证，则必须使用连接器的非 ISE 版本和本地数据网关。 连接器的 ISE 版本不支持 Windows 身份验证。 有关详细信息，请参阅 [ISE 连接器](../connectors/managed.md#ise-connectors)和[从集成服务环境连接](../connectors/managed.md#integration-account-connectors)。
+  如果 ISE 连接器可用，则无需[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)即可直接访问系统或数据源。 但是，如果需要从 ISE 访问 SQL Server 并使用 Windows 身份验证，则必须使用连接器的非 ISE 版本和本地数据网关。 连接器的 ISE 版本不支持 Windows 身份验证。 有关详细信息，请参阅 [ISE 连接器](../connectors/apis-list.md#ise-connectors)和[从集成服务环境连接](../connectors/apis-list.md#integration-service-environment)。
 
 * 自定义连接器
 

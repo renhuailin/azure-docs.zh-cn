@@ -10,17 +10,17 @@ ms.date: 04/24/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89069653"
 ---
 # <a name="manage-storage-account-access-keys"></a>管理存储帐户访问密钥
 
 当你创建存储帐户时，Azure 会生成两个 512 位存储帐户访问密钥。 这些密钥可用于通过共享密钥授权来授予对你存储帐户中数据的访问权限。
 
-Microsoft 建议使用 Azure Key Vault 来管理访问密钥，并且定期轮换和重新生成密钥。 使用 Azure 密钥保管库可以轻松轮换密钥，而无需中断应用程序。 还可以手动轮换密钥。
+Microsoft 建议使用 Azure 密钥保管库来管理访问密钥，并且定期轮换和重新生成密钥。 使用 Azure 密钥保管库可以轻松轮换密钥，而无需中断应用程序。 还可以手动轮换密钥。
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
@@ -70,14 +70,14 @@ az storage account keys list \
 
 ## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>使用 Azure 密钥保管库管理访问密钥
 
-Microsoft 建议使用 Azure Key Vault 来管理和旋转访问密钥。 应用程序可以安全地访问密钥保管库中的密钥，这样就可以避免使用应用程序代码来存储密钥。 有关使用密钥保管库进行密钥管理的详细信息，请参阅以下文章：
+Microsoft 建议使用 Azure 密钥保管库来管理和轮换访问密钥。 应用程序可以安全地访问密钥保管库中的密钥，这样就可以避免使用应用程序代码来存储密钥。 有关使用密钥保管库进行密钥管理的详细信息，请参阅以下文章：
 
 - [使用 Azure 密钥保管库和 PowerShell 管理存储帐户密钥](../../key-vault/secrets/overview-storage-keys-powershell.md)
 - [使用 Azure 密钥保管库和 Azure CLI 管理存储帐户密钥](../../key-vault/secrets/overview-storage-keys.md)
 
 ## <a name="manually-rotate-access-keys"></a>手动轮换访问密钥
 
-Microsoft 建议定期轮换访问密钥，以确保存储帐户安全。 如果可能，请使用 Azure 密钥保管库管理访问密钥。 如果不使用密钥保管库，将需要手动轮换密钥。
+Microsoft 建议定期轮换访问密钥，以帮助保护存储帐户的安全。 如果可能，请使用 Azure 密钥保管库管理访问密钥。 如果不使用密钥保管库，将需要手动轮换密钥。
 
 系统会分配两个访问密钥，以便可以轮换密钥。 拥有两个密钥可确保应用程序在整个轮换过程中能够持续访问 Azure 存储。
 

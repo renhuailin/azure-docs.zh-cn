@@ -1,36 +1,36 @@
 ---
-title: '启用 VM insights 来宾运行状况 (预览) '
-description: 介绍如何在你的订阅中启用 VM insights 来宾运行状况以及如何载入 Vm。
+title: 启用 VM 见解来宾运行状况（预览）
+description: 介绍如何在订阅中启用 VM 见解来宾运行状况以及如何载入 VM。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
 ms.openlocfilehash: 5d4ff622f69445880c0de8cb74dc1aeee422c89b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052154"
 ---
-# <a name="enable-vm-insights-guest-health-preview"></a>启用 VM insights 来宾运行状况 (预览) 
-VM insights 来宾运行状况允许你查看按固定时间间隔采样的一组性能度量定义的虚拟机的运行状况。 本文介绍如何在你的订阅中启用此功能，以及如何为每个虚拟机启用来宾监视。
+# <a name="enable-vm-insights-guest-health-preview"></a>启用 VM 见解来宾运行状况（预览）
+利用 VM 见解来宾运行状况，可以查看虚拟机的运行状况，该运行状况是由一组定期取样的性能测量值定义的。 本文介绍如何在订阅中启用此功能，以及如何为每个虚拟机启用来宾监视。
 
 ## <a name="current-limitations"></a>当前限制
-VM insights 来宾运行状况在公共预览版中具有以下限制：
+VM 见解来宾运行状况在公共预览版中存在以下限制：
 
 - 目前仅支持 Azure 虚拟机。 当前不支持 Azure Arc for servers。
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
-虚拟机必须运行以下操作系统之一： 
+虚拟机必须运行下列操作系统之一： 
 
   - Ubuntu 16.04 LTS、Ubuntu 18.04 LTS
   - Windows Server 2012 或更高版本
 
 ## <a name="supported-regions"></a>支持的区域
 
-虚拟机必须位于以下区域之一：
+虚拟机必须位于下列区域之一：
 
 - 澳大利亚中部
 - 澳大利亚东部
@@ -60,13 +60,13 @@ VM insights 来宾运行状况在公共预览版中具有以下限制：
 - 美国西部 2
 
 
-Log Analytics 工作区必须位于以下区域之一：
+Log Analytics 工作区必须位于下列区域之一：
 
 - 澳大利亚中部
 - 澳大利亚东部
 - 澳大利亚东南部
 - 加拿大中部
-- 加拿大印度
+- 加拿大、印度
 - 美国中部
 - 东亚
 - 美国东部
@@ -80,23 +80,23 @@ Log Analytics 工作区必须位于以下区域之一：
 - 东南亚
 - 瑞士北部
 - 英国南部
-- 西欧区域
+- 欧洲西部地区
 - 美国西部
 - 美国西部 2
 
 ## <a name="prerequisites"></a>先决条件
 
-- 虚拟机必须载入 VM insights。
-- 执行载入步骤的用户必须至少具有 "参与者" 级别对虚拟机和数据收集规则所在的订阅的访问权限。
-- 必需的 Azure 资源提供程序必须注册，如以下部分所述。
+- 虚拟机必须载入 VM 见解。
+- 执行载入步骤的用户至少必须对虚拟机和数据收集规则所在的订阅具有参与者级别的访问权限。
+- 必须注册所需的 Azure 资源提供程序，如以下部分所述。
 
 ## <a name="register-required-azure-resource-providers"></a>注册所需的 Azure 资源提供程序
-为你的订阅注册以下 Azure 资源提供程序以启用 VM insights 来宾运行状况。 
+需要为订阅注册以下 Azure 资源提供程序才能启用 VM 见解来宾运行状况。 
 
 - Microsoft.WorkloadMonitor
 - Microsoft.Insights
 
-可以使用任何可用的方法来注册资源提供程序，如 [Azure 资源提供程序和类型](../../azure-resource-manager/management/resource-providers-and-types.md)中所述。 你还可以使用以下示例命令，使用 armclient、postman 或其他方法对 Azure 资源管理器进行身份验证调用：
+可使用 [Azure 资源提供程序和类型](../../azure-resource-manager/management/resource-providers-and-types.md)中所述的任何可用方法注册资源提供程序。 还可使用以下示例命令，使用 ARMClient、Postman 或其他方法对 Azure 资源管理器进行经过身份验证的调用：
 
 ```
 POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Microsoft.WorkloadMonitor/register?api-version=2019-10-01
@@ -105,9 +105,9 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 
 
 ## <a name="enable-a-virtual-machine-using-the-azure-portal"></a>使用 Azure 门户启用虚拟机
-在 Azure 门户中为虚拟机启用来宾运行状况时，系统将为你执行所有必需的配置。 这包括创建需要数据收集规则、在虚拟机上安装来宾运行状况扩展，以及创建与数据收集规则的关联。
+在 Azure 门户中为虚拟机启用来宾运行状况时，系统将为你执行所有必需的配置。 这包括创建所需的数据收集规则、在虚拟机上安装来宾运行状况扩展，以及创建与数据收集规则的关联。
 
-在 VM insights 的 " **入门** " 视图中，单击虚拟机的升级消息旁边的链接，然后单击 " **升级** " 按钮。 还可选择多个虚拟机一起升级。
+从 VM 见解的“开始”视图中，单击虚拟机升级消息旁边的链接，然后单击“升级”按钮 。 还可选择多个虚拟机一起升级。
 
 ![启用虚拟机上的运行状况功能](media/vminsights-health-enable/enable-agent.png)
 
@@ -119,24 +119,24 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 - 在每个虚拟机上安装来宾运行状况扩展
 - 在虚拟机和数据收集规则之间创建关联。
 
-### <a name="create-data-collection-rule-dcr"></a> (DCR) 创建数据收集规则
+### <a name="create-data-collection-rule-dcr"></a>创建数据收集规则 (DCR)
 
 > [!NOTE]
 > 如果使用 Azure 门户启用虚拟机，则会为你创建此处所述的数据收集规则。 在这种情况下，不需要执行此步骤。
 
-VM insights 来宾运行状况中的监视器的配置存储在 [数据收集规则 (DCR) ](../agents/data-collection-rule-overview.md)。 具有来宾运行状况扩展的每个虚拟机都需要与此规则关联。
+VM 见解来宾运行状况中监视器的配置存储在[数据收集规则 (DCR)](../agents/data-collection-rule-overview.md) 中。 具有来宾运行状况扩展的每个虚拟机都需要与此规则关联。
 
 > [!NOTE]
-> 可以根据在 [VM insights 来宾健康状况 (预览) 中配置监视 ](vminsights-health-configure.md)中所述，创建其他数据收集规则来修改监视器的默认配置。
+> 可以根据[配置 VM 见解来宾运行状况（预览）中的监视](vminsights-health-configure.md)中所述步骤创建其他数据收集规则，以修改监视器的默认配置。
 
 模板需要以下参数的值：
 
-- **defaultHealthDataCollectionRuleName**：保留在模板中定义的默认名称。
-- **destinationWorkspaceResourceId**：用于虚拟机数据收集的 Log Analytics 工作区的资源 ID。
-- **dataCollectionRuleLocation**：数据收集规则的区域。 这必须与 Log Analytics 工作区的区域匹配。
+- defaultHealthDataCollectionRuleName：保留模板中定义的默认名称。
+- destinationWorkspaceResourceId：用于虚拟机数据收集的 Log Analytics 工作区的资源 ID。
+- dataCollectionRuleLocation：数据收集规则的区域。 其必须与 Log Analytics 工作区的区域匹配。
 
 
-使用 [资源管理器模板的任何部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署模板。 以下命令使用 PowerShell 或 Azure CLI 部署模板和参数文件。
+使用任意[资源管理器模板部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署模板。 以下命令使用 PowerShell 或 Azure CLI 部署模板和参数文件。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -152,7 +152,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 ---
 
-以下资源管理器模板中定义的数据收集规则将启用具有来宾运行状况扩展的虚拟机的所有监视器。 它必须包含监视器使用的每个性能计数器的数据源。
+以下资源管理器模板中定义的数据收集规则将为安装了来宾运行状况扩展的虚拟机启用所有监视器。 其必须包含监视器使用的每个性能计数器的数据源。
 
 ```json
 {
@@ -272,7 +272,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 
 ### <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>安装来宾运行状况扩展并与数据收集规则关联
-使用以下资源管理器模板启用虚拟机以进行来宾健康状况。 这将安装来宾运行状况扩展，并创建与数据收集规则的关联。 你可以使用 [资源管理器模板的任何部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署此模板。
+使用以下资源管理器模板为来宾运行状况启用虚拟机。 这将安装来宾运行状况扩展，并创建与数据收集规则的关联。 可以使用任意[资源管理器模板部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署此模板。
 
 
 例如，使用以下命令通过 PowerShell 或 Azure CLI 将模板和参数文件部署到资源组中。
@@ -431,4 +431,4 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
 
 ## <a name="next-steps"></a>后续步骤
 
-- [自定义 VM insights 启用的监视器](vminsights-health-configure.md)
+- [自定义 VM 见解启用的监视器](vminsights-health-configure.md)

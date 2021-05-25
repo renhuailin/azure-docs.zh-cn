@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: cde8db5310e3ede2721ba327b28c789ccd0b7dd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87280760"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
@@ -71,11 +71,11 @@ ms.locfileid: "87280760"
 
 1. 打开 Visual Studio。 在“视图”菜单中选择“Cloud Explorer”。
 
-1. 在 Cloud Explorer 中，选择 " **帐户管理** " 图标。 选择与逻辑应用关联的 Azure 订阅，并选择 " **应用**"。 例如：
+1. 在 Cloud Explorer 中选择“帐户管理”图标。 选择与逻辑应用关联的 Azure 订阅，然后选择“应用”。 例如：
 
    ![选择“帐户管理”](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
-1. 在 " **帐户管理** " 图标旁边，选择 " **资源类型**"。 在 Azure 订阅下，展开 " **逻辑应用** "，以便查看与你的订阅关联的所有已部署的逻辑应用。
+1. 选择“帐户管理”图标旁的“资源类型”。  在 Azure 订阅下，展开“逻辑应用”，以便查看与你的订阅关联的所有已部署逻辑应用。
 
 接下来，在逻辑应用编辑器中打开逻辑应用。
 
@@ -85,9 +85,9 @@ ms.locfileid: "87280760"
 
 在 Visual Studio 中，可以打开以前直接通过 Azure 门户或者使用 Visual Studio 作为 Azure 资源组项目创建和部署的逻辑应用。
 
-1. [打开 Cloud Explorer 并查找逻辑应用](#find-logic-apps-vs)。
+1. [打开 Cloud Explorer 并找到自己的逻辑应用](#find-logic-apps-vs)。
 
-1. 从逻辑应用的快捷菜单中，选择 " **以逻辑应用编辑器打开**"。
+1. 在逻辑应用的快捷菜单中，选择“使用逻辑应用编辑器打开”。
 
    > [!TIP]
    > 如果你的 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 的最新更新。
@@ -100,11 +100,11 @@ ms.locfileid: "87280760"
 
 ## <a name="download-from-azure"></a>从 Azure 下载
 
-可以从[Azure 门户](https://portal.azure.com)[下载](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource)逻辑应用，并将其另存为[Azure 资源管理器](../azure-resource-manager/management/overview.md)模板。 然后，可以在本地使用 Visual Studio 编辑模板，并根据不同的部署环境自定义逻辑应用。  下载逻辑应用会在[资源管理器模板](../azure-resource-manager/templates/overview.md)中将这些逻辑应用的定义（也使用 JavaScript 对象表示法 (JSON)）*参数化*。
+可以从 [Azure 门户](https://portal.azure.com)[下载](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource)逻辑应用，并将其保存为 [Azure 资源管理器](../azure-resource-manager/management/overview.md)模板。 然后，可以在本地使用 Visual Studio 编辑模板，并根据不同的部署环境自定义逻辑应用。  下载逻辑应用会在 [资源管理器模板](../azure-resource-manager/templates/overview.md)中将这些逻辑应用的定义（也使用 JavaScript 对象表示法 (JSON)）*参数化*。
 
-1. 在 Visual Studio 中，使用 Cloud Explorer， [打开要从 Azure 下载的逻辑应用](#open-designer)。
+1. 在 Visual Studio 中，使用 Cloud Explorer，[打开要从 Azure 下载的逻辑应用](#open-designer)。
 
-1. 从逻辑应用的快捷菜单中，选择 " **以逻辑应用编辑器打开**"。
+1. 在逻辑应用的快捷菜单中，选择“使用逻辑应用编辑器打开”。
 
    > [!TIP]
    > 如果你的 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 的最新更新。
@@ -153,12 +153,12 @@ ms.locfileid: "87280760"
 
 ## <a name="change-deployment-location"></a>更改部署位置
 
-在 Visual Studio 中，如果逻辑应用在用于自动执行部署的 [Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)中作为 JSON (.json) 文件存在，则会为该逻辑应用设置一个位置类型和一个具体位置。 此位置是 Azure 区域，或是 [ (ISE) 的现有 integration service 环境 ](connect-virtual-network-vnet-isolated-environment.md)。
+在 Visual Studio 中，如果逻辑应用在用于自动执行部署的 [Azure 资源组项目](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)中作为 JSON (.json) 文件存在，则会为该逻辑应用设置一个位置类型和一个具体位置。 此位置可以是 Azure 区域，也可以是现有的[集成服务环境 (ISE)](connect-virtual-network-vnet-isolated-environment.md)。
 
 若要更改逻辑应用的位置类型或位置，必须使用逻辑应用设计器从解决方案资源管理器中打开逻辑应用的工作流定义 (.json) 文件。 不能使用 Cloud Explorer 更改这些属性。
 
 > [!IMPORTANT]
-> 将位置类型从 **区域** 更改为 [**集成服务环境**](connect-virtual-network-vnet-isolated-environment-overview.md) 会影响你的逻辑应用的 [定价模型](logic-apps-pricing.md#fixed-pricing) ，用于计费、 [限制](logic-apps-limits-and-config.md#integration-account-limits)、 [集成帐户支持](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)等。 选择其他位置类型之前，请确保你了解逻辑应用所产生的影响。
+> 将位置类型从“区域”更改为[集成服务环境](connect-virtual-network-vnet-isolated-environment-overview.md)会影响逻辑应用的[定价模型](logic-apps-pricing.md#fixed-pricing)，此模型用于计费、[限制](logic-apps-limits-and-config.md#integration-account-limits)、[集成帐户支持](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)等。 在选择其他位置类型之前，请确保理解对逻辑应用产生的影响。
 
 1. 在 Visual Studio 中，打开逻辑应用所在的 Azure 资源组项目。
 

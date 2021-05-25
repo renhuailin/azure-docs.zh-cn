@@ -11,10 +11,10 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: ed31ff5d77b258d141a77fc174c2d5452adf7d01
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791709"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL 超大规模服务层级性能故障排除诊断
@@ -24,7 +24,7 @@ ms.locfileid: "92791709"
 
 ## <a name="log-rate-throttling-waits"></a>日志速率限制等待
 
-每个 Azure SQL 数据库服务级别通过[日志速率调控](resource-limits-logical-server.md#transaction-log-rate-governance)来强制实施日志生成速率限制。 在超大规模数据库中，无论服务级别是什么，日志生成限制目前都设置为 100 MB/秒。 但有时，必须限制主计算副本上的日志生成速率，以保持符合可恢复性 SLA。 当 [页面服务器或其他计算副本](service-tier-hyperscale.md#distributed-functions-architecture) 明显落后于从日志服务应用新的日志记录时，会发生此限制。
+每个 Azure SQL 数据库服务级别通过[日志速率调控](resource-limits-logical-server.md#transaction-log-rate-governance)来强制实施日志生成速率限制。 在超大规模数据库中，无论服务级别是什么，日志生成限制目前都设置为 100 MB/秒。 但有时，必须限制主计算副本上的日志生成速率，以保持符合可恢复性 SLA。 如果在应用日志服务中的新日志记录后，很久才出现[页面服务器或其他计算副本](service-tier-hyperscale.md#distributed-functions-architecture)，则会发生此限制。
 
 以下等待类型（在 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/) 中）描述了在主计算副本上限制日志速率的原因：
 
@@ -67,7 +67,7 @@ ms.locfileid: "92791709"
 
 ## <a name="virtual-file-stats-and-io-accounting"></a>虚拟文件统计信息和 IO 记帐
 
-在 Azure SQL 数据库中，[sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 是监视 SQL 数据库 IO 的主要方式。 “超大规模”采用[分布式体系结构](service-tier-hyperscale.md#distributed-functions-architecture)，因此其 IO 特征有所不同。 本部分重点介绍如何对此 DMF 中所示的数据文件执行 IO（读取和写入）。 在超大规模数据库中，此 DMF 中显示的每个数据文件对应于一个远程页面服务器。 此处提到的 RBPEX 缓存是基于 SSD 的本地缓存，它是计算副本上的非覆盖缓存。
+在 Azure SQL 数据库中，[sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 是监视 SQL 数据库 IO 的主要方式。 “超大规模”采用[分布式体系结构](service-tier-hyperscale.md#distributed-functions-architecture)，因此其 IO 特征有所不同。 本部分重点介绍如何对此 DMF 中所示的数据文件执行 IO（读取和写入）。 在超大规模数据库中，此 DMF 中显示的每个数据文件对应于一个远程页面服务器。 此处提到的 RBPEX 缓存是基于 SSD 的本地缓存，它是计算副本上的非涵盖性缓存。
 
 ### <a name="local-rbpex-cache-usage"></a>本地 RBPEX 缓存使用情况
 
@@ -82,12 +82,12 @@ ms.locfileid: "92791709"
 - 当计算副本上的 SQL Server 数据库引擎发出读取请求时，这些请求可由本地 RBPEX 缓存或远程页面服务器提供服务，如果读取多个页面，则还可以通过两者的组合来提供服务。
 - 当计算副本读取特定文件（例如 file_id 1）中的某些页面时，如果此数据仅驻留在本地 RBPEX 缓存中，则此读取操作的所有 IO 将计入 file_id 0 (RBPEX)。 如果该数据的某个部分位于本地 RBPEX 缓存中，而某个部分位于远程页面服务器上，则对于从 RBPEX 提供服务的部分，IO 将计入 file_id 0；对于从远程页面服务器提供服务的部分，IO 将计入 file_id 1。
 - 当计算副本从页面服务器请求位于特定 [LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) 的页面时，如果页面服务器未捕获到请求的 LSN，则计算副本上的读取操作将会等待，直到页面服务器捕获到该 LSN，然后会将页面返回到计算副本。 对于从计算副本上的页面服务器执行的任何读取，如果该操作正在等待该 IO，则会出现 PAGEIOLATCH_* 等待类型。 在“超大规模”中，此等待时间包括捕获到页面服务器上位于所需 LSN 处的请求页面的时间，以及将该页面从页面服务器传输到计算副本所需的时间。
-- 大型读取（例如预读）通常是使用[“分散/聚合”读取](/sql/relational-databases/reading-pages/)完成的。 这样就可以一次性（在 SQL Server 数据库引擎中被视为单次读取）读取最多 4 MB 的页面。 但是，当读取的数据在 RBPEX 中时，这些读取将被视为多个单独的 8 KB 读取，因为缓冲池和 RBPEX 始终使用 8 KB 页。 因此，针对 RBPEX 检测到的读取 IO 数可能大于引擎执行的实际 IO 数。
+- 大型读取（例如预读）通常是使用[“分散/聚合”读取](/sql/relational-databases/reading-pages/)完成的。 这样就可以一次性（在 SQL Server 数据库引擎中被视为单次读取）读取最多 4 MB 的页面。 但是，如果读取的数据位于 RBPEX 中，则这些读取操作被视为多个单独的 8-KB 读取，因为缓冲池和 RBPEX 始终使用 8-KB 页面。 因此，针对 RBPEX 检测到的读取 IO 数可能大于引擎执行的实际 IO 数。
 
 ### <a name="data-writes"></a>数据写入
 
 - 主计算副本不会直接写入页面服务器， 而是在相应的页面服务器上重播日志服务中的日志记录。
-- 在计算副本上发生的写入将优先写入本地 RBPEX (file_id 0)。 对于大于 8 KB 的逻辑文件的写入（换言之，使用 " [集合写入](/sql/relational-databases/writing-pages/)" 执行的操作），每个写入操作都转换为多个 8 kb 的单个写入操作，因为缓冲池和 RBPEX 始终使用 8 kb 页。 因此，针对 RBPEX 检测到的写入 IO 数可能大于引擎执行的实际 IO 数。
+- 在计算副本上发生的写入将优先写入本地 RBPEX (file_id 0)。 对于大于 8 KB 的逻辑文件的写入（即使用 [Gather-write](/sql/relational-databases/writing-pages/) 完成的写入），每个写入操作都会转换为对 RBPEX 的多个单独 8-KB 写入，因为缓冲池和 RBPEX 始终使用 8-KB 页面。 因此，针对 RBPEX 检测到的写入 IO 数可能大于引擎执行的实际 IO 数。
 - 非 RBPEX 文件，或者除 file_id 0 以外的对应于页面服务器的数据文件，也会显示写入。 在超大规模服务层级中，这些写入是模拟的，因为计算副本永远不会直接写入页面服务器。 写入 IOPS 和吞吐量被视为在计算副本上发生，但除 file_id 0 以外的数据文件的延迟不反映页面服务器写入操作的实际延迟。
 
 ### <a name="log-writes"></a>日志写入
@@ -97,11 +97,11 @@ ms.locfileid: "92791709"
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>资源利用率统计信息中的数据 IO
 
-在非超大规模数据库中，将在列中的[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)和[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)视图中报告针对数据文件（相对于[资源调控](./resource-limits-logical-server.md#resource-governance)数据 IOPS 限制）的读取和写入 IOPS `avg_data_io_percent` 。 在 Azure 门户中将同一值报告为 _数据 IO 百分比_ 。
+在非超大规模数据库中，有关相对于[资源管理](./resource-limits-logical-server.md#resource-governance)数据 IOPS 限制的针对数据文件的组合读取和写入 IOPS，可查看 `avg_data_io_percent` 列中的 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 视图。 这个值在 Azure 门户中报告为数据 IO 百分比。
 
-在超大规模数据库中，此列将报告相对于仅限计算副本上本地存储的限制的数据 IOPS 利用率，特别是针对 RBPEX 和的 IO `tempdb` 。 此列中的100% 值表示资源调控限制了本地存储 IOPS。 如果这与性能问题相关，请优化工作负荷以生成较少的 IO，或提高数据库服务目标以提高资源调控 _最大数据 IOPS_ [限制](resource-limits-vcore-single-databases.md)。 对于 RBPEX 读取和写入的资源管理，系统会对单个 8 KB Io 进行计数，而不是由 SQL Server 数据库引擎颁发的较大 Io 计数。
+在超大规模数据库中，此列报告相对于仅限计算副本上本地存储的限制的数据 IOPS 利用率，特别是针对 RBPEX 和 `tempdb` 的 IO。 此列中的值 100% 表示资源管理限制了本地存储 IOPS。 如果这与性能问题相关，请优化工作负载以生成较少的 IO，或者提高数据库服务目标以提高资源管理最大数据 IOPS [限制](resource-limits-vcore-single-databases.md)。 对于 RBPEX 读取和写入的资源管理，系统会对单个 8 KB IO 进行计数，而不是计算可能由 SQL Server 数据库引擎发出的较大 IO。
 
-不会在资源使用视图或门户中报告针对远程页面服务器的数据 IO，但会在 [ ( sys.dm_io_virtual_file_stats ](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) 中报告，如前文所述。
+如上所述，不会在资源利用率视图或门户中报告针对远程页面服务器的数据 IO，但会在 [sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 中进行报告。
 
 ## <a name="additional-resources"></a>其他资源
 

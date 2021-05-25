@@ -7,12 +7,13 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 8a579c2e895e69fd36866d8c3df380d1ea10aa26
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.reviewer: tyao
+ms.openlocfilehash: fcd7a0fe60639bbb17661a906d15136996b325e4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633656"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "87005440"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door-service"></a>什么是 Azure Front Door 服务的域中的地区筛选？
 

@@ -7,10 +7,10 @@ ms.date: 01/23/2018
 ms.author: mikerou
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9f39bd874c1f5a1be42ca1c88e6ea2fe8df22f87
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94648202"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以编程方式缩放 Service Fabric 群集 
@@ -121,5 +121,5 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 要开始实现自己的自动缩放逻辑，请先熟悉以下概念和有用的 API：
 
 - [手动或使用自动缩放规则缩放](./service-fabric-cluster-scale-in-out.md)
-- 适用于[.net 的 Azure 管理库](https://github.com/Azure/azure-libraries-for-net) (有助于与 Service Fabric 群集的基础虚拟机规模集进行交互) 
+- [用于 .NET 的 Azure 管理库](https://github.com/Azure/azure-libraries-for-net)（与 Service Fabric 群集的底层虚拟机规模集交互时非常有用）
 - [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient)（与 Service Fabric 群集及其节点交互时非常有用）

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
 ms.openlocfilehash: 6c69e46ea3510476089cd932b1cd1bdf14254021
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102122368"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
@@ -32,7 +32,7 @@ ms.locfileid: "102122368"
 
 ## <a name="master-security"></a>主组件安全
 
-在 AKS 中，Kubernetes 主组件是 Microsoft 提供的托管服务的一部分。 每个 AKS 群集都有其自己的租户专用 Kubernetes 主机，用于提供 API 服务器、计划程序等。此主机由 Microsoft 管理和维护。
+在 AKS 中，Kubernetes 主组件是 Microsoft 提供的托管服务的一部分。 每个 AKS 群集都有其自己的专用单租户 Kubernetes 主组件，用于提供 API 服务器、计划程序等。此主组件由 Microsoft 管理和维护。
 
 默认情况下，Kubernetes API 服务器使用公共 IP 地址和完全限定域名 (FQDN)。 可以使用[经授权的 IP 范围][authorized-ip-ranges]将访问范围限制为 API 服务器终结点。 还可以创建完整的[专用群集][private-clusters]，以限制 API 服务器对虚拟网络的访问。
 
@@ -40,7 +40,7 @@ ms.locfileid: "102122368"
 
 ## <a name="node-security"></a>节点安全性
 
-AKS 节点是由你管理和维护的 Azure 虚拟机。 Linux 节点使用 `containerd` 或小鲸鱼容器运行时运行优化的 Ubuntu 分发版。 Windows Server 节点运行优化的 Windows Server 2019 版本，并使用 `containerd` 或小鲸鱼容器运行时。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
+AKS 节点是由你管理和维护的 Azure 虚拟机。 Linux 节点使用 `containerd` 或 Moby 容器运行时运行经过优化的 Ubuntu 发行版。 Windows Server 节点运行已优化的 Windows Server 2019 版本，并使用 `containerd` 或 Moby 容器运行时。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
 
 > [!NOTE]
 > 使用 Kubernetes 1.19 版节点池及更高版节点池的 AKS 群集使用 `containerd` 作为其容器运行时。 将早于 v1.19 的 Kubernetes 版本用于节点池的 AKS 群集使用 [Moby](https://mobyproject.org/)（上游 docker）作为其容器运行时。

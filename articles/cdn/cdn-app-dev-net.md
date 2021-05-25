@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: a812704c42a4da5ddf89fe6c5ba0c9a684047f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88919482"
 ---
 # <a name="get-started-with-the-azure-cdn-library-for-net"></a>适用于 .NET 的 Azure CDN 库入门

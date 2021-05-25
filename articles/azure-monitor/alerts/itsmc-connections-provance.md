@@ -1,24 +1,24 @@
 ---
-title: 将 Provance 连接 IT 服务管理连接器
-description: 本文提供了有关如何在 Azure Monitor 中 IT 服务管理连接器 Provance (ITSMC) 的信息，以集中监视和管理 ITSM 工作项的信息。
+title: 将 Provance 连接到 IT 服务管理连接器
+description: 本文介绍有关如何将 Provance 与 Azure Monitor 中的 IT 服务管理连接器 (ITSMC) 相连接，从而集中监视和管理 ITSM 工作项的信息。
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
 ms.openlocfilehash: 542b127823a73058f319e6a39c001bd563f042ae
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102045371"
 ---
-# <a name="connect-provance-with-it-service-management-connector"></a>将 Provance 连接 IT 服务管理连接器
+# <a name="connect-provance-with-it-service-management-connector"></a>将 Provance 连接到 IT 服务管理连接器
 
-本文提供了有关如何在 Provance 实例与 IT 服务管理连接器 (ITSMC) Log Analytics 中配置连接以集中管理工作项的信息。
+本文介绍有关如何配置 Provance 实例与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项的信息。
 
 > [!NOTE]
-> 从2020年10月 Provance ITSM 集成 Azure 警报将不再为新客户启用。 不支持新的 ITSM 连接。
-> 将支持现有的 ITSM 连接。
+> 自 2020 年 10 月 1 日起，将不再为新客户提供 ITSM 与 Azure 警报集成服务。 将不再支持新的 ITSM 连接。
+> 现有的 ITSM 连接仍受支持。
 
 以下部分提供有关如何将 Provance 产品连接到 Azure 中的 ITSMC 的详细信息。
 
@@ -59,7 +59,7 @@ ms.locfileid: "102045371"
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天。 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，ITSMC 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。|
 
-![突出显示 "连接名称" 和 "合作伙伴类型" 列表的屏幕截图。](media/itsmc-connections-provance/itsm-connections-provance-latest.png)
+![突出显示“连接名称”和“合作伙伴类型”列表的屏幕截图。](media/itsmc-connections-provance/itsm-connections-provance-latest.png)
 
 成功连接并同步后：
 

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 56e9820c5e3a750a35b7271b86750df00eb4784e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92677061"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>排查 Azure AD 连接问题
@@ -32,7 +32,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 
 在本文中，我们说明了 Fabrikam 如何通过其代理连接到 Azure AD。 代理服务器名为 fabrikamproxy，并使用端口 8080。
 
-首先，我们需要确保正确配置 [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) ，并在 machine.config 文件更新后重新启动 **Microsoft Azure AD 同步服务** 。
+首先我们需要确保正确配置 [machine.config](how-to-connect-install-prerequisites.md#connectivity) 且在 machine.config 文件更新后重启 Microsoft Azure AD Sync 服务。
 ![屏幕截图显示了 machine.config 文件的一部分。](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -52,14 +52,14 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 | \*.windows.net |HTTPS/443 |用于登录 Azure AD。 |
 | secure.aadcdn.microsoftonline p.com |HTTPS/443 |用于 MFA。 |
 | \*.microsoftonline.com |HTTPS/443 |用于配置 Azure AD 目录并导入/导出数据。 |
-| \*。 crl3.digicert.com |HTTP/80 |用于验证证书。 |
-| \*。 crl4.digicert.com |HTTP/80 |用于验证证书。 |
-| \*。 ocsp.digicert.com |HTTP/80 |用于验证证书。 |
-| \*。 www.d-trust.net |HTTP/80 |用于验证证书。 |
-| \*。 root-c3-ca2-2009.ocsp.d-trust.net |HTTP/80 |用于验证证书。 |
-| \*。 crl.microsoft.com |HTTP/80 |用于验证证书。 |
-| \*。 oneocsp.microsoft.com |HTTP/80 |用于验证证书。 |
-| \*。 ocsp.msocsp.com |HTTP/80 |用于验证证书。 |
+| \*.crl3.digicert.com |HTTP/80 |用于验证证书。 |
+| \*.crl4.digicert.com |HTTP/80 |用于验证证书。 |
+| \*.ocsp.digicert.com |HTTP/80 |用于验证证书。 |
+| \*. www.d-trust.net |HTTP/80 |用于验证证书。 |
+| \*.root-c3-ca2-2009.ocsp.d-trust.net |HTTP/80 |用于验证证书。 |
+| \*.crl.microsoft.com |HTTP/80 |用于验证证书。 |
+| \*.oneocsp.microsoft.com |HTTP/80 |用于验证证书。 |
+| \*.ocsp.msocsp.com |HTTP/80 |用于验证证书。 |
 
 ## <a name="errors-in-the-wizard"></a>向导中的错误
 安装向导使用两种不同的安全性上下文。 在“连接到 Azure AD”页上，使用的是当前登录的用户。 在“配置”页上，改为[运行同步引擎服务的帐户](reference-connect-accounts-permissions.md#adsync-service-account)。 如果出现问题，该问题很有可能已显示在向导中的“连接到 Azure AD”页上，因为代理配置是全局性的。
@@ -125,26 +125,26 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect:// *bba800-anchor* .microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:33 |connect:// *bwsc02-relay* .microsoftonline.com:443 |
+| 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
 
 **配置**
 
 | 时间 | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |connect:// *bba800-anchor* .microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect:// *bba900-anchor* .microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba900-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect:// *bba800-anchor* .microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:46 |connect:// *bwsc02-relay* .microsoftonline.com:443 |
+| 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
 
 **初始同步**
 
@@ -152,8 +152,8 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect:// *bba900-anchor* .microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect:// *bba800-anchor* .microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>身份验证错误
 本部分介绍了 ADAL（Azure AD Connect 使用的身份验证库）和 PowerShell 可能返回的错误。 其中说明的错误可帮助了解后续步骤。
@@ -244,4 +244,4 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 * 如果配置看起来正确，请按照 [验证代理连接](#verify-proxy-connectivity) 中的步骤，查看问题是否也出现在向导外部的位置。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

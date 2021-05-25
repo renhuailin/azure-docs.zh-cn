@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: duau
 ms.openlocfilehash: 3602c3944e8731263fbb55f024c276783950329f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92202355"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>使用 ExpressRoute 进行高可用性设计

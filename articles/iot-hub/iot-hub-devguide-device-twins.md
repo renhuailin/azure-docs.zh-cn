@@ -11,12 +11,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: cc1f9aaa0409300f99535b0b64f5719f8e8c97ad
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: fff4b9157c30203f47c65a74b211e3dbf6426d92
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484606"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101093024"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -224,7 +224,7 @@ ms.locfileid: "109484606"
     }
     ```
 
-上述所有操作均支持 [乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要 [控制对 IoT 中心的访问](iot-hub-dev-guide-sas.md)中定义的 **ServiceConnect** 权限。
+上述所有操作均支持 [乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要 [控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **ServiceConnect** 权限。
 
 除了上述操作以外，解决方案后端还可以：
 
@@ -242,7 +242,7 @@ ms.locfileid: "109484606"
 
 * **观察所需属性**。 当前连接的设备可以选择在所需属性发生更新时接收通知。 设备收到的更新格式与解决方案后端执行的更新格式相同（部分或完全替换）。
 
-上述所有操作都需要 [控制对 IoT 中心的访问](iot-hub-dev-guide-sas.md)中定义的 **DeviceConnect** 权限。
+上述所有操作都需要 [控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **DeviceConnect** 权限。
 
 借助 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md)，可通过多种语言和平台轻松使用上述操作。 有关用于同步所需属性的 IoT 中心基元的详细信息，请参阅[设备重新连接流](iot-hub-devguide-device-twins.md#device-reconnection-flow)。
 

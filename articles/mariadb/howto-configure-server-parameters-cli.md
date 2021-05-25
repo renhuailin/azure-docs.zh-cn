@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4009d8047dae7bf8d9ba66566ff8797fa09a8878
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a3ebcf5a381efceb5e7de503caf88f4ffd3b504e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98662298"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774730"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Database for MariaDB 中配置服务器参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MariaDB 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。
@@ -21,13 +21,13 @@ ms.locfileid: "98662298"
 >[!Note]
 > 可在服务器级别全局更新服务器参数，方式是使用 [Azure CLI](./howto-configure-server-parameters-cli.md)、[PowerShell](./howto-configure-server-parameters-using-powershell.md) 或 [Azure 门户](./howto-server-parameters.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-cli.md)
 - [Azure CLI](/cli/azure/install-azure-cli) 命令行实用工具或在浏览器中使用 Azure Cloud Shell。
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mariadb-server"></a>列出 Azure Database for MariaDB 服务器的服务器配置参数
-若要列出服务器中的所有可修改参数及其值，请运行 [az mariadb server configuration list](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) 命令。
+若要列出服务器中的所有可修改参数及其值，请运行 [az mariadb server configuration list](/cli/azure/mariadb/server/configuration#az_mariadb_server_configuration_list) 命令。
 
 可以列出资源组 **myresourcegroup** 下服务器 **mydemoserver.mariadb.database.azure.com** 的服务器配置参数。
 ```azurecli-interactive
@@ -37,7 +37,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 有关每个列出参数的定义，请参阅[服务器系统变量](https://mariadb.com/kb/en/library/server-system-variables/)上的 MariaDB 参考部分。
 
 ## <a name="show-server-configuration-parameter-details"></a>显示服务器配置参数详细信息
-若要显示服务器的某个特定配置参数的详细信息，请运行 [az mariadb server configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) 命令。
+若要显示服务器的某个特定配置参数的详细信息，请运行 [az mariadb server configuration show](/cli/azure/mariadb/server/configuration#az_mariadb_server_configuration_show) 命令。
 
 本示例显示了资源组 **myresourcegroup** 下服务器 **mydemoserver.mariadb.database.azure.com** 的服务器配置参数 **slow\_query\_log** 的详细信息。
 ```azurecli-interactive
@@ -45,7 +45,7 @@ az mariadb server configuration show --name slow_query_log --resource-group myre
 ```
 
 ## <a name="modify-a-server-configuration-parameter-value"></a>修改服务器配置参数值
-此外，你还可以修改某个服务器配置参数的值，这会更新 MariaDB 服务器引擎的基础配置值。 若要更新配置，请使用 [az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) 命令。 
+此外，你还可以修改某个服务器配置参数的值，这会更新 MariaDB 服务器引擎的基础配置值。 若要更新配置，请使用 [az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az_mariadb_server_configuration_set) 命令。 
 
 更新资源组 **myresourcegroup** 下服务器 **mydemoserver.mariadb.database.azure.com** 的服务器配置参数 **slow\_query\_log**。
 ```azurecli-interactive
@@ -91,7 +91,7 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>设置全局级时区
 
-可以使用 [az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) 命令来设置全局级时区。
+可以使用 [az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az_mariadb_server_configuration_set) 命令来设置全局级时区。
 
 以下命令将资源组 **myresourcegroup** 下的服务器 **mydemoserver.mariadb.database.azure.com** 的服务器配置参数 **time\_zone** 更新为 **US/Pacific**。
 

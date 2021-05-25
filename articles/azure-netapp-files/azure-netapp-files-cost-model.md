@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp 文件的成本模型 |Microsoft Docs
-description: 描述用于从服务管理费用的 Azure NetApp 文件的成本模型。
+title: Azure NetApp 文件的成本模型 | Microsoft Docs
+description: 介绍用于管理服务中开支的 Azure NetApp 文件成本模型。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,82 +15,82 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 9c4eebae6909c9ef0969bc85bcb9a985db2a7c02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91325600"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Azure NetApp 文件的成本模型 
 
-了解 Azure NetApp 文件的成本模型可帮助你管理服务的费用。 
+了解 Azure NetApp 文件的成本模型有助于管理服务中的开支。 
 
-有关特定于跨区域复制的成本模型，请参阅 [跨区域复制的成本模型](cross-region-replication-introduction.md#cost-model-for-cross-region-replication)。
+有关特定于跨区域复制的成本模型，请参阅[跨区域复制的成本模型](cross-region-replication-introduction.md#cost-model-for-cross-region-replication)。
 
-## <a name="calculation-of-capacity-consumption"></a>计算容量消耗
+## <a name="calculation-of-capacity-consumption"></a>容量消耗量的计算
 
-Azure NetApp 文件在预配的存储容量上计费。  预配的容量通过创建容量池进行分配。  容量池根据每小时的 $/provisioned-GiB/month 进行计费。 单个容量池的最小大小为 4 TiB，容量池可以在 1-TiB 增量扩展。 在容量池中创建卷。  为每个卷分配一个从池预配容量中减去的配额。 可分配给卷的配额范围介于最小 100 GiB 到 100 TiB 之间。  
+将根据预配的存储容量对 Azure NetApp 文件计费。  预配的容量是通过创建容量池分配的。  容量池以一小时为增量基于每一已预配 GiB 的费率按月计费。 单个容量池的最小大小为 4 TiB，以后可按 1 TiB 为增量扩展容量池。 卷是在容量池中创建的。  每个卷分配有一个配额，该配额会从池的预配容量中扣减。 可分配给卷的配额最小为 100 GiB，最大为 100 TiB。  
 
-对于活动卷，配额的容量消耗基于逻辑 (有效) 容量。
+对于活动卷，从配额中扣减的容量消耗量基于逻辑（有效）容量。
 
-如果卷的实际容量消耗超出了其存储配额，则该卷可以继续增长。 只要实际卷大小小于系统限制 (100 TiB) ，仍将允许写入。  
+如果卷的实际容量消耗量超过了其存储配额，该卷可继续增长。 只要实际卷大小小于系统限制 (100 TiB)，就仍允许写入。  
 
-容量池中根据其预配量的已用总容量是该池内所有卷的已分配配额或实际消耗的最大值的总和： 
+容量池中从其预配量中扣减的已用总容量是该池中所有卷的分配配额或实际消耗量（以二者中较大的值为准）的总和： 
 
-   ![使用的总容量计算](../media/azure-netapp-files/azure-netapp-files-total-used-capacity.png)
+   ![已用总容量的计算](../media/azure-netapp-files/azure-netapp-files-total-used-capacity.png)
 
 下图演示了这些概念。  
-* 我们有一个容量池，其中包含 4 TiB 的预配容量。  池包含三个卷。  
-    * 卷1分配有2个 TiB 的配额，并且具有 800 GiB 的消耗。  
-    * 卷2分配配额为 1 TiB，具有 100 GiB 的消耗。  
-    * 向第3卷分配配额 500 GiB，但具有 800 GiB 的消耗 (超额) 。  
-* 容量池按) 预配的容量 (容量进行计量。  
-    3.8 容量的 TiB 消耗 (2 TiB 和 1 TiB （从卷1和2，以及 800 GiB) 的实际消耗）。 还有200的 GiB。
+* 我们有一个预配容量为 4 TiB 的容量池。  该池包含三个卷。  
+    * 卷 1 分配有 2 TiB 配额，已消耗了 800 GiB。  
+    * 卷 2 分配有 1 TiB 配额，已消耗了 100 GiB。  
+    * 卷 3 分配有 500 GiB 配额，但已消耗 800 GiB（超额）。  
+* 容量池计量为 4 TiB 容量（预配量）。  
+    已消耗 3.8 TiB 容量（卷 1 和 2 分别消耗了 2 TiB 和 1 TiB，卷 3 实际消耗了 800 GiB）。 还剩余 200 GiB 容量。
 
-   ![容量池包含三个卷](../media/azure-netapp-files/azure-netapp-files-capacity-pool-with-three-vols.png)
+   ![包含三个卷的容量池](../media/azure-netapp-files/azure-netapp-files-capacity-pool-with-three-vols.png)
 
-## <a name="overage-in-capacity-consumption"></a>容量消耗超额  
+## <a name="overage-in-capacity-consumption"></a>容量超额消耗  
 
-如果池的总已用容量超出了其预配的容量，则仍允许进行数据写入。  宽限期 (一小时后) ，如果池的已用容量仍超过其预配的容量，则池大小将自动增加1个 TiB，直到预配的容量大于使用的总容量。  例如，在上图中，如果 Volume 3 持续增长，实际消耗达到 1.2 TiB，则在宽限期后，池将自动调整大小为 5 TiB。  结果是，预配的池容量 (5 TiB) 超过已用容量 (4.2 TiB) 。  
+如果池的已用总容量超过了其预配容量，仍允许数据写入。  在宽限期（一小时）过后，如果池的已用容量仍然超过其预配容量，则池大小将自动以 1 TiB 为增量递增，直到预配容量大于已用总容量。  例如，在上图中，如果卷 3 持续增长，以致实际消耗量达到 1.2 TiB，则在宽限期过后，池大小将自动调整为 5 TiB。  结果是预配的池容量 (5 TiB) 超过已用容量 (4.2 TiB)。  
 
-尽管容量池大小会自动增长以满足卷的需求，但当卷大小减少时，它不会自动减少。 如果要在卷大小减少之后调整容量池的大小 (例如，在对卷) 进行数据清理后，需要 _手动_ 减少容量池大小。
+尽管容量池大小会自动增长以满足卷的需求，但它不会随着卷大小的减小而自动减小。 如果你想要在卷大小减小之后缩减容量池的大小（例如，在清理卷中的数据后），需要手动减小容量池大小。
 
-## <a name="manual-changes-of-the-pool-size"></a>池大小的手动更改  
+## <a name="manual-changes-of-the-pool-size"></a>手动更改池大小  
 
-你可以手动增加或减少池大小。 但是，以下约束适用：
-* 最小服务和最大限制  
-    请参阅有关 [资源限制](azure-netapp-files-resource-limits.md)的文章。
-* 第一次 TiB 最小购买后的 TiB 增量
-* 一小时的最小计费增量
-* 预配的池大小不能减少到池中已用的总容量。
-* 对于具有手动 QoS 的容量池，只有当大小和服务级别提供的吞吐量比所有卷的实际分配吞吐量更大时，池大小才会降低。
+可以手动增大或减小池大小。 但存在以下限制：
+* 服务的最小和最大限制  
+    请参阅有关[资源限制](azure-netapp-files-resource-limits.md)的文章。
+* 最初购买最少 4 TiB 容量后的缩放增量为 1 TiB
+* 最小计费增量为一小时
+* 不可将预配的池大小减至小于池中已用的总容量。
+* 对于附带手动 QoS 的容量池，仅当大小和服务级别提供的吞吐量高于所有卷的实际分配吞吐量时，才能减小池大小。
 
-## <a name="behavior-of-maximum-size-pool-overage"></a>最大大小池超额的行为   
+## <a name="behavior-of-maximum-size-pool-overage"></a>最大池超额的行为   
 
-可以创建或调整大小的容量池的最大大小为 500 TiB。  如果容量池中使用的总容量超过 500 TiB，将发生以下情况：
-* 如果卷低于系统最大值 100 TiB) ，仍会允许数据写入 (。
-* 在一小时的宽限期后，池将以1个 TiB 的增量自动调整大小，直到池预配的容量超出了使用的总容量。
-* 不能使用超过 500 TiB 的其他预配和已计费池容量来分配卷配额。 它也不能用于扩展性能 QoS 限制。  
-    请参阅 [服务级别](azure-netapp-files-service-levels.md) 关于性能限制和 QoS 大小调整。
+可以创建或者调整到的容量池最大大小为 500 TiB。  当容量池中已用的总容量超过 500 TiB 时，将发生以下情况：
+* 仍允许数据写入（如果卷低于系统最大限制，即 100 TiB）。
+* 在一小时宽限期后，池将以 1 TiB 为增量自动调整大小，直到池的预配容量超过已用总容量。
+* 不能使用超过 500 TiB 的额外已预配计费池容量来分配卷配额。 也不能使用这种容量来提高性能 QoS 限制。  
+    有关性能限制和 QoS 大小调整，请参阅[服务级别](azure-netapp-files-service-levels.md)。
 
 下图演示了这些概念：
-* 我们有一个具有高级存储层和 500 TiB 容量的容量池。 池包含9个卷。
-    * 将每个卷1到8分配配额为 60 TiB。  使用的总容量为 480 TiB。  
-        每个卷的 GiB 的 QoS 限制为3.75， (60 TiB * 64 MiB/秒) 。  
-    * 卷9分配配额为 20 TiB。  
-        卷9的 GiB 的 QoS 限制为1.25， (为 20 TiB * 64 MiB/s) 。
-* 卷9是一种超额方案。 它有25个 TiB 的实际消耗。  
-    * 在一小时的宽限期后，容量池将调整为 505 TiB。  
-        也就是说，已用总容量 = 8 * 60-TiB 配额（适用于卷1到8）和 25 TiB （适用于卷9的实际消耗）。
-    * 计费的容量为 505 TiB。
-    * 卷9的卷配额不能增加 (因为池的总分配配额不能超过 500 TiB) 。
-    * 可能不会 (分配额外的 QoS 吞吐量，因为池的总 QoS 仍基于 500 TiB) 。
+* 我们有一个包含高级存储层的容量池，其容量为 500 TiB。 该池包含 9 个卷。
+    * 卷 1 至 8 各分配有 60 TiB 配额。  已用的总容量为 480 TiB。  
+        每个卷的吞吐量 QoS 限制为 3.75 GiB/秒（60 TiB * 64 MiB/秒）。  
+    * 卷 9 分配有 20 TiB 配额。  
+        卷 9 的吞吐量 QoS 限制为 1.25 GiB/秒（20 TiB * 64 MiB/秒）。
+* 卷 9 存在超额的情况。 它的实际消耗量为 25 TiB。  
+    * 在一小时宽限期后，容量池大小将调整为 505 TiB。  
+        调整依据是，卷 1 至 8 的已用总容量 = 8 * 60 TiB 配额，卷 9 的实际消耗量为 25 TiB。
+    * 计费容量为 505 TiB。
+    * 卷 9 的卷配额不可提高（因为分配给池的总配额不能超过 500 TiB）。
+    * 不可分配更高的 QoS 吞吐量（因为池的总 QoS 仍然基于 500 TiB）。
 
-   ![容量池包含九个卷](../media/azure-netapp-files/azure-netapp-files-capacity-pool-with-nine-vols.png)
+   ![包含 9 个卷的容量池](../media/azure-netapp-files/azure-netapp-files-capacity-pool-with-nine-vols.png)
 
 ## <a name="capacity-consumption-of-snapshots"></a>快照的容量消耗 
 
-Azure NetApp 文件中的快照容量消耗根据父卷的配额收费。  因此，它与卷所属的容量池共用相同的计费费率。  但是，与活动卷不同，根据使用的增量容量来度量快照消耗。  Azure NetApp 文件快照本质上是差异的。 根据数据的更改率，快照通常占用的容量比活动卷的逻辑容量少得多。 例如，假设有一个 500 GiB 卷的快照，该卷只包含 10 GiB 的差异数据。 针对该快照的卷配额收费的容量为 10 GiB，而不是 500 GiB。 
+Azure NetApp 文件中的快照容量消耗量是根据父卷的配额收费的。  因此，它的计费费率与卷所属的容量池相同。  但是，与活动卷不同，快照消耗量是根据消耗的递增容量计量的。  Azure NetApp 文件快照在本质上是基于差异的。 根据数据的更改率，快照消耗的容量通常比活动卷的逻辑容量少得多。 例如，假设你有一个 500 GiB 卷的快照，该快照只包含 10 GiB 的差异数据。 根据卷配额对该快照收费的容量为 10 GiB，而不是 500 GiB。 
 
 ## <a name="next-steps"></a>后续步骤
 

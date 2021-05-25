@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 174f177080a421ec65f4ba79c550292737284de4
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 3c3d1930234c178a56227830ef0702450ddf4a8c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734785"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "100580661"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>监视 Azure 逻辑应用的运行状态、查看其触发历史记录并为其设置警报
 
@@ -20,7 +20,7 @@ ms.locfileid: "109734785"
 若要进行实时事件监视和更丰富的调试，可以使用 [Azure Monitor 日志](../azure-monitor/overview.md)为逻辑应用设置诊断日志记录。 此 Azure 服务可帮助你监视云和本地环境，使你能够更轻松地维持其可用性和性能。 然后，可以查找和查看事件，例如触发事件、运行事件和操作事件。 将此信息存储在 [Azure Monitor 日志](../azure-monitor/logs/data-platform-logs.md)中，可以创建[日志查询](../azure-monitor/logs/log-query-overview.md)来帮助查找和分析此信息。 还可以将此诊断数据与其他 Azure 服务一起使用，例如 Azure 存储和 Azure 事件中心。 有关详细信息，请参阅[使用 Azure Monitor 监视逻辑应用](../logic-apps/monitor-logic-apps-log-analytics.md)。
 
 > [!NOTE]
-> 如果逻辑应用程序在为使用[内部访问终结点](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)而创建的[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中运行，则只能从虚拟网络内部查看和访问逻辑应用的运行历史记录中的输入和输出。 请确保专用终结点与要从中访问运行历史记录的计算机之间存在网络连接。 例如，客户端计算机可能位于 ISE 的虚拟网络中，也可能存在于通过对等互连或虚拟专用网络等连接到 ISE 的虚拟网络的某个虚拟网络中。 有关详细信息，请参阅 [ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。
+> 如果逻辑应用程序在为使用[内部访问终结点](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)而创建的[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中运行，则只能从虚拟网络内部查看和访问逻辑应用的运行历史记录中的输入和输出。 请确保专用终结点与要从中访问运行历史记录的计算机之间存在网络连接。 例如，客户端计算机可能位于 ISE 的虚拟网络中，也可能存在于通过对等互连或虚拟专用网络等连接到 ISE 的虚拟网络的某个虚拟网络中。 有关详细信息，请参阅 [ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
 
 <a name="review-runs-history"></a>
 
@@ -43,8 +43,7 @@ ms.locfileid: "109734785"
    在概述窗格中的“运行历史记录”下，显示了逻辑应用的所有以往、当前和任何等待中的运行。 如果列表显示多次运行，且你找不到所需条目，请尝试筛选列表。
 
    > [!TIP]
-   > 如果未显示运行状态，请尝试通过选择“刷新”来刷新概述页。
-   > 如果由于不符合条件或找不到数据而跳过了触发器，则不会发生运行。
+   > 如果未显示运行状态，请尝试通过选择“刷新”来刷新概述页。 如果由于不符合条件或找不到数据而跳过了触发器，则不会发生运行。
 
    ![概述、运行历史记录和其他逻辑应用信息](./media/monitor-logic-apps/overview-pane-logic-app-details-run-history.png)
 
@@ -92,9 +91,7 @@ ms.locfileid: "109734785"
      现在可以查看该步骤的信息（例如输入和输出），例如：
 
    > [!NOTE]
-   > 所有运行时详细信息和事件都在逻辑应用服务中进行加密。
-   > 只有当用户请求查看该数据时，才会进行解密。
-   > 可以[在运行历史记录中隐藏输入和输出](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate)，或使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 来控制用户对此信息的访问。
+   > 所有运行时详细信息和事件都在逻辑应用服务中进行加密。 只有当用户请求查看该数据时，才会进行解密。 可以[在运行历史记录中隐藏输入和输出](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate)，或使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 来控制用户对此信息的访问。
 
 <a name="review-trigger-history"></a>
 
@@ -192,10 +189,10 @@ ms.locfileid: "109734785"
 
 > [!TIP]
 > 要从警报运行逻辑应用，可以在工作流中包括[请求触发器](../connectors/connectors-native-reqres.md)，从而可以执行类似以下示例的任务：
->
+> 
 > * [发布到 Slack](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
-> * [发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-text-message-with-logic-app)
-> * [向队列添加消息](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-queue-with-logic-app)
+> * [发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
+> * [向队列添加消息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
 
 ## <a name="next-steps"></a>后续步骤
 

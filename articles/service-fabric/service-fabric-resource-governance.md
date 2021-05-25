@@ -4,10 +4,10 @@ description: Azure Service Fabric 允许你为作为进程或容器运行的服�
 ms.topic: conceptual
 ms.date: 8/9/2017
 ms.openlocfilehash: d760766870c8c2be0a2d2384f6d012b75bc92fbd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735652"
 ---
 # <a name="resource-governance"></a>资源调控
@@ -260,7 +260,7 @@ Service Fabric 允许对 CPU 和内存使用 **RequestsOnly、LimitsOnly** 和 *
 其他备注：
 
 * 资源限制强制仅适用于 `servicefabric:/_CpuCores` 和 `servicefabric:/_MemoryInMB` 资源指标
-* 仅当资源指标的节点容量可用于 Service Fabric 时，资源限制强制实施才会起作用，可以通过自动检测机制，也可以通过用户手动指定节点容量（如[启用资源治理的群集设置](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance)部分所述）。 如果未配置节点容量，则无法使用资源限制强制功能，因为 Service Fabric 无法知道要为用户服务保留多少资源。 如果 "EnforceUserServiceMetricCapacities" 为 true，但未配置节点容量，Service Fabric 将发出运行状况警告。
+* 仅当资源指标的节点容量可用于 Service Fabric 时，资源限制强制实施才会起作用，可以通过自动检测机制，也可以通过用户手动指定节点容量（如[启用资源治理的群集设置](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance)部分所述）。 如果未配置节点容量，则无法使用资源限制强制实施功能，因为 Service Fabric 不知道要为用户服务保留多少资源。 如果“EnforceUserServiceMetricCapacities”为 true 但未配置节点容量，则 Service Fabric 将发出运行状况警告。
 
 ## <a name="other-resources-for-containers"></a>容器的其他资源
 

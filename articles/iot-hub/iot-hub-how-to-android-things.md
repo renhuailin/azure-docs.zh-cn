@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 6008ca1549629bcbb582f38de2ab1b453cd73a99
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94843751"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>使用 Azure IoT SDK 针对 Android Things 平台进行开发
@@ -42,14 +42,14 @@ ms.locfileid: "94843751"
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyAndroidThingsDevice**：这是为注册的设备提供的名称。 如图所示使用 MyAndroidThingsDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   MyAndroidThingsDevice：这是为注册的设备提供的名称。 如图所示使用 MyAndroidThingsDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的设备连接字符串  。 将下面的 `YourIoTHubName` 替换为你为 IoT 中心选择的名称。
+2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的设备连接字符串。 将下面的 `YourIoTHubName` 替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
@@ -65,7 +65,7 @@ ms.locfileid: "94843751"
 
 1. 构建 Android Things 应用程序的第一步是连接到 Android Things 设备。 将 Android Things 设备连接到一个显示器，并将它连接到 Internet。 Android Things 提供了有关如何连接到 WiFi 的[文档](https://developer.android.com/things/get-started/kits)。 连接到 Internet 之后，记下“网络”下列出的 IP 地址。
 
-2. 使用 [adb](https://developer.android.com/studio/command-line/adb) 工具，通过上面记下的 IP 地址连接到 Android Things 设备。 从终端使用此命令仔细检查连接。 你应看到你的设备已列为 "已连接"。
+2. 使用 [adb](https://developer.android.com/studio/command-line/adb) 工具，通过上面记下的 IP 地址连接到 Android Things 设备。 从终端使用此命令仔细检查连接。 应看到设备以“已连接”形式列出。
 
    ```
    adb devices

@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: f46a421ae2ad1a4d9c590c7e0b47784760ebcb9f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7f838b2a78f1c6993aa247f2944d4f2a9b1e9556
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782794"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102181119"
 ---
 # <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>将现成节点池添加到 Azure Kubernetes 服务 (AKS) 群集
 
@@ -26,7 +26,7 @@ ms.locfileid: "107782794"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 当你创建群集以使用现成节点池时，该群集还必须将虚拟机规模集用于节点池和标准 SKU 负载均衡器。 创建群集后，还必须添加更多节点池，才能使用现成节点池。 后面的步骤将介绍如何添加更多节点池。
 
@@ -113,7 +113,7 @@ spec:
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az_aks_nodepool_add
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
 [cluster-autoscaler]: cluster-autoscaler.md
 [eviction-policy]: ../virtual-machine-scale-sets/use-spot.md#eviction-policy
 [kubernetes-concepts]: concepts-clusters-workloads.md

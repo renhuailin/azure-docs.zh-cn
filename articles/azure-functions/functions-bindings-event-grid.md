@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 115ff1b59ecbe3f4fdb089c2bd61da955fba3984
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92104540"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件网格绑定
@@ -34,12 +34,12 @@ ms.locfileid: "92104540"
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 及更高版本
 
-使用触发器和绑定需要引用相应的程序包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
+使用触发器和绑定需要引用相应的包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
 
 | 语言                                        | 添加方式...                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安装 [NuGet 包]版本 2.x | |
-| C # 脚本，Java，JavaScript，Python，PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |
+| C# 脚本、Java、JavaScript、Python、PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |
 | C# 脚本（Azure 门户中仅限联机）         | 添加绑定                            | 若要更新现有绑定扩展而不必重新发布函数应用，请参阅[更新扩展]。 |
 
 [core tools]: ./functions-run-local.md

@@ -7,13 +7,13 @@ author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 03/04/2021
-ms.author: duau
-ms.openlocfilehash: 991727c369b70fdd84507f6d32b6f8a3405fa4ac
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.author: tyao
+ms.openlocfilehash: 885b4d132208ab6f8b470d147438e26a5fd4bab7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633548"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102201662"
 ---
 # <a name="connect-azure-front-door-premium-to-a-storage-account-origin-with-private-link"></a>使用专用链接将 Azure Front Door Premium 连接到存储帐户源
 
@@ -21,7 +21,7 @@ ms.locfileid: "109633548"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 [Azure 门户](https://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="enable-private-link-to-a-storage-account"></a>启用到存储帐户的专用链接
  
