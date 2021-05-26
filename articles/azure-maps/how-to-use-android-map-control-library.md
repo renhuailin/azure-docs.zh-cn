@@ -147,7 +147,7 @@ Azure Maps Android SDK 支持 Azure 政府版云。 Azure Maps Android SDK 可�
 
 在指定 Azure Maps 身份验证详细信息的同一位置，添加以下代码行，指示地图使用 Azure Maps 政府版云域。
 
-::: zone pivot=&quot;programming-language-java-android&quot;
+::: zone pivot="programming-language-java-android"
 
 ```java
 AzureMaps.setDomain(&quot;atlas.azure.us");
