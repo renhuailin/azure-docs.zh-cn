@@ -4,13 +4,13 @@ description: 术语表解释使用 LUIS API 服务时可能遇到的术语。
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 05/08/2020
-ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: 15235ddd1ae6bfe3166b523004bc8fe80a5b5be9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98786938"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061455"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS 服务时可能遇到的术语。
@@ -44,7 +44,7 @@ ms.locfileid: "98786938"
 
 ### <a name="authoring-resource"></a>创作资源
 
-LUIS [创作资源](luis-how-to-azure-subscription.md#azure-resources-for-luis)是可通过 Azure 获取的可管理项。 资源是你对 Azure 服务的相关创作、训练和发布功能的访问权限。 资源包括访问关联的 Azure 服务所需的身份验证、授权和安全信息。
+LUIS [创作资源](luis-how-to-azure-subscription.md)是可通过 Azure 获取的可管理项。 资源是你对 Azure 服务的相关创作、训练和发布功能的访问权限。 资源包括访问关联的 Azure 服务所需的身份验证、授权和安全信息。
 
 创作资源的 Azure 类型为 `LUIS-Authoring`。
 

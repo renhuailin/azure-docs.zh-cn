@@ -4,17 +4,17 @@ description: 使用 Service Fabric 的 DNS 服务从群集内部发现微服务�
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f7f06920820cdc73f8d3101ab24ee46625931ee4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3227881e544893dece9f3cd5b288f5e8dc46cc59
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91268037"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088581"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
-DNS 服务是可选的系统服务，可以在群集中启用，用于发现使用 DNS 协议的其他服务。 
+DNS 服务是可选的系统服务，可以在群集中启用，用于发现使用 DNS 协议的其他服务。
 
-许多服务（特别是容器化服务）可以通过现存的 URL 来寻址。 能够使用标准 DNS 协议（而不是 Service Fabric 命名服务协议）解析这些名称是很有必要的。 借助 DNS 服务，可将 DNS 名称映射到服务名称，进而解析终结点 IP 地址。 此类功能可在不同的平台之间保持容器化服务的可移植性，并更方便地利用“直接迁移”方案，因为它可以让你使用现有的服务 URL，而无需重新编写代码来利用命名服务。 
+许多服务（特别是容器化服务）可以通过现存的 URL 来寻址。 能够使用标准 DNS 协议（而不是 Service Fabric 命名服务协议）解析这些名称是很有必要的。 借助 DNS 服务，可将 DNS 名称映射到服务名称，进而解析终结点 IP 地址。 此类功能可在不同的平台之间保持容器化服务的可移植性，并更方便地利用“直接迁移”方案，因为它可以让你使用现有的服务 URL，而无需重新编写代码来利用命名服务。
 
 DNS 服务将 DNS 名称映射到服务名称，命名服务将服务名称进行解析并将其发送回服务终结点。 在创建时提供服务的 DNS 名称。 下图显示了如何对无状态服务运行 DNS 服务。
 
@@ -42,7 +42,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
 如果不使用门户创建群集或者要更新现有群集，则需要在模板中启用 DNS 服务：
 
-- 若要部署新的群集，可以使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建自己的资源管理器模板。 
+- 若要部署新的群集，可以使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.servicefabric/service-fabric-secure-cluster-5-node-1-nodetype)或创建自己的资源管理器模板。
 - 若要更新现有群集，可以导航到门户的群集资源组并单击“自动化脚本”，使用反映群集和组中其他资源当前状态的模板  。 若要了解详细信息，请参阅[从资源组导出模板](../azure-resource-manager/templates/export-template-portal.md)。
 
 有了模板后，可以通过以下步骤启用 DNS 服务：
@@ -77,7 +77,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
        ```json
            "properties": {
-             ...  
+             ...
              "fabricSettings": [
                ...
                {
@@ -101,7 +101,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
               ]
             }
        ```
-3. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它  。 
+3. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它  。
 
 > [!NOTE]
 > 将 DNS 从禁用升级到启用时，Service Fabric Explorer 可能未反映新状态。 若要解决问题，请重启节点，方法是：在 Azure 资源管理器模板中修改 UpgradePolicy。 有关详细信息，请参阅 [Service Fabric 模板参考](/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)。
@@ -112,7 +112,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 ## <a name="setting-the-dns-name-for-your-service"></a>设置服务的 DNS 名称
 可以在 ApplicationManifest.xml 文件中或者通过 PowerShell 命令，以声明方式为默认服务设置 DNS 名称。
 
-服务的 DNS 名称可在整个群集中解析，因此，请务必确保 DNS 名称在整个群集中的唯一性。 
+服务的 DNS 名称可在整个群集中解析，因此，请务必确保 DNS 名称在整个群集中的唯一性。
 
 强烈建议使用 `<ServiceDnsName>.<AppInstanceName>` 命名方案；例如 `service1.application1`。 如果使用 Docker Compose 部署应用程序，服务会自动分配使用此命名方案的 DNS 名称。
 
@@ -126,7 +126,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
       </StatelessService>
     </Service>
 ```
-部署应用程序后，Service Fabric Explorer 中的服务实例会显示此实例的 DNS 名称，如下图所示： 
+部署应用程序后，Service Fabric Explorer 中的服务实例会显示此实例的 DNS 名称，如下图所示：
 
 ![服务终结点](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
@@ -175,11 +175,11 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
 - *First-Label-Of-Partitioned-Service-DNSName* 是服务 DNS 名称的第一个部分。
 - *PartitionPrefix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为“--”。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
-- *Target-Partition-Name* 是分区的名称。 
+- *Target-Partition-Name* 是分区的名称。
 - *PartitionSuffix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为空字符串。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 - *Remaining-Partitioned-Service-DNSName* 是服务 DNS 名称的剩余部分。
 
-以下示例显示了针对某个群集（该群集对 `PartitionPrefix` 和 `PartitionSuffix` 采用默认设置）上运行的分区服务发出的 DNS 查询： 
+以下示例显示了针对某个群集（该群集对 `PartitionPrefix` 和 `PartitionSuffix` 采用默认设置）上运行的分区服务发出的 DNS 查询：
 
 - 若要解析具有 DNS 名称 `backendrangedschemesvc.application`（使用按范围分区方案）的服务的分区“0”，请使用 `backendrangedschemesvc-0.application`。
 - 若要解析具有 DNS 名称 `backendnamedschemesvc.application`（使用命名分区方案）的服务的分区“first”，请使用 `backendnamedschemesvc-first.application`。
@@ -187,7 +187,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 DNS 服务将返回该分区的主要副本的 IP 地址。 如果未指定分区，服务将返回随机选择的分区的主要副本的 IP 地址。
 
 ## <a name="using-dns-in-your-services"></a>在服务中使用 DNS
-如果部署多个服务，可以使用 DNS 名称找到用于通信的其他服务的终结点。 DNS 服务适用于无状态服务，在 Service Fabric 版本 6.3 和更高版本中，它也适用于有状态服务。 对于运行低于 Service Fabric 6.3 版本的 有状态服务，可以使用 HTTP 调用的内置[反向代理服务](./service-fabric-reverseproxy.md)调用特定的服务分区。 
+如果部署多个服务，可以使用 DNS 名称找到用于通信的其他服务的终结点。 DNS 服务适用于无状态服务，在 Service Fabric 版本 6.3 和更高版本中，它也适用于有状态服务。 对于运行低于 Service Fabric 6.3 版本的 有状态服务，可以使用 HTTP 调用的内置[反向代理服务](./service-fabric-reverseproxy.md)调用特定的服务分区。
 
 DNS 服务不支持动态端口。 可以通过反向代理服务解析使用动态端口的服务。
 
@@ -207,7 +207,7 @@ public class ValuesController : Controller
             HttpClient client = new HttpClient();
             var response = await client.GetAsync(uri);
             result = await response.Content.ReadAsStringAsync();
-            
+
         }
         catch (Exception e)
         {
@@ -235,7 +235,7 @@ public class ValuesController : Controller
             HttpClient client = new HttpClient();
             var response = await client.GetAsync(uri);
             result = await response.Content.ReadAsStringAsync();
-            
+
         }
         catch (Exception e)
         {
@@ -248,7 +248,7 @@ public class ValuesController : Controller
 ```
 
 ## <a name="known-issues"></a>已知问题
-* 对于 Service Fabric 版本 6.3 及更高版本，对于 DNS 名称中包含连字符的服务名称，DNS 查找存在问题。 有关此问题的详细信息，请跟踪以下 [GitHub 问题](https://github.com/Azure/service-fabric-issues/issues/1197)。 此问题的修补程序将在接下来的 6.3 更新中提供。 
+* 对于 Service Fabric 版本 6.3 及更高版本，对于 DNS 名称中包含连字符的服务名称，DNS 查找存在问题。 有关此问题的详细信息，请跟踪以下 [GitHub 问题](https://github.com/Azure/service-fabric-issues/issues/1197)。 此问题的修补程序将在接下来的 6.3 更新中提供。
 
 * 在 Linux 上尚不支持用于 Service Fabric 服务的 DNS 服务。 Linux 上的容器支持 DNS 服务。 使用 Fabric 客户端/ServicePartitionResolver 进行手动解析是另一种选择。
 

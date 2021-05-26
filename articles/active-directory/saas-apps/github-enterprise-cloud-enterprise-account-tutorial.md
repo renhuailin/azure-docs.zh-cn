@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/12/2021
+ms.date: 05/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 7360ad5abc7342043152c2da11038b624b0bfadc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ccd7886007177e32506ce0c3db489826a8a708d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649939"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479857"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>教程：Azure Active Directory 单一登录 (SSO) 与 GitHub Enterprise Cloud - 企业帐户的集成
 
@@ -74,15 +74,15 @@ ms.locfileid: "101649939"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://github.com/enterprises/<ENTERPRISE-SLUG>`
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<ENTERPRISE-SLUG>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://github.com/enterprises/<ENTERPRISE-SLUG>/saml/consume`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<ENTERPRISE-SLUG>/saml/consume`
 
 1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-     在“登录 URL”文本框中，使用以下模式键入 URL：`https://github.com/enterprises/<ENTERPRISE-SLUG>/sso`
+     在“登录 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<ENTERPRISE-SLUG>/sso`
 
     > [!NOTE]
     > 将 `<ENTERPRISE-SLUG>` 替换为 GitHub 企业帐户的实际名称。
@@ -138,7 +138,7 @@ ms.locfileid: "101649939"
 
 ## <a name="test-sso-with-another-enterprise-account-owner-or-organization-member-account"></a>使用另一个企业帐户所有者或组织成员帐户测试 SSO
 
-为 GitHub 企业帐户设置 SAML 集成后（也适用于企业帐户中的 GitHub 组织），分配给 Azure AD 中的应用的其他企业帐户所有者应该能够导航到 GitHub 企业帐户 URL (`https://github.com/enterprises/<enterprise account>`)，通过 SAML 进行身份验证，并访问 GitHub 企业帐户下的策略和设置。 
+为 GitHub 企业帐户设置 SAML 集成后（也适用于企业帐户中的 GitHub 组织），分配给 Azure AD 中的应用的其他企业帐户所有者应该能够导航到 GitHub 企业帐户 URL (`https://github.com/orgs/<enterprise account>`)，通过 SAML 进行身份验证，并访问 GitHub 企业帐户下的策略和设置。 
 
 企业帐户中组织的所有者应该能够[邀请用户加入其 GitHub 组织](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-organizations-and-teams/inviting-users-to-join-your-organization)。 使用组织所有者帐户登录 GitHub.com，然后按照本文中的步骤邀请 `B.Simon` 加入组织。 如果还没有 GitHub 用户帐户，则需要为 `B.Simon` 创建一个。 
 

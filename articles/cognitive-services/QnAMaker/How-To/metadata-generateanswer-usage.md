@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9d2100dbc2c5f24742a949778a1b7450bf303c5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0daa44f0d901dc14541785f764d5ccf8f96fc737
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232199"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376667"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api"></a>使用 GenerateAnswer API 获取答案
 
@@ -42,7 +42,7 @@ ms.locfileid: "103232199"
 
     ![终结点详细信息的屏幕截图](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
-    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+    # <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
     ![终结点详细信息托管的屏幕截图](../media/qnamaker-how-to-metadata-usage/view-code-managed.png)
 
@@ -180,9 +180,9 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 我们仅提供 QnA Maker 托管版本中的精确答案功能。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-使用 QnA Maker 托管资源时，用户可以启用[精确答案](../reference-precise-answering.md)。 answerSpanRequest 参数必须进行相同的更新。
+用户可以在使用带自定义问答功能的文本分析资源时启用[精确答案](../reference-precise-answering.md)。 answerSpanRequest 参数必须进行相同的更新。
 
 ```json
 {

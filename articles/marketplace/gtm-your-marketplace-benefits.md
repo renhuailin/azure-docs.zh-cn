@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/09/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: dc156afa2c5b5143e1543ef58203d6dea5d046c3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3f94b22d4f439769b27d38943603f7c726bfc40d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144990"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468401"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商业市场权益
 
 你已将产品/服务发布到 Microsoft 商业市场，现在希望看到它们获得成功。 我们提供销售、技术和营销权益，帮助你加快产品/服务的增加。
 
-在 Microsoft AppSource 或 Azure 市场上发布产品/服务后，请转到[合作伙伴中心](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace)，访问并激活你有资格享受的营销、销售和技术权益。 查看 Marketplace Rewards [演示视频](https://partner.microsoft.com/asset/detail/marketplace-rewards-demo-mp4)，概要了解如何注册 Marketplace Rewards 并在合作伙伴中心激活权益。 Marketplace Rewards 权益根据商业市场参与度和销售情况而逐渐增多。 参与得越多，回馈就越多。
+在 Microsoft AppSource 或 Azure 市场上发布产品/服务后，请转到[合作伙伴中心](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace)，访问并激活你有资格享受的营销、销售和技术权益。 Marketplace Rewards 权益根据商业市场参与度和销售情况而逐渐增多。 参与得越多，回馈就越多。
 
 ## <a name="marketplace-rewards"></a>Marketplace Rewards
 

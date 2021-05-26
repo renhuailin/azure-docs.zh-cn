@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 10742ec277f5742067c432a2823cbb7592e6a752
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 63740e6d3f6df757cc7cc8847ed10a03b8831fd5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874686"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060177"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>教程：使用 Linux 容器开发 IoT Edge 模块
 
@@ -226,10 +226,10 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
    ```
 
    可能会收到一条安全警告，推荐使用 `--password-stdin`。 这条最佳做法是针对生产方案建议的，这超出了本教程的范畴。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 参考。
-   
+
 3. 登录到 Azure 容器注册表
 
-   ```cmd/sh
+   ```azurecli
    az acr login -n <ACR registry name>
    ```
 
@@ -270,7 +270,7 @@ Visual Studio Code 现在有权访问容器注册表，因此可以将解决方�
 
 <!--Alternative steps: Use VS Code Docker tools to view ACR images with tags-->
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 如果在生成并推送模块映像时遇到错误，这通常与开发计算机上的 Docker 配置有关。 使用以下检查来检查配置：
 

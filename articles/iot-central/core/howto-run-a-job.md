@@ -7,12 +7,12 @@ author: philmea
 ms.author: philmea
 ms.date: 11/19/2020
 ms.topic: how-to
-ms.openlocfilehash: 19d8738790b5634b9de989fa94edac6a542f85f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a78b808b6c3312dea25b52901029606a8ddeb901
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94917335"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060069"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建并运行作业
 
@@ -172,4 +172,4 @@ ms.locfileid: "94917335"
 了解如何在 Azure IoT Central 应用程序中创建作业后，接下来请学习：
 
 - [管理设备](howto-manage-devices.md)
-- [对设备模板进行版本控制](howto-version-device-template.md)
+- [编辑设备模板](howto-edit-device-template.md)

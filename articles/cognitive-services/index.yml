@@ -52,18 +52,9 @@ conceptualContent:
         - url: ./face/index.yml
           itemType: overview
           text: 人脸
-        - url: ./form-recognizer/index.yml
-          itemType: overview
-          text: 表单识别器
-        - url: ../media-services/video-indexer/index.yml
-          itemType: overview
-          text: 视频索引器
     - title: 语言
       summary: 让应用能够通过预建的脚本处理自然语言、评估情绪，并了解如何识别用户需求。
       links:
-        - url: ./immersive-reader/index.yml
-          itemType: overview
-          text: 沉浸式阅读器
         - url: ./luis/index.yml
           itemType: overview
           text: 语言理解 (LUIS)
@@ -94,9 +85,6 @@ conceptualContent:
         - url: ./content-moderator/index.yml
           itemType: overview
           text: 内容审查器
-        - url: ./metrics-advisor/index.yml
-          itemType: overview
-          text: 指标顾问（预览版）
         - url: ./personalizer/index.yml
           itemType: overview
           text: 个性化体验创建服务

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 51a354bfc6df43938d8e2117a7d93f9bd6749225
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3229e8a3ee482067677cdd5af1fb98b120ef8dd0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140778"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082101"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault 的监视和警报
 
@@ -26,7 +26,7 @@ ms.locfileid: "108140778"
 + 如何配置指标并创建仪表板
 + 如何根据指定阈值创建警报
 
-用于密钥保管库的 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 [在此处详细了解用于 Key Vault 的 Azure Monitor](../../azure-monitor/insights/key-vault-insights-overview.md#introduction-to-azure-monitor-for-key-vault)
+用于密钥保管库的 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 [在此处详细了解用于 Key Vault 的 Azure Monitor](../../azure-monitor/insights/key-vault-insights-overview.md#introduction-to-key-vault-insights)
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>要监视的基本 Key Vault 指标
 

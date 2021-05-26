@@ -9,21 +9,21 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 413553165fcf74fa4590cb4661212b885a277579
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7340cde78f6be6853ec50163cfd68cc1fd2ceec
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550631"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087357"
 ---
-# <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
+# <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本
 
 本文提供了用于准备预加密 VHD 和其他任务的示例脚本。
 
 > [!NOTE]
 > 除非另有说明，否则所有脚本均引用最新的非 AAD 版本的 ADE。
 
-## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure 磁盘加密的示例 PowerShell 脚本 
+## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure 磁盘加密的示例 PowerShell 脚本
 
 
 - **列出订阅中所有已加密的 VM**
@@ -39,9 +39,9 @@ ms.locfileid: "102550631"
     ```
 
 - **列出订阅中所有已加密的 VMSS 实例**
-    
+
     可以使用[此 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1)在订阅中存在的所有资源组中找到所有 ADE 加密的 VMSS 实例和扩展版本。
- 
+
 - **列出 Key Vault 中用于加密 VM 的所有磁盘加密机密**
 
 ```azurepowershell-interactive
@@ -50,9 +50,9 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
 
 ### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>使用 Azure 磁盘加密先决条件 PowerShell 脚本
 
-如果你已熟悉进行 Azure 磁盘加密的先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关此 PowerShell 脚本的用法示例，请参阅[有关加密 VM 的快速入门](disk-encryption-powershell-quickstart.md)。 可以删除脚本的某个部分中的注释（从第 211 行开始），以加密现有资源组中现有 VM 的所有磁盘。 
+如果你已熟悉进行 Azure 磁盘加密的先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关此 PowerShell 脚本的用法示例，请参阅[有关加密 VM 的快速入门](disk-encryption-powershell-quickstart.md)。 可以删除脚本的某个部分中的注释（从第 211 行开始），以加密现有资源组中现有 VM 的所有磁盘。
 
-下表显示了可在 PowerShell 脚本中使用的参数： 
+下表显示了可在 PowerShell 脚本中使用的参数：
 
 |参数|说明|必需？|
 |------|------|------|
@@ -68,13 +68,13 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>在不使用 Azure AD 应用的情况下加密或解密 VM
 
-- [在现有或正在运行的 Windows VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)  
-- [在正在运行的 Windows VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad) 
+- [在现有或正在运行的 Windows VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm-without-aad)
+- [在正在运行的 Windows VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)
 
-### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>使用 Azure AD 应用加密或解密 VM（以前的版本） 
- 
-- [在现有或正在运行的 Windows VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)    
-- [在正在运行的 Windows VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) 
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>使用 Azure AD 应用加密或解密 VM（以前的版本）
+
+- [在现有或正在运行的 Windows VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)
+- [在正在运行的 Windows VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm)
 - [从预加密的 VHD/存储 Blob 创建新的加密托管磁盘](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
     - 在提供预加密 VHD 及其对应加密设置的情况下创建新的加密托管磁盘
 
@@ -103,7 +103,7 @@ ServerManagerCmd -install BitLockers
 若要压缩 OS 分区并为 BitLocker 准备计算机，请根据需要执行 [bdehdcfg](/windows/security/information-protection/bitlocker/bitlocker-basic-deployment)：
 
 ```console
-bdehdcfg -target c: shrink -quiet 
+bdehdcfg -target c: shrink -quiet
 ```
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>使用 BitLocker 保护 OS 卷
@@ -126,16 +126,16 @@ reboot
 ## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>将预加密 VM 的机密上传到密钥保管库
 必须将前面获取的磁盘加密机密作为机密上传到密钥保管库中。  这需要向将上传机密的帐户授予 set secret 权限和 wrapkey 权限。
 
-```powershell 
+```powershell
 # Typically, account Id is the user principal name (in user@domain.com format)
 $upn = (Get-AzureRmContext).Account.Id
 Set-AzKeyVaultAccessPolicy -VaultName $kvname -UserPrincipalName $acctid -PermissionsToKeys wrapKey -PermissionsToSecrets set
 
-# In cloud shell, the account ID is a managed service identity, so specify the username directly 
-# $upn = "user@domain.com" 
+# In cloud shell, the account ID is a managed service identity, so specify the username directly
+# $upn = "user@domain.com"
 # Set-AzKeyVaultAccessPolicy -VaultName $kvname -UserPrincipalName $acctid -PermissionsToKeys wrapKey -PermissionsToSecrets set
 
-# When running as a service principal, retrieve the service principal ID from the account ID, and set access policy to that 
+# When running as a service principal, retrieve the service principal ID from the account ID, and set access policy to that
 # $acctid = (Get-AzureRmContext).Account.Id
 # $spoid = (Get-AzureRmADServicePrincipal -ServicePrincipalName $acctid).Id
 # Set-AzKeyVaultAccessPolicy -VaultName $kvname -ObjectId $spoid -BypassObjectIdValidation -PermissionsToKeys wrapKey -PermissionsToSecrets set

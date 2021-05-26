@@ -3,12 +3,12 @@ title: 使用 Apache Kafka 应用中的事件中心 - Azure 事件中心 | Micro
 description: 本文介绍有关 Azure 事件中心提供的 Apache Kafka 支持的信息。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2e6e1defffd012e524044bc427788fc8a1bcc53a
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97861339"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376077"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>使用 Apache Kafka 应用程序中的 Azure 事件中心
 事件中心提供与 Apache Kafka® 生成者和使用者 API 兼容的终结点，大多数现有 Apache Kafka 客户端应用程序可以使用这些 API 作为运行你自己的 Apache Kafka 群集的替代方法。 事件中心 1.0 及更高版本支持 Apache Kafka 的生成者和使用者 API 客户端。
@@ -39,7 +39,7 @@ ms.locfileid: "97861339"
 
 有关事件中心和命名空间的详细信息，请参阅[事件中心功能](event-hubs-features.md#namespace)。 作为云服务，事件中心使用单一稳定的虚拟 IP 地址作为终结点，因此客户端无需了解群集中代理或计算机的情况。 尽管事件中心实现了同一协议，但此差异意味着所有分区的所有 Kafka 流量都可通过这一个终结点以可预测方式进行路由，而无需对群集的所有中转站进行防火墙访问。   
 
-事件中心的规模由购买的吞吐量单位数控制，每个吞吐量单位可提供每秒 1 MB 的速度或每秒 1,000 个事件的流入量，而流出量则是流入量的两倍。 如果使用[自动扩充](event-hubs-auto-inflate.md)功能，则在达到吞吐量限制时，事件中心可以自动纵向扩展吞吐量单位；此功能也适用于 Apache Kafka 协议支持。  
+事件中心内的规模由购买的[吞吐量单位](event-hubs-scalability.md#throughput-units)数或[处理单位](event-hubs-scalability.md#processing-units)数控制，每个吞吐量单位可提供每秒 1 MB 的速度或每秒 1,000 个事件的流入量，而流出量则是流入量的两倍。 如果使用[自动扩充](event-hubs-auto-inflate.md)功能，则在达到吞吐量限制时，事件中心可以自动纵向扩展吞吐量单位或处理单位；此功能也适用于 Apache Kafka 协议支持。  
 
 ### <a name="is-apache-kafka-the-right-solution-for-your-workload"></a>Apache Kafka 是适合你的工作负载的解决方案吗？
 
@@ -67,7 +67,7 @@ bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
 security.protocol=SASL_SSL
 sasl.mechanism=OAUTHBEARER
 sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required;
-sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
+sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler
 ```
 
 #### <a name="shared-access-signature-sas"></a>共享访问签名 (SAS)

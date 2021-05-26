@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4907a81fc8cb55499fa97f2b02a3e19e7117bbbc
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 2f9eca1600ffe9270ac2f02db38c815e92498afe
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286362"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086205"
 ---
 # <a name="find-and-redact-blur-faces-with-the-face-detector-preset"></a>使用人脸检测器预设查找和编修（模糊处理）人脸
 
@@ -29,10 +29,8 @@ Azure 媒体服务 v3 API 包含一个人脸检测器预设，该预设在云中
 
 本文提供有关人脸检测器预设的详细信息，并介绍如何通过适用于 .NET 的 Azure 媒体服务 SDK 使用该预设。
 
-[!INCLUDE [regulation](../video-indexer/includes/regulation.md)]
-
 ## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
- 
+
 作为一项重要提醒，在 Azure 媒体服务中使用分析时必须遵守所有适用的法律。 不得以违反他人权利的方式使用 Azure 媒体服务或任何其他 Azure 服务。 在将任何视频（包括任何生物特征数据）上传到 Azure 媒体服务进行处理和存储之前，必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 若要了解 Azure 媒体服务中的合规性、隐私和安全性，请参阅 Azure [认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 若要了解 Microsoft 的隐私义务以及对您的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 其他隐私信息（包括有关数据保留、删除/销毁的信息）在 OST 中和[此处](../video-indexer/faq.md)提供。 使用 Azure 媒体服务即表示你同意接受认知服务条款、OST、DPA 和隐私声明的约束
 
 ## <a name="face-redaction-modes"></a>面部修订模式
@@ -55,7 +53,7 @@ Azure 媒体服务 v3 API 包含一个人脸检测器预设，该预设在云中
 
 ### <a name="analyze-mode"></a>分析模式
 
-双阶段工作流的“分析”阶段采用视频输入并生成一个 JSON 文件，其中包含检测到的每张人脸的人脸位置、人脸 ID 和 jpg 图像列表。 
+双阶段工作流的“分析”阶段采用视频输入并生成一个 JSON 文件，其中包含检测到的每张人脸的人脸位置、人脸 ID 和 jpg 图像列表。
 
 | 阶段 | 文件名 | 说明 |
 | --- | --- | --- |
@@ -149,7 +147,6 @@ Azure 媒体服务 v3 API 包含一个人脸检测器预设，该预设在云中
 
 可以查找以下模糊类型的示例。
 
-
 #### <a name="low"></a>低
 
 ![低分辨率模糊处理设置示例。](./media/media-services-face-redaction/blur-1.png)
@@ -214,4 +211,3 @@ Azure 媒体服务 v3 API 包含一个人脸检测器预设，该预设在云中
 ## <a name="provide-feedback"></a>提供反馈
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

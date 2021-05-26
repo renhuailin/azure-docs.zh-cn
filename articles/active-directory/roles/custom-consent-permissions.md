@@ -12,20 +12,20 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: f9c2c15bbfcf9a9271e629ef26c11ecc4cbaaa6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7a26bfd979fd58ba0519aeba274b22ae502f8a8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98740102"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085917"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自定义角色的应用同意权限
 
 本文包含当前可用于 Azure Active Directory (Azure AD) 中的自定义角色定义的应用同意权限。 本文介绍与应用同意和权限相关的一些常见方案所需的权限。
 
-## <a name="required-license-plan"></a>所需许可证计划
+## <a name="license-requirements"></a>许可要求
 
-使用此功能需要 Azure AD 组织的 Azure AD Premium P1 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版、基本版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="app-consent-permissions"></a>应用同意权限
 

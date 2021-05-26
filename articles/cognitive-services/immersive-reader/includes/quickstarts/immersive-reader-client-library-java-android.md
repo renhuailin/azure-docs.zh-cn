@@ -1,6 +1,6 @@
 ---
 title: 沉浸式阅读器 Java (Android) 客户端库快速入门
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 本快速入门将从头开始构建一个 Android 应用，并添加沉浸式阅读器 API 功能。
 services: cognitive-services
 author: dylankil
@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 7119e1d029bb682f004e65323df5b50087c0634c
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 49420e073644f8884bdcc19ac55a9d7e0d987bac
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102619192"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376517"
 ---
 [沉浸式阅读器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术，旨在提高新的读者、语言学习者和有学习差异（如阅读障碍）的用户的阅读理解能力。 你可在应用程序中使用沉浸式阅读器来隔离文本，以改进焦点、显示常用词的图片、突出显示语音的各个部分、大声朗读所选文本、实时翻译字词和短语等等。
 
