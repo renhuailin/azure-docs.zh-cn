@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: f379a66d2175fa42102a118693daae21925e0b0e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 42376cc7c1e1745e3db3ce3467ea02221fb7b834
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382489"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478098"
 ---
 # <a name="configure-translator-docker-containers-preview"></a>配置翻译器 Docker 容器（预览版）
 
@@ -26,7 +26,18 @@ ms.locfileid: "110382489"
 
 ## <a name="configuration-settings"></a>配置设置
 
-[!INCLUDE [Container shared configuration settings table](../../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
+此容器具有以下配置设置：
+
+|必须|设置|目的|
+|--|--|--|
+|是|[ApiKey](#apikey-configuration-setting)|跟踪账单信息。|
+|否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](/azure/application-insights) 遥测支持。|
+|是|[Billing](#billing-configuration-setting)|指定 Azure 上服务资源的终结点 URI。|
+|是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
+|否|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
+|否|HTTP 代理|配置 HTTP 代理以发出出站请求。|
+|否|[日志记录](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
+|是|[Mounts](#mount-settings)|从主计算机读取数据并将其写入到容器，以及从容器读回数据并将其写回到主计算机。|
 
  > [!IMPORTANT]
 > [ApiKey](#apikey-configuration-setting)、[Billing](#billing-configuration-setting) 和 [EULA](#eula-setting) 设置一起使用。必须为所有三个设置提供有效值，否则容器无法启动。 详细了解如何使用这些配置设置来实例化容器。

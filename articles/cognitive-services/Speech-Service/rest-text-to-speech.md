@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 7a15f51b76cc6109537a8c2e0cbbe27bfb9ffb0f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c5772f6632629a75bc1ea54cf2434dac34d9586a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368761"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478309"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -130,11 +130,11 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 
     ...
 
-    {
+     {
     "Name": "Microsoft Server Speech Text to Speech Voice (en-US, JennyMultilingualNeural)",
     "ShortName": "en-US-JennyMultilingualNeural",
-    "DisplayName": "JennyMultilingualNeural",
-    "LocalName": "JennyMultilingualNeural",
+    "DisplayName": "Jenny Multilingual",
+    "LocalName": "Jenny Multilingual",
     "Gender": "Female",
     "Locale": "en-US",
     "SampleRateHertz": "24000",
@@ -318,4 +318,4 @@ Authorization: Bearer [Base64 access_token]
 
 - [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
 - [用于长格式音频的异步合成](./long-audio-api.md)
-- [自定义语音入门](how-to-custom-voice.md)
+- [自定义神经语音入门](how-to-custom-voice.md)

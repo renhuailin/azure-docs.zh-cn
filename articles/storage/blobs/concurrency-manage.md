@@ -11,12 +11,12 @@ ms.date: 12/01/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea0bed0884a3a03e2cd15b274b2afb0f054b0cbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53005bffde698030221751ec0638a6cc6cbd98c7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96523406"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478927"
 ---
 # <a name="managing-concurrency-in-blob-storage"></a>在 Blob 存储中管理并发
 
@@ -49,11 +49,11 @@ Azure 存储会为每个已存储的对象分配一个标识符。 只要对对�
 
 下面的代码示例演示如何在用于检查 blob 的 ETag 值的写入请求中构造 If-Match 条件。 Azure 存储会评估 blob 的当前 ETag 是否与请求中提供的 ETag 相同，只有在两个 ETag 值匹配时才执行写入操作。 如果其他进程已在此期间更新该 blob，则 Azure 存储会返回 HTTP 412（“不满足前提条件”）状态消息。  
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Concurrency.cs" id="Snippet_DemonstrateOptimisticConcurrencyBlob":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 public void DemonstrateOptimisticConcurrencyBlob(string containerName, string blobName)
@@ -116,11 +116,11 @@ Azure 存储还支持条件标头，其中包括 If-Modified-Since、If-Unmodifi
 
 下面的代码示例演示了如何获取 blob 的独占租约，通过提供租约 ID 来更新 blob 的内容，然后释放租约。 如果租约有效，但写入请求中未提供租约 ID，则写入操作会失败，并出现错误代码 412（“不满足前提条件”）。  
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Concurrency.cs" id="Snippet_DemonstratePessimisticConcurrencyBlob":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 public void DemonstratePessimisticConcurrencyBlob(string containerName, string blobName)

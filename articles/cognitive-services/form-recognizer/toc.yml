@@ -13,19 +13,19 @@
       href: whats-new.md
 - name: 快速入门
   items:
-    - name: 客户端库或 REST API 入门
+    - name: 客户端库和 REST API
       href: quickstarts/client-library.md
-    - name: 使用示例标记工具
-      href: quickstarts/label-tool.md
+    - name: 表单识别器入门
+      href: quickstarts/get-started-with-form-recognizer.md
 - name: 示例
   items:
-    - name: C#/.NET：表单识别器客户端库 SDK
+    - name: C#/.NET
       href: /samples/azure/azure-sdk-for-net/azure-form-recognizer-client-sdk-samples
-    - name: Java：表单识别器客户端库 SDK
+    - name: Java
       href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
-    - name: Python：表单识别器客户端库 SDK
+    - name: Python
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
-    - name: JavaScript 表单识别器客户端库 SDK
+    - name: JavaScript
       href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
 - name: 负责使用 AI
   items:
@@ -41,12 +41,8 @@
       href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/cognitive-services/form-recognizer/context/context
 - name: 操作指南
   items:
-    - name: 生成训练数据集
-      href: build-training-data-set.md
-    - name: 使用表标记训练自定义模型
-      href: supervised-table-tags.md
-    - name: 部署示例标记工具
-      href: deploy-label-tool.md
+    - name: 使用示例标记工具训练自定义模型
+      href: label-tool.md
     - name: 使用容器
       items:
         - name: 安装和运行容器
@@ -73,11 +69,8 @@
           href: ../authentication.md?context=/azure/cognitive-services/form-recognizer/context/context
 - name: 概念
   items:
-    - name: 布局 API
-      expanded: true
-      items:
-        - name: 提取表单数据
-          href: concept-layout.md
+    - name: Layout
+      href: concept-layout.md
     - name: 自定义模式
       href: concept-custom.md
     - name: Receipts
@@ -100,8 +93,8 @@
       href: tutorial-azure-function.md
 - name: 参考
   items:
-    - name: 表单识别器 API v2.1 preview.3
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm'
+    - name: 表单识别器 API v2.1.3
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm'
     - name: 表单识别器 API v2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: SDK
@@ -116,6 +109,10 @@
           href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: 资源
   items:
+    - name: 客户聚焦
+      href: resource-customer-stories.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 企业就绪情况
       items:
         - name: 区域支持
@@ -124,7 +121,5 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 隐私和 Cookie
       href: 'https://privacy.microsoft.com/en-US/privacystatement'

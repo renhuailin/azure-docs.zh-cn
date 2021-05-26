@@ -4,12 +4,12 @@ description: 了解如何使用用于访问 Azure Kubernetes 服务 (AKS) 中 AP
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 9b6ee4a17c15b6ada39798db40408d1d26971dfe
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: e97ed38d3491ace658a92e2abfbc7cd417ca9cf1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016340"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100551"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
 
@@ -61,7 +61,6 @@ az aks create \
 > 应将以下范围添加到允许列表：
 > - 防火墙公共 IP 地址
 > - 代表你要从中管理群集的网络的任何范围
-> - 如果在 AKS 群集上使用 Azure Dev Spaces，必须[根据所在的区域允许其他范围][dev-spaces-ranges]。
 >
 > 可指定的 IP 范围数的上限为 200。
 >

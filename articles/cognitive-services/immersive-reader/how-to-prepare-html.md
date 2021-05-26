@@ -1,6 +1,6 @@
 ---
 title: 如何为沉浸式阅读器准备 HTML 内容
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 了解如何使用 HTML、JavaScript、Python、Android 或 iOS 启动沉浸式阅读器。 沉浸式阅读器使用可靠的技术来提高语言学习者、萌发期读者和具有学习差异的学生的阅读理解力。
 author: erhopf
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: include
 ms.date: 03/04/2021
 ms.author: erhopf
-ms.openlocfilehash: 40aab9510eb90c405f92be49a3b4c0a3f756c872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35fa7067a8aaf669bd2487465cfa7f0ba5315aa9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102620259"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373834"
 ---
 # <a name="how-to-prepare-html-content-for-immersive-reader"></a>如何为沉浸式阅读器准备 HTML 内容
 

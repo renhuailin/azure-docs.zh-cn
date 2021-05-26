@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: tisande
-ms.openlocfilehash: cb7b2e62a9fabeeca675edb8e6aa356213e0999e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c792a967805bdda1e51ab3a0f5521c5b1baa1be2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98011367"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466867"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联接
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -76,11 +76,9 @@ ms.locfileid: "98011367"
   
 示例 3 - 3 个源   
   
-- 让 <from_source1> 的范围为容器，并表示集 {A, B, C}。  
-  
 - 让 `<from_source1>` 的范围为容器，并表示集 {A, B, C}。  
   
-- <from_source2> 作为引用 input_alias1 的文档作用域，并表示集：  
+- 让 `<from_source2>` 作为文档范围的引用 `input_alias1`，表示的集如下所示：  
   
     若 `input_alias1 = A,`，表示集 {1, 2}  
   

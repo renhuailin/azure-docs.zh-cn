@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: f421274513cc3d76f7e8c1119cf98e4e5d36b1f9
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: a0644342c417cb06c257372e526fff55df62f9b9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950257"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095421"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标?
 
@@ -56,7 +56,7 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
     * [计算实例](how-to-create-manage-compute-instance.md)。
     * [计算群集](how-to-create-attach-compute-cluster.md)。
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)（预览版）。
-* Azure 资源管理器模板。 有关示例模板，请参阅[创建 Azure 机器学习计算群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)。
+* Azure 资源管理器模板。 有关示例模板，请参阅[创建 Azure 机器学习计算群集](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-amlcompute)。
 * [Azure CLI 的机器学习扩展](reference-azure-machine-learning-cli.md#resource-management)。
 
 在创建时，这些计算资源会自动成为工作区的一部分，这一点与其他类型的计算目标不同。
@@ -103,11 +103,11 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 | NC | 无。 |  GPU | 计算群集和实例 |
 | NC 促销 | 无。 | GPU | 计算群集和实例 |
 | NCsv2 | 需要审批。 | GPU | 计算群集和实例 |
-| NCsv3 | 需要审批。 | GPU | 计算群集和实例 |  
-| NDs | 需要审批。 | GPU | 计算群集和实例 | 
-| NDv2 | 需要审批。 | GPU | 计算群集和实例 | 
-| NV | 无。 | GPU | 计算群集和实例 | 
-| NVv3 | 需要审批。 | GPU | 计算群集和实例 | 
+| NCsv3 | 需要审批。 | GPU | 计算群集和实例 |
+| NDs | 需要审批。 | GPU | 计算群集和实例 |
+| NDv2 | 需要审批。 | GPU | 计算群集和实例 |
+| NV | 无。 | GPU | 计算群集和实例 |
+| NVv3 | 需要审批。 | GPU | 计算群集和实例 |
 
 
 虽然 Azure 机器学习支持这些 VM 系列，但它们可能并非在所有 Azure 区域中均可用。 若要检查 VM 系列是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
