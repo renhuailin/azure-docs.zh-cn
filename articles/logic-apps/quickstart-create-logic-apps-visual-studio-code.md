@@ -1,22 +1,22 @@
 ---
-title: 使用 Visual Studio Code 自动执行任务和工作流
-description: 使用 Visual Studio Code (VS Code) 创建或编辑逻辑应用工作流定义
+title: 快速入门 - 在 Visual Studio Code 中通过 Azure 逻辑应用创建集成工作流
+description: 在 Visual Studio Code 中通过多租户 Azure 逻辑应用创建和管理工作流定义。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, deli, logicappspm
+ms.reviewer: azla
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/23/2021
-ms.openlocfilehash: 0163b58017599ceb26f52f0e47cbc87e161f6ed2
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 05/25/2021
+ms.openlocfilehash: 41ed5f3e85390a51fa30316bc9f95c8b320c4468
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161226"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474449"
 ---
-# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建和管理逻辑应用工作流定义
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-multi-tenant-azure-logic-apps-and-visual-studio-code"></a>快速入门：通过多租户 Azure 逻辑应用和 Visual Studio Code 创建和管理逻辑应用工作流定义
 
-通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 Visual Studio Code，可以创建和管理逻辑应用，以帮助你自动完成用于跨组织和企业集成应用、数据、系统和服务的任务、工作流和进程。 本快速入门介绍如何通过基于代码的体验为逻辑应用创建和编辑底层工作流定义，这些定义使用 JavaScript 对象表示法 (JSON)。 也可以使用已部署到 Azure 的现有逻辑应用。
+本快速入门介绍如何创建和管理逻辑应用工作流，这些工作流可帮助你通过使用多租户 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 Visual Studio Code 跨组织和企业自动实现集成应用、数据、系统和服务的任务和流程。 你可以通过基于代码的体验为逻辑应用创建和编辑底层工作流定义，这些定义使用 JavaScript 对象表示法 (JSON)。 也可以使用已部署到 Azure 的现有逻辑应用。 有关多租户模型与单租户模型的详细信息，请查看[单租户和多租户以及集成服务环境](single-tenant-overview-compare.md)。
 
 尽管可以在 [Azure 门户](https://portal.azure.com)和 Visual Studio 中执行这些相同的任务，但是当你已熟悉逻辑应用程序定义并想要直接使用代码时，可以在 Visual Studio Code 更快地开始使用。 例如，你可以禁用、启用、删除和刷新已创建的逻辑应用。 此外，还可以从运行 Visual Studio Code 的任何开发平台（如 Linux、Windows 和 Mac）处理逻辑应用和集成帐户。
 
@@ -335,7 +335,7 @@ ms.locfileid: "108161226"
 
 * 逻辑应用服务不会创建或运行新的工作流实例。
 
-* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用删除工作流的工作流。 这样，调用方就可获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将失败并显示 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
+* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用已删除工作流的工作流。 这样，调用方就会获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将会失败，并出现 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
 
 1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#access-azure)。
 
@@ -348,4 +348,4 @@ ms.locfileid: "108161226"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [在 Visual Studio Code 中创建有状态和无状态逻辑应用（预览版）](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)
+> [在 Visual Studio Code 中创建基于单租户的逻辑应用工作流](../logic-apps/create-single-tenant-workflows-visual-studio-code.md)

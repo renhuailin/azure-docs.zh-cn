@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: aa9c8e1d5579538df11358edc08eb7e2043cea74
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 12b6c8e71052d8d821d4b253d5f921bbff82e02d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285835"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473871"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
 **光学字符识别 (OCR)** 技能可识别图像文件中的印刷体文本和手写文本。 此技能使用认知服务中的[计算机视觉](../cognitive-services/computer-vision/overview.md) API [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 提供的机器学习模型。 **OCR** 技能将映射到以下功能：
 
 + 对于英语、西班牙语、德语、法语、意大利语、葡萄牙语和荷兰语，使用新的[“读取”](../cognitive-services/computer-vision/overview-ocr.md#read-api)API。
-+ 对于所有其他语言，请使用[旧版 OCR](../cognitive-services/computer-vision/overview-ocr.md#ocr-api) API。
++ 对于所有其他语言，请使用[旧版 OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20d) API。
 
 OCR  技能可以从图像文件中提取文本。 支持的文件格式包括：
 

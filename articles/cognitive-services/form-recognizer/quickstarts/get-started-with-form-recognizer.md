@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用示例标记工具 - 表单识别器来标记表单、训练模型和分析表单
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 在本快速入门中，你将使用表单识别器示例标记工具来手动标记表单文档。 然后，将通过带标记的文档来训练自定义文档处理模型，并使用该模型来提取键/值对。
 author: laujan
 manager: nitinme
@@ -11,12 +11,12 @@ ms.date: 05/14/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-may-2021
 keywords: 文档处理
-ms.openlocfilehash: c833e08915347682276cb53b45c507902d5ea43f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: af803b92945be059f604a3890a90d3aa36e5781e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382232"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475146"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -32,8 +32,6 @@ ms.locfileid: "110382232"
 * 分析布局
 * 使用预生成模型（发票、收据和 ID 文档）进行分析
 * 训练并分析自定义表单
-
-> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
 ## <a name="prerequisites"></a>先决条件
 

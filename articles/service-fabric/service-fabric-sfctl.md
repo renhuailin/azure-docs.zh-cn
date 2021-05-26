@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4721598961ae912e8f0a9ef2f61022e5feb39e6c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86257047"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462243"
 ---
 # <a name="sfctl"></a>sfctl
 用于管理 Service Fabric 群集和实体的命令。 此版本与 Service Fabric 7.0 运行时兼容。
@@ -27,7 +27,6 @@ ms.locfileid: "86257047"
 | [容器](service-fabric-sfctl-container.md) | 在群集节点上运行与容器相关的命令。 |
 | [events](service-fabric-sfctl-events.md) | 从事件存储中检索事件（如果已安装 EventStore 服务）。 |
 | [is](service-fabric-sfctl-is.md) | 查询并向基础结构服务发送命令。 |
-| [mesh](service-fabric-sfctl-mesh.md) | 删除和管理 Service Fabric 网格应用程序。 |
 | [node](service-fabric-sfctl-node.md) | 管理构成群集的节点。 |
 | [partition](service-fabric-sfctl-partition.md) | 查询和管理任何服务的分区。 |
 | [property](service-fabric-sfctl-property.md) | 在 Service Fabric 名称下存储和查询属性。 |

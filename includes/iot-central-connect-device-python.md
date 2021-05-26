@@ -4,13 +4,15 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: 4085213c1eb06815d089d9a5cb3182bb1c27633c
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: cee499085bf4196f3cd49b4307abd34c130c8f5a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109719157"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110486378"
 ---
+[![浏览代码](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp)
+
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，需要准备好以下资源：

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2918b845430a6fc6dc59eca7041c114fc9d06515
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e08962c0cff2e9aa04601f89e677334878e2f53
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97092204"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461855"
 ---
 # <a name="create-an-account-sas-with-net"></a>使用 .NET 创建帐户 SAS
 
@@ -26,13 +26,13 @@ ms.locfileid: "97092204"
 
 ## <a name="create-an-account-sas"></a>创建帐户 SAS
 
-### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 帐户 SAS 将使用帐户访问密钥进行签名。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 类创建用于为 SAS 签名的凭据。 接下来，新建 [AccountSasBuilder](/dotnet/api/azure.storage.sas.accountsasbuilder) 对象，并调用 [ToSasQueryParameters](/dotnet/api/azure.storage.sas.accountsasbuilder.tosasqueryparameters) 以获取 SAS 令牌字符串。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetAccountSASToken":::
 
-### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 若要为容器创建帐户 SAS，请调用 [CloudStorageAccount.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) 方法。
 
@@ -66,11 +66,11 @@ static string GetAccountSASToken()
 
 若要使用帐户 SAS 访问 Blob 服务的服务级别 API，请使用存储帐户的 SAS 和 Blob 存储终结点构造 Blob 服务客户端对象。
 
-### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_UseAccountSAS":::
 
-### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 在此代码片段中，将 `<storage-account>` 占位符替换为存储帐户的名称。
 
