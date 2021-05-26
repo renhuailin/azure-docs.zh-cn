@@ -228,7 +228,7 @@ val layer = SymbolLayer(
 
 Azure Maps Android SDK 附带了一组默认标记图标的预定义颜色变体。 例如，可以将 `marker-red` 传递到符号层的 `iconImage` 选项，以呈现该层中标记图标的红色版本。
 
-::: zone pivot=&quot;programming-language-java-android&quot;
+::: zone pivot="programming-language-java-android"
 
 ```java
 SymbolLayer layer = new SymbolLayer(source,
