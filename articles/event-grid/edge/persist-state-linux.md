@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 92333c2528303a6fa53fa30f47def33c33235d39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28f9e8847fe6a3aad1c68e09dacfbd1b8fc81e77
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171476"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367720"
 ---
 # <a name="persist-state-in-linux"></a>在 Linux 中持久保存状态
 
@@ -164,7 +165,7 @@ ms.locfileid: "86171476"
 
 有关保存事件的重要说明：
 
-* 在每个“事件订阅”的基础上启用保存事件，并在挂载卷或目录后选择加入。
+* 在每个“事件订阅”的基础上启用永久保存事件，并在装载卷或目录后选择加入。
 * 事件持久性在创建时配置在“事件订阅”上，并且在创建“事件订阅”后无法修改。 若要切换事件持久性，必须删除并重新创建“事件订阅”。
 * 持久性事件几乎总是比内存操作慢，但是速度差异很大程度上取决于驱动器的特性。 速度和可靠性之间的权衡对于所有消息系统都是固有的，但通常情况下只有在超出一定范围时才明显。
 

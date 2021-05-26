@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b649c8e51224043b02be791eee217bed98c7130
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724146"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838548"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,9 +34,9 @@ ms.locfileid: "98724146"
 借助此模板，可以使用 Windows 版本（最新补丁版本）适用的其他一些选项来部署简单的 Windows 虚拟机。 这会在资源组位置部署 A2 大小 VM，并返回 VM 的完全限定的域名。
 <br><br>
 
-[![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
+[![图像显示标记为“部署到 Azure”的按钮。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-simple-windows%2Fazuredeploy.json)
 
-有关详细信息，请参阅 [Windows VM 的极简部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)。
+有关详细信息，请参阅 [Windows VM 的极简部署](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows)。
 
 ## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
 
@@ -44,13 +44,13 @@ ms.locfileid: "98724146"
 
 1. 部署完成后，转到虚拟机资源。
 
-   ![屏幕截图显示有“连接”按钮的虚拟机“概述”页。](./media/database-import-export-azure-services-off/vm.png)  
+   ![屏幕截图显示有“连接”按钮的虚拟机“概述”页。](./media/database-import-export-azure-services-off/vm.png)
 
 2. 选择“连接” 。
 
    此时会显示远程桌面协议文件（.rdp 文件）窗体，其中包含虚拟机的公共 IP 地址和端口号。
 
-   ![RDP 窗体](./media/database-import-export-azure-services-off/rdp.png)  
+   ![RDP 窗体](./media/database-import-export-azure-services-off/rdp.png)
 
 3. 选择“下载 RDP 文件”。
 

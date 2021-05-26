@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 6c44c87221442797f063877385ac5eb7f8585850
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 576c1f0b087775ee3784229147b3715b22135217
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719090"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090669"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Azure Cache for Redis 的高可用性
 
@@ -22,7 +22,7 @@ Azure Cache for Redis 使用多个称为“节点”的用于缓存的 VM 来实
 | 选项 | 说明 | 可用性 | 标准 | 高级 | Enterprise |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
 | [标准复制](#standard-replication)| 单个数据中心中具有自动故障转移功能的双节点复制配置 | 99.9%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)） |✔|✔|-|
-| [区域冗余](#zone-redundancy) | AZ 中具有自动故障转移功能的多节点复制配置 | 高达 99.99%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)） |-|预览|✔|
+| [区域冗余](#zone-redundancy) | AZ 中具有自动故障转移功能的多节点复制配置 | 高达 99.99%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)） |-|✔|✔|
 | [异地复制](#geo-replication) | 两个区域中的链接缓存实例，具有用户控制的故障转移 | 高达 99.999%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)） |-|✔|预览|
 
 ## <a name="standard-replication"></a>标准复制
@@ -40,11 +40,6 @@ Azure Cache for Redis 使用多个称为“节点”的用于缓存的 VM 来实
 
 主节点在计划内维护活动（例如 Redis 软件或操作系统更新）中可能会停止服务。 它还可能因为计划外事件（例如底层硬件、软件或网络故障）而停止工作。 [Azure Cache for Redis 的故障转移和修补](cache-failover.md)提供了有关 Redis 故障转移类型的详细说明。 Azure Cache for Redis 在其生存期内会经历许多故障转移。 高可用性体系结构旨在使缓存中的这些更改对其客户端尽可能透明。
 
->[!NOTE]
->以下内容以预览版提供。
->
->
-
 此外，Azure Cache for Redis 在高级层中允许更多副本节点。 可以为[多副本缓存](cache-how-to-multi-replicas.md)配置最多三个副本节点。 具有更多副本通常会提高复原能力，因为附加的节点会为主节点提供备份。 即使有更多副本，Azure Cache for Redis 实例仍可能会受到数据中心级别或 AZ 级别的服务中断的严重影响。 通过将多个副本与[区域冗余](#zone-redundancy)结合使用，可以提高缓存可用性。
 
 ## <a name="zone-redundancy"></a>区域冗余
@@ -52,11 +47,6 @@ Azure Cache for Redis 使用多个称为“节点”的用于缓存的 VM 来实
 Azure Cache for Redis 支持高级层和企业层中的区域冗余配置。 [区域冗余缓存](cache-how-to-zone-redundancy.md)可以将其节点置于同一区域中的不同[Azure 可用性区域](../availability-zones/az-overview.md)上。 它消除了数据中心或 AZ 中断造成的单点故障，并提高了缓存的总体可用性。
 
 ### <a name="premium-tier"></a>高级层
-
->[!NOTE]
->此功能以预览版提供。
->
->
 
 下图说明了“高级”层级的区域冗余配置：
 

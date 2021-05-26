@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 4e682615ae4807611711307b5c9181c14d5c1dc4
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 667174fbf36b7113d49ea5c5d700e2e3a7f41949
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885463"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367212"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
 
@@ -38,7 +38,7 @@ ms.locfileid: "107885463"
 
 - 工作区中注册的机器学习模型。 如果尚未注册模型，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
+- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 或 [Azure 机器学习 Visual Studio Code 扩展](how-to-setup-vs-code.md)。
 
 - 本文中的 Python 代码片段假设设置了以下变量：
 
@@ -98,7 +98,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 ## <a name="using-vs-code"></a>使用 VS Code
 
-请参阅[使用 VS Code 部署模型](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
+请参阅[如何在 VS Code 中管理资源](how-to-manage-resources-vscode.md)。
 
 > [!IMPORTANT]
 > 无需事先创建 ACI 容器即可进行测试。 将据需要创建 ACI 容器。

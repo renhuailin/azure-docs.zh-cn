@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 505c0de5a508bd97b10091451116ec3670a20493
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6d52f75b3e4f1c703125a8f9172e9f8b6fc6ece
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677540"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081525"
 ---
 # <a name="sql-authentication"></a>SQL 身份验证
 
@@ -60,7 +60,7 @@ Azure Active Directory 使你能够在单一位置进行用户管理。 SQL 授�
 ```sql
 CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
-CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
+CREATE LOGIN [Mary@domainname.net] FROM EXTERNAL PROVIDER;
 ```
 在登录名存在后，可以在无服务器 SQL 池终结点内的各个数据库中创建用户，并向这些用户授予所需的权限。 若要创建用户，可以使用以下语法：
 ```sql

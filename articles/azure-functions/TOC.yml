@@ -55,6 +55,12 @@
         - name: ARM 模板
           displayName: Resource Manager
           href: functions-create-first-function-resource-manager.md
+        - name: Azure Arc（预览版）
+          items:
+            - name: 发布代码项目
+              href: create-first-function-arc-cli.md
+            - name: 发布 Linux 容器
+              href: create-first-function-arc-custom-container.md
     - name: 连接到数据库
       items:
         - name: Visual Studio Code
@@ -73,8 +79,9 @@
       href: functions-twitter-email.md
     - name: 使用 VS Code 开发 Python 函数
       href: /azure/python/tutorial-vs-code-serverless-python-01
-    - name: 无服务器 API 的 OpenAPI 定义
-      href: functions-openapi-definition.md
+    - name: 使用 Visual Studio 创建无服务器 API
+      href: openapi-apim-integrate-visual-studio.md
+      displayName: 'OpenAPI, Swagger'
     - name: 网络
       items:
         - name: 连接到虚拟网络
@@ -452,15 +459,21 @@
           href: functions-scenario-database-table-cleanup.md
         - name: 连接到虚拟网络
           href: ./functions-create-vnet.md
-        - name: 创建 Open API 2.0 定义
-          href: ./functions-openapi-definition.md
+        - name: 创建 OpenAPI 定义
+          items:
+            - name: API 管理集成（门户）
+              href: ./functions-openapi-definition.md
+              displayName: 'OpenAPI, Swagger'
+            - name: 带 API 管理的 Visual Studio (C#)
+              href: openapi-apim-integrate-visual-studio.md
+              displayName: 'OpenAPI, Swagger'
         - name: 使用托管标识
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: 自定义 HTTP 函数终结点
           href: functions-create-serverless-api.md
         - name: 管理本地资源
           href: functions-hybrid-powershell.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查存储问题
           href: functions-recover-storage-account.md
@@ -658,8 +671,6 @@
       href: functions-host-json-v1.md
     - name: 网络常见问题解答
       href: functions-networking-faq.md
-    - name: OpenAPI 参考
-      href: functions-api-definition.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

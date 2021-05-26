@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4affc2add2822702c1d5395f81efe01eeedf448b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb5a6fd09fee0ef266df16055c46aac8e70ab1ec
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98696018"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838458"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>教程：在 ARM 模板中使用条件
 
@@ -60,7 +60,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 1. 在“文件名”中粘贴以下 URL：
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json
     ```
 
 1. 选择“打开”以打开该文件。

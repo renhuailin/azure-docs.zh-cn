@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: da46084c8c2616284c31ef155927e8dbcbd19e0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a24045d38b594e09b931a885c60851109a108e3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102209353"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372681"
 ---
 # <a name="service-configuration"></a>服务配置
 
@@ -38,9 +38,9 @@ QnA Maker 使用应用服务提供 [generateAnswer API](/rest/api/cognitiveservi
 
 完成更改后，需要从 Azure 门户的“概述”页重启服务 。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-应用服务自定义不适用于 QnA Maker 托管（预览版）。
+应用服务自定义不适用于自定义问答（预览版）。
 
 ---
 
@@ -64,9 +64,9 @@ QnA Maker 服务为以下用户提供配置，以使其可以在单个 QnA Maker
 
 Application Insights 用于通过 QnA Maker GA 监控遥测。 没有特定于 QnA Maker 的配置设置。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-了解[如何将遥测添加到 QnA Maker 托管（预览版）服务](How-To/get-analytics-knowledge-base.md)。 
+了解[如何将遥测添加到自定义问答（预览版）服务](How-To/get-analytics-knowledge-base.md)。 
 
 ---
 
@@ -76,9 +76,9 @@ Application Insights 用于通过 QnA Maker GA 监控遥测。 没有特定于 Q
 
 应用服务计划没有特定于 QnA Maker 的配置设置。
 
-# <a name="qnamaker-managed-preview-release"></a>[QnA Maker 托管（预览版）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-应用服务计划不与 QnA Maker 托管（预览版）一起使用。
+应用服务计划不与自定义问答（预览版）一起使用。
 
 ---
 

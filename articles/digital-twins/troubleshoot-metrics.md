@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b4f0182c6214f500d10904760087be5c89a07acd
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ffae474f6de5de7715585f0606a9630b136a2c37
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203552"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092127"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>排查 Azure 数字孪生指标问题
 
@@ -78,7 +78,7 @@ Azure 数字孪生提供了几项指标，便于你简要了解你的实例及�
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | 计费 API 操作 | 计数 | 总计 | 针对 Azure 数字孪生服务发出的所有 API 请求的计数的计费指标。 | Meter ID |
 | BillingMessagesProcessed | 计费已处理的消息数 | 计数 | 总计 | 从 Azure 数字孪生发送到外部终结点的消息数量的计费指标。<br><br>若要在计费时将其看作一条消息，一个有效负载不得大于 1 KB。 大于此值的有效负载将按 1 KB 的增量计为附加消息（因此，1 到 2 KB 之间的消息将计为 2 条消息，2 到 3 KB 之间的消息将计为 3 条消息，依此类推）。<br>此限制也适用于响应；因此，例如，在响应正文中返回 1.5 KB 内容的调用将作为 2 个操作进行计费。 | Meter ID |
-| BillingQueryUnits | 计费查询单元 | 计数 | 总计 | 查询单元的数量，它是在内部计算的服务资源使用量度量值，用于执行查询。 还有一个可用于度量查询单元的帮助程序 API：[QueryChargeHelper 类](/dotnet/api/azure.digitaltwins.core.querychargehelper) | Meter ID |
+| BillingQueryUnits | 计费查询单元 | 计数 | 总计 | 查询单元的数量，它是在内部计算的服务资源使用量度量值，用于执行查询。 还有一个可用于度量查询单元的帮助程序 API：[QueryChargeHelper 类](/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet&preserve-view=true) | Meter ID |
 
 若要更详细地了解 Azure 数字孪生的计费方式，请参阅 Azure 数字孪生定价。
 

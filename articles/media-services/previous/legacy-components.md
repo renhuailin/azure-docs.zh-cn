@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 459658867a143a69850ce74b910fd5dc7e70d4b9
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: b1e8cbc61d228c5baa58e5c303392a062fd0fa13
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962979"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367040"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒体服务旧组件
 
@@ -43,9 +43,9 @@ Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处�
 | Azure Media Indexer | 2023 年 3 月 1 日 | 此媒体处理器将替换为[媒体服务 v3 AudioAnalyzerPreset 基本模式](../latest/analyze-video-audio-files-concept.md)。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。 |
 | 动作检测 | 2020 年 6 月 1 日|目前无替换计划。 |
 | 视频摘要 |2020 年 6 月 1 日|目前无替换计划。|
-| 视频光学字符识别 | 2020 年 6 月 1 日 |此媒体处理器被 [Azure 媒体服务视频索引器](../video-indexer/index.yml)替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](../latest/analyze-video-audio-files-concept.md)。 <br/>请参阅[比较 Azure 媒体服务 v3 预设和视频索引器](../video-indexer/compare-video-indexer-with-media-services-presets.md)。 |
-| 面部检测器 | 2020 年 6 月 1 日 | 此媒体处理器被 [Azure 媒体服务视频索引器](../video-indexer/index.yml)替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](../latest/analyze-video-audio-files-concept.md)。 <br/>请参阅[比较 Azure 媒体服务 v3 预设和视频索引器](../video-indexer/compare-video-indexer-with-media-services-presets.md)。 |
-| 内容审查器 | 2020 年 6 月 1 日 |此媒体处理器被 [Azure 媒体服务视频索引器](../video-indexer/index.yml)替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](../latest/analyze-video-audio-files-concept.md)。 <br/>请参阅[比较 Azure 媒体服务 v3 预设和视频索引器](../video-indexer/compare-video-indexer-with-media-services-presets.md)。 |
+| 视频光学字符识别 | 2020 年 6 月 1 日 |此媒体处理器被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](../latest/analyze-video-audio-files-concept.md)。 <br/>请参阅比较 Azure 媒体服务 v3 预设和视频索引器。 |
+| 面部检测器 | 2020 年 6 月 1 日 | 此媒体处理器被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](../latest/analyze-video-audio-files-concept.md)。 <br/>请参阅比较 Azure 媒体服务 v3 预设和视频索引器。 |
+| 内容审查器 | 2020 年 6 月 1 日 |此媒体处理器被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](../latest/analyze-video-audio-files-concept.md)。 <br/>请参阅比较 Azure 媒体服务 v3 预设和视频索引器。 |
 
 ## <a name="next-steps"></a>后续步骤
 

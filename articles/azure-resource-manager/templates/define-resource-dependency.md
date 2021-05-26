@@ -3,12 +3,12 @@ title: 设置资源的部署顺序
 description: 介绍如何将一个 Azure 资源设置为在部署过程中依赖于另一个资源。 依赖关系确保资源按正确的顺序部署。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 009f5731e871c47aba418fca0937ae7aa195919e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 723344a4619325eb29a481a42f7dd2de5094a7b0
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737056"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814057"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>在 ARM 模板中定义部署资源的顺序
 
@@ -20,7 +20,7 @@ Azure 资源管理器将评估资源之间的依赖关系，并根据其依赖�
 
 在 Azure 资源管理器模板（ARM 模板）中，`dependsOn` 元素可让你将一个资源定义为依赖于一个或多个资源。 其值是字符串的 JavaScript 对象表示法 (JSON) 数组，每个字符串都是一个资源名称或 ID。 该数组可以包括[有条件部署](conditional-resource-deployment.md)的资源。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
-以下示例显示了一个依赖于虚拟网络、网络安全组和公共 IP 地址的网络接口。 有关完整的模板，请参阅[适用于 Linux VM 的快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json)。
+以下示例显示了一个依赖于虚拟网络、网络安全组和公共 IP 地址的网络接口。 有关完整的模板，请参阅[适用于 Linux VM 的快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-linux/azuredeploy.json)。
 
 ```json
 {

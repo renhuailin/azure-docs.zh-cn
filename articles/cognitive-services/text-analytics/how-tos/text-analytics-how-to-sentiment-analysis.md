@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 03/29/2021
+ms.date: 04/14/2021
 ms.author: aahi
-ms.openlocfilehash: 7cd2b0a6b943ceb32420ef119a7fc5eddefa2e19
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 59518b1117a566f9bc238a70a6bcaff6f1e05197
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276988"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085414"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>如何：情绪分析和观点挖掘
 
@@ -74,7 +74,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 #### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
 
-[情绪分析 v3.1 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
+[情绪分析 v3.1 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/Sentiment)
 
 #### <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -93,13 +93,13 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 **情绪分析**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/sentiment`
 
 **观点挖掘**
 
 若要获取观点挖掘结果，必须包含 `opinionMining=true` 参数。 例如：
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/sentiment?opinionMining=true`
 
 默认情况下，此参数设置为 `false`。 
 

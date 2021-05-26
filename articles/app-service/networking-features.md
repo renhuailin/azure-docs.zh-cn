@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9ba85ecfe2b57ceb1eed5c51929107a95f5a4669
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7410793a429395b7f1b1e826c66cb2647eb77cd2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889138"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367703"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -23,6 +23,9 @@ Azure 应用服务有两种主要部署类型：
 - 单租户应用服务环境 (ASE) 直接在 Azure 虚拟网络中托管隔离的 SKU 应用服务计划。 
 
 你所用的功能将取决于你是在多租户服务还是 ASE 中操作。 
+
+> [!NOTE]
+> 对于[在 Azure Arc 中部署的应用](overview-arc-integration.md)，网络功能不可用。
 
 ## <a name="multitenant-app-service-networking-features"></a>多租户应用服务网络功能 
 

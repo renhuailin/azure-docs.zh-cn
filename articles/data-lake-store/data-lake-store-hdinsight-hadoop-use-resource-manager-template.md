@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a7283ad4c4c61ecc293a55ffc4cb9626bb28d630
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5e83da902fd200ae0d915d4a0e58c3e26ff6da5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92108722"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089103"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ ms.locfileid: "92108722"
     **如果不是 Azure AD 管理员**，将无法执行创建服务主体所需的步骤。 在这种情况下，Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Storage Gen1 的 HDInsight 群集。 此外，必须使用证书创建服务主体，如[使用证书创建服务主体](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)中所述。
 
 ## <a name="create-an-hdinsight-cluster-with-data-lake-storage-gen1"></a>创建包含 Data Lake Storage Gen1 的 HDInsight 群集
-资源管理器模板以及使用模板的先决条件可在 GitHub 上[使用新的 Data Lake Storage Gen1 部署 HDInsight Linux 集群](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage)中获得。 按照此链接提供的说明创建一个 HDInsight 群集，其中包含 Data Lake Storage Gen1 作为额外存储。
+资源管理器模板以及使用模板的先决条件可在 GitHub 上[使用新的 Data Lake Storage Gen1 部署 HDInsight Linux 集群](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-datalake-store-azure-storage)中获得。 按照此链接提供的说明创建一个 HDInsight 群集，其中包含 Data Lake Storage Gen1 作为额外存储。
 
 上面提及的链接中的说明需要 PowerShell。 按这些步骤开始前，请确保登录到 Azure 帐户。 在桌面上，打开一个新的 Azure PowerShell 窗口，并输入下面的代码段。 当系统提示登录时，请确保以订阅管理员/所有者身份登录：
 

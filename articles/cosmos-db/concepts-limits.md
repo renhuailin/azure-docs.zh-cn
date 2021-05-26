@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: f6416a688c7f1c94d7d8a90b0531b1ccd684ee29
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 7f7e6cb896d5284a7bc4ff54c7396600463260c9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031097"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367617"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -200,7 +200,7 @@ Azure Cosmos DB 为每个帐户维护系统元数据。 此元数据可用于免
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>自动缩放预配吞吐量限制
 
-有关自动缩放吞吐量和存储限制的更多详细说明，请参阅[自动缩放](provision-throughput-autoscale.md#autoscale-limits)文章和[常见问题解答](autoscale-faq.md#lowering-the-max-rus)。
+有关自动缩放吞吐量和存储限制的更多详细说明，请参阅[自动缩放](provision-throughput-autoscale.md#autoscale-limits)文章和[常见问题解答](autoscale-faq.yml#lowering-the-max-ru-s)。
 
 | 资源 | 默认限制 |
 | --- | --- |
@@ -236,8 +236,9 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 | 资源 | 默认限制 |
 | --- | --- |
 | 最大 MongoDB 查询内存大小（此限制仅适用于 3.2 服务器版本） | 40 MB |
-|MongoDB 操作的最长执行时间（适用于 3.2 服务器版本）| 15 秒|
-|MongoDB 操作的最长执行时间（适用于 3.6 服务器版本）| 60 秒|
+| MongoDB 操作的最长执行时间（适用于 3.2 服务器版本）| 15 秒|
+| MongoDB 操作的最长执行时间（适用于 3.6 和 4.0 服务器版本）| 60 秒|
+| 索引定义上嵌入对象/数组的最大嵌套级别 | 6 |
 | 导致服务器端连接关闭的空闲连接超时值* | 30 分钟 |
 
 \* 我们建议客户端应用程序将驱动程序设置中的空闲连接超时值设为 2-3 分钟，因为 [Azure LoadBalancer 的默认超时值为 4 分钟](../load-balancer/load-balancer-tcp-idle-timeout.md)。  此超时将确保客户端计算机与 Azure Cosmos DB 之间的中间负载均衡器不会关闭空闲连接。
@@ -265,15 +266,12 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 | --- | --- |
 | 每个 Azure 订阅的免费层帐户数 | 1 |
 | 免费层折扣持续时间 | 帐户的生存期。 必须在创建帐户期间选择加入。 |
-| 免费层的最大 RU/s | 400 RU/s |
-| 免费层的最大存储量 | 5 GB |
+| 免费层的最大 RU/s | 1000 RU/秒 |
+| 免费层的最大存储量 | 25 GB |
 | 最大共享吞吐量数据库数 | 5 |
 | 共享吞吐量数据库中的最大容器数 | 25 <br>在免费层帐户中，最多包含 25 个容器的共享吞吐量数据库的最小 RU/s 为 400 RU/s。 |
 
-除上述限制外，[每个帐户的限制](#per-account-limits)也适用于免费层帐户。
-
-> [!NOTE]
-> Azure Cosmos DB 免费层不同于 Azure 免费账户。 Azure 免费账户在有限时间内免费提供 Azure 额度和资源。 Azure Cosmos DB 作为此免费账户的一部分，在你使用它时会提供 25 GB 的存储和 400 RU/秒的预配吞吐量，使用期限为 12个月。
+除上述限制外，[每个帐户的限制](#per-account-limits)也适用于免费层帐户。 有关详细信息，请参阅如何[创建免费层帐户](free-tier.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 
