@@ -9,12 +9,12 @@ ms.subservice: azure-arc-data
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.custom: template-concept
-ms.openlocfilehash: 036922e3a87e3378f0f517ee0c2d973c78c26bfb
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: dcaf900164e3d9d4b9b3b54e27a79fdae937abc5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776391"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472762"
 ---
 # <a name="azure-arc-data-services-data-collection-and-reporting"></a>Azure Arc 数据服务数据收集和报告
 
@@ -43,7 +43,7 @@ ms.locfileid: "108776391"
 |操作数据|指标和日志|自动（如果配置为这样做）|否
 计费和清单数据|清单（如实例数）和使用情况（如使用的 vCore 数）|自动 |是
 诊断|用于故障排除的诊断信息|手动导出并提供给 Microsoft 支持部门|仅适用于故障排除范围并遵循标准[隐私政策](https://privacy.microsoft.com/privacystatement)
-客户体验改善计划 (CEIP)|[CEIP 摘要](/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)|自动（如果允许）|否
+客户体验改善计划 (CEIP)|[CEIP 摘要](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)|自动（如果允许）|否
 
 ## <a name="indirectly-connected"></a>间接连接
 
@@ -56,7 +56,7 @@ ms.locfileid: "108776391"
 |操作数据|指标和日志|手动|否
 计费和清单数据|清单（如实例数）和使用情况（如使用的 vCore 数）|手动 |是
 诊断|用于故障排除的诊断信息|手动导出并提供给 Microsoft 支持部门|仅适用于故障排除范围并遵循标准[隐私政策](https://privacy.microsoft.com/privacystatement)
-客户体验改善计划 (CEIP)|[CEIP 摘要](/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)|自动（如果允许）|否
+客户体验改善计划 (CEIP)|[CEIP 摘要](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server)|自动（如果允许）|否
 
 ## <a name="detailed-description-of-data"></a>数据的详细说明
 
