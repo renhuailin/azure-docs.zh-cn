@@ -3,12 +3,12 @@ title: Azure 服务总线限制概述 | Microsoft Docs
 description: 概述了服务总线限制 - 标准层和高级层。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95b03859b26d97c1089b6112b41511618abdcffe
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85340945"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191102"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure 服务总线中的限制操作
 
@@ -89,7 +89,7 @@ The request was terminated because the entity is being throttled. Error code: 50
 ### <a name="how-will-i-know-that-im-being-throttled"></a>如何知道我受到了限制？
 
 可以通过多种方式确定在 Azure 服务总线高级层中是否受到了限制 - 
-  * 可以通过 [Azure Monitor 请求指标](service-bus-metrics-azure-monitor.md#request-metrics)中显示的“限制的请求数”来确定有多少个请求受到限制。
+  * 可以通过 [Azure Monitor 请求指标](monitor-service-bus-reference.md#request-metrics)中显示的“限制的请求数”来确定有多少个请求受到限制。
   * 较高的“CPU 使用率”表示当前资源分配量较高，如果当前工作负荷没有降低，则请求可能会受到限制。
   * 较高的“内存使用率”表示当前资源分配量较高，如果当前工作负荷没有降低，则请求可能会受到限制。
 

@@ -278,7 +278,7 @@ items:
             items:
               - name: 概述
                 href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 最佳做法
+              - name: 最佳实践
                 href: sql/data-loading-best-practices.md
               - name: 列存储压缩
                 href: sql/data-load-columnstore-compression.md
@@ -507,6 +507,8 @@ items:
                 href: sql/query-json-files.md
               - name: 查询嵌套类型
                 href: sql/query-parquet-nested-types.md
+              - name: 查询 Delta Lake（预览版）
+                href: sql/query-delta-lake-format.md
               - name: 查询文件夹和多个文件
                 href: sql/query-folders-multiple-csv-files.md
                 displayname: csv

@@ -1,15 +1,15 @@
 ---
 title: CIS Microsoft Azure 基础基准 1.1.0 的法规符合性详细信息
 description: CIS Microsoft Azure 基础基准 1.1.0 法规符合性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 228ca7dd52d19efda23b7c669947d491151bace4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 31032bd478555224c9910dd0a3c4e63dcbe190c5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761104"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092074"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-110-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure 基础基准 1.1.0 法规符合性内置计划的详细信息
 
@@ -374,7 +374,7 @@ ms.locfileid: "108761104"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Azure Monitor 应从所有区域收集活动日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |此策略审核不从所有 Azure 支持区域（包括全局）导出活动的 Azure Monitor 日志配置文件。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
+|[Azure Monitor 应从所有区域收集活动日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |此策略审核不从所有 Azure 支持区域（包括全局）导出活动的 Azure Monitor 日志配置文件。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
 
 ### <a name="ensure-the-storage-container-storing-the-activity-logs-is-not-publicly-accessible"></a>确保存储活动日志的存储容器不可公开访问
 

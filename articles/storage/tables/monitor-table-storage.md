@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 11439afbe7bceb17dff5393d248c6c9f5d3f6b53
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 135c853236793088b10759cac5e86f72c8548df3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767828"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459712"
 ---
 # <a name="monitoring-azure-table-storage"></a>监视 Azure 表存储
 
@@ -75,7 +75,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 1. 登录到 Azure 门户。
 
-2. 导航到存储帐户。
+2. 导航到自己的存储帐户。
 
 3. 在“监视”部分，单击“诊断设置(预览)”。
 
@@ -333,7 +333,7 @@ Azure 表存储的指标位于以下命名空间：
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
 
-### <a name="net"></a>[.NET](#tab/azure-portal)
+### <a name="net-sdk"></a>[.NET SDK](#tab/azure-portal)
 
 Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)，用于读取指标定义和值。 [示例代码](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)演示如何通过不同的参数来使用 SDK。 对于存储指标，需使用 `0.18.0-preview` 或更高版本。
  

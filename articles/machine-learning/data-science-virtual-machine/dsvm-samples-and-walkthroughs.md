@@ -5,16 +5,16 @@ description: 通过这些示例和演练，了解如何使用 Data Science Virtu
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 ms.service: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: timoklimmer
+ms.author: tklimmer
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: cda5dfd936243602775e1f4f965032b9d746b0b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/12/2021
+ms.openlocfilehash: 5ce6b2d80341a9c6ebb8afcbbe8f7072b54ca93c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519756"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087897"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 示例
 
@@ -35,8 +35,6 @@ Azure Data Science Virtual Machine (DSVM) 包含一整套示例代码。 这些�
 | Azure 机器学习  | 介绍了如何使用机器学习生成机器学习和深度学习模型。 在任意位置部署模型。 使用自动化机器学习和智能超参数优化。 还使用模型管理和分布式定型。 <br/> [机器学习](#azure-machine-learning) | <br/>`~notebooks/AzureML`<br/> <br/>|
 | PyTorch Notebook  | 使用基于 PyTorch 的神经网络的深度学习示例。 Notebook 从新手方案到高级方案都有涵盖。  <br/> [PyTorch Notebook](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
 | TensorFlow  |  使用 TensorFlow 框架实现的各种神经网络示例和技术。 <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
-| Microsoft 认知工具包 <br/>   | 由 Microsoft 的 Cognitive Toolkit 团队发布的深度学习示例。  <br/> [Cognitive Toolkit](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux：<br/> `~notebooks/CNTK`<br/> <br/>|
-| Caffe2 | 使用基于 Caffe2 的神经网络的深度学习示例。 用户可通过多个笔记本熟悉 Caffe2 以及如何有效使用它。 示例不仅包括图像预处理和数据集创建， 还包括回归以及如何使用预定型模型。 <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
 | H2O   | 基于 Python 的示例，使用 H2O 处理实际问题方案。 <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
 | SparkML 语言  | 通过 pySpark 和 MMLSpark 使用 Apache Spark MLLib 工具箱功能的示例：面向 Apache Spark 2.x 上的 Apache Spark 的 Microsoft 机器学习。  <br/> [SparkML 语言](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
 | XGBoost | XGBoost 中的标准机器学习示例，用于分类、回归等场景。 <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
@@ -77,14 +75,6 @@ Azure Data Science Virtual Machine (DSVM) 包含一整套示例代码。 这些�
 ## <a name="tensorflow"></a>TensorFlow 
 <br/>![TensorFlow 示例](./media/tensorflow-samples.png)<br/>
 
-
-## <a name="cntk"></a>CNTK 
-<br/>![CNTK 示例](./media/cntk-samples.png)<br/>
-
-
-## <a name="caffe2"></a>Caffe2 
-<br/>![caffe2 示例](./media/caffe2-samples.png)<br/>
-
 ## <a name="h2o"></a>H2O 
 <br/>![H2O 示例](./media/h2o-samples.png)<br/>
 
@@ -93,4 +83,3 @@ Azure Data Science Virtual Machine (DSVM) 包含一整套示例代码。 这些�
 
 ## <a name="xgboost"></a>XGBoost 
 <br/>![XGBoost 示例](./media/xgboost-samples.png)<br/>
-

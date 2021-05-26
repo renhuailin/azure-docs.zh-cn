@@ -7,21 +7,18 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 04/29/2021
 ms.author: memildin
-ms.openlocfilehash: 656f38bb25a97a0a55b1d968e205907ca228a474
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: cd9c2d5547c3b5e9468432539c2b07d18f6fd3ab
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278355"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459903"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure 安全中心的其他威胁防护
 除内置 [Azure Defender 保护](azure-defender.md)外，Azure 安全中心还提供了以下威胁防护功能。
 
 > [!TIP]
 > 若要启用安全中心的威胁保护功能，必须在包含适用工作负载的订阅上启用 Azure Defender。
->
-> 只能在资源级别为 Azure Database for MariaDB/MySQL/PostgreSQL 启用威胁防护。
-
 
 ## <a name="threat-protection-for-azure-network-layer"></a>针对 Azure 网络层的威胁防护 <a name="network-layer"></a>
 安全中心网络层分析基于示例 [IPFIX 数据](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)（Azure 核心路由器收集的数据包头）。 根据此数据馈送，安全中心使用机器学习模型来识别和标记恶意流量活动。 安全中心还使用 Microsoft 威胁情报数据库来扩充 IP 地址。

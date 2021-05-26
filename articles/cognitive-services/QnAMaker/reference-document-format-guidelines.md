@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: 15ff2ec296cedc37b086a9ca2d0825fb20b4f05a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40b9d9e665aacf3024e409ef6bf1b5596ad28ca9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99549535"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372511"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>导入的文档和 URL 的格式准则
 
@@ -42,7 +42,8 @@ QnA Maker 根据类似以下的视觉线索来确定文件中的节、子节和�
 
 下面是一个手册示例，其中包含索引页和分层内容。
 
- ![知识库的产品手册示例](./media/qnamaker-concepts-datasources/product-manual.png)
+> [!div class="mx-imgBorder"]
+> ![知识库的产品手册示例](./media/qnamaker-concepts-datasources/product-manual.png)
 
 > [!NOTE]
 > 提取最适用于具有目录和/或索引页的手册，以及具有分层标题的清晰结构。
@@ -53,7 +54,22 @@ QnA Maker 根据类似以下的视觉线索来确定文件中的节、子节和�
 
 下面是一个半结构化文档的示例，没有索引：
 
- ![Azure Blob 存储半结构化文档](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
+> [!div class="mx-imgBorder"]
+> ![Azure Blob 存储半结构化文档](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
+
+### <a name="unstructured-document-support"></a>非结构化文档支持
+
+自定义问答现在支持非结构化文档。 未以明确定义的分层方式组织其内容、缺少固定结构或其内容会自由流动的文档可被视为非结构化文档。
+
+下面是非结构化 PDF 文档的示例：
+
+> [!div class="mx-imgBorder"]
+> ![知识库的非结构化文档示例](./media/qnamaker-concepts-datasources/unstructured-qna-pdf.png)
+
+ 目前，此功能只能通过上传文档的方式提供，并且仅适用于 PDF 和 DOC 文件格式。
+
+> [!IMPORTANT]
+> 对非结构化文件/内容的支持仅在自定义问答（预览版）中提供
 
 ### <a name="structured-qna-document"></a>结构化 QnA 文档
 
@@ -71,7 +87,8 @@ Answer2
 
 下面是结构化 QnA Word 文档的示例：
 
- ![知识库的结构化常见问题解答文档示例](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
+> [!div class="mx-imgBorder"]
+> ![知识库的结构化常见问题解答文档示例](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
 
 ### <a name="structured-txt-tsv-and-xls-files"></a>结构化 *TXT*、*TSV* 和 *XLS* 文件
 
@@ -88,17 +105,20 @@ Answer2
 
 下面是结构化 QnA *.xls* 文件的示例，包含 HTML 内容：
 
- ![知识库的结构化常见问题解答 Excel 示例](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
+> [!div class="mx-imgBorder"]
+> ![知识库的结构化常见问题解答 Excel 示例](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
 #### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Excel 文件中单个答案的替代问题示例
 
 下面是一个结构化 QnA .xls 文件示例，其中一个答案有多个替代问题：
 
- ![Excel 文件中单个答案的替代问题示例](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+> [!div class="mx-imgBorder"]
+> ![Excel 文件中单个答案的替代问题示例](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
 
 导入文件后，问答对在知识库中显示，如下所示：
 
- ![导入到知识库中的单个答案的替代问题的屏幕截图](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
+> [!div class="mx-imgBorder"]
+> ![导入到知识库中的单个答案的替代问题的屏幕截图](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
 ### <a name="structured-data-format-through-import"></a>通过导入提供的结构化数据格式
 
@@ -133,7 +153,8 @@ QnA Maker 可以支持 3 种不同形式的常见问题解答网页：
 
 下面是普通常见问题解答页的示例：
 
-![知识库的纯文本常见问题解答页示例](./media/qnamaker-concepts-datasources/plain-faq.png)
+> [!div class="mx-imgBorder"]
+> ![知识库的纯文本常见问题解答页示例](./media/qnamaker-concepts-datasources/plain-faq.png)
 
 
 ### <a name="faq-pages-with-links"></a>带链接的常见问题解答页
@@ -142,7 +163,8 @@ QnA Maker 可以支持 3 种不同形式的常见问题解答网页：
 
 下面的示例是一个常见问题解答页，其中的链接位于同一页上的不同部分：
 
- ![知识库的部分链接常见问题解答页示例](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
+> [!div class="mx-imgBorder"]
+> ![知识库的部分链接常见问题解答页示例](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
 
 
 ### <a name="parent-topics-page-links-to-child-answers-pages"></a>与子答案页面链接的父主题页面
@@ -151,7 +173,8 @@ QnA Maker 可以支持 3 种不同形式的常见问题解答网页：
 
 下面是主题页面的示例，其中包含指向不同页面中常见问题解答部分的链接。
 
- ![知识库的深层链接常见问题解答页示例](./media/qnamaker-concepts-datasources/topics-faq.png)
+> [!div class="mx-imgBorder"]
+> ![知识库的深层链接常见问题解答页示例](./media/qnamaker-concepts-datasources/topics-faq.png)
 
 ### <a name="support-urls"></a>支持 URL
 
@@ -160,7 +183,8 @@ QnA Maker 可以处理半结构化支持网页，例如，介绍如何执行给�
 > [!NOTE]
 > 提取支持文章是一项新功能，并且处于早期阶段。 它最适用于结构良好且未包含复杂页眉/页脚的简单页面。
 
-![QnA Maker 支持从在分层标题中提供了清晰结构的半结构化网页进行提取](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+> [!div class="mx-imgBorder"]
+> ![QnA Maker 支持从在分层标题中提供了清晰结构的半结构化网页进行提取](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
 
 ## <a name="import-and-export-knowledge-base"></a>导入和导出知识库
 

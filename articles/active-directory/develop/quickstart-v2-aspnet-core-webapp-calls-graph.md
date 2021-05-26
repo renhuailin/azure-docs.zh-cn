@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 12/10/2020
+ms.date: 05/17/2021
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 02742610f6febd832470307a5000526cadb3ecbd
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: e93e3619ebf63d27d1739da75e1f5762aad4b502
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166138"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086026"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>快速入门：实现用户登录并代表用户调用 Microsoft Graph 的 ASP.NET Core Web 应用
 
@@ -31,20 +31,8 @@ ms.locfileid: "108166138"
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) 或 [Visual Studio Code](https://code.visualstudio.com/)
 > * [.NET Core SDK 3.1+](https://dotnet.microsoft.com/download)
 >
-> ## <a name="register-and-download-the-quickstart-app"></a>注册并下载快速入门应用
-> 可以使用两个选项来启动快速入门应用程序：
-> * [快速][选项 1：注册并自动配置应用，然后下载代码示例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [手动][选项 2：注册并手动配置应用程序和代码示例](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
->
-> 1. 转到 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetCoreWebAppQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
-> 1. 输入应用程序的名称并选择“注册”。
-> 1. 遵照说明下载内容，并一键式自动配置新应用程序。
->
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
->
-> #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
+> ## <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
@@ -63,7 +51,8 @@ ms.locfileid: "108166138"
 > 1. 选择“添加”并立即记录密码值，以供后续使用 。 此密码值不会重新显示，也无法通过任何其他方式检索。 将此值记录在安全位置，就像记录任何密码一样。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
+> ## <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
+>
 > 要使本快速入门的示例代码正常运行，请在注册应用时提供重定向 URI `https://localhost:44321/signin-oidc` 和前向通道注销 URL `https://localhost:44321/signout-oidc` 。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
@@ -71,7 +60,7 @@ ms.locfileid: "108166138"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已配置](media/quickstart-v2-aspnet-webapp/green-check.png) 应用程序已使用这些属性进行配置。
 
-#### <a name="step-2-download-the-aspnet-core-project"></a>步骤 2：下载 ASP.NET Core 项目
+## <a name="step-2-download-the-aspnet-core-project"></a>步骤 2：下载 ASP.NET Core 项目
 
 > [!div renderon="docs"]
 > [下载 ASP.NET Core 解决方案](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore3-1-callsgraph.zip)
@@ -85,13 +74,15 @@ ms.locfileid: "108166138"
 [!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
+> ## <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
+>
 > 我们已经为项目配置了应用属性的值，并且该项目已准备好运行。
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-aspnet-core-project"></a>步骤 3：配置 ASP.NET Core 项目
+>
+> ## <a name="step-3-configure-your-aspnet-core-project"></a>步骤 3：配置 ASP.NET Core 项目
 > 1. 将 .zip 存档解压缩到驱动器根附近的本地文件夹中。 例如，解压缩到 C:\Azure-Samples。
 > 1. 在 Visual Studio 2019 中打开该解决方案。
 > 1. 打开 appsettings.json 文件，并修改以下内容：
@@ -111,7 +102,7 @@ ms.locfileid: "108166138"
 >
 > 在此快速入门中，请不要更改 appsettings.json 文件中的任何其他值。
 >
-> #### <a name="step-4-build-and-run-the-application"></a>步骤 4：生成并运行应用程序
+> ## <a name="step-4-build-and-run-the-application"></a>步骤 4：生成并运行应用程序
 >
 > 通过选择“调试”菜单 >“开始调试”，或按 `F5` 键在 Visual Studio 中构建和运行应用 。
 >

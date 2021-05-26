@@ -2,19 +2,19 @@
 title: 测试工具包的测试用例
 description: 介绍由 ARM 模板测试工具包运行的测试。
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 05/17/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
-ms.translationtype: MT
+ms.openlocfilehash: 8e771d8c15e26367ab205ea77a451fae443ac981
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674036"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064389"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM 模板测试工具包的默认测试用例
 
-本文介绍[模板测试工具包](test-toolkit.md)运行的默认测试。 它提供通过测试或未通过测试的示例。 它包括每个测试的名称。
+本文介绍 Azure 资源管理器模板（ARM 模板）的[模板测试工具包](test-toolkit.md)运行的默认测试。 它提供通过测试或未通过测试的示例。 它包括每个测试的名称。 若要运行特定测试，请参阅[测试参数](test-toolkit.md#test-parameters)。
 
 ## <a name="use-correct-schema"></a>使用正确的架构
 
@@ -40,30 +40,6 @@ ms.locfileid: "97674036"
 * `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`
 * `https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#`
 * `https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json`
-
-## <a name="parameters-must-exist"></a>必须存在参数
-
-测试名称：参数属性必须存在
-
-模板应具有参数元素。 参数对于使模板在不同环境中可重用非常重要。 在模板中，为部署到不同环境时会发生更改的值添加参数。
-
-下面的示例通过了此测试：
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-      "vmName": {
-          "type": "string",
-          "defaultValue": "linux-vm",
-          "metadata": {
-            "description": "Name for the Virtual Machine."
-          }
-      }
-  },
-  ...
-```
 
 ## <a name="declared-parameters-must-be-used"></a>必须使用声明的参数
 
@@ -137,11 +113,11 @@ ms.locfileid: "97674036"
 
 测试名称：不应硬编码位置
 
-模板应具有名为 location 的参数。 使用此参数设置模板中资源的位置。 在) 上名为 azuredeploy.js的主模板 (或 mainTemplate.js上，此参数可以默认为资源组位置。 在链接模板或嵌套模板中，location 参数不应具有默认位置。
+模板应具有位置参数。 可使用此参数设置模板中资源的位置。 在主模板（名为 azuredeploy.json 或 mainTemplate.json）中，此参数可默认为资源组位置 。 在链接模板或嵌套模板中，位置参数不应具有默认位置。
 
-模板用户可访问的模板区域可能有限。 如果对资源位置进行硬编码，则可能会阻止用户在该区域中创建资源。 即使将资源位置设置为，用户也可能被阻止 `"[resourceGroup().location]"` 。 资源组可能是在其他用户无法访问的区域中创建的。 这会导致这些用户无法使用模板。
+模板用户可访问的模板区域可能有限。 如果对资源位置进行硬编码，可能会阻止用户在该区域中创建资源。 即使将资源位置设置为 `"[resourceGroup().location]"`，也可能会阻止用户。 可能会在其他用户无法访问的区域中创建资源组。 这会导致这些用户无法使用模板。
 
-通过提供默认为资源组位置的 location 参数，用户可以在方便的情况下使用默认值，但也可以指定其他位置。
+提供默认为资源组位置的位置参数后，用户可以在方便的情况下使用默认值，也可以指定其他位置。
 
 下面的示例未通过此测试，因为资源上的位置设置为 `resourceGroup().location`。
 
@@ -197,7 +173,7 @@ ms.locfileid: "97674036"
 }
 ```
 
-应创建一个默认为资源组位置但允许用户提供不同值的参数。 下面的示例在模板用作主模板时 **传递** 此测试。
+应创建一个默认为资源组位置但允许用户提供不同值的参数。 当该模板用作主模板时，下面的示例通过此测试。
 
 ```json
 {
@@ -230,7 +206,7 @@ ms.locfileid: "97674036"
 }
 ```
 
-但是，如果前面的示例用作链接模板，则测试将 **失败**。 作为链接模板使用时，删除默认值。
+但是，如果前面的示例用作链接模板，测试将失败。 用作链接模板时，删除默认值。
 
 ## <a name="resources-should-have-location"></a>资源应具有位置
 
@@ -393,11 +369,11 @@ ms.locfileid: "97674036"
 * 如果提供一个参数，就必须提供另一个参数
 * `_artifactsLocation` 必须是字符串
 * `_artifactsLocation` 在主模板中必须具有默认值
-* `_artifactsLocation` 在嵌套模板中不能有默认值 
+* `_artifactsLocation` 在嵌套模板中不能有默认值
 * `_artifactsLocation` 必须使用 `"[deployment().properties.templateLink.uri]"` 或原始存储库 URL 作为其默认值
 * `_artifactsLocationSasToken` 必须是 secureString
 * `_artifactsLocationSasToken` 的默认值只能为空字符串
-* `_artifactsLocationSasToken` 在嵌套模板中不能有默认值 
+* `_artifactsLocationSasToken` 在嵌套模板中不能有默认值
 
 ## <a name="declared-variables-must-be-used"></a>必须使用已声明的变量
 
@@ -520,7 +496,7 @@ ms.locfileid: "97674036"
 
 测试名称：ResourceId 不应包含
 
-生成资源 ID 时，不要为可选参数使用不必要的函数。 默认情况下，[resourceId](template-functions-resource.md#resourceid) 函数使用当前订阅和资源组。 不需要提供这些值。  
+生成资源 ID 时，不要为可选参数使用不必要的函数。 默认情况下，[resourceId](template-functions-resource.md#resourceid) 函数使用当前订阅和资源组。 不需要提供这些值。
 
 下面的示例未通过此测试，因为不需要提供当前订阅 ID 和资源组名称。
 
@@ -637,7 +613,7 @@ ms.locfileid: "97674036"
 
 测试名称：不能使用 ManagedIdentityExtension
 
-不要将 ManagedIdentity 扩展应用于虚拟机。 有关详细信息，请参阅[如何停止使用虚拟机托管标识扩展并开始使用 Azure 实例元数据服务](../../active-directory/managed-identities-azure-resources/howto-migrate-vm-extension.md)。
+不要将 ManagedIdentity 扩展应用于虚拟机。 扩展在 2019 版中已弃用，且不得再使用。
 
 ## <a name="outputs-cant-include-secrets"></a>输出不能包含机密
 
@@ -691,7 +667,40 @@ ms.locfileid: "97674036"
 }
 ```
 
+## <a name="use-protectedsettings-for-commandtoexecute-secrets"></a>将 protectedSettings 用于 commandToExecute 机密
+
+测试名称：CommandToExecute 必须将 ProtectedSettings 用于机密
+
+在自定义脚本扩展中，当 `commandToExecute` 包含密码等机密数据时，请使用加密属性 `protectedSettings`。 机密数据类型的示例包括 `secureString`、`secureObject`、`list()` 函数或脚本。
+
+有关适用于虚拟机的自定义脚本扩展的详细信息，请参阅 [Windows](
+/azure/virtual-machines/extensions/custom-script-windows)、[Linux](../../virtual-machines/extensions/custom-script-linux.md) 和架构 [Microsoft.Compute virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions)。
+
+在此示例中，具有名为 `adminPassword` 的参数和类型 `secureString` 的模板通过了测试，因为加密属性 `protectedSettings` 包含 `commandToExecute`。
+
+```json
+"properties": [
+  {
+    "protectedSettings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
+如果未加密属性 `settings` 包含 `commandToExecute`，则测试会失败。
+
+```json
+"properties": [
+  {
+    "settings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何运行测试工具包，请参阅[使用 ARM 模板测试工具包](test-toolkit.md)。
-- 有关使用测试工具包的 Microsoft Learn 模块，请参阅 [使用假设和 ARM 模板测试工具包预览更改和验证 Azure 资源](/learn/modules/arm-template-test/)。
+* 若要了解如何运行测试工具包，请参阅[使用 ARM 模板测试工具包](test-toolkit.md)。
+* 有关介绍如何使用测试工具包的 Microsoft Learn 模块，请参阅[使用 What-if 和 ARM 模板测试工具包来预览更改和验证 Azure 资源](/learn/modules/arm-template-test/)。

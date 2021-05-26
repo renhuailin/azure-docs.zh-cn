@@ -7,12 +7,12 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c2690b625454c7767619ba756f61383fc8f509c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92675698"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481025"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>有关教育中心的常见问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "92675698"
 
 ### <a name="what-happens-after-i-use-my-100-credit-or-im-at-the-end-of-12-months"></a>用完 100 美元额度或在 12 个月到期后会发生什么情况？
 
-用完可用额度或在 12 个月到期后，你的 Azure 订阅将被禁用。 若要继续使用 [Azure](https://account.azure.com/)，可以在 Azure 帐户门户中升级为即用即付订阅。 若要获取面向学生的 Azure 的详细使用条款，请访问[套餐条款](https://azure.microsoft.com/offers/ms-azr-0170p/)。
+用完可用额度或在 12 个月到期后，你的 Azure 订阅将被禁用。 若要继续使用 Azure，可以在 Azure 门户中升级为即用即付订阅。 若要获取面向学生的 Azure 的详细使用条款，请访问[套餐条款](https://azure.microsoft.com/offers/ms-azr-0170p/)。
 
 ### <a name="can-i-get-azure-for-students-again-next-year"></a>我明年还能获取面向学生的 Azure 吗?
 

@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: rohogue
-ms.openlocfilehash: 0b23bd81f7b527f578bfd0adcedc79caed7c60fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: v-erkel
+ms.openlocfilehash: 71c0c1cf014333799821f87a6532ded8d50b8340
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92217365"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110455878"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>针对 Azure FXT Edge Filer 提交支持票证
 
@@ -35,4 +35,4 @@ ms.locfileid: "92217365"
 1. 在“详细信息”选项卡中，添加有关问题的详细信息以及与你的联系方式。 你可以上传与问题相关的文件。
 1. 在“审阅 + 创建”中，检查信息，然后单击“创建”按钮以提交请求。 
 
-提交请求后，您将收到一封包含票证号的确认电子邮件。 支持人员将与你联系以了解你的请求。
+提交请求后，您将收到一封包含票证号的确认电子邮件。 支持人员将就此请求与你联系。
