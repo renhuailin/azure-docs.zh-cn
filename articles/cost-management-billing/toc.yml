@@ -450,8 +450,6 @@
           href: manage/review-enterprise-billing.md
         - name: 查看订阅使用情况
           href: manage/review-subscription-billing.md
-        - name: 查看资源使用情况
-          href: manage/review-service-usage-api.md
 - name: Cloudyn
   items:
     - name: 概述

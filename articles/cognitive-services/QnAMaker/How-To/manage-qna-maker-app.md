@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 49bfca118e53bbe3e4287b2ce25e5baffa717175
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc5de9ff694c1c5a3841c206334fb87d240a568c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102217323"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378764"
 ---
 # <a name="manage-qna-maker-app"></a>管理 QnA Maker 应用
 
@@ -21,17 +21,35 @@ QnA Maker 通过提供一个基于协作者角色限制协作者访问权限的�
 
 QnA Maker 允许多人在同一 QnA Maker 资源中的所有知识库上进行协作。 此功能通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../../role-based-access-control/role-assignments-portal.md) 提供。
 
-## <a name="access-at-the-qna-maker-resource-level"></a>QnA Maker 资源级别的访问权限
+## <a name="access-at-the-cognitive-resource-level"></a>在认知资源级别进行访问
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 你不能在 QnA Maker 服务中共享特定知识库。 如果想要更精细的访问控制，请考虑将你的知识库分布在不同的 QnA Maker 资源上，然后为每个资源添加角色。
 
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+你不能在文本分析服务中共享特定知识库。 如果想要更精细的访问控制，请考虑将你的知识库分布在不同的文本分析资源上，然后为每个资源添加角色。
+
+---
+
 ## <a name="add-a-role-to-a-resource"></a>向资源添加角色
 
-### <a name="add-a-user-account-to-the-qna-maker-resource"></a>向 QnA Maker 资源添加用户帐户
+### <a name="add-a-user-account-to-the-cognitive-resource"></a>向认知资源添加用户帐户
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+
+应对 QnA Maker 资源应用 RBAC 控制。
+
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+应该将 RBAC 控制应用于将自定义问答作为一项功能的文本分析资源。
+
+---
 
 以下步骤使用协作者角色，但你可以使用这些步骤添加任何角色
 
-1. 登录到 [Azure](https://portal.azure.com/) 门户，然后转到你的 QnA Maker 资源。
+1. 登录到 [Azure 门户](https://portal.azure.com/)，然后转到你的认知资源。
 
     ![QnA Maker 资源列表](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.png)
 
@@ -39,7 +57,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中的所有知识库上进行�
 
     ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. 选择“添加”。
+1. 选择 **添加** 。
 
     ![QnA Maker IAM 添加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 

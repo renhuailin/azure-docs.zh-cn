@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 90ff0a42a9d82fc0bf4f9235e235c774a2d0e75d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: be412f4dd2413cfe5562f895489aed10b9a9a80f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146556"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378677"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
@@ -70,10 +70,10 @@ Synapse SQL 中的 OPENROWSET 函数从数据源读取文件的内容。 数据�
 ## <a name="syntax"></a>语法
 
 ```syntaxsql
---OPENROWSET syntax for reading Parquet files
+--OPENROWSET syntax for reading Parquet or Delta Lake (preview) files
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , [DATA_SOURCE = <data source name>, ]
-    FORMAT='PARQUET' }  
+    FORMAT= ['PARQUET' | 'DELTA'] }  
 )  
 [WITH ( {'column_name' 'column_type' }) ]
 [AS] table_alias(column_alias,...n)
@@ -107,6 +107,8 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 - 'CSV' - 包含带有行/列分隔符的任何分隔式文本文件。 任何字符（例如 TSV）均可用作字段分隔符：FIELDTERMINATOR = tab。
 
 - 'PARQUET' - Parquet 格式的二进制文件 
+
+- 'DELTA' - 以 Delta Lake（预览版）格式组织的一组 Parquet 文件 
 
 'unstructured_data_path'
 
@@ -152,9 +154,9 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
     > [!TIP]
     > 对于 CSV 文件，你也可以省略 WITH 子句。 将从文件内容自动推断数据类型。 可以使用 HEADER_ROW 参数来指定是否存在标题行，在这种情况下，将从标题行中读取列名称。 有关详细信息，请查看[自动架构发现](#automatic-schema-discovery)。
     
-- 对于 Parquet 数据文件，请提供与来源数据文件中的列名匹配的列名。 列将按名称绑定，并区分大小写。 如果省略 WITH 子句，将返回 Parquet 文件中的所有列。
+- 对于 Parquet 或 Delta Lake 文件，请提供与来源数据文件中的列名匹配的列名。 列将按名称绑定，并区分大小写。 如果省略 WITH 子句，将返回 Parquet 文件中的所有列。
     > [!IMPORTANT]
-    > Parquet 文件中的列名称区分大小写。 如果指定的列名称的大小写不同于 Parquet 文件中的列名称大小写，则该列将返回 NULL 值。
+    > Parquet 文件和 Delta Lake 文件中的列名区分大小写。 如果指定的列名的大小写不同于这些文件中的列名大小写，则会为该列返回 `NULL` 值。
 
 
 column_name = 输出列的名称。 如果提供，则此名称将替代源文件中的列名和 JSON 路径中提供的列名称（如果有）。 如果未提供 json_path，它将自动添加为“$.column_name”。 检查 json_path 参数的行为。
@@ -261,7 +263,7 @@ Parquet 文件包含要读取的列元数据，可在 [Parquet 的类型映射](
 
 ### <a name="type-mapping-for-parquet"></a>Parquet 的类型映射
 
-Parquet 文件包含每一列的类型说明。 下表介绍了如何将 Parquet 类型映射到 SQL 本机类型。
+Parquet 文件和 Delta Lake 文件包含每一列的类型说明。 下表介绍了如何将 Parquet 类型映射到 SQL 本机类型。
 
 | Parquet 类型 | Parquet 逻辑类型（批注） | SQL 数据类型 |
 | --- | --- | --- |
@@ -340,6 +342,20 @@ FROM
     ) AS [r]
 ```
 
+### <a name="read-delta-lake-files-without-specifying-schema"></a>在不指定架构的情况下读取 Delta Lake 文件
+
+以下示例在不指定列名和数据类型的情况下，以 Delta Lake 格式返回人口普查数据集中第一行的所有列： 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='DELTA'
+    ) AS [r]
+```
+
 ### <a name="read-specific-columns-from-csv-file"></a>从 CSV 文件中读取特定列
 
 以下示例仅返回 population*.csv 文件中序号为 1 和 4 的两列。 由于文件中没有标题行，因此该示例从第一行开始读取：
@@ -404,4 +420,5 @@ AS [r]
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多示例，请参阅[查询数据存储快速入门](query-data-storage.md)，了解如何使用 `OPENROWSET` 来读取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md) 和 [JSON](query-json-files.md) 文件格式。 查看[最佳做法](./best-practices-serverless-sql-pool.md)以获得最佳性能。 你还可以了解如何使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储。
+有关更多示例，请参阅[查询数据存储快速入门](query-data-storage.md)，了解如何使用 `OPENROWSET` 来读取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、[DELTA LAKE](query-delta-lake-format.md) 和 [JSON](query-json-files.md) 文件格式。 查看[最佳做法](best-practices-sql-on-demand.md)以获得最佳性能。 你还可以了解如何使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储。
+

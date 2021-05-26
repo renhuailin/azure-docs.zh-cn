@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: bb331f8829252b69499944e5354c9343e96c78bd
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 1b3d13402e18659d0deba723eaf52d4eb5959253
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684714"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379244"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -284,7 +284,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 有关停用日期，请参阅[旧组件](../previous/legacy-components.md)文章。 [Azure 媒体服务视频索引器](../video-indexer/index.yml)取代了这些旧版媒体处理器。
+我们宣布弃用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 有关停用日期，请参阅[旧组件](../previous/legacy-components.md)文章。 Azure 媒体服务视频索引器取代了这些旧版媒体处理器。
 
 有关详细信息，请参阅[从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](../previous/migrate-indexer-v1-v2.md)。
 

@@ -11,25 +11,27 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 03/02/2021
-  ms.openlocfilehash: f514b33bb39db2732053102bd69cb853477f67f1
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 6203e20f007fc170447d0c145bbaab942834d907
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101677826"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110378362"
 landingContent:
 - title: 关于认知搜索
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Azure 认知搜索
+    - text: 什么是 Azure 认知搜索？
       url: search-what-is-azure-search.md
-    - text: 什么是语义搜索
+    - text: 什么是语义搜索？
       url: semantic-search-overview.md
-    - text: 什么是 AI 扩充
+    - text: 什么是 AI 扩充？
       url: cognitive-search-concept-intro.md
-    - text: 什么是索引器
+    - text: 什么是索引器？
       url: search-indexer-overview.md
+    - text: 什么是 Azure 应用 AI 服务？
+      url: ../applied-ai-services/what-are-applied-ai-services.md
   - linkListType: video
     links:
     - text: 在搜索解决方案中使用 AI

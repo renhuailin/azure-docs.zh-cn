@@ -5,15 +5,15 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.openlocfilehash: 3ee8d5f36977a5a9f20c7e636118ffa9f6ee0b6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: 146a1dba3e13ac594e3b4d9edc358d46b0d54201
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570993"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378484"
 ---
-# <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB 无服务器（预览版）
+# <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB 无服务器
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 无服务器让你以一种基于消耗的方式使用 Azure Cosmos 帐户，在这种方式下，你只需为数据库操作所消耗的请求单位和数据所消耗的存储空间付费。 无服务器容器可以每秒处理数千个请求，无需你支付最低费用，也不需要你进行容量规划。
@@ -45,9 +45,6 @@ Azure Cosmos DB 无服务器最适合你预期会有“间歇性流量和不可�
 
 任何在无服务器帐户中创建的容器都是无服务器容器。 无服务器容器公开的功能与在预配吞吐量模式下创建的容器相同，因此可以通过完全相同的方式读取、写入和查询数据。 不过，无服务器帐户和容器还具有特定特征：
 
-> [!IMPORTANT]
-> 当无服务器正式发布时，其中一些限制可能会被删除，你的反馈将有助于我们做出决定！ 请与我们联系并告诉我们有关无服务器体验的详细信息：[azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com)。
-
 - 无服务器帐户只能在单个 Azure 区域中运行。 创建无服务器帐户之后，不能向该帐户添加其他 Azure 区域。
 - 不能对无服务器帐户启用 [Synapse Link 预览功能](synapse-link.md)。
 - 无服务器容器不需要预配吞吐量，因此以下陈述适用于这种容器：
@@ -68,7 +65,7 @@ Azure Cosmos DB 无服务器最适合你预期会有“间歇性流量和不可�
 
 ## <a name="performance"></a><a id="performance"></a>性能
 
-无服务器资源会产生与预配吞吐量资源提供的性能特征不同的特定性能特征。 在无服务器产品/服务公开发布之后，无服务器容器延迟的服务级别目标 (SLO) 对于点读取为 10 毫秒或更少，对于写入为 30 毫秒或更少。 点读取操作包含按其 ID 和分区键值提取单个项。
+无服务器资源会产生与预配吞吐量资源提供的性能特征不同的特定性能特征。 无服务器容器延迟的服务级别目标 (SLO) 对于点读取为 10 毫秒或更短，对于写入为 30 毫秒或更短。 点读取操作包含按其 ID 和分区键值提取单个项。
 
 ## <a name="next-steps"></a>后续步骤
 
