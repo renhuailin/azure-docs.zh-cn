@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: f325dd445e778bf03049d2c9e2e00fed7a427ccf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c954db5c75f1cf32833ec5ecb270ef3c4b57c10b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443985"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110093171"
 ---
 # <a name="quickstart-route-to-shared-services-vnets-using-an-arm-template"></a>快速入门：使用 ARM 模板路由到共享服务 VNet
 
@@ -24,7 +24,7 @@ ms.locfileid: "102443985"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f301-virtual-wan-with-route-tables%2fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.network%2fvirtual-wan-with-route-tables%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "102443985"
 
 ## <a name="review-the-template"></a><a name="review"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/301-virtual-wan-with-route-tables)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/301-virtual-wan-with-route-tables/azuredeploy.json)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templatesvirtual-wan-with-route-tables)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/virtual-wan-with-route-tables/azuredeploy.json)。
 
 在此快速入门中，你将创建一个 Azure 虚拟 WAN 多中心部署，包括所有网关和 VNet 连接。 输入参数列表已有意保持在最小值。 可通过修改模板内的变量来更改 IP 寻址方案。 [方案：共享服务 VNet](scenario-shared-services-vnet.md) 一文中进一步说明了该方案。
 
@@ -78,7 +78,7 @@ ms.locfileid: "102443985"
 
 1. 单击 **“部署到 Azure”** 。
 
-   [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f301-virtual-wan-with-route-tables%2fazuredeploy.json)
+   [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.network%2fvirtual-wan-with-route-tables%2fazuredeploy.json)
 1. 若要查看模板，请单击“编辑模板”。 在此页上，可调整某些值，例如地址空间或某些资源的名称。 选择“保存”来保存更改，或者选择“放弃” 。
 1. 在模板页面上输入值。 对于此模板，需要提供 P2S 公共证书数据。 若要用本文进行练习，可使用此 .cer 文件中的以下数据作为两个中心的示例数据。 在模板运行且部署完成后，必须为自己的部署将此信息替换为公钥[证书数据](certificates-point-to-site.md#cer)，才能使用 P2S 配置。
 

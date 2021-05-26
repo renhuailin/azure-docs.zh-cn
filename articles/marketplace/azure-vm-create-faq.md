@@ -7,12 +7,12 @@ ms.topic: guide
 author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: 2975d1f1558bc7f9e4a12c18882e43a163b97982
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 867b9dfefd47e38b5bcfd54ae54aab607e7acea5
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593418"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814903"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Azure 市场中的 VM 常见问题
 
@@ -474,8 +474,8 @@ New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgNa
 ## <a name="how-do-i-test-a-hidden-preview-image"></a>如何测试隐藏的预览图像？
 
 可以使用快速启动模板部署隐藏的预览图像。
-若要部署预览版映像，请执行以下操作： 
-1. 转到适用于 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux) 或 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) 的相应快速启动模板，选择“部署到 Azure”。 这样应该会打开 Azure 门户。
+若要部署预览版映像，请执行以下操作：
+1. 转到适用于 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-linux/) 或 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) 的相应快速启动模板，选择“部署到 Azure”。 这样应该会打开 Azure 门户。
 2. 在 Azure 门户中，选择“编辑模板”。
 3. 在 JSON 模板中，搜索 imageReference 并更新图像的 publisherid、offerid、skuid 和版本。 若要测试预览图像，请将“-PREVIEW”追加到 offerid。
  ![图像](https://user-images.githubusercontent.com/79274470/110191995-71c7d500-7de0-11eb-9f3c-6a42f55d8f03.png)

@@ -1,25 +1,31 @@
 ---
-title: 已启用 Azure Arc 的 Kubernetes 上的自定义位置
+title: 创建和管理已启用 Azure Arc 的 Kubernetes 上的自定义位置
 services: azure-arc
 ms.service: azure-arc
-ms.date: 04/05/2021
+ms.date: 05/25/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
 description: 使用自定义位置在已启用 Azure Arc 的 Kubernetes 群集上部署 Azure PaaS 服务
-ms.openlocfilehash: d8e1c11069a1097b0bfea3319eeb90fcee3eec82
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 15309599b12b10344b59d46c47c11dfa243726db
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287728"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367179"
 ---
-# <a name="custom-locations-on-azure-arc-enabled-kubernetes"></a>已启用 Azure Arc 的 Kubernetes 上的自定义位置
+# <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>创建和管理已启用 Azure Arc 的 Kubernetes 上的自定义位置
 
 作为一个 Azure 位置扩展，自定义位置为租户管理员提供了使用其已启用 Azure Arc 的 Kubernetes 群集作为目标位置来部署 Azure 服务实例的一种方式。 Azure 资源示例包括已启用 Azure Arc 的 SQL 托管实例和已启用 Azure Arc 的超大规模 PostgreSQL。
 
 类似于 Azure 位置，租户中有权访问自定义位置的最终用户可以使用其公司的专用计算来部署资源。
+
+在本文中，学习如何：
+> [!div class="checklist"]
+> * 在已启用 Azure Arc 的 Kubernetes 群集上启用自定义位置。
+> * 在群集上部署 Azure 服务实例的 Azure 服务群集扩展。
+> * 在已启用 Azure Arc 的 Kubernetes 群集上创建自定义位置。
 
 [自定义位置 - 已启用 Azure Arc 的 Kubernetes](conceptual-custom-locations.md) 一文中提供了此功能的概念性概述。
 
@@ -29,7 +35,10 @@ ms.locfileid: "108287728"
 
 - [安装或升级 Azure CLI](/cli/azure/install-azure-cli)，确保其版本 >= 2.16.0。
 
-- `connectedk8s`（版本 >= 1.1.0）、`k8s-extension`（版本 >= 0.2.0）和 `customlocation`（版本 >= 0.1.0）Azure CLI 扩展。 运行以下命令安装这些 Azure CLI 扩展：
+- 安装以下 Azure CLI 扩展：
+    - `connectedk8s`（版本 1.1.0 或更高版本）
+    - `k8s-extension`（版本 0.2.0 或更高版本）
+    - `customlocation`（版本 0.1.0 或更高版本） 
   
     ```azurecli
     az extension add --name connectedk8s
@@ -37,7 +46,7 @@ ms.locfileid: "108287728"
     az extension add --name customlocation
     ```
     
-    如果已安装 `connectedk8s`、`k8s-extension` 和 `customlocation` 扩展，则可以使用以下命令将其更新到最新版本：
+    如果先前已安装 `connectedk8s`、`k8s-extension` 和 `customlocation` 扩展，则可以使用以下命令将其更新到最新版本：
 
     ```azurecli
     az extension update --name connectedk8s
@@ -45,7 +54,7 @@ ms.locfileid: "108287728"
     az extension update --name customlocation
     ```
 
-- 已完成 `Microsoft.ExtendedLocation` 的提供程序注册。
+- 验证 `Microsoft.ExtendedLocation` 的提供程序注册是否已完成。
     1. 输入以下命令：
     
     ```azurecli
@@ -57,6 +66,9 @@ ms.locfileid: "108287728"
     ```azurecli
     az provider show -n Microsoft.ExtendedLocation -o table
     ```
+
+- 验证是否具有现有的[已启用 Azure Arc 的 Kubernetes 连接的群集](quickstart-connect-cluster.md)。
+    - 将[代理升级](agent-upgrade.md#manually-upgrade-agents)到版本 1.1.0 或更高版本。
 
 >[!NOTE]
 >**自定义位置支持的区域：**
@@ -78,18 +90,28 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 ## <a name="create-custom-location"></a>创建自定义位置
 
-1. 创建一个已启用 Azure Arc 的 Kubernetes 群集。
-    - 如果你尚未连接群集，请使用我们的[快速入门](quickstart-connect-cluster.md)。
-    - 将[代理升级](agent-upgrade.md#manually-upgrade-agents)到 1.1.0 或更高版本。
+1. 在群集上部署最终需要的 Azure 服务实例的 Azure 服务群集扩展：
 
-1. 部署你希望将其实例最终放在自定义位置上的 Azure 服务的群集扩展：
+    * 已启用 Azure Arc 的数据服务
 
-    ```azurecli
-    az k8s-extension create --name <extensionInstanceName> --extension-type microsoft.arcdataservices --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace arc --config Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper
-    ```
+        ```azurecli
+        az k8s-extension create --name <extensionInstanceName> --extension-type microsoft.arcdataservices --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace arc --config Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper
+        ```
+        > [!NOTE]
+        > 已启用 Arc 的数据服务群集扩展支持不使用身份验证的出站代理，以及使用基本身份验证的出站代理。 目前不支持需要受信任证书的出站代理。
 
-    > [!NOTE]
-    > 已启用 Arc 的数据服务群集扩展支持不使用身份验证的出站代理，以及使用基本身份验证的出站代理。 目前不支持需要受信任证书的出站代理。
+
+    * [Azure Arc 上的 Azure 应用服务](../../app-service/overview-arc-integration.md)
+
+        ```azurecli
+        az k8s-extension create --name <extensionInstanceName> --extension-type 'Microsoft.Web.Appservice' --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace appservice-ns --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" --configuration-settings "appsNamespace=appservice-ns" 
+        ```
+
+    * [Kubernetes 上的事件网格](/azure/event-grid/kubernetes/overview)
+
+        ```azurecli
+          az k8s-extension create --name <extensionInstanceName> --extension-type Microsoft.EventGrid --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace eventgrid-ext --configuration-protected-settings-file protected-settings-extension.json --configuration-settings-file settings-extension.json
+        ```
 
 1. 获取已启用 Azure Arc 的 Kubernetes 群集的 Azure 资源管理器标识符，此标识符在后面的步骤中称为 `connectedClusterId`：
 
@@ -111,5 +133,8 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> 使用[群集连接](cluster-connect.md)安全连接到群集
+- 使用[群集连接](cluster-connect.md)安全连接到群集。
+- 继续阅读 [Azure Arc 上的 Azure 应用服务](../../app-service/overview-arc-integration.md)，以获取有关安装扩展、创建自定义位置以及创建应用服务 Kubernetes 环境的端到端说明。 
+- 为 [Kubernetes 上的事件网格](/azure/event-grid/kubernetes/overview)创建事件网格主题和事件订阅。
+- 详细了解当前可用的[已启用 Azure Arc 的 Kubernetes 扩展](extensions.md#currently-available-extensions)。
+

@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16d5fe90be71f39d448e4c1ce10c0373f6bfc86c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73e4edd25946f71cfb6d14a379d5b004343cc4e3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463096"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367230"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教程：训练和部署 Azure 机器学习模型
 
@@ -52,7 +52,7 @@ ms.locfileid: "103463096"
 
 ### <a name="install-azure-machine-learning-visual-studio-code-extension"></a>安装 Azure 机器学习 Visual Studio Code 扩展
 
-应在开发 VM 上的 Visual Studio Code 中安装此扩展。 如果在其他实例上运行，请根据[安装 Visual Studio Code 扩展](../machine-learning/tutorial-setup-vscode-extension.md)中所述重新安装该扩展。
+应在开发 VM 上的 Visual Studio Code 中安装此扩展。 如果在其他实例上运行，请根据[安装 Visual Studio Code 扩展](../machine-learning/how-to-setup-vs-code.md)中所述重新安装该扩展。
 
 ### <a name="create-an-azure-machine-learning-account"></a>创建 Azure 机器学习帐户
 

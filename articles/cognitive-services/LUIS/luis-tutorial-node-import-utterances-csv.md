@@ -8,13 +8,13 @@ ms.custom: seodec18, devx-track-js
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 09/05/2019
-ms.openlocfilehash: 58eb92f4d0bc3de4671ca2ece14a178a876e4a6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: cce44bde0985be1943b44e0e7edd34ca62f50fe5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91541029"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090723"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>使用 Node.js 以编程方式生成 LUIS 应用
 
@@ -24,7 +24,7 @@ LUIS 提供与 [LUIS](luis-reference-regions.md) 网站功能相同的编程 API
 
 ## <a name="prerequisites"></a>必备条件
 
-* 登录 [LUIS](luis-reference-regions.md) 网站，并在“帐户设置”中找到[创作密钥](luis-how-to-azure-subscription.md#authoring-key)。 使用此密钥调用 Authoring API。
+* 登录 [LUIS](luis-reference-regions.md) 网站，并在“帐户设置”中找到[创作密钥](luis-how-to-azure-subscription.md)。 使用此密钥调用 Authoring API。
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 * 本文从用户请求的一家虚拟公司的 CSV 格式日志文件开始。 可从[此处](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)下载。
 * 使用 NPM 安装最新的 Node.js。 从[此处](https://nodejs.org/en/download/)下载它。

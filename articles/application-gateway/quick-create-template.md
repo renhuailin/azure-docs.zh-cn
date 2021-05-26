@@ -9,12 +9,12 @@ ms.date: 01/20/2021
 ms.topic: quickstart
 ms.service: application-gateway
 ms.custom: devx-track-azurepowershell - mvc - subject-armqs - mode-arm
-ms.openlocfilehash: 09efb78251e6ca385a2bd45be722aa267736d318
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: ab9a586e657652c50f182fd1dcb7e085e2e8dac7
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321314"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839160"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - ARM 模板
 
@@ -28,7 +28,7 @@ ms.locfileid: "108321314"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdemos%2Fag-docs-qs%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "108321314"
 
 本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/ag-docs-qs/)
 
-:::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/demos/ag-docs-qs/azuredeploy.json":::
 
 模板中定义了多个 Azure 资源：
 
@@ -58,7 +58,7 @@ ms.locfileid: "108321314"
 
 1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板在运行 IIS 的后端池中创建应用程序网关、网络基础结构和两个虚拟机。
 
-   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdemos%2Fag-docs-qs%2Fazuredeploy.json)
 
 2. 选择或创建资源组，键入虚拟机管理员用户名和密码。
 3. 选择“查看 + 创建”，然后选择“创建”。 

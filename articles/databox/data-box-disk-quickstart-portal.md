@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 23615daf4a07e02b01bbd5a9cdf57ec9a81a2b76
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 241b7c0c07d1fbaa6a43c6be4b264424612f538a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347382"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869034"
 ---
 ::: zone target="docs"
 
@@ -52,11 +52,11 @@ ms.locfileid: "93347382"
 
 > [!div class="checklist"]
 >
-> - **检查先决条件** ：检查磁盘和电缆的数量、操作系统和其他软件。
-> - **连接和解锁** ：连接设备并解锁磁盘以复制数据。
-> - **将数据复制到磁盘并进行验证** ：将数据复制到磁盘上预先创建的文件夹中。
-> - **退回设备** ：将磁盘退回 Azure 数据中心，数据将那里上传到你的存储帐户。
-> - **在 Azure 中验证数据** ：验证数据是否已上传到存储帐户，然后再将其从源数据服务器中删除。
+> - **检查先决条件**：检查磁盘和电缆的数量、操作系统和其他软件。
+> - **连接和解锁**：连接设备并解锁磁盘以复制数据。
+> - **将数据复制到磁盘并进行验证**：将数据复制到磁盘上预先创建的文件夹中。
+> - **退回设备**：将磁盘退回 Azure 数据中心，数据将那里上传到你的存储帐户。
+> - **在 Azure 中验证数据**：验证数据是否已上传到存储帐户，然后再将其从源数据服务器中删除。
 
 ::: zone-end
 
@@ -70,7 +70,7 @@ ms.locfileid: "93347382"
 此步骤大约需要 5 分钟。
 
 1. 在 Azure 门户中创建新的 Azure Data Box 资源。 
-2. 选择为此服务启用的订阅，然后选择“导入”作为传输类型。 提供数据所在的 **来源国家/地区** ，以及数据要传输到的 **Azure 目标区域** 。
+2. 选择为此服务启用的订阅，然后选择“导入”作为传输类型。 提供数据所在的 **来源国家/地区**，以及数据要传输到的 **Azure 目标区域**。
 3. 选择“Data Box 磁盘”。 解决方案的最大容量为 35 TB；如果数据大小更大，你可以创建多个磁盘订单。  
 4. 输入订单详细信息和发货信息。 如果该服务在你所在的区域中可用，请提供通知电子邮件地址、查看摘要，然后创建订单。
 
@@ -94,7 +94,7 @@ ms.locfileid: "93347382"
    az storage account create --resource-group databox-rg --name databoxtestsa
    ```
 
-1. 运行 [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) 命令，以使用 SKU DataBoxDisk 创建 Data Box 作业：
+1. 运行 [az databox job create](/cli/azure/databox/job#az_databox_job_create) 命令，以使用 SKU DataBoxDisk 创建 Data Box 作业：
 
    ```azurecli
    az databox job create --resource-group databox-rg --name databoxdisk-job \
@@ -104,37 +104,37 @@ ms.locfileid: "93347382"
        --storage-account databoxtestsa --expected-data-size 1
    ```
 
-1. 运行 [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) 更新作业，如本示例所示，可以在其中更改联系人姓名和电子邮件：
+1. 运行 [az databox job update](/cli/azure/databox/job#az_databox_job_update) 更新作业，如本示例所示，可以在其中更改联系人姓名和电子邮件：
 
    ```azurecli
    az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
    ```
 
-   运行 [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) 命令，以获取有关作业的信息：
+   运行 [az databox job show](/cli/azure/databox/job#az_databox_job_show) 命令，以获取有关作业的信息：
 
    ```azurecli
    az databox job show --resource-group databox-rg --name databox-job
    ```
 
-   使用 [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) 命令查看资源组的所有 Data Box 作业：
+   使用 [az databox job list]( /cli/azure/databox/job#az_databox_job_list) 命令查看资源组的所有 Data Box 作业：
 
    ```azurecli
    az databox job list --resource-group databox-rg
    ```
 
-   运行 [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) 命令取消作业：
+   运行 [az databox job cancel](/cli/azure/databox/job#az_databox_job_cancel) 命令取消作业：
 
    ```azurecli
    az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
    ```
 
-   运行 [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) 命令删除作业：
+   运行 [az databox job delete](/cli/azure/databox/job#az_databox_job_delete) 命令删除作业：
 
    ```azurecli
    az databox job delete –resource-group databox-rg --name databox-job
    ```
 
-1. 使用 [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) 命令列出 Data Box 作业的凭据：
+1. 使用 [az databox job list-credentials]( /cli/azure/databox/job#az_databox_job_list_credentials) 命令列出 Data Box 作业的凭据：
 
    ```azurecli
    az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
@@ -170,7 +170,7 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
 
 完成此操作所需的时间取决于数据大小。
 
-1. 驱动器包含 *PageBlob* 、 *BlockBlob* 、 *AzureFile* 、 *ManagedDisk* 和 *DataBoxDiskImport* 文件夹。 通过拖放操作，将需要作为块 Blob 导入的数据复制到 *BlockBlob* 文件夹中。 同理，将 VHD/VHDX 等数据拖放到 *PageBlob* 文件夹中，并将相应的数据拖放到 *AzureFile* 文件夹中。 将需要作为托管磁盘上传的 VHD 复制到 *ManagedDisk* 下的一个文件夹中。
+1. 驱动器包含 *PageBlob*、*BlockBlob*、*AzureFile*、*ManagedDisk* 和 *DataBoxDiskImport* 文件夹。 通过拖放操作，将需要作为块 Blob 导入的数据复制到 *BlockBlob* 文件夹中。 同理，将 VHD/VHDX 等数据拖放到 *PageBlob* 文件夹中，并将相应的数据拖放到 *AzureFile* 文件夹中。 将需要作为托管磁盘上传的 VHD 复制到 *ManagedDisk* 下的一个文件夹中。
 
     在 Azure 存储帐户中，为 *BlockBlob* 和 *PageBlob* 文件夹下的每个子文件夹创建一个容器。 为 *AzureFile* 下的子文件夹创建一个文件共享。
 

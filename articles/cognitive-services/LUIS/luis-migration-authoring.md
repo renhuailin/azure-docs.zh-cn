@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 3ff48ff5a3f46d8ec0fbf81b4cd20d20c217344b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54c0d8aa8ba17beb5a2f5a51c4a19795f767733a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98787631"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089428"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
@@ -33,7 +33,7 @@ ms.locfileid: "98787631"
 必须从 [LUIS 门户](https://www.luis.ai)执行迁移。 例如，如果你使用 LUIS CLI 创建创作密钥，则需在 LUIS 门户中完成迁移过程。 迁移后，你的应用程序的共同创作者仍然能够存在，但会被添加到 Azure 资源级别，而不是应用程序级别。 帐户的迁移无法撤消。
 
 > [!Note]
-> * 如果你需要创建一个预测运行时资源，则可通过[单独的过程](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)来创建它。
+> * 如果你需要创建一个预测运行时资源，则可通过[单独的过程](luis-how-to-azure-subscription.md#create-luis-resources)来创建它。
 > * 有关应用程序和参与者如何受影响的信息，请参阅下面的[迁移说明](#migration-notes)部分。 
 > * LUIS 应用的创作是免费的，如 F0 层所指示的那样。 了解[有关定价层的更多信息](luis-limits.md#key-limits)。
 

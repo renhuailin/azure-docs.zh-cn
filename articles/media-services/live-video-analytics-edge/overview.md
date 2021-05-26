@@ -3,14 +3,16 @@ title: 什么是 IoT Edge 上的实时视频分析 - Azure
 description: 本主题概述了 IoT Edge 上的实时视频分析。 该平台提供了可用于增强 IoT 解决方案的功能。 例如，捕获、记录、分析直播视频并将结果（视频和/或视频分析）发布到 Azure 服务。
 ms.topic: overview
 ms.date: 05/27/2020
-ms.openlocfilehash: b9b8726c5e8ad6850e05aeee48fccabee703080e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 577a3397f1ac6df59e87b55ec7aa6e24395ae92b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90904347"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372090"
 ---
 # <a name="what-is-live-video-analytics-on-iot-edge-preview"></a>什么是 IoT Edge 上的实时视频分析？ （预览版）
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 IoT Edge 上的实时视频分析提供了一个平台，可用于构建跨越边缘和云的智能视频应用程序。 此平台提供了捕获、记录和分析实时视频的功能，并且可以将结果（视频和/或视频分析）发布到 Azure 服务（云中和/或边缘）。 该平台可用于通过视频分析增强 IoT 解决方案。 IoT Edge 上的实时视频分析功能可以与其他 Azure IoT Edge 模块结合，如 IoT Edge 上的流分析、IoT Edge 上的认知服务以及云中的 Azure 服务（如媒体服务、事件中心、认知服务等），以构建强大的混合（例如边缘+云）应用程序。
 

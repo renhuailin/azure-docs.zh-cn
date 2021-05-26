@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/22/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 80ea49436e9bfec5203f3a0493d441cfdbd1dbde
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: dde8291bce52e8f36aa712e294109dfe156fb426
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755110"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367196"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>为 Azure 机器学习设置 Python 开发环境
 
@@ -132,7 +132,7 @@ ms.locfileid: "108755110"
 若要使用 Visual Studio Code 进行开发：
 
 1. 安装 [Visual Studio Code](https://code.visualstudio.com/Download)。
-1. 安装 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)（预览版）。
+1. 安装 [Azure 机器学习 Visual Studio Code 扩展](how-to-setup-vs-code.md)（预览版）。
 
 安装 Visual Studio Code 扩展后，请使用它来执行以下操作：
 

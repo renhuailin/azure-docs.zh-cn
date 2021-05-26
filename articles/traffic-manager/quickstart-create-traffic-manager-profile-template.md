@@ -10,12 +10,12 @@ ms.service: traffic-manager
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 03342d33731ed29b60908044cd29d529aaa5677b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 68ebc6d7827e898946930b956263be3e3010a008
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531246"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839286"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>快速入门：使用 ARM 模板创建流量管理器配置文件
 
@@ -25,7 +25,7 @@ ms.locfileid: "107531246"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-traffic-manager-external-endpoint%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ftraffic-manager-external-endpoint%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "107531246"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-traffic-manager-external-endpoint)。
 
-:::code language="json" source="~/quickstart-templates/101-traffic-manager-external-endpoint/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/traffic-manager-external-endpoint/azuredeploy.json":::
 
 模板中定义了一个 Azure 资源：
 
@@ -50,7 +50,7 @@ ms.locfileid: "107531246"
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-traffic-manager-external-endpoint/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/traffic-manager-external-endpoint/azuredeploy.json"
 
     $resourceGroupName = "${projectName}rg"
 

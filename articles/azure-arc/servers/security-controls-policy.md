@@ -1,15 +1,15 @@
 ---
 title: 启用了 Azure Arc 的服务器（预览版）的 Azure Policy 法规遵从性控制
 description: 列出可用于启用了 Azure Arc 的服务器（预览版）的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 4b22d5e8a670c5ae53b4ef2bd0bde94bd8504b0a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e0d40022836279f6c7f89ab29ccd2e5d809965a4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765695"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066892"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-enabled-servers"></a>启用了 Azure Arc 的服务器的 Azure Policy 法规遵从性控制
 

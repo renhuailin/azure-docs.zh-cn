@@ -3,12 +3,12 @@ title: 从 Azure Application Insights 导出到 SQL | Microsoft Docs
 description: 使用流分析将 Application Insights 数据连续导出到 SQL。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 25d28bb0fc35ef76231c085dc1d9d8a1234a264c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7627ae6dabb75782549ed17fc6e590b7bc7da77d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587745"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092739"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
 本文说明如何使用[连续导出][export]和 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从 [Azure Application Insights][start] 移入 Azure SQL 数据库。 
@@ -26,7 +26,7 @@ ms.locfileid: "100587745"
 
 1. [为网页设置 Application Insights](./javascript.md)。 
    
-    （本示例侧重于处理来自客户端浏览器的页面视图数据，但你也可以针对 [Java](./java-get-started.md) 或 [ASP.NET](./asp-net.md) 应用的服务器端设置 Application Insights，并处理请求、依赖项和其他服务器遥测数据。）
+    （本示例侧重于处理来自客户端浏览器的页面视图数据，但你也可以针对 [Java](./java-in-process-agent.md) 或 [ASP.NET](./asp-net.md) 应用的服务器端设置 Application Insights，并处理请求、依赖项和其他服务器遥测数据。）
 2. 发布应用，并观察 Application Insights 资源中出现的遥测数据。
 
 ## <a name="create-storage-in-azure"></a>在 Azure 中创建存储

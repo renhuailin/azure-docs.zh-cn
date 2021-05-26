@@ -3,22 +3,22 @@ title: 使用挎斗容器启用 TLS
 description: 通过在挎斗中运行 Nginx 为 Azure 容器实例中运行的容器组创建 SSL 或 TLS 终结点
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 17467cab93f3a930c8290f73c5f4c971b53f12b5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96558073"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090525"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>在挎斗容器中启用 TLS 终结点
 
 本文介绍如何使用一个应用程序容器以及一个运行 TLS/SSL 提供程序的挎斗容器创建[容器组](container-instances-container-groups.md)。 使用单独的 TLS 终结点设置容器组，可为应用程序启用 TLS 连接，而无需更改应用程序代码。
 
 设置包含两个容器的示例容器组：
-* 一个运行简单 Web 应用且使用公共 Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) 映像的应用程序容器。 
-* 一个运行公共 [Nginx](https://hub.docker.com/_/nginx) 映像且配置为使用 TLS 的挎斗容器。 
+* 一个运行简单 Web 应用且使用公共 Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) 映像的应用程序容器。
+* 一个运行公共 [Nginx](https://hub.docker.com/_/nginx) 映像且配置为使用 TLS 的挎斗容器。
 
-在此示例中，容器组仅使用其公共 IP 地址公开 Nginx 的端口 443。 Nginx 将 HTTPS 请求路由到伴侣 Web 应用，后者在内部侦听端口 80。 可以改编侦听其他端口的容器应用示例。 
+在此示例中，容器组仅使用其公共 IP 地址公开 Nginx 的端口 443。 Nginx 将 HTTPS 请求路由到伴侣 Web 应用，后者在内部侦听端口 80。 可以改编侦听其他端口的容器应用示例。
 
 有关在容器组中启用 TLS 的其他方法，请参阅[后续步骤](#next-steps)。
 
@@ -112,7 +112,7 @@ http {
 
         location / {
             proxy_pass http://localhost:80; # TODO: replace port if app listens on port other than 80
-            
+
             proxy_set_header Connection "";
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
@@ -193,13 +193,13 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="deploy-the-container-group"></a>部署容器组
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组：
+使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
 ```
 
-使用 [az container create](/cli/azure/container#az-container-create) 命令部署容器组并传递 YAML 文件作为参数。
+使用 [az container create](/cli/azure/container#az_container_create) 命令部署容器组并传递 YAML 文件作为参数。
 
 ```azurecli
 az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
@@ -207,7 +207,7 @@ az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
 
 ### <a name="view-deployment-state"></a>查看部署状态
 
-若要查看部署状态，请运行以下 [az container show](/cli/azure/container#az-container-show) 命令：
+若要查看部署状态，请运行以下 [az container show](/cli/azure/container#az_container_show) 命令：
 
 ```azurecli
 az container show --resource-group <myResourceGroup> --name app-with-ssl --output table
@@ -242,4 +242,4 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 * [Azure Functions 代理](../azure-functions/functions-proxies.md)
 * [Azure API 管理](../api-management/api-management-key-concepts.md)
-* [Azure 应用程序网关](../application-gateway/overview.md) - 请参阅[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)示例。
+* [Azure 应用程序网关](../application-gateway/overview.md) - 请参阅[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/wordpress/aci-wordpress-vnet)示例。

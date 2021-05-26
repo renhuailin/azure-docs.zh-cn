@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 36dc7d098892fb2be7c2ba3d75de7c7adef1a4f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dd47981ba3067fefefb7a2360894a1f57ff7a64
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171544"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368034"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>教程：将事件转发到 IoTHub
 
@@ -29,7 +30,7 @@ ms.locfileid: "86171544"
 ## <a name="prerequisites"></a>先决条件 
 若要完成本教程，您需要：
 
-* **Azure 订阅** - 如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
+* Azure 订阅 - 创建[免费帐户](https://azure.microsoft.com/free)（如果还没有的话）。 
 * **Azure IoT 中心和 IoT Edge 设备** - 按照 [Linux](../../iot-edge/quickstart-linux.md) 或 [Windows 设备](../../iot-edge/quickstart.md)快速入门中的步骤进行操作（如果尚未安装）。
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
@@ -48,13 +49,13 @@ ms.locfileid: "86171544"
           }
     }
     ```
-1. 运行以下命令来创建主题。 应返回 HTTP 状态代码 200 OK。
+1. 运行下面的命令来创建主题。 应返回 HTTP 状态代码 200 OK。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic4.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4?api-version=2019-01-01-preview
     ```
 
-1. 运行以下命令以验证是否已成功创建主题。 应返回 HTTP 状态代码 200 OK。
+1. 运行下面的命令，以验证主题是否已成功创建。 应返回 HTTP 状态代码 200 OK。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4?api-version=2019-01-01-preview
@@ -104,7 +105,7 @@ ms.locfileid: "86171544"
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription4.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4/eventSubscriptions/sampleSubscription4?api-version=2019-01-01-preview
     ```
-3. 运行以下命令以验证是否已成功创建订阅。 应返回 HTTP 状态代码 200 OK。
+3. 运行下面的命令，以验证订阅是否已成功创建。 应返回 HTTP 状态代码 200 OK。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4/eventSubscriptions/sampleSubscription4?api-version=2019-01-01-preview
@@ -210,6 +211,6 @@ ms.locfileid: "86171544"
 * 若要排查与在 IoT Edge 上使用 Azure 事件网格相关的问题，请参阅[故障排除指南](troubleshoot.md)。
 * 使用 [Edge 中心](../../iot-edge/module-composition.md)路由筛选器来对事件进行分区
 * 在 [linux](persist-state-linux.md) 或 [Windows](persist-state-windows.md) 上设置事件网格模块的持久性
-* 遵循[文档](configure-client-auth.md)配置客户端身份验证
-* 遵循本[教程](forward-events-event-grid-cloud.md)将事件转接到云中的 Azure 事件网格
-* [监视 Edge 上的主题和订阅](monitor-topics-subscriptions.md)
+* 遵循这篇[文档](configure-client-auth.md)来配置客户端身份验证
+* 遵循这篇[教程](forward-events-event-grid-cloud.md)在云中将事件转发到 Azure 事件网格
+* [在 Edge 上监视主题和订阅](monitor-topics-subscriptions.md)

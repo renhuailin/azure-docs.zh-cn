@@ -3,18 +3,18 @@ title: 颁发者服务通信示例（预览版）- Azure Active Directory 可验
 description: 标识提供者和颁发者服务之间的通信的详细信息
 author: barclayn
 manager: davba
-ms.service: identity
+ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 6aa502e1ed0e49192220174d5a8573690035a4a3
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 66e939bae0716cbcbde5614159e47a412990564f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739127"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466000"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>颁发者服务通信示例（预览版）
 

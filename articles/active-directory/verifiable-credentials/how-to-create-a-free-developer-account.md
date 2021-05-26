@@ -4,17 +4,17 @@ description: 本文将介绍如何创建开发人员帐户
 services: active-directory
 author: barclayn
 manager: davba
-ms.service: identity
+ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 5d6386d7ed97868f73d994f272c8069f922a1f04
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 2a6b2f9b464a7776b3c0dd58736ca64878e0b65c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207260"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466139"
 ---
 # <a name="how-to-create-a-free-azure-active-directory-developer-tenant"></a>如何创建免费的 Azure Active Directory 开发人员租户
 
