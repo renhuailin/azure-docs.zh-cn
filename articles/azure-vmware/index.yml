@@ -9,12 +9,12 @@ metadata:
   author: shortpatti
   ms.author: v-patsho
   ms.date: 05/11/2021
-  ms.openlocfilehash: 43baa8884bb7ab649ddba0e0516d828837a529ec
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: b70f47f5cba7782862ddd2e81e6743830f2a8c1d
+  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110086835"
+  ms.lasthandoff: 05/26/2021
+  ms.locfileid: "110452076"
 landingContent:
 - title: 关于 Azure VMware 解决方案
   linkLists:
@@ -40,7 +40,7 @@ landingContent:
       url: concepts-api-management.md
     - text: 中心和分支
       url: concepts-hub-and-spoke.md
-- title: 常见问题
+- title: 常见问题解答
   linkLists:
   - linkListType: reference
     links:
@@ -52,8 +52,8 @@ landingContent:
       url: /azure/azure-vmware/faq#configuration-and-setup
     - text: VMware 软件
       url: /azure/azure-vmware/faq#vmware-software
-    - text: 计算、备份和灾难恢复
-      url: /azure/azure-vmware/faq#compute,-backup,-and-disaster-recovery
+    - text: 计算
+      url: /azure/azure-vmware/faq#compute
     - text: 网络和互连
       url: /azure/azure-vmware/faq#networking-and-interconnectivity
     - text: 存储
@@ -106,12 +106,12 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: 创建 Azure VMware 解决方案评估
+      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
     - text: 请求主机配额（Azure VMware 解决方案）
       url: request-host-quota-azure-vmware-solution.md
     - text: 通过预留实例节约成本
       url: reserved-instance.md
-    - text: 创建 Azure VMware 解决方案评估
-      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
   - linkListType: how-to-guide
     links:
     - text: 配置和管理 DHCP

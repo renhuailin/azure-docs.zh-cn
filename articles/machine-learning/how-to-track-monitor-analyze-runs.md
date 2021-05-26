@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 04/19/2021
 ms.topic: how-to
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d50820e954c1a34f1ccffe133a338538bf0abd18
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: f61e1a604c9296f85bbfd508f39dcbc74e256caf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888523"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098715"
 ---
 # <a name="start-monitor-and-track-run-history"></a>启动、监视和跟踪运行历史记录
 
@@ -194,11 +194,11 @@ ms.locfileid: "107888523"
 在“所有运行”页面中，可以按标记、试验、计算目标等筛选运行列表，以便更好地组织和确定工作范围。  
     
 1. 通过选择要比较的运行、添加图表或应用筛选来对页面进行自定义。 这些更改可以保存为“自定义视图”，以便你轻松返回到你的工作内容。 具有工作区权限的用户可以编辑或查看自定义视图。 此外，还可以通过选择“共享视图”，与团队成员共享自定义视图以增强协作。   
-    
+
+1. 要查看运行日志，请选择特定的运行，在“输出 + 日志”选项卡中，可以找到运行的诊断和错误日志。    
+
 :::image type="content" source="media/how-to-track-monitor-analyze-runs/custom-views.gif" alt-text="屏幕截图：创建自定义视图":::
     
-1. 要查看运行日志，请选择特定的运行，在“输出 + 日志”选项卡中，可以找到运行的诊断和错误日志。
-
 ## <a name="run-description"></a>运行说明 
 
 可以将运行说明添加到运行中，以便为运行提供更多上下文和信息。 还可以从运行列表中搜索这些说明，并将运行说明作为列添加到运行列表中。 

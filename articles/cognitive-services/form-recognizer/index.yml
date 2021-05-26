@@ -11,12 +11,12 @@ metadata:
   author: laujan
   ms.author: lajanuar
   ms.date: 09/05/2019
-  ms.openlocfilehash: d3dd7c5a9befd00c51f6ec40fdc1ee304ea55db3
-  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.openlocfilehash: 2d38f9dd270bb3c3ffb304206edbefe6ab4db165
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/20/2021
-  ms.locfileid: "107784292"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110374468"
 landingContent:
 - title: 关于表单识别器
   linkLists:
@@ -24,122 +24,184 @@ landingContent:
     links:
     - text: 什么是表单识别器？
       url: overview.md
+    - text: 什么是 Azure 应用 AI 服务？
+      url: https://aka.ms/applied-ai-services-hub
   - linkListType: whats-new
     links:
     - text: 表单识别器的新增功能
       url: whats-new.md
   - linkListType: video
     links:
-    - text: 通过表单识别器实现 AI 支持的流程自动化
+    - text: 从文档和表单中提取数据
+      url: https://channel9.msdn.com/Shows/AI-Show/Extracting-Data-From-Documents-and-Forms-with-OCR-and-Form-Recognizer
+    - text: AI 支持的流程自动化
       url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
+    - text: 最新功能和更新
+      url: https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Form-Recognizer
+- title: 从表单布局中提取数据
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Layout
+      url: concept-layout.md?
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-layout
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-layout
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-layout
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-layout
+    - text: 使用 REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-layout
+  - linkListType: deploy
+    links:
+    - text: 尝试使用表单识别器
+      url: https://fott-2-1.azurewebsites.net/layout-analyze
+- title: 从收据提取数据
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Receipts
+      url: concept-receipts.md?
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-receipts
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-receipts
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-receipts
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-receipts
+    - text: 使用 REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-receipts
+- title: 从名片提取数据
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 名片
+      url: concept-business-cards.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-business-cards
+    - text: 使用 REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-business-cards
+- title: 从发票提取数据
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 发票
+      url: concept-invoices.md?
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-invoices
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-invoices
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-invoices
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-invoices
+    - text: 使用 REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-invoices
+  - linkListType: deploy
+    links:
+    - text: 尝试使用表单识别器
+      url: https://fott-2-1.azurewebsites.net/prebuilts-analyze
+- title: 从标识文档中提取数据
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 标识文档
+      url: concept-invoices.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-identity-documents
+    - text: 使用 REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-identity-documents
+- title: Microsoft 技术社区
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 从具有或不具有代码的 PDF 中提取数据
+      url: https://techcommunity.microsoft.com/t5/azure-ai/extract-data-from-pdfs-using-form-recognizer-with-code-or/ba-p/2214299
+    - text: 阅读更多语言、处理 ID 和发票、在表格上进行训练等
+      url: https://techcommunity.microsoft.com/t5/azure-ai/form-recognizer-now-reads-more-languages-processes-ids-and/ba-p/2179428
+    - text: 使用表单识别器生成个人理财应用
+      url: https://techcommunity.microsoft.com/t5/azure-ai/how-to-build-a-personal-finance-app-using-azure/ba-p/2088995
+    - text: 文档表格提取功能增强
+      url: https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011
+    - text: 使用元数据驱动的方法提取键值对
+      url: https://techcommunity.microsoft.com/t5/azure-ai/meta-data-driven-key-value-pairs-extraction-with-azure-form/ba-p/1942595
+    - text: 加速从文档提取文本、数据和结构
+      url: https://techcommunity.microsoft.com/t5/azure-ai/accelerate-extraction-of-text-data-and-structure-from-your/ba-p/1507365
+    - text: 自动化表单处理以提高工作效率
+      url: https://techcommunity.microsoft.com/t5/azure-ai/get-started-with-automating-form-processing-to-enable/ba-p/1387305
 - title: 训练自定义模型并提取数据
   linkLists:
   - linkListType: quickstart
     links:
     - text: 使用 .NET SDK
-      url: quickstarts/client-library.md?pivots=programming-language-csharp
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#train-a-custom-model
     - text: 使用 Python SDK
-      url: quickstarts/client-library.md?pivots=programming-language-python
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#train-a-custom-model
     - text: 使用 Java SDK
-      url: quickstarts/client-library.md?pivots=programming-language-java
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#train-a-custom-model
     - text: 使用 JavaScript SDK
-      url: quickstarts/client-library.md?pivots=programming-language-javascript
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#train-a-custom-model
     - text: 使用 REST API (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#train-a-custom-model
   - linkListType: tutorial
     links:
     - text: 批量提取窗体数据
       url: tutorial-bulk-processing.md
-- title: 生成训练数据集
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 生成训练数据集
-      url: build-training-data-set.md
-- title: 使用标签训练自定义模型
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 标记的数据
-      url: overview.md#train-with-labels
-  - linkListType: quickstart
-    links:
-    - text: 使用示例标记工具进行训练
-      url: quickstarts/label-tool.md
-- title: 从收据提取数据
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: 使用 .NET SDK
-      url: quickstarts/client-library.md?pivots=programming-language-csharp
-    - text: 使用 Python SDK
-      url: quickstarts/client-library.md?pivots=programming-language-python
-    - text: 使用 Java SDK
-      url: quickstarts/client-library.md?pivots=programming-language-java
-    - text: 使用 JavaScript SDK
-      url: quickstarts/client-library.md?pivots=programming-language-javascript
-    - text: 使用 REST API (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api
-  - linkListType: concept
-    links:
-    - text: 回执概念
-      url: concept-receipts.md?
-- title: 从名片提取数据
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: 使用 .NET SDK
-      url: quickstarts/client-library.md?pivots=programming-language-csharp
-    - text: 使用 Python SDK
-      url: quickstarts/client-library.md?pivots=programming-language-python
-    - text: 使用 Java SDK
-      url: quickstarts/client-library.md?pivots=programming-language-java
-    - text: 使用 JavaScript SDK
-      url: quickstarts/client-library.md?pivots=programming-language-javascript
-    - text: 使用 REST API (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api
-  - linkListType: concept
-    links:
-    - text: 名片概念
-      url: concept-business-cards.md?
-- title: 获取文本布局信息
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 布局概念
-      url: concept-layout.md?
-  - linkListType: quickstart
-    links:
-    - text: 使用 .NET SDK
-      url: quickstarts/client-library.md?pivots=programming-language-csharp
-    - text: 使用 Python SDK
-      url: quickstarts/client-library.md?pivots=programming-language-python
-    - text: 使用 Java SDK
-      url: quickstarts/client-library.md?pivots=programming-language-java
-    - text: 使用 JavaScript SDK
-      url: quickstarts/client-library.md?pivots=programming-language-javascript
-    - text: 使用 REST API (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api
-- title: 使用容器
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: 安装和运行容器
-      url: form-recognizer-container-howto.md
-  - linkListType: how-to-guide
-    links:
-    - text: 配置容器
-      url: form-recognizer-container-configuration.md
   - linkListType: deploy
     links:
-    - text: 使用容器实例
-      url: ../containers/azure-container-instance-recipe.md
-- title: 参考
+    - text: 尝试使用表单识别器
+      url: https://fott-2-1.azurewebsites.net/
+- title: 使用自定义模型分析表单
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+    - text: 使用 REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+- title: 标记工具入门
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用标记工具
+      url: label-tool.md
+- title: API 和客户端库
   linkLists:
   - linkListType: reference
     links:
-    - text: 表单识别器 API v2.1 preview.3
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm
+    - text: 表单识别器 API v2.1
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm
     - text: .NET SDK
       url: /dotnet/api/overview/azure/ai.formrecognizer-readme
     - text: Python SDK
@@ -148,10 +210,6 @@ landingContent:
       url: /java/api/overview/azure/ai-formrecognizer-readme
     - text: JavaScript SDK
       url: /javascript/api/overview/azure/ai-form-recognizer-readme
-    - text: Azure PowerShell
-      url: /powershell/module/az.cognitiveservices/#cognitive_services
-    - text: Azure 命令行界面 (CLI)
-      url: /cli/azure/cognitiveservices#az_cognitiveservices_list
 - title: 帮助和反馈
   linkLists:
   - linkListType: reference

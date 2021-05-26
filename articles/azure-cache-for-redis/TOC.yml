@@ -69,7 +69,7 @@
       href: cache-high-availability.md
     - name: 故障转移和修补
       href: cache-failover.md
-    - name: 最佳做法
+    - name: 最佳实践
       href: cache-best-practices.md
     - name: 安全性
       items:
@@ -102,7 +102,7 @@
           href: cache-private-link.md
         - name: 启用区域冗余
           href: cache-how-to-zone-redundancy.md
-        - name: 设置 OSS 异地复制
+        - name: 设置异地复制
           href: cache-how-to-geo-replication.md
         - name: 设置企业活动异地复制
           href: cache-how-to-active-geo-replication.md

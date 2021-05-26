@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 03/17/2021
-ms.openlocfilehash: 9f13f0f62a9bd3b26b4c855110fbc97971ecfea8
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 0ed91129f2093018ff34a2b3eef505eded9483cf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166875"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060699"
 ---
 # <a name="how-to-create-azure-web-pubsub-instance"></a>如何创建 Azure Web PubSub 实例
 
@@ -33,7 +33,7 @@ Azure 门户是基于 Web 的统一控制台，提供可替代命令行工具的
     | **订阅** | 在其下创建此新的 Web PubSub 服务实例的 Azure 订阅。 | 
     | **[资源组](../azure-resource-manager/management/overview.md)** |  要在其中创建 Web PubSub 服务实例的新的或现有资源组的名称。 | 
     | **位置** | 选择你附近的[区域](https://azure.microsoft.com/regions/)。 |
-    | **定价层** | 了解有关 [Azure Web PubSub 服务定价层](https://azure.microsoft.com/pricing/details/web-[pubsub])的更多详细信息。 |
+    | **定价层** | 了解有关 [Azure Web PubSub 服务定价层](https://azure.microsoft.com/pricing/details/web-pubsub/)的更多详细信息。 |
     | **单位计数** |  单位计数指定 Web PubSub 服务实例可接受的连接数。 每个单位最多支持 1000 个并发连接。 它只能在标准层中配置。 |
 
 1. 选择“创建”，开始部署 Web PubSub 服务实例。

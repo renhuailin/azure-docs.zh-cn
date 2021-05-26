@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ee95f272b57ac4ed1219c682ce0eb97cc965ea3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0f895744ed589e32c86348b17ddc57b5820b14fc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108157597"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110165266"
 ---
 本指南介绍如何安装用于 [Xamarin](/xamarin/get-started/what-is-xamarin) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)，这是一种开源平台，用于为装有 .NET 的 iOS、Android 和 Windows 构建现代的高性能应用程序。 如果只是需要包名称以便自行开始，请在 NuGet 控制台中运行 `Install-Package Microsoft.CognitiveServices.Speech`。
 
@@ -37,8 +37,6 @@ ms.locfileid: "108157597"
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-xamarin-create-proj.md)]
 
 语音 SDK 现已安装。 现在可以删除或重复使用在前面的步骤中创建的“helloworld”项目。
-
-现在可以继续完成下面的[后续步骤](#next-steps)。
 
 ## <a name="next-steps"></a>后续步骤
 

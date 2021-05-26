@@ -7,21 +7,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/15/2021
+ms.date: 04/14/2021
 ms.author: aahi
-ms.openlocfilehash: 7484b49ed3c868a1ad3e0f97dffa346f350e127f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 20334f48866875614e313ea35403f3d2694ad275
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106097282"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110162985"
 ---
 > [!NOTE]
 > 若要检测受保护的运行状况信息 (PHI)，请使用 `domain=phi` 参数和模型版本 `2020-04-01` 或更高版本。
 >
-> 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi&model-version=2021-01-15`
+> 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii?domain=phi&model-version=2021-01-15`
  
-将请求发送到 `/v3.1-preview.3/entities/recognition/pii` 终结点时，会返回以下实体类别。
+将请求发送到 `/v3.1-preview.5/entities/recognition/pii` 终结点时，会返回以下实体类别。
 
 
 | 类别   |  说明                          |
@@ -29,7 +29,7 @@ ms.locfileid: "106097282"
 | [Person](#category-person)      |  人员姓名。  |
 | [PersonType](#category-persontype) | 某人的工作类型或角色。 |
 | [电话号码](#category-phonenumber) |电话号码（仅限美国和欧洲电话号码）。 |
-| 组织 |  公司、团体、政府机构和其他组织。  |
+| 组织 |  公司、组、政府机构和其他组织。  |
 | [Address](#category-address) | 完整的邮寄地址。  |
 | [Email](#category-email) | 电子邮件地址。   |
 | [URL](#category-url) | 指向网站的 URL。  |
@@ -37,9 +37,9 @@ ms.locfileid: "106097282"
 | [DateTime](#category-datetime) | 某天的日期和时间。 | 
 | [数量](#category-quantity) | 数字和数量。  |
 | [Azure 信息](#azure-information) | 可识别的 Azure 信息，如身份验证信息。  |
-| [标识](#identification) | 金融和国家/地区特定的标识。  |
+| [标识](#identification) | 金融和国家/地区特定标识。  |
 
-### <a name="category-person"></a>类别：Person
+### <a name="category-person"></a>类别：人员
 
 此类别包含以下实体：
 
@@ -126,7 +126,7 @@ ms.locfileid: "106097282"
 :::row-end:::
 
 
-### <a name="category-organization"></a>类别：Organization
+### <a name="category-organization"></a>类别：组织
 
 此类别包含以下实体：
 
@@ -157,7 +157,7 @@ ms.locfileid: "106097282"
 
 #### <a name="subcategories"></a>子类别
 
-此类别中的实体可以具有以下子类别。
+此类别中的实体可以有以下子类别。
 
 :::row:::
     :::column span="":::
@@ -227,7 +227,7 @@ ms.locfileid: "106097282"
 :::row-end:::
 
 
-### <a name="category-address"></a>类别：Address
+### <a name="category-address"></a>类别：地址
 
 此类别包含以下实体：
 
@@ -241,7 +241,7 @@ ms.locfileid: "106097282"
     :::column span="2":::
         **详细信息**
 
-        完整的通讯地址。 也随 `domain=phi` 一起返回。
+        完整邮寄地址。 也随 `domain=phi` 一起返回。
 
         若要获得此实体类别，请将 `Address` 添加到 `pii-categories` 参数中。 如果检测到 `Address`，会在 API 响应中返回。
       
@@ -256,7 +256,7 @@ ms.locfileid: "106097282"
 
 :::row-end:::
 
-### <a name="category-email"></a>类别：Email
+### <a name="category-email"></a>类别：电子邮件
 
 此类别包含以下实体：
 
@@ -370,7 +370,7 @@ ms.locfileid: "106097282"
 
 #### <a name="subcategories"></a>子类别
 
-此类别中的实体可以具有以下子类别。
+此类别中的实体可以有以下子类别。
 
 :::row:::
     :::column span="":::
@@ -395,7 +395,7 @@ ms.locfileid: "106097282"
     :::column-end:::
 :::row-end:::
 
-### <a name="category-quantity"></a>类别：Quantity
+### <a name="category-quantity"></a>类别：数量
 
 此类别包含以下实体：
 
@@ -424,7 +424,7 @@ ms.locfileid: "106097282"
 
 #### <a name="subcategories"></a>子类别
 
-此类别中的实体可以具有以下子类别。
+此类别中的实体可以有以下子类别。
 
 :::row:::
     :::column span="":::

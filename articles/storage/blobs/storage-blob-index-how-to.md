@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f7ae7af0f2764bd3f157ad5ca3166c9989cd9bf
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 63f06b9cab7896bcd98b6b6cd9c037b7ee83b47f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276784"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451762"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>使用 Blob 索引标记（预览版）管理和查找 Azure Blob 存储上的数据
 
@@ -32,7 +32,7 @@ Blob 索引标记使用键值标记属性对存储帐户中的数据进行分类
 - 一个已注册且已获准可访问 Blob 索引预览版的 Azure 订阅
 - 可访问对 [Azure 门户](https://portal.azure.com/)
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 Blob 索引现为预览版，因此将在预览版 NuGet 源中发布 .NET 存储包。 此库在预览版期间可能会更改。
 
@@ -76,7 +76,7 @@ Blob 索引现为预览版，因此将在预览版 NuGet 源中发布 .NET 存�
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png" alt-text="Azure 门户的屏幕截图，其中显示如何通过索引标记上传 Blob。":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 下面的示例展示了如何使用在创建过程中设置的标记创建一个追加 blob。
 
@@ -136,7 +136,7 @@ static async Task BlobIndexTagsOnCreate()
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Azure 门户的屏幕截图，其中显示如何获取、设置、更新和删除 Blob 上的索引标记。":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 ```csharp
 static async Task BlobIndexTagsExample()
@@ -213,7 +213,7 @@ static async Task BlobIndexTagsExample()
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Azure 门户的屏幕截图，其中显示如何使用索引标记筛选和查找带标记的 Blob":::
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 ```csharp
 static async Task FindBlobsByTagsExample()
@@ -313,7 +313,7 @@ static async Task FindBlobsByTagsExample()
 
 6. 选择“添加”，将新规则应用于生命周期管理策略
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
 [生命周期管理](storage-lifecycle-management-concepts.md)策略在控制平面级别应用于每个存储帐户。 对于 .NET，请安装 [Microsoft Azure 管理存储库](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/)版本 16.0.0 或更高版本。
 

@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 3b473d82eb879955a6cbdce58ba66176f5c6d6f5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 2caf1ed42bec3c4e950fbb1067869576344085d7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99214805"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110163794"
 ---
 本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription.md)设备。
 
@@ -96,7 +96,7 @@ ms.locfileid: "99214805"
     通过将以下行添加到 dependencies 节来更新 **build.gradle(Module:app)** 。 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.15.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.17.0'
     ```
     
 1. 将语音订阅密钥添加到源代码。 如果想要尝试意向识别，还需要添加[语言理解服务](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)订阅密钥和应用程序 ID。
@@ -168,7 +168,7 @@ ms.locfileid: "99214805"
 
 1. 尽情体验吧！
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果无法连接到语音设备。 在命令提示符窗口中键入以下命令。 这会返回设备列表：
 

@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 6be5e9bda27ddff157eda10bbb695dfacaecda7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: v-erkel
+ms.openlocfilehash: 109fa14478a906ded08086576101e870c54c56ad
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92342257"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456213"
 ---
 # <a name="additional-documentation-for-azure-fxt-edge-filer"></a>关于 Azure FXT Edge Filer 的其他文档
 

@@ -1,33 +1,25 @@
 ---
-title: 将副本添加到 Azure Cache for Redis（预览版）
+title: 将副本添加到 Azure Cache for Redis
 description: 了解如何向 Azure Cache for Redis 高级层实例添加更多副本
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 87b5ec5eb13f2bc53bdf993547ce3da1c74404bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aef8055d289ada8a62078185517c3ba129972488
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91566782"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099848"
 ---
-# <a name="add-replicas-to-azure-cache-for-redis-preview"></a>将副本添加到 Azure Cache for Redis（预览版）
+# <a name="add-replicas-to-azure-cache-for-redis"></a>将副本添加到 Azure Cache for Redis
 本文介绍如何使用 Azure 门户设置包含附加副本的 Azure 缓存实例。
 
 Azure Cache for Redis 标准和高级层通过将每个缓存托管在两个专用虚拟机 (VM) 上来提供冗余。 这些 VM 配置为主 VM 和副本。 当主 VM 变得不可用时，副本将检测到该情况并自动担当新的主 VM。 你现在可以将高级缓存中的副本数增加到三个，总共提供四个 VM 来支持缓存。 具有多个副本比单个副本能够提供更高的复原能力。
 
-> [!IMPORTANT]
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
-> 
-
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-
-> [!NOTE]
-> 此功能目前为预览版 - 如有兴趣，可[联系我们](mailto:azurecache@microsoft.com)。
->
 
 ## <a name="create-a-cache"></a>创建缓存
 若要创建缓存，请执行以下步骤：
