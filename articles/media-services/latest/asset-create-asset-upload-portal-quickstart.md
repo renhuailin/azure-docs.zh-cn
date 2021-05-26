@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 929d8412b3be894e80a13d9a2bd07ab7401b8dda
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 036db7999ce6d5fd84ad6210aa50206e2b031b2f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277855"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369348"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>快速入门：使用门户上传、编码和流式传输内容
 
@@ -36,7 +36,7 @@ ms.locfileid: "106277855"
 
         目前，使用 Azure 门户时，可以执行以下操作：生成 TTML 和 WebVTT 隐藏式字幕文件。 采用这些格式的文件可用于使有听力障碍的用户能够访问音频和视频文件。 你还可以从内容中提取关键字。
 
-        要获得丰富的体验，使你能够从视频和音频文件中提取见解，请使用媒体服务 v3 预设（如[教程：使用媒体服务 v3 来分析视频](analyze-videos-tutorial.md)中所述）。 <br/>如果需要更详细的见解，请直接使用[视频索引器](../video-indexer/index.yml)。    
+        要获得丰富的体验，使你能够从视频和音频文件中提取见解，请使用媒体服务 v3 预设（如[教程：使用媒体服务 v3 来分析视频](analyze-videos-tutorial.md)中所述）。 <br/>如果需要更详细的见解，请直接使用视频索引器。    
 * 处理完内容后，即可将媒体内容交付给客户端播放器。 若要使输出资产中的视频可供客户端进行播放，必须创建流式处理定位符。 创建流式处理定位符时，需要指定流式处理策略 。 使用流式处理策略可为流式处理定位符定义流式处理协议和加密选项（如果有） 。
     
     审阅：

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 05/18/2021
 ms.author: aahi
-ms.openlocfilehash: 38fda578a2151d1d5cf306095b3be49cb916977b
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b1af4e147f960e8e241a2d49ac94b7fb2594207f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287421"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078195"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文本分析 API v3 语言支持 
 
@@ -233,9 +233,17 @@ ms.locfileid: "108287421"
 |汤加语|`to`|✓|2020-09-01|
 |土耳其语|`tr`|✓|2021-01-05|
 |土库曼语|`tk`|✓|2021-01-05|
+|乌克兰语|`uk`|✓||
+|乌尔都语|`ur`|✓||
+|乌兹别克语|`uz`|✓||
+|越南语|`vi`|✓||
+|威尔士语|`cy`|✓|| 
 |班图语|`xh`|✓|2021-01-05|
+|意第绪语|`yi`|✓||
 |约鲁巴语|`yo`|✓|2021-01-05|
+|尤卡坦玛雅语| `yua` | ✓| |
 |祖鲁语|`zu`|✓|2021-01-05|
+
 
 ---
 

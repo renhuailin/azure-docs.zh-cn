@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: f34720697e545a4d8a5119605db2db70dff6c233
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 6ed565c624e542771bdb4f205e618f8fb2b53ed5
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444523"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109844380"
 ---
 [参考文档](/java/api/overview/azure/ai-metricsadvisor-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/metricsadvisor/ai-metrics-advisor/README.md) | [包 (npm)](https://www.npmjs.com/package/@azure/ai-metrics-advisor) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/metricsadvisor/ai-metrics-advisor/samples)
 
@@ -60,7 +60,7 @@ npm install @azure/ai-metrics-advisor@1.0.0-beta.2
 创建一个名为 `index.js` 的文件，并导入以下库：
 
 > [!TIP]
-> 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/metricsadvisor/ai-metrics-advisor/samples/javascript) 上找到它，其中包含此快速入门中的代码示例。
+> 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/metricsadvisor/ai-metrics-advisor/samples/v1/javascript) 上找到它，其中包含此快速入门中的代码示例。
 
 为资源的 Azure 终结点和密钥创建变量。 
 

@@ -5,12 +5,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 使用 Azure Monitor 收集已启用 Azure Arc 的 Kubernetes 群集的指标和日志
-ms.openlocfilehash: 0a983f6d7032310d02d35e713482de942bfbfd70
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 55beedec85b5e2a426954f179b738fcf81eb4982
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443844"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845737"
 ---
 # <a name="azure-monitor-container-insights-for-azure-arc-enabled-kubernetes-clusters"></a>已启用 Azure Arc 的 Kubernetes 群集的 Azure Monitor 容器见解
 
@@ -90,7 +90,7 @@ ms.locfileid: "106443844"
 - 创建或使用与群集区域相对应的现有默认 Log Analytics 工作区
 - 已为 Azure Monitor 群集扩展启用自动升级
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers
 ```
 
@@ -98,7 +98,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 你可以在具有“参与者”角色或更大权限的角色的任何订阅中使用现有 Azure Log Analytics 工作区。
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers --configuration-settings logAnalyticsWorkspaceResourceID=<armResourceIdOfExistingWorkspace>
 ```
 
@@ -106,7 +106,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 如果要调整默认资源请求和限制，可以使用高级配置设置：
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers --configuration-settings  omsagent.resources.daemonset.limits.cpu=150m omsagent.resources.daemonset.limits.memory=600Mi omsagent.resources.deployment.limits.cpu=1 omsagent.resources.deployment.limits.memory=750Mi
 ```
 
@@ -116,7 +116,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 如果已启用 Azure Arc 的 Kubernetes 群集位于 Azure Stack Edge 上，则需要使用自定义装载路径 `/home/data/docker`。
 
-```console
+```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers --configuration-settings omsagent.logsettings.custommountpath=/home/data/docker
 ```
 
@@ -163,7 +163,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 3. 部署模板以创建 Azure Monitor 容器见解扩展 
 
-    ```console
+    ```azurecli
     az login
     az account set --subscription "Subscription Name"
     az deployment group create --resource-group <resource-group> --template-file ./arc-k8s-azmon-extension-arm-template.json --parameters @./arc-k8s-azmon-extension-arm-template-params.json

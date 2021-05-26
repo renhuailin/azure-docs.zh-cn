@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 44b8f4e6fa6a3d9063d335012d8b9a2ca9be84e8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: eefb7347c882aa4494a26369ed933afd50a30ffa
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765875"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099742"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -37,7 +37,7 @@ ms.locfileid: "108765875"
 |[Kubernetes 群集 Pod 应使用指定的标签](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F46592696-4c7b-4bf3-9e45-6c2763bdc0a6) |使用指定的标签来标识 Kubernetes 群集中的 Pod。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/PodEnforceLabels.json) |
 |[Kubernetes 群集服务应只侦听允许的端口](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F233a2a17-77ca-4fb1-9b6b-69223d272a44) |将服务限制为只侦听允许的端口，以确保对 Kubernetes 群集进行的访问安全。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[6.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ServiceAllowedPorts.json) |
 |[Kubernetes 群集服务只应使用允许的外部 IP](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd46c275d-1680-448d-b2ec-e495a3b6cc89) |使用允许的外部 IP 避免 Kubernetes 群集中的潜在攻击 (CVE-2020-8554)。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedExternalIPs.json) |
-|[Kubernetes 群集不应允许特权容器](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |不允许在 Kubernetes 群集中创建特权容器。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.1 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |
+|[Kubernetes 群集不应允许特权容器](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |不允许在 Kubernetes 群集中创建特权容器。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.1 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[7.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |
 |[Kubernetes 群集应只可通过 HTTPS 进行访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |使用 HTTPS 可确保执行身份验证，并保护传输中的数据不受网络层窃听攻击威胁。 此功能目前已面向 Kubernetes 服务 (AKS) 正式发布，并面向 AKS 引擎和启用了 Azure Arc 的 Kubernetes 提供预览版。 有关详细信息，请访问 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) |审核、拒绝、已禁用 |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly.json) |
 |[Kubernetes 群集应禁用自动装载 API 凭据](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F423dd1ba-798e-40e4-9c4d-b6902674b423) |禁用自动装载 API 凭据，以防止可能泄露的 Pod 资源对 Kubernetes 群集运行 API 命令。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockAutomountToken.json) |
 |[Kubernetes 群集不得允许容器特权提升](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |不允许容器使用特权提升运行，从而进入 Kubernetes 群集的根。 此建议是旨在提高 Kubernetes 环境安全性的 CIS 5.2.5 的一部分。 此策略通常适用于 Kubernetes 服务 (AKS) 以及 AKS 引擎和已启用 Azure Arc 的 Kubernetes 的预览版。 有关详细信息，请参阅 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |审核、拒绝、已禁用 |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilegeEscalation.json) |

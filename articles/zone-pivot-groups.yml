@@ -776,6 +776,14 @@ groups:
     title: Java
   - id: programming-language-more
     title: 更多语言...
+- id: video-analyzer-programming-languages
+  title: Azure 视频分析器编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
 - id: ams-lva-edge-programming-languages
   title: IoT Edge 上的实时视频分析编程语言
   prompt: 选择编程语言
@@ -1193,9 +1201,9 @@ groups:
   - id: programming-language-java
     title: Java
 metadata:
-  ms.openlocfilehash: 1ce7b672204fefdff6def450ba50d38981e67bed
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: adcb769a1cf52dc86ee60349463caa078fb31a4b
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110084963"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110373520"

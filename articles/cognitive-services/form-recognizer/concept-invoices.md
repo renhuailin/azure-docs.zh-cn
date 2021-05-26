@@ -1,6 +1,6 @@
 ---
 title: 发票 - 表单识别器
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 使用表单识别器 API 了解与发票分析相关的概念 - 使用和限制。
 services: cognitive-services
 author: laujan
@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: e30e431ec393a59e0799bf1c56611fbba84d8960
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: effe9a1f4959748ee04fadff2bd733c52c14a790
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330577"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374861"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>表单识别器预生成的发票模型
 
-Azure 表单识别器可以使用其预生成的发票模型分析和提取销售发票中的信息。 发票 API 使客户能够获取各种格式的发票，并返回结构化数据来自动完成发票处理。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/overview-ocr.md) 功能与发票理解深度学习模型，可从英语发票中提取重要信息。 可提取文本、表和信息，如客户、供应商、发票 ID、发票到期日期、总计、发票应付金额、税金、送货地址、帐单地址、行项目等等。 预生成发票 API 在表单识别器 2.1 预览版中公开提供。
+Azure 表单识别器可以使用其预生成的发票模型分析和提取销售发票中的信息。 发票 API 使客户能够获取各种格式的发票，并返回结构化数据来自动完成发票处理。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/overview-ocr.md) 功能与发票理解深度学习模型，可从英语发票中提取重要信息。 可提取文本、表和信息，如客户、供应商、发票 ID、发票到期日期、总计、发票应付金额、税金、送货地址、帐单地址、行项目等等。 预生成发票 API 在表单识别器 v2.1 中公开提供。
 
 ## <a name="what-does-the-invoice-service-do"></a>发票服务有哪些功能？
 
@@ -32,7 +32,7 @@ Azure 表单识别器可以使用其预生成的发票模型分析和提取销�
 若要试用表单识别器发票服务，请转到联机 UI 工具示例：
 
 > [!div class="nextstepaction"]
-> [试用预生成模型](https://fott-preview.azurewebsites.net/)
+> [试用预生成模型](https://aka.ms/fott-2.1-ga)
 
 若要试用表单识别器发票服务，你将需要一个 Azure 订阅（[免费创建一个](https://azure.microsoft.com/free/cognitive-services)）和一个[表单识别器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)终结点和密钥。
 
@@ -44,19 +44,19 @@ Azure 表单识别器可以使用其预生成的发票模型分析和提取销�
 
 ## <a name="supported-locales"></a>支持的区域设置
 
-预生成的 Invoice v2.1-preview.3（预览版）支持采用 en-us 区域设置的发票。 
+预生成的 Invoice v2.1 支持采用 en-us 区域设置的发票 。
 
 ## <a name="the-analyze-invoice-operation"></a>分析发票操作
 
-[分析发票](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)操作将发票的图像或 PDF 作为输入，并提取相关值。 该调用返回一个名为 `Operation-Location` 的响应标头字段。 `Operation-Location` 值是一个 URL，其中包含要在下一步骤中使用的结果 ID。
+[分析发票](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)操作将发票的图像或 PDF 作为输入，并提取相关值。 该调用返回一个名为 `Operation-Location` 的响应标头字段。 `Operation-Location` 值是一个 URL，其中包含要在下一步骤中使用的结果 ID。
 
 |响应标头| 结果 URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/invoice/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/prebuilt/invoice/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-analyze-invoice-result-operation"></a>Get Analyze Invoice Result 操作
 
-第二步是调用 [Get Analyze Invoice Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9acb78c40a2533aee83) 操作。 此操作采用分析发票操作创建的结果 ID 作为输入。 此操作返回一个 JSON 响应，其中包含具有以下可能值的 **status** 字段。 可以不断地以迭代方式调用此操作，直到它返回 **succeeded** 值为止。 使用 3 到 5 秒的间隔可以避免超过每秒请求数 (RPS) 的速率限制。
+第二步是调用 [Get Analyze Invoice Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9acb78c40a2533aee83) 操作。 此操作采用分析发票操作创建的结果 ID 作为输入。 此操作返回一个 JSON 响应，其中包含具有以下可能值的 **status** 字段。 可以不断地以迭代方式调用此操作，直到它返回 **succeeded** 值为止。 使用 3 到 5 秒的间隔可以避免超过每秒请求数 (RPS) 的速率限制。
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
@@ -124,10 +124,10 @@ JSON 输出分为三个部分：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[表单识别器示例 UI](https://fott-preview.azurewebsites.net/) 中尝试你自己的发票和示例。
+- 在[表单识别器示例 UI](https://aka.ms/fott-2.1-ga) 中尝试你自己的发票和示例。
 - 完成[表单识别器快速入门](quickstarts/client-library.md)，开始使用表单识别器以你选择的开发语言编写发票处理应用。
 
 ## <a name="see-also"></a>请参阅
 
 * [什么是表单识别器？](./overview.md)
-* [REST API 参考文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)
+* [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)

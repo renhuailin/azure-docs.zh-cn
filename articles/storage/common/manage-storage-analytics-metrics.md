@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 784929e50d25a07ae92cf388be5ac14f6fa820a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90dc5ee9dcd9df500f9a5e593c3e6ee83b7f916e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99221520"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452577"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-metrics-classic"></a>启用和管理 Azure 存储分析指标（经典）
 
@@ -117,7 +117,7 @@ ms.locfileid: "99221520"
 
    若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[安装和配置 Azure PowerShell](/powershell/azure/)。  
 
-### <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_EnableDiagnosticLogs":::
 
@@ -125,7 +125,7 @@ ms.locfileid: "99221520"
 
 有关使用 REST API 配置存储指标的一般信息，请参阅[启用和配置存储分析](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。 
 
-### <a name="net-v11"></a>[.NET v11](#tab/dotnet11)  
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  

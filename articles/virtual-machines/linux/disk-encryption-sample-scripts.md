@@ -9,24 +9,24 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: b8581bf3ec4170b6914409d060b64a50c8bff2d2
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 52a5e60537aaaa9a4fcd7f8345a21854d48a2076
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109715603"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076109"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密示例脚本
 
-本文提供了用于准备预加密 VHD 和其他任务的示例脚本。  
+本文提供了用于准备预加密 VHD 和其他任务的示例脚本。
 
 > [!NOTE]
 > 除非另有说明，否则所有脚本均引用最新的非 AAD 版本的 ADE。
 
-## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure 磁盘加密的示例 PowerShell 脚本 
+## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure 磁盘加密的示例 PowerShell 脚本
 
 - **列出订阅中所有已加密的 VM**
-  
+
   可以使用[此 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1)在订阅中存在的所有资源组中找到所有 ADE 加密的 VM 和扩展版本。
 
   另外，这些 cmdlet 将显示所有 ADE 加密的 VM（但不显示扩展版本）：
@@ -38,19 +38,19 @@ ms.locfileid: "109715603"
    ```
 
 - **列出订阅中所有已加密的 VMSS 实例**
-    
+
     可以使用[此 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1)在订阅中存在的所有资源组中找到所有 ADE 加密的 VMSS 实例和扩展版本。
 
-- **列出 Key Vault 中用于加密 VM 的所有磁盘加密机密** 
+- **列出 Key Vault 中用于加密 VM 的所有磁盘加密机密**
 
    ```azurepowershell-interactive
    Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
    ```
 
 ### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>使用 Azure 磁盘加密先决条件 PowerShell 脚本
-如果你已熟悉进行 Azure 磁盘加密的先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关此 PowerShell 脚本的用法示例，请参阅[有关加密 VM 的快速入门](disk-encryption-powershell-quickstart.md)。 可以删除脚本的某个部分中的注释（从第 211 行开始），以加密现有资源组中现有 VM 的所有磁盘。 
+如果你已熟悉进行 Azure 磁盘加密的先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关此 PowerShell 脚本的用法示例，请参阅[有关加密 VM 的快速入门](disk-encryption-powershell-quickstart.md)。 可以删除脚本的某个部分中的注释（从第 211 行开始），以加密现有资源组中现有 VM 的所有磁盘。
 
-下表显示了可在 PowerShell 脚本中使用的参数： 
+下表显示了可在 PowerShell 脚本中使用的参数：
 
 
 |参数|说明|必需？|
@@ -65,17 +65,17 @@ ms.locfileid: "109715603"
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>在不使用 Azure AD 应用的情况下加密或解密 VM
 
-- [在现有或正在运行的 Linux VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
-- [在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
-    - 只允许对 Linux VM 的数据卷禁用加密。  
+- [在现有或正在运行的 Linux VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)
+- [在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm)
+    - 只允许对 Linux VM 的数据卷禁用加密。
 
 ### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>使用 Azure AD 应用加密或解密 VM（以前的版本）
- 
-- [在现有或正在运行的 Linux VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
+
+- [在现有或正在运行的 Linux VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm)
 
 
--  [在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) 
-    - 只允许对 Linux VM 的数据卷禁用加密。 
+-  [在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm)
+    - 只允许对 Linux VM 的数据卷禁用加密。
 
 
 - [从预加密的 VHD/存储 Blob 创建新的加密托管磁盘](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
@@ -85,7 +85,7 @@ ms.locfileid: "109715603"
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>OS 磁盘加密的先决条件
 
-* VM 必须使用与 [Azure 磁盘加密支持的操作系统](disk-encryption-overview.md#supported-vms)中列出的 OS 磁盘加密兼容的分发版 
+* VM 必须使用与 [Azure 磁盘加密支持的操作系统](disk-encryption-overview.md#supported-vms)中列出的 OS 磁盘加密兼容的分发版
 * 必须从 Azure 资源管理器中的市场映像创建 VM。
 * Azure VM，至少具有 4 GB RAM（建议大小为 7 GB）。
 * （针对 RHEL 和 CentOS）禁用 SELinux。 若要禁用 SELinux，请参阅 [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)（SELinux 用户和管理员指南）中针对 VM 的“4.4.2. Disabling SELinux（4.4.2. 禁用 SELinux）”。
@@ -151,7 +151,7 @@ ms.locfileid: "109715603"
                               |-- virtualMachines
                                    |-- [Your virtual machine]
                                         |-- InstanceView
-  ```                
+  ```
 
   在 InstanceView 中，向下滚动以查看驱动器的加密状态。
 
@@ -166,7 +166,7 @@ ms.locfileid: "109715603"
   建议不要在 OS 加密正在进行时登录 VM。 仅当其他两个方法都失败时复制日志。
 
 ## <a name="prepare-a-pre-encrypted-linux-vhd"></a>准备预加密的 Linux VHD
-预加密 VHD 的准备过程根据分发版的不同而异。 我们提供了有关准备 Ubuntu 16、openSUSE 13.2 和 CentOS 7 的示例。 
+预加密 VHD 的准备过程根据分发版的不同而异。 我们提供了有关准备 Ubuntu 16、openSUSE 13.2 和 CentOS 7 的示例。
 
 ### <a name="ubuntu-16"></a>Ubuntu 16
 通过执行以下步骤在分发版安装过程中配置加密：
@@ -400,7 +400,7 @@ ms.locfileid: "109715603"
         break
     fi
     done
-    ```    
+    ```
 5. 运行“/usr/sbin/dracut -f -v”以更新 initrd。
 
     ![CentOS 7 安装 - 运行 /usr/sbin/dracut -f -v](./media/disk-encryption/centos-encrypt-fig5.png)
@@ -413,7 +413,7 @@ ms.locfileid: "109715603"
 ## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>将预加密 VM 的机密上传到密钥保管库
 使用 Azure AD 应用（以前的版本）加密时，必须上传前面获取的磁盘加密机密作为 Key Vault 中的机密。 Key Vault 需要具有对 Azure AD 客户端启用的磁盘加密等权限。
 
-```powershell 
+```powershell
  $AadClientId = "My-AAD-Client-Id"
  $AadClientSecret = "My-AAD-Client-Secret"
 
@@ -421,7 +421,7 @@ ms.locfileid: "109715603"
 
  Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ServicePrincipalName $AadClientId -PermissionsToKeys all -PermissionsToSecrets all
  Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -EnabledForDiskEncryption
-``` 
+```
 
 ### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>未使用 KEK 加密的磁盘加密机密
 若要在密钥保管库中设置机密，请使用 [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 将密码编码为 base64 字符串，然后将其上传到密钥保管库。 此外，请确保在 Key Vault 中创建机密时设置以下标记。

@@ -3,12 +3,13 @@ title: 新建基于工作区的 Azure Monitor Application Insights 资源 | Micr
 description: 了解启用基于工作区的新 Azure Monitor Application Insights 资源所需的步骤。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 0ae01212eaa73deeac4774f7e13f5b46976ee7e2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100578338"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075585"
 ---
 # <a name="workspace-based-application-insights-resources"></a>基于工作区的 Application Insights 资源
 
@@ -64,10 +65,10 @@ ms.locfileid: "100578338"
 若要详细了解如何设置 Application Insights SDK 以进行基于代码的监视，请参阅特定于语言/框架的文档：
 
 - [ASP.NET](./asp-net.md)
-- [ASP.NET Core ](./asp-net-core.md)
+- [ASP.NET Core](./asp-net-core.md)
 - [后台任务和新式控制台应用程序 (.NET/.NET Core)](./worker-service.md)
 - [经典控制台应用程序 (.NET)](./console.md) 
-- [Java ](./java-get-started.md?tabs=maven)
+- [Java](./java-in-process-agent.md)
 - [JavaScript](./javascript.md)
 - [Node.js](./nodejs.md)
 - [Python](./opencensus-python.md)
@@ -113,7 +114,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)。
+有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/monitor/app-insights/component#az_monitor_app_insights_component_create)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

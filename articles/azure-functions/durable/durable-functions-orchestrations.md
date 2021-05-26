@@ -3,14 +3,14 @@ title: 持久业务流程 - Azure Functions
 description: Azure Durable Functions 的业务流程功能简介。
 author: cgillum
 ms.topic: overview
-ms.date: 09/08/2019
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: ba314963058389e171601407ff00411049eecd45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9820f22e92bfc6f4743b205fc4cf36a1baa580d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97845420"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375904"
 ---
 # <a name="durable-orchestrations"></a>持久业务流程
 
@@ -43,12 +43,12 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 业务流程协调程序函数使用[事件溯源](/azure/architecture/patterns/event-sourcing)设计模式可靠地维护自身的执行状态。 Durable Task Framework 使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而不是直接存储业务流程的当前状态。 与“转储”整个运行时状态相比，仅限追加的存储具有很多优点。 优点包括提高性能、可伸缩性和响应能力。 此外，它还提供事务数据的最终一致性，以及完整的审核线索和历史记录。 审核线索支持可靠的补偿操作。
 
-Durable Functions 以透明方式使用事件溯源。 在后台，业务流程协调程序函数中的 `await` (C#) 或 `yield` (JavaScript/Python) 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。
+Durable Functions 以透明方式使用事件溯源。 在后台，业务流程协调程序函数中的 `await` (C#) 或 `yield` (JavaScript/Python) 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 透明提交操作通过将所有新事件追加到存储中来更新业务流程实例的执行历史记录，就像只追加日志一样。 同样，提交操作在存储中创建消息以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。 默认情况下，Durable Functions 使用 Azure 存储作为其运行时状态存储，但[还支持其他存储提供程序](durable-functions-storage-providers.md)。
 
 如果业务流程函数需要执行其他工作（例如，收到响应消息或持久计时器到期），业务流程协调程序将会唤醒，并从头开始重新执行整个函数，以重新生成本地状态。 在重播过程中，如果代码尝试调用函数（或执行任何其他异步工作），Durable Task Framework 会查询当前业务流程的执行历史记录。 如果该扩展发现[活动函数](durable-functions-types-features-overview.md#activity-functions)已执行并已生成结果，则会回放该函数的结果并且业务流程协调程序代码继续运行。 在函数代码完成或计划了新的异步工作之前，重放会一直继续。
 
 > [!NOTE]
-> 要使重播模式正常可靠工作，业务流程协调程序函数代码必须是确定性的。 有关业务流程协调程序函数的代码限制的详细信息，请参阅[业务流程协调程序函数代码约束](durable-functions-code-constraints.md)主题。
+> 要使重播模式正常可靠工作，业务流程协调程序函数代码必须是确定性的。 非确定性业务流程协调程序代码可能会导致运行时错误或其他意外行为。 有关业务流程协调程序函数的代码限制的详细信息，请参阅[业务流程协调程序函数代码约束](durable-functions-code-constraints.md)文档。
 
 > [!NOTE]
 > 如果业务流程协调程序函数发出日志消息，重播行为可能导致发出重复的日志消息。 请参阅[日志记录](durable-functions-diagnostics.md#app-logging)主题，详细了解此行为发生的原因及其解决方法。
@@ -105,43 +105,57 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
 main = df.Orchestrator.create(orchestrator_function)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+param($Context)
+
+$output = @()
+
+$output += Invoke-DurableActivity -FunctionName 'SayHello' -Input 'Tokyo'
+$output += Invoke-DurableActivity -FunctionName 'SayHello' -Input 'Seattle'
+$output += Invoke-DurableActivity -FunctionName 'SayHello' -Input 'London'
+
+$output
+```
 ---
 
-执行到每条 `await` (C#) 或 `yield` (JavaScript/Python) 语句时，Durable Task Framework 会在某个持久存储后端（通常是 Azure 表存储）中创建该函数的执行状态检查点。 此状态称为“业务流程历史记录”。
+执行到每条 `await` (C#) 或 `yield` (JavaScript/Python) 语句时，Durable Task Framework 会在某个持久存储后端（默认为 Azure 表存储）中创建该函数的执行状态检查点。 此状态称为“业务流程历史记录”。
 
 ### <a name="history-table"></a>历史记录表
 
 一般而言，Durable Task Framework 会在每个检查点位置执行以下操作：
 
-1. 将执行历史记录保存到 Azure 存储表中。
+1. 将执行历史记录保存到持久存储中。
 2. 将业务流程协调程序想要调用的函数的相关消息排队。
 3. 将业务流程协调程序本身的消息排队 &mdash; 例如，持久计时器消息。
 
 完成检查点之后，在业务流程协调程序函数需要执行其他工作之前，可以从内存中任意删除该函数。
 
 > [!NOTE]
-> 在将数据保存到表存储和队列的间隔期限内，Azure 存储不提供任何事务保证。 若要处理错误，Durable Functions 存储提供程序会使用“最终一致性”模式。 这些模式可确保在发生崩溃时不会丢失数据，或者在创建检查点的中途不会断开连接。
+> 在将数据保存到表存储和队列的间隔期限内，Azure 存储不提供任何事务保证。 为了处理错误，[Durable Functions Azure 存储](durable-functions-storage-providers.md#azure-storage)提供程序将使用“最终一致性”模式。 这些模式可确保在发生崩溃时不会丢失数据，或者在创建检查点的中途不会断开连接。 备用存储提供程序（如 [Durable Functions MSSQL 存储提供程序](durable-functions-storage-providers.md#mssql)）可以提供更强的一致性保证。
 
 完成后，前面所示的函数历史记录在 Azure 表存储中如下表所示（为方便演示，此处采用了缩写）：
 
 | PartitionKey (InstanceId)                     | EventType             | 时间戳               | 输入 | 名称             | 结果                                                    | 状态 |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | Null  | E1_HelloSequence |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | """Hello Tokyo!"""                                        |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | """Hello Seattle!"""                                      |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | 已完成           |
+| eaee885b | ExecutionStarted      | 2021-05-05T18:45:28.852Z | Null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2021-05-05T18:45:32.362Z |       |                  |                                                           |                     |
+| eaee885b | TaskScheduled         | 2021-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2021-05-05T18:45:32.670Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2021-05-05T18:45:34.201Z |       |                  | """Hello Tokyo!"""                                        |                     |
+| eaee885b | OrchestratorStarted   | 2021-05-05T18:45:34.232Z |       |                  |                                                           |                     |
+| eaee885b | TaskScheduled         | 2021-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2021-05-05T18:45:34.435Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2021-05-05T18:45:34.763Z |       |                  | """Hello Seattle!"""                                      |                     |
+| eaee885b | OrchestratorStarted   | 2021-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | TaskScheduled         | 2021-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2021-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2021-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     |
+| eaee885b | OrchestratorStarted   | 2021-05-05T18:45:35.032Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2021-05-05T18:45:35.044Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionCompleted    | 2021-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | 已完成           |
 
 有关列值的一些注释：
 
@@ -278,6 +292,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     if res.status_code >= 400:
         # handing of error code goes here
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 当前不支持此功能。
+
 ---
 
 除了支持基本请求/响应模式外，该方法还支持自动处理常见的异步 HTTP 202 轮询模式，并支持使用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)通过外部服务进行身份验证。
@@ -388,6 +406,33 @@ def main(location: Location) -> str:
     return f"Hello {city}, {state}!"
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+#### <a name="orchestrator"></a>业务流程协调程序
+
+```powershell
+param($Context)
+
+$output = @()
+
+$location = @{
+    City = 'Seattle'
+    State  = 'WA'
+}
+
+Invoke-ActivityFunction -FunctionName 'GetWeather' -Input $location
+
+# ...
+
+```
+#### <a name="getweather-activity"></a>`GetWeather` 活动
+
+```powershell
+param($location)
+
+"Hello $($location.City), $($location.State)!"
+# ...
+```
 ---
 
 ## <a name="next-steps"></a>后续步骤

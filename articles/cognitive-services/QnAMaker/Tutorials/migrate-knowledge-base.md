@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: c89ab375cb02824a08ff57e6b5278dd9299126ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e1cff5a82870c5491b262f5ced95f688d5ee4ac
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96350919"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369503"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>使用导出-导入迁移知识库
 
@@ -27,12 +27,23 @@ ms.locfileid: "96350919"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 在开始之前，创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
-* 设置新 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)
+> * 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+
+> * 在 Azure 门户中创建的 [QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
+> * 设置新 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)
+
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+> * 在 Azure 门户中启用了自定义问答功能的[文本分析资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅和文本分析资源名称。
+> * 设置新 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)
+
+---
 
 ## <a name="migrate-a-knowledge-base-from-qna-maker"></a>从 QnA Maker 迁移知识库
 1. 登录 [QnA Maker 门户](https://qnamaker.ai)。
-1. 选择要迁移的原始知识库。
+1. 选择要迁移的知识库。
 
 1. 在“设置”页上，选择“导出知识库”，以下载包含原始知识库的内容（问题、答案、元数据、跟进提示和从中提取这些内容的数据源名称）的 .tsv 文件。 随问题和答案一起导出的 QnA ID 可用于通过[更新 API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update) 更新特定的 QnA 对。 在多个导出操作中，特定 QnA 对的 QnA ID 保持不变。
 

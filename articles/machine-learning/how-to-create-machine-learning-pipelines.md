@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1
-ms.openlocfilehash: 6a77cfd933b79e3ada02e90f900467cedf08e406
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b3f313000bf66162cd4abffa18fd2b7bfbfb0693
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889963"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458562"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
@@ -286,7 +286,7 @@ ws = Run.get_context().experiment.workspace
 
 若要优化和自定义管道的行为，可以围绕缓存和重复使用采取某些措施。 例如，可以选择：
 + 在 [步骤定义](/python/api/azureml-pipeline-steps/)期间通过设置 `allow_reuse=False` 来 **禁用默认的重复使用步骤运行输出的行为**。 在协作环境中使用管道时，“重复使用”非常关键，因为消除不必要的运行可以提高敏捷性。 但是，可以选择禁用重复使用。
-+ 使用 `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` **强制对运行中的所有步骤重新生成输出**
++ 使用 `pipeline_run = exp.submit(pipeline, regenerate_outputs=True)` **强制对运行中的所有步骤重新生成输出**
 
 默认情况下，已启用步骤的 `allow_reuse`，步骤定义中指定的 `source_directory` 将进行哈希处理。 因此，如果给定步骤的脚本保持不变（`script_name`、输入和参数），并且 ` source_directory` 中未发生任何其他更改，则会重复使用前一个步骤运行的输出，不会将作业提交到计算，并且前一运行的结果立即可供下一步骤使用。
 

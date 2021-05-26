@@ -1,6 +1,6 @@
 ---
 title: ID - 表单识别器
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 通过表单识别器预生成 ID API 了解与标识文档中的数据提取相关的概念。
 services: cognitive-services
 author: laujan
@@ -10,16 +10,35 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: d59df677fda920be5ed9547bee3855d4c9511187
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 9ab936f90fb890d50e6e476e216b327ed26fc4f5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330829"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374844"
 ---
 # <a name="form-recognizer-prebuilt-identification-id-document-model"></a>表单识别器预生成标识 (ID) 文档模型
 
-Azure 表单识别器可以使用其预生成 ID 模型分析和提取政府颁发的标识文档 (ID) 中的信息。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/overview-ocr.md) 功能与 ID 识别功能，可从全球护照和美国驾照（50 个州和华盛顿特区）中提取关键信息。 ID API 从这些标识文档中提取关键信息，如名字、姓氏、出生日期、文档编号等。 此 API 在表单识别器 v2.1 预览版中作为云服务和本地容器提供。
+Azure 表单识别器可以使用其预生成 ID 模型分析和提取政府颁发的标识文档 (ID) 中的信息。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/overview-ocr.md) 功能与 ID 识别功能，可从全球护照和美国驾照（50 个州和华盛顿特区）中提取关键信息。 ID API 从这些标识文档中提取关键信息，如名字、姓氏、出生日期、文档编号等。 此 API 在表单识别器 v2.1 中作为云服务提供。 
+
+## <a name="customer-scenarios"></a>客户场景
+
+使用 ID API 提取的数据可用于执行多种任务，例如金融、医疗保健与保险、政府等行业中的“了解客户”(KYC) 方案。下面是几个示例：
+
+* 数字化加入 - 最终用户使用移动应用程序扫描其 ID 即可加入到各种服务。 远程客户验证由 ID 数据提取辅助。 
+
+* 验证和 ID 匹配 - 最终用户可以填写申请并附加 ID 的图像。 通过预建的 ID，银行可以验证信息是否与现有数据匹配。
+
+* 表单预填充 - 作为保险索赔过程的一部分，最终用户提交其 ID 后，在线文档中的字段会预填充，从而节省该过程所耗费的时间。
+
+ID API 还为 [AI Builder ID 读取器功能](/ai-builder/prebuilt-id-reader)提供支持。
+
+## <a name="try-it-out"></a>试试看
+
+若要试用表单识别器 ID 服务，请转到联机 UI 工具示例：
+
+> [!div class="nextstepaction"]
+> [试用预生成模型](https://aka.ms/fott-2.1-ga)
 
 ## <a name="what-does-the-id-service-do"></a>ID 服务有什么作用？
 
@@ -35,7 +54,7 @@ Azure 表单识别器可以使用其预生成 ID 模型分析和提取政府颁�
 
 ### <a name="fields-extracted"></a>提取的字段
 
-|名称| 类型 | 描述 | 值 |
+|名称| 类型 | 说明 | 值 |
 |:-----|:----|:----|:----|
 |  国家/地区 | country | 符合 ISO 3166 标准的国家/地区代码 | “USA” |
 |  DateOfBirth | date | YYYY-MM-DD 格式的 DOB | “1980-01-01” |
@@ -55,7 +74,7 @@ Azure 表单识别器可以使用其预生成 ID 模型分析和提取政府颁�
 ID API 还会返回以下信息：
 
 * 字段可信度（每个字段都返回关联的置信度值）
-* OCR 原始文本（整个收据的 OCR 提取文本输出）
+* OCR 原始文本（整个标识文档的 OCR 提取文本输出）
 * 美国驾照中每个提取字段的边界框
 * 护照上计算机可读区域 (MRZ) 的边界框
 
@@ -64,24 +83,17 @@ ID API 还会返回以下信息：
   >
   > 表单识别器预生成 ID 从 ID 数据中提取关键数据。 但是，它不检测原始标识文档的有效性或真实性。
 
-## <a name="try-it-out"></a>试试看
-
-若要试用表单识别器 ID 服务，请转到联机 UI 工具示例：
-
-> [!div class="nextstepaction"]
-> [试用预生成模型](https://fott-preview.azurewebsites.net/)
-
 ## <a name="input-requirements"></a>输入要求
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="supported-locales"></a>支持的区域设置
 
- 预生成的 ID v2.1-preview.3（预览版）支持 en-us 区域设置的标识文档 。
+ 预生成的 ID v2.1 支持 en-us 区域设置的标识文档。 
 
 ## <a name="supported-identity-document-types"></a>支持的标识文档类型
 
-* 预生成 ID v2.1-preview.3 可从全球护照和美国驾照中提取关键信息。
+* 预生成 ID v2.1 可从全球护照和美国驾照中提取关键信息。
 
   > [!NOTE]
   > ID 类型支持
@@ -90,19 +102,19 @@ ID API 还会返回以下信息：
 
 ## <a name="post-analyze-id-document"></a>POST 分析 ID 文档
 
-[Analyze ID](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7daad1f2612c46f5822) 操作将 ID 的图像或 PDF 作为输入，并提取相关值。 该调用返回一个名为 `Operation-Location` 的响应标头字段。 `Operation-Location` 值是一个 URL，其中包含要在下一步骤中使用的结果 ID。
+[Analyze ID](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7daad1f2612c46f5822) 操作将 ID 的图像或 PDF 作为输入，并提取相关值。 该调用返回一个名为 `Operation-Location` 的响应标头字段。 `Operation-Location` 值是一个 URL，其中包含要在下一步骤中使用的结果 ID。
 
 |响应标头| 结果 URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/idDocument/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/prebuilt/idDocument/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
-## <a name="get-analyze-id-document-result"></a>GET Analyze Id Document Result
+## <a name="get-analyze-id-document-result"></a>GET Analyze ID Document Result
 
 <!---
 Need to update this with updated APIM links when available
 -->
 
-第二步是调用 [Get Analyze idDocument Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7738978e467c5fb8707) 操作。 此操作采用 Analyze ID 操作创建的结果 ID 作为输入。 此操作返回一个 JSON 响应，其中包含具有以下可能值的 **status** 字段。 可以不断地以迭代方式调用此操作，直到它返回 **succeeded** 值为止。 使用 3 到 5 秒的间隔可以避免超过每秒请求数 (RPS) 的速率限制。
+第二步是调用 [Get Analyze idDocument Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707) 操作。 此操作采用 Analyze ID 操作创建的结果 ID 作为输入。 此操作返回一个 JSON 响应，其中包含具有以下可能值的 **status** 字段。 可以不断地以迭代方式调用此操作，直到它返回 **succeeded** 值为止。 使用 3 到 5 秒的间隔可以避免超过每秒请求数 (RPS) 的速率限制。
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
@@ -253,10 +265,7 @@ Need to update this with updated APIM links when available
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在[表单识别器示例 UI](https://fott-preview.azurewebsites.net/) 中尝试你自己的 ID 和示例。
+* 在[表单识别器示例 UI](https://aka.ms/fott-2.1-ga) 中尝试你自己的 ID 和示例。
 * 完成[表单识别器快速入门](quickstarts/client-library.md)，开始使用表单识别器以你选择的开发语言编写 ID 处理应用。
 
-## <a name="see-also"></a>另请参阅
 
-* [**什么是表单识别器？**](./overview.md)
-* [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

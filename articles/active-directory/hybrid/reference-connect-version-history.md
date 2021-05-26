@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89fb411a7f985e47fc4f8650dec0ef2ef3d45ad8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 30d36836bf0a0803573f930b0f352a6179be962f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128480"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451471"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -263,7 +263,6 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 - 为 Azure AD 域服务更新了密码哈希同步，以正确解释 Kerberos 哈希中的填充。  在从 Azure AD 向 Azure AD 域服务同步密码期间，这将提升其性能。
 - 添加了对身份验证代理和服务总线之间的可靠会话的支持。
-- 此版本会对身份验证代理与云服务之间的通信强制实施 TLS 1.2。
 - 为身份验证代理和云服务之间的 WebSocket 连接添加了 DNS 缓存。
 - 新增了从云中针对特定代理测试代理连接性的功能。
 

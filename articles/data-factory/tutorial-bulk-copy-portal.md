@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/29/2021
-ms.openlocfilehash: 08d69e46989687cfbb3c4e766c56fd4447dfbbb5
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 73162ebdb28f8b8fa743ea4bb310b92b64f27557
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481528"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076738"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 门户中使用 Azure 数据工厂批量复制多个表
 
@@ -167,7 +167,7 @@ ms.locfileid: "109481528"
     ![“新建数据集”菜单](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
 1. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。 
     
-1. 在“设置属性”窗口的“名称”下，输入 **AzureSqlDatabaseDataset**。 在“链接服务”下选择“AzureSqlDatabaseLinkedService”。 。
+1. 在“设置属性”窗口的“名称”下，输入 **AzureSqlDatabaseDataset**。 在“链接服务”下选择“AzureSqlDatabaseLinkedService”。 然后单击“确定”。
 
 1. 切换到“连接”选项卡，然后选择任何表作为“表”。 此表是一个虚拟表。 在创建管道时指定一个针对源数据集的查询。 该查询用于从数据库提取数据。 也可以单击“编辑”复选框，然后输入 **dbo.dummyName** 作为表名称。 
  
@@ -176,7 +176,7 @@ ms.locfileid: "109481528"
 
 1. 单击左窗格中的“+ (加)”，然后单击“数据集”。 
 1. 在“新建数据集”窗口中，选择“Azure Synapse Analytics”，然后单击“继续”  。
-1. 在“设置属性”窗口的“名称”下，输入 **AzureSqlDWDataset**。 在“链接服务”下选择“AzureSqlDWLinkedService”。 。
+1. 在“设置属性”窗口的“名称”下，输入 **AzureSqlDWDataset**。 在“链接服务”下选择“AzureSqlDWLinkedService”。 然后单击“确定”。
 1. 切换到“参数”选项卡，单击“+ 新建”，并输入 **DWTableName** 作为参数名称。 再次单击“+新建”，然后输入 DWSchema 作为参数名称 。 如果从页面中复制/粘贴此名称，请确保 DWTableName 和 DWSchema 末尾没有尾随空格字符 。 
 1. 切换到“连接”选项卡。 
 
@@ -254,7 +254,7 @@ ms.locfileid: "109481528"
     1. 单击“复制前脚本”输入框，选择下方的“添加动态内容”，输入以下表达式作为脚本，然后选择“完成”。 
 
         ```sql
-        TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
+        IF EXISTS (SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}) TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ```
 
         ![复制接收器设置](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)

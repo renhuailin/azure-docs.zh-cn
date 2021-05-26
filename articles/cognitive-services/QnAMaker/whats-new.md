@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 3bb7311a16b71b9bb76f14b4ba7a29dd2dae4a96
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 341ce0d0400bb1b56f96182e13d526da32d9729e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103009991"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369261"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 中的新增功能
 
@@ -22,6 +22,12 @@ ms.locfileid: "103009991"
 ## <a name="release-notes"></a>发行说明
 
 了解 QnA Maker 的新增功能。
+
+### <a name="may-2021"></a>2021 年 5 月
+
+* QnA Maker 托管已在[文本分析资源](https://ms.portal.azure.com/?quickstart=true#create/Microsoft.CognitiveServicesTextAnalytics)中作为自定义问答功能重新引入。
+* 自定义问答支持非结构化文档。
+* 引入了[预生成 API](how-to/using-prebuilt-api.md)，以根据通过 API 传递的文档文本为用户查询生成答案。
 
 ### <a name="november-2020"></a>2020 年 11 月
 

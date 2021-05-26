@@ -10,12 +10,12 @@ ms.topic: conceptual
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: bd4541f8c8471c68ed539f407d9ff79684ccb3bf
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: a847eb04745895fb903385715296a2c5c5d8898e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733492"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061509"
 ---
 # <a name="azure-arc-enabled-managed-instance-high-availability"></a>启用了 Azure Arc 的托管实例高可用性
 
@@ -79,7 +79,7 @@ ms.locfileid: "109733492"
 
 - 所有数据库都将自动添加到可用性组，包括所有用户和系统数据库（如 `master` 和 `msdb`）。 此功能提供跨可用性组副本的单系统视图。 如果直接连接到实例，请注意 `containedag_master` 和 `containedag_msdb` 数据库。 `containedag_*` 数据库表示可用性组中的 `master` 和 `msdb`。
 
-- 系统会自动预配外部终结点，以便与可用性组中的数据库建立连接。 此终结点 `<managed_instance_name>-svc-external` 扮演可用性组侦听器的角色。
+- 系统会自动预配外部终结点，以便与可用性组中的数据库建立连接。 此终结点 `<managed_instance_name>-external-svc` 扮演可用性组侦听器的角色。
 
 ### <a name="deploy"></a>部署
 
