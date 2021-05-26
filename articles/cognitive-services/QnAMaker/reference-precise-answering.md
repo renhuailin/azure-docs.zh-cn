@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 9c7b265118e395dde2b4b5f3959ba397d75ddac5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c27ff08ba3fc75b7f8e7b2053ba5e6949c808fe
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232182"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379469"
 ---
 # <a name="precise-answering"></a>精确应答
 
-通过 QnA Maker 托管（预览版）中引入的精确应答功能，你可以从任何用户查询的知识库中存在的整段最佳候选答案中获得精确的简短答案。 此功能在运行时使用深度学习模型，该模型能够理解用户查询的意图并从整段答案中检测精确的简短答案（如果简短答案作为事实出现在整段答案中）。 
+使用自定义问答（预览版）中引入的精确应答功能，你可以从任何用户查询的知识库中存在的整段最佳候选答案中获得精确的简短答案。 此功能在运行时使用深度学习模型，该模型能够理解用户查询的意图并从整段答案中检测精确的简短答案（如果简短答案作为事实出现在整段答案中）。 
 
 默认情况下，此功能在“测试”窗格中处于启用状态，因此可以测试特定于方案的功能。 对于内容开发人员和最终用户来说，此功能极其有用。 现在，内容开发人员无需针对知识库中的每个事实手动策展特定的 QnA 对，最终用户无需浏览从服务返回的整段答案，就能找到回答用户查询的实际事实。 你可以[通过生成应答 API 提取答案](How-To/metadata-generateanswer-usage.md#get-precise-answers-with-generateanswer-api)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "103232182"
 
 该服务还会将准确应答的置信度分数返回为“答案范围分数”，对此你可以通过选择窗格中查询正下方的“检查”选项进行检查。
 
-![托管答案范围分数](../QnAMaker/media/conversational-context/managed-answer-span-score.png)
+![托管答案范围分数](../QnAMaker/media/conversational-context/inspect-precise-answer.png)
 
 ## <a name="publishing-a-qna-maker-bot"></a>发布 QnA Maker 机器人
 

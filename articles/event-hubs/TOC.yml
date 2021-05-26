@@ -4,14 +4,6 @@
   items:
     - name: 什么是事件中心？
       href: event-hubs-about.md
-    - name: 用于 Apache Kafka 的事件中心
-      href: event-hubs-for-kafka-ecosystem-overview.md
-    - name: 事件中心捕获
-      href: event-hubs-capture-overview.md
-    - name: 事件中心专用层
-      href: event-hubs-dedicated-overview.md
-    - name: 事件中心中的 Azure 架构注册表（预览版）
-      href: schema-registry-overview.md
 - name: 快速入门
   expanded: true
   items:
@@ -81,6 +73,16 @@
   items:
     - name: 事件中心术语
       href: event-hubs-features.md
+    - name: 事件中心高级层
+      href: event-hubs-premium-overview.md
+    - name: 用于 Apache Kafka 的事件中心
+      href: event-hubs-for-kafka-ecosystem-overview.md
+    - name: 事件中心捕获
+      href: event-hubs-capture-overview.md
+    - name: 事件中心专用层
+      href: event-hubs-dedicated-overview.md
+    - name: 事件中心中的 Azure 架构注册表（预览版）
+      href: schema-registry-overview.md
     - name: 事件处理器主机（旧版 SDK）
       href: event-hubs-event-processor-host.md
     - name: 事件处理器（最新 SDK）

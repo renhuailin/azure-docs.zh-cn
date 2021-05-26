@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b8e5b95b0d1853d81de5a4ec603a3a59563da9d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171340"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379793"
 ---
 # <a name="common-issues"></a>常见问题
 
@@ -20,7 +21,7 @@ ms.locfileid: "86171340"
 
 ## <a name="view-event-grid-module-logs"></a>查看事件网格模块日志
 
-若要排除故障，可能需要访问事件网格模块日志。 为此，请在部署该模块的 VM 上运行以下命令：
+若要排除故障，可能需要访问事件网格模块日志。 请在部署该模块的 VM 上运行以下命令：
 
 在 Windows 上，
 
@@ -38,9 +39,9 @@ sudo docker logs eventgridmodule
 
 * 首先确保事件网格模块的 **inbound:serverAuth:tlsPolicy** 设置为“**严格**”或“**启用**”。
 
-* 如果其模块到模块的通信，请确保在端口 **4438** 上进行调用，并且模块的名称与部署的名称相匹配。 
+* 如果是模块间的通信，请确保在端口 4438 上进行调用，并且模块的名称与部署的名称相匹配。 
 
-  例如，如果事件网格模块用名称 **eventgridmodule** 部署，则 URL 应为 **https://eventgridmodule:4438** 。 请确保大小写和端口号正确。
+  例如，如果事件网格模块用名称 eventgridmodule 部署，则 URL 应为 https://eventgridmodule:4438 。 请确保大小写和端口号正确。
     
 * 如果它来自非 IoT 模块，请确保在部署期间将事件网格端口映射到主机计算机，例如，
 
@@ -60,9 +61,9 @@ sudo docker logs eventgridmodule
 
 * 首先确保事件网格模块的 **inbound:serverAuth:tlsPolicy** 设置为“**启用**”或“**禁用**”。
 
-* 如果其模块到模块的通信，请确保在端口 **5888** 上进行调用，并且模块的名称与部署的名称相匹配。 
+* 如果是模块间的通信，请确保在端口 5888 上进行调用，并且模块的名称与部署的名称相匹配。 
 
-  例如，如果事件网格模块用名称 **eventgridmodule** 部署，则 URL 应为 **http://eventgridmodule:5888** 。 请确保大小写和端口号正确。
+  例如，如果事件网格模块用名称 eventgridmodule 部署，则 URL 应为 http://eventgridmodule:5888 。 请确保大小写和端口号正确。
     
 * 如果它来自非 IoT 模块，请确保在部署期间将事件网格端口映射到主机计算机，例如，
 
@@ -84,13 +85,13 @@ sudo docker logs eventgridmodule
 
 [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) 中的 **IoTSecurity** 类将演示如何从 IoT Edge 安全性守护程序检索证书，并使用该证书来配置传出呼叫。
 
-如果它是非生产环境，则可以选择禁用客户端身份验证。 有关如何执行此操作的详细信息，请参阅“[安全性和身份验证](security-authentication.md)”。
+如果是非生产环境，则可以选择禁用客户端身份验证。 有关详细信息，请参阅[安全性和身份验证](security-authentication.md)。
 
 ## <a name="debug-events-not-received-by-subscriber"></a>订阅服务器未收到调试事件
 
 这种情况的典型原因如下：
 
-* 此事件从未成功发布。 将事件发布到事件网格模块时，应收到值为 200（确定）的 HTTP StatusCode。
+* 此事件从未成功发布。 将事件发布到事件网格模块时，客户端应收到值为 200（确定）的 HTTP StatusCode。
 
 * 检查事件订阅以验证：
     * 终结点 URL 有效

@@ -628,6 +628,14 @@
               href: stored-procedures-triggers-udfs.md
             - name: JavaScript 查询 API
               href: javascript-query-api.md
+        - name: 集成缓存
+          items:
+            - name: 专用网关概述
+              href: dedicated-gateway.md
+            - name: 集成缓存概述
+              href: integrated-cache.md
+            - name: 集成缓存常见问题解答
+              href: integrated-cache-faq.md
         - name: 安全
           items:
             - name: 保护对数据的访问
@@ -718,6 +726,8 @@
                   href: performance-tips-async-java.md
                 - name: Sync Java SDK v2
                   href: performance-tips-java.md
+            - name: 配置集成缓存
+              href: how-to-configure-integrated-cache.md
             - name: 性能测试 - 示例应用
               href: performance-testing.md
             - name: 以经济高效的方式读取和写入
@@ -850,6 +860,8 @@
               displayName: 'msi, managed service identity, aad, azure active directory, identity'
             - name: 使用证书访问数据
               href: certificate-based-authentication.md
+            - name: 使用“始终加密”
+              href: how-to-always-encrypted.md
         - name: 与其他 Azure 服务集成
           items:
             - name: 更改源电子商务解决方案
@@ -965,7 +977,7 @@
           href: cassandra-import-data.md
     - name: 概念
       items:
-        - name: 常见问题
+        - name: 常见问题解答
           href: cassandra-faq.yml
         - name: 弹性缩放
           href: manage-scale-cassandra.md
@@ -1207,7 +1219,7 @@
           href: tutorial-query-graph.md
     - name: 概念
       items:
-        - name: 常见问题
+        - name: 常见问题解答
           href: gremlin-api-faq.yml
         - name: 响应头
           href: gremlin-headers.md
@@ -1308,7 +1320,7 @@
           maintainContext: true
     - name: 概念
       items:
-        - name: 常见问题
+        - name: 常见问题解答
           href: table-api-faq.yml
     - name: 操作指南
       items:
@@ -1348,6 +1360,9 @@
           href: /cli/azure/azure-cli-reference-for-cosmos-db
 - name: 操作指南
   items:
+    - name: 免费层
+      href: free-tier.md
+      displayName: free tier
     - name: 管理 Azure Cosmos DB 资源
       items:
         - name: 管理 Azure Cosmos 帐户
@@ -1369,6 +1384,12 @@
           items:
             - name: 安装和使用仿真器
               href: local-emulator.md
+            - name: 在 Docker 上运行仿真器
+              items:
+                - name: 在用于 Linux 的 Docker 上运行仿真器
+                  href: linux-emulator.md
+                - name: 在用于 Windows 的 Docker 上运行仿真器
+                  href: local-emulator-on-docker-windows.md
             - name: 导出仿真器证书
               href: local-emulator-export-ssl-certificates.md
             - name: 仿真器命令行参数
@@ -1480,7 +1501,7 @@
       href: query-cheat-sheet.md
     - name: SQL 演练
       href: 'https://www.documentdb.com/sql/demo'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.yml
     - name: 白皮书
       href: whitepapers.md

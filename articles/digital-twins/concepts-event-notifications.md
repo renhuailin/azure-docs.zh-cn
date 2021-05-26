@@ -8,12 +8,12 @@ ms.date: 4/8/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 625f69b0088ffe6931410afc6f2a825c3156fd70
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8b8205681da7ea24fdafcef337ad903fff06c589
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209942"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474622"
 ---
 # <a name="event-notifications"></a>事件通知
 
@@ -234,7 +234,7 @@ Azure 数字孪生向事件网格发出的通知将按照 CloudEvents 架构或 
 | `specversion` | *1.0*<br>消息遵守此版本的 [CloudEvents 规范](https://github.com/cloudevents/spec)。 |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete` |
 | `datacontenttype` | `application/json` |
-| `subject` | 关系的 ID，例如 `<twinID>/relationships/<relationshipID>` |
+| `subject` | 关系的 ID，例如 `<twin-ID>/relationships/<relationshipID>` |
 | `time` | 在关系上发生该操作时的时间戳 |
 | `traceparent` | 事件的 W3C 跟踪上下文 |
 
@@ -280,7 +280,7 @@ Azure 数字孪生向事件网格发出的通知将按照 CloudEvents 架构或 
 | 名称    | 值 |
 | --- | --- |
 | `id` | 通知的标识符，客户在调用遥测 API 时提供该标识符。 |
-| `source` | 遥测事件发送到的孪生体的完全限定名称。 使用以下格式：`<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net/<twinId>`。 |
+| `source` | 遥测事件发送到的孪生体的完全限定名称。 使用以下格式：`<your-Digital-Twin-instance>.api.<your-region>.digitaltwins.azure.net/<twin-ID>`。 |
 | `specversion` | *1.0*<br>消息遵守此版本的 [CloudEvents 规范](https://github.com/cloudevents/spec)。 |
 | `type` | `microsoft.iot.telemetry` |
 | `data` | 已发送到孪生体的遥测消息。 有效负载未修改，可能不符合已发送遥测的孪生体的架构。 |

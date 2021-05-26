@@ -8,17 +8,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
-ms.date: 04/23/2020
-ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: fa62dc3470ef4d4ab79045379a8b76b057b44628
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89500124"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379210"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>将自托管网关部署到 Kubernetes
 
 本文描述了将 Azure API 管理的自承载网关组件部署到 Kubernetes 群集的步骤。
+
+> [!NOTE]
+> 你还可将自承载网关部署到[已启用 Azure Arc 的 Kubernetes 群集](how-to-deploy-self-hosted-gateway-azure-arc.md)作为[群集扩展](../azure-arc/kubernetes/extensions.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -130,3 +133,4 @@ Azure 门户中提供的 YAML 文件将[服务](https://kubernetes.io/docs/refer
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解自承载网关，请参阅[自承载网关概述](self-hosted-gateway-overview.md)。
+* 了解[如何将 API 管理自承载网关部署到已启用 Azure Arc 的 Kubernetes 群集](how-to-deploy-self-hosted-gateway-azure-arc.md)。

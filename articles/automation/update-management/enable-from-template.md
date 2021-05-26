@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 09/18/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 687c3d49f98fe6832d23dc1529a9761d862e0666
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: f6a32bdef2269e1235534ca99144a61c5ea023db
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830873"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463365"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用“更新管理”
 
@@ -22,8 +22,6 @@ ms.locfileid: "107830873"
 * 将自动化帐户链接到 Log Analytics 工作区。
 * 将示例自动化 runbook 添加到帐户。
 * 启用更新管理功能。
-
-该模板不会自动对一个或多个 Azure VM 或非 Azure VM 启用更新管理。
 
 如果已在订阅支持的区域中部署了 Log Analytics 工作区和自动化帐户，不会链接该工作区和帐户。 使用此模板可以成功创建链接并部署更新管理。
 
@@ -73,7 +71,7 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
 
 ## <a name="deploy-template"></a>部署模板
 
-1. 将以下 JSON 语法复制并粘贴到该文件中：
+1. 将以下 JSON 语法复制并粘贴到文件中：
 
     ```json
     {

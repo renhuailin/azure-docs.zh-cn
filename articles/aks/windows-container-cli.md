@@ -4,12 +4,12 @@ description: 了解如何使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 的 
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 617590a3f482e246b8af5db6dd906591c16b20fa
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 50b5d0a46c97cfd816b80c3fb7c8f8667e3e89d7
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769420"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379364"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
@@ -70,19 +70,19 @@ az group create --name myResourceGroup --location eastus
 若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要采用使用 [Azure CNI][azure-cni-about]（高级）网络插件的网络策略。 有关帮助计划所需子网范围和网络注意事项的更多详细信息，请参阅[配置 Azure CNI 网络][use-advanced-networking]。 使用 [az aks create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 此命令将创建必要的网络资源（如果这些资源不存在）。
 
 * 群集配置了两个节点。
-* `--windows-admin-password` 和 `--windows-admin-username` 参数为群集上创建的任何 Windows Server 容器设置管理员凭据，并且必须满足 [Windows Server 密码要求][windows-server-password]。 如果不指定 windows-admin-password 参数，系统将提示你提供一个值。
+* `--windows-admin-password` 和 `--windows-admin-username` 参数为群集上的任何 Windows Server 节点设置管理员凭据，并且必须满足 [Windows Server 密码要求][windows-server-password]。 如果不指定 windows-admin-password 参数，系统将提示你提供一个值。
 * 节点池使用 `VirtualMachineScaleSets`。
 
 > [!NOTE]
 > 为确保群集可靠运行，应在默认节点池中至少运行 2（两）个节点。
 
-创建一个用户名，用作群集上 Windows Server 容器的管理员凭据。 以下命令提示你输入一个用户名，并将其设置为 WINDOWS_USERNAME 以供在之后的命令中使用（请记住，本文中的命令输入到 BASH shell 中）。
+创建用户名，用作群集上 Windows Server 节点的管理员凭据。 以下命令提示你输入一个用户名，并将其设置为 WINDOWS_USERNAME 以供在之后的命令中使用（请记住，本文中的命令输入到 BASH shell 中）。
 
 ```azurecli-interactive
-echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+echo "Please enter the username to use as administrator credentials for Windows Server nodes on your cluster: " && read WINDOWS_USERNAME
 ```
 
-创建你的群集，确保指定了 `--windows-admin-username` 参数。 下面的示例命令使用你在前一个命令中设置的 WINDOWS_USERNAME 中的值创建群集。 也可以直接在参数中提供不同的用户名，而不是使用 WINDOWS_USERNAME。 以下命令还将提示你为群集上 Windows Server 容器的管理员凭据创建密码。 或者，你可以使用 windows-admin-password 参数，并在此处指定你自己的值。
+创建你的群集，确保指定了 `--windows-admin-username` 参数。 下面的示例命令使用你在前一个命令中设置的 WINDOWS_USERNAME 中的值创建群集。 也可以直接在参数中提供不同的用户名，而不是使用 WINDOWS_USERNAME。 以下命令还将提示你为群集上 Windows Server 节点的管理员凭据创建密码。 或者，你可以使用 windows-admin-password 参数，并在此处指定你自己的值。
 
 ```azurecli-interactive
 az aks create \
@@ -93,11 +93,16 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
+    --kubernetes-version 1.20.2 \
     --network-plugin azure
 ```
 
 > [!NOTE]
 > 如果出现密码验证错误，请验证设置的密码是否符合 [Windows Server 密码要求][windows-server-password]。 如果密码符合要求，请尝试在另一个区域中创建资源组。 然后尝试创建包含新资源组的群集。
+>
+> 如果在设置 `--vm-set-type VirtualMachineScaleSets` 和 `--network-plugin azure` 时未指定管理员用户名和密码，则用户名将设置为 azureuser，密码将设置为随机值。
+> 
+> 无法更改管理员用户名，但可以使用 `az aks update` 更改 AKS 群集用于 Windows Server 节点的管理员密码。 有关详细信息，请参阅 [Windows Server 节点池常见问题解答][win-faq-change-admin-creds]。
 
 片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 有时，预配群集所需的时间可能不止几分钟。 在这种情况下，最多需要 10 分钟。
 
@@ -114,9 +119,69 @@ az aks nodepool add \
     --node-count 1
 ```
 
-上述命令将创建名为 npwin 的新节点池，并将其添加到 myAKSCluster 。 创建节点池以运行 Windows Server 容器时，node-vm-size 的默认值为 Standard_D2s_v3 。 如果选择设置 node-vm-size 参数，请检查[受限 VM 大小][restricted-vm-sizes]的列表。 最小推荐大小为 Standard_D2s_v3。 上述命令还使用运行 `az aks create` 时创建的默认 VNet 中的默认子网。
+上述命令将创建名为 npwin 的新节点池，并将其添加到 myAKSCluster 。 上述命令还使用运行 `az aks create` 时创建的默认 VNet 中的默认子网。
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+### <a name="add-a-windows-server-node-pool-with-containerd-preview"></a>使用 `containerd` 添加 Windows Server 节点池（预览版）
+
+从 Kubernetes 1.20 及更高版本开始，可以将 `containerd` 指定为 Windows Server 2019 节点池的容器运行时。
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+需要 aks-preview Azure CLI 扩展。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展。 或者使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+使用 [az feature register][az-feature-register] 命令注册 `UseCustomizedWindowsContainerRuntime` 功能标志，如以下示例所示：
+
+```azurecli
+az feature register --namespace "Microsoft.ContainerService" --name "UseCustomizedWindowsContainerRuntime"
+```
+
+可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedWindowsContainerRuntime')].{Name:name,State:properties.state}"
+```
+
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+使用 `az aks nodepool add` 命令添加可以通过 `containerd` 运行时运行 Windows Server 容器的其他节点池。
+
+> [!NOTE]
+> 如果未指定 WindowsContainerRuntime=containerd 自定义标头，则节点池将使用 Docker 作为容器运行时。
+
+```azurecli
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --os-type Windows \
+    --name npwcd \
+    --node-vm-size Standard_D4s_v3 \
+    --kubernetes-version 1.20.2 \
+    --aks-custom-headers WindowsContainerRuntime=containerd \
+    --node-count 1
+```
+
+上述命令使用 `containerd` 作为名为 npwcd 的运行时来创建新的 Windows Server 节点池，并将其添加到 myAKSCluster 中 。 上述命令还使用运行 `az aks create` 时创建的默认 VNet 中的默认子网。
+
+> [!IMPORTANT]
+> 将 `containerd` 与 Windows Server 2019 节点池一起使用时：
+> - 控制平面和 Windows Server 2019 节点池都必须使用 Kubernetes 1.20 或更高版本。
+> - 使用 Docker 作为容器运行时的现有 Windows Server 2019 节点池无法升级为使用 `containerd`。 必须创建新的节点池。
+> - 创建运行 Windows Server 容器的节点池时，node-vm-size 的默认值为 Standard_D2s_v3，这是 Kubernetes 1.20 之前的 Windows Server 2019 节点池的最小建议大小 。 使用 `containerd` 的 Windows Server 2019 节点池的最小建议大小为 Standard_D4s_v3。 设置 node-vm-size 参数时，请检查[受限制的 VM 大小][restricted-vm-sizes]列表。
+> - 强烈建议对运行 `containerd` 的 Windows Server 2019 节点池使用[标记或标签][aks-taints]，并在部署中使用容许或节点选择器，以确保正确计划工作负载。
+
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli][az-aks-install-cli] 命令：
 
@@ -133,16 +198,21 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
 ```console
-kubectl get nodes
+kubectl get nodes -o wide
 ```
 
 以下示例输出显示了群集中的所有节点。 请确保所有节点的状态均为“就绪”：
 
 ```output
-NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.9
-aksnpwin987654                      Ready    agent   108s   v1.16.9
+NAME                                STATUS   ROLES   AGE    VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION     CONTAINER-RUNTIME
+aks-nodepool1-12345678-vmss000000   Ready    agent   34m    v1.20.2   10.240.0.4    <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
+aks-nodepool1-12345678-vmss000001   Ready    agent   34m    v1.20.2   10.240.0.35   <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
+aksnpwcd123456                      Ready    agent   9m6s   v1.20.2   10.240.0.97   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    containerd://1.4.4+unknown
+aksnpwin987654                      Ready    agent   25m    v1.20.2   10.240.0.66   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    docker://19.3.14
 ```
+
+> [!NOTE]
+> 每个节点池的容器运行时都显示在 CONTAINER-RUNTIME 下。 请注意，aksnpwin987654 以 `docker://` 开头，这意味着它使用 Docker 作为容器运行时。 请注意，aksnpwcd123456 以 `containerd://` 开头，这意味着它使用 `containerd` 作为容器运行时。
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -273,6 +343,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [aks-monitor]: ../azure-monitor/containers/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
+[aks-taints]:  use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool
 [az-aks-browse]: /cli/azure/aks#az_aks_browse
 [az-aks-create]: /cli/azure/aks#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
@@ -294,6 +365,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [use-advanced-networking]: configure-azure-cni.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az_extension_add
-[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
 [windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference
+[win-faq-change-admin-creds]: windows-faq.md#how-do-i-change-the-administrator-password-for-windows-server-nodes-on-my-cluster
