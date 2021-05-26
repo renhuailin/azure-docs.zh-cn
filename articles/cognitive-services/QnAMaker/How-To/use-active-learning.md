@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 87dde7662050794a24cf976a0bae6237b91d29b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d346610ecb4e0552a52775c086eeb16e6e11680
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102213702"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373009"
 ---
 # <a name="active-learning"></a>主动学习
 
@@ -130,9 +130,9 @@ QnA Maker 需要有关哪个答案是最佳答案的显式反馈。 如何确定
 
 运行时版本 4.4.0 及更高版本支持主动学习。 如果你的知识库是在早期版本上创建的，请[升级运行时](configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)以使用此功能。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-在 QnA Maker 托管（预览版本）中，由于运行时由 QnA Maker 服务本身承载，所以无需手动升级运行时。
+在自定义问答（预览版）中，不需要手动升级运行时。
 
 ---
 
@@ -159,9 +159,9 @@ QnA Maker 需要有关哪个答案是最佳答案的显式反馈。 如何确定
 
     启用“主动学习”后，知识库会根据用户提交的问题定期建议新的问题。 可以通过再次切换设置来禁用“主动学习”。
     
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-默认情况下，QnA Maker 托管（预览版本）中的主动学习处于打开状态。 要查看建议的替代问题，请使用“编辑”页上的[“查看”选项](../How-To/improve-knowledge-base.md#view-suggested-questions)。
+默认情况下，自定义问答（预览版）中的主动学习处于启用状态。 要查看建议的替代问题，请使用“编辑”页上的[“查看”选项](../How-To/improve-knowledge-base.md#view-suggested-questions)。
 
 ---
 

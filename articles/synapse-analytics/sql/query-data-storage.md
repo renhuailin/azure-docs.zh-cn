@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f9626ebdcc52f9aeb2b9283dac6c5790e3df8cf
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 7503c0ffff064f0fee0352beb0955c964c7770b9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108179953"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368345"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询存储文件
 
@@ -34,6 +34,7 @@ ms.locfileid: "108179953"
 - [查询多个文件或文件夹](#query-multiple-files-or-folders)
 - [PARQUET 文件格式](#query-parquet-files)
 - [查询 CSV 和分隔文本（字段终止符、行终止符、转义符）](#query-csv-files)
+- [DELTA LAKE 格式](#query-delta-lake-format)
 - [读取选定的列子集](#read-a-chosen-subset-of-columns)
 - [架构推理](#schema-inference)
 - [filename 函数](#filename-function)
@@ -42,11 +43,11 @@ ms.locfileid: "108179953"
 
 ## <a name="query-parquet-files"></a>查询 PARQUET 文件
 
-若要查询 Parquet 源数据，请使用 FORMAT = 'PARQUET'
+若要查询 Parquet 源数据，请使用 FORMAT = 'PARQUET'：
 
 ```syntaxsql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
@@ -67,6 +68,19 @@ WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 无论是否启用了 FIELDQUOTE，都会应用 ESCAPE_CHAR 参数。 不会使用该参数来转义引号字符。 必须使用其他引号字符来转义引号字符。 要让引号字符出现在列值内，必须将值放在引号中。
 - FIELDTERMINATOR ='field_terminator' 指定要使用的字段终止符。 默认的字段终止符为逗号（“,”）
 - ROWTERMINATOR ='row_terminator' 指定要使用的行终止符。 默认的行终止符为换行符：\r\n。 ****
+
+
+## <a name="query-delta-lake-format"></a>查询 DELTA LAKE 格式
+
+若要查询 Delta Lake 源数据，请使用 FORMAT = 'DELTA' 并引用包含 Delta Lake 文件的根文件夹。
+
+```syntaxsql
+SELECT * FROM
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder', FORMAT = 'DELTA') 
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
+```
+
+根文件夹必须包含名为 `_delta_log` 的子文件夹。 有关用法示例，请查看[查询 Delta Lake 格式](query-delta-lake-format.md)一文。
 
 ## <a name="file-schema"></a>文件架构
 
@@ -101,7 +115,7 @@ SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 ```
 
-请确保使用[适当的推断数据类型](./best-practices-serverless-sql-pool.md#check-inferred-data-types)以获得最佳性能。 
+请确保使用[适当的推断数据类型](best-practices-sql-on-demand.md#check-inferred-data-types)以获得最佳性能。 
 
 ## <a name="query-multiple-files-or-folders"></a>查询多个文件或文件夹
 

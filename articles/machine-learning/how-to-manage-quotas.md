@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 author: SimranArora904
 ms.author: siarora
-ms.date: 12/1/2020
+ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 3fde5a7290c97c4bcf7c8da0fdc5ea21e05abbd3
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b9890ad85bea81b918a9b625a2cd62adb11a5820
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889027"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368866"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>管理和增大 Azure 机器学习资源的配额
 
@@ -102,6 +102,25 @@ Azure 使用限制和配额来防止由于欺诈导致的预算超支，并遵�
 
 <sup>1</sup> 最大生存期是指从运行开始到运行完成之间的持续时间。 已完成的运行无限期保留。 最长生存期内未完成的运行的数据不可访问。
 <sup>2</sup> 每当存在容量约束时，低优先级节点上的作业可能会预先清空。 我们建议在作业中实施检查点。
+
+### <a name="azure-machine-learning-managed-online-endpoints-preview"></a>Azure 机器学习托管联机终结点（预览版）
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
+
+Azure 机器学习托管联机终结点具有以下限制。
+
+| **资源** | **限制** |
+| --- | --- |
+| 终结点名称| 终结点名称必须 <li> 以字母开头 <li> 长度为 3-32 个字符  <li> 只能包含字母和数字 <sup>1</sup> |
+| 部署名称| 部署名称必须 <li> 以字母开头 <li> 长度为 3-32 个字符  <li>  只能包含字母和数字 <sup>1</sup> |
+| 每个订阅的终结点数 | 50 |
+| 每个订阅的部署数 | 200 |
+| 每个终结点的部署数 | 20 |
+| 每个部署的实例数 | 20 |
+| 终结点级别的最大有效负载大小 |1.5 MB |
+| 终结点级别的最大请求超时  | 60 秒 |
+| 所有部署的终结点级别 QPS 总计  | 100 |
+
+<sup>1</sup> 终结点和部署名称中接受单个短划线，例如 `my-endpoint-name`
 
 #### <a name="azure-machine-learning-pipelines"></a>Azure 机器学习管道
 [Azure 机器学习管道](concept-ml-pipelines.md)具有以下限制。
