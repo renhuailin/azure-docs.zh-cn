@@ -1,5 +1,5 @@
 ---
-title: 安装 Visual Studio Code 扩展
+title: 安装 Visual Studio Code 扩展（预览版）
 titleSuffix: Azure Machine Learning
 description: 了解如何安装 Azure 机器学习 Visual Studio Code 扩展
 services: machine-learning
@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 05/25/2021
 ms.topic: how-to
-ms.openlocfilehash: 42553c51ef1d223486de9e29ad8991c7ae96e79d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 80f6849bb4989692e8cd29a3288f9b104bf250bb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382470"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460079"
 ---
-# <a name="set-up-the-visual-studio-code-azure-machine-learning-extension"></a>安装 Visual Studio Code Azure 机器学习扩展
+# <a name="set-up-the-visual-studio-code-azure-machine-learning-extension-preview"></a>安装 Visual Studio Code Azure 机器学习扩展（预览版）
 
 了解如何为机器学习工作流安装 Azure 机器学习 Visual Studio Code 扩展。
 
@@ -55,7 +55,7 @@ ms.locfileid: "110382470"
 本教程中的其余步骤已使用最新版本的扩展进行了测试。
 
 > [!NOTE]
-> 该扩展默认使用 2.0 CLI。 若要切换到非 2.0 CLI 体验，请将 Visual Studio Code 中的 `azureML.experimental.V2Config` 设置指定为 `false`。 有关在 Visual Studio 中修改设置的详细信息，请参阅[用户和工作区设置文档](https://code.visualstudio.com/docs/getstarted/settings)。
+> 在默认情况下，Azure 机器学习 VS Code 扩展使用 2.0 CLI。 若要切换到 1.0 CLI，请将 Visual Studio Code 中的 `azureML.CLI Compatibility Mode` 设置指定为 `1.0`。 有关在 Visual Studio 中修改设置的详细信息，请参阅[用户和工作区设置文档](https://code.visualstudio.com/docs/getstarted/settings)。
 
 ## <a name="sign-in-to-your-azure-account"></a>登录 Azure 帐户
 
@@ -87,5 +87,5 @@ ms.locfileid: "110382470"
 - [管理 Azure 机器学习资源](how-to-manage-resources-vscode.md)
 - [在本地通过远程计算实例进行开发](how-to-set-up-vs-code-remote.md)
 - [将计算实例用作远程 Jupyter 服务器](how-to-set-up-vs-code-remote.md)
-- [使用 Visual Studio Code 扩展训练和部署图像分类模型](tutorial-train-deploy-image-classification-model-vscode.md)
+- [使用 Visual Studio Code 扩展训练图像分类模型](tutorial-train-deploy-image-classification-model-vscode.md)
 - [在本地运行和调试机器学习试验](how-to-debug-visual-studio-code.md)

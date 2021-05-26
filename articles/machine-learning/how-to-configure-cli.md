@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 05/25/2021
 ms.reviewer: laobri
-ms.openlocfilehash: e9a5562f665ee2d52a39f296fb39d9a7139be6cb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 19534a5b55ea666233bb1a9b66916791e934908a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382605"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476606"
 ---
 # <a name="install-set-up-and-use-the-20-cli-preview"></a>安装、设置和使用 2.0 CLI（预览版）
 
@@ -43,23 +43,23 @@ az version
 
 检查已安装的 Azure CLI 扩展：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-configure-cli.sh" id="az_extension_list":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_extension_list":::
 
 确保未安装任何有冲突的、使用 `ml` 命名空间的扩展，包括 `azure-cli-ml` 扩展：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-configure-cli.sh" id="az_extension_remove":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_extension_remove":::
 
 现在，请安装 `ml` 扩展：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/setup.sh" id="az_ml_install":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_ml_install":::
 
 运行 help 命令以验证安装，并查看可用的子命令：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-configure-cli.sh" id="az_ml_verify":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_ml_verify":::
 
 可将扩展升级到最新版本：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-configure-cli.sh" id="az_ml_update":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_ml_update":::
 
 ## <a name="set-up"></a>设置
 
@@ -71,22 +71,22 @@ az login
 
 如果你可以访问多个 Azure 订阅，则可以设置活动的订阅：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-configure-cli.sh" id="az_account_set":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_account_set":::
 
 如果它不存在，可以创建 Azure 资源组：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/setup.sh" id="az_group_create":::
-
-同样对机器学习工作区执行该操作：
-
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/setup.sh" id="az_ml_workspace_create":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_group_create":::
 
 机器学习子命令需要 `--workspace/-w` 和 `--resource-group/-g` 参数。 为了避免反复键入这些值，请配置默认值：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/setup.sh" id="az_configure_defaults":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_configure_defaults":::
 
 > [!TIP]
 > 大多数代码示例假设已设置默认工作区和资源组。 可以在命令行中替代它们。
+
+现在创建机器学习工作区：
+
+:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_ml_workspace_create":::
 
 ## <a name="hello-world"></a>Hello world
 
@@ -99,19 +99,20 @@ cd azureml-examples/cli
 
 若要通过 Python 在本地运行 hello world，请查看 `jobs` 子目录中的示例：
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/hello-world.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/hello-world.yml":::
 
 > [!IMPORTANT]
 > 需要在本地安装和运行 [Docker](https://docker.io)。
 
 提交作业，将日志流式传输到控制台输出，并在 Azure 机器学习工作室中打开运行：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-configure-cli.sh" id="hello_world":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="hello_world":::
 
 > [!IMPORTANT]
 > 首次运行可能需要花费几分钟时间，因为将在本地拉取 Docker 映像，并且要运行 Azure ML 作业。 后续运行将使用本地缓存的映像，因此可以更快地完成。
 
 ## <a name="next-steps"></a>后续步骤
 
+- [安装 Visual Studio Code Azure 机器学习扩展](how-to-setup-vs-code.md)
 - [使用机器学习 CLI 扩展（预览版）训练模型](how-to-train-cli.md)
 - [使用 Azure 机器学习 Visual Studio Code 扩展训练图像分类 TensorFlow 模型](tutorial-train-deploy-image-classification-model-vscode.md)
