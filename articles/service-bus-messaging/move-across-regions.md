@@ -68,7 +68,7 @@ ms.locfileid: "88860795"
     4. 输入新的**命名空间名称**。
     1. 选择“查看 + 创建”  。 
 
-        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="下载资源管理器模板" **创建** ":::。 
+        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="下载资源管理器模板&quot; **创建** ":::。 
     
 ## <a name="verify"></a>验证
 1. 在部署成功后，选择“转到资源组”。
