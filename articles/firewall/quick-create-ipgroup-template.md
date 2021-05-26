@@ -6,14 +6,14 @@ author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/28/2020
+ms.date: 05/10/2021
 ms.author: victorh
-ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5491ec58b87d799376ade3775b3dbfc0d3a8dab
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89079126"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814705"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>快速入门：创建 Azure 防火墙和 IP 组 - ARM 模板
 
@@ -23,7 +23,7 @@ ms.locfileid: "89079126"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "89079126"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox)。
 
-:::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json":::
 
 模板中定义了多个 Azure 资源：
 
@@ -55,17 +55,17 @@ ms.locfileid: "89079126"
 
 1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板将创建 Azure 防火墙、网络基础结构和两个虚拟机。
 
-   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
+   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fazurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
 
 2. 在门户中的“创建使用 IpGroups 的 Azure 防火墙”页上，键入或选择以下值：
-   - 订阅：从现有订阅中选择 
+   - 订阅：从现有订阅中选择
    - 资源组：从现有资源组中选择，或者选择“新建”，然后选择“确定”。 
    - 位置：选择一个位置
-   - 虚拟网络名称：键入新虚拟网络 (VNet) 的名称 
-   - IP 组名称 1：键入 IP 组 1 的名称 
-   - IP 组名称 2：键入 IP 组 2 的名称 
-   - 管理员用户名：键入管理员用户帐户的用户名。 
-   - 身份验证：选择“sshPublicKey”或“密码” 
+   - 虚拟网络名称：键入新虚拟网络 (VNet) 的名称
+   - IP 组名称 1：键入 IP 组 1 的名称
+   - IP 组名称 2：键入 IP 组 2 的名称
+   - 管理员用户名：键入管理员用户帐户的用户名。
+   - 身份验证：选择“sshPublicKey”或“密码”
    - 管理员密码：键入管理员密码或密钥
 
 3. 选择“我同意上述条款和条件”，然后选择“购买”   。 部署可能需要 10 分钟或更长时间才能完成。

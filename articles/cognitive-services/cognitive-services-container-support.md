@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 04/16/2021
+ms.date: 05/13/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, Kubernetes
-ms.openlocfilehash: c40e91d81df448021be74af768bc9d5952b263dd
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: e047a96dc154ecc57226b7ecf4f673e86547fbd3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588218"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465050"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 认知服务容器
 
@@ -54,6 +54,7 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 | [文本分析][ta-containers-language] |  文本语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)） | 针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 | 正式发布 |
 | [文本分析][ta-containers-sentiment] | 情绪分析 v3（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)） | 分析原始文本，获取正面或负面情绪的线索。 此版本的情绪分析为每个文档以及其中的句子返回情绪标签（例如正面或负面） 。 |  正式发布 |
 | [文本分析][ta-containers-health] |  **运行状况文本分析** | 从非结构化临床文本中提取医疗信息并进行标记。 | 门控式预览版。 [请求访问权限][request-access]。 |
+| [翻译][tr-containers] | **翻译** | 将文本翻译成多种语言和方言。 | 门控式预览版。 [请求访问权限][request-access]。 | 
 
 ### <a name="speech-containers"></a>语音容器
 
@@ -126,6 +127,7 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 * [语言理解 (LUIS) 容器][lu-containers]
 * [语音服务 API 容器][sp-containers]
 * [文本分析容器][ta-containers]
+* [翻译器容器][tr-containers]
 
 <!--* [Personalizer containers](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 -->
@@ -148,4 +150,5 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 [ta-containers-language]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
 [ta-containers-sentiment]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
 [ta-containers-health]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health
+[tr-containers]: translator/containers/translator-how-to-install-container.md
 [request-access]: https://aka.ms/csgate

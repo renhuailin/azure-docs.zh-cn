@@ -10,12 +10,12 @@ metadata:
   author: ecfan
   ms.author: estfan; logicappspm
   ms.date: 03/24/2021
-  ms.openlocfilehash: 55f2be9b738e91c076d918cf19ddd5d55d445e20
-  ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+  ms.openlocfilehash: e49682f79efb102ccf71a184b77b74e0c6df3fbc
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/28/2021
-  ms.locfileid: "108204956"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110372974"
 landingContent:
 - title: 关于 Azure 逻辑应用
   linkLists:
@@ -23,17 +23,15 @@ landingContent:
     links:
     - text: 什么是 Azure 逻辑应用？
       url: logic-apps-overview.md
+    - text: 单租户与多租户以及集成服务环境
+      url: single-tenant-overview-compare.md
+    - text: 什么是已启用 Azure Arc 的逻辑应用？
+      url: azure-arc-enabled-logic-apps-overview.md
   - linkListType: concept
     links:
     - text: Azure 逻辑应用的连接器概述
       url: ../connectors/apis-list.md
-    - text: 托管的连接器
-      url: ../connectors/managed.md
-    - text: 适用于 Azure 逻辑应用的连接器
-      url: /connectors/connector-reference/connector-reference-logicapps-connectors
-    - text: 内置触发器和操作
-      url: ../connectors/built-in.md
-    - text: 安排重复工作流
+    - text: 为工作流设置定期计划
       url: concepts-schedule-automated-recurring-tasks-workflows.md
     - text: B2B 企业集成
       url: logic-apps-enterprise-integration-overview.md
@@ -157,6 +155,8 @@ landingContent:
       url: logic-apps-limits-and-config.md
     - text: 定价模型
       url: logic-apps-pricing.md
+    - text: 适用于 Azure 逻辑应用的连接器参考
+      url: /connectors/connector-reference/connector-reference-logicapps-connectors
     - text: 工作流定义语言架构
       url: logic-apps-workflow-definition-language.md
     - text: Azure PowerShell

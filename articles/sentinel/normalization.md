@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 5d847ac7ed805ad88bc24ed63896edc6f7596f9b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 08f7f7998fce5c3361ec8d89a7ae4da4a43db832
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729770"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466626"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel 中的规范化
 
@@ -147,7 +147,7 @@ Azure Sentinel [官方 GitHub 存储库](https://github.com/Azure/Azure-Sentinel
 
 对于查询时分析而言，使用 JSON、XML 和 CSV 特别方便。 Azure Sentinel 提供适用于 JSON、XML 和 CSV 的内置分析函数，并提供 JSON 分析工具。  有关详细信息，请参阅博客文章 [Using JSON fields in Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747)（在 Azure Sentinel 中使用 JSON 字段）。 
 
-详细了解 Log Analytics 中[已保存的查询](../azure-monitor/logs/example-queries.md)（查询时分析器实现）。
+详细了解 Log Analytics 中[已保存的查询](../azure-monitor/logs/queries.md)（查询时分析器实现）。
 
 
 ## <a name="next-steps"></a>后续步骤

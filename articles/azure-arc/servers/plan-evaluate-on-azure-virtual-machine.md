@@ -3,12 +3,12 @@ title: 如何使用 Azure VM 评估已启用 Azure Arc 的服务器
 description: 了解如何使用 Azure 虚拟机评估已启用 Azure Arc 的服务器。
 ms.date: 05/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3c8318775c37c8cb3ed8171c00666bbcdd280a9c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 1e49b2d29b21f6ded72d1b22e946743f27e7d160
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486064"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109837828"
 ---
 # <a name="evaluate-arc-enabled-servers-on-an-azure-virtual-machine"></a>在 Azure 虚拟机上评估已启用 Arc 的服务器
 
@@ -19,8 +19,8 @@ ms.locfileid: "109486064"
 ## <a name="prerequisites"></a>先决条件
 
 * 已为帐户分配[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色。
-* Azure 虚拟机正在运行[已启用 Arc 的服务器支持的操作系统](agent-overview.md#supported-operating-systems)。 如果没有 Azure VM，可以部署[简单的 Windows VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json) 或[简单的 Ubuntu Linux 18.04 LTS VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)。
-* Azure VM 可以出站通信，以便从 [Microsoft 下载中心](https://aka.ms/AzureConnectedMachineAgent)下载适用于 Windows 的 Azure Connected Machine 代理包，以及从 Microsoft [包存储库](https://packages.microsoft.com/)下载适用于 Linux 的 Azure Connected Machine 代理包。 如果根据 IT 安全策略限制到 Internet 的出站连接，则需要手动下载代理包，并将其复制到 Azure VM 上的文件夹。 
+* Azure 虚拟机正在运行[已启用 Arc 的服务器支持的操作系统](agent-overview.md#supported-operating-systems)。 如果没有 Azure VM，可以部署[简单的 Windows VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json) 或[简单的 Ubuntu Linux 18.04 LTS VM](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json)。
+* Azure VM 可以出站通信，以便从 [Microsoft 下载中心](https://aka.ms/AzureConnectedMachineAgent)下载适用于 Windows 的 Azure Connected Machine 代理包，以及从 Microsoft [包存储库](https://packages.microsoft.com/)下载适用于 Linux 的 Azure Connected Machine 代理包。 如果根据 IT 安全策略限制到 Internet 的出站连接，则需要手动下载代理包，并将其复制到 Azure VM 上的文件夹。
 * 具有提升权限的帐户（即管理员或 root 帐户），以及对 VM 的 RDP 或 SSH 访问权限。
 * 要使用已启用 Arc 的服务器注册和管理 Azure VM，你需要是资源组中的 [Azure Connected Machine 资源管理员](../../role-based-access-control/built-in-roles.md#azure-connected-machine-resource-administrator)或具有[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色。
 
@@ -34,9 +34,9 @@ ms.locfileid: "109486064"
 
 3. 创建安全规则以拒绝访问 Azure 实例元数据服务 (IMDS)。 IMDS 是一个 REST API，应用程序可以调用它来获取 Azure 中 VM 的表示形式的相关信息，包括其资源 ID 和位置。 IMDS 还提供对分配到计算机的任何管理标识的访问权限。 已启用 Azure Arc 的服务器提供其自己的 IMDS 实现，并返回 VM 的 Azure Arc 表示形式的相关信息。 若要避免这两个 IMDS 终结点都可用且应用必须在两者之间进行选择的情况，可阻止访问 Azure VM IMDS，仅使已启用 Azure Arc 的服务器 IMDS 实现可用。
 
-执行这些更改后，Azure VM 的行为将类似于 Azure 之外的任何计算机或服务器，并且可以开始安装和评估已启用 Azure Arc 的服务器。 
+执行这些更改后，Azure VM 的行为将类似于 Azure 之外的任何计算机或服务器，并且可以开始安装和评估已启用 Azure Arc 的服务器。
 
-当在 VM 上配置已启用 Arc 的服务器时，Azure 中会出现它的两个表示形式。 一个是 Azure VM 资源，具有 `Microsoft.Compute/virtualMachines` 资源类型，另一个是 Azure Arc 资源，具有 `Microsoft.HybridCompute/machines` 资源类型。 由于阻止从共享物理主机服务器管理来宾操作系统，理解这两个资源的最佳方式是，Azure VM 资源是 VM 的虚拟硬件，使你可以控制电源状态并查看有关其 SKU、网络和存储配置的信息。 Azure Arc 资源管理该 VM 中的来宾操作系统，并可用于安装扩展、查看 Azure Policy 的符合性数据，以及完成已启用 Arc 的服务器支持的其他任务。  
+当在 VM 上配置已启用 Arc 的服务器时，Azure 中会出现它的两个表示形式。 一个是 Azure VM 资源，具有 `Microsoft.Compute/virtualMachines` 资源类型，另一个是 Azure Arc 资源，具有 `Microsoft.HybridCompute/machines` 资源类型。 由于阻止从共享物理主机服务器管理来宾操作系统，理解这两个资源的最佳方式是，Azure VM 资源是 VM 的虚拟硬件，使你可以控制电源状态并查看有关其 SKU、网络和存储配置的信息。 Azure Arc 资源管理该 VM 中的来宾操作系统，并可用于安装扩展、查看 Azure Policy 的符合性数据，以及完成已启用 Arc 的服务器支持的其他任务。
 
 ## <a name="reconfigure-azure-vm"></a>重新配置 Azure VM
 
@@ -68,10 +68,10 @@ ms.locfileid: "109486064"
    在仍连接到服务器时，运行以下命令来阻止访问 Azure IMDS 终结点。 对于 Windows，请运行以下 PowerShell 命令：
 
    ```powershell
-   New-NetFirewallRule -Name BlockAzureIMDS -DisplayName "Block access to Azure IMDS" -Enabled True -Profile Any -Direction Outbound -Action Block -RemoteAddress 169.254.169.254 
+   New-NetFirewallRule -Name BlockAzureIMDS -DisplayName "Block access to Azure IMDS" -Enabled True -Profile Any -Direction Outbound -Action Block -RemoteAddress 169.254.169.254
    ```
 
-   对于 Linux，请参阅分发版文档，了解阻止通过 TCP 端口 80 对 `169.254.169.254/32` 进行出站访问的最佳方法。 通常将使用内置防火墙阻止出站访问，但也可使用 iptable 或 nftables 来暂时阻止出站访问 。 
+   对于 Linux，请参阅分发版文档，了解阻止通过 TCP 端口 80 对 `169.254.169.254/32` 进行出站访问的最佳方法。 通常将使用内置防火墙阻止出站访问，但也可使用 iptable 或 nftables 来暂时阻止出站访问 。
 
    如果 Azure VM 正在运行 Ubuntu，请执行以下步骤来配置其简单的防火墙 (UFW)：
 
@@ -86,7 +86,7 @@ ms.locfileid: "109486064"
    若要配置通用 iptables 配置，请运行以下命令：
 
    ```bash
-   iptables -A OUTPUT -d 169.254.169.254 -j DROP 
+   iptables -A OUTPUT -d 169.254.169.254 -j DROP
    ```
 
    > [!NOTE]
@@ -97,7 +97,7 @@ ms.locfileid: "109486064"
    VM 现在已可开始评估已启用 Arc 的服务器。 若要安装和配置已启用 Arc 的服务器代理，请参阅[使用 Azure 门户连接混合计算机](onboard-portal.md)，然后按照相应步骤生成安装脚本并使用脚本方法进行安装。
 
    > [!NOTE]
-   > 如果从 Azure VM 到 Internet 的出站连接受到限制，则需要手动下载代理包。 将代理包复制到 Azure VM，并修改已启用 Arc 的服务器安装脚本以引用源文件夹。 
+   > 如果从 Azure VM 到 Internet 的出站连接受到限制，则需要手动下载代理包。 将代理包复制到 Azure VM，并修改已启用 Arc 的服务器安装脚本以引用源文件夹。
 
 如果缺少其中一个步骤，安装脚本会检测到它正在 Azure VM 上运行，然后终止并提示错误。 请验证是否已完成步骤 1-3，然后重新运行该脚本。
 

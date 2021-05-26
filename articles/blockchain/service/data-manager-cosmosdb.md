@@ -4,16 +4,20 @@ description: 使用适用于 Azure 区块链服务的区块链数据管理器向
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b054688fb524d82e758f2ac1a9ff643293bc3b29
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91283441"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "110465741"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>教程：使用区块链数据管理器向 Azure Cosmos DB 发送数据
 
-在本教程中，将区块链数据管理器用于 Azure 区块链服务，以便在 Azure Cosmos DB 中记录区块链事务数据。 区块链数据管理器捕获、转换区块链账本数据并将其传送到 Azure 事件网格主题。 通过 Azure 事件网格，可以使用 Azure 逻辑应用连接器在 Azure Cosmos DB 数据库中创建文档。 完成教程后，可以在 Azure Cosmos DB 数据资源管理器中浏览区块链事务数据。
+在本教程中，将区块链数据管理器用于 Azure 区块链服务，以便在 Azure Cosmos DB 中记录区块链事务数据。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+区块链数据管理器捕获、转换区块链账本数据并将其传送到 Azure 事件网格主题。 通过 Azure 事件网格，可以使用 Azure 逻辑应用连接器在 Azure Cosmos DB 数据库中创建文档。 完成教程后，可以在 Azure Cosmos DB 数据资源管理器中浏览区块链事务数据。
 
 [![屏幕截图显示了区块链事务详细信息。](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 

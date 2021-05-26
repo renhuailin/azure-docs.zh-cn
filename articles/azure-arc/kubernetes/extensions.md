@@ -2,24 +2,31 @@
 title: 已启用 Azure Arc 的 Kubernetes 群集扩展
 services: azure-arc
 ms.service: azure-arc
-ms.date: 04/05/2021
+ms.date: 05/25/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 在已启用 Azure Arc 的 Kubernetes 上部署扩展并管理其生命周期
-ms.openlocfilehash: 362f1f0ca62c915eb7c17c80084d15aaaa75110e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 34e8f39450b6ac87ccb0e377526e2b2172e21ed7
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139644"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373326"
 ---
-# <a name="kubernetes-cluster-extensions"></a>Kubernetes 群集扩展
+# <a name="deploy-and-manage-azure-arc-enabled-kubernetes-cluster-extensions"></a>部署并管理已启用 Azure Arc 的 Kubernetes 群集扩展
 
 Kubernetes 扩展功能可在已启用 Azure Arc 的 Kubernetes 群集上实现以下目的：
 
 * 基于 Azure 资源管理器的群集扩展部署。
 * 扩展 Helm 图表的生命周期管理。
+
+本文内容：
+> [!div class="checklist"]
+> * 当前可用的已启用 Azure Arc 的 Kubernetes 群集扩展。
+> * 如何创建扩展实例。
+> * 必需参数和可选参数。
+> * 如何查看、列出、更新和删除扩展实例。 
 
 [群集扩展 - 已启用 Azure Arc 的 Kubernetes](conceptual-extensions.md) 一文中提供了此功能的概念性概述。
 
@@ -52,6 +59,10 @@ Kubernetes 扩展功能可在已启用 Azure Arc 的 Kubernetes 群集上实现�
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | 提供 Kubernetes 群集上部署的工作负载的性能相关信息。 从控制器、节点和容器收集内存与 CPU 利用率指标。 |
 | [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | 从 Kubernetes 群集收集与安全相关的信息，如审核日志数据。 基于收集的数据提供建议和威胁警报。 |
+| [已启用 Azure Arc 的数据服务](../../azure-arc/kubernetes/custom-locations.md#create-custom-location) | 可以使用 Kubernetes 和你选择的基础结构在本地、边缘和公有云环境中运行 Azure 数据服务。 |
+| [Azure Arc 上的 Azure 应用服务](../../app-service/overview-arc-integration.md) | 允许在已启用 Azure Arc 的 Kubernetes 群集基础之上预配应用服务 Kubernetes 环境。 |
+| [Kubernetes 上的事件网格](/azure/event-grid/kubernetes/overview) | 在已启用 Azure Arc 的 Kubernetes 群集基础之上创建并管理事件网格资源，如主题和事件订阅。 |
+| [Azure Arc 上的 Azure API 管理](/azure/api-management/how-to-deploy-self-hosted-gateway-azure-arc) | 在已启用 Azure Arc 的 Kubernetes 群集上部署并管理 API 管理网关。 |
 
 ## <a name="usage-of-cluster-extensions"></a>群集扩展的用法
 
@@ -101,7 +112,7 @@ az k8s-extension create --name azuremonitor-containers  --extension-type Microso
 
 > [!NOTE]
 > * 服务无法将敏感信息保留 48 小时以上。 如果已启用 Azure Arc 的 Kubernetes 代理保持网络连接的时间不超过 48 小时，且无法确定是否要在群集上创建扩展，则扩展会转换为 `Failed` 状态。 一旦进入 `Failed` 状态，你就需要再次运行 `k8s-extension create` 以创建全新的扩展 Azure 资源。
-> * * 用于容器的 Azure Monitor 是单一实例扩展（在每个群集上只需要一个）。 需要清理所有以前的用于容器的 Azure Monitor（不带扩展）Helm 图表安装，才能通过扩展安装同一组件。 请按照[运行 `az k8s-extension create` 之前删除 Helm 图表](../../azure-monitor/containers/container-insights-optout-hybrid.md)中的说明操作。
+> * 用于容器的 Azure Monitor 是单一实例扩展（在每个群集上只需要一个）。 需要清理所有以前的用于容器的 Azure Monitor（不带扩展）Helm 图表安装，才能通过扩展安装同一组件。 请按照[运行 `az k8s-extension create` 之前删除 Helm 图表](../../azure-monitor/containers/container-insights-optout-hybrid.md)中的说明操作。
 
 **必需的参数**
 
@@ -247,10 +258,21 @@ az k8s-extension delete --name azuremonitor-containers --cluster-name <clusterNa
 >[!NOTE]
 > 代表此扩展的 Azure 资源将会立即删除。 仅当 Kubernetes 群集上运行的代理已建立网络连接，并且可以再次访问 Azure 服务以获取所需状态时，才会删除群集上与此扩展关联的 Helm 版本。
 
-
 ## <a name="next-steps"></a>后续步骤
 
 详细了解当前可用于已启用 Azure Arc 的 Kubernetes 的群集扩展：
+
 > [!div class="nextstepaction"]
 > [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> 
+> [!div class="nextstepaction"]
 > [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> 
+> [!div class="nextstepaction"]
+> [Azure Arc 上的 Azure 应用服务](../../app-service/overview-arc-integration.md)
+> 
+> [!div class="nextstepaction"]
+> [Kubernetes 上的事件网格](/azure/event-grid/kubernetes/overview)
+> 
+> [!div class="nextstepaction"]
+> [Azure Arc 上的 Azure API 管理](/azure/api-management/how-to-deploy-self-hosted-gateway-azure-arc)

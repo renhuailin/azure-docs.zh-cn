@@ -4,18 +4,18 @@ description: 更改可验证凭据代码示例，以使用你的 Azure 租户
 documentationCenter: ''
 author: barclayn
 manager: daveba
-ms.service: identity
+ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 310c821bf102d267d0b5f77dbf206b896ab2f1c7
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: c73c6ce641e5e8386d636f87253cb111c17ae69c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739217"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466071"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>教程：使用租户颁发和识别可验证凭据（预览）
 
@@ -40,7 +40,7 @@ ms.locfileid: "107739217"
 
 任何支持 OpenID Connect 协议的标识提供者都受支持。 支持的标识提供者示例包括 [Azure Active Directory](../fundamentals/active-directory-whatis.md) 和 [Azure AD B2C](../../active-directory-b2c/overview.md)。 在本教程中，我们使用 AAD。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程假设你已完成[前面教程](enable-your-tenant-verifiable-credentials.md)中的步骤，并有权访问你所使用的环境。
 
@@ -250,7 +250,7 @@ ms.locfileid: "107739217"
 
 5. 选择“获取凭据”
 6. 在 Authenticator 中扫描 QR 代码。
-7. 在“此应用或网站可能会出现风险” 警告消息中选择“高级”。
+7. 在“此应用或网站可能会出现风险”警告消息中选择“高级”。 
 
   ![初始警告](media/enable-your-tenant-verifiable-credentials/site-warning.png)
 
@@ -259,7 +259,7 @@ ms.locfileid: "107739217"
   ![有关颁发者的第二条警告](media/enable-your-tenant-verifiable-credentials/site-warning-proceed.png)
 
 
-9. 在“添加凭据”页面，请注意以下几点： 
+9. 在“添加凭据”屏幕上，请注意以下几点： 
     1. 在页面顶部，可以看到红色的“未验证”消息
     1. 凭据根据我们对显示文件所做的更改自定义的。
     1. “登录你的帐户”选项指向 Azure AD 登录页面。

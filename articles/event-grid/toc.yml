@@ -1,5 +1,7 @@
 - name: Azure 事件网格文档
   href: index.yml
+- name: 切换到“Kubernetes 上的事件网格”文档
+  href: kubernetes/index.yml
 - name: 切换到“IoT Edge 上的事件网格”文档
   href: edge/pub-sub-events-webhook-local.md
 - name: 概述
@@ -268,8 +270,6 @@
           href: move-custom-topics-across-regions.md
         - name: 跨区域移动域
           href: move-domains-across-regions.md
-        - name: 跨区域移动合作伙伴命名空间
-          href: move-partner-namespaces-across-regions.md
     - name: 安全
       items:
         - name: 通过专用链接安全地发布事件

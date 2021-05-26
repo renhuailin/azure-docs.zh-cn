@@ -10,12 +10,12 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 8bec083e62bec6a0311487c1e64e780ad14f451b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4d1bffd39fa474a5c973ca2b6fd45e9f59964e39
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518257"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098283"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>远程模型部署故障排除 
 
@@ -59,7 +59,7 @@ ms.locfileid: "102518257"
 
 若要从已部署的 Web 服务获取日志，请执行以下命令：
 
-```bash
+```azurecli
 az ml service get-logs --verbose --workspace-name <my workspace name> --name <service name>
 ```
 

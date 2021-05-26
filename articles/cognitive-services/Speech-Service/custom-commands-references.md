@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 98510132b2341736664dfafa52e9567df95652be
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c0694e7d136b7fd339362145179939d350eb23ef
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94561091"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475958"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>自定义命令的概念和定义
 
@@ -25,7 +25,7 @@ ms.locfileid: "94561091"
 命令是自定义命令应用程序的构建基块。 命令是完成用户定义的特定任务而需要的一组配置。
 
 ### <a name="example-sentences"></a>示例句子
-示例言语是设置好的示例，用户可以说出这些言语来触发特定的命令。 只需提供一个言语示例，而无需提供详尽的列表。 
+示例言语是设置好的示例，用户可以说出这些言语来触发特定的命令。 只需提供一个言语示例，而无需提供详尽的列表。
 
 ### <a name="parameters"></a>参数
 参数是命令完成任务而需要用到的信息。 在复杂的方案中，还可以使用参数来定义触发自定义操作的条件。
@@ -42,9 +42,6 @@ ms.locfileid: "94561091"
 
 ### <a name="name"></a>名称
 参数是通过名称属性来标识的。 应始终为参数指定一个描述性的名称。 可以跨不同的部分（例如，在构造条件、语音响应或其他操作时）引用一个参数。
- 
-### <a name="isglobal"></a>IsGlobal
-此复选框指示是否在应用程序中的所有命令之间共享此参数的范围。 如果某个参数是全局性的，则也许可以从任何命令范围提供其值。 赋值后，可从任何命令引用该值。 
 
 ### <a name="required"></a>必需
 此复选框指示是否必须为此参数指定某个值才能履行或完成命令。 如果某个参数标记为必需，则必须配置响应来提示用户提供一个值。
@@ -82,7 +79,7 @@ ms.locfileid: "94561091"
 ### <a name="types"></a>类型
 自定义命令支持以下规则类别：
 
-* **完成规则**：履行命令时必须执行这些规则。 将执行此部分中配置的、条件求值为 true 的所有规则。 
+* **完成规则**：履行命令时必须执行这些规则。 将执行此部分中配置的、条件求值为 true 的所有规则。
 * **交互规则**：这些规则可用于配置其他自定义验证、确认和一步式更正，或者用于实现任何其他自定义对话逻辑。 在处理过程的每个轮次都会评估交互规则，可使用这些规则来触发完成规则。
 
 配置为规则一部分的不同操作将按照它们在创作门户中的显示顺序执行。

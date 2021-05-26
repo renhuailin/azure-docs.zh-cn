@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24ec646c2928570c67a7f71481f2ca0191f1c8b9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: ae18548c8344e5fe874d3c4c1d99742d7f8a8b43
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280201"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451711"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>使用 .NET 管理 blob 属性和元数据
 
@@ -35,13 +35,13 @@ ms.locfileid: "106280201"
 
 以下代码示例设置 blob 的 `ContentType` 和 `ContentLanguage` 系统属性。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 若要在 Blob 上设置属性，请调用 [SetHttpHeaders](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.sethttpheaders) 或 [SetHttpHeadersAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.sethttpheadersasync)。 清除未显式设置的任何属性。 下面的代码示例首先获取 Blob 上的现有属性，然后使用它们填充未更新的标头。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_SetBlobProperties":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 public static async Task SetBlobPropertiesAsync(CloudBlob blob)
@@ -72,11 +72,11 @@ public static async Task SetBlobPropertiesAsync(CloudBlob blob)
 
 以下代码示例获取 blob 的系统属性并显示一些值。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobProperties":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 检索 Blob 存储资源的元数据和属性值的过程分为两步。 必须先调用 `FetchAttributes` 或 `FetchAttributesAsync` 方法显式获取这些值，然后才能读取它们。 此规则的例外是，`Exists` 和 `ExistsAsync` 方法在后台调用相应的 `FetchAttributes` 方法。 调用这其中的一个方法时，不需同时调用 `FetchAttributes`。
 
@@ -115,12 +115,12 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 
 可将元数据指定为 Blob 或容器资源上的一个或多个名称/值对。 若要设置元数据，请将名称/值对添加到资源上的 `Metadata` 集合。 然后，调用以下方法之一来写入值：
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 - [SetMetadata](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.setmetadata)
 - [SetMetadataAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.setmetadataasync)
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
@@ -132,11 +132,11 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 
 以下代码示例在 blob 上设置元数据。 一个值是使用集合的 `Add` 方法设置的。 另一个值是使用隐式键/值语法设置的。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_AddBlobMetadata":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 public static async Task AddBlobMetadataAsync(CloudBlob blob)
@@ -166,13 +166,13 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 
 以下代码示例在 Blob 上读取元数据。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 要检索元数据，请对 blob 或容器调用 [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) 或 [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) 方法以填充 [Metadata](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) 集合，然后读取值，如下面的示例所示。 GetProperties 方法将在单个调用中检索 blob 属性和元数据。 这与 REST API 不同，REST API 需要单独调用来[获取 Blob 属性](/rest/api/storageservices/get-blob-properties)和[获取 Blob 元数据](/rest/api/storageservices/get-blob-metadata)。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 若要检索元数据，请对 blob 或容器调用 `FetchAttributes` 或 `FetchAttributesAsync` 方法以填充 `Metadata` 集合，并读取值，如下面的示例所示。
 

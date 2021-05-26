@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 3765229fccb00f6e19fd3cf2b6b1a39919abcf05
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 2270d9569f2638cd08e81e26cff4a4605011ffbb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321800"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070127"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>教程：创建包含自定义操作和资源的托管应用程序
 
@@ -41,7 +41,7 @@ ms.locfileid: "108321800"
 
 在本教程中，你将创建一个托管应用程序，其托管资源组将包含自定义提供程序实例、存储帐户和函数。 本示例中使用的 Azure 函数实现了一个 API，该 API 可以处理用于执行操作和创建资源的自定义提供程序操作。 Azure 存储帐户用作自定义提供程序资源的基本存储。
 
-用于创建托管应用程序实例的用户界面定义包括 `funcname` 和 `storagename` 输入元素。 存储帐户名称和函数名称必须全局唯一。 默认情况下，将从 [示例函数包](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)部署函数文件，但你可以通过以下方式更改此部署方式：为 *createUiDefinition.json* 中的包链接添加一个输入元素：
+用于创建托管应用程序实例的用户界面定义包括 `funcname` 和 `storagename` 输入元素。 存储帐户名称和函数名称必须全局唯一。 默认情况下，将从 [示例函数包](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.customproviders/custom-rp-with-function/artifacts/functionzip)部署函数文件，但你可以通过以下方式更改此部署方式：为 *createUiDefinition.json* 中的包链接添加一个输入元素：
 
 ```json
 {
@@ -67,7 +67,7 @@ ms.locfileid: "108321800"
 {
   "name": "zipFileBlobUri",
   "type": "Microsoft.Common.TextBox",
-  "defaultValue": "https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip/functionpackage.zip",
+  "defaultValue": "https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.customproviders/custom-rp-with-function/artifacts/functionzip/functionpackage.zip",
   "label": "The Uri to the uploaded function zip file",
   "toolTip": "The Uri to the uploaded function zip file",
   "visible": true
@@ -185,7 +185,7 @@ ms.locfileid: "108321800"
 * mainTemplate.json
 * viewDefinition.json
 
-所有文件必须位于根级别。 包含项目的包可以存储在任何存储中，例如 GitHub Blob 或 Azure 存储帐户 Blob。 下面是用于将应用程序包上传到存储帐户的脚本： 
+所有文件必须位于根级别。 包含项目的包可以存储在任何存储中，例如 GitHub Blob 或 Azure 存储帐户 Blob。 下面是用于将应用程序包上传到存储帐户的脚本：
 
 ```powershell
 $resourceGroup="appResourcesGroup"
@@ -210,7 +210,7 @@ Set-AzStorageBlobContent `
   -File "path_to_your_zip_package" `
   -Container appcontainer `
   -Blob app.zip `
-  -Context $ctx 
+  -Context $ctx
 
 # Get blob absolute uri
 $blobUri=(Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $ctx).ICloudBlob.uri.AbsoluteUri
@@ -248,8 +248,8 @@ az managedapp definition create \
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 Azure 门户中，选择“所有服务”。  在资源列表中，键入并选择“托管应用程序中心”。 
-2. 在“托管应用程序中心”上选择“服务目录应用程序定义”，然后单击“添加”。    
-    
+2. 在“托管应用程序中心”上选择“服务目录应用程序定义”，然后单击“添加”。   
+
     ![添加服务目录](./media/tutorial-create-managed-app-with-custom-provider/service-catalog-managed-application.png)
 
 3. 提供用于创建服务目录定义的值：
@@ -304,7 +304,7 @@ az managedapp create \
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 Azure 门户中，选择“所有服务”。  在资源列表中，键入并选择“托管应用程序中心”。 
-2. 在“托管应用程序中心”上选择“服务目录应用程序”，然后单击“添加”。    
+2. 在“托管应用程序中心”上选择“服务目录应用程序”，然后单击“添加”。   
 
     ![添加托管应用程序](./media/tutorial-create-managed-app-with-custom-provider/add-managed-application.png)
 
@@ -319,8 +319,8 @@ az managedapp create \
 
     ![应用程序设置](./media/tutorial-create-managed-app-with-custom-provider/application-settings.png)
 
-5. 通过验证后，单击“确定”以部署托管应用程序的实例。  
-    
+5. 通过验证后，单击“确定”以部署托管应用程序的实例。 
+
     ![部署托管应用程序](./media/tutorial-create-managed-app-with-custom-provider/deploy-managed-application.png)
 
 ---
@@ -349,7 +349,7 @@ az managedapp create \
 
 ## <a name="looking-for-help"></a>寻求帮助
 
-如有 Azure 托管应用程序方面的问题，可以尝试使用标记 azure-managed-app 在 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) 上提问，或使用标记 azure-managed-application 在 [Microsoft Q&A](/answers/topics/azure-managed-applications.html) 上提问。 该论坛上可能已有类似问题的解答，因此，在发贴之前请先查看以往的提问。 请使用相应的标记以获得更快的响应。 
+如有 Azure 托管应用程序方面的问题，可以尝试使用标记 azure-managed-app 在 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) 上提问，或使用标记 azure-managed-application 在 [Microsoft Q&A](/answers/topics/azure-managed-applications.html) 上提问。 该论坛上可能已有类似问题的解答，因此，在发贴之前请先查看以往的提问。 请使用相应的标记以获得更快的响应。
 
 ## <a name="next-steps"></a>后续步骤
 

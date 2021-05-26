@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: a32e5a417dc54ae77785adfa46610d1fbf83f470
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2d474033bbcc3fbc5852cd95da31eaebd33c25ad
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455686"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095277"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -54,7 +54,6 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 * [获取页面范围](/rest/api/storageservices/get-page-ranges)
 * [增量复制 Blob](/rest/api/storageservices/incremental-copy-blob)
 * [从 URL 放置页](/rest/api/storageservices/put-page-from-url)
-* [放置块列表](/rest/api/storageservices/put-block-list)
 
 具有分层命名空间的帐户不支持非托管 VM 磁盘。 若要在存储帐户中启用分层命名空间，请将非托管 VM 磁盘置于未启用分层命名空间功能的存储帐户中。
 
