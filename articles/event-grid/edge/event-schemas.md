@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de328fb70f8abc32a89b8d5b54b0cb40a12f9356
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171561"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370371"
 ---
 # <a name="event-schemas"></a>事件架构
 
@@ -52,7 +53,7 @@ EventGrid 架构包含发布实体必须遵循的一组必需属性。 每个发
 
 所有事件均包含以下顶级数据：
 
-| 属性 | 类型 | 必需 | 说明 |
+| 属性 | 类型 | 必须 | 说明 |
 | -------- | ---- | ----------- |-----------
 | 主题 | string | 否 | 应与其发布的主题匹配。 如果未指定，事件网格将用其发布的主题名称对其填充。 |
 | subject | 字符串 | 是 | 事件主题的发布者定义路径。 |

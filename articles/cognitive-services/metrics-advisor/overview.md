@@ -1,6 +1,6 @@
 ---
-title: 什么是指标顾问服务？
-titleSuffix: Azure Cognitive Services
+title: 什么是 Azure 指标顾问服务？
+titleSuffix: Azure Applied AI Services
 description: 什么是指标顾问？
 services: cognitive-services
 author: mrbullwinkle
@@ -10,16 +10,16 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: dfdd7286013bbb6462fb8e5b1bdf52e6ed738029
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 34ab524cfc00cf4f74d632883ffeb18b904342a6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384674"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376840"
 ---
-# <a name="what-is-metrics-advisor-preview"></a>什么是指标顾问（预览版）？ 
+# <a name="what-is-azure-metrics-advisor-preview"></a>什么是 Azure 指标顾问（预览版）？ 
 
-指标顾问是 Azure 认知服务的一部分，可使用 AI 对时序数据执行数据监视和异常情况检测。 该服务自动执行将模型应用于数据的过程，并提供了一组 API 和基于 Web 的工作区，用于数据引入、异常检测和诊断，无需了解机器学习即可使用。 开发人员可以在服务之上构建 AIOps、预测维护和业务监视应用程序。 使用指标顾问执行以下操作：
+指标顾问是 [Azure 应用 AI 服务](../../applied-ai-services/what-are-applied-ai-services.md)的一部分，可使用 AI 对时序数据执行数据监视和异常情况检测。 该服务自动执行将模型应用于数据的过程，并提供了一组 API 和基于 Web 的工作区，用于数据引入、异常检测和诊断，无需了解机器学习即可使用。 开发人员可以在服务之上构建 AIOps、预测维护和业务监视应用程序。 使用指标顾问执行以下操作：
 
 * 分析来自多个数据源的多维数据
 * 识别并关联异常

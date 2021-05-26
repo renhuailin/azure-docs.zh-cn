@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 947a958b7cce6909332ebdb1832be168bfdd0bde
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 3a37476af2c8082785308f4bc18a02fae3f31295
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801802"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376892"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python 示例
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "104801802"
     * 具有 Azure 有效订阅：
         * [创建 Azure 免费帐户](https://azure.microsoft.com/free)或使用现有订阅 
         * [Visual Studio 每月额度](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
-        * [Azure Cosmos DB 免费层](./optimize-dev-test.md#azure-cosmos-db-free-tier)
+        * [Azure Cosmos DB 免费层](free-tier.md)
     * 不具有 Azure 有效订阅：
         * [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，为期 30 天的测试环境。
         * [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator) 

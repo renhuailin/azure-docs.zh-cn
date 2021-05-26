@@ -3,30 +3,22 @@ title: 在 Durable Functions 中管理实例 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中管理实例。
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 7329962d547fcb0635e3a9af3d80e562da59f7f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4145ae79f1d25b80852c5c54fcc02044391f602f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199774"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376858"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的实例
 
-如果你正在使用或想要开始使用 Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展，请务必最充分地使用它。 可以通过详细了解 Durable Functions 业务流程实例的管理方式来优化这些实例。 本文详细介绍每项实例管理操作。
-
-例如，可以启动和终止实例，并可以查询实例，包括查询所有实例，或者使用筛选器查询实例。 此外，可将事件发送到实例、等待业务流程完成，以及检索 HTTP 管理 Webhook URL。 本文还会介绍其他管理操作，包括回退实例、清除实例历史记录和删除任务中心。
-
-在 Durable Functions 中，可以使用相应的选项来执行其中的每项管理操作。 本文中的示例使用适用于 .NET (C#)、JavaScript 和 Python 的 [Azure Functions Core Tools](../functions-run-local.md)。
+Durable Functions 中的业务流程是长时间运行的有状态函数，可使用内置管理 API 来启动、查询和终止。 Durable Functions [业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)还公开了其他几种实例管理 API，例如向实例发送外部事件、清除实例历史记录等。本文详细介绍了所有受支持的实例管理操作。
 
 ## <a name="start-instances"></a>启动实例
 
-必须能够启动业务流程的实例。 在另一个函数触发器中使用 Durable Functions 绑定时，通常会启动实例。
-
-[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)上的 `StartNewAsync` (.NET)、`startNew` (JavaScript) 或 `start_new` (Python) 方法会启动新实例。 在内部，此方法将消息排入控制队列，然后触发具有指定名称且使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的函数的启动。
-
-当业务流程成功计划时，此异步操作完成。
+[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)上的 `StartNewAsync` (.NET)、`startNew` (JavaScript) 或 `start_new` (Python) 方法可启动新业务流程实例。 在内部，此方法通过 [Durable Functions 存储提供程序](durable-functions-storage-providers.md)写入消息，然后将其返回。 此消息以异步方式触发具有指定名称的[业务流程函数](durable-functions-types-features-overview.md#orchestrator-functions)的启动过程。
 
 用于启动新业务流程实例的参数如下所示：
 
@@ -35,7 +27,7 @@ ms.locfileid: "103199774"
 * **InstanceId**：（可选）实例的唯一 ID。 如果未指定此参数，该方法将使用随机 ID。
 
 > [!TIP]
-> 为实例 ID 使用随机标识符。 随机实例 ID 有助于确保在多个 VM 上缩放业务流程协调程序函数时均衡分配负载。 使用非随机实例 ID 的适当时机是 ID 必须来自外部源，或实现[单一实例业务流程协调程序](durable-functions-singletons.md)模式时。
+> 尽可能为实例 ID 使用随机标识符。 随机实例 ID 有助于确保在多个 VM 上缩放业务流程协调程序函数时均衡分配负载。 使用非随机实例 ID 的适当时机是 ID 必须来自外部源，或实现[单一实例业务流程协调程序](durable-functions-singletons.md)模式时。
 
 以下代码是一个示例函数，用于启动新的业务流程实例：
 
@@ -167,6 +159,9 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 > [!NOTE]
 > Core Tools 命令假设要从函数应用的根目录运行这些命令。 如果显式提供了 `connection-string-setting` 和 `task-hub-name` 参数，则可以从任何目录运行这些命令。 尽管无需运行函数应用主机即可运行这些命令，但除非运行主机，否则可能观察不到某些效果。 例如，`start-new` 命令会在目标任务中心内将某个启动消息排队，但除非某个正在运行的函数应用程序主机进程可以处理该消息，否则业务流程实际上不会运行。
 
+> [!NOTE]
+> 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
+
 以下命令启动名为 HelloWorld 的函数，并将文件 `counter-data.json` 的内容传递到该函数：
 
 ```bash
@@ -175,7 +170,7 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 ## <a name="query-instances"></a>查询实例
 
-在管理业务流程的过程中，你很可能需要收集有关业务流程实例状态的信息（例如，该实例是正常完成还是失败）。
+启动新的业务流程实例后，你很可能需要查询其运行时状态，以了解它们是否正在运行、已完成或已失败。
 
 [业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)上的 `GetStatusAsync` (.NET)、`getStatus` (JavaScript) 或 `get_status` (Python) 方法会查询业务流程实例的状态。
 
@@ -258,7 +253,12 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable get-runtime-status` 命令获取业务流程实例的状态。 它采用了以下参数：
+也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable get-runtime-status` 命令获取业务流程实例的状态。
+
+> [!NOTE]
+> 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
+
+此 `durable get-runtime-status` 命令采用以下参数：
 
 * **`id`（必需）** ：业务流程实例的 ID。
 * **`show-input`（可选）** ：如果设置为 `true`，则响应包含函数的输入。 默认值为 `false`。
@@ -284,16 +284,14 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 ## <a name="query-all-instances"></a>查询所有实例
 
-你可能会发现，一次性查询业务流程中的所有实例比逐个查询更加有效。
-
-可以使用 [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET)、[getStatusAll](/javascript/api/durable-functions/durableorchestrationclient#getstatusall--) (JavaScript) 或 `get_status_all` (Python) 方法来查询所有业务流程实例的状态。 在 .NET 中，如果要取消该查询，可以传递 `CancellationToken` 对象。 方法会返回对象列表，这些对象表示与查询参数匹配的业务流程实例。
+可以使用 [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync) (.NET)、[getStatusAll](/javascript/api/durable-functions/durableorchestrationclient#getstatusall--) (JavaScript) 或 `get_status_all` (Python) 方法来查询[任务中心](durable-functions-task-hubs.md)中所有业务流程实例的状态。 此方法会返回对象列表，这些对象表示与查询参数匹配的业务流程实例。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("GetAllStatus")]
 public static async Task Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestMessage req,
     [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
@@ -354,7 +352,12 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable get-instances` 命令查询实例。 它采用了以下参数：
+也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable get-instances` 命令查询实例。
+
+> [!NOTE]
+> 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
+
+此 `durable get-instances` 命令采用以下参数：
 
 * **`top`（可选）** ：此命令支持分页。 此参数对应于每个请求检索的实例数。 默认值为 10。
 * **`continuation-token`（可选）** ：用于指示要检索的实例页或节的标记。 每次执行 `get-instances` 都会向下一个实例集返回一个标记。
@@ -376,7 +379,7 @@ func durable get-instances
 ```csharp
 [FunctionName("QueryStatus")]
 public static async Task Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestMessage req,
     [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
@@ -419,8 +422,8 @@ module.exports = async function(context, req) {
         df.OrchestrationRuntimeStatus.Running,
     ];
     const instances = await client.getStatusBy(
-        new Date(2018, 3, 10, 10, 1, 0),
-        new Date(2018, 3, 10, 10, 23, 59),
+        new Date(2021, 3, 10, 10, 1, 0),
+        new Date(2021, 3, 10, 10, 23, 59),
         runtimeStatus
     );
     instances.forEach((instance) => {
@@ -447,8 +450,8 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
     runtime_status = [OrchestrationRuntimeStatus.Completed, OrchestrationRuntimeStatus.Running]
 
     instances = await client.get_status_by(
-        datetime(2018, 3, 10, 10, 1, 0),
-        datetime(2018, 3, 10, 10, 23, 59),
+        datetime(2021, 3, 10, 10, 1, 0),
+        datetime(2021, 3, 10, 10, 23, 59),
         runtime_status
     )
 
@@ -462,6 +465,11 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 在 Azure Functions Core Tools 中，还可以结合筛选器使用 `durable get-instances` 命令。 除了前面提到的 `top`、`continuation-token`、`connection-string-setting` 和 `task-hub-name` 参数以外，还可以使用三个筛选器参数（`created-after`、`created-before` 和 `runtime-status`）。
 
+> [!NOTE]
+> 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
+
+以下是 `durable get-instances` 命令的参数。
+
 * **`created-after`（可选）** ：检索在此日期/时间 (UTC) 之后创建的实例。 接受 ISO 8601 格式的日期时间。
 * **`created-before`（可选）** ：检索在此日期/时间 (UTC) 之前创建的实例。 接受 ISO 8601 格式的日期时间。
 * **`runtime-status`（可选）** ：检索具有特定状态（例如 running 或 completed）的实例。 可以提供多个状态（用空格分隔）。
@@ -473,12 +481,12 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 如果未提供任何筛选器（`created-after`、`created-before` 或 `runtime-status`），则无论运行时状态或创建时间是什么，该命令都会检索 `top` 实例。
 
 ```bash
-func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before  2018-03-10T23:59Z --top 15
+func durable get-instances --created-after 2021-03-10T13:57:31Z --created-before  2021-03-10T23:59Z --top 15
 ```
 
 ## <a name="terminate-instances"></a>终止实例
 
-如果需要花费太长的时间来运行某个业务流程实例，或者出于某种原因需要提前将其停止，可以选择将其终止。
+如果需要花费太长的时间来运行某个业务流程实例，或者出于某种原因需要提前将其停止，则可以将其终止。
 
 可以使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `TerminateAsync` (.NET)、`terminate` (JavaScript) 或 `terminate` (Python) 方法来终止实例。 两个参数为 `instanceId` 和 `reason` 字符串，将写入日志和实例状态。
 
@@ -490,7 +498,7 @@ public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
     [QueueTrigger("terminate-queue")] string instanceId)
 {
-    string reason = "It was time to be done.";
+    string reason = "Found a bug";
     return client.TerminateAsync(instanceId, reason);
 }
 ```
@@ -506,7 +514,7 @@ const df = require("durable-functions");
 module.exports = async function(context, instanceId) {
     const client = df.getClient(context);
 
-    const reason = "It was time to be done.";
+    const reason = "Found a bug";
     return client.terminate(instanceId, reason);
 };
 ```
@@ -522,7 +530,7 @@ import azure.durable_functions as df
 async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
     client = df.DurableOrchestrationClient(starter)
 
-    reason = "It was time to be done."
+    reason = "Found a bug"
     return client.terminate(instance_id, reason)
 ```
 
@@ -535,7 +543,12 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable terminate` 命令终止业务流程实例。 它采用了以下参数：
+也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable terminate` 命令终止业务流程实例。
+
+> [!NOTE]
+> 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
+
+此 `durable terminate` 命令采用以下参数：
 
 * **`id`（必需）** ：要终止的业务流程实例的 ID。
 * **`reason`（可选）** ：终止的原因。
@@ -545,14 +558,14 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 以下命令终止 ID 为 0ab8c55a66644d68a3a8b220b12d209c 的业务流程实例：
 
 ```bash
-func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was time to be done."
+func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Found a bug"
 ```
 
 ## <a name="send-events-to-instances"></a>将事件发送到实例
 
-在某些情况下，业务流程协调程序函数必须能够等待和侦听外部事件。 这包括[监视函数](durable-functions-overview.md#monitoring)，以及等待[人机交互](durable-functions-overview.md#human)的函数。
+在某些方案中，业务流程协调程序函数需要等待和侦听外部事件。 有用的示例方案包括[监视](durable-functions-overview.md#monitoring)和[人机交互](durable-functions-overview.md#human)方案。
 
-请使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `RaiseEventAsync` (.NET) 方法或 `raiseEvent` (JavaScript) 方法将事件通知发送到正在运行的实例。 可以处理这些事件的实例是正在等待调用 `WaitForExternalEvent` (.NET) 或服从 `waitForExternalEvent` (JavaScript) 调用的实例。
+可以使用[业务流程客户端](durable-functions-bindings.md#orchestration-client)的 `RaiseEventAsync` (.NET)、`raiseEvent` (JavaScript) 或 `raise_event` (Python) 方法将事件通知发送到正在运行的实例。 可以处理这些事件的实例是正在等待调用 `WaitForExternalEvent` (.NET)、生成 `waitForExternalEvent` (JavaScript) 任务或生成 `wait_for_external_event` (Python) 任务的实例。
 
 `RaiseEventAsync` (.NET) 和 `raiseEvent` (JavaScript) 的参数如下所示：
 
@@ -611,7 +624,12 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable raise-event` 命令向业务流程实例引发事件。 它采用了以下参数：
+也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable raise-event` 命令向业务流程实例引发事件。
+
+> [!NOTE]
+> 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
+
+此 `durable raise-event` 命令采用以下参数：
 
 * **`id`（必需）** ：业务流程实例的 ID。
 * **`event-name`** ：要引发的事件的名称。
@@ -631,7 +649,7 @@ func durable raise-event --id 1234567 --event-name MyOtherEvent --event-data 3
 
 在长时间运行的业务流程中，你可能想要等待并获取业务流程的结果。 对于这种情况，在业务流程中定义超时期限也可能会很有帮助。 如果超过了超时期限，则应返回业务流程的状态而不是结果。
 
-可以使用 `WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET) 或 `waitForCompletionOrCreateCheckStatusResponse` (JavaScript) 方法同步获取业务流程实例的实际输出。 默认情况下，这些方法会使用默认值 10 秒作为 `timeout`，使用 1 秒作为 `retryInterval`。  
+`WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET)、`waitForCompletionOrCreateCheckStatusResponse` (JavaScript) 或 `wait_for_completion_or_create_check_status_response` (Python) 方法可用于同步获取业务流程实例的实际输出。 默认情况下，这些方法会使用默认值 10 秒作为 `timeout`，使用 1 秒作为 `retryInterval`。  
 
 下面的 HTTP 触发型函数示例演示了如何使用此 API：
 
@@ -683,46 +701,46 @@ def get_time_in_seconds(req: func.HttpRequest, query_parameter_name: str):
 使用以下行调用该函数。 使用 2 秒作为超时，使用 0.5 秒作为重试间隔：
 
 ```bash
-    http POST http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5
+curl -X POST "http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5"
 ```
 
 根据从业务流程实例获取响应所需的时间，存在两种情况：
 
 * 业务流程实例在定义的超时（在本例中为 2 秒）内完成，响应是同步传送的实际业务流程实例输出：
 
-    ```http
-        HTTP/1.1 200 OK
-        Content-Type: application/json; charset=utf-8
-        Date: Thu, 14 Dec 2018 06:14:29 GMT
-        Transfer-Encoding: chunked
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Thu, 14 Dec 2021 06:14:29 GMT
+Transfer-Encoding: chunked
 
-        [
-            "Hello Tokyo!",
-            "Hello Seattle!",
-            "Hello London!"
-        ]
-    ```
+[
+    "Hello Tokyo!",
+    "Hello Seattle!",
+    "Hello London!"
+]
+```
 
 * 业务流程实例无法在定义的超时内完成，响应是 [HTTP API URL 发现](durable-functions-http-api.md)中所述的默认值：
 
-    ```http
-        HTTP/1.1 202 Accepted
-        Content-Type: application/json; charset=utf-8
-        Date: Thu, 14 Dec 2018 06:13:51 GMT
-        Location: http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}
-        Retry-After: 10
-        Transfer-Encoding: chunked
+```http
+HTTP/1.1 202 Accepted
+Content-Type: application/json; charset=utf-8
+Date: Thu, 14 Dec 2021 06:13:51 GMT
+Location: http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}
+Retry-After: 10
+Transfer-Encoding: chunked
 
-        {
-            "id": "d3b72dddefce4e758d92f4d411567177",
-            "sendEventPostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
-            "statusQueryGetUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
-            "terminatePostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
-        }
-    ```
+{
+    "id": "d3b72dddefce4e758d92f4d411567177",
+    "sendEventPostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
+    "statusQueryGetUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
+    "terminatePostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
+}
+```
 
 > [!NOTE]
-> Webhook URL 的格式可能会有所不同，具体取决于所运行 Azure Functions 主机的版本。 前面的示例适用于 Azure Functions 2.0 主机。
+> Webhook URL 的格式可能会有所不同，具体取决于所运行 Azure Functions 主机的版本。 前面的示例适用于 Azure Functions 3.0 主机。
 
 ## <a name="retrieve-http-management-webhook-urls"></a>检索 HTTP 管理 Webhook URL
 
@@ -867,7 +885,12 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable rewind` 命令回退业务流程实例。 它采用了以下参数：
+也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable rewind` 命令回退业务流程实例。
+
+> [!NOTE]
+> 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
+
+此 `durable rewind` 命令采用以下参数：
 
 * **`id`（必需）** ：业务流程实例的 ID。
 * **`reason`（可选）** ：回退业务流程实例的原因。
@@ -880,7 +903,7 @@ func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator
 
 ## <a name="purge-instance-history"></a>清除实例历史记录
 
-若要删除与业务流程关联的所有数据，可以清除实例历史记录。 例如，你可能想要删除与完成的实例相关联的任何 Azure 表行和大消息 Blob。 为此，请使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `PurgeInstanceHistoryAsync` (.NET) 或 `purgeInstanceHistory` (JavaScript) 方法。
+若要删除与业务流程关联的所有数据，可以清除实例历史记录。 例如，你可能想要删除与完成的实例相关联的任何 Azure 表行和大消息 Blob。 为此，请使用[业务流程客户端](durable-functions-bindings.md#orchestration-client)对象的 `PurgeInstanceHistoryAsync` (.NET)、`purgeInstanceHistory` (JavaScript) 或 `purge_instance_history` (Python) 方法。
 
 此方法有两个重载。 第一个重载按业务流程实例的 ID 清除历史记录：
 
@@ -923,7 +946,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ---
 
-接下来的示例演示一个计时器触发的函数，该函数清除在指定的时间间隔后完成的所有业务流程实例的历史记录。 在本例中，该函数将删除 30 天或更长时间以前完成的所有实例的数据。 该函数计划为在每天的凌晨 12 点运行一次：
+接下来的示例演示一个计时器触发的函数，该函数清除在指定的时间间隔后完成的所有业务流程实例的历史记录。 在本例中，该函数将删除 30 天或更长时间以前完成的所有实例的数据。 此示例函数计划在每天下午 12:00 UTC 运行一次：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -931,7 +954,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [TimerTrigger("0 0 12 * * *")]TimerInfo myTimer)
+    [TimerTrigger("0 0 12 * * *")] TimerInfo myTimer)
 {
     return client.PurgeInstanceHistoryAsync(
         DateTime.MinValue,
@@ -987,6 +1010,7 @@ module.exports = async function (context, myTimer) {
     return client.purgeInstanceHistoryBy(createdTimeFrom, createdTimeTo, runtimeStatuses);
 };
 ```
+
 # <a name="python"></a>[Python](#tab/python)
 
 ```python
@@ -1010,7 +1034,12 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-可以使用 [Azure Functions Core Tools](../functions-run-local.md) `durable purge-history` 命令清除业务流程实例的历史记录。 类似于前一部分中的第二个 C# 示例，该命令将清除在指定时间间隔内创建的所有业务流程实例的历史记录。 可按运行时状态进一步筛选已清除的实例。 该命令有多个参数：
+可以使用 [Azure Functions Core Tools](../functions-run-local.md) `durable purge-history` 命令清除业务流程实例的历史记录。 类似于前一部分中的第二个 C# 示例，该命令将清除在指定时间间隔内创建的所有业务流程实例的历史记录。 可按运行时状态进一步筛选已清除的实例。
+
+> [!NOTE]
+> 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
+
+此 `durable purge-history` 命令有多个参数：
 
 * **`created-after`（可选）** ：清除此日期/时间 (UTC) 之后创建的实例的历史记录。 接受 ISO 8601 格式的日期时间。
 * **`created-before`（可选）** ：清除此日期/时间 (UTC) 之前创建的实例的历史记录。 接受 ISO 8601 格式的日期时间。
@@ -1018,15 +1047,20 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 * **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
 * **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认使用 [host.json](durable-functions-bindings.md#host-json) 文件中的任务中心名称。
 
-以下命令删除在 2018 年 11 月 14 日下午 7:35 (UTC) 之前创建的所有失败实例的历史记录。
+以下命令将删除在 2021 年 11 月 14 日下午 7:35 (UTC) 之前创建的所有失败实例的历史记录。
 
 ```bash
-func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runtime-status failed
+func durable purge-history --created-before 2021-11-14T19:35:00.0000000Z --runtime-status failed
 ```
 
 ## <a name="delete-a-task-hub"></a>删除任务中心
 
-使用 [Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` 命令可以删除与特定任务中心关联的所有存储项目，包括 Azure 存储表、队列和 Blob。 该命令有两个参数：
+使用 [Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` 命令可以删除与特定任务中心关联的所有存储项目，包括 Azure 存储表、队列和 Blob。 
+
+> [!NOTE]
+> 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
+
+此 `durable delete-task-hub` 命令有两个参数：
 
 * **`connection-string-setting`（可选）** ：包含要使用的存储连接字符串的应用程序设置的名称。 默认为 `AzureWebJobsStorage`。
 * **`task-hub-name`（可选）** ：要使用的 Durable Functions 任务中心的名称。 默认使用 [host.json](durable-functions-bindings.md#host-json) 文件中的任务中心名称。

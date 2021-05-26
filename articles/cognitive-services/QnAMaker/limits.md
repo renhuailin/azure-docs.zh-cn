@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: ad498575b029f918538909a9b5b2d52c71c1389c
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: c654153340586004415b9d2fd8744fb539726960
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816361"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369400"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -52,7 +52,7 @@ ms.locfileid: "107816361"
 可提取文件的最大数量和最大文件大小取决于 [QnAMaker 定价层限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)。
 
 > [!NOTE]
-> QnA Maker 托管（预览版）是一项免费服务，对可以添加的源数量没有限制。 对于管理 API 和预测 API，目前的吞吐量上限为每秒 10 个事务。
+> 自定义问答（预览版）是一项免费服务，对可以添加的源数量没有限制。 对于管理 API 和预测 API，目前的吞吐量上限为每秒 10 个事务。
 
 ### <a name="maximum-number-of-deep-links-from-url"></a>URL 中的最大深层链接数
 
@@ -74,7 +74,7 @@ ms.locfileid: "107816361"
 
 下表列出了元数据名称和值的长度和可接受的字符。
 
-|项|允许的字符|Regex 模式匹配|最大字符|
+|项目|允许的字符|Regex 模式匹配|最大字符|
 |--|--|--|--|
 |名称（键）|允许<br>字母数字（字母和数字）<br>`_`（下划线）<br> 不能含有空格。|`^[a-zA-Z0-9_]+$`|100|
 |值|允许除以下字符外的所有字符<br>`:`（冒号）<br>`|`（竖线）<br>只允许一个值。|`^[^:|]+$`|500|
@@ -128,6 +128,9 @@ ms.locfileid: "107816361"
 * 文档数：5
 * 单个文档的最大大小：5,120 个字符
 * 每个文档最多 3 个响应。
+
+> [!IMPORTANT]
+> 对非结构化文件/内容和预生成 API 的支持仅在自定义问答（预览版）中提供
 
 ## <a name="next-steps"></a>后续步骤
 
