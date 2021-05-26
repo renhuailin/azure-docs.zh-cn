@@ -6,15 +6,15 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
-ms.openlocfilehash: 8e510cf2e6fed9f9ffdec1dcc4dacf16a866d66b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c0e8ae9e642caad0486b862b48d94ba392256a45
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049009"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839484"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
-对于来自 Azure 虚拟机来宾 OS 的性能数据，不会像收集其他[平台指标](./monitor-azure-resource.md#monitoring-data)一样自动收集其性能数据。 安装 Azure Monitor [诊断扩展](../agents/diagnostics-extension-overview.md)以将来宾 OS 指标收集到指标数据库中，以便该数据库可用于 Azure Monitor 指标的所有功能，包括准实时警报、制图、路由和来自 REST API 的访问。 本文介绍使用资源管理器模板将 Windows 虚拟机的来宾 OS 性能指标发送到指标数据库的过程。 
+对于来自 Azure 虚拟机来宾 OS 的性能数据，不会像收集其他[平台指标](./monitor-azure-resource.md#monitoring-data)一样自动收集其性能数据。 安装 Azure Monitor [诊断扩展](../agents/diagnostics-extension-overview.md)以将来宾 OS 指标收集到指标数据库中，以便该数据库可用于 Azure Monitor 指标的所有功能，包括准实时警报、制图、路由和来自 REST API 的访问。 本文介绍使用资源管理器模板将 Windows 虚拟机的来宾 OS 性能指标发送到指标数据库的过程。
 
 > [!NOTE]
 > 有关配置诊断扩展以使用 Azure 门户收集来宾 OS 指标的详细信息，请参阅[安装和配置 Windows Azure 诊断扩展 (WAD)](../agents/diagnostics-extension-windows-install.md)。
@@ -28,14 +28,14 @@ ms.locfileid: "102049009"
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
-- VM 资源必须位于[支持自定义指标的区域](./metrics-custom-overview.md#supported-regions)中。 
+- VM 资源必须位于[支持自定义指标的区域](./metrics-custom-overview.md#supported-regions)中。
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器
 Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志路由到不同位置。 以下步骤说明如何通过资源管理器模板和 PowerShell 来使用新的“Azure Monitor”数据接收器部署 VM。
 
 ## <a name="author-resource-manager-template"></a>创建资源管理器模板
-对于本示例，可以使用公开发布的示例模板。 起始模板位于 https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows
+对于本示例，可以使用公开发布的示例模板。 起始模板位于 https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows
 
 - **Azuredeploy.json** 是用于部署虚拟机的预配置资源管理器模板。
 

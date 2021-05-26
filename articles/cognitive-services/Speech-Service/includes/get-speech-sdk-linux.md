@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: cdcb61249f6cb8f7b60c891dd4899d2e5cedbae6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fe353c4a006dba23eda104ba083e0cc20cd2559
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104612816"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059156"
 ---
 :::row:::
     :::column span="3":::
@@ -46,7 +46,7 @@ ms.locfileid: "104612816"
 
 ```Bash
 sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2
+sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
 
 > [!NOTE]
@@ -56,7 +56,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2
 
 ```Bash
 sudo apt-get update
-sudo apt-get install build-essential libssl1.0.2 libasound2
+sudo apt-get install build-essential libssl1.0.2 libasound2 wget
 ```
 
 > [!NOTE]
@@ -66,7 +66,8 @@ sudo apt-get install build-essential libssl1.0.2 libasound2
 
 ```Bash
 sudo yum update
-sudo yum install alsa-lib openssl
+sudo yum groupinstall "Development tools"
+sudo yum install alsa-lib openssl wget
 ```
 
 > [!IMPORTANT]

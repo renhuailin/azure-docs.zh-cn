@@ -1,6 +1,6 @@
 ---
 title: 如何为自定义模型生成训练数据集 - 表单识别器
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 了解如何确保训练数据集是为训练表单识别器模型而优化的。
 author: laujan
 manager: nitinme
@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: lajanuar
-ms.openlocfilehash: b33ac3cb710a2d2a9d92efadf14dc829cb5da6e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4ef7375b647116e8cbc08124d1e13c3c14cfd85
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467487"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374983"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>为自定义模型生成一个训练数据集
 
-使用表单识别器自定义模型时，可以向[训练自定义模型](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync)操作提供你自己的训练数据，使该模型能够根据你特定于行业的表单进行训练。 遵循本指南了解如何收集和准备数据以有效地训练模型。
+使用表单识别器自定义模型时，可以向[训练自定义模型](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/TrainCustomModelAsync)操作提供你自己的训练数据，使该模型能够根据你特定于行业的表单进行训练。 遵循本指南了解如何收集和准备数据以有效地训练模型。
 
 至少需要五个相同类型的已填充表单。
 
@@ -43,11 +43,11 @@ ms.locfileid: "103467487"
 
 将用于训练的表单文档组合在一起时，需要将其上传到 Azure blob 存储容器。 如果不知道如何使用容器创建 Azure 存储帐户，请按照 [Azure 门户的 Azure 存储快速入门](../../storage/blobs/storage-quickstart-blobs-portal.md)中的说明操作。 使用标准性能层。
 
-如果要使用手动标记的数据，则还必须上传与训练文档对应的 .labels.js 和 .ocr.js 文件。 可以使用[示例标记工具](./quickstarts/label-tool.md)（或你自己的 UI）生成这些文件。
+如果要使用手动标记的数据，则还必须上传与训练文档对应的 .labels.js 和 .ocr.js 文件。 可以使用[示例标记工具](label-tool.md)（或你自己的 UI）生成这些文件。
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>组织子文件夹中的数据（可选）
 
-默认情况下，[训练自定义模型](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync) API 将仅使用位于存储容器根目录下的表单文档。 但是，如果在 API 调用中指定子文件夹中的数据，则可以使用这些数据进行训练。 通常，[训练自定义模型](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync)调用的正文采用以下格式，其中 `<SAS URL>` 是容器的共享访问签名 URL：
+默认情况下，[训练自定义模型](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/TrainCustomModelAsync) API 将仅使用位于存储容器根目录下的表单文档。 但是，如果在 API 调用中指定子文件夹中的数据，则可以使用这些数据进行训练。 通常，[训练自定义模型](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/TrainCustomModelAsync)调用的正文采用以下格式，其中 `<SAS URL>` 是容器的共享访问签名 URL：
 
 ```json
 {
@@ -73,7 +73,7 @@ ms.locfileid: "103467487"
 现在，你已经了解了如何生成训练数据集，接下来请按照快速入门教程来训练自定义表单识别器模型，并在你的表单上开始使用它。
 
 * [使用客户端库或 REST API 训练模型并提取表单数据](./quickstarts/client-library.md)
-* [使用示例标签工具通过标签进行训练](./quickstarts/label-tool.md)
+* [使用示例标签工具通过标签进行训练](label-tool.md)
 
 ## <a name="see-also"></a>请参阅
 

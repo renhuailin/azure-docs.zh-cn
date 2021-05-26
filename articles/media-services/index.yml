@@ -21,12 +21,6 @@ highlightedContent:
     - title: Azure 媒体服务 v3 概念
       itemType: concept
       url: ./latest/concepts-overview.md
-    - title: 关于 Azure 媒体服务视频索引器
-      itemType: overview
-      url: ./video-indexer/video-indexer-overview.md
-    - title: 比较媒体服务 v3 预设和视频索引器
-      itemType: concept
-      url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
     - title: IoT Edge 上的实时视频分析（预览版）
       itemType: overview
       url: ./live-video-analytics-edge/overview.md

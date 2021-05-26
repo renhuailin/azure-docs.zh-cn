@@ -1,18 +1,18 @@
 ---
 title: Azure Database for PostgreSQL 的内置策略定义
 description: 列出 Azure Database for PostgreSQL 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.topic: reference
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 178ff6f2d7cd4046bb2a6cf5331f2d64fb41f287
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5151507792696e987906b130560a44a4c3e77cbf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756282"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076235"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 的 Azure Policy 内置定义
 

@@ -10,12 +10,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b8d900b004dbadd7a8909de14caec16f8617aeb8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 28df246f608369b3bafa9492ddaa4f0a6e5b042d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566607"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061779"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics 数据管理合作伙伴
 
@@ -27,7 +27,7 @@ ms.locfileid: "107566607"
 | ![Aginity](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**Aginity**<br>Aginity 是一种分析开发工具。 它将 Microsoft 的 Synapse 平台的所有功能均交由分析师和工程师控制。 丰富而直观的 SQL 开发环境允许团队成员通过许多业界领先的分析平台进行联系。 它允许用户采用各种格式引入数据，并快速地生成复杂的业务计算，以便将结果提供给商业智能和机器学习用例。 整个应用程序是围绕中央目录生成的，这样可以实现跨分析团队协作，并且复杂的管理功能和精细的安全性让管理变得轻而易举。 |[产品页面](https://www.aginity.com/databases/microsoft/)<br> |
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Alation 的数据目录极大地提高了工作效率和准确性，并为分析师推动了数据驱动决策。 Alation 的数据目录可让组织中的每个人都能查找、了解和管理数据。 |[产品页面](https://www.alation.com/product/data-catalog/)<br> |
 | ![BI Builders (Xpert BI)](./media/sql-data-warehouse-partner-data-integration/bibuilders-logo.png) |**BI Builders (Xpert BI)**<br> Xpert BI 为业务线用户提供直观且可搜索的目录，用于查找、信任和了解数据和报表。 此解决方案涵盖了整个数据平台，包括 Azure Synapse Analytics、ADLS Gen 2、Azure SQL 数据库、Analysis Services 和 Power BI，以及数据流和数据移动端到端。 数据专员可以更新说明和标记数据以遵循法规要求。 可以通过 API 将 Xpert BI 集成到其他目录，例如 Azure Purview。 它以业务用户的角度补充传统的数据目录。 |[产品页面](https://www.bi-builders.com/adding-automation-and-governance-to-azure-analytics/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/bi-builders-as.xpert-bi-vm)<br>|
-| ![Coffing Data Warehousing](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing Data Warehousing**<br>Coffing Data Warehousing 提供 Nexus Chameleon（专门用于查询系统的工具），已有 10 多年的历史。 Nexus 可用作 Azure Synapse Analytics 中专用 SQL 池的查询工具。 使用 Nexus 可以查询本地和云计算机，并联接不同平台的数据。 点击式报告！ |[产品页面](https://www.coffingdw.com/software/nexus/)<br> |
+| ![Coffing Data Warehousing](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing Data Warehousing**<br>Coffing Data Warehousing 提供 Nexus Chameleon（专门用于查询系统的工具），已有 10 多年的历史。 Nexus 可用作 Azure Synapse Analytics 中专用 SQL 池的查询工具。 使用 Nexus 可以查询本地和云计算机，并联接不同平台的数据。 点击式报告！ |[产品页面](https://coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |Inbrein MicroERD<br>Inbrein MicroERD 提供创建准确的数据模型、减少数据冗余、提升产能及遵守标准所必需的工具。 根据广泛的用户体验所开发的 UI，可让模型塑造者轻松又方便地处理 DB 模型。 通过及时的功能改进和更新，可以持续享有 MicroERD 最新改善的功能。 |[产品页面](http://microerd.com/)<br> |
 | ![Infolibrarian](./media/sql-data-warehouse-partner-data-management/infolibrarian-logo.png) |Infolibrarian（元数据管理服务器）<br>InfoLibrarian 能够归类、存储和管理元数据，有助于解决数据管理的主要难题。 Infolibrarian 提供元数据管理、数据控制和资产管理解决方案，让用户管理和发布各种不同工具和技术的元数据。 |[产品页面](http://www.infolibcorp.com/metadata-management/software-tools)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/infolibrarian.infolibrarian-metadata-management-server)<br> |
 | ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |Kyligence<br>Kyligence 由 Apache Kylin 的创始人建立，其使命是通过将数据管理、发现、交互和见解生成进行自动化（让一切均无障碍），来提高其客户的生产效率。 Kyligence Cloud 可实现群集部署、增强数据访问，并大大加快数据分析的速度。 使用 Kyligence 的 AI 增强式大数据分析管理平台，可以快速、轻松地完成难度通常较大的企业级数据湖构建任务。|[产品页面](https://kyligence.io/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence)<br> |

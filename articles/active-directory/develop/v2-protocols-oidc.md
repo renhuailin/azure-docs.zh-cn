@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5d64a6e6a4dcd1d7b1917720152e2738bf6476e9
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 82e9901c4bea8de7e5fee37ff4f2b7374f67e0ca
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108063974"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467230"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
 
@@ -43,7 +43,7 @@ OpenID Connect 描述了元数据文档 [(RFC)](https://openid.net/specs/openid-
 
 `{tenant}` 可取以下四个值之一：
 
-| Value | 说明 |
+| 值 | 说明 |
 | --- | --- |
 | `common` |同时拥有 Microsoft 个人帐户和 Azure AD 中的工作或学校帐户的用户可以登录应用。 |
 | `organizations` |仅拥有工作/学校帐户的用户可以从 Azure AD 登录到应用程序。 |
@@ -116,11 +116,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=678910
 ```
 
-| 参数 | 条件 | 描述 |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
 | `tenant` | 必须 | 可以在请求路径中使用 `{tenant}` 值来控制谁可以登录到应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参见[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | `client_id` | 必选 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
-| `response_type` | 必选 | 必须包含 OpenID Connect 登录的 `id_token` 。 还可能包含其他 `response_type` 值，例如 `code`。 |
+| `response_type` | 必须 | 必须包含 OpenID Connect 登录的 `id_token` 。 还可能包含其他 `response_type` 值，例如 `code`。 |
 | `redirect_uri` | 建议 | 应用的重定向 URI，应用可在其中发送和接收身份验证响应。 必须完全符合在门户中注册的重定向 URI 之一，否则必须是编码的 URL。 如果不存在该 URL，终结点将随机选取一个已注册的 redirect_uri，以将用户发回到其中。 |
 | `scope` | 必须 | 范围的空格分隔列表。 对于 OpenID Connect，它必须包含范围 `openid`，该范围在同意 UI 中会转换为“将你登录”权限。 也可以在此请求中包含其他范围来请求许可。 |
 | `nonce` | 必须 | 由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 值中。 应用可以验证此值，以缓解令牌重放攻击。 该值通常是随机化的唯一字符串，可用于标识请求的来源。 |
@@ -188,7 +188,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 对 ID 令牌进行验证并非可以使所有应用都受益，例如，原生应用和单页应用很少受益于 ID 令牌验证。  能够以物理方式访问设备（或浏览器）的人员可以通过许多方式绕过验证，例如，可以编辑到设备的 Web 流量，可以提供伪令牌和密钥，还可以直接对应用程序进行调试以跳过验证逻辑。  另一方面，使用 ID 令牌进行授权的 Web 应用和 API 必须仔细验证 ID 令牌，因为它们控制着数据的访问权限。
 
-验证 id_token 的签名后，需要验证一些声明。 有关详细信息，请参阅 [`id_token` 参考](id-tokens.md)，其中包括[验证令牌](id-tokens.md#validating-an-id_token)和[有关签名密钥滚动更新的重要信息](active-directory-signing-key-rollover.md)。 我们建议利用库来分析和验证令牌 - 对于大多数语言和平台至少有一个可用。
+验证 id_token 的签名后，需要验证一些声明。 有关详细信息，请参阅 [`id_token` 参考](id-tokens.md)，其中包括[验证令牌](id-tokens.md#validating-an-id-token)和[有关签名密钥滚动更新的重要信息](active-directory-signing-key-rollover.md)。 我们建议利用库来分析和验证令牌 - 对于大多数语言和平台至少有一个可用。
 
 可能还希望根据自己的方案验证其他声明。 一些常见的验证包括：
 
@@ -275,7 +275,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 有关可能的错误代码和建议的客户端操作的说明，请参阅 [授权终结点错误的错误代码](#error-codes-for-authorization-endpoint-errors)。
 
-获取授权代码和 ID 令牌之后，可将用户登录，并代表用户获取访问令牌。 要将用户登录，必须 [完全根据说明](id-tokens.md#validating-an-id_token)验证 ID 令牌。 若要获取访问令牌，请遵循 [OAuth 代码流文档](v2-oauth2-auth-code-flow.md#redeem-a-code-for-an-access-token)中所述的步骤。
+获取授权代码和 ID 令牌之后，可将用户登录，并代表用户获取访问令牌。 要将用户登录，必须 [完全根据说明](id-tokens.md#validating-an-id-token)验证 ID 令牌。 若要获取访问令牌，请遵循 [OAuth 代码流文档](v2-oauth2-auth-code-flow.md#redeem-a-code-for-an-access-token)中所述的步骤。
 
 ### <a name="calling-the-userinfo-endpoint"></a>调用 UserInfo 终结点
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: risverma
-ms.openlocfilehash: e0797dfd8c4bf1cf86e2eeafb824298c412e5f1f
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 54958eb6fa6d3ef855bdc3667921535ab47c7b29
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491808"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468264"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -28,7 +28,7 @@ B 系列有以下 VM 大小：
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 
 *B 系列 VM 是可突发的，因此 ACU 数量会因工作负荷和核心使用情况而异。<br>
 加速网络仅支持 Standard_B12ms、Standard_B16ms 和 Standard_B20ms  。

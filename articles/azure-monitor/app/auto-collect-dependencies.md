@@ -4,12 +4,12 @@ description: Application Insights 自动收集和可视化依赖项
 ms.topic: reference
 ms.custom: devx-track-dotnet
 ms.date: 05/06/2020
-ms.openlocfilehash: aa4d39ca8964e95ca787d236223e2b475a9597c1
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: c81be9762af658d0149dd6547f50aa9a7503601d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107873822"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097275"
 ---
 # <a name="dependency-auto-collection"></a>依赖项自动收集
 
@@ -61,7 +61,7 @@ ms.locfileid: "107873822"
 
 > [!NOTE]
 > *响应式编程支持除外。
-> <br>†需安装 [JVM 代理](./java-agent.md#install-the-application-insights-agent-for-java)。
+> <br>†需安装 [JVM 代理](java-2x-agent.md#install-the-application-insights-agent-for-java)。
 
 ## <a name="nodejs"></a>Node.js
 
@@ -88,7 +88,7 @@ ms.locfileid: "107873822"
 ## <a name="next-steps"></a>后续步骤
 
 - 为 [.NET](./asp-net-dependencies.md) 设置自定义依赖项跟踪。
-- 为 [Java](./java-agent.md) 设置自定义依赖项跟踪。
+- 为 [Java](java-2x-agent.md) 设置自定义依赖项跟踪。
 - 为 [OpenCensus Python](./opencensus-python-dependency.md) 设置自定义依赖项跟踪。
 - [编写自定义依赖项遥测](./api-custom-events-metrics.md#trackdependency)
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](./data-model.md)。

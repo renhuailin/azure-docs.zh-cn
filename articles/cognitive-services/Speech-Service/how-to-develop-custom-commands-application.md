@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: ddf36530e52703ab1033b8e2e787b42b6dc60332
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 84253f897e8b85029ea4425a7919be4bf71028ed
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553271"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451938"
 ---
 # <a name="develop-custom-commands-applications"></a>开发自定义命令应用程序
 
@@ -42,7 +42,7 @@ ms.locfileid: "106553271"
 
 ### <a name="update-luis-resources-optional"></a>更新 LUIS 资源（可选）
 
-可以更新你在“新建项目”窗口中选择的创作资源。 还可以设置预测资源。 
+可以更新你在“新建项目”窗口中选择的创作资源。 还可以设置预测资源。
 
 发布自定义命令应用程序时，一个预测资源将会用于识别。 在开发和测试阶段无需使用预测资源。
 
@@ -54,7 +54,7 @@ ms.locfileid: "106553271"
 1. 在“名称”字段中，提供值 `TurnOn`。
 1. 选择“创建”。
 
-中间窗格将列出命令的属性。 
+中间窗格将列出命令的属性。
 
 下表解释了命令的配置属性。 有关详细信息，请参阅[自定义命令的概念和定义](./custom-commands-references.md)。
 
@@ -86,13 +86,13 @@ ms.locfileid: "106553271"
 
 #### <a name="add-a-completion-rule"></a>添加完成规则
 
-接下来，该命令需要一个完成规则。 此规则让用户知道正在执行一项履行操作。 
+接下来，该命令需要一个完成规则。 此规则让用户知道正在执行一项履行操作。
 
 有关规则和完成规则的详细信息，请参阅[自定义命令的概念和定义](./custom-commands-references.md)。
 
 1. 选择默认的完成规则“完成”。 然后按如下所示对其进行编辑：
 
-    
+
     | 设置    | 建议的值                          | 说明                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **名称**       | `ConfirmationResponse`                  | 用于描述规则用途的名称          |
@@ -103,7 +103,7 @@ ms.locfileid: "106553271"
    > ![显示要在何处创建语音响应的屏幕截图。](media/custom-commands/create-speech-response-action.png)
 
 1. 选择“保存”以保存操作。
-1. 返回“完成规则”部分，选择“保存”以保存所有更改。  
+1. 返回“完成规则”部分，选择“保存”以保存所有更改。 
 
     > [!NOTE]
     > 并非一定要使用命令随附的默认完成规则。 可以删除默认的完成规则，并添加自己的规则。
@@ -138,10 +138,10 @@ ms.locfileid: "106553271"
 
 ### <a name="try-it-out"></a>试试看
 
-使用测试窗格测试应用程序的行为： 
+使用测试窗格测试应用程序的行为：
 
-1. 在窗格的右上角，选择“训练”图标。 
-1. 训练完成后，选择“测试”。 
+1. 在窗格的右上角，选择“训练”图标。
+1. 训练完成后，选择“测试”。
 
 使用语音或文本尝试以下言语示例：
 
@@ -168,7 +168,7 @@ ms.locfileid: "106553271"
 
 1. 既然该命令要处理打开和关闭设备的方案，因此请将其重命名为 *TurnOnOff*。
    1. 在左侧窗格中，选择“TurnOn”命令。 然后，在窗格顶部的“新建命令”旁边选择省略号 ( **...** ) 按钮。
-   
+
    1. 选择“重命名”。 在“重命名命令”窗口中，将名称更改为 *TurnOnOff*。
 
 1. 将一个新参数添加到命令。 该参数表示用户是要打开还是关闭设备。
@@ -179,9 +179,9 @@ ms.locfileid: "106553271"
 
        > [!div class="mx-imgBorder"]
        > ![显示“为必需的参数添加响应”部分的屏幕截图，其中已选择“简单编辑器”选项卡。](media/custom-commands/add-required-on-off-parameter-response.png)
-   
+
    1. 使用下表配置参数的属性。 有关命令的所有配置属性的信息，请参阅[自定义命令的概念和定义](./custom-commands-references.md)。
-      
+
 
        | 配置      | 建议的值     | 说明                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
@@ -192,15 +192,15 @@ ms.locfileid: "106553271"
        | 类型               | **字符串**          | 参数类型，例如“数字”、“字符串”、“日期时间”或“地理位置”。   |
        | **配置**      | **接受来自内部目录的预定义输入值** | 对于字符串，此设置将输入限制为一组可能的值。 |
        | **预定义的输入值**     | `on`, `off`           | 一组可能的值及其别名。         |
-       
-        
+
+
    1. 若要添加预定义的输入值，请选择“添加预定义的输入”。 在“新建项”窗口中，按上表中所示键入一个 *名称*。 在本例中你不使用别名，因此可将此字段留空。
-   
+
       > [!div class="mx-imgBorder"]
       > ![显示如何创建参数的屏幕截图。](media/custom-commands/create-on-off-parameter.png)
 
    1. 选择“保存”以保存参数的所有配置。
- 
+
 #### <a name="add-a-subjectdevice-parameter"></a>添加 SubjectDevice 参数
 
 1. 若要添加另一个参数来表示可使用此命令控制的设备的名称，请选择“添加”。 使用以下配置。
@@ -251,7 +251,6 @@ turn something
 
 1. 在“条件”部分，选择“添加条件”。 
 1. 在“新建条件”窗口中的“类型”列表内，选择“必需参数”。   在随后出现的列表中，选择“OnOff”和“SubjectDevice”。 
-1. 将“IsGlobal”保持未选中状态。
 1. 选择“创建”。
 1. 在“操作”部分，通过将鼠标悬停在“发送语音响应”操作上并选择编辑按钮，对该操作进行编辑。  这一次请使用新建的 `OnOff` 和 `SubjectDevice` 参数：
 
@@ -260,7 +259,7 @@ turn something
     ```
 1. 选择“保存”。
 
-选择右侧窗格顶部的“训练”图标，尝试使用所做的更改进行训练。 
+选择右侧窗格顶部的“训练”图标，尝试使用所做的更改进行训练。
 
 训练完成后，选择“测试”。 此时将显示“测试应用程序”窗口。 尝试以下交互：
 
@@ -307,11 +306,11 @@ change the temperature
 
 添加名为 `DateTime` 的参数。 使用以下配置。
 
-   | 设置                           | 建议的值                     | 
+   | 设置                           | 建议的值                     |
    | --------------------------------- | ----------------------------------------|
    | **名称**                              | `DateTime`                               |
    | **必需**                          | 选定                                 |
-   | **必需参数的响应**   | **简单编辑器** > `For what time?`            | 
+   | **必需参数的响应**   | **简单编辑器** > `For what time?`            |
    | 类型                              | **DateTime**                                |
    | **日期默认值**                     | 如果缺少日期，则使用当天的日期。            |
    | **时间默认值**                     | 如果缺少时间，则使用当天的起始时间。     |
@@ -369,7 +368,7 @@ alarm for {DateTime}
 
 
 如果建议的 URL 值不适合你，请配置并托管一个可返回 JSON 文件（其中包含可控制的设备的列表）的 Web 终结点。 该 Web 终结点应返回如下格式的 JSON 文件：
-    
+
 ```json
 {
     "fan" : [],
@@ -466,13 +465,13 @@ alarm for {DateTime}
         1. 添加新条件：“必需参数” > “Temperature”。
         1. 添加新操作：“类型” > “发送语音响应” > “Are you sure you want to set the temperature as {Temperature} degrees?”
         1. 在“预期”部分，保留默认值“预期收到用户确认”。 
-      
+
          > [!div class="mx-imgBorder"]
          > ![展示如何创建必需参数响应的屏幕截图。](media/custom-speech-commands/add-validation-set-temperature.png)
-    
+
 
     1. 修改“确认成功”交互规则，以处理成功确认（用户说“yes”）。
-      
+
           1. 将名称更改为“确认温度成功”。
           1. 保留现有的“确认成功”条件。
           1. 添加新条件：“类型” > “必需参数” > “Temperature”。
@@ -488,7 +487,7 @@ alarm for {DateTime}
 
 > [!IMPORTANT]
 > 在本文中，你将使用内置确认功能。 也可以手动逐个添加交互规则。
-   
+
 选择“训练”来尝试使用所做的更改。 训练完成后，选择“测试”。
 
 - **输入**：“Set temperature to 80 degrees”
@@ -505,7 +504,7 @@ alarm for {DateTime}
 在本部分，你将配置一步式更正。 履行操作运行后将使用此项更正。 本部分还会演示一个示例，说明如何在命令尚未履行的情况下默认启用更正。 若要在命令尚未完成时添加更正，请添加新参数 `AlarmTone`。
 
 在左侧窗格中，选择“SetAlarm”命令。 然后添加新参数 **AlarmTone**。
-        
+
 - **名称** > `AlarmTone`
 - “类型” > “字符串”
 - “默认值” > “Chimes”
@@ -524,7 +523,7 @@ alarm for {DateTime}
 
 #### <a name="implement-a-correction-when-a-command-is-finished"></a>完成命令后实现更正
 
-即使命令已完成，自定义命令平台也允许执行一步式更正。 此功能默认未启用。 必须显式对其进行配置。 
+即使命令已完成，自定义命令平台也允许执行一步式更正。 此功能默认未启用。 必须显式对其进行配置。
 
 使用以下步骤配置一步式更正：
 
@@ -553,7 +552,7 @@ alarm for {DateTime}
 * 语言生成模板。
 * 自适应表达式。
 
-自定义命令模板基于 Bot Framework 的 [LG 模板](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)。 由于自定义命令功能可根据需要创建新的 LG 模板（用于在参数或操作中生成语音响应），因此你无需指定 LG 模板的名称。 
+自定义命令模板基于 Bot Framework 的 [LG 模板](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)。 由于自定义命令功能可根据需要创建新的 LG 模板（用于在参数或操作中生成语音响应），因此你无需指定 LG 模板的名称。
 
 因此，无需按如下所示定义模板：
 
@@ -572,7 +571,7 @@ alarm for {DateTime}
 
 此项更改将在发送到客户端的语音响应中引入变体。 对于言语，相应的语音响应是从提供的选项中随机选出的。
 
-利用 LG 模板还可以使用自适应表达式来为命令定义复杂的语音响应。 有关详细信息，请参阅 [LG 模板格式](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)。 
+利用 LG 模板还可以使用自适应表达式来为命令定义复杂的语音响应。 有关详细信息，请参阅 [LG 模板格式](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)。
 
 默认情况下，自定义命令功能支持所有功能，只是存在以下细微差别：
 
@@ -585,14 +584,14 @@ alarm for {DateTime}
 
 修改 `TurnOnOff` 命令以添加一个新参数。 使用以下配置。
 
-| 设置            | 建议的值       | 
-| ------------------ | --------------------- | 
-| **名称**               | `SubjectContext`         | 
-| **是全局性的**          | 未选定             | 
-| **必需**           | 未选定               | 
+| 设置            | 建议的值       |
+| ------------------ | --------------------- |
+| **名称**               | `SubjectContext`         |
+| **是全局性的**          | 未选定             |
+| **必需**           | 未选定               |
 | 类型               | **字符串**                |
 | **默认值**      | `all` |
-| **配置**      | **接受来自内部目录的预定义输入值** | 
+| **配置**      | **接受来自内部目录的预定义输入值** |
 | **预定义的输入值** | `room`, `bathroom`, `all`|
 
 #### <a name="modify-a-completion-rule"></a>修改完成规则
@@ -642,5 +641,4 @@ alarm for {DateTime}
 ## <a name="next-steps"></a>后续步骤
 
 * 了解如何使用语音 SDK [将自定义命令应用程序与客户端应用相集成](how-to-custom-commands-setup-speech-sdk.md)。
-* 使用 Azure DevOps 为自定义命令应用程序[设置持续部署](how-to-custom-commands-deploy-cicd.md)。 
-                      
+* 使用 Azure DevOps 为自定义命令应用程序[设置持续部署](how-to-custom-commands-deploy-cicd.md)。

@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Azure 机密账本
+summary: 了解如何使用 Azure 机密账本
+metadata:
+  title: Azure 机密账本文档
+  description: 了解如何使用 Azure 机密账本
+  services: confidential-ledger
+  ms.service: confidential-ledger
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/15/2021
+  ms.openlocfilehash: 9ba47997232d3eb8b6b99d5608c382ba6b8f7039
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110383378"
+landingContent:
+- title: 关于 Azure 机密账本
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 机密账本？
+      url: overview.md
+- title: 入门
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Python 快速入门
+      url: quickstart-python.md
+    - text: ARM 模板快速入门
+      url: quickstart-template.md
+- title: 概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 体系结构
+      url: architecture.md
+    - text: 对账本节点进行身份验证
+      url: authenticate-ledger-nodes.md
+- title: 操作方式指南
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 对账本节点进行身份验证
+      url: authenticate-ledger-nodes.md
+    - text: 创建客户端证书
+      url: create-client-certificate.md
+    - text: 注册账本服务主体
+      url: register-ledger-service-principal.md
+    - text: 注册机密账本资源提供程序
+      url: register-ledger-resource-provider.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 常见问题
+      url: faq.md

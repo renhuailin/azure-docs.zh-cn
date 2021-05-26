@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 504d66501cc041d6fec4671b6955723505910d0c
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 272c6e80633da826bf14389fbe0a1d2783d34a3d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788438"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098663"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>启用用于路由 Azure 数字孪生事件的托管标识（预览版）：Azure CLI
 
@@ -99,7 +99,7 @@ az dt create --dt-name {instance_name} --resource-group {resource_group} --assig
 
 有关使用此命令进行角色分配的更多示例，请参阅 [az dt create 参考文档](/cli/azure/dt#az_dt_create)。
 
-或者，也可以使用 [az role assignment](/cli/azure/role/assignment) 命令组来创建和管理角色。 此命令可助于支持你不想要使用 create 命令进行组角色分配的其他场景。
+或者，也可以使用 [az role assignment](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) 命令组来创建和管理角色。 此命令可助于支持你不想要使用 create 命令进行组角色分配的其他场景。
 
 ## <a name="create-an-endpoint-with-identity-based-authentication"></a>创建使用基于身份的身份验证的终结点
 
@@ -108,7 +108,7 @@ az dt create --dt-name {instance_name} --resource-group {resource_group} --assig
 >[!NOTE]
 > 对于已使用基于密钥的标识创建的终结点，不能通过对其进行编辑来将其更改为使用基于标识的身份验证。 必须选择最初创建终结点时指定的身份验证类型。
 
-这是通过将 `--auth-type` 参数添加到用于创建终结点的 `az dt endpoint create` 命令来实现的。 （有关此命令的详细信息，请参阅其[参考文档](/cli/azure/dt/endpoint/create)或[有关设置 Azure 数字孪生终结点的一般说明](how-to-manage-routes-apis-cli.md#create-the-endpoint)）。
+这是通过将 `--auth-type` 参数添加到用于创建终结点的 `az dt endpoint create` 命令来实现的。 （有关此命令的详细信息，请参阅其[参考文档](/cli/azure/dt/endpoint/create?view=azure-cli-latest&preserve-view=true)或[有关设置 Azure 数字孪生终结点的一般说明](how-to-manage-routes-apis-cli.md#create-the-endpoint)）。
 
 若要创建使用基于标识的身份验证的终结点，请使用 `--auth-type` 参数指定 `IdentityBased` 身份验证类型。 以下示例演示了如何对事件中心终结点使用此参数。
 

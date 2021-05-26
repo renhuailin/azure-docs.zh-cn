@@ -2,21 +2,21 @@
 title: 创建 Azure 事件中心架构注册表
 description: 本文介绍如何在 Azure 事件中心命名空间中创建架构注册表。
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 05/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 45791cd69772be97ca6768184ed17179e04ad9dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9794d1521b8b16b99a108517bfd19a3c9e29b21
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96576802"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373609"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>创建 Azure 事件中心架构注册表（预览版）
 本文介绍如何在 Azure 事件中心托管的架构注册表中创建包含架构的架构组。 有关 Azure 事件中心的架构注册表功能的概述，请参阅[事件中心中的 Azure 架构注册表](schema-registry-overview.md)。
 
 > [!NOTE]
 > - 架构注册表功能目前处于预览状态，不建议用于生产工作负载 。
-> - 仅标准层和专用层提供此功能，基本层未提供  。
+> - 此功能在基本层不可用。
 > - 如果事件中心位于一个虚拟网络中，则除非从同一虚拟网络中的 VM 访问 Azure 门户，否则无法在门户中创建架构。 
 
 ## <a name="prerequisites"></a>先决条件

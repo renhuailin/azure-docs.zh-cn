@@ -3,12 +3,12 @@ title: 如何在 Azure Application Insights 中执行... | Microsoft Docs
 description: 有关 Application Insights 的常见问题解答。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c889c0890f8e6d193b7e36a525470fc18bef494d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584159"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060825"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -162,7 +162,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 ### <a name="if-you-see-no-performance-counter-data"></a>如果看不到任何性能计数器数据
 * 在自己的计算机或 VM 上设置一个 **IIS 服务器**。 [安装状态监视器](./monitor-performance-live-website-now.md)。
 * **Azure 网站** - 目前不支持性能计数器。 可以获取多个指标作为 Azure 网站控制台的标准组成部分。
-* **Unix 服务器** - [安装 collectd](./java-collectd.md)
+* **Unix 服务器** - [安装 collectd](java-2x-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>显示更多性能计数器
 * 首先[添加一个新图表](../essentials/metrics-charts.md)，然后查看计数器是否出现在提供的基本集内。

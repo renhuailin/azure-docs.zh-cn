@@ -8,16 +8,16 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: 8a2c65355f4cb423c17ade6b6f821dcb5b5bd23e
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 97aff4bf97a8d79813afb1bd5b7a5e14f6d545c4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963648"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375263"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒体服务分析视频和音频文件
 
-[!INCLUDE [regulation](../video-indexer/includes/regulation.md)]
+[!INCLUDE [regulation](../../azure-video-analyzer/video-analyzer-for-media-docs/includes/regulation.md)]
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -35,10 +35,10 @@ ms.locfileid: "105963648"
 
 媒体服务当前支持以下内置分析器预设：  
 
-|**预设名称**|方案/模式|**详细信息**|
+|**预设名称**|**方案/模式**|**详细信息**|
 |---|---|---|
 |[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音频标准模式|该预设应用一组基于 AI 的预定义分析操作，其中包括语音听录。 目前，该预设支持处理包含单个音轨的内容且音轨应仅包含一种语言的语音。 可以使用 BCP-47 格式“language tag-region”为输入中的音频有效负载指定语言。 支持的语言有英语（“en-US”、“en-GB”和“en-AU”）、西班牙语（“es-ES”和“es-MX”）、法语（“fr-F”和“fr-CA”）、意大利语（“it-IT”）、日语（“ja-JP”）、葡萄牙语（“pt-BR”）、中文（“zh-CN”）、德语（“de-DE”）、阿拉伯语（“ar-BH”、“ar-EG”、“ar-IQ”、“ar-JO”、“ar-KW”、“ar-LB”、“ar-OM”、“ar-QA”、“ar-SA”和“ar-SY”）、俄语（“ru-RU”）、印地语（“hi-IN”）、韩语（“ko-KR”）、丹麦语（“da-DK”）、挪威语（“nb-NO”）、瑞典语（“sv-SE”）、芬兰语（“fi-FI”）、泰语（“th-TH”）和土耳其语（“tr-TR”）。<br/><br/> 如果未指定语言或将语言设置为 null，自动语言检测将选择检测到的第一种语言并继续使用所选语言处理整个文件。 自动语言检测功能目前支持英语、中文、法语、德语、意大利语、日语、西班牙语、俄语和葡萄牙语。 它不支持在检测到第一种语言后在各语言之间进行动态切换。 自动语言检测功能最适用于包含清晰可辨的语音的录音。 如果自动语言检测未能找到语言，脚本将回退到英语。|
-|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音频基本模式|此预设模式执行语音转文本听录并生成 VTT 字幕文件。 此模式的输出包括一个见解 JSON 文件，该文件仅包含关键字、听录和计时信息。 此模式不包括自动语言检测和说话人分割聚类。 支持的语言列表与上述标准模式完全相同。|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音频基本模式|这种预设模式执行语音转文本听录并生成 VTT 字幕文件。 此模式的输出包括一个见解 JSON 文件，该文件仅包含关键字、听录和计时信息。 此模式不包括自动语言检测和说话人分割聚类。 受支持语言的列表与上述标准模式相同。|
 |[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|分析音频和视频|从音频和视频中提取见解（丰富的元数据），并输出 JSON 格式的文件。 可以指定在处理视频文件时是否只想提取音频见解。 有关详细信息，请参阅[分析视频](analyze-videos-tutorial.md)。|
 |[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|检测视频中的人脸|描述在分析视频时要使用的设置，以便检测出现的所有人脸。|
 

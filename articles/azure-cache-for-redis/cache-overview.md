@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 49a697e6c3a6a6c931f2bb9c545647e2d6f1322d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a7f37df7d312e9279eecaa49851d13957bd418d3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056651"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075621"
 ---
 # <a name="about-azure-cache-for-redis"></a>关于用于 Redis 的 Azure 缓存
 Azure Cache for Redis 基于 [Redis](https://redis.io/) 软件提供内存中数据存储。 Redis 极大地提高了在后端数据存储上使用的应用程序的性能和可伸缩性。 它将经常访问的数据保留在可快速读写的服务器内存中，从而能够处理大量应用程序请求。 Redis 为新式应用程序带来了关键的低延迟、高吞吐量数据存储解决方案。
@@ -42,15 +42,15 @@ Azure Redis 缓存在下述层中提供：
 | 层 | 说明 |
 |---|---|
 | 基本 | 在单个 VM 上运行的 OSS Redis 缓存。 该层没有服务级别协议 (SLA)，非常适用于开发/测试和非关键工作负载。 |
-| Standard | 在配置完全相同的两个 VM 上运行的 OSS Redis 缓存。 |
+| 标准 | 在配置完全相同的两个 VM 上运行的 OSS Redis 缓存。 |
 | 高级 | 高性能 OSS Redis 缓存。 该层提供更高的吞吐量、更低的延迟、更好的可用性和更多功能。 与基本或标准缓存相比，高级缓存部署在功能更强大的 VM 上。 |
-| Enterprise | 高性能缓存由 Redis 实验室的 Redis Enterprise 软件提供支持。 该层支持 Redis 模块，包括 RediSearch、RedisBloom 和 RedisTimeSeries。 此外，它提供的可用性甚至比高级层的更高。 |
+| 企业 | 高性能缓存由 Redis 实验室的 Redis Enterprise 软件提供支持。 该层支持 Redis 模块，包括 RediSearch、RedisBloom 和 RedisTimeSeries。 此外，它提供的可用性甚至比高级层的更高。 |
 | Enterprise Flash | 经济高效的大型缓存由 Redis 实验室的 Redis Enterprise 软件提供支持。 该层将 Redis 数据存储扩展到 VM 上的非易失存储器，该存储器的价格低于 DRAM 的价格。 它总体上降低了每 GB 内存的成本。 |
 
 ### <a name="feature-comparison"></a>功能比较
 [Azure Cache for Redis 定价](https://azure.microsoft.com/pricing/details/cache/)提供了每个层的详细比较。 下表介绍了每个层支持的部分功能：
 
-| 功能说明 | 基本 | Standard | 高级 | Enterprise | Enterprise Flash |
+| 功能说明 | 基本 | 标准 | 高级 | 企业 | Enterprise Flash |
 | ------------------- | :-----: | :------: | :---: | :---: | :---: |
 | [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |-|✔|✔|✔|✔|
 | 数据加密 |✔|✔|✔|✔|✔|
@@ -58,7 +58,7 @@ Azure Redis 缓存在下述层中提供：
 | [缩放](cache-how-to-scale.md) |✔|✔|✔|✔|✔|
 | [OSS 群集](cache-how-to-premium-clustering.md) |-|-|✔|✔|✔|
 | [数据持久性](cache-how-to-premium-persistence.md) |-|-|✔|预览|预览|
-| [区域冗余](cache-how-to-zone-redundancy.md) |-|-|预览|✔|✔|
+| [区域冗余](cache-how-to-zone-redundancy.md) |-|-|✔|✔|✔|
 | [异地复制](cache-how-to-geo-replication.md) |-|-|✔|预览|预览|
 | [模块](https://redis.io/modules) |-|-|-|✔|✔|
 | [导入/导出](cache-how-to-import-export-data.md) |-|-|✔|✔|✔|

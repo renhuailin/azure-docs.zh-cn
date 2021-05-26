@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 06/23/2020
-  ms.openlocfilehash: aaa2115609e08077ad29e5e8b9eefb4d8a65147e
-  ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+  ms.openlocfilehash: ec91be71357e2dda70032930d2133eebbf1b5dfd
+  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/24/2020
-  ms.locfileid: "95805642"
+  ms.lasthandoff: 05/26/2021
+  ms.locfileid: "110468246"
 landingContent:
 - title: 关于服务总线消息传送
   linkLists:
@@ -47,7 +47,7 @@ landingContent:
       url: service-bus-quickstart-cli.md
     - text: Azure PowerShell
       url: service-bus-quickstart-powershell.md
-    - text: Azure 资源管理器模板
+    - text: Azure Resource Manager 模板
       url: service-bus-resource-manager-namespace-queue.md
 - title: 创建服务总线主题和订阅
   linkLists:
@@ -71,8 +71,6 @@ landingContent:
       url: service-bus-python-how-to-use-queues.md
     - text: PHP
       url: service-bus-php-how-to-use-queues.md
-    - text: Ruby
-      url: service-bus-ruby-how-to-use-queues.md
 - title: 发布和订阅消息
   linkLists:
   - linkListType: quickstart
@@ -87,8 +85,6 @@ landingContent:
       url: service-bus-python-how-to-use-topics-subscriptions.md
     - text: PHP
       url: service-bus-php-how-to-use-topics-subscriptions.md
-    - text: Ruby
-      url: service-bus-ruby-how-to-use-topics-subscriptions.md
 - title: 监视和管理
   linkLists:
   - linkListType: how-to-guide
@@ -96,7 +92,7 @@ landingContent:
     - text: 使用 PowerShell 预配实体
       url: service-bus-manage-with-ps.md
     - text: 使用 Azure Monitor 监视服务总线
-      url: service-bus-metrics-azure-monitor.md
+      url: monitor-service-bus-reference.md
     - text: 设置诊断日志
       url: service-bus-diagnostic-logs.md
     - text: 暂停和重新激活消息传递实体

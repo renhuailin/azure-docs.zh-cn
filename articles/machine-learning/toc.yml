@@ -75,11 +75,11 @@
       items:
         - name: 使用 CLI 进行训练和部署
           href: tutorial-train-deploy-model-cli.md
+        - name: 使用托管终结点访问 Azure 资源
+          href: tutorial-deploy-managed-endpoints-using-system-managed-identity.md
     - name: Visual Studio Code
       items:
-        - name: 安装 Azure 机器学习扩展
-          href: tutorial-setup-vscode-extension.md
-        - name: 训练并部署 TensorFlow 图像分类模型
+        - name: 训练 TensorFlow 图像分类模型
           href: tutorial-train-deploy-image-classification-model-vscode.md
     - name: Microsoft Power BI 集成
       items:
@@ -134,6 +134,8 @@
       href: concept-workspace.md
     - name: 环境
       href: concept-environments.md
+    - name: 用于推理的预生成 Docker 映像
+      href: concept-prebuilt-docker-images-inference.md
     - name: 计算实例
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
@@ -157,6 +159,8 @@
     - name: 深度学习
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
+    - name: 终结点
+      href: concept-endpoints.md
     - name: 模型管理 (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
@@ -283,6 +287,9 @@
           href: how-to-create-attach-compute-studio.md
     - name: 设置你的环境
       items:
+        - name: 安装和设置 2.0 CLI
+          displayName: 'azurecli, mlops'
+          href: how-to-configure-cli.md
         - name: 设置开发环境
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
@@ -305,8 +312,11 @@
         - name: 设置输入和输出目录
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
-        - name: Visual Studio Code
+        - name: 安装 VS Code 扩展
           displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
+          href: how-to-setup-vs-code.md
+        - name: 连接到计算实例 - VS Code
+          displayName: 'Visual Studio Code, VSCode, debug, bugs'
           href: how-to-set-up-vs-code-remote.md
         - name: Git 集成
           displayName: github gitlab
@@ -371,6 +381,8 @@
               href: how-to-differential-privacy.md
     - name: 训练模型
       items:
+        - name: 使用 2.0 CLI 进行训练
+          href: how-to-train-cli.md
         - name: 配置和提交训练运行
           displayName: 'run config, script run config, scriptrunconfig, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
@@ -387,6 +399,8 @@
           href: how-to-train-pytorch.md
         - name: 使用自定义 Docker 映像进行训练
           href: how-to-train-with-custom-image.md
+        - name: 使用 REST API 进行训练
+          href: how-to-train-with-rest.md
         - name: 从 Estimators 迁移到 ScriptRunConfig
           href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: 跟踪和监视培训
@@ -424,6 +438,9 @@
         - name: 使用 MLflow 跟踪 Azure Databricks 运行
           displayName: 'log, monitor, deploy, metrics, databricks'
           href: how-to-use-mlflow-azure-databricks.md
+        - name: 使用 MLflow 项目训练试验
+          displayName: 'log, monitor, metrics, model registry, register'
+          href: how-to-train-mlflow-projects.md
         - name: 部署 MLflow 模型
           displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
           href: how-to-deploy-mlflow-models.md
@@ -461,6 +478,30 @@
         - name: 在何处以及如何部署
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: 使用终结点进行部署和提供服务
+          items:
+            - name: 联机
+              items:
+                - name: 使用托管联机终结点部署 ML 模型
+                  href: how-to-deploy-managed-online-endpoints.md
+                - name: 联机终结点的安全推出
+                  href: how-to-safely-rollout-managed-endpoints.md
+                - name: 在工作室中使用托管联机终结点
+                  href: how-to-use-managed-online-endpoint-studio.md
+                - name: 查看托管联机终结点成本
+                  href: how-to-view-online-endpoints-costs.md
+                - name: 托管联机终结点 VM SKU 列表
+                  href: reference-managed-online-endpoints-vm-sku-list.md
+                - name: 监视托管联机终结点
+                  href: how-to-monitor-online-endpoints.md
+                - name: 排查托管联机终结点问题
+                  href: how-to-troubleshoot-managed-online-endpoints.md
+            - name: Batch
+              items:
+                - name: 使用批处理终结点进行批量评分
+                  href: how-to-use-batch-endpoint.md
+                - name: 排查批处理终结点问题
+                  href: how-to-troubleshoot-batch-endpoints.md
         - name: 部署目标
           items:
             - name: Local
@@ -487,6 +528,14 @@
               href: ../iot-edge/tutorial-deploy-machine-learning.md?context=azure%2fmachine-learning%2fservice%2fcontext%2fml-context
             - name: FPGA 推理
               href: how-to-deploy-fpga-web-service.md
+        - name: 预生成的 Docker 映像
+          items:
+            - name: Python 扩展性
+              href: how-to-prebuilt-docker-images-inference-python-extensibility.md
+            - name: Dockerfile 扩展性
+              href: how-to-extend-prebuilt-docker-image-inference.md
+            - name: 排查预生成 Docker 映像的问题
+              href: how-to-troubleshoot-prebuilt-docker-image-inference.md
         - name: 部署疑难解答
           href: how-to-troubleshoot-deployment.md
         - name: 排查部署问题（本地）
@@ -524,7 +573,7 @@
         - name: 部署设计器模型
           displayName: 'designer, studio'
           href: how-to-deploy-model-designer.md
-        - name: （预览）无代码部署
+        - name: 无代码部署
           displayName: no code
           href: how-to-deploy-no-code-deployment.md
         - name: 包模型
@@ -632,6 +681,8 @@
       href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
     - name: 服务限制
       href: resource-limits-quotas-capacity.md
+    - name: Conda 许可
+      href: /legal/machine-learning/conda-licensing
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 用户论坛
