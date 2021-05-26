@@ -3,12 +3,12 @@ title: 快速入门：通过 Terraform 进行新策略分配
 description: 本快速入门介绍如何使用 Terraform 和 HCL 语法创建策略分配以识别不合规的资源。
 ms.date: 03/31/2021
 ms.topic: quickstart
-ms.openlocfilehash: 7530ad1c4e87fb2df00e1fa81e324bb9bd0c4034
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c9e33fc8070adc2685e26272565d95716c0df8db
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763030"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094755"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>快速入门：使用 Terraform 创建策略分配以识别不合规的资源
 
@@ -85,7 +85,7 @@ ms.locfileid: "108763030"
 
 1. 使用 [Azure CLI](/cli/azure/) 为 Terraform 进行身份验证。 有关详细信息，请参阅[Azure 提供程序：使用 Azure CLI 进行身份验证](https://www.terraform.io/docs/providers/azurerm/guides/azure_cli.html)。
 
-   ```bash
+   ```azurecli
    az login
    ```
 

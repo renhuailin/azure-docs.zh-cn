@@ -3,12 +3,12 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 8aad2f885c39d6f5ecd237a6167363b0efe8cef4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 3feb0c0ac40812ef628281d93d5848c2d60df6eb
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290374"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375793"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -70,8 +70,6 @@ ms.locfileid: "108290374"
 
 ## <a name="app-service-limits"></a>应用服务限制
 
-以下应用服务限制包括 Web 应用、移动应用、API 应用的限制。
-
 [!INCLUDE [azure-websites-limits](../../../includes/azure-websites-limits.md)]
 
 ## <a name="automation-limits"></a>自动化限制
@@ -81,6 +79,10 @@ ms.locfileid: "108290374"
 ## <a name="azure-app-configuration"></a>Azure 应用配置
 
 [!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
+
+## <a name="azure-api-for-fhir-service-limits"></a>Azure API for FHIR 服务限制
+
+[!INCLUDE [functions-limits](../../../includes/azure-api-for-fhir-limits.md)]
 
 ## <a name="azure-cache-for-redis-limits"></a>Azure Redis 缓存限制
 
@@ -252,8 +254,7 @@ ms.locfileid: "108290374"
 [!INCLUDE [event-grid-limits](../../../includes/event-grid-limits.md)]
 
 ## <a name="event-hubs-limits"></a>事件中心限制
-
-[!INCLUDE [azure-servicebus-limits](../../../includes/event-hubs-limits.md)]
+[!INCLUDE [event-hubs-limits](../../../includes/event-hubs-limits.md)]
 
 ## <a name="iot-central-limits"></a>IoT Central 限制
 [!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
@@ -363,6 +364,8 @@ ms.locfileid: "108290374"
 ## <a name="sql-database-limits"></a>SQL 数据库限制
 
 有关 SQL 数据库的限制，请参阅[单一数据库的 SQL 数据库资源限制](../../azure-sql/database/resource-limits-vcore-single-databases.md)、[弹性池和共用数据库的 SQL 数据库资源限制](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)以及 [SQL 托管实例的 SQL 数据库资源限制](../../azure-sql/managed-instance/resource-limits.md)。
+
+每个 Azure SQL 数据库逻辑服务器的专用终结点的最大数量为 250。
 
 ## <a name="azure-synapse-analytics-limits"></a>Azure Synapse Analytics 限制
 

@@ -1,6 +1,6 @@
 ---
 title: 如何使用表标记训练自定义表单模型 - 表单识别器
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 了解如何有效地使用监督表标记标签。
 author: laujan
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 5422520c6a863876091d7820a5c07fa2413346c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cbf96a050124fe0d72bb0fc24be4ad7ea265fed
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467938"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374045"
 ---
 # <a name="use-table-tags-to-train-your-custom-form-model"></a>使用表标记训练自定义表单模型
 
@@ -47,7 +47,7 @@ ms.locfileid: "103467938"
 按照我们的快速入门来训练和使用自定义表单识别器模型：
 
 > [!div class="nextstepaction"]
-> [使用示例标签工具通过标签进行训练](quickstarts/label-tool.md)
+> [使用示例标签工具通过标签进行训练](label-tool.md)
 
 ## <a name="see-also"></a>请参阅
 

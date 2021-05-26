@@ -4,16 +4,18 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 3bf5ac4e01bca3bfc3cc8720a068bc53830b4747
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 966f6fb48053743995163bb608c13d52f98d33c7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104612210"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110487224"
 ---
 本教程介绍如何生成多组件示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure CLI 来查看它发送的遥测数据。 该示例应用程序以 Java 编写，包含在用于 Java 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure CLI 来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
 本教程介绍如何使用组件生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序以 Java 编写，包含在用于 Java 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
+
+[![浏览代码](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
 
 本教程介绍以下操作：
 

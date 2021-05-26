@@ -8,19 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 05/17/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: f1e509156beea0b3da3539306dc055291cbff0c8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 21f072747c9184fa15fd7e3477c0b4009cd885fc
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314178"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376231"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了让大家随时了解最新的开发成果，本文介绍了新版本和新功能。
+
+## <a name="may-2021"></a>2021 年 5 月
+
+* 现在可以使用文本分析资源访问[自定义问答](../qnamaker/custom-question-answering.md)（以前为 QnA Maker）。 
+
+### <a name="general-api-updates"></a>常规 API 更新
+
+* 发布了新 API v3.1-preview.5，其中包括 
+  * 异步[分析 API](how-tos/text-analytics-how-to-call-api.md?tabs=asynchronous) 现在支持情绪分析 (SA) 和观点挖掘 (OM)。
+  * 新查询参数 `LoggingOptOut` 现在可供希望不记录事件报告输入文本的客户使用。  在[数据隐私](/legal/cognitive-services/text-analytics/data-privacy?context=/azure/cognitive-services/text-analytics/context/context)一文中详细了解此参数。
+* 健康状况文本分析和分析异步操作现在在所有区域都可用
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -260,7 +271,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
     * 组织
     * 年龄（作为“数量”下的子类型）
     * 日期（作为 DateTime 下的子类型）
-    * Email 
+    * 电子邮件 
     * 电话号码（仅限美国）
     * URL
     * IP 地址

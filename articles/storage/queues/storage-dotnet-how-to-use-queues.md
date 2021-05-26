@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e32779e75480d365ec10e8c7f849fddd27c891c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: bec9ea1e01edc3e8289eb7212d3c5fecd673faaa
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275982"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477354"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Azure 队列存储入门（使用 .NET）
 
@@ -60,7 +60,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>使用 NuGet 安装所需包
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 为完成此教程，需要在项目中引用下述四个包：
 
@@ -76,7 +76,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 1. 在线搜索 `Azure.Storage.Queues`，然后选择“安装”以安装 Azure 存储客户端库及其依赖项。 这还会安装 Azure.Storage.Common 和 Azure.Core 库，它们是队列库的依赖项。
 1. 在线搜索 `System.Configuration.ConfigurationManager`，然后选择“安装”以安装 Configuration Manager。
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 为完成此教程，需要在项目中引用下述三个包：
 
@@ -152,11 +152,11 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 将以下 `using` 指令添加到 `Program.cs` 文件顶部：
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_UsingStatements":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 using System; // Namespace for Console output
@@ -169,13 +169,13 @@ using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
 
 ### <a name="create-the-queue-storage-client"></a>创建队列存储客户端
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 使用 [`QueueClient`](/dotnet/api/azure.storage.queues.queueclient) 类可以检索存储在队列存储中的队列。 下面是创建服务客户端的一种方法：
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_CreateClient":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 使用 [`CloudQueueClient`](/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet-legacy&preserve-view=true) 类可以检索存储在队列存储中的队列。 下面是创建服务客户端的一种方法：
 
@@ -196,11 +196,11 @@ CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
 此示例演示如何创建队列：
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_CreateQueue":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 // Retrieve storage account from connection string
@@ -221,13 +221,13 @@ queue.CreateIfNotExists();
 
 ## <a name="insert-a-message-into-a-queue"></a>在队列中插入消息
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 若要在现有队列中插入消息，请调用 [`SendMessage`](/dotnet/api/azure.storage.queues.queueclient.sendmessage) 方法。 消息可以是字符串（UTF-8 格式）或字节数组。 下面的代码将创建一个队列（如果该队列不存在）并插入一条消息：
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_InsertMessage":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 若要在现有队列中插入消息，请首先创建一个新的 [`CloudQueueMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy&preserve-view=true)。 接下来，调用 [`AddMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy&preserve-view=true) 方法。 可以通过字符串（采用 UTF-8 格式）或字节数组创建 `CloudQueueMessage`。 以下代码将创建队列（如果队列不存在）并插入消息：若要在现有队列中插入消息 `Hello, World`，请先创建新的 [`CloudQueueMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy&preserve-view=true)。 接下来，调用 [`AddMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy&preserve-view=true) 方法。 可以通过字符串（采用 UTF-8 格式）或字节数组创建 `CloudQueueMessage`。 下面是创建队列（如果不存在）并插入消息“`Hello, World`”的代码：
 
@@ -254,13 +254,13 @@ queue.AddMessage(message);
 
 ## <a name="peek-at-the-next-message"></a>扫视下一条消息
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 通过调用 [`PeekMessages`](/dotnet/api/azure.storage.queues.queueclient.peekmessages) 方法，可以速览队列中的消息，不将其从队列中删除。 如果没有为 `maxMessages` 参数传递值，则默认设置是速览一条消息。
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_PeekMessage":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 通过调用 [`PeekMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet-legacy&preserve-view=true) 方法，可以速览队列前面的消息，不将其从队列中删除。
 
@@ -288,11 +288,11 @@ Console.WriteLine(peekedMessage.AsString);
 
 可以更改队列中现有消息的内容。 如果消息表示工作任务，可使用此功能来更新该工作任务的状态。 以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 60 秒。 这会保存与消息关联的工作的状态，并额外为客户端提供一分钟的时间来继续处理消息。 可使用此方法跟踪队列消息上的多步骤工作流，即使处理步骤因硬件或软件故障而失败，也无需从头开始操作。 通常同时保留重试计数，当消息重试次数超过 *n* 时再删除该消息。 这可避免每次处理某条消息时都触发应用程序错误。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_UpdateMessage":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -317,13 +317,13 @@ queue.UpdateMessage(message,
 
 ## <a name="dequeue-the-next-message"></a>取消下一条消息的排队
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 可通过两个步骤取消消息在队列中的排队。 调用 [`ReceiveMessages`](/dotnet/api/azure.storage.queues.queueclient.receivemessages) 时，你会获得队列中的下一条消息。 从 `ReceiveMessages` 返回的消息对于从此队列读取消息的任何其他代码都是不可见的。 默认情况下，此消息持续 30 秒不可见。 若要完成从队列中删除消息的操作，还必须调用 [`DeleteMessage`](/dotnet/api/azure.storage.queues.queueclient.deletemessage)。 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 代码在处理消息后会立即调用 `DeleteMessage`。
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_DequeueMessage":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 代码通过两个步骤来取消对队列中某条消息的排队。 调用 [`GetMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet-legacy&preserve-view=true) 时，你会获得队列中的下一条消息。 从 `GetMessage` 返回的消息对于从此队列读取消息的任何其他代码都是不可见的。 默认情况下，此消息持续 30 秒不可见。 若要完成从队列中删除消息的操作，还必须调用 [`DeleteMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet-legacy&preserve-view=true)。 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 代码在处理消息后会立即调用 `DeleteMessage`。
 
@@ -353,11 +353,11 @@ queue.DeleteMessage(retrievedMessage);
 
 此示例展示了如何将 Async-Await 模式与公用队列存储 API 配合使用。 示例调用每个给定方法的异步版本，如每个方法的 `Async` 后缀所示。 使用异步方法时，Async-Await 模式会暂停本地执行，直到调用完成。 此行为允许当前的线程执行其他工作，这有助于避免性能瓶颈并提高应用程序的整体响应能力。 有关在 .NET 中使用 Async-Await 模式的详细信息，请参阅 [Async 和 Await（C# 和 Visual Basic）](/previous-versions/hh191443(v=vs.140))
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_AsyncQueue":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 ```csharp
 // Create the queue if it doesn't already exist
@@ -392,13 +392,13 @@ Console.WriteLine("Deleted message");
 
 可通过两种方式自定义队列中消息的检索。 首先，可获取一批消息（最多 32 条）。 其次，可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少时间来完全处理每个消息。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 以下代码示例使用 [`ReceiveMessages`](/dotnet/api/azure.storage.queues.queueclient.receivemessages) 方法在一次调用中获取 20 条消息。 然后，使用 `foreach` 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5 分钟超时时间对于所有消息都是同时开始的，因此在调用 `ReceiveMessages` 5 分钟后，尚未删除的任何消息都会再次变得可见。
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_DequeueMessages":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 以下代码示例使用 [`GetMessages`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet-legacy&preserve-view=true) 方法在一次调用中获取 20 条消息。 然后，使用 `foreach` 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5 分钟超时时间对于所有消息都是同时开始的，因此在调用 `GetMessages` 5 分钟后，尚未删除的任何消息都会再次变得可见。
 
@@ -424,13 +424,13 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 
 ## <a name="get-the-queue-length"></a>获取队列长度
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 可以获取队列中消息的估计数。 [`GetProperties`](/dotnet/api/azure.storage.queues.queueclient.getproperties) 方法返回包括消息计数在内的队列属性。 [`ApproximateMessagesCount`](/dotnet/api/azure.storage.queues.models.queueproperties.approximatemessagescount) 属性包含队列中的大致消息数。 此数字不低于队列中的实际消息数，但可能会更高。
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_GetQueueLength":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 可以获取队列中消息的估计数。 [`FetchAttributes`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet-legacy&preserve-view=true) 方法返回包括消息计数在内的队列属性。 [`ApproximateMessageCount`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet-legacy&preserve-view=true) 属性返回 `FetchAttributes` 方法检索到的最后一个值，而不会调用队列存储。
 
@@ -459,13 +459,13 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
 ## <a name="delete-a-queue"></a>删除队列
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 若要删除队列及其包含的所有消息，请对队列对象调用 [`Delete`](/dotnet/api/azure.storage.queues.queueclient.delete) 方法。
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_DeleteQueue":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
 若要删除队列及其包含的所有消息，请对队列对象调用 [`Delete`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet-legacy&preserve-view=true) 方法。
 

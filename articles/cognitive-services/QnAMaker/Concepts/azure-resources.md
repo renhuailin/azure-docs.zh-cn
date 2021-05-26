@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 2427fbdaa497ccb6d9a46330dcc6eb872e1d28ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e69b39415ea90deb6ce4477569d372f9bd8f2134
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102214161"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368632"
 ---
 # <a name="azure-resources-for-qna-maker"></a>用于 QnA Maker 的 Azure 资源
 
@@ -30,9 +30,9 @@ QnA Maker 使用多个 Azure 源，其中每个资源具有不同的用途。 �
 
 规划在单个 QnA Maker 资源中包含具有相同语言、相同区域和相同主题领域组合的所有知识库。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-当你首次开发 QnA Maker 托管的知识库时，在原型设计阶段，通常会将单个 QnA Maker 托管资源用于测试和生产。
+当你首次开发知识库时，在原型设计阶段，通常会将单个资源同时用于测试和生产。
 
 在进入项目的开发阶段时，应该考虑到：
 
@@ -50,13 +50,16 @@ QnA Maker 使用多个 Azure 源，其中每个资源具有不同的用途。 �
 
 * **需要的服务吞吐量**：
     * 根据需要为应用服务选择合适的[应用计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。 可以[纵向扩展](../../../app-service/manage-scale-up.md)或收缩应用。
-    * 这应当也会影响你的 Azure **认知搜索** SKU 选择，请参阅[此处](../../../search/search-sku-tier.md)的更多详细信息。 此外，你可能需要用副本来调整认知搜索的[容量](../../../search/search-capacity-planning.md)。
+    * 这应当也会影响你的 Azure **认知搜索** SKU 选择，请参阅 [此处](../../../search/search-sku-tier.md)的更多详细信息。 此外，你可能需要用副本来调整认知搜索的[容量](../../../search/search-capacity-planning.md)。
 
 * **知识库的大小和数量**：针对你的方案选择合适的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 通常，你会根据不同主题领域的数量来确定所需的知识库数量。 一个主题域（适用于单一语言）应位于一个知识库中。
 
-    可以在特定的层中发布 N-1 个知识库，其中，N 是该层中允许的最大索引数。 还需要检查每个层允许的文档最大大小和数量。
+你的 Azure 搜索服务资源必须创建于 2019 年 1 月之后，且不能位于免费（共享）层。 当前不支持在 Azure 门户中配置客户管理的密钥。
 
-    例如，如果你的层有 15 个允许的索引，则可以发布 14 个知识库（每个已发布的知识库有 1 个索引）。 第 15 个索引用于所有知识库以进行创作和测试。
+> [!IMPORTANT]
+> 可以在特定的层中发布 N-1 个知识库，其中，N 是该层中允许的最大索引数。 还需要检查每个层允许的文档最大大小和数量。
+
+例如，如果你的层有 15 个允许的索引，则可以发布 14 个知识库（每个已发布的知识库有 1 个索引）。 第 15 个索引用于所有知识库以进行创作和测试。
 
 * **源文档的数量**：QnA Maker 管理服务的免费 SKU 将可以通过门户和 API 管理的文档数限制为 3（每个文档的大小限制为 1 MB）。 标准 SKU 对于可以管理的文档数没有限制。 有关更多详细信息，请参阅[此处](https://aka.ms/qnamaker-pricing)。
 
@@ -68,25 +71,27 @@ QnA Maker 使用多个 Azure 源，其中每个资源具有不同的用途。 �
 | **开发/测试环境**   | 标准 SKU         | 共享      | 基本        | 分别最多发布 14 KB、2 GB 大小    |
 | **生产环境** | 标准 SKU         | 基本       | Standard     | 分别最多发布 49 KB、25 GB 大小 |
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 通常，你需要考虑三个参数：
 
-* **需要的服务吞吐量**：
-    * QnA Maker 托管（预览版）是一个免费的服务，对于管理 API 和预测 API，目前的吞吐量上限为 10 TPS。
-    * 这应当也会影响你的 Azure **认知搜索** SKU 选择，请参阅[此处](../../../search/search-sku-tier.md)的更多详细信息。 此外，你可能需要用副本来调整认知搜索的[容量](../../../search/search-capacity-planning.md)。
+* 你需要的吞吐量：
+    * 自定义问答（预览版）是一项免费功能，对于管理 API 和预测 API，目前的吞吐量上限为 10 TPS。
+    * 这应当也会影响你的 Azure **认知搜索** SKU 选择，请参阅 [此处](../../../search/search-sku-tier.md)的更多详细信息。 此外，你可能需要用副本来调整认知搜索的[容量](../../../search/search-capacity-planning.md)。
 
 * **知识库的大小和数量**：针对你的方案选择合适的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 通常，你会根据不同主题领域的数量来确定所需的知识库数量。 一个主题域（适用于单一语言）应位于一个知识库中。
 
-    使用 QnA Maker 托管（预览版）时，可以选择以一种或多种语言为知识库设置 QnA Maker 服务。 在 QnA Maker 托管（预览版）服务中创建第一个知识库时可以做出这项选择。
+    使用自定义问答（预览版）时，你可以选择以一种或多种语言为知识库设置文本分析服务。 在自定义问答（预览版）功能中创建第一个知识库时可以做出此选择。
 
-    ![QnA Maker 托管（预览版）多语言知识库选择](../media/concept-plan-your-knowledge-base/qnamaker-v2-select-multilanguage-knowledge-base.png)
+> [!div class="mx-imgBorder"]
+> ![多语言知识库选择](../media/qnamaker-create-publish-knowledge-base/select-language-custom-qna.png)
 
-    在特定的层中，可以发布单种语言的 N-1 个知识库或者不同语言的 N/2 个知识库，其中 N 是该层中允许的最大索引数。 还需要检查每个层允许的文档最大大小和数量。
+> [!IMPORTANT]
+> 在特定的层中，可以发布单种语言的 N-1 个知识库或者不同语言的 N/2 个知识库，其中 N 是该层中允许的最大索引数。 还需要检查每个层允许的文档最大大小和数量。
 
-    例如，如果你的层允许 15 个索引，则你可以发布同一语言的 14 个知识库（发布的每个知识库有 1 个索引）。 第 15 个索引用于所有知识库以进行创作和测试。 如果你选择拥有不同语言的知识库，则只能发布 7 个知识库。
+例如，如果你的层允许 15 个索引，则你可以发布同一语言的 14 个知识库（发布的每个知识库有 1 个索引）。 第 15 个索引用于所有知识库以进行创作和测试。 如果你选择拥有不同语言的知识库，则只能发布 7 个知识库。
 
-* **用作源的文档数**：QnA Maker 托管（预览版）是一个免费的服务，对于可添加为源的文档数没有限制。 有关更多详细信息，请参阅[此处](https://aka.ms/qnamaker-pricing)。
+* 用作源的文档数：自定义问答（预览版）是一项免费功能，对于可添加为源的文档数没有限制。 有关更多详细信息，请参阅[此处](https://aka.ms/qnamaker-pricing)。
 
 下表提供了一些概要准则。
 
@@ -110,9 +115,9 @@ QnA Maker 使用多个 Azure 源，其中每个资源具有不同的用途。 �
 | 100         | P3V2，10 个副本  | S3，12 个副本，3 个分区   |
 | 200 到 250         | P3V2，20 个副本 | S3，12 个副本，3 个分区    |
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-QnA Maker 托管是一个免费的服务，对于管理 API 和预测 API，目前的吞吐量上限为每秒 10 个事务。 若要以每秒 10 个事务作为服务的目标，我们建议使用 Azure 认知搜索的 S1（1 个实例）SKU。
+自定义问答（预览版）是一项免费功能。对于管理 API 和预测 API，目前的吞吐量上限都是每秒 10 个事务。 若要以每秒 10 个事务作为服务的目标，我们建议使用 Azure 认知搜索的 S1（1 个实例）SKU。
 
 ---
 
@@ -128,7 +133,7 @@ QnA Maker 托管是一个免费的服务，对于管理 API 和预测 API，目�
 
 通过[在 Azure 门户中更新应用服务](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)来获取最新的运行时更新。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 当你打算使用许多知识库时[升级](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure 认知搜索服务。
 
@@ -179,34 +184,37 @@ QnA Maker 服务处理两种类型的密钥：与应用服务中承载的运行�
     >[!NOTE]
     >如果你认为你的密钥已泄露，请刷新密钥。 这可能需要相应地更改客户端应用程序或机器人代码。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-QnA Maker 托管（预览版）服务处理两种类型的密钥：用于访问客户订阅中的服务的 **创作密钥** 和 **Azure 认知搜索密钥**。
+自定义问答（预览版）功能处理两种类型的密钥：创作密钥和 Azure 认知搜索密钥，用于访问客户订阅中的服务。
 
 通过 API 向服务发出请求时使用这些密钥。
 
-![密钥管理托管预览版](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
+> [!div class="mx-imgBorder"]
+> ![密钥管理托管预览版](../media/qnamaker-how-to-key-management/custom-question-answering-key-management.png)
 
 |名称|位置|用途|
 |--|--|--|
-|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 这些 API 可让你编辑知识库中的问题和答案，以及发布知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>可以在“密钥和终结点”页上的“认知服务”资源中找到这些密钥。 |
-|Azure 认知搜索管理密钥|[Azure 门户](../../../search/search-security-api-keys.md)|这些密钥用来与用户的 Azure 订阅中部署的 Azure 认知搜索服务通信。 将 Azure 认知搜索与 QnA Maker 托管（预览版）服务关联时，会自动将管理密钥传递到 QnA Maker 服务。 <br><br>可以在“密钥”页上的“Azure 认知搜索”资源中找到这些密钥。 |
+|创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 这些 API 可让你编辑知识库中的问题和答案，以及发布知识库。 这些密钥是在创建新服务时创建的。<br><br>可以在“密钥和终结点”页上的“认知服务”资源中找到这些密钥。 |
+|Azure 认知搜索管理密钥|[Azure 门户](../../../search/search-security-api-keys.md)|这些密钥用来与用户的 Azure 订阅中部署的 Azure 认知搜索服务通信。 将 Azure 认知搜索与自定义问答（预览版）功能关联时，会自动将管理密钥传递到 QnA Maker 服务。 <br><br>可以在“密钥”页上的“Azure 认知搜索”资源中找到这些密钥。 |
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>在 Azure 门户中查找创作密钥
 
-可以从你在其中创建了 QnA Maker 托管（预览版）资源的 Azure 门户中查看和重置创作密钥。
+你可以从 Azure 门户查看和重置创作密钥。在该门户的文本分析资源中，你已添加了自定义问答（预览版）功能。
 
-1. 转到 Azure 门户中的 QnA Maker 托管（预览版）资源，选择具有“认知服务”类型的资源：
+1. 转到 Azure 门户中的文本分析资源，选择具有“认知服务”类型的资源：
 
-    ![QnA Maker 托管（预览版）资源列表](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
+> [!div class="mx-imgBorder"]
+> ![自定义问答（预览版）资源列表](../media/qnamaker-how-to-setup-service/resources-created-question-answering.png)
 
 2. 转到“密钥和终结点”：
 
-    ![QnA Maker 托管（预览版）订阅密钥](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
+> [!div class="mx-imgBorder"]
+> ![自定义问答（预览版）订阅密钥](../media/qnamaker-how-to-key-management/custom-qna-keys-and-endpoint.png)
 
 ### <a name="update-the-resources"></a>更新资源
 
-了解如何升级知识库使用的资源。 QnA Maker 托管（预览版）在预览期是 **免费的**。 
+了解如何升级知识库使用的资源。 自定义问答（预览版）功能在预览期间免费。 
 
 ---
 
@@ -216,9 +224,9 @@ QnA Maker 托管（预览版）服务处理两种类型的密钥：用于访问�
 
 QnA Maker 的管理服务仅用于 QnA Maker 门户和初始数据处理。 此服务仅在“美国西部”区域中可用。 不会将任何客户数据存储在此美国西部服务中。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-在 QnA Maker 托管（预览版）中，管理和预测服务共置于同一区域。 目前，可在“美国中南部”、“北欧”和“澳大利亚东部”区域使用 QnA Maker 托管（预览版）。
+在自定义问答（预览版）功能中，管理服务和预测服务共置于同一区域。 目前，可在“美国中南部”、“北欧”和“澳大利亚东部”区域使用自定义问答（预览版）。
 
 ---
 
@@ -244,20 +252,20 @@ QnA Maker 资源的名称（如 `qna-westus-f0-b` ）也用于命名其他资源
 > [!TIP]
 > 使用命名约定在资源或资源组的名称中指示定价层。 如果在创建新知识库或添加新文档时收到错误，常见的原因是认知搜索定价层存在限制。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-QnA Maker 托管（预览版）资源的名称（如 `qna-westus-f0-b` ）也用于命名其他资源。
+文本分析资源的资源名称（例如 `qna-westus-f0-b`）还用于命名其他资源。
 
-在 Azure 门户的创建窗口中，可以创建 QnA Maker 托管（预览版）资源并为其他资源选择定价层。
-
-> [!div class="mx-imgBorder"]
-> ![用于创建 QnA Maker 托管（预览版）资源的 Azure 门户的屏幕截图](../media/qnamaker-how-to-setup-service/enter-qnamaker-v2-info.png) 创建资源后，它们的名称是相同的。
+在 Azure 门户的创建窗口中，可以创建文本分析资源并为其他资源选择定价层。
 
 > [!div class="mx-imgBorder"]
-> ![Azure 门户中 QnA Maker 托管（预览版）资源列表的屏幕截图](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
+> ![用于创建 QnA Maker 托管（预览版）资源的 Azure 门户的屏幕截图](../media/qnamaker-how-to-setup-service/custom-qna-create-button.png) 创建资源后，它们的名称是相同的。
+
+> [!div class="mx-imgBorder"]
+> ![Azure 门户中 QnA Maker 托管（预览版）资源列表的屏幕截图](../media/qnamaker-how-to-setup-service/resources-created-question-answering.png)
 
 > [!TIP]
-> 创建 QnA Maker 资源时请创建一个新资源组。 这样，在按资源组进行搜索时，便可以查看与 QnA Maker 托管（预览版）资源关联的所有资源。
+> 创建文本分析资源时请创建一个新资源组。 这样，在按资源组进行搜索时，便可以查看与文本分析资源关联的所有资源。
 
 > [!TIP]
 > 使用命名约定在资源或资源组的名称中指示定价层。 如果在创建新知识库或添加新文档时收到错误，常见的原因是认知搜索定价层存在限制。
@@ -333,16 +341,16 @@ QnA Maker 创建多个 Azure 资源。 若要减少管理工作量并从成本�
 |Application Insights|✔|可以共享|
 |搜索服务|✔|1. `testkb` 是 QnAMaker 服务的保留名称；不能由其他服务使用。<br>2. 名称的同义词映射 `synonym-map` 为 QnAMaker 服务保留。<br>3. 已发布的知识库数受搜索服务层级限制。 如果有可用的索引，其他服务可以使用这些索引。|
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-使用 QnA Maker 托管（预览版）创建的每个 Azure 资源都有特定的用途：
+使用自定义问答（预览版）功能创建的每个 Azure 资源都有特定用途：
 
-* QnA Maker 资源
+* 文本分析资源
 * 认知搜索资源
 
-### <a name="qna-maker-resource"></a>QnA Maker 资源
+### <a name="text-analytics-resource"></a>文本分析资源
 
-QnA Maker 托管（预览版）资源提供对创作和发布 API 的访问，承载排名运行时，并提供遥测功能。
+使用自定义问答（预览版）功能的文本分析资源提供了对创作和发布 API 的访问，托管着排名运行时并提供遥测。
 
 ### <a name="azure-cognitive-search-resource"></a>Azure 认知搜索资源
 
@@ -359,7 +367,7 @@ QnA Maker 托管（预览版）资源提供对创作和发布 API 的访问，�
 
 #### <a name="language-usage"></a>语言的使用
 
-使用 QnA Maker 托管（预览版）时，可以选择以一种或多种语言为知识库设置 QnA Maker 服务。 在 QnA Maker 服务中创建第一个知识库期间可以做出这项选择。 请参阅[此文](#pricing-tier-considerations)了解如何启用每个知识库的语言设置。
+使用自定义问答（预览版）时，你可以选择以一种或多种语言为知识库设置你的服务。 在文本分析服务中，你可以在创建第一个知识库期间做出此选择。 请参阅[此文](#pricing-tier-considerations)了解如何启用每个知识库的语言设置。
 
 ---
 

@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 05/17/2021
 ms.author: banders
-ms.openlocfilehash: 37ce1a292b6ff2efe0abecdb2ab934f096689f87
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: b98e9af17b20482a1c5c3178aa183198e936bef7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "105560547"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069195"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>查看和下载 Microsoft Azure 发票
 
@@ -116,7 +116,7 @@ MOSP 计费帐户可获得以下发票：
 
 ## <a name="get-mosp-subscription-invoice-in-email"></a>通过电子邮件获取 MOSP 订阅发票
 
-若要选择通过电子邮件接收某个订阅或支持计划的发票，必须对该订阅或支持计划具有帐户管理员角色。 电子邮件发票仅适用于订阅和支持计划，而不适用于预留项或 Azure 市场产品购买。 选择启用此接收方式后，可以添加更多的收件人，这样，他们也可以通过电子邮件收到发票。
+若要选择通过电子邮件接收某个订阅或支持计划的发票，必须对该订阅或支持计划具有帐户管理员角色。 选择启用此接收方式后，可以添加更多的收件人，这样，他们也可以通过电子邮件收到发票。
 
 1.  登录 [Azure 门户](https://portal.azure.com)。
 2.  搜索“成本管理 + 计费”。  

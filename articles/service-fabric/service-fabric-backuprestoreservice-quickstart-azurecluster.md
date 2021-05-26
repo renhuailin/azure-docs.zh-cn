@@ -3,23 +3,23 @@ title: Azure Service Fabric 中的定期备份和还原
 description: 使用 Service Fabric 的定期备份和还原功能来实现应用程序数据的定期数据备份。
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: 42097b50277e78b3f0e8f5e61a2bf70cc08dbc02
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbbeac5e5efad4e19561ba5f812e29d029de8317
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103198711"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059763"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>在 Azure Service Fabric 群集中定期备份和还原
 > [!div class="op_single_selector"]
-> * [Azure 上的群集](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
+> * [Azure 上的群集](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 > * [独立群集](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
-> 
+>
 
 Service Fabric 是一种分布式系统平台，用于轻松开发和管理基于微服务的可靠的分布式云应用程序。 它允许运行无状态和有状态的微服务。 有状态服务可在请求和响应或完整的事务之外维持可变的权威状态。 如果有状态服务长时间不可用或由于灾难而丢失信息，可能需要还原到其状态的某个最近备份，以便在其备份后继续提供服务。
 
 Service Fabric 跨多个节点复制状态，确保服务高度可用。 即使群集中的一个节点出现故障，服务也将继续可用。 然而，在某些情况下，仍然需要服务数据能够可靠应对更广泛的故障。
- 
+
 例如，服务可能要备份其数据，以防止出现以下情况：
 - 整个 Service Fabric 群集永久丢失。
 - 大部分服务分区副本永久丢失
@@ -29,7 +29,7 @@ Service Fabric 跨多个节点复制状态，确保服务高度可用。 即使�
 
 Service Fabric 提供了一个内置 API，用于执行时间点[备份和还原](service-fabric-reliable-services-backup-restore.md)。 应用程序开发者可使用这些 API 定期备份服务状态。 此外，如果服务管理员想要在特定时间从服务外部触发备份，就像在升级应用程序之前一样，开发者需要将备份（和还原）作为服务的 API 公开。 维护备份是以上操作的额外成本。 例如，你可能希望每半小时进行 5 次递增备份，然后进行完整备份。 完整备份后，可删除以前的递增备份。 此方法需要额外的代码，因而在应用程序开发期间产生额外成本。
 
-Service Fabric 中的备份和还原服务可以轻松自动备份存储在有状态服务中的信息。 定期备份应用程序数据是防止数据丢失和服务不可用的基础。 Service Fabric 提供可选的备份和还原服务，因此无需编写任何其他代码，便可配置有状态可靠服务（包括角色服务）的定期备份。 它还有助于还原以前执行的备份。 
+Service Fabric 中的备份和还原服务可以轻松自动备份存储在有状态服务中的信息。 定期备份应用程序数据是防止数据丢失和服务不可用的基础。 Service Fabric 提供可选的备份和还原服务，因此无需编写任何其他代码，便可配置有状态可靠服务（包括角色服务）的定期备份。 它还有助于还原以前执行的备份。
 
 
 Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关的以下功能：
@@ -55,7 +55,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 ```
 
 > [!NOTE]
-> 如果 PowerShellGet 版本低于 1.6.0，则需要进行更新以添加对 -AllowPrerelease 标志的支持：
+> 如果 PowerShellGet 版本低于 1.6.0，则需要进行更新以添加对“-AllowPrerelease”标志的支持：
 >
 > `Install-Module -Name PowerShellGet -Force`
 
@@ -63,7 +63,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 
 ```powershell
 
-    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 
 ```
 
@@ -77,7 +77,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 
 
 ### <a name="using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
-首先，需要在群集中启用备份和还原服务  。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建资源管理器模板。 通过以下步骤启用备份和还原服务  ：
+首先，需要在群集中启用备份和还原服务  。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.servicefabric/service-fabric-secure-cluster-5-node-1-nodetype)或创建资源管理器模板。 通过以下步骤启用备份和还原服务  ：
 
 1. 检查 `apiversion` 是否针对 `Microsoft.ServiceFabric/clusters` 资源设置为 `2018-02-01`，如果没有，请按以下代码片段所示进行更新：
 
@@ -91,7 +91,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-2. 现在，通过在 `properties` 部分下添加以下 `addonFeatures` 部分来启用备份和还原服务，如以下代码片段所示： 
+2. 现在，通过在 `properties` 部分下添加以下 `addonFeatures` 部分来启用备份和还原服务，如以下代码片段所示：
 
     ```json
         "properties": {
@@ -102,7 +102,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
         }
 
     ```
-3. 配置 X.509 证书以用于加密凭据。 此步骤非常重要，可确保在保留之前对提供用于连接存储的凭据进行加密。 通过在 `fabricSettings` 部分下添加以下 `BackupRestoreService` 部分来配置加密证书，如以下代码片段所示： 
+3. 配置 X.509 证书以用于加密凭据。 此步骤非常重要，可确保在保留之前对提供用于连接存储的凭据进行加密。 通过在 `fabricSettings` 部分下添加以下 `BackupRestoreService` 部分来配置加密证书，如以下代码片段所示：
 
     ```json
     "properties": {
@@ -119,7 +119,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-4. 通过前述更改更新群集模板后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行  。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
+4. 通过前述更改更新群集模板后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行  。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>启用可靠有状态服务和 Reliable Actors 的定期备份
 让我们通过一些步骤来启用可靠有状态服务和 Reliable Actors 的定期备份。 这些步骤假定
@@ -129,7 +129,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 
 ### <a name="create-backup-policy"></a>创建备份策略
 
-第一步是创建描述备份计划的备份策略、备份数据的目标存储、策略名称、触发完整备份之前允许的最大递增备份以及备份存储的保留策略。 
+第一步是创建描述备份计划的备份策略、备份数据的目标存储、策略名称、触发完整备份之前允许的最大递增备份以及备份存储的保留策略。
 
 有关备份存储，请使用上面创建的 Azure 存储帐户。 容器 `backup-container` 配置为存储备份。 在备份上传期间，将创建具有该名称的容器（如果该容器尚未存在）。 使用 Azure 存储帐户的有效连接字符串填充 `ConnectionString`，并将 `account-name` 替换为你的存储帐户名，将 `account-key` 替换为你的存储帐户密钥。
 
@@ -159,7 +159,7 @@ $ScheduleInfo = @{
     ScheduleKind = 'FrequencyBased'
 }
 
-$RetentionPolicy = @{ 
+$RetentionPolicy = @{
     RetentionPolicyType = 'Basic'
     RetentionDuration =  'P10D'
 }
@@ -212,10 +212,10 @@ $body = (ConvertTo-Json $BackupPolicyReference)
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/EnableBackup?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
-``` 
+```
 
 #### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
-请确保已启用 Service Fabric Explorer 的[高级模式](service-fabric-visualizing-your-cluster.md#backup-and-restore) 
+请确保已启用 Service Fabric Explorer 的[高级模式](service-fabric-visualizing-your-cluster.md#backup-and-restore)
 
 1. 选择应用程序，然后访问操作。 单击“启用/更新应用程序备份”。
 
@@ -228,7 +228,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ### <a name="verify-that-periodic-backups-are-working"></a>验证定期备份是否正常工作
 
-在应用程序级别启用备份后，属于应用程序下的可靠有状态服务和 Reliable Actors 的所有分区将根据关联的备份策略开始定期备份。 
+在应用程序级别启用备份后，属于应用程序下的可靠有状态服务和 Reliable Actors 的所有分区将根据关联的备份策略开始定期备份。
 
 ![分区备份运行状况事件][0]
 
@@ -239,7 +239,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
 
 ```powershell
-    
+
 Get-SFApplicationBackupList -ApplicationId WordCount
 ```
 
@@ -269,7 +269,7 @@ BackupType              : Full
 EpochOfLastBackupRecord : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
 LsnOfLastBackupRecord   : 3334
 CreationTimeUtc         : 2018-04-06T20:55:16Z
-FailureError            : 
+FailureError            :
 
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
 BackupChainId           : b9577400-1131-4f88-b309-2bb1e943322c
@@ -281,7 +281,7 @@ BackupType              : Incremental
 EpochOfLastBackupRecord : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
 LsnOfLastBackupRecord   : 3552
 CreationTimeUtc         : 2018-04-06T21:10:27Z
-FailureError            : 
+FailureError            :
 
 BackupId                : 69436834-c810-4163-9386-a7a800f78359
 BackupChainId           : b9577400-1131-4f88-b309-2bb1e943322c
@@ -293,7 +293,7 @@ BackupType              : Incremental
 EpochOfLastBackupRecord : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
 LsnOfLastBackupRecord   : 3764
 CreationTimeUtc         : 2018-04-06T21:25:36Z
-FailureError            : 
+FailureError            :
 ```
 
 #### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer

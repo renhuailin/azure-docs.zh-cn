@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0463ccf12a254ebda1ee3d6f9cc9bfe7f43b4e80
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 1892d304e4e90d3957a722473c6b2ec40018d3ce
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178711"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379295"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 
@@ -49,7 +49,7 @@ ms.locfileid: "108178711"
 |德国|
 |意大利语|
 |日语|
-|朝鲜语|
+|韩语|
 |葡萄牙语|
 |西班牙语|
 
@@ -64,7 +64,7 @@ ms.locfileid: "108178711"
 
 ![向现有 KB 添加聊天内容](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 ![向现有 KB 预览版添加聊天](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
 

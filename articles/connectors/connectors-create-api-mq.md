@@ -1,196 +1,215 @@
 ---
 title: 连接到 IBM MQ 服务器
-description: 使用 Azure 或本地 IBM MQ 服务器和 Azure 逻辑应用发送和检索消息
+description: 使用 Azure 逻辑应用从工作流连接到本地或 Azure 中的 MQ 服务器。
 services: logic-apps
 ms.suite: integration
 author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 03/10/2021
+ms.date: 05/25/2021
 tags: connectors
-ms.openlocfilehash: a07eb6e592c68794f0e4038a7cf9a42bd396b47a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e852f0ce1584a0858f9523c1ea055d4f2cd616d2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103495226"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376248"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 IBM MQ 服务器
+# <a name="connect-to-an-ibm-mq-server-from-a-workflow-in-azure-logic-apps"></a>从 Azure 逻辑应用中的工作流连接到 IBM MQ 服务器
 
-MQ 连接器会发送和检索存储在 MQ 服务器（本地或 Azure）中的消息。 此连接器包括要在 TCP/IP 网络上与远程 IBM MQ 服务器计算机通信的 Microsoft MQ 客户端。 本文是使用 MQ 连接器的初学者指南。 可以首先浏览队列中的单个消息，然后尝试其他操作。
+MQ 连接器有助于将逻辑应用工作流连接到本地或 Azure 中的 IBM MQ 服务器。 之后，你便可让工作流接收和发送存储在 MQ 服务器中的消息。 本文通过介绍如何连接到 MQ 服务器和向工作流添加 MQ 操作，提供了 MQ 连接器入门使用指南。 例如，首先可以在队列上浏览一条消息，然后尝试其他操作。
 
-MQ 连接器包含以下操作，但不提供触发器：
+此连接器包含一个通过 TCP/IP 网络与远程 MQ 服务器通信的 Microsoft MQ 客户端。 可以连接到以下 IBM WebSphere MQ 版本：
 
-- 浏览单条消息，但不从 MQ 服务器中删除这条消息。
-- 浏览一批消息，但不从 MQ 服务器中删除这些消息。
-- 接收单条消息，并从 MQ 服务器中删除这条消息。
-- 接收一批消息，并从 MQ 服务器中删除这些消息。
-- 将单条消息发送到 MQ 服务器。
+* MQ 7.5
+* MQ 8.0
+* MQ 9.0、9.1 和 9.2
 
-下面是官方支持的 IBM WebSphere MQ 版本：
+<a name="available-operations"></a>
 
-  * MQ 7.5
-  * MQ 8.0
-  * MQ 9.0
-  * MQ 9.1
+## <a name="available-operations"></a>可用操作
 
-## <a name="prerequisites"></a>先决条件
+* 多租户 Azure 逻辑应用：创建逻辑应用（使用量）资源时，仅可使用托管 MQ 连接器连接到 MQ 服务器。 此连接器仅提供操作，而不提供触发器。
 
-* 如果使用本地 MQ 服务器，需要在网络中的服务器上[安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
+* 单租户 Azure 逻辑应用：创建基于单租户的逻辑应用工作流时，可以使用托管 MQ 连接器（仅包括操作）或内置 MQ 操作（包括触发器和操作）连接到 MQ 服务器。  
 
-  > [!NOTE]
-  > 如果 MQ 服务器公开可用，或在 Azure 中可用，则不必使用数据网关。
+有关托管连接器与内置操作之间的差异的详细信息，请查看[逻辑应用中的关键术语](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
-  * 要使 MQ 连接器正常工作，安装本地数据网关的服务器还需要安装 .NET Framework 4.6。
-  
-  * 安装本地数据网关后，还需要[为 MQ 连接器用于访问本地 MQ 服务器的本地数据网关创建 Azure 网关资源](../logic-apps/logic-apps-gateway-connection.md)。
+#### <a name="managed"></a>[托管](#tab/managed)
 
-* 要在其中使用 MQ 连接器的逻辑应用。 MQ 连接器没有任何触发器，因此必须先将触发器添加到逻辑应用。 例如，可以使用[定期触发器](../connectors/connectors-native-recurrence.md)。 如果你不熟悉逻辑应用，请尝试[创建第一个逻辑应用的快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+下表仅介绍了可用于 MQ 的部分托管操作：
+
+* 浏览单条消息或一组消息，但不从 MQ 服务器中将其删除。 对于多条消息，可以指定每批返回的最大消息数量。 否则，将返回所有消息。
+* 从 MQ 服务器中删除单条或一组消息。
+* 接收单条消息或一组消息，然后从 MQ 服务器中将其删除。
+* 将单条消息发送到 MQ 服务器。
+
+有关所有托管连接器操作和属性、限制等其他技术信息，请查看 [MQ 连接器的参考页](/connectors/mq/)。
+
+#### <a name="built-in"></a>[内置](#tab/built-in)
+
+下表仅介绍了可用于 MQ 的部分内置操作：
+
+* 当队列中有一条可用消息时，请执行一些操作。
+* 当从队列接收一条或多条消息（自动完成）时，请执行一些操作。
+* 当从队列接收一条或多条消息（速览锁定）时，请执行一些操作。
+* 从队列接收单条消息或一组消息。 对于多条消息，可以指定每批返回的最大消息数量和最大批大小（以 KB 为单位）。
+* 将单条消息或一组消息发送到 MQ 服务器。
+
+这些内置 MQ 操作还具有以下功能，另有[单租户逻辑应用服务](../logic-apps/single-tenant-overview-compare.md)中逻辑应用的所有其他功能的优势：
+
+* 用于传输中数据的传输层安全性 (TLS) 加密
+* 发送和接收操作的消息编码
+* 当逻辑应用使用 Azure Functions 高级计划时，支持 Azure 虚拟网络集成
+
+---
 
 ## <a name="limitations"></a>限制
 
-MQ 连接器不支持或不使用消息的 Format 字段，也不执行任何字符集转换。 连接器仅将出现在消息字段中的所有数据放入 JSON 消息中，然后将其发送出去。
+MQ 连接器不使用消息的“Format”字段，也不执行任何字符集转换。 连接器仅将出现在消息字段中的所有数据放入 JSON 消息中，然后将其发送出去。
+
+## <a name="prerequisites"></a>先决条件
+
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+* 如果使用本地 MQ 服务器，则在网络中的服务器上[安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 要使 MQ 连接器正常工作，采用本地数据网关的服务器还必须安装 .NET Framework 4.6。
+
+  安装网关后，还必须在 Azure 中创建数据网关资源。 MQ 连接器会使用此资源访问 MQ 服务器。 有关详细信息，请查看[设置数据网关连接](../logic-apps/logic-apps-gateway-connection.md)。 
+
+  > [!NOTE]
+  > 下列情况无需网关：
+  > 
+  > * 你将使用内置操作，而不使用托管连接器。
+  > * MQ 服务器公开可用或在 Azure 中可用。
+
+* 要在其中访问 MQ 服务器的逻辑应用工作流。 逻辑应用资源必须与 Azure 中的网关资源位于同一位置。
+
+  MQ 连接器没有任何触发器，因此工作流必须已经以触发器开头，或者首先必须将触发器添加到工作流。 例如，可以使用[定期触发器](../connectors/connectors-native-recurrence.md)。
+
+  如果不熟悉 Azure 逻辑应用，请尝试此[创建示例逻辑应用工作流的快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)（该工作流在多租户逻辑应用服务中运行）。
 
 <a name="create-connection"></a>
 
-## <a name="create-mq-connection"></a>创建 MQ 连接
+## <a name="create-an-mq-connection"></a>创建 MQ 连接 
 
-如果你在添加 MQ 操作时还没有 MQ 连接，系统会提示你创建该连接，例如：
+首次添加 MQ 操作时，系统会提示创建与 MQ 服务器的连接。
 
-![提供连接信息](media/connectors-create-api-mq/connection-properties.png)
+> [!NOTE]
+> MQ 连接器目前仅支持服务器身份验证，不支持客户端身份验证。 有关详细信息，请参阅[连接和身份验证问题](#connection-problems)。
+
+#### <a name="managed"></a>[托管](#tab/managed)
 
 1. 如果要连接到本地 MQ 服务器，请选择“通过本地数据网关连接”。
 
 1. 提供 MQ 服务器的连接信息。
 
-   * 对于“服务器”，可以输入 MQ 服务器名称，或输入后跟冒号和端口号的 IP 地址。
+   | 属性 | 本地或 Azure | 说明 |
+   |----------|----------------------|-------------|
+   | **网关** | 仅限本地 | 选择“通过本地数据网关连接”。 |
+   | **连接名称** | 推送、请求和匿名 | 要为你的连接使用的名称 |
+   | **Server** | 推送、请求和匿名 | 使用以下任何一值： <p><p>- MQ 服务器主机名 <br>- IP 地址，后跟冒号和端口号 |
+   | 队列管理器名称 | 推送、请求和匿名 | 要使用的队列管理器 |
+   | **频道名称** | 推送、请求和匿名 | 连接到队列管理器的通道 |
+   | 默认队列名称 | 推送、请求和匿名 | 队列的默认名称 |
+   | 连接身份 | 推送、请求和匿名 | 连接到 MQ 服务器的用户名 |
+   | **用户名** | 推送、请求和匿名 | 用户名凭据 |
+   | **密码** | 推送、请求和匿名 | 密码凭据 |
+   | **启用 SSL?** | 仅限本地 | 使用传输层安全性 (TLS) 和安全套接字层 (SSL) |
+   | 网关 - 订阅 | 仅限本地 | 与 Azure 中的网关资源关联的 Azure 订阅 |
+   | 网关 - 连接网关 | 仅限本地 | 要使用的网关资源 |
+   ||||
 
-   * 若要使用传输层安全性 (TLS) 或安全套接字层 (SSL)，请选择“启用 SSL?”。
+   例如：
 
-     MQ 连接器目前仅支持服务器身份验证，不支持客户端身份验证。 有关详细信息，请参阅[连接和身份验证问题](#connection-problems)。
-
-1. 在“网关”部分执行以下步骤：
-
-   1. 在“订阅”列表中，请选择与 Azure 网关资源关联的 Azure 订阅。
-
-   1. 从“连接网关”列表中选择要使用的 Azure 网关资源。
+   ![显示托管 MQ 连接详细信息的屏幕截图。](media/connectors-create-api-mq/managed-connection-properties.png)
 
 1. 完成操作后，选择“创建”。
+
+#### <a name="built-in"></a>[内置](#tab/built-in)
+
+1. 提供 MQ 服务器的连接信息。
+
+   | 属性 | 本地或 Azure | 说明 |
+   |----------|----------------------|-------------|
+   | **连接名称** | 推送、请求和匿名 | 要为你的连接使用的名称 |
+   | **服务器名称** | 推送、请求和匿名 | MQ 服务器名称或 IP 地址 |
+   | **端口号** | 推送、请求和匿名 | 连接到主机上的队列管理器的 TCP 端口号 |
+   | **频道** | 推送、请求和匿名 | 连接到队列管理器的通道 |
+   | 队列管理器名称 | 推送、请求和匿名 | 要使用的队列管理器 |
+   | 默认队列名称 | 推送、请求和匿名 | 队列的默认名称 |
+   | 连接身份 | 推送、请求和匿名 | 连接到 MQ 服务器的用户名 |
+   | **用户名** | 推送、请求和匿名 | 用户名凭据 |
+   | **密码** | 推送、请求和匿名 | 密码凭据 |
+   | 使用 TLS | 推送、请求和匿名 | 使用传输层安全性 (TLS) |
+   ||||
+
+   例如：
+
+   ![显示内置 MQ 连接详细信息的屏幕截图。](media/connectors-create-api-mq/built-in-connection-properties.png)
+
+1. 完成操作后，选择“创建”。
+
+---
+
+<a name="add-action"></a>
+
+## <a name="add-an-mq-action"></a>添加 MQ 操作
+
+在 Azure 逻辑应用中，操作会紧跟某个触发器或另一操作，并在工作流中执行某些操作。 以下步骤介绍了添加操作（例如“浏览单条消息”）的一般方法。
+
+1. 在逻辑应用设计器中，打开工作流（如果尚未打开）。
+
+1. 在触发器或另一操作下，添加一个新步骤。
+
+   若要在现有步骤之间添加一个步骤，请将鼠标移到箭头上方。 选择出现的加号 (+)，然后选择“添加操作”。
+
+1. 在操作搜索框中，输入 `mq`。 从“操作”列表中，选择名为“浏览消息”的操作。
+
+1. 如果系统提示创建 MQ 服务器连接，请[提供请求的连接信息](#create-connection)。
+
+1. 在该操作中，提供操作所需的属性值。
+
+   有关更多属性，请打开“添加新参数”列表，然后选择要添加的属性。
+
+1. 完成后，请在设计器工具栏上选择“保存”。
+
+1. 若要测试工作流，请在设计器工具栏中选择“运行”。
+
+   运行完成后，设计器将显示工作流的运行历史记录以及步骤的状态。
+
+1. 若要查看每个已运行（未跳过）步骤的输入和输出，请展开或选择该步骤。
+
+   * 若要查看与输入相关的更多详细信息，请选择“显示原始输入”。
+   * 若要查看与输出相关的更多详细信息，请选择“显示原始输出”。 如果将“IncludeInfo”设置为“true”，则会包括更多输出。 
+
+## <a name="troubleshoot-problems"></a>排查问题
+
+### <a name="failures-with-browse-or-receive-actions"></a>浏览或接收操作失败
+
+如果在空队列上运行浏览或接收操作，该操作将失败并出现以下标头输出：
+
+![MQ 的“无消息”错误](media/connectors-create-api-mq/mq-no-message-error.png)
 
 <a name="connection-problems"></a>
 
 ### <a name="connection-and-authentication-problems"></a>连接和身份验证问题
 
-当逻辑应用尝试连接到本地 MQ 服务器时，可能会出现以下错误：
+工作流尝试连接到本地 MQ 服务器时，你可能会收到此错误：
 
 `"MQ: Could not Connect the Queue Manager '<queue-manager-name>': The Server was expecting an SSL connection."`
 
 * 如果你直接在 Azure 中使用 MQ 连接器，则 MQ 服务器需要使用一个由受信任的[证书颁发机构](https://www.ssl.com/faqs/what-is-a-certificate-authority/)颁发的证书。
 
-* 如果使用的是本地数据网关，请尽可能尝试使用受信任的[证书颁发机构](https://www.ssl.com/faqs/what-is-a-certificate-authority/)颁发的证书。 但如果不能使用此选项，可以使用自签名证书，此类证书不是由受信任的[证书颁发机构](https://www.ssl.com/faqs/what-is-a-certificate-authority/)颁发的，被认为安全性较差。
+* MQ 服务器要求你界定要与 TLS 连接配合使用的密码规范。 但是，出于安全目的，也是为了包含最佳安全套件，Windows 操作系统会发送一组受支持的密码规范。
 
-  若要安装服务器的自签名证书，可以使用 **Windows 证书管理器** (certmgr.msc) 工具。 对于此方案，你需要将证书安装到运行本地数据网关服务的本地计算机上“受信任的根证书颁发机构”级别的“本地计算机”证书存储中。
+  MQ 服务器运行所在的操作系统会选择要使用的套件。 若要使配置匹配，必须更改 MQ 服务器设置，以便密码规范与 TLS 协商中所选的选项匹配。
 
-  1. 在运行本地数据网关服务的计算机上，打开“开始”菜单，找到并选择“管理用户证书”。
-
-  1. 在 Windows 证书管理器工具打开以后，转到“证书 - 本地计算机” >  “受信任的根证书颁发机构”文件夹，然后安装此证书。 
-
-     > [!IMPORTANT]
-     > 确保在“证书 - 本地计算机” > “受信任的根证书颁发机构”存储中安装证书。
-
-* MQ 服务器需要你定义要用于 TLS/SSL 连接的密码规范。 但是，.NET 中的 SslStream 不允许你指定密码规范的顺序。 若要解决此限制，可以更改 MQ 服务器配置，使之与连接器在 TLS/SSL 协商中发送的套件中的第一个密码规范相匹配。
-
-  尝试连接时，MQ 服务器会记录一条事件消息，指示连接由于另一端使用了错误的密码规范而失败。 事件消息包含在列表中首先出现的密码规范。 更新通道配置中的密码规范，使之与事件消息中的密码规范匹配。
-
-## <a name="browse-single-message"></a>浏览单条消息
-
-1. 在逻辑应用的触发器或另一操作下，选择“新建步骤”。
-
-1. 在搜索框中输入 `mq`，然后选择“浏览消息”操作。
-
-   ![选择“浏览消息”操作](media/connectors-create-api-mq/browse-message.png)
-
-1. 如果尚未创建 MQ 连接，系统会提示你[创建该连接](#create-connection)。
-
-1. 创建连接后，设置“浏览消息”操作的属性：
-
-   | 属性 | 说明 |
-   |----------|-------------|
-   | **队列** | 如果不同于连接中指定的队列，则指定该队列。 |
-   | “MessageId”、“CorrelationId”、“GroupId”和其他属性 | 根据不同的 MQ 消息属性找到对应的消息 |
-   | **IncludeInfo** | 若要在输出中包括其他消息信息，请选择“true”。 若要在输出中省略其他消息信息，请选择“false”。 |
-   | **超时** | 输入一个值以确定在空队列中等待消息到达的时间长度。 如果未输入任何内容，则检索队列中的第一个消息，并且不花费时间等待消息出现。 |
-   |||
-
-   例如：
-
-   ![“浏览消息”操作的属性](media/connectors-create-api-mq/browse-message-properties.png)
-
-1. 完成后，请在设计器工具栏上选择“保存”。 若要测试应用，请选择“运行”。
-
-   运行完成后，设计器会显示工作流步骤及其状态，以便你查看输出。
-
-1. 若要查看每个步骤的详细信息，请单击该步骤的标题栏。 若要查看某个步骤的输出的详细信息，请选择“显示原始输出”。
-
-   ![浏览消息输出](media/connectors-create-api-mq/browse-message-output.png)
-
-   下面是一些示例性的原始输出：
-
-   ![浏览消息原始输出](media/connectors-create-api-mq/browse-message-raw-output.png)
-
-1. 如果将“IncludeInfo”设置为 **true**，则会显示更多输出内容：
-
-   ![浏览消息包含信息](media/connectors-create-api-mq/browse-message-include-info.png)
-
-## <a name="browse-multiple-messages"></a>浏览多个消息
-
-“浏览消息”操作包含“BatchSize”选项，用于指示要从队列返回的消息数。 如果“BatchSize”没有值，则返回所有消息。 返回的输出是消息数组。
-
-1. 按照前面的步骤操作，但改为添加“浏览消息”操作。
-
-1. 如果尚未创建 MQ 连接，系统会提示你[创建该连接](#create-connection)。 否则，默认情况下，会使用之前配置的第一个连接。 若要创建新连接，请选择“更改连接”。 或者，选择其他连接。
-
-1. 提供该操作的信息。
-
-1. 保存并运行逻辑应用。
-
-   逻辑应用运行完后会显示输出，下面是来自“浏览消息”操作的一些示例输出：
-
-   ![“浏览消息”输出示例](media/connectors-create-api-mq/browse-messages-output.png)
-
-## <a name="receive-single-message"></a>接收单条消息
-
-“接收消息”操作具有与“浏览消息”操作相同的输入和输出。 使用“接收消息”时，消息会从队列中删除。
-
-## <a name="receive-multiple-messages"></a>接收多个消息
-
-“接收消息”操作具有与“浏览消息”操作相同的输入和输出。 使用“接收消息”时，消息会从队列中删除。
-
-> [!NOTE]
-> 对没有任何消息的队列运行“浏览”或“接收”操作时，操作会失败，并显示以下输出：
->
-> ![MQ 的“无消息”错误](media/connectors-create-api-mq/mq-no-message-error.png)
-
-## <a name="send-message"></a>发送消息
-
-1. 请遵循前面的步骤，但改为添加“发送消息”操作。
-
-1. 如果尚未创建 MQ 连接，系统会提示你[创建该连接](#create-connection)。 否则，默认情况下，会使用之前配置的第一个连接。 若要创建新连接，请选择“更改连接”。 或者，选择其他连接。
-
-1. 提供该操作的信息。 对于“MessageType”，请选择有效的消息类型：“数据报”、“答复”  或“请求”
-
-   ![“发送消息”操作的属性](media/connectors-create-api-mq/send-message-properties.png)
-
-1. 保存并运行逻辑应用。
-
-   逻辑应用完成运行后，下面是“发送消息”操作中的一些示例输出：
-
-   ![“发送消息”输出示例](media/connectors-create-api-mq/send-message-output.png)
+  尝试连接时，MQ 服务器会记录一条事件消息，即连接因 MQ 服务器选择了不正确的密码规范而失败。 这条事件消息包含 MQ 服务器从列表中选择的加密规范。 更新通道配置中的密码规范，以匹配事件消息中的密码规范。
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关连接器的 Swagger 文件中所述的操作和限制等技术详细信息，请查看[连接器的参考页](/connectors/mq/)。
+有关托管连接器的中所有操作和属性、限制等其他技术信息，请查看 [MQ 连接器的参考页](/connectors/mq/)。
 
 ## <a name="next-steps"></a>后续步骤
 

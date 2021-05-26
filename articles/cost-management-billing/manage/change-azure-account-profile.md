@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 04/08/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f394b6b44b2030253f7b78ec68459819c82c3c27
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 43b3332629922bb60eefb68782b84e996b692848
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480896"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461475"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>更改 Azure 计费帐户的联系人信息
 
@@ -79,6 +79,20 @@ ms.locfileid: "107480896"
 1. 在左侧菜单中的“设置”下，选择“属性” 。
 1. 选择“更新 PO 编号”。
 1. 输入 PO 编号，然后选择“更新”。
+
+## <a name="update-your-tax-id"></a>更新纳税人标识号
+
+请确保在移动订阅后更新你的纳税人标识号。 纳税人标识号用于免税计算，并且会显示在发票上。
+
+更新计费帐户信息
+
+1. 登录[适用于企业的 Microsoft Store](https://businessstore.microsoft.com/) 或[适用于教育的 Microsoft Store](https://educationstore.microsoft.com/)。
+1. 选择“管理”，然后选择“计费帐户” 。
+1. 在“概述”上，选择“编辑计费帐户信息” 。
+1. 进行更新，然后选择“保存”。
+
+[了解有关如何更新计费帐户设置的详细信息](/microsoft-store/update-microsoft-store-for-business-account-settings)。
+
 
 ## <a name="service-and-marketing-emails"></a>服务和营销电子邮件
 

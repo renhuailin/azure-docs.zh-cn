@@ -3,12 +3,12 @@ title: 消息复制任务模式 - Azure 服务总线 | Microsoft Docs
 description: 本文为实现特定的消息复制任务模式提供了详细的指导
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: d823ee7ccd4f53bfc3e10211a4f44908273a110d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e6161d39281dc48284737cf3ee1f83853db17ef
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97657366"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462311"
 ---
 # <a name="message-replication-tasks-patterns"></a>消息复制任务模式
 
@@ -59,7 +59,7 @@ SRV 记录遵循常见约定，以 `_azure_servicebus._amqp` 为前缀，并包�
 
 | CNAME 记录                 | Alias
 |------------------------------|-------------------------------------------------------------
-| `servicebus.test.example.com`  | `test1.test.example.com`
+| `servicebus.test.example.com`  | `sb1.test.example.com`
 
 使用允许显式查询 CNAME 和 SRV 记录的 DNS 客户端（Java 和 .NET 的内置客户端只允许简单地将名称解析为 IP 地址），然后可以解析所需的终结点。 例如，对于 [DnsClient.NET](https://dnsclient.michaco.net/)，lookup 函数为：
 

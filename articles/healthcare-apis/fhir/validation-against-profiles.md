@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 05/06/2021
 ms.author: ginle
-ms.openlocfilehash: 679d8b2ac86ec63d33fcd5cd069a3135d33ab981
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 2c367dbed14e0dba9a8a95a3ce2709d2415c7cd6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109657036"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466694"
 ---
 # <a name="how-to-validate-fhir-resources-against-profiles"></a>如何根据配置文件验证 FHIR 资源
 
@@ -66,9 +66,96 @@ Argonaut |<http://www.fhir.org/guides/argonaut/pd/>
 
 ## <a name="accessing-profiles-and-storing-profiles"></a>访问配置文件和存储配置文件
 
+### <a name="storing-profiles"></a>存储配置文件
+
+若要将配置文件存储到服务器，可以执行 `POST` 请求：
+
+```rest
+POST http://<your FHIR service base URL>/{Resource}
+```
+
+其中 `{Resource}` ，字段将替换为 `StructureDefinition` ，您可以使用 `StructureDefinition` `POST` 或格式的服务器的资源 `JSON` `XML` 。 例如，如果要存储配置文件 `us-core-allergyintolerance` ，可以：
+
+```rest
+POST http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance
+```
+
+存储并检索 US Core 的云配置文件的位置：
+
+```json
+{
+    "resourceType" : "StructureDefinition",
+    "id" : "us-core-allergyintolerance",
+    "text" : {
+        "status" : "extensions"
+    },
+    "url" : "http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance",
+    "version" : "3.1.1",
+    "name" : "USCoreAllergyIntolerance",
+    "title" : "US  Core AllergyIntolerance Profile",
+    "status" : "active",
+    "experimental" : false,
+    "date" : "2020-06-29",
+        "publisher" : "HL7 US Realm Steering Committee",
+    "contact" : [
+    {
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "http://www.healthit.gov"
+        }
+      ]
+    }
+  ],
+    "description" : "Defines constraints and extensions on the AllergyIntolerance resource for the minimal set of data to query and retrieve allergy information.",
+
+...
+```
+
+大多数配置文件具有资源类型 `StructureDefinition` ，但它们也可以是 和 类型， `ValueSet` `CodeSystem` 它们是 [术语资源](http://hl7.org/fhir/terminologies.html) 。 例如，如果使用 JSON 格式的配置文件，服务器将返回存储的配置文件，并为其分配 ，就像使用 `POST` `ValueSet` `id` 一样 `StructureDefinition` 。 下面是上传"条件严重性"配置文件时获取的示例，[](https://www.hl7.org/fhir/valueset-condition-severity.html)该配置文件指定条件/诊断严重性等级的条件：
+
+```json
+{
+    "resourceType": "ValueSet",
+    "id": "35ab90e5-c75d-45ca-aa10-748fefaca7ee",
+    "meta": {
+        "versionId": "1",
+        "lastUpdated": "2021-05-07T21:34:28.781+00:00",
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+        ]
+    },
+    "text": {
+        "status": "generated"
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+            "valueCode": "pc"
+        }
+    ],
+    "url": "http://hl7.org/fhir/ValueSet/condition-severity",
+    "identifier": [
+        {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:oid:2.16.840.1.113883.4.642.3.168"
+        }
+    ],
+    "version": "4.0.1",
+    "name": "Condition/DiagnosisSeverity",
+    "title": "Condition/Diagnosis Severity",
+    "status": "draft",
+    "experimental": false,
+    "date": "2019-11-01T09:29:23+11:00",
+    "publisher": "FHIR Project team",
+...
+```
+
+可以看到 是 ，配置文件的 还指定 `resourceType` `ValueSet` `url` 这是类型 `ValueSet` `"http://hl7.org/fhir/ValueSet/condition-severity"` ：。
+
 ### <a name="viewing-profiles"></a>查看配置文件
 
-您可以使用请求来访问服务器中的现有自定义配置文件 `GET` 。 所有有效的配置文件（例如实现指南中具有有效规范 Url 的配置文件）都应可通过查询来访问：
+可以使用请求访问服务器中的现有自定义 `GET` 配置文件。 所有有效的配置文件（如实现指南中具有有效规范 URL 的配置文件）都应可通过查询访问：
 
 ```rest
 GET http://<your FHIR service base URL>/StructureDefinition?url={canonicalUrl} 
@@ -115,55 +202,6 @@ GET http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.o
 - `http://hl7.org/fhir/Observation.profile.json.html`
 - `http://hl7.org/fhir/Patient.profile.json.html`
 
-### <a name="storing-profiles"></a>存储配置文件
-
-若要将配置文件存储到服务器，可以执行 `POST` 请求：
-
-```rest
-POST http://<your FHIR service base URL>/{Resource}
-```
-
-其中，字段 `{Resource}` 将替换为 ，并且你的资源会以 `StructureDefinition` 或 `StructureDefinition` `POST` 格式被导出 `JSON` `XML` 到服务器。
-
-大多数配置文件具有资源类型 `StructureDefinition` ，但它们也可以是 和 类型， `ValueSet` `CodeSystem` 它们是 [术语资源](http://hl7.org/fhir/terminologies.html) 。 例如，如果使用 JSON 格式的配置文件，服务器将返回存储的配置文件，并为其分配 ，就像使用 `POST` `ValueSet` `id` 一样 `StructureDefinition` 。 下面是上传"条件严重性"配置文件时获取的示例，[](https://www.hl7.org/fhir/valueset-condition-severity.html)该配置文件指定条件/诊断严重性等级的条件：
-
-```json
-{
-    "resourceType": "ValueSet",
-    "id": "35ab90e5-c75d-45ca-aa10-748fefaca7ee",
-    "meta": {
-        "versionId": "1",
-        "lastUpdated": "2021-05-07T21:34:28.781+00:00",
-        "profile": [
-            "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
-        ]
-    },
-    "text": {
-        "status": "generated",
-        "div": "<div>!-- Snipped for Brevity --></div>"
-    },
-    "extension": [
-        {
-            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
-            "valueCode": "pc"
-        }
-    ],
-    "url": "http://hl7.org/fhir/ValueSet/condition-severity",
-    "identifier": [
-        {
-            "system": "urn:ietf:rfc:3986",
-            "value": "urn:oid:2.16.840.1.113883.4.642.3.168"
-        }
-    ],
-    "version": "4.0.1",
-    "name": "Condition/DiagnosisSeverity",
-    "title": "Condition/Diagnosis Severity",
-    "status": "draft",
-    "experimental": false,
-    "date": "2019-11-01T09:29:23+11:00",
-    "publisher": "FHIR Project team",
-...
-```
 
 ### <a name="profiles-in-the-capability-statement"></a>功能语句中的配置文件
 
@@ -172,9 +210,9 @@ POST http://<your FHIR service base URL>/{Resource}
 - `CapabilityStatement.rest.resource.profile`
 - `CapabilityStatement.rest.resource.supportedProfile`
 
-这些说明将显示配置文件的所有规范，该规范描述对资源的总体支持，包括对基数、绑定、扩展或其他限制的任何约束。 因此，当你以 的形式创建配置文件，以及资源元数据来查看完整的功能语句时，你将在参数旁边看到你上传的配置文件 `POST` `StructureDefinition` `GET` `supportedProfiles` 的所有详细信息。
+这些说明将显示配置文件的所有规范，该规范描述对资源的总体支持，包括对基数、绑定、扩展或其他限制的任何约束。 因此，当你的格式为的 `POST` 配置文件 `StructureDefinition` ，而 `GET` 资源元数据要查看 full 功能语句时，你会看到参数旁边已 `supportedProfiles` 上传的配置文件上的所有详细信息。
 
-例如，如果你的 `POST` "美国核心患者"配置文件，其开头如下所示：
+例如，如果你 `POST` 使用的是美国核心患者配置文件，此配置文件的开头如下所示：
 
 ```json
 {
@@ -191,7 +229,7 @@ POST http://<your FHIR service base URL>/{Resource}
 ...
 ```
 
-并发送 `GET` 对 的请求 `metadata` ：
+并发送 `GET` 请求 `metadata` ：
 
 ```rest
 GET http://<your FHIR service base URL>/metadata
@@ -239,7 +277,7 @@ GET http://<your FHIR service base URL>/{resource}/{resource ID}/$validate
 GET http://my-fhir-server.azurewebsites.net/Patient/a6e11662-def8-4dde-9ebc-4429e68d130e/$validate
 ```
 
-在上面的示例中，您将验证现有 `Patient` 资源 `a6e11662-def8-4dde-9ebc-4429e68d130e` 。 如果有效，你将获得如下所示的 `OperationOutcome` ：
+在以上示例中，将验证现有资源 `Patient` `a6e11662-def8-4dde-9ebc-4429e68d130e` 。 如果有效，将获取 `OperationOutcome` 如下所示的 ：
 
 ```json
 {
@@ -254,7 +292,7 @@ GET http://my-fhir-server.azurewebsites.net/Patient/a6e11662-def8-4dde-9ebc-4429
 }
 ```
 
-如果资源无效，您将收到错误代码和错误消息，其中包含有关资源无效原因的详细信息。 或错误表示无法执行验证本身，并且资源 `4xx` `5xx` 是否有效是未知的。 返回 `OperationOutcome` 的错误消息示例可能如下所示：
+如果资源无效，将收到错误代码和错误消息，并详细说明资源无效的原因。 或错误表示无法执行验证本身，并且资源 `4xx` `5xx` 是否有效是未知的。 返回 `OperationOutcome` 的错误消息示例可能如下所示：
 
 ```json
 {
@@ -342,7 +380,7 @@ POST http://my-fhir-server.azurewebsites.net/Patient/$validate
 ```
 
 如果资源符合提供的 并且配置文件存在于系统中，则服务器将按照上述 `Resource.meta.profile` 配置设置执行相应操作。 如果提供的配置文件不存在于服务器中，则验证请求将被忽略，并留在 中 `Resource.meta.profile` 。
-验证通常是一项成本高昂的操作，因此它通常仅在测试服务器或一小部分资源中运行 - 因此，在服务器端启用或关闭验证操作非常重要。 如果服务器配置指定在资源"创建/更新"上选择退出验证，则用户可以通过在"创建/更新"请求的 中指定该行为来 `header` 替代该行为：
+验证通常是一项成本高昂的操作，因此它通常仅在测试服务器或一小部分资源中运行 - 因此，在服务器端启用或关闭验证操作非常重要。 如果服务器配置指定不使用资源创建/更新验证，则用户可以通过在 `header` 创建/更新请求的中指定此行为来重写此行为：
 
 ```rest
 x-ms-profile-validation: true
@@ -350,7 +388,7 @@ x-ms-profile-validation: true
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了 FHIR 配置文件，以及如何使用 FHIR 配置文件验证$validate。 若要了解适用于 FHIR 的其他支持功能的 Azure API，请参阅：
+本文介绍了 FHIR 配置文件，以及如何使用 $validate 针对配置文件验证资源。 若要了解适用于 FHIR 的其他支持功能的 Azure API，请参阅：
 
 >[!div class="nextstepaction"]
 >[FHIR 支持的功能](fhir-features-supported.md)

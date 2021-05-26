@@ -5,14 +5,14 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: helohr
-ms.reviewer: sefriend
+ms.reviewer: denisgun
 manager: femila
-ms.openlocfilehash: cb2bd4ddb553380a037f58cf8c51e80247e9c055
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7928c86375eb66a6518326bfcadfb1278193cfc3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108077643"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454064"
 ---
 # <a name="proxy-server-guidelines-for-windows-virtual-desktop"></a>适用于 Windows 虚拟桌面的代理服务器准则
 
@@ -111,8 +111,8 @@ Windows 虚拟桌面客户端支持使用系统设置或[网络代理 CSP](/wind
 | Windows 桌面 | 是 |
 | Web 客户端 | 是 |
 | Android | 否 |
-| iOS | 否 |
-| macOS | 否 |
+| iOS | 是 |
+| macOS | 是 |
 | Windows 应用商店 | 是 |
 
 有关 Linux 上基于瘦客户端的代理支持的详细信息，请参阅[瘦客户端支持](linux-overview.md)。

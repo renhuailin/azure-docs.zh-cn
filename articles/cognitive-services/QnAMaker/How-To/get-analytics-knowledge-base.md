@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5f149dd6db82b66b45a4c995e2004936481af786
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41477b99c6bb07ab836f6c4ef75a06b2f642f3a2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96352416"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375418"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>获取有关知识库的分析
 
@@ -48,11 +48,11 @@ ms.locfileid: "96352416"
 
     [![运行查询以确定用户的问题、答案和得分](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-QnA Maker 托管（预览版本）使用 Azure 诊断日志记录来存储遥测数据和聊天日志。 请按照以下步骤运行示例查询，获取有关 QnA Maker 知识库使用情况的分析。
+自定义问答（预览版）使用 Azure 诊断日志记录来存储遥测数据和聊天日志。 请按照以下步骤运行示例查询，获取有关 QnA Maker 知识库使用情况的分析。
 
-1. 为 QnA Maker 托管（预览版本）服务[启用诊断日志记录](../../diagnostic-logging.md)。
+1. 使用自定义问答（预览版）功能为文本分析服务[启用诊断日志记录](../../diagnostic-logging.md)。
 
 2. 在上一步中，为日志记录选择“审核”、“RequestResponse”、“AllMetrics”和“跟踪” 
 
@@ -132,7 +132,7 @@ traces | extend id = operation_ParentId
 | order  by timestamp  desc
 ```
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 ### <a name="all-qna-chat-log"></a>所有 QnA 聊天日志
 

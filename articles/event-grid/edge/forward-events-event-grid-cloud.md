@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5a35cfb293ca7cda0a9a1d24f4faf88ef0ed733d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86171595"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378311"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>教程：将事件转接到事件网格云
 
@@ -26,7 +27,7 @@ ms.locfileid: "86171595"
 ## <a name="prerequisites"></a>先决条件 
 若要完成本教程，您需要：
 
-* “Azure 订阅” - 如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
+* Azure 订阅 - 创建[免费帐户](https://azure.microsoft.com/free)（如果还没有的话）。 
 * “Azure IoT 中心和 IoT Edge 设备” - 按照 [Linux](../../iot-edge/quickstart-linux.md) 或 [Windows 设备](../../iot-edge/quickstart.md)快速入门中的步骤进行操作（如果尚未安装）。
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
@@ -52,12 +53,12 @@ ms.locfileid: "86171595"
           }
         }
     ```
-1. 运行以下命令来创建主题。 应返回 HTTP 状态代码 200 正常。
+1. 运行下面的命令来创建主题。 应返回 HTTP 状态代码 200 OK。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
-1. 运行以下命令验证是否已成功创建主题。 应返回 HTTP 状态代码 200 正常。
+1. 运行下面的命令，以验证主题是否已成功创建。 应返回 HTTP 状态代码 200 OK。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
@@ -120,13 +121,13 @@ ms.locfileid: "86171595"
         }
     ```
 
-2. 运行以下命令以创建订阅。 应返回 HTTP 状态代码 200 正常。
+2. 运行以下命令以创建订阅。 应返回 HTTP 状态代码 200 OK。
 
      ```sh
      curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
      ```
 
-3. 运行以下命令以验证是否已成功创建订阅。 应返回 HTTP 状态代码 200 正常。
+3. 运行下面的命令，以验证订阅是否已成功创建。 应返回 HTTP 状态代码 200 OK。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview

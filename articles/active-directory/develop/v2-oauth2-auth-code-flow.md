@@ -13,12 +13,12 @@ ms.date: 03/29/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 05426f6f9eb01fa5a23b6bb20a2b1c50b8720ab1
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 3e3f729243f4bcd8f40ca681bd1c0d7675696e27
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227715"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110455142"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -67,7 +67,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> 单击下面的链接以执行此请求！ 登录之后，浏览器应重定向至地址栏中具有 `code` 的 `https://localhost/myapp/`。
+> 单击下面的链接以执行此请求！ 登录之后，浏览器应重定向至地址栏中具有 `code` 的 `http://localhost/myapp/`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 | 参数    | 必需/可选 | 说明 |
@@ -163,7 +163,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |---------------|-------------|--------------|
 |`response_type`| 必须 | 添加 `id_token` 是向服务器表明：应用程序希望 `/authorize` 终结点的响应中有一个 ID 令牌。  |
 |`scope`| 必须 | 对于 ID 令牌，必须对其进行更新以包括 ID 令牌作用域 - `openid`，还可以包括 `profile` 和 `email`。 |
-|`nonce`| 必须|     包含在请求中的值，由应用生成，这些值将作为声明包含在生成的 id_token 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 该值通常是随机的唯一字符串，可用于标识请求的来源。 |
+|`nonce`| 必须|     包含在请求中的值，由应用生成，这些值将作为声明包含在生成的 id_token 中。 然后，应用可以验证此值，以减少令牌重播攻击。 该值通常是随机的唯一字符串，可用于标识请求的来源。 |
 |`response_mode`| 建议 | 指定将生成的令牌送回到应用程序时应该使用的方法。 默认为 `query` 的目的是仅发送授权代码，但如果请求包括 id_token `response_type`，则为 `fragment`。  但是，建议应用使用 `form_post`，尤其是使用 `http:/localhost` 作为重定向 URI 时。 |
 
 使用 `fragment` 作为响应模式可能会导致从重定向读取代码的 Web 应用出现问题，因为浏览器不会将片段传递给 Web 服务器。  在这些情况下，应用应该使用 `form_post` 响应模式，以确保将所有数据发送到服务器。 
@@ -370,7 +370,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`        | 必需     | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。   |
 | `client_id`     | 必填    | [Azure 门户 – 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给你的应用的应用程序（客户端）ID。 |
 | `grant_type`    | 必填    | 必须是授权代码流的此阶段的 `refresh_token` 。 |
-| `scope`         | 必需    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于原始 authorization_code 请求阶段中所请求的范围，或者为该范围的子集。 如果此请求中指定的范围涵盖多个资源服务器，Microsoft 标识平台将返回第一个范围中指定的资源的令牌。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
+| `scope`         | 可选    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于原始 authorization_code 请求阶段中所请求的范围，或者为该范围的子集。 如果此请求中指定的范围涵盖多个资源服务器，Microsoft 标识平台将返回第一个范围中指定的资源的令牌。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
 | `refresh_token` | 必需    | 在流的第二个阶段获取的 refresh_token。 |
 | `client_secret` | 必填（对于 Web 应用） | 在应用注册门户中为应用创建的应用程序机密。 它不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序密钥，它能够将 client_secret 安全地存储在服务器端。 此机密需要进行 URL 编码。 有关详细信息，请参阅 [URI 一般语法规范](https://tools.ietf.org/html/rfc3986#page-12)。 |
 

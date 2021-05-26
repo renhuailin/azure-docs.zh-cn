@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 40d54d9e495efef4b0e1ddb8dc8b8c7114421414
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: c7d960735ee3ebd056858b93576d219ade514a00
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165562"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459694"
 ---
 # <a name="tutorial-work-with-azure-queue-storage-queues-in-net"></a>教程：在 .NET 中使用 Azure 队列存储队列
 
@@ -101,7 +101,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 1. 使用 `dotnet add package` 命令将 Azure 存储客户端库添加到项目。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    在控制台窗口中从项目文件夹运行以下命令。
 
@@ -109,7 +109,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
    dotnet add package Azure.Storage.Queues
    ```
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    在控制台窗口中从项目文件夹运行以下命令。
 
@@ -129,11 +129,11 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 1. 打开 `Program.cs` 源文件，紧接在 `using System;` 语句的后面添加以下命名空间。 此应用将使用这些命名空间中的类型来连接 Azure 存储和使用队列。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
@@ -165,21 +165,21 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 1. 在 `Main` 方法中，将 `Console.WriteLine("Hello, World");` 代码替换为以下行，该行从环境变量中获取连接字符串。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
 1. 将以下代码添加到 `Main` 以创建 queue 对象，稍后要将它传入到 send 和 receive 方法。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
 
@@ -191,13 +191,13 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 1. 向 `Program` 类添加以下 `InsertMessageAsync` 方法。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    向此方法传递一个队列引用。 通过调用 [`CreateIfNotExistsAsync`](/dotnet/api/azure.storage.queues.queueclient.createifnotexistsasync) 创建新队列（如果尚不存在）。 然后，通过调用 [`SendMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) 将 `newMessage` 添加到队列中。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_InsertMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    向此方法传递一个队列引用。 通过调用 [`CreateIfNotExistsAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync) 创建新队列（如果尚不存在）。 然后，通过调用 [`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) 将 `newMessage` 添加到队列中。
 
@@ -205,13 +205,13 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 1. **可选：** 默认情况下，消息的最大生存时间默认设置为 7 天。 可以为消息生存时间指定任何正数。 下面的代码片段添加一个永不过期的消息。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
     若要添加未过期的消息，请在对 `SendMessageAsync` 的调用中使用 `Timespan.FromSeconds(-1)`。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
     若要添加未过期的消息，请在对 `AddMessageAsync` 的调用中使用 `Timespan.FromSeconds(-1)`。
 
@@ -227,7 +227,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 1. 向 `Program` 类添加一个名为 `RetrieveNextMessageAsync` 的新方法。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    此方法通过调用 [`ReceiveMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) 接收来自队列的消息，在第一个参数中传递 `1`，仅检索队列中的下一条消息。 收到消息后，通过调用 [`DeleteMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync) 从队列中删除该消息。
 
@@ -235,7 +235,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    此方法通过调用 [`GetMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync) 从队列接收消息。 收到消息后，通过调用 [`DeleteMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync) 从队列中删除该消息。
 
@@ -249,11 +249,11 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 1. 扩展 `RetrieveNextMessageAsync` 方法以包含有关是否删除空队列的提示。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
@@ -269,11 +269,11 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 1. 扩展 `Main` 方法以检查命令行参数并等待用户输入。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_Main":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_Main":::
 
@@ -283,11 +283,11 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 
 下面是此项目的完整代码列表。
 
-   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+   # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_AllCode":::
 
-   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
+   # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_AllCode":::
    ---
