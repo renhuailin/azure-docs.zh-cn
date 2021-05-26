@@ -1,6 +1,6 @@
 ---
 title: 自定义模型 - 表单识别器
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 了解与表单识别器 API 自定义模型相关的概念 - 用法和限制。
 services: cognitive-services
 author: laujan
@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9d339d02310fddc3e5fd463f7d37e253614dba17
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 329176e40b1a8cf187a4b2154a26b1adbbca4233
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067582"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374725"
 ---
 # <a name="form-recognizer-custom-models"></a>表单识别器自定义模型
 
@@ -46,7 +46,7 @@ ms.locfileid: "106067582"
 > [!div class="nextstepaction"]
 >[&#120785;. 训练自定义模型](quickstarts/client-library.md#train-a-custom-model)
 
-可以在[使用](quickstarts/client-library.md#train-a-model-with-labels)或[不使用](quickstarts/client-library.md#train-a-model-without-labels)标记数据集的情况下训练模型。 未标记的数据集仅依赖于布局 API 来检测和识别关键信息，而无需添加人工输入。 标记的数据集也依赖于布局 API，但包含了附加的人工输入，例如特定的标签和字段位置。 若要同时使用标记和未标记的数据，请从标记训练数据的至少五个相同类型的已完成表单开始，然后将未标记的数据添加到所需数据集。  
+你可以在使用或不使用标记数据集的情况下[训练模型](quickstarts/client-library.md#train-a-custom-model)。 未标记的数据集仅依赖于布局 API 来检测和识别关键信息，而无需添加人工输入。 标记的数据集也依赖于布局 API，但包含了附加的人工输入，例如特定的标签和字段位置。 若要同时使用标记和未标记的数据，请从标记训练数据的至少五个相同类型的已完成表单开始，然后将未标记的数据添加到所需数据集。  
 
 >[!div class="nextstepaction"]
 >[&#120786;. 用自定义模型分析文档](quickstarts/client-library.md#analyze-forms-with-a-custom-model)
@@ -63,5 +63,5 @@ ms.locfileid: "106067582"
 浏览我们的 API 参考文档，详细了解表单识别器客户端库。
 
 > [!div class="nextstepaction"]
-> [表单识别器 API 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
+> [表单识别器 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)
 >

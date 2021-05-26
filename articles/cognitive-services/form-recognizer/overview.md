@@ -11,12 +11,12 @@ ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自动化数据处理, 文档处理, 自动化数据输入, 表单处理
-ms.openlocfilehash: b3991d6cce5505a88250a4f470565f6b191667e2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fc87a621aa58d058efc2420c7baaa81fffdb69e6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453364"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374065"
 ---
 # <a name="what-is-azure-form-recognizer"></a>什么是 Azure 表单识别器？
 
@@ -31,7 +31,7 @@ Azure 表单识别器是 [Azure 应用 AI 服务](https://aka.ms/applied-ai-serv
 * [**概念**](concept-layout.md)对服务的功能和特性进行了深入说明。
 * [**快速入门**](quickstarts/client-library.md)介绍了入门说明，指导您完成向服务发出请求。
 * [**操作指南**](build-training-data-set.md)包含以更具体的方式或自定义方式使用服务的说明。
-* [**教程**](tutorial-ai-builder.md)是较长的指南，向您演示了如何在更广泛的业务解决方案中使用该服务作为组件。
+* [**教程**](tutorial-bulk-processing.md)是较长的指南，向您演示了如何在更广泛的业务解决方案中使用该服务作为组件。
 
 ## <a name="form-recognizer-features"></a>表单识别器功能
 

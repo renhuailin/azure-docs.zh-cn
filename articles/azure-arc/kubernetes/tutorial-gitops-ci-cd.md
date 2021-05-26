@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: e27923ff1f29163f5d3390c2c92a11f3adfa5c87
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3d7b88007a27b05119ebe93217c64279c8c541ff
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126608"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373397"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>教程：使用已启用 Azure Arc 的 Kubernetes 群集通过 GitOps 实现 CI/CD
 
@@ -40,7 +40,7 @@ ms.locfileid: "108126608"
 * 完成[上一篇教程](./tutorial-use-gitops-connected-cluster.md)，了解如何为 CI/CD 环境部署 GitOps。
 * 了解此功能的[优势和体系结构](./conceptual-configurations.md)。
 * 验证是否具有：
-  * 一个 [已连接且已启用 Azure Arc 的 Kubernetes 群集](./quickstart-connect-cluster.md#connect-an-existing-kubernetes-cluster)，名为 **arc-cicd-cluster**。
+  * 一个 [已连接且已启用 Azure Arc 的 Kubernetes 群集](./quickstart-connect-cluster.md#3-connect-an-existing-kubernetes-cluster)，名为 **arc-cicd-cluster**。
   * 一个使用 [AKS 集成](../../aks/cluster-container-registry-integration.md)或[非 AKS 群集身份验证](../../container-registry/container-registry-auth-kubernetes.md)的已连接 Azure 容器注册表 (ACR)。
   * 对 [Azure Repos](/azure/devops/repos/get-started/what-is-repos) 和 [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-get-started) 的“生成管理员”与“项目管理员”权限。
 * 安装以下版本 >= 1.0.0 的已启用 Azure Arc 的 Kubernetes CLI 扩展：
@@ -181,14 +181,13 @@ kubectl create secret docker-registry <secret-name> \
 | ENVIRONMENT_NAME | Dev |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_REPO | GitOps 存储库的 Git 连接字符串 |
-| PAT | 具有读/写源权限的[已创建 PAT 令牌](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate#create-a-pat)。 请保存该令牌，供稍后在创建 `stage` 变量组时使用。 |
+| ORGANIZATION_NAME | Azure DevOps 组织的名称 |
+| PROJECT_NAME | Azure DevOps 中 GitOps 项目的名称 |
+| REPO_URL | GitOps 存储库的完整 URL |
 | SRC_FOLDER | `azure-vote` | 
 | TARGET_CLUSTER | `arc-cicd-cluster` |
 | TARGET_NAMESPACE | `dev` |
 
-> [!IMPORTANT]
-> 将 PAT 标记为机密类型。 在应用程序中，考虑从 [Azure 密钥保管库](/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)链接机密。
->
 ### <a name="stage-environment-variable-group"></a>暂存环境变量组
 
 1. 克隆 **az-vote-app-dev** 变量组。
@@ -201,6 +200,20 @@ kubectl create secret docker-registry <secret-name> \
 | TARGET_NAMESPACE | `stage` |
 
 现已准备好部署到 `dev` 和 `stage` 环境。
+
+## <a name="give-more-permissions-to-the-build-service"></a>向生成服务授予更多权限
+CD 管道使用正在运行的生成的安全令牌对 GitOps 存储库进行身份验证。 管道需要更多的权限来创建新分支、推送更改和创建拉取请求。
+
+1. 从 Azure DevOps 项目主页中转到 `Project settings`。
+1. 选择 `Repositories`。
+1. 选择 `<GitOps Repo Name>`。
+1. 选择 `Security`。 
+1. 对于 `<Project Name> Build Service (<Organization Name>)`，允许 `Contribute`、`Contribute to pull requests` 和 `Create branch`。
+
+有关详细信息，请参阅：
+- [向生成服务授予 VC 权限](https://docs.microsoft.com/azure/devops/pipelines/scripts/git-commands?view=azure-devops&tabs=yaml&preserve-view=true#version-control )
+- [管理生成服务帐户权限](https://docs.microsoft.com/azure/devops/pipelines/process/access-tokens?view=azure-devops&tabs=yaml&preserve-view=true#manage-build-service-account-permissions)
+
 
 ## <a name="deploy-the-dev-environment-for-the-first-time"></a>首次部署开发环境
 创建 CI 和 CD 管道后，运行 CI 管道以首次部署应用。
@@ -219,6 +232,8 @@ CI 管道：
 * 验证是否已更改 Docker 映像并已推送新映像。
 
 ### <a name="cd-pipeline"></a>CD 管道
+在初始 CD 管道运行过程中，系统会要求你为管道提供对 GitOps 存储库的访问权限。 当提示管道需要访问资源的权限时，请选择“查看”。 然后，选择“允许”，向当前和将来的管道运行授予使用 GitOps 存储库的权限。
+
 成功的 CI 管道运行会触发 CD 管道来完成部署过程。 你将以增量方式部署到每个环境。
 
 > [!TIP]

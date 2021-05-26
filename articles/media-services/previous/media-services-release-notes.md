@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe42b98813f1687c78827b355a707b0147d6d2a4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8553da2ff1ff80dcaba8c6ff782c31602820a2ec
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067276"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378328"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -60,7 +60,7 @@ ms.locfileid: "106067276"
  
 - 全天候实时事件支持
 - ARM REST API、适用于 .NET core、Node.js、Python、Java、Go 和 Ruby 的客户端 SDK。
-- 客户管理的密钥、受信任的存储集成和专用链接支持[等等](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- 客户管理的密钥、受信任的存储集成和专用链接支持[等等](../latest/migrate-v-2-v-3-migration-benefits.md)
 
 #### <a name="action-required"></a>需要执行操作：
 
@@ -89,7 +89,7 @@ ms.locfileid: "106067276"
 
 ### <a name="deprecation-of-media-processors"></a>停用媒体处理器
 
-我们宣布停用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 [Azure 媒体服务视频索引器](../video-indexer/index.yml)取代了这些旧版媒体处理器。
+我们宣布弃用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 Azure 媒体服务视频索引器取代了这些旧版媒体处理器。
 
 有关停用日期，请参阅此[旧版组件](legacy-components.md)主题。
 
@@ -444,7 +444,7 @@ TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 
 ## <a name="may-2014-release"></a><a id="may_changes_14"></a>2014 年 5 月版本
 ### <a name="general-media-services-updates"></a><a id="may_14_changes"></a>媒体服务一般更新
-现可使用[动态打包]对 HLS 第 3 版文件进行流式处理。 要对 HLS 第 3 版文件进行流式处理，请将以下格式添加到原点定位符路径：*.ism/manifest(format=m3u8-aapl-v3)。 有关详细信息，请访问[此论坛](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3)。
+现可使用[动态打包]对 HLS 第 3 版文件进行流式处理。 要对 HLS 第 3 版文件进行流式处理，请将以下格式添加到原点定位符路径：*.ism/manifest(format=m3u8-aapl-v3)。 有关详细信息，请访问[此论坛](https://social.msdn.microsoft.com/Forums/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3)。
 
 动态打包现在还支持基于使用 PlayReady 静态加密的平滑流式处理内容传递使用 PlayReady 加密的 HLS（第 3 版和第 4 版）。 有关如何使用 PlayReady 加密平滑流式处理内容的信息，请参阅[使用 PlayReady 保护平滑流](/previous-versions/azure/dn189154(v=azure.100))。
 

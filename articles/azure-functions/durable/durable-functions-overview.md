@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 27d3253d1bd2ec407968ff03e22c34222797ad81
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 62d5d3095d2c68741a61f2df64d54287fb429110
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656337"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375974"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
@@ -25,7 +25,7 @@ Durable Functions 目前支持以下语言：
 * **JavaScript**：仅 Azure Functions 运行时的版本 2.x 支持此语言。 要求使用 1.7.0 版或更高版本的 Durable Functions 扩展。 
 * **Python**：要求使用 2.3.1 版或更高版本的 Durable Functions 扩展。
 * **F#** ：预编译的类库和 F# 脚本。 仅 Azure Functions 运行时的版本 1.x 支持 F# 脚本。
-* **PowerShell**：对 Durable Functions 的支持目前以公共预览版提供。 仅 Azure Functions 运行时的版本 3.x 和 PowerShell 7 支持。 要求使用 2.2.2 版或更高版本的 Durable Functions 扩展。 目前仅支持以下模式：[函数链](#chaining)、[扇出/扇入](#fan-in-out)和[异步 HTTP API](#async-http)。
+* **PowerShell**：仅 Azure Functions 运行时的版本 3.x 和 PowerShell 7 支持。 需要 2.x 版的捆绑包扩展。
 
 若要访问最新的功能和更新，建议使用最新版本的 Durable Functions 扩展和特定于语言的 Durable Functions 库。 请详细了解 [Durable Functions 版本](durable-functions-versions.md)。
 
@@ -40,7 +40,7 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 * [函数链](#chaining)
 * [扇出/扇入](#fan-in-out)
 * [异步 HTTP API](#async-http)
-* [监视](#monitoring)
+* [Monitoring](#monitoring)
 * [人机交互](#human)
 * [聚合器（有状态实体）](#aggregator)
 
@@ -127,13 +127,13 @@ main = df.Orchestrator.create(orchestrator_function)
 ```PowerShell
 param($Context)
 
-$X = Invoke-ActivityFunction -FunctionName 'F1'
-$Y = Invoke-ActivityFunction -FunctionName 'F2' -Input $X
-$Z = Invoke-ActivityFunction -FunctionName 'F3' -Input $Y
-Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
+$X = Invoke-DurableActivity -FunctionName 'F1'
+$Y = Invoke-DurableActivity -FunctionName 'F2' -Input $X
+$Z = Invoke-DurableActivity -FunctionName 'F3' -Input $Y
+Invoke-DurableActivity -FunctionName 'F4' -Input $Z
 ```
 
-可以使用 `Invoke-ActivityFunction` 命令按名称调用其他函数、传递参数并返回函数输出结果。 每当代码在不使用 `NoWait` 开关的情况下调用 `Invoke-ActivityFunction` 时，Durable Functions 框架都会对当前函数实例的进度执行检查点操作。 如果在执行中途回收进程或虚拟机，函数实例将从上一个 `Invoke-ActivityFunction` 调用继续执行。 有关详细信息，请参阅下一部分“模式 #2：扇出/扇入”。
+可以使用 `Invoke-DurableActivity` 命令按名称调用其他函数、传递参数并返回函数输出结果。 每当代码在不使用 `NoWait` 开关的情况下调用 `Invoke-DurableActivity` 时，Durable Functions 框架都会对当前函数实例的进度执行检查点操作。 如果在执行中途回收进程或虚拟机，函数实例将从上一个 `Invoke-DurableActivity` 调用继续执行。 有关详细信息，请参阅下一部分“模式 #2：扇出/扇入”。
 
 ---
 
@@ -234,18 +234,18 @@ main = df.Orchestrator.create(orchestrator_function)
 param($Context)
 
 # Get a list of work items to process in parallel.
-$WorkBatch = Invoke-ActivityFunction -FunctionName 'F1'
+$WorkBatch = Invoke-DurableActivity -FunctionName 'F1'
 
 $ParallelTasks =
     foreach ($WorkItem in $WorkBatch) {
-        Invoke-ActivityFunction -FunctionName 'F2' -Input $WorkItem -NoWait
+        Invoke-DurableActivity -FunctionName 'F2' -Input $WorkItem -NoWait
     }
 
 $Outputs = Wait-ActivityFunction -Task $ParallelTasks
 
 # Aggregate all outputs and send the result to F3.
 $Total = ($Outputs | Measure-Object -Sum).Sum
-Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
+Invoke-DurableActivity -FunctionName 'F3' -Input $Total
 ```
 
 扇出工作将分散到 `F2` 函数的多个实例。 请注意，在 `F2` 函数调用上使用 `NoWait` 开关：此开关允许业务流程协调程序继续调用 `F2`，而无需完成活动。 可使用动态任务列表跟踪此工作。 将调用 `Wait-ActivityFunction` 命令来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
@@ -399,7 +399,32 @@ main = df.Orchestrator.create(orchestrator_function)
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell 目前不支持监视器。
+```powershell
+param($Context)
+
+$output = @()
+
+$jobId = $Context.Input.JobId
+$machineId = $Context.Input.MachineId
+$pollingInterval = New-TimeSpan -Seconds $Context.Input.PollingInterval
+$expiryTime = $Context.Input.ExpiryTime
+
+while ($Context.CurrentUtcDateTime -lt $expiryTime) {
+    $jobStatus = Invoke-DurableActivity -FunctionName 'GetJobStatus' -Input $jobId
+    if ($jobStatus -eq "Completed") {
+        # Perform an action when a condition is met.
+        $output += Invoke-DurableActivity -FunctionName 'SendAlert' -Input $machineId
+        break
+    }
+
+    # Orchestration sleeps until this time.
+    Start-DurableTimer -Duration $pollingInterval
+}
+
+# Perform more work here, or let the orchestration end.
+
+$output
+```
 
 ---
 
@@ -501,7 +526,32 @@ main = df.Orchestrator.create(orchestrator_function)
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell 目前不支持人机交互。
+```powershell
+param($Context)
+
+$output = @()
+
+$duration = New-TimeSpan -Seconds $Context.Input.Duration
+$managerId = $Context.Input.ManagerId
+
+$output += Invoke-DurableActivity -FunctionName "RequestApproval" -Input $managerId
+
+$durableTimeoutEvent = Start-DurableTimer -Duration $duration -NoWait
+$approvalEvent = Start-DurableExternalEventListener -EventName "ApprovalEvent" -NoWait
+
+$firstEvent = Wait-DurableTask -Task @($approvalEvent, $durableTimeoutEvent) -Any
+
+if ($approvalEvent -eq $firstEvent) {
+    Stop-DurableTimerTask -Task $durableTimeoutEvent
+    $output += Invoke-DurableActivity -FunctionName "ProcessApproval" -Input $approvalEvent
+}
+else {
+    $output += Invoke-DurableActivity -FunctionName "EscalateApproval"
+}
+
+$output
+```
+若要创建持久计时器，请调用 `Start-DurableTimer`。 通知由 `Start-DurableExternalEventListener` 接收。 然后，调用 `Wait-DurableTask` 来确定是上报（首先发生超时）还是处理审批（超时前收到审批）。
 
 ---
 
@@ -552,7 +602,11 @@ async def main(client: str):
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell 目前不支持人机交互。
+```powershell
+
+Send-DurableExternalEvent -InstanceId $InstanceId -EventName "ApprovalEvent" -EventData "true"
+
+``````
 
 ---
 
