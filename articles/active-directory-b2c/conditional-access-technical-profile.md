@@ -8,23 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/19/2021
+ms.date: 05/13/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebdc1c9c92f6e3debf08cb640e46424c4ad9d5ad
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 55e63e232a804519baeeeeee3ebef84777ee1d38
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107721073"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060771"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义条件访问技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 Azure AD B2C 使用 Azure Active Directory (Azure AD) 条件访问作为工具来汇集信号、做出决策，以及实施组织策略。 通过策略条件自动执行风险评估意味着，一旦识别风险登录便可立即修正或阻止。
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="protocol"></a>协议
 
@@ -51,7 +49,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 ### <a name="metadata"></a>元数据
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | OperationType | 是 | 必须是 **Evaluation**。  |
 
@@ -113,7 +111,7 @@ InputClaimsTransformations 元素可能包含一系列 InputClaimsTransformation
 
 ### <a name="metadata"></a>元数据
 
-| 属性 | 必需 | 说明 |
+| 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | OperationType | 是 | 必须是 **Remediation**。  |
 

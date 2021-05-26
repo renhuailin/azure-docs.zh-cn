@@ -34,5 +34,9 @@
       href: fxt-specs.md
     - name: 其他文档
       href: fxt-additional-doc.md
+    - name: 支持的密码
+      href: fxt-supported-ciphers.md
+    - name: 网络端口
+      href: fxt-port-list.md
     - name: 开具支持票证
       href: fxt-support-ticket.md

@@ -2,29 +2,33 @@
 title: 使用 Azure 资源管理器模板创建 Azure 区块链服务成员
 description: 了解如何使用 Azure 资源管理器模板创建 Azure 区块链服务成员。
 services: azure-resource-manager
-ms.date: 09/16/2020
+ms.date: 05/11/2021
 ms.topic: quickstart
 ms.service: azure-resource-manager
 ms.custom:
 - subject-armqs
 - references_regions
 - mode-arm
-ms.openlocfilehash: c49e45ae84d58d62460d493887e2a4e78e40ba32
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: b190020b079957337b197074637f5f65c9dc80ba
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536294"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "110059334"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 区块链服务成员
 
-本快速入门将使用 Azure 资源管理器模板（ARM 模板）在 Azure 区块链服务中部署新的区块链成员和联盟。 Azure 区块链服务成员是专用联盟区块链网络中的区块链节点。 预配成员时，可以创建或加入联盟网络。 至少需要一个联盟网络的成员。 参与者所需的区块链成员数取决于方案。 联盟参与者可能有一个或多个区块链成员，或者与其他参与者共享成员。 有关联盟的详细信息，请参阅 [Azure 区块链服务联盟](consortium.md)。
+本快速入门将使用 Azure 资源管理器模板（ARM 模板）在 Azure 区块链服务中部署新的区块链成员和联盟。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+Azure 区块链服务成员是专用联盟区块链网络中的区块链节点。 预配成员时，可以创建或加入联盟网络。 至少需要一个联盟网络的成员。 参与者所需的区块链成员数取决于方案。 联盟参与者可能有一个或多个区块链成员，或者与其他参与者共享成员。 有关联盟的详细信息，请参阅 [Azure 区块链服务联盟](consortium.md)。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
+[![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.blockchain%2Fblockchain-asaservice%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,7 +38,7 @@ ms.locfileid: "107536294"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/201-blockchain-asaservice/)。
 
-:::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.blockchain/blockchain-asaservice/azuredeploy.json":::
 
 该模板中定义的 Azure 资源：
 
@@ -44,11 +48,11 @@ ms.locfileid: "107536294"
 
 1. 选择以下链接登录到 Azure 并打开一个模板。
 
-    [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
+    [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.blockchain%2Fblockchain-asaservice%2FFazuredeploy.json)
 
 1. 指定 Azure 区块链服务成员的设置。
 
-    设置 | 说明
+    设置 | 描述
     --------|------------
     订阅 | 选择要用于你的服务的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
     资源组 | 可以创建新的资源组名称，也可以选择订阅中现有的资源组名称。
@@ -78,7 +82,7 @@ ms.locfileid: "107536294"
 若要删除资源组，请执行以下操作：
 
 1. 在 Azure 门户中，导航至左侧导航窗格中的“资源组”  ，然后选择要删除的资源组。
-2. 选择“删除资源组”。 输入资源组名称确认删除并选择“删除”  。
+2. 选择“删除资源组”  。 输入资源组名称确认删除并选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

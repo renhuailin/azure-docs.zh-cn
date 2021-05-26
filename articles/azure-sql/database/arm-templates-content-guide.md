@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
 ms.topic: guide
-author: danimir
-ms.author: danil
+author: srdan-bozovic-msft
+ms.author: srbozovi
 ms.reviewer: sstein
-ms.date: 02/04/2019
-ms.openlocfilehash: fdcaabf98d4559ae6ec59a4ca7c1652329217032
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.date: 05/24/2021
+ms.openlocfilehash: 4c9cf08ad0a048c0c37f2c9943e455914ecc21fd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754454"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456892"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的 Azure 资源管理器模板
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -38,9 +38,9 @@ ms.locfileid: "109754454"
 | [在 Azure 事件中心审核](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-auditing-server-policy-to-eventhub) | 使用此模板可以部署启用了审核的服务器，以将审核日志写入现有事件中心。 若要将审核事件发送到事件中心，请使用 `Enabled` `State` 指定审核设置，并将 `IsAzureMonitorTargetEnabled` 设置为 `true`。 此外，请使用 `master` 数据库中的 `SQLSecurityAuditEvents` 日志类别配置诊断设置（用于服务器级别审核）。 审核可跟踪数据库事件，并将这些事件写入到可放入 Azure 存储帐户、OMS 工作区或事件中心的审核日志。|
 | [使用 SQL 数据库的 Azure Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-sql-database) | 此示例在“基本”服务级别创建免费的 Azure Web 应用和 Azure SQL 数据库中的数据库。|
 | [使用 SQL 数据库的 Azure Web 应用和 Redis 缓存](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | 此模板在同一资源组中创建 Web 应用、Redis 缓存和数据库，并在适用于数据库和 Redis 缓存的 Web 应用中创建两个连接字符串。|
-| [使用 ADF V2 从 Blob 存储导入数据](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/101-data-factory-v2-blob-to-sql-copy) | 此 Azure 资源管理器模板创建 Azure 数据工厂 V2 的实例，用于将数据从 Azure Blob 存储复制到 SQL 数据库。|
-| [带有数据库的 HDInsight 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | 使用此模板可以创建一个 HDInsight 群集、一个逻辑 SQL 服务器、一个数据库和两个表。 [将 Sqoop 与 HDInsight 中的 Hadoop 配合使用](../../hdinsight/hadoop/hdinsight-use-sqoop.md)一文中使用了此模板。 |
-| [按计划运行 SQL 存储过程的 Azure 逻辑应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | 使用此模板可以创建一个按计划运行 SQL 存储过程的逻辑应用。 可将该过程的所有参数放入该模板的正文部分。|
+| [使用 ADF V2 从 Blob 存储导入数据](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | 此 Azure 资源管理器模板创建 Azure 数据工厂 V2 的实例，用于将数据从 Azure Blob 存储复制到 SQL 数据库。|
+| [带有数据库的 HDInsight 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-linux-with-sql-database) | 使用此模板可以创建一个 HDInsight 群集、一个逻辑 SQL 服务器、一个数据库和两个表。 [将 Sqoop 与 HDInsight 中的 Hadoop 配合使用](../../hdinsight/hadoop/hdinsight-use-sqoop.md)一文中使用了此模板。 |
+| [按计划运行 SQL 存储过程的 Azure 逻辑应用](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/logic-app-sql-proc) | 使用此模板可以创建一个按计划运行 SQL 存储过程的逻辑应用。 可将该过程的所有参数放入该模板的正文部分。|
 
 ## <a name="azure-sql-managed-instance"></a>[Azure SQL 托管实例](#tab/managed-instance)
 

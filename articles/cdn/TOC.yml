@@ -194,7 +194,11 @@
         - name: 按区域列出的 POP 位置
           href: cdn-pop-locations.md
         - name: 按缩写列出的 POP 位置
-          href: cdn-pop-abbreviations.md
+          items:
+            - name: Microsoft
+              href: microsoft-pop-abbreviations.md
+            - name: Verizon
+              href: cdn-pop-abbreviations.md
     - name: Azure 内容分发网络计费
       href: cdn-billing.md
     - name: Azure 路线图

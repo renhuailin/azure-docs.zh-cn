@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 830e0904d6aa905a621b245adae2b2d94b46e243
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100589667"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847159"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>为 Application Insights Profiler 和 Snapshot Debugger 配置自带存储 (BYOS)
 
@@ -124,19 +124,19 @@ _图 1.1_
     若要安装 Azure CLI，请参阅[官方的 Azure CLI 文档](/cli/azure/install-azure-cli)。
 
 1. 安装 Application Insights CLI 扩展。
-    ```powershell
+    ```azurecli
     az extension add -n application-insights
     ```
 
 1. 将你的存储帐户连接到 Application Insights 资源。
 
     模式：
-    ```powershell
+    ```azurecli
     az monitor app-insights component linked-storage link --resource-group "{resource_group_name}" --app "{application_insights_name}" --storage-account "{storage_account_name}"
     ```
     
     示例：
-    ```powershell
+    ```azurecli
     az monitor app-insights component linked-storage link --resource-group "byos-test" --app "byos-test-westus2-ai" --storage-account "byosteststoragewestus2"
     ```
     
@@ -152,7 +152,7 @@ _图 1.1_
     ```
 
     > [!NOTE]
-    > 若要对链接到 Application Insights 资源的存储帐户执行更新，请参阅 [Application Insights CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage)。
+    > 若要对链接到 Application Insights 资源的存储帐户执行更新，请参阅 [Application Insights CLI 文档](/cli/azure/monitor/app-insights/component/linked-storage)。
 
 #### <a name="configure-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板进行配置
 

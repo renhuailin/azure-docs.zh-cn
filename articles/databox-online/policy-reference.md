@@ -1,19 +1,19 @@
 ---
 title: Azure Stack Edge 的内置策略定义
 description: 列出 Azure Stack Edge 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 05/04/2021
+ms.date: 05/14/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
 ms.service: databox
 ms.subservice: edge
 author: alkohli
 ms.author: alkohli
-ms.openlocfilehash: 57163ab0f577cdc8dc65cbc1318816bbd72308c0
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b30e5b9625ab4b21b05c5ea7704a5de96dbcece7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755274"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091317"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-stack-edge"></a>Azure Stack Edge 的 Azure Policy 内置定义
 

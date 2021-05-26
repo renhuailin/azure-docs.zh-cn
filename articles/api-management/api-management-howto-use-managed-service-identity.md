@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 03/09/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 40ee196f53af040e4099fb344de5488109ce001b
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 1dc0c67a173333f2d2bcabd71d92ec88fa5a467d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812239"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071751"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用托管标识
 
@@ -44,7 +44,7 @@ ms.locfileid: "107812239"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-以下步骤将指导你完成使用 Azure PowerShell 创建 API 管理实例并为其分配标识的操作。 
+以下步骤将指导你完成使用 Azure PowerShell 创建 API 管理实例并为其分配标识的操作。
 
 1. 如果需要，请按照 [Azure PowerShell 指南](/powershell/azure/install-az-ps)中的说明安装 Azure PowerShell。 然后运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
@@ -298,7 +298,7 @@ API 管理是针对以下资源的受信任 Microsoft 服务。 这允许服务�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-以下步骤将指导你完成使用 Azure PowerShell 创建 API 管理实例并为其分配标识的操作。 
+以下步骤将指导你完成使用 Azure PowerShell 创建 API 管理实例并为其分配标识的操作。
 
 1. 如果需要，请按照 [Azure PowerShell 指南](/powershell/azure/install-az-ps)中的说明安装 Azure PowerShell。 然后运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
@@ -372,7 +372,7 @@ API 管理是针对以下资源的受信任 Microsoft 服务。 这允许服务�
                 "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
              }
         },
-         "dependsOn": [       
+         "dependsOn": [
           "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
         ]
     }]
@@ -401,7 +401,7 @@ API 管理是针对以下资源的受信任 Microsoft 服务。 这允许服务�
 ## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>使用用户分配托管标识的受支持方案
 
 ### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault-ua"></a>从 Azure 密钥保管库获取 API 管理实例的自定义 TLS/SSL 证书
-你可以使用任何用户分配标识在 API 管理实例和 KeyVault 之间建立信任。 然后，可以借助这种信任关系检索存储在 Azure Key Vault 中的自定义 TLS/SSL 证书。 然后，可以将这些证书分配给 API 管理实例中的自定义域。 
+你可以使用任何用户分配标识在 API 管理实例和 KeyVault 之间建立信任。 然后，可以借助这种信任关系检索存储在 Azure Key Vault 中的自定义 TLS/SSL 证书。 然后，可以将这些证书分配给 API 管理实例中的自定义域。
 
 请记住以下注意事项：
 
@@ -411,7 +411,7 @@ API 管理是针对以下资源的受信任 Microsoft 服务。 这允许服务�
 > [!Important]
 > 如果未提供证书的对象版本，在将证书的较新版本上传到密钥保管库后的四小时内，API 管理将自动获取该版本。
 
-有关完整的模板，请参阅[使用基于 KeyVault 的 SSL 和用户分配标识的 API 管理](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json)。
+有关完整的模板，请参阅[使用基于 KeyVault 的 SSL 和用户分配标识的 API 管理](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.apimanagement/api-management-key-vault-create/azuredeploy.json)。
 
 在此模板中，将部署：
 
@@ -421,7 +421,7 @@ API 管理是针对以下资源的受信任 Microsoft 服务。 这允许服务�
 
 若要自动运行部署，请单击以下按钮：
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-api-management-key-vault-create%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.apimanagement%2Fapi-management-key-vault-create%2Fazuredeploy.json)
 
 ### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>使用用户分配的标识向后端进行身份验证
 

@@ -3,15 +3,15 @@ title: Azure 自动化 Runbook 类型
 description: 本文介绍可以在 Azure 自动化中使用的不同 Runbook 类型，以及在确定要使用的具体类型时的注意事项。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/17/2021
+ms.date: 05/17/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3e4f90372c2da22e8df3430ce340477352e5033b
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 9528443e7e89ecb91db70736d2051f813b130cce
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830441"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073173"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 
@@ -122,7 +122,6 @@ Python Runbook 在 Python 2 和 Python 3 下编译。 Python 3 Runbook 目前处
 * 你必须熟悉 Python 脚本。
 * 若要使用第三方库，必须将[包导入](python-packages.md)自动化帐户。
 * 在 PowerShell/PowerShell 工作流中使用 Start-AutomationRunbook cmdlet 启动 Python 3 Runbook（预览版）不起作用。 你可以使用 Az.Automation 模块中的 Start-AzAutomationRunbook **** 或 AzureRm.Automation 模块中的 Start-AzureRmAutomationRunbook **** 来解决此限制。  
-* Python 3 Runbook（预览）和包不适用于 PowerShell。
 * Azure 自动化不支持 sys.stderr **** 。
 
 ### <a name="known-issues"></a>已知问题

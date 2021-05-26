@@ -5,20 +5,20 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 05/25/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 139c8336d4f40bc12cd942f27b5726a555f58605
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98179599"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372957"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用内联代码添加并运行代码片段
 
-如果你想要在逻辑应用中运行一段代码，可以添加内置的内联代码操作，作为逻辑应用工作流中的一个步骤。 如果你想要运行符合以下方案的代码，最适合使用此操作：
+如果要在逻辑应用工作流中运行一段代码，可以添加内置的内联代码操作，作为逻辑应用工作流中的一个步骤。 如果你想要运行符合以下方案的代码，最适合使用此操作：
 
-* 在 JavaScript 中运行。 即将支持更多语言。
+* 在 JavaScript 中运行。 其他语言正在开发中。
 
 * 在 5 秒或更短时间内完成运行。
 
@@ -26,7 +26,9 @@ ms.locfileid: "98179599"
 
 * 不需要使用目前不受支持的[变量操作](../logic-apps/logic-apps-create-variables-store-values.md)。
 
-* 使用 Node.js 版本 8.11.1。 有关详细信息，请参阅[标准内置对象](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。
+* 将 Node.js 版本 8.11.1 用于[多租户逻辑应用](logic-apps-overview.md)，将 [Node.js 版本 10.x.x、11.x.x 或 12.x.x](https://nodejs.org/en/download/releases/) 用于[单租户逻辑应用](single-tenant-overview-compare.md)。
+
+  有关详细信息，请参阅[标准内置对象](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。
 
   > [!NOTE]
   > 内联代码操作不支持使用 `require()` 函数运行 JavaScript。
@@ -39,49 +41,38 @@ ms.locfileid: "98179599"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 要在其中添加代码片段（包括触发器）的逻辑应用。 如果你没有逻辑应用，请参阅[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 要将代码片段和触发器添加到的逻辑应用工作流。 本主题中的示例使用名为“收到新电子邮件时”的 Office 365 Outlook 触发器。
 
-   本主题中的示例使用名为“收到新电子邮件时”的 Office 365 Outlook 触发器。
+  如果没有逻辑应用，请查看以下文档：
 
-* 一个已链接到你的逻辑应用的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
+  * 多租户：《[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)》
+  * 单租户：《[创建单租户逻辑应用工作流](create-single-tenant-workflows-azure-portal.md)》
 
-  * 请确保使用适合你的用例或方案的集成帐户。
+* 根据逻辑应用是多租户还是单租户，查看以下信息。
 
-    例如，[免费层](../logic-apps/logic-apps-pricing.md#integration-accounts)集成帐户仅适用于探索方案和工作负载，而不适用于生产方案，另外，其使用量和吞吐量有限制，且不附带服务级别协议 (SLA) 的支持。 其他层会产生成本，但附带 SLA 支持，提供更高的吞吐量和更高的限制。 详细了解集成帐户[层](../logic-apps/logic-apps-pricing.md#integration-accounts)、[定价](https://azure.microsoft.com/pricing/details/logic-apps/)和[限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
+  * 多租户：需要 Node.js 版本 8.11.1。 还需要一个已链接到逻辑应用的空的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 请确保使用适合你的用例或方案的集成帐户。
 
-   * 如果你不想要使用集成帐户，可以尝试使用 [Azure 逻辑应用预览版](logic-apps-overview-preview.md)，并从“逻辑应用(预览版)”资源类型创建逻辑应用。
+    例如，[免费层](../logic-apps/logic-apps-pricing.md#integration-accounts)集成帐户仅适用于探索方案和工作负载，而不适用于生产方案，另外，其使用量和吞吐量有限制，且不附带服务级别协议 (SLA) 的支持。
 
-     在 Azure 逻辑应用预览版中，“内联代码”现已命名为“内联代码操作”，另外，该版本中还做出了以下变化 ：
+    其他集成帐户层会产生费用，但附带 SLA 支持，并且提供更高的吞吐量和限制。 详细了解集成帐户[层](../logic-apps/logic-apps-pricing.md#integration-accounts)、[定价](https://azure.microsoft.com/pricing/details/logic-apps/)和[限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
 
-     * “执行 JavaScript 代码”现已命名为“运行内联 JavaScript” 。
-
-     * 如果你使用的是 macOS 或 Linux，在 Visual Studio Code 中使用“Azure 逻辑应用(预览版)”扩展时，“内联代码操作”操作目前不可用。
-
-     * “内联代码操作”操作的[限制已更新](logic-apps-overview-preview.md#inline-code-limits)。
-
-     可以从以下任一选项开始：
-
-     * [使用 Azure 门户](create-stateful-stateless-workflows-azure-portal.md)从“逻辑应用(预览版)”资源类型创建逻辑应用。
-
-     * [使用 Visual Studio Code 和“Azure 逻辑应用(预览版)”扩展](create-stateful-stateless-workflows-visual-studio-code.md)为逻辑应用创建项目
+  * 单租户：需要 [Node.js 版本 10.x.x、11.x.x 或 12.x.x](https://nodejs.org/en/download/releases/)。 但是，你不需要集成帐户，内联代码操作已重命名为“内联代码操作”，并且具有[更新后的限制](logic-apps-limits-and-config.md)。
 
 ## <a name="add-inline-code"></a>添加内联代码
 
-1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 在 [Azure 门户](https://portal.azure.com)的设计器中打开逻辑应用工作流（如果尚未打开）。
 
-1. 在设计器中，选择要在逻辑应用工作流中的哪个位置添加内联代码操作。
+1. 在工作流中，选择要将内联代码操作添加到的位置，可以作为新步骤添加到工作流末尾，也可以添加到两个步骤之间。
 
-   * 若要在工作流末尾添加该操作，请选择“新建步骤”。
+   若要在步骤之间添加该操作，请将鼠标指针移到连接这些步骤的箭头之上。 选择出现的加号 ( **+** )，然后选择“添加操作”。
 
-   * 若要在步骤之间添加该操作，请将鼠标指针移到连接这些步骤的箭头之上。 选择出现的加号 ( **+** )，然后选择“添加操作”。
-
-   此示例在 Office 365 Outlook 触发器下添加内联代码操作。
+   此示例将操作添加到 Office 365 Outlook 触发器下面。
 
    ![在触发器下添加新步骤](./media/logic-apps-add-run-inline-code/add-new-step.png)
 
-1. 在“选择操作”下的搜索框中输入 `inline code`。 在“操作”列表中，选择名为“执行 JavaScript 代码”的操作。
+1. 在操作搜索框中，输入 `inline code`。 在“操作”列表中，选择名为“执行 JavaScript 代码”的操作。
 
    ![选择“执行 JavaScript 代码”操作](./media/logic-apps-add-run-inline-code/select-inline-code-action.png)
 

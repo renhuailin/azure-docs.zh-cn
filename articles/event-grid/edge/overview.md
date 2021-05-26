@@ -2,13 +2,14 @@
 title: 边缘上的事件驱动体系结构 - Azure IoT Edge 事件网格
 description: 将 Azure 事件网格用作 IoT Edge 上的模块，以便在模块、边缘设备和云之间转发事件。
 ms.topic: overview
-ms.date: 07/08/2020
-ms.openlocfilehash: 82a68f6ab32d8ad18c3af506c810b01d12cf794d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.subservice: iot-edge
+ms.openlocfilehash: 945c8a9c7c25242fbc155fce4ce0c2b4782a41a3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171510"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367772"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Azure IoT Edge 上的 Azure 事件网格是什么？
 IoT Edge 事件网格为边缘提供了 Azure 事件网格的强大功能和灵活性。 创建主题、发布事件并订阅多个目标，无论它们是同一设备上的模块、其他边缘设备还是云中的服务。

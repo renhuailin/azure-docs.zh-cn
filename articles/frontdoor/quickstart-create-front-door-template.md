@@ -15,12 +15,12 @@ ms.devlang: na
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: de8a592f6eecbb43b58a044096e8ba2e0f9b5973
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: db51e7ca844ee9d4e36b522e21d395bf9544acf3
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538992"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847447"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Front Door
 
@@ -43,7 +43,7 @@ ms.locfileid: "107538992"
 
 本快速入门将创建一个 Front Door 配置，其中包含一个后端和一个与 `/*` 匹配的默认路径。
 
-:::code language="json" source="~/quickstart-templates/101-front-door-create-basic/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/front-door-create-basic/azuredeploy.json":::
 
 模板中定义了一个 Azure 资源：
 
@@ -89,7 +89,7 @@ ms.locfileid: "107538992"
 
 ## <a name="validate-the-deployment"></a>验证部署
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 从左侧窗格中选择“资源组”。
 

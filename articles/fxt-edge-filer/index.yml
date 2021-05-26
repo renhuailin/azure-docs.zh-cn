@@ -6,15 +6,15 @@ metadata:
   description: 使用 Azure FXT Edge Filer 作为缓存层来执行需要进行大量读取操作的高性能计算 (HPC) 任务。
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  author: ronhogue
-  ms.author: rohogue
+  author: ekpgh
+  ms.author: v-erkel
   ms.date: 03/20/2020
-  ms.openlocfilehash: ab36532f1f3f29fdd4156c2c65f07d761fa76bb4
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: ea13d3cbe49a5f1f0a043178822a50f6c37bf472
+  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "80276506"
+  ms.lasthandoff: 05/26/2021
+  ms.locfileid: "110455807"
 landingContent:
 - title: 关于 Azure FXT Edge Filer
   linkLists:

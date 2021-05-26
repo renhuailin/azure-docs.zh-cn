@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: 34993ad3d3d0494f89bd264a8b7194f52129ad7c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1b66fcd8f4810e55de49bbc6fd085a60a64812f
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555051"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109815011"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建专用链接服务
 
@@ -25,7 +25,7 @@ ms.locfileid: "102555051"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fprivatelink-service%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "102555051"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-privatelink-service/)。
 
-:::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/privatelink-service/azuredeploy.json":::
 
 模板中定义了多个 Azure 资源：
 
@@ -56,7 +56,7 @@ ms.locfileid: "102555051"
 
 1. 若要登录到 Azure 并打开模板，请选择“部署到 Azure”。 此模板创建虚拟机、标准负载均衡器、专用链接服务、专用终结点、网络和要验证的虚拟机。
 
-   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fprivatelink-service%2Fazuredeploy.json)
 
 2. 选择或创建资源组。
 3. 键入虚拟机管理员用户名和密码。
@@ -82,7 +82,7 @@ ms.locfileid: "102555051"
     a. 出现提示时，选择“连接”。
 
     b. 输入创建 VM 时指定的用户名和密码。
-    
+
     > [!NOTE]
     > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。
 

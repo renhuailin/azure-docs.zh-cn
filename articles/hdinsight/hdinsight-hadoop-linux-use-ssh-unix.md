@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 02/28/2020
-ms.openlocfilehash: 760979ffa96043dbe0ab9d0d925fec08e11374cb
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 7d7ba260177cb27ac181f081335ffb1e19aa5c33
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278967"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062787"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Apache Hadoop)
 
@@ -29,7 +29,7 @@ ms.locfileid: "108278967"
 
 如果群集包含边缘节点，建议 __始终连接到边缘节点__（使用 SSH）。 头节点托管服务对于 Hadoop 运行状况而言至关重要。 边缘节点只会运行其上放置的软件。 有关使用边缘节点的详细信息，请参阅 [Use edge nodes in HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node)（在 HDInsight 中使用边缘节点）。
 
-> [!TIP]  
+> [!TIP]
 > 首先连接到 HDInsight 时，SSH 客户端可能会显示一个警告，指出无法验证主机。 当系统提示时，请选择“是”，将主机添加到 SSH 客户端的受信任服务器列表。
 >
 > 如果此前已使用同一名称连接到某个服务器，则可能会收到一个警告，指出存储的主机密钥与服务器的主机密钥不匹配。 请参阅 SSH 客户端的文档，了解如何删除服务器名称的现有条目。
@@ -62,7 +62,7 @@ SSH 密钥使用[公钥加密](https://en.wikipedia.org/wiki/Public-key_cryptogr
 
 * 如果对不同的服务器使用 __多个私钥__，可以考虑使用 [ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) 之类的实用工具。 在建立 SSH 会话时，可以通过 `ssh-agent` 实用工具自动选择要使用的密钥。
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > 如果使用密码保护私钥，使用该密钥时必须输入密码。 为提供方便，`ssh-agent` 等实用工具可以缓存密码。
 
 ### <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
@@ -79,7 +79,7 @@ ssh-keygen -t rsa -b 2048
 
 * __私钥__ 用于在 HDInsight 群集中对客户端进行身份验证。
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > 可以使用密码保护密钥。 密码实际上是私钥中的一个密码。 即使有人获取了私钥，但他们必须知道该密码才能使用该私钥。
 
 ### <a name="create-hdinsight-using-the-public-key"></a>使用公钥创建 HDInsight
@@ -89,16 +89,16 @@ ssh-keygen -t rsa -b 2048
 | Azure 门户 | 取消选中“对 SSH 使用群集登录密码”，然后选择“公钥”作为 SSH 身份验证类型。 最后，在“SSH 公钥”字段中选择公钥文件，或粘贴该文件的文本内容。</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png" alt-text="创建 HDInsight 群集时的 SSH 公钥对话框"::: |
 | Azure PowerShell | 使用 [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 的 `-SshPublicKey` 参数，并以字符串的形式传递公钥内容。|
 | Azure CLI | 使用 [`az hdinsight create`](/cli/azure/hdinsight#az_hdinsight_create) 命令的 `--sshPublicKey` 参数，并以字符串的形式传递公钥内容。 |
-| Resource Manager 模板 | 有关在模板中使用 SSH 密钥的示例，请参阅 [Deploy HDInsight on Linux with SSH key](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/)（使用 SSH 密钥在 Linux 上部署 HDInsight）。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) 文件中的 `publicKeys` 元素用于在创建群集时向 Azure 传递密钥。 |
+| Resource Manager 模板 | 有关在模板中使用 SSH 密钥的示例，请参阅 [Deploy HDInsight on Linux with SSH key](https://azure.microsoft.com/resources/templates/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-publickey/)（使用 SSH 密钥在 Linux 上部署 HDInsight）。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-publickey/azuredeploy.json) 文件中的 `publicKeys` 元素用于在创建群集时向 Azure 传递密钥。 |
 
 ## <a name="authentication-password"></a>身份验证：密码
 
 可以使用密码保护 SSH 帐户。 使用 SSH 连接到 HDInsight 时，系统会提示输入密码。
 
-> [!WARNING]  
+> [!WARNING]
 > Microsoft 不建议将密码身份验证用于 SSH。 密码可能被猜出，容易受到暴力破解攻击。 我们建议[使用 SSH 密钥进行身份验证](#sshkey)。
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > SSH 帐户密码在创建 HDInsight 群集 70 天后过期。 如果密码过期，可以使用[管理 HDInsight](hdinsight-administer-use-portal-linux.md#change-passwords) 文档中的信息更改它。
 
 ### <a name="create-hdinsight-using-a-password"></a>使用密码创建 HDInsight
@@ -156,7 +156,7 @@ sudo service sshd restart
     ssh sshuser@edgnodename.clustername-ssh.azurehdinsight.net
     ```
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > 前面的示例假定你使用的是密码身份验证，或者系统会自动进行证书身份验证。 如果使用 SSH 密钥对进行身份验证，且系统不会自动使用证书，则请使用 `-i` 参数指定私钥。 例如，`ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net`。
 
 连接以后，提示符会改为指示 SSH 用户名和连接到的节点。 例如，在以 `sshuser` 身份连接到主头节点时，提示符为 `sshuser@<active-headnode-name>:~$`。
@@ -183,14 +183,14 @@ sudo service sshd restart
 
 如果 SSH 帐户使用 __SSH 密钥__ 进行了保护，请确保在客户端启用 SSH 转发。
 
-> [!NOTE]  
+> [!NOTE]
 > 直接访问群集中所有节点的另一种方法是在 Azure 虚拟网络中安装 HDInsight。 然后，可将远程计算机加入相同的虚拟网络，这样就可以直接访问群集中的所有节点。
 >
 > 有关详细信息，请参阅[为 HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
 ### <a name="configure-ssh-agent-forwarding"></a>配置 SSH 代理转发
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > 以下步骤假设在基于 Linux 或 UNIX 的系统上操作，并且能够使用基于 Windows 10 的 Bash。 如果这些步骤不适用于系统，可能需要查阅 SSH 客户端的文档。
 
 1. 使用文本编辑器打开 `~/.ssh/config`。 如果此文件不存在，可以在命令行中输入 `touch ~/.ssh/config` 来创建。

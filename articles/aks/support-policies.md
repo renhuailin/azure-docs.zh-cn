@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 预览版（或者 alpha 或 b
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: d30e2aa5ab13c5d7676ca7cb455a2372981e4a46
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 3e4f5e4411eb81ab14d844adf03433e9de0d73b2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714469"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368103"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -92,7 +92,7 @@ Microsoft 不为以下示例提供技术支持：
   * `Kube-proxy`
   * 为 Kubernetes 主控组件提供通信路径的网络隧道
   * `Kubelet`
-  * `Moby` 或 `ContainerD`
+  * Docker 或 `containerd`
 
 > [!NOTE]
 > 如果代理节点不可操作，AKS 可能会重启单个组件或整个代理节点。 这些重启操作会自动执行，并为常见问题提供自动修正。 如果要了解有关自动修正机制的详细信息，请参阅[节点自动修复](node-auto-repair.md)

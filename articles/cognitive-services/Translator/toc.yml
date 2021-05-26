@@ -52,6 +52,14 @@
           href: dynamic-dictionary.md
         - name: 在防火墙后面翻译
           href: firewalls.md
+        - name: 使用翻译器容器
+          items:
+            - name: 安装和运行容器
+              href: containers/translator-how-to-install-container.md
+            - name: 配置容器
+              href: containers/translator-container-configuration.md
+            - name: 容器：转换
+              href: containers/translator-container-supported-parameters.md
     - name: 教程
       items:
         - name: 通过 C# 创建一个使用翻译器的 WPF 应用
@@ -128,7 +136,7 @@
           href: custom-translator/how-to-view-document-details.md
         - name: 训练模型
           href: custom-translator/how-to-train-model.md
-        - name: 查看模型详细信息
+        - name: Viewmodel 详细信息
           href: custom-translator/how-to-view-model-details.md
         - name: 查看系统测试结果
           href: custom-translator/how-to-view-system-test-results.md

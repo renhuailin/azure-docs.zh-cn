@@ -5,22 +5,32 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: eee4d23b17bf852946b31912eb81fd4f897e0f56
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 049cbc6f28e4a405b20eaf37e85e31bd1eb4dfb9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803865"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367304"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、训练和发布 QnA Maker 知识库
 
-可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
+可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含的一个示例演示了如何从简单的 FAQ 网页创建 QnA Maker 知识库来回答问题。
 
 ## <a name="prerequisites"></a>先决条件
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+
 > [!div class="checklist"]
-> * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
-> * 在 Azure 门户中创建的 QnA Maker [资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
+> * 如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
+> * 在 Azure 门户中创建的 [QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA Maker 资源名称。
+
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+> [!div class="checklist"]
+> * 如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
+> * 启用了自定义问答功能的[文本分析资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅和文本分析资源名称。
+
+---
 
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>创建第一个 QnA Maker 知识库
 
@@ -32,9 +42,9 @@ ms.locfileid: "108803865"
 
 3. 在“创建”页上，如果你已经有 QnA Maker 资源，请跳过“步骤 1”。
 
-    如果尚未创建此资源，请选择“创建 QnA 服务”。 此时会将你定向到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，让你在订阅中设置 QnA Maker 服务。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
+如果尚未创建此服务，请选择“稳定版”和“创建 QnA 服务” 。 此时会将你定向到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，让你在订阅中设置 QnA Maker 服务。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
 
-    在 Azure 门户中创建资源后，请返回到 QnA Maker 门户，刷新浏览器页，并继续完成“步骤 2”。
+在 Azure 门户中创建资源后，请返回到 QnA Maker 门户，刷新浏览器页，并继续完成“步骤 2”。
 
 4. 在“步骤 2”中，为在服务中创建的所有知识库选择 Active Directory、订阅、服务（资源）和语言。
 
@@ -57,23 +67,32 @@ ms.locfileid: "108803865"
 
     QnA Maker 成功创建知识库后，“知识库”页会打开。 可在此页面上编辑知识库的内容。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 1. 使用 Azure 凭据登录到 [QnAMaker.ai](https://QnAMaker.ai) 门户。
 
 2. 在 QnA Maker 门户中，选择“创建知识库”。
 
-3. 在“创建”页上，如果你已经有 QnA Maker 资源，请跳过“步骤 1”。
+3. 在“创建”页上，如果你已将自定义问答添加到文本分析服务，请跳过“步骤 1”。
 
-    如果尚未创建此资源，请选择“创建 QnA 服务”。 此时会将你定向到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，让你在订阅中设置 QnA Maker 服务。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
+    如果尚未创建此服务，请选择“预览版”和“创建 QnA 服务” 。 
 
-    在 Azure 门户中创建资源后，请返回到 QnA Maker 门户，刷新浏览器页，并继续完成“步骤 2”。
+> [!div class="mx-imgBorder"]
+> ![创建服务](../media/qnamaker-create-publish-knowledge-base/create-qna-service.png) 
+    
+此时你会被定向到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)，在订阅中设置文本分析服务。 你应当在创建自定义问答功能时将其添加到服务。 
+    
+> [!div class="mx-imgBorder"]
+> ![将 QnA 添加到 TA](../media/qnamaker-how-to-setup-service/select-qna-feature-create-flow.png)
+ 
+   请记住你在创建资源时选择的 Azure Active Directory ID、订阅和文本分析资源名称。 在 Azure 门户中创建资源后，请返回到 QnA Maker 门户，刷新浏览器页，并继续完成“步骤 2”。
 
 4. 在“步骤 2”中，为在服务中创建的所有知识库选择 Active Directory、订阅、服务（资源）和语言。
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/connect-your-knowledge-base.png" alt-text="选择 QnA Maker 服务知识库托管预览版的屏幕截图":::
+> [!div class="mx-imgBorder"]
+> ![创建知识库](../media/qnamaker-create-publish-knowledge-base/connect-knowledgebase-custom-qna.png) 
 
-5. 在“步骤 2”中，如果你要为服务创建第一个知识库，你将可以选择让语言设置特定于每个知识库。 为第一个知识库定义语言设置后，不允许在以后为服务修改设置。
+5. 在“步骤 2”中，如果要为你的服务创建第一个知识库，可以选中“将多种语言的知识库添加到此服务”属性，以启用将不同语言的知识库添加到同一服务的功能。 以后将无法修改此属性。
 
 6. 在“步骤 3”中，将知识库命名为“我的示例 QnA KB” ****  **** 。 
 
@@ -90,7 +109,7 @@ ms.locfileid: "108803865"
 
     提取过程需要一些时间来读取文档并确定问题和解答。
 
-    QnA Maker 成功创建知识库后，“知识库”页会打开。 可在此页面上编辑知识库的内容。
+    成功创建知识库后，“知识库”页会打开。 可在此页面上编辑知识库的内容。
 
 ---
 
@@ -130,7 +149,7 @@ ms.locfileid: "108803865"
 
 4. 再次选择“测试”，关闭“测试”面板。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 1. 在 QnA Maker 门户的右上角，选择“测试”以测试所做的更改是否已生效。
 2. 在文本框中输入示例用户查询。

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 33d110f327a381241fd9dbf55996a6e3f9fd3a43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a894f8760ed3012b8bd46cc73eef1935850512e6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92057971"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094773"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>快速入门：创建具有多个公共 IP 地址的 Azure 防火墙 - ARM 模板
 
@@ -25,7 +25,7 @@ ms.locfileid: "92057971"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffw-docs-qs%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "92057971"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/fw-docs-qs)。
 
-:::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/fw-docs-qs/azuredeploy.json":::
 
 模板中定义了多个 Azure 资源：
 
@@ -57,20 +57,20 @@ ms.locfileid: "92057971"
 
 1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板将创建 Azure 防火墙、网络基础结构和两个虚拟机。
 
-   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffw-docs-qs%2Fazuredeploy.json)
 
 2. 在门户中的“创建具有多个公共 IP 地址的 Azure 防火墙”页上，键入或选择以下值：
-   - 订阅：从现有订阅中选择 
+   - 订阅：从现有订阅中选择
    - 资源组：从现有资源组中选择，或者选择“新建”，然后选择“确定”。 
    - 位置：选择一个位置
-   - 管理员用户名：键入管理员用户帐户的用户名 
+   - 管理员用户名：键入管理员用户帐户的用户名
    - 管理员密码：键入管理员密码或密钥
 
 3. 选择“我同意上述条款和条件”，然后选择“购买”   。 部署可能需要 10 分钟或更长时间才能完成。
 
 ## <a name="validate-the-deployment"></a>验证部署
 
-在 Azure 门户中，查看已部署的资源。 记下防火墙公共 IP 地址。  
+在 Azure 门户中，查看已部署的资源。 记下防火墙公共 IP 地址。
 
 使用“远程桌面连接”连接到防火墙公共 IP 地址。 成功的连接演示了允许连接到后端服务器的防火墙 NAT 规则。
 

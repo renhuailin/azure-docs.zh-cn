@@ -10,12 +10,12 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: devx-track-python
-ms.openlocfilehash: 055455c868438d421ef4f7e716657f96f2bbe1e6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e03df1dceb840c7ccdf530201d2653349003de7b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142164"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064245"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>通过 Python 开始使用 Azure 表存储和 Azure Cosmos DB 表 API
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -249,7 +249,7 @@ table_service.delete_table('tasktable')
 
 ## <a name="next-steps"></a>后续步骤
 
-* [常见问题解答 - 使用表 API 进行开发](./faq.md)
+* [常见问题解答 - 使用表 API 进行开发](./faq.yml)
 * [用于 Python API 的 Azure Cosmos DB SDK 参考](/python/api/overview/azure/cosmosdb)
 * [Python 开发人员中心](https://azure.microsoft.com/develop/python/)
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)：一种跨平台的免费应用程序，用于在 Windows、macOS 和 Linux 上对 Azure 存储数据进行可视化处理。

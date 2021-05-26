@@ -1,23 +1,23 @@
 ---
 title: 快速入门：将现有 Kubernetes 群集连接到 Azure Arc
 description: 在本快速入门中，了解如何连接已启用 Azure Arc 的 Kubernetes 群集。
-author: mlearned
-ms.author: mlearned
+author: mgoedtel
+ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
-ms.date: 03/03/2021
+ms.date: 05/25/2021
 ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, 群集
-ms.openlocfilehash: 040f69adf318cb224a56e7838c8abf8e03a60286
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 6221de7a9cffe5ba4d2e1ed8cc8e47c372b6b578
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783650"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373711"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>快速入门：将现有 Kubernetes 群集连接到 Azure Arc 
 
-在本快速入门中，我们将获得已启用 Azure Arc 的 Kubernetes 的好处，并将现有 Kubernetes 群集连接到 Azure Arc。有关将群集连接到 Azure Arc 的概念，请参阅[已启用 Azure Arc 的 Kubernetes 代理体系结构一文](./conceptual-agent-architecture.md)。
+在本快速入门中，你将了解已启用 Azure Arc 的 Kubernetes 的优点，以及如何将现有的 Kubernetes 群集连接到 Azure Arc。有关将群集连接到 Azure Arc 的概念，请参阅[已启用 Azure Arc 的 Kubernetes 代理体系结构一文](./conceptual-agent-architecture.md)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "109783650"
     * 使用[群集 API](https://cluster-api.sigs.k8s.io/user/quick-start.html) 的自托管 Kubernetes 群集
     * 如果要将 OpenShift 群集连接到 Azure Arc，只需在运行 `az connectedk8s connect` 之前在群集上执行以下命令：
         
-        ```console
+        ```azurecli-interactive
         oc adm policy add-scc-to-user privileged system:serviceaccount:azure-arc:azure-arc-kube-aad-proxy-sa
         ```
 
@@ -44,25 +44,18 @@ ms.locfileid: "109783650"
 * [安装 Azure CLI 或将其升级](/cli/azure/install-azure-cli)到不低于 2.16.0 的版本
 * 安装 `connectedk8s` Azure CLI 扩展版本，版本不得低于 1.0.0：
   
-  ```azurecli
+  ```azurecli-interactive
   az extension add --name connectedk8s
   ```
-
->[!TIP]
-> 如果已安装 `connectedk8s` 扩展，则可以使用以下命令将其更新到最新版本：`az extension update --name connectedk8s`
-
 >[!NOTE]
->你可单击[此处](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)找到启用 Azure Arc 的 Kubernetes 支持的区域列表。
-
->[!NOTE]
-> 如果要在群集上使用自定义位置，请使用“美国东部”或“欧洲西部”区域连接群集，因为自定义位置目前仅在这些区域中可用。 上面列出的所有区域均提供其他所有启用 Azure Arc 的 Kubernetes 功能。
+> 对于群集上的[自定义位置](./custom-locations.md)，请使用美国东部或欧洲西部区域。 对于所有其他已启用 Azure Arc 的 Kubernetes 功能，请[从此列表中选择任何区域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)。
 
 ## <a name="meet-network-requirements"></a>满足网络要求
 
->[!IMPORTANT]
->Azure Arc 代理需要以下协议/端口/出站 URL 才能正常运行：
->* 端口 443 上的 TCP：`https://:443`
->* 端口 9418 上的 TCP：`git://:9418`
+> [!IMPORTANT]
+> Azure Arc 代理需要以下协议/端口/出站 URL 才能运行：
+> * 端口 443 上的 TCP：`https://:443`
+> * 端口 9418 上的 TCP：`git://:9418`
   
 | 终结点 (DNS) | 说明 |  
 | ----------------- | ------------- |  
@@ -72,44 +65,46 @@ ms.locfileid: "109783650"
 | `https://mcr.microsoft.com`                                                                            | 拉取 Azure Arc 代理的容器映像所需的终结点。                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  拉取系统分配的托管服务标识 (MSI) 证书所需的终结点。                                                                  |
 
-## <a name="register-providers-for-azure-arc-enabled-kubernetes"></a>为已启用 Azure Arc 的 Kubernetes 注册提供程序
+## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. 为已启用 Azure Arc 的 Kubernetes 注册提供程序
 
 1. 输入以下命令：
-    ```azurecli
+    ```azurecli-interactive
     az provider register --namespace Microsoft.Kubernetes
     az provider register --namespace Microsoft.KubernetesConfiguration
     az provider register --namespace Microsoft.ExtendedLocation
     ```
 2. 监视注册过程。 注册可能最多需要 10 分钟。
-    ```azurecli
+    ```azurecli-interactive
     az provider show -n Microsoft.Kubernetes -o table
     az provider show -n Microsoft.KubernetesConfiguration -o table
     az provider show -n Microsoft.ExtendedLocation -o table
     ```
 
-## <a name="create-a-resource-group"></a>创建资源组
+## <a name="2-create-a-resource-group"></a>2.创建资源组
 
-创建资源组：  
+运行以下命令：  
 
-```console
-az group create --name AzureArcTest -l EastUS -o table
+```azurecli-interactive
+az group create --name AzureArcTest --location EastUS --output table
 ```
 
-```output
+输出：
+<pre>
 Location    Name
 ----------  ------------
 eastus      AzureArcTest
+</pre>
+
+## <a name="3-connect-an-existing-kubernetes-cluster"></a>3. 连接现有的 Kubernetes 群集
+
+运行以下命令：
+```azurecli-interactive
+az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
 ```
 
-## <a name="connect-an-existing-kubernetes-cluster"></a>连接现有的 Kubernetes 群集
-
-1. 使用以下命令将 Kubernetes 群集连接到 Azure Arc：
-    ```console
-    az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
-    ```
-
-    ```output
-    Helm release deployment succeeded
+输出：
+<pre>
+Helm release deployment succeeded
 
     {
       "aadProfile": {
@@ -141,7 +136,7 @@ eastus      AzureArcTest
       "totalNodeCount": null,
       "type": "Microsoft.Kubernetes/connectedClusters"
     }
-    ```
+</pre>
 
 > [!TIP]
 > 上面未指定位置参数的命令会在资源组所在位置创建启用了 Azure Arc 的 Kubernetes 资源。 若要在其他位置创建启用了 Azure Arc 的 Kubernetes 资源，请在运行 `az connectedk8s connect` 命令时指定 `--location <region>` 或 `-l <region>`。
@@ -149,24 +144,25 @@ eastus      AzureArcTest
 > [!NOTE]
 > 如果使用服务主体登录到 Azure CLI，则在将群集连接到 Azure Arc 时，需要服务主体上的[其他权限](troubleshooting.md#enable-custom-locations-using-service-principal)才能启用自定义位置功能。
 
-## <a name="verify-cluster-connection"></a>验证群集连接
+## <a name="4-verify-cluster-connection"></a>4. 验证群集连接
 
-使用以下命令查看已连接群集的列表：  
+运行以下命令：  
 
-```console
-az connectedk8s list -g AzureArcTest -o table
+```azurecli-interactive
+az connectedk8s list -resource-group AzureArcTest -output table
 ```
 
-```output
+输出：
+<pre>
 Name           Location    ResourceGroup
 -------------  ----------  ---------------
 AzureArcTest1  eastus      AzureArcTest
-```
+</pre>
 
 > [!NOTE]
 > 加入群集后，大约需要 5 到 10 分钟，群集元数据（群集版本、代理版本、节点数等）才会出现在 Azure 门户中已启用 Azure Arc 的 Kubernetes 资源的“概述”页上。
 
-## <a name="connect-using-an-outbound-proxy-server"></a>使用出站代理服务器进行连接
+## <a name="5-connect-using-an-outbound-proxy-server"></a>5. 使用出站代理服务器进行连接
 
 如果群集位于出站代理服务器后面，Azure CLI 和已启用 Azure Arc 的 Kubernetes 代理需要通过出站代理服务器路由其请求。 
 
@@ -191,27 +187,29 @@ AzureArcTest1  eastus      AzureArcTest
 
 2. 使用指定的代理参数运行 connect 命令：
 
-    ```console
-    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
+    ```azurecli-interactive
+    az connectedk8s connect --name <cluster-name> --resource-group <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
     ```
 
 > [!NOTE]
 > * 在 `--proxy-skip-range` 下指定 `excludedCIDR` 以确保代理的群集内通信不会中断。
 > * 大多数出站代理环境预期使用 `--proxy-http`、`--proxy-https` 和 `--proxy-skip-range`。 仅在需要将代理预期的受信任证书插入代理 Pod 的受信任证书存储中时，才需要 `--proxy-cert`。
 
-## <a name="view-azure-arc-agents-for-kubernetes"></a>查看适用于 Kubernetes 的 Azure Arc 代理
+## <a name="6-view-azure-arc-agents-for-kubernetes"></a>6. 查看适用于 Kubernetes 的 Azure Arc 代理
 
 已启用 Azure Arc 的 Kubernetes 会将几个运算符部署到 `azure-arc` 命名空间中。 
 
 1. 使用以下命令查看这些部署和 Pod：
 
-    ```console
-    kubectl -n azure-arc get deployments,pods
+    ```azurecli-interactive
+    kubectl -name azure-arc get deployments,pods
     ```
 
 1. 验证所有 Pod 是否处于 `Running` 状态。
 
-    ```output
+    输出：
+    <pre>
+
     NAME                                        READY      UP-TO-DATE  AVAILABLE  AGE
     deployment.apps/cluster-metadata-operator     1/1             1        1      16h
     deployment.apps/clusteridentityoperator       1/1             1        1      16h
@@ -229,13 +227,13 @@ AzureArcTest1  eastus      AzureArcTest
     pod/flux-logs-agent-7c489f57f4-mwqqv            2/2     Running  0       16h
     pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
     pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
-    ```
+    </pre>
 
-## <a name="clean-up-resources"></a>清理资源
+## <a name="7-clean-up-resources"></a>7.清理资源
 
 可以使用以下命令删除已启用 Azure Arc 的 Kubernetes 资源、任何关联的配置资源以及使用 Azure CLI 在群集上运行的任何代理：
 
-```azurecli
+```azurecli-interactive
 az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 ```
 

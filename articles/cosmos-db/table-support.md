@@ -8,12 +8,12 @@ ms.date: 01/08/2021
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: c2b2a9a03a654e8ccba58e62a1d017cd11db5abc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c38ed9767f92eaaa53b7b95eba9e455130606b3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98050744"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063927"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>使用 Azure 表存储 API 和 Azure Cosmos DB 进行开发
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -38,7 +38,7 @@ Azure Cosmos DB 表 API 和 Azure 表存储通过其 SDK 共享相同的表数�
 * [Node.js SDK](table-sdk-nodejs.md)：此 Azure 存储 SDK 能够使用表 API 连接到 Azure Cosmos DB 帐户。
 
 
-有关使用表 API 的其他信息可在[常见问题解答：使用表 API 进行开发](table-api-faq.md)一文中找到。
+有关使用表 API 的其他信息可在[常见问题解答：使用表 API 进行开发](table-api-faq.yml)一文中找到。
 
 ## <a name="developing-with-azure-table-storage"></a>使用 Azure 表存储进行开发
 

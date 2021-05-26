@@ -58,6 +58,8 @@
   items:
     - name: 托管标识和 Azure VM
       href: how-managed-identities-work-vm.md
+    - name: 最佳做法建议
+      url: managed-identity-best-practice-recommendations.md
 - name: 操作指南
   items:
     - name: 在 VM 上配置托管标识
