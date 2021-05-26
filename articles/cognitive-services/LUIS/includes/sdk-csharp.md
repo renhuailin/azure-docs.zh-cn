@@ -1,19 +1,19 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 09/01/2020
+ms.date: 05/17/2021
 ms.topic: include
 ms.custom: include file, devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: fd47d5df053931c343fd811fe4d93b66f080f225
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 43a4cf24cd2305be560ee5f5bd4b763995e340e0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948495"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110165498"
 ---
 使用适用于 .NET 的语言理解 (LUIS) 客户端库执行以下操作：
 * 创建应用
@@ -28,7 +28,7 @@ ms.locfileid: "98948495"
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 和 [.NET Core CLI](/dotnet/core/tools/) 的当前版本。
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 有了 Azure 订阅后，在 Azure 门户中[创建语言理解创作资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)，以获取创作密钥和终结点。 等待其部署并单击“转到资源”按钮。
-    * 需要从[创建](../luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal)的资源获取密钥和终结点，以便将应用程序连接到语言理解创作。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。 可以使用免费定价层 (`F0`) 来试用该服务。
+    * 需要从[创建](../luis-how-to-azure-subscription.md)的资源获取密钥和终结点，以便将应用程序连接到语言理解创作。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。 可以使用免费定价层 (`F0`) 来试用该服务。
 
 ## <a name="setting-up"></a>设置
 

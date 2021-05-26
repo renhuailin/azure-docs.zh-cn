@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2acf5178e7d1cfdf907146d733150a48e9696a5e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d47d93c7e1456cbd589aec34c2840a4b8257c8eb
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101712345"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109848152"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商业市场中的 SaaS 履行 API 版本 2
 
@@ -945,7 +945,7 @@ Webhook 有效负载示例：
   "quantity": " 20",
   "timeStamp": "2019-04-15T20:17:31.7350641Z",
   "action": "Reinstate",
-  "status": "In Progress"
+  "status": "InProgress"
 }
 ```
 

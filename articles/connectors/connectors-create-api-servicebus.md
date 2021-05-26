@@ -7,12 +7,12 @@ ms.reviewer: logicappspm, azla
 ms.topic: conceptual
 ms.date: 02/10/2021
 tags: connectors
-ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb8e97dfd929be96d51c761ff91c91cc033d5127
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100367412"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847828"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -33,11 +33,11 @@ ms.locfileid: "100367412"
 
 * Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 服务总线命名空间和消息传送实体，例如队列。 这些项和你的逻辑应用需使用同一 Azure 订阅。 如果没有这些项，请了解如何[创建服务总线命名空间和队列](../service-bus-messaging/service-bus-create-namespace-portal.md)。
+* 服务总线命名空间和消息传送实体，例如队列。 如果没有这些项，请了解如何[创建服务总线命名空间和队列](../service-bus-messaging/service-bus-create-namespace-portal.md)。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 在其中使用服务总线命名空间和消息传送实体的逻辑应用。 逻辑应用和服务总线需使用同一 Azure 订阅。 若要通过服务总线触发器启动工作流，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要在工作流中使用服务总线操作，请使用另一个触发器（例如[“定期”触发器](../connectors/connectors-native-recurrence.md)）启动逻辑应用。
+* 在其中使用服务总线命名空间和消息传送实体的逻辑应用。 若要通过服务总线触发器启动工作流，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要在工作流中使用服务总线操作，请使用另一个触发器（例如[“定期”触发器](../connectors/connectors-native-recurrence.md)）启动逻辑应用。
 
 <a name="permissions-connection-string"></a>
 
