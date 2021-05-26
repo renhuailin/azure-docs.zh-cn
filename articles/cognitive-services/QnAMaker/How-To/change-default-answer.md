@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: 5aab021ab5194b4af18e3ff1b2c154ed74710353
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abc33a405975db9484d204c51df0a67697c2f8f8
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96346114"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370798"
 ---
 # <a name="change-default-answer-for-a-qna-maker-resource"></a>更改 QnA Maker 资源的默认答案
 
@@ -27,11 +27,11 @@ ms.locfileid: "96346114"
 |未确定答案时的 KB 答案|`No good match found in KB.` - 当 [GenerateAnswer API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) 找不到与问题匹配的答案时，将返回应用服务的 `DefaultAnswer` 设置。 同一 QnA Maker 资源中的所有知识库共享相同的默认答案文本。<br>可以通过应用服务管理 Azure 门户中的设置，也可以通过 REST API 来[获取](/rest/api/appservice/webapps/listapplicationsettings)或[更新](/rest/api/appservice/webapps/updateapplicationsettings)设置。|
 |跟进提示说明文本|在对话流中使用跟进提示时，可能不需要 QnA 对中的答案，因为你希望用户从跟进提示中进行选择。 在这种情况下，通过设置默认答案文本来设置特定的文本，该文本会在跟进提升的每次预测后返回。 文本将显示为选择跟进提示的说明文本。 此默认答案文本的一个示例是 `Please select from the following choices`。 本文档的后面几节将对此配置进行说明。 还可以使用 [REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create) 设置为 `defaultAnswerUsedForExtraction` 的知识库定义的一部分。|
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 |默认答案的类型|答案说明|
 |--|--|
-|未确定答案时的 KB 答案|`No good match found in KB.` - 当 [GenerateAnswer API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) 找不到与问题匹配的答案时，将显示默认文本响应。 在 QnA Maker 托管（预览版）中，可以在知识库的“设置”中设置此文本。 <br><br> ![QnA Maker 托管（预览版）设置默认答案](../media/qnamaker-how-change-default-answer/qnamaker-v2-change-default-answer.png)|
+|未确定答案时的 KB 答案|`No good match found in KB.` - 当 [GenerateAnswer API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) 找不到与问题匹配的答案时，将显示默认文本响应。 在自定义问答（预览版）中，可以在知识库的“设置”中设置此文本。 <br><br> ![QnA Maker 托管（预览版）设置默认答案](../media/qnamaker-how-change-default-answer/qnamaker-v2-change-default-answer.png)|
 |跟进提示说明文本|在对话流中使用跟进提示时，可能不需要 QnA 对中的答案，因为你希望用户从跟进提示中进行选择。 在这种情况下，通过设置默认答案文本来设置特定的文本，该文本会在跟进提升的每次预测后返回。 文本将显示为选择跟进提示的说明文本。 此默认答案文本的一个示例是 `Please select from the following choices`。 本文档的后面几节将对此配置进行说明。 你还可以使用 [REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create) 通过 `defaultAnswerUsedForExtraction` 将此设置为知识库定义的一部分。|
 
 ---

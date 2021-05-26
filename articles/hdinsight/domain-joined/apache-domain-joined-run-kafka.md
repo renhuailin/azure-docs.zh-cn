@@ -4,12 +4,12 @@ description: 教程 - 了解如何使用企业安全性套餐为 Azure HDInsight
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: bab3df857dfdac3ca3b9193bda1caea0040a4cbb
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 2c8a34728c37aa015159b89d82284a7156befd48
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104866975"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190172"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览版）在 HDInsight 中配置 Apache Kafka 策略
 
@@ -134,7 +134,7 @@ ms.locfileid: "104866975"
    export KAFKABROKERS=<brokerlist>:9092
    ```
 
-   示例： `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
+   示例： `export KAFKABROKERS=<brokername1>.contoso.com:9092,<brokername2>.contoso.com:9092`
 
 3. 按照以下文章的 **生成并部署示例** 下的步骤 3 进行操作：[教程：使用 Apache Kafka 生成者和使用者 API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) 来确保 `kafka-producer-consumer.jar` 也可供 **sales_user** 使用。
 

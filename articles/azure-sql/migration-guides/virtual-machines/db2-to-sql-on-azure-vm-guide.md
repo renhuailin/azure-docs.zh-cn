@@ -9,13 +9,13 @@ ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
-ms.date: 11/06/2020
-ms.openlocfilehash: 2de361a63d3e0ed45b5d99d48063064cc46a0390
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 05/14/2021
+ms.openlocfilehash: 69783519f2f10da452f1075c1b10026d9475935a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136348"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063165"
 ---
 # <a name="migration-guide-ibm-db2-to-sql-server-on-azure-vm"></a>迁移指南：从 IBM Db2 到 Azure VM 上的 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -43,27 +43,27 @@ ms.locfileid: "108136348"
 
 要创建评估，请执行以下步骤：
 
-1. 打开 [SSMA for Db2](https://www.microsoft.com/download/details.aspx?id=54254)。 
+1. 打开 [Db2 的 SSMA](https://www.microsoft.com/download/details.aspx?id=54254)。 
 1. 选择“文件” > “新建项目” 。 
 1. 提供项目名称和保存项目的位置。 然后从下拉列表中选择一个 SQL Server 迁移目标，再选择“确定”。
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/new-project.png" alt-text="该屏幕截图显示要指定的项目详细信息。":::
 
 
-1. 在“连接到 Db2”上，输入 Db2 连接详细信息的值。
+1. 在“连接到 Db2”上，输入值以查看 Db2 连接详细信息。
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/connect-to-Db2.png" alt-text="显示用于连接到 Db2 实例的选项的屏幕截图。":::
 
 
 1. 右键单击要迁移的 Db2 架构，然后选择“创建报表”。 这将生成一个 HTML 报表。 或者，可以在选择架构后，从导航栏中选择“创建报表”。
 
-   :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/create-report.png" alt-text="显示如何创建报表的屏幕截图。":::
+   :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/create-report.png" alt-text="屏幕截图，显示如何创建报表。":::
 
 1. 查看 HTML 报表，了解转换统计信息以及任何错误或警告。 另外，还可以在 Excel 中打开报表以获取 Db2 对象的清单，以及执行架构转换所需的工作量。 报表的默认位置在 SSMAProjects 内的报表文件夹中。
 
    例如：`drive:\<username>\Documents\SSMAProjects\MyDb2Migration\report\report_<date>`。 
 
-   :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/report.png" alt-text="报表的屏幕截图，你查看此报表来识别任何错误或警告。":::
+   :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/report.png" alt-text="该报表屏幕截图显示任何错误或警告。":::
 
 
 ### <a name="validate-data-types"></a>验证数据类型
@@ -74,7 +74,7 @@ ms.locfileid: "108136348"
 1. 选择“项目设置”。 
 1. 选择“类型映射”选项卡。
 
-   :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/type-mapping.png" alt-text="显示选择架构和类型映射的屏幕截图。":::
+   :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/type-mapping.png" alt-text="该屏幕截图显示如何选择架构和类型映射。":::
 
 1. 可通过在 Db2 元数据资源管理器中选择表来更改每个表的类型映射。 
 
@@ -112,7 +112,7 @@ ms.locfileid: "108136348"
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/synchronize-with-database.png" alt-text="显示“与数据库同步”选项的屏幕截图。":::
 
-1. 迁移数据。 在 Db2 元数据资源管理器中，右键单击要迁移的数据库或对象，然后选择“迁移数据” 。 或者，可从导航栏中选择“迁移数据”。 若要迁移整个数据库的数据，请选中数据库名称旁边的复选框。 若要从单个表中迁移数据，请展开数据库，展开“表”，然后选中表旁边的复选框。 若要忽略单个表中的数据，请清除对应的复选框。
+1. 迁移数据。 在 Db2 元数据资源管理器中，右键单击要迁移的数据库或对象，然后选择“迁移数据” 。 或者，可在导航栏中选择“迁移数据”。 若要迁移整个数据库的数据，请选中数据库名称旁边的复选框。 若要从单个表中迁移数据，请展开数据库，展开“表”，然后选中表旁边的复选框。 若要忽略单个表中的数据，请清除对应的复选框。
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/migrate-data.png" alt-text="显示选择架构和选择迁移数据的屏幕截图。":::
 
@@ -127,7 +127,7 @@ ms.locfileid: "108136348"
 
 ## <a name="post-migration"></a>迁移后 
 
-完成迁移后，需要执行一系列的迁移后任务来确保一切尽可能顺利高效地进行。
+成功完成迁移后还需要执行一系列的迁移后任务，以确保所有操作尽可能顺利高效。
 
 ### <a name="remediate-applications"></a>修正应用程序 
 
@@ -138,7 +138,7 @@ ms.locfileid: "108136348"
 测试包括以下活动：
 
 1. 开发验证测试：要测试数据库迁移，需要使用 SQL 查询。 必须创建针对源数据库和目标数据库运行的验证查询。 验证查询应涵盖已定义的范围。
-1. **设置测试环境**：测试环境应包含源数据库和目标数据库的副本。 请确保隔离测试环境。
+1. 设置测试环境：测试环境应包含源数据库和目标数据库的副本。 请确保隔离测试环境。
 1. 运行验证测试：针对源和目标运行验证测试，然后分析结果。
 1. 运行性能测试：针对源和目标运行性能测试，然后分析和比较结果。
 
@@ -151,7 +151,6 @@ ms.locfileid: "108136348"
 |[数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
 |[Db2 zOS 数据资产发现和评估包](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|在数据库上运行 SQL 脚本后，可以将结果导出到文件系统上的文件。 支持多种文件格式（包括 *.csv），方便你在外部工具（如电子表格）中捕获结果。 如果你想要与未安装工作台的团队轻松共享结果，此方法会很有用。|
 |[IBM Db2 LUW 清单脚本和项目](https://github.com/microsoft/DataMigrationTeam/tree/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|此资产包含一个 SQL 查询，该查询可访问 IBM Db2 LUW 版本 11.1 系统表，并按架构和对象类型提供对象计数、每个架构中“原始数据”的粗略估计、每个架构中表的大小，以及 CSV 格式的存储结果。|
-|[Azure 上的 Db2 LUW 纯扩展 - 设置指南](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/DB2%20PureScale%20on%20Azure.pdf)|本指南用作 Db2 实现计划的起点。 尽管业务要求有所不同，但均适用相同的基本模式。 此体系结构模式还可用于 Azure 上的 OLAP 应用程序。|
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 

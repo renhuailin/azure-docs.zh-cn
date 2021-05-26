@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: 550ae815933fd79e0cf6dc411aaddc8a8f564202
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5a6adc0ad4f515e98f4393266bf71565359b3e0a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314510"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473374"
 ---
 # <a name="how-to-create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>如何创建 Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "108314510"
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
-1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左侧导航菜单中，依次选择“商业市场” > “概述”。
 3. 在“概述”页上，依次选择“+ 新建产品/服务” > “Dynamics 365 for Customer Engagement 和 Power Apps”。
 
@@ -82,7 +82,7 @@ ms.locfileid: "108314510"
 
 ## <a name="customer-leads"></a>潜在顾客
 
-[!INCLUDE [Connect lead management](partner-center-portal/includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](includes/customer-leads.md)]
 
 有关详细信息，请参阅[来自商业市场产品/服务的客户销售线索](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 

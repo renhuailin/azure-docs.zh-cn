@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: aee67becf7519f03839eafbd897838f938871307
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: d2c861757b72f630f88d62ba50723ed1b6fc25ed
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537232"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462345"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>向 Azure 服务总线队列发送消息并从中接收消息 (JavaScript)
 本教程介绍如何使用 JavaScript 程序中的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包向服务总线队列发送消息并从中接收消息。
@@ -164,7 +164,7 @@ npm install @azure/service-bus
         });
     
         // Waiting long enough before closing the sender to send messages
-        await delay(5000);
+        await delay(20000);
     
         await receiver.close(); 
         await sbClient.close();

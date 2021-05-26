@@ -3,16 +3,16 @@ title: 容器组的静态 IP 地址
 description: 在虚拟网络中创建容器组，并使用 Azure 应用程序网关向容器化 Web 应用公开静态前端 IP 地址
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: de9e06b457a9ea5485fe268bd2b7cf206f0a6c0e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c0401c0b6ec4aae124ee1954762d22c16cacb994
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790934"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084216"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>公开容器组的静态 IP 地址
 
-本文介绍一种使用 Azure [应用程序网关](../application-gateway/overview.md)公开[容器组](container-instances-container-groups.md)的静态公共 IP 地址的方法。 如果需要在 Azure 容器实例中运行的某个面向外部的容器化应用的静态入口点，请按这些步骤操作。 
+本文介绍一种使用 Azure [应用程序网关](../application-gateway/overview.md)公开[容器组](container-instances-container-groups.md)的静态公共 IP 地址的方法。 如果需要在 Azure 容器实例中运行的某个面向外部的容器化应用的静态入口点，请按这些步骤操作。
 
 本文使用 Azure CLI 为此方案创建资源：
 
@@ -69,9 +69,9 @@ az network public-ip create \
 
 ## <a name="create-container-group"></a>创建容器组
 
-运行以下 [az container create][az-container-create] 命令，在上一步配置的虚拟网络中创建一个容器组。 
+运行以下 [az container create][az-container-create] 命令，在上一步配置的虚拟网络中创建一个容器组。
 
-该组会部署到 *myACISubnet* 子网中，包含用于拉取 `aci-helloworld` 映像的名为 *appcontainer* 的单个实例。 如本文档中的其他文章所述，此映像会打包一个以 Node.js 编写的、可提供静态 HTML 页面的小型 Web 应用。 
+该组会部署到 *myACISubnet* 子网中，包含用于拉取 `aci-helloworld` 映像的名为 *appcontainer* 的单个实例。 如本文档中的其他文章所述，此映像会打包一个以 Node.js 编写的、可提供静态 HTML 页面的小型 Web 应用。
 
 ```azurecli
 az container create \
@@ -119,14 +119,14 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress \
   --vnet-name myVNet \
   --subnet myAGSubnet \
-  --servers "$ACI_IP" 
+  --servers "$ACI_IP"
 ```
 
 
-Azure 最长可能需要花费 15 分钟时间来创建应用程序网关。 
+Azure 最长可能需要花费 15 分钟时间来创建应用程序网关。
 
 ## <a name="test-public-ip-address"></a>测试公共 IP 地址
-  
+
 现在，可以测试性地访问在应用程序网关后面的容器组中运行的 Web 应用。
 
 运行 [az network public-ip show][az-network-public-ip-show] 命令以检索网关的前端公共 IP 地址：
@@ -147,7 +147,7 @@ az network public-ip show \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 参阅[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)，了解如何在应用程序网关后面创建一个使用 WordPress 容器实例作为后端服务器的容器组。
+* 参阅[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/wordpress/aci-wordpress-vnet)，了解如何在应用程序网关后面创建一个使用 WordPress 容器实例作为后端服务器的容器组。
 * 还可以使用用于 SSL 终止的证书来配置应用程序网关。 请参阅[概述](../application-gateway/ssl-overview.md)和[教程](../application-gateway/create-ssl-portal.md)。
 * 根据你的方案，请考虑将其他 Azure 负载均衡解决方案与 Azure 容器实例配合使用。 例如，使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)在多个容器实例和多个区域之间分配流量。 请参阅此 [博客文章](https://aaronmsft.com/posts/azure-container-instances/)。
 

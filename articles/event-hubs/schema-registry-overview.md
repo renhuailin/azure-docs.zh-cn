@@ -2,14 +2,14 @@
 title: 事件中心中的 Azure 架构注册表（预览版）
 description: 本文概述了 Azure 事件中心（预览版）支持的架构注册表。
 ms.topic: overview
-ms.date: 04/28/2021
+ms.date: 05/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 578bb082cf439d48b186461742ed51c39ce85e80
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 43380ccd4f20616676f4eeb53fb2231b4f76f4e9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226437"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371198"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>事件中心中的 Azure 架构注册表（预览版）
 在许多事件流式处理和消息传送场景中，事件或消息有效负载都包含结构化数据，这些数据使用架构驱动格式（例如 Apache Avro）进行序列化或反序列化。 发送方和接收方可能都需要使用与 JSON 架构相同的架构文档来验证数据的完整性。 对于架构驱动格式，消息使用者必须能够使用该架构，才能反序列化数据。 
@@ -18,7 +18,7 @@ Azure 架构注册表是事件中心的一项功能，它为事件驱动的应�
 
 > [!NOTE]
 > - 架构注册表功能目前处于预览状态，不建议用于生产工作负载 。
-> - 仅标准层和专用层提供此功能，基本层未提供  。
+> - 此功能在基本层中不可用。
 
 借助架构驱动的序列化框架（例如 Apache Avro ），将序列化元数据外部化为共享架构还有助于显著降低每个数据集包含的类型信息和字段名称的每条消息开销，因为它具有标记格式（如 JSON）。 将架构与事件一起存储，并将其存储在事件基础结构中，可确保序列化/反序列化所需的元数据始终是可访问的，并且架构始终置于正确的位置。 
 
@@ -47,8 +47,8 @@ Azure 架构注册表是事件中心的一项功能，它为事件驱动的应�
 
 :::image type="content" source="./media/schema-registry-overview/flow-diagram.png" alt-text="流程图":::
 
-## <a name="standard-vs-dedicated-limits"></a>标准限制与专用限制
-对于事件中心标准层和专用层的相同和不同限制（例如命名空间中的架构组的数目），请查看[事件中心配额和限制](event-hubs-quotas.md)
+## <a name="limits"></a>限制
+若要了解事件中心的限制（例如：命名空间中架构组的数量），请参阅[事件中心的配额和限制](event-hubs-quotas.md)
 
 ## <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 以编程方式访问架构注册表时，需要在 Azure Active Directory (Azure AD) 中注册应用程序，并将应用程序的安全主体添加到以下 Azure 基于角色的访问控制 (Azure RBAC) 角色之一：

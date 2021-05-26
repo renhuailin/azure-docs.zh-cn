@@ -4,12 +4,12 @@ description: 由 Trace、NLog 或 Log4Net 生成的搜索日志。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f94920d44e37aae17c484be4f8e74a4f351e1b1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937554"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082767"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 .NET/.NET Core 和 Python 跟踪日志
 
@@ -195,7 +195,7 @@ logger.warning('Hello, World!')
 ### <a name="how-do-i-do-this-for-java"></a>对于 Java，我该怎么做？
 在 Java 无代码检测（推荐）中，日志是现成收集的，使用 [Java 3.0 代理](./java-in-process-agent.md)。
 
-如果使用的是 Java SDK，请使用 [Java 日志适配器](./java-trace-logs.md)。
+如果使用的是 Java SDK，请使用 [Java 日志适配器](java-2x-trace-logs.md)。
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>项目上下文菜单上没有 Application Insights 选项
 * 请确保 Developer Analytics Tools 安装在开发计算机上。 在 Visual Studio“工具” > “扩展和更新”中，查找“Developer Analytics Tools”  。 如果它不在“已安装”选项卡中，请打开“联机”选项卡并安装它 。

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 0d4d32aba34a97c6a060c999694f66d79933d011
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff1ce49395a5a7374a0dc739eb26fb7b4a6f72af
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99556043"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372801"
 ---
 # <a name="importing-from-data-sources"></a>从数据源导入
 
@@ -20,7 +20,9 @@ ms.locfileid: "99556043"
 
 内容会从数据源引入到知识库中。 数据源位置是公共 URL 或文件，不需要进行身份验证。
 
-[SharePoint 文件](../how-to/add-sharepoint-datasources.md)是个例外，它受身份验证保护。 SharePoint 资源必须是文件，不能是网页。 如果 URL 以 web 扩展名（如 .ASPX）结尾，则不会从 SharePoint 导入 QnA Maker。
+[SharePoint 文件](../how-to/add-sharepoint-datasources.md)是个例外，它受身份验证保护。 SharePoint 资源必须是文件，不能是网页。 
+
+QnA Maker 支持以 .ASPX Web 扩展名结尾的公共 URL，这些 URL 不通过身份验证进行保护。
 
 ## <a name="chit-chat-content"></a>聊天内容
 
@@ -37,7 +39,7 @@ ms.locfileid: "99556043"
 
 ## <a name="structured-multi-turn-format-through-import"></a>通过导入提供的结构化多回合格式
 
-可以创建采用 `.tsv` 文件格式的多回合聊天。 利用该格式，可以通过分析以前的聊天日志来创建多回合聊天（使用其他过程，不使用 QnA Maker），然后通过自动化创建 `.tsv` 文件。 导入该文件以替换现有知识库。
+可以创建采用 `.tsv` 文件格式的多轮聊天。 利用该格式，可以通过分析以前的聊天日志来创建多回合聊天（使用其他过程，不使用 QnA Maker），然后通过自动化创建 `.tsv` 文件。 导入该文件以替换现有知识库。
 
 > [!div class="mx-imgBorder"]
 > ![3 级多回合问题的概念模型](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
@@ -62,6 +64,13 @@ DisplayOrder 为数值，displayText 是不应该包括 Markdown 的文本 。
 * 使用这个[可从 GitHub 下载的示例](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
 * 或在 QnA Maker 门户中创建该对，保存，然后导出知识库，以获取有关如何表示该对的示例。
 
+## <a name="unstructured-data-format"></a>非结构化数据格式 
+
+还可以基于通过文件导入的非结构化内容来创建知识库。 目前，只有进行文档上传之后，此功能才适用于那些采用受支持文件格式的文档。
+
+> [!IMPORTANT]
+> 只有进行文件上传之后，才在自定义问答（预览版）中提供对非结构化内容的支持
+
 ## <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>可以添加到知识库的文档的内容类型
 内容类型包括许多标准的结构化文档，如 PDF、DOC 和 TXT。
 
@@ -71,15 +80,15 @@ DisplayOrder 为数值，displayText 是不应该包括 Markdown 的文本 。
 
 |源类型|内容类型| 示例|
 |--|--|--|
-|代码|常见问题<br> （平面，包含节或主题主页）<br>支持页面 <br> （单页操作指南文章、故障排除文章，等等）|[纯文本常见问题解答](../troubleshooting.md)、 <br>[包含链接的常见问题解答](https://www.microsoft.com/en-us/software-download/faq)、<br> [包含主题主页的常见问题解答](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[支持文章](./best-practices.md)|
-|PDF / DOC|常见问题解答、<br> 产品手册、<br> 小册子、<br> 论文、<br> 传单策略、<br> 支持指南、<br> 结构化 QnA，<br> 等等|没有多回合<br>[Structured QnA.docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/structured.docx)、<br> [Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、<br> [Sample semi-structured.docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample white paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)、<br><br>多回合:<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso Benefits (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso Benefits (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)|
+|URL|常见问题<br> （平面，包含节或主题主页）<br>支持页面 <br> （单页操作指南文章、故障排除文章，等等）|[纯文本常见问题解答](../troubleshooting.md)、 <br>[包含链接的常见问题解答](https://www.microsoft.com/software-download/faq)、<br> [包含主题主页的常见问题解答](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[支持文章](./best-practices.md)|
+|PDF / DOC|常见问题解答、<br> 产品手册、<br> 小册子、<br> 论文、<br> 传单策略、<br> 支持指南、<br> 结构化 QnA，<br> 等等|没有多回合<br>[Structured QnA.docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/structured.docx)、<br> [Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、<br> [Sample semi-structured.docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample white paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)、<br> [Unstructured blog.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Introducing-surface-laptop-4-and-new-access.pdf)、<br> [Unstructured white paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/sample-unstructured-paper.pdf)<br><br>多回合:<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso Benefits (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso Benefits (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)|
 |*Excel|结构化 QnA 文件<br> （包括 RTF、HTML 支持）|没有多回合：<br>[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)<br><br>多回合:<br>[Structured simple FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx)<br>[Surface laptop FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-Surface-Pro.xlsx)|
 |*TXT/TSV|结构化 QnA 文件|[示例 chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
 如果需要针对数据源进行身份验证，请考虑使用以下方法将该内容导入到 QnA Maker 中：
 
 * 手动下载该文件并将其导入 QnA Maker
-* 从经过身份验证的 [Sharepoint 位置](../how-to/add-sharepoint-datasources.md)添加该文件
+* 从经过身份验证的 [SharePoint 位置](../how-to/add-sharepoint-datasources.md)添加该文件
 
 ### <a name="url-content"></a>URL 内容
 

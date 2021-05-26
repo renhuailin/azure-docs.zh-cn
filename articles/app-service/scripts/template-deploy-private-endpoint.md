@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: df71c1a92840ae0e7fa263e2ababcf5b3e059789
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 11761a7ec3716703d6714b515957d3a085791354
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832529"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068241"
 ---
 # <a name="create-an-app-service-app-and-deploy-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建应用服务应用并部署专用终结点
 
@@ -32,13 +32,13 @@ ms.locfileid: "107832529"
 
 ### <a name="review-the-template"></a>查看模板
 
-:::code language="json" source="~/quickstart-templates/101-private-endpoint-webapp/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/private-endpoint-webapp/azuredeploy.json" :::
 
 ### <a name="deploy-the-template"></a>部署模板
 
 下面介绍如何将 Azure 资源管理器模板部署到 Azure：
 
-1. 若要登录到 Azure 并打开模板，请选择此链接：[部署到 Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json)。 使用该模板可创建虚拟网络、Web 应用、专用终结点和专用 DNS 区域。
+1. 若要登录到 Azure 并打开模板，请选择此链接：[部署到 Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.web%2Fprivate-endpoint-webapp%2Fazuredeploy.json)。 使用该模板可创建虚拟网络、Web 应用、专用终结点和专用 DNS 区域。
 2. 选择或创建资源组。
 3. 输入 Web 应用、Azure 应用服务计划、专用终结点的名称。
 5. 阅读有关条款和条件的声明。 如果你同意，请选择“我同意上述条款和条件” > “购买” 。 部署可能需要几分钟才能完成。

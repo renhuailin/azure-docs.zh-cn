@@ -5,18 +5,20 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: c2fad19bd84418d41aca1b2e0770eaa3cde488b0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fa24347c8fcc0550dc6dc86c96624d1b1f6dcf25
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043353"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376316"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>网络隔离的建议设置
 
 应按照以下步骤来限制对 QnA Maker 资源的公共访问。 通过[配置虚拟网络](../../cognitive-services-virtual-networks.md?tabs=portal)来保护认知服务资源免受公共访问。
 
 ## <a name="restrict-access-to-app-service-qna-runtime"></a>限制对应用服务的访问（QnA 运行时）
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 可以将 IP 添加到应用服务允许列表来限制访问，或配置应用服务环境以承载 QnA Maker 应用服务。
 
@@ -50,6 +52,10 @@ ms.locfileid: "105043353"
 
 4.  使用 Azure 资源管理器创建 QnA Maker 认知服务实例 (Microsoft.CognitiveServices/accounts)，其中 QnA Maker 终结点应设置为上面创建的应用服务终结点 (https:// mywebsite.myase.p.azurewebsite.net)。
     
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+应用服务未部署自定义问答。
+
 ---
 
 ## <a name="restrict-access-to-cognitive-search-resource"></a>限制对认知搜索资源的访问
@@ -62,8 +68,9 @@ ms.locfileid: "105043353"
 
 如果没有为 QnAMaker 应用服务使用应用服务环境，请先创建新的 VNet 资源，然后创建与认知搜索实例的专用终结点连接。 在这种情况下，需要将 QnA Maker 应用服务[与 VNet 集成](../../../app-service/web-sites-integrate-with-vnet.md)，以便连接到认知搜索实例。 
 
-#  <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 为 Azure 搜索资源[创建专用终结点](../reference-private-endpoint.md)。
 
 ---
+

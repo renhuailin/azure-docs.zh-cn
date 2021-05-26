@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 8964248bb23b2b615c7e73e26d730fbd79b4e9e7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4b15d683a54f665e948dc31b51df039d20c58f7a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184451"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081364"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 上创建 Oracle 数据库
 
@@ -69,7 +69,7 @@ az vm create ^
 ## <a name="create-and-attach-a-new-disk-for-oracle-datafiles-and-fra"></a>为 Oracle 数据文件和 FRA 创建并附加新磁盘
 
 ```bash
-az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 128 --sku StandardSSD_LRS --vm-name vmoracle19c
+az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 64 --sku StandardSSD_LRS --vm-name vmoracle19c
 ```
 
 ## <a name="open-ports-for-connectivity"></a>打开用于连接的端口

@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 42f6107ff79d6262cdc0a35cf972cf65d3a9a802
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfdefe642e7e0f428680340747f825641d19b391
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171374"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378277"
 ---
 # <a name="security-and-authentication"></a>安全性和身份验证
 
@@ -40,7 +41,7 @@ ms.locfileid: "86171374"
 | 可能值 | 说明 |
 | ---------------- | ------------ |
 | 严格 | 默认。 仅启用 HTTPS
-| 已启用 | 启用 HTTP 和 HTTPS
+| Enabled | 启用 HTTP 和 HTTPS
 | 已禁用 | 仅启用 HTTP
 
 ## <a name="inbound-client-authentication"></a>入站客户端身份验证
@@ -145,7 +146,7 @@ IoT Edge 的安全守护程序为每个 IoT Edge 模块分配一个标识证书�
 > [!NOTE]
 >IoT Edge 环境将生成自签名证书。 建议为生产工作负载生成由已授权 CA 颁发的证书，并将入站和出站服务器上的 allowUnknownCA 属性设置为 false 。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 事件网格模块默认是安全的。 建议为生产部署保留这些默认设置。
 

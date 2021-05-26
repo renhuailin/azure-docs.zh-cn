@@ -9,18 +9,77 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 1bdc439bc281338fc3df95f7d82784a5eebf7a4a
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 332be773bca07acf178bd0754d3dad12f4879f51
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288537"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371129"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro) 参考页。
 
 __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在页面更新时收到通知：`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-05-25"></a>2021-05-25
+
+### <a name="announcing-the-20-cli-preview-for-azure-machine-learning"></a>宣布推出适用于 Azure 机器学习的 2.0 CLI（预览版）
+
+Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 该扩展可让你从命令行训练和部署模型，并提供了在跟踪模型生命周期时加快数据科学纵向和横向扩展的功能。 [安装并开始使用](how-to-configure-cli.md)。
+
+### <a name="azure-machine-learning-sdk-for-python-v1290"></a>适用于 Python v1.29.0 的 Azure 机器学习 SDK
++ **Bug 修复与改进**
+  + **重大更改**
+    + 放弃了对 Python 3.5 的支持。
+  + **azureml-automl-runtime**
+    + 修复了以下 bug：如果时序长度短于季节性，STLFeaturizer 会失败。 此错误以 IndexError 的形式出现。 这种情况现已得到处理，不再会出错，不过在这种情况下，STL 的季节性组件只是包含零。
+  + **azureml-contrib-automl-dnn-vision**
+    + 添加了一个方法用于通过文件路径进行批量推断。
+  + **azureml-contrib-gbdt**
+    + azureml-contrib-gbdt 包已弃用，可能不会接收将来的更新，并且将会连同分发包一起删除。
+  + **azureml-core**
+    + 更正了 Datastore.register_azure_blob_container 中参数 create_if_not_exists 的解释。
+    + 向 DatasetConsumptionConfig 类添加了示例代码。
+    + 为 run.log() 中的标量指标值添加了对替代轴形式的步骤的支持
+  + **azureml-dataprep**
+    + 将 `_with_partition_size()` 中接受的分区大小限制为 2GB
+  + **azureml-interpret**
+    + 将 azureml-interpret 更新到了最新的 interpret-core 包版本
+    + 放弃了对 SHAP 0.36.0 中已弃用的 SHAP DenseData 的支持。
+    + 启用 `ExplanationClient` 可以上传到用户指定的数据存储。
+  + **azureml-mlflow**
+    + 将 azureml-mlflow 移到了 mlflow-skinny，以减少依赖项占用空间，同时保持完整的插件支持
+  + **azureml-pipeline-core**
+    + 参考文档中的 PipelineParameter 代码示例已更新为使用正确的参数。
+
+
+## <a name="2021-05-10"></a>2021-05-10
+
+### <a name="azure-machine-learning-sdk-for-python-v1280"></a>适用于 Python v1.28.0 的 Azure 机器学习 SDK
++ **Bug 修复与改进**
+  + **azureml-automl-runtime**
+    + 改进了 AutoML 评分脚本，使其与设计器保持一致
+    + 修补了以下 bug：如果在早期版本的 SDK 中训练，使用 Prophet 模型进行预测会引发“缺少列”错误。
+    + 将 ARIMAX 模型添加到了 AutoML SDK 的面向公众的、支持预测功能的模型列表。 此处的 ARIMAX 是具有 ARIMA 错误的回归，并且是 Box 和 Jenkins 开发的传输函数模型的特例。 有关这两种方法的差别的讨论，请参阅 [The ARIMAX model muddle](https://robjhyndman.com/hyndsight/arimax/)（ARIMAX 模型令人困惑之处）。 与 AutoML 中使用自动生成的时间相关特征（一天的某一小时、一年中的某一天等）的其他多变体模型不同，此模型仅使用用户提供的特征，使系数解释变得简单。
+  + **azureml-contrib-dataset**
+    + 更新了文档说明，指出在使用 mount 时应安装 libfuse。
+  + **azureml-core**
+    + 默认的 CPU 特选映像现在为 mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04。 默认的 GPU 映像现在为 mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.2-cudnn8-ubuntu18.04
+    + Run.fail() 现已弃用，请使用 Run.tag() 将运行标记为“失败”，或使用 Run.cancel() 将运行标记为“已取消”。
+    + 更新了文档，提供了一条说明指出在装载文件数据集时应安装 libfuse。
+    + 添加了对表格数据集的试验性 register_dask_dataframe() 支持。
+    + 支持在 DatabricksStep 中使用 Azure Blob/ADL-S 作为输入/输出，并公开了参数 permit_cluster_restart，以便让客户决定在需要将 i/o 访问配置添加到群集时，AML 是否可以重启群集
+  + **azureml-dataset-runtime**
+    + azureml-dataset-runtime 现在支持低于 4.0.0 的 pyarrow 版本
+  + **azureml-mlflow**
+    + 添加了对通过 MLFlow 插件部署到 AzureML 的支持。
+  + **azureml-pipeline-steps**
+    + 支持在 DatabricksStep 中使用 Azure Blob/ADL-S 作为输入/输出，并公开了参数 permit_cluster_restart，以便让客户决定在需要将 i/o 访问配置添加到群集时，AML 是否可以重启群集
+  + azureml-synapse
+    + 启用 msi 身份验证中的受众
+  + **azureml-train-automl-client**
+    + 为计算目标文档添加了更改的链接
 
 
 ## <a name="2021-04-19"></a>2021-04-19
@@ -130,7 +189,7 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
 
 + **Bug 修复与改进**
   + 改进了页面加载时间。
-  + 提高了性能。
+  + 改进的性能。
   + 提高了速度和内核可靠性。
   + 通过永久将“笔记本文件”窗格向上移动来获取垂直空间
   + 现在可以在终端中单击链接

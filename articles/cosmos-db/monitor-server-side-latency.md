@@ -6,12 +6,12 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: ec6a9db63504958640137fcd0fcfc904eb01afa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af58b0810ef45a9fff766b73188f66555ba6bc6c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93074723"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470981"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>如何监视 Azure Cosmos DB 容器或帐户中的操作的服务器端延迟
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -24,21 +24,21 @@ ms.locfileid: "93074723"
 * 读或写操作
 * 查询
 
-你可以查找诊断日志以查看返回的数据的大小。 如果看到查询操作的一直持续的较高延迟，应该在诊断日志中查找所使用的更高[吞吐量或 RU/s](cosmosdb-monitor-resource-logs.md#diagnostic-queries)。 服务器端延迟显示将数据返回到客户端之前在后端基础结构上花费的时间。 请务必查看此指标，排除所有后端延迟问题。
+你可以查找诊断日志以查看返回的数据的大小。 如果看到查询操作的一直持续的较高延迟，应该在诊断日志中查找所使用的更高[吞吐量或 RU/s](cosmosdb-monitor-logs-basic-queries.md)。 服务器端延迟显示将数据返回到客户端之前在后端基础结构上花费的时间。 请务必查看此指标，排除所有后端延迟问题。
 
 ## <a name="view-the-server-side-latency-metric"></a>查看服务器端延迟指标
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-
-1. 在左侧导航栏中选择“监视”，然后选择“指标”。 
+   
+2. 在左侧导航栏中选择“监视”，然后选择“指标”。 
 
    :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Azure Monitor 中的“指标”窗格":::
 
-1. 在“指标”窗格中选择一个资源，然后选择所需的订阅和资源组。    对于“资源类型”，请选择“Azure Cosmos DB 帐户”，选择一个现有的 Azure Cosmos 帐户，然后选择“应用”。  
+3. 在“指标”窗格中选择一个资源，然后选择所需的订阅和资源组。    对于“资源类型”，请选择“Azure Cosmos DB 帐户”，选择一个现有的 Azure Cosmos 帐户，然后选择“应用”。  
    
    :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="选择 Azure Cosmos DB 帐户以查看指标":::
 
-1. 接下来，从可用指标的列表中选择“服务器端延迟”指标。 若要详细了解此列表中的所有可用指标，请参阅[按类别划分的指标](monitor-cosmos-db-reference.md)一文。 在此示例中，让我们选择“服务器端延迟”和“平均”作为聚合值。 除这些详细信息外，还可以选择指标的“时间范围”和“时间粒度”。  可以查看过去最长 30 天的指标。  应用筛选器后，系统会根据该筛选器显示图表。 可以查看所选时间段内每分钟的服务器端延迟。  
+4. 接下来，从可用指标的列表中选择“服务器端延迟”指标。 若要详细了解此列表中的所有可用指标，请参阅[按类别划分的指标](monitor-cosmos-db-reference.md)一文。 在此示例中，让我们选择“服务器端延迟”和“平均”作为聚合值。 除这些详细信息外，还可以选择指标的“时间范围”和“时间粒度”。  可以查看过去最长 30 天的指标。  应用筛选器后，系统会根据该筛选器显示图表。 可以查看所选时间段内每分钟的服务器端延迟。  
 
    :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="从 Azure 门户中选择服务器端延迟指标":::
 

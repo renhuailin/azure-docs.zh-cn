@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 925eb2aee84b135663f80dedd713151ff70898ed
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 540631db87807312f96c96ddd5b8144d4e22ff91
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207908"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095565"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>将事件路由到 Azure 数字孪生内部和外部
 
@@ -73,7 +73,7 @@ Azure 数字孪生使用事件路由向服务外的使用者发送数据。
  
 若要创建事件路由，可使用 Azure 数字孪生 [REST API、CLI 命令](how-to-manage-routes-apis-cli.md#create-an-event-route)或 [Azure 门户](how-to-manage-routes-portal.md#create-an-event-route)。
 
-下面是使用 `CreateOrReplaceEventRouteAsync` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 调用在客户端应用程序中创建事件路由的示例： 
+下面是使用 `CreateOrReplaceEventRouteAsync` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 调用在客户端应用程序中创建事件路由的示例： 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
 

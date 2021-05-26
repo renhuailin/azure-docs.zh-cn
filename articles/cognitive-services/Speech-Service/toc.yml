@@ -116,7 +116,7 @@
           href: how-to-speech-synthesis-viseme.md
         - name: 自定义
           items:
-            - name: 自定义语音门户
+            - name: 自定义神经语音
               items:
                 - name: 什么是自定义神经语音？
                   href: custom-neural-voice.md

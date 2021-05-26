@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 05/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 90925f30e84ec3c06e715669ebd982c823dfaf5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 94ebfcab77b6db579b263dc11f856612bb2c630a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568318"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086313"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>通过 Azure PowerShell 在 Azure Stack Edge 设备上部署 VM
 
@@ -456,6 +456,13 @@ New-AzureRmVM -ResourceGroupName <Resource Group Name> -Location DBELocal -VM $V
 若要连接到 Linux VM，请执行以下操作：
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
+
+  如果在创建 VM 的过程中使用了公共 IP 地址，则可以使用该 IP 连接到 VM。 若要获取公共 IP，请运行以下命令： 
+
+  ```powershell
+  $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
+  ```
+  在此实例中，公共 IP 与创建虚拟网络接口期间传递的专用 IP 相同。
 
 ### <a name="connect-to-a-windows-vm"></a>连接到 Windows VM
 

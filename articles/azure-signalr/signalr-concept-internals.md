@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: afb63b76666f47217f9c19376d81aa4ed73991bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ffbe207109143956f6c5a56d8560925d93661bf
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98572555"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459063"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR 服务内部
 
@@ -57,21 +57,21 @@ Azure SignalR 服务构建于 ASP.NET Core SignalR 框架的基础之上。 它�
 
 1. 客户端向应用程序服务器发送协商请求。 应用程序服务器使用 Azure SignalR 服务 SDK 返回包含 SignalR 服务 URL 和访问令牌的重定向响应。
 
-- 对于 ASP.NET Core SignalR，典型的重定向响应如下所示：
-    ```
-    {
-        "url":"https://test.service.signalr.net/client/?hub=chat&...",
-        "accessToken":"<a typical JWT token>"
-    }
-    ```
-- 对于 ASP.NET SignalR，典型的重定向响应如下所示：
-    ```
-    {
-        "ProtocolVersion":"2.0",
-        "RedirectUrl":"https://test.service.signalr.net/aspnetclient",
-        "AccessToken":"<a typical JWT token>"
-    }
-    ```
+    - 对于 ASP.NET Core SignalR，典型的重定向响应如下所示：
+        ```
+        {
+            "url":"https://test.service.signalr.net/client/?hub=chat&...",
+            "accessToken":"<a typical JWT token>"
+        }
+        ```
+    - 对于 ASP.NET SignalR，典型的重定向响应如下所示：
+        ```
+        {
+            "ProtocolVersion":"2.0",
+            "RedirectUrl":"https://test.service.signalr.net/aspnetclient",
+            "AccessToken":"<a typical JWT token>"
+        }
+        ```
 
 1. 收到重定向响应后，客户端使用新的 URL 和访问令牌启动连接到 SignalR 服务的一般过程。
 
