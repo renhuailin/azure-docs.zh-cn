@@ -5,13 +5,13 @@ ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
-ms.date: 02/07/2021
-ms.openlocfilehash: 4f3e5a22b9692823f1e9542fb3a6d9ad42fe79cf
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 05/07/2021
+ms.openlocfilehash: 827e860c0b25945339a9e1640b94863697e04f88
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321134"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377134"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -33,28 +33,22 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 
 ## <a name="limitations"></a>限制
 
-- 当前只能使用 CLI 或 REST 请求执行配置。 尚不支持 Azure 门户或 PowerShell。
-- CLI 和 REST 中的 ```--export-all-tables``` 选项不受支持，将被删除。 你应在导出规则中显式提供表的列表。
-- 受支持的表当前仅限于下面[受支持的表](#supported-tables)部分中指定的那些。 例如，目前不支持自定义日志表。
+- 当前可以使用 CLI 或 REST 请求来执行配置。 尚不支持 Azure 门户或 PowerShell。
+- CLI 和 REST 中的 `--export-all-tables` 选项不受支持，将被删除。 你应在导出规则中显式提供表的列表。
+- 受支持的表当前仅限于下面[受支持的表](#supported-tables)部分指定的那些表。 例如，目前不支持自定义日志表。
 - 如果数据导出规则包含不受支持的表，操作不会失败，但在表受到支持之前，不会导出该表的任何数据。 
-- 如果数据导出规则包含不存在的表，操作会失败并出现错误 ```Table <tableName> does not exist in the workspace```。
-- Log Analytics 工作区可以位于除以下区域外的任何区域：
-  - Azure 政府区域
-  - 日本西部
-  - 巴西东南部
-  - 挪威东部
-  - 阿拉伯联合酋长国北部
-- 工作区中至多可以有 10 条已启用的规则。 可在禁用状态下创建 10 条以上其他规则。 
+- 如果数据导出规则包含不存在的表，操作会失败并出现错误 `Table <tableName> does not exist in the workspace`。
+- 数据导出功能将在所有区域提供，但目前不适用于以下区域：Azure 政府区域、日本西部、巴西东南部、挪威东部、挪威西部、阿拉伯联合酋长国北部、阿拉伯联合酋长国中部、澳大利亚中部 2、瑞士北部、瑞士西部、德国中西部、印度南部、法国南部、日本西部
+- 可以在工作区中定义最多 10 个已启用的规则。 允许更多规则，但这些规则处于禁用状态。 
 - 在工作区的所有导出规则中，目标必须唯一。
 - 目标存储帐户或事件中心必须与 Log Analytics 工作区位于同一区域。
-- 对于存储帐户，要导出的表的名称不能超过 60 个字符，而对于事件中心，不能超过 47 个字符。 名称较长的表将不会被导出。
-- Azure Data Lake Storage 的追加 blob 支持现以[有限的公共预览版](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/)形式提供
+- 对于存储帐户，要导出的表的名称不能超过 60 个字符，而对于事件中心，则不能超过 47 个字符。 名称较长的表将不会被导出。
 
 ## <a name="data-completeness"></a>数据完整性
 如果目标不可用，数据导出会继续重新尝试发送数据，最多持续 30 分钟。 如果 30 分钟后仍不可用，数据将被放弃，直到目标变为可用。
 
 ## <a name="cost"></a>成本
-数据导出功能当前不收取额外费用。 数据导出的定价将在以后公布，在开始计费之前将提供相关通知。 如果你选择在通知期后继续使用数据导出，则将按照适用的费率缴费。
+当前，数据导出功能不收取额外费用。 数据导出功能的定价会在将来公布，在开始计费之前会提供一个通知期。 如果你选择在通知期后继续使用数据导出，则将按照适用的费率缴费。
 
 ## <a name="export-destinations"></a>导出目标
 
@@ -69,9 +63,6 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 
 当基于时间的保留策略启用了 allowProtectedAppendWrites 设置时，Log Analytics 数据导出可以将追加 Blob 写入不可变存储帐户。 该设置允许将新块写入追加 Blob，同时维持不可变性保护和合规性。 请参阅[允许受保护的追加 Blob 写入](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)。
 
-> [!NOTE]
-> 目前在所有 Azure 区域中以预览版形式提供对 Azure Data Lake 存储的追加 blob 支持。 创建指向 Azure Data Lake 存储的导出规则之前，请先[注册有限公共预览版](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pURDk2NjMzUTVEVzU5UU1XUlRXSTlHSlkxQS4u)。 如果没有进行此注册，导出将不起作用。
-
 ### <a name="event-hub"></a>事件中心
 数据到达 Azure Monitor 时，将准实时地发送到事件中心。 将为导出的每个数据类型创建一个事件中心，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的事件中心中 。 如果要将导出的数据传递到特定事件中心，或者有一个表的名称超过了 47 个字符的限制，则可提供自己的事件中心名称并将定义的表的所有数据导出到该事件中心。
 
@@ -79,11 +70,11 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 > [每个“基本”和“标准”命名空间层支持 10 个事件中心](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers)。 如果导出的表格超过 10 个，则可在多个导出规则之间将表格拆分到不同的事件中心命名空间，或在导出规则中提供事件中心名称，并将所有表格导出到该事件中心。
 
 注意事项：
-1. “基本”事件中心层支持的[事件大小](../../event-hubs/event-hubs-quotas.md)较小，工作区中的某些日志可能会超过该大小而被删除。 建议使用“标准”或“专用”事件中心作为导出目标。
-2. 导出的数据量通常会随时间的推移而增加，需要扩大事件中心的规模，以适应更高的传输速率并避免出现限制情况和数据延迟。 应使用事件中心的自动膨胀功能来自动进行纵向扩展和增加吞吐量单位数，以满足使用量需求。 有关详细信息，请参阅[自动增加 Azure 事件中心吞吐量单位](../../event-hubs/event-hubs-auto-inflate.md)。
+1. “基本”事件中心 SKU 支持的事件大小[限制](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-vs-premium-vs-dedicated-tiers)更低，工作区中的某些日志可能会因超过该限制而被删除。 建议使用“标准”或“专用”事件中心作为导出目标。
+2. 导出的数据量通常会随时间的推移而增加，需要扩大事件中心的规模，以适应更高的传输速率并避免出现限制情况和数据延迟。 应使用事件中心的自动扩充功能来自动进行纵向扩展并增加吞吐量单位数，以满足使用需求。 有关详细信息，请参阅[自动增加 Azure 事件中心吞吐量单位](../../event-hubs/event-hubs-auto-inflate.md)。
 
 ## <a name="prerequisites"></a>先决条件
-以下是在配置 Log Analytics 数据导出之前必须完成的先决条件。
+在配置 Log Analytics 数据导出之前，必须符合下列先决条件：
 
 - 必须在导出规则配置之前创建目标，并且目标应与 Log Analytics 工作区位于同一区域。 如果需要将数据复制到其他存储帐户，可使用任何 [Azure 存储冗余选项](../../storage/common/storage-redundancy.md)。  
 - 存储帐户必须是 StorageV1 或 StorageV2。 不支持经典存储  
@@ -118,7 +109,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 数据导出规则定义导出数据的表和目标。 工作区中可以有 10 条已启用的规则，而 10 条以外的规则必须处于禁用状态。 在工作区的所有导出规则中，目标必须唯一。
 
 > [!NOTE]
-> 数据导出会将日志发送到你拥有的目标，而这些目标具有[存储帐户可伸缩性](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)和[事件中心命名空间配额](../../event-hubs/event-hubs-quotas.md)等限制。 建议监视目标的带宽限制，并在接近目标限制时采取措施。 例如： 
+> 数据导出会将日志发送到你拥有的目标，而这些目标具有[存储帐户可伸缩性](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)和[事件中心命名空间配额](../../event-hubs/event-hubs-quotas.md)等限制。 建议监视目标的带宽限制，在接近其限制时采取措施。 例如： 
 > - 在事件中心设置自动扩充功能，以自动纵向扩展并增加 TU（吞吐量单位）的数量。 当自动扩充达到最大值时，可以请求更多 TU
 > - 将表格拆分到多个导出规则，其中每个规则都指向不同的目标
 
@@ -626,7 +617,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | DnsEvents |  |
 | DnsInventory |  |
 | Dynamics365Activity |  |
-| 事件 | 部分支持 - 此表中的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
+| 事件 | 部分支持 - 导出完全支持来自 Log Analytics 代理 (MMA) 或 Azure Monitor 代理 (AMA) 的数据。 通过诊断扩展代理到达的数据是通过存储收集的，而导出不支持此路径。 |
 | ExchangeAssessmentRecommendation |  |
 | FailedIngestion |  |
 | FunctionAppLogs |  |
@@ -652,7 +643,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | NWConnectionMonitorTestResult |  |
 | OfficeActivity | 部分支持 - 某些数据是通过 Webhook 从 O365 引入 LA 的。 当前导出中缺少此部分。 |
 | Operation | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
-| 性能 | 部分支持 – 当前仅支持 windows 性能数据。 当前导出中缺少 Linux 性能数据。 |
+| 性能 | 部分支持 - 当前仅支持 Windows 性能数据。 当前导出中缺少 Linux 性能数据。 |
 | PowerBIDatasetsTenant |  |
 | PowerBIDatasetsWorkspace |  |
 | PowerBIDatasetsWorkspacePreview |  |
@@ -662,7 +653,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SecurityBaseline |  |
 | SecurityBaselineSummary |  |
 | SecurityDetection |  |
-| SecurityEvent | 部分支持 - 此表中的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
+| SecurityEvent | 部分支持 - 导出完全支持来自 Log Analytics 代理 (MMA) 或 Azure Monitor 代理 (AMA) 的数据。 通过诊断扩展代理到达的数据是通过存储收集的，而导出不支持此路径。 |
 | SecurityIncident |  |
 | SecurityIoTRawEvent |  |
 | SecurityNestedRecommendation |  |
@@ -687,7 +678,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SynapseSqlPoolRequestSteps |  |
 | SynapseSqlPoolSqlRequests |  |
 | SynapseSqlPoolWaits |  |
-| Syslog | 部分支持 - 此表中的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
+| Syslog | 部分支持 - 导出完全支持来自 Log Analytics 代理 (MMA) 或 Azure Monitor 代理 (AMA) 的数据。 通过诊断扩展代理到达的数据是通过存储收集的，而导出不支持此路径。 |
 | ThreatIntelligenceIndicator |  |
 | 更新 | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
 | UpdateRunProgress |  |

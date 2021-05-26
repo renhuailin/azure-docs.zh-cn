@@ -4,12 +4,12 @@ description: 本文介绍了如何将 Azure 事件网格自定义主题从一个
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
-ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a8e4283b0b9ed2a6bb7080e9a0fa05bf8f409cc
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89145327"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472208"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>将 Azure 事件网格自定义主题移动到另一个区域
 由于多方面的原因，你可能需要将资源移动到另一个区域。 例如，为了利用新的 Azure 区域，为了满足内部策略和监管要求，或者，为了应对容量规划要求。 
@@ -107,6 +107,5 @@ ms.locfileid: "89145327"
 
 - [跨区域移动系统主题](move-system-topics-across-regions.md)。 
 - [跨区域移动域](move-domains-across-regions.md)。 
-- [跨区域移动合作伙伴命名空间](move-partner-namespaces-across-regions.md)。
 
 若要详细了解在 Azure 中如何在区域之间移动资源以及如何进行灾难恢复，请参阅以下文章：[将资源移动到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。

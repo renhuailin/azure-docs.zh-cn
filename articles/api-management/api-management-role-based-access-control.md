@@ -11,15 +11,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 05/18/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ef71591d6d5a26aa737db4e7cb547c8b2c39d92a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 407defa76b5677e3e5136a5e28a64eb4a78c3cd2
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812167"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191214"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>如何在 Azure API 管理中使用基于角色的访问控制
 
@@ -38,14 +38,10 @@ API 管理目前提供了三个内置角色，不久之后会再添加两个角�
 | API 管理服务参与者 | ✓ | ✓ | ✓ | ✓ | 超级用户。 对 API 管理服务和实体（例如，API 和策略）拥有完全 CRUD 访问权限。 对旧版发布者门户拥有访问权限。 |
 | API 管理服务读者 | ✓ | | || 对 API 管理服务和实体拥有只读访问权限。 |
 | API 管理服务操作员 | ✓ | | ✓ | | 可以管理 API 管理服务，但不能管理实例。|
-| API 管理服务编辑者<sup>*</sup> | ✓ | ✓ | |  | 可以管理 API 管理实体，但不能管理服务。|
-| API 管理内容管理员<sup>*</sup> | ✓ | | | ✓ | 可以管理开发人员门户。 对服务和实体拥有只读访问权限。|
 
 <sup>[1] 对 API 管理服务和实体（例如，API 和策略）拥有读取访问权限。</sup>
 
 <sup>[2] 对 API 管理服务和实体拥有写入访问权限，但以下操作除外：实例创建、删除和缩放；VPN 配置；以及自定义域设置。</sup>
-
-<sup>\* 将所有管理 UI 从现有发布者门户迁移到 Azure 门户后，将提供“服务编辑者”角色。将发布者门户重建为只包含与管理开发人员门户相关的功能后，将提供“内容管理员”角色。</sup>  
 
 ## <a name="custom-roles"></a>自定义角色
 

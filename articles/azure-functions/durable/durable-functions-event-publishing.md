@@ -1,16 +1,16 @@
 ---
-title: 从 Durable Functions 发布到 Azure 事件网格（预览）
+title: 从 Durable Functions 发布到 Azure 事件网格
 description: 了解如何配置 Durable Functions 的自动 Azure 事件网格发布。
 ms.topic: conceptual
-ms.date: 04/25/2020
-ms.openlocfilehash: 44df100a5c794abf918a09dea0f94d30ddf916d3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/11/2020
+ms.openlocfilehash: 51069504bef29d9761d5c36be77fef33fd3d1ca6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175951"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377546"
 ---
-# <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
+# <a name="durable-functions-publishing-to-azure-event-grid"></a>从 Durable Functions 发布到 Azure 事件网格
 
 本文介绍了如何设置 Durable Functions，以便将业务流程生命周期事件（例如“已创建”、“已完成”和“失败”）发布到自定义的 [Azure 事件网格主题](../../event-grid/overview.md)。
 
@@ -25,7 +25,7 @@ ms.locfileid: "102175951"
 ## <a name="prerequisites"></a>先决条件
 
 * 在 Durable Functions 项目中安装 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)。
-* 安装 [Azure 存储模拟器](../../storage/common/storage-use-emulator.md)（仅限 Windows）或使用现有的 Azure 存储帐户。
+* 安装 [Azure 存储模拟器](../../storage/common/storage-use-emulator.md)或使用现有的 Azure 存储帐户。
 * 安装 [Azure CLI ](/cli/azure/) 或使用 [Azure Cloud Shell](../../cloud-shell/overview.md)
 
 ## <a name="create-a-custom-event-grid-topic"></a>创建自定义事件网格主题
@@ -103,22 +103,21 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 可能的 Azure 事件网格配置属性可以在 [host.json 文档](../functions-host-json.md#durabletask)中找到。 配置 `host.json` 文件后，函数应用会将生命周期事件发送到事件网格主题。 同时在本地和 Azure 中运行函数应用时，将启动此操作。
 
-在函数应用和 `local.settings.json` 中设置主题密钥的应用设置。 以下 JSON 是用于本地调试的 `local.settings.json` 示例。 将 `<topic_key>` 替换为主题密钥。  
+在函数应用和 `local.settings.json` 中设置主题密钥的应用设置。 以下 JSON 是使用 Azure 存储模拟器用于本地调试的 `local.settings.json` 示例。 将 `<topic_key>` 替换为主题密钥。  
 
 ```json
 {
     "IsEncrypted": false,
     "Values": {
         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-        "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
         "EventGridKey": "<topic_key>"
     }
 }
 ```
 
-如果使用的是[存储模拟器](../../storage/common/storage-use-emulator.md)（仅限 Windows），请确保它正常工作。 最好是在执行之前运行 `AzureStorageEmulator.exe clear all` 命令。
+如果使用[存储模拟器](../../storage/common/storage-use-emulator.md)而不是实际 Azure 存储帐户，请确保它正在运行。 建议在执行之前清除任何现有存储数据。
 
-如果使用的是现有 Azure 存储帐户，请将 `local.settings.json` 中的 `UseDevelopmentStorage=true` 替换为其连接字符串。
+如果使用的是实际 Azure 存储帐户，请将 `local.settings.json` 中的 `UseDevelopmentStorage=true` 替换为其连接字符串。
 
 ## <a name="create-functions-that-listen-for-events"></a>创建用于侦听事件的函数
 
