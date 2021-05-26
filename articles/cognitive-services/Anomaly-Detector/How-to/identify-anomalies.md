@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6657147d044d49ff72532ad270552a175c197c8f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97703426"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078213"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>操作指南：对时序数据使用异常检测器 API  
 
@@ -26,7 +26,7 @@ ms.locfileid: "97703426"
 异常检测器 API 提供两种检测模式：批处理和流式处理。
 
 > [!NOTE]
-> 以下请求 URL 必须与订阅的相应终结点结合。 例如： `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> 以下请求 URL 必须与订阅的相应终结点结合。 例如：`https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
 ### <a name="batch-detection"></a>批量检测
@@ -41,7 +41,7 @@ ms.locfileid: "97703426"
 
 若要持续检测流数据的异常情况，请将以下请求 URI 用于最新的数据点： 
 
-`/timeseries/last/detect'`. 
+`/timeseries/last/detect`. 
 
 通过在生成新数据点的同时发送这些数据点，可以实时监视数据。 将使用发送的数据点生成一个模型，并且 API 将确定时序中的最新点是否异常。
 

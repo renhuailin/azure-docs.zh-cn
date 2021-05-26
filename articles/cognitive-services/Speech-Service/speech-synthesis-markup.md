@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: beb77517a953163c9d1dd34b59fa429b5d58cdd2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3e0bcef30d13403d8067c41568b7ee321fb46995
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478029"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377185"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -396,20 +396,20 @@ speechConfig!.setPropertyTo(
 
 | 语音                            | 区域设置语言           | 说明                                                 |
 |----------------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-JennyMultilingualNeural`  | `lang="en-US"`            | 讲英语（美国）区域设置，这是此语音的主要区域设置 |
-|                                  | `lang="en-CA"`            | 讲英语（加拿大）区域设置语言                                  |
-|                                  | `lang="en-AU"`            | 讲英语（澳大利亚）区域设置语言                                  |
-|                                  | `lang="en-GB"`            | 讲英语（英国）区域设置语言                                  |
-|                                  | `lang="de-DE"`            | 讲德语（德国）区域设置语言                                  |
-|                                  | `lang="fr-FR"`            | 讲法语（法国）区域设置语言                                  |
-|                                  | `lang="fr-CA"`            | 讲法语（加拿大）区域设置语言                                  |
-|                                  | `lang="es-ES"`            | 讲西班牙语（西班牙）区域设置语言                                  |
-|                                  | `lang="es-MX"`            | 讲西班牙语（墨西哥）区域设置语言                                  |
-|                                  | `lang="zh-CN"`            | 讲中文（中国）区域设置语言                                  |
-|                                  | `lang="ko-KR"`            | 讲韩语（韩国）区域设置语言                                  |
-|                                  | `lang="ja-JP"`            | 讲日语（日本）区域设置语言                                  |
-|                                  | `lang="it-IT"`            | 讲意大利语（意大利）区域设置语言                                  |
-|                                  | `lang="pt-BR"`            | 讲葡萄牙语（葡萄牙）区域设置语言                                  |
+| `en-US-JennyMultilingualNeural`  | `lang="en-us"`            | 讲英语（美国）区域设置，这是此语音的主要区域设置 |
+|                                  | `lang="en-ca"`            | 讲英语（加拿大）区域设置语言                                  |
+|                                  | `lang="en-au"`            | 讲英语（澳大利亚）区域设置语言                                  |
+|                                  | `lang="en-gb"`            | 讲英语（英国）区域设置语言                                  |
+|                                  | `lang="de-de"`            | 讲德语（德国）区域设置语言                                  |
+|                                  | `lang="fr-fr"`            | 讲法语（法国）区域设置语言                                  |
+|                                  | `lang="fr-ca"`            | 讲法语（加拿大）区域设置语言                                  |
+|                                  | `lang="es-es"`            | 讲西班牙语（西班牙）区域设置语言                                  |
+|                                  | `lang="es-mx"`            | 讲西班牙语（墨西哥）区域设置语言                                  |
+|                                  | `lang="zh-cn"`            | 讲中文（中国）区域设置语言                                  |
+|                                  | `lang="ko-kr"`            | 讲韩语（韩国）区域设置语言                                  |
+|                                  | `lang="ja-jp"`            | 讲日语（日本）区域设置语言                                  |
+|                                  | `lang="it-it"`            | 讲意大利语（意大利）区域设置语言                                  |
+|                                  | `lang="pt-br"`            | 讲葡萄牙语（葡萄牙）区域设置语言                                  |
 
 **示例**
 
@@ -420,10 +420,10 @@ speechConfig!.setPropertyTo(
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
     <voice name="en-US-JennyMultilingualNeural">
         I am looking forward to the exciting things.
-        <lang xml:lang="es-MX">
+        <lang xml:lang="es-mx">
             Estoy deseando que lleguen las cosas emocionantes.
         </lang>
-        <lang xml:lang="de-DE">
+        <lang xml:lang="de-de">
             Ich freue mich auf die spannenden Dinge.
         </lang>
     </voice>

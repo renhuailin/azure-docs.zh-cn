@@ -3,12 +3,12 @@ title: 在 Azure Application Insights 中使用搜索 | Microsoft Docs
 description: 搜索和筛选由 Web 应用发送的原始遥测数据。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f7c2229a2e497fb052db79d61fcfeff140897798
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9da2acea857f2b295fd2333988507babd967c88
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579549"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059385"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 
@@ -128,7 +128,7 @@ ms.locfileid: "100579549"
 
 除了 Application Insights SDK 原本发送的遥测数据以外，可以：
 
-* 从 [.NET](./asp-net-trace-logs.md) 或 [Java](./java-trace-logs.md) 中偏好的日志记录框架捕获日志跟踪。 也就是说，可以搜索日志跟踪并将其与页面视图、异常和其他事件相关联。
+* 从 [.NET](./asp-net-trace-logs.md) 或 [Java](java-2x-trace-logs.md) 中偏好的日志记录框架捕获日志跟踪。 也就是说，可以搜索日志跟踪并将其与页面视图、异常和其他事件相关联。
 * [编写代码](./api-custom-events-metrics.md)用于发送自定义事件、页面视图和异常。
 
 [了解如何向 Application Insights 发送日志和自定义的遥测数据](./asp-net-trace-logs.md)。

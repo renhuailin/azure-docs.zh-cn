@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 58886a8f7dc505a7e68d69eb00b4a2ebd776dd5a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: seodec18
+ms.openlocfilehash: b383c28ca5097a6a30dc43f48213b0793ccdee11
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98209844"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110096375"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>应用程序网关与服务终结点的集成
 应用服务有三种变体，需要对它们采用略微不同的配置，才能使其与 Azure 应用程序网关集成。 这些变体包括普通应用服务（也称为多租户）、内部负载均衡器 (ILB) 应用服务环境 (ASE) 和外部 ASE。 本文逐步介绍如何使用应用服务（多租户）对其进行配置，并讨论有关 ILB 和外部 ASE 的注意事项。
@@ -43,7 +43,7 @@ ms.locfileid: "98209844"
 ![屏幕截图显示“错误 403 - 禁止访问”文本。](./media/app-gateway-with-service-endpoints/website-403-forbidden.png)
 
 ## <a name="using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
-[资源管理器部署模板][template-app-gateway-app-service-complete]将预配完整方案。 此方案包括使用服务终结点和访问限制锁定的应用服务实例，以便仅从应用程序网关接收流量。 该模板包含许多智能默认值，以及添加到资源名称的唯一后缀（以简化模板）。 若要替代这些内容，必须克隆存储库，或下载模板并对其进行编辑。 
+[资源管理器部署模板][template-app-gateway-app-service-complete]将预配完整方案。 此方案包括使用服务终结点和访问限制锁定的应用服务实例，以便仅从应用程序网关接收流量。 该模板包含许多智能默认值，以及添加到资源名称的唯一后缀（以简化模板）。 若要替代这些内容，必须克隆存储库，或下载模板并对其进行编辑。
 
 若要应用模板，可以使用模板说明中的“部署到 Azure”按钮，或者使用相应的 PowerShell/CLI。
 
@@ -57,7 +57,7 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 在默认配置中，该命令将确保在子网中设置服务终结点配置，并在应用服务中设置访问限制。
 
 ## <a name="considerations-for-ilb-ase"></a>ILB ASE 的注意事项
-ILB ASE 不会向 Internet 公开，因此，实例与应用程序网关之间的流量已隔离到虚拟网络。 以下[操作指南](../environment/integrate-with-application-gateway.md)使用 Azure 门户配置 ILB ASE 并将其与应用程序网关集成。 
+ILB ASE 不会向 Internet 公开，因此，实例与应用程序网关之间的流量已隔离到虚拟网络。 以下[操作指南](../environment/integrate-with-application-gateway.md)使用 Azure 门户配置 ILB ASE 并将其与应用程序网关集成。
 
 若要确保只有来自应用程序网关子网的流量抵达 ASE，可以配置一个影响 ASE 中所有 Web 应用的网络安全组 (NSG)。 对于 NSG，可以指定子网 IP 范围，并选择性地指定端口 (80/443)。 切勿替代[所需的 NSG 规则](../environment/network-info.md#network-security-groups)，使 ASE 正常运行。
 
@@ -66,7 +66,7 @@ ILB ASE 不会向 Internet 公开，因此，实例与应用程序网关之间�
 ## <a name="considerations-for-external-ase"></a>外部 ASE 的注意事项
 与多租户应用服务一样，外部 ASE 具有面向公众的负载均衡器。 服务终结点不适用于 ASE，正因如此，必须使用应用程序网关实例的公共 IP 来实施基于 IP 的访问限制。 若要使用 Azure 门户创建外部 ASE，可以遵循[此快速入门](../environment/create-external-ase.md)
 
-[template-app-gateway-app-service-complete]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2/ "用于完整方案的 Azure 资源管理器模板"
+[template-app-gateway-app-service-complete]: https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-with-app-gateway-v2/ "用于完整方案的 Azure 资源管理器模板"
 
 ## <a name="considerations-for-kuduscm-site"></a>kudu/scm 站点的注意事项
 scm 站点（也称为 kudu）是每个 Web 应用都包含的管理站点。 无法反向代理 scm 站点。你很有可能需要将其锁定到单个 IP 地址或特定的子网。

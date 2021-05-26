@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1af2c1b912afbcf44cefbfb021c592836dbde5b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 258dcb7c66b043828e55d6c0dbfe101c0992f8c6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466280"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092883"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自定义角色的应用程序注册权限
 
@@ -163,7 +163,7 @@ create 权限授予对“新建注册”命令的访问权限。
 
 授予的权限与 microsoft.directory/applications/permissions/update 相同，但仅适用于单租户应用程序。
 
-## <a name="required-license-plan"></a>所需的许可计划
+## <a name="license-requirements"></a>许可要求
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 

@@ -13,10 +13,10 @@
       href: whats-new.md
 - name: 快速入门
   items:
-    - name: 客户端库和 REST API
-      href: quickstarts/client-library.md
     - name: 表单识别器入门
       href: quickstarts/get-started-with-form-recognizer.md
+    - name: 客户端库和 REST API
+      href: quickstarts/client-library.md
 - name: 示例
   items:
     - name: C#/.NET
@@ -83,8 +83,6 @@
       href: concept-identification-cards.md
 - name: 教程
   items:
-    - name: 批量提取窗体数据
-      href: tutorial-bulk-processing.md
     - name: 将表单识别器与认知搜索搭配使用
       href: ../../search/cognitive-search-custom-skill-form.md
     - name: 将表单识别器与 AI Builder 搭配使用
@@ -93,7 +91,7 @@
       href: tutorial-azure-function.md
 - name: 参考
   items:
-    - name: 表单识别器 API v2.1.3
+    - name: 表单识别器 API v2.1
       href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm'
     - name: 表单识别器 API v2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'

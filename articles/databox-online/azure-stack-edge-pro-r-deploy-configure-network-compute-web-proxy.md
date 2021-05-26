@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 05/11/2021
 ms.author: alkohli
-ms.openlocfilehash: a1f3966c8794b50f6ec369f1ea86905c4d8aaf3f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 609e12e2c39dcbc6b0213f7619541a83dc6ffde8
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059932"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839539"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-r"></a>教程：配置 Azure Stack Edge Pro R 的网络
 
@@ -125,21 +125,16 @@ ms.locfileid: "106059932"
 这是可选的配置。
 
 > [!IMPORTANT]
-> * 如果在 Azure Stack Edge Pro R 设备上启用计算和使用 IoT Edge 模块，建议将 Web 代理身份验证设置为“无”。 不支持 NTLM。
->* 不支持代理自动配置 (PAC) 文件。 PAC 文件定义了 Web 浏览器和其他用户代理如何自动选择适当的代理服务器（访问方法）来获取给定 URL。 尝试拦截和读取所有流量（然后用其自己的证书对所有内容进行重新签名）的代理不兼容，因为代理的证书不受信任。 通常，透明代理非常适合 Azure Stack Edge Pro R。不支持非透明的 Web 代理。
+> 不支持代理自动配置 (PAC) 文件。 PAC 文件定义了 Web 浏览器和其他用户代理如何自动选择适当的代理服务器（访问方法）来获取给定 URL。 尝试拦截和读取所有流量（然后用其自己的证书对所有内容进行重新签名）的代理不兼容，因为代理的证书不受信任。 通常，透明代理非常适合 Azure Stack Edge Pro R。不支持非透明的 Web 代理。
 
 
 1. 在“Web 代理设置”页上，执行以下步骤：
 
-    1. 在“Web 代理 URL”框中，按以下格式输入 URL：`http://host-IP address or FQDN:Port number`。 不支持 HTTPS URL。
+   1. 在“Web 代理 URL”框中，按以下格式输入 URL：`http://host-IP address or FQDN:Port number`。 不支持 HTTPS URL。
 
-    2. 在“身份验证”下选择“无”或“NTLM”。   如果在 Azure Stack Edge Pro R 设备上启用计算和使用 IoT Edge 模块，建议将 Web 代理身份验证设置为“无”。 不支持 NTLM。
-
-    3. 如果使用身份验证，请输入用户名和密码。
-
-    4. 若要验证并应用配置的 Web 代理设置，请选择“应用”  。
+   2. 若要验证并应用配置的 Web 代理设置，请选择“应用”  。
     
-   ![本地 Web UI“Web 代理设置”页 2](./media/azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
+   ![本地 Web UI“Web 代理设置”页 2](./media/azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy/web-proxy-2.png)<!--UI text update for instruction text is needed.-->
 
 2. 应用设置后，选择“下一步:设备”。
 

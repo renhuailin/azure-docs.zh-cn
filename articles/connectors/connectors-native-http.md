@@ -4,15 +4,15 @@ description: 从 Azure 逻辑应用向服务终结点发送出站 HTTP 或 HTTPS
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: conceptual
-ms.date: 02/18/2021
+ms.topic: how-to
+ms.date: 05/25/2021
 tags: connectors
-ms.openlocfilehash: dab5b755347e46d8d509e8014bba8f496ca9c900
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45c6945818016618252e69554c62391691d2fb6a
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719434"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368849"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>从 Azure 逻辑应用通过 HTTP 或 HTTPS 调用服务终结点
 
@@ -194,6 +194,41 @@ ms.locfileid: "101719434"
 
 * HTTP 操作的基础 JavaScript 对象表示法 (JSON) 定义隐式遵循异步操作模式。
 
+<a name="tsl-ssl-certificate-authentication"></a>
+
+## <a name="tslssl-certificate-authentication"></a>TSL/SSL 证书身份验证
+
+如果你在单租户 Azure 逻辑应用中具有逻辑应用（标准版）资源，并且尝试使用 HTTP 操作和用于身份验证的 TSL/SSL 证书从工作流调用 HTTPS 终结点，则调用会失败，除非还完成以下步骤：
+
+1. 在逻辑应用资源的应用设置中，[添加或更新应用设置](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings) `WEBSITE_LOAD_ROOT_CERTIFICATES`。
+
+1. 对于设置值，请提供 TSL/SSL 证书的指纹作为受信任的根证书。
+
+   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
+
+例如，如果使用 Visual Studio Code，请执行以下步骤：
+
+1. 打开逻辑应用项目的 local.settings.json 文件。
+
+1. 在 `Values` JSON 对象中，添加或更新 `WEBSITE_LOAD_ROOT_CERTIFICATES` 设置：
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         <...>
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
+         <...>
+      }
+   }
+   ```
+
+有关详细信息，请查看以下文档：
+
+* [在单租户 Azure 逻辑应用中编辑逻辑应用的主机和应用设置](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
+* [专用客户端证书 - Azure 应用服务](../app-service/environment/certificates.md#private-client-certificate)
+
 <a name="disable-asynchronous-operations"></a>
 
 ## <a name="disable-asynchronous-operations"></a>禁用异步操作
@@ -233,7 +268,7 @@ HTTP 请求有一个[超时限制](../logic-apps/logic-apps-limits-and-config.md
 
 ## <a name="disable-checking-location-headers"></a>禁止检查位置标头
 
-某些终结点、服务、系统或 API 会返回没有 `location` 标头的“202 已接受”响应。 若要避免 HTTP 操作在 `location` 标头不存在时不断检查请求状态，可以使用以下选项：
+某些终结点、服务、系统或 API 会返回没有 `location` 标头的 `202 ACCEPTED` 响应。 若要避免 HTTP 操作在 `location` 标头不存在时不断检查请求状态，可以使用以下选项：
 
 * [禁用 HTTP 操作的异步操作模式](#disable-asynchronous-operations)，使该操作不会持续轮询或检查请求的状态， 而是等待接收方在请求完成处理后以状态和结果做出响应。
 
@@ -262,7 +297,7 @@ HTTP 请求有一个[超时限制](../logic-apps/logic-apps-limits-and-config.md
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关触发器和操作参数的详细信息，请参阅以下部分：
+有关触发器和操作参数的技术信息，请参阅以下部分：
 
 * [HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
 * [HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)

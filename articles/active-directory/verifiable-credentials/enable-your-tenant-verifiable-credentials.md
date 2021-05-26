@@ -4,18 +4,18 @@ description: 在本教程中，你将构建在你的租户中部署可验证凭�
 documentationCenter: ''
 author: barclayn
 manager: daveba
-ms.service: active-directory
+ms.service: identity
 ms.topic: tutorial
 ms.subservice: verifiable-credentials
 ms.date: 05/18/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 4b48d23a7122c82cf149bdd80335afe0aaf896cb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3f5808f3074fa2e45bc638e3e3d13cad431997ac
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466399"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092776"
 ---
 # <a name="tutorial---configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>教程 - 配置 Azure Active Directory，颁发可验证凭据（预览）
 

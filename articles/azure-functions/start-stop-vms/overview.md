@@ -3,14 +3,14 @@ title: 启动/停止 VM v2（预览版）概述
 description: 本文介绍启动/停止 VM v2（预览版）功能，该功能可按计划启动或停止 Azure 资源管理器 VM 和经典 VM。
 ms.topic: conceptual
 ms.service: azure-functions
-ms.subservice: ''
+ms.subservice: start-stop-vms
 ms.date: 03/29/2021
-ms.openlocfilehash: 44bfbaa8b18ebeab3b74bc696a16fc4cfb6c08ec
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 8df0f31b57d7cd82ed89c4f5f0df37535ad9678a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220928"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067269"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>启动/停止 VM v2（预览版）概述
 
@@ -28,13 +28,13 @@ ms.locfileid: "106220928"
 
 |名称 |触发器 |说明 |
 |-----|--------|------------|
-|AlertAvailabilityTest |计时器 |此函数将执行可用性测试，以确保主函数 AutoStopVM 始终可用。|
+|AlertAvailabilityTest |Timer |此函数将执行可用性测试，以确保主函数 AutoStopVM 始终可用。|
 |AutoStop |HTTP |此函数支持 AutoStop 方案，这是从逻辑应用调用的入口点函数。|
-|AutoStopAvailabilityTest |计时器 |此函数将执行可用性测试，以确保主函数 AutoStop 始终可用。|
+|AutoStopAvailabilityTest |Timer |此函数将执行可用性测试，以确保主函数 AutoStop 始终可用。|
 |AutoStopVM |HTTP |当满足警报条件时，VM 警报会自动触发此函数。|
 |CreateAutoStopAlertExecutor |队列 |此函数将从 AutoStop 函数获取有效负载信息，以创建关于 VM 的警报。|
 |计划 |HTTP |此函数适用于计划方案和序列方案（根据有效负载架构区分）。 它是从逻辑应用调用的入口点函数，并采用有效负载来处理 VM 启动操作或停止操作。 |
-|ScheduledAvailabilityTest |计时器 |此函数将执行可用性测试，以确保主函数 Scheduled 始终可用。|
+|ScheduledAvailabilityTest |Timer |此函数将执行可用性测试，以确保主函数 Scheduled 始终可用。|
 |VirtualMachineRequestExecutor |队列 |此函数将对 VM 执行实际的启动操作和停止操作。|
 |VirtualMachineRequestOrchestrator |队列 |此函数将从 Scheduled 函数获取有效负载信息，并协调 VM 启动请求和停止请求。|
 
@@ -44,9 +44,9 @@ ms.locfileid: "106220928"
 
  [Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)用于配置以及管理 VM 操作的启动计划和停止计划，方法是使用 JSON 有效负载来调用函数。 默认情况下，在初始部署期间，它会为下列方案创建总共 5 个逻辑应用：
 
-- “计划”- 启动操作和停止操作基于你针对 Azure 资源管理器 VM 和经典 VM 指定的计划。 ststv2_vms_Scheduled_start 和 ststv2_vms_Scheduled_stop 分别用于配置计划的启动和计划的停止。 
+- “计划”- 启动操作和停止操作基于你针对 Azure 资源管理器 VM 和经典 VM 指定的计划。 ststv2_vms_Scheduled_start 和 ststv2_vms_Scheduled_stop 分别用于配置计划的启动和计划的停止 。
 
-- “序列”- 启动操作和停止操作基于针对具有预定义排序标记的 VM 的计划。 仅支持两个命名标记，即 sequencestart 和 sequencestop。  ststv2_vms_Sequenced_start 和 ststv2_vms_Sequenced_stop 分别用于配置排序启动和排序停止。 
+- “序列”- 启动操作和停止操作基于针对具有预定义排序标记的 VM 的计划。 仅支持两个命名标记，即 sequencestart 和 sequencestop 。 ststv2_vms_Sequenced_start 和 ststv2_vms_Sequenced_stop 分别用于配置排序启动和排序停止 。
 
     > [!NOTE]
     > 此方案仅支持 Azure 资源管理器 VM。
@@ -99,4 +99,4 @@ ms.locfileid: "106220928"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要部署此功能，请参阅[部署启动/停止 VM（预览版）](deploy.md)。
+若要部署此功能，请参阅[部署启动/停止 VM](deploy.md)（预览版）。

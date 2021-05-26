@@ -4,12 +4,12 @@ description: 适用于依赖项遥测的 Application Insights 数据模型
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06e22c69e8d2d5187b2f78022302d10d12fe6a6c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87315965"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098949"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
 
@@ -59,7 +59,7 @@ ms.locfileid: "87315965"
 ## <a name="next-steps"></a>后续步骤
 
 - 为 [.NET](./asp-net-dependencies.md) 设置依赖项跟踪。
-- 为 [Java](./java-agent.md) 设置依赖项跟踪。
+- 为 [Java](java-2x-agent.md) 设置依赖项跟踪。
 - [编写自定义依赖项遥测](./api-custom-events-metrics.md#trackdependency)
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
 - 查看 Application Insights 支持的[平台](./platforms.md)。

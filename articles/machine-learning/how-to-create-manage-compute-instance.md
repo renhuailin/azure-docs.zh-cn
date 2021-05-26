@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: f3e0a14ee917bf9b1396eef9d1ec36709e5e706a
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: db6414ecf4b1b5fcbdf52d59c0c79b72998e610a
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331372"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375209"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -26,25 +26,26 @@ ms.locfileid: "108331372"
 
 在本文中，学习如何：
 
-* 创建计算实例 
+* 创建计算实例
 * 管理（启动、停止、重启、删除）计算实例
-* 访问终端窗口 
+* 访问终端窗口
 * 安装 R 或 Python 包
 * 创建新环境或 Jupyter 内核
 
-计算实例可以在[虚拟网络环境](how-to-secure-training-vnet.md)中安全地运行作业，无需企业打开 SSH 端口。 作业在容器化环境中执行，并将模型依赖项打包到 Docker 容器中。 
+计算实例可以在[虚拟网络环境](how-to-secure-training-vnet.md)中安全地运行作业，无需企业打开 SSH 端口。 作业在容器化环境中执行，并将模型依赖项打包到 Docker 容器中。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-* [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
+* [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 或 [Azure 机器学习 Visual Studio Code 扩展](how-to-setup-vs-code.md)。
 
 ## <a name="create"></a>创建
 
 > [!IMPORTANT]
 > 下面标记了“（预览版）”的项当前为公共预览版。
-> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 **时间估计**：大约 5 分钟。
 
@@ -107,19 +108,19 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 ---
 
-还可使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)创建计算实例。 
+还可使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)创建计算实例。
 
 
 
-## <a name="create-on-behalf-of-preview"></a>代表他人创建（预览版）
+## <a name="create-on-behalf-of-preview"></a><a name="on-behalf"></a> 代表他人创建（预览版）
 
 作为管理员，你可代表数据科学家创建计算实例，并通过以下方式将实例分配给他们：
 
-* [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。  若要详细了解如何查找此模板中所需的 TenantID 和 ObjectID，请参阅[查找身份验证配置的标识对象 ID](../healthcare-apis/fhir/find-identity-object-ids.md)。  也可在 Azure Active Directory 门户中找到这些值。
+* [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)。  若要详细了解如何查找此模板中所需的 TenantID 和 ObjectID，请参阅[查找身份验证配置的标识对象 ID](../healthcare-apis/fhir/find-identity-object-ids.md)。  也可在 Azure Active Directory 门户中找到这些值。
 
 * REST API
 
-你为其创建计算实例的数据科学家需要拥有针对以下项的 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 权限： 
+你为其创建计算实例的数据科学家需要拥有针对以下项的 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 权限：
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
@@ -133,45 +134,53 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 ## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> 使用脚本自定义计算实例（预览版）
 
-> [!TIP]
-> 此预览版当前适用于美国中西部和美国东部区域的工作区。
-
-使用安装脚本实现自动方式，以便在预配时自定义并配置计算实例。 作为管理员，你可以编写一个自定义脚本，用于按照要求预配工作区中的所有计算实例。 
+使用安装脚本实现自动方式，以便在预配时自定义并配置计算实例。 作为管理员，你可以编写一个自定义脚本，用于按照要求预配工作区中的所有计算实例。
 
 可以在安装脚本中执行的操作的一些示例：
 
-* 安装包和工具
+* 安装包、工具和软件
 * 装载数据
 * 创建自定义 conda 环境和 Jupyter 内核
-* 克隆 Git 存储库
+* 克隆 Git 存储库并设置 Git 配置
+* 设置网络代理
+* 设置环境变量。
+* 安装 JupyterLab 扩展
 
 ### <a name="create-the-setup-script"></a>创建安装脚本
 
-安装脚本是以 azureuser 形式运行的 shell 脚本。  创建脚本或将其上传到笔记本文件：
+安装脚本是以 rootuser 身份运行的 shell 脚本。  创建脚本或将其上传到笔记本文件：
 
 1. 登录到[工作室](https://ml.azure.com)并选择你的工作区。
-1. 在左侧选择“笔记本”
-1. 使用“添加文件”工具创建或上传安装 shell 脚本。  请确保脚本文件名以“sh”结尾。  创建新文件时，还需要将“文件类型”更改为“bash(.sh)”。
+2. 在左侧选择“笔记本”
+3. 使用“添加文件”工具创建或上传安装 shell 脚本。  请确保脚本文件名以“sh”结尾。  创建新文件时，还需要将“文件类型”更改为“bash(.sh)”。
 
 :::image type="content" source="media/how-to-create-manage-compute-instance/create-or-upload-file.png" alt-text="在工作室中创建安装脚本或将其上传到笔记本文件":::
 
-脚本运行时，当前工作目录是上传它的目录。  如果将脚本上传到“用户”>“管理员”，则在预配名为 ciname 的计算实例时，该文件的位置为 /mnt/batch/tasks/shared/LS_root/mounts/clusters/ciname/code/Users/admin。
+脚本运行时，脚本的当前工作目录是它上传到的目录。 例如，如果脚本上传到了 Users>admin，则脚本运行时，该脚本在计算实例和当前工作目录中的位置为 /home/azureuser/cloudfiles/code/Users/admin。这样，你便可以在脚本中使用相对路径。
 
-脚本参数可以在脚本中引用为 $1、$2 等。例如，如果执行 `scriptname ciname`，则可以在脚本中通过 `cd /mnt/batch/tasks/shared/LS_root/mounts/clusters/$1/code/admin` 导航到存储脚本的目录。
+脚本参数可以在脚本中引用为 $1、$2 等。
 
-还可以检索脚本内的路径：
+如果脚本执行了特定于 azureuser 的某项操作（例如安装 Conda 环境或 Jupyter 内核），则必须将它放入 sudo -u azureuser 块中，如下所示
 
 ```shell
-#!/bin/bash 
-SCRIPT=$(readlink -f "$0") 
-SCRIPT_PATH=$(dirname "$SCRIPT") 
+sudo -u azureuser -i <<'EOF'
+
+EOF
 ```
+请注意，sudo -u azureuser 确实会将当前工作目录更改为 /home/azureuser 。 此外，无法访问此块中的脚本参数。
+
+也可以在脚本中使用以下环境变量：
+
+1. CI_RESOURCE_GROUP
+2. CI_WORKSPACE
+3. CI_NAME
+4. CI_LOCAL_UBUNTU_USER. 这会指向 azureuser
 
 ### <a name="use-the-script-in-the-studio"></a>在工作室中使用脚本
 
 存储脚本后，在计算实例的创建过程中指定该脚本：
 
-1. 登录到[工作室](https://ml.azureml.com)并选择你的工作区。
+1. 登录到[工作室](https://ml.azure.com/)并选择你的工作区。
 1. 在左侧选择“计算”。
 1. 选择“+ 新建”以创建新的计算实例。
 1. [填写表单](how-to-create-attach-compute-studio.md#compute-instance)。
@@ -182,9 +191,11 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 
 :::image type="content" source="media/how-to-create-manage-compute-instance/setup-script.png" alt-text="在工作室中使用安装脚本预配计算实例。":::
 
+请注意，如果工作区存储已附加到虚拟网络，则除非从虚拟网络内部访问工作室，否则你可能无法访问安装脚本文件。
+
 ### <a name="use-script-in-a-resource-manager-template"></a>在资源管理器模板中使用脚本
 
-在资源管理器[模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)中，添加 `setupScripts` 以在预配计算实例时调用安装脚本。 例如：
+在资源管理器[模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)中，添加 `setupScripts` 以在预配计算实例时调用安装脚本。 例如：
 
 ```json
 "setupScripts":{
@@ -220,7 +231,7 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 
 ## <a name="manage"></a>管理
 
-启动、停止、重启和删除计算实例。 计算实例不会自动纵向缩减，因此请确保停止该资源以免产生费用。
+启动、停止、重启和删除计算实例。 计算实例不会自动纵向缩减，因此请确保停止该资源以免产生费用。 停止计算实例会将其解除分配。 然后在需要时重启。 虽然停止计算实例将停止按计算小时数计费，但仍会对磁盘、公共 IP 和标准负载均衡器计费。
 
 > [!TIP]
 > 计算实例具有 120GB 的 OS 磁盘。 如果磁盘空间不足，则在停止或重启计算实例之前，[使用终端](how-to-access-terminal.md)可至少清空 1-2 GB 空间。
@@ -262,7 +273,7 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 * Delete
 
     ```python
-    # delete() is used to delete the ComputeInstance target. Useful if you want to re-use the compute name 
+    # delete() is used to delete the ComputeInstance target. Useful if you want to re-use the compute name
     instance.delete(wait_for_completion=True, show_output=True)
     ```
 
@@ -278,7 +289,7 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 
     有关详细信息，请参阅 [az ml computetarget stop computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)。
 
-* 开始 
+* 开始
 
     ```azurecli-interactive
     az ml computetarget start computeinstance -n instance -v
@@ -286,7 +297,7 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 
     有关详细信息，请参阅 [az ml computetarget start computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)。
 
-* 重启 
+* 重启
 
     ```azurecli-interactive
     az ml computetarget restart computeinstance -n instance -v
@@ -310,7 +321,7 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 
 可执行以下操作：
 
-* 新建计算实例 
+* 新建计算实例
 * 刷新“计算实例”选项卡。
 * 启动、停止和重启计算实例。  只要实例在运行，你就需要为其付费。 不使用计算实例时，请将其停止，以便降低成本。 停止计算实例会将其解除分配。 然后在需要时重启。
 * 删除计算实例。
@@ -324,8 +335,7 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 
 ---
 
-
-使用 [Azure RBAC](../role-based-access-control/overview.md) 可以对工作区中的哪些用户能够创建、删除、启动、停止、重启计算实例进行控制。 充当工作区参与者和所有者角色的所有用户可以在整个工作区中创建、删除、启动、停止和重启计算实例。 但是，只有特定计算实例的创建者或分配的用户（如果该计算实例是以其名义创建的）可在该计算实例上访问 Jupyter、JupyterLab 和 RStudio。 计算实例专用于具有 root 用户访问权限的单个用户，并且可通过 Jupyter/JupyterLab/RStudio 进行终端访问。 计算实例将具有单用户登录，所有操作都将使用该用户的身份进行 Azure RBAC 和试验运行的归属。 SSH 访问是通过公钥/私钥机制控制的。
+使用 [Azure RBAC](../role-based-access-control/overview.md) 可以对工作区中的哪些用户能够创建、删除、启动、停止、重启计算实例进行控制。 充当工作区参与者和所有者角色的所有用户可以在整个工作区中创建、删除、启动、停止和重启计算实例。 但是，只有特定计算实例的创建者或分配的用户（如果该计算实例是以其名义创建的）可在该计算实例上访问 Jupyter、JupyterLab 和 RStudio。 计算实例专用于具有 root 用户访问权限的单个用户，并且可通过 Jupyter/JupyterLab/RStudio 进行终端访问。 计算实例将具有单用户登录名，所有操作都将使用该用户的标识进行试验运行的 Azure RBAC 控制和权限划分。 SSH 访问是通过公钥/私钥机制控制的。
 
 可以通过 Azure RBAC 来控制这些操作：
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
@@ -334,6 +344,11 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
+
+若要创建计算实例，需要具有以下操作的权限：
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
+* *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
+
 
 ## <a name="next-steps"></a>后续步骤
 

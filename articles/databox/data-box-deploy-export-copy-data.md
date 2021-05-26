@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 05/17/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 495b4427fb7e456c60a489b9ce3d19c2a44bd918
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 68012cd27318822b8c18b281db967a26da3a15a2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680887"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095637"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb"></a>教程：通过 SMB 从 Azure Data Box 复制数据
 
@@ -56,7 +56,7 @@ ms.locfileid: "97680887"
 
 3. 若要从主机访问与存储帐户关联的共享（在以下示例中为“exportbvtdataset2”），请打开命令窗口。 在命令提示符处，键入：
 
-    `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
+    `net use \\<IP address of the device>\<share name>  /u:<IP address of the device>\<user name for the share>`
 
     根据数据格式，共享路径如下：
     - Azure 块 blob - `\\169.254.143.85\exportbvtdataset2_BlockBlob`
@@ -66,7 +66,7 @@ ms.locfileid: "97680887"
 4. 出现提示时，请输入共享的密码。 以下示例演示如何通过前面的命令连接到共享。
 
     ```
-    C:\Users\Databoxuser>net use \\169.254.143.85\exportbvtdataset2_BlockBlob /u:exportbvtdataset2
+    C:\Users\Databoxuser>net use \\169.254.143.85\exportbvtdataset2_BlockBlob /u:169.254.143.85\exportbvtdataset2
     Enter the password for 'exportbvtdataset2' to connect to '169.254.143.85':
     The command completed successfully.
     ```

@@ -1,23 +1,23 @@
 ---
 title: Azure 应用服务的预留折扣
-description: 了解预留折扣如何应用于 Azure 应用服务 Premium v3 实例和独立印花。
+description: 了解预留折扣如何应用于 Azure 应用服务 Premium v3 实例、Premium v2 实例和独立印花。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 05/13/2021
 ms.author: banders
-ms.openlocfilehash: c599c64ce4b22bbf7bece77602b22fef6629d07c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b6230f86fc33dca290f6d61f923024c9352d8600
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369724"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378501"
 ---
-# <a name="how-reservation-discounts-apply-to-azure-app-service-premium-v3-instances-and-isolated-stamps"></a>预留折扣如何应用于 Azure 应用服务 Premium v3 实例和独立印花
+# <a name="how-reservation-discounts-apply-to-azure-app-service"></a>预留折扣如何应用于 Azure 应用服务
 
-本文可帮助你了解折扣如何应用于 Azure 应用服务 Premium v3 实例和独立印花。
+本文可帮助你了解折扣如何应用于 Azure 应用服务 Premium v3 实例、Premium v2 实例和独立印花。
 
 ## <a name="how-reservation-discounts-apply-to-premium-v3-instances"></a>预留折扣如何应用于 Premium v3 实例
 
@@ -38,6 +38,20 @@ Azure 预留折扣应用于正在运行的 Premium v3 实例（按小时计费�
 2.  在第 1 个小时内，实例 1 运行了 0.75 小时，实例 2 运行了 0.5 小时。 第 1 个小时的总体使用情况为 1.25 小时。 将按即用即付费率收取剩余 0.25 小时的费用。
 3.  在第 2 个小时和第 3 个小时内，这两个实例都各运行了 1 小时。 一个实例的费用由预订费用涵盖，按即用即付费率对另一个实例收费。
 4.  在第 4 个小时内，实例 1 运行了 0.5 小时，实例 2 运行了 1 小时。 预订费用完全涵盖了实例 1 的费用，并涵盖了实例 2 的 0.5 小时费用。 将按即用即付费率收取剩余 0.5 小时的费用。
+
+要了解 Azure 预留应用情况并在计费使用情况报告中查看该信息，请参阅[了解预留使用情况](understand-reserved-instance-usage-ea.md)。
+
+## <a name="how-reservation-discounts-apply-to-isolated-v2-instances"></a>预留折扣如何应用于独立 v2 实例
+
+购买 Azure 应用服务独立 v2 预留实例后，预留折扣会自动应用于与预留的属性和数量匹配的应用服务实例。 预留涵盖了独立 v2 实例的成本。
+
+### <a name="how-the-discount-is-applied-to-azure-app-service"></a>折扣如何应用于 Azure 应用服务
+
+预留折扣的性质是“不用就会失效”。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。 关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失。
+
+### <a name="reservation-discount-for-isolated-v2-instances"></a>独立 v2 实例的预留折扣
+
+Azure 预留折扣按小时应用于正在运行的独立 v2 实例。 已购买的预留会与正在运行的独立 v2 实例所产生的使用量进行匹配来应用预留折扣。 对于运行时间可能不到一整小时的独立 v2 实例，将抽取其他未使用预留的实例（包括并发运行的实例）填到预留中。 在一小时结束时，在该小时内对实例应用的预留会被锁定。 如果某实例运行不到一小时，或者该小时内同时运行的实例没有填到该小时的预留中，那么该小时的预留未得到充分利用。
 
 要了解 Azure 预留应用情况并在计费使用情况报告中查看该信息，请参阅[了解预留使用情况](understand-reserved-instance-usage-ea.md)。
 

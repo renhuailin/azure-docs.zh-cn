@@ -3,26 +3,36 @@ title: Durable Functions 中的任务中心 - Azure
 description: 了解在 Azure Functions 的 Durable Functions 扩展中什么是任务中心。 了解如何任务中心。
 author: cgillum
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 05/12/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 26234039c77601bc1d29beeebd3fcb8461d6d6c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9172075ca22937a85fd7fd5827ebb40a4b58bcfa
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009511"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375751"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) 中的 *任务中心* 是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
+[Durable Functions](durable-functions-overview.md) 中的任务中心是用于业务流程和实体的持久存储资源的逻辑容器。 只有当业务流程协调程序、活动和实体函数属于同一任务中心时，它们才能彼此直接进行交互。
 
-如果多个函数应用共享存储帐户，则必须使用单独的任务中心名称配置每个函数应用。 一个存储帐户可以包含多个任务中心。 下图说明了在共享和专用存储帐户中每个函数应用有一个任务中心。
+> [!NOTE]
+> 本文档以特定于默认 [Durable Functions 的 Azure 存储提供程序](durable-functions-storage-providers.md#azure-storage)的方式描述了任务中心的详细信息。 如果为 Durable Functions 应用使用非默认存储提供程序，可以在特定于提供程序的文档中找到详细的任务中心文档：
+> 
+> * [Netherite 存储提供程序的任务中心信息](https://microsoft.github.io/durabletask-netherite/#/storage)
+> * [Microsoft SQL (MSSQL) 存储提供程序的任务中心信息](https://microsoft.github.io/durabletask-mssql/#/taskhubs)
+> 
+> 有关各种存储提供程序选项及其比较方式的详细信息，请参阅 [Durable Functions 存储提供程序](durable-functions-storage-providers.md)文档。
+
+如果多个函数应用共享存储帐户，则必须使用单独的任务中心名称配置每个函数应用。 一个存储帐户可以包含多个任务中心。 此限制通常也适用于其他存储提供程序。
+
+下图说明了在共享和专用 Azure 存储帐户中每个函数应用的一个任务中心。
 
 ![说明共享和专用存储帐户的关系图。](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
 ## <a name="azure-storage-resources"></a>Azure 存储资源
 
-任务中心包含以下存储资源：
+Azure 存储中的任务中心由以下资源组成：
 
 * 一个或多个控制队列。
 * 一个工作项队列。
@@ -31,11 +41,11 @@ ms.locfileid: "96009511"
 * 一个包含一个或多个租用 blob 的存储容器。
 * 包含大的消息有效负载（如果适用）的存储容器。
 
-当业务流程协调程序实体或活动函数运行时或调度它们运行时，将自动在默认 Azure 存储帐户中创建所有这些资源。 [性能和缩放](durable-functions-perf-and-scale.md)一文介绍了如何使用这些资源。
+当业务流程协调程序、实体或活动函数运行或计划运行时，将自动在配置的 Azure 存储帐户中创建所有这些资源。 [性能和缩放](durable-functions-perf-and-scale.md)一文介绍了如何使用这些资源。
 
 ## <a name="task-hub-names"></a>任务中心名称
 
-任务中心由符合以下规则的名称标识：
+Azure 存储中的任务中心由符合以下规则的名称标识：
 
 * 仅包含字母数字字符
 * 以字母开头
@@ -102,7 +112,7 @@ ms.locfileid: "96009511"
 }
 ```
 
-以下代码演示如何编写使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)来处理配置为应用设置的任务中心的函数：
+除了 host.json，还可以在[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)元数据中配置任务中心名称。 如果需要访问位于单独的函数应用中的业务流程或实体，此功能很有用。 以下代码演示如何编写使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)来处理配置为应用设置的任务中心的函数：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -155,7 +165,10 @@ public static async Task<HttpResponseMessage> Run(
 
 ---
 
-任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则会使用默认的任务中心名称，如下表所示：
+> [!NOTE]
+> 仅当使用一个函数应用访问另一个函数应用中的业务流程和实体时，才需要在客户端绑定元数据中配置任务中心名称。 如果客户端函数是在与业务流程和实体相同的函数应用中定义的，则应避免在绑定元数据中指定任务中心名称。 默认情况下，所有客户端绑定都从 host.json 设置获取其任务中心元数据。
+
+Azure 存储中的任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则会使用默认的任务中心名称，如下表所示：
 
 | Durable 扩展版本 | 默认的任务中心名称 |
 | - | - |
