@@ -5,14 +5,15 @@ author: arduppal
 manager: brymat
 ms.author: arduppal
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 461e8c20b70abe3b6b5361de95451a72ea8a0996
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96005055"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378294"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>教程：在 IoT Edge（预览版）上响应 Blob 存储事件
 本文介绍了如何在 IoT 模块上部署 Azure Blob 存储，使其充当事件网格发布者，将 Blob 创建和 Blob 删除事件发送到事件网格。  
@@ -24,7 +25,7 @@ ms.locfileid: "96005055"
 
 若要完成本教程，您需要：
 
-* **Azure 订阅** - 如果还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
+* **Azure 订阅** - 如果还没有帐户，请创建一个 [免费帐户](https://azure.microsoft.com/free)。 
 * **Azure IoT 中心和 IoT Edge 设备** - 如果还未安装，请按照 [Linux](../../iot-edge/quickstart-linux.md) 或 [Windows 设备](../../iot-edge/quickstart.md)快速入门中的步骤进行操作。
 
 ## <a name="deploy-event-grid-iot-edge-module"></a>部署事件网格 IoT Edge 模块

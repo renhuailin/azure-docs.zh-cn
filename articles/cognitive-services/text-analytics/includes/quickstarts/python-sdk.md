@@ -5,12 +5,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/19/2021
 ms.author: aahi
-ms.openlocfilehash: d36666ea35a4ce3fc894e35dd8ca3860900ecef6
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 42716c4e2c4aa2e76242034b493f4181632f0fe9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107880710"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110163188"
 ---
 <a name="HOLTop"></a>
 
@@ -862,7 +862,7 @@ Entity: Paul Allen
 ------------------------------------------
 ```
 
-你还可以使用批量分析操作检测 PII 和执行关键短语提取。 请参阅 GitHub 上的[批量分析示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_batch_actions.py)。
+你还可以使用批量分析操作检测 PII 和执行关键短语提取。 请参阅 GitHub 上的[批量分析示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_actions.py)。
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 

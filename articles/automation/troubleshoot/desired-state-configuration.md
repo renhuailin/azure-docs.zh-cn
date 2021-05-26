@@ -6,12 +6,12 @@ ms.subservice: ''
 ms.date: 04/16/2019
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 91c4780981851b62027fecf18da2c3b78625f272
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 5fe977851011bdfa4f7bbf2bde24e5e4b6fd480d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831197"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457850"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>排查 Azure 自动化状态配置问题
 
@@ -90,7 +90,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 验证计算机是否有权访问 DSC 的相应终结点，然后重试。 有关所需端口和地址的列表，请参阅[网络规划](../automation-dsc-overview.md#network-planning)。
 
-## <a name="a-nameunauthorizedscenario-status-reports-return-the-response-code-unauthorized"></a><a name="unauthorized"><a/>场景：状态报表返回响应代码 Unauthorized
+## <a name="scenario-status-reports-return-the-response-code-unauthorized"></a><a name="unauthorized"></a>场景：状态报表返回响应代码 Unauthorized
 
 ### <a name="issue"></a>问题
 
@@ -342,5 +342,5 @@ This event indicates that failure happens when LCM is processing the configurati
 如果你的问题未在本文中列出，或者无法解决问题，请尝试通过以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
-* 连接到 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可以获得解答、支持和专家建议。
+* 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的 Microsoft Azure 官方帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可以获得解答、支持和专家建议。
 * 提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 10/23/2020
-ms.openlocfilehash: 9df5c63ef175d0cf736ce16036466158ab6565f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/07/2021
+ms.openlocfilehash: f435ed599e39b2dd0c204ef8c2cdcbb23146bc08
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618298"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367860"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ Azure Cosmos DB 是一种用于新式应用开发的完全托管的 NoSQL 数据
 > [!NOTE]
 > 是否想要通过参与用户研究来帮助改进 Azure Cosmos DB 文档？ 请花几分钟来填写这个 5 分钟的[筛选调查](https://aka.ms/cosmosdb-documentation-screener-survey)。 如果你符合条件，你会被重定向到计划程序，你可以在其中预定一个槽来加入交互式研究会话。 在此过程中，根据我们的[隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)，将不会收集任何个人数据。
 
-可以在没有 Azure 订阅的情况下[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)（无需支付费用，也无需承诺），或者使用 [Azure Cosmos DB 免费层](optimize-dev-test.md#azure-cosmos-db-free-tier)获取一个每秒的前 400 RU 免费且 5 GB 存储免费的帐户。
+可以在没有 Azure 订阅的情况下[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)（无需支付费用，也无需承诺），或者使用 [Azure Cosmos DB 免费层](free-tier.md)获取一个帐户，其中包含每秒前 1000 RU 的免费吞吐量和 25 GB 的免费存储。
 
 > [!div class="nextstepaction"]
 > [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
@@ -82,6 +82,7 @@ Azure Cosmos DB 是一种用于新式应用开发的完全托管的 NoSQL 数据
 - [Azure Cosmos DB Cassandra API 入门](create-cassandra-dotnet.md)
 - [Azure Cosmos DB Gremlin API 入门](create-graph-dotnet.md)
 - [Azure Cosmos DB 表 API 入门](create-table-dotnet.md)
+- [有关 Azure Cosmos DB 的下一代应用开发的白皮书](https://azure.microsoft.com/resources/microsoft-azure-cosmos-db-flexible-reliable-cloud-nosql-at-any-scale/)
 
 > [!div class="nextstepaction"]
 > [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)

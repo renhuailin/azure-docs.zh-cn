@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 982e402946cbd71d946bc1e316cef99621c536a3
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 69bef0938a65777d025e2ffa64de6f133416fc7f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378187"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067125"
 ---
 # <a name="tutorial-using-openssl-to-create-self-signed-certificates"></a>教程：使用 OpenSSL 创建自签名证书
 
@@ -84,13 +84,13 @@ openssl x509 -req -days 365 -in device2.csr -signkey device2.key -out device2.cr
 ## <a name="step-7---retrieve-the-thumbprint-for-certificate-1"></a>步骤 7 - 检索证书 1 的指纹
 
 ```bash
-openssl x509 -in device.crt -text -fingerprint
+openssl x509 -in device.crt -noout -fingerprint
 ```
 
 ## <a name="step-8---retrieve-the-thumbprint-for-certificate-2"></a>步骤 8 - 检索证书 2 的指纹
 
 ```bash
-openssl x509 -in device2.crt -text -fingerprint
+openssl x509 -in device2.crt -noout -fingerprint
 ```
 
 ## <a name="step-9---create-a-new-iot-device"></a>步骤 9 - 创建新的 IoT 设备
@@ -103,4 +103,4 @@ openssl x509 -in device2.crt -text -fingerprint
 
 ## <a name="next-steps"></a>后续步骤
 
-转到[测试证书身份验证](tutorial-x509-test-certificate.md)，确定你的证书是否可在 IoT 中心对设备进行身份验证。
+前往[“测试证书身份验证”](tutorial-x509-test-certificate.md)，以确定证书是否可在 IoT 中心对设备进行身份验证。

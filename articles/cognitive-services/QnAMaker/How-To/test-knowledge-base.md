@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c27ce8087020a43076ee3c4c8a99454a554554c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96353147"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377463"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>在 QnA Maker 中测试知识库
 
@@ -66,7 +66,7 @@ ms.locfileid: "96353147"
 > [!NOTE]
 > 只有在按下“保存并训练”按钮时，才会保存对知识库的所有编辑。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 1. 通过在“我的知识库”页上选择知识库名称来访问知识库。
 1. 若要访问“测试”滑出面板，请在应用程序的顶部面板中选择“测试”。 
@@ -94,6 +94,7 @@ ms.locfileid: "96353147"
 
 2.  此时将显示“检查”面板。 此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。
 3. 此面板显示整段答案的置信度分数，以及检测到的答案范围分数。
+4. 此面板还显示答案段落的知识库源。
 
 ### <a name="correct-the-top-scoring-answer"></a>更正评分最高的答案
 

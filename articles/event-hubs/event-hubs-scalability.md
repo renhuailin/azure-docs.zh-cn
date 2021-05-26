@@ -3,12 +3,12 @@ title: 可伸缩性 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何使用分区和吞吐量单位来缩放 Azure 事件中心。
 ms.topic: article
 ms.date: 03/16/2021
-ms.openlocfilehash: f258ee2a3b4162dabf7a8e615db82b9b889d628b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acfc300ff7e6bd77c570c68bda50a731df10409c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601266"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367075"
 ---
 # <a name="scaling-with-event-hubs"></a>通过事件中心进行缩放
 
@@ -35,6 +35,14 @@ ms.locfileid: "103601266"
 当负载的增加超过最小阈值时，事件中心服务会增加吞吐量，不会因服务器繁忙错误导致任何请求失败。 
 
 有关自动扩充功能的详细信息，请参阅[自动缩放吞吐量单位](event-hubs-auto-inflate.md)。
+
+## <a name="processing-units"></a>处理单位
+
+ [事件中心高级层](./event-hubs-premium-overview.md)在托管的多租户 PaaS 环境中提供了卓越的性能和更好的隔离性。 高级层中的资源在 CPU 和内存级别隔离，因此每个租户工作负荷都独立运行。 此资源容器称为“处理单位”(PU)。 可以为每个事件中心高级层命名空间购买 1、2、4、8 或 16 个处理单位。 
+
+使用处理单位可以引入和流式传输的数据量取决于各种因素，例如生成者、使用者、引入和处理速率，等等。 一个处理单位可以大致提供约 5-10 MB/秒流入量和 10-20 MB/秒流出量的核心容量，由于我们有足够的分区，因此存储不是限制因素。  
+
+
 
 ## <a name="partitions"></a>分区
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]

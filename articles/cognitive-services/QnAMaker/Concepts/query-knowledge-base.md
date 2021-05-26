@@ -3,12 +3,12 @@ title: 查询知识库 - QnA Maker
 description: 必须发布知识库。 发布后，将使用 generateAnswer API 在运行时预测终结点上查询知识库。
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: c723d1446c90290929bc8cad066b4744e284f3f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d36e1feb0279eec638a3602c5188e8af1cb7c17
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008665"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369296"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>查询知识库以获取答案
 
@@ -39,7 +39,7 @@ ms.locfileid: "103008665"
 
 使用的功能包括但不限于字词级别语义、语料库中的术语级别重要性，以及深度学习的语义模型，以确定两个文本字符串之间的相似性和相关性。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 训练和[发布](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)的 QnA Maker 知识库通过 [GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) 从机器人或其他客户端应用程序接收用户查询。 下图说明了接收用户查询时的过程。
 

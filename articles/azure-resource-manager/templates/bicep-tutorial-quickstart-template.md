@@ -6,12 +6,12 @@ ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: cf655885e01fe6bca99a82c82d6bbbc4c1a080b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c20a8307fc61e180b378fee034e086a5f54ba03f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632420"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089841"
 ---
 # <a name="tutorial-use-azure-quickstart-templates-for-azure-resource-manager-bicep-development"></a>教程：使用 Azure 快速入门模板进行 Azure 资源管理器 Bicep 开发
 
@@ -39,7 +39,7 @@ Azure 快速入门模板目前仅提供 JSON 模板。 可使用一些工具将 
 
 1. 打开 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)
 1. 在“搜索”中，输入“部署 linux web 应用”。  
-1. 选择标题为“部署基本的 linux web 应用”的磁贴。 如果找不到它，请单击此处的[直接链接](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)。
+1. 选择标题为“部署基本的 linux web 应用”的磁贴。 如果找不到它，请单击此处的[直接链接](https://azure.microsoft.com/resources/templates/webapp-basic-linux/)。
 1. 选择“在 GitHub 上浏览”。 
 1. 选择“azuredeploy.json”。  这是可供使用的模板。
 1. 选择“原始”，然后创建 URL 的副本。

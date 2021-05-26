@@ -1,0 +1,34 @@
+### YamlMime:Hub
+title: Azure 视频分析器文档
+summary: 使用 Azure 视频分析器，开发人员可以快速构建由 AI 提供支持的视频分析解决方案，从存储的或流式传输的视频提取有实际价值的见解。 通过了解音频和视觉视频内容，即使不具备视频和机器学习专业知识，组织也可以改善工作区安全、店内体验、数字资产管理和媒体存档等。 Azure 视频分析器提供用于视频分析的开发人员平台，而 Azure 视频分析器媒体版提供面向媒体方案的 AI 解决方案。
+brand: azure
+metadata:
+  title: Azure 视频分析器文档
+  description: 使用 Azure 视频分析器，开发人员可以快速构建由 AI 提供支持的视频分析解决方案，从存储的或流式传输的视频提取有实际价值的见解。 通过了解音频和视觉视频内容，即使不具备视频和机器学习专业知识，组织也可以改善工作区安全、店内体验、数字资产管理和媒体存档等。 Azure 视频分析器提供用于视频分析的开发人员平台，而 Azure 视频分析器媒体版提供面向媒体方案的 AI 解决方案。
+  services: azure-video-analyzer
+  ms.service: azure-video-analyzer
+  ms.topic: hub-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 03/21/2021
+highlightedContent:
+  items:
+    - title: Azure 视频分析器文档
+      itemType: overview
+      url: ./video-analyzer-docs/overview.md
+    - title: Azure 视频分析器媒体版文档
+      itemType: overview
+      url: ./video-analyzer-for-media-docs/video-indexer-overview.md
+additionalContent:
+  sections:
+    - items:
+        - title: Azure AI
+          summary: 使人工智能 (AI) 成为现实，从而满足你的业务要求。
+          url: 'https://azure.microsoft.com/overview/ai-platform/'
+        - title: Azure IoT 服务
+          summary: 利用 Azure IoT 的强大功能，根据你在边缘或云上的行业要求满足你的需求。
+          url: 'https://azure.microsoft.com/overview/iot/'
+        - title: Azure 机器学习
+          summary: 利用 Azure 机器学习加速端到端机器学习生命周期
+          url: 'https://azure.microsoft.com/services/machine-learning/'

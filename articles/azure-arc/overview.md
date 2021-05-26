@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 概述
 description: 了解什么是 Azure Arc，以及它如何帮助客户使用其他 Azure 服务和功能对混合资源进行管理和治理。
-ms.date: 03/02/2021
+ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: 33c9d6ca87c3d8d2d8920ff429902f5876bbdc59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57b483fd64004680d2feffa1e0a6c2843b819c19
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650186"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369073"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc 概述
 
@@ -16,7 +16,12 @@ ms.locfileid: "101650186"
 
 新的 DevOps 和 ITOps 操作模型很难并行实现，因为现有工具无法为新的云本机模式提供支持。
 
-Azure Arc 通过提供一致的多云和本地管理平台，从而简化了治理和管理。 使用 Azure Arc，可以通过将现有资源投影到 Azure 资源管理器中，使用单一虚拟管理平台来管理整个环境。 现在可以管理虚拟机、Kubernetes 群集和数据库，就像它们在 Azure 中运行一样。 不管它们在何处，你都可以使用熟悉的 Azure 服务和管理功能。 使用 Azure Arc，可以继续使用传统的 ITOps，同时引入 DevOps 做法，以支持环境中的新云本机模式。
+Azure Arc 通过提供一致的多云和本地管理平台，从而简化了治理和管理。 使用 Azure Arc，你能够：
+* 通过将现有非 Azure 本地或其他云资源投影到 Azure 资源管理器中，使用单一虚拟管理平台来管理整个环境。 
+* 管理虚拟机、Kubernetes 群集和数据库，就像它们在 Azure 中运行一样。 
+* 不管它们在何处，你都可以使用熟悉的 Azure 服务和管理功能。 
+* 继续使用传统的 ITOps，同时引入 DevOps 做法，以支持环境中的新云本机模式。
+* 将自定义位置配置为已启用 Azure Arc 的 Kubernetes 群集、群集连接和群集扩展上的抽象层。  
 
 :::image type="content" source="./media/overview/azure-arc-control-plane.png" alt-text="Azure Arc 管理控制平面关系图" border="false":::
 
@@ -40,7 +45,9 @@ Azure Arc 的主要功能包括：
 
 *  使用 Azure Policy 实现 Kubernetes 群集的零接触合规性和配置。
 
-* 在任何 Kubernetes 环境（特别是 Azure SQL 托管实例和 Azure Database for PostgreSQL 超大规模，其中包含升级/更新、安全性和监视等权益）上运行 Azure 数据服务，就像在 Azure 中运行一样。 使用弹性缩放，应用更新，而不会导致任何应用程序停机，即使没有持续连接到 Azure
+* 在任何 Kubernetes 环境（特别是 Azure SQL 托管实例和 Azure Database for PostgreSQL 超大规模，其中包含升级/更新、安全性和监视等权益）上运行 [Azure 数据服务](../azure-arc/kubernetes/custom-locations.md)，就像在 Azure 中运行一样。 使用弹性缩放，应用更新，而不会导致任何应用程序停机，即使没有持续连接到 Azure。
+
+* 在[已启用 Azure Arc 的 Kubernetes](./kubernetes/overview.md) 群集上创建[自定义位置](./kubernetes/custom-locations.md)，将它们用作部署 Azure 服务实例的目标位置。 为[已启用 Azure Arc 的数据服务](./data/deploy-data-controller-direct-mode.md)、[Azure Arc 上的应用服务](../app-service/overview-arc-integration.md)（包括 Web、功能和逻辑应用）和 [Kubernetes 上的事件网格](/azure/event-grid/kubernetes/overview)部署 Azure 服务群集扩展。
 
 * 无论使用的是 Azure 门户、Azure CLI、Azure PowerShell 还是 Azure REST API，都可以查看已启用 Azure Arc 的资源的统一体验。
 
@@ -60,7 +67,7 @@ Azure Arc 的主要功能包括：
 
 * 通过模板和扩展实现环境和自动化。
 
-* 更新管理
+* 更新管理。
 
 在已启用 Arc 的服务器上使用的任何 Azure 服务（例如 Azure 安全中心或 Azure Monitor）都将按照该服务的定价收费。 有关详细信息，请参阅 [Azure 定价页](https://azure.microsoft.com/pricing/)。
 

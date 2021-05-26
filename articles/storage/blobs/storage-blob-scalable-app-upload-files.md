@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: ed7020a58f3f15403108934bcc3fab644bd1b627
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a23836ebadace19c23802a0897287932892657a0
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99584459"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459658"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>将大量随机数据以并行方式上传到 Azure 存储
 
@@ -66,11 +66,11 @@ dotnet run
 
 下例显示了 `UploadFilesAsync` 方法：
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Scalable.cs" id="Snippet_UploadFilesAsync":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 最小线程数和最大线程数设置为 100，以确保允许大量并发连接。
 

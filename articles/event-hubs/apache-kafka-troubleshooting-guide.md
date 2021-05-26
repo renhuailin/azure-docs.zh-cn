@@ -2,13 +2,13 @@
 title: 排查适用于 Apache Kafka 的 Azure 事件中心的问题
 description: 本文介绍如何排查适用于 Apache Kafka 的 Azure 事件中心的问题
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: a9d4a93f0074f206cd4627913505c66eb6480cbd
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 05/10/2021
+ms.openlocfilehash: ee2e598cff140ebfd16c5acd10eca545a29f5b2b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314076"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378157"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>针对事件中心的 Apache Kafka 故障排除指南
 本文提供的故障排除技巧适用于你在使用适用于 Apache Kafka 的事件中心时可能会遇到的问题。 
@@ -49,7 +49,7 @@ org.apache.kafka.common.errors.UnknownServerException: The server experienced an
 - **防火墙阻止流量** - 确保防火墙未阻止端口 **9093**。
 - **TopicAuthorizationException** - 此异常的最常见原因包括：
     - 配置文件中的连接字符串中有拼写错误，或者
-    - 尝试在“基本”层命名空间中使用用于 Kafka 的事件中心。 [只有标准层和专用层命名空间支持](https://azure.microsoft.com/pricing/details/event-hubs/)用于 Kafka 功能的事件中心。
+    - 尝试在“基本”层命名空间中使用用于 Kafka 的事件中心。 基本层不支持适用于 Kafka 的事件中心的功能。
 - **Kafka 版本不匹配** - 用于 Kafka 生态系统的事件中心支持 Kafka 1.0 及更高版本。 某些使用 Kafka 0.10 及更高版本的应用程序有时可能会有效，因为 Kafka 协议具有后向兼容性，但我们强烈建议你不要使用旧的 API 版本。 Kafka 0.9 及更低版本不支持必需的 SASL 协议，因此无法连接到事件中心。
 - **与 Kafka 配合使用时，AMQP 标头上出现奇怪的编码** - 通过 AMQP 将事件发送到事件中心时，系统会采用 AMQP 编码来序列化任何 AMQP 有效负载标头。 Kafka 使用者不会反序列化 AMQP 中的标头。 若要读取标头值，请手动解码 AMQP 标头。 或者，如果你知道要通过 Kafka 协议来使用 AMQP 标头，则可避免使用这些标头。 有关详细信息，请参阅[此 GitHub 问题](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56)。
 - **SASL 身份验证** - 将框架与事件中心所需的 SASL 身份验证协议配合使用可能不是看起来那么容易。 看看你是否可以在 SASL 身份验证的基础上使用框架的资源来排查配置问题。 

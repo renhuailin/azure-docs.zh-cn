@@ -1,16 +1,16 @@
 ---
 title: Kubernetes 上使用 KEDA 的 Azure Functions
 description: 了解如何使用 KEDA (Kubernetes-based event driven autoscaling) 在云中或本地的 Kubernetes 中运行 Azure Functions。
-author: jeffhollan
+author: eamonoreilly
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.author: jehollan
-ms.openlocfilehash: 1eac5a24ae577d712a7dccc7514eb4b18ade232a
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.author: eamono
+ms.openlocfilehash: a1b7113c8d63163023baffa0abeb7d5cf7de7a6b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485254"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481426"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Kubernetes 上使用 KEDA 的 Azure Functions
 
