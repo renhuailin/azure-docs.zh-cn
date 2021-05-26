@@ -4,12 +4,12 @@ description: 有关保护 Azure 容器实例的映像和机密的建议，以及
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 40284c6e42cf1060906c6248495d08e133bda5bb
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 721e3f27af768bd3a31d069100d1f3b84fb5e624
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812653"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091443"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器实例的安全注意事项
 
@@ -140,7 +140,7 @@ ms.locfileid: "107812653"
 
 * [将 Azure Kubernetes 服务与 Azure 安全中心集成](../security-center/defender-for-kubernetes-introduction.md)来监视群集环境的安全配置并生成安全建议
 * [Azure 容器监视解决方案](../azure-monitor/containers/containers.md)
-* [Azure 容器实例](container-instances-log-analytics.md)和 [Azure 容器注册表](../container-registry/container-registry-diagnostics-audit-logs.md)的资源日志
+* [Azure 容器实例](container-instances-log-analytics.md)和 [Azure 容器注册表](../container-registry/monitor-service.md)的资源日志
 
 ## <a name="next-steps"></a>后续步骤
 

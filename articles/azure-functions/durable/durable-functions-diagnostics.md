@@ -3,14 +3,14 @@ title: Durable Functions 中的诊断 - Azure
 description: 了解如何使用 Azure Functions 的 Durable Functions 扩展诊断问题。
 author: cgillum
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 05/12/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 62cc5e1762a2a54b26cbebae5aa7cfbf64204ba5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1125c2de0f548f1a6086819573acf1a2ac9c3c9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584613"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370885"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure Durable Functions 中的诊断
 
@@ -154,10 +154,12 @@ traces
 
 Durable 扩展日志对于了解业务流程逻辑的行为很有帮助。 但这些日志并非始终包含足够的信息来调试框架级别的性能和可靠性问题。 从 Durable 扩展 v2.3.0 开始，由基础 Durable Task Framework (DTFx) 发出的日志也可用于集合。
 
-查看 DTFx 发出的日志时，请务必了解 DTFx 引擎由两个组件组成：核心调度引擎 (`DurableTask.Core`) 和众多受支持的存储提供程序之一（Durable Functions 默认使用 `DurableTask.AzureStorage`）。
+查看 DTFx 发出的日志时，请务必了解 DTFx 引擎由两个组件组成：核心调度引擎 (`DurableTask.Core`) 和众多受支持的存储提供程序之一（Durable Functions 默认使用 `DurableTask.AzureStorage`，但[其他选项也可用](durable-functions-storage-providers.md)）。
 
-* **DurableTask**：包含有关业务流程执行和低级别计划的信息。
-* **DurableTask.AzureStorage**：包含与 Azure 存储项目交互相关的信息，其中包括用于存储和提取内部业务流程状态的内部队列、blob 和存储表。
+* **DurableTask.Core**：核心业务流程执行和低级别计划日志和遥测。
+* **DurableTask.AzureStorage**：特定于 Azure 存储状态提供程序的后端日志。 这些日志包括与用于存储和提取内部业务流程状态的内部队列、blob 和存储表的详细交互。
+* **DurableTask.Netherite**：特定于 [Netherite 存储提供程序](https://microsoft.github.io/durabletask-netherite)的后端日志（如果已启用）。
+* **DurableTask.SqlServer**：特定于 [Microsoft SQL (MSSQL) 存储提供程序](https://microsoft.github.io/durabletask-mssql)的后端日志（如果已启用）。
 
 可通过更新函数应用的 host.json 文件的 `logging/logLevel` 部分来启用这些日志。 下面的示例演示如何从 `DurableTask.Core` 和 `DurableTask.AzureStorage` 启用警告和错误日志：
 
@@ -176,7 +178,7 @@ Durable 扩展日志对于了解业务流程逻辑的行为很有帮助。 但�
 如果已启用 Application Insights，这些日志会自动添加到 `trace` 集合。 可使用 Kusto 查询像搜索其他 `trace` 日志一样搜索它们。
 
 > [!NOTE]
-> 对于生产应用程序，建议使用 `"Warning"` 筛选器启用 `DurableTask.Core` 和 `DurableTask.AzureStorage` 日志。 较高详细程度筛选器（如 `"Information"`）对于调试性能问题非常有用。 但这些日志事件会占用很大容量，可能会大大增加 Application Insights 数据存储费用。
+> 对于生产应用程序，建议使用 `"Warning"` 筛选器来启用 `DurableTask.Core` 和适当的存储提供程序（例如 `DurableTask.AzureStorage`）日志。 较高详细程度筛选器（如 `"Information"`）对于调试性能问题非常有用。 但这些日志事件会占用很大容量，可能会大大增加 Application Insights 数据存储费用。
 
 以下 Kusto 查询演示了如何查询 DTFx 日志。 查询最重要的部分是 `where customerDimensions.Category startswith "DurableTask"`，因为它将结果筛选到 `DurableTask.Core` 和 `DurableTask.AzureStorage` 类别中的日志。
 
@@ -471,6 +473,13 @@ Azure Functions 支持直接调试函数代码，Durable Functions 承袭了这�
 
 > [!WARNING]
 > 尽管可以在表存储中方便查看执行历史记录，但不要对此表有任何依赖。 它可能会随着 Durable Functions 扩展的演变而变化。
+
+> [!NOTE]
+> 可以配置其他存储提供程序，而不是默认的 Azure 存储提供程序。 可能需要使用不同的工具来检查基础状态，具体取决于为应用配置的存储提供程序。 有关详细信息，请参阅 [Durable Functions 存储提供程序](durable-functions-storage-providers.md)文档。
+
+## <a name="3rd-party-tools"></a>第三方工具
+
+Durable Functions 社区发布各种工具，这些工具可用于调试、诊断或监视。 其中一个工具是开源 [Durable Functions 监视器](https://github.com/scale-tone/DurableFunctionsMonitor#durable-functions-monitor)，这是一个用于监视、管理和调试业务流程实例的图形工具。
 
 ## <a name="next-steps"></a>后续步骤
 

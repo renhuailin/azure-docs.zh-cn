@@ -7,15 +7,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 05/21/2021
 ms.author: aahi
-ms.openlocfilehash: 2cfef9626983ed0fa120e11bbfebdc2a38d91096
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 350090f2ae4c6a68cc99c1a7de3c2c91dcc9d2ae
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97506315"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457677"
 ---
 若要使用文本分析 v3 客户端库的最新版本，需要在 `Azure.AI.TextAnalytics` 命名空间中下载最新的软件包。 [快速入门文章](../quickstarts/client-libraries-rest-api.md)中的“设置”部分列出了可用于首选语言的命令，其中包含示例代码。
-
-正在查找使用 API v2.1 的示例代码？ GitHub 上提供了以下 v2.1 SDK 的几个示例：[C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/TextAnalytics)、[Go](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/cognitiveservices/textanalytics.go)、[JavaScript](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js)、[Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py) 和 [Ruby](https://github.com/Azure-Samples/cognitive-services-ruby-sdk-samples/blob/master/samples/text_analytics.rb)。

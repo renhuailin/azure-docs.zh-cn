@@ -12,20 +12,20 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: d2159540c688a63082efb792fd4d261062ef65d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc3db3de91c9fbf059c56fb1f2770381265d82de
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466787"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090634"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自定义角色的企业应用程序权限
 
 本文包含适用于 Azure Active Directory (Azure AD) 中的自定义角色定义的当前可用的企业应用程序权限。 在本文中，你将找到一些常见方案的权限列表以及企业应用程序权限的完整列表。 当前未在此版本中推出应用程序代理权限。
 
-## <a name="required-license-plan"></a>所需许可证计划
+## <a name="license-requirements"></a>许可要求
 
-使用此功能需要 Azure AD 组织的 Azure AD Premium P1 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版、基本版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="enterprise-application-permissions"></a>企业应用程序权限
 

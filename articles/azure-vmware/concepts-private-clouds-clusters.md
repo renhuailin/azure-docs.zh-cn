@@ -2,13 +2,13 @@
 title: 概念 - 私有云和群集
 description: 了解 Azure VMware 解决方案软件定义的数据中心和 vSphere 群集的主要功能。
 ms.topic: conceptual
-ms.date: 04/27/2021
-ms.openlocfilehash: 71cd3c80f5ada0d8e21fbf1696896fe03368babe
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 05/13/2021
+ms.openlocfilehash: 7b32752e368f9aac003a45f96f7c0477e9221481
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161638"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089607"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware 解决方案私有云和群集概念
 
@@ -85,7 +85,7 @@ Azure VMware 解决方案可持续监视底层和 VMware 组件的运行状况�
 
 - [Azure VMware 解决方案网络和互连概念](concepts-networking.md)
 - [Azure VMware 解决方案存储概念](concepts-storage.md)
-- [如何启用 Azure VMware 解决方案资源](enable-azure-vmware-solution.md)
+- [如何启用 Azure VMware 解决方案资源](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
 
 <!-- LINKS - internal -->
 [concepts-networking]: ./concepts-networking.md

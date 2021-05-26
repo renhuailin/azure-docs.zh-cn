@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 02/28/2020
 ms.topic: how-to
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 4a045d7475c2380c9e591e18a37c4f9e99501097
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 22b8126ffcb573f2ec276e589a261ac14ec72c99
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951929"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191592"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 的 Azure 机器学习管道中使用自动化 ML
 
@@ -248,7 +248,7 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 |`OutputTabularDatasetConfig`| 提高性能 | 
 || 从 `OutputFileDatasetConfig` 自然路由 | 
 || 管道运行后不会保留数据 |
-|| [显示 `OutputTabularDatasetConfig` 方法的笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
+||  |
 | 已注册 `Dataset` | 较低性能 |
 | | 可以通过多种方式生成 | 
 | | 数据持续存在并在整个工作区中可见 |

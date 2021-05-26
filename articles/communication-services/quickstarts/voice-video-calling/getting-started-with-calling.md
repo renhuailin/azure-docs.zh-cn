@@ -7,19 +7,23 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 5a506d84f338b2eab1c32caa4d94bd03a33e637d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+zone_pivot_groups: acs-plat-web-ios-android-windows
+ms.openlocfilehash: 2220fe93d5897fa5ebcf90c03b3d37c305967b23
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728328"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092173"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>快速入门：在应用中添加语音呼叫
 
 通过使用通信服务呼叫 SDK 向应用添加语音和视频呼叫，开启 Azure 通信服务使用旅程。
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
+
+::: zone pivot="platform-windows"
+[!INCLUDE [Calling with Windows](./includes/get-started-windows.md)]
+::: zone-end
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/get-started-javascript.md)]

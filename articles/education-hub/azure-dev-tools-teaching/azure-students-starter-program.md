@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: 87f44c1529055458f341fa6c4c5285560d878d2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d29fb34fd16293eee014c28cbbc39ec9a0ab7813
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92674967"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064929"
 ---
 # <a name="azure-for-students-starter"></a>面向学生的 Azure 入门版
 
@@ -23,7 +23,7 @@ ms.locfileid: "92674967"
 - Azure 通知中心
 - Azure Database for MySQL
 - Application Insights
-- Azure DevOps Server（以前称为 Visual Studio Team Services）
+- Azure DevOps Server（以前称为 Visual Studio Team Foundation Server）
 
 通过验证的学生可免费使用面向学生的 Azure 入门版，无需承诺使用量且没有时间限制。 有关详细使用条款，请参阅[面向学生的 Azure 入门版套餐](https://azure.microsoft.com/offers/ms-azr-0144p/)。
 

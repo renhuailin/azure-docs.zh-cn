@@ -4,12 +4,12 @@ description: 由于 Azure HDInsight 中的 Apache Zookeeper 问题，因此无�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
-ms.openlocfilehash: 42fb9f5389cbc31e772dc9cf36b6a975c5e18d3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 475f717413252b69e3861ca3a7210ec72b6ac581
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98939298"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191395"
 ---
 # <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>方案：Apache Hive 无法与 Azure HDInsight 中的 Apache Zookeeper 建立连接
 
@@ -20,7 +20,7 @@ ms.locfileid: "98939298"
 Hive 视图不可访问，`/var/log/hive` 中的日志显示类似于以下内容的错误：
 
 ```
-ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:checkTimeouts(200)) - Connection timed out for connection string (zk0-cluster.cloud.wbmi.com:2181,zk1-cluster.cloud.wbmi.com:2181,zk2-cluster.cloud.wbmi.com:2181) and timeout (15000) / elapsed (21852)
+ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:checkTimeouts(200)) - Connection timed out for connection string (<zookeepername1>.cloud.wbmi.com:2181,<zookeepername2>.cloud.wbmi.com:2181,<zookeepername3>.cloud.wbmi.com:2181) and timeout (15000) / elapsed (21852)
 ```
 
 ## <a name="cause"></a>原因
@@ -34,8 +34,8 @@ Hive 可能无法建立与 Zookeeper 的连接，这会阻止 Hive 视图启动�
 1. 检查 Zookeeper 服务是否具有 Hive Server2 的 ZNode 条目。 该值会缺失或不正确。
 
     ```
-    /usr/hdp/2.6.2.25-1/zookeeper/bin/zkCli.sh -server zk1-wbwdhs
-    [zk: zk0-cluster(CONNECTED) 0] ls /hiveserver2-hive2
+    /usr/hdp/2.6.2.25-1/zookeeper/bin/zkCli.sh -server <zookeepername1>
+    [zk: <zookeepername1>(CONNECTED) 0] ls /hiveserver2-hive2
     ```
 
 1. 若要重新建立连接，请重新启动 Zookeeper 节点，并重新启动 HiveServer2。

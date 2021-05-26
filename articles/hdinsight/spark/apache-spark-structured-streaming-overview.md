@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: fd65177fb6202b0396545043c2e63a87c7f01bbb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ac4e44a3bb21c746865b4aa3d86a75501f9cde0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864595"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064893"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark 结构化流的概述
 
@@ -73,7 +73,7 @@ Spark 结构化流以表的形式表示数据流，该表的深度受限，即�
 
 首先配置一个数据帧，用于描述数据源，以及该源所需的任何设置。 此示例从 Azure 存储中的 JSON 文件抽取数据，并在读取时向这些数据应用一个架构。
 
-```sql
+```scala
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions._
 
@@ -91,7 +91,7 @@ val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath)
 
 接下来，针对流数据帧应用包含所需操作的查询。 在本例中，某个聚合会将所有行分组到 1 小时时间范围，然后计算该 1 小时时间范围内的最小、平均和最大温度。
 
-```sql
+```scala
 val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
 ```
 
@@ -99,7 +99,7 @@ val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min
 
 接下来，针对在每个触发器间隔内添加到结果表中的行定义目标。 此示例只是将所有行输出到稍后可以使用 SparkSQL 查询的内存中表 `temps`。 完整输出模式可以确保每次都会输出所有时间范围的所有行。
 
-```sql
+```scala
 val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete")
 ``` 
 
@@ -107,7 +107,7 @@ val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temp
 
 启动流查询，并一直运行到收到终止信号为止。
 
-```sql
+```scala
 val query = streamingOutDF.start() 
 ``` 
 

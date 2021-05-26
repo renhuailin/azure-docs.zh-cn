@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: c3c99ea746baef2c9569277c1816a9740e217d29
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 4b90d02d5cef2e43f08916889cf4ba99bee0160c
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279669"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190185"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>快速入门：使用 ARM 模板在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -47,7 +47,7 @@ ms.locfileid: "108279669"
 
 1. 输入或选择下列值：
 
-    |属性 |说明 |
+    |属性 |描述 |
     |---|---|
     |订阅|从下拉列表中选择用于此群集的 Azure 订阅。|
     |资源组|从下拉列表中选择现有资源组，或选择“新建”  。|
@@ -108,7 +108,7 @@ ms.locfileid: "108279669"
 
     此命令返回类似于以下文本的信息：
 
-    `zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181`
+    `<zookeepername1>.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,<zookeepername2>.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181`
 
 1. 若要使用 Kafka 代理主机信息来设置环境变量，请使用以下命令：
 
@@ -126,7 +126,7 @@ ms.locfileid: "108279669"
 
     此命令返回类似于以下文本的信息：
 
-    `wn1-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092,wn0-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
+    `<brokername1>.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092,<brokername2>.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
 
 ## <a name="manage-apache-kafka-topics"></a>管理 Apache Kafka 主题
 
@@ -223,7 +223,7 @@ Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使�
 
 :::image type="content" source="./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png" alt-text="资源管理器模板 HBase" border="false":::
 
-还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”  。 通过删除资源组，可以删除 HDInsight 群集和默认存储帐户。
+还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”。 通过删除资源组，可以删除 HDInsight 群集和默认存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

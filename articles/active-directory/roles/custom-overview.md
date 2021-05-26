@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bddb03094b73dbd6d3b8d44c76ab242caa515dc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: efd71944d0c29b9e796c4e5508f6b5116df99ec2
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727852"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092811"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory 中基于角色的访问控制概述
 
@@ -79,9 +79,9 @@ Azure AD 支持两种类型的角色定义：
 
 范围是指允许对角色分配中的特定 Azure AD 资源执行的操作的限制。 分配角色时，可以指定一个范围来限制管理员对特定资源的访问。 例如，如果要为开发人员授予某个自定义角色，但仅允许该开发人员管理特定的应用程序注册，则你可以在角色分配中包含特定的应用程序注册作为范围。
 
-## <a name="required-license-plan"></a>所需的许可计划
+## <a name="license-requirements"></a>许可要求
 
-在 Azure AD 中可免费使用内置角色，而使用自定义角色则需要 Azure AD Premium P1 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版、基本版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory)。
+在 Azure AD 中可免费使用内置角色，而使用自定义角色则需要 Azure AD Premium P1 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -31,6 +31,8 @@
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
     - name: 使用学徒模式
       href: how-to-learning-behavior.md
+    - name: 使用多槽
+      href: how-to-multi-slot.md
     - name: 管理模型和学习设置
       href: how-to-manage-model.md
     - name: 使用脱机评估进行分析
@@ -67,6 +69,9 @@
         - name: 奖励
           href: concept-rewards.md
           displayName: 'reward, wait time, default reward'
+        - name: 多槽个性化
+          href: concept-multi-slot-personalization.md
+          displayName: 'multi-slot, multi slot, multi slot personalizer, multi-slot personalizer'
         - name: 强化学习
           href: concepts-reinforcement-learning.md
           displayName: 'RL, contextual bandits, Vowpal Wabbit'
@@ -77,6 +82,8 @@
       displayName: 'learning policy, Counterfactual, features'
     - name: 功能评估
       href: concept-feature-evaluation.md
+    - name: 自动优化
+      href: concept-auto-optimization.md
     - name: 可伸缩性和性能
       href: concepts-scalability-performance.md
 - name: 教程

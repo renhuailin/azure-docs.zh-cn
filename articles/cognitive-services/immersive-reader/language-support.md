@@ -1,6 +1,6 @@
 ---
 title: 语言支持 - 沉浸式阅读器
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 详细了解沉浸式阅读器提供的人类语言。
 services: cognitive-services
 author: metanMSFT
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metang
-ms.openlocfilehash: 80da6776412e0df7b5b9ae5759ac770c04673992
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a706f3b7cde5e7f3a19d82ff4b2bb7a7d2fa7913
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631064"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377703"
 ---
 # <a name="language-support-for-immersive-reader"></a>沉浸式阅读器的语言支持
 
@@ -53,6 +53,7 @@ ms.locfileid: "92631064"
 | 丹麦语 | da |
 | 丹麦语（丹麦） | da-DK |
 | 荷兰语 | nl |
+| 荷兰语（比利时） | nl-BE |
 | 荷兰语（荷兰） | nl-NL |
 | 英语 | en |
 | 英语（澳大利亚） | en-AU |
@@ -61,11 +62,14 @@ ms.locfileid: "92631064"
 | 英语（印度） | en-IN |
 | 英语（爱尔兰） | en-IE |
 | 英语（新西兰） | en-NZ |
+| 英语（菲律宾） | en-PH |
 | 英语（英国） | en-GB |
 | 英语（美国） | zh-CN |
+| 爱沙尼亚语 | et-EE |
 | 芬兰语 | fi |
 | 芬兰语（芬兰） | fi-FI |
 | 法语 | fr |
+| 法语（比利时） | fr-BE |
 | 法语（加拿大） | fr-CA |
 | 法语（法国） | fr-FR |
 | 法语（瑞士） | fr-CH |
@@ -83,14 +87,18 @@ ms.locfileid: "92631064"
 | 匈牙利语（匈牙利） | hu-HU |
 | 印度尼西亚语 | id |
 | 印度尼西亚语（印度尼西亚） | id-ID |
+| 爱尔兰语 | ga-IE |
 | 意大利语 | it |
 | 意大利语（意大利） | it-IT |
 | 日语 | ja |
 | 日语（日本） | ja-JP |
 | 韩语 | ko |
 | 韩语(韩国) | ko-KR |
+| 拉脱维亚语 | Lv-LV |
+| 立陶宛语 | lt-LT |
 | 马来语 | ms |
 | 马来语（马来西亚） | ms-MY |
+| 马耳他语 | Mt-MT |
 | 挪威博克马尔语| nb |
 | 挪威博克马尔语（挪威） | nb-NO |
 | 波兰语 | pl |
@@ -120,21 +128,29 @@ ms.locfileid: "92631064"
 | 泰语（泰国） | th-TH |
 | 土耳其语 | tr |
 | 土耳其语（土耳其） | tr-TR |
+| 乌克兰语 | ur-PK |
 | 越南语 | vi |
 | 越南语（越南） | vi-VN |
+| 威尔士语 | Cy-GB |
 
 ## <a name="translation"></a>翻译
 
 | 语言 | 标记 |
 |----------|-----|
 | 南非荷兰语 | af |
+| 阿尔巴尼亚语 | sq |
+| 阿姆哈拉语 | am |
 | 阿拉伯语 | ar |
 | 阿拉伯语（埃及） | ar-EG |
 | 阿拉伯语（沙特阿拉伯） | ar-SA |
+| 亚美尼亚语 | hy |
+| 阿塞拜疆语 | az |
+| 南非荷兰语 | af |
 | Bangla | bn |
 | 波斯尼亚语 | bs |
 | 保加利亚语 | bg |
 | 保加利亚语（保加利亚） | bg-BG |
+| 缅甸语 | my |
 | 加泰罗尼亚语 | ca |
 | 加泰罗尼亚语（加泰罗尼亚） | ca-ES |
 | 中文 | zh |
@@ -202,11 +218,14 @@ ms.locfileid: "92631064"
 | 日语 | ja |
 | 日语（日本） | ja-JP |
 | 卡纳达语 | kn |
+| 哈萨克语 | kk |
+| 高棉语 | km |
 | 斯瓦希里语 | sw |
 | 韩语 | ko |
 | 韩语(韩国) | ko-KR |
 | 库尔德语(中部) | ku |
 | 库尔德语(北部) | kmr |
+| 老挝语 | lo |
 | 拉脱维亚语 | lv |
 | 立陶宛语 | lt |
 | 马达加斯加语 | mg |
@@ -216,9 +235,10 @@ ms.locfileid: "92631064"
 | 马耳他语 | mt |
 | 毛利语 | mi |
 | 马拉地语 | mr |
+| 尼泊尔语 | ne |
 | 挪威博克马尔语| nb |
 | 挪威博克马尔语（挪威） | nb-NO |
-| 奥里雅语 | 或 |
+| 奥里亚语 | 或 |
 | 普什图语（阿富汗） | ps |
 | 波斯语 | fa |
 | 波兰语 | pl |
@@ -253,6 +273,7 @@ ms.locfileid: "92631064"
 | 泰卢固语（印度） | te-IN |
 | 泰语 | th |
 | 泰语（泰国） | th-TH |
+| 提格里尼亚语 | ti |
 | 汤加语 | to |
 | 土耳其语 | tr |
 | 土耳其语（土耳其） | tr-TR |
@@ -548,31 +569,3 @@ ms.locfileid: "92631064"
 | 西班牙语(西班牙) | es-ES |
 | 瑞典语 | sv |
 | 瑞典语（瑞典） | sv-SE |
-
-## <a name="dictionary"></a>字典
-
-| 语言 | 标记 |
-|----------|-----|
-| 英语 | en |
-| 英语（澳大利亚） | en-AU |
-| 英语（加拿大） | en-CA |
-| 英语（香港特別行政区） | en-HK |
-| 英语（印度） | en-IN |
-| 英语（爱尔兰） | en-IE |
-| 英语（新西兰） | en-NZ |
-| 英语（英国） | en-GB |
-| 英语（美国） | zh-CN |
-| 法语 | fr |
-| 法语（加拿大） | fr-CA |
-| 法语（法国） | fr-FR |
-| 法语（瑞士） | fr-CH |
-| 德语 | de |
-| 德语（奥地利） | de-AT |
-| 德语（德国） | de-DE |
-| 德语（瑞士）| de-CH |
-| 意大利语 | it |
-| 意大利语（意大利） | it-IT |
-| 西班牙语 | es |
-| 西班牙语（拉丁美洲） | es-419 |
-| 西班牙语（墨西哥） | es-MX |
-| 西班牙语(西班牙) | es-ES |
