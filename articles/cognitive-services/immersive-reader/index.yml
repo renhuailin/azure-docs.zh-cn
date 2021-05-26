@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: 沉浸式阅读器文档
+title: Azure 沉浸式阅读器文档
 summary: 沉浸式阅读器是一种工具，它实现了可靠的技术来提高萌发期读者、语言学习者和具有学习差异的人士的阅读理解力。 通过使用沉浸式阅读器 SDK，可以在 Web 应用程序中使用沉浸式阅读器。
 metadata:
-  title: 沉浸式阅读器文档
+  title: Azure 沉浸式阅读器文档
   description: 沉浸式阅读器是一种工具，它实现了可靠的技术来提高萌发期读者、语言学习者和具有学习差异的人士的阅读理解力。 通过使用沉浸式阅读器 SDK，可以在 Web 应用程序中使用沉浸式阅读器。
   services: service
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 01/23/2020
-  ms.openlocfilehash: 4cc05d3b99530e5ba923bfcbf7f749fbcd1c0f20
-  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+  ms.openlocfilehash: dff95a1989d8ff55658227cf135d3e2fc687ec0f
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/10/2021
-  ms.locfileid: "102616632"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110377721"
 landingContent:
 - title: 关于沉浸式阅读器
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: 什么是沉浸式阅读器？
       url: overview.md
+    - text: 什么是 Azure 应用 AI 服务？
+      url: ../../applied-ai-services/what-are-applied-ai-services.md
   - linkListType: video
     links:
     - text: 入门 - 简短工程视频

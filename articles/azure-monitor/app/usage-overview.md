@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 进行使用情况分析 | Microsoft do
 description: 了解用户，以及他们将应用用于哪些目的。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: d9de1e10363f2100b9dfe557dc12e0be951ce6b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8be8f6ad5285819d2cdb7e369c98d6e9da9d76c8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489032"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082335"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -20,7 +20,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 通过在应用服务器代码和网页中安装 Application Insights 来获得最佳体验。 应用的客户端和服务器组件将遥测发送回 Azure 门户进行分析。
 
-1. **服务器代码：** 为 [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md) 或 [其他](./platforms.md)应用安装适当的模块。
+1. **服务器代码：** 为 [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-in-process-agent.md)、[Node.js](./nodejs.md) 或 [其他](./platforms.md)应用安装适当的模块。
 
     * 不想安装服务器代码？只需[创建 Azure Application Insights 资源](./create-new-resource.md)。
 

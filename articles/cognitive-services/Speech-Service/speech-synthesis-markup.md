@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 423e08511003c8ba1f810bd024d0e253df612473
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: beb77517a953163c9d1dd34b59fa429b5d58cdd2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293271"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478029"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -59,7 +59,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `version` | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为 1.0。 | 必须 |
 | `xml:lang` | 指定根文档的语言。 该值可以包含小写的双字母语言代码（例如 `en`），或者语言代码加上大写的国家/地区代码（例如 `en-US`）。 | 必须 |
@@ -79,7 +79,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
@@ -102,7 +102,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
@@ -202,14 +202,11 @@ speechConfig!.setPropertyTo(
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
-* `zh-CN-YunxiNeural`（预览版）
-* `zh-CN-XiaohanNeural`（预览版）
-* `zh-CN-XiaomoNeural`（预览版）
-* `zh-CN-XiaoxuanNeural`（预览版）
-* `zh-CN-XiaoruiNeural`（预览版）
-
-> [!NOTE]
-> 预览版语音只在以下 3 个区域提供：美国东部、西欧和东南亚。
+* `zh-CN-YunxiNeural` 
+* `zh-CN-XiaohanNeural` 
+* `zh-CN-XiaomoNeural` 
+* `zh-CN-XiaoxuanNeural` 
+* `zh-CN-XiaoruiNeural`
 
 可进一步更改说话风格的强度，更好地适应你的使用场景。 可以使用 `styledegree` 指定更强或更柔和的风格，使语音更具表现力或更柔和。 目前，中文（普通话，简体）神经语音支持说话风格调整。
 
@@ -235,7 +232,7 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `style` | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用 `mstts:express-as`，则必须提供风格。 如果提供无效的值，将忽略此元素。 |
 | `styledegree` | 指定说话风格的强度。 接受的值：0.01 到 2（含边界值）。 默认值为 1，表示预定义的风格强度。 最小单位为 0.01，表示略倾向于目标风格。 值为 2 表示是默认风格强度的两倍。  | 可选（目前，`styledegree` 仅支持中文（普通话，简体）神经语音。）|
@@ -376,6 +373,63 @@ speechConfig!.setPropertyTo(
 </speak>
 ```
 
+## <a name="adjust-speaking-languages"></a>调整讲话语言
+
+> [!IMPORTANT]
+>  只能调整神经语音的讲话语言。
+> 使用 `<lang xml:lang>` 元素，使一种语音能够流利地讲不同的语言（例如英语、西班牙语和中文）。 这是语音服务特有的可选元素。 如果没有此元素，语音将讲其主要语言。
+> 目前，以下神经语音支持讲话语言调整：`en-US-JennyMultilingualNeural`。 上述更改将在句子级别和单词级别应用。 如果不支持某语言，则服务不会返回音频流。
+
+**语法**
+
+```xml
+<lang xml:lang="string"></lang>
+```
+
+**属性**
+
+| 属性 | 说明 | 必需/可选 |
+|-----------|-------------|---------------------|
+| `lang` | 指定讲话语言。 目前，讲不同的语言是特定于语音的。 | 如果调整神经语音的讲话语言，则为必需项。 如果使用 `lang xml:lang`，则必须提供区域设置。 |
+
+使用此表来确定每种神经语音支持哪些讲话语言。
+
+| 语音                            | 区域设置语言           | 说明                                                 |
+|----------------------------------|---------------------------|-------------------------------------------------------------|
+| `en-US-JennyMultilingualNeural`  | `lang="en-US"`            | 讲英语（美国）区域设置，这是此语音的主要区域设置 |
+|                                  | `lang="en-CA"`            | 讲英语（加拿大）区域设置语言                                  |
+|                                  | `lang="en-AU"`            | 讲英语（澳大利亚）区域设置语言                                  |
+|                                  | `lang="en-GB"`            | 讲英语（英国）区域设置语言                                  |
+|                                  | `lang="de-DE"`            | 讲德语（德国）区域设置语言                                  |
+|                                  | `lang="fr-FR"`            | 讲法语（法国）区域设置语言                                  |
+|                                  | `lang="fr-CA"`            | 讲法语（加拿大）区域设置语言                                  |
+|                                  | `lang="es-ES"`            | 讲西班牙语（西班牙）区域设置语言                                  |
+|                                  | `lang="es-MX"`            | 讲西班牙语（墨西哥）区域设置语言                                  |
+|                                  | `lang="zh-CN"`            | 讲中文（中国）区域设置语言                                  |
+|                                  | `lang="ko-KR"`            | 讲韩语（韩国）区域设置语言                                  |
+|                                  | `lang="ja-JP"`            | 讲日语（日本）区域设置语言                                  |
+|                                  | `lang="it-IT"`            | 讲意大利语（意大利）区域设置语言                                  |
+|                                  | `lang="pt-BR"`            | 讲葡萄牙语（葡萄牙）区域设置语言                                  |
+
+**示例**
+
+此 SSML 代码片段演示如何使用 `<lang xml:lang>` 将讲话语言更改为 `en-US`、`es-MX` 和 `de-DE`。
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
+    <voice name="en-US-JennyMultilingualNeural">
+        I am looking forward to the exciting things.
+        <lang xml:lang="es-MX">
+            Estoy deseando que lleguen las cosas emocionantes.
+        </lang>
+        <lang xml:lang="de-DE">
+            Ich freue mich auf die spannenden Dinge.
+        </lang>
+    </voice>
+</speak>
+```
+
 ## <a name="add-or-remove-a-breakpause"></a>添加或删除中断/暂停
 
 使用元素 `break` 可在单词之间插入暂停（或中断），或者防止文本转语音服务自动添加暂停。
@@ -392,7 +446,7 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>无</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
 | `time` | 指定暂停的绝对持续时间，以秒或毫秒为单位；该值应设为小于 5000 毫秒。 例如，`2s` 和 `500ms` 是有效值 | 可选 |
@@ -431,7 +485,7 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `type` | 指定添加静音的位置： <ul><li>`Leading` - 在文本的开头 </li><li>`Tailing` - 在文本的结尾 </li><li>`Sentenceboundary` - 在相邻句子之间 </li></ul> | 必须 |
 | `Value` | 指定暂停的绝对持续时间，以秒或毫秒为单位；该值应设为小于 5000 毫秒。 例如，`2s` 和 `500ms` 是有效值 | 必须 |
@@ -496,7 +550,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa` &ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际音标 </a></li><li>`sapi` &ndash; [语音服务音标](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank"> 通用音素集</a></li></ul><br>音标仅适用于元素中的 `phoneme`。 | 可选 |
 | `ph` | 一个字符串，包含用于在 `phoneme` 元素中指定单词发音的音素。 如果指定的字符串包含无法识别的音素，则文本转语音 (TTS) 服务将拒绝整个 SSML 文档，并且不会生成文档中指定的任何语音输出。 | 如果使用音素，则此属性是必需的。 |
@@ -506,7 +560,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-JennyNeural">
-        <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
+        <phoneme alphabet="ipa" ph="təˈmeɪtoʊ"> tomato </phoneme>
     </voice>
 </speak>
 ```
@@ -529,7 +583,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>使用自定义词典改善发音
 
-有时文本转语音服务无法准确地根据字词发音。 例如，公司的名称或医学术语。 开发人员可以使用 `phoneme` 和 `sub` 标记来定义采用 SSML 朗读单个实体的方式。 但是，如果需要定义朗读多个实体的方式，则可以使用 `lexicon` 标记创建自定义词典。
+有时文本转语音服务无法准确地根据字词发音。 例如，公司的名称、医学术语或表情符号。 开发人员可以使用 `phoneme` 和 `sub` 标记来定义采用 SSML 朗读单个实体的方式。 但是，如果需要定义朗读多个实体的方式，则可以使用 `lexicon` 标记创建自定义词典。
 
 > [!NOTE]
 > 自定义词典当前支持 UTF-8 编码。
@@ -546,7 +600,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 描述                               | 必需/可选 |
+| 属性 | 说明                               | 必需/可选 |
 |-----------|-------------------------------------------|---------------------|
 | `uri`     | 外部 PLS 文档的地址。 | 必需。           |
 
@@ -570,10 +624,16 @@ A good place to start is by trying out the slew of educational apps that are hel
     <grapheme> Benigni </grapheme>
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
+  <lexeme>
+    <grapheme>😀</grapheme> 
+    <alias>test emoji</alias> 
+  </lexeme>
 </lexicon>
 ```
 
-`lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alias` 和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">拼字法 </a> 的文本。 `alias` 元素用于指示某个首字母缩写词或某个缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 发音方式的文本。
+`lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alias` 和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">拼字法 </a> 的文本。 `alias` 元素用于指示某个首字母缩写词或某个缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 发音方式的文本。 当 `alias` 与 `phoneme` 元素具有相同的 `grapheme` 元素时，`alias` 具有更高的优先级。
+
+词典包含必需的 `xml:lang` 属性，用于指示要应用词典的区域设置。 根据设计，一个自定义词典仅限于一种区域设置，因此将其应用于另一种区域设置将无法正常工作。
 
 需要特别注意的是，不能使用自定义词典直接设置短语的发音。 如果需要设置首字母缩略词或缩写词的发音，请首先提供 `alias`，再将 `phoneme` 与该 `alias` 关联。 例如：
 
@@ -632,7 +692,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 考虑到 IPA 不容易记住，语音服务为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义语音集。
 
-可以使用 `sapi` 作为 `alphabet` 属性的值，且自定义词典如下所示：
+可以使用 `x-microsoft-sapi` 作为 `alphabet` 属性的值，且自定义词典如下所示：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -641,7 +701,7 @@ A good place to start is by trying out the slew of educational apps that are hel
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
         http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
-      alphabet="sapi" xml:lang="en-US">
+      alphabet="x-microsoft-sapi" xml:lang="en-US">
   <lexeme>
     <grapheme>BTW</grapheme>
     <alias> By the way </alias>
@@ -669,9 +729,9 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `pitch` | 指示文本的基线音节。 可将音调表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如，`<prosody pitch="600Hz">some text</prosody>` 。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如 `<prosody pitch="+80Hz">some text</prosody>` 或 `<prosody pitch="-2st">some text</prosody>`。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>默认值</li></ul></li></ul> | 可选 |
+| `pitch` | 指示文本的基线音节。 可将音调表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如 `<prosody pitch="600Hz">some text</prosody>`。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如 `<prosody pitch="+80Hz">some text</prosody>` 或 `<prosody pitch="-2st">some text</prosody>`。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>默认值</li></ul></li></ul> | 可选 |
 | `contour` |调型现在同时支持神经语音和标准语音。 调型表示音节的变化。 这些变化以语音输出中指定时间处的目标数组形式表示。 每个目标由参数对的集定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每参数集中的第一个值以文本持续时间百分比的形式指定音节变化的位置。 第二个值使用音节的相对值或枚举值指定音节的升高或降低量（请参阅 `pitch`）。 | 可选 |
 | `range` | 表示文本音节范围的值。 可使用用于描述 `pitch` 的相同绝对值、相对值或枚举值表示 `range`。 | 可选 |
 | `rate` | 指示文本的讲出速率。 可将 `rate` 表述为：<ul><li>以充当默认值倍数的数字表示的相对值。 例如，如果值为 *1*，则速率不会变化。 如果值为 *0.5*，则速率会减慢一半。 如果值为 *3*，则速率为三倍。</li><li>常量值：<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>默认值</li></ul></li></ul> | 可选 |
@@ -752,7 +812,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `interpret-as` | 指示元素文本的内容类型。 有关类型列表，请参阅下表。 | 必须 |
 | `format` | 为可能具有不明确格式的内容类型提供有关元素文本的精确格式设置的其他信息。 SSML 为使用它们的内容类型定义格式（请参阅下表）。 | 可选 |
@@ -814,7 +874,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 描述                                   | 必需/可选                                        |
+| 属性 | 说明                                   | 必需/可选                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | 指定音频文件的位置/URL。 | 在 SSML 文档中使用音频元素时，此属性是必需的。 |
 
@@ -850,7 +910,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音频文件的位置/URL。 | 如果在 SSML 文档中使用背景音频，则此属性是必需的。 |
 | `volume` | 指定背景音频文件的音量。 **接受的值**：`0` 到 `100`（含）。 默认值为 `1`。 | 可选 |
@@ -885,7 +945,7 @@ bookmark 元素可用于引用文本或标记序列中的特定位置。
 
 **属性**
 
-| 属性 | 描述                                   | 必需/可选                                        |
+| 属性 | 说明                                   | 必需/可选                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 |  `mark`   | 指定 `bookmark` 元素的引用文本。 | 必需。 |
 
@@ -906,7 +966,7 @@ bookmark 元素可用于引用文本或标记序列中的特定位置。
 可以订阅语音 SDK 中的 `BookmarkReached` 事件来获取书签偏移量。
 
 > [!NOTE]
-> `BookmarkReached` 事件仅从语音 SDK 1.16.0 版本开始提供。
+> `BookmarkReached` 事件仅从语音 SDK 1.16 版本开始提供。
 
 `BookmarkReached` 事件在输出音频数据变为可用时引发，这样将会比播放到输出设备更快。
 

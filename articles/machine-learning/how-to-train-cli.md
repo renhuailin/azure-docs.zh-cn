@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 05/25/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 38b166818f9f27a2905647518c36296965dc953d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 92397e1648afe8e92cd810827b75cb23c2dac09f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382452"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458269"
 ---
 # <a name="train-models-create-jobs-with-the-20-cli-preview"></a>使用 2.0 CLI（预览版）训练模型（创建作业）
 
@@ -23,7 +23,8 @@ ms.locfileid: "110382452"
 
 训练机器学习模型通常是一个迭代过程。 使用新式工具能够更快捷轻松地基于更多数据训练更大的模型。 以前繁琐的手动过程（如超参数优化，甚至算法选择）现在通常都可以自动完成。 借助 Azure 机器学习 CLI，可以使用超参数扫描来跟踪[工作区](concept-workspace.md)中的作业（和模型）、在高性能 Azure 计算中纵向扩展，并利用分布式训练进行横向扩展。
 
-在全功能的开发环境中，可以使用 Visual Studio Code 和 [Azure 机器学习扩展](how-to-setup-vs-code.md)来[管理Azure 机器学习资源](how-to-manage-resources-vscode.md)和[训练机器学习模型](tutorial-train-deploy-image-classification-model-vscode.md)。
+> [!TIP]
+> 在全功能的开发环境中，可以使用 Visual Studio Code 和 [Azure 机器学习扩展](how-to-setup-vs-code.md)来[管理Azure 机器学习资源](how-to-manage-resources-vscode.md)和[训练机器学习模型](tutorial-train-deploy-image-classification-model-vscode.md)。
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
@@ -48,7 +49,7 @@ ms.locfileid: "110382452"
 
 “hello world”作业包含所有三项：
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/hello-world.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/hello-world.yml":::
 
 这只是一个示例作业，它只会在日志文件中输出一行，此外不输出其他任何内容。 除了系统生成的日志外，你通常还想要生成其他项目，例如模型二进制文件和随附的元数据。
 
@@ -74,11 +75,11 @@ Azure 机器学习自动捕获以下项目：
 
 基本命令作业是通过 `job.yml` 配置的：
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/lightgbm/iris/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/lightgbm/iris/job.yml":::
 
 可以使用 `--file/-f` 参数通过 `az ml job create` 创建并运行此作业。 但是，该作业的目标是尚不存在的名为 `cpu-cluster` 的计算。 若要先在本地运行作业，可以使用 `--set` 替代计算目标：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="lightgbm_iris_local":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris_local":::
 
 虽然在本地运行此作业比在包含所需包的本地 Python 环境运行 `python main.py` 要慢，但这样你可以：
 
@@ -98,7 +99,7 @@ Azure 机器学习自动捕获以下项目：
 
 可以从命令行创建 Azure 机器学习计算群集。 例如，以下命令创建一个名为 `cpu-cluster` 的群集和一个名为 `gpu-cluster` 的群集。
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/setup.sh" id="create_computes":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="create_computes":::
 
 请注意，此时你无需支付计算费用，因为在提交作业之前，`cpu-cluster` 和 `gpu-cluster` 将保留在 0 个节点上。 详细了解如何[规划和管理 AmlCompute 的成本](concept-plan-manage-cost.md#use-azure-machine-learning-compute-cluster-amlcompute)。
 
@@ -108,7 +109,7 @@ Azure 机器学习自动捕获以下项目：
 
 创建 `cpu-cluster` 后，可以运行基本训练作业，该作业将输出一个模型和随附的元数据。 让我们详细查看作业 YAML 文件：
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/lightgbm/iris/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/lightgbm/iris/job.yml":::
 
 | 密钥 | 说明 |
 | --- | ----------- |
@@ -125,11 +126,11 @@ Azure 机器学习自动捕获以下项目：
 
 若要运行 lightgbm/iris 训练作业，请执行以下命令：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="lightgbm_iris":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris":::
 
 作业完成后，可以下载输出：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="download_outputs":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="download_outputs":::
 
 > [!IMPORTANT]
 > 请将 `$run_id` 替换为你的运行 ID，可以在控制台输出或工作室的运行详细信息页中找到该 ID。
@@ -142,7 +143,7 @@ Azure 机器学习还可让你更有效地优化机器学习模型的超参数�
 
 可将 `job.yml` 修改为 `job-sweep.yml` 以扫描超参数：
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/lightgbm/iris/job-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/lightgbm/iris/job-sweep.yml":::
 
 | 密钥 | 说明 |
 | --- | ----------- |
@@ -159,7 +160,7 @@ Azure 机器学习还可让你更有效地优化机器学习模型的超参数�
 
 在工作室中创建并打开作业：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="lightgbm_iris_sweep":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris_sweep":::
 
 > [!TIP]
 > 超参数扫描可与分布式命令作业配合使用。
@@ -174,25 +175,25 @@ Azure 机器学习还可让你更有效地优化机器学习模型的超参数�
 
 用于对 CIFAR-10 数据集进行分布式 PyTorch 训练的示例 YAML 文件：
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/pytorch/cifar-distributed/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/pytorch/cifar-distributed/job.yml":::
 
 请注意，此项引用克隆的示例存储库中不存在的本地数据。 首先需要在本地下载、提取并重新放置 CIFAR-10 数据集，应将其放置在项目目录中的适当位置：
 
-:::code language="bash" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="download_cifar":::
+:::code language="bash" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="download_cifar":::
 
 在工作室中创建并打开作业：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="pytorch_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="pytorch_cifar":::
 
 ### <a name="tensorflow"></a>TensorFlow
 
 用于对 MNIST 数据集进行分布式 TensorFlow 训练的示例 YAML 文件：
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/tensorflow/mnist-distributed/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/tensorflow/mnist-distributed/job.yml":::
 
 在工作室中创建并打开作业：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="tensorflow_mnist":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="tensorflow_mnist":::
 
 ### <a name="mpi"></a>MPI
 
@@ -202,13 +203,13 @@ Azure ML 支持跨多个节点以及每个节点的多个进程启动 MPI 作业
 
 一个使用 Horovod 对 MNIST 运行 TensorFlow 作业的示例 YAML 规范：
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/train/tensorflow/mnist-distributed-horovod/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/train/tensorflow/mnist-distributed-horovod/job.yml":::
 
 在工作室中创建并打开作业：
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/how-to-train-cli.sh" id="tensorflow_mnist_horovod":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="tensorflow_mnist_horovod":::
 
 ## <a name="next-steps"></a>后续步骤
 
 - [使用托管联机终结点（预览版）部署机器学习模型并为其评分](how-to-deploy-managed-online-endpoints.md)
-- [使用 REST 训练模型（预览版）][how-to-train-with-rest.md]
+- [使用 REST 训练模型（预览版）](how-to-train-with-rest.md)

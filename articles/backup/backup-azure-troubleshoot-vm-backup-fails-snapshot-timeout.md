@@ -2,14 +2,14 @@
 title: 排查代理和扩展问题
 description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、原因及解决方法。
 ms.topic: troubleshooting
-ms.date: 07/05/2019
+ms.date: 05/25/2021
 ms.service: backup
-ms.openlocfilehash: 0313394ad149460f82c98c63cab95b922b4a3da2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 57a0002d353ebb75570dc3b70c55d2f17f70db35
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519599"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472467"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "102519599"
     - 通过门户、PowerShell、命令行接口或 Azure 资源管理器模板从 Azure 市场映像部署任何 Windows VM 时默认安装 Azure VM 代理。 创建部署到 Azure 的自定义 VM 映像时，可能需要[手动安装代理](../virtual-machines/extensions/agent-windows.md#manual-installation)。
     - 查看支持矩阵，检查 VM 是否在[受支持的 Windows 操作系统](backup-support-matrix-iaas.md#operating-system-support-windows)上运行。
   - 在 Linux VM 上：
-    - 通过执行 `ps-e` 命令，确保 Azure VM 来宾代理服务正在运行。 此外，请确保已安装[最新版本](../virtual-machines/extensions/update-linux-agent.md)。 若要了解详细信息，请参阅 [Linux VM 来宾代理问题](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)。
+    - 通过执行 `ps -e` 命令，确保 Azure VM 来宾代理服务正在运行。 此外，请确保已安装[最新版本](../virtual-machines/extensions/update-linux-agent.md)。 若要了解详细信息，请参阅 [Linux VM 来宾代理问题](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)。
     - 确保[系统包上的 Linux VM 代理依赖项](../virtual-machines/extensions/agent-linux.md#requirements)具有受支持的配置。 例如：受支持的 Python 版本为 2.6 及更高版本。
     - 查看支持矩阵，检查 VM 是否在[受支持的 Linux 操作系统上运行](backup-support-matrix-iaas.md#operating-system-support-linux)。
 

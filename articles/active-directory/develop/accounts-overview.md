@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: fac66e8f82ea4c04e866b28fed5f8d0860ab81ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b11b2591ad90111c7a2d96ae1f7bf7bdde0673d5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755971"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471409"
 ---
 # <a name="accounts--tenant-profiles-android"></a>帐户和租户配置文件 (Android)
 
@@ -118,7 +118,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 ```
 
 > [!TIP]
-> 若要查看帐户对象中提供的声明列表，请参阅 [id_token 中的声明](./id-tokens.md#claims-in-an-id_token)
+> 若要查看帐户对象中提供的声明列表，请参阅 [id_token 中的声明](./id-tokens.md#claims-in-an-id-token)
 
 > [!TIP]
 > 若要在 id_token 中包含其他声明，请参阅可选声明文档：[如何：向 Azure AD 应用提供可选声明](./active-directory-optional-claims.md)

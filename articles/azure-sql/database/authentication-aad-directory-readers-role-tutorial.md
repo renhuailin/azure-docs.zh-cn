@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: bc809cf02b827b7498890cb7d929c44bd360ab53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14f21939e53a284619f18049df84706cab6fd594
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99094703"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087048"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>教程：将目录读取者角色分配到 Azure AD 组并管理角色分配
 
@@ -94,7 +94,7 @@ ms.locfileid: "99094703"
 ## <a name="directory-readers-role-assignment-using-powershell"></a>使用 PowerShell 的目录读取者角色分配
 
 > [!IMPORTANT]
-> [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)需要运行这些初始步骤。 除 PowerShell 外，Azure AD 还提供 Microsoft 图形 API 以[在 Azure AD 中创建可分配角色的组](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api)。
+> [全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)需要运行这些初始步骤。 除 PowerShell 外，Azure AD 还提供 Microsoft 图形 API 以[在 Azure AD 中创建可分配角色的组](../../active-directory/roles/groups-create-eligible.md#microsoft-graph-api)。
 
 1. 使用以下命令下载 Azure AD 预览版 PowerShell 模块。 可能需要以管理员身份运行 PowerShell。
 

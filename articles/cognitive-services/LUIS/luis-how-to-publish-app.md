@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53549869098504396d1fa1039ed43b5ff02d2a9b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100558926"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083631"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
 
@@ -44,7 +44,7 @@ ms.locfileid: "100558926"
 
 ### <a name="publishing-regions"></a>发布区域
 
-该应用将发布到与 LUIS 预测终结点资源关联的所有区域，这些资源在 LUIS 门户中通过“管理” -> [“Azure 资源”](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)页添加。
+该应用将发布到与 LUIS 预测终结点资源关联的所有区域，这些资源在 LUIS 门户中通过“管理” -> [“Azure 资源”](luis-how-to-azure-subscription.md#assign-luis-resources)页添加。
 
 例如，对于在 [www.luis.ai](https://www.luis.ai) 上创建的应用，如果在两个区域（westus 和 eastus）中创建一个 LUIS 资源，并将它们作为资源添加到应用中，则应用将在这两个区域中发布。 有关 LUIS 区域的详细信息，请参阅[区域](luis-reference-regions.md)。
 

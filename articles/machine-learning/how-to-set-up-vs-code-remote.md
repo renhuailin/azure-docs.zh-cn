@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 04/08/2021
-ms.openlocfilehash: 7199534fa581ccb235bc8091d9459c640d53b74f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 534becdfcba1ccc992daadc5007e2eb56337a45e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884617"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379261"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>连接到 Visual Studio Code 中的 Azure 机器学习计算实例（预览）
 
@@ -31,7 +31,7 @@ ms.locfileid: "107884617"
 
 若要配置远程计算实例进行开发，需要满足一些先决条件。
 
-* Azure 机器学习 Visual Studio Code 扩展。 有关详细信息，请参阅 [Azure 机器学习 Visual Studio Code 扩展安装指南](tutorial-setup-vscode-extension.md)。
+* Azure 机器学习 Visual Studio Code 扩展。 有关详细信息，请参阅 [Azure 机器学习 Visual Studio Code 扩展安装指南](how-to-setup-vs-code.md)。
 * Azure 机器学习工作区。 如果还没有工作区，请[使用 Azure 机器学习 Visual Studio Code 扩展创建新工作区](how-to-manage-resources-vscode.md#create-a-workspace)。
 * Azure 机器学习计算实例。 如果还没有计算实例，请[使用 Azure 机器学习 Visual Studio Code 扩展创建新计算实例](how-to-manage-resources-vscode.md#create-compute-instance)。
 
@@ -98,7 +98,7 @@ ms.locfileid: "107884617"
 
 若要将计算实例配置为远程 Jupyter Notebook 服务器，需要满足以下先决条件：
 
-* Azure 机器学习 Visual Studio Code 扩展。 有关详细信息，请参阅 [Azure 机器学习 Visual Studio Code 扩展安装指南](tutorial-setup-vscode-extension.md)。
+* Azure 机器学习 Visual Studio Code 扩展。 有关详细信息，请参阅 [Azure 机器学习 Visual Studio Code 扩展安装指南](how-to-setup-vs-code.md)。
 * Azure 机器学习工作区。 如果还没有工作区，请[使用 Azure 机器学习 Visual Studio Code 扩展创建新工作区](how-to-manage-resources-vscode.md#create-a-workspace)。
 
 若要连接到计算实例：
