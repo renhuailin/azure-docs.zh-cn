@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: badc6b6f1b45938e950ffadeefe30d81ed383440
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 27e17fd6cc9f50a5a46bf3de9bf2603209894bf3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762436"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368241"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -20,6 +20,9 @@ ms.locfileid: "107762436"
 
 > [!Important] 
 > 如果应用跨订阅/租户迁移，应用服务和 Azure Functions 的托管标识将不会按预期工作。 应用需要获取新标识，这可以通过禁用并重新启用该功能来完成。 请参阅下面的[删除标识](#remove)。 下游资源还需要更新访问策略才能使用新标识。
+
+> [!NOTE]
+> 托管标识不适用于[在 Azure Arc 中部署的应用](overview-arc-integration.md)。
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
@@ -204,7 +207,7 @@ tenantId 属性标识该标识所属的 Azure AD 租户。 principalId 是应用
 
 5. 在“用户分配”选项卡中，单击“添加” 。
 
-6. 搜索之前创建的标识并选择它。 单击“添加” 。
+6. 搜索之前创建的标识并选择它。 单击“添加”。
 
     ![应用服务中的托管标识](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 

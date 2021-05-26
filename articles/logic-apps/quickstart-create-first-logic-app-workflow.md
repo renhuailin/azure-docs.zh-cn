@@ -1,22 +1,22 @@
 ---
-title: 快速入门 - 在 Azure 门户中创建集成工作流
-description: 在 Azure 门户中使用 Azure 逻辑应用创建第一个自动集成工作流。
+title: 快速入门 - 在 Azure 门户中使用 Azure 逻辑应用创建集成工作流
+description: 在 Azure 门户中使用多租户 Azure 逻辑应用创建第一个自动集成工作流。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: contperf-fy21q4
-ms.date: 04/28/2021
-ms.openlocfilehash: ea115d42f84562e67adb7e6f45ce8d35be21d6b0
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.date: 05/25/2021
+ms.openlocfilehash: b7419986137632561cae71b91dd55a2af64912a7
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292459"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373274"
 ---
-# <a name="quickstart-create-an-integration-workflow-using-azure-logic-apps-in-the-azure-portal"></a>快速入门：在 Azure 门户中使用 Azure 逻辑应用创建集成工作流
+# <a name="quickstart-create-an-integration-workflow-with-multi-tenant-azure-logic-apps-and-the-azure-portal"></a>快速入门：使用多租户 Azure 逻辑应用和 Azure 门户创建集成工作流
 
-本快速入门介绍如何使用 [Azure 逻辑应用](logic-apps-overview.md)创建集成两种服务（网站的 RSS 源和电子邮件帐户）的示例自动化工作流。 尽管此示例是基于云的，但逻辑应用支持跨云、本地和混合环境连接应用、数据、服务和系统的工作流。
+本快速入门介绍如何在使用多租户 [Azure 逻辑应用](logic-apps-overview.md)时创建集成两种服务（网站的 RSS 源和电子邮件帐户）的示例自动化工作流。 尽管此示例是基于云的，但 Azure 逻辑应用支持跨云、本地和混合环境连接应用、数据、服务和系统的工作流。 有关多租户模型与单租户模型的详细信息，请查看[单租户与多租户以及集成服务环境](single-tenant-overview-compare.md)。
 
 在此示例中，将创建一个使用 RSS 连接器和 Office 365 Outlook 连接器的工作流。 RSS 连接器有一个触发器，可根据计划检查 RSS 源。 通过 Office 365 Outlook 连接器，可以为每个新项发送电子邮件。 本示例中的连接器仅仅是在工作流中可以使用的[数百个连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)中的两个。
 
@@ -51,7 +51,7 @@ ms.locfileid: "108292459"
 
 * 如果具有仅限流量流经特定 IP 地址的防火墙，请将该防火墙设置为允许访问该逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。
 
-  此示例还使用[由 Microsoft 管理的](/connectors/managed.md) RSS 和 Office 365 Outlook 连接器。 这些连接器要求将防火墙设置为允许对逻辑应用的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)进行访问。
+  此示例还使用 RSS 和 Office 365 Outlook 连接器，它们均由 [Microsoft 托管](../connectors/managed.md)。 这些连接器要求将防火墙设置为允许对逻辑应用的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)进行访问。
 
 <a name="create-logic-app-resource"></a>
 
@@ -71,7 +71,7 @@ ms.locfileid: "108292459"
 
 1. 在“逻辑应用”窗格上，为逻辑应用提供基本的详细信息和设置。 为此示例逻辑应用创建新的[资源组](../azure-resource-manager/management/overview.md#terminology)。
 
-   | 属性 | 值 | 说明 |
+   | 属性 | 值 | 描述 |
    |----------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅的名称。 |
    | **资源组** | <*Azure-resource-group-name*> | [Azure 资源组的名称](../azure-resource-manager/management/overview.md#terminology)必须在区域中是唯一的。 此示例使用“My-First-LA-RG”。 |

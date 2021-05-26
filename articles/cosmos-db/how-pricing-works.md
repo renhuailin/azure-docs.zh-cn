@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 573fc4fac413ceed50246bc6fb8df1d9db021c94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ae981ed39276d7b4a3a338c0ab822afd2d8e456
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247448"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373468"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的定价模型
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -37,7 +37,7 @@ Azure Cosmos DB 中的定价模型在所有 API 中都是一致的。 有关详�
 
 Azure Cosmos DB 免费为开发人员提供众多选项。 这些选项包括：
 
-* Azure Cosmos DB 免费层：使用 Azure Cosmos DB 免费层，可以轻松上手、开发和测试应用程序，甚至免费运行小型生产工作负载。 如果在帐户上启用了免费层，那么在该帐户的生存期内，你将在该帐户中免费获得前 400 RU/秒的吞吐量和 5 GB 的存储空间。 每个 Azure 订阅最多可以有一个免费层帐户，并且必须在创建帐户时选择加入使用。 首先，[在 Azure 门户中创建一个启用了免费层的新帐户](create-cosmosdb-resources-portal.md) 或使用 [ARM 模板](./manage-with-templates.md#free-tier)。
+* Azure Cosmos DB 免费层：使用 Azure Cosmos DB 免费层，可以轻松上手、开发和测试应用程序，甚至免费运行小型生产工作负载。 在帐户上启用免费层后，在该帐户的生存期内，一开始你将在该帐户中免费获得 1000 RU/s 的吞吐量和 25 GB 的存储空间。 每个 Azure 订阅最多可以有一个免费层帐户，并且必须在创建帐户时选择加入使用。 若要了解详细信息，请参阅如何[创建免费层帐户](free-tier.md)一文。
 
 * “Azure 免费帐户”：Azure 提供[免费层级](https://azure.microsoft.com/free/)，即提供 200 美元的 Azure 额度（可在前 30 天内使用），以及 12 个月的限量免费服务。 有关详细信息，请参阅 [Azure 免费帐户](../cost-management-billing/manage/avoid-charges-free-account.md)。 Azure Cosmos DB 是 Azure 免费帐户的一部分。 特别对于 Azure Cosmos DB，该免费帐户提供 25 GB 的存储和 400 RU 的全年预配吞吐量。
 

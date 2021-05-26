@@ -3,15 +3,15 @@ title: 添加和管理 TLS/SSL 证书
 description: 在 Azure 应用服务中创建免费的证书、导入应用服务证书、导入 Key Vault 证书或购买应用服务证书。
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 03/02/2021
+ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1e05435f364cc30b351275439a04caff47c35512
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 11cd17041ce110cca4f3cd5bce5cc98ccc0ed7af
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107871788"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373044"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -26,7 +26,7 @@ ms.locfileid: "107871788"
 
 |选项|说明|
 |-|-|
-| 创建免费应用服务托管证书（预览版） | 免费且易于使用的专用证书，用于只需保护应用服务中的[自定义域](app-service-web-tutorial-custom-domain.md)的情形。 |
+| 创建免费应用服务托管证书 | 免费且易于使用的专用证书，用于只需保护应用服务中的[自定义域](app-service-web-tutorial-custom-domain.md)的情形。 |
 | 购买应用服务证书 | 由 Azure 管理的私有证书。 它结合了自动化证书管理的简单性以及续订和导出选项的灵活性。 |
 | 导入来自 Key Vault 的证书 | 这在使用 [Azure Key Vault](../key-vault/index.yml) 管理 [PKCS12 证书](https://wikipedia.org/wiki/PKCS_12)时很有用。 请参阅[私有证书要求](#private-certificate-requirements)。 |
 | 上传私有证书 | 如果你已有第三方提供商提供的私有证书，则可以上传它。 请参阅[私有证书要求](#private-certificate-requirements)。 |
@@ -42,7 +42,7 @@ ms.locfileid: "107871788"
 
 ## <a name="private-certificate-requirements"></a>私有证书要求
 
-[免费应用服务托管证书](#create-a-free-managed-certificate-preview)和[应用服务证书](#import-an-app-service-certificate)已满足应用服务的要求。 如果选择将私有证书上传或导入到应用服务，则证书必须满足以下要求：
+[免费应用服务托管证书](#create-a-free-managed-certificate)和[应用服务证书](#import-an-app-service-certificate)已满足应用服务的要求。 如果选择将私有证书上传或导入到应用服务，则证书必须满足以下要求：
 
 * 导出为[受密码保护的 PFX 文件](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)（使用三重 DES 进行加密）。
 * 包含长度至少为 2048 位的私钥
@@ -58,7 +58,7 @@ ms.locfileid: "107871788"
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="create-a-free-managed-certificate-preview"></a>创建免费托管证书（预览版）
+## <a name="create-a-free-managed-certificate"></a>创建免费托管证书
 
 > [!NOTE]
 > 在创建免费托管证书之前，请先确保已[满足应用的先决条件](#prerequisites)。
@@ -66,9 +66,11 @@ ms.locfileid: "107871788"
 免费应用服务托管证书是用于保护应用服务中的自定义 DNS 名称的统包解决方案。 它是一个功能完备的 TLS/SSL 证书，由应用服务管理并自动续订。 免费证书具有以下限制：
 
 - 不支持通配符证书。
+- 不支持使用证书指纹的客户端证书（已计划删除证书指纹）。
 - 不可导出。
 - 应用服务环境 (ASE) 不支持。
 - 与流量管理器集成的根域不支持。
+- 如果证书适用于 CNAME 映射的域，则必须将 CNAME 直接映射到 `<app-name>.azurewebsites.net`。
 
 > [!NOTE]
 > 免费证书是由 DigiCert 颁发的。 对于某些顶级域，必须通过创建值为 `0 issue digicert.com` 的 [CAA 域记录](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)显式允许 DigiCert 作为证书颁发者。
@@ -209,7 +211,7 @@ ms.locfileid: "107871788"
 | 设置 | 说明 |
 |-|-|
 | 订阅 | Key Vault 所属的订阅。 |
-| Key Vault | 包含要导入的证书的保管库。 |
+| 密钥保管库 | 包含要导入的证书的保管库。 |
 | 证书 | 从保管库中的 PKCS12 证书列表中进行选择。 保管库中的所有 PKCS12 证书都已通过其指纹列出，但在应用服务中并非支持所有证书。 |
 
 操作完成后，会在“私钥证书”列表中看到该证书。 如果导入失败并出现错误，则证书不满足[应用服务的要求](#private-certificate-requirements)。

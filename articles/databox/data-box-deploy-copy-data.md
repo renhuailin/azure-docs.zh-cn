@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/11/2020
+ms.date: 05/17/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c68f76e56f49f055466f7332d7751ac468e034d8
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: aefaf2ca96ac697a74561ff3df68bacbadf1ec99
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616733"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067198"
 ---
 ::: zone target="docs"
 
@@ -80,7 +80,7 @@ ms.locfileid: "94616733"
 
 3. 若要从主机访问与存储帐户关联的共享（在以下示例中为“utsac1”），请打开命令窗口。 在命令提示符处，键入：
 
-    `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
+    `net use \\<IP address of the device>\<share name>  /u:<IP address of the device>\<user name for the share>`
 
     根据数据格式，共享路径如下：
     - Azure 块 blob - `\\10.126.76.138\utSAC1_202006051000_BlockBlob`
@@ -90,7 +90,7 @@ ms.locfileid: "94616733"
 4. 出现提示时，请输入共享的密码。 如果密码包含特殊字符，请在该密码前后添加双引号。 以下示例演示如何通过前面的命令连接到共享。
 
     ```
-    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
+    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:10.126.76.138\testuser1
     Enter the password for 'testuser1' to connect to '10.126.76.138': "ab1c2def$3g45%6h7i&j8kl9012345"
     The command completed successfully.
     ```

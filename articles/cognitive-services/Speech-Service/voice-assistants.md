@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: fc85eec008ef099d63d538e4871a1a84573f5a18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a3d99a0befd336d37b02b448a65df406d3a8e6e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98790439"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059007"
 ---
 # <a name="what-is-a-voice-assistant"></a>什么是语音助手？
 
@@ -74,7 +74,7 @@ GitHub 上提供了用于创建语音助理的示例代码。 这些示例涵盖
 
 * [自定义语音识别](./custom-speech-overview.md)
 * [自定义语音](how-to-custom-voice.md)
-* [自定义关键字](custom-keyword-overview.md)
+* [自定义关键字](keyword-recognition-overview.md)
 
 > [!NOTE]
 > 自定义选项因语言/区域设置而异（请参阅[支持的语言](language-support.md)）。

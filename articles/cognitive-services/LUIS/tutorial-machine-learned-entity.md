@@ -4,13 +4,13 @@ description: 使用机器学习实体从言语中提取结构化数据。 若要
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/08/2020
-ms.openlocfilehash: aa2783abe86b90a907510dec8d7eb40162820ad5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 04/28/2020
+ms.openlocfilehash: b3a41ec4eb10ccf1f1b9e80315f554f72a5c8cfe
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025253"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095902"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>教程：在语言理解 (LUIS) 中使用机器学习实体从用户言语中提取结构化数据
 
@@ -27,8 +27,9 @@ ms.locfileid: "95025253"
 > * 训练、测试、发布应用
 > * 从终结点获取实体预测
 
+<!---
 [!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
-
+-->
 
 ## <a name="why-use-a-machine-learning-entity"></a>为什么使用机器学习实体？
 

@@ -1,0 +1,159 @@
+- name: Azure 视频分析器（预览版）文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure 视频分析器
+      href: overview.md
+    - name: 关于视频分析器媒体版
+      href: ../video-analyzer-for-media-docs/video-indexer-overview.md
+    - name: 视频分析器术语
+      href: terminology.md
+    - name: 新增功能
+      items:
+        - name: 发行说明
+          href: release-notes.md
+- name: 快速入门
+  items:
+    - name: 入门 - Azure 视频分析器
+      href: get-started-detect-motion-emit-events.md
+    - name: Azure 视频分析器 Visual Studio Code 扩展
+      href: create-pipeline-vs-code-extension.md
+    - name: 检测运动并发出事件
+      href: detect-motion-emit-events-quickstart.md
+    - name: 检测运动、录制视频
+      items:
+        - name: 在 Edge 上
+          href: detect-motion-record-video-edge-devices.md
+        - name: 在云中
+          href: detect-motion-record-video-clips-cloud.md
+    - name: 分析实时视频
+      items:
+        - name: 使用自己的 gRPC 模型
+          displayName: analyze live video
+          href: analyze-live-video-use-your-model-grpc.md
+        - name: 使用自己的 HTTP 模型
+          displayName: analyze live video
+          href: analyze-live-video-use-your-model-http.md
+    - name: 跟踪直播视频中的对象
+      href: track-objects-live-video.md
+- name: 教程
+  items:
+    - name: 使用连续视频录制
+      href: use-continuous-video-recording.md
+    - name: 使用基于事件的视频录制
+      href: record-event-based-live-video.md
+    - name: 使用视频记录和流式传输推理数据
+      href: record-stream-inference-data-with-video.md
+    - name: 使用行交叉
+      href: use-line-crossing.md
+    - name: 分析实时视频
+      items:
+        - name: 通过 HTTP 扩展使用 OVMS
+          displayName: 'analyze live video, intel, OpenVINO'
+          href: use-intel-openvino-tutorial.md
+        - name: 通过 gRPC 扩展使用 OV DL Streamer
+          displayName: 'analyze live video, intel, OpenVINO, DL Streamer, VAS'
+          href: use-intel-grpc-video-analytics-serving-tutorial.md
+        - name: 使用自定义视觉
+          displayName: analyze live video
+          href: analyze-live-video-custom-vision.md
+        - name: 使用空间分析
+          href: computer-vision-for-spatial-analysis.md
+- name: GitHub 示例
+  items:
+    - name: C# 示例存储库
+      href: 'https://go.microsoft.com/fwlink/?linkid=2163551'
+    - name: Python 示例存储库
+      href: 'https://go.microsoft.com/fwlink/?linkid=2163454'
+- name: 概念
+  items:
+    - name: 管道
+      href: pipeline.md
+    - name: 视频录制
+      href: video-recording.md
+    - name: 方案
+      items:
+        - name: 管道扩展
+          href: pipeline-extension.md
+        - name: 基于事件的视频录制
+          href: event-based-video-recording-concept.md
+        - name: 连续视频录制
+          href: continuous-video-recording.md
+        - name: 无需录制即可分析实时视频
+          href: analyze-live-video-without-recording.md
+- name: 操作指南
+  items:
+    - name: 设置
+      items:
+        - name: 创建新帐户
+          href: create-video-analyzer-account.md
+        - name: 托管标识
+          href: managed-identity.md
+        - name: 客户管理的密钥
+          href: customer-managed-keys.md
+    - name: 部署
+      items:
+        - name: 部署到 IoT Edge 设备
+          href: deploy-iot-edge-device.md
+        - name: 部署到 IoT Edge for Linux on Windows
+          href: deploy-iot-edge-linux-on-windows.md
+    - name: 播放
+      items:
+        - name: 播放录制内容
+          href: playback-recordings-how-to.md
+        - name: 使用 Azure 视频分析器播放机小组件
+          href: player-widget.md
+        - name: 使用访问策略进行播放
+          href: access-policies.md
+    - name: 记录
+      items:
+        - name: 管理录制策略
+          href: manage-recording-policy.md
+        - name: 配置信号入口
+          href: configure-signal-gate.md
+    - name: 应用 AI
+      items:
+        - name: 开发和部署 gRPC 推理服务器
+          href: develop-deploy-grpc-inference-srv.md
+    - name: 门户
+      items:
+        - name: 通过门户调用直接方法
+          href: use-azure-portal-to-invoke-direct-methods.md
+    - name: 运营
+      items:
+        - name: 监视和日志记录
+          href: monitor-log-edge.md
+    - name: 疑难解答
+      href: troubleshoot.md
+- name: 参考
+  items:
+    - name: 访问策略
+      href: access-policies.md
+    - name: Developer SDK
+      href: sdk.md
+    - name: 直接方法
+      href: direct-methods.md
+    - name: gRPC 扩展协议
+      href: grpc-extension-protocol.md
+    - name: HTTP 扩展协议
+      href: http-extension-protocol.md
+    - name: 推理元数据架构
+      href: inference-metadata-schema.md
+    - name: 模块孪生配置架构
+      href: module-twin-configuration-schema.md
+    - name: 生产就绪情况和最佳做法
+      href: production-readiness.md
+    - name: 透明度和负责任的 AI 原则
+      href: 'https://go.microsoft.com/fwlink/?linkid=2163476'
+    - name: Visual Studio Code 扩展
+      href: visual-studio-code-extension.md
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/updates/?category=media'
+    - name: 定价
+      href: 'https://azure.microsoft.com/services/media-services/live-video-analytics/'
+    - name: 常见问题
+      href: faq-edge.md
+    - name: 配额和限制
+      href: quotas-limitations.md

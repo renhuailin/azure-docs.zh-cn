@@ -4,13 +4,13 @@ description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
-ms.date: 04/16/2021
-ms.openlocfilehash: 593e02520d3e6ae87550257381dbc47aa068a242
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 05/17/2021
+ms.openlocfilehash: ba3d6da1d4b9505746e0316bb0f34217e86a7914
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951533"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110096267"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -44,7 +44,7 @@ ms.locfileid: "107951533"
 请参阅[必应拼写检查 API V7](luis-tutorial-bing-spellcheck.md) 教程。 LUIS 强制实施必应拼写检查 API V7 施加的限制。
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>如何以编程方式编辑 LUIS 应用？
-若要以编程方式编辑 LUIS 应用，请使用[创作 API](https://go.microsoft.com/fwlink/?linkid=2092087)。 请参阅[调用 LUIS 创作 API](./get-started-get-model-rest-apis.md) 和[使用 Node.js 以编程方式生成 LUIS 应用](./luis-tutorial-node-import-utterances-csv.md)，通过示例了解如何调用创作 API。 创作 API 要求使用[创作密钥](luis-how-to-azure-subscription.md#azure-resources-for-luis)而不是终结点密钥。 编程创作最多允许每个月进行 1,000,000 次调用，每秒处理五个事务。 若要详细了解可与 LUIS 配合使用的密钥，请参阅[管理密钥](./luis-how-to-azure-subscription.md)。
+若要以编程方式编辑 LUIS 应用，请使用[创作 API](https://go.microsoft.com/fwlink/?linkid=2092087)。 请参阅[调用 LUIS 创作 API](./get-started-get-model-rest-apis.md) 和[使用 Node.js 以编程方式生成 LUIS 应用](./luis-tutorial-node-import-utterances-csv.md)，通过示例了解如何调用创作 API。 创作 API 要求使用[创作密钥](luis-how-to-azure-subscription.md)而不是终结点密钥。 编程创作最多允许每个月进行 1,000,000 次调用，每秒处理五个事务。 若要详细了解可与 LUIS 配合使用的密钥，请参阅[管理密钥](./luis-how-to-azure-subscription.md)。
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>提供了正则表达式匹配的“模式”功能位于何处？
 以前的 **“模式”功能** 目前已弃用，代之以现在的 **[模式](luis-concept-patterns.md)** 功能。

@@ -77,6 +77,8 @@
       href: durable-functions-instance-management.md
     - name: 版本控制
       href: durable-functions-versioning.md
+    - name: 存储提供程序
+      href: durable-functions-storage-providers.md
     - name: 性能和缩放性
       href: durable-functions-perf-and-scale.md
     - name: 高可用性

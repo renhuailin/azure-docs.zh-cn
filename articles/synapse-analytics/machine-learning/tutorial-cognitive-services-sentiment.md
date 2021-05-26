@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 08d5e53facce172c2287c2e341895f0ee38571f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4199e82ee5b32fe3e34df421a9ca54136b8cbfb7
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943702"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846385"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Tutorial:使用认知服务进行情绪分析（预览版）
 
@@ -109,6 +109,6 @@ Azure Synapse 中的用户可以直接选择包含文本列的表，以扩充情
 ![显示情绪分析的屏幕截图。](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
 
 ## <a name="next-steps"></a>后续步骤
-- [教程：使用 Azure 认知服务进行异常情况检测](tutorial-cognitive-services-sentiment.md)
+- [教程：使用 Azure 认知服务进行异常情况检测](tutorial-cognitive-services-anomaly.md)
 - [教程：Azure Synapse 专用 SQL 池中的机器学习模型评分](tutorial-sql-pool-model-scoring-wizard.md)
 - [Azure Synapse Analytics 中的机器学习功能](what-is-machine-learning.md)

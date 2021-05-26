@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: fb0935ca2ffcad93ba47ccd207603dd870dc26b0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: c7d7b5ec4d35cd2bd1be1b6b34c374e949114a16
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445697"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070329"
 ---
 # <a name="security-best-practices"></a>安全最佳做法
 
@@ -98,24 +98,6 @@ Windows 虚拟桌面要求所有用户和管理员进行多重身份验证，这
 ## <a name="session-host-security-best-practices"></a>会话主机安全最佳做法
 
 会话主机是在 Azure 订阅和虚拟网络中运行的虚拟机。 Windows 虚拟桌面部署的总体安全性取决于在会话主机上设置的安全控制。 本部分介绍保持会话主机安全的最佳做法。
-
-### <a name="enable-screen-capture-protection-preview"></a>启用屏幕捕获保护（预览版）
-
-屏幕捕获保护功能可防止在客户端终结点上捕获敏感信息。 启用此功能后，将在屏幕截图和屏幕共享中自动阻止或隐藏远程内容。 它还将向可能持续捕获屏幕内容的恶意软件隐藏。 建议在使用此功能时禁用剪贴板重定向，以防止将远程内容复制到终结点。
-
-此策略通过配置注册表项在主机级别强制实施。 若要启用此策略，请打开 PowerShell，并通过运行以下 cmdlet 来设置 fEnableScreenCaptureProtection 注册表项：
-
-```powershell
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableScreenCaptureProtection /t REG_DWORD /d 1
-```
-
-若要测试此新功能，请执行以下操作：
-
-- 请确保在验证环境中预配了主机池。
-- 请确保已下载并安装 Windows 桌面客户端版本 1.2.1526 或更高版本。
-
->[!NOTE]
->在预览期间，仅 Windows 10 终结点完整桌面连接支持此功能。
 
 ### <a name="enable-endpoint-protection"></a>启用终结点保护
 
