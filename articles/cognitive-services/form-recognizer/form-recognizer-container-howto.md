@@ -1,7 +1,7 @@
 ---
 title: 如何安装和运行表单识别器容器
-titleSuffix: Azure Cognitive Services
-description: 本文介绍如何使用 Azure 认知服务表单识别器容器来分析表单和表数据。
+titleSuffix: Azure Applied AI Services
+description: 本文介绍如何使用 Azure 表单识别器容器来分析表单和表数据。
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1be8afb58b22435f4f43b2d6884332a38b7f1e11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 059d780b9d9e31d01b1d1999971af77d982e3b92
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467470"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374571"
 ---
 # <a name="install-and-run-form-recognizer-containers-retiring"></a>安装和运行表单识别器容器（即将停用）
 
@@ -264,7 +264,7 @@ formrecognizer_config =
 
 ### <a name="form-recognizer"></a>表单识别器
 
-该容器提供 REST 终结点 API，可在 [表单识别器 API]https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) 参考页上找到这些 API。
+该容器提供 REST 终结点 API，可在 [表单识别器 API]https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm) 参考页上找到这些 API。
 
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]

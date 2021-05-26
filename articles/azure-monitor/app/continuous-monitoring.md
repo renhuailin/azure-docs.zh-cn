@@ -3,12 +3,12 @@ title: 使用 Azure Pipelines 和 Azure Application Insights 连续监视 DevOps
 description: 提供使用 Application Insights 快速设置连续监视的说明
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: faa2dc0918756587ccf9093e8c9cc5d4379c6883
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86517121"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846781"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>向发布管道添加连续监视
 
@@ -45,7 +45,7 @@ Azure Pipelines 与 Azure Application Insights 集成，可连续监视整个软
 
 1. 若要使用默认的警报规则设置保存管道，请在“Azure DevOps”窗口的右上角选择“保存”。 输入描述性的注释，然后选择“确定”。
 
-## <a name="modify-alert-rules"></a>修改警报规则
+## <a name="modify-alert-rules&quot;></a>修改警报规则
 
 现成的“支持持续监视的 Azure 应用服务部署”模板包含四个警报规则：“可用性”、“失败的请求”、“服务器响应时间”和“服务器异常”。    可以添加更多规则，或根据服务级别需求更改规则设置。 
 
@@ -55,8 +55,8 @@ Azure Pipelines 与 Azure Application Insights 集成，可连续监视整个软
 
 四个默认警报规则是通过内联脚本创建的：
 
-```bash
-$subscription = az account show --query "id";$subscription.Trim("`"");$resource="/subscriptions/$subscription/resourcegroups/"+"$(Parameters.AppInsightsResourceGroupName)"+"/providers/microsoft.insights/components/" + "$(Parameters.ApplicationInsightsResourceName)";
+```azurecli
+$subscription = az account show --query &quot;id&quot;;$subscription.Trim(&quot;`&quot;");$resource="/subscriptions/$subscription/resourcegroups/"+"$(Parameters.AppInsightsResourceGroupName)"+"/providers/microsoft.insights/components/" + "$(Parameters.ApplicationInsightsResourceName)";
 az monitor metrics alert create -n 'Availability_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg availabilityResults/availabilityPercentage < 99' --description "created from Azure DevOps";
 az monitor metrics alert create -n 'FailedRequests_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count requests/failed > 5' --description "created from Azure DevOps";
 az monitor metrics alert create -n 'ServerResponseTime_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg requests/duration > 5' --description "created from Azure DevOps";

@@ -1,6 +1,6 @@
 ---
 title: 如何部署表单识别器示例标记工具
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 了解部署表单识别器示例标记工具的不同方法，以帮助进行监督式学习。
 author: laujan
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: lajanuar
-ms.openlocfilehash: 0f5f0714235ee23624b3a199eac744155d2bbdd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 66edf7dbe7bc32cffcc5c4adad6e04d81f8a21ac
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101093387"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374588"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署示例标记工具
 
@@ -28,7 +28,7 @@ ms.locfileid: "101093387"
 
 开始标记数据的最快方法是在本地运行示例标记工具。 以下快速入门结合使用表单识别器 REST API 和示例标记工具，通过手动标记的数据来训练自定义模型。 
 
-* [快速入门：使用示例标记工具标记表单、训练模型和分析表单](./quickstarts/label-tool.md)。
+* [快速入门：使用示例标记工具标记表单、训练模型和分析表单](label-tool.md)。
 
 ## <a name="deploy-with-azure-container-instances-aci"></a>使用 Azure 容器实例 (ACI) 部署
 
@@ -41,7 +41,7 @@ ms.locfileid: "101093387"
 
 请按照下列步骤使用 Azure 门户创建新资源： 
 
-1. 登录 [Azure 门户](https://portal.azure.com/signin/index/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/signin/index/)。
 2. 选择“创建资源”。 
 3. 接下来，选择“Web 应用”。
 
@@ -70,14 +70,14 @@ ms.locfileid: "101093387"
 
 6. 现在，让我们来配置 Docker 容器。 除非另有说明，否则所有字段都是必填字段：
 <!-- markdownlint-disable MD025 -->
-# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
+# <a name="v21"></a>[v2.1](#tab/v2-1)
 
 * 选项 - 选择“单个容器”
 * 图像源 - 选择“专用注册表” 
 * 服务器 URL - 将此项设置为 `https://mcr.microsoft.com`
 * 用户名（可选）- 创建用户名。 
 * 密码（可选）- 创建可记住的安全密码。
-* 图像和标记 - 将此项设置为 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
+* 图像和标记 - 将此项设置为 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
 * 持续部署 - 如果想要在开发团队对示例标记工具进行更改时接收自动更新，请将此项设置为“开启”。
 * 启动命令 - 将此项设置为 `./run.sh eula=accept`
 
@@ -119,7 +119,7 @@ ms.locfileid: "101093387"
 在 Azure CLI 中运行以下命令，可为示例标记工具创建 Web 应用资源：
 
 <!-- markdownlint-disable MD024 -->
-# <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
+# <a name="v21"></a>[v2.1](#tab/v2-1)
 
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
@@ -127,7 +127,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
@@ -168,4 +168,4 @@ OCR 表单标记工具也可用作 GitHub 上的开源项目。 该工具是使�
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[使用标签进行训练](./quickstarts/label-tool.md)快速入门，了解如何使用该工具手动标记训练数据和执行监督式学习。
+使用[使用标签进行训练](label-tool.md)快速入门，了解如何使用该工具手动标记训练数据和执行监督式学习。

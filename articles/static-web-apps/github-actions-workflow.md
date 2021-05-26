@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: b20a1670c13a272ed48088567a205d854ac99179
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f47ad3d63ca99ffbe095498d2db7646e8a4a3ae7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791240"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072471"
 ---
-# <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用的 GitHub Actions 工作流预览版
+# <a name="github-actions-workflows-for-azure-static-web-apps"></a>Azure 静态 Web 应用的 GitHub Actions 工作流
 
 创建新的 Azure Static Web Apps 资源时，Azure 会生成一个 GitHub Actions 工作流来控制应用的持续部署。 该工作流由 YAML 文件驱动。 本文详细介绍该工作流文件的结构和选项。
 
@@ -58,7 +58,7 @@ jobs:
           submodules: true
       - name: Build And Deploy
         id: builddeploy
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
@@ -76,7 +76,7 @@ jobs:
     steps:
       - name: Close Pull Request
         id: closepullrequest
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
           action: 'close'
@@ -180,19 +180,6 @@ with:
 > [!NOTE]
 > 只能跳过前端应用的生成。 如果应用具有 API，则仍会由 Static Web Apps GitHub 操作生成。
 
-## <a name="route-file-location"></a>路由文件位置
-
-你可以自定义工作流，以在存储库的任何文件夹中查找 [routes.json](routes.md)。 可以在作业的 `with` 部分下定义以下属性。
-
-| properties          | 说明                                                                                                                                 |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `routes_location` | 定义找到 routes.json 文件的目录位置。 此位置相对于存储库的根目录。 |
-
-如果你的前端框架生成步骤不会在默认情况下将此文件移到 `output_location`，则显式了解 routes.json 文件的位置尤为重要。
-
-> [!IMPORTANT]
-> routes.json 文件上定义的功能现已弃用。 有关 staticwebapp.config.json 的信息，请参阅 Azure Static Web Apps [配置文件](./configuration.md)。
-
 ## <a name="environment-variables"></a>环境变量
 
 可以通过某个作业的配置的 `env` 节为生成设置环境变量。
@@ -209,7 +196,7 @@ jobs:
           submodules: true
       - name: Build And Deploy
         id: builddeploy
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}

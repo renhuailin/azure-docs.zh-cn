@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: 9787fd244ffe18bcaa37bcc28392d29c9e8768d4
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: f2dffe98f401acad927cc3404ffd2c48378e9026
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108006885"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372215"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>教程：使用 Azure 机器人服务创建 FAQ 机器人
 使用 QnA Maker 和 Azure [机器人服务](https://azure.microsoft.com/services/bot-service/)，在不编写代码的情况下创建 FAQ 机器人。
@@ -30,11 +30,13 @@ ms.locfileid: "108006885"
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
-![成功发布的屏幕截图](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
+> [!div class="mx-imgBorder"]
+> ![成功发布的屏幕截图](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-![成功发布管理的屏幕截图](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint-managed.png)
+> [!div class="mx-imgBorder"]
+> ![成功发布管理的屏幕截图](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint-managed.png)
 
 ---
 
@@ -49,13 +51,15 @@ ms.locfileid: "108006885"
 
 1. 在 QnA Maker 门户中的“发布”页上，选择“创建机器人”。 只有在发布知识库后，才会显示此按钮。
 
-     # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+    # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
-    ![创建机器人的屏幕截图](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
+    > [!div class="mx-imgBorder"]
+    > ![创建机器人的屏幕截图](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
 
-    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+    # <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-    ![创建机器人管理预览版的屏幕截图](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page-managed.png)
+    > [!div class="mx-imgBorder"]
+    > ![创建机器人管理预览版的屏幕截图](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page-managed.png)
 
     ---
     
@@ -79,10 +83,22 @@ ms.locfileid: "108006885"
 
     聊天机器人使用知识库中的一个答案进行响应。
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="将用户查询输入测试性 Web 聊天中。":::
+    > [!div class="mx-imgBorder"]
+    > ![机器人返回响应的屏幕截图](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
+
+
 1. 在其他[支持的通道](/azure/bot-service/bot-service-manage-channels)中点亮机器人。
 
-   * 单击机器人服务资源中的“通道”。
+
+    - 单击机器人服务资源中的“通道”。
+
+    > [!div class="mx-imgBorder"]
+    > ![将机器人连接到通道的屏幕截图](../media/qnamaker-tutorial-updates/connect-with-teams.png)
+    
+## <a name="integrate-the-bot-with-channels"></a>将机器人与通道集成
+
+在已创建的机器人服务资源中单击“通道”。 可在其他[支持的通道](/azure/bot-service/bot-service-manage-channels)中启动机器人。
 
    >[!div class="mx-imgBorder"]
    >![与 Teams 集成的屏幕截图](../media/qnamaker-tutorial-updates/connect-with-teams.png)
+

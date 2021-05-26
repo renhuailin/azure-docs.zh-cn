@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 05/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 34a11679626653afd04b0cd17c77188cbc995308
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ae3504b1483dce5678a9d7b53556d9228e53ded0
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061717"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839120"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>教程：配置 Azure Stack Edge Mini R 的网络
 
@@ -53,82 +53,82 @@ ms.locfileid: "106061717"
 
 4. 在本地 web UI 中，转到“开始使用”。 在“安全”磁贴上，依次选择“证书”和“配置”  。 
 
-    [![本地 Web UI“证书”页](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png#lightbox)
+   [![本地 Web UI“证书”页](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png#lightbox)
 
-    1. 选择“+ 添加证书”。 
+   1. 选择“+ 添加证书”。 
     
-        [![本地 Web UI“证书”页 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-1.png#lightbox)
+      [![本地 Web UI“证书”页 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-1.png#lightbox)
 
-    2. 上传签名链，然后选择“应用”。
+   2. 上传签名链，然后选择“应用”。
 
-        ![本地 Web UI“证书”页 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-2.png)
+      ![本地 Web UI“证书”页 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-2.png)
 
-    3. 对 Wi-Fi 证书重复上述过程。 
+   3. 对 Wi-Fi 证书重复上述过程。 
 
-        ![本地 Web UI“证书”页 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-4.png)
+      ![本地 Web UI“证书”页 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-4.png)
 
-    4. 新证书应显示在“证书”页上。 
-    
-        [![本地 Web UI“证书”页 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-5.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-5.png#lightbox)
+   4. 新证书应显示在“证书”页上。 
 
-    5. 返回到“开始使用”。
+      [![本地 Web UI“证书”页 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-5.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-cert-5.png#lightbox)
 
-3. 在“网络”磁贴上，选择“配置” 。  
-    
-    在物理设备上有 4 个网络接口。 端口 1 和端口 2 是 1 Gbps 网络接口。 端口 3 和端口 4 是 10-Gbps 网络接口。 第 5 个端口是 Wi-Fi 端口。 
+   5. 返回到“开始使用”。
 
-    [![本地 Web UI“网络设置”页 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png#lightbox)    
-    
-    选择 Wi-Fi 端口并配置端口设置。 
-    
-    > [!IMPORTANT]
-    > 强烈建议为 Wi-Fi 端口配置静态 IP 地址。  
+5. 在“网络”磁贴上，选择“配置” 。  
 
-    ![本地 Web UI“网络设置”页 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-2.png)
+   在物理设备上有 4 个网络接口。 端口 1 和端口 2 是 1 Gbps 网络接口。 端口 3 和端口 4 是 10-Gbps 网络接口。 第 5 个端口是 Wi-Fi 端口。 
 
-    应用 Wi-Fi 端口设置后，“网络”页将更新。
+   [![本地 Web UI“网络设置”页 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png#lightbox)    
 
-    ![本地 Web UI“网络设置”页 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-4.png)
-   
-4. 选择“添加 Wi-Fi 配置文件”并上传 Wi-Fi 配置文件。 
+   选择 Wi-Fi 端口并配置端口设置。 
 
-    ![本地 Web UI“端口 WiFi 网络设置”1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-1.png)
-    
-    无线网络配置文件包含 SSID（网络名称）、密码密钥和安全信息，以便能够连接到无线网络。 可从网络管理员处获取环境的 Wi-Fi 配置文件。
-
-    ![本地 Web UI“端口 WiFi 网络设置”2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-2.png)
-
-    添加配置文件后，Wi-Fi 配置文件列表将更新，以呈现新的配置文件。 配置文件应将“连接状态”显示为“已断开连接” 。 
-
-    ![本地 Web UI“端口 WiFi 网络设置”3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-3.png)
+   > [!IMPORTANT]
+   > 强烈建议为 Wi-Fi 端口配置静态 IP 地址。  
 
 
-5. 成功加载无线网络配置文件后，连接到此配置文件。 选择“连接到 Wi-Fi 配置文件”。 
+   ![本地 Web UI“网络设置”页 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-2.png)
 
-    ![本地 Web UI“端口 WiFi 网络设置”4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-4.png)
+   应用 Wi-Fi 端口设置后，“网络”页将更新。
 
-6. 选择在上一步中添加的 Wi-Fi 配置文件，然后选择“应用”。 
+   ![本地 Web UI“网络设置”页 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-4.png)
 
-    ![本地 Web UI“端口 WiFi 网络设置”5](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-5.png)
+6. 选择“添加 Wi-Fi 配置文件”并上传 Wi-Fi 配置文件。 
 
-    “连接状态”应更新为“已连接” 。 信号强度将更新，以表示信号质量。 
+   ![本地 Web UI“端口 WiFi 网络设置”1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-1.png)
 
-    ![本地 Web UI“端口 WiFi 网络设置”6](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-6.png)
+   无线网络配置文件包含 SSID（网络名称）、密码密钥和安全信息，以便能够连接到无线网络。 可从网络管理员处获取环境的 Wi-Fi 配置文件。
 
-    > [!NOTE]
-    > 若要传输大量数据，建议使用有线连接，而不是无线网络。 
+   ![本地 Web UI“端口 WiFi 网络设置”2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-2.png)
 
-6. 将设备上的端口 1 与笔记本电脑断开连接。 
+   添加配置文件后，Wi-Fi 配置文件列表将更新，以呈现新的配置文件。 配置文件应将“连接状态”显示为“已断开连接” 。 
 
-7. 配置网络设置时，请记住：
+   ![本地 Web UI“端口 WiFi 网络设置”3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-3.png)
 
-   - 如果你的环境中启用了 DHCP，则会自动配置网络接口。 系统会自动分配 IP 地址、子网、网关和 DNS。
-   - 如果未启用 DHCP，则可以根据需要分配静态 IP。
-   - 可以将网络接口配置为 IPv4。
-   - Azure Stack Edge 不支持网络接口卡 (NIC) 组合或链接聚合。
-   - 任何端口的序列号都与节点序列号相对应。 对于 K 系列设备，仅显示一个序列号。
+7. 成功加载无线网络配置文件后，连接到此配置文件。 选择“连接到 Wi-Fi 配置文件”。 
 
-     >[!NOTE] 
+   ![本地 Web UI“端口 WiFi 网络设置”4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-4.png)
+
+8. 选择在上一步中添加的 Wi-Fi 配置文件，然后选择“应用”。 
+
+   ![本地 Web UI“端口 WiFi 网络设置”5](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-5.png)
+
+   “连接状态”应更新为“已连接” 。 信号强度将更新，以表示信号质量。 
+
+   ![本地 Web UI“端口 WiFi 网络设置”6](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-6.png)
+
+   > [!NOTE]
+   > 若要传输大量数据，建议使用有线连接，而不是无线网络。 
+
+9. 将设备上的端口 1 与笔记本电脑断开连接。 
+
+10. 配置网络设置时，请记住：
+
+    - 如果你的环境中启用了 DHCP，则会自动配置网络接口。 系统会自动分配 IP 地址、子网、网关和 DNS。
+    - 如果未启用 DHCP，则可以根据需要分配静态 IP。
+    - 可以将网络接口配置为 IPv4。
+    - Azure Stack Edge 不支持网络接口卡 (NIC) 组合或链接聚合。
+    - 任何端口的序列号都与节点序列号相对应。 对于 K 系列设备，仅显示一个序列号。
+
+     > [!NOTE]
      > 建议不要将网络接口的本地 IP 地址从静态切换到 DCHP，除非有另一个 IP 地址连接到该设备。 如果使用一个网络接口并切换到 DHCP，则无法确定 DHCP 地址。 如果要更改为 DHCP 地址，请等待设备注册服务后再更改。 然后，可以在 Azure 门户中为你的服务查看“设备属性”中所有适配器的 IP。
 
 配置和应用网络设置后，选择“下一步:计算”来配置计算网络。
@@ -140,32 +140,31 @@ ms.locfileid: "106061717"
 
 1. 在“计算”页中，选择要为计算启用的网络接口。 
 
-    ![本地 UI 中的计算页 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-1.png)
+   ![本地 UI 中的计算页 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-1.png)
 
 1. 在“网络设置”对话框中，选择“启用” 。 启用计算时，会在设备上的该网络接口上创建一个虚拟交换机。 虚拟交换机用于设备上的计算基础结构。 
     
 1. 分配“Kubernetes 节点 IP”。 这些静态 IP 地址适用于计算 VM。  
 
-    对于 n 节点设备，使用起始 IP 地址和结束 IP 地址为计算 VM 提供了连续范围内的至少 n + 1 个（或更多）IPv4 地址 。 假设 Azure Stack Edge 是 1 节点设备，则至少提供 2 个连续的 IPv4 地址。
+   对于 n 节点设备，使用起始 IP 地址和结束 IP 地址为计算 VM 提供了连续范围内的至少 n + 1 个（或更多）IPv4 地址 。 假设 Azure Stack Edge 是 1 节点设备，则至少提供 2 个连续的 IPv4 地址。
 
-    > [!IMPORTANT]
-    > Azure Stack Edge 上的 Kubernetes 对 Pod 使用 172.27.0.0/16 子网，对服务使用 172.28.0.0/16 子网。 请确保这些子网未在网络中使用。 如果这些子网已在网络中使用，则可从设备的 PowerShell 界面运行 `Set-HcsKubeClusterNetworkInfo` cmdlet 来更改这些子网。 有关详细信息，请参阅[更改 Kubernetes Pod 子网和服务子网](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets)。
-
+   > [!IMPORTANT]
+   > Azure Stack Edge 上的 Kubernetes 对 Pod 使用 172.27.0.0/16 子网，对服务使用 172.28.0.0/16 子网。 请确保这些子网未在网络中使用。 如果这些子网已在网络中使用，则可从设备的 PowerShell 界面运行 `Set-HcsKubeClusterNetworkInfo` cmdlet 来更改这些子网。 有关详细信息，请参阅[更改 Kubernetes Pod 子网和服务子网](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets)。
 
 1. 分配“Kubernetes 外部服务 IP”。 这些地址也是负载均衡 IP 地址。 这些连续的 IP 地址用于要在 Kubernetes 群集之外公开的服务，你可以根据公开的服务数量指定静态 IP 范围。 
     
-    > [!IMPORTANT]
-    > 强烈建议为 Azure Stack Edge Mini R 中心服务指定至少 1 个 IP 地址，以访问计算模块。 然后，可以选择为需要从群集外部访问的其他服务/IoT Edge 模块指定其他 IP 地址（每个服务/模块 1 个地址）。 以后可以更新服务 IP 地址。 
+   > [!IMPORTANT]
+   > 强烈建议为 Azure Stack Edge Mini R 中心服务指定至少 1 个 IP 地址，以访问计算模块。 然后，可以选择为需要从群集外部访问的其他服务/IoT Edge 模块指定其他 IP 地址（每个服务/模块 1 个地址）。 以后可以更新服务 IP 地址。 
     
 1. 选择“应用”。
 
-    ![本地 UI 中的计算页 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-3.png)
+   ![本地 UI 中的计算页 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-3.png)
 
 1. 应用配置需要几分钟时间，可能需要刷新浏览器。 可以看到已为计算启用指定端口。 
  
-    ![本地 UI 中的计算页 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-4.png)
+   ![本地 UI 中的计算页 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/compute-network-4.png)
 
-    在完成时选择“下一步:Web 代理”以配置 Web 代理。  
+   在完成时选择“下一步:Web 代理”以配置 Web 代理。  
 
   
 ## <a name="configure-web-proxy"></a>配置 Web 代理
@@ -173,21 +172,16 @@ ms.locfileid: "106061717"
 这是可选的配置。
 
 > [!IMPORTANT]
-> * 如果在 Azure Stack Edge Mini R 设备上启用计算和使用 IoT Edge 模块，建议将 Web 代理身份验证设置为“无”。 不支持 NTLM。
->* 不支持代理自动配置 (PAC) 文件。 PAC 文件定义了 Web 浏览器和其他用户代理如何自动选择适当的代理服务器（访问方法）来获取给定 URL。 尝试拦截和读取所有流量（然后用其自己的证书对所有内容进行重新签名）的代理不兼容，因为代理的证书不受信任。 通常，透明代理非常适合 Azure Stack Edge Mini R。不支持非透明的 Web 代理。
+> 不支持代理自动配置 (PAC) 文件。 PAC 文件定义了 Web 浏览器和其他用户代理如何自动选择适当的代理服务器（访问方法）来获取给定 URL。 尝试拦截和读取所有流量（然后用其自己的证书对所有内容进行重新签名）的代理不兼容，因为代理的证书不受信任。 通常，透明代理非常适合 Azure Stack Edge Mini R。不支持非透明的 Web 代理。
 
 
 1. 在“Web 代理设置”页上，执行以下步骤：
 
-    1. 在“Web 代理 URL”框中，按以下格式输入 URL：`http://host-IP address or FQDN:Port number`。 不支持 HTTPS URL。
+   1. 在“Web 代理 URL”框中，按以下格式输入 URL：`http://host-IP address or FQDN:Port number`。 不支持 HTTPS URL。
 
-    2. 在“身份验证”下选择“无”或“NTLM”。   如果在 Azure Stack Edge Mini R 设备上启用计算和使用 IoT Edge 模块，建议将 Web 代理身份验证设置为“无”。 不支持 NTLM。
+   2. 若要验证并应用配置的 Web 代理设置，请选择“应用”  。
 
-    3. 如果使用身份验证，请输入用户名和密码。
-
-    4. 若要验证并应用配置的 Web 代理设置，请选择“应用”  。
-    
-   ![本地 Web UI“Web 代理设置”页](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/web-proxy-1.png)
+   ![本地 Web UI“Web 代理设置”页](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/web-proxy-1.png)<!--UI text update is needed to remove NTLM from instruction text.-->
 
 2. 应用设置后，选择“下一步:设备”。
 

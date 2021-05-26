@@ -2,13 +2,13 @@
 title: Azure 事件中心 - 处理 Apache Kafka 事件
 description: 教程：本文介绍如何使用 Azure 流分析处理通过事件中心引入的 Kafka 事件
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.openlocfilehash: 328537eebd05391fc4c8138395a9c10f0a5d072f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: 449301effbbb8fb92a873bd90d95da4653bfd8a2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92319379"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373591"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教程：使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
@@ -32,10 +32,10 @@ ms.locfileid: "92319379"
 
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
-当你创建 **标准** 层事件中心命名空间时，系统会自动为该命名空间启用 Kafka 终结点。 可以将事件从使用 Kafka 协议的应用程序流式传输到标准层事件中心。 按照 [使用 Azure 门户创建事件中心](event-hubs-create.md)中的分步说明创建 **标准** 层事件中心命名空间。 
+当你创建事件中心命名空间时，系统会自动为该命名空间启用 Kafka 终结点。 可以从使用 Kafka 协议的应用程序，将事件流式传输到事件中心。 按照[使用 Azure 门户创建事件中心](event-hubs-create.md)中的分步说明创建事件中心命名空间。 如果使用专用群集，请参阅[在专用群集中创建命名空间和事件中心](event-hubs-dedicated-cluster-create-portal.md#create-a-namespace-and-event-hub-within-a-cluster)。
 
 > [!NOTE]
-> Kafka 的事件中心仅在 **标准** 和 **专用** 层上可用。 **基本** 层不支持事件中心上的 Kafka。
+> 基本层不支持适用于 Kafka 的事件中心。
 
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>在事件中心内使用 Kafka 发送消息
 

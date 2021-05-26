@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: data-factory
 author: linda33wj
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/18/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: befd80ea212d5439c19733c9e64e25e53ba416b7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 46f03b56ad7fd2a57720962a624ee03f86c246fc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773263"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110093623"
 ---
 | 类别 | 数据存储 | 支持用作源 | 支持用作接收器 | 受 [Azure IR](../concepts-integration-runtime.md#azure-integration-runtime) 支持 | 受[自承载 IR](../concepts-integration-runtime.md#self-hosted-integration-runtime) 支持 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -65,18 +65,20 @@ ms.locfileid: "108773263"
 | &nbsp; |[MongoDB](../connector-mongodb.md) |✓ | |✓ |✓  |
 | &nbsp; |[MongoDB Atlas](../connector-mongodb-atlas.md) |✓ | |✓ |✓  |
 | **File** |[Amazon S3](../connector-amazon-simple-storage-service.md) |✓ | |✓ |✓  |
+| &nbsp; |[Amazon S3 兼容存储](../connector-amazon-s3-compatible-storage.md) |✓ | |✓ |✓  |
 | &nbsp; |[文件系统](../connector-file-system.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[FTP](../connector-ftp.md) |✓ | |✓ |✓  |
 | &nbsp; |[Google Cloud Storage](../connector-google-cloud-storage.md) |✓ | |✓ |✓  |
 | &nbsp; |[HDFS](../connector-hdfs.md) |✓ | |✓ |✓  |
+| &nbsp; |[Oracle 云存储](../connector-oracle-cloud-storage.md) |✓ | |✓ |✓  |
 | &nbsp; |[SFTP](../connector-sftp.md) |✓ |✓ |✓ |✓  |
 | **通用协议** |[泛型 HTTP](../connector-http.md) |✓ | |✓ |✓  |
 | &nbsp; |[泛型 OData](../connector-odata.md) |✓ | |✓ |✓  |
 | &nbsp; |[泛型 ODBC](../connector-odbc.md) |✓ |✓ | |✓  |
 | &nbsp; |[泛型 REST](../connector-rest.md) |✓ | ✓ |✓ |✓  |
 | **服务和应用** |[Amazon Marketplace Web Service](../connector-amazon-marketplace-web-service.md) |✓ | |✓ |✓  |
-| &nbsp; |[Common Data Service](../connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Concur（预览）](../connector-concur.md) |✓ | |✓ |✓  |
+| &nbsp; |[Dataverse](../connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Dynamics 365](../connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Dynamics AX](../connector-dynamics-ax.md) |✓ | |✓ |✓  |
 | &nbsp; |[Dynamics CRM](../connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |

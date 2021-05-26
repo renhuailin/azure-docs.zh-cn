@@ -1,0 +1,90 @@
+---
+title: 配置容器 - 翻译器
+titleSuffix: Azure Cognitive Services
+description: 使用 `docker run` 命令参数配置翻译器容器运行时环境。 同时存在必需设置和可选设置。
+services: cognitive-services
+author: laujan
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: translator-text
+ms.topic: conceptual
+ms.date: 05/05/2021
+ms.author: lajanuar
+recommendations: false
+ms.openlocfilehash: f379a66d2175fa42102a118693daae21925e0b0e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110382489"
+---
+# <a name="configure-translator-docker-containers-preview"></a>配置翻译器 Docker 容器（预览版）
+
+认知服务为每个容器提供一个通用配置框架。  你可以轻松配置翻译器容器，并构建针对强大的云功能和边缘位置进行优化的翻译器应用程序体系结构。
+
+使用 `docker run` 命令参数配置翻译器容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 容器专用设置是帐单设置。
+
+## <a name="configuration-settings"></a>配置设置
+
+[!INCLUDE [Container shared configuration settings table](../../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
+
+ > [!IMPORTANT]
+> [ApiKey](#apikey-configuration-setting)、[Billing](#billing-configuration-setting) 和 [EULA](#eula-setting) 设置一起使用。必须为所有三个设置提供有效值，否则容器无法启动。 详细了解如何使用这些配置设置来实例化容器。
+
+## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
+
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，该值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的翻译器资源的有效密钥。
+
+可以在以下位置找到此设置：
+
+* Azure 门户：翻译器资源管理，位于“密钥”下 
+
+## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
+
+[!INCLUDE [Container shared configuration ApplicationInsights settings](../../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
+
+## <a name="billing-configuration-setting"></a>Billing 配置设置
+
+`Billing` 设置指定 Azure 上用于计量容器账单信息的翻译器资源的终结点 URI。 必须为此配置设置指定一个值，并且该值必须是 Azure 上翻译器资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+
+可以在以下位置找到此设置：
+
+* Azure 门户：翻译器“概述”页，标记为“`Endpoint`”
+
+| 必须 | 名称 | 数据类型 | 说明 |
+| -------- | ---- | --------- | ----------- |
+| 是 | `Billing` | 字符串 | 账单终结点 URI。 有关获取账单 URI 的详细信息，请参阅[收集必需参数](translator-how-to-install-container.md#required-elements)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../../cognitive-services-custom-subdomains.md)。 |
+
+## <a name="eula-setting"></a>Eula 设置
+
+[!INCLUDE [Container shared configuration eula settings](../../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
+
+## <a name="fluentd-settings"></a>Fluentd 设置
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
+
+## <a name="http-proxy-credentials-settings"></a>HTTP 代理凭据设置
+
+[!INCLUDE [Container shared HTTP proxy settings](../../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
+## <a name="logging-settings"></a>日志记录设置
+
+[!INCLUDE [Container shared configuration logging settings](../../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
+
+## <a name="mount-settings"></a>装载设置
+
+使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 选项来指定输入装载或输出装载。
+
+翻译器容器不使用输入或输出装载来存储训练或服务数据。
+
+主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](translator-how-to-install-container.md#host-computer)的装载位置。
+<!-- markdownlint-disable MD033 -->
+|可选| 名称 | 数据类型 | 说明 |
+|-------|------|-----------|-------------|
+|不允许| `Input` | String | 翻译器容器不使用此值。|
+|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 可在此处找到日志（包括容器日志）的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+
+## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [详细了解认知服务容器](../../cognitive-services-container-support.md)

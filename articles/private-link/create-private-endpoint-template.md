@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: e80adc16e08e676ac2daabec01a11c10d537c547
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b6e5e5e097ce59fc676e75d45217269a927b2d7
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562939"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814795"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建专用终结点
 
@@ -25,7 +25,7 @@ ms.locfileid: "102562939"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.sql%2Fprivate-endpoint-sql%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "102562939"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/)。
 
-:::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.sql/private-endpoint-sql/azuredeploy.json":::
 
 模板中定义了多个 Azure 资源：
 
@@ -58,7 +58,7 @@ ms.locfileid: "102562939"
 
 1. 若要登录到 Azure 并打开模板，请选择“部署到 Azure”。 该模板创建专用终结点、SQL 数据库实例、网络基础结构和要验证的虚拟机。
 
-   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.sql%2Fprivate-endpoint-sql%2Fazuredeploy.json)
 
 2. 选择或创建资源组。
 3. 键入 SQL 管理员登录名和密码。

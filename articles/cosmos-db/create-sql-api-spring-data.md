@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/07/2021
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: a094ebb6b218027c195985312b023ccb8838f703
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 1cb218b0a779bc750cebfb4b7ae4a6bb285c2af3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365667"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073716"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入门：构建一个 Spring Data Azure Cosmos DB v3 应用以管理 Azure Cosmos DB SQL API 数据
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,6 @@ ms.locfileid: "107365667"
 > 请参阅以下文章，了解其他 Azure Cosmos DB API 上的 Spring Data：
 > * [将适用于 Apache Cassandra 的 Spring Data 用于 Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
 > * [将 Spring Data MongoDB 用于 Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [将 Spring Data Gremlin 用于 Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
 ## <a name="prerequisites"></a>先决条件

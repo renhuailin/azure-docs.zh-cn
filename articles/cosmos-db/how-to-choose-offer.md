@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: d8a6471d53ad4b2428504f9c53cbec6bc1967c49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cf5d2cd191b787b6981c8c54950ad341e9d3dad
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93089631"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073659"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>如何在标准（手动）和自动缩放预配的吞吐量之间进行选择 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -139,4 +139,4 @@ Azure Cosmos DB 支持两种类型或提供预配的吞吐量：标准（手动�
 * 使用 [RU 计算器](https://cosmos.azure.com/capacitycalculator/)估计新工作负载的吞吐量。
 * 使用 [Azure Monitor](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) 监视现有工作负载。
 * 了解[如何对 Azure Cosmos 数据库或容器预配自动缩放吞吐量](how-to-provision-autoscale-throughput.md)。
-* 查看[自动缩放常见问题解答](autoscale-faq.md)。
+* 查看[自动缩放常见问题解答](autoscale-faq.yml)。

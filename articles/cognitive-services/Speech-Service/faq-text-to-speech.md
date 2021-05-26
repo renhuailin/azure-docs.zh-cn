@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 67284225299641a71050342056ad7ca91bf39740
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7abc34719cbbd03d84fc34a3691c7c84e1abda5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96353708"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067251"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>文本转语音常见问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "96353708"
 
 **问：如果想使用自定义的语音模型，API 是否与用于标准语音的 API 相同？**
 
-**答**：创建和部署自定义语音模型时，你会获得模型的唯一终结点。 若要使用语音在应用中说话，必须在 HTTP 请求中指定该终结点。 在 REST API 中为文本转语音服务提供的相同功能可用于自定义终结点。 了解如何[创建和使用自定义终结点](./how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint)。
+**答**：创建和部署自定义语音模型时，你会获得模型的唯一终结点。 若要使用语音在应用中说话，必须在 HTTP 请求中指定该终结点。 在 REST API 中为文本转语音服务提供的相同功能可用于自定义终结点。 了解如何[创建和使用自定义终结点](./how-to-custom-voice-create-voice.md#create-and-use-a-custom-neural-voice-endpoint)。
 
 **问：要自行创建自定义语音模型，是否需要准备训练数据？**
 

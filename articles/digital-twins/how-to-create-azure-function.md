@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 03917b332d6ce204cda0ec072d213a0844690b94
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8aaa1b2865b1d0f39e6cb224c3979b4f53eeee81
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787826"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066711"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>在 Azure 中连接函数应用以处理数据
 
@@ -52,7 +52,7 @@ ms.locfileid: "109787826"
 
 ## <a name="write-a-function-that-has-an-event-grid-trigger"></a>编写具有事件网格触发器的函数
 
-可以通过将 SDK 添加到函数应用来编写函数。 函数应用使用[适用于 .NET (C#) 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client) 与 Azure 数字孪生进行交互。 
+可以通过将 SDK 添加到函数应用来编写函数。 函数应用使用[适用于 .NET (C#) 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 与 Azure 数字孪生进行交互。 
 
 要使用 SDK，需在项目中加入以下包。 使用 Visual Studio NuGet 包管理器安装包。 或在命令行工具中使用 `dotnet` 添加包。
 
