@@ -6,19 +6,16 @@ ms.author: vlvinogr
 ms.date: 02/18/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 051bf4398555f318f613c66d58ec65be1d30e215
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d12945642e4a948df7f81da3ac89d5f8814fa4b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646803"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472727"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 集成策略
 
 本主题提供 Dapr 集成 API 管理策略的参考。 Dapr 是一种可移植运行时，用于通过任何语言或框架来构建无状态和有状态的基于微服务的应用程序。 它能对常见的微服务模式进行编码，例如使用内置重试逻辑进行服务发现和调用，使用至少一次的传递语义进行发布和订阅，或者使用可插拔的绑定资源来简化使用外部服务的组合。 请转到 [dapr.io](https://dapr.io) 以获取有关如何开始使用 Dapr 的详细信息和说明。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。
-
-> [!CAUTION]
-> 本主题中引用的策略处于公共预览阶段，并且遵循 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 > [!IMPORTANT]
 > 本主题中引用的策略仅在启用了 Dapr 支持的 [API 管理网关的自承载版本](self-hosted-gateway-overview.md)中有效。
@@ -89,7 +86,7 @@ template:
 
 ### <a name="attributes"></a>属性
 
-| 属性        | 说明                     | 必须 | 默认 |
+| 特性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | 必须设置为“dapr”           | 是      | 不适用     |
 | dapr-app-id      | 目标微服务的名称。 用于在 Dapr 中形成 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 不适用 |
@@ -158,7 +155,7 @@ template:
 
 ### <a name="attributes"></a>属性
 
-| 属性        | 说明                     | 必须 | 默认 |
+| 特性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
 | pubsub-name      | 目标 PubSub 组件的名称。 映射到 Dapr 中的 [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。 如果不存在，则 topic 属性值必须采用 `pubsub-name/topic-name` 形式。    | 否       | 无    |
 | 主题            | 主题的名称。 映射到 Dapr 中的 [topic](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。               | 是      | 空值     |
@@ -244,7 +241,7 @@ template:
 
 ### <a name="attributes"></a>属性
 
-| 属性        | 说明                     | 必须 | 默认 |
+| 特性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
 | name            | 目标绑定名称。 必须与 Dapr 中的[已定义](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure)的绑定名称匹配。           | 是      | 不适用     |
 | operation       | 目标操作名称（特定于绑定）。 映射到 Dapr 中的[操作](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings)属性。 | 否 | 无 |
