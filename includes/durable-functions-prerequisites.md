@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
-ms.openlocfilehash: 2808e26f92899bbaced65571ebc484e6f6295a76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 544260de8525cd3adca31078d0fe76f24a784a01
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98027633"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110402060"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,5 +27,4 @@ ms.locfileid: "98027633"
 
 * [完成快速入门文章](../articles/azure-functions/durable/quickstart-python-vscode.md)
 * [从 GitHub 克隆或下载示例项目](https://github.com/Azure/azure-functions-durable-python/tree/master/samples/)
-
 ---
