@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: fe951881d2f8fa4c38e529122a96f3ca1ed078bb
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 0fb633dea9239aadfeb797e5659f8442ceb19728
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483490"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470686"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>如何在 Windows 容器中运行自承载集成运行时
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文将介绍如何在 Windows 容器中运行自承载集成运行时。
 Azure 数据工厂当前提供对自承载集成运行时的官方 Windows 容器支持。 你可以下载 docker 生成源代码，并将生成和运行流程整合到自己的持续交付管道中。 

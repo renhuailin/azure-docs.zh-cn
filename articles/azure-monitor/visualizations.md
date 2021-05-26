@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: b90d628f0d24e43d7b9f2e3fa87e74d426648c6e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1da3f75fb95488d45a3f29284bdc8c7424b6bc9a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048567"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459098"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -29,10 +29,6 @@ ms.locfileid: "102048567"
 - 包含个人或共享工作簿的选项。
 - 轻松、易协作的创作体验。
 - 模板支持基于 GitHub 的公共模板库。
-
-### <a name="limitations"></a>限制
-- 无自动刷新。
-- 没有类似仪表板的密集布局，这使得工作簿作为单一管理平台不太有用。 旨在提供更深入的见解。
 
 
 ## <a name="azure-dashboards"></a>Azure 仪表板
