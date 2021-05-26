@@ -2,13 +2,13 @@
 title: 虚拟网络服务终结点 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关如何向虚拟网络中添加 Microsoft.EventHub 服务终结点的信息。
 ms.topic: article
-ms.date: 03/29/2021
-ms.openlocfilehash: f7f0f3ff480018c9bfc5d9c6f34cf7e2935f8d6a
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.date: 05/10/2021
+ms.openlocfilehash: bc13878be3b596d514ad2ed8ad024064df6e6fb4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959953"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375330"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>允许从特定虚拟网络访问 Azure 事件中心命名空间 
 
@@ -19,7 +19,7 @@ ms.locfileid: "105959953"
 然后，绑定到子网的工作负荷与相应的事件中心命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。 此行为有一个例外。 在默认情况下，启用服务终结点会启用与虚拟网络关联的 [IP 防火墙](event-hubs-ip-filtering.md)中的 `denyall` 规则。 可以在 IP 防火墙中添加特定 IP 地址，以便启用对事件中心公共终结点的访问权限。 
 
 ## <a name="important-points"></a>要点
-- 标准层和专用层都支持此功能 。 基本层不支持此功能。
+- 基本层不支持此功能。
 - 在默认情况下，除非请求源自从允许的虚拟网络运行的服务，否则，为事件中心命名空间启用虚拟网络会阻止传入请求。 被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。 例外情况是，可以允许从某些 **受信任的服务** 访问事件中心资源，即使启用了虚拟网络也是如此。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
 - 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。 如果没有 IP 和虚拟网络规则，则可以通过公共 Internet（使用访问密钥）访问命名空间。  
 
@@ -43,7 +43,7 @@ ms.locfileid: "105959953"
 本部分演示如何使用 Azure 门户添加虚拟网络服务终结点。 若要限制访问，需要集成此事件中心命名空间的虚拟网络服务终结点。
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到“事件中心命名空间”。
-4. 在左侧“设置”下选择“网络” 。 只会为“标准”或“专用”命名空间显示“网络”选项卡。 
+4. 在左侧“设置”下选择“网络” 。 
 
     > [!WARNING]
     > 如果你在此页上选择了“所选网络”选项并且未添加至少一个 IP 防火墙规则或虚拟网络，则可以通过公共 Internet（使用访问密钥）访问该命名空间。  

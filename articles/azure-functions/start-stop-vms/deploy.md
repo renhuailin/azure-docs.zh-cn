@@ -2,65 +2,65 @@
 title: 部署启动/停止 VM v2（预览版）
 description: 本文介绍如何为 Azure 订阅中的 Azure VM 部署启动/停止 VM v2（预览版）功能。
 services: azure-functions
-ms.subservice: ''
+ms.subservice: start-stop-vms
 ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9ca808fffbd26c8837ad9a43447f60e99f89d922
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 726af0d36c543936076d1fa529e5527d166d5bbc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111046"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073227"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>部署启动/停止 VM v2（预览版）
 
-按顺序执行本主题中的步骤，以安装启动/停止 VM v2（预览版）功能。 完成设置过程后，请配置计划，以根据自己的要求对其进行自定义。
+请按顺序执行本主题中的步骤，以安装启动/停止 VM v2（预览版）功能。 完成设置过程后，请配置计划，以根据自己的要求对其进行自定义。
 
 ## <a name="deploy-feature"></a>部署功能
 
-可于[此处](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md)的启动/停止 VM v2 GitHub 组织发起部署。 尽管此功能旨在从订阅中的单个部署跨所有资源组管理订阅中的所有 VM，但可以根据所在组织的操作模型或要求来安装其他实例。 还可以配置此功能，以跨多个订阅集中管理 VM。
+可于[此处](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md)的启动/停止 VM v2 GitHub 组织发起部署。 尽管此功能旨在跨订阅中单个部署的所有资源组管理订阅中的所有 VM，但你可以根据所在组织的操作模型或要求来安装其他实例。 还可以配置此功能，以跨多个订阅集中管理 VM。
 
-为了简化管理和删除操作，建议将启动/停止 VM v2 （预览版）部署到专用资源组。
+为了简化管理和删除操作，我们建议你将启动/停止 VM v2（预览版）部署到专用资源组。
 
 > [!NOTE]
 > 此预览版目前不支持指定现有存储帐户或 Application Insights 资源。
 
 1. 打开浏览器并导航到启动/停止 VM v2 [GitHub 组织](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md)。
-1. 根据在其中创建 Azure VM 的 Azure 云环境选择部署选项。 Azure 门户中将打开“自定义 Azure 资源管理器部署”页面。
+1. 根据你在其中创建 Azure VM 的 Azure 云环境选择部署选项。 Azure 门户中随即将打开“自定义 Azure 资源管理器部署”页面。
 1. 根据提示登录到 [Azure 门户](https://portal.azure.com)。
 1. 输入以下值：
 
     |名称 |值 |
     |-----|------|
-    |区域 |选择附近的区域以获取新资源。|
-    |资源组名称 |指定资源组（将包含启动/停止 VM 的单个资源）名称。 |
+    |区域 |为新资源选择一个附近的区域。|
+    |资源组名称 |为将要包含启动/停止 VM 的单项资源的资源组指定名称。 |
     |资源组区域 |指定资源组所在的区域。 例如“美国中部”。 |
     |Azure 函数应用名称 |键入在 URL 路径中有效的名称。 将对你键入的名称进行验证，以确保其在 Azure Functions 中是唯一的。 |
-    |Application Insights 名称 |指定 Application Insights 实例（将包含启动/停止 VM 分析）的名称。 |
-    |Application Insights 区域 |指定 Application Insights 实例的区域。|
-    |存储帐户名称 |指定 Azure 存储帐户的名称，以存储启动/停止 VM 执行遥测数据。 |
+    |Application Insights 名称 |为将要包含启动/停止 VM 的分析数据的 Application Insights 实例指定名称。 |
+    |Application Insights 区域 |为 Application Insights 实例指定区域。|
+    |存储帐户名称 |为存储启动/停止 VM 执行遥测数据的 Azure 存储帐户指定名称。 |
     |电子邮件地址 |指定一个或多个电子邮件地址以接收状态通知，用逗号 (,) 分隔。|
 
-    :::image type="content" source="media/deploy/deployment-template-details.png" alt-text="Start/Stop VMs template deployment configuration":::
+    :::image type="content" source="media/deploy/deployment-template-details.png" alt-text="启动/停止 VM 遥测部署配置":::
 
-1. 在页面底部选择“查看 + 创建”。
+1. 选择页面底部的“查看 + 创建”。
 1. 选择“创建”以开始部署。
 1. 选择屏幕顶部的铃铛图标（通知）可查看部署状态。 此时会看到“部署正在进行”。 等待部署完成。
 1. 从通知窗格选择“转到资源组”。 将看到类似于以下的屏幕：
 
-    :::image type="content" source="media/deploy/deployment-results-resource-list.png" alt-text="Start/Stop VMs template deployment resource list":::
+    :::image type="content" source="media/deploy/deployment-results-resource-list.png" alt-text="启动/停止 VM 遥测部署资源列表":::
 
 ## <a name="enable-multiple-subscriptions"></a>启用多个订阅
 
-启动/停止部署完成后，请执行以下步骤，以使启动/停止 VM v2（预览版）在多个订阅之间执行操作。
+启动/停止部署完成后，请执行以下步骤，使启动/停止 VM v2（预览版）在多个订阅之间执行操作。
 
 1. 复制在部署过程中指定的 Azure 函数应用名称的值。
 
-1. 在门户中，导航到二级订阅。 选择订阅，然后选择“访问控制 (IAM)”
+1. 在门户中，导航到二级订阅。 选择订阅，然后选择“访问控制(IAM)”
 
-1. 依次选择“添加”、“添加角色分配”。
+1. 依次选择“添加”、“添加角色分配” 。
 
-1. 从“角色”下拉列表中选择“参与者”角色。
+1. 从“角色”下拉列表中选择“参与者”角色 。
 
 1. 在“选择”字段中输入 Azure 函数应用程序的名称。 在结果中选择函数名称。
 
@@ -70,9 +70,9 @@ ms.locfileid: "106111046"
 
 若要管理自动化方法以控制 VM 的启动和停止，请根据需要配置一个或多个包含的逻辑应用。
 
-- 已计划 - 启动和停止操作基于你针对 Azure 资源管理器和经典 VM 指定的计划。ststv2_vms_Scheduled_start 和 ststv2_vms_Scheduled_stop 用于配置已计划的启动和停止。
+- 计划 - 启动和停止操作基于你针对 Azure 资源管理器和经典 VM 指定的计划。ststv2_vms_Scheduled_start 和 ststv2_vms_Scheduled_stop 用于配置计划启动和停止 。
 
-- 已排序 - 启动和停止操作基于针对具有预定义排序标记的 VM 的计划。 仅支持两个命名标记，即 sequencestart 和 sequencestop。 ststv2_vms_Sequenced_start 和 ststv2_vms_Sequenced_stop 用于配置序列化的启动和停止。
+- 顺序 - 启动和停止操作基于针对具有预定义排序标记的 VM 的计划。 仅支持两个命名标记，即 sequencestart 和 sequencestop 。 ststv2_vms_Sequenced_start 和 ststv2_vms_Sequenced_stop 分别用于配置排序启动和排序停止 。
 
     > [!NOTE]
     > 此方案仅支持 Azure 资源管理器 VM。
@@ -81,11 +81,11 @@ ms.locfileid: "106111046"
 
 如果需要其他计划，可以使用 Azure 门户中的“克隆”选项来复制所提供的其中一个逻辑应用。
 
-:::image type="content" source="media/deploy/logic-apps-clone-option.png" alt-text="Select the Clone option to duplicate a logic app":::
+:::image type="content" source="media/deploy/logic-apps-clone-option.png" alt-text="选择“克隆”选项以复制逻辑应用":::
 
-## <a name="scheduled-start-and-stop-scenario"></a>已计划的启动和停止方案
+## <a name="scheduled-start-and-stop-scenario"></a>计划启动和停止方案
 
-执行以下步骤，为 Azure 资源管理器和经典 VM 配置已计划的启动和停止操作。 例如，可以配置 ststv2_vms_Scheduled_start 计划，以在上午上班时启动 VM，并根据 ststv2_vms_Scheduled_stop 计划，在晚上下班时停止订阅中的所有 VM。
+执行以下步骤，为 Azure 资源管理器和经典 VM 配置已计划的启动和停止操作。 例如，可以配置 ststv2_vms_Scheduled_start 计划，在上午上班时启动 VM，并根据 ststv2_vms_Scheduled_stop 计划，在晚上下班时停止订阅中的所有 VM。
 
 支持将逻辑应用配置为仅启动 VM。
 
@@ -93,13 +93,13 @@ ms.locfileid: "106111046"
 
 1. 登录 [Azure 门户](https://portal.azure.com)并导航到“逻辑应用”。
 
-1. 在逻辑应用列表中，若要配置已计划的开始，请选择 ststv2_vms_Scheduled_start。 若要配置已计划的停止，请选择 ststv2_vms_Scheduled_stop。
+1. 在逻辑应用列表中，若要配置计划的启动，请选择 ststv2_vms_Scheduled_start。 若要配置计划的停止，请选择 ststv2_vms_Scheduled_stop。
 
 1. 从左侧窗格中选择“逻辑应用设计器”。
 
-1. “逻辑应用设计器”出现后，在“设计器”窗格中，选择“重复周期”以配置逻辑应用计划。 若要了解具体的重复周期选项，请参阅[安排重复执行的任务](../../connectors/connectors-native-recurrence.md#add-the-recurrence-trigger)。
+1. “逻辑应用设计器”出现后，在“设计器”窗格中，选择“定期”以配置逻辑应用计划。 若要了解具体的定期选项，请参阅[计划定期任务](../../connectors/connectors-native-recurrence.md#add-the-recurrence-trigger)。
 
-    :::image type="content" source="media/deploy/schedule-recurrence-property.png" alt-text="Configure the recurrence frequency for logic app":::
+    :::image type="content" source="media/deploy/schedule-recurrence-property.png" alt-text="为逻辑应用配置定期频率":::
 
 1. 在“设计器”窗格中，选择“函数-尝试”以配置目标设置。 在请求正文中，若要跨订阅中的所有资源组管理 VM，请修改请求正文，如以下示例中所示。
 
@@ -125,7 +125,7 @@ ms.locfileid: "106111046"
         ]
     ```
 
-    在请求正文中，若要管理特定资源组的 VM，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个或多个资源组。
+    在请求正文中，若要管理特定资源组的 VM，请修改请求正文，如以下示例中所示。 指定的每个资源路径必须用逗号分隔。 如果需要，可以指定一个或多个资源组。
 
     此示例还演示了如何排除虚拟机。 可以通过指定 VM 资源路径或按通配符来排除 VM。
 
@@ -162,7 +162,7 @@ ms.locfileid: "106111046"
     }
     ```
 
-    在请求正文中，若要管理订阅中的特定 VM 集，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个 VM。
+    在请求正文中，若要管理订阅中一组特定的 VM，请修改请求正文，如以下示例中所示。 指定的每个资源路径必须用逗号分隔。 如果需要，可以指定一个 VM。
 
     ```json
     {
@@ -179,17 +179,17 @@ ms.locfileid: "106111046"
     }
     ```
 
-## <a name="sequenced-start-and-stop-scenario"></a>序列化的启动和停止方案
+## <a name="sequenced-start-and-stop-scenario"></a>顺序启动和停止方案
 
 在分布式应用程序体系结构中，如果某环境在多个 Azure 资源管理器 VM 上包含两个或更多组件，则支持按顺序启动和停止组件的序列非常重要。
 
-1. 在逻辑应用列表中，若要配置序列化启动，请选择 ststv2_vms_Sequenced_start。 若要配置序列化停止，请选择 ststv2_vms_Sequenced_stop。
+1. 在逻辑应用列表中，若要配置顺序启动，请选择 ststv2_vms_Sequenced_start。 若要配置顺序停止，请选择 ststv2_vms_Sequenced_stop。
 
 1. 从左侧窗格中选择“逻辑应用设计器”。
 
-1. “逻辑应用设计器”出现后，在“设计器”窗格中，选择“重复周期”以配置逻辑应用计划。 若要了解具体的重复周期选项，请参阅[安排重复执行的任务](../../connectors/connectors-native-recurrence.md#add-the-recurrence-trigger)。
+1. “逻辑应用设计器”出现后，在“设计器”窗格中，选择“定期”以配置逻辑应用计划。 若要了解具体的定期选项，请参阅[计划定期任务](../../connectors/connectors-native-recurrence.md#add-the-recurrence-trigger)。
 
-    :::image type="content" source="media/deploy/schedule-recurrence-property.png" alt-text="Configure the recurrence frequency for logic app":::
+    :::image type="content" source="media/deploy/schedule-recurrence-property.png" alt-text="为逻辑应用配置定期频率":::
 
 1. 在“设计器”窗格中，选择“函数-尝试”以配置目标设置。 在请求正文中，若要跨订阅中的所有资源组管理 VM，请修改请求正文，如以下示例中所示。
 
@@ -216,9 +216,9 @@ ms.locfileid: "106111046"
         ]
     ```
 
-    在请求正文中，若要管理特定资源组的 VM，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个资源组。
+    在请求正文中，若要管理特定资源组的 VM，请修改请求正文，如以下示例中所示。 指定的每个资源路径必须用逗号分隔。 如果需要，可以指定一个资源组。
 
-    此示例还演示了如何根据使用通配符的已计划的启动/停止示例按资源路径排除虚拟机。
+    此示例还演示了如何根据使用通配符的计划启动/停止示例按资源路径排除虚拟机。
 
     ```json
     {
@@ -237,7 +237,7 @@ ms.locfileid: "106111046"
     }
     ```
 
-    在请求正文中，若要管理订阅中的特定 VM 集，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个 VM。
+    在请求正文中，若要管理订阅中一组特定的 VM，请修改请求正文，如以下示例中所示。 指定的每个资源路径必须用逗号分隔。 如果需要，可以指定一个 VM。
 
     ```json
     {
@@ -257,7 +257,7 @@ ms.locfileid: "106111046"
 
 ## <a name="auto-stop-scenario"></a>自动停止方案
 
-启动/停止 VM v2（预览版）可评估在非高峰时段（如下班之后）未使用的计算机并在处理器利用率小于指定百分比时自动关闭它们，从而管理订阅中运行 Azure 资源管理器和经典 VM 的成本。
+启动/停止 VM v2（预览版）可评估在非高峰时段（如下班之后）未使用的计算机并在处理器使用率小于指定百分比时自动关闭它们，从而管理订阅中运行 Azure 资源管理器和经典 VM 的成本。
 
 请求正文中的以下指标警报属性支持自定义：
 
@@ -277,9 +277,9 @@ ms.locfileid: "106111046"
 
 1. 从左侧窗格中选择“逻辑应用设计器”。
 
-1. “逻辑应用设计器”出现后，在“设计器”窗格中，选择“重复周期”以配置逻辑应用计划。 若要了解具体的重复周期选项，请参阅[安排重复执行的任务](../../connectors/connectors-native-recurrence.md#add-the-recurrence-trigger)。
+1. “逻辑应用设计器”出现后，在“设计器”窗格中，选择“定期”以配置逻辑应用计划。 若要了解具体的定期选项，请参阅[计划定期任务](../../connectors/connectors-native-recurrence.md#add-the-recurrence-trigger)。
 
-    :::image type="content" source="media/deploy/schedule-recurrence-property.png" alt-text="Configure the recurrence frequency for logic app":::
+    :::image type="content" source="media/deploy/schedule-recurrence-property.png" alt-text="为逻辑应用配置定期频率":::
 
 1. 在“设计器”窗格中，选择“函数-尝试”以配置目标设置。 在请求正文中，若要跨订阅中的所有资源组管理 VM，请修改请求正文，如以下示例中所示。
 
@@ -305,7 +305,7 @@ ms.locfileid: "106111046"
     }
     ```
 
-    在请求正文中，若要管理特定资源组的 VM，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个资源组。
+    在请求正文中，若要管理特定资源组的 VM，请修改请求正文，如以下示例中所示。 指定的每个资源路径必须用逗号分隔。 如果需要，可以指定一个资源组。
 
     ```json
     {
@@ -330,7 +330,7 @@ ms.locfileid: "106111046"
     }
     ```
 
-    在请求正文中，若要管理订阅中的特定 VM 集，请修改请求正文，如以下示例中所示。 必须用逗号分隔指定的每个资源路径。 如果需要，可以指定一个 VM。
+    在请求正文中，若要管理订阅中一组特定的 VM，请修改请求正文，如以下示例中所示。 指定的每个资源路径必须用逗号分隔。 如果需要，可以指定一个 VM。
 
     ```json
     {
@@ -356,4 +356,4 @@ ms.locfileid: "106111046"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何监视由启动/停止 VM v2（预览版）功能托管的 Azure VM 的状态并执行其他管理任务，请参阅《[管理启动/停止 VM](manage.md)》一文。
+若要了解如何监视由启动/停止 VM v2（预览版）功能管理的 Azure VM 的状态并执行其他管理任务，请参阅[管理启动/停止 VM](manage.md) 一文。

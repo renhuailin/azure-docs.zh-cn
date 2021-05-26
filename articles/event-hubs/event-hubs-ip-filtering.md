@@ -2,25 +2,25 @@
 title: Azure 事件中心防火墙规则 | Microsoft Docs
 description: 使用防火墙规则允许从特定 IP 地址到 Azure 事件中心的链接。
 ms.topic: article
-ms.date: 03/29/2021
-ms.openlocfilehash: 12240135401b267fd7c60e579fdf5a12e10ffce9
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.date: 05/10/2021
+ms.openlocfilehash: e0cefa24db8728ebe9d268c00718c2276ed7cee4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962996"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375000"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>允许从特定 IP 地址或范围访问 Azure 事件中心命名空间
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问事件中心命名空间。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。
 
-在仅应从某些知名站点访问 Azure 事件中心的情况下，此功能很有用。 可以通过防火墙规则来配置规则，以便接受来自特定 IPv4 地址的流量。 例如，如果将事件中心与 [Azure Express Route][express-route] 配合使用，则可创建防火墙规则，仅允许来自本地基础结构 IP 地址的流量。 
+在仅应从某些知名站点访问 Azure 事件中心的情况下，此功能很有用。 可使用防火墙规则配置相关规则，以接受源自特定 IPv4 地址的流量。 例如，如果将事件中心与 [Azure Express Route][express-route] 配合使用，则可创建防火墙规则，仅允许来自本地基础结构 IP 地址的流量。 
 
 ## <a name="ip-firewall-rules"></a>IP 防火墙规则
 IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与事件中心命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
 
 ## <a name="important-points"></a>要点
-- 标准层和专用层都支持此功能 。 基本层不支持此功能。
+- 基本层不支持此功能。
 - 默认情况下，除非请求源自从允许的公共 IP 地址运行的服务，否则，为事件中心命名空间启用防火墙规则会阻止传入请求。 被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。 例外情况是，可以允许从某些受信任的服务访问事件中心资源，即使在启用了 IP 筛选功能时也是如此。 有关受信任服务的列表，请参阅[受信任的 Microsoft 服务](#trusted-microsoft-services)。
 - 为命名空间指定至少一个 IP 防火墙规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。 如果没有 IP 和虚拟网络规则，则可以通过公共 Internet（使用访问密钥）访问命名空间。  
 
@@ -29,7 +29,7 @@ IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规�
 本部分演示如何使用 Azure 门户为事件中心命名空间创建 IP 防火墙规则。 
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到“事件中心命名空间”。
-4. 在左侧“设置”下选择“网络” 。 只会为“标准”或“专用”命名空间显示“网络”选项卡。 
+4. 在左侧“设置”下选择“网络” 。 
     
     > [!WARNING]
     > 如果你在此页上选择了“所选网络”选项并且未添加至少一个 IP 防火墙规则或虚拟网络，则可以通过公共 Internet（使用访问密钥）访问该命名空间。   
@@ -59,7 +59,7 @@ IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规�
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
 
 > [!IMPORTANT]
-> 事件中心的标准层和专用层支持防火墙规则 。 基本层不支持它。
+> 基本层不支持防火墙功能。
 
 以下资源管理器模板可用于向现有的事件中心命名空间添加 IP 筛选器规则。
 

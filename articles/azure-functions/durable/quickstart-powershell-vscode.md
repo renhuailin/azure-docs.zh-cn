@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fac3ad13f34620bb2ec817601041001ccf393d4e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91317253"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369055"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>在 PowerShell 中创建你的第一个持久函数
 
@@ -90,7 +90,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
     | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
-    | 选择函数的模板 | Durable Functions 业务流程协调程序（预览版） | 创建 Durable Functions 业务流程 |
+    | 选择函数的模板 | Durable Functions 业务流程协调程序 | 创建 Durable Functions 业务流程 |
     | 提供函数名称 | HelloOrchestrator | 持久函数的名称 |
 
 现已添加一个业务流程协调程序来协调活动函数。 打开 HelloOrchestrator/run.ps1 以查看业务流程协调程序函数。 每次调用 `Invoke-ActivityFunction` cmdlet 都会调用名为 `Hello` 的活动函数。
@@ -105,7 +105,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
     | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
-    | 选择函数的模板 | Durable Functions 活动（预览版） | 创建活动函数 |
+    | 选择函数的模板 | Durable Functions 活动 | 创建活动函数 |
     | 提供函数名称 | 你好 | 活动函数的名称 |
 
 现已添加业务流程协调程序调用的 `Hello` 活动函数。 打开 Hello/run.ps1，可以看到，该函数采用某个名称作为输入，并返回一句问候语。 将在活动函数中执行操作，例如，发出数据库调用或执行计算。
@@ -120,7 +120,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
     | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
-    | 选择函数的模板 | Durable Functions HTTP 启动器（预览版） | 创建 HTTP 启动器函数 |
+    | 选择函数的模板 | Durable Functions HTTP 启动器 | 创建 HTTP 启动器函数 |
     | 提供函数名称 | HttpStart | 活动函数的名称 |
     | 授权级别 | 匿名 | 出于演示目的，请允许在不进行身份验证的情况下调用函数 |
 
@@ -132,7 +132,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 使用 Azure Functions Core Tools 可以在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio Code 启动某个函数应用时，系统会提示你安装这些工具。
 
-1. 若要测试函数，请在 `Hello` 活动函数代码 (Hello/run.ps1) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”  面板中。
+1. 若要测试函数，请在 `Hello` 活动函数代码 (Hello/run.ps1) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。
 
     > [!NOTE]
     > 有关调试的详细信息，请参阅 [Durable Functions 诊断](durable-functions-diagnostics.md#debugging)。
@@ -149,7 +149,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     | 选择存储帐户 | 新建存储帐户 |  |
     | 输入新存储帐户的名称 | *唯一名称* | 要创建的存储帐户的名称 |
     | 选择资源组 | *唯一名称* | 要创建的资源组名称 |
-    | 选择位置 | *region* | 选择离你较近的区域 |
+    | 选择一个位置 | *region* | 选择离你较近的区域 |
 
 1. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
 
