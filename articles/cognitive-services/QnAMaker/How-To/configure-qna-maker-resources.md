@@ -4,13 +4,13 @@ description: 本文档概述了 QnA Maker 资源的高级配置。
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 48a56500646e4bd5e24cdcf3e076f46f1de94741
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 05/04/2021
+ms.openlocfilehash: 0eaff84368327da7ebef11d53338f13ee6f8cdb4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743896"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376352"
 ---
 # <a name="configure-qna-maker-resources"></a>配置 QnA Maker 资源
 
@@ -20,7 +20,10 @@ ms.locfileid: "108743896"
 
 ## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>将 QnA Maker 配置为使用不同的认知搜索资源
 
-如果你通过门户创建 QnA 服务及其依赖项（如搜索），则系统会为你创建一个搜索服务并将其关联到 QnA Maker 服务。 创建这些资源后，你可以更新应用服务设置，以使用先前存在的搜索服务，并删除刚刚创建的搜索服务。
+> [!NOTE]
+> 如果更改与 QnA Maker 关联的 Azure 搜索服务，你将无法访问其中已存在的所有知识库。 在更改 Azure 搜索服务之前，请务必导出现有知识库。
+
+如果你通过门户创建 QnA 服务及其依赖项（如搜索），则系统会为你创建一个搜索服务并将其链接到 QnA Maker 服务。 创建这些资源后，你可以更新应用服务设置，以使用先前存在的搜索服务，并删除刚刚创建的搜索服务。
 
 QnA Maker 的 **应用服务** 资源使用认知搜索资源。 若要更改 QnA Maker 使用的认知搜索资源，需要在 Azure 门户中更改设置。
 
@@ -47,7 +50,30 @@ QnA Maker 的 **应用服务** 资源使用认知搜索资源。 若要更改 Qn
 
 详细了解如何配置应用服务的[应用程序设置](../../../app-service/configure-common.md#configure-app-settings)。
 
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+### <a name="configure-text-analytics-resource-with-custom-question-answering-feature-to-use-a-different-cognitive-search-resource"></a>配置具有自定义问答功能的文本分析资源以使用不同的认知搜索资源
+
+> [!NOTE]
+> 如果更改与文本分析关联的 Azure 搜索服务，你将无法访问其中已存在的所有知识库。 在更改 Azure 搜索服务之前，请务必导出现有知识库。
+
+
+如果你通过门户创建文本分析资源及其依赖项（如搜索），则系统会为你创建一个搜索服务并将其关联到文本分析资源。 创建这些资源后，可以在“功能”选项卡中更新搜索资源。
+
+1.  转到 Azure 门户中的文本分析资源。
+
+2.  选择“功能”，然后选择要与文本分析资源关联的 Azure 认知搜索服务。
+
+> [!div class="mx-imgBorder"]
+> ![将 QnA 添加到 TA](../media/qnamaker-how-to-upgrade-qnamaker/update-custom-qna-feature.png)
+
+3.  单击“保存”。
+
+---
+
 ## <a name="get-the-latest-runtime-updates"></a>获取最新的运行时更新
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamaker-service-azure.md)时部署的 Azure 应用服务实例的一部分。 对运行时的更新定期进行。 在 2019 年 4 月站点扩展版本（版本 5+）后，QnA Maker 应用服务实例采用自动更新模式。 此更新经过设计，可以在升级过程中进行更新而不会导致停机。
 
@@ -67,14 +93,22 @@ QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamak
 1. 重启应用服务。 更新过程应当会在几秒内完成。 在此重启期间，最终用户将无法使用任何使用此 QnAMaker 服务的依赖应用程序或机器人。
 
     ![QnAMaker 应用服务实例的重启](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+    
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+应用服务未部署自定义问答。
+
+---
 
 ## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>配置应用服务空闲设置以避免超时
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 用于为已发布的知识库提供 QnA Maker 预测运行时的应用服务有一个空闲超时配置，该配置默认为在服务空闲时自动超时。 对于 QnA Maker 来说，这意味着你的预测运行时 generateAnswer API 在没有流量时偶尔会超时。
 
 若要使预测终结点应用保持负载状态（即使没有流量），请将空闲设置设置为始终启用。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择你的 QnA Maker 资源的应用服务。 它的名称将与 QnA Maker 资源相同，但应用服务的 **类型** 不同。
 1. 找到“设置”，然后选择“配置”。
 1. 在“配置”窗格中，选择“常规设置”，然后找到“始终启用”并选择“启用”作为值。 
@@ -87,7 +121,15 @@ QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamak
 
 详细了解如何配置应用服务的[常规设置](../../../app-service/configure-common.md#configure-general-settings)。
 
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+应用服务未部署自定义问答。
+
+---
+
 ## <a name="business-continuity-with-traffic-manager"></a>通过流量管理器实现业务连续性
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 业务连续性计划的主要目标是创建弹性知识库终结点，确保机器人或应用程序使用该终结点时不会发生停机。
 
@@ -110,21 +152,8 @@ QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamak
 
 1. 最后，在机器人或应用中使用流量管理器终结点。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-## <a name="configure-qna-maker-managed-preview-service-to-use-different-cognitive-search-resource"></a>将 QnA Maker 托管（预览版）服务配置为使用不同的认知搜索资源
-
-如果你通过门户创建 QnA 服务托管（预览版）及其依赖项（如搜索），则系统会为你创建一个搜索服务并将其关联到 QnA Maker 托管（预览版）服务。 创建这些资源后，可以在“配置”选项卡中更新搜索服务。
-
-1. 在 Azure 门户中转到你的 QnA Maker 托管（预览版）服务。
-
-1. 选择“配置”，然后选择要与 QnA Maker 托管（预览版）服务进行关联的 Azure 认知搜索服务。
-
-    ![QnA Maker 托管（预览版）配置页的屏幕截图](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-configuration.png)
-
-1. 单击“保存”  。
-
-> [!NOTE]
-> 如果更改与 QnA Maker 关联的 Azure 搜索服务，你将无法访问其中已存在的所有知识库。 在更改 Azure 搜索服务之前，请务必导出现有知识库。
+应用服务未部署自定义问答。
 
 ---

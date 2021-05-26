@@ -4,17 +4,17 @@ description: 本文介绍如何创建你自己的自定义可验证凭据
 services: active-directory
 author: barclayn
 manager: davba
-ms.service: identity
+ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: a43e734c0a5bfa7c3698dcde5cb5b17f15575d90
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0ecc7c2407798bed5b72211d3bdba114d3200d4c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222922"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466331"
 ---
 # <a name="how-to-customize-your-verifiable-credentials-preview"></a>如何自定义可验证凭据（预览）
 

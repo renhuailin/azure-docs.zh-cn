@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0775df0d5ca1061bff127ba5491040a90ddb8597
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 98f9ffdfa7addd8689b01332b88261311a525c81
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447006"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469322"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>将 Log Analytics 用于诊断功能
 
@@ -134,7 +134,7 @@ Log Analytics 只在连接活动的以下中间状态进行报告：
 1. 选择”Windows 虚拟桌面”来查看可用查询。
 1. 选择“运行”以运行所选查询。
 
-请在 [Azure Monitor Log Analytics 中保存的查询](../azure-monitor/logs/example-queries.md)中详细了解该示例查询界面。
+请在 [Azure Monitor Log Analytics 中保存的查询](../azure-monitor/logs/queries.md)中详细了解该示例查询界面。
 
 下面的查询列表可用于查看某一个用户的连接信息或问题。 可以在 [Log Analytics 查询编辑器](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query)中运行这些查询。 对于每个查询，将 `userupn` 替换为要查找的用户的 UPN。
 

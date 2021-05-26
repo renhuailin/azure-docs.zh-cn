@@ -10,12 +10,12 @@ ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d5ef85d947ae999fd94ba5a6e9cdb00baec9786
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 7e951de46b5220e5c2edde2fcd84673c9a16cebc
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555850"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477699"
 ---
 # <a name="manage-and-restore-soft-deleted-blobs"></a>管理和还原软删除的 Blob
 
@@ -70,7 +70,7 @@ Blob 软删除是针对 Blob 数据的综合性数据保护策略的一部分。
 
 ### <a name="restore-soft-deleted-objects-when-versioning-is-disabled"></a>禁用版本控制时还原软删除的对象
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 若要在未启用版本控制的情况下还原已删除的 Blob，请对这些 Blob 调用[取消删除 Blob](/rest/api/storageservices/undelete-blob) 操作。 “取消删除 Blob”操作还原已软删除的 Blob，以及与这些 Blob 关联的所有已删除的快照。
 
@@ -82,7 +82,7 @@ Blob 软删除是针对 Blob 数据的综合性数据保护策略的一部分。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobSnapshot":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 若要在未启用版本控制的情况下还原已删除的 Blob，请对这些 Blob 调用[取消删除 Blob](/rest/api/storageservices/undelete-blob) 操作。 “取消删除 Blob”操作还原已软删除的 Blob，以及与这些 Blob 关联的所有已删除的快照。
 
@@ -118,11 +118,11 @@ blockBlob.StartCopy(copySource);
 
 若要在启用了版本控制的情况下还原软删除的 Blob，请使用[复制 Blob](/rest/api/storageservices/copy-blob) 或[从 URL 复制 Blob](/rest/api/storageservices/copy-blob-from-url) 操作将前一个版本复制到基础 Blob。  
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RestorePreviousVersion":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 不适用。 Blob 版本控制仅在 Azure 存储客户端库版本 12.x 和更高版本中受支持。
 

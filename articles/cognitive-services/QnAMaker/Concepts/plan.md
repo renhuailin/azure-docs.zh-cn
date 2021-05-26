@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e20679c3999f7ece1f6d3ed47a241cfd9dab9236
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 177c02da26ffcedd0453538bc32158cf2f014896
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102214739"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369279"
 ---
 # <a name="plan-your-qna-maker-app"></a>规划 QnA Maker 应用
 
@@ -29,23 +29,32 @@ ms.locfileid: "102214739"
 | [应用服务资源和应用计划服务](azure-resources.md#app-service-and-app-service-plan)资源 | 查询预测终结点 |
 | [Application Insights](azure-resources.md#application-insights) 资源 | 查询预测遥测 |
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 | 资源 | 目的 |
 |--|--|
-| [QnA Maker](azure-resources.md#qna-maker-resource) 资源 | 创作、查询预测终结点和遥测|
+| [文本分析](azure-resources.md#qna-maker-resource)资源 | 创作、查询预测终结点和遥测|
 | [认知搜索](azure-resources.md#cognitive-search-resource)资源 | 数据存储和搜索 |
 
 ---
 ### <a name="resource-planning"></a>资源规划
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+
 每个资源的免费层 `F0` 都有效，可以提供创作和查询预测体验。 可以使用此层了解创作和查询预测。 转到生产或实时方案时，请重新评估资源选择。
 
-#### <a name="qna-maker-resource"></a>QnA Maker 资源
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-单个 QnA Maker 资源可以托管多个知识库。 知识库的数量由认知搜索定价层支持的索引数量确定。 详细了解[索引与知识库的关系](azure-resources.md#index-usage)。
+自定义问答（预览版）是一项免费功能。对于管理 API 和预测 API，目前的吞吐量上限都是每秒 10 个事务。 若要以每秒 10 个事务作为服务的目标，建议使用 Azure 认知搜索的 S1（1 个实例）SKU。
 
-#### <a name="knowledge-base-size-and-throughput"></a>知识库大小和吞吐量
+### <a name="text-analytics-resource"></a>文本分析资源
+
+启用了自定义问答功能的单个文本分析资源可以托管多个知识库。 知识库的数量由认知搜索定价层支持的索引数量确定。 详细了解[索引与知识库的关系](azure-resources.md#index-usage)。
+
+---
+
+### <a name="knowledge-base-size-and-throughput"></a>知识库大小和吞吐量
 
 生成实际应用时，需针对知识库大小和预期查询预测请求规划足够的资源。
 
@@ -81,24 +90,34 @@ ms.locfileid: "102214739"
 
 可以按语言构建 QnA Maker 资源，也可以在将查询发送到查询预测终结点之前，使用[翻译器](../../translator/translator-info-overview.md)将查询从另一种语言更改为知识库语言。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-现在可以在相同 QnA Maker 资源中具有不同语言的知识库。 创建第一个知识库时，可以选择是要使用一种语言还是多种语言的知识库资源。
+现在你可以在启用了自定义问答功能的同一文本分析资源中拥有不同语言的知识库。 创建第一个知识库时，可以选择是要使用一种语言还是多种语言的知识库资源。
 
-![QnA Maker 托管（预览版）多语言知识库选择](../media/concept-plan-your-knowledge-base/qnamaker-v2-select-multilanguage-knowledge-base.png)
+![QnA Maker 托管（预览版）多语言知识库选择](../media/qnamaker-create-publish-knowledge-base/connect-knowledgebase-custom-qna.png)
 
 > [!NOTE]
-> 如果为每个知识库启用语言设置，则不能在 QnA Maker 资源中创建尽可能多的知识库。 了解[有关语言设置限制的更多详细信息](./azure-resources.md)。
+> 如果为每个知识库启用多种语言，则不能在文本分析资源中创建尽可能多的知识库。 了解[有关语言设置限制的更多详细信息](./azure-resources.md)。
 
 ---
 
 ### <a name="ingest-data-sources"></a>引入数据源
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 可以使用以下引入的[数据源](../Concepts/data-sources-and-content.md)之一来创建知识库：
 
 * 公共 URL
 * 专用 SharePoint URL
 * 文件
+
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+自定义问答还支持非结构化内容。 你可以上传包含非结构化内容的文件。
+
+目前我们不支持非结构化内容的 URL。
+
+---
 
 引入过程会将[支持的内容类型](../reference-document-format-guidelines.md)转换为 markdown。 对答案的所有进一步编辑都是通过 markdown 来完成。 创建知识库后，可以使用[格式文本创作](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)在 QnA Maker 门户中编辑 [QnA 对](question-answer-set.md)。
 
@@ -179,9 +198,9 @@ QnA Maker 使用主动学习，通过向答案提供替代问题建议来改进�
 
 应用[最新运行时更新](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)以自动管理服务更新。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-在托管 QnA Maker（预览版）中，运行时由 QnA Maker 服务本身进行管理。 因此服务更新不适用。
+在自定义问答（预览版）中，运行时由 QnA Maker 服务本身进行管理。 因此服务更新不适用。
 
 ---
 
@@ -195,9 +214,9 @@ QnA Maker 使用主动学习，通过向答案提供替代问题建议来改进�
 
 对知识库的所有查询都存储在 Application Insights 中。 使用我们[最常用的查询](../how-to/get-analytics-knowledge-base.md)来了解指标。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-在托管部署中，遥测通过 [Azure Monitor 服务](../../../azure-monitor/index.yml)进行提供。 使用我们[最常用的查询](../how-to/get-analytics-knowledge-base.md)来了解指标。
+对于自定义问答，遥测通过 [Azure Monitor 服务](../../../azure-monitor/index.yml)来提供。 使用我们[最常用的查询](../how-to/get-analytics-knowledge-base.md)来了解指标。
 
 
 ---

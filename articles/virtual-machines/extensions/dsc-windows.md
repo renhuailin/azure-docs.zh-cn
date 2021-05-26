@@ -8,12 +8,12 @@ author: bobbytreed
 ms.author: robreed
 ms.collection: windows
 ms.date: 03/26/2018
-ms.openlocfilehash: 5d2591fa3b6d69e403935faeca075a2c747026c1
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: a782d94b40be7fb07009f46cc69883cc529d91c6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734731"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081507"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 扩展
 
@@ -125,7 +125,7 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。
 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
-包含 Windows 的 DSC 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/automation-configuration/automation-configuration/nested/provisionServer.json#L91)中找到。
+包含 Windows 的 DSC 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.automation/automation-configuration/nested/provisionServer.json#L91)中找到。
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 

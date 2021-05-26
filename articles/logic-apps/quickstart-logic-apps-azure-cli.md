@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure CLI 创建和管理逻辑应用
-description: 使用 Azure CLI 创建逻辑应用，然后使用 list、show (get)、update 和 delete 等操作管理逻辑应用。
+title: 快速入门 - 通过多租户 Azure 逻辑应用和 Azure CLI 创建和管理工作流
+description: 使用 CLI，通过多租户 Azure 逻辑应用创建逻辑应用工作流，并使用 list、show (get)、update 和 delete 等操作管理逻辑。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
-ms.date: 04/23/2021
-ms.openlocfilehash: 48d71d3736737e88825bbae19e0a5274bacd21a1
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 05/25/2021
+ms.openlocfilehash: 4a848b560fd0302690f1e52661b165182082dd9b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161080"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375922"
 ---
-# <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建和管理逻辑应用
+# <a name="quickstart-create-and-manage-workflows-in-multi-tenant-azure-logic-apps-using-the-azure-cli"></a>快速入门 - 使用 Azure CLI 在多租户 Azure 逻辑应用中创建和管理工作流
 
 本快速入门演示如何使用 [Azure CLI 逻辑应用扩展](/cli/azure/logic) (`az logic`) 创建和管理逻辑应用。 在命令行中，可以使用逻辑应用工作流定义的 JSON 文件来创建逻辑应用。 然后，可以通过从命令行运行 `list`、`show` (`get`)、`update` 和 `delete` 等操作来管理逻辑应用。
 
@@ -137,7 +137,7 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 命令必须包含以下[必需参数](/cli/azure/logic/workflow#az_logic_workflow_delete-required-parameters)：
 
-| 参数 | 值 | 说明 |
+| 参数 | 值 | 描述 |
 | --------- | ----- | ----------- |
 | 名称 | `--name -n` | 逻辑应用的名称。 |
 | 资源组名称 | `-resource-group -g` | 逻辑应用所在的资源组。 |
@@ -179,7 +179,7 @@ az logic workflow delete --resource-group "testResourceGroup" --name "testLogicA
 
 * 逻辑应用服务不会创建或运行新的工作流实例。
 
-* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用删除工作流的工作流。 这样，调用方就可获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将失败并显示 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
+* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用已删除工作流的工作流。 这样，调用方就会获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将会失败，并出现 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
 
 ## <a name="show-logic-apps-in-cli"></a>在 CLI 中显示逻辑应用
 
@@ -192,7 +192,7 @@ az logic workflow show --name
 
 命令必须包含以下[必需参数](/cli/azure/logic/workflow#az_logic_workflow_show-required-parameters)
 
-| 参数 | 值 | 说明 |
+| 参数 | 值 | 描述 |
 | --------- | ----- | ----------- |
 | 名称 | `--name -n` | 逻辑应用的名称。 |
 | 资源组名称 | `--resource-group -g` | 逻辑应用所在的资源组的名称。 |

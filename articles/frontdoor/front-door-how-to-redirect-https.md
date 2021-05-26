@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: edc1ebe53969ceac0452818bee016e35de1e9322
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e3e2de040c80692824c648ee15f6ae0c97e2786c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167832"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110453311"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 门户创建支持 HTTP 到 HTTPS 重定向的 Front Door
 
@@ -29,7 +29,7 @@ ms.locfileid: "106167832"
 1. 选择一个订阅，然后使用现有资源组或创建新资源组。 选择“下一步”进入配置选项卡。
 
     > [!NOTE]
-    > UI 中请求提供的位置只是资源组的位置。 你的 Front Door 配置将部署到 [Azure Front Door 的所有 POP 位置](front-door-faq.yml#what-are-the-pop-locations-for-azure-front-door-)。
+    > UI 中请求提供的位置只是资源组的位置。 你的 Front Door 配置将部署到 [Azure Front Door 的所有 POP 位置](front-door-faq.yml#where-are-the-edge-locations-for-azure-front-door-)。
 
     :::image type="content" source="./media/front-door-url-redirect/front-door-create-basics.png" alt-text="配置新 Front Door 的基本信息":::
 

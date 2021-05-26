@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 8400fcacbfa4c76aceb079b788255e3d3b83ce33
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 9ebfe1d4bba7b9b0629f800ec311dfb80770a4d6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877179"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087807"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud CI/CD 与 GitHub Actions
 
@@ -26,14 +26,14 @@ GitHub Actions 支持自动化的软件开发生命周期工作流。 通过适�
 ## <a name="set-up-github-repository-and-authenticate"></a>设置 GitHub 存储库并进行身份验证
 需要使用 Azure 服务主体凭据来为 Azure 登录操作授权。 若要获取 Azure 凭据，请在本地计算机上执行以下命令：
 
-```
+```azurecli
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
 ```
 
 若要访问某个特定的资源组，可以缩小范围：
 
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
 
@@ -57,7 +57,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 
  ![设置机密数据](./media/github-actions/actions2.png)
 
-也可以在 GitHub Actions 中从 Key Vault 获取 Azure 登录凭据，如[在 GitHub Actions 中向 Key Vault 进行 Azure Spring 身份验证](./spring-cloud-github-actions-key-vault.md)中所述。
+也可以在 GitHub Actions 中从 Key Vault 获取 Azure 登录凭据，如[在 GitHub Actions 中向 Key Vault 进行 Azure Spring 身份验证](./github-actions-key-vault.md)中所述。
 
 ## <a name="provision-service-instance"></a>预配服务实例
 若要预配 Azure Spring Cloud 服务实例，请使用 Azure CLI 运行以下命令。
@@ -148,12 +148,12 @@ jobs:
 ::: zone pivot="programming-language-java"
 ## <a name="set-up-github-repository-and-authenticate"></a>设置 GitHub 存储库并进行身份验证
 需要使用 Azure 服务主体凭据来为 Azure 登录操作授权。 若要获取 Azure 凭据，请在本地计算机上执行以下命令：
-```
+```azurecli
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
 ```
 若要访问某个特定的资源组，可以缩小范围：
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
 该命令应该会输出一个 JSON 对象：
@@ -175,7 +175,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 
  ![设置机密数据](./media/github-actions/actions2.png)
 
-也可以在 GitHub Actions 中从 Key Vault 获取 Azure 登录凭据，如[在 GitHub Actions 中向 Key Vault 进行 Azure Spring 身份验证](./spring-cloud-github-actions-key-vault.md)中所述。
+也可以在 GitHub Actions 中从 Key Vault 获取 Azure 登录凭据，如[在 GitHub Actions 中向 Key Vault 进行 Azure Spring 身份验证](./github-actions-key-vault.md)中所述。
 
 ## <a name="provision-service-instance"></a>预配服务实例
 若要预配 Azure Spring Cloud 服务实例，请使用 Azure CLI 运行以下命令。
@@ -192,7 +192,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 `az spring-cloud app create` 命令目前不是幂等的。  建议将此工作流用于现有的 Azure Spring Cloud 应用和实例。
 
 请使用以下 Azure CLI 命令来进行准备：
-```
+```azurecli
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 az spring-cloud app create --name gateway
@@ -203,7 +203,7 @@ az spring-cloud app create --name account-service
 ### <a name="deploy-with-azure-cli-directly"></a>直接使用 Azure CLI 进行部署
 请在存储库中创建 `.github/workflow/main.yml` 文件：
 
-```
+```yaml
 name: AzureSpringCloud
 on: push
 
@@ -250,7 +250,7 @@ Az `run` 命令将使用最新版本的 Azure CLI。 如果有重大更改，也
 > 此命令将会在一个新容器中运行，所以 `env` 将不起作用，并且跨操作文件访问可能会有额外限制。
 
 在存储库中创建 .github/workflow/main.yml 文件：
-```
+```yaml
 name: AzureSpringCloud
 on: push
 
@@ -289,9 +289,9 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>使用 Maven 插件进行部署
-另一种选择是使用 [Maven 插件](./spring-cloud-quickstart.md)来部署 Jar 并更新应用设置。 `mvn azure-spring-cloud:deploy` 命令是幂等的，将会在需要时自动创建应用。 你无需提前创建相应的应用。
+另一种选择是使用 [Maven 插件](./quickstart.md)来部署 Jar 并更新应用设置。 `mvn azure-spring-cloud:deploy` 命令是幂等的，将会在需要时自动创建应用。 你无需提前创建相应的应用。
 
-```
+```yaml
 name: AzureSpringCloud
 on: push
 
@@ -339,6 +339,6 @@ jobs:
 
 ## <a name="next-steps"></a>后续步骤
 
-* [用于 Spring Cloud GitHub Actions 的 Key Vault](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory 服务主体](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)
+* [用于 Spring Cloud GitHub Actions 的 Key Vault](./github-actions-key-vault.md)
+* [Azure Active Directory 服务主体](/cli/azure/ad/sp#az_ad_sp_create_for_rbac)
 * [适用于 Azure 的 GitHub Actions](https://github.com/Azure/actions/)
