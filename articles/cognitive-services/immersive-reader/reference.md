@@ -1,6 +1,6 @@
 ---
 title: 沉浸式阅读器 SDK 参考
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 沉浸式阅读器 SDK 包含 JavaScript 库，它使你能够将沉浸式阅读器集成在应用程序中。
 services: cognitive-services
 author: metanMSFT
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metang
-ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 852e3d91b9d90d79bc45b4478ee433fbbd13255b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92636521"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370781"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>沉浸式阅读器 JavaScript SDK 参考 (v1.1)
 

@@ -1,14 +1,14 @@
 ---
 title: 将 Azure 事件中心与 Azure 专用链接服务集成
 description: 了解如何将 Azure 事件中心与 Azure 专用链接服务集成
-ms.date: 08/22/2020
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: f5c01788044f3c3a5d875a24172e7222ff195f81
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: d19060f96a1a6912dd0f1c8791689a61cd2b2293
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960837"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371357"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>允许通过专用终结点访问 Azure 事件中心命名空间 
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
@@ -18,7 +18,7 @@ ms.locfileid: "105960837"
 有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)
 
 ## <a name="important-points"></a>要点
-- 标准层和专用层都支持此功能 。 基本层不支持此功能。
+- 基本层不支持此功能。
 - 启用专用终结点可以防止其他 Azure 服务与事件中心交互。  被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。 例外情况是，可以允许从某些受信任的服务访问事件中心资源，即使启用了专用终结点也是如此。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
 - 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。 如果没有 IP 和虚拟网络规则，则可以通过公共 Internet（使用访问密钥）访问命名空间。 
 
@@ -44,9 +44,6 @@ ms.locfileid: "105960837"
 2. 在搜索栏中键入“事件中心”。
 3. 从列表中选择要将专用终结点添加到的 **命名空间**。
 4. 在左侧“设置”下选择“网络” 。
-
-    > [!NOTE]
-    > 只会为“标准”或“专用”命名空间显示“网络”选项卡。 
 
     :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="网络选项卡 -“所选网络”选项" lightbox="./media/private-link-service/selected-networks-page.png":::    
 
