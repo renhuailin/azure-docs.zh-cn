@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: 7b7ac20672ee653cbf6d2b82b7a9454c1d742b2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7b4bbafd5630c2c116e002ee6ebafaa5444ce2d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612688"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369313"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 
@@ -49,7 +49,7 @@ ms.locfileid: "102612688"
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 <details>
 <summary><b>如何提高查询预测的吞吐量性能？</b></summary>
@@ -173,7 +173,7 @@ ms.locfileid: "102612688"
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 <details>
 <summary><b>为什么我的 URL/文件没有提取问答对？</b></summary>
@@ -349,7 +349,7 @@ ms.locfileid: "102612688"
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 
 <details>
@@ -432,7 +432,7 @@ ms.locfileid: "102612688"
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 
 <details>
@@ -494,7 +494,7 @@ ms.locfileid: "102612688"
 
 </details>
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 <details>
 <summary><b>存储哪些数据以及存储在何处？</b></summary>

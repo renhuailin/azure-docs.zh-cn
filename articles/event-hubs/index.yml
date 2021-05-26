@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 06/23/2020
-  ms.openlocfilehash: 06cce3f999b329d41c7ef7e5f381f55fdaee8054
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c9697126e64a6fbcdf25ab4904179b4ae08e8e17
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88933743"
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110375244"
 landingContent:
 - title: 关于事件中心
   linkLists:
@@ -29,6 +29,8 @@ landingContent:
       url: event-hubs-for-kafka-ecosystem-overview.md
     - text: 什么是事件中心捕获？
       url: event-hubs-capture-overview.md
+    - text: 什么是事件中心高级层？
+      url: event-hubs-premium-overview.md
     - text: 什么是事件中心专用层？
       url: event-hubs-dedicated-overview.md
 - title: 创建事件中心
@@ -41,7 +43,7 @@ landingContent:
       url: event-hubs-quickstart-cli.md
     - text: Azure PowerShell
       url: event-hubs-quickstart-powershell.md
-    - text: Azure 资源管理器模板
+    - text: Azure Resource Manager 模板
       url: event-hubs-resource-manager-namespace-event-hub.md
 - title: 创建专用群集
   linkLists:
@@ -151,7 +153,7 @@ landingContent:
       url: event-hubs-metrics-azure-monitor.md
     - text: 设置诊断日志
       url: event-hubs-diagnostic-logs.md
-    - text: 自动增加吞吐量单位
+    - text: 自动纵向扩展
       url: event-hubs-auto-inflate.md
     - text: 排查异常
       url: event-hubs-messaging-exceptions.md

@@ -1,20 +1,20 @@
 ---
-title: 删除“启动/停止 VM v2（预览）”概述
-description: 本文介绍如何删除“启动/停止 VM v2（预览）”功能。
+title: 删除“启动/停止 VM”v2（预览）概述
+description: 本文介绍如何删除“启动/停止 VM”v2（预览）功能。
 services: azure-functions
-ms.subservice: ''
+ms.subservice: start-stop-vms
 ms.date: 03/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: b4308be8f7494c1cb6f6b4839fc5a2e9717668e3
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: fd24de679781cda37ba9489eb7acad6332896659
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110878"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076845"
 ---
-# <a name="how-to-remove-startstop-vms-v2-preview"></a>如何删除“启动/停止 VM v2（预览）”
+# <a name="how-to-remove-startstop-vms-v2-preview"></a>如何删除“启动/停止 VM”v2（预览）
 
-在启用“启动/停止 VM v2（预览）”功能来管理 Azure VM 的运行状态后，会有决定停止使用的可能。 若要删除此功能，可以删除专用于存储以下资源以支持“启动/停止 VM v2（预览）”的资源组：
+在启用“启动/停止 VM”v2（预览）功能以管理 Azure VM 的运行状态后，可能需要决定停止使用该功能。 若要删除此功能，可以删除专用于存储以下资源以支持“启动/停止 VM”v2（预览）的资源组：
 
 - Azure Functions 应用程序
 - Azure 逻辑应用的日程安排
@@ -27,4 +27,4 @@ ms.locfileid: "106110878"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要重新部署此功能，请参阅[部署开始/停止 v2](deploy.md)（预览）。
+若要重新部署此功能，请参阅[部署启动/停止 v2](deploy.md)（预览）。

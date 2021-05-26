@@ -1,26 +1,27 @@
 ---
 title: 快速入门：适用于 Java 的表单识别器客户端库
-description: 使用适用于 Java 的表单识别器客户端库创建一个表单处理应用，该应用从自定义文档中提取键值对和表数据。
+description: 使用表单识别器 Java 客户端库创建一个表单处理应用，该应用从自定义文档中提取键/值对和表数据。
 services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 05/12/2021
 ms.custom: devx-track-java
 ms.author: lajanuar
-ms.openlocfilehash: cd5e6383e71e3f37a26b866156b64c86302f6990
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: fa98977d25f6c1c406b95d0817e841d25c28394f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516382"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374141"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
+
 > [!IMPORTANT]
 > 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
 
@@ -60,7 +61,7 @@ gradle init --type basic
 
 在项目的 build.gradle.kts 文件中，以 `implementation` 语句的形式包含客户端库及所需的插件和设置。
 
-#### <a name="v21-preview"></a>[v2.1 预览版](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 ```kotlin
 plugins {
@@ -81,7 +82,7 @@ dependencies {
 > [!NOTE]
 > 表单识别器 3.1.0-beta.3 SDK 反映了 API 版本 2.1-preview.3。
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 ```kotlin
 plugins {
@@ -106,7 +107,6 @@ dependencies {
 
 ### <a name="create-a-java-file"></a>创建 Java 文件
 
-
 在工作目录中运行以下命令：
 
 ```console
@@ -119,7 +119,6 @@ mkdir -p src/main/java
 
 > [!TIP]
 > 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/FormRecognizer/FormRecognizer.java) 上找到它，其中包含此快速入门中的代码示例。
-
 
 在应用程序的 FormRecognizer 类中，为资源的密钥和终结点创建变量。
 
@@ -138,13 +137,13 @@ mkdir -p src/main/java
 * 若要获取要测试的表单的 URL，可以使用上述步骤获取 blob 存储中单个文档的 SAS URL。 或者获取位于其他位置的文档的 URL。
 * 使用上述方法还可获取回执图像的 URL。
 <!-- markdownlint-disable MD024 -->
-#### <a name="v21-preview"></a>[v2.1 预览版](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
@@ -154,7 +153,7 @@ mkdir -p src/main/java
 
 ## <a name="object-model"></a>对象模型
 
-使用表单识别器，可以创建两种不同的客户端类型。 第一种是 `FormRecognizerClient`，用于查询服务以识别表单域和内容。 第二种是 `FormTrainingClient`，用于创建和管理可用于改进识别的自定义模型。
+使用表单识别器，可以创建两种不同的客户端类型。 第一种是 `FormRecognizerClient`，用于查询服务以识别表单域和内容。 第二种是 `FormTrainingClient`，用于创建和管理可用以改进识别的自定义模型。
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 
@@ -174,13 +173,13 @@ mkdir -p src/main/java
 * 将自定义模型从一个表单识别器资源复制到另一个资源。
 
 > [!NOTE]
-> 还可以使用图形用户界面（例如[表单识别器标记工具](../../quickstarts/label-tool.md)）来训练模型。
+> 还可以使用图形用户界面（例如[表单识别器标记工具](../../label-tool.md)）来训练模型。
 
 ## <a name="code-examples"></a>代码示例
 
 这些代码片段演示如何使用适用于 Java 的表单识别器客户端库执行以下任务：
 <!-- markdownlint-disable MD001 -->
-#### <a name="v21-preview"></a>[v2.1 预览版](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 * [对客户端进行身份验证](#authenticate-the-client)
 * [分析布局](#analyze-layout)
@@ -190,16 +189,16 @@ mkdir -p src/main/java
 * [分析标识文档](#analyze-identity-documents)
 * [训练自定义模型](#train-a-custom-model)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
-* [管理自定义模型](#manage-your-custom-models)
+* [管理自定义模型](#manage-custom-models)
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 * [对客户端进行身份验证](#authenticate-the-client)
 * [分析布局](#analyze-layout)
 * [分析回执](#analyze-receipts)
 * [训练自定义模型](#train-a-custom-model)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
-* [管理自定义模型](#manage-your-custom-models)
+* [管理自定义模型](#manage-custom-models)
 
 ---
 
@@ -223,6 +222,7 @@ mkdir -p src/main/java
 返回的值是 FormPage 对象的集合：提交的文档中的每一页对应一个对象。 下面的代码循环访问这些对象，并输出提取的键/值对和表数据。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_print)]
+
 ### <a name="output"></a>输出
 
 ```console
@@ -241,6 +241,7 @@ Cell has text 4/16/2018.
 Cell has text $89,024.34.
 Cell has text ET.
 ```
+
 ## <a name="analyze-receipts"></a>分析回执
 
 本部分演示如何使用预先训练的收据模型分析和提取美国收据中的常见字段。 有关收据分析的详细信息，请参阅[收据概念指南](../../concept-receipts.md)。
@@ -279,7 +280,7 @@ Total Price: null, confidence: 0.93
 
 ## <a name="analyze-business-cards"></a>分析名片
 
-#### <a name="v21-preview"></a>[v2.1 预览版](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。
 
@@ -294,7 +295,7 @@ Total Price: null, confidence: 0.93
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > 此功能在所选的 API 版本中不可用。
@@ -303,7 +304,7 @@ Total Price: null, confidence: 0.93
 
 ## <a name="analyze-invoices"></a>分析发票
 
-#### <a name="v21-preview"></a>[v2.1 预览版](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 本部分演示如何使用预先训练的模型分析和提取销售发票中的常见字段。 有关发票分析的详细信息，请参阅[发票概念指南](../../concept-invoices.md)。
 
@@ -318,7 +319,7 @@ Total Price: null, confidence: 0.93
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > 此功能在所选的 API 版本中不可用。
@@ -327,7 +328,7 @@ Total Price: null, confidence: 0.93
 
 ## <a name="analyze-identity-documents"></a>分析标识文档
 
-#### <a name="v21-preview"></a>[v2.1 预览版](#tab/preview)
+#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 本部分演示如何使用表单识别器预生成的 ID 模型，分析和提取政府颁发的标识文档（全球护照和美国驾照）中的关键信息。 有关标识文档分析的详细信息，请参阅[预生成的标识模型概念指南](../../concept-identification-cards.md)。
 
@@ -342,7 +343,7 @@ Total Price: null, confidence: 0.93
 
 :::code language="java" source="~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java" id="snippet_id_print":::
 
-#### <a name="v20"></a>[v2.0](#tab/ga)
+#### <a name="v20"></a>[v2.0](#tab/2-0)
 
 > [!IMPORTANT]
 > 此功能在所选的 API 版本中不可用。
@@ -354,7 +355,7 @@ Total Price: null, confidence: 0.93
 本部分演示如何使用自己的数据训练模型。 训练的模型可以输出结构化数据，其中包含原始形式的文档中的键/值关系。 训练模型后，可对其进行测试和重新训练，并最终使用它来根据需求提取其他表单中的数据。
 
 > [!NOTE]
-> 你还可以使用图形用户界面（例如[表单识别器示例标记工具](../../quickstarts/label-tool.md)）来训练模型。
+> 你还可以使用图形用户界面（例如[表单识别器示例标记工具](../../label-tool.md)）来训练模型。
 
 ### <a name="train-a-model-without-labels"></a>不使用标签训练模型
 
@@ -394,15 +395,13 @@ The model found field 'field-6' with label: VAT ID
 
 ### <a name="train-a-model-with-labels"></a>使用标签训练模型
 
-你还可以通过手动标记训练文档来训练自定义模型。 在某些情况下，使用标签训练可改善效果。 若要使用标签训练，你需要在 blob 存储容器中添加特殊标签信息文件 (\<filename\>.pdf.labels.json) 和训练文档。 [表单识别器示例标记工具](../../quickstarts/label-tool.md)提供了可帮助你创建这些标签文件的 UI。 获得它们后，可以调用 beginTraining 方法，并将 useTrainingLabels 参数设置为 `true`。
+你还可以通过手动标记训练文档来训练自定义模型。 在某些情况下，使用标签训练可改善效果。 若要使用标签训练，你需要在 blob 存储容器中添加特殊标签信息文件 (\<filename\>.pdf.labels.json) 和训练文档。 [表单识别器示例标记工具](../../label-tool.md)提供了可帮助你创建这些标签文件的 UI。 获得它们后，可以调用 beginTraining 方法，并将 useTrainingLabels 参数设置为 `true`。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_trainlabels_call)]
-
 
 返回的 CustomFormModel 指示模型可以提取的字段，以及每个字段中的估计准确度。 下面的代码块将此信息输出到控制台。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_trainlabels_print)]
-
 
 ### <a name="output"></a>输出
 
@@ -442,7 +441,6 @@ The model found field 'field-6' with label: VAT ID
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_print)]
 
-
 ### <a name="output"></a>输出
 
 ```console
@@ -458,21 +456,17 @@ Field 'field-5' has label 'Charges' with a confidence score of 1.00.
 Field 'field-6' has label 'VAT ID' with a confidence score of 1.00.
 ```
 
-
-
 ## <a name="manage-custom-models"></a>管理自定义模型
 
 本部分演示如何管理帐户中存储的自定义模型。 例如，下面的代码在单个方法中执行所有模型管理任务。 首先，复制以下方法签名：
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage)]
 
-
 ### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>检查 FormRecognizer 资源帐户中的模型数
 
 下面的代码块会检查表单识别器帐户中保存的模型数，并将其与帐户限制进行比较。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage_count)]
-
 
 #### <a name="output"></a>输出
 
@@ -485,7 +479,6 @@ The account has 12 custom models, and we can have at most 250 custom models
 下面的代码块会列出帐户中的当前模型，并将这些模型的详细信息输出到控制台。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage_list)]
-
 
 #### <a name="output"></a>输出
 
@@ -531,7 +524,7 @@ gradle run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答

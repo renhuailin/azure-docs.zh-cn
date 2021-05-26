@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 5943a65d61dee4fcf610b8cc45139674362995cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a80472aad39e5d1b23cd92519076e0c8b94d67ac
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600711"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478875"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -251,13 +251,13 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 >
 >
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 下面的代码示例演示了如何使用自定义客户端请求 ID。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_UseCustomRequestID":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 如果存储客户端库在客户端上引发 StorageException，则 RequestInformation 属性将包含 RequestResult 对象（其中包含 ServiceRequestID 属性）。 也可以通过 **OperationContext** 实例访问 **RequestResult** 对象。
 
@@ -363,11 +363,11 @@ catch (StorageException storageException)
 
 对于表和队列服务，Nagle 算法也可能会导致高 **AverageE2ELatency**（与 **AverageServerLatency** 相比）：有关详细信息，请参阅博客文章 [Nagle’s Algorithm is Not Friendly towards Small Requests](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)（Nagle 算法对小型请求不友好）。 可以通过使用 **System.Net** 命名空间中的 **ServicePointManager** 类在代码中禁用 Nagle 算法。 应在应用程序中调用表或队列服务之前执行此操作，因为这样做不会影响已打开的连接。 下面的示例来自辅助角色中的 **Application_Start** 方法。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_DisableNagle":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
@@ -510,7 +510,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 存储客户端库生成的以下客户端日志说明了客户端找不到它创建的 Blob 的容器时的问题。 此日志包含以下存储操作的详细信息：
 
-| 请求 ID | 操作 |
+| 请求 ID | Operation |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** 方法，用于删除 Blob 容器。 请注意，此操作包括 **HEAD** 请求以检查该容器是否存在。 |
 | e2d06d78-... |**CreateIfNotExists** 方法，用于创建 Blob 容器。 请注意，此操作包括 **HEAD** 请求，用于检查该容器是否存在。 **HEAD** 返回了 404 消息，但将继续执行。 |
@@ -601,11 +601,11 @@ SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 
 下面的代码示例演示如何配置 Blob 服务，以允许在 Contoso 域中运行的 JavaScript 访问 Blob 存储服务中的 Blob：
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_ConfigureCORS":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
@@ -639,7 +639,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
 下表显示了服务器端日志中针对两个客户端操作的摘录：**DeleteIfExists** 后面紧接使用相同 Blob 容器名称的 **CreateIfNotExists**。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
 
-| 时间戳 | 操作 | 结果 | 容器名称 | 客户端请求 ID |
+| 时间戳 | Operation | 结果 | 容器名称 | 客户端请求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |

@@ -1,6 +1,6 @@
 ---
 title: 名片 - 表单识别器
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 使用表单识别器 API 了解与名片分析相关的概念 - 使用和限制。
 services: cognitive-services
 author: laujan
@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: a7fb5eeb90a26d85b3e56706e0c2b32ceadc8d11
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: eea2ec77a22a430ac5202a2fda446bc70a69138c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330883"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374914"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>表单识别器预生成的名片模型
 
-Azure 表单识别器可以使用其预生成的名片模型来分析和提取名片中的联系人信息。 它结合了强大的光学字符识别 (OCR) 功能与我们的名片理解模型，可从英文名片中提取重要信息。 它提取个人联系信息、公司名称、职务等。 预生成名片 API 在表单识别器 v2.1 预览版中公开提供。
+Azure 表单识别器可以使用其预生成的名片模型来分析和提取名片中的联系人信息。 它结合了强大的光学字符识别 (OCR) 功能与我们的名片理解模型，可从英文名片中提取重要信息。 它提取个人联系信息、公司名称、职务等。 预生成名片 API 在表单识别器 v2.1 中公开提供。
 
 ## <a name="what-does-the-business-card-service-do"></a>名片服务有什么作用？
 
@@ -54,7 +54,7 @@ Azure 表单识别器可以使用其预生成的名片模型来分析和提取�
 
 ## <a name="supported-locales"></a>支持的区域设置
 
-预生成的名片 v2.1-preview.3（公共预览版）支持以下区域设置：
+预生成名片 v2.1 支持以下区域设置：
 
 * **zh-cn**
 * **en-au**
@@ -64,15 +64,15 @@ Azure 表单识别器可以使用其预生成的名片模型来分析和提取�
 
 ## <a name="the-analyze-business-card-operation"></a>Analyze Business Card 操作
 
-[Analyze Business Card](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync) 名片会将名片的图像或 PDF 作为输入，并提取相关值。 该调用返回一个名为 `Operation-Location` 的响应标头字段。 `Operation-Location` 值是一个 URL，其中包含要在下一步骤中使用的结果 ID。
+[Analyze Business Card](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync) 名片会将名片的图像或 PDF 作为输入，并提取相关值。 该调用返回一个名为 `Operation-Location` 的响应标头字段。 `Operation-Location` 值是一个 URL，其中包含要在下一步骤中使用的结果 ID。
 
 |响应标头| 结果 URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync` |
 
 ## <a name="the-get-analyze-business-card-result-operation"></a>Get Analyze Business Card Result 操作
 
-第二步是调用 [Get Analyze Business Card Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeBusinessCardResult) 操作。 此操作采用 Analyze Business Card 操作创建的结果 ID 作为输入。 此操作返回一个 JSON 响应，其中包含具有以下可能值的 **status** 字段。 可以不断地以迭代方式调用此操作，直到它返回 **succeeded** 值为止。 使用 3 到 5 秒的间隔可以避免超过每秒请求数 (RPS) 的速率限制。
+第二步是调用 [Get Analyze Business Card Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeBusinessCardResult) 操作。 此操作采用 Analyze Business Card 操作创建的结果 ID 作为输入。 此操作返回一个 JSON 响应，其中包含具有以下可能值的 **status** 字段。 可以不断地以迭代方式调用此操作，直到它返回 **succeeded** 值为止。 使用 3 到 5 秒的间隔可以避免超过每秒请求数 (RPS) 的速率限制。
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
@@ -410,4 +410,4 @@ Azure 表单识别器可以使用其预生成的名片模型来分析和提取�
 ## <a name="see-also"></a>请参阅
 
 * [什么是表单识别器？](./overview.md)
-* [REST API 参考文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)
+* [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)

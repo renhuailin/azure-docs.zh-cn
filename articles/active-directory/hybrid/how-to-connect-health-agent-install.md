@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a3aff7b99dad910a9691eef2004df856ca883789
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08aad681160a4f0d369fd312ba58c3ea6c7e8780
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224378"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454116"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -210,7 +210,7 @@ ms.locfileid: "103224378"
 
 使用以下 PowerShell 命令，手动注册用于同步的 Azure AD Connect Health 代理。 成功注册代理之后，Azure AD Connect Health 服务会启动。
 
-`Register-AzureADConnectHealthSyncAgent -AttributeFiltering $false -StagingMode $false`
+`Register-AzureADConnectHealthSyncAgent -AttributeFiltering $true -StagingMode $false`
 
 此命令采用以下参数：
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 03/08/2021
-ms.openlocfilehash: 4334166f435612370e7e0b7b380814fe85075f78
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 75efcbd5a037729570da6912d7929951aa5b73e0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046617"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376145"
 ---
 # <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>认知服务文档：2021 年 2 月 1 日 - 2021 年 2 月 28 日的新增内容
 
@@ -40,7 +40,7 @@ ms.locfileid: "105046617"
 
 - [部署示例标记工具](./form-recognizer/deploy-label-tool.md)
 - [什么是表单识别器？](./form-recognizer/overview.md)
-- [使用示例标记工具通过标签来训练表单识别器模型](./form-recognizer/quickstarts/label-tool.md)
+- [使用示例标记工具通过标签来训练表单识别器模型](./form-recognizer/label-tool.md)
 
 ## <a name="text-analytics"></a>文本分析
 

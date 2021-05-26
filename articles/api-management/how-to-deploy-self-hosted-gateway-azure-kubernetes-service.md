@@ -8,18 +8,21 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 05/25/2021
 ms.author: apimpm
-ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 366b0fa70fd5229310d0f999acd07a49c45f0da0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87015215"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375435"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>部署到 Azure Kubernetes 服务
 
-本文提供将 Azure API 管理的自承载网关组件部署到 [Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service/)的步骤。 若要了解如何将自承载网关部署到 Kubernetes 群集，请参阅此[文档](how-to-deploy-self-hosted-gateway-kubernetes.md)。
+本文提供将 Azure API 管理的自承载网关组件部署到 [Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service/)的步骤。 
+
+> [!NOTE]
+> 你还可将自承载网关部署到[已启用 Azure Arc 的 Kubernetes 群集](how-to-deploy-self-hosted-gateway-azure-arc.md)作为[群集扩展](../azure-arc/kubernetes/extensions.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,7 +65,8 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解自承载网关，请参阅 [Azure API 管理自承载网关概述](self-hosted-gateway-overview.md)
-* 详细了解 [Azure Kubernetes 服务](../aks/intro-kubernetes.md)
-* 了解[如何在云中配置和保留日志](how-to-configure-cloud-metrics-logs.md)
-* * 了解[如何在本地配置和保留日志](how-to-configure-local-metrics-logs.md)
+* 若要详细了解自承载网关，请参阅 [Azure API 管理自承载网关概述](self-hosted-gateway-overview.md)。
+* 了解[如何将 API 管理自承载网关部署到已启用 Azure Arc 的 Kubernetes 群集](how-to-deploy-self-hosted-gateway-azure-arc.md)。
+* 了解有关 [Azure Kubernetes 服务](../aks/intro-kubernetes.md)的详细信息。
+* 了解[如何在云中配置和保留日志](how-to-configure-cloud-metrics-logs.md)。
+* 了解[如何在本地配置和保留日志](how-to-configure-local-metrics-logs.md)。

@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.author: egeaney
-ms.openlocfilehash: 19dc0f3a676d5373b28e4b7055050477c426f847
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84f95e4c1d24ee100efbd0572dfe0dc88aca22d3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100524394"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110369470"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker 静态数据加密
 
@@ -28,9 +28,9 @@ ms.locfileid: "100524394"
 
 QnA Maker 使用 Azure 搜索中的 CMK 支持。 [使用 Azure Key Vault 在 Azure 搜索中配置 CMK](../../search/search-security-manage-encryption-keys.md)。 此 Azure 实例必须与 QnA Maker 服务相关联，才能对其启用 CMK。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-QnA Maker 使用 [Azure 搜索中的 CMK 支持](../../search/search-security-manage-encryption-keys.md)，并自动关联提供的 CMK 来对 Azure 搜索索引中存储的数据加密。
+自定义问答使用 [Azure 搜索中的 CMK 支持](../../search/search-security-manage-encryption-keys.md)，并自动关联提供的 CMK，以便对 Azure 搜索索引中存储的数据加密。
 
 ---
 
@@ -59,17 +59,18 @@ QnA Maker 服务使用 Azure 搜索服务中的 CMK。 请按照下列步骤启�
 
 4. 完成后，重新启动运行时。 现在，你的 QnA Maker 服务则已启用 CMK。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
-1.  转到 QnA Maker 托管（预览版本）服务的“加密”选项卡。
+1.  在启用了自定义问答（预览版）功能的情况下，转到文本分析服务的“加密”选项卡。
 2.  选择“客户管理的密钥”选项。 提供[客户管理的密钥](../../storage/common/customer-managed-keys-configure-key-vault.md?tabs=portal)的详细信息，然后单击“保存”。
 
-     :::image type="content" source="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png" alt-text="QnA Maker 托管（预览版本）CMK 设置" lightbox="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png":::
-
+> [!div class="mx-imgBorder"]
+> ![问答 CMK](media/question-answering-cmk.png)
+   
 3.  成功保存后，系统将使用 CMK 来加密 Azure 搜索索引中存储的数据。
 
 > [!IMPORTANT]
-> 建议你在创建任何知识库之前，在全新的 Azure 认知搜索服务中设置 CMK。 如果在已有知识库的 QnA Maker 服务中设置 CMK，可能会失去对它们的访问权限。 了解有关在 Azure 认知搜索中[使用加密内容](../../search/search-security-manage-encryption-keys.md#work-with-encrypted-content)的详细信息。
+> 建议你在创建任何知识库之前，在全新的 Azure 认知搜索服务中设置 CMK。 如果在已有知识库的文本分析服务中设置 CMK，你可能会失去对它们的访问权限。 了解有关在 Azure 认知搜索中[使用加密内容](../../search/search-security-manage-encryption-keys.md#work-with-encrypted-content)的详细信息。
 
 > [!NOTE]
 > 要申请使用客户管理的密钥的权限，请填写并提交[认知服务客户管理的密钥申请表](https://aka.ms/cogsvc-cmk)。

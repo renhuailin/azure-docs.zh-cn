@@ -10,18 +10,18 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a9afef0e2616664578e66be3735104c47bfcffa9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8583229104d29f48784c7790e505852ac4b08dfd
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760744"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376282"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>创建和管理 Azure 机器学习工作区 
 
 本文介绍如何通过 Azure 门户或 [SDK for Python](/python/api/overview/azure/ml/) 创建、查看和删除用于 [Azure 机器学习](overview-what-is-azure-ml.md)的 [Azure 机器学习工作区](concept-workspace.md)
 
-随着需求的变化或自动化要求的增加，还可以[使用 CLI](reference-azure-machine-learning-cli.md) 或[通过 VS Code 扩展](tutorial-setup-vscode-extension.md)创建和删除工作区。
+随着需求的变化或自动化要求的增加，还可以[使用 CLI](reference-azure-machine-learning-cli.md) 或[通过 VS Code 扩展](how-to-setup-vs-code.md)创建和删除工作区。
 
 ## <a name="prerequisites"></a>必备条件
 

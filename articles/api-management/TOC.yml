@@ -133,6 +133,8 @@
           href: zone-redundancy.md
         - name: 预配自托管网关
           href: api-management-howto-provision-self-hosted-gateway.md
+        - name: 在 Azure Arc 上部署 Azure API 管理网关
+          href: how-to-deploy-self-hosted-gateway-azure-arc.md
         - name: 将自托管网关部署到 Azure Kubernetes 服务
           href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
         - name: 将自托管网关部署到 Kubernetes

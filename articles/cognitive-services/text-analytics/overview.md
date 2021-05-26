@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/29/2021
+ms.date: 04/14/2021
 ms.author: aahi
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: b586478b6b3943fb0154ed6c50bade6fd8b08b76
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 66b5918b945c8f098e52b115f2fc74c75d953ff5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219495"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072345"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
 文本分析 API 是一种基于云的服务，它提供用于文本挖掘和文本分析的自然语言处理 (NLP) 功能，包括：情绪分析、观点挖掘、关键短语提取、语言检测和命名实体识别。
 
-该 API 是 [Azure 认知服务](../index.yml)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 REST API [版本 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) 或[版本 3.1-preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/) 或[客户端库](quickstarts/client-libraries-rest-api.md)配合使用。
+该 API 是 [Azure 认知服务](../index.yml)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 REST API [版本 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) 或[版本 3.1-preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/) 或[客户端库](quickstarts/client-libraries-rest-api.md)配合使用。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 

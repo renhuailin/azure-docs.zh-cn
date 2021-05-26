@@ -1,6 +1,6 @@
 ---
 title: Azure 表单识别器灾难恢复指南
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 了解如何使用复制模型 API 来备份表单识别器资源。
 author: laujan
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: b5eb776a7807f48ae6c1a0e3c5879da1f6823830
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ddf13e190f80ddbda0c5b97be4e55e2ca963aef
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466909"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110374520"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>备份和恢复表单识别器模型
 
@@ -162,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>后续步骤
 
 在本指南中，你已学习如何使用复制 API 将自定义模型备份到次要表单识别器资源。 接下来请浏览 API 参考文档，以了解表单识别器的其他作用。
-* [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
+* [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)

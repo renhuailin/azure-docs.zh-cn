@@ -2,14 +2,14 @@
 title: 如何以 WebJobs 的形式运行 Durable Functions - Azure
 description: 了解如何使用 WebJobs SDK 编写 Durable Functions 的代码，并将其配置为在 WebJobs 中运行。
 ms.topic: conceptual
-ms.date: 04/25/2018
+ms.date: 05/12/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1bfc285d1afba0c83d07dcd7da3851231553e2f1
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96009494"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375717"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 WebJobs 的形式运行 Durable Functions
 
@@ -37,7 +37,7 @@ WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载
 
   可以改用 [Visual Studio Code](https://code.visualstudio.com/)，但某些说明仅适用于 Visual Studio。）
 
-* 安装并运行 [Azure 存储模拟器](../../storage/common/storage-use-emulator.md) 5.2 版或更高版本。 替代方法是使用 Azure 存储连接字符串更新 *App.config* 文件。
+* 安装并运行 [Azure 存储仿真器](../../storage/common/storage-use-emulator.md)。 替代方法是使用 real 类型的 Azure 存储连接字符串以更新 App.config 文件。
 
 ## <a name="webjobs-sdk-versions"></a>WebJobs SDK 版本
 
@@ -58,7 +58,7 @@ Visual Studio 还有一个 WebJob 项目模板，选择“云” > “Azure WebJ
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0
 Install-Package Microsoft.Extensions.Logging -version 2.0.1
-Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.3
+Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.7
 ```
 
 还需要日志记录提供程序。 以下命令安装 Azure Application Insights 提供程序和 `ConfigurationManager`。 使用 `ConfigurationManager` 可从应用设置中获取 Application Insights 检测密钥。

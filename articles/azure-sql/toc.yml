@@ -299,6 +299,9 @@
             - name: ARM 模板
               displayName: Resource Manager
               href: database/single-database-create-arm-template-quickstart.md
+            - name: 具有账本和摘要存储
+              displayName: Create Azure SQL Database with ledger
+              href: database/ledger-create-a-single-database-with-ledger-enabled.md
         - name: 配置
           items:
             - name: 服务器级别 IP 防火墙规则
@@ -434,14 +437,32 @@
               href: database/auditing-overview.md
             - name: 审核日志格式
               href: database/audit-log-format.md
-            - name: 网络访问控件
-              href: database/network-access-controls-overview.md
             - name: DNS 别名
               href: database/dns-alias-overview.md
-            - name: VNet 终结点
-              href: database/vnet-service-endpoint-rule-overview.md
+            - name: 账本
+              items:
+                - name: 账本
+                  href: database/ledger-landing.yml
+                - name: 账本概述
+                  href: database/ledger-overview.md
+                - name: 数据库账本
+                  href: database/ledger-database-ledger.md
+                - name: 可更新账本表
+                  href: database/ledger-updatable-ledger-tables.md
+                - name: 仅追加账本表
+                  href: database/ledger-append-only-ledger-tables.md
+                - name: 摘要管理和数据库验证
+                  href: database/ledger-digest-management-and-database-verification.md
+                - name: 账本审核
+                  href: database/ledger-audit.md
+                - name: 账本限制
+                  href: database/ledger-limits.md
+            - name: 网络访问控件
+              href: database/network-access-controls-overview.md
             - name: 专用链接
               href: database/private-endpoint-overview.md
+            - name: VNet 终结点
+              href: database/vnet-service-endpoint-rule-overview.md
         - name: 数据库分片
           items:
             - name: 数据库分片
@@ -522,6 +543,17 @@
               href: database/dynamic-data-masking-configure-portal.md
             - name: 基于 IP 的防火墙
               href: database/firewall-configure.md
+            - name: 账本
+              items:
+                - name: 创建仅追加账本表
+                  href: database/ledger-how-to-append-only-ledger-tables.md
+                - name: 创建可更新账本表
+                  href: database/ledger-how-to-updatable-ledger-tables.md
+                - name: 访问 Azure 机密账本摘要
+                  displayName: Access Azure Confidential Ledger digest
+                  href: database/ledger-how-to-access-acl-digest.md
+                - name: 验证账本数据库是否被篡改
+                  href: database/ledger-verify-database.md
             - name: vNet 终结点 - PowerShell
               href: database/scripts/vnet-service-endpoint-rule-powershell-create.md
         - name: 业务连续性

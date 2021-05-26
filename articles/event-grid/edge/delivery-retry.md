@@ -5,14 +5,15 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 07/08/2020
+ms.subservice: iot-edge
+ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: aa0b3a05fb26f6be951b697145d7b22e03b7792d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 541f85181546dcb9998509841e463fdb0687a5d6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86171612"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370422"
 ---
 # <a name="delivery-and-retry"></a>传递和重试
 
@@ -25,7 +26,7 @@ ms.locfileid: "86171612"
 
 传递消息后，事件网格最多会等待 60 秒，以获得响应。 如果订阅方的终结点未确认响应，则该消息将在某一个回退队列中排队，以便随后重试。
 
-有两个预配置的回退队列，它们将确定重试尝试基于哪个计划执行。 它们分别是：
+有两个预配置的回退队列，它们将确定重试尝试基于哪个计划执行。 它们是：
 
 | 计划 | 说明 |
 | ---------| ------------ |
@@ -41,7 +42,7 @@ ms.locfileid: "86171612"
 
 ## <a name="retry-policy-limits"></a>重试策略限制
 
-可以通过两种配置来确定重试策略。 它们分别是：
+可以通过两种配置来确定重试策略。 它们是：
 
 * 最大尝试次数
 * 事件生存时间 (TTL)

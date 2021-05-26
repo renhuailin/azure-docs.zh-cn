@@ -270,6 +270,8 @@
           href: move-custom-topics-across-regions.md
         - name: 跨区域移动域
           href: move-domains-across-regions.md
+        - name: 跨区域移动合作伙伴命名空间
+          href: move-partner-namespaces-across-regions.md
     - name: 安全
       items:
         - name: 通过专用链接安全地发布事件

@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a37ababcac0208bfa92c2edf221ff5513bcb2e6
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645496"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839304"
 ---
 # <a name="run-opc-publisher"></a>运行 OPC 发布服务器
 
@@ -417,7 +417,7 @@ OPC 发布服务器已准备好用作 [Azure IoT Edge](../iot-edge/index.yml) �
 {
     "Hostname": "publisher",
     "Cmd": [
-        "--pf=./pn.json",
+        "--pf=/appdata/pn.json",
         "--aa"
     ],
     "HostConfig": {

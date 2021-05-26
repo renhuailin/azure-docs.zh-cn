@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 00fa8c27d9f324da0cc5704ee1e2a743907345fe
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 530e33b7b8932ccf1968304140dfc773aa750e82
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188161"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110163342"
 ---
 本指南介绍如何安装用于 Java on Android 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 该安装基于语音 SDK Maven 包和 Android Studio 3.3。
 
@@ -32,8 +32,6 @@ ms.locfileid: "96188161"
 ## <a name="install-the-speech-sdk-using-android-studio"></a>使用 Android Studio 安装语音 SDK
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-java-android-create-proj.md)]
-
-现在可以继续完成下面的[后续步骤](#next-steps)。
 
 ## <a name="next-steps"></a>后续步骤
 
