@@ -413,6 +413,42 @@
       href: /azure/templates/microsoft.compute/virtualmachinescalesets
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
+      href: ../virtual-machines/policy-reference.md
 - name: 资源
-  items: null
+  items:
+    - name: 云采用框架
+      href: /azure/cloud-adoption-framework/get-started/
+    - name: 体系结构中心
+      href: /azure/architecture/
+    - name: 迁移工具
+      href: /azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools
+    - name: Microsoft 问答
+      href: /answers/topics/azure-virtual-machines.html
+    - name: Azure 快速入门模板
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-virtual-machines
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 常见 CLI 命令
+      href: ../virtual-machines/linux/cli-manage.md
+    - name: 常见 PowerShell 命令
+      href: ../virtual-machines/windows/ps-common-ref.md
+    - name: 常见网络 PowerShell 命令
+      href: ../virtual-machines/windows/ps-common-network-ref.md
+    - name: VM 模板说明
+      href: ../virtual-machines/windows/template-description.md
+    - name: 常见问题解答
+      items:
+        - name: Linux
+          href: ../virtual-machines/linux/faq.md
+        - name: Windows
+          href: ../virtual-machines/windows/faq.md
+- name: 支持和疑难解答
+  href: vmss-support-help.md

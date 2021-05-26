@@ -3,12 +3,12 @@ title: 教程：使用 Azure 事件网格自动调整上载图像的大小
 description: 教程：Azure 事件网格可以触发 Azure 存储中的 blob 上传。 你可以用其将上传到 Azure 存储的图像文件发送到其他服务（如 Azure Functions），以调整大小并进行其他改进。
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: e88dff9dcf06ad5eb120c11c4c17c3ef318e4418
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 5b5630fe969f248f10065f1fb5049112da03e391
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897120"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457745"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
@@ -22,7 +22,7 @@ ms.locfileid: "107897120"
 
 ![屏幕截图显示了在浏览器中为 \.NET v12 SDK 发布的 Web 应用。](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 ![屏幕截图显示了 \.NET v10 SDK 在浏览器中发布的 Web 应用。](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
@@ -163,7 +163,7 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
   THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 ```bash
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
@@ -217,7 +217,7 @@ az functionapp deployment source config --name $functionapp --resource-group $re
   --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10) 上提供示例 Node.js 重设大小函数。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) 命令将此函数代码项目部署到函数应用。
 
@@ -245,7 +245,7 @@ az functionapp deployment source config --name $functionapp `
 
 若要详细了解此函数，请参阅 [function.json 和 run.csx 文件](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions)。
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 若要详细了解此函数，请参阅 [function.json 和 index.js 文件](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail)。
 
@@ -303,7 +303,7 @@ az functionapp deployment source config --name $functionapp `
 
 ![屏幕截图显示了 \.NET v12 SDK 在浏览器中发布的标题为“ImageResizer”的 Web 应用。](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 单击“选择文件”选择一个文件，然后单击“上传图像”。 上传成功后，浏览器会导航到一个成功页面。 单击返回到主页的链接。 已上传图像的副本将显示在“生成的缩略图”区域中。 （如果一开始没有显示图像，请尝试重新加载页面。）此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
 

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: f1138f0b33e75968f51965355528805dd29033b3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9a9cfc444c101b603b5287fa862c36d5befef91a
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145621"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189651"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>存储：Azure VM 上的 SQL Server 的性能最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,8 +51,6 @@ ms.locfileid: "108145621"
     - 更改磁盘的缓存设置之前，请始终停止 SQL Server 服务。
 - 对于开发和测试工作负载和长期备份存档，请考虑使用标准存储。 建议不要将标准 HDD/SDD 用于生产工作负载。
 - [基于额度的磁盘突发](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) 仅应考虑用于较小的开发/测试工作负载和部门系统。
-- 预配与 SQL Server VM 位于同一区域的存储帐户。 
-- 在存储帐户上禁用 Azure 异地冗余存储（异地复制）并使用 LRS（本地冗余存储）。
 - 将数据磁盘格式化，为临时 `D:\` 驱动器（默认为 4 KB）以外的驱动器上放置的所有数据文件使用 64 KB 的块大小（分配单元大小）。 通过 Azure 市场部署的 SQL Server VM 附带经过格式化的数据磁盘，其中块大小和存储池的交错设置为 64 KB。 
 
 若要将存储清单与其他清单进行比较，请参阅全面的[性能最佳做法清单](performance-guidelines-best-practices-checklist.md)。 

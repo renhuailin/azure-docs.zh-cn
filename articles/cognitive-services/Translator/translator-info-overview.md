@@ -12,34 +12,32 @@ ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: translator, 文本翻译, 机器翻译, 翻译服务
-ms.openlocfilehash: ec76aa7554110b7440eb825f2d5e86ae2da6baa2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8ece17a0f1452c7ea7f90fc5e14758c03ac36651
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657716"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076503"
 ---
 # <a name="what-is-the-translator-service"></a>什么是 Translator 服务？
 
 Translator 是一种基于云的机器翻译服务，是用于构建智能应用的 [Azure 认知服务](../../index.yml?panel=ai&pivot=products)系列认知 API 的一部分。 “翻译”可以轻松地集成到应用程序、网站、工具和解决方案中。 通过它，您可以在 [90 种语言和方言](./language-support.md)中添加多语言用户体验，并且可以用任何操作系统进行文本翻译。
 
-本文档包含以下文章类型：  
+本文档包含以下文章类型：
 
-* [**快速入门**](quickstart-translator.md)介绍了入门说明，指导您完成向服务发出请求。  
-* [**操作指南**](translator-how-to-signup.md)包含以更具体的方式或自定义方式使用服务的说明。  
-* [**概念**](character-counts.md)对服务的功能和特性进行了深入说明。  
-* [**教程**](tutorial-wpf-translation-csharp.md)是较长的指南，演示如何在更广泛的业务解决方案中使用该服务作为组件。  
-
+* [**快速入门**](quickstart-translator.md)介绍了入门说明，指导您完成向服务发出请求。
+* [**操作指南**](translator-how-to-signup.md)包含以更具体的方式或自定义方式使用服务的说明。
+* [**教程**](tutorial-wpf-translation-csharp.md)是较长的指南，向您演示了如何在更广泛的业务解决方案中使用该服务作为组件。
 
 ## <a name="about-microsoft-translator"></a>关于 Microsoft Translator
 
 “翻译”为许多 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用。
 
-由 Translator 提供支持的语音翻译也可通过 [Azure 语音服务](../speech-service/index.yml)获取。 它将语音翻译 API 和自定义语音服务的功能组合成了一项统一的可完全自定义的服务。 
+由 Translator 提供支持的语音翻译也可通过 [Azure 语音服务](../speech-service/index.yml)获取。 它将语音翻译 API 和自定义语音服务的功能组合成了一项统一的可完全自定义的服务。
 
 ## <a name="language-support"></a>语言支持
 
-Translator 为文本翻译、音译、语言检测和字典提供多语言支持。 请参阅[语言支持](language-support.md)以获取完整的列表，或者通过 [REST API](./reference/v3-0-languages.md) 以编程方式访问列表。  
+Translator 为文本翻译、音译、语言检测和字典提供多语言支持。 请参阅[语言支持](language-support.md)以获取完整的列表，或者通过 [REST API](./reference/v3-0-languages.md) 以编程方式访问列表。
 
 ## <a name="microsoft-translator-neural-machine-translation"></a>Microsoft Translator 神经机器翻译
 
@@ -49,7 +47,7 @@ Translator 为文本翻译、音译、语言检测和字典提供多语言支持
 
 NMT 模型是该 API 的核心，对最终用户不可见。 唯一明显的区别是改进的翻译质量，尤其是针对中文、日语和阿拉伯语等语言。
 
-详细了解 [NMT 的工作原理](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)。
+详细了解 [NMT 的工作原理](https://www.microsoft.com/translator/mt.aspx#nnt)。
 
 ## <a name="improve-translations-with-custom-translator"></a>通过自定义翻译器改进翻译
 
@@ -59,7 +57,7 @@ NMT 模型是该 API 的核心，对最终用户不可见。 唯一明显的区�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建“翻译”服务](./translator-how-to-signup.md)以获取访问密钥和终结点。
-- 请试用[快速入门](quickstart-translator.md)以快速调用 Translator 服务。
-- [API 参考](./reference/v3-0-reference.md)提供了 API 的技术文档。
-- [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
+* [创建“翻译”服务](./translator-how-to-signup.md)以获取访问密钥和终结点。
+* 请试用[快速入门](quickstart-translator.md)以快速调用 Translator 服务。
+* [API 参考](./reference/v3-0-reference.md)提供了 API 的技术文档。
+* [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

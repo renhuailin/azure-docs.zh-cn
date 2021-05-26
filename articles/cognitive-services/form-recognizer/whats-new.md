@@ -1,26 +1,43 @@
 ---
 title: 表单识别器的新增功能
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 了解表单识别器 API 的最新更改。
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
-ms.topic: conceptual
-ms.date: 04/28/2021
+ms.topic: overview
+ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: 58430c94fa1b22954ca640188ced5bfb1fb197d0
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 691094164a9aa57ab9b029455b5e3a0e9fefd63f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293314"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373964"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
-表单识别器服务会持续更新。 使用本文可了解最新的功能增强、修复和文档更新。
+表单识别器服务会持续更新。 将此页添加为书签，随时了解发行说明、功能增强和文档更新。
+
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="form-recognizer-21-ga"></a>表单识别器 2.1（正式发布）
+
+表单识别器 2.1 现已正式发布。 利用此版本，你能够检测和提取以下内容中的信息和数据：
+
+* 文档
+* [Receipts](concept-receipts.md)
+* [名片](concept-business-cards.md)
+* [发票](concept-invoices.md)
+* [标识文档](concept-identification-cards.md)
+* [自定义窗体](concept-custom.md)
+
+### <a name="layout-adds-table-headers"></a>布局中添加了表头
+
+更新后的布局 API 表功能添加了标头识别，其中列标题可跨越多行。 每个表单元格都有一个属性，指示其是否为标头的一部分。 这可用于确定构成表头的行。
 
 ## <a name="april-2021"></a>2021 年 4 月
 <!-- markdownlint-disable MD029 -->
@@ -258,7 +275,7 @@ pip 包版本 3.1.0b4
 可在 GitHub 上找到新示例。
 
 * [知识提取方案 - 表单操作手册](https://github.com/microsoft/knowledge-extraction-recipes-forms)从真实的表单识别器客户互动中收集最佳做法，并提供用于开发这些项目的可用代码示例、清单和示例管道。
-* [示例标记工具](https://github.com/microsoft/OCR-Form-Tools)已更新，以支持新的 2.1 版功能。 请参阅此[快速入门](quickstarts/label-tool.md)，了解如何开始使用此工具。
+* [示例标记工具](https://github.com/microsoft/OCR-Form-Tools)已更新，以支持新的 2.1 版功能。 请参阅此[快速入门](label-tool.md)，了解如何开始使用此工具。
 * [智能展台](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md)表单识别器示例显示了如何集成 `Analyze Receipt` 和 `Train Custom Model` - “在没有标签的情况下进行训练”。
 
 ## <a name="july-2020"></a>2020 年 7 月
@@ -322,7 +339,7 @@ pip 包版本 3.1.0b4
   * `time`
   * `integer`
 
-  若要了解如何使用此功能，请参阅[示例标记工具](./quickstarts/label-tool.md#specify-tag-value-types)指南。
+  若要了解如何使用此功能，请参阅[示例标记工具](label-tool.md#specify-tag-value-types)指南。
 
 * 表可视化 示例标记工具现在会显示在文档中识别的表。 此功能使你可以在标记和分析之前查看已在文档中识别和提取的表。 可以使用“层”选项开启/关闭此功能。
 

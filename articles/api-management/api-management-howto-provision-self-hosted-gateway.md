@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: e79248e16ca21ae84022f8ac7f280d93f489c6a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d75ec1bcb9abd41a1d02c80afec8837f25d3234
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87050343"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370405"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>在 Azure API 管理中预配自承载网关
 
@@ -50,4 +50,5 @@ ms.locfileid: "87050343"
 
 * 若要详细了解自承载网关，请参阅 [Azure API 管理自承载网关概述](self-hosted-gateway-overview.md)
 * 详细了解如何[将自承载网关部署到 Kubernetes](how-to-deploy-self-hosted-gateway-kubernetes.md)
+- 详细了解如何[将自承载网关部署到已启用 Azure Arc 的 Kubernetes 群集](how-to-deploy-self-hosted-gateway-azure-arc.md)
 * 详细了解如何[将自承载网关部署到 Docker](how-to-deploy-self-hosted-gateway-docker.md)

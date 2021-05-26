@@ -3,20 +3,23 @@ title: Azure Durable Functions 中的灾难恢复和异地分布
 description: 了解 Durable Functions 中的灾难恢复和异地分发
 author: MS-Santi
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 01c400f51cce85ef39e9d39bcad1221253c6942d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18919b56ffdc9368f2593f2384b3d7a8e836afd0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89071204"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375957"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Durable Functions 中的灾难恢复和异地分布
 
 Microsoft 致力于确保 Azure 服务一直可用。 不过，可能会发生计划外服务中断。 如果你的应用程序需要复原，Microsoft 建议将应用配置为异地冗余。 此外，客户还应制定用于处理区域服务中断的灾难恢复计划。 灾难恢复计划的一个重要组成部分是，准备在主要副本不可用时将故障转移到应用的次要副本。
 
 在 Durable Functions 中，默认情况下所有状态都保存在 Azure 存储中。 [任务中心](durable-functions-task-hubs.md)是用于[业务流程](durable-functions-types-features-overview.md#orchestrator-functions)和[实体](durable-functions-types-features-overview.md#entity-functions)的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序、活动与实体函数属于同一任务中心时，它们才能彼此进行交互。 本文档在说明保持这些 Azure 存储资源高度可用的方案时，将引用任务中心。
+
+> [!NOTE]
+> 本文中的指南假定你使用默认的 Azure 存储提供程序来存储 Durable Functions 运行时状态。 但可以配置将状态存储在其他位置的备用存储提供程序，例如 SQL Server 提供程序。 备用存储提供程序可能需要不同的灾难恢复和异地分发策略。 有关备用存储提供程序详细信息，请参阅 [Durable Functions 存储提供程序](durable-functions-storage-providers.md)文档。
 
 可以使用通过 HTTP 或其他受支持的 Azure Functions 触发器类型之一触发的[客户端函数](durable-functions-types-features-overview.md#client-functions)来触发业务流程和实体。 还可以使用[内置 HTTP API](durable-functions-http-features.md#built-in-http-apis) 来触发它们。 为简单起见，本文将重点介绍涉及 Azure 存储和基于 HTTP 的函数触发器的方案，以及在灾难恢复活动期间增加可用性和最大限度地减少停机时间的选项。 本文不会明确涉及其他触发器类型（如服务总线或 Cosmos DB 触发器）。
 

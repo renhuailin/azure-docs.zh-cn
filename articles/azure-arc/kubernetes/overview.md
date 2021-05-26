@@ -2,19 +2,19 @@
 title: 已启用 Azure Arc 的 Kubernetes 概述
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/03/2021
+ms.date: 05/25/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
 description: 本文提供已启用 Azure Arc 的 Kubernetes 的概述。
 keywords: Kubernetes、Arc、Azure、容器
 ms.custom: references_regions
-ms.openlocfilehash: 69e9886f214d0076c8e66231fd6ad15bb060828f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 74db1dda9ffdf40ec7e6a571a63986d4ab75c193
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449641"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375347"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>什么是已启用 Azure Arc 的 Kubernetes？
 
@@ -48,6 +48,8 @@ ms.locfileid: "106449641"
 * 使用 Azure Defender for Kubernetes 强制实施威胁防护。
 
 * 使用适用于 Kubernetes 的 Azure Policy 来应用策略。
+
+* 创建[自定义位置](./custom-locations.md)作为目标位置，用于部署已启用 Azure Arc 的数据服务、[Azure Arc 上的应用服务](../../app-service/overview-arc-integration.md)（包括 Web、函数和逻辑应用）和 [Kubernetes 上的事件网格](/azure/event-grid/kubernetes/overview)。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 

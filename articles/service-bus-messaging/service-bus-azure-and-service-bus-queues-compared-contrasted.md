@@ -3,12 +3,12 @@ title: 比较 Azure 存储队列和服务总线队列
 description: 分析 Azure 提供的两种队列类型之间的差异和相似性。
 ms.topic: article
 ms.date: 04/12/2021
-ms.openlocfilehash: 1c3b0fda12d5e301b17a342c5d5ed11ab76c76da
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a63ed276981a692b96b7e7369093af221b3d3a5f
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304352"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190143"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>存储队列和服务总线队列 - 比较与对照
 本文分析 Microsoft Azure 目前提供的以下两种队列类型之间的差异和相似处：存储队列和服务总线队列。 通过使用此信息，可以更明智地选出最适合你需求的解决方案。
@@ -100,7 +100,7 @@ Azure 支持两种队列机制：“存储队列”和“服务总线队列” �
 | 有害消息支持 |**是** |**是** |
 | 就地更新 |**是** |**是** |
 | 服务器端事务日志 |**是** |**否** |
-| 存储度量值 |**是**<br/><br/>分钟指标提供有关可用性、TPS、API 调用计数、错误计数等的实时指标。 它们都是实时的，每分钟聚合一次，并在几分钟内报告生产环境中刚刚发生的事件。 有关详细信息，请参阅[关于存储分析度量值](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics)。 |**是**<br/><br/>有关 Azure 服务总线支持的指标的信息，请参阅[消息指标](service-bus-metrics-azure-monitor.md#message-metrics)。 |
+| 存储度量值 |**是**<br/><br/>分钟指标提供有关可用性、TPS、API 调用计数、错误计数等的实时指标。 它们都是实时的，每分钟聚合一次，并在几分钟内报告生产环境中刚刚发生的事件。 有关详细信息，请参阅[关于存储分析度量值](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics)。 |**是**<br/><br/>有关 Azure 服务总线支持的指标的信息，请参阅[消息指标](monitor-service-bus-reference.md#message-metrics)。 |
 | 状态管理 |**否** |**是**（Active、Disabled、SendDisabled、ReceiveDisabled。 有关这些状态的详细信息，请参阅[队列状态](entity-suspend.md#queue-status)） |
 | 消息自动转发 |**否** |**是** |
 | 清除队列函数 |**是** |**否** |
