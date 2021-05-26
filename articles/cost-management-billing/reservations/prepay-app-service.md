@@ -1,24 +1,24 @@
 ---
 title: 通过预留容量为 Azure 应用服务节省费用
-description: 了解可如何节省 Azure 应用服务 Premium v3 预留实例和独立印花费。
+description: 了解你可以如何节省 Azure 应用服务 Premium v3 和 Premium v2 预留实例成本和独立印花费。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 05/13/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 92a315121ad8ae6fadcadbf6d531eb3e99ae69a9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f80619f1eeb7cdd970e4e3ee64491453c790149d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374535"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378519"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>节省 Azure 应用服务预留实例的费用
 
-本文介绍了可如何使用 Azure 应用服务预留实例节省 Premium v3 实例和独立印花费。
+本文介绍了你可以如何节省 Azure 应用服务 Premium v3 和 Premium v2 预留实例成本和独立印花费。
 
 ## <a name="save-with-premium-v3-reserved-instances"></a>使用 Premium v3 预留实例节省费用
 
@@ -42,7 +42,6 @@ ms.locfileid: "100374535"
 分析你的使用信息，帮助确定应购买哪一种预留。 可在使用情况文件和 API 中获取使用数据。 可结合这两者来确定要购买哪一种预留。 查看每日使用量较高的 Premium v3 实例，确定要购买的预留数量。
 
 使用情况文件按计费周期和每日使用情况显示费用信息。 若要了解如何下载使用情况文件，请参阅[查看和下载 Azure 使用情况信息和费用](../understand/download-azure-daily-usage.md)。 然后，借助使用情况文件信息，可[确定要购买的具体预留](determine-reservation-purchase.md)。
-
 
 ## <a name="buy-a-premium-v3-reserved-instance"></a>购买 Premium v3 预留实例
 
@@ -69,6 +68,32 @@ ms.locfileid: "100374535"
 | Premium v3 预留实例大小 | Premium v3 预留实例的大小。 |
 | 术语 | 一年或三年。 还有一个 5 年期，它仅适用于 HBv2 Premium v3 预留实例。 |
 | 数量 | 预订中购买的实例数。 数量是正在运行且可享受计费折扣的 Premium v3 预留实例数量。 例如，如果你正在美国东部运行 10 个 Standard\_D2 Premium v3 预留实例，则将数量指定为 10，以使所有正在运行的 Premium v3 预留实例尽可能获得最大优势。 |
+
+## <a name="buy-an-isolated-v2-reserved-instance"></a>购买独立 v2 预留实例
+
+可在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)中购买独立 v2 预留实例。 通过[提前付款或按月付款](prepare-buy-reservation.md)的方式为预留付款。 购买独立 v2 预留实例时需满足以下要求：
+
+- 你必须具有至少一个 EA 订阅或采用即用即付费率的订阅的所有者角色。
+- 对于 EA 订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
+- 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理才能购买预留。
+
+若要购买实例，请执行以下操作：
+
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+2. 选择“所有服务”   > “预订”  。
+3. 选择“添加”以购买新的预留，然后单击“实例” 。
+4. 输入必填字段。 与所选属性匹配的正在运行的独立 v2 预留实例有资格享受预留折扣。 可享受折扣的独立 v2 预留实例的实际数目取决于所选范围和数量。
+
+如果你有 EA 协议，则可使用“添加更多选项”来快速添加其他实例。 此选项不可用于其他订阅类型。
+
+| 字段 | **说明** |
+| --- | --- |
+| 订阅 | 用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P）或 Microsoft 客户协议或采用即用即付费率的个人订阅中担任所有者角色（套餐编号：MS-AZR-0003P 或 MS-AZR-0023P）。 从货币承诺余额中扣除费用（如果可用）或作为超额收取费用。 对于采用即用即付费率的订阅，将向订阅的信用卡或发票付款方式收取费用。 |
+| 范围 | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：<UL><LI>**单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li>**单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。</li><li>**共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li> |
+| 区域 | 预订涵盖的 Azure 区域。 |
+| 独立 v2 预留实例大小 | 独立 v2 预留实例的大小。 |
+| 术语 | 一年或三年。 还有一个仅适用于 HBv2 独立 v2 预留实例的 5 年期。 |
+| 数量 | 预订中购买的实例数。 数量是正在运行且可享受计费折扣的独立 v2 预留实例数量。 例如，如果你在美国东部运行 10 个 Standard\_D2 独立 v2 预留实例，则需将数量指定为 10，以充分发挥所有正在运行的独立 v2 预留实例的优势。 |
 
 ## <a name="save-with-isolated-stamp-fees"></a>节省独立印花费用
 

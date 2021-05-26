@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eca43b43606828ebb514f3f22e1839d96db4e0fa
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588250"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461787"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 存储的客户端加密和 Azure 密钥保管库
 
@@ -125,7 +125,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 ### <a name="interface-and-dependencies"></a>接口和依赖项
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 Key Vault 集成有两个必需的包：
 
@@ -134,7 +134,7 @@ Key Vault 集成有两个必需的包：
 
 密钥保管库专为高价值主密钥设计，每个密钥保管库的限流限制的设计也考虑了这一点。 截至 Azure.Security.KeyVault.Keys 4.1.0，都没有支持密钥缓存的 `IKeyEncryptionKeyResolver` 实现。 如果在限制条件下需要缓存，则应按照[本示例](/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/)中的步骤将缓存层注入到 `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` 实例中。
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 有三个密钥保管库包：
 
@@ -179,7 +179,7 @@ Key Vault 集成有两个必需的包：
 
 ### <a name="blob-service-encryption"></a>Blob 服务加密
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 创建一个 **ClientSideEncryptionOptions** 对象并在创建客户端时为其设置 **SpecializedBlobClientOptions**。 你无法按 API 设置加密选项。 其他所有事项均由客户端库在内部处理。
 
@@ -229,7 +229,7 @@ ClientSideEncryptionOptions encryptionOptions;
 BlobClient clientSideEncryptionBlob = plaintextBlob.WithClientSideEncryptionOptions(encryptionOptions);
 ```
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 创建 **BlobEncryptionPolicy** 对象并在请求选项中对其进行设置（使用 **DefaultRequestOptions** 基于每个 API 或在客户端级别设置）。 其他所有事项均由客户端库在内部处理。
 
@@ -255,7 +255,7 @@ blob.DownloadToStream(outputStream, null, options, null);
 
 ### <a name="queue-service-encryption"></a>队列服务加密
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 创建一个 **ClientSideEncryptionOptions** 对象并在创建客户端时为其设置 **SpecializedQueueClientOptions**。 你无法按 API 设置加密选项。 其他所有事项均由客户端库在内部处理。
 
@@ -333,7 +333,7 @@ QueueMessage[] messages = queue.ReceiveMessages(maxMessages: 5).Value;
 Debug.Assert(messages.Length == 4)
 ```
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 创建 **QueueEncryptionPolicy** 对象并在请求选项中对其进行设置（使用 **DefaultRequestOptions** 基于每个 API 或在客户端级别设置）。 其他所有事项均由客户端库在内部处理。
 

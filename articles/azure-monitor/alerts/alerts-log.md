@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c362603771744cf94f3e1d70a9f636f31bbd399a
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 03c6697f07f66cd1d12cae55ddc5f4c73db70505
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750962"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461683"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
 
@@ -35,7 +35,7 @@ ms.locfileid: "109750962"
 
 1. 转到想要对其发出警报的资源。 请考虑尽可能通过选择订阅或资源组范围来设置多个资源的警报规则。 对多个资源发出警报可降低成本，并减少管理多个警报规则的需要。
 1. 在“监视器”下，选择“日志” 。
-1. 查询可以指示问题的日志数据。 可以使用[警报查询示例主题](../logs/example-queries.md)来了解可发现的内容或[开始编写你自己的查询](../logs/log-analytics-tutorial.md)。 此外，[了解如何创建优化的警报查询](alerts-log-query.md)。
+1. 查询可以指示问题的日志数据。 可以使用[警报查询示例主题](../logs/queries.md)来了解可发现的内容或[开始编写你自己的查询](../logs/log-analytics-tutorial.md)。 此外，[了解如何创建优化的警报查询](alerts-log-query.md)。
 1. 按“+ 新建预警规则”按钮启动警报创建流。
 
     ![Log Analytics - 设置警报](media/alerts-log/AlertsAnalyticsCreate.png)

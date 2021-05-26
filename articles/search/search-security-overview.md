@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4310c724707548cd55df5591504736d8f3c3857
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100097630"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460045"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Azure 认知搜索的安全性概述
 
@@ -109,7 +109,7 @@ ms.locfileid: "100097630"
 
 在 Azure 认知搜索中，资源管理器用于创建或删除服务，管理 API 密钥，以及缩放服务。 因此，Azure 角色分配将确定哪些用户可以执行那些任务，而不考虑他们是使用[门户](search-manage.md)、[PowerShell](search-manage-powershell.md) 还是[管理 REST API](/rest/api/searchmanagement/search-howto-management-rest-api)。
 
-为搜索服务管理定义了[三个基本角色](search-security-rbac.md#management-tasks-by-role)。 可以使用任何受支持的方法（门户、PowerShell，等等）来完成角色分配，并且角色分配是在服务范围内执行的。 所有者和参与者角色可执行许多管理功能。 你可以将读取者角色分配给只查看基本信息的用户。
+为搜索服务管理定义了[三个基本角色](search-security-rbac.md)。 可以使用任何受支持的方法（门户、PowerShell，等等）来完成角色分配，并且角色分配是在服务范围内执行的。 所有者和参与者角色可执行许多管理功能。 你可以将读取者角色分配给只查看基本信息的用户。
 
 > [!Note]
 > 利用 Azure 范围内的机制，可以锁定订阅或资源，以防止具备管理员权限的用户意外或在未经授权的情况下删除搜索服务。 有关详细信息，请参阅[锁定资源以防止意外删除](../azure-resource-manager/management/lock-resources.md)。

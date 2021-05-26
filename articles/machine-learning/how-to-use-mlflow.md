@@ -8,17 +8,17 @@ ms.author: shipatel
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.date: 12/23/2020
+ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 41ea16c72794115052234831c8d84a37821645f6
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 783be7d595022ba08d7896540683635dbc59ade4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884257"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378832"
 ---
-# <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure 机器学习训练和跟踪 ML 模型（预览版）
+# <a name="track-ml-models-with-mlflow-and-azure-machine-learning"></a>使用 MLflow 和 Azure 机器学习跟踪 ML 模型
 
 本文介绍如何启用 MLflow 的跟踪 URI 和记录 API（统称为 [MLflow 跟踪](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)），以将 Azure 机器学习作为 MLflow 试验的后端进行连接。 
 
@@ -26,14 +26,11 @@ ms.locfileid: "107884257"
 
 + 在 [Azure 机器学习工作区](./concept-azure-machine-learning-architecture.md#workspace)中跟踪和记录试验指标及项目。 如果已为试验使用 MLflow 跟踪，工作区可提供集中、安全和可缩放的位置，用于存储训练指标和模型。
 
-+ 使用具有 Azure 机器学习后端支持（预览版）的 [MLflow 项目](https://www.mlflow.org/docs/latest/projects.html)提交训练作业。 你可以使用 Azure 机器学习跟踪在本地提交作业，也可以像通过 [Azure 机器学习计算](./how-to-create-attach-compute-cluster.md)那样将运行迁移到云中。
++ [使用 MLflow 项目和 Azure 机器学习后端支持（预览版）提交训练作业](how-to-train-mlflow-projects.md)。 你可以使用 Azure 机器学习跟踪在本地提交作业，也可以像通过 [Azure 机器学习计算](how-to-create-attach-compute-cluster.md)那样将运行迁移到云中。
 
 + 在 MLflow 和 Azure 机器学习模型注册表中跟踪和管理模型。
 
 [MLflow](https://www.mlflow.org) 是一个开放源代码库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，它可以记录和跟踪训练运行指标及模型项目，无论试验环境是在本地计算机上、远程计算目标上、虚拟机上，还是在 [Azure Databricks 群集](how-to-use-mlflow-azure-databricks.md)上。 
-
->[!NOTE]
-> 作为开放源代码库，MLflow 会经常更改。 因此，通过 Azure 机器学习和 MLflow 集成提供的功能应视为预览版，Microsoft 并不完全支持它。
 
 下图说明使用 MLflow 跟踪，你可以跟踪试验的运行指标，并将模型项目存储在 Azure 机器学习工作区中。
 
@@ -41,6 +38,9 @@ ms.locfileid: "107884257"
 
 > [!TIP]
 > 本文档中的信息主要面向需要监视模型训练过程的数据科学家与开发人员。 如果你是一名管理员并想要了解如何监视 Azure 机器学习的资源使用情况和事件（例如配额、已完成的训练运行或已完成的模型部署），请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
+
+> [!NOTE] 
+> 可以使用 [MLflow Skinny 客户端](https://github.com/mlflow/mlflow/blob/master/README_SKINNY.rst)，它是一个不带 SQL 存储、服务器、UI 或数据科学依赖项的轻型 MLflow 包。 对于主要需要用到跟踪和日志记录功能，但不需要导入整个 MLflow 功能套件（包括部署）的用户，建议使用此客户端。 
 
 ## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>比较 MLflow 和 Azure 机器学习客户端
 
@@ -115,6 +115,7 @@ dependencies:
   - numpy
   - pip:
     - azureml-mlflow
+    - mlflow
     - numpy
 ```
 
@@ -131,72 +132,6 @@ with mlflow.start_run():
 
 ```Python
 run = exp.submit(src)
-```
-
-## <a name="train-with-mlflow-projects"></a>使用 MLflow 项目进行训练
-
-[MLflow 项目](https://mlflow.org/docs/latest/projects.html)允许你组织和描述你的代码，使其他数据科学家（或自动化工具）可以运行它。 使用 Azure 机器学习的 MLflow 项目使你可以在工作区中跟踪和管理你的训练运行。 
-
-此示例演示如何使用 Azure 机器学习跟踪在本地提交 MLflow 项目。
-
-安装 `azureml-mlflow` 包，以通过 Azure 机器学习对本地试验使用 MLflow 跟踪。 可以通过 Jupyter Notebook 或代码编辑器运行试验。
-
-```shell
-pip install azureml-mlflow
-```
-
-导入 `mlflow` 和 [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29) 类以访问 MLflow 的跟踪 URI 并配置工作区。
-
-```Python
-import mlflow
-from azureml.core import Workspace
-
-ws = Workspace.from_config()
-
-mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
-```
-
-使用 `set_experiment()` 设置 MLflow 试验名称，并通过 `start_run()` 启动训练运行。 然后使用 `log_metric()` 激活 MLflow 记录 API 并开始记录训练运行指标。
-
-```Python
-experiment_name = 'experiment-with-mlflow-projects'
-mlflow.set_experiment(experiment_name)
-```
-
-创建后端配置对象以存储集成所需的信息，如计算目标以及要使用的托管环境的类型。
-
-```python
-backend_config = {"USE_CONDA": False}
-```
-将 `azureml-mlflow` 包作为 pip 依赖项添加到环境配置文件，以便在工作区中跟踪指标和关键项目。 
-
-``` shell
-name: mlflow-example
-channels:
-  - defaults
-  - anaconda
-  - conda-forge
-dependencies:
-  - python=3.6
-  - scikit-learn=0.19.1
-  - pip
-  - pip:
-    - mlflow
-    - azureml-mlflow
-```
-提交本地运行，并确保设置参数 `backend = "azureml" `。 利用此设置，你可以在本地提交运行，并在工作区中获得对自动输出跟踪、日志文件、快照和打印错误的附加支持。 
-
-在 [Azure 机器学习工作室](overview-what-is-machine-learning-studio.md)中查看运行和指标。 
-
-
-```python
-local_env_run = mlflow.projects.run(uri=".", 
-                                    parameters={"alpha":0.3},
-                                    backend = "azureml",
-                                    use_conda=False,
-                                    backend_config = backend_config, 
-                                    )
-
 ```
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>查看工作区中的指标和项目

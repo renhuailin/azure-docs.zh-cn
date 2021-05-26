@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 0c182e1093c29206d27a0e55a46dd9a5607fa6ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7634a07ab3a0026a06f959c99e7b104a9dc91650
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101701699"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459715"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>启用和管理 Azure 存储分析日志（经典）
 
@@ -113,11 +113,11 @@ ms.locfileid: "101701699"
 
    若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azure/)。  
 
-### <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_EnableDiagnosticLogs":::
 
-### <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -210,7 +210,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
    若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azure/)。  
 
-### <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 下面的示例将 blob 和队列存储服务的保留期输出到控制台。
 
@@ -220,7 +220,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_ModifyRetentionPeriod":::
 
-### <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 下面的示例将 blob 和队列存储服务的保留期输出到控制台。
 

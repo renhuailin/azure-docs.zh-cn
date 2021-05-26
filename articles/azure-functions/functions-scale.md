@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 079ac41f8b138bccbe4d435a79836d3acee71b7d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2cf201c17b97464386ce52f4d689c2c1006d0970
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728617"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377409"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions 托管选项
 
@@ -22,13 +22,16 @@ ms.locfileid: "105728617"
 * 每个函数应用实例可用的资源。
 * 对 Azure 虚拟网络连接等高级功能的支持。
 
-本文详细比较了各种托管计划和基于 Kubernetes 的托管。
+本文详细比较了各种托管计划和基于 [Kubernetes 的托管](functions-kubernetes-keda.md)。
+
+> [!NOTE]
+> 如果选择在 Kubernetes 群集中托管函数，请考虑使用[已启用 Azure Arc 的 Kubernetes 群集](../azure-arc/kubernetes/overview.md)。 预览版中现已包括在已启用 Azure Arc 的 Kubernetes 群集上的托管。 若要了解详细信息，请参阅 [Azure Arc 上的应用服务、函数和逻辑应用](../app-service/overview-arc-integration.md)。  
 
 ## <a name="overview-of-plans"></a>计划概述
 
 下面汇总了适用于 Functions 的三个主要托管计划的优点：
 
-| 计划 | 优点 |
+| 计划 | 好处 |
 | --- | --- |  
 |**[消耗计划](consumption-plan.md)**| 在函数运行时自动缩放，你只需为计算资源付费。<br/><br/>在消耗计划中，会根据传入事件数动态添加和删除 Functions 主机的实例。<br/><br/> ✔ 默认托管计划。<br/>✔ 仅当函数运行时才产生费用。<br/>✔ 即使是在负载较高期间也可自动缩放。|  
 |**[高级计划](functions-premium-plan.md)**|使用预热的工作器根据需要自动缩放，这些工作器在空闲后会毫不延迟地运行应用程序，在更强大的实例上运行，并连接到虚拟网络。 <br/><br/>请考虑下列情况中的 Azure Functions 高级计划： <br/><br/>✔ 你的函数应用持续地运行，或者近乎持续地运行。<br/>✔ 你的消耗计划具有大量的小型执行操作，具有较高的执行费用但较低的 GB 秒数。<br/>✔ 你需要的 CPU 或内存选项超出消耗计划提供的选项。<br/>✔ 你的代码所需的运行时间超过消耗计划允许的最长执行时间。<br/>✔ 你需要使用消耗计划中未提供的功能，例如虚拟网络连接。|  
@@ -39,7 +42,7 @@ ms.locfileid: "105728617"
 | 托管选项 | 详细信息 |
 | --- | --- |  
 |**[ASE](dedicated-plan.md)** | 应用服务环境 (ASE) 是一项应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用。<br/><br/>ASE 适用于有以下要求的应用程序工作负荷： <br/><br/>✔ 极高的缩放性。<br/>✔完全计算隔离和安全的网络访问。<br/>✔ 内存使用率较高。|  
-| **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes 提供了一个在 Kubernetes 平台之上运行的完全隔离的专用环境。<br/><br/> Kubernetes 适用于有以下要求的应用程序工作负荷： <br/>✔ 自定义硬件要求。<br/>✔ 隔离和安全的网络访问。<br/>✔ 能够在混合或多云环境中运行。<br/>✔ 与现有的 Kubernetes 应用程序和服务一起运行。|  
+| **Kubernetes**<br/>（[直接](functions-kubernetes-keda.md)或<br/>[Azure Arc](../app-service/overview-arc-integration.md)） | Kubernetes 提供了一个在 Kubernetes 平台之上运行的完全隔离的专用环境。<br/><br/> Kubernetes 适用于有以下要求的应用程序工作负荷： <br/>✔ 自定义硬件要求。<br/>✔ 隔离和安全的网络访问。<br/>✔ 能够在混合或多云环境中运行。<br/>✔ 与现有的 Kubernetes 应用程序和服务一起运行。|  
 
 本文中的其余表对有关各种功能和行为的计划进行了比较。 有关动态托管计划（“消耗”和“高级”）之间的成本比较，请参阅 [Azure Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)。 有关各种专用计划选项的定价，请参阅[应用服务定价页](https://azure.microsoft.com/pricing/details/app-service/windows/)。 
 
@@ -53,7 +56,8 @@ ms.locfileid: "105728617"
 | **[高级计划](functions-premium-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
 | **[专用计划](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 | **[ASE](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
-| **[Kubernetes](functions-kubernetes-keda.md)** | 不适用 | 不适用 |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| [Kubernetes（直接）](functions-kubernetes-keda.md) | 不适用 | 不适用 |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Azure Arc（预览版）](../app-service/overview-arc-integration.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | 不适用 |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 
 <sup>1</sup> 对于 Python 运行时堆栈，Linux 是唯一受支持的操作系统。 <br/>
 <sup>2</sup> 对于 PowerShell 运行时堆栈，Windows 是唯一受支持的操作系统。<br/>

@@ -8,14 +8,14 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 01/25/2021
+ms.date: 05/25/2021
 ms.author: apimpm
-ms.openlocfilehash: 48abce693ca22163c0a1742ba71faf36fc6156a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 946a2707e68e2f3ce6f78df997d102eeb0c7c450
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99989101"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376963"
 ---
 # <a name="self-hosted-gateway-overview"></a>自托管网关概述
 
@@ -43,7 +43,7 @@ ms.locfileid: "99989101"
 
 ## <a name="packaging-and-features"></a>打包和功能
 
-自托管网关是作为每个 API 管理服务的一部分部署到 Azure 的托管网关的功能等效容器化版本。 自托管网关在 Microsoft 容器注册表中以基于 Linux 的 Docker [容器](https://aka.ms/apim/sputnik/dhub)的形式提供。 它可以部署到 Docker、Kubernetes，或任何其他在本地服务器节点上、云基础结构上或出于评估和开发目的在个人计算机上运行的容器业务流程解决方案。
+自托管网关是作为每个 API 管理服务的一部分部署到 Azure 的托管网关的功能等效容器化版本。 自托管网关在 Microsoft 容器注册表中以基于 Linux 的 Docker [容器](https://aka.ms/apim/sputnik/dhub)的形式提供。 它可以部署到 Docker、Kubernetes，或任何其他在本地服务器节点上、云基础结构上或出于评估和开发目的在个人计算机上运行的容器业务流程解决方案。 还可以将自承载网关作为群集扩展部署到[已启用 Azure Arc 的 Kubernetes 群集](./how-to-deploy-self-hosted-gateway-azure-arc.md)。
 
 托管网关中的以下功能在自托管网关中不可用：
 
@@ -85,3 +85,4 @@ ms.locfileid: "99989101"
 -   [阅读有关本主题更多背景信息的白皮书](https://aka.ms/hybrid-and-multi-cloud-api-management)
 -   [将自承载网关部署到 Docker](how-to-deploy-self-hosted-gateway-docker.md)
 -   [将自承载网关部署到 Kubernetes](how-to-deploy-self-hosted-gateway-kubernetes.md)
+-   [将自承载网关部署到已启用 Azure Arc 的 Kubernetes 群集](how-to-deploy-self-hosted-gateway-azure-arc.md)

@@ -1,6 +1,6 @@
 ---
-title: 什么是沉浸式阅读器？
-titleSuffix: Azure Cognitive Services
+title: 什么是 Azure 沉浸式阅读器？
+titleSuffix: Azure Applied AI Services
 description: 沉浸式阅读器是一种工具，旨在帮助具有学习差异的用户，或者帮助新读者和语言学习者提高阅读理解能力。
 services: cognitive-services
 author: metanMSFT
@@ -12,16 +12,16 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: 读者, 语言学习者, 显示图片, 提高阅读能力, 阅读内容, 翻译
-ms.openlocfilehash: 1911d3ce62434f1dc24966798e9ace259ae072bc
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: a8a8f26f6b79d5a687b3adf5d68bdfd89cc837d4
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801564"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377632"
 ---
-# <a name="what-is-immersive-reader"></a>什么是沉浸式阅读器？
+# <a name="what-is-azure-immersive-reader"></a>什么是 Azure 沉浸式阅读器？
 
-[沉浸式阅读器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术，旨在提高新的读者、语言学习者和有学习差异（如阅读障碍）的用户的阅读理解能力。 通过沉浸式阅读器客户端库，你可利用 Microsoft Word 和 Microsoft OneNote 中所用的相同技术来改进 Web 应用程序。 
+[沉浸式阅读器](https://www.onenote.com/learningtools)是 [Azure 应用 AI 服务](../../applied-ai-services/what-are-applied-ai-services.md)的部件，它是一款具备包容性设计的工具，通过应用可靠的技术，帮助提高新读者、语言学习者和有学习差异（如阅读障碍）的用户的阅读理解能力。 通过沉浸式阅读器客户端库，你可利用 Microsoft Word 和 Microsoft OneNote 中所用的相同技术来改进 Web 应用程序。 
 
 本文档包含以下类型的文章：  
 

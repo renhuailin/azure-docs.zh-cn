@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 11/16/2020
 ms.topic: how-to
-ms.openlocfilehash: d879820c4cb960c4aa90820abed6ee99936a656c
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ba66cee38341fb212e189d69872a3e4af406dd43
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884329"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378713"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>对 Azure Kubernetes 服务中的机器学习 Web 服务使用 Azure AD 标识
 
@@ -23,7 +23,7 @@ ms.locfileid: "107884329"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
+- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 或 [Azure 机器学习 Visual Studio Code 扩展](how-to-setup-vs-code.md)。
 
 - 使用 `kubectl` 命令访问 AKS 群集。 有关详细信息，请参阅[连接到群集](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)
 

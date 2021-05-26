@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
-ms.openlocfilehash: 529fc432bf8777ef7e2b527f08e9cb59e42bf156
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cb4f074cb9487c22fc340b2e7b2941cd7b69ca98
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041019"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459046"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询
 Azure Monitor 日志基于 Azure 数据资源管理器，日志查询是使用相同的 Kusto 查询语言 (KQL) 编写的。 这是一种旨在方便阅读和创作的丰富语言，你只需接受一些基本指导，便可开始编写查询。
@@ -30,7 +30,7 @@ Azure Monitor 中使用查询的区域包括以下几个：
 
 - [Log Analytics 教程](./log-analytics-tutorial.md) - 介绍如何使用 Log Analytics 功能的教程。Log Analytics 是 Azure 门户中用来编辑和运行查询的工具。 它还允许你在不直接使用查询语言的情况下编写简单查询。 如果你以前没有使用过 Log Analytics，可从本教程着手，了解将在其他教程和示例中使用的工具。
 - [KQL 教程](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor) - 引导性地介绍了基本的 KQL 概念和常用运算符。 这是着手了解语言本身和日志查询结构的最佳教程。 
-- [示例查询](../logs/example-queries.md) - 描述 Log Analytics 中可用的示例查询。 你可以不加修改地使用这些查询，也可以将它们作为学习 KQL 的示例。
+- [示例查询](../logs/queries.md) - 描述 Log Analytics 中可用的示例查询。 你可以不加修改地使用这些查询，也可以将它们作为学习 KQL 的示例。
 - [查询示例](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor) - 演示各种不同概念的示例查询。
 
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: caedefbf3887205b68bcd5de5e7cd5f1f7d7f53c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6cc461aa2c73ad17086e9dece7d976f9de235682
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801003"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464998"
 ---
 # <a name="migrate-data-from-cassandra-to-an-azure-cosmos-db-cassandra-api-account-by-using-azure-databricks"></a>使用 Azure Databricks 将数据从 Cassandra 迁移到 Azure Cosmos DB Cassandra API 帐户
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -48,9 +48,9 @@ Azure Cosmos DB 中的 Cassandra API 已成为在 Apache Cassandra 上运行的�
 
 ## <a name="add-dependencies"></a>添加依赖项
 
-你需要将 Apache Spark Cassandra 连接器库添加到群集，以便连接到原生终结点和 Azure Cosmos DB Cassandra 终结点。 在群集中，选择“库” > “安装新库” > “Maven”，然后在 Maven 坐标中添加 `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0`。  
+你需要将 Apache Spark Cassandra 连接器库添加到群集，以便连接到原生终结点和 Azure Cosmos DB Cassandra 终结点。 在群集中，选择“库” > “安装新库” > “Maven”，然后在 Maven 坐标中添加 `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0`  。
 
-:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="屏幕截图，显示在 Databricks 中搜索 Maven 包。":::
+:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="屏幕截图显示在 Databricks 中搜索 Maven 包。":::
 
 选择“安装”，然后在安装完成后重启群集。
 
@@ -89,6 +89,8 @@ val cosmosCassandra = Map(
     //throughput related settings below - tweak these depending on data volumes. 
     "spark.cassandra.output.batch.size.rows"-> "1",
     "spark.cassandra.output.concurrent.writes" -> "1000",
+    //"spark.cassandra.connection.remoteConnectionsPerExecutor" -> "1", // Spark 3.x
+    "spark.cassandra.connection.connections_per_executor_max"-> "1", // Spark 2.x
     "spark.cassandra.concurrent.reads" -> "512",
     "spark.cassandra.output.batch.grouping.buffer.size" -> "1000",
     "spark.cassandra.connection.keep_alive_ms" -> "600000000"
@@ -106,7 +108,7 @@ DFfromNativeCassandra
   .write
   .format("org.apache.spark.sql.cassandra")
   .options(cosmosCassandra)
-  .mode(SaveMode.Append)
+  .mode(SaveMode.Append) // only required for Spark 3.x
   .save
 ```
 

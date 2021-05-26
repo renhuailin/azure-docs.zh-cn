@@ -153,6 +153,8 @@
       href: v2-permissions-and-consent.md
     - name: 条件性访问
       href: v2-conditional-access-dev-guide.md
+    - name: 认证上下文
+      href: developer-guide-conditional-access-authentication-context.md
     - name: 自动用户预配 (SCIM)
       href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
 - name: 操作说明

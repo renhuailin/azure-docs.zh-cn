@@ -3,14 +3,14 @@ title: Durable Functions 中的 HTTP API - Azure Functions
 description: 了解如何实现 Azure Functions 的 Durable Functions 扩展中的 HTTP API。
 author: cgillum
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: eff6a44734600a6399f76fc7be331835ae395593
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84697837"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110377443"
 ---
 # <a name="http-api-reference"></a>HTTP API 引用
 
@@ -21,10 +21,10 @@ Durable Functions 扩展公开一组内置的 HTTP API，这些 API 可以用来
 | 参数        | 参数类型  | 说明 |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | 查询字符串    | [任务中心](durable-functions-task-hubs.md)的名称。 如果未指定，则使用当前函数应用的任务中心名称。 |
-| **`connection`** | 查询字符串    | 用于存储帐户的连接字符串的名称。 如果未指定，则使用函数应用的默认连接字符串。 |
+| **`connection`** | 查询字符串    | 后端存储提供程序的连接应用程序设置的名称。 如果未指定，则使用函数应用的默认连接配置。 |
 | **`systemKey`**  | 查询字符串    | 需要授权密钥才可调用 API。 |
 
-`systemKey` 是 Azure Functions 主机自动生成的授权密钥。 它可专门向 Durable Task 扩展 API 授予访问权限，且可通过与管理[其他授权密钥](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)相同的方式进行管理。 可以使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client) API（例如 .NET 中的 `CreateCheckStatusResponse` 和 `CreateHttpManagementPayload` API，或者 JavaScript 中的 `createCheckStatusResponse` 和 `createHttpManagementPayload` API）生成包含正确的 `taskHub`、`connection` 和 `systemKey` 查询字符串值的 URL。
+`systemKey` 是 Azure Functions 主机自动生成的授权密钥。 它可专门向 Durable Task 扩展 API 授予访问权限，且可通过与管理[其他 Azure Functions 访问密钥](../security-concepts.md#function-access-keys)相同的方式进行管理。 可以使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client) API（例如 .NET 中的 `CreateCheckStatusResponse` 和 `CreateHttpManagementPayload` API、JavaScript 中的 `createCheckStatusResponse` 和 `createHttpManagementPayload` API 等）生成包含正确的 `taskHub`、`connection` 和 `systemKey` 查询字符串值的 URL。
 
 后面几节介绍扩展支持的特殊 HTTP API，并提供有关其用法的示例。
 
@@ -128,6 +128,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 在 2.x 版 Functions 运行时中，URL 格式包含的所有参数相同，但前缀略有不同：
@@ -140,6 +141,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 此 API 的请求参数包括前面提及的默认集及以下唯一参数：
@@ -153,16 +155,17 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 | **`createdTimeFrom`**   | 查询字符串    | 可选参数。 指定后，将筛选在给定 ISO8601 时间戳当时或之后创建的返回实例列表。|
 | **`createdTimeTo`**     | 查询字符串    | 可选参数。 指定后，将筛选在给定 ISO8601 时间戳当时或之前创建的返回实例列表。|
 | **`runtimeStatus`**     | 查询字符串    | 可选参数。 指定后，根据其运行时状态筛选返回实例列表。 若要查看可能的运行时状态值列表，请参阅[查询实例](durable-functions-instance-management.md)一文。 |
+| **`returnInternalServerErrorOnFailure`**  | 查询字符串    | 可选参数。 如果设置为 `true`，则当实例处于故障状态时，此 API 将返回 HTTP 500 响应而不是 200。 此参数适用于自动状态轮询方案。 |
 
 ### <a name="response"></a>响应
 
 可返回若干可能的状态代码值。
 
-* HTTP 200 (正常)：指定实例的状态为已完成。
+* **HTTP 200 (正常)** ：指定实例的状态为已完成或失败。
 * HTTP 202 (已接受)：指定实例正在进行中。
 * HTTP 400 (错误请求)：指定实例失败或已终止。
 * HTTP 404 (找不到)：指定实例不存在或未开始运行。
-* **HTTP 500 (内部服务器错误)**：指定实例因未处理的异常而失败。
+* **HTTP 500 (内部服务器错误)** ：仅当 `returnInternalServerErrorOnFailure` 设置为 `true` 且指定实例失败并出现未经处理的异常时才返回。
 
 值为 HTTP 200 和 HTTP 202 时的响应负载是包含以下字段的 JSON 对象：
 
@@ -236,9 +239,6 @@ HTTP 202 响应还包括 Location 响应标头，该标头引用了与上文提�
 ## <a name="get-all-instances-status"></a>获取所有实例状态
 
 此外，可以通过从“获取实例状态”请求中删除 `instanceId`，来查询所有实例的状态。 在这种情况下，基本参数与“获取实例状态”相同。 也支持使用查询字符串参数进行筛选。
-
-请务必牢记 `connection` 和 `code` 可选。 如果你在函数上有匿名身份验证，则不需要 `code`。
-如果你不想要使用 AzureWebJobsStorage 应用设置中未定义的其他存储连接字符串，则可以安全地忽略连接查询字符串参数。
 
 ### <a name="request"></a>请求
 
@@ -337,8 +337,7 @@ GET /runtime/webhooks/durableTask/instances?
 ```
 
 > [!NOTE]
-> 如果实例表中有很多行，则此操作在 Azure存储 I/O 方面可能代价非常高昂。 有关实例表的更多详细信息，请参阅 [Durable Functions (Azure Functions) 中的性能和缩放](durable-functions-perf-and-scale.md#instances-table)文档。
->
+> 如果你使用的是[默认的 Azure 存储提供程序](durable-functions-storage-providers.md#azure-storage)，并且在实例表中有很多行，则此操作在 Azure 存储 I/O 方面可能非常昂贵。 有关实例表的更多详细信息，请参阅 [Durable Functions (Azure Functions) 中的性能和缩放](durable-functions-perf-and-scale.md#instances-table)文档。
 
 如果存在更多结果，则会在响应标头中返回继续标记。  标头的名称为 `x-ms-continuation-token`。
 
@@ -434,7 +433,7 @@ DELETE /runtime/webhooks/durabletask/instances
 | **`runtimeStatus`**   | 查询字符串    | 可选参数。 指定后，将根据运行时状态筛选已清除实例的列表。 若要查看可能的运行时状态值列表，请参阅[查询实例](durable-functions-instance-management.md)一文。 |
 
 > [!NOTE]
-> 如果“实例”和/或“历史记录”表中包含许多的行，则此操作可能会导致很高的 Azure 存储 I/O 开销。 有关这些表的更多详细信息，请参阅 [Durable Functions (Azure Functions) 中的性能和缩放](durable-functions-perf-and-scale.md#instances-table)文档。
+> 如果你使用的是[默认的 Azure 存储提供程序](durable-functions-storage-providers.md#azure-storage)，并且实例表和/或历史记录表中有很多行，则此操作在 Azure 存储 I/O 方面可能非常昂贵。 有关这些表的更多详细信息，请参阅 [Durable Functions (Azure Functions) 中的性能和缩放](durable-functions-perf-and-scale.md#instances-table)文档。
 
 ### <a name="response"></a>响应
 

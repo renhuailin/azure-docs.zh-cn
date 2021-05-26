@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: b09c36f1dce3c394ff24e3e601d773279a6ac510
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3f12881bd0cb7114f32cab5b7a67d80a73f4fe
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102123303"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372835"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的最佳做法
 
@@ -119,8 +119,8 @@ GenerateAnswer API 同时使用问题和答案来搜索用户查询的最佳答�
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 虽然英语中对同义词提供一定程度的支持，但应通过[变更 API](/rest/api/cognitiveservices/qnamaker/alterations/replace)，使用不区分大小写的字词的变更将同义词添加到具有不同形式的关键字中。 同义词添加到 QnA Maker 服务级别并由服务中的所有知识库共享。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
-虽然英语中对同义词提供一定程度的支持，但应通过[变更 API](/rest/api/cognitiveservices/qnamaker/alterations/replace)，使用不区分大小写的字词的变更将同义词添加到具有不同形式的关键字中。 QnA Maker 托管（预览版）中的同义词是按知识库添加的。
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+虽然英语中对同义词提供一定程度的支持，但应通过[变更 API](/rest/api/cognitiveservices/qnamaker/alterations/replace)，使用不区分大小写的字词的变更将同义词添加到具有不同形式的关键字中。 自定义问答（预览版）中的同义词是按知识库添加的。
 
 |原始字|同义词|
 |--|--|

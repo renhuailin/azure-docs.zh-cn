@@ -4,112 +4,122 @@ description: 了解如何使用 Azure Active Directory 为 Azure Cosmos DB 帐�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 05/25/2021
 ms.author: thweiss
-ms.openlocfilehash: 7c5497615ce71d0be713ef9ae28ab1e0f85b7ddb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 35e3d4668fc3a5eb260bc187ec1cb6177f91911b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177226"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378467"
 ---
-# <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>使用 Azure Cosmos DB 帐户 (预览的 Azure Active Directory 配置基于角色的访问控制) 
+# <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account"></a>使用 Azure Active Directory 为 Azure Cosmos DB 帐户配置基于角色的访问控制
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-> [!IMPORTANT]
-> Azure Cosmos DB 基于角色的访问控制当前为预览版。 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 > [!NOTE]
-> 本文介绍了有关 Azure Cosmos DB 中的数据平面操作的基于角色的访问控制。 如果使用管理平面操作，请参阅应用于管理平面操作 [一文的基于角色的访问控制](role-based-access-control.md) 。
+> 本文介绍了有关 Azure Cosmos DB 中数据平面操作的基于角色的访问控制。 如果使用管理平面操作，请参阅适用于管理平面操作的[基于角色的访问控制](role-based-access-control.md)一文。
 
 Azure Cosmos DB 公开了一种内置的基于角色的访问控制 (RBAC) 系统，可让你：
 
 - 使用 Azure Active Directory (Azure AD) 标识来验证数据请求。
-- 使用细化的基于角色的权限模型来授权你的数据请求。
+- 使用细粒度的、基于角色的权限模型来授权数据请求。
 
 ## <a name="concepts"></a>概念
 
-Azure Cosmos DB 数据平面 RBAC 建立在其他 RBAC 系统（如 [AZURE RBAC](../role-based-access-control/overview.md)）中常见的概念之上：
+Azure Cosmos DB 数据平面 RBAC 建立在其他 RBAC 系统（如 [Azure RBAC](../role-based-access-control/overview.md)）中常见的概念之上：
 
-- [权限模型](#permission-model)由一组 **操作** 组成;其中每个操作都映射到一个或多个数据库操作。 操作的一些示例包括读取项、写入项或执行查询。
-- Azure Cosmos DB 用户创建包含允许操作列表的 **[角色定义](#role-definitions)** 。
-- 角色定义通过 **[角色分配](#role-assignments)** 分配给特定 Azure AD 标识。 角色分配还定义了角色定义适用的作用域;目前有三个作用域：
-    - Azure Cosmos DB 帐户，
+- [权限模型](#permission-model)由一组操作组成；其中每个操作都映射到一个或多个数据库操作。 操作的一些示例包括读取项、写入项或执行查询。
+- Azure Cosmos DB 用户创建包含允许操作列表的[角色定义](#role-definitions)。
+- 角色定义通过[角色分配](#role-assignments)分配给特定 Azure AD 标识。 角色分配还定义了角色定义适用的范围；目前有三个范围：
+    - 一个 Azure Cosmos DB 帐户，
     - 一个 Azure Cosmos DB 数据库，
     - 一个 Azure Cosmos DB 容器。
 
   :::image type="content" source="./media/how-to-setup-rbac/concepts.png" alt-text="RBAC 概念":::
 
-> [!NOTE]
-> Azure Cosmos DB RBAC 当前不公开任何内置角色定义。
-
 ## <a name="permission-model"></a><a id="permission-model"></a> 权限模型
+
+> [!IMPORTANT]
+> 此权限模型仅涵盖可用于读取和写入数据的数据库操作。 它不包含任何类型的管理操作，例如创建容器或更改其吞吐量。 这意味着无法使用任何 Azure Cosmos DB 数据平面 SDK 通过 SDK 标识对管理操作进行身份验证。 相反，必须通过以下项使用 [Azure RBAC](role-based-access-control.md)：
+> - [Azure 资源管理器 (ARM) 模板](manage-with-templates.md)
+> - [Azure PowerShell 脚本](manage-with-powershell.md)，
+> - [Azure CLI 脚本](manage-with-cli.md)，
+> - 以下版本的 Azure 管理库
+>   - [.NET](https://www.nuget.org/packages/Azure.ResourceManager.CosmosDB)
+>   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)
+>   - [Python](https://pypi.org/project/azure-mgmt-cosmosdb/)
 
 下表列出了权限模型公开的所有操作。
 
-| 名称 | 对应的数据库操作 (s)  |
+| 名称 | 对应的数据库操作 |
 |---|---|
-| `Microsoft.DocumentDB/databaseAccounts/readMetadata` | 读取帐户元数据。 有关详细信息，请参阅 [元数据请求](#metadata-requests) 。 |
+| `Microsoft.DocumentDB/databaseAccounts/readMetadata` | 读取帐户元数据。 有关详细信息，请参阅[元数据请求](#metadata-requests)。 |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create` | 创建新项。 |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read` | 按 (点读取) 读取单个项的 ID 和分区键。 |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read` | 通过 ID 和分区键读取单个项（点读）。 |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/replace` | 替换现有项。 |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/upsert` | "Upsert" 项，这意味着，如果它不存在，则将其创建，如果存在，则替换它。 |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/upsert` | “Upsert”一个项，意味着如果项不存在就创建项，如果存在就替换它。 |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/delete` | 删除项。 |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery` | 执行 [SQL 查询](sql-query-getting-started.md)。 |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed` | 从容器的 [更改源](read-change-feed.md)读取数据。 |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeStoredProcedure` | 执行 [存储过程](stored-procedures-triggers-udfs.md)。 |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/manageConflicts` | 管理多写入区域帐户的 [冲突](conflict-resolution-policies.md) (即，列出并删除冲突源) 中的项。 |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed` | 从容器的[更改源](read-change-feed.md)读取。 |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeStoredProcedure` | 执行[存储过程](stored-procedures-triggers-udfs.md)。 |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/manageConflicts` | 管理多写入区域帐户的[冲突](conflict-resolution-policies.md)（即，列出并删除冲突源中的项）。 |
 
-*容器* 和 *项* 级别支持通配符：
+容器和项级别均支持通配符：
 
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`
 
-> [!IMPORTANT]
-> 此权限模型仅涵盖可用于读取和写入数据的数据库操作。 它 **不** 包含任何类型的管理操作，例如创建容器或更改其吞吐量。 若要使用 AAD 标识对管理操作进行身份验证，请改用 [AZURE RBAC](role-based-access-control.md) 。
-
 ### <a name="metadata-requests"></a><a id="metadata-requests"></a> 元数据请求
 
-使用 Azure Cosmos DB Sdk 时，这些 Sdk 会在初始化期间发出只读元数据请求并为特定的数据请求提供服务。 这些元数据请求提取各种配置详细信息，例如： 
+使用 Azure Cosmos DB SDK 时，这些 SDK 会在初始化期间发出只读元数据请求并为特定数据请求提供服务。 这些元数据请求提取各种配置详细信息，例如： 
 
-- 帐户的全局配置，其中包括可用的帐户所在的 Azure 区域。
+- 帐户的全局配置，其中包括帐户可用的 Azure 区域。
 - 容器或其索引策略的分区键。
-- 构成容器及其地址的物理分区的列表。
+- 构成容器及其地址的物理分区列表。
 
-它们 *不* 会提取你在帐户中存储的任何数据。
+它们不会提取你在帐户中存储的任何数据。
 
-为了确保最大程度地提高权限模型的透明度，这些元数据请求由操作明确覆盖 `Microsoft.DocumentDB/databaseAccounts/readMetadata` 。 每种情况下都应该允许此操作，在这种情况下，可以通过 Azure Cosmos DB 的 Sdk 之一访问 Azure Cosmos DB 帐户。 可以通过角色分配) 在 Azure Cosmos DB 层次结构中的任何级别上 (分配该角色， (为、帐户、数据库或容器) 。
+为了确保最大程度地提高权限模型的透明度，这些元数据请求由 `Microsoft.DocumentDB/databaseAccounts/readMetadata` 操作显式覆盖。 在任何通过某个 Azure Cosmos DB SDK 访问 Azure Cosmos DB 帐户的情况下，都应允许此操作。 它可以在 Azure Cosmos DB 层次结构的任何级别（即帐户、数据库或容器）中分配（通过角色分配）。
 
-操作允许的实际元数据请求 `Microsoft.DocumentDB/databaseAccounts/readMetadata` 取决于操作分配到的范围：
+`Microsoft.DocumentDB/databaseAccounts/readMetadata` 操作允许的实际元数据请求取决于分配操作的范围：
 
 | 范围 | 操作允许的请求 |
 |---|---|
-| 帐户 | -列出帐户下的数据库<br>-对于帐户下的每个数据库，允许在数据库范围内执行的操作 |
-| 数据库 | -读取数据库元数据<br>-列出数据库下的容器<br>-对于数据库下的每个容器，容器范围内允许的操作 |
-| 容器 | -读取容器元数据<br>-列出容器下的物理分区<br>-解析每个物理分区的地址 |
+| 帐户 | - 列出帐户下的数据库<br>- 对于帐户下的每个数据库，数据库范围内允许的操作 |
+| 数据库 | - 读取数据库元数据<br>- 列出数据库下的容器<br>- 对于数据库下的每个容器，容器范围内允许的操作 |
+| 容器 | - 读取容器元数据<br>- 列出容器下的物理分区<br>- 解析每个物理分区的地址 |
 
-## <a name="create-role-definitions"></a><a id="role-definitions"></a> 创建角色定义
+## <a name="built-in-role-definitions"></a>内置角色定义
 
-创建角色定义时，需要提供：
+Azure Cosmos DB 公开 2 个内置角色定义：
+
+| ID | 名称 | 包含的操作 |
+|---|---|---|
+| 00000000-0000-0000-0000-000000000001 | Cosmos DB 内置数据读取者 | `Microsoft.DocumentDB/databaseAccounts/readMetadata`<br>`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read`<br>`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery`<br>`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed` |
+| 00000000-0000-0000-0000-000000000002 | Cosmos DB 内置数据参与者 | `Microsoft.DocumentDB/databaseAccounts/readMetadata`<br>`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`<br>`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*` |
+
+## <a name="create-custom-role-definitions"></a><a id="role-definitions"></a> 创建自定义角色定义
+
+创建自定义角色定义时，需要提供：
 
 - Azure Cosmos DB 帐户的名称。
 - 包含帐户的资源组。
-- 角色定义的类型; `CustomRole` 目前仅支持。
+- 角色定义的类型：`CustomRole`。
 - 角色定义的名称。
-- 希望角色允许的 [操作](#permission-model) 的列表。
-- 一个或多个作用域 (s) 可在其中分配角色定义;支持的作用域包括：
-    - `/` (帐户级) ，
-    - `/dbs/<database-name>` (数据库级) ，
-    - `/dbs/<database-name>/colls/<container-name>` (容器级) 。
+- 希望角色允许的[操作](#permission-model)列表。
+- 可分配角色定义的一个或多个范围；支持的范围包括：
+    - `/`（帐户级别）、
+    - `/dbs/<database-name>`（数据库级别）、
+    - `/dbs/<database-name>/colls/<container-name>`（容器级别）。
 
 > [!NOTE]
-> 下面所述的操作当前在中可用：
-> - Azure PowerShell： [CosmosDB 2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
-> - Azure CLI： ["cosmosdb" 扩展版本 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+> 下面所述的操作当前在以下环境中可用：
+> - Azure PowerShell：[Az.CosmosDB 2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI：[“cosmosdb-preview”扩展版 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
-创建一个名为 *MyReadOnlyRole* 的角色，该角色只包含读取操作：
+创建一个名为 MyReadOnlyRole 的角色，该角色只包含读取操作：
 
 ```powershell
 $resourceGroupName = "<myResourceGroup>"
@@ -125,7 +135,7 @@ New-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
     -AssignableScope "/"
 ```
 
-创建一个名为 *MyReadWriteRole* 的角色，其中包含所有操作：
+创建一个名为 MyReadWriteRole 的角色，其中包含所有操作：
 
 ```powershell
 New-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
@@ -138,7 +148,7 @@ New-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
     -AssignableScope "/"
 ```
 
-列出已创建的用于提取其 Id 的角色定义：
+列出已创建的用于提取其 ID 的角色定义：
 
 ```powershell
 Get-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
@@ -165,7 +175,7 @@ AssignableScopes : {/subscriptions/<mySubscriptionId>/resourceGroups/<myResource
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
 
-创建一个名为 *MyReadOnlyRole* 的角色，该角色只包含读取操作：
+创建一个名为 MyReadOnlyRole 的角色，该角色只包含读取操作：
 
 ```json
 // role-definition-ro.json
@@ -190,7 +200,7 @@ accountName='<myCosmosAccount>'
 az cosmosdb sql role definition create --account-name $accountName --resource-group $resourceGroupName --body @role-definition-ro.json
 ```
 
-创建一个名为 *MyReadWriteRole* 的角色，其中包含所有操作：
+创建一个名为 MyReadWriteRole 的角色，其中包含所有操作：
 
 ```json
 // role-definition-rw.json
@@ -212,7 +222,7 @@ az cosmosdb sql role definition create --account-name $accountName --resource-gr
 az cosmosdb sql role definition create --account-name $accountName --resource-group $resourceGroupName --body @role-definition-rw.json
 ```
 
-列出已创建的用于提取其 Id 的角色定义：
+列出已创建的用于提取其 ID 的角色定义：
 
 ```azurecli
 az cosmosdb sql role definition list --account-name $accountName --resource-group $resourceGroupName
@@ -266,28 +276,32 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 ]
 ```
 
+### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
+
+有关使用 Azure 资源管理器模板创建角色定义的参考和示例，请参阅[此页](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/sqlresources2/createupdatesqlroledefinition)。
+
 ## <a name="create-role-assignments"></a><a id="role-assignments"></a> 创建角色分配
 
-创建角色定义后，可以将其与 AAD 标识相关联。 创建角色分配时，需要提供：
+可以将内置或自定义角色定义与 Azure AD 标识相关联。 创建角色分配时，需要提供：
 
 - Azure Cosmos DB 帐户的名称。
 - 包含帐户的资源组。
 - 要分配的角色定义的 ID。
 - 应为角色定义分配的标识的主体 ID。
-- 角色分配的范围;支持的作用域包括：
-    - `/` (帐户级别的) 
-    - `/dbs/<database-name>` (数据库级别的) 
-    - `/dbs/<database-name>/colls/<container-name>` (容器级别的) 
+- 角色分配的范围；支持的范围包括：
+    - `/`（帐户级别）
+    - `/dbs/<database-name>`（数据库级别）
+    - `/dbs/<database-name>/colls/<container-name>`（容器级别）
 
-  作用域必须与角色定义的可分配作用域之一的子作用域匹配。
-
-> [!NOTE]
-> 若要创建服务主体的角色分配，请确保使用 **Azure Active Directory** 门户边栏选项卡的 "**企业应用程序**" 部分中的 "**对象 ID** "。
+  范围必须与角色定义的某个可分配范围匹配，或者是它的子范围。
 
 > [!NOTE]
-> 下面所述的操作当前在中可用：
-> - Azure PowerShell： [CosmosDB 2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
-> - Azure CLI： ["cosmosdb" 扩展版本 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+> 若要创建服务主体的角色分配，请确保使用“Azure Active Directory”门户边栏选项卡的“企业应用程序”部分中找到的“对象 ID”。
+
+> [!NOTE]
+> 下面所述的操作当前在以下环境中可用：
+> - Azure PowerShell：[Az.CosmosDB 2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI：[“cosmosdb-preview”扩展版 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
@@ -314,24 +328,28 @@ resourceGroupName='<myResourceGroup>'
 accountName='<myCosmosAccount>'
 readOnlyRoleDefinitionId = '<roleDefinitionId>' // as fetched above
 principalId = '<aadPrincipalId>'
-az cosmosdb sql role assignment create --account-name $accountName --resource-group --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
+az cosmosdb sql role assignment create --account-name $accountName --resource-group $resourceGroupName --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
 ```
+
+### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
+
+有关使用 Azure 资源管理器模板创建角色分配的参考和示例，请参阅[此页](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/sqlresources2/createupdatesqlroleassignment)。
 
 ## <a name="initialize-the-sdk-with-azure-ad"></a>用 Azure AD 初始化 SDK
 
-若要在应用程序中使用 Azure Cosmos DB RBAC，必须更新初始化 Azure Cosmos DB SDK 的方式。 必须传递类的实例，而不是传递帐户的主键 `TokenCredential` 。 此实例向 Azure Cosmos DB SDK 提供了在代表要使用的标识获取 AAD 令牌时所需的上下文。
+若要在应用程序中使用 Azure Cosmos DB RBAC，必须更新初始化 Azure Cosmos DB SDK 的方式。 必须传递 `TokenCredential` 类的实例，而不是传递帐户的主键。 此实例为 Azure Cosmos DB SDK 提供了在代表要使用的标识获取 AAD 令牌时所需的上下文。
 
-创建实例的方式 `TokenCredential` 超出了本文的范围。 有多种方法可以创建此类实例，具体取决于要使用的 AAD 标识的类型 (用户主体、服务主体、组等 ) 。 最重要的是，你 `TokenCredential` 的实例必须解析为你已向其分配了角色的 (主体 ID) 标识。 你可以找到创建类的示例 `TokenCredential` ：
+创建 `TokenCredential` 实例的方式不在本文讨论范围。 有多种方法可以创建此类实例，具体取决于要使用的 AAD 标识类型（用户主体、服务主体、组等）。 最重要的是，`TokenCredential` 实例必须解析为已向其分配角色的标识（主体 ID）。 你可以找到创建 `TokenCredential` 类的示例：
 
-- [.NET 中](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
-- [Java 中的](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
+- [在 .NET 中](/dotnet/api/overview/azure/identity-readme#credential-classes)
+- [在 Java 中](/java/api/overview/azure/identity-readme#credential-classes)
+- [在 JavaScript 中](/javascript/api/overview/azure/identity-readme#credential-classes)
 
-下面的示例将服务主体与实例一起使用 `ClientSecretCredential` 。
+下面的示例使用带有 `ClientSecretCredential` 实例的服务主体。
 
 ### <a name="in-net"></a>在 .NET 中
 
-> [!NOTE]
-> 必须使用 `preview` 版本的 Azure Cosmos DB .NET SDK 才能访问此功能。
+[.NET SDK V3](sql-api-sdk-dotnet-standard.md) 的 `preview` 版本当前支持 Azure Cosmos DB RBAC。
 
 ```csharp
 TokenCredential servicePrincipal = new ClientSecretCredential(
@@ -342,6 +360,8 @@ CosmosClient client = new CosmosClient("<account-endpoint>", servicePrincipal);
 ```
 
 ### <a name="in-java"></a>在 Java 中
+
+[Java SDK V4](sql-api-sdk-java-v4.md) 当前支持 Azure Cosmos DB RBAC。
 
 ```java
 TokenCredential ServicePrincipal = new ClientSecretCredentialBuilder()
@@ -356,25 +376,53 @@ CosmosAsyncClient Client = new CosmosClientBuilder()
     .build();
 ```
 
-## <a name="auditing-data-requests"></a>审核数据请求
+### <a name="in-javascript"></a>在 JavaScript 中
 
-使用 Azure Cosmos DB RBAC 时， [诊断日志](cosmosdb-monitor-resource-logs.md) 会扩充每个数据操作的标识和授权信息。 这使你可以执行详细审核并检索用于发送到 Azure Cosmos DB 帐户的每个数据请求的 AAD 标识。
+[JavaScript SDK V3](sql-api-sdk-node.md) 当前支持 Azure Cosmos DB RBAC。
 
-此附加信息在 **DataPlaneRequests** 日志类别中流动，并包含另外两列：
+```javascript
+const servicePrincipal = new ClientSecretCredential(
+    "<azure-ad-tenant-id>",
+    "<client-application-id>",
+    "<client-application-secret>");
+const client = new CosmosClient({
+    "<account-endpoint>",
+    aadCredentials: servicePrincipal
+});
+```
+
+## <a name="authenticate-requests-on-the-rest-api"></a>对 REST API 上的请求进行身份验证
+
+REST API 的 `2021-03-15` 版本当前支持 Azure Cosmos DB RBAC。 构造[授权标头](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)时，请将 type 参数设置为 aad，并将哈希签名 (sig) 设置为 oauth 令牌，如以下示例所示   ：
+
+`type=aad&ver=1.0&sig=<token-from-oauth>`
+
+## <a name="use-data-explorer"></a>使用数据资源管理器
+
+> [!NOTE]
+> Azure 门户中公开的数据资源管理器尚不支持 Azure Cosmos DB RBAC。 若要在浏览数据时使用 Azure AD 标识，必须改用 [Azure Cosmos DB 资源管理器](https://cosmos.azure.com/)。
+
+在浏览帐户中存储的数据时，[Azure Cosmos DB 资源管理器](https://cosmos.azure.com/)最初会尝试代表登录用户提取帐户的主密钥，并使用此密钥来访问数据。 如果不允许该用户提取主密钥，则将改用其 Azure AD 标识来访问数据。
+
+## <a name="audit-data-requests"></a>审核数据请求
+
+使用 Azure Cosmos DB RBAC 时，[诊断日志](cosmosdb-monitor-resource-logs.md)会扩充每个数据操作的标识和授权信息。 这使你可以执行详细审核，并检索用于发送到 Azure Cosmos DB 帐户的每个数据请求的 AAD 标识。
+
+此附加信息存在于 DataPlaneRequests 日志类别中，并包含两个额外的列：
 
 - `aadPrincipalId_g` 显示用于对请求进行身份验证的 AAD 标识的主体 ID。
-- `aadAppliedRoleAssignmentId_g` 显示在授权请求时接受的 [角色分配](#role-assignments) 。
+- `aadAppliedRoleAssignmentId_g` 显示在授权请求时接受的[角色分配](#role-assignments)。
 
 ## <a name="limits"></a>限制
 
-- 对于每个 Azure Cosmos DB 帐户，最多可以创建100个角色定义和2000个角色分配。
-- 对于属于超过200个组的标识，目前不支持 Azure AD 组解析。
-- Azure AD 令牌当前以标头的形式传递，每个请求发送到 Azure Cosmos DB 服务，从而增加总体负载大小。
-- 尚不支持通过 [Azure Cosmos DB 资源管理器](data-explorer.md) Azure AD 访问数据。 使用 Azure Cosmos DB 资源管理器仍要求用户有权访问帐户的主密钥。
+- 对于每个 Azure Cosmos DB 帐户，最多可以创建 100 个角色定义和 2,000 个角色分配。
+- 只能将角色定义分配给与 Azure Cosmos DB 帐户属于同一 Azure AD 租户的 Azure AD 标识。
+- 对于属于超过 200 个组的标识，目前不支持 Azure AD 组解析。
+- Azure AD 令牌当前以标头形式传递，每个请求发送到 Azure Cosmos DB 服务，从而增加总体有效负载大小。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-### <a name="which-azure-cosmos-db-apis-are-supported-by-rbac"></a>RBAC 支持哪些 Azure Cosmos DB Api？
+### <a name="which-azure-cosmos-db-apis-are-supported-by-rbac"></a>RBAC 支持哪些 Azure Cosmos DB API？
 
 目前仅支持 SQL API。
 
@@ -382,17 +430,17 @@ CosmosAsyncClient Client = new CosmosClientBuilder()
 
 尚未提供对角色管理的 Azure 门户支持。
 
-### <a name="which-sdks-in-azure-cosmos-db-sql-api-support-rbac"></a>Azure Cosmos DB SQL API 中的哪些 Sdk 支持 RBAC？
+### <a name="which-sdks-in-azure-cosmos-db-sql-api-support-rbac"></a>Azure Cosmos DB SQL API 中的哪些 SDK 支持 RBAC？
 
-目前支持 [.Net V3](sql-api-sdk-dotnet-standard.md) 和 [Java V4](sql-api-sdk-java-v4.md) sdk。
+目前支持 [.NET V3](sql-api-sdk-dotnet-standard.md)、[Java V4](sql-api-sdk-java-v4.md) 和 [JavaScript V3](sql-api-sdk-node.md) SDK。
 
-### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>Azure Cosmos DB Sdk 在过期时是否自动刷新 Azure AD 令牌？
+### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>Azure AD 令牌过期时，Azure Cosmos DB SDK 是否会自动刷新令牌？
 
-是的。
+是。
 
-### <a name="is-it-possible-to-disable-the-usage-of-the-account-primary-key-when-using-rbac"></a>使用 RBAC 时，是否可以禁用帐户主键的使用？
+### <a name="is-it-possible-to-disable-the-usage-of-the-account-primarysecondary-keys-when-using-rbac"></a>使用 RBAC 时，是否可以禁用帐户主/辅助密钥的使用？
 
-目前不能禁用帐户主键。
+目前不能禁用帐户主/辅助密钥。
 
 ## <a name="next-steps"></a>后续步骤
 

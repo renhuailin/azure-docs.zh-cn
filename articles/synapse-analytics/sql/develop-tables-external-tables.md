@@ -9,32 +9,36 @@ ms.subservice: sql
 ms.date: 04/26/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a02938d2c294d80b2c3f4a98aea905a4d431199
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 41825ceed38203c88ddfc28eca9a738663b9d7e6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070184"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378659"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>通过 Synapse SQL 使用外部表
 
 外部表指向位于 Hadoop、Azure 存储 Blob 或 Azure Data Lake Storage 中的数据。 外部表用于读取文件中的数据，或将数据写入 Azure 存储中的文件。 借助 Synapse SQL，可以使用外部表通过专用 SQL 池或无服务器 SQL 池读取和写入数据。
 
 根据外部数据源的类型，可以使用两种类型的外部表：
-- Hadoop 外部表，可用于读取和导出各种数据格式（例如 CSV、Parquet 和 ORC）的数据。 Hadoop 外部表可在专用 Synapse SQL 池中使用，但无法在无服务器 SQL 池中使用。
-- 本机外部表，可用于读取和导出各种格式（例如 CSV 和 Parquet）的数据。 本机外部表可在无服务器 SQL 池中使用，但无法在专用 Synapse SQL 池中使用。
+- Hadoop 外部表，可用于读取和导出各种数据格式（例如 CSV、Parquet 和 ORC）的数据。 Hadoop 外部表，可在专用 Synapse SQL 池中使用，但无法在无服务器 SQL 池中使用。
+- 本机外部表，可用于读取和导出各种格式（例如 CSV 和 Parquet）的数据。 原生外部表可在无服务器 SQL 池中使用，在专用 Synapse SQL 池中为预览版。
 
 下表列出了 Hadoop 和本机外部表之间的主要区别：
 
 | 外部表类型 | Hadoop | 本机 |
 | --- | --- | --- |
-| 专用 SQL 池 | 可用 | 不可用 |
+| 专用 SQL 池 | 可用 | Parquet 表在门控式预览版中可用 - 请联系你的 Microsoft 技术客户经理或云解决方案架构师，查看你的专用池是否能够加入预览版。 |
 | 无服务器 SQL 池 | 不可用 | 可用 |
-| 支持的格式 | 带分隔符/CSV、Parquet、ORC、Hive RC 和 RC | 带分隔符/CSV 和 Parquet |
-| 文件夹分区清除 | 否 | 仅适用于从 Synapse 工作区中的 Apache Spark 池同步的分区表 |
-| 适用于位置的自定义格式 | 否 | 是，使用 `/year=*/month=*/day=*` 等通配符 |
-| 递归文件夹扫描 | 始终 | 仅当在位置路径中指定 `/**` 时适用 |
+| 支持的格式 | 带分隔符/CSV、Parquet、ORC、Hive RC 和 RC | 无服务器池：带分隔符/CSV、Parquet 和 Delta Lake（预览版）<br/>专用池：Parquet |
+| 文件夹分区清除 | 否 | 仅适用于从 Synapse 工作区中的 Apache Spark 池同步到无服务器 SQL 池的分区表 |
+| 适用于位置的自定义格式 | 是 | 是，使用 `/year=*/month=*/day=*` 等通配符 |
+| 递归文件夹扫描 | 否 | 仅在无服务器 SQL 池中（当在位置路径末尾指定了 `/**` 时） |
+| 存储筛选器下推 | 否 | 在无服务器 SQL 池中为“是”。 对于字符串下推，需要对 `VARCHAR` 列使用 `Latin1_General_100_BIN2_UTF8` 排序规则。 |
 | 存储身份验证 | 存储访问密钥 (SAK)、AAD 直通、托管标识、自定义应用程序 Azure AD 标识 | 共享访问签名 (SAS)、AAD 直通、托管标识 |
+
+> [!NOTE]
+> Delta Lake 格式的原生外部表为公共预览版。 [CETAS](develop-tables-cetas.md) 不支持以 Delta Lake 格式导出内容。
 
 ## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>专用 SQL 池和无服务器 SQL 池中的外部表
 
@@ -42,7 +46,7 @@ ms.locfileid: "108070184"
 
 - 使用 Transact-SQL 语句查询 Azure Blob 存储和 Azure Data Lake Gen2。
 - 使用 [CETAS](develop-tables-cetas.md) 将查询结果存储到 Azure Blob 存储或 Azure Data Lake Storage 中的文件
-- 从 Azure Blob 存储和 Azure Data Lake Storage 中导入数据并将其存储到专用 SQL 池中（仅专用池中的 Hadoop 表）。
+- 从 Azure Blob 存储和 Azure Data Lake Storage 导入数据并将其存储到专用 SQL 池中（仅限专用池中的 Hadoop 表）。
 
 > [!NOTE]
 > 与 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 语句结合使用时，从外部表中选择数据可将数据导入到专用 SQL 池中的表。 除了 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)以外，外部表也可用于加载数据。 
@@ -51,13 +55,13 @@ ms.locfileid: "108070184"
 
 可通过以下步骤在 Synapse SQL 池中创建外部表：
 
-1. CREATE EXTERNAL DATA SOURCE
-2. CREATE EXTERNAL FILE FORMAT
-3. CREATE EXTERNAL TABLE
+1. [CREATE EXTERNAL DATA SOURCE](#create-external-data-source) 以引用外部 Azure 存储并指定应当用来访问该存储的凭据。
+2. [CREATE EXTERNAL FILE FORMAT](#create-external-file-format) 以描述 CSV 或 Parquet 文件的格式。
+3. 基于以相同文件格式放置在数据源上的文件来 [CREATE EXTERNAL TABLE](#create-external-table)。
 
 ### <a name="security"></a>安全性
 
-用户必须具有针对外部表的 `SELECT` 权限才能读取数据。
+用户必须具有对外部表的 `SELECT` 权限才能读取数据。
 外部表使用数据库范围的凭据访问基础 Azure 存储，这些凭据使用以下规则在数据源中定义：
 - 没有凭据的数据源使外部表可访问 Azure 存储上公开可用的文件。
 - 数据源可以使用凭据，使外部表能够使用 SAS 令牌或工作区托管标识，仅访问 Azure 存储上的文件。有关示例，请参阅[开发存储文件存储访问控制](develop-storage-files-storage-access-control.md#examples)一文。
@@ -84,7 +88,7 @@ WITH
 
 #### <a name="native"></a>[本机](#tab/native)
 
-不使用 `TYPE=HADOOP` 的外部数据源仅在无服务器 SQL 池中可用。
+没有 `TYPE=HADOOP` 限制的外部数据源通常可在无服务器 SQL 池中使用，在专用池中为公共预览版。
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -99,7 +103,7 @@ WITH
 
 ### <a name="arguments-for-create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE 的参数
 
-data_source_name
+#### <a name="data_source_name"></a>data_source_name
 
 指定数据源的用户定义名称。 该名称在数据库中必须唯一。
 
@@ -154,7 +158,7 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 #### <a name="native"></a>[本机](#tab/native)
 
-以下示例在无服务器 SQL 池中为 Azure Data Lake Gen2 创建一个可使用 SAS 凭据进行访问的外部数据源：
+以下示例在无服务器或专用 SQL 池中为 Azure Data Lake Gen2 创建一个允许使用 SAS 凭据进行访问的外部数据源：
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [sqlondemand]
@@ -322,7 +326,7 @@ LOCATION = '*folder_or_filepath*'
 
 ![外部表的递归数据](./media/develop-tables-external-tables/folder-traversal.png)
 
-与 Hadoop 外部表不同的是，除非在路径末尾指定 /**，否则本机外部表不返回子文件夹。 在此示例中，如果 LOCATION='/webdata/'，则无服务器 SQL 池查询将返回 mydata.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。 Hadoop 表将返回任何子文件夹中的所有文件。
+与 Hadoop 外部表不同的是，除非在路径末尾指定 /**，否则本机外部表不返回子文件夹。 在此示例中，如果 LOCATION='/webdata/'，则无服务器 SQL 池查询将返回 mydata.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。 Hadoop 表会返回所有子文件夹中的所有文件。
  
 Hadoop 和本机外部表均会跳过名称以下划线 (_) 或句点 (.) 开头的文件。
 
@@ -366,7 +370,7 @@ SELECT TOP 1 * FROM census_external_table
 
 ### <a name="prerequisites"></a>先决条件
 
-- 必须有权访问工作区，并且至少对 ADLS Gen2 帐户具有 `Storage Blob Data Contributor` 访问角色
+- 你必须有权访问工作区，并且至少具有 `Storage Blob Data Contributor` 访问角色（拥有对 ADLS Gen2 帐户或访问控制列表 (ACL) 的访问权限），然后才能查询这些文件。
 
 - 必须至少拥有在 Synapse SQL 池（专用或无服务器）中创建和查询外部表的[权限](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#permissions-2&preserve-view=true)。
 

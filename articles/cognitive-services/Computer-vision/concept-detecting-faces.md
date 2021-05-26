@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2dfa5c637265071fa76119b930020f8aed60037f
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: a77a8e72dcbd74eb05340e7dd48d3ab6516f8043
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714811"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465410"
 ---
 # <a name="face-detection-with-computer-vision"></a>使用计算机视觉进行人脸检测
 
@@ -115,4 +115,4 @@ ms.locfileid: "109714811"
 
 人脸检测功能属于[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Faces` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"faces"` 部分内容的字符串。
 
-* [快速入门：计算机视觉 REST API 或客户端库](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [快速入门：计算机视觉 REST API 或客户端库](./quickstarts-sdk/image-analysis-client-library.md?pivots=programming-language-csharp)
