@@ -3,15 +3,15 @@ title: 计费和定价模型
 description: 有关 Azure 逻辑应用中定价和计费模型工作原理的概述性介绍
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/25/2021
+ms.openlocfilehash: 629b7a4a52dcc5749941de695eec4558085263df
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699022"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372698"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Azure 逻辑应用的定价和计费模型
 
@@ -19,17 +19,17 @@ ms.locfileid: "101699022"
 
 <a name="consumption-pricing"></a>
 
-## <a name="multi-tenant-pricing"></a>多租户定价
+## <a name="consumption-pricing-multi-tenant"></a>使用量定价（多租户）
 
-付费使用的定价模型适用于在全局性的公共多租户逻辑应用服务中运行的逻辑应用。 会对所有成功和失败的运行计量并计费。
+付费使用的定价模型适用于在全局性的公共多租户逻辑应用环境中运行的逻辑应用。 会对所有成功和失败的运行计量并计费。
 
 例如，轮询触发器发出的请求将始终计为一次执行，即使跳过了该触发器且未创建逻辑应用工作流实例。
 
 | 项 | 描述 |
 |-------|-------------|
-| [内置](../connectors/apis-list.md#built-in)的触发器和操作 | 在逻辑应用服务中以本机方式运行，并使用[操作价格](https://azure.microsoft.com/pricing/details/logic-apps/)进行计量。 <p><p>例如，HTTP 触发器和请求触发器是内置触发器，HTTP 操作和响应操作是内置操作。 数据操作、批处理操作、变量操作和[工作流控制操作](../connectors/apis-list.md#control-workflow)（如循环、条件、开关、并行分支等）也是内置操作。 |
-| [标准连接器](../connectors/apis-list.md#managed-connectors)触发器和操作 <p><p>[自定义连接器](../connectors/apis-list.md#custom)触发器和操作 | 使用[标准连接器价格](https://azure.microsoft.com/pricing/details/logic-apps/)进行计量。 |
-| [企业连接器](../connectors/apis-list.md#managed-connectors)触发器和操作 | 使用[企业连接器价格](https://azure.microsoft.com/pricing/details/logic-apps/)进行计量。 但是，在公共预览版期间，企业连接器使用[标准连接器价格](https://azure.microsoft.com/pricing/details/logic-apps/)进行计量。 |
+| [内置](../connectors/built-in.md)的触发器和操作 | 在逻辑应用服务中以本机方式运行，并使用[操作价格](https://azure.microsoft.com/pricing/details/logic-apps/)进行计量。 <p><p>例如，HTTP 触发器和请求触发器是内置触发器，HTTP 操作和响应操作是内置操作。 数据操作、批处理操作、变量操作和[工作流控制操作](../connectors/built-in.md)（如循环、条件、开关、并行分支等）也是内置操作。 |
+| [标准连接器](../connectors/managed.md)触发器和操作 <p><p>[自定义连接器](../connectors/apis-list.md#custom-apis-and-connectors)触发器和操作 | 使用[标准连接器价格](https://azure.microsoft.com/pricing/details/logic-apps/)进行计量。 |
+| [企业连接器](../connectors/managed.md)触发器和操作 | 使用[企业连接器价格](https://azure.microsoft.com/pricing/details/logic-apps/)进行计量。 但是，在连接器预览版期间，企业连接器使用[标准连接器价格](https://azure.microsoft.com/pricing/details/logic-apps/)进行计量。 |
 | [循环](logic-apps-control-flow-loops.md)内的操作 | 循环中运行的每个操作都按运行的每个循环周期计费。 <p><p>例如，假设你有一个“for each”循环，其中包含列表处理操作。 逻辑应用服务通过将列表项的数量乘以循环中的操作数来计量该循环中运行的操作，并加上启动循环的操作。 因此，包含 10 个项的列表的计算公式为 (10 * 1) + 1，即 11 个操作执行。 |
 | 重试次数 | 若要处理最基本的异常和错误，可以在支持的情况下为触发器和操作设置[重试策略](logic-apps-exception-handling.md#retry-policies)。 这些重试和原始请求将根据触发器或操作是具有内置类型、标准类型还是企业类型，按一定比率收费。 例如，发生了 2 次重试的操作要按 3 次操作执行来付费。 |
 | [数据保留和存储消耗](#data-retention) | 使用数据保留价格计量，可参阅“定价详细信息”表下的[逻辑应用定价页](https://azure.microsoft.com/pricing/details/logic-apps/)。 |
@@ -64,11 +64,47 @@ ms.locfileid: "101699022"
 
   例如，假设你设置了一个每天检查终结点的触发器。 当触发器检查终结点并找到 15 个满足条件的事件时，触发器触发并运行相应工作流 15 次。 逻辑应用服务会计量这 15 个工作流执行的所有操作，包括触发器请求。
 
+<a name="standard-pricing"></a>
+
+## <a name="standard-pricing-single-tenant"></a>标准定价（单租户）
+
+在 Azure 门户中创建逻辑应用（标准）资源，或从 Visual Studio Code 进行部署时，必须为逻辑应用选择一个托管计划和定价层。 这些选择确定在单租户Azure 逻辑应用中运行工作流时适用的定价。
+
+<a name="hosting-plans"></a>
+
+### <a name="hosting-plans-and-pricing-tiers"></a>托管计划和定价层
+
+对于基于单租户的逻辑应用，请使用工作流标准托管计划。 以下列表显示了可以选择的可用定价层：
+
+| 定价层 | 核心数 | 内存 | 存储 |
+|--------------|-------|--------|---------|
+| **WS1** | 1 | 3.5 GB | 250 GB |
+| **WS2** | 2 | 7 GB | 250 GB |
+| **WS3** | 2 | 14 GB | 250 GB |
+|||||
+
+<a name="storage-transactions"></a>
+
+### <a name="storage-transactions"></a>存储事务
+
+Azure 逻辑应用使用 [Azure 存储](/storage)进行任何存储操作。 使用多租户 Azure 逻辑应用时，任何存储使用情况和成本都将附加到该逻辑应用。 使用单租户 Azure 逻辑应用时，可以使用自己的 Azure [存储帐户](../azure-functions/storage-considerations.md#storage-account-requirements)。 借助此功能，可以更灵活、更好地控制逻辑应用数据。
+
+有状态工作流运行其操作时，Azure 逻辑应用运行时会执行存储事务。 例如，使用队列来进行计划，而使用表和 Blob 来存储工作流状态。 存储成本根据工作流的内容而变化。 不同的触发器、操作和有效负载会导致不同的存储操作和需求。 存储事务遵循 [Azure 存储定价模型](https://azure.microsoft.com/pricing/details/storage/)。 存储成本在 Azure 计费发票中单独列出。
+
+### <a name="tips-for-estimating-storage-needs-and-costs"></a>有关估算存储需求和成本的提示
+
+为了帮助你了解工作流可能运行的存储操作的数量及其成本，请尝试使用[逻辑应用存储计算器](https://logicapps.azure.com/calculator)。 可以选择一个示例工作流或使用现有的工作流定义。 第一个计算估计工作流中的存储操作数。 然后，可以通过 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)使用这些数字来估算可能的成本。
+
+有关详细信息，请参阅以下文档：
+
+* [估算单租户 Azure 逻辑应用中工作流的存储需求和成本](estimate-storage-costs.md)
+* [Azure 存储定价详细信息](https://azure.microsoft.com/pricing/details/storage/)
+
 <a name="fixed-pricing"></a>
 
-## <a name="ise-pricing"></a>ISE 定价
+## <a name="ise-pricing-dedicated"></a>ISE 定价（专用）
 
-固定的定价模型，适用于在 [*集成服务环境 (ISE)* ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中运行的逻辑应用。 ISE 按[集成服务环境价格](https://azure.microsoft.com/pricing/details/logic-apps)进行计费，具体取决于你创建的 [ISE 级别或 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 此定价不同于多租户定价，因为无论是否使用保留容量和专用资源，都需要支付这些费用。
+固定的定价模型，适用于在专用[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中运行的逻辑应用。 ISE 按[集成服务环境价格](https://azure.microsoft.com/pricing/details/logic-apps)进行计费，具体取决于你创建的 [ISE 级别或 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 此定价不同于多租户定价，因为无论是否使用保留容量和专用资源，都需要支付这些费用。
 
 | ISE SKU | 描述 |
 |---------|-------------|
@@ -80,8 +116,8 @@ ms.locfileid: "101699022"
 
 | 项 | 描述 |
 |-------|-------------|
-| [内置](../connectors/apis-list.md#built-in)的触发器和操作 | 显示“核心”标签，并在与逻辑应用程序相同的 ISE 中运行。 |
-| [标准连接器](../connectors/apis-list.md#managed-connectors) <p><p>[企业连接器](../connectors/apis-list.md#enterprise-connectors) | - 显示 ISE 标签的托管连接器，专门设计用于在没有本地数据网关的情况下运行，并在与逻辑应用相同的 ISE 中运行。 ISE 定价包含所需数量的企业连接。 <p><p>- 不显示 ISE 标签的连接器在多租户逻辑应用服务中运行。 但是，ISE 定价包括在 ISE 中运行的逻辑应用的这些执行。 |
+| [内置](../connectors/built-in.md)的触发器和操作 | 显示“核心”标签，并在与逻辑应用程序相同的 ISE 中运行。 |
+| [标准连接器](../connectors/managed.md) <p><p>[企业连接器](../connectors/managed.md#enterprise-connectors) | - 显示 ISE 标签的托管连接器，专门设计用于在没有本地数据网关的情况下运行，并在与逻辑应用相同的 ISE 中运行。 ISE 定价包含所需数量的企业连接。 <p><p>- 不显示 ISE 标签的连接器在单租户 Azure 逻辑应用服务中运行。 但是，ISE 定价包括在 ISE 中运行的逻辑应用的这些执行。 |
 | [循环](logic-apps-control-flow-loops.md)内的操作 | ISE 定价涵盖了针对每个运行的循环周期在一个循环中运行的每个操作。 <p><p>例如，假设你有一个“for each”循环，其中包含列表处理操作。 若要获取操作执行的总数，请将列表项的数目乘以循环中的操作数，再加上启动循环的操作。 因此，包含 10 个项的列表的计算公式为 (10 * 1) + 1，即 11 个操作执行。 |
 | 重试次数 | 若要处理最基本的异常和错误，可以在支持的情况下为触发器和操作设置[重试策略](logic-apps-exception-handling.md#retry-policies)。 ISE 定价包括重试和原始请求。 |
 | [数据保留和存储消耗](#data-retention) | ISE 中的逻辑应用不会产生保留和存储成本。 |
@@ -131,7 +167,7 @@ ISE 包括单个集成帐户（基于 ISE SKU），无需额外付费。 可以�
 
 逻辑应用的运行历史记录中的所有输入和输出都是基于该应用程序的[运行持续时间和历史记录保持期](logic-apps-limits-and-config.md#run-duration-retention-limits)进行存储和计量的。
 
-* 对于多租户逻辑应用服务中的逻辑应用，将按固定价格对存储消耗计费，可参阅 **定价详细信息** 表下的[逻辑应用定价页](https://azure.microsoft.com/pricing/details/logic-apps)。
+* 对于多租户逻辑应用服务中的逻辑应用，将按固定价格对存储消耗计费，可参阅 **定价详细信息** 表下的 [逻辑应用定价页](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 * 对于 ISE 中的逻辑应用，存储消耗不会产生数据保留成本。
 

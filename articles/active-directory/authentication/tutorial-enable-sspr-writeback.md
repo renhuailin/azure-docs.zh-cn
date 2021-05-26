@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 05/19/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 444ca19732921b336cae32a9b1eb5755a08e4bd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1572b0a9822f340887c512c5cc20448fe0729109
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97028047"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461717"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教程：启用到本地环境的 Azure Active Directory 自助式密码重置写回
 
@@ -87,7 +87,7 @@ Azure AD Connect 可用于在本地 AD DS 环境与 Azure AD 之间同步用户�
 
 更新权限时，将这些权限复制到目录中的所有对象可能需要一小时或更长时间才能完成。
 
-本地 AD DS 环境中的密码策略可能会导致无法正确处理密码重置。 要使密码写回最有效地工作，必须将“最短密码期限”的组策略设置为 0。 可在 `gpedit.msc` 中的“计算机配置”>“策略”>“Windows 设置”>“安全设置”>“帐户策略”下找到此设置。
+本地 AD DS 环境中的密码策略可能会导致无法正确处理密码重置。 要使密码写回最有效地工作，必须将“最短密码期限”的组策略设置为 0。 可在 `gpmc.msc` 中的“计算机配置”>“策略”>“Windows 设置”>“安全设置”>“帐户策略”下找到此设置。
 
 如果更新组策略，请等待更新的策略复制完成，或使用 `gpupdate /force` 命令。
 
@@ -131,7 +131,7 @@ Azure AD Connect 中有一个配置选项用于密码写回。 启用此选项�
 
 如果你不再想要使用本教程中配置的 SSPR 写回功能，请完成以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择“Azure Active Directory”，选择“密码重置”，然后选择“本地集成”。
 1. 将“将密码写回到本地目录?”选项设置为“否”。
 1. 将“允许用户在不重置密码的情况下解锁帐户?”选项设置为“否”。

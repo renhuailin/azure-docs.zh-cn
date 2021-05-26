@@ -1,22 +1,22 @@
 ---
-title: 使用 Visual Studio 自动执行任务和工作流
-description: 使用 Azure 逻辑应用和 Visual Studio 创建、计划和运行用于企业集成的自动执行工作流
+title: 快速入门 - 在 Visual Studio 中通过多租户 Azure 逻辑应用创建集成工作流
+description: 通过多租户 Azure 逻辑应用和 Visual Studio Code 创建自动化集成工作流。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/24/2021
-ms.openlocfilehash: 5ae67e5708a7298385a4e27d612566008884b972
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/25/2021
+ms.openlocfilehash: 8aa96455eba49dd624f1ced469d34f0cf0f48757
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790052"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372491"
 ---
-# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建自动化任务、流程和工作流 - Visual Studio
+# <a name="quickstart-create-automated-integration-workflows-with-multi-tenant-azure-logic-apps-and-visual-studio"></a>快速入门：通过多租户 Azure 逻辑应用和 Visual Studio 创建自动化集成工作流
 
-可以通过 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 Visual Studio 创建工作流，以便自动完成用于跨企业和组织集成应用、数据、系统和服务的任务和流程。 本快速入门展示了如何通过在 Visual Studio 中创建逻辑应用并将这些应用部署到 Azure 来设计和构建这些工作流。 尽管可以在 Azure 门户中执行这些任务，但在需要将逻辑应用添加到源代码管理、发布不同的版本，以及为不同的部署环境创建 Azure 资源管理器模板时，也可以使用 Visual Studio。
+本快速入门演示如何设计、开发和部署自动化工作流，这些工作流通过使用多租户 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 Visual Studio 集成跨企业的应用、数据、系统和服务。 尽管可以在 Azure 门户中执行这些任务，但在需要将逻辑应用添加到源代码管理、发布不同的版本，以及为不同的部署环境创建 Azure 资源管理器模板时，也可以使用 Visual Studio。 有关多租户模型与单租户模型的详细信息，请查看[单租户和多租户以及集成服务环境](single-tenant-overview-compare.md)。
 
 如果不熟悉 Azure 逻辑应用，只希望了解基本概念，则可尝试[关于在 Azure 门户中创建逻辑应用的快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 逻辑应用设计器在 Azure 门户和 Visual Studio 中的工作方式类似。
 

@@ -1,6 +1,6 @@
 ---
 title: 教程：创建一个可拍摄照片并可沉浸式阅读器中启动的 iOS 应用程序 (Swift)
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 在本教程中，我们将从头开始构建一个 iOS 应用，并添加“将图片导入沉浸式阅读器”功能。
 services: cognitive-services
 author: metanMSFT
@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: 23e9fd586882d25aed646b984e17c5885145ccff
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 096f28f2940fdac8463106928207f28549c405a0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284628"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370815"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>教程：创建一个可通过照片内容启动沉浸式阅读器的 iOS 应用程序 (Swift)
 

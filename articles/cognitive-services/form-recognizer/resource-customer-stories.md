@@ -1,6 +1,6 @@
 ---
 title: 客户聚焦
-titleSuffix: Azure Cognitive Services
+titleSuffix: Azure Applied AI Services
 description: 使用表单识别器的客户案例看点。
 services: cognitive-services
 author: laujan
@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/10/2021
 ms.author: lajanuar
-ms.openlocfilehash: b93021e0bbc423d3b0ddb23281a1513de0f5ab1c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a16be44f350b1305b4dd1778bc8457e9bb568a6d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382476"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475024"
 ---
 # <a name="customer-spotlight"></a>客户聚焦
 
