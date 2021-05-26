@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: 连接到 Azure Arc（预览版）的 Kubernetes 上的事件网格文档
+summary: 了解如何使用 Kubernetes 上的事件网格以近乎实时的方式响应连接到 Azure Arc 的 Kubernetes 群集上生成的相关事件。
+metadata:
+  title: 连接到 Azure Arc（预览版）的 Kubernetes 上的事件网格文档
+  description: 了解如何使用 Kubernetes 上的事件网格以近乎实时的方式响应连接到 Azure Arc 的 Kubernetes 群集上生成的相关事件。
+  services: event-grid
+  ms.service: event-grid
+  ms.subservice: kubernetes
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 05/25/2021
+  ms.openlocfilehash: 6403b71a1b29a41b47915e8d76cff75535a92066
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110383404"
+landingContent:
+- title: 关于 Kubernetes 上的事件网格
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Kubernetes 上的事件网格？
+      url: overview.md
+    - text: 功能
+      url: features.md
+- title: 概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Kubernetes 上的事件网格概念
+      url: concepts.md
+    - text: 事件处理程序
+      url: event-handlers.md
+    - text: 事件架构
+      url: event-schemas.md
+    - text: 事件架构
+      url: event-schemas.md
+    - text: Batch 事件传送
+      url: batch-event-delivery.md
+    - text: Batch 事件传送
+      url: delivery-retry.md
+    - text: 筛选事件
+      url: filter-events.md
+- title: 快速入门和操作说明
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建主题和订阅
+      url: create-topic-subscription.md
+    - text: 在 Kubernetes 群集上安装事件网格扩展
+      url: install-k8s-extension.md
+    - text: 获取支持
+      url: get-support.md

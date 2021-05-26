@@ -3,15 +3,15 @@ title: 使用 TLS/SSL 绑定保护自定义 DNS
 description: 通过证书创建 TLS/SSL 绑定，以便保护对自定义域进行的 HTTPS 访问。 通过强制实施 HTTPS 或 TLS 1.2 提高网站的安全性。
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: a713d869a754f17f4030c531999c822a2cbb76ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ae0ca07d0aad72a38ee4eccbefbdb826da9627b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039795"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373026"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称
 
@@ -42,7 +42,7 @@ ms.locfileid: "102039795"
 - [将专用证书添加到应用](configure-ssl-certificate.md)
 
 > [!NOTE]
-> 添加专用证书最简单的方法是[创建免费的应用服务托管证书](configure-ssl-certificate.md#create-a-free-managed-certificate-preview)（预览版）。
+> 添加专用证书最简单的方法是[创建免费的应用服务托管证书](configure-ssl-certificate.md#create-a-free-managed-certificate)。
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -73,7 +73,7 @@ ms.locfileid: "102039795"
 - **导入应用服务证书** - 遵循 [导入应用服务证书](configure-ssl-certificate.md#import-an-app-service-certificate)中的工作流，然后在此处选择此选项。
 
 > [!NOTE]
-> 还可以[创建免费证书](configure-ssl-certificate.md#create-a-free-managed-certificate-preview)（预览版）或[导入 Key Vault 证书](configure-ssl-certificate.md#import-a-certificate-from-key-vault)，但必须单独执行，然后返回到“TLS/SSL 绑定”对话框  。
+> 还可以[创建免费证书](configure-ssl-certificate.md#create-a-free-managed-certificate)或[导入密钥保管库证书](configure-ssl-certificate.md#import-a-certificate-from-key-vault)，但必须单独执行，然后返回到“TLS/SSL 绑定”对话框。
 
 ### <a name="create-binding"></a>创建绑定
 

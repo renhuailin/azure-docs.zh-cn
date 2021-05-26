@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 11/4/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b9234b27e2f08e65f569393bde342cba3f37adee
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 7c6486c156cfc9cec9065854c55b2d8e2788fdc0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963614"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062537"
 ---
 # <a name="create-a-media-services-account"></a>创建媒体服务帐户
 
@@ -52,6 +52,12 @@ ms.locfileid: "105963614"
 [!INCLUDE [Create a resource group with CLI](./includes/task-create-resource-group-cli.md)]
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
+
+创建媒体服务帐户时，需要提供 Azure 存储帐户资源的名称。 指定存储帐户会附加到媒体服务帐户。 若要详细了解如何在媒体服务中使用存储帐户，请参阅[存储帐户](storage-account-concept.md)。
+
+必须具有一个主存储帐户，并且可以拥有任意数量的与媒体服务帐户关联的辅助存储帐户 。 媒体服务支持常规用途 v2 (GPv2) 或常规用途 v1 (GPv1) 帐户 。 不允许将仅限 Blob 的帐户作为主帐户。 若要了解存储帐户的详细信息，请参阅 [Azure 存储帐户选项](../../storage/common/storage-account-overview.md)。
+
+在此示例中，我们创建一个常规用途 v2 标准 LRS 帐户。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在选取用于生产的 SKU 时，应考虑 `--sku Standard_RAGRS`，以便通过异地复制确保业务连续性。 有关详细信息，请参阅[存储帐户](/cli/azure/storage/account)。
 
 [!INCLUDE [Create a storage account with CLI](./includes/task-create-storage-account-cli.md)]
 

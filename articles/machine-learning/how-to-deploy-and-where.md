@@ -12,16 +12,19 @@ ms.date: 04/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4
 adobe-target: true
-ms.openlocfilehash: b16550a95c1eb35b7683c181953dd0d1da4f447a
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: bb010852b9e20b7e6b678907628b2da5872ad678
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952135"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372940"
 ---
-# <a name="deploy-machine-learning-models-to-azure"></a>将机器学习模型部署到 Azure
+# <a name="deploy-machine-learning-models-to-azure"></a>将机器学习模型部署到 Azure 
 
 了解如何将机器学习或深度学习模型作为 Web 服务部署在 Azure 云中。
+
+> [!TIP]
+> 托管联机终结点（预览版）使你无需创建和管理底层基础结构即可部署已训练的模型。 有关详细信息，请参阅[使用托管联机终结点（预览版）部署机器学习模型并为其评分](how-to-deploy-managed-online-endpoints.md)。
 
 无论你在何处部署模型，工作流都是类似的：
 
@@ -29,9 +32,9 @@ ms.locfileid: "107952135"
 1. 准备入口脚本
 1. 准备推理配置
 1. 在本地部署模型以确保一切正常运作
-1. 选择计算目标。
+1. 选择计算目标
 1. 将模型重新部署到云端
-1. 测试生成的 Web 服务。
+1. 测试生成的 Web 服务
 
 若要详细了解机器学习部署工作流中涉及的概念，请参阅[使用 Azure 机器学习来管理、部署和监视模型](concept-model-management-and-deployment.md)。
 
@@ -99,10 +102,7 @@ Azure 机器学习允许你将部署分成两个单独的部分以便保留相�
 
 ### <a name="register-a-model-from-a-local-file"></a>通过本地文件注册模型
 
-```azurecli-interactive
-wget https://aka.ms/bidaf-9-model -o model.onnx
-az ml model register -n bidaf_onnx -p ./model.onnx
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=register-model-from-local-file-code)]
 
 将 `-p` 设为要注册的文件夹或文件的路径。
 
@@ -125,17 +125,9 @@ az ml model register -bidaf_onnx  --asset-path outputs/model.onnx  --experiment-
 ### <a name="register-a-model-from-a-local-file"></a>通过本地文件注册模型
 
 可以通过提供模型的本地路径来注册模型。 可以提供本地计算机上文件夹或单个文件的路径。
+<!-- pyhton nb call -->
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=register-model-from-local-file-code)]
 
-```python
-
-import urllib.request
-from azureml.core.model import Model
-# Download model
-urllib.request.urlretrieve("https://aka.ms/bidaf-9-model", 'model.onnx')
-
-# Register model
-model = Model.register(ws, model_name='bidaf_onnx', model_path='./model.onnx')
-```
 
 若要在模型注册中包含多个文件，请将 `model_path` 设置为包含文件的文件夹的路径。
 
@@ -192,47 +184,9 @@ model = Model.register(ws, model_name='bidaf_onnx', model_path='./model.onnx')
 
 最小推理配置可以编写为：
 
-```json
-{
-    "entryScript": "echo_score.py",
-    "sourceDirectory": "./source_dir",
-    "environment": {
-        "docker": {
-            "arguments": [],
-            "baseDockerfile": null,
-            "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
-            "enabled": false,
-            "sharedVolumes": true,
-            "shmSize": null
-        },
-        "environmentVariables": {
-            "EXAMPLE_ENV_VAR": "EXAMPLE_VALUE"
-        },
-        "name": "my-deploy-env",
-        "python": {
-            "baseCondaEnvironment": null,
-            "condaDependencies": {
-                "channels": [],
-                "dependencies": [
-                    "python=3.6.2",
-                    {
-                        "pip": [
-                            "azureml-defaults"
-                        ]
-                    }
-                ],
-                "name": "project_environment"
-            },
-            "condaDependenciesFile": null,
-            "interpreterPath": "python",
-            "userManagedDependencies": false
-        },
-        "version": "1"
-    }
-}
-```
+:::code language="json" source="~/azureml-examples-main/python-sdk/tutorials/deploy-local/dummyinferenceconfig.json":::
 
-使用 `inferenceconfig.json` 名称保存此文件。
+使用 `dummyinferenceconfig.json` 名称保存此文件。
 
 
 有关推理配置的更详细讨论，[请参阅此文](./reference-azure-machine-learning-cli.md#inference-configuration-schema)。 
@@ -241,13 +195,7 @@ model = Model.register(ws, model_name='bidaf_onnx', model_path='./model.onnx')
 
 以下示例演示了如何使用上文定义的虚拟评分脚本创建不含 pip 依赖项的最小环境。
 
-```python
-from azureml.core import Environment
-from azureml.core.model import InferenceConfig
-
-env = Environment(name='project_environment')
-inf_config = InferenceConfig(environment=env, source_directory='./source_dir', entry_script='./echo_score.py')
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=inference-configuration-code)]
 
 有关环境的详细信息，请参阅[创建和管理用于训练和部署的环境](how-to-use-environments.md)。
 
@@ -272,11 +220,7 @@ inf_config = InferenceConfig(environment=env, source_directory='./source_dir', e
 
 若要创建本地部署配置，请执行以下操作：
 
-```python
-from azureml.core.webservice import LocalWebservice
-
-deploy_config = LocalWebservice.deploy_configuration(port=6789)
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=deployment-configuration-code)]
 
 ---
 
@@ -292,25 +236,13 @@ deploy_config = LocalWebservice.deploy_configuration(port=6789)
 我们来检查一下是否已成功部署回显模型。 你应该能够执行简单的运行情况探知请求以及评分请求：
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+<!-- cli nb call -->
 
-```azurecli-interactive
-curl -v http://localhost:32267
-curl -v -X POST -H "content-type:application/json" -d '{"query": "What color is the fox", "context": "The quick brown fox jumped over the lazy dog."}' http://localhost:32267/score
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=call-into-model-code)]
 
 # <a name="python"></a>[Python](#tab/python)
-
-```python
-import requests
-
-uri = service.scoring_uri
-requests.get('http://localhost:6789')
-headers = {'Content-Type': 'application/json'}
-data = {"query": "What color is the fox", "context": "The quick brown fox jumped over the lazy dog."}
-data = json.dumps(data)
-response = requests.post(uri, data=data, headers=headers)
-print(response.json())
-```
+<!-- python nb call -->
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=call-into-model-code)]
 
 ---
 
@@ -318,94 +250,18 @@ print(response.json())
 
 现在可以实际加载模型了。 首先，修改入口脚本：
 
-```python
-import json
-import numpy as np
-import os
-import onnxruntime
-from nltk import word_tokenize
-import nltk
 
-def init():
-    nltk.download('punkt')
-    global sess
-    sess = onnxruntime.InferenceSession(os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model.onnx'))
+:::code language="python" source="~/azureml-examples-main/python-sdk/tutorials/deploy-local/source_dir/score.py":::
 
-def run(request):
-    print(request)
-    text = json.loads(request)
-    qw, qc = preprocess(text['query'])
-    cw, cc = preprocess(text['context'])
-
-    # Run inference
-    test = sess.run(None, {'query_word': qw, 'query_char': qc, 'context_word': cw, 'context_char': cc})
-    start = np.asscalar(test[0])
-    end = np.asscalar(test[1])
-    ans = [w for w in cw[start:end+1].reshape(-1)]
-    print(ans)
-    return ans
-
-def preprocess(word):
-    tokens = word_tokenize(word)
-
-    # split into lower-case word tokens, in numpy array with shape of (seq, 1)
-    words = np.asarray([w.lower() for w in tokens]).reshape(-1, 1)
-
-    # split words into chars, in numpy array with shape of (seq, 1, 1, 16)
-    chars = [[c for c in t][:16] for t in tokens]
-    chars = [cs+['']*(16-len(cs)) for cs in chars]
-    chars = np.asarray(chars).reshape(-1, 1, 1, 16)
-    return words, chars
-```
 将此文件保存为 `source_dir` 内的 `score.py`。
 
-请注意，应使用 `AZUREML_MODEL_DIR` 环境变量定位已注册的模型。 现在，你已添加了一些 pip 包，但还需要更新推理配置才能添加这些附加包：
+请注意，应使用 `AZUREML_MODEL_DIR` 环境变量定位已注册的模型。 现在你已添加一些 pip 包。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
+:::code language="json" source="~/azureml-examples-main/python-sdk/tutorials/deploy-local/inferenceconfig.json":::
 
-```json
-{
-    "entryScript": "score.py",
-    "sourceDirectory": "./source_dir",
-    "environment": {
-        "docker": {
-            "arguments": [],
-            "baseDockerfile": null,
-            "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
-            "enabled": false,
-            "sharedVolumes": true,
-            "shmSize": null
-        },
-        "environmentVariables": {
-            "EXAMPLE_ENV_VAR": "EXAMPLE_VALUE"
-        },
-        "name": "my-deploy-env",
-        "python": {
-            "baseCondaEnvironment": null,
-            "condaDependencies": {
-                "channels": [],
-                "dependencies": [
-                    "python=3.6.2",
-                    {
-                        "pip": [
-                            "azureml-defaults",
-                            "nltk",
-                            "numpy",
-                            "onnxruntime"
-                        ]
-                    }
-                ],
-                "name": "project_environment"
-            },
-            "condaDependenciesFile": null,
-            "interpreterPath": "python",
-            "userManagedDependencies": false
-        },
-        "version": "2"
-    }
-}
-```
+将此文件保存为 `inferenceconfig.json` 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -421,34 +277,33 @@ inf_config = InferenceConfig(environment=env, source_directory='./source_dir', e
 有关详细信息，请参阅关于 [LocalWebservice](/python/api/azureml-core/azureml.core.webservice.local.localwebservice)[Model.deploy()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 和 [Webservice](/python/api/azureml-core/azureml.core.webservice.webservice) 的文档。
 
 ---
+Deploy your service again: null
+---
 
-## <a name="deploy-again-and-call-your-service"></a>再次部署并调用服务
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-再次部署服务：
+将 `bidaf_onnx:1` 替换为模型的名称及其版本号。
 
-[!INCLUDE [aml-deploy-service](../../includes/machine-learning-deploy-service.md)]
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=re-deploy-model-code)]
 
+# <a name="python"></a>[Python](#tab/python)
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=re-deploy-model-code)]
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=re-deploy-model-print-logs)]
+
+有关详细信息，请参阅[Model.deploy()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)和[Webservice](/python/api/azureml-core/azureml.core.webservice.webservice)文档。
+
+---
 然后，确保可以向该服务发送 post 请求：
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-```bash
-curl -v -X POST -H "content-type:application/json" -d '{"query": "What color is the fox", "context": "The quick brown fox jumped over the lazy dog."}' http://localhost:32267/score
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=send-post-request-code)]
 
 # <a name="python"></a>[Python](#tab/python)
 
-```python
-import requests
-
-uri = service.scoring_uri
-
-headers = {'Content-Type': 'application/json'}
-data = {"query": "What color is the fox", "context": "The quick brown fox jumped over the lazy dog."}
-data = json.dumps(data)
-response = requests.post(uri, data=data, headers=headers)
-print(response.json())
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=send-post-request-code)]
 
 ---
 
@@ -470,65 +325,50 @@ print(response.json())
 
 适用于部署配置的选项因所选计算目标而异。
 
-```json
-{
-    "computeType": "aci",
-    "containerResourceRequirements":
-    {
-        "cpu": 0.5,
-        "memoryInGB": 1.0
-    },
-    "authEnabled": true,
-    "sslEnabled": false,
-    "appInsightsEnabled": false
-}
+:::code language="json" source="~/azureml-examples-main/python-sdk/tutorials/deploy-local/re-deploymentconfig.json":::
 
-```
-将此文件保存为 `deploymentconfig.json`。
+将此文件保存为 `re-deploymentconfig.json`。
 
 有关详细信息，请参阅[此参考](./reference-azure-machine-learning-cli.md#deployment-configuration-schema)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-
-```python
-from azureml.core.webservice import AciWebservice
-
-deployment_config = AciWebservice.deploy_configuration(cpu_cores = 0.5, memory_gb = 1)
-```
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=deploy-model-on-cloud-code)]
 
 ---
 
 再次部署服务：
 
-[!INCLUDE [aml-deploy-service](../../includes/machine-learning-deploy-service.md)]
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+将 `bidaf_onnx:1` 替换为模型的名称及其版本号。
+
+
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=deploy-model-on-cloud-code)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=re-deploy-service-code)]
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=re-deploy-service-print-logs)]
+
+有关详细信息，请参阅[Model.deploy()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)和[Webservice](/python/api/azureml-core/azureml.core.webservice.webservice)文档。
+
+---
+
 
 ## <a name="call-your-remote-webservice"></a>调用远程 Web 服务
 
 远程部署时，可能需启用密钥身份验证。 下方示例介绍了如何使用 Python 获取服务密钥以发出推理请求。
 
-```python
-import requests
-import json
-from azureml.core import Webservice
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=call-remote-web-service-code)]
 
-service = Webservice(workspace=ws, name='myservice')
-scoring_uri = service.scoring_uri
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=call-remote-webservice-print-logs)]
 
-# If the service is authenticated, set the key or token
-primary_key, _ = service.get_keys()
 
-# Set the appropriate headers
-headers = {'Content-Type': 'application/json'}
-headers['Authorization'] = f'Bearer {key}'
-
-# Make the request and display the response and logs
-data = {"query": "What color is the fox", "context": "The quick brown fox jumped over the lazy dog."}
-data = json.dumps(data)
-resp = requests.post(scoring_uri, data=data, headers=headers)
-print(resp.text)
-print(service.get_logs())
-```
 
 请参阅[使用 Web 服务的客户端应用程序](how-to-consume-web-service.md)主题文章，了解使用其他语言的更多示例客户端。
 
@@ -561,6 +401,11 @@ print(service.get_logs())
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=delete-resource-code)]
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/2.deploy-local-cli.ipynb?name=delete-your-resource-code)]
+
 若要删除已部署的 webservice，请使用 `az ml service delete <name of webservice>`。
 
 若要从工作区中删除已注册的模型，请使用 `az ml model delete <model id>`
@@ -568,6 +413,8 @@ print(service.get_logs())
 详细了解如何[删除 webservice](/cli/azure/ml/service#az_ml_service_delete) 和[删除模型](/cli/azure/ml/model#az_ml_model_delete)。
 
 # <a name="python"></a>[Python](#tab/python)
+
+[!notebook-python[] (~/azureml-examples-main/python-sdk/tutorials/deploy-local/1.deploy-local.ipynb?name=delete-resource-code)]
 
 若要删除已部署的 Web 服务，请使用 `service.delete()`。
 若要删除已注册的模型，请使用 `model.delete()`。

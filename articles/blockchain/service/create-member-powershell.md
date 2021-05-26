@@ -8,16 +8,18 @@ ms.custom:
 - references_regions
 - devx-track-azurepowershell
 - mode-api
-ms.openlocfilehash: 9087bda9c1979a98f4bbf9f8343d012c4cf3098c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 82451b94c83c0883beed66fac1f8e1b6b7132d3a
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529637"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "110094143"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Azure 区块链服务区块链成员
 
 本快速入门介绍如何使用 Azure PowerShell 在 Azure 区块链服务中部署新的区块链成员和联盟。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

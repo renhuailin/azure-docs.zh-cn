@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/22/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: ead8bf6620bbe53af6c28870fa94b7a16490fcb1
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: c5d98afb3bc228cc3eb8789aa242b3dc3b129e5d
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202778"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367426"
 ---
 # <a name="azure-cosmos-db-api-for-mongodb"></a>用于 MongoDB 的 Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -23,17 +23,17 @@ ms.locfileid: "108202778"
 
 与 MongoDB Atlas 等服务产品相比，用于 MongoDB 的 API 在 [Azure Cosmos DB](introduction.md) 的基础构建了许多附加的优点：
 
-* **即时可伸缩性**：通过启用[自动缩放](provision-throughput-autoscale.md)功能，数据库可以在无预热的情况下纵向扩展/缩减。
+* **即时可伸缩性**：通过启用 [自动缩放](provision-throughput-autoscale.md)功能，数据库可以在无预热的情况下纵向扩展/缩减。
 * **自动且透明的分片**：用于 MongoDB 的 API 会为你管理所有基础结构。 这包括分片和分片数，而不同于 MongoDB Atlas 等其他 MongoDB 产品/服务，后者在水平缩放时需要指定并管理分片。 这使你有更多的时间来专注于为用户开发应用程序。
 * **“5 个 9”的可用性**：[99.999% 的可用性](high-availability.md)可以轻松配置，确保数据始终可供你查看。  
 * **经济高效、精细且无限制的可伸缩性**：与其他 MongoDB 服务产品不同，分片集合可以缩放到任何大小。 用于 MongoDB 的 API 的用户目前正在运行存储空间超过 600TB 的数据库。 缩放是以一种经济高效的方式完成的，因为与其他 MongoDB 服务产品不同，Cosmos DB 平台由于规模经济和资源治理，可以按小到 VM 的百分之一的增量进行缩放。
-* **无服务器部署**：不同于 MongoDB Atlas，用于 MongoDB 的 API 是提供[无服务器容量模式](serverless.md)的云本机数据库。 对于[无服务器](serverless.md)，只需按操作付费，而无需为不使用的数据库付费。
-* **免费层**：使用 Azure Cosmos DB 免费层，你可以在帐户中永久获得每秒前 400 RU 的免费吞吐量和 5 GB 的免费存储（适用于帐户级别）。
-* **升级只需几秒钟时间**：所有 API 版本都包含在一个代码库中，这使更改版本就像[拨动开关](mongodb-version-upgrade.md)一样简单，并且没有故障时间。
+* **无服务器部署**：不同于 MongoDB Atlas，用于 MongoDB 的 API 是提供 [无服务器容量模式](serverless.md)的云本机数据库。 对于[无服务器](serverless.md)，只需按操作付费，而无需为不使用的数据库付费。
+* **免费层**：使用 Azure Cosmos DB 免费层，你可以在帐户中永久获得每秒前 1000 RU 的免费吞吐量和 25 GB 的免费存储（适用于帐户级别）。
+* **升级只需几秒钟时间**：所有 API 版本都包含在一个代码库中，这使更改版本就像 [拨动开关](mongodb-version-upgrade.md)一样简单，并且没有故障时间。
 * **任意规模的实时分析 (HTAP)** ：用于 MongoDB 的 API 能够为商业智能等用例针对数据库数据实时运行复杂的分析查询，而不会影响数据库。 因为使用云本机分析列式存储，并且没有 ETL 管道，所以查询既快速又便宜。 详细了解 [Azure Synapse Link](synapse-link.md)。
 
 > [!NOTE]
-> [你可以免费使用用于 MongoDB 的 Azure Cosmos DB API 的免费层！](how-pricing-works.md)。 使用 Azure Cosmos DB 免费层，你将在帐户中获得前 400 RU/s 免费吞吐量和 5 GB 免费存储，并在帐户级别应用。
+> [你可以免费使用用于 MongoDB 的 Azure Cosmos DB API 的免费层！](free-tier.md)。 使用 Azure Cosmos DB 免费层，你将在帐户中获得每秒前 1000 RU 的免费吞吐量和 25 GB 的免费存储（适用于帐户级别）。
 
 
 ## <a name="how-the-api-works"></a>API 的工作方式
@@ -53,7 +53,7 @@ MongoDB 的功能兼容性：
 
 ## <a name="what-you-need-to-know-to-get-started"></a>开始使用时需了解的内容
 
-* 无需为群集中的虚拟机付费。 [定价](how-pricing-works.md)基于在每个数据库或集合的基础上配置的吞吐量（以请求单位 (RU) 进行度量）。 每秒前 400 个 RU 在[免费层](how-pricing-works.md)是免费的。
+* 无需为群集中的虚拟机付费。 [定价](how-pricing-works.md)基于在每个数据库或集合的基础上配置的吞吐量（以请求单位 (RU) 进行度量）。 每秒前 1000 个 RU 在[免费层](free-tier.md)是免费的。
 
 * 部署用于 MongoDB 的 Azure Cosmos DB API 的方式有以下三种：
      * [预配吞吐量](set-throughput.md)：设置每秒钟 RU 的数量，并手动对其进行更改。 此模型最适合一致的工作负载。

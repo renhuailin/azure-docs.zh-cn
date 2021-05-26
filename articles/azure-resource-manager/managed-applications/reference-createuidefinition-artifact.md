@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: 9be1cb02c419314a33b9487bf183ef3659b2b549
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47b515d2a65908ab0149c2ee28261a5f0edadf1d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75651483"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083703"
 ---
 # <a name="reference-user-interface-elements-artifact"></a>参考：用户界面元素项目
 
@@ -62,7 +62,7 @@ ms.locfileid: "75651483"
           {
             "name": "zipFileBlobUri",
             "type": "Microsoft.Common.TextBox",
-            "defaultValue": "https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip/functionpackage.zip",
+            "defaultValue": "https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.customproviders/custom-rp-with-function/artifacts/functionzip/functionpackage.zip",
             "label": "The Uri to the uploaded function zip file",
             "toolTip": "The Uri to the uploaded function zip file",
             "visible": true

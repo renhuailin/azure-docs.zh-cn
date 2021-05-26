@@ -4,12 +4,12 @@ description: 保留和隐私政策声明
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6a7545d4d927418e6153ce3bf439fc8c3e2dc702
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56c86387ab06bf0fe94900e654853e74d3ee2603
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774909"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059403"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -43,7 +43,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
   
   * 每个 SDK 有许多[模块](./configuration-with-applicationinsights-config.md)，这些模块使用不同的技术收集不同类型的遥测数据。
   * 如果在开发环境中安装 SDK，则除了使用标准模块发送自己的遥测数据以外，还可以使用 SDK 的 API 发送这些数据。 这些自定义遥测数据可以包含所要发送的任何数据。
-* 在某些 Web 服务器中，还装有与应用一起运行并发送有关 CPU、内存和网络占用量的遥测数据的代理。 例如，Azure VM、Docker 主机和 [Java EE 服务器](./java-agent.md)都可能拥有此类代理。
+* 在某些 Web 服务器中，还装有与应用一起运行并发送有关 CPU、内存和网络占用量的遥测数据的代理。 例如，Azure VM、Docker 主机和 [Java EE 服务器](java-2x-agent.md)都可能拥有此类代理。
 * [可用性测试](./monitor-web-app-availability.md)是 Microsoft 运行的过程，可定期将请求发送到 Web 应用。 结果将发送到 Application Insights 服务。
 
 ### <a name="what-kinds-of-data-are-collected"></a>收集哪些类型的数据？
@@ -311,7 +311,7 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅 [Appl
 [client]: ./javascript.md
 [config]: ./configuration-with-applicationinsights-config.md
 [greenbrown]: ./asp-net.md
-[java]: ./java-get-started.md
+[java]: ./java-in-process-agent.md
 [platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: ./monitor-performance-live-website-now.md

@@ -1,0 +1,221 @@
+---
+title: Azure 视频分析器常见问题解答 - Azure
+description: 本文解答了有关 Azure 视频分析器的常见问题。
+ms.service: azure-video-analyzer
+ms.topic: conceptual
+ms.date: 03/26/2021
+ms.openlocfilehash: 94f85cecdb8ee3d18ad7521d8157c01f1410c23c
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110385070"
+---
+# <a name="faq-about-azure-video-analyzer"></a>Azure 视频分析器常见问题解答
+
+本文解答了有关 Azure 视频分析器的常见问题。
+
+## <a name="general"></a>常规
+
+**我可以在管道拓扑定义中使用哪些系统变量？**
+
+| 变量   |  说明  | 
+| --- | --- | 
+| System.Runtime.DateTime | 表示某个 UTC 时刻，通常以日期和当天的时间表示，格式如下：<br>yyyyMMddTHHmmssZ | 
+| System.Runtime.PreciseDateTime | 表示 ISO8601 文件兼容格式的协调世界时 (UTC) 日期/时间实例（精确到毫秒），格式如下：<br>yyyyMMddTHHmmss.fffZ | 
+| System.TopologyName    | 表示管道拓扑的名称。 | 
+| System.PipelineName | 表示实时管道的名称。 | 
+
+> [!Note] 
+> 在视频接收器节点中，不能将 System.Runtime.DateTime 和 System.Runtime.PreciseDateTime 用作 Azure 视频分析器视频资源名称的一部分。 可以在 FileSink 节点中使用这些变量来命名文件。
+
+**视频分析器的隐私策略是什么？**
+
+视频分析器在 [Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement)中有所介绍。 隐私声明解释了 Microsoft 处理的个人数据、Microsoft 的处理方式，以及 Microsoft 出于哪些目的处理个人数据。 若要详细了解隐私保护，请访问 [Microsoft 信任中心](https://www.microsoft.com/trustcenter)。
+
+## <a name="configuration-and-deployment"></a>配置和部署
+
+**是否可以将边缘模块部署到 Windows 10 设备？**
+
+是的。 有关详细信息，请参阅 [Windows 10 上的 Linux 容器](/virtualization/windowscontainers/deploy-containers/linux-containers)。
+
+## <a name="capture-from-ip-camera-and-rtsp-settings"></a>从 IP 相机和 RTSP 设置捕获
+
+**是否需要在设备上使用特殊的 SDK 来发送视频流？**
+
+否。视频分析器支持使用 RTSP（实时流式处理协议）进行视频流式处理来捕获媒体，大多数 IP 相机支持此协议。
+
+**是否可以使用 RTSP 以外的协议将媒体推送到视频分析器？**
+
+否。视频分析器仅支持使用 RTSP 从 IP 相机捕获视频。 任何支持通过 TCP/HTTP 进行 RTSP 流式处理的相机都应正常工作。 
+
+**是否可以在实时管道中重置或更新 RTSP 源 URL？**
+
+是。实时管道处于非活动状态时可以进行重置或更新。  
+
+是否可以在测试和开发期间使用 RTSP 模拟器？
+
+是。[RTSP 模拟器]()<!--add-valid-link.md)--><!-- https://github.com/Azure/video-analyzer/tree/main/utilities/rtspsim-live555 --> 边缘模块可用来在快速入门和教程中支持学习过程。 我们会尽力提供此模块，但它可能并非始终都可用。 强烈建议你不要让使用模拟器的时间超过数小时。 在计划生产部署之前，应使用实际的 RTSP 源进行测试。
+
+## <a name="design-your-ai-model"></a>设计 AI 模型 
+
+**我有多个封装在 Docker 容器中的 AI 模型。如何在 Azure 视频分析器中使用它们？** 
+
+解决方案因推理服务器用来与 Azure 视频分析器通信的通信协议而异。 以下部分介绍每个协议的工作原理。
+
+使用 HTTP 协议：
+
+* 单个容器（模块名为 avaextension）：  
+
+   在推理服务器中，可以使用单个端口，但不同 AI 模型的终结点不同。 例如，对于 Python 示例，可以为每个模型使用不同的 `routes`，如下所示： 
+
+   ```
+   @app.route('/score/face_detection', methods=['POST']) 
+   … 
+   Your code specific to face detection model
+
+   @app.route('/score/vehicle_detection', methods=['POST']) 
+   … 
+   Your code specific to vehicle detection model 
+   … 
+   ```
+
+   然后，在视频分析器部署中激活实时管道时，为每个管道设置推理服务器 URL，如下所示： 
+
+   第一个实时管道：推理服务器 URL=`http://avaextension:44000/score/face_detection`<br/>
+   第二个实时管道：推理服务器 URL=`http://avaextension:44000/score/vehicle_detection`  
+   
+    > [!NOTE]
+    > 也可在不同的端口上公开 AI 模型，并在激活实时管道时调用它们。  
+
+* 多个容器： 
+
+   使用不同的名称部署每个容器。 在快速入门和教程中，我们介绍了如何部署名为 avaextension 的扩展。 现在，你可以开发两个不同的容器，每个容器使用相同的 HTTP 接口，这意味着它们具有相同的 `/score` 终结点。 使用不同的名称部署这两个容器，并确保两个容器在不同的端口上进行侦听。 
+
+   例如，名为 `avaextension1` 的一个容器侦听端口 `44000`，另一个名为 `avaextension2` 的容器侦听端口 `44001`。 
+
+   在视频分析器拓扑中，请使用不同的推理 URL 将两个实时管道进行实例化，如下所示： 
+
+   第一个实时管道：推理服务器 URL = `http://avaextension1:44001/score`    
+   第二个实时管道：推理服务器 URL = `http://avaextension2:44001/score`
+   
+使用 gRPC 协议： 
+
+* 此 gRPC 扩展节点有一个 `extensionConfiguration` 属性，这是可用作 gRPC 协定的一部分的可选字符串。 在单个推理服务器中打包多个 AI 模型时，无需为每个 AI 模型公开一个节点。 相反，对于实时管道，你可以作为扩展提供者来定义如何使用 `extensionConfiguration` 属性来选择不同的 AI 模型。 在执行期间，视频分析器会将此字符串传递给推理服务器，而推理服务器则可用它来调用所需的 AI 模型。 
+
+**我在围绕 AI 模型构建 gRPC 服务器，并且我希望能够支持其可供多个相机或实时管道使用。应如何构建服务器？** 
+
+ 首先，请确保服务器可以一次处理多个请求，或者可以在并行线程中运行。 
+
+例如，以下 [Azure 视频分析器 gRPC 示例]()中设置了默认的并行通道数<!--add-valid-link.md)--><!-- https://github.com/Azure/video-analyzer/tree/main/utilities/video-analysis/notebooks/Yolo/yolov3/yolov3-grpc-icpu-onnx/avaextension/server/server.py -->: 
+
+```
+server = grpc.server(futures.ThreadPoolExecutor(max_workers=3)) 
+```
+
+在上述 gRPC 服务器实例化中，服务器一次只能为每个相机或每个实时管道打开三个通道。 不要尝试将三个以上的实例连接到服务器。 如果尝试打开三个以上的通道，请求会处于挂起状态，直到删除某个现有的通道。  
+
+上面的 gRPC 服务器实现用在 Python 示例中。 作为开发人员，你可以实现自己的服务器或使用前面的默认实现来增加辅助角色数目，你需要将该数目设置为用于视频源的相机数。 
+
+若要设置和使用多个相机，可以实例化多个实时管道，每个管道指向相同的或不同的推理服务器（例如上一段中提到的服务器）。 
+
+**我希望能在进行推理决策之前接收多个帧。如何实现此操作？** 
+
+我们目前的[默认示例]()<!--add-valid-link.md)--><!--https://github.com/Azure/video-analyzer/tree/main/utilities/video-analysis--> 以无状态模式运行。 它们不会保留以前调用的状态，也不保留调用方的 ID。 这意味着多个实时管道可能会调用同一推理服务器，但服务器无法区分正在进行调用的是哪个调用方或每个调用方的状态。 
+
+使用 HTTP 协议：
+
+若要保留状态、每个调用方或实时管道，请使用调用方特有的 HTTP 查询参数来调用推理服务器。 例如，每个实时管道的推理服务器 URL 地址如下所示：  
+
+第一个实时管道：`http://avaextension:44000/score?id=1`<br/>
+第二个实时管道：`http://avaextension:44000/score?id=2`
+
+… 
+
+在服务器端，`id` 有助于标识调用方。 如果 `id`=1，则服务器可以单独保留该实时管道的状态。 然后，它可将接收的视频帧保留在缓冲区中。 例如，可以使用数组，或者使用带有 DateTime 键的字典，并且值为帧。 然后，可以定义要在接收 x 个帧后进行处理（推断）的服务器。 
+
+使用 gRPC 协议： 
+
+在使用 gRPC 扩展的情况下，一个会话对应于一个相机源，因此无需提供标识符。 在使用 extensionConfiguration 属性的情况下，可以将视频帧存储在缓冲区中，并定义要在接收 x 个帧后进行处理（推断）的服务器。 
+
+特定容器上的所有 ProcessMediaStream 是否都运行同一 AI 模型？ 
+
+否。 在实时管道中开始或停止来自最终用户的调用会构成一个会话，也可能存在相机断开连接或重新连接的情况。 如果相机是在流式处理视频，则目标是保留一个会话。 
+
+* 两个相机发送视频进行处理（到两个独立的实时管道）可创建两个会话。 
+* 如果将一台相机放入一个包含两个 gRPC 扩展节点的实时管道中，该相机会创建两个会话。 
+
+每个会话都是视频分析器与 gRPC 服务器之间的全双工连接，可以有不同的模型。 
+
+> [!NOTE]
+> 如果相机断开连接或重新连接，并且相机脱机的时间超出容许限制，则视频分析器会与 gRPC 服务器打开一个新会话。 不需服务器跟踪这些会话的状态。 
+
+视频分析器还为实时管道中的单个相机添加了针对多个 gRPC 扩展的支持。 你可以使用这些 gRPC 扩展以串行和/或并行的方式执行 AI 处理。 
+
+> [!NOTE]
+> 并行运行多个扩展会影响硬件资源。 在选择符合计算需求的硬件时，请记住这一点。 
+
+同时出现的 ProcessMediaStream 的最大数量是多少？ 
+
+视频分析器对这一数量没有限制。  
+
+如何确定我的推理服务器应使用 CPU、GPU 还是其他硬件加速器？ 
+
+你的决定取决于开发的 AI 模型的复杂性，以及你希望如何使用 CPU 和硬件加速器。 在开发 AI 模型时，可以指定模型应使用的资源和应执行的操作。 
+
+**如何查看推理服务器生成的边界框？** 
+
+可以在视频资源中记录推理结果以及媒体。 可以使用[小组件]()<!--add-valid-link.md)--><!-- pointer to widget md --> 播放包含推理数据覆盖的视频。
+
+## <a name="grpc-compatibility"></a>gRPC 兼容性 
+
+我如何知道媒体流描述符的必填字段有哪些？ 
+
+对于尚未为其提供值的任何字段，系统会为其提供一个[由 gRPC 指定的默认值](https://developers.google.com/protocol-buffers/docs/proto3#default)。  
+
+视频分析器使用 proto3 版本的协议缓冲区语言。 视频分析器协定使用的所有协议缓冲区数据都可以在[协议缓冲区文件]()中找到<!--add-valid-link.md)--><!--https://github.com/Azure/azree-video-analyzer/tree/master/contracts/grpc-->. 
+
+如何确保我使用的是最新的协议缓冲区文件？ 
+
+可以在[协定文件站点]()上获取最新的协议缓冲区文件<!--add-valid-link.md)--><!--https://github.com/Azure/azree-video-analyzer/tree/master/contracts/grpc-->. 每当我们更新协定文件时，就会将其置于此位置。 我们尚无更新协议文件的即时计划，因此，请在文件顶部查找包名称以了解版本。 此内容应为： 
+
+```
+microsoft.azure.media.live_video_analytics.extensibility.grpc.v1
+```
+
+对这些文件进行更新时，会将名称末尾的“v-value”递增。 
+
+> [!NOTE]
+> 由于视频分析器使用 proto3 版本的语言，因此字段为可选字段，并且版本可向后和向前兼容。 
+
+**可以通过视频分析器使用哪些 gRPC 功能？哪些功能是必需的？哪些功能是可选的？** 
+
+如果已履行协议缓冲区 (Protobuf) 协定，则可使用任何服务器端 gRPC 功能。 
+
+## <a name="monitoring-and-metrics"></a>监视和指标
+
+**是否可以使用 Azure 事件网格监视边缘上的管道？**
+
+是的。 可以使用 [Prometheus 指标](monitor-log-edge.md#azure-monitor-collection-via-telegraf)并将其发布到事件网格。 
+
+**是否可以使用 Azure Monitor 查看云端或边缘的管道的运行状况、指标和性能？**
+
+可以。我们支持此方法。 若要了解详细信息，请参阅 [Azure Monitor 指标概述](../../azure-monitor/essentials/data-platform-metrics.md)。
+
+**是否有任何工具可用于简化监视 Azure 视频分析器 IoT Edge 模块？**
+
+Visual Studio Code 支持 Azure IoT Tools 扩展，借助此扩展可轻松监视 Azure 视频分析器模块终结点。 可以使用此工具快速地开始监视 IoT 中心内置终结点中的“事件”，并查看从边缘设备路由到云的推理消息。 
+
+此外，还可以使用此扩展编辑 Azure 视频分析器模块的模块孪生，以修改管道设置。
+
+有关详细信息，请参阅[监视和日志记录](monitor-log-edge.md)一文。
+
+## <a name="billing-and-availability"></a>计费和可用性
+
+**Azure 视频分析器如何计费？**
+
+有关计费详细信息，请参阅[视频分析器定价]()<!--add-valid-link.md)--><!--https://azure.microsoft.com/pricing/details/media-services/-->.
+
+## <a name="next-steps"></a>后续步骤
+
+[快速入门：开始使用 Azure 视频分析器](get-started-detect-motion-emit-events.md)

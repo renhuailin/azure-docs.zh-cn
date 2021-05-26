@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 222ae284f77950c729a6a790e2ad29453a9ce34a
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 671c86790a3c90f948edb574bc015c0f41c5fbdf
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903142"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109858074"
 ---
 本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务 Teams 嵌入库加入 Microsoft Teams 会议。
 
@@ -86,7 +86,7 @@ end
 
 ### <a name="add-the-teams-embed-framework"></a>添加 Teams 嵌入框架
 
-1. 下载 [`MicrosoftTeamsSDK` iOS 包。](https://github.com/Azure/communication-teams-embed/releases)
+1. 下载 `MicrosoftTeamsSDK` iOS 包。
 2. 在项目根中创建 `Frameworks` 文件夹。 例如： `\TeamsEmbedGettingStarted\Frameworks\`
 3. 将下载的 `TeamsAppSDK.framework` 和 `MeetingUIClient.framework` 以及发布捆绑包中提供的其他框架复制到此文件夹。
 4. 在“常规”选项卡下将框架添加到项目目标。使用 `Add Other` -> `Add Files...` 导航到框架文件并添加它们。

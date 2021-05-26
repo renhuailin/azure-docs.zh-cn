@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 975f7eec31839aefcb1782f573d0210df29a4d00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6c09389628e1a9648d827eb5562a06c4f746db2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98873563"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110370936"
 ---
 # <a name="cognitive-services-development-options"></a>认知服务开发选项
 
@@ -125,7 +125,7 @@ Power Automate 是 [Power Platform](/power-platform/) 中的一项服务，可�
 | 构成要素 | 服务 | 自定义 UI | 快速入门 |
 |--------|---------|------------------|------------|
 | 影像 | 自定义视觉 | https://www.customvision.ai/ | [快速入门](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
-| 影像 | 表单识别器 | [示例标记工具](https://fott-preview.azurewebsites.net/) | [快速入门](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
+| 影像 | 表单识别器 | [示例标记工具](https://aka.ms/fott-2.1-ga) | [操作指南文章](./form-recognizer/label-tool.md?tabs=v2-0) |
 | 决策 | 内容审查器 | https://contentmoderator.cognitive.microsoft.com/dashboard | [快速入门](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
 | 决策 | 指标顾问 | https://metricsadvisor.azurewebsites.net/  | [快速入门](./metrics-advisor/quickstarts/web-portal.md) |
 | 决策 | 个性化体验创建服务 | Azure 门户的个性化体验创建服务中提供 UI。 | [快速入门](./personalizer/quickstart-personalizer-sdk.md) |

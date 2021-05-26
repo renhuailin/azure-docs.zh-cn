@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Azure 视频分析器文档
+summary: 了解如何使用 Azure 视频分析器
+metadata:
+  title: Azure 视频分析器文档
+  description: 了解如何使用 Azure 视频分析器
+  services: azure-video-analyzer
+  ms.service: azure-video-analyzer
+  ms.topic: landing-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 03/11/2021
+  ms.openlocfilehash: 9b4418aa8ff0d0cf3fb6d43d52d5b8991f403515
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110383380"
+landingContent:
+- title: 视频分析器概述
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于 Azure 视频分析器（预览）
+      url: overview.md
+    - text: 关于用于媒体的 Azure 视频分析器
+      url: ../video-analyzer-for-media-docs/video-indexer-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Azure 视频分析器入门
+      url: get-started-detect-motion-emit-events.md
+- title: 基于事件录制视频
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 连续视频录制
+      url: event-based-video-recording-concept.md
+  - linkListType: quickstart
+    links:
+    - text: 检测运动，将视频录制到边缘设备
+      url: detect-motion-record-video-edge-devices.md
+    - text: 检测动作，在云中录制视频
+      url: detect-motion-record-video-clips-cloud.md
+  - linkListType: tutorial
+    links:
+    - text: 基于事件的视频录制和播放
+      url: record-event-based-live-video.md
+- title: 无需录制即可分析实时视频
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 无需录制即可分析实时视频
+      url: analyze-live-video-without-recording.md
+  - linkListType: quickstart
+    links:
+    - text: 检测运动并发出事件
+      url: detect-motion-emit-events-quickstart.md
+    - text: 在直播视频中跟踪对象
+      url: track-objects-live-video.md
+  - linkListType: tutorial
+    links:
+    - text: 通过 HTTP 扩展使用 OVMS 分析实时视频
+      url: use-intel-openvino-tutorial.md
+    - text: 通过 gRPC 扩展使用 OV DL Streamer 分析实时视频
+      url: use-intel-grpc-video-analytics-serving-tutorial.md
+    - text: 通过空间分析分析实时视频
+      url: computer-vision-for-spatial-analysis.md
+    - text: 通过自定义视觉分析实时视频
+      url: analyze-live-video-custom-vision.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 常见问题
+      url: faq-edge.md
+    - text: SDK
+      url: sdk.md
+    - text: 管道扩展
+      url: pipeline-extension.md
+    - text: 直接方法
+      url: direct-methods.md
+    - text: 配额和限制
+      url: quotas-limitations.md

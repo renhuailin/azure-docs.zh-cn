@@ -3,16 +3,16 @@ title: 适用于资源管理器的 Azure Defender - 优点和功能
 description: 了解适用于资源管理器的 Azure Defender 的优点和功能
 author: memildin
 ms.author: memildin
-ms.date: 12/07/2020
+ms.date: 05/12/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 71209d9e20ec0f0cbc263e84d04bf8eba6e98b99
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: a7292d08d2505b63e97c76ca3f40ad573690c173
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279057"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846403"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 简介
 
@@ -26,7 +26,7 @@ ms.locfileid: "108279057"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|预览<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|发布状态：|正式发布版 (GA)|
 |定价：|适用于资源管理器的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中所示的定价计费|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||

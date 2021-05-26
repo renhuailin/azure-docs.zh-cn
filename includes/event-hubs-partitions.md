@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: event-hubs
 author: spelluru
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/15/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 1dd78ba3799573e05e4ebbf55887bae3d9674b7c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 05a54a5e240f528ca5662b05e37127741ce4722e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310065"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367076"
 ---
 事件中心将发送到事件中心的事件序列组织到一个或多个分区中。 当较新的事件到达时，它们将添加到此序列的末尾。 
 
@@ -32,7 +32,7 @@ ms.locfileid: "107310065"
 ### <a name="number-of-partitions"></a>分区数
 分区数在创建时指定，并且在事件中心标准层中必须介于 1 和 32 之间。 在事件中心专用层中，每个容量单位的分区计数最多可达 2000 个分区。 
 
-建议在特定事件中心的应用程序峰值负载期间，至少选择你预期需要的持续[吞吐量单位 (TU)](../articles/event-hubs/event-hubs-faq.yml#what-are-event-hubs-throughput-units-) 数量的分区。 应该以吞吐容量为 1 TU（1 MByte 输入，2 MByte 输出）的单个分区进行计算。 你可以扩展命名空间上的 TU 或群集的容量单位，而不依赖分区计数。 当命名空间设置为 1 TU 容量时，具有 32 个分区的事件中心或具有 1 个分区的事件中心会产生完全相同的费用。 
+建议在特定事件中心的应用程序峰值负载期间，至少选择你预期需要的持续[吞吐量单位 (TU)](../articles/event-hubs/event-hubs-scalability.md#throughput-units) 数量的分区。 应该以吞吐容量为 1 TU（1 MByte 输入，2 MByte 输出）的单个分区进行计算。 你可以扩展命名空间上的 TU 或群集的容量单位，而不依赖分区计数。 当命名空间设置为 1 TU 容量时，具有 32 个分区的事件中心或具有 1 个分区的事件中心会产生完全相同的费用。 
 
 创建事件中心后，可以[增加](../articles/event-hubs/dynamically-add-partitions.md)[专用事件中心群集](../articles/event-hubs/event-hubs-dedicated-overview.md)中事件中心的分区计数，但当分区键到分区的映射发生更改时，流在分区之间的分布也会发生更改，因此如果应用程序中事件的相对顺序很重要，你应该尽力避免此类更改。
 

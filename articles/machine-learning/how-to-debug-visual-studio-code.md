@@ -9,12 +9,12 @@ ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: d3c4438cdfa8ddd41cb306e84623ccd569ac1680
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 49954224fbdb2d100a809ea5c1d975e1b2e46f56
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885571"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372923"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
 
@@ -28,7 +28,7 @@ ms.locfileid: "107885571"
 
 ### <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习 VS Code 扩展（预览版）。 有关详细信息，请参阅[设置 Azure 机器学习 VS Code 扩展](tutorial-setup-vscode-extension.md)。
+* Azure 机器学习 VS Code 扩展（预览版）。 有关详细信息，请参阅[设置 Azure 机器学习 VS Code 扩展](how-to-setup-vs-code.md)。
 * [Docker](https://www.docker.com/get-started)
   * 适用于 Mac 和 Windows 的 Docker Desktop
   * 适用于 Linux 的 Docker 引擎。

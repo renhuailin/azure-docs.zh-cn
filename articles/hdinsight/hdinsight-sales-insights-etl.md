@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: f41f202ede49892608e1ca3c5fdfbe703b6a5293
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8fc2654dfb41ef4b9e1e2491f6c130229b856682
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074936"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091691"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中创建端到端的数据管道以派生销售见解
 
@@ -168,7 +168,7 @@ ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.out
 此脚本执行以下操作：
 
 1. 创建对 Data Lake Storage Gen2 存储帐户拥有 `Storage Blob Data Contributor` 权限的服务主体。
-1. 获取身份验证令牌，以授权对 [Data Lake Storage Gen2 文件系统 REST API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/filesystem/create) 的 POST 请求。
+1. 获取身份验证令牌，以授权对 [Data Lake Storage Gen2 文件系统 REST API](/rest/api/storageservices/datalakestoragegen2/filesystem/create) 的 POST 请求。
 1. 在 `sparktransform.py` 和 `query.hql` 文件中填充 Data Lake Storage Gen2 存储帐户的实际名称。
 1. 获取 Data Lake Storage Gen2 和 Blob 存储帐户的存储密钥。
 1. 创建另一个资源部署，以创建 Azure 数据工厂管道及其关联的链接服务和活动。 它将存储密钥作为参数传递给模板文件，使链接服务能够正常访问存储帐户。
@@ -265,8 +265,8 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 
 1. 在“导航器”中，选择 `sales` 和/或 `sales_raw` 以预览数据。 加载数据后，可以尝试创建仪表板。 若要开始使用 Power BI 仪表板，请参阅以下链接：
 
-* [Power BI 设计器仪表板简介](https://docs.microsoft.com/power-bi/service-dashboards)
-* [教程：Power BI 服务入门](https://docs.microsoft.com/power-bi/service-get-started)
+* [Power BI 设计器仪表板简介](/power-bi/service-dashboards)
+* [教程：Power BI 服务入门](/power-bi/service-get-started)
 
 ## <a name="clean-up-resources"></a>清理资源
 

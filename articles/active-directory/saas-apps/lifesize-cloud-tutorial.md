@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 483377d0376a5a98d822392af1fa2d84ad8498e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37a116752062e722f65acb6ca01431b5176ea60e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92458585"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085449"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>教程：Azure Active Directory 与 Lifesize Cloud 的集成
 
@@ -115,7 +115,7 @@ ms.locfileid: "92458585"
     d. 在“中继状态”文本框中，使用以下模式键入 URL：`https://webapp.lifesizecloud.com/?ent=<identifier>` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL、标识符和中继状态更新这些值。 请联系 [Lifesize Cloud 客户端支持团队](https://www.lifesize.com/en/support)获取登录 URL 值和标识符值，可从本教程之后将介绍的 SSO 配置中获取中继状态值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL、标识符和中继状态更新这些值。 请联系 [Lifesize Cloud 客户端支持团队](https://legacy.lifesize.com/en/support)获取登录 URL 值和标识符值，可从本教程之后将介绍的 SSO 配置中获取中继状态值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 

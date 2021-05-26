@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/8/2021
-ms.openlocfilehash: 7d04b98014abbf6bf732da292df3b7bb9172f281
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 59d2d561945ed55f3140099117c2f8dc9d8cc766
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203570"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084549"
 ---
 # <a name="authentication-failed"></a>验证失败
 
@@ -27,7 +27,7 @@ ms.locfileid: "108203570"
 
 ### <a name="cause-1"></a>原因 #1
 
-Azure Digital Twins Explorer 应用程序使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential)（`Azure.Identity` 库的一部分），它将在你的本地环境中搜索凭据。
+Azure Digital Twins Explorer 应用程序使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true)（`Azure.Identity` 库的一部分），它将在你的本地环境中搜索凭据。
 
 如错误文本所述，如果你未提供由 `DefaultAzureCredential` 选择的本地凭据，则可能会出现此错误。
 

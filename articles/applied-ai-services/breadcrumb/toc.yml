@@ -1,0 +1,7 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 应用 AI 服务
+      tocHref: /azure/applied-ai-services/
+      topicHref: /azure/applied-ai-services/

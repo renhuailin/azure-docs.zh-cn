@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/18/2021
 author: chez-charlie
 ms.author: chez
-ms.openlocfilehash: 2bbb4017d0f5bd700bfbc9964f8949d59999ea4d
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 48e8c9ff5111b6b67e835676e3bc56e4536248a0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903675"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091461"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
 
@@ -38,6 +38,7 @@ ms.locfileid: "107903675"
 
 - Amazon Redshift
 - Amazon S3
+- Amazon S3 兼容存储
 - Azure Blob 存储
 - Azure Cosmos DB (SQL API)
 - Azure Data Lake Storage Gen2
@@ -52,6 +53,7 @@ ms.locfileid: "107903675"
 - 泛型 REST
 - MySQL
 - Oracle
+- Oracle 云存储
 - SQL Server
 
 对于不在上述列表中的其他链接服务类型，可以通过在 UI 上编辑 JSON 来参数化该链接服务：

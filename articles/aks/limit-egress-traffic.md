@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: bf006c6ade92cc2d1286dc1173d09efea0294f50
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e5f71566d3e31858a60f805bf45fe95793dd9b20
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754462"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094251"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes 服务 (AKS) 中群集节点的出口流量
 
@@ -178,26 +178,6 @@ AKS 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 | *.ods.opinsights.azure.com    | **`HTTPS:443`**    | Azure Monitor 使用此终结点来引入日志分析数据。 |
 | *.oms.opinsights.azure.com | **`HTTPS:443`** | 此终结点由 omsagent 使用，用于对日志分析服务进行身份验证。 |
 | *.monitoring.azure.com | **`HTTPS:443`** | 此终结点用于将指标数据发送到 Azure Monitor。 |
-
-### <a name="azure-dev-spaces"></a>Azure Dev Spaces
-
-更新防火墙或安全配置，以允许往返以下所有 FQDN 和 [Azure Dev Spaces 基础结构服务][dev-spaces-service-tags]的网络流量。
-
-#### <a name="required-network-rules"></a>必需的网络规则
-
-| 目标终结点                                                             | 协议 | 端口    | 用途  |
-|----------------------------------------------------------------------------------|----------|---------|------|
-| [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureDevSpaces`  | TCP           | 443      | 此终结点用于将指标数据和日志发送到 Azure Monitor 和 Log Analytics。 |
-
-#### <a name="required-fqdn--application-rules"></a>必需的 FQDN/应用程序规则
-
-启用了 Azure Dev Spaces 的 AKS 群集需要以下 FQDN/应用程序规则：
-
-| FQDN                                    | 端口      | 用途      |
-|-----------------------------------------|-----------|----------|
-| `cloudflare.docker.com` | **`HTTPS:443`** | 此地址用于请求 linux alpine 和其他 Azure Dev Spaces 映像 |
-| `gcr.io` | **`HTTPS:443`** | 此地址用于请求 helm/tiller 映像 |
-| `storage.googleapis.com` | **`HTTPS:443`** | 此地址用于请求 helm/tiller 映像 |
 
 ### <a name="azure-policy"></a>Azure Policy
 
@@ -802,4 +782,3 @@ az group delete -g $RG
 [aks-upgrade]: upgrade-cluster.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[dev-spaces-service-tags]: ../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations

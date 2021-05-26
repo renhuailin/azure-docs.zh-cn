@@ -4,12 +4,12 @@ description: 了解如何使用 Java 开发函数。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82e40fbe3be88754ce7196f61c971c7a002998ca
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96326448"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095097"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -195,7 +195,7 @@ Maven 还允许指定用于在 Azure 中运行函数应用的操作系统。 使
  
 ## <a name="jdk-runtime-availability-and-support"></a>JDK 运行时可用性和支持 
 
-若要进行本地 Java 函数应用开发，请从 [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) 下载并使用相应的[适用于 Azure 的 Azul Zulu Enterprise](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java JDK。 将函数应用部署到云时，Azure Functions 使用 Azul Java JDK 运行时。
+若要进行本地 Java 函数应用开发，请从 Azul Systems 下载并使用相应的[适用于 Azure 的 Azul Zulu Enterprise](https://www.azul.com/downloads/azure-only/zulu/) Java JDK。 将函数应用部署到云时，Azure Functions 使用 Azul Java JDK 运行时。
 
 对于 JDK 和函数应用的问题，[Azure 支持](https://azure.microsoft.com/support/)可通过[限定的支持计划](https://azure.microsoft.com/support/plans/)获得。
 
@@ -421,7 +421,7 @@ public class Function {
 | `HttpRequestMessage<T>`  |    HTTP 触发器     | 获取方法、标头或查询 |
 | `HttpResponseMessage` | HTTP 输出绑定 | 返回除 200 以外的状态   |
 
-## <a name="metadata"></a>元数据
+## <a name="metadata"></a>Metadata
 
 少量的触发器会连同输入数据一起发送[触发器元数据](./functions-triggers-bindings.md)。 可使用注释 `@BindingName` 绑定到触发器元数据。
 
