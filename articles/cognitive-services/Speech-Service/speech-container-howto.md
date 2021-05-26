@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: efc92bbd149bf66abf8d1582902443df054ce0e6
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: e4b79dc278bf41015c84f72994dd68419ae6e230
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930204"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097941"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 API 安装并运行 Docker 容器 
 
@@ -38,13 +38,13 @@ ms.locfileid: "107930204"
 >
 > 若要使用语音容器，必须提交在线请求并获得批准。 有关详细信息，请参阅下面的“请求批准运行容器”部分。
 
-| 容器 | 功能 | 最新 |
+| 容器 | 功能 | 最晚 |
 |--|--|--|
-| 语音转文本 | 使用中间结果分析情绪并听录连续实时语音或批量音频录制内容。  | 2.11.0 |
-| 自定义语音转文本 | 通过[自定义语音识别门户](https://speech.microsoft.com/customspeech)中的自定义模型，使用中间结果将连续实时语音或批量音频录制内容听录成文本。 | 2.11.0 |
-| 文本转语音 | 使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.13.0 |
+| 语音转文本 | 使用中间结果分析情绪并听录连续实时语音或批量音频录制内容。  | 2.12.0 |
+| 自定义语音转文本 | 通过[自定义语音识别门户](https://speech.microsoft.com/customspeech)中的自定义模型，使用中间结果将连续实时语音或批量音频录制内容听录成文本。 | 2.12.0 |
+| 文本转语音 | 使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.14.0 |
 | 语音语言检测 | 检测音频文件中讲述的语言。 | 1.0 |
-| 神经文本转语音 | 使用深度神经网络技术将文本转换为自然语音，使合成语音变得更自然。 | 1.5.0 |
+| 神经文本转语音 | 使用深度神经网络技术将文本转换为自然语音，使合成语音变得更自然。 | 1.6.0 |
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -319,7 +319,7 @@ diarize_speech_config.set_service_property(
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>分析语音转文本输出中的情绪 
-从语音转文本容器 v2.6.0 开始，应使用 TextAnalytics 3.0 API 终结点，而不要使用预览版。 例如
+从语音转文本容器 v2.6.0 开始，应使用 TextAnalytics 3.0 API 终结点，而不要使用预览版。 例如：
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
 * `https://localhost:5000/text/analytics/v3.0/sentiment`
 

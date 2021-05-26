@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7656efeb26a8a8b3c752ea996c8e644c68a48626
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dc73ac91320e1860c5c30f1b31962ad826a1038f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043994"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076791"
 ---
 # <a name="deploy-azure-monitor"></a>部署 Azure Monitor
 启用 Azure Monitor 来监视所有 Azure 资源时，既要配置 Azure Monitor 组件，也要配置 Azure 资源，这样才能生成供 Azure Monitor 收集的监视数据。 本文描述如何通过所需的不同步骤来完全实现使用常用配置的 Azure Monitor，以便监视 Azure 订阅中的所有资源。 本文为每个步骤提供了基本说明，其中包含介绍详细配置要求的其他文档的链接。
@@ -137,7 +137,7 @@ Azure Monitor 使用 [Application Insights](app/app-insights-overview.md) 来监
 - [ASP.NET 应用程序](app/asp-net.md)
 - [ASP.NET Core 应用程序](app/asp-net-core.md)
 - [.NET 控制台应用程序](app/console.md)
-- [Java](app/java-get-started.md)
+- [Java](app/java-in-process-agent.md)
 - [Node.js](app/nodejs.md)
 - [Python](app/opencensus-python.md)
 - [其他平台](app/platforms.md)

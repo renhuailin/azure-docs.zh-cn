@@ -1,17 +1,17 @@
 ---
 title: 使用 C# 在 Azure 中创建你的第一个持久函数
 description: 使用 Visual Studio 或 Visual Studio Code 创建并发布 Azure 持久函数。
-author: jeffhollan
+author: anthonychu
 ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: 36566baac2885c449e1eae762924357bf571b39f
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: da5819c6a40e1d5a513e9d742702d5435f4efbeb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490210"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465965"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
 
@@ -84,7 +84,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     | 选择存储帐户 | 新建存储帐户 |  |
     | 输入新存储帐户的名称 | *唯一名称* | 要创建的存储帐户的名称 |
     | 选择资源组 | *唯一名称* | 要创建的资源组名称 |
-    | 选择位置 | *region* | 选择离你较近的区域 |
+    | 选择一个位置 | *region* | 选择离你较近的区域 |
 
 包含新函数的类会添加到此项目。 VS Code 还将存储帐户连接字符串添加到 *local.settings.json*，并将对 [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet 包的引用添加到 *.csproj* 项目文件。
 

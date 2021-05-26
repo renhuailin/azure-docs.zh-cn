@@ -1,0 +1,85 @@
+### YamlMime:Hub
+title: Azure 应用 AI 服务文档
+summary: '可加速开发常见业务流程解决方案的一系列 AI 服务 '
+brand: azure
+metadata:
+  title: Azure 应用 AI 服务文档
+  description: 了解如何使用 Azure 应用 AI 服务，以使用 AI 解决复杂的业务方案。
+  ms.service: applied-ai-services
+  ms.topic: hub-page
+  author: nitinme
+  ms.author: nitinme
+  manager: nitinme
+  ms.custom: custom-portals-hub
+  ms.date: 05/05/2021
+highlightedContent:
+  items:
+    - title: 什么是应用 AI 服务？
+      itemType: overview
+      url: ./what-are-applied-ai-services.md
+    - title: 为何使用应用 AI 服务？
+      itemType: concept
+      url: ./why-applied-ai-services.md
+    - title: 客户用例聚焦
+      itemType: learn
+      url: ./applied-ai-services-customer-spotlight-use-cases.md
+productDirectory:
+  items:
+    - title: Azure 表单识别器
+      imageSrc: ./media/form-recognizer.svg
+      summary: 仅需很少的时间和成本即可将文档转换为可用数据
+      url: ../cognitive-services/form-recognizer/index.yml
+    - title: Azure 沉浸式阅读器
+      imageSrc: ./media/immersive-reader.svg
+      summary: 帮助用户阅读和理解文本
+      url: ../cognitive-services/immersive-reader/index.yml
+    - title: Azure 指标顾问
+      imageSrc: ./media/metrics-advisor.svg
+      summary: 主动监视指标并诊断问题
+      url: ../cognitive-services/metrics-advisor/index.yml
+    - title: Azure 认知搜索
+      imageSrc: ./media/cognitive-search.svg
+      summary: 将由 AI 提供支持的云搜索引入移动和 Web 应用
+      url: ../search/index.yml
+    - title: Azure 视频分析器
+      imageSrc: ./media/video-analytics.svg
+      summary: 从视频中提取切实可行的见解
+      url: 'https://aka.ms/video-analyzer-hub'
+    - title: Azure 机器人服务
+      imageSrc: ./media/bot-services.svg
+      summary: 创建机器人并跨通道连接
+      url: 'https://docs.microsoft.com/composer/'
+additionalContent:
+  sections:
+    - title: 其他资源
+      items:
+        - title: 支持和帮助
+          links:
+            - text: 在 UserVoice 上提交反馈
+              url: 'https://aka.ms/AppliedAIUserVoice'
+            - text: 在 Microsoft 问答上发布问题
+              url: 'https://aka.ms/AppliedAIMSFTQandA'
+            - text: 在 StackOverflow 上进行故障排除
+              url: 'https://aka.ms/AppliedAIStackOverflow'
+        - title: 利用快速入门获取编码
+          links:
+            - text: Azure 表单识别器
+              url: ../cognitive-services/form-recognizer/quickstarts/get-started-with-form-recognizer.md
+            - text: Azure 指标顾问
+              url: ../cognitive-services/metrics-advisor/quickstarts/web-portal.md
+            - text: Azure 沉浸式阅读器
+              url: ../cognitive-services/immersive-reader/quickstarts/client-libraries.md
+            - text: Azure 认知搜索
+              url: ../search/search-get-started-portal.md
+            - text: Azure 视频分析器
+              url: 'https://aka.ms/video-analytics-qs'
+            - text: Azure 机器人服务
+              url: 'https://docs.microsoft.com/composer/quickstart-create-bot'
+            - text: 免费启动
+              url: 'https://azure.microsoft.com/free/ai'
+        - title: 探索其他 Azure AI 服务
+          links:
+            - text: Azure 认知服务
+              url: 'https://docs.microsoft.com/en-us/azure/cognitive-services/'
+            - text: Azure 机器学习
+              url: 'https://docs.microsoft.com/en-us/azure/machine-learning/'

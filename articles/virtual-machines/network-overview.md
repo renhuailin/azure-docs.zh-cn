@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: c0fa311f03de1805d2487fe469d9305c0e01af78
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: a3c07457a193e4a1285dc8a2b3c7197f6151a984
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751862"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077583"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Azure 中的虚拟网络和虚拟机
 
@@ -50,7 +50,7 @@ ms.locfileid: "109751862"
 | Azure 门户 | 在 Azure 门户中创建 VM 时，系统会自动创建网络接口（无法使用单独创建的 NIC）。 门户将创建只包含一个 NIC 的 VM。 如果想要创建包含多个 NIC 的 VM，必须使用其他方法创建 VM。 |
 | [Azure PowerShell](./windows/multiple-nics.md) | 将 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 与 **-PublicIpAddressId** 参数配合使用，以提供事先创建的公共 IP 地址的标识符。 |
 | [Azure CLI](./linux/multiple-nics.md) | 若要提供事先创建的公共 IP 地址标识符，请结合 **--public-ip-address** 参数使用 [az network nic create](/cli/azure/network/nic)。 |
-| [模板](../virtual-network/template-samples.md) | 参考 [Network Interface in a Virtual Network with Public IP Address](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)（虚拟网络中使用公共 IP 地址的网络接口），使用模板部署网络接口。 |
+| [模板](../virtual-network/template-samples.md) | 参考 [Network Interface in a Virtual Network with Public IP Address](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/nic-publicip-dns-vnet)（虚拟网络中使用公共 IP 地址的网络接口），使用模板部署网络接口。 |
 
 ## <a name="ip-addresses"></a>IP 地址
 
@@ -114,7 +114,7 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 | [Azure 门户](../virtual-network/tutorial-filter-network-traffic.md) | 在 Azure 门户中创建 VM 时，会自动创建 NSG 并将其关联到门户创建的 NIC。 NSG 的名称是 VM 名称和 **-nsg** 的组合。 此 NSG 包含一个入站规则，该规则的优先级为 1000，服务设置为 RDP，协议设置为 TCP，端口设置为 3389，操作设置为“允许”。 如果想要允许其他任何入站流量流向 VM，必须向 NSG 添加更多规则。 |
 | [Azure PowerShell](../virtual-network/tutorial-filter-network-traffic.md) | 使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 并提供所需的规则信息。 使用 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) 创建 NSG。 使用 [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 为子网配置 NSG。 使用 [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) 向 VNet 中添加 NSG。 |
 | [Azure CLI](../virtual-network/tutorial-filter-network-traffic-cli.md) | 首先使用 [az network nsg create](/cli/azure/network/nsg) 创建 NSG。 使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 向 NSG 添加规则。 使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet) 将 NSG 添加到子网。 |
-| [模板](../virtual-network/template-samples.md) | 参考[创建网络安全组](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create)，使用模板部署网络安全组。 |
+| [模板](../virtual-network/template-samples.md) | 参考[创建网络安全组](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/security-group-create)，使用模板部署网络安全组。 |
 
 ## <a name="load-balancers"></a>负载均衡器
 
@@ -138,7 +138,7 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 | Azure 门户 |  可以[通过 Azure 门户对从 Internet 到 VM 的流量进行负载均衡](../load-balancer/quickstart-load-balancer-standard-public-portal.md)。 |
 | [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-public-powershell.md) | 若要提供事先创建的公共 IP 地址标识符，请将 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 与 **-PublicIpAddress** 参数配合使用。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 创建后端地址池的配置。 使用 [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) 创建与你创建的前端 IP 配置关联的入站 NAT 规则。 使用 [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) 创建所需的探测。 使用 [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) 创建负载均衡器配置。 使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) 创建负载均衡器。|
 | [Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md) | 使用 [az network lb create](/cli/azure/network/lb) 创建初始负载均衡器配置。 使用 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) 添加事先创建的公共 IP 地址。 使用 [az network lb address-pool create](/cli/azure/network/lb/address-pool) 添加后端地址池的配置。 使用 [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) 添加 NAT 规则。 使用 [az network lb rule create](/cli/azure/network/lb/rule) 添加负载均衡器规则。 使用 [az network lb probe create](/cli/azure/network/lb/probe) 添加探测。 |
-| [模板](../load-balancer/quickstart-load-balancer-standard-public-template.md) | 参考[负载均衡器中的 3 个 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create)，使用模板部署负载均衡器。 |
+| [模板](../load-balancer/quickstart-load-balancer-standard-public-template.md) | 参考[负载均衡器中的 3 个 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-standard-create)，使用模板部署负载均衡器。 |
 
 下表列出了可用于创建内部负载均衡器的方法。
 
@@ -168,7 +168,7 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 | [Azure 门户](./windows/quick-create-portal.md) | 使用前面所述的默认网络设置创建包含单个 NIC 的 VM。 若要创建包含多个 NIC 的 VM，必须使用其他方法。 |
 | [Azure PowerShell](./windows/tutorial-manage-vm.md) | 使用 [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) 将事先创建的 NIC 添加到 VM 配置中。 |
 | [Azure CLI](./linux/create-cli-complete.md) | 创建 VM 并将其连接到以单个步骤生成的 Vnet、子网和 NIC。 |
-| [模板](./windows/ps-template.md) | 参考 [Very simple deployment of a Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)（非常简单的 Windows VM 部署），使用模板部署 VM。 |
+| [模板](./windows/ps-template.md) | 参考 [Very simple deployment of a Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows)（非常简单的 Windows VM 部署），使用模板部署 VM。 |
 
 ## <a name="next-steps"></a>后续步骤
 有关如何为 VM 管理 Azure 虚拟网络的 VM 特定步骤，请参阅 [Windows](../virtual-machines/windows/tutorial-virtual-network.md) 或 [Linux](../virtual-machines/linux/tutorial-virtual-network.md) 教程。

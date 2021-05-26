@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ed6edeadfb1c6f73cc10771d4a5328e7bddb3642
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 921a2c6425010dbf98c170d8435267e440883aa5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835157"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075135"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>有关使用 Azure 资源管理器模板部署 Web 应用的指南
 
@@ -53,7 +53,7 @@ ms.locfileid: "107835157"
 
 通常，解决方案仅包括上述某些资源和层。 对于缺少的层，请将较低的资源映射到下一个较高的层。
 
-以下示例显示了模板的一部分。 连接字符串配置值依赖于 MSDeploy 扩展。 MSDeploy 扩展依赖于 Web 应用和数据库。 
+以下示例显示了模板的一部分。 连接字符串配置值依赖于 MSDeploy 扩展。 MSDeploy 扩展依赖于 Web 应用和数据库。
 
 ```json
 {
@@ -82,7 +82,7 @@ ms.locfileid: "107835157"
 }
 ```
 
-有关使用上述代码的现成示例，请参阅[模板：构建简单的 Umbraco Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)。
+有关使用上述代码的现成示例，请参阅[模板：构建简单的 Umbraco Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/umbraco/umbraco-webapp-simple)。
 
 ## <a name="find-information-about-msdeploy-errors"></a>查找有关 MSDeploy 错误的信息
 

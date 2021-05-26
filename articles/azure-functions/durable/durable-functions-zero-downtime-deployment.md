@@ -3,15 +3,15 @@ title: Durable Functions 的零停机时间部署
 description: 了解如何启用 Durable Functions 业务流程以实现零停机时间部署。
 author: tsushi
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 05/11/2021
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 707d624c47c536e00e98910a8902772703733515
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab3c9db7cc06add6019be7a92faf3f523e50f039
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558757"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368051"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停机时间部署
 
@@ -29,6 +29,11 @@ Durable Functions 的[可靠执行模型](./durable-functions-orchestrations.md)
 | [带槽的状态检查](#status-check-with-slot) | 不存在长时间运行（超过 24 小时）的业务流程或经常重叠业务流程的系统。 | 简单的基本代码。<br/>不需要额外的函数应用管理。 | 需要额外的存储帐户或任务中心管理。<br/>需要有几段时间没有任何业务流程运行。 |
 | [应用程序路由](#application-routing) | 在所有时间段都有业务流程运行的系统，例如，业务流程持续时间超过 24 小时的时段，或经常重叠业务流程的时段。 | 处理持续运行具有中断性变更的业务流程的新系统版本。 | 需要智能应用程序路由器。<br/>可能超出订阅允许的最大函数应用数目。 默认值为 100。 |
 
+本文档的其余部分更详细地介绍了这些策略。
+
+> [!NOTE]
+> 这些零停机时间部署策略的描述假定你正在使用适用于 Durable Functions 的默认 Azure 存储提供程序。 如果使用的存储提供程序不是默认的 Azure 存储提供程序，则该指南可能不适用。 有关各种存储提供程序选项及其比较方式的详细信息，请参阅 [Durable Functions 存储提供程序](durable-functions-storage-providers.md)文档。
+
 ## <a name="versioning"></a>版本控制
 
 定义新版本函数，并在函数应用中保留旧版本。 如图中所示，函数的版本将成为其名称的一部分。 由于保留了以前的函数版本，运行中的业务流程实例可以继续引用它们。 同时，对新业务流程实例的请求将调用最新版本，业务流程客户端函数可以从应用设置引用该版本。
@@ -37,8 +42,8 @@ Durable Functions 的[可靠执行模型](./durable-functions-orchestrations.md)
 
 在此策略中，必须复制每个函数，并且必须更新其对其他函数的引用。 可以通过编写脚本来简化此过程。 下面是使用迁移脚本的[示例项目](https://github.com/TsuyoshiUshio/DurableVersioning)。
 
->[!NOTE]
->此策略使用部署槽来避免部署期间发生停机。 有关如何创建和使用新部署槽的详细信息，请参阅 [Azure Functions 部署槽](../functions-deployment-slots.md)。
+> [!NOTE]
+> 此策略使用部署槽来避免部署期间发生停机。 有关如何创建和使用新部署槽的详细信息，请参阅 [Azure Functions 部署槽](../functions-deployment-slots.md)。
 
 ## <a name="status-check-with-slot"></a>带槽的状态检查
 
@@ -50,7 +55,7 @@ Durable Functions 的[可靠执行模型](./durable-functions-orchestrations.md)
 
 1. [将部署槽添加](../functions-deployment-slots.md#add-a-slot)到函数应用用于过渡和生产。
 
-1. 对于每个槽，请将 [AzureWebJobsStorage 应用程序设置](../functions-app-settings.md#azurewebjobsstorage)指定为共享存储帐户的连接字符串。 此存储帐户连接字符串由 Azure Functions 运行时使用。 此帐户由 Azure Functions 运行时使用，可以管理函数的密钥。
+1. 对于每个槽，请将 [AzureWebJobsStorage 应用程序设置](../functions-app-settings.md#azurewebjobsstorage)指定为共享存储帐户的连接字符串。 此存储帐户连接字符串由 Azure Functions 运行时用来安全地存储[函数的访问密钥](../security-concepts.md#function-access-keys)。
 
 1. 对于每个槽，请创建新的应用设置，例如 `DurableManagementStorage`。 将其值设置为不同存储帐户的连接字符串。 Durable Functions 扩展使用这些存储帐户来实现[可靠执行](./durable-functions-orchestrations.md)。 对每个槽使用单独的存储帐户。 不要将此设置标记为部署槽设置。
 

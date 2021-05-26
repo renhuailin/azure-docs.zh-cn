@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 97a9d3632cb0e78b899844b1aaa84a030c6da23e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6c72f62db310155c9b2fa1d09476ab9406f2d330
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549611"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813193"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Ubuntu Linux 虚拟机
 
@@ -24,7 +24,7 @@ ms.locfileid: "102549611"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
+[![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-linux%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "102549611"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)。
 
-:::code language="json" source="~/quickstart-templates/101-vm-simple-linux/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-linux/azuredeploy.json":::
 
 
 该模板中定义了多个资源：
@@ -51,7 +51,7 @@ ms.locfileid: "102549611"
 
 1. 选择下图登录到 Azure 并打开一个模板。 该模板将创建 Key Vault 和机密。
 
-    [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
+    [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-linux%2fazuredeploy.json)
 
 1. 选择或输入以下值。 使用可用的默认值。
 
@@ -82,7 +82,7 @@ ms.locfileid: "102549611"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组，可以将其删除，这将删除 VM 和资源组中的所有资源。 
+如果不再需要资源组，可以将其删除，这将删除 VM 和资源组中的所有资源。
 
 1. 选择“资源组”。
 1. 在资源组页上，选择“删除”。

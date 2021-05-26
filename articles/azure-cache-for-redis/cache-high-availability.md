@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 576c1f0b087775ee3784229147b3715b22135217
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1d7c017b2be76a7b5df1e92658a848d209218138
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090669"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465896"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Azure Cache for Redis 的高可用性
 
@@ -21,9 +21,9 @@ Azure Cache for Redis 使用多个称为“节点”的用于缓存的 VM 来实
 
 | 选项 | 说明 | 可用性 | 标准 | 高级 | Enterprise |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
-| [标准复制](#standard-replication)| 单个数据中心中具有自动故障转移功能的双节点复制配置 | 99.9%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)） |✔|✔|-|
-| [区域冗余](#zone-redundancy) | AZ 中具有自动故障转移功能的多节点复制配置 | 高达 99.99%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)） |-|✔|✔|
-| [异地复制](#geo-replication) | 两个区域中的链接缓存实例，具有用户控制的故障转移 | 高达 99.999%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)） |-|✔|预览|
+| [标准复制](#standard-replication)| 单个数据中心中具有自动故障转移功能的双节点复制配置 | 99.9%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_1/)） |✔|✔|-|
+| [区域冗余](#zone-redundancy) | AZ 中具有自动故障转移功能的多节点复制配置 | 高达 99.99%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_1/)） |-|✔|✔|
+| [异地复制](#geo-replication) | 两个区域中的链接缓存实例，具有用户控制的故障转移 | 高达 99.999%（查看[详细信息](https://azure.microsoft.com/support/legal/sla/cache/v1_1/)） |-|✔|预览|
 
 ## <a name="standard-replication"></a>标准复制
 

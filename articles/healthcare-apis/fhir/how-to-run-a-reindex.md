@@ -1,18 +1,18 @@
 ---
 title: 如何在 Azure API for FHIR 中运行重新索引Azure API for FHIR
 description: 本文介绍如何运行重新索引作业，为数据库中尚未编制索引的任何搜索或排序参数编制索引。
-author: stevewohl
+author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/23/2021
 ms.author: cavoeg
-ms.openlocfilehash: 5285de1a8481f37238ce3e3f3038d0d4f4c3d54a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 905d9381ac93e38575e9d0ff5c6f5571122b2990
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078530"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476640"
 ---
 # <a name="running-a-reindex-job"></a>运行重新索引作业
 

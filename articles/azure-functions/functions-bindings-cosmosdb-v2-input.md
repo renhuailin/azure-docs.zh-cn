@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 05877c9a77eb45e4c02d750becae63c0d1fdab7b
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 5566ca21b9ac1f0491673af21d85201a2fd18efc
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163240"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451238"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输入绑定
 
@@ -554,8 +554,8 @@ function.json 文件如下所示：
       "collectionName": "Items",
       "connectionStringSetting": "CosmosDBConnection",
       "direction": "in",
-      "Id": "{id}",
-      "PartitionKey": "{partitionKeyValue}"
+      "id": "{id}",
+      "partitionKey": "{partitionKeyValue}"
     }
   ],
   "disabled": false

@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: a3f423a144738fdaa4462606de6ad4a4e34d6775
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 7d3a108185c43be2f6de72466db10db5e2ec94f1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97563409"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077313"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 进行持续交付
 
@@ -177,7 +177,7 @@ steps:
 
 必须在 YAML 文件中包含以下 YAML 示例之一（具体取决于托管 OS）。
 
-#### <a name="windows-function-app"></a>Windows 函数应用
+# <a name="windows"></a>[Windows](#tab/windows)
 
 可以使用以下代码片段部署 Windows 函数应用：
 
@@ -194,7 +194,7 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Linux 函数应用
+# <a name="linux"></a>[Linux](#tab/linux)
 
 可以使用以下代码片段部署 Linux 函数应用：
 
@@ -211,6 +211,7 @@ steps:
     #resourceGroupName: '<Resource Group Name>'
     #slotName: '<Slot name>'
 ```
+---
 
 ## <a name="template-based-pipeline"></a>基于模板的管道
 
@@ -248,7 +249,7 @@ Azure DevOps 中的模板是用于生成或部署应用的预定义任务组。
 
 ## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>使用 Azure CLI 创建生成管道
 
-若要在 Azure 中创建生成管道，请使用 `az functionapp devops-pipeline create` [命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)。 创建生成管道是为了生成和发布在存储库中所做的任何代码更改。 此命令生成一个新的 YAML 文件（用于定义生成和发布管道），然后将该文件提交到存储库。 此命令的先决条件取决于代码的位置。
+若要在 Azure 中创建生成管道，请使用 `az functionapp devops-pipeline create` [命令](/cli/azure/functionapp/devops-pipeline#az_functionapp_devops_pipeline_create)。 创建生成管道是为了生成和发布在存储库中所做的任何代码更改。 此命令生成一个新的 YAML 文件（用于定义生成和发布管道），然后将该文件提交到存储库。 此命令的先决条件取决于代码的位置。
 
 - 如果代码位于 GitHub 中：
 

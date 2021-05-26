@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 08/03/2020
+ms.date: 05/13/2021
 ms.author: alkohli
-ms.openlocfilehash: b3d4ec54d6db88a04f7aca46c0c96fa2d4d17ac7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 45a82d85510bd432efa93211ffc9dba8b911c557
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101730607"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070728"
 ---
 使用 VM 创建期间传递的专用 IP 连接到 VM。
 
@@ -64,11 +64,3 @@ ms.locfileid: "101730607"
     
     Administrator@mylinuxvm:
     ```
-
-1. 如果在创建 VM 的过程中使用了公共 IP 地址，则可以使用该 IP 连接到 VM。 若要获取公共 IP，请运行以下命令： 
-
-   ```powershell
-   $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
-   ```
-
-   在此实例中，公共 IP 与创建虚拟网络接口期间传递的专用 IP 相同。

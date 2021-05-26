@@ -4,17 +4,17 @@ description: 适用于 Application Insights 的语言、平台和集成
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 399e57377a779622aa3073dfd3313cee1db345f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe71a2d402781625cf22abb91bc56e6e8994f03d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100583864"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110079257"
 ---
 # <a name="supported-languages"></a>支持的语言
 
 * [C#|VB (.NET)](./asp-net.md)
-* [Java](./java-get-started.md)
+* [Java](./java-in-process-agent.md)
 * [JavaScript](./javascript.md)
 * [Node.JS](./nodejs.md)
 * [Python](./opencensus-python.md)
@@ -32,7 +32,7 @@ ms.locfileid: "100583864"
 * [ASP.NET Core](./asp-net-core.md)
 * [Android](../app/mobile-center-quickstart.md) (App Center)
 * [iOS](../app/mobile-center-quickstart.md) (App Center)
-* [Java EE](./java-get-started.md)
+* [Java EE](./java-in-process-agent.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
 * [Python](./opencensus-python.md)
 * [通用 Windows 应用](../app/mobile-center-quickstart.md) (App Center)
@@ -43,7 +43,7 @@ ms.locfileid: "100583864"
 ## <a name="logging-frameworks"></a>记录框架
 * [ILogger](./ilogger.md)
 * [Log4Net、NLog 或 System.Diagnostics.Trace](./asp-net-trace-logs.md)
-* [Java、Log4J 或 Logback](./java-trace-logs.md)
+* [Java、Log4J 或 Logback](java-2x-trace-logs.md)
 * [LogStash 插件](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
 * [Azure Monitor](/archive/blogs/msoms/application-insights-connector-in-oms)
 

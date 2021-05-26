@@ -5,14 +5,16 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 49c17946203bc6c3655b1aaf7b04a1ee3ea67388
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ade7eca6f9e4e41641de7470445fc9ffd43e0a2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955643"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368485"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>将 IoT Edge 上的实时视频分析从 1.0 升级为 2.0
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本文介绍升级“Azure IoT Edge 上的实时视频分析 (LVA)”模块时需要考虑的差异和不同事项。
 

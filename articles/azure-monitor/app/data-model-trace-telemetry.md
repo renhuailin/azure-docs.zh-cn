@@ -4,12 +4,12 @@ description: 适用于跟踪遥测的 Application Insights 数据模型
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 8fea4bbf590816b2ef168a2ed16f197389ee282e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb298812b9970882c4bb3c7d2562bb5cbbf69b2d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87320538"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098895"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>跟踪遥测：Application Insights 数据模型
 
@@ -32,7 +32,7 @@ ms.locfileid: "87320538"
 ## <a name="next-steps"></a>后续步骤
 
 - [在 Application Insights 中浏览 .NET 跟踪日志](./asp-net-trace-logs.md)。
-- [在 Application Insights 中浏览 Java 跟踪日志](./java-trace-logs.md)。
+- [在 Application Insights 中浏览 Java 跟踪日志](java-2x-trace-logs.md)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
 - [编写自定义跟踪遥测](./api-custom-events-metrics.md#tracktrace)
 - 查看 Application Insights 支持的[平台](./platforms.md)。

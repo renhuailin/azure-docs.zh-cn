@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 12d78846f5892e71388de6e6e76b868f9b14d4de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0a912a3023ba6d8504d5856d5a45a93d0dc9488
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88008910"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809393"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>排查 Azure Cache for Redis 服务器端问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "88008910"
 - 缓存中填充的数据即将达到其最大容量。
 - Redis 出现大量内存碎片。 这种碎片往往是存储大型对象造成的，因为 Redis 已针对小型对象进行优化。
 
-Redis 通过 [INFO](https://redis.io/commands/info) 命令公开以下两项统计信息来帮助你识别此问题：“used_memory”和“used_memory_rss”。 可以使用门户[查看这些指标](cache-how-to-monitor.md#view-metrics-with-azure-monitor)。
+Redis 通过 [INFO](https://redis.io/commands/info) 命令公开以下两项统计信息来帮助你识别此问题：“used_memory”和“used_memory_rss”。 可以使用门户[查看这些指标](cache-how-to-monitor.md#view-metrics-with-azure-monitor-metrics-explorer)。
 
 可以通过多种可能的更改来帮助确保内存用量正常：
 
@@ -47,7 +47,7 @@ Redis 通过 [INFO](https://redis.io/commands/info) 命令公开以下两项统�
 
 服务器负载或 CPU 使用率偏高意味着服务器无法及时处理请求。 服务器可能会减慢响应速度，且无法跟上请求速率。
 
-[监视指标](cache-how-to-monitor.md#view-metrics-with-azure-monitor)，例如 CPU 或服务器负载。 注意与超时相对应的 CPU 使用率峰值。
+[监视指标](cache-how-to-monitor.md#view-metrics-with-azure-monitor-metrics-explorer)，例如 CPU 或服务器负载。 注意与超时相对应的 CPU 使用率峰值。
 
 可以通过做出几项更改来缓解较高的服务器负载：
 
@@ -65,7 +65,7 @@ Redis 通过 [INFO](https://redis.io/commands/info) 命令公开以下两项统�
 
 不同的缓存大小具有不同的网络带宽容量。 如果服务器超出可用带宽，则数据无法快速发送到客户端。 客户端请求可能会超时，因为服务器无法以足够快的速度将数据推送到客户端。
 
-可以使用“缓存读取”和“缓存写入”指标来查看使用的服务器端带宽量。 可以在门户中[查看这些指标](cache-how-to-monitor.md#view-metrics-with-azure-monitor)。
+可以使用“缓存读取”和“缓存写入”指标来查看使用的服务器端带宽量。 可以在门户中[查看这些指标](cache-how-to-monitor.md#view-metrics-with-azure-monitor-metrics-explorer)。
 
 缓解网络带宽用量即将达到最大容量的情况：
 

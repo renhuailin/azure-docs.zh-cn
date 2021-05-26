@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: fe38ddc594060c78a2d26e9b25476e38736b4cf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d5b67bb25f6f2425016824e5b73783a8db8e806
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946059"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072147"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>设置包含自定义 Ambari DB 的 HDInsight 群集
 
@@ -49,7 +49,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 Ambari 提供�
 
 ## <a name="deploy-clusters-with-a-custom-ambari-db"></a>部署包含自定义 Ambari DB 的群集
 
-若要创建使用你自己的外部 Ambari 数据库的 HDInsight 群集，请使用[自定义 Ambari DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-custom-ambari-db)。
+若要创建使用你自己的外部 Ambari 数据库的 HDInsight 群集，请使用[自定义 Ambari DB 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-custom-ambari-db)。
 
 编辑 `azuredeploy.parameters.json` 中的参数，指定有关新群集以及用于保存 Ambari 的数据库的信息。
 
