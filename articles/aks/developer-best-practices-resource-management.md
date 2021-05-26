@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 2cd2bab05346f66b933512e677f1d38f4514796c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: f45c3a0bb425b9b4d780a78bb32afa3186232b11
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105266"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467091"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>有关管理 Azure Kubernetes 服务 (AKS) 中的资源的应用程序开发人员最佳做法
 
@@ -23,7 +23,6 @@ ms.locfileid: "107105266"
 > [!div class="checklist"]
 > * Pod 资源请求和限制。
 > * 使用 Bridge to Kubernetes 与 Visual Studio Code 开发和部署应用程序的方法。
-> * 如何使用 `kube-advisor` 工具检查部署问题。
 
 ## <a name="define-pod-resource-requests-and-limits"></a>定义 pod 资源请求和限制
 
@@ -113,18 +112,6 @@ spec:
 
     ![适用于 Kubernetes 的 VS Code 扩展中有关缺少内存限制的警告](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
 
-## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>定期使用 kube-advisor 检查应用程序问题
-
-> **最佳实践指南** 
-> 
-> 定期运行最新版本的 `kube-advisor` 开放源代码工具，以检测群集中的问题。 在对现有 AKS 群集应用资源配额之前运行 `kube-advisor`，以查找未定义资源请求和限制的 pod。
-
-[kube-advisor][kube-advisor] 工具是一个关联的 AKS 开放源代码项目，它将扫描 Kubernetes 群集，并报告识别的问题。 一项有用的检查是识别未应用资源请求和限制的 pod。
-
-虽然 `kube-advisor` 工具可以报告 PodSpecs for Windows 和 Linux 应用程序中缺少的资源请求和限制，但是 `kube-advisor` 本身必须在 Linux Pod 上进行计划。 使用 pod 配置中的[节点选择器][k8s-node-selector]，将 pod 计划为在具有特定 OS 的节点池上运行。
-
-在托管许多开发团队和应用程序的 AKS 群集中，你会发现使用资源请求和限制的可更轻松地跟踪 pod。 最佳做法是定期针对 AKS 群集运行 `kube-advisor`。
-
 ## <a name="next-steps"></a>后续步骤
 
 本文从群集操作员的角度重点介绍了如何运行群集和工作负荷。 有关管理最佳做法的信息，请参阅[有关 Azure Kubernetes 服务 (AKS) 中隔离和资源管理的群集操作员最佳做法][operator-best-practices-isolation]。
@@ -132,16 +119,13 @@ spec:
 若要实施其中的某些最佳做法，请参阅以下文章：
 
 * [使用 Bridge to Kubernetes 进行开发][btk]
-* [使用 kube-advisor 检查问题][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
 [k8s-resource-limits]: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 [vscode-kubernetes]: https://github.com/Azure/vscode-kubernetes-tools
-[kube-advisor]: https://github.com/Azure/kube-advisor
 [minikube]: https://kubernetes.io/docs/setup/minikube/
 
 <!-- INTERNAL LINKS -->
-[aks-kubeadvisor]: kube-advisor-tool.md
 [btk]: /visualstudio/containers/overview-bridge-to-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas

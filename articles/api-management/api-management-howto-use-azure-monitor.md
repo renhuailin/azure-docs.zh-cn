@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 1cb902c4b59193c46dbeca47bb355f0695a0f2c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f70a43efd0b56f76ee4b68e8fede3ce4e255063d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572795"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466017"
 ---
 # <a name="tutorial-monitor-published-apis"></a>教程：监视已发布的 API
 
@@ -32,7 +32,7 @@ ms.locfileid: "100572795"
 ## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
@@ -151,7 +151,7 @@ API 管理每分钟发出一次[指标](../azure-monitor/essentials/data-platfor
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="“监视”菜单中“日志”项的屏幕截图":::
 
-运行查询以查看数据。 可以运行提供的多个[示例查询](../azure-monitor/logs/example-queries.md)，也可以运行自己的查询。 例如，以下查询检索 GatewayLogs 表中最近 24 小时的数据：
+运行查询以查看数据。 可以运行提供的多个[示例查询](../azure-monitor/logs/queries.md)，也可以运行自己的查询。 例如，以下查询检索 GatewayLogs 表中最近 24 小时的数据：
 
 ```kusto
 ApiManagementGatewayLogs

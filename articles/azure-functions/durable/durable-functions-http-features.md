@@ -3,14 +3,14 @@ title: Durable Functions 中的 HTTP 功能 - Azure Functions
 description: 了解 Azure Functions 的 Durable Functions 扩展中的集成式 HTTP 功能。
 author: cgillum
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 64d40de50f21811a56318971de1836abc8fbf8c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67a28bccf3353ed7e33826b0ef5b82fc1cc5f981
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93027255"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376875"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -106,6 +106,48 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 }
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+**run.ps1**
+
+```powershell
+$FunctionName = $Request.Params.FunctionName
+$InstanceId = Start-NewOrchestration -FunctionName $FunctionName
+Write-Host "Started orchestration with ID = '$InstanceId'"
+
+$Response = New-OrchestrationCheckStatusResponse -Request $Request -InstanceId $InstanceId
+Push-OutputBinding -Name Response -Value $Response
+```
+
+**function.json**
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "Request",
+      "type": "httpTrigger",
+      "direction": "in",
+      "route": "orchestrators/{FunctionName}",
+      "methods": [
+        "post",
+        "get"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
+    }
+  ]
+}
+```
 ---
 
 可以通过任何 HTTP 客户端启动使用上面所示 HTTP 触发器函数的业务流程协调程序函数。 以下 cURL 命令启动名为 `DoWork` 的业务流程协调程序函数：
@@ -216,6 +258,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+此功能当前在 PowerShell 中受支持。
+
 ---
 
 使用“调用 HTTP”操作可以在业务流程协调程序函数中执行以下操作：
@@ -313,6 +359,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell) 
+
+此功能当前在 PowerShell 中受支持。
+
 ---
 
 在以上示例中，`tokenSource` 参数配置为获取 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)的 Azure AD 令牌。 该令牌由资源 URI `https://management.core.windows.net/.default` 标识。 该示例假设当前函数应用在本地运行，或者已使用托管标识部署为函数应用。 假设本地标识或托管标识有权管理指定资源组 `myRG` 中的 VM。
@@ -331,10 +381,10 @@ main = df.Orchestrator.create(orchestrator_function)
 
 内置的 HTTP API 调用支持只是一项便利功能。 它不一定适用于所有方案。
 
-业务流程协调程序函数发送的 HTTP 请求及其响应将序列化并保存为队列消息。 此排队行为确保 HTTP 调用在[业务流程重播中可靠并安全](durable-functions-orchestrations.md#reliability)。 但是，队列行为也存在一些限制：
+业务流程协调程序函数发送的 HTTP 请求及其响应将在 Durable Functions 存储提供程序中[序列化并保存](durable-functions-serialization-and-persistence.md)为队列消息。 此永久性排队行为确保 HTTP 调用在[业务流程重播中可靠且安全](durable-functions-orchestrations.md#reliability)。 但是，永久性队列行为也存在一些限制：
 
 * 与本机 HTTP 客户端相比，每个 HTTP 请求会造成更大的延迟。
-* 无法装入队列消息的较大请求或响应消息可能会明显降低业务流程的性能。 将消息有效负载分散到 Blob 存储产生的开销可能会导致性能降低。
+* 根据[配置的存储提供程序](durable-functions-storage-providers.md)，大型请求或响应消息可能会显著降低业务流程性能。 例如，使用 Azure 存储时，过大而无法适应 Azure 队列消息的 HTTP 有效负载会被压缩并存储在 Azure Blob 存储中。
 * 不支持流式处理、分块和二进制有效负载。
 * 自定义 HTTP 客户端行为的功能受到限制。
 

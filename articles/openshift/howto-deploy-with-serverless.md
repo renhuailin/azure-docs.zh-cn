@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 4/5/2021
 keywords: aro, openshift, red hat, serverless
-ms.openlocfilehash: 6db87e752745e3df919c93b2ffc8144e5886b319
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0cd6ac8ae31c43bf1fe1be1d42ec27f183512442
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532828"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063619"
 ---
 # <a name="deploy-an-application-to-azure-red-hat-openshift-using-openshift-serverless"></a>使用 OpenShift Serverless 将应用程序部署到 Azure Red Hat OpenShift
 
@@ -377,4 +377,4 @@ oc delete project demoserverless
 > * 使用 Knative CLI (kn) 部署无服务器项目
 > * 使用 Knative CLI (kn) 配置蓝/绿部署和 canary 部署
 
-详细了解如何使用 [OpenShift Serverless](https://www.openshift.com/learn/topics/serverless) 在 Azure Red Hat OpenShift 上生成和部署事件驱动的无服务器应用程序，按照 [OpenShift Serverless 入门](https://docs.openshift.com/container-platform/4.6/serverless/serverless-getting-started.html)文档和 [创建和管理无服务器应用程序](https://docs.openshift.com/container-platform/4.6/serverless/serving-creating-managing-apps.html)文档中的说明操作。
+详细了解如何使用 [OpenShift Serverless](https://www.openshift.com/learn/topics/serverless) 在 Azure Red Hat OpenShift 上生成和部署事件驱动的无服务器应用程序，按照 [OpenShift Serverless 入门](https://docs.openshift.com/container-platform/4.6/serverless/serverless-getting-started.html)文档和 [创建和管理无服务器应用程序](https://docs.openshift.com/container-platform/4.5/serverless/serving-creating-managing-apps.html)文档中的说明操作。

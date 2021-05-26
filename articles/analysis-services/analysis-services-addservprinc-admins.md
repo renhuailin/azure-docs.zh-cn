@@ -4,16 +4,16 @@ description: 了解如何将自动化服务主体添加到 Azure Analysis Servic
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 05/14/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f28d7e46acd5d9c22729ff7878f44a27d5cb6363
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93100722"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065685"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
 
@@ -103,7 +103,7 @@ ms.locfileid: "93100722"
 
 在 Azure 门户和 API 的大多数部分中，托管标识都是使用其服务主体对象 ID 进行标识的。 但是，Analysis Services 要求使用其客户端 ID 来标识它们。 要获取服务主体的客户端 ID，可以使用 Azure CLI：
 
-```bash
+```azurecli
 az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
 ```
 
