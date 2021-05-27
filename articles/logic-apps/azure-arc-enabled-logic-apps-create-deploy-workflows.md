@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: 46b5f12b005eaea36c96f183857311614ddba5bc
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2eabd6462edd609d70fc302ce2d0d64cb99dbdc3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385044"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475355"
 ---
 # <a name="create-and-deploy-single-tenant-based-logic-app-workflows-with-azure-arc-enabled-logic-apps-preview"></a>使用已启用 Azure Arc 的逻辑应用（预览版）创建和部署基于单租户的逻辑应用工作流
 
@@ -148,7 +148,7 @@ az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName
 
 请确保在命令中提供以下必需参数：
 
-| parameters | 说明 |
+| 参数 | 说明 |
 |------------|-------------|
 | `--name -n` | 逻辑应用的唯一名称 |
 | `--resource-group -g` | 要在其中创建逻辑应用的[资源组](../azure-resource-manager/management/manage-resource-groups-cli.md)。 如果没有可用的资源组，请[创建一个资源组](#create-resource-group)。 |
@@ -392,7 +392,7 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
 | 项目 | JSON 属性 | 说明 |
 |------|---------------|-------------|
 | 位置 | `location` | 请确保使用与自定义位置和 Kubernetes 环境相同的资源位置（Azure 区域）。 逻辑应用资源位置、自定义位置和 Kubernetes 环境必须相同。 <p><p>请注意：此值与自定义位置的名称不同。 |
-| 应用类型 | `kind` | 要部署的应用的类型，通过它 Azure 平台能够识别你的应用。 对于 Azure 逻辑应用，此信息类似于以下示例：`kubernetes,functionapp,logicapp,linux` |
+| 应用类型 | `kind` | 要部署的应用的类型，通过它 Azure 平台能够识别你的应用。 对于 Azure 逻辑应用，此信息类似于以下示例：`kubernetes,functionapp,workflowapp,linux` |
 | 扩展位置 | `extendedLocation` | 此对象需要 Kubernetes 环境的自定义位置的 `"name"`，并且必须将 `"type"` 设置为 `"CustomLocation"`。 |
 | 托管计划资源 ID | `serverFarmId` | 关联的应用服务计划的资源 ID，格式如下： <p><p>`"/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}"` |
 | 存储连接字符串 | `AzureWebJobsStorage` | 存储帐户的连接字符串 <p><p>重要说明：需要在 ARM 模板中提供存储帐户的连接字符串。 对于生产场景或生产环境，请确保可以保护此类机密和敏感信息的安全，例如使用密钥保管库提供保护。 |
@@ -408,7 +408,7 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
    "apiVersion": "2020-12-01",
    "name": "[parameters('name')]",
    "location": "[parameters('location')]",
-   "kind": "kubernetes,functionapp,logicapp,linux",
+   "kind": "kubernetes,functionapp,workflowapp,linux",
    "extendedLocation": {
       "name": "[parameters('customLocationId')]",
       "type": "CustomLocation"
@@ -441,7 +441,7 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
             },
             {
                "name": "APP_KIND",
-               "value": "logicapp"
+               "value": "workflowapp"
             }
          ],
          "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]",
@@ -465,7 +465,7 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
 | 项目 | JSON 属性 | 说明 |
 |------|---------------|-------------|
 | 位置 | `location` | 请确保使用与自定义位置和 Kubernetes 环境相同的资源位置（Azure 区域）。 逻辑应用资源位置、自定义位置和 Kubernetes 环境必须相同。 <p><p>请注意：此值与自定义位置的名称不同 。 |
-| 应用类型 | `kind` | 要部署的应用的类型，通过它 Azure 平台能够识别你的应用。 对于 Azure 逻辑应用，此信息类似于以下示例：`kubernetes,functionapp,logicapp,container` |
+| 应用类型 | `kind` | 要部署的应用的类型，通过它 Azure 平台能够识别你的应用。 对于 Azure 逻辑应用，此信息类似于以下示例：`kubernetes,functionapp,workflowapp,container` |
 | 扩展位置 | `extendedLocation` | 此对象需要 Kubernetes 环境的自定义位置的 `"name"`，并且必须将 `"type"` 设置为 `"CustomLocation"`。 |
 | 容器名称 | `linuxFxVersion` | 容器的名称，格式如下：`DOCKER\|<container-name>` |
 | 托管计划资源 ID | `serverFarmId` | 关联的应用服务计划的资源 ID，格式如下： <p><p>`"/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}"` |
@@ -491,7 +491,7 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
    "apiVersion": "2020-12-01",
    "name": "[parameters('name')]",
    "location": "[parameters('location')]",
-   "kind": " kubernetes,functionapp,logicapp,container",
+   "kind": " kubernetes,functionapp,workflowapp,container",
    "extendedLocation": {
       "name": "[parameters('customLocationId')]",
       "type": "CustomLocation"
@@ -524,7 +524,7 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
             },
             {
                "name": "APP_KIND",
-               "value": "logicapp"
+               "value": "workflowapp"
             }, 
             {
                "name": "DOCKER_REGISTRY_SERVER_URL",

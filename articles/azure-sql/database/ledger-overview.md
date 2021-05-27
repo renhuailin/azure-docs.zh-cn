@@ -9,12 +9,12 @@ ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: e74b4ed5b54a27b13768c19878331a9779bb9dc6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 36d7c5d6b97b54392be8c85d1b6a6088eda5f983
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456836"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110385319"
 ---
 # <a name="azure-sql-database-ledger"></a>Azure SQL 数据库账本
 
@@ -66,7 +66,7 @@ ms.locfileid: "110456836"
 
 [可更新账本表](ledger-updatable-ledger-tables.md)会在执行更新或删除的事务发生时跟踪数据库中任何行的更改历史记录。 可更新账本表是带有系统版本的表，它包含对另一个具有镜像架构的表的引用。 每当更新或删除了账本表中的某行后，系统都将使用此表来自动存储该行的先前版本。 另一种表称为历史记录表。 创建可更新账本表时，将自动创建历史记录表。 可更新账本表中包含的值及其相应的历史记录表提供了一段时间内数据库值的历史记录。 为了轻松地查询数据库的此历史记录，将创建一个系统生成的账本视图，它将联接可更新账本表和历史记录表。
 
-若要详细了解如何创建和使用可更新账本表，请参阅[创建和使用可更新账本表](ledger-how-to-updatable-ledger-tables.md)。
+若要详细了解如何创建和使用可更新账本表，请参阅[创建可更新账本表](ledger-how-to-updatable-ledger-tables.md)。
 
 ### <a name="append-only-ledger-tables"></a>仅追加账本表
 
