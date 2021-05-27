@@ -1,16 +1,18 @@
 ---
-title: 什么是媒体图扩展 - Azure
-description: 使用 IoT Edge 上的实时视频分析，可以通过图形扩展节点扩展媒体图处理功能。
+title: 什么是实时视频分析媒体图扩展 - Azure
+description: 使用 IoT Edge 上的 Azure 实时视频分析，可以通过图形扩展节点扩展媒体图处理功能。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 4a7aea7cc60a67603d8a0376cf84228072659d6c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8f3165d948e636bda49128f080af00df7f30c977
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557609"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372405"
 ---
-# <a name="media-graph-extension"></a>媒体图扩展
+# <a name="live-video-analytics-media-graph-extension"></a>实时视频分析媒体图扩展
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 使用 IoT Edge 上的实时视频分析，可以通过图形扩展节点扩展媒体图处理功能。 你的分析扩展插件可以利用传统的图像处理技术或计算机视觉 AI 模型。 通过在媒体图中包含扩展处理器节点来启用图形扩展。 扩展处理器节点将视频帧中继到配置的终结点，并充当扩展的接口。 可建立到本地或远程终结点的连接，并且可使用身份验证和 TLS 加密来保护它（如果需要）。 此外，图形扩展处理器节点允许在将视频帧提交到自定义扩展之前对其进行可选的缩放和编码。 
 

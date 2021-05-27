@@ -1,16 +1,18 @@
 ---
-title: 推理元数据架构 - Azure
-description: 本文介绍推理元数据架构。
+title: 实时视频分析中的推理元数据架构 - Azure
+description: 本文介绍实时视频分析中的推理元数据架构。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c79071609c291b6d09fe9c83d90d2cac137241b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92019488"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376980"
 ---
-# <a name="inference-metadata-schema"></a>推理元数据架构 
+# <a name="inference-metadata-schema-in-live-video-analytics"></a>实时视频分析中的推理元数据架构
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 无论使用基于 HTTP 的协定还是基于 gRPC 的协定，每个推理对象都采用本主题中所述的对象模型。
 
@@ -20,7 +22,7 @@ ms.locfileid: "92019488"
  
 |类型定义|说明|
 |---|---|
-|标记|与结果相关的标记或标签。通过标记，你甚至可获取与标记相关的可信度值。|
+|标记|与结果关联的标记或标签。 通过标记，你甚至可以获取与标记相关联的置信度值。|
 |特性|与结果相关的其他属性。 可添加从推理引擎收到的新属性以及可信度值。|
 |特性列表|可选属性列表。|
 |Rectangle|相对于图像左上角的矩形区域。 所需的属性为“长度”、“宽度”、“高度”和“上边缘与原点的距离”。|

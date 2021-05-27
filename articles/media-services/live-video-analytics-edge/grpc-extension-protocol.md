@@ -1,16 +1,18 @@
 ---
-title: gRPC 扩展协议 - Azure
-description: 在本文中，你将学习如何使用 gRPC 扩展协议在实时视频分析模块与 AI 或 CV 自定义扩展之间发送消息。
+title: 实时视频分析中的 gRPC 扩展协议 - Azure
+description: 在本文中，你将学习如何使用 gRPC 扩展协议在 Azure 实时视频分析模块与 AI 或 CV 自定义扩展之间发送消息。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 8d153b472e54b221b60a2b584043ffaf68e8ff82
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1bbcee9a964e95b8a32d7229ae7045e012a5a6e5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565803"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379916"
 ---
-# <a name="grpc-extension-protocol"></a>gRPC 扩展协议
+# <a name="grpc-extension-protocol-in-live-video-analytics"></a>实时视频分析中的 gRPC 扩展协议
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 使用 IoT Edge 上的实时视频分析，可以通过[图形扩展节点](./media-graph-extension-concept.md)扩展媒体图处理功能。 如果使用 gRPC 扩展处理器作为扩展节点，则实时视频分析模块与 AI 或 CV 模块之间的通信是通过基于 gRPC 的高性能结构化协议进行的。
 

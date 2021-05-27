@@ -1,16 +1,18 @@
 ---
-title: 视频播放 - Azure
-description: 占位符
+title: 使用实时视频分析播放视频 - Azure
+description: 本文介绍使用 Azure 媒体服务的现有流式处理功能播放资产所需采取的步骤。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: be42b39c167798e4e288c77dbd48a8734eb71fdf
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 9669194f3dff8f64d54cb15c8cb6fee0d7a2667b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278586"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368380"
 ---
-# <a name="video-playback"></a>视频播放 
+# <a name="video-playback-with-live-video-analytics"></a>使用实时视频分析播放视频
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="suggested-pre-reading"></a>建议的读前准备 
 
@@ -20,7 +22,7 @@ ms.locfileid: "106278586"
 
 ## <a name="overview"></a>概述  
 
-可以使用[媒体图](media-graph-concept.md)将视频记录到 Azure 媒体服务[资产](terminology.md#asset)中。 在本文档中，你可以了解使用 Azure 媒体服务的现有流式处理功能播放资产所需采取的步骤。
+可以使用[媒体图](media-graph-concept.md)将视频记录到 Azure 媒体服务[资产](terminology.md#asset)中。 本文介绍使用 Azure 媒体服务的现有流式处理功能播放资产所需采取的步骤。
 
 ## <a name="streaming-endpoint"></a>流式处理终结点 
 

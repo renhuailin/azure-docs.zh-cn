@@ -1,16 +1,18 @@
 ---
-title: 媒体图概念 - Azure
-description: 通过使用媒体图，你可以定义应从何处捕获媒体、应如何处理媒体以及应将结果交付到何处。 本文提供了媒体图概念的详细说明。
+title: 实时视频分析媒体图概念 - Azure
+description: 通过使用媒体图，你可以定义应从何处捕获媒体、应如何处理媒体以及应将结果交付到何处。 本文详细介绍了实时视频分析媒体图概念。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 83c51bc87321633339f75ac57b480116d450bca7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7be1bf485fd0641d96a51258f57818d9aa1692fc
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770598"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372440"
 ---
-# <a name="media-graph"></a>媒体图
+# <a name="live-video-analytics-media-graph"></a>实时视频分析媒体图
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="suggested-pre-reading"></a>建议的读前准备
 

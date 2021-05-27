@@ -1,16 +1,18 @@
 ---
-title: 在 IoT Edge 上的实时视频分析中使用直接方法 - Azure
-description: IoT Edge 上的实时视频分析公开了多种直接方法。 直接方法基于本主题中描述的约定。
+title: 使用 IoT Edge 上 Azure 实时视频分析中的直接方法
+description: IoT Edge 上的 Azure 实时视频分析公开了多种直接方法。 直接方法基于本主题中描述的约定。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 56fbf565af45a9b3877ff8d6c48a56713ddc3da6
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 4f9a0e6e75f4bf0304631bc2da87e013348e6707
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076983"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371515"
 ---
-# <a name="direct-methods"></a>直接方法
+# <a name="direct-methods-with-live-video-analytics"></a>通过实时视频分析使用直接方法
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 IoT Edge 上的实时视频分析公开了可以从 IoT 中心调用的多种直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 此方法用于即时操作过程不同的情况，即时操作的不同取决于设备能否响应。 有关详细信息，请参阅[了解直接方法并从 IoT 中心进行调用](../../iot-hub/iot-hub-devguide-direct-methods.md)。
 

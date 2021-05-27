@@ -1,16 +1,18 @@
 ---
-title: 创建自定义 Azure 资源管理器角色并将其分配给服务主体 - Azure
-description: 本文提供有关如何使用 Azure CLI 创建自定义 Azure 资源管理器角色，并将其分配给 IoT Edge 上实时视频分析的服务主体的指南。
+title: 创建自定义 Azure 资源管理器角色并将其分配给 Azure 实时视频分析的服务主体
+description: 本文提供有关如何使用 Azure CLI 创建自定义 Azure 资源管理器角色，并将其分配给 IoT Edge 上 Azure 实时视频分析的服务主体的指南。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 6c33f6703522fc0b28237e22c16c96587467df40
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4cf819fdcdb0c046070e90dd9c2aa1a42a1d8a1b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788504"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373747"
 ---
-# <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>创建自定义 Azure 资源管理器角色并将其分配给服务主体
+# <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal-with-live-video-analytics"></a>创建自定义 Azure 资源管理器角色并将其分配给实时视频分析的服务主体
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 IoT Edge 模块实例上的实时视频分析需要可用的 Azure 媒体服务帐户，才能正常工作。 IoT Edge 模块上的实时视频分析与 Azure 媒体服务帐户之间的关系是通过一组模块孪生属性建立的。 其中一个孪生属性是[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)，它使模块实例能够与媒体服务帐户进行通信并触发必要的操作。 为了最大程度地减少来自边缘设备滥用和/或意外数据泄露的可能性，此服务主体应拥有最少的权限。
 

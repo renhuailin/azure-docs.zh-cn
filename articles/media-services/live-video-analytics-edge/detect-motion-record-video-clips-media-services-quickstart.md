@@ -1,16 +1,18 @@
 ---
-title: 检测运动，将视频录制到 Azure 媒体服务
-description: 本快速入门演示如何使用 IoT Edge 上的实时视频分析功能来检测实时视频流中的运动，并将视频剪辑录制到 Azure 媒体服务。
+title: 使用实时视频分析检测运动并将视频录制到 Azure 媒体服务
+description: 本快速入门演示如何使用 IoT Edge 上的 Azure 实时视频分析来检测实时视频流中的运动，并将视频剪辑录制到 Azure 媒体服务。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 135e68e2630d74dace6c3a6b70bb3666f77aad89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 890d527eea0486bf42c1e5319d65e67dbeb05c06
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99575528"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378969"
 ---
-# <a name="quickstart-detect-motion-record-video-to-media-services"></a>快速入门：检测运动，将视频录制到媒体服务
+# <a name="quickstart-detect-motion-record-video-to-azure-media-services"></a>快速入门：检测运动并将视频录制到 Azure 媒体服务
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本文逐步讲解如何使用 IoT Edge 上的实时视频分析进行[基于事件的录制](event-based-video-recording-concept.md)。 它将 Azure 中的 Linux VM 用作 IoT Edge 设备并使用模拟的实时视频流。 分析此视频流以了解是否存在移动物体。 检测到运动时，会将事件发送到 Azure IoT 中心，并将视频流的相关部分记录为 Azure 媒体服务中的资产。
 

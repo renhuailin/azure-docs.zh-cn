@@ -1,16 +1,18 @@
 ---
-title: 通过用于空间分析的计算机视觉分析实时视频 - Azure
-description: 本教程展示了如何结合使用实时视频分析和 Azure 认知服务中的计算机视觉空间分析 AI 功能，分析来自（模拟）IP 相机的实时视频源。
+title: 使用实时视频分析并通过用于空间分析的计算机视觉分析实时视频 - Azure
+description: 本教程介绍如何结合使用 Azure 实时视频分析和 Azure 认知服务中的计算机视觉空间分析 AI 功能，分析来自（模拟）IP 相机的实时视频源。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 1c3fd411e60cabb504f01bece62d497ddeea31d8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 549c1405e7deb3531da65ff4425befa2d29aaeef
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561009"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110373556"
 ---
-# <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>通过用于空间分析的计算机视觉（预览版）分析实时视频
+# <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-and-live-video-analytics-preview"></a>将用于空间分析的计算机视觉与实时视频分析结合用于分析实时视频（预览版）
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本教程展示了如何将实时视频分析与 [Azure 认知服务中的空间分析 AI 服务的计算机视觉](https://azure.microsoft.com/services/cognitive-services/computer-vision/)结合使用，以分析来自（模拟）IP 相机的实时视频源。 将介绍如何使用此推理服务器来分析流式处理视频，以便了解人员之间的空间关系和物理空间中的移动。  视频源中的一部分帧将发送到此推理服务器，结果将发送到 IoT Edge 中心。在满足某些条件时，将录制视频剪辑并将其存储为 Azure 媒体服务资产。
 

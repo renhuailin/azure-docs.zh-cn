@@ -1,16 +1,18 @@
 ---
-title: HTTP 扩展协议 - Azure
-description: 在本文中，你将学习如何使用 HTTP 扩展协议在实时视频分析模块与 AI 或 CV 模块之间发送消息。
+title: 实时视频分析中的 HTTP 扩展协议 - Azure
+description: 在本文中，你将学习如何使用 HTTP 扩展协议在 Azure 实时视频分析模块与 AI 或 CV 模块之间发送消息。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 54b25894c60a39de9c0ec00cdc4982f691bf1ee3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3dbb329e1210ce27fa33f2b1e7ec8b0cf4f8b3e9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565735"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110375469"
 ---
-# <a name="http-extension-protocol"></a>HTTP 扩展协议
+# <a name="http-extension-protocol-in-live-video-analytics"></a>实时视频分析中的 HTTP 扩展协议
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 使用 IoT Edge 上的实时视频分析，可以通过[图形扩展节点](./media-graph-extension-concept.md)扩展媒体图处理功能。 如果使用 HTTP 扩展处理器作为扩展节点，则实时视频分析模块与 AI 或 CV 模块之间的通信是通过 HTTP 进行的
 

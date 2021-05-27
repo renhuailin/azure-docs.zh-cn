@@ -1,16 +1,18 @@
 ---
-title: 在 IoT Edge 设备上部署实时视频分析 - Azure
-description: 本文列出了将帮助你在 IoT Edge 设备上部署实时视频分析的步骤。 你可能会在以下情况下执行此操作，例如：如果你有权访问本地 Linux 计算机并且/或之前创建了 Azure 媒体服务帐户。
+title: 在 IoT Edge 设备上部署 Azure 实时视频分析
+description: 本文列出了将帮助你在 IoT Edge 设备上部署 Azure 实时视频分析的步骤。 你可能会在以下情况下执行此操作，例如：如果你有权访问本地 Linux 计算机并且/或之前创建了 Azure 媒体服务帐户。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 466cc236c1482b2ae6a31b40b6f3461a2c2fbfc1
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 75b91855ff8e46a45fac96e90be08a272ef52dfb
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280286"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367446"
 ---
-# <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 设备上部署实时视频分析
+# <a name="deploy-azure-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 设备上部署 Azure 实时视频分析
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本文列出了将帮助你在 IoT Edge 设备上部署实时视频分析的步骤。 你可能会在以下情况下执行此操作，例如：如果你有权访问本地 Linux 计算机并且/或之前创建了 Azure 媒体服务帐户。
 

@@ -1,18 +1,18 @@
 ---
 title: 将客户加入 Azure Lighthouse
 description: 了解如何将客户加入到 Azure Lighthouse，以便能够使用 Azure 委托资源管理通过自己的租户访问和管理该客户的资源。
-ms.date: 03/29/2021
+ms.date: 05/25/2021
 ms.topic: how-to
-ms.openlocfilehash: d8ad448ac022b07ecdea6b68c4544b8c955814b1
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 7b64a189fdf6b33fada1750b667260989d2827e8
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497959"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376214"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
-本文介绍作为服务提供商如何将客户加入到 Azure Lighthouse。 在执行此操作时，可以使用 [Azure 委托资源管理](../concepts/azure-delegated-resource-management.md)通过自己的租户管理客户的 Azure Active Directory (Azure AD) 租户中的委托资源（订阅和/或资源组）。
+本文介绍作为服务提供商如何将客户加入到 Azure Lighthouse。 当你执行此操作时，租户中的用户可以通过 [Azure 委托资源管理](../concepts/architecture.md)来管理客户的 Azure Active Directory (Azure AD) 租户中的委托资源（订阅和/或资源组）。
 
 > [!TIP]
 > 虽然我们在本主题中提到的是服务提供商和客户，但[管理多个租户的企业](../concepts/enterprise.md)可以使用相同的过程来设置 Azure Lighthouse 并整合其管理体验。
@@ -73,6 +73,9 @@ az account show
 > 若要为 Azure AD 组添加权限，“组类型”必须设置为“安全”。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 在定义授权时，请务必遵循最低特权原则，使用户只具有完成其工作所需的权限。 有关支持的角色和最佳做法的详细信息，请参阅 [Azure Lighthouse 方案中的租户、用户和角色](../concepts/tenants-users-roles.md)。
+
+> [!TIP]
+> 还可以创建合格授权，使管理租户中的用户能够临时提升其角色。 此功能目前以公共预览版提供，具有特定的许可要求。 有关详细信息，请参阅[创建合格授权](create-eligible-authorizations.md)。
 
 如果要定义授权，需要知道服务提供商租户中要向其授予访问权限的每个用户、用户组或服务主体的 ID 值。 还需知道要分配的每个内置角色的角色定义 ID。 如果尚未获得这些 ID，可以从服务提供商租户内运行以下命令来检索它们。
 
@@ -159,32 +162,32 @@ az role definition list --name "<roleName>" | grep name
             "value": "Fabrikam Managed Services - Interstellar"
         },
         "managedByTenantId": {
-            "value": "df4602a3-920c-435f-98c4-49ff031b9ef6"
+            "value": "00000000-0000-0000-0000-000000000000"
         },
         "authorizations": {
             "value": [
                 {
-                    "principalId": "0019bcfb-6d35-48c1-a491-a701cf73b419",
+                    "principalId": "00000000-0000-0000-0000-000000000000",
                     "principalIdDisplayName": "Tier 1 Support",
                     "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c"
                 },
                 {
-                    "principalId": "0019bcfb-6d35-48c1-a491-a701cf73b419",
+                    "principalId": "00000000-0000-0000-0000-000000000000",
                     "principalIdDisplayName": "Tier 1 Support",
                     "roleDefinitionId": "36243c78-bf99-498c-9df9-86d9f8d28608"
                 },
                 {
-                    "principalId": "0afd8497-7bff-4873-a7ff-b19a6b7b332c",
+                    "principalId": "00000000-0000-0000-0000-000000000000",
                     "principalIdDisplayName": "Tier 2 Support",
                     "roleDefinitionId": "acdd72a7-3385-48ef-bd42-f606fba81ae7"
                 },
                 {
-                    "principalId": "9fe47fff-5655-4779-b726-2cf02b07c7c7",
+                    "principalId": "00000000-0000-0000-0000-000000000000",
                     "principalIdDisplayName": "Service Automation Account",
                     "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c"
                 },
                 {
-                    "principalId": "3kl47fff-5655-4779-b726-2cf02b05c7c4",
+                    "principalId": "00000000-0000-0000-0000-000000000000",
                     "principalIdDisplayName": "Policy Automation Account",
                     "roleDefinitionId": "18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
                     "delegatedRoleDefinitionIds": [
@@ -205,7 +208,7 @@ az role definition list --name "<roleName>" | grep name
 在更新了参数文件后，客户租户中的用户必须在其租户中部署 Azure 资源管理器模板。 每个要加入的订阅（或者，每个包含要加入的资源组的订阅）都需要单独进行部署。
 
 > [!IMPORTANT]
-> 此部署必须由客户租户中的非来宾帐户完成，该帐户对于正在加入的订阅（或包含正在加入的资源组的订阅）拥有具备 `Microsoft.Authorization/roleAssignments/write` 权限的角色，如 [所有者](../../role-based-access-control/built-in-roles.md#owner)。 如果要查找所有可以委托订阅的用户，客户租户中的用户可在 Azure 门户中选择订阅，打开“访问控制 (IAM)”，然后[查看具有所有者角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。 
+> 此部署必须由客户租户中的非来宾帐户完成，该帐户对于正在加入的订阅（或包含正在加入的资源组的订阅）拥有具备 `Microsoft.Authorization/roleAssignments/write` 权限的角色，如 [所有者](../../role-based-access-control/built-in-roles.md#owner)。 如果要查找所有可以委托订阅的用户，客户租户中的用户可在 Azure 门户中选择订阅，打开“访问控制 (IAM)”，然后[查看具有所有者角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
 >
 > 如果订阅是通过[云解决方案提供商 (CSP) 计划](../concepts/cloud-solution-provider.md)创建的，则在服务提供商租户中具有[管理员代理](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles)角色的任何用户都可以执行部署。
 

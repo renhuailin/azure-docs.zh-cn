@@ -1,16 +1,18 @@
 ---
-title: IoT Edge 上的实时视频分析术语 - Azure
-description: 本文概述了 IoT Edge 上的实时视频分析术语。
+title: IoT Edge 上的 Azure 实时视频分析术语
+description: 本文概述了 IoT Edge 上的 Azure 实时视频分析术语。
 ms.topic: conceptual
 ms.date: 05/30/2020
-ms.openlocfilehash: e3a77b69adf2241a4af2652db4edb6673a63b4f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a017a7ddb946bf5bb8c01b9a61c322843c9815f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88690606"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378397"
 ---
-# <a name="terminology"></a>术语
+# <a name="live-video-analytics-terminology"></a>实时视频分析术语
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本文概述了与 [IoT Edge 上的实时视频分析](overview.md)相关的术语。
 

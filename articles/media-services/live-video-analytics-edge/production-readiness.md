@@ -1,16 +1,18 @@
 ---
-title: 生产就绪情况和最佳做法 - Azure
-description: 本文提供如何在生产环境中配置和部署 IoT Edge 上的实时视频分析模块的指南。
+title: 实时视频分析中的生产就绪情况和最佳做法 - Azure
+description: 本文提供有关如何在生产环境中配置和部署 IoT Edge 上的 Azure 实时视频分析模块的指南。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 56982d84b7ffac718072683076657d56a2691d6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7893750c1f835a95b5eba706f94679a41a424856
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97400550"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372056"
 ---
-# <a name="production-readiness-and-best-practices"></a>生产就绪情况和最佳做法
+# <a name="production-readiness-and-best-practices-in-live-video-analytics"></a>实时视频分析中的生产就绪情况和最佳做法
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本文提供如何在生产环境中配置和部署 IoT Edge 上的实时视频分析模块的指南。 在准备 IoT Edge 解决方案时，你还应该参阅[准备在生产环境中部署 IoT Edge 解决方案](../../iot-edge/production-checklist.md)一文。 
 

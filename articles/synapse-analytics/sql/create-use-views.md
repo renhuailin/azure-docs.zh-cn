@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0948c7c82d7577bae07057bff9d1be4d7e09f978
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7528d1f29b293e1efadde84fac9fa8d95f8f5076
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462283"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371290"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中通过无服务器 SQL 池创建和使用视图
 
@@ -24,7 +24,7 @@ ms.locfileid: "96462283"
 
 第一步是创建一个数据库，将在该数据库中创建视图，并通过对该数据库执行[安装脚本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)来初始化在 Azure 存储上进行身份验证所需的对象。 本文中的所有查询将在示例数据库上执行。
 
-## <a name="create-a-view"></a>创建视图
+## <a name="views-over-external-data"></a>基于外部数据的视图
 
 可以采用与创建常规 SQL Server 视图相同的方式来创建视图。 下面的查询创建一个视图，该视图读取 population.csv 文件。
 
@@ -55,7 +55,35 @@ WITH (
 ) AS [r];
 ```
 
-此示例中的视图使用 `OPENROWSET` 函数，该函数使用指向基础文件的绝对路径。 如果 `EXTERNAL DATA SOURCE` 包含存储的根 URL，则可以将 `OPENROWSET` 与 `DATA_SOURCE` 和相对文件路径一起使用：
+该视图将 `EXTERNAL DATA SOURCE` 与你的存储的根 URL 一起用作 `DATA_SOURCE`，并添加文件的相对文件路径。
+
+### <a name="delta-lake-views"></a>Delta Lake 视图
+
+如果要基于 Delta Lake 文件夹创建视图，则需要在 `BULK` 选项后指定根文件夹的位置，而不是指定文件路径。
+
+> [!div class="mx-imgBorder"]
+>![ECDC COVID-19 Delta Lake 文件夹](./media/shared/covid-delta-lake-studio.png)
+
+从 Delta Lake 文件夹读取数据的 `OPENROWSET` 函数会检查文件夹结构并自动识别文件位置。
+
+```sql
+create or alter view CovidDeltaLake
+as
+select *
+from openrowset(
+           bulk 'covid',
+           data_source = 'DeltaLakeStorage',
+           format = 'delta'
+    ) with (
+           date_rep date,
+           cases int,
+           geo_id varchar(6)
+           ) as rows
+```
+
+## <a name="partitioned-views"></a>分区视图
+
+如果你有一组在分层文件夹结构中分区的文件，则可以在文件路径中使用通配符来描述分区模式。 使用 `FILEPATH` 函数可以将文件夹路径的一部分公开为分区列。
 
 ```sql
 CREATE VIEW TaxiView
@@ -68,11 +96,35 @@ FROM
     ) AS nyc
 ```
 
+如果使用分区列上的筛选器查询此视图，则分区视图会执行文件夹分区排除操作。 这可能会提高查询性能。
+
+### <a name="delta-lake-partitioned-views"></a>Delta Lake 分区视图
+
+如果要基于 Delta Lake 存储创建分区视图，则可以仅指定一个根 Delta Lake 文件夹，而无需使用 `FILEPATH` 函数显式公开分区列：
+
+```sql
+CREATE OR ALTER VIEW YellowTaxiView
+AS SELECT *
+FROM  
+    OPENROWSET(
+        BULK 'yellow',
+        DATA_SOURCE = 'DeltaLakeStorage',
+        FORMAT='DELTA'
+    ) nyc
+```
+
+`OPENROWSET` 函数会检查底层 Delta Lake 文件夹的结构，自动标识并公开分区列。 如果将分区列放在查询的 `WHERE` 子句中，则会自动执行分区排除操作。
+
+`OPENROWSET` 函数中的、与 `DeltaLakeStorage` 数据源中定义的 `LOCATION` URI 连接的文件夹名称（在本示例中为 `yellow`），必须引用包含名为 `_delta_log` 的子文件夹的 Delta Lake 根文件夹。
+
+> [!div class="mx-imgBorder"]
+>![Yellow Taxi Delta Lake 文件夹](./media/shared/yellow-taxi-delta-lake.png)
+
 ## <a name="use-a-view"></a>使用视图
 
 可以在查询中使用视图，其方式与在 SQL Server 查询中使用视图的方式相同。
 
-以下查询演示了如何使用在[创建视图](#create-a-view)中创建的 population_csv 视图。 它按降序返回国家/地区名称及其 2019 年的人口。
+以下查询演示了如何使用在[创建视图](#views-over-external-data)中创建的 population_csv 视图。 它按降序返回国家/地区名称及其 2019 年的人口。
 
 > [!NOTE]
 > 更改查询中的第一行（即 [mydbname]），以便使用你创建的数据库。

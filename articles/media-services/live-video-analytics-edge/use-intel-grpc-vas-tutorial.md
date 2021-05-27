@@ -1,19 +1,21 @@
 ---
-title: 使用 Intel OpenVINO™ DL Streamer Edge AI 扩展通过 gRPC 分析实时视频
-description: 本教程介绍如何使用由 Intel 提供的 Intel OpenVINO™ DL Streamer Edge AI 扩展来分析（模拟）IP 相机中的实时视频源。
+title: 将实时视频分析与 Intel OpenVINO™ DL Streamer Edge AI 扩展搭配使用并通过 gRPC 分析实时视频
+description: 本教程介绍如何将实时视频分析与由 Intel 提供的 Intel OpenVINO™ DL Streamer Edge AI 扩展搭配用于分析（模拟的）IP 相机中的实时视频源。
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 07a7daf6363f0e528f84635ed6713ac462f89ca5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d6d842a59a184470720da50917726eae069c6b02
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562845"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368502"
 ---
-# <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>教程：使用 Intel OpenVINO™DL Streamer Edge AI 扩展来分析实时视频 
+# <a name="tutorial-analyze-live-video-by-using-live-video-analytics-with-intel-openvino-dl-streamer--edge-ai-extension"></a>教程：将实时视频分析与 Intel OpenVINO™ DL Streamer Edge AI 扩展搭配用于分析实时视频 
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本教程介绍如何使用由 Intel 提供的 Intel OpenVINO™ DL Streamer Edge AI 扩展来分析（模拟）IP 相机中的实时视频源。 你将了解如何使用此推理服务器访问用于检测对象（人员、车辆或自行车）、对象分类（车辆归属）和对象跟踪（人员、车辆和自行车）的不同模型。 与 gRPC 模块的集成让你能够将视频帧发送到 AI 推理服务器。 结果随后会发送到 IoT Edge 中心。 在与实时视频分析相同的计算节点上运行此推理服务时，可利用通过共享内存发送视频数据的功能。 这样，你就能以实时视频源的帧速率运行推理（例如 30 帧/秒）。 
 
@@ -66,7 +68,7 @@ ms.locfileid: "105562845"
 
 OpenVINO™ DL Streamer Edge AI 扩展模块是一项基于 Intel 视频分析服务（VA 服务）的微服务，它为使用 OpenVINO™ DL Streamer 构建的视频分析管道提供服务。 开发人员可将已解码的视频帧发送到 AI 扩展模块，该模块执行检测、分类或跟踪并返回结果。 AI 扩展模块会公开与视频分析平台（如 Microsoft IoT Edge 上的实时视频分析）兼容的 gRPC API。 
 
-为了构建复杂、高性能的实时视频分析解决方案，IoT Edge 模块上的实时视频分析应与功能强大的推理引擎配合使用，以利用边缘的规模。 在本教程中，推理请求会发送到 [Intel OpenVINO™ DL Streamer Edge AI 扩展]()，这是一个 Edge 模块，旨在与 IoT Edge 上的实时视频分析搭配使用。 
+为了构建复杂、高性能的实时视频分析解决方案，IoT Edge 模块上的实时视频分析应与功能强大的推理引擎配合使用，以利用边缘的规模。 在本教程中，推理请求会发送到 [Intel OpenVINO™ DL Streamer Edge AI 扩展]()，这是一个 Edge 模块，旨在与 IoT Edge 上的实时视频分析搭配使用。
 
 在此推理服务器的初始版本中，你可以访问以下[模型](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options)：
 

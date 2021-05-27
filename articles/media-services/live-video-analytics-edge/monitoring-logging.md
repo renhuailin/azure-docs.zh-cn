@@ -1,16 +1,18 @@
 ---
-title: 监视和日志记录 - Azure
-description: 本文概述了 IoT Edge 上的实时视频分析中的监视和日志记录。
+title: 实时视频分析中的监视和日志记录 - Azure
+description: 本文概述了 IoT Edge 上的 Azure 实时视频分析中的监视和日志记录。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 08b2f5cce80581d71ce73e97ab30900aa8957c77
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4bc69192d0d36d01755d625ee46cd77cd9eec1b9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564476"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372131"
 ---
-# <a name="monitoring-and-logging"></a>监视和日志记录
+# <a name="monitoring-and-logging-in-live-video-analytics-on-iot-edge"></a>IoT Edge 上的实时视频分析中的监视和日志记录
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本文介绍如何从 IoT Edge 模块上的实时视频分析接收事件以进行远程监视。 
 

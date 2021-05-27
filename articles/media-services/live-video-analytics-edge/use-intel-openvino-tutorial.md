@@ -1,17 +1,19 @@
 ---
-title: 使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）来分析实时视频
-description: 在本教程中，将使用由 Intel 提供的 AI 模型服务器来分析（模拟的） IP 相机中的实时视频源。
+title: 将实时视频分析与 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）结合用于分析实时视频
+description: 在本教程中，你将使用由 Intel 提供的 AI 模型服务器来分析（模拟的） IP 相机中的实时视频源。
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 5751184493fffeeaf647507e9e9b00834f63ab5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f6445a5bfffe6d359de66e8eda8b9ec82ea56dc0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557252"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368414"
 ---
-# <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教程：使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）来分析实时视频 
+# <a name="tutorial-analyze-live-video-by-using-live-video-analytics-with-openvino-model-server--ai-extension-from-intel"></a>教程：将实时视频分析与 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）结合用于分析实时视频 
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本教程介绍如何使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）来分析（模拟）IP 相机中的实时视频源。 你将了解此推理服务器如何允许你访问用于检测物体（人、车辆或自行车）的模型以及用于车辆分类的模型。 实时视频源中的一部分帧会被发送到此推理服务器，并且结果会被发送到 IoT Edge 中心。
 

@@ -1,16 +1,18 @@
 ---
-title: 开发并部署 gRPC 推理服务器 - Azure
-description: 本文提供了有关开发并部署 gRPC 推理服务器的指导。
+title: 使用实时视频分析开发和部署 gRPC 推理服务器 - Azure
+description: 本文提供有关如何使用实时视频分析开发和部署 gRPC 推理服务器的指导。
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: dbf46a26626a4143d76385968d092c4f238729da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7d636803ac49d78aae78dad256598d9de3e7448
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034854"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371567"
 ---
-# <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>操作指南 - 开发并部署 gRPC 推理服务器
+# <a name="develop-and-deploy-a-grpc-inference-server-with-live-video-analytics"></a>使用实时视频分析开发和部署 gRPC 推理服务器
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="overview"></a>概述
 

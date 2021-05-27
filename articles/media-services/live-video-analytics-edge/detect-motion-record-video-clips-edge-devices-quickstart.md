@@ -1,18 +1,20 @@
 ---
-title: 检测运动并在边缘设备上录制视频 - Azure
-description: 本快速入门演示了如何使用 IoT Edge 上的实时视频分析来分析（模拟）IP 相机的实时视频源，检测是否存在任何运动，如果存在，则将 MP4 视频剪辑录制到边缘设备上的本地文件系统中。
+title: 使用实时视频分析检测运动并在边缘设备上录制视频 - Azure
+description: 本快速入门演示如何使用 IoT Edge 上的 Azure 实时视频分析来分析（模拟的）IP 相机的实时视频源，检测是否存在任何运动，如果存在，则将 MP4 视频剪辑录制到边缘设备上的本地文件系统中。
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: e4334cdd14242337a2a870f31886606020654685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d563aea803b92c10db1309365bb3ee3b29da57f
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498347"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372004"
 ---
-# <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>快速入门：检测运动并在边缘设备上录制视频
+# <a name="quickstart-detect-motion-and-record-video-on-edge-devices-with-live-video-analytics"></a>快速入门：使用实时视频分析检测运动并在边缘设备上录制视频
  
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
+
 本快速入门介绍了如何在 IoT Edge 上使用实时视频分析来分析（模拟）IP 相机中的实时视频源。 本快速入门介绍如何检测是否存在任何运动，如果存在，则将 MP4 视频剪辑录制到边缘设备上的本地文件系统中。 本快速入门将 Azure VM 用作 IoT Edge 设备，并且还使用模拟的实时视频流。 
 
 ::: zone pivot="programming-language-csharp"

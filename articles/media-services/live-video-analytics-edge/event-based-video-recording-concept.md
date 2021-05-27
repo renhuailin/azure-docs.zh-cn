@@ -1,17 +1,19 @@
 ---
-title: 基于事件的视频录制 - Azure
-description: 基于事件的视频录制 (EVR) 是指由事件触发的视频录制过程。 相关事件可能源于视频信号本身的处理（例如动作检测），也可能来自独立源（例如开门）。  本文介绍了一些与基于事件的视频录制有关的用例。
+title: 使用 Azure 实时视频分析实现基于事件的视频录制
+description: 基于事件的视频录制 (EVR) 是指使用实时视频分析录制由事件触发的视频的过程。 相关事件可能源于视频信号本身的处理（例如动作检测），也可能来自独立源（例如开门）。  本文介绍了一些与基于事件的视频录制有关的用例。
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 6a5f4873b2cfef8d9a6594916d82cd30a3bc1cc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7970bc6e29a6fb9f914541a52188bf0b53b83b86
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97401589"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371480"
 ---
-# <a name="event-based-video-recording"></a>基于事件的视频录制  
- 
+# <a name="event-based-video-recording-with-live-video-analytics"></a>使用实时视频分析实现基于事件的视频录制
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
+
 ## <a name="suggested-pre-reading"></a>建议的读前准备  
 
 * [连续视频录制](continuous-video-recording-concept.md)

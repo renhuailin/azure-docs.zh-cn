@@ -1,16 +1,18 @@
 ---
-title: 将视频连续录制到云中并从云中播放教程 - Azure
-description: 在本教程中，你将了解如何使用 Azure IoT Edge 上的 Azure 实时视频分析将视频连续录制到云中并使用 Azure 媒体服务流式传输该视频的任何部分。
+title: 将视频连续录制到云中并从云中播放 - Azure
+description: 本教程介绍如何使用 Azure IoT Edge 上的 Azure 实时视频分析将视频连续录制到云中并使用 Azure 媒体服务流式传输该视频的任何部分。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: d534fb174afa700671b6a3991a6aafa6357eb167
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 38a6afbae8f05bea4d165131eeab8cf97f48a465
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280337"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110376684"
 ---
-# <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教程：将视频连续录制到云中并从云中播放
+# <a name="tutorial-use-live-video-analytics-for-continuous-video-recording-and-playback-tofrom-the-cloud"></a>教程：使用实时视频分析将视频连续录制到云中并从云中播放
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 在本教程中，你将了解如何使用 Azure IoT Edge 上的 Azure 实时视频分析对云执行[连续视频录制](continuous-video-recording-concept.md) (CVR) 并使用 Azure 媒体服务流式传输该视频的任何部分。 此功能对于诸如安全性和合规性等方案很有用，因为这些方案需要将相机中的素材存档保存数天或数周。 
 

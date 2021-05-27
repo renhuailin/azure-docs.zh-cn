@@ -1,16 +1,18 @@
 ---
-title: IoT Edge 上的实时视频分析发行说明 - Azure
-description: 本主题提供 IoT Edge 上的实时视频分析版本的发行说明、改进、bug 修复和已知问题。
+title: IoT Edge 上的 Azure 实时视频分析发行说明 - Azure
+description: 本主题提供 IoT Edge 上的 Azure 实时视频分析版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: f130b93b8d799c371a640f2b29c22c0d77834cba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67b30cfbcb374dbe8773023f67b77ef43b35f3ba
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954389"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372039"
 ---
-# <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 上的实时视频分析发行说明
+# <a name="azure-live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 上的 Azure 实时视频分析发行说明
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 >通过将此 URL (`https://docs.microsoft.com/api/search/rss?search=%22Live+Video+Analytics+on+IoT+Edge+release+notes%22&locale=en-us`) 复制并粘贴到 RSS 源阅读器中获取有关何时重新访问此页以获得更新的通知。
 

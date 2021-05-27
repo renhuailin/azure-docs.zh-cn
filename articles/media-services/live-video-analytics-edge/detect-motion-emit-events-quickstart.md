@@ -1,17 +1,19 @@
 ---
-title: 检测运动并发出事件 - Azure
-description: 本快速入门介绍如何以编程方式调用直接方法，从而使用 IoT Edge 上的实时视频分析来检测运动和发出事件。
+title: 使用 Azure 实时视频分析检测运动并发出事件
+description: 本快速入门介绍如何以编程方式调用直接方法，从而使用 IoT Edge 上的 Azure 实时视频分析来检测运动和发出事件。
 ms.topic: quickstart
 ms.date: 08/10/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 09a17712287c73fa165b4bec77682831a51edfa3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1119d6ab2295138b7c13ca19e36a48417e72b6cb
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98060552"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379587"
 ---
-# <a name="quickstart-detect-motion-and-emit-events"></a>快速入门：检测运动并发出事件
+# <a name="quickstart-detect-motion-and-emit-events-with-live-video-analytics"></a>快速入门：使用实时视频分析检测运动并发出事件
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本快速入门将引导你完成开始使用 IoT Edge 上的实时视频分析的步骤。 它将 Azure VM 用作 IoT Edge 设备和模拟的实时视频流。 完成设置步骤后，你将能通过媒体图运行模拟实时视频流，该媒体图可检测和报告该流中的任何运动。 下图显示了该媒体图的图形表示形式。
 

@@ -1,16 +1,18 @@
 ---
-title: 管理录制策略 - Azure
-description: 本主题介绍如何管理录制策略。
+title: 使用实时视频分析管理录制策略 - Azure
+description: 本主题说明如何使用实时视频分析管理录制策略。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: ec72f28496c1392b9d95134c343e1892998a0c28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52c9011e81c4e9d43aa32158d8577a7388dc20d2
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99224983"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110379039"
 ---
-# <a name="manage-recording-policy"></a>管理录制策略
+# <a name="manage-recording-policy-with-live-video-analytics"></a>使用实时视频分析管理录制策略
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 可以使用 IoT Edge 上的实时视频分析进行[连续视频录制](continuous-video-recording-concept.md)，持续数周或数月将视频录制到云中。 可以使用 Azure 存储中内置的[生命周期管理工具](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)来管理云存档的时间长度（天）。  
 

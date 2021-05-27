@@ -1,17 +1,19 @@
 ---
-title: 使用 IoT Edge 上的实时视频分析和 Azure 自定义视觉分析实时视频
-description: 了解如何使用 Azure 自定义视觉构建可检测玩具卡车的容器化模型，并使用 Azure IoT Edge 上的 Azure 实时视频分析的 AI 扩展功能在边缘上部署该模型，以便从实时视频流中检测玩具卡车。
+title: 使用 IoT Edge 上的 Azure 实时视频分析和 Azure 自定义视觉分析实时视频
+description: 了解如何使用 Azure 自定义视觉构建可检测玩具卡车的容器化模型，并使用 Azure IoT Edge 上的实时视频分析的 AI 扩展功能在边缘上部署该模型，以便从实时视频流中检测玩具卡车。
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 1abf123883a89bb41909e8aa67aedfadffc3d37e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d9718a8c7cf6f93af32a3bd33bcf1e8c75c6aa8
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561196"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378259"
 ---
-# <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>教程：使用 IoT Edge 上的实时视频分析和 Azure 自定义视觉分析实时视频
+# <a name="tutorial-analyze-live-video-with-azure-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>教程：使用 IoT Edge 上的 Azure 实时视频分析和 Azure 自定义视觉分析实时视频
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本教程将介绍如何使用[自定义视觉](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)构建可检测玩具卡车的容器化模型，并使用 Azure IoT Edge 上的 Azure 实时视频分析的 [AI 扩展功能](analyze-live-video-concept.md#analyzing-video-using-a-custom-vision-model)在边缘上部署该模型，以便从实时视频流中检测玩具卡车。
 

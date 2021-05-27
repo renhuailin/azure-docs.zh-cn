@@ -1,16 +1,18 @@
 ---
-title: 视频录制 - Azure
-description: 在使用 CCTV 相机的视频管理系统的情况下，视频录制是指从相机捕获视频并录制它以通过移动应用和浏览器应用进行观看的过程。 视频录制可分为连续视频录制和基于事件的视频录制两类。
+title: 使用实时视频分析实现视频录制 - Azure
+description: 在使用 CCTV 相机的视频管理系统的情况下，视频录制是指从相机捕获视频并录制它以通过移动应用和浏览器应用进行观看的过程。 视频录制可分为连续视频录制和基于事件的视频录制两类。 本文讨论视频录制。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c03472f577e67d5b2705a2ebe3f53e85e0849819
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fea0d2daaa4724cf4d354c8ab16b6b6ba3e76bf5
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84260190"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368363"
 ---
-# <a name="video-recording"></a>视频录制
+# <a name="video-recording-with-live-video-analytics"></a>使用实时视频分析实现视频录制
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 在使用 CCTV 相机的视频管理系统的情况下，视频录制是指从相机捕获视频并录制它以通过移动应用和浏览器应用进行观看的过程。 视频录制可分为连续视频录制和基于事件的视频录制两类。 
 

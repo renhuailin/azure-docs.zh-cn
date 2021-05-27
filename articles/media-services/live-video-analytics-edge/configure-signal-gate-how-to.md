@@ -1,16 +1,18 @@
 ---
-title: 为基于事件的视频录制配置信号门 - Azure
-description: 本文提供了有关如何在媒体图中配置信号门的指导。
+title: 使用实时视频分析为基于事件的视频录制配置信号入口 - Azure
+description: 本文提供了有关如何使用实时视频分析在媒体图中配置信号入口的指导。
 ms.topic: how-to
 ms.date: 11/3/2020
-ms.openlocfilehash: afcec7c03f1353f08b58311278f5a533e0c911bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fc36757c44ad69d61466b373756bdd9428dbab9
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94410787"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110367686"
 ---
-# <a name="configure-a-signal-gate-for-event-based-video-recording"></a>为基于事件的视频录制配置信号门
+# <a name="configure-a-signal-gate-for-event-based-video-recording-with-live-video-analytics"></a>使用实时视频分析为基于事件的视频录制配置信号入口
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 在媒体图中，[信号门处理器节点](media-graph-concept.md#signal-gate-processor)可以在事件触发信号门时将媒体从一个节点转发到另一个节点。 当被触发时，信号门会打开，允许媒体在指定的持续时间内流过。 如果没有事件触发信号门，则信号门会关闭，媒体会停止流动。 可以使用信号门处理器进行基于事件的视频录制。
 

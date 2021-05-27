@@ -1,17 +1,19 @@
 ---
-title: 使用自己的 HTTP 模型分析实时视频 - Azure
-description: 在本快速入门中，你将使用自己的 HTTP 模型应用计算机视觉来分析来自（模拟）IP 相机的实时视频源。
+title: 使用你自己的 HTTP 模型分析实时视频 - Azure
+description: 在本快速入门中，你将应用计算机视觉，通过使用你自己的 HTTP 模型来分析来自（模拟）IP 相机的实时视频源。
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: d3ba937abcc7bbfd9bb2afe7b15aec28ebb57446
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 685deddb9a55d024081acd0b7d4ff639d1eecd43
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99508471"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368537"
 ---
-# <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>快速入门：使用自己的 HTTP 模型分析实时视频
+# <a name="quickstart-analyze-live-video-with-your-own-http-model"></a>快速入门：使用你自己的 HTTP 模型分析实时视频
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本快速入门介绍了如何在 IoT Edge 上使用实时视频分析来分析来自（模拟）IP 相机中的实时视频源。 你将了解如何应用计算机视觉模型来检测对象。 实时视频源中的一部分帧被发送到推理服务。 结果将发送到 IoT Edge 中心。 
 

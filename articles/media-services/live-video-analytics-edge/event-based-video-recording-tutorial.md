@@ -1,16 +1,18 @@
 ---
-title: 将基于事件的视频录制到云中并从云播放教程 - Azure
-description: 在本教程中，你将了解如何使用 Azure IoT Edge 上的 Azure 实时视频分析将基于事件的视频录制到云中并从云中播放。
+title: 将基于事件的视频录制到云中并从云中播放 - Azure
+description: 本教程介绍如何使用 Azure IoT Edge 上的 Azure 实时视频分析将基于事件的视频录制到云中并从云中播放。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: de1a4d423108ddb18af4f8478c9bac60672d6062
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: bf5bd39805aa581553bdf2e663f462251bf418d1
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279810"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371532"
 ---
-# <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教程：将基于事件的视频录制到云中并从云中播放
+# <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud-with-live-video-analytics"></a>教程：使用实时视频分析将基于事件的视频录制到云中并从云中播放
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 在本教程中，你将了解如何使用 Azure IoT Edge 上的 Azure 实时视频分析，选择性地将实时视频源的部分内容录制到云中的 Azure 媒体服务。 此用例在本教程中称为[基于事件的视频录制](event-based-video-recording-concept.md) (EVR)。 要录制实时视频的部分内容，你将使用对象检测 AI 模型在视频中查找对象，并仅在检测到某种类型的对象时录制视频剪辑。 你还将了解如何使用媒体服务播放录制的视频剪辑。 对于需要保留所需视频剪辑的各种场景，此功能非常有用。 
 

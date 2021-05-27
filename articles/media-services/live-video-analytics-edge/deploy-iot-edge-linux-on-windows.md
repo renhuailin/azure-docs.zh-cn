@@ -1,16 +1,18 @@
 ---
-title: 部署到 IoT Edge for Linux on Windows - Azure
-description: 本文提供了有关如何部署到 IoT Edge for Linux on Windows 设备的指导。
+title: 使用实时视频分析部署到 IoT Edge for Linux on Windows - Azure
+description: 本文提供有关如何使用实时视频分析部署到 IoT Edge for Linux on Windows 设备的指导。
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: d5c3d89ae7447b062714ad90be117a6426a39581
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c504ecf2bb7405ee49d6e9ee94f069336924f5c0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561077"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378088"
 ---
-# <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>部署到 IoT Edge for Linux on Windows (EFLOW) 设备
+# <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device-with-live-video-analytics"></a>使用实时视频分析部署到 IoT Edge for Linux on Windows (EFLOW) 设备
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本文介绍如何在具有 [IoT Edge for Linux on Windows (EFLOW)](../../iot-edge/iot-edge-for-linux-on-windows.md) 的边缘设备上部署实时视频分析。 完成本文档中的步骤后，你将能够运行[媒体图](media-graph-concept.md)，该媒体图可检测视频中的移动并将此类事件发送到云中的 IoT 中心。 然后，你可以切换出高级方案的媒体图，并将实时视频分析功能引入基于 Windows 的 IoT Edge 设备。
 

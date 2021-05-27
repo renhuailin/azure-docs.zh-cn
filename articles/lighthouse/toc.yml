@@ -61,6 +61,9 @@
         - name: 向 Azure 市场发布托管服务产品
           displayName: 'managed services, azure marketplace, publish, marketplace'
           href: ./how-to/publish-managed-services-offers.md
+        - name: 创建合格授权
+          displayName: 'jit, pim, elevate, elevation, just-in-time'
+          href: ./how-to/create-eligible-authorizations.md
         - name: 更新委派
           displayName: upgrade
           href: ./how-to/update-delegation.md

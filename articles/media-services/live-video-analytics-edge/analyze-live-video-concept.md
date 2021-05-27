@@ -1,16 +1,18 @@
 ---
-title: 在不录制的情况下分析实时视频 - Azure
-description: 使用媒体图，可以仅从实时视频流中提取分析，而不在边缘或云中进行录制。 本文讨论了这一概念。
+title: 通过实时视频分析无需录制即可分析实时视频 - Azure
+description: 使用媒体图，可以仅从实时视频流中提取分析，而不在边缘或云中进行录制。 本文讨论了这一概念，以及如何通过实时视频分析在无需录制的情况下分析实时视频。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 25a7cadc47603b726542fa391d441e1fbca78908
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4f880646410ba77015663915575cdc32a7c188b
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97398954"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110378918"
 ---
-# <a name="analyzing-live-video-without-any-recording"></a>在不录制的情况下分析实时视频
+# <a name="analyze-live-video-without-any-recording-with-live-video-analytics"></a>通过实时视频分析无需录制即可分析实时视频
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="suggested-pre-reading"></a>建议的读前准备 
 

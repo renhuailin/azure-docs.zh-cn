@@ -1,17 +1,19 @@
 ---
-title: 使用自己的 gRPC 模型分析实时视频 - Azure
-description: 在本快速入门中，你将应用计算机视觉来分析来自（模拟）IP 相机的实时视频源。
+title: 借助实时视频分析使用自己的 gRPC 模型分析实时视频 - Azure
+description: 在本快速入门中，你将使用实时视频分析并应用计算机视觉来分析来自（模拟）IP 相机的实时视频源。
 ms.topic: quickstart
 ms.date: 08/14/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 907d402a4b0ef5d5e437322d02431a0ccd2d8da3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1079e374d34512e3054c4185302059ffd178c804
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89421507"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371725"
 ---
-# <a name="quickstart-analyze-live-video-by-using-your-own-grpc-model"></a>快速入门：使用自己的 gRPC 模型分析实时视频
+# <a name="quickstart-analyze-live-video-by-using-your-own-grpc-model-with-live-video-analytics"></a>快速入门：借助实时视频分析使用自己的 gRPC 模型分析实时视频
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本快速入门介绍了如何在 IoT Edge 上使用实时视频分析来分析来自（模拟）IP 相机中的实时视频源。 你将了解如何应用计算机视觉模型来检测对象。 实时视频源中的一部分帧被发送到推理服务。 结果将发送到 IoT Edge 中心。
 

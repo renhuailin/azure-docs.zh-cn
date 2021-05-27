@@ -1,16 +1,18 @@
 ---
-title: 播放多天录制的内容 - Azure
+title: 使用实时视频分析播放多天录制的内容 - Azure
 description: 本教程介绍如何使用 Azure 媒体服务 API 播放多天连续录制的视频内容。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 81a778b40649c1318b3738a289f0db37fd35376a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7c224b6267dd7eac4df669a7ccbd6f59abeb8ef
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492783"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372125"
 ---
-# <a name="tutorial-playback-of-multi-day-recordings"></a>教程：播放多天录制的内容  
+# <a name="tutorial-playback-of-multi-day-recordings-with-live-video-analytics"></a>教程：使用实时视频分析播放多天录制的内容
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 本教程是[连续视频录制](continuous-video-recording-concept.md) (CVR) 教程的补充教程。 在本教程中，你将了解如何使用 Azure 媒体服务 API 从云端播放多天连续录制的视频内容。 
 

@@ -1,6 +1,6 @@
 ---
-title: 如何使用 Azure 门户调用直接方法
-description: 本文概述如何使用 Azure 门户调用直接方法。
+title: 如何使用 Azure 门户调用实时视频分析直接方法
+description: 本文概述了如何使用 Azure 门户调用实时视频分析直接方法。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,14 +13,16 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: ddd6a94015829a0b5dd4053f4d3a2fd6d2650d32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d91395f148db2245c48784e00c3403a5c76a5b0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492648"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110368520"
 ---
-# <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>如何使用 Azure 门户调用直接方法
+# <a name="how-to-use-azure-portal-to-invoke-live-video-analytics-direct-methods"></a>如何使用 Azure 门户调用实时视频分析直接方法
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 借助 IoT 中心，你可以从云中对边缘设备调用[直接方法](../../iot-hub/iot-hub-devguide-direct-methods.md#method-invocation-for-iot-edge-modules)。 IoT Edge 上的实时视频分析 (LVA) 模块公开了多种[直接方法](./direct-methods.md)，这些方法可以用于定义、部署和实例化用于分析实时视频的不同工作流。
 

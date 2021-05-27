@@ -1,18 +1,18 @@
 ---
 title: 通过 SSH 连接到 Azure Percept DK
 description: 了解如何使用 PuTTY 通过 SSH 连接到 Azure Percept DK
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 39ee1c1cc5b52dc62e3199536234c1f7d9381436
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4ee194e6d501d967d37453763c9cd4b25d1bedbe
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721471"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754192"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-ssh"></a>通过 SSH 连接到 Azure Percept DK
 
@@ -23,7 +23,7 @@ ms.locfileid: "104721471"
 - 基于 Windows、Linux 或 OS X 的主计算机，具有 Wi-Fi 功能
 - SSH 客户端（请参阅安装指南的下一部分）
 - Azure Percept DK（开发工具包）
-- 在 [Azure Percept DK 安装体验](./quickstart-percept-dk-set-up.md) 过程中创建的 SSH 登录名
+- 在 [体验 Azure Percept DK 设置](./quickstart-percept-dk-set-up.md) 过程中创建的 SSH 帐户
 
 ## <a name="install-your-preferred-ssh-client"></a>安装首选 SSH 客户端
 
@@ -41,11 +41,11 @@ Windows 10 包括名为 OpenSSH 的内置 SSH 客户端，可以在命令提示�
 
 1. 在“应用和功能”下，选择“可选功能” 。
 
-1. 在“已安装的功能”搜索栏中键入“OpenSSH 客户端” 。 如果显示 OpenSSH，则表示客户端已安装，你可以前往下一节。 如果未看到 OpenSSH，请单击“添加功能”。
+1. 在“已安装的功能”搜索栏中键入“OpenSSH 客户端” 。 如果显示 OpenSSH，则表示客户端已安装，你可以前往下一节。 如果未看到 OpenSSH，请选择“添加功能”。
 
     :::image type="content" source="./media/how-to-ssh-into-percept-dk/open-ssh-install.png" alt-text="显示 OpenSSH 安装状态的设置的屏幕截图。":::
 
-1. 选择“OpenSSH 客户端”并单击“安装” 。 现在，你可以前往下一节。 如果无法在计算机上安装 OpenSSH，请按照以下步骤安装 PuTTY（第三方 SSH 客户端）。
+1. 选择“OpenSSH 客户端”并选择“安装” 。 现在，你可以前往下一节。 如果无法在计算机上安装 OpenSSH，请按照以下步骤安装 PuTTY（第三方 SSH 客户端）。
 
 ### <a name="putty"></a>PuTTY
 
@@ -53,9 +53,9 @@ Windows 10 包括名为 OpenSSH 的内置 SSH 客户端，可以在命令提示�
 
 1. 请转到 [PuTTY 下载页](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)。
 
-1. 在“程序包文件”下，单击 32 位或 64 位 .msi 文件以下载安装程序。 如果不确定要选择哪个版本，请查看[常见问题解答](https://www.chiark.greenend.org.uk/~sgtatham/putty/faq.html#faq-32bit-64bit)。
+1. 在“程序包文件”下，选择 32 位或 64 位 .msi 文件以下载安装程序。 如果不确定要选择哪个版本，请查看[常见问题解答](https://www.chiark.greenend.org.uk/~sgtatham/putty/faq.html#faq-32bit-64bit)。
 
-1. 单击安装程序以开始执行安装过程。 根据需要，按照提示操作。
+1. 选择安装程序以开始执行安装过程。 根据需要，按照提示操作。
 
 1. 恭喜！ 你已成功安装 PuTTY SSH 客户端。
 
@@ -63,7 +63,7 @@ Windows 10 包括名为 OpenSSH 的内置 SSH 客户端，可以在命令提示�
 
 1. 打开 Azure Percept DK。
 
-1. 如果开发工具包已通过以太网或 Wi-Fi 连接到网络，请跳到下一步骤。 如果未连接网络，请将主计算机直接连接到开发工具包的 Wi-Fi 接入点。 就像连接到任何其他 Wi-Fi 网络一样，打开计算机上的“网络和 Internet 设置”，单击以下网络，并在出现提示时输入网络密码：
+1. 如果开发工具包已通过以太网或 Wi-Fi 连接到网络，请跳到下一步骤。 如果未连接网络，请将主计算机直接连接到开发工具包的 Wi-Fi 接入点。 就像连接到任何其他 Wi-Fi 网络一样，打开计算机上的“网络和 Internet 设置”，选择以下网络，并在出现提示时输入网络密码：
 
     - **网络名称**：根据开发工具包的操作系统版本，Wi-Fi 接入点的名称为 scz-xxxx 或 apd-xxxx（其中“xxxx”是开发工具包的 MAC 地址的最后四位数） 
     - **密码**：可在开发工具包随附的欢迎卡上找到
@@ -98,7 +98,7 @@ Windows 10 包括名为 OpenSSH 的内置 SSH 客户端，可以在命令提示�
 
 ### <a name="using-putty"></a>使用 PuTTY
 
-1. 打开 PuTTY。 在“PuTTY 配置”窗口中输入以下内容，然后单击“打开”以通过 SSH 连接到开发工具包 ：
+1. 打开 PuTTY。 在“PuTTY 配置”窗口中输入以下内容，然后选择“打开”以通过 SSH 连接到开发工具包 ：
 
     1. 主机名：[IP 地址]
     1. 端口：22

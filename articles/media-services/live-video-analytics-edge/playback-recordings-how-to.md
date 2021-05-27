@@ -1,16 +1,18 @@
 ---
-title: 播放录制内容 - Azure
-description: 可以使用 IoT Edge 上的实时视频分析进行连续视频录制，持续数周或数月将视频录制到云中。 还可以通过基于事件的录制将录制限制为你感兴趣的剪辑。 本文讨论如何播放录制内容。
+title: 使用实时视频分析播放录制内容 - Azure
+description: 可以使用 IoT Edge 上的 Azure 实时视频分析进行连续视频录制，持续数周或数月将视频录制到云中。 还可以通过基于事件的录制将录制限制为你感兴趣的剪辑。 本文讨论如何播放录制内容。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 0351f10d9fac3ad7e3b4fdd5fd549eb7c0023694
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc8698fc9317421513677eb64403ac2cdc3905c3
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99490888"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110372073"
 ---
-# <a name="playback-of-recordings"></a>播放录制内容 
+# <a name="playback-of-recordings-with-live-video-analytics"></a>使用实时视频分析播放录制内容
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 ## <a name="pre-read"></a>预读  
 

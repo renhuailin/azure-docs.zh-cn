@@ -1,16 +1,18 @@
 ---
-title: 模块孪生 JSON 架构 - Azure
-description: 本主题介绍 IoT Edge 上的实时视频分析的模块孪生 JSON 架构。
+title: 实时视频分析中的模块孪生 JSON 架构 - Azure
+description: 本主题介绍 IoT Edge 上的 Azure 实时视频分析的模块孪生 JSON 架构。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be80b5782d76f1ec490395013310058f1cb2fe79
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87053073"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110371164"
 ---
-# <a name="module-twin-json-schema"></a>模块孪生 JSON 架构
+# <a name="module-twin-json-schema-in-live-video-analytics"></a>实时视频分析中的模块孪生 JSON 架构
+
+[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
 设备孪生是存储设备状态信息（包括元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 有关详细说明，请参阅[了解并在 IoT 中心内使用模块孪生](../../iot-hub/iot-hub-devguide-module-twins.md)。
 
