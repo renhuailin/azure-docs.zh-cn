@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 04/29/2021
+ms.date: 05/27/2021
 ms.author: zxue
-ms.openlocfilehash: 248d499d166c6e397ef422b5ff653709b8b075e9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6b025c35c5faa64a2333710693c992a410cafecc
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733439"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652716"
 ---
 # <a name="configure-private-link"></a>配置专用链接
 
@@ -34,37 +34,34 @@ ms.locfileid: "108733439"
 
 有关详细信息，请参阅 [私有链接文档](../../private-link/index.yml)。
 
-## <a name="disable-public-network-access"></a>禁用公用网络访问
-
-为 FHIR 资源创建专用终结点不会自动对其禁用公共流量。 为此，必须更新 FHIR 资源，将新的 "公共访问" 属性从 "Enabled" 设置为 "Disabled"。 禁用公共网络访问时要小心，因为所有不是来自正确配置的专用终结点的 FHIR 服务请求都将被拒绝。 仅允许来自专用终结点的流量。
-
-:::image type="content" source="media/private-link/private-link-disable.png" alt-text="禁用公共网络访问。":::
-
 ## <a name="create-private-endpoint"></a>创建专用终结点
 
 若要创建专用终结点，具有基于角色的访问控制的开发人员 (RBAC) 对 FHIR 资源的权限可以使用 Azure 门户、 [Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)或 [Azure CLI](../../private-link/create-private-endpoint-cli.md)。 本文将指导你完成使用 Azure 门户的步骤。 建议使用 Azure 门户，因为它会自动创建和配置专用 DNS 区域。 有关详细信息，请参阅 [Private Link 快速入门指南](../../private-link/create-private-endpoint-portal.md)。
 
-可以通过两种方法创建专用终结点。 自动审批流允许对 FHIR 资源具有 RBAC 权限的用户创建专用终结点，而无需批准。 手动审批流允许无 FHIR 资源权限的用户请求私有终结点，由 FHIR 资源的所有者批准。
+有两种方法可以创建专用终结点。 自动审批流允许对 FHIR 资源具有 RBAC 权限的用户创建专用终结点，而无需审批。 手动审批流允许无权访问 FHIR 资源的用户请求 FHIR 资源所有者批准专用终结点。
+
+> [!NOTE]
+> 为应用程序创建已批准的专用终结点Azure API for FHIR，会自动禁用发到该终结点的公共流量。 
 
 ### <a name="auto-approval"></a>自动批准
 
 确保新专用终结点的区域与虚拟网络的区域相同。 FHIR 资源的区域可能不同。
 
-![Azure 门户基本信息选项卡](media/private-link/private-link-portal2.png)
+![Azure 门户"基本信息"选项卡](media/private-link/private-link-portal2.png)
 
-对于资源类型，搜索并选择 " **HealthcareApis/服务**"。 对于资源，请选择 "FHIR" 资源。 对于目标子资源，请选择 " **FHIR**"。
+对于资源类型，搜索并选择 **"Microsoft.HealthcareApis/services"。** 对于资源，请选择 FHIR 资源。 对于目标子资源，请选择 **"FHIR"。**
 
-![Azure 门户资源 "选项卡](media/private-link/private-link-portal1.png)
+![Azure 门户"资源"选项卡](media/private-link/private-link-portal1.png)
 
-如果尚未设置现有专用 DNS 区域，请选择 " **(New) privatelink.azurehealthcareapis.com**"。 如果已配置专用 DNS 区域，可以从列表中选择它。 它的格式必须为 **privatelink.azurehealthcareapis.com**。
+如果尚未设置现有区域专用 DNS，请选择 **" (") privatelink.azurehealthcareapis.com"。** 如果已配置专用 DNS区域，可以从列表中选择它。 它必须采用 privatelink.azurehealthcareapis.com **格式。**
 
 ![Azure 门户配置选项卡](media/private-link/private-link-portal3.png)
 
-部署完成后，您可以返回到 " **专用终结点连接** " 选项卡，您将在此选项卡中看到 " **已批准** " 作为连接状态。
+部署完成后，可以返回到"专用终结点连接"选项卡，其中 **你会注意到"** 已批准"作为连接状态。
 
 ### <a name="manual-approval"></a>手动批准
 
-对于 "手动批准"，请选择 "资源" 下的第二个选项 "按资源 ID 或别名连接到 Azure 资源"。 对于目标子资源，输入 "fhir" 作为 "自动批准"。
+对于手动批准，请选择"资源"下的第二个选项"按资源 ID 或别名连接到 Azure 资源"。 对于"目标子资源"，输入"fhir"，如"自动批准"一样。
 
 ![手动批准](media/private-link/private-link-manual.png)
 
@@ -88,7 +85,7 @@ ms.locfileid: "108733439"
 
 ## <a name="manage-private-endpoint"></a>管理专用终结点
 
-### <a name="view"></a>视图
+### <a name="view"></a>查看
 
 专用终结点和关联的网络接口控制器 (NIC) 在 Azure 门户中可在创建它们的资源组中看到。
 
