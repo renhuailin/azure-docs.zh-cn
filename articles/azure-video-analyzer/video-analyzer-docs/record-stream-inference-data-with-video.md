@@ -4,12 +4,12 @@ description: 本教程介绍如何使用 Azure 视频分析器将视频和推理
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 05/12/2021
-ms.openlocfilehash: 38d47ec6f27984eb7cc204b8421cec9016d2db65
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7b1122c098fc30150699f6c878058d37f74a007f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385208"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465810"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>教程：使用视频记录并流式传输推理元数据
   
@@ -132,7 +132,7 @@ ms.locfileid: "110385208"
 1. 接下来，在 livePipelineSet 和 pipelineTopologyDelete 节点下，确保 topologyName 的值与上述管道拓扑中的 name 属性的值匹配   ：
 
     `"pipelineTopologyName" : "CVRHttpExtensionObjectTracking"`
-1. 在浏览器中打开[管道拓扑](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-objTracking/topology.json)，查看 videoName（硬编码为 `sample-cvr-inferencing`）。 对于教程来说，这是可以接受的。 在生产环境中，应注意确保每个唯一的 RTSP 相机都会录制到一个具有唯一名称的视频资源中。  
+1. 在浏览器中打开[管道拓扑](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-objTracking/topology.json)，查看 videoName（硬编码为 `sample-cvr-with-inference-metadata`）。 对于教程来说，这是可以接受的。 在生产环境中，应注意确保每个唯一的 RTSP 相机都会录制到一个具有唯一名称的视频资源中。  
 
 1. 检查 HTTP 扩展节点的设置。
 
@@ -300,7 +300,7 @@ HTTP 扩展处理器节点将第 0 帧、第 15 帧、第 30 帧… 发送到 yo
 {
   "body": {
     "outputType": "videoName",
-    "outputLocation&quot;: &quot;sample-cvr-inferencing"
+    "outputLocation&quot;: &quot;sample-cvr-with-inference-metadata"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/videoAnalyzers/{ava-account-name}",
@@ -325,7 +325,7 @@ body 部分包含有关输出位置的信息。 在本例中，即要将视频�
 {
   "body": {
     "outputType": "videoName",
-    "outputLocation&quot;: &quot;sample-cvr-inferencing"
+    "outputLocation&quot;: &quot;sample-cvr-with-inference-metadata"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/videoAnalyzers/{ava-account-name}",
@@ -352,7 +352,7 @@ body 部分包含有关输出位置的信息。 在本例中，即要将视频�
 {
   "body": {
     "outputType": "videoName",
-    "outputLocation&quot;: &quot;sample-cvr-inferencing"
+    "outputLocation&quot;: &quot;sample-cvr-with-inference-metadata"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/videoAnalyzers/{ava-account-name}",
@@ -377,7 +377,7 @@ body 部分包含有关输出位置的信息，在本例中是视频录制到的
 1. 打开 Web 浏览器，并转到 [Azure 门户](https://portal.azure.com/)。 输入登录到门户所需的凭据。 默认视图是服务仪表板。
 1. 在订阅资源中找到视频分析器帐户，并打开“帐户”窗格。
 1. 在“视频分析器”列表中选择“视频” 。
-1. 你会发现以名称 `sample-cvr-inferencing` 列出的视频。 这是在管道拓扑文件中选择的名称。
+1. 你会发现以名称 `sample-cvr-with-inference-metadata` 列出的视频。 这是在管道拓扑文件中选择的名称。
 1. 选择视频。
 1. 在视频“详细信息”页上，单击“播放”图标
 

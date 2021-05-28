@@ -4,12 +4,12 @@ description: 本教程介绍如何使用由 Intel 提供的 Intel OpenVINO™ DL
 ms.topic: tutorial
 ms.service: azure-video-analyzer
 ms.date: 05/18/2021
-ms.openlocfilehash: e06acecfd65686d90afa4727dd611bcfa2877c51
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 449cd027396f92be0443d7cd4fe6dabc3eb449f6
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465706"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110383857"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>教程：使用 Intel OpenVINO™ DL Streamer Edge AI 扩展来分析实时视频 
 
@@ -114,7 +114,7 @@ OpenVINO™ DL Streamer Edge AI 扩展模块是一项基于 Intel 视频分析�
 ![开始监视](./media/quickstarts/start-monitoring-iot-hub-events.png) 
 
 ### <a name="run-the-sample-program-to-detect-vehicles-persons-or-bike"></a>运行示例程序以检测人员、车辆或自行车
-如果在浏览器中打开本教程的[管道拓扑](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/grpcExtensionOpenVINO/topology.json)，你将看到 `grpcExtensionAddress` 的值已设置为 `tcp://avaExtension:5001`，与 httpExtensionOpenVINO 教程相比，无需将 URL 更改为 gRPC 服务器， 而是指示模块通过操作文件中的 `extensionConfiguration` 运行特定管道。 如果未提供，则默认为“object_detection" for "person_vehicle_bike_detection”。 可尝试使用其他支持的管道。
+如果在浏览器中打开本教程的[管道拓扑](https://raw.githubusercontent.com/Azure/azure-video-analyzer/main/pipelines/live/topologies/grpcExtensionOpenVINO/topology.json)，你将看到 `grpcExtensionAddress` 的值已设置为 `tcp://avaExtension:5001`，与 httpExtensionOpenVINO 教程相比，无需将 URL 更改为 gRPC 服务器， 而是指示模块通过操作文件中的 `extensionConfiguration` 运行特定管道。 如果未提供，则默认为“object_detection" for "person_vehicle_bike_detection”。 可尝试使用其他支持的管道。
 
 1. 编辑 operations.json 文件：
     * 将链接更改为实时管道拓扑：

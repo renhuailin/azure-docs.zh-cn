@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: juliako
-ms.openlocfilehash: 1370131f97d8557b73b5f64d33f348e6ce07a1db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 66b9e6656b7bebd488c6e710f91254ee985d06b8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385086"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110487362"
 ---
 作为先决条件的一部分，请将示例代码下载到一个文件夹中。 按照以下步骤检查并编辑示例文件。
 
@@ -28,7 +28,7 @@ ms.locfileid: "110385086"
         * 调用直接方法以清理资源。
 1. 编辑 operations.json 文件：
 
-    * 将链接更改为管道： <br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-motion-files/topology.json" `
+    * 将链接更改为管道： <br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-motion-file-sink/topology.json" `
     * 在 livePipelineSet 下，编辑管道拓扑的名称以匹配前面链接中的值： <br/>`"topologyName" : "EVRToFilesOnMotionDetection" `
     * 在 PipelineTopologyDelete 下，编辑名称： <br/>`"name": "EVRToFilesOnMotionDetection" `
 
