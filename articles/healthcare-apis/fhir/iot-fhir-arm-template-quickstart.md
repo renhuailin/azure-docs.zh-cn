@@ -7,12 +7,13 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.author: rabhaiya
 ms.date: 01/21/2021
-ms.openlocfilehash: b241484b8e8d981036fff4998d475b8b80fae42d
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ec802cb193d8b6f6cc8eff0dedff066e684d6596
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017941"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704902"
 ---
 # <a name="quickstart-use-an-azure-resource-manager-arm-template-to-deploy-azure-iot-connector-for-fhir-preview"></a>快速入门：使用 Azure 资源管理器 (ARM) 模板部署适用于 FHIR 的 Azure IoT 连接器（预览版）
 

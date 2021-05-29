@@ -8,12 +8,13 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 05/04/2021
 ms.author: ginle
-ms.openlocfilehash: e1f5159ae192d4be7aa683b68c6a994725089a7f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 371b1286976a5f9dabfb82a5a706ff4a2672ceb2
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756856"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110700483"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>配置客户管理的静态密钥
 
