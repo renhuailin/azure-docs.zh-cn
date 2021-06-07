@@ -9,12 +9,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 05/27/2021
-ms.openlocfilehash: 837fdb74cbbeb976641b9ee86970d87b80134bc9
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: e7e0e89b1be822d13a577365bdc9ac277d55b4ce
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572097"
+ms.locfileid: "111562657"
 ---
 # <a name="centers-for-medicare-and-medicaid-services-cms-interoperability-and-patient-access-rule-introduction"></a>适用于管理局和 Medicaid 服务 (CMS 的中心) 互操作性和患者访问规则简介
 
@@ -23,9 +23,9 @@ ms.locfileid: "111572097"
 
 ## <a name="rule-overview"></a>规则概述
 
-CMS 在2020年5月1日发布了 [互操作性和患者访问规则](https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index) 。 此规则需要患者护理 (患者、提供商和支付方) 中涉及的所有参与方之间的免费安全数据流，以允许患者在需要时访问其健康信息。 互操作性已在几十年中困扰了医疗保健行业，导致了孤立的数据导致消极的运行状况结果，并具有更高和不可预测的质量。 CMS 使用其机构来控制管理局优势 (MA) 、Medicaid、儿童的健康保险计划 (芯片) 和合格的健康计划 (QHP) 颁发者 (上) 的颁发者 FFEs 来实施此规则。 
+CMS 在2020年5月1日发布了 [互操作性和患者访问规则](https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index) 。 此规则可确保患者护理 (患者、提供商和支付方) 的所有参与方之间的免费和安全数据流，以允许患者在需要时访问其健康信息。 互操作性已在几十年中困扰了医疗保健行业，导致了孤立的数据导致消极的运行状况结果，并具有更高和不可预测的质量。 CMS 使用其机构来控制管理局优势 (MA) 、Medicaid、儿童的健康保险计划 (芯片) 和合格的健康计划 (QHP) 颁发者 (上) 的颁发者 FFEs 来实施此规则。 
 
-在2020年8月，CMS 详细说明了组织如何满足此要求。 若要确保数据可以安全地交换并以标准化方式进行交换，则已标识 FHIR 版本 4 (R4) 为数据交换所需的基础标准。 
+在2020年8月，CMS 详细说明了组织如何满足此要求。 为了确保数据可以安全地交换并以标准化的方式进行，CMS 标识 FHIR 版本 R4 作为数据交换所需的基础标准。 
 
 互操作性和患者访问部分分为三个主要部分：
 
@@ -37,14 +37,14 @@ CMS 在2020年5月1日发布了 [互操作性和患者访问规则](https://www.
 
 ## <a name="key-fhir-concepts"></a>关键 FHIR 概念
 
-如上所述，需要 FHIR R4 才能满足此要求。 此外，还开发了若干为规则提供指导的实施指南。 [实现指南](https://www.hl7.org/fhir/implementationguide.html) 在基本 FHIR 规范的基础上提供了额外的上下文。 这包括定义其他搜索参数、配置文件、扩展、操作、值集和代码系统。
+如上所述，需要 FHIR 版本 R4 才能满足此要求。 此外，还开发了若干为规则提供指导的实施指南。 [实现指南](https://www.hl7.org/fhir/implementationguide.html) 在基本 FHIR 规范的基础上提供了额外的上下文。 这包括定义其他搜索参数、配置文件、扩展、操作、值集和代码系统。
 
 适用于 FHIR 的 Azure API 具有以下功能，可帮助你为各种实现指南配置数据库：
 
 * [支持 RESTful 交互](fhir-features-supported.md)
-* [存储和验证配置文件](validation-against-profiles.md)
-* [定义和索引自定义搜索参数](how-to-do-custom-search.md)
-* [转换数据](convert-data.md)
+*  [存储和验证配置文件](validation-against-profiles.md)
+*  [定义和索引自定义搜索参数](how-to-do-custom-search.md)
+*  [转换数据](convert-data.md)
 
 ## <a name="patient-access-api-implementation-guides"></a>患者访问 API 实现指南
 
@@ -80,7 +80,7 @@ HL7 美国核心实现指南 (美国核心 IG) 是上文所述的 PDex IG 的主
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已大致了解互操作性和患者访问规则、实现指南和可用的测试工具 (Touchstone) ，我们将逐步介绍如何设置用于 FHIR 的 Azure API，以用于的 CARIN IG。 
+现在，你已大致了解互操作性和患者访问规则、实现指南和可用的测试工具 (Touchstone) ，我们将逐步介绍如何设置用于 FHIR 的 Azure API，以 CARIN 的蓝色按钮 IG。 
 
 >[!div class="nextstepaction"]
->[蓝色按钮的 CARIN 实现指南](carin-implementation-guide-blue-button-tutorial.md)  
+>[蓝色按钮的 CARIN 实现指南](https://build.fhir.org/ig/HL7/carin-bb/index.html)  
