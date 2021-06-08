@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: b36937b61b5508dfc933ef15b316d1d1da7b7acc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: de99d6b5480a8e8262aba9d40826f69862630961
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078627"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592991"
 ---
 # <a name="features"></a>功能
 
@@ -36,27 +36,27 @@ ms.locfileid: "110078627"
 | 更新 (条件)            | 是       | 是       | 是       |                                                     |
 | 修补程序                          | 否        | 否        | 否        |                                                     |
 | delete                         | 是       | 是       | 是       |  请参阅下面的说明。                                   |
-| 删除 (条件)            | 否        | 否        | 否        |                                                     |
+| 删除 (条件)            | 是       | 是        | 是        |                                                     |
 | history                        | 是       | 是       | 是       |                                                     |
 | create                         | 是       | 是       | 是       | 同时支持 POST/PUT                               |
 | 创建 (条件)            | 是       | 是       | 是       | 问题 [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | search                         | 部分   | 部分   | 部分   | 请参阅 [FHIR 搜索概述](overview-of-search.md)。                           |
-| 链接搜索                 | 部分       | 是       | 部分   | 请参阅下面的注释 2。                                   |
-| 反向链接搜索         | 部分       | 是       | 部分   | 请参阅下面的注释 2。                                   |
+| 链式搜索                 | 部分       | 是       | 部分   | 请参阅下面的注释2。                                   |
+| 反向链接搜索         | 部分       | 是       | 部分   | 请参阅下面的注释2。                                   |
 | capabilities                   | 是       | 是       | 是       |                                                     |
 | 批处理                          | 是       | 是       | 是       |                                                     |
 | transaction                    | 否        | 是       | 否        |                                                     |
-| 分页                         | 部分   | 部分   | 部分   | `self``next`支持 和                     |
-| 中介                 | 否        | 否        | 否        |                                                     |
+| 分页                         | 部分   | 部分   | 部分   | `self``next`支持和                     |
+| 中间人                 | 否        | 否        | 否        |                                                     |
 
 > [!Note]
-> 按 FHIR 规范定义的删除要求在删除后，资源的后续非版本特定读取将返回 410 HTTP 状态代码，并且不再通过搜索找到该资源。 使用Azure API for FHIR还可以完全删除资源 (包括资源) 历史记录。 若要完全删除资源，可以将参数设置传递给 true `hardDelete` `DELETE {server}/{resource}/{id}?hardDelete=true` () 。 如果不传递此参数或设置为 `hardDelete` false，则资源的历史版本仍然可用。
+> FHIR 规范定义的删除在删除后，对资源的后续非特定于版本的读取将返回 410 HTTP 状态代码，并且不再通过搜索找到资源。 通过用于 FHIR 的 Azure API，还可以完全删除 (包括资源) 所有历史记录。 若要完全删除资源，可以将参数设置传递 `hardDelete` 给 true (`DELETE {server}/{resource}/{id}?hardDelete=true`) 。 如果未传递此参数或将其设置 `hardDelete` 为 false，则资源的历史版本仍将可用。
 
 
  **注释 2**
-* 添加了对 CosmosDB 中链式和反向链式 FHIR 搜索的 MVP 支持。 
+* 在 CosmosDB 中添加对链式和反向链接 FHIR 搜索的 MVP 支持。 
 
-  在Azure API for FHIR Cosmos 支持的开源 FHIR 服务器中，链接搜索和反向链接搜索是 MVP 实现。 若要在Cosmos DB上完成链接搜索，该实现会逐步执行搜索表达式，并问题子查询以解析匹配的资源。 此操作针对表达式的每个级别完成。 如果任何查询返回的结果超过 100 个，将引发错误。 默认情况下，链接搜索位于功能标志后面。 若要在上使用链接搜索Cosmos DB，请使用 标头 `x-ms-enable-chained-search: true` 。 有关详细信息，请参阅[PR 1695。](https://github.com/microsoft/fhir-server/pull/1695)
+  在用于 FHIR 的 Azure API 和 Cosmos 支持的开源 FHIR 服务器中，链式搜索和反向链接搜索是 MVP 实现。 若要在 Cosmos DB 上完成链式搜索，实现会遍历搜索表达式，并发出子查询来解析匹配的资源。 这适用于表达式的每个级别。 如果任何查询返回的结果超过100，则将引发错误。 默认情况下，链式搜索位于功能标志之后。 若要在 Cosmos DB 上使用链式搜索，请使用标头 `x-ms-enable-chained-search: true` 。 有关更多详细信息，请参阅 [PR 1695](https://github.com/microsoft/fhir-server/pull/1695)。
 
 ## <a name="extended-operations"></a>扩展操作
 
@@ -68,7 +68,9 @@ ms.locfileid: "110078627"
 | 患者/$export        | 是       | 是       | 是       |         |
 | 组/$export          | 是       | 是       | 是       |         |
 | $convert 数据          | 是       | 是       | 是       |         |
-| $validate          | 是       | 是       | 是       |         |
+| $validate              | 是       | 是       | 是       |         |
+| $member-匹配          | 是       | 是       | 是       |         |
+| $patient-所有    | 否        | 否        | 是       |         |
 
 ## <a name="persistence"></a>持久性
 
@@ -86,28 +88,28 @@ FHIR 服务器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 
 ## <a name="service-limits"></a>服务限制
 
-* [**请求单位 (ru)**](../../cosmos-db/concepts-limits.md) -可在门户中为 FHIR 的 Azure API 配置最多10000个 ru。 至少需要 400 个 400 个 US 或 40 个 US/GB（以较大者为准）。 如果需要超过 10，000 个 US，可以放入支持票证来增加此数量。 可用最大值为 1，000，000。
+* [**请求单位 (ru)**](../../cosmos-db/concepts-limits.md) -可在门户中为 FHIR 的 Azure API 配置最多10000个 ru。 你将需要至少 400 ru 或 40 ru/GB，取两者中较大者。 如果你需要10000个多个 ru，则可以将其放在支持票证中，以增加此项。 可用的最大值为1000000。
 
-* **捆绑大小** - 每个捆绑限制为 500 个项。
+* **束大小** -每个束限制为500个项目。
 
-* **数据大小** - 每个数据/文档必须略小于 2 MB。
+* **数据大小** -数据/文档每个都必须略微小于 2 MB。
 
-* **订阅限制** - 默认情况下，每个订阅限制为最多 10 个 FHIR 服务器实例。 如果需要每个订阅的更多实例，请打开支持票证并提供所需详细信息。
+* **订阅限制** -默认情况下，每个订阅最多只能有10个 FHIR 服务器实例。 如果每个订阅需要更多实例，请打开支持票证，并提供有关需求的详细信息。
 
-* **并发连接和实例** - 默认情况下，群集中的两个实例有 15 个并发连接 (总共 30 个并发) 。 如果需要更多并发请求，请打开支持票证并提供所需详细信息。
+* **并发连接和实例** -默认情况下，在群集中的两个实例上有15个并发连接 (总计30个并发请求) 。 如果需要更多的并发请求，请打开支持票证，并提供有关需求的详细信息。
 
 ## <a name="performance-expectations"></a>性能预期
 
-系统的性能取决于 RUS 数、并发连接数，以及要执行的操作类型 (Put、Post 等) 。 下面是基于配置的 RUS 可预期结果的一些常规范围。 通常，性能随 RUS 的增加而线性缩放：
+系统的性能取决于每个 ru、并发连接的数量，以及正在执行的操作的类型 (Put、Post 等 ) 。 下面是你可以基于已配置的 ru 获得的一些常规范围。 通常，性能会随 RUs 的增加而线性缩放：
 
-| RUS 数 | Resources/sec |    最大存储 (GB) *    |
+| Ru 数 | 资源数/秒 |    最大存储 (GB) *    |
 |----------|---------------|--------|                 
 | 400      | 5-10          |     10   |
 | 1,000    | 100-150       |      25  |
 | 10,000   | 225-400       |      250  |
-| 100,000  | 2,500-4,000   |      2,500  |
+| 100,000  | 2500-4000   |      2,500  |
 
-注意：Cosmos DB要求，每 GB 存储的最小吞吐量为 40 RU/s。 
+注意：根据 Cosmos DB 要求，每 GB 存储要求最小吞吐量为 40 RU/秒。 
 
 ## <a name="next-steps"></a>后续步骤
 

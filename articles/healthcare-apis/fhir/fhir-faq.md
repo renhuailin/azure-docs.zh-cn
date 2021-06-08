@@ -8,19 +8,19 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 04/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 14328179a297ebcc3994bf627b1690195774b2b1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: dbc03ccd235c456941e5f201b647215389fed92c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741124"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408220"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>有关用于 FHIR 的 Azure API 的常见问题
 
 ## <a name="azure-api-for-fhir-the-basics"></a>用于 FHIR 的 Azure API：基础知识
 
 ### <a name="what-is-fhir"></a>什么是 FHIR？
- (FHIR 的快速医疗保健互操作性资源 ) 是一个互操作性标准，旨在允许在不同的运行状况系统之间交换医疗保健数据。 此标准由 HL7 组织开发，由世界各地的医疗保健组织使用。 最新版本的 FHIR 是 R4 (版本 4) 。 适用于 FHIR 的 Azure API 支持 R4，并且还支持早期版本 STU3 (Standard for 试用版 3) 。 有关 FHIR 的详细信息，请访问 [HL7.org](http://hl7.org/fhir/summary.html)。
+快速医疗保健互操作性资源（FHIR - 发音为“fire”）是一个互操作性标准，旨在允许在不同的健康状况系统之间交换医疗保健数据。 此标准由 HL7 组织开发，由世界各地的医疗保健组织使用。 最新版本的 FHIR 是 R4 (版本 4) 。 适用于 FHIR 的 Azure API 支持 R4，并且还支持早期版本 STU3 (Standard for 试用版 3) 。 有关 FHIR 的详细信息，请访问 [HL7.org](http://hl7.org/fhir/summary.html)。
 
 ### <a name="is-the-data-behind-the-fhir-apis-stored-in-azure"></a>FHIR Api 是否在 Azure 中存储的数据？
 
@@ -74,7 +74,7 @@ Cosmos DB 作为永久性提供程序，为 FHIR 的 Azure API 提供支持。 �
 
 ### <a name="are-extensions-supported-on-azure-api-for-fhir"></a>Azure API for FHIR 是否支持 [扩展](https://www.hl7.org/fhir/extensibility.html) ？
 
-我们允许你将任何有效的 FHIR JSON 数据加载到服务器中。 如果要存储定义扩展的结构定义，则可以将其另存为结构定义资源。 当前无法搜索扩展。
+我们允许你将任何有效的 FHIR JSON 数据加载到服务器中。 如果要存储定义扩展的结构定义，则可以将其另存为结构定义资源。 若要搜索扩展，需要 [定义自己的搜索参数](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fhealthcare-apis%2Ffhir%2Fhow-to-do-custom-search&data=04%7C01%7Cv-stevewohl%40microsoft.com%7Cc6a08c7f0c86433f248c08d925377d85%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637581742517376233%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=Ws%2FVQ2N33sMagzs393hmR67M9dNaL6WCLXyxXtor6PM%3D&reserved=0)。 
 
 ### <a name="what-is-the-limit-on-_count"></a>_Count 的限制是多少？
 
@@ -104,7 +104,7 @@ _Count 的当前限制为1000。 如果将 _count 设置为超过1000，则在�
 
 ### <a name="does-the-azure-api-for-fhir-support-everything"></a>Azure API for FHIR 是否支持 $everything？ 
 
-不能。 目前，我们不支持 $everything。 不过，可以通过两个 API 调用来实现此目的。 例如，若要获取患者 $ 一切，你可以先使用/Patient/[ID] 抓取患者记录，然后使用/Patient/[ID]/* 再次调用来检索所有患者数据。
+不是。 目前，我们不支持 $everything。 不过，可以通过两个 API 调用来实现此目的。 例如，若要获取患者 $ 一切，你可以先使用/Patient/[ID] 抓取患者记录，然后使用/Patient/[ID]/* 再次调用来检索所有患者数据。
 
 可以在此 [社区文章](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type)中查看更多详细信息。 
 
@@ -135,12 +135,12 @@ $export 是 FHIR 规范的一部分： https://hl7.org/fhir/uv/bulkdata/export/i
 
 是的，Azure API for FHIR 允许配置客户管理的密钥，利用 Cosmos DB 的支持。 有关使用个人密钥加密数据的详细信息，请参阅 [此部分](customer-managed-key.md)。
 
-## <a name="azure-api-for-fhir-preview-features"></a>用于 FHIR 的 Azure API：预览功能
+## <a name="azure-api-for-fhir-preview-features"></a>Azure API for FHIR：预览功能
 
-### <a name="can-i-configure-scaling-capacity-for-azure-iot-connector-for-fhir-preview"></a>能否为适用于 FHIR 的 Azure IoT Connector 配置扩展容量 (预览) ？
+### <a name="can-i-configure-scaling-capacity-for-azure-iot-connector-for-fhir-preview"></a>能否为适用于 FHIR 的 Azure IoT 连接器配置缩放 (预览版) ？
 
-由于适用于 FHIR 的 Azure IoT 连接器在公共预览版期间免费，因此其缩放容量是固定的，并受到限制。 公共预览版中提供的适用于 FHIR 配置的 Azure IoT 连接器应提供约200消息/秒的吞吐量。 某些形式的资源容量配置将在公开上市 (公开) 中可用。
+由于 Azure IoT Connector for FHIR 在公共预览版期间是免费的，因此其缩放容量是固定且有限的。 Azure IoT预览版中提供的适用于 FHIR 的连接器配置预期可提供大约每秒 200 条消息的吞吐量。 某些形式的资源容量配置将在 GA 版本上 (提供) 。
 
-### <a name="why-cant-i-install-azure-iot-connector-for-fhir-preview-when-private-link-is-enabled-on-azure-api-for-fhir"></a>为什么在 Azure API for FHIR 上启用了 "专用" 链接时，无法安装适用于 FHIR 的 Azure IoT 连接器 (预览) ？
+### <a name="why-cant-i-install-azure-iot-connector-for-fhir-preview-when-private-link-is-enabled-on-azure-api-for-fhir"></a>为什么在 Azure API for FHIR 上启用了专用链接时， (安装 Azure IoT) Connector for FHIR 预览版Azure API for FHIR？
 
-Azure IoT Connector for FHIR 目前不支持私有链接功能。 因此，如果在用于 FHIR 的 Azure API 上启用了 Private Link，则无法为 FHIR 安装 Azure IoT 连接器，反之亦然。 当 Azure IoT Connector for FHIR 适用于公开上市 (GA) 时，此限制应消失。
+Azure IoT FHIR 连接器目前不支持专用链接功能。 因此，如果在 Azure API for FHIR 上启用了专用链接，则不能安装 Azure IoT Connector for FHIR，反之亦然。 当适用于 FHIR 的 Azure IoT Connector 可用于 GA 版本版本 (时，此限制) 。

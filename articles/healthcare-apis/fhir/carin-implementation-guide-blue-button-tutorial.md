@@ -9,12 +9,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 05/27/2021
-ms.openlocfilehash: 25be80678389b59e907caf60529a8e4048a959e0
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 1fade881fbe6d5c401712a4f97c8a249006d8190
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111562642"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590371"
 ---
 # <a name="carin-implementation-guide-for-blue-button174"></a>蓝色按钮&#174; 的 CARIN 实现指南
 
@@ -23,7 +23,6 @@ ms.locfileid: "111562642"
 ## <a name="touchstone-capability-statement"></a>Touchstone 功能语句
 
 我们将重点介绍的第一次测试是针对 [C4BB IG 功能声明](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/CARIN/CARIN-4-BlueButton/00-Capability&activeOnly=false&contentEntry=TEST_SCRIPTS)测试适用于 FHIR 的 Azure API。 如果对 FHIR 的 Azure API 运行此测试，而不进行任何更新，则测试将失败，因为缺少搜索参数，缺少配置文件。 
-
 
 ### <a name="define-search-parameters"></a>定义搜索参数
 
@@ -43,19 +42,12 @@ C4BB IG 所需的搜索参数的其余部分由基本规范定义，并已在 Az
 在定义搜索参数外，要通过此测试所需的另一个更新是加载 [所需的配置文件](validation-against-profiles.md)。 在 C4BB IG 中定义了八个配置文件。 
 
 * [C4BB 覆盖率](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-Coverage.html) 
-
 * [Inpatient C4BB ExplanationOfBenefit](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-ExplanationOfBenefit-Inpatient-Institutional.html) 
-
 * [门诊 C4BB ExplanationOfBenefit](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-ExplanationOfBenefit-Outpatient-Institutional.html) 
-
 * [C4BB ExplanationOfBenefit 药房](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-ExplanationOfBenefit-Pharmacy.html) 
-
 * [C4BB ExplanationOfBenefit Professional NonClinician](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-ExplanationOfBenefit-Professional-NonClinician.html) 
-
 * [C4BB 组织](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-Organization.html) 
-
 * [C4BB 患者](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-Patient.html) 
-
 * [C4BB 实践者](https://build.fhir.org/ig/HL7/carin-bb/StructureDefinition-C4BB-Practitioner.html) 
 
 ### <a name="sample-rest-file"></a>示例 rest 文件
@@ -72,13 +64,13 @@ C4BB IG 所需的搜索参数的其余部分由基本规范定义，并已在 Az
 
 ## <a name="touchstone-eob-query-test"></a>Touchstone EOB 查询测试
 
-下一次测试是 [EOB 查询测试](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/CARIN/CARIN-4-BlueButton/02-EOBQuery&activeOnly=false&contentEntry=TEST_SCRIPTS)。 如果已完成读取测试，则会加载所需的所有数据。 此测试验证是否可以使用各种参数搜索特定患者和权益资源的说明。
+下一次测试是 [EOB 查询测试](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/CARIN/CARIN-4-BlueButton/02-EOBQuery&activeOnly=false&contentEntry=TEST_SCRIPTS)。 如果已完成读取测试，则会加载所需的所有数据。 此测试验证是否可以 `Patient` `ExplanationOfBenefit` 使用各种参数搜索特定和资源。
 
 :::image type="content" source="media/cms-tutorials/test-execution-touchstone-eob-query-test.png" alt-text="Touchstone EOB 查询执行结果。":::
 
 ## <a name="touchstone-error-handling-test"></a>Touchstone 错误处理测试
 
-我们将逐步完成的最后一次测试是测试 [错误处理](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/CARIN/CARIN-4-BlueButton/99-ErrorHandling&activeOnly=false&contentEntry=TEST_SCRIPTS)。 你需要做的唯一一步是从数据库中删除 ExplanationOfBenefit 资源，并使用测试中 delete ExplanationOfBenfit 资源的 ID。
+我们将逐步完成的最后一次测试是测试 [错误处理](https://touchstone.aegis.net/touchstone/testdefinitions?selectedTestGrp=/FHIRSandbox/CARIN/CARIN-4-BlueButton/99-ErrorHandling&activeOnly=false&contentEntry=TEST_SCRIPTS)。 你需要做的唯一一步是从数据库中删除 ExplanationOfBenefit 资源，并在测试中使用已删除 `ExplanationOfBenefit` 资源的 ID。
 
 :::image type="content" source="media/cms-tutorials/test-execution-touchstone-error-handling.png" alt-text="Touchstone EOB 错误处理结果。":::
 
