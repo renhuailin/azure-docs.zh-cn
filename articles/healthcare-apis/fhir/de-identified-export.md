@@ -1,35 +1,35 @@
 ---
-title: '导出已取消识别的数据 (预览用于 FHIR 的 Azure API) '
-description: 本文介绍如何设置和使用取消识别的导出
+title: 导出已取消标识的数据 (预览) Azure API for FHIR
+description: 本文介绍如何设置和使用已取消标识的导出
 author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 9/28/2020
 ms.author: matjazl
-ms.openlocfilehash: 60a2a41a8005e8bd0fbc313c9a177d54df6dac5e
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: d4e3c1801425daa9c907f7d713a339d44647e185
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017910"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751030"
 ---
-# <a name="exporting-de-identified-data-preview"></a>导出已取消识别的数据 (预览) 
+# <a name="exporting-de-identified-data-preview"></a>导出已取消标识的数据 (预览) 
 
 > [!Note] 
-> 使用取消识别的导出时的结果将取决于数据输入和客户选择的功能等因素。 Microsoft 无法评估已取消识别的导出输出或确定 acceptability 的客户用例和合规性需求。 不保证取消识别的导出符合任何特定的法律、法规或合规性要求。
+> 使用已取消标识的导出时，结果因数据输入和客户选择的函数等因素而异。 Microsoft 无法评估已取消标识的导出输出或确定客户用例和符合性需求的可接受性。 不保证取消标识的导出满足任何特定的法律、法规或合规性要求。
 
-"$Export" 命令还可用于从 FHIR 服务器导出已取消识别的数据。 它使用 [匿名的 FHIR 工具](https://github.com/microsoft/FHIR-Tools-for-Anonymization)中的匿名引擎，并在查询参数中使用匿名的配置详细信息。 你可以创建自己的匿名配置文件，或者使用适用于 HIPAA Safe 安全港方法的 [示例配置文件](https://github.com/microsoft/FHIR-Tools-for-Anonymization#sample-configuration-file-for-hipaa-safe-harbor-method) 作为起点。 
+$export命令还可用于从 FHIR 服务器导出已取消标识的数据。 它使用 [FHIR](https://github.com/microsoft/FHIR-Tools-for-Anonymization)工具中的匿名引擎进行匿名化 ，并使用查询参数中的匿名化配置详细信息。 你可以创建自己的匿名配置文件，或使用 HIPAA 安全方法的示例[](https://github.com/microsoft/FHIR-Tools-for-Anonymization#sample-configuration-file-for-hipaa-safe-harbor-method)配置文件作为起点。 
 
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
 
 > [!Note] 
-> 现在，适用于 FHIR 的 Azure API 仅支持在系统级别上取消识别的导出 ($export) 。
+> 目前，Azure API for FHIR仅在系统级别支持取消标识导出 ($export) 。
 
 |查询参数            | 示例 |可选性| 说明|
 |---------------------------|---------|-----------|------------|
-| _\_anonymizationConfig_   |DemoConfig.js|对于取消识别的导出是必需的 |配置文件的名称。 请在 [此处](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)查看配置文件格式。 此文件应保留在配置为导出位置的同一 Azure 存储帐户中名为 **匿名** 的容器内。 |
-| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|对于取消识别的导出是可选的|这是配置文件的 Etag。 可以使用 Azure 存储资源管理器从 blob 属性获取 Etag|
+| _\_匿名配置_   |DemoConfig.js打开|对已取消标识的导出是必需的 |配置文件的名称。 请参阅此处的配置文件 [格式](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)。 此文件应保存在配置为导出位置的同一Azure 存储帐户中名为"匿名"的容器中。 |
+| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|用于取消标识导出的可选选项|这是配置文件的 Etag。 可以使用 blob 属性中的Azure 存储资源管理器获取 Etag|
 
 > [!IMPORTANT]
-> 在导出配置过程中指定的相同 Azure 存储帐户中，原始导出和取消识别的导出写入。 建议使用与不同的已取消识别的配置对应的不同容器，并在容器级别管理用户访问权限。
+> 原始导出和已取消标识的导出写入操作都写入到作为导出配置的一部分指定的同一 Azure 存储帐户。 建议使用对应于不同已取消标识配置的不同容器，并管理容器级别的用户访问。

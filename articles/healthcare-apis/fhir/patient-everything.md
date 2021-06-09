@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 06/04/2021
 ms.author: cavoeg
-ms.openlocfilehash: fee544c318df318e09c75ebaf18fc0837cb4af0d
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: b02a2b582130c439298653d7c2a0512edbb8a23b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111562617"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756358"
 ---
 # <a name="patient-everything-in-fhir"></a>FHIR 中的 Patient-everything
 
@@ -29,7 +29,7 @@ GET {FHIRURL}/Patient/{ID}/$everything
 * [患者资源](https://www.hl7.org/fhir/patient.html) 
 *  由患者资源组直接引用的资源 (链接)  
 *  患者隔离舱中的 [资源](https://www.hl7.org/fhir/compartmentdefinition-patient.html)
-*  [引用患者](https://www.hl7.org/fhir/device.html) 资源的设备资源  
+*  [引用患者](https://www.hl7.org/fhir/device.html) 资源的设备资源。 请注意，这限制为 100 台设备。 如果患者有 100 多个设备链接到这些设备，则仅返回 100 台设备。 
 
  
 > [!Note]
