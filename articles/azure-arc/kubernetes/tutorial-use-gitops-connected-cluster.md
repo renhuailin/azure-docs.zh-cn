@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial , devx-track-azurecli
-ms.openlocfilehash: 66d00ae738cc693d46f1df333ce64accea4b12a8
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 9f6fe063faa9abfa59d7999da17940aae9ccd264
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883933"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463173"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>教程：在已启用 Azure Arc 的 Kubernetes 群集上使用 GitOps 部署配置 
 
@@ -149,7 +149,7 @@ ms.locfileid: "107883933"
 >[!NOTE]
 >* Helm 运算符图表版本 1.2.0 + 支持 HTTPS Helm 版本的专用身份验证。
 >* AKS 托管群集不支持 HTTPS Helm 版本。
->* 如果需要 Flux 通过代理访问 Git 存储库，则需要使用代理设置更新 Azure Arc 代理。 有关详细信息，请参阅[使用出站代理服务器进行连接](./quickstart-connect-cluster.md#connect-using-an-outbound-proxy-server)。
+>* 如果需要 Flux 通过代理访问 Git 存储库，则需要使用代理设置更新 Azure Arc 代理。 有关详细信息，请参阅[使用出站代理服务器进行连接](./quickstart-connect-cluster.md#5-connect-using-an-outbound-proxy-server)。
 
 
 ## <a name="additional-parameters"></a>附加参数
@@ -181,6 +181,9 @@ ms.locfileid: "107883933"
 如果不希望 Flux 写入存储库，并且未设置 `--git-user` 或 `--git-email`，则将自动设置 `--git-readonly`。
 
 有关详细信息，请参阅 [Flux 文档](https://aka.ms/FluxcdReadme)。
+
+>[!NOTE]
+> Flux 默认从 git 存储库的 `master` 分支同步。 但是，较新的 git 存储库具有名为 `main` 的根分支，在这种情况下，需要在 --operator- 参数中设置 `--git-branch=main`。 
 
 > [!TIP]
 > 在已启用 Azure Arc 的 Kubernetes 资源的“GitOps”选项卡中的 Azure 门户中，可创建配置。
