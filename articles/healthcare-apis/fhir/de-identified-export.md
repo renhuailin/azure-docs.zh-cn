@@ -1,18 +1,18 @@
 ---
 title: 导出已取消标识的数据 (预览) Azure API for FHIR
 description: 本文介绍如何设置和使用已取消标识的导出
-author: matjazl
+author: ranvijaykumar
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 9/28/2020
-ms.author: matjazl
-ms.openlocfilehash: d4e3c1801425daa9c907f7d713a339d44647e185
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.author: ranku
+ms.openlocfilehash: ba0af51eaf15211c2214f9457235afa250d92b7b
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751030"
+ms.locfileid: "111814438"
 ---
 # <a name="exporting-de-identified-data-preview"></a>导出已取消标识的数据 (预览) 
 
