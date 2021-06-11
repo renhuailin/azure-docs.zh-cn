@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 05/11/2021
 ms.author: ranku
-ms.openlocfilehash: 8d60cde14d52dceb58ea5c68383fad192a1e1ff3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2d42cf0a59c3ff20078930559870f346efd7b6d9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078681"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970248"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>如何将数据转换为 FHIR（预览版）
 
@@ -120,7 +120,7 @@ $convert-data 采用请求正文中的[参数](http://hl7.org/fhir/parameters.ht
 
 1. 选择 **"添加**"，然后选择 **"添加角色分配** "以打开"添加角色分配"页。
 
-1. 分配 [AcrPull](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#acrpull) 角色。 
+1. 分配 [AcrPull](../../role-based-access-control/built-in-roles.md#acrpull) 角色。 
 
    ![“添加角色分配”页](../../../includes/role-based-access-control/media/add-role-assignment-page.png) 
 
@@ -136,7 +136,7 @@ $convert-data 采用请求正文中的[参数](http://hl7.org/fhir/parameters.ht
 #### <a name="registering-the-acr-server-using-cli"></a>使用 CLI 注册 ACR 服务器
 可以在客户端中注册最多 20 个 ACR Azure API for FHIR。
 
-如果需要，请从 Azure PowerShell 安装医疗保健 Api CLI：
+如果需要，请从以下Azure PowerShell安装医疗保健 API CLI：
 
 ```powershell
 az extension add -n healthcareapis
@@ -157,16 +157,16 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.az
 ```
 ### <a name="configure-acr-firewall"></a>配置 ACR 防火墙
 
-从门户中选择 Azure 存储帐户的 **网络** 。
+从 **门户** 中选择"Azure 存储帐户的网络"。
 
    :::image type="content" source="media/convert-data/networking-container-registry.png" alt-text="容器注册表。":::
 
 
 选择“所选网络”。 
 
-在 " **防火墙** " 部分下的 " **地址范围** " 框中指定 IP 地址。 添加 IP 范围以允许从 internet 或本地网络进行访问。 
+在" **防火墙"** 部分下，在"地址范围"框中 **指定 IP** 地址。 添加 IP 范围以允许从 Internet 或本地网络访问。 
 
-在下表中，可找到预配 Azure API for FHIR 服务的 Azure 区域的 IP 地址。
+在下表中，你将找到预配托管服务的 Azure Azure API for FHIR IP 地址。
 
 |**Azure 区域**         |**公共 IP 地址** |
 |:----------------------|:-------------------|
@@ -194,7 +194,7 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.az
 
 
 > [!NOTE]
-> 以上步骤类似于文档如何导出 FHIR 数据中所述的配置步骤。 有关详细信息，请参阅 [安全导出到 Azure 存储](https://docs.microsoft.com/azure/healthcare-apis/fhir/export-data#secure-export-to-azure-storage)
+> 上述步骤类似于如何导出 FHIR 数据文档中所述的配置步骤。 有关详细信息，请参阅安全 [导出到Azure 存储](./export-data.md#secure-export-to-azure-storage)
 
 ### <a name="verify"></a>Verify
 
