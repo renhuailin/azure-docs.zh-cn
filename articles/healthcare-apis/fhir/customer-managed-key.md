@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/04/2021
 ms.author: ginle
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 371b1286976a5f9dabfb82a5a706ff4a2672ceb2
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 0c32725d020043c3cd62828e4bdccfafef2f53aa
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110700483"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970181"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>配置客户管理的静态密钥
 
@@ -48,7 +48,7 @@ ms.locfileid: "110700483"
 :::image type="content" source="media/bring-your-own-key/bring-your-own-key-create.png" alt-text="创建 Azure API for FHIR":::
 
 > [!Important]
-> 确保正确设置 Azure Key Vault 的所有权限。 有关详细信息，请参阅 [向 Azure Key Vault 实例添加访问策略](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk#add-access-policy)。 此外，请确保在 Key Vault 的属性中启用软删除。 未完成这些步骤将导致部署错误。 有关详细信息，请参阅验证是否已 [在密钥保管库上启用软删除和启用软删除](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete)。
+> 确保正确设置 Azure Key Vault 的所有权限。 有关详细信息，请参阅 [向 Azure Key Vault 实例添加访问策略](../../cosmos-db/how-to-setup-cmk.md#add-access-policy)。 此外，请确保在 Key Vault 的属性中启用软删除。 未完成这些步骤将导致部署错误。 有关详细信息，请参阅验证是否已 [在密钥保管库上启用软删除和启用软删除](../../key-vault/general/key-vault-recovery.md?tabs=azure-portal#verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete)。
 
 对于现有的 FHIR 帐户，你可以在 "**数据库**" 边栏选项卡中查看密钥加密选项 (**服务托管的密钥** 或 **客户托管的密钥**) ，如下所示。 选择配置选项后，无法对其进行修改。 但是，可以修改和更新密钥。
 
