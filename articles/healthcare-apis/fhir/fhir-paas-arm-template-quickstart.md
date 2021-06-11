@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: cavoeg
 ms.date: 05/10/2021
-ms.openlocfilehash: 97f57484c47bfc58f3a4cd30ed979ffb5b5d1c27
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 8048436c0ee5b74b1b30b581976cedefb133dd02
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110704922"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005710"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>快速入门：使用 ARM 模板部署 Azure API for FHIR
 
@@ -27,7 +27,7 @@ ms.locfileid: "110704922"
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "110704922"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azure-api-for-fhir/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/azure-api-for-fhir/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.healthcareapis/azure-api-for-fhir/azuredeploy.json":::
 
@@ -194,7 +194,7 @@ read -p "Press [ENTER] to continue: "
 
 如果不再需要该资源组，可以将其删除，这将删除资源组中的资源。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。
 
