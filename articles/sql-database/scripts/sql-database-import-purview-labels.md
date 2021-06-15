@@ -3,19 +3,20 @@ title: 使用 Azure Purview 标签对 Azure SQL 数据进行分类
 description: 从 Azure SQL 数据库中的 Azure Purview 和 Azure Synpase Analytics 导入分类
 services: sql-database
 ms.service: sql-database
+ms.subservice: security
 ms.custom: ''
 ms.devlang: azurepowershell
 ms.topic: sample
 author: davidtrigano
 ms.author: datrigan
-ms.reviewer: vanto
+ms.reviewer: vanto, mathoma
 ms.date: 02/17/2021
-ms.openlocfilehash: 2eab7c535ff0c68da772e8a45ead12420734279c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1064c6e60c8bdc80251228ddc2a36b5c3a77852
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714895"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694821"
 ---
 # <a name="classify-your-azure-sql-data-using-azure-purview-labels"></a>使用 Azure Purview 标签对 Azure SQL 数据进行分类
 [!INCLUDE[appliesto-sqldb-asa](../../azure-sql/includes/appliesto-sqldb-asa.md)]

@@ -1,28 +1,28 @@
 ---
 title: REST API：在多个数据库之间同步
-description: 使用 REST API 示例脚本在多个数据库之间进行同步。
+description: 使用 REST API 示例脚本在多个数据库之间同步。
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: sqldbrb=1
 ms.devlang: REST API
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: d3ff8114c11b224a0bdbb0bd2d0e5686a7e57b55
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b0e8b12c7a58f3376c4e05819dbe60c9436ecef8
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565874"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693353"
 ---
 # <a name="use-rest-api-to-sync-data-between-multiple-databases"></a>使用 REST API 在多个数据库之间同步数据 
 
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-本 REST API 示例将 SQL 数据同步配置为在多个数据库之间同步数据。
+此 REST API 示例将 SQL 数据同步配置为在多个数据库之间同步数据。
 
 有关 SQL 数据同步的概述，请参阅[使用 Azure 中的 SQL 数据同步跨多个云和本地数据库同步数据](../sql-data-sync-data-sql-server-sql-database.md)。
 
@@ -31,9 +31,9 @@ ms.locfileid: "105565874"
 
 ## <a name="create-sync-group"></a>创建同步组
 
-使用[创建或更新](/rest/api/sql/syncgroups/createorupdate)模板创建同步组。
+请使用[创建或更新](/rest/api/sql/syncgroups/createorupdate)模板来创建同步组。
  
-创建同步组时，请不要传入同步架构（表\列），且不要传入 masterSyncMemberName，因为此时同步组不包含表\列信息。
+在创建同步组时，请不要传入同步架构（表\列），且不要传入 masterSyncMemberName，因为此时同步组还没有表\列信息。
 
 创建同步组的示例请求： 
 
@@ -91,7 +91,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 ## <a name="create-sync-member"></a>创建同步成员
 
-使用[创建或更新](/rest/api/sql/syncmembers/createorupdate)模板创建同步成员。
+请使用[创建或更新](/rest/api/sql/syncmembers/createorupdate)模板来创建同步成员。
 
 创建同步成员的示例请求：
 
@@ -149,9 +149,9 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 ## <a name="refresh-schema"></a>刷新架构
 
-成功创建同步组后，使用以下模板刷新架构。
+在成功创建了同步组后，请使用以下模板来刷新架构。
 
-使用[刷新中心架构](/rest/api/sql/syncgroups/refreshhubschema)模板刷新中心数据库的架构。 
+请使用[刷新中心架构](/rest/api/sql/syncgroups/refreshhubschema)模板来刷新中心数据库的架构。 
 
 刷新中心数据库架构的示例请求： 
 
@@ -165,11 +165,11 @@ POST https://management.azure.com/subscriptions/00000000-1111-2222-3333-44444444
 
 状态代码：202
 
-使用[列出中心架构](/rest/api/sql/syncgroups/listhubschemas)模板列出中心数据库架构。 
+使用[列出中心架构](/rest/api/sql/syncgroups/listhubschemas)模板来列出中心数据库架构。 
 
-使用[刷新成员架构](/rest/api/sql/syncmembers/refreshmemberschema)模板刷新成员数据库架构。 
+使用[刷新成员架构](/rest/api/sql/syncmembers/refreshmemberschema)模板来刷新成员数据库架构。 
 
-使用[列出成员架构](/rest/api/sql/syncmembers/listmemberschemas)模板列出成员数据库架构。 
+使用[列出成员架构](/rest/api/sql/syncmembers/listmemberschemas)模板来列出成员数据库架构。 
 
 请仅在成功刷新架构后才转到下一步。 
 
@@ -177,7 +177,7 @@ POST https://management.azure.com/subscriptions/00000000-1111-2222-3333-44444444
 
 使用[创建或更新](/rest/api/sql/syncgroups/createorupdate)模板来更新同步组。
 
-通过指定同步架构来更新同步组。 请包含架构和 masterSyncMemberName，后者是包含要使用的架构的名称。 
+通过指定同步架构来更新同步组。 请包含架构和 masterSyncMemberName，后者是保留你要使用的架构的名称。 
 
 更新同步组的示例请求： 
 
@@ -232,7 +232,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 ```
 ## <a name="update-sync-member"></a>更新同步成员
 
-使用[创建或更新](/rest/api/sql/syncmembers/createorupdate)模板来更新同步成员。
+请使用[创建或更新](/rest/api/sql/syncmembers/createorupdate)模板来更新同步成员。
 
 更新同步成员的示例请求： 
 
@@ -291,7 +291,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 ## <a name="trigger-sync"></a>触发同步
 
-使用[触发同步](/rest/api/sql/syncgroups/triggersync)模板触发同步操作。
+请使用[触发同步](/rest/api/sql/syncgroups/triggersync)模板来触发同步操作。
 
 触发同步操作的示例请求： 
 

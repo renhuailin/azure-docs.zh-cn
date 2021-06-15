@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: cae2c95e56312c58d396d1e578f4677ce2b14aa2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2d97e9e9f0511a81c94e151f07d7d74ef437ca7
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98895928"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409967"
 ---
 # <a name="view-system-test-results"></a>查看系统测试结果
 
@@ -104,4 +104,3 @@ ms.locfileid: "98895928"
 
 - 通过 [Microsoft 文本翻译 API V3](../reference/v3-0-translate.md?tabs=curl) 开始使用已部署的自定义翻译模型。
 - 了解[如何管理设置](how-to-manage-settings.md)以共享工作区和管理订阅密钥。
-- 了解如何从 [Microsoft Translator Hub](https://hub.microsofttranslator.com)[迁移工作区和项目](how-to-migrate.md)

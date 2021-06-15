@@ -5,15 +5,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: d241cb5d7ece260de42088eecfd669e5d3f40096
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5d146305a1bd5dcde80c29892ef5e7512eca74b7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592279"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967108"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>用于 Azure Monitor 中的数据收集规则的资源管理器模板示例
-本文包含示例 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)，用于在[数据收集规则](data-collection-rule-overview.md)和 [Azure Monitor 代理](./azure-monitor-agent-overview.md)之间创建关联。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+本文包含示例 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)，用于在[数据收集规则](data-collection-rule-overview.md)和 [Azure Monitor 代理](./azure-monitor-agent-overview.md)之间创建关联。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

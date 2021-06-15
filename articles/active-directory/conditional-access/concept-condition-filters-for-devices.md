@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/19/2021
+ms.date: 06/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0eb008cdf85e6891f7d6e1159314ceccf46b794
-ms.sourcegitcommit: 2ab484c6c8aeef8c6b7a1eb56d28ba13010d912c
+ms.openlocfilehash: 9e760cbca23aba21ad2d8c85e21a8014590419e9
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2021
-ms.locfileid: "110208640"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438317"
 ---
 # <a name="conditional-access-filters-for-devices-preview"></a>条件访问：设备筛选器（预览版）
 
@@ -46,7 +46,7 @@ ms.locfileid: "110208640"
 在 Azure 门户中或使用 Microsoft Graph API 创建条件访问策略时，可以选择使用设备筛选器。
 
 > [!IMPORTANT]
-> 设备状态和设备筛选器不能在条件访问策略中一起使用。 设备筛选器提供更精细的目标控制，包括支持通过 `trustType` 和 `isCompliant` 属性将设备状态信息指定为目标。
+> 设备状态和设备筛选器不能在条件访问策略中一起使用。
 
 以下步骤可帮助你创建两个条件访问策略，以支持[常见方案](#common-scenarios)中所述的第一种方案。 
 

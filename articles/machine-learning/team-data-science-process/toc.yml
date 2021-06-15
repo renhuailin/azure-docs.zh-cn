@@ -105,17 +105,7 @@
             - name: 概述
               href: ingest-data.md
             - name: 向/从 Blob 存储移动
-              items:
-                - name: 概述
-                  href: move-azure-blob.md
-                - name: 使用存储资源管理器
-                  href: move-data-to-azure-blob-using-azure-storage-explorer.md
-                - name: 使用 AzCopy
-                  href: ../../storage/common/storage-use-azcopy-v10.md
-                - name: 使用 Python
-                  href: ../../storage/blobs/storage-quickstart-blobs-python.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
-                - name: 使用 SSIS
-                  href: move-data-to-azure-blob-using-ssis.md
+              href: move-azure-blob.md
             - name: 移到 VM 上的 SQL
               href: move-sql-server-virtual-machine.md
             - name: 移到 Azure SQL 数据库

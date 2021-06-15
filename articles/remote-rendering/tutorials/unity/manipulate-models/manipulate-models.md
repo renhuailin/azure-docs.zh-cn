@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 301d6eb0867604a6e780eb1d059eef0c153f246f
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: c8e22a1e81792145c468aeecd347f38426f73613
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574503"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412090"
 ---
 # <a name="tutorial-manipulating-models"></a>教程：操作模型
 
@@ -316,7 +316,7 @@ AppMenu 具有一个子菜单“模型工具”，可实现用于与模型绑定
     }
     ```
 
-2. 在之前创建的 TestModel GameObject 中，添加 RemoteRayCastPointerHandler 组件和 RemoteEntityHelper 组件  。
+1. 在之前创建的 TestModel GameObject 中，添加 RemoteRayCastPointerHandler 组件和 RemoteEntityHelper 组件  。
 1. 将 `EntityToDebugLog` 方法分配给 `OnRemoteEntityClicked` 事件。 当事件的输出类型和方法的输入类型匹配时，我们可以使用 Unity 的动态事件挂钩，该挂钩会自动将事件值传递到方法中。
     1. 创建新的回调字段 ![添加回调](./media/add-callback-remote-entity-clicked.png)
     1. 将“远程实体帮助程序”组件拖到对象字段，以引用父 GameObject ![分配对象](./media/assign-object.png)

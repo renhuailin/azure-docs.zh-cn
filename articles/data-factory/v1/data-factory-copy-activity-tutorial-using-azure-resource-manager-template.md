@@ -6,13 +6,14 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
+ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: de8d62bdddff39e0c7b3ec6ca296b6ef35ca4d9d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f396563b4429d7aa547c86a2a5b3f84ac6bab4b9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753418"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957222"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>教程：使用 Azure 资源管理器模板创建复制数据的数据工厂管道 
 > [!div class="op_single_selector"]
@@ -43,7 +44,7 @@ ms.locfileid: "108753418"
 
 * 通读 [教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，完成 **先决条件** 步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azure/) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。 本教程使用 PowerShell 部署数据工厂实体。 
-* （可选）若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。
+* （可选）若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)。
 
 ## <a name="in-this-tutorial"></a>本教程的内容
 本教程创建包含以下数据工厂实体的数据工厂：

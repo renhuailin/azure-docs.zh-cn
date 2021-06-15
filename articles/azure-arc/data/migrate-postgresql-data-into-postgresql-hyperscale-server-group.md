@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: d9cbfc30b10373ad2a4f4304987dac426b5dcabe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06860f9d09db7a9e9497431620e15cc5e3168206
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643569"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411622"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>从 PostgreSQL 数据库迁移到已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 
@@ -196,4 +196,4 @@ azdata arc postgres endpoint list -n postgres01
 
 > *在这些文档中，跳过“登录到 Azure 门户”和“创建 Azure Database for Postgres - 超大规模 (Citus)”部分 。 在 Azure Arc 部署中执行剩余步骤。 这些部分特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus)，但文档的其他部分直接适用于已启用 Azure Arc 的超大规模 PostgreSQL。
 
-- [横向扩展 Azure Database for PostgreSQL 超大规模服务器组](scale-out-postgresql-hyperscale-server-group.md)
+- [横向扩展 Azure Database for PostgreSQL 超大规模服务器组](scale-out-in-postgresql-hyperscale-server-group.md)

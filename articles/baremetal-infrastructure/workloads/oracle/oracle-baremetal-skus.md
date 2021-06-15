@@ -2,14 +2,14 @@
 title: 适用于 Oracle 工作负载的 BareMetal SKU
 description: 了解适用于 Oracle BareMetal 基础结构工作负载的 SKU。
 ms.topic: reference
-ms.subservice: workloads
+ms.subservice: baremetal-oracle
 ms.date: 04/15/2021
-ms.openlocfilehash: 42ff26b9ea9bcc022f1ddbf3dddcb041b2cea3a2
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: a578de920654aa7b3a298ed92a67efbe2bc2071f
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588847"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578527"
 ---
 # <a name="baremetal-skus-for-oracle-workloads"></a>适用于 Oracle 工作负载的 BareMetal SKU
 

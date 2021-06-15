@@ -44,7 +44,7 @@
         - name: 测试门户界面
           href: test-createuidefinition.md
         - name: 创建 Azure 应用程序产品/服务
-          href: ../../marketplace/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
+          href: ../../marketplace/azure-app-offer-setup.md?toc=%2fazure%2fazure-resource-manager%2fmanaged-applications%2ftoc.json
         - name: 请求实时访问
           href: request-just-in-time-access.md
         - name: 使用现有虚拟网络

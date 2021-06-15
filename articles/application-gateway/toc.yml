@@ -38,7 +38,7 @@
       href: powershell-samples.md
     - name: Azure CLI
       href: cli-samples.md
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: resource-manager-template-samples.md
 - name: 概念
   items:
@@ -301,14 +301,14 @@
     - name: Azure 资源管理器
       displayName: ARM
       href: ../azure-resource-manager/management/overview.md
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       displayName: ARM
       href: /azure/templates/microsoft.network/applicationgateways
 - name: 资源
   items:
     - name: 创作模板
       displayName: ARM
-      href: ../azure-resource-manager/templates/template-syntax.md
+      href: ../azure-resource-manager/templates/syntax.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 社区模板

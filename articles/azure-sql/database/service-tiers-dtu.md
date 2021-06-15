@@ -3,20 +3,20 @@ title: 服务层级 - 基于 DTU 的购买模型
 description: 了解 Azure SQL 数据库基于 DTU 的购买模型中用于提供计算大小和存储大小的服务层级。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.date: 10/15/2020
-ms.reviewer: ''
-ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma
+ms.date: 5/4/2021
+ms.openlocfilehash: c5413918923ebb4e613ecb48e86dbccfcc60889b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92793171"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693284"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,13 +34,13 @@ ms.locfileid: "92793171"
 
 选择服务层级首要考虑的是业务连续性、存储和性能需求。
 
-||基本|Standard|高级|
+||基本|标准|高级|
 | :-- | --: |--:| --:|
 |**目标工作负荷**|开发和生产|开发和生产|开发和生产|
 |**运行时间 SLA**|99.99%|99.99%|99.99%|
 |**最大备份保留期**|7 天|35 天|35 天|
 |**CPU**|低|低、中、高|中、高|
-|**IOPS（近似）** \* |每个 DTU 1-4 IOPS| 每个 DTU 1-4 IOPS | 每个 DTU 25 IOPS|
+|**IOPS（近似）** \* |每个 DTU 1-4 IOPS| 每个 DTU 1-4 IOPS | > 每个 DTU 25 IOPS|
 |**IO 延迟（近似）**|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
 |**列存储索引** |空值|S3 及更高版本|支持|
 |**内存中 OLTP**|空值|空值|支持|
@@ -63,7 +63,7 @@ ms.locfileid: "92793171"
 
 单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多信息，请参阅[基于 DTU 的购买模型](purchasing-models.md#dtu-based-purchasing-model)。
 
-||基本|Standard|高级|
+||基本|标准|高级|
 | :-- | --: | --: | --: |
 | **最大存储大小** | 2 GB | 1 TB | 4 TB  |
 | **最大 DTU** | 5 | 3000 | 4000 |

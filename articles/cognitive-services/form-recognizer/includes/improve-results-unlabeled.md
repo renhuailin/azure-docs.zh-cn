@@ -1,16 +1,16 @@
 ---
 author: laujan
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: lajanuar
-ms.openlocfilehash: 89b035397ea2050ae7e61f2a19310b6a7fb4192c
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: c41d7195bb1c836766248d02bec25218fd5a4f92
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467187"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894272"
 ---
 检查 `"pageResults"` 节点下每个键/值结果的 `"confidence"` 值。 还应查看 `"readResults"` 节点中的置信度分数，这些分数对应于文本读取操作。 读取结果的置信度不影响键/值提取结果的置信度，因此二者都应检查。
 * 如果读取操作的置信度分数低，请尝试提高输入文档的质量（请参阅[输入要求](../overview.md#input-requirements)）。

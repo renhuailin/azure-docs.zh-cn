@@ -5,15 +5,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 12/03/2020
-ms.openlocfilehash: 3c7982c108cf6c238c28c843e1dfbb881a6e0bb4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a893e0c5d7820ebaa93e1258606ac799b04e6822
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036395"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967055"
 ---
 # <a name="resource-manager-template-samples-for-action-groups-in-azure-monitor"></a>用于 Azure Monitor 中的操作组的资源管理器模板示例
-本文包含用于在 Azure Monitor 中创建[操作组](../alerts/action-groups.md)的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+本文包含用于在 Azure Monitor 中创建[操作组](../alerts/action-groups.md)的 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -121,4 +121,3 @@ ms.locfileid: "102036395"
 
 * [获取 Azure Monitor 的其他示例模板](../resource-manager-samples.md)。
 * [详细了解操作组](../alerts/action-groups.md)。
-

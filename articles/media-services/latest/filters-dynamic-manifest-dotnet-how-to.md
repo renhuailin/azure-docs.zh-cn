@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 93634d8168d4870d6a97428ee538e465c6aad2cb
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c81f6ed1517146efdd60c293d0c4840f6c61f7f5
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110891"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372582"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 创建筛选器
 
@@ -39,7 +39,7 @@ ms.locfileid: "106110891"
 - 查看[筛选器和动态清单](filters-dynamic-manifest-concept.md)。
 - [创建媒体服务帐户](./account-create-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
 - 获取[访问 API](./access-api-howto.md) 所需的信息
-- 查看[使用 Azure 媒体服务进行上传、编码和流式传输](stream-files-tutorial-with-api.md)来了解如何[开始使用 .NET SDK](stream-files-tutorial-with-api.md#start-using-media-services-apis-with-net-sdk)
+- 查看[使用 Azure 媒体服务进行上传、编码和流式传输](stream-files-tutorial-with-api.md)来了解如何[开始使用 .NET SDK](stream-files-tutorial-with-api.md#start-using-media-services-apis-with-the-net-sdk)
 
 ## <a name="define-a-filter"></a>定义筛选器  
 

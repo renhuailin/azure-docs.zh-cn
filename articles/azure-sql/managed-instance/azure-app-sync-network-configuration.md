@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Managed Instance
 description: 本文讨论如何将 Azure 应用程序服务托管计划的网络配置与 Azure SQL 托管实例同步。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/13/2018
-ms.openlocfilehash: e102aaace15d065d02e44fa06655827068020959
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69ff59812245d1765b4824c0fa0ce156f1a58d20
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91620216"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697410"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>将 Azure 应用服务托管计划的网络配置与 Azure SQL 托管实例同步
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: a8b285ca0b8d0dae88bfe8dd19ac7e1bc8372e32
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 57390f57366959cecc82782254099532d832d303
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099193"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558631"
 ---
 # <a name="planning-and-operations-guide"></a>规划和操作指南
 本指南适用于计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -33,7 +33,7 @@ ms.locfileid: "102099193"
 
 
 > [!NOTE]
-> 阅读 [Azure Security Center frequently asked questions (FAQ)](faq-general.md) （Azure 安全中心常见问题 (FAQ)），了解一系列常见问题，这些问题在设计和规划阶段可能也会有用。
+> 阅读 [Azure Security Center frequently asked questions (FAQ)](faq-general.yml) （Azure 安全中心常见问题 (FAQ)），了解一系列常见问题，这些问题在设计和规划阶段可能也会有用。
 
 ## <a name="security-roles-and-access-controls"></a>安全角色和访问控制
 很多个人和团队可能会使用安全中心执行不同的安全相关任务，具体取决于组织的大小和结构。 下图示例性地说明了各种虚构性的人员及其相应的角色和安全责任：
@@ -142,7 +142,7 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 如需在某个时候禁用数据收集功能，可在安全策略中将其关闭。 然而，由于其他 Azure 管理和监视服务可能使用 Log Analytics 代理，因此关闭安全中心数据收集后不会自动卸载代理。 必要时可手动卸载代理。
 
 > [!NOTE]
-> 若要查找受支持 VM 的列表，请阅读 [Azure 安全中心常见问题解答 (FAQ)](faq-vms.md)。
+> 若要查找受支持 VM 的列表，请阅读 [Azure 安全中心常见问题解答 (FAQ)](faq-vms.yml)。
 
 ### <a name="workspace"></a>工作区
 
@@ -233,5 +233,5 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [通过 Azure 安全中心监视合作伙伴解决方案](./security-center-partner-integration.md) - 了解如何监视合作伙伴解决方案的运行状态。
-* [Azure Security Center FAQ](faq-general.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
+* [Azure Security Center FAQ](faq-general.yml) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](/archive/blogs/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。

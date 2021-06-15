@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f86a30a82bce15e8d2c5b6b33166793798deb2d5
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87826205"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411514"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>将逻辑应用资源移到其他 Azure 资源组、区域或订阅
 
@@ -57,7 +57,7 @@ ms.locfileid: "87826205"
 
 若要将某个资源（例如逻辑应用、集成帐户或[集成服务环境 (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md)）移到另一个 Azure 资源组，可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。 以下步骤使用 Azure 门户。当资源的区域相同时，可以使用此方法。 有关其他步骤和常规准备工作，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
-在组之间实际移动资源之前，可以测试是否能够成功地将资源移到另一个组。 有关详细信息，请参阅[验证移动](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)。
+在组之间实际移动资源之前，可以测试是否能够成功地将资源移到另一个组。 有关详细信息，请参阅[验证移动](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-rest-api)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，找到并选择要移动的逻辑应用资源。
 

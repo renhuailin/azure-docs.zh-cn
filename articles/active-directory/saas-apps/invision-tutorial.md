@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: ec35917ca18064d58279d8ed2b3fb1f0e83a88fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 429215dbd35368c7a2c8681e480b5256813171a1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736928"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753604"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>教程：Azure Active Directory 单一登录 (SSO) 与 InVision 的集成
 
@@ -73,7 +73,7 @@ ms.locfileid: "98736928"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.invisionapp.com`
 
@@ -154,7 +154,7 @@ ms.locfileid: "98736928"
 
     e. 在记事本中打开下载的“证书(Base64)”文件，将其内容复制并粘贴到“SAML 证书”文本框中。  
 
-    f. 在“名称 ID 格式”  文本框中，使用 `Unspecified` 作为“名称 ID 格式”  。
+    f. 在“名称 ID 格式”  文本框中，使用 `urn:oasis:names:tc:SAML:1.1:nameid-format:Unspecified` 作为“名称 ID 格式”  。
 
     g. 从“哈希算法”的下拉列表中选择“SHA-256”。  
 

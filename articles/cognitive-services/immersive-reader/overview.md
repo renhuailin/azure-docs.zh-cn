@@ -5,19 +5,19 @@ description: 沉浸式阅读器是一种工具，旨在帮助具有学习差异�
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: 读者, 语言学习者, 显示图片, 提高阅读能力, 阅读内容, 翻译
-ms.openlocfilehash: a8a8f26f6b79d5a687b3adf5d68bdfd89cc837d4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 12d6f926934cf7b7c18d079d8d483824918057b1
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377632"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891223"
 ---
 # <a name="what-is-azure-immersive-reader"></a>什么是 Azure 沉浸式阅读器？
 

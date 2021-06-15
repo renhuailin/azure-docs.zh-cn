@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 04/07/2021
-ms.openlocfilehash: f6c6f2ba20a67cd39d4142ffadddc803927c936c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 761dcc36e684aa8f024cb650929441b54dddb790
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227052"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952916"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -43,7 +43,7 @@ ms.locfileid: "107227052"
         * [LUIS DevOps 持续集成和持续交付工作流](luis-concept-devops-automation.md)
         * [LUIS DevOps 测试](luis-concept-devops-testing.md)
     * 操作说明
-        * [使用 GitHub Actions 将 DevOps 应用于 LUIS 应用开发](luis-how-to-devops-with-github.md)
+        * [使用 GitHub Actions 将 DevOps 应用于 LUIS 应用开发](./luis-concept-devops-automation.md)
     * [完整代码 GitHub 存储库](https://github.com/Azure-Samples/LUIS-DevOps-Template)
 
 ### <a name="may-2020---build"></a>2020 年 5 月 - //Build

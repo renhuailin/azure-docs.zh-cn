@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 875b2a9f35562dd8f0d5df3c631e5ade1e3fbf75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69184abac12e9146d29ec5e7f14a536756ae0139
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91714528"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613571"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>使用 PowerShell 为容器或 blob 创建用户委托 SAS
 
@@ -38,7 +38,7 @@ ms.locfileid: "91714528"
 1. 确保已安装 PowerShellGet 最新版本。 打开 Windows PowerShell 窗口，然后运行以下命令以安装最新版本：
 
     ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
+    Install-Module PowerShellGet -Repository PSGallery -Force
     ```
 
 1. 安装 PowerShellGet 后关闭并重新打开 PowerShell 窗口。
@@ -46,7 +46,7 @@ ms.locfileid: "91714528"
 1. 安装最新版本的 Azure PowerShell：
 
     ```powershell
-    Install-Module Az –Repository PSGallery –AllowClobber
+    Install-Module Az -Repository PSGallery -AllowClobber
     ```
 
 1. 确保已安装 Azure PowerShell 版本 3.2.0 或更高版本。 运行以下命令来安装 Azure 存储 PowerShell 模块的最新版本：

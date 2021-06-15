@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: be55a3fb07b35fccb0f71f9ca7bfd2c88a9d097c
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 97b24403d5472d2f9ae701a043d4cccbb2bf03cb
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017042"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617529"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>教程：在 Azure 应用服务中部署使用 PostgreSQL 的 Django Web 应用
 
@@ -238,15 +238,6 @@ Django 数据库迁移会确保 Azure 数据库上的 PostgreSQL 中的架构与
 1. 在 SSH 会话中运行以下命令（可以使用 Ctrl+Shift+V 粘贴命令）  ：
 
     ```bash
-    # Change to the app folder
-    cd $APP_PATH
-    
-    # Activate the venv
-    source antenv/bin/activate
-
-    # Install requirements
-    pip install -r requirements.txt
-
     # Run database migrations
     python manage.py migrate
 
@@ -398,12 +389,9 @@ az webapp up
 
 由于对数据模型进行了更改，因此需要在应用服务中重新运行数据库迁移。
 
-通过在浏览器中导航到 `https://<app-name>.scm.azurewebsites.net/webssh/host` 再次建立 SSH 会话。 然后运行以下命令：
+通过在浏览器中导航到 `https://<app-name>.scm.azurewebsites.net/webssh/host` 再次建立 SSH 会话。 然后，运行以下命令：
 
 ```
-cd $APP_PATH
-source antenv/bin/activate
-pip install -r requirements.txt
 python manage.py migrate
 ```
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/23/2021
 ms.author: jeedes
-ms.openlocfilehash: ad6fe41571fcfdf66e66bc6d820dfe2c97de5d94
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: b9d65ea7aebb22f337c0104d58e5814da065d060
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162473"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890359"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>教程：Azure Active Directory 与 Namely 的集成
 
@@ -180,8 +180,8 @@ ms.locfileid: "108162473"
 
 * 直接转到 Namely 登录 URL，并从这里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Namely”磁贴时，系统会重定向到 Namely 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Namely”磁贴时，系统会重定向到 Namely 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Namely 后，你可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Namely 后，你可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

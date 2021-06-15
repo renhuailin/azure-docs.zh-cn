@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: d9d4ae746c192e8b4afd1781c1e072fc0dc70422
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51120f70977a1ff09a30ae6418dc622c77ff5797
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98599795"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111437939"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySql 数据库搭配 Azure 应用服务的 FAQ
 此 FAQ 解答了为 Azure Web 应用使用和购买 ClearDB MySQL 数据库的常见问题。
@@ -25,7 +25,7 @@ ms.locfileid: "98599795"
 > [!IMPORTANT]
 > 截至 2018 年 6 月 13 日，ClearDB 将当前由 Microsoft 计费的基于 Azure 的客户转换为使用 ClearDB 的直接计费模型。 本文中的信息现在已过时。 你将无法再创建或升级在 Azure 中创建的 ClearDB 数据库。
 >
-> 有关详细信息和后续步骤，请参阅[对 ClearDB 服务计划所做的更改](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/)。
+> 有关详细信息和后续步骤，请参阅[对 ClearDB 服务计划所做的更改](https://www.navisite.com/blog/news/update-change-of-billing-notice-for-all-azure-cleardb-service-plans/)。
 
 ## <a name="what-options-do-i-have-for-mysql-on-azure"></a>Azure 上的 MySQL 有哪些选项？
 有关该服务的最新信息，请参阅 [ClearDB](https://w2.cleardb.net/)。 ClearDB 是一种 MySQL 托管服务，可管理 MySQL 基础结构。 
@@ -63,7 +63,7 @@ ms.locfileid: "98599795"
 Azure 市场无法供在阿塞拜疆、克罗地亚、挪威或波多黎各注册的客户使用。 这些区域不提供 ClearDB。
 
 ## <a name="what-pricing-tier-should-i-choose-for-a-production-web-app-and-database"></a>针对生产 Web 应用和数据库，应该选择哪个定价层？
-对 Web 应用使用“基本”或更高的定价层。 对于 ClearDB，建议使用 Saturn 或 Jupiter 计划。 请查看 [Web 应用](https://azure.microsoft.com/pricing/details/app-service/)和 [ClearDB MySQL 数据库](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/)每个定价层的功能和限制，以选择符合需要的定价层。
+对 Web 应用使用“基本”或更高的定价层。 对于 ClearDB，建议使用 Saturn 或 Jupiter 计划。 请查看 [Web 应用](https://azure.microsoft.com/pricing/details/app-service/)和 [ClearDB MySQL 数据库](https://www.navisite.com/blog/news/update-change-of-billing-notice-for-all-azure-cleardb-service-plans/)每个定价层的功能和限制，以选择符合需要的定价层。
 
 ## <a name="how-do-i-upgrade-my-cleardb-database-from-one-plan-to-another"></a>如何将 ClearDB 数据库从一个计划升级到另一个计划？
 在 [Azure 门户](https://portal.azure.com)中，可以纵向扩展 ClearDB 共享的托管数据库。 请阅读本篇[文章](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/)，了解详细信息。 当前不支持在 Azure 门户中升级 ClearDB 高级群集。

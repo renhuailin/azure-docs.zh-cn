@@ -51,7 +51,7 @@
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
     - name: 常见问题
-      href: faq.md
+      href: faq.yml
     - name: REST
       href: /rest/api/attestation/
     - name: Azure PowerShell

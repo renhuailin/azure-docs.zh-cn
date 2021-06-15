@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b3192c3ee8458623f3724da5f875cc09032a42bf
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 4fffb279ff9d2d0560dc722b9fa8de3bccb6cf19
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219410"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969293"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块进行部署（预览版）
 
@@ -50,7 +50,7 @@ Azure IoT Edge 设备：
 云资源：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* Azure 机器学习工作区。 按照[通过 Azure 门户开始使用 Azure 机器学习](../machine-learning/tutorial-1st-experiment-sdk-setup.md)中的说明创建一个工作区并了解如何使用它。
+* Azure 机器学习工作区。 按照[通过 Azure 门户开始使用 Azure 机器学习](../machine-learning/quickstart-create-resources.md)中的说明创建一个工作区并了解如何使用它。
   * 请记下工作区名称、资源组和订阅 ID。 Azure 门户中的工作区概述中提供了这些值。 你将在本教程后面部分使用这些值，将 Azure Notebooks 文件连接到工作区资源。
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>创建和部署 Azure 机器学习模块

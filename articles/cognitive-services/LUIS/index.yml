@@ -12,12 +12,12 @@ metadata:
   title: 语言理解 (LUIS) 文档
   titleSuffix: Azure Cognitive Services
   description: 使用语言理解 (LUIS) 服务，应用程序可以理解用户希望使用自己的词语表达的内容。 LUIS 使用机器学习，使开发人员可以构建应用程序，以便接收采用自然语言的用户输入并从中提取含义。
-  ms.openlocfilehash: 6c0b126f222e4dcb1bcd2dedcad38fe80b338f81
-  ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+  ms.openlocfilehash: 49dd98545881df07edb156a4c498531cf2c20781
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/25/2021
-  ms.locfileid: "107947404"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111966540"
 landingContent:
 - title: 关于语言理解 (LUIS)
   linkLists:
@@ -80,7 +80,7 @@ landingContent:
     - text: 版本控制
       url: ./luis-concept-app-iteration.md
     - text: 交互式测试
-      url: luis-concept-test.md
+      url: ./luis-interactive-test.md
     - text: 批处理测试
       url: ./luis-how-to-batch-test.md
   - linkListType: quickstart

@@ -2,14 +2,14 @@
 title: BareMetal for Oracle 工作负载上的存储
 description: 了解 BareMetal Infrastructure for Oracle 工作负载提供的存储。
 ms.topic: reference
-ms.subservice: workloads
+ms.subservice: baremetal-oracle
 ms.date: 04/14/2021
-ms.openlocfilehash: 685f4d401d05d897b91ad12dbd79f7d175db05c6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 374971412e3866b9bf563e1badc266da382237ff
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107558561"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578510"
 ---
 # <a name="storage-on-baremetal-for-oracle-workloads"></a>BareMetal for Oracle 工作负载上的存储
 

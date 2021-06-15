@@ -11,12 +11,12 @@ ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 人脸识别, 人脸识别软件, 人脸分析, 人脸匹配, 人脸识别应用, 按图像搜索人脸, 人脸识别搜索
-ms.openlocfilehash: 30707dd844769f730f135a451cd5306ca7e402cb
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: d135e97b4792d5c4b71d3758800223d238a6990c
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726981"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111810173"
 ---
 # <a name="what-is-the-azure-face-service"></a>什么是 Azure 人脸服务？
 
@@ -41,8 +41,6 @@ Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算�
 
 > [!NOTE]
 > 也可以通过[计算机视觉服务](../computer-vision/overview.md)使用人脸检测功能。 但是，如果你想要执行其他人脸操作，如识别、验证、查找相似或分组，应改用此人脸服务。
-
-![一位女士和一位男士的图像，在其面部绘制了矩形并显示了年龄和性别](./Images/Face.detection.jpg)
 
 有关人脸检测的详细信息，请参阅[人脸检测](concepts/face-detection.md)概念文章。 另请参阅[检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) 参考文档。
 

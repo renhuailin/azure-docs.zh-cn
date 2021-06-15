@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: 89309cfe427183d594a5cc2f76332ae150d4f803
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f85c693f038143543a3a90cc2774f3e6efea3c9b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102498670"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952258"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>教程：使用 Python 通过自动化机器学习训练模型
 
@@ -31,7 +31,7 @@ Azure 机器学习是一种基于云的环境，可以对机器学习模型进�
 ## <a name="before-you-begin"></a>在开始之前
 
 - 按照[创建无服务器 Apache Spark 池](../quickstart-create-apache-spark-pool-studio.md)进行操作，创建无服务器 Apache Spark 池。
-- 如果还没有 Azure 机器学习工作区，请完成 [Azure 机器学习工作区设置](../../machine-learning/tutorial-1st-experiment-sdk-setup.md)。 
+- 如果还没有 Azure 机器学习工作区，请完成 [Azure 机器学习工作区设置](../../machine-learning/quickstart-create-resources.md)。 
 
 ## <a name="understand-regression-models"></a>了解回归模型
 

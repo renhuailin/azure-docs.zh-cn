@@ -3,21 +3,21 @@ title: 适用于单一数据库和共用数据库 VNet 终结点和规则的 Pow
 description: 提供 PowerShell 脚本为 Azure SQL 数据库和 Azure Synapse 创建和管理虚拟服务终结点。
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: deployment-configuration
 ms.devlang: PowerShell
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: vanto
+ms.reviewer: vanto, mathoma
 ms.date: 04/17/2019
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 tags: azure-synapse
-ms.openlocfilehash: 76a1d3aaadcbd1b15966a84f5dd2fe876f82c43a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bc00adebe6b60f47dcd2fb5de50508ff4ada2ae7
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177617"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698996"
 ---
 # <a name="powershell-create-a-virtual-service-endpoint-and-vnet-rule-for-azure-sql-database"></a>PowerShell：创建适用于 Azure SQL 数据库的虚拟网络服务终结点和 VNet 规则
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]

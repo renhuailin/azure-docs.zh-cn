@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7ecd31f6f788331071abbbe67d5460494d54de8d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 65c94346725123913cc2ea53be9b95a7c1bb0fda
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753976"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889573"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>教程：使用部署脚本创建自签名证书
 
@@ -60,7 +60,7 @@ ms.locfileid: "108753976"
 
 无需从头开始创建模板，可以通过 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)打开一个模板。 Azure 快速入门模板是 ARM 模板的存储库。
 
-本快速入门中使用的模板名为[创建 Azure 密钥保管库和机密](https://azure.microsoft.com/resources/templates/101-key-vault-create/)。 该模板将创建一个密钥保管库，然后向该密钥保管库中添加机密。
+本快速入门中使用的模板名为[创建 Azure 密钥保管库和机密](https://azure.microsoft.com/resources/templates/key-vault-create/)。 该模板将创建一个密钥保管库，然后向该密钥保管库中添加机密。
 
 1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。 
 2. 在“文件名”中粘贴以下 URL：
@@ -324,7 +324,7 @@ ms.locfileid: "108753976"
 
 ## <a name="debug-the-failed-script"></a>调试失败的脚本
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 打开资源组。 资源组是追加了 rg 的项目名称。 你会看到，该资源组中总共有两个其他资源。 这些资源称为 *部署脚本资源*。
 
     ![资源管理器模板部署脚本资源](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

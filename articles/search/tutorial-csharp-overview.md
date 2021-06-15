@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/23/2021
 ms.custom: devx-track-csharp
 ms.devlang: dotnet
-ms.openlocfilehash: 8a73ab04ea782c248a8fab61fb375c01a2339d1c
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 49919a5a0efbdae46f2ef82a7129fee8aa686e8e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107981939"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964041"
 ---
 # <a name="1---overview-of-adding-search-to-a-website-with-net"></a>1 - 使用 .NET 将搜索添加到网站的概述
 
@@ -58,7 +58,7 @@ ms.locfileid: "107981939"
     - [Azure 认知搜索 0.2.0+](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
     - [Azure 静态 Web 应用](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps) 
 - 可选：
-    - 本教程不在本地运行 Azure Function API，但如果想要在本地运行它，则需要安装 [azure-functions-core-tools](/azure/azure-functions/functions-run-local?tabs=linux%2Ccsharp%2Cbash#install-the-azure-functions-core-tools)。
+    - 本教程不在本地运行 Azure Function API，但如果想要在本地运行它，则需要安装 [azure-functions-core-tools](../azure-functions/functions-run-local.md?tabs=linux%2ccsharp%2cbash#install-the-azure-functions-core-tools)。
 
 ## <a name="fork-and-clone-the-search-sample-with-git"></a>通过 git 创建搜索示例的分支和克隆搜索示例
 
