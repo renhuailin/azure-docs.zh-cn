@@ -182,7 +182,7 @@
         - name: 选择磁盘类型
           href: ../virtual-machines/disks-types.md
           maintainContext: true
-        - name: 加密
+        - name: Encryption
           href: ../virtual-machines/disk-encryption.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
           maintainContext: true
         - name: 高级存储性能
@@ -447,8 +447,8 @@
     - name: 常见问题解答
       items:
         - name: Linux
-          href: ../virtual-machines/linux/faq.md
+          href: ../virtual-machines/linux/faq.yml
         - name: Windows
-          href: ../virtual-machines/windows/faq.md
+          href: ../virtual-machines/windows/faq.yml
 - name: 支持和疑难解答
   href: vmss-support-help.md

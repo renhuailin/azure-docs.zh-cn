@@ -46,7 +46,7 @@
     - name: 在本地与云之间移动数据
       href: data-factory-move-data-between-onprem-and-cloud.md
     - name: 常见问题解答
-      href: data-factory-faq.md
+      href: data-factory-faq.yml
 - name: 操作方式
   items:
     - name: 移动数据

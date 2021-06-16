@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 5261075a82eaefd91cbedd2dd2fe08cb1e0a20b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8f3a99e7dca81e669438498f78447eddfdddd583
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381828"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662116"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-powershell"></a>使用 Azure PowerShell 配置和管理连续备份和时间点还原（预览版）
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -230,7 +231,7 @@ Get-AzCosmosdbMongoDBRestorableCollection `
   -LocationName "West US"
 ```
 
-**列出可在给定时间戳和区域还原的 mongodb 数据库帐户的所有资源**
+列出可在给定时间戳和区域还原的 MongoDB 数据库帐户的所有资源
 
 ```azurepowershell
 

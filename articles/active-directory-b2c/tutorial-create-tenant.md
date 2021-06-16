@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aa91851787bbb0f5570a4f439f794ee352bf0625
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56a306e56991500a6b1d5acab1ab38a3b4fa457f
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579682"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613292"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教程：创建 Azure Active Directory B2C 租户
 
@@ -24,7 +24,7 @@ ms.locfileid: "104579682"
 > [!NOTE]
 > 每个订阅最多可创建 20 个租户。 此限制有助于防范对资源的威胁（例如拒绝服务攻击），并在 Azure 门户和基础租户创建 API 中强制实施。 如果需要创建超过 20 个租户，请联系 [Microsoft 支持部门](support-options.md)。
 > 
-> 如果要重用以前尝试删除的租户名称，但在输入域名时看到错误“已被另一个目录使用”，则需要[按照以下步骤先完全删除租户](./faq.md?tabs=app-reg-ga#how-do-i-delete-my-azure-ad-b2c-tenant)。 至少需要订阅管理员的角色。 删除租户后，你可能还需要先注销并重新登录，然后才能重用域名。
+> 如果要重用以前尝试删除的租户名称，但在输入域名时看到错误“已被另一个目录使用”，则需要[按照以下步骤先完全删除租户](./faq.yml?tabs=app-reg-ga#how-do-i-delete-my-azure-ad-b2c-tenant-)。 至少需要订阅管理员的角色。 删除租户后，你可能还需要先注销并重新登录，然后才能重用域名。
 
 在本文中，学习如何：
 

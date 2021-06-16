@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 05ece4d8ea24fb9da106ec3daa2cc1a63706dab9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 909cdc6ca8e0a33fdc969f867c084f1f3d20423e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96853492"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031666"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>使用评审工具来审查视频
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 使用内容审查器的计算机辅助[视频审核](video-moderation-api.md)和[审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)，审核视频和脚本是否有成人（明示）和挑逗性（暗示）内容，以获得最佳业务效果。
 

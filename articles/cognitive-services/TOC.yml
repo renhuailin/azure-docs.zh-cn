@@ -28,6 +28,8 @@
       href: plan-manage-costs.md
     - name: 诊断日志记录
       href: diagnostic-logging.md
+    - name: 管理资源
+      href: manage-resources.md
     - name: 部署
       items:
         - name: 容器
@@ -127,6 +129,8 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?query=cognitive%20services'
+    - name: 负责使用 AI
+      href: responsible-use-of-ai-overview.md
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 合规性

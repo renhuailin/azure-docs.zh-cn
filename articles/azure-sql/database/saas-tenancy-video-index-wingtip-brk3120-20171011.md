@@ -4,18 +4,18 @@ description: 本文对一个视频中的各个时间点进行了索引。这是 
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.custom: sqldbrb=1
 ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8cceeef7e41e8fc5c48b4e67cdb1adf3aa4f02a1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 51ff4193bd8e23e3a6f5cd86d09ac28239eadcd7
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89483858"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693603"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>关于使用 Azure SQL 数据库的多租户 SaaS 应用的视频，包含索引和批注
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: 了解 Azure SQL 数据库和 Azure SQL 托管实例的“业务关键”服务层级。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/04/2018
-ms.openlocfilehash: 830ecc44d0def13e51cb06704bef429bb8860cd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e5a4283416dcd20c8d419a00cb3debfb208d118
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92780217"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691560"
 ---
 # <a name="business-critical-tier---azure-sql-database-and-azure-sql-managed-instance"></a>“业务关键”层级 - Azure SQL 数据库和 Azure SQL 托管实例 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

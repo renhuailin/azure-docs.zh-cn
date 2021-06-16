@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 018995ed973679a617b409b82e076198a558eef7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82508117"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968780"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>包含托管标识的 Azure 托管应用程序
 
@@ -46,7 +46,7 @@ ms.locfileid: "82508117"
 }
 ```
 
-可通过两种常用方法创建包含 **标识** 的托管应用程序：[CreateUIDefinition.json](./create-uidefinition-overview.md) 和 [Azure 资源管理器模板](../templates/template-syntax.md)。 对于简单的单一创建方案，应使用 CreateUIDefinition 来启用托管标识，因为它提供更丰富的体验。 但是，在处理需要自动化部署或多个托管应用程序部署的高级系统或复杂系统时，可以使用模板。
+可通过两种常用方法创建包含 **标识** 的托管应用程序：[CreateUIDefinition.json](./create-uidefinition-overview.md) 和 [Azure 资源管理器模板](../templates/syntax.md)。 对于简单的单一创建方案，应使用 CreateUIDefinition 来启用托管标识，因为它提供更丰富的体验。 但是，在处理需要自动化部署或多个托管应用程序部署的高级系统或复杂系统时，可以使用模板。
 
 ### <a name="using-createuidefinition"></a>使用 CreateUIDefinition
 
@@ -325,7 +325,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 请求正文参数：
 
-参数 | 必需 | 说明
+参数 | 必须 | 说明
 ---|---|---
 authorizationAudience | 否 | 目标资源的应用 ID URI。 它也是颁发的令牌的 `aud`（受众）声明。 默认值为“https://management.azure.com/”
 userAssignedIdentities | 否 | 要检索其令牌的用户分配托管标识的列表。 如果未指定，`listTokens` 将返回系统分配的托管标识的令牌。

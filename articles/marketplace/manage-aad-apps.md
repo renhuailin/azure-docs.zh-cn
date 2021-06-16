@@ -8,12 +8,12 @@ ms.date: 04/06/2021
 author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 77f6b2ec71df63da1fe5ff52f948ded9502c5edb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bbc4df71d9aa04b362b7de9b179b335e4e12fd8c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076269"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971209"
 ---
 # <a name="add-and-manage-azure-ad-applications"></a>添加和管理 Azure AD 应用程序
 
@@ -41,7 +41,7 @@ ms.locfileid: "110076269"
 1. 在“用户”页（在“帐户设置”下）上，选择“添加 Azure AD 应用程序”  。
 1. 在下一页，选择“新建 Azure AD 应用程序”。
 1. 为新的 Azure AD 应用程序输入“回复 URL”。 这是用户可在其中登录并使用 Azure AD 应用程序的 URL（有时也称为“应用 URL”或“登录 URL”）。 “回复 URL”的长度不得超过 256 个字符，并且在目录中必须是唯一的。
-1. 为新的 Azure AD 应用程序输入“应用 ID URI”。 这是在向 Azure AD 发送单一登录请求时提供的 Azure AD 应用程序的逻辑标识符。 “应用 ID URI”对于目录中的每个 Azure AD 应用程序必须是唯一的。 此 ID 的长度不得超过 256 个字符。 有关应用 ID URI 的详细信息，请参阅[将应用程序与 Azure Active Directory 集成](/azure/active-directory/develop/howto-modify-supported-accounts#change-the-application-registration-to-support-different-accounts)。
+1. 为新的 Azure AD 应用程序输入“应用 ID URI”。 这是在向 Azure AD 发送单一登录请求时提供的 Azure AD 应用程序的逻辑标识符。 “应用 ID URI”对于目录中的每个 Azure AD 应用程序必须是唯一的。 此 ID 的长度不得超过 256 个字符。 有关应用 ID URI 的详细信息，请参阅[将应用程序与 Azure Active Directory 集成](../active-directory/develop/howto-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)。
 1. 在“角色”部分中，为 Azure AD 应用程序指定角色或自定义权限。
 1. 选择“保存”。
 

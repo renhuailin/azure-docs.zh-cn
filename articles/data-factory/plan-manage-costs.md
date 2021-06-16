@@ -6,12 +6,12 @@ ms.author: shwang
 ms.service: data-factory
 ms.topic: how-to
 ms.date: 04/28/2021
-ms.openlocfilehash: 4e401886d37ec4221a0498863ec50ece8bffb984
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 72c212470fcfe884000665892fd092eb830c6b56
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292337"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958949"
 ---
 # <a name="plan-to-manage-costs-for-azure-data-factory"></a>计划和管理 Azure 数据工厂的成本
 
@@ -23,7 +23,7 @@ ms.locfileid: "108292337"
 
 ## <a name="prerequisites"></a>必备条件
 
-成本管理中的成本分析支持大多数 Azure 帐户类型，但不支持所有帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+成本管理中的成本分析支持大多数 Azure 帐户类型，但不支持所有帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 ## <a name="estimate-costs-before-using-azure-data-factory"></a>使用 Azure 数据工厂之前估算成本
  
@@ -88,14 +88,14 @@ Azure 数据工厂是为实现云规模缩放而构建的无服务器和弹性�
 
 ### <a name="monitor-costs-at-factory-level"></a>在工厂级别监视成本
 
-将 Azure 资源用于数据工厂时，会产生成本。 Azure 资源使用情况的单位成本因时间间隔（秒、分钟、小时和天）或单位使用情况（字节、MB 等）而异。一旦开始使用数据工厂，就会产生费用，你可以在[成本分析](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中看到这些费用。
+将 Azure 资源用于数据工厂时，会产生成本。 Azure 资源使用情况的单位成本因时间间隔（秒、分钟、小时和天）或单位使用情况（字节、MB 等）而异。一旦开始使用数据工厂，就会产生费用，你可以在[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中看到这些费用。
 
 使用成本分析时，可以在关系图和表中查看不同时间间隔的数据工厂成本。 有些示例是按天、当前、上个月和年划分的。 还可以对比预算和预测的成本来查看成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势。 你会看到可能出现超支的地方。 如果已创建预算，还可以轻松查看超支的地方。
 
 在成本分析中查看数据工厂成本：
 
 1. 登录到 Azure 门户。
-2. 在 Azure 门户中打开范围，并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析” 。 选择“范围”，在成本分析中切换到不同的范围。
+2. 在 Azure 门户中打开范围，并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择一项订阅，然后在菜单中选择“成本分析” 。 选择“范围”，在成本分析中切换到不同的范围。
 3. 默认情况下，服务的成本显示在第一个圆环图中。 选择图表中标记“Azure 数据工厂 v2”的区域。
 
 最初打开成本分析时，会显示实际的每月成本。 下面是显示所有每月使用成本的示例。
@@ -139,7 +139,7 @@ Azure 数据工厂是为实现云规模缩放而构建的无服务器和弹性�
 
 ## <a name="create-budgets"></a>创建预算
 
-可以创建[预算](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本，并创建[警报](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)以自动通知利益干系人支出异常和超支风险。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 
+可以创建[预算](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本，并创建[警报](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)以自动通知利益干系人支出异常和超支风险。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 
 
 如果希望增加监视中的精度，可以在 Azure 中使用筛选器为特定资源或服务创建预算。 筛选器可帮助确保不会意外创建会产生额外成本的新资源。 有关创建预算时可用的筛选选项的详细信息，请参阅[分组和筛选选项](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 

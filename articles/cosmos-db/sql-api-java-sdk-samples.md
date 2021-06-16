@@ -5,15 +5,15 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 09/23/2020
+ms.date: 06/08/2021
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: 0b0bdd204b2aa322adeb7373911b90e742c71999
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8680494b4a328c51243829fcc7e16e3b3c17f44d
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018983"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754932"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API：Java SDK v4 示例
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -125,7 +125,7 @@ com.azure.cosmos.examples.sample.synchronicity.MainClass
 
 ## <a name="autoscale-collection-examples"></a>自动缩放集合示例
 
-若要在运行这些示例之前了解有关自动缩放的详细信息，请查看以下说明，了解如何在[帐户](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-autoscale/)以及[数据库和容器](./provision-throughput-autoscale.md)中启用自动缩放。
+若要在运行这些示例之前了解有关自动缩放的详细信息，请查看以下说明，了解如何在[帐户](https://azure.microsoft.com/resources/templates/cosmosdb-sql-autoscale/)以及[数据库和容器](./provision-throughput-autoscale.md)中启用自动缩放。
 
 [自动缩放数据库 CRUD 示例](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java)文件演示如何执行以下任务。
 

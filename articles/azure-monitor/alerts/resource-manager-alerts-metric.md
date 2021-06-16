@@ -6,16 +6,16 @@ ms.author: bwren
 services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
-ms.openlocfilehash: f41c6c8ab4e5b00c7281a75eeccb09a6e894764e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7e20f3ac1751035ab7f8ecc64d1d8ef375144d9a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039404"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971969"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>用于 Azure Monitor 指标警报规则的资源管理器模板示例
 
-本文提供了在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置[度量警报规则](../alerts/alerts-metric-near-real-time.md)的示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+本文提供了在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)配置[度量警报规则](../alerts/alerts-metric-near-real-time.md)的示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

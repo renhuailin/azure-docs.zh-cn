@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 79c7171db1ac80126dcf1174f8b303b5b99da615
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: f26ba1d6a7c399024d77f9953c82893af6002c5c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751574"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961510"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>使用条件访问管理对 Azure 管理的访问权限
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) 中的条件访问基于你指定的具体条�
 - Azure 数据工厂门户
 - Azure 事件中心
 - Azure 服务总线
-- [Azure SQL 数据库](https://docs.microsoft.com/azure/azure-sql/database/conditional-access-configure)
+- [Azure SQL 数据库](../azure-sql/database/conditional-access-configure.md)
 - SQL 托管实例
 - Azure Synapse
 

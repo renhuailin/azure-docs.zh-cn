@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: acbe535d740eb527d165be1675f31e759851a987
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ce337c97aa7eca601e72122568c3205ca21457f
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101717819"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372377"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
 
@@ -47,7 +47,7 @@ ms.locfileid: "101717819"
 |------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
 | .NET Core 和 .NET Framework | 支持 (V2.13.1+)| 通过 [TrackMetric](api-custom-events-metrics.md#trackmetric) 支持| 通过 [GetMetric](get-metric.md) 支持 (V2.7.2+) |
 | Java                         | 不支持       | 通过 [TrackMetric](api-custom-events-metrics.md#trackmetric) 支持| 不支持                           |
-| Node.js                      | 不支持       | 通过 [TrackMetric](api-custom-events-metrics.md#trackmetric) 支持| 不支持                           |
+| Node.js                      | 支持 (V2.0.0+) | 通过 [TrackMetric](api-custom-events-metrics.md#trackmetric) 支持| 不支持                           |
 | Python                       | 不支持       | 支持                                 | 部分支持通过 [OpenCensus](opencensus-python.md#metrics) 提供 |  
 
 > [!NOTE]

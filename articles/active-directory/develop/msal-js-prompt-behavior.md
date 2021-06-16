@@ -3,22 +3,22 @@ title: 交互式请求提示行为 (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 自定义交互式调用中的提示行为。
 services: active-directory
-author: navyasric
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: nacanuma
+ms.author: mtillman
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 85f5269c3c2616070b826ecc38735c31617db537
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3cd1b6a0015f51902dd3228648f16fb79ab6957d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85477543"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077169"
 ---
 # <a name="prompt-behavior-in-msaljs-interactive-requests"></a>MSAL.js 交互式请求中的提示行为
 

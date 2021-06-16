@@ -4,16 +4,16 @@ description: 了解可以运行 Azure IoT Edge 守护程序和运行时的操作
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/16/2021
+ms.date: 06/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2dc2ccfbcabf972f0cbb8a745079c68b3f1b1e9a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: e2701a04c1e8ea631bdbf37470608cf66b8d242e
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325870"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985357"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
@@ -173,15 +173,15 @@ IoT Edge 发行资产和发行说明在 [azure-iotedge 版本](https://github.co
 
 下表列出了每个版本（以 1.2.0 开始）中包含的组件。 可以单独安装或更新此表中列出的组件，并且它们与旧版本中的组件向后兼容。
 
-| 发布 | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
+| Release | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
 | ------- | ---------- | -------------------- | ---------------------- |
-| **1.2** | 1.2.0      | 1.2.0                | 1.2.0                  |
+| **1.2** | 1.2.0<br>1.2.1 | 1.2.0<br>1.2.1   | 1.2.0<br><br> |
 
 下表列出了每个版本（最高为 1.1 LTS 版本）中包含的组件。 可以单独安装或更新此表中列出的组件，并且它们与旧版本中的组件向后兼容。
 
-| 发布 | iotedge | edgeHub<br>edgeAgent | libiothsm | moby |
+| Release | iotedge | edgeHub<br>edgeAgent | libiothsm | moby |
 |--|--|--|--|--|
-| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1<br><br> | 1.1.0<br>1.1.1<br>1.1.2 | 1.1.0<br>1.1.1<br><br> |   |
+| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1<br><br>1.1.3 | 1.1.0<br>1.1.1<br>1.1.2<br>1.1.3 | 1.1.0<br>1.1.1<br><br>1.1.3 |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
 | **1.0.9** | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 |  |
 | **1.0.8** | 1.0.8 | 1.0.8<br>1.0.8.1<br>1.0.8.2<br>1.0.8.3<br>1.0.8.4<br>1.0.8.5 | 1.0.8 | 3.0.6 |

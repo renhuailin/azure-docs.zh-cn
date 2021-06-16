@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: aa44a27fa5bf6b7b4ea649e1a9b9a69ef8cd78d3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 99cfe23cab5e9a61f548e78c914cafb1f6f63f7c
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049315"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985861"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>数据导入概述 - Azure 认知搜索
 
@@ -82,7 +82,7 @@ POST 的 URL 格式相同，但查询字符串参数包含 `api-version`。
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure VM 上的 Azure SQL 数据库、SQL 托管实例和 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 + [SharePoint Online（预览版）](search-howto-index-sharepoint-online.md)
-+ [Azure Data Lake Storage Gen2（预览版）](search-howto-index-azure-data-lake-storage.md)
++ [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)
 
 索引器将索引连接到数据源（通常是表、视图或等效的结构），将源字段映射到索引中的等效字段。 在执行期间，行集会自动转换为 JSON 并载入指定的索引中。 所有索引器支持计划，使用户能够指定数据的刷新频率。 大多数索引器提供更改跟踪（如果受数据源的支持）。 除了识别新文档外，通过跟踪对现有文档的更改和删除外，索引器免除了主动管理索引中数据的必要。
 

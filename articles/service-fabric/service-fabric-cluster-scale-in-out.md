@@ -3,12 +3,13 @@ title: 扩展或缩减 Service Fabric 群集
 description: 通过为每个节点类型/虚拟机规模集设置自动缩放规则，根据需要扩展或缩减 Service Fabric 群集。 在 Service Fabric 群集中添加或删除节点
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: e7f11aa5fee2b339ea8466dac93e8629419847f0
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bb7e668a5b50e73d5aee8aa3bcbb2ea6b1d4bac7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018540"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677413"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
 

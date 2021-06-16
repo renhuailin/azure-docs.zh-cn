@@ -11,14 +11,16 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 55802b04e10f06c7e362033f97d24c4e20c12c62
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f265bf68067ed92fc6a5b26047e354c06ae53686
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566483"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033682"
 ---
 # <a name="create-video-reviews-using-net"></a>使用 .NET 创建视频审查
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 本文提供了信息和代码示例，帮助你快速开始结合使用[内容审查器 SDK 和 C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 来执行以下操作：
 

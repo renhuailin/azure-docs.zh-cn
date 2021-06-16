@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: allensu
-ms.custom: subject-armqs
-ms.openlocfilehash: 13d419623bd6c2939ddfedd29f29527028ced74c
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.custom: subject-armqs, devx-track-azurepowershell
+ms.openlocfilehash: 2870592d7026a2bdf3cf2525f9e9401886843d9f
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813247"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111811047"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>快速入门：创建 NAT 网关 - ARM 模板
 
@@ -38,7 +38,7 @@ ms.locfileid: "109813247"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-nat-gateway-1-vm)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/nat-gateway-1-vm)。
 
 此模板配置为创建：
 

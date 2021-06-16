@@ -3,12 +3,13 @@ title: Azure 开发测试实验室常见问题解答 | Microsoft Docs
 description: 本文提供有关 Azure 开发测试实验室的部分常见问题解答 (FAQ)。
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 6abc2b0b950521d5ce7d4974c3535c5fbd64fba1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 31106eb69e118e6f68fbb1a0eecfe4301839ee88
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138996"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004234"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -134,7 +135,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 ## <a name="lab-configuration"></a>实验室配置
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>如何从资源管理器模板模板创建实验室？
-我们提供了[实验室 Azure 资源管理器模板的 GitHub 存储库](https://azure.microsoft.com/resources/templates/101-dtl-create-lab)，可按原样部署，也可对其进行修改，为实验室创建自定义模板。 每个模板都有一个链接，用于在自己的 Azure 订阅中按原样部署实验室。 或者，可自定义模板，并[使用 PowerShell 或 Azure CLI 进行部署](../azure-resource-manager/templates/deploy-powershell.md)。
+我们提供了[实验室 Azure 资源管理器模板的 GitHub 存储库](https://azure.microsoft.com/resources/templates/dtl-create-lab)，可按原样部署，也可对其进行修改，为实验室创建自定义模板。 每个模板都有一个链接，用于在自己的 Azure 订阅中按原样部署实验室。 或者，可自定义模板，并[使用 PowerShell 或 Azure CLI 进行部署](../azure-resource-manager/templates/deploy-powershell.md)。
 
 
 ### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>是否可以将所有虚拟机创建在公共资源组中，而不是在其专属资源组中创建每台计算机？

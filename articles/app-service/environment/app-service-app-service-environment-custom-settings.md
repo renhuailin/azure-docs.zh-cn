@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5c1e81d02aa35a40a296f04e456be09eeed10331
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e871778576266d772f37c23ee174dda7df6a6a75
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99226383"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027418"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>应用服务环境的自定义配置设置
 ## <a name="overview"></a>概述
@@ -107,7 +107,7 @@ ASE 支持更改默认密码套件。 默认密码集与多租户服务中使用
 > 如果对 SChannel 无法理解的密码套件设置不正确的值，与服务器的所有 TLS 通信可能会停止运行。 在这种情况下，必须从 **clusterSettings** 中删除 *FrontEndSSLCipherSuiteOrder* 条目，并提交更新的 Resource Manager 模板以还原回默认的密码套件设置。  请谨慎使用此功能。
 
 ## <a name="get-started"></a>入门
-Azure 快速入门 Resource Manager 模板站点包含具有[创建应用服务环境](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)基本定义的模板。
+Azure 快速入门 Resource Manager 模板站点包含具有[创建应用服务环境](https://azure.microsoft.com/resources/templates/web-app-ase-create/)基本定义的模板。
 
 <!-- LINKS -->
 

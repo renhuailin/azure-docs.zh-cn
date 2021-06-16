@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6464ad632251053ac481fbd1f6a3e1197aa470df
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: b8fc67076418678f6c53331dc6d0fbe0e7e7a0b1
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121296"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410020"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>使用 Ubuntu Server 18.04 x64 包代理的 Azure IoT 中心的设备更新教程
 
@@ -92,7 +92,7 @@ Device Update for IoT Hub 支持两种形式的更新：基于映像的更新和
    > [!NOTE]
    > 设备更新包代理不依赖于 IoT Edge。 但是，它确实依赖于安装有 IoT Edge（1.2.0 及更高版本）的 IoT 标识服务守护程序来获取标识并连接到 IoT 中心。
    >
-   > 虽然本教程中未介绍，但[基于 Linux 的 IoT 设备上可以独立安装 IoT 标识服务守护程序](https://azure.github.io/iot-identity-service/packaging.html)。 安装的顺序很重要。 设备更新包代理必须在 IoT 标识服务后安装。 否则，包代理将不会注册为获得授权的组件来建立与 IoT 中心的连接。
+   > 虽然本教程中未介绍，但[基于 Linux 的 IoT 设备上可以独立安装 IoT 标识服务守护程序](https://azure.github.io/iot-identity-service/installation.html)。 安装的顺序很重要。 设备更新包代理必须在 IoT 标识服务后安装。 否则，包代理将不会注册为获得授权的组件来建立与 IoT 中心的连接。
 
 1. 然后，安装设备更新代理 .deb 包。
 

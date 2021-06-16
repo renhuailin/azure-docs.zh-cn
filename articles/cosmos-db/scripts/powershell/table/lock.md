@@ -7,12 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: a35d2501eac631d34c7bf4d20ef775436a9d11c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d36d533e91bd57912686eea2b68b96bde9312bea
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98679138"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679598"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-table-api-table-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure Cosmos 表 API 表创建资源锁
 [!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]

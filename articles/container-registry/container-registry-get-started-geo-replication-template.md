@@ -10,12 +10,12 @@ ms.service: azure-resource-manager
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 044c5abe7b44ebc4b9d0cd172f14a8cd1a648b2a
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: ee6aa5080745d7bcc6f77156b964fc2eccdc139b
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951569"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004594"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建异地复制容器注册表
 
@@ -33,7 +33,7 @@ ms.locfileid: "107951569"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/)。 该模板会设置注册表和其他区域副本。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/container-registry-geo-replication/)。 该模板会设置注册表和其他区域副本。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.containerregistry/container-registry-geo-replication/azuredeploy.json":::
 

@@ -4,12 +4,12 @@ description: 本快速入门使用 Azure 资源管理器模板（ARM 模板）�
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 95ff4572b789fd4b8856d08ffad451357c400f06
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 8a1bf27e9dc778bdf2e1e30ec21424f9f1b7a9cc
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175687"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006646"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>快速入门：使用 Azure 开发测试实验室 ARM 模板设置实验室
 在本快速入门中，你将使用 Azure 资源管理器模板（ARM 模板）创建具有 Windows Server 2019 Datacenter VM 的实验室。 
@@ -34,7 +34,7 @@ ms.locfileid: "108175687"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-dtl-create-lab-windows-vm/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/dtl-create-lab-windows-vm/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.devtestlab/dtl-create-lab-windows-vm/azuredeploy.json":::
 

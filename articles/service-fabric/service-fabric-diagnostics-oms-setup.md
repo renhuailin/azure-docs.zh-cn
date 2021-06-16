@@ -1,16 +1,15 @@
 ---
 title: 使用 Azure Monitor 日志设置监视
 description: 了解如何设置 Azure Monitor 来可视化和分析事件，以监视 Azure Service Fabric 群集。
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: srrengar
-ms.openlocfilehash: ba62ac80b2f8d318d0d13e81e88cc63a8d893a2b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: efc10740a37032eb00a69b6e2cefa502d601350a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100570350"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677398"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>为群集设置 Azure Monitor 日志
 

@@ -5,12 +5,13 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 88898d3a0e42ff362a5ab6fa586c52064fcb8221
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6fd9f84656c1478f8bde1261165cfb9d7655d670
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736732"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111886711"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>教程：排查 ARM 模板部署问题
 
@@ -41,7 +42,7 @@ ms.locfileid: "108736732"
 
 ## <a name="create-a-problematic-template"></a>创建有问题的模板
 
-打开 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)中名为[创建标准存储帐户](https://azure.microsoft.com/resources/templates/101-storage-account-create/)的模板，设置两个模板问题。
+打开 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)中名为[创建标准存储帐户](https://azure.microsoft.com/resources/templates/storage-account-create/)的模板，设置两个模板问题。
 
 1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。 
 2. 在“文件名”中粘贴以下 URL：
@@ -93,7 +94,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 可通过以下过程从 Azure 门户找出部署错误：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开资源组，方法是：选择“资源组”，然后选择资源组名称。 此时会看到“部署”下显示“1 个失败” 。
 
     ![屏幕截图突出显示了失败的部署。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -107,7 +108,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 也可在活动日志中查找错误：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“Monitor” > “活动日志”。 
 3. 使用筛选器查找日志。
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb088d56879ebdf5d439c913ac47a701db5c4a60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6993357241e646e1e8b70c65a9aa45ba0e20f477
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96576241"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963595"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
 
@@ -61,7 +61,7 @@ Azure AD 支持任何企业移动性套件 (EMS) 或 Azure AD Premium 许可计�
 * 自定义密码应用
 * [应用使用情况仪表板/报告](../authentication/howto-sspr-reporting.md)
 * 最终用户访问门户
-* [应用代理](../manage-apps/application-proxy.md)
+* [应用代理](../app-proxy/application-proxy.md)
 * [Active Directory 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
 
 ## <a name="sharing-an-account"></a>共享帐户

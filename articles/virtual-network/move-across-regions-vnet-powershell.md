@@ -6,12 +6,13 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: fa89a458b23d18bc6fddfca9cf6d9f2a16f91669
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ba112304839fe75e3bc55bc3b554b6ad8f3792c5
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98934929"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672488"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 虚拟网络移到另一个区域
 

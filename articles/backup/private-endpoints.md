@@ -3,12 +3,13 @@ title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 1775ec2c337dba0a618f9e7d186af9ed11a0e303
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a44d6d31edb6329c11103e99f0b21aa1ea686ca3
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559377"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678316"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 

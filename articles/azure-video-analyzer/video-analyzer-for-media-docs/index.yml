@@ -1,0 +1,70 @@
+### YamlMime:Landing
+title: 了解 Azure 视频分析器媒体版（以前称为视频索引器）
+summary: Azure 视频分析器媒体版（以前称为视频索引器）是构建在 Azure 媒体服务和 Azure 认知服务（如人脸检测、翻译器、计算机视觉和语音）基础之上的一个云应用程序，属于 Azure 应用 AI 服务。 借助该服务，可以使用视频分析器媒体版视频和音频模型从视频中提取见解。
+metadata:
+  title: Azure 视频分析器媒体版（以前称为视频索引器）文档
+  description: Azure 视频分析器媒体版（以前称为视频索引器）是构建在 Azure 媒体服务和 Azure 认知服务（如人脸检测、翻译器、计算机视觉和语音）基础之上的一个云应用程序，属于 Azure 应用 AI 服务。 借助该服务，可以使用视频分析器媒体版视频和音频模型从视频中提取见解。
+  services: azure-video-analyzer
+  ms.service: azure-video-analyzer
+  ms.topic: landing-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 05/07/2021
+  ms.openlocfilehash: f00c3318ada24acdb100ebba6a7589193453e935
+  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/25/2021
+  ms.locfileid: "110383382"
+landingContent:
+- title: 关于 Azure 视频分析器媒体版（以前称为视频索引器）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 视频分析器媒体版是什么？
+      url: video-indexer-overview.md
+    - text: 比较媒体服务 v3 预设和视频分析器媒体版
+      url: compare-video-indexer-with-media-services-presets.md
+    - text: 常见问题
+      url: faq.md
+    - text: 用户之声
+      url: https://aka.ms/UserVoiceVI
+  - linkListType: whats-new
+    links:
+    - text: 视频分析器媒体版中的新增功能？
+      url: release-notes.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 注册并上传视频
+      url: video-indexer-get-started.md
+    - text: 邀请用户
+      url: invite-users.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建连接到 Azure 的帐户
+      url: connect-to-azure.md
+    - text: 使用视频分析器媒体版 API
+      url: video-indexer-use-apis.md
+    - text: 上传视频和编制视频索引
+      url: upload-index-videos.md
+    - text: 检查 API 生成的输出
+      url: video-indexer-output-json-v2.md
+    - text: 将视频分析器媒体版的小组件嵌入应用
+      url: video-indexer-embed-widgets.md
+  - linkListType: sample
+    links:
+    - text: 代码示例
+      url: https://github.com/Azure-Samples/media-services-video-indexer
+- title: 自定义内容模型
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 自定义品牌模型
+      url: customize-brands-model-with-website.md
+    - text: 自定义语言模型
+      url: customize-language-model-with-website.md
+    - text: 自定义人员模型
+      url: customize-person-model-with-website.md

@@ -2,20 +2,20 @@
 title: 快速入门：向 Azure Active Directory (Azure AD) 租户添加应用程序
 description: 本快速入门使用 Azure 门户向 your Azure Active Directory (Azure AD) 租户添加库应用程序。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
-ms.author: iangithinji
-ms.openlocfilehash: d7827d6419e4d820f8aca482df2cfae83eaf319d
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.author: mtillman
+ms.openlocfilehash: e3748734d714812a40b78ff35fd9e0a31d3fa86e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378884"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077458"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>快速入门：向 Azure Active Directory (Azure AD) 租户添加应用程序
 

@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 02/18/2020
-ms.openlocfilehash: 063ebc43e0654268b758c705ca2a92b8cf88fb35
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c3d4b882a83b457527fcf71424357b8a51a86d84
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136294"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783262"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>迁移概述：将 SQL Server 到 Azure SQL 托管实例
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -35,6 +35,8 @@ ms.locfileid: "108136294"
 ## <a name="overview"></a>概述
 
 对于需要完全托管服务而无需管理虚拟机或其操作系统的 SQL Server 工作负载，建议将 [Azure SQL 托管实例](../../managed-instance/sql-managed-instance-paas-overview.md) 作为目标选项。 使用 SQL 托管实例，只需最小程度的应用程序或数据库更改，便可将本地应用程序迁移到 Azure。 它通过本机虚拟网络支持实现实例的完全隔离。 
+
+请务必查看 [Azure SQL 托管实例中提供的](../../database/features-comparison.md) SQL Server 数据库引擎功能，以验证迁移目标的可支持性。  
 
 ## <a name="considerations"></a>注意事项 
 

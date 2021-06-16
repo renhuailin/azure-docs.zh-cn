@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/12/2021
+ms.date: 05/26/2021
 ms.author: radeltch
-ms.openlocfilehash: 49c4c579d75b964a4b4c37c8a44bddf1ad08c62b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 211fa45626a8ca4db8e555795adccc55bc6c0a3e
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142812"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534455"
 ---
 # <a name="high-availability-for-sap-hana-scale-out-system-with-hsr-on-suse-linux-enterprise-server"></a>在 SUSE Linux Enterprise Server 上使用 HSR 实现 SAP HANA 横向扩展系统的高可用性 
 
@@ -28,7 +28,7 @@ ms.locfileid: "108142812"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-azure-doc]:../../../azure-netapp-files/index.yml
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all 
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
@@ -76,7 +76,7 @@ ms.locfileid: "108142812"
 * SAP 说明 [1984787]：包含有关 SUSE Linux Enterprise Server 12 的一般信息
 * SAP 说明 [1999351]：包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息
 * SAP 说明 [1900823]：包含有关 SAP HANA 存储要求的信息
-* [SAP 社区 Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)：包含适用于 Linux 的所有必需 SAP 说明
+* [SAP Community Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)：包含适用于 Linux 的所有必需 SAP 说明
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
@@ -121,39 +121,39 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
    - 三个虚拟机充当 HANA 复制站点 2 的 HANA DB 节点：hana-s2-db1、hana-s2-db2 和 hana-s2-db3    
    - 一个小型虚拟机充当多数仲裁节点：hana-s-mm
 
-   作为 SAP DB HANA 节点部署的 VM 应由 SAP for HANA 认证，如 [SAP HANA 硬件目录](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中发布的那样。 部署 HANA DB 节点时，请确保已选择[加速网络](../../../virtual-network/create-vm-accelerated-networking-cli.md)。  
+   作为 SAP DB HANA 节点部署的 VM 应由 SAP for HANA 认证，如 [SAP HANA 硬件目录](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中发布的一样。 部署 HANA DB 节点时，请确保已选择[加速网络](../../../virtual-network/create-vm-accelerated-networking-cli.md)。  
   
    对于多数仲裁节点，可以部署一个小型 VM，因为此 VM 不会运行任何 SAP HANA 资源。 在群集配置中使用多数仲裁 VM 可在拆分式方案中实现奇数个群集节点。 在此示例中，多数仲裁 VM 只需要 `client` 子网中的一个虚拟网络接口。        
 
    部署 `/hana/data` 和 `/hana/log` 的本地托管磁盘。 [SAP HANA Azure VM 存储配置](./hana-vm-operations-storage.md)中介绍了 `/hana/data` 和 `/hana/log` 的最小建议存储配置。
 
    为 `client` 虚拟网络子网中的每个 VM 部署主要网络接口。  
-   通过 Azure 门户部署 VM 时，系统会自动生成网络接口名称。 在这些说明中，为了简单起见，我们将引用自动生成的主要网络接口，这些接口连接到 `client` Azure 虚拟网络子网作为 hana-s1-db1-client、hana-s1-db2-client、hana-s1-db3-client 等  。  
+   通过 Azure 门户部署 VM 时，系统会自动生成网络接口名称。 在这些说明中，为了简单起见，我们将附加到 `client` Azure 虚拟网络子网的自动生成的主要网络接口称为“hana-s1-db1-client”、“hana-s1-db2-client”、“hana-s1-db3-client”等。    
 
 
    > [!IMPORTANT]
-   > 请确保你选择的 OS 已经过 SAP 针对你使用的特定 VM 类型上的 SAP HANA 进行的认证。 有关经 SAP HANA 认证的 VM 类型和这些类型的 OS 版本列表，请访问[经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)网站。 单击进入列出的 VM 类型的详细信息，获取该类型的 SAP HANA 支持的 OS 版本的完整列表。  
+   > 请确保选择的操作系统已经过 SAP 针对使用的特定 VM 类型上的 SAP HANA 进行的认证。 有关经 SAP HANA 认证的 VM 类型和这些类型的 OS 版本列表，请访问[经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)网站。 单击进入列出的 VM 类型的详细信息，获取该类型的 SAP HANA 支持的操作系统版本的完整列表。  
   
 
-2. 创建六个网络接口，`inter` 虚拟网络子网中的每个 HANA DB 虚拟机各一个（在此例中为 hana-s1-db1-inter、hana-s1-db2-inter、hana-s1-db3-inter、hana-s2-db1-inter、hana-s2-db2-inter 和 hana-s2-db3-inter）     。  
+2. 创建六个网络接口，`inter` 虚拟网络子网中的每个 HANA DB 虚拟机各一个（在此例中为“hana-s1-db1-inter”、“hana-s1-db2-inter、hana-s1-db3-inter”、“hana-s2-db1-inter”、“hana-s2-db2-inter”和“hana-s2-db3-inter”）。       
 
-3. 创建六个网络接口，`hsr` 虚拟网络子网中的每个 HANA DB 虚拟机各一个（在此例中为 hana-s1-db1-hsr、hana-s1-db2-hsr、hana-s1-db3-hsr、hana-s2-db1-hsr、hana-s2-db2-hsr 和 hana-s2-db3-hsr）     。  
+3. 创建六个网络接口，`hsr` 虚拟网络子网中的每个 HANA DB 虚拟机各一个（在此例中为“hana-s1-db1-hsr”、“hana-s1-db2-hsr”、“hana-s1-db3-hsr”、“hana-s2-db1-hsr”、“hana-s2-db2-hsr”和“hana-s2-db3-hsr”）。       
 
 4. 将新创建的虚拟网络接口附加到相应的虚拟机：  
 
     a. 转到 [Azure 门户](https://portal.azure.com/#home)中的虚拟机。  
 
-    b. 在左侧窗格中，选择“虚拟机”。 按虚拟机名称筛选（例如，hana-s1-db1），然后选择虚拟机。  
+    b. 在左侧窗格中，选择“虚拟机”。 按虚拟机名称筛选（例如，“hana-s1-db1”），然后选择虚拟机。  
 
     c. 在“概述”窗格中，选择“停止”以解除分配虚拟机。  
 
-    d. 选择“网络”，然后连接网络接口。 在“连接网络接口”下拉列表中，选择已为 `inter` 和 `hsr` 子网创建的网络接口。  
+    d. 选择“网络”，然后附加网络接口。 在“附加网络接口”下拉列表中，选择已为 `inter` 和 `hsr` 子网创建的网络接口。  
     
     e. 选择“保存”。  
  
     f. 对于剩余的虚拟机（在我们的示例中为 hana-s1-db2、hana-s1-db3、hana-s2-db1、hana-s2-db2 和 hana-s2-db3），请重复步骤 b 到 e    。
  
-    g. 使虚拟机暂时处于停止状态。 接下来，我们将为所有新连接的网络接口启用[加速网络](../../../virtual-network/create-vm-accelerated-networking-cli.md)。  
+    g. 使虚拟机暂时处于停止状态。 接下来，我们将为所有新附加的网络接口启用[加速网络](../../../virtual-network/create-vm-accelerated-networking-cli.md)。  
 
 5. 通过执行以下步骤，为 `inter` 和 `hsr` 子网的其他网络接口启用加速网络：  
 
@@ -249,7 +249,7 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
 
 通过执行以下步骤来配置和准备 OS：
 
-1. **[A]** 维护虚拟机上的主机文件。 包括所有子网的条目。 在此示例中，向 `/etc/hosts` 中添加了以下条目。  
+1. **[A]** 维护虚拟机上的主机文件。 包括所有子网的条目。 在此示例中，向 `/etc/hosts` 添加了以下条目。  
 
     ```bash
      # Client subnet
@@ -275,6 +275,49 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
      10.23.1.200     hana-s2-db2-hsr
      10.23.1.201     hana-s2-db3-hsr
     ```
+
+3. [A] 如 [NetApp SAP Applications on Microsoft Azure using Azure NetApp Files][anf-sap-applications-azure]（Microsoft Azure 上使用 Azure Files 文件的 Netapp SAP 应用程序）中所述，准备好 OS 以便在使用 NFS 的 NetApp 系统上运行 SAP HANA。 为 NetApp 配置设置创建配置文件 /etc/sysctl.d/netapp-hana.conf。  
+
+    <pre><code>
+    vi /etc/sysctl.d/netapp-hana.conf
+    # Add the following entries in the configuration file
+    net.core.rmem_max = 16777216
+    net.core.wmem_max = 16777216
+    net.core.rmem_default = 16777216
+    net.core.wmem_default = 16777216
+    net.core.optmem_max = 16777216
+    net.ipv4.tcp_rmem = 65536 16777216 16777216
+    net.ipv4.tcp_wmem = 65536 16777216 16777216
+    net.core.netdev_max_backlog = 300000
+    net.ipv4.tcp_slow_start_after_idle=0
+    net.ipv4.tcp_no_metrics_save = 1
+    net.ipv4.tcp_moderate_rcvbuf = 1
+    net.ipv4.tcp_window_scaling = 1
+    net.ipv4.tcp_sack = 1
+    </code></pre>
+
+4. [A] 在 Microsoft 的配合下为 Azure 配置设置创建配置文件 /etc/sysctl.d/ms-az.conf。  
+
+    <pre><code>
+    vi /etc/sysctl.d/ms-az.conf
+    # Add the following entries in the configuration file
+    net.ipv6.conf.all.disable_ipv6 = 1
+    net.ipv4.tcp_max_syn_backlog = 16348
+    net.ipv4.conf.all.rp_filter = 0
+    sunrpc.tcp_slot_table_entries = 128
+    vm.swappiness=10
+    </code></pre>
+
+    > [!TIP]
+    > 请避免在 sysctl 配置文件中显式设置 net.ipv4.ip_local_port_range 和 net.ipv4.ip_local_reserved_ports，以允许 SAP 主机代理管理端口范围。 有关更多详细信息，请参阅 SAP 说明 [2382421](https://launchpad.support.sap.com/#/notes/2382421)。  
+
+4. **[A]** 根据 [NetApp SAP Applications on Microsoft Azure using Azure NetApp Files][anf-sap-applications-azure]（Microsoft Azure 上使用 Azure NetApp 文件的 Netapp SAP 应用程序）中的建议调整 sunrpc 设置。  
+
+    <pre><code>
+    vi /etc/modprobe.d/sunrpc.conf
+    # Insert the following line
+    options sunrpc tcp_max_slot_table_entries=128
+    </code></pre>
 
 2. **[A]** SUSE 为 SAP HANA 提供特殊的资源代理，默认情况下，安装了 SAP HANA ScaleUp 的代理。 卸载 ScaleUp 的包（如果已安装），并安装方案 SAP HANAScaleOut 的包。 需要在所有群集 VM（包括多数仲裁虚拟机）上执行此步骤。   
 
@@ -370,7 +413,7 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
 ### <a name="prepare-the-data-and-log-local-file-systems"></a>准备数据并记录本地文件系统
 在所提供的配置中，文件系统 `/hana/data` 和 `/hana/log` 部署在托管磁盘上，并本地附加到每个 HANA DB VM。 需要执行以下步骤，才能在每个 HANA DB 虚拟机上创建本地数据和日志卷。 
 
-使用逻辑卷管理器 (LVM) 设置磁盘布局。 以下示例假设每个 HANA 虚拟机上附加了三个用于创建两个卷的数据磁盘。
+使用“逻辑卷管理器 (LVM)”设置磁盘布局。 以下示例假设每个 HANA 虚拟机上附加了三个用于创建两个卷的数据磁盘。
 
 1. **[AH]** 列出所有可用的磁盘：
     ```bash
@@ -497,7 +540,7 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
      * 对于“SAP HANA 系统 ID”：输入 HN1
      * 对于“实例号”[00]：输入 03
      * 对于“本地主机辅助角色组”[默认值]：按 Enter 接受默认值
-     * 对于“选择系统使用情况/输入索引 [4]”：输入 4（用于自定义）
+     * 对于“选择系统使用情况/输入索引[4]”：输入 4（用于自定义）
      * 对于“数据卷的位置”[/hana/data/HN1]：按 Enter 接受默认值
      * 对于“日志卷的位置”[/hana/log/HN1]：按 Enter 接受默认值
      * 对于“是否限制最大内存分配?” [n]：输入 n
@@ -510,15 +553,15 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
      * 对于“系统管理员用户 ID”[1001]：按 Enter 接受默认值
      * 对于“用户组的输入 ID (sapsys)”[79]：按 Enter 接受默认值
      * 对于“系统数据库用户 (system) 密码”：输入系统的密码
-     * 对于“确认系统数据库用户 (system) 密码”：输入系统的密码
-     * 对于“重新引导计算机后是否重启系统？” [n]：输入 n 
+     * 对于“确认系统数据库用户(system)密码”：输入系统的密码
+     * 对于“重新引导计算机后是否重启系统?” [n]：输入 n 
      * 对于“是否要继续 (y/n)”：验证摘要，如果一切正常，请输入 y
 
 2. **[2]** 重复上一步，在站点 2 上的第一个节点上安装 SAP HANA。   
 
 3. **[1,2]** 验证 global.ini  
 
-   显示 global.ini，并确保 SAP HANA 内部节点间通信的配置已就位。 验证“通信”部分。 它应该具有 `inter` 子网的地址空间，并且 `listeninterface` 应设置为 `.internal`。 验证“internal_hostname_resolution”部分。 它应该具有属于 `inter` 子网的 HANA 虚拟机的 IP 地址。  
+   显示 global.ini，并确保 SAP HANA 内部节点间通信的配置已就位。 验证 communication 节。 它应该具有 `inter` 子网的地址空间，并且 `listeninterface` 应设置为 `.internal`。 验证 internal_hostname_resolution 节。 它应该具有属于 `inter` 子网的 HANA 虚拟机的 IP 地址。  
 
    ```bash
      sudo cat /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
@@ -1013,4 +1056,4 @@ Azure NetApp 卷部署在一个单独的子网中，[已委托给 Azure NetApp �
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](./hana-vm-operations-netapp.md)
-* 要了解如何在 Azure VM 上建立 SAP HANA 的高可用性和灾难恢复计划，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 的高可用性][sap-hana-ha]。
+* 若要了解如何在 Azure VM 上建立 SAP HANA 的高可用性和灾难恢复计划，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 的高可用性][sap-hana-ha]。

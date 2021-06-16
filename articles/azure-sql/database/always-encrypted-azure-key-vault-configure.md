@@ -5,19 +5,19 @@ keywords: 数据加密, 加密密钥, 云加密
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 11/02/2020
-ms.openlocfilehash: 257abf03994c7006b1c3789174f550515dcd309a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c0ace1d42c36e70852102a4cdc81b97a3744f2e
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841455"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662756"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>使用 Azure 密钥管理库配置 Always Encrypted 
 

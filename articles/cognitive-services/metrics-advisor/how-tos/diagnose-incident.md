@@ -5,17 +5,17 @@ description: 了解如何使用指标顾问诊断事件，并详细领会数据�
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbullwin
-ms.openlocfilehash: ecbfb2d9acf6c62f95c264a14e306442db25e483
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd84293ab627c1e379af1e76d259a566998cb0ea
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101703416"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892439"
 ---
 # <a name="how-to-diagnose-an-incident-using-metrics-advisor"></a>操作说明：使用指标顾问诊断事件
 

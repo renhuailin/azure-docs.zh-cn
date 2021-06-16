@@ -3,12 +3,12 @@ title: “超出作业大小”错误
 description: 说明如何在作业大小或模板过大时排查错误。
 ms.topic: troubleshooting
 ms.date: 03/23/2021
-ms.openlocfilehash: b39a0bba15e73bab1a85cbd9e36efebf82d6cf42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d7333e8faf44b5c2c872448960eff34ff61daf2
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889359"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963262"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>解决“超出作业大小”错误
 
@@ -56,4 +56,4 @@ dependsOn: [
 
 ## <a name="solution-2---reduce-name-size"></a>解决方案 2 - 缩小名称
 
-请尝试缩短用于[参数](template-parameters.md)、[变量](template-variables.md)和[输出](template-outputs.md)的名称的长度。 当通过复制循环重复这些值时，一个大的名称会被相乘很多次。
+请尝试缩短用于[参数](./parameters.md)、[变量](./variables.md)和[输出](./outputs.md)的名称的长度。 当通过复制循环重复这些值时，一个大的名称会被相乘很多次。

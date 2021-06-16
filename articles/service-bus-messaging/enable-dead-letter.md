@@ -3,12 +3,13 @@ title: 为 Azure 服务总线队列和订阅启用死信
 description: 本文介绍如何通过使用 Azure 门户、PowerShell、CLI 和编程语言（C#、Java、Python 和 JavaScript）为队列和订阅启用死信
 ms.topic: how-to
 ms.date: 04/20/2021
-ms.openlocfilehash: 789f9221c224a70225849d05b736276b95ebfc11
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 13082574510a0668076b7191b6b973e5a1a7cd77
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989263"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671471"
 ---
 # <a name="enable-dead-lettering-on-message-expiration-for-azure-service-bus-queues-and-subscriptions"></a>为 Azure 服务总线队列和订阅启用消息过期死信
 Azure 服务总线队列和主题订阅提供名为“死信队列”(DLQ) 的辅助子队列。 死信队列不需要显式创建，并且不能删除或独立于主实体进行管理。 死信队列的用途是存放无法传递给任何接收方的消息或无法处理的消息。 有关详细信息，请参阅[服务总线死信队列概述](service-bus-dead-letter-queues.md)。 本文介绍为服务总线队列和订阅启用死信的不同方式。 

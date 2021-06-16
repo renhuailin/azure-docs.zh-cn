@@ -6,12 +6,12 @@ ms.date: 03/26/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1a24a969a6f90533252340e0702c6be8861a9eb5
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: d394b74bb2021d77f9d68cd101e0ee98e091f0ac
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838494"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892987"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>教程：使用 ARM 模板部署虚拟机扩展
 
@@ -52,7 +52,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
+Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。 
 1. 在“文件名”框中粘贴以下 URL：

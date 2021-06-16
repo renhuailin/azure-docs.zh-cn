@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 03/15/2021
+ms.date: 05/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 2adbefff2a0154268157c7d1735d83e70aa92ee8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a258240383905180a18830deb2488a7617c5fbee
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563583"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579166"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>什么是 Data Box Gateway？
 
@@ -67,7 +67,7 @@ Data Box Gateway 虚拟设备具有以下规范：
 | 规范                                          | 说明              |
 |---------------------------------------------------------|--------------------------|
 | 虚拟处理器（核心数）   | 最低为 4 核 |
-| 内存  |最低为 8 GB|
+| 内存  |至少 8 GB 的 RAM。 强烈建议至少配置 16 GB 的 RAM。|
 | 可用性|单节点|
 | 磁盘|OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、预配精简，并且必须由 SSD 提供支持|
 | 网络接口 |1 个或多个虚拟网络接口|

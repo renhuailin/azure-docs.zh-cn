@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: b9311329ea4115d49f36dd7d39782bbd748a356b
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ad06f6e4f4486a86212512e072d8799981dd051b
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106098"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615014"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>快速入门：使用 Node.js 向必应实体搜索 REST API 发送搜索请求
 
@@ -50,8 +50,8 @@ ms.locfileid: "97106098"
 
     ```javascript
     let subscriptionKey = 'ENTER YOUR KEY HERE';
-    let host = 'api.cognitive.microsoft.com';
-    let path = '/bing/v7.0/entities';
+    let host = 'api.bing.microsoft.com';
+    let path = '/v7.0/search';
     
     let mkt = 'en-US';
     let q = 'italian restaurant near me';

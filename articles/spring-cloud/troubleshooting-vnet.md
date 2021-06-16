@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6a8be63c134c25373f85a146ed3df7316e1eb7dc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 82ee9b368ecb98d4bb1833ab9a4fc1dc22182e99
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132398"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968877"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>在虚拟网络中排除 Azure Spring Cloud 的故障
 
@@ -31,7 +31,7 @@ ms.locfileid: "108132398"
 - 已创建实例的资源组。
 - 资源名称符合命名规则。 该名称只能包含小写字母、数字和连字符。 第一个字符必须是字母。 最后一个字符必须是字母或数字。 该值必须包含 2 到 32 个字符。
 
-若要使用资源管理器模板设置 Azure Spring Cloud 服务实例，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)。
+若要使用资源管理器模板设置 Azure Spring Cloud 服务实例，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md)。
 
 ### <a name="common-creation-issues"></a>常见创建问题
 

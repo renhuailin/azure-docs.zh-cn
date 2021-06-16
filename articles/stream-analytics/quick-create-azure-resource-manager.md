@@ -7,14 +7,14 @@ author: sidramadoss
 ms.author: sidram
 ms.workload: big-data
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs
+ms.custom: mvc, subject-armqs, devx-track-azurepowershell
 ms.date: 05/28/2020
-ms.openlocfilehash: f1ec5257195c73a046e9b0c450e50923ad36ddb2
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 9d0e26f8ef5507c408567fc318efe5be565d7e6b
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814579"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111904042"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 流分析作业
 
@@ -34,7 +34,7 @@ ms.locfileid: "109814579"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/streamanalytics-create/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.streamanalytics/streamanalytics-create/azuredeploy.json":::
 
@@ -54,7 +54,7 @@ ms.locfileid: "109814579"
 
    提供以下值：
 
-   |属性  |描述  |
+   |属性  |说明  |
    |---------|---------|
    |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/management/overview.md)。 |

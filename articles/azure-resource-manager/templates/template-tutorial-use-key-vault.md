@@ -5,13 +5,13 @@ author: mumian
 ms.date: 03/01/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: seodec18
-ms.openlocfilehash: 3bd0a0f70aa3ff983f87677219513aa56e051d89
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: e2136e70f45fa909a306e1af2c25cb6e5c6a85d0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838440"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081904"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教程：在 ARM 模板部署中集成 Azure Key Vault
 
@@ -46,7 +46,7 @@ ms.locfileid: "109838440"
     openssl rand -base64 32
     ```
 
-    验证生成的密码是否符合 VM 密码要求。 每个 Azure 服务具有特定的密码要求。 有关 VM 密码要求，请参阅[创建 VM 时，密码有什么要求？](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+    验证生成的密码是否符合 VM 密码要求。 每个 Azure 服务具有特定的密码要求。 有关 VM 密码要求，请参阅[创建 VM 时，密码有什么要求？](../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。
 
 ## <a name="prepare-a-key-vault"></a>准备 Key Vault
 
@@ -107,7 +107,7 @@ Write-Output $secretValueText
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
+Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。 
 

@@ -7,18 +7,18 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a75aca174fd2fda6ccb4c12346a617e24814caf4
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 7c0fa91b62696729cba1895f69ee1f36eb661f17
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318362"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111972018"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置[较新的指标警报](./alerts-metric-near-real-time.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 较新的指标警报当前适用于[这套资源类型](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。
+本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)配置[较新的指标警报](./alerts-metric-near-real-time.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 较新的指标警报当前适用于[这套资源类型](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。
 
 > [!IMPORTANT]
 > 用于针对资源类型创建指标警报的资源模板：Azure Log Analytics 工作区（即 `Microsoft.OperationalInsights/workspaces`）需要执行其他步骤。 有关详细信息，请参阅有关[日志指标警报 - 资源模板](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)的文章。

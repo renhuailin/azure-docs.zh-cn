@@ -7,12 +7,13 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: article
 ms.date: 07/07/2019
-ms.openlocfilehash: 7f2a2dded0b9c817e0700f4f93782d3b5c11ac3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0135e0ace5c71d12afbe5af720a35cecac62fc92
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92221377"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697108"
 ---
 # <a name="use-powershell-to-create-a-data-share-in-azure"></a>使用 PowerShell 在 Azure 中创建数据共享
 

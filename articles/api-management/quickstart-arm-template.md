@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 10/09/2020
-ms.openlocfilehash: 9f92c05b05ea64209872cff89a4f57a27b97870d
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: a27d1240329802a4a1d7eecd117ef60ce06436fb
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947602"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891475"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-an-arm-template"></a>快速入门：使用 ARM 模板创建新的 Azure API 管理服务实例
 
@@ -31,7 +31,7 @@ ms.locfileid: "107947602"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azure-api-management-create/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/azure-api-management-create/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.apimanagement/azure-api-management-create/azuredeploy.json":::
 

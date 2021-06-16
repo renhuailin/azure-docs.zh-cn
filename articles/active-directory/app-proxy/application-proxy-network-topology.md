@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a9b09193c94cf6e1674605312f0fbad03af1e7eb
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: e26522130d98d5e2f706a6c48002ad75b537d32a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108185844"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964765"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理优化流量流
 
@@ -199,5 +199,5 @@ ms.locfileid: "108185844"
 
 - [启用应用程序代理](application-proxy-add-on-premises-application.md)
 - [启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
-- [启用条件访问](../manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+- [启用条件访问](./application-proxy-integrate-with-sharepoint-server.md)
 - [解决使用应用程序代理时遇到的问题](application-proxy-troubleshoot.md)

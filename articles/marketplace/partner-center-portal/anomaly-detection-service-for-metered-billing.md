@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: ac3e07c67ca82c2960de1c4341a714b33751bfc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77159a099dcc28739457a10afef374502d117b5a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092406"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971151"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>针对按流量计费的异常情况检测服务
 
-[市场计量服务](marketplace-metering-service-apis-faq.md)使你可以在商业市场计划中创建基于非标准单位收费的产品/服务。 通过按流量计费，你可以将客户使用情况的使用情况事件发送到 Microsoft，并根据该使用情况准备计费。
+[市场计量服务](../marketplace-metering-service-apis-faq.md)使你可以在商业市场计划中创建基于非标准单位收费的产品/服务。 通过按流量计费，你可以将客户使用情况的使用情况事件发送到 Microsoft，并根据该使用情况准备计费。
 
 错误的使用情况数据可能由多种原因所致，例如 bug、消耗跟踪中的错误配置或欺诈行为。 使用情况数据不正确会导致客户费用不正确和计费争议。
 
@@ -82,5 +82,5 @@ ms.locfileid: "101092406"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[市场计量服务 API](marketplace-metering-service-apis.md)。
+- 了解[市场计量服务 API](../marketplace-metering-service-apis.md)。
 - 请参阅[在合作伙伴中心管理按流量计费的异常](../anomaly-detection.md)

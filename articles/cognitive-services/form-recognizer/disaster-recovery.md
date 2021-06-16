@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: 了解如何使用复制模型 API 来备份表单识别器资源。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 6ddf13e190f80ddbda0c5b97be4e55e2ca963aef
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 98d04f667601bfaa5788a39e17aef3f7a68d42d5
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374520"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887683"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>备份和恢复表单识别器模型
 

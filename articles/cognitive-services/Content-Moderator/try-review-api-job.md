@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 924c21037a464770fac13c9b45ddcf261ff5a058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62a6cd9e6302e66277b67ca7d37dd1ef33f96f1a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96905125"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031684"
 ---
 # <a name="define-and-use-moderation-jobs-api-console"></a>定义和使用审核作业（API 控制台）
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 审核作业充当内容审核、工作流和审阅功能的一种包装器。 本指南演示如何使用作业 REST API 来启动和检查内容审核作业。 了解 API 的结构后，可以轻松将这些调用移植到任何与 REST 兼容的平台。
 

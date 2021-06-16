@@ -14,19 +14,21 @@ metadata:
   ms.date: 10/14/2019
   ms.author: erhopf
   ms.custom: contperf-fy21q2
-  ms.openlocfilehash: bef769bdb0533d6509badfd3f6bb8441996a67a4
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 6517e29ebc025d94a8b85b754b60584aebd4c057
+  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110379381"
+  ms.lasthandoff: 05/26/2021
+  ms.locfileid: "110476889"
 landingContent:
 - title: 转换器
   linkLists:
   - linkListType: overview
     links:
-    - text: 转换器
+    - text: 什么是翻译器？
       url: translator-info-overview.md
+    - text: 语言支持
+      url: language-support.md
     - text: 文档翻译
       url: document-translation/overview.md
     - text: 自定义翻译
@@ -39,26 +41,42 @@ landingContent:
       url: ./translator-how-to-signup.md
     - text: 常见问题解答
       url: https://www.microsoft.com/translator/faq.aspx
-- title: 入门
+- title: 文本翻译
   linkLists:
   - linkListType: quickstart
     links:
     - text: 快速入门
       url: quickstart-translator.md
-  - linkListType: tutorial
+  - linkListType: how-to-guide
     links:
-    - text: 创建 WPF 翻译应用 - C#
-      url: tutorial-wpf-translation-csharp.md
-    - text: 创建 Flask 翻译应用 - REST
-      url: tutorial-build-flask-app-translation-synthesis.md
+    - text: 创建资源
+      url: translator-how-to-signup.md
+    - text: 阻止翻译内容
+      url: prevent-translation.md
+    - text: 使用动态字典
+      url: dynamic-dictionary.md
   - linkListType: reference
     links:
     - text: 翻译器参考 (v3)
       url: reference/v3-0-reference.md
     - text: 请求限制
       url: request-limits.md
-    - text: 语言支持
-      url: language-support.md
+- title: 文档翻译
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是文档翻译？
+      url: document-translation/overview.md
+  - linkListType: quickstart
+    links:
+    - text: 快速入门
+      url: document-translation/get-started-with-document-translation.md
+  - linkListType: reference
+    links:
+    - text: 文档翻译参考
+      url: document-translation/reference/get-supported-document-formats.md
+    - text: 开始翻译
+      url: document-translation/reference/start-translation.md
 - title: 自定义翻译
   linkLists:
   - linkListType: quickstart
@@ -97,6 +115,8 @@ landingContent:
     links:
     - text: GitHub 上的示例
       url: https://aka.ms/TranslatorGitHub
+    - text: 符合性和认证
+      url: https://www.microsoft.com/translator/business/notrace/
     - text: Stack Overflow
       url: https://stackoverflow.com/questions/tagged/microsoft-translator
 - title: 帮助和反馈

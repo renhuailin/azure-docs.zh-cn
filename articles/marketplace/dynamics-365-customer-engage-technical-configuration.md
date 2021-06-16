@@ -8,12 +8,12 @@ ms.custom: references_regions
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/29/2021
-ms.openlocfilehash: 06b08ec2a28af36299f583bc9f8aa5604c347593
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 51ef78575a6987c3ac1537f1bb9d35e98e294ab6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319046"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971415"
 ---
 # <a name="set-up-dynamics-365-for-customer-engagement--power-apps-offer-technical-configuration"></a>设置 Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务技术配置
 
@@ -47,7 +47,7 @@ ms.locfileid: "108319046"
 
 默认情况下，你在上面输入的“应用程序配置 URL”将用于每个区域。 如果需要，可以为一个或多个特定区域输入单独的应用程序配置 URL。
 
-选择“保存草稿”，然后转到左侧导航菜单中的下一个选项卡“与 Microsoft 联合销售” 。 有关设置与 Microsoft 共同销售（可选）的信息，请参阅[与 Microsoft 销售团队和合作伙伴共同销售的概述](marketplace-co-sell.md)。 如果未设置联合销售或已完成设置，请继续执行下面的后续步骤。
+选择“保存草稿”，然后转到左侧导航菜单中的下一个选项卡“与 Microsoft 联合销售” 。 有关设置与 Microsoft 共同销售（可选）的信息，请参阅[与 Microsoft 销售团队和合作伙伴共同销售的概述](./co-sell-overview.md)。 如果未设置联合销售或已完成设置，请继续执行下面的后续步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b3498037f3d2088459784ab066b8e94ba344a275
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: da5060cebd086935c80a19c846a16c74def44279
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792176"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032602"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建 VM
 
@@ -55,7 +55,7 @@ az vm create --resource-group myResourceGroup \
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
-- [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [创建共享映像库](https://azure.microsoft.com/resources/templates/sig-create/)
+- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/vm-from-sig/)

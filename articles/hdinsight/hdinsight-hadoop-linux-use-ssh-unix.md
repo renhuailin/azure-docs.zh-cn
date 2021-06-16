@@ -3,14 +3,14 @@ title: 将 SSH 与 Hadoop 配合使用 - Azure HDInsight
 description: 使用安全外壳 (SSH) 访问 HDInsight。 本文档介绍如何通过 Windows、Linux、Unix 或 macOS 客户端使用 ssh 命令连接到 HDInsight。
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-azurepowershell
 ms.date: 02/28/2020
-ms.openlocfilehash: 7d7ba260177cb27ac181f081335ffb1e19aa5c33
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6077db17258c40cef5c6cd987469612171e344d2
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062787"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558559"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Apache Hadoop)
 
@@ -89,7 +89,7 @@ ssh-keygen -t rsa -b 2048
 | Azure 门户 | 取消选中“对 SSH 使用群集登录密码”，然后选择“公钥”作为 SSH 身份验证类型。 最后，在“SSH 公钥”字段中选择公钥文件，或粘贴该文件的文本内容。</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png" alt-text="创建 HDInsight 群集时的 SSH 公钥对话框"::: |
 | Azure PowerShell | 使用 [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 的 `-SshPublicKey` 参数，并以字符串的形式传递公钥内容。|
 | Azure CLI | 使用 [`az hdinsight create`](/cli/azure/hdinsight#az_hdinsight_create) 命令的 `--sshPublicKey` 参数，并以字符串的形式传递公钥内容。 |
-| Resource Manager 模板 | 有关在模板中使用 SSH 密钥的示例，请参阅 [Deploy HDInsight on Linux with SSH key](https://azure.microsoft.com/resources/templates/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-publickey/)（使用 SSH 密钥在 Linux 上部署 HDInsight）。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-publickey/azuredeploy.json) 文件中的 `publicKeys` 元素用于在创建群集时向 Azure 传递密钥。 |
+| Resource Manager 模板 | 有关在模板中使用 SSH 密钥的示例，请参阅 [Deploy HDInsight on Linux with SSH key](https://azure.microsoft.com/resources/templates/hdinsight-linux-ssh-publickey/)（使用 SSH 密钥在 Linux 上部署 HDInsight）。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-publickey/azuredeploy.json) 文件中的 `publicKeys` 元素用于在创建群集时向 Azure 传递密钥。 |
 
 ## <a name="authentication-password"></a>身份验证：密码
 
@@ -108,7 +108,7 @@ ssh-keygen -t rsa -b 2048
 | Azure 门户 | 默认情况下，SSH 用户帐户的密码与群集登录帐户的密码相同。 若要使用不同的密码，请取消选中“对 SSH 使用群集登录密码”，然后在“SSH 密码”字段中输入密码。</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png" alt-text="创建 HDInsight 群集时的 SSH 密码对话框":::|
 | Azure PowerShell | 使用 [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 的 `--SshCredential` 参数，并传递包含 SSH 用户帐户名和密码的 `PSCredential` 对象。 |
 | Azure CLI | 使用 [`az hdinsight create`](/cli/azure/hdinsight#az_hdinsight_create) 命令的 `--ssh-password` 参数，并提供密码值。 |
-| Resource Manager 模板 | 有关在模板中使用密码的示例，请参阅 [Deploy HDInsight on Linux with SSH password](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)（使用 SSH 密码在 Linux 上部署 HDInsight）。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-password/azuredeploy.json) 文件中的 `linuxOperatingSystemProfile` 元素用于在创建群集时向 Azure 传递 SSH 帐户名和密码。|
+| Resource Manager 模板 | 有关在模板中使用密码的示例，请参阅 [Deploy HDInsight on Linux with SSH password](https://azure.microsoft.com/resources/templates/hdinsight-linux-ssh-password/)（使用 SSH 密码在 Linux 上部署 HDInsight）。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-password/azuredeploy.json) 文件中的 `linuxOperatingSystemProfile` 元素用于在创建群集时向 Azure 传递 SSH 帐户名和密码。|
 
 ### <a name="change-the-ssh-password"></a>更改 SSH 密码
 

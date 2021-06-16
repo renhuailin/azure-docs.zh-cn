@@ -8,18 +8,18 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5af10bc30a7a3bd8ca211c3fd74364c74ee36fb5
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: e2311f3cf2a9418ba3ffef25fc1a8f3b22a3faa5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278499"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961167"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建服务总线资源
 
 本文介绍如何使用 Azure 资源管理器模板、PowerShell 和服务总线资源提供程序创建和部署服务总线资源。
 
-Azure 资源管理器模板可帮助你定义要为解决方案部署的资源，以及指定可用于为不同环境输入值的参数和变量。 此模板以 JSON 编写并包含可用于为部署构造值的表达式。 有关编写 Azure 资源管理器模板的详细信息，以及模板格式的讨论，请参阅 [Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)。
+Azure 资源管理器模板可帮助你定义要为解决方案部署的资源，以及指定可用于为不同环境输入值的参数和变量。 此模板以 JSON 编写并包含可用于为部署构造值的表达式。 有关编写 Azure 资源管理器模板的详细信息，以及模板格式的讨论，请参阅 [Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md)。
 
 > [!NOTE]
 > 本文中的示例演示如何使用 Azure Resource Manager 来创建服务总线命名空间和消息实体（队列）。 有关其他模板示例，请访问 [Azure 快速启动模板库][Azure Quickstart Templates gallery]并搜索“服务总线”。
@@ -251,7 +251,7 @@ Parameters        :
 
 * [Azure Resource Manager 概述][Azure Resource Manager overview]
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源][Deploy resources with Azure Resource Manager templates]
-* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/template-syntax.md)
+* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/syntax.md)
 * [Microsoft.ServiceBus 资源类型](/azure/templates/microsoft.servicebus/allversions)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/management/overview.md
