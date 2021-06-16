@@ -9,15 +9,16 @@ ms.author: jordane
 author: jpe316
 ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f30cd528a329708a7478b1a4a343f7be3b9eac04
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 29b5e5b23fd8ad1b3912111ef1afef017ceced7c
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877779"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592315"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安装和使用 Azure 机器学习的 CLI 扩展
 
+[!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
 
 Azure 机器学习 CLI 是 [Azure CLI](/cli/azure/)（适用于 Azure 平台的跨平台命令行接口）的一个扩展。 此扩展提供用于操作 Azure 机器学习的命令。 通过此扩展可将机器学习活动自动化。 以下列表提供了可以使用 CLI 扩展执行的一些示例操作：
 
@@ -39,7 +40,7 @@ CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工�
 
 ## <a name="full-reference-docs"></a>完整参考文档
 
-查找 [Azure CLI 的 azure-cli-ml 扩展的完整参考文档](/cli/azure/ml/)。
+查找 [Azure CLI 的 azure-cli-ml 扩展的完整参考文档](/cli/azure/ml(v1)/)。
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>将 CLI 连接到 Azure 订阅
 

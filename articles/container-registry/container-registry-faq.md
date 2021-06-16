@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 84567f9667619bb9208f066460b3c4483123b3fc
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 7ab6a090661521f81276188ebb0f63723a277d9f
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331441"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112008099"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -33,7 +33,7 @@ ms.locfileid: "108331441"
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>是否可以使用资源管理器模板创建 Azure 容器注册表？
 
-是的。 这里提供了[模板](https://azure.microsoft.com/resources/templates/101-container-registry/)，可以用来创建注册表。
+是的。 这里提供了[模板](https://azure.microsoft.com/resources/templates/container-registry/)，可以用来创建注册表。
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 中是否提供对映像的安全漏洞扫描？
 

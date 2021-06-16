@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: bcb37c624f53d961020de022569a621ca1dfaba1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8ec795e7ad54d2101573d857fa52b5aaad0ed71d
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788951"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032386"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>快速入门：使用 ARM 模板设置 IoT 中心设备预配服务 (DPS)
 
@@ -25,7 +25,7 @@ ms.locfileid: "107788951"
 
 如果环境满足先决条件，并且你已经熟悉使用 ARM 模板，则选择下面的“部署到 Azure”按钮将在 Azure 门户中打开用于部署的模板。
 
-[![概述中的“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-iothub-device-provisioning%2fazuredeploy.json)
+[![概述中的“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2Fquickstarts%2Fmicrosoft.devices%2Fiothub-device-provisioning%2fazuredeploy.json)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,12 +34,12 @@ ms.locfileid: "107788951"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-iothub-device-provisioning/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/iothub-device-provisioning/)。
 
 > [!NOTE]
 > 目前没有 ARM 模板支持使用新的 DPS 资源创建注册。 关于此功能的请求很常见，我们已知晓，且正在考虑实现它。
 
-:::code language="json" source="~/quickstart-templates/101-iothub-device-provisioning/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.devices/iothub-device-provisioning/azuredeploy.json":::
 
 上述模板中定义了两个 Azure 资源：
 
@@ -53,7 +53,7 @@ ms.locfileid: "107788951"
 
 1. 选择下图登录到 Azure 并打开模板以进行部署。 该模板创建新的 IoT 中心和 DPS 资源。 该中心将链接到 DPS 资源。
 
-    [![“在门户中部署到 Azure”步骤](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-iothub-device-provisioning%2fazuredeploy.json)
+    [![“在门户中部署到 Azure”步骤](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2Fquickstarts%2Fmicrosoft.devices%2Fiothub-device-provisioning%2fazuredeploy.json)
 
 2. 选择或输入以下值，并单击“查看 + 创建”。
 
@@ -114,7 +114,7 @@ ms.locfileid: "107788951"
     ```azurecli-interactive
     read -p "Enter a project name that is used for generating resource names:" projectName &&
     read -p "Enter the location (i.e. centralus):" location &&
-    templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-iothub-device-provisioning/azuredeploy.json" &&
+    templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.devices/iothub-device-provisioning/azuredeploy.json" &&
     resourceGroupName="${projectName}rg" &&
     az group create --name $resourceGroupName --location "$location" &&
     az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&

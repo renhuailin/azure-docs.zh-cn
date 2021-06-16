@@ -13,12 +13,12 @@ ms.date: 03/29/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3e3f729243f4bcd8f40ca681bd1c0d7675696e27
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1d2c2f3131c8ee8fb73dfd52df3d7545b52b0044
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455142"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075144"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -164,7 +164,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |`response_type`| 必须 | 添加 `id_token` 是向服务器表明：应用程序希望 `/authorize` 终结点的响应中有一个 ID 令牌。  |
 |`scope`| 必须 | 对于 ID 令牌，必须对其进行更新以包括 ID 令牌作用域 - `openid`，还可以包括 `profile` 和 `email`。 |
 |`nonce`| 必须|     包含在请求中的值，由应用生成，这些值将作为声明包含在生成的 id_token 中。 然后，应用可以验证此值，以减少令牌重播攻击。 该值通常是随机的唯一字符串，可用于标识请求的来源。 |
-|`response_mode`| 建议 | 指定将生成的令牌送回到应用程序时应该使用的方法。 默认为 `query` 的目的是仅发送授权代码，但如果请求包括 id_token `response_type`，则为 `fragment`。  但是，建议应用使用 `form_post`，尤其是使用 `http:/localhost` 作为重定向 URI 时。 |
+|`response_mode`| 建议 | 指定将生成的令牌送回到应用程序时应该使用的方法。 默认为 `query` 的目的是仅发送授权代码，但如果请求包括 id_token `response_type`，则为 `fragment`。  但是，建议应用使用 `form_post`，尤其是使用 `http://localhost` 作为重定向 URI 时。 |
 
 使用 `fragment` 作为响应模式可能会导致从重定向读取代码的 Web 应用出现问题，因为浏览器不会将片段传递给 Web 服务器。  在这些情况下，应用应该使用 `form_post` 响应模式，以确保将所有数据发送到服务器。 
 

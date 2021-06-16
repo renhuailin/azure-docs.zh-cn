@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b62e341d35a4ff7fd5a7ddd6d9f19b138aaf0aa9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cd58ae6aa0083b0f2a02ef1c008e76f92f39b766
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99071641"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676294"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>对块 blob 数据执行时间点还原
 
@@ -44,7 +45,7 @@ ms.locfileid: "99071641"
 1. 在“设置”下，选择“数据保护”。
 1. 选择“打开时间点还原”。 选择此选项后，还会启用 Blob 软删除、版本控制和更改源。
 1. 以天为单位设置时间点还原的最大还原点。 此数字必须至少为一天，并小于为 blob 软删除指定的保持期。
-1. 保存更改。
+1. 保存所做更改。
 
 下图显示了一个已配置时间点还原的存储帐户，其还原点配置为七天前，Blob 软删除的保持期为 14 天。
 
@@ -86,7 +87,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-要使用 Azure CLI 配置时间点还原，请首先安装 Azure CL 版本 2.2.0 或更高版本。 然后，调用 [az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) 命令来启用时间点还原，以及存储帐户所需的其他数据保护设置。
+要使用 Azure CLI 配置时间点还原，请首先安装 Azure CL 版本 2.2.0 或更高版本。 然后，调用 [az storage account blob-service-properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) 命令来启用时间点还原，以及存储帐户所需的其他数据保护设置。
 
 以下示例将启用软删除并将软删除保持期设置为 14 天，启用更改源和版本控制，然后启用时间点还原，还原期为 7 天。 运行此示例时，请务必将尖括号中的值替换为你自己的值：
 
@@ -123,11 +124,11 @@ az storage account blob-service-properties update \
 仅还原块 blob。 页 blob 和追加 blob 不在还原操作的范围之内。 有关追加 blob 相关限制的详细信息，请参阅[块 blob 的时间点还原](point-in-time-restore-overview.md)。
 
 > [!IMPORTANT]
-> 执行还原操作时，Azure 存储将在操作期间内阻止对还原范围的 blob 执行数据操作。 读取、写入和删除操作都会在主位置受到阻止。 因此，执行还原操作时，在 Azure 门户中列出容器这类的操作可能不会按预期方式执行。
+> 执行还原操作时，Azure 存储会阻止对在操作期间还原的范围内的 blob 执行数据操作。 读取、写入和删除操作在主位置中被阻止。 出于此原因，在执行还原操作时，Azure 门户中的操作（如列出容器）可能不会按预期执行。
 >
-> 如果存储帐户已异地复制，则在还原操作期间，从辅助位置读取的操作可能能够继续进行。
+> 如果存储帐户是异地复制的，则在还原操作期间，从辅助位置读取的操作可以继续。
 >
-> 还原数据集所用的时间取决于在还原期间执行的写入和删除操作的次数。 例如，如果一个帐户有 100 万个对象，每天增加 3,000 个对象并删除 1,000 个对象，则需要大约两个小时才能还原到过去 30 天的某个时间点。 对于这种变化速率的帐户，不建议保持期超过 90 天以及执行超过过去 90 天的还原。
+> 还原一组数据所用的时间取决于在还原期间执行的写入和删除操作的次数。 例如，如果一个帐户有 1 百万个对象，每天增加 3,000 个对象，每天删除 1,000 个对象，将需要大约两个小时才能还原到过去 30 天的点。 对于具有此变化率的帐户，不建议在过去保留时间和还原超过90天。
 
 ### <a name="restore-all-containers-in-the-account"></a>还原帐户中的所有容器
 

@@ -8,12 +8,13 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 9f8793b6ea0ba454b66c525c2d53c1de2197d539
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6eb802d560e168d64a1f9abe0301f8038203ee54
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102440201"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028480"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>使用 PowerShell 配置 Azure 映像生成器服务权限
 
@@ -22,20 +23,6 @@ ms.locfileid: "102440201"
 若要允许 Azure VM 映像生成器将映像分发到托管映像或共享映像库，则需要创建一个拥有读取和写入映像权限的 Azure 用户分配的标识。 如果要访问 Azure 存储，则需要具有读取专用或公共容器的权限。
 
 必须先设置权限和特权才能生成映像。 以下各部分详细介绍如何使用 PowerShell 配置可能的方案。
-
-> [!IMPORTANT]
-> Azure 映像生成器目前提供公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-## <a name="register-the-features"></a>注册功能
-
-首先，必须注册 Azure 映像生成器服务。 注册会授予服务用于创建、管理和删除暂存资源组的权限。 该服务还具有添加映像生成所需的组资源的权限。
-
-```powershell-interactive
-Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-```
 
 ## <a name="create-an-azure-user-assigned-managed-identity"></a>创建 Azure 用户分配的托管标识
 
@@ -46,7 +33,7 @@ Azure 映像生成器要求创建 [Azure 用户分配的托管标识](../../acti
 
 下面的示例演示如何创建 Azure 用户分配的托管标识。 替换占位符设置以设置变量。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |---------|-------------|
 | \<Resource group\> | 用于创建用户分配的托管标识的资源组。 |
 
@@ -126,14 +113,14 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 若要简化示例中值的替换，请先设置以下变量。 替换占位符设置以设置变量。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |---------|-------------|
 | \<Subscription ID\> | Azure 订阅 ID |
 | \<Resource group\> | 自定义映像的资源组 |
 
 ```powershell-interactive
 $sub_id = "<Subscription ID>"
-# Resource group - For Preview, image builder will only support creating custom images in the same Resource Group as the source managed image.
+# Resource group - image builder will only support creating custom images in the same Resource Group as the source managed image.
 $imageResourceGroup = "<Resource group>"
 $identityName = "aibIdentity"
 
@@ -175,7 +162,7 @@ New-AzRoleAssignment @parameters
 
 若要简化示例中值的替换，请先设置以下变量。 替换占位符设置以设置变量。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |---------|-------------|
 | \<Subscription ID\> | Azure 订阅 ID |
 | \<Resource group\> | VNET 资源组 |

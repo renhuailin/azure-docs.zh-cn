@@ -2,14 +2,14 @@
 title: 快速入门：创建包含使用者组的事件中心 - Azure 事件中心
 description: 快速入门：使用 Azure 资源管理器模板创建包含事件中心和使用者组的事件中心命名空间
 ms.topic: quickstart
-ms.custom: subject-armqs
-ms.date: 06/23/2020
-ms.openlocfilehash: 004d8db3502c866587ee0a96c3ecd4b3312224dd
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: subject-armqs, devx-track-azurepowershell
+ms.date: 06/08/2021
+ms.openlocfilehash: a65fc2359393839491d5d2109fadabd77b08ec22
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278337"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965172"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建事件中心
 
@@ -27,7 +27,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/eventhubs-create-namespace-and-eventhub/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.eventhub/eventhubs-create-namespace-and-eventhub/azuredeploy.json":::
 
@@ -105,7 +105,7 @@ Write-Host "Press [ENTER] to continue ..."
 [4]: ./media/event-hubs-quickstart-powershell/receiver1.png
 [5]: ./media/event-hubs-quickstart-powershell/metrics.png
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/management/manage-resources-powershell.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/management/manage-resources-cli.md

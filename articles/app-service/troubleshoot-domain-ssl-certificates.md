@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: c2c09e1a30c9cef4d65b2d5443481c84ab779af8
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: ba266c5a4ec5ffb84ee02e9c1904423f01d333e5
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833825"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670904"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 TLS/SSL 证书问题
 
@@ -109,7 +109,7 @@ ms.locfileid: "107833825"
 
 **原因 1 的解决方法**
 
-- 如果添加了 A 记录，请确保同时添加 TXT 记录。 有关详细信息，请参阅[创建 A 记录](./app-service-web-tutorial-custom-domain.md#create-the-a-record)。
+- 如果添加了 A 记录，请确保同时添加 TXT 记录。 有关详细信息，请参阅[创建 A 记录](./app-service-web-tutorial-custom-domain.md#4-create-the-dns-records)。
 - 如果不需要对应用使用根域，我们建议使用 CNAME 记录，而不要使用 A 记录。
 - 不要对同一个域同时使用 CNAME 记录和 A 记录。 此问题可能会导致冲突，并阻止域解析。 
 

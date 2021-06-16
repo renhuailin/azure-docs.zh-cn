@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: 3d7b88007a27b05119ebe93217c64279c8c541ff
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c36c2fd86252f41af0e722445dca78d870c255e2
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373397"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969898"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>教程：使用已启用 Azure Arc 的 Kubernetes 群集通过 GitOps 实现 CI/CD
 
@@ -211,8 +211,8 @@ CD 管道使用正在运行的生成的安全令牌对 GitOps 存储库进行身
 1. 对于 `<Project Name> Build Service (<Organization Name>)`，允许 `Contribute`、`Contribute to pull requests` 和 `Create branch`。
 
 有关详细信息，请参阅：
-- [向生成服务授予 VC 权限](https://docs.microsoft.com/azure/devops/pipelines/scripts/git-commands?view=azure-devops&tabs=yaml&preserve-view=true#version-control )
-- [管理生成服务帐户权限](https://docs.microsoft.com/azure/devops/pipelines/process/access-tokens?view=azure-devops&tabs=yaml&preserve-view=true#manage-build-service-account-permissions)
+- [向生成服务授予 VC 权限](/azure/devops/pipelines/scripts/git-commands?preserve-view=true&tabs=yaml&view=azure-devops#version-control )
+- [管理生成服务帐户权限](/azure/devops/pipelines/process/access-tokens?preserve-view=true&tabs=yaml&view=azure-devops#manage-build-service-account-permissions)
 
 
 ## <a name="deploy-the-dev-environment-for-the-first-time"></a>首次部署开发环境

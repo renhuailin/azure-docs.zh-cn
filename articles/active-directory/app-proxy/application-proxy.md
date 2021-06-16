@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 1b2887dd82d9c01cc5403f35dffa230feff385d7
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: f45dcde6368cefe0d8eb869bd042e36f364589cf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108185805"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963888"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理远程访问本地应用程序
 
@@ -35,10 +35,10 @@ Azure AD 应用程序代理的特性：
 
 应用程序代理适用于：
 
-* 使用 [Windows 集成身份验证](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)方法进行身份验证的 Web 应用程序
-* 使用基于窗体或[基于标头](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md)的访问的 Web 应用程序
+* 使用 [Windows 集成身份验证](./application-proxy-configure-single-sign-on-with-kcd.md)方法进行身份验证的 Web 应用程序
+* 使用基于窗体或[基于标头](./application-proxy-configure-single-sign-on-with-headers.md)的访问的 Web 应用程序
 * 想要公开给不同设备上丰富应用程序的 Web API
-* 托管在[远程桌面网关](../manage-apps/application-proxy-integrate-with-remote-desktop-services.md)后面的应用程序
+* 托管在[远程桌面网关](./application-proxy-integrate-with-remote-desktop-services.md)后面的应用程序
 * 与 Microsoft 身份验证库 (MSAL) 集成的丰富客户端应用
 
 应用程序代理支持单一登录。 有关支持的方法的详细信息，请参阅[选择单一登录方法](../manage-apps/sso-options.md#choosing-a-single-sign-on-method)。

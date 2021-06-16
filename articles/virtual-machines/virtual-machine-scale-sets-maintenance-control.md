@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 55cbc5db534dd1b05f91a24e0104b1f2dc110547
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c97294833ea04e4af559008cf55d3aef7230ef81
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90532587"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072228"
 ---
-# <a name="preview-maintenance-control-for-azure-virtual-machine-scale-sets"></a>预览版：Azure 虚拟机规模集的维护控制 
+# <a name="maintenance-control-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的维护控制 
 
 使用维护控制来管理虚拟机规模集的[自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)。
 
@@ -26,11 +26,6 @@ ms.locfileid: "90532587"
 - 创建维护配置。
 - 将虚拟机规模集关联到维护配置。
 - 启用自动 OS 升级。
-
-> [!IMPORTANT]
-> Azure 虚拟机规模集上 OS 映像升级的维护控制当前为公共预览版。
-> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
 ## <a name="limitations"></a>限制
@@ -46,11 +41,11 @@ ms.locfileid: "90532587"
 可以使用以下任一选项来创建和管理维护配置：
 
 - [Azure PowerShell](virtual-machine-scale-sets-maintenance-control-powershell.md)
+- [Azure CLI](virtual-machine-scale-sets-maintenance-control-cli.md)
+- [Azure 门户](virtual-machine-scale-sets-maintenance-control-portal.md)
 
 
 ## <a name="next-steps"></a>后续步骤
-
-了解如何使用维护控制和 PowerShell 来控制何时对 Azure 虚拟机规模集应用维护。
 
 > [!div class="nextstepaction"]
 > [使用 PowerShell 进行虚拟机规模集维护控制](virtual-machine-scale-sets-maintenance-control-powershell.md)

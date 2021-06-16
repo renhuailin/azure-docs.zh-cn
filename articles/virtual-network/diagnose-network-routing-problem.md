@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
-ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d7b8b04093bbec23dd080802876358c1b1af33e8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84705043"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675865"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>诊断虚拟机路由问题
 
@@ -87,7 +88,7 @@ NetworkInterfaces
 
 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令，或者在计算机上运行 CLI。 本文需要 Azure CLI 2.0.32 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需要运行 `az login`，并使用拥有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
 
-使用 [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) 获取网络接口的有效路由。 以下示例获取资源组 myResourceGroup 中名为 myVMNic1 的网络接口的有效路由：
+使用 [az network nic show-effective-route-table](/cli/azure/network/nic#az_network_nic_show_effective_route_table) 获取网络接口的有效路由。 以下示例获取资源组 myResourceGroup 中名为 myVMNic1 的网络接口的有效路由：
 
 ```azurecli-interactive
 az network nic show-effective-route-table \

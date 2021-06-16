@@ -6,16 +6,16 @@ ms.custom: devx-track-dotnet
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 08/06/2020
-ms.openlocfilehash: 4e287d600e596539aec2763157036d2bb71b141c
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 90baa5490283697cf021215d55a628182c43a124
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383315"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965539"
 ---
 # <a name="resource-manager-template-samples-for-creating-azure-app-services-web-apps-with-application-insights-monitoring"></a>用于创建具有 Application Insights 监视的 Azure 应用服务 Web 应用的资源管理器模板示例
 
-本文包含 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例，这些模板示例可用于部署和配置[经典 Application Insights 资源](../app/create-new-resource.md)以及 Azure 应用服务 Web 应用。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+本文包含 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)示例，这些模板示例可用于部署和配置[经典 Application Insights 资源](../app/create-new-resource.md)以及 Azure 应用服务 Web 应用。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

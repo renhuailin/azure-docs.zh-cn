@@ -7,15 +7,13 @@ ms.author: duau
 ms.date: 09/01/2020
 ms.topic: quickstart
 ms.service: traffic-manager
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 68ebc6d7827e898946930b956263be3e3010a008
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: d18e85ec73e1112ed31cc25846fb46aa34038932
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839286"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900568"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>快速入门：使用 ARM 模板创建流量管理器配置文件
 
@@ -33,7 +31,7 @@ ms.locfileid: "109839286"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-traffic-manager-external-endpoint)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/traffic-manager-external-endpoint)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/traffic-manager-external-endpoint/azuredeploy.json":::
 

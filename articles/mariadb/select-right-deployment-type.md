@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e99d94fbd4ab91c2ba51ca7922873b8338f7da85
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664512"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033295"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>在 Azure 中选择适当的 MariaDB 服务器选项
 
@@ -41,7 +41,7 @@ ms.locfileid: "98664512"
 | 混合场景 | 使用[数据传入复制](concepts-data-in-replication.md)可将外部 MariaDB 服务器中的数据同步到 Azure Database for MariaDB 服务中。 外部服务器可以处于本地、虚拟机中或是其他云提供商托管的数据库服务。<br/><br/> 使用[只读副本](concepts-read-replicas.md)功能可将 Azure Database for MariaDB 源服务器中的数据复制到最多五个只读副本服务器。 副本位于同一个 Azure 区域中，或者跨不同的区域。 使用 binlog 复制技术异步更新只读副本。<br/><br/>跨区域读取复制目前为公共预览版。| 由客户管理
 | 备份和还原 | 自动创建[服务器备份](concepts-backup.md#backups)并将其存储在用户配置的本地冗余或异地冗余存储中。 服务将创建完整备份、差异备份和事务日志备份 | 由客户管理 |
 | 监视数据库操作 | 可让客户针对数据库操作[设置警报](concepts-monitoring.md)，并在即将达到阈值时采取措施。 | 由客户管理 |
-| 高级威胁防护 | 提供[高级威胁防护](howto-database-threat-protection-portal.md)。 高级威胁防护可检测异常活动，指示尝试访问或利用数据库的行为异常且可能有害。<br/><br/>高级威胁防护目前为公共预览版。| 客户必须自行构建此防护。
+| 高级威胁防护 | 提供高级威胁防护。 高级威胁防护可检测异常活动，指示尝试访问或利用数据库的行为异常且可能有害。<br/><br/>高级威胁防护目前为公共预览版。| 客户必须自行构建此防护。
 | 灾难恢复 | 将自动创建的备份存储在用户配置的[本地冗余存储或异地冗余存储](howto-restore-server-portal.md)中。 备份还可以将服务器还原到某个时间点。 保留期为 7 到 35 天。 还原是使用 Azure 门户完成的。 | 完全由客户管理。 责任包括但不限于计划、测试、存档、存储和保留。 另一个选项是使用 Azure 恢复服务保管库备份 Azure VM 和 VM 上的数据库。 此选项目前为预览版。 |
 | 性能建议 | 根据系统生成的使用日志文件为客户提供[性能建议](https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110)。 这些建议有助于优化工作负荷。<br/><br/>性能建议目前以公共预览版提供。 | 由客户管理 |
 

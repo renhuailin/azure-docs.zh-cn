@@ -1,18 +1,18 @@
 ---
 title: 排查使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 时的配置服务器问题 | Microsoft Docs
 description: 本文提供用于部署配置服务器以便使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的故障排除信息。
-author: Rajeswari-Mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/13/2019
-ms.author: ramamill
-ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: b943013de867016478a6e126d244974a8505a7cd
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92371947"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576564"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
 

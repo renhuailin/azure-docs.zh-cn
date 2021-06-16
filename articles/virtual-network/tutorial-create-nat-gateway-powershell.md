@@ -8,13 +8,13 @@ ms.service: virtual-network
 ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/09/2021
-ms.custom: template-tutorial
-ms.openlocfilehash: 884697cee84c05916fe19fb8f9435de86bda291e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: template-tutorial, devx-track-azurepowershell
+ms.openlocfilehash: 8984a6d887afd092c82bc3544a84af32a8245dbc
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102619873"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671627"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建 NAT 网关
 
@@ -33,7 +33,7 @@ ms.locfileid: "102619873"
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 本地安装的 Azure PowerShell 或 Azure Cloud Shell
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

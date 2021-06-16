@@ -3,12 +3,12 @@ title: 使用 Cloud Shell 部署模板
 description: 使用 Azure 资源管理器和 Azure Cloud Shell 将资源部署到 Azure。 资源在 Azure 资源管理器模板（ARM 模板）中定义。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bd597c2cb29120e680493a99aac33f146940bc19
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98028601"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957876"
 ---
 # <a name="deploy-arm-templates-from-azure-cloud-shell"></a>从 Azure Cloud Shell 部署 ARM 模板
 
@@ -33,7 +33,7 @@ ms.locfileid: "98028601"
    az deployment group create \
      --name ExampleDeployment \
      --resource-group ExampleGroup \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json" \
      --parameters storageAccountType=Standard_GRS
    ```
 
@@ -44,7 +44,7 @@ ms.locfileid: "98028601"
    New-AzResourceGroupDeployment `
      -DeploymentName ExampleDeployment `
      -ResourceGroupName ExampleGroup `
-     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
+     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json `
      -storageAccountType Standard_GRS
    ```
 
@@ -54,7 +54,7 @@ ms.locfileid: "98028601"
 
 若要部署本地模板，必须首先将模板上传到连接到 Cloud Shell 会话的存储帐户。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 选择 Cloud Shell 资源组。 名称模式为 `cloud-shell-storage-<region>`。
 
@@ -118,4 +118,4 @@ ms.locfileid: "98028601"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关部署命令的详细信息，请参阅[通过 ARM 模板和 Azure CLI 部署资源](deploy-cli.md)以及[通过 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)。
-- 若要在部署模板前先预览更改，请参阅 [ARM 模板部署 What-if 操作](template-deploy-what-if.md)。
+- 若要在部署模板前先预览更改，请参阅 [ARM 模板部署 What-if 操作](./deploy-what-if.md)。

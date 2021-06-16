@@ -9,12 +9,12 @@ ms.custom:
 - subject-armqs
 - references_regions
 - mode-arm
-ms.openlocfilehash: b190020b079957337b197074637f5f65c9dc80ba
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 95a00d4de266984b0a91bdd04cc2f20be15f63ad
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "110059334"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004540"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 区块链服务成员
 
@@ -36,7 +36,7 @@ Azure 区块链服务成员是专用联盟区块链网络中的区块链节点�
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/201-blockchain-asaservice/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/blockchain-asaservice/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.blockchain/blockchain-asaservice/azuredeploy.json":::
 
@@ -48,11 +48,11 @@ Azure 区块链服务成员是专用联盟区块链网络中的区块链节点�
 
 1. 选择以下链接登录到 Azure 并打开一个模板。
 
-    [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.blockchain%2Fblockchain-asaservice%2FFazuredeploy.json)
+    [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.blockchain%2Fblockchain-asaservice%2Fazuredeploy.json)
 
 1. 指定 Azure 区块链服务成员的设置。
 
-    设置 | 描述
+    设置 | 说明
     --------|------------
     订阅 | 选择要用于你的服务的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
     资源组 | 可以创建新的资源组名称，也可以选择订阅中现有的资源组名称。
@@ -82,7 +82,7 @@ Azure 区块链服务成员是专用联盟区块链网络中的区块链节点�
 若要删除资源组，请执行以下操作：
 
 1. 在 Azure 门户中，导航至左侧导航窗格中的“资源组”  ，然后选择要删除的资源组。
-2. 选择“删除资源组”  。 输入资源组名称确认删除并选择“删除”  。
+2. 选择“删除资源组”。 输入资源组名称确认删除并选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

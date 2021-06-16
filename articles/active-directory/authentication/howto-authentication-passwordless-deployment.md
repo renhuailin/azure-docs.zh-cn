@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4ff717a49ba9c9b4d66e54e5eae1248af3fcea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b5bbe10c07897c1e33dc4c5a156bc5acd0d7779
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579359"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110584868"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划无密码身份验证部署
 
@@ -283,7 +283,7 @@ Azure AD 会将大多数审核数据保留 30 天，并通过 Azure 管理门户
 若要进行回滚，管理员需要登录到 Azure Active Directory 门户，选择所需的强身份验证方法，并将“启用”选项更改为“否”。 此过程将为所有用户禁用无密码功能。
 
 已注册 FIDO2 安全设备的用户下次登录时，系统会提示他们使用该安全设备，然后显示以下错误：
-
+  
 ![请选择其他登录方法](./media/howto-authentication-passwordless-deployment/passwordless-choose-sign-in.png)
 
 ## <a name="deploy-and-troubleshoot-passwordless-authentication"></a>部署无密码身份验证以及对其进行故障排除

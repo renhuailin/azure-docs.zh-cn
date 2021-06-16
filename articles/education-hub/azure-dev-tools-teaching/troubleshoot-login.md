@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 276ab2cc1d79235c00ce1bb50ff9b648bb1de6ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f6320b0af23dbb74f9ced7e0a9fe683861d6e96
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87095878"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894967"
 ---
 # <a name="troubleshooting-student-login-issues"></a>学生登录问题故障排除
 若要访问 Azure Dev Tools for Teaching，用户需要具有 Microsoft 帐户 (MSA)。 如果学生的帐户还不是 MSA 或未链接到 MSA，将自动指导学生创建一个 MSA。 如果域与 Active Directory 关联，则该域下的所有帐户都已被视为 MSA。
@@ -51,6 +51,6 @@ ms.locfileid: "87095878"
     :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="管理 Microsoft 的登录方式。" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
-- [常见问题解答](program-faq.md)
+- [常见问题解答](program-faq.yml)
 
 - [支持选项](program-support.md)

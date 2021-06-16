@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1c7aa4d2300a6dee44da067b122fc7af97f7aa9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 453779c1289bb64749e7f3632c02d79d1522c88f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96172850"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966100"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Windows 身份验证 - 使用 Azure Active Directory 实现 Kerberos 约束委派
 
@@ -40,7 +40,7 @@ Azure Active Directory 应用程序代理可以提供单一登录 (SSO)，还能
 
 * **Web 浏览器**：用户与之交互以访问应用程序外部 URL 的组件。
 
-* **Azure AD**：对用户进行身份验证。 
+* Azure AD：对用户进行身份验证。 
 
 * **应用程序代理服务**：充当反向代理，用于将请求从用户发送到本地应用程序。 位于 Azure AD 中。 应用程序代理还可以强制实施任何条件访问策略。
 
@@ -52,7 +52,6 @@ Azure Active Directory 应用程序代理可以提供单一登录 (SSO)，还能
 
 ## <a name="implement-windows-authentication-kcd-with-azure-ad"></a>使用 Azure AD 实现 Windows 身份验证 (KCD)
 
-* [使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) 
+* [使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md) 
 
-* [在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](../manage-apps/application-proxy-add-on-premises-application.md)
-
+* [在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](../app-proxy/application-proxy-add-on-premises-application.md)

@@ -3,12 +3,13 @@ title: Azure Service Fabric 的网络模式
 description: 介绍 Service Fabric 的常见网络模式以及如何使用 Azure 网络功能创建群集。
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c95ded10463d1b5ab6f28373883db641283cdac1
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87421461"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663646"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 网络模式
 可将 Azure Service Fabric 群集与其他 Azure 网络功能集成。 本文说明如何创建使用以下功能的群集：

@@ -3,17 +3,17 @@ title: 使用 ARM 模板创建 SQL Server VM
 description: 了解如何使用 Azure 资源管理器模板（ARM 模板）在 Azure 虚拟机 (VM) 上创建 SQL Server。
 author: MashaMSFT
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
 ms.subservice: deployment
-ms.openlocfilehash: 8ba1966590b1b1af88366b8545136de8eff18ca1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 89df657e1b1e9164769880ff29217833d6e96c9b
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755632"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006268"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 SQL Server VM
 
@@ -36,7 +36,7 @@ SQL Server VM ARM 模板需要以下内容：
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/sql-vm-new-storage/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.sqlvirtualmachine/sql-vm-new-storage/azuredeploy.json":::
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ceac1e7b5e8efa7e87ecf6e1f4c9dd8286c87e98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8748d9aecd521b12e6a3e6c2f26756fc6c0e8089
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614065"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967647"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>用于开发人员运营的 Team Data Science Process
 
@@ -28,14 +28,10 @@ ms.locfileid: "102614065"
 | 目标 | 主题 | **资源** | **技术** | **级别** | **先决条件** |
 |--|--|--|--|--|--|
 | 了解高级分析 | Team Data Science Process 生命周期 | [此技术演练介绍 Team Data Science Process](overview.md) | 数据科学 | 中级 | 普通的技术背景，熟悉数据解决方案，熟悉 IT 项目和解决方案的实施 |
-| 了解用于高级分析的 Microsoft Azure 平台 | 信息管理 |
-| [本引用提供 Azure 数据工厂的概述，以便为分析数据解决方案构建管道](../../data-factory/v1/data-factory-introduction.md) | Microsoft Azure 数据工厂 | 有经验 | 普通的技术背景，熟悉数据解决方案，熟悉 IT 项目和解决方案的实施 |
-|  |
-| [此参考文章概述可用于阐述和管理数据源中的元数据的 Azure 数据目录](../../data-catalog/overview.md) | Microsoft Azure 数据目录 | 中级 | 普通的技术背景，熟悉数据解决方案，熟悉关系型数据库管理系统 (RDBMS) 和 NoSQL 数据源 |
-|  |
-| [此参考文章概述 Azure 事件中心系统，以及如何使用该系统将数据引入解决方案](../../event-hubs/event-hubs-about.md) | Azure 事件中心 | 中级 | 普通的技术背景，熟悉数据解决方案，熟悉关系型数据库管理系统 (RDBMS) 和 NoSQL 数据源，熟悉物联网 (IoT) 的术语和用法 |
-|  | 大数据存储 |
-| [此参考文章概述如何使用 Azure Synapse Analytics 来存储和处理大量数据](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) | Azure Synapse Analytics | 有经验 | 普通的技术背景，熟悉数据解决方案，熟悉关系型数据库管理系统 (RDBMS) 和 NoSQL 数据源，熟悉 HDFS 的术语和用法 |
+| 了解用于高级分析的 Microsoft Azure 平台 | 信息管理 | [本引用提供 Azure 数据工厂的概述，以便为分析数据解决方案构建管道](../../data-factory/v1/data-factory-introduction.md) | Microsoft Azure 数据工厂 | 有经验 | 普通的技术背景，熟悉数据解决方案，熟悉 IT 项目和解决方案的实施 |
+|  | | [此参考文章概述可用于阐述和管理数据源中的元数据的 Azure 数据目录](../../data-catalog/overview.md) | Microsoft Azure 数据目录 | 中级 | 普通的技术背景，熟悉数据解决方案，熟悉关系型数据库管理系统 (RDBMS) 和 NoSQL 数据源 |
+|  | | [此参考文章概述 Azure 事件中心系统，以及如何使用该系统将数据引入解决方案](../../event-hubs/event-hubs-about.md) | Azure 事件中心 | 中级 | 普通的技术背景，熟悉数据解决方案，熟悉关系型数据库管理系统 (RDBMS) 和 NoSQL 数据源，熟悉物联网 (IoT) 的术语和用法 |
+|  | 大数据存储 | [此参考文章概述如何使用 Azure Synapse Analytics 来存储和处理大量数据](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) | Azure Synapse Analytics | 有经验 | 普通的技术背景，熟悉数据解决方案，熟悉关系型数据库管理系统 (RDBMS) 和 NoSQL 数据源，熟悉 HDFS 的术语和用法 |
 |  |  | [此参考文章概述如何使用 Azure Data Lake 在单个位置捕获任何大小、类型和引入速度的数据进行操作和探索分析](../../data-lake-store/data-lake-store-overview.md) | Azure Data Lake Store | 中级 | 普通的技术背景，熟悉数据解决方案，熟悉 NoSQL 数据源，熟悉 HDFS |
 |  | 机器学习和分析 | [此参考文章介绍机器学习、预测分析和人工智能系统](../classic/index.yml) | Azure 机器学习 | 中级 | 普通的技术背景，熟悉数据解决方案，熟悉数据科学术语，熟悉机器学习和人工智能术语 |
 |  |  | [此文介绍 Azure HDInsight - Hadoop 技术堆栈的云分发版。此外，还介绍什么是 Hadoop 群集，以及何时使用此类群集](../../hdinsight/hadoop/apache-hadoop-introduction.md) | Azure HDInsight | 中级 | 普通的技术背景，熟悉数据解决方案，熟悉 NoSQL 数据源 |
@@ -54,7 +50,7 @@ ms.locfileid: "102614065"
 |  |  | [此 Microsoft Project 模板提供高级分析项目的时间、资源和目标跟踪](https://buckwoody.wordpress.com/2017/08/17/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/) | Microsoft Project | 中级 | 了解项目管理的基础知识 |
 |  |  | [此 Azure 数据目录教程介绍了企业数据资产的注册和发现系统](../../data-catalog/data-catalog-get-started.md) | Azure 数据目录 | 初学者 | 熟悉数据源和结构 |
 |  |  | [此 Microsoft 虚拟大学课程介绍如何使用 Visual Studio Codespace 和 Microsoft Azure 设置开发/测试](https://mva.microsoft.com/training-courses/dev-test-with-visual-studio-online-and-microsoft-azure-8420?l=P7Ot1TKz_2104984382) | Visual Studio Codespace | 有经验 | 熟悉软件开发和开发/测试环境 |
-|  |  | [此 Microsoft System Center 管理包下载内容包含一个指导原则文档用于帮助处理 Azure 资产](https://www.microsoft.com/download/details.aspx?id=38414) | System Center | 中级 | 在用于 IT 管理的 System Center 方面具有一定的经验 |
+|  |  | 此 Microsoft System Center 管理包下载内容包含一个指导原则文档用于帮助处理 Azure 资产 | System Center | 中级 | 在用于 IT 管理的 System Center 方面具有一定的经验 |
 |  |  | [此文档面向开发人员和运营团队，帮助他们了解 PowerShell Desired State Configuration 的优点](/powershell/scripting/dsc/overview/dscforengineers) | PowerShell DSC | 中级 | 在 PowerShell 代码编写、企业体系结构和脚本编写方面具有一定的经验 |
 |  | 代码 | [此下载内容还包含有关如何使用 Visual Studio Codespace Code 创建数据科学和 AI 应用程序的文档](https://code.visualstudio.com/) | Visual Studio Codespace | 中级 | 软件开发 |
 |  |  | [此入门站点讲解 DevOps 和 Visual Studio](https://www.visualstudio.com/devops/) | Visual Studio | 初学者 | 软件开发 |
@@ -72,7 +68,7 @@ ms.locfileid: "102614065"
 |  | 程序包 | [此参考文章介绍的概念涉及如何在 TFS 和 Visual Studio Codespace 中使用包](https://www.visualstudio.com/docs/package/collaborate-with-packages) | Visual Studio Codespace | 有经验 | 熟悉软件开发和 SDLC |
 |  |  | [在这篇 Runbook 初步参考文章中了解如何使用 System Center 自动完成打包](/system-center/orchestrator/automate-runbooks) | System Center | 有经验 | 在 System Center Orchestrator 方面具有一定的经验 |
 |  |  | [此参考文章介绍如何为解决方案创建数据管道，可以“包”的形式将该管道保存为 JSON 模板](../../data-factory/v1/data-factory-introduction.md) | Azure 数据工厂 | 中级 | 普通的计算背景知识，有数据项目方面的经验 |
-|  |  | [此主题介绍 Azure 资源管理器模板的结构](../../azure-resource-manager/templates/template-syntax.md) | Azure Resource Manager | 中级 | 熟悉 Microsoft Azure 平台 |
+|  |  | [此主题介绍 Azure 资源管理器模板的结构](../../azure-resource-manager/templates/syntax.md) | Azure Resource Manager | 中级 | 熟悉 Microsoft Azure 平台 |
 |  |  | [DSC 是 PowerShell 中的一个管理平台，使用它可以“配置即代码”（以包的形式保存）的形式管理 IT 和开发基础结构。此参考文章是该主题的概述](/powershell/scripting/dsc/overview/overview) | PowerShell 所需状态配置 | 中级 | 有 PowerShell 代码编写方面的经验，熟悉企业体系结构和脚本编写 |
 |  | 发布 | [此初步参考文章包含有关 CI/CD 环境的生成、测试和发布的概念](/azure/devops/pipelines/) | Visual Studio Codespace | 有经验 | 熟悉软件开发、CI/CD 环境和 SDLC |
 |  |  | [在这篇 Runbook 初步参考文章中了解如何使用 System Center 自动完成发布管理](/system-center/orchestrator/automate-runbooks) | System Center | 有经验 | 在 System Center Orchestrator 方面具有一定的经验 |

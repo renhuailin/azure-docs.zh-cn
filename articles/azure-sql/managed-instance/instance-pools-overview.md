@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: 了解 Azure SQL 托管实例池（预览版），这一特征提供了一种方便、经济高效的方法，可将较小的 SQL Server 数据库大规模迁移到云，并管理多个托管实例。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: service-overview
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: bonova
-ms.author: bonova
-ms.reviewer: sstein
+author: urosmil
+ms.author: urmilano
+ms.reviewer: mathoma
 ms.date: 09/05/2019
-ms.openlocfilehash: bc345509db1c2a14afb0ae781eccad8f77395c18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b84ff58517d413be884b81b6498f5b626ba02016
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97347058"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697247"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>什么是 Azure SQL 托管实例池（预览版）？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

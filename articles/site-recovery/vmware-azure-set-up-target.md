@@ -2,18 +2,18 @@
 title: 在 Azure Site Recovery 中准备 VMware VM 复制目标
 description: 本文介绍如何准备目标 Azure 环境，以便将 VMware VM 复制到 Azure。
 services: site-recovery
-author: mayurigupta13
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/03/2019
-ms.author: mayg
-ms.openlocfilehash: c721234f2e1d806d51d31f3466e441bf8360f6b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: ad52303ed03f5894c09308639ed5281854deae40
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73693164"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576581"
 ---
 # <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>准备目标环境，以便将 VMware VM 或物理服务器灾难恢复到 Azure
 

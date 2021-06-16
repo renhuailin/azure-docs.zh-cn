@@ -5,17 +5,17 @@ description: 什么是指标顾问？
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 34ab524cfc00cf4f74d632883ffeb18b904342a6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 042f1b7ce61c4cf0f9ed5a2281d84ade52981cfa
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376840"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894409"
 ---
 # <a name="what-is-azure-metrics-advisor-preview"></a>什么是 Azure 指标顾问（预览版）？ 
 

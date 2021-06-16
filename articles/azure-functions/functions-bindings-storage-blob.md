@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 4ec21086ee94610be1d9cf5da7b64c837b5311a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30bd445940187d3514dc4b7024d3dbb8f7d920b2
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381522"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536718"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure Blob 存储绑定概述
 
@@ -36,7 +36,7 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 
 
 #### <a name="storage-extension-5x-and-higher"></a>存储扩展 5.x 和更高版本
 
-新版本的存储绑定扩展可用作[预览 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.2)。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改可以绑定到的类型，并将 `WindowsAzure.Storage` 和 `Microsoft.Azure.Storage` 中的类型替换为 [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) 中的新类型。
+新版本的存储绑定扩展可用作[预览 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.3)。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改可以绑定到的类型，并将 `WindowsAzure.Storage` 和 `Microsoft.Azure.Storage` 中的类型替换为 [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) 中的新类型。
 
 > [!NOTE]
 > 预览包不包括在扩展捆绑包中，必须手动安装。 对于 .NET 应用，请添加对包的引用。 对于所有其他应用类型，请参阅[更新扩展]。

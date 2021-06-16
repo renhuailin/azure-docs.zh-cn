@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: c3a821156074727d02ab36cf88f3e998756b8cc4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b815914d4a34d50e2bb566097620ee29e15f957
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389444"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677519"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>阻止无关联的 DNS 项并避免子域接管
 
@@ -215,6 +215,6 @@ Azure DNS 的[别名记录](../../dns/dns-alias.md#scenarios)通过将 DNS 记�
 
 - [防止与 Azure DNS 无关联的 DNS 记录](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [在 Azure 应用服务中添加自定义域时使用域验证 ID](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
+- [在 Azure 应用服务中添加自定义域时使用域验证 ID](../../app-service/app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id)
 
 - [快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询](../../governance/resource-graph/first-query-powershell.md)

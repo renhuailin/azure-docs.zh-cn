@@ -6,14 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 03/08/2021
+ms.date: 06/10/2021
 ms.author: alkohli
-ms.openlocfilehash: ed539df9fec3c66b3881257ff1ce68d03cf4c382
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d5c9874324a11f9416806c22a3153c1ee4e8d442
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107878589"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111981939"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -239,7 +240,7 @@ PS C:\Windows\System32>
 
 6. 在“订单”中，转到“基本”选项卡 。输入或选择以下信息，然后选择“下一步:数据目标>”。
 
-    |设置  |值  |
+    |设置  |Value  |
     |---------|---------|
     |订阅      | 系统会根据前面所做的选择自动填充此订阅。|
     |资源组    | 之前选择的资源组。 |
@@ -263,7 +264,7 @@ PS C:\Windows\System32>
 
     如果使用 Data Box 从本地虚拟硬盘 (VHD) 创建“托管磁盘”，则还需提供以下信息：
 
-    |设置  |值  |
+    |设置  |Value  |
     |---------|---------|
     |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，资源组是在以前由 Data Box 服务为托管磁盘创建 Data Box 订单时创建的。 <br> 指定多个用分号分隔的资源组。 最多支持 10 个资源组。|
 

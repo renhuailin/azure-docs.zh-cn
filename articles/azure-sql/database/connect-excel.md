@@ -4,20 +4,20 @@ description: 了解如何将 Microsoft Excel 连接到 Azure SQL 数据库中的
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: connect
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: mathoma
 ms.date: 05/29/2020
-ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 910be324a43f5d6ed7f4da4dee1e4376cf332c65
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91444035"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694748"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库中的数据库或 Azure SQL 托管实例，并创建报表
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

@@ -8,53 +8,53 @@ metadata:
   ms.topic: landing-page
   author: ekpgh
   ms.author: v-erkel
-  ms.date: 03/20/2020
-  ms.openlocfilehash: ea13d3cbe49a5f1f0a043178822a50f6c37bf472
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.date: 05/26/2021
+  ms.openlocfilehash: fab9463980b1a4d020ee11c916964f27654cbdd8
+  ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110455807"
+  ms.lasthandoff: 06/04/2021
+  ms.locfileid: "111411028"
 landingContent:
 - title: 关于 Azure FXT Edge Filer
   linkLists:
   - linkListType: overview
     links:
     - text: 什么是 Azure FXT Edge Filer？
-      url: fxt-overview.md
+      url: overview.md
 - title: 入门
   linkLists:
   - linkListType: tutorial
     links:
     - text: 1 - 安装硬件
-      url: fxt-install.md
+      url: install.md
     - text: 2 - 连接电缆
-      url: fxt-network-power.md
+      url: network-power.md
     - text: 3 - 设置硬件密码
-      url: fxt-node-password.md
+      url: node-password.md
     - text: 4 - 创建群集
-      url: fxt-cluster-create.md
+      url: cluster-create.md
     - text: 5 - 添加群集节点
-      url: fxt-add-nodes.md
+      url: add-nodes.md
     - text: 6 - 添加后端存储并配置虚拟命名空间
-      url: fxt-add-storage.md
+      url: add-storage.md
     - text: 7 - 配置群集的网络设置
-      url: fxt-configure-network.md
+      url: configure-network.md
     - text: 8 - 在群集上装载客户端
-      url: fxt-mount-clients.md
+      url: mount-clients.md
 - title: 管理
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 监视硬件状态
-      url: fxt-monitor.md
+      url: monitor.md
     - text: 安全关闭硬件电源
-      url: fxt-power-off.md
+      url: power-off.md
 - title: 资源
   linkLists:
   - linkListType: reference
     links:
     - text: 硬件规格
-      url: fxt-specs.md
+      url: specs.md
     - text: 其他文档
-      url: fxt-additional-doc.md
+      url: additional-doc.md

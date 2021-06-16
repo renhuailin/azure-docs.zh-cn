@@ -4,18 +4,18 @@ titleSuffix: Azure Applied AI Services
 description: 在本教程中，我们将创建一个 Node.js 应用程序，该应用程序使用多个沉浸式阅读器资源启动沉浸式阅读器。
 author: skamal
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.author: skamal
 ms.custom: devx-track-js
-ms.openlocfilehash: 2b8258b5235deac0f6ebc03b1da4d28bb2439a82
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d324df663aa4c955a65e6e1cef7b4ab167c50d11
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373817"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888224"
 ---
 # <a name="integrate-multiple-immersive-reader-resources"></a>集成多个沉浸式阅读器资源
 

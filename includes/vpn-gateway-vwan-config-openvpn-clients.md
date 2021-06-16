@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/17/2020
+ms.date: 05/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ee9dc61169b182356e8ed272bc64785e9c3f6384
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f6576a6aa4be42705ce8b8c12d7cee2bdb87bfd0
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073017"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579593"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows 客户端
 
@@ -59,7 +59,7 @@ ms.locfileid: "106073017"
 1. 下载并安装 OpenVPN 客户端，如 [TunnelBlick](https://tunnelblick.net/downloads.html)。 
 2. 下载网关的 VPN 配置文件。 可通过 Azure 门户中的“点到站点配置”选项卡，或使用 PowerShell 中的“New-AzVpnClientConfiguration”来完成此操作。
 3. 解压缩该配置文件。 在某个文本编辑器中打开 OpenVPN 文件夹中的 vpnconfig.ovpn 配置文件。
-4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 若要了解如何导出证书以获取已编码的公钥，请访问以下文章链接：
+4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以打开 .cer 文件并在证书标头之间复制 base64 密钥。 若要了解如何导出证书以获取已编码的公钥，请访问以下文章链接：
 
    * [VPN 网关](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#cer)说明 
    
@@ -78,7 +78,7 @@ ms.locfileid: "106073017"
 1. 从 App store 中安装 OpenVPN 客户端（版本 2.4 或更高版本）。
 2. 下载网关的 VPN 配置文件。 可通过 Azure 门户中的“点到站点配置”选项卡，或使用 PowerShell 中的“New-AzVpnClientConfiguration”来完成此操作。
 3. 解压缩该配置文件。 在某个文本编辑器中打开 OpenVPN 文件夹中的 vpnconfig.ovpn 配置文件。
-4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 若要了解如何导出证书以获取已编码的公钥，请访问以下文章链接：
+4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以打开 .cer 文件并在证书标头之间复制 base64 密钥。 若要了解如何导出证书以获取已编码的公钥，请访问以下文章链接：
 
    * [VPN 网关](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#cer)说明 
    

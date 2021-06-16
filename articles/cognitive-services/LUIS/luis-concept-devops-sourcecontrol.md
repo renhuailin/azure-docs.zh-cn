@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 68d88ef667da9f22d3e3a17f10036693fcca0c3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b860510610330d6c5d60f41dccc9e82bc77685f5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98932522"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969440"
 ---
 # <a name="devops-practices-for-luis"></a>LUIS 的 DevOps 实践
 
@@ -214,4 +214,4 @@ PR 中的更改合并到主分支时，应该应用版本控制，以便独立�
 ## <a name="next-steps"></a>后续步骤
 
 * 了解 [LUIS DevOps 测试](luis-concept-devops-testing.md)
-* 了解如何[使用 GitHub 实现 DevOps for LUIS](luis-how-to-devops-with-github.md)
+* 了解如何[使用 GitHub 实现 DevOps for LUIS](./luis-concept-devops-automation.md)
