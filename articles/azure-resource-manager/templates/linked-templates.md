@@ -4,12 +4,12 @@ description: 介绍如何使用 Azure 资源管理器模板（ARM 模板）中�
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 80fabe5f720182e51e731e0d4d833ed0e7ab9137
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 3ae1bcc6cc1c99bc89e2f8fbd2c8debf95418850
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751538"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951153"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -611,7 +611,7 @@ az deployment group create \
 
 ```json
 "variables": {
-  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
+  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/postgre/postgresql-on-ubuntu/",
   "sharedTemplateUrl": "[uri(variables('templateBaseUrl'), 'shared-resources.json')]",
   "vmTemplateUrl": "[uri(variables('templateBaseUrl'), 'database-2disk-resources.json')]"
 }
@@ -894,6 +894,6 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 ## <a name="next-steps"></a>后续步骤
 
 * 若要完成教程，请参阅[教程：部署链接模板](./deployment-tutorial-linked-template.md)。
-* 若要了解如何为资源定义部署顺序，请参阅[在 ARM 模板中定义资源的部署顺序](define-resource-dependency.md)。
+* 若要了解如何为资源定义部署顺序，请参阅[在 ARM 模板中定义资源的部署顺序](./resource-dependency.md)。
 * 若要了解如何定义一个资源但要创建它的多个实例，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
 * 有关在存储帐户中设置模板和生成 SAS 令牌的步骤，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)或[使用 ARM 模板和 Azure CLI 部署资源](deploy-cli.md)。

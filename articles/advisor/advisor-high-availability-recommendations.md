@@ -3,12 +3,12 @@ title: 使用顾问提高应用程序的可靠性
 description: 使用 Azure 顾问确保并提高业务关键 Azure 部署的可靠性。
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: c96b47f1ee145129f4c14c6646f93abeb8a5aac9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d0c8902c41d50f4391a5431aba7a58faa917208
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579964"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887539"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure 顾问提高应用程序的可靠性
 
@@ -96,7 +96,7 @@ Azure 顾问会识别使用旧版本的 Java SDK 的 Azure Cosmos DB 帐户。 �
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>将 Azure Cosmos DB Spark 连接器升级到 Maven 提供的最新版本
 
-Azure 顾问会识别使用旧版本的 Azure Cosmos DB Spark 连接器的 Azure Cosmos DB 帐户。 它会建议升级到 Maven 提供的最新版本，以获取最新的修补程序、性能改进和功能。 [详细了解 Azure Cosmos DB Spark 连接器。](../cosmos-db/spark-connector.md)
+Azure 顾问会识别使用旧版本的 Azure Cosmos DB Spark 连接器的 Azure Cosmos DB 帐户。 它会建议升级到 Maven 提供的最新版本，以获取最新的修补程序、性能改进和功能。 [详细了解 Azure Cosmos DB Spark 连接器。](../cosmos-db/create-sql-api-spark.md)
 
 ## <a name="consider-moving-to-kafka-21-on-hdinsight-40"></a>考虑迁移到 HDInsight 4.0 上的 Kafka 2.1
 

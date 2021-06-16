@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: de7d23689ae984ea0abece5edb03cf8a0c3a9be1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3477c8f1dbffb9f2c42c72c1b0bfc03c662ed24c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104670335"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412288"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>为已启用 Arc 的超大规模 PostgreSQL 服务器组获取连接终结点并形成连接字符串
 
@@ -85,13 +85,8 @@ postgres=#
 > 基础领域=“需要登录凭据”，持有者错误="invalid_token"，error_description=“令牌已过期”'})_ 发生此情况时，需要使用 azdate 重新进行连接，如上所述   。
 
 ## <a name="from-cli-with-kubectl"></a>使用 kubectl 从 CLI 获取
-- 如果服务器组为 Postgres 版本 12（默认），则使用以下命令：
 ```console
-kubectl get postgresql-12/<server group name> -n <namespace name>
-```
-- 如果服务器组为 Postgres 版本 11，则使用以下命令：
-```console
-kubectl get postgresql-11/<server group name> -n <namespace name>
+kubectl get postgresqls/<server group name> -n <namespace name>
 ```
 
 这些命令将生成如下所示的输出。 你可以使用该信息来形成连接字符串：
@@ -153,7 +148,7 @@ host=192.168.1.121; dbname=postgres user=postgres password={your_password_here} 
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解如何[横向扩展（添加工作器节点）](scale-out-postgresql-hyperscale-server-group.md)服务器组
+- 了解如何[横向扩展（添加工作器节点）](scale-out-in-postgresql-hyperscale-server-group.md)服务器组
 - 了解如何[纵向扩展或缩减（增加/减少内存/vCore）](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)服务器组
 
 

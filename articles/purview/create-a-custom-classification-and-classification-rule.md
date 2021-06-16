@@ -1,18 +1,18 @@
 ---
 title: 创建自定义分类和分类规则（预览版）
 description: 了解如何创建自定义分类来定义数据资产中 Azure Purview 的组织独有的数据类型。
-author: animukherjee
+author: anmuk601
 ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 3/24/2021
-ms.openlocfilehash: 7d6baee49250509e50cdeeea8cf8ca6cec5b362d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: e54535449ddf9605bc483b9a309a717b22d8398d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222138"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071490"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure Purview 中的自定义分类
 
@@ -48,7 +48,7 @@ Microsoft 系统分类按保留的 `MICROSOFT.` 命名空间分组。 例如，M
 
 - 除了命名空间的最后两段之外的所有部分都被剪裁掉。
 
-- 调整大小写，使每个单词的首字母大写。 所有其他字母都转换成小写形式。
+- 调整大小写，使每个单词的首字母大写。
 
 - 所有下划线 (\_) 都替换为空格。
 

@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: d68cfb91445e2055cb3c3feb88bf925987ea9852
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d513c19eed36d4a1cc5c620bff9dd2e8deb533e0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687390"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949542"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -129,13 +129,13 @@ https://<mynamespace>.accesscontrol.windows.net
 
 | 服务 | 指南 |
 | ------- | -------- |
-| Azure 服务总线 | [迁移到共享访问签名](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
+| Azure 服务总线 | [迁移到共享访问签名](../../service-bus-messaging/service-bus-sas.md) |
 | Azure 服务总线中继 | [迁移到共享访问签名](../../azure-relay/relay-migrate-acs-sas.md) |
 | Azure 托管缓存 | [迁移到 Azure Cache for Redis](../../azure-cache-for-redis/cache-faq.md) |
 | Azure DataMarket | [迁移到认知服务 API](https://azure.microsoft.com/services/cognitive-services/) |
 | BizTalk 服务 | [迁移到 Azure 应用服务的逻辑应用功能](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure 媒体服务 | [迁移到 Azure AD 身份验证](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
-| Azure 备份 | [升级 Azure 备份代理](../../backup/backup-azure-file-folder-backup-faq.md) |
+| Azure 备份 | [升级 Azure 备份代理](../../backup/backup-azure-file-folder-backup-faq.yml) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -197,7 +197,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 | Facebook、Google、Yahoo 帐户 | 支持 | 都不支持 |
 | **协议和 SDK 兼容性** | | |
 | WIF | 支持 | 支持，但说明有限 |
-| WS 联合身份验证 | 支持 | 支持 |
+| WS-Federation | 支持 | 支持 |
 | OAuth 2.0 | 支持草案 13 | 支持最新规范 RFC 6749 |
 | WS-Trust | 支持 | 不支持 |
 | **令牌格式** | | |
@@ -248,7 +248,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 | Facebook、Google、Yahoo 帐户 | 支持 | 本身支持 Facebook 和 Google，使用自定义策略通过 OpenID Connect 联合支持 Yahoo |
 | **协议和 SDK 兼容性** | | |
 | Windows Identity Foundation (WIF) | 支持 | 不支持 |
-| WS 联合身份验证 | 支持 | 不支持 |
+| WS-Federation | 支持 | 不支持 |
 | OAuth 2.0 | 支持草案 13 | 支持最新规范 RFC 6749 |
 | WS-Trust | 支持 | 不支持 |
 | **令牌格式** | | |

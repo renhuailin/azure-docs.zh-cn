@@ -3,20 +3,20 @@ title: 无服务器计算层
 description: 本文介绍新的无服务器计算层，并将它与现有的 Azure SQL 数据库预配计算层进行比较。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
-ms.custom: test sqldbrb=1, devx-track-azurecli
+ms.subservice: service-overview
+ms.custom: test sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 2/22/2021
-ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 4/16/2021
+ms.openlocfilehash: 514e7e229ba1b72f2c357f6cefdd272889ed46b9
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101658582"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591001"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,7 +114,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 如有需要，系统也提供了禁用自动暂停的选项。
 
-以下功能不支持自动暂停，但支持自动缩放。  如果使用了以下任意功能，那么无论数据库处于不活动状态的时间有多长，都应禁用自动暂停，让数据库保持联机状态：
+以下功能不支持自动暂停，但支持自动缩放。  如果使用了以下任意功能，那么无论数据库处于不活动状态的时间有多长，都必须禁用自动暂停，让数据库保持联机状态：
 
 - 异地复制（活动异地复制和自动故障转移组）。
 - 长期备份保留 (LTR)。
@@ -255,7 +255,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 ### <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-在 Azure CLI 中结合 `capacity`、`min-capacity` 和 `auto-pause-delay` 参数使用 [az sql db update](/cli/azure/sql/db#az-sql-db-update) 命令修改最大或最小 vCore 数和自动暂停延迟。
+在 Azure CLI 中结合 `capacity`、`min-capacity` 和 `auto-pause-delay` 参数使用 [az sql db update](/cli/azure/sql/db#az_sql_db_update) 命令修改最大或最小 vCore 数和自动暂停延迟。
 
 
 ## <a name="monitoring"></a>监视
@@ -266,7 +266,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 #### <a name="app-package"></a>应用包
 
-应用包是数据库最外层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 应用包包含 SQL 实例和外部服务，这一组合共同限定了所有用户和 SQL 数据库中数据库使用的系统资源的范围。 外部服务的示例包括 R 和全文搜索。 SQL 实例通常决定整个应用包的整体资源利用率。
+应用包是数据库最外层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 应用包包含 SQL 实例和外部服务（例如全文搜索），这一组合共同限定了所有用户和 SQL 数据库中数据库使用的系统资源的范围。 SQL 实例通常决定整个应用包的整体资源利用率。
 
 #### <a name="user-resource-pool"></a>用户资源池
 

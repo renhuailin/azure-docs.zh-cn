@@ -4,12 +4,12 @@ description: 本主题介绍如何为 Azure 视频分析器创建帐户。
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 05/01/2021
-ms.openlocfilehash: 9bcf60efd07fd2e0b68181989d8f26d3f39817b0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c1c9b7a01fa23b3c5b450fdfa5d5024169b4453e
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385122"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007492"
 ---
 # <a name="create-a-video-analyzer-account"></a>创建视频分析器帐户
 
@@ -34,7 +34,7 @@ ms.locfileid: "110385122"
     | 名称 | 说明 |
     | ---|---|
     |**订阅**|如果有多个订阅，请从有权访问的 Azure 订阅的列表中选择一个订阅。|
-    |**资源组**|选择现有资源或创建新的资源。 资源组是共享生命周期、权限和策略的资源的集合。 在[此处](/azure/azure-resource-manager/management/overview.md#resource-groups)了解更多信息。|
+    |**资源组**|选择现有资源或创建新的资源。 资源组是共享生命周期、权限和策略的资源的集合。 在[此处](../../azure-resource-manager/management/overview.md#resource-groups)了解更多信息。|
     |视频分析器帐户名称|输入新视频分析器帐户的名称。 视频分析器帐户名称由小写字母或数字构成（不含空格），长度为 3 到 24 个字符。|
     |**位置**|选择用于存储视频分析器帐户的视频和元数据记录的地理区域。 下拉列表中仅显示可用的视频分析器区域。 |
     |**存储帐户**|选择一个存储帐户，以便为视频分析器帐户的视频内容提供 Blob 存储。 可以选择位于视频分析器帐户所在的地理区域内的现有存储帐户，也可以创建一个新的存储帐户。 在同一区域内会创建一个新的存储帐户。 适用于存储帐户名的规则对视频分析器帐户同样适用。<br/>|
@@ -50,13 +50,13 @@ ms.locfileid: "110385122"
 
 该模板中定义了以下资源：
 
-- [**Microsoft.Media/videoAnalyzers**](https://docs.microsoft.com/azure/templates/Microsoft.Media/videoAnalyzers)：视频分析器的帐户资源。
-- [**Microsoft.Storage/storageAccounts**](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)：视频分析器用于存储视频和元数据的存储帐户。
-- [**Microsoft.ManagedIdentity/userAssignedIdentities**](https://docs.microsoft.com/azure/templates/Microsoft.ManagedIdentity/userAssignedIdentities)：视频分析器用于访问存储的用户分配的托管标识。
-- [**Microsoft.Storage/storageAccounts/providers/roleAssignments**](https://docs.microsoft.com/azure/templates/microsoft.authorization/roleassignments)：使视频分析器能够访问存储帐户的角色分配。
+- [**Microsoft.Media/videoAnalyzers**](/azure/templates/Microsoft.Media/videoAnalyzers)：视频分析器的帐户资源。
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts)：视频分析器用于存储视频和元数据的存储帐户。
+- [**Microsoft.ManagedIdentity/userAssignedIdentities**](/azure/templates/Microsoft.ManagedIdentity/userAssignedIdentities)：视频分析器用于访问存储的用户分配的托管标识。
+- [**Microsoft.Storage/storageAccounts/providers/roleAssignments**](/azure/templates/microsoft.authorization/roleassignments)：使视频分析器能够访问存储帐户的角色分配。
 
 <!-- TODO replace with a reference like this:
-:::code language="json" source="~/quickstart-templates/101-vm-simple-linux/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-linux/azuredeploy.json":::
 -->
 
 ```json
@@ -240,10 +240,10 @@ ms.locfileid: "110385122"
 了解如何[在 IoT Edge 设备上部署视频分析器][docs-deploy-on-edge]。
 
 <!-- links -->
-[docs-uami]: /azure/active-directory/managed-identities-azure-resources/overview
-[docs-storage-access]: /azure/role-based-access-control/built-in-roles#storage-blob-data-contributor
-[docs-role-reader]: /azure/role-based-access-control/built-in-roles#reader
-[docs-arm-template]: /azure/azure-resource-manager/templates/overview
+[docs-uami]: ../../active-directory/managed-identities-azure-resources/overview.md
+[docs-storage-access]: ../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor
+[docs-role-reader]: ../../role-based-access-control/built-in-roles.md#reader
+[docs-arm-template]: ../../azure-resource-manager/templates/overview.md
 [docs-deploy-on-edge]: deploy-iot-edge-device.md
 [click-to-deploy]: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgist.githubusercontent.com%2Fbennage%2F58523b2e6a4d3bf213f16893d894dcaf%2Fraw%2Fazuredeploy.json
 <!-- TODO update the link above! -->

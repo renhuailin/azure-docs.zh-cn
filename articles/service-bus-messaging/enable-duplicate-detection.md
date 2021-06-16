@@ -3,12 +3,13 @@ title: 启用重复消息检测 - Azure 服务总线
 description: 本文介绍如何通过使用 Azure 门户、PowerShell、CLI 和编程语言（C#、Java、Python 和 JavaScript）启用重复消息检测
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 1e299b86991a7785cc89f2e72227e7a8ced883d7
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 654d53bb324584d8b17d1e36efe20e5f25d54e39
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989119"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671437"
 ---
 # <a name="enable-duplicate-message-detection-for-an-azure-service-bus-queue-or-a-topic"></a>为 Azure 服务总线队列或主题启用重复消息检测
 为队列或主题启用重复检测时，Azure 服务总线将保留在配置的时间内发送到队列或主题的所有消息的历史记录。 在此间隔期间，队列或主题将不会存储任何重复的消息。 启用此属性可保证在用户定义的时间段内准确地传递一次。 有关详细信息，请参阅[重复检测](duplicate-detection.md)。 本文介绍为服务总线队列或主题启用重复消息检测的不同方式。 

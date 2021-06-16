@@ -5,17 +5,17 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/12/2021
-ms.custom: devx-track-terraform
-ms.openlocfilehash: aadf1f4c9ab8fa20933256749bd8ce37a1258063
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.custom: devx-track-terraform, devx-track-azurepowershell
+ms.openlocfilehash: b1f40ff5175de88e101bfe8f22f9593502e7d6d0
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738799"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005872"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure 客户使用情况归因
 
-客户使用情况归因可将部署你的 IP 时创建的客户订阅中 Azure 资源的使用情况与你（作为合作伙伴）关联起来。 在内部 Microsoft 系统中形成这些关联可以更好地了解运行软件的 Azure 内存占用情况。 对于[商业市场中的 Azure 应用程序产品/服务](#commercial-marketplace-azure-apps)，此跟踪功能可帮助你与 Microsoft 销售团队保持一致，并获得 Microsoft 合作伙伴计划的信用额度。 客户使用情况归因不适用于[商业市场中的 Azure 虚拟机产品/服务](./azure-vm-create.md)。 对于虚拟机产品/服务，市场发布者无需执行任何操作，即可确保在最终客户订阅中跟踪其 Azure 使用量。
+客户使用情况归因可将部署你的 IP 时创建的客户订阅中 Azure 资源的使用情况与你（作为合作伙伴）关联起来。 在内部 Microsoft 系统中形成这些关联可以更好地了解运行软件的 Azure 内存占用情况。 对于[商业市场中的 Azure 应用程序产品/服务](#commercial-marketplace-azure-apps)，此跟踪功能可帮助你与 Microsoft 销售团队保持一致，并获得 Microsoft 合作伙伴计划的信用额度。 客户使用情况归因不适用于[商业市场中的 Azure 虚拟机产品/服务](marketplace-virtual-machines.md)。 对于虚拟机产品/服务，市场发布者无需执行任何操作，即可确保在最终客户订阅中跟踪其 Azure 使用量。
 
 客户使用情况归因支持三个部署选项：
 
@@ -32,7 +32,7 @@ ms.locfileid: "109738799"
 
 ## <a name="commercial-marketplace-azure-apps"></a>商业市场 Azure 应用
 
-从发布到商业市场的 Azure 应用中跟踪 Azure 使用情况主要是自动进行的。 在[市场 Azure 应用计划的技术配置](./create-new-azure-apps-offer-solution.md#define-the-technical-configuration)中上传资源管理器模板时，合作伙伴中心将添加 Azure 资源管理器可读的跟踪 ID。
+从发布到商业市场的 Azure 应用中跟踪 Azure 使用情况主要是自动进行的。 在[市场 Azure 应用计划的技术配置](./azure-app-solution.md#define-the-technical-configuration)中上传资源管理器模板时，合作伙伴中心将添加 Azure 资源管理器可读的跟踪 ID。
 
 如果使用 Azure 资源管理器 API，将需要根据[以下说明](#use-resource-manager-apis)添加跟踪 ID，以在代码部署资源时将其传递给 Azure 资源管理器。 此 ID 在“合作伙伴中心”中你的计划的“技术配置”页上显示。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "109738799"
 >
 >更新产品/服务时，不再需要在主模板文件中添加“Microsoft.Resources/deployments”资源类型。
 
-## <a name="other-use-cases"></a>其他用例 
+## <a name="other-use-cases"></a>其他用例
 
 可以使用客户使用情况归因来跟踪商业市场中未提供的解决方案的 Azure 使用情况。 这些解决方案通常位于快速入门存储库和专用 GitHub 存储库中，或者来自可创建持久 IP 的 1:1 客户约定（例如可部署的可缩放应用）。
 
@@ -65,9 +65,9 @@ ms.locfileid: "109738799"
 
 接下来必须在合作伙伴中心注册 GUID，以便它们可以与你（作为合作伙伴）关联起来：
 
-1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard)。
+1. 登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
 
-1. 注册为[商业市场发布者](https://aka.ms/JoinMarketplace)。
+1. 注册为[商业市场发布者](https://go.microsoft.com/fwlink/?linkid=2165614)。
 
 1. 在右上角选择“设置”（齿轮图标），然后选择“帐户设置” 。
 
@@ -162,7 +162,7 @@ foreach ($deployment in $deployments){
 
 在某些情况下，你可能直接调用资源管理器 REST API 来部署 Azure 服务。 [Azure 支持使用多个 SDK](../index.yml?pivot=sdkstools) 来启用这些调用。 你可以使用其中一个 SDK，也可以直接调用 REST API 来部署资源。
 
-要启用客户使用情况归因，在设计 API 调用时，请在请求的用户代理标头中包含跟踪 ID。 将字符串的格式设置为采用 `pid-` 前缀。 示例：
+要启用客户使用情况归因，在设计 API 调用时，请在请求的用户代理标头中包含跟踪 ID。 将字符串的格式设置为采用 `pid-` 前缀。 示例:
 
 ```xml
 //Commercial Marketplace Azure app
@@ -253,7 +253,7 @@ provider "azurerm" {
 1. 输入问题的标题和详细说明。
 1. 选择“提交”。
 
-通过[使用技术预售和部署服务](https://aka.ms/TechConsultInstructions)上的屏幕截图了解分步说明。
+通过[使用技术预售和部署服务](/partner-center/technical-benefits)上的屏幕截图了解分步说明。
 
 Microsoft 合作伙伴技术顾问将电话联系你，确定你的需求。
 

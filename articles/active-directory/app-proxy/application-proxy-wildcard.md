@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a950e2c282eb3f06d32f87b0d81724aca31710e5
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: da2ea074a717189c038705f95f77e538d1bd9680
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108185807"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962160"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序
 
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ### <a name="custom-domains"></a>自定义域
 
-尽管[自定义域](../manage-apps/application-proxy-configure-custom-domain.md)对于其他所有应用程序是可选的，但它们是通配符应用程序的先决条件。 创建自定义域时需要：
+尽管[自定义域](./application-proxy-configure-custom-domain.md)对于其他所有应用程序是可选的，但它们是通配符应用程序的先决条件。 创建自定义域时需要：
 
 1. 在 Azure 中创建已验证的域。
 1. 将 PFX 格式的 TLS/SSL 证书上传到应用程序代理。
@@ -122,7 +122,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos 约束委派
 
-对于[使用 Kerberos 约束委派 (KCD) 作为 SSO 方法](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)的应用程序，针对 SSO 方法列出的 SPN 可能也需要通配符。 例如，SPN 可能是：`HTTP/*.adventure-works.com`。 仍需要在后端服务器上配置各个 SPN（例如 `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`）。
+对于[使用 Kerberos 约束委派 (KCD) 作为 SSO 方法](./application-proxy-configure-single-sign-on-with-kcd.md)的应用程序，针对 SSO 方法列出的 SPN 可能也需要通配符。 例如，SPN 可能是：`HTTP/*.adventure-works.com`。 仍需要在后端服务器上配置各个 SPN（例如 `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`）。
 
 ## <a name="scenario-1-general-wildcard-application"></a>方案 1：常规通配符应用程序
 
@@ -199,5 +199,5 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解自定义域，请参阅[使用 Azure AD 应用程序代理中的自定义域](../manage-apps/application-proxy-configure-custom-domain.md)。
+- 若要详细了解自定义域，请参阅[使用 Azure AD 应用程序代理中的自定义域](./application-proxy-configure-custom-domain.md)。
 - 若要详细了解如何发布应用程序，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)

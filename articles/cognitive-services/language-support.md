@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: c2c2b57ebf4e2a5cd96efce49da87cf42929e96c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a535e1540535c52d4a21684074d81df8b41c4ca
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103472052"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950774"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure 认知服务的自然语言支持
 
@@ -33,7 +33,7 @@ ms.locfileid: "103472052"
 * [计算机视觉](./computer-vision/language-support.md)
 * [表单识别器（预览版）](./form-recognizer/language-support.md)
 * [墨迹识别器（预览版）](/previous-versions/azure/cognitive-services/Ink-Recognizer/language-support)
-* [视频索引器](../media-services/video-indexer/language-identification-model.md#guidelines-and-limitations)
+* [视频索引器](../azure-video-analyzer/video-analyzer-for-media-docs/language-identification-model.md#guidelines-and-limitations)
 
 ## <a name="language"></a>语言
 

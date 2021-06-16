@@ -3,20 +3,20 @@ title: Azure SQL 托管实例：长期备份保留
 description: 了解如何使用 PowerShell 为 Azure SQL 托管实例在单独的 Azure Blob 存储容器上存储和还原自动备份。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: ''
+ms.subservice: backup-restore
+ms.custom: devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, sstein
 ms.date: 02/25/2021
-ms.openlocfilehash: f298f0f9d76750be932db79b5a08b6385e984f88
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1f2988a383620fa1e69b64841b93700f92313a5c
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102051991"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592520"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL 托管实例长期备份保留 (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

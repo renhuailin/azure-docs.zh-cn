@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/02/2021
+ms.date: 06/02/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 190d88e62069a34b61017a0079f75696d67f6c82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 27fe9f4c7d63a5e0674bde6db3f387f813bed749
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99979906"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409390"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Azure Active Directory B2C 服务限制和局限性
 
@@ -55,16 +55,3 @@ ms.locfileid: "99979906"
 
 - 了解 [Microsoft Graph 的限制指南](/graph/throttling) 
 - 了解 [Azure AD B2C 应用程序的验证差异](../active-directory/develop/supported-accounts-validation.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

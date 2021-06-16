@@ -3,12 +3,12 @@ title: 安全代理
 description: 开始在 IoT 设备上了解、配置、部署和使用 Azure Defender for IoT 安全服务代理。
 ms.topic: conceptual
 ms.date: 1/24/2021
-ms.openlocfilehash: a1d74de9824b9e825f87754da21070d4e7f1ee33
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 117572c8b5e2d42b24c1f3af9dbb0eab474647a9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783483"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949164"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-micro-agents"></a>Azure Defender for IoT 设备微代理入门
 
@@ -20,7 +20,7 @@ Defender for IoT 安全代理处理从设备操作系统进行的原始事件收
 
 1. [为 IoT 中心启用 Defender for IoT 服务](quickstart-onboard-iot-hub.md)。
 
-1. 如果 IoT 中心没有已注册的设备，则[注册新设备](../iot-accelerators/iot-accelerators-device-simulation-overview.md)。
+1. 如果 IoT 中心没有已注册的设备，则[注册新设备](/previous-versions/azure/iot-accelerators/iot-accelerators-device-simulation-overview)。
 
 1. 为设备[创建 DefenderIotMicroAgent 模块孪生](quickstart-create-micro-agent-module-twin.md)。
 

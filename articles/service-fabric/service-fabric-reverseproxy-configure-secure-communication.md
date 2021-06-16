@@ -3,12 +3,12 @@ title: Azure Service Fabric 反向代理安全通信
 description: 在 Azure Service Fabric 应用程序中配置反向代理以启用安全的端到端通信。
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b87ec5d1c43d15c36a3188678efbdfdb72509cd4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86256129"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956747"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>使用反向代理连接到安全服务
 
@@ -20,7 +20,7 @@ ms.locfileid: "86256129"
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>在反向代理与服务之间建立安全连接 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>反向代理在服务中进行身份验证：
-反向代理使用其证书向服务标识自己。 对于 Azure 群集，证书使用资源管理器模板的 [_ *Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/templates/template-syntax.md)中的 *reverseProxyCertificate_ 属性指定。 对于独立群集，证书使用 ClusterConfig.json _安全部分中的 **_ReverseProxyCertificate_ *或 _* _ReverseProxyCertificateCommonNames_ *_属性指定***。 若要了解详细信息，请参阅[在独立群集上启用反向代理](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
+反向代理使用其证书向服务标识自己。 对于 Azure 群集，证书使用资源管理器模板的 [_ *Microsoft.ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/templates/syntax.md)中的 *reverseProxyCertificate_ 属性指定。 对于独立群集，证书使用 ClusterConfig.json _安全部分中的 **_ReverseProxyCertificate_ *或 _* _ReverseProxyCertificateCommonNames_ *_属性指定***。 若要了解详细信息，请参阅[在独立群集上启用反向代理](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
 
 服务可以实现逻辑来验证反向代理提供的证书。 服务可以在配置包中将已接受的客户端证书详细信息指定为配置设置。 此设置可在运行时读取，并用于验证反向代理提供的证书。 请参阅[管理应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)来添加配置设置。 
 
@@ -146,7 +146,7 @@ ms.locfileid: "86256129"
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>服务公开安全和不安全终结点时使用的终结点选择逻辑
 Service Fabric 支持为服务配置多个终结点。 有关详细信息，请参阅[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。
 
-反向代理根据 [服务 URI](./service-fabric-reverseproxy.md#uri-format-for-addressing-services-by-using-the-reverse-proxy) 中的 ListenerName 查询参数选择某个终结点来转发请求。 如果未指定 **ListenerName** 参数，则反向代理可以选取终结点列表中的任一终结点。 根据为服务配置的终结点，所选终结点可以是 HTTP 或 HTTPS 终结点。 在某些情况下，或者根据某些要求，你希望反向代理在“仅限安全模式”下运行；也就是说，你不希望安全反向代理将请求转发到不安全的终结点。 若要将反向代理设置为仅限安全模式，请在 [ApplicationGateway/Http](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中指定值为 **true** 的 **SecureOnlyMode** 配置条目。   
+反向代理根据[服务 URI](./service-fabric-reverseproxy.md#uri-format-for-addressing-services-by-using-the-reverse-proxy) 中的 ListenerName 查询参数选择某个终结点来转发请求。 如果未指定 **ListenerName** 参数，则反向代理可以选取终结点列表中的任一终结点。 根据为服务配置的终结点，所选终结点可以是 HTTP 或 HTTPS 终结点。 在某些情况下，或者根据某些要求，你希望反向代理在“仅限安全模式”下运行；也就是说，你不希望安全反向代理将请求转发到不安全的终结点。 若要将反向代理设置为仅限安全模式，请在 [ApplicationGateway/Http](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中指定值为 **true** 的 **SecureOnlyMode** 配置条目。   
 
 ```json
 {

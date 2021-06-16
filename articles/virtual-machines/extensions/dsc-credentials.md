@@ -8,12 +8,13 @@ author: bobbytreed
 ms.author: robreed
 ms.collection: windows
 ms.date: 05/02/2018
-ms.openlocfilehash: 6817dd6baacd835b7d433177ff18af1238ee44a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ad4b22916b5e602367fa26359e92ea4f52c05b13
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560067"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663031"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>将凭据传递给 Azure DSC 扩展处理程序
 

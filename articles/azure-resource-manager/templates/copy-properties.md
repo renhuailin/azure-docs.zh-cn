@@ -2,13 +2,13 @@
 title: 定义属性的多个实例
 description: 在资源上创建属性时，可以使用 Azure 资源管理器模板（ARM 模板）中的复制操作进行多次迭代。
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: 3f6eeac8b32e0fb34b973e82557cc48bab532ffd
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.date: 05/07/2021
+ms.openlocfilehash: 1f5a93b8c0759a9baccb8c5d5bc7dab25b181791
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736927"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954693"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM 模板中的属性迭代
 
@@ -19,8 +19,6 @@ ms.locfileid: "109736927"
 还可以将复制循环用于 [resources](copy-resources.md)、[variables](copy-variables.md) 和 [outputs](copy-outputs.md)。
 
 ## <a name="syntax"></a>语法
-
-# <a name="json"></a>[JSON](#tab/json)
 
 将 `copy` 元素添加到模板的 resources 节以设置某个属性的项数。 copy 元素采用以下常规格式：
 
@@ -40,36 +38,6 @@ ms.locfileid: "109736927"
 
 `input` 属性指定要重复的属性。 可以创建一个由 `input` 属性中的值构造的元素数组。
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-可以通过以下方式使用循环声明多个属性：
-
-- 循环访问数组：
-
-  ```bicep
-  <property-name>: [for <item> in <collection>: {
-    <properties>
-  }]
-  ```
-
-- 循环访问数组的元素
-
-  ```bicep
-  <property-name>: [for (<item>, <index>) in <collection>: {
-    <properties>
-  }]
-  ```
-
-- 使用循环索引
-
-  ```bicep
-  <property-name>: [for <index> in range(<start>, <stop>): {
-    <properties>
-  }]
-  ```
-
----
-
 ## <a name="copy-limits"></a>复制限制
 
 count 不能超过 800。
@@ -86,8 +54,6 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 ## <a name="property-iteration"></a>属性迭代
 
 以下示例演示如何将复制循环应用于虚拟机上的 `dataDisks` 属性：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -251,30 +217,6 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-@minValue(0)
-@maxValue(16)
-@description('The number of dataDisks to be returned in the output array.')
-param numberOfDataDisks int = 16
-
-resource vmName 'Microsoft.Compute/virtualMachines@2020-06-01' = {
-  ...
-  properties: {
-    storageProfile: {
-      ...
-      dataDisks: [for i in range(0, numberOfDataDisks): {
-        lun: i
-        createOption: 'Empty'
-        diskSizeGB: 1023
-      }]
-    }
-    ...
-  }
-}
-```
-
 已部署的模板将成为：
 
 ```json
@@ -304,11 +246,7 @@ resource vmName 'Microsoft.Compute/virtualMachines@2020-06-01' = {
       ...
 ```
 
----
-
 可将资源迭代和属性迭代结合使用。 按名称引用属性迭代。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -342,30 +280,6 @@ resource vmName 'Microsoft.Compute/virtualMachines@2020-06-01' = {
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for i in range(0, 2): {
-  name: concat(vnetname, i)
-  location: resourceGroup().location
-  properties: {
-    addressSpace: {
-      addressPrefixes: [
-        addressPrefix
-      ]
-    }
-    subnets: [for j in range(0, 2): {
-      name: 'subnet-${j}'
-      properties: {
-        addressPrefix: subnetAddressPrefix[j]
-      }
-    }]
-  }
-}]
-```
-
----
-
 ## <a name="example-templates"></a>示例模板
 
 以下示例显示了为一个属性创建多个值的常见方案。
@@ -381,5 +295,5 @@ resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for
   - [ARM 模板中的资源迭代](copy-resources.md)
   - [ARM 模板中的变量迭代](copy-variables.md)
   - [ARM 模板中的输出迭代](copy-outputs.md)
-- 若要了解模板的各个部分，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+- 若要了解模板的各个部分，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 - 若要了解如何部署模板，请参阅[使用 ARM 模板和 Azure PowerShell 来部署资源](deploy-powershell.md)。

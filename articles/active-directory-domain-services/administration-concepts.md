@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 06/01/2021
 ms.author: justinha
-ms.openlocfilehash: 5473ef46751d64fdbbf1d52f39c66f49d707e615
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82329a6a8134eb0227c1d0e64c3141135768cd66
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102631381"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438497"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory 域服务中有关用户帐户、密码和管理的管理概念
 
@@ -78,11 +78,11 @@ Azure AD DS 包括一个默认的密码策略，该策略定义了帐户锁定�
 
 在 Azure AD DS 中，可用的性能和功能取决于 SKU。 在创建托管域时，你将选择一个 SKU；在部署托管域后，你可以根据业务需求的变化切换 SKU。 下表概述了可用的 SKU 以及它们之间的差异：
 
-| SKU 名称   | 最大对象计数 | 备份频率 | 最大出站林信任数量 |
-|------------|----------------------|------------------|----|
-| 标准   | 无限制            | 每 5 天     | 0  |
-| Enterprise | 无限制            | 每 3 天     | 5  |
-| 高级    | 无限制            | 每日            | 10 |
+| SKU 名称   | 最大对象计数 | 备份频率 | 
+|------------|----------------------|------------------|
+| 标准   | 无限制            | 每 5 天     |
+| Enterprise | 无限制            | 每 3 天     | 
+| 高级    | 无限制            | 每日            | 
 
 在这些 Azure AD DS SKU 之前，使用的是基于托管域中的对象（用户和计算机帐户）数量的计费模型。 不再提供基于托管域中的对象数量的可变定价。
 
@@ -99,10 +99,6 @@ Azure AD DS 包括一个默认的密码策略，该策略定义了帐户锁定�
 备份频率决定了托管域快照的创建频率。 备份是由 Azure 平台管理的自动化过程。 当你的托管域出现问题时，Azure 支持人员可以帮助你从备份进行还原。 由于同步仅从 Azure AD 单向进行，因此，托管域中的任何问题都不会影响 Azure AD 或本地 AD DS 环境和功能。
 
 随着 SKU 级别的提高，这些备份快照的频率也会提高。 请查看你的业务需求和恢复点目标 (RPO)，以确定托管域所需的备份频率。 如果你的业务或应用程序需求发生变化，并且你需要更频繁的备份，则可以切换到其他 SKU。
-
-### <a name="outbound-forest-trusts"></a>出站林信任
-
-上一部分详细介绍了从托管域到本地 AD DS 环境的单向出站林信任。 SKU 决定了可以为托管域创建的林信任的最大数量。 查看你的业务和应用程序需求，确定你实际需要的信任数量，并选取适当的 Azure AD DS SKU。 同样，如果你的业务需求发生了变化，并且你需要创建额外的林信任，则可以切换到其他 SKU。
 
 ## <a name="next-steps"></a>后续步骤
 

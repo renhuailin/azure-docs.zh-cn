@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: bfdfad8af2d730caf0ac9e22ee815a6d59a6b6a3
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: f0412b6e67ff62247feb3f8643553c5a6101ad73
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074720"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892663"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>快速入门：使用 ARM 模板创建应用服务应用
 
@@ -41,7 +41,7 @@ ms.locfileid: "108074720"
 ## <a name="2-review-the-template"></a>2.查看模板
 
 ::: zone pivot="platform-windows"
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows)。 它在 Windows 上部署应用服务计划和应用服务应用。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/app-service-docs-windows)。 它在 Windows 上部署应用服务计划和应用服务应用。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-windows/azuredeploy.json":::
 
@@ -69,7 +69,7 @@ ms.locfileid: "108074720"
 </details>
 ::: zone-end
 ::: zone pivot="platform-linux"
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux)。 它在 Windows 上部署应用服务计划和应用服务应用。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/app-service-docs-linux)。 它在 Windows 上部署应用服务计划和应用服务应用。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-linux/azuredeploy.json":::
 

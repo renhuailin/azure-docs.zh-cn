@@ -4,15 +4,15 @@ description: 了解 Azure Database for MySQL 灵活服务器，这是 Microsoft 
 author: savjani
 ms.service: mysql
 ms.author: pariks
-ms.custom: mvc
+ms.custom: mvc, references_regions
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 2b1a66c5f277f4aa46a0a8befe3a92a39b04d296
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 4f36fae568619807754e838082af270037842bea
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229677"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526283"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）
 
@@ -148,8 +148,8 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 | 澳大利亚东部 | :heavy_check_mark: | :heavy_check_mark: |
 | 法国中部 | :heavy_check_mark: | :x:|
 | 巴西南部 | :heavy_check_mark: | :x: |
+| 瑞士北部 | :heavy_check_mark: | :x: |
 
-我们即将添加新的区域。
 
 ## <a name="contacts"></a>联系人
 如果有任何关于使用 Azure Database for MySQL 灵活服务器的问题或建议，请发送电子邮件至 Azure Database for MySQL 团队 ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com))。 此电子邮件地址不是技术支持别名。

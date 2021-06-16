@@ -2,20 +2,20 @@
 title: 了解 Azure Active Directory 中应用的基于密码的单一登录 (SSO)
 description: 了解 Azure Active Directory 中应用的基于密码的单一登录 (SSO)
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.author: iangithinji
-ms.openlocfilehash: ffa517f068dbc13f2734630216466373d9014ae6
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.author: mtillman
+ms.openlocfilehash: 45a0a8c6001629e97b6c493774141e30dac1cbd9
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374550"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076197"
 ---
 # <a name="understand-password-based-single-sign-on"></a>了解基于密码的单一登录
 
@@ -37,16 +37,16 @@ ms.locfileid: "107374550"
 
 -   允许管理员指定个人或组在使用更新凭据功能登录到应用程序时使用的用户名和密码 
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-使用 Azure AD 作为标识提供者 (IdP) 并配置单一登录 (SSO) 可以是简单的，也可以是复杂的，这取决于所使用的应用程序。 某些应用程序只需几个操作就能进行配置。 其他应用程序需要深入配置。 要快速提升知识水平，请浏览有关应用程序管理的[快速入门系列](view-applications-portal.md)。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要自定义配置，并且你需要使用基于密码的 SSO，则本文适用于你。
+使用 Azure AD 作为标识提供者 (IdP) 和配置单一登录 (SSO) 时，操作可能简单也可能复杂，具体取决于所使用的应用程序。 配置某些应用程序只需几个操作就能搞定。 而其他则需要深度配置。 要快速提升知识水平，请浏览有关应用程序管理的[快速入门系列](view-applications-portal.md)。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要自定义配置，并且你需要使用基于密码的 SSO，则本文适用于你。
 
 > [!IMPORTANT] 
 > 在某些情况下，“单一登录”选项将不会出现在“企业应用程序”中的应用程序的导航中。 
 >
-> 如果使用“应用注册”注册了应用程序，则默认情况下，单一登录功能将配置为使用 OIDC OAuth。 在这种情况下，“企业应用程序”下的导航中将不会显示“单一登录”选项。 使用“应用注册”添加自定义应用时，将在清单文件中配置选项。 要详细了解清单文件，请参阅 [Azure Active Directory 应用部件清单 (manifest)](../develop/reference-app-manifest.md)。 要了解有关 SSO 标准的详细信息，请参阅[使用 Microsoft 标识平台进行身份验证和授权](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-the-microsoft-identity-platform)。 
+> 如果使用“应用注册”注册了应用程序，则默认情况下，单一登录功能将配置为使用 OIDC OAuth。 在这种情况下，“企业应用程序”下的导航中将不会显示“单一登录”选项 。 使用“应用注册”添加自定义应用时，将在清单文件中配置选项。 要详细了解清单文件，请参阅 [Azure Active Directory 应用部件清单 (manifest)](../develop/reference-app-manifest.md)。 要了解有关 SSO 标准的详细信息，请参阅[使用 Microsoft 标识平台进行身份验证和授权](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-the-microsoft-identity-platform)。 
 >
-> 导航中将缺少“单一登录”的另一种场景是：应用程序托管在另一个租户中，或者如果你的帐户没有所需权限（全局管理员、云应用程序管理员、应用程序管理员或服务主体的所有者）。 权限还可能会导致出现下面的情况：你可以打开“单一登录”但无法保存。 详细了解 Azure AD 管理角色，请参阅（ https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
+> 导航中将缺少“单一登录”的另一种场景是：应用程序托管在另一个租户中，或者如果你的帐户没有所需权限（全局管理员、云应用程序管理员、应用程序管理员或服务主体的所有者）。 权限还可能导致出现你可打开“单一登录”，但无法保存它的情况。 详细了解 Azure AD 管理角色，请参阅（ https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
 
 
 ## <a name="basic-configuration"></a>基本配置

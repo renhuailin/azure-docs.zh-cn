@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c308824afdcae5f5c04a316c199bad71ad84a429
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1f9d028ea8701188a1bdea5d072399f1b4c55020
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94961985"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985681"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
 
@@ -103,7 +104,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="create-a-network-watcher-using-azure-quickstart-template"></a>使用 Azure 快速入门模板创建网络观察程序
 
-若要创建网络观察程序实例，请参阅此[快速入门模板](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/)
+若要创建网络观察程序实例，请参阅此[快速入门模板](https://azure.microsoft.com/resources/templates/networkwatcher-create/)
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>在门户中删除网络观察程序
 

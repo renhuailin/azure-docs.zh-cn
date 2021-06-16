@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 32cd2760eadc94466cdf55883611c78ac0cf24e6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6c7c0adb35901186cb967d416f8b91c4cf54ff9a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608113"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792659"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -25,7 +25,7 @@ Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是一种在�
 - 依赖项注入模式的不同之处取决于 C# 函数是[在进程内](functions-dotnet-class-library.md)运行还是在[进程外](dotnet-isolated-process-guide.md)运行。  
 
 > [!IMPORTANT]
-> 本文的指导仅适用于 [C# 类库函数](functions-dotnet-class-library.md)，该函数在运行时在进程内运行。 该自定义依赖项注入模型不适用于[.Net 隔离函数](dotnet-isolated-process-guide.md)，故可以在进程外运行.Net 5.0 函数。 .NET 独立进程模型依赖于常规 ASP.NET Core 依赖项注入模式。 若要了解更多信息，请参阅.NET 独立过程指南中的[依赖项注入](dotnet-isolated-process-guide.md#dependency-injection)。
+> 本文的指导仅适用于 [C# 类库函数](functions-dotnet-class-library.md)，该函数在进程内与运行时配合运行。 该自定义依赖项注入模型不适用于 [.NET 隔离函数](dotnet-isolated-process-guide.md)，故可以在进程外运行 .Net 5.0 函数。 .NET 隔离进程模型依赖于常规 ASP.NET Core 依赖项注入模式。 若要了解更多信息，请参阅 .NET 隔离进程指南中的[依赖项注入](dotnet-isolated-process-guide.md#dependency-injection)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -99,9 +99,9 @@ namespace MyNamespace
         private readonly HttpClient _client;
         private readonly IMyService _service;
 
-        public MyHttpTrigger(HttpClient httpClient, IMyService service)
+        public MyHttpTrigger(IHttpClientFactory httpClientFactory, IMyService service)
         {
-            this._client = httpClient;
+            this._client = httpClientFactory.CreateClient();
             this._service = service;
         }
 

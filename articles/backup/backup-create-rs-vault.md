@@ -2,14 +2,14 @@
 title: 创建和配置恢复服务保管库
 description: 本文介绍如何创建和配置用于存储备份和恢复点的恢复服务保管库。 了解如何使用“跨区域还原”在次要区域中还原。
 ms.topic: conceptual
-ms.date: 04/14/2021
+ms.date: 06/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5e2983e473fac72d02f0fdbc8c307e96326ac0a6
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: b301ce0ab2f4b57a03e3ba24d672bb4102a1a997
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518569"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794215"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>创建和配置恢复服务保管库
 
@@ -69,7 +69,7 @@ Azure 备份会自动处理保管库的存储。 需要指定如何复制该存�
 >- SQL 和 SAP HANA 数据库的“跨区域还原”功能目前在所有 Azure 公共区域为预览版。
 >- CRR 是保管库级别的选用功能（默认已禁用），适用于任何 GRS 保管库。
 >- 选择启用后，备份项最长可能需要在 48 小时后才出现在次要区域中。
->- 目前，Azure 资源管理器 Azure VM 和加密的 Azure VM 都支持 Azure VM 的 CRR。 不支持经典 Azure VM。 当有更多管理类型支持 CRR 时，将会 **自动** 注册这些类型。
+>- 目前，Azure 资源管理器 Azure VM 和加密 Azure VM 支持用于 Azure VM 的 CRR。 不支持经典 Azure VM。 当有更多管理类型支持 CRR 时，将会 **自动** 注册这些类型。
 >- 目前，在首次启用保护后，无法将跨区域还原恢复为 GRS 或 LRS。
 >- 目前，从主要区域到次要区域的 [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) 最多为 12 个小时，即使[读取访问异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) 复制为 15 分钟。
 

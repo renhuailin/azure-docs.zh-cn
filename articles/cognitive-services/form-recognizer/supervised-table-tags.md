@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: 了解如何有效地使用监督表标记标签。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 6cbf96a050124fe0d72bb0fc24be4ad7ea265fed
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1265be9e71706c7a0d1cc5c8c1e096b1a166652f
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374045"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889519"
 ---
 # <a name="use-table-tags-to-train-your-custom-form-model"></a>使用表标记训练自定义表单模型
 

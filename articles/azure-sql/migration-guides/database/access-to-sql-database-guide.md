@@ -6,23 +6,24 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
+author: mokabiru
+ms.author: mokabiru
+ms.reviewer: cawrites
 ms.date: 03/19/2021
-ms.openlocfilehash: 137adbb045a4c449193f9029b9c72f09ddc439b1
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 37266c7a7692c59efdded9ba3fabe71458a5f674
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388459"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110788615"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>迁移指南：Access 到 Azure SQL 数据库
 
 本指南介绍如何使用适用于 Access 的 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)助手（适用于 Access 的 SSMA）将 Microsoft Access 数据库[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。
 
-有关其他迁移指南，请参阅 [Azure 数据库迁移指南](https://docs.microsoft.com/data-migration)。 
+有关其他迁移指南，请参阅 [Azure 数据库迁移指南](/data-migration)。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始将 Access 数据库迁移到 SQL 数据库之前，请执行以下操作：
 
@@ -30,7 +31,7 @@ ms.locfileid: "107388459"
 - 下载并安装[适用于 Access 的 SQL Server 迁移助手](https://www.microsoft.com/download/details.aspx?id=54255)。
 - 确保具有连接和足够的权限来访问源和目标。
 
-## <a name="pre-migration"></a>预迁移
+## <a name="pre-migration"></a>迁移前
 
 满足先决条件后，就已准备就绪，可以探索环境的拓扑并评估 [Azure 云迁移](https://azure.microsoft.com/migration)的可行性了。
 
@@ -41,7 +42,7 @@ ms.locfileid: "107388459"
 
 若要创建评估，请执行以下操作： 
 
-1. 打开 [SSMA for Access](https://www.microsoft.com/download/details.aspx?id=54255)。 
+1. 打开[适用于 Access 的 SSMA](https://www.microsoft.com/download/details.aspx?id=54255)。 
 1. 依次选择“文件”和“新建项目” 。 
 1. 提供项目名称和项目的位置，然后从下拉列表中选择“Azure SQL 数据库”作为迁移目标。 
 1. 选择“确定”。 
@@ -52,7 +53,7 @@ ms.locfileid: "107388459"
 
    ![适用于 Access 的 SSMA 中“添加数据库”选项卡的屏幕截图。](./media/access-to-sql-database-guide/add-databases.png)
 
-1. 在“Access 元数据资源管理器”窗格中，右键单击数据库，然后选择“创建报表” 。 或者，可以选择右上方的“创建报告”选项卡。
+1. 在“Access 元数据资源管理器”窗格中，右键单击数据库，然后选择“创建报表” 。 或者，可以选择右上方的“创建报表”选项卡。
 
    ![Access 元数据资源管理器中“创建报表”命令的屏幕截图。](./media/access-to-sql-database-guide/create-report.png)
 
@@ -128,7 +129,7 @@ ms.locfileid: "107388459"
 
     ![“Access 元数据资源管理器”窗格上“迁移数据”命令的屏幕截图。](./media/access-to-sql-database-guide/migrate-data.png)
 
-1. 迁移完成后，查看数据迁移报表。  
+1. 迁移完成后，查看“数据迁移报表”。  
 
     ![“迁移数据报表”窗格的屏幕截图，显示要查看的示例报表。](./media/access-to-sql-database-guide/migrate-data-review.png)
 
@@ -138,7 +139,7 @@ ms.locfileid: "107388459"
 
 ## <a name="post-migration"></a>迁移后 
 
-成功完成“迁移”阶段后，需要完成一系列的迁移后任务，以确保一切都能尽量顺畅高效地正常进行。
+成功完成迁移阶段后，需要完成一系列的迁移后任务，以确保一切都能尽量顺畅高效地正常进行。
 
 ### <a name="remediate-applications"></a>修正应用程序
 
@@ -148,13 +149,13 @@ ms.locfileid: "107388459"
 
 数据库迁移的测试方法包括以下活动：
 
-1. 开发验证测试：要测试数据库迁移，需要使用 SQL 查询。 必须创建针对源数据库和目标数据库运行的验证查询。 验证查询应涵盖已定义的范围。
+1. **开发验证测试**：要测试数据库迁移，需要使用 SQL 查询。 必须创建针对源数据库和目标数据库运行的验证查询。 验证查询应涵盖已定义的范围。
 
-1. 设置测试环境：测试环境应包含源数据库和目标数据库的副本。 请确保隔离测试环境。
+1. **设置测试环境**：测试环境应包含源数据库和目标数据库的副本。 请确保隔离测试环境。
 
-1. 运行验证测试：针对源和目标运行验证测试，然后分析结果。
+1. **运行验证测试**：针对源和目标运行验证测试，然后分析结果。
 
-1. 运行性能测试：针对源和目标运行性能测试，然后分析并比较结果。
+1. 运行性能测试：针对源和目标运行性能测试，然后分析和比较结果。
 
 
 ### <a name="optimize"></a>优化
@@ -165,11 +166,11 @@ ms.locfileid: "107388459"
 
 ## <a name="migration-assets"></a>迁移资产 
 
-若要获得完成此迁移方案的更多帮助，请参阅以下资源。 它是为支持实际迁移项目编制的。
+若要获得完成此迁移场景的更多帮助，请参阅以下资源。 它是为支持实际迁移项目编制的。
 
 | 标题 | 说明 |
 | --- | --- |
-| [数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 为指定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报告生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。 |
+| [数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 为指定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。 |
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 

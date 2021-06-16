@@ -10,13 +10,16 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 7748737450a013fcfe66ac189213b390c2afa7d1
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: b6f53a7c67ac9eeaf103541c471741f24f0302ce
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109627240"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111594274"
 ---
+> [!NOTE]
+> 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码
+
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
 
@@ -255,6 +258,7 @@ let sendMessageOptions =
 };
 const sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
 const messageId = sendChatMessageResult.id;
+console.log(`Message sent!, message id:${messageId}`);
 ```
 
 添加此代码以代替 client.js 中的 `<SEND MESSAGE TO A CHAT THREAD>` 注释，刷新浏览器选项卡并检查控制台。

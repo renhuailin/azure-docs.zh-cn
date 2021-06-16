@@ -3,12 +3,12 @@ title: 使用 Azure 资源管理器模板创建或修改实验室
 description: 了解如何将 Azure 资源管理器模板与 PowerShell 配合使用，以在开发测试实验室中自动创建或修改实验室
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 645f1d0717514d2c7e7b16844513327127e4e1a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65656a7383aed76538e43bebd41c82f62f81e724
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87272634"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953917"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>使用 Azure 资源管理器模板和 PowerShell 自动创建或修改实验室
 
@@ -22,7 +22,7 @@ ms.locfileid: "87272634"
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>步骤 2：修改 Azure 资源管理器模板
 如果之前从未创建过模板，则可以按照[创建第一个 Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)中的步骤进行操作。
 
-此外，[创建 Azure 资源管理器模板的最佳做法](../azure-resource-manager/templates/template-best-practices.md)提供许多指导原则和建议，可帮助创建可靠且易用的 Azure 资源管理器模板。 通常情况下，将使用所提供的方法或示例之一的变体，并根据需要修改模板。
+此外，[创建 Azure 资源管理器模板的最佳做法](../azure-resource-manager/templates/best-practices.md)提供许多指导原则和建议，可帮助创建可靠且易用的 Azure 资源管理器模板。 通常情况下，将使用所提供的方法或示例之一的变体，并根据需要修改模板。
 
 ## <a name="step-3-deploy-resources-with-powershell"></a>步骤 3：通过 PowerShell 部署资源
 自定义模板和脚本后，请遵循[通过 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md)的必需步骤操作。 本文提供关于将 Azure PowerShell 与 Azure 资源管理器模板配合使用以将资源部署到 Azure 的常规信息。

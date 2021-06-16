@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs
+ms.custom: mvc, subject-armqs, devx-track-azurepowershell
 ms.date: 04/01/2021
-ms.openlocfilehash: 01fe3121173eb730584dadd1266b3217af2b5017
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: e141a33be0433e8d40af41c4624b4921321a6aae
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279543"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971602"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建和部署逻辑应用工作流
 
@@ -30,7 +30,7 @@ ms.locfileid: "108279543"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门使用[创建逻辑应用](https://azure.microsoft.com/resources/templates/101-logic-app-create/)模板，该模板可以在 [Azure 快速入门模板库](https://azure.microsoft.com/resources/templates)中找到，由于长度太长，因此无法在此处显示。 相反，可以在模板库中查看快速入门模板的[“azuredeploy.json 文件”](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json)。
+本快速入门使用[创建逻辑应用](https://azure.microsoft.com/resources/templates/logic-app-create/)模板，该模板可以在 [Azure 快速入门模板库](https://azure.microsoft.com/resources/templates)中找到，由于长度太长，因此无法在此处显示。 相反，可以在模板库中查看快速入门模板的[“azuredeploy.json 文件”](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json)。
 
 快速入门模板会创建一个逻辑应用工作流，该工作流使用定期触发器和 HTTP [内置操作](../connectors/built-in.md)，前者设置为每小时运行一次，后者则调用返回 Azure 状态的 URL。 内置操作是 Azure 逻辑应用平台的本机操作。
 
@@ -64,7 +64,7 @@ ms.locfileid: "108279543"
 
 1. 在门户中的“使用模板创建逻辑应用”页面上，输入或选择这些值：
 
-   | 属性 | 值 | 说明 |
+   | 属性 | Value | 说明 |
    |----------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | 要使用的 Azure 订阅的名称 |
    | **资源组** | <*Azure-resource-group-name*> | 新的或现有的 Azure 资源组的名称。 本示例使用 `Check-Azure-Status-RG`。 |
@@ -152,7 +152,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
    ```
 
-   | 值 | 说明 |
+   | Value | 说明 |
    |-------|-------------|
    | `subscriptionId`| 要使用的 Azure 订阅的 GUID |
    | `resourceGroupName` | 要使用的 Azure 资源组的名称。 本示例使用 `Check-Azure-Status-RG`。 |
@@ -167,7 +167,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
    有关详细信息，请参阅[资源管理 REST API：部署 - 创建或更新](/rest/api/resources/deployments/createorupdate)。
 
-1. 若要提供用于部署的值，例如 Azure 区域和快速入门模板的链接以及[参数文件](../azure-resource-manager/templates/template-parameters.md)（此文件包含部署时要使用的快速入门模板的值），请按照此语法发出要发送到资源管理 REST API 的请求主体：
+1. 若要提供用于部署的值，例如 Azure 区域和快速入门模板的链接以及[参数文件](../azure-resource-manager/templates/parameters.md)（此文件包含部署时要使用的快速入门模板的值），请按照此语法发出要发送到资源管理 REST API 的请求主体：
 
    ```json
    {
@@ -186,7 +186,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
    }
    ```
 
-   | 属性 | 值 | 说明 |
+   | 属性 | Value | 说明 |
    |----------|-------|-------------|
    | `location`| <*Azure-region*> | 用于部署的 Azure 区域。 本示例使用 `West US`。 |
    | `templateLink` : `uri` | <*quickstart-template-URL*> | 用于部署的快速入门模板的 URL 位置： <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json`. |
@@ -263,7 +263,7 @@ Write-Host "Press [ENTER] to continue..."
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}?api-version=2016-06-01
 ```
 
-| 值 | 说明 |
+| Value | 说明 |
 |-------|-------------|
 | `subscriptionId`| 部署了快速入门模板的 Azure 订阅的 GUID。 |
 | `resourceGroupName` | 部署了快速入门模板的 Azure 资源组的名称。 本示例使用 `Check-Azure-Status-RG`。 |
@@ -321,7 +321,7 @@ Write-Host "Press [ENTER] to continue..."
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}?api-version=2019-10-01
 ```
 
-| 值 | 说明 |
+| Value | 说明 |
 |-------|-------------|
 | `subscriptionId`| 部署了快速入门模板的 Azure 订阅的 GUID。 |
 | `resourceGroupName` | 部署了快速入门模板的 Azure 资源组的名称。 本示例使用 `Check-Azure-Status-RG`。 |

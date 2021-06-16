@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 066fd6f91b19da211a73ac12fb6dca94085399ac
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 04aa6f6a7f99eed32c12cf5459c7a7e49089ce6c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256627"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962312"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>教程：为 Azure Active Directory B2C 配置 Ping 标识以实现安全的混合访问
 
@@ -160,7 +160,7 @@ PingFederate 是企业标识桥，可完全配置为身份验证提供程序，�
 
 7. 在“客户端密码”字段中，输入你在 Azure AD 中为应用程序生成的密钥 。
 
-8. 可选 - 可以使用 Microsoft Graph API 来创建和使用自定义声明。 如果选择这样做，请选择“高级”，并取消选择“请求配置文件”和“刷新用户属性”选项  。 若要详细了解如何使用自定义声明，请参阅[使用自定义声明](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers.md)。
+8. 可选 - 可以使用 Microsoft Graph API 来创建和使用自定义声明。 如果选择这样做，请选择“高级”，并取消选择“请求配置文件”和“刷新用户属性”选项  。 若要详细了解如何使用自定义声明，请参阅[使用自定义声明](../active-directory/app-proxy/application-proxy-configure-single-sign-on-with-headers.md)。
 
 9. 选择“保存”
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rohithah, rarayudu, azla
 ms.topic: reference
 ms.date: 05/25/2021
-ms.openlocfilehash: 49f9a04351d243f4011b35370b99e30327446f5d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 36f7f036552a747cf4f59e8ba7412d89bfb22228
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378174"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439397"
 ---
 # <a name="limits-and-configuration-reference-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置参考
 
@@ -32,7 +32,7 @@ ms.locfileid: "110378174"
 
 下表列出了单个工作流定义的值：
 
-| 名称 | 限制 | 注释 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 每个订阅每个区域的工作流数 | 1,000 个工作流 ||
 | 每个工作流的触发数 | 10 个触发器 | 此限制仅在代码视图或 Azure 资源管理器 (ARM) 模板中使用 JSON 工作流定义时适用，在设计器中不适用。 |
@@ -281,7 +281,7 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 ### <a name="timeout-duration"></a>超时持续时间
 
-默认情况下，HTTP 操作和 APIConnection 操作遵循[标准异步操作模式](/architecture/patterns/async-request-reply)，而响应操作则遵循“同步操作模式”。 某些托管连接器操作会进行异步调用或侦听 Webhook 请求，因此这些操作的超时时间可能会长于以下限制。 有关详细信息，请查看[每个连接器的技术参考页](/connectors/connector-reference/connector-reference-logicapps-connectors)，以及[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)文档。
+默认情况下，HTTP 操作和 APIConnection 操作遵循[标准异步操作模式](/azure/architecture/patterns/async-request-reply)，而响应操作则遵循“同步操作模式”。 某些托管连接器操作会进行异步调用或侦听 Webhook 请求，因此这些操作的超时时间可能会长于以下限制。 有关详细信息，请查看[每个连接器的技术参考页](/connectors/connector-reference/connector-reference-logicapps-connectors)，以及[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)文档。
 
 > [!NOTE]
 > 对于单租户模型中的逻辑应用（标准版）资源类型，无状态工作流只能同步运行。
@@ -294,7 +294,7 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 <a name="message-size-limits"></a>
 
-### <a name="messages"></a>消息
+### <a name="messages"></a>Messages
 
 | 名称 | 已启用分块 | 多租户 | 单租户 | 集成服务环境 | 注释 |
 |------|------------------|--------------|-------------------------|---------------------------------|-------|
@@ -306,7 +306,7 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 ### <a name="character-limits"></a>字符限制
 
-| 名称 | 限制 | 注释 |
+| 名称 | 限制 | 说明 |
 |------|-------|-------|
 | 表达式计算限制 | 131,072 个字符 | `@concat()`、`@base64()`、`@string()` 表达式的长度不能超过此限制。 |
 | 请求 URL 字符限制 | 16,384 个字符 | |
@@ -316,7 +316,7 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 ### <a name="retry-policy"></a>重试策略
 
-| 名称 | 限制 | 注释 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 重试次数 | - 默认值：4 次尝试 <br> - 最大值：90 次尝试 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最大延迟 | - 默认值：1 天 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
@@ -329,7 +329,7 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 下表列出了某个工作流的值，该工作流先是使用请求触发器，并启用 [Azure Active Directory 开放式身份验证](../active-directory/develop/index.yml) (Azure AD OAuth) 来授权对请求触发器的入站调用：
 
-| 名称 | 限制 | 注释 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | Azure AD 授权策略 | 5 个策略 | |
 | 每个授权策略的声明 | 10 个声明 | |
@@ -342,7 +342,7 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 下表列出了单个工作流定义的值：
 
-| 名称 | 限制 | 注释 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 每项操作的最大案例数 | 25 ||
 ||||
@@ -436,7 +436,7 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 ### <a name="artifact-capacity-limits"></a>项目容量限制
 
-| 项目 | 限制 | 注释 |
+| 项目 | 限制 | 说明 |
 | -------- | ----- | ----- |
 | Assembly | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 存储帐户和 blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
 | 映射（XSLT 文件） | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 逻辑应用 REST API - 映射](/rest/api/logic/maps/createorupdate)。 <p><p>**注意**：映射可以成功处理的数据或记录量取决于 Azure 逻辑应用中的消息大小和操作超时限制。 例如，如果使用 HTTP 操作，则根据 [HTTP 消息大小和超时限制](#http-limits)，在操作能够在 HTTP 超时限制内完成的情况下，映射最多可以处理达到 HTTP 消息大小限制的数据量。 |
@@ -447,7 +447,7 @@ Azure 逻辑应用支持通过本地数据网关执行写入操作（包括插�
 
 ### <a name="throughput-limits"></a>吞吐量限制
 
-| 运行时终结点 | 免费 | 基本 | 标准 | 注释 |
+| 运行时终结点 | 免费 | 基本 | 标准 | 说明 |
 |------------------|------|-------|----------|-------|
 | 每 5 分钟的读取调用数 | 3,000 | 30,000 | 60,000 | 此限制适用于从逻辑应用的运行历史记录获取原始输入和输出的调用。 你可根据需要在多个帐户之间分配工作负荷。 |
 | 每 5 分钟调用的调用数 | 3,000 | 30,000 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 09/02/2020
-ms.openlocfilehash: e97171e61814b832e78f7bd815d8d6f341a90840
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21f8109fa1db49af8f2e84833466ed204d2f59fa
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91858166"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536519"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>商业市场产品/服务计划和定价
 
@@ -100,7 +100,7 @@ ms.locfileid: "91858166"
 > [!IMPORTANT]
 > 发布产品/服务后，便无法更改定价模型。
 
-单一费率的 SaaS 产品/服务和托管应用程序产品/服务支持使用市场计量服务的按流量计费。 这是一种基于使用情况的计费模型，支持定义非标准单位（例如带宽或电子邮件数），以便客户按使用量支付费用。 请参阅相关文档详细了解[托管应用程序](./partner-center-portal/azure-app-metered-billing.md)和 [SaaS 应用](./partner-center-portal/saas-metered-billing.md)的按流量计费模型。
+单一费率的 SaaS 产品/服务和托管应用程序产品/服务支持使用市场计量服务的按流量计费。 这是一种基于使用情况的计费模型，支持定义非标准单位（例如带宽或电子邮件数），以便客户按使用量支付费用。 请参阅相关文档详细了解[托管应用程序](marketplace-metering-service-apis.md)和 [SaaS 应用](./partner-center-portal/saas-metered-billing.md)的按流量计费模型。
 
 ## <a name="custom-prices"></a>自定义价格
 
@@ -166,5 +166,5 @@ ms.locfileid: "91858166"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何为现有产品/服务添加或更新计划，请参阅[更新商业市场中现有的产品/服务](./partner-center-portal/update-existing-offer.md)。
+- 若要了解如何为现有产品/服务添加或更新计划，请参阅[更新商业市场中现有的产品/服务](./update-existing-offer.md)。
 - 若要详细了解交易选项和关联的定价模型，请参阅[商业市场交易功能](./marketplace-commercial-transaction-capabilities-and-considerations.md)。
