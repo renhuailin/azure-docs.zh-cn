@@ -1,0 +1,72 @@
+### YamlMime:FAQ
+metadata:
+  title: 有关 Azure Cosmos DB 时间点还原功能的常见问题解答。
+  description: 本文列出了有关使用连续备份模式实现的 Azure Cosmos DB 时间点还原功能的常见问题解答。
+  author: kanshiG
+  ms.service: cosmos-db
+  ms.topic: conceptual
+  ms.date: 02/01/2021
+  ms.author: govindk
+  ms.reviewer: sngun
+  ms.openlocfilehash: af2598161c1fe6b2c28541877a40709948cbb913
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "111907053"
+title: 有关 Azure Cosmos DB 时间点还原功能（预览版）的常见问题解答
+summary: >
+  [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
+
+
+  > [!IMPORTANT]
+
+  > Azure Cosmos DB 的时间点还原功能（连续备份模式）目前为公共预览版。
+
+  > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+
+  > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+
+  本文列出了使用连续备份模式实现的 Azure Cosmos DB 时间点还原功能（预览版）的常见问题解答。
+sections:
+- name: 忽略
+  questions:
+  - question: >
+      还原需要多长时间？
+    answer: >
+      还原持续时间取决于数据大小。
+  - question: >
+      可否按本地时间提交还原时间？
+    answer: >
+      还原可能不会发生，具体取决于当时是否存在关键资源（如数据库和容器）。 可以通过输入时间并查看给定时间的选定数据库或容器来进行验证。 如果看不到要还原的资源，还原过程将不起作用。
+  - question: >
+      如何跟踪是否在还原帐户？
+    answer: "如果已提交了还原命令并在同一页上进行等待，则在操作完成后，状态栏将显示已成功还原帐户的消息。 你还可以搜索已还原的帐户，并[跟踪正在还原的帐户的状态](continuous-backup-restore-portal.md#track-restore-status)。 在还原过程中，帐户状态将为“正在创建”，还原操作完成后，帐户状态将更改为“联机”。\n\n同样，对于 PowerShell 和 CLI，可以通过执行 `az cosmosdb show` 命令来跟踪还原操作的进度，如下所示：\n\n```azurecli-interactive\naz cosmosdb show --name \"accountName\" --resource-group \"resourceGroup\"\n```\n\n当帐户联机时，provisioningState 显示“成功”。\n\n```json\n{\n\"virtualNetworkRules\": [],\n\"writeLocations\" : [\n{\n    \"documentEndpoint\": \"https://<accountname>.documents.azure.com:443/\", \n    \"failoverpriority\": 0,\n    \"id\": \"accountName\" ,\n    \"isZoneRedundant\" : false, \n    \"locationName\": \"West US 2\", \n    \"provisioningState\": \"Succeeded\"\n}\n]\n}\n```\n"
+  - question: >
+      如何确定帐户是否已从另一个帐户还原？
+    answer: >
+      运行 `az cosmosdb show` 命令，可在输出中看到 `createMode` 属性的值。 如果该值设置为“还原”， 则表示该帐户已从另一个帐户还原。 `restoreParameters` 属性还包含其他详细信息，例如源帐户 ID `restoreSource`。 `restoreSource` 参数中的最后一个 GUID 是源帐户的 instanceId。
+
+
+      例如，在下面的输出中，源帐户的实例 ID 为“7b4bb-f6a0-430e-ade1-638d781830cc”
+
+
+      ```json
+
+      "restoreParameters": {
+         "databasesToRestore" : [],
+         "restoreMode": "PointInTime",
+         "restoreSource": "/subscriptions/2a5b-f6a0-430e-ade1-638d781830dd/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/7b4bb-f6a0-430e-ade1-638d781830cc",
+         "restoreTimestampInUtc": "2020-06-11T22:05:09Z"
+      }
+
+      ```
+  - question: >
+      还原共享吞吐量数据库或其中的容器时会发生什么情况？
+    answer: >
+      整个共享吞吐量数据库都会还原。 无法选择还原共享吞吐量数据库中的部分容器。
+  - question: >
+      在帐户定义中，InstanceID 有何用途？
+    answer: "在任何给定的时间点，Azure Cosmos DB 帐户的 `accountName` 属性在其处于活动状态时在全局范围内唯一。 但是，在删除帐户后，可以创建同名的另一个帐户，因此“accountName”不再足以标识帐户实例。 \n\nID 或 `instanceId` 是帐户实例的一个属性，用于区分要还原的多个同名帐户（实时帐户和已删除的帐户）。 可以通过运行 `Get-AzCosmosDBRestorableDatabaseAccount` 或 `az cosmosdb restorable-database-account` 命令来获取实例 ID。 name 属性值表示“InstanceID”。\n"
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n* 什么是[连续备份](continuous-backup-restore-introduction.md)模式？\n* 使用 [Azure 门户](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md)、[CLI](continuous-backup-restore-command-line.md) 或 [Azure 资源管理器](continuous-backup-restore-template.md)配置和管理连续备份。\n* [管理](continuous-backup-restore-permissions.md)以连续备份模式还原数据所需的权限。\n* [连续备份模式的资源模型](continuous-backup-restore-resource-model.md)"
