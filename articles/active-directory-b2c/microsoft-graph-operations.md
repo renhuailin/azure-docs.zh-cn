@@ -12,16 +12,19 @@ ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: da70f06bf2789bad300a29bd7307f69af2945756
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 834afe8d0f0c5c53c2cb300d666dbcccbee46ec0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107895858"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962420"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
 利用 Microsoft Graph，可以管理 Azure AD B2C 目录中的资源。 支持用于管理 Azure AD B2C 资源（包括用户、标识提供者、用户流、自定义策略和策略密钥）的下列 Microsoft Graph API 操作。 以下各部分中的每个链接对应于 Microsoft Graph API 参考中该操作的相应页面。 
+
+> [!NOTE]
+> 还可以以编程方式创建 Azure AD B2C 目录本身，以及链接到 Azure 订阅的相应 Azure 资源。 此功能不是通过 Microsoft Graph API 公开的，而是通过 Azure REST API 公开的。 有关详细信息，请参阅 [B2C 租户 - 创建](/rest/api/activedirectory/b2ctenants/create)。
 
 ## <a name="prerequisites"></a>先决条件
 

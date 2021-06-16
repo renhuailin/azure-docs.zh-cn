@@ -5,18 +5,18 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 560f26b712818327294791feb787b5fe7c9d7b82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f31371c3d33354c4d8e6c849c9739eb9001c7641
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036463"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961771"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建日志警报
 
 通过日志警报，用户可以使用 [Log Analytics](../logs/log-analytics-tutorial.md) 查询按每个设置的频率评估资源日志，并根据结果触发警报。 规则可以使用[操作组](./action-groups.md)触发运行一个或多个操作。 [详细了解日志警报的功能和术语](./alerts-unified-log.md)。
 
-本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置[日志警报](./alerts-unified-log.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 日志警报是在 `Microsoft.Insights/scheduledQueryRules` 资源提供程序中创建的。 请参阅[计划查询规则 API](/rest/api/monitor/scheduledqueryrules/) 的 API 参考。
+本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)配置[日志警报](./alerts-unified-log.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 日志警报是在 `Microsoft.Insights/scheduledQueryRules` 资源提供程序中创建的。 请参阅[计划查询规则 API](/rest/api/monitor/scheduledqueryrules/) 的 API 参考。
 
 基本步骤如下所示：
 

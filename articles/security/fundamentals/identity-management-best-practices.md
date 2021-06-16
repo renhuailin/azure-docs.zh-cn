@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: f69fe97c33a17ade39f67078d5b035dac4d0bfaf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 227b8d9c797a8fec81d8792a48f456bcda6a838c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034160"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958507"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -113,7 +113,7 @@ ms.locfileid: "102034160"
 通过对所有应用和资源使用相同的标识解决方案，可以实现 SSO。 并且不论资源是位于本地还是云中，用户均可以使用相同凭据集登录和访问所需资源。
 
 **最佳做法**：启用 SSO。  
-**详细信息**：Azure AD [将本地 Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md) 扩展到云。 用户可以将他们的主要工作或学校帐户用于他们加入域的设备、公司资源以及完成工作所需的所有 Web 和 SaaS 应用程序。 用户无需记住多组用户名和密码，系统会根据组织的组成员身份和员工身份的状态，自动预配（或取消设置）应用程序访问权限。 可以针对库应用或者通过 [Azure AD 应用程序代理](../../active-directory/manage-apps/application-proxy.md)自行开发和发布的本地应用控制访问权限。
+**详细信息**：Azure AD [将本地 Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md) 扩展到云。 用户可以将他们的主要工作或学校帐户用于他们加入域的设备、公司资源以及完成工作所需的所有 Web 和 SaaS 应用程序。 用户无需记住多组用户名和密码，系统会根据组织的组成员身份和员工身份的状态，自动预配（或取消设置）应用程序访问权限。 可以针对库应用或者通过 [Azure AD 应用程序代理](../../active-directory/app-proxy/application-proxy.md)自行开发和发布的本地应用控制访问权限。
 
 用户可使用 SSO 基于 Azure AD 中的工作或学校帐户访问 [SaaS 应用程序](../../active-directory/manage-apps/what-is-single-sign-on.md)。 这不仅适用于 Microsoft SaaS 应用，还适用于其他应用，例如 [Google Apps](../../active-directory/saas-apps/google-apps-tutorial.md) 和 [Salesforce](../../active-directory/saas-apps/salesforce-tutorial.md)。 应用程序可配置为使用 Azure AD 作为[基于 SAML 的标识](../../active-directory/fundamentals/active-directory-whatis.md)提供者。 作为安全控制机制，Azure AD 不会发出允许用户登录应用程序的令牌，除非用户已通过 Azure AD 获取了访问权限。 可以直接或者通过用户所属的组授予访问权限。
 

@@ -4,25 +4,25 @@ titleSuffix: Azure Applied AI Services
 description: Azure 表单识别器服务允许你从表单文档中识别和提取键/值对和表数据，以及从销售收据和名片中提取主要信息。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自动化数据处理, 文档处理, 自动化数据输入, 表单处理
-ms.openlocfilehash: fc87a621aa58d058efc2420c7baaa81fffdb69e6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1688cc686b11fd6a6edb129a7ac01a048ae88f4a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374065"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957493"
 ---
 # <a name="what-is-azure-form-recognizer"></a>什么是 Azure 表单识别器？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure 表单识别器是 [Azure 应用 AI 服务](https://aka.ms/applied-ai-services-hub)的一部分，可让你使用机器学习技术构建自动化数据处理软件。 从文档中识别并提取文本、键/值对、选择标记、表和结构 &mdash; 该服务将输出结构化数据（其中包括原始文件中的关系、边界框、置信度等）。 可以快速获取根据特定内容定制的准确结果，无需进行繁琐的手动干预，也不需要具备丰富的数据科学专业知识。 使用表单识别器自动在应用程序中输入数据，并丰富文档搜索功能。
+Azure 表单识别器是 [Azure 应用 AI 服务](../../applied-ai-services/index.yml)的一部分，可让你使用机器学习技术构建自动化数据处理软件。 从文档中识别并提取文本、键/值对、选择标记、表和结构 &mdash; 该服务将输出结构化数据（其中包括原始文件中的关系、边界框、置信度等）。 可以快速获取根据特定内容定制的准确结果，无需进行繁琐的手动干预，也不需要具备丰富的数据科学专业知识。 使用表单识别器自动在应用程序中输入数据，并丰富文档搜索功能。
 
 表单识别器由自定义文档处理模型、预生成的发票、收据、身份证和名片模型以及布局模型组成。 可以使用 REST API 或客户端库 SDK 调用表单识别器模型，以降低复杂性，并将该模型集成到工作流或应用程序中。
 
@@ -31,7 +31,7 @@ Azure 表单识别器是 [Azure 应用 AI 服务](https://aka.ms/applied-ai-serv
 * [**概念**](concept-layout.md)对服务的功能和特性进行了深入说明。
 * [**快速入门**](quickstarts/client-library.md)介绍了入门说明，指导您完成向服务发出请求。
 * [**操作指南**](build-training-data-set.md)包含以更具体的方式或自定义方式使用服务的说明。
-* [**教程**](tutorial-bulk-processing.md)是较长的指南，向您演示了如何在更广泛的业务解决方案中使用该服务作为组件。
+* [**教程**](tutorial-ai-builder.md)是较长的指南，向您演示了如何在更广泛的业务解决方案中使用该服务作为组件。
 
 ## <a name="form-recognizer-features"></a>表单识别器功能
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d548f4d792d8980e2aa5040b09530eaf7868c4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5cee69fbd2cb829a7ec90179e94098e307e5a094
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609900"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968533"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>防范 Microsoft 365 遭受本地攻击
 
@@ -164,7 +164,7 @@ Microsoft 365 云环境受益于功能丰富的监视和安全基础结构。 Mi
 
 使用 Azure AD 功能来安全管理设备。
 
--   **使用 Windows 10 工作站**：使用 MDM 策略[部署已加入 Azure AD](../devices/azureadjoin-plan.md) 的设备。 启用 [Windows Autopilot](/mem/autopilot/windows-autopilot) 以实现全自动化预配体验。
+-   **使用 Windows 10 工作站**：使用 MDM 策略 [部署已加入 Azure AD](../devices/azureadjoin-plan.md) 的设备。 启用 [Windows Autopilot](/mem/autopilot/windows-autopilot) 以实现全自动化预配体验。
 
     -   弃用运行 Windows 8.1 和更低版本的计算机。
 
@@ -187,7 +187,7 @@ Microsoft 365 云环境受益于功能丰富的监视和安全基础结构。 Mi
 
 * **旧式应用程序** 
 
-   * 可对不支持新式身份验证的旧式应用程序启用身份验证、授权和远程访问。 使用 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)。 还可以使用[安全混合访问合作伙伴集成](../manage-apps/secure-hybrid-access.md)通过网络或应用程序交付控制器解决方案来启用这些功能。   
+   * 可对不支持新式身份验证的旧式应用程序启用身份验证、授权和远程访问。 使用 [Azure AD 应用程序代理](../app-proxy/application-proxy.md)。 还可以使用[安全混合访问合作伙伴集成](../manage-apps/secure-hybrid-access.md)通过网络或应用程序交付控制器解决方案来启用这些功能。   
 
    * 选择支持新式身份验证的 VPN 供应商。 将其身份验证与 Azure AD 相集成。 发生本地入侵时，可以使用 Azure AD 通过禁用 VPN 来禁用或阻止访问。
 
@@ -222,7 +222,7 @@ Microsoft 365 云环境受益于功能丰富的监视和安全基础结构。 Mi
 
     监视所有 [Azure AD 风险事件](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation)以识别可疑活动。 [Azure AD 标识保护](../identity-protection/overview-identity-protection.md)与 Azure 安全中心原生集成。
 
-    定义网络[命名位置](../reports-monitoring/quickstart-configure-named-locations.md)，以免基于位置的信号产生干扰性的检测结果。 
+    定义网络[命名位置](../conditional-access/location-condition.md)，以免基于位置的信号产生干扰性的检测结果。 
 *  **用户和实体行为分析 (UEBA) 警报** 
 
     使用 UEBA 获取有关异常情况检测的见解。

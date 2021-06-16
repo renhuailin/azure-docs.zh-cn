@@ -9,12 +9,12 @@ ms.date: 03/24/2021
 ms.custom:
 - template-quickstart
 - devx-track-azurecli
-ms.openlocfilehash: b40407f4c4fb81bbf76bd0b552f3c9f2c827232a
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: c9f4b46553a119bfb7b8b639e6a28e95a2be5999
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107871500"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750814"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 数据工厂
 
@@ -73,7 +73,7 @@ ms.locfileid: "107871500"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-若要创建 Azure 数据工厂，请运行 [az datafactory factory create](/cli/azure/datafactory/factory#az_datafactory_factory_create) 命令：
+若要创建 Azure 数据工厂，请运行 [az datafactory factory create](/cli/azure/datafactory#az_datafactory_create) 命令：
 
 ```azurecli
 az datafactory factory create --resource-group ADFQuickStartRG \
@@ -83,7 +83,7 @@ az datafactory factory create --resource-group ADFQuickStartRG \
 > [!IMPORTANT]
 > 请将 `ADFTutorialFactory` 替换为全局唯一的数据工厂名称，例如 ADFTutorialFactorySP1127。
 
-可以使用 [az datafactory factory show](/cli/azure/datafactory/factory#az_datafactory_factory_show) 命令查看创建的数据工厂：
+可以使用 [az datafactory factory show](/cli/azure/datafactory#az_datafactory_factory_show) 命令查看创建的数据工厂：
 
 ```azurecli
 az datafactory factory show --resource-group ADFQuickStartRG \
@@ -94,7 +94,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 接下来，创建一个链接服务和两个数据集。
 
-1. 使用 [az storage account show-connection-string](/cli/azure/datafactory/factory#az_datafactory_factory_show) 命令获取存储帐户的连接字符串：
+1. 使用 [az storage account show-connection-string](/cli/azure/datafactory#az_datafactory_factory_show) 命令获取存储帐户的连接字符串：
 
    ```azurecli
    az storage account show-connection-string --resource-group ADFQuickStartRG \

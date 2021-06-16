@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b4d1041b9d330227fadf31f6afc1804174ea2ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea87a6729e6f8339ad92bc9d57e7152199349ac5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96340843"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965935"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD 如何针对本地工作负载提供云调控管理
 
@@ -59,7 +59,7 @@ Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决�
 
 * **针对本地应用程序的安全远程访问和条件访问**
 
-对于许多组织而言，从云管理对本地 AD 集成的 Web 应用程序和基于远程桌面的应用程序的访问的第一步是在这些应用程序的前面部署[应用程序代理](../manage-apps/application-proxy.md)，以提供安全远程访问。
+对于许多组织而言，从云管理对本地 AD 集成的 Web 应用程序和基于远程桌面的应用程序的访问的第一步是在这些应用程序的前面部署[应用程序代理](../app-proxy/application-proxy.md)，以提供安全远程访问。
 
 单一登录到 Azure AD 后，用户可以通过外部 URL 或内部应用程序门户访问云端和本地的应用程序。 例如，应用程序代理提供远程访问和单一登录到远程桌面、SharePoint 以及 Tableau 和 Qlik 等应用和业务线 (LOB) 应用程序的功能。 此外，条件访问策略可以包括显示[使用条款](../conditional-access/terms-of-use.md)并确保用户在访问应用程序之前[同意这些条款](../conditional-access/require-tou.md)。
 

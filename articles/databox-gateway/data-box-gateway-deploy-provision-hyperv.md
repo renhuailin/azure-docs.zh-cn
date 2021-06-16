@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 05/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 2e54b8e58e8139c46639187957906790ffb0fe54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1852ed997faa3c2410f6938d2ab409940c2904b
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727679"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577251"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>教程：在 Hyper-V 中预配 Azure Data Box Gateway
 
@@ -76,7 +76,7 @@ ms.locfileid: "101727679"
 * 确保在其上创建虚拟设备的基础硬件（主机系统）能够将以下资源专用于虚拟设备：
 
   * 至少 4 个虚拟处理器。
-  * 至少 8 GB 的 RAM。
+  * 至少 8 GB 的 RAM。 强烈建议至少配置 16 GB 的 RAM。
   * 一个连接到网络的网络接口，可以将流量路由到 Internet。
   * 一个 250 GB 的 OS 磁盘。
   * 一个用于存储系统数据的 2 TB 虚拟磁盘。

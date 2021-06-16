@@ -3,20 +3,20 @@ title: 什么是 Azure SQL 托管实例？
 description: 了解 Azure SQL 托管实例如何提供与最新 SQL Server (Enterprise Edition) 数据库引擎近 100% 的兼容性
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: overview
 author: bonova
 ms.author: bonova
-ms.reviewer: sstein, vanto
+ms.reviewer: mathoma, vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: 5d49a5b57ff4b59005461f2bb13451822723b039
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c0d199678aefbf2aa08f8fcbcb27376762dd39b5
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644979"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707267"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什么是 Azure SQL 托管实例？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -233,7 +233,7 @@ SQL 托管实例可以减少系统管理员花费在管理任务上的时间，�
 
 下表显示了可通过 Transact-SQL 访问的几个属性。使用这些属性可以检测应用程序是否正在使用 SQL 托管实例以及检索重要属性。
 
-|属性|值|注释|
+|属性|Value|注释|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值与 SQL 数据库中的值相同。 此值 **并不** 表示 SQL 引擎版本 12 (SQL Server 2014)。 SQL 托管实例始终运行最新稳定的 SQL 引擎版本，此版本与最新可用的 SQL Server RTM 版本相同或更高。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值与 SQL 数据库中的值相同。|

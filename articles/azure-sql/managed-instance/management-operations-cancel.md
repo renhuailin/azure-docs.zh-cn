@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: 了解如何取消 Azure SQL 托管实例管理操作。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: ''
+ms.subservice: deployment-configuration
+ms.custom: devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
 author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 342491178d55dacbdc68e6c9042623d381dff898
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13e0190b330d1cae0d819ee28c9c8fabe98e8dcb
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861538"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689737"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>取消 Azure SQL 托管实例管理操作
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Azure SQL 托管实例提供取消某些[管理操作](management-operations-ove
 |更新 |实例计算 (vCore) 纵向缩放（“业务关键”） |是 |90% 的操作可在 5 分钟内完成。 |
 |更新 |实例服务层级更改（从“常规用途”更改为“业务关键”，或反之） |是 |90% 的操作可在 5 分钟内完成。 |
 |Delete |实例删除 |否 |  |
-|删除 |虚拟群集的删除（用户启动的操作） |否 |  |
+|Delete |虚拟群集的删除（用户启动的操作） |否 |  |
 
 ## <a name="cancel-management-operation"></a>取消管理操作
 

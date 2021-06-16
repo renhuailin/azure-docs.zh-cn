@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 03/22/2021
-ms.openlocfilehash: 58017425eda0461a648b81472933aaeb911b24f1
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 119591c4a337cf622b95fa4ed70a7508d8acb99e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166865"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963083"
 ---
 # <a name="how-to-troubleshoot-with-diagnostic-logs"></a>如何使用诊断日志进行故障排除
 
@@ -77,7 +77,7 @@ Azure Web PubSub 服务实时跟踪工具能够实时收集诊断日志，并且
 
 ## <a name="capture-diagnostic-logs-with-azure-monitor"></a>使用 Azure Monitor 捕获诊断日志
 
-公共预览版不支持与 [Azure Monitor](https://azure.microsoft.com/services/monitor/)、[Azure 存储](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs#send-to-azure-storage)和 [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs#send-to-log-analytics-workspace) 集成以捕获诊断日志。
+公共预览版不支持与 [Azure Monitor](https://azure.microsoft.com/services/monitor/)、[Azure 存储](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)和 [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) 集成以捕获诊断日志。
 
 ## <a name="troubleshoot-with-the-diagnostic-logs"></a>使用诊断日志进行故障排除
 
@@ -110,4 +110,3 @@ Azure Web PubSub 服务实时跟踪工具能够实时收集诊断日志，并且
 ### <a name="throttling"></a>限制
 
 如果发现无法在客户端与 Azure Web PubSub 服务之间建立连接，请检查诊断日志。 如果在诊断日志中遇到 `Connection count reaches limit`，则表示与 Azure Web PubSub 服务建立的连接过多，达到了连接计数限制。 请考虑纵向扩展 Azure Web PubSub 服务实例。 如果在诊断日志中遇到 `Message count reaches limit`，则表示使用的是免费层，并且消息配额已用完。 若要发送更多消息，请考虑将 Azure Web PubSub 服务实例更改为标准层以发送其他消息。 有关详细信息，请参阅 [Azure Web PubSub 服务定价](https://azure.microsoft.com/pricing/details/web-pubsub/)。
-

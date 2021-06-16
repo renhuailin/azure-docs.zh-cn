@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: d32d822d0ca85c25401f17411a8d34b4fb2e1eaf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e9c1299c0847aa30e1e3e198d2165e2674164458
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125391"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960837"
 ---
 # <a name="tutorial-use-azure-log-analytics-to-collect-and-visualize-metrics-and-logs-preview"></a>教程：使用 Azure Log Analytics 收集和可视化指标和日志（预览版）
 
@@ -214,7 +214,7 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 
 ## <a name="limitation"></a>限制
 
-不支持已启用[托管虚拟网络](/azure/synapse-analytics/security/synapse-workspace-managed-vnet)的 Azure Synapse Analytics 工作区。
+不支持已启用[托管虚拟网络](../security/synapse-workspace-managed-vnet.md)的 Azure Synapse Analytics 工作区。
 
 ## <a name="next-steps"></a>后续步骤
 

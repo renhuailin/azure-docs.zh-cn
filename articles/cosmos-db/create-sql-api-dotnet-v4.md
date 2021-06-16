@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/07/2021
 ms.custom: devx-track-dotnet, devx-track-azurecli
-ms.openlocfilehash: 0edab4ba20f5fa79c96ec733564dc01cfee75940
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 633a5e259cec7797e20c11a832b99becec742a27
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279687"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536198"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-preview-to-manage-azure-cosmos-db-sql-api-account-resources"></a>快速入门：使用 .NET V4 SDK（预览版）生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -93,10 +93,10 @@ az cosmosdb create \
 
 ### <a name="create-a-new-net-app"></a><a id="create-dotnet-core-app"></a>创建新的 .NET 应用
 
-在首选编辑器或 IDE 中创建新的 .NET 应用程序。 从本地计算机打开 Windows 命令提示符或终端窗口。 你将从命令提示符或终端运行接下来的部分中的所有命令。  运行以下 dotnet 新命令，创建名为 `todo` 的新应用。 --langVersion 参数在创建的项目文件中设置 LangVersion 属性。
+在首选编辑器或 IDE 中创建新的 .NET 应用程序。 从本地计算机打开 Windows 命令提示符或终端窗口。 你将从命令提示符或终端运行接下来的部分中的所有命令。  运行以下 dotnet 新命令，创建名为 `todo` 的新应用。 `--langVersion` 参数在创建的项目文件中设置 LangVersion  属性。
 
    ```bash
-   dotnet new console â€“langVersion:8 -n todo
+   dotnet new console --langVersion:8 -n todo
    ```
 
 将目录更改为新创建的应用文件夹。 可使用以下代码生成应用程序：
@@ -131,7 +131,7 @@ Time Elapsed 00:00:34.17
 
 此示例应用程序需对 Azure Cosmos 帐户进行身份验证。 为了进行身份验证，应将 Azure Cosmos 帐户凭据传递给应用程序。 按照以下步骤获取 Azure Cosmos 帐户凭据：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 导航到 Azure Cosmos 帐户。
 

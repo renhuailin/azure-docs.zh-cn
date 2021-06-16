@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: branim
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 712e6422060619e5567a74d6335320eff9ed8e66
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: b20ab4720f9f172ef9248d3314b25922896eb8bd
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741122"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796923"
 ---
 # <a name="introduction-to-dynamic-node-tags"></a>动态节点标记简介
 节点标记使你可以在节点中动态添加和删除标记，以便影响服务的放置。 节点标记非常灵活，可以在不进行应用程序或群集升级的情况下更改服务放置。 可随时在节点中添加或删除标记，并且服务可以在创建特定标记时为它们指定要求。 服务还可以在运行时动态更新其标记要求。
@@ -54,7 +54,7 @@ ms.locfileid: "107741122"
     "name": "PlacementAndLoadBalancing",
     "parameters": [
       {
-          "name": " NodeTaggingEnabled ",
+          "name": "NodeTaggingEnabled",
           "value": "true"
       }
     ]

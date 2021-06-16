@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: c29d131948be42a53bf568aa4048fe4e7d61c36e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 767b3733c7066a22d5c78432bc25c95c71cbc0b1
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98684304"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110680408"
 ---
 # <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>创建启用 IP 防火墙的 Azure Cosmos DB 帐户
 [!INCLUDE[appliesto-all-apis](../../../includes/appliesto-all-apis.md)]

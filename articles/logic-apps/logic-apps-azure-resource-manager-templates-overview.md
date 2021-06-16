@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: b1551b4d9c28a693adb74436b6490ce7af62a977
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: ac2746c963c00ffd12a272b0c41322b0f9b9b24e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279845"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961624"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
 
@@ -30,9 +30,9 @@ ms.locfileid: "108279845"
 
 有关资源管理器模板的详细信息，请参阅以下主题：
 
-* [Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
-* [Azure 资源管理器模板最佳做法](../azure-resource-manager/templates/template-best-practices.md)
-* [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates/templates-cloud-consistency.md)
+* [Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md)
+* [Azure 资源管理器模板最佳做法](../azure-resource-manager/templates/best-practices.md)
+* [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates/template-cloud-consistency.md)
 
 有关特定于逻辑应用、集成帐户、集成帐户项目和集成服务环境的模板资源信息，请参阅 [Microsoft.Logic 资源类型](/azure/templates/microsoft.logic/allversions)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "108279845"
 
 ## <a name="template-structure"></a>模板结构
 
-在最高级别，资源管理器模板遵循此结构，[Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)主题中对此做了全面介绍：
+在最高级别，资源管理器模板遵循此结构，[Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md)主题中对此做了全面介绍：
 
 ```json
 {
@@ -65,8 +65,8 @@ ms.locfileid: "108279845"
 
 | 属性 | 说明 |
 |-----------|-------------|
-| `parameters` | 声明[模板参数](../azure-resource-manager/templates/template-syntax.md#parameters)，用于接受在 Azure 中创建和自定义部署资源时要使用的值。 例如，这些参数接受逻辑应用的名称和位置、连接以及部署所需的其他资源的值。 可将这些参数值存储在本主题稍后将会介绍的[参数文件](#template-parameter-files)中。 有关一般详细信息，请参阅[参数 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#parameters)。 |
-| `resources` | 定义用于创建或更新以及部署到 Azure 资源组的[资源](../azure-resource-manager/templates/template-syntax.md#resources)，例如逻辑应用、连接、Azure 存储帐户等。 有关一般详细信息，请参阅[资源 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#resources)。 |
+| `parameters` | 声明[模板参数](../azure-resource-manager/templates/syntax.md#parameters)，用于接受在 Azure 中创建和自定义部署资源时要使用的值。 例如，这些参数接受逻辑应用的名称和位置、连接以及部署所需的其他资源的值。 可将这些参数值存储在本主题稍后将会介绍的[参数文件](#template-parameter-files)中。 有关一般详细信息，请参阅[参数 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md#parameters)。 |
+| `resources` | 定义用于创建或更新以及部署到 Azure 资源组的[资源](../azure-resource-manager/templates/syntax.md#resources)，例如逻辑应用、连接、Azure 存储帐户等。 有关一般详细信息，请参阅[资源 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md#resources)。 |
 |||
 
 逻辑应用模板使用以下文件名格式：
@@ -80,7 +80,7 @@ ms.locfileid: "108279845"
 
 ## <a name="template-parameters"></a>模板参数
 
-逻辑应用模板包含多个位于不同级别的、可执行不同功能的 `parameters` 对象。 例如，在最高级别，可以针对部署期间在 Azure 中创建和部署资源时要接受和使用的值声明[模板参数](../azure-resource-manager/templates/template-syntax.md#parameters)，例如：
+逻辑应用模板包含多个位于不同级别的、可执行不同功能的 `parameters` 对象。 例如，在最高级别，可以针对部署期间在 Azure 中创建和部署资源时要接受和使用的值声明[模板参数](../azure-resource-manager/templates/syntax.md#parameters)，例如：
 
 * 你的逻辑应用
 * 逻辑用来通过[托管连接器](../connectors/apis-list.md)访问其他服务和系统的连接
@@ -88,7 +88,7 @@ ms.locfileid: "108279845"
 
   例如，如果逻辑应用针对企业对企业 (B2B) 方案使用[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，则模板的顶级 `parameters` 对象会声明接受该集成帐户的资源 ID 的参数。
 
-下面是参数定义的一般结构和语法，[参数 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#parameters)中对此做了全面介绍：
+下面是参数定义的一般结构和语法，[参数 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md#parameters)中对此做了全面介绍：
 
 ```json
 "<parameter-name>": {
@@ -149,7 +149,7 @@ ms.locfileid: "108279845"
 
 有关保护模板参数的详细信息，请参阅以下主题：
 
-* [有关模板参数的安全性建议](../azure-resource-manager/templates/template-best-practices.md#parameters)
+* [有关模板参数的安全性建议](../azure-resource-manager/templates/best-practices.md#parameters)
 * [提高模板参数的安全性](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [使用 Azure Key Vault 传递受保护的参数值](../azure-resource-manager/templates/key-vault-parameter.md)
 
@@ -171,7 +171,7 @@ ms.locfileid: "108279845"
 
 * 包含 `defaultValue` 属性，对于除敏感值或必须保护的值以外的所有参数，该属性可指定空值。 始终对用户名、密码和机密使用安全参数。 若要隐藏或保护敏感的参数值，请遵循以下主题中的指导：
 
-  * [有关模板参数的安全性建议](../azure-resource-manager/templates/template-best-practices.md#parameters)
+  * [有关模板参数的安全性建议](../azure-resource-manager/templates/best-practices.md#parameters)
 
   * [提高模板参数的安全性](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
@@ -179,7 +179,7 @@ ms.locfileid: "108279845"
 
 * 若要区分工作流定义参数名称和模板参数名称，可以使用描述性的模板参数名称，例如：`TemplateFabrikamPassword`
 
-有关更多的模板最佳做法，请参阅[模板参数的最佳做法](../azure-resource-manager/templates/template-best-practices.md#parameters)。
+有关更多的模板最佳做法，请参阅[模板参数的最佳做法](../azure-resource-manager/templates/best-practices.md#parameters)。
 
 <a name="template-parameter-files"></a>
 
@@ -275,8 +275,8 @@ ms.locfileid: "108279845"
 
 有关模板资源及其属性的一般信息，请参阅以下主题：
 
-* [资源 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#resources)
-* [模板资源的最佳做法](../azure-resource-manager/templates/template-best-practices.md#resources)
+* [资源 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md#resources)
+* [模板资源的最佳做法](../azure-resource-manager/templates/best-practices.md#resources)
 
 <a name="logic-app-resource-definition"></a>
 
@@ -328,7 +328,7 @@ ms.locfileid: "108279845"
 
 下面是特定于逻辑应用资源定义的属性：
 
-| 属性 | 必需 | 类型 | 说明 |
+| 属性 | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | `state` | 是 | String | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
 | `integrationAccount` | 否 | Object | 如果逻辑应用使用集成帐户（用于存储企业到企业 (B2B) 方案的项目），则此对象包含用于指定集成帐户 ID 的 `id` 属性。 |

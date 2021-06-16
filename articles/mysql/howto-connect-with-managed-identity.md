@@ -1,18 +1,18 @@
 ---
 title: 使用托管标识进行连接 - Azure Database for MySQL
 description: 了解如何使用托管标识连接到 Azure Database for MySQL 并进行身份验证
-author: sunilagarwal
-ms.author: sunila
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: c9c5c938650d1932349f17bde6b30c65718ef72a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e00bfd3e5597683c99df69a3fb8140d00847e4f6
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774676"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572423"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>使用托管标识连接到 Azure Database for MySQL
 

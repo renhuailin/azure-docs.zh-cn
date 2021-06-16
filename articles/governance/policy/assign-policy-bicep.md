@@ -4,12 +4,12 @@ description: 本快速入门介绍如何使用 Bicep（预览版）文件创建�
 ms.date: 05/20/2021
 ms.topic: quickstart
 ms.custom: subject-bicepqs
-ms.openlocfilehash: 6ce9eb5ab021e5d6d5d57b9c81f5d0f4d0360f01
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0f48804fd73b073479617aa3359e6d338056fb39
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475475"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007168"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-bicep-file"></a>快速入门：使用 Bicep 文件创建策略分配以识别不合规的资源
 
@@ -20,12 +20,12 @@ ms.locfileid: "110475475"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 模板将在 Azure 门户中打开。
 
-:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="部署用于将 Azure Policy 分配给 Azure 的 ARM 模板的按钮。" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="部署用于将 Azure Policy 分配给 Azure 的 ARM 模板的按钮。" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.authorization%2Fazurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 ## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
-- 已安装 Bicep `0.3` 版本或更高版本。 如果你还没有 Bicep CLI 或需要更新，请参阅[安装 Bicep（预览版）](../../azure-resource-manager/templates/bicep-install.md)。
+- 已安装 Bicep `0.3` 版本或更高版本。 如果你还没有 Bicep CLI 或需要更新，请参阅[安装 Bicep（预览版）](../../azure-resource-manager/bicep/install.md)。
 
 ## <a name="review-the-bicep-file"></a>查阅 Bicep 文件
 

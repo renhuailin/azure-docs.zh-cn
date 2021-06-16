@@ -6,20 +6,20 @@ metadata:
   description: 查找可帮助你迁移到 Azure SQL 的文档。Azure SQL 是云中的一系列 SQL Server 数据库引擎产品，从 Azure SQL 数据库中的完全托管数据库、Azure SQL 托管实例中的完全托管实例到安装在 Azure 中虚拟机上的 SQL Server。
   services: sql-database
   ms.service: sql-database
-  ms.subservice: service
+  ms.subservice: migration-guide
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: landing-page
-  author: MashaMSFT
-  ms.author: mathoma
-  ms.reviewer: sstein
+  author: mokabiru
+  ms.author: mokabiru
+  ms.reviewer: cawrites
   ms.date: 11/06/2020
-  ms.openlocfilehash: 1486b04f14d014e0d4915bfa197379a173fa7450
-  ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+  ms.openlocfilehash: 9d1bab61cac83088421f6e782cb9abaa868f5e67
+  ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/16/2021
-  ms.locfileid: "103563804"
+  ms.lasthandoff: 06/02/2021
+  ms.locfileid: "110790481"
 landingContent:
 - title: Azure SQL Database
   linkLists:

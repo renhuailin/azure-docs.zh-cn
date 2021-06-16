@@ -4,16 +4,13 @@ description: 使用 Azure PowerShell 为区块链联盟创建 Azure 区块链服
 ms.reviewer: ravastra
 ms.date: 9/22/2020
 ms.topic: quickstart
-ms.custom:
-- references_regions
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: 82451b94c83c0883beed66fac1f8e1b6b7132d3a
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: devx-track-azurepowershell - references_regions - devx-track-azurepowershell - mode-api
+ms.openlocfilehash: 68e4c352640e9d206ea0f72e7af030403329fc59
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "110094143"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698786"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Azure 区块链服务区块链成员
 

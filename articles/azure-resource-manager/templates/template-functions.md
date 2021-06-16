@@ -3,18 +3,18 @@ title: 模板函数
 description: 介绍在 Azure 资源管理器模板（ARM 模板）中检索值、处理字符串和数字以及检索部署信息时所用的函数。
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a9ea21a57404f7de832fb307bdabeb47f8cf3f58
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 012e570a769e8ea969d0c527a71053f55ecdf5a9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220175"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959395"
 ---
 # <a name="arm-template-functions"></a>ARM 模板函数
 
 本文介绍可以在 Azure 资源管理器模板（ARM 模板）中使用的所有函数。 若要了解如何在模板中使用函数，请参阅[模板语法](template-expressions.md)。
 
-若要创建自己的函数，请参阅[用户定义函数](template-syntax.md#functions)。
+若要创建自己的函数，请参阅[用户定义函数](./syntax.md#functions)。
 
 大多数函数在部署到资源组、订阅、管理组或租户时工作方式相同。 某些函数并非可以在所有范围内使用。 下表对这些函数进行了说明。
 
@@ -36,7 +36,7 @@ ms.locfileid: "106220175"
 
 ## <a name="any-function"></a>任何函数
 
-Bicep 中提供 [any 函数](template-functions-any.md)可帮助解决有关数据类型警告的问题。
+Bicep 中提供 [any 函数](../bicep/bicep-functions-any.md)可帮助解决有关数据类型警告的问题。
 
 ## <a name="array-functions"></a>数组函数
 
@@ -253,7 +253,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 * 若要合并多个模板，请参阅[部署 Azure 资源时使用链接模板和嵌套模板](linked-templates.md)。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
 * 若要了解如何部署已创建的模板，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)。

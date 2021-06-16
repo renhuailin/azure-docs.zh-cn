@@ -5,12 +5,13 @@ author: spelluru
 ms.author: spelluru
 ms.date: 03/29/2021
 ms.topic: article
-ms.openlocfilehash: 833d7e9fb4d517b71aab5039ae9081407eed84cd
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f735bb7803ccbccafe86df4426690f365f9c864b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960531"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688727"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>允许通过专用终结点访问 Azure 服务总线命名空间
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 服务总线、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
@@ -122,7 +123,7 @@ $namespaceName = "<NAMESPACE NAME>"
 $peConnectionName = "<PRIVATE ENDPOINT CONNECTION NAME>"
 
 # create resource group
-az group create -l $vnetLocation -n $rgName
+New-AzResourceGroup -Name $rgName -Location $vnetLocation 
 
 # create virtual network
 $virtualNetwork = New-AzVirtualNetwork `
@@ -221,7 +222,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 1. 若要删除某个专用终结点连接，请在列表中选择它，然后在工具栏上选择“删除”。 
 
     ![“删除”按钮](./media/private-link-service/remove-endpoint.png)
-2. 在“删除连接”页上，选择“是”以确认删除该专用终结点 。 如果选择“否”，则不会执行任何操作。 
+2. 在“删除连接”页上，选择“是”以确认删除该专用终结点。  如果选择“否”，则不会执行任何操作。 
 
     ![“删除连接”页](./media/private-link-service/delete-connection-page.png)
 3. 应会看到，状态已更改为“已断开连接”。 然后你会发现，该终结点已在列表中消失。 

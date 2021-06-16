@@ -1,15 +1,15 @@
 ---
 title: 适用于 Azure 容器实例的内置策略定义
 description: 列出适用于 Azure 容器实例的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e01fa717d11715571582e0be9712106bde802a1b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5c992682bec6c51a25dc044aac12546507d77bdf
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088042"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018740"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-instances"></a>适用于 Azure 容器实例的 Azure Policy 内置定义
 

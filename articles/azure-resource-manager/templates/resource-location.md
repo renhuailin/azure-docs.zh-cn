@@ -4,12 +4,12 @@ description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中设�
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b2eba8e48a9b5ccc1ddb731690e99dcbbaa8f6fb
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 686975b73ee2ad0e487fad278f872e7d31753041
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321620"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960046"
 ---
 # <a name="set-resource-location-in-arm-template"></a>在 ARM 模板中设置资源位置
 
@@ -97,4 +97,4 @@ az provider show \
 ## <a name="next-steps"></a>后续步骤
 
 * 有关模板函数的完整列表，请参阅 [ARM 模板函数](template-functions.md)。
-* 若要详细了解模板文件，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 若要详细了解模板文件，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。

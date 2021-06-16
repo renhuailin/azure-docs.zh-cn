@@ -2,22 +2,22 @@
 title: DNS 别名（PowerShell 和 Azure CLI）
 description: PowerShell 和 Azure CLI cmdlet 可以将新客户端连接重定向到不同的 Azure SQL 服务器，而无需触摸任何客户端配置。
 keywords: dns sql database
-ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.devlang: PowerShell
 ms.topic: how-to
-author: rohitnayakmsft
-ms.author: rohitna
-ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
-ms.openlocfilehash: 02cfd839ed1b75fd85553f2e5a5150cadc29ff8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58f1738b790202f699893b51247af66f80977d75
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790451"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690348"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>用于管理 Azure SQL 数据库 DNS 别名的 PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

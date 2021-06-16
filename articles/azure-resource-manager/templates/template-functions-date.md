@@ -2,13 +2,13 @@
 title: 模板函数 - 日期
 description: 介绍了可在 Azure 资源管理器模板（ARM 模板）中用来处理日期的函数。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: abff5b86ad1e10042596b11f613cdb594e307209
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: c6bf3adca5dde4947e2c22dd8468f1b045f77120
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889920"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959710"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 模板的日期函数
 
@@ -16,8 +16,6 @@ ms.locfileid: "104889920"
 
 * [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
-
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="datetimeadd"></a>dateTimeAdd
 
@@ -27,7 +25,7 @@ ms.locfileid: "104889920"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | base | 是 | string | 用于相加的起始日期/时间值。 使用 [ISO 8601 时间戳格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
 | duration | 是 | string | 要与 base 相加的时间值。 它可以是负值。 使用 [ISO 8601 持续时间格式](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 |
@@ -40,8 +38,6 @@ ms.locfileid: "104889920"
 ### <a name="examples"></a>示例
 
 以下示例模板展示了增加时间值的各种方式。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -76,22 +72,6 @@ ms.locfileid: "104889920"
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param baseTime string = utcNow('u')
-
-var add3Years = dateTimeAdd(baseTime, 'P3Y')
-var subtract9Days = dateTimeAdd(baseTime, '-P9D')
-var add1Hour = dateTimeAdd(baseTime, 'PT1H')
-
-output add3YearsOutput string = add3Years
-output subtract9DaysOutput string = subtract9Days
-output add1HourOutput string = add1Hour
-```
-
----
-
 在 baseTime为 `2020-04-07 14:53:14Z` 的情况下部署上述模板时，输出为：
 
 | 名称 | 类型 | Value |
@@ -101,8 +81,6 @@ output add1HourOutput string = add1Hour
 | add1HourOutput | String | 4/7/2020 3:53:14 PM |
 
 下一示例模板展示了如何设置自动化计划的开始时间。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -154,39 +132,15 @@ output add1HourOutput string = add1Hour
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param omsAutomationAccountName string = 'demoAutomation'
-param scheduleName string = 'demSchedule1'
-param baseTime string = utcNow('u')
-
-var startTime = dateTimeAdd(baseTime, 'PT1H')
-
-...
-
-resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31' = {
-  name: concat(omsAutomationAccountName, '/', scheduleName)
-  properties: {
-    description: 'Demo Scheduler'
-    startTime: startTime
-    interval: 1
-    frequency: 'Hour'
-  }
-}
-```
-
----
-
 ## <a name="utcnow"></a>utcNow
 
 `utcNow(format)`
 
 以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (`yyyyMMddTHHmmssZ`) 格式。 **此函数只能在参数的默认值中使用。**
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | format |否 |string |要转换为字符串的 URI 编码值。 使用[标准格式字符串](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
@@ -205,8 +159,6 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 ### <a name="examples"></a>示例
 
 以下示例模板演示日期时间值的不同格式。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -245,31 +197,15 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param utcValue string = utcNow()
-param utcShortValue string = utcNow('d')
-param utcCustomValue string = utcNow('M d')
-
-output utcOutput string = utcValue
-output utcShortOutput string = utcShortValue
-output utcCustomOutput string = utcCustomValue
-```
-
----
-
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
 | utcShortOutput | string | 03/05/2019 |
 | utcCustomOutput | string | 3 5 |
 
 以下示例演示在设置标记值时如何使用函数中的值。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -305,25 +241,6 @@ output utcCustomOutput string = utcCustomValue
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param utcShort string = utcNow('d')
-param rgName string
-
-resource myRg 'Microsoft.Resources/resourceGroups@2020-10-01' = {
-  name: rgName
-  location: 'westeurope'
-  tags: {
-    createdDate: utcShort
-  }
-}
-
-output utcShortOutput string = utcShort
-```
-
----
-
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。

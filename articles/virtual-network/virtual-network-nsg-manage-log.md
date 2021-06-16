@@ -10,12 +10,13 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: bb078b9738e995a1c507f7934a7dd64f075d5fe0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b5cb8ffc7b006ce94dd809668b7e1cf8e44bd48a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100596542"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678745"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>网络安全组的资源日志记录
 
@@ -28,7 +29,7 @@ ms.locfileid: "100596542"
 
 资源日志仅适用于通过 Azure 资源管理器部署模型部署的 NSG。 对于通过经典部署模型部署的 NSG，不能启用资源日志记录。 若要更好地了解这两种模型，请参阅[了解 Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-分别为要收集其诊断数据的每个 NSG 启用资源日志记录。 如果感兴趣的是活动（操作）日志，请参阅 Azure [活动日志记录](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+分别为要收集其诊断数据的每个 NSG 启用资源日志记录。 如果感兴趣的是活动（操作）日志，请参阅 Azure [活动日志记录](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如果对流经 NSG 的 IP 流量感兴趣，请参阅 Azure 网络观察程序 [NSG 流日志](../network-watcher/network-watcher-nsg-flow-logging-overview.md) 
 
 ## <a name="enable-logging"></a>启用日志记录
 
@@ -45,7 +46,7 @@ ms.locfileid: "100596542"
 
 5. 在“诊断设置”下输入或选择以下信息，然后选择“保存”：
 
-    | 设置                                                                                     | 值                                                          |
+    | 设置                                                                                     | Value                                                          |
     | ---------                                                                                   |---------                                                       |
     | 名称                                                                                        | 所选名称。  例如：*myNsgDiagnostics*      |
     | “存档到存储帐户”、“流式传输到事件中心”，然后“发送到 Log Analytics” | 可以随意选择多个目标。 若要详细了解每个目标，请参阅[日志目标](#log-destinations)。                                                                                                                                           |
@@ -95,9 +96,9 @@ Set-AzDiagnosticSetting `
 
 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令，或者在计算机上运行 Azure CLI。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 CLI，需要版本 2.0.38 或更高版本。 在计算机上运行 `az --version`，找到已安装的版本。 如果需要进行升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 CLI，则还需要运行 `az login`，以使用具有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
 
-若要启用资源日志记录，需要现有 NSG 的 ID。 如果没有现成的 NSG，则可使用 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) 创建一个。
+若要启用资源日志记录，需要现有 NSG 的 ID。 如果没有现成的 NSG，则可使用 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) 创建一个。
 
-使用 [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show) 检索要为其启用资源日志记录的网络安全组。 例如，若要在名为 *myResourceGroup* 的资源组中检索现有的名为 *myNsg* 的 NSG，请输入以下命令：
+使用 [az network nsg show](/cli/azure/network/nsg#az_network_nsg_show) 检索要为其启用资源日志记录的网络安全组。 例如，若要在名为 *myResourceGroup* 的资源组中检索现有的名为 *myNsg* 的 NSG，请输入以下命令：
 
 ```azurecli-interactive
 nsgId=$(az network nsg show \
@@ -109,7 +110,7 @@ nsgId=$(az network nsg show \
 
 可以将资源日志写入三种目标类型。 有关详细信息，请参阅[日志目标](#log-destinations)。 例如，在本文中，日志发送到 *Log Analytics* 目标。 有关详细信息，请参阅[日志类别](#log-categories)。
 
-使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 为 NSG 启用资源日志记录。 以下示例使用前面检索到的 NSG 的 ID 将事件和计数器类别数据记录到名为 *myWorkspace* 的现有工作区，该工作区存在于名为 *myWorkspaces* 的资源组中：
+使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) 为 NSG 启用资源日志记录。 以下示例使用前面检索到的 NSG 的 ID 将事件和计数器类别数据记录到名为 *myWorkspace* 的现有工作区，该工作区存在于名为 *myWorkspaces* 的资源组中：
 
 ```azurecli-interactive
 az monitor diagnostic-settings create \

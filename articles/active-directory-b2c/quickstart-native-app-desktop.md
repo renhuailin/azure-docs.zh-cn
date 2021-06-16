@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.date: 09/12/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebed2f5e8664bd4336219f9387b8d27c8f3a1c59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bbdd0dc8914847c5502dc79635293fd685d071f9
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "78187265"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613433"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为桌面应用设置登录
 
@@ -85,7 +85,7 @@ Azure AD B2C 提供允许用户更新个人资料的功能。 示例 Web 应用�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算尝试其他 Azure AD B2C 快速入门或教程，可以使用 Azure AD B2C 租户。 可以在不再需要时[删除 Azure AD B2C 租户](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant)。
+如果打算尝试其他 Azure AD B2C 快速入门或教程，可以使用 Azure AD B2C 租户。 可以在不再需要时[删除 Azure AD B2C 租户](faq.yml#how-do-i-delete-my-azure-ad-b2c-tenant-)。
 
 ## <a name="next-steps"></a>后续步骤
 

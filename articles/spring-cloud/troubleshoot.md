@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f08b9db58ee0e4ec7711afb95085ef27fa5db13c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 13f61378b16f41d80b5622a41a55c103247b381b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132532"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968987"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>排查常见的 Azure Spring Cloud 问题
 
@@ -115,7 +115,7 @@ ms.locfileid: "108132532"
 * 已创建实例的资源组。
 * 资源名称符合命名规则。 该名称只能包含小写字母、数字和连字符。 第一个字符必须是字母。 最后一个字符必须是字母或数字。 该值必须包含 2 到 32 个字符。
 
-如果要使用资源管理器模板设置 Azure Spring Cloud 服务实例，请先参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)。
+如果要使用资源管理器模板设置 Azure Spring Cloud 服务实例，请先参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md)。
 
 Azure Spring Cloud 服务实例的名称将用于请求 `azureapps.io` 下的子域名，因此，如果该名称与现有名称冲突，设置操作会失败。 可以在活动日志中找到更多详细信息。
 

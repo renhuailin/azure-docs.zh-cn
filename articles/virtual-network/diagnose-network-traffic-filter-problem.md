@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: d6835d06015923a70301c95370c76efbd0c2163e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d3180ba6e8c19714759563eb79a8488929efe940
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776728"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675848"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>诊断虚拟机网络流量筛选器问题
 
@@ -168,15 +169,15 @@ az vm show \
 
 无论使用 Azure [门户](#diagnose-using-azure-portal)、[PowerShell](#diagnose-using-powershell) 还是 [Azure CLI](#diagnose-using-azure-cli) 来诊断本文[场景](#scenario)中所述的问题，解决方法都是创建具有以下属性的网络安全规则：
 
-| properties                | 值                                                                              |
+| properties                | Value                                                                              |
 |---------                |---------                                                                           |
-| 源                  | 任意                                                                                |
+| Source                  | 任意                                                                                |
 | 源端口范围      | Any                                                                                |
 | 目标             | VM 的 IP 地址、IP 地址范围，或子网中的所有地址。 |
 | 目标端口范围 | 80                                                                                 |
 | 协议                | TCP                                                                                |
-| 操作                  | Allow                                                                              |
-| 优先度                | 100                                                                                |
+| 操作                  | 允许                                                                              |
+| 优先级                | 100                                                                                |
 | 名称                    | Allow-HTTP-All                                                                     |
 
 创建规则后，允许通过端口 80 从 Internet 进行入站通信，因为该规则的优先级高于名为 *DenyAllInBound* 的默认安全规则（拒绝流量）。 了解如何[创建安全规则](manage-network-security-group.md#create-a-security-rule)。 如果不同的 NSG 已关联到网络接口和子网，则必须在两个 NSG 中创建相同的规则。

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: e7d206b63d6e1bf741a5dc298dd5bbc2d48ab11b
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 9b898ea6c12b79035d2a9e968f38d7b202f19ddc
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368423"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747628"
 ---
 # <a name="azure-cosmos-db-apache-spark-3-oltp-connector-for-core-sql-api-preview-release-notes-and-resources"></a>适用于 Core (SQL) API 的 Azure Cosmos DB Apache Spark 3 OLTP 连接器（预览版）：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -50,9 +50,9 @@ Azure Cosmos DB Spark 3 OLTP 连接器（预览版）为使用 SQL API 的 Azure
 
 ## <a name="documentation"></a>文档
 
-- [入门](https://github.com/Azure/azure-sdk-for-java/blob/feature/cosmos/spark30/sdk/cosmos/azure-cosmos-spark_3-1_2-12/docs/quick-start.md)
-- [目录 API](https://github.com/Azure/azure-sdk-for-java/blob/feature/cosmos/spark30/sdk/cosmos/azure-cosmos-spark_3-1_2-12/docs/catalog-api.md)
-- [配置参数引用](https://github.com/Azure/azure-sdk-for-java/blob/feature/cosmos/spark30/sdk/cosmos/azure-cosmos-spark_3-1_2-12/docs/configuration-reference.md)
+- [入门](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos-spark_3-1_2-12/docs/quick-start.md)
+- [目录 API](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos-spark_3-1_2-12/docs/catalog-api.md)
+- [配置参数引用](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos-spark_3-1_2-12/docs/configuration-reference.md)
 
 
 ## <a name="version-compatibility"></a>版本兼容性

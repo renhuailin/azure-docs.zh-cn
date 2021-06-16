@@ -7,16 +7,16 @@ ms.subservice: elastic-pools
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
-ms.reviewer: ninarn, sstein
+author: arvindshmicrosoft
+ms.author: arvindsh
+ms.reviewer: mathoma
 ms.date: 12/9/2020
-ms.openlocfilehash: c478edf95ae345d64da630400fbf63ac613b73a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 014f3e80446e514fcce20cc0dbc82f6f1d3a063e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653629"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708796"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>弹性池有助于在 Azure SQL 数据库中管理和缩放多个数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

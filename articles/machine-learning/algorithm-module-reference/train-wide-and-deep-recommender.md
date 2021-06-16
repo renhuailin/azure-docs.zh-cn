@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/19/2021
-ms.openlocfilehash: 6c7f4b221b1b9a1eee9a0d4d376bb6707d6b2869
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 76b6079b389f1b5817c328cf92939ae956034936
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108000847"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956926"
 ---
 # <a name="train-wide--deep-recommender"></a>训练 Wide & Deep 推荐器
 本文介绍如何使用 Azure 机器学习设计器中的“训练 Wide & Deep 推荐器”模块来训练建议模型。 本模块基于由 Google 提出的 Wide & Deep 学习。
@@ -146,7 +146,7 @@ In distributed training the workload to train a model is split up and shared amo
 
 ### How to enable distributed training
 
-To enable distributed training for **Train Wide & Deep Recommender** module, you can set in **Run settings** in the right pane of the module. Only **[AML Compute cluster](https://docs.microsoft.com/azure/machine-learning/how-to-create-attach-compute-cluster?tabs=python)** is supported for distributed training.
+To enable distributed training for **Train Wide & Deep Recommender** module, you can set in **Run settings** in the right pane of the module. Only **[AML Compute cluster](../how-to-create-attach-compute-cluster.md?tabs=python)** is supported for distributed training.
 
 1. Select the module and open the right panel. Expand the **Run settings** section.
 
@@ -164,7 +164,7 @@ To enable distributed training for **Train Wide & Deep Recommender** module, you
 
     [![Screenshot showing how to check compute cluster](./media/module/compute-cluster-node.png)](./media/module/compute-cluster-node.png#lightbox)
 
-You can learn more about distributed training in Azure Machine Learning [here](https://docs.microsoft.com/azure/machine-learning/concept-distributed-training).
+You can learn more about distributed training in Azure Machine Learning [here](../concept-distributed-training.md).
 
 
 ### Troubleshooting for distributed training
@@ -193,4 +193,4 @@ Wide & Deep 联合训练广义线性模型和深度神经网络，结合了记�
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。

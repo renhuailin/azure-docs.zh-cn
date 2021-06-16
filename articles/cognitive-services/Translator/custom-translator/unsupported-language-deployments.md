@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: lajanuar
-ms.openlocfilehash: fb31388647fc6022a2e6670baf7b3e73f345c36a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca2fab82dd08ea999186a430b78b6329c64ae816
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98898064"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409588"
 ---
 # <a name="unsupported-language-deployments"></a>不支持的语言部署
 
@@ -28,7 +28,7 @@ ms.locfileid: "98898064"
 ## <a name="prerequisites"></a>先决条件
 
 为了使你的模型成为可部署的候选模型，它们必须满足以下条件：
-* 必须已使用迁移工具将包含该模型的项目从中心迁移到自定义翻译器。  可在[此处](how-to-migrate.md)找到用于迁移项目和工作区的过程。
+* 必须已使用迁移工具将包含该模型的项目从中心迁移到自定义翻译器。  
 * 迁移发生时，模型必须处于已部署状态。  
 * 模型的语言对必须是自定义翻译器中不受支持的语言对。  如果语言对中的某种语言可以翻译为英语或者从英语翻译过来，但该语言对本身不包含英语，则该语言对是不受支持的语言部署的候选者。  例如，法语到德语语言对的中心模型被认为是不受支持的语言对，即使法语到英语和英语到德语是受支持的语言对。
 

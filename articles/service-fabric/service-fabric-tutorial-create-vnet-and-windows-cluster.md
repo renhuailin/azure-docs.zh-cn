@@ -3,13 +3,13 @@ title: 在 Azure 中创建运行 Windows 的 Service Fabric 群集
 description: 本教程介绍如何通过使用 PowerShell 将 Windows Service Fabric 群集部署到 Azure 虚拟网络和网络安全组。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 2c719569fc97121a935c3dcbd4945e50863ecf80
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86245018"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082012"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
 
@@ -17,7 +17,7 @@ ms.locfileid: "86245018"
 
 本教程介绍一个生产方案。 要创建小型群集以供测试，请参阅[创建测试群集](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 使用 PowerShell 在 Azure 中创建 VNET
@@ -145,8 +145,8 @@ ms.locfileid: "86245018"
 
 **参数** | **示例值** | **说明** 
 |---|---|---|
-|adminUserName|vmadmin| 群集 VM 的管理员用户名。 [VM 的用户名要求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。 |
-|adminPassword|Password#1234| 群集 VM 的管理员密码。 [VM 的密码要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
+|adminUserName|vmadmin| 群集 VM 的管理员用户名。 [VM 的用户名要求](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-)。 |
+|adminPassword|Password#1234| 群集 VM 的管理员密码。 [VM 的密码要求](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。|
 |clusterName|mysfcluster123| 群集的名称。 仅可包含字母和数字。 长度可介于 3 到 23 个字符之间。|
 |location|southcentralus| 群集的位置。 |
 |certificateThumbprint|| <p>如果创建自签名证书或提供证书文件，则值应为空。</p><p>若要使用之前上传到密钥保管库的现有证书，请填写证书 SHA1 指纹值。 例如“6190390162C988701DB5676EB81083EA608DCCF3”。</p> |

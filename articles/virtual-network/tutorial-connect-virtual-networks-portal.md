@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b7fcf7f60b18d0d44ded67cb5b22bcdcdcd56a77
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8a0dd8b20331d2f296767bc5628e901600f835e0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059320"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078143"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>教程：通过 Azure 门户使用虚拟网络对等互连连接虚拟网络
 
@@ -45,7 +45,7 @@ ms.locfileid: "106059320"
 2. 选择“网络”，然后选择“虚拟网络”   。
 3. 在“基本信息”选项卡上，输入或选择以下信息并接受其余设置的默认值：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup|
@@ -57,7 +57,7 @@ ms.locfileid: "106059320"
    
 5. 再次完成步骤 1-5，但需要做出以下更改：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |名称|myVirtualNetwork2|
     |地址空间|10.1.0.0/16|
@@ -99,18 +99,18 @@ ms.locfileid: "106059320"
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。 可以选择不同的操作系统，但剩余步骤假定你选择了“Windows Server 2016 Datacenter”。 
 3. 对于“基本信息”输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |资源组| 选择“使用现有”，然后选择“myResourceGroup”。|
     |名称|myVM1|
     |位置| 选择“美国东部”。|
     |用户名| 输入所选用户名。|
-    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。|
    
 4. 为“大小”选项选择 VM 大小。
 5. 在“网络”下选择以下值：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |虚拟网络| myVirtualNetwork1 - 如果尚未选择它，请选择“虚拟网络”，然后选择“myVirtualNetwork1”。|
     |子网| Subnet1 - 如果尚未选择它，请选择“子网”，然后选择“Subnet1”。|
@@ -123,12 +123,14 @@ ms.locfileid: "106059320"
 
 再次完成步骤 1-6，并做出以下更改：
 
-|设置|值|
+|设置|Value|
 |---|---|
 |名称 | myVm2|
 |虚拟网络 | myVirtualNetwork2|
 
 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 

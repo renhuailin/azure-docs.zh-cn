@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49dc71dac6d246907de3498ed0a39541a3caf522
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183152"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888421"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>用于使用 Azure 资源管理器模板进行 API 管理的 CI/CD
 
@@ -41,7 +41,7 @@ ms.locfileid: "96183152"
 * API 开发人员有权访问开发实例，并可将其用于开发和测试其 API。 
 * 名为“API 发布者”的指定团队管理生产实例。
 
-此建议方法中的关键是要在 [Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)中保留所有 API 管理配置。 组织应将这些模板保留在一个源代码管理系统（如 Git）中。 如图所示，发布者存储库包含模板集合中的生产 API 管理实例的所有配置：
+此建议方法中的关键是要在 [Azure 资源管理器模板](../azure-resource-manager/templates/syntax.md)中保留所有 API 管理配置。 组织应将这些模板保留在一个源代码管理系统（如 Git）中。 如图所示，发布者存储库包含模板集合中的生产 API 管理实例的所有配置：
 
 |模板  |说明  |
 |---------|---------|

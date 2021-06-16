@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
-ms.reviewer: v-masebo
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma, v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
-ms.openlocfilehash: ae7baeac6cee2a692928642e3e38ce0adad17d1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: edbac11d17547ac58523559c2dfcf49967b77a1d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92674881"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699745"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>教程：使用 SSMS 在 Azure SQL 数据库中设计关系数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,7 +48,7 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录 [Azure 门户](https://portal.azure.com/)。
+登录到 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-blank-database-in-azure-sql-database"></a>在 Azure SQL 数据库中创建空数据库
 
@@ -136,7 +136,7 @@ Azure SQL 数据库在服务器级别创建 IP 防火墙。 此防火墙阻止�
    | **服务器类型** | 数据库引擎 | 此值是必需的。 |
    | **服务器名称** | 完全限定的服务器名称 | 例如，yourserver.database.windows.net。 |
    | **身份验证** | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
-   | **登录** | 服务器管理员帐户 | 在创建服务器时指定的帐户。 |
+   | **登录名** | 服务器管理员帐户 | 在创建服务器时指定的帐户。 |
    | **密码** | 服务器管理员帐户的密码 | 创建服务器时指定的密码。 |
 
    ![连接到服务器](./media/design-first-database-tutorial/connect.png)

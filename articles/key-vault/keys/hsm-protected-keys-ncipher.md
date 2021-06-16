@@ -10,12 +10,13 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: f2faabd92a1ebdf9734119d12aea49042b03497a
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fc2db49b11f0a209c013527afde56c0830ac990c
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162430"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539252"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>导入 Key Vault 的受 HSM 保护的密钥 (nCipher)
 
@@ -452,7 +453,7 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 * 参数 *protect* 必须设置为值 **module**，如上所示。 这会创建一个受模块保护的密钥。 BYOK 工具集不支持受 OCS 保护的密钥。
 * 将 **ident** 和 **plainname** 的 *contosokey* 值替换为任何字符串值。 为了最大程度减少管理开销并降低错误风险，建议对这两个参数使用相同的值。 **Ident** 值只能包含数字、短划线和小写字母。
-* 在此示例中，pubexp 留空（默认值），但可以指定特定值。 有关详细信息，请参阅 [nCipher 文档。](https://www.entrust.com/-/media/documentation/brochures/entrust-nshield-general-purpose-hsms-br-a4.pdf)
+* 在此示例中，pubexp 留空（默认值），但可以指定特定值。 有关详细信息，请参阅 [nCipher 文档。](https://go.ncipher.com/rs/104-QOX-775/images/nShield-family-br-A4.pdf)
 
 此命令在 %NFAST_KMDATA%\local 文件夹中创建一个标记化密钥文件，文件名以 **key_simple_** 开头，后跟在命令中指定的 **ident**。 例如：**key_simple_contosokey**。 此文件包含已加密的密钥。
 

@@ -7,15 +7,13 @@ ms.author: damendo
 ms.date: 01/07/2021
 ms.topic: quickstart
 ms.service: network-watcher
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 36a70cf01130e4156c21b01013cddcb706b32276
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 9d541294ff20047f9041b58b3ce971c76adb6737
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277707"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982675"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>快速入门：使用 ARM 模板配置网络安全组流日志
 
@@ -35,7 +33,7 @@ ms.locfileid: "108277707"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create)。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/networkwatcher-flowlogs-create)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/networkwatcher-flowLogs-create/azuredeploy.json":::
 
@@ -83,7 +81,7 @@ ms.locfileid: "108277707"
 
 如果你是第一次使用 ARM 模板，请参阅以下文章，了解有关 ARM 模板的详细信息：
 
-- [使用 ARM 模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
+- [使用 ARM 模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
 - [创建并部署第一个 ARM 模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 下面的示例是一个完整的模板。 它也是最简单的模板版本。 该示例包含设置 NSG 流日志所需传递的最少参数。 有关更多示例，请参阅概述文章[根据 Azure 资源管理器模板配置 NSG 流日志](network-watcher-nsg-flow-logging-azure-resource-manager.md)。

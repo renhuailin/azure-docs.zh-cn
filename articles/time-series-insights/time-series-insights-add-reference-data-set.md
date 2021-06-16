@@ -3,20 +3,20 @@ title: 如何向环境添加参考数据集 - Azure 时序见解 | Microsoft Doc
 description: 本文介绍了如何添加参考数据集来增强 Azure 时序见解环境中的数据。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
-ms.reviewer: jasonh, kfile
+author: esung22
+ms.author: elsung
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: d80d97a609aa3a464b9b114439fe7f4058e287c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73d3067d22c90919a1f592e8822fbcb66d96b086
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001824"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791168"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>使用 Azure 门户为 Azure 时序见解 Gen1 环境创建引用数据集
 
@@ -41,7 +41,7 @@ ms.locfileid: "96001824"
 
 1. 查找现有的 Azure 时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”  。 选择 Azure 时序见解环境。
 
-1. 选择“概述”页面。 展开页面顶部附近的“概要”部分，找到“时序见解资源管理器 URL”并打开链接 。  
+1. 选择“概述”页面。 展开页面顶部附近的“概要”部分，找到“时序见解资源管理器 URL”并打开链接 。
 
    [![展开“概要”部分](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 

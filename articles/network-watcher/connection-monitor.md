@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 4f9f3e2af9abc054d3b1d5ce2bd1f1b27f7bf958
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 188efd630f1b497815f86a9249d31e823f45a8ce
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066035"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081706"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
@@ -55,11 +55,11 @@ ms.locfileid: "106066035"
 2. 选择“计算”  ，然后选择操作系统。 在本教程中，使用的是 **Windows Server 2016 Datacenter**。
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |名称|myVM1|
     |用户名| 输入所选用户名。|
-    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.yml?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup|
     |位置| 选择“美国东部”|
@@ -77,7 +77,7 @@ ms.locfileid: "106066035"
 
 再次完成[创建第一个 VM](#create-the-first-vm) 中的步骤，并做出以下更改：
 
-|步骤|设置|值|
+|步骤|设置|Value|
 |---|---|---|
 | 1 | 选择某一版本的 **Ubuntu Server** |                                                                         |
 | 3 | 名称                                  | myVm2                                                                   |
@@ -97,7 +97,7 @@ ms.locfileid: "106066035"
 4. 选择“+ 添加”  。
 5. 输入或选择要监视的连接信息，然后选择“添加”  。 在下图所示的示例中，将通过端口 22 监视从 *myVm1* VM 到 *myVm2* VM 的连接：
 
-    | 设置                  | 值               |
+    | 设置                  | Value               |
     | ---------                | ---------           |
     | 名称                     | myVm1-myVm2(22)     |
     | 源                   |                     |
@@ -121,7 +121,7 @@ ms.locfileid: "106066035"
 
     请注意以下信息：
 
-    | Item                     | 值                      | 详细信息                                                     |
+    | Item                     | Value                      | 详细信息                                                     |
     | ---------                | ---------                  |--------                                                     |
     | 状态                   | 可访问                  | 指示终结点是否可以访问。|
     | 平均 往返时间          | 指示进行连接所需的往返时间，以毫秒为单位。 连接监视器每 60 秒探测一次连接，因此可以监视一段时间的延迟情况。                                         |

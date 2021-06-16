@@ -3,16 +3,16 @@ title: 使用托管标识进行身份验证
 description: 通过使用用户分配或系统分配的托管 Azure 标识，提供对专用容器注册表中映像的访问。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 213f49356fdc2444f8bc2cb4635e96015aff0a61
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 88952a032b9c4439620de05f181402f29639a5b2
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781534"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440657"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 
 
-使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)从另一个 Azure 资源向 Azure 容器注册表验证身份，而无需提供或管理注册表凭据。 例如，在 Linux VM 上设置用户分配或系统分配的托管标识，以便从容器注册表访问容器映像，就像使用公共注册表一样容易。 或者，将 Azure Kubernetes 服务群集设置为使用其[托管标识](../aks/use-managed-identity.md)从用于 pod 部署的 Azure 容器注册表拉取容器映像。
+使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)从另一个 Azure 资源向 Azure 容器注册表验证身份，而无需提供或管理注册表凭据。 例如，在 Linux VM 上设置用户分配或系统分配的托管标识，以便从容器注册表访问容器映像，就像使用公共注册表一样容易。 或者，将 Azure Kubernetes 服务群集设置为使用其[托管标识](../aks/cluster-container-registry-integration.md)从用于 pod 部署的 Azure 容器注册表拉取容器映像。
 
 本文将详细介绍托管标识以及如何：
 

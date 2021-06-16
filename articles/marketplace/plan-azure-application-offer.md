@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: c6dbab1b7fa1599add9fb48814a1138bf176c81d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8120bcb030f5a1ff6948757d8f65e3a21d31898f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127454"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955391"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>为商业市场计划 Azure 应用程序产品/服务
 
@@ -33,7 +33,7 @@ ms.locfileid: "108127454"
 
 为商业市场计划 Azure 应用程序产品/服务时，请查看以下资源。
 
-- [了解 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
+- [了解 Azure 资源管理器模板](../azure-resource-manager/templates/syntax.md)
 - 快速入门：
     - [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates/)
     - [Azure 模板最佳做法指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
@@ -91,7 +91,7 @@ ms.locfileid: "108127454"
 
 必须将产品/服务连接到客户关系管理 (CRM) 系统以收集客户信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及产品/服务名称、ID 和他们在其中找到产品/服务的在线商店将发送到你配置的 CRM 系统。 商业市场支持各种 CRM 系统，以及使用 Azure 表或使用 Power Automate 配置 HTTPS 终结点的选项。
 
-可以在创建产品/服务期间或之后随时添加或修改 CRM 连接。 有关详细指导，请参阅[商业市场产品/服务的潜在顾客](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
+你可以在创建产品/服务期间或之后随时添加或修改 CRM 连接。 有关详细指导，请参阅[商业市场产品/服务的潜在顾客](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
 ## <a name="categories-and-subcategories"></a>类别和子类别
 
@@ -120,7 +120,7 @@ ms.locfileid: "108127454"
 4. 使用条款
 5. 隐私策略地址（链接）
 6. 产品名称
-7. 总结
+7. 摘要
 8. 说明
 9. 屏幕截图/视频
 
@@ -138,9 +138,9 @@ ms.locfileid: "108127454"
 > [!NOTE]
 > 如果产品/服务说明的开头短语是“此应用程序只提供 [非英语语言] 版本”，那么产品/服务列表内容就不要求是英语的。
 
-为了帮助更轻松地创建产品/服务，请提前准备其中一些项。 除非另有说明，否则以下都是必填项。
+为了帮助更轻松地创建产品/服务，请提前准备其中一些项。 除非另有说明，以下项均为必填项。
 
-- **名称**：该名称将在商业市场中显示为产品/服务列表的标题。 该名称可以是商标字。 它不能包含表情符号（除非它们是商标和版权符号），并且长度必须限制为 50 个字符。
+- 名称：该名称将在商业市场中显示为产品/服务列表的标题。 该名称可以是商标字。 它不能包含表情符号（除非它们是商标和版权符号），并且长度必须限制为 50 个字符。
 - **搜索结果摘要**：用无分行符的纯文本、长度不超过 100 个字符的单个句子描述产品/服务的用途或功能。 此摘要用于商业市场列表搜索结果。
 - **简短说明**：最多提供 256 个字符的纯文本。 此摘要将显示在产品/服务详细信息页上。
 - **说明**：此说明将显示在 Azure 市场列表概述中。 考虑包括价值主张、关键优势、目标用户群、任何类别或行业关联、应用内购买机会、客户需求或产品/服务解决的痛点、任何所需的信息披露以及用于了解详细信息的链接。
@@ -195,12 +195,12 @@ ms.locfileid: "108127454"
 
 ## <a name="technical-configuration"></a>技术配置
 
-对于使用[市场计量服务 API](partner-center-portal/marketplace-metering-service-apis.md) 发出计量事件的托管应用程序，必须提供服务在发出计量事件时将使用的标识。
+对于使用[市场计量服务 API](marketplace-metering-service-apis.md) 发出计量事件的托管应用程序，必须提供服务在发出计量事件时将使用的标识。
 
-如果要使用 [Batch 使用情况事件](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event)，则此配置是必需的。 如果要提交[使用情况事件](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)，则还可以使用[实例元数据服务](../active-directory/managed-identities-azure-resources/overview.md)获取 [JSON Web 令牌 (JWT) 持有者令牌](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)。
+如果要使用 [Batch 使用情况事件](marketplace-metering-service-apis.md#metered-billing-batch-usage-event)，则此配置是必需的。 如果要提交[使用情况事件](marketplace-metering-service-apis.md#metered-billing-single-usage-event)，则还可以使用[实例元数据服务](../active-directory/managed-identities-azure-resources/overview.md)获取 [JSON Web 令牌 (JWT) 持有者令牌](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)。
 
-- **Azure Active Directory 租户 ID**（必填）：在 Azure 门户中，必须[创建一个 Azure Active Directory (AD) 应用](../active-directory/develop/howto-create-service-principal-portal.md)，以便可以验证两个服务之间的连接是否属于经过身份验证的通信。 要查找 Azure Active Directory (Azure AD) 应用的[租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，转到 Azure Active Directory 中的[应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)边栏选项卡。 在“显示名称”列中，选择应用。 然后查找“属性”和“目录（租户）ID”（例如 `50c464d3-4930-494c-963c-1e951d15360e`）。
-- **Azure Active Directory 应用 ID**（必填）：还需要[应用程序 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) 和身份验证密钥。 要查找应用程序 ID，请转到 Azure Active Directory 中的[应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)边栏选项卡。 在“显示名称”列中，选择应用，然后查找“应用程序（客户端）ID”（例如 `50c464d3-4930-494c-963c-1e951d15360e`）。 若要找到身份验证密钥，请转到“设置”并选择“密钥”。 你将需要提供说明和持续时间，然后系统将向你提供一个数值。
+- **Azure Active Directory 租户 ID**（必填）：在 Azure 门户中，必须 [创建一个 Azure Active Directory (AD) 应用](../active-directory/develop/howto-create-service-principal-portal.md)，以便可以验证两个服务之间的连接是否属于经过身份验证的通信。 要查找 Azure Active Directory (Azure AD) 应用的[租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，转到 Azure Active Directory 中的[应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)边栏选项卡。 在“显示名称”列中，选择应用。 然后查找“属性”和“目录（租户）ID”（例如 `50c464d3-4930-494c-963c-1e951d15360e`）。
+- **Azure Active Directory 应用 ID**（必填）：还需要 [应用程序 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) 和身份验证密钥。 要查找应用程序 ID，请转到 Azure Active Directory 中的[应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)边栏选项卡。 在“显示名称”列中，选择应用，然后查找“应用程序（客户端）ID”（例如 `50c464d3-4930-494c-963c-1e951d15360e`）。 若要找到身份验证密钥，请转到“设置”并选择“密钥”。 你将需要提供说明和持续时间，然后系统将向你提供一个数值。
 
 > [!NOTE]
 > Azure 应用程序 ID 将与你的发布者 ID 相关联，只能在此发布者帐户中重复使用。
@@ -224,7 +224,7 @@ Azure 应用程序产品/服务至少需要一个计划。 计划定义解决方
 
 有两种类型的 Azure 应用程序计划：“解决方案模板”和“托管应用程序”。 这两种计划类型都支持超越单个虚拟机 (VM) 自动部署和配置解决方案。 可以自动执行提供多个资源（包括 VM、网络和存储资源）的过程，以便提供 IaaS 解决方案等的复杂解决方案。 这两种计划类型都可以采用多种不同类型的 Azure 资源，包括但不限于 VM。
 
-- “解决方案模板”计划是在商业市场中发布解决方案的主要方式之一。 解决方案模板计划在商业市场中不可处理，但可用于部署通过商业市场计费的付费 VM 产品/服务。 当客户将管理解决方案，并且通过另一个计划对事务进行计费时，使用解决方案模板计划类型。 有关生成解决方案模板的详细信息，请参阅[什么是 Azure 资源管理器？](../azure-resource-manager/management/overview.md)。
+- “解决方案模板”计划是在商业市场中发布解决方案的主要方式之一。 解决方案模板计划在商业市场中不可交易，但可用于部署通过商业市场计费的付费 VM 产品/服务。 当客户将管理解决方案，并且通过另一个计划对事务进行计费时，使用解决方案模板计划类型。 有关生成解决方案模板的详细信息，请参阅[什么是 Azure 资源管理器？](../azure-resource-manager/management/overview.md)。
 - 使用“托管应用程序”计划可轻松生成完全托管的统包应用程序并交付给客户。 它们具有与解决方案模板计划相同的功能，但有一些主要区别：
     - 资源将部署到由应用发布者管理的资源组。 资源组在使用者的订阅中，但发布者租户中的标识有权访问该资源组。 
     - 作为发布者，你可以指定当前支持的解决方案的成本，并通过商业市场支持事务。

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9d9ba7e3e898da8d5b7d1bb4fbc69554ee205147
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 56a2eff6a39f879de4e9d968eb470243014cb430
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028326"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982027"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录
 
@@ -67,7 +67,7 @@ ms.locfileid: "107028326"
 
 如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../active-directory/develop/active-directory-optional-claims.md)。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
+1. 登录 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
 1. 从“管理”部分中选择“应用注册” 。
 1. 在列表中选择要为其配置可选声明的应用程序。
 1. 在“管理”部分中，选择“令牌配置”。 
@@ -149,7 +149,7 @@ ms.locfileid: "107028326"
     ```
 
 1. 在 ClaimsProvider 元素下，将 Domain 的值更新为可用于与其他标识提供者进行区分的唯一值。
-1. 在 TechnicalProfile 元素下，更新 DisplayName 的值，例如 `Contoso Employee`。 此值会显示在登录页中的登录按钮上。
+1. 在 TechnicalProfile 元素下，更新 DisplayName 的值，例如 `Multi-Tenant AAD`。 此值会显示在登录页中的登录按钮上。
 1. 将 client_id 设置为你之前注册的 Azure AD 多租户应用程序的应用程序 ID。
 1. 在 CryptographicKeys 下，更新 StorageReferenceId 的值为之前创建的策略密钥的名称。 例如，`B2C_1A_AADAppSecret`。
 

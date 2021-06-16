@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 4/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4977b56265f542f8f8ff13693abb468bc695a384
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: 12bab4b8099b074f79d0e5307780ec34178f13b8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992720"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968469"
 ---
 # <a name="modify-your-azure-file-sync-topology"></a>修改 Azure 文件同步拓扑
 
@@ -44,7 +44,7 @@ Azure 文件同步资源必须按特定顺序取消预配：服务器终结点�
 
 目前，不支持此功能。 
 
-如果当前正在使用 D 驱动器且计划迁移到云，请参阅[将 VM 的 D: 驱动器设为数据磁盘 - Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/change-drive-letter)。
+如果当前正在使用 D 驱动器且计划迁移到云，请参阅[将 VM 的 D: 驱动器设为数据磁盘 - Azure 虚拟机](../../virtual-machines/windows/change-drive-letter.md)。
 
 ## <a name="deprovision-all-server-endpoints-associated-with-a-registered-server"></a>取消预配与已注册服务器关联的所有服务器终结点
 
@@ -54,6 +54,3 @@ Azure 文件同步资源必须按特定顺序取消预配：服务器终结点�
 
 ## <a name="next-steps"></a>后续步骤
 * [取消预配 Azure 文件同步服务器终结点](./file-sync-deprovision-server-endpoint.md)
-
-
-

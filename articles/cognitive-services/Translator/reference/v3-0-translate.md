@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 431e42e422ecbaeb0e404928a505cf90180f6dd7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 090e00bbf9ca86115f286b8f24955f33c7230bf3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379330"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969397"
 ---
 # <a name="translator-30-translate"></a>翻译器 3.0：Translate
 
@@ -50,9 +50,9 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 | 查询参数 | 说明 |
 | --- | --- |
-| from | 可选参数。  <br>指定输入文本的语言。 可以使用 `translation` 范围来查找[支持的语言](../reference/v3-0-languages.md)，了解哪些语言可以翻译。 如果未指定 `from` 参数，则会应用自动语言检测来确定源语言。  <br>  <br>使用[动态字典](/azure/cognitive-services/translator/dynamic-dictionary)功能时，必须使用 `from` 参数而不是自动检测。 |
+| from | 可选参数。  <br>指定输入文本的语言。 可以使用 `translation` 范围来查找[支持的语言](../reference/v3-0-languages.md)，了解哪些语言可以翻译。 如果未指定 `from` 参数，则会应用自动语言检测来确定源语言。  <br>  <br>使用[动态字典](../dynamic-dictionary.md)功能时，必须使用 `from` 参数而不是自动检测。 |
 | textType | 可选参数。  <br>定义要翻译的文本是纯文本还是 HTML 文本。 HTML 必须是格式正确的完整元素。 可能的值为 `plain`（默认）`html`。 |
-| category | 可选参数。  <br>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用[自定义翻译工具](../customization.md)构建的自定义系统获取翻译。 将自定义翻译器[项目详细信息](/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details)中的类别 ID 添加到此参数，以便使用已部署的自定义系统。 默认值为 `general`。 |
+| category | 可选参数。  <br>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用[自定义翻译工具](../customization.md)构建的自定义系统获取翻译。 将自定义翻译器[项目详细信息](../custom-translator/how-to-create-project.md#view-project-details)中的类别 ID 添加到此参数，以便使用已部署的自定义系统。 默认值为 `general`。 |
 | profanityAction | 可选参数。  <br>指定在翻译时应如何处理不雅内容。 可能的值为 `NoAction`（默认）`Marked` 或 `Deleted`。 若要了解处理不雅内容的方式，请参阅[处理不雅内容](#handle-profanity)。 |
 | profanityMarker | 可选参数。  <br>指定在翻译时应如何标记不雅内容。 可能的值为 `Asterisk`（默认）`Tag`。 若要了解处理不雅内容的方式，请参阅[处理不雅内容](#handle-profanity)。 |
 | includeAlignment | 可选参数。  <br>指定是否包括从源文本到翻译文本的比对投射。 可能的值为 `true` 或 `false`（默认）。 |
@@ -66,7 +66,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 | 头文件 | 说明 |
 | --- | --- |
-| 身份验证标头 | 必需的请求标头。  <br>请参阅[用于身份验证的可用选项](/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。 |
+| 身份验证标头 | 必需的请求标头。  <br>请参阅[用于身份验证的可用选项](./v3-0-reference.md#authentication)。 |
 | Content-Type | 必需的请求标头。  <br>指定有效负载的内容类型。  <br>接受的值为：`application/json; charset=UTF-8`。 |
 | Content-Length | 必需的请求标头。  <br>请求正文的长度。 |
 | X-ClientTraceId | 可选。  <br>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。 |

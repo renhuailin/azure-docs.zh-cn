@@ -11,16 +11,16 @@ ms.topic: troubleshooting
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 3c5dce26a8c1274e68bb1d6cbc497852b86a3821
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 1e46bb0fad37e1a6da3676578f6cd92af912cb3f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108185815"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963889"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>应用程序代理问题和错误消息故障排除
 
-对应用程序代理问题进行故障排除时，我们建议你首先查看故障排除流程，[调试应用程序代理连接器问题](../manage-apps/application-proxy-debug-connectors.md)，以确定应用程序代理连接器的配置是否正确。 如果仍然无法连接到应用程序，请按照[调试应用程序代理应用程序问题](../manage-apps/application-proxy-debug-apps.md)中的故障排除流程进行操作。
+对应用程序代理问题进行故障排除时，我们建议你首先查看故障排除流程，[调试应用程序代理连接器问题](./application-proxy-debug-connectors.md)，以确定应用程序代理连接器的配置是否正确。 如果仍然无法连接到应用程序，请按照[调试应用程序代理应用程序问题](./application-proxy-debug-apps.md)中的故障排除流程进行操作。
 
 如果在访问已发布应用程序或发布应用程序时出现错误，请检查以下选项，查看 Microsoft Azure AD 应用程序代理是否正确工作：
 
@@ -78,7 +78,7 @@ Get-EventLog application –source "Microsoft AAD Application Proxy Connector" �
 | 无法访问此公司应用。 无权访问此应用程序。 授权失败。 确保向用户分配此应用程序的访问权限。 | 如果用户使用 Microsoft 帐户而不是公司帐户登录，则在尝试访问已发布的应用时可能会收到此错误。 来宾用户也可能得到此错误。 Microsoft 帐户用户和来宾无法访问 IWA 应用程序。 确保用户使用与已发布应用程序的域匹配的公司帐户登录。<br><br>可能未针对此应用程序分配用户。 转到“应用程序”选项卡，然后在“用户和组”下将此用户或用户组分配到此应用程序。 |
 | 当前无法访问此公司应用。 请稍后重试…连接器已超时。 | 如果用户未在本地端针对此应用程序正确定义，则在尝试访问已发布的应用时可能会收到此错误。 确保用户在本地计算机上具有针对此后端应用程序定义的正确权限。 |
 | 无法访问此公司应用。 无权访问此应用程序。 授权失败。 确保用户具有 Azure Active Directory Premium 许可证。 | 如果订阅方管理员未向用户显式分配 Premium 许可证，则用户在尝试访问你发布的应用时可能会收到此错误。 转到订阅方的 Active Directory“许可证”选项卡并确保向此用户或用户组分配 Premium 许可证。 |
-| 找不到具有指定主机名的服务器。 | 如果应用程序的自定义域未正确配置，则用户在尝试访问已发布的应用时可能会收到此错误。 请确保已上传域的证书，并按照[使用 Azure AD 应用程序代理中的自定义域](../manage-apps/application-proxy-configure-custom-domain.md)中的步骤正确配置 DNS 记录 |
+| 找不到具有指定主机名的服务器。 | 如果应用程序的自定义域未正确配置，则用户在尝试访问已发布的应用时可能会收到此错误。 请确保已上传域的证书，并按照[使用 Azure AD 应用程序代理中的自定义域](./application-proxy-configure-custom-domain.md)中的步骤正确配置 DNS 记录 |
 |禁止：无法访问该企业应用或无法对用户授权。 请确保用户已在本地 AD 中定义，并且有权访问本地 AD 中的应用。 | 这可能是访问授权信息的问题，请参阅[某些应用程序和 API 需要访问帐户对象上的授权信息]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information)。 简单来说，要解决此问题，应将应用代理连接器计算机帐户添加到“Windows 授权访问组”内置域组。 |
 
 ## <a name="my-error-wasnt-listed-here"></a>此处未列出我遇到的错误
@@ -89,7 +89,7 @@ Get-EventLog application –source "Microsoft AAD Application Proxy Connector" �
 * [启用 Azure Active Directory 的应用程序代理](application-proxy-add-on-premises-application.md)
 * [使用应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)
 * [启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
-* [启用条件访问](../manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+* [启用条件访问](./application-proxy-integrate-with-sharepoint-server.md)
 
 
 <!--Image references-->

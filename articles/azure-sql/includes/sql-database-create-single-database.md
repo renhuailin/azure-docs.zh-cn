@@ -1,17 +1,17 @@
 ---
 author: MashaMSFT
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: service-overview
 ms.topic: include
 ms.date: 03/10/2020
-ms.author: sstein
+ms.author: mathoma
 ms.reviewer: vanto
-ms.openlocfilehash: 0568860c387aa1239ec56005e404606272ae8275
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 60ae736d060030bfb535d3de917b4872517e1b5c
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107800273"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690142"
 ---
 在此步骤中，你将创建[逻辑 SQL 服务器](../database/logical-servers.md)和使用 AdventureWorksLT 示例数据的[单一数据库](../database/single-database-overview.md)。 可以通过使用 Azure 门户菜单和屏幕，或通过在 Azure Cloud Shell 中使用 Azure CLI 或 PowerShell 脚本来创建数据库。
 
@@ -28,7 +28,7 @@ ms.locfileid: "107800273"
    ![添加到 Azure SQL](./media/sql-database-create-single-database/sqldbportal.png)
 
 1. 在“选择 SQL 部署选项”页上，选择“SQL 数据库”磁贴，其中“单一数据库”位于“资源类型”下 。 可以通过选择“显示详细信息”来查看有关不同数据库的更多信息。
-1. 选择“创建”。
+1. 选择“创建”  。
 
    ![创建单一数据库](./media/sql-database-create-single-database/create-single-database.png)
 

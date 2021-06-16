@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: d4c099d29a843b4c354ffb218887dc7ffab51771
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a6a5a98b6989526908e464a314d271dd07c19d8
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98065433"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586247"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>使用数据导出功能将 IoT 数据导出到云目标（旧版）
 
@@ -28,7 +28,7 @@ ms.locfileid: "98065433"
 - 冷路径分析，例如 Azure 机器学习中的训练模型或 Microsoft Power BI 中的长期趋势分析。
 
 > [!Note]
-> 启用数据导出时，只能获得从那时之后的数据。 目前，关闭数据导出后将暂时无法检索数据。 若要保留更多的历史数据，请及早启用数据导出。
+> 启用数据导出时，只能获得从那时之后的数据。 目前，如果禁用数据导出功能，则暂时无法检索数据。 若要保留更多的历史数据，请尽早启用数据导出功能。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -63,7 +63,7 @@ ms.locfileid: "98065433"
 
 如果当前没有可导出到的 Azure 存储帐户，请执行以下步骤：
 
-1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以详细了解如何创建新的 [Azure Blob 存储帐户](../../storage/blobs/storage-quickstart-blobs-portal.md)或 [Azure Data Lake Storage v2 存储帐户](../../storage/common/storage-account-create.md)。 数据导出只能将数据写入支持块 blob 的存储帐户。 以下列表显示了已知的兼容存储帐户类型：
+1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以详细了解如何新建 [Azure Blob 存储帐户](../../storage/blobs/storage-quickstart-blobs-portal.md)或 [Azure Data Lake Storage v2 存储帐户](../../storage/common/storage-account-create.md)。 数据导出功能只能将数据写入到支持块 blob 的存储帐户中。 下表列出了已知的兼容存储帐户类型：
 
     |性能层|帐户类型|
     |-|-|
@@ -80,10 +80,10 @@ ms.locfileid: "98065433"
 
 1. 登录到 IoT Central 应用程序。
 
-2. 在左侧窗格中选择“数据导出”。
+2. 在左侧窗格中，选择“数据导出”。
 
     > [!Tip]
-    > 如果在左窗格中没有看到“数据导出”，则表明你没有在应用程序中配置数据导出的权限。 请与管理员联系以设置数据导出。
+    > 如果在左侧窗格中没有看到“数据导出”，则表明你没有在应用中配置数据导出所需的权限。 请与管理员联系以设置数据导出。
 
 3. 选择“+ 新建”按钮。 选择“Azure Blob 存储”、“Azure 事件中心”、“Azure 服务总线队列”或“Azure 服务总线主题”之一作为导出目标。    每个应用程序的最大导出数目是 5。
 
@@ -101,7 +101,7 @@ ms.locfileid: "98065433"
     - 如果连接字符串是针对事件中心或服务总线的，请转到 Azure 门户中的命名空间：
         - 要对整个命名空间使用连接字符串，请执行以下操作：
             1. 在“设置”下，选择“共享访问策略” 
-            2. 创建一个新密钥或选择一个具有“发送”权限的现有密钥。
+            2. 新建一个密钥，或选择一个具有“发送”权限的现有密钥。
             3. 复制主连接字符串或辅助连接字符串
         - 要将连接字符串用于特定的事件中心实例或服务总线队列或主题，请参阅“实体 > 事件中心”或“实体 > 队列”或“实体 > 主题”。   选择特定的实例，然后执行上述相同步骤以获取连接字符串。
     - 如果连接字符串是针对存储帐户的，请转到 Azure 门户中的存储帐户：
@@ -555,7 +555,7 @@ ms.locfileid: "98065433"
 
 如果预览应用程序中已存在“设备”和“设备模板”流已打开的现有数据导出，请在 2020 年 6 月 30 日之前更新导出。  这项要求适用于导出到 Azure Blob 存储、Azure 事件中心和 Azure 服务总线。
 
-自 2020 年 2 月 3 日起，应用程序中启用了“设备”和“设备模板”的所有新导出都将具有上述数据格式。 在此日期之前创建的所有导出都将保留在 2020 年 6 月 30 日之前的旧数据格式，此时，这些导出会自动迁移到新的数据格式。 新数据格式与 IoT Central 公共 API 中的[设备](/rest/api/iotcentral/devices/get)、[设备属性](/rest/api/iotcentral/devices/getproperties)、[设备云属性](/rest/api/iotcentral/devices/getcloudproperties)和[设备模板](/rest/api/iotcentral/devicetemplates/get)对象匹配。
+自 2020 年 2 月 3 日起，应用程序中启用了“设备”和“设备模板”的所有新导出都将具有上述数据格式。 在此日期之前创建的所有导出都将保留在 2020 年 6 月 30 日之前的旧数据格式，此时，这些导出会自动迁移到新的数据格式。 新数据格式与 IoT Central 公共 API 中的[设备](/rest/api/iotcentral/2021-04-30preview/devices/get)、[设备属性](/rest/api/iotcentral/2021-04-30preview/devices/getproperties)、[设备云属性](/rest/api/iotcentral/2021-04-30preview/devices/getcloudproperties)和[设备模板](/rest/api/iotcentral/2021-04-30preview/devicetemplates/get)对象匹配。
 
 对于 **设备**，旧数据格式和新数据格式之间的显著差异包括：
 - `@id` 对于删除的设备，`deviceId` 将重命名为 `id` 

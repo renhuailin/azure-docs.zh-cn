@@ -8,12 +8,13 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 4278aa563d76b783e02e67ee964764864931fd68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5b522ac678c5a2ffbcf5713de79e35c00e30ba40
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552365"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672880"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 处理计划内维护
 
