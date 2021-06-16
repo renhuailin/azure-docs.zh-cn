@@ -10,14 +10,16 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
-ms.openlocfilehash: ddf4d17cd2631f5bc299e392c46bd9065bb13744
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4336b24dd68df2ce52081e6b0d3d1e49517f3d8
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93146601"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031756"
 ---
 # <a name="content-moderator-review-tool"></a>内容审查器审阅工具
+
+[!INCLUDE [deprecation notice](../includes/tool-deprecation.md)]
 
 Azure 内容审查器提供将机器学习内容审核与人工审阅相结合的服务。 [审阅工具](https://contentmoderator.cognitive.microsoft.com)网站是一个用户友好的前端，提供对这些服务的精细访问权限。
 

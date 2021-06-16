@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73130c906d4d9f0da51db1b666e8562570cce40f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 37c731648c144d4b25896260e5cf276a97b9e731
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100571269"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965766"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor 中的 Azure AD 活动日志
 
@@ -134,7 +134,7 @@ ms.locfileid: "100571269"
 
 **问：哪些日志包括在其中？**
 
-**答**：登录活动日志和审核日志均可通过此功能进行路由，虽然与 B2C 相关的审核事件目前未包括在其中。 若要了解目前支持哪些类型的日志和哪些基于功能的日志，请参阅[审核日志架构](reference-azure-monitor-audit-log-schema.md)和[登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)。 
+**答**：登录活动日志和审核日志均可通过此功能进行路由，虽然与 B2C 相关的审核事件目前未包括在其中。 若要了解目前支持哪些类型的日志和哪些基于功能的日志，请参阅[审核日志架构](./overview-reports.md)和[登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)。 
 
 ---
 

@@ -3,12 +3,12 @@ title: 以编程方式创建 Azure 仪表板
 description: 使用 Azure 门户中的仪表板作为模板以编程方式创建 Azure 仪表板。 包括 JSON 引用。
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: 92848ac238ff11a90afc82713639b8abebf076ec
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: c0e8064abcac42235ff5086f047aa716ced271cf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107878787"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966981"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -75,7 +75,7 @@ ms.locfileid: "107878787"
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>使用模板部署以编程方式从模板创建仪表板
 
-Azure 提供协调多资源部署的功能。 创建用于表达要部署的资源集的部署模板及资源之间的关系。  每个资源的 JSON 格式与逐个创建资源时的格式相同。 差别在于模板语言会添加一些概念，例如变量、参数、基本功能等。 此扩展语法仅在模板部署上下文中受支持。 如果与前述命令式 API 一起使用，则不起作用。 有关详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)。
+Azure 提供协调多资源部署的功能。 创建用于表达要部署的资源集的部署模板及资源之间的关系。  每个资源的 JSON 格式与逐个创建资源时的格式相同。 差别在于模板语言会添加一些概念，例如变量、参数、基本功能等。 此扩展语法仅在模板部署上下文中受支持。 如果与前述命令式 API 一起使用，则不起作用。 有关详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md)。
 
 应使用模板的参数语法来实现参数化。  替换之前找到的所有资源 ID 的实例，如下所示。
 
