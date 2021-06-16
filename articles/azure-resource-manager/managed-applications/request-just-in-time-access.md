@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: b7c067ca82ea7fbe7eb9c0f3d50b7fe75dfb47df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae7c4e61107518676b2cc8308904816d075ecf7e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377357"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951493"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>启用和请求对 Azure 托管应用程序的实时访问权限
 
@@ -72,7 +72,7 @@ ms.locfileid: "100377357"
 
 1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)的商业市场门户。
 
-1. 有关新建托管应用程序的指南，请按照[创建 Azure 应用程序产品/服务](../../marketplace/create-new-azure-apps-offer.md)中的步骤操作。
+1. 有关新建托管应用程序的指南，请按照[创建 Azure 应用程序产品/服务](../../marketplace/azure-app-offer-setup.md)中的步骤操作。
 
 1. 在“技术配置”页上，选中“启用实时(JIT)访问”复选框。
 

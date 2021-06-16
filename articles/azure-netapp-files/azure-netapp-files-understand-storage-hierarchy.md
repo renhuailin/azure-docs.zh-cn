@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 435d74e771a9d887c87c9d10e6b525ac77cf97e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd96a8c2002bc22a0e4ef2c5a19fa06bf10b5565
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91278322"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071886"
 ---
 # <a name="storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp 文件的存储层次结构
 
@@ -63,9 +63,6 @@ QoS 类型是容量池的一项属性。 Azure NetApp 文件提供两种 QoS 类
     分配给卷的最大吞吐量取决于容量池的服务级别和卷的大小配额。 有关示例计算，请参阅 [Azure NetApp 文件的服务级别](azure-netapp-files-service-levels.md)。
 
 - <a name="manual_qos_type"></a>*手动* QoS 类型  
-
-     > [!IMPORTANT] 
-     > 为容量池使用手动 QoS 类型时需要进行注册。  请参阅[管理手动 QoS 容量池](manage-manual-qos-capacity-pool.md)。  
 
     可以选择为容量池使用手动 QoS 类型。
 

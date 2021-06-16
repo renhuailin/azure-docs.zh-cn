@@ -1,14 +1,14 @@
 ---
 title: MARS 代理的支持矩阵
 description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代理的计算机时的 Azure 备份支持。
-ms.date: 04/09/2021
+ms.date: 06/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 20bca0e9ca9dfd735501e68bd0e5a6d69d2ef68e
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 068a5391130f569a2d56fa9bd605356036e7737f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576493"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952994"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -50,77 +50,7 @@ Azure 备份使用 MARS 代理将本地计算机和 Azure VM 中的数据备份�
 
 ## <a name="networking-and-access-support"></a>网络和访问支持
 
-### <a name="url-and-ip-access"></a>URL 和 IP 访问
-
-MARS 代理需要以下 URL 的访问权限：
-
-- `http://www.msftncsi.com/ncsi.txt`
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.MicrosoftOnline.com
-- *.Windows.net
-- `www.msftconnecttest.com`
-
-以及以下 IP 地址：
-
-- 20.190.128.0/18
-- 40.126.0.0/18
-
-对上面列出的所有 URL 和 IP 地址的访问都使用端口 443 上的 HTTPS 协议。
-
-使用 MARS 代理从 Azure VM 备份文件和文件夹时，还需要将 Azure 虚拟网络配置为允许访问。 如果使用网络安全组 (NSG)，请使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 除了 Azure 备份标记外，还需要通过为 Azure AD (AzureActiveDirectory) 和 Azure 存储（存储）创建类似的 [NSG 规则](../virtual-network/network-security-groups-overview.md#service-tags)，以便在连接后进行身份验证和数据传输。 以下步骤介绍了为 Azure 备份标记创建规则的过程：
-
-1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
-2. 在“设置”下选择“出站安全规则”。
-3. 选择 **添加** 。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
-4. 选择“添加”，保存新创建的出站安全规则。
-
-同样，可以为 Azure 存储和 Azure AD 创建 NSG 出站安全规则。 有关服务标记的详细信息，请参阅[此文](../virtual-network/service-tags-overview.md)。
-
-### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
-
-可以使用公共对等互连（适用于旧线路）和 Microsoft 对等互连通过 Azure ExpressRoute 备份数据。 不支持通过专用对等互连进行备份。
-
-使用公共对等互连：确保访问以下域/地址：
-
-* URL
-  * `www.msftncsi.com`
-  * `*.Microsoft.com`
-  * `*.WindowsAzure.com`
-  * `*.microsoftonline.com`
-  * `*.windows.net`
-  * `www.msftconnecttest.com`
-* IP 地址
-  * 20.190.128.0/18
-  * 40.126.0.0/18
-
-使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：
-
-- Azure 备份（根据恢复服务保管库的位置）
-- Azure Active Directory (12076:5060)
-- Azure 存储（根据恢复服务保管库的位置）
-
-有关详细信息，请参阅 [ExpressRoute 路由要求](../expressroute/expressroute-routing.md#bgp)。
-
->[!NOTE]
->对于新线路，公共对等互连已弃用。
-
-### <a name="private-endpoint-support"></a>专用终结点支持
-
-现在可以使用专用终结点将数据从服务器安全地备份到恢复服务保管库。 由于 Azure Active Directory 目前不支持专用终结点，因此需要分别允许 Azure Active Directory 所需的 IP 和 FQDN 进行出站访问。
-
-使用 MARS 代理备份本地资源时，请确保已将本地网络（包含要备份的资源）与包含保管库的专用终结点的 Azure VNet 对等互连。 然后可以继续安装 MARS 代理并配置备份。 但必须确保仅通过对等互连网络进行所有备份通信。
-
-如果在某个 MARS 代理注册到保管库后删除了该保管库的专用终结点，则需要向该保管库重新注册容器。 不需要停止对它们的保护。
-
-了解有关 [Azure 备份的专用终结点](private-endpoints.md)的详细信息。
-
-### <a name="throttling-support"></a>限制支持
-
-**功能** | **详细信息**
---- | ---
-带宽控制 | 。 在 MARS 代理中，使用“更改属性”来调整带宽。
-网络限制 | 不适用于运行 Windows Server 2008 R2、Windows Server 2008 SP2 或 Windows 7 的备份计算机。
+[!INCLUDE [Configuring network connectivity](../../includes/backup-network-connectivity.md)]
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 

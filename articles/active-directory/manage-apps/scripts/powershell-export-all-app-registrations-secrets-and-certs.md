@@ -2,21 +2,21 @@
 title: PowerShell 示例 - 导出 Azure Active Directory 租户中应用注册的机密和证书。
 description: PowerShell 示例，该示例导出了 Azure Active Directory 租户中指定应用注册的所有机密和证书。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: mifarca
-ms.openlocfilehash: b5cbb6b3843e81d9265405dcea24a092e57bf65e
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: e358d4315a9f5095785e87f702ecad0c8448e1fd
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377017"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076845"
 ---
 # <a name="export-secrets-and-certificates-for-app-registrations"></a>导出应用注册的机密和证书
 

@@ -8,13 +8,13 @@ ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f014c07a319cbb07497cba01699b93d092255b93
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: eed40e353531ec6df4ecafad3757845b45a99886
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771492"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071834"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁盘加密方案
 
@@ -187,7 +187,7 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-with-a-template"></a>使用模板在现有或正在运行的 Linux VM 上启用加密
 
-可通过[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)在 Azure 中为现有或正在运行的 Linux VM 启用磁盘加密。
+可通过[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm-without-aad)在 Azure 中为现有或正在运行的 Linux VM 启用磁盘加密。
 
 1. 在 Azure 快速入门模板中，单击“部署到 Azure”。
 

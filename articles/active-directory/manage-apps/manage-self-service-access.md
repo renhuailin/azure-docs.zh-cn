@@ -2,21 +2,21 @@
 title: 如何配置自助应用程序分配 | Microsoft Docs
 description: 启用自助服务应用程序访问以允许用户查找自己的应用程序
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00393017dee64cf9ca0320140c640eaf4288e1b4
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 506e29abe9c9a5c1c68fc3c0e53650ec51baf1b9
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315176"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081148"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>如何配置自助应用程序分配
 

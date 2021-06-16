@@ -3,20 +3,19 @@ title: 配置和管理内容参考信息
 description: 查找内容参考信息，了解如何配置和管理 Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: guide
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.date: 01/14/2020
-ms.openlocfilehash: 19cec1deeef344ea5897061db0fec88066b90b05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d870597665b2e59a660d01453ee0f5de05b0545
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92791760"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704381"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>配置和管理内容参考信息 - Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 50216b83475e92cbabb5ed78c3836264ceff4600
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89988579c847250938db71844b1bbafa4965e7df
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866601"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004558"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache HBase
 
 本教程演示如何在 Azure HDInsight 中创建 Apache HBase 群集、创建 HBase 表以及使用 Apache Hive 查询表。  有关 HBase 的一般信息，请参阅 [HDInsight HBase 概述](./apache-hbase-overview.md)。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建 Apache HBase 群集
@@ -29,7 +29,7 @@ ms.locfileid: "104866601"
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* Bash。 本文中的示例使用 Windows 10 上的 Bash shell 执行 curl 命令。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](/windows/wsl/install-win10)。  其他 [Unix shell](https://www.gnu.org/software/bash/) 也将适用。  Curl 示例经过一些细微的修改，可在 Windows 命令提示符下运行。  也可使用 Windows PowerShell cmdlet [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod)。
+* Bash。 本文中的示例使用 Windows 10 上的 Bash shell 执行 curl 命令。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](/windows/wsl/install-win10)。  也可以使用其他 [Unix shell](https://www.gnu.org/software/bash/)。  Curl 示例经过一些细微的修改，可在 Windows 命令提示符下运行。  也可使用 Windows PowerShell cmdlet [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod)。
 
 ## <a name="create-apache-hbase-cluster"></a>创建 Apache HBase 群集
 
@@ -37,7 +37,7 @@ ms.locfileid: "104866601"
 
 1. 选择下面的图像即可在 Azure 门户中打开该模板。 该模板位于 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)中。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.hdinsight%2Fhdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. 在“自定义部署”对话框中输入以下值：
 

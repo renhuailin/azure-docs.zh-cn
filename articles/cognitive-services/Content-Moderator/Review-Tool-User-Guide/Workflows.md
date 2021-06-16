@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 6eb2a2d2762b60a12bb9a24b92e2edae4b846cd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87d643e7658477fb13f857b8b123889d82c5dfff
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96904136"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033826"
 ---
 # <a name="define-and-use-moderation-workflows"></a>定义和使用审查工作流
+
+[!INCLUDE [deprecation notice](../includes/tool-deprecation.md)]
 
 本指南将介绍如何在[审阅工具](https://contentmoderator.cognitive.microsoft.com)网站上设置和使用[工作流](../review-api.md#workflows)。 工作流是基于云的自定义筛选器，可用于更有效地处理内容。 工作流可以连接到多种服务，以通过不同的方式筛选内容，然后采取相应操作。 本指南演示如何在典型审查方案中使用内容审查器连接器（默认包含）来筛选内容并设置人工评审。
 

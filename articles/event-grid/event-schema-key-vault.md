@@ -3,12 +3,12 @@ title: 充当事件网格源的 Azure Key Vault
 description: 介绍针对 Azure 事件网格中的 Azure Key Vault 事件提供的属性和架构
 ms.topic: conceptual
 ms.date: 02/11/2021
-ms.openlocfilehash: ea8821b15000b74a10f28730ccf82b538e7819e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48f4df660a17c36030b6b6d2396bd96cfec48edc
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363400"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794079"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>充当事件网格源的 Azure Key Vault
 
@@ -48,12 +48,12 @@ Azure Key Vault 帐户生成以下事件类型：
       "eventTime":"2019-07-25T01:08:33.1036736Z",
       "data":{
          "Id":"https://sample-kv.vault.azure.net/secrets/newsecret/ee059b2bb5bc48398a53b168c6cdcb10",
-         "vaultName":"sample-kv",
-         "objectType":"Secret",
-         "objectName ":"newsecret",
-         "version":" ee059b2bb5bc48398a53b168c6cdcb10",
-         "nbf":"1559081980",
-         "exp":"1559082102"
+         "VaultName":"sample-kv",
+         "ObjectType":"Secret",
+         "ObjectName ":"newsecret",
+         "Version":" ee059b2bb5bc48398a53b168c6cdcb10",
+         "NBF":"1559081980",
+         "EXP":"1559082102"
       },
       "dataVersion":"1",
       "metadataVersion":"1"
@@ -75,12 +75,12 @@ Azure Key Vault 帐户生成以下事件类型：
       "time":"2019-07-25T01:08:33.1036736Z",
       "data":{
          "Id":"https://sample-kv.vault.azure.net/secrets/newsecret/ee059b2bb5bc48398a53b168c6cdcb10",
-         "vaultName":"sample-kv",
-         "objectType":"Secret",
-         "objectName ":"newsecret",
-         "version":" ee059b2bb5bc48398a53b168c6cdcb10",
-         "nbf":"1559081980",
-         "exp":"1559082102"
+         "VaultName":"sample-kv",
+         "ObjectType":"Secret",
+         "ObjectName ":"newsecret",
+         "Version":" ee059b2bb5bc48398a53b168c6cdcb10",
+         "NBF":"1559081980",
+         "EXP":"1559082102"
       },
       "specversion":"1.0"
    }
@@ -128,12 +128,12 @@ Azure Key Vault 帐户生成以下事件类型：
 | 属性 | 类型 | 说明 |
 | ---------- | ----------- |---|
 | `id` | string | 触发了此事件的对象的 ID |
-| `vaultName` | string | 触发了此事件的对象的密钥保管库名称 |
-| `objectType` | string | 触发了此事件的对象的类型 |
-| `objectName` | string | 触发了此事件的对象的名称 |
-| `version` | string | 触发了此事件的对象的版本 |
-| `nbf` | number | 触发了此事件的对象的 not-before 日期（自 1970-01-01T00:00:00Z 以来的秒数） |
-| `exp` | number | 触发了此事件的对象的到期日期（自 1970-01-01T00:00:00Z 以来的秒数） |
+| `VaultName` | string | 触发了此事件的对象的密钥保管库名称 |
+| `ObjectType` | string | 触发了此事件的对象的类型 |
+| `ObjectName` | string | 触发了此事件的对象的名称 |
+| `Version` | string | 触发了此事件的对象的版本 |
+| `NBF` | number | 触发了此事件的对象的 not-before 日期（自 1970-01-01T00:00:00Z 以来的秒数） |
+| `EXP` | number | 触发了此事件的对象的到期日期（自 1970-01-01T00:00:00Z 以来的秒数） |
 
 ## <a name="tutorials-and-how-tos"></a>教程和操作指南
 |标题  |说明  |

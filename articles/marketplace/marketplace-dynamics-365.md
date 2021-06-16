@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: ca4860bea15c2290b0a3edbaaaed801cd4e36d86
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5d81b8321fe574be39a23a99521521516b86cfbb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316022"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971253"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>计划 Microsoft Dynamics 365 产品/服务
 
 本文介绍了商业市场中 Microsoft AppSource 提供的 Dynamics 365 的不同选项和功能。 AppSource 包括基于或扩展 Microsoft 365、Dynamics 365、PowerApps 和 Power BI 的产品/服务。
 
-开始之前，先在[合作伙伴中心](./partner-center-portal/create-account.md)创建一个商业市场帐户，并确保该帐户已在商业市场计划中注册。 此外，请查看[发布流程和指导](/office/dev/store/submit-to-appsource-via-partner-center)。
+开始之前，先在[合作伙伴中心](./create-account.md)创建一个商业市场帐户，并确保该帐户已在商业市场计划中注册。 此外，请查看[发布流程和指导](/office/dev/store/submit-to-appsource-via-partner-center)。
 
 ## <a name="licensing-options"></a>许可选项
 
@@ -77,16 +77,16 @@ ms.locfileid: "108316022"
 
 ## <a name="additional-sales-opportunities"></a>其他销售机会
 
-你可以选择加入 Microsoft 支持的营销和销售渠道。 在合作伙伴中心创建产品/服务时，你将在“与 Microsoft 联合销售”这一进程即将结束时看到两个选项卡。 此选项可让 Microsoft 销售团队在评估其客户需求时考虑你的 IP 联合销售资格解决方案。 请参阅[合作伙伴中心的联合销售选项](commercial-marketplace-co-sell.md)，详细了解如何准备对产品/服务进行评估。
+你可以选择加入 Microsoft 支持的营销和销售渠道。 在合作伙伴中心创建产品/服务时，你将在“与 Microsoft 联合销售”这一进程即将结束时看到两个选项卡。 此选项可让 Microsoft 销售团队在评估其客户需求时考虑你的 IP 联合销售资格解决方案。 请参阅[合作伙伴中心的联合销售选项](./co-sell-configure.md)，详细了解如何准备对产品/服务进行评估。
 
 ## <a name="next-steps"></a>后续步骤
 
 考虑上述计划项之后，请从下列选项之一以开始创建产品/服务。
 
-| 发布指南    | 备注  |
+| 发布指南    | 说明  |
 | :------------------- | :-------------------|
-| [Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md) | 为 Enterprise Edition 构建时，请先查看这些附加的[发布流程和指导原则](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)。 |
-| [Dynamics 365 for Business Central](partner-center-portal/create-new-business-central-offer.md) |   |
+| [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) | 为 Enterprise Edition 构建时，请先查看这些附加的[发布流程和指导原则](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)。 |
+| [Dynamics 365 for Business Central](dynamics-365-business-central-offer-setup.md) |   |
 | [适用于客户参与和 Power Apps 的 Dynamics 365](dynamics-365-customer-engage-offer-setup.md) | 先查看这些附加的[发布流程和指导原则](/dynamics365/customer-engagement/developer/publish-app-appsource)。 |
-| [Power BI](/partner-center-portal/create-power-bi-app-offer.md) | 先查看这些附加的[发布流程和指导原则](/power-bi/developer/office-store)。 |
+| [Power BI](./power-bi-app-offer-setup.md) | 先查看这些附加的[发布流程和指导原则](/power-bi/developer/office-store)。 |
 |||

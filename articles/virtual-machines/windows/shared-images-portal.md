@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e28a1412fa417b9f15ab7a6f79305d07ca6d9fec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ef48e6eaef441026457e584a302eb3fe515c0a6
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556088"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079402"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
 
@@ -48,7 +48,7 @@ ms.locfileid: "102556088"
 1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。
 1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。
 1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。  
-1. 在“管理员帐户”  下，如果映像已通用化，则需提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 如果映像已专用化，则用户名和密码字段会灰显，因为使用的是源 VM 的用户名和密码。
+1. 在“管理员帐户”  下，如果映像已通用化，则需提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。 如果映像已专用化，则用户名和密码字段会灰显，因为使用的是源 VM 的用户名和密码。
 1. 若要允许远程访问 VM，请在“公共入站端口”下选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”。    如果你不希望允许远程访问 VM，请为“公共入站端口”保留选择“无”。  
 1. 完成后，选择页面底部的“查看 + 创建”按钮。
 1. VM 通过验证后，选择页面底部的“创建”以开始部署。
@@ -64,9 +64,9 @@ ms.locfileid: "102556088"
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
-- [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [创建共享映像库](https://azure.microsoft.com/resources/templates/sig-create/)
+- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 有关共享映像库的详细信息，请参阅[概述](../shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](../troubleshooting-shared-images.md)。

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 6/2/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: a0a9bc29c3e20a025fb2c46a71c2f134c37bee04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurepowershell
+ms.openlocfilehash: d53bfaab5e00b95be52f652b72e9d55a76c396a6
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84464946"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110720464"
 ---
 以下 PowerShell 命令将拒绝发往存储帐户公共终结点的所有流量。 请注意，此命令的 `-Bypass` 参数设置为 `AzureServices`。 这会允许受信任的第一方服务（例如 Azure 文件同步）通过公共终结点访问存储帐户。
 

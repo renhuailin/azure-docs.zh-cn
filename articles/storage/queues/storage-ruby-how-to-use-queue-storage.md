@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 队列存储创建和删除队列，以及
 author: twooley
 ms.author: twooley
 ms.reviewer: dineshm
-ms.date: 12/08/2016
+ms.date: 06/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 257b435f0136884e8568f4201794a7ce5cf0c209
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7850e7fef034fd618c86400e17ddaa319c45005a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275849"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080986"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>如何通过 Ruby 使用队列存储
 
@@ -42,7 +42,7 @@ ms.locfileid: "106275849"
 ### <a name="use-rubygems-to-obtain-the-package"></a>使用 RubyGems 获取该程序包
 
 1. 使用命令行接口，例如 PowerShell (Windows)、Terminal (Mac) 或 Bash (Unix)。
-2. 在命令窗口中键入 `gem install Azure` 以安装 gem 和依赖项。
+2. 在命令窗口中键入 `gem install azure` 以安装 gem 和依赖项。
 
 ### <a name="import-the-package"></a>导入包
 

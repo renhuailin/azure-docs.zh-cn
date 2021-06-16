@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 4ed0932e82751a5ded4bfc9d234bfcd16fa5b9e0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f9a5c8e95b5230b5689a63a74bb31324c083e28a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935441"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078287"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建虚拟机规模集
 
@@ -23,7 +23,7 @@ ms.locfileid: "105935441"
 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
-在 https://portal.azure.com 登录 Azure 门户。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="create-a-load-balancer"></a>创建负载均衡器
 
@@ -34,7 +34,7 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
 1. 在搜索框中，键入“负载均衡器”。 在搜索结果中的“市场”下，选取“负载均衡器” 。
 1. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息 ：
 
-    | 设置                 | 值   |
+    | 设置                 | Value   |
     | ---| ---|
     | 订阅  | 选择订阅。    |    
     | 资源组 | 选择“新建”并在文本框中键入 myVMSSResourceGroup。|
@@ -61,7 +61,7 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
 1. 在“区域”中，选择离你近的区域。
 1. 选择市场映像作为“映像”。 在此示例中，我们选择了“Ubuntu 服务器 18.04 LTS”。
 1. 输入所需的用户名，并选择首选的身份验证类型。
-   - 密码长度必须至少为 12 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 有关详细信息，请参阅[用户名和密码要求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。
+   - 密码长度必须至少为 12 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 有关详细信息，请参阅[用户名和密码要求](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。
    - 如果选择 Linux OS 磁盘映像，可选择 SSH 公钥。 仅提供公钥，如 *~/.ssh/id_rsa.pub*。 可从门户使用 Azure Cloud Shell [创建和使用 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)。
    
     :::image type="content" source="./media/virtual-machine-scale-sets-create-portal/quick-create-scale-set.png" alt-text="图像显示了 Azure 门户中规模集的创建选项。":::

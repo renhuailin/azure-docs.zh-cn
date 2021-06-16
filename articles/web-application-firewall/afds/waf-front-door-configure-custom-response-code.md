@@ -7,13 +7,13 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: victorh
-ms.reviewer: tyao
-ms.openlocfilehash: 8fc6e71494df36cd6f823661b18e4a3d8ce2938c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8ec105a5545a207ebee343ea6af5fb26995b25b5
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94563675"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671799"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>为 Azure Web 应用程序防火墙 (WAF) 配置自定义响应
 

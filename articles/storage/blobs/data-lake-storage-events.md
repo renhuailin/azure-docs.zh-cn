@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f5fa4ad357e937fed7df5be24a1fc78409a0259b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12337e9c6d42ee140367c26cd160fd0a5fd595d3
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100516390"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902296"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>教程：实现数据湖捕获模式以更新 Databricks Delta 表
 
@@ -35,7 +35,7 @@ ms.locfileid: "100516390"
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 创建一个采用分层命名空间的存储帐户 (Azure Data Lake Storage Gen2)。 本教程使用名为 `contosoorders` 的存储帐户。 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](../common/storage-auth-aad-rbac-portal.md)。
+* 创建一个采用分层命名空间的存储帐户 (Azure Data Lake Storage Gen2)。 本教程使用名为 `contosoorders` 的存储帐户。 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](assign-azure-role-data-access.md)。
 
    请参阅[创建用于 Azure Data Lake Storage Gen2 的存储帐户](create-data-lake-storage-account.md)。
 

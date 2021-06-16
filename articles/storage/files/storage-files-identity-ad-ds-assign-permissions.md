@@ -7,12 +7,13 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: af88f0b3403fb80acbb7dacebe293ac583e35799
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 84f14a43cb66ef724bd055a6c1b126b9317a5989
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91716033"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666699"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>第二部分：向标识分配共享级权限
 

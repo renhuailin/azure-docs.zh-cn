@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 688c0fd03573737ee97084025251c9082a8cb915
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8af27f876f1c325cf99214e36f680e012e86c98d
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382618"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536319"
 ---
 # <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>预生成 Docker 映像的 Python 包扩展性（预览版）
 
@@ -155,7 +155,7 @@ myenv.environment_variables = {
     | 解决方案  | 创建一个 `requirements.txt` 以用于在容器启动时安装指定的包。 | 创建具有所有依赖项的本地 Python 环境。 在运行时将此目录装载到容器中。 |
     | 包安装           | 无需额外安装（假设已安装 pip）                                                                                                          | 虚拟环境或 Conda 环境安装。                                                                                   |
     | 虚拟环境设置              | 无需额外设置虚拟环境，因为用户可以按需使用 pip freeze 拉取当前本地用户环境来创建 `requirements.txt`。 | 需要设置干净的虚拟环境，这可能需要执行额外的步骤，具体取决于当前的用户本地环境。                        |
-    | 调试                  | 易于设置和调试服务器，因为依赖项已明确列出。 | 在调试服务器时，不干净的虚拟环境可能导致问题。 例如，可能无法明确知道错误是来源于环境还是用户代码。 |
+    | [调试](how-to-inference-server-http.md)                 | 易于设置和调试服务器，因为依赖项已明确列出。 | 在调试服务器时，不干净的虚拟环境可能导致问题。 例如，可能无法明确知道错误是来源于环境还是用户代码。 |
     | 横向扩展期间的一致性 | 不一致，因为此方法依赖于外部 PyPi 包以及用户是否固定了其依赖项。 这些外部下载可能会导致异常行为。                                 | 仅依赖于用户环境，因此不会出现一致性问题。                                                                             |
 
 * 为何在容器中找不到我的 `requirements.txt` 和已装载的依赖项目录？

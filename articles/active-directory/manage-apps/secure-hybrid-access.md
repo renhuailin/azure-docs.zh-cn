@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 2/16/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b93fdcc125075786c237ab1eb7bfac8cf2e551f6
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: ad3946dcd850a4a3d05f4d28882d08408e39b707
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108179161"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964695"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全混合访问：使用 Azure Active Directory 保护旧应用
 
@@ -32,13 +32,13 @@ ms.locfileid: "108179161"
 
 ## <a name="secure-hybrid-access-sha-through-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理进行安全混合访问 (SHA)
   
-使用[应用程序代理](../app-proxy/what-is-application-proxy.md)，可以提供对本地 Web 应用程序的[安全远程访问](../app-proxy/application-proxy.md)。 用户不需要使用 VPN。 用户获得的好处是：可以在[单一登录](add-application-portal-setup-sso.md)后轻松地从任何设备连接到他们的应用程序。 应用程序代理将远程访问作为服务提供，并且允许向公司网络外部的用户[轻松发布本地应用程序](../app-proxy/application-proxy-add-on-premises-application.md)。 它有助于缩放云访问管理，不需要你修改本地应用程序。 接下来，请[计划 Azure AD 应用程序代理部署](application-proxy-deployment-plan.md)。
+使用[应用程序代理](../app-proxy/what-is-application-proxy.md)，可以提供对本地 Web 应用程序的[安全远程访问](../app-proxy/application-proxy.md)。 用户不需要使用 VPN。 用户获得的好处是：可以在[单一登录](add-application-portal-setup-sso.md)后轻松地从任何设备连接到他们的应用程序。 应用程序代理将远程访问作为服务提供，并且允许向公司网络外部的用户[轻松发布本地应用程序](../app-proxy/application-proxy-add-on-premises-application.md)。 它有助于缩放云访问管理，不需要你修改本地应用程序。 接下来，请[计划 Azure AD 应用程序代理部署](../app-proxy/application-proxy-deployment-plan.md)。
 
 ## <a name="azure-ad-partner-integrations"></a>Azure AD 合作伙伴集成
 
 ### <a name="sha-through-networking-and-delivery-controllers"></a>通过网络和传送控制器进行 SHA
 
-为了使你能够使用[零信任框架](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)，除了 [Azure AD 应用程序代理](./what-is-application-proxy.md)外，Microsoft 还与第三方提供商合作。 可以使用现有的网络和传送控制器，并可轻松保护对业务流程至关重要但以前无法使用 Azure AD 进行保护的旧应用程序。 你可能已经具备了开始保护这些应用程序所需的全部条件。
+为了使你能够使用[零信任框架](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)，除了 [Azure AD 应用程序代理](../app-proxy/what-is-application-proxy.md)外，Microsoft 还与第三方提供商合作。 可以使用现有的网络和传送控制器，并可轻松保护对业务流程至关重要但以前无法使用 Azure AD 进行保护的旧应用程序。 你可能已经具备了开始保护这些应用程序所需的全部条件。
 
 ![图中显示了使用网络合作伙伴和应用代理的安全混合访问](./media/secure-hybrid-access/secure-hybrid-access.png)
 

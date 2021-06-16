@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 5/11/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: 1c8ccc1e1ee8c8c1b1a1e27443d27b2140a91649
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurepowershell
+ms.openlocfilehash: ec397a9c5f705dbb3f1ea7b899716d24be4e0818
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84464937"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110720533"
 ---
 若要为存储帐户创建专用终结点，首先需要获取对存储帐户的引用，以及要将专用终结点添加到的虚拟网络子网的引用。 请替换下面的 `<storage-account-resource-group-name>`、`<storage-account-name>`、`<vnet-resource-group-name>`、`<vnet-name>` 和 `<vnet-subnet-name>`：
 

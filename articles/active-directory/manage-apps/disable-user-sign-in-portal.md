@@ -2,23 +2,23 @@
 title: 在 Azure AD 中对企业应用禁用用户登录
 description: 如何禁用企业应用程序，防止用户在 Azure Active Directory 中登录该程序
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/12/2019
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9af580ef8b3691a5f188ac15069dda00a5f5802
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: ac4970a3dc62331e4a9f56c069f32def7351a8bb
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374244"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081418"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中对企业应用禁用用户登录
 

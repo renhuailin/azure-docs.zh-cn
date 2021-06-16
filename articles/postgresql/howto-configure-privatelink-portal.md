@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 75defcf88128e1b100e403d74f76577525f0bdeb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7561a836f593515cc4d05706ff7834591e19aaf9
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642119"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081292"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>使用门户创建和管理 Azure Database for PostgreSQL（单一服务器）的专用链接
 
@@ -35,7 +35,7 @@ ms.locfileid: "105642119"
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”  。
 2. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16。 |
@@ -53,7 +53,7 @@ ms.locfileid: "105642119"
 
 2. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -66,7 +66,7 @@ ms.locfileid: "105642119"
     | 大小 | 保留默认值“标准 DS1 v2”。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选用户名。 |
-    | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。|
     | 确认密码 | 重新输入密码。 |
     | **入站端口规则** |  |
     | 公共入站端口 | 保留默认值“无”。 |
@@ -80,7 +80,7 @@ ms.locfileid: "105642119"
 
 1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。|
@@ -107,7 +107,7 @@ ms.locfileid: "105642119"
 
 1. 在“Azure Database for PostgreSQL 部署选项”中，选择“单一服务器”并提供以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -137,7 +137,7 @@ ms.locfileid: "105642119"
 
 1. 在“创建专用终结点 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -149,7 +149,7 @@ ms.locfileid: "105642119"
 5. 在完成时选择“下一步:资源”。
 6. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |
@@ -160,7 +160,7 @@ ms.locfileid: "105642119"
 7. 在完成时选择“下一步:配置”。
 8. 在“创建专用终结点 - 配置”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     |**网络**| |
     | 虚拟网络| 选择“MyVirtualNetwork”。 |
@@ -226,7 +226,7 @@ ms.locfileid: "105642119"
 
 4. 在“新建连接”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 服务器类型| 选择“PostgreSQL”。|
     | 服务器名称| 选择“mydemopostgresserver.privatelink.postgres.database.azure.com” |

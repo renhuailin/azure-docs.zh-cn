@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/16/2020
-ms.openlocfilehash: 7d93002af866aa653972182a13ea37d37e912ce8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0b076809801a4bb2f055d94ba481736b008b52c
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97630303"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854875"
 ---
 # <a name="tutorial-shard-data-on-worker-nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>教程：Azure Database for PostgreSQL - 超大规模 (Citus) 中的工作器节点上的分片数据
 
@@ -42,7 +42,7 @@ ms.locfileid: "97630303"
 协调器节点的元数据表跟踪工作器和分布式数据。 可在 [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table) 表中检查活动工作器。
 
 ```sql
-select nodeid from pg_dist_node where isactive;
+select nodeid, nodename from pg_dist_node where isactive;
 ```
 ```
  nodeid | nodename

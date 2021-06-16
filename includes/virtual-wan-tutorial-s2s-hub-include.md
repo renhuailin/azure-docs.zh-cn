@@ -5,20 +5,20 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 05/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f469664c716ecef6b82de2befa40b33f253e229f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab341181db71a8df5dde27311e9169f9477c70f8
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99627682"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578218"
 ---
 1. 找到你已创建的虚拟 WAN。 在虚拟 WAN 页上的“连接性”部分下，选择“中心” 。
 2. 在“中心”页上，选择“+ 新建中心”以打开“创建虚拟中心”页  。
 
-    ![屏幕截图显示已选择“基本”选项卡的“创建虚拟中心”窗格。](./media/virtual-wan-tutorial-hub-include/basics.png "基础")
+   :::image type="content" source="./media/virtual-wan-tutorial-hub-include/basics.png" alt-text="屏幕截图显示已选择“基本”选项卡的“创建虚拟中心”窗格。" border="false":::
 3. 在“创建虚拟中心”页上的“基本”选项卡上，请填写以下字段 ：
 
    * 区域（以前称为“位置”）
@@ -26,7 +26,7 @@ ms.locfileid: "99627682"
    * 中心专用地址空间 - 用于创建中心的最小地址空间为 /24。 如果使用从 /25 到 /32 的范围中的任何空间，则该空间会在创建过程中产生错误。 无需为虚拟中心内的服务显式计划子网地址空间。 由于 Azure 虚拟 WAN 是一项托管服务，因此它在虚拟中心为不同的网关/服务（例如，VPN 网关、ExpressRoute 网关、用户 VPN 点到站点网关、防火墙、路由，等等）创建相应的子网。
 4. 在完成时选择“下一步:站点到站点”。
 
-    ![屏幕截图显示已选择“站点到站点”的“创建虚拟中心”窗格。](./media/virtual-wan-tutorial-hub-include/site-to-site.png "站点到站点")
+   :::image type="content" source="./media/virtual-wan-tutorial-hub-include/site-to-site.png" alt-text="屏幕截图显示已选择“站点到站点”的“创建虚拟中心”窗格。" border="false":::
 
 5. 在“站点到站点”选项卡上填写以下字段：
 

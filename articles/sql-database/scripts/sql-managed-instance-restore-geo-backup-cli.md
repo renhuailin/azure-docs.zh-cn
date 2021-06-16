@@ -3,20 +3,20 @@ title: CLI 示例还原异地备份 - Azure SQL 数据库
 description: Azure CLI 示例脚本，用于通过异地冗余备份还原 Azure SQL 托管实例数据库。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma
 ms.date: 07/03/2019
-ms.openlocfilehash: 5468cfc733b037f6287e8536c8c85994f0840161
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0655ae56422ce29d145814b2cf4686684ae95b1
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86231246"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698097"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>使用 CLI 将托管实例数据库还原到另一个地理区域
 

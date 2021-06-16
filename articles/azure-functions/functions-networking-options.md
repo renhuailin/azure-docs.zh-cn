@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: c35780ae2c4741454685d7d9740a660e965df19e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7c1c8532a3f77054755eb040fceff1bf8cf273e
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606984"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440225"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -161,7 +161,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 以下 API 可让你以编程方式管理区域虚拟网络集成：
 
 + **Azure CLI**：使用 [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) 命令可添加、列出或删除区域虚拟网络集成。  
-+ **ARM 模板**：可以通过使用 Azure 资源管理器模板来启用区域虚拟网络集成。 有关完整示例，请参阅[此 Functions 快速入门模板](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)。
++ **ARM 模板**：可以通过使用 Azure 资源管理器模板来启用区域虚拟网络集成。 有关完整示例，请参阅[此 Functions 快速入门模板](https://azure.microsoft.com/resources/templates/function-premium-vnet-integration/)。
 
 ## <a name="troubleshooting"></a>故障排除
 

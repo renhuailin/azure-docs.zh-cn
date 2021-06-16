@@ -1,18 +1,19 @@
 ---
-title: 计划和管理 Azure SQL 数据库的成本
+title: 计划和管理成本
 description: 了解如何使用 Azure 门户中的成本分析来计划和管理 Azure SQL 数据库的成本。
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.custom: subject-cost-optimization
 ms.service: sql-database
+ms.subservice: service-overview
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 56cf30d89460df8ac50d258bd8b29cf4e7236690
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e43d9b85bc50772ad75e974e11d0e7332e271b29
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98734624"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408904"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>计划和管理 Azure SQL 数据库的成本
 
@@ -38,7 +39,7 @@ Azure SQL 数据库支持两种购买模型：vCore 和 DTU。 两种购买模�
 
 ### <a name="provisioned-or-serverless"></a>预配或无服务器
 
-在 vCore 购买模型中，Azure SQL 数据库还支持两种类型的计算层：预配吞吐量和无服务器。 每个计算层的付费方式各不相同，因此，在规划和考虑成本时，必须了解最适合工作负荷的模型。 有关详细信息，请参阅 [vCore 模型概述 - 计算层](service-tiers-vcore.md#compute-tiers)。
+在 vCore 购买模型中，Azure SQL 数据库还支持两种类型的计算层：预配吞吐量和无服务器。 每个计算层的付费方式各不相同，因此，在规划和考虑成本时，必须了解最适合工作负荷的模型。 有关详细信息，请参阅 [vCore 模型概述 - 计算层](service-tiers-sql-database-vcore.md#compute-tiers)。
 
 在基于 vCore 的购买模型的预配计算层中，可以交换现有许可证以获得折扣价格。 有关详细信息，请参阅 [Azure 混合权益 (AHB)](../azure-hybrid-benefit.md)。
 

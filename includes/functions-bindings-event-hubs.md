@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 05d136093bd509e8c23ce8622423216326b0f1f2
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 11d9b2c4825df76bad8e7c860c9edae3b60233ea
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102623503"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110574925"
 ---
 ## <a name="add-to-your-functions-app"></a>添加到 Functions 应用
 
@@ -29,9 +29,9 @@ ms.locfileid: "102623503"
 [更新扩展]: ../articles/azure-functions/functions-bindings-register.md
 [Azure 工具扩展]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
-### <a name="event-hubs-extension-5x-and-higher"></a>事件中心扩展 5.x 和更高版本
+### <a name="event-hubs-extension-5x-and-higher"></a>事件中心扩展 5.x 及更高版本
 
-新版本的事件中心绑定扩展可用作[预览 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/5.0.0-beta.1)。 此预览版引入了[使用标识而不是机密进行连接](../articles/azure-functions/functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改可以绑定到的类型，并将 `Microsoft.Azure.EventHubs` 的类型替换为 [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs) 中的新类型。
+新版本的事件中心绑定扩展以[预览版 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/5.0.0-beta.4)的形式提供。 此预览版引入了[使用标识而不是机密进行连接](../articles/azure-functions/functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改你可以绑定到的类型，并将 `Microsoft.Azure.EventHubs` 中的类型替换为 [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs) 中的新类型。
 
 > [!NOTE]
 > 预览包不包括在扩展捆绑包中，必须手动安装。 对于 .NET 应用，请添加对包的引用。 对于所有其他应用类型，请参阅[更新扩展]。

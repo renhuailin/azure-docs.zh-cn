@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 21194bf2fe76a7eb0ee034d4a502c20ee3032dd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d99f4872d6d5de6fb171f5cf298e5a17fb9da445
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87543667"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062021"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>适用于虚拟机和虚拟机规模集的 Azure 磁盘加密
 
@@ -33,7 +33,7 @@ Azure 磁盘加密可同时适用于 Linux 和 Windows 虚拟机以及虚拟机�
 - [创建和配置用于 Azure 磁盘加密的密钥保管库](../../virtual-machines/linux/disk-encryption-key-vault.md)
 - [Azure 磁盘加密示例脚本](../../virtual-machines/linux/disk-encryption-sample-scripts.md)
 - [Azure 磁盘加密疑难解答](../../virtual-machines/linux/disk-encryption-troubleshooting.md)
-- [Azure 磁盘加密常见问题解答](../../virtual-machines/linux/disk-encryption-faq.md)
+- [Azure 磁盘加密常见问题解答](../../virtual-machines/linux/disk-encryption-faq.yml)
 
 ### <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>使用 Azure AD 执行 Azure 磁盘加密（以前版本）
 
@@ -56,7 +56,7 @@ Azure 磁盘加密可同时适用于 Linux 和 Windows 虚拟机以及虚拟机�
 - [创建和配置用于 Azure 磁盘加密的密钥保管库](../../virtual-machines/windows/disk-encryption-key-vault.md)
 - [Azure 磁盘加密示例脚本](../../virtual-machines/windows/disk-encryption-sample-scripts.md)
 - [Azure 磁盘加密疑难解答](../../virtual-machines/windows/disk-encryption-troubleshooting.md)
-- [Azure 磁盘加密常见问题解答](../../virtual-machines/windows/disk-encryption-faq.md)
+- [Azure 磁盘加密常见问题解答](../../virtual-machines/windows/disk-encryption-faq.yml)
 
 ### <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>使用 Azure AD 执行 Azure 磁盘加密（以前版本）
 

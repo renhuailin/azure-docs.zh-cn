@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae84d62f8f028158450b1127abc81c5dc4416502
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 4cded3a765cf42e17890a2f0181d38ea918fee33
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315374"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408490"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>教程：查看远程渲染的模型
 
@@ -574,11 +574,21 @@ public async void InitializeSessionService()
     if (ARRCredentialGetter == null)
         ARRCredentialGetter = GetDevelopmentCredentials;
 
-    var accountInfo = await ARRCredentialGetter.Invoke();
+    var sessionConfiguration = await ARRCredentialGetter.Invoke();
 
     ARRSessionService.OnSessionStatusChanged += OnRemoteSessionStatusChanged;
 
-    ARRSessionService.Initialize(accountInfo);
+    try
+    {
+        ARRSessionService.Initialize(sessionConfiguration);
+    }
+    catch (ArgumentException argumentException)
+    {
+        NotificationBar.Message("InitializeSessionService failed: SessionConfiguration is invalid.");
+        Debug.LogError(argumentException.Message);
+        CurrentCoordinatorState = RemoteRenderingState.NotAuthorized;
+        return;
+    }
 
     CurrentCoordinatorState = RemoteRenderingState.NoSession;
 }
@@ -752,18 +762,6 @@ LoadModel 方法的作用是接受模型路径、进度处理程序和父转换�
             modelGameObject.name = parent.name + "_Entity";
         }
 
-    #if UNITY_WSA
-        //Anchor the model in the world, prefer anchoring parent if there is one
-        if (parent != null)
-        {
-            parent.gameObject.AddComponent<WorldAnchor>();
-        }
-        else
-        {
-            modelGameObject.AddComponent<WorldAnchor>();
-        }
-    #endif
-
         //Load a model that will be parented to the entity
         var loadModelParams = new LoadModelFromSasOptions(modelPath, modelEntity);
         var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams, progress);
@@ -777,7 +775,6 @@ LoadModel 方法的作用是接受模型路径、进度处理程序和父转换�
 1. 创建[远程实体](../../../concepts/entities.md)。
 1. 创建用于表示远程实体的本地 GameObject。
 1. 配置本地 GameObject 以将其状态（即转换）同步到每个帧的远程实体。
-1. 设置名称并添加一个 [WorldAnchor](https://docs.unity3d.com/550/Documentation/ScriptReference/VR.WSA.WorldAnchor.html) 以增强稳定性。
 1. 将模型数据从 Blob 存储加载到远程实体。
 1. 返回父实体，供以后引用。
 

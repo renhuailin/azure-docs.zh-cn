@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 5a8b722b7bef393422eec395f16de0f38e806152
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dfc7be7619360e15f3233c469aba92832e5f6278
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141750"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080932"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -287,7 +287,7 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 
 图 4。 回归标记
 
-对于回归，可以参照故障点完成标签操作。 如果不知道资产在故障之前已保留之久，则无法计算标签值。 因此，与二元分类相比，在数据中没有任何故障的资产不可用于建模。 最好是通过另一种称作[生存分析](https://en.wikipedia.org/wiki/Survival_analysis)的统计技术来解决此问题。 但是，对涉及到随时变化且间隔频繁的数据的 PdM 用例运用这种技术可能存在一定的难度。 有关生存分析的详细信息，请参阅[此单页指南](https://www.cscu.cornell.edu/news/news.php/stnews78.pdf)。
+对于回归，可以参照故障点完成标签操作。 如果不知道资产在故障之前已保留之久，则无法计算标签值。 因此，与二元分类相比，在数据中没有任何故障的资产不可用于建模。 最好是通过另一种称作[生存分析](https://en.wikipedia.org/wiki/Survival_analysis)的统计技术来解决此问题。 但是，对涉及到随时变化且间隔频繁的数据的 PdM 用例运用这种技术可能存在一定的难度。 有关生存分析的详细信息，请参阅[此单页指南](https://cscu.cornell.edu/wp-content/uploads/78_surv.pdf)。
 
 ### <a name="multi-class-classification-for-predictive-maintenance"></a>预测维护的多类分类
 可以 PdM 解决方案中针对两种场景使用多类分类技术：

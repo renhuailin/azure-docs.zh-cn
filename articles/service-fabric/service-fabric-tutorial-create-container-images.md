@@ -4,12 +4,12 @@ description: 本教程介绍如何创建多容器 Service Fabric 应用程序的
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 31b5f870465bc1dff9d6ff7827a4efed084bcf62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0bbe5bbe8ed12902541e40e9d78a7e7cdd21f9f1
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92739055"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413133"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教程：在 Linux Service Fabric 群集上创建容器映像
 
@@ -70,7 +70,7 @@ docker images
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
 azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
+mcr.microsoft.com/azuredocs/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
 
 ```
 
@@ -129,7 +129,7 @@ docker images
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
 azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
+mcr.microsoft.com/azuredocs/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
 ```
 
 要获取 loginServer 名称，请运行以下命令：
@@ -160,7 +160,7 @@ docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
 <acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
-tiangolo/uwsgi-nginx-flask             python3.6           590e17342131        5 days ago          707MB
+mcr.microsoft.com/azuredocs/uwsgi-nginx-flask             python3.6           590e17342131        5 days ago          707MB
 
 ```
 

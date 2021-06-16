@@ -1,17 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 为灾难恢复启用 VMware VM
 description: 本文介绍如何使用 Azure Site Recovery 服务启用本地 VMware VM 的复制，以便进行灾难恢复
-author: Rajeswari-Mamilla
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
-ms.date: 12/07/2020
 ms.topic: conceptual
-ms.author: ramamill
-ms.openlocfilehash: 19a98b5786f35839d84e1e969c29e45e2b5e8dea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 4c25baba45431e2e7af6b9803337a5af051d75d2
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98573388"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576087"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 

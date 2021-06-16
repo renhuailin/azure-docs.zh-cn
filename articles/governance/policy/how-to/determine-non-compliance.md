@@ -3,12 +3,12 @@ title: 确定导致非符合性的原因
 description: 如果资源不符合，可能有很多原因。 找出导致非符合性的原因。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 66b0c6d7d0575e7361d04d16e6ba6fb06e36801b
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 00871b35911d845ec1e238c37c6db7e2db055e3b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094109"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970365"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -34,7 +34,7 @@ ms.locfileid: "106094109"
 
 1. 在“概览”或“符合性”页，选择“符合性状态”为“不符合”的策略  。
 
-1. 在“策略符合性”页的“资源符合性”选项卡下，右键单击或选择“符合性状态”为“不符合”的资源的省略号。 然后选择“查看符合性详细信息”。
+1. 在“策略合规性”页的“资源合规性”选项卡下，选择并按住（或右键单击）“合规性状态”为“不合规”的资源或选择其对应的省略号  。 然后选择“查看符合性详细信息”。
 
    :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="“资源符合性”选项卡上的“查看符合性详细信息”链接的屏幕截图。" border="false":::
 
@@ -130,7 +130,7 @@ ms.locfileid: "106094109"
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>更改历史记录（预览版）
 
-作为新公开预览版的一部分，前 14 天的更改历史记录适用于所有支持[完整模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的 _视觉差异_。 添加、删除或修改 Azure 资源管理器属性时，就会触发更改检测。
+作为新公开预览版的一部分，前 14 天的更改历史记录适用于所有支持[完整模式删除](../../../azure-resource-manager/templates/deployment-complete-mode-deletion.md)的 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的 _视觉差异_。 添加、删除或修改 Azure 资源管理器属性时，就会触发更改检测。
 
 1. 在 Azure 门户中选择“所有服务”，然后搜索并选择“策略”，以便启动 Azure Policy 服务。 
 

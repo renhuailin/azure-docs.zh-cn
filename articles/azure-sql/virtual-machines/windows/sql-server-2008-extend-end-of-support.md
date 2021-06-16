@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4c25adc16d14b4a5fb72ae0103ca05b193b40499
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 297bb5b3aa464cede71e204133df3e856bb9ba1f
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359160"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079654"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>使用 Azure 扩展对 SQL Server 2008 和 SQL Server 2008 R2 的支持
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -90,7 +90,7 @@ Azure 虚拟机上的 SQL Server 入门：
 
 获取有关 SQL Server VM 的常见问题的解答：
 
-* [有关 Azure 虚拟机上 SQL Server 的常见问题解答](frequently-asked-questions-faq.md)
+* [有关 Azure 虚拟机上 SQL Server 的常见问题解答](frequently-asked-questions-faq.yml)
 
 详细了解支持终止选项以及扩展的安全更新：
 

@@ -2,21 +2,21 @@
 title: 使用 Microsoft Cloud App Security 实现应用可见性和控制
 description: 了解如何识别应用风险级别、实时阻止违规和透露，以及使用应用连接器通过提供程序 API 来实现可见性和监管。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/03/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9a9f56d70e049200cee0c3655a9998feccfa301
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: eb26310861df38ba743bf39c42344278da288ef3
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377830"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078053"
 ---
 # <a name="cloud-app-visibility-and-control"></a>云应用可见性和控制
 

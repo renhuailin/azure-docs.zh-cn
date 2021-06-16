@@ -4,19 +4,19 @@ titleSuffix: Azure Applied AI Services
 description: 在本快速入门中，你将使用表单识别器示例标记工具来手动标记表单文档。 然后，将通过带标记的文档来训练自定义文档处理模型，并使用该模型来提取键/值对。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/14/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-may-2021
 keywords: 文档处理
-ms.openlocfilehash: af803b92945be059f604a3890a90d3aa36e5781e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b30dbd58e0a9c440f51386052529850d9ce9adc4
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475146"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894067"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -148,11 +148,11 @@ ms.locfileid: "110475146"
 * **安全令牌** - 某些项目设置可以包含敏感值，如 API 密钥或其他共享机密。 每个项目都会生成一个安全令牌，可用于加密/解密敏感项目设置。 可以在左侧导航栏底部选择齿轮图标，然后在“应用程序设置”中找到安全令牌。
 
 * **源连接** - 示例标记工具将连接到源（上传的原始表单）和目标（创建的标签和输出数据）。 可以在项目之间设置和共享连接。 它们使用可扩展的提供程序模型，因此你可以轻松地添加新的源/目标提供程序。 创建新连接，单击“添加连接”按钮。 在字段中填写以下值：
-   * **显示名称** - 连接显示名称。
-   * **说明** - 项目说明。
-   * **SAS URL** - Azure Blob 存储容器的共享访问签名 (SAS) URL。
+  * **显示名称** - 连接显示名称。
+  * **说明** - 项目说明。
+  * **SAS URL** - Azure Blob 存储容器的共享访问签名 (SAS) URL。
 
-   [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
+  * [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
 
    :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="SAS 位置。":::
 
@@ -217,13 +217,15 @@ ms.locfileid: "110475146"
 * **平均准确度** - 模型的平均准确性。 可以通过标记更多表单并重新训练来创建新的模型，从而提高模型准确度。 我们建议先标记五个表单、分析并测试结果，然后根据需要添加更多表单。
 * 标记列表，以及每个标记的估计准确度。
 
-    :::image type="content" source="../media/label-tool/custom-2.jpg" alt-text="训练视图。":::
+    :::image type="content" source="../media/label-tool/custom-3.jpg" alt-text="训练视图工具。":::
+
+    
 
 #### <a name="analyze-a-custom-form"></a>分析自定义表单
 
 选择左侧的“分析”（灯泡）图标来测试模型。 选择源“本地文件”。 浏览该文件，然后从你在测试文件夹中解压缩的示例数据集中选择一个文件。 再选择“运行分析”按钮，获取表单的键/值对、文本和表预测值。 该工具将在边界框中应用标记，并报告每个标记的置信度。
 
-:::image type="content" source="../media/label-tool/custom-3.jpg" alt-text="训练视图工具。":::
+   :::image type="content" source="../media/label-tool/custom-2.jpg" alt-text="训练视图。":::
 
 ## <a name="next-steps"></a>后续步骤
 

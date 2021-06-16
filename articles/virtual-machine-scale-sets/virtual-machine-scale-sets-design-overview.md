@@ -9,12 +9,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 5d6886b6a199de39af8b94e5e3825e774d8f0b93
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6541f1a54391ca4dd991ff9ae2299cd9e337cc7b
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740260"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985925"
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项
 本文讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](./overview.md)。
@@ -65,5 +65,3 @@ ms.locfileid: "108740260"
 使用用户管理的存储帐户配置的规模集目前限制为 100 个 VM（建议为此规模使用 5 个存储帐户）。
 
 基于自定义映像（用户构建的映像）构建的规模集配置 Azure 托管磁盘后最多可拥有 600 个 VM 的容量。 如果规模集配置了用户管理的存储帐户，则必须在同一存储帐户中创建所有 OS 磁盘 VHD。 因此，基于自定义映像和用户管理的存储构建的规模集中 VM 的最大建议数目为 20。 如果关闭预配过度，最大可为 40。
-
-对于高出这些限制所允许的 VM，需要部署多个规模集，如[此模板](https://azure.microsoft.com/resources/templates/301-custom-images-at-scale/)所示。

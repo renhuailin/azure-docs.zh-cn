@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 76d57990fcdd82bfe382fa2fb4ab75fb037caf4f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 58b667128732c800d3cd3d3e9034280aa34a13c0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063911"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076647"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -30,7 +30,7 @@ ms.locfileid: "106063911"
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
-可以通过网络安全组 (NSG) 筛选虚拟机 (VM) 的入站和出站流量。 可以使用网络观察程序的 NSG 流日志功能记录流经 NSG 的网络流量。 在本教程中，你将了解如何执行以下操作：
+可以通过网络安全组 (NSG) 筛选虚拟机 (VM) 的入站和出站流量。 可以使用网络观察程序的 NSG 流日志功能记录流经 NSG 的网络流量。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 通过网络安全组创建 VM
@@ -47,16 +47,16 @@ ms.locfileid: "106063911"
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”或某一版本的“Ubuntu Server”。  
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |名称|myVm|
     |用户名| 输入所选用户名。|
-    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.yml?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup|
     |位置| 选择“美国东部”|
 
-4. 选择 VM 的大小，然后选择“选择”  。
+4. 选择 VM 的大小，然后选择“选择”。
 5. 保留“设置”下的所有默认设置，然后选择“确定”。 
 6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署    。 部署 VM 需要几分钟时间。 在继续余下的步骤之前，请等待 VM 完成部署。
 
@@ -90,7 +90,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 2. 选择“存储”，然后选择“存储帐户 - Blob、文件、表、队列” 。
 3. 输入或选择以下信息，接受剩下的默认设置，然后选择“创建”。
 
-    | 设置        | 值                                                        |
+    | 设置        | Value                                                        |
     | ---            | ---   |
     | 名称           | 长度为 3-24 个字符，只能包含小写字母和数字，且必须在所有 Azure 存储帐户中唯一。                                                               |
     | 位置       | 选择“美国东部”                                           |

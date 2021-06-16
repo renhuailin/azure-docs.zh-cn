@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2020
 ms.author: cynthn
-ms.custom: include file
-ms.openlocfilehash: 807cbd283cf7971bf4256451028ffa16a0911266
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurepowershell
+ms.openlocfilehash: 8e6a079aec7fd47e2909958d71ab45eb04e676da
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96027212"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110721847"
 ---
 ## <a name="create-an-image-gallery"></a>创建映像库 
 
@@ -35,7 +35,7 @@ $gallery = New-AzGallery `
 
 ## <a name="share-the-gallery"></a>共享库
 
-建议在映像库级别共享访问权限。 使用电子邮件地址和 [Get-AzADUser](/powershell/module/az.resources/get-azaduser) cmdlet 获取用户的对象 ID，然后使用 [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) 为用户授予对库的访问权限。 请将此示例中的示例电子邮件地址 alinne_montes@contoso.com 替换为你自己的信息。
+我们建议你在映像库级别共享访问权限。 使用电子邮件地址和 [Get-AzADUser](/powershell/module/az.resources/get-azaduser) cmdlet 获取用户的对象 ID，然后使用 [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) 为用户授予对库的访问权限。 请将此示例中的示例电子邮件地址 alinne_montes@contoso.com 替换为你自己的信息。
 
 ```azurepowershell-interactive
 # Get the object ID for the user

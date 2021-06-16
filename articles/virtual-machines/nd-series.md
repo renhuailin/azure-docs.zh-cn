@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6a33d0fb36fabea039b83a0ce8dcf7872435b264
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9d35e8f2008aab683b095e9e2b391204d9ee54cd
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304743"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413926"
 ---
 # <a name="nd-series"></a>ND 系列
 
@@ -25,7 +25,7 @@ ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列�
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持（[预览版](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks)）<br>
 Nvidia NVLink 互连：不支持<br>
 
 > [!IMPORTANT]
@@ -35,7 +35,7 @@ Nvidia NVLink 互连：不支持<br>
 |---|---|---|---|---|---|---|---|---|
 | Standard_ND6s    | 6  | 112 | 736  | 1 | 24 | 12 | 20000/200 | 4 |
 | Standard_ND12s   | 12 | 224 | 1474 | 2 | 48 | 24 | 40000/400 | 8 |
-| Standard_ND24s   | 24 | 448 | 2948 | 4 | 24 | 32 | 80000/800 | 8 |
+| Standard_ND24s   | 24 | 448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
 | Standard_ND24rs* | 24 | 448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
 
 1 GPU = 一个 P40 卡。

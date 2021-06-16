@@ -2,20 +2,20 @@
 title: 使用 Azure AD 管理对应用的访问
 description: 介绍 Azure Active Directory 如何使组织能够指定每个用户有权访问的应用。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: iangithinji
-ms.openlocfilehash: 6a1ae7dd1da2c7666c007194bf22bd980e41dc22
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.author: mtillman
+ms.openlocfilehash: b50f93dc13eb5fbd5934462b7084c521a6686ae0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376369"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079384"
 ---
 # <a name="managing-access-to-apps"></a>管理对应用的访问
 

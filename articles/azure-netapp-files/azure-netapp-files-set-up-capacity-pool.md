@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e49a68ee4c4e4f60d8af6919e4eaec33ac0086aa
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91325398"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071904"
 ---
 # <a name="set-up-a-capacity-pool"></a>设置容量池
 
@@ -60,7 +60,6 @@ ms.locfileid: "91325398"
 
      > [!IMPORTANT] 
      > 将“QoS 类型”设置为“手动”的操作是永久性的。 不能将手动 QoS 容量池转换为使用自动 QoS。 但是，可以将自动 QoS 容量池转换为使用手动 QoS。 请参阅[更改容量池以使用手动 QoS](manage-manual-qos-capacity-pool.md#change-to-qos)。   
-     > 为容量池使用手动 QoS 类型时需要进行注册。 请参阅[管理手动 QoS 容量池](manage-manual-qos-capacity-pool.md#register-the-feature)。 
 
     ![新建容量池](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 

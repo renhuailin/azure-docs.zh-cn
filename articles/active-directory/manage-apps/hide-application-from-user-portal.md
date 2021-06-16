@@ -2,22 +2,22 @@
 title: 在 Azure AD 中隐藏企业应用程序以避免用户使用
 description: 如何在 Azure Active Directory 访问面板或 Microsoft 365 启动器中隐藏企业应用程序以避免用户使用
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90f3e3aeb1d68c6c6e6eeea29c04ff7880dccd3
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 7b1d590c19c158532df8577adc1bddb4fab19fd8
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374193"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077999"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>在 Azure Active Directory 中向最终用户隐藏企业应用程序
 

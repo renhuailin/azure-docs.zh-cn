@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 9f72d54fda8f66c2fce35f0520b51406aa276bb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c84f48d7a41a43b1425663b2ceed9ba74276f3f9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92892747"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955619"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>使用商业市场计量服务的 SaaS 按流量计费
 
@@ -26,7 +26,7 @@ ms.locfileid: "92892747"
 - 与 [SaaS 履行 API](./pc-saas-fulfillment-api-v2.md) 集成，使客户能够预配和连接到你的产品/服务。  
 - 在向客户收取服务费用时，配置为单一费率定价模型。  维度是单一费率定价模型的可选扩展。 
 
-然后，SaaS 产品/服务可与[商业市场计量服务 API](./marketplace-metering-service-apis.md) 集成以通知 Microsoft 可计费事件。
+然后，SaaS 产品/服务可与[商业市场计量服务 API](../marketplace-metering-service-apis.md) 集成以通知 Microsoft 可计费事件。
 
 >[!Note]
 >市场计量服务仅适用于单一费率计费模型，不适用于每用户计费模型。
@@ -41,7 +41,7 @@ ms.locfileid: "92892747"
 - 将每个计划配置为单一费率计费模型后，至少包括一项周期性费用（可以为 0 美元）：
     - 周期性每月费用：在用户购买计划时每月定期预付的固定每月费用。
     - 周期性每年费用：在用户购买计划时每年定期预付的固定每年费用。
-- 除了周期性费用以外，单一费率计划还可以使用可选的自定义维度，针对单一费率中未包括的超额使用量向客户收取费用。  每个维度表示你的服务通过[商业市场计量服务 API](./marketplace-metering-service-apis.md) 与 Microsoft 通信将使用的计费单位。
+- 除了周期性费用以外，单一费率计划还可以使用可选的自定义维度，针对单一费率中未包括的超额使用量向客户收取费用。  每个维度表示你的服务通过[商业市场计量服务 API](../marketplace-metering-service-apis.md) 与 Microsoft 通信将使用的计费单位。
 
 ## <a name="sample-offer"></a>示例产品/服务
 
@@ -67,7 +67,7 @@ ms.locfileid: "92892747"
 
     [![企业计划定价](./media/saas-enterprise-pricing.png "单击以放大视图")](./media/saas-enterprise-pricing.png)
 
-根据所选的计划，购买 CNS SaaS 产品/服务订阅的 Azure 客户将能够按照订阅期限（如“订阅详细信息 - 起始日期和结束日期”中显示的月份或年份）发送已包含数量的文本和电子邮件。  Contoso 将计算使用量未超出基数中的已包含数量，而不会向 Microsoft 发送任何使用量事件。 当客户使用量超出已包含数量时，他们无需更改计划或执行其他任何操作。  Contoso 将度量超出已包含数量的超额，并使用[商业市场计量服务 API](./marketplace-metering-service-apis.md) 开始向 Microsoft 发送关于收取超额使用量费用的使用量事件。  Microsoft 则将根据自定义维度中的发布者指定的超额使用量向客户收取费用。 超额计费会在下一个计费周期（每月，但对于某些客户可以是每季度或提前）中完成。  对于每月单一费率计划，会在发生超额的每个月进行超额计费。  对于每年单一费率计划，一旦使用了包括在基数中的年度数量，自定义计量发出的所有额外使用量都将在每个计费周期（每月）中按超额计费，直到订阅年期限结束。
+根据所选的计划，购买 CNS SaaS 产品/服务订阅的 Azure 客户将能够按照订阅期限（如“订阅详细信息 - 起始日期和结束日期”中显示的月份或年份）发送已包含数量的文本和电子邮件。  Contoso 将计算使用量未超出基数中的已包含数量，而不会向 Microsoft 发送任何使用量事件。 当客户使用量超出已包含数量时，他们无需更改计划或执行其他任何操作。  Contoso 将度量超出已包含数量的超额，并使用[商业市场计量服务 API](../marketplace-metering-service-apis.md) 开始向 Microsoft 发送关于收取超额使用量费用的使用量事件。  Microsoft 则将根据自定义维度中的发布者指定的超额使用量向客户收取费用。 超额计费会在下一个计费周期（每月，但对于某些客户可以是每季度或提前）中完成。  对于每月单一费率计划，会在发生超额的每个月进行超额计费。  对于每年单一费率计划，一旦使用了包括在基数中的年度数量，自定义计量发出的所有额外使用量都将在每个计费周期（每月）中按超额计费，直到订阅年期限结束。
 
 ## <a name="billing-dimensions"></a>计费维度
 
@@ -157,4 +157,4 @@ ms.locfileid: "92892747"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 市场计量服务 API](./marketplace-metering-service-apis.md)
+- [Azure 市场计量服务 API](../marketplace-metering-service-apis.md)

@@ -54,6 +54,8 @@
           href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: 使用 Azure Policy 的许可控制策略
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
+        - name: 部署启用了 Arc 的开放式服务网格
+          href: tutorial-arc-enabled-open-service-mesh.md
         - name: 从任何位置安全地连接到群集
           href: cluster-connect.md
         - name: 使用 Azure AD RBAC 进行授权检查

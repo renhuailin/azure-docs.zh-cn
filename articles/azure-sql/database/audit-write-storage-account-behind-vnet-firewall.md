@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 908c9f1d05c83eaa58f77b79a32d956898c35076
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e0bb7949e6f528925eb66c1148662720b144e06
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93348247"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060347"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>将审核内容写入到 VNet 和防火墙后面的存储帐户
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -154,7 +154,7 @@ ms.locfileid: "93348247"
 > [!IMPORTANT]
 > 若要使用虚拟网络和防火墙后面的存储帐户，需将 isStorageBehindVnet 参数设置为 true
 
-- [部署启用了审核的 Azure SQL Server，以将审核日志写入 Blob 存储](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+- [部署启用了审核的 Azure SQL Server，以将审核日志写入 Blob 存储](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-blob-storage/)
 
 > [!NOTE]
 > 链接的示例在外部公共存储库上并且“按现样”提供，不提供任何担保，并非在任何 Microsoft 支持计划/服务下都受支持。

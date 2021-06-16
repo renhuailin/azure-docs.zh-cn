@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/20/2021
-ms.openlocfilehash: ced923253b1e426c0d67594deed90c7fa6d8c37e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: f6769d693eb19943ce8412d045a76382c4d98fb8
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820083"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110612654"
 ---
 # <a name="configure-dynamics-365-for-customer-engagement--power-apps-offer-listing-details"></a>配置 Dynamics 365 for Customer Engagement 和 Power Apps 产品/服务列表的详细信息
 
@@ -21,7 +21,7 @@ ms.locfileid: "107820083"
 > [!NOTE]
 > 仅可用一种语言提供产品/服务列表的详细信息。 只要产品/服务描述的开头是短语“此应用程序只提供[非英语语言]版本”，那么就不要求用英语。 提供“实用链接 URL”来提供产品/服务列表内容中使用的语言以外的语言内容，也是可以接受的。
 
-以下示例说明了产品/服务信息在 Microsoft AppSource 中的显示方式（所有的价格仅用于举例目的，而不代表实际成本）：
+以下示例说明了产品/服务信息在 Microsoft AppSource 中的显示方式（列出的所有价格仅用于举例目的，而不代表实际成本）：
 
 :::image type="content" source="media/dynamics-365/example-dynamics-365-customer-engagement.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
 
@@ -58,7 +58,7 @@ ms.locfileid: "107820083"
 
 #### <a name="helpprivacy-urls"></a>帮助/隐私 URL
 
-输入“应用的帮助链接”(URL)，客户可通过该链接了解有关产品/服务的详细信息。 支持 URL 不能与帮助链接相同。
+输入“应用的帮助链接”(URL)，客户可通过该链接详细了解该产品/服务。 帮助 URL 不能与支持 URL 相同。
 
 在组织的隐私策略中输入“隐私策略链接”(URL)。 你负责确保你的应用符合隐私法律和法规，并负责提供有效的隐私策略。
 
@@ -75,8 +75,6 @@ ms.locfileid: "107820083"
 ## <a name="marketplace-media"></a>市场媒体
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊图像会导致提交遭到拒绝。
-
-[!INCLUDE [logo tips](includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >如果上传文件时遇到问题，请确保本地网络未阻止合作伙伴中心所使用的 https://upload.xboxlive.com 服务。

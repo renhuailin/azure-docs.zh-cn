@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/20/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: a18c53d972fbb38dc0b0e557d14b2fbffbff15fa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b0cc4deebac60fcf0ac4df20b112b8f69da05414
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174353"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072102"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
 
@@ -49,26 +49,6 @@ Azure NetApp 文件支持创建按需快照和使用快照策略来计划自动�
 ## <a name="manage-snapshot-policies"></a>管理快照策略
 
 可以使用快照策略来计划自动执行卷快照。 还可以根据需要修改快照策略，或者删除不再需要的快照策略。  
-
-### <a name="register-the-feature"></a>注册功能
-
-“快照策略”功能目前提供预览版。 如果你是首次使用此功能，则需要先注册该功能。 
-
-1. 注册此功能： 
-
-    ```azurepowershell-interactive
-    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
-    ```
-
-2. 检查功能注册的状态： 
-
-    > [!NOTE]
-    > RegistrationState 可能会处于 `Registering` 状态长达 60 分钟，然后才更改为 `Registered` 状态。 请等到状态变为“已注册”后再继续。
-
-    ```azurepowershell-interactive
-    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
-    ```
-此外，[Azure CLI 命令](/cli/azure/feature) `az feature register` 和 `az feature show` 分别可用于注册功能和显示注册状态。 
 
 ### <a name="create-a-snapshot-policy"></a>创建快照策略 
 

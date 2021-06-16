@@ -2,20 +2,20 @@
 title: 快速入门：将用户分配到使用 Azure Active Directory 作为标识提供者的应用
 description: 此快速入门介绍支持用户使用已设置的应用将 Azure AD 用作标识提供者的过程。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
-ms.author: iangithinji
-ms.openlocfilehash: eb6797fdfb57a503b6dece9f2dfdc3cb0c67feef
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.author: mtillman
+ms.openlocfilehash: a6f320c83d2baf179f4aaf4358f13ad4af2f4953
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375332"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081814"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>快速入门：将用户分配到使用 Azure AD 作为标识提供者的应用
 

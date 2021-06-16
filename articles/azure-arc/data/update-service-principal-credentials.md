@@ -5,16 +5,16 @@ services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: dnethi
-ms.author: mikeray
+ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 12/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 1c7ccec6228a6dcfb457bda8f6ecd384775d4b27
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff1e43ca78583e5ccda56b7c813ec580050e3288
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104669536"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495718"
 ---
 # <a name="update-service-principal-credentials"></a>更新服务主体凭据
 

@@ -3,12 +3,12 @@ title: 创建和部署 Visual Studio 资源组项目
 description: 使用 Visual Studio 创建 Azure 资源组项目，并将资源部署到 Azure。
 ms.topic: conceptual
 ms.date: 04/12/2021
-ms.openlocfilehash: 4c0e19042506e0cf1772398b0a02b81f0245b1c7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 71474578853523245b4859680b739254702afde6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306970"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958121"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 
@@ -51,7 +51,7 @@ ms.locfileid: "107306970"
 
 ## <a name="customize-resource-manager-template"></a>自定义资源管理器模板
 
-可以通过修改资源管理器模板（描述要部署的资源）来自定义部署项目。 若要了解资源管理器模板的元素，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
+可以通过修改资源管理器模板（描述要部署的资源）来自定义部署项目。 若要了解资源管理器模板的元素，请参阅[创作 Azure 资源管理器模板](./syntax.md)。
 
 1. 若要使用模板，请打开“WebSite.json”  。
 

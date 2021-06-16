@@ -3,20 +3,20 @@ title: 快速入门：创建 Azure SQL 托管实例（门户）
 description: 在本快速入门中，使用 Azure 门户创建托管实例、网络环境和客户端 VM 以进行访问。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: danimir
-ms.author: danil
-ms.reviewer: sstein
+author: urosmil
+ms.author: urmilano
+ms.reviewer: mathoma
 ms.date: 1/29/2021
-ms.openlocfilehash: d356cad1b4754875574e19be732fdf6481c61e22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77b43cfe781499c408f1952aed532ddb12c621e5
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101691206"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082336"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance"></a>快速入门：创建 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "101691206"
    | **托管实例名称** | 任何有效的名称。|请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称。|
    | **区域** |要在其中创建托管实例的区域。|有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
    | **托管实例管理员登录名** | 任何有效的用户名。 | 请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。|
-   | **密码** | 任何有效的密码。| 密码必须至少 16 个字符，且符合[定义的复杂性要求](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
+   | **密码** | 任何有效的密码。| 密码必须至少 16 个字符，且符合[定义的复杂性要求](../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。|
 
 - 选择“配置托管实例”，以设置计算和存储资源的大小并查看定价层。 使用滑块或文本框指定存储量和虚拟核心数。 完成后，选择“应用”以保存所做的选择。 
 

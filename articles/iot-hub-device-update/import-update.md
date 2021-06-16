@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ebfeee2828b3a36f9cf47891f8aea6d889db85bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 025ab1ddd9a7b14ac75df762c54fe48e4f665e29
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763570"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970143"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>向 Device Update for IoT Hub 新增更新
 了解如何将新的更新添加到 Device Update for IoT Hub。
@@ -122,7 +122,7 @@ ms.locfileid: "107763570"
 ## <a name="import-an-update"></a>导入更新
 
 > [!NOTE]
-> 以下说明演示了如何通过 Azure 门户 UI 导入更新。 用户还可以使用 [IoT Hub API 的设备更新](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) 来导入更新。 
+> 以下说明演示了如何通过 Azure 门户 UI 导入更新。 用户还可以使用 [IoT Hub API 的设备更新](/rest/api/deviceupdate/updates) 来导入更新。 
 
 1. 登录 [Azure 门户](https://portal.azure.com)并导航到具有设备更新的 IoT 中心。
 

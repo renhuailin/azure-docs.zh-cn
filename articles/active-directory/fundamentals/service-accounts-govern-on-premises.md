@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50ba13a49d8e08b70ebf8a8bb12dfe92d8a35bb7
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e02755f748cffcf7c523ce3b9c6fc651d2b1b02f
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206577"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438911"
 ---
 # <a name="govern-on-premises-service-accounts"></a>管理本地服务帐户
 
@@ -59,7 +59,7 @@ Active Directory 提供了四种类型的本地服务帐户：
 
 *  LogonWorkstations：在服务帐户可登录的位置限制其权限。 如果服务帐户在计算机本地运行并且只能访问该计算机上的资源，则限制它在其他任何位置登录。
 
-* [不能更改密码](/powershell/module/addsadministration/set-aduser)：通过将参数设置为 false，防止服务帐户更改其自身的密码。
+* [不能更改密码](/powershell/module/activedirectory/set-aduser)：通过将参数设置为 false，防止服务帐户更改其自身的密码。
  
 ## <a name="build-a-lifecycle-management-process"></a>构建生命周期管理过程
 
@@ -185,6 +185,6 @@ Active Directory 提供了四种类型的本地服务帐户：
 
 * [本地服务帐户简介](service-accounts-on-premises.md)  
 * [保护组托管服务帐户](service-accounts-group-managed.md)  
-* [保护独立托管服务帐户](service-accounts-standalone-managed.md)  
+* [保护独立的托管服务帐户](service-accounts-standalone-managed.md)  
 * [保护计算机帐户](service-accounts-computer.md)  
 * [保护用户帐户](service-accounts-user-on-premises.md)

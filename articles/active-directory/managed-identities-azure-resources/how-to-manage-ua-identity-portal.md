@@ -6,21 +6,23 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: ''
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/26/2020
+ms.date: 05/20/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd4cccdfc3a2cf8dd3827776028a7738ae769673
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 72a9cfe6142b4c82cd122068e096776c19c4e392
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98184824"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080896"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 门户创建、列出和删除用户分配的托管标识以及为其分配角色
 
@@ -74,16 +76,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 若要为用户分配的托管标识分配角色，你的帐户需要[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色分配。
 
-1. 使用与 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)，以列出用户分配的托管标识。
-2. 在搜索框中，键入托管标识，然后在“服务”下单击“托管标识”。
-3. 这会返回一个列表，其中包含订阅中的用户分配的托管标识。  选择要为其分配角色的用户分配托管标识。
-4. 依次选择“访问控制(IAM)”、“添加角色分配” 
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
-   ![用户分配的托管标识启动](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
+## <a name="next-steps"></a>后续步骤
 
-5. 在“添加角色分配”边栏选项卡中，配置以下值，然后单击“保存”：
-   - **角色** - 要分配的角色
-   - **将访问权限分配到** - 要将用户分配的托管标识分配到的资源
-   - **选择** - 要将访问权限分配到的成员
-   
-   ![用户分配的托管标识 IAM](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)
+- [使用 Azure CLI 向托管标识分配对资源的访问权限](howto-assign-access-cli.md)
+- [使用 PowerShell 向托管标识分配对资源的访问权限](howto-assign-access-powershell.md)

@@ -4,12 +4,12 @@ description: 使用受 SAS 令牌保护的 Azure 资源管理器模板将资源�
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 1c3dd78d8c9c0819c69b12ccb9199acd7a4a626e
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: d8a173c719c239d72c57febbe54688f079a601bb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752024"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959978"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>使用 SAS 令牌部署专用 ARM 模板
 
@@ -147,4 +147,4 @@ az deployment group create \
 
 ## <a name="next-steps"></a>后续步骤
 * 有关部署模板的简介，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)。
-* 若要在模板中定义参数，请参阅[创作模板](template-syntax.md#parameters)。
+* 若要在模板中定义参数，请参阅[创作模板](./syntax.md#parameters)。

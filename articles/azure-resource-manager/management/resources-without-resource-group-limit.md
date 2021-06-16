@@ -3,12 +3,12 @@ title: 没有 800 计数限制的资源
 description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 04/12/2021
-ms.openlocfilehash: d132773ff35d53dc373c759326efc8179f4993d6
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: f77bd964003638ca33e1f30e352b1f35a866ac6a
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366532"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060239"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
@@ -119,6 +119,7 @@ ms.locfileid: "107366532"
 ## <a name="microsoftinsights"></a>microsoft.insights
 
 * metricalerts
+* scheduledQueryRules
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04a86b0e8ebae2349d8c53470cca043ea5f87a87
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018065"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967988"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>将数百 TB 的数据迁移到 Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ Azure Cosmos DB 可以存储 TB 级的数据。 可以执行大规模数据迁�
 
 ## <a name="tools-for-data-migration"></a>数据迁移工具 
 
-目前，Azure Cosmos DB 迁移策略根据所选的 API 和数据大小而异。 若要迁移小型数据集（以便验证数据建模、查询性能、分区键的选择等），可以选择[数据迁移工具](import-data.md)或 [Azure 数据工厂的 Azure Cosmos DB 连接器](../data-factory/connector-azure-cosmos-db.md)。 如果你熟悉 Spark，则还可以选择使用 [Azure Cosmos DB Spark 连接器](spark-connector.md)来迁移数据。
+目前，Azure Cosmos DB 迁移策略根据所选的 API 和数据大小而异。 若要迁移小型数据集（以便验证数据建模、查询性能、分区键的选择等），可以选择[数据迁移工具](import-data.md)或 [Azure 数据工厂的 Azure Cosmos DB 连接器](../data-factory/connector-azure-cosmos-db.md)。 如果你熟悉 Spark，则还可以选择使用 [Azure Cosmos DB Spark 连接器](./create-sql-api-spark.md)来迁移数据。
 
 ## <a name="challenges-for-large-scale-migrations"></a>大规模迁移的挑战 
 
@@ -146,5 +146,5 @@ Azure 数据工厂、Azure 数据迁移服务之类的工具正在修复上述�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要进行详细了解，请试用那些在 [.NET](bulk-executor-dot-net.md) 和 [Java](bulk-executor-java.md) 中使用批量执行程序库的示例应用程序。 
-* 批量执行程序库已集成到 Cosmos DB Spark 连接器中。若要进行详细的了解，请参阅 [Azure Cosmos DB Spark 连接器](spark-connector.md)一文。  
+* 批量执行程序库已集成到 Cosmos DB Spark 连接器中。若要进行详细的了解，请参阅 [Azure Cosmos DB Spark 连接器](./create-sql-api-spark.md)一文。  
 * 如需大规模迁移方面的更多帮助，请通过开具支持票证来联系 Azure Cosmos DB 产品团队：选择“常规建议”问题类型，“大规模迁移(TB+)”问题子类型。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2021
 ms.author: bagol
-ms.openlocfilehash: 12a6ae76b1eb4dced661b811d8f6e9030f74b4f1
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 584f108ea534b8703b941d91b7d03b6275ea6134
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795719"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958345"
 ---
 # <a name="integrate-azure-data-explorer-for-long-term-log-retention"></a>集成 Azure 数据资源管理器以实现长期日志保留
 
@@ -39,7 +39,7 @@ Azure Sentinel 提供完整的 SIEM 和 SOAR 功能、快速部署和配置，�
 
 如果你只需偶尔访问特定表（例如出于定期调查或审核目的），则可能考虑到将数据保留在 Azure Sentinel 中不再是经济高效的方案。 此时，我们建议将数据存储在 Azure 数据资源管理器中，这样做成本较低，但仍可使用在 Azure Sentinel 中运行的相同 KQL 查询进行浏览。
 
-使用 [Log Analytics Azure 数据资源管理器代理功能](/azure/azure-monitor/logs/azure-monitor-data-explorer-proxy)，可以直接从 Azure Sentinel 访问 Azure 数据资源管理器中的数据。 为此，请在日志搜索或工作簿中使用跨群集查询。
+使用 [Log Analytics Azure 数据资源管理器代理功能](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md)，可以直接从 Azure Sentinel 访问 Azure 数据资源管理器中的数据。 为此，请在日志搜索或工作簿中使用跨群集查询。
 
 > [!IMPORTANT]
 > 核心 SIEM 功能（包括分析规则、UEBA 和调查图）不支持 Azure 数据资源管理器中存储的数据。
@@ -55,7 +55,7 @@ Azure Sentinel 提供完整的 SIEM 和 SOAR 功能、快速部署和配置，�
 还可以将所有数据（不考虑其安全值）配置为同时发送到 Azure 数据资源管理器，在那里可将其存储更长时间。 尽管将数据同时发送到 Azure Sentinel 和 Azure 数据资源管理器会导致某些重复，但降低 Azure Sentinel 中的保留成本可以显著降低成本。
 
 > [!TIP]
-> 利用此选项，还可以关联分布在不同数据存储中的数据，以便用 Azure 数据资源管理器中存储的操作性数据或长期数据来丰富 Azure Sentinel 中存储的安全数据，或实现其他目的。 有关详细信息，请参阅[使用 Azure Monitor 跨资源查询 Azure 数据资源管理器](/azure/azure-monitor/logs/azure-monitor-data-explorer-proxy)。
+> 利用此选项，还可以关联分布在不同数据存储中的数据，以便用 Azure 数据资源管理器中存储的操作性数据或长期数据来丰富 Azure Sentinel 中存储的安全数据，或实现其他目的。 有关详细信息，请参阅[使用 Azure Monitor 跨资源查询 Azure 数据资源管理器](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md)。
 >
 
 下图显示了如何将所有数据保留在 Azure 数据资源管理器中，同时仅将安全数据发送到 Azure Sentinel 进行日常使用。
@@ -82,7 +82,7 @@ Azure Sentinel 提供完整的 SIEM 和 SOAR 功能、快速部署和配置，�
 |---------|---------|
 |**导出数据的范围**     |  为特定表配置了导出后，将导出发送到该表的所有数据，但不会出现异常。 不支持导出已筛选的部分数据或限制导出到特定事件。       |
 |**位置要求**     |   Azure Monitor/Azure Sentinel 工作区和目标位置（Azure 存储帐户或事件中心）必须位于同一个地理区域。      |
-|**受支持的表**     | 并非所有表都支持导出，例如自定义日志表就不支持。 <br><br>有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出](/azure/azure-monitor/logs/logs-data-export)和[受支持表的列表](/azure/azure-monitor/logs/logs-data-export#supported-tables)。         |
+|**受支持的表**     | 并非所有表都支持导出，例如自定义日志表就不支持。 <br><br>有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出](../azure-monitor/logs/logs-data-export.md)和[受支持表的列表](../azure-monitor/logs/logs-data-export.md#supported-tables)。         |
 |     |         |
 
 ### <a name="data-export-methods-and-procedures"></a>数据导出方法和过程
@@ -104,9 +104,9 @@ Azure Sentinel 提供完整的 SIEM 和 SOAR 功能、快速部署和配置，�
 上图中显示的体系结构为必须经常（每 X 个月）访问的数据提供了完整的 Azure Sentinel SIEM 体验，包括事件管理、视觉调查、威胁搜寻、高级可视化效果、UEBA 等。 同时，得益于 Azure 数据资源管理器代理功能，此体系结构还使你能够通过直接在 Azure 数据资源管理器中访问长期数据或通过 Azure Sentinel 来对其进行查询。 Azure 数据资源管理器中的长期数据存储的查询无需任何更改即可从 Azure Sentinel 移植到 Azure 数据资源管理器。
 
 > [!NOTE]
-> 当通过事件中心将多个数据表导出到 Azure 数据资源管理器时，请记住，Log Analytics 数据导出对于每个命名空间的最大事件中心数有限制。 有关数据导出的详细信息，请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出](/azure/azure-monitor/logs/logs-data-export?tabs=portal)。
+> 当通过事件中心将多个数据表导出到 Azure 数据资源管理器时，请记住，Log Analytics 数据导出对于每个命名空间的最大事件中心数有限制。 有关数据导出的详细信息，请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出](../azure-monitor/logs/logs-data-export.md?tabs=portal)。
 >
-> 对于大多数客户，我们建议使用事件中心标准层。 根据需要导出的表数量以及这些表的流量大小，可能需要使用事件中心专用层。 有关详细信息，请参阅[事件中心文档](/azure/event-hubs/event-hubs-quotas)。
+> 对于大多数客户，我们建议使用事件中心标准层。 根据需要导出的表数量以及这些表的流量大小，可能需要使用事件中心专用层。 有关详细信息，请参阅[事件中心文档](../event-hubs/event-hubs-quotas.md)。
 >
 
 > [!TIP]
@@ -115,7 +115,7 @@ Azure Sentinel 提供完整的 SIEM 和 SOAR 功能、快速部署和配置，�
 
 **通过事件中心将数据导出到 Azure 数据资源管理器**：
 
-1. **配置到事件中心的 Log Analytics 数据导出**。 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出](/azure/azure-monitor/platform/logs-data-export)。
+1. **配置到事件中心的 Log Analytics 数据导出**。 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出](../azure-monitor/logs/logs-data-export.md)。
 
 1. **创建 Azure 数据资源管理器群集和数据库**。 有关详细信息，请参阅：
 
@@ -171,7 +171,7 @@ Azure Sentinel 提供完整的 SIEM 和 SOAR 功能、快速部署和配置，�
 
 **通过 Azure 存储和 Azure 数据工厂将数据导出到 Azure 数据资源管理器**：
 
-1. **配置到事件中心的 Log Analytics 数据导出**。 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出](/azure/azure-monitor/logs/logs-data-export?tabs=portal#enable-data-export)。
+1. **配置到事件中心的 Log Analytics 数据导出**。 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出](../azure-monitor/logs/logs-data-export.md?tabs=portal#enable-data-export)。
 
 1. **创建 Azure 数据资源管理器群集和数据库**。 有关详细信息，请参阅：
 

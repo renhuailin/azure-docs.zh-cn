@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 17f3440df4fa88995f2148680aba926207a0e46b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16902a8733c4b4d423deb47c5a8980284d8e690e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561256"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964078"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>从 Azure 安全中心为代理和扩展配置自动预配
 
@@ -86,9 +86,9 @@ Azure 安全中心使用资源的相关代理或扩展以及已启用的数据�
         > [!TIP]
         > 有关默认工作区的问题，请参阅：
         >
-        > - [安全中心创建的工作区中的 Azure Monitor 日志是否会产生费用？](faq-data-collection-agents.md#am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center)
-        > - [创建的默认 Log Analytics 工作区的位置是哪里？](faq-data-collection-agents.md#where-is-the-default-log-analytics-workspace-created)
-        > - [是否可以删除安全中心创建的默认工作区？](faq-data-collection-agents.md#can-i-delete-the-default-workspaces-created-by-security-center)
+        > - [安全中心创建的工作区中的 Azure Monitor 日志是否会产生费用？](/azure/security-center/faq-data-collection-agents.yml#am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center)
+        > - [创建的默认 Log Analytics 工作区的位置是哪里？](/azure/security-center/faq-data-collection-agents.yml#where-is-the-default-log-analytics-workspace-created)
+        > - [是否可以删除安全中心创建的默认工作区？](/azure/security-center/faq-data-collection-agents.yml#can-i-delete-the-default-workspaces-created-by-security-center)
 
     - **将 Azure VM 连接到不同的工作区** - 从下拉列表中，选择用于存储收集的数据的工作区。 下拉列表包含所有订阅中的所有工作区。 你可以使用此选项从在不同订阅中运行的虚拟机收集数据，并将其全部存储在所选工作区中。  
 
@@ -181,7 +181,7 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> - 如果使用组策略对象 (GPO)，建议启用审核策略过程创建事件 4688 以及事件 4688 内的 CommandLine 字段。 有关过程创建事件 4688 的详细信息，请参阅安全中心的[常见问题解答](faq-data-collection-agents.md#what-happens-when-data-collection-is-enabled)。 有关这些审核策略的详细信息，请参阅[审核策略建议](/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)。
+> - 如果使用组策略对象 (GPO)，建议启用审核策略过程创建事件 4688 以及事件 4688 内的 CommandLine 字段。 有关过程创建事件 4688 的详细信息，请参阅安全中心的[常见问题解答](/azure/security-center/faq-data-collection-agents.yml#what-happens-when-data-collection-is-enabled)。 有关这些审核策略的详细信息，请参阅[审核策略建议](/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)。
 > -  若要为[自适应应用程序控件](security-center-adaptive-application.md)启用数据收集，安全中心会在审核模式下配置本地 AppLocker 策略以允许所有应用程序。 这将导致 AppLocker 生成事件，然后由安全中心收集和利用这些事件。 请务必注意，不会在已配置 AppLocker 策略的任何计算机上配置此策略。 
 > - 若要收集 Windows 筛选平台[事件 ID 5156](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=5156)，需要启用[审核筛选平台连接](/windows/security/threat-protection/auditing/audit-filtering-platform-connection) (Auditpol /set /subcategory:"Filtering Platform Connection" /Success:Enable)
 >
@@ -249,7 +249,7 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 - **存在预先存在的 VM 扩展**：
     - 当将监视代理作为扩展安装时，扩展配置仅允许向单个工作区进行报告。 安全中心不会覆盖用户工作区的现有连接。 如果已连接的工作区中安装了“Security”或“SecurityCenterFree”解决方案，安全中心会将来自 VM 的安全性数据存储在该工作区中。 在此过程中，安全中心可以将扩展版本升级到最新版本。
     - 若要查看现有扩展将数据发送到哪个工作区，请运行测试来[验证与 Azure 安全中心的连接](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center)。 或者，可以打开 Log Analytics 工作区，选择一个工作区，选择 VM，然后查看 Log Analytics 代理连接。
-    - 如果环境中的 Log Analytics 代理安装在客户端工作站上并向现有的 Log Analytics 工作区报告，请查看 [Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表以确保操作系统受支持。 有关详细信息，请参阅[现有 Log Analytics 客户](./faq-azure-monitor-logs.md)。
+    - 如果环境中的 Log Analytics 代理安装在客户端工作站上并向现有的 Log Analytics 工作区报告，请查看 [Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表以确保操作系统受支持。 有关详细信息，请参阅[现有 Log Analytics 客户](./faq-azure-monitor-logs.yml)。
  
 
 ## <a name="disable-auto-provisioning"></a>禁用自动预配 <a name="offprovisioning"></a>
@@ -271,7 +271,7 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 
 
 > [!NOTE]
->  禁用自动预配不会从曾预配了 Log Analytics 代理的 Azure VM 中删除该代理。 有关删除 OMS 扩展的信息，请参阅[如何删除安全中心安装的 OMS 扩展](faq-data-collection-agents.md#remove-oms)。
+>  禁用自动预配不会从曾预配了 Log Analytics 代理的 Azure VM 中删除该代理。 有关删除 OMS 扩展的信息，请参阅[如何删除安全中心安装的 OMS 扩展](/azure/security-center/faq-data-collection-agents.yml#remove-oms)。
 >
 
 

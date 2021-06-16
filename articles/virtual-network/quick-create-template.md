@@ -6,15 +6,15 @@ services: virtual-network
 author: KumudD
 ms.service: virtual-network
 ms.topic: quickstart
-ms.date: 05/11/2021
+ms.date: 06/09/2021
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: 28513132e75797adaafc7de32d94379b92f298ee
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a686eacf8e3caa162cfca765e60d2268fe2066e7
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752420"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078071"
 ---
 # <a name="quickstart-create-a-virtual-network---resource-manager-template"></a>快速入门：创建虚拟网络 - 资源管理器模板
 
@@ -33,7 +33,7 @@ ms.locfileid: "109752420"
 
 本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/vnet-two-subnets/azuredeploy.json)
 
-:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/vnet-two-subnets/azuredeploy.json" range="001-96" highlight="56-92":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/vnet-two-subnets/azuredeploy.json" range="001-98" highlight="56-97":::
 
 该模板中已定义了以下 Azure 资源：
 - [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)：创建 Azure 虚拟网络。
@@ -45,7 +45,7 @@ ms.locfileid: "109752420"
 
 1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板创建包含两个子网的虚拟网络。
 
-   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-virtual-network-2vms-create%2Fazuredeploy.json)
+   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fvnet-two-subnets%2Fazuredeploy.json)
 
 2. 在门户中的“创建具有两个子网的虚拟网络”页上，键入或选择以下值：
    - 资源组：选择“新建”，键入资源组的名称，然后选择“确定”。

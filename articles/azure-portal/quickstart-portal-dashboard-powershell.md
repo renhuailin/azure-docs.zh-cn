@@ -4,12 +4,12 @@ description: 了解如何使用 Azure PowerShell 在 Azure 门户中创建仪表
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 03/25/2021
-ms.openlocfilehash: cd001a8259c54f1d86aab5983da1413c8163008c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7828dd6ba43cebeef158e897dd8f2a5fb54d8d83
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557430"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077729"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>快速入门：使用 PowerShell 创建 Azure 门户仪表板
 
@@ -77,7 +77,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 
 在本快速入门的下一部分中创建的仪表板需要一台现有 VM。 按照以下步骤创建 VM。
 
-将 VM 的登录凭据存储在一个变量中。 密码必须是复杂密码。 这是一个新的用户名和密码；它不是用于登录 Azure 的帐户。 有关详细信息，请参阅[用户名要求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)和[密码要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+将 VM 的登录凭据存储在一个变量中。 密码必须是复杂密码。 这是一个新的用户名和密码；它不是用于登录 Azure 的帐户。 有关详细信息，请参阅[用户名要求](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-)和[密码要求](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。
 
 ```azurepowershell-interactive
 $Cred = Get-Credential

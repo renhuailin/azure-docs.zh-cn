@@ -3,7 +3,7 @@ title: 将 Java 消息服务 (JMS) 应用程序从 Apache ActiveMQ 迁移到 Azu
 description: 本文介绍了如何迁移与 Apache ActiveMQ 进行交互的现有 JMS 应用程序，以使其与 Azure 服务总线进行交互。
 services: service-bus-messaging
 documentationcenter: ''
-author: axisc
+author: spelluru
 manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2020
-ms.author: aschhab
+ms.author: spelluru
 ms.custom: devx-track-java
-ms.openlocfilehash: 38b835a46a441edfdcace0db1a6983122b06de12
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: e00043f1d8dd874e67ed25bd424e869fb7ec8787
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191925"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539302"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>将现有 Java 消息服务 (JMS) 2.0 应用程序从 Apache ActiveMQ 迁移到 Azure 服务总线
 

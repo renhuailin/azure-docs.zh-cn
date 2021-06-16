@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 636b6d7a15e80e725cadbfb07ed1dd0c5ef0347e
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951464"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888673"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
 本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)中将由[微服务](https://en.wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 
@@ -29,7 +29,7 @@ ms.locfileid: "104951464"
 在本教程中，将使用以下工具。 由于对工具的讨论并不全面，我将坚持使用端到端方案，并只提供每个方案的简要介绍及在哪里可找到它的详细信息。 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure 资源管理器模板 (JSON)
-例如，每次在 Azure 应用服务中创建应用时，Azure 资源管理器都将使用 JSON 模板来创建具有组件资源的整个资源组。 [Azure 市场](../marketplace/index.yml)中的复杂模板可以包含数据库、存储帐户、应用服务计划、应用本身、警报规则、应用设置、自动缩放设置等等，可以通过 PowerShell 使用所有这些模板。 有关 Azure 资源管理器模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
+例如，每次在 Azure 应用服务中创建应用时，Azure 资源管理器都将使用 JSON 模板来创建具有组件资源的整个资源组。 [Azure 市场](../marketplace/index.yml)中的复杂模板可以包含数据库、存储帐户、应用服务计划、应用本身、警报规则、应用设置、自动缩放设置等等，可以通过 PowerShell 使用所有这些模板。 有关 Azure 资源管理器模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/syntax.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2.6 for Visual Studio
 最新的 SDK 包含对 JSON 编辑器中 Resource Manager 模板支持的改进。 可以使用它快速从头开始创建资源组模板，或打开现有 JSON 模板（例如下载的库模板）以进行修改、填充参数文件，甚至直接从 Azure 资源组解决方案部署资源组。
@@ -250,8 +250,8 @@ ms.locfileid: "104951464"
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>更多资源
-* [Azure 资源管理器模板语言](../azure-resource-manager/templates/template-syntax.md)
-* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/template-syntax.md)
+* [Azure 资源管理器模板语言](../azure-resource-manager/templates/syntax.md)
+* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/syntax.md)
 * [Azure Resource Manager 模板功能](../azure-resource-manager/templates/template-functions.md)
 * [使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)
 * [将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/management/manage-resources-powershell.md)

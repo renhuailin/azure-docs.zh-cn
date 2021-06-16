@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 7d0631be67afd523ee47f9af021df35b3d74ae2a
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: include file, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: afd94ba7a91d18ef1bc1321c6fbbb9688bc21255
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107893319"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110721034"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>为标识分配访问权限
 
@@ -43,7 +43,7 @@ ms.locfileid: "107893319"
 1. 在 Azure 门户中，转到文件共享，或[创建文件共享](../articles/storage/files/storage-how-to-create-file-share.md)。
 2. 选择“访问控制 (IAM)”。
 3. 选择“添加角色分配”
-4. 在“添加角色分配”边栏选项卡中，从“角色”列表中选择适当的内置角色（“存储文件数据 SMB 共享读取者”和“存储文件数据 SMB 共享参与者”） 。 将“分配访问权限至”保留为默认设置：“Azure AD 用户、组或服务主体” 。 按名称或电子邮件地址选择目标 Azure AD 标识。
+4. 在“添加角色分配”边栏选项卡中，从“角色”列表中选择适当的内置角色（“存储文件数据 SMB 共享读取者”和“存储文件数据 SMB 共享参与者”） 。 让“分配访问权限至”保留默认设置“Azure AD 用户、组或服务主体” 。 按名称或电子邮件地址选择目标 Azure AD 标识。
 5. 选择“保存”以完成角色分配操作。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

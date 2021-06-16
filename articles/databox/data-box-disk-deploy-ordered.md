@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 06/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 04ae2589e8abfab4826f2286d5f00869c24442f5
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bb6f7cc8331d242459d5af515919db13277a5f5e
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057960"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985735"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>教程：订购 Azure Data Box Disk
 
@@ -62,7 +62,7 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
     ![选择 Data Box 磁盘选项](media/data-box-disk-deploy-ordered/select-data-box-sku-1.png)
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |订阅|选择已为其启用了 Data Box 服务的订阅。<br> 该订阅将链接到计费帐户。 |
     |传输类型| 导入到 Azure|
@@ -75,7 +75,7 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
 5. 在“订单”中指定“订单详细信息”。  输入或选择以下信息。
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |名称|提供友好名称用于跟踪订单。<br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。 |
     |资源组| 使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。 |
@@ -90,7 +90,7 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
     如果使用 Data Box Disk 从本地 VHD 创建托管磁盘，则还需提供以下信息：
 
-    |设置  |值  |
+    |设置  |Value  |
     |---------|---------|
     |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，它是通过 Data Box 服务为托管磁盘的 Data Box Disk 订单创建的。 <br> 只支持一个资源组。|
 
@@ -98,7 +98,7 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
     为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 上传到临时存储帐户，然后将其转换为托管磁盘并转移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure)。
 
-6. 单击“下一步”。
+6. 单击“下一步”  。
 
     ![提供订单详细信息](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 

@@ -1,20 +1,20 @@
 ---
 title: Edge Managed 认证要求
-description: Edge Managed 认证计划要求
+description: Edge Managed 认证要求
 author: cbroad
 ms.author: cbroad
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Edge Managed Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 744f81d0544a765f60793ece1aa539c6c37e39cd
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 7d3cd36dd0f03db7cc701c618b40f58dc9873659
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975640"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982009"
 ---
-# <a name="azure-certification-edge-managed"></a>Azure 认证 Edge Managed 
+# <a name="edge-managed-certification-requirements"></a>Edge Managed 认证要求
 
 本文档概述了将在 Azure 认证设备目录中呈现的特定于设备的功能。 功能是一个设备属性，可用于描述设备。 
 
@@ -32,8 +32,8 @@ Edge Managed 认证遵循 [Azure 认证设备基线计划](.\program-requirement
 
 | **名称**                | AzureReady.DPS                                               |
 | ----------------------- | ------------------------------------------------------------ |
-| **目标可用性** | Ignite（预览版）                                                |
-| **适用于**          | 任何设备                                      |
+| **目标可用性** | 目前可用                                                |
+| **适用于**          | 任何设备                                                   |
 | **OS**                  | 不可知                                                     |
 | **验证类型**     | 自动                                                    |
 | **验证**          | AICS 验证设备代码支持 DPS。 **1.** 用户必须选择一种证明方法（X.509、TPM 和 SAS 密钥）。 **2.** 根据证明方法，用户需要执行相应的操作（例如 a) 将 X.509 证书上传到 AICS 托管的 DPS 范围；b) 在设备中实现 SAS 密钥或认可密钥） 。 **3.** 然后，用户将点击“连接”按钮，通过 DPS 连接到 AICS 托管 IoT 中心                                                    |
@@ -44,11 +44,11 @@ Edge Managed 认证遵循 [Azure 认证设备基线计划](.\program-requirement
 
 **Edge 运行时已存在：测试的目的是确保包含 IoT Edge 运行时（$edgehub 和 $edgeagent）的设备正常工作。**
 
-| **名称**                | EdgeManaged.EdgeRT                                               |
+| **名称**                | EdgeManaged.EdgeRT                                           |
 | ----------------------- | ------------------------------------------------------------ |
-| **目标可用性** | 目前可用                                                          |
-| **适用于**          | IoT Edge 设备                                                   |
-| **OS**                  | [Tier1 和 Tier2 OS](../iot-edge/support.md)                                                     |
+| **目标可用性** | 目前可用                                                |
+| **适用于**          | IoT Edge 设备                                              |
+| **OS**                  | [Tier1 和 Tier2 OS](../iot-edge/support.md)                 |
 | **验证类型**     | 自动                                                    |
 | **验证**          | AICS 验证已安装的 IoT Edge RT 的部署能力。 **1.** 用户需要指定特定的 OS（只接受 Tier1/2 列表中的 OS）**2.** AICS 生成其 config.yaml 并部署规范化 [模拟温度传感器边缘模块](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-iot.simulated-temperature-sensor?tab=Overview) **3.** AICS 验证设备上是否已安装与 Docker 兼容的容器子系统 (Moby) **4.** 测试结果基于模拟温度传感器边缘模块的成功部署和与 Docker 兼容的容器子系统功能                                                    |
 | **资源**           | **a)** [AICS 博客](https://azure.microsoft.com/en-in/blog/expanding-azure-iot-certification-service-to-support-azure-iot-edge-device-certification/)，**b)** [认证步骤](./overview.md)（具有所有附加资源），**c)** [要求](./program-requirements-azure-certified-device.md) |

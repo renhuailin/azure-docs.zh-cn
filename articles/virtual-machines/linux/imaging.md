@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: a77c2bc69418b821933c0b62674500f7a32e40a5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 048afc8997f4e2b3f1d9a9cf6aea67be63c659ee
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565200"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027136"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中引入和创建 Linux 映像
 
@@ -26,7 +26,7 @@ ms.locfileid: "102565200"
 ## <a name="difference-between-managed-disks-and-images"></a>托管磁盘和映像之间的差异
 
 
-Azure 支持将 VHD 引入到 Azure 平台，将其用作[托管磁盘](../faq-for-disks.md#managed-disks)或用作映像的源。 
+Azure 支持将 VHD 引入到 Azure 平台，将其用作[托管磁盘](/azure/virtual-machines/faq-for-disks#managed-disks)或用作映像的源。 
 
 Azure 托管磁盘是单个的 VHD。 可以使用现有 VHD 和根据其创建托管磁盘，或者从头开始创建一个空托管磁盘。 可以通过将磁盘附加到 VM 来借助托管磁盘创建 VM，但一个 VM 只能使用一个 VHD。 OS 属性无法修改，Azure 只会尝试开启 VM 和启动磁盘。 
 
