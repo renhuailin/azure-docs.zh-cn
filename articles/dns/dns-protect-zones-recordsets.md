@@ -2,17 +2,18 @@
 title: 保护 DNS 区域和记录 - Azure DNS
 description: 在此学习路径中，开始在 Microsoft Azure DNS 中保护 DNS 区域和记录集。
 services: dns
-author: asudbring
+author: duongau
 ms.service: dns
 ms.topic: how-to
-ms.date: 2/20/2020
-ms.author: allensu
-ms.openlocfilehash: 9d65e024e9efa3ad2bcb1c70d44360c8bd0de384
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/05/2021
+ms.author: duau
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2da488eaf020f38e164b0dc3102ef589e2ee5f85
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785822"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697015"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保护 DNS 区域和记录
 
@@ -32,15 +33,15 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 用户、组�
 
 资源组 *myResourceGroup* 包含 Contoso Corporation 的五个区域。 授予 DNS 管理员对该资源组的 DNS 区域参与者权限，可以完全控制这些 DNS 区域。 它可以避免授予不必要的权限。 DNS 管理员无法创建或停止虚拟机。
 
-分配 Azure RBAC 权限最简单方法是[通过 Azure 门户](../role-based-access-control/role-assignments-portal.md)进行分配。  
+分配 Azure RBAC 权限的最简单方法是[使用 Azure 门户](../role-based-access-control/role-assignments-portal.md)。  
 
-打开资源组的“访问控制(标识和访问管理)”，接着选择“添加”，然后选择“DNS 区域参与者”角色。    选择所需用户或组来授予权限。
+打开资源组的“访问控制(IAM)”，接着选择“+ 添加”，然后选择“DNS 区域参与者”角色  。 选择所需用户或组来授予权限。
 
-![使用 Azure 门户的资源组级别 Azure RBAC](./media/dns-protect-zones-recordsets/rbac1.png)
+:::image type="content" source="./media/dns-protect-zones-recordsets/resource-group-rbac.png" alt-text="资源组的“访问控制”页的屏幕截图。":::
 
 也可以[使用 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)授予权限：
 
-```azurepowershell
+```azurepowershell-interactive
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 
 $usr = "<user email address>"
@@ -52,7 +53,7 @@ New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupNam
 
 也可[通过 Azure CLI](../role-based-access-control/role-assignments-cli.md) 提供等效命令：
 
-```azurecli
+```azurecli-interactive
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 
 az role assignment create \
@@ -67,13 +68,13 @@ Azure RBAC 规则可应用于订阅，资源组或单个资源。 该资源可�
 
 例如，资源组 *myResourceGroup* 包含区域 *contoso.com* 和子区域 *customers.contoso.com*。 针对每个客户帐户创建 CNAME 记录。 为用于管理 CNAME 记录的管理员帐户分配在 *customers.contoso.com* 区域中创建记录的权限。 此帐户只能管理 *customers.contoso.com*。
 
-可以通过 Azure 门户授予区域级别的 Azure RBAC 权限。  打开区域的“访问控制(标识和访问管理)”，选择“添加”，接着选择“DNS 区域参与者”角色，然后选择所需用户或组来授予权限。   
+可以通过 Azure 门户授予区域级别的 Azure RBAC 权限。  打开区域的“访问控制(IAM)”，选择“+ 添加”，接着选择“DNS 区域参与者”角色，然后选择所需用户或组来授予权限  。
 
-![使用 Azure 门户的 DNS 区域级别 Azure RBAC](./media/dns-protect-zones-recordsets/rbac2.png)
+:::image type="content" source="./media/dns-protect-zones-recordsets/zone-rbac.png" alt-text="DNS 区域的“访问控制”页的屏幕截图。":::
 
 也可以[使用 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)授予权限：
 
-```azurepowershell
+```azurepowershell-interactive
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 
 $usr = "<user email address>"
@@ -87,7 +88,7 @@ New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupNam
 
 也可[通过 Azure CLI](../role-based-access-control/role-assignments-cli.md) 提供等效命令：
 
-```azurecli
+```azurecli-interactive
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 
 az role assignment create \
@@ -100,13 +101,13 @@ az role assignment create \
 
 在记录集级别应用权限。  用户有权对其所需的条目进行控制，但无法进行任何其他更改。
 
-记录集级别的 Azure RBAC 权限可在 Azure 门户中使用记录集页面中的“访问控制（标识和访问管理）”按钮进行配置：
+记录集级别的 Azure RBAC 权限可在 Azure 门户中使用“记录集”页面中的“用户”按钮进行配置：
 
-![使用 Azure 门户的记录集级别 Azure RBAC](./media/dns-protect-zones-recordsets/rbac3.png)
+:::image type="content" source="./media/dns-protect-zones-recordsets/record-set-rbac-1.png" alt-text="记录集中“用户”按钮的屏幕截图。":::
 
 还可以[使用 Azure PowerShell 授予](../role-based-access-control/role-assignments-powershell.md)记录集级别 Azure RBAC 权限：
 
-```azurepowershell
+```azurepowershell-interactive
 # Grant permissions to a specific record set
 
 $usr = "<user email address>"
@@ -119,7 +120,7 @@ New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -Scope $sco
 
 也可[通过 Azure CLI](../role-based-access-control/role-assignments-cli.md) 提供等效命令：
 
-```azurecli
+```azurecli-interactive
 # Grant permissions to a specific record set
 
 az role assignment create \
@@ -172,14 +173,14 @@ az role assignment create \
 
 当前无法通过 Azure 门户定义自定义角色定义。 可以使用 Azure PowerShell 创建基于此角色定义的自定义角色：
 
-```azurepowershell
+```azurepowershell-interactive
 # Create new role definition based on input file
 New-AzRoleDefinition -InputFile <file path>
 ```
 
 也可以通过 Azure CLI 创建：
 
-```azurecli
+```azurecli-interactive
 # Create new role definition based on input file
 az role create -inputfile <file path>
 ```
@@ -198,13 +199,13 @@ Azure 资源管理器支持另一种类型的安全控制：资源锁定功能�
 
 若要防止进行更改，请在该区域应用 ReadOnly 锁。 该锁会阻止创建新的记录集，并防止修改或删除现有记录集。
 
-可通过 Azure 门户创建区域级别的资源锁。  从 DNS 区域页上，选择“锁定”  ，然后选择“+添加”  ：
+可通过 Azure 门户创建区域级别的资源锁。 在 DNS 区域页中，选择“锁定”，然后选择“+ 添加” ：
 
-![使用 Azure 门户的区域级别资源锁](./media/dns-protect-zones-recordsets/locks1.png)
+:::image type="content" source="./media/dns-protect-zones-recordsets/zone-locks.png" alt-text="区域级别资源锁的屏幕截图。":::
 
 也可通过 [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock) 创建区域级别的资源锁：
 
-```azurepowershell
+```azurepowershell-interactive
 # Lock a DNS zone
 
 $lvl = "<lock level>"
@@ -218,7 +219,7 @@ New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceTy
 
 也可[通过 Azure CLI](/cli/azure/lock#az_lock_create) 提供等效命令：
 
-```azurecli
+```azurecli-interactive
 # Lock a DNS zone
 
 az lock create \
@@ -239,7 +240,7 @@ az lock create \
 
 记录集级别资源锁定当前只能使用 Azure PowerShell 进行配置。  它们在 Azure 门户或 Azure CLI 中不受支持。
 
-```azurepowershell
+```azurepowershell-interactive
 # Lock a DNS record set
 
 $lvl = "<lock level>"
@@ -261,7 +262,7 @@ New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceTy
 
 以下 PowerShell 命令针对给定区域的 SOA 记录创建 CanNotDelete 锁：
 
-```azurepowershell
+```azurepowershell-interactive
 # Protect against zone delete with CanNotDelete lock on the record set
 
 $lvl = "CanNotDelete"

@@ -3,14 +3,15 @@ title: 在 Azure 自动化中执行 Runbook
 description: 本文概述了如何在 Azure 自动化中处理 runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/23/2021
+ms.date: 04/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 165c9ea721bec7fc7a1657f5dde5c19d9e254e20
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5fcef44fed77b01e069129a160299f547340c346
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104954337"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964566"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -44,7 +45,7 @@ Azure 自动化中的 runbook 可以在 Azure 沙盒上运行，也可以在[混
 
 下表列出一些 runbook 执行任务，并为每个任务列出了建议的执行环境。
 
-|任务|建议|注释|
+|任务|建议|说明|
 |---|---|---|
 |与 Azure 资源集成|Azure 沙盒|在 Azure 中托管，身份验证更为简单。 如果使用 Azure VM 上的混合 Runbook 辅助角色，则可[将 runbook 身份验证与托管标识配合使用](automation-hrw-run-runbooks.md#runbook-auth-managed-identities)。|
 |获取管理 Azure 资源的最佳性能|Azure 沙盒|脚本在同一环境中运行，延迟更低。|
@@ -52,7 +53,7 @@ Azure 自动化中的 runbook 可以在 Azure 沙盒上运行，也可以在[混
 |执行长时间运行的脚本|混合 Runbook 辅助角色|Azure 沙盒具有[资源限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
 |与本地服务进行交互|混合 Runbook 辅助角色|直接访问主机，或其他云环境或本地环境中的资源。 |
 |需要第三方软件和可执行文件|混合 Runbook 辅助角色|管理操作系统并且可以安装软件。|
-|使用 Runbook 监视文件或文件夹|混合 Runbook 辅助角色|在混合 Runbook 辅助角色上，使用[观察程序任务](automation-watchers-tutorial.md)。|
+|使用 Runbook 监视文件或文件夹|混合 Runbook 辅助角色|在混合 Runbook 辅助角色上，使用[观察程序任务](./automation-scenario-using-watcher-task.md)。|
 |运行资源密集型脚本|混合 Runbook 辅助角色| Azure 沙盒具有[资源限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
 |使用具有特定要求的模块| 混合 Runbook 辅助角色|下面是一些示例：</br> WinSCP - winscp.exe 上的依赖项 </br> IIS 管理 - 用于启用或管理 IIS 的依赖项|
 |使用安装程序安装模块|混合 Runbook 辅助角色|沙盒模块必须支持复制。|
@@ -101,7 +102,7 @@ Azure 自动化利用 [Azure Monitor](../azure-monitor/overview.md) 来监视其
 
 在[安装 Linux 混合 Runbook 辅助角色](automation-linux-hrw-install.md)期间，必须存在具有相应 sudo 权限的 nxautomation 帐户。 如果尝试安装辅助角色，但该帐户不存在或没有相应权限，则安装会失败。
 
-不应更改 `sudoers.d` 文件夹的权限或其所有权。 nxautomation 帐户需要 Sudo 权限，不应删除这些权限。 将它限制到某些文件夹或命令可能会导致中断性变更。
+请勿更改 `sudoers.d` 文件夹的权限或其所有权。 nxautomation 帐户需要 Sudo 权限，不应删除这些权限。 将它限制到某些文件夹或命令可能会导致中断性变更。
 
 Log Analytics 代理和 nxautomation 帐户的可用日志如下：
 
@@ -117,7 +118,13 @@ Runbook 需要通过凭据向 Azure 进行身份验证的权限。 请参阅 [Az
 
 ## <a name="modules"></a>模块
 
-Azure 自动化支持多个默认模块，包括一些 AzureRM 模块 (AzureRM.Automation) 和一个包含多个内部 cmdlet 的模块。 它还支持可安装的模块，其中包括 Az 模块 (Az.Automation)，当前优先使用该模块，而不是 AzureRM 模块。 有关可用于你的 runbook 和 DSC 配置的模块的详细信息，请参阅[在 Azure 自动化中管理模块](shared-resources/modules.md)。
+Azure 自动化包括以下 PowerShell 模块：
+
+* Orchestrator.AssetManagement.Cmdlets - 包含几个内部 cmdlet，它们只有在 Azure 沙盒环境中或对 Windows 混合 Runbook 辅助角色执行 runbook 时才可用。 这些 cmdlet 旨在用于代替 Azure PowerShell cmdlet 与自动化帐户资源进行交互。
+* Az.Automation - 用于与 Azure 自动化交互的推荐 PowerShell 模块，它替代了 AzureRM 自动化模块。 创建自动化帐户时，不自动包含 Az.Automation 模块，需要手动导入这些模块。 
+* AzureRM.Automation - 创建自动化帐户时默认安装。 
+
+根据 runbook 和 DSC 配置所需的 cmdlet，也支持可安装的模块。 有关可用于你的 runbook 和 DSC 配置的模块的详细信息，请参阅[在 Azure 自动化中管理模块](shared-resources/modules.md)。
 
 ## <a name="certificates"></a>证书
 
@@ -142,7 +149,7 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 |:--- |:--- |
 | 激活 |正在激活作业。 |
 | 已完成 |作业已成功完成。 |
-| 失败 |图形或 PowerShell 工作流 runbook 未能编译。 PowerShell runbook 未能启动或作业遇到异常。 请参阅 [Azure 自动化 runbook 类型](automation-runbook-types.md)。|
+| 已失败 |图形或 PowerShell 工作流 runbook 未能编译。 PowerShell runbook 未能启动或作业遇到异常。 请参阅 [Azure 自动化 runbook 类型](automation-runbook-types.md)。|
 | 失败，正在等待资源 |作业失败，因为它已达到[公平份额](#fair-share)限制三次，并且每次都从同一个检查点或 Runbook 开始处启动。 |
 | 已排队 |作业正在等待自动化辅助角色上的资源变得可用，以便其能够启动。 |
 | 正在恢复 |系统正在恢复已暂停的作业。 |
@@ -158,7 +165,7 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 
 在 Azure 自动化中执行 runbook 会在自动化帐户的活动日志中写入详细信息。 有关如何使用日志的详细信息，请参阅[从活动日志中检索详细信息](manage-runbooks.md#retrieve-details-from-activity-log)。
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>异常
 
 本部分介绍在 runbook 中处理异常或间歇性问题的一些方法。 一个示例是 WebSocket 异常。 正确的异常处理可防止暂时性网络故障导致 runbook 失败。
 

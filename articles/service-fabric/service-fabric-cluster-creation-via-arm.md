@@ -3,12 +3,13 @@ title: 创建 Azure Service Fabric 群集
 description: 了解如何使用 Azure 资源管理器在 Azure 中设置安全的 Service Fabric 群集。  可以使用默认模板或自己的群集模板创建群集。
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: d4daa75fd9383bc19da1b09104ebddff5712c5b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3f3d76b1cea2e1ed06f50bbdfbf4343972bc3945
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791805"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671025"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]

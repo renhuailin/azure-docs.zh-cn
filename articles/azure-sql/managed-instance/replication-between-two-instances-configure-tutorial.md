@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: 本教程介绍如何在 Azure SQL 托管实例发布服务器/分发服务器和 SQL 托管实例订阅服务器之间配置事务复制。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: data-movement
+ms.subservice: replication
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: MashaMSFT
+author: ferno-ms
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 47ea5ea73c581313f90791ca6d7892ebad3f666b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1169e3df6cc2c6d1d9850bbbcca3784ea80bec93
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690679"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691478"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>教程：配置两个托管实例之间的复制
 

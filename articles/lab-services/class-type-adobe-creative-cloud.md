@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 04/21/2021
 ms.author: nicolela
-ms.openlocfilehash: ef4245a3c17f95cf7e04b866939d4e92e39411c8
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 210fa647f12a786e357902bef3bbb3b20cca8077
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108281059"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962655"
 ---
 # <a name="set-up-a-lab-for-adobe-creative-cloud"></a>设置 Adobe Creative Cloud 实验室
 [Adobe Creative Cloud](https://www.adobe.com/creativecloud.html) 是桌面应用与 Web 服务的集合，用于摄影、设计、视频、Web、用户体验 (UX) 等。  大学和 K-12 学校都会在数字艺术与媒体课程中使用 Creative Cloud。  与典型平板电脑、笔记本电脑或工作站支持相比，某些 Creative Cloud 的媒体进程可能需要更强大的计算和可视化 (GPU) 能力。  可以借助 Azure 实验室服务灵活选择各种虚拟机 (VM) 大小（包括 GPU 大小）。
@@ -21,7 +21,7 @@ ms.locfileid: "108281059"
 若要在实验室 VM 上使用 Creative Cloud，必须使用[命名用户许可](https://helpx.adobe.com/enterprise/kb/technical-support-boundaries-virtualized-server-based.html#main_Licensing_considerations)，该许可是支持在虚拟机上进行部署的唯一许可类型。  每台实验室 VM 均可访问 Internet，如此一来，学生便可通过登录软件激活 Creative Cloud 应用。  学生登录后，其身份验证令牌将被缓存到用户配置文件中，以便他们无需在其 VM 上再次登录。  有关详细信息，请阅读 [Adobe 有关许可的文章](https://helpx.adobe.com/enterprise/using/licensing.html)。
 
 ## <a name="lab-configuration"></a>实验室配置
-若要设置此实验室，需要拥有 Azure 订阅和实验室帐户才能开始。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，便可在 Azure 实验室服务中创建新的实验室帐户。 若要详细了解如何新建实验室帐户，请参阅有关[如何设置实验室帐户](./tutorial-setup-lab-account.md)的教程。 也可以使用现有实验室帐户。
+若要设置此实验室，需要有 Azure 订阅和实验室帐户才能开始。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，便可在 Azure 实验室服务中创建新的实验室帐户。 若要详细了解如何新建实验室帐户，请参阅有关[如何设置实验室帐户](./tutorial-setup-lab-account.md)的教程。 也可以使用现有实验室帐户。
 
 ### <a name="lab-account-settings"></a>实验室帐户设置
 
@@ -33,7 +33,7 @@ ms.locfileid: "108281059"
 
 ### <a name="lab-settings"></a>实验室设置
 
-需要用于实验室的 VM 大小取决于你的学生将会创建的项目类型。  大多数 [Creative Cloud 应用](https://helpx.adobe.com/creative-cloud/system-requirements.html)支持基于 GPU 的加速，并且需要 GPU 才能让各项功能正常使用。  为了确保选择适当的 VM 大小，建议测试你的学生要创建的项目，以确保性能足够出众。  下表显示了推荐用于 Creative Cloud 的 [VM 大小](https://docs.microsoft.com/azure/lab-services/administrator-guide#vm-sizing)。  
+需要用于实验室的 VM 大小取决于你的学生将会创建的项目类型。  大多数 [Creative Cloud 应用](https://helpx.adobe.com/creative-cloud/system-requirements.html)支持基于 GPU 的加速，并且需要 GPU 才能让各项功能正常使用。  为了确保选择适当的 VM 大小，建议测试你的学生要创建的项目，以确保性能足够出众。  下表显示了推荐用于 Creative Cloud 的 [VM 大小](./administrator-guide.md#vm-sizing)。  
 
 | 实验室设置 | 值/说明 |
 | ------------ | ------------------ |

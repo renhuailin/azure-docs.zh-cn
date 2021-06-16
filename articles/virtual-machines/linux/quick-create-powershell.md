@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 07/31/2020
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 2cef611fe79ca04303840076b09b4cf6344b7e7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 12715a3f1392f789425ac7cc5176db3f293efef8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102616224"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668209"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建 Linux 虚拟机
 
@@ -171,6 +171,8 @@ New-AzVM `
 ```
 
 部署 VM 需要数分钟。 部署完成后，请转到下一部分。
+
+[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-the-vm"></a>连接到 VM
 

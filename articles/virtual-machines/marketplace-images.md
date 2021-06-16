@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 9df1f6b02e6572c8f2153016c0142912e24fcfe8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1ba23474034623228cc7c645ffb3d0ec5ae65474
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562531"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679040"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>在创建映像时提供 Azure 市场购买计划信息
 

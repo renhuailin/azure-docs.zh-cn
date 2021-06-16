@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2cf201c17b97464386ce52f4d689c2c1006d0970
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e4463659077943507651ddd2ad30ee2a1af9cf7a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377409"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785206"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions 托管选项
 
@@ -31,7 +31,7 @@ ms.locfileid: "110377409"
 
 下面汇总了适用于 Functions 的三个主要托管计划的优点：
 
-| 计划 | 好处 |
+| 计划 | 优点 |
 | --- | --- |  
 |**[消耗计划](consumption-plan.md)**| 在函数运行时自动缩放，你只需为计算资源付费。<br/><br/>在消耗计划中，会根据传入事件数动态添加和删除 Functions 主机的实例。<br/><br/> ✔ 默认托管计划。<br/>✔ 仅当函数运行时才产生费用。<br/>✔ 即使是在负载较高期间也可自动缩放。|  
 |**[高级计划](functions-premium-plan.md)**|使用预热的工作器根据需要自动缩放，这些工作器在空闲后会毫不延迟地运行应用程序，在更强大的实例上运行，并连接到虚拟网络。 <br/><br/>请考虑下列情况中的 Azure Functions 高级计划： <br/><br/>✔ 你的函数应用持续地运行，或者近乎持续地运行。<br/>✔ 你的消耗计划具有大量的小型执行操作，具有较高的执行费用但较低的 GB 秒数。<br/>✔ 你需要的 CPU 或内存选项超出消耗计划提供的选项。<br/>✔ 你的代码所需的运行时间超过消耗计划允许的最长执行时间。<br/>✔ 你需要使用消耗计划中未提供的功能，例如虚拟网络连接。|  
@@ -103,7 +103,7 @@ ms.locfileid: "110377409"
 | --- | --- |
 | **[消耗计划](consumption-plan.md)** | 只需为函数运行时间付费。 账单将基于执行数量、执行时间和所用内存。 |
 | **[高级计划](functions-premium-plan.md)** | 高级计划基于在必需实例和预热实例中使用的核心秒数和内存。 每个计划必须至少有一个实例始终处于预热状态。 此计划提供了最可预测的定价。 |
-| *[专用计划](dedicated-plan.md) | 应用服务计划中函数应用的费用与其他应用服务资源（例如 Web 应用）的费用相同。|
+| **[专用计划](dedicated-plan.md)** | 应用服务计划中函数应用的费用与其他应用服务资源（例如 Web 应用）的费用相同。|
 | **[应用服务环境 (ASE)](dedicated-plan.md)** | ASE 每月会产生统一的基础结构使用费，该费率不会随 ASE 大小的变化而改变。 每个应用服务计划 vCPU 也会产生费用。 ASE 中托管的所有应用都在“隔离”定价 SKU 中。 |
 | **[Kubernetes](functions-kubernetes-keda.md)**| 只需支付 Kubernetes 群集的费用；Functions 无额外费用。 函数应用作为应用程序工作负荷在群集之上运行，就像普通应用一样。 |
 

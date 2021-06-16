@@ -3,20 +3,19 @@ title: Azure 资源管理器：创建单一数据库
 description: 使用 Azure 资源管理器模板在 Azure SQL 数据库中创建单一数据库。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
-ms.custom: subject-armqs sqldbrb=1
+ms.subservice: deployment-configuration
+ms.custom: subject-armqs sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: quickstart
-author: mumian
-ms.author: jgao
-ms.reviewer: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.date: 06/24/2020
-ms.openlocfilehash: 0cd8869b96bcc482d8549378abf818f5fe5f50d6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6e2bf456d9a86f652ade4d68df8846d7c5f2a974
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769878"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893149"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure SQL 数据库中创建单一数据库
 
@@ -36,7 +35,7 @@ ms.locfileid: "108769878"
 
 单一数据库有一组通过两个[购买模型](purchasing-models.md)中的一个定义的计算、内存和存储资源。 创建单一数据库时，还需要定义一个[服务器](logical-servers.md)来管理它并将它放置在指定区域的 [Azure 资源组](../../active-directory-b2c/overview.md)中。
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-sql-database/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/sql-database/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.sql/sql-database/azuredeploy.json":::
 

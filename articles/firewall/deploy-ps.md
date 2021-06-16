@@ -7,12 +7,13 @@ ms.service: firewall
 ms.date: 12/03/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: dc36d45e226cffafb51cf7aa09ea6f0d528ee016
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 227f8093a54d59254a8a48ffc0caf016b6d9be38
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98051371"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701854"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>使用 Azure PowerShell 部署和配置 Azure 防火墙
 
@@ -49,7 +50,7 @@ ms.locfileid: "98051371"
 
 ## <a name="prerequisites"></a>先决条件
 
-此过程要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 验证 PowerShell 版本以后，请运行 `Connect-AzAccount`，以便创建与 Azure 的连接。
+此过程要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 验证 PowerShell 版本以后，请运行 `Connect-AzAccount`，以便创建与 Azure 的连接。
 
 ## <a name="set-up-the-network"></a>设置网络
 
@@ -116,6 +117,8 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'Micros
 #Create the virtual machine
 New-AzVM -ResourceGroupName Test-FW-RG -Location "East US" -VM $VirtualMachine -Verbose
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="deploy-the-firewall"></a>部署防火墙
 

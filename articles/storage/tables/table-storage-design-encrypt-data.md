@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/11/2018
 ms.subservice: tables
-ms.openlocfilehash: b921be718bfeb5eb95d4a802fb4d2a8cdd0946c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b874bfb9f3c261f395f8358151ae555cdaed8e8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88236771"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756880"
 ---
 # <a name="encrypt-table-data"></a>对表数据进行加密
 .NET Azure 存储客户端库支持对插入和替换操作的字符串实体属性进行加密。 加密的字符串作为二进制属性存储在服务中，并在解密之后转换回字符串。    
@@ -29,6 +29,5 @@ ms.locfileid: "88236771"
 ## <a name="next-steps"></a>后续步骤
 
 - [表设计模式](table-storage-design-patterns.md)
-- [为关系建模](table-storage-design-modeling.md)
 - [为关系建模](table-storage-design-modeling.md)
 - [针对数据修改的设计](table-storage-design-for-modification.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d5a8fe4192c3778e259ed18239a4198398d8807b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74410025e148eb60438a020164837dac486d2ad3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94836829"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954994"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 常规操作参考指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "94836829"
 
 ### <a name="assign-owners-to-key-tasks"></a>将所有者分配到关键任务
 
-管理 Azure Active Directory 需要持续执行关键操作任务和过程，这可能并不属于一个推出项目。 设置这些任务对于优化环境仍非常重要。 关键任务及其建议所有者包括：
+管理 Azure Active Directory 需要持续执行关键操作任务和流程，这可能并不完全属于某一个推出式项目。 设置这些任务对于优化环境仍非常重要。 关键任务及其建议所有者包括：
 
 | 任务 | 所有者 |
 | :- | :- |
@@ -70,7 +70,7 @@ ms.locfileid: "94836829"
 #### <a name="hybrid-management-recommended-reading"></a>有关混合管理的推荐阅读文档
 
 - [Azure AD Connect：自动升级](../hybrid/how-to-connect-install-automatic-upgrade.md)
-- [了解 Azure AD 应用程序代理连接器 | 自动更新](../manage-apps/application-proxy-connectors.md#automatic-updates)
+- [了解 Azure AD 应用程序代理连接器 | 自动更新](../app-proxy/application-proxy-connectors.md#automatic-updates)
 
 ### <a name="azure-ad-connect-health-alert-baseline"></a>Azure AD Connect Health 警报基线
 
@@ -90,9 +90,9 @@ ms.locfileid: "94836829"
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>有关本地代理日志的推荐阅读文档
 
-- [应用程序代理故障排除](../manage-apps/application-proxy-troubleshoot.md)
+- [应用程序代理故障排除](../app-proxy/application-proxy-troubleshoot.md)
 - [自助密码重置疑难解答 - Azure Active Directory](../authentication/troubleshoot-sspr.md)
-- [了解 Azure AD 应用程序代理连接器](../manage-apps/application-proxy-connectors.md)
+- [了解 Azure AD 应用程序代理连接器](../app-proxy/application-proxy-connectors.md)
 - [Azure AD Connect：排查直通身份验证的问题](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
 - [根据 Azure AD MFA NPS 扩展的错误代码排查错误](../authentication/howto-mfa-nps-extension-errors.md)
 
@@ -106,7 +106,7 @@ ms.locfileid: "94836829"
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>有关本地代理管理的推荐阅读文档
 
-- [了解 Azure AD 应用程序代理连接器](../manage-apps/application-proxy-connectors.md)
+- [了解 Azure AD 应用程序代理连接器](../app-proxy/application-proxy-connectors.md)
 - [Azure AD 直通身份验证 - 快速入门](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>大规模管理

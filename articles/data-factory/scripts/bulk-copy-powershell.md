@@ -5,14 +5,14 @@ ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.topic: article
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 10/31/2017
-ms.openlocfilehash: f58cc9100ccf834daa214da02ccf0650bef31154
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: c1148af0228adea9d0742376bf2afec0f03afecd
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482067"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665581"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂批量复制多个表
 

@@ -3,20 +3,20 @@ title: 内存中技术
 description: 内存中技术大幅提升了 Azure SQL 数据库和 Azure SQL 托管实例中事务和分析工作负载的性能。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: ''
+ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: mathoma
 ms.date: 03/19/2019
-ms.openlocfilehash: 48b74a5507eb4a1d48b7bf70133e476a30fe8169
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d534736e72bb97caa96b1001d379aefd7e3c7c6b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92779945"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698819"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>通过使用 Azure SQL 数据库和 Azure SQL 托管实例的内存技术来优化性能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]

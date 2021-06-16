@@ -3,20 +3,20 @@ title: 设置 SQL 数据同步
 description: 本教程介绍如何设置 Azure SQL 数据同步
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 01/14/2019
-ms.openlocfilehash: 77073d21f982e82e567e517b7d9eca061cb91859
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: a2e5727f0c3057b27200bf7f080bb9f5b9c09a1a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812875"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707837"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>教程：设置 Azure SQL 数据库和 SQL Server 的数据库之间的 SQL 数据同步
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

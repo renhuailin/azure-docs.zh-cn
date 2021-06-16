@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/13/2021
+ms.date: 06/07/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, Kubernetes
-ms.openlocfilehash: b6414d1a4fabb1d052151aec110dce2cde6c70cb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9a0dbba69b6317ab5a3df0b87e5f288d5a95872c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379022"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752650"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 认知服务容器
 
@@ -53,7 +53,7 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 | [文本分析][ta-containers-keyphrase] | 关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)） | 提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 | 预览 |
 | [文本分析][ta-containers-language] |  文本语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)） | 针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 | 正式发布 |
 | [文本分析][ta-containers-sentiment] | 情绪分析 v3（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)） | 分析原始文本，获取正面或负面情绪的线索。 此版本的情绪分析为每个文档以及其中的句子返回情绪标签（例如正面或负面） 。 |  正式发布 |
-| [文本分析][ta-containers-health] |  **运行状况文本分析** | 从非结构化临床文本中提取医疗信息并进行标记。 | 门控式预览版。 [请求访问权限][request-access]。 |
+| [文本分析][ta-containers-health] |  **运行状况文本分析** | 从非结构化临床文本中提取医疗信息并进行标记。 | 预览 |
 | [翻译][tr-containers] | **翻译** | 将文本翻译成多种语言和方言。 | 门控式预览版。 [请求访问权限][request-access]。 | 
 
 ### <a name="speech-containers"></a>语音容器

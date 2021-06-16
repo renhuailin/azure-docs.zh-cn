@@ -142,7 +142,7 @@
         - name: 管理用户和用户访问权限
           items:
             - name: 创建和管理用户
-              displayName: 'Active Directory, roles, permissions'
+              displayName: 'Active Directory, roles, permissions, password, passwords, change, reset'
               href: how-to-create-and-manage-users.md
             - name: 定义全局用户访问控制
               href: how-to-define-global-user-access-control.md
@@ -180,6 +180,7 @@
             - name: 了解传感器警报
               href: how-to-work-with-alerts-on-your-sensor.md
             - name: 从“警报”页筛选和管理警报
+              displayName: 'alert, alerts, Important, pinned, recent, acknowledge, archive, archived, search, text,'
               href: how-to-view-alerts.md
             - name: 关于警报消息
               href: how-to-view-information-provided-in-alerts.md
@@ -338,7 +339,7 @@
           displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
         - name: 常见问题解答 - 代理
-          displayName: 'FAQ, embedded, dependencies, data, quota, internet,'
+          displayName: 'FAQ, embedded, dependencies, data, quota, internet, password, change'
           href: resources-agent-frequently-asked-questions.md
         - name: Azure 路线图
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'

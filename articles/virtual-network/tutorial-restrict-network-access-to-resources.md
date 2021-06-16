@@ -15,12 +15,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/11/2020
 ms.author: kumud
-ms.openlocfilehash: 22494d292077f4b6018a4512b45b5fe2caa9c8ee
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 789816e37c3aaf9678fd9cb87ff6362442709498
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057195"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082201"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>教程：使用 Azure 门户通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -48,7 +48,7 @@ ms.locfileid: "106057195"
 2. 选择“网络”，然后选择“虚拟网络” 。
 3. 单击“+ 添加”，然后输入以下信息： 
 
-   |设置|值|
+   |设置|Value|
    |----|----|
    |订阅| 选择订阅|
    |资源组 | 选择“新建”，并输入 myResourceGroup|
@@ -88,7 +88,7 @@ ms.locfileid: "106057195"
 
 3. 在“添加子网”下，选择或输入以下信息，然后选择“确定”：
 
-    |设置|值|
+    |设置|Value|
     |----|----|
     |名称| 专用 |
     |地址范围| 保留为默认值|
@@ -109,7 +109,7 @@ ms.locfileid: "106057195"
 3. 在“网络安全组”页中，单击“+ 添加” 。
 4. 输入以下信息 
 
-    |设置|值|
+    |设置|Value|
     |----|----|
     |订阅| 选择订阅|
     |资源组 | 从列表中选择“myResourceGroup”|
@@ -122,7 +122,7 @@ ms.locfileid: "106057195"
 8. 选择“+ 添加”。
 9. 创建一条允许出站通信到 Azure 存储服务的规则。 输入或选择以下信息，然后选择“添加”：
 
-    |设置|值|
+    |设置|Value|
     |----|----|
     |Source| 选择“VirtualNetwork” |
     |源端口范围| * |
@@ -130,13 +130,13 @@ ms.locfileid: "106057195"
     |目标服务标记 | 选择“存储”|
     |目标端口范围| 保留默认值为 8080 |
     |协议|任意|
-    |操作|Allow|
+    |操作|允许|
     |优先级|100|
     |名称|重命名为 Allow-Storage-All|
 
 10. 创建另一条出站安全规则，拒绝到 Internet 的通信。 此规则将覆盖所有网络安全组中允许出站 Internet 通信的默认规则。 使用以下值完成上述步骤 6-9：
 
-    |设置|值|
+    |设置|Value|
     |----|----|
     |Source| 选择“VirtualNetwork” |
     |源端口范围| * |
@@ -152,14 +152,14 @@ ms.locfileid: "106057195"
 12. 在“设置”下，选择“入站安全规则”。 
 13. 选择“+ 添加”，然后使用以下值：
 
-    |设置|值|
+    |设置|Value|
     |----|----|
-    |源| 任意 |
+    |Source| 任意 |
     |源端口范围| * |
     |目标 | 选择“VirtualNetwork”|
     |目标端口范围| 更改为 3389 |
     |协议|任意|
-    |操作|Allow|
+    |操作|允许|
     |优先级|120|
     |名称|更改为 Allow-RDP-All|
 
@@ -182,7 +182,7 @@ ms.locfileid: "106057195"
 3. 单击“+ 添加”。
 4. 输入以下信息：
 
-    |设置|值|
+    |设置|Value|
     |----|----|
     |订阅| 选择订阅|
     |资源组| 选择“myResourceGroup”|
@@ -204,7 +204,7 @@ ms.locfileid: "106057195"
 1. 转到存储帐户的“概述”页。
 2. 选择“文件共享”应用图标，然后单击“+ 文件共享” 。
 
-    |设置|值|
+    |设置|Value|
     |----|----|
     |名称| my-file-share|
     |Quota| “设置为最大值” |
@@ -223,7 +223,7 @@ ms.locfileid: "106057195"
 3. 选择“+ 添加现有虚拟网络”。
 4. 在“添加网络”下选择以下值，然后选择“添加”： 
 
-    |设置|值|
+    |设置|Value|
     |----|----|
     |订阅| 选择订阅|
     |虚拟网络| **myVirtualNetwork**|
@@ -248,7 +248,7 @@ ms.locfileid: "106057195"
 2. 选择“+ 添加”>“虚拟机”。 
 3. 输入以下信息：
 
-   |设置|值|
+   |设置|Value|
    |----|----|
    |订阅| 选择订阅|
    |资源组| 选择之前创建的 **myResourceGroup。|
@@ -259,7 +259,7 @@ ms.locfileid: "106057195"
    |图像 | Windows Server 2019 Datacenter - Gen1 |
    |大小 | 选择要使用的 VM 实例大小 |
    |用户名|输入所选用户名。|
-   |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+   |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。|
    |公共入站端口 | 允许所选端口 |
    |选择入站端口 | 保留默认设置为“RDP (3389)” |
 

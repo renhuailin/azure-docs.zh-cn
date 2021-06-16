@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c570a7f646f9fc76fcb858748c59f438b46bf033
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98724435"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572137"
 ---
 # <a name="resilient-end-user-experience"></a>可复原的最终用户体验
 
@@ -40,13 +40,13 @@ ms.locfileid: "98724435"
 
 如果内置用户流可以满足你的业务需求，请选择内置用户流。 由于 Microsoft 进行了广泛的测试，因此你可以最大限度地减少验证这些标识用户流的策略级功能、性能或缩放所需的测试。 你仍需测试应用程序的功能、性能和缩放。
 
-如果你由于业务需求而[选择自定义策略](../../active-directory-b2c/custom-policy-get-started.md)，则除了应用程序级测试外，还请确保对功能、性能或缩放执行策略级测试。
+如果你由于业务需求而[选择自定义策略](../../active-directory-b2c/user-flow-overview.md)，则除了应用程序级测试外，还请确保对功能、性能或缩放执行策略级测试。
 
-请参阅[比较用户流和自定义策略](../../active-directory-b2c/custom-policy-overview.md#comparing-user-flows-and-custom-policies)一文来做出决定。
+请参阅[比较用户流和自定义策略](../../active-directory-b2c/user-flow-overview.md#comparing-user-flows-and-custom-policies)一文来做出决定。
 
 ## <a name="choose-multiple-idps"></a>选择多个 IDP
 
-使用[外部标识提供者](../../active-directory-b2c/technical-overview.md#external-identity-providers)（如 Facebook）时，请务必在外部提供者变得不可用的情况下使用回退计划。
+使用[外部标识提供者](../../active-directory-b2c/add-identity-provider.md)（如 Facebook）时，请务必在外部提供者变得不可用的情况下使用回退计划。
 
 ### <a name="how-to-set-up-multiple-idps"></a>如何设置多个 IDP
 
@@ -62,7 +62,7 @@ ms.locfileid: "98724435"
 
 ## <a name="availability-of-multi-factor-authentication"></a>多重身份验证的可用性
 
-使用[电话服务进行多重身份验证 (MFA)](../../active-directory-b2c/phone-authentication.md) 时，请务必考虑备选一个服务提供商。 本地电信或电话服务提供商可能会出现服务中断情况。
+使用[电话服务进行多重身份验证 (MFA)](../../active-directory-b2c/phone-authentication-user-flows.md) 时，请务必考虑备选一个服务提供商。 本地电信或电话服务提供商可能会出现服务中断情况。
 
 ### <a name="how-to-choose-an-alternate-mfa"></a>如何选择备用 MFA  
 

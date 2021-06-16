@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: cdbddfc84b3f71576cfd0299f2babec859b4ef1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06bff9acd76edc05498285809735eb4ec8a3c2f3
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92311051"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407741"
 ---
 # <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>为已启用 Azure Arc 的 PostgreSQL 超大规模设置数据库引擎设置
 
@@ -215,5 +215,5 @@ azdata arc postgres server edit -n postgres01 -e 'search_path = "$user"'
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解如何[横向扩展（添加工作器节点）](scale-out-postgresql-hyperscale-server-group.md)服务器组
+- 了解如何[横向扩展（添加工作器节点）](scale-out-in-postgresql-hyperscale-server-group.md)服务器组
 - 了解如何[纵向扩展或缩减（增加/减少内存/vCore）](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)服务器组

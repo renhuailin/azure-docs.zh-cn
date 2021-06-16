@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 26b5331aa9242978f0f097c8e90bc807fc65f745
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: b7aefa537c9b822572f38501920afdaa45bc01c3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531943"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955058"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "107531943"
 
 ### <a name="assign-owners-to-key-tasks"></a>将所有者分配到关键任务
 
-管理 Azure Active Directory 需要持续执行关键操作任务和过程，这可能并不属于一个推出项目。 设置这些任务对于优化环境仍非常重要。 关键任务及其建议所有者包括：
+管理 Azure Active Directory 需要持续执行关键操作任务和流程，这可能并不完全属于某一个推出式项目。 设置这些任务对于优化环境仍非常重要。 关键任务及其建议所有者包括：
 
 | 任务 | 所有者 |
 | :- | :- |
@@ -153,7 +153,7 @@ Microsoft 还建议你联系应用程序所有者，以了解使用模式（如�
 
 ### <a name="single-sign-on-for-apps"></a>应用的单一登录
 
-要让用户获得最佳体验，降低风险，获得报告能力和治理能力，为整个企业提供标准化的单一登录机制至关重要。 如果使用的应用程序支持通过 Azure AD 实现 SSO，但目前已配置为使用本地帐户，则应重新配置这些应用程序以将 SSO 与 Azure AD 一起使用。 同样，如果正在使用的应用程序支持通过 Azure AD 实现 SSO，但目前使用另一个标识提供者，则应将这些应用程序重新配置为也将 SSO与 Azure AD 一起使用。 如果应用程序不支持联合身份验证协议，但支持基于表单的身份验证，我们建议你将应用程序配置为使用[密码保管](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)与 Azure AD 应用程序代理。
+要让用户获得最佳体验，降低风险，获得报告能力和治理能力，为整个企业提供标准化的单一登录机制至关重要。 如果使用的应用程序支持通过 Azure AD 实现 SSO，但目前已配置为使用本地帐户，则应重新配置这些应用程序以将 SSO 与 Azure AD 一起使用。 同样，如果正在使用的应用程序支持通过 Azure AD 实现 SSO，但目前使用另一个标识提供者，则应将这些应用程序重新配置为也将 SSO与 Azure AD 一起使用。 如果应用程序不支持联合身份验证协议，但支持基于表单的身份验证，我们建议你将应用程序配置为使用[密码保管](../app-proxy/application-proxy-configure-single-sign-on-password-vaulting.md)与 Azure AD 应用程序代理。
 
 ![基于 AppProxy 密码的登录](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
@@ -196,10 +196,10 @@ Microsoft 还建议你联系应用程序所有者，以了解使用模式（如�
 
 ### <a name="named-locations"></a>命名位置
 
-使用 Azure AD 中的[命名位置](../reports-monitoring/quickstart-configure-named-locations.md)，可以在组织中标记受信任的 IP 地址范围。 Azure AD 使用命名位置以：
+使用 Azure AD 中的[命名位置](../conditional-access/location-condition.md)，可以在组织中标记受信任的 IP 地址范围。 Azure AD 使用命名位置以：
 
 - 预防风险事件中的误报。 从受信任的网络位置登录可降低用户的登录风险。
-- 配置[基于位置的条件访问](../reports-monitoring/quickstart-configure-named-locations.md)。
+- 配置[基于位置的条件访问](../conditional-access/location-condition.md)。
 
 ![命名位置](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 

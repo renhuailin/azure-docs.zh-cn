@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 73fdfa06fab42a5687e3aa354e3ba92937b92605
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c6aa4a0ad6f9c7f209d9921db4fa75f004a921af
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98684286"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679683"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-database-or-container-for-azure-cosmos-db-core-sql-api"></a>用于 Azure Cosmos DB Core (SQL) API 的数据库或容器的使用 PowerShell 的吞吐量 (RU/s) 操作
 [!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]

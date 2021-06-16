@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: ef9b16ae56c560d033cb18de6a3ccf3b87fbc25a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6e43f512612197fd70f7e2988be1f9ff7b00b0cb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98684334"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110680426"
 ---
 # <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-with-single-write-region-by-using-powershell"></a>对于单个写入区域的 Azure Cosmos 帐户，使用 PowerShell 更改故障转移优先级或触发故障转移
 [!INCLUDE[appliesto-all-apis](../../../includes/appliesto-all-apis.md)]

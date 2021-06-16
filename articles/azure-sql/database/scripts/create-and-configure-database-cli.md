@@ -3,20 +3,20 @@ title: Azure CLI：创建单一数据库
 description: 使用此 Azure CLI 示例脚本创建单一数据库。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 00346accbccd67f542a8496ac097b0236c56a08c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 76f7d0314e382508c6290e80db4960addbc15c24
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773812"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688958"
 ---
 # <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>使用 Azure CLI 创建单一数据库并配置防火墙规则
 

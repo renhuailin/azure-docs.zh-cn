@@ -6,16 +6,16 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 52b5bd0650b3a069adc3ef7f101c48a4674deaab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1006f29544bf2708277c6b5a975836a31bcdeff9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97107101"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959292"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>教程：将模板函数添加到 ARM 模板
 
-本教程介绍如何向 Azure 资源管理器模板（ARM 模板）添加[模板函数](template-functions.md)。 我们使用函数来动态构造值。 除了这些系统提供的模板函数，还可以创建[用户定义的函数](./template-user-defined-functions.md)。 完成本教程需要 **7 分钟**。
+本教程介绍如何向 Azure 资源管理器模板（ARM 模板）添加[模板函数](template-functions.md)。 我们使用函数来动态构造值。 除了这些系统提供的模板函数，还可以创建[用户定义的函数](./user-defined-functions.md)。 完成本教程需要 **7 分钟**。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -80,7 +80,7 @@ az deployment group create \
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧菜单中选择“资源组”。 
 1. 选择已部署到的资源组。
 1. 可以看到一项存储帐户资源已部署，且其位置与资源组一样。

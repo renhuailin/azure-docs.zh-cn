@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: e4240e7ad53725494a2b9b04d827fef0395c1bd2
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a97726498adc89a8453d88bef9a61aa343da2c5e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483166"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956442"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -104,7 +104,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 
 ## <a name="resource-manager-template"></a><a name="arm-template"></a>Resource Manager 模板
 一个 JSON 文件，它以声明方式定义一个或多个 Azure 资源，并定义所部署资源之间的依赖关系。 使用模板能够以一致方式反复部署资源。  
-请参阅[创作 Azure 资源管理器模板](./azure-resource-manager/templates/template-syntax.md)
+请参阅[创作 Azure 资源管理器模板](./azure-resource-manager/templates/syntax.md)
 
 ## <a name="resource-provider"></a>资源提供程序
 一种服务，提供可以通过 Resource Manager 进行部署和管理的资源。 每个资源提供程序提供用于处理所部署资源的操作。 可以通过 Azure 门户、Azure PowerShell 和多个编程 SDK 来访问资源提供程序。  

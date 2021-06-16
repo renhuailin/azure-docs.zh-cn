@@ -7,20 +7,19 @@ ms.author: duau
 ms.date: 10/12/2020
 ms.topic: quickstart
 ms.service: expressroute
-ms.custom:
-- mode-api
-ms.openlocfilehash: 50307e40526f5cce4d1349180b29fac00fb70943
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - mode-api
+ms.openlocfilehash: f4373de8491b914f5d755eed46e0878097aefb16
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534953"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695177"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和修改 ExpressRoute 线路
 
 本快速入门介绍如何使用 PowerShell cmdlet 和 Azure 资源管理器部署模型创建 ExpressRoute 线路。 还可以检查线路状态、更新、删除或取消预配线路。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。

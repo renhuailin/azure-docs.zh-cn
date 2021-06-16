@@ -7,12 +7,13 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 02/13/2021
 ms.author: albecker
-ms.openlocfilehash: 658dfbb654920c0dd90c4b4caaac7a5ca5962c81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d2b0ac2750515c8a61674b695e0faf3fd54ff7c6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607290"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670247"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>更新托管磁盘的存储类型
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b3db4e47a73cf7b7ad4e4645546d103c1a3c4fc
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99576661"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812867"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -152,4 +152,4 @@ ms.locfileid: "99576661"
 - [在虚拟网络中保护 Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [虚拟网络中的 Azure 服务集成](virtual-network-for-azure-services.md)
 - [虚拟网络服务终结点策略](./virtual-network-service-endpoint-policies-overview.md)
-- [Azure Resource Manager 模板](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Azure Resource Manager 模板](https://azure.microsoft.com/resources/templates/vnet-2subnets-service-endpoints-storage-integration)

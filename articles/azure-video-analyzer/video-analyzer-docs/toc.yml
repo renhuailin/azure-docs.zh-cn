@@ -14,8 +14,12 @@
           href: release-notes.md
 - name: 快速入门
   items:
-    - name: 入门 - Azure 视频分析器
-      href: get-started-detect-motion-emit-events.md
+    - name: Azure 视频分析器入门
+      items:
+        - name: 使用 ARM 模板
+          href: get-started-detect-motion-emit-events.md
+        - name: 使用门户
+          href: get-started-detect-motion-emit-events-portal.md
     - name: Azure 视频分析器 Visual Studio Code 扩展
       href: create-pipeline-vs-code-extension.md
     - name: 检测运动并发出事件
@@ -69,12 +73,12 @@
   items:
     - name: 管道
       href: pipeline.md
+    - name: 管道扩展
+      href: pipeline-extension.md
     - name: 视频录制
       href: video-recording.md
     - name: 方案
       items:
-        - name: 管道扩展
-          href: pipeline-extension.md
         - name: 基于事件的视频录制
           href: event-based-video-recording-concept.md
         - name: 连续视频录制

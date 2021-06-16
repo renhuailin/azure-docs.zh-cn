@@ -1,18 +1,18 @@
 ---
 title: Azure 备份的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure 密钥保管库的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 36ccc9832a0005d2f6d5cf015e8115ece7c8501e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 04fdf6c61b44b92e8a4d29861efefb68dbb2e02e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097574"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030119"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-key-vault"></a>Azure 备份的 Azure Policy 法规遵从性控制措施
 

@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, sstein
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 317b530fbaa34ca5689bb505126892e4eba06bd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6dde8aaa676e8045326f7078e1c3fd2a0ada6dc2
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92674791"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699849"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -6,15 +6,16 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.topic: how-to
 ms.custom: sqldbrb=1
-author: stevestein
-ms.author: sstein
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: 5a0dd12efb9d94bda264b3bd04b05cdc3df917e5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2b632e156d51b7e6985ab183bdadbb2da5da75b3
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92786626"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699499"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>使用弹性数据库工具进行多分片查询
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

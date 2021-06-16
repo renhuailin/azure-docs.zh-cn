@@ -1,21 +1,21 @@
 ---
 title: 内置策略定义列表
 description: 列出 Azure Policy 的内置策略定义。 类别包括“标记”、“合规性”、“Key Vault”、“Kubernetes”、“来宾配置”等。
-ms.date: 04/28/2021
+ms.date: 06/11/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 62a0b86b03cb60010848d87feba425bcbe28938a
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: d321e0583d1456126ccd2daf141f0f50a500227f
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108182779"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019309"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy 内置策略定义
 
 此页是 Azure Policy 内置策略定义的索引。
 
-每个内置链接（指向Azure 门户中的策略定义）的名称。 使用“源”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。 这些内置项按 **元数据** 中的 **category** 属性进行分组。 若要跳转到特定的 **类别**，请使用页面右侧的菜单。 否则，请按 <kbd>Ctrl</kbd>-<kbd>F</kbd> 来使用浏览器的搜索功能。
+每个内置链接（指向 Azure 门户中的策略定义）的名称。 使用“源”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。 这些内置项按 **元数据** 中的 **category** 属性进行分组。 若要跳转到特定的 **类别**，请使用页面右侧的菜单。 否则，请按 <kbd>Ctrl</kbd>-<kbd>F</kbd> 来使用浏览器的搜索功能。
 
 ## <a name="api-for-fhir"></a>API for FHIR
 
@@ -161,6 +161,10 @@ ms.locfileid: "108182779"
 
 [!INCLUDE [azure-policy-reference-policies-managed-application](../../../../includes/policy/reference/bycat/policies-managed-application.md)]
 
+## <a name="media-services"></a>媒体服务
+
+[!INCLUDE [azure-policy-reference-policies-media-services](../../../../includes/policy/reference/bycat/policies-media-services.md)]
+
 ## <a name="migrate"></a>Migrate
 
 [!INCLUDE [azure-policy-reference-policies-migrate](../../../../includes/policy/reference/bycat/policies-migrate.md)]
@@ -197,6 +201,10 @@ ms.locfileid: "108182779"
 
 [!INCLUDE [azure-policy-reference-policies-signalr](../../../../includes/policy/reference/bycat/policies-signalr.md)]
 
+## <a name="site-recovery"></a>Site Recovery
+
+[!INCLUDE [azure-policy-reference-policies-site-recovery](../../../../includes/policy/reference/bycat/policies-site-recovery.md)]
+
 ## <a name="sql"></a>SQL
 
 [!INCLUDE [azure-policy-reference-policies-sql](../../../../includes/policy/reference/bycat/policies-sql.md)]
@@ -220,6 +228,10 @@ ms.locfileid: "108182779"
 ## <a name="vm-image-builder"></a>VM 映像生成器
 
 [!INCLUDE [azure-policy-reference-policies-vm-image-builder](../../../../includes/policy/reference/bycat/policies-vm-image-builder.md)]
+
+## <a name="web-pubsub"></a>Web PubSub
+
+[!INCLUDE [azure-policy-reference-policies-web-pubsub](../../../../includes/policy/reference/bycat/policies-web-pubsub.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

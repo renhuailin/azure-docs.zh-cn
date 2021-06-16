@@ -5,17 +5,17 @@ description: 本文将介绍如何自定义启动沉浸式阅读器的按钮。
 services: cognitive-services
 author: metanMSFT
 manager: guillasi
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: metang
-ms.openlocfilehash: 17076cc98da20c714523b2cdde58ea259ad76653
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1f5feff0857b98b077ed1e19dbb7aaa82004df69
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367057"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893437"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>如何自定义沉浸式阅读器按钮
 

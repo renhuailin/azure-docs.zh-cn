@@ -5,17 +5,17 @@ description: 如何使用适用于电子邮件、Web 和 Azure DevOps 的挂钩�
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 30d8fdf99da7a4854db0985bed6256ecd6f7a366
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db5fbbc192e6c3b4f50af20e05cbd164dbe10032
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93420914"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892537"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>操作说明：配置警报并使用挂钩获取通知
 

@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 05/11/2021
 ms.author: rogarana
 ms.subservice: files
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 4b49d8a0fce3dac1c5558d4784d1bb7ddb33b734
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: a4d5ff9298b8cbf4203e157bc21fae6059342130
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810545"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663423"
 ---
 # <a name="how-to-create-an-nfs-share"></a>如何创建 NFS 共享
 Azure 文件共享是位于云中的完全托管文件共享。 本文介绍如何创建可使用 NFS 协议的文件共享。 有关这两种协议的详细信息，请参阅 [Azure 文件共享协议](storage-files-compare-protocols.md)。

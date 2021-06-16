@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: 了解 Azure SQL 数据库和 Azure SQL 托管实例如何通过长期保留策略支持将完整数据库备份存储长达 10 年。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: shkale
+author: shkale-msft
 ms.author: shkale
-ms.reviewer: mathoma, sstein
+ms.reviewer: mathoma
 ms.date: 02/25/2021
-ms.openlocfilehash: b1ba3f98f39511bcebf94502ed749d7cba1fc71b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e49f6220a25a449221ccab70a7439722189378cd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184043"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708504"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>长期保留 - Azure SQL 数据库和 Azure SQL 托管实例
 

@@ -3,12 +3,12 @@ title: 适用于 Service Fabric 的 Azure 文件存储卷驱动程序
 description: Service Fabric 支持使用 Azure 文件备份容器中的卷。
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.openlocfilehash: a5125dbd88a2fe236196c427244f1311d9b73b9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3acb20723bc826a120a8333c0ef63c33131376a
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86247687"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901198"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>适用于 Service Fabric 的 Azure 文件存储卷驱动程序
 
@@ -198,7 +198,7 @@ Azure 文件卷插件的驱动程序名称为 sfazurefile。 此值为应用程�
     ```
 
 ## <a name="using-your-own-volume-or-logging-driver"></a>使用自己的卷或日志记录驱动程序
-Service Fabric 还允许使用自己的自定义[卷](https://docs.docker.com/engine/extend/plugins_volume/)或[日志记录](https://docs.docker.com/engine/admin/logging/overview/)驱动程序。 如果群集上未安装 Docker 卷/日志记录驱动程序，可使用 RDP/SSH 协议手动安装。 还可使用这些协议，通过[虚拟机规模集启动脚本](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)或 [SetupEntryPoint 脚本](./service-fabric-application-model.md)执行安装操作。
+Service Fabric 还允许使用自己的自定义[卷](https://docs.docker.com/engine/extend/plugins_volume/)或[日志记录](https://docs.docker.com/engine/admin/logging/overview/)驱动程序。 如果群集上未安装 Docker 卷/日志记录驱动程序，可使用 RDP/SSH 协议手动安装。 还可使用这些协议，通过[虚拟机规模集启动脚本](https://azure.microsoft.com/resources/templates/vmss-custom-script-windows/)或 [SetupEntryPoint 脚本](./service-fabric-application-model.md)执行安装操作。
 
 以下是安装 [Azure 的 Docker 卷驱动程序](https://docs.docker.com/docker-for-azure/persistent-data-volumes/)的一个脚本实例：
 

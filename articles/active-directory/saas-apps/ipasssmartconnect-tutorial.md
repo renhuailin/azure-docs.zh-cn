@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 7f383b661d682242f6d60761827ee5b86e5ed4a2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d69ec14182e1ab69ddaad6351fdc267ee0fa2cd
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92459837"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112063137"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipass-smartconnect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 iPass SmartConnect 集成
 
@@ -34,6 +34,9 @@ ms.locfileid: "92459837"
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 启用了单一登录 (SSO) 的 iPass SmartConnect 订阅。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 

@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
-ms.openlocfilehash: 204124240c6831ebb2c1df436736f475c48d98a8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1ef7bb79257387526720dd80e86e296280632c82
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048929"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410146"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
 
@@ -128,7 +128,7 @@ sudo systemctl start telegraf
 
 以上演练介绍了如何配置 Telegraf 代理，以便从一些基本的输入插件收集指标。Telegraf 代理支持 150 多个输入插件，部分插件支持其他配置选项。 InfluxData 发布了一个[受支持插件的列表](https://docs.influxdata.com/telegraf/v1.15/plugins/inputs/)以及有关[如何配置它们](https://docs.influxdata.com/telegraf/v1.15/administration/configuration/)的说明。  
 
-另外，在本演练中，我们还使用 Telegraf 代理发出了在其上部署了代理的 VM 的相关指标。 Telegraf 代理也可用作其他资源的指标的收集器和转发器。 若要了解如何将代理配置为发出其他 Azure 资源的指标，请参阅 [Azure Monitor Custom Metric Output for Telegraf](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md)（针对 Telegraf 的 Azure Monitor 自定义指标输出）。  
+另外，在本演练中，我们还使用 Telegraf 代理发出了在其上部署了代理的 VM 的相关指标。 Telegraf 代理也可用作其他资源的指标的收集器和转发器。 若要了解如何将代理配置为发出其他 Azure 资源的指标，请参阅 [Azure Monitor Custom Metric Output for Telegraf](https://github.com/influxdata/telegraf/blob/4b2e2c5263bb8bd030d2ae101438810c1af61945/plugins/outputs/azure_monitor/README.md)（针对 Telegraf 的 Azure Monitor 自定义指标输出）。  
 
 ## <a name="clean-up-resources"></a>清理资源 
 

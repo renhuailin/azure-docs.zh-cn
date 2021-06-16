@@ -4,17 +4,17 @@ titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: 4c55c25621df1925b6ed6c374d8af88551eb1e46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90a175c4c92f2ea3b0d3f9ec8015dd3ef27036d7
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96231423"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893979"
 ---
 指标顾问是一种用于时序异常检测、诊断和分析的服务。 作为由 AI 提供支持的服务，它使用你的数据来训练所使用的模型。 服务接受具有以下各列的聚合数据表：
 

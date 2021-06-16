@@ -3,12 +3,13 @@ title: 将 Azure 事件中心与 Azure 专用链接服务集成
 description: 了解如何将 Azure 事件中心与 Azure 专用链接服务集成
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: d19060f96a1a6912dd0f1c8791689a61cd2b2293
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 76f205d97c7c77ff75f0143181631319c6a23b97
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371357"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706037"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>允许通过专用终结点访问 Azure 事件中心命名空间 
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
@@ -99,8 +100,6 @@ ms.locfileid: "110371357"
 以下示例演示如何使用 Azure PowerShell 创建专用终结点连接。 此过程不会为你创建专用群集。 请遵循[此文](event-hubs-dedicated-cluster-create-portal.md)中的步骤创建专用的事件中心群集。 
 
 ```azurepowershell-interactive
-# create resource group
-
 $rgName = "<RESOURCE GROUP NAME>"
 $vnetlocation = "<VIRTUAL NETWORK LOCATION>"
 $vnetName = "<VIRTUAL NETWORK NAME>"
@@ -108,6 +107,9 @@ $subnetName = "<SUBNET NAME>"
 $namespaceLocation = "<NAMESPACE LOCATION>"
 $namespaceName = "<NAMESPACE NAME>"
 $peConnectionName = "<PRIVATE ENDPOINT CONNECTION NAME>"
+
+# create resource group
+New-AzResourceGroup -Name $rgName -Location $vnetLocation 
 
 # create virtual network
 $virtualNetwork = New-AzVirtualNetwork `

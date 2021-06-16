@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/05/2021
+ms.date: 05/27/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 42376cc7c1e1745e3db3ce3467ea02221fb7b834
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fa31cafb414792a5feef7207156ecfb2c0b68778
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478098"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652854"
 ---
 # <a name="configure-translator-docker-containers-preview"></a>配置翻译器 Docker 容器（预览版）
 
@@ -85,15 +85,6 @@ ms.locfileid: "110478098"
 ## <a name="mount-settings"></a>装载设置
 
 使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 选项来指定输入装载或输出装载。
-
-翻译器容器不使用输入或输出装载来存储训练或服务数据。
-
-主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](translator-how-to-install-container.md#host-computer)的装载位置。
-<!-- markdownlint-disable MD033 -->
-|可选| 名称 | 数据类型 | 说明 |
-|-------|------|-----------|-------------|
-|不允许| `Input` | String | 翻译器容器不使用此值。|
-|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 可在此处找到日志（包括容器日志）的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="next-steps"></a>后续步骤
 

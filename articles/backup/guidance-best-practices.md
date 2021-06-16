@@ -3,12 +3,12 @@ title: 指南和最佳做法
 description: 了解将云和本地工作负载备份到云的最佳做法和指南
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 14476533cf896434182e1d63f89c6a1279b36362
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 7b507fec6c3f9cd53dd5b775dff2ca43c4dcfd1f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519057"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965482"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
 
@@ -178,7 +178,7 @@ Azure 备份需要将工作负载中的数据移到恢复服务保管库。 Azur
 
 * Azure VM 上的 SAP HANA 数据库、Azure VM 上的 SQL Server 数据库 - 要求连接到 Azure 备份服务、Azure 存储和 Azure Active Directory。 这可以通过使用专用终结点，或允许访问所需的公共 IP 地址或 FQDN 来实现。 如果不允许正确连接到所需的 Azure 服务，则可能会导致诸如数据库发现、配置备份、执行备份和还原数据等操作失败。 有关在使用 NSG 标记、Azure 防火墙和 HTTP 代理时可参考的完整网络指南，请参阅这些 [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) 和 [SAP HANA](./backup-azure-sap-hana-database.md#establish-network-connectivity) 文章。
 
-* 混合 - 对于所有关键操作（安装、配置、备份和还原），MARS（Microsoft Azure 恢复服务）代理都需要进行网络访问。 MARS 代理可以通过以下这些方式连接到 Azure 备份服务：使用公共对等互连（可用于旧线路）和 Microsoft 对等互连通过 [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) 进行连接；使用[专用终结点](install-mars-agent.md#private-endpoints)进行连接；通过[具有适当访问控制的代理/防火墙](install-mars-agent.md#verify-internet-access)进行连接。
+* 混合 - 对于所有关键操作（安装、配置、备份和还原），MARS（Microsoft Azure 恢复服务）代理都需要进行网络访问。 MARS 代理可以通过以下这些方式连接到 Azure 备份服务：使用公共对等互连（可用于旧线路）和 Microsoft 对等互连通过 [Azure ExpressRoute](install-mars-agent.md#azure-expressroute-support) 进行连接；使用[专用终结点](install-mars-agent.md#private-endpoint-support)进行连接；通过[具有适当访问控制的代理/防火墙](install-mars-agent.md#verify-internet-access)进行连接。
 
 ### <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 

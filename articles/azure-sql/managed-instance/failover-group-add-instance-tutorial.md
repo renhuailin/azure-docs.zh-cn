@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
-ms.reviewer: sashan
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 08/27/2019
-ms.openlocfilehash: 1609f188af8ffb58251edc806e19f7820a6b0869
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3429062ae6385fe844d202cb846245b76896eda
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99525715"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697392"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教程：将 SQL 托管实例添加到故障转移组
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -428,7 +428,7 @@ ms.locfileid: "99525715"
 
    下表显示了辅助虚拟网络所需的值：
 
-    | **字段** | 值 |
+    | **字段** | Value |
     | --- | --- |
     | **名称** |  辅助托管实例要使用的虚拟网络的名称，例如 `vnet-sql-mi-secondary`。 |
     | **地址空间** | 虚拟网络的地址空间，例如 `10.128.0.0/16`。 | 
@@ -467,7 +467,7 @@ ms.locfileid: "99525715"
 
    下表显示了辅助托管实例所需的值：
  
-    | **字段** | 值 |
+    | **字段** | Value |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **资源组**| 主托管实例所在的资源组。 |
@@ -763,7 +763,7 @@ ms.locfileid: "99525715"
 
    下表显示了主托管实例的网关所需的值：
  
-    | **字段** | 值 |
+    | **字段** | Value |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **名称** | 虚拟网络网关的名称，例如 `primary-mi-gateway`。 | 
@@ -844,7 +844,7 @@ ms.locfileid: "99525715"
 
    下表显示了辅助托管实例的网关所需的值：
 
-   | **字段** | 值 |
+   | **字段** | Value |
    | --- | --- |
    | **订阅** |  辅助托管实例所在的订阅。 |
    | **名称** | 虚拟网络网关的名称，例如 `secondary-mi-gateway`。 | 

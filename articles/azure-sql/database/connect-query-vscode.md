@@ -5,20 +5,20 @@ description: 了解如何使用 Visual Studio Code 连接到 Azure SQL 数据库
 keywords: 连接到 sql 数据库
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: connect
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 05/29/2020
-ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d306fa3c2933b39c336c756bff86e1ad1bca5b7b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92672493"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704465"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>快速入门：使用 Visual Studio Code 进行连接和查询 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "92672493"
 
   | 操作 | Azure SQL Database | Azure SQL 托管实例 |
   |:--- |:--- |:---|
-  | 创建| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) |
+  | 创建| [门户](single-database-create-quickstart.md) | [门户](../managed-instance/instance-create-quickstart.md) |
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) |
   | 配置 | [服务器级别 IP 防火墙规则](firewall-create-server-level-portal-quickstart.md)| [来自虚拟机 (VM) 的连接](../managed-instance/connect-vm-instance-configure.md)|
@@ -74,7 +74,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页 。
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: d556956a4e123d65a5725b56db57b3ce6cbb7aaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfc16a5bfdb9297f60bced986f17a33ec69f6be9
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92675340"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888835"
 ---
 # <a name="help-students-download-software-developer-tools-from-the-azure-education-hub"></a>帮助学生从 Azure 教育中心下载软件开发者工具
 
@@ -37,4 +37,4 @@ ms.locfileid: "92675340"
 - [面向学生的 Azure](azure-students-program.md)
 - [面向学生的 Azure 入门版](azure-students-starter-program.md)
 - [Microsoft Learn：免费联机学习平台](/learn/)
-- [常见问题解答](program-faq.md#azure-for-students)
+- [常见问题解答](/azure/education-hub/azure-dev-tools-teaching/program-faq#azure-for-students)

@@ -7,12 +7,13 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 116c12900f015c849c9492ed67bc11d116286c43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: af7b46d0942b5d1bec1cbe77ec02eec7080597ba
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611923"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676942"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web 应用程序防火墙的资源日志
 
@@ -87,7 +88,7 @@ ms.locfileid: "102611923"
 
 只有按照上述步骤在每个应用程序网关实例上启用了访问日志，才会生成该日志。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录下来，如下面 v1 示例所示：
 
-|值  |说明  |
+|Value  |说明  |
 |---------|---------|
 |instanceId     | 处理请求的应用程序网关实例。        |
 |clientIP     | 请求的起始 IP。        |
@@ -131,7 +132,7 @@ ms.locfileid: "102611923"
 ```
 对于应用程序网关和 WAF v2，日志显示了一些详细信息：
 
-|值  |说明  |
+|Value  |说明  |
 |---------|---------|
 |instanceId     | 处理请求的应用程序网关实例。        |
 |clientIP     | 请求的起始 IP。        |
@@ -185,7 +186,7 @@ ms.locfileid: "102611923"
 只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 性能日志数据仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](../../application-gateway/application-gateway-metrics.md)。 将记录以下数据：
 
 
-|值  |说明  |
+|Value  |说明  |
 |---------|---------|
 |instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
@@ -222,7 +223,7 @@ ms.locfileid: "102611923"
 只有按照上述步骤为每个应用程序网关启用了防火墙日志，才会生成该日志。 此日志还需要在应用程序网关上配置 Web 应用程序防火墙。 数据存储在启用日志记录时指定的存储帐户中。 将记录以下数据：
 
 
-|值  |说明  |
+|Value  |说明  |
 |---------|---------|
 |instanceId     | 为其生成了防火墙数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。         |
 |clientIp     |   请求的起始 IP。      |

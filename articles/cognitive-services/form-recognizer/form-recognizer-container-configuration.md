@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: 了解如何将表单识别器容器配置为分析表单和表数据。
 author: aahill
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: 444e59aa969950eadb8532849ae10b97412555ab
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b40b9996a1cb8f66e5befa3b6e2d18addf6433f2
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374554"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894247"
 ---
 # <a name="configure-form-recognizer-containers"></a>配置表单识别器容器
 

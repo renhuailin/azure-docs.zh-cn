@@ -8,12 +8,13 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/21/2020
 ms.author: victorh
-ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3f35a745e7fc498752677cc404c5b06c06d3e7a8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83758956"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668570"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>通过 Azure PowerShell 在应用程序网关上使用自定义规则配置 Web 应用程序防火墙 v2
 
@@ -33,7 +34,7 @@ ms.locfileid: "83758956"
 
 如果选择在本地安装并使用 Azure PowerShell，则此脚本需要安装 Azure PowerShell 模块 2.1.0 或更高版本。
 
-1. 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+1. 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。
 2. 若要创建与 Azure 的连接，请运行 `Connect-AzAccount`。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

@@ -7,41 +7,31 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 8cc4bc6907f83ce062fed82dde17815fc4debd67
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 25c18d3e5b612c31a3c8a77a35118968616002dd
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104719617"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111896664"
 ---
 请参阅下面的 SKU 和定价信息列表。 
 
 #### <a name="multi-service"></a>多服务
 
-| 服务                    | 种类                      |
-|----------------------------|---------------------------|
+| 服务     | 种类    |
+|-------------|------------|
 | 多个服务。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)页。            | `CognitiveServices`     |
 
 
 #### <a name="vision"></a>影像
 
-| 服务                    | 种类                      |
-|----------------------------|---------------------------|
+| 服务    | 种类    |
+|------------|---------|
 | 计算机视觉            | `ComputerVision`          |
 | 自定义视觉 - 预测 | `CustomVision.Prediction` |
 | 自定义视觉 - 定型   | `CustomVision.Training`   |
 | 人脸                       | `Face`                    |
 | 表单识别器            | `FormRecognizer`          |
-
-#### <a name="search"></a>搜索
-
-| 服务            | 种类                  |
-|--------------------|-----------------------|
-| 必应自动建议   | `Bing.Autosuggest.v7` |
-| 必应自定义搜索 | `Bing.CustomSearch`   |
-| 必应实体搜索 | `Bing.EntitySearch`   |
-| 必应搜索        | `Bing.Search.v7`      |
-| 必应拼写检查   | `Bing.SpellCheck.v7`  |
 
 #### <a name="speech"></a>语音
 

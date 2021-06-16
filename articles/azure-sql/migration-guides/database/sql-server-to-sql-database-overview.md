@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 11/06/2020
-ms.openlocfilehash: 72e27e79bc1eea7633d7594f1f72e31abbfd7744
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 06da7175456125cfb65c6007f283da2eb6b93622
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136510"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786781"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>迁移概述：SQL Server 到 Azure SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -41,6 +41,8 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 迁移到 SQL 数据库的主要好处之一是可以使用 PaaS 功能实现应用程序现代化。 如此一来，无需再依赖实例级别范围内的技术组件，例如 SQL 代理作业。
 
 其次，还可以使用 SQL Server 的 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)将 SQL Server 本地许可证迁移到 Azure SQL 数据库，从而节省成本。 如果选择[基于 vCore 的购买模型](../../database/service-tiers-vcore.md)，则可以使用此选项。
+
+请务必查看 [Azure SQL 数据库中提供](../../database/features-comparison.md)的 SQL Server 数据库引擎功能，以验证迁移目标的可支持性。  
 
 ## <a name="considerations"></a>注意事项 
 
@@ -153,17 +155,12 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 
 除了 Azure SQL 数据库中包含的高可用性体系结构之外，还可借助[自动故障转移组](../../database/auto-failover-group-overview.md)功能，管理将托管实例中的数据库复制和故障转移到另一个区域的操作。 
 
+### <a name="logins-and-groups"></a>登录名和组
+
+在 Azure SQL 数据库中不支持 Windows 登录名，请改为创建 Azure Active Directory 登录名。 手动重新创建任何 SQL 登录名。 
+
 ### <a name="sql-agent-jobs"></a>SQL 代理作业
 Azure SQL 数据库不会直接支持 SQL 代理作业，需要将其部署到[弹性数据库作业（预览版）](../../database/job-automation-overview.md)。
-
-### <a name="logins-and-groups"></a>登录名和组
-在脱机模式下，使用数据库迁移服务将 SQL 登录名从 SQL Server 源移动到 Azure SQL 数据库。 使用“迁移向导”中的“已选择登录名”窗格将登录名迁移到目标 SQL 数据库。 
-
-还可以启用数据库迁移服务“配置”页面上的相应切换，通过数据库迁移服务迁移 Windows 用户和组。 
-
-或者，还可以使用 Microsoft 数据迁移架构师专门设计的 [PowerShell 实用程序](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)。 该实用程序使用 PowerShell 创建 Transact-SQL (T-SQL) 脚本来重新创建登录名，并从源中选择数据库用户到目标。 
-
-PowerShell 实用程序自动将 Windows Server Active Directory 帐户映射到 Azure Active Directory (Azure AD) 帐户，并且可以针对源 Active Directory 实例的每个登录名执行 UPN 查找。 该实用程序脚本自定义服务器和数据库角色，以及角色成员身份和用户权限。 目前不支持所包含的数据库，并且仅对一部分可能的 SQL Server 权限进行脚本编写。 
 
 ### <a name="system-databases"></a>系统数据库
 对于 Azure SQL 数据库，唯一适用的系统数据库为 [master](/sql/relational-databases/databases/master-database) 和 tempdb。 若要了解详细信息，请参阅 [Azure SQL 数据库中的 Tempdb](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)。

@@ -8,12 +8,13 @@ ms.service: web-application-firewall
 ms.date: 03/26/2021
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: cc111f6fe1c50af5be9686100b19209fe7f3d119
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dc297c10033cb9f42aa2aa0acd7a36b3085afbc1
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626157"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678486"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>使用 Azure PowerShell 启用 Web 应用程序防火墙
 
@@ -36,7 +37,7 @@ ms.locfileid: "105626157"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

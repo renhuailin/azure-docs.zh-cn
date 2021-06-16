@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: 232e28d3cc8b0bc7427dd035d51743f623e54259
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e9fbda18c786f934790c9aa70cd0f27d045fa64
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564297"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901306"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>教程：Azure Data Lake Storage Gen2、Azure Databricks & Spark
 
@@ -35,7 +35,7 @@ ms.locfileid: "103564297"
 
   请参阅[创建用于 Azure Data Lake Storage Gen2 的存储帐户](create-data-lake-storage-account.md)。
 
-* 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](../common/storage-auth-aad-rbac-portal.md)。
+* 请确保你的用户帐户分配有[存储 Blob 数据参与者角色](assign-azure-role-data-access.md)。
 
 * 安装 AzCopy v10。 请参阅[使用 AzCopy v10 传输数据](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 

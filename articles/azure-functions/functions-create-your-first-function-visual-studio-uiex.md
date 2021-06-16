@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9e3144738bd259ab9be75059af00f125581bb37c
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 5dffc4b1ffaa221e507c84c8a9b5654f9e5355c8
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "102050114"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785189"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>快速入门：使用 Visual Studio 在 Azure 中创建第一个函数
 
@@ -21,11 +21,9 @@ ms.locfileid: "102050114"
 
 ## <a name="1-prepare-your-environment"></a>1.准备环境
 
-+ 创建 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门相关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ 创建 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + 安装 [Visual Studio 2019](https://azure.microsoft.com/downloads/) 并在安装期间选择“Azure 开发”工作负载。 
-
-![安装包含“Azure 开发”工作负载的 Visual Studio](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 <br/>
 <details>
@@ -155,19 +153,7 @@ ms.locfileid: "102050114"
 
 ## <a name="7-clean-up-resources"></a>7.清理资源
 
-删除函数应用及其资源以避免产生任何后续成本。
-
-1. 在 Cloud Explorer 中，依次展开你的订阅、“应用服务”，右键单击函数应用，然后选择“在门户中打开” 。 
-
-1. 在函数应用页中，请选择“概览”选项卡，然后选择“资源组”下的链接 。
-
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="从函数应用页选择要删除的资源组":::
-
-1. 在“资源组”页中查看所包括的资源的列表，然后验证这些资源是否是要删除的。
- 
-1. 选择“删除资源组”，然后按说明操作。
-
-    可能需要数分钟才能删除完毕。 完成后会显示一个通知，持续数秒。 也可以选择页面顶部的钟形图标来查看通知。
+[!INCLUDE [functions-vstools-cleanup](../../includes/functions-vstools-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

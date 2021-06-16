@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, azla
 ms.topic: conceptual
 ms.date: 05/25/2021
-ms.openlocfilehash: 1dd4a75cbebeb0244ffd3e0c1f8e2cfcd1968440
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0c09d013e3e9e3934702eb512334a33a60044b9d
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379725"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441233"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的单租户与多租户和集成服务环境的比较情况
 
@@ -95,7 +95,7 @@ Azure 逻辑应用是一个基于云的平台，用于创建和运行集成应�
 | Azure 门户 | 逻辑应用（消耗版）资源类型 | [快速入门：在多租户 Azure 逻辑应用中创建集成工作流 - Azure 门户](quickstart-create-first-logic-app-workflow.md) |
 | Visual Studio Code | [Azure 逻辑应用（消耗版）扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) | [快速入门：在多租户 Azure 逻辑应用中创建集成工作流 - Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)
 | Azure CLI | [逻辑应用 Azure CLI 扩展](https://github.com/Azure/azure-cli-extensions/tree/master/src/logic) | - [快速入门：在多租户 Azure 逻辑应用中创建和管理集成工作流 - Azure CLI](quickstart-logic-apps-azure-cli.md) <p><p>- [az logic](/cli/azure/logic) |
-| Azure 资源管理器 | [创建逻辑应用 Azure 资源管理器 (ARM) 模板](https://azure.microsoft.com/resources/templates/101-logic-app-create/) | [快速入门：在多租户 Azure 逻辑应用中创建和部署集成工作流 - ARM 模板](quickstart-create-deploy-azure-resource-manager-template.md) |
+| Azure 资源管理器 | [创建逻辑应用 Azure 资源管理器 (ARM) 模板](https://azure.microsoft.com/resources/templates/logic-app-create/) | [快速入门：在多租户 Azure 逻辑应用中创建和部署集成工作流 - ARM 模板](quickstart-create-deploy-azure-resource-manager-template.md) |
 | Azure PowerShell | [Az.LogicApp 模块](/powershell/module/az.logicapp) | [Azure PowerShell 入门](/powershell/azure/get-started-azureps) |
 | Azure REST API | [Azure 逻辑应用 REST API](/rest/api/logic) | [Azure REST API 参考入门](/rest/api/azure) |
 ||||

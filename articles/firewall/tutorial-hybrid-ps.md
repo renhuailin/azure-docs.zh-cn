@@ -7,13 +7,14 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 03/26/2021
 ms.author: victorh
+ms.custom: devx-track-azurepowershell
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: db60c26ed50dae3b4b28a6c44d152a921eb96a69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: da9d5c0e3e3a7d8b81202f7194786bf8debdf3db
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627551"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694951"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 
@@ -48,7 +49,7 @@ ms.locfileid: "105627551"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
+本文要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
 
 若要正常开展此方案，必须符合三项关键要求：
 
@@ -450,6 +451,8 @@ New-AzVm `
     -OpenPorts 3389 `
     -Size "Standard_DS2"
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="test-the-firewall"></a>测试防火墙
 

@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/05/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0aa26cc0d78d6ca20dccb97b3936bad840c989b7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b7e505bfbb27aca479569ff6cddfa2686674ae94
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382466"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954117"
 ---
 # <a name="prebuilt-question-answering"></a>预生成的问答
 
@@ -99,7 +99,7 @@ POST https://{Endpoint}/qnamaker/v5.0-preview.2/generateanswer
 
 ## <a name="prebuilt-api-limits"></a>预生成 API 限制 
 
-访问[预生成 API 限制](https://docs.microsoft.com/azure/cognitive-services/qnamaker/limits?#prebuilt-question-answering-limits)文档 
+访问[预生成 API 限制](../limits.md#prebuilt-question-answering-limits)文档 
 
 ## <a name="prebuilt-api-reference"></a>预生成 API 参考
-请访问[预生成 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-qnamaker/qnamaker5.0preview2/prebuilt/generateanswer)文档，了解调用 API 所需的输入和输出参数。
+请访问[预生成 API 参考](/rest/api/cognitiveservices-qnamaker/qnamaker5.0preview2/prebuilt/generateanswer)文档，了解调用 API 所需的输入和输出参数。

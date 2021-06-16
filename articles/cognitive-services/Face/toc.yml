@@ -45,7 +45,7 @@ items:
           - name: 配置容器
             href: face-resource-container-config.md
           - name: 使用容器实例
-            href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
+            href: ../containers/azure-container-instance-recipe.md?context=%2fazure%2fcognitive-services%2fface%2fcontext%2fcontext
           - name: 所有认知服务容器文档
             href: ../containers/index.yml
             maintainContext: true

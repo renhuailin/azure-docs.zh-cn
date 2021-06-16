@@ -6,12 +6,13 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 9a82b305adec1385bf659987ea39df6bb953cd70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0df96e2c1e238beafabb60aaa00c668f521d0c70
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370965"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670162"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 
@@ -156,7 +157,7 @@ ms.locfileid: "100370965"
 
 -   **Azure-SSIS IR 的入站要求**
 
-| 方向 | 传输协议 | 源 | 源端口范围 | 目标 | 目标端口范围 | 注释 |
+| 方向 | 传输协议 | Source | 源端口范围 | 目标 | 目标端口范围 | 注释 |
 |---|---|---|---|---|---|---|
 | 入站 | TCP | BatchNodeManagement | * | VirtualNetwork | 29876、29877（如果将 IR 加入资源管理器虚拟网络） <br/><br/>10100、20100、30100（如果将 IR 加入经典虚拟网络）| 数据工厂服务使用这些端口来与虚拟网络中 Azure-SSIS IR 的节点通信。 <br/><br/> 无论是否创建子网级 NSG，数据工厂都始终会在附加到托管 Azure-SSIS IR 的虚拟机的网络接口卡 (NIC) 级别配置 NSG。 此 NIC 级别的 NSG 仅允许来自指定端口上的数据工厂 IP 地址的入站流量。 即使在子网级别为 Internet 流量打开这些端口，来自 IP 地址（非数据工厂 IP 地址）的流量也会在 NIC 级别被阻止。 |
 | 入站 | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | （可选）仅当 Microsoft 支持人员在高级故障排除期间要求客户打开此端口时，才需要此规则。故障排除后可立即将其关闭。 **CorpNetSaw** 服务标记仅允许 Microsoft 企业网络中的安全访问工作站使用远程桌面。 无法在门户中选择此服务标记，只能通过 Azure PowerShell 或 Azure CLI 选择。 <br/><br/> 在 NIC 级别的 NSG 中，端口 3389 默认已打开，你可以在子网级 NSG 中控制端口 3389，同时，出于保护目的，Azure-SSIS IR 默认已在每个 IR 节点上的 Windows 防火墙规则中禁用 3389 出站端口。 |
@@ -164,7 +165,7 @@ ms.locfileid: "100370965"
 
 -   **Azure-SSIS IR 的出站要求**
 
-| 方向 | 传输协议 | 源 | 源端口范围 | 目标 | 目标端口范围 | 注释 |
+| 方向 | 传输协议 | Source | 源端口范围 | 目标 | 目标端口范围 | 注释 |
 |---|---|---|---|---|---|---|
 | 出站 | TCP | VirtualNetwork | * | AzureCloud | 443 | 虚拟网络中 Azure-SSIS IR 的节点使用此端口来访问 Azure 服务，例如 Azure 存储和 Azure 事件中心。 |
 | 出站 | TCP | VirtualNetwork | * | Internet | 80 | （可选）虚拟网络中的 Azure-SSIS IR 节点使用此端口从 Internet 下载证书吊销列表。 如果阻止此流量，在启动 IR 时可能会出现性能下降，并且无法在证书吊销列表中检查证书的使用情况。 若要进一步将目标范围缩小为特定的 FQDN，请参阅 **使用 Azure ExpressRoute 或 UDR** 部分|

@@ -7,16 +7,16 @@ ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 497e714289c834e026c6b9b767ed2b7af5442783
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf57f4d990ca3542bac8721751fee30f2f941bae
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92780829"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708218"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署并探索一个多租户 SaaS 应用，该应用通过 Azure SQL 数据库使用“每租户一个数据库”模式
 

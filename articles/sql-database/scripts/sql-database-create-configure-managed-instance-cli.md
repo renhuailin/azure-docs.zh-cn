@@ -1,22 +1,22 @@
 ---
 title: Azure CLI：创建托管实例
 description: 用于在 Azure SQL 托管实例中创建托管实例的 Azure CLI 示例脚本
-services: sql-database
-ms.service: sql-database
-ms.subservice: operations
+services: sql-managed-instance
+ms.service: sql-managed-instance
+ms.subservice: deployment-configuration
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: carlrab
+author: danimir
+ms.author: danil
+ms.reviewer: mathoma
 ms.date: 03/25/2019
-ms.openlocfilehash: 54e1aa993f177a4d3bc255287ae8c2fb14cf65af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25ddb88cfe4fa96f60c2b9ffe556a200aaae3c2b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87497267"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698119"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>使用 CLI 创建 Azure SQL 托管实例
 

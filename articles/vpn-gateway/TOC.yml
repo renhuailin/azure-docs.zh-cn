@@ -39,6 +39,8 @@
           href: work-remotely-support.md
         - name: NVA 配置和远程工作
           href: nva-work-remotely-support.md
+    - name: VPN 网关常见问题
+      href: vpn-gateway-vpn-faq.md
     - name: 关于 VPN 网关设计
       href: design.md
     - name: 关于 VPN 网关设置
@@ -320,8 +322,6 @@
       href: /cli/azure/network/vnet-gateway
 - name: 资源
   items:
-    - name: VPN 网关常见问题
-      href: vpn-gateway-vpn-faq.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 博客

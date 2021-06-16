@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: d7e5890201afeae5b88e3edff8d0ed2af278f308
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: f28e9f2da86a810ca8737505938e3115540232c9
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107807"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007060"
 ---
 # <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>向商业市场计划添加新的发布者
 
@@ -29,7 +29,7 @@ ms.locfileid: "107107807"
 
 ## <a name="add-new-publishers"></a>添加新发布者
 
-1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
 1. 在右上方，选择“设置” > “帐户设置” 。
 1. 在“组织配置文件”下，选择“标识符” 。
 1. 在“发布者”部分，选择“添加发布者” 。

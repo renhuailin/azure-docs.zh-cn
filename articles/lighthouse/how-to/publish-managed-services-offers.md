@@ -3,12 +3,12 @@ title: 将托管服务产品发布到 Azure 市场
 description: 了解如何发布可将客户添加到 Azure Lighthouse 的托管服务产品。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 3f790c37a36fa1c5092a50c02429260825158c72
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 014386c6c4676abbc441cc2e23bdfcf90f3adc09
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491349"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965113"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
@@ -16,7 +16,7 @@ ms.locfileid: "106491349"
 
 ## <a name="publishing-requirements"></a>发布要求
 
-若要创建和发布产品/服务，你需要拥有有效的[合作伙伴中心帐户](../../marketplace/partner-center-portal/create-account.md)。 若无帐户，可以按照[注册流程](https://aka.ms/joinmarketplace)中的步骤，先在合作伙伴中心创建帐户，再加入商业市场计划。
+若要创建和发布产品/服务，你需要拥有有效的[合作伙伴中心帐户](../../marketplace/create-account.md)。 若无帐户，可以按照[注册流程](https://aka.ms/joinmarketplace)中的步骤，先在合作伙伴中心创建帐户，再加入商业市场计划。
 
 根据[托管服务产品认证要求](/legal/marketplace/certification-policies#700-managed-services)，你必须达到[白银级或黄金级云平台资格级别](/partner-center/learn-about-competencies)，或是 [Azure 专家 MSP](https://partner.microsoft.com/membership/azure-expert-msp)，才能发布托管服务产品。 此外，你[还必须输入潜在客户目标](../../marketplace/plan-managed-service-offer.md#customer-leads)，此后，每次客户部署你的产品/服务时，CRM 系统中都会创建一条客户记录。
 
@@ -26,7 +26,7 @@ ms.locfileid: "106491349"
 
 |**注意事项**  |**托管服务产品**  |**ARM 模板**  |
 |---------|---------|---------|
-|需要[合作伙伴中心帐户](../../marketplace/partner-center-portal/create-account.md)   |是         |否        |
+|需要[合作伙伴中心帐户](../../marketplace/create-account.md)   |是         |否        |
 |需满足[白银级或黄金级云平台资格级别](/partner-center/learn-about-competencies)或 [Azure 专家 MSP](https://partner.microsoft.com/membership/azure-expert-msp)      |是         |否         |
 |通过 Azure 市场提供给新客户     |是     |否       |
 |可以只向特定客户发布产品/服务     |是（仅适用于私有产品/服务，不适用于通过云解决方案提供商 (CSP) 计划的经销商获得的订阅）         |是         |
@@ -53,7 +53,7 @@ ms.locfileid: "106491349"
 
 完成所有部分后，下一步就是将产品/服务发布到 Azure 市场。 选择“发布”按钮启动产品/服务上线过程。 有关此过程的更多信息，请点击[此处](../../marketplace/review-publish-offer.md)。
 
-你可以随时[发布产品/服务](../..//marketplace/partner-center-portal/update-existing-offer.md)的更新版本。 例如，你可能想要向以前发布的产品/服务添加新的角色定义。 当你执行此操作时，已添加该产品/服务的客户会在 Azure 门户中的[服务提供程序](view-manage-service-providers.md)页面上看到一个图标，他们可通过图标知道更新可用。 每个客户都可以[查看更改](view-manage-service-providers.md#update-service-provider-offers)并决定是否要更新到新版本。 
+你可以随时[发布产品/服务](../../marketplace/update-existing-offer.md)的更新版本。 例如，你可能想要向以前发布的产品/服务添加新的角色定义。 当你执行此操作时，已添加该产品/服务的客户会在 Azure 门户中的[服务提供程序](view-manage-service-providers.md)页面上看到一个图标，他们可通过图标知道更新可用。 每个客户都可以[查看更改](view-manage-service-providers.md#update-service-provider-offers)并决定是否要更新到新版本。 
 
 ## <a name="the-customer-onboarding-process"></a>客户加入过程
 

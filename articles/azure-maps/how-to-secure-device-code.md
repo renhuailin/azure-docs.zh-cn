@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50e3ce1ef83c33900895e6aa3e5fc925b2004d7d
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92895624"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791341"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>通过 Azure AD 和 Azure Maps REST API 保护输入受限设备
 
@@ -41,11 +41,11 @@ ms.locfileid: "92895624"
     > ![为名称和重定向 uri 添加应用注册详细信息](./media/azure-maps-authentication/devicecode-app-registration.png)
 
 3. 导航到“身份验证”，并启用“将应用程序视为公共客户端”。  这将启用 Azure AD 的设备代码身份验证。
-    
+
     > [!div class="mx-imgBorder"]
     > ![启用作为公共客户端的应用注册](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  若要将委托的 API 权限分配到 Azure Maps，请访问应用程序。 然后依次选择“API 权限” > “添加权限”。  在“我的组织使用的 API”下，搜索并选择“Azure Maps” 。
+4. 若要将委托的 API 权限分配到 Azure Maps，请访问应用程序。 然后依次选择“API 权限” > “添加权限”。  在“我的组织使用的 API”下，搜索并选择“Azure Maps” 。
 
     > [!div class="mx-imgBorder"]
     > ![添加应用 API 权限](./media/how-to-manage-authentication/app-permissions.png)
@@ -59,22 +59,25 @@ ms.locfileid: "92895624"
 
 7. 若要添加用于在应用程序中获取令牌流的代码，有关实现详细信息，请参阅[设备代码流](../active-directory/develop/scenario-desktop-acquire-token.md#device-code-flow)。 获取令牌时，参考范围：`user_impersonation`（前面的步骤中已选定）。
 
-> [!Tip]
-> 使用 Microsoft 身份验证库 (MSAL) 获取访问令牌。 请参阅[调用 Web API 的桌面应用：代码配置](../active-directory/develop/scenario-desktop-app-configuration.md)上的建议
+    > [!Tip]
+    > 使用 Microsoft 身份验证库 (MSAL) 获取访问令牌。
+    > 请参阅[调用 Web API 的桌面应用：代码配置](../active-directory/develop/scenario-desktop-app-configuration.md)上的建议
 
 8. 使用从 Azure AD 获取的令牌编写 HTTP 请求，并使用有效的 HTTP 客户端发送请求。
 
 ### <a name="sample-request"></a>示例请求
+
 以下用于上传简单地理围栏的示例请求正文表示为使用中心点和半径的圆形几何图形。
 
 ```http
-POST /mapData/upload?api-version=1.0&dataFormat=geojson
-Host: atlas.microsoft.com
+POST /mapData?api-version=2.0&dataFormat=geojson
+Host: us.atlas.microsoft.com
 x-ms-client-id: 30d7cc….9f55
 Authorization: Bearer eyJ0e….HNIVN
 ```
 
  下面的示例请求正文在 GeoJSON 中：
+
 ```json
 {
     "type": "FeatureCollection",
@@ -92,23 +95,13 @@ Authorization: Bearer eyJ0e….HNIVN
 }
 ```
 
-### <a name="sample-response"></a>示例响应：
+### <a name="sample-response-header"></a>示例响应标头
 
-标头：
 ```http
-Location: https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0
-Access-Control-Expose-Headers: Location
+Operation-Location: https://us.atlas.microsoft.com/mapData/operations/{udid}?api-version=2.0
+Access-Control-Expose-Headers: Operation-Location
 ```
 
-正文：
-```json
-{
-  "operationId": "{operationId}",
-  "status": "Succeeded",
-  "created": "2020-01-02 1:02:03 AM +00:00",
-  "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{resourceId}?api-version=1.0"
-}
-```
 
 [!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 

@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3a56ff7a53151030b1c0aec8d11906c09a499a63
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: b67a1dcb2f6df42c95bb0b5c20ae4397582112db
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319370"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966913"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>用于 Azure Monitor 的资源管理器模板示例
 
-可以使用 [Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)大规模部署和配置 Azure Monitor。 以下文章提供了适用于不同 Azure Monitor 功能的示例模板。 这些示例可以根据特定要求进行修改，并且可以使用任何标准的资源管理器模板部署方法进行部署。 
+可以使用 [Azure 资源管理器模板](../azure-resource-manager/templates/syntax.md)大规模部署和配置 Azure Monitor。 以下文章提供了适用于不同 Azure Monitor 功能的示例模板。 这些示例可以根据特定要求进行修改，并且可以使用任何标准的资源管理器模板部署方法进行部署。 
 
 ## <a name="deploying-the-sample-templates"></a>部署示例模板
 使用示例的基本步骤如下：
