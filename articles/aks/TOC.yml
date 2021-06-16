@@ -299,7 +299,7 @@
       items:
         - name: 查看群集指标
           href: view-metrics.md
-        - name: 用于容器的 Azure Monitor
+        - name: 容器见解
           href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
         - name: 查看控制平面组件日志

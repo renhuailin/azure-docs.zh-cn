@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: extensions
 ms.date: 01/30/2019
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 1b5aea1f0f0101231408dc9ad7b57a30f2c86256
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 013404113c3346cfce752f53266062a3b5386092
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788150"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673952"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>在虚拟机规模集中对扩展预配进行排序
 Azure 虚拟机扩展提供部署后配置和管理、监视、安全性等功能。 生产部署通常结合使用为 VM 实例配置的多个扩展来实现所需效果。

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 694f501efc565ed498c1c8d8e2e38326277e8605
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a34bdfe55d2200176d6f6c7fde389c19dc26cfa5
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96621410"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536467"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>为 Azure 应用程序产品/服务创建 Azure 托管应用程序计划
 
@@ -58,7 +58,7 @@ Azure“托管应用程序”计划是一种在 Azure 市场发布 Azure 应用�
 
 ## <a name="azure-regions"></a>Azure 区域
 
-可以将计划发布到 Azure 公共区域和/或 Azure 政府区域。 在发布到 [Azure 政府](../azure-government/documentation-government-manage-marketplace-partners.md)之前，请在环境中测试和验证计划，因为某些终结点可能会有所不同。 若要设置和测试计划，请从 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)中请求试用帐户。
+可以将计划发布到 Azure 公共区域和、Azure 政府区域或两者。 在发布到 [Azure 政府](../azure-government/documentation-government-manage-marketplace-partners.md)之前，请在环境中测试和验证计划，因为某些终结点可能会有所不同。 若要设置和测试计划，请从 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)中请求试用帐户。
 
 作为发布者，你负责任何符合性控制、安全措施和最佳做法。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。
 
@@ -68,9 +68,9 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 ## <a name="choose-who-can-see-your-plan"></a>选择计划开放对象
 
-可以将每个计划设为对所有人（公用）或仅特定受众可见（专用）。 最多可以创建 100 个计划，其中最多可以有 45 个设为专用。 你可能通过创建专用计划为特定客户提供不同的定价选项或技术配置。
+可以将每个计划设为对所有人可见（公用）或仅特定受众可见（专用）。 最多可以创建 100 个计划，其中最多可以有 45 个设为专用。 你可能想创建专用计划为特定客户提供不同的定价选项或技术配置。
 
-你可以使用 Azure 订阅 ID 授予专用计划的访问权限，可选择纳入分配的每个订阅 ID 相关说明。 最多可以手动添加 10 个订阅 ID，使用 .CSV 文件最多可添加 10,000 个订阅 ID。 Azure 订阅 ID 表示为 GUID，字母必须为小写。
+你可以使用 Azure 订阅 ID 授予专用计划的访问权限，可选择包括分配的每个订阅 ID 的相关说明。 最多可以手动添加 10 个订阅 ID，使用 .CSV 文件最多可添加 10,000 个订阅 ID。 Azure 订阅 ID 表示为 GUID，字母必须为小写。
 
 通过云解决方案提供商计划 (CSP) 经销商建立的 Azure 订阅不支持专用计划。 有关详细信息，请参阅[Microsoft 商用市场中的专用产品/服务](private-offers.md)。
 
@@ -81,7 +81,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 你必须提供每个计划的每月价格。 此价格不包括在此解决方案部署的资源所产生的任何 Azure 基础结构或即用即付软件成本中。
 
-除了每月价格之外，还可以使用[按流量计费](partner-center-portal/azure-app-metered-billing.md)为非标准单位的消耗设置价格。 如果需要，可以将每月价格设置为零，专门使用按流量计费来收费。
+除了每月价格之外，还可以使用[按流量计费](marketplace-metering-service-apis.md)为非标准单位的消耗设置价格。 如果需要，可以将每月价格设置为零，专门使用按流量计费来收费。
 
 以 USD（USD=美元）设置的价格在保存时会使用当前汇率转换为所有选定市场的当地币种。 但你也可选择针对各个市场设置客户价格。
 
@@ -137,4 +137,4 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何在商业市场中创建 Azure 应用程序产品/服务](create-new-azure-apps-offer.md)
+- [创建 Azure 应用程序产品/服务](azure-app-offer-setup.md)

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: f1b7cfad1db6f6b96712565168dbc9d3e27d6689
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: e7f46a73b16a2af7085aa7d6312fa62f5bfd9ef8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952613"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960934"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>排查 Azure VM 灾难恢复中的复制问题
 
@@ -108,7 +108,7 @@ Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数�
 
 ### <a name="app-consistency-not-enabled-on-linux-servers"></a>Linux 服务器上未启用应用一致性
 
-**如何解决**：适用于 Linux 操作系统的 Azure Site Recovery 支持通过应用程序自定义脚本实现应用一致性。 为保障应用一致性，Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [这里](/azure/site-recovery/site-recovery-faq#replication)是启用此功能的步骤。
+**如何解决**：适用于 Linux 操作系统的 Azure Site Recovery 支持通过应用程序自定义脚本实现应用一致性。 为保障应用一致性，Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [这里](/azure/site-recovery/site-recovery-faq.yml#replication)是启用此功能的步骤。
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>更多的原因在于 VSS 相关的问题：
 

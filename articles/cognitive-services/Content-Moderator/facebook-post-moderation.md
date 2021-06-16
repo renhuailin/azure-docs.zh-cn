@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: pafarley
-ms.openlocfilehash: f3b43ed6a86276b308599f9091d581423b0f363c
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 58de8de28b796d67f9368224ced24c9c592cfdb6
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220984"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033808"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查 Facebook 帖子和评论
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 本教程介绍如何使用 Azure 内容审查器帮助审查 Facebook 页面上的帖子和评论。 Facebook 会将访客发布的内容发送到内容审查器服务。 然后，内容审查器工作流会根据内容评分和阈值发布内容，或者在评审工具中创建评审。 有关此方案的可行示例，请参阅[版本 2017 演示视频](https://channel9.msdn.com/Events/Build/2017/T6033)。
 

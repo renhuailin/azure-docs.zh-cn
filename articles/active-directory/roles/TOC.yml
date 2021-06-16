@@ -22,7 +22,7 @@
       href: groups-concept.md
     - name: 管理单元
       href: administrative-units.md
-    - name: 最佳做法
+    - name: 最佳实践
       href: best-practices.md
     - name: 安全性
       items:
@@ -111,6 +111,6 @@
     - name: Azure AD 服务限制
       href: ../enterprise-users/directory-service-limits-restrictions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: Azure AD PowerShell
-      href: /powershell/azure/active-directory/overview
-    - name: 图形 API
-      href: /graph/api/overview
+      href: /powershell/module/azuread/#directory-roles
+    - name: Microsoft Graph API
+      href: /graph/api/resources/directoryrole
