@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 68c7805136a7361a64a6ff6dfbb9e7d910b2ea9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f8a8aa4134815fcb048fe2c47f4c67e83a943ae
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97357936"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080068"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 中的 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -80,7 +80,7 @@ ms.locfileid: "97357936"
 有关详细信息，请参阅以下文章： 
 
 * [Windows VM 上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows VM 上的 SQL Server 常见问题解答](frequently-asked-questions-faq.md)
+* [Windows VM 上的 SQL Server 常见问题解答](frequently-asked-questions-faq.yml)
 * [Windows VM 上的 SQL Server 定价指南](pricing-guidance.md)
 * [Windows VM 上的 SQL Server 发行说明](doc-changes-updates-release-notes.md)
 

@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 2c410d6c310c8f9b0c50ff0073f4dda9a35c8f9c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b84255a4148322f9aa1b5c0d59eb220c2555102f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382464"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967628"
 ---
 # <a name="extend-a-prebuilt-docker-image-preview"></a>扩展预生成的 Docker 映像（预览版）
 
@@ -61,7 +61,7 @@ docker build -f <above dockerfile> -t <image_name>:<tag> .
 > [!TIP]
 > 在此 [Docker 文档](https://docs.docker.com/engine/reference/commandline/build/)中可以找到有关 `docker build` 的更多详细信息。
 
-如果 `docker build` 命令在本地不可用，请使用适用于你的 Azure 机器学习工作区的 Azure 容器注册表 ACR 在云中生成 Docker 映像。 有关详细信息，请参阅[教程：使用 Azure 容器注册表生成和部署容器映像](/azure/container-registry/container-registry-tutorial-quick-task)。
+如果 `docker build` 命令在本地不可用，请使用适用于你的 Azure 机器学习工作区的 Azure 容器注册表 ACR 在云中生成 Docker 映像。 有关详细信息，请参阅[教程：使用 Azure 容器注册表生成和部署容器映像](../container-registry/container-registry-tutorial-quick-task.md)。
 
 > [!IMPORTANT]
 > Microsoft 建议先验证你的 Dockerfile 是否可在本地工作，然后再尝试通过 Azure 容器注册表创建自定义的基础映像。

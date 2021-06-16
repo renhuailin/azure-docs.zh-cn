@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory 中排查基于 SAML 的单一登录问题
 description: 排查为基于 SAML 的单一登录配置的 Azure AD 应用程序的问题。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: iangithinji
-ms.openlocfilehash: c4a4f7bfad4254e7c3fa5851e62532ed427ced8b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.author: mtillman
+ms.openlocfilehash: b119df626eed15c15fdb267a0a78b6fd62b72162
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376420"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080536"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中排查基于 SAML 的单一登录问题
 如果在配置应用程序时遇到问题。 验证是否已经遵循应用程序教程中的所有步骤。 在应用程序的配置中，存在关于如何配置应用程序的内联文档。 还可以访问[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)，获取详细的分步指南。

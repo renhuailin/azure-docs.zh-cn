@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/19/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 82318a94a6a095016fe1177ee486f035d101589c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 517bde8d365793906c24d0f242d4adc1b6241e7c
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776771"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112083692"
 ---
 可以使用 Azure PowerShell、Azure CLI 或资源管理器模板禁用加密。 当 OS 和数据磁盘都已加密时，无法按预期在 Windows VM 上禁用数据磁盘加密。 请改为在所有磁盘上禁用加密。
 
@@ -28,6 +28,6 @@ ms.locfileid: "107776771"
      ```
 - **使用资源管理器模板禁用加密：** 
 
-    1. 单击[在正在运行的 Windows VM 上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)模板中的“部署到 Azure”。
+    1. 单击[在正在运行的 Windows VM 上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-windows-vm-without-aad)模板中的“部署到 Azure”。
     2. 选择订阅、资源组、位置、VM、卷类型、法律条款和协议。
     3.  单击“购买”，在正在运行的 Windows VM 上禁用磁盘加密。 

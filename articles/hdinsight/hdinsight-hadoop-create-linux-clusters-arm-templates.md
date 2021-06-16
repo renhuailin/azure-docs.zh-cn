@@ -3,14 +3,14 @@ title: 使用模板创建 Apache Hadoop 群集 - Azure HDInsight
 description: 了解如何使用 Resource Manager 模板创建 HDInsight 的群集
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive, devx-track-azurecli
+ms.custom: hdinsightactive
 ms.date: 04/07/2020
-ms.openlocfilehash: 43f9736ce902d4c195d6b07cfdf7011ba9ca0c2c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d39163fa2890eb16a455d505baa0a6bbeddd42e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702736"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950625"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集
 
@@ -33,7 +33,7 @@ ms.locfileid: "101702736"
 
 有关资源管理器模板的详细信息，请参阅以下文章和示例：
 
-* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/template-syntax.md)
+* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/syntax.md)
 * [使用 Azure Resource Manager 模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)
 * [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) 模板引用
 * [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
@@ -76,5 +76,5 @@ ms.locfileid: "101702736"
 * 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](/previous-versions/azure/virtual-machines/windows/csharp-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 有关部署应用程序的详细示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](../app-service/deploy-complex-application-predictably.md)。
 * 有关将解决方案部署到不同环境的指南，请参阅 [Microsoft Azure 中的开发和测试环境](../devtest-labs/devtest-lab-overview.md)。
-* 若要了解 Azure Resource Manager 模板的节，请参阅[创作模板](../azure-resource-manager/templates/template-syntax.md)。
+* 若要了解 Azure Resource Manager 模板的节，请参阅[创作模板](../azure-resource-manager/templates/syntax.md)。
 * 有关可在 Azure Resource Manager 模板中使用的函数列表，请参阅[模板函数](../azure-resource-manager/templates/template-functions.md)。

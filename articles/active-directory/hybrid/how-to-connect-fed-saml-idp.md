@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b26c24149d422021dcb86f75c915ade89cbccdec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19e594065b640e5ac2bc2957ac80b4ecc2fd946f
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97589869"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540265"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 标识提供者 (IdP) 进行单一登录
 
@@ -77,7 +77,7 @@ Azure AD 在进行配置后可以用于标识提供者，后者使用 SAML 2.0 S
 ## <a name="required-attributes"></a>必需属性
 下表显示了针对 SAML 2.0 消息中的特定属性的要求。
  
-|属性|说明|
+|Attribute|说明|
 | ----- | ----- |
 |NameID|此断言语句的值必须与 Azure AD 用户的 ImmutableID 相同。 它最多可以有 64 个字母数字字符。 任何非 html 安全型字符都必须进行编码，例如，“+”字符显示为“.2B”。|
 |IDPEmail|用户主体名称 (UPN) 将在 SAML 响应中以 IDPEmail 元素的形式列出，这是用户在 Azure AD/Microsoft 365 中的 UserPrincipalName (UPN)。 UPN 采用电子邮件地址格式。 Windows Microsoft 365 (Azure Active Directory) 中的 UPN 值。|
@@ -204,7 +204,7 @@ SAML 2.0 标识提供者需遵循有关 Azure AD 信赖方的信息要求。 Azu
 
   ```powershell
   $dom = "contoso.com" 
-  $BrandName - "Sample SAML 2.0 IDP" 
+  $BrandName = "Sample SAML 2.0 IDP" 
   $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" 
   $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" 
   $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" 

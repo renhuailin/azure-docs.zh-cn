@@ -1,18 +1,18 @@
 ---
 title: Azure 认知搜索的内置策略定义
 description: 列出 Azure 认知搜索的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.topic: reference
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 86741d24dfb3eb50ca62ed82e75040a4f6bddaab
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a7d0f4b762d03c87290c3948be27b8e3f7e169bd
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071843"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112021548"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cognitive-search"></a>Azure 认知搜索的 Azure Policy 内置定义
 

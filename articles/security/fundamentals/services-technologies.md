@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 5914d5a54606f49f6fbd809a17e2b47375b58dcd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d2c8f16e340b0b8eca30dd8a67010020b6362df
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641978"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950439"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
 
@@ -89,7 +89,7 @@ ms.locfileid: "105641978"
 | [Azure 负载均衡器](../../load-balancer/load-balancer-overview.md)|TCP/UDP 应用程序网络负载均衡器。 |
 | [Azure ExpressRoute](../../expressroute/expressroute-introduction.md)| 本地网络和 Azure 虚拟网络之间的专用 WAN 链接。 |
 | [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)| 一种全局 DNS 负载均衡器。|
-| [Azure 应用程序代理](../../active-directory/manage-apps/application-proxy.md)| 用于保护远程访问本地托管 Web 应用程序的身份验证前端。 |
+| [Azure 应用程序代理](../../active-directory/app-proxy/application-proxy.md)| 用于保护远程访问本地托管 Web 应用程序的身份验证前端。 |
 |[Azure 防火墙](../../firewall/overview.md)|是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。|
 |[Azure DDoS 防护](../../ddos-protection/ddos-protection-overview.md)|与应用程序设计最佳做法相结合，可提供针对 DDoS 攻击的防御。|
 |[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)|可通过直接连接，将 VNet 的虚拟网络专用地址空间和标识扩展到 Azure 服务。|

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 4/29/2021
 ms.author: rambala
-ms.openlocfilehash: 719b68998cfc70f1075448e4c688d83f0f31a0b5
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 6e6b543741a27b7a99ef447e7e34fbec803403db
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517555"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970513"
 ---
 # <a name="using-expressroute-for-routing-microsoft-365-traffic"></a>将 ExpressRoute 用于路由 Microsoft 365 流量
 
@@ -81,11 +81,11 @@ Azure Front Door (AFD) 可服务 Microsoft 365 入口点。 AFD 是一种在 Mic
 * 如需建立基线和性能历史记录，以便检测 Microsoft 365 性能的最新问题，请参阅[使用基线和性能历史记录优化 Office 365 性能][Microsoft 365perf]。
 
 <!--Link References-->
-[ExR-Intro]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction 
-[CreatePeering]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-routing-portal-resource-manager
+[ExR-Intro]: ./expressroute-introduction.md
+[CreatePeering]: ./expressroute-howto-routing-portal-resource-manager.md
 [MGN]: https://azure.microsoft.com/blog/how-microsoft-builds-its-fast-and-reliable-global-network/
-[AFD]: https://docs.microsoft.com/azure/frontdoor/front-door-overview
-[ExRRF]: https://docs.microsoft.com/azure/expressroute/how-to-routefilter-portal
-[Teams]: https://docs.microsoft.com/microsoftteams/microsoft-teams-online-call-flows
+[AFD]: ../frontdoor/front-door-overview.md
+[ExRRF]: ./how-to-routefilter-portal.md
+[Teams]: /microsoftteams/microsoft-teams-online-call-flows
 [Microsoft 365-Test]: https://connectivity.office.com/
 [Microsoft 365perf]: /microsoft-365/enterprise/performance-tuning-using-baselines-and-history

@@ -14,12 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ebf835cad79f8c011be2fec91f6f4644ecd0941f
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c350d91e04ea284ed91c3afb6912d76ed1e39ab0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284118"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079690"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>将 Azure 中的多个 SQL VM 注册到 SQL IaaS 代理扩展
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +36,7 @@ ms.locfileid: "106284118"
 
 注册过程没有风险，没有停机时间，也不会重启 SQL Server 服务或虚拟机。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要将 SQL Server VM 注册到代理扩展，需要以下内容： 
 
@@ -243,6 +244,6 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 有关详细信息，请参阅以下文章： 
 
 * [Windows VM 上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows VM 上的 SQL Server 常见问题解答](frequently-asked-questions-faq.md)
+* [Windows VM 上的 SQL Server 常见问题解答](frequently-asked-questions-faq.yml)
 * [Windows VM 上的 SQL Server 定价指南](pricing-guidance.md)
 * [Windows VM 上的 SQL Server 发行说明](../../database/doc-changes-updates-release-notes.md)

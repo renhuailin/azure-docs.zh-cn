@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/04/2021
-ms.openlocfilehash: 198702f619e490e8000e4430aab23a7f6bfb6d85
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 06/13/2021
+ms.openlocfilehash: 9aad86bc08d7190ae9fca9faab9dbfcfba93f206
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102107370"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062309"
 ---
 # <a name="create-rich-interactive-reports-of-security-center-data"></a>创建丰富的交互式安全中心数据报表
 
@@ -28,7 +28,7 @@ ms.locfileid: "102107370"
 
 | 方面                          | 详细信息                                                                                                                                      |
 |---------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
-| 发布状态：                  | 预览<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                       |
+| 发布状态：                  | 正式发布版 (GA)                                                                                                                    |
 | 定价：                        | 免费                                                                                                                                         |
 | 所需角色和权限： | 若要保存工作簿，必须至少拥有目标资源组的工作簿参与者权限                                      |
 | 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov） |
@@ -68,7 +68,7 @@ ms.locfileid: "102107370"
 “一段时间内的安全分数”报表有五个图形，用于向所选工作区报告订阅：
 
 
-|Graph  |示例  |
+|图形  |示例  |
 |---------|---------|
 |上周和上个月的分数趋势<br>使用此部分监视订阅的当前分数和分数的一般趋势。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-1.png" alt-text="内置报表的安全分数趋势":::|
 |所有所选订阅的聚合分数<br>将鼠标悬停在趋势线中的任何点上可查看所选时间范围内任何日期的聚合分数。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-2.png" alt-text="所有所选订阅的聚合分数":::|

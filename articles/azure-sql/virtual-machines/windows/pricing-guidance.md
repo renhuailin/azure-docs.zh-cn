@@ -16,12 +16,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d980b92bc4effc58ef84ef6ec70c3908f575e484
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 05883b3016ac3c8a8d26bfc02fea38e3adb2675a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102615595"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079744"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 上 SQL Server 的定价指南
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,7 +59,7 @@ ms.locfileid: "102615595"
 | SQL Server 版本 | 工作负载 |
 |-----|-----|
 | Web | 小型网站 |
-| Standard | 中小型工作负荷 |
+| 标准 | 中小型工作负荷 |
 | Enterprise | 大型或任务关键型工作负荷|
 
 可按两种方法为这些版本的 SQL Server 许可付费：“按使用情况付费”或“自带许可证 (BYOL)”。 
@@ -100,7 +100,7 @@ ms.locfileid: "102615595"
 “通过许可移动性使用自己的 SQL Server 许可证”（也称为 **BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可费用，前提是已通过批量许可计划或云解决方案提供商 (CSP) 获得许可及软件保障。
 
 > [!NOTE]
-> BYOL 映像目前仅适用于 Windows 虚拟机。 但是，可以在仅限 Linux 的 VM 上手动安装 SQL Server。 请参阅 [Linux VM 上的 SQL Server 常见问题解答](../linux/frequently-asked-questions-faq.md)中的准则。
+> BYOL 映像目前仅适用于 Windows 虚拟机。 但是，可以在仅限 Linux 的 VM 上手动安装 SQL Server。 请参阅 [Linux VM 上的 SQL Server 常见问题解答](../linux/frequently-asked-questions-faq.yml)中的准则。
 
 建议在以下情况下通过许可移动性自带 SQL Server 许可：
 

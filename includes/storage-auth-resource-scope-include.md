@@ -4,14 +4,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 02/10/2021
+ms.date: 06/07/2021
 ms.author: tamram
-ms.openlocfilehash: 483f5853c321eee4ac6d10543f0e360a0a5e54b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32f2d1a5533c48b3b7c78d9e66b08cafdde09a8f
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373738"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901884"
 ---
 向安全主体分配 Azure RBAC 角色之前，请确定安全主体应具有的访问权限的范围。 最佳做法规定，始终最好只授予最小的可能范围。 在较广范围内中定义的 Azure RBAC 角色由其下的资源继承。
 

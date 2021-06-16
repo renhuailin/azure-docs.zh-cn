@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4185ffd644d54c419f42c78326ca10bf100443c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c521752558e58f19b408b5e85e84863cb4cad2f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99051424"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966176"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
 是否在查找有关如何部署 Azure Active Directory (Azure AD) 功能的端到端指南？ Azure AD 部署计划详述了成功部署常用 Azure AD 功能所需的业务价值、规划注意事项和操作过程。
@@ -49,7 +49,7 @@ ms.locfileid: "99051424"
 | -| -|
 | [使用 ADFS 进行密码哈希同步](../hybrid/plan-migrate-adfs-password-hash-sync.md)| 有了密码哈希同步，就可以将用户密码的哈希从本地 Active Directory 同步到 Azure AD，让 Azure AD 对用户进行身份验证，而不与本地 Active Directory 交互 |
 | [使用 ADFS 进行直通身份验证](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| 借助 Azure AD 直通身份验证证，你的用户可使用相同的密码登录到本地应用程序和基于云的应用程序。 此功能为用户提供更好的体验 - 少记一个密码，并且能减少 IT 支持人员成本，因为用户不太可能忘记如何登录。 当人们使用 Azure AD 登录时，此功能可直接通过本地 Active Directory 验证用户的密码。 |
-| [Azure AD 应用程序代理](../manage-apps/application-proxy-deployment-plan.md) |现今的员工想要随时随地都能在任何设备上高效工作。 他们需要访问云中的 SaaS 应用和本地的公司应用。 Azure AD 应用程序代理支持这种强大的访问，而无需昂贵和复杂的虚拟专用网络 (VPN) 或外围子网 (DMZ)。 |
+| [Azure AD 应用程序代理](../app-proxy/application-proxy-deployment-plan.md) |现今的员工想要随时随地都能在任何设备上高效工作。 他们需要访问云中的 SaaS 应用和本地的公司应用。 Azure AD 应用程序代理支持这种强大的访问，而无需昂贵和复杂的虚拟专用网络 (VPN) 或外围子网 (DMZ)。 |
 | [无缝 SSO](../hybrid/how-to-connect-sso-quick-start.md)| Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接到企业网络的企业设备上的用户自动登录。 启用此功能后，用户无需键入其密码即可登录到 Azure AD；通常情况下，无需键入其用户名。 此功能可让授权用户轻松访问基于云的应用程序，而无需使用其他任何本地组件。 |
 
 ## <a name="deploy-user-provisioning"></a>部署用户预配
