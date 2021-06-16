@@ -4,12 +4,13 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: 6d6c4a019e9b0b9bd4ed52990fa8b59e939026f1
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fe21da6b8cd2a3f7291ae4a27ef7de8040a2acd1
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "106072885"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110721218"
 ---
 本快速入门使用预先创建的 Azure Key Vault。 可以遵循 [Azure CLI 快速入门](../articles/key-vault/general/quick-create-cli.md)、[Azure PowerShell 快速入门](../articles/key-vault/general/quick-create-powershell.md)或 [Azure 门户快速入门](../articles/key-vault/general/quick-create-portal.md)中的步骤创建 Key Vault。 
 

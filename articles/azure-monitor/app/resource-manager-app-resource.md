@@ -5,16 +5,16 @@ ms.topic: sample
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/08/2020
-ms.openlocfilehash: 6a64ed1d0d7a133930bf48e7d764c8d170d9824a
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 44c1c482a8d2907cd4de435b851ca5d9e8a6432a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383349"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964334"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>用于创建 Application Insights 资源的资源管理器模板示例
 
-本文包括 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例，用于部署和配置[经典 Application Insights 资源](../app/create-new-resource.md)和新的[基于工作区的 Application Insights 资源（预览）](../app/create-workspace-resource.md)。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+本文包括 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)示例，用于部署和配置[经典 Application Insights 资源](../app/create-new-resource.md)和新的[基于工作区的 Application Insights 资源（预览）](../app/create-workspace-resource.md)。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

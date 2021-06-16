@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: troubleshooting
 ms.date: 10/31/2019
 ms.author: duau
-ms.custom: seodec18
-ms.openlocfilehash: 6213e17f1232bd505ba1edf185a851bf669b9809
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: c8a482d71119db391df66bd814ffe8119f61963f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553424"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705997"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
 本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 可以通过往往已由连接服务提供商优化的专用连接，将本地网络扩展到 Microsoft 云中。 在传统上，ExpressRoute 连接涉及到三个不同的网络区域，如下所述：

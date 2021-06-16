@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: d5cd9c5d7f4a14a9a93e6984a8ef7367e5cbafc4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7a056d3a998be5d8edee71557c0333f4c5cb8fd9
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055087"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082354"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>教程：使用 Azure 门户诊断虚拟机网络路由问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "106055087"
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-在 https://portal.azure.com 登录 Azure 门户。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -47,16 +47,16 @@ ms.locfileid: "106055087"
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”或“Ubuntu Server 17.10 VM”。   
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |名称|myVm|
     |用户名| 输入所选用户名。|
-    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.yml?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup|
     |位置| 选择“美国东部”|
 
-4. 选择 VM 的大小，然后选择“选择”  。
+4. 选择 VM 的大小，然后选择“选择”。
 5. 保留“设置”下的所有默认设置，然后选择“确定”。 
 6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署    。 部署 VM 需要几分钟时间。 在继续余下的步骤之前，请等待 VM 完成部署。
 
@@ -82,7 +82,7 @@ Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆�
 1. 在 Azure 门户的“网络观察程序”下选择“下一跃点”。  
 2. 选择订阅，输入或选择以下值，然后选择“下一跃点”，如下图所示： 
 
-    |设置                  |值                                                   |
+    |设置                  |Value                                                   |
     |---------                |---------                                               |
     | 资源组          | 选择 myResourceGroup                                 |
     | 虚拟机         | 选择 myVm                                            |

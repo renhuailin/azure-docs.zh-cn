@@ -7,13 +7,13 @@ ms.topic: quickstart
 ms.service: virtual-machine-scale-sets
 ms.date: 11/08/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: bc9092f27dd04634dd138f503701822da0508376
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 9d4c66df26fdc2c9b6e90fd925682218974de7eb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933502"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110674259"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建虚拟机规模集
 
@@ -27,7 +27,7 @@ ms.locfileid: "105933502"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-创建规模集之前，需使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+创建规模集之前，需使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"

@@ -11,16 +11,16 @@ author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 1572b0a9822f340887c512c5cc20448fe0729109
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e6d89bdfca268a02c1f58bdceb4e4485dc3851a6
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461717"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438371"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教程：启用到本地环境的 Azure Active Directory 自助式密码重置写回
 
-借助 Azure Active Directory (Azure AD) 自助式密码重置 (SSPR)，用户可以使用 Web 浏览器更新其密码或解锁其帐户。 在 Azure AD 连接到本地 Active Directory 域服务 (AD DS) 环境的混合环境中，此方案可能会导致两个目录的密码不同。
+借助 Azure Active Directory (Azure AD) 自助式密码重置 (SSPR)，用户可以使用 Web 浏览器更新其密码或解锁其帐户。 建议观看[如何在 Azure AD 中启用和配置 SSPR](https://www.youtube.com/watch?v=rA8TvhNcCvQ) 这段视频。 在 Azure AD 连接到本地 Active Directory 域服务 (AD DS) 环境的混合环境中，此方案可能会导致两个目录的密码不同。
 
 可以使用密码写回将 Azure AD 中的密码更改同步回到本地 AD DS 环境。 Azure AD Connect 提供一种安全机制用于将这些密码更改从 Azure AD 发回到现有本地目录。
 

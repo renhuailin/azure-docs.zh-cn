@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 04/21/2021
+ms.date: 06/01/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c18dd231a708030e3a454ab8708e3f0f11dbecf
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e000a712e72498c21366b30b0c85e62f957c28c4
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107861816"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784808"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。 借助这种粒度，可以选择一部分用户来测试 SSPR 注册过程和工作流。 如果你很熟悉能够与一组更广泛的用户传达相关要求的过程和时机，则可以选择一组用户来为他们启用 SSPR。 或者，可为 Azure AD 租户中的每个人启用 SSPR。
 
 > [!NOTE]
-> 目前，你只能使用 Azure 门户为 SSPR 启用一个 Azure AD 组。 Azure AD 作为 SSPR 更广泛部署的一部分，可以支持嵌套组。 确保为所选组中的用户分配适当的许可证。 目前不会针对这些许可要求运行验证过程。
+> 目前，你只能使用 Azure 门户为 SSPR 启用一个 Azure AD 组。 Azure AD 作为 SSPR 更广泛部署的一部分，可以支持嵌套组。 
 
 在本教程，为测试组中的一组用户设置 SSPR。 使用 SSPR-Test-Group 并根据需要提供自己的 Azure AD 组：
 

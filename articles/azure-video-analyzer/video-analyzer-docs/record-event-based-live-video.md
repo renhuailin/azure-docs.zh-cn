@@ -3,12 +3,12 @@ title: 将基于事件的视频录制到云中并从云播放教程 - Azure
 description: 本教程介绍如何使用 Azure 视频分析器将基于事件的视频录制到云中并从云中播放。
 ms.topic: tutorial
 ms.date: 04/13/2021
-ms.openlocfilehash: 05c28fbc3b410f792d10adf7e59e43f070d7d57a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6ecbaf794530e80837c2d2a5f9f3fca11e3c93ae
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110383825"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565637"
 ---
 # <a name="tutorial-event-based-video-recording-and-playback"></a>教程：基于事件的视频录制和播放
 
@@ -189,7 +189,7 @@ ms.locfileid: "110383825"
     Press Enter to continue
     ```
 1. 在“终端”窗口中选择 Enter 后，会执行下一组直接方法调用 ：
-   * 使用上述 pipelinetopologyUrl 对 pipelineTopologySet 的调用
+   * 使用上述 pipelinetopologyUrl 对 GraphTopologySet 的调用
    * 使用以下正文对 livePipelineSet 的调用
      
         ```
@@ -355,17 +355,15 @@ applicationProperties 中的 subject 部分引用实时管道中的视频接收�
 
 此事件指示录制已停止。 applicationProperties 中的 subject 部分引用实时管道中的视频接收器节点，该节点生成此消息。 body 部分包含有关输出位置的信息。 在本例中，即要将视频录制到的视频分析器资源的名称。
 
-## <a name="video-analyzer-video-resource"></a>视频分析器视频资源
+## <a name="playing-back-the-recording"></a>播放录制内容
 
 可通过登录到 Azure 门户并观看视频来检查实时管道创建的视频分析器视频资源。
 1. 打开 Web 浏览器，并转到 [Azure 门户](https://portal.azure.com/)。 输入登录到门户所需的凭据。 默认视图是服务仪表板。
 1. 在订阅资源中找到视频分析器帐户，并打开“帐户”窗格。
 1. 在“视频分析器”列表中选择“视频” 。
-
-    <!--TODO: add image -- ![Video Analyzers videos]() ./media/event-based-video-recording-tutorial/videos.png -->
 1. 你会发现以名称 `sample-evr-video` 列出的视频。 这是在管道拓扑文件中选择的名称。
-1. 选择此视频。
-1. 在“视频详细信息”页上，选择播放选项 <!-- TODO: fix this-->
+1. 选择视频。
+1. 视频“详细信息”页随即将打开并自动开始播放。
 
     <!--TODO: add image -- ![Video playback]() TODO: new screenshot is needed here -->
 

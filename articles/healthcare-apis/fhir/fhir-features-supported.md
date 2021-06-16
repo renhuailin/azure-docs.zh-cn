@@ -1,6 +1,6 @@
 ---
-title: Azure 中支持的 FHIR 功能-Azure API for FHIR
-description: 本文介绍了在 Azure API for FHIR 中实现的 FHIR 规范的哪些功能
+title: Azure 中支持的 FHIR 功能 - Azure API for FHIR
+description: 本文介绍在 Azure API for FHIR 中实现的 FHIR 规范Azure API for FHIR
 services: healthcare-apis
 author: caitlinv39
 ms.service: healthcare-apis
@@ -8,49 +8,49 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: de99d6b5480a8e8262aba9d40826f69862630961
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 7248ae47d1ced0013559f14f5e5185f25b7d8083
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592991"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077850"
 ---
 # <a name="features"></a>功能
 
-适用于 FHIR 的 azure API 为 Azure 的 Microsoft FHIR 服务器提供完全托管的部署。 服务器是 [FHIR](https://hl7.org/fhir) 标准的实现。 本文档列出了 FHIR 服务器的主要功能。
+Azure API for FHIR Microsoft FHIR Server for Azure 的完全托管部署。 服务器是 [FHIR 标准的](https://hl7.org/fhir) 实现。 本文档列出了 FHIR 服务器的主要功能。
 
 ## <a name="fhir-version"></a>FHIR 版本
 
-支持的最新版本： `4.0.1`
+支持最新版本： `4.0.1`
 
-当前还支持以前的版本，包括： `3.0.2`
+目前还支持以前的版本，包括： `3.0.2`
 
 ## <a name="rest-api"></a>REST API
 
-| API                            | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论                                             |
+| API                            | 支持 - PaaS | 支持 - OSS (SQL)  | 支持 - OSS (Cosmos DB)  | 评论                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
 | 读取                           | 是       | 是       | 是       |                                                     |
 | vread                          | 是       | 是       | 是       |                                                     |
 | update                         | 是       | 是       | 是       |                                                     |
-| 具有开放式锁定的更新 | 是       | 是       | 是       |                                                     |
+| 使用乐观锁定进行更新 | 是       | 是       | 是       |                                                     |
 | 更新 (条件)            | 是       | 是       | 是       |                                                     |
 | 修补程序                          | 否        | 否        | 否        |                                                     |
 | delete                         | 是       | 是       | 是       |  请参阅下面的说明。                                   |
 | 删除 (条件)            | 是       | 是        | 是        |                                                     |
 | history                        | 是       | 是       | 是       |                                                     |
-| create                         | 是       | 是       | 是       | 同时支持 POST/PUT                               |
+| create                         | 是       | 是       | 是       | 支持 POST/PUT                               |
 | 创建 (条件)            | 是       | 是       | 是       | 问题 [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | search                         | 部分   | 部分   | 部分   | 请参阅 [FHIR 搜索概述](overview-of-search.md)。                           |
-| 链式搜索                 | 部分       | 是       | 部分   | 请参阅下面的注释2。                                   |
-| 反向链接搜索         | 部分       | 是       | 部分   | 请参阅下面的注释2。                                   |
+| 链接搜索                 | 部分       | 是       | 部分   | 请参阅下面的注释 2。                                   |
+| 反向链接搜索         | 部分       | 是       | 部分   | 请参阅下面的注释 2。                                   |
 | capabilities                   | 是       | 是       | 是       |                                                     |
 | 批处理                          | 是       | 是       | 是       |                                                     |
 | transaction                    | 否        | 是       | 否        |                                                     |
-| 分页                         | 部分   | 部分   | 部分   | `self``next`支持和                     |
-| 中间人                 | 否        | 否        | 否        |                                                     |
+| 分页                         | 部分   | 部分   | 部分   | `self``next`支持 和                     |
+| 中介                 | 否        | 否        | 否        |                                                     |
 
 > [!Note]
-> FHIR 规范定义的删除在删除后，对资源的后续非特定于版本的读取将返回 410 HTTP 状态代码，并且不再通过搜索找到资源。 通过用于 FHIR 的 Azure API，还可以完全删除 (包括资源) 所有历史记录。 若要完全删除资源，可以将参数设置传递 `hardDelete` 给 true (`DELETE {server}/{resource}/{id}?hardDelete=true`) 。 如果未传递此参数或将其设置 `hardDelete` 为 false，则资源的历史版本仍将可用。
+> 按 FHIR 规范定义的删除要求在删除后，资源的后续非版本特定读取将返回 410 HTTP 状态代码，并且不再通过搜索找到该资源。 使用Azure API for FHIR还可以完全删除资源 (包括资源) 历史记录。 若要完全删除资源，可以将参数设置传递 `hardDelete` 给 true (`DELETE {server}/{resource}/{id}?hardDelete=true`) 。 如果未传递此参数或将其设置 `hardDelete` 为 false，则资源的历史版本仍将可用。
 
 
  **注释 2**
@@ -97,19 +97,6 @@ FHIR 服务器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 * **订阅限制** -默认情况下，每个订阅最多只能有10个 FHIR 服务器实例。 如果每个订阅需要更多实例，请打开支持票证，并提供有关需求的详细信息。
 
 * **并发连接和实例** -默认情况下，在群集中的两个实例上有15个并发连接 (总计30个并发请求) 。 如果需要更多的并发请求，请打开支持票证，并提供有关需求的详细信息。
-
-## <a name="performance-expectations"></a>性能预期
-
-系统的性能取决于每个 ru、并发连接的数量，以及正在执行的操作的类型 (Put、Post 等 ) 。 下面是你可以基于已配置的 ru 获得的一些常规范围。 通常，性能会随 RUs 的增加而线性缩放：
-
-| Ru 数 | 资源数/秒 |    最大存储 (GB) *    |
-|----------|---------------|--------|                 
-| 400      | 5-10          |     10   |
-| 1,000    | 100-150       |      25  |
-| 10,000   | 225-400       |      250  |
-| 100,000  | 2500-4000   |      2,500  |
-
-注意：根据 Cosmos DB 要求，每 GB 存储要求最小吞吐量为 40 RU/秒。 
 
 ## <a name="next-steps"></a>后续步骤
 

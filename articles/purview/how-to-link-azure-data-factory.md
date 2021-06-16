@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/24/2021
-ms.openlocfilehash: 9d728160413d470383f3eee78fc430aed0125ed7
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 05/31/2021
+ms.openlocfilehash: 0f92a5313622ffafe5ea5cbe2fdedc77d685b0ab
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905227"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792214"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure Purview
 
@@ -158,9 +158,13 @@ Azure Purview 从以下 Azure 数据工厂活动捕获运行时世系：
 | 数据存储 | 支持 |
 | ------------------- | ------------------- | 
 | Azure Blob 存储 | 是 |
+| Azure Cosmos DB (SQL API) \* | 是 | 
 | Azure Data Lake Storage Gen1 | 是 |
 | Azure Data Lake Storage Gen2 | 是 |
+| Azure Database for MySQL \* | 是 | 
+| Azure Database for PostgreSQL \* | 是 |
 | Azure SQL 数据库 \* | 是 |
+| Azure SQL 托管实例 \* | 是 | 
 | Azure Synapse Analytics \* | 是 |
 
 \* Azure Purview 当前不支持针对世系或扫描的查询或存储过程。世系仅限于表和视图源。

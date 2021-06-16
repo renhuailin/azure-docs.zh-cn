@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9bd0516889733a666bf15668cffd124dcc468f3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4be7bc555578c4abeaa65c6433da3e285b9235b2
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100388951"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786548"
 ---
 # <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>教程：从必应地图迁移到 Azure Maps
 
@@ -53,7 +53,7 @@ Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并
 | 自动建议                           | ✓                  |
 | 走向（包括卡车）          | ✓                  |
 | 距离矩阵                       | ✓                  |
-| 提升                            | ✓（预览）        |
+| 提升                            | ✓      |
 | 图像 - 静态地图                  | ✓                  |
 | 图像元数据                      | ✓                  |
 | 等时线                            | ✓                  |

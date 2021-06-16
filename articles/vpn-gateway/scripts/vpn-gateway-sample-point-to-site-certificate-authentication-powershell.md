@@ -8,12 +8,13 @@ ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 02/11/2021
 ms.author: alzam
-ms.openlocfilehash: 9310920ead3b36516a9beb16e7cb9be732e7628f
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cae798ce8355fa092f91971474a9b97a2617a967
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107948250"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110661994"
 ---
 # <a name="configure-a-point-to-site-vpn---certificate-authentication---powershell-script-sample"></a>配置点到站点 VPN - 证书身份验证 - PowerShell 脚本示例
 

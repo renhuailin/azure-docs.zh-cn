@@ -22,7 +22,7 @@
     - name: 采用 Azure 数据目录
       href: data-catalog-adopting-data-catalog.md
     - name: 常见问题解答
-      href: data-catalog-frequently-asked-questions.md
+      href: data-catalog-frequently-asked-questions.yml
 - name: 操作指南
   items:
     - name: 注册数据源

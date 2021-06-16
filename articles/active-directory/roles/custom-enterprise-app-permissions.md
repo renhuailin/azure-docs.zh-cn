@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: bc3db3de91c9fbf059c56fb1f2770381265d82de
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 46d1a0029607767ac3d7c0abbfe3a318b04aebda
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090634"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790793"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自定义角色的企业应用程序权限
 
@@ -119,52 +119,53 @@ microsoft.directory/applications/credentials/update
 
 ## <a name="full-list-of-permissions"></a>权限的完整列表
 
-权限 | 说明
----------- | -----------
-microsoft.directory/applicationPolicies/allProperties/read | 读取应用程序策略的所有属性。
-microsoft.directory/applicationPolicies/allProperties/update | 更新应用程序策略的所有属性。
-microsoft.directory/applicationPolicies/basic/update | 更新应用程序策略的标准属性。
-microsoft.directory/applicationPolicies/create | 创建应用程序策略。
-microsoft.directory/applicationPolicies/createAsOwner | 创建应用程序策略。 添加“创建者”作为第一个所有者。
-microsoft.directory/applicationPolicies/delete | 删除应用程序策略。
-microsoft.directory/applicationPolicies/owners/read | 读取应用程序策略的所有者。
-microsoft.directory/applicationPolicies/owners/update | 更新应用程序策略的所有者属性。
-microsoft.directory/applicationPolicies/policyAppliedTo/read | 读取应用于对象列表的应用程序策略。
-microsoft.directory/applicationPolicies/standard/read | 读取应用程序策略的标准属性。
-microsoft.directory/servicePrincipals/allProperties/allTasks | 创建和删除 servicePrincipals，然后读取和更新 Azure Active Directory 中的所有属性。
-microsoft.directory/servicePrincipals/allProperties/read | 读取 servicePrincipals 的所有属性。
-microsoft.directory/servicePrincipals/allProperties/update | 更新 servicePrincipals 的所有属性。
-microsoft.directory/servicePrincipals/appRoleAssignedTo/read | 读取服务主体角色分配。
-microsoft.directory/servicePrincipals/appRoleAssignedTo/update | 更新服务主体角色分配。
-microsoft.directory/servicePrincipals/appRoleAssignments/read | 读取分配给服务主体的角色分配。
-microsoft.directory/servicePrincipals/audience/update | 更新服务主体的受众属性。
-microsoft.directory/servicePrincipals/authentication/update | 更新服务主体的身份验证属性。
-microsoft.directory/servicePrincipals/basic/update | 更新服务主体的基本属性。
-microsoft.directory/servicePrincipals/create | 创建服务主体。
-microsoft.directory/servicePrincipals/createAsOwner | 创建服务主体。 添加“创建者”作为第一个所有者。
-microsoft.directory/servicePrincipals/credentials/update | 更新服务主体的凭据属性。
-microsoft.directory/servicePrincipals/delete | 删除服务主体。
-microsoft.directory/servicePrincipals/disable | 禁用服务主体。
-microsoft.directory/servicePrincipals/enable | 启用服务主体。
-microsoft.directory/servicePrincipals/getPasswordSingleSignOnCredentials | 读取服务主体的密码单一登录凭据。
-microsoft.directory/servicePrincipals/managePasswordSingleSignOnCredentials | 管理服务主体的密码单一登录凭据。
-microsoft.directory/servicePrincipals/oAuth2PermissionGrants/read | 读取服务主体的委托权限授权。
-microsoft.directory/servicePrincipals/owners/read | 读取服务主体的所有者。
-microsoft.directory/servicePrincipals/owners/update | 更新服务主体的所有者。
-microsoft.directory/servicePrincipals/permissions/update |  
-microsoft.directory/servicePrincipals/policies/read | 读取服务主体的策略。
-microsoft.directory/servicePrincipals/policies/update | 更新服务主体的策略。
-microsoft.directory/servicePrincipals/standard/read | 读取服务主体的标准属性。
-microsoft.directory/servicePrincipals/synchronization/standard/read | 读取与服务主体关联的预配设置。
-microsoft.directory/servicePrincipals/tag/update | 更新服务主体的标记属性。
-microsoft.directory/applicationTemplates/instantiate | 从应用程序模板实例化库应用程序。
-microsoft.directory/auditLogs/allProperties/read | 读取审核日志。
-microsoft.directory/signInReports/allProperties/read | 读取登录报表。
-microsoft.directory/applications/synchronization/standard/read | 读取与应用程序对象关联的预配设置。
-microsoft.directory/servicePrincipals/synchronizationJobs/manage | 管理服务主体资源的作业同步的所有方面
-microsoft.directory/servicePrincipals/synchronization/standard/read | 读取与服务主体关联的预配设置
-microsoft.directory/servicePrincipals/synchronizationSchema/manage | 管理服务主体资源的架构同步的所有方面
-microsoft.directory/provisioningLogs/allProperties/read | 读取预配日志的所有属性
+> [!div class="mx-tableFixed"]
+> | 权限 | 说明 |
+> | ---------- | ----------- |
+> | microsoft.directory/applicationPolicies/allProperties/read | 读取应用程序策略的所有属性。 |
+> | microsoft.directory/applicationPolicies/allProperties/update | 更新应用程序策略的所有属性。 |
+> | microsoft.directory/applicationPolicies/basic/update | 更新应用程序策略的标准属性。 |
+> | microsoft.directory/applicationPolicies/create | 创建应用程序策略。 |
+> | microsoft.directory/applicationPolicies/createAsOwner | 创建应用程序策略。 添加“创建者”作为第一个所有者。 |
+> | microsoft.directory/applicationPolicies/delete | 删除应用程序策略。 |
+> | microsoft.directory/applicationPolicies/owners/read | 读取应用程序策略的所有者。 |
+> | microsoft.directory/applicationPolicies/owners/update | 更新应用程序策略的所有者属性。 |
+> | microsoft.directory/applicationPolicies/policyAppliedTo/read | 读取应用于对象列表的应用程序策略。 |
+> | microsoft.directory/applicationPolicies/standard/read | 读取应用程序策略的标准属性。 |
+> | microsoft.directory/servicePrincipals/allProperties/allTasks | 创建和删除 servicePrincipals，然后读取和更新 Azure Active Directory 中的所有属性。 |
+> | microsoft.directory/servicePrincipals/allProperties/read | 读取 servicePrincipals 的所有属性。 |
+> | microsoft.directory/servicePrincipals/allProperties/update | 更新 servicePrincipals 的所有属性。 |
+> | microsoft.directory/servicePrincipals/appRoleAssignedTo/read | 读取服务主体角色分配。 |
+> | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | 更新服务主体角色分配。 |
+> | microsoft.directory/servicePrincipals/appRoleAssignments/read | 读取分配给服务主体的角色分配。 |
+> | microsoft.directory/servicePrincipals/audience/update | 更新服务主体的受众属性。 |
+> | microsoft.directory/servicePrincipals/authentication/update | 更新服务主体的身份验证属性。 |
+> | microsoft.directory/servicePrincipals/basic/update | 更新服务主体的基本属性。 |
+> | microsoft.directory/servicePrincipals/create | 创建服务主体。 |
+> | microsoft.directory/servicePrincipals/createAsOwner | 创建服务主体。 添加“创建者”作为第一个所有者。 |
+> | microsoft.directory/servicePrincipals/credentials/update | 更新服务主体的凭据属性。 |
+> | microsoft.directory/servicePrincipals/delete | 删除服务主体。 |
+> | microsoft.directory/servicePrincipals/disable | 禁用服务主体。 |
+> | microsoft.directory/servicePrincipals/enable | 启用服务主体。 |
+> | microsoft.directory/servicePrincipals/getPasswordSingleSignOnCredentials | 读取服务主体的密码单一登录凭据。 |
+> | microsoft.directory/servicePrincipals/managePasswordSingleSignOnCredentials | 管理服务主体的密码单一登录凭据。 |
+> | microsoft.directory/servicePrincipals/oAuth2PermissionGrants/read | 读取服务主体的委托权限授权。 |
+> | microsoft.directory/servicePrincipals/owners/read | 读取服务主体的所有者。 |
+> | microsoft.directory/servicePrincipals/owners/update | 更新服务主体的所有者。 |
+> | microsoft.directory/servicePrincipals/permissions/update |  |
+> | microsoft.directory/servicePrincipals/policies/read | 读取服务主体的策略。 |
+> | microsoft.directory/servicePrincipals/policies/update | 更新服务主体的策略。 |
+> | microsoft.directory/servicePrincipals/standard/read | 读取服务主体的标准属性。 |
+> | microsoft.directory/servicePrincipals/synchronization/standard/read | 读取与服务主体关联的预配设置。 |
+> | microsoft.directory/servicePrincipals/tag/update | 更新服务主体的标记属性。 |
+> | microsoft.directory/applicationTemplates/instantiate | 从应用程序模板实例化库应用程序。 |
+> | microsoft.directory/auditLogs/allProperties/read | 读取审核日志。 |
+> | microsoft.directory/signInReports/allProperties/read | 读取登录报表。 |
+> | microsoft.directory/applications/synchronization/standard/read | 读取与应用程序对象关联的预配设置。 |
+> | microsoft.directory/servicePrincipals/synchronizationJobs/manage | 管理服务主体资源的作业同步的所有方面 |
+> | microsoft.directory/servicePrincipals/synchronization/standard/read | 读取与服务主体关联的预配设置 |
+> | microsoft.directory/servicePrincipals/synchronizationSchema/manage | 管理服务主体资源的架构同步的所有方面 |
+> | microsoft.directory/provisioningLogs/allProperties/read | 读取预配日志的所有属性 |
 
 ## <a name="next-steps"></a>后续步骤
 

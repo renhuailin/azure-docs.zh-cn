@@ -11,7 +11,7 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.custom: custom-portals-hub
-  ms.date: 05/05/2021
+  ms.date: 06/11/2021
 highlightedContent:
   items:
     - title: 什么是应用 AI 服务？
@@ -25,30 +25,30 @@ highlightedContent:
       url: ./applied-ai-services-customer-spotlight-use-cases.md
 productDirectory:
   items:
+    - title: Azure 机器人服务
+      imageSrc: ./media/bot-services.svg
+      summary: 创建机器人并跨通道连接
+      url: /composer/
     - title: Azure 表单识别器
       imageSrc: ./media/form-recognizer.svg
       summary: 仅需很少的时间和成本即可将文档转换为可用数据
       url: ../cognitive-services/form-recognizer/index.yml
-    - title: Azure 沉浸式阅读器
-      imageSrc: ./media/immersive-reader.svg
-      summary: 帮助用户阅读和理解文本
-      url: ../cognitive-services/immersive-reader/index.yml
-    - title: Azure 指标顾问
-      imageSrc: ./media/metrics-advisor.svg
-      summary: 主动监视指标并诊断问题
-      url: ../cognitive-services/metrics-advisor/index.yml
     - title: Azure 认知搜索
       imageSrc: ./media/cognitive-search.svg
       summary: 将由 AI 提供支持的云搜索引入移动和 Web 应用
       url: ../search/index.yml
+    - title: Azure 指标顾问
+      imageSrc: ./media/metrics-advisor.svg
+      summary: 主动监视指标并诊断问题
+      url: ../cognitive-services/metrics-advisor/index.yml
     - title: Azure 视频分析器
       imageSrc: ./media/video-analytics.svg
       summary: 从视频中提取切实可行的见解
-      url: 'https://aka.ms/video-analyzer-hub'
-    - title: Azure 机器人服务
-      imageSrc: ./media/bot-services.svg
-      summary: 创建机器人并跨通道连接
-      url: 'https://docs.microsoft.com/composer/'
+      url: ../azure-video-analyzer/index.yml
+    - title: Azure 沉浸式阅读器
+      imageSrc: ./media/immersive-reader.svg
+      summary: 帮助用户阅读和理解文本
+      url: ../cognitive-services/immersive-reader/index.yml
 additionalContent:
   sections:
     - title: 其他资源
@@ -58,7 +58,7 @@ additionalContent:
             - text: 在 UserVoice 上提交反馈
               url: 'https://aka.ms/AppliedAIUserVoice'
             - text: 在 Microsoft 问答上发布问题
-              url: 'https://aka.ms/AppliedAIMSFTQandA'
+              url: /answers/topics/azure-applied-ai-services.html
             - text: 在 StackOverflow 上进行故障排除
               url: 'https://aka.ms/AppliedAIStackOverflow'
         - title: 利用快速入门获取编码
@@ -72,14 +72,14 @@ additionalContent:
             - text: Azure 认知搜索
               url: ../search/search-get-started-portal.md
             - text: Azure 视频分析器
-              url: 'https://aka.ms/video-analytics-qs'
+              url: ../azure-video-analyzer/video-analyzer-docs/detect-motion-emit-events-quickstart.md
             - text: Azure 机器人服务
-              url: 'https://docs.microsoft.com/composer/quickstart-create-bot'
+              url: /composer/quickstart-create-bot
             - text: 免费启动
               url: 'https://azure.microsoft.com/free/ai'
         - title: 探索其他 Azure AI 服务
           links:
             - text: Azure 认知服务
-              url: 'https://docs.microsoft.com/en-us/azure/cognitive-services/'
+              url: ../cognitive-services/index.yml
             - text: Azure 机器学习
-              url: 'https://docs.microsoft.com/en-us/azure/machine-learning/'
+              url: ../machine-learning/index.yml

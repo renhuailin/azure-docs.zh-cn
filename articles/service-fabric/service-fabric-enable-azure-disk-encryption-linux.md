@@ -3,12 +3,13 @@ title: 为 Linux 群集启用磁盘加密
 description: 本文介绍如何使用 Azure 资源管理器和 Azure Key Vault 为 Linux 中的 Azure Service Fabric 群集节点启用磁盘加密。
 ms.topic: article
 ms.date: 03/22/2019
-ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 826ca54718625fb236f64587b63080cf16aafae4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "78252817"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663560"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>为 Linux 中的 Azure Service Fabric 群集节点启用磁盘加密 
 > [!div class="op_single_selector"]

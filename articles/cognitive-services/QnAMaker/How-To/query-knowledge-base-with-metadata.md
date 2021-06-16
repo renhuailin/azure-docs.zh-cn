@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 268cb05b7399c6fc812310f451797df60e283557
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2fde10090312956e6f9e5332d5827ac0de07be87
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376299"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792265"
 ---
 # <a name="filter-responses-with-metadata"></a>使用元数据筛选响应
 
@@ -53,12 +53,6 @@ ms.locfileid: "110376299"
 ```
 
 ## <a name="filter-by-source"></a>按源筛选
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
-
-在 QnA Maker GA 版本中，不能按内容源来筛选结果。
-
-# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 如果你的知识库中有多个内容源，并且你希望将结果限制为一组特定的源，则可以使用保留关键字 `source_name_metadata` 进行该操作，如下所示。
 

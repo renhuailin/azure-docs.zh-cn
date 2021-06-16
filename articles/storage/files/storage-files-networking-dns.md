@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8dc6ac712110210414f66446827569f51f396c1f
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94630186"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669800"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>配置 Azure 文件存储的 DNS 转发
 使用 Azure 文件存储可为包含文件共享的存储帐户创建专用终结点。 专用终结点可在许多不同的应用场合下发挥作用，而且特别适合用于通过专用对等互连使用 VPN 或 ExpressRoute 连接从本地网络连接到 Azure 文件共享。 

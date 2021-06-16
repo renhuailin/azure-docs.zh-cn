@@ -7,16 +7,16 @@ ms.subservice: migration
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: bonova
-ms.author: bonova
-ms.reviewer: ''
+author: danimir
+ms.author: danil
+ms.reviewer: cawrites
 ms.date: 07/11/2019
-ms.openlocfilehash: ccc6acfd27a1430a4f6a31886c06322c5c09e224
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4bb9b904fd07539ab1bb3f70fa4f7e862e54c2f2
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628367"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110788820"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

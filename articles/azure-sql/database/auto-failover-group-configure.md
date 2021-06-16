@@ -5,19 +5,19 @@ description: 了解如何使用 Azure 门户、Azure CLI 和 PowerShell 为 Azur
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
-ms.custom: sqldbrb=2
-ms.devlang: ''
+ms.custom: sqldbrb=2, devx-track-azurecli
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+ms.devlang: ''
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 08/14/2019
-ms.openlocfilehash: 09bb7cb2344e3e708a64842916e6e483136da3bb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d117bd686152e9bb158d0376f52238f9492d1bb7
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94594277"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708962"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -84,11 +84,11 @@ ms.locfileid: "94594277"
    # Create a failover group between the servers
    $failovergroup = Write-host "Creating a failover group between the primary and secondary server..."
    New-AzSqlDatabaseFailoverGroup `
-      –ResourceGroupName $resourceGroupName `
+      â€“ResourceGroupName $resourceGroupName `
       -ServerName $serverName `
       -PartnerServerName $drServerName  `
-      –FailoverGroupName $failoverGroupName `
-      –FailoverPolicy Automatic `
+      â€“FailoverGroupName $failoverGroupName `
+      â€“FailoverPolicy Automatic `
       -GracePeriodWithDataLossHours 2
    $failovergroup
 
@@ -248,11 +248,11 @@ ms.locfileid: "94594277"
    # Create a failover group between the servers
    Write-host "Creating failover group..."
    New-AzSqlDatabaseFailoverGroup `
-       –ResourceGroupName $resourceGroupName `
+       â€“ResourceGroupName $resourceGroupName `
        -ServerName $serverName `
        -PartnerServerName $drServerName  `
-       –FailoverGroupName $failoverGroupName `
-       –FailoverPolicy Automatic `
+       â€“FailoverGroupName $failoverGroupName `
+       â€“FailoverPolicy Automatic `
        -GracePeriodWithDataLossHours 2
    Write-host "Failover group created successfully."
 
@@ -383,7 +383,7 @@ ms.locfileid: "94594277"
 
    下表显示了主托管实例的网关所需的值：
 
-    | **字段** | 值 |
+    | **字段** | Value |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **名称** | 虚拟网络网关的名称。 |
@@ -445,7 +445,7 @@ ms.locfileid: "94594277"
 
 下表显示了辅助托管实例的网关所需的值：
 
-   | **字段** | 值 |
+   | **字段** | Value |
    | --- | --- |
    | **订阅** |  辅助托管实例所在的订阅。 |
    | **名称** | 虚拟网络网关的名称，例如 `secondary-mi-gateway`。 |

@@ -45,7 +45,7 @@
   items:
     - name: Azure PowerShell
       href: ./ag/powershell-samples.md
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: ./ag/resource-manager-template-samples.md
 - name: 概念
   items:
@@ -64,11 +64,13 @@
         - name: 机器人防护概述
           href: ./ag/bot-protection-overview.md
         - name: 常见问题解答
-          href: ./ag/application-gateway-waf-faq.md
+          href: ./ag/application-gateway-waf-faq.yml
     - name: Front Door
       items:
         - name: 优化
           href: ./afds/waf-front-door-tuning.md
+        - name: 托管规则
+          href: ./afds/waf-front-door-drs.md
         - name: 自定义规则
           href: ./afds/waf-front-door-custom-rules.md
         - name: 排除列表
@@ -78,7 +80,7 @@
         - name: 地区筛选
           href: ./afds/waf-front-door-geo-filtering.md
         - name: 常见问题解答
-          href: ./afds/waf-faq.md
+          href: ./afds/waf-faq.yml
     - name: 安全性
       items:
         - name: 安全基线
@@ -184,7 +186,7 @@
 - name: 资源
   items:
     - name: 创作模板
-      href: ../azure-resource-manager/templates/template-syntax.md
+      href: ../azure-resource-manager/templates/syntax.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 社区模板

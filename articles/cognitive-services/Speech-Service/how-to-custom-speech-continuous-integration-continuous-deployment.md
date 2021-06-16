@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: f7f11ef097d3abee2b4c18c32a1cb215d9fe8ce8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06a5bd2366f2a24e263e8ffa1c905a5cbd6afc9b
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98939896"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440333"
 ---
 # <a name="cicd-for-custom-speech"></a>自定义语音识别的 CI/CD
 
 实施自动定型、测试和发布管理，以便在你应用对定型数据和测试数据的更新时，自定义语音识别模型可持续改进。 通过 CI/CD 工作流的有效实施，可确保性能最佳的自定义语音识别模型的终结点始终可用。
 
-[持续集成](/azure/devops/learn/what-is-continuous-integration) (CI) 是经常在共享存储库中提交更新并对其执行自动生成的工程实践。 自定义语音识别的 CI 工作流可基于其数据源定型新模型，并对新模型执行自动测试，确保其性能比之前的模型更好。
+[持续集成](/devops/develop/what-is-continuous-integration) (CI) 是经常在共享存储库中提交更新并对其执行自动生成的工程实践。 自定义语音识别的 CI 工作流可基于其数据源定型新模型，并对新模型执行自动测试，确保其性能比之前的模型更好。
 
-[持续交付](/azure/devops/learn/what-is-continuous-delivery) (CD) 从 CI 过程获取模型，并为每个改进的自定义语音识别模型创建一个终结点。 CD 使终结点可轻松地集成到解决方案中。
+[持续交付](/devops/deliver/what-is-continuous-delivery) (CD) 从 CI 过程获取模型，并为每个改进的自定义语音识别模型创建一个终结点。 CD 使终结点可轻松地集成到解决方案中。
 
 可使用自定义 CI/CD 解决方案，但对于可靠的预生成解决方案，请使用[语音 DevOps 模板存储库](https://github.com/Azure-Samples/Speech-Service-DevOps-Template)，它将使用 GitHub Actions 执行 CI/CD 工作流。
 

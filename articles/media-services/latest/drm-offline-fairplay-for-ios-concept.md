@@ -6,14 +6,14 @@ author: willzhan
 manager: femila
 ms.service: media-services
 ms.topic: how-to
-ms.date: 03/25/2021
+ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: acff3e77b92110c818ea0ab0f8281aef87e9db81
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 516feb728368bfc57ce48bad8275419c726c7701
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068409"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793399"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>适用于 iOS 的脱机 FairPlay 流式处理与媒体服务 v3
 
@@ -49,18 +49,18 @@ ms.locfileid: "106068409"
 
     - [Apple FairPlay 许可要求和配置](drm-fairplay-license-overview.md)
     - [使用 DRM 动态加密和许可证传送服务](drm-protect-with-drm-tutorial.md)
-    - 包含联机 FPS 流式处理配置的 .NET 示例：[ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
+    - 包含联机 FPS 流式处理配置的 .NET 示例：[ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L493)
 * 从 Apple Developer Network 获取 FPS SDK。 FPS SDK 包含两个组件：
 
     - FPS Server SDK，该组件包含密钥安全模块 (KSM)、客户端示例、规格和一组测试矢量。
     - FPS 开发包，该组件包含 D 函数、规格和 FPS 证书生成说明、客户特定的私钥以及应用程序密钥。 Apple 仅对许可的内容提供商发布 FPS 开发包。
 * 克隆 https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git 。 
 
-    需要修改[使用 .NET 通过 DRM 加密](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM)中的代码以添加 FairPlay 配置。  
+    需要修改[使用 .NET 通过 DRM 加密](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/main/AMSV3Tutorials/EncryptWithDRM)中的代码以添加 FairPlay 配置。  
 
 ## <a name="configure-content-protection-in-azure-media-services"></a>在 Azure 媒体服务中配置内容保护
 
-在 [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) 方法中，执行以下操作：
+在 [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L192) 方法中，执行以下操作：
 
 取消评论配置 FairPlay 策略选项的代码：
 
@@ -82,7 +82,7 @@ options.Add(
 
 ## <a name="enable-offline-mode"></a>启用脱机模式
 
-若要启用脱机模式，请在 [CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L561) 中创建 StreamingLocator 时创建自定义 StreamingPolicy 并使用其名称。
+若要启用脱机模式，请在 [CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L538) 中创建 StreamingLocator 时创建自定义 StreamingPolicy 并使用其名称。
  
 ```csharp
 CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()

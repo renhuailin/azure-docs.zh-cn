@@ -7,16 +7,16 @@ ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: reference
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: mathoma
 ms.date: 10/01/2018
-ms.openlocfilehash: 2e836a175b45c6fca46f9c76760e1cbaef305a47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f033349a43a6006362b9b5efbe94025e16d25b82
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792576"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707025"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>用于测试和原型设计的公共数据集
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]

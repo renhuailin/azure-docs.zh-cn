@@ -4,19 +4,19 @@ description: 使用 Azure PowerShell 示例脚本为 Azure SQL 数据库设置�
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: 2fc9db7286fed71ec451ea4ccef911e344a17b80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ee43ffc09c4abe8594a8285303464431d25a577
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94594050"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707998"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-database-in-azure-sql-database"></a>使用 PowerShell 为 Azure SQL 数据库中的数据库配置活动异地复制
 

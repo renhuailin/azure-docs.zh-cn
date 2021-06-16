@@ -4,20 +4,20 @@ description: 获取 SQL 数据库简介：Microsoft 在云中的关系数据库�
 keywords: SQL 简介, 什么是 SQL 数据库
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=3
 ms.devlang: ''
 ms.topic: overview
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 65710ae40a971d214068f0e2686f78fb994a967e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c5f2be821e43eda1ae611f3300538c7c41d04f4
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601374"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707669"
 ---
 # <a name="what-is-azure-sql-database"></a>什么是 Azure SQL 数据库？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

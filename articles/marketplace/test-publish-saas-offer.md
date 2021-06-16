@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 03/25/2021
-ms.openlocfilehash: aeab671c9283d64f9c1ca37cf184b80b1eca8f35
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7fed85abe42b0366ff2429ba923fc9a3cdf6190a
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045240"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536425"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>如何测试 SaaS 产品/服务并将其发布到商业市场
 
@@ -53,17 +53,17 @@ ms.locfileid: "105045240"
 
 1. 若要验证端到端购买和设置流程，请在产品/服务处于预览状态时购买其中的计划。 首先，使用[支持票证](https://aka.ms/marketplacesupport)向 Microsoft 发出通知，保证我们并不是处理费用。
 
-1. 如果你的 SaaS 产品/服务支持[使用商业市场计量服务按流量计费](./partner-center-portal/saas-metered-billing.md)，请查看并遵循[市场按流量计费 API](./partner-center-portal/marketplace-metering-service-apis.md#development-and-testing-best-practices) 中详述的测试最佳实践。
+1. 如果你的 SaaS 产品/服务支持[使用商业市场计量服务按流量计费](./partner-center-portal/saas-metered-billing.md)，请查看并遵循[市场按流量计费 API](marketplace-metering-service-apis.md#development-and-testing-best-practices) 中详述的测试最佳实践。
 
 1. 查看并按照 [Microsoft 商业市场中的 SaaS 履行 API 版本 2](./partner-center-portal/pc-saas-fulfillment-api-v2.md#development-and-testing) 中的测试说明进行操作，确保产品/服务已成功与 API 集成，然后再发布产品/服务。
 
 1. 如果产品验证步骤生成了警告，则“产品/服务概述”页上将显示“查看验证报告”链接。 在选择“上线”按钮之前，请务必查看此报告并解决问题。 否则，认证很可能会失败，并推迟产品/服务上线时间。
 
-1. 如果在预览和测试产品/服务后需要进行更改，可以编辑并重新提交以发布新的预览版。 有关更多信息，请参阅[更新商业市场中的现有产品/服务](./partner-center-portal/update-existing-offer.md)。
+1. 如果在预览和测试产品/服务后需要进行更改，可以编辑并重新提交以发布新的预览版。 有关更多信息，请参阅[更新商业市场中的现有产品/服务](update-existing-offer.md)。
 
-## <a name="publish-your-offer-live"></a>发布产品/服务
+## <a name="publish-your-offer-live"></a>实时发布产品/服务
 
-完成对预览版的所有测试之后，选择“上线”以向商业市场发布产品/服务。 如果你的产品/服务已在商业市场上线，则在你选择“上线”之前，你所做的任何更新都不会上线。
+完成对预览版的所有测试之后，选择“上线”以实时向商业市场发布产品/服务。 如果你的产品/服务已在商业市场上线，则在你选择“上线”之前，你所做的任何更新都不会上线。
 
 > [!IMPORTANT]
 > 对于[开发/测试产品/服务](create-saas-dev-test-offer.md)，请不要选择“上线”。
@@ -74,4 +74,4 @@ ms.locfileid: "105045240"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [访问合作伙伴中心内的商业市场分析报告](./partner-center-portal/analytics.md)
+- [访问合作伙伴中心内的商业市场分析报告](analytics.md)

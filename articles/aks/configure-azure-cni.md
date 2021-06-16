@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 839aa012cedaaa6f5bd3d1edad60e3ea7278133b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bdbc6956f9a32cbba369135652fb4ac03c581108
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775882"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559369"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -154,7 +154,18 @@ az aks create \
 > [!NOTE] 
 > 此预览版功能当前在以下地区可用：
 >
+> * 美国东部
+> * 美国东部 2
+> * 美国中北部
 > * 美国中西部
+> * 美国西部
+> * 美国西部 2
+> * 加拿大中部
+> * 澳大利亚东部
+> * 英国南部
+> * 北欧
+> * 西欧
+> * 东南亚
 
 传统 CNI 的一个缺点是，随着 AKS 群集的增长，Pod IP 地址将耗尽，导致需要在更大的子网中重建整个群集。 Azure CNI 中的新增 IP 动态分配功能可从与托管 AKS 群集的子网分隔的子网分配 Pod IP，以此来解决这个问题。  这能带来以下好处：
 

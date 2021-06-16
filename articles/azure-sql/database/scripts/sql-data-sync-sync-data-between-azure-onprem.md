@@ -3,20 +3,20 @@ title: PowerShell：在 SQL 数据库和 SQL Server 之间同步数据
 description: 使用 Azure PowerShell 示例脚本在 Azure SQL 数据库和 SQL Server 之间同步数据。
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
-ms.custom: sqldbrb=1
+ms.subservice: sql-data-sync
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: 443232bb41ba73b5bd02d45c542e555904f539db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 979d8d72019ab55ad291f5d0540037e5e993ad83
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792865"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693457"
 ---
 # <a name="use-powershell-to-sync-data-between-sql-database-and-sql-server"></a>使用 PowerShell 在 SQL 数据库和 SQL Server 之间同步数据
 

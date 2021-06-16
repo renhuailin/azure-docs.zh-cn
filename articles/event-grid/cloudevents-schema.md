@@ -3,13 +3,13 @@ title: 在 CloudEvents 架构中将 Azure 事件网格与事件配合使用
 description: 说明如何对 Azure 事件网格中的事件使用 CloudEvents 架构。 该服务在 CloudEvents 的 JSON 实现中支持事件。
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 484f118791d57c082a9f4383b1af4a22c04849c4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c4358239a87a55d677b5ae7cfe5882caa95827f3
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737896"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110700699"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents v1.0 架构与事件网格配合使用
 除了采用[默认事件架构](event-schema.md)的事件，Azure 事件网格本身还支持采用 [CloudEvents v1.0 的 JSON 架构](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 协议绑定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的事件。 [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
@@ -61,10 +61,10 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
  事件网格资源 | 输入架构       | 传递架构
 |---------------------|-------------------|---------------------
 | 系统主题       | 事件网格架构 | 事件网格架构或 CloudEvents 架构
-| 用户主题/域 | 事件网格架构 | 事件网格架构或 CloudEvents 架构
-| 用户主题/域 | CloudEvents 架构 | CloudEvents 架构
-| 用户主题/域 | 自定义架构     | 自定义架构、事件网格架构或 CloudEvents 架构
-| PartnerTopics       | CloudEvents 架构 | CloudEvents 架构
+| 自定义主题/域 | 事件网格架构 | 事件网格架构或 CloudEvents 架构
+| 自定义主题/域 | CloudEvents 架构 | CloudEvents 架构
+| 自定义主题/域 | 自定义架构     | 自定义架构、事件网格架构或 CloudEvents 架构
+| 合作伙伴主题       | CloudEvents 架构 | CloudEvents 架构
 
 对于所有事件架构，事件网格都要求在发布到事件网格主题时以及在创建事件订阅时进行验证。
 

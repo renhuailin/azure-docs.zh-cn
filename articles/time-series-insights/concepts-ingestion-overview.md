@@ -1,21 +1,22 @@
 ---
 title: “引入”概述 - Azure 时序见解第 2 代 | Microsoft Docs
 description: 了解如何将数据引入到 Azure 时序见解第 2 代中。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: b688bbf454b3df9f6ae368c66a62657a5522d720
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 0151ee288fa61ecd2b34be48d1396b748710a1fe
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505444"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615122"
 ---
 # <a name="azure-time-series-insights-gen2-data-ingestion-overview"></a>Azure 时序见解 Gen2 数据引入概述
 

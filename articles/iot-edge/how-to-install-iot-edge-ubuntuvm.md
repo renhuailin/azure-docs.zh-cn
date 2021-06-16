@@ -7,39 +7,38 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 05/27/2021
 ms.author: pdecarlo
-ms.openlocfilehash: 7fb44b13456598abc7181ba5258ba73ed0512820
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5600702d43d0583324dc9e3b6942318ab52c5cbd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110058539"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110702880"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虚拟机上运行 Azure IoT Edge
 
-[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 使用 Azure IoT Edge 运行时可将设备转变为 IoT Edge 设备。 该运行时可以部署在像 Raspberry Pi 一样小的设备上，也可以部署在像工业服务器一样大的设备上。 使用 IoT Edge 运行时配置设备后，即可开始从云中部署业务逻辑。
 
 若要了解有关 IoT Edge 运行时如何工作以及包含哪些组件的详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
-本文列出了部署一个使用预先提供的设备连接字符串安装并配置了 Azure IoT Edge 运行时的 Ubuntu 18.04 LTS 虚拟机的步骤。 部署是使用 [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) 项目存储库中维护的基于 [cloud-init](../virtual-machines/linux/using-cloud-init.md
-) 的 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)完成的。
+本文列出了部署一个使用预先提供的设备连接字符串安装并配置了 Azure IoT Edge 运行时的 Ubuntu 18.04 LTS 虚拟机的步骤。 部署是使用 [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) 项目存储库中维护的基于 [cloud-init](../virtual-machines/linux/using-cloud-init.md) 的 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)完成的。
 
 首次启动时，该 Ubuntu 18.04 LTS 虚拟机会[通过 cloud-init 安装最新版本的 Azure IoT Edge 运行时](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt)。 在运行时启动之前，该虚拟机还会设置提供的连接字符串，使你可以轻松配置和连接 IoT Edge 设备，而无需启动 SSH 或远程桌面会话。
-
->[!NOTE]
->本文使用的模板安装 IoT Edge 版本 1.1。
 
 ## <a name="deploy-using-deploy-to-azure-button"></a>使用“部署到 Azure”按钮进行部署
 
 使用[“部署到 Azure”按钮](../azure-resource-manager/templates/deploy-to-azure-button.md)可以简化 GitHub 中维护的 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)的部署。  本部分将演示 [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) 项目存储库中包含的“部署到 Azure”按钮的用法。  
 
-
 1. 我们将使用 iotedge-vm-deploy Azure 资源管理器模板部署支持 Azure IoT Edge 的 Linux VM。  若要开始，请单击下面的按钮：
-
-    [![iotedge-vm-deploy 的“部署到 Azure”按钮](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+   :::moniker range="iotedge-2018-06"
+   [![iotedge-vm-deploy 的“部署到 Azure”按钮](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+   :::moniker-end
+   :::moniker range="iotedge-2020-11"
+   [![iotedge-vm-deploy 的“部署到 Azure”按钮](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2F1.2.0%2FedgeDeploy.json)
+   :::moniker-end
 
 1. 在新启动的窗口中，填写可用的窗体字段：
 
@@ -113,8 +112,8 @@ ms.locfileid: "110058539"
    ```
 
 1. 创建新虚拟机：
-
-    若要为 authenticationType 使用 `password`，请参阅以下示例： 
+   :::moniker range="iotedge-2018-06"
+   若要为 authenticationType 使用 `password`，请参阅以下示例： 
 
    ```azurecli-interactive
    az deployment group create \
@@ -127,22 +126,54 @@ ms.locfileid: "110058539"
    --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
    ```
 
-    若要使用 SSH 密钥进行身份验证，可为 authenticationType 指定 `sshPublicKey`，然后在 adminPasswordOrKey 参数中提供 SSH 密钥的值。    下面显示了一个示例。
+   若要使用 SSH 密钥进行身份验证，可为 authenticationType 指定 `sshPublicKey`，然后在 adminPasswordOrKey 参数中提供 SSH 密钥的值。    下面显示了一个示例。
 
-    ```azurecli-interactive
-    #Generate the SSH Key
-    ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
+   ```azurecli-interactive
+   #Generate the SSH Key
+   ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
+    
+   #Create a VM using the iotedge-vm-deploy script
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://aka.ms/iotedge-vm-deploy" \
+   --parameters dnsLabelPrefix='my-edge-vm1' \
+   --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+   --parameters authenticationType='sshPublicKey' \
+   --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
+   ```
+   :::moniker-end
+   :::moniker range="iotedge-2020-11"
+   若要为 authenticationType 使用 `password`，请参阅以下示例： 
 
-    #Create a VM using the iotedge-vm-deploy script
-    az deployment group create \
-    --resource-group IoTEdgeResources \
-    --template-uri "https://aka.ms/iotedge-vm-deploy" \
-    --parameters dnsLabelPrefix='my-edge-vm1' \
-    --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
-    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
-    --parameters authenticationType='sshPublicKey' \
-    --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
-    ```
+   ```azurecli-interactive
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0/edgeDeploy.json" \
+   --parameters dnsLabelPrefix='my-edge-vm1' \
+   --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
+   ```
+
+   若要使用 SSH 密钥进行身份验证，可为 authenticationType 指定 `sshPublicKey`，然后在 adminPasswordOrKey 参数中提供 SSH 密钥的值。    下面显示了一个示例。
+
+   ```azurecli-interactive
+   #Generate the SSH Key
+   ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
+    
+   #Create a VM using the iotedge-vm-deploy script
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0/edgeDeploy.json" \
+   --parameters dnsLabelPrefix='my-edge-vm1' \
+   --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+   --parameters authenticationType='sshPublicKey' \
+   --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
+   ```
+   :::moniker-end
 
 1. 验证部署是否已成功完成。  虚拟机资源应已部署到所选的资源组中。  请记下计算机名称，此名称应采用 `vm-0000000000000` 格式。 另外，请记下关联的“DNS 名称”，其格式应为 `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com。 
 

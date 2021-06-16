@@ -6,12 +6,13 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: article
 ms.date: 07/07/2019
-ms.openlocfilehash: 05b70641873ab352ca92ac199d99c05b2fe0f4e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e93065c395dde4ac47e1d171c2891c880be5cb70
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92221292"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703937"
 ---
 # <a name="use-powershell-to-create-and-share-snapshot-triggers"></a>使用 PowerShell 创建和共享快照触发器
 

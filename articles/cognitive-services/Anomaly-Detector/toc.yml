@@ -60,10 +60,6 @@
       href: concepts/anomaly-detection-best-practices.md
     - name: 预测性维护体系结构（多变量）
       href: concepts/multivariate-architecture.md
-    - name: 谱残差 (SR) 和卷积神经网络 (CNN) 异常检测
-      href: 'https://arxiv.org/abs/1906.03821'
-    - name: 通过图注意力网络进行多变量时序异常情况检测
-      href: 'https://arxiv.org/abs/2009.02040'
 - name: 教程
   items:
     - name: 使用 Power BI 将异常成批可视化
@@ -110,3 +106,7 @@
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
         - name: SR-CNN 算法概述
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
+        - name: 谱残差 (SR) 和卷积神经网络 (CNN) 异常检测
+          href: 'https://arxiv.org/abs/1906.03821'
+        - name: 通过图注意力网络进行多变量时序异常情况检测
+          href: 'https://arxiv.org/abs/2009.02040'

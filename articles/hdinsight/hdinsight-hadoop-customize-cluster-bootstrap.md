@@ -3,14 +3,14 @@ title: 使用 bootstrap 自定义 Azure HDInsight 群集配置
 description: 了解如何使用 .NET、PowerShell 和资源管理器模板以编程方式自定义 HDInsight 群集配置。
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurepowershell
 ms.date: 04/01/2020
-ms.openlocfilehash: 55792cc1890702b904db00b7e3cb3ac3a78c63f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 56f2a49d22fbe1a10f8b59429628c5bc68302f10
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866516"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701627"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 

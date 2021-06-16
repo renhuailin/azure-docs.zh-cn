@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: 127ce4aceff536ef8ce4d2a988a26070ef06b6ec
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5f11c78e6619c2581d04ebc8e97c683c43cf2e73
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078394"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792987"
 ---
 要在打开的 [Azure Cloud Shell](https://shell.azure.com) 窗口中开始处理 Azure 数字孪生，首先需要登录，并为此会话将 shell 上下文设置为你的订阅。 在 Cloud Shell 中运行以下命令：
 
@@ -18,6 +18,7 @@ ms.locfileid: "110078394"
 az login
 az account set --subscription "<your-Azure-subscription-ID>"
 ```
+
 > [!TIP]
 > 在上面的命令中，还可以使用订阅名称而不使用 ID。 
 

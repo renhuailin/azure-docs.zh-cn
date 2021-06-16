@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 98922829e83f84078c3d8cadae15844dba194c93
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: include file, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: fa16db2472daaa98f972460d691c07f700ec3447
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107799858"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110719878"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 如果已有 Key Vault，可以跳至[设置 Key Vault 高级访问策略](#set-key-vault-advanced-access-policies)。 
 
-使用 [az keyvault create](/cli/azure/keyvault#az_keyvault_create) Azure CLI 命令、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell 命令、[Azure 门户](https://portal.azure.com)或[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)创建 Key Vault。
+使用 [az keyvault create](/cli/azure/keyvault#az_keyvault_create) Azure CLI 命令、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure PowerShell 命令、[Azure 门户](https://portal.azure.com)或[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.keyvault/key-vault-create)创建密钥保管库。
 
 >[!WARNING]
 > 密钥保管库和 VM 必须位于同一订阅中。 另外，为确保加密机密不会跨越区域边界，Azure 磁盘加密需要将 Key Vault 和 VM 共置于同一区域中。 在要加密的 VM 所在的同一订阅和区域中创建并使用 Key Vault。 
@@ -61,7 +61,7 @@ New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourc
 ```
 ### <a name="resource-manager-template"></a>Resource Manager 模板
 
-还可以使用[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)创建 Key Vault。
+还可以使用[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.keyvault/key-vault-create)创建 Key Vault。
 
 1. 在 Azure 快速入门模板中，单击“部署到 Azure”。 
 2. 选择订阅、资源组、资源组位置、Key Vault 名称、对象 ID、法律条款和协议，然后单击“购买”。  
@@ -126,6 +126,9 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 
 
 ## <a name="set-up-a-key-encryption-key-kek"></a>设置密钥加密密钥 (KEK)
+
+> [!IMPORTANT]
+> 正在运行以通过密钥保管库启用磁盘加密的帐户必须具有“读取者”权限。
 
 若要使用密钥加密密钥 (KEK) 来为加密密钥提供附加的安全层，请将 KEK 添加到 Key Vault。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。
 
