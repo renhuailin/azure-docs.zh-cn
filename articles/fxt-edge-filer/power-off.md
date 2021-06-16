@@ -1,0 +1,39 @@
+---
+title: 如何关闭 Microsoft Azure FXT Edge Filer 设备
+description: 了解使用群集控制面板软件启动和安全关闭 Azure FXT Edge Filer 节点的过程。
+author: ekpgh
+ms.service: fxt-edge-filer
+ms.topic: how-to
+ms.date: 07/01/2019
+ms.author: v-erkel
+ms.openlocfilehash: 062a5ff1c335b64e8e9cd3fc2eba54c186599034
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111414904"
+---
+# <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>如何安全地关闭 Azure FXT Edge Filer 硬件
+
+尽管可以使用物理电源按钮打开单个节点，但在正常情况下，不应使用它来关闭设备。
+
+将 Azure FXT Edge Filer 节点用作群集的一部分后，应使用群集控制面板软件来关闭硬件。
+
+> [!NOTE]
+> 为了避免可能的数据丢失或损坏，请始终使用控制面板软件关闭 Azure FXT Edge Filer。 请勿使用物理电源按钮关机，除非 Microsoft 客户服务和支持部门指示你这样做。
+>
+> 发生电气故障时，请拔下电源线或使用数据中心的断电机制。
+
+## <a name="shut-down-a-node-from-the-control-panel"></a>从控制面板关闭节点
+
+按照以下说明安全关闭 Azure FXT Edge Filer 节点：
+
+1. 登录到群集控制面板。 （[打开“设置”页](cluster-create.md#open-the-settings-pages)中的说明）
+1. 单击“设置”选项卡，然后加载“群集” > “FXT 节点”页。
+1. 在群集节点列表中，找到要关闭的节点。 单击其“操作”列中的“关闭”按钮。
+1. 等待几分钟。 该节点会关闭并自行断电。
+
+## <a name="next-steps"></a>后续步骤
+
+* 在[监视 Azure FXT Edge Filer 硬件状态](monitor.md)中了解状态 LED 和其他指示器。
+* 在[连接电源线](network-power.md#connect-power-cables)中了解有关 Azure FXT Edge Filer 电源的更多信息。

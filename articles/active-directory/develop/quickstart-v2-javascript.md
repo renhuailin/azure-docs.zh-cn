@@ -3,21 +3,21 @@ title: 快速入门：在 JavaScript 单页应用中登录用户 | Azure
 titleSuffix: Microsoft identity platform
 description: 本快速入门介绍 JavaScript 应用如何调用 API，该 API 需要 Microsoft 标识平台颁发的访问令牌。
 services: active-directory
-author: navyasric
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
-ms.author: nacanuma
+ms.author: mtillman
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: c71e7deeb746a08ccc94784ef2b1115b434a6961
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: ae6fdc989f70cee387c818a147e52408650cc783
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071879"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075432"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 

@@ -3,12 +3,13 @@ title: 使用 PowerShell 还原 Azure 文件
 description: 本文介绍如何使用 Azure 备份服务和 PowerShell 还原 Azure 文件。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 60c9848e12de80bcafe4553a9e8f3e27e8876d41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2c21b707e3a94fe28b07b6bc8179baa58c012b09
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021378"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678144"
 ---
 # <a name="restore-azure-files-with-powershell"></a>使用 PowerShell 还原 Azure 文件
 

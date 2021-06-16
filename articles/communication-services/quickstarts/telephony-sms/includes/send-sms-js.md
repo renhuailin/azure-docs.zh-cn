@@ -10,22 +10,21 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: 8fe8b853fe07af40603950a61c0dd2a1df74d14e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b618a2d33b812d964d48618b42421bdce109f28d
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644359"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430257"
 ---
 通过使用通信服务 JavaScript 短信 SDK 发送短信，开始使用 Azure 通信服务。
 
 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
 
-<!--**TODO: update all these reference links as the resources go live**
+> [!NOTE]
+> 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/send-sms) 上查找此快速入门的最终代码
 
-[API reference documentation](../../../references/overview.md) | [Library source code](https://github.com/Azure/azure-sdk-for-js-pr/tree/feature/communication/sdk/communication/communication-sms) | [Package (NPM)](https://www.npmjs.com/package/@azure/communication-sms) | [Samples](#todo-samples)-->
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Node.js](https://nodejs.org/)，活动 LTS 和维护 LTS 版本（建议使用 8.11.1 和 10.14.1）。

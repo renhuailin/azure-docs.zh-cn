@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 13acee8b21adf946192544afcea17b4a8d9b9ec9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49cc885976e022e8b7c4c44c3546febc217e2d7c
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581119"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071814"
 ---
 # <a name="manual-qos-capacity-pool"></a>手动 QoS 容量池
 
@@ -43,9 +43,7 @@ ms.locfileid: "99581119"
 
 在[创建容量池](azure-netapp-files-set-up-capacity-pool.md)时，可以为容量池指定使用手动 QoS 类型。  还可以[将现有容量池更改为](manage-manual-qos-capacity-pool.md#change-to-qos)使用手动 QoS 类型。 
 
-将容量类型设置为手动 QoS 是永久性的更改。 手动 QoS 类型容量池无法转换为自动 QoS 容量池。 
-
-使用手动 QoS 类型需要[注册该功能](manage-manual-qos-capacity-pool.md#register-the-feature)。  
+将容量类型设置为手动 QoS 是永久性的更改。 无法将手动 QoS 类型容量池转换为自动 QoS 容量池。 
 
 ## <a name="next-steps"></a>后续步骤
 

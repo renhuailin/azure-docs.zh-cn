@@ -3,12 +3,13 @@ title: 启用 Azure 服务总线消息会话 | Microsoft Docs
 description: 本文介绍如何通过使用 Azure 门户、PowerShell、CLI 和编程语言（C#、Java、Python 和 JavaScript）启用消息会话
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 53791bb7dc1dec9bdf6c2c4aa8dda14728c2c465
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0a39e601d675225feb7e82e1de81eee9d3887aeb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989137"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671420"
 ---
 # <a name="enable-message-sessions-for-an-azure-service-bus-queue-or-a-subscription"></a>为 Azure 服务总线队列或订阅启用消息会话
 使用 Azure 服务总线会话，可以连贯有序的方式处理一系列无限多的相关消息。 可以在“先进先出 (FIFO)”和“请求-响应”模式下使用会话。 有关详细信息，请参阅[消息会话](message-sessions.md)。 本文介绍为服务总线队列或订阅启用会话的不同方式。 

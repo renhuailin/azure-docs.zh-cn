@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: c01da4aed9e27296ea7b570420bb190b16749848
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4698826a78afe816029288f2d5eda14834124904
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90934572"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407800"
 ---
 # <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>有关使用已启用 Arc 的超大规模 PostgreSQL 服务器组分发数据的概念
 
@@ -70,7 +70,7 @@ ms.locfileid: "90934572"
 
 ## <a name="next-steps"></a>后续步骤
 - [了解如何创建已启用 Azure Arc 的超大规模 PostgreSQL](create-postgresql-hyperscale-server-group.md)
-- [了解如何横向扩展在 Arc 数据控制器中创建的已启用 Azure Arc 的超大规模 PostgreSQL服务器组](scale-out-postgresql-hyperscale-server-group.md)
+- [了解如何横向扩展在 Arc 数据控制器中创建的已启用 Azure Arc 的超大规模 PostgreSQL服务器组](scale-out-in-postgresql-hyperscale-server-group.md)
 - [了解已启用 Azure Arc 的数据服务](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
 - [了解 Azure Arc](https://aka.ms/azurearc)
 

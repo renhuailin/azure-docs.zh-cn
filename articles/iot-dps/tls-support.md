@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: wesmc
-ms.openlocfilehash: 3a8910cf0e81bd041d74ef95f45220f1c1e0b34c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 512ad8b6239afd2ce86ae0ef249e91e23fe114f3
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91761288"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854443"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>Azure IoT 中心设备预配服务 (DPS) 中的 TLS 支持
 
@@ -20,8 +20,6 @@ DPS 使用[传输层安全性 (TLS)](http://wikipedia.org/wiki/Transport_Layer_S
 
 DPS 支持的当前 TLS 协议版本如下： 
 * TLS 1.2
-
-TLS 1.0 和 1.1 被视为旧版，我们已计划弃用这两个版本。 有关详细信息，请参阅 [IoT 中心弃用 TLS 1.0 和 1.1](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md)。 
 
 ## <a name="restrict-connections-to-tls-12"></a>将连接限制为 TLS 1.2
 

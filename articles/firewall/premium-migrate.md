@@ -7,12 +7,13 @@ services: firewall
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: ffdcad33568af9955dbdf5aafb1b6ffe4a51681d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 27125e7f635c6d8f0690ebd39fb84eb3e0fb2989
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100549577"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110700558"
 ---
 # <a name="migrate-to-azure-firewall-premium-preview"></a>迁移到 Azure 防火墙高级预览版
 
@@ -164,7 +165,7 @@ TransformPolicyToPremium -Policy $policy
    :::image type="content" source="media/premium-migrate/firewall-overview-migrate.png" alt-text="迁移到防火墙策略":::
 
 1. 在“迁移到防火墙策略”页上，选择“查看 + 创建”。 
-1. 选择“创建”。
+1. 选择“创建”  。
 
    部署需要数分钟才能完成。
 1. 使用 `Transform-Policy.ps1`[Azure PowerShell 脚本](#migrate-an-existing-policy-using-azure-powershell)将这个新的标准策略转换为高级策略。
@@ -186,12 +187,12 @@ TransformPolicyToPremium -Policy $policy
       
        `"/subscriptions/<subscription id>/resourceGroups/<your resource group>/providers/Microsoft.Network/firewallPolicies/FirewallPolicy_<your policy name>"`
 
-      to:
+      更改为：
 
       `"/subscriptions/<subscription id>/resourceGroups/<your resource group>/providers/Microsoft.Network/firewallPolicies/FirewallPolicy_<your policy name>_premium"`
 1. 选择“保存”。
-1. 选择“查看 + 创建”。
-1. 选择“创建”。
+1. 选择“查看 + 创建”  。
+1. 选择“创建”  。
 
 部署完成后，现在可以配置所有新的 Azure 防火墙高级预览版功能。
 

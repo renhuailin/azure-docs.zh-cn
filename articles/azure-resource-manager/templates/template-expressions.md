@@ -4,12 +4,12 @@ description: 介绍 Azure 资源管理器模板（ARM 模板）的声明性 JSON
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0c010d71217dcae23348098355bf1752ffc43337
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 1232e7774a88bec089254397d0582cc52f450fdb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314888"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959809"
 ---
 # <a name="syntax-and-expressions-in-arm-templates"></a>ARM 模板中的语法和表达式
 
@@ -134,4 +134,4 @@ New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azurede
 ## <a name="next-steps"></a>后续步骤
 
 * 有关模板函数的完整列表，请参阅 [ARM 模板函数](template-functions.md)。
-* 若要详细了解模板文件，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 若要详细了解模板文件，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
