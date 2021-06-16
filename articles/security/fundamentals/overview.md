@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 413e8387e6e6e1c1386aa9477aebe37b2488c098
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047773"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950551"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 
@@ -363,7 +363,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 - [加入 Azure Active Directory](../../active-directory/devices/overview.md) 可以将云功能扩展到 Windows 10 设备进行集中管理。 它使用户可以通过 Azure Active Directory 连接到企业或组织云，并简化对应用和资源的访问。
 
-- [Azure Active Directory 应用程序代理](../../active-directory/manage-apps/application-proxy.md)为本地托管的 Web 应用程序提供 SSO 和安全远程访问。
+- [Azure Active Directory 应用程序代理](../../active-directory/app-proxy/application-proxy.md)为本地托管的 Web 应用程序提供 SSO 和安全远程访问。
 
 ## <a name="next-steps"></a>后续步骤
 

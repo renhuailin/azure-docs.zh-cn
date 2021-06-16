@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: d7c4f1853ff8dcb9249ab6ec4f536e1f8cfa10e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b96275653c46f587d5b910bd020d494f4b3fe99f
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018218"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032026"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架构中包含新字段的示例查询（2019 年 8 月版架构更新）
 
@@ -122,5 +122,5 @@ AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要获取常见问题的解答，请参阅[流量分析常见问题解答](traffic-analytics-faq.md)。
+- 若要获取常见问题的解答，请参阅[流量分析常见问题解答](traffic-analytics-faq.yml)。
 - 若要查看有关功能的详细信息，请参阅[流量分析文档](traffic-analytics.md)。

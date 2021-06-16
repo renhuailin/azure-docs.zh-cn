@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 03/15/2021
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ba28d003f359af12de6242c6d2444fb8adab0d7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c37017269eb8989102353b079f61c104f5061749
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103562736"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074919"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Windows 虚拟机
 
@@ -39,7 +39,7 @@ ms.locfileid: "103562736"
 
     ![“实例详细信息”部分的屏幕截图，可在其中提供虚拟机的名称并选择其区域、映像和大小](./media/quick-create-portal/instance-details.png)
 
-1. 在“管理员帐户”下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+1. 在“管理员帐户”下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。
 
     ![“管理员帐户”部分的屏幕截图，可在其中提供管理员用户名和密码](./media/quick-create-portal/administrator-account.png)
 
@@ -56,6 +56,8 @@ ms.locfileid: "103562736"
 1. 在部署完成之后，选择“转到资源”。
 
     ![屏幕截图，显示了下一步：转到资源](./media/quick-create-portal/next-steps.png)
+
+[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 

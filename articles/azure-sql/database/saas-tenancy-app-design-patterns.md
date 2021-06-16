@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: scoriani
+ms.author: scoriani
+ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: b3d819cc87d653b2ef132539a77dbc57220ca5d1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: bf25325f12fba6edaf106dc582f843c0c3c0adec
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142326"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693418"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>多租户 SaaS 数据库租户模式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -185,7 +185,7 @@ SQL 数据库提供一个可与分片库和目录数据库结合使用的拆分/
 
 | 度量 | 独立应用 | 每个租户各有数据库 | 分片多租户 |
 | :---------- | :------------- | :------------------ | :------------------- |
-| 缩放 | 中<br />1 到数百个 | 很高<br />1 到数十万个 | 无限制<br />1 到数百万个 |
+| 缩放 | 中型<br />1 到数百个 | 很高<br />1 到数十万个 | 无限制<br />1 到数百万个 |
 | 租户隔离 | 很高 | 高 | 低；任何单租户（即独自在 MT 数据库中的租户）除外。 |
 | 每个租户的数据库成本 | 高；大小根据峰值而定。 | 低；使用池。 | 最低，适用于 MT 数据库中的小租户。 |
 | 性能监视和管理 | 仅限每租户 | 聚合 + 每租户 | 聚合；不过，对于单租户，将应用“仅限每租户”模式。 |

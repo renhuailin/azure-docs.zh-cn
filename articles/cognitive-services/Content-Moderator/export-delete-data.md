@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 9f74fdc9cd30e1dfbd4df6c94842a9dccb435ef4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7cb539b79e4c1fb5b40c0218c87ef6f18dd3fd77
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92913647"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031720"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>在内容审查器中导出或删除用数据
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 内容审查器收集用户数据来使服务运转，但客户对使用[评审工具](https://contentmoderator.cognitive.microsoft.com/)和[审核与评审 API](./api-reference.md) 来查看、导出及删除其数据拥有完全控制权限。
 

@@ -2,13 +2,13 @@
 title: Azure Batch 中的文件和目录
 description: 从开发的角度来了解文件和目录及其在 Azure Batch 工作流中的运用。
 ms.topic: conceptual
-ms.date: 08/03/2020
-ms.openlocfilehash: eafea6c234c3b261521f8a791b7a03e25388f02a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: 63fe8848617cedc12f668bb0efd86e3b1cab7b79
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87552624"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007978"
 ---
 # <a name="files-and-directories-in-azure-batch"></a>Azure Batch 中的文件和目录
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 06/11/2021
+ms.openlocfilehash: a0d28be0bc9754ab678792f2dca294b4fb185bf0
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98539549"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018632"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>如何估计和管理 Azure 认知搜索服务的成本
 
@@ -64,7 +64,7 @@ Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活�
 
 超出最低费用时，可以单独添加副本和分区。 通过副本和分区递增容量会增大费用，其计算公式如下：（副本数 x 分区数 x 计费费率），其中，收费费率取决于所选的定价层。
 
-估计搜索解决方案的成本时，请记住定价和容量不是线性的（容量翻倍不是支付两倍的费用，而是要支付更高的费用）。 有关该公式的工作方式示例，请参阅[如何分配副本和分区](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)。
+估计搜索解决方案的成本时，请记住定价和容量不是线性的（容量翻倍不是支付两倍的费用，而是要在同一层上支付更高的费用）。 此外，在某些情况下，切换到更高的层可以在大致相同的价位上提供更好更快的性能。 有关详细信息和示例，请参阅[升级到标准 S2 层](search-performance-tips.md#tip-upgrade-to-a-standard-s2-tier)。
 
 ### <a name="bandwidth-charges"></a>带宽费用
 
@@ -111,7 +111,7 @@ Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何在 Azure 订阅中监视和管理成本。
+希望优化并节省云支出？
 
 > [!div class="nextstepaction"]
-> [Azure 成本管理和计费文档](../cost-management-billing/cost-management-billing-overview.md)
+> [使用成本管理开始分析成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

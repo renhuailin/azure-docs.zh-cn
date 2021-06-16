@@ -3,12 +3,13 @@ title: 用于创建资源运行状况警报的模板
 description: 以编程方式创建在 Azure 资源不可用时发出通知的警报。
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 4f1cbe1e2d2c185906feb4ccba380cb31df864f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 34f8ec2eb47428f06ddcaf6b82a988f7f2b4b836
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588197"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703285"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 

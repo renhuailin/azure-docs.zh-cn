@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: 使用 SQL Server Management Studio 从 Azure 虚拟机连接到 Azure SQL 托管实例。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: connect
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein, srbozovi, bonova
+author: zoran-rilak-msft
+ms.author: zoranrilak
+ms.reviewer: mathoma, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: a1f496d59fa626dc8750493591128f7363afa40d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8a708caf410ab53da6f9c2e77325307506ea9de
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91620250"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076017"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>快速入门：配置 Azure VM 以连接到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -85,7 +85,7 @@ ms.locfileid: "91620250"
    | **位置** | 资源组的位置 | 此值基于所选资源组进行填充。 |
    | **虚拟机名称**  | 任何有效的名称 | 请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称。|
    |**管理员用户名**|任何有效的用户名|请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。<br>在[连接到 VM](#connect-to-the-virtual-machine) 时使用此用户名。|
-   |**密码**|任何有效的密码|密码必须至少 12 个字符长，且符合[定义的复杂性要求](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。<br>在[连接到 VM](#connect-to-the-virtual-machine) 时使用此密码。|
+   |**密码**|任何有效的密码|密码必须至少 12 个字符长，且符合[定义的复杂性要求](../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。<br>在[连接到 VM](#connect-to-the-virtual-machine) 时使用此密码。|
    | **虚拟机大小** | 任何有效的大小 | 此模板中的默认值 **Standard_B2s** 足以满足本快速入门的要求。 |
    | **位置**|[resourceGroup().location]。| 请勿更改此值。 |
    | **虚拟网络名称**|在其中创建了托管实例的虚拟网络|

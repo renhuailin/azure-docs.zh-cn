@@ -2,21 +2,21 @@
 title: 了解 Azure Active Directory 中应用的基于 SAML 的单一登录 (SSO)
 description: 了解 Azure Active Directory 中应用的基于 SAML 的单一登录 (SSO)
 services: active-directory
-author: kenwith
-manager: daveba
+author: mtillman
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/28/2020
-ms.author: kenwith
+ms.author: mtillman
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: f6422c3f751a7aaa430b93ee68ca1a3520ac915f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1f08e5d75b1a364a3a79a8da01a0a6494a61fdd6
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257686"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075981"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>了解基于 SAML 的单一登录
 

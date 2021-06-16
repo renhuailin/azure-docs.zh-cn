@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 管理 VMware/物理服务器的移动代理
 description: 管理可使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的移动服务代理。
-author: Rajeswari-Mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.author: ramamill
-ms.openlocfilehash: d921bddf90c415cb244e2cc9ad98354392a537ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 88f4fb85a6f67b770c8a13a5701749b8369124bd
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90530142"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578143"
 ---
 # <a name="manage-the-mobility-agent"></a>管理移动代理 
 

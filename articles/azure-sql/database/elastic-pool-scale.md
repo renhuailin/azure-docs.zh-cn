@@ -7,16 +7,16 @@ ms.subservice: elastic-pools
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
-ms.reviewer: sstein
+author: arvindshmicrosoft
+ms.author: arvindsh
+ms.reviewer: mathoma
 ms.date: 04/09/2021
-ms.openlocfilehash: 1125ea0c6c625ece010b2acb416ad223e37aea84
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 68ae6587cb896939b88979ac56278fc5a058f786
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787118"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708750"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放弹性池资源
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "107787118"
 |**基本单一数据库，</br>标准 (S0-S1)**|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 5 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
 |**基本弹性池，</br>标准 (S2-S12)，</br>常规用途单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;对于单一数据库，延迟时间是恒定的，与已用空间无关</br>&bull; &nbsp;对于单一数据库，通常不超过 5 分钟</br>&bull; &nbsp;对于弹性池，与数据库数量成正比|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
 |**高级或业务关键型单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
-|**超大规模**|空值|空值|空值|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 2 分钟|
+|**超大规模**|空值|不适用|空值|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 2 分钟|
 
 > [!NOTE]
 >

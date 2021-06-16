@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: 7445ac5d750ac29d3e6ce466a48e82efd1bcde40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cad0611efe46a934560a89b9fda4d7fa57e4deb
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545524"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082264"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>创建专用终结点以建立到 Azure 认知搜索的安全连接
 
@@ -44,7 +44,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 订阅 | 选择订阅|
     | 资源组 | 选择“新建”，输入“myResourceGroup”，然后选择“确定” |
@@ -62,7 +62,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在“新建搜索服务 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -83,7 +83,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在“创建专用终结点”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
@@ -116,7 +116,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -129,7 +129,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 大小 | 保留默认值“标准 DS1 v2”。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选用户名。 |
-    | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。|
     | 确认密码 | 重新输入密码。 |
     | **入站端口规则** |  |
     | 公共入站端口 | 保留默认设置“允许所选端口”。 |
@@ -144,7 +144,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。|

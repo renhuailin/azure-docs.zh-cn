@@ -9,32 +9,23 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 90d09763f2c9e167d6a0a34adbbc444ebad14c46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ea4ff3b163070fef64d9edcb6e249d450058a84
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101693452"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031126"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>预览版：使用 Azure 映像生成器的 PowerShell 创建 Windows VM
+# <a name="create-a-windows-vm-with-azure-image-builder-using-powershell"></a>使用 Azure 映像生成器的 PowerShell 创建 Windows VM
 
 本文演示如何使用 Azure VM 映像生成器 PowerShell 模块创建自定义的 Windows 映像。
 
-> [!CAUTION]
-> Azure 映像生成器目前提供公共预览版。 此预览版本未提供服务级别协议。 对于生产型工作负荷，不建议使用该预览版。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
-
-> [!IMPORTANT]
-> 尽管 Az.ImageBuilder 和 Az.ManagedServiceIdentity PowerShell 模块为预览版，但是你必须使用 `Install-Module` cmdlet 和 `AllowPrerelease` 参数单独安装它们。  这些 PowerShell 模块正式发布后，会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
-
-```azurepowershell-interactive
-'Az.ImageBuilder', 'Az.ManagedServiceIdentity' | ForEach-Object {Install-Module -Name $_ -AllowPrerelease}
-```
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -45,21 +36,6 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 ```
 
 ### <a name="register-features"></a>注册功能
-
-如果首次在预览期间使用 Azure 映像生成器，请注册新的 VirtualMachineTemplatePreview 功能。
-
-```azurepowershell-interactive
-Register-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -FeatureName VirtualMachineTemplatePreview
-```
-
-检查功能注册的状态。
-
-> [!NOTE]
-> RegistrationState 可能处于 `Registering` 状态几分钟，之后再更改为 `Registered`。 请等到状态变为“已注册”后再继续。
-
-```azurepowershell-interactive
-Get-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -FeatureName VirtualMachineTemplatePreview
-```
 
 请注册以下资源提供程序（如尚未注册）以与你的 Azure 订阅配合使用。
 

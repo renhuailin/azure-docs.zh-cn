@@ -2,26 +2,24 @@
 title: 使用模板进行条件部署
 description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中有条件地部署资源。
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 409d258d7dfe3ed186e5cf97cc0dbe6dc149b849
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/07/2021
+ms.openlocfilehash: 352ee71fea77608ae27552630a7d302b215374a1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741168"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969495"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>使用 ARM 模板进行条件部署
 
-有时，需要选择在 Azure 资源管理器模板（ARM 模板）或 Bicep 文件中部署资源。 对于 JSON 模板，使用 `condition` 元素指定是否部署资源。 对于 Bicep，使用 `if` 关键字指定是否部署资源。 条件的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
+有时，需要选择在 Azure 资源管理器模板（ARM 模板）中部署资源。 使用 `condition` 元素指定是否部署资源。 条件的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
 
 > [!NOTE]
 > 条件部署不会级联到[子资源](child-resource-name-type.md)。 如果要有条件地部署资源及其子资源，需要对每种资源类型应用相同的条件。
 
 ## <a name="deploy-condition"></a>部署条件
 
-你可以传入一个参数值，该值指示是否部署了资源。 以下示例按条件部署某个 DNS 区域。
-
-# <a name="json"></a>[JSON](#tab/json)
+你可以传入一个指示是否部署资源的参数值。 以下示例按条件部署 DNS 区域。
 
 ```json
 {
@@ -45,26 +43,11 @@ ms.locfileid: "101741168"
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param deployZone bool
-
-resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = if (deployZone) {
-  name: 'myZone'
-  location: 'global'
-}
-```
-
----
-
-有关更复杂的示例，请参阅 [Azure SQL 逻辑服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server)。
+如需查看更复杂的示例，请参阅 [Azure SQL 逻辑服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-logical-server)。
 
 ## <a name="new-or-existing-resource"></a>新资源或现有资源
 
 可以使用条件部署来创建新资源或使用现有资源。 以下示例演示如何部署新的存储帐户或使用现有存储帐户。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -108,37 +91,9 @@ resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = if (deployZone) {
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param storageAccountName string
-param location string = resourceGroup().location
-
-@allowed([
-  'new'
-  'existing'
-])
-param newOrExisting string = 'new'
-
-resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {
-  name: storageAccountName
-  location: location
-  sku: {
-    name: 'Standard_LRS'
-    tier: 'Standard'
-  }
-  kind: 'StorageV2'
-  properties: {
-    accessTier: 'Hot'
-  }
-}
-```
-
----
-
 当参数 `newOrExisting` 设置为 **new** 时，条件的计算结果为 true。 将部署存储帐户。 但是，当 `newOrExisting` 设置为 **existing** 时，条件的计算结果为 false，并且不部署存储帐户。
 
-有关使用 `condition` 元素的完整示例模板，请参阅[具有新的或现有虚拟网络、存储和公共 IP 的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions)。
+有关使用 `condition` 元素的完整示例模板，请参阅[具有新的或现有虚拟网络、存储和公共 IP 的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-new-or-existing-conditions)。
 
 ## <a name="runtime-functions"></a>运行时函数
 
@@ -146,7 +101,7 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 
 请使用 [if](template-functions-logical.md#if) 函数，以确保仅当资源已部署时，才根据条件评估函数。 请查看示例模板的 [if 函数](template-functions-logical.md#if)，该模板将 `if` 和 `reference` 用于进行条件部署的资源。
 
-[将资源设置为依赖于](define-resource-dependency.md)条件资源，这与设置任何其他资源完全一样。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
+[将资源设置为依赖于](./resource-dependency.md)条件资源，这与设置任何其他资源完全一样。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
 ## <a name="complete-mode"></a>完整模式
 
@@ -155,5 +110,5 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 ## <a name="next-steps"></a>后续步骤
 
 * 有关介绍条件部署的 Microsoft Learn 模块，请参阅[使用高级 ARM 模板功能管理复杂云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
-* 有关创建模板的建议，请参阅 [ARM 模板的最佳做法](template-best-practices.md)。
+* 有关创建模板的建议，请参阅 [ARM 模板的最佳做法](./best-practices.md)。
 * 要创建资源的多个实例，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。

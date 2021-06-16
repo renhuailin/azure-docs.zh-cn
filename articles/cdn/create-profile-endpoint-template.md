@@ -9,15 +9,15 @@ ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 05/10/2021
 ms.author: allensu
-ms.openlocfilehash: 01aef74b5a4242f5d9b3213c447116e5c4b382ac
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: ee199aaf13763f735607943eb51b848aecde54ff
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751682"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005530"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>快速入门：创建 Azure CDN 配置文件和终结点 - ARM 模板
 
@@ -35,7 +35,7 @@ ms.locfileid: "109751682"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-cdn-with-custom-origin/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/cdn-with-custom-origin/)。
 
 此模板配置为创建：
 

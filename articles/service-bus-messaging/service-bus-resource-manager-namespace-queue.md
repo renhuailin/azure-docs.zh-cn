@@ -4,18 +4,18 @@ description: 快速入门：使用 Azure 资源管理器模板创建服务总线
 documentationcenter: .net
 author: spelluru
 ms.author: spelluru
-ms.date: 06/23/2020
+ms.date: 06/08/2021
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: b64dd4d26150043277152b6cb4ad5391a7af5647
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 3f9260aa8d86e8b9cc449d193fc403f74d500946
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278535"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961257"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-arm-template"></a>快速入门：使用 ARM 模板创建服务总线命名空间和队列
 
@@ -33,7 +33,7 @@ ms.locfileid: "108278535"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/servicebus-create-queue/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json":::
 
@@ -91,7 +91,7 @@ ms.locfileid: "108278535"
 * [使用 PowerShell 管理服务总线](service-bus-manage-with-ps.md)
 * [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/syntax.md
 [Service Bus namespace and queue template]: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json/
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Learn more about Service Bus queues]: service-bus-queues-topics-subscriptions.md

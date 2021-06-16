@@ -1,0 +1,236 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure 通知中心常见问题解答 (FAQ) | Microsoft Docs
+  description: 有关设计和实现 Azure 通知中心相关解决方案的常见问题解答。
+  services: notification-hubs
+  documentationcenter: mobile
+  author: sethmanheim
+  manager: femila
+  keywords: push notification, push notifications, iOS push notifications, android push notifications, ios push, android push
+  ms.service: notification-hubs
+  ms.workload: mobile
+  ms.tgt_pltfrm: mobile-multiple
+  ms.devlang: multiple
+  ms.topic: article
+  ms.date: 02/12/2021
+  ms.author: sethm
+  ms.reviewer: thsomasu
+  ms.lastreviewed: 11/13/2019
+  ms.openlocfilehash: 7c99941ec28f27f79bdffc5478f2ac1cca98aa82
+  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112034805"
+title: 使用 Azure 通知中心推送通知：常见问题
+summary: ''
+sections:
+- name: 常规
+  questions:
+  - question: >
+      通知中心的资源结构是怎样的？
+    answer: >
+      Azure 通知中心有两个资源级别：中心和命名空间。 中心是单个推送资源，可以保存一个应用的跨平台推送信息。 命名空间是一个区域中所有中心的集合。 建议的映射将一个命名空间与一个应用相匹配。 在命名空间内，可以创建适用于生产应用的生产中心、适用于测试应用的测试中心，等等。
+  - question: >
+      通知中心的价格模型有哪些？
+    answer: >
+      可以在[通知中心定价](https://azure.microsoft.com/pricing/details/notification-hubs/)页上找到最新的定价详细信息。 通知中心根据命名空间级别计费。 （有关命名空间的定义，请参阅“通知中心的资源结构是怎样的？”）通知中心提供三个层：
+
+
+      * **免费**：此层是探索推送功能的极佳起点。 不建议对生产应用使用此层。 在每个命名空间中，每个月可以预配 500 个设备和执行 100 万次推送，但无法享受服务级别协议 (SLA) 保证。
+
+      * **基本**：建议将此层（或标准层）用于较小型的生产应用。 在每个命名空间中，每个月可以预配 200,000 个设备和执行 1,000 万次推送（基准）。
+
+      * **标准**：建议将此层用于中型到大型生产应用。 在每个命名空间中，每个月可以预配 1,000 万个设备和执行 1,000 万次推送（基准）。 包含丰富的遥测数据（提供有关推送状态的其他数据）。
+
+
+      标准层功能：
+
+
+      * **丰富的遥测功能**：可以根据消息遥测使用通知中心来跟踪任何推送请求和平台通知系统反馈，以便进行调试。
+
+      * **多租户**：可在命名空间级别使用平台通知系统凭据。 此选项可让你轻松地将租户拆分到相同命名空间内的中心。
+
+      * **计划推送**：可以计划随时发出通知。
+
+      * **批量操作**：如 [注册信息导出/导入](./export-modify-registrations-bulk.md)文档中所述启用注册信息导出/导入功能。
+  - question: >
+      什么是通知中心 SLA？
+    answer: >
+      对于基本和标准通知中心层，正确配置的应用程序可在 99.9% 的时间发送推送通知或执行注册管理操作。 若要详细了解 SLA，请访问[通知中心 SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) 页。
+
+
+      > [!NOTE]
+
+      > 由于推送通知取决于第三方平台通知系统（例如 Apple Push Notification 服务 (APNs) 和 Google Firebase Cloud Messaging (FCM)），因此这些消息的传递没有 SLA 保证。 在通知中心将批处理发送到平台通知系统（有 SLA 保证）后，平台通知系统将负责执行推送（无 SLA 保证）。
+  - question: >
+      如何将中心升级或降级到不同层的命名空间？
+    answer: >
+      转到 **[Azure 门户](https://portal.azure.com)**  > **通知中心命名空间** 或 **通知中心**。 选择要更新的资源，转到“定价层”。 请注意以下要求：
+
+
+      * 更新的定价层应用到正在使用的命名空间中的 *所有* 中心。
+
+      * 如果设备计数超出所要降级到的层的限制，则需要删除设备才能降级。
+- name: 设计和开发
+  questions:
+  - question: >
+      支持哪些服务器端平台？
+    answer: >
+      服务器 SDK 适用于 .NET、Java、Node.js、PHP 和 Python。 通知中心 API 基于 REST 接口，因此如果要处理不同的平台或不希望有其他依赖项，可以直接使用 REST API。 有关详细信息，请转到[通知中心 REST API](/previous-versions/azure/reference/dn530746(v=azure.100)) 页。
+  - question: >
+      支持哪些客户端平台？
+    answer: >
+      [iOS](ios-sdk-get-started.md)、[Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、[Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Android China（通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin [iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) 和 [Android](xamarin-notification-hubs-push-notifications-android-gcm.md) 以及 [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) 支持推送通知。 有关详细信息，请参阅[通知中心入门教程](ios-sdk-get-started.md)页。
+  - question: >
+      是否支持短信、电子邮件或 Web 通知？
+    answer: "通知中心将通知发送到运行移动应用的设备。 它不提供电子邮件或短信功能。 通知中心也不提供现成的浏览器内推送通知传递服务。 客户可以在支持的服务器端平台上使用 SignalR 实现此功能。 \n"
+  - question: >
+      如果通过通知中心发送推送通知，可以支持多少个设备？
+    answer: >
+      有关支持的设备数目的详细信息，请参阅[通知中心定价](https://azure.microsoft.com/pricing/details/notification-hubs/)页。
+
+
+      如果需要支持超过 1000 万个注册设备，则必须将设备分布到多个命名空间。
+  - question: >
+      我可以发送多少推送通知？
+    answer: >
+      Azure 通知中心根据系统中通过的通知数量自动向上扩展，具体取决于所选的层。
+
+
+      > [!NOTE]
+
+      > 根据发送的推送通知的数量，总体使用成本可能会增加。 请务必留意[通知中心定价](https://azure.microsoft.com/pricing/details/notification-hubs/)页上概述的层限制。
+
+
+      我们的客户每天使用通知中心发送数百万条推送通知。 只要使用 Azure 通知中心，就不需要执行任何特别的操作来调整推送通知可及范围。
+  - question: >
+      已发送的推送通知到达我的设备需要多长时间？
+    answer: >
+      在正常使用情况下（传入负载相当一致），Azure 通知中心能够 *在 1 分钟内处理至少 100 万次推送通知发送*。 此速率可能因标记数、传入发送的性质以及其他外部因素而有所不同。
+
+
+      在预计的传递时间内，服务能计算每个平台的目标，并根据注册的标记或标记表达式将消息路由到推送通知服务 (PNS)。 PNS 负责将通知发送到设备。
+
+
+      PNS 对于传递通知不提供任何 SLA 保证。 但是，大多数推送通知会在发送到通知中心之后的数分钟内（通常在 10 分钟内）传递到目标设备。 少量的通知可能需要更长时间。
+
+
+      > [!NOTE]
+
+      > Azure 通知中心有一个策略，可删除任何无法在 30 分钟内传递到 PNS 的推送通知。 这一延迟的出现原因有多种，但最常见的是因为 PNS 限制了应用程序。
+  - question: >
+      是否有任何延迟保证？
+    answer: >
+      推送通知的特性（由平台特定的外部 PNS 传递）导致没有延迟保证。 通常情况下，大部分推送通知会在几分钟内完成传递。
+  - question: >
+      Azure 通知中心将数据存储在何处？
+    answer: >
+      Azure 通知中心将客户注册数据存储在客户选择的区域中。 通知中心提供元数据灾难恢复范围（通知中心名称、连接字符串和其他重要信息）。 对于除巴西南部和东南亚以外的所有区域，元数据备份将托管在不同的区域中（通常是 Azure 配对区域）。 对于巴西南部和东南亚区域，备份将存储在同一区域中，这是为了遵循这些区域的数据驻留要求。
+  - question: >
+      设计包含命名空间和通知中心的解决方案时需要考虑哪些因素？
+    answer: >
+      #### <a name="mobile-appenvironment"></a>移动应用/环境
+
+
+      * 为每个环境中的每个移动应用使用一个通知中心。
+
+      * 在多租户方案中，每个租户都应具有一个单独的中心。
+
+      * 切勿对生产环境和测试环境使用同一个通知中心。 这种做法可能导致发送通知时出现问题。 （Apple 提供沙盒和生产推送终结点，每个终结点具有单独的凭据。）
+
+      * 默认情况下，可以通过 Azure 门户或 Visual Studio 中的 Azure 集成组件将测试通知发送到已注册的设备。 阈值设置为从注册池中随机选取的 10 个设备。
+
+
+      > [!NOTE]
+
+      > 如果中心最初的配置使用 Apple 沙盒证书，后来又使用 Apple 生产证书重新配置，则原始设备令牌会失效。 无效的令牌会导致推送失败。 请将生产和测试环境分开，针对不同的环境使用不同的中心。
+
+
+      #### <a name="pns-credentials"></a>PNS 凭据
+
+
+      将移动应用注册到某个平台的开发人员门户（例如 Apple 或 Google）后，会发送应用标识符和安全令牌。 应用后端将这些令牌提供给平台的 PNS，以便能够将推送通知发送到设备。 安全令牌的形式可以是证书（例如，在 Apple iOS 或 Windows Phone 中）或安全密钥（例如，在 Google Android 或 Windows 中）。 必须在通知中心内配置安全令牌。 配置通常在通知中心级别完成，但是，也可以在多租户方案中的命名空间级别完成。
+
+
+      #### <a name="namespaces"></a>命名空间
+
+
+      命名空间可用于部署分组。 在多租户方案中，还可以使用命名空间来表示同一应用的所有租户的所有通知中心。
+
+
+      #### <a name="geo-distribution"></a>地理分布
+
+
+      在推送通知方案中，地理分布并非总是关键所在。 用于向设备传递推送通知的各个 PNS（例如 APNS 或 FCM）不会均匀分布。
+
+
+      如果有一个在全球范围内使用的应用程序，可以在全球不同的 Azure 区域使用通知中心服务在命名空间中创建中心。
+
+
+      > [!NOTE]
+
+      > 我们不建议采用这种做法，因为这会增大管理成本，尤其是注册成本。 仅当确实有需要时，才采用这种做法。
+  - question: >
+      我该从应用后端注册还是直接通过客户端设备注册？
+    answer: >
+      在创建注册之前，如果必须对客户端进行身份验证，从应用后端进行注册很有用。 如果标记必须由应用后端根据应用逻辑创建或修改，这种注册方法也很有用。 有关详细信息，请转到[后端注册指南](/previous-versions/azure/azure-services/dn743807(v=azure.100))和[后端注册指南 2](/previous-versions/azure/azure-services/dn530747(v=azure.100)) 页。
+  - question: >
+      什么是推送通知传递安全模型？
+    answer: >
+      Azure 通知中心使用基于[共享访问签名](../storage/common/storage-sas-overview.md)的安全模型。 可以在根命名空间级别或细粒度通知中心级别使用共享访问签名令牌。 可以使用不同的授权规则（例如，发送消息权限，或侦听通知权限）设置共享访问签名令牌。 有关详细信息，请参阅[通知中心安全模型](/previous-versions/azure/azure-services/dn495373(v=azure.100))文档。
+  - question: >
+      如何处理推送通知中的敏感有效负载？
+    answer: >
+      所有通知都由平台的 PNS 传递到目标设备。 将通知发送到 Azure 通知中心后，系统会对通知进行处理并将其传递到相应的 PNS。
+
+
+      从发送方到 Azure 通知中心、再到 PNS 的所有连接都使用 HTTPS。
+
+
+      > [!NOTE]
+
+      > Azure 通知中心不会记录消息的有效负载。
+
+
+      若要发送敏感有效负载，我们建议使用安全推送模式。 发送方将带有消息标识符的 ping 通知传递到设备，其中不包含敏感有效负载。 当设备上的应用收到该有效负载后，可直接调用安全 API 来提取消息详细信息。 有关如何实现此模式的指导，请转到[通知中心安全推送教程](./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)页。
+- name: 操作
+  questions:
+  - question: >
+      为灾难恢复提供哪种支持？
+    answer: >
+      我们提供元数据灾难恢复范围（通知中心名称、连接字符串和其他重要信息）。 触发灾难恢复方案后，注册数据是通知中心基础结构中丢失的 *唯一片段*。 必须实施某种解决方案，将此数据重新填充到恢复后的新中心：
+
+
+      1. 在另一个数据中心创建辅助通知中心。 我们建议一开始就创建一个辅助通知中心，以便在发生影响管理功能的灾难恢复事件时保护自己。 也可以在发生灾难恢复事件时创建一个辅助通知中心。
+
+
+      2. 使用以下选项之一，使辅助通知中心与主通知中心保持同步：
+
+         * 使用可在两个通知中心同时创建和更新安装的应用后端。 通过安装，你可以指定自己的唯一设备标识符，从而使其更适合复制方案。 有关详细信息，请参阅[示例代码](https://github.com/Azure/azure-notificationhubs-dotnet/tree/main/Samples/RedundantHubSample)。
+         * 使用一个应用后端从主通知中心获取注册信息的常规转储作为备份。 然后，通知中心可以将这些信息批量插入辅助通知中心。
+
+      辅助通知中心可能最终会出现安装/注册过期的情况。 当推送到过期的句柄时，通知中心会根据从 PNS 服务器接收到的响应自动清除关联的安装/注册记录。 若要从辅助通知中心清理过期的记录，请添加自定义逻辑来处理每次发送的反馈。 然后，使辅助通知中心中的安装/注册过期。
+
+
+      如果没有后端，当应用在目标设备上启动时，它们会在辅助通知中心执行新注册。 辅助通知中心最终将拥有所有已注册的活动设备。
+
+
+      在一段时间内，包含未打开的应用的设备将收不到通知。
+  - question: >
+      我的所有数据是否都以加密形式存储？
+    answer: >
+      Azure 通知中心会加密所有静态的客户数据（注册标记除外）。 出于此原因，不应使用标记存储个人数据或机密数据。
+  - question: >
+      是否有审核日志功能？
+    answer: >
+      是的。 所有通知中心管理操作都会更新 [Azure 门户](https://portal.azure.com)中公开的 Azure 活动日志。 Azure 活动日志可使用户了解对订阅中的资源执行的操作。 通过活动日志，可确定对订阅中的资源进行的任何写入操作（PUT、POST、DELETE）的内容、执行者和时间。 还可以了解操作和其他相关属性的状态。 但是， 活动日志不包括读取 (GET) 操作。
+- name: 监视和故障排除
+  questions:
+  - question: >
+      故障排除功能有哪些？
+    answer: >
+      Azure 通知中心提供多项可用于故障排除的功能，尤其是针对通知被删除的最常见情况。 有关详细信息，请参阅[通知中心故障排除](./notification-hubs-push-notification-fixer.md)白皮书。
+  - question: >
+      遥测功能有哪些？
+    answer: "Azure 通知中心允许在 [Azure 门户](https://portal.azure.com)中查看遥测数据。 可以在[通知中心指标](../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs)页上找到有关可用指标的详细信息。\n\n还可以通过编程方式访问指标。 有关详细信息，请参阅以下文章：\n\n- [使用 .NET 检索 Azure Monitor 指标](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。 此示例使用用户名和密码。 若要使用证书，请重载 FromServicePrincipal 方法以提供[此示例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)中所示的证书。 \n- [获取资源的指标和活动日志](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)\n- [Azure 监视 REST API 演练](../azure-monitor/essentials/rest-api-walkthrough.md)\n\n> [!NOTE]\n> 通知成功仅意味着推送通知已传递到外部 PNS（例如，APNs（对于 iOS 和 macOS）或 FCM（对于 Android 设备））。 PNS 负责将通知传递到目标设备。 PNS 通常不会向第三方公开传递指标。"

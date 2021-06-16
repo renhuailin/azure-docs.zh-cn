@@ -2,20 +2,20 @@
 title: 快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO)
 description: 本快速入门逐步介绍在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO) 的过程。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
-ms.author: iangithinji
-ms.openlocfilehash: 802cc744063ba2bf1110915ae9b22c9c00e09cfa
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.author: mtillman
+ms.openlocfilehash: 81a1d2eeeb1b82c488598bc081453193e360d6d5
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378901"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077512"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO)
 

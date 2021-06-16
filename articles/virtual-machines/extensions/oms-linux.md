@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 02/18/2020
-ms.openlocfilehash: 3ac6937d83bd2d21fefc09878408a54aa0eb41f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d30aee396eb3e8e5c56896e048210f5f7d47ef87
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559063"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949859"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Log Analytics 虚拟机扩展
 
@@ -113,7 +113,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 ## <a name="template-deployment"></a>模板部署
 
 >[!NOTE]
->[诊断 VM 扩展](./diagnostics-linux.md)中还随附了 Log Analytics VM 扩展的某些组件。 由于这种体系结构，如果在同一 ARM 模板中对两个扩展进行实例化，则可能会发生冲突。 为避免这些安装时冲突，请使用 [`dependsOn` 指令](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)，确保按顺序安装扩展。 可按任一顺序安装扩展。
+>[诊断 VM 扩展](./diagnostics-linux.md)中还随附了 Log Analytics VM 扩展的某些组件。 由于这种体系结构，如果在同一 ARM 模板中对两个扩展进行实例化，则可能会发生冲突。 为避免这些安装时冲突，请使用 [`dependsOn` 指令](../../azure-resource-manager/templates/resource-dependency.md#dependson)，确保按顺序安装扩展。 可按任一顺序安装扩展。
 
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要进行部署后配置（例如，载入 Azure Monitor 日志）的一个或多个虚拟机时，模板是理想选择。 包含 Log Analytics 代理 VM 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)中找到。 
 

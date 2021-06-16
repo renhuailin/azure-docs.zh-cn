@@ -4,12 +4,12 @@ description: 快速入门：了解如何使用 Azure CLI 在 Azure 门户中创�
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: 76d4e3b9c1c906dd91a7355af2c7cb957ef6ac95
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: aa9d5f1c7ab20de9a2f815ce5b2639582d5f2bed
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891709"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081598"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 门户仪表板
 
@@ -47,7 +47,7 @@ az vm create --resource-group myResourceGroup --name SimpleWinVM --image win2016
 > 密码必须是复杂密码。
 > 这是新的用户名和密码。
 > 它不是用于登录 Azure 的帐户。
-> 有关详细信息，请参阅[用户名要求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)和[密码要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+> 有关详细信息，请参阅[用户名要求](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-)和[密码要求](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。
 
 部署开始进行，通常需要几分钟才能完成。
 部署完成后，请转到下一部分。

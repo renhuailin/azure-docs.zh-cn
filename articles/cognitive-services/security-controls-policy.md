@@ -1,18 +1,18 @@
 ---
 title: 用于 Azure 认知服务的 Azure Policy 合规性控制措施
 description: 列出可用于 Azure 认知服务的 Azure Policy 合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.topic: sample
 author: nitinme
 ms.author: nitinme
 ms.service: cognitive-services
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1ccd9860b9fe2c6ab9b7112c8ffa1dec4a36e4bd
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b5bbf47876e70239861f2f1a3683587e142d9680
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062122"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034440"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-services"></a>用于 Azure 认知服务的 Azure Policy 合规性控制措施
 

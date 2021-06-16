@@ -9,22 +9,21 @@ ms.custom: seodec18, cog-serv-seo-aug-2020, devx-track-azurecli
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 06/02/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, 情绪分析, 自然语言处理
-ms.openlocfilehash: 09d0da5aa811f694657ae6a0b8059bf55bcbf657
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 103f6ce9c614646f96129f9579a35655756bb794
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290247"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968207"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
 > [!NOTE]
 > * 用于情绪分析和语言检测的容器现已正式发布。 关键短语提取容器以非封闭公共预览版的形式提供。
 > * 实体链接和 NER 当前不可用作容器。
-> * 访问运行状况容器的文本分析需要[请求表单](https://aka.ms/csgate)。 目前，其使用不需付费。
 > * 容器映像位置最近可能已更改。 阅读本文以查看此容器的更新位置。
 
 容器使你能够在自己的环境中运行文本分析 API，最适合特定安全性和数据管理要求。 文本分析容器提供对原始文本的高级自然语言处理，并且包含三项主要功能：情绪分析、关键短语提取和语言检测。 

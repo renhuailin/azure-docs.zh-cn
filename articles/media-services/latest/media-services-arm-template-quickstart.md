@@ -30,7 +30,7 @@ ms.service: media-services ms.workload: ms.topic: quickstart ms.date: 03/23/2021
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-media-services-create/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/media-services-create/)。
 
 JSON 代码隔离区的语法为：
 

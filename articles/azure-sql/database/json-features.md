@@ -7,16 +7,16 @@ ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: ''
+author: uc-msft
+ms.author: umajay
+ms.reviewer: mathoma
 ms.date: 04/19/2020
-ms.openlocfilehash: 4258c60335a13a6c0f27588aac1c6cdb185fcf6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4597380c0bae96c67c38d36d162fdf740ba119a2
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92782793"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590245"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL 数据库和 Azure SQL 托管实例中的 JSON 功能入门
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

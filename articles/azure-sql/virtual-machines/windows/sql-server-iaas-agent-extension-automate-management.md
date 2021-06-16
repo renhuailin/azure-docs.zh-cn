@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fdff3f6144f7099f3f61cfe57186357e17136e9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a80770013d373dbbd1ca672fbd2153731b604f5c
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225475"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079546"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理扩展实现自动管理
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -72,7 +72,7 @@ SQL Server IaaS 代理扩展可以解锁许多功能权益用于管理 SQL Serve
 | 功能 | 说明 |
 | --- | --- |
 | **门户管理** | 解锁[门户中的管理](manage-sql-vm-portal.md)，使你可以在一个位置查看所有 SQL Server VM，并可直接在门户中启用和禁用 SQL 特定的功能。 <br/> 管理模式：轻型和完全|  
-| **自动备份** |对 VM 中的 SQL Server 默认实例或已[正确安装](frequently-asked-questions-faq.md#administration)的命名实例自动执行所有数据库的备份计划。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动备份 (Resource Manager)](automated-backup-sql-2014.md)。 <br/> 管理模式：完全|
+| **自动备份** |对 VM 中的 SQL Server 默认实例或已[正确安装](/azure/azure-sql/virtual-machines/windows/frequently-asked-questions-faq#administration)的命名实例自动执行所有数据库的备份计划。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动备份 (Resource Manager)](automated-backup-sql-2014.md)。 <br/> 管理模式：完全|
 | **自动修补** |配置维护时段，可在此时段对 VM 进行重要的 Windows 和 SQL Server 安全更新，从而可以避免在工作负载的高峰期进行更新。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)](automated-patching.md)。 <br/> 管理模式：完全|
 | **Azure 密钥保管库集成** |可让你在 SQL Server VM 上自动安装和配置 Azure 密钥保管库。 有关详细信息，请参阅 [为 Azure 虚拟机上的 SQL Server 配置 Azure 密钥保管库集成 (Resource Manager)](azure-key-vault-integration-configure.md)。 <br/> 管理模式：完全|
 | **在门户中查看磁盘使用率** | 可让你在 Azure 门户中查看 SQL 数据文件的磁盘使用率的图形表示形式。  <br/> 管理模式：完全 | 
@@ -173,4 +173,4 @@ Azure SQL 虚拟机和 SQL IaaS 代理扩展不会将客户数据移到或存储
 
 有关在 Azure 虚拟机中运行 SQL Server 的详细信息，请参阅[什么是 Azure 虚拟机中的 SQL Server？](sql-server-on-azure-vm-iaas-what-is-overview.md)。
 
-有关详细信息，请参阅[常见问题解答](frequently-asked-questions-faq.md)。 
+有关详细信息，请参阅[常见问题解答](frequently-asked-questions-faq.yml)。 

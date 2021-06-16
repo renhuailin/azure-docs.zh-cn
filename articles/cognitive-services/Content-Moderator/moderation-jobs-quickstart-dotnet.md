@@ -11,14 +11,16 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec101786f33aa6f2525d685993d6b6c891ab2e9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8363240ec72e35d2dfac831a07f96f6789ab253a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "88936310"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033790"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>定义和使用审核作业 (.NET)
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 审核作业充当内容审核、工作流和审阅功能的一种包装器。 本指南中的信息和代码示例可帮助你开始使用[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)来执行下列操作：
 

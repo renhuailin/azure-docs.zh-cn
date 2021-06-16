@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
-ms.custom: rybaker, chmimckitt
-ms.openlocfilehash: bb86ba6867ad796ef0f5eeb1357a6df9e93e9f9e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: rybaker, chmimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 9a2b93a951b9aa2056ee547d8d74c90eb7d96f71
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555765"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983827"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租户托管权限在 Azure 上部署 Windows 10 
 对于其用户使用 Windows 10 企业版 E3/E5 或使用 Windows 虚拟桌面访问（用户订阅许可证或附加设备用户订阅许可证）的客户，通过使用 Windows 10 多租户托管权限，他们可以在云中使用其 Windows 10 许可证并在 Azure 上运行 Windows 10 虚拟机，无需购买其他许可证。 多租户托管权限仅适用于 Windows 10（版本 1703 或更高版本）。
@@ -54,7 +54,6 @@ rs4-pro                     Windows-10 MicrosoftWindowsDesktop eastus
 rs4-pron                    Windows-10 MicrosoftWindowsDesktop eastus   
 rs5-enterprise              Windows-10 MicrosoftWindowsDesktop eastus   
 rs5-enterprisen             Windows-10 MicrosoftWindowsDesktop eastus   
-rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
 rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
 ```
 
@@ -90,7 +89,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**使用 Azure 资源管理器模板部署进行部署** 在资源管理器模板中，可为 `licenseType` 指定一个附加参数。 可以阅读有关[创作 Azure Resource Manager 模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息。 将 VHD 上传到 Azure 之后，请编辑 Resource Manager 模板以将许可证类型包含为计算提供程序的一部分，然后照常部署模板：
+**使用 Azure 资源管理器模板部署进行部署** 在资源管理器模板中，可为 `licenseType` 指定一个附加参数。 可以阅读有关[创作 Azure Resource Manager 模板](../../azure-resource-manager/templates/syntax.md)的详细信息。 将 VHD 上传到 Azure 之后，请编辑 Resource Manager 模板以将许可证类型包含为计算提供程序的一部分，然后照常部署模板：
 ```json
 "properties": {
     "licenseType": "Windows_Client",

@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: b397115f6e84b414d9224134b7b6999228064407
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: aebadcbb37a91b1a908054738fc901c6e7e54ac1
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373238"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004468"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>创建 Azure 机器学习计算群集
 
@@ -106,7 +106,7 @@ az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STAN
 
  ## <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> 降低计算群集成本
 
-也可以选择使用[低优先级 VM](concept-plan-manage-cost.md#low-pri-vm) 来运行部分或全部工作负载。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 必须重启已占用的作业。 
+也可以选择使用[低优先级 VM](how-to-manage-optimize-cost.md#low-pri-vm) 来运行部分或全部工作负载。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 必须重启已占用的作业。 
 
 请使用以下任一方法指定低优先级 VM：
     
