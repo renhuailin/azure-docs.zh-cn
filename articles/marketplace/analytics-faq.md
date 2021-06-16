@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/10/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 1b98948100c06868cd14f636f2049ca515fec18d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5236c7d9cb29f8c91ea99d17e78fb4e584012dde
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94564798"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537281"
 ---
 # <a name="commercial-marketplace-analytics-common-questions"></a>商业市场分析常见问题
 
@@ -43,9 +43,9 @@ ms.locfileid: "94564798"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关合作伙伴中心中可用分析报表的概述，请参阅[在合作伙伴中心访问商业市场的分析报表](./partner-center-portal/analytics.md)。
+- 有关合作伙伴中心中可用分析报表的概述，请参阅[在合作伙伴中心访问商业市场的分析报表](analytics.md)。
 - 有关采用图形和可下载格式显示的订单的信息，请参阅[商业市场分析中的订单仪表板](orders-dashboard.md)。
 - 有关虚拟机 (VM) 产品/服务使用情况和按流量计费指标的信息，请参阅[商业市场分析中的“使用情况”仪表板](usage-dashboard.md)。
 - 有关客户的详细信息（包括增长趋势），请参阅[商业市场分析中的客户仪表板](customer-dashboard.md)。
-- 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](./partner-center-portal/downloads-dashboard.md)。
-- 如果要查看客户对 Azure 市场和 Microsoft AppSource 中套餐的反馈的综合视图，请参阅[合作伙伴中心的评分和评价分析仪表板](./partner-center-portal/ratings-reviews.md)。
+- 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](downloads-dashboard.md)。
+- 如果要查看客户对 Azure 市场和 Microsoft AppSource 中套餐的反馈的综合视图，请参阅[合作伙伴中心的评分和评价分析仪表板](ratings-reviews.md)。

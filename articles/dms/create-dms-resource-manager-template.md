@@ -3,16 +3,16 @@ title: 创建 DMS 实例（Azure 资源管理器模板）
 description: 了解如何使用 Azure 资源管理器模板（ARM 模板）创建数据库迁移服务。
 author: MashaMSFT
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 8b448f04811ad254358990f6f37c4a02f1909d65
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: fad7f93e4ccaa31f17df79f4d512647607427f1c
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952721"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006790"
 ---
 # <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 数据库迁移服务的实例
 
@@ -33,7 +33,7 @@ Azure 数据库迁移服务 ARM 模板需要以下各项：
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azure-database-migration-simple-deploy/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/azure-database-migration-simple-deploy/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.datamigration/azure-database-migration-simple-deploy/azuredeploy.json":::
 
@@ -54,7 +54,7 @@ Azure 数据库迁移服务 ARM 模板需要以下各项：
 
 2. 选择或输入以下值。
 
-    * 订阅：选择 Azure 订阅。
+    * **订阅**：选择 Azure 订阅。
     * 资源组：从下拉列表中选择现有资源组，或者选择“新建”来创建新的资源组。 
     * **区域**：将在其中部署资源的位置。
     * **服务名称**：新迁移服务的名称。

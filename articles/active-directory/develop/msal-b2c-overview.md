@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 383c9651d6552a327bc9e986d18fbc7832fc94f8
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: e11ed0d284e89a9e5f406aade2147b52d139f0ad
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072182"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953549"
 ---
 # <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>通过适用于 JavaScript 的 Microsoft 身份验证库来使用 Azure AD B2C
 
@@ -28,12 +28,12 @@ ms.locfileid: "108072182"
 
 ## <a name="supported-app-types-and-scenarios"></a>支持的应用类型和方案
 
-MSAL.js 通过使用[授权代码流和 PKCE](https://docs.microsoft.com/azure/active-directory-b2c/authorization-code-flow) 授权，使[单页应用程序](https://docs.microsoft.com/azure/active-directory-b2c/application-types#single-page-applications)能够使用 Azure AD B2C 登录用户。 借助 MSAL.js 和 Azure AD B2C：
+MSAL.js 通过使用[授权代码流和 PKCE](../../active-directory-b2c/authorization-code-flow.md) 授权，使[单页应用程序](../../active-directory-b2c/application-types.md#single-page-applications)能够使用 Azure AD B2C 登录用户。 借助 MSAL.js 和 Azure AD B2C：
 
 - 用户可以通过其社交和本地标识进行身份验证。
 - 用户可以获授权访问 Azure AD B2C 的受保护资源（但不包括 Azure AD 的受保护资源）。
-- 用户无法使用[委托权限](https://review.docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent?branch=master#permission-types)获取 Microsoft API（如 MS 图形 API）的令牌。
-- 具有管理员权限的用户可以使用[委托权限](https://review.docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent?branch=master#permission-types)获取 Microsoft API（如 MS 图形 API）的令牌。
+- 用户无法使用[委托权限](/azure/active-directory/develop/v2-permissions-and-consent#permission-types)获取 Microsoft API（如 MS 图形 API）的令牌。
+- 具有管理员权限的用户可以使用[委托权限](/azure/active-directory/develop/v2-permissions-and-consent#permission-types)获取 Microsoft API（如 MS 图形 API）的令牌。
 
 有关详细信息，请参阅[使用 Azure AD B2C](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/working-with-b2c.md)
 

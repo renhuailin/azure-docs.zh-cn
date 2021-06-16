@@ -103,7 +103,7 @@ additionalContent:
               text: 使用完全托管的文件缓存服务（Azure HPC 缓存）
             - url: ../avere-vfxt/avere-vfxt-overview.md
               text: 在 Azure 中缓存本地 NAS (Avere vFXT for Azure)
-            - url: ../fxt-edge-filer/fxt-overview.md
+            - url: ../fxt-edge-filer/overview.md
               text: 部署本地缓存设备 (Azure FXT Edge Filer)
     - title: 数据操作
       items:

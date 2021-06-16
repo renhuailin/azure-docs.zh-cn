@@ -3,12 +3,12 @@ title: 检测运动，使用 Azure 视频分析器录制视频
 description: 本快速入门介绍如何使用 Azure 视频分析器边缘模块来检测实时视频流中的运动，并将视频录制到视频分析器帐户。
 ms.topic: quickstart
 ms.date: 04/03/2021
-ms.openlocfilehash: 851310ff3b03730a1fc9adb4eaa7c0c3f9cf84f2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9643ed3a7bbcc23757110033be1dbc3780ddafb5
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385094"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565925"
 ---
 # <a name="quickstart-detect-motion-record-video-to-video-analyzer"></a>快速入门：检测运动，将视频录制到视频分析器
 
@@ -986,6 +986,23 @@ ms.locfileid: "110385094"
 ```
 
 状态代码 200 指示管道拓扑已成功删除。
+
+## <a name="playing-back-the-recording"></a>播放录制内容
+
+可通过登录到 Azure 门户并观看视频来检查实时管道创建的视频分析器视频资源。
+1. 打开 Web 浏览器，并转到 [Azure 门户](https://portal.azure.com/)。 输入登录到门户所需的凭据。 默认视图是服务仪表板。
+1. 在订阅资源中找到视频分析器帐户，并打开“帐户”窗格。
+1. 在“视频分析器”列表中选择“视频” 。
+1. 你会发现以名称 `sample-motion-video-camera001` 列出的视频。 这是在管道拓扑文件中选择的名称。
+1. 选择视频。
+1. 视频“详细信息”页随即将打开并自动开始播放。
+
+    <!--TODO: add image -- ![Video playback]() TODO: new screenshot is needed here -->
+
+
+> [!NOTE]
+> 由于视频源是模拟相机源的容器，因此视频中的时间戳与启用和停用实时管道的时间有关。
+    
 
 ## <a name="clean-up-resources"></a>清理资源
 

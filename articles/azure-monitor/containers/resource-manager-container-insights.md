@@ -5,15 +5,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 68bad5b4bfcef4f0f633bce7e3e352486aed3fdf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7e2a38e2bf008901a1ba18c18dd282e91898036e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039183"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966936"
 ---
 # <a name="resource-manager-template-samples-for-container-insights"></a>容器见解资源管理器模板示例
-本文包括 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例，用于在 Azure Monitor 中部署和配置虚拟机的 Log Analytics 代理。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+本文包括 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)示例，用于在 Azure Monitor 中部署和配置虚拟机的 Log Analytics 代理。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

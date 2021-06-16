@@ -6,13 +6,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
+ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: e847592127d19eba3370255385f5b969b87e886e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43987b333279675204179a90f01f2aa668abb2c1
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380094"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665650"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从 ODBC 数据存储移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -44,7 +45,7 @@ ms.locfileid: "100380094"
 
 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具创建管道：“Visual Studio”、“Azure PowerShell”、“Azure 资源管理器模板”、“.NET API”和“REST API”    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -59,7 +60,7 @@ ms.locfileid: "100380094"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供特定于 ODBC 链接服务的 JSON 元素的描述。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | type |类型属性必须设置为：**OnPremisesOdbc** |是 |
 | connectionString |连接字符串的非访问凭据部分和可选的加密凭据。 请参阅以下部分中的示例。 <br/><br/>可以使用类似 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在网关计算机上使用 `"DSN=<name of the DSN>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。 |是 |
@@ -142,7 +143,7 @@ ms.locfileid: "100380094"
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 ODBC）时，以下属性可用于 typeProperties 部分：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |是 |
 

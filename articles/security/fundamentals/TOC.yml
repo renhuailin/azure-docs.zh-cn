@@ -43,6 +43,8 @@
       items:
         - name: 固件安全性
           href: firmware.md
+        - name: 代码完整性
+          href: code-integrity.md
         - name: 安全启动
           href: secure-boot.md
         - name: 度量启动和主机证明

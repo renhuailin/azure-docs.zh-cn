@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jianleishen
-ms.openlocfilehash: 2140eeb3302799d55a0d45c9469edea9f11ded3b
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 4779d8830e0b4e78aea0cd4e9de0401806a85af7
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482140"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749200"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Office 365 复制到 Azure
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -34,7 +34,7 @@ Azure 数据工厂与 [Microsoft Graph 数据连接](/graph/data-connect-concept
 
 若要将数据从 Office 365 复制到 Azure，需要完成下列必备步骤：
 
-- Office 365 租户管理员必须完成载入操作，如[此处](/graph/data-connect-get-started)所述。
+- Office 365 租户管理员必须完成载入操作，如[此处](/events/build-may-2021/microsoft-365-teams/breakouts/od483/)所述。
 - 在 Azure Active Directory 中创建和配置 Azure AD Web 应用程序。  有关说明，请参阅[创建 Azure AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。
 - 记下下面的值，这些值将用于定义 Office 365 的链接服务：
     - 租户 ID。 有关说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
@@ -46,7 +46,7 @@ Azure 数据工厂与 [Microsoft Graph 数据连接](/graph/data-connect-concept
 
 如果这是你首次请求此上下文（要访问的数据表、要将数据加载到的目标帐户和发出数据访问请求的用户标识的组合）的数据，则复制活动状态将显示为“正在进行”；仅当单击[“操作”下的“详细信息”](copy-activity-overview.md#monitoring)链接时，状态才显示为“正在请求许可”。  在继续执行数据提取之前，数据访问审批者组的成员需要在 Privileged Access Management 中审批该请求。
 
-有关审批者如何批准数据访问请求的信息，请参阅[此处](/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal)，以及有关与 Privileged Access Management 的全面集成（包括如何设置数据访问审批者组）的说明，请参阅[此处](/graph/data-connect-pam)。
+有关审批者如何批准数据访问请求的信息，请参阅[此处](/graph/data-connect-faq#how-can-i-approve-pam-requests-via-microsoft-365-admin-portal)，以及有关与 Privileged Access Management 的全面集成（包括如何设置数据访问审批者组）的说明，请参阅[此处](/graph/data-connect-pam)。
 
 ## <a name="policy-validation"></a>策略验证
 
@@ -72,7 +72,7 @@ Azure 数据工厂与 [Microsoft Graph 数据连接](/graph/data-connect-concept
 
 Office 365 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Office 365 | 是 |
 | office365TenantId | Office 365 帐户所属的 Azure 租户 ID。 | 是 |
@@ -112,7 +112,7 @@ Office 365 链接服务支持以下属性：
 
 若要从 Office 365 复制数据，支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：Office365Table | 是 |
 | tableName | 要从 Office 365 中提取的数据集的名称。 有关支持提取的 Office 365 数据集列表，请参阅[此处](/graph/data-connect-datasets#datasets)。 | 是 |
@@ -146,7 +146,7 @@ Office 365 链接服务支持以下属性：
 
 为了从 Office 365 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 Office365Source | 是 |
 | allowedGroups | 组选择谓词。  可以使用此属性选择最多 10 个将为其检索数据的用户组。  如果未指定任何组，则会为整个组织返回数据。 | 否 |

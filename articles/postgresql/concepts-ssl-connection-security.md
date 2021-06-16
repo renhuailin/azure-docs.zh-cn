@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: c98ee8f747975d4237c2906be2060eddbc7b9990
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ddc2ab665577d49d41556e8b3b7d96f6e2c85af
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96000940"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616543"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL（单一服务器）中配置 TLS 连接
 
@@ -102,7 +102,7 @@ Azure Database for PostgreSQL 单一服务器提供了为客户端连接强制�
 
 ## <a name="cipher-support-by-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 单一服务器的密码支持
 
-作为 SSL/TLS 通信的一部分，将对密码套件进行验证，并且仅允许支持密码套件与数据库服务器通信。 密码套件验证在[网关层](concepts-connectivity-architecture.md#connectivity-architecture)中控制，而不是在节点本身上显式控制。 如果密码套件与下面列出的某个套件不匹配，系统会拒绝传入的客户端连接。
+作为 SSL/TLS 通信的一部分，将验证密码套件，并且仅允许支持密码套件与数据库服务器通信。 密码套件验证在[网关层](concepts-connectivity-architecture.md#connectivity-architecture)中控制，而不是在节点本身上显式控制。 如果密码套件与下面列出的某个套件不匹配，系统会拒绝传入的客户端连接。
 
 ### <a name="cipher-suite-supported"></a>支持的密码套件
 

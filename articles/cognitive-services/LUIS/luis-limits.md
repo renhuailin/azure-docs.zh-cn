@@ -4,13 +4,13 @@ description: 本文介绍 Azure 认知服务语言理解 (LUIS) 的已知限制�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 06/04/2020
-ms.openlocfilehash: 1f917087eb15d8c77356995299e27dfc1657cb5d
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 05/26/2021
+ms.openlocfilehash: 00b218908242b27e7276a18a490250a0db34d57a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497194"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954188"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的限制
 LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 限制的第三个区域是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-glossary.md#endpoint) API 之间的[世界区域映射](luis-reference-regions.md)。
@@ -80,7 +80,6 @@ LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控
 
 |创作资源|创作 TPS|
 |--|--|
-|初学者|1 百万/月，5/秒|
 |F0 - 免费层 |1 百万/月，5/秒|
 
 * TPS = 每秒事务数
@@ -117,7 +116,7 @@ LUIS 有几个限制区。 第一个是[模型限制](#model-limits)，它可控
 登录访问权限为 60 分钟。 在此时间段后，会出现此错误。 需重新登录。
 
 [luis-get-started-create-app]: ./luis-get-started-create-app.md
-[batch-testing]: ./luis-concept-test.md#batch-testing
+[batch-testing]: ./luis-interactive-test.md#batch-testing
 [intents]: ./luis-concept-intent.md
 [phrase-list]: ./luis-concept-feature.md
 [utterances]: ./luis-concept-utterance.md

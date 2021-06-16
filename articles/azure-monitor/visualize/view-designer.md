@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
-ms.openlocfilehash: cb0274260022c55ae657b5b28b2c9ad1903d0296
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 089eeb1f4b412f3d696b74885e1a7358f37e4860
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043263"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965570"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure Monitor 中使用视图设计器创建自定义视图
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文概述了视图设计器以及创建和编辑自定义视图的过程。
@@ -101,7 +101,7 @@ ms.locfileid: "102043263"
 | 保存        | 保存所做的更改并关闭视图。 |
 | 取消      | 放弃所做的更改并关闭视图。 |
 | 删除视图 | 删除视图。 |
-| Export      | 将视图导出至 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)，可将此模板导入其它工作区。 文件的名称为视图的名称，包含 *omsview* 扩展名。 |
+| Export      | 将视图导出至 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)，可将此模板导入其它工作区。 文件的名称为视图的名称，包含 *omsview* 扩展名。 |
 | Import      | 导入从另一个工作区中导出的 *omsview* 文件。 此操作覆盖现有视图的配置。 |
 | 克隆       | 创建一个新视图，并在视图设计器中打开它。 新视图的名称与原始名称相同，但其末尾附加了 *Copy* 字样。 |
 

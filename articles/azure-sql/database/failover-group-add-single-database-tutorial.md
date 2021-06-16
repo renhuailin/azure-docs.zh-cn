@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 06/19/2019
-ms.openlocfilehash: 68fa089713c3dd89b4699011ded7d667bca6f73f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 83fe28a063c455de17e178320f0ff2cc057f3f01
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178061"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706364"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教程：将 Azure SQL 数据库添加到自动故障转移组
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -197,9 +197,9 @@ ms.locfileid: "102178061"
 
 | 命令 | 注释 |
 |---|---|
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 创建托管数据库和弹性池的服务器。 |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | 创建托管数据库和弹性池的服务器。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 创建服务器的防火墙规则。 |
-| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) | 创建故障转移组。 |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az_sql_failover_group_create) | 创建故障转移组。 |
 
 ---
 
@@ -322,8 +322,8 @@ ms.locfileid: "102178061"
 
 | 命令 | 注释 |
 |---|---|
-| [az sql failover-group list](/cli/azure/sql/failover-group#az-sql-failover-group-list) | 列出某个服务器中的故障转移组。 |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | 通过对当前主服务器上的所有数据库进行故障转移来设置故障转移组的主服务器。 |
+| [az sql failover-group list](/cli/azure/sql/failover-group#az_sql_failover_group_list) | 列出某个服务器中的故障转移组。 |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | 通过对当前主服务器上的所有数据库进行故障转移来设置故障转移组的主服务器。 |
 
 ---
 
@@ -373,7 +373,7 @@ ms.locfileid: "102178061"
 
 | 命令 | 注释 |
 |---|---|
-| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 删除资源组，包括所有嵌套的资源。 |
+| [az group delete](/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |
 
 ---
 
@@ -409,15 +409,15 @@ ms.locfileid: "102178061"
 
 | 命令 | 注释 |
 |---|---|
-| [az account set](/cli/azure/account#az-account-set) | 将订阅设置为当前的活动订阅。 |
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 创建在 Azure SQL 数据库中托管单一数据库和弹性池的服务器。 |
+| [az account set](/cli/azure/account#az_account_set) | 将订阅设置为当前的活动订阅。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | 创建在 Azure SQL 数据库中托管单一数据库和弹性池的服务器。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 在 Azure SQL 数据库中创建服务器级别的 IP 防火墙规则。 |
 | [az sql db create](/cli/azure/sql/db) | 在 Azure SQL 数据库中创建数据库。 |
-| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) | 在 Azure SQL 数据库中创建一个故障转移组。 |
-| [az sql failover-group list](/cli/azure/sql/failover-group#az-sql-failover-group-list) | 列出 Azure SQL 数据库中服务器中的故障转移组。 |
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | 通过对当前主服务器上的所有数据库进行故障转移来设置故障转移组的主服务器。 |
-| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 删除资源组，包括所有嵌套的资源。 |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az_sql_failover_group_create) | 在 Azure SQL 数据库中创建一个故障转移组。 |
+| [az sql failover-group list](/cli/azure/sql/failover-group#az_sql_failover_group_list) | 列出 Azure SQL 数据库中服务器中的故障转移组。 |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | 通过对当前主服务器上的所有数据库进行故障转移来设置故障转移组的主服务器。 |
+| [az group delete](/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |
 
 # <a name="the-portal"></a>[门户](#tab/azure-portal)
 

@@ -7,12 +7,13 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 32b73be3faf6eedb92220725b292a3e69cf7f965
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 28262d66794d573d40e4e202d8b047e1d1fbefc7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555986"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953806"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
 
@@ -163,7 +164,7 @@ ms.locfileid: "102555986"
 
 ## <a name="parameters-and-variables"></a>参数和变量
 
-使用[参数](../../azure-resource-manager/templates/template-syntax.md)可在运行模板时轻松指定模板值。 本示例使用了以下 parameters 节：
+使用[参数](../../azure-resource-manager/templates/syntax.md)可在运行模板时轻松指定模板值。 本示例使用了以下 parameters 节：
 
 ```json
 "parameters": {
@@ -175,7 +176,7 @@ ms.locfileid: "102555986"
 
 部署示例模板时，需输入每个 VM 上的管理员帐户的名称与密码值，以及要创建的 VM 数目。 可以选择在使用模板管理的单独文件中指定参数值，或者根据提示提供值。
 
-使用[变量](../../azure-resource-manager/templates/template-syntax.md)可以轻松设置在整个模板中重复使用的值，或者可随时变化的值。 本示例使用了以下 variables 节：
+使用[变量](../../azure-resource-manager/templates/syntax.md)可以轻松设置在整个模板中重复使用的值，或者可随时变化的值。 本示例使用了以下 variables 节：
 
 ```json
 "variables": { 
@@ -208,7 +209,7 @@ ms.locfileid: "102555986"
 }, 
 ```
 
-部署示例模板时，先前创建的存储帐户的名称和标识符使用变量值。 变量还用于提供诊断扩展的设置。 请参阅[创建 Azure Resource Manager 模板的最佳实践](../../azure-resource-manager/templates/template-best-practices.md)来帮助自己确定如何构造模板中的参数和变量。
+部署示例模板时，先前创建的存储帐户的名称和标识符使用变量值。 变量还用于提供诊断扩展的设置。 请参阅[创建 Azure Resource Manager 模板的最佳实践](../../azure-resource-manager/templates/best-practices.md)来帮助自己确定如何构造模板中的参数和变量。
 
 ## <a name="resource-loops"></a>资源循环
 
@@ -247,7 +248,7 @@ ms.locfileid: "102555986"
 
 ## <a name="dependencies"></a>依赖项
 
-大多数资源必须依赖于其他资源才能正常工作。 虚拟机必须与虚拟网络相关联，因此需要一个网络接口。 [dependsOn](../../azure-resource-manager/templates/define-resource-dependency.md) 元素用于确保在创建 VM 之前，网络接口随时可供使用：
+大多数资源必须依赖于其他资源才能正常工作。 虚拟机必须与虚拟网络相关联，因此需要一个网络接口。 [dependsOn](../../azure-resource-manager/templates/resource-dependency.md) 元素用于确保在创建 VM 之前，网络接口随时可供使用：
 
 ```json
 "dependsOn": [
@@ -451,7 +452,7 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参考[创作 Azure Resource Manager 模板](../../azure-resource-manager/templates/template-syntax.md)创建自己的模板。
+- 参考[创作 Azure Resource Manager 模板](../../azure-resource-manager/templates/syntax.md)创建自己的模板。
 - 参考[使用 Resource Manager 模板创建 Windows 虚拟机](ps-template.md)部署创建的模板。
 - 请参阅[使用 Azure PowerShell 模块创建并管理 Windows VM](tutorial-manage-vm.md)，了解如何管理创建的 VM。
 - 有关模板中资源类型的 JSON 语法和属性，请参阅 [Azure 资源管理器模板参考](/azure/templates/)。

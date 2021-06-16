@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: d31f490baec49e8e0b6fcf89caa8c19202fdf763
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8981d305fff1970b58b569d95c6f16e933b2ca10
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102431374"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812885"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>快速入门：使用 ARM 模板创建任意对任意配置
 
@@ -24,7 +24,7 @@ ms.locfileid: "102431374"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f201-virtual-wan-with-all-gateways%2fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.network%2fvirtual-wan-with-all-gateways%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "102431374"
 
 ## <a name="review-the-template"></a><a name="review"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/201-virtual-wan-with-all-gateways)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-virtual-wan-with-all-gateways/azuredeploy.json)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/virtual-wan-with-all-gateways)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/virtual-wan-with-all-gateways/azuredeploy.json)。
 
 在此快速入门中，你将创建一个 Azure 虚拟 WAN 多中心部署，包括所有网关和 VNet 连接。 输入参数列表已有意保持在最小值。 可通过修改模板内的变量来更改 IP 寻址方案。 方案将在[任意对任意方案](scenario-any-to-any.md)文章中进一步说明。
 
@@ -75,7 +75,7 @@ ms.locfileid: "102431374"
 
 1. 单击 **“部署到 Azure”** 。
 
-   [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f201-virtual-wan-with-all-gateways%2fazuredeploy.json)
+   [![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.network%2fvirtual-wan-with-all-gateways%2fazuredeploy.json)
 1. 若要查看模板，请单击“编辑模板”。 在此页上，可调整某些值，例如地址空间或某些资源的名称。 选择“保存”来保存更改，或者选择“放弃” 。
 1. 在模板页面上输入值。 对于此模板，需要提供 P2S 公共证书数据。 若要用本文进行练习，可使用此 .cer 文件中的以下数据作为两个中心的示例数据。 在模板运行且部署完成后，必须为自己的部署将此信息替换为公钥[证书数据](certificates-point-to-site.md#cer)，才能使用 P2S 配置。
 

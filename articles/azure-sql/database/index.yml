@@ -6,18 +6,18 @@ metadata:
   description: 查找有关 Azure SQL 数据库（一种基于 Microsoft SQL Server 最新稳定版的平台即服务 (PaaS)）的文档。
   services: sql-database
   ms.service: sql-database
-  ms.subservice: single-database
+  ms.subservice: service-overview
   ms.topic: landing-page
-  author: stevestein
-  ms.author: sstein
+  author: MashaMSFT
+  ms.author: mathoma
   ms.reviewer: 
   ms.date: 01/25/2021
-  ms.openlocfilehash: bf7056f05264a8c9c2275e4b2e562c8a4761a053
-  ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+  ms.openlocfilehash: a7d66b2775800d00aec434960847ec00cdcbbcf3
+  ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104607987"
+  ms.lasthandoff: 05/29/2021
+  ms.locfileid: "110704221"
 landingContent:
 - title: Azure SQL 数据库
   linkLists:

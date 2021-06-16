@@ -6,16 +6,16 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 09/18/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f6a32bdef2269e1235534ca99144a61c5ea023db
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 246c86b2e1f2e49af22d290ccb0a80f3e8c98c64
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463365"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958223"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用“更新管理”
 
-可以使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)在资源组中启用 Azure 自动化更新管理功能。 本文提供了可自动执行以下操作的示例模板：
+可以使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)在资源组中启用 Azure 自动化更新管理功能。 本文提供了可自动执行以下操作的示例模板：
 
 * 自动创建 Azure Monitor Log Analytics 工作区。
 * 自动创建 Azure 自动化帐户。
@@ -153,7 +153,7 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
             },
             "_artifactsLocation": {
                 "type": "string",
-                "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation/",
+                "defaultValue": "[deployment().properties.templateLink.uri]",
                 "metadata": {
                     "description": "URI to artifacts location"
                 }

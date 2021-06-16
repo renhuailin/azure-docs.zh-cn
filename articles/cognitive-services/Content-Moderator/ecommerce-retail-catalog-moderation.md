@@ -11,14 +11,16 @@ ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e67a9b35291615b87edf918b4146ab8d77a0ae7f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f4bf378db5d9091cb48f2b0c813a92823bc72589
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065136"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031738"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查电子商务产品图像
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 本教程介绍如何使用 Azure 认知服务（包括内容审查器）分类和审查电子商务场景中的产品图像。 你将使用计算机视觉和自定义视觉向图像应用标记（标签），然后创建团队评审，以便将内容审查器的基于机器学习的技术与人工评审团队相结合，提供一个智能审查系统。
 

@@ -3,12 +3,12 @@ title: 使用 REST API 和模板部署资源
 description: 使用 Azure 资源管理器和资源管理器 REST API 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 90e50598176ddc0327a81df105740f58afd930bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 68c0af70895b6cf38a89607341487b0e0dd1f6d6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732561"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957788"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>使用 ARM 模板和 Azure 资源管理器 REST API 来部署资源
 
@@ -20,13 +20,13 @@ ms.locfileid: "105732561"
 
 可将部署目标设定为资源组、Azure 订阅、管理组或租户。 你将根据部署范围使用不同的命令。
 
-- 若要部署到资源组，请使用[部署 - 创建](/rest/api/resources/resources/deployments/createorupdate)。 请求发送到：
+- 若要部署到资源组，请使用[部署 - 创建](/rest/api/resources/deployments/createorupdate)。 请求发送到：
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
   ```
 
-- 若要部署到订阅，请使用[部署 - 在订阅范围内创建](/rest/api/resources/resources/deployments/createorupdateatsubscriptionscope)。 请求发送到：
+- 若要部署到订阅，请使用[部署 - 在订阅范围内创建](/rest/api/resources/deployments/createorupdateatsubscriptionscope)。 请求发送到：
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
@@ -34,7 +34,7 @@ ms.locfileid: "105732561"
 
   有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
 
-- 若要部署到管理组，请使用[部署 - 在管理组范围内创建](/rest/api/resources/resources/deployments/createorupdateatmanagementgroupscope)。 请求发送到：
+- 若要部署到管理组，请使用[部署 - 在管理组范围内创建](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 请求发送到：
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
@@ -42,7 +42,7 @@ ms.locfileid: "105732561"
 
   有关管理组级别部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
 
-- 若要部署到租户，请使用[部署 - 在租户范围内创建或更新](/rest/api/resources/resources/deployments/createorupdateattenantscope)。 请求发送到：
+- 若要部署到租户，请使用[部署 - 在租户范围内创建或更新](/rest/api/resources/deployments/createorupdateattenantscope)。 请求发送到：
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
@@ -56,7 +56,7 @@ ms.locfileid: "105732561"
 
 1. 设置 [常见参数和标头](/rest/api/azure/)，包括身份验证令牌。
 
-1. 如果要部署到不存在的资源组，请创建该资源组。 提供订阅 ID、新资源组的名称，以及解决方案所需的位置。 有关详细信息，请参阅 [创建资源组](/rest/api/resources/resources/resourcegroups/createorupdate)。
+1. 如果要部署到不存在的资源组，请创建该资源组。 提供订阅 ID、新资源组的名称，以及解决方案所需的位置。 有关详细信息，请参阅 [创建资源组](/rest/api/resources/resourcegroups/createorupdate)。
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2020-06-01
@@ -73,7 +73,7 @@ ms.locfileid: "105732561"
    }
    ```
 
-1. 在部署模板之前，可以预览模板将对环境作出的更改。 使用[假设操作](template-deploy-what-if.md)验证模板是否进行了预期的更改。 假设操作还验证模板是否有错误。
+1. 在部署模板之前，可以预览模板将对环境作出的更改。 使用[假设操作](./deploy-what-if.md)验证模板是否进行了预期的更改。 假设操作还验证模板是否有错误。
 
 1. 若要部署模板，请在请求 URI 中提供订阅 ID、资源组名称和部署名称。
 
@@ -189,7 +189,7 @@ ms.locfileid: "105732561"
    }
    ```
 
-1. 要获取模板部署的状态，请使用[部署 - 获取](/rest/api/resources/resources/deployments/get)。
+1. 要获取模板部署的状态，请使用[部署 - 获取](/rest/api/resources/deployments/get)。
 
    ```HTTP
    GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
@@ -216,4 +216,4 @@ ms.locfileid: "105732561"
 - 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](rollback-on-error.md)。
 - 若要指定如何处理存在于资源组中但未在模板中定义的资源，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
 - 若要了解如何处理异步 REST 操作，请参阅[跟踪异步 Azure 操作](../management/async-operations.md)。
-- 若要详细了解模板，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+- 若要详细了解模板，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。

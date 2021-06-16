@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7258b37c9d92f25227eac678dde77963e644e64b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 130bf6c9ff105b445830c5f73fdf7d5f564064ab
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483311"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958562"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>教程：创建可商用的 Azure 远程渲染应用程序
 
@@ -255,7 +255,7 @@ Azure 远程渲染的一些最有价值的用途涉及到多名参与者在同�
 有关详细信息，请参阅：
 
 * [Azure 市场](https://azure.microsoft.com/marketplace/)
-* [教程：在市场中发布 Azure 托管应用程序](../../../../marketplace/create-new-azure-apps-offer.md)
+* [教程：在市场中发布 Azure 托管应用程序](../../../../marketplace/azure-app-offer-setup.md)
 
 ### <a name="security"></a>安全性
 

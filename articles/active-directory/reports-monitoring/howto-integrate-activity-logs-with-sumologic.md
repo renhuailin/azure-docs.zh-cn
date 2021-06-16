@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e1f45c787c319c32358e7f310108131647d60e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29e15061310ddc72b3abe3f9a29b103dcbd49f37
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91335827"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965698"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>使用 Azure Monitor 将 Azure Active Directory 日志与 SumoLogic 集成
 
@@ -44,6 +44,6 @@ ms.locfileid: "91335827"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
+* [解释 Azure Monitor 中的审核日志架构](./overview-reports.md)
 * [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
 * [常见问题解答和已知的问题](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

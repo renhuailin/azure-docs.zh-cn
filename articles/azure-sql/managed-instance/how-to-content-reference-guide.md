@@ -4,20 +4,19 @@ titleSuffix: Azure SQL Managed Instance
 description: 可通过内容参考信息了解如何配置和管理 Azure SQL 托管实例。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: guide
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.date: 04/16/2019
-ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 155c87c1f5343e583beb226c2eb5416d782fcfb9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92779758"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963187"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL 托管实例内容参考信息
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -86,7 +85,7 @@ ms.locfileid: "92779758"
 ## <a name="develop-applications"></a>开发应用程序
 
 - [连接](../database/connect-query-content-reference-guide.md#libraries)
-- [使用 Spark 连接器](../../cosmos-db/spark-connector.md)
+- [使用 Spark 连接器](../../cosmos-db/create-sql-api-spark.md)
 - [对应用进行身份验证](../database/application-authentication-get-client-id-keys.md)
 - [使用批处理提高性能](../performance-improve-use-batching.md)
 - [连接指南](../database/troubleshoot-common-connectivity-issues.md)

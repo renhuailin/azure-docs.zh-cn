@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 12/05/2016
-ms.openlocfilehash: df1ae43b2c6a74448a6782a43fb86f8f4939b13a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d461be7d760e1e4fc99fe23a9fe2d5529237ebb3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559998"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949839"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>导出包含 VM 扩展的资源组
 
@@ -131,7 +131,7 @@ Azure 资源管理器自动化脚本生成一个资源管理器模板、一个�
 }
 ```
 
-如果使用模板参数提供属性值，则需创建这些参数。 为受保护的设置值创建模板参数时，请确保使用 `SecureString` 参数类型，以便保护敏感值。 如需详细了解如何使用参数，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。
+如果使用模板参数提供属性值，则需创建这些参数。 为受保护的设置值创建模板参数时，请确保使用 `SecureString` 参数类型，以便保护敏感值。 如需详细了解如何使用参数，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)。
 
 以 `IaasDiagnostic` 扩展为例，会在 Resource Manager 模板的参数部分创建以下参数。
 

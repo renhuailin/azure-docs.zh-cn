@@ -4,19 +4,19 @@ titleSuffix: Azure Applied AI Services
 description: 了解如何使用 JavaScript、Python、Android 或 iOS 启动沉浸式阅读器。 沉浸式阅读器使用可靠的技术来提高语言学习者、萌发期读者和具有学习差异的学生的阅读理解力。
 author: metanMSFT
 manager: guillasi
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: immersive-reader
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: metang
 ms.custom: devx-track-js
 zone_pivot_groups: immersive-reader-how-to-guides
-ms.openlocfilehash: 2d65ec4bd9683b7217cb8efbda7beef4371fc9dc
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9c6ddc3ce750f7fac9b8b6516a78defd5998b567
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373903"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893295"
 ---
 # <a name="how-to-launch-the-immersive-reader"></a>如何启动沉浸式阅读器
 

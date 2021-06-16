@@ -3,12 +3,13 @@ title: Azure 事件中心 - 将实时事件中的数据异常可视化
 description: 教程：将发送到 Microsoft Azure 事件中心的实时事件中的数据异常可视化
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: bb7d8da2498005b8b2e1183a836d9385f3d31e5c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dc498398a164cb559cb243e46699f39a21ab3d50
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783730"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698536"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教程：将发送到 Azure 事件中心的实时事件中的数据异常可视化
 

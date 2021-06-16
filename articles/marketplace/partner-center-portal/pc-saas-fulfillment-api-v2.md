@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d47d93c7e1456cbd589aec34c2840a4b8257c8eb
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: b2c1840acae64940561133a90cb1450c4af80a19
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109848152"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952750"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商业市场中的 SaaS 履行 API 版本 2
 
@@ -970,6 +970,6 @@ Webhook 有效负载示例：
 
 ## <a name="next-steps"></a>后续步骤
 
-有关商业市场中 SaaS 产品/服务的其他选项，请参阅[商业市场计量服务 API](marketplace-metering-service-apis.md)。
+有关商业市场中 SaaS 产品/服务的其他选项，请参阅[商业市场计量服务 API](../marketplace-metering-service-apis.md)。
 
 查看并使用[适用于不同编程语言的客户端和示例](https://github.com/microsoft/commercial-marketplace-samples)。

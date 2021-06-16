@@ -5,7 +5,7 @@
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/virtual-machines/windows/'
     - name: 常见问题解答
-      href: ../../../azure-sql/virtual-machines/windows/frequently-asked-questions-faq.md?toc=/azure/virtual-machines/windows/sqlclassic/toc.json
+      href: /azure/azure-sql/virtual-machines/windows/frequently-asked-questions-faq?toc=/azure/virtual-machines/windows/sqlclassic/toc.json
 - name: 入门
   items:
     - name: 在 Azure 门户中预配 VM

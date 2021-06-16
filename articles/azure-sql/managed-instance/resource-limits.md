@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: 本文概述了 Azure SQL 托管实例的资源限制。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: service-overview
 ms.custom: ''
 ms.devlang: ''
 ms.topic: reference
-author: bonova
-ms.author: bonova
-ms.reviewer: sstein, jovanpop, sachinp
+author: vladai78
+ms.author: vladiv
+ms.reviewer: mathoma, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: ee0c673027892e6d3ee55b6ec5f67a30d88be683
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c134631d33313eaefef63fde48dd1693354bf18d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780338"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692872"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 托管实例资源限制概述
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
