@@ -3,20 +3,20 @@ title: SQL 数据同步的 Data Sync Agent
 description: 了解如何在 Azure 中安装并运行 SQL 数据同步的 Data Sync Agent 来将数据与 SQL Server 数据库进行同步
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 12/20/2018
-ms.openlocfilehash: ed8d51adf5a93b470f287383a4d3eeb866b15236
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7323552250821f05d3e316bd7e1e2dedf566e9bc
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92791454"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707820"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL 数据同步的 Data Sync Agent
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -79,6 +79,14 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 3. 使用新代理的 UI 提交新代理密钥。
 4. 客户端代理下载以前已注册的本地数据库列表时，请稍候。
 5. 为显示为无法访问的所有数据库提供数据库凭据。 这些数据库必须可从安装代理的新计算机上访问。
+
+### <a name="how-do-i-delete-the-sync-metadata-database-if-the-sync-agent-is-still-associated-with-it"></a>如果同步代理仍然与同步元数据数据库关联，如何删除该同步元数据数据库
+
+若要删除与一个同步代理相关联的同步元数据数据库，必须先删除该同步代理。 若要删除该代理，请执行以下操作： 
+
+1. 选择相应的同步数据库。 
+2. 转到“同步到其他数据库”页。
+3. 选择该同步代理，然后单击“删除”。 
 
 ## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a> 解决 Data Sync Agent 问题
 

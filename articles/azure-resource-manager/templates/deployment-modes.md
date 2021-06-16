@@ -3,12 +3,12 @@ title: 部署模式
 description: 介绍如何使用 Azure 资源管理器指定是使用完整部署模式还是增量部署模式。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 3f1f74c0495e0d43671712281a35a7e74fd7d821
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7566a24297a31c3138228528be050be6c7cf11c8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104888832"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963278"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -23,7 +23,7 @@ ms.locfileid: "104888832"
 在完整模式下，资源管理器删除资源组中已存在但尚未在模板中指定的资源  。
 
 > [!NOTE]
-> 在完全模式下部署模板之前，请始终使用 [what-if 操作](template-deploy-what-if.md)。 如果显示哪些资源将被创建、删除或修改。 使用 what-if 以避免意外删除资源。
+> 在完全模式下部署模板之前，请始终使用 [what-if 操作](./deploy-what-if.md)。 如果显示哪些资源将被创建、删除或修改。 使用 what-if 以避免意外删除资源。
 
 如果模板包含由于[条件](conditional-resource-deployment.md)的计算结果为 false 而未部署的资源，则结果取决于用于部署模板的 REST API 版本。 如果使用 2019-05-10 之前的版本，则 **不会删除** 该资源。 如果使用 2019-05-10 或更高版本，则 **会删除** 该资源。 最新版本的 Azure PowerShell 和 Azure CLI 会删除该资源。
 
@@ -35,7 +35,7 @@ ms.locfileid: "104888832"
 
 例如，如果资源组包含 DNS 区域（`Microsoft.Network/dnsZones` 资源类型）和 CNAME 记录（`Microsoft.Network/dnsZones/CNAME` 资源类型），则 DNS 区域是 CNAME 记录的父资源。 如果使用完整模式部署并且模板中不包含 DNS 区域，则 DNS 区域和 CNAME 记录都将被删除。 如果在模板中包含 DNS 区域但不包含 CNAME 记录，则不会删除 CNAME。
 
-有关资源类型如何处理删除的列表，请参阅[针对完全模式部署的 Azure 资源删除](complete-mode-deletion.md)。
+有关资源类型如何处理删除的列表，请参阅[针对完全模式部署的 Azure 资源删除](./deployment-complete-mode-deletion.md)。
 
 如果资源组被[锁定](../management/lock-resources.md)，则完整模式不会删除资源。
 
@@ -126,6 +126,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何创建资源管理器模板，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 若要了解如何创建资源管理器模板，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 * 若要了解部署资源，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)。
 * 若要查看资源提供程序的操作，请参阅 [Azure REST API](/rest/api/)。

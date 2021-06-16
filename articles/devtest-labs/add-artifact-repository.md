@@ -3,12 +3,13 @@ title: 将项目存储库添加到 Azure 开发测试实验室中的实验室 | 
 description: 了解如何为 Azure 开发测试实验室中的实验室指定自己的项目存储库，以存储公共项目存储库中不可用的工具。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: da4e345b18a46226853d71bbf66af0487f1a761f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0915254b5dbaabfc32a47b9b07713499a26c16a5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502189"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954166"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>将项目存储库添加到开发测试实验室中的实验室
 通过开发测试实验室，可以指定在创建 VM 时或创建 VM 之后要添加到 VM 的项目。 此项目可能是要在 VM 上安装的工具或应用程序。 项目在从 GitHub 或 Azure DevOps Git 存储库加载的 JSON 文件中定义。
@@ -74,7 +75,7 @@ ms.locfileid: "102502189"
 6. 选择“保存”。
 
 ## <a name="use-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板
-Azure 资源管理（Azure 资源管理器）模板是用于描述 Azure 中要创建的资源的 JSON 文件。 有关这些模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)。
+Azure 资源管理（Azure 资源管理器）模板是用于描述 Azure 中要创建的资源的 JSON 文件。 有关这些模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/syntax.md)。
 
 本部分提供了使用 Azure 资源管理器模板将项目存储库添加到实验室的步骤。  该模板创建实验室（如果尚不存在）。
 
@@ -293,7 +294,7 @@ $propertiesObject = @{
     status = 'Enabled'
 }
 
-Write-Verbose @"Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"
+Write-Verbose "Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"
 
 #Resource will be added to current subscription.
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'

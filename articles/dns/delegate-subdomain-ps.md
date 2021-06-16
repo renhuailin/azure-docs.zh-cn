@@ -5,20 +5,21 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: how-to
-ms.date: 2/7/2019
+ms.date: 05/03/2021
 ms.author: rohink
-ms.openlocfilehash: 9b37d313aa5d8c2255b4e3be69831dfcb50238ea
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0030eccff0885c2cf2e1e0eef386b8907aa0df29
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84712541"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689359"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>使用 Azure PowerShell 委托 Azure DNS 子域
 
-可以使用 Azure PowerShell 委托 DNS 子域。 例如，如果拥有 contoso.com 域，可将名为 *engineering* 的子域委托给另一个可以独立于 contoso.com 区域进行管理的单独区域。
+可以使用 Azure PowerShell 委托 DNS 子域。 例如，如果拥有 contoso.com 域，则可将名为 engineering 的子域委托给另一个可以独立于 contoso.com 区域进行管理的单独区域。
 
-如果需要，可以使用 [Azure 门户](delegate-subdomain.md)来委托子域。
+如果需要，也可以使用 [Azure 门户](delegate-subdomain.md)来委托子域。
 
 > [!NOTE]
 > 本文通篇都使用 contoso.com 作为示例。 请将 contoso.com 替换为你自己的域名。
@@ -35,25 +36,31 @@ ms.locfileid: "84712541"
 
 首先，为 **engineering** 域创建区域。
 
-`New-AzDnsZone -ResourceGroupName <resource group name> -Name engineering.contoso.com`
+```azurepowershell-interactive
+New-AzDnsZone -ResourceGroupName <resource group name> -Name engineering.contoso.com
+```
 
 ## <a name="note-the-name-servers"></a>记下名称服务器
 
 接下来，记下 engineering 子域的四个名称服务器。
 
-`Get-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -RecordType NS`
+```azurepowershell-interactive
+Get-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -RecordType NS
+```
 
 ## <a name="create-a-test-record"></a>创建一条测试记录
 
 在 engineering 区域中创建一条 **A** 记录以用于测试。
 
-   `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`.
+```azurepowershell-interactive
+New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)
+```
 
 ## <a name="create-an-ns-record"></a>创建 NS 记录
 
 接下来，为 contoso.com 区域中的 **engineering** 区域创建一条名称服务器 (NS) 记录。
 
-```azurepowershell
+```azurepowershell-interactive
 $Records = @()
 $Records += New-AzDnsRecordConfig -Nsdname <name server 1 noted previously>
 $Records += New-AzDnsRecordConfig -Nsdname <name server 2 noted previously>
@@ -67,8 +74,10 @@ $RecordSet = New-AzDnsRecordSet -Name engineering -RecordType NS -ResourceGroupN
 使用 nslookup 测试委托。
 
 1. 打开 PowerShell 窗口。
-2. 在命令提示符下，键入 `nslookup www.engineering.contoso.com.`
-3. 应会收到一条非权威回复，其中显示了地址 **10.10.10.10**。
+
+1. 在命令提示符下，键入 `nslookup www.engineering.contoso.com.`
+
+1. 应会收到一条非权威回复，其中显示了地址 **10.10.10.10**。
 
 ## <a name="next-steps"></a>后续步骤
 

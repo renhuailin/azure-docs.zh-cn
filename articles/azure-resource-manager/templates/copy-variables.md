@@ -3,12 +3,12 @@ title: 定义变量的多个实例
 description: 在创建变量时，可以使用 Azure 资源管理器模板（ARM 模板）中的复制操作进行多次迭代。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: e1f6dfeb7b701b09ad1a9505d5dbcfddf2cd6b0b
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5f6459335fa3f059a76128edde4ee7096790fe13
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385695"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957958"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM 模板中的变量迭代
 
@@ -326,5 +326,5 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
   - [ARM 模板中的资源迭代](copy-resources.md)
   - [ARM 模板中的属性迭代](copy-properties.md)
   - [ARM 模板中的输出迭代](copy-outputs.md)
-- 若要了解模板的各个部分，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+- 若要了解模板的各个部分，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 - 若要了解如何部署模板，请参阅[使用 ARM 模板和 Azure PowerShell 来部署资源](deploy-powershell.md)。

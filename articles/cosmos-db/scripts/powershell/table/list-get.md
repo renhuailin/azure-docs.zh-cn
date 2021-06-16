@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 07/31/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6385a28ff976b206839a86d94f1ea61a9c6f11f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1b11083a343e6b8fb90e8bca01a3a6f85b69729f
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98680142"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679612"
 ---
 # <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>列出和获取 Azure Cosmos DB 的表 - 表 API
 [!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]

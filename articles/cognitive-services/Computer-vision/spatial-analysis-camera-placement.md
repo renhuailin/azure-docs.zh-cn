@@ -3,19 +3,19 @@ title: 空间分析相机放置
 titleSuffix: Azure Cognitive Services
 description: 了解如何设置用于空间分析的相机
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: d58e4303078733eb1014171271d27907ff7a95b0
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: f25854c93318cf581843e2d484a4265475441271
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286260"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744352"
 ---
 # <a name="camera-placement-guide"></a>相机放置指南
 

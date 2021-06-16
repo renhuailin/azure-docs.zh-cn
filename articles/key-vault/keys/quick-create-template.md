@@ -7,15 +7,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.custom: mvc,subject-armqs
+ms.custom: mvc,subject-armqs, devx-track-azurepowershell
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 66d41ed1bb900f55db0d3670c1ce312950ff165d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 4994e345b55e5b7fe77e116475fa2e5a29a9751f
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147042"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669989"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 密钥保管库和密钥 
 
@@ -166,6 +166,17 @@ ms.locfileid: "108147042"
 - Microsoft.KeyVault/vaults/keys
 
 可以在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular)中找到更多 Azure Key Vault 模板示例。
+
+## <a name="parameters-and-definitions"></a>参数和定义
+
+|参数  |定义  |
+|---------|---------|
+|**Keysize**  | 指定可使用该密钥执行的操作。 如果未指定此参数，可执行所有操作。 此参数的可接受值是 [JSON Web 密钥 (JWK) 规范](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)中定义的一个以逗号分隔的密钥操作列表： <br> `["sign", "verify", "encrypt", "decrypt", " wrapKey", "unwrapKey"]` |
+|**CurveName**  |  EC 密钥类型的椭圆曲线名称。 请参阅 [JsonWebKeyCurveName](/rest/api/keyvault/createkey/createkey#jsonwebkeycurvename) |
+|**Kty**  |  要创建的密钥类型。 有关有效值，请参阅 [JsonWebKeyType](/rest/api/keyvault/createkey/createkey#jsonwebkeytype) |
+|**标记** | 键/值对形式的应用程序特定元数据。  |
+|**nbf**  |  指定时间（作为 DateTime 对象），在此时间之前不能使用该密钥。 格式为 Unix 时间戳（UTC 时间 1970 年 1 月 1 日 Unix 纪元之后的秒数）。  |
+|**exp**  |  指定过期时间作为 DateTime 对象。 格式为 Unix 时间戳（UTC 时间 1970 年 1 月 1 日 Unix 纪元之后的秒数）。 |
 
 ## <a name="deploy-the-template"></a>部署模板
 可以使用 [Azure 门户](../../azure-resource-manager/templates/deploy-portal.md)、Azure PowerShell、Azure CLI 或 REST API。 要了解部署方法，请参阅[部署模板](../../azure-resource-manager/templates/deploy-powershell.md)。

@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
-ms.custom: ''
-ms.openlocfilehash: 3ff0ee79413640c09132b8399a3b0c07dd1783cc
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 785cdcc2436486b69f9033bfa1a4fb0cb441d2a0
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063689"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678728"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>使用 Azure PowerShell 通过虚拟网络服务终结点策略管理数据外泄至 Azure 存储帐户
 
@@ -42,7 +42,7 @@ ms.locfileid: "106063689"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 

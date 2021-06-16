@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 05/25/2021
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 84d3fd31f3da047b263a3e3a46761dfc4538e499
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 014084862f5dab95ee859315c52983cbcd96e678
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279538"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793416"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒体服务动态加密保护内容
 
@@ -52,7 +52,7 @@ ms.locfileid: "106279538"
 
 ### <a name="media-services-code"></a>媒体服务代码
   
-[DRM 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)演示如何在 .NET 中使用媒体服务 v3 实施多 DRM 系统。 此外还演示如何使用媒体服务许可证/密钥传送服务。
+[DRM 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs)演示如何在 .NET 中使用媒体服务 v3 实施多 DRM 系统。 此外还演示如何使用媒体服务许可证/密钥传送服务。
   
 可以使用多个加密类型（AES-128、PlayReady、Widevine、FairPlay）来加密每个资产。 若要了解有效的组合方式，请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)。
 
@@ -191,7 +191,7 @@ MPEG-DASH 协议支持以下容器格式和加密方案：
 
 ### <a name="token-replay-prevention"></a>令牌重放防护
 
-令牌重放预防功能允许媒体服务客户设置一个限制，以限制可使用同一令牌请求密钥或许可证的次数。 客户可以在令牌中添加 `urn:microsoft:azure:mediaservices:maxuses` 类型的声明，其中值是令牌可用于获取许可证或密钥的次数。 对密钥传送服务使用同一令牌的所有后续请求都将返回未经授权的响应。 请参阅“如何在 [DRM 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中添加声明”。
+令牌重放预防功能允许媒体服务客户设置一个限制，以限制可使用同一令牌请求密钥或许可证的次数。 客户可以在令牌中添加 `urn:microsoft:azure:mediaservices:maxuses` 类型的声明，其中值是令牌可用于获取许可证或密钥的次数。 对密钥传送服务使用同一令牌的所有后续请求都将返回未经授权的响应。 请参阅“如何在 [DRM 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L591)中添加声明”。
  
 #### <a name="considerations"></a>注意事项
 

@@ -3,13 +3,13 @@ title: 在 Azure 中将 API 管理与 Service Fabric 集成
 description: 了解如何快速开始使用 Azure API 管理以及在 Service Fabric 中将流量路由到后端服务。
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.custom: mvc
-ms.openlocfilehash: dcf448ce6e2b553b67801d96369161e368d35f0a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 6d72db8e1baf1109c222badb83c473c4defa6038
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076340"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665066"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
 

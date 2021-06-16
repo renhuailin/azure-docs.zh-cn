@@ -8,12 +8,13 @@ ms.service: web-application-firewall
 ms.date: 12/09/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: ef4337b187500695d9ef1c0b896d6ae8b5663ca6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 41e2ba20d8b88edcac203ea165b025458550c112
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96938845"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668501"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 配置每个站点的 WAF 策略
 
@@ -41,7 +42,7 @@ Web 应用程序防火墙 (WAF) 设置包含在 WAF 策略中，若要更改 WAF
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

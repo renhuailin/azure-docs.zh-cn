@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: 4847fd88a96e96788f8e6ebdb4ee3cfa7f15fbdc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8e6c3e27f38342028efd102efa32f3df90b2f88a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135448"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950078"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>使用纯无状态节点类型部署 Azure Service Fabric 群集
 关于 Service Fabric 节点类型，有一个固有的假设，即在某个时间点，有状态服务可能会被放置到节点上。 无状态节点类型放宽了对节点类型的这种假设，因此允许节点类型使用其他功能，例如更快的横向扩展操作、支持在“青铜”持续性级别下自动升级 OS，以及在一个虚拟机规模集中扩展到 100 多个节点。
@@ -138,7 +138,7 @@ ms.locfileid: "108135448"
 ```
 
 ## <a name="configuring-stateless-node-types-with-multiple-availability-zones"></a>配置具有多个可用性区域的无状态节点类型
-若要配置跨多个可用性区域的无状态节点类型，请遵循[此处](/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set)的文档进行操作，并作如下一些更改：
+若要配置跨多个可用性区域的无状态节点类型，请遵循[此处](./service-fabric-cross-availability-zones.md#1-preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set)的文档进行操作，并作如下一些更改：
 
 * 设置 singlePlacementGroup：如果需要启用多个放置组，将其设置为“false” 。
 * 设置 upgradeMode：如上所述，将其设置为“滚动升级”，并添加应用程序运行状况扩展/运行状况探测 。

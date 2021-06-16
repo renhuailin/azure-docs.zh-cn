@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Managed Instance
 description: 本文介绍如何创建可配置为支持部署 Azure SQL 托管实例的虚拟网络。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 09/12/2019
-ms.openlocfilehash: 2a23fc0b769727cab5a28d3d313a7791bcfa6eee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bcb1d9a81cfbb606abd1b594524c0a2ff932fb19
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91617700"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892555"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>为 Azure SQL 托管实例创建虚拟网络
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -47,7 +47,7 @@ Azure SQL 托管实例必须部署在 Azure [虚拟网络](../../virtual-network
 
 2. 选择“部署到 Azure”按钮：
 
-   [![图像显示标记为“部署到 Azure”的按钮。](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json)
+   [![图像显示标记为“部署到 Azure”的按钮。](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.sql%2Fsql-managed-instance-azure-environment%2Fazuredeploy.json)
 
    单击此按钮会打开一个窗体，在其中可以配置用于部署 SQL 托管实例的网络环境。
 

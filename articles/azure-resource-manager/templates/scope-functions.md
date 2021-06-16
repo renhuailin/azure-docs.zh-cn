@@ -4,12 +4,12 @@ description: 介绍如何在限定范围的部署中解析模板函数。 范围
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c4a2caaa7b66e516a69cdb9d6c26baf7fd605e89
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: db2099c6c2405928a33f33bbba579c2280ad4877
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314600"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959999"
 ---
 # <a name="arm-template-functions-in-deployment-scopes"></a>部署范围内的 ARM 模板函数
 
@@ -60,7 +60,7 @@ ms.locfileid: "108314600"
 
 下表显示了函数是解析为父资源组，还是解析为嵌入资源组和订阅。
 
-| 模板类型 | 作用域 | 解决方法 |
+| 模板类型 | 范围 | 解决方法 |
 | ------------- | ----- | ---------- |
 | 嵌套        | 外部（默认值） | 父资源组 |
 | 嵌套        | 内部 | 子资源组 |
@@ -139,6 +139,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
 * 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用 ARM 模板](secure-template-with-sas-token.md)。

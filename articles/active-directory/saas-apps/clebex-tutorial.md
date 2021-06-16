@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 588bf90da3c913d35d9a07dbe714af1688e885d4
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: b0c73206d69f8902fdd9ef9306a35b3fccacc8ec
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001968"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888244"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clebex"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Clebex 集成
 
@@ -156,11 +156,9 @@ ms.locfileid: "108001968"
 
 * 直接转到 Clebex 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Clebex 磁贴时，会重定向到 Clebex 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Clebex 磁贴时，会重定向到 Clebex 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Clebex 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Clebex 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

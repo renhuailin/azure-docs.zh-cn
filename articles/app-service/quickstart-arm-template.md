@@ -12,12 +12,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-arm-template-uiex
-ms.openlocfilehash: 1b462c8e102d65470b55eb6d5d4368917053c155
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: b74287a4324d7a82cf3f47a008a3809e3c5690be
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074666"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892609"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>快速入门：使用 ARM 模板创建应用服务应用
 
@@ -42,7 +42,7 @@ ms.locfileid: "108074666"
 ## <a name="review-the-template"></a>查看模板
 
 ::: zone pivot="platform-windows"
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows)。 它在 Windows 上部署应用服务计划和应用服务应用。 它与 .NET Core、.NET Framework、PHP、Node.js 和静态 HTML 应用兼容。 对于 Java，请参阅[创建 Java 应用](./quickstart-java.md)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/app-service-docs-windows)。 它在 Windows 上部署应用服务计划和应用服务应用。 它与 .NET Core、.NET Framework、PHP、Node.js 和静态 HTML 应用兼容。 对于 Java，请参阅[创建 Java 应用](./quickstart-java.md)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-windows/azuredeploy.json":::
 
@@ -63,7 +63,7 @@ ms.locfileid: "108074666"
 | repoUrl    | 字符串  | " "                          | 外部 Git 存储库（可选） |
 ::: zone-end
 ::: zone pivot="platform-linux"
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux)。 它在 Linux 上部署应用服务计划和应用服务应用。 它与应用服务上所有受支持的编程语言兼容。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/app-service-docs-linux)。 它在 Linux 上部署应用服务计划和应用服务应用。 它与应用服务上所有受支持的编程语言兼容。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/app-service-docs-linux/azuredeploy.json":::
 
@@ -98,7 +98,7 @@ ms.locfileid: "108074666"
 az group create --name myResourceGroup --location "southcentralus" &&
 az deployment group create --resource-group myResourceGroup \
 --parameters language=".net" helloWorld="true" webAppName="<app-name>" \
---template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsofot.web/app-service-docs-windows/azuredeploy.json"
+--template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.web/app-service-docs-windows/azuredeploy.json"
 ::: zone-end
 ::: zone pivot="platform-linux"
 Run the code below to create a Python app on Linux.

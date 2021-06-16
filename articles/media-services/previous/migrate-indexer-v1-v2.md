@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 2b1960aa2d08a189e04aea8906c10e761dc1c57a
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 3d580f68b46c01a7ccec594f5818832f498b1196
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962639"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956973"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>从 Media Indexer 和 Media Indexer 2 迁移到视频索引器
 
@@ -27,12 +27,12 @@ ms.locfileid: "105962639"
 > [!IMPORTANT]
 > 建议客户从索引器 v1 和索引器 v2 迁移到使用[媒体服务 v3 AudioAnalyzerPreset 基本模式](../latest/analyze-video-audio-files-concept.md)。 [Azure Media Indexer](media-services-index-content.md) 媒体处理器和 [Azure Media Indexer 2 预览版](./legacy-components.md)媒体处理器即将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
-Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜索、认知服务（例如人脸 API、Microsoft 翻译工具、计算机视觉 API 和自定义语音识别服务）构建的。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。 若要了解视频索引器的适用场景、它提供的功能，以及如何开始使用它，请参阅[视频索引器视频和音频模型](../video-indexer/video-indexer-overview.md)。 
+Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜索、认知服务（例如人脸 API、Microsoft 翻译工具、计算机视觉 API 和自定义语音识别服务）构建的。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。 若要了解视频索引器的适用场景、它提供的功能，以及如何开始使用它，请参阅[视频索引器视频和音频模型](../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md)。 
 
 可以通过使用 [Azure 媒体服务 v3 分析器预设](../latest/analyze-video-audio-files-concept.md)或直接使用[视频索引器 API](https://api-portal.videoindexer.ai/) 从视频和音频文件中提取见解。 目前，视频索引器 API 和媒体服务 v3 API 提供的功能之间存在重叠。
 
 > [!NOTE]
-> 若要了解视频索引器预设与媒体服务分析器预设之间的区别，请查看[比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
+> 若要了解视频索引器预设与媒体服务分析器预设之间的区别，请查看[比较文档](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md)。
 
 本文介绍从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器的步骤。  
 
@@ -45,7 +45,7 @@ Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜�
 
 ## <a name="getting-started-with-video-indexer"></a>视频索引器入门
 
-以下部分指向相关链接：[如何开始视频索引器？](../video-indexer/video-indexer-overview.md#how-can-i-get-started-with-video-indexer) 
+以下部分指向相关链接：[如何开始视频索引器？](../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md#how-can-i-get-started-with-video-analyzer-for-media) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>媒体服务 v3 API 入门
 

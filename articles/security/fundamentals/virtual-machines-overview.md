@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 51b04feffd887fd86157d029168bc53546adfeeb
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 6092476180614fe11f8c1199c079b0599f829779
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208160"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554419"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 本文概述了可用于虚拟机的核心 Azure 安全功能。
@@ -144,7 +144,7 @@ Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心�
 了解详细信息：
 
 * [Azure 安全中心简介](../../security-center/security-center-introduction.md)
-* [Azure 安全中心常见问题解答](../../security-center/faq-general.md)
+* [Azure 安全中心常见问题解答](../../security-center/faq-general.yml)
 * [Azure 安全中心规划和操作](../../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>合规性

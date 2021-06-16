@@ -3,17 +3,17 @@ title: '教程：使用 Visual Studio 创建包含复制活动的管道 '
 description: 在本教程中，通过使用 Visual Studio 创建带有复制活动的 Azure 数据工厂管道。
 author: linda33wj
 ms.service: data-factory
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-azurepowershell
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c00c1fe59da5de8e4964fd6e7683b3cd980d0524
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 82025728f354b5522517e210071aeb4c7528d7cf
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753490"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677711"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>教程：使用 Visual Studio 创建包含复制活动的管道
 > [!div class="op_single_selector"]

@@ -8,25 +8,25 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: 7d73bfa4b184cb2a3d1cad9a4b6f7fb918c9f953
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: f6e26d697c97b70770ec0445be8d72bda7269f4f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989451"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961426"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning-designer"></a>示例：使用 Azure 机器学习设计器构建和部署自定义技能
 
-[Azure 机器学习设计器](https://docs.microsoft.com/azure/machine-learning/concept-designer)是一种易于使用的交互式画布，可为回归和分类等任务创建机器学习模型。 若要在认知搜索扩充管道中调用由设计器创建的模型，需要先完成一些附加步骤。 在此示例中，你将创建一个简单的回归模型来预测汽车的价格，并将推理终结点作为 AML 技能进行调用。 
+[Azure 机器学习设计器](../machine-learning/concept-designer.md)是一种易于使用的交互式画布，可为回归和分类等任务创建机器学习模型。 若要在认知搜索扩充管道中调用由设计器创建的模型，需要先完成一些附加步骤。 在此示例中，你将创建一个简单的回归模型来预测汽车的价格，并将推理终结点作为 AML 技能进行调用。 
 
-按照[示例管道与数据集](https://docs.microsoft.com/azure/machine-learning/samples-designer)文档页面的[回归 - 汽车价格预测（高级）](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md)教程创建模型，以预测给定不同功能的汽车的价格。
+按照[示例管道与数据集](../machine-learning/concept-designer.md)文档页面的[回归 - 汽车价格预测（高级）](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md)教程创建模型，以预测给定不同功能的汽车的价格。
 
 > [!IMPORTANT] 
 > 按照实时推理过程部署模型将会生成有效终结点，但不会生成可与认知搜索中的 AML 技能配合使用的终结点。 
 
 ## <a name="register-model-and-download-assets"></a>注册模型并下载资产
 
-训练模型后，请[注册已训练的模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-model-designer)，然后按照相关步骤下载 `trained_model_outputs` 文件夹中的所有文件，或仅从模型项目页面下载 `score.py` 和 `conda_env.yml` 文件。 在将模型部署为实时推理终结点之前，应先编辑评分脚本。
+训练模型后，请[注册已训练的模型](../machine-learning/how-to-deploy-model-designer.md)，然后按照相关步骤下载 `trained_model_outputs` 文件夹中的所有文件，或仅从模型项目页面下载 `score.py` 和 `conda_env.yml` 文件。 在将模型部署为实时推理终结点之前，应先编辑评分脚本。
 
 
 ## <a name="edit-the-scoring-script-for-use-with-cognitive-search"></a>编辑与认知搜索配合使用的评分脚本 
@@ -211,7 +211,7 @@ def run(data):
 
 将新创建的终结点与认知搜索集成
 1. 将包含单个汽车记录的 JSON 文件添加到 blob 容器
-2. 使用[导入数据工作流](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)配置 AI 扩充管道。 请务必选择 `JSON` 作为 `parsing mode`
+2. 使用[导入数据工作流](cognitive-search-quickstart-blob.md)配置 AI 扩充管道。 请务必选择 `JSON` 作为 `parsing mode`
 3. 在“`Add Enrichments`”选项卡上，选择单项技能“`Extract people names`”作为占位符。
 4. 将新字段添加到类型为 `Edm.Double` 名为 `predicted_price` 的索引中，并将可检索属性设置为 true。
 5. 完成导入数据过程

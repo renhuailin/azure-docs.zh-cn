@@ -7,12 +7,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: c350ca6ce392804760d06790d0131654397ffab5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 973d84356c4757044f0e66f32fd0f5b96334daca
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070365"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110680928"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
 

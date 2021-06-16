@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 56ee52e25c755af014de220a65ae682ea014ef1b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91336199"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949042"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -147,7 +147,7 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 **如何解决**：请参阅知识库 [文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
 #### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因 4：Linux 服务器上未启用应用一致性
-**如何解决**：适用于 Linux 操作系统的 Azure Site Recovery 支持通过应用程序自定义脚本实现应用一致性。 为保障应用一致性，Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [这里](./site-recovery-faq.md#replication)是启用此功能的步骤。
+**如何解决**：适用于 Linux 操作系统的 Azure Site Recovery 支持通过应用程序自定义脚本实现应用一致性。 为保障应用一致性，Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 [这里](/azure/site-recovery/site-recovery-faq.yml#replication)是启用此功能的步骤。
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS 相关问题的更多原因：
 

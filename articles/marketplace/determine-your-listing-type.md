@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 01/14/2021
-ms.openlocfilehash: 467cc4a62cd044cb4ad264ec8643728e6db0b10c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8ce06a1279a71840dea90e199f5b9c3ee60bd3d3
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479808"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541081"
 ---
 # <a name="introduction-to-listing-options"></a>列表选项简介
 
@@ -112,7 +112,7 @@ ms.locfileid: "107479808"
 
 以下产品/服务类型支持基于使用情况的定价：
 
-- Azure 应用程序（托管应用）产品/服务支持按流量计费。 有关详细信息，请参阅[托管应用程序按流量计费](partner-center-portal/azure-app-metered-billing.md)。
+- Azure 应用程序（托管应用）产品/服务支持按流量计费。 有关详细信息，请参阅[托管应用程序按流量计费](marketplace-metering-service-apis.md)。
 - SaaS 产品/服务支持按流量计费和按用户（按席位）定价。 有关按流量计费的详细信息，请参阅[使用商业市场计量服务的 SaaS 按流量计费](partner-center-portal/saas-metered-billing.md)。
 - Azure 虚拟机产品/服务支持按核心、按核心大小以及按市场和核心大小定价  。 这些选项按小时定价并按月计费。
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 615a3911c81a9111a3e7834bb3a80b74cfe51427
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4fe4dc0dda9c14ed9309422eb0b96c779fd44ee3
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110487497"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112083890"
 ---
 <a name="HOLTop"></a>
 
@@ -136,7 +136,7 @@ OCR 服务可以读取图像中的可见文本，并将其转换为字符流。 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_readinmain)]
 
 > [!TIP]
-> 还可以从本地图像提取文本。 请参阅 [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) 方法，例如 BatchReadFileInStream。 或者，请参阅 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go#L1084) 上的示例代码，了解涉及本地图像的方案。
+> 还可以从本地图像提取文本。 请参阅 [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) 方法，例如 BatchReadFileInStream。 或者，请参阅 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) 上的示例代码，了解涉及本地图像的方案。
 
 ### <a name="call-the-read-api"></a>调用读取 API
 
@@ -174,7 +174,7 @@ go run sample-app.go
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]

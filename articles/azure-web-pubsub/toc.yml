@@ -43,7 +43,7 @@
 - name: 参考
   items:
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/webpubsub'
+      href: /rest/api/webpubsub
     - name: PubSub WebSocket 子协议
       href: 'https://azure.github.io/azure-webpubsub/references/pubsub-websocket-subprotocol'
     - name: Web PubSub CloudEvent
@@ -61,6 +61,6 @@
     - name: 常见问题
       href: resource-faq.md
     - name: Microsoft 问答
-      href: 'https://docs.microsoft.com/answers/topics/azure-web-pubsub.html'
+      href: /answers/topics/azure-web-pubsub.html
     - name: StackOverflow
       href: 'https://stackoverflow.com/questions/tagged/azure-web-pubsub'

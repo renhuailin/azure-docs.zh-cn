@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d003008ea5b0d2591574f6f488b0145ee6f08a5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2636b4ee53784d1cc79002430774d0bb5c5c2aa5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100008122"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966235"
 ---
 # <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 外部共享与 Azure Active Directory (Azure AD) B2B 协作
 
@@ -45,7 +45,7 @@ OneDrive/SharePoint Online 具有单独的邀请管理器。 在 Azure AD 开发
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是 Azure AD B2B 协作？](what-is-b2b.md)
-* [将 B2B 协作用户添加到角色](add-guest-to-role.md)
+* [将 B2B 协作用户添加到角色](./add-users-administrator.md)
 * [委托 B2B 协作邀请](delegate-invitations.md)
 * [动态组和 B2B 协作](use-dynamic-groups.md)
 * [Azure Active Directory B2B 协作疑难解答](troubleshoot.md)

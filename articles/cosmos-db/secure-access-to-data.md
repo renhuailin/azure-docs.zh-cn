@@ -6,14 +6,14 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 05/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7a3d7a3892e5d90e4ee8cc4e5b80df768fc138d7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 696d8c1a775f67271a7c7b4fa81789e7b0775bb1
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378798"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110654255"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,7 +25,7 @@ Azure Cosmos DB 提供了三种方法来控制对数据的访问。
 | 访问控制类型 | 特征 |
 |---|---|
 | [主键](#primary-keys) | 允许任何管理或数据操作的共享机密。 它包括读写变量和只读变量。 |
-| [基于角色的访问控制](#rbac)（预览） | 使用 Azure Active Directory (AAD) 标识进行身份验证的细化、基于角色的权限模型。 |
+| [基于角色的访问控制](#rbac) | 使用 Azure Active Directory (AAD) 标识进行身份验证的细化、基于角色的权限模型。 |
 | [资源令牌](#resource-tokens)| 基于本机 Azure Cosmos DB 用户和权限的细化权限模型。 |
 
 ## <a name="primary-keys"></a><a id="primary-keys"></a> 主键

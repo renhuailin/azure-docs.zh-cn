@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 145b7300272243099cfccad0c99d8f69e83e6762
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: f6b6e53440556fb7b9c0d7a774aa1b6786609461
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555816"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668051"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Windows VM 映像
 
@@ -29,7 +29,7 @@ ms.locfileid: "102555816"
 
 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便将其用于创建新的 VM。
 
@@ -179,7 +179,7 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="share-the-gallery"></a>共享库
 
-建议在映像库级别共享访问权限。 使用电子邮件地址和 [Get-AzADUser](/powershell/module/az.resources/get-azaduser) cmdlet 获取用户的对象 ID，然后使用 [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) 为用户授予对库的访问权限。 请将此示例中的示例电子邮件地址 alinne_montes@contoso.com 替换为你自己的信息。
+我们建议你在映像库级别共享访问权限。 使用电子邮件地址和 [Get-AzADUser](/powershell/module/az.resources/get-azaduser) cmdlet 获取用户的对象 ID，然后使用 [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) 为用户授予对库的访问权限。 请将此示例中的示例电子邮件地址 alinne_montes@contoso.com 替换为你自己的信息。
 
 ```azurepowershell-interactive
 # Get the object ID for the user

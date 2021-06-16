@@ -5,12 +5,12 @@ ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: 708e66cdf41dbe144ac1178ebf54279b32870910
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: b46f03dca8b01b1f880fcbfe186f8c58f43e3dc1
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277930"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892141"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>快速入门：使用 ARM 模板创建和部署 Azure Functions 资源
 
@@ -68,7 +68,7 @@ ms.locfileid: "108277930"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-function-app-create-dynamic/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/function-app-create-dynamic/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.web/function-app-create-dynamic/azuredeploy.json":::
 

@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: e4d26856d269a07ce87b22843c61be97b73bbea3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a889f0b740d506bd546f1fb67f050317146c31e8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137249"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677884"
 ---
 # <a name="tutorial-configure-the-opc-publisher"></a>教程：配置 OPC 发布服务器
 
@@ -85,7 +85,7 @@ OPC UA 资产在 OPC 发布服务器第一次连接到数据项时，始终发�
 ## <a name="configuration-via-the-built-in-opc-ua-server-interface"></a>通过内置 OPC UA 服务器接口配置
 
 >[!NOTE] 
-> 此功能仅在 OPC 发布服务器版本 2.5 及更低版本中提供。**
+> 此功能仅在 OPC 发布服务器版本 2.5 及更低版本中提供。
 
 OPC 发布服务器具有在端口 62222 上运行的内置 OPC UA 服务器。 它实现了三个 OPC UA 方法：
 
@@ -98,7 +98,7 @@ OPC 发布服务器具有在端口 62222 上运行的内置 OPC UA 服务器。 
 ## <a name="configuration-via-iot-hub-direct-methods"></a>通过 IoT 中心直接方法配置
 
 >[!NOTE] 
-> 此功能仅在 OPC 发布服务器版本 2.5 及更低版本中提供。**
+> 此功能仅在 OPC 发布服务器版本 2.5 及更低版本中提供。
 
 OPC 发布服务器实现了以下 [IoT 中心直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)，可通过使用 [IoT 中心设备 SDK](../iot-hub/iot-hub-devguide-sdks.md) 从应用程序（从世界各地的任何地方）调用：
 

@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 03/25/2021
+ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: feb2c83ee7edc3ab22b7b8031e6eb07ef65f9908
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cdfad63bbf70d40ddb78ac5708ce684d12f57698
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558935"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797572"
 ---
 # <a name="media-services-migration-code-sample-comparison"></a>媒体服务迁移代码示例比较
 
@@ -32,7 +32,7 @@ ms.locfileid: "105558935"
 
 |方案|v2 API|v3 API|
 |---|---|---|
-|创建资产并上传文件 |[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
-|提交作业|[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>演示如何先创建转换，再提交作业。|
-|发布使用 AES 加密的资产 |1.创建 `ContentKeyAuthorizationPolicyOption`<br/>2.创建 `ContentKeyAuthorizationPolicy`<br/>3.创建 `AssetDeliveryPolicy`<br/>4.创建 `Asset` 并上传内容或提交 `Job` 并使用 `OutputAsset`<br/>5.将 `AssetDeliveryPolicy` 与 `Asset` 关联<br/>6.创建 `ContentKey`<br/>7.将 `ContentKey` 附加到 `Asset`<br/>8.创建 `AccessPolicy`<br/>9.创建 `Locator`<br/><br/>[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1.创建 `ContentKeyPolicy`<br/>2.创建 `Asset`<br/>3.上传内容或将 `Asset` 用作 `JobOutput`<br/>4.创建 `StreamingLocator`<br/><br/>[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
-|获取作业详细信息和管理作业 |[使用 v2 管理作业](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[使用 v3 管理作业](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
+|创建资产并上传文件 |[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
+|提交作业|[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>演示如何先创建转换，再提交作业。|
+|发布使用 AES 加密的资产 |1.创建 `ContentKeyAuthorizationPolicyOption`<br/>2.创建 `ContentKeyAuthorizationPolicy`<br/>3.创建 `AssetDeliveryPolicy`<br/>4.创建 `Asset` 并上传内容或提交 `Job` 并使用 `OutputAsset`<br/>5.将 `AssetDeliveryPolicy` 与 `Asset` 关联<br/>6.创建 `ContentKey`<br/>7.将 `ContentKey` 附加到 `Asset`<br/>8.创建 `AccessPolicy`<br/>9.创建 `Locator`<br/><br/>[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1.创建 `ContentKeyPolicy`<br/>2.创建 `Asset`<br/>3.上传内容或将 `Asset` 用作 `JobOutput`<br/>4.创建 `StreamingLocator`<br/><br/>[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|获取作业详细信息和管理作业 |[使用 v2 管理作业](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[使用 v3 管理作业](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|

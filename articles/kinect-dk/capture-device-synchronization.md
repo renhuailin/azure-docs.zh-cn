@@ -1,18 +1,18 @@
 ---
 title: 捕获 Azure Kinect 设备同步
 description: 了解如何使用 Azure Kinect 传感器 SDK 同步 Azure Kinect 捕获设备。
-author: xthexder
-ms.author: jawirth
+author: martinekuan
+ms.author: martinek
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 内部, 外部, 同步, 菊花链, 相位偏移
-ms.openlocfilehash: ce0c72d3d708d5696a9775b3885f278f0c23cac1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2dc7408751fa7a7c721bf50ca1c0f6103b691e5a
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102034297"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747088"
 ---
 # <a name="capture-azure-kinect-device-synchronization"></a>捕获 Azure Kinect 设备同步
 

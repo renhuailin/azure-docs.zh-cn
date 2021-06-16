@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你使用自己的密钥（称为客户管理的密钥 (CMK)）管理你的认知服务订阅。 本文介绍表单识别器的静态数据加密，以及如何启用和管理 CMK。
 author: erindormier
 manager: venkyv
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 16da5e11db26f416950852b0d9f5378ca2df6fab
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 343376c21f3ac63fbe5059ba66df77195f717413
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374537"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891962"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>表单识别器静态数据加密
 

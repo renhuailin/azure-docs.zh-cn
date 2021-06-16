@@ -6,15 +6,13 @@ ms.author: zhshang
 ms.date: 10/02/2020
 ms.topic: quickstart
 ms.service: signalr
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: dedc265a6f7dec38d2f46b641631276ad25a8d72
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 624240a6bb1846606fbdbf0b3a635935df9bdd5b
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813301"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891817"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>快速入门：使用 ARM 模板部署 Azure SignalR 服务
 
@@ -28,7 +26,7 @@ ms.locfileid: "109813301"
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/)。
 
@@ -48,7 +46,7 @@ ms.locfileid: "109813301"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-signalr/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/signalr/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.signalrservice/signalr/azuredeploy.json":::
 
@@ -209,7 +207,7 @@ read -p "Press [ENTER] to continue: "
 
 如果不再需要该资源组，可以将其删除，这将删除资源组中的资源。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。
 

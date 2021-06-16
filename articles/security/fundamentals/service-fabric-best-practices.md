@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: a7d87e2496158fec8ff33ab8586c845a6207f810
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: d89f2de555b17ddb5e77a85831f03be16a8a3f57
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816055"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950483"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
 在 Azure 上部署应用程序的过程快速、轻松且经济高效。 将云应用程序部署到生产环境前，请先查看有必要遵照和建议的最佳做法列表，了解最好应如何在应用程序中实现群集安全性。
@@ -144,7 +144,7 @@ HTTP 协议不安全，容易受到窥探攻击威胁。 通过 HTTP 传输的�
 若要详细了解如何使用 SSL/TLS 证书，请参阅[为 Azure 中的应用程序配置 TLS](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)。
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>将 Azure Service Fabric 与网络隔离和安全功能结合使用
-将 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)用作示例，设置 nodetype 属性值为 3 的安全群集。 使用此模板和网络安全组控制入站和出站网络流量。
+将 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)用作示例，设置 nodetype 属性值为 3 的安全群集。 使用此模板和网络安全组控制入站和出站网络流量。
 
 此模板为每个虚拟机规模集都提供了一个 NSG，旨在控制规模集的入站和出站流量。 默认情况下，将会把规则配置为允许模板中指定的系统服务和应用程序端口所需的全部流量进出。 请查看这些规则，并根据需要进行任意更改，包括为应用程序添加新规则。
 

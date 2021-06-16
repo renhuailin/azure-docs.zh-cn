@@ -3,20 +3,20 @@ title: 使用 Azure 自动化来管理数据库
 description: 了解如何使用 Azure 自动化服务来管理大规模的 Azure SQL 数据库。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: faf5b1108e28b352a0b8622feed8bdd99264ff16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6a67da027ba777c07307ba46169003718c8bdb0
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91327572"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690411"
 ---
 # <a name="manage-databases-in-azure-sql-database-by-using-azure-automation"></a>使用 Azure 自动化管理 Azure SQL 数据库中的数据库
 

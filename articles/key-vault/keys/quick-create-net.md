@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: 5c1e4d64ba3359a07dddbbf89774e31815935230
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: dd2dfb5af2fffd4c9821e29502102ae08573da67
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818415"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950497"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 密钥客户端库 (SDK v4)
 
@@ -34,26 +34,21 @@ Key Vault 密钥客户端库资源：
 * [Azure CLI](/cli/azure/install-azure-cli)
 * Key Vault - 可以使用 [Azure 门户](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md) 或 [Azure PowerShell](../general/quick-create-powershell.md) 进行创建。
 
+本快速入门使用 `dotnet` 和 Azure CLI
+
 ## <a name="setup"></a>设置
 
-本快速入门使用 Azure 标识库向 Azure 服务进行用户身份验证。 开发人员还可以使用 Visual Studio 或 Visual Studio Code 来验证其调用。有关详细信息，请参阅[使用 Azure Identity 客户端库对客户端进行身份验证](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true)。
+本快速入门结合使用 Azure Identity 库和 Azure CLI，向 Azure 服务验证用户身份。 开发人员还可以使用 Visual Studio 或 Visual Studio Code 来验证其调用。有关详细信息，请参阅[使用 Azure Identity 客户端库对客户端进行身份验证](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true)。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
 1. 运行 `login` 命令。
 
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli-interactive
     az login
     ```
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
-    
-    ```azurepowershell-interactive
-    Connect-AzAccount
-    ```
-    ---
 
-    如果 Azure CLI 或 Azure PowerShell 可以打开默认浏览器，它将这样做并加载 Azure 登录页。
+    如果 CLI 可以打开默认浏览器，它将这样做并加载 Azure 登录页。
 
     否则，请在 [https://aka.ms/devicelogin](https://aka.ms/devicelogin) 处打开浏览器页，然后输入终端中显示的授权代码。
 
@@ -63,16 +58,9 @@ Key Vault 密钥客户端库资源：
 
 针对密钥保管库创建一个访问策略，以便为用户帐户授予密钥权限
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-```azurecli-interactive
+```console
 az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
-
-```azurepowershell-interactive
-Set-AzKeyVaultAccessPolicy -VaultName <your-key-vault-name> -UserPrincipalName user@domain.com -PermissionsToSecrets delete,get,list,set,purge
-```
----
 
 ### <a name="create-new-net-console-app"></a>创建新的 .NET 控制台应用
 
@@ -119,7 +107,7 @@ Windows
 set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
-```azurepowershell
+```powershell
 $Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
@@ -146,9 +134,9 @@ using Azure.Security.KeyVault.Keys;
 
 ### <a name="authenticate-and-create-a-client"></a>进行身份验证并创建客户端
 
-本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](/azure/active-directory/managed-identities-azure-resources/overview)。
 
-在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)的[“DefaultAzureCredential()”](/dotnet/api/azure.identity.defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关向 Key Vault 进行身份验证的详细信息，请参阅[开发人员指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
+在下面的示例中，Key Vault 的名称将扩展为 Key Vault URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。 此示例使用 [Azure 标识库](/dotnet/api/overview/azure/identity-readme)的[“DefaultAzureCredential()”](/dotnet/api/azure.identity.defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关向 Key Vault 进行身份验证的详细信息，请参阅[开发人员指南](/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
 
 ```csharp
 var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -159,7 +147,7 @@ var client = new KeyClient(new Uri(kvUri), new DefaultAzureCredential());
 
 ### <a name="save-a-key"></a>保存密钥
 
-对于此任务，请使用 [CreateKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.createkeyasync) 方法。 该方法的参数接受密钥名和[密钥类型](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.keys.keytype)。
+对于此任务，请使用 [CreateKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.createkeyasync) 方法。 该方法的参数接受密钥名和[密钥类型](/dotnet/api/azure.security.keyvault.keys.keytype)。
 
 ```csharp
 var key = await client.CreateKeyAsync("myKey", KeyType.Rsa);

@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 04/28/2021
-ms.openlocfilehash: 321dc2aed6ee507ad2ac4987d630b782052884b2
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 66630d10c5b79927c8388138c3ab639134909d26
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277275"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888529"
 ---
 # <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Redis 缓存
 
@@ -31,7 +31,7 @@ ms.locfileid: "108277275"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-redis-cache/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/redis-cache/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.cache/redis-cache/azuredeploy.json":::
 
@@ -42,9 +42,9 @@ ms.locfileid: "108277275"
 
 适用于新[高级层](cache-overview.md#service-tiers)的资源管理器模板也已推出。
 
-* [通过群集创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
-* [通过数据暂留创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
-* [Create Premium Redis Cache deployed into a Virtual Network](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)（创建部署到虚拟网络中的高级 Redis 缓存）
+* [通过群集创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/redis-premium-cluster-diagnostics/)
+* [通过数据暂留创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/redis-premium-persistence/)
+* [Create Premium Redis Cache deployed into a Virtual Network](https://azure.microsoft.com/resources/templates/redis-premium-vnet/)（创建部署到虚拟网络中的高级 Redis 缓存）
 
 若要检查最新模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)并搜索 Azure Cache for Redis。
 

@@ -3,12 +3,13 @@ title: 在 Azure 开发测试实验室中添加所有者和用户 | Microsoft Do
 description: 使用 Azure 门户或 PowerShell 在 Azure 开发测试实验室中添加所有者和用户
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 2ca6a1ffa66ab294e34a1b4866953a393aba4d6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d786af9eeb9b3c01dad2c3954ebe127d3811819f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511971"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703790"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]

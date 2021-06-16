@@ -3,20 +3,20 @@ title: 导入 BACPAC 文件以在 Azure SQL 数据库中创建数据库
 description: 在 Azure SQL 数据库或 Azure SQL 托管实例中，从 BACPAC 文件创建新数据库。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: migrate
+ms.subservice: backup-restore
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: cawrites
 ms.date: 10/29/2020
-ms.openlocfilehash: eddcab2c0a34ef437e4f2f1e2203fee9065133a4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9faa19c7ff0205ee9bd99c2cdca427e24682e6f1
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781876"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789229"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库或 Azure SQL 托管实例中的数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

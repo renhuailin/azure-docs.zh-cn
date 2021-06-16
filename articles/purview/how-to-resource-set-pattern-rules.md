@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 04/15/2021
-ms.openlocfilehash: 61de2cf2e3ad9175d97378234d62f72ab3517b51
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 00b3abc14207e2cb20d61f20639bf326a426cf37
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587827"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111813602"
 ---
 # <a name="create-resource-set-pattern-rules"></a>创建资源集模式规则
 
@@ -24,6 +24,7 @@ ms.locfileid: "107587827"
 - Azure Data Lake Storage Gen2
 - Azure Blob 存储
 - Azure 文件
+- Amazon S3
 
 
 ## <a name="how-to-create-a-resource-set-pattern-rule"></a>如何创建资源集模式规则

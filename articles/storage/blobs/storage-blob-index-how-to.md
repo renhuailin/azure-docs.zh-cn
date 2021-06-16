@@ -1,20 +1,20 @@
 ---
 title: 使用 Blob 索引标记管理和查找 Azure Blob 存储上的数据
 description: 查看相关示例，了解如何使用 Blob 索引标记对 Blob 对象进行分类、管理和查询。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 63f06b9cab7896bcd98b6b6cd9c037b7ee83b47f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 423cc6f1adffc305b5a79ecb84f4e736926ce343
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451762"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653981"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>使用 Blob 索引标记（预览版）管理和查找 Azure Blob 存储上的数据
 

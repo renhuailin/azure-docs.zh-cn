@@ -1,7 +1,6 @@
 ---
 title: 在 Azure SQL Database 中规划 Intel SGX enclave 和证明
 description: 在 Azure SQL 数据库中规划部署具有安全 enclave 的 Always Encrypted。
-keywords: 加密数据, sql 加密, 数据库加密, 敏感数据, 始终加密, 安全 enclave, SGX, 证明
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,12 +10,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 4448ce051b0c9e73865e8057cc4f224c9cbeb571
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccf4d00aa48edfc5cbe8df894d7d1a28387ecff2
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732738"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411552"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>在 Azure SQL Database 中规划 Intel SGX enclave 和证明
 
@@ -29,13 +28,13 @@ Azure SQL 数据库中[具有安全 enclave 的 Always Encrypted](/sql/relationa
 
 ## <a name="plan-for-intel-sgx-in-azure-sql-database"></a>在 Azure SQL 数据库中规划 Intel SGX
 
-Intel SGX 是基于硬件的受信任执行环境技术。 Intel SGX 适用于使用 [vCore 模型](service-tiers-vcore.md)和 [DC 系列](service-tiers-vcore.md?#dc-series)硬件生成的数据库。 因此，为了确保可以在数据库中使用具有安全 enclave 的 Always Encrypted，需要在创建数据库时选择 DC 系列硬件生成，也可以更新现有数据库以使用 DC 系列硬件生成。
+Intel SGX 是基于硬件的受信任执行环境技术。 Intel SGX 适用于使用 [vCore 模型](service-tiers-sql-database-vcore.md)和 [DC 系列](service-tiers-sql-database-vcore.md?#dc-series)硬件生成的数据库。 因此，为了确保可以在数据库中使用具有安全 enclave 的 Always Encrypted，需要在创建数据库时选择 DC 系列硬件生成，也可以更新现有数据库以使用 DC 系列硬件生成。
 
 > [!NOTE]
 > Intel SGX 不适用于 DC 系列以外的硬件代。 例如，Intel SGX 不适用于 Gen5 硬件，也不适用于使用 [DTU 模型](service-tiers-dtu.md)的数据库。
 
 > [!IMPORTANT]
-> 在为数据库配置 DC 系列硬件生成之前，请检查 DC 系列的区域可用性，并确保你了解其性能限制。 有关详细信息，请参阅 [DC 系列](service-tiers-vcore.md#dc-series)。
+> 在为数据库配置 DC 系列硬件生成之前，请检查 DC 系列的区域可用性，并确保你了解其性能限制。 有关详细信息，请参阅 [DC 系列](service-tiers-sql-database-vcore.md#dc-series)。
 
 ## <a name="plan-for-attestation-in-azure-sql-database"></a>在 Azure SQL 数据库中规划证明
 

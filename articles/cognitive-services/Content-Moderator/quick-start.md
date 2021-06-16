@@ -12,14 +12,16 @@ ms.date: 05/24/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 内容审查器，内容审核
-ms.openlocfilehash: 4ac8e8e70061708f5bb6aca9901ac0dd30af8323
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8b0645b93a7adcc583c010b9bb7524fcd77b7aac
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454918"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033736"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入门：尝试在 Web 上使用内容审查器
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 本快速入门将使用联机内容审查器评审工具来测试内容审查器的基本功能，且无需编写任何代码。 若要更快速地将此服务集成到内容审核应用中，请参阅[后续步骤](#next-steps)部分中的其他快速入门。
 

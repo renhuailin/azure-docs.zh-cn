@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 05/12/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: aa451b725d9edd4711f57a52e48ad4e0fabcd61e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 07899b6b429d933234f73a67608250dd5625676a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110079420"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673594"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure 超级磁盘
 
@@ -129,7 +129,7 @@ UltraSSDAvailable                            True
 
 ## <a name="deploy-an-ultra-disk"></a>部署超级磁盘
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 本部分介绍如何部署配备超级磁盘作为数据磁盘的虚拟机。 假定你已熟悉如何部署虚拟机，如果你尚不熟悉，请参阅我们的[快速入门：在 Azure 门户中创建 Windows 虚拟机](./windows/quick-create-portal.md)。
 
@@ -228,7 +228,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 ## <a name="deploy-an-ultra-disk---512-byte-sector-size"></a>部署超级磁盘 - 512 字节扇区大小
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，然后搜索并选择“磁盘”。
 1. 选择“+新建”以创建新磁盘。
@@ -313,7 +313,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ---
 ## <a name="attach-an-ultra-disk"></a>附加超级磁盘
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 或者，如果现有 VM 位于能够使用超级磁盘的地区/可用性区域中，则可以使用超级磁盘，而不必创建新 VM。 方法是：在现有 VM 上启用超级磁盘，然后将其附加为数据磁盘。 若要启用超级磁盘兼容性，则必须停止该 VM。 在停止该 VM 后，可以启用兼容性，然后重启该 VM。 在启用了兼容性后，即可附加超级磁盘：
 
@@ -447,7 +447,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ---
 ## <a name="adjust-the-performance-of-an-ultra-disk"></a>调整超级磁盘的性能
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 超级磁盘具有一项可用于调整其性能的独特功能。 可以在磁盘本身上从 Azure 门户完成这些调整。
 

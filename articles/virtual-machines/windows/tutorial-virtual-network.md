@@ -10,17 +10,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/04/2020
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 4e7f08e3c9869eae76f6c2e0127cfdab8f770d04
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 5aa44410c1ae0e43f2bb1f33bc3b1b9cfaae23d9
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562174"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110667885"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
 
-Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程将指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 在本教程中，你将了解如何执行以下操作：
+Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程将指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建虚拟网络和子网

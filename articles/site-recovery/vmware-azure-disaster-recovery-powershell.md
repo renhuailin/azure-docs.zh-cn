@@ -1,18 +1,19 @@
 ---
 title: 使用 PowerShell 在 Azure Site Recovery 中设置 VMware 灾难恢复
 description: 了解如何使用 PowerShell 在 Azure Site Recovery 中设置复制和故障转移到 Azure 以进行 VMware VM 的灾难恢复。
-author: sujayt
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
-ms.date: 01/10/2020
 ms.topic: conceptual
-ms.author: sutalasi
-ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d7edf0df7818c380199c732336dbc796a6e5314d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86129901"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690594"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复
 

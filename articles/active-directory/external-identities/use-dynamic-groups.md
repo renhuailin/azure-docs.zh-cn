@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b820b8b9606795709d03414fa14ec29a1b5c519
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2386392f34f25c30c7c68065dd69a606d16bae8e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92441549"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955063"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>动态组和 Azure Active Directory B2B 协作
 
@@ -74,5 +74,5 @@ Azure Active Directory (Azure AD) 的安全组成员身份动态配置在 [Azure
 ## <a name="next-steps"></a>后续步骤
 
 - [B2B 协作用户属性](user-properties.md)
-- [将 B2B 协作用户添加到角色](add-guest-to-role.md)
+- [将 B2B 协作用户添加到角色](./add-users-administrator.md)
 - [B2B 协作用户的条件访问](conditional-access.md)

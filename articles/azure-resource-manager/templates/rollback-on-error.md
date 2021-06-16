@@ -4,12 +4,12 @@ description: 指定失败的部署应回退到成功的部署。
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7a0c4deef5956804aa74ad24f072bc46e5c2a8cd
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d66df9cafdb64c216896a66b3283277930a63ed0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321494"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960065"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>出错时回退以成功部署
 
@@ -126,4 +126,4 @@ az deployment group create \
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解完整模式和增量模式，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
-- 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](template-syntax.md)。
+- 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](./syntax.md)。

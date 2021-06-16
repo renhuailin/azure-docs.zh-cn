@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 674f267d3d99dd22c1ae06b6d32587761d5983ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4638139b6cc57e18b11382341b291a13b6c558c0
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93124911"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540071"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>商业市场中的 Azure AD 和 SaaS 可交易产品/服务
 
@@ -68,7 +68,7 @@ Azure AD 可实现商业市场解决方案的无缝购买、履行和管理。 �
 | 过程步骤 | 发布者操作 | 建议或要求（针对发布者） |
 | ------------ | ------------- | ------------- |
 | 5. 发布者通过 SaaS 履行 API 管理 SaaS 应用程序的订阅。 | 通过 [SaaS 履行 API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) 处理订阅更改和其他管理任务。<br><br>此步骤需要过程步骤 3 中所述的访问令牌。 | 必需 |
-| 6. 使用计量定价时，发布者将使用情况事件发送到计量服务 API。 | 如果 SaaS 应用使用基于使用情况的计费方式，请通过[市场计量服务 API](./partner-center-portal/marketplace-metering-service-apis.md) 发出使用情况通知。<br><br>此步骤需要步骤 3 中所述的访问令牌。 | 针对计量必需 |
+| 6. 使用计量定价时，发布者将使用情况事件发送到计量服务 API。 | 如果 SaaS 应用使用基于使用情况的计费方式，请通过[市场计量服务 API](marketplace-metering-service-apis.md) 发出使用情况通知。<br><br>此步骤需要步骤 3 中所述的访问令牌。 | 针对计量必需 |
 ||||
 
 ## <a name="process-steps-for-user-management"></a>用户管理过程步骤

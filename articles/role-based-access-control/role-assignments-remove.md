@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 7a3e4853d6dffa7eb2c5cf80846f6f1bd6beba03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: df37d64e634d2764666e29300e5157ceb3f3ec39
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100561282"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690834"
 ---
 # <a name="remove-azure-role-assignments"></a>删除 Azure 角色分配
 

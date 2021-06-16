@@ -142,7 +142,7 @@
               href: traffic-analytics.md
               items:
                 - name: 常见问题
-                  href: traffic-analytics-faq.md
+                  href: traffic-analytics-faq.yml
                 - name: 架构和数据聚合
                   href: traffic-analytics-schema.md
                 - name: 架构更新（2019 年 8 月）
@@ -210,7 +210,7 @@
 - name: 资源
   items:
     - name: 网络观察程序常见问题解答
-      href: frequently-asked-questions.md
+      href: frequently-asked-questions.yml
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A 问题页面

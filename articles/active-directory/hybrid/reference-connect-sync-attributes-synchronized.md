@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ec05c4160c6502904644bf7035bda0bed66cc33
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 14aa69df2d2cceea7f0b1a33b8399e37b26e9700
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94413184"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854173"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
 本主题列出通过 Azure AD Connect 同步进行同步的属性。  
@@ -55,7 +55,6 @@ ms.locfileid: "94413184"
 | 属性名称 | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
-| assistant |X |X | | |
 | altRecipient |X | | |需要 Azure AD Connect 版本 1.1.552.0 或更高版本。 |
 | authOrig |X |X |X | |
 | c |X |X | | |
@@ -473,4 +472,4 @@ ms.locfileid: "94413184"
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

@@ -9,12 +9,12 @@ ms.service: azure-analysis-services
 tags:
 - azure-resource-manager
 ms.custom: devx-track-azurepowershell - subject-armqs - references_regions - mode-arm
-ms.openlocfilehash: 9bd1ac25c433c2308564b5b224814d920751b143
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 5d54ac9a7bbf8d63f160f95d67723bc82fa3e1c2
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107948016"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895399"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>快速入门：创建服务器 - ARM 模板
 
@@ -33,7 +33,7 @@ ms.locfileid: "107948016"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-analysis-services-create/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/analysis-services-create/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.analysisservices/analysis-services-create/azuredeploy.json":::
 
@@ -49,7 +49,7 @@ ms.locfileid: "107948016"
 
     除非另行指定，否则请使用默认值。
 
-    * 订阅：选择 Azure 订阅。
+    * **订阅**：选择 Azure 订阅。
     * 资源组：单击“新建”，然后为新资源组输入唯一名称。
     * 位置：为在资源组中创建的资源选择一个默认位置。
     * **服务器名称**：为服务器资源输入一个名称。 

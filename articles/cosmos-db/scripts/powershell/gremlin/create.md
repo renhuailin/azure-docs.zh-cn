@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: a005a62ec75d4cbedc4ea88095cab2a48c86fcf4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 823efb6a88e3ef74b90930aa99b71431ca2033e7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98680938"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110680246"
 ---
 # <a name="create-a-database-and-graph-for-azure-cosmos-db---gremlin-api"></a>创建 Azure Cosmos DB 的数据库和图 - Gremlin API
 [!INCLUDE[appliesto-gremlin-api](../../../includes/appliesto-gremlin-api.md)]

@@ -9,12 +9,13 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: efb5d498c627a6731d2a90623c81eefabd0042a0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f25e83644c78328d866751a71e15a9658932e66f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462773"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689277"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
@@ -242,7 +243,7 @@ New-AzSearchService -ResourceGroupName <resource-group-name> `
 
 Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview.md)允许虚拟网络上的客户端通过[专用链接](../private-link/private-link-overview.md)安全地访问搜索索引中的数据。 专用终结点将[虚拟网络地址空间](../virtual-network/private-ip-addresses.md)中的 IP 地址用于你的搜索服务。 客户端与搜索服务之间的网络流量将穿过虚拟网络以及 Microsoft 主干网络上的专用链接，不会从公共 Internet 公开。 有关更多详细信息，请参阅有关[为 Azure 认知搜索创建专用终结点](service-create-private-endpoint.md)的文档
 
-下面的示例演示如何使用专用终结点创建搜索服务。
+下面的示例演示了如何使用专用终结点创建搜索服务。
 
 首先，部署一个搜索服务，将 `PublicNetworkAccess` 设为 `Disabled`。
 

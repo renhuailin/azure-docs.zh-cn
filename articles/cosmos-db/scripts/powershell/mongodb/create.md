@@ -7,12 +7,13 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 889bf2a3e8ab0686861eddd52663dd6b571612f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 75761e98943a8b2e70b8c62baa7d042d96f48eb0
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98677995"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110680066"
 ---
 # <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>创建 Azure Cosmos DB 的数据库和集合 - MongoDB API
 [!INCLUDE[appliesto-mongodb-api](../../../includes/appliesto-mongodb-api.md)]

@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/06/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 25880a60bd086afa84b0c3eaf901bfb987190f4a
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: d60e4964ca9ce4de4b4d8e5545875f5c47f0f809
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166336"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854389"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -52,7 +52,7 @@ Linux 混合 Runbook 辅助角色以特殊用户身份执行 Runbook，该用户
 * SUSE Linux Enterprise Server 12 和 15（SUSE 未发布编号为 13 或 14 的版本）
 
 > [!IMPORTANT]
-> 在启用依赖于系统混合 Runbook 辅助角色的更新管理功能之前，请在[此处](update-management/overview.md#supported-operating-systems)确认它支持的分发。
+> 在启用依赖于系统混合 Runbook 辅助角色的更新管理功能之前，请在[此处](update-management/operating-system-requirements.md)确认它支持的分发。
 
 ### <a name="minimum-requirements"></a>最低要求
 
@@ -145,20 +145,20 @@ runbook 使用以下参数。
 
     * 对于 Azure VM，请使用[适用于 Linux 的虚拟机扩展](../virtual-machines/extensions/oms-linux.md)安装适用于 Linux 的 Log Analytics 代理。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 可以使用 Azure 资源管理器模板、Azure CLI 或 Azure Policy 来分配[为 Linux 或 Windows VM 部署 Log Analytics 代理](../governance/policy/samples/built-in-policies.md#monitoring)内置策略 。 安装代理后，可将计算机添加到自动化帐户中的混合 Runbook 辅助角色组。
 
-    * 对于非 Azure 计算机，可以使用[启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)安装 Log Analytics 代理。 启用了 Arc 的服务器支持使用以下方法部署 Log Analytics 代理：
+    * 对于非 Azure 计算机，可以使用[已启用 Azure Arc 的服务器](../azure-arc/servers/overview.md)安装 Log Analytics 代理。 已启用 Arc 的服务器支持使用以下方法部署 Log Analytics 代理：
 
         - 使用 VM 扩展框架。
 
-            使用启用了 Azure Arc 的服务器中的此功能，可以将 Log Analytics 代理 VM 扩展部署到非 Azure Windows 和/或 Linux 服务器。 在混合计算机上或通过启用了 Arc 的服务器管理的服务器上，可使用以下方法管理 VM 扩展：
+            利用已启用 Azure Arc 的服务器中的这项功能，可以将 Log Analytics 代理 VM 扩展部署到非 Azure Windows 和/或 Linux 服务器。 在由已启用 Arc 的服务器管理的混合计算机或服务器上，可以使用以下方法来管理 VM 扩展：
 
             - [Azure 门户](../azure-arc/servers/manage-vm-extensions-portal.md)
             - [Azure CLI](../azure-arc/servers/manage-vm-extensions-cli.md)
             - [Azure PowerShell](../azure-arc/servers/manage-vm-extensions-powershell.md)
             - Azure [资源管理器模板](../azure-arc/servers/manage-vm-extensions-template.md)
 
-        - 使用 Azure 策略。
+        - 使用 Azure Policy。
 
-            使用此方法时，请使用 Azure 内置策略[部署 Log Analytics 代理到 Linux 或 Windows Azure Arc 计算机](../governance/policy/samples/built-in-policies.md#monitoring)来审核启用了 Arc 的服务器是否已安装 Log Analytics 代理。 如未安装，则将使用修正任务自动部署此代理。 或者，如果计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../governance/policy/samples/built-in-initiatives.md#monitoring) 计划，来安装和配置 Log Analytics 代理。
+            在使用此方法时，请使用 Azure Policy [将 Log Analytics 代理部署到 Linux 或 Windows Azure Arc 计算机](../governance/policy/samples/built-in-policies.md#monitoring)内置策略来审核已启用 Arc 的服务器是否已安装 Log Analytics 代理。 如果该代理未安装，则会使用修正任务来自动部署该代理。 或者，如果你计划通过用于 VM 的 Azure Monitor 来监视计算机，请改为使用[启用用于 VM 的 Azure Monitor](../governance/policy/samples/built-in-initiatives.md#monitoring) 计划来安装和配置 Log Analytics 代理。
 
         建议使用 Azure 策略安装适用于 Windows 或 Linux 的 Log Analytics 代理。
 

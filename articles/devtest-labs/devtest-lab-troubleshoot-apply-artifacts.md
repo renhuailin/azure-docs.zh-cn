@@ -3,12 +3,13 @@ title: 排查 Azure 开发测试实验室中的项目问题 | Microsoft Docs
 description: 了解如何排查在 Azure 开发测试实验室虚拟机中应用项目时出现的问题。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a89b675a1b3bf134b98e09c7278f0eccb594c325
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6d3f37a942010240835238648c48ad5671ec028d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85483187"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692438"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>排查在 Azure 开发测试实验室虚拟机中应用项目时出现的问题。
 由于各种原因，在虚拟机上应用项目可能会失败。 本文将指导你使用一些方法，帮助确定可能的原因。

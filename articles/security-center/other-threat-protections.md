@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 04/29/2021
 ms.author: memildin
-ms.openlocfilehash: cd9c2d5547c3b5e9468432539c2b07d18f6fd3ab
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8549734a643c97771681f2e90a1dad2e2c7ed7a3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459903"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749140"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure 安全中心的其他威胁防护
 除内置 [Azure Defender 保护](azure-defender.md)外，Azure 安全中心还提供了以下威胁防护功能。
@@ -35,7 +35,7 @@ ms.locfileid: "110459903"
 >
 > 1. 在安全中心的菜单中，选择“定价和设置”。
 > 1. 选择想要更改的订阅。
-> 1. 选择“威胁检测”。
+> 1. 选择“集成”。
 > 1. 清除“允许 Microsoft Cloud App Security 访问我的数据”，然后选择“保存” 。
 
 

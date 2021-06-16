@@ -4,20 +4,20 @@ description: 本主题介绍如何使用 Ruby 创建连接到数据库的程序�
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: connect
 ms.custom: sqldbrb=2
 ms.devlang: ruby
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 05/29/2020
-ms.openlocfilehash: 0434a99d28b4f71594e0ca9ce312087dee5b0ee2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 160324421c4fb548baff547b3c8d41d98e1f4a1f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92672532"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704515"
 ---
 # <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 Ruby 查询 Azure SQL 数据库中的数据库或 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "92672532"
 
   | 操作 | SQL 数据库 | SQL 托管实例 | Azure VM 上的 SQL Server |
   |:--- |:--- |:---|:---|
-  | 创建| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
+  | 创建| [门户](single-database-create-quickstart.md) | [门户](../managed-instance/instance-create-quickstart.md) | [门户](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | 配置 | [服务器级别 IP 防火墙规则](firewall-create-server-level-portal-quickstart.md)| [从 VM 进行连接](../managed-instance/connect-vm-instance-configure.md)|
@@ -56,7 +56,7 @@ ms.locfileid: "92672532"
 
 获取连接到 Azure SQL 数据库中的数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页。
 

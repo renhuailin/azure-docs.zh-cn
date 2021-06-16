@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 06c58b7081ed68724a3c907f8fe76dcf5f7b8057
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c921637fc0c50125f6cc657dc9329e2107e8e774
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046799"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894661"
 ---
 # <a name="how-to-create-alerts-from-vm-insights"></a>如何基于 VM 见解创建警报
 [Azure Monitor 中的警报](../alerts/alerts-overview.md)会主动通知你在监视数据中发现的值得关注的数据和模式。 VM 见解不包括预配置的警报规则，但你可以基于它收集的数据创建自己的警报规则。 本文提供有关如何创建警报规则的指导，包括一组示例查询。
@@ -100,7 +100,7 @@ InsightsMetrics
 | where Origin == "vm.azm.ms" 
 | where Namespace == "LogicalDisk" and Name == "TransfersPerSecond"
 | extend Disk=tostring(todynamic(Tags)["vm.azm.ms/mountId"])
-| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m) ), Computer, _ResourceId, Disk
+| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk
 ```
 
 ### <a name="logical-disk-data-rate"></a>逻辑磁盘数据速率
@@ -110,7 +110,7 @@ InsightsMetrics
 | where Origin == "vm.azm.ms" 
 | where Namespace == "LogicalDisk" and Name == "BytesPerSecond"
 | extend Disk=tostring(todynamic(Tags)["vm.azm.ms/mountId"])
-| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m) , Computer, _ResourceId, Disk
+| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk
 ```
 
 ### <a name="network-interfaces-bytes-received---all-interfaces"></a>接收的网络接口字节数 - 所有接口

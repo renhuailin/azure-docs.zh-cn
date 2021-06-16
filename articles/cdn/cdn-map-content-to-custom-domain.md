@@ -9,13 +9,13 @@ ms.service: azure-cdn
 ms.topic: tutorial
 ms.date: 04/12/2021
 ms.author: yuajia
-ms.custom: mvc
-ms.openlocfilehash: 63ca8cc981f7a192c35f7d1889187ae84773ba08
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 3b64efab10a9d52209f04dfd43a43654eb55467a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307990"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706945"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>教程：将自定义域添加到终结点
 
@@ -83,7 +83,7 @@ Azure DNS 将别名记录用于同一订阅中的 Azure 资源。
 
 4. 在“添加记录集”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称  | 输入要用于 CDN 终结点的别名。 例如 **www**。 |
     | 类型  | 选择“CNAME”。 |

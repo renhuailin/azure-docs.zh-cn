@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 12d704b0a3d92aa0585fb120f969000def282396
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4d42a2925003b7f69749d6876171ad906efc48c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092199"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951277"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源
 
@@ -119,6 +119,6 @@ Azure 资源按 Azure 服务和资源组进行组织。 以下过程说明如何
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解 Azure 资源管理器，请参阅 [Azure 资源管理器概述](overview.md)。
-- 若要了解资源管理器模板语法，请参阅[了解 Azure 资源管理器模板的结构和语法](../templates/template-syntax.md)。
+- 若要了解资源管理器模板语法，请参阅[了解 Azure 资源管理器模板的结构和语法](../templates/syntax.md)。
 - 若要了解如何开发模板，请参阅[分步教程](../index.yml)。
 - 若要查看 Azure 资源管理器模板架构，请参阅[模板参考](/azure/templates/)。

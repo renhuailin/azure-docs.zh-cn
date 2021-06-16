@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: c5a9386540f418c8f490ca146e250e780737e478
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 759bd7fb48134d2e0da4514a143d3ffb5d5336bb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668068"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953780"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
@@ -67,7 +68,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>模板
-在资源管理器模板中，必须指定附加参数 `licenseType`。 可以阅读有关[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息
+在资源管理器模板中，必须指定附加参数 `licenseType`。 可以阅读有关[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)的详细信息
 ```json
 "properties": {
     "licenseType": "Windows_Server",

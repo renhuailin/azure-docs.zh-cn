@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d976cd924644828f5861e4c54460a8b4e4f81444
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5fe6c04cf29a4c45436948eaea6fc8d0276ec16f
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643858"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895777"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>排查同步过程中发生的错误
 将标识数据从 Windows Server Active Directory (AD DS) 同步到 Azure Active Directory (Azure AD) 时可能会发生错误。 本文概述不同类型的同步错误、导致这些错误的某些可能情况，以及这些错误的可能解决方法。 本文介绍常见错误类型，不一定涵盖所有可能的错误。
@@ -180,28 +180,6 @@ a. 确保 userPrincipalName 属性包含支持的字符并使用所需的格式�
 
 #### <a name="related-articles"></a>相关文章
 * [通过与 Microsoft 365 进行目录同步来准备预配用户](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
-
-### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>说明
-该事例导致“FederatedDomainChangeError”  同步错误：用户的 UserPrincipalName 后缀已从一个联合域更改为另一个联合域。
-
-#### <a name="scenarios"></a>方案
-某个已同步用户的 UserPrincipalName 后缀已从一个联合域更改为本地的另一个联合域。 例如，*UserPrincipalName = bob\@contoso.com* 已更改为 *UserPrincipalName = bob\@fabrikam.com*。
-
-#### <a name="example"></a>示例
-1. 在 Active Directory 中，已将 Contoso.com 的帐户 Bob Smith 添加为新用户，其 UserPrincipalName 为 bob@contoso.com
-2. Bob 将移到 Contoso.com 中名为 Fabrikam.com 的另一个分支机构，其 UserPrincipalName 更改为 bob@fabrikam.com
-3. contoso.com 和 fabrikam.com 域是与 Azure Active Directory 联合的域。
-4. Bob 的 userPrincipalName 不会更新，并且会导致“FederatedDomainChangeError”同步错误。
-
-#### <a name="how-to-fix"></a>如何解决
-如果用户的 UserPrincipalName 后缀已从 bob@**contoso.com** 更新为 bob\@**fabrikam.com**，并且 **contoso.com** 和 **fabrikam.com** 都是 **联合域**，则执行以下步骤可以解决同步错误
-
-1. 在 Azure AD 中将用户的 UserPrincipalName 从 bob@contoso.com 更新为 bob@contoso.onmicrosoft.com。 可以在 Azure AD PowerShell 模块中使用以下 PowerShell 命令：`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
-2. 允许下一个同步周期尝试同步。 这一次，同步会成功，并且会按预期将 Bob 的 UserPrincipalName 更新为 bob@fabrikam.com。
-
-#### <a name="related-articles"></a>相关文章
-* [在将用户帐户的 UPN 更改为使用不同的联合域后，Azure Active Directory 同步工具未同步更改](./howto-troubleshoot-upn-changes.md)
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>说明

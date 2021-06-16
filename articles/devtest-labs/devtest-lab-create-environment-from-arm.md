@@ -3,16 +3,16 @@ title: 使用模板创建多 VM 环境和 PaaS 资源
 description: 了解如何在 Azure 开发测试实验室中通过 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: f285acffe642a85fa27792ee51ea67a57f6d35a5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 839953bcf5f48dc856da0d01133e81ed69fd08cd
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790106"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954128"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源
 
-Azure 开发测试实验室环境允许用户在实验室范围内以一致的方式轻松部署复杂的基础结构。 可以使用 [Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)在开发测试实验室中创建具有资源集合的环境。 这些环境可以包含资源管理器模板可以创建的任何 Azure 资源。
+Azure 开发测试实验室环境允许用户在实验室范围内以一致的方式轻松部署复杂的基础结构。 可以使用 [Azure 资源管理器模板](../azure-resource-manager/templates/syntax.md)在开发测试实验室中创建具有资源集合的环境。 这些环境可以包含资源管理器模板可以创建的任何 Azure 资源。
 
 通过使用 [Azure 门户](https://portal.azure.com)，你可以轻松地[一次将一个虚拟机 (VM) 添加](devtest-lab-add-vm.md)到实验室。 不过，多层级 web 应用或 SharePoint 场等方案需要一种机制才能一步创建多个 VM。 可以使用 Azure 资源管理器模板定义 Azure 解决方案的基础结构和配置，以一致的状态重复部署多个 VM。
 

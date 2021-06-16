@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: bbd14b614902b7aad435c9de6143a18780da8a44
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 9696572a2e568eb130a4bffa1d22c8d3d1de0b03
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279363"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559333"
 ---
 # <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>快速入门：使用 ARM 模板在 Azure HDInsight 中创建 Interactive Query 群集
 
@@ -28,7 +28,7 @@ ms.locfileid: "108279363"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-hdinsight-interactive-hive/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/hdinsight-interactive-hive/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.hdinsight/hdinsight-interactive-hive/azuredeploy.json":::
 

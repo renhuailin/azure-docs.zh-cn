@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: d6e27fddceb69efbb2c1697c09ee9b61d7f38ee4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6f9570c04b9182e756560a23ffb6bbbdc079cd1
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687968"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407734"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
 
@@ -221,6 +221,7 @@ azdata arc postgres server edit --name <server group name> --admin-password
 ## <a name="audit"></a>审核
 
 如果要用于审核方案，请将服务器组配置为使用 Postgres 的 `pgaudit` 扩展。 有关 `pgaudit` 的更多详细信息，请参阅 [`pgAudit`GitHub 项目](https://github.com/pgaudit/pgaudit/blob/master/README.md)。 若要在服务器组中启用 `pgaudit` 扩展，请阅读[使用 PostgreSQL 扩展](using-extensions-in-postgresql-hyperscale-server-group.md)。
+
 
 
 ## <a name="next-steps"></a>后续步骤

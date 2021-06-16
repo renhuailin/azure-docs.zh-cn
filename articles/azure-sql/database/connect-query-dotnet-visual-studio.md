@@ -4,20 +4,20 @@ description: 使用 Visual Studio 创建与 Azure SQL 数据库中的数据库�
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: connect
 ms.custom: devx-track-csharp, sqldbrb=2
 ms.devlang: dotnet
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 08/10/2020
-ms.openlocfilehash: 1fe39e0ff9acc0c092199ab2dd199cf396f67d01
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 1b9c449100c51387c9b812bf0ef97ee460d80597
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874758"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689105"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database"></a>快速入门：使用 Visual Studio 中的 .NET 和 C# 来连接和查询数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]

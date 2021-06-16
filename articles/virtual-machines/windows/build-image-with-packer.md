@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: a2cd6152f9c8e75223fcf1aab77fee7700223979
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e91a6a8d17d9f5fe05b4e471d2f0b44577eef578
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561001"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669283"
 ---
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell：如何使用 Packer 在 Azure 中创建虚拟机映像
 Azure 中的每个虚拟机 (VM) 都是基于定义 Windows 分发和操作系统版本的映像创建的。 映像可以包括预安装的应用程序和配置。 Azure 市场为最常见的操作系统和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。

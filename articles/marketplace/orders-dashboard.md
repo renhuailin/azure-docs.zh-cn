@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: ed12e470f3f3d8c1035c1e4e2e0fa7a3b33e2369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 344c7e6c14ca8ecdd91ffb9c148ce01d2b937573
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561375"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111542012"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“订单”仪表板
 
@@ -113,7 +113,7 @@ SaaS 产品/服务可对每个计划使用两种定价模型中的一种：统�
 
 ***表 1：数据术语字典***
 
-| 列名称<br>用户界面 | 属性名称 | 定义 | 编程式访问报表中的<br>列名称 |
+| 用户界面中的<br>用户界面 | 属性名称 | 定义 | 编程式访问报表中的<br>列名称 |
 | ------------ | ------------- | ------------- | ------------- |
 | 市场订阅 ID | 市场订阅 ID | 与客户用来购买商业市场产品/服务的 Azure 订阅关联的唯一标识符。 对于基础结构产品/服务，这是客户的 Azure 订阅 GUID。 对于 SaaS 产品/服务，此项显示为零，因为 SaaS 购买不需要 Azure 订阅。 | 市场订阅 ID |
 | MonthStartDate | MonthStartDate | 月份开始日期表示购买月份。 格式为 yyyy-mm-dd。 | MonthStartDate |
@@ -147,10 +147,10 @@ SaaS 产品/服务可对每个计划使用两种定价模型中的一种：统�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要大致了解商业市场内可用的分析报表，请参阅[在合作伙伴中心访问商业市场的分析报表](./partner-center-portal/analytics.md)。
+- 若要大致了解商业市场内可用的分析报表，请参阅[在合作伙伴中心访问商业市场的分析报表](analytics.md)。
 - 有关为产品/服务汇总市场活动的聚合数据的图表、趋势和值，请参阅[商业市场分析中的“摘要”仪表板](./summary-dashboard.md)。
 - 有关采用图形和可下载格式显示的订单的信息，请参阅[商业市场分析中的“订单”仪表板](orders-dashboard.md)。
 - 有关虚拟机 (VM) 产品/服务使用情况和按流量计费指标的信息，请参阅[商业市场分析中的“使用情况”仪表板](./usage-dashboard.md)。
-- 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](./partner-center-portal/downloads-dashboard.md)。
-- 若要查看客户对 Azure 市场和 AppSource 中产品/服务的反馈的综合视图，请参阅[合作伙伴中心的评分和评价分析仪表板](./partner-center-portal/ratings-reviews.md)。
+- 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](downloads-dashboard.md)。
+- 若要查看客户对 Azure 市场和 AppSource 中产品/服务的反馈的综合视图，请参阅[合作伙伴中心的评分和评价分析仪表板](ratings-reviews.md)。
 - 有关商业市场分析的常见问题解答以及数据术语的综合词典，请参阅[商业市场分析术语和常见问题](./analytics-faq.md)。

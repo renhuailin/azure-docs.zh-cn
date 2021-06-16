@@ -3,12 +3,13 @@ title: 获取事件网格资源的访问密钥
 description: 本文介绍如何获取事件网格主题或域的访问密钥
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: cd60777b2e28b82d72f8f2bf93fe0be301e9e280
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6052c93dc91403fccaed62719b163c24486557c5
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775216"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110702533"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>获取事件网格资源（主题或域）的访问密钥
 访问密钥用于对将事件发布到 Azure 事件网格资源（主题和域）的应用程序进行身份验证。 我们建议定期重新生成密钥并安全地存储它们。 你拥有两个访问密钥，因此，在重新生成其中一个密钥时，可以使用另一个密钥来保持连接。

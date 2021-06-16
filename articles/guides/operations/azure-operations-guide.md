@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 1eb0bf2c0e214c3e076895903176d15ee792c70c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f362bc76a3361b511b08a3822c01730c200d37b1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093045"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957037"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
@@ -280,7 +280,7 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 
 - **模板链接**：可从一个资源管理器模板中链接到另一个模板。 这允许将部署分解成一组具有特定用途的定向模板。
 
-可在任何文本编辑器中生成资源管理器模板。 但是，用于 Visual Studio 的 Azure SDK 包括的工具可提供帮助。 通过使用 Visual Studio，可以通过向导向模板添加资源，然后直接从 Visual Studio 中部署和调试模板。 有关详细信息，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。
+可在任何文本编辑器中生成资源管理器模板。 但是，用于 Visual Studio 的 Azure SDK 包括的工具可提供帮助。 通过使用 Visual Studio，可以通过向导向模板添加资源，然后直接从 Visual Studio 中部署和调试模板。 有关详细信息，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)。
 
 最后，可将现有资源组从 Azure 门户转换为可重用模板。 如果要创建现有资源组的可部署模板，或者只想检查基础 JSON，这非常有用。 若要导出资源组，请从资源组的设置中选择“自动化脚本”按钮。
 
