@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: how-to
-ms.openlocfilehash: 61754eec2c866a7bf5897b2faa2a2b2ae7b60d02
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 93365304e958bfabaf3067ab58312a9b78745edb
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382617"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854659"
 ---
 # <a name="safe-rollout-for-online-endpoints-preview"></a>联机终结点的安全推出（预览版）
 
@@ -56,7 +56,7 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 * 如果尚未设置环境变量 $ENDPOINT_NAME，现在请设置：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="set_endpoint_name":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="set_endpoint_name":::
 
 * （建议）克隆示例存储库，并切换到该存储库的 `cli/` 目录： 
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure/azureml-examples
 cd azureml-examples/cli
 ```
 
-本教程中的命令位于文件 `how-to-deploy-declarative-safe-rollout-online-endpoints.sh` 中，YAML 配置文件位于 `endpoints/online/managed/canary-declarative-flow/` 子目录中。
+本教程中的命令位于文件 `deploy-declarative-safe-rollout-online-endpoints.sh` 中，YAML 配置文件位于 `endpoints/online/managed/canary-declarative-flow/` 子目录中。
 
 ## <a name="confirm-your-existing-deployment-is-created"></a>确认已创建现有部署
 
@@ -85,7 +85,7 @@ az ml endpoint show --name $ENDPOINT_NAME
 
 使用以下命令更新部署：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="scale_blue" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="scale_blue" :::
 
 > [!IMPORTANT]
 > 使用 YAML 进行更新是声明性操作。 也就是说，YAML 中的更改将反映在基础资源 Azure 资源管理器资源（终结点和部署）中。 此方法有助于 [GitOps](https://www.atlassian.com/git/tutorials/gitops)：对终结点/部署的所有更改都将通过 YAML 进行（甚至包括 `instance_count`）。 副作用是，如果从 YAML 中删除部署，然后使用该文件运行 `az ml endpoint update`，则会删除此部署。 
@@ -98,13 +98,13 @@ az ml endpoint show --name $ENDPOINT_NAME
 
 更新部署： 
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="create_green" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="create_green" :::
 
 ### <a name="test-the-new-deployment"></a>测试新部署
 
 配置指定了将 0% 的流量发送到刚刚创建的 `green` 部署。 若要测试该部署，可以通过指定 `--deployment` 名称来直接调用它：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="test_green" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="test_green" :::
 
 如果要使用 REST 客户端直接调用部署而不经历流量规则处理过程，请设置以下 HTTP 头：`azureml-model-deployment: <deployment-name>`。
 
@@ -116,7 +116,7 @@ az ml endpoint show --name $ENDPOINT_NAME
 
 除了突出显示的行以外，配置文件中的其他内容保持不变。 使用以下命令更新部署：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="green_10pct_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="green_10pct_traffic" :::
 
 现在，`green` 部署将接收 10% 的请求。 
 
@@ -128,7 +128,7 @@ az ml endpoint show --name $ENDPOINT_NAME
 
 更新部署： 
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="green_100pct_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="green_100pct_traffic" :::
 
 ## <a name="remove-the-old-deployment"></a>删除旧部署
 
@@ -138,10 +138,10 @@ az ml endpoint show --name $ENDPOINT_NAME
 
 使用以下命令更新部署：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_blue" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_blue" :::
 
 ## <a name="delete-the-endpoint-and-deployment"></a>删除终结点和部署
 
 如果你今后不再使用该部署，应使用以下命令将其删除：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
