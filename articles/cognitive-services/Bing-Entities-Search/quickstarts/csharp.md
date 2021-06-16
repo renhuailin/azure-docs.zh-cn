@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0a77faba971f328c6ae1c5a03f8faf7ccfcf60d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aba090378ee459f6dd2747621321aa30bb9103b0
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351480"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615208"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>快速入门：使用 C# 向必应实体搜索 REST API 发送搜索请求
 
@@ -62,8 +62,8 @@ ms.locfileid: "96351480"
     {
         class Program
         {
-            static string host = "https://api.cognitive.microsoft.com";
-            static string path = "/bing/v7.0/entities";
+            static string host = "https://api.bing.microsoft.com";
+            static string path = "/v7.0/search";
     
             static string market = "en-US";
     

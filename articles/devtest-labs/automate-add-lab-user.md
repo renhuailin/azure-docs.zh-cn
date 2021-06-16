@@ -3,12 +3,13 @@ title: 在 Azure 开发测试实验室中自动添加实验室用户 | Microsoft
 description: 本文介绍如何使用 Azure 资源管理器模板、PowerShell 和 CLI 自动将用户添加到 Azure 开发测试实验室中的实验室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1168e00960c35e2ac1e4a660efba63d30c63a575
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 70f8e2740a53c7bb855d3796efa438e9c9ff0ffa
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727699"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965213"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>自动将实验室用户添加到 Azure 开发测试实验室中的实验室
 通过 Azure 开发测试实验室，可以使用 Azure 门户快速创建自助服务开发测试环境。 但是，如果你有多个团队和多个开发测试实验室实例，则自动执行创建过程可以节省时间。 使用 [Azure 资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/Environments)，可以创建实验室、实验室 VM、自定义映像、公式，并自动添加用户。 本文专门介绍如何将用户添加到开发测试实验室实例。
@@ -76,7 +77,7 @@ ms.locfileid: "105727699"
 
 ```
 
-如果要在创建实验室的同一模板中分配角色，请记住在角色分配资源和实验室之间添加依赖关系。 有关详细信息，请参阅[在 Azure 资源管理器模板中定义依赖关系](../azure-resource-manager/templates/define-resource-dependency.md)一文。
+如果要在创建实验室的同一模板中分配角色，请记住在角色分配资源和实验室之间添加依赖关系。 有关详细信息，请参阅[在 Azure 资源管理器模板中定义依赖关系](../azure-resource-manager/templates/resource-dependency.md)一文。
 
 ### <a name="role-assignment-resource-information"></a>角色分配资源信息
 角色分配资源需要指定类型和名称。
@@ -195,4 +196,3 @@ az role assignment create --roleName "DevTest Labs User" --signInName <email@com
 - [使用 Azure CLI 通过开发测试实验室创建和管理虚拟机](devtest-lab-vmcli.md)
 - [使用 Azure PowerShell 通过开发测试实验室创建虚拟机](devtest-lab-vm-powershell.md)
 - [使用命令行工具启动和停止 Azure 开发测试实验室虚拟机](use-command-line-start-stop-virtual-machines.md)
-

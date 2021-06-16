@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 3325960793a5a0d7bc48ca8030c675d7ebf0c026
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: db8164cc0d1216050bfd7f6cc071b3d47db452f1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106442586"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956309"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>用于将本地或云数据迁移到 Azure Cosmos DB 的选项
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -44,8 +44,8 @@ ms.locfileid: "106442586"
 |迁移类型|解决方案|受支持的源|支持的目标|注意事项|
 |---------|---------|---------|---------|---------|
 |Offline|[数据迁移工具](import-data.md)| &bull;JSON/CSV 文件<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;表存储<br/>&bull;AWS DynamoDB<br/>&bull;Azure Blob 存储|&bull;Azure Cosmos DB SQL API<br/>&bull;Azure Cosmos DB 表 API<br/>&bull;JSON 文件 |&bull; 易于设置并支持多个源。 <br/>&bull; 不适合用于大型数据集。|
-|Offline|[Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)| &bull;JSON/CSV 文件<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API<br/>&bull;MongoDB <br/>&bull;SQL Server<br/>&bull;表存储<br/>&bull;Azure Blob 存储 <br/> <br/>有关其他受支持的源，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。|&bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API<br/>&bull;JSON 文件 <br/><br/> 有关其他受支持的目标，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。 |&bull; 易于设置并支持多个源。<br/>&bull; 利用 Azure Cosmos DB 批量执行工具库。 <br/>&bull; 适合用于大型数据集。 <br/>&bull; 缺少检查点 - 这意味着，如果在迁移过程中出现问题，需要重启整个迁移过程。<br/>&bull; 缺少死信队列 - 这意味着，出现几个有错误的文件就可能会停止整个迁移过程。|
-|Offline|[Azure Cosmos DB Spark 连接器](spark-connector.md)|Azure Cosmos DB SQL API。 <br/><br/>可以将其他源与来自 Spark 生态系统的其他连接器配合使用。| Azure Cosmos DB SQL API。 <br/><br/>可以将其他目标与来自 Spark 生态系统的其他连接器配合使用。| &bull; 利用 Azure Cosmos DB 批量执行工具库。 <br/>&bull; 适合用于大型数据集。 <br/>&bull; 需要自定义的 Spark 设置。 <br/>&bull; Spark 对架构不一致性比较敏感，这可能会在迁移过程中造成问题。 |
+|脱机|[Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)| &bull;JSON/CSV 文件<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API<br/>&bull;MongoDB <br/>&bull;SQL Server<br/>&bull;表存储<br/>&bull;Azure Blob 存储 <br/> <br/>有关其他受支持的源，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。|&bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API<br/>&bull;JSON 文件 <br/><br/> 有关其他受支持的目标，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。 |&bull; 易于设置并支持多个源。<br/>&bull; 利用 Azure Cosmos DB 批量执行工具库。 <br/>&bull; 适合用于大型数据集。 <br/>&bull; 缺少检查点 - 这意味着，如果在迁移过程中出现问题，需要重启整个迁移过程。<br/>&bull; 缺少死信队列 - 这意味着，出现几个有错误的文件就可能会停止整个迁移过程。|
+|Offline|[Azure Cosmos DB Spark 连接器](./create-sql-api-spark.md)|Azure Cosmos DB SQL API。 <br/><br/>可以将其他源与来自 Spark 生态系统的其他连接器配合使用。| Azure Cosmos DB SQL API。 <br/><br/>可以将其他目标与来自 Spark 生态系统的其他连接器配合使用。| &bull; 利用 Azure Cosmos DB 批量执行工具库。 <br/>&bull; 适合用于大型数据集。 <br/>&bull; 需要自定义的 Spark 设置。 <br/>&bull; Spark 对架构不一致性比较敏感，这可能会在迁移过程中造成问题。 |
 |Offline|[包含 Cosmos DB 批量执行程序库的自定义工具](migrate-cosmosdb-data.md)| 源依赖于自定义代码 | Azure Cosmos DB SQL API| &bull; 提供检查点和死信功能，可提高迁移复原能力。 <br/>&bull; 适合用于极大型数据集 (10 TB+)。  <br/>&bull; 需要对此工具进行自定义设置，使其作为应用服务运行。 |
 |联机|[Cosmos DB Functions + ChangeFeed API](change-feed-functions.md)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; 易于设置。 <br/>&bull; 仅当源是 Azure Cosmos DB 容器时才适用。 <br/>&bull; 不适合用于大型数据集。 <br/>&bull; 不捕获源容器中的删除操作。 |
 |联机|[使用 ChangeFeed 的自定义迁移服务](https://github.com/Azure-Samples/azure-cosmosdb-live-data-migrator)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; 提供进度跟踪。 <br/>&bull; 仅当源是 Azure Cosmos DB 容器时才适用。 <br/>&bull; 也适用于较大的数据集。<br/>&bull; 要求用户设置一个应用服务来托管更改源处理器。 <br/>&bull; 不捕获源容器中的删除操作。|
@@ -86,5 +86,5 @@ ms.locfileid: "106442586"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要进行详细了解，请试用那些在 [.NET](bulk-executor-dot-net.md) 和 [Java](bulk-executor-java.md) 中使用批量执行程序库的示例应用程序。 
-* 批量执行程序库已集成到 Cosmos DB Spark 连接器中。若要进行详细的了解，请参阅 [Azure Cosmos DB Spark 连接器](spark-connector.md)一文。  
+* 批量执行程序库已集成到 Cosmos DB Spark 连接器中。若要进行详细的了解，请参阅 [Azure Cosmos DB Spark 连接器](./create-sql-api-spark.md)一文。  
 * 如需大规模迁移方面的更多帮助，请通过开具支持票证来联系 Azure Cosmos DB 产品团队：选择“常规建议”问题类型，“大规模迁移(TB+)”问题子类型。

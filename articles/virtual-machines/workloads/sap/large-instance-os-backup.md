@@ -3,28 +3,29 @@ title: Azure 上的 SAP HANA（大型实例）的操作系统备份和还原 | M
 description: 为 Azure 上的 SAP HANA（大型实例）执行操作系统备份和还原
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
-ms.author: juergent
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c044d09626fe4c1d4409f98fc615b5a7d70c7cc8
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 7cd7210ceec1297431ab5929d2733c8b4d164d71
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229893"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575247"
 ---
 # <a name="os-backup-and-restore"></a>OS 备份和还原
 
 本文档介绍执行操作系统文件级备份和还原的步骤。 此过程因某些参数（例如类型 I 或类型 II、修订版 3 或更高版本、位置等）而有所不同。请与 Microsoft 运营中心核对，以获取资源中这些参数的准确值。
 
-## <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>修订版 3 标记的类型 II SKU 的 OS 备份和还原
+## <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>修订版 3 标记的类型 II SKU 的操作系统备份和还原
 
 以下信息介绍如何为修订版 3 的 HANA 大型实例的“类型 II SKU”执行操作系统文件级备份和还原。
 
@@ -125,7 +126,7 @@ BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/cra
 ```
 
 其他参考：
-- [设置存储快照](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots)
+- [设置存储快照](hana-backup-restore.md#set-up-storage-snapshots)
 - [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) 上的“用于 SAP HANA 的 Microsoft 快照工具”指南。
 
 ### <a name="how-to-restore-a-backup"></a>如何还原备份？

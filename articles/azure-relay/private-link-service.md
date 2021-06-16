@@ -3,12 +3,13 @@ title: 将 Azure 中继与 Azure 专用链接服务集成
 description: 了解如何将 Azure 中继与 Azure 专用链接服务集成
 ms.date: 09/24/2020
 ms.topic: article
-ms.openlocfilehash: 13644082160704ba9918e6bd6257fa314bb463a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 42f05784143031e303affa2a17cccfdaf22ce4ca
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98134375"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688365"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link"></a>与 Azure 中继与 Azure 专用链接集成 
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如，Azure 中继、Azure 服务总线、Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户/合作伙伴服务。 有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)
@@ -101,7 +102,7 @@ $namespaceName = "<NAMESPACE NAME>"
 $peConnectionName = "<PRIVATE ENDPOINT CONNECTION NAME>"
 
 # create resource group
-az group create -l $vnetLocation -n $rgName
+New-AzResourceGroup -Name $rgName -Location $vnetLocation 
 
 # create virtual network
 $virtualNetwork = New-AzVirtualNetwork `
@@ -195,7 +196,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 1. 若要删除某个专用终结点连接，请在列表中选择它，然后在工具栏上选择“删除”。 
 
     ![“删除”按钮](./media/private-link-service/remove-endpoint.png)
-2. 在“删除连接”页上，选择“是”以确认删除该专用终结点 。 如果选择“否”，则不会执行任何操作。 
+2. 在“删除连接”页上，选择“是”以确认删除该专用终结点。  如果选择“否”，则不会执行任何操作。 
 
     ![“删除连接”页](./media/private-link-service/delete-connection-page.png)
 3. 应会看到，状态已更改为“已断开连接”。 然后你会发现，该终结点已在列表中消失。 

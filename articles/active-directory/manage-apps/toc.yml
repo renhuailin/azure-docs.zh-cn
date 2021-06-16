@@ -70,7 +70,7 @@
         - name: 基于链接的 SSO
           href: configure-linked-sign-on.md
         - name: 基于标头的 SSO（本地应用）
-          href: application-proxy-configure-single-sign-on-with-headers.md
+          href: ../app-proxy/application-proxy-configure-single-sign-on-with-headers.md
         - name: 一键式 SSO
           href: one-click-sso-tutorial.md
     - name: 应用程序安全性

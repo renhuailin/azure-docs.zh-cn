@@ -8,12 +8,13 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 08/31/2020
-ms.openlocfilehash: 6341e3abbf591d0e6e0395e17ccf15ec73a3ac43
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c359df185ea21df52f678ca4f4656e0b4eca1a19
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835445"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663184"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -126,14 +127,14 @@ ms.locfileid: "107835445"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute | string |
-| type | CustomScriptExtension | string |
+| publisher | Microsoft.Compute | 字符串 |
+| type | CustomScriptExtension | 字符串 |
 | typeHandlerVersion | 1.10 | int |
 | fileUris（例如） | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp（示例） | 123456789 | 32-bit integer |
-| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
-| storageAccountName（例如） | examplestorageacct | string |
-| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| commandToExecute（例如） | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | 字符串 |
+| storageAccountName（例如） | examplestorageacct | 字符串 |
+| storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字符串 |
 | managedIdentity（例如） | { } 或 { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } 或 { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | json 对象 |
 
 >[!NOTE]
@@ -181,7 +182,7 @@ CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设
 
 若要在目标 VM/VMSS 上使用用户分配的标识，请将“managedidentity”字段配置为托管标识的客户端 ID 或对象 ID。
 
-> 示例：
+> 示例:
 >
 > ```json
 > {
@@ -322,7 +323,7 @@ $vm | Update-AzureVM
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请运行以下命令：
 

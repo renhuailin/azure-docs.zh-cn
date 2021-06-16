@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 3/18/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: b6fcbf7d31e76965cfd8b2944b426dce94b8aa75
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: c912984879cac12a9ad9fe078056677dccb48cf7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324502"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970123"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-azure-real-time-operating-system-rtos"></a>有关使用 Azure 实时操作系统 (RTOS) 的 Azure IoT 中心的设备更新教程
 
@@ -29,7 +29,7 @@ ms.locfileid: "108324502"
 
 ## <a name="prerequisites"></a>先决条件
 * 对 IoT 中心的访问权限。 建议使用 S1（标准）层或更高层级。
-* 链接到 IoT 中心的设备更新实例和帐户。 按照指南[创建并链接](/azure/iot-hub-device-update/create-device-update-account)一个设备更新帐户（如果尚未这样做）。
+* 链接到 IoT 中心的设备更新实例和帐户。 按照指南[创建并链接](./create-device-update-account.md)一个设备更新帐户（如果尚未这样做）。
 
 ## <a name="get-started"></a>入门
 

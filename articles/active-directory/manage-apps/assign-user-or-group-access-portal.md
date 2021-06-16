@@ -2,21 +2,21 @@
 title: 在 Azure Active Directory 中管理应用的用户分配
 description: 了解如何为使用 Azure Active Directory 进行标识管理的应用分配和取消分配用户和组。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/21/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: luleon
-ms.openlocfilehash: 097bf55cc7e5372749240c19afb09ba374d437af
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 1f0e9bb0e09657b23d1126d7364435340307dcf0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377966"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080716"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>在 Azure Active Directory 中管理应用的用户分配
 

@@ -8,19 +8,20 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 12/13/2018
-ms.openlocfilehash: fe03bbfb33f3637eecc4e68f24846c929dad5fa4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 20be29d428fe6eaf9e7e64b4536c5014641c5416
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479247"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962537"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展 3.0 监视指标和日志
 
 本文档介绍 Linux 诊断扩展 (LAD) 3.0 和更高版本。
 
 > [!IMPORTANT]
-> 有关版本 2.3 及更早版本的信息，请参阅[监视 Linux VM 的性能和诊断数据](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)。
+> 有关版本 2.3 及更早版本的信息，请参阅[监视 Linux VM 的性能和诊断数据](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)。
 
 ## <a name="introduction"></a>简介
 
@@ -42,7 +43,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 >[!NOTE]
 >[Log Analytics VM 扩展](./oms-linux.md)中还随附了 LAD VM 扩展的某些组件。 由于这种体系结构，如果在同一 ARM 模板中对两个扩展进行实例化，则可能会发生冲突。 
 >
->为避免安装时冲突，请使用 [`dependsOn` 指令](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)，确保按顺序安装扩展。 可按任一顺序安装扩展。
+>为避免安装时冲突，请使用 [`dependsOn` 指令](../../azure-resource-manager/templates/resource-dependency.md#dependson)，确保按顺序安装扩展。 可按任一顺序安装扩展。
 
 这些安装说明和[可下载的示例配置](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)会将 LAD 3.0 配置为：
 
@@ -231,7 +232,7 @@ Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location 
 }
 ```
 
-名称 | 值
+名称 | Value
 ---- | -----
 storageAccountName | 扩展写入数据的存储帐户的名称。
 storageAccountEndPoint | （可选）标识存储帐户所在云的终结点。 如果缺少此设置，则 LAD 默认为 Azure 公有云 `https://core.windows.net`。 若要使用 Azure 德国、Azure 政府或 Azure 中国世纪互联中的存储帐户，请根据需要设置此值。
@@ -269,7 +270,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 
 `sinksConfig` 可选部分用于定义扩展要将其收集到的信息发送到的更多的目的地。 `sink` 数组包含每个附加数据接收器的对象。 `type` 特性确定对象中的其他特性。
 
-元素 | 值
+元素 | Value
 ------- | -----
 name | 在扩展配置中其他位置引用此接收器的字符串。
 type | 要定义的接收器的类型。 确定此类型实例中的其他值（如果有）。
@@ -335,7 +336,7 @@ Blob 存储在与接收器同名的容器中。 用于 blob 容器名称的 Azur
 }
 ```
 
-元素 | 值
+元素 | Value
 ------- | -----
 StorageAccount | 扩展写入数据的存储帐户的名称。 必须是[受保护的设置](#protected-settings)中指定的名称。
 mdsdHttpProxy | （可选）与[受保护的设置](#protected-settings)中的相同。 如果设置，则专用值将替代公用值。 将包含机密（如密码）的代理设置放在[受保护的设置](#protected-settings)中。
@@ -361,7 +362,7 @@ mdsdHttpProxy | （可选）与[受保护的设置](#protected-settings)中的�
 * `performanceCounters` 或 `syslogEvents` 或两者兼备。 
 * `metrics` 结构。
 
-元素 | 值
+元素 | Value
 ------- | -----
 eventVolume | （可选）控制在存储表中创建的分区数。 必须为 `"Large"`、`"Medium"` 或 `"Small"`。 如果未指定值，则默值认为 `"Medium"`。
 sampleRateInSeconds | （可选）两次收集原始（未聚合）指标之间的默认时间间隔。 支持的最小采样率为 15 秒。 如果未指定值，则默认值为 `15`。
@@ -378,7 +379,7 @@ sampleRateInSeconds | （可选）两次收集原始（未聚合）指标之间�
 }
 ```
 
-元素 | 值
+元素 | Value
 ------- | -----
 ResourceId | VM 或 VM 所属规模集的 Azure 资源管理器资源 ID。 如果配置中使用了任何 `JsonBlob` 接收器，也必须指定此设置。
 scheduledTransferPeriod | 计算聚合指标并传输到 Azure Monitor 指标的频率。 该频率以 IS 8601 时间间隔形式表示。 最小传输周期为 60 秒，即 PT1M。 请至少指定一个 `scheduledTransferPeriod`。
@@ -418,7 +419,7 @@ scheduledTransferPeriod | 计算聚合指标并传输到 Azure Monitor 指标的
 * 上一次收集的值
 * 用于计算聚合的原始样本数
 
-元素 | 值
+元素 | Value
 ------- | -----
 sinks | （可选）LAD 将聚合指标结果发送到的接收器的名称的逗号分隔列表。 所有聚合指标都将发布到列出的每个接收器。 示例：`"EHsink1, myjsonsink"`。 有关详细信息，请参阅 [`sinksConfig`](#sinksconfig)。
 type | 标识指标的实际提供程序。
@@ -474,7 +475,7 @@ Azure 门户的 Azure Monitor 指标功能使用此表中的数据来生成图�
 
 `syslogEventConfiguration` 收集将为相关的每个 syslog 辅助参数创建一个条目。 如果特定辅助参数的 `minSeverity` 为 `"NONE"`，或者该辅助参数并未出现在元素中，则不会捕获该辅助参数下的任何事件。
 
-元素 | 值
+元素 | Value
 ------- | -----
 sinks | 一个逗号分隔列表，包含要将单个日志事件发布到其中的接收器的名称。 与 `syslogEventConfiguration` 中的限制匹配的所有日志事件都会发布到列出的每个接收器。 示例： `"EHforsyslog"`
 facilityName | Syslog 辅助参数名称，例如 `"LOG_USER"` 或 `"LOG\LOCAL0"`。 有关详细信息，请参阅 [syslog 手册页](http://man7.org/linux/man-pages/man3/syslog.3.html)的“辅助参数”部分。
@@ -505,7 +506,7 @@ minSeverity | Syslog 严重性级别，例如 `"LOG_ERR"` 或 `"LOG_INFO"`。 �
 ]
 ```
 
-元素 | 值
+元素 | Value
 ------- | -----
 命名空间 | （可选）应在其中运行查询的 OMI 命名空间。 如果未指定，则默认值为 `"root/scx"`。 由 [System Center 跨平台提供程序](https://github.com/Microsoft/SCXcore)实现。
 query | 要运行的 OMI 查询。
@@ -532,7 +533,7 @@ sinks | （可选）应将原始样本指标结果发布到的更多接收器的
 ]
 ```
 
-元素 | 值
+元素 | Value
 ------- | -----
 文件 | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件。 它不能命名目录，也不能包含通配符。 `omsagent` 用户帐户必须具有文件路径的读取访问权限。
 表 | （可选）新行从文件“结尾”写入其中的 Azure 存储表。 该表必须位于指定存储帐户中，如受保护配置中所指定。 
@@ -554,7 +555,7 @@ sinks | （可选）日志行发送到的更多接收器的名称的逗号分隔
 
 处理器类指标提供有关 VM 中处理器使用情况的信息。 聚合百分比时，结果是所有 CPU 的平均值。 
 
-在双 vCPU VM 中，如果一个 vCPU 是 100% 忙碌，另一个是 100% 空闲，则报告的 `PercentIdleTime` 是 50。 如果在相同时段内每个 vCPU 都是 50% 忙碌，则报告的结果也是 50。 在四个 vCPU 的 VM 中，如果一个 vCPU 是 100% 忙碌，其他几个是空闲，则报告的 `PercentIdleTime` 是 75。
+在双 vCPU VM 中，如果一个 vCPU 是 100% 忙碌，另一个是 100% 空闲，则报告的 `PercentIdleTime` 是 50。 如果在相同时段内每个 vCPU 都是 50% 忙碌，则报告的结果也是 50。 在四 vCPU VM 中，如果一个 vCPU 是 100% 忙碌，其他几个是空闲，则报告的 `PercentIdleTime` 是 75。
 
 计数器 | 含义
 ------- | -------

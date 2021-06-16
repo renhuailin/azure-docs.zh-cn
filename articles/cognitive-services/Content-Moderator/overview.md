@@ -12,16 +12,18 @@ ms.date: 04/16/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 内容审查器, azure 内容审查器, 联机审查器, 内容筛选软件, 内容审查服务, 内容审查
-ms.openlocfilehash: b0ff5a241a76cd49d104e4145df37515b43c4e27
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 931b57b35cfca94b35a2b5c267d4469d5ca5ec07
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726189"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031702"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 Azure 内容审查器是一种 AI 服务，可用于处理可能的冒犯性、危险或不可取内容。 它包括由 AI 提供支持的内容审核服务（用于扫描文本、图像和视频以及自动应用内容标记），以及审阅工具（面向一组人工审阅者的在线审查器环境）。
 

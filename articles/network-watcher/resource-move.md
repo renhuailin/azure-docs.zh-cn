@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 4853f485e4424c3c3263a18d27834d0f9ae94918
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 273dcea805e3b6ec78dfc4bd14be616f6109c097
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019646"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032062"
 ---
 # <a name="moving-azure-network-watcher-resources-across-regions"></a>跨区域移动 Azure 网络观察程序资源
 
@@ -30,4 +30,4 @@ ms.locfileid: "98019646"
 
 ## <a name="next-steps"></a>后续步骤
 * 阅读[网络观察程序概述](./network-watcher-monitoring-overview.md)
-* 查看[网络观察程序常见问题解答](./frequently-asked-questions.md)
+* 查看[网络观察程序常见问题解答](./frequently-asked-questions.yml)

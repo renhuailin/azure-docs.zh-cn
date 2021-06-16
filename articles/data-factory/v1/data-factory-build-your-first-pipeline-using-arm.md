@@ -7,12 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: f4f5156870ec5119c71a0acc77786c71ab8b7e62
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d93cfc5e31212373149a534b3118eafdf7bce47f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783041"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971826"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -41,7 +42,7 @@ ms.locfileid: "104783041"
 
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
 * 遵循 [How to install and configure Azure PowerShell](/powershell/azure/) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装最新版本的 Azure PowerShell。
-* 若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。 
+* 若要了解 Azure 资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)。 
 
 ## <a name="in-this-tutorial"></a>本教程的内容
 
@@ -622,4 +623,3 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |
 | [Scheduling and execution](data-factory-scheduling-and-execution.md) |本文介绍 Azure 数据工厂应用程序模型的计划方面和执行方面。 |
 | [使用监视应用监视和管理管道](data-factory-monitor-manage-app.md) |本文介绍如何使用监视和管理应用来监视、管理和调试管道。 |
-

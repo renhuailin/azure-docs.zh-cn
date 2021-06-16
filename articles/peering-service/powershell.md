@@ -7,12 +7,13 @@ ms.service: peering-service
 ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: ed4f628f6c3b888a640d61048c39f945a81901d7
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1c13c19c388937a038e444c1559cd1ef3468ad98
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060833"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688264"
 ---
 # <a name="tutorial-register-a-peering-service-connection-using-azure-powershell"></a>教程：使用 Azure PowerShell 注册对等互连服务连接
 

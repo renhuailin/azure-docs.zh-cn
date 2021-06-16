@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 7f7e6cb896d5284a7bc4ff54c7396600463260c9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0e954b06afb9e1db09aefc77d9c9b85204f6fe28
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367617"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615226"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -91,7 +91,7 @@ Cosmos DB 支持通过 SDK 或门户以编程方式缩放每个容器或数据�
 
 | 资源 | 限制 |
 | --- | --- |
-| 每个（逻辑）分区的最大 RU/秒 | 5,000 |
+| 每个容器的最大 RU/秒 | 5,000 |
 | 每个（逻辑）分区的所有项的最大存储 | 20 GB |
 | 不同（逻辑）分区键的最大数目 | 无限制 |
 | 每个容器的最大存储 | 50 GB |

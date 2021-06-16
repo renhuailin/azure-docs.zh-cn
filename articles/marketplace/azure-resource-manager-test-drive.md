@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d9c849ce7454e2875c4f00e73cc3b3edc37ad7e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730365"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971562"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器体验版
 
 如果你具有 Azure 市场或 AppSource 上的产品/服务，但想要构建仅包含 Azure 资源的体验版，请使用此类型。 Azure 资源管理器 (ARM) 模板是设计的一种 Azure 资源编码容器，用于以最佳的方式表示解决方案。 体验版采用提供的 ARM 模板，并将它所需的所有资源部署到资源组。 这是虚拟机或 Azure 应用产品/服务的唯一体验版选项。
 
-如果你不熟悉 ARM 模板的定义，请阅读“[什么是 Azure 资源管理器？](../azure-resource-manager/management/overview.md)”和“[了解 ARM 模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)”，以便更好地了解如何构建和测试你自己的模板。
+如果你不熟悉 ARM 模板的定义，请阅读“[什么是 Azure 资源管理器？](../azure-resource-manager/management/overview.md)”和“[了解 ARM 模板的结构和语法](../azure-resource-manager/templates/syntax.md)”，以便更好地了解如何构建和测试你自己的模板。
 
 有关“托管”或“逻辑应用”体验版的信息，请参阅“[什么是体验版？](what-is-test-drive.md)”
 

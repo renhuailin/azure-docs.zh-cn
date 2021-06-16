@@ -7,13 +7,13 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 8668bdb9dc391582234bf5741c0dd287d026defd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: fasttrack-edit, devx-track-azurepowershell
+ms.openlocfilehash: 8108a742cb738be7c52b78f0f7725d2b7f6744b9
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554932"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693641"
 ---
 # <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>教程：使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure PowerShell
 
@@ -30,7 +30,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 ## <a name="prerequisites"></a>必备条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+* 如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -145,6 +145,8 @@ New-AzVMConfig @parameters2 | Set-AzVMOperatingSystem -Windows @parameters3 | Se
 ## Create the virtual machine ##
 New-AzVM -ResourceGroupName 'CreateSQLEndpointTutorial-rg' -Location 'eastus' -VM $vmConfig
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-an-azure-sql-server"></a>创建 Azure SQL 服务器
 
@@ -302,7 +304,7 @@ New-AzPrivateDnsZoneGroup @parameters4
 
 12. 在“连接服务器”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 服务器类型 | 选择“数据库引擎”。|
     | 服务器名称 | 输入 \<sql-server-name>.database.windows.net |

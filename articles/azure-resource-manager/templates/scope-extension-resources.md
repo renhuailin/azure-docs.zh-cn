@@ -4,12 +4,12 @@ description: 介绍如何在部署扩展资源类型时使用 scope 属性。
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0f24c37c69394358e87407245f5db41ce8b6de80
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 534011658502829df8fa23e44264c8ff2992d3cf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752042"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960003"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>在 ARM 模板中设置扩展资源的范围
 
@@ -86,6 +86,6 @@ New-AzSubscriptionDeployment `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
 * 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用 ARM 模板](secure-template-with-sas-token.md)。

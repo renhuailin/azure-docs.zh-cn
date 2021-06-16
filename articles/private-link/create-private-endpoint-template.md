@@ -5,15 +5,15 @@ services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 8b6e5e5e097ce59fc676e75d45217269a927b2d7
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 1c562c52eb7df92ba2297b066560866d04074f2f
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814795"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982208"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建专用终结点
 
@@ -35,7 +35,7 @@ ms.locfileid: "109814795"
 
 该模板为 Azure SQL 数据库的实例创建专用终结点。
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/private-endpoint-sql/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.sql/private-endpoint-sql/azuredeploy.json":::
 

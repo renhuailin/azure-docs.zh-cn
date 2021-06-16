@@ -15,12 +15,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/21/2021
 ms.author: amverma
-ms.openlocfilehash: fa2b82f3246fd87830010f572ba23aa2df075053
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 493ce6ea8bee59a98be75592f89c85980b6ce285
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566220"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673322"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
@@ -88,7 +89,7 @@ ms.locfileid: "102566220"
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | boolean |
 | driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | 最新 | 受支持的驱动程序版本的[列表](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json) | string |
-| installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | true | true、false | boolean |
+| installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | 是 | true、false | boolean |
 
 
 ## <a name="deployment"></a>部署

@@ -2,17 +2,18 @@
 title: 创建和部署模板规格
 description: 介绍如何创建模板规格并与组织中的其他用户共享。
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 05/04/2021
 ms.author: tomfitz
+ms.custom: devx-track-azurepowershell
 author: tfitzmac
-ms.openlocfilehash: 76573e4415dffb2212dd025ed486d834446d3851
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bfbf876f8621beec4d8eddb80c3db285cd6d4c49
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043892"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688285"
 ---
-# <a name="azure-resource-manager-template-specs-preview"></a>Azure 资源管理器模板规格（预览版）
+# <a name="azure-resource-manager-template-specs"></a>Azure 资源管理器模板规格
 
 模板规格是一种资源类型，用于在 Azure 中存储 Azure 资源管理器模板（ARM 模板），以便之后进行部署。 通过该资源类型，你可以与组织中的其他用户共享 ARM 模板。 与其他任何 Azure 资源一样，也可使用 Azure 基于角色的访问控制 (Azure RBAC) 来共享模板规格。
 
@@ -21,13 +22,20 @@ Microsoft.Resources/templateSpecs 是模板规格的资源类型。 它包含一
 若要部署模板规格，请使用标准 Azure 工具（如 PowerShell）、Azure CLI、Azure 门户、REST 和其他受支持的 SDK 和客户端。 请使用针对模板使用的相同命令。
 
 > [!NOTE]
-> 模板规格当前提供预览版。 若要将其与 Azure PowerShell 一起使用，必须安装[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
+> 若要将模板规格与 Azure PowerShell 一起使用，必须安装[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
 
 ## <a name="why-use-template-specs"></a>为什么使用模板规格？
 
-如果 GitHub 存储库或存储帐户中当前有模板，在尝试共享和使用这些模板时会遇到一些困难。 如果用户要部署这些模板，要么模板必须是本地模板，要么它的 URL 必须是可公开访问的。 为应对此限制，你可能要与需要部署模板的用户共享该模板的副本，或者开放对存储库或存储帐户的访问权限。 如果用户拥有模板的本地副本，这些副本最终可能会与原始模板有所不同。 当将存储库或存储帐户设置为可公开访问时，可能会导致非预期用户能够访问模板。
+模板规格具有以下优势：
 
-使用模板规格的好处是，可以创建规范化的模板并与组织中的团队共享。 模板规格是安全的，因为 Azure 资源管理器可使用它进行部署，而没有 Azure RBAC 权限的用户则无法访问。 用户只需具有模板规格的读取访问权限即可部署模板，因此可以在不允许其他人进行修改的情况下共享该模板。
+* 可以使用标准 ARM 模板作为模板规格。
+* 可以通过 Azure RBAC 而不是 SAS 令牌来管理访问。
+* 用户可以在没有模板的写入访问权限的情况下部署模板规格。
+* 可以将模板规格集成到现有的部署过程中，例如 PowerShell 脚本或 DevOps 管道。
+
+使用模板规格，可以创建规范化的模板并与组织中的团队共享。 模板规格是安全的，因为 Azure 资源管理器可使用它进行部署，而没有正确权限的用户则无法访问。 用户只需具有模板规格的读取访问权限即可部署模板，因此可以在不允许其他人进行修改的情况下共享该模板。
+
+如果 GitHub 存储库或存储帐户中当前有模板，在尝试共享和使用这些模板时会遇到一些困难。 若要部署模板，需要使模板要么可公开访问，要么使用 SAS 令牌管理访问。 为了避免此限制，用户可能会创建本地副本，这些副本最终会偏离原始模板。 模板规格简化了共享模板。
 
 模板规格中包含的模板应由组织中的管理员按照组织的要求和指南进行验证。
 
@@ -184,7 +192,7 @@ az deployment group create \
 
 ---
 
-还可以打开以下格式的 URL 来部署模板规格：
+还可以打开以下格式的 URL 以部署模板规格：
 
 ```url
 https://portal.azure.com/#create/Microsoft.Template/templateSpecVersionId/%2fsubscriptions%2f{subscription-id}%2fresourceGroups%2f{resource-group-name}%2fproviders%2fMicrosoft.Resources%2ftemplateSpecs%2f{template-spec-name}%2fversions%2f{template-spec-version}
@@ -258,7 +266,7 @@ az deployment group create \
 
 ## <a name="use-tags"></a>使用标记
 
-可以通过[标记](../management/tag-resources.md)对资源进行逻辑组织。 可以使用 Azure PowerShell 和 Azure CLI 将标记添加到模板规格：
+可以通过[标记](../management/tag-resources.md)对资源进行逻辑组织。 可以使用 Azure PowerShell 和 Azure CLI 将标记签添加到模板规格中：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -312,17 +320,17 @@ az ts update \
 
 ---
 
-当使用指定的 version 参数创建或修改模板规格，但不使用 tag/tags 参数时：
+使用指定的版本参数（而不使用标记参数）创建或修改模板规格时：
 
-- 如果模板规格存在且包含标记，但版本不存在，新版本将继承与现有模板规格相同的标记。
+- 如果模板规格存在且具有标记，但是版本不存在，则新版本将继承与现有模板规格相同的标记。
 
-当同时使用指定的 tag/tags 参数和 version 参数创建或修改模板规格时：
+使用指定的标记参数和版本参数创建或修改模板规格时：
 
-- 如果模板规格和版本都不存在，标记会同时添加到新模板规格和新版本。
-- 如果模板规格存在，但版本不存在，则标记仅会添加到新版本。
-- 如果模板规格和版本都存在，标记仅会应用到该版本。
+- 如果模板规格和版本都不存在，则将标记添加到新模板规格和新版本中。
+- 如果模板规格存在，但版本不存在，则仅将标记添加到新版本中。
+- 如果同时存在模板规格和版本，则标记仅适用于版本。
 
-当使用指定的 tag/tags 参数修改模板但未指定 version 参数时，标记仅会添加到模板规格。
+当使用指定的标记参数修改模板但未指定版本参数时，仅将标记添加到模板规格中。
 
 ## <a name="create-a-template-spec-with-linked-templates"></a>创建具有链接模板的模板规格
 

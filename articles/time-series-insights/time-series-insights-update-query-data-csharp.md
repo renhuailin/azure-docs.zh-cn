@@ -3,20 +3,21 @@ title: 使用 C# 查询 Gen2 环境中的数据 - Azure 时序见解 | Microsoft
 description: 了解如何通过使用 C# 编写的应用查询 Azure 时序见解 Gen2 环境中的数据。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: shreyasharmamsft
+ms.author: shresha
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: aecd18fd0d568904f9704b749525204ced05f3ef
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0507bef469f50f9ba5e87505529b8ad839deeb4a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463419"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790828"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>使用 C# 查询 Azure 时序见解第 2 代环境中的数据
 

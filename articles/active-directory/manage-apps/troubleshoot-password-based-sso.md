@@ -1,21 +1,21 @@
 ---
 title: 在 Azure Active Directory 中排查基于密码的单一登录问题
 description: 排查配置为基于密码的单一登录的 Azure AD 应用的问题。
-author: kenwith
-manager: daveba
+author: mtillman
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: kenwith
+ms.author: mtillman
 ms.reviewer: asteen
-ms.openlocfilehash: fdbbc6c53e43d3ecc9fd4ecb563bd7ec798f8888
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e587bfc3dfbd859be9ecea24b398c005f883dc10
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257572"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080572"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>在 Azure AD 中排查基于密码的单一登录问题
 

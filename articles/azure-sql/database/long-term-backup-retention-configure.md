@@ -4,19 +4,19 @@ description: 了解如何使用 Azure 门户和 PowerShell 在 Azure 存储中�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: backup-restore
-ms.custom: ''
+ms.custom: devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, sstein
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma
 ms.date: 12/16/2020
-ms.openlocfilehash: fad19d360f7c476ba71a9bbe00b58387b92f8ac4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d11a9cc597adb7bed4a1c1b235c6d7bf68457f78
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690544"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705572"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "101690544"
 
 ## <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-以下各部分展示了如何使用 Azure 门户设置长期保留策略、管理可用的长期保留备份，以及从可用备份进行还原。
+以下各部分说明如何使用 Azure 门户设置长期保留策略、管理可用的长期保留备份以及从可用备份进行还原。
 
 ### <a name="configure-long-term-retention-policies"></a>配置长期保留策略
 
@@ -39,7 +39,7 @@ ms.locfileid: "101690544"
 
    ![选择数据库以配置备份保留策略](./media/long-term-backup-retention-configure/ltr-policies-tab-configure.png)
 
-3. 在“配置策略”窗格中，为每周、每月或每年备份指定所需的保留期。 将保留期选择为“0”，指示不应设置长期备份保留。
+3. 在“配置策略”窗格中，为每周、每月或每年备份指定所需的保留期。 选择的保留期为“0”表明不应设置长期备份保留期。
 
    ![“配置策略”窗格](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
 

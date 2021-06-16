@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 717561614a3e42995bbce6746839fd9b7cbca37e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 34006afd79ef2c1bb8a1f552a7f8f9905b95d72f
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834851"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075540"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>使用 Chocolatey 设置持续部署
 
@@ -81,7 +81,7 @@ New-AzAutomationAccount -ResourceGroupName MY-AUTOMATION-RG -Location MY-RG-LOCA
 
 ## <a name="step-2-make-vm-extension-tweaks-to-the-resource-manager-template"></a>步骤 2：使 VM 扩展根据资源管理器模板进行调整
 
-此 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver)提供了 VM 注册（使用 PowerShell DSC VM 扩展）的详细信息。
+此 [Azure 快速入门模板](https://azure.microsoft.com/blog/automating-vm-configuration-using-powershell-dsc-extension/)提供了 VM 注册（使用 PowerShell DSC VM 扩展）的详细信息。
 此步骤将新的 VM 注册到“拉”服务器的 State Configuration 节点列表中。 此注册的一部分指定要应用到节点的节点配置。 此节点配置尚无需存在于拉取服务器中，因此第一次可以在步骤 4 中执行该操作。 但在步骤 2 中，需要确定节点名称和配置名称。 在本用例中，节点名称为“isvbox”，配置名称为“ISVBoxConfig”。 因此，节点配置名称（会在 DeploymentTemplate.json 中指定）为“ISVBoxConfig.isvbox”。
 
 ## <a name="step-3-add-required-dsc-resources-to-the-pull-server"></a>步骤 3：将所需的 DSC 资源添加到拉取服务器

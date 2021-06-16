@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 0f4064e6baf6c6ce237371a2a725fbe023b1e9f2
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 20a82f26b02e5acc42e8ab29a213e10e4cd6859d
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277689"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439343"
 ---
 # <a name="speech-service-quotas-and-limits"></a>语音服务配额和限制
 
@@ -75,7 +75,6 @@ ms.locfileid: "108277689"
 | **Websocket 特定配额**                                                  |                        |                 |
 | 每轮已生成的最大音频长度                                             | 10 分钟                 | 10 分钟          |
 | 每轮的最大 SSML 消息大小                                                 | 64 KB                  | 64 KB           |
-| REST API 限制                                                             | 每分钟 20 个请求 | 每分钟 300 个请求 |
 
 
 <sup>3</sup> 有关免费 (F0) 定价层，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月限额。<br/>

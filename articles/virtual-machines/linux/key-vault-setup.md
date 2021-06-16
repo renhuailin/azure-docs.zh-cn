@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/24/2017
 ms.author: mimckitt
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0db14eacfc88d120690a24d8455429cf50a7956a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ea648f460207e469dbfbc8c32c78f0e44581df60
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738064"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027178"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>如何使用 Azure CLI 为虚拟机设置 Key Vault
 
@@ -53,4 +53,4 @@ az keyvault update -n myKeyVault -g myResourceGroup --set properties.enabledForD
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关使用模板创建 Key Vault 时可以配置的其他选项，请参阅[创建密钥保管库](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)。
+有关使用模板创建 Key Vault 时可以配置的其他选项，请参阅[创建密钥保管库](https://azure.microsoft.com/resources/templates/key-vault-create/)。

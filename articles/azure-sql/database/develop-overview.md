@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: genemi
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: 7ea3456dbd1d0942cba48c97d70982ae088d73f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68a1eca2800978803214384944349e227b620764
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92782971"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694492"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>应用程序开发概述 - SQL 数据库和 SQL 托管实例
 

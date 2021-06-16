@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd278968eeb430bf57f279bb8b7e5d4ee9248ce1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74007861"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965718"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>教程：将 Azure AD 日志存档到 Azure 存储帐户
 
@@ -75,6 +75,6 @@ ms.locfileid: "74007861"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
+* [解释 Azure Monitor 中的审核日志架构](./overview-reports.md)
 * [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
 * [常见问题解答和已知的问题](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

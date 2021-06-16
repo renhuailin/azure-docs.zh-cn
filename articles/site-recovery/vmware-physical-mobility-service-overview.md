@@ -1,18 +1,18 @@
 ---
 title: 关于使用 Azure Site Recovery 对 VMware VM 和物理服务器进行灾难恢复的移动服务 | Microsoft Docs
 description: 了解可使用 Azure Site Recovery 服务将 VMware VM 和物理服务器灾难恢复到 Azure 的移动服务代理。
-author: Rajeswari-Mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: how-to
-ms.date: 04/10/2020
-ms.author: ramamill
-ms.openlocfilehash: 8c90427e2dd4ecf23cb803c4f75dbee34c38f992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 708f87e8d4ff93fd6c60bb923a422469ef66a3e6
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98898573"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580157"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 

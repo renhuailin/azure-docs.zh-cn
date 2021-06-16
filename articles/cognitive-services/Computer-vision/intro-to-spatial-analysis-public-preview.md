@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 03/29/2021
-ms.openlocfilehash: fc0d0b0a589ff5b8354a56a2f8c95062f4d2d9a9
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: d19a080ef596975dd3377207b84bade6ef0d3b12
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076142"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537580"
 ---
 # <a name="what-is-spatial-analysis"></a>什么是空间分析？
 
@@ -42,12 +42,6 @@ ms.locfileid: "108076142"
 | **事件** | 事件是空间分析的主要输出。 每个操作会定期（例如每分钟一次）或每当触发了特定的触发器时发出一次特定事件。 事件包括输入视频中发生的情况，但不包括任何图像或视频。 例如，PeopleCount 操作可在每次人数有变化（触发器）时发出一个包含更新计数的事件，或每分钟发送一次（定期）。 |
 
 ## <a name="get-started"></a>入门
-
-### <a name="public-preview-gating"></a>公共预览版限制
-
-为确保空间分析的使用场景符合其设计用途，我们正在使这项技术可通过一个申请流程提供给客户。 要获取空间分析的访问权限，首先需要填写我们的在线登记表。 [在此开始申请](https://aka.ms/csgate)。
-
-空间分析公共预览版访问权限由 Microsoft 全权决定，决定因素包括我们的资格标准、审查流程以及在此受限预览期间支持有限客户数量的能力。 在公共预览版中，我们要寻找的是与 Microsoft 关系密切、有意就建议用例以及有利于践行我们 AI 责任承诺的其他方案与我们合作的客户。
 
 ### <a name="follow-a-quickstart"></a>按照快速入门操作
 

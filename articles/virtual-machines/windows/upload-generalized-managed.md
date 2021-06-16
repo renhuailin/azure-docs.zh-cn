@@ -8,12 +8,13 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 98e94952481ebfabffb39ba46247717bca4de447
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 70a89a8fe4917498dc7c31f2a15b95619e973b99
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809231"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110667856"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>上传通用化 VHD 并使用它在 Azure 中创建新 VM
 

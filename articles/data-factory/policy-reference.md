@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
-ms.date: 05/14/2021
-ms.openlocfilehash: 326d2ab6af90d961b7bc4b22345e6ad3f5c25624
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 06/11/2021
+ms.openlocfilehash: e3ff681ed09289d4f709ce4518047b3accb78c03
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091391"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017354"
 ---
 # <a name="azure-policy-built-in-definitions-for-data-factory-preview"></a>数据工厂的 Azure Policy 内置定义（预览）
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]

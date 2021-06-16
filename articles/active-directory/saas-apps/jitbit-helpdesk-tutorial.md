@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/02/2021
+ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: b3fbf73ab51092f614a416355477fc552a404fd3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a9d0e2c52b0996699c94e6d8eb5f44921f76709
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581792"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>教程：Azure Active Directory 与 Jitbit Helpdesk 集成
 
@@ -32,6 +32,9 @@ ms.locfileid: "104581792"
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 Jitbit Helpdesk 单一登录 (SSO) 的订阅。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 

@@ -6,15 +6,15 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
+author: cawrites
+ms.author: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: 6eab839912769ad15723083185c7942f31e3df11
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3126877833774f0f2e874e2a2dfd6cf5cb6181d8
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136546"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796041"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>迁移指南：SAP ASE 到 Azure SQL 数据库
 
@@ -120,7 +120,7 @@ ms.locfileid: "108136546"
    - [SQL 数据库概述](../../database/sql-database-paas-overview.md)
    - [Azure 总拥有成本计算器](https://azure.microsoft.com/pricing/tco/calculator/)  
 
-- 要详细了解云迁移的框架和采用周期，请参阅：
+- 有关云迁移的框架和采用周期的详细信息，请参阅：
    -  [适用于 Azure 的云采用框架](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [为迁移到 Azure 的工作负载计算成本和调整大小的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
    -  [云迁移资源](https://azure.microsoft.com/migration/resources)

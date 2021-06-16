@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/05/2021
 ms.author: terrylan
-ms.openlocfilehash: 988689a662839476a695646865c92870f35391ea
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 502fb45c690baa7e6d098258c12576f0f3b31c1f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175777"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956818"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 
@@ -72,8 +72,8 @@ Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够�
 
 * [启用 Azure AD 应用程序代理](../../active-directory/app-proxy/application-proxy-add-on-premises-application.md)
 * [使用 Azure AD 应用程序代理发布应用程序](../../active-directory/app-proxy/application-proxy-add-on-premises-application.md)
-* [使用应用程序代理进行单一登录](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
-* [使用条件性访问](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+* [使用应用程序代理进行单一登录](../../active-directory/app-proxy/application-proxy-configure-single-sign-on-with-kcd.md)
+* [使用条件性访问](../../active-directory/app-proxy/application-proxy-integrate-with-sharepoint-server.md)
 
 ## <a name="multi-factor-authentication"></a>多重身份验证
 

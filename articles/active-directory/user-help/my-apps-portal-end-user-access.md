@@ -12,12 +12,12 @@ ms.date: 03/26/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: e72667ab562a9e12d233f45dc50efc9b70d2141b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d65daffab7522c1ececb3383d1cf5184f906d8f9
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642118"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893005"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>从“我的应用”门户登录并启动应用
 
@@ -75,7 +75,7 @@ ms.locfileid: "105642118"
 - 从登录页面直接登录到应用。
 - 使用“快速搜索”功能启动任何应用。
 - 请在“最近使用的项目”部分中查看你最后使用的应用。
-- 远程使用[应用程序代理](../manage-apps/application-proxy.md)时使用公司内部 URL。
+- 远程使用[应用程序代理](../app-proxy/application-proxy.md)时使用公司内部 URL。
 
 ### <a name="to-download-and-install-the-extension"></a>下载并安装扩展
 

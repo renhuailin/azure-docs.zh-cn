@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/17/2021
-ms.openlocfilehash: 15235ddd1ae6bfe3166b523004bc8fe80a5b5be9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5d4b5f5264ad38ca3610840e6fd9a72c6bc5e0aa
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061455"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950960"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS 服务时可能遇到的术语。
@@ -295,7 +295,7 @@ LUIS 配额是 Azure 订阅层的限制。 可同时通过每秒请求数（HTTP
 
 ## <a name="test"></a>测试
 
-[测试](luis-concept-test.md) LUIS 应用意味着查看模型预测。
+[测试](./luis-interactive-test.md) LUIS 应用意味着查看模型预测。
 
 ## <a name="timezone-offset"></a>时区偏移
 

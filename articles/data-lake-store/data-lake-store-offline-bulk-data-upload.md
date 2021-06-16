@@ -6,12 +6,13 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 940b7ac90f85e0254d59459b70ccc15312cd69f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1ce3c649a2bf37252b9d12eb9fe08ddf287fc8a0
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98700833"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706894"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>使用 Azure 导入/导出服务将数据脱机复制到 Data Lake Storage Gen1
 

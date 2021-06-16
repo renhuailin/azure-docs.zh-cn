@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 67ba835237dac96a28aae124781bbb71b59323f2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a5bcc536a51da13934fb98f383fb1812d92a0073
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369368"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964348"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -177,7 +177,7 @@ ms.locfileid: "110369368"
 
 1. 将索引从原始 Azure 搜索资源还原到新资源。 请参阅[备份还原示例代码](https://github.com/pchoudhari/QnAMakerBackupRestore)。
 
-1. 将新的 Azure 搜索资源链接到[文本分析资源的“特征”选项卡](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/configure-qna-maker-resources?tabs=v2#configure-qna-maker-managed-preview-service-to-use-different-cognitive-search-resource)中的自定义问答功能。
+1. 将新的 Azure 搜索资源链接到[文本分析资源的“特征”选项卡](./configure-qna-maker-resources.md?tabs=v2#configure-text-analytics-resource-with-custom-question-answering-feature-to-use-a-different-cognitive-search-resource)中的自定义问答功能。
 
 ### <a name="inactivity-policy-for-free-search-resources"></a>免费搜索资源的非活动策略
 

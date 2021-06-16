@@ -2,22 +2,22 @@
 title: 了解 Azure Active Directory 中应用的基于 OIDC 的单一登录 (SSO)
 description: 了解 Azure Active Directory 中应用的基于 OIDC 的单一登录 (SSO)。
 services: active-directory
-author: kenwith
-manager: daveba
+author: mtillman
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/19/2020
-ms.author: kenwith
+ms.author: mtillman
 ms.reviewer: arajpathak7
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ffaa55d4aa482e8f0eda93b1b32db6310d17e2a3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8c98449368a19f2bbc9d845539acc5b1c015ffac
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99255243"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076215"
 ---
 # <a name="understand-oidc-based-single-sign-on"></a>了解基于 OIDC 的单一登录
 在应用程序管理的[快速入门系列](view-applications-portal.md)中，你已了解如何使用 Azure AD 作为应用程序的标识提供者 (IdP)。 本文详细介绍了使用 OpenID Connect 标准实现单一登录的应用。 

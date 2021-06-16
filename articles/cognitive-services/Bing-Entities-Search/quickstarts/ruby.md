@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 407d41c403e0a2d0ad3708f879838e53b5c3d315
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 32eaad8bbc47783ced54d494d49a4cec41fe842d
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351991"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614995"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-ruby"></a>快速入门：使用 Ruby 向必应实体搜索 REST API 发送搜索请求
 
@@ -47,8 +47,8 @@ ms.locfileid: "96351991"
 2. 为 API 终结点、新闻搜索 URL、订阅密钥和搜索查询创建变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
     
     ```ruby
-    host = 'https://api.cognitive.microsoft.com'
-    path = '/bing/v7.0/entities'
+    host = 'https://api.bing.microsoft.com'
+    path = '/v7.0/search'
     
     mkt = 'en-US'
     query = 'italian restaurants near me'

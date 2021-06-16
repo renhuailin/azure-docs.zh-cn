@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: 4c680be897c4c1bf2ccf20df1d34ab6f59f559f2
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 95c9880eb8c61b5a057cf2573aad7871c3c37bb3
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816145"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613605"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
@@ -97,11 +97,10 @@ run = exp.submit(source_directory=script_folder,
 
 有关该服务的概述，请阅读[什么是 Azure 机器学习？](overview-what-is-azure-ml.md)。
 
-通过首选方法创建首个试验：
+开始使用[快速入门：Azure 机器学习入门](quickstart-create-resources.md)。  然后，使用以下资源通过首选方法创建第一个试验：
 
-  + [使用你自己的环境](tutorial-1st-experiment-sdk-setup-local.md)
-  + [使用 Python 笔记本](tutorial-1st-experiment-sdk-setup.md)
-  + [使用 R Markdown](https://github.com/Azure/azureml-sdk-for-r) 
+  + [运行“Hello world!”Python 脚本（第 1 部分，共 3 部分）](tutorial-1st-experiment-hello-world.md)
+  + [使用 Jupyter 笔记本训练图像分类模型](tutorial-train-models-with-aml.md)
   + [使用自动化机器学习](tutorial-designer-automobile-price-train-score.md) 
   + [使用设计器的拖放功能](tutorial-first-experiment-automated-ml.md) 
-  + [将 ML 扩展用于 CLI](tutorial-train-deploy-model-cli.md)
+  + [将 ML 扩展用于 CLI](how-to-train-cli.md)

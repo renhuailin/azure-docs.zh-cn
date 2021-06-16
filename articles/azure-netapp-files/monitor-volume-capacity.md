@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: 43605f8dfdcac8fe545e5464c13d9a50ae8ed82c
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 14bbd15fec0015073eefbe2421d03a73fac45d75
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108294015"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968387"
 ---
 # <a name="monitor-the-capacity-of-a-volume"></a>监视卷的容量  
 
@@ -56,7 +56,7 @@ Linux 客户端可以使用 [df 命令](https://linux.die.net/man/1/df)检查卷
 使用 `df` 命令时，可用空间是准确的。 但是，在卷上生成快照时，已消耗/已用空间将是一个估计值。 [已消耗的快照容量](azure-netapp-files-cost-model.md#capacity-consumption-of-snapshots) 将计入卷上的总消耗空间。 若要获取绝对卷消耗（包括快照使用的容量），请使用 Azure 门户中的 [Azure NetApp 指标](azure-netapp-files-metrics.md#volumes)。 
 
 ## <a name="using-azure-portal"></a>使用 Azure 门户
-Azure NetApp 文件利用标准 [Azure Monitor](/azure/azure-monitor/overview) 功能。 因此，可以使用 Azure Monitor 来监视 Azure NetApp 文件卷。  
+Azure NetApp 文件利用标准 [Azure Monitor](../azure-monitor/overview.md) 功能。 因此，可以使用 Azure Monitor 来监视 Azure NetApp 文件卷。  
 
 ## <a name="using-azure-cli"></a>使用 Azure CLI  
 

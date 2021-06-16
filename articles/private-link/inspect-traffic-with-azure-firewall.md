@@ -8,14 +8,17 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8bcf300c9e17bd809a0dc35443917dee2a908e27
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100575124"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075576"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>使用 Azure 防火墙检查流向专用终结点的流量
+
+> [!NOTE]
+> 如果要使用安全虚拟中心保护流向 Azure 虚拟 WAN 中专用终结点的流量，请参阅[保护流向 Azure 虚拟 WAN 中专用终结点的流量](../firewall-manager/private-link-inspection-secure-virtual-hub.md)。
 
 Azure 专用终结点是 Azure 专用链接的构建基块。 通过专用终结点，虚拟网络中部署的 Azure 资源可与专用链接资源进行私密通信。
 
@@ -25,9 +28,9 @@ Azure 专用终结点是 Azure 专用链接的构建基块。 通过专用终结
 
 以下限制适用：
 
-* 网络安全组 (NSG) 不适用于专用终结点
-* 用户定义的路由 (UDR) 不适用于专用终结点
-* 单个路由表可附加到一个子网
+* 来自专用终结点的流量将绕过网络安全组 (NSG)
+* 来自专用终结点的流量将绕过用户定义路由 (UDR)
+* 单个路由表可以附加到一个子网
 * 一个路由表最多支持 400 个路由
 
 Azure 防火墙使用以下方法之一筛选流量：
@@ -35,7 +38,8 @@ Azure 防火墙使用以下方法之一筛选流量：
 * [网络规则中的 FQDN](../firewall/fqdn-filtering-network-rules.md)，适用于 TCP 和 UDP 协议
 * [应用程序规则中的 FQDN](../firewall/features.md#application-fqdn-filtering-rules)，适用于 HTTP、HTTPS 和 MSSQL。 
 
-大多数通过专用终结点公开的服务都使用 HTTPS。 使用 Azure SQL 时，建议使用通过网络规则的应用程序规则。
+> [!IMPORTANT] 
+> 检查流向专用终结点的流量时，相较于网络规则，更建议使用应用程序规则，以维持流对称性。 如果使用网络规则，或者使用 NVA 而不是 Azure 防火墙，则必须为流向专用终结点的流量配置 SNAT。
 
 > [!NOTE]
 > 仅在[代理模式](../azure-sql/database/connectivity-architecture.md#connection-policy)下支持 SQL FQDN 筛选（端口 1433）。 与重定向相比，代理模式可能会导致更高的延迟。 如果你要继续使用重定向模式（这是在 Azure 中进行连接的客户端的默认模式），可以使用防火墙网络规则中的 FQDN 来筛选访问。
@@ -46,14 +50,11 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 此方案是扩展性最强的体系结构，可使用专用终结点以私密方式连接到多个 Azure 服务。 会创建一个路由，它指向部署了专用终结点的网络地址空间。 此配置可减少管理开销，并防止超过 400 个路由的限制。
 
-如果虚拟网络是对等互连的，则从客户端虚拟网络到中心虚拟网络中的 Azure 防火墙的连接会产生费用。
+如果虚拟网络已对等互连，则从客户端虚拟网络连接到中心虚拟网络中的 Azure 防火墙会产生费用。 从中心虚拟网络中的 Azure 防火墙连接到对等互连虚拟网络中的专用终结点不收取费用。
 
-若要详细了解与对等互连虚拟网络的连接相关的费用，请查看[定价](https://azure.microsoft.com/pricing/details/private-link/)页面的“常见问题解答”部分。
+有关与对等互连虚拟网络的连接相关的费用的详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/private-link/)页的常见问题解答部分。
 
->[!NOTE]
-> 可使用任何第三方 NVA 或 Azure 防火墙网络规则而不是应用程序规则来实现此方案。
-
-## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>方案 2：中心辐射型体系结构 - 面向专用终结点和虚拟机的共享虚拟网络
+## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>方案 2：中心辐射型体系结构 - 专用终结点和虚拟机的共享虚拟网络
 
 :::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="同一虚拟网络中的专用终结点和虚拟机" border="true":::
 
@@ -69,23 +70,17 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 根据你的总体体系结构，可能会达到 400 个路由这一限制。 建议尽可能使用方案 1。
 
-如果虚拟网络是对等互连的，则从客户端虚拟网络到中心虚拟网络中的 Azure 防火墙的连接会产生费用。
+如果虚拟网络已对等互连，则从客户端虚拟网络连接到中心虚拟网络中的 Azure 防火墙会产生费用。 从中心虚拟网络中的 Azure 防火墙连接到对等互连虚拟网络中的专用终结点不收取费用。
 
-若要详细了解与对等互连虚拟网络的连接相关的费用，请查看[定价](https://azure.microsoft.com/pricing/details/private-link/)页面的“常见问题解答”部分。
-
->[!NOTE]
-> 可使用任何第三方 NVA 或 Azure 防火墙网络规则而不是应用程序规则来实现此方案。
+有关与对等互连虚拟网络的连接相关的费用的详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/private-link/)页的常见问题解答部分。
 
 ## <a name="scenario-3-single-virtual-network"></a>方案 3：单个虚拟网络
 
 :::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="单个虚拟网络" border="true":::
 
-实现存在一些限制：无法迁移到中心辐射型体系结构。 还需遵守方案 2 中的注意事项。 在此方案中，不应用虚拟网络对等互连费用。
+如果无法迁移到中心辐射型体系结构，请使用此模式。 方案 2 中的注意事项同样适用。 在此方案中，虚拟网络对等互连费用并不适用。
 
->[!NOTE]
-> 如果要使用第三方 NVA 或 Azure 防火墙实现此方案，则流向专用终结点的 SNAT 流量需要网络规则（而不是应用程序规则）。 否则，虚拟机和专用终结点之间的通信将失败。
-
-## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>方案 4：本地流量流向专用终结点
+## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>方案 4：流向专用终结点的本地流量
 
 :::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="本地流量流向专用终结点" border="true":::
 
@@ -96,10 +91,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 如果安全要求规定流向通过专用终结点公开的服务的客户端流量通过安全设备进行路由，请部署此方案。
 
-需遵守上述方案 2 中的注意事项。 在此方案中，不存在虚拟网络对等互连费用。 若要详细了解如何将 DNS 服务器配置为允许本地工作负载访问专用终结点，请查看[使用 DNS 转发器的本地工作负载](./private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder)。
-
->[!NOTE]
-> 如果要使用第三方 NVA 或 Azure 防火墙实现此方案，则流向专用终结点的 SNAT 流量需要网络规则（而不是应用程序规则）。 否则，虚拟机和专用终结点之间的通信将失败。
+需遵守上述方案 2 中的注意事项。 在此方案中，不存在虚拟网络对等互连费用。 有关如何将 DNS 服务器配置为允许本地工作负载访问专用终结点的详细信息，请参阅[使用 DNS 转发器的本地工作负载](./private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -128,7 +120,8 @@ Azure 防火墙使用以下方法之一筛选流量：
 将步骤中的以下参数替换为以下信息：
 
 ### <a name="azure-firewall-network"></a>Azure 防火墙网络
-| 参数                   | 值                 |
+
+| 参数                   | Value                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
 | **\<virtual-network-name>** | myAzFwVNet          |
@@ -138,7 +131,8 @@ Azure 防火墙使用以下方法之一筛选流量：
 | **\<subnet-address-range>** | 10.0.0.0/24          |
 
 ### <a name="virtual-machine-network"></a>虚拟机网络
-| 参数                   | 值                |
+
+| 参数                   | Value                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
 | **\<virtual-network-name>** | myVMVNet          |
@@ -148,13 +142,14 @@ Azure 防火墙使用以下方法之一筛选流量：
 | **\<subnet-address-range>** | 10.1.0.0/24          |
 
 ### <a name="private-endpoint-network"></a>专用终结点网络
-| 参数                   | 值                 |
+
+| 参数                   | Value                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
 | **\<virtual-network-name>** | myPEVNet         |
 | **\<region-name>**          | 美国中南部      |
 | **\<IPv4-address-space>**   | 10.2.0.0/16          |
-| **\<subnet-name>**          | PrivateEndpointSubnet    |        |
+| **\<subnet-name>**          | PrivateEndpointSubnet |
 | **\<subnet-address-range>** | 10.2.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
@@ -167,7 +162,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 2. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -181,7 +176,7 @@ Azure 防火墙使用以下方法之一筛选流量：
     | **管理员帐户** |  |
     | 身份验证类型 | 选择“密码”。 |
     | 用户名 | 输入所选用户名。 |
-    | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/linux/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/linux/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。|
     | 确认密码 | 重新输入密码。 |
     | **入站端口规则** |  |
     | 公共入站端口 | 选择“无”。 |
@@ -193,7 +188,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 5. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 虚拟网络 | 选择“myVMVNet”。  |
     | 子网 | 选择“VMSubnet (10.1.0.0/24)”。|
@@ -206,6 +201,8 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 7. 看到“验证通过”消息时，选择“创建” 。
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="deploy-the-firewall"></a>部署防火墙
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。
@@ -216,7 +213,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 4. 在“创建防火墙”页上，使用下表配置防火墙：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -248,7 +245,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 5. 在“诊断设置”中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 诊断设置名称 | 输入“myDiagSetting”。 |
     | 类别详细信息 | |
@@ -267,7 +264,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 2. 在“创建 SQL 数据库 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -302,7 +299,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 5. 在“创建专用终结点”的“基本信息”选项卡中，输入或选择以下信息 ：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -315,7 +312,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 7. 在“资源”选项卡中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 连接方法 | 选择“连接到我的目录中的 Azure 资源”。 |
     | 订阅 | 选择订阅。 |
@@ -327,9 +324,9 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 9. 在“配置”选项卡中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
-    | **联网** | |
+    | **网络** | |
     | 虚拟网络 | 选择“myPEVnet”。 |
     | 子网 | 选择“PrivateEndpointSubnet”。 |
     | **专用 DNS 集成** | |
@@ -357,7 +354,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 3. 在“添加对等互连”中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 从 myAzFwVNet 到远程虚拟网络的对等互连的名称 | 输入“myAzFwVNet-to-myVMVNet”。 |
     | **对等详细信息** |  |
@@ -371,8 +368,8 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 允许从 myAzFwVNet 到远程虚拟网络的虚拟网络访问 | 保留默认值“已启用”。    |
     | 允许从远程虚拟网络到 myAzFwVNet 的虚拟网络访问    | 保留默认值“已启用”。    |
     | **配置转发流量设置** | |
-    | 允许从远程虚拟网络到 myAzFwVNet 的转发流量    | 选择“启用”。 |
-    | 允许从 myAzFwVNet 到远程虚拟网络的转发流量 | 选择“启用”。 |
+    | 允许从远程虚拟网络到 myAzFwVNet 的转发流量    | 选择“启用”。  |
+    | 允许从 myAzFwVNet 到远程虚拟网络的转发流量 | 选择“启用”。  |
     | **配置网关传输设置** | |
     | 允许网关传输 | 保持未选中状态 |
     |||
@@ -383,7 +380,7 @@ Azure 防火墙使用以下方法之一筛选流量：
 
 6. 在“添加对等互连”中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 从 myAzFwVNet 到远程虚拟网络的对等互连的名称 | 输入“myAzFwVNet-to-myPEVNet”。 |
     | **对等详细信息** |  |
@@ -397,8 +394,8 @@ Azure 防火墙使用以下方法之一筛选流量：
     | 允许从 myAzFwVNet 到远程虚拟网络的虚拟网络访问 | 保留默认值“已启用”。    |
     | 允许从远程虚拟网络到 myAzFwVNet 的虚拟网络访问    | 保留默认值“已启用”。    |
     | **配置转发流量设置** | |
-    | 允许从远程虚拟网络到 myAzFwVNet 的转发流量    | 选择“启用”。 |
-    | 允许从 myAzFwVNet 到远程虚拟网络的转发流量 | 选择“启用”。 |
+    | 允许从远程虚拟网络到 myAzFwVNet 的转发流量    | 选择“启用”。  |
+    | 允许从 myAzFwVNet 到远程虚拟网络的转发流量 | 选择“启用”。  |
     | **配置网关传输设置** | |
     | 允许网关传输 | 保持未选中状态 |
 
@@ -423,7 +420,7 @@ VM 和防火墙需要此链接来将数据库的 FQDN 解析为其专用终结�
 
 5. 在“添加虚拟网络链接”中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 链接名称 | 输入“Link-to-myVMVNet”。 |
     | **虚拟网络详细信息** |  |
@@ -454,7 +451,7 @@ VM 和防火墙需要此链接来将数据库的 FQDN 解析为其专用终结�
 
 6. 在“添加应用程序规则集合”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入“SQLPrivateEndpoint”。 |
     | 优先级 | 输入 **100**。 |
@@ -491,7 +488,7 @@ VM 和防火墙需要此链接来将数据库的 FQDN 解析为其专用终结�
 
 4. 在“创建路由表”页面上，使用以下表配置路由表：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -513,7 +510,7 @@ VM 和防火墙需要此链接来将数据库的 FQDN 解析为其专用终结�
 
 10. 在“添加路由”页面上，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 路由名称 | 输入“myVMsubnet-to-privateendpoint”。 |
     | 地址前缀 | 输入“10.2.0.0/16”。  |
@@ -528,7 +525,7 @@ VM 和防火墙需要此链接来将数据库的 FQDN 解析为其专用终结�
 
 14. 在“关联子网”页面上，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 虚拟网络 | 选择“myVMVNet”。 |
     | 子网 | 选择“VMSubnet”。  |
@@ -575,7 +572,7 @@ VM 和防火墙需要此链接来将数据库的 FQDN 解析为其专用终结�
     Address: 10.2.0.4
     ```
 
-2. 安装 [SQL Server 命令行工具](/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools)。
+2. 安装 [SQL Server 命令行工具](/sql/linux/quickstart-install-connect-ubuntu#tools)。
 
 3. 运行以下命令连接到 SQL Server。 使用在前面的步骤中创建 SQL Server 时定义的服务器管理员和密码。
 

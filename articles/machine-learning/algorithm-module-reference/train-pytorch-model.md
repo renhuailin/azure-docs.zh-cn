@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/19/2021
-ms.openlocfilehash: 7524b0fd496a87a281e5b9cd9f8ffcc8b54d6388
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: cfc866a7b7a63982377f8a2498b9538bd870e381
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108000888"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969117"
 ---
 # <a name="train-pytorch-model"></a>训练 PyTorch 模型
 
@@ -81,7 +81,7 @@ ms.locfileid: "108000888"
 
 ### <a name="how-to-enable-distributed-training"></a>如何启用分布式训练
 
-若要为训练 PyTorch 模型模块启用分布式训练，可以在模块右侧窗格中的“运行设置”中进行设置。 分布式训练只支持 **[AML 计算群集](https://docs.microsoft.com/azure/machine-learning/how-to-create-attach-compute-cluster?tabs=python)** 。
+若要为训练 PyTorch 模型模块启用分布式训练，可以在模块右侧窗格中的“运行设置”中进行设置。 分布式训练只支持 **[AML 计算群集](../how-to-create-attach-compute-cluster.md?tabs=python)** 。
 
 > [!NOTE]
 > 激活分布式训练需要多个 GPU，因为使用 NCCL 后端训练 PyTorch 模块时需要 cuda。
@@ -102,7 +102,7 @@ ms.locfileid: "108000888"
 
     [![显示如何检查计算群集的屏幕截图](./media/module/compute-cluster-node.png)](./media/module/compute-cluster-node.png#lightbox)
 
-[此处](https://docs.microsoft.com/azure/machine-learning/concept-distributed-training) 可详细了解 Azure 机器学习分布式训练的相关信息。
+[此处](../concept-distributed-training.md) 可详细了解 Azure 机器学习分布式训练的相关信息。
 
 ### <a name="troubleshooting-for-distributed-training"></a>分布式训练故障排除
 
@@ -151,7 +151,4 @@ ms.locfileid: "108000888"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 
-
-
-
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。

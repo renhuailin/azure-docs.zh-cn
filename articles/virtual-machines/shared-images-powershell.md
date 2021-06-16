@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 877439ddba6ffaf2fd060c29f28c25c18694605d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5822da267119ab1e0154653c750a3f73e6785b7f
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555561"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032638"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>使用 Azure PowerShell 创建共享映像库 
 
@@ -40,7 +40,7 @@ ms.locfileid: "102555561"
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
-- [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [创建共享映像库](https://azure.microsoft.com/resources/templates/sig-create/)
+- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/vm-from-sig/)
