@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: c95ccb5ea1a23e8173d58bd3a18490e9b8e630e4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8716b8ddb267aa76dec7950026027442bf438e65
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581256"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853543"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合 Runbook 辅助角色概述
 
@@ -89,7 +90,7 @@ Azure 自动化服务的服务标记仅提供用于以下场景的 IP：
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合 Runbook 辅助角色的更新管理地址
 
-除了混合 Runbook 辅助角色所需的标准地址和端口，更新管理还具有[网络规划](./update-management/overview.md#ports)部分下所述的其他网络配置要求。
+除了混合 Runbook 辅助角色所需的标准地址和端口，更新管理还具有[网络规划](./update-management/plan-deployment.md#ports)部分下所述的其他网络配置要求。
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>混合 Runbook 辅助角色上的 Azure Automation State Configuration
 

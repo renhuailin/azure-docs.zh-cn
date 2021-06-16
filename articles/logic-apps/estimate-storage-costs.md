@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: how-to
 ms.date: 05/13/2021
-ms.openlocfilehash: 093dd29a4e9eda9157a49c6cc44144b5e8a4bbec
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 860e84bf8e2378d4a9c433df81c5adfb6741169e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369142"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953833"
 ---
 # <a name="estimate-storage-costs-for-workflows-in-single-tenant-azure-logic-apps"></a>估算单租户 Azure 逻辑应用中工作流的存储成本
 
-Azure 逻辑应用使用 [Azure 存储](/azure/storage/)进行任何存储操作。 在传统的多租户 Azure 逻辑应用中，任何存储使用情况和成本都将附加到该逻辑应用。 现在，在单租户 Azure 逻辑应用中，你可以使用自己的存储帐户。 这些存储成本将在 Azure 计费发票中单独列出。 此功能提供更高的灵活性，并可让你控制逻辑应用数据。
+Azure 逻辑应用使用 [Azure 存储](../storage/index.yml)进行任何存储操作。 在传统的多租户 Azure 逻辑应用中，任何存储使用情况和成本都将附加到该逻辑应用。 现在，在单租户 Azure 逻辑应用中，你可以使用自己的存储帐户。 这些存储成本将在 Azure 计费发票中单独列出。 此功能提供更高的灵活性，并可让你控制逻辑应用数据。
 
 > [!NOTE]
 > 本文适用于单租户 Azure 逻辑应用环境中的工作流。 这些工作流存在于共享同一存储的同一逻辑应用和单个租户中。 有关详细信息，请参阅[单租户与多租户以及集成服务环境](single-tenant-overview-compare.md)。

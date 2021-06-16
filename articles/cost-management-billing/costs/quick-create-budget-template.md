@@ -8,13 +8,13 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 7d93bd757a39247302a6bc09009a1a814425c32f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: subject-armqs, devx-track-azurepowershell
+ms.openlocfilehash: 879e4425d5cbda5cae01ea8acac0f8d6bed79cc7
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745365"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695318"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>快速入门：使用 ARM 模板创建预算
 
@@ -87,14 +87,14 @@ ms.locfileid: "92745365"
     * 订阅：选择一个 Azure 订阅。
     * 资源组：如果需要，请选择现有资源组或创建新资源组。
     * 区域：选择 Azure 区域。 例如“美国中部”。
-    * **预算名称** ：为预算输入一个名称。 此名称在资源组中应是唯一的。 只允许输入字母数字、下划线和连字符。
+    * **预算名称**：为预算输入一个名称。 此名称在资源组中应是唯一的。 只允许输入字母数字、下划线和连字符。
     * 数量：输入要通过预算跟踪的总成本。
-    * **时间粒度** ：输入预算覆盖的时间。 允许的值为“每月”、“每季度”或“每年”。 预算将在该时间粒度结束时重置。
-    * **开始日期** ：以 YYYY-MM-DD 格式输入预算月份的第一天作为开始日期。 将来的开始日期不能晚于自当前日期算起的三个月。 可以使用“时间粒度”时段指定过去的开始日期。
-    * **结束日期** ：以 YYYY-MM-DD 格式输入预算的结束日期。 
+    * **时间粒度**：输入预算覆盖的时间。 允许的值为“每月”、“每季度”或“每年”。 预算将在该时间粒度结束时重置。
+    * **开始日期**：以 YYYY-MM-DD 格式输入预算月份的第一天作为开始日期。 将来的开始日期不能晚于自当前日期算起的三个月。 可以使用“时间粒度”时段指定过去的开始日期。
+    * **结束日期**：以 YYYY-MM-DD 格式输入预算的结束日期。 
     * 第一个阈值：输入第一个通知的阈值。 当成本超过阈值时，会发送通知。 该值始终为百分比，并且必须介于 0 和 1000 之间。
     * 第二个阈值：输入第二个通知的阈值。 当成本超过阈值时，会发送通知。 该值始终为百分比，并且必须介于 0 和 1000 之间。
-    * **联系人角色** ：输入超出阈值时要将预算通知发送到的联系人角色列表。 默认值为“所有者”、“参与者”和“读取者”。 预期格式为 `["Owner","Contributor","Reader"]`。
+    * **联系人角色**：输入超出阈值时要将预算通知发送到的联系人角色列表。 默认值为“所有者”、“参与者”和“读取者”。 预期格式为 `["Owner","Contributor","Reader"]`。
     * 联系人电子邮件：输入超出阈值时要将预算通知发送到的电子邮件地址列表。 预期格式为 `["user1@domain.com","user2@domain.com"]`。
     * 联系人组：输入超出阈值时要将预算通知发送到的操作组资源 ID 列表（作为完整资源 URI）。 此字段接受字符串数组。 预期格式为 `["action group resource ID1","action group resource ID2"]`。 如果你不想使用操作组，请输入 `[]`。
     * 资源组筛选器值：输入要筛选的资源组名称的列表。 预期格式为 `["Resource Group Name1","Resource Group Name2"]`。 如果你不想应用筛选器，请输入 `[]`。 

@@ -4,12 +4,12 @@ description: 介绍支持 Azure 资源管理器的资源提供程序。 它介�
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d5936e1e4c80869495d5b71023e26264dc9a2cde
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d33debc8a7cfd72e919f7e93e1af50a653fa651e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319190"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968268"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
@@ -315,7 +315,7 @@ West US
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何创建资源管理器模板，请参阅[创作 Azure 资源管理器模板](../templates/template-syntax.md)。 
+* 若要了解如何创建资源管理器模板，请参阅[创作 Azure 资源管理器模板](../templates/syntax.md)。 
 * 若要查看资源提供程序模板架构，请参阅[模板引用](/azure/templates/)。
 * 有关将资源提供程序映射到 Azure 服务的列表，请参阅 [Azure 服务的资源提供程序](azure-services-resource-providers.md)。
 * 若要查看资源提供程序的操作，请参阅 [Azure REST API](/rest/api/)。

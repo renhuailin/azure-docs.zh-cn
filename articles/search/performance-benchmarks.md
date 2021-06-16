@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 5f7617fdfea68c8005c8a33ec782edc2bbe01f4b
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 2da5a39710e7bbce2e610ef7850b9284bc5c4309
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930761"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441420"
 ---
 # <a name="azure-cognitive-search-performance-benchmarks"></a>Azure 认知搜索性能基准
 
@@ -22,7 +22,7 @@ Azure 认知搜索的性能取决于[多种因素](search-performance-tips.md)�
 为涵盖一系列不同用例，我们针对两种主要场景运行了基准：
 
 * **电子商务搜索** - 此基准模拟真实的电子商务场景，并基于北欧电子商务公司 [CDON](https://cdon.com)。
-* **文档搜索** - 此场景由对 [Semantic Scholar](http://s2-public-api-prod.us-west-2.elasticbeanstalk.com/corpus/download/) 中的全文文档的关键字搜索组成。 这模拟的是常见文档搜索解决方案。
+* **文档搜索** - 此场景由对 [Semantic Scholar](https://www.aclweb.org/anthology/2020.acl-main.447/) 中的全文文档的关键字搜索组成。 这模拟的是常见文档搜索解决方案。
 
 尽管这些场景反映了不同的用例，但每种场景都不同，因此我们始终建议对单个工作负载进行性能测试。 我们[使用 JMeter 发布了性能测试解决方案](https://github.com/Azure-Samples/azure-search-performance-testing)，因此你可以针对自己的服务运行类似测试。
 

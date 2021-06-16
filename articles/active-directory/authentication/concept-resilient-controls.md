@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db90d49034fb61c26bf4528045d2b3f54d7a30fc
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937087"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963844"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -286,7 +286,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 
 * [Azure AD 身份验证文档](./howto-mfaserver-iis.md)
 * [在 Azure AD 中管理紧急访问管理账户](../roles/security-emergency-access.md)
-* [在 Azure Active Directory 中配置命名位置](../reports-monitoring/quickstart-configure-named-locations.md)
+* [在 Azure Active Directory 中配置命名位置](../conditional-access/location-condition.md)
   * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings)
 * [如何配置联接到混合 Azure Active Directory 的设备](../devices/hybrid-azuread-join-plan.md)
 * [Windows Hello for Business 部署指南](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)

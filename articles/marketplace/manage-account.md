@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 04/07/2021
-ms.openlocfilehash: 8edac35fd83ef5dbf122e7f0959564fa072fbadd
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fa09a03a9ffda04e09bbd5708e97334304013078
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144918"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006574"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心管理商业市场帐户
 
@@ -21,13 +21,13 @@ ms.locfileid: "108144918"
 - 所有者
 - Manager
 
-[创建合作伙伴中心帐户](./create-account.md)后，就可以使用[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)管理帐户和产品/服务。
+[创建合作伙伴中心帐户](./create-account.md)后，就可以使用[商业市场仪表板](https://go.microsoft.com/fwlink/?linkid=2165290)管理帐户和产品/服务。
 
 ## <a name="access-your-account-settings"></a>访问你的帐户设置
 
-如果尚未执行此操作，你（或组织的管理员）应访问合作伙伴中心帐户的[帐户设置](https://partner.microsoft.com/dashboard/account/management)。
+如果尚未执行此操作，你（或组织的管理员）应访问合作伙伴中心帐户的[帐户设置](https://go.microsoft.com/fwlink/?linkid=2165291)。
 
-1. 使用要访问的帐户登录到合作伙伴中心内的[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace)。 如果你具有多个帐户并且已使用其他帐户登录，则可以[切换帐户](switch-accounts.md)。
+1. 使用要访问的帐户登录到合作伙伴中心内的[商业市场仪表板](https://go.microsoft.com/fwlink/?linkid=2165290)。 如果你具有多个帐户并且已使用其他帐户登录，则可以[切换帐户](switch-accounts.md)。
 1. 在右上角选择“设置”（齿轮图标），然后选择“帐户设置”。 
 
     [ ![合作伙伴中心内的帐户设置菜单的屏幕截图。](./media/manage-accounts/settings-account.png) ](./media/manage-accounts/settings-account.png#lightbox)
@@ -110,7 +110,7 @@ ms.locfileid: "108144918"
 
 若要访问“协议”页，请执行以下操作：
 
-1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
 1. 在右上方，选择“设置” > “帐户设置” 。
 1. 在“帐户设置”下选择“协议” 。
 
@@ -179,7 +179,7 @@ ms.locfileid: "108144918"
 
 ## <a name="create-a-billing-profile"></a>创建计费对象信息
 
-如果要发布 [Dynamics 365 for Customer Engagement & Power Apps](dynamics-365-customer-engage-offer-setup.md) 或 [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) 产品/服务，则需要填写计费对象信息。
+如果要发布 [Dynamics 365 for Customer Engagement & Power Apps](dynamics-365-customer-engage-offer-setup.md) 或 [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) 产品/服务，则需要填写计费对象信息。
 
 帐单邮寄地址是通过你的法律实体预填充的，可以稍后更新此地址。 税务和增值税 ID 字段对于某些国家/地区是必填字段，对于其他国家/地区是可选字段。 无法编辑国家/地区名称和公司名称。
 

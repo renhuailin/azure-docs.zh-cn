@@ -3,12 +3,12 @@ title: 发现资源属性
 description: 描述如何搜索资源属性。
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: aaa7bb13f49c1c742e44a255d4bbdbd2b1730939
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7f0267e4a5afaec0853b82624f4c2486fd8a70e0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736678"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959439"
 ---
 # <a name="discover-resource-properties"></a>发现资源属性
 
@@ -116,4 +116,4 @@ Resources.azure.com 是一个公共网站，可供具有 Azure 订阅的任何�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何查找模板架构信息。 若要详细了解如何创建资源管理器模板，请参阅[了解 ARM 模板的结构和语法](./template-syntax.md)。
+本文介绍了如何查找模板架构信息。 若要详细了解如何创建资源管理器模板，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。

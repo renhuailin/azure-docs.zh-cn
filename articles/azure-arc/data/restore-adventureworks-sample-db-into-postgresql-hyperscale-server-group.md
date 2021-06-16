@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: a9efa17fb782d5a913493907b66973272e4e0356
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 476fb664df261cf2b71802d15f23e28eb9970a65
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102441782"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407446"
 ---
 # <a name="import-the-adventureworks-sample-database-to-azure-arc-enabled-postgresql-hyperscale"></a>将 AdventureWorks 示例数据库导入到已启用 Azure Arc 的超大规模 PostgreSQL
 
@@ -70,7 +70,7 @@ kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres -- psql --use
 ```
 
 
-> **注意：ostgreSQL 超大规模上运行的 Azure Arc 上运行时，你将看不到如此多的性能好处，直到你向外扩展，并跨 PostgreSQL 超大规模服务器组的辅助角色节点分片/分布数据/表。请参阅[建议执行的后续步骤](#suggested-next-steps)。**
+> **注意：ostgreSQL 超大规模上运行的 Azure Arc 上运行时，你将看不到如此多的性能好处，直到你向外扩展，并跨 PostgreSQL 超大规模服务器组的辅助角色节点分片/分布数据/表。请参阅 [建议执行的后续步骤](#suggested-next-steps)。**
 
 ## <a name="suggested-next-steps"></a>建议执行的后续步骤
 - 阅读 Azure Database for PostgreSQL 超大规模的概念和操作方法指南，以将数据分布到多个 PostgreSQL 超大规模节点并利用 Azure Database for PostgreSQL 超大规模的所有功能。 :
@@ -84,4 +84,4 @@ kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres -- psql --use
 
    > 在上述文档中，跳过“登录到 Azure 门户”和“创建 Azure Database for PostgreSQL - 超大规模 (Citus)”部分\* 。 在 Azure Arc 部署中执行剩余步骤。 这些部分特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus)，但文档的其他部分直接适用于已启用 Azure Arc 的超大规模 PostgreSQL。
 
-- [横向扩展 Azure Database for PostgreSQL 超大规模服务器组](scale-out-postgresql-hyperscale-server-group.md)
+- [横向扩展 Azure Database for PostgreSQL 超大规模服务器组](scale-out-in-postgresql-hyperscale-server-group.md)

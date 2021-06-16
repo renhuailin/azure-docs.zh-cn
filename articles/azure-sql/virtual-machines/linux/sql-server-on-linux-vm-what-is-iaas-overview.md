@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3613b8417c78d0a01582defb7396cc65521e2f4c
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 19bcd34dd8de094656993e79306f6ae369e99acd
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449474"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079042"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 虚拟机 (Linux) 上的 SQL Server 概述
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -90,4 +90,4 @@ Linux 虚拟机上的 SQL Server 入门：
 
 获取有关 Linux 上 SQL Server VM 的常见问题的解答：
 
-* [Azure 虚拟机中的 SQL Server 常见问题](frequently-asked-questions-faq.md)
+* [Azure 虚拟机中的 SQL Server 常见问题](frequently-asked-questions-faq.yml)
