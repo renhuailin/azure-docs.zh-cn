@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 06/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c19f6f8c59ac38bf46999372497205e0c33ebac4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 2e0af2e682799d4286a0d00daa2ce7e3805cf4ac
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175101"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565241"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置会话行为
 
@@ -29,7 +29,7 @@ ms.locfileid: "102175101"
 
 当用户最初登录到应用程序时，Azure AD B2C 会保留一个基于 Cookie 的会话。 收到后续的身份验证请求后，Azure AD B2C 会读取并验证该基于 Cookie 的会话，然后颁发访问令牌，且不提示用户重新登录。 如果基于 Cookie 的会话过期或失效，则系统会提示用户重新登录。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -38,7 +38,7 @@ ms.locfileid: "102175101"
 与 Azure AD B2C 的集成涉及到三种类型的 SSO 会话：
 
 - **Azure AD B2C** - 由 Azure AD B2C 管理的会话
-- **联合标识提供程序** -由标识提供程序管理的会话，例如 Facebook、Salesforce 或 Microsoft 帐户
+- **联合标识提供者** - 由标识提供者管理的会话，例如 Facebook、Salesforce 或 Microsoft 帐户
 - **应用程序** - 由 Web、移动或单页应用程序管理的会话
 
 ![SSO 会话](media/session-behavior/sso-session-types.png)
@@ -55,11 +55,11 @@ ms.locfileid: "102175101"
 
 社交或企业标识提供者需管理其自己的会话。 Cookie 存储在标识提供者的域名（例如 `https://login.salesforce.com`）下。 Azure AD B2C 不会控制联合标识提供者会话。 会话行为由联合标识提供者确定。 
 
-请参考以下方案：
+假设出现了下面这种情景：
 
 1. 用户登录 Facebook 以检查其源。
-2. 稍后，用户将打开你的应用程序并启动登录过程。 应用程序将用户重定向到 Azure AD B2C 以完成登录过程。
-3. 在 Azure AD B2C 注册或登录页上，用户选择通过其 Facebook 帐户进行登录。 用户被重定向到 Facebook。 如果 Facebook 上存在活动会话，则不会提示用户提供其凭据，并立即重定向到使用 Facebook 令牌 Azure AD B2C。
+2. 稍后，用户打开你的应用程序并启动登录过程。 应用程序将用户重定向到 Azure AD B2C 以完成登录过程。
+3. 在 Azure AD B2C 注册或登录页上，用户选择使用其 Facebook 帐户登录。 用户被重定向到 Facebook。 如果 Facebook 上存在活动会话，则不会提示用户提供其凭据，而是立即使用 Facebook 令牌将其重定向到 Azure AD B2C。
 
 ### <a name="application-session"></a>应用程序会话
 
@@ -69,24 +69,24 @@ ms.locfileid: "102175101"
 
 ## <a name="configure-azure-ad-b2c-session-behavior"></a>配置 Azure AD B2C 会话行为
 
-你可以配置 Azure AD B2C 会话行为，包括：
+可以配置 Azure AD B2C 会话行为，包括：
 
-- **Web 应用会话生存期 (分钟)** -身份验证成功后将 Azure AD B2C 会话 cookie 存储在用户浏览器上的时间量。 最多可将会话生存期设置为24小时。
+- **Web 应用会话生存期（分钟）** - 是指成功完成身份验证后，将 Azure AD B2C 会话 Cookie 存储在用户浏览器中的时间量。 可以将会话生存期设置为最多 24 小时。
 
-- **Web 应用会话超时** -通过 "会话生存期" 设置或 "使我保持登录 (KMSI) " 设置来指示会话的扩展方式。
+- **Web 应用会话超时** - 指示如何通过会话生存期设置或“使我保持登录状态 (KMSI)”设置来使会话延期。
   - **滚动** - 指示每当用户执行基于 Cookie 的身份验证时都延长会话（默认值）。
   - **绝对** - 指示在指定的时间段后强制用户重新进行身份验证。
 
-- **单一登录配置** -Azure AD B2C 会话可以配置为以下作用域：
+- **单一登录配置** - 可为 Azure AD B2C 会话配置以下范围：
   - **租户** - 这是默认设置。 使用此设置允许 B2C 租户中的多个应用和用户流共享相同的用户会话。 例如，一旦用户登录到某个应用程序，就还可以在访问该应用程序时无缝登录到另一个应用程序。
   - **应用程序** - 此设置允许为某个应用程序维持独占式用户会话（独立于其他应用程序）。 例如，如果你希望无论用户是否已登录到 Contoso Groceries，他们都能够登录到 Contoso Pharmacy，则可以使用此设置。
   - **策略** - 此设置为某个用户流维持独占式用户会话（独立于使用它的应用程序）。 例如，如果用户已登录并完成多重身份验证 (MFA) 步骤，那么只要绑定到用户流的会话未过期，该用户就可以访问多个应用程序的具有较高安全性的部分。
-  - **已禁用** - 此设置强制用户在每次执行策略时都要运行完整的用户流。
-- **使我保持登录 (KMSI)** -通过使用永久性 cookie 扩展会话生存期。 如果启用了此功能，并且用户选择了此功能，则即使用户关闭并重新打开浏览器，会话仍保持活动状态。 仅当用户注销时才会撤消会话。KMSI 功能仅适用于登录本地帐户。 KMSI 功能优先于会话生存期。
+  - **已禁止** - 此设置强制用户在每次执行策略时都要运行完整的用户流。
+- **使我保持登录状态(KMSI)** - 通过使用持久性 Cookie 延长会话生存期。 如果启用了此功能且用户选择了它，那么即使在用户关闭并重新打开浏览器后，会话也将保持活动状态。 仅当用户注销后才撤销该会话。KMSI 功能仅适用于使用本地帐户进行的登录。 KMSI 功能优先于会话生存期。
 
 ::: zone pivot="b2c-user-flow"
 
-若要配置会话行为：
+配置会话行为：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
@@ -95,7 +95,7 @@ ms.locfileid: "102175101"
 1. 打开之前创建的用户流。
 1. 选择“属性”。
 1. 根据需要配置 **Web 应用会话生存期（分钟）** 、**Web 应用会话超时**、**单一登录配置** 和 **在注销请求中需要 ID 令牌**。
-1. 单击“ **保存**”。
+1. 单击“保存”。
 
 ::: zone-end
 
@@ -112,37 +112,37 @@ ms.locfileid: "102175101"
 ```
 ::: zone-end
 
-## <a name="enable-keep-me-signed-in-kmsi"></a>启用 "使我保持登录 (KMSI) 
+## <a name="enable-keep-me-signed-in-kmsi"></a>启用“使我保持登录状态 (KMSI)”
 
-你可以为在 Azure AD B2C 目录中具有本地帐户的 web 和本机应用程序的用户启用 KMSI 功能。 启用该功能后，用户可以选择保持登录状态，以便在关闭浏览器后会话仍保持活动状态。 然后，他们可以重新打开浏览器，而不会提示用户重新输入其用户名和密码。 当用户注销时，会撤销此访问权限。
+可以为在 Azure AD B2C 目录中拥有本地帐户的 Web 和本机应用程序的用户启用 KMSI 功能。 该功能启用时，用户能够选择保持登录状态，这样当他们关闭浏览器后会话也保持活动状态。 于是他们重新打开浏览器时系统不会提示他们重新输入用户名和密码。 当用户注销时，会撤销此访问权限。
 
 ![显示“使我保持登录状态”复选框的示例注册登录页](./media/session-behavior/keep-me-signed-in.png)
 
 
 ::: zone pivot="b2c-user-flow"
 
-可在单个用户流级别配置 KMSI。 为用户流启用 KMSI 之前，请考虑以下事项：
+仅可在单个用户流级别配置 KMSI。 为用户流启用 KMSI 之前，请注意以下几点：
 
-- 仅 (SUSI) 、登录和配置文件编辑用户流的 **建议** 版本，才支持 KMSI。 如果你当前具有这些用户流的 **标准** 版本或 **旧版预览版** ，并且想要启用 KMSI，则需要创建这些用户流的新的 **建议** 版本。
+- 只有建议版本的注册和登录 (SUSI)、登录以及配置文件编辑用户流才支持 KMSI。 如果当前你的这些用户流版本是标准版（旧版）或者旧预览 - v2 版，并且你想启用 KMSI，那么需要针对这些用户流创建新的建议版本  。
 - 密码重置或注册用户流不支持 KMSI。
-- 如果要为租户中的所有应用程序启用 KMSI，建议为租户中的所有用户流启用 KMSI。 由于用户可以在会话过程中向用户显示多个策略，因此可能会遇到未启用 KMSI 的用户，这会从会话中删除 KMSI cookie。
-- 不应在公共计算机上启用 KMSI。
+- 如果要为租户中的所有应用程序启用 KMSI，建议为租户中的所有用户流启用 KMSI。 由于会话过程中可以向用户显示多个策略，因此他们可能会遇到未启用 KMSI 的策略，这将从会话中删除 KMSI Cookie。
+- 不应在公用计算机上启用 KMSI。
 
 ### <a name="configure-kmsi-for-a-user-flow"></a>为用户流配置 KMSI
 
-若要为用户流启用 KMSI，请执行以下操作：
+为用户流启用 KMSI：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择 " **目录 + 订阅**"   筛选器，然后选择包含 Azure AD B2C 租户的目录。
-3. 选择 "Azure 门户" 左上角的 " **所有服务**"   ，然后搜索并选择 " **Azure AD B2C**"。
-4. 选择 " **用户流" (策略 ")**"。
+2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录 **** 。
+3. 选择 Azure 户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” ****  **** 。
+4. 选择“用户流(策略)” **** 。
 5. 打开之前创建的用户流。
-6. 选择 " **属性**"。
+6. 选择“属性” **** 。
 
-7. 在 " **会话行为**" 下，选择 " **使我保持登录会话**"。 在 " **使我保持登录会话 (天)** 中，输入一个介于1到90之间的值，以指定会话可以保持打开状态的天数。
+7. 在“会话行为”下选择“启用‘使我保持登录会话状态’” **** 。 在“使我保持登录会话状态(天)”旁边输入一个介于 1 到 90 之间的值，指定会话可以保持打开状态的天数。
 
 
-   ![启用 "使我保持登录会话"](media/session-behavior/enable-keep-me-signed-in.png)
+   ![启用“使我保持登录会话状态”](media/session-behavior/enable-keep-me-signed-in.png)
 
 ::: zone-end
 
@@ -152,13 +152,13 @@ ms.locfileid: "102175101"
 
 ### <a name="configure-the-page-identifier"></a>配置页面标识符
 
-若要启用 KMSI，请将内容定义 `DataUri` 元素设置为 [页面标识符](contentdefinitions.md#datauri) `unifiedssp` 和 [页面版本](page-layout.md) *1.1.0* 或更高版本。
+若要启用 KMSI，请将内容定义 `DataUri` 元素设置为 [页面标识符](contentdefinitions.md#datauri) `unifiedssp` 并将 [页面版本](page-layout.md)设置为 *1.1.0* 或更高版本。
 
-1. 打开策略的扩展文件。 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkExtensions.xml`</em>。 此扩展文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取 [自定义策略入门](custom-policy-get-started.md)。
+1. 打开策略的扩展文件。 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkExtensions.xml`</em>。 此扩展文件是自定义策略初学者包中包含的策略文件之一，你在先决条件[自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)中应该已获取了该包。
 1. 搜索 **BuildingBlocks** 元素。 如果该元素不存在，请添加该元素。
-1. 将 **ContentDefinitions** 元素添加到策略的 **BuildingBlocks** 元素中。
+1. 将 **ContentDefinitions** 元素添加到策略的 **BuildingBlocks** 元素。
 
-    自定义策略应类似于以下代码片段：
+    自定义策略应如下代码片段所示：
 
     ```xml
     <BuildingBlocks>
@@ -172,7 +172,7 @@ ms.locfileid: "102175101"
 
 ### <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>将元数据添加到自断言技术配置文件
 
-若要将 KMSI 复选框添加到注册和登录页，请将 `setting.enableRememberMe` 元数据设置为 true。 覆盖扩展文件中的 SelfAsserted-LocalAccountSignin 技术配置文件。
+若要将 KMSI 复选框添加到注册和登录页，请将 `setting.enableRememberMe` 元数据设置为 true。 覆盖扩展文件中的 SelfAsserted-LocalAccountSignin-Email 技术配置文件。
 
 1. 找到 ClaimsProviders 元素。 如果该元素不存在，请添加该元素。
 1. 将以下声明提供程序添加到 ClaimsProviders 元素：
@@ -194,10 +194,10 @@ ms.locfileid: "102175101"
 
 ### <a name="configure-a-relying-party-file"></a>配置信赖方文件
 
-更新用于启动创建的用户旅程的信赖方 (RP) 文件。 KeepAliveInDays 参数允许你配置 "使我保持登录 (KMSI) 会话 cookie 的持续时间。 例如，如果将值设置为30，则 KMSI 会话 cookie 将保留30天。 值的范围是从1到90天。
+更新用于启动创建的用户旅程的信赖方 (RP) 文件。 keepAliveInDays 参数允许你配置“使我保持登录 (KMSI) 会话状态”Cookie 的持续时间。 例如，如果将值设置为 30，则 KMSI 会话 Cookie 将保留 30 天。 该值的范围为 1 到 90 天。
 
 1. 打开自定义策略文件。 例如，SignUpOrSignin.xml。
-1. 如果它尚不存在，请将 `<UserJourneyBehaviors>` 子节点添加到 `<RelyingParty>` 节点。 它必须紧跟在之后 `<DefaultUserJourney ReferenceId="User journey Id" />` ，例如： `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` 。
+1. 如果它尚不存在，请将 `<UserJourneyBehaviors>` 子节点添加到 `<RelyingParty>` 节点。 它必须紧跟在 `<DefaultUserJourney ReferenceId="User journey Id" />` 之后，例如：`<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`。
 1. 将以下节点添加为 `<UserJourneyBehaviors>` 元素的子级。
 
     ```xml
@@ -208,7 +208,7 @@ ms.locfileid: "102175101"
     </UserJourneyBehaviors>
     ```
 
-建议将 SessionExpiryInSeconds 的值设置为短期间 (1200 秒) ，而 KeepAliveInDays 的值可以设置为相对较长的时间段 (30 天) ，如以下示例所示：
+建议将 SessionExpiryInSeconds 的值设置为较短时间段（1200 秒），KeepAliveInDays 的值可以设置为相对较长的时间段（30 天），如下例所示：
 
 ```xml
 <RelyingParty>
@@ -243,22 +243,24 @@ ms.locfileid: "102175101"
 
 收到注销请求后，Azure AD B2C 将会：
 
-1. 使 Azure AD B2C 基于 Cookie 的会话失效。
 ::: zone pivot="b2c-user-flow"
-2. 尝试从联合标识提供者注销
+1. 使 Azure AD B2C 基于 Cookie 的会话失效。
+1. 尝试从联合标识提供者注销
 ::: zone-end
+
 ::: zone pivot="b2c-custom-policy"
-3. 尝试从联合标识提供者注销：
-   - OpenId Connect - 如果标识提供者的已知配置终结点指定了 `end_session_endpoint` 位置。
-   - OAuth2-如果 [标识提供程序元数据](oauth2-technical-profile.md#metadata) 包含位置，则为 `end_session_endpoint` 。
-   - SAML-如果 [标识提供程序元数据](identity-provider-generic-saml.md) 包含 `SingleLogoutService` 位置。
-4. 选择性地从其他应用程序注销。 有关详细信息，请参阅[单一注销](#single-sign-out)部分。
+1. 使 Azure AD B2C 基于 Cookie 的会话失效。
+1. 尝试从联合标识提供者注销：
+   - OpenId Connect - 如果标识提供者的已知配置终结点指定了 `end_session_endpoint` 位置。 注销请求不传递 `id_token_hint` 参数。 如果联合标识提供者需要此参数，则注销请求将会失败。
+   - OAuth2 - 如果[标识提供者元数据](oauth2-technical-profile.md#metadata)包含 `end_session_endpoint` 位置。
+   - SAML - 如果[标识提供者元数据](identity-provider-generic-saml.md)包含 `SingleLogoutService` 位置。
+1. 选择性地从其他应用程序注销。 有关详细信息，请参阅[单一注销](#single-sign-out)部分。
 
 > [!NOTE]
-> 您可以通过将标识提供程序的技术配置文件的元数据设置为来禁用从联合标识提供程序中注销 `SingleLogoutEnabled` `false` 。
+> 可以通过将标识提供者技术配置文件元数据 `SingleLogoutEnabled` 设置为 `false` 来禁用从联合标识提供者注销。
 ::: zone-end
 
-注销会清除用户在 Azure AD B2C 中的单一登录状态，但可能不会将用户从其社交标识提供者会话中注销。 如果用户在后续登录期间选择相同的标识提供者，那么他们可以重新进行身份验证，且无需输入其凭据。 如果用户想要从应用程序中注销，则不一定意味着他们要注销其 Facebook 帐户。 但是，如果使用了本地帐户，则用户的会话将正常结束。
+注销会清除用户在 Azure AD B2C 中的单一登录状态，但可能不会将用户从其社交标识提供者会话中注销。 如果用户在后续登录期间选择相同的标识提供者，那么他们可以重新进行身份验证，且无需输入其凭据。 用户从应用程序注销不一定意味着他们想要从其 Facebook 帐户注销。 但是，如果使用了本地帐户，则用户的会话将正常结束。
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -320,7 +322,7 @@ ms.locfileid: "102175101"
 
 ::: zone pivot="b2c-user-flow"
 
-若要在注销请求中要求使用 ID 令牌：
+要求在注销请求中提供 ID 令牌：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
@@ -359,4 +361,4 @@ ms.locfileid: "102175101"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何 [在 Azure AD B2C 中配置标记](configure-tokens.md)。
+- 了解如何[在 Azure AD B2C 中配置令牌](configure-tokens.md)。
