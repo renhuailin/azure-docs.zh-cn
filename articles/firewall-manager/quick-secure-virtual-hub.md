@@ -7,15 +7,13 @@ ms.author: victorh
 ms.date: 08/28/2020
 ms.topic: quickstart
 ms.service: firewall-manager
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 88b961f269c89a1e19c0fd4419ffdc33706423de
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 733d0874c72bca32238494e4987ee889c8e2f196
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529644"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110700575"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>快速入门：使用 Azure 防火墙管理器保护虚拟中心安全 - ARM 模板
 
@@ -79,8 +77,8 @@ ms.locfileid: "107529644"
 1. 在 Azure 门户中，查看“Workload-Srv”虚拟机的网络设置并记下专用 IP 地址。
 2. 将远程桌面连接到“Jump-Srv”虚拟机，然后登录。 在这里，打开与“Workload-Srv”专用 IP 地址建立的远程桌面连接。
 
-3. 打开 Internet Explorer 并浏览到 `www.microsoft.com` 。
-4. 出现 Internet Explorer 安全警报时，请选择“确定” > “关闭”。 
+3. 打开 Internet Explorer 并浏览到 `www.microsoft.com`。
+4. 出现 Internet Explorer 安全警报时，请选择“确定” > “关闭”。  
 
    应会看到 Microsoft 主页。
 

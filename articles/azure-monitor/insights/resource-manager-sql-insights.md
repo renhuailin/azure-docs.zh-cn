@@ -5,15 +5,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 03/25/2021
-ms.openlocfilehash: dafb7335ef211cb9173ec2fb4565243d603d35fe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: c82a46fa249bd55207e3fc20fbe991c0d7d24bf9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107730185"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958157"
 ---
 # <a name="resource-manager-template-samples-for-sql-insights"></a>用于 SQL 见解的资源管理器模板示例
-本文包括 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例，用于启用 SQL 见解以监视在 Azure 中运行的 SQL。  有关支持的 SQL 产品/服务和版本的详细信息，请参阅 [SQL 见解文档](sql-insights-overview.md)。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+本文包括 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)示例，用于启用 SQL 见解以监视在 Azure 中运行的 SQL。  有关支持的 SQL 产品/服务和版本的详细信息，请参阅 [SQL 见解文档](sql-insights-overview.md)。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

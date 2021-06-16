@@ -1,20 +1,20 @@
 ---
 title: 数据收集和报告 | 已启用 Azure Arc 的数据服务
 description: 说明由已启用 Arc 的数据服务向 Microsoft 传输的数据类型。
-author: MikeRayMSFT
-ms.author: mikeray
+author: dnethi
+ms.author: dinethi
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.custom: template-concept
-ms.openlocfilehash: dcaf900164e3d9d4b9b3b54e27a79fdae937abc5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 46c2addc8c844e2fe909bccddfa4927feef5a34a
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472762"
+ms.locfileid: "110495769"
 ---
 # <a name="azure-arc-data-services-data-collection-and-reporting"></a>Azure Arc 数据服务数据收集和报告
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: a92c6789723dc42ac8f3a9c471e494079dc19328
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5eb5d73d6820260702f9b0190cf4e190b10f2c54
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98233434"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029992"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -106,7 +106,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 ![展示了跨区域 2 流量的地图](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 相关链接：
-* [博客文章](https://aka.ms/trafficanalytics)、[文档](../network-watcher/traffic-analytics.md)、[常见问题解答](../network-watcher/traffic-analytics-faq.md)
+* [博客文章](https://aka.ms/trafficanalytics)、[文档](../network-watcher/traffic-analytics.md)、[常见问题解答](../network-watcher/traffic-analytics-faq.yml)
 
 ## <a name="dns-analytics"></a>DNS Analytics
 此解决方案专为 DNS 管理员构建，可收集、分析和关联 DNS 日志，以提供与安全性、操作和性能相关的见解。  一些功能包括：

@@ -24,6 +24,8 @@
       items:
         - name: 创建专用 ARO 群集
           href: howto-create-private-cluster-4x.md
+        - name: 配置自定义 DNS
+          href: howto-custom-dns.md
         - name: 配置 DNS 转发
           href: dns-forwarding.md
         - name: 限制出口流量

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 0965616c7ce4350c3da1f755f97111346a0d955f
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: a764fbd0edb6531ad0ea4ea25fcfe4f56c426ee7
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163726"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893599"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-euromonitor-passport"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Euromonitor Passport 的集成
 
@@ -147,8 +147,8 @@ ms.locfileid: "108163726"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Euromonitor Passport。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Euromonitor Passport 磁贴时，如果是在 SP 模式下配置的，你会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你将会自动登录到为其设置了 SSO 的 Euromonitor Passport。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Euromonitor Passport 磁贴时，如果是在 SP 模式下配置的，你会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，你将会自动登录到为其设置了 SSO 的 Euromonitor Passport。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Euromonitor Passport 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Euromonitor Passport 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

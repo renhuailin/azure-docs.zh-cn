@@ -2,13 +2,13 @@
 title: 从保管库备份多个 SQL Server VM
 description: 本文介绍如何使用 Azure 备份从恢复服务保管库备份 Azure 虚拟机上的 SQL Server 数据库
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: c03b833be6c5e4c352125f31ad8c5ed072674b49
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.date: 05/28/2021
+ms.openlocfilehash: 3a6792fe5146df9babc906edec1fc12aa4b3e1cb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258463"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672306"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>从恢复服务保管库备份多个 SQL Server VM
 
@@ -87,7 +87,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 | 服务    | 要访问的域名                             | 端口
 | -------------- | ------------------------------------------------------------ | ---
 | Azure 备份  | `*.backup.windowsazure.com`                             | 443
-| Azure 存储 | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` | 443
+| Azure 存储 | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` <br><br> `*.blob.storage.azure.net` | 443
 | Azure AD      | 根据[这篇文章](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)，允许访问第 56 和 59 节下的 FQDN | 如果适用
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>使用 HTTP 代理服务器路由流量

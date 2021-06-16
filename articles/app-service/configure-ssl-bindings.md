@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9ae0ca07d0aad72a38ee4eccbefbdb826da9627b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0759a3fce2d056bbe5d9234e25b45525874faf4e
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373026"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110670557"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称
 
@@ -24,7 +24,7 @@ ms.locfileid: "110373026"
 - [将专用证书添加到应用服务](configure-ssl-certificate.md)，以满足所有[专用证书要求](configure-ssl-certificate.md#private-certificate-requirements)。
 -  创建相应自定义域的 TLS 绑定。 本文介绍第二步。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 升级应用的定价层
@@ -100,9 +100,9 @@ ms.locfileid: "110373026"
 
 - 默认情况下，应用使用共享的公共 IP 地址。 将证书与 IP SSL 绑定时，应用服务会为应用创建新的专用 IP 地址。 如果已将 A 记录映射到应用，请使用这个新的专用 IP 地址更新域注册表。
 
-    将使用新的专用 IP 地址更新应用的“自定义域”页。 [复制此 IP 地址](app-service-web-tutorial-custom-domain.md#info)，然后[将 A 记录重新映射](app-service-web-tutorial-custom-domain.md#map-an-a-record)到此新 IP 地址。
+    将使用新的专用 IP 地址更新应用的“自定义域”页。 [复制此 IP 地址](app-service-web-tutorial-custom-domain.md#info)，然后[将 A 记录重新映射](app-service-web-tutorial-custom-domain.md#4-create-the-dns-records)到此新 IP 地址。
 
-- 如果已有到 `<app-name>.azurewebsites.net` 的 SNI SSL 绑定，请[重新映射任何 CNAME 映射](app-service-web-tutorial-custom-domain.md#map-a-cname-record)，让其改为指向 `sni.<app-name>.azurewebsites.net`（添加 `sni` 前缀）。
+- 如果已有到 `<app-name>.azurewebsites.net` 的 SNI SSL 绑定，请[重新映射任何 CNAME 映射](app-service-web-tutorial-custom-domain.md#4-create-the-dns-records)，让其改为指向 `sni.<app-name>.azurewebsites.net`（添加 `sni` 前缀）。
 
 ## <a name="test-https"></a>测试 HTTPS
 

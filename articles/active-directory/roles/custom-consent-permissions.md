@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: a7a26bfd979fd58ba0519aeba274b22ae502f8a8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8795007a5a38d21985d8b31884c66342b3dda7ed
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085917"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792401"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自定义角色的应用同意权限
 
@@ -65,14 +65,15 @@ ms.locfileid: "110085917"
 
 ## <a name="full-list-of-permissions"></a>权限的完整列表
 
-权限 | 说明
----------- | -----------
-microsoft.directory/servicePrincipals/managePermissionGrantsForSelf.{id} | 根据应用同意策略 `{id}`，授予代表自己同意（用户同意）应用的能力。
-microsoft.directory/servicePrincipals/managePermissionGrantsForAll.{id} | 根据应用同意策略 `{id}`，授予代表所有人同意（租户范围内的管理员同意）应用的权限。
-microsoft.directory/permissionGrantPolicies/standard/read | 授予阅读应用同意策略的能力。
-microsoft.directory/permissionGrantPolicies/basic/update | 授予更新现有应用同意策略的基本属性的能力。
-microsoft.directory/permissionGrantPolicies/create | 授予创建应用同意策略的能力。
-microsoft.directory/permissionGrantPolicies/delete | 授予删除应用同意策略的能力。
+> [!div class="mx-tableFixed"]
+> | 权限 | 说明 |
+> | ---------- | ----------- |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForSelf.{id} | 根据应用同意策略 `{id}`，授予代表自己同意（用户同意）应用的能力。 |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForAll.{id} | 根据应用同意策略 `{id}`，授予代表所有人同意（租户范围内的管理员同意）应用的权限。 |
+> | microsoft.directory/permissionGrantPolicies/standard/read | 授予阅读应用同意策略的能力。 |
+> | microsoft.directory/permissionGrantPolicies/basic/update | 授予更新现有应用同意策略的基本属性的能力。 |
+> | microsoft.directory/permissionGrantPolicies/create | 授予创建应用同意策略的能力。 |
+> | microsoft.directory/permissionGrantPolicies/delete | 授予删除应用同意策略的能力。 |
 
 ## <a name="next-steps"></a>后续步骤
 

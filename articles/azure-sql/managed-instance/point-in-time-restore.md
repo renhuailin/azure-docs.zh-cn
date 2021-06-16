@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: 将 Azure SQL 托管实例上的数据库还原到之前的某个时间点。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: ''
+ms.subservice: backup-restore
+ms.custom: devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein, mathoma
+author: Misliplavo
+ms.author: mlazic
+ms.reviewer: mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 4c116b378c72d87641157fc453d65e46be9f43ec
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a70c55cdf19205aa9d0d933d3ba383e57536c312
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787156"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691515"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>将 Azure SQL 托管实例中的数据库还原到之前的某个时间点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ SQL 托管实例的时间点还原具有以下限制：
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 2. 转到你的 SQL 托管实例，选择要还原的数据库。
 3. 在数据库页上选择“还原”：
 

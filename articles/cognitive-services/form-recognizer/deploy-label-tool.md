@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: 了解部署表单识别器示例标记工具的不同方法，以帮助进行监督式学习。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: lajanuar
-ms.openlocfilehash: 66edf7dbe7bc32cffcc5c4adad6e04d81f8a21ac
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cc78ae0bc417becb1c6cf16270f77206c60b461e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374588"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076971"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署示例标记工具
 
@@ -41,7 +41,7 @@ ms.locfileid: "110374588"
 
 请按照下列步骤使用 Azure 门户创建新资源： 
 
-1. 登录到 [Azure 门户](https://portal.azure.com/signin/index/)。
+1. 登录 [Azure 门户](https://portal.azure.com/signin/index/)。
 2. 选择“创建资源”。 
 3. 接下来，选择“Web 应用”。
 
@@ -77,7 +77,7 @@ ms.locfileid: "110374588"
 * 服务器 URL - 将此项设置为 `https://mcr.microsoft.com`
 * 用户名（可选）- 创建用户名。 
 * 密码（可选）- 创建可记住的安全密码。
-* 图像和标记 - 将此项设置为 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+* 图像和标记 - 将此项设置为 `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-2.1`
 * 持续部署 - 如果想要在开发团队对示例标记工具进行更改时接收自动更新，请将此项设置为“开启”。
 * 启动命令 - 将此项设置为 `./run.sh eula=accept`
 
@@ -127,7 +127,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-2.1 \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
@@ -146,7 +146,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \

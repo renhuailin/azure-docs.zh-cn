@@ -4,14 +4,13 @@ description: 本文介绍如何排查和解决将托管标识与自动化账户�
 services: automation
 ms.subservice: ''
 ms.date: 04/28/2021
-ms.author: v-dturcaso
 ms.topic: troubleshooting
-ms.openlocfilehash: f42605b92093cf08a417690eae8324b9280e8ce6
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 719b20190194779b834eb3de996c0920d50ad313
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229882"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787347"
 ---
 # <a name="troubleshoot-azure-automation-managed-identity-issues-preview"></a>排查 Azure 自动化托管标识问题（预览）
 
@@ -30,7 +29,7 @@ CategoryInfo : CloseError: (:) [Connect-AzureRmAccount], HttpRequestException + 
 
 ### <a name="cause"></a>原因
 
-导致这种情况的最常见原因是，在尝试使用标识之前未启用该标识。 若要验证这一点，请在受影响的自动化帐户中运行以下 PowerShell runbook。
+导致这种情况的最常见原因是，在尝试使用标识之前未启用该标识。 若要验证这一点，请在受影响的自动化帐户中运行以下 PowerShell Runbook。
 
 ```powershell
 resource= "?resource=https://management.azure.com/"

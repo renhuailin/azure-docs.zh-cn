@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 271bcd12fea3a09a3a62570cee865292f7c413e6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4129b288f912f4b5d90d912ef8453ef195f37d36
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064409"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007924"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表存储表设计指南：可缩放的高性能表
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -196,12 +196,12 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 | 列名称 | 数据类型 |
 | --- | --- |
-| `PartitionKey`（部门名称） |String |
-| `RowKey`（员工 ID） |String |
-| `FirstName` |String |
-| `LastName` |String |
+| `PartitionKey`（部门名称） |字符串 |
+| `RowKey`（员工 ID） |字符串 |
+| `FirstName` |字符串 |
+| `LastName` |字符串 |
 | `Age` |Integer |
-| `EmailAddress` |String |
+| `EmailAddress` |字符串 |
 
 下面是有关设计表存储查询的一般准则。 下述示例中所用的筛选器语法源自表存储 REST API。 有关详细信息，请参阅[查询实体](/rest/api/storageservices/Query-Entities)。  
 
@@ -209,7 +209,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 * 其次是范围查询。 它使用 `PartitionKey` 并筛选 `RowKey` 值的范围，以返回多个实体。 `PartitionKey` 值确定特定分区，`RowKey` 值确定该分区中的实体子集。 例如：`$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`。  
 * 然后是分区扫描。 它使用 `PartitionKey` 并筛选另一个非键属性，可能会返回多个实体。 `PartitionKey` 值确定特定分区，而属性值会选择该分区中的实体子集。 例如：`$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`。  
 * 表扫描不包括 `PartitionKey` 且效率较低，因为它会依次搜索构成表的所有分区，查找所有匹配的实体。 它会执行表扫描而不管你的筛选器是否使用 `RowKey`。 例如：`$filter=LastName eq 'Jones'`。  
-* 返回多个实体的 Azure 表存储查询将按 `PartitionKey` 和 `RowKey` 顺序为实体排序。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 `RowKey`。 Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](/table-api-faq.yml#table-api-in-azure-cosmos-db-vs-azure-table-storage)。
+* 返回多个实体的 Azure 表存储查询将按 `PartitionKey` 和 `RowKey` 顺序为实体排序。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 `RowKey`。 Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](/cosmos-db/table-api-faq#table-api-in-azure-cosmos-db-vs-azure-table-storage)。
 
 使用“**or**”指定基于 `RowKey` 值的筛选器将导致分区扫描，而不会视为范围查询。 因此，请避免使用筛选器的查询，例如：`$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`。  
 

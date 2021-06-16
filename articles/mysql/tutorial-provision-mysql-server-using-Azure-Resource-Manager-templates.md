@@ -7,19 +7,19 @@ ms.service: mysql
 ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
-ms.custom: mvc
-ms.openlocfilehash: 6fd070417cfa20c1a8f50c79915f4fcb2ec361f3
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 2219e7b31e4c6594fc5f98022151f6094853a1b1
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279813"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984644"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板预配 Azure Database for MySQL 服务器
 
 借助 [Azure Database for MySQL REST API](/rest/api/mysql/)，DevOps 工程师能够自动执行并集成 Azure 中托管的 MySQL 服务器和数据库的预配、配置和操作。  通过 API，可对 Azure Database for MySQL 服务上的 MySQL 服务器和数据库进行创建、枚举、管理和删除。
 
-Azure 资源管理器利用基础 REST API 来声明并计划大规模部署所需的 Azure 资源，这与将基础结构作为代码的概念相一致。 模板可参数化 Azure 资源名称、SKU、网络、防火墙配置和设置，允许一次创建后多次使用。  可使用 [Azure 门户](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)或 [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI) 轻松创建 Azure 资源管理器模板。 这些模板允许自动执行可集成到 DevOps CI/CD 管道的应用程序打包、标准化和部署。  例如，如果你希望使用 Azure Database for MySQL 后端快速部署 Web 应用，则可以使用来自 GitHub 库的此[快速入门模板](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/)来执行端到端部署。
+Azure 资源管理器利用基础 REST API 来声明并计划大规模部署所需的 Azure 资源，这与将基础结构作为代码的概念相一致。 模板可参数化 Azure 资源名称、SKU、网络、防火墙配置和设置，允许一次创建后多次使用。  可使用 [Azure 门户](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)或 [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI) 轻松创建 Azure 资源管理器模板。 这些模板允许自动执行可集成到 DevOps CI/CD 管道的应用程序打包、标准化和部署。  例如，如果你希望使用 Azure Database for MySQL 后端快速部署 Web 应用，则可以使用来自 GitHub 库的此[快速入门模板](https://azure.microsoft.com/resources/templates/webapp-managed-mysql/)来执行端到端部署。
 
 在本教程中，需使用 Azure 资源管理器模板以及其他实用工具了解如何完成以下操作：
 
@@ -78,28 +78,28 @@ Azure 资源管理器利用基础 REST API 来声明并计划大规模部署所�
 }
 ```
 在此请求中，需要进行自定义的值有：
-+   `name` - 指定 MySQL 服务器的名称（不带域名）。
-+   `location` - 为 MySQL 服务器指定有效的 Azure 数据中心区域。 例如 westus2。
-+   `properties/version` - 指定要部署的 MySQL 服务器版本。 例如 5.6 或 5.7。
-+   `properties/administratorLogin` - 指定服务器的 MySQL 管理员登录名。 管理员登录名不能为 azure_superuser、admin、administrator、root、guest 或 public。
-+   `properties/administratorLoginPassword` - 为上述指定的 MySQL 管理员用户指定密码。
-+   `properties/sslEnforcement` - 指定“已启用/已禁用”以启用/禁用 sslEnforcement。
-+   `storageProfile/storageMB` - 指定服务器所需的最大预配存储大小（以兆字节为单位）。 例如 5120。
-+   `storageProfile/backupRetentionDays` - 指定所需的备份保持期（天）。 例如 7 天。 
-+   `storageProfile/geoRedundantBackup` - 根据 Geo-DR 需求指定“已启用/已禁用”。
-+   `sku/tier` - 指定部署的 Basic、GeneralPurpose 或 MemoryOptimized 层。
-+   `sku/capacity` - 指定 vCore 容量。 可能值包括 2、4、8、16、32 或 64。
-+   `sku/family` - 指定 Gen5 以选择用于服务器部署的硬件代系。
-+   `sku/name` - 指定 TierPrefix_family_capacity。 例如 B_Gen5_1、GP_Gen5_16、MO_Gen5_32。 请参阅[定价层](./concepts-pricing-tiers.md)文档，了解每个区域和每个层的有效值。
-+   `resources/properties/virtualNetworkSubnetId` - 指定 Azure MySQL 服务器应位于的 VNet 中的子网的 Azure 标识符。 
-+   `tags(optional)` - 指定可选标记为用于对资源进行分类，以便计费等的键值对。
++ `name` - 指定 MySQL 服务器的名称（不带域名）。
++ `location` - 为 MySQL 服务器指定有效的 Azure 数据中心区域。 例如 westus2。
++ `properties/version` - 指定要部署的 MySQL 服务器版本。 例如 5.6 或 5.7。
++ `properties/administratorLogin` - 指定服务器的 MySQL 管理员登录名。 管理员登录名不能为 azure_superuser、admin、administrator、root、guest 或 public。
++ `properties/administratorLoginPassword` - 为上述指定的 MySQL 管理员用户指定密码。
++ `properties/sslEnforcement` - 指定“已启用/已禁用”以启用/禁用 sslEnforcement。
++ `storageProfile/storageMB` - 指定服务器所需的最大预配存储大小（以兆字节为单位）。 例如 5120。
++ `storageProfile/backupRetentionDays` - 指定所需的备份保持期（天）。 例如 7 天。 
++ `storageProfile/geoRedundantBackup` - 根据 Geo-DR 需求指定“已启用/已禁用”。
++ `sku/tier` - 指定部署的 Basic、GeneralPurpose 或 MemoryOptimized 层。
++ `sku/capacity` - 指定 vCore 容量。 可能值包括 2、4、8、16、32 或 64。
++ `sku/family` - 指定 Gen5 以选择用于服务器部署的硬件代系。
++ `sku/name` - 指定 TierPrefix_family_capacity。 例如 B_Gen5_1、GP_Gen5_16、MO_Gen5_32。 请参阅[定价层](./concepts-pricing-tiers.md)文档，了解每个区域和每个层的有效值。
++ `resources/properties/virtualNetworkSubnetId` - 指定 Azure MySQL 服务器应位于的 VNet 中的子网的 Azure 标识符。 
++ `tags(optional)` - 指定可选标记为用于对资源进行分类，以便计费等的键值对。
 
 如果希望构建 Azure Resource Manager 模板以自动为组织执行 Azure Database for MySQL 部署，建议首先从 Azure 快速入门 GitHub 库中的示例 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.dbformysql/managed-mysql-with-vnet/azuredeploy.json)开始，然后在此基础上进行构建。 
 
 如果不熟悉 Azure 资源管理器模板，但是想尝试一下，则可以按以下步骤进行操作：
-+   从 Azure 快速入门库中克隆或下载示例 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.dbformysql/managed-mysql-with-vnet/azuredeploy.json)。  
-+   修改 azuredeploy.parameters.json 以基于引用更新参数值，并保存文件。 
-+   借助 Azure CLI，使用以下命令创建 Azure MySQL 服务器
++ 从 Azure 快速入门库中克隆或下载示例 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.dbformysql/managed-mysql-with-vnet/azuredeploy.json)。  
++ 修改 azuredeploy.parameters.json 以基于引用更新参数值，并保存文件。 
++ 借助 Azure CLI，使用以下命令创建 Azure MySQL 服务器
 
 可在浏览器中使用 Azure Cloud Shell，或在自己的计算机上安装 Azure CLI，运行本教程中的代码块。
 
@@ -170,9 +170,9 @@ mysql> USE mysampledb;
 首先，创建表并加载一些数据。 创建一个存储清单信息的表。
 ```sql
 CREATE TABLE inventory (
-    id serial PRIMARY KEY, 
-    name VARCHAR(50), 
-    quantity INTEGER
+  id serial PRIMARY KEY, 
+  name VARCHAR(50), 
+  quantity INTEGER
 );
 ```
 

@@ -10,16 +10,17 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5f0368c3d2ee0132816852bfdf170700939bee46
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100556026"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949235"
 ---
 # <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板分配 Azure 角色
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] 除了使用 Azure PowerShell 或 Azure CLI 之外，还可以使用 [Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)分配角色。 如果需要一致且重复地部署资源，模板会很有用。 本文介绍如何使用模板分配角色。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] 除了使用 Azure PowerShell 或 Azure CLI 之外，还可以使用 [Azure 资源管理器模板](../azure-resource-manager/templates/syntax.md)分配角色。 如果需要一致且重复地部署资源，模板会很有用。 本文介绍如何使用模板分配角色。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,7 +32,7 @@ ms.locfileid: "100556026"
 
 ### <a name="user"></a>User
 
-若要获取用户的 ID，可以使用 [Get-AzADUser](/powershell/module/az.resources/get-azaduser) 或 [az ad user show](/cli/azure/ad/user#az-ad-user-show) 命令。
+若要获取用户的 ID，可以使用 [Get-AzADUser](/powershell/module/az.resources/get-azaduser) 或 [az ad user show](/cli/azure/ad/user#az_ad_user_show) 命令。
 
 ```azurepowershell
 $objectid = (Get-AzADUser -DisplayName "{name}").id
@@ -43,7 +44,7 @@ objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 
 ### <a name="group"></a>组
 
-若要获取组的 ID，可以使用 [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) 或 [az ad group show](/cli/azure/ad/group#az-ad-group-show) 命令。
+若要获取组的 ID，可以使用 [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) 或 [az ad group show](/cli/azure/ad/group#az_ad_group_show) 命令。
 
 ```azurepowershell
 $objectid = (Get-AzADGroup -DisplayName "{name}").id
@@ -67,7 +68,7 @@ objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectI
 
 ### <a name="application"></a>应用程序
 
-若要获取服务主体（应用程序使用的标识）的 ID，可以使用 [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) 或 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 命令。 对于服务主体，使用对象 ID，而不是应用程序 ID。
+若要获取服务主体（应用程序使用的标识）的 ID，可以使用 [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) 或 [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) 命令。 对于服务主体，使用对象 ID，而不是应用程序 ID。
 
 ```azurepowershell
 $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
@@ -307,7 +308,7 @@ az deployment group create --resource-group ExampleGroup --template-file rbac-te
 
 ### <a name="new-service-principal"></a>新服务主体
 
-如果创建新服务主体并立即尝试将角色分配给该服务主体，则在某些情况下该角色分配可能会失败。 例如，如果创建新托管标识，然后尝试将角色分配给同一 Azure 资源管理器模板中的服务主体，则角色分配可能会失败。 失败原因可能是复制延迟。 服务主体是在一个区域中创建的；但是，角色分配可能发生在尚未复制服务主体的其他区域中。
+如果创建新的服务主体并立即尝试将角色分配给该服务主体，则在某些情况下该角色分配可能会失败。 例如，如果创建新托管标识，然后尝试将角色分配给同一 Azure 资源管理器模板中的服务主体，则角色分配可能会失败。 此失败的原因可能是复制延迟。 服务主体是在一个区域中创建的；但是，角色分配可能发生在尚未复制服务主体的另一个区域中。
 
 若要解决这种情况，应在创建角色分配时将 `principalType` 属性设置为 `ServicePrincipal`。 还必须将角色分配的 `apiVersion` 设置为 `2018-09-01-preview` 或更高版本。
 
@@ -377,6 +378,6 @@ az deployment group create --resource-group ExampleGroup2 --template-file rbac-t
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门：使用 Azure 门户创建和部署 ARM 模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
-- [了解 ARM 模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
+- [了解 ARM 模板的结构和语法](../azure-resource-manager/templates/syntax.md)
 - [在订阅级别创建资源组和资源](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=rbac)

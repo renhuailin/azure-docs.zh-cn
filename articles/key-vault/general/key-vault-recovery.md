@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 author: msmbaldwin
 ms.date: 09/30/2020
-ms.openlocfilehash: c3ffbba9546ada54a42c3f2c2aa5d98da599b353
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 45f56812f0d6645c9ac75ce62f9f0659acc358fe
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749720"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970072"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>带软删除和清除保护功能的 Azure Key Vault 恢复管理
 
@@ -34,6 +34,8 @@ ms.locfileid: "107749720"
   |---|---|
   |Microsoft.KeyVault/locations/deletedVaults/read|查看软删除的密钥保管库的属性|
   |Microsoft.KeyVault/locations/deletedVaults/purge/action|清除软删除的密钥保管库|
+  |Microsoft.KeyVault/locations/operationResults/read| 检查保管库的清除状态|
+  |[密钥保管库参与者](../../role-based-access-control/built-in-roles.md#key-vault-contributor)|恢复软删除的保管库|
 
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>什么是软删除和清除保护
@@ -398,6 +400,5 @@ ms.locfileid: "107749720"
 - [Key Vault Azure CLI 命令](/cli/azure/keyvault)
 - [Azure Key Vault 备份](backup.md)
 - [如何启用 Key Vault 日志记录](howto-logging.md)
-- [保护对密钥保管库的访问](security-overview.md)
+- [Azure Key Vault 安全功能](security-features.md)
 - [Azure Key Vault 开发人员指南](developers-guide.md)
-- [使用密钥保管库的最佳做法](security-overview.md)

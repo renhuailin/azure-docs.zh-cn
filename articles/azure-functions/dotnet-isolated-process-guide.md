@@ -3,14 +3,15 @@ title: Azure Functions 中 .NET 5.0 的 .NET 隔离进程指南
 description: 了解如何使用 .NET 隔离进程在 Azure 中的进程外 .NET 5.0 上运行 C# 函数。
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 06/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: dacf3436ce98d839ad5b45361f1573c98c62d3e7
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+recommendations: false
+ms.openlocfilehash: 34a4a37d351f144d00d926de0544c8ae56e9a314
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563636"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901434"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>有关在 Azure 中的 .NET 5.0 上运行函数的指南
 
@@ -36,9 +37,7 @@ ms.locfileid: "102563636"
 + 全面控制进程：可以控制应用的启动，并可控制所用的配置和启动的中间件。
 + 依赖项注入：由于可以全面控制进程，因此可以使用当前的 .NET 依赖项注入行为，并将中间件整合到函数应用中。 
 
-## <a name="supported-versions"></a>支持的版本
-
-目前支持进程外运行的 .NET 版本只有 .NET 5.0。
+[!INCLUDE [functions-dotnet-supported-versions](../../includes/functions-dotnet-supported-versions.md)]
 
 ## <a name="net-isolated-project"></a>.NET 隔离项目
 
@@ -70,61 +69,72 @@ ms.locfileid: "102563636"
 
 使用 .NET 隔离函数时，可以访问函数应用的启动代码（通常在 Program.cs 中）。 你需要负责创建并启动自己的主机实例。 因此，你还可以直接访问应用的配置管道。 在进程外运行时，注入依赖项和运行中间件的操作要容易得多。 
 
-以下代码显示了 `HostBuilder` 管道的示例：
+以下代码显示了 [HostBuilder] 管道的示例：
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_startup":::
 
-`HostBuilder` 用于生成并返回已完全初始化的 `IHost` 实例，该实例以异步方式运行以启动函数应用。 
+此代码需要 `using Microsoft.Extensions.DependencyInjection;`。 
+
+[HostBuilder] 用于生成并返回已完全初始化的 [IHost] 实例，该实例以异步方式运行以启动函数应用。 
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_host_run":::
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>配置
 
-能够访问主机生成器管道意味着，可以在初始化期间设置任何特定于应用的配置。 这些配置将应用到在独立进程中运行的函数应用。 若要更改 Functions 主机或触发器以及绑定配置，仍需使用 [host.json 文件](functions-host-json.md)。      
+[ConfigureFunctionsWorkerDefaults] 方法用于添加函数应用在进程外运行所需的设置，包括以下功能：
 
-以下示例演示如何添加作为命令行参数读取的 `args` 配置： 
- 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_configure_app" :::
++ 转换器的默认设置。
++ 设置默认 [JsonSerializerOptions] 以忽略属性名称大小写。
++ 与 Azure Functions 日志记录集成。
++ 输出绑定中间件和功能。
++ 函数执行中间件。
++ 默认的 gRPC 支持。 
 
-`ConfigureAppConfiguration` 方法用于配置生成进程和应用程序的剩余部分。 此示例还使用 [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true)，因此可以更轻松地添加多个配置项。 由于 `ConfigureAppConfiguration` 返回相同的 [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true) 实例，因此也可以多次调用此方法来添加多个配置项。 可以从 [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) 和 [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) 访问完整的配置集。
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_configure_defaults" :::   
 
-若要详细了解配置，请参阅 [ASP.NET Core 中的配置](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true)。 
+能够访问主机生成器管道意味着还可以在初始化期间设置任何特定于应用的配置。 可以一次或多次调用[HostBuilder] 中的 [ConfigureAppConfiguration] 方法来添加函数应用所需的配置。 若要详细了解应用配置，请参阅 [ASP.NET Core 中的配置](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true)。 
+
+这些配置将应用到在独立进程中运行的函数应用。 若要更改 Functions 主机或触发器以及绑定配置，仍需使用 [host.json 文件](functions-host-json.md)。   
 
 ### <a name="dependency-injection"></a>依赖关系注入
 
-与 .NET 类库相比，依赖项注入已得到简化。 不必创建启动类来注册服务，而只需在主机生成器中调用 `ConfigureServices`，并使用 [`IServiceCollection`](/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection?view=dotnet-plat-ext-5.0&preserve-view=true) 中的扩展方法来注入特定的服务。 
+与 .NET 类库相比，依赖项注入已得到简化。 不必创建启动类来注册服务，而只需在主机生成器中调用 [ConfigureServices]，并使用 [IServiceCollection] 中的扩展方法来注入特定的服务。 
 
 以下示例注入单一实例服务依赖项：  
  
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_dependency_injection" :::
 
-有关详细信息，请参阅 [ASP.NET Core 中的依赖项注入](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true)。
+此代码需要 `using Microsoft.Extensions.DependencyInjection;`。 有关详细信息，请参阅 [ASP.NET Core 中的依赖项注入](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true)。
 
-<!--### Middleware
+### <a name="middleware"></a>中间件
 
-.NET isolated also supports middleware registration, again by using a model similar to what exists in ASP.NET. This model gives you the ability to inject logic into the invocation pipeline, and before and after functions execute.
+.NET 隔离进程还支持中间件注册，这同样是使用与 ASP.NET 中类似的模型实现的。 使用此模型可以在执行函数之前和之后将逻辑注入到调用管道中。
 
-While the full middleware registration set of APIs is not yet exposed, we do support middleware registration and have added an example to the sample application under the Middleware folder.
+[ConfigureFunctionsWorkerDefaults] 扩展方法具有一个重载，可让你注册自己的中间件，如以下示例中所示。  
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::-->
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/CustomMiddleware/Program.cs" id="docsnippet_middleware_register" :::
+
+有关在函数应用中使用自定义中间件的更完整示例，请参阅[自定义中间件参考示例](https://github.com/Azure/azure-functions-dotnet-worker/blob/main/samples/CustomMiddleware)。
 
 ## <a name="execution-context"></a>执行上下文
 
-.NET 隔离进程将 `FunctionContext` 对象传递给函数方法。 使用此对象可以通过调用 `GetLogger` 方法并提供 `categoryName` 字符串，来获取要写入到日志的 [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) 实例。 有关详细信息，请参阅[日志记录](#logging)。 
+.NET 隔离进程将 [FunctionContext] 对象传递给函数方法。 使用此对象可以通过调用 [GetLogger] 方法并提供 `categoryName` 字符串，来获取要写入到日志的 [ILogger] 实例。 有关详细信息，请参阅[日志记录](#logging)。 
 
 ## <a name="bindings"></a>绑定 
 
-绑定是通过在方法、参数和返回类型中使用特性定义的。 函数方法是包含 `Function` 以及一个应用于输入参数的触发器特性的方法，如以下示例中所示：
+绑定是通过在方法、参数和返回类型中使用特性定义的。 函数方法是包含 `Function` 特性以及一个应用于输入参数的触发器特性的方法，如以下示例中所示：
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
 
 触发器属性指定触发器类型并将输入数据绑定到一个方法参数。 以上示例函数将由一条队列消息触发，队列消息将传递给方法中的 `myQueueItem` 参数。
 
 `Function` 属性将该方法标记为函数入口点。 该名称在项目中必须是唯一的，以字母开头，并且只包含字母、数字、`_` 和 `-`，长度不得超过 127 个字符。 项目模板通常创建一个名为 `Run` 的方法，但方法名称可以是任何有效的 C# 方法名称。
 
-由于 .NET 隔离项目在独立的工作进程中运行，因此绑定无法利用丰富的绑定类，例如 `ICollector<T>`、`IAsyncCollector<T>` 和 `CloudBlockBlob`。 此外，不直接支持继承自底层服务 SDK 的类型，例如 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) 和 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)。 绑定依赖于字符串、数组和可序列化类型，例如普通旧类对象 (POCO)。 
+由于 .NET 隔离项目在独立的工作进程中运行，因此绑定无法利用丰富的绑定类，例如 `ICollector<T>`、`IAsyncCollector<T>` 和 `CloudBlockBlob`。 此外，不直接支持继承自底层服务 SDK 的类型，例如 [DocumentClient] 和 [BrokeredMessage]。 绑定依赖于字符串、数组和可序列化类型，例如普通旧类对象 (POCO)。 
 
-对于 HTTP 触发器，必须使用 `HttpRequestData` 和 `HttpResponseData` 来访问请求与响应数据。 这是因为，在进程外运行时，无法访问原始 HTTP 请求和响应对象。 
+对于 HTTP 触发器，必须使用 [HttpRequestData] 和 [HttpResponseData] 来访问请求与响应数据。 这是因为，在进程外运行时，无法访问原始 HTTP 请求和响应对象。
+
+有关在进程外运行时使用触发器和绑定的一组完整参考示例，请参阅[绑定扩展参考示例](https://github.com/Azure/azure-functions-dotnet-worker/blob/main/samples/Extensions)。 
 
 ### <a name="input-bindings"></a>输入绑定
 
@@ -134,35 +144,37 @@ While the full middleware registration set of APIs is not yet exposed, we do sup
 
 若要写入到输出绑定，必须将输出绑定特性应用到函数方法，该方法定义了如何写入到绑定的服务。 该方法返回的值将写入到输出绑定。 例如，以下示例使用输出绑定将一个字符串值写入到名为 `functiontesting2` 的消息队列：
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
 
 ### <a name="multiple-output-bindings"></a>多个输出绑定
 
-写入到输出绑定的数据始终是函数的返回值。 如果需要写入到多个输出绑定，必须创建自定义返回类型。 在此返回类型中，必须已将输出绑定特性应用到类的一个或多个属性。 以下示例写入到 HTTP 响应和队列输出绑定：
+写入到输出绑定的数据始终是函数的返回值。 如果需要写入到多个输出绑定，必须创建自定义返回类型。 在此返回类型中，必须已将输出绑定特性应用到类的一个或多个属性。 以下来自 HTTP 触发器的示例写入到 HTTP 响应和队列输出绑定：
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Function1/Function1.cs" id="docsnippet_multiple_outputs":::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/MultiOutput/MultiOutput.cs" id="docsnippet_multiple_outputs":::
+
+来自 HTTP 触发器的响应始终被视为输出，因此不需要返回值属性。
 
 ### <a name="http-trigger"></a>HTTP 触发器
 
-HTTP 触发器将传入的 HTTP 请求消息转换为要传递给函数的 `HttpRequestData` 对象。 此对象提供请求中的数据，包括 `Headers`、`Cookies`、`Identities`、`URL` 和可选消息 `Body`。 此对象是 HTTP 请求对象的表示形式，而不是请求本身。 
+HTTP 触发器将传入的 HTTP 请求消息转换为要传递给函数的 [HttpRequestData] 对象。 此对象提供请求中的数据，包括 `Headers`、`Cookies`、`Identities`、`URL` 和可选消息 `Body`。 此对象是 HTTP 请求对象的表示形式，而不是请求本身。 
 
-同样，函数返回一个 `HttpReponseData` 对象，该对象提供用于创建 HTTP 响应的数据，包括消息 `StatusCode`、`Headers` 和可选消息 `Body`。  
+同样，函数返回一个 [HttpReponseData] 对象，该对象提供用于创建 HTTP 响应的数据，包括消息 `StatusCode`、`Headers` 和可选消息 `Body`。  
 
 以下代码是一个 HTTP 触发器 
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
 
 ## <a name="logging"></a>日志记录
 
-在 .NET 隔离进程中，可以使用 [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) 实例写入日志，该实例是从传递给函数的 `FunctionContext` 对象获取的。 调用 `GetLogger` 方法并传递一个字符串值，该值是在其中写入日志的类别的名称。 该类别通常是从中写入日志的特定函数的名称。 若要详细了解类别，请参阅[有关监视的文章](functions-monitoring.md#log-levels-and-categories)。 
+在 .NET 隔离进程中，可以使用 [ILogger] 实例写入日志，该实例是从传递给函数的 [FunctionContext] 对象获取的。 调用 [GetLogger] 方法并传递一个字符串值，该值是在其中写入日志的类别的名称。 该类别通常是从中写入日志的特定函数的名称。 若要详细了解类别，请参阅[有关监视的文章](functions-monitoring.md#log-levels-and-categories)。 
 
-以下示例演示如何获取 `ILogger` 并在函数中写入日志：
+以下示例演示如何获取 [ILogger] 并在函数中写入日志：
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
 
-使用 `ILogger` 的各种方法写入各种日志级别，例如 `LogWarning` 或 `LogError`。 若要详细了解日志级别，请参阅[有关监视的文章](functions-monitoring.md#log-levels-and-categories)。
+使用 [ILogger] 的各种方法写入各种日志级别，例如 `LogWarning` 或 `LogError`。 若要详细了解日志级别，请参阅[有关监视的文章](functions-monitoring.md#log-levels-and-categories)。
 
-使用[依赖项注入](#dependency-injection)时还会提供 [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true)。
+使用[依赖项注入](#dependency-injection)时还会提供 [ILogger]。
 
 ## <a name="differences-with-net-class-library-functions"></a>与 .NET 类库函数之间的差异
 
@@ -171,18 +183,18 @@ HTTP 触发器将传入的 HTTP 请求消息转换为要传递给函数的 `Http
 | 功能/行为 |  进程内 (.NET Core 3.1) | 进程外 (.NET 5.0) |
 | ---- | ---- | ---- |
 | .NET 版本 | LTS (.NET Core 3.1) | 当前版本 (.NET 5.0) |
-| 核心包 | [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) | [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/)<br/>[Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk) | 
-| 绑定扩展包 | [`Microsoft.Azure.WebJobs.Extensions.*`](https://www.nuget.org/packages?q=Microsoft.Azure.WebJobs.Extensions)  | 在 [`Microsoft.Azure.Functions.Worker.Extensions.*`](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions) 下 | 
-| 日志记录 | 传递给函数的 [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) | 从 `FunctionContext` 获取的 [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) |
+| 核心包 | [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) | [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/)<br/>[Microsoft.Azure.Functions.Worker.Sdk](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk) | 
+| 绑定扩展包 | [Microsoft.Azure.WebJobs.Extensions.*](https://www.nuget.org/packages?q=Microsoft.Azure.WebJobs.Extensions)  | 在 [Microsoft.Azure.Functions.Worker.Extensions.*](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions) 下 | 
+| 日志记录 | 传递给函数的 [ILogger] | 从 [FunctionContext] 获取的 [ILogger] |
 | 取消令牌 | [支持](functions-dotnet-class-library.md#cancellation-tokens) | 不支持 |
 | 输出绑定 | 输出参数 | 返回值 |
-| 输出绑定类型 |  `IAsyncCollector`、[DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet&preserve-view=true)、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true) 和其他特定于客户端的类型 | 简单类型、JSON 可序列化类型和数组。 |
+| 输出绑定类型 |  `IAsyncCollector`、[DocumentClient]、[BrokeredMessage] 和其他特定于客户端的类型 | 简单类型、JSON 可序列化类型和数组。 |
 | 多个输出绑定 | 支持 | [支持](#multiple-output-bindings) |
-| HTTP 触发器 | [`HttpRequest`](/dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true)/[`ObjectResult`](/dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true) | `HttpRequestData`/`HttpResponseData` |
+| HTTP 触发器 | [HttpRequest]/[ObjectResult] | [HttpRequestData]/[HttpResponseData] |
 | Durable Functions | [支持](durable/durable-functions-overview.md) | 不支持 | 
 | 命令性绑定 | [支持](functions-dotnet-class-library.md#binding-at-runtime) | 不支持 |
 | function.json 项目 | 已生成 | 不生成 |
-| Configuration | [host.json](functions-host-json.md) | [host.json](functions-host-json.md) 和[自定义初始化](#configuration) |
+| Configuration | [host.json](functions-host-json.md) | [host.json](functions-host-json.md) 和自定义初始化 |
 | 依赖关系注入 | [支持](functions-dotnet-dependency-injection.md)  | [支持](#dependency-injection) |
 | 中间件 | 不支持 | 支持 |
 | 冷启动时间 | 典型 | 因为是即时启动，所以时间更长。 在 Linux 而不是 Windows 上运行，以减少潜在的延迟。 |
@@ -196,3 +208,21 @@ HTTP 触发器将传入的 HTTP 请求消息转换为要传递给函数的 `Http
 
 + [详细了解触发器和绑定](functions-triggers-bindings.md)
 + [详细了解有关 Azure Functions 的最佳做法](functions-best-practices.md)
+
+
+[HostBuilder]: /dotnet/api/microsoft.extensions.hosting.hostbuilder?view=dotnet-plat-ext-5.0&preserve-view=true
+[IHost]: /dotnet/api/microsoft.extensions.hosting.ihost?view=dotnet-plat-ext-5.0&preserve-view=true
+[ConfigureFunctionsWorkerDefaults]: /dotnet/api/microsoft.extensions.hosting.workerhostbuilderextensions.configurefunctionsworkerdefaults?view=azure-dotnet&preserve-view=true#Microsoft_Extensions_Hosting_WorkerHostBuilderExtensions_ConfigureFunctionsWorkerDefaults_Microsoft_Extensions_Hosting_IHostBuilder_
+[ConfigureAppConfiguration]: /dotnet/api/microsoft.extensions.hosting.hostbuilder.configureappconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true
+[IServiceCollection]: /dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection?view=dotnet-plat-ext-5.0&preserve-view=true
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostbuilder.configureservices?view=dotnet-plat-ext-5.0&preserve-view=true
+[FunctionContext]: /dotnet/api/microsoft.azure.functions.worker.functioncontext?view=azure-dotnet&preserve-view=true
+[ILogger]: /dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true
+[GetLogger]: /dotnet/api/microsoft.azure.functions.worker.functioncontextloggerextensions.getlogger?view=azure-dotnet&preserve-view=true
+[DocumentClient]: /dotnet/api/microsoft.azure.documents.client.documentclient
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[HttpRequestData]: /dotnet/api/microsoft.azure.functions.worker.http.httprequestdata?view=azure-dotnet&preserve-view=true
+[HttpResponseData]: /dotnet/api/microsoft.azure.functions.worker.http.httpresponsedata?view=azure-dotnet&preserve-view=true
+[HttpRequest]: /dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true
+[ObjectResult]: /dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true
+[JsonSerializerOptions]: /dotnet/api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true

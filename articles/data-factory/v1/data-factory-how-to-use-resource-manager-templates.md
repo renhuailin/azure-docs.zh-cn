@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8ade57fc4cf96e3638fffc918899385d8935c95f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec2e7d2f80e19d2e001fec0a3949f469b33149d2
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782888"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957147"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "104782888"
 此外，鉴于该组织希望在不同环境内多次部署这 10 个数据工厂，因此模板可通过利用开发、测试和生产环境的单独参数文件来使用此 **可重用性**。
 
 ## <a name="templating-with-azure-resource-manager"></a>通过 Azure 资源管理器实现模板化
-[Azure 资源管理器模板](../../azure-resource-manager/templates/overview.md)是实现 Azure 数据工厂模板化的好办法。 Resource Manager 模板通过 JSON 文件定义 Azure 解决方案的基础结构和配置。 由于 Azure 资源管理器模板适用于所有/多数 Azure 服务，因此可广泛用于轻松管理 Azure 资产的所有资源。 若要深入了解常用的资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)。
+[Azure 资源管理器模板](../../azure-resource-manager/templates/overview.md)是实现 Azure 数据工厂模板化的好办法。 Resource Manager 模板通过 JSON 文件定义 Azure 解决方案的基础结构和配置。 由于 Azure 资源管理器模板适用于所有/多数 Azure 服务，因此可广泛用于轻松管理 Azure 资产的所有资源。 若要深入了解常用的资源管理器模板，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)。
 
 ## <a name="tutorials"></a>教程
 请参阅以下教程，获取使用 Resource Manager 模板创建数据工厂实体的分步说明：
@@ -224,7 +224,7 @@ dataFactoryName 在“变量”中定义为：
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>参数化数据工厂模板
-有关参数化的最佳做法，请参阅[创建 Azure 资源管理器模板的最佳做法](../../azure-resource-manager/templates/template-best-practices.md)。 通常，应将参数使用率降到最低，可改用变量时尤其如此。 仅在以下情况提供参数：
+有关参数化的最佳做法，请参阅[创建 Azure 资源管理器模板的最佳做法](../../azure-resource-manager/templates/best-practices.md)。 通常，应将参数使用率降到最低，可改用变量时尤其如此。 仅在以下情况提供参数：
 
 * 设置因环境（如：开发、测试和生产）而异
 * 机密（如密码）

@@ -1,18 +1,18 @@
 ---
 title: 分析部署规划器报表以使用 Azure Site Recovery 进行 VMware 灾难恢复
 description: 本文介绍如何分析 Azure Site Recovery 部署规划器生成的报表，以使用 Azure Site Recovery 从 VMware 灾难恢复到 Azure。
-author: rajeswari-mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/4/2019
-ms.author: ramamill
-ms.openlocfilehash: 7e2db720bb37a25b8511bd1c42c0c18e139aa216
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: f41c06014aea251896af11201175819abfc7fa78
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93186597"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577234"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析部署规划器报表以从 VMware 灾难恢复到 Azure
 

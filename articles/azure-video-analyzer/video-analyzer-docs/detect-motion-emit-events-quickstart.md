@@ -4,12 +4,12 @@ description: 本快速入门介绍如何以编程方式调用直接方法，从�
 ms.topic: quickstart
 ms.date: 03/17/2021
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 478e446f87ee8e1fc05ec00aca98125f348ed528
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f0f36f1dc08d7e5c9100814456ab5d21a37123fc
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385103"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957716"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>快速入门：检测运动并发出事件
 
@@ -127,4 +127,4 @@ ms.locfileid: "110385103"
 - 查看高级用户面临的其他挑战：
 
   - 使用支持 RTSP 的 [IP 相机](https://en.wikipedia.org/wiki/IP_camera)，而不是使用 RTSP 模拟器。 可以在 [ONVIF 一致性](https://www.onvif.org/conformant-products/)产品页上找到支持 RTSP 的 IP 相机。 查找符合配置文件 G、S 或 T 的设备。
-  - 使用 AMD64 或 x64 Linux 设备，而不使用 Azure 中的 Linux VM。 此设备必须与 IP 相机位于同一网络中。 按照[在 Linux 上安装 Azure IoT Edge 运行时](/azure/iot-edge/how-to-install-iot-edge?view=iotedge-2020-11&preserve-view=true)中的说明进行操作。 然后按照[将首个 IoT Edge 模块部署到虚拟 Linux 设备](/azure/iot-edge/quickstart-linux?view=iotedge-2020-11&preserve-view=true)中的说明进行操作，将设备注册到 Azure IoT 中心。
+  - 使用 AMD64 或 x64 Linux 设备，而不使用 Azure 中的 Linux VM。 此设备必须与 IP 相机位于同一网络中。 按照[在 Linux 上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge.md?preserve-view=true&view=iotedge-2020-11)中的说明进行操作。 然后按照[将首个 IoT Edge 模块部署到虚拟 Linux 设备](../../iot-edge/quickstart-linux.md?preserve-view=true&view=iotedge-2020-11)中的说明进行操作，将设备注册到 Azure IoT 中心。

@@ -2,15 +2,15 @@
 title: 快速入门：使用 Azure PowerShell 创建 Apache Kafka - HDInsight
 description: 在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure PowerShell 创建 Apache Kafka 群集。 还可以了解 Kafka 主题、订阅服务器和使用者。
 ms.service: hdinsight
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurepowershell
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 881e37143d9ba77786889e4228069872cdac941a
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 7f29ba5291ab80ef4a4d323e23741c333796c7a8
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190204"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691150"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>快速入门：使用 PowerShell 在 Azure HDInsight 中创建 Apache Kafka 群集
 

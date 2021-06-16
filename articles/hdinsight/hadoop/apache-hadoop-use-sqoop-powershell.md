@@ -3,14 +3,14 @@ title: 使用 PowerShell 和 Azure HDInsight 运行 Apache Sqoop 作业
 description: 了解如何从工作站使用 Azure PowerShell 在 Apache Hadoop 群集与 Azure SQL 数据库之间运行 Apache Sqoop 导入和导出。
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurepowershell
 ms.date: 05/14/2020
-ms.openlocfilehash: 7d1f0a4982402a7854841f17c1915625e2f01cc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fd86c77d8dfcd304bee0bdfe0c12269dbccd884
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943131"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692048"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>在 HDInsight 中使用 Azure PowerShell 运行 Apache Sqoop 作业
 

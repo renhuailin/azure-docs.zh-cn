@@ -4,19 +4,19 @@ description: 使用 Azure PowerShell 示例脚本在两个弹性池之间移动 
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: stevestein
-ms.reviewer: ''
-ms.author: sstein
+author: arvindshmicrosoft
+ms.author: arvindsh
+ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: bc6054292d1a4f73bd12d90b877fc639e81802fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd953a250378745714d8efdd2e62f8f95bdbbe08
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87084985"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708011"
 ---
 # <a name="use-powershell-to-create-elastic-pools-and-move-a-database-between-them"></a>使用 PowerShell 创建弹性池，并在其间移动数据库
 

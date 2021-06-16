@@ -896,7 +896,7 @@
       href: /powershell/module/az.datafactory/
     - name: REST API
       href: /rest/api/datafactory
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory
@@ -909,7 +909,7 @@
     - name: 白皮书
       href: whitepapers.md
     - name: 常见问题解答
-      href: frequently-asked-questions.md
+      href: frequently-asked-questions.yml
       displayName: timeout
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=data-factory'

@@ -3,21 +3,21 @@ title: 教程：创建使用 Microsoft 标识平台进行身份验证的 JavaScr
 titleSuffix: Microsoft identity platform
 description: 在本教程中，我们生成一个使用 Microsoft 标识平台将用户登录的 JavaScript 单页应用，并获取访问令牌以代表用户调用 Microsoft Graph API。
 services: active-directory
-author: navyasric
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
 ms.date: 08/06/2020
-ms.author: nacanuma
+ms.author: mtillman
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: ce6cff4164b6f0f2ffe2dbff1c74be34ba625fb5
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: e76dfe71f54eacbde2b34958e0abb70e64dbe0a9
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072452"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075216"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>教程：让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 

@@ -2,21 +2,21 @@
 title: 了解 Azure Active Directory 中的链接登录
 description: 了解 Azure Active Directory 中的链接登录。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/30/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 6ed6f6b69326157573ea043457dbc8d8a3079146
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 026e2cbc49bea93f326cc7c86b0b7e113bfd754c
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374567"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076251"
 ---
 # <a name="understand-linked-sign-on"></a>了解链接登录
 
@@ -42,7 +42,7 @@ ms.locfileid: "107374567"
 >
 > 如果使用“应用注册”注册了应用程序，则默认情况下，单一登录功能将设置为使用 OIDC OAuth。 在这种情况下，“企业应用程序”下的导航中将不会显示“单一登录”选项。 使用“应用注册”添加自定义应用时，将在清单文件中配置选项。 要详细了解清单文件，请参阅 [Azure Active Directory 应用部件清单 (manifest)](../develop/reference-app-manifest.md)。 要了解有关 SSO 标准的详细信息，请参阅[使用 Microsoft 标识平台进行身份验证和授权](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-the-microsoft-identity-platform)。 
 >
-> 导航中将缺少“单一登录”的另一种场景是：应用程序托管在另一个租户中，或者如果你的帐户没有所需权限（全局管理员、云应用程序管理员、应用程序管理员或服务主体的所有者）。 权限还可能会导致出现下面的情况：你可以打开“单一登录”但无法保存。 详细了解 Azure AD 管理角色，请参阅（ https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
+> 导航中将缺少“单一登录”的另一种场景是：应用程序托管在另一个租户中，或者如果你的帐户没有所需权限（全局管理员、云应用程序管理员、应用程序管理员或服务主体的所有者）。 权限还可能导致出现你可打开“单一登录”，但无法保存它的情况。 详细了解 Azure AD 管理角色，请参阅（ https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
 
 ### <a name="configure-link"></a>配置链接
 

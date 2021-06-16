@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 4b1bdd1addec93647eaa631a89e6d419f7ecf477
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 2feee9beb6232320cc5265227754b0803d248bae
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789130"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028228"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建公共负载均衡器，以对 VM 进行负载均衡
 
@@ -41,9 +41,9 @@ ms.locfileid: "109789130"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/load-balancer-standard-create/)。
 
-负载均衡器和公共 IP SKU 必须匹配。 创建标准负载均衡器时，还必须创建一个作为该标准负载均衡器的前端配置的新标准公共 IP 地址。 若要创建基本负载均衡器，请使用[此模板](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)。 Microsoft 建议将标准 SKU 用于生产工作负载。
+负载均衡器和公共 IP SKU 必须匹配。 创建标准负载均衡器时，还必须创建一个作为该标准负载均衡器的前端配置的新标准公共 IP 地址。 若要创建基本负载均衡器，请使用[此模板](https://azure.microsoft.com/resources/templates/2-vms-loadbalancer-natrules/)。 Microsoft 建议将标准 SKU 用于生产工作负载。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/load-balancer-standard-create/azuredeploy.json":::
 

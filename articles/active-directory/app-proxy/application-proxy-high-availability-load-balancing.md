@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 8dbff6b53133bace6643b21c8faa706ef817f1de
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 215c8e2d2f758044898fa184bc10721996d84b5f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286269"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964726"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>应用程序代理连接器和应用程序的高可用性与负载均衡
 
@@ -91,6 +91,6 @@ ms.locfileid: "108286269"
 
 - [启用应用程序代理](application-proxy-add-on-premises-application.md)
 - [启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
-- [启用条件访问](../manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+- [启用条件访问](./application-proxy-integrate-with-sharepoint-server.md)
 - [解决使用应用程序代理时遇到的问题](application-proxy-troubleshoot.md)
 - [了解 Azure AD 体系结构如何支持高可用性](../fundamentals/active-directory-architecture.md)

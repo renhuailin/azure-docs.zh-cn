@@ -7,16 +7,16 @@ ms.subservice: elastic-pools
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: arvindshmicrosoft
+ms.author: arvindsh
+ms.reviewer: mathoma
 ms.date: 06/25/2019
-ms.openlocfilehash: 9fcb23750137c8286efbc0e1fb7446e324c572dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73fa80ba18e4b008c2865a8db021f1e39904ca2e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92747349"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707906"
 ---
 # <a name="use-the-azure-cli-to-move-a-database-in-sql-database-in-a-sql-elastic-pool"></a>使用 Azure CLI 移动 SQL 弹性池中 SQL 数据库中的数据库
 

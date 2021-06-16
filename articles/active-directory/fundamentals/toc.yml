@@ -256,4 +256,4 @@
     - name: 获取对 Azure Active Directory 的支持
       href: active-directory-troubleshooting-support-howto.md
     - name: Azure Active Directory 常见问题
-      href: active-directory-faq.md
+      href: active-directory-faq.yml

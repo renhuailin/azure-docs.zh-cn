@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3adefe2f7a92291d0c37efc4416b82193ec67317
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.openlocfilehash: 3292140e786550eace9c8d5080b1b44bc411a4a5
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165976"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679075"
 ---
 # <a name="data-warehouse-units-dwus-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）的数据仓库单位 (DWU)
 
@@ -129,7 +129,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置。
 
-3. 单击“保存” 。 此时会显示确认消息。 单击“是”确认，或者单击“否”取消。
+3. 单击“保存”  。 此时会显示确认消息。 单击“是”确认，或者单击“否”取消。
 
 #### <a name="powershell"></a>PowerShell
 

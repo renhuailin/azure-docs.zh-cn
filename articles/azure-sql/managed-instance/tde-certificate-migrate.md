@@ -10,13 +10,13 @@ ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
-ms.date: 07/21/2020
-ms.openlocfilehash: c465da3d5d812ea7e811cbe59318122700c6e786
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.openlocfilehash: 4da8b42e79b1689893d6509ff6d1a428c39821d7
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97824671"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790289"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>将 TDE 保护的数据库的证书迁移到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -149,7 +149,10 @@ Update-Module -Name Az.Sql
 2. 完成所有准备步骤后，运行以下命令将 base-64 编码的证书上传到目标托管实例：
 
    ```azurepowershell
+   # If you are using PowerShell 6.0 or higher, run this command:
    $fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -AsByteStream
+   # If you are using PowerShell 5.x, uncomment and run this command instead of the one above:
+   # $fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -Encoding Byte
    $base64EncodedCert = [System.Convert]::ToBase64String($fileContentBytes)
    $securePrivateBlob = $base64EncodedCert  | ConvertTo-SecureString -AsPlainText -Force
    $password = "<password>"

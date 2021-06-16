@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 7fd9e504448d55b4a2ef8c10b4ba1176cb2e3402
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: daf339a1ba79212f82a853a209068c97c13b29f8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96172629"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965998"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>将所有应用与 Azure AD 集成的五个步骤
 
@@ -86,11 +86,11 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
 
 ## <a name="4-integrate-on-premises-applications"></a>4.集成本地应用程序
 
-通常，应用程序只有在连接到企业网络时才允许访问，从而保持安全性。 但是，在越来越多的环境中，我们希望允许客户、合作伙伴和/或员工访问应用，而不考虑他们在世界各地的位置。 [Azure AD 应用程序代理](../manage-apps/what-is-application-proxy.md) (AppProxy) 是 Azure AD 的一项功能，它将现有的本地应用程序连接到 Azure AD，无需维护边缘服务器或其他其他基础结构来执行此操作。
+通常，应用程序只有在连接到企业网络时才允许访问，从而保持安全性。 但是，在越来越多的环境中，我们希望允许客户、合作伙伴和/或员工访问应用，而不考虑他们在世界各地的位置。 [Azure AD 应用程序代理](../app-proxy/what-is-application-proxy.md) (AppProxy) 是 Azure AD 的一项功能，它将现有的本地应用程序连接到 Azure AD，无需维护边缘服务器或其他其他基础结构来执行此操作。
 
 ![关系图显示应用程序代理服务的运行情况。 用户访问“https://sales.contoso.com”，并且他们的请求通过 Azure Active Directory 中的“https://sales-contoso.msappproxy.net”重定向到本地地址“http://sales”](./media/five-steps-to-full-application-integration-with-azure-ad\app-proxy.png)
 
-你可以使用[教程：在 Azure Active Directory 中通过应用程序代理添加用于远程访问的本地应用程序](../manage-apps/application-proxy-add-on-premises-application.md)，以启用应用程序代理并将本地应用程序添加到 Azure AD 租户。
+你可以使用[教程：在 Azure Active Directory 中通过应用程序代理添加用于远程访问的本地应用程序](../app-proxy/application-proxy-add-on-premises-application.md)，以启用应用程序代理并将本地应用程序添加到 Azure AD 租户。
 
 此外，你可以集成应用程序传送控制器（如 F5 Big-IP APM 或 Zscaler Private Access）。 通过将这些功能与 Azure AD 集成，你可以与合作伙伴产品的流量管理和安全功能 Azure AD 进行新式身份验证和标识管理。 我们将这种解决方案称为[安全的混合访问](../manage-apps/secure-hybrid-access.md)。 如果你现在使用以下任何服务，我们将提供一些教程，指导你如何将它们与 Azure AD 集成。
 

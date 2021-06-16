@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/04/2021
 ms.topic: how-to
-ms.openlocfilehash: 7170044af58a508ff5a43751cc376f8b8d498444
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 8ea126637679974035d62cc415c4fd07f597d53f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435539"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961858"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 生成和部署 HPC 解决方案
 
@@ -22,7 +22,7 @@ Azure DevOps 提供的工具可用于自动生成和测试高性能计算 (HPC) 
 
 若要按照本文中的步骤进行操作，需要一个 [Azure DevOps 组织](/azure/devops/organizations/accounts/create-organization)。 还需要[在 Azure DevOps 中创建一个项目](/azure/devops/organizations/projects/create-project)。
 
-在开始之前，有必要对[源代码管理](/azure/devops/user-guide/source-control)和 [Azure 资源管理器模板语法](../azure-resource-manager/templates/template-syntax.md)有一个基本的了解。
+在开始之前，有必要对[源代码管理](/azure/devops/user-guide/source-control)和 [Azure 资源管理器模板语法](../azure-resource-manager/templates/syntax.md)有一个基本的了解。
 
 ## <a name="create-an-azure-pipeline"></a>创建 Azure 管道
 

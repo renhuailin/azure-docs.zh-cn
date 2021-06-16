@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 335a63faa440e057c282f992b67b301289a7a4bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1186d6c138b555144d59414d7b1d9293474390d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97356950"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079618"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：通过 Azure 门户在 Windows 虚拟机上创建 SQL Server 2017
 
@@ -34,7 +34,7 @@ ms.locfileid: "97356950"
 
   > [!TIP]
   > - 本快速入门提供的路径适用于快速预配并连接到 SQL VM。 若要详细了解其他 SQL VM 预配选择，请参阅 [Azure 门户中的 Windows VM 上的 SQL Server 预配指南](create-sql-vm-portal.md)。
-  > - 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。
+  > - 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.yml)。
 
 ## <a name="get-an-azure-subscription"></a><a id="subscription"></a> 获取 Azure 订阅
 
@@ -71,7 +71,7 @@ ms.locfileid: "97356950"
 
    ![实例详细信息](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
 
-1. 在“管理员帐户”下提供用户名（例如 _azureuser_）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+1. 在“管理员帐户”下提供用户名（例如 _azureuser_）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。
 
    ![管理员帐户](./media/sql-vm-create-portal-quickstart/basics-administrator-account.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "97356950"
 
 1. 在“密码”  框中，键入登录的密码。
 
-1. 选择“连接”。
+1. 选择“连接” 。
 
     ![ssms 连接](./media/sql-vm-create-portal-quickstart/ssms-connect.png)
 

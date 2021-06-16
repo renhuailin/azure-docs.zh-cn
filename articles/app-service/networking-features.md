@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7410793a429395b7f1b1e826c66cb2647eb77cd2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 33cfd226df9f7620bafe2e404cc43050f176de13
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367703"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892051"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -298,7 +298,7 @@ ASE 提供最佳的隔离和专用应用托管，但它确实涉及了一些管�
 
 如果这两种需求都不适用，那么最好使用专用终结点。 使用应用服务中提供的专用终结点，你可以在虚拟网络中的专用地址上公开你的应用。 可跨 ExpressRoute 和 VPN 连接来访问你放置在虚拟网络中的专用终结点。 
 
-配置专用终结点将在专用地址上公开你的应用，但你需要配置 DNS 以便从本地访问该地址。 要正常使用此配置，需要将包含专用终结点的 Azure DNS 专用区域转发到本地 DNS 服务器。 Azure DNS 专用区域不支持区域转发，但可以使用可实现该用途的 DNS 服务器来支持区域转发。 [DNS 转发器](https://azure.microsoft.com/resources/templates/301-dns-forwarder/)模板支持更轻松地将 Azure DNS 专用区域转发到本地 DNS 服务器。
+配置专用终结点将在专用地址上公开你的应用，但你需要配置 DNS 以便从本地访问该地址。 要正常使用此配置，需要将包含专用终结点的 Azure DNS 专用区域转发到本地 DNS 服务器。 Azure DNS 专用区域不支持区域转发，但可以使用可实现该用途的 DNS 服务器来支持区域转发。 [DNS 转发器](https://azure.microsoft.com/resources/templates/dns-forwarder/)模板支持更轻松地将 Azure DNS 专用区域转发到本地 DNS 服务器。
 
 ## <a name="app-service-ports"></a>应用服务端口
 

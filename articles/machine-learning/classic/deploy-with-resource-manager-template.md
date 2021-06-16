@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-azurepowershell
 ms.date: 02/05/2018
-ms.openlocfilehash: ee0bee4857d410781561e6f7f6a7eae0509d1138
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c81397fb7729e6ce55da6fa7c8121de43c96130
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520028"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956046"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>使用 Azure 资源管理器部署 Azure 机器学习工作室（经典）工作区
 
@@ -142,7 +142,7 @@ Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEa
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[编写 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息
+* 了解有关[编写 Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)的详细信息
 * 请查看 [Azure 快速启动模板存储库](https://github.com/Azure/azure-quickstart-templates)。
 * 观看有关 [Azure 资源管理器](https://channel9.msdn.com/Events/Ignite/2015/C9-39)的视频。
 * 请参阅[资源管理器模板参考帮助](/azure/templates/microsoft.machinelearning/allversions)

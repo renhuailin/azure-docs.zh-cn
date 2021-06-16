@@ -22,7 +22,7 @@
     - name: 使用 MQTT 连接设备
       href: tutorial-use-mqtt.md
     - name: 连接 MXCHIP 设备
-      href: /azure/iot-develop/quickstart-devkit-mxchip-az3166
+      href: ../iot-develop/quickstart-devkit-mxchip-az3166.md
     - name: 连接设备模块
       href: tutorial-migrate-device-to-module.md
     - name: 预览 - 使用时序见解 Gen2 来连接和分析数据

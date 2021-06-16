@@ -2,18 +2,18 @@
 title: 使用 Azure 存储空间库存计算 blob 计数和大小
 description: 了解如何计算每个容器的 blob 计数和总大小。
 services: storage
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 03/10/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: e752d40ce2f237c2ab08bac2e71133cd06ec40e4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 8365c4873165b5a8040bc3def5743eca435cb7e9
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277175"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653930"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>使用 Azure 存储空间库存计算每个容器的 blob 计数和总大小
 

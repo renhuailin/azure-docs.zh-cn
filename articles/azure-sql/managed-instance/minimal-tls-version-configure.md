@@ -4,18 +4,18 @@ description: 了解如何为托管实例配置最低 TLS 版本
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
-ms.custom: ''
+ms.custom: devx-track-azurepowershell
 ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: 17d430946f3cba1aa4680d1eaf8979fa4338bc22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e87c1d658792662893b86213324b8367960e9e5
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92788394"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666358"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>在 Azure SQL 托管实例中配置最低 TLS 版本
 借助最低[传输层安全性 (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) 版本设置，客户可以控制其 Azure SQL 托管实例使用的 TLS 版本。

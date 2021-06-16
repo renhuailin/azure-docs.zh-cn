@@ -3,14 +3,14 @@ title: 教程：具有数据工厂的 Azure HDInsight 中的按需群集
 description: 教程 - 了解如何使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集。
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: seoapr2020
+ms.custom: seoapr2020, devx-track-azurepowershell
 ms.date: 04/24/2020
-ms.openlocfilehash: c61ad4d26c4a03889d9ac80332335543ec4140b7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3cf8b53cdabbd9360c3e57e5e633327dd4e8a4ad
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868975"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698506"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教程：使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集
 
@@ -189,7 +189,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 3. 为“新建数据工厂”磁贴输入或选择以下值：
 
-    |属性  |值  |
+    |属性  |Value  |
     |---------|---------|
     |名称 | 输入数据工厂的名称。 此名称必须全局唯一。|
     |版本 | 保留为“V2”。 |
@@ -231,7 +231,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 4. 为存储链接服务提供以下值：
 
-    |属性 |值 |
+    |属性 |Value |
     |---|---|
     |名称 |输入 `HDIStorageLinkedService`。|
     |Azure 订阅 |从下拉列表中选择你的订阅。|
@@ -253,7 +253,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 4. 在“新建链接服务”窗口中，输入以下值，并将其余项保留为默认值：
 
-    | 属性 | 值 |
+    | 属性 | Value |
     | --- | --- |
     | 名称 | 输入 `HDInsightLinkedService`。|
     | 类型 | 选择“按需 HDInsight”。 |

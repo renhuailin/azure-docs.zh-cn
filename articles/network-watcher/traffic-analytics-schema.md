@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 765a2728c5de49787a64fff723625e53e100e450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bc493197b6ae4e6bd969a837bb873cae38c0790
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98017776"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032008"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合
 
@@ -177,4 +177,4 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 1. 某些字段名称的后面追加了 \_s 或 \_d。 这些后缀并不表示源 (source) 和目标 (destination)，而是表示数据类型字符串 (string) 和十进制 (decimal)。
 
 ### <a name="next-steps"></a>后续步骤
-若要获取常见问题的解答，请参阅[流量分析常见问题解答](traffic-analytics-faq.md)。若要查看有关功能的详细信息，请参阅[流量分析文档](traffic-analytics.md)
+若要获取常见问题的解答，请参阅[流量分析常见问题解答](traffic-analytics-faq.yml)。若要查看有关功能的详细信息，请参阅[流量分析文档](traffic-analytics.md)

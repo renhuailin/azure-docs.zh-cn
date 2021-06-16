@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 73e4edd25946f71cfb6d14a379d5b004343cc4e3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a0b9c96fcd54ab89d5d454b206ece6fce8f0e34e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367230"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969243"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教程：训练和部署 Azure 机器学习模型
 
@@ -45,7 +45,7 @@ ms.locfileid: "110367230"
 我们将使用机器学习工作室来托管两个 Jupyter 笔记本和支持文件。 在此处，我们将创建并配置一个机器学习项目。 如果你未曾用过 Jupyter 或机器学习工作室，请参阅下面的两篇简介文档：
 
 * **Jupyter Notebook**：[在 Visual Studio Code 中使用 Jupyter 笔记本](https://code.visualstudio.com/docs/python/jupyter-support)
-* **Azure 机器学习**：[在 Jupyter 笔记本中开始使用 Azure 机器学习](../machine-learning/tutorial-1st-experiment-sdk-setup.md)
+* **Azure 机器学习**：[在 Jupyter 笔记本中开始使用 Azure 机器学习](../machine-learning/quickstart-create-resources.md)
 
 > [!NOTE]
 > 设置服务后，可以从任何计算机访问机器学习。 在设置期间应使用开发 VM，其中包含所需的全部文件。

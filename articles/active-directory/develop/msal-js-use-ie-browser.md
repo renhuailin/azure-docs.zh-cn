@@ -3,22 +3,22 @@ title: Internet Explorer 上的问题 (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
 description: 将适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与 Internet Explorer 浏览器配合使用。
 services: active-directory
-author: navyasric
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/16/2019
-ms.author: nacanuma
+ms.author: mtillman
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 73dd7877b399d34a009c9fe479550eb1bf6dc0f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eda2d61d7af1b56a2e0069e8726aa1e29800e19a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583970"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077115"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer 浏览器 (MSAL.js) 的已知问题
 

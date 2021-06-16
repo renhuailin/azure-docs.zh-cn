@@ -4,12 +4,12 @@ description: 使用 Azure 资源管理器模板在 PowerShell 中自动创建和
 ms.topic: conceptual
 ms.date: 05/02/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 60417e829297eb9a7ad4e244523c546dcaff053d
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d629ef1bc7d2086f85bbb08105041a0457b133c5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318594"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954874"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
@@ -437,7 +437,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
     `"apiVersion": "2015-05-01",`
 
 ### <a name="parameterize-the-template"></a>参数化模板
-现在需要将特定名称更换为参数。 若要[参数化模板](../../azure-resource-manager/templates/template-syntax.md)，则使用[一组帮助程序函数](../../azure-resource-manager/templates/template-functions.md)编写表达式。 
+现在需要将特定名称更换为参数。 若要[参数化模板](../../azure-resource-manager/templates/syntax.md)，则使用[一组帮助程序函数](../../azure-resource-manager/templates/template-functions.md)编写表达式。 
 
 不能仅参数化字符串的一部分，因此使用 `concat()` 生成字符串。
 

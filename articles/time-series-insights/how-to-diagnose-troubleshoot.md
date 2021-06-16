@@ -1,21 +1,22 @@
 ---
 title: 诊断和排查第 2 代环境的问题 - Azure 时序见解 | Microsoft Docs
 description: 了解如何诊断和排查 Azure 时序见解第 2 代环境的问题。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: d9dd07e3a35d83ff6bd9c7c493768d1197667c39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 610c579929462f641371896085355987c4d67dae
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98108783"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796248"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>诊断和排查 Azure 时序见解第 2 代环境的问题
 
@@ -50,7 +51,7 @@ ms.locfileid: "98108783"
     - “iothubowner”和“服务”策略均可使用，因为两者都具有“服务连接”权限。
 
   - 对于事件中心，需提供具有“侦听”权限的密钥。
-  
+
     [![查看事件中心权限。](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
     - “读取”和“管理”策略均可使用，因为两者都具有“侦听”权限。

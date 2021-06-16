@@ -3,20 +3,20 @@ title: DNS 别名
 description: 应用程序可以连接到 Azure SQL 数据库的服务器名称的别名。 另外，随时都可以更改别名所指向的 SQL 数据库，以方便执行测试和其他操作。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: rohitnayakmsft
-ms.author: rohitna
-ms.reviewer: genemi, jrasnick, vanto
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 6ef268b349d5a21cdbadd55ffd2199a35f650e5b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 6ab22ec300fd9be945f7cd0d7f2b83e5f7a409b4
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376284"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689128"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL 数据库的 DNS 别名
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/11/2021
 ms.author: juliako
-ms.openlocfilehash: abbd88b3a7e2c2713033b5f5da2ecc95ffdeacf3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1976985db9543030d32bd99fcaf983acba6d4acf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367445"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111993580"
 ---
 > [!NOTE]
-> 有关服务的最新版本，请参阅 [Azure 视频分析器](https://aka.ms/video-analyzer-landing)。
+> 有关服务的最新版本，请参阅 [Azure 视频分析器](../../../azure-video-analyzer/video-analyzer-docs/index.yml)。

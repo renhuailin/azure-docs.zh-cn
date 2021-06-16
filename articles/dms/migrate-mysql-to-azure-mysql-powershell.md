@@ -9,15 +9,15 @@ manager: arthiaga
 ms.reviewer: arthiaga
 ms.service: dms
 ms.workload: data-services
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: tutorial
 ms.date: 04/11/2021
-ms.openlocfilehash: f01f718bca7d6fc8c6226f682289ef46068aa126
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: eea4a539c8a2b17a9a6280a8f847e68542d1a8d5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125834"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950648"
 ---
 # <a name="migrate-mysql-to-azure-database-for-mysql-offline-with-powershell--azure-database-migration-service"></a>使用 PowerShell 和 Azure 数据库迁移服务将 MySQL 脱机迁移到 Azure Database for MySQL
 
@@ -31,7 +31,8 @@ ms.locfileid: "108125834"
 > 另外，支持 Amazon Relational Database Service (RDS) for MySQL 和 Amazon Aurora（基于 MySQL）作为源进行迁移。
 
 > [!IMPORTANT]
-> “MySQL 到 Azure Database for MySQL”联机迁移方案将从 2021 年 6 月 1 日起被并行化的高性能脱机迁移方案取代。 对于联机迁移，可以将此新产品/服务与[数据传入复制](../mysql/concepts-data-in-replication.md)配合使用。 也可将 [MyDumper/MyLoader](https://centminmod.com/mydumper.html) 之类的开源工具与用于联机迁移的数据传入复制配合使用。 
+> 对于联机迁移，可以将 [MyDumper/MyLoader](https://centminmod.com/mydumper.html) 之类的开源工具与[数据传入复制](../mysql/concepts-data-in-replication.md)配合使用。
+
 
 本文有助于自动处理以下场景：源数据库名称和目标数据库名称可以相同或不同，以及在迁移过程中，需要迁移目标数据库中具有相同名称和表结构的所有表或部分表。 虽然本文假设源为 MySQL 数据库实例，目标为 Azure Database for MySQL，但只需更改源服务器名称和凭据，本文即可用于在 Azure Database for MySQL 之间迁移。 此外，还支持从低版本的 MySQL 服务器（5.6 和更高版本）迁移到高版本。
 

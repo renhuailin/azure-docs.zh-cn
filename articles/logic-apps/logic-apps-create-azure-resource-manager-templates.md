@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 3debd58aadb98ab1e78692411e8d0bb66635f0da
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 9bf6e9a09cfd271fb701b930eaee7b0e8bdee61f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279291"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961612"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>创建 Azure 资源管理器模板以自动化 Azure 逻辑应用的部署
 
@@ -24,9 +24,9 @@ Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 
 
 有关 Azure 资源管理器模板的详细信息，请参阅以下主题：
 
-* [Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
-* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/template-syntax.md)
-* [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates/templates-cloud-consistency.md)
+* [Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md)
+* [创作 Azure Resource Manager 模板](../azure-resource-manager/templates/syntax.md)
+* [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates/template-cloud-consistency.md)
 
 <a name="visual-studio"></a>
 
@@ -122,7 +122,7 @@ Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileN
 | 参数 | 必需 | 说明 |
 |------------|----------|-------------|
 | TemplateFile | 是 | 模板文件的文件路径 |
-| KeyVault | 否 | 一个枚举，描述如何处理可能的 Key Vault 值。 默认为 `None`。 |
+| KeyVault | 否 | 一个枚举，描述如何处理可能的 Key Vault 值。 默认值为 `None`。 |
 ||||
 
 ## <a name="next-steps"></a>后续步骤

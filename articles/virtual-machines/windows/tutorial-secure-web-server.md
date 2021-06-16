@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: a1009d24c1fb8712e88075097460ad179629f478
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 4d41c4b9157791f29c4d2ba1873c2e5b458d45a9
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557397"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110667979"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 TLS/SSL 证书保护 Windows 虚拟机上的 Web 服务器
 

@@ -3,19 +3,20 @@ title: 快速入门：浏览 Gen2 演示环境 - Azure 时序见解 Gen2 | Micro
 description: 浏览 Azure 时序见解 Gen2 演示环境的主要功能。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: shreyasharmamsft
+ms.author: shresha
+manager: cnovak
+ms.reviewer: orspodek
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 03/01/2021
-ms.openlocfilehash: 25340af243217313ce6d3f7205c102d4bcd350b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b109d363b495712efd96e2fa8e5684ad43980964
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698104"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061121"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>快速入门：浏览 Azure 时序见解 Gen2 演示环境
 
@@ -32,7 +33,7 @@ Azure 时序见解 Gen2 演示环境包含一家示例场景公司 Contoso，该
 
 Azure 时序见解 Gen2 资源管理器演示历史数据和根本原因分析。 开始操作：
 
-1. 转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。  
+1. 转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。
 
 1. 根据系统的提示使用 Azure 帐户凭据登录到 Azure 时序见解 Gen2 资源管理器。
 
@@ -124,7 +125,7 @@ Azure 时序见解 Gen2 资源管理器演示历史数据和根本原因分析�
 
     两个电压传感器的工作状态相当，且都处在正常参数范围内。 似乎 **GridVoltagePhase3** 传感器是问题所在。
 
-1. 添加可以明确反映上下文的数据后，第 3 阶段的衰减趋势似乎更明显，这进一步确认它是问题所在。 现在我们了解了警告的原因， 可以将此问题转给维护团队去处理了。  
+1. 添加可以明确反映上下文的数据后，第 3 阶段的衰减趋势似乎更明显，这进一步确认它是问题所在。 现在我们了解了警告的原因， 可以将此问题转给维护团队去处理了。
 
     * 更改显示内容，以将所有“发电机系统”传感器按同一图表比例叠加显示。
 

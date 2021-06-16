@@ -11,18 +11,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 70951dc1c1934bcbb2721512175e7d314168ce91
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 67d29dcf0ea4e68354f7b0fad2be7e57e85f8fe7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175453"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962197"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>在 Azure Active Directory 域服务托管域中部署 Azure AD 应用程序代理，以用于安全访问内部应用程序
 
 使用 Azure AD 域服务 (Azure AD DS)，可以将本地运行的旧应用程序直接迁移到 Azure。 然后，Azure Active Directory (AD) 应用程序代理可帮助你为远程工作者提供支持，因为它可以安全发布 Azure AD DS 托管域的这些内部应用程序部分，使其可供通过 Internet 进行访问。
 
-如果你是 Azure AD 应用程序代理的新手并想要了解详细信息，请参阅[如何提供对内部应用程序的安全远程访问](../active-directory/manage-apps/application-proxy.md)。
+如果你是 Azure AD 应用程序代理的新手并想要了解详细信息，请参阅[如何提供对内部应用程序的安全远程访问](../active-directory/app-proxy/application-proxy.md)。
 
 本文介绍如何创建并配置 Azure AD 应用程序代理连接器，以提供对托管域中应用程序的安全访问。
 
@@ -75,7 +75,7 @@ ms.locfileid: "108175453"
         > 例如，如果 Azure AD 域为 contoso.com，则全局管理员应为 `admin@contoso.com` 或该域上的另一个有效别名。
 
    * 如果为安装连接器的 VM 启用“Internet Explorer 增强的安全配置”，则可能无法显示注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作，或在安装过程中关闭“Internet Explorer 增强的安全性”。
-   * 如果连接器注册失败，请参阅[排查应用程序代理的问题](../active-directory/manage-apps/application-proxy-troubleshoot.md)。
+   * 如果连接器注册失败，请参阅[排查应用程序代理的问题](/azure/active-directory/app-proxy/application-proxy-troubleshoot)。
 1. 安装结束时，会显示包含出站代理的环境说明。 若要将 Azure AD 应用程序代理连接器配置为通过出站代理进行工作，请运行提供的脚本，例如 `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`。
 1. 在 Azure 门户中的“应用程序代理”页上，将会列出状态为“活动”的新连接器，如以下示例中所示：
 

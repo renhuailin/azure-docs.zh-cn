@@ -6,16 +6,16 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
-author: stevestein
-ms.author: sstein
+author: rothja
+ms.author: jroth
 ms.reviewer: ''
 ms.date: 11/21/2019
-ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83478bc8822a0480fbebda6870b19656b5408755
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94593920"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110795315"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>教程：在 Azure SQL 托管实例和 SQL Server 之间配置事务复制
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -285,12 +285,12 @@ GO
 1. 连接到 `sql-mi-publisher` 托管实例。
 1. 在“对象资源管理器”中，展开“复制”节点，然后右键单击“本地发布”文件夹  。 单击“新建发布...”。
 1. 选择“下一步”，离开“欢迎”页。
-1. 在“发布数据库”页上，选择之前创建的 `ReplTutorial` 数据库。 选择“**下一步**”。
-1. 在“发布类型”页上，选择“事务发布” 。 选择“**下一步**”。
-1. 在“项目”页上，选中“表”旁边的框 。 选择“**下一步**”。
+1. 在“发布数据库”页上，选择之前创建的 `ReplTutorial` 数据库。 选择“**下一页**”。
+1. 在“发布类型”页上，选择“事务发布” 。 选择“**下一页**”。
+1. 在“项目”页上，选中“表”旁边的框 。 选择“**下一页**”。
 1. 在“筛选器表行”页上，选择“下一步”而不添加任何筛选器 。
-1. 在“快照代理”页上，选中“立即创建快照并使快照保持可用状态，以初始化订阅”旁边的框 。 选择“**下一步**”。
-1. 在“代理安全性”页上，选择“安全设置…” 。提供要用于快照代理的 SQL Server 登录凭据，并连接到发布服务器。 选择“确定”以关闭“快照代理安全性”页 。 选择“**下一步**”。
+1. 在“快照代理”页上，选中“立即创建快照并使快照保持可用状态，以初始化订阅”旁边的框 。 选择“**下一页**”。
+1. 在“代理安全性”页上，选择“安全设置…” 。提供要用于快照代理的 SQL Server 登录凭据，并连接到发布服务器。 选择“确定”以关闭“快照代理安全性”页 。 选择“**下一页**”。
 
    ![配置快照代理安全性](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)
 

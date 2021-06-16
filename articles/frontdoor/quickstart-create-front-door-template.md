@@ -12,15 +12,13 @@ ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: db51e7ca844ee9d4e36b522e21d395bf9544acf3
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: 2668d2c2d5de42b8676ac78166a2a49c9c14b068
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109847447"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007366"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Front Door
 
@@ -30,7 +28,7 @@ ms.locfileid: "109847447"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-front-door-create-basic%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffront-door-create-basic%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +37,7 @@ ms.locfileid: "109847447"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-front-door-create-basic)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/front-door-create-basic)。
 
 本快速入门将创建一个 Front Door 配置，其中包含一个后端和一个与 `/*` 匹配的默认路径。
 
@@ -56,7 +54,7 @@ ms.locfileid: "109847447"
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-front-door-create-basic/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/front-door-create-basic/azuredeploy.json"
 
     $resourceGroupName = "${projectName}rg"
 
@@ -89,7 +87,7 @@ ms.locfileid: "109847447"
 
 ## <a name="validate-the-deployment"></a>验证部署
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 从左侧窗格中选择“资源组”。
 

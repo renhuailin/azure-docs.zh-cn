@@ -13,12 +13,12 @@ ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: ac02638dfdef4867e93e277175df82be18be66a7
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 1abd8f23f54826e283f4e45aac8b4fb35dc0b144
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530095"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953653"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
@@ -74,7 +74,7 @@ Azure AD 中的应用程序有两种表示形式：
   * 当你订阅 Microsoft 365 或开始试用时，会在目录中创建一个或多个服务主体，表示用于传递所有与 Microsoft 365 关联的功能的各种服务。
   * 某些 Microsoft 365 服务（如 SharePoint）会不断地创建服务主体，这样就可以在组件（包括工作流）之间安全地通信。
 * 当管理员从应用库添加应用程序时（这也会创建基础应用对象）
-* 添加一个应用程序以使用 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)
+* 添加一个应用程序以使用 [Azure AD 应用程序代理](../app-proxy/application-proxy.md)
 * 连接应用程序，以使用 SAML 或密码单一登录 (SSO) 进行单一登录
 * 通过 Microsoft Graph API 或 PowerShell 以编程方式实现
 

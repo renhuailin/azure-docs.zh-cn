@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: f9ab258f59279112d0b90c5d460e6761ac911a2d
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 3d6e9fe8ad21ab47e3062a63f45f096b8ba60bc5
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713347"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887251"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>使用 PowerShell 自动载入 Azure 安全中心
 
@@ -43,33 +43,51 @@ ms.locfileid: "107713347"
 
 1. 在 PowerShell 中运行以下命令：
       
-    ```Set-ExecutionPolicy -ExecutionPolicy AllSigned```
+    ```powershell
+    Set-ExecutionPolicy -ExecutionPolicy AllSigned
+    ```
 
-    ```Install-Module -Name Az.Security -Force```
+    ```powershell
+    Install-Module -Name Az.Security -Force
+    ```
 
 ## <a name="onboard-security-center-using-powershell"></a>通过 PowerShell 开始使用安全中心
 
 1. 将你的订阅注册到安全中心资源提供程序：
 
-    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
+    ```powershell
+    Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```
 
-    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'
+    ```
 
 1. 可选：设置订阅的覆盖级别（启用/关闭 Azure Defender）。 如果未定义，Defender 将处于关闭状态：
 
-    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
+    ```powershell
+    Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```
 
-    ```Set-AzSecurityPricing -Name "default" -PricingTier "Standard"```
+    ```powershell
+    Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
+    ```
 
 1. 配置代理将报告的 Log Analytics 工作区。 必须具有一个已创建的 Log Analytics 工作区，订阅的虚拟机将向其报告。 你可以定义向同一工作区报告的多个订阅。 如未定义，则将使用默认工作区。
 
-    ```Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"```
+    ```powershell
+    Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
+    ```
 
 1. 在 Azure VM 上自动预配安装 Log Analytics 代理：
     
-    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
+    ```powershell
+    Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```
     
-    ```Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision```
+    ```powershell
+    Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+    ```
 
     > [!NOTE]
     > 建议启用自动预配，以确保 Azure 虚拟机自动受到 Azure 安全中心的保护。
@@ -77,13 +95,19 @@ ms.locfileid: "107713347"
 
 1. 可选：强烈建议为你使用的订阅[定义安全联系人详细信息](security-center-provide-security-contact-details.md)，该信息将被用作接收安全中心所生成警报和通知的收件人：
 
-    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -AlertAdmin -NotifyOnAlert```
+    ```powershell
+    Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -AlertAdmin -NotifyOnAlert
+    ```
 
 1. 分配默认安全中心策略计划：
 
-    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'```
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
+    ```
 
-    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Azure Security Benchmark'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
+    ```powershell
+    $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Azure Security Benchmark'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
+    ```
 
 你已使用 PowerShell 成功加入 Azure 安全中心。
 

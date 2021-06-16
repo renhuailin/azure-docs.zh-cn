@@ -2,7 +2,7 @@
 title: Azure 市场应用程序的一键式单一登录 (SSO) 配置 |Microsoft Docs
 description: Azure 市场中的应用程序的一键式 SSO 配置步骤。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.assetid: e0416991-4b5d-4b18-89bb-91b6070ed3ba
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.author: iangithinji
+ms.author: mtillman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8441c422da51c7af37fcb0c33e15821b8d28d28e
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 766c1446a2fad9cff1103a726043d6c61d503020
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290386"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077007"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>单一登录的一键式应用配置
 

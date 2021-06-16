@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 4/23/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 1b068fd00402fc281001e8572f9e03662c8ffd55
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 07376647edac05384c2efc1240c2242fd5eb664b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951785"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949815"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -92,7 +92,7 @@ ms.locfileid: "107951785"
 | **DataFactory**  | Azure 数据工厂 | 推送、请求和匿名 | 否 | 否 |
 | **DataFactoryManagement** | Azure 数据工厂的管理流量。 | 出站 | 否 | 否 |
 | **Dynamics365ForMarketingEmail** | Dynamics 365 的营销电子邮件服务的地址范围。 | 出站 | 是 | 否 |
-| EOPExternalPublishedIPs | 此标记表示用于安全与合规中心 Powershell 的 IP 地址。 请参阅[使用 EXO V2 模块连接到安全与合规中心 PowerShell，了解更多详情](https://docs.microsoft.com/powershell/exchange/connect-to-scc-powershell)。 <br/><br/> 注意：此标签当前无法通过 Azure 门户进行配置。 | 推送、请求和匿名 | 否 | 是 |
+| EOPExternalPublishedIPs | 此标记表示用于安全与合规中心 Powershell 的 IP 地址。 请参阅[使用 EXO V2 模块连接到安全与合规中心 PowerShell，了解更多详情](/powershell/exchange/connect-to-scc-powershell)。 <br/><br/> 注意：此标签当前无法通过 Azure 门户进行配置。 | 推送、请求和匿名 | 否 | 是 |
 | **EventHub** | Azure 事件中心。 | 出站 | 是 | 是 |
 | **GatewayManager** | Azure VPN 网关和应用程序网关专用部署的管理流量。 | 入站 | 否 | 否 |
 | **GuestAndHybridManagement** | Azure 自动化和来宾配置。 | 出站 | 否 | 是 |
