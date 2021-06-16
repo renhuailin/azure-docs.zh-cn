@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: cec4f258cfaa0584c24f2cfc92ec1a536f6277cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 505a160ee677815c5619fad47fd0d1b9ced7d68d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556974"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110669436"
 ---
 # <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>将托管映像克隆到共享映像库映像
 
@@ -86,7 +87,7 @@ $managedImage = Get-AzImage `
 
 使用 [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) 从托管映像创建映像版本。 
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
 在此示例中，映像版本为 1.0.0，该版本被复制到美国中西部和美国中南部数据中心。 选择复制的目标区域时，请记住，你还需包括源区域作为复制的目标。 
 

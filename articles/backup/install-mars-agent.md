@@ -2,13 +2,13 @@
 title: 安装 Microsoft Azure 恢复服务 (MARS) 代理
 description: 了解如何安装用于备份 Windows 计算机的 Microsoft Azure 恢复服务 (MARS) 代理。
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: 3ea48aaa6aad4a51463c4c028ead22f31163f810
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 06/04/2021
+ms.openlocfilehash: c52b65c06a4920020e4358c131870c0fe77b2584
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519215"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970638"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安装 Azure 备份 MARS 代理
 
@@ -63,51 +63,7 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 
 ### <a name="verify-internet-access"></a>验证 Internet 访问
 
-如果计算机的 Internet 访问状态受限，请确保计算机或代理上的防火墙设置允许以下 URL 和 IP 地址：
-
-* URL
-  * `www.msftncsi.com`
-  * `*.Microsoft.com`
-  * `*.WindowsAzure.com`
-  * `*.microsoftonline.com`
-  * `*.windows.net`
-  * `www.msftconnecttest.com`
-* IP 地址
-  * 20.190.128.0/18
-  * 40.126.0.0/18
-
-### <a name="use-azure-expressroute"></a>使用 Azure ExpressRoute
-
-可以使用公共对等互连（适用于旧线路）和 Microsoft 对等互连通过 Azure ExpressRoute 备份数据。 不支持通过专用对等互连进行备份。
-
-若要使用公共对等互连，请首先确保能够访问以下域和地址：
-
-* `http://www.msftncsi.com/ncsi.txt`
-* `http://www.msftconnecttest.com/connecttest.txt`
-* `microsoft.com`
-* `.WindowsAzure.com`
-* `.microsoftonline.com`
-* `.windows.net`
-* IP 地址
-  * 20.190.128.0/18
-  * 40.126.0.0/18
-
-若要使用 Microsoft 对等互连，请选择以下服务、区域和相关社区值：
-
-* Azure Active Directory (12076:5060)
-* Azure 区域（取决于你的恢复服务保管库的位置）
-* Azure 存储（取决于你的恢复服务保管库的位置）
-
-有关详细信息，请参阅 [ExpressRoute 路由要求](../expressroute/expressroute-routing.md)。
-
-> [!NOTE]
-> 对于新线路，公共对等互连已弃用。
-
-前面的所有 URL 和 IP 地址在端口 443 上使用 HTTPS 协议。
-
-### <a name="private-endpoints"></a>专用终结点
-
-[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
+[!INCLUDE [Configuring network connectivity](../../includes/backup-network-connectivity.md)]
 
 ## <a name="download-the-mars-agent"></a>下载 MARS 代理
 

@@ -4,20 +4,20 @@ description: 使用“Go”可创建连接到 Azure SQL 数据库或 Azure SQL �
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: connect
 ms.custom: sqldbrb=2
 ms.devlang: go
 ms.topic: quickstart
-author: David-Engel
-ms.author: sstein
-ms.reviewer: MightyPen
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 04/14/2021
-ms.openlocfilehash: 1a479572ba8dbd68ccc072fce32446abcc9b873c
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d8ca06aaf059b4ff9f63b0561d847802ac5a2f4c
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517774"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694623"
 ---
 # <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 Golang 查询 Azure SQL 数据库中的数据库或 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

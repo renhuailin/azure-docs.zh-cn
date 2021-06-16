@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 6c72f62db310155c9b2fa1d09476ab9406f2d330
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 4a7bd76a6b7536a6bbc117d52fb2c0770145ab9d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813193"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078701"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Ubuntu Linux 虚拟机
 
@@ -32,7 +32,7 @@ ms.locfileid: "109813193"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/vm-simple-linux/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-linux/azuredeploy.json":::
 
@@ -61,7 +61,7 @@ ms.locfileid: "109813193"
     - 管理员用户名：提供用户名，如 azureuser。
     - **身份验证类型**：可以在使用 SSH 密钥或密码之间进行选择。
     - 管理员密码或密钥，具体取决于你选择了哪种身份验证类型：
-        - 如果选择“密码”，则密码长度必须至少为 12 个字符，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+        - 如果选择“密码”，则密码长度必须至少为 12 个字符，且符合[定义的复杂性要求](faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。
         - 如果选择“sshPublicKey”，则粘贴公钥的内容。
     - DNS 标签前缀：输入要用作 DNS 标签一部分的唯一标识符。
     - Ubuntu OS 版本：选择想要在 VM 上运行的 Ubuntu 版本。

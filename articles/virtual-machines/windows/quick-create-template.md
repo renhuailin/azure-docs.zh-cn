@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: d56f565dab1b83e0cf9572e6807577be32678fe7
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: b3ba1aefb02e8cfb139b1afc07e2c57e1d80fe94
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839106"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080266"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Windows 虚拟机
 
@@ -32,7 +32,7 @@ ms.locfileid: "109839106"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/vm-simple-windows/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json":::
 
@@ -61,7 +61,7 @@ ms.locfileid: "109839106"
     - 资源组：从下拉列表中选择现有资源组，或选择“新建”并输入资源组的唯一名称，然后单击“确定” 。
     - 位置：选择一个位置。  例如“美国中部”。
     - 管理员用户名：提供用户名，如 azureuser。
-    - 管理员密码：提供用于管理员帐户的密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+    - 管理员密码：提供用于管理员帐户的密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。
     - DNS 标签前缀：输入要用作 DNS 标签一部分的唯一标识符。
     - Windows OS 版本：选择想要在 VM 上运行的 Windows 版本。
     - VM 大小：选择要用于 VM 的[大小](../sizes.md)。

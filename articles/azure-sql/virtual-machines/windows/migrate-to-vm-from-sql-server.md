@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f6e9009040d2d02702f8a71c352716491d07d1f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 719de6058ca683acc8fb0be9727271f5a7928531
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704298"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080014"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>将 SQL Server 数据库迁移到 Azure 虚拟机中的 SQL Server
 
@@ -113,6 +113,6 @@ ms.locfileid: "98704298"
 有关详细信息，请参阅 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)。
 
 > [!TIP]
-> 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。
+> 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.yml)。
 
 有关从捕获的映像在 Azure 虚拟机上创建 SQL Server 虚拟机的说明，请参阅 CSS SQL Server 工程师博客上的 [Tips & Tricks on 'cloning' Azure SQL virtual machines from captured images](/archive/blogs/psssql/tips-tricks-on-cloning-azure-sql-virtual-machines-from-captured-images)（有关从捕获的映像“克隆”Azure SQL 虚拟机的提示和技巧）。

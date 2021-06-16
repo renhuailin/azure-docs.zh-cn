@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 957e458bf21eb4a95b1faba1daf0459271648310
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b1259843a1195301ff66e7c8d1ad7650f9ca686
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358684"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078737"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>在 Azure 专用主机上运行 SQL Server VM 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -76,6 +76,6 @@ ms.locfileid: "97358684"
 有关详细信息，请参阅以下文章： 
 
 * [Windows VM 上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows VM 上的 SQL Server 常见问题解答](frequently-asked-questions-faq.md)
+* [Windows VM 上的 SQL Server 常见问题解答](frequently-asked-questions-faq.yml)
 * [Windows VM 上的 SQL Server 定价指南](pricing-guidance.md)
 * [Windows VM 上的 SQL Server 发行说明](doc-changes-updates-release-notes.md)

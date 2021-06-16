@@ -7,12 +7,13 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 26078c3757e42c3e290a5f4122461b287582fb80
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 478c2cbe35c43ffb0fdc507cc1b00585623013ea
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96518815"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668535"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>为应用程序网关创建 Web 应用程序防火墙策略
 

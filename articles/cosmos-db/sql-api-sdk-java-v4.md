@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 213580eeb9495ecbc949eeb648533eb069c3d581
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: c8b1297d69de920e29cba4dba14b3d5f79c01427
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287133"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535572"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>用于 Core (SQL) API 的 Azure Cosmos DB Java SDK v4：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -56,7 +56,7 @@ ms.locfileid: "108287133"
 | Content | 链接 |
 |---|---|
 |**SDK 下载**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API 文档** | [Java API 参考文档](/java/api/overview/azure/cosmosdb/client) |
+|**API 文档** | [Java API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/latest/index.html) |
 |**参与 SDK** | [GitHub 上用于 Java 的 Azure SDK 中央存储库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
 |**入门** | [快速入门：生成 Java 应用以管理 Azure Cosmos DB SQL API 数据](./create-sql-api-java.md) <br> [具有快速入门代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**基本代码示例** | [Azure Cosmos DB：SQL API 的 Java 示例](sql-api-java-sdk-samples.md) <br> [具有示例代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|

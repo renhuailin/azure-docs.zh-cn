@@ -2,20 +2,20 @@
 title: 如何删除用户对 Azure Active Directory 中应用程序的访问权限
 description: 了解如何删除用户对 Azure Active Directory 中应用程序的访问权限
 services: active-directory
-author: kenwith
-manager: daveba
+author: mtillman
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/02/2020
-ms.author: kenwith
-ms.openlocfilehash: e6a6c00811a7b87156802897db62a4a10130f130
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: mtillman
+ms.openlocfilehash: bc6dc9120b0c1f31e3c8c92343513306b1760db1
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257349"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078593"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>如何删除用户对应用程序的访问权限
 

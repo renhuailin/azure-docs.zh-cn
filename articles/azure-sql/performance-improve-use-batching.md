@@ -3,20 +3,20 @@ title: 如何使用批处理来改善应用程序的性能
 description: 本主题提供有关数据库批处理操作大幅改善 Azure SQL 数据库和 Azure SQL 托管实例应用程序速度和缩放性的证据。 尽管这些批处理方法适用于任何 SQL 数据库，但本文重点放在 Azure 上。
 services: sql-database
 ms.service: sql-database
-ms.subservice: development
+ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: genemi
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: 7f45e7d1515f0d6fc4467b36d95242ef8697c75d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e78f6762e3eb94e010909941cc84d19a37f3afc4
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641403"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691357"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>如何使用批处理来提升 Azure SQL 数据库和 Azure SQL 托管实例应用程序的性能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]

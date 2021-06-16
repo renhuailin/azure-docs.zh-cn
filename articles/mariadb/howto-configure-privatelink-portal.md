@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8287e535201a5196601d660525fb7ff558cbe6b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98659618"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078323"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>使用门户创建和管理用于 Azure Database for MariaDB 的专用链接
 
@@ -35,7 +35,7 @@ ms.locfileid: "98659618"
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”  。
 2. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16。 |
@@ -53,7 +53,7 @@ ms.locfileid: "98659618"
 
 2. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -66,7 +66,7 @@ ms.locfileid: "98659618"
     | 大小 | 保留默认值“标准 DS1 v2”。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选用户名。 |
-    | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。|
     | 确认密码 | 重新输入密码。 |
     | **入站端口规则** |  |
     | 公共入站端口 | 保留默认值“无”。 |
@@ -80,7 +80,7 @@ ms.locfileid: "98659618"
 
 1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。|
@@ -103,7 +103,7 @@ ms.locfileid: "98659618"
 
 1. 在“Azure Database for MariaDB”中，提供以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -137,7 +137,7 @@ ms.locfileid: "98659618"
 
 1. 在“创建专用终结点 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -149,7 +149,7 @@ ms.locfileid: "98659618"
 5. 在完成时选择“下一步:资源”。
 6. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |
@@ -160,7 +160,7 @@ ms.locfileid: "98659618"
 7. 在完成时选择“下一步:配置”。
 8. 在“创建专用终结点 - 配置”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     |**网络**| |
     | 虚拟网络| 选择“MyVirtualNetwork”。 |
@@ -227,7 +227,7 @@ ms.locfileid: "98659618"
 
 4. 在“新建连接”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 服务器类型| 选择“MariaDB”。|
     | 服务器名称| 选择“mydemoserver.privatelink.mariadb.database.azure.com” |

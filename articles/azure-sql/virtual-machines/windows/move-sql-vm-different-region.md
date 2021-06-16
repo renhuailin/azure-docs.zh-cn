@@ -15,12 +15,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cd917ced00220d1251b5aa1118f4287623b9445
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97360146"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080032"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>使用 Azure Site Recovery 将 SQL Server VM 移到 Azure 中的另一个区域
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -154,6 +154,6 @@ ms.locfileid: "97360146"
 有关详细信息，请参阅以下文章： 
 
 * [Windows VM 上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows VM 上的 SQL Server 常见问题解答](frequently-asked-questions-faq.md)
+* [Windows VM 上的 SQL Server 常见问题解答](frequently-asked-questions-faq.yml)
 * [Windows VM 上的 SQL Server 定价指南](pricing-guidance.md)
 * [Windows VM 上的 SQL Server 发行说明](doc-changes-updates-release-notes.md)
