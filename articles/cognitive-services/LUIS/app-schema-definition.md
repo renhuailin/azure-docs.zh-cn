@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 08/22/2020
-ms.openlocfilehash: db4fd52dad82542f20e58ebb3b8526c5be7f2f88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 023e86b5ecc7d0b5871ba2207d09c762a3c424b1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91327317"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950947"
 ---
 # <a name="app-schema-definition"></a>应用架构定义
 
@@ -68,7 +68,7 @@ LUIS 应用使用 `.json` 或 `.lu` 表示，并且包括所有意向、实体�
 | element                  | 注释                              |
 |--------------------------|--------------------------------------|
 | "hierarchicals": [],     | 已弃用，请使用[机器学习实体](luis-concept-entity-types.md)。   |
-| "composites": [],        | 已弃用，请使用[机器学习实体](luis-concept-entity-types.md)。 [复合实体](reference-entity-composite.md)引用。 |
+| "composites": [],        | 已弃用，请使用[机器学习实体](luis-concept-entity-types.md)。 [复合实体](./reference-entity-machine-learned-entity.md)引用。 |
 | "closedLists": [],       | [列出实体](reference-entity-list.md)引用，主要用作实体的特征。    |
 | "versionId":"0.1",      | LUIS 应用的版本。|
 | "name": "example-app",   | LUIS 应用的名称。 |

@@ -7,12 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 271dbd87950018cebbd23841d32324afa42511e7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e0696d648fa176314c4ed73eb68f4edbd73c32a2
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785795"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675134"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 
@@ -277,7 +278,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
-| JSON 属性 | 类型 | 必选 | 默认值 | 有效值 | 示例 |
+| JSON 属性 | 类型 | 必须 | 默认值 | 有效值 | 示例 |
 | --- | --- | --- | --- | --- | --- |
 | **startTime** | string | 是 | 无 | ISO 8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | object | 是 | 无 | recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
@@ -381,7 +382,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 基于事件的触发器运行管道以对事件做出响应。 有两种基于事件的触发器。
 
 * _存储事件触发器_ 是针对存储帐户中发生的事件（例如，文件到达或 Azure Blob 存储帐户中的文件删除）运行管道。
-* _自定义事件触发器_ 是处理事件网格中的[自定义主题](../event-grid/custom-topics.md)
+* _自定义事件触发器_ 是处理事件网格中的 [自定义主题](../event-grid/custom-topics.md)
 
 有关基于事件的触发器的详细信息，请参阅[存储事件触发器](how-to-create-event-trigger.md)和[自定义事件触发器](how-to-create-custom-event-trigger.md)。
 

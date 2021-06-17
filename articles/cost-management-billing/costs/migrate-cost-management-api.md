@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 46ad81f6723d160bf1d675b68a8459dd8df32c80
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 9e7d1d08a3d69337cc205bdaf4bf3afc8941dd77
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078343"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750292"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>从企业协议迁移到 Microsoft 客户协议 API
 
@@ -78,7 +78,7 @@ EA API 使用 API 密钥进行身份验证和授权。 MCA API 使用 Azure AD �
 
 | 目的 | 旧产品/服务 | 新产品/服务 |
 | --- | --- | --- |
-| Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure 成本管理](https://azure.microsoft.com/services/cost-management/) |
+| Cloudyn | Cloudyn | [Azure 成本管理](https://azure.microsoft.com/services/cost-management/) |
 | Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) 内容包和连接器 |  [Azure Consumption Insights 连接器](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>用于获取余额和额度的 API
@@ -519,7 +519,7 @@ Microsoft 客户协议中的 Azure 消耗服务价格对于 productOrderName 和
 
 ## <a name="move-from-cloudyn-to-cost-management"></a>从 Cloudyn 转移到成本管理
 
-使用 [Cloudyn](https://cloudyn.com) 的组织应开始使用 [Azure 成本管理](https://azure.microsoft.com/services/cost-management/)来解决任何成本管理需求。 无需任何载入过程和经过 8 小时的延迟，即可在 Azure 门户中使用成本管理。 有关详细信息，请参阅[成本管理文档](../index.yml)。
+使用 Cloudyn 的组织应开始使用 [Azure 成本管理](https://azure.microsoft.com/services/cost-management/)来解决任何成本管理需求。 无需任何载入过程和经过 8 小时的延迟，即可在 Azure 门户中使用成本管理。 有关详细信息，请参阅[成本管理文档](../index.yml)。
 
 使用 Azure 成本管理可以：
 

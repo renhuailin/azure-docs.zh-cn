@@ -1,12 +1,15 @@
 ---
-ms.openlocfilehash: f5f9f30103381a8e91cd38bb7fa3547e6ca4c97e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d840d2ea518ede320990eb8da23b96129310bcbc
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108157577"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430878"
 ---
-## <a name="prerequisites"></a>先决条件
+> [!NOTE]
+> 在 [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/PhoneNumbers) 上查找此快速入门的最终代码
+
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 适用于你的操作系统的最新版本 [.NET Core 客户端库](https://dotnet.microsoft.com/download/dotnet-core)。

@@ -5,17 +5,17 @@ description: 如何配置指标图并可视化数据中的相关异常。
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbullwin
-ms.openlocfilehash: bcedef4a1339dacaff3fe841e97f985c42320819
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d26d7ab61486617c13ec18fc65ba29f5771cf54e
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92043147"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891331"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>操作说明：构建指标图来分析相关指标
 

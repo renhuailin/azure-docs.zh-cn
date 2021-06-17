@@ -2,20 +2,20 @@
 title: 了解如何在 Azure Active Directory 中将用户分配到应用
 description: 了解如何将用户分配到使用 Azure Active Directory 进行标识管理的应用。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/07/2021
-ms.author: iangithinji
-ms.openlocfilehash: 84700bca6ff306dbcce01a837c312c4c0c90066d
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.author: mtillman
+ms.openlocfilehash: f17b5111130d0c89097510361d018391ad5e5351
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376403"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080464"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>了解如何在 Azure Active Directory 中将用户分配到应用
 本文介绍如何将用户分配给租户中的应用程序。
@@ -31,7 +31,7 @@ ms.locfileid: "107376403"
     * 在云中创建的 Microsoft 365 组
     * [所有用户](../fundamentals/active-directory-groups-create-azure-portal.md)组
 *  管理员启用[自助服务应用程序访问](./manage-self-service-access.md)以允许用户无需业务批准，即可使用[我的应用](../user-help/my-apps-portal-end-user-access.md)的“添加应用”功能添加应用程序
-*  管理员启用 [自助服务应用程序访问](./manage-self-service-access.md)以允许用户仅 **在经过选定业务批准者的事先批准的情况下**，使用[我的应用](../user-help/my-apps-portal-end-user-access.md)的“添加应用”功能添加应用程序
+*  管理员启用 [自助服务应用程序访问](./manage-self-service-access.md)以允许用户仅 **在经过选定业务批准者的事先批准的情况下**，使用 [我的应用](../user-help/my-apps-portal-end-user-access.md)的“添加应用”功能添加应用程序
 *  管理员启用 [自助服务组管理](../enterprise-users/groups-self-service-management.md)以允许用户 **无需业务批准**，即可加入已对其分配应用程序的组
 *  管理员启用 [自助服务组管理](../enterprise-users/groups-self-service-management.md)以允许用户在经过 **选定业务批准者的事先批准** 的情况下，加入已对其分配应用程序的组
 *  对于第一方应用程序（如 [Microsoft 365](https://products.office.com/)），管理员直接为用户分配许可证

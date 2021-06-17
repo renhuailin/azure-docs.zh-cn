@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: be042a0ec076538cf0f0d155667acea6f1ae19cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 261f198542a7030f327dc8be055f5db0cb64f957
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91710475"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952451"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的安全性
 
@@ -50,7 +50,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对服务器的访�
 
 ## <a name="threat-protection"></a>威胁防护
 
-可以选择加入用于检测异常活动的[高级威胁防护](concepts-data-access-and-security-threat-protection.md)，这些活动指示有人企图以非寻常或可能有害的方式访问或恶意利用服务器。
+可以选择加入用于检测异常活动的[高级威胁防护](../security-center/defender-for-databases-introduction.md)，这些活动指示有人企图以非寻常或可能有害的方式访问或恶意利用服务器。
 
 [审核日志记录](concepts-audit.md)可用于跟踪数据库中的活动。 
 

@@ -3,12 +3,13 @@ title: 为 Azure 服务总线队列和订阅启用自动转发
 description: 本文介绍如何通过使用 Azure 门户、PowerShell、CLI 和编程语言（C#、Java、Python 和 JavaScript）为队列和订阅启用自动转发
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 0271ac825c192fcfe9db4a4b6378a47c62dc9903
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: da5af50941263c54a08de27df43fc85b5bd75b4a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988111"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671488"
 ---
 # <a name="enable-auto-forwarding-for-azure-service-bus-queues-and-subscriptions"></a>为 Azure 服务总线队列和订阅启用自动转发
 通过服务总线自动转发功能可将队列或订阅链接到同一命名空间中的另一个队列或主题。 启用自动转发时，服务总线会自动删除放置在第一个队列或订阅（源）中的消息，并将其放入第二个队列或主题（目标）中。 仍可将消息直接发送到目标实体。 有关详细信息，请参阅[使用自动转发链接服务总线实体](service-bus-auto-forwarding.md)。 本文介绍为服务总线队列和订阅启用自动转发的不同方式。 
