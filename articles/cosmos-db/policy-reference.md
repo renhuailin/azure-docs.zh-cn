@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 的内置策略定义
 description: 列出 Azure Cosmos DB 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.topic: reference
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-reference
-ms.openlocfilehash: f0bbdd0b19c9afde9623e27d0d9219475cc09506
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d2cc7442a1601d7f03f2d47cfab5b25368dd6133
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096161"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017751"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure Policy 内置定义
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 3c68d0138c9e9ca6bc72937be1a7f54347b89d0c
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: ae7da354b16dbea3e84f8d75fbf97e805387c4b0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186052"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952101"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -75,7 +75,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 - 你只有一个连接器，我们建议你安装第二个连接器并[创建连接器组](application-proxy-connector-groups.md)。 这将避免停机时间，并提供更高的可用性。  
 - 更新开始时，连接器处于事务中间。 尽管初始事务已丢失，但浏览器应会自动重试操作，或者你可以自行刷新页面。 重新发送请求时，流量将路由到备份连接器。
 
-要查看有关以前发布的版本及其包含的更改的信息，请参阅[应用程序代理 - 版本发布历史记录](../manage-apps/application-proxy-release-version-history.md)。
+要查看有关以前发布的版本及其包含的更改的信息，请参阅[应用程序代理 - 版本发布历史记录](./application-proxy-release-version-history.md)。
 
 ## <a name="creating-connector-groups"></a>创建连接器组
 
@@ -111,7 +111,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 连接器只会发送出站请求。 出站流量将依次发送到应用程序代理服务和发布的应用程序。 无需打开入站端口，因为一旦建立会话，流量就会双向流动。 也无需通过防火墙配置入站访问。
 
-有关配置出站防火墙规则的详细信息，请参阅[使用现有的本地代理服务器](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)。
+有关配置出站防火墙规则的详细信息，请参阅[使用现有的本地代理服务器](./application-proxy-configure-connectors-with-proxy-servers.md)。
 
 ## <a name="performance-and-scalability"></a>性能和可伸缩性
 
@@ -165,7 +165,7 @@ Register-AppProxyConnector -EnvironmentName "AzureCloud"
 
 对于政府，请使用 `-EnvironmentName "AzureUSGovernment"`。 有关更多详细信息，请参阅[安装适用于 Azure 政府云的代理](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)。
 
-若要详细了解如何验证证书和解决问题，请参阅[验证计算机和后端组件是否支持应用程序代理信任证书](../manage-apps/application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)。
+若要详细了解如何验证证书和解决问题，请参阅[验证计算机和后端组件是否支持应用程序代理信任证书](./application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)。
 
 ## <a name="under-the-hood"></a>揭秘
 
@@ -188,6 +188,6 @@ Register-AppProxyConnector -EnvironmentName "AzureCloud"
 ## <a name="next-steps"></a>后续步骤
 
 - [使用连接器组在单独的网络和位置上发布应用程序。](application-proxy-connector-groups.md)
-- [使用现有的本地代理服务器](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
-- [对应用程序代理和连接器错误进行故障排除](../manage-apps/application-proxy-troubleshoot.md)
-- [如何以无提示方式安装 Azure AD 应用程序代理连接器](../manage-apps/application-proxy-register-connector-powershell.md)
+- [使用现有的本地代理服务器](./application-proxy-configure-connectors-with-proxy-servers.md)
+- [对应用程序代理和连接器错误进行故障排除](./application-proxy-troubleshoot.md)
+- [如何以无提示方式安装 Azure AD 应用程序代理连接器](./application-proxy-register-connector-powershell.md)

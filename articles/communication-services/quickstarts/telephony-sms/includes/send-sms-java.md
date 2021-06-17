@@ -2,7 +2,7 @@
 title: include 文件
 description: include 文件
 services: azure-communication-services
-author: paolamvhz
+author: pvicencio
 manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
@@ -10,18 +10,21 @@ ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: b11be98718db282e219f3d1d151ceab235efe5e2
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 68d815faa79e0b018bd3d2125ea88cd4a33dea51
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109805237"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430663"
 ---
 通过使用通信服务 Java 短信 SDK 发送短信，开始使用 Azure 通信服务。
 
 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
 
-## <a name="prerequisites"></a>先决条件
+> [!NOTE]
+> 在 [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/send-sms-quickstart) 上查找此快速入门的最终代码
+
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Java 开发工具包 (JDK)](/java/azure/jdk/) 8 或更高版本。
@@ -54,19 +57,11 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
 ### <a name="set-up-the-app-framework"></a>设置应用框架
-
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-core</artifactId>
-    <version>1.16.0</version> <!-- {x-version-update;com.azure:azure-core;dependency} -->
-</dependency>
-```
 
 在文本编辑器中打开 /src/main/java/com/communication/quickstart/App.java，添加 import 指令并删除 `System.out.println("Hello world!");` 语句：
 
@@ -120,7 +115,7 @@ SmsClient smsClient = new SmsClientBuilder()
 你还可以使用 connectionString() 函数提供整个连接字符串，而不是提供终结点和访问密钥。
 ```java
 // You can find your connection string from your resource in the Azure portal
-String connectionString = "https://<resource-name>.communication.azure.com/;<access-key>";
+String connectionString = "endpoint=https://<resource-name>.communication.azure.com/;accesskey=<access-key>";
 
 SmsClient smsClient = new SmsClientBuilder()
             .connectionString(connectionString)

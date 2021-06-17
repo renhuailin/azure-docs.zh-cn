@@ -2,14 +2,14 @@
 title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 06/14/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 40c166a85da1ad5370b6e90096061790f1c77d49
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b83f0874527b366595f27aea6bab01afc1f8060b
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745732"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071256"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -108,8 +108,8 @@ ms.locfileid: "108745732"
 | Microsoft.IoTSpaces | [Azure 数字孪生](../../digital-twins/index.yml) |
 | Microsoft.Intune | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.KeyVault | [密钥保管库](../../key-vault/index.yml) |
-| Microsoft.Kubernetes | [Azure Kubernetes 服务 (AKS)](../../aks/index.yml) |
-| Microsoft.KubernetesConfiguration | [Azure Kubernetes 服务 (AKS)](../../aks/index.yml) |
+| Microsoft.Kubernetes | [Azure Stack HCI 上的 Azure Kubernetes 服务](/azure-stack/aks-hci/) |
+| Microsoft.KubernetesConfiguration | [Azure Stack HCI 上的 Azure Kubernetes 服务](/azure-stack/aks-hci/) |
 | Microsoft.Kusto | [Azure 数据资源管理器](/azure/data-explorer/) |
 | Microsoft.LabServices | [Azure 实验室服务](../../lab-services/index.yml) |
 | Microsoft.Logic | [逻辑应用](../../logic-apps/index.yml) |

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/28/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: ef0e3745d6a45353ef286101bcb5fef1923ce12b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: fca763f307c8ae1437009b282e460fc249c40b60
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206738"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540976"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“使用情况”仪表板
 
@@ -194,10 +194,10 @@ VM 原始使用情况的小组件和导出报告与 VM 规范化使用情况类�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要大致了解商业市场内可用的分析报表，请参阅[在合作伙伴中心访问商业市场的分析报表](./partner-center-portal/analytics.md)。
+- 若要大致了解商业市场内可用的分析报表，请参阅[在合作伙伴中心访问商业市场的分析报表](analytics.md)。
 - 有关为产品/服务汇总市场活动的聚合数据的图表、趋势和值，请参阅[商业市场分析中的“摘要”仪表板](./summary-dashboard.md)。
 - 有关采用图形和可下载格式显示的订单的信息，请参阅[商业市场分析中的订单仪表板](./orders-dashboard.md)
 - 有关虚拟机 (VM) 产品/服务使用情况和按流量计费指标的信息，请参阅[商业市场分析中的使用情况仪表板](usage-dashboard.md)。
-- 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](./partner-center-portal/downloads-dashboard.md)。
-- 若要查看客户对 Azure 市场和 Microsoft AppSource 中产品/服务的反馈的综合视图，请参阅[合作伙伴中心的评分和评价分析仪表板](./partner-center-portal/ratings-reviews.md)。
+- 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](downloads-dashboard.md)。
+- 若要查看客户对 Azure 市场和 Microsoft AppSource 中产品/服务的反馈的综合视图，请参阅[合作伙伴中心的评分和评价分析仪表板](ratings-reviews.md)。
 - 有关商业市场分析的常见问题解答以及数据术语的综合词典，请参阅[商业市场分析术语和常见问题](./analytics-faq.md)。

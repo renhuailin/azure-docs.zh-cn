@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 52b9bee1d43c0f136889a6a54277d4bb45dd4a45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76ee3371134c66d6dcc5b4b07436e5c30a15f144
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101750417"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111450016"
 ---
 可以选择使用自己的密钥在每个托管磁盘的级别管理加密。 使用客户托管密钥对托管磁盘进行服务器端加密提供了与 Azure Key Vault 的集成体验。 可以将 [RSA 密钥](../articles/key-vault/keys/hsm-protected-keys.md)导入 Key Vault，也可以在 Azure Key Vault 中生成新的 RSA 密钥。 
 
@@ -23,9 +23,7 @@ Azure 托管磁盘使用[信封加密](../articles/storage/common/storage-client
 
 必须授予对 Key Vault 中的托管磁盘的访问权限，才能使用你的密钥来加密和解密 DEK。 这允许你完全控制数据和密钥。 可以随时禁用密钥或撤销对托管磁盘的访问权限。 还可以通过 Azure Key Vault 监视来审核加密密钥用法，以确保仅托管磁盘或其他受信任的 Azure 服务访问你的密钥。
 
-对于高级 SSD、标准 SSD 和标准 HDD：禁用或删除密钥后，包含使用该密钥的磁盘的任何 VM 都会自动关闭。 之后，VM 将无法使用，除非再次启用密钥或分配新密钥。    
-
-对于超级磁盘：禁用或删除密钥后，包含使用该密钥的超级磁盘的任何 VM 都不会自动关闭。 解除分配并重新启动 VM 后，磁盘将停止使用该密钥，且之后 VM 不会恢复联机。 若要使 VM 恢复联机，必须分配新密钥或启用现有密钥。    
+禁用或删除密钥后，包含使用该密钥的磁盘的任何 VM 都会自动关闭。 之后，VM 将无法使用，除非再次启用密钥或分配新密钥。    
 
 下图显示了托管磁盘如何借助 Azure Active Directory 和 Azure Key Vault 使用客户托管密钥发出请求：
 

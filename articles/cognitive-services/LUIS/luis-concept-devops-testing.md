@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6f146fac4e2989e03382ef4879b305410fab6d8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98788445"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969383"
 ---
 # <a name="testing-for-luis-devops"></a>LUIS DevOps 测试
 
@@ -25,7 +25,7 @@ ms.locfileid: "98788445"
 对于需要在持续集成工作流中执行的 LUIS 应用，有两种不同类型的测试：
 
 - **单元测试** - 相对简单的测试，用于验证 LUIS 应用的主要功能。 当给定的测试言语返回预期意向和预期实体时，单元测试通过。 所有单元测试都必须通过，测试运行才能成功完成。  
-这种测试类似于[交互式测试](./luis-concept-test.md)，可以在 [LUIS 门户](https://www.luis.ai/)中进行。
+这种测试类似于[交互式测试](./luis-interactive-test.md)，可以在 [LUIS 门户](https://www.luis.ai/)中进行。
 
 - **批处理测试** - 批处理测试是对当前已训练的模型进行的全面测试，用于衡量其性能。 与单元测试不同，批处理测试不是关于“通过或失败”的测试。 批处理测试的预期不是每个测试都将返回预期意向和预期实体。 相反，批处理测试可帮助你在应用中查看每个意向和实体的准确性，并帮助你将一段时间内的改进进行比较。  
 这种类型的测试与可以在 LUIS 门户中以交互方式执行的[批处理测试](./luis-how-to-batch-test.md)相同。
@@ -91,7 +91,7 @@ ms.locfileid: "98788445"
 
 LUIS 门户提供的功能可帮助进行交互式测试：
 
-* 通过[交互式测试](./luis-concept-test.md)，可以提交示例言语，并获取 LUIS 识别的意向和实体的响应。 通过视觉检测来验证测试是否成功。
+* 通过[交互式测试](./luis-interactive-test.md)，可以提交示例言语，并获取 LUIS 识别的意向和实体的响应。 通过视觉检测来验证测试是否成功。
 
 * [批处理测试](./luis-how-to-batch-test.md)使用批处理测试文件作为输入来验证活动训练版本，以判断其预测准确性。 批处理测试可帮助你查看活动版本中每个意向和实体的准确性，并使用图表显示结果。
 
@@ -136,4 +136,4 @@ LUIS 训练模型（例如意向）时，既需要正数据（为模型训练应
 ## <a name="next-steps"></a>后续步骤
 
 * 了解如何[实现 CI/CD 工作流](luis-concept-devops-automation.md)
-* 了解如何[通过 GitHub 为 LUIS 实现 DevOps](luis-how-to-devops-with-github.md)
+* 了解如何[通过 GitHub 为 LUIS 实现 DevOps](./luis-concept-devops-automation.md)

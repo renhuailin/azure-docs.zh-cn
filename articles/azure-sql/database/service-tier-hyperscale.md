@@ -3,20 +3,20 @@ title: 什么是“超大规模”服务层级？
 description: 本文介绍 Azure SQL 数据库中基于 vCore 的购买模型中的“超大规模”服务层级，并说明它与“常规用途”服务层级和“业务关键”服务层级的不同之处。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
-ms.date: 1/13/2021
-ms.openlocfilehash: 4b5020b6cf7ac2f7aec586d7e6499285c1447b68
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
-ms.translationtype: MT
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma
+ms.date: 3/31/2021
+ms.openlocfilehash: a3a3ca1e4a6161f12b5695ac96a3d9e562a13947
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209757"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693335"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -117,7 +117,7 @@ Azure 存储在某个数据库中包含所有数据文件。 页面服务器使 
 
 ## <a name="create-a-hyperscale-database"></a>创建“超大规模”数据库
 
-可以使用 [Azure 门户](https://portal.azure.com)、[T-SQL](/sql/t-sql/statements/create-database-transact-sql)、[PowerShell](/powershell/module/azurerm.sql/new-azurermsqldatabase) 或 [CLI](/cli/azure/sql/db#az-sql-db-create) 创建超大规模数据库。 仅可通过[基于 vCore 的购买模型](service-tiers-vcore.md)使用超大规模数据库。
+可以使用 [Azure 门户](https://portal.azure.com)、[T-SQL](/sql/t-sql/statements/create-database-transact-sql)、[PowerShell](/powershell/module/azurerm.sql/new-azurermsqldatabase) 或 [CLI](/cli/azure/sql/db#az_sql_db_create) 创建超大规模数据库。 仅可通过[基于 vCore 的购买模型](service-tiers-vcore.md)使用超大规模数据库。
 
 以下 T-SQL 命令可创建一个“超大规模”数据库。 必须在 `CREATE DATABASE` 语句中指定版本和服务目标。 有关有效服务目标的列表，请参阅[资源限制](./resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen4)。
 
@@ -131,7 +131,7 @@ GO
 
 ## <a name="upgrade-existing-database-to-hyperscale"></a>将现有数据库升级到超大规模
 
-可以使用 [Azure 门户](https://portal.azure.com)、[T-SQL](/sql/t-sql/statements/alter-database-transact-sql)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase) 或 [CLI](/cli/azure/sql/db#az-sql-db-update) 将 Azure SQL 数据库中的现有数据库迁移到“超大规模”层级。 目前，这是一种单向迁移。 只能导出和导入数据，而不能将“超大规模”中的数据库移到其他服务层级。 对于概念证明 (POC)，我们建议创建生产数据库的副本，并将该副本迁移到“超大规模”。 将 Azure SQL 数据库中的现有数据库迁移到“超大规模”层级是与数据大小相关的操作。
+可以使用 [Azure 门户](https://portal.azure.com)、[T-SQL](/sql/t-sql/statements/alter-database-transact-sql)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase) 或 [CLI](/cli/azure/sql/db#az_sql_db_update) 将 Azure SQL 数据库中的现有数据库迁移到“超大规模”层级。 目前，这是一种单向迁移。 只能导出和导入数据，而不能将“超大规模”中的数据库移到其他服务层级。 对于概念证明 (POC)，我们建议创建生产数据库的副本，并将该副本迁移到“超大规模”。 将 Azure SQL 数据库中的现有数据库迁移到“超大规模”层级是与数据大小相关的操作。
 
 以下 T-SQL 命令可将数据库移动到“超大规模”服务层级。 必须在 `ALTER DATABASE` 语句中指定版本和服务目标。
 
@@ -168,15 +168,15 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 2. 请遵照有关从自动备份还原 Azure SQL 数据库中数据库的页面上的[异地还原](./recovery-using-backups.md#geo-restore)主题中的说明操作。
 
 > [!NOTE]
-> 由于源和目标位于不同的区域中，因此数据库无法与源数据库共享快照存储，就像在非异地还原中一样，无论数据库大小如何，都能快速完成。 异地还原超大规模数据库属于一种与数据大小相关的操作，即使目标位于异地复制存储的配对区域中。 因此，异地还原需要与要还原的数据库的大小成正比。 如果目标在配对的区域中，数据传输将在某个区域内，这将比跨区域数据传输快得多，但仍是一项数据大小的操作。
+> 由于源与目标位于不同的区域，因此数据库无法像在非异地还原方案中一样与源数据库共享快照存储，而非异地还原可以快速完成，无论数据库大小如何。 异地还原超大规模数据库属于一种与数据大小相关的操作，即使目标位于异地复制存储的配对区域中。 因此，异地还原需要的时间与所要还原的数据库的大小成正比。 如果目标位于配对区域中，数据传输将会位于某个区域内，这将会比跨区域数据传输快得多，但它仍将是与数据大小相关的操作。
 
 ## <a name="available-regions"></a><a name=regions></a>可用区域
 
-Azure SQL Database 超大规模层在所有区域中均可用，但默认情况下会在下面列出的以下区域中启用。 如果要在默认情况下未启用超大规模的区域中创建超大规模数据库，可以通过 Azure 门户发送载入请求。 有关说明，请参阅 [AZURE SQL 数据库的请求配额增加](quota-increase-request.md) ，了解相关说明。 提交请求时，请遵循以下准则：
+所有区域均提供 Azure SQL 数据库超大规模层级选项，但在下列区域中默认启用该层级。 如果要在默认未启用超大规模的区域中创建超大规模数据库，可以通过 Azure 门户发送加入请求。 相关说明，请参阅[请求增加 Azure SQL 数据库配额](quota-increase-request.md)。 提交请求时，请遵循以下准则：
 
-- 使用 " [区域访问](quota-increase-request.md#region) SQL 数据库配额类型"。
-- 在 "描述" 中，添加计算 SKU/总内核（包括可读副本），并指示你正在请求超大规模容量。
-- 还要指定一段时间内所有数据库的总大小（TB）的投影。
+- 使用[区域访问](quota-increase-request.md#region) SQL 数据库配额类型。
+- 在说明中，添加计算 SKU/内核总数（包括可读副本），并表明你正在请求超大规模容量。
+- 还要以 TB 为单位指定一段时间内所有数据库总大小的推测值。
 
 已启用区域：
 - 澳大利亚东部
@@ -184,12 +184,13 @@ Azure SQL Database 超大规模层在所有区域中均可用，但默认情况�
 - 澳大利亚中部
 - 巴西南部
 - 加拿大中部
+- 加拿大东部
 - 美国中部
 - 中国东部 2
 - 中国北部 2
 - 东亚
 - 美国东部
-- 美国东部2
+- 美国东部 2
 - 法国中部
 - 德国中西部
 - 日本东部
@@ -202,14 +203,14 @@ Azure SQL Database 超大规模层在所有区域中均可用，但默认情况�
 - 挪威西部
 - 南非北部
 - 美国中南部
-- Southeast Asia
+- 东南亚
 - 瑞士西部
 - 英国南部
 - 英国西部
 - US DoD 中部
 - US DoD 东部
-- 美国爱荷华亚利桑那
-- 美国爱荷华德克萨斯州
+- Us Govt 亚利桑那州
+- US Govt 德克萨斯州
 - 美国中西部
 - 西欧
 - 美国西部
@@ -222,14 +223,14 @@ Azure SQL Database 超大规模层在所有区域中均可用，但默认情况�
 | 问题 | 说明 |
 | :---- | :--------- |
 | 服务器的“管理备份”窗格不显示“超大规模”数据库。 视图中会将它们筛选掉。  | “超大规模”服务层级具有单独的备份管理方法，因此“长期保留”和“时间点备份保留”设置不适用。 相应地，“超大规模”数据库不会显示在“管理备份”窗格中。<br><br>对于从其他 Azure SQL 数据库服务层级迁移到超大规模的数据库，预迁移备份会在源数据库的[备份保持期](automated-backups-overview.md#backup-retention)持续时间内保留。 这些备份可以用于将源数据库[还原](recovery-using-backups.md#programmatic-recovery-using-automated-backups)到迁移之前的某个时间点。|
-| 时间点还原 | 无法将非超大规模数据库还原到超大规模数据库，也无法将超大规模数据库还原到非超大规模数据库。 对于已通过更改其服务层迁移到超大规模的非超大规模数据库，请在迁移之前还原到该时间点，并 [以编程方式](recovery-using-backups.md#programmatic-recovery-using-automated-backups)支持数据库的备份保留期。 还原后的数据库是非超大规模的。 |
-| 将 Azure SQL 数据库服务层更改为超大规模时，如果数据库的任何数据文件大于 1 TB，则操作将失败。 | 在某些情况下，可以通过将大文件 [收缩](file-space-manage.md#shrinking-data-files) 为小于 1 TB，然后再尝试将服务层更改为超大规模，从而解决此问题。 使用以下查询来确定数据库文件的当前大小。 `SELECT file_id, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
+| 时间点还原 | 无法将非超大规模数据库还原到超大规模数据库，也无法将超大规模数据库还原到非超大规模数据库。 对于已通过更改服务层级迁移到“超大规模”层级的非超大规模数据库，支持[以编程方式](recovery-using-backups.md#programmatic-recovery-using-automated-backups)还原到迁移之前且在数据库备份保留期内的某个时间点。 还原后的数据库是非超大规模的。 |
+| 在将 Azure SQL 数据库服务层级更改为“超大规模”时，如果数据库中有任何大于 1 TB 的数据文件，更改操作就会失败 | 有些情况下，在尝试将服务层级更改为“超大规模”之前，先将大文件[收缩](file-space-manage.md#shrinking-data-files)至 1 TB 以下，或许可以解决此问题。 使用以下查询来确定数据库文件的当前大小。 `SELECT file_id, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL 托管实例 | 超大规模数据库目前不支持 Azure SQL 托管实例。 |
 | 弹性池 |  超大规模目前不支持弹性池。|
-| 迁移到“超大规模”服务层级目前是单向操作 | 将数据库迁移到“超大规模”层级后，它不能直接迁移到非“超大规模”服务层级。 目前，将数据库从超大规模迁移到非超大规模的唯一方法是使用 bacpac 文件或其他数据移动技术（ (大容量复制）导出/导入[。使用](/powershell/module/az.sql/new-azsqldatabaseexport)az sql db export 和 az sql db import 从[Azure CLI](/rest/api/sql/databases%20-%20import%20export)使用 az [sql db export 和](/cli/azure/sql/db#az-sql-db-export)az [Sql Db import 时](/cli/azure/sql/db#az-sql-db-import)，Azure 数据工厂、Azure Databricks、SSIS 等 ) bacpac 导出/导入[Azure 门户，不](/powershell/module/az.sql/new-azsqldatabaseimport)受支持。 REST API 支持使用 SSMS 和 [SqlPackage](/sql/tools/sqlpackage) 版本 18.4 及更高版本对较小的超大规模数据库（最多 200 GB）进行 bacpac 导入/导出。 对于较大的数据库，bacpac 导出/导入可能需要很长时间，并且可能会因各种原因失败。|
-| 迁移包含内存中 OLTP 对象的数据库 | 超大规模支持内存中 OLTP 对象的子集，包括内存优化表类型、表变量和本机编译模块。 但是，如果要迁移的数据库中存在任何类型的内存中 OLTP 对象，则不支持从“高级”和“业务关键”服务层级迁移到“超大规模”。 若要将此类数据库迁移到“超大规模”，必须删除所有内存中 OLTP 对象及其依赖项。 迁移数据库之后，可以重新创建这些对象。 超大规模当前不支持持久和非持久的内存优化表，必须将其更改为磁盘表。|
-| 异地复制  | 目前无法为超大规模 Azure SQL 数据库配置异地复制。 |
-| 数据库复制 | 超大规模上的数据库复制现为公共预览版。 |
+| 迁移到“超大规模”服务层级目前是单向操作 | 将数据库迁移到“超大规模”层级后，它不能直接迁移到非“超大规模”服务层级。 目前，将数据库从“超大规模”迁移到非“超大规模”的唯一方法是，使用 bacpac 文件或其他数据移动技术（大容量复制、Azure 数据工厂、Azure Databricks、SSIS 等）进行导出/导入。不支持从 Azure 门户、PowerShell（使用 [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) 或 [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)）、Azure CLI（使用 [az sql db export](/cli/azure/sql/db#az_sql_db_export) 和 [az sql db import](/cli/azure/sql/db#az_sql_db_import)）以及从 [REST API](/rest/api/sql/) 进行 bacpac 导出/导入。 支持使用 SSMS 和 [SqlPackage](/sql/tools/sqlpackage) 版本 18.4 及更高版本对较小的超大规模数据库（最多 200 GB）进行 bacpac 导入/导出。 对于较大的数据库，bacpac 导出/导入可能需要很长时间，并且可能会因各种原因失败。|
+| 迁移包含内存中 OLTP 对象的数据库 | 超大规模支持内存中 OLTP 对象的子集，包括内存优化表类型、表变量和本机编译模块。 但是，如果要迁移的数据库中存在任何类型的内存中 OLTP 对象，则不支持从“高级”和“业务关键”服务层级迁移到“超大规模”。 若要将此类数据库迁移到“超大规模”，必须删除所有内存中 OLTP 对象及其依赖项。 迁移数据库之后，可以重新创建这些对象。 “超大规模”目前不支持持久的和非持久的内存优化表，必须将这些表更改为为磁盘表。|
+| 异地复制  | 超大规模上的[异地复制](active-geo-replication-overview.md)现为公共预览版。 |
+| 数据库复制 | 超大规模上的[数据库复制](database-copy.md)现为公共预览版。 |
 | 智能数据库功能 | 除了“强制计划”选项外，所有其他“自动优化”选项在“超大规模”中尚不受支持：这些选项可能看上去已启用，但不会提出任何建议或执行任何操作。 |
 | 查询性能见解 | “超大规模”数据库目前不支持 Query Performance Insights。 |
 | 收缩数据库 | “超大规模”数据库目前不支持 DBCC SHRINKDATABASE 或 DBCC SHRINKFILE。 |
@@ -237,7 +238,7 @@ Azure SQL Database 超大规模层在所有区域中均可用，但默认情况�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关“超大规模”的常见问题，请参阅[“超大规模”常见问题解答](service-tier-hyperscale-frequently-asked-questions-faq.md)。
+- 有关“超大规模”的常见问题，请参阅[“超大规模”常见问题解答](service-tier-hyperscale-frequently-asked-questions-faq.yml)。
 - 有关服务层级的信息，请参阅[服务层级](purchasing-models.md)
 - 有关服务器和订阅级别限制的信息，请参阅[服务器上的资源限制概述](resource-limits-logical-server.md)。
 - 有关单一数据库的购买模型限制的信息，请参阅 [适用于单一数据库的 Azure SQL 数据库基于 vCore 的购买模型限制](resource-limits-vcore-single-databases.md)。

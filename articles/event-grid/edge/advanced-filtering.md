@@ -1,19 +1,17 @@
 ---
 title: 高级筛选 - Azure 事件网格 IoT Edge | Microsoft Docs
 description: IoT Edge 上的事件网格中的高级筛选。
-author: HiteshMadan
 manager: rajarv
-ms.author: himad
 ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: e42bb29a00486a16d697b68d7bcf337017da7998
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d0f146f66e2779a9ee8187f3ac06c72d884e9d8a
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368918"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755620"
 ---
 # <a name="advanced-filtering"></a>高级筛选
 事件网格允许对 json 有效负载中的任何属性指定筛选器。 这些筛选器将建模为 `AND` 条件集，其中每个外部条件都有可选的内部 `OR` 条件。 对于每个 `AND` 条件，请指定以下值：

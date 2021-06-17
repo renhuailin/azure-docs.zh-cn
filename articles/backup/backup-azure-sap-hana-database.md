@@ -2,13 +2,13 @@
 title: 使用 Azure 备份将 SAP HANA 数据库备份到 Azure
 description: 本文介绍如何使用 Azure 备份服务将 SAP HANA 数据库备份到 Azure 虚拟机。
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: ab4b192c63697b398314f78518eaf8f90f17c452
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.date: 05/28/2021
+ms.openlocfilehash: 9267a3a27823249116e74c6aba9321cfdfd0e338
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277581"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681341"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
@@ -84,7 +84,7 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 | 服务    | 要访问的域名                             |
 | -------------- | ------------------------------------------------------------ |
 | Azure 备份  | `*.backup.windowsazure.com`                             |
-| Azure 存储 | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
+| Azure 存储 | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` <br><br> `*.blob.storage.azure.net` |
 | Azure AD      | 根据[这篇文章](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)，允许访问第 56 和 59 节下的 FQDN |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>使用 HTTP 代理服务器路由流量

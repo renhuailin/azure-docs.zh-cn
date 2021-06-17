@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/09/2021
+ms.date: 06/03/2021
 ms.author: alkohli
-ms.openlocfilehash: f4f7e5f69e6b496395b74dbdcd58b3ada0a7f349
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: a68394b5db25565b44db0347a685d6cd67540170
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285186"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985699"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 的安全性和数据保护
 
@@ -40,7 +40,7 @@ Azure Stack Edge 服务是 Azure 中托管的一项管理服务。 该服务用�
 
 该加固型设备是一种本地设备，它在本地处理数据，然后将其发送到 Azure，从而帮助你转换数据。 你的设备：
 
-- 需要使用激活密钥来访问 Azure Stack Edge 服务。
+- 需要激活密钥来访问 Azure Stack Edge 服务。
 - 始终受设备密码保护。
 - 是一个锁定的设备。 设备基板管理控制器 (BMC) 和 BIOS 受密码保护。 BMC 受保护，仅可供有限的用户访问。
 - 启用安全启动，确保仅使用 Microsoft 提供的受信任软件启动设备。
@@ -51,7 +51,7 @@ Azure Stack Edge 服务是 Azure 中托管的一项管理服务。 该服务用�
     - 对于设备软件，会针对来自设备的入站和出站流量收集默认防火墙日志。 这些日志捆绑在支持包中。
     - 对于设备硬件，所有设备机箱事件（例如打开和关闭设备机箱）都记录在设备中。
 
-    有关包含硬件和软件入侵事件的特定日志以及如何获取这些日志的详细信息，请转到[收集高级安全日志](azure-stack-edge-gpu-troubleshoot.md)。
+    有关包含硬件和软件入侵事件的特定日志以及如何获取这些日志的详细信息，请转到[收集高级安全日志](azure-stack-edge-gpu-troubleshoot.md#gather-advanced-security-logs)。
 
 
 ### <a name="protect-the-device-via-activation-key"></a>通过激活密钥保护设备
@@ -68,7 +68,7 @@ Azure Stack Edge 服务是 Azure 中托管的一项管理服务。 该服务用�
 
 你可以：
 
-- 通过浏览器连接到设备的本地 Web UI，然后提供用于登录到设备的密码。
+- 通过浏览器连接到设备的本地 Web UI，然后提供密码来登录设备。
 - 通过 HTTP 远程连接到设备 PowerShell 界面。 默认情况下启用远程管理。 远程管理还配置为使用 Just Enough Administration (JEA) 以限制用户可以执行的操作。 然后，你可以提供用于登录设备的设备密码。 有关详细信息，请参阅[远程连接到设备](azure-stack-edge-gpu-connect-powershell-interface.md)。
 - 设备上的本地 Edge 用户对设备的访问权限有限，无法进行初始配置和故障排除。 可以从 Azure 公共或政府门户访问设备上运行的计算工作负载、数据传输和存储，以获取云中的资源。
 
