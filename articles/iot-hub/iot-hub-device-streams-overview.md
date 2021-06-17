@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 9487fc562fa099d2650aabc8d15fc1449c7fcb5c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 37dfd5adcfa00377980933e67c8881aaef6d8dd8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97825174"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746098"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中心设备流（预览版）
 
@@ -153,64 +153,6 @@ az iot hub devicestream show --name <YourIoTHubName>
 * C 和 C# SDK 支持设备端上的设备流。
 
 * NodeJS 和 C# SDK 支持服务端上的设备流。
-
-## <a name="iot-hub-device-stream-samples"></a>IoT 中心设备流示例
-
-IoT 中心页上提供两个[快速入门示例](./index.yml)。 这些示例演示应用程序如何使用设备流。
-
-* *echo* 示例演示如何以编程方式使用设备流（通过直接调用 SDK API）。
-
-* 本地代理示例演示如何通过设备流以隧道方式连接现成的客户端/服务器应用程序流（例如 SSH、RDP 或 Web）。
-
-这些示例在下面进行更详细的介绍。
-
-### <a name="echo-sample"></a>回显示例
-
-回显示例演示如何以编程方式使用设备流在服务和设备应用程序之间发送和接收字节。 请注意，可以通过不同的语言使用服务和设备程序。 例如，可以将 C 设备程序与 C# 服务程序配合使用。
-
-以下是 echo 示例：
-
-* [C# 服务和服务程序](quickstart-device-streams-echo-csharp.md)
-
-* [Node.js 服务程序](quickstart-device-streams-echo-nodejs.md)
-
-* [C 设备程序](quickstart-device-streams-echo-c.md)
-
-### <a name="local-proxy-sample-for-ssh-or-rdp"></a>本地代理示例（适用于 SSH 或 RDP）
-
-本地代理示例演示了启用现有应用程序流量隧道的方法，该方法涉及客户端和服务器程序之间的通信。 此设置适用于 SSH 和 RDP 等客户端/服务器协议，其中服务端充当客户端（运行 SSH 或 RDP 客户端程序），设备端则充当服务器（运行 SSH 守护程序或 RDP 服务器程序）。
-
-本部分介绍如何使用设备流，以便用户使用 SSH 通过设备流来连接到设备（RDP 或其他客户端/服务器应用程序的情况类似，方法是使用协议的相应端口）。
-
-该设置利用下图所示的两个 *本地代理* 程序，即 *设备本地代理* 和 *服务本地代理*。 本地代理程序负责使用 IoT 中心执行[设备流启动握手](#device-stream-creation-flow)，并使用常规客户端/服务器套接字与 SSH 客户端和 SSH 守护进程交互。
-
-![“SSH/RDP 的设备流代理设置”](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
-
-1. 用户运行服务本地代理以向设备发起设备流。
-
-2. 设备-本地代理接受流发起请求，并建立到 IoT 中心的流式处理终结点的隧道（如上所述）。
-
-3. 设备本地代理连接到在设备上侦听端口 22 的 SSH 守护程序终结点。
-
-4. 服务本地代理侦听指定端口，该端口等待来自用户的新 SSH 连接（示例中使用端口 2222，但可以将该端口配置为任何其他的可用端口）。 用户将 SSH 客户端指向 localhost 上的服务本地代理端口。
-
-### <a name="notes"></a>注释
-
-* 上述步骤完成了 SSH 客户端（右侧）与 SSH 守护程序（左侧）之间的端到端隧道连接。 此端到端连接的一部分涉及通过设备流将流量发送到 IoT 中心。
-
-* 图中的箭头表示终结点之间建立的连接的方向。 具体而言，请注意，没有到设备的入站连接（这通常被防火墙拦截）。
-
-* 在服务本地代理上使用端口 2222 的选择是任意选择。 可以将代理配置为使用任何其他可用端口。
-
-* 在这种情况下，端口 22 的选择取决于协议并特定于 SSH。 对于 RDP，必须使用端口 3389。 这可以在提供的示例程序中配置。
-
-使用以下链接获取有关如何以选择的语言运行本地代理程序的说明。 与[回显示例](#echo-sample)类似，可以使用不同的语言运行设备本地代理程序和服务本地代理程序，因为它们完全可互操作。
-
-* [C# 服务和服务程序](quickstart-device-streams-proxy-csharp.md)
-
-* [Node.js 服务程序](quickstart-device-streams-proxy-nodejs.md)
-
-* [C 设备程序](quickstart-device-streams-proxy-c.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 65883d34a6161a0bd0faf2a11a0ab528c7e12191
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 80976d3c73a20f7f152f33a8d70cbbd4687a7bd9
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883951"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111810348"
 ---
 # <a name="manage-public-ip-addresses"></a>管理公共 IP 地址
 
@@ -97,7 +97,7 @@ ms.locfileid: "107883951"
 
 ## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 
-在使用具有公共 IP 的虚拟机规模集时，不存在与单个虚拟机实例关联的独立公共 IP 对象。 但是，公共 IP 前缀对象[可用于生成实例 IP](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/)。
+在使用具有公共 IP 的虚拟机规模集时，不存在与单个虚拟机实例关联的独立公共 IP 对象。 但是，公共 IP 前缀对象[可用于生成实例 IP](https://azure.microsoft.com/resources/templates/vmms-with-public-ip-prefix/)。
 
 若要列出虚拟机规模集上的公共 IP，可以使用 PowerShell ([Get-AzPublicIpAddress -VirtualMachineScaleSetName](/powershell/module/az.network/get-azpublicipaddress)) 或 CLI ([az vmss list-instance-public-ips](/cli/azure/vmss#az_vmss_list_instance_public_ips))。
 

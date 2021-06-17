@@ -11,12 +11,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: 0d4f1ed6bab5775c44b2a745e1edc5fc07e0c06d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6c0e01349c56744590f35659edae66d963aeb302
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215453"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697958"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -306,7 +307,7 @@ Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的�
 
 不能对 Azure Web 应用使用多个订阅中的终结点。 Web 应用要求其所用的任何自定义域名只能在单个订阅中使用。 无法对多个订阅中的 Web 应用使用同一个域名。
 
-对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。 可使用 [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 或 [Azure CLI](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create) 添加其他订阅中的终结点。
+对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。 可使用 [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 或 [Azure CLI](/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_create) 添加其他订阅中的终结点。
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>能否将流量管理器用于云服务的“过渡”槽？
 
@@ -447,7 +448,7 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>运行状况检查从哪些 IP 地址发起？
 
-单击[此处](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)以了解如何检索可能是流量管理器运行状况检查源头的 IP 地址列表。 可以使用 REST API、Azure CLI 或 Azure PowerShell 来检索最新列表。 查看列出的 IP，以确保在终结点允许从这些 IP 地址传入的连接，从而检查其运行状况。
+单击[此处](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)，以了解如何检索可从其中发起流量管理器运行状况检查的 IP 地址的列表。 可以使用 REST API、Azure CLI 或 Azure PowerShell 来检索最新列表。 查看列出的 IP，确保终结点允许来自这些 IP 地址的传入连接，以便检查其运行状况。
 
 使用 Azure PowerShell 的示例：
 
@@ -458,7 +459,7 @@ $result.Properties.AddressPrefixes
 ```
 
 > [!NOTE]
-> 公共 IP 地址可能会更改，恕不另行通知。 请确保使用服务标记发现 API 或可下载的 JSON 文件来检索最新信息。
+> 公共 IP 地址可能会在没有通知的情况下更改。 请确保使用服务标记发现 API 或可下载的 JSON 文件检索最新信息。
 
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>流量管理器预期会对终结点执行多少次运行状况检查？
 

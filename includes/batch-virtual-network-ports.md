@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 04/23/2021
+ms.date: 06/09/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 3100e84255f95b2154f7e8d0ce47024546383da4
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 694bf49db5a77e09d421b94797166bae2fe16685
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107990449"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903071"
 ---
 ### <a name="general-requirements"></a>一般要求
 
@@ -61,7 +61,7 @@ ms.locfileid: "107990449"
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>网络安全组：指定子网级规则
 
-无需在子网级别指定 NSG，因为 Batch 会配置其自己的 NSG（请参阅上文）。 如果你的一个 NSG 与部署了 Batch 计算节点的子网关联，或者你要应用自定义 NSG 规则来替代应用的默认值，则必须为此 NSG 至少配置入站和出站安全规则，如下表所示。
+如果你的一个 NSG 与部署了 Batch 计算节点的子网关联，或者你要应用自定义 NSG 规则来替代应用的默认值，则必须为此 NSG 至少配置入站和出站安全规则，如下表所示。
 
 在端口 3389 (Windows) 或 22 (Linux) 上配置入站流量的前提是，你需要允许对外部源中的计算节点进行远程访问。 如果需要支持使用某些 MPI 运行时的多实例任务，则可能需要在 Linux 上启用端口 22 规则。 使池计算节点可用不一定需要允许这些端口上的流量。
 

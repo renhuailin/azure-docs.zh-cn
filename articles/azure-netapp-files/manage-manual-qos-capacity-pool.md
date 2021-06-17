@@ -12,39 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 1c20190ba1a997ef85f4023a54ecea3c2a77ae53
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 18333b7c9fded73d330cacd6322b0869bf65f9d9
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183822"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071076"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>管理手动 QoS 容量池
 
 本文介绍如何管理使用手动 QoS 类型的容量池。  
 
 请参阅 [Azure NetApp 文件的存储层次结构](azure-netapp-files-understand-storage-hierarchy.md)和 [Azure NetApp 文件的性能注意事项](azure-netapp-files-performance-considerations.md)，以了解有关 QoS 类型的注意事项。  
-
-## <a name="register-the-feature"></a>注册功能
-手动 QoS 类型功能目前提供预览版。 如果你是首次使用此功能，则需要先注册该功能。
-  
-1.  注册此功能：
-
-    ```azurepowershell-interactive
-    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
-    ```
-
-2. 检查功能注册的状态： 
-
-    > [!NOTE]
-    > RegistrationState 可能会处于 `Registering` 状态长达 60 分钟，然后才更改为 `Registered` 状态。 请等到状态变为“已注册”后再继续。
-
-    ```azurepowershell-interactive
-    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
-    ```
-此外，[Azure CLI 命令](/cli/azure/feature) `az feature register` 和 `az feature show` 分别可用于注册功能和显示注册状态。 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>设置新的手动 QoS 容量池 
 

@@ -1,11 +1,14 @@
 ---
-ms.openlocfilehash: 956c92c5c020f892b8148e9d43d403b1099fbdba
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 6fbd65b75ebb061b8012d4841ed03f331777e6ef
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113173"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111429853"
 ---
+> [!NOTE]
+> 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/phone-numbers-quickstart) 上查找此快速入门的最终代码
+
 ## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -98,7 +101,7 @@ const searchRequest = {
 const searchPoller = await phoneNumbersClient.beginSearchAvailablePhoneNumbers(searchRequest);
 
 // The search is underway. Wait to receive searchId.
-const { searchId, phoneNumbers } = searchPoller.pollUntilDone();
+const { searchId, phoneNumbers } = await searchPoller.pollUntilDone();
 const phoneNumber = phoneNumbers[0];
 
 console.log(`Found phone number: ${phoneNumber}`);
@@ -159,15 +162,15 @@ console.log("Phone number updated successfully.");
  */
 
 const { capabilities } = await phoneNumbersClient.getPurchasedPhoneNumber(phoneNumber);
-console.log(`These capabilities: ${capabilities}, should be the same as these: ${updateRequest}.`);
+console.log("These capabilities:", capabilities, "should be the same as these:", updateRequest, ".");
 ```
 
 你还可以检索所有购买的电话号码。
 
 ```javascript
-const phoneNumbers = await phoneNumbersClient.listPurchasedPhoneNumbers();
+const purchasedPhoneNumbers = await phoneNumbersClient.listPurchasedPhoneNumbers();
 
-for await (const purchasedPhoneNumber of phoneNumbers) {
+for await (const purchasedPhoneNumber of purchasedPhoneNumbers) {
   console.log(`Phone number: ${purchasedPhoneNumber.phoneNumber}, country code: ${purchasedPhoneNumber.countryCode}.`);
 }
 ```
@@ -181,7 +184,7 @@ for await (const purchasedPhoneNumber of phoneNumbers) {
  * Release Purchased Phone Number
  */
 
-const releasePoller = await client.beginReleasePhoneNumber(phoneNumber);
+const releasePoller = await phoneNumbersClient.beginReleasePhoneNumber(phoneNumber);
 
 // Release is underway.
 await releasePoller.pollUntilDone();

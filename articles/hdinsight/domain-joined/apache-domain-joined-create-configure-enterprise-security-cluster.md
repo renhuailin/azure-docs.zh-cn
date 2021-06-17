@@ -5,12 +5,13 @@ services: hdinsight
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: 3e6a5742d2dc8079c36f2d9f39a827f8db99cd67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8ea27e16dc08ccaf475ccc33f08c575ff45f8124
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867162"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692472"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>在 Azure HDInsight 中创建和配置企业安全性套餐群集
 
@@ -40,7 +41,7 @@ ms.locfileid: "104867162"
 1. 登录到 Azure 订阅。
 1. 在“使用新的 AD 林创建 Azure VM”页中提供以下信息：
 
-    |属性 | 值 |
+    |属性 | Value |
     |---|---|
     |订阅|选择要在其中部署资源的订阅。|
     |资源组|选择“新建”，并输入名称 `OnPremADVRG`|
@@ -348,14 +349,14 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
    1. 在“设置”下，选择“入站安全规则” > “添加”。  
    1. 在“添加入站安全规则”页上，输入以下属性，然后选择“添加” ：
 
-      | 属性 | 值 |
+      | 属性 | Value |
       |---|---|
-      | 源 | 任意 |
+      | Source | 任意 |
       | 源端口范围 | * |
       | 目标 | 任意 |
       | 目标端口范围 | 636 |
       | 协议 | 任意 |
-      | 操作 | Allow |
+      | 操作 | 允许 |
       | 优先级 | \<Desired number> |
       | 名称 | Port_LDAP_636 |
 

@@ -3,19 +3,20 @@ title: 如何在环境中配置保留期 - Azure 时序见解 | Microsoft Docs
 description: 了解如何在 Azure 时序见解环境中配置保留期。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: esung22
+ms.author: elsung
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 468b4f7ca7b0af4abc32df5d9ef64a74154d3de1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0189fdbd37be97d841d8a0ea80c83fa2e2c32d0
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91569411"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112063461"
 ---
 # <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>在 Azure 时序见解第 1 代中配置保留期
 
@@ -33,7 +34,7 @@ ms.locfileid: "91569411"
 -  清除旧数据（默认行为）
 - 暂停传入 
 
-要通过详细信息更好地了解这些设置，请参阅[了解 Azure 时序见解中的保留期](time-series-insights-concepts-retention.md)。  
+要通过详细信息更好地了解这些设置，请参阅[了解 Azure 时序见解中的保留期](time-series-insights-concepts-retention.md)。
 
 ## <a name="configure-data-retention"></a>配置数据保留
 

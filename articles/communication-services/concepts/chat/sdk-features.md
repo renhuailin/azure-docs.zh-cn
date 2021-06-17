@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 561855704d157f9ad826b5db83600a79d9437fc6
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9fd77ec4f72555e2d326a07831abe2648a68fbaf
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500679"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592045"
 ---
 # <a name="chat-sdk-overview"></a>聊天 SDK 概述 
 
@@ -40,7 +40,7 @@ Azure 通信服务聊天 SDK 可用于向应用程序添加丰富的实时聊天
 |                   | 更新已发送消息的内容                                                                               | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
 |                   | 删除以前发送的消息                                                                                                      | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
 |                   | 读取聊天中已被其他参与者阅读的消息的收件人                                        | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
-|                   | 当参与者在聊天会话中积极键入消息时获得通知                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
+|                   | 当参与者在聊天会话中积极键入消息时获得通知                                         | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
 |                   | 获取聊天会话中的所有消息                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | 将 Unicode 表情符号随附消息内容一起发送                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
 |实时通知（由专用信号包**启用）|  聊天客户端可以通过订阅获取聊天会话中的传入消息和其他操作的实时更新。 若要查看实时通知支持的更新的列表，请参阅[聊天概念](concepts.md#real-time-notifications)                                     | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   

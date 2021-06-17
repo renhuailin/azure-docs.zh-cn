@@ -3,19 +3,19 @@ title: 空间分析容器的遥测和日志记录
 titleSuffix: Azure Cognitive Services
 description: 空间分析为每个容器提供通用的配置框架见解、日志记录和安全设置。
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: 901e857a346b0955726c5755e23595efefbc2ca1
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: 08afa72507bb5689dbd1a003cb776958d6e63f1d
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589493"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746440"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遥测和故障排除
 
@@ -301,14 +301,6 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 检查提取日志的行、时间和大小，如果这些设置看上去正确，请将 ***DoPost*** 替换为 `true`，以便将具有相同筛选器的日志推送到目标。 
 
 排查问题时，可以从 Azure Blob 存储导出日志。 
-
-## <a name="common-issues"></a>常见问题
-
-如果你在模块日志中看到以下消息，可能表示你的 Azure 订阅需要获得批准： 
-
-“容器不处于有效状态。 订阅未通过验证，状态为 '不匹配'。 API 密钥不适用于给定的容器类型。”
-
-有关详细信息，请参阅[请求批准运行容器](spatial-analysis-container.md#request-approval-to-run-the-container)。
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>排查 Azure Stack Edge 设备问题
 
