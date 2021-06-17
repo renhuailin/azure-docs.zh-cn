@@ -8,12 +8,12 @@ ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 68b96401fc4fc6ea8916664978dbd4c094d9e5b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1b1852521164b264376f10ce8ade85f415a0a91
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98684519"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026590"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI - 使用专用链接限制对托管磁盘的导入/导出访问
 
@@ -154,5 +154,5 @@ az snapshot create -n $snapshotNameSecuredWithPL \
 
 ## <a name="next-steps"></a>后续步骤
 
-- [专用链接常见问题解答](../faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- [专用链接常见问题解答](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
 - [使用 CLI 将托管快照作为 VHD 导出/复制到不同区域中的存储帐户](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd)

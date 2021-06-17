@@ -1,0 +1,97 @@
+### YamlMime:FAQ
+metadata:
+  title: 有关 Azure 网络观察程序的常见问题解答 (FAQ) | Microsoft Docs
+  description: 本文解答有关 Azure 网络观察程序服务的常见问题。
+  services: network-watcher
+  documentationcenter: na
+  author: damendo
+  manager: 
+  editor: 
+  ms.service: network-watcher
+  ms.devlang: na
+  ms.topic: article
+  ms.tgt_pltfrm: na
+  ms.workload: infrastructure-services
+  ms.date: 01/07/2021
+  ms.author: damendo
+  ms.openlocfilehash: 51dc55bbf9a101a5edbe94367dc68c9ba945cfe2
+  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112034806"
+title: 有关 Azure 网络观察程序的常见问题解答 (FAQ)
+summary: >
+  [Azure 网络观察程序](./network-watcher-monitoring-overview.md)服务提供一套工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。 本文解答有关该服务的常见问题。
+sections:
+- name: 常规
+  questions:
+  - question: >
+      什么是网络观察程序？
+    answer: >
+      网络观察程序用于监视和修复 IaaS（基础结构即服务）组件的网络运行状况，其中包括虚拟机、虚拟网络、应用程序网关、负载均衡器，以及 Azure 网络中的其他资源。 它不是用于监视 PaaS（平台即服务）基础结构或获取 Web/移动分析数据的解决方案。
+  - question: >
+      网络观察程序提供哪些工具？
+    answer: "网络观察程序提供三个主要功能集\n* 监视\n  * [拓扑视图](./view-network-topology.md)显示虚拟网络中的资源及其相互关系。\n  * [连接监视器](./connection-monitor.md)可用于监视 VM 与另一网络资源之间的连接和延迟。\n  * [网络性能监视器](../azure-monitor/insights/network-performance-monitor.md)可用于监视混合网络体系结构、Expressroute 线路和服务/应用程序终结点之间的连接和延迟。  \n* 诊断\n  * [IP 流验证](./network-watcher-ip-flow-verify-overview.md)可用于在 VM 级别检测流量筛选问题。\n  * [下一跃点](./network-watcher-next-hop-overview.md)可帮助验证流量路由和检测路由问题。\n  * [连接故障排除](./network-watcher-connectivity-portal.md)可以在 VM 与另一网络资源之间实现一次性连接和延迟检查。\n  * [数据包捕获](./network-watcher-packet-capture-overview.md)可用于捕获虚拟网络中 VM 上的所有流量。\n  * [VPN 故障排除](./network-watcher-troubleshoot-overview.md)针对 VPN 网关和连接运行多项诊断检查，以帮助调试问题。\n* 日志记录\n  * [NSG 流日志](./network-watcher-nsg-flow-logging-overview.md)可用于在[网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md) 中记录所有流量\n  * [流量分析](./traffic-analytics.md)处理 NSG 流日志数据，使你能够可视化、查询、分析和了解网络流量。\n\n\n有关更多详细信息，请参阅[网络观察程序概述页](./network-watcher-monitoring-overview.md)。\n"
+  - question: >
+      网络观察程序如何定价？
+    answer: >
+      有关网络观察程序组件及其定价，请访问[定价页](https://azure.microsoft.com/pricing/details/network-watcher/)。
+  - question: >
+      哪些区域支持/提供网络观察程序？
+    answer: >
+      可以在 [Azure 服务可用性](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)页上查看最新的区域可用性
+  - question: >
+      使用网络观察程序需要哪些权限？
+    answer: >
+      请查看[使用网络观察程序所需的 Azure RBAC 权限](./required-rbac-permissions.md)的列表。 若要部署资源，需要对 NetworkWatcherRG 的参与者权限（见下）。
+  - question: >
+      如何启用网络观察程序？
+    answer: >
+      网络观察程序服务是为每个订阅[自动启用](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/)的。
+  - question: >
+      网络观察程序部署模型是什么？
+    answer: >
+      网络观察程序父资源是使用每个区域中的唯一实例部署的。 命名格式：NetworkWatcher_RegionName。 示例：NetworkWatcher_centralus 是“美国中部”区域的网络观察程序资源。
+  - question: >
+      NetworkWatcherRG 是什么？
+    answer: >
+      网络观察程序资源位于自动创建的、隐藏的 **NetworkWatcherRG** 资源组中。 例如，NSG 流日志资源是网络观察程序的子资源，在 NetworkWatcherRG 中启用。
+  - question: "为什么需要安装网络观察程序扩展？ \n"
+    answer: "对于任何需要生成或拦截来自 VM 的流量的功能，网络观察程序扩展都是必需的。 \n"
+  - question: >
+      哪些功能需要网络观察程序扩展？
+    answer: >
+      数据包捕获、连接故障排除和连接监视器功能需要网络观察程序扩展。
+  - question: >
+      网络观察程序的资源限制是怎样的？
+    answer: "有关所有限制，请参阅[服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#network-watcher-limits)页。  \n"
+  - question: "为何每个区域只允许一个网络观察程序实例？ \n"
+    answer: >
+      仅需为订阅启用网络观察程序一次，即可正常使用其功能，这并不是一项服务限制。
+  - question: "如何管理网络观察程序资源？ \n"
+    answer: "网络观察程序资源代表网络观察程序的后端服务，由 Azure 完全托管。 客户无需管理它。 不支持移动资源等操作。 但[可以删除资源](./network-watcher-create.md#delete-a-network-watcher-in-the-portal)。 \n"
+- name: 服务可用性和冗余性
+  questions:
+  - question: "网络观察程序服务是否具有区域复原能力？ \n"
+    answer: "是的。 默认情况下，网络观察程序服务具有区域复原能力。 \n"
+  - question: "如何配置网络观察程序服务，使其具有区域复原能力？ \n"
+    answer: "客户无需配置即可启用区域复原能力。 默认情况下，网络观察程序资源的区域复原能力可用，并由服务本身管理。 \n"
+- name: NSG 流日志
+  questions:
+  - question: >
+      NSG 流日志有什么作用？
+    answer: >
+      可以通过[网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md) 来合并和管理 Azure 网络资源。 使用 NSG 流日志可以通过 NSG 记录有关所有流量的 5 元组流信息。 原始流日志将写入 Azure 存储帐户，在存储帐户中，可以根据需要进一步处理、分析、查询或导出这些日志。
+  - question: >
+      当存储帐户位于防火墙后面时，如何使用 NSG 流日志？
+    answer: "若要使用防火墙后面的存储帐户，必须提供一个例外，以便受信任的 Microsoft 服务访问你的存储帐户：\n\n* 在门户或[“存储帐户”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts)的全局搜索框中键入存储帐户的名称，导航到存储帐户\n* 在“设置”部分，选择“防火墙和虚拟网络” \n* 在“允许的访问来源”中，选择“所选网络”。 然后，在“例外”下，勾选“允许受信任的 Microsoft 服务访问此存储帐户”旁边的框 \n* 如果已选中，则不需进行更改。  \n* 在 [NSG 流日志概述页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)上找到目标 NSG，并启用选择了上述存储帐户的 NSG 流日志。\n\n可以在数分钟后检查存储日志，应该会看到时间戳已更新，或者会看到新的 JSON 文件已创建。\n"
+  - question: >
+      当存储帐户位于服务终结点后面时，如何使用 NSG 流日志？
+    answer: >
+      NSG 流日志与服务终结点兼容，无需任何额外的配置。 请参阅[有关如何在虚拟网络中启用服务终结点的教程](../virtual-network/tutorial-restrict-network-access-to-resources.md#enable-a-service-endpoint)。
+  - question: >
+      流日志版本 1 和 2 有何区别？
+    answer: >
+      流日志版本 2 引入了“流状态”的概念，并会存储有关传输的字节和数据包的信息。 [了解详细信息](./network-watcher-nsg-flow-logging-overview.md#log-format)。
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n - 访问我们的[文档概述页](./index.yml)，其中提供了一些网络观察程序入门教程。"
