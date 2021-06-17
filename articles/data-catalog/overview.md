@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: e128e9f7515e572fc0be4b92ef03d8d98529ac66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 472747a1b6fdd6feb8ec285102530dbc59186b9a
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104674897"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111542067"
 ---
 # <a name="what-is-azure-data-catalog"></a>什么是 Azure 数据目录？
 [!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
@@ -63,11 +63,11 @@ Azure 数据目录是完全托管的云服务。 有了它，用户可以发现�
 * [How to discover data sources](data-catalog-how-to-discover.md)
 * [How to annotate data sources](data-catalog-how-to-annotate.md)
 * [如何记录数据源](data-catalog-how-to-documentation.md)
-* [How to connect to data sources](data-catalog-how-to-connect.md)
+* [如何连接到数据源](data-catalog-how-to-connect.md)
 * [如何处理大数据](data-catalog-how-to-big-data.md)
 * [How to manage data assets](data-catalog-how-to-manage.md)
 * [How to set up the Business Glossary](data-catalog-how-to-business-glossary.md)
-* [常见问题解答](data-catalog-frequently-asked-questions.md)
+* [常见问题解答](data-catalog-frequently-asked-questions.yml)
 
 ## <a name="next-steps"></a>后续步骤
 

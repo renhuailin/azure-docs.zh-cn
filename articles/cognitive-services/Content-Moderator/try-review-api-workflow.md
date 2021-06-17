@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 79749533d636f4b73ff3bef6b12d9e842ac485ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 210ed6e3a73721a7b4b4508071dc98e0bfd27498
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96905134"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031648"
 ---
 # <a name="define-and-use-moderation-workflows-api-console"></a>定义和使用审查工作流（API 控制台）
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 工作流是基于云的自定义筛选器，可用于更有效地处理内容。 工作流可以连接到多种服务，以通过不同的方式筛选内容，然后采取相应操作。 本指南演示如何通过 API 控制台使用工作流 REST API 来创建和使用工作流。 了解 API 的结构后，可以轻松将这些调用移植到任何与 REST 兼容的平台。
 
