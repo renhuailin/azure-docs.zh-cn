@@ -1,12 +1,15 @@
 ---
-ms.openlocfilehash: 8de7e27c4e98f0ef5bf58ac4f12847efa5cc36e5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c312b33a63c179d9af8347e268d400c5e48b3921
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110164012"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430137"
 ---
-## <a name="prerequisites"></a>先决条件
+> [!NOTE]
+> 在 [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/PhoneNumbers) 上查找此快速入门的最终代码
+
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Java 开发工具包 (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) 8 或更高版本。
@@ -60,6 +63,7 @@ import com.azure.core.http.rest.*;
 import com.azure.core.util.Context;
 import com.azure.core.util.polling.LongRunningOperationStatus;
 import com.azure.core.util.polling.PollResponse;
+import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.*;
 import java.io.*;
 
@@ -91,7 +95,7 @@ PhoneNumbersClient phoneNumberClient = new PhoneNumbersClientBuilder()
 <!-- embedme ./src/samples/java/com/azure/communication/phonenumbers/ReadmeSamples.java#L30-L41 -->
 ```java
 // You can find your connection string from your resource in the Azure portal
-String connectionString = "https://<RESOURCE_NAME>.communication.azure.com/;accesskey=<ACCESS_KEY>";
+String connectionString = "endpoint=https://<RESOURCE_NAME>.communication.azure.com/;accesskey=<ACCESS_KEY>";
 
 PhoneNumbersClient phoneNumberClient = new PhoneNumbersClientBuilder()
     .connectionString(connectionString)

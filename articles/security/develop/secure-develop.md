@@ -13,18 +13,18 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8edceb31a0cdde36c987076e91350116a4f81255
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf76427df2c1802ed49dc5ff848059d88ba9658e
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782395"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558541"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 
 本文介绍开发云应用程序时要考虑的安全活动和控制措施， 并涵盖 Microsoft [安全开发生命周期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的实现和验证阶段要考虑的安全问题和概念。 目标在于帮助定义可用于开发更安全的应用程序的活动和 Azure 服务。
 
-本文介绍以下 SDL 阶段：
+本文涵盖以下 SDL 阶段：
 
 - 实现
 - 验证
@@ -36,7 +36,7 @@ ms.locfileid: "104782395"
 
 ### <a name="perform-code-reviews"></a>执行代码评审
 
-在签入代码前，执行[代码评审](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs)可提高整体代码质量并降低创建 bug 的风险。 可使用 [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) 来管理代码评审过程。
+在签入代码之前，请执行代码评审以提高总体代码质量并降低生成错误的风险。 可使用 [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) 来管理代码评审过程。
 
 ### <a name="perform-static-code-analysis"></a>执行静态代码分析
 

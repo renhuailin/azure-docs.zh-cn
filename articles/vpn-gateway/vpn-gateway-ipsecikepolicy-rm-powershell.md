@@ -1,23 +1,24 @@
 ---
-title: 用于 S2S VPN 和 VNet 到 VNet 连接的 IPsec/IKE 策略
+title: 用于 S2S VPN 连接和 VNet 到 VNet 连接的 IPsec/IKE 策略：PowerShell
 titleSuffix: Azure VPN Gateway
-description: 使用 Azure 资源管理器和 PowerShell 通过 Azure VPN 网关为 S2S 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略。
+description: 了解如何使用 PowerShell 通过 Azure VPN 网关为 S2S 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fe50cc3b8387b8cf377a1dce7cdcd69d174bd6ef
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94649256"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671867"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略
 
-本文逐步讲解如何使用资源管理器部署模型和 PowerShell 为站点到站点的 VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略。
+本文分步讲解了如何使用 PowerShell 为站点到站点 VPN 连接或 VNet 到 VNet 连接配置 IPsec/IKE 策略。
 
 
 

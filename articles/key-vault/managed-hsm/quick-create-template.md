@@ -14,12 +14,12 @@ ms.custom:
 - mvc
 - devx-track-azurecli
 - mode-arm
-ms.openlocfilehash: 33c262c61d50b45663a627e40ea186f1f0dcde41
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 5934c20c2c7749b75b05bdb80b6d9dee85d6d3c1
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532973"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007006"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Key Vault 托管 HSM
 
@@ -51,7 +51,7 @@ az login
 
 ## <a name="create-a-manage-hsm"></a>创建托管 HSM
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-managed-hsm-create/)。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/managed-hsm-create/)。
 
 模板中定义的 Azure 资源：
 
@@ -73,7 +73,7 @@ az ad user show --id <your-email-address> --query "objectId"
 
 1. 选择下图登录到 Azure 并打开一个模板。 该模板将创建 Key Vault 和机密。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-managed-hsm-create%2Fazuredeploy.json"><img src="../media/deploy-to-azure.svg" alt="deploy to azure"/></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2F%2Fmaster%2Fquickstarts%2Fmicrosoft.keyvault%2Fmanaged-hsm-create%2Fazuredeploy.json"><img src="../media/deploy-to-azure.svg" alt="deploy to azure"/></a>
 
 2. 选择或输入以下值。
 

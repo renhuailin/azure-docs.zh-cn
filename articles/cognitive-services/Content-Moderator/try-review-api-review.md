@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
-ms.openlocfilehash: 479c7c455f07d098edd327196803e85df24dfb6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d697cf4c04753427d161196b3efb7e5e055e32ac
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96905123"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033718"
 ---
 # <a name="create-human-reviews-api-console"></a>创建人工评审（API 控制台）
+
+[!INCLUDE [deprecation notice](includes/tool-deprecation.md)]
 
 [审阅](./review-api.md#reviews)存储并显示供人工审查方评估的内容。 当用户完成评审时，系统会将结果发送到指定的回调终结点。 在本指南中，你将了解如何通过 API 控制台使用评审 REST API 来设置评审。 了解 API 的结构后，可以轻松将这些调用移植到任何与 REST 兼容的平台。
 
