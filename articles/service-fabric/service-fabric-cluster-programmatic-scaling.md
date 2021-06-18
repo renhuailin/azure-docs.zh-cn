@@ -5,13 +5,13 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 9f39bd874c1f5a1be42ca1c88e6ea2fe8df22f87
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: 43f24d06f9074fdcf4dc9d3ae96de239905db201
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94648202"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671008"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以编程方式缩放 Service Fabric 群集 
 

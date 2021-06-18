@@ -10,14 +10,17 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 3cbb8496cbb8473c9b94c1d1e9d0e89286d1f75d
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 4f0eb345a51091ca354887fd3a798ae6e6da3ec7
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109627263"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430028"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
+
+> [!NOTE]
+> 在 [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码
 
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：

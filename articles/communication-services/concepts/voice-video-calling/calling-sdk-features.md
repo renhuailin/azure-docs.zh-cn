@@ -104,7 +104,7 @@ ms.locfileid: "107364866"
 
 下表显示了当前可用的一组受支持的浏览器。 除非另有说明，否则我们支持浏览器最新的三个版本。
 
-| 平台                         | Chrome | Safari*  | Microsoft Edge (Chromium) |
+| 平台                         | Chrome | Safari*  | Microsoft Microsoft Edge (Chromium) |
 | -------------------------------- | -------| ------  | --------------  |
 | Android                          |  ✔️    | ❌     | ❌             |
 | iOS                              |  ❌    | ✔️**** | ❌             |

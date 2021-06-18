@@ -6,14 +6,14 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.author: cavoeg
+ms.author: zxue
 ms.date: 05/10/2021
-ms.openlocfilehash: 8048436c0ee5b74b1b30b581976cedefb133dd02
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: d407a52a6a3b2d5beebb2cb875cade95892abfa2
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005710"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288858"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>快速入门：使用 ARM 模板部署 Azure API for FHIR
 

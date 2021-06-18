@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 04/07/2021
 ms.topic: include
-ms.openlocfilehash: 73886b966676af75cc74484ccdc0632f080b041a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: d14274c43c3241a4c091ee004747c1ad8e12968b
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029127"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111897052"
 ---
 Azure Defender 为容器化环境提供实时威胁防护，并针对可疑活动发出警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 
@@ -32,7 +32,7 @@ Azure Defender 可提供不同级别的威胁防护：
     >[!NOTE]
     > Azure Defender 会针对在订阅上启用 Azure Defender for Kubernetes 计划后发生的操作和部署生成安全警报。 
 
-    有关群集级别的警报列表，请参阅[警报参考表](../articles/security-center/alerts-reference.md#alerts-akscluster)。
+    有关群集级别的警报列表，请参阅[警报参考表](../articles/security-center/alerts-reference.md#alerts-k8scluster)。
 
 此外，我们的全球安全研究团队会不断监视威胁态势。 一旦发现威胁，他们就会添加容器特定的警报和漏洞。
 

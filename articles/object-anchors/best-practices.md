@@ -6,18 +6,18 @@ ms.author: crtreasu
 ms.date: 03/12/2021
 ms.topic: best-practice
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6b9546843d88a5a7329120cca86d685d8abf3460
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0a092b45b341af37e4251951b06d1211fa6c600a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061921"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983791"
 ---
 # <a name="best-practices"></a>最佳实践
 
 建议尝试其中的一些步骤以获得最佳结果。
 
-## <a name="ingestion"></a>引入
+## <a name="conversion"></a>转换
 
 - 检查物理对象的尺寸。 Azure Object Anchors 最适用于其最小尺寸在建议的 1 米 - 10 米范围内的对象。
 - 在 [MeshLab](https://www.meshlab.net/) 之类的软件中检查 3D 模型，以了解以下详细信息。

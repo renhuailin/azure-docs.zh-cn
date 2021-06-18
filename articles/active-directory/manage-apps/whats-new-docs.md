@@ -1,30 +1,37 @@
 ---
 title: Azure Active Directory 应用程序管理中的新增内容
 description: 有关 Azure Active Directory 应用程序管理的新文档和更新文档。
-ms.date: 05/04/2021
+ms.date: 06/02/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: iangithinji
-author: iantheninja
+ms.author: mtillman
+author: mtillman
 manager: CelesteDG
-ms.openlocfilehash: 19fbfbed3a86575eb38fd2651cab9fffeabb673f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 361fb5cc46d356fbab53defc5c3add4d7a5b768b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743860"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079186"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增内容
 
 欢迎查看 Azure Active Directory 应用程序管理文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解应用程序管理服务的新增内容，请查看 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
 
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="updated-articles"></a>更新的文章
+
+- [Azure Active Directory 应用程序管理：新增内容](whats-new-docs.md)
+
+
 ## <a name="april-2021"></a>2021 年 4 月
 
 ### <a name="new-articles"></a>新文章
 
-- [Active Directory (Azure AD) 应用程序代理常见问题解答](application-proxy-faq.yml)
+- [Active Directory (Azure AD) 应用程序代理常见问题解答](../app-proxy/application-proxy-faq.yml)
 
 ### <a name="updated-articles"></a>更新的文章
 
