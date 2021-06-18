@@ -2,21 +2,21 @@
 title: 在 Azure API for FHIR 中配置跨域资源共享
 description: 本文介绍如何在 Azure API for FHIR 中配置跨域资源共享。
 author: matjazl
-ms.author: matjazl
+ms.author: zxue
 ms.date: 3/11/2019
 ms.topic: reference
 ms.service: healthcare-apis
 ms.subservice: fhir
-ms.openlocfilehash: dc4c034b0821f1fe5ecb940591fca77d61edc3ce
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 3ce1f914afab2a46ab734c270b00e2c7938dc80b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017790"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112283908"
 ---
 # <a name="configure-cross-origin-resource-sharing-in-azure-api-for-fhir"></a>在 Azure API for FHIR 中配置跨域资源共享
 
-适用于快速医疗保健互操作性资源的 Azure API (FHIR) 支持 [ (CORS) 的跨域资源共享 ](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing)。 CORS 允许你配置设置，以便一个域中的应用程序 (源) 可以从其他域（称为跨域请求）访问资源。
+适用于快速医疗保健互操作性资源 (FHIR) 的 Azure API 支持[跨域资源共享 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing)。 CORS 允许你配置设置，以便一个域中的应用程序 (源) 可以从其他域（称为跨域请求）访问资源。
 
 CORS 通常用于单页面应用程序，该应用程序必须将 RESTful API 调用到不同的域。
 

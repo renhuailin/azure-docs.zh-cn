@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 04/05/2021
-ms.author: punagpal
-ms.openlocfilehash: 0a382ad948e7fd2efc6ab59eb94da3d6cbb210d7
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: rabhaiya
+ms.openlocfilehash: 978009c31cfcaba96e9601b672d182dc7a322278
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443759"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112286770"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>快速入门：使用 Azure 门户部署适用于 FHIR 的 Azure IoT 连接器（预览版）
 
@@ -50,7 +50,7 @@ ms.locfileid: "106443759"
 
 [![创建 IoT 连接器](media/quickstart-iot-fhir-portal/portal-iot-connector-create.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-create.jpg#lightbox)
 
-|设置|Value|说明 |
+|设置|“值”|说明 |
 |---|---|---|
 |连接器名称|唯一的名称|输入一个名称以标识适用于 FHIR 的 Azure IoT 连接器。此名称在 Azure API for FHIR 资源中应是唯一的。 名称只能包含小写字母、数字和连字符 (-)。 它必须以字母或数字开头和结尾，且长度必须介于 3-24 个字符之间。|
 |解决方法类型|查找或创建|如果 Azure API for FHIR 中有一个用于创建[设备](https://www.hl7.org/fhir/device.html)和[患者](https://www.hl7.org/fhir/patient.html) FHIR 资源的带外进程，请选择“查找”。 创建[观察](https://www.hl7.org/fhir/observation.html) FHIR 资源时，适用于 FHIR 的 Azure IoT 连接器将使用对这些资源的引用来显示设备数据。 如果希望适用于 FHIR 的 Azure IoT 连接器使用设备数据中显示的相应标识符值在 Azure API for FHIR 中创建基本的设备和患者资源，请选择“创建”。|
@@ -170,24 +170,24 @@ Azure 提供了一套全面的 IoT 产品，用于连接和管理 IoT 设备。 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>使用适用于 FHIR 的 Azure IoT 连接器（预览版）连接 IoT 数据
 
-部署 IoT Central 应用程序后，两个现成的模拟设备将开始生成遥测。 在本教程中，我们将通过适用于 FHIR 的 Azure IoT 连接器将遥测从 Smart Vitals Patch 模拟器引入 FHIR。 若要将 IoT 数据导出到适用于 FHIR 的 Azure IoT 连接器，需要[在 IoT Central 内设置连续数据导出](../../iot-central/core/howto-export-data.md)。 首先，需要创建与目标的连接，然后创建一个数据导出作业来持续运行： 
+部署 IoT Central 应用程序后，两个现成的模拟设备将开始生成遥测。 在本教程中，我们将通过适用于 FHIR 的 Azure IoT 连接器将遥测从 Smart Vitals Patch 模拟器引入 FHIR。 若要将 IoT 数据导出到适用于 FHIR 的 Azure IoT 连接器，需要[在 IoT Central 内设置连续数据导出](../../iot-central/core/howto-export-data.md)。 首先需要创建到目标的连接，然后创建数据导出作业以持续运行： 
 
 > [!NOTE]
-> 你将需要选择 " **数据导出** " 和 " **数据导出" (旧)** 在此部分的 IoT Central 应用设置中。
+> 在本部分的"应用设置 **" (，) "** 数据导出"IoT Central"数据导出"。
 
-[![数据导出设置 IoT Central](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
+[![IoT Central数据导出设置](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
 
 创建新目标：
-- 请在 " **目标** " 选项卡上，创建一个新的目标。
-- 首先给予目标唯一名称。
-- 选取 *Azure 事件中心* 作为目标类型。
-- 为 " **连接字符串** " 字段提供上一步中获取的 FHIR 连接字符串的 Azure IoT 连接器。
+- 转到" **目标"** 选项卡并创建新目标。
+- 首先为目标指定唯一名称。
+- 选择 *Azure 事件中心* 作为目标类型。
+- 为Azure IoT"连接字符串"字段提供在上一步骤获取的适用于 FHIR 的连接器 **的连接** 字符串。
 
 创建新的数据导出：
-- 创建目标后，请切换到 " **导出** " 选项卡并创建新的数据导出。 
-- 首先向其提供数据导出唯一名称。
-- 在 " **数据** " 下，选择 " *遥测* " 作为 *要导出的数据类型*。
-- 在 " **目标** " 下，选择你在以前的名称中创建的目标名称。
+- 创建目标后，请转到"导出 **"** 选项卡并创建新的数据导出。 
+- 首先，为数据导出指定唯一名称。
+- 在 **"数据***"下，选择*"遥测 *"作为要导出的数据类型*。
+- 在 **"** 目标"下，选择在以前的名称中创建的目标名称。
 
 ## <a name="view-device-data-in-azure-api-for-fhir"></a>查看 Azure API for FHIR 中的设备数据
 

@@ -7,14 +7,14 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
-ms.author: cavoeg
+ms.author: zxue
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 10bc0ac3a61ddba22dea46dfdd47a0305e2d9149
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: dee268ab686eda1c83fde4cef7bce6f4e88b1c50
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017624"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288816"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure API for FHIR
 

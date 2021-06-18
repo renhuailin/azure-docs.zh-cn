@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
 ms.date: 11/13/2020
-ms.author: matjazl
-ms.openlocfilehash: 479e8f870692cc16345d0ca19b8eb065caa28fa8
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.author: chrupa
+ms.openlocfilehash: 79c7cf1def04ab61320b22df51b5d3933c462cb8
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017604"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112286572"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>什么是 Azure API for FHIR&reg;？
 
@@ -22,7 +22,7 @@ Azure API for FHIR 由云中托管的平台即服务 (PaaS) 产品/服务提供�
 - 托管的 FHIR 服务，可在数分钟内在云中进行预配 
 - Azure 中基于 FHIR® 的企业级终结点，用于数据访问和 FHIR® 格式的存储
 - 高性能、低延迟
-- 在符合要求的云环境中 (PHI) 保护受保护健康信息的管理
+- 在兼容的云环境中安全管理受保护健康信息 (PHI)
 - 用于移动和 Web 实现的 SMART on FHIR
 - 使用基于角色的访问控制 (RBAC) 大规模控制自己的数据
 - 对每个数据存储中的访问、创建、修改和读取进行审核日志跟踪

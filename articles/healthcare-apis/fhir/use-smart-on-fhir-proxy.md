@@ -7,18 +7,18 @@ ms.subservice: fhir
 ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
-author: matjazl
+author: zxue
 ms.date: 04/02/2019
-ms.openlocfilehash: 2e13a9fc32964781dda07e5534e5cab79868ddf0
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 64b46c5becbf3dcd5870481adf07a30022144c13
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017963"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288408"
 ---
 # <a name="tutorial-azure-active-directory-smart-on-fhir-proxy"></a>教程：在 FHIR 代理上 Azure Active Directory SMART
 
-[SMART ON FHIR](https://docs.smarthealthit.org/) 是一套开放式规范，用于将合作伙伴应用程序与具有 FHIR 接口的 FHIR 服务器和电子医疗记录系统集成。 规范的主要目的之一是说明应用程序应该如何发现 FHIR 服务器的身份验证终结点并启动身份验证序列。 
+[SMART on FHIR](https://docs.smarthealthit.org/) 是一套开放式规范，用于将合作伙伴应用程序与 FHIR 服务器和具有 FHIR 接口的电子医疗记录系统集成。 规范的主要目的之一是说明应用程序应该如何发现 FHIR 服务器的身份验证终结点并启动身份验证序列。 
 
 身份验证基于 OAuth2。 但由于 SMART on FHIR 使用的参数命名约定与 Azure Active Directory (Azure AD) 不一致，因此 FHIR 的 Azure API 具有 FHIR proxy 的内置 Azure AD 智能，可启用智能 on FHIR 启动序列的子集。 具体而言，代理会启用 [EHR 启动序列](https://hl7.org/fhir/smart-app-launch/#ehr-launch-sequence)。
 
