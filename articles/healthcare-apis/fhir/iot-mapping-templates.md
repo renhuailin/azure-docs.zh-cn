@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 04/05/2021
-ms.author: punagpal
-ms.openlocfilehash: e43b5068544927ba4d04c86b16d3a15510c32bed
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: rabhaiya
+ms.openlocfilehash: 9b5fa3533aa521053a321a3f0ffdfad3505abb73
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448466"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112286662"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>适用于 FHIR 的 Azure IoT 连接器（预览版）映射模版
 本文详细介绍了如何使用映射模板为快速医疗保健互操作性资源配置 Azure IoT 连接器 (FHIR&#174;) *。
@@ -336,9 +336,9 @@ IotJsonPathContentTemplate 类似于 JsonPathContentTemplate，但 DeviceIdExpre
 
 #### <a name="iotcentraljsonpathcontenttemplate"></a>IotCentralJsonPathContentTemplate
 
-IotCentralJsonPathContentTemplate 也不需要 DeviceIdExpression 和 TimestampExpression，并且在通过[Azure IoT Central](../../iot-central/core/overview-iot-central.md)的 "[导出数据](../../iot-central/core/howto-export-data.md)" 功能发送评估的消息时使用。 使用此功能时，设备标识 (假设 Azure Iot Central 中的设备标识符注册为目标 FHIR 服务器上的设备资源的标识符) 并且消息的时间戳是已知的。 如果正在使用 Azure IoT Central 的数据导出功能，但在消息正文中使用自定义属性作为设备标识或度量时间戳，则仍可使用 JsonPathContentTemplate。
+IotCentralJsonPathContentTemplate 也不需要 DeviceIdExpression 和 TimestampExpression，并且当通过 Azure IoT Central 的"导出数据"[](../../iot-central/core/howto-export-data.md)功能发送要[评估的消息时，使用](../../iot-central/core/overview-iot-central.md)IotCentralJsonPathContentTemplate。 使用此功能时， (Azure Iot Central 中的设备标识符注册为目标 FHIR 服务器上设备资源的标识符) 并且知道消息的时间戳。 如果使用的是 Azure IoT Central导出功能，但在消息正文中对设备标识或度量时间戳使用自定义属性，则仍可以使用 JsonPathContentTemplate。
 
-*注意：使用 IotCentralJsonPathContentTemplate 时，TypeMatchExpression 应将整个消息解析为 JToken。请参阅以下示例。* 
+*注意：使用 IotCentralJsonPathContentTemplate 时，TypeMatchExpression 应解析为 JToken 作为整个消息。请参阅以下示例。* 
 ##### <a name="examples"></a>示例
 ---
 **心率**
@@ -430,57 +430,57 @@ IotCentralJsonPathContentTemplate 也不需要 DeviceIdExpression 和 TimestampE
 ```
 
 ## <a name="fhir-mapping"></a>FHIR 映射
-将设备内容提取到规范化模型后，将根据设备标识符、测量类型和时间段收集和分组数据。 此分组的输出将发送到 FHIR 资源 ([观察](https://www.hl7.org/fhir/observation.html) 当前) 。 此处的 FHIR 映射模板控制如何将数据映射到 FHIR 观察。 是否应为某个时间点或一小时内的某个时间点创建观察值？ 应将哪些代码添加到观察？ 该值应表示为 [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) 还是 [数量](https://www.hl7.org/fhir/datatypes.html#Quantity)？ 这些数据类型都是 FHIR 映射配置控件的选项。
+将设备内容提取到规范化模型中后，会根据设备标识符、度量类型和时间段收集和分组数据。 将发送此分组的输出，以转换为当前正在 ([的](https://www.hl7.org/fhir/observation.html) FHIR) 。 此处，FHIR 映射模板控制如何将数据映射到 FHIR 观察。 是创建一个观察点还是创建一个小时内的观察值？ 应在观察结果中添加哪些代码？ 值应表示为[SampledData 还是](https://www.hl7.org/fhir/datatypes.html#SampledData) [Quantity？](https://www.hl7.org/fhir/datatypes.html#Quantity) 这些数据类型都是 FHIR 映射配置控件的所有选项。
 
 ### <a name="codevaluefhirtemplate"></a>CodeValueFhirTemplate
-目前，CodeValueFhirTemplate 是 FHIR 映射中目前支持的唯一模板。  它允许您定义代码、有效期以及观察值。 支持多个值类型： [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData)、 [CodeableConcept](https://www.hl7.org/fhir/datatypes.html#CodeableConcept)和 [数量](https://www.hl7.org/fhir/datatypes.html#Quantity)。 与这些可配置值一起，会自动处理观察资源的标识符，并将其链接到正确的设备和患者资源。
+CodeValueFhirTemplate 目前是 FHIR 映射目前唯一支持的模板。  它允许定义代码、有效周期和观察值。 支持多种值类型[：SampledData、CodeableConcept](https://www.hl7.org/fhir/datatypes.html#SampledData)和[Quantity](https://www.hl7.org/fhir/datatypes.html#Quantity)。 [](https://www.hl7.org/fhir/datatypes.html#CodeableConcept) 除了这些可配置值外，会自动处理观察资源的标识符以及链接到适当的设备和患者资源。
 
 | 属性 | 说明 
 | --- | ---
 |**TypeName**| 此模板应绑定到的度量类型。 应至少有一个输出此类型的设备映射模板。
-|**PeriodInterval**|创建的观察应表示的时间段。 支持的值为 0 (实例) ，60 (一小时) ，1440 (日) 。
-|**类别**|任意数量的 [CodeableConcepts](http://hl7.org/fhir/datatypes-definitions.html#codeableconcept) ，用于对创建的观察类型进行分类。
-|**代码**|要应用于所创建的观察的一个或多个 [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding) 。
-|**代码 []。编写**|[编码](http://hl7.org/fhir/datatypes-definitions.html#coding)代码。
-|**代码 []。主板**|用于 [编码](http://hl7.org/fhir/datatypes-definitions.html#coding)的系统。
-|**代码 []。显示**|[编码](http://hl7.org/fhir/datatypes-definitions.html#coding)的显示。
-|**值**|要在观察中提取并表示的值。 有关详细信息，请参阅 [值类型模板](#valuetypes)。
-|**组件**|*可选：* 要在观察上创建的一个或多个组件。
-|**组件 []。条码**|要应用于组件的一个或多个 [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding) 。
-|**组件 []。负值**|要在组件中提取并表示的值。 有关详细信息，请参阅 [值类型模板](#valuetypes)。
+|**PeriodInterval**|创建的观察值应表示的时间段。 支持的值为 0 (实例) ，60 (小时) ，每天 1440 (1440) 。
+|**类别**|任意数目 [的 CodeableConcepts，](http://hl7.org/fhir/datatypes-definitions.html#codeableconcept) 用于对创建的观察类型进行分类。
+|**代码**|要应用于 [所创建的](http://hl7.org/fhir/datatypes-definitions.html#coding) 观察结果的一个或多个编码。
+|**Codes[]。代码**|编码 [的代码](http://hl7.org/fhir/datatypes-definitions.html#coding)。
+|**Codes[]。系统**|编码 [的系统](http://hl7.org/fhir/datatypes-definitions.html#coding)。
+|**Codes[]。显示**|编码 的 [显示](http://hl7.org/fhir/datatypes-definitions.html#coding)。
+|**值**|要提取的值，在观察中表示。 有关详细信息，请参阅值 [类型模板](#valuetypes)。
+|**组件**|*可选：* 要基于观察值创建的一个或多个组件。
+|**Components[]。代码**|要应用于 [组件的](http://hl7.org/fhir/datatypes-definitions.html#coding) 一个或多个编码。
+|**Components[]。价值**|在组件中提取和表示的值。 有关详细信息，请参阅值 [类型模板](#valuetypes)。
 
 ### <a name="value-type-templates"></a>值类型模板 <a name="valuetypes"></a>
-下面是当前支持的值类型模板。 将来可能会添加更多模板。
+下面是当前支持的值类型模板。 将来可能会添加其他模板。
 #### <a name="sampleddata"></a>SampledData
-表示 [SampledData](http://hl7.org/fhir/datatypes.html#SampledData) FHIR 数据类型。观察度量值将写入到一个时间点开始的值流，并使用定义的时间范围递增。 如果不存在任何值， `E` 将写入数据流。 如果该时间段是在数据流中占用相同位置的两个值，则使用最新的值。 当更新使用 SampledData 的观察时，将应用相同的逻辑。
+表示 [SampledData](http://hl7.org/fhir/datatypes.html#SampledData) FHIR 数据类型。观察度量将写入值流，从时间点开始，使用定义的周期向前递增。 如果不存在值， `E` 则 将写入数据流。 如果期间使另外两个值在数据流中占据相同的位置，则使用最新值。 更新使用 SampledData 的观察结果时，将应用相同的逻辑。
 
 | 属性 | 说明 
 | --- | ---
-|**DefaultPeriod**|要使用的默认时间段（以毫秒为单位）。 
-|**单位**|要在 SampledData 的原点设置的单位。 
+|**DefaultPeriod**|使用的默认时间段（以毫秒为单位）。 
+|**单位**|在 SampledData 的原点上设置的单元。 
 
 #### <a name="quantity"></a>数量
-表示 FHIR 数据类型的 [数量](http://hl7.org/fhir/datatypes.html#Quantity) 。 如果组中存在多个值，则仅使用第一个值。 当新值到达时，如果映射到相同的观察值，则会覆盖旧值。
+表示 [Quantity](http://hl7.org/fhir/datatypes.html#Quantity) FHIR 数据类型。 如果分组中存在多个值，则仅使用第一个值。 当映射到同一观测值的新值到达时，它将覆盖旧值。
 
 | 属性 | 说明 
 | --- | --- 
-|**单位**| 单位表示。
+|**单位**| 单位表示形式。
 |**代码**| 单元的编码形式。
-|**系统**| 定义编码单元窗体的系统。
+|**系统**| 定义编码单位窗体的系统。
 
 ### <a name="codeableconcept"></a>CodeableConcept
-表示 [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableConcept) FHIR 数据类型。 不使用实际值。
+表示 [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableConcept) FHIR 数据类型。 实际值未使用。
 
 | 属性 | 说明 
 | --- | --- 
 |**文本**|纯文本表示形式。 
-|**代码**|要应用于所创建的观察的一个或多个 [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding) 。
-|**代码 []。编写**|[编码](http://hl7.org/fhir/datatypes-definitions.html#coding)代码。
-|**代码 []。主板**|用于 [编码](http://hl7.org/fhir/datatypes-definitions.html#coding)的系统。
-|**代码 []。显示**|[编码](http://hl7.org/fhir/datatypes-definitions.html#coding)的显示。
+|**代码**|要应用于 [所创建的](http://hl7.org/fhir/datatypes-definitions.html#coding) 观察结果的一个或多个编码。
+|**Codes[]。代码**|编码 [的代码](http://hl7.org/fhir/datatypes-definitions.html#coding)。
+|**Codes[]。系统**|编码 [的系统](http://hl7.org/fhir/datatypes-definitions.html#coding)。
+|**Codes[]。显示**|编码 的 [显示](http://hl7.org/fhir/datatypes-definitions.html#coding)。
 
 ### <a name="examples"></a>示例
-**心率-SampledData**
+**心速 - SampledData**
 ```json
 {
     "templateType": "CodeValueFhir",
@@ -504,7 +504,7 @@ IotCentralJsonPathContentTemplate 也不需要 DeviceIdExpression 和 TimestampE
 }
 ```
 ---
-**步骤-SampledData**
+**步骤 - SampledData**
 ```json
 {
     "templateType": "CodeValueFhir",
@@ -528,7 +528,7 @@ IotCentralJsonPathContentTemplate 也不需要 DeviceIdExpression 和 TimestampE
 }
 ```
 ---
-**血压-SampledData**
+**压力 - SampledData**
 ```json
 {
     "templateType": "CodeValueFhir",
@@ -578,7 +578,7 @@ IotCentralJsonPathContentTemplate 也不需要 DeviceIdExpression 和 TimestampE
 }
 ```
 ---
-**血压-数量**
+**压力 - 数量**
 ```json
 {
     "templateType": "CodeValueFhir",
@@ -626,7 +626,7 @@ IotCentralJsonPathContentTemplate 也不需要 DeviceIdExpression 和 TimestampE
 }
 ```
 ---
-**设备已删除-CodeableConcept**
+**已删除设备 - CodeableConcept**
 ```json
 {
     "templateType": "CodeValueFhir",
@@ -659,9 +659,9 @@ IotCentralJsonPathContentTemplate 也不需要 DeviceIdExpression 和 TimestampE
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 Azure IoT 连接器上有关 FHIR 的常见问题 (预览) 。
+查看有关 Azure IoT Connector for FHIR (预览版) 。
 
 >[!div class="nextstepaction"]
->[适用于 FHIR 常见问题的 Azure IoT 连接器](fhir-faq.md)
+>[Azure IoT Connector for FHIR 常见问题解答](fhir-faq.md)
 
 *在 Azure 门户中，适用于 FHIR 的 Azure IoT 连接器称为 IoT Connector（预览版）。 FHIR 是 HL7 的注册商标，经 HL7 许可使用。

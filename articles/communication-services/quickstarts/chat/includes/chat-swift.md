@@ -10,14 +10,17 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: c007f1b77ef1618544dc4a2ca62d11e2a21f10f0
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 2aa1d6c474544a12154a59fa1fe12cffd1478b4f
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313675"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430993"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
+
+> [!NOTE]
+> 在 [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码
 
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：

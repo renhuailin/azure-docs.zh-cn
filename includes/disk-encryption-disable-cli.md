@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/19/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 37571a82ca73342b8edfc4702686ccd9091887c4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: adc6f5f707835c954f3524fb2217ed2b8dd3a505
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771491"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071833"
 ---
 可以使用 Azure PowerShell、Azure CLI 或资源管理器模板禁用加密。 
 
@@ -29,6 +29,6 @@ ms.locfileid: "107771491"
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
      ```
-- **使用资源管理器模板禁用加密：** 使用 [在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad)模板禁用加密。
+- **使用资源管理器模板禁用加密：** 使用 [在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-linux-vm-without-aad)模板禁用加密。
      1. 单击 **“部署到 Azure”** 。
      2. 选择订阅、资源组、位置、VM、法律条款和协议。

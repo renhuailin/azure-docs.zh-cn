@@ -1,0 +1,28 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Active Directory 中的标识保护常见问题解答
+  description: Azure AD 标识保护常见问题解答
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: identity-protection
+  ms.topic: troubleshooting
+  ms.date: 01/07/2021
+  ms.author: joflore
+  author: MicrosoftGuyJFlo
+  manager: daveba
+  ms.reviewer: sahandle
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: fdc33e19b9edaf85fed09c27b54fc875de6e01ce
+  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/30/2021
+  ms.locfileid: "111907047"
+title: Azure Active Directory 中的标识保护常见问题解答
+summary: ''
+sections:
+- name: 忽略
+  questions:
+  - question: >
+      消除用户风险已知问题
+    answer: "经典标识保护中的“消除用户风险”将标识保护的用户风险历史记录中的行动者设置为 Azure AD。\n\n标识保护中的“消除用户风险”将标识保护的用户风险历史记录中的行动者设置为 **\\<Admin’s name with a hyperlink pointing to user’s blade\\>**。\n\n当前存在一个已知问题，该问题导致用户风险消除流中发生延迟。 如果具有“用户风险策略”，则该策略将在单击“消除用户风险”后的几分钟内阻止应用于已消除的用户。 但是，UX 刷新已消除用户的“风险状态”时，存在已知延迟。 要解决此问题，请在浏览器级刷新页面以查看最新的用户“风险状态”。\n\n## <a name=\"frequently-asked-questions\"></a>常见问题\n\n### <a name=\"why-is-a-user-at-risk\"></a>用户为什么会面临风险？\n如果你是 Azure AD 标识保护的客户，请转到[风险用户](howto-identity-protection-investigate-risk.md#risky-users)视图，然后单击某个风险用户。 在底部的抽屉中，选项卡“风险历史记录”会显示导致用户风险变化的所有事件。 若要查看用户的所有风险登录，请单击“用户的风险登录”。 若要查看此用户的所有风险检测，请单击“用户的风险检测”。\n\n### <a name=\"why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection\"></a>为什么我的登录被阻止，但标识保护没有生成风险检测？\n登录被阻止的原因可能有多种。 需要注意的是，只有在身份验证请求中使用了正确的凭据时，标识保护才会生成风险检测。 如果用户使用不正确的凭据，则标识保护不会对其进行标记，因为除非恶意行动者使用了正确的凭据，否则不存在凭据泄露的风险。 用户可能被阻止登录但标识保护检测却又无法生成的一些原因包括：\n* IP 被阻止可能是由于来自 IP 地址的恶意活动。 IP 被阻止的消息不区分凭据是否正确。 如果 IP 被阻止并且未使用正确的凭据，则不会生成标识保护检测\n* [智能锁定](../authentication/howto-password-smart-lockout.md)可能会在用户多次尝试失败后阻止帐户登录\n* 可以强制实施条件访问策略，该策略使用风险级别以外的条件来阻止身份验证请求\n\n### <a name=\"how-can-i-get-a-report-of-detections-of-a-specific-type\"></a>如何获取特定类型的检测报告？\n\n转到风险检测视图并按“检测类型”进行筛选。 然后，你可以使用顶部的“下载”按钮以 .CSV 或 .JSON 格式下载此报告。 有关详细信息，请参阅[操作方法：调查风险](howto-identity-protection-investigate-risk.md#risk-detections)一文。\n\n### <a name=\"why-cant-i-set-my-own-risk-levels-for-each-risk-detection\"></a>为什么我不能为每个风险检测设置自己的风险级别？\n\n“标识保护”中的风险级别依赖于检测的精度，并由我们的监督式机器学习提供支持。 若要自定义用户体验，管理员可以在用户风险和登录风险策略中包含/排除某些用户/组。\n\n### <a name=\"why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from\"></a>为什么登录位置与用户真正登录的位置不匹配？\n\nIP 地理位置映射是整个行业面临的挑战。 如果你认为登录报告中列出的位置与实际位置不匹配，请联系 Microsoft 支持人员。 \n\n### <a name=\"how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui\"></a>如何像在旧 UI 中那样关闭特定的风险检测？\n\n你可以通过确认链接的登录是存在风险还是安全来提供有关风险检测的反馈。 针对登录给出的反馈将逐步向下传递到对该登录所做的所有检测。 如果要关闭未链接到登录的检测，可以在用户级别提供该反馈。 有关详细信息，请参阅[操作方法：在 Azure AD 标识保护中提供风险反馈](howto-identity-protection-risk-feedback.md)一文。\n\n### <a name=\"how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user\"></a>我可以回溯多长时间来了解我的用户发生了什么？\n\n- [风险用户](howto-identity-protection-investigate-risk.md#risky-users)视图根据过去的所有登录显示用户的风险情况。 \n- [风险登录](howto-identity-protection-investigate-risk.md#risky-sign-ins)视图显示过去 30 天内的风险登录。 \n- [风险检测](howto-identity-protection-investigate-risk.md#risk-detections)视图显示过去 90 天内所做的风险检测。\n\n### <a name=\"how-can-i-learn-more-about-a-specific-detection\"></a>如何详细了解某个特定检测？\n\n[什么是风险](concept-identity-protection-risks.md#risk-types-and-detection)一文记录了所有风险检测。 你可以在 Azure 门户中将鼠标指针悬停在检测旁边的 (i) 符号上，以详细了解某个检测。\n\n### <a name=\"how-do-the-feedback-mechanisms-in-identity-protection-work\"></a>“标识保护”中的反馈机制是如何工作的？\n\n**确认泄漏**（在登录时） - 通知 Azure AD 标识保护，该登录不是由标识所有者执行的，并指示存在泄漏。\n\n- 在收到此反馈后，我们将登录和用户风险状态改为“已确认泄漏”，并将风险级别改为“高”。\n\n- 此外，我们还为我们的机器学习系统提供信息，以便今后改进风险评估。\n\n    > [!NOTE]\n    > 如果已对用户采取修正措施，不要单击“确认泄漏”，因为这会将登录和用户风险状态改为“已确认泄漏”，并将风险级别改为“高”。\n\n**确认安全**（在登录时） - 通知 Azure AD 标识保护，登录是由标识所有者执行的，不指示存在泄漏。\n\n- 收到此反馈后，我们将登录（而非用户）风险状态改为“已确认安全”，将风险级别改为 -。\n\n- 此外，我们还为我们的机器学习系统提供信息，以便今后改进风险评估。 \n\n    > [!NOTE]\n    >目前，在登录时选择“确认安全”这一行为本身并不会阻止系统将未来的具有相同属性的登录标记为风险登录。 对系统进行训练以了解用户属性的最佳方式是将风险登录策略与 MFA 配合使用。 提示某个风险登录进行 MFA 时，如果用户成功响应了请求，则登录可能会成功，并有助于针对合法用户的行为对系统进行训练。\n    >\n    > 如果认为用户没有遭到泄漏，请使用用户级别的“消除用户风险”，而不是登录级别的“已确认安全”。 用户级别的“消除用户风险”会关闭用户风险和所有过去的有风险登录和风险检测。\n\n### <a name=\"why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection\"></a>即使在“标识保护”中没有显示有风险登录或风险检测，为什么会出现较低（或较高）的用户风险评分？\n\n考虑到用户风险实质上是累积的，并且不会过期，即使“标识保护”最近没有显示有风险登录或风险检测，也可能存在较低或较高用户风险。 如果针对用户的唯一恶意活动发生在我们存储风险登录和风险检测详细信息的时间范围之外，则可能会发生这种情况。 我们不会终止用户风险，因为众所周知，恶意参与者会在客户环境的遭到泄漏的标识后停留超过 140 天，然后加大攻击力度。 客户可以通过访问 `Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab` 来查看用户的风险时间线，以了解为什么用户处于风险之中。\n\n### <a name=\"why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk\"></a>为什么登录的“登录风险(总计)”分数为高，而与之相关的检测结果为低风险或中等风险？\n\n高总计风险评分可能基于登录的其他特性，或者针对该登录触发了多个检测的事实。 反之，登录也可能为中等“登录风险(总计)”，即使与登录相关的检测为高风险。\n\n### <a name=\"what-is-the-difference-between-the-activity-from-anonymous-ip-address-and-anonymous-ip-address-detections\"></a>“来自匿名 IP 地址的活动”检测与“匿名 IP 地址”检测有何区别？\n\n“匿名 IP 地址”检测的来源是 Azure AD 标识保护，而“来自匿名 IP 地址的活动”检测是从 MCAS (Microsoft Cloud App Security) 集成的。 虽然它们具有非常相似的名称，并且这些信号中可能会出现重叠，但它们具有不同的后端检测。"

@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Site Recovery 服务针对本地 Windows �
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
-ms.openlocfilehash: 056c8118f2b1ab483e31771c4b8ead3fe6da4598
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 0197d3f505edef0890ed076e15f89d14ad5ab5d4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949590"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968707"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -48,7 +48,7 @@ ms.locfileid: "107949590"
 获取 Microsoft [Azure 帐户](https://azure.microsoft.com/)。
 
 - 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
-- 了解 [Site Recovery 定价](/azure/site-recovery/site-recovery-faq#pricing)，并获取[定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
+- 了解 [Site Recovery 定价](/azure/site-recovery/site-recovery-faq.yml#pricing)，并获取[定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
 - 了解 Site Recovery [支持的区域](https://azure.microsoft.com/pricing/details/site-recovery/)。
 
 ### <a name="verify-azure-account-permissions"></a>验证 Azure 帐户权限

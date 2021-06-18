@@ -7,16 +7,13 @@ ms.date: 05/26/2020
 ms.topic: quickstart
 ms.service: mariadb
 ms.devlang: azurepowershell
-ms.custom:
-- mvc
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: 7bfbd223cb337ff7d908032c769afbbf5cafa38f
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - mvc - devx-track-azurepowershell - mode-api
+ms.openlocfilehash: 24b4c9540756b1dff503fec969511d866e7ac75d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531392"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692408"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure Database for MariaDB 服务器
 
@@ -68,9 +65,9 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 | ResourceGroupName          | myresourcegroup  | 提供 Azure 资源组的名称。                                                                                                                                                                                                                                                                                            |
 | SKU                        | GP_Gen5_2        | SKU 的名称。 请遵循简写约定：pricing-tier\_compute-generation\_vCores。 有关 SKU 参数的详细信息，请参阅此表格后面的信息。                                                                                                                                           |
 | BackupRetentionDay         | 7                | 备份保留时间。 单位为天。 范围为 7-35。                                                                                                                                                                                                                                                                       |
-| GeoRedundantBackup         | Enabled          | 是否应为此服务器启用异地冗余备份。 不能为基本定价层级中的服务器启用此值，并且在创建服务器后无法更改此值。 允许的值：“Enabled”、“Disabled”。                                                                                                      |
+| GeoRedundantBackup         | 已启用          | 是否应为此服务器启用异地冗余备份。 不能为基本定价层级中的服务器启用此值，并且在创建服务器后无法更改此值。 允许的值：“Enabled”、“Disabled”。                                                                                                      |
 | 位置                   | westus           | 服务器的 Azure 区域。                                                                                                                                                                                                                                                                                                         |
-| SslEnforcement             | Enabled          | 是否应该为此服务器启用 SSL。 允许的值：“Enabled”、“Disabled”。                                                                                                                                                                                                                                                 |
+| SslEnforcement             | 已启用          | 是否应该为此服务器启用 SSL。 允许的值：“Enabled”、“Disabled”。                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51200            | 服务器的存储容量（以 MB 为单位）。 有效的 StorageInMb 最小为 5120 MB，以 1024 MB 为增量递增。 有关存储大小限制的详细信息，请参阅 [Azure Database for MariaDB 定价层](./concepts-pricing-tiers.md)。                                                                               |
 | 版本                    | 5.7              | MariaDB 主版本。                                                                                                                                                                                                                                                                                                                 |
 | AdministratorUserName      | myadmin          | 管理员的登录用户名。 不能是 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。                                                                                                                                                                                            |

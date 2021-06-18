@@ -1,43 +1,43 @@
 ---
-title: 在 Azure AD 中注册机密客户端应用-Azure API for FHIR
-description: 在 Azure Active Directory 中注册机密客户端应用程序，该应用程序代表用户进行身份验证，并请求对资源应用程序的访问权限。
+title: 在 Azure AD 中注册机密客户端应用 - Azure API for FHIR
+description: 在应用程序中注册Azure Active Directory应用程序，该应用程序代表用户进行身份验证并请求访问资源应用程序。
 services: healthcare-apis
 author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.author: matjazl
-ms.openlocfilehash: c10b27d375e2bfb8c64130eceb416a633241cf68
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.author: cavoeg
+ms.openlocfilehash: 20d2e86786c3586cd4f45e98d670d4a937a77992
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284421"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299188"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中注册机密客户端应用程序
 
-在本教程中，你将了解如何在 Azure Active Directory (Azure AD) 中注册机密客户端应用程序。  
+本教程介绍如何在应用程序中注册机密客户端Azure Active Directory (Azure AD) 。  
 
-客户端应用程序注册是应用程序的 Azure AD 表示形式，可用于代表用户进行身份验证并请求对 [资源应用程序](register-resource-azure-ad-client-app.md)的访问权限。 机密客户端应用程序是一种可信任的应用程序，用于在请求访问令牌时保存机密并提供机密。 机密应用程序的示例包括服务器端应用程序。 
+客户端应用程序注册Azure AD应用程序的一种主要表示形式，可用于代表用户进行身份验证并请求 [访问资源应用程序](register-resource-azure-ad-client-app.md)。 机密客户端应用程序是一个应用程序，可以信任该应用程序来保存机密，在请求访问令牌时提供该机密。 机密应用程序的示例包括服务器端应用程序。 
 
 若要注册新的机密客户端应用程序，请参阅以下步骤。 
 
 ## <a name="register-a-new-application"></a>注册新应用程序
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择“Azure Active Directory”。
+1. 在“Azure 门户”中，选择“Azure Active Directory”。
 
 1. 选择“应用注册” 。 
 
-    :::image type="content" source="media/how-to-aad/portal-aad-new-app-registration.png" alt-text="Azure 门户。新应用注册。":::
+    :::image type="content" source="media/how-to-aad/portal-aad-new-app-registration.png" alt-text="Azure 门户。新建应用注册。":::
 
 1. 选择“新注册”。
 
 1. 为应用程序指定面向用户的显示名称。
 
-1. 对于 " **支持的帐户类型**"，请选择可使用应用程序的用户或访问 API。
+1. 对于 **"支持的帐户类型**"，选择可以使用应用程序或访问 API 的用户。
 
-1.  (可选) 提供 **重定向 URI**。 稍后可以更改这些详细信息，但如果你知道应用程序的回复 URL，请立即输入。
+1.  (可选) 提供 **重定向 URI。** 稍后可以更改这些详细信息，但如果知道应用程序的回复 URL，请现在输入它。
 
     :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png" alt-text="新的机密客户端应用注册。":::
 
@@ -45,7 +45,7 @@ ms.locfileid: "107284421"
 
 ## <a name="api-permissions"></a>API 权限
 
-现在，你已注册应用程序，你必须选择此应用程序应代表用户请求哪些 API 权限。
+注册应用程序后，必须选择此应用程序应代表用户请求的 API 权限。
 
 1. 选择“API 权限”。
 
@@ -53,15 +53,15 @@ ms.locfileid: "107284421"
 
 1. 选择“添加权限”。
 
-    如果你使用的是用于 FHIR 的 Azure API，则需要通过在 **我的组织使用的 api** 下搜索 **azure 医疗保健 Api** 来添加 azure 医疗保健 api 的权限。 仅当已 [部署用于 FHIR 的 AZURE API](fhir-paas-powershell-quickstart.md)时，AZURE 医疗保健 API 的搜索结果才会返回。
+    如果使用的是 azure 医疗保健 API，Azure API for FHIR组织使用的 API 下搜索 **Azure 医疗保健 API，** 以向 Azure 医疗保健 API **添加权限**。 Azure 医疗保健 API 的搜索结果仅在已部署 azure 医疗保健 API 时[Azure API for FHIR。](fhir-paas-powershell-quickstart.md)
 
-    如果引用的是其他资源应用程序，请选择之前在 **"我的 api**" 下创建的 [FHIR API 资源应用程序注册](register-resource-azure-ad-client-app.md)。
+    如果要引用不同的资源应用程序，请选择之前在"我的 API"下创建的 [FHIR API](register-resource-azure-ad-client-app.md) **资源应用程序注册**。
 
 
-    :::image type="content" source="media/conf-client-app/confidential-client-org-api.png" alt-text="机密客户端。我的组织 Api" lightbox="media/conf-client-app/confidential-app-org-api-expanded.png":::
+    :::image type="content" source="media/conf-client-app/confidential-client-org-api.png" alt-text="机密客户端。我的组织 API" lightbox="media/conf-client-app/confidential-app-org-api-expanded.png":::
     
 
-1. 选择 "作用域" ("机密" 客户端应用程序将代表用户请求) 权限。 依次选择“user_impersonation”、“添加权限”。 
+1. 选择 (范围) 机密客户端应用程序将代表用户请求的权限。 依次选择“user_impersonation”、“添加权限”。 
 
     :::image type="content" source="media/conf-client-app/confidential-client-add-permission.png" alt-text="机密客户端。委托的权限":::
 
@@ -72,20 +72,20 @@ ms.locfileid: "107284421"
 
     :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png" alt-text="机密客户端。应用程序机密。":::
 
-1. 为客户端密码输入“说明”。 选择 " **过期** " 下拉菜单选择过期时间框架，然后单击 " **添加**"。
+1. 为客户端密码输入“说明”。 选择"**过期"** 下拉菜单以选择过期时间范围，然后单击"添加 **"。**
 
-   :::image type="content" source="media/how-to-aad/add-a-client-secret.png" alt-text="添加客户端密码。":::
+   :::image type="content" source="media/how-to-aad/add-a-client-secret.png" alt-text="添加客户端机密。":::
 
-1. 创建客户端密码字符串后，复制其 **值** 和 **ID**，并将其存储在所选的安全位置。
+1. 创建客户端机密字符串后，复制其 **"值** "和 **"ID"，** 将其存储在你选择的安全位置。
 
-   :::image type="content" source="media/how-to-aad/client-secret-string-password.png" alt-text="客户端密码字符串。"::: 
+   :::image type="content" source="media/how-to-aad/client-secret-string-password.png" alt-text="客户端机密字符串。"::: 
 
 > [!NOTE]
->在 Azure 门户中，客户端密码字符串只会出现一次。 当你导航到 "证书 & 机密" 网页并返回到它时，值字符串将变为 "已屏蔽"。 必须在生成客户端机密字符串后立即将其复制，这一点很重要。 如果你没有客户端密钥的备份副本，则必须重复上述步骤以重新生成它。
+>客户端机密字符串仅在客户端密钥Azure 门户。 当你离开"证书"&机密网页，然后返回到该网页时，"值"字符串将屏蔽。 请务必在生成客户端机密字符串后立即复制该字符串。 如果没有客户端机密的备份副本，则必须重复上述步骤以重新生成它。
  
 ## <a name="next-steps"></a>后续步骤
 
-本文将指导你完成如何在 Azure AD 中注册机密客户端应用程序的步骤。 还将指导你完成如何向 Azure 医疗保健 API 添加 API 权限的步骤。 最后，演示了如何创建应用程序机密。 此外，还可以了解如何使用 Postman 访问 FHIR 服务器。
+本文指导你完成如何在应用程序中注册机密客户端应用程序Azure AD。 还指导你完成如何将 API 权限添加到 Azure 医疗保健 API 的步骤。 最后，你已了解如何创建应用程序机密。 此外，还可以了解如何使用 Postman 访问 FHIR 服务器。
  
 >[!div class="nextstepaction"]
 >[使用 Postman 访问 Azure API for FHIR](access-fhir-postman-tutorial.md)
