@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 795f5ede382e561ee810e54e1f8897c5d806e8b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eabb6e657db7ea39bf0fb746bb596f496bc5efaf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94412368"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958307"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 建立强大标识基础的四个步骤
 
@@ -65,7 +65,7 @@ Azure AD 使管理员能够[将应用程序添加到](../manage-apps/add-applica
 
 ### <a name="enable-secure-remote-access-to-apps"></a>启用安全远程访问应用程序
 
-[Azure AD 应用程序代理](../manage-apps/what-is-application-proxy.md)为组织提供了一种简单的解决方案，安全地向需要访问内部应用的远程用户发布本地应用。 单一登录到 Azure AD 后，用户可以通过外部 URL 或内部应用程序门户访问云和本地的应用程序。
+[Azure AD 应用程序代理](../app-proxy/what-is-application-proxy.md)为组织提供了一种简单的解决方案，安全地向需要访问内部应用的远程用户发布本地应用。 单一登录到 Azure AD 后，用户可以通过外部 URL 或内部应用程序门户访问云和本地的应用程序。
 
 Azure AD 应用程序代理具有以下安全优势：
 

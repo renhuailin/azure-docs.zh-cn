@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: bcf3cb5a020bb2efd5a2528c28421deba206ee31
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6db3a8b2871cad0348893ab2878904767f512988
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125258"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677660"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 部署 Azure 现成虚拟机
 

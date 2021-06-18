@@ -1,25 +1,25 @@
 ---
 title: 分配 Azure Key Vault 访问策略
-description: 如何使用 Azure 门户、Azure CLI 或 Azure PowerShell 将 Key Vault 访问策略分配到服务主体或应用程序标识。
+description: 如何使用 Azure 门户、Azure CLI 或 Azure PowerShell 将 Key Vault 访问策略分配到安全主体或应用程序标识。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9b9ff0a4f432a8fbf9eaee84bc0215af736b6bbd
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934521"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110667009"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>使用 Azure PowerShell 分配 Key Vault 访问策略
 
-Key Vault 访问策略确定给定的服务主体（即应用程序或用户组）是否可以对 Key Vault [机密](../secrets/index.yml)、[密钥](../keys/index.yml)和[证书](../certificates/index.yml)执行不同的操作。 可以使用 [Azure 门户](assign-access-policy-portal.md)、[Azure CLI](assign-access-policy-cli.md) 或 Azure PowerShell（本文）来分配访问策略。
+Key Vault 访问策略确定给定的安全主体（即用户、应用程序或用户组）是否可对 Key Vault [机密](../secrets/index.yml)、[密钥](../keys/index.yml)和[证书](../certificates/index.yml)执行不同的操作。 可以使用 [Azure 门户](assign-access-policy-portal.md)、[Azure CLI](assign-access-policy-cli.md) 或 Azure PowerShell（本文）来分配访问策略。
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
@@ -29,7 +29,7 @@ Key Vault 访问策略确定给定的服务主体（即应用程序或用户组�
 
 1. 若要在本地运行命令，请安装 [Azure PowerShell](/powershell/azure/)（如果尚未这样做）。
 
-    若要直接在云中运行命令，请使用 [Azure Cloud Shell](../../cloud-shell/overview.md)。
+    要直接在云中运行命令，请使用 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
 1. 仅限本地 PowerShell：
 
@@ -79,6 +79,5 @@ Set-AzKeyVaultAccessPolicy -VaultName <key-vault-name> -ObjectId <Id> -Permissio
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Key Vault 安全性：标识和访问管理](security-overview.md#identity-management)
-- [保护 Key Vault](secure-your-key-vault.md)
+- [Azure Key Vault 安全性：标识和访问管理](security-features.md#identity-management)
 - [Azure Key Vault 开发人员指南](developers-guide.md)

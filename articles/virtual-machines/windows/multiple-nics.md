@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 2664d175818a6e29dcd3f704c6938987bae050cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4314deed2032e5edd325c51cd540f349c2c72d56
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555170"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677677"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>创建并管理具有多个 NIC 的 Windows 虚拟机
 Azure 中的虚拟机 (VM) 可附有多个虚拟网络接口卡 (NIC)。 一种常见方案是为前端和后端连接设置不同的子网。 可以将 VM 上的多个 NIC 关联到多个子网，但这些子网必须全都位于同一个虚拟网络 (vNet) 中。 本文详述了如何创建附有多个 NIC 的 VM。 还可以了解如何从现有 VM 中添加或删除 NIC。 不同的 [VM 大小](../sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。

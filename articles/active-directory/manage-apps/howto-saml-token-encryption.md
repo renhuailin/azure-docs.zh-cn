@@ -2,22 +2,22 @@
 title: Azure Active Directory 中的 SAML 令牌加密
 description: 了解如何配置 Azure Active Directory SAML 令牌加密。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c06a499cccb03e6726ee19542d7eb79e0c99b43
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 303a6e63a429ed77d5c613bb85626c11055ba04a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375723"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074856"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>如何配置 Azure AD SAML 令牌加密
 

@@ -6,19 +6,19 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
 ms.reviewer: dseven
-ms.author: matjazl
+ms.author: cavoeg
 author: matjazl
 ms.date: 03/26/2021
-ms.openlocfilehash: 59847f745037acec47415489cdf61d119a7807af
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 72e5711ca813378e291d48bdaaa5803693d91482
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936268"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284016"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>使用 Postman 访问 Azure API for FHIR
 
-客户端应用程序可通过 [REST API](https://www.hl7.org/fhir/http.html)访问 Azure API for FHIR。 若要在生成应用程序时发送请求、查看响应和调试应用程序，请使用所选 API 测试工具。 在本教程中，我们将指导你完成使用 [Postman](https://www.getpostman.com/)访问 FHIR 服务器的步骤。 
+客户端应用程序可通过 [REST API](https://www.hl7.org/fhir/http.html) 访问 Azure API for FHIR。 若要在生成应用程序时发送请求、查看响应和调试应用程序，请使用所选的 API 测试工具。 在本教程中，我们将指导你完成使用 [Postman](https://www.getpostman.com/)访问 FHIR 服务器的步骤。 
 
 ## <a name="prerequisites"></a>先决条件
 

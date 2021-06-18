@@ -7,13 +7,13 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.custom: include file
-ms.openlocfilehash: a3ae2a876d6a3772d941fec0b8a1ea3f537e60c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurepowershell
+ms.openlocfilehash: 478856b6e62b06259ae37b049774c9e22c840d4a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010748"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110720942"
 ---
 可以使用 `Resize-AzVirtualNetworkGateway` PowerShell cmdlet 升级或降级第 1 代或第 2 代 SKU（除基本 SKU 外，所有 VpnGw SKU 都可以调整大小）。 如果使用的是基本网关 SKU，[请改用这些说明](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize)来调整网关大小。
 

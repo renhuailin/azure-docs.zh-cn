@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 4bf5e9e1e890b2f91377075c4c8b7c8ff6c50fa0
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.custom: devx-track-python, devx-track-azurepowershell
+ms.openlocfilehash: 96a6b82afb7d3d71b0dd8ce392fa308a3611aa94
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779845"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675015"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
 
@@ -465,4 +465,4 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 ## <a name="next-steps"></a>后续步骤
 
 - 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#trigger-execution)。
-- 了解如何引用管道中的触发器元数据，请参阅[引用管道运行中的触发器元数据](how-to-use-trigger-parameterization.md)
+- 了解如何引用管道中的触发器元数据，详见[引用管道运行中的触发器元数据](how-to-use-trigger-parameterization.md)

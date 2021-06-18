@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: manayar
-ms.openlocfilehash: 276762bc2b8624f687cbb77e1af771478791a57b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f59d43dfa4d952b29dbe16b6679a527c4fc0d50c
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101679167"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565385"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>预览：Azure VM 的自动 VM 来宾修补
 
@@ -182,17 +183,17 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用 [az feature register](/cli/azure/feature#az-feature-register) 为订阅启用预览版。
+使用 [az feature register](/cli/azure/feature#az_feature_register) 为订阅启用预览版。
 
 ```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview `
+az feature register --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview
 az feature register --namespace Microsoft.Compute --name InGuestPatchVMPreview
 ```
 
 功能注册最多可能需要 15 分钟。 若要检查注册状态，请使用以下命令：
 
 ```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview `
+az feature show --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview
 az feature show --namespace Microsoft.Compute --name InGuestPatchVMPreview
 ```
 
@@ -258,13 +259,13 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-for-windows-vms"></a>适用于 Windows VM 的 Azure CLI
-创建新的 VM 时，使用 [az vm create](/cli/azure/vm#az-vm-create) 启用自动 VM 来宾修补。 以下示例为名为 myResourceGroup 的资源组中名为 myVM 的 VM 配置自动 VM 来宾修补 ：
+创建新的 VM 时，使用 [az vm create](/cli/azure/vm#az_vm_create) 启用自动 VM 来宾修补。 以下示例为名为 myResourceGroup 的资源组中名为 myVM 的 VM 配置自动 VM 来宾修补 ：
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform
 ```
 
-若要修改现有的 VM，请使用 [az vm update](/cli/azure/vm#az-vm-update)
+若要修改现有的 VM，请使用 [az vm update](/cli/azure/vm#az_vm_update)
 
 ```azurecli-interactive
 az vm update --resource-group myResourceGroup --name myVM --set osProfile.windowsConfiguration.enableAutomaticUpdates=true osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform
@@ -309,7 +310,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM" -Status
 PowerShell 目前仅提供有关修补扩展的信息。 不久之后，还可以通过 PowerShell 获取有关 `patchStatus` 的信息。
 
 ### <a name="azure-cli"></a>Azure CLI
-使用 [az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view) 访问 VM 的实例视图。
+使用 [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) 访问 VM 的实例视图。
 
 ```azurecli-interactive
 az vm get-instance-view --resource-group myResourceGroup --name myVM
@@ -344,7 +345,7 @@ Invoke-AzVmPatchAssessment -ResourceGroupName "myResourceGroup" -VMName "myVM"
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-使用 [az vm assess-patches](/cli/azure/vm#az-vm-assess-patches) 评估虚拟机的可用补丁。
+使用 [az vm assess-patches](/cli/azure/vm#az_vm_assess_patches) 评估虚拟机的可用补丁。
 
 ```azurecli-interactive
 az vm assess-patches --resource-group myResourceGroup --name myVM
