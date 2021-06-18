@@ -3,20 +3,20 @@ title: 创建和管理服务器与单一数据库
 description: 了解如何使用 Azure 门户、PowerShell、Azure CLI、Transact-SQL (T-SQL) 和 REST-API 在 Azure SQL 数据库中创建并管理服务器和单一数据库。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: deployment-configuration
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: e50cce74f7291a6673e5d43f3485a1c63c81d827
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f09bd53a8e98b88bcc42ac085240b45d02671bba
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93319279"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693090"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理服务器和单一数据库
 
@@ -92,25 +92,25 @@ ms.locfileid: "93319279"
 
 | Cmdlet | 说明 |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#az-sql-db-create) |创建数据库|
-|[az sql db list](/cli/azure/sql/db#az-sql-db-list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
-|[az sql db list-editions](/cli/azure/sql/db#az-sql-db-list-editions)|列出可用的服务目标和存储限制|
-|[az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|返回数据库使用情况|
-|[az sql db show](/cli/azure/sql/db#az-sql-db-show)|获取数据库或数据仓库|
-|[az sql db update](/cli/azure/sql/db#az-sql-db-update)|更新数据库|
-|[az sql db delete](/cli/azure/sql/db#az-sql-db-delete)|删除数据库|
-|[az group create](/cli/azure/group#az-group-create)|创建资源组|
-|[az sql server create](/cli/azure/sql/server#az-sql-server-create)|创建服务器|
-|[az sql server list](/cli/azure/sql/server#az-sql-server-list)|列出服务器|
-|[az sql server list-usages](/cli/azure/sql/server#az-sql-server-list-usages)|返回服务器使用情况|
-|[az sql server show](/cli/azure/sql/server#az-sql-server-show)|获取服务器|
-|[az sql server update](/cli/azure/sql/server#az-sql-server-update)|更新服务器|
-|[az sql server delete](/cli/azure/sql/server#az-sql-server-delete)|删除服务器|
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|配置服务器防火墙规则|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|列出服务器上的防火墙规则|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|显示防火墙规则的详细信息|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|更新防火墙规则|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|删除防火墙规则。|
+|[az sql db create](/cli/azure/sql/db#az_sql_db_create) |创建数据库|
+|[az sql db list](/cli/azure/sql/db#az_sql_db_list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
+|[az sql db list-editions](/cli/azure/sql/db#az_sql_db_list_editions)|列出可用的服务目标和存储限制|
+|[az sql db list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|返回数据库使用情况|
+|[az sql db show](/cli/azure/sql/db#az_sql_db_show)|获取数据库或数据仓库|
+|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|更新数据库|
+|[az sql db delete](/cli/azure/sql/db#az_sql_db_delete)|删除数据库|
+|[az group create](/cli/azure/group#az_group_create)|创建资源组|
+|[az sql server create](/cli/azure/sql/server#az_sql_server_create)|创建服务器|
+|[az sql server list](/cli/azure/sql/server#az_sql_server_list)|列出服务器|
+|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list-usages)|返回服务器使用情况|
+|[az sql server show](/cli/azure/sql/server#az_sql_server_show)|获取服务器|
+|[az sql server update](/cli/azure/sql/server#az_sql_server_update)|更新服务器|
+|[az sql server delete](/cli/azure/sql/server#az_sql_server_delete)|删除服务器|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|配置服务器防火墙规则|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|列出服务器上的防火墙规则|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|显示防火墙规则的详细信息|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|更新防火墙规则|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|删除防火墙规则。|
 
 ## <a name="transact-sql-t-sql"></a>Transact-SQL (T-SQL)
 
@@ -165,4 +165,3 @@ ms.locfileid: "93319279"
 
 - 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](migrate-to-database-from-sql-server.md)。
 - 有关受支持功能的信息，请参阅[功能](features-comparison.md)。
- 

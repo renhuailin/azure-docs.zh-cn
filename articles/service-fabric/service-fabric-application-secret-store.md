@@ -5,12 +5,12 @@ author: amenarde
 ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: anmenard
-ms.openlocfilehash: 735f0b375d26d00dce43fd9d64131fa194958a73
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1c920631d671ad2af9fa2e723fc98bf96462b007
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131072"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950103"
 ---
 # <a name="central-secret-service-in-azure-service-fabric"></a>Azure Service Fabric 中的中央机密服务 
 中央机密服务 (CSS) 也称作中央机密存储，是一种旨在保护群集中的机密的 Service Fabric 系统服务。 CSS 简化对 SF 应用程序机密的管理，从而无需依赖加密参数。
@@ -67,7 +67,7 @@ ms.locfileid: "108131072"
 - 删除机密资源会让其所有版本也删除  
 - 机密版本的值保持不变
     
-机密资源的 REST 管理 API 的完整集可参阅[此处](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-meshsecrets)，机密版本的相关内容可参阅[此处](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-meshsecretvalues)。
+机密资源的 REST 管理 API 的完整集可参阅[此处](/rest/api/servicefabric/sfclient-index-meshsecrets)，机密版本的相关内容可参阅[此处](/rest/api/servicefabric/sfclient-index-meshsecretvalues)。
 
 ### <a name="declare-a-secret-resource"></a>声明机密资源
 可以使用 REST API 创建机密资源。

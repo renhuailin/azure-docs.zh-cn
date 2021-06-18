@@ -3,12 +3,13 @@ title: 如何筛选 Azure 事件网格的事件
 description: 本文介绍在创建事件网格订阅时如何筛选事件（按事件类型、按主题、按运算符和数据等）。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 99fb00f99a055033ccfcd99e32a52d423878fb44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8d3fef1135583fde3c68f20e841fcfc0c0a7334a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86105551"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698463"
 ---
 # <a name="filter-events-for-event-grid"></a>筛选事件网格的事件
 

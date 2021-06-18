@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12631adea948c6a59f935ba409dcc925268c6319
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93279395"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412252"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>显示已启用 Arc 的超大规模 PostgreSQL 服务器组的配置
 
@@ -362,7 +362,7 @@ azdata arc postgres server show -n postgres02
 
 ## <a name="next-steps"></a>后续步骤
 - [阅读已启用 Azure Arc 的超大规模 PostgreSQL 的概念](concepts-distributed-postgres-hyperscale.md)
-- [阅读如何横向扩展（添加工作器节点）服务器组](scale-out-postgresql-hyperscale-server-group.md)
+- [阅读如何横向扩展（添加工作器节点）服务器组](scale-out-in-postgresql-hyperscale-server-group.md)
 - [阅读如何纵向扩展/缩减（增加或减少内存和/或 vCore）服务器组](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
 - [阅读存储配置](storage-configuration.md)
 - [阅读如何监视数据库实例](monitor-grafana-kibana.md)

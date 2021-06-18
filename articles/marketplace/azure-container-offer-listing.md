@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2021
-ms.openlocfilehash: 0b9b96c4cbc2484597e51463a6b7a4ecfaf9e950
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 16bac156af04394552c280271d13ecbe41a1982b
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107892311"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615173"
 ---
 # <a name="configure-azure-container-offer-listing-details"></a>配置 Azure 容器产品/服务列表的详细信息
 
@@ -58,8 +58,6 @@ ms.locfileid: "107892311"
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊图像会导致提交遭到拒绝。
 
-[!INCLUDE [logo tips](includes/graphics-suggestions.md)]
-
 >[!NOTE]
 >如果上传文件时遇到问题，请确保本地网络未阻止合作伙伴中心所使用的 https://upload.xboxlive.com 服务。
 
@@ -83,7 +81,7 @@ ms.locfileid: "107892311"
 
 有关其他市场列表资源，请参阅[市场产品/服务列表最佳做法](gtm-offer-listing-best-practices.md)。
 
-选择“保存草稿”，然后转到左侧导航菜单中的下一个选项卡“预览版受众” 。
+选择“保存草稿”，然后继续转到左侧导航菜单中的下一个选项卡“预览受众”。
 <!-- #### Offer examples
 
 The following examples show how the offer listing fields appear in different places of the offer.

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1f3b62f8c05edffa1b55bf3d8cd24494b1c918bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 136aa45783fb225901f5ea0221162890b8ba6309
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558485"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026680"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Linux 虚拟机从非托管磁盘转换为托管磁盘
 
@@ -22,7 +22,7 @@ ms.locfileid: "102558485"
 本文介绍如何使用 Azure CLI 转换 VM。 如果需要安装或升级它，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ## <a name="before-you-begin"></a>准备阶段
-* 请查看[有关迁移到托管磁盘的常见问题](../faq-for-disks.md#migrate-to-managed-disks)。
+* 请查看[有关迁移到托管磁盘的常见问题](/azure/virtual-machines/faq-for-disks#migrate-to-managed-disks)。
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 

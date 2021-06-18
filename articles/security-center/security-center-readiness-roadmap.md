@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: e4f905b7a08564eadb20d65d651c137ef3741376
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4f48ccaab8ba084a3944ba2d5fdd7188efa56555
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100315"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556831"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -102,7 +102,7 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 ## <a name="additional-resources"></a>其他资源
 * [安全中心文档页](./index.yml)
 * [安全中心 REST API 文档页](/previous-versions/azure/reference/mt704034(v=azure.100))
-* [Azure 安全中心常见问题 (FAQ)](./faq-general.md)
+* [Azure 安全中心常见问题 (FAQ)](./faq-general.yml)
 * [安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)
 * [标识安全最佳做法](../security/fundamentals/identity-management-best-practices.md)
 * [网络安全最佳实践](../security/fundamentals/network-best-practices.md)

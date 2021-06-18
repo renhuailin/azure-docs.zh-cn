@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: 了解服务器信任组，以及如何管理 Azure SQL 托管实例之间的信任。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: service-overview
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: sasapopo
 ms.author: sasapopo
-ms.reviewer: sstein, bonova
+ms.reviewer: mathoma
 ms.date: 10/08/2020
-ms.openlocfilehash: f9d5528746a85668677ab122d98e954bd39cd163
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f66050545c2c30c592b41cb21c30394316c80711
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790723"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110692722"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>使用服务器信任组来设置和管理 SQL 托管实例之间的信任
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "92790723"
 
 ## <a name="server-trust-group-setup"></a>服务器信任组设置
 
-以下部分介绍了服务器信任组的设置。
+可以通过 [Azure PowerShell](/powershell/module/az.sql/new-azsqlservertrustgroup) 或 [Azure CLI](/cli/azure/sql/stg) 设置服务器信任组。 以下部分介绍了使用 Azure 门户的服务器信任组的设置。
 
 1. 转到 [Azure 门户](https://portal.azure.com/)。
 
