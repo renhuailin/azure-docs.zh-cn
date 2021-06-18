@@ -8,12 +8,13 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: b2609a069872ec55ac9068fadcbb3f312d68a630
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ecc8396204138df05aa779e8bfa09bbfc6cd184d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81680777"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110720885"
 ---
 本部分介绍如何对直接对等互连执行以下修改操作：
 
@@ -82,4 +83,4 @@ $directPeering | Update-AzPeering
 
 ### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>删除活动连接上的 IPv4 或 IPv6 会话
 
-PowerShell 当前不支持从现有连接中删除 IPv4 或 IPv6 会话。 有关详细信息，请联系 [Microsoft 对等互连](mailto:peeringexperience@microsoft.com)团队。
+PowerShell 当前不支持从现有连接中删除 IPv4 或 IPv6 会话。 有关详细信息，请联系 [Microsoft 对等互连](mailto:peeringexperience@microsoft.com)。

@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: e1b50675bef0f883ff617b3098a742d3491b3c13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fac7f204b682f474dfc9d29ba09ee28bf79f9de
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89484286"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663921"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -40,7 +40,7 @@ ms.locfileid: "89484286"
 
 ### <a name="get-domain-verification-id"></a>获取域验证 ID
 
-按照[获取域验证 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) 中的步骤获取应用的域验证 ID。
+按照[获取域验证 ID](app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id) 中的步骤获取应用的域验证 ID。
 
 ### <a name="create-domain-verification-record"></a>创建域验证记录
 
@@ -48,9 +48,9 @@ ms.locfileid: "89484286"
 
 | DNS 记录示例 | TXT 主机 | TXT 值 |
 | - | - | - |
-| \@（根） | asuid | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
-| www（子域） | asuid.www | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
-| \*（通配符） | asuid | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| \@（根） | asuid | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id) |
+| www（子域） | asuid.www | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id) |
+| \*（通配符） | asuid | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id) |
 
 在 DNS 记录页中，记下要迁移的 DNS 名称的记录类型。 应用服务支持来自 CNAME 和 A 记录的映射。
 

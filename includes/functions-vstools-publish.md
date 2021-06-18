@@ -1,19 +1,15 @@
 ---
-title: include 文件
-description: include 文件
-services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
 ms.date: 09/30/2020
 ms.author: glenga
-ms.custom: include file
-ms.openlocfilehash: 5b537b88052ce4042e346732f3dc63aaec6621cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9cbab70d37c689967c7129b3205a9194e9de9ade
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100529736"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350878"
 ---
 1. 在解决方案资源管理器中，右键单击项目，选择“发布”，然后在“目标”中选择“Azure”，接着选择“下一步”    。
 
@@ -25,10 +21,10 @@ ms.locfileid: "100529736"
 
 1. 使用下表中指定的值创建新的实例：
 
-    | 设置      | 值  | 说明                                |
+    | 设置      | Value  | 说明                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **名称** | 全局唯一名称 | 用于唯一标识新 Function App 的名称。 接受此名称或输入新名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 |
-    | **订阅** | 你的订阅 | 要使用的 Azure 订阅。 接受此订阅，或从下拉列表中选择一个新订阅。 |
+    | **订阅** | 订阅 | 要使用的 Azure 订阅。 接受此订阅，或从下拉列表中选择一个新订阅。 |
     | **[资源组](../articles/azure-resource-manager/management/overview.md)** | 资源组的名称 |  要在其中创建函数应用的资源组。 从下拉列表中选择现有资源组，或者选择“新建”来创建新的资源组。|
     | **[计划类型](../articles/azure-functions/functions-scale.md)** | 消耗 | 将项目发布到在[消耗计划](../articles/azure-functions/consumption-plan.md)中运行的函数应用时，只需为函数应用的执行付费。 其他托管计划会产生更高的成本。 |
     | **位置** | 应用服务的位置 | 在靠近你或者靠近函数访问的其他服务的 [区域](https://azure.microsoft.com/regions/)中选择一个 **位置**。 |

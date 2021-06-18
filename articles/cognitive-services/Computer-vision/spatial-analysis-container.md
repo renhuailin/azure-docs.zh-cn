@@ -3,19 +3,19 @@ title: 如何安装和运行空间分析容器 - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 利用空间分析容器可以检测人员和距离。
 services: cognitive-services
-author: aahill
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.author: aahi
-ms.openlocfilehash: d257a77940b460bf8be64e3f8376353a859365f7
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 06/08/2021
+ms.author: pafarley
+ms.openlocfilehash: 15ef67fb452b4302cc848b88b3dab89d46fb8793
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284713"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746458"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>安装和运行空间分析容器（预览版）
 
@@ -26,7 +26,6 @@ ms.locfileid: "106284713"
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 拥有 Azure 订阅后，在 Azure 门户中为标准 S1 层<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源</a>，以获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要使用所创建资源的密钥和终结点来运行空间分析容器。 稍后你将使用该密钥和终结点。
-
 
 ### <a name="spatial-analysis-container-requirements"></a>空间分析容器要求
 
@@ -70,21 +69,6 @@ Azure Stack Edge 是一个硬件即服务解决方案，也是一台具有网络
 |--|--|
 | 照相机 | 空间分析容器并非仅限用于特定的相机品牌。 相机设备需要：支持实时流式处理协议 (RTSP) 和 H.264 编码、可供主机计算机访问，并能够以 15FPS 和 1080p 的分辨率进行流式处理。 |
 | Linux OS | 必须在主计算机上安装 [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/)。  |
-
-
-## <a name="request-approval-to-run-the-container"></a>请求批准运行容器
-
-填写并提交[请求表单](https://aka.ms/csgate)，以请求批准运行容器。
-
-通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交表单后，Azure 认知服务团队将对其进行审核，并通过电子邮件向你告知决定。
-
-> [!IMPORTANT]
-> * 在此表单上，必须使用与 Azure 订阅 ID 关联的电子邮件地址。
-> * 必须已使用批准的 Azure 订阅 ID 创建用于运行容器的计算机视觉资源。
-
-获得批准后，便可以根据本文稍后所述从 Microsoft 容器注册表 (MCR) 下载该容器，然后运行该容器。
-
-如果你的 Azure 订阅尚未获得批准，则无法运行该容器。
 
 ## <a name="set-up-the-host-computer"></a>设置主计算机
 

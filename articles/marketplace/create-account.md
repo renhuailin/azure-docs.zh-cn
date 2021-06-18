@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/06/2021
-ms.openlocfilehash: 2b3516d5f573f13655963b678a2f164c460fd140
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fcef5fee62c9937538a2aba6cba8629a8a04b043
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133144"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004900"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业市场帐户
 
@@ -45,7 +45,7 @@ ms.locfileid: "108133144"
 
 #### <a name="register-on-the-partner-center-enrollment-page"></a>在合作伙伴中心注册页面上注册
 
-查看[“欢迎使用 Microsoft 合作伙伴中心”](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)注册页上的信息，然后注册帐户。
+查看[“欢迎使用 Microsoft 合作伙伴中心”](https://go.microsoft.com/fwlink/?linkid=2165529)注册页上的信息，然后注册帐户。
 
 #### <a name="sign-in-with-a-work-account"></a>使用工作帐户登录
 
@@ -80,7 +80,7 @@ ms.locfileid: "108133144"
 
 **在商业市场中注册**
 
-1. 通过 Microsoft 合作伙伴网络帐户登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/)。
+1. 通过 Microsoft 合作伙伴网络帐户登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
 
     >[!NOTE]
     > 你必须具有“帐户管理员”或“全局管理员” 角色才能登录到 Microsoft 合作伙伴网络。
@@ -115,7 +115,7 @@ ms.locfileid: "108133144"
 
 向开发人员计划的帐户注册商业市场计划时，可以在合作伙伴中心的左窗格中查看所有现有程序注册。
 
-1. 用你的现有帐户登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/)。
+1. 用你的现有帐户登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
 1. 在右上方，选择“设置” > “帐户设置” > “计划”。
 1. 在“商业市场”下，选择“开始使用”，然后输入你的工作电子邮件地址 。
 1. 在“发布者配置文件”页上填写详细信息。
@@ -134,7 +134,7 @@ ms.locfileid: "108133144"
 
 如果你已经有了云合作伙伴门户帐户，我们会将其移动到合作伙伴中心。 不需要创建新的合作伙伴中心帐户。 登录到现有云合作伙伴门户帐户后，你应该已经通过电子邮件和横幅通知收到了指向新的合作伙伴中心帐户的自定义链接。
 
-选择了自定义链接并且启用新的合作伙伴中心帐户之后，可以访问合作伙伴中心中的[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)以返回到帐户。
+选择了自定义链接并且启用新的合作伙伴中心帐户之后，可以访问合作伙伴中心中的[商业市场仪表板](https://go.microsoft.com/fwlink/?linkid=2165290)以返回到帐户。
 
 发布协议和公司配置文件信息将与以前设置的任何帐户付款配置文件信息、用户帐户和权限以及与云合作伙伴门户帐户相关联的有效产品/服务一起转移到新的合作伙伴中心帐户。
 

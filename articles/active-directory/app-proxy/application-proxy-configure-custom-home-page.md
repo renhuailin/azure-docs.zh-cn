@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
-ms.openlocfilehash: bfec9273d1d363c3bd39887e83597d22262265f1
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: d635d0c87cb6f759c15461abe9efc9dd42297ddb
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186115"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964913"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理为发布的应用设置自定义主页
 
-本文讨论如何配置应用以将用户定向到自定义主页。 使用应用程序代理发布应用时，需要设置内部 URL，但有时不是用户首先看到的页面。 请设置自定义主页，以便用户可以在访问应用时转到正确的页面。 无论用户是通过 Azure Active Directory 中的“我的应用”，还是通过 Microsoft 365 应用启动器访问应用，都会看到设置的自定义主页。
+本文讨论如何配置应用以将用户定向到自定义主页。 当你使用应用程序代理发布应用时，你需要设置内部 URL，但有时不是用户首先看到的页面。 请设置自定义主页，以便用户可以在访问应用时转到正确的页面。 无论用户是通过 Azure Active Directory 我的应用，还是通过 Microsoft 365 应用启动器访问应用，都会看到设置的自定义主页。
 
 当用户启动应用时，他们默认会定向到已发布应用的根域 URL。 登陆页通常设置为主页 URL。 如果希望应用用户登录到应用中的特定页面，请使用 Azure AD PowerShell 模块来定义自定义主页 URL。
 
@@ -82,7 +82,7 @@ ms.locfileid: "108186115"
 
     如果以非管理员身份运行该命令，请使用 `-scope currentuser` 选项。
 
-1. 在安装期间，请选择“Y”安装来自 Nuget.org 的两个包。这两个包是必需的。
+1. 在安装期间，请选择“Y”，安装来自 Nuget.org 的两个包。这两个包是必需的。
 
 ### <a name="find-the-objectid-of-the-app"></a>查找应用的 ObjectId
 
@@ -130,7 +130,7 @@ ms.locfileid: "108186115"
    $objguid = "8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4"
    ```
 
-1. 通过运行以下命令来确认有正确的应用。 输出应与上一部分中看到的输出相同（[查找应用的 ObjectId](#find-the-objectid-of-the-app)）。
+1. 通过运行以下命令来确认有正确的应用。 输出应与上一部分中看到的输出相同([查找应用的 ObjectId](#find-the-objectid-of-the-app))。
 
    ```powershell
    Get-AzureADApplication -ObjectId $objguid | Format-List DisplayName, Homepage, ObjectId
@@ -175,5 +175,5 @@ ms.locfileid: "108186115"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问](../manage-apps/application-proxy-integrate-with-sharepoint-server.md)
+- [通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问](./application-proxy-integrate-with-sharepoint-server.md)
 - [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](application-proxy-add-on-premises-application.md)
