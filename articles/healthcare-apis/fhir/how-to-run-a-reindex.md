@@ -1,29 +1,29 @@
 ---
-title: 如何在 Azure API for FHIR 中运行重新索引Azure API for FHIR
-description: 本文介绍如何运行重新索引作业，为数据库中尚未编制索引的任何搜索或排序参数编制索引。
+title: 如何在 Azure API for FHIR 中运行重建索引作业
+description: 本文介绍如何运行索引编制作业，为尚未在数据库中编制索引的任何搜索或排序参数编制索引。
 author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/23/2021
 ms.author: cavoeg
-ms.openlocfilehash: 905d9381ac93e38575e9d0ff5c6f5571122b2990
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b4ede817b3babfb9221ac8fa982acc0322c9d7b2
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476640"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112379665"
 ---
-# <a name="running-a-reindex-job"></a>运行重新索引作业
+# <a name="running-a-reindex-job"></a>运行重建索引作业
 
-在某些情况下，你可能在尚未编制索引的Azure API for FHIR搜索或排序参数。 在定义自己的搜索参数时，这一点尤其相关。 在索引搜索参数之前，它不能用于搜索。 本文概述如何运行重新编制索引作业，为数据库中尚未编制索引的任何搜索或排序参数编制索引。
+在某些情况下，可能会在 Azure API for FHIR 中搜索或排序参数，这些参数尚未编制索引。 当你定义自己的搜索参数时，这尤其有用。 在对搜索参数编制索引之前，不能在搜索中使用它。 本文介绍如何运行索引编制作业，对尚未在数据库中编制索引的任何搜索或排序参数编制索引。
 
 > [!Warning]
-> 在入门之前阅读整篇文章非常重要。 重新索引作业可能会非常耗用性能。 本文包含用于限制和控制重新索引作业的选项。
+> 在开始之前阅读本文，这一点很重要。 重建索引作业的性能可能非常高。 本文包含有关如何限制和控制重建索引作业的选项。
 
 ## <a name="how-to-run-a-reindex-job"></a>如何运行重新索引作业 
 
-若要启动重新索引作业，请使用以下代码示例：
+若要启动重建索引作业，请使用下面的代码示例：
 
 ```json
 POST {{FHIR URL}}/$reindex 
@@ -37,7 +37,7 @@ POST {{FHIR URL}}/$reindex
 }
  ```
 
-如果请求成功，则返回状态 **"201 Created"。** 此消息的结果如下所示：
+如果请求成功，则返回已创建的状态 **201** 。 此消息的结果如下所示：
 
 ```json
 HTTP/1.1 201 Created 
@@ -91,15 +91,15 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
 ```
 
 > [!NOTE]
-> 若要检查 状态或取消重新索引作业，需要重新索引 ID。 这是生成的 Parameters 资源的 ID。 在以上示例中，重新索引作业的 ID 为 `560c7c61-2c70-4c54-b86d-c53a9d29495e` 。
+> 若要检查的状态或取消索引编制作业，需要重新编制索引的 ID。 这是生成的参数资源的 ID。 在上面的示例中，重建索引作业的 ID 是 `560c7c61-2c70-4c54-b86d-c53a9d29495e` 。
 
- ## <a name="how-to-check-the-status-of-a-reindex-job"></a>如何检查重新索引作业的状态
+ ## <a name="how-to-check-the-status-of-a-reindex-job"></a>如何检查重建索引作业的状态
 
-启动重新索引作业后，可以使用以下方法检查作业的状态：
+开始重建索引作业后，可以使用以下操作来检查作业的状态：
 
 `GET {{FHIR URL}}/_operations/reindex/{{reindexJobId}`
 
-重新索引作业结果的状态如下所示：
+重建索引作业结果的状态如下所示：
 
 ```json
 {
@@ -161,7 +161,7 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
     {
 ```
 
-重新索引作业结果中显示了以下信息：
+重建索引作业结果中显示以下信息：
 
 * **totalResourcesToReindex**：包含作为作业的一部分而重新编制索引的资源总数。
 
@@ -190,12 +190,12 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
 
 | **参数**                     | **说明**              | **默认**        | **建议范围**           |
 | --------------------------------- | ---------------------------- | ------------------ | ------------------------------- |
-| QueryDelayIntervalInMilliseconds  | 这是在重建索引作业期间要启动的每一批资源之间的延迟。 | 500 MS ( 5 秒)  | 50 到 5000：50 将加快重新索引作业的速度，5000 会从默认值降低。 |
-| MaximumResourcesPerQuery  | 这是要重新索引的资源批中包含的最大资源数。  | 100 | 1-500 |
-| MaximumConcurreny  | 这是一次完成批处理的数量。  | 1 | 1-5 |
-| targetDataStoreUsagePercentrage | 这样，可以指定要用于重新索引作业的数据存储百分比。 例如，可以指定 50%，这将确保重新索引作业最多使用 50% 的可用 COSMOS DB。  | 不存在，这意味着最多可以使用 100%。 | 1-100 |
+| QueryDelayIntervalInMilliseconds  | 这是在重建索引作业期间要启动的每一批资源之间的延迟。 | 500 MS ( 5 秒)  | 50到5000：50将提高重建索引作业的速度，5000会使其从默认值降低。 |
+| MaximumResourcesPerQuery  | 这是要重新编制索引的资源批中包含的最大资源数。  | 100 | 1-500 |
+| MaximumConcurrency  | 这是一次完成的批处理数。  | 1 | 1-5 |
+| targetDataStoreUsagePercentage | 这允许您指定要用于重新索引作业的数据存储的百分比。 例如，你可以指定50%，这将确保在 Cosmos DB 上，最多可确保索引编制作业使用50% 的可用 ru。  | 不存在，这意味着可以使用最多100%。 | 1-100 |
 
-如果要使用上述任何参数，可以在启动重新索引作业时将它们传递到 Parameters 资源。
+如果要使用上述任意参数，则可以在启动重新索引作业时将其传递到参数资源中。
 
 ```json
 {
@@ -223,7 +223,7 @@ Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b8
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何启动重新索引作业。 若要了解如何定义需要重新索引作业的新搜索参数，请参阅 
+本文介绍了如何启动重建索引作业。 若要了解如何定义需要重建索引作业的新搜索参数，请参阅 
 
 >[!div class="nextstepaction"]
 >[定义自定义搜索参数](how-to-do-custom-search.md)
