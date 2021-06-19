@@ -4,12 +4,12 @@ description: 本文提供了面向企业中 Azure 开发测试实验室的参考
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: d977ae8341981c90096c10bbc2c051372b4d8dab
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2a7c98784e230292afdb5cd217c2f0455034ad70
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125870"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111814577"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>面向企业的 Azure 开发测试实验室参考体系结构
 本文提供了参考体系结构，可帮助你根据企业中的 Azure 开发测试实验室部署解决方案。 包括以下各项：
@@ -46,7 +46,7 @@ ms.locfileid: "108125870"
     - 使用共享公共 IP：大小相同且属于同一区域的所有 VM 都进入同一资源组。 如果允许虚拟机具有公共 IP 地址，则这是一个中间地带，介于“资源组配额”与“按资源组的资源类型配额”之间。
 - 每种资源类型的每个资源组的资源：[每种资源类型的每个资源组的资源的默认限制为 800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)。  使用“所有 VM 属于同一资源组”配置时，用户会更快达到此订阅限制，尤其是在 VM 具有许多额外磁盘的情况下。
 - 存储帐户：开发测试实验室中的实验室附带存储帐户。 对于[每个订阅每个区域的存储帐户数量](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)，Azure 配额为 250。 同一区域中的开发测试实验室的最大数目也是 250。
-- 角色分配：角色分配是你为用户或主体提供对资源的访问方式（所有者、资源、权限级别）。 在 Azure 中，[每个订阅的角色分配上限为 2,000](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits)。 默认情况下，开发测试实验室服务为每个 VM 创建一个资源组。 所有者被授予开发测试实验室 VM 的“所有者”权限和资源组的“读者”权限。  这样，除了在你为用户授予实验室权限时使用的分配方式之外，你创建的每个新 VM 还会使用两种角色分配方式。
+- 角色分配：角色分配是你为用户或主体提供对资源的访问方式（所有者、资源、权限级别）。 在 Azure 中，[每个订阅的角色分配上限为 2,000](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-rbac-limits)。 默认情况下，开发测试实验室服务为每个 VM 创建一个资源组。 所有者被授予开发测试实验室 VM 的“所有者”权限和资源组的“读者”权限。  这样，除了在你为用户授予实验室权限时使用的分配方式之外，你创建的每个新 VM 还会使用两种角色分配方式。
 - API 读取/写入：可通过多种方式自动执行 Azure 和开发测试实验室，包括 REST API、PowerShell、Azure CLI 和 Azure SDK。 利用自动化时，您可能会遇到 API 请求的另一个限制：每个订阅每小时[最多允许 12,000 个读取请求和 1,200 个写入请求](../azure-resource-manager/management/request-limits-and-throttling.md)。 将开发测试实验室自动化时，请注意此限制。
 
 ## <a name="manageability-considerations"></a>可管理性注意事项

@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 资源管理器模板创建 Azure 门户�
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/15/2021
-ms.openlocfilehash: 3cb6069b13246e561de85c7a392283a5c243f1a4
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 0a1da860c4263f25e04e68253d0eed96254bed3a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517777"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077711"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure 门户中创建仪表板
 
@@ -55,13 +55,13 @@ Azure 门户中的仪表板可以集中且有组织地呈现你的云资源。 �
         -Location "East US" 
     ```
 
-1. 输入 VM 的用户名和密码。 这是一个新的用户名和密码；它不是用于登录 Azure 的帐户。 有关详细信息，请参阅[用户名要求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)和[密码要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+1. 输入 VM 的用户名和密码。 这是一个新的用户名和密码；它不是用于登录 Azure 的帐户。 有关详细信息，请参阅[用户名要求](../virtual-machines/windows/faq.yml#what-are-the-username-requirements-when-creating-a-vm-)和[密码要求](../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-)。
 
     VM 部署现在将开始进行，通常需要几分钟才能完成。 部署完成后，请转到下一部分。
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azure-portal-dashboard/)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.portal/azure-portal-dashboard/azuredeploy.json)。 模板 [Microsoft.Portal/dashboards](/azure/templates/microsoft.portal/dashboards) 中定义了一个 Azure 资源 - 在 Azure 门户中创建仪表板。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/azure-portal-dashboard/)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.portal/azure-portal-dashboard/azuredeploy.json)。 模板 [Microsoft.Portal/dashboards](/azure/templates/microsoft.portal/dashboards) 中定义了一个 Azure 资源 - 在 Azure 门户中创建仪表板。
 
 ## <a name="deploy-the-template"></a>部署模板
 

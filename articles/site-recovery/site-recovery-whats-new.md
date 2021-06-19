@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: a960a62a8262128d775b0fe386a72e5ec613b7f1
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 23cc7c98b4d45adf9507ef857bda1c605eb6d558
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897624"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026770"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -618,7 +618,7 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 
 **功能** | **详细信息**
 --- | ---
-**Linux 支持** | 添加了对 RedHat Enterprise Linux 6.10、CentOS 6.10 的支持。<br/><br/> 现在支持基于 Linux 且在旧式 BIOS 兼容模式下使用 GUID 分区表 (GPT) 分区样式的 VM。 有关详细信息，请查看 [Azure VM 常见问题解答](../virtual-machines/faq-for-disks.md)。
+**Linux 支持** | 添加了对 RedHat Enterprise Linux 6.10、CentOS 6.10 的支持。<br/><br/> 现在支持基于 Linux 且在旧式 BIOS 兼容模式下使用 GUID 分区表 (GPT) 分区样式的 VM。 有关详细信息，请查看 [Azure VM 常见问题解答](../virtual-machines/faq-for-disks.yml)。
 **迁移后的 VM 灾难恢复** | 支持将已迁移到 Azure 的本地 VMware VM 灾难恢复到次要区域，启用复制之前无需在 VM 上卸载移动服务。
 **Windows Server 2008** | 支持迁移运行 Windows Server 2008 R2/2008 64 位和 32 位的计算机。<br/><br/> 仅限迁移（复制和故障转移）。 不支持故障回复。
 

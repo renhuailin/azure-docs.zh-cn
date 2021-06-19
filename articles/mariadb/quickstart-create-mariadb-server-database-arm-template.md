@@ -6,15 +6,13 @@ ms.author: pariks
 ms.date: 05/14/2020
 ms.topic: quickstart
 ms.service: mariadb
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: a125f1aeacda48fdf8acfeb443527d6e2bf70e5c
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
+ms.openlocfilehash: b068df529dfad3cfa4d07eb57560028b0b70afb0
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277779"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556345"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>快速入门：使用 ARM 模板创建 Azure Database for MariaDB 服务器
 
@@ -48,7 +46,7 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
 
 创建 Azure Database for MariaDB 服务器时，请使用定义好的一组计算和存储资源。 若要了解详细信息，请参阅 [Azure DB for MariaDB 定价层](concepts-pricing-tiers.md)。 请在 [Azure 资源组](../azure-resource-manager/management/overview.md)中创建该服务器。
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/managed-mariadb-with-vnet/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.dbformariadb/managed-mariadb-with-vnet/azuredeploy.json":::
 

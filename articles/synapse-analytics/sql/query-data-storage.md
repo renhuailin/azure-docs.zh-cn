@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7503c0ffff064f0fee0352beb0955c964c7770b9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e9070f6c6a30f094f5b7cf2d8b0c5d5b0f5e5151
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368345"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967396"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询存储文件
 
@@ -115,7 +115,7 @@ SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 ```
 
-请确保使用[适当的推断数据类型](best-practices-sql-on-demand.md#check-inferred-data-types)以获得最佳性能。 
+请确保使用[适当的推断数据类型](./best-practices-serverless-sql-pool.md#check-inferred-data-types)以获得最佳性能。 
 
 ## <a name="query-multiple-files-or-folders"></a>查询多个文件或文件夹
 

@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: seo-lt-2019
-ms.date: 05/08/2020
-ms.openlocfilehash: e5c50d2cbd16ad2808dab485ad2b2870d6f3d350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/09/2021
+ms.openlocfilehash: 3f9b330e4e0cadd073a60293991066f74d8521c3
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392351"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903160"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -56,7 +56,7 @@ ms.locfileid: "100392351"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-| 属性              | 说明                              | 必需 |
+| 属性              | 说明                              | 必须 |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | 管道中活动的名称。    | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -76,7 +76,7 @@ ms.locfileid: "100392351"
 
 在 HDInsight 链接服务引用的 Azure Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Azure Blob 存储中的以下文件夹结构：     
 
-| 路径                  | 说明                              | 必需 | 类型   |
+| 路径                  | 说明                              | 必须 | 类型   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.`（根）            | Spark 作业在存储链接服务中的根路径 | 是      | 文件夹 |
 | &lt;用户定义&gt; | 指向 Spark 作业入口文件的路径 | 是      | 文件   |
@@ -98,6 +98,10 @@ SparkJob1
         package1.jar
         package2.jar
     logs
+    
+    archives
+    
+    pyFiles
 
 SparkJob2
     main.py
@@ -105,6 +109,13 @@ SparkJob2
         scrip1.py
         script2.py
     logs
+    
+    archives
+    
+    jars
+    
+    files
+    
 ```
 ## <a name="next-steps"></a>后续步骤
 参阅以下文章了解如何以其他方式转换数据： 

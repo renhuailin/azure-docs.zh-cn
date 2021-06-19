@@ -4,17 +4,17 @@ description: 了解 Azure Cosmos DB 如何提供静态数据加密及其实现�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 06/08/2021
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 23d95e02c74918de711b18c7580c3774b19c6227
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 4e44184960a09b9e764b76b7a009281bb959d212
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229425"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757960"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>针对 Azure Cosmos DB 的高级威胁防护（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -75,7 +75,7 @@ ms.locfileid: "108229425"
 # <a name="arm-template"></a>[ARM 模板](#tab/arm-template)
 
 使用 Azure 资源管理器 (ARM) 模板可设置启用了高级威胁防护的 Cosmos DB。
-有关详细信息，请参阅[创建具有高级威胁防护的 CosmosDB 帐户](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/)。
+有关详细信息，请参阅[创建具有高级威胁防护的 CosmosDB 帐户](https://azure.microsoft.com/resources/templates/cosmosdb-advanced-threat-protection-create-account/)。
 
 # <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 

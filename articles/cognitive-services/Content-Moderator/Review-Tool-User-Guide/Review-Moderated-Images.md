@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 77d7b8a0bf4d7fe9a94a61ea3f2f4279246ffb69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 155bf999823625e1a91752c9cf064bc804d28335
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96903881"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031774"
 ---
 # <a name="create-human-reviews"></a>创建人工审阅
+
+[!INCLUDE [deprecation notice](../includes/tool-deprecation.md)]
 
 在本指南中，你将学习如何在审阅工具网站上设置[审阅](../review-api.md#reviews)。 审阅存储并显示供人工审查方评估的内容。 审查方可以修改应用的标记，并根据需要应用自己的自定义标记。 当用户完成审阅时，系统会将结果发送到指定的回调终结点，并从网站中删除内容。
 
