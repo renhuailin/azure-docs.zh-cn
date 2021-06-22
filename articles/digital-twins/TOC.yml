@@ -7,7 +7,7 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 浏览示例方案
+    - name: Azure Digital Twins Explorer 入门
       href: quickstart-azure-digital-twins-explorer.md
 - name: 教程
   items:
@@ -41,14 +41,18 @@
       href: concepts-query-language.md
     - name: 查询单位
       href: concepts-query-units.md
+    - name: 使用 Azure 数据资源管理器进行查询
+      href: concepts-data-explorer-plugin.md
     - name: 开发人员接口
       items:
+        - name: Azure Digital Twins Explorer
+          href: concepts-azure-digital-twins-explorer.md
         - name: API 和 SDK
           href: concepts-apis-sdks.md
         - name: CLI 命令集
           href: concepts-cli.md
-    - name: 与其他服务集成
-      href: concepts-integration.md
+    - name: 数据引入和传出
+      href: concepts-data-ingress-egress.md
     - name: 事件通知
       href: concepts-event-notifications.md
     - name: 事件路由
@@ -63,24 +67,28 @@
       items:
         - name: 设置实例和身份验证
           items:
-            - name: 门户版本
+            - name: 门户
               href: how-to-set-up-instance-portal.md
-            - name: CLI 版本
+            - name: CLI
               href: how-to-set-up-instance-cli.md
-            - name: PowerShell 版本
+            - name: PowerShell
               href: how-to-set-up-instance-powershell.md
-            - name: 脚本版本
+            - name: 安装脚本示例
               href: how-to-set-up-instance-scripted.md
         - name: 通过专用链接启用私密访问
           items:
-            - name: 门户版本
+            - name: 门户
               href: how-to-enable-private-link-portal.md
-            - name: CLI 版本
+            - name: CLI
               href: how-to-enable-private-link-cli.md
         - name: 编写应用身份验证码
           href: how-to-authenticate-client.md
         - name: 创建应用注册
-          href: how-to-create-app-registration.md
+          items:
+            - name: 门户
+              href: how-to-create-app-registration-portal.md
+            - name: CLI
+              href: how-to-create-app-registration-cli.md
         - name: 将实例移动到其他区域
           href: how-to-move-regions.md
     - name: 设计模型
@@ -93,6 +101,8 @@
           href: how-to-use-tags.md
     - name: 使用实时执行环境
       items:
+        - name: 使用 Azure Digital Twins Explorer
+          href: how-to-use-azure-digital-twins-explorer.md
         - name: 管理数字孪生
           href: how-to-manage-twin.md
         - name: 通过使用关系来管理孪生图
@@ -115,19 +125,21 @@
           href: how-to-provision-using-device-provisioning-service.md
         - name: 与逻辑应用集成
           href: how-to-integrate-logic-apps.md
+        - name: 将 OPC UA 数据引入到 Azure 数字孪生
+          href: how-to-ingest-opcua-data.md
     - name: 连接输出
       items:
         - name: 管理终结点和路由
           items:
-            - name: 门户版本
+            - name: 门户
               href: how-to-manage-routes-portal.md
-            - name: API 和 CLI 版本
+            - name: API 和 CLI
               href: how-to-manage-routes-apis-cli.md
         - name: 为路由事件启用托管标识
           items:
-            - name: 门户版本
+            - name: 门户
               href: how-to-enable-managed-identities-portal.md
-            - name: CLI 版本
+            - name: CLI
               href: how-to-enable-managed-identities-cli.md
         - name: 与 Azure Maps 集成
           href: how-to-integrate-maps.md
@@ -277,12 +289,12 @@
           href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: 工具和示例项目
       items:
+        - name: Azure Digital Twins Explorer
+          href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
         - name: Azure 数字孪生 Postman 集合
           href: 'https://github.com/microsoft/azure-digital-twins-postman-samples'
         - name: Azure 数字孪生端到端示例
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
-        - name: Azure 数字孪生资源管理器（示例）
-          href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
         - name: DTDL 验证器（示例）
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: 模型上传器（示例）
@@ -299,6 +311,14 @@
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
         - name: 设备模拟器服务
           href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
+    - name: Ontology
+      items:
+        - name: 智能建筑
+          href: 'https://github.com/Azure/opendigitaltwins-building'
+        - name: 智慧城市
+          href: 'https://github.com/Azure/opendigitaltwins-smartcities'
+        - name: 电网
+          href: 'https://github.com/Azure/opendigitaltwins-energygrid/'
     - name: DTDL
       items:
         - name: 适用于 VS Code 的 DTDL 扩展

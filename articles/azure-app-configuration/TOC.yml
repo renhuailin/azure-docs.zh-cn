@@ -58,12 +58,18 @@
       items:
         - name: .NET Core
           href: enable-dynamic-configuration-dotnet-core-push-refresh.md
-    - name: 使用 Key Vault 引用
+    - name: Key Vault 引用
       items:
-        - name: ASP.NET Core
-          href: use-key-vault-references-dotnet-core.md
-        - name: Spring Boot
-          href: use-key-vault-references-spring-boot.md
+        - name: 使用 Key Vault 引用
+          items:
+            - name: ASP.NET Core
+              href: use-key-vault-references-dotnet-core.md
+            - name: Spring Boot
+              href: use-key-vault-references-spring-boot.md
+        - name: 自动重新加载机密和证书
+          items:
+            - name: .NET
+              href: reload-key-vault-secrets-dotnet.md
     - name: 生成、部署和 CI/CD
       items:
         - name: 使用 Azure Pipelines 推送
@@ -124,6 +130,8 @@
           href: overview-managed-identity.md
         - name: 安全基线
           href: /security/benchmark/azure/baselines/app-config-security-baseline?toc=/azure/azure-app-configuration/TOC.json
+        - name: 禁用访问密钥身份验证（预览版）
+          href: howto-disable-access-key-authentication.md
         - name: Azure Policy 的安全控件
           href: ./security-controls-policy.md
     - name: 高可用性

@@ -230,6 +230,8 @@
               href: azure-stack-edge-gpu-virtual-machine-overview.md
             - name: 查看受支持的 VM
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
+            - name: 查看支持的 API 配置文件
+              href: azure-stack-edge-profiles-azure-resource-manager-versions.md
             - name: 创建 VM 映像
               items:
                 - name: 来自 Azure VM 的自定义映像
@@ -239,7 +241,9 @@
                 - name: 来自 ISO 的通用映像
                   href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
                 - name: 使用专用映像
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+                  href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
+                - name: 使用 Azure 市场映像
+                  href: azure-stack-edge-gpu-create-virtual-machine-marketplace-image.md
             - name: 部署 VM
               items:
                 - name: 通过 Azure 门户
@@ -268,6 +272,8 @@
                   href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
                 - name: 安装自定义脚本扩展
                   href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
+                - name: 安装 GPU 扩展
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md
                 - name: 备份 VM 磁盘
                   href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
                 - name: 疑难解答
@@ -275,7 +281,11 @@
                     - name: 连接到 VM 控制台
                       href: azure-stack-edge-gpu-connect-virtual-machine-console.md
                     - name: VM 映像上传
-                      href: azure-stack-edge-troubleshoot-virtual-machine-image-upload.md
+                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md
+                    - name: VM 部署
+                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md
+                    - name: GPU 扩展问题
+                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md
         - name: 管理证书
           items:
             - name: 要求
@@ -334,12 +344,18 @@
               href: azure-stack-edge-gpu-enable-azure-monitor.md
         - name: 疑难解答
           items:
-            - name: 设备问题
-              href: azure-stack-edge-gpu-troubleshoot.md
             - name: 订购问题
               href: azure-stack-edge-troubleshoot-ordering.md
             - name: 激活问题
               href: azure-stack-edge-gpu-troubleshoot-activation.md
+            - name: 设备日志和诊断
+              href: azure-stack-edge-gpu-troubleshoot.md
+            - name: Azure 资源管理器问题
+              href: azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md
+            - name: Blob 问题
+              href: azure-stack-edge-gpu-troubleshoot-blob-storage.md
+            - name: IoT Edge 问题
+              href: azure-stack-edge-gpu-troubleshoot-iot-edge.md
             - name: 请联系 Microsoft 支持部门
               href: azure-stack-edge-contact-microsoft-support.md
     - name: 共享发行说明
@@ -426,6 +442,8 @@
                   href: azure-stack-edge-troubleshoot.md
                 - name: 订购问题
                   href: azure-stack-edge-troubleshoot-ordering.md
+                - name: IoT Edge
+                  href: azure-stack-edge-troubleshoot-iot-edge.md
                 - name: 请联系 Microsoft 支持部门
                   href: azure-stack-edge-contact-microsoft-support.md
         - name: 监视

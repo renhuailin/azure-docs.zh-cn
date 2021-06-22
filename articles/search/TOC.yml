@@ -5,7 +5,7 @@
   items:
     - name: 什么是认知搜索？
       href: search-what-is-azure-search.md
-    - name: 功能列表
+    - name: 搜索中的功能
       href: search-features-list.md
     - name: 搜索中的新功能
       href: whats-new.md
@@ -42,28 +42,38 @@
       href: search-get-started-arm.md
 - name: 教程
   items:
-    - name: 将搜索添加到网站
+    - name: 向 Web 应用添加搜索
       items:
         - name: C#
           items:
-            - name: 网站概述
+            - name: 概述
               href: tutorial-csharp-overview.md
             - name: 创建搜索索引
               href: tutorial-csharp-create-load-index.md
             - name: 部署静态 Web 应用
               href: tutorial-csharp-deploy-static-web-app.md
-            - name: 集成速查表
+            - name: 浏览代码
               href: tutorial-csharp-search-query-integration.md
         - name: JavaScript
           items:
-            - name: 网站概述
+            - name: 概述
               href: tutorial-javascript-overview.md
             - name: 创建搜索索引
               href: tutorial-javascript-create-load-index.md
             - name: 部署静态 Web 应用
               href: tutorial-javascript-deploy-static-web-app.md
-            - name: 集成速查表
+            - name: 浏览代码
               href: tutorial-javascript-search-query-integration.md
+        - name: Python
+          items:
+            - name: 概述
+              href: tutorial-python-overview.md
+            - name: 创建搜索索引
+              href: tutorial-python-create-load-index.md
+            - name: 部署静态 Web 应用
+              href: tutorial-python-deploy-static-web-app.md
+            - name: 浏览代码
+              href: tutorial-python-search-query-integration.md
     - name: 创建 C# 应用
       items:
         - name: 1 - 基本搜索页
@@ -264,6 +274,8 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL 数据库
               href: search-howto-managed-identities-sql.md
+        - name: Power Query 数据源
+          href: search-how-to-index-power-query-data-sources.md
         - name: SharePoint Online
           href: search-howto-index-sharepoint-online.md
         - name: Azure Blob
@@ -302,6 +314,8 @@
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Azure SQL Server VM
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: Azure MySQL
+          href: search-howto-index-mysql.md
         - name: 排查索引器问题
           href: search-indexer-troubleshooting.md
         - name: 排查索引器错误和警告
@@ -430,7 +444,7 @@
           href: search-traffic-analytics.md
     - name: 安全
       items:
-        - name: 管理权限
+        - name: 分配角色
           href: search-security-rbac.md
         - name: 数据加密
           items:
@@ -540,8 +554,10 @@
               href: cognitive-search-skill-custom-entity-lookup.md
             - name: 文档提取
               href: cognitive-search-skill-document-extraction.md
-            - name: 实体识别
-              href: cognitive-search-skill-entity-recognition.md
+            - name: 实体链接 (V3)
+              href: cognitive-search-skill-entity-linking-v3.md
+            - name: 实体识别 (V3)
+              href: cognitive-search-skill-entity-recognition-v3.md
             - name: 图像分析
               href: cognitive-search-skill-image-analysis.md
             - name: 关键短语提取
@@ -552,8 +568,8 @@
               href: cognitive-search-skill-ocr.md
             - name: PII 检测
               href: cognitive-search-skill-pii-detection.md
-            - name: 情绪
-              href: cognitive-search-skill-sentiment.md
+            - name: 情绪 (V3)
+              href: cognitive-search-skill-sentiment-v3.md
             - name: 整形程序
               href: cognitive-search-skill-shaper.md
             - name: 文本合并
@@ -573,6 +589,10 @@
           items:
             - name: 命名实体识别
               href: cognitive-search-skill-named-entity-recognition.md
+            - name: 实体识别
+              href: cognitive-search-skill-entity-recognition.md
+            - name: 情绪
+              href: cognitive-search-skill-sentiment.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

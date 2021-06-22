@@ -16,14 +16,44 @@
     - name: Datadog
       items:
         - name: 概述
-          displayName: 'Datadog, Monitoring'
-          href: ./datadog/overview.md
-        - name: 创建
-          href: ./datadog/create.md
-        - name: 管理
-          href: ./datadog/manage.md
-        - name: 疑难解答
-          href: ./datadog/troubleshoot.md
+          items:
+            - name: 什么是 Datadog？
+              href: ./datadog/overview.md
+              displayName: 'Datadog, Monitoring'
+        - name: 快速入门
+          items:
+            - name: 创建新 Datadog 组织
+              href: ./datadog/create.md
+            - name: 链接到现有 Datadog 组织
+              href: ./datadog/link-to-existing-organization.md
+        - name: 如何
+          items:
+            - name: 配置预先部署
+              href: ./datadog/prerequisites.md
+            - name: 管理
+              href: ./datadog/manage.md
+            - name: 疑难解答
+              items:
+                - name: 获取支持
+                  href: ./datadog/get-support.md
+                - name: 解决常见错误
+                  href: ./datadog/troubleshoot.md
+    - name: Elastic
+      items:
+        - name: 概述
+          items:
+            - name: 什么是弹性？
+              href: ./elastic/overview.md
+        - name: 快速入门
+          items:
+            - name: 创建弹性资源
+              href: ./elastic/create.md
+        - name: 如何
+          items:
+            - name: 管理集成
+              href: ./elastic/manage.md
+            - name: 疑难解答
+              href: ./elastic/troubleshoot.md
 - name: 参考
   items:
     - name: Azure CLI

@@ -24,9 +24,9 @@
       href: tutorial-create-tenant.md
     - name: 2 - 注册应用程序
       href: tutorial-register-applications.md
-    - name: 3 - 创建用户流
+    - name: 3 - 创建用户流和自定义策略
       href: tutorial-create-user-flows.md
-    - name: 4 - 对用户进行身份验证
+    - name: 对用户进行身份验证
       items:
         - name: ASP.NET
           href: tutorial-web-app-dotnet.md
@@ -37,7 +37,7 @@
         - name: Python
           href: tutorial-web-app-python.md
           displayName: flask
-    - name: 5 - 授予 API 访问权限
+    - name: 授予 API 访问权限
       items:
         - name: ASP.NET
           href: tutorial-web-api-dotnet.md
@@ -45,7 +45,7 @@
           href: tutorial-desktop-app-webapi.md
         - name: 单页
           href: tutorial-single-page-app-webapi.md
-    - name: 6 - 清理并删除租户
+    - name: 清理并删除租户
       href: tutorial-delete-tenant.md
 - name: 示例
   href: code-samples.md
@@ -105,8 +105,28 @@
       href: tenant-management.md
     - name: 应用集成
       items:
-        - name: 注册 Web 应用程序
-          href: tutorial-register-applications.md
+        - name: ASP.NET Core Web 应用
+          items:
+            - name: 配置示例 Web 应用
+              href: configure-authentication-sample-web-app.md
+            - name: 在应用中启用身份验证
+              href: enable-authentication-web-application.md
+            - name: 身份验证选项
+              href: enable-authentication-web-application-options.md
+        - name: 调用 API 的 ASP.NET Core Web 应用
+          items:
+            - name: 配置调用 API 的示例 Web 应用
+              href: configure-authentication-sample-web-app-with-api.md
+            - name: 在应用中启用身份验证
+              href: enable-authentication-web-app-with-api.md
+            - name: 身份验证选项
+              href: enable-authentication-web-app-with-api-options.md
+        - name: 单页面应用程序 (SPA)
+          items:
+            - name: 配置示例 SPA 应用
+              href: configure-authentication-sample-spa-app.md
+            - name: 身份验证选项
+              href: enable-authentication-spa-app-options.md
         - name: 注册单页应用程序 (SPA)
           href: tutorial-register-spa.md
         - name: SAML 应用程序
@@ -158,7 +178,7 @@
       items:
         - name: 本地帐户标识提供者
           href: identity-provider-local.md
-          displayName: 'Username, Email, Phone authorization, Phone sing-in'
+          displayName: 'Username, Email, Phone authorization, Phone sign-in'
         - name: 添加标识提供程序
           href: add-identity-provider.md
         - name: AD FS
@@ -420,7 +440,7 @@
             - name: ClaimsTransformations
               href: claimstransformations.md
               items:
-                - name: Boolean
+                - name: 布尔
                   href: boolean-transformations.md
                 - name: Date
                   href: date-transformations.md
@@ -475,14 +495,16 @@
                   href: id-token-hint.md
                 - name: JWT 令牌颁发者
                   href: jwt-issuer-technical-profile.md
-                - name: OAuth1
+                - name: OAuth1 标识提供者
                   href: oauth1-technical-profile.md
-                - name: OAuth2
+                - name: OAuth2 标识提供者
                   href: oauth2-technical-profile.md
+                - name: OAuth2 自定义错误
+                  href: oauth2-error-technical-profile.md
                 - name: 一次性密码
                   href: one-time-password-technical-profile.md
                   displayName: otp
-                - name: OpenID Connect
+                - name: OpenID Connect 标识提供者
                   href: openid-connect-technical-profile.md
                 - name: 电话因素
                   href: phone-factor-technical-profile.md
@@ -551,7 +573,7 @@
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: 常见问题
-      href: faq.md
+      href: ./faq.yml
     - name: 获取帮助
       href: ../active-directory/develop/developer-support-help-options.md
     - name: 定价

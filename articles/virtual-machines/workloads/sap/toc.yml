@@ -78,6 +78,8 @@
           href: ha-setup-with-stonith.md
         - name: OS 备份
           href: large-instance-os-backup.md
+        - name: OS 备份 HLI 类型 - 2
+          href: os-backup-hli-type-ii-skus.md
         - name: SAP on RHEL 的 Azure 大型实例高可用性
           href: large-instance-high-availability-rhel.md
         - name: 为 HANA 大型实例启用 Kdump
@@ -319,6 +321,16 @@
       href: /power-bi/desktop-sap-bw-connector
     - name: Azure 数据工厂提供 SAP HANA 和业务数据仓库数据集成
       href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
+- name: 适用于 SAP 的 Azure Sentinel 和持续威胁监视
+  items:
+    - name: 为 SAP 部署 Azure Sentinel 解决方案
+      href: ../../../sentinel/sap-deploy-solution.md#deploy-sap-security-content
+    - name: 详细要求
+      href: ../../../sentinel/sap-solution-detailed-requirements.md
+    - name: 可用的 SAP 日志参考
+      href: ../../../sentinel/sap-solution-log-reference.md
+    - name: SAP 安全内容参考
+      href: ../../../sentinel/sap-solution-security-content.md
 - name: 适用于 SAP 的 Azure Monitor 解决方案
   items:
     - name: 适用于 SAP 的 Azure Monitor 解决方案概述

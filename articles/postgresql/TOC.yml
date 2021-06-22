@@ -32,6 +32,8 @@
     - name: 版本控制策略
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
+    - name: 主版本升级
+      href: how-to-upgrade-using-dump-and-restore.md
     - name: 已知问题和限制
       href: concepts-known-issues-limitations.md
       displayName: 'issues, limitations, postgresql'
@@ -148,8 +150,8 @@
             - name: 连接体系结构
               href: concepts-connectivity-architecture.md
               displayName: 'security, architecture'
-            - name: 高级威胁防护
-              href: concepts-data-access-and-security-threat-protection.md
+            - name: 使用 Azure Defender 进行威胁防护
+              href: ../security-center/defender-for-databases-introduction.md
               displayName: 'security, advanced threat protection'
             - name: Azure AD 身份验证
               href: concepts-aad-authentication.md
@@ -351,11 +353,6 @@
             - name: 排查数据加密问题
               href: howto-data-encryption-troubleshoot.md
               displayName: 'debug, security, encryption'
-        - name: 高级威胁防护
-          items:
-            - name: Azure 门户
-              href: howto-database-threat-protection-portal.md
-              displayName: 'advanced thread, security'
         - name: 虚拟网络
           items:
             - name: Azure 门户
@@ -408,8 +405,6 @@
           items:
             - name: Azure 门户
               href: howto-move-regions-portal.md
-        - name: 主版本升级
-          href: how-to-upgrade-using-dump-and-restore.md
 - name: 灵活服务器（预览版）
   expanded: true
   items:
@@ -472,6 +467,8 @@
           href: flexible-server/concepts-maintenance.md
         - name: 连接池 (PgBouncer)
           href: flexible-server/concepts-pgbouncer.md
+        - name: 服务器参数
+          href: flexible-server/concepts-server-parameters.md
         - name: 业务连续性
           items:
             - name: 业务连续性概述
@@ -551,21 +548,29 @@
           items:
             - name: Azure 门户
               href: flexible-server/how-to-restart-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-restart-server-cli.md
         - name: 还原服务器
           items:
             - name: Azure 门户
               href: flexible-server/how-to-restore-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-restore-server-cli.md
         - name: 停止/启动服务器
           items:
             - name: Azure 门户
               href: flexible-server/how-to-stop-start-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-stop-start-server-cli.md
         - name: 管理高可用性
           items:
             - name: Azure 门户
               href: flexible-server/how-to-manage-high-availability-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-configure-high-availability-cli.md
         - name: 监视
           items:
-            - name: 针对指标创建警报
+            - name: 使用门户针对指标创建警报
               href: flexible-server/howto-alert-on-metrics.md
             - name: 配置和访问日志
               href: flexible-server/howto-configure-and-access-logs.md
@@ -709,6 +714,9 @@
             - name: 排查连接错误
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
               displayName: 'connection errors, hyperscale'
+            - name: 只读访问疑难解答
+              href: howto-hyperscale-troubleshoot-read-only.md
+              displayName: 'read-only, hyperscale'
             - name: 有用的诊断查询
               href: howto-hyperscale-useful-diagnostic-queries.md
     - name: API 参考

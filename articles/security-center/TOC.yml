@@ -165,7 +165,7 @@
         - name: 强化 Docker 主机
           displayName: containers
           href: harden-docker-hosts.md
-    - name: 保护 SQL 资源
+    - name: 保护数据库
       items:
         - name: Azure Defender for SQL 的概述
           displayName: database
@@ -173,12 +173,12 @@
         - name: 在计算机上启用 Defender for SQL 服务器
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc, Azure Defender'
+        - name: 用于开源关系数据库的 Azure Defender 概述
+          displayName: 'PG, PostgreSQL, MySQL, MariaDB'
+          href: defender-for-databases-introduction.md
         - name: 扫描 SQL 资源是否存在漏洞
           href: defender-for-sql-on-machines-vulnerability-assessment.md
-          displayName: 'hybrid, arc, Azure Defender'
-        - name: 禁用对 SQL Server 的漏洞查找
-          displayName: 'VA, registry, vulnerabilities'
-          href: defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview
+          displayName: 'hybrid, arc, Azure Defender, VA, registry, vulnerabilities'
         - name: 自定义 SQL 信息保护策略
           displayName: 'sql, database, data discovery'
           href: security-center-info-protection-policy.md
@@ -197,6 +197,9 @@
         - name: 扫描注册表映像是否存在漏洞
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md
+        - name: 扫描 CI/CD 工作流中的映像
+          displayName: 'ACR, registry, images, trevi, vulnerabilities, scanner'
+          href: defender-for-container-registries-cicd.md
         - name: 禁止显示特定映像漏洞结果
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md#disable-specific-findings-preview
@@ -301,15 +304,15 @@
     - name: Azure 安全中心常见问题解答
       items:
         - name: 一般问题
-          href: faq-general.md
+          href: faq-general.yml
         - name: 权限问题
-          href: faq-permissions.md
+          href: faq-permissions.yml
         - name: 数据收集和代理问题
-          href: faq-data-collection-agents.md
+          href: faq-data-collection-agents.yml
         - name: 虚拟机问题
-          href: faq-vms.md
+          href: faq-vms.yml
         - name: Azure Log Analytics 的现有用户
-          href: faq-azure-monitor-logs.md
+          href: faq-azure-monitor-logs.yml
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policy'
       href: policy-reference.md
@@ -319,6 +322,8 @@
       href: security-center-endpoint-protection.md
     - name: Azure CLI
       href: /cli/azure/security
+    - name: Azure PowerShell
+      href: /powershell/module/az.security/
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

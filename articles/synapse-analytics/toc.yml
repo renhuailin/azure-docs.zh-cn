@@ -42,7 +42,7 @@ items:
       - name: 8 监视
         href: get-started-monitor.md
         displayName: 'get, started'
-      - name: 9 查看知识中心
+      - name: 9 探索知识中心
         href: get-started-knowledge-center.md
         displayName: 'get, started'
       - name: 10 添加管理员
@@ -64,6 +64,7 @@ items:
                 href: quickstart-create-workspace-powershell.md
                 displayName: quickstart
               - name: ARM 模板
+                displayname: Resource Manager
                 href: quickstart-deployment-template-workspaces.md
             displayName: quickstart
           - name: 链接 Power BI 工作区
@@ -572,12 +573,6 @@ items:
             href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           - name: 提交 Spark 作业定义
             href: ./spark/apache-spark-job-definitions.md
-          - name: 连接和监视 Azure Synapse Spark 应用程序级指标
-            href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
-          - name: 通过 Prometheus 和 Grafana 监视 Apache Spark 应用程序级指标
-            href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
-          - name: 使用 Azure Log Analytics 收集和可视化指标和日志（预览版）
-            href: ./spark/apache-spark-azure-log-analytics.md
       - name: 概念
         items:
           - name: Apache Spark
@@ -588,8 +583,14 @@ items:
             href: ./spark/apache-spark-what-is-delta-lake.md
           - name: Apache Spark 自动缩放行为
             href: ./spark/apache-spark-autoscale.md
-          - name: Synapse 运行时
-            href: ./spark/apache-spark-version-support.md
+          - name: Azure Synapse 运行时
+            items:
+              - name: 运行时概述
+                href: ./spark/apache-spark-version-support.md
+              - name: Azure Synapse Apache Spark 2.4 运行时
+                href: ./spark/apache-spark-24-runtime.md
+              - name: Azure Synapse Apache Spark 3.0 运行时
+                href: ./spark/apache-spark-3-runtime.md
           - name: 机器学习
             href: ./spark/apache-spark-machine-learning-concept.md
           - name: 笔记本
@@ -638,21 +639,25 @@ items:
                 href: ./spark/apache-spark-performance-hyperspace.md
           - name: 管理和监视
             items:
-              - name: Spark 池 History Server
+              - name: 导航 Apache Spark 池历史记录服务器
                 href: ./spark/apache-spark-history-server.md
               - name: 监视 Spark 应用程序
                 href: monitoring/apache-spark-applications.md
-              - name: Apache Spark 池
+              - name: 监视 Spark 池
                 href: monitoring/how-to-monitor-spark-pools.md
-              - name: 使用 Apache Spark 分析 JSON
-                href: how-to-analyze-complex-schema.md
+              - name: 连接和监视 Azure Synapse Spark 应用程序级指标
+                href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
+              - name: 通过 Prometheus 和 Grafana 监视 Apache Spark 应用程序级指标
+                href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
+              - name: 使用 Azure Log Analytics 收集和可视化指标与日志（预览版）
+                href: ./spark/apache-spark-azure-log-analytics.md
           - name: 数据源
             items:
               - name: Azure Cosmos DB
                 href: ./synapse-link/how-to-query-analytical-store-spark.md
               - name: Azure 数据资源管理器 (Kusto)
                 href: ./spark/data-sources/apache-spark-kusto-connector.md
-              - name: Azure SQL 数据仓库
+              - name: Azure SQL 专用
                 href: ./spark/synapse-spark-sql-pool-import-export.md
               - name: Azure SQL 和 SQL Server
                 href: ./spark/data-sources/apache-spark-sql-connector.md
@@ -664,34 +669,54 @@ items:
         items:
           - name: Synapse Link for Azure Cosmos DB
             href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+          - name: Synapse Link for Dataverse
+            href: /powerapps/maker/data-platform/export-to-data-lake?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
       - name: 快速入门
         items:
           - name: 连接到 Synapse Link for Cosmos DB
             href: quickstart-connect-synapse-link-cosmos-db.md
       - name: 概念
         items:
-          - name: 分析存储 - 概述
-            href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-          - name: Synapse Link 支持的功能
-            href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
-          - name: Synapse Link 常见问题解答
-            href: ../cosmos-db/synapse-link-frequently-asked-questions.yml?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-          - name: Synapse Link 用例
-            href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+          - name: Cosmos DB
+            items:
+              - name: 分析存储 - 概述
+                href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Synapse Link 支持的功能
+                href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
+              - name: Cosmos DB 常见问题解答
+                href: ../cosmos-db/synapse-link-frequently-asked-questions.yml?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Synapse Link 用例
+                href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+          - name: Dataverse
+            items:
+              - name: 什么是 Dataverse
+                href: /powerapps/maker/data-platform/data-platform-intro?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Synapse Link 中的配置设置
+                href: /powerapps/maker/data-platform/azure-synapse-link-advanced-configuration?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Dataverse 常见问题解答
+                href: /powerapps/maker/data-platform/export-data-lake-faq?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
       - name: 操作指南
         items:
-          - name: 配置 Synapse Link
-            href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-          - name: 连接到 Azure Synapse Link for Cosmos DB
-            href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-          - name: 使用 Power BI 和无服务器 SQL 池来分析 Azure Cosmos DB
-            href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-          - name: 使用 Apache Spark 查询 Azure Cosmos DB 分析存储
-            href: ./synapse-link/how-to-query-analytical-store-spark.md
-          - name: 使用 Apache Spark 将数据从 Synapse Link 复制到专用 SQL 池
-            href: ./synapse-link/how-to-copy-to-sql-pool.md
-          - name: 使用无服务器 SQL 池查询 Azure Cosmos DB 分析存储
-            href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+          - name: Cosmos DB
+            items:
+              - name: 配置 Synapse Link
+                href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: 连接到 Azure Synapse Link for Cosmos DB
+                href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
+              - name: 使用 Power BI 和无服务器 SQL 池来分析 Azure Cosmos DB
+                href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: 使用 Apache Spark 查询 Azure Cosmos DB 分析存储
+                href: ./synapse-link/how-to-query-analytical-store-spark.md
+              - name: 使用 Apache Spark 将数据从 Synapse Link 复制到专用 SQL 池
+                href: ./synapse-link/how-to-copy-to-sql-pool.md
+              - name: 使用无服务器 SQL 池查询 Azure Cosmos DB 分析存储
+                href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+          - name: Dataverse
+            items:
+              - name: 配置 Synapse Link for Dataverse
+                href: /powerapps/maker/data-platform/azure-synapse-link-synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: 将数据导出到 Azure Synapse
+                href: /dynamics365/customer-insights/audience-insights/export-azure-synapse-analytics?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
   - name: 管道和数据流
     items:
       - name: 快速入门
@@ -700,6 +725,8 @@ items:
             href: quickstart-copy-activity-load-sql-pool.md
           - name: 使用映射数据流转换数据
             href: quickstart-data-flow.md
+          - name: 使用 Apache Spark 作业定义转换数据
+            href: quickstart-transform-data-using-spark-job-definition.md
       - name: 概念
         items:
           - name: 管道和活动
@@ -983,6 +1010,8 @@ items:
             items:
               - name: 执行数据流活动
                 href: ../data-factory/control-flow-execute-data-flow-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              - name: Synapse Notebook 活动
+                href: synapse-notebook-activity.md
               - name: Synapse SQL 池存储过程活动
                 href: ./data-integration/sql-pool-stored-procedure-activity.md
               - name: Azure 函数活动
@@ -1141,6 +1170,8 @@ items:
             href: machine-learning/what-is-machine-learning.md
       - name: 快速入门
         items:
+          - name: 使用库中的示例笔记本
+            href: machine-learning/quickstart-gallery-sample-notebook.md
           - name: 创建新的 Azure 机器学习链接服务
             href: machine-learning/quickstart-integrate-azure-machine-learning.md
       - name: 概念
@@ -1172,6 +1203,9 @@ items:
             href: ./machine-learning/tutorial-cognitive-services-anomaly.md
           - name: 使用适用于 Apache Spark（预览版）的 Microsoft 机器学习生成机器学习应用程序
             href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
+          - name: 使用文件系统规范和链接服务的 ADLS 读/写
+            displayname: machine learning
+            href: ./machine-learning/tutorial-spark-pool-filesystem-spec.md
   - name: 数据目录与治理
     items:
       - name: 快速入门

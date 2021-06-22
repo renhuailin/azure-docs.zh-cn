@@ -4,6 +4,8 @@
   items:
     - name: 欢迎使用 Azure Cosmos DB
       href: introduction.md
+    - name: 选择一个 API
+      href: choose-api.md
     - name: NoSQL 数据库与关系数据库
       href: relational-nosql.md
 - name: 概念
@@ -139,7 +141,6 @@
       expanded: true
       items:
         - name: 创建 Cosmos DB 资源
-          expanded: true
           items:
             - name: Azure 门户
               href: create-cosmosdb-resources-portal.md
@@ -834,8 +835,6 @@
               href: visualize-qlik-sense.md
         - name: 将内置分析功能与 Apache Spark 配合使用
           items:
-            - name: Azure Databricks Spark 2 OLTP 连接器
-              href: spark-connector.md
             - name: 使用 Apache Kafka 和 Cosmos DB 进行流式处理
               href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 将数据迁移到 Cosmos DB
@@ -931,7 +930,7 @@
         - name: REST（数据平面）
           href: /rest/api/cosmos-db/
         - name: REST（管理平面）
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/sqlresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: 资源管理器模板
@@ -1049,7 +1048,7 @@
     - name: 参考
       items:
         - name: REST 资源提供程序
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/cassandraresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/cassandraresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: 资源管理器模板
@@ -1183,7 +1182,7 @@
     - name: 参考
       items:
         - name: REST 资源提供程序
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/mongodbresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/mongodbresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: 资源管理器模板
@@ -1267,7 +1266,7 @@
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: REST 资源提供程序
-          href: /rest/api/cosmos-db-resource-provider/2021-03-15/gremlinresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/gremlinresources
         - name: 资源管理器模板
           href: /azure/templates/microsoft.documentdb/allversions
         - name: Azure CLI
@@ -1479,6 +1478,8 @@
           items:
             - name: 使用诊断日志进行监视
               href: cosmosdb-monitor-resource-logs.md
+            - name: 使用基本查询排查问题
+              href: cosmosdb-monitor-logs-basic-queries.md
             - name: 审核控制平面日志
               href: audit-control-plane-logs.md
         - name: 配置警报

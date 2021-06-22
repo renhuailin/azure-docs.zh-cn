@@ -44,7 +44,7 @@
   items:
     - name: 代码示例
       href: /samples/browse/?products=azure&terms=container%2binstance
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: container-instances-samples-rm.md
 - name: 概念
   items:
@@ -130,6 +130,8 @@
           href: container-instances-get-logs.md
         - name: 使用 Azure Monitor 日志进行日志记录
           href: container-instances-log-analytics.md
+        - name: 使用 Azure 容器扫描操作扫描映像
+          href: container-instances-github-action-scan.md
     - name: 疑难解答
       items:
         - name: 排查常见问题
@@ -177,3 +179,5 @@
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
     - name: 常见问题解答
       href: container-instances-faq.md
+- name: 支持和疑难解答
+  href: container-instances-support-help.md

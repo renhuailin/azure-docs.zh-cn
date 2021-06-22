@@ -95,9 +95,15 @@
         - name: 排查路由问题
           href: front-door-troubleshoot-routing.md
         - name: 允许的证书颁发机构
-          href: front-door-troubleshoot-allowed-ca.md
+          href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: 参考
   items:
+    - name: Azure Front Door 边缘位置
+      items:
+        - name: 按区域列出的边缘位置
+          href: edge-locations-by-region.md
+        - name: 按缩写列出的边缘位置
+          href: edge-locations-abbreviation.md
     - name: Azure CLI
       href: /cli/azure/afd/
     - name: Azure PowerShell

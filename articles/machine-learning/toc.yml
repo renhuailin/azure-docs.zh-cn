@@ -23,11 +23,11 @@
     - name: Python 入门（第 1 天）
       expanded: true
       items:
-        - name: 1. “Hello world”
+        - name: 1. 运行 Python 脚本
           href: tutorial-1st-experiment-hello-world.md
         - name: 2. 训练模型
           href: tutorial-1st-experiment-sdk-train.md
-        - name: 3. 自带数据
+        - name: 3. 使用自己的数据
           href: tutorial-1st-experiment-bring-data.md
     - name: Jupyter Notebook
       items:
@@ -73,8 +73,8 @@
           href: tutorial-labeling.md
     - name: CLI
       items:
-        - name: 使用 CLI 进行训练和部署
-          href: tutorial-train-deploy-model-cli.md
+        - name: 使用 2.0 CLI 训练模型
+          href: how-to-train-cli.md
         - name: 使用托管终结点访问 Azure 资源
           href: tutorial-deploy-managed-endpoints-using-system-managed-identity.md
     - name: Visual Studio Code
@@ -295,6 +295,9 @@
           href: how-to-configure-environment.md
         - name: 设置工作室环境
           items:
+            - name: 在工作室中管理环境
+              href: how-to-manage-environments-in-studio.md
+              displayName: 'environments, studio, create, edit'
             - name: 创建和管理文件
               href: how-to-manage-files.md
               displayName: 'Jupyter, notebooks, clone, samples'
@@ -383,37 +386,58 @@
       items:
         - name: 使用 2.0 CLI 进行训练
           href: how-to-train-cli.md
-        - name: 配置和提交训练运行
-          displayName: 'run config, script run config, scriptrunconfig, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
-          href: how-to-set-up-training-targets.md
-        - name: 优化超参数
-          displayName: 'parameter, hyperparameter, hyperdrive'
-          href: how-to-tune-hyperparameters.md
-        - name: Scikit-learn
-          href: how-to-train-scikit-learn.md
-        - name: TensorFlow
-          href: how-to-train-tensorflow.md
-        - name: Keras
-          href: how-to-train-keras.md
-        - name: PyTorch
-          href: how-to-train-pytorch.md
-        - name: 使用自定义 Docker 映像进行训练
-          href: how-to-train-with-custom-image.md
         - name: 使用 REST API 进行训练
           href: how-to-train-with-rest.md
-        - name: 从 Estimators 迁移到 ScriptRunConfig
-          href: how-to-migrate-from-estimators-to-scriptrunconfig.md
-        - name: 跟踪和监视培训
+        - name: 使用 Python SDK 进行训练
           items:
-            - name: 跟踪、监视和分析运行
-              displayName: 'cancel, fail, status, child run'
-              href: how-to-track-monitor-analyze-runs.md
-            - name: 记录并查看指标和日志数据
-              displayName: 'troubleshoot, log, files, tracing, metrics'
-              href: how-to-log-view-metrics.md
-            - name: 使用 TensorBoard 将运行可视化
-              displayName: 'log, monitor, metrics'
-              href: how-to-monitor-tensorboard.md
+            - name: 配置和提交训练运行
+              displayName: 'run config, script run config, scriptrunconfig, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+              href: how-to-set-up-training-targets.md
+            - name: 优化超参数
+              displayName: 'parameter, hyperparameter, hyperdrive'
+              href: how-to-tune-hyperparameters.md
+            - name: Scikit-learn
+              href: how-to-train-scikit-learn.md
+            - name: TensorFlow
+              href: how-to-train-tensorflow.md
+            - name: Keras
+              href: how-to-train-keras.md
+            - name: PyTorch
+              href: how-to-train-pytorch.md
+            - name: 使用自定义 Docker 映像进行训练
+              href: how-to-train-with-custom-image.md
+            - name: 从 Estimators 迁移到 ScriptRunConfig
+              href: how-to-migrate-from-estimators-to-scriptrunconfig.md
+            - name: 强化学习
+              href: how-to-use-reinforcement-learning.md
+            - name: 使用 MLflow
+              items:
+                - name: 使用 MLflow 对试验进行跟踪
+                  displayName: 'log, monitor, metrics, model registry, register'
+                  href: how-to-use-mlflow.md
+                - name: 使用 MLflow 跟踪 Azure Databricks 运行
+                  displayName: 'log, monitor, deploy, metrics, databricks'
+                  href: how-to-use-mlflow-azure-databricks.md
+                - name: 使用 MLflow 项目训练试验
+                  displayName: 'log, monitor, metrics, model registry, register'
+                  href: how-to-train-mlflow-projects.md
+                - name: 部署 MLflow 模型
+                  displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
+                  href: how-to-deploy-mlflow-models.md
+            - name: 跟踪和监视培训
+              items:
+                - name: 跟踪、监视和分析运行
+                  displayName: 'cancel, fail, status, child run'
+                  href: how-to-track-monitor-analyze-runs.md
+                - name: 记录并查看指标和日志数据
+                  displayName: 'troubleshoot, log, files, tracing, metrics'
+                  href: how-to-log-view-metrics.md
+                - name: 使用 TensorBoard 将运行可视化
+                  displayName: 'log, monitor, metrics'
+                  href: how-to-monitor-tensorboard.md
+            - name: 训练时使用 Key Vault
+              displayName: secrets keyvault
+              href: how-to-use-secrets-in-runs.md
         - name: 解释和说明模型
           displayName: interpretability
           items:
@@ -425,25 +449,6 @@
               href: how-to-machine-learning-interpretability-automl.md
         - name: 评估和缓解模型公平性
           href: how-to-machine-learning-fairness-aml.md
-        - name: 训练时使用 Key Vault
-          displayName: secrets keyvault
-          href: how-to-use-secrets-in-runs.md
-        - name: 强化学习
-          href: how-to-use-reinforcement-learning.md
-    - name: 使用 MLflow
-      items:
-        - name: 使用 MLflow 对试验进行跟踪
-          displayName: 'log, monitor, metrics, model registry, register'
-          href: how-to-use-mlflow.md
-        - name: 使用 MLflow 跟踪 Azure Databricks 运行
-          displayName: 'log, monitor, deploy, metrics, databricks'
-          href: how-to-use-mlflow-azure-databricks.md
-        - name: 使用 MLflow 项目训练试验
-          displayName: 'log, monitor, metrics, model registry, register'
-          href: how-to-train-mlflow-projects.md
-        - name: 部署 MLflow 模型
-          displayName: 'log, monitor, deploy, metrics, databricks, aci, aks'
-          href: how-to-deploy-mlflow-models.md
     - name: 自动化机器学习
       displayName: 'automl, auto ml'
       items:
@@ -490,6 +495,8 @@
                   href: how-to-use-managed-online-endpoint-studio.md
                 - name: 查看托管联机终结点成本
                   href: how-to-view-online-endpoints-costs.md
+                - name: 使用 REST 将模型部署为托管联机终结点
+                  href: how-to-deploy-with-rest.md
                 - name: 托管联机终结点 VM SKU 列表
                   href: reference-managed-online-endpoints-vm-sku-list.md
                 - name: 监视托管联机终结点
@@ -628,6 +635,9 @@
     - name: 管理资源配额
       displayName: limits
       href: how-to-manage-quotas.md
+    - name: 管理和优化成本
+      displayName: 'cost-management,cost-optimization'
+      href: how-to-manage-optimize-cost.md
     - name: 管理资源 VS Code
       displayName: 'vscode,resources'
       href: how-to-manage-resources-vscode.md
@@ -642,25 +652,31 @@
       href: how-to-use-event-grid.md
 - name: 参考
   items:
+    - name: REST API
+      href: /rest/api/azureml/
+    - name: CLI (v2)
+      displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
+      href: /cli/azure/ml/
+    - name: CLI (v2) YAML 架构
+      items:
+        - name: 联机终结点
+          href: reference-online-endpoint-yaml.md
     - name: Python SDK
       displayName: 'api, core, package, python, class'
       href: /python/api/overview/azure/ml/intro
-    - name: R SDK
-      displayName: 'api, core, package, R, class'
-      href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
-    - name: CLI
+    - name: CLI (v1)
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
-    - name: REST API
-      href: /rest/api/azureml/
     - name: 设计器模块参考
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
     - name: 监视数据参考
       href: monitor-resource-reference.md
+    - name: 托管联机终结点 YAML 参考
+      href: reference-online-endpoint-yaml.md
     - name: 机器学习管道 YAML 参考
       href: reference-pipeline-yaml.md
-    - name: 主权云奇偶校验
+    - name: 跨区域的功能可用性
       href: reference-machine-learning-cloud-parity.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'

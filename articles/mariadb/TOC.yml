@@ -153,10 +153,8 @@
       href: concepts-ssl-connection-security.md
     - name: 配置 TLS
       href: howto-tls-configurations.md
-    - name: 高级威胁防护
-      href: concepts-data-access-and-security-threat-protection.md
-    - name: 配置高级威胁防护
-      href: howto-database-threat-protection-portal.md
+    - name: 使用 Azure Defender 进行威胁防护
+      href: ../security-center/defender-for-databases-introduction.md
     - name: 审核概念
       href: concepts-audit-logs.md
     - name: 配置审核日志
@@ -238,7 +236,7 @@
       href: /cli/azure/mariadb
     - name: REST API
       href: /rest/api/mariadb
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: /azure/templates/microsoft.dbformariadb/allversions
     - name: 管理存储过程
       href: reference-stored-procedures.md

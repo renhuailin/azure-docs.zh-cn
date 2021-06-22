@@ -104,6 +104,8 @@
           href: import-soap-api.md
         - name: 导入 SOAP API 并将其转换为 REST
           href: restify-soap-api.md
+        - name: 导入 WebSocket API
+          href: websocket-api.md
         - name: 导入 Web 应用
           href: import-app-service-as-api.md
         - name: 导入 Function App
@@ -165,7 +167,7 @@
           href: api-management-using-with-vnet.md
         - name: 连接到内部虚拟网络
           href: api-management-using-with-internal-vnet.md
-        - name: 在内部 VNET 中集成应用程序网关
+        - name: 在内部虚拟网络中集成应用程序网关
           href: api-management-howto-integrate-internal-vnet-appgateway.md
         - name: 使用证书进行相互身份验证
           href: api-management-howto-mutual-certificates.md
@@ -339,18 +341,20 @@
       href: api-management-faq.md
     - name: 定价
       href: 'https://aka.ms/apimpricing'
+    - name: 产品更新
+      href: 'https://aka.ms/apimupdates'
+    - name: 发行说明
+      href: 'https://aka.ms/apim/releases'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 路线图
-      href: 'https://aka.ms/apimroadmap'
-    - name: 功能请求
-      href: 'https://aka.ms/apimwish'
     - name: 视频
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
+      href: 'https://azure.microsoft.com/documentation/videos/index/?service=api-management'
     - name: Microsoft Q&A 问题页面
       href: /answers/topics/azure-api-management.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
+    - name: 其他资源
+      href: 'https://aka.ms/apimlove'
     - name: API 设计指南
       href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API 实现指南

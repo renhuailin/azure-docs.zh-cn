@@ -102,6 +102,8 @@
                   href: database/authentication-aad-service-principal.md
                 - name: 目录读取者角色
                   href: database/authentication-aad-directory-readers-role.md
+                - name: 仅 Azure AD 身份验证
+                  href: database/authentication-azure-ad-only-authentication.md
             - name: 透明数据加密 (TDE)
               items:
                 - name: 概述
@@ -156,7 +158,7 @@
         - name: 使用弹性作业的作业自动化
           href: database/job-automation-overview.md
         - name: 使用 SQL 代理的作业自动化
-          href: database/job-automation-managed-instances.md
+          href: managed-instance/job-automation-managed-instance.md
         - name: 从应用进行连接和查询
           items:
             - name: 将 .NET 与 Visual Studio 配合使用
@@ -189,6 +191,8 @@
                   href: database/authentication-aad-guest-users.md
                 - name: 将目录读取者角色分配给组
                   href: database/authentication-aad-directory-readers-role-tutorial.md
+                - name: 启用仅 Azure AD 身份验证
+                  href: database/authentication-azure-ad-only-authentication-tutorial.md
             - name: 为 TDE 配置 BYOK
               href: database/transparent-data-encryption-byok-configure.md
             - name: Always Encrypted
@@ -287,6 +291,8 @@
               href: database/service-tier-hyperscale.md
             - name: “超大规模”常见问题解答
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.yml
+            - name: vCore
+              href: database/service-tiers-sql-database-vcore.md
         - name: 计划和管理成本
           href: database/cost-management.md
     - name: 快速入门
@@ -742,7 +748,7 @@
           href: managed-instance/instance-pools-overview.md
         - name: 常见问题
           displayName: faq
-          href: managed-instance/frequently-asked-questions-faq.md
+          href: managed-instance/frequently-asked-questions-faq.yml
     - name: 快速入门
       href: managed-instance/quickstart-content-reference-guide.md
       items:
@@ -811,6 +817,8 @@
       items:
         - name: 资源限制
           href: managed-instance/resource-limits.md
+        - name: 计算硬件
+          href: managed-instance/service-tiers-managed-instance-vcore.md
         - name: 连接体系结构
           href: managed-instance/connectivity-architecture-overview.md
         - name: T-SQL 的差异
@@ -1013,46 +1021,56 @@
               href: managed-instance/server-trust-group-overview.md
     - name: 如何
       items:
-        - name: 概述
+        - name: 操作说明文档
           href: managed-instance/how-to-content-reference-guide.md
-        - name: 迁移到 SQL 托管实例
-          href: managed-instance/migrate-to-instance-from-sql-server.md
-        - name: 自定义时区
-          href: managed-instance/timezones-overview.md
-        - name: 配置连接类型
-          href: managed-instance/connection-types-overview.md
-        - name: 迁移 TDE 证书
-          href: managed-instance/tde-certificate-migrate.md
-        - name: 还原到某个时间点
-          href: managed-instance/point-in-time-restore.md
-        - name: 确定托管实例子网的大小
-          href: managed-instance/vnet-subnet-determine-size.md
-        - name: 为托管实例创建新的 VNet 和子网
-          href: managed-instance/virtual-network-subnet-create-arm-template.md
-        - name: 为托管实例配置现有 VNet 和子网
-          href: managed-instance/vnet-existing-add-subnet.md
-        - name: 在删除托管实例后删除子网
-          href: managed-instance/virtual-cluster-delete.md
-        - name: 配置自定义 DNS
-          href: managed-instance/custom-dns-configure.md
-        - name: 同步 DNS 配置
-          href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
-        - name: 同步网络配置
-          href: managed-instance/azure-app-sync-network-configuration.md
-        - name: 查找管理终结点 IP 地址
-          href: managed-instance/management-endpoint-find-ip-address.md
-        - name: 验证内置防火墙保护
-          href: managed-instance/management-endpoint-verify-built-in-firewall.md
-        - name: 配置威胁检测
-          href: managed-instance/threat-detection-configure.md
         - name: 连接应用程序
           href: managed-instance/connect-application-instance.md
-        - name: 对托管实例创建警报
-          href: managed-instance/alerts-create.md
-        - name: 在托管实例上手动启动故障转移
-          href: managed-instance/user-initiated-failover.md
-        - name: 使用日志重播服务迁移数据库
-          href: managed-instance/log-replay-service-migrate.md
+        - name: 配置设置
+          items:
+            - name: 自定义时区
+              href: managed-instance/timezones-overview.md
+            - name: 配置连接类型
+              href: managed-instance/connection-types-overview.md
+            - name: 对托管实例创建警报
+              href: managed-instance/alerts-create.md
+            - name: 配置威胁检测
+              href: managed-instance/threat-detection-configure.md
+        - name: 配置网络
+          items:
+            - name: 确定托管实例子网的大小
+              href: managed-instance/vnet-subnet-determine-size.md
+            - name: 为托管实例创建新的 VNet 和子网
+              href: managed-instance/virtual-network-subnet-create-arm-template.md
+            - name: 为托管实例配置现有 VNet 和子网
+              href: managed-instance/vnet-existing-add-subnet.md
+            - name: 在删除托管实例后删除子网
+              href: managed-instance/virtual-cluster-delete.md
+            - name: 配置自定义 DNS
+              href: managed-instance/custom-dns-configure.md
+            - name: 同步 DNS 配置
+              href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
+            - name: 同步网络配置
+              href: managed-instance/azure-app-sync-network-configuration.md
+            - name: 查找管理终结点 IP 地址
+              href: managed-instance/management-endpoint-find-ip-address.md
+            - name: 验证内置防火墙保护
+              href: managed-instance/management-endpoint-verify-built-in-firewall.md
+        - name: Migrate
+          items:
+            - name: 迁移到 SQL 托管实例
+              href: managed-instance/migrate-to-instance-from-sql-server.md
+            - name: 使用日志重播服务迁移数据库
+              href: managed-instance/log-replay-service-migrate.md
+            - name: 迁移 TDE 证书
+              href: managed-instance/tde-certificate-migrate.md
+        - name: 配置业务连续性
+          items:
+            - name: 还原到某个时间点
+              href: managed-instance/point-in-time-restore.md
+            - name: 监视备份
+              href: managed-instance/backup-activity-monitor.md
+            - name: 在托管实例上手动启动故障转移
+              href: managed-instance/user-initiated-failover.md
     - name: 示例
       items:
         - name: Azure CLI
@@ -1090,6 +1108,7 @@
               items:
                 - name: 概述
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
                 - name: 备份和还原
                   href: virtual-machines/windows/backup-restore.md
                 - name: 用于还原的 Azure 存储
@@ -1098,24 +1117,26 @@
                   href: virtual-machines/windows/availability-group-overview.md
                 - name: 故障转移群集实例 (FCI)
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
-            - name: 最佳做法
+                - name: Windows Server 故障转移群集
+                  href: virtual-machines/windows/hadr-windows-server-failover-cluster-overview.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
+            - name: 最佳实践
               items:
+                - name: 快速核对清单
+                  href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
+                - name: VM 大小
+                  href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
+                - name: 存储
+                  href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
                 - name: 安全性
                   href: virtual-machines/windows/security-considerations-best-practices.md
-                - name: 群集配置
+                - name: HADR 配置
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
+                  displayName: 'failover cluster instance, fci, availability group, ag, always on'
+                - name: 收集基线
+                  href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
                 - name: 应用程序模式
                   href: virtual-machines/windows/application-patterns-development-strategies.md
-                - name: 性能
-                  items:
-                    - name: 快速核对清单
-                      href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
-                    - name: VM 大小
-                      href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
-                    - name: 存储
-                      href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
-                    - name: 收集基线
-                      href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: 管理
               items:
                 - name: SQL IaaS 代理扩展
@@ -1155,7 +1176,7 @@
                 - name: 将存储迁移到 UltraSSD
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
                 - name: 启用 SQL 漏洞评估
-                  href: virtual-machines/windows/sql-vulnerability-assessment-enable.md
+                  href: ../security-center/defender-for-sql-on-machines-vulnerability-assessment.md
                 - name: 安装 SQL IaaS 代理扩展
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
@@ -1173,6 +1194,8 @@
                   href: virtual-machines/windows/move-sql-vm-different-region.md
             - name: 业务连续性
               items:
+                - name: 配置群集仲裁
+                  href: virtual-machines/windows/hadr-cluster-quorum-configure-how-to.md
                 - name: 备份和还原
                   items:
                     - name: 自动备份 (SQL 2016+)
@@ -1251,7 +1274,7 @@
         - name: 资源
           items:
             - name: 常见问题解答
-              href: virtual-machines/windows/frequently-asked-questions-faq.md
+              href: virtual-machines/windows/frequently-asked-questions-faq.yml
             - name: 定价
               href: virtual-machines/windows/pricing-guidance.md
             - name: 存档的经典 RM 文档
@@ -1289,7 +1312,7 @@
         - name: 资源
           items:
             - name: 常见问题解答
-              href: virtual-machines/linux/frequently-asked-questions-faq.md
+              href: virtual-machines/linux/frequently-asked-questions-faq.yml
             - name: “Linux 上的 SQL Server”文档
               href: /sql/linux/sql-server-linux-overview
             - name: SQL Server Data Tools (SSDT)
@@ -1395,6 +1418,8 @@
           href: database/troubleshoot-common-connectivity-issues.md
         - name: 导入/导出服务挂起
           href: database/database-import-export-hang.md
+        - name: 事务日志错误
+          href: database/troubleshoot-transaction-log-errors-issues.md
     - name: 服务更新
       items:
         - name: SSL 根证书即将过期

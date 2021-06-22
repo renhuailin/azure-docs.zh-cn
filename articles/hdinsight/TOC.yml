@@ -304,6 +304,8 @@
       items:
         - name: 发行版本
           items:
+            - name: Ubuntu 18.04 更新
+              href: ./hdinsight-ubuntu-1804-qa.md
             - name: HDInsight 4.0 中的新功能
               href: ./hdinsight-version-release.md
             - name: 发行说明
@@ -835,6 +837,8 @@
               href: ./hadoop/apache-hadoop-hive-java-udf.md
             - name: 使用 PowerShell 和 ODBC 查询 Hive
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
+            - name: 启用 Hive LLAP 工作负载管理功能
+              href: ./interactive-query/hive-workload-management.md
         - name: 管理
           items:
             - name: 跨存储帐户复制 Hive 表
@@ -879,6 +883,14 @@
               href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
             - name: Hive 的安全选项
               href: ./interactive-query/hdinsight-security-options-for-hive.md
+            - name: Apache Hive LLAP 工作负载管理
+              href: ./interactive-query/troubleshoot-workload-management-issues.md
+            - name: HDInsight 3.6-4.0 故障排除指南 - Hive
+              href: ./interactive-query/interactive-query-troubleshoot-migrate-36-to-40.md
+    - name: 参考
+      items:
+        - name: Hive LLAP 工作负载管理命令
+          href: ./interactive-query/workload-management-commands.md
 - name: ML Services
   items:
     - name: 概述

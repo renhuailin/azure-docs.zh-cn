@@ -170,6 +170,8 @@
               href: automation-linux-hrw-install.md
             - name: 在混合 Runbook 辅助角色中运行 Runbook
               href: automation-hrw-run-runbooks.md
+            - name: 使用 Azure Policy 强制执行作业
+              href: enforce-job-execution-hybrid-worker.md
             - name: 排查混合 Runbook 辅助角色问题
               href: troubleshoot/hybrid-runbook-worker.md
         - name: 使用源代码管理集成
@@ -272,8 +274,12 @@
           href: update-management/overview.md
         - name: 链接的 Log Analytics 工作区支持的区域
           href: how-to/region-mappings.md
+        - name: 规划部署
+          href: update-management/plan-deployment.md
         - name: 启用
           items:
+            - name: 系统先决条件
+              href: update-management/operating-system-requirements.md
             - name: 使用 Azure 资源管理器模板启用
               href: update-management/enable-from-template.md
             - name: 从 Azure 门户启用

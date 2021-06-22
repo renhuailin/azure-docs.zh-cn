@@ -23,6 +23,12 @@
           href: quickstart-deploy-apps.md
         - name: 使用日志、指标和跟踪
           href: quickstart-logs-metrics-tracing.md
+        - name: 与 Azure Database for MySQL 集成
+          href: quickstart-integrate-azure-database-mysql.md
+        - name: 设置
+          items:
+            - name: 使用 ARM 模板进行预配
+              href: quickstart-deploy-infrastructure-vnet.md
 - name: 教程
   items:
     - name: 警报和操作组
@@ -119,6 +125,8 @@
           href: how-to-circuit-breaker-metrics.md
         - name: 结构化应用程序日志
           href: structured-app-log.md
+        - name: New Relic Java 进程内代理
+          href: how-to-new-relic-monitor.md
     - name: 网络
       items:
         - name: 在虚拟网络中部署 Azure Spring Cloud

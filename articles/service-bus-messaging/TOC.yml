@@ -36,8 +36,6 @@
               href: service-bus-nodejs-how-to-use-queues.md
             - name: PHP
               href: service-bus-php-how-to-use-queues.md
-            - name: Ruby
-              href: service-bus-ruby-how-to-use-queues.md
         - name: 发送和接收消息（旧版本/包）
           items:
             - name: .NET (Microsoft.Azure.ServiceBus)
@@ -66,8 +64,6 @@
               href: service-bus-nodejs-how-to-use-topics-subscriptions.md
             - name: PHP
               href: service-bus-php-how-to-use-topics-subscriptions.md
-            - name: Ruby
-              href: service-bus-ruby-how-to-use-topics-subscriptions.md
         - name: 发布和订阅消息（旧版本/包）
           items:
             - name: .NET (Microsoft.Azure.ServiceBus)
@@ -98,6 +94,8 @@
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: 高级功能
       items:
+        - name: 高级功能概述
+          href: advanced-features-overview.md
         - name: 消息会话
           href: message-sessions.md
         - name: 重复消息检测
@@ -220,8 +218,8 @@
           href: service-bus-end-to-end-tracing.md
         - name: 诊断日志
           href: service-bus-diagnostic-logs.md
-        - name: Azure Monitor 指标
-          href: service-bus-metrics-azure-monitor.md
+        - name: 监视 Azure 服务总线
+          href: monitor-service-bus.md
     - name: 集成
       items:
         - name: 与 RabbitMQ 集成
@@ -281,6 +279,8 @@
           href: service-bus-resource-manager-exceptions.md
 - name: 参考
   items:
+    - name: 监视数据参考
+      href: monitor-service-bus-reference.md
     - name: .NET
       items:
         - name: 从 Microsoft.Azure.ServiceBus 迁移到 Azure.Messaging.ServiceBus
@@ -327,7 +327,7 @@
       href: /powershell/module/az.servicebus
     - name: REST
       href: /rest/api/servicebus
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: /azure/templates/microsoft.servicebus/allversions
     - name: 配额
       href: service-bus-quotas.md

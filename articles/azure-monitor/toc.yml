@@ -240,8 +240,12 @@
               href: logs/log-analytics-tutorial.md
             - name: 查询范围
               href: logs/scope.md
-            - name: 查询示例
-              href: logs/example-queries.md
+            - name: 保存查询
+              href: logs/save-query.md
+            - name: 使用查询
+              href: logs/queries.md
+            - name: 查询包
+              href: logs/query-packs.md
         - name: 日志查询
           items:
             - name: 概述
@@ -357,7 +361,7 @@
       items:
         - name: 概述
           href: agents/agents-overview.md
-        - name: FAQ
+        - name: 常见问题解答
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:
@@ -370,6 +374,9 @@
             - name: 数据收集
               displayname: 'data collection rule,Azure Monitor agent'
               href: agents/data-collection-rule-azure-monitor-agent.md
+            - name: 大规模部署
+              displayname: Deploy Azure Monitor agent at scale
+              href: deploy-scale.md#azure-monitor-agent-preview
             - name: FAQ
               displayname: Azure Monitor agent FAQ
               href: faq.md#azure-monitor-agent-preview
@@ -404,7 +411,7 @@
                       href: agents/diagnostics-extension-windows-install.md
                     - name: PowerShell
                       href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
-                    - name: 资源管理器模板
+                    - name: Resource Manager 模板
                       href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
                 - name: 发送到 Azure Monitor 指标存储
                   items:
@@ -454,7 +461,7 @@
           href: autoscale/autoscale-get-started.md
         - name: 配置设置
           href: autoscale/autoscale-understanding-settings.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: autoscale/autoscale-best-practices.md
         - name: 常见指标
           href: autoscale/autoscale-common-metrics.md
@@ -468,7 +475,7 @@
           href: autoscale/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
           href: autoscale/autoscale-webhook-email.md
-        - name: 故障排除
+        - name: 疑难解答
           href: autoscale/autoscale-troubleshoot.md
         - name: 资源日志架构
           href: autoscale/autoscale-resource-log-schema.md
@@ -625,27 +632,29 @@
           href: ./faq.md
         - name: 基于代码的监视
           items:
-            - name: ASP.NET Core
+            - name: .NET
               items:
-                - name: ASP.NET Core 应用监视
-                  displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
-                  href: app/asp-net-core.md
-                - name: ILogger
-                  displayname: 'ilogger, logging, log'
-                  href: app/ilogger.md
-            - name: ASP.NET
-              items:
-                - name: ASP.NET 应用监视
-                  displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
-                  href: app/asp-net.md
-                - name: 排查 ASP.NET 问题
-                  href: app/asp-net-troubleshoot-no-data.md
-            - name: 非 HTTP/后台应用
-              displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
-              href: app/worker-service.md
-            - name: .NET 控制台
-              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
-              href: app/console.md
+                - name: ASP.NET Core
+                  items:
+                    - name: ASP.NET Core 应用监视
+                      displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
+                      href: app/asp-net-core.md
+                    - name: ILogger
+                      displayname: 'ilogger, logging, log'
+                      href: app/ilogger.md
+                - name: ASP.NET
+                  items:
+                    - name: ASP.NET 应用监视
+                      displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
+                      href: app/asp-net.md
+                    - name: 排查 ASP.NET 问题
+                      href: app/asp-net-troubleshoot-no-data.md
+                - name: 非 HTTP/后台应用
+                  displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
+                  href: app/worker-service.md
+                - name: .NET 控制台
+                  displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
+                  href: app/console.md
             - name: Java
               items:
                 - name: Web 应用
@@ -750,7 +759,7 @@
                       href: app/status-monitor-v2-get-started.md
                     - name: 详细说明
                       href: app/status-monitor-v2-detailed-instructions.md
-                    - name: 故障排除
+                    - name: 疑难解答
                       href: app/status-monitor-v2-troubleshoot.md
                     - name: API 参考
                       href: app/status-monitor-v2-api-reference.md
@@ -867,6 +876,8 @@
         - name: 智能检测
           href: app/proactive-diagnostics.md
           items:
+            - name: 升级到警报
+              href: alerts/alerts-smart-detections-migration.md
             - name: 失败异常
               href: app/proactive-failure-diagnostics.md
             - name: 性能异常
@@ -934,7 +945,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 例外
+            - name: 异常
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
@@ -1055,7 +1066,7 @@
       items:
         - name: 概述
           href: containers/container-insights-overview.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: faq.md#container-insights
         - name: 启用监视
           items:
@@ -1073,6 +1084,8 @@
               href: containers/container-insights-azure-redhat-setup.md
             - name: 为 Azure Red Hat OpenShift v4 启用
               href: containers/container-insights-azure-redhat4-setup.md
+            - name: 通过 Azure Policy 启用
+              href: containers/container-insights-enable-aks-policy.md
             - name: 区域映射
               href: containers/container-insights-region-mapping.md
         - name: 监视性能
@@ -1135,6 +1148,8 @@
           href: insights/cosmosdb-insights-overview.md
         - name: Azure 数据资源管理器（预览版）
           href: insights/data-explorer.md
+        - name: Log Analytics 工作区
+          href: logs/log-analytics-workspace-insights-overview.md
         - name: 网络
           href: insights/network-insights-overview.md
         - name: Key Vault
@@ -1143,7 +1158,7 @@
           items:
             - name: 概述
               href: insights/sql-insights-overview.md
-            - name: 常见问题
+            - name: 常见问题解答
               href: faq.md#sql-insights-preview
             - name: 启用
               href: insights/sql-insights-enable.md
@@ -1194,7 +1209,7 @@
                         - name: 定价
                           href: insights/network-performance-monitor-pricing-faq.md
                         - name: 常见问题解答
-                          href: insights/network-performance-monitor-faq.md
+                          href: insights/network-performance-monitor-faq.yml
                 - name: Office 365
                   href: insights/solution-office-365.md
                 - name: 服务映射解决方案
