@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ff8376eea2eca459b93adbf46b81dbeb7639d40
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98762714"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954327"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>训练 LUIS 应用的有效版本
 
 训练是向语言理解 (LUIS) 应用进行教学以提高其自然语言理解能力的过程。 对模型进行更新（例如添加、编辑、标记或删除实体、意向或陈述）后，请对 LUIS 应用进行训练。
 
-对应用进行训练和[测试](luis-concept-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。
+对应用进行训练和[测试](./luis-interactive-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。
 
 训练将应用于 LUIS 门户中的活动版本。
 
@@ -44,7 +44,7 @@ ms.locfileid: "98762714"
 
 ### <a name="using-the-luis-portal"></a>使用 LUIS 门户
 
-登录到 [LUIS 门户](https://www.luis.ai/) 并单击应用。 选择屏幕顶部的“管理”，然后选择“设置”并启用或禁用“使用确定性训练”选项。 禁用后，训练将使用所有可用的数据。
+登录到 [LUIS 门户](https://www.luis.ai/) 并单击应用。 在屏幕顶部选择“管理”，然后选择“设置”并启用或禁用“使用非确定性训练”选项  。 禁用后，训练将使用所有可用的数据。
 
 ![用于启用或禁用非确定性训练的按钮](./media/non-determinstic-training.png)
 
