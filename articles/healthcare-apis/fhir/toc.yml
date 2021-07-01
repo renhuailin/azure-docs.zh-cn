@@ -51,6 +51,19 @@
       items:
         - name: 通过 Azure IoT 中心接收设备数据
           href: device-data-through-iot-hub.md
+    - name: 互操作性和患者访问
+      expanded: false
+      items:
+        - name: CMS 互操作性和患者访问规则简介
+          href: cms-tutorial-introduction.md
+        - name: CARIN Blue Button 实施指南
+          href: carin-implementation-guide-blue-button-tutorial.md
+        - name: Da Vinci Drug Formulary
+          href: davinci-drug-formulary-tutorial.md
+        - name: Da Vinci PDex
+          href: davinci-pdex-tutorial.md
+        - name: Da Vinci Plan Net
+          href: davinci-plan-net.md
 - name: 操作指南
   expanded: false
   items:
@@ -97,22 +110,29 @@
           href: how-to-run-a-reindex.md
         - name: 搜索 Azure API for FHIR 的示例
           href: search-samples.md
-    - name: 配置文件验证
-      href: validation-against-profiles.md
-    - name: 导出数据
-      expanded: false
+    - name: Operations
+      expand: false
       items:
+        - name: 配置文件验证
+          href: validation-against-profiles.md
         - name: 导出数据
-          href: export-data.md
-        - name: 去标识化导出
-          href: de-identified-export.md
-        - name: 将数据导出到 Synapse
-          href: export-to-synapse.md
-    - name: 转换数据
-      expanded: false
-      items:
-        - name: $convert-data 和 FHIR 转换器扩展模板
-          href: convert-data.md
+          expanded: false
+          items:
+            - name: 导出数据
+              href: export-data.md
+            - name: 去标识化导出
+              href: de-identified-export.md
+            - name: 将数据移动到 Synapse
+              href: move-to-synapse.md
+        - name: 转换数据
+          expanded: false
+          items:
+            - name: $convert-data 和 FHIR 转换器扩展模板
+              href: convert-data.md
+        - name: FHIR 中的 Patient-everything
+          href: patient-everything.md
+        - name: $member-match 操作
+          href: tutorial-member-match.md
     - name: 查找标识对象 ID
       href: find-identity-object-ids.md
     - name: 诊断日志记录和指标
@@ -149,7 +169,7 @@
 - name: 资源
   items:
     - name: 常见问题解答
-      href: fhir-faq.md
+      href: fhir-faq.yml
     - name: 支持的功能
       href: fhir-features-supported.md
     - name: GitHub 项目
