@@ -33,8 +33,14 @@
           href: performance-impact-kerberos.md
         - name: Azure NetApp 文件单卷上的 Oracle 数据库性能
           href: performance-oracle-single-volumes.md
-        - name: 有关 SMB 性能的常见问题解答
-          href: azure-netapp-files-smb-performance.md
+        - name: Azure NetApp 文件的性能参考
+          items:
+            - name: Linux NFS 装载选项最佳做法
+              href: performance-linux-mount-options.md
+            - name: Linux 并发最佳做法
+              href: performance-linux-concurrency-session-slots.md
+            - name: SMB 性能最佳做法
+              href: azure-netapp-files-smb-performance.md
     - name: Azure NetApp 文件的成本模型
       href: azure-netapp-files-cost-model.md
     - name: 了解卷配额
@@ -69,6 +75,8 @@
       href: azure-netapp-files-faqs.md
     - name: 什么是 Azure 应用程序一致性快照工具
       href: azacsnap-introduction.md
+    - name: 存储服务加载项
+      href: storage-service-add-ons.md
     - name: 对量硬配额的更改是指
       href: volume-hard-quota-guidelines.md
 - name: 操作指南

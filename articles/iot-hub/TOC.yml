@@ -37,22 +37,6 @@
           href: quickstart-control-device-python.md
         - name: Android
           href: quickstart-control-device-android.md
-    - name: 使用设备流进行通信（预览版）
-      items:
-        - name: .NET
-          href: quickstart-device-streams-echo-csharp.md
-        - name: Node.js
-          href: quickstart-device-streams-echo-nodejs.md
-        - name: C
-          href: quickstart-device-streams-echo-c.md
-    - name: 使用设备流发送 SSH/RDP 流量（预览版）
-      items:
-        - name: .NET
-          href: quickstart-device-streams-proxy-csharp.md
-        - name: Node.js
-          href: quickstart-device-streams-proxy-nodejs.md
-        - name: C
-          href: quickstart-device-streams-proxy-c.md
     - name: 使用 ARM 模板自动路由消息
       displayName: Resource Manager
       href: horizontal-arm-route-messages.md
@@ -128,8 +112,6 @@
       href: iot-hub-event-grid-routing-comparison.md
     - name: 设备配置最佳做法
       href: iot-hub-configuration-best-practices.md
-    - name: Azure IoT SDK 平台支持
-      href: iot-hub-device-sdk-platform-support.md
     - name: IoT 中心设备流概述（预览版）
       href: iot-hub-device-streams-overview.md
     - name: 开发人员指南
@@ -187,8 +169,16 @@
           href: iot-hub-devguide-quotas-throttling.md
         - name: 定价示例
           href: iot-hub-devguide-pricing.md
-        - name: 设备和服务 SDK
-          href: iot-hub-devguide-sdks.md
+        - name: IoT 中心 SDK
+          items:
+            - name: SDK 概述
+              href: iot-hub-devguide-sdks.md
+            - name: SDK 平台支持
+              href: iot-hub-device-sdk-platform-support.md
+            - name: 不使用 SDK 进行开发
+              href: iot-hub-devguide-no-sdk.md
+            - name: 管理连接和可靠的消息传送
+              href: iot-hub-reliability-features-in-sdks.md
         - name: MQTT 支持
           href: iot-hub-mqtt-support.md
         - name: MQTT 5 支持（预览）
@@ -227,10 +217,7 @@
     - name: 开发
       items:
         - name: 使用设备和服务 SDK
-          href: iot-hub-devguide-sdks.md
           items:
-            - name: Azure IoT SDK 平台支持
-              href: iot-hub-device-sdk-platform-support.md
             - name: 使用适用于 C 的 IoT 设备 SDK
               href: iot-hub-device-sdk-c-intro.md
               items:
@@ -244,12 +231,8 @@
               href: iot-hub-devguide-develop-for-constrained-devices.md
             - name: 为移动设备进行开发
               href: iot-hub-how-to-develop-for-mobile-devices.md
-            - name: 管理连接和可靠的消息传送
-              href: iot-hub-reliability-features-in-sdks.md
             - name: 针对 Android Things 平台进行开发
               href: iot-hub-how-to-android-things.md
-        - name: 在不使用 Azure IoT SDK 的情况下进行开发
-          href: iot-hub-devguide-no-sdk.md
         - name: 查询中心路由中的 Avro 数据
           href: iot-hub-query-avro-data.md
         - name: 发送“云到设备”消息
@@ -542,7 +525,7 @@
         - name: IoT 服务 SDK
           href: ./iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT 设备 SDK
-          href: ./iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
+          href: ../iot-develop/about-iot-sdks.md
     - name: Azure IoT 示例
       items:
         - name: C# (.NET)

@@ -151,6 +151,8 @@
       items:
         - name: 获取事件中心连接字符串
           href: event-hubs-get-connection-string.md
+        - name: 配置高级命名空间的处理单位
+          href: configure-processing-units-premium-namespace.md
         - name: 将自定义数据添加到事件
           href: add-custom-data-event.md
         - name: 创建架构注册表
@@ -211,8 +213,8 @@
           href: apache-kafka-frequently-asked-questions.yml
     - name: 管理和监视
       items:
-        - name: 使用 Azure 监视来监视事件中心
-          href: event-hubs-metrics-azure-monitor.md
+        - name: 监视 Azure 事件中心
+          href: monitor-event-hubs.md
         - name: 设置诊断日志
           href: event-hubs-diagnostic-logs.md
         - name: 使用事件中心流式传输 Azure 诊断数据
@@ -253,6 +255,8 @@
           href: move-cluster-across-regions.md
 - name: 参考
   items:
+    - name: 监视数据参考
+      href: monitor-event-hubs-reference.md
     - name: SDK
       href: sdks.md
     - name: .NET
@@ -303,7 +307,7 @@
       href: /cli/azure/eventhubs
     - name: REST
       href: /rest/api/eventhub
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: /azure/templates/microsoft.eventhub/allversions
     - name: 配额
       href: event-hubs-quotas.md

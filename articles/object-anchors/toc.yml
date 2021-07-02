@@ -30,19 +30,25 @@
       href: 'https://github.com/Azure/azure-object-anchors'
 - name: 参考资料
   items:
+    - name: 适用于 .NET 的转换 SDK
+      href: /dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre
     - name: 适用于 Unity 的运行时 SDK
       href: /dotnet/api/Microsoft.Azure.ObjectAnchors/
     - name: 适用于 HoloLens C++/WinRT 的运行时 SDK
       href: /cpp/api/object-anchors/winrt/
 - name: 资源
   items:
-    - name: 发行说明
-      href: 'https://github.com/Azure/azure-object-anchors/releases'
     - name: Azure 混合现实资源管理 REST API
       href: /rest/api/mixedreality/
-    - name: 模型转换错误代码
-      href: model-conversion-error-codes.md
+    - name: 检测困难对象
+      href: detect-difficult-object.md
     - name: 常见问题解答
       href: faq.md
+    - name: 模型转换错误代码
+      href: model-conversion-error-codes.md
+    - name: 发行说明
+      href: 'https://github.com/Azure/azure-object-anchors/releases'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-object-anchors'
+    - name: 可视化转换后的模型
+      href: visualize-converted-model.md

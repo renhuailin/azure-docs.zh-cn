@@ -18,6 +18,8 @@
       href: customize-application-attributes.md
     - name: 有关应用特定的预配的教程
       href: /azure/active-directory/saas-apps
+    - name: Azure AD ECMA 连接器主机泛型 SQL 连接器
+      href: tutorial-ecma-sql-connector.md
 - name: 概念
   expanded: true
   items:
@@ -29,6 +31,10 @@
       href: plan-cloud-hr-provision.md
     - name: 了解使用 Azure Monitor 进行日志记录的情况
       href: application-provisioning-log-analytics.md
+    - name: 本地应用程序预配体系结构
+      href: on-premises-application-provisioning-architecture.md
+    - name: 了解表达式生成器
+      href: expression-builder.md
 - name: 操作指南
   expanded: true
   items:
@@ -53,7 +59,7 @@
         - name: 预配报表
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: 使用 MS Graph 自动执行配置
-      href: /graph/application-provisioning-configure-api
+      href: application-provisioning-configuration-api.md
     - name: 排查应用程序预配问题
       items:
         - name: 已知问题
@@ -66,8 +72,24 @@
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: 缺少源属性
           href: user-provisioning-sync-attributes-for-mapping.md
+        - name: ECMA 连接器主机故障排除
+          href: on-premises-ecma-troubleshoot.md
         - name: “预配”日志
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+    - name: 本地应用预配
+      items:
+        - name: ECMA 连接器主机先决条件
+          href: on-premises-ecma-prerequisites.md
+        - name: ECMA 连接器主机安装
+          href: on-premises-ecma-install.md
+        - name: ECMA 连接器主机配置
+          href: on-premises-ecma-configure.md
+        - name: 泛型 SQL 连接器配置
+          href: on-premises-sql-connector-configure.md
+        - name: 本地应用程序预配到启用 SCIM 的应用
+          href: on-premises-scim-provisioning.md
+        - name: 从 MIM 同步迁移连接器
+          href: on-premises-migrate-microsoft-identity-manager.md
 - name: 参考
   items:
     - name: SCIM 2.0 协议符合性
