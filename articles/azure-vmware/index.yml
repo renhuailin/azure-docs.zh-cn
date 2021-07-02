@@ -9,12 +9,12 @@ metadata:
   author: shortpatti
   ms.author: v-patsho
   ms.date: 05/11/2021
-  ms.openlocfilehash: b70f47f5cba7782862ddd2e81e6743830f2a8c1d
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 28f73f52b98edba523fd36203d6fef863c4e9d1a
+  ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110452076"
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112021476"
 landingContent:
 - title: 关于 Azure VMware 解决方案
   linkLists:
@@ -28,14 +28,14 @@ landingContent:
     links:
     - text: 私有云和群集
       url: concepts-private-clouds-clusters.md
-    - text: 私有云网络和网络间连接
+    - text: 网络和互连
       url: concepts-networking.md
-    - text: 私有云中的存储
+    - text: 存储
       url: concepts-storage.md
-    - text: 私有云的访问权限和标识
+    - text: 访问和标识
       url: concepts-identity.md
-    - text: 监视和修复私有云
-      url: concepts-private-clouds-clusters.md#host-monitoring-and-remediation
+    - text: 监视和保护
+      url: concepts-monitor-protection.md
     - text: API 管理
       url: concepts-api-management.md
     - text: 中心和分支
@@ -45,25 +45,25 @@ landingContent:
   - linkListType: reference
     links:
     - text: 常规
-      url: /azure/azure-vmware/faq
+      url: ./faq.yml
     - text: 客户通信
-      url: /azure/azure-vmware/faq#customer-communication
+      url: /azure/azure-vmware/faq.yml#customer-communication
     - text: 配置和设置
-      url: /azure/azure-vmware/faq#configuration-and-setup
+      url: /azure/azure-vmware/faq.yml#configuration-and-setup
     - text: VMware 软件
-      url: /azure/azure-vmware/faq#vmware-software
+      url: /azure/azure-vmware/faq.yml#vmware-software
     - text: 计算
-      url: /azure/azure-vmware/faq#compute
+      url: /azure/azure-vmware/faq.yml#compute
     - text: 网络和互连
-      url: /azure/azure-vmware/faq#networking-and-interconnectivity
+      url: /azure/azure-vmware/faq.yml#networking-and-interconnectivity
     - text: 存储
-      url: /azure/azure-vmware/faq#storage
+      url: /azure/azure-vmware/faq.yml#storage
     - text: 主机、群集和私有云
-      url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
+      url: /azure/azure-vmware/faq.yml#hosts,-clusters,-and-private-clouds
     - text: 身份管理
-      url: /azure/azure-vmware/faq#identity-management
+      url: /azure/azure-vmware/faq.yml#identity-management
     - text: 计费和支持
-      url: /azure/azure-vmware/faq#billing-and-support
+      url: /azure/azure-vmware/faq.yml#billing-and-support
 - title: 入门
   linkLists:
   - linkListType: deploy
@@ -107,21 +107,21 @@ landingContent:
   - linkListType: reference
     links:
     - text: 创建 Azure VMware 解决方案评估
-      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
+      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
     - text: 请求主机配额（Azure VMware 解决方案）
       url: request-host-quota-azure-vmware-solution.md
     - text: 通过预留实例节约成本
       url: reserved-instance.md
   - linkListType: how-to-guide
     links:
-    - text: 配置和管理 DHCP
+    - text: 配置 DHCP
       url: configure-dhcp-azure-vmware-solution.md
     - text: 在 L2 延伸 VMware HCX 网络上配置 DHCP
       url: configure-l2-stretched-vmware-hcx-networks.md
-    - text: 配置 NSX 网络组件
+    - text: 使用 Azure 配置 NSX 组件
       url: configure-nsx-network-components-azure-portal.md
     - text: 配置 GitHub Enterprise 服务器
-      url: github-enterprise-server.md
+      url: ./configure-github-enterprise-server.md
     - text: 启用公共 Internet 访问
       url: enable-public-internet-access.md
     - text: 在 vWAN 中配置站点到站点 VPN
@@ -132,10 +132,10 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 使用 Azure 安全中心保护 VM
+    - text: 保护、监视和管理 VM
+      url: integrate-azure-native-services.md
+    - text: 集成 Azure 安全中心
       url: azure-security-integration.md
-    - text: 监视和管理 VM
-      url: lifecycle-management-of-azure-vmware-solution-vms.md
     - text: 集成 Azure NetApp 文件
       url: netapp-files-with-azure-vmware-solution.md
     - text: 通过 Azure 应用程序网关保护 Web 应用
@@ -149,11 +149,11 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 备份 VMware VM
-      url: /azure/backup/backup-azure-backup-server-vmware?context=/azure/azure-vmware/context/context
+      url: ../backup/backup-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
     - text: 还原 VMware VM
-      url: /azure/backup/restore-azure-backup-server-vmware?context=/azure/azure-vmware/context/context
+      url: ../backup/restore-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
     - text: 监视 Azure 备份工作负荷
-      url: /azure/backup/backup-azure-monitoring-built-in-monitor?context=/azure/azure-vmware/context/context
+      url: ../backup/backup-azure-monitoring-built-in-monitor.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
 - title: VMware 解决方案
   linkLists:
   - linkListType: how-to-guide
@@ -164,6 +164,8 @@ landingContent:
       url: azure-vmware-solution-horizon.md
     - text: 从内容库部署 VM
       url: deploy-vm-content-library.md
+    - text: 使用 VMware HCX 部署灾难恢复
+      url: deploy-disaster-recovery-using-vmware-hcx.md
 - title: VMware 生态系统
   linkLists:
   - linkListType: reference
@@ -200,8 +202,10 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: 移动 EA 和 CSP 订阅
+    - text: 移动 Azure VMware 解决方案订阅
       url: move-ea-csp-subscriptions.md
+    - text: 跨区域移动 Azure VMware 解决方案
+      url: move-azure-vmware-solution-across-regions.md
 - title: 疑难解答
   linkLists:
   - linkListType: reference
