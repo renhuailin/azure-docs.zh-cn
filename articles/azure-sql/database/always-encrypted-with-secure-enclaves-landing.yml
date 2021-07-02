@@ -1,0 +1,110 @@
+### YamlMime:Landing
+title: 具有安全 enclave 的 Always Encrypted
+summary: 查找有关具有安全 enclave 的 Always Encrypted 的文档
+metadata:
+  title: 具有安全 enclave 的 Always Encrypted
+  description: 查找适用于 SQL Server 和 Azure SQL 数据库的具有安全 enclave 的 Always Encrypted 文档
+  ms.service: sql-database
+  ms.subservice: security
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: VanMSFT
+  ms.author: vanto
+  ms.reviewer: 
+  ms.date: 03/12/2021
+  ms.openlocfilehash: 8667cacced164eedffb056c348075a49c3e2ffad
+  ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/13/2021
+  ms.locfileid: "111906943"
+landingContent:
+- title: 概述
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是具有安全 enclave 的 Always Encrypted？
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves
+    - text: 配置和使用具有安全 enclave 的 Always Encrypted
+      url: /sql/relational-databases/security/encryption/configure-always-encrypted-enclaves
+- title: 在 Azure SQL 数据库中设置
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 在 Azure SQL Database 中规划 Intel SGX enclave 和证明
+      url: always-encrypted-enclaves-plan.md
+    - text: 为 Azure SQL 数据库启用 Intel SGX
+      url: always-encrypted-enclaves-enable-sgx.md
+    - text: 为 Azure SQL 逻辑服务器配置 Azure 证明
+      url: always-encrypted-enclaves-configure-attestation.md
+- title: 在 Azure VM 上的 SQL Server 中设置
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 规划主机保护者服务证明
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-host-guardian-service-plan
+    - text: 为 SQL Server 部署主机保护者服务
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-host-guardian-service-deploy
+    - text: 向主机保护者服务注册计算机
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-host-guardian-service-register
+    - text: 在 SQL Server 中配置安全 enclave
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-configure-enclave-type
+- title: 教程
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 在 SQL Server 中开始使用具有安全 enclave 的 Always Encrypted
+      url: /sql/relational-databases/security/tutorial-getting-started-with-always-encrypted-enclaves
+    - text: 在 Azure SQL 数据库中开始使用具有安全 enclave 的 Always Encrypted
+      url: always-encrypted-enclaves-getting-started.md
+    - text: 在使用随机加密且已启用 enclave 的列上创建并使用索引
+      url: /sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption
+    - text: 使用具有安全 enclave 的 Always Encrypted 开发 .NET 应用程序
+      url: /sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps
+    - text: 开发使用具有安全 enclave 的 Always Encrypted 的 .NET Framework 应用程序
+      url: /sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps
+- title: 管理密钥
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理具有安全 enclave 的 Always Encrypted 的密钥
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys
+    - text: 预配已启用 enclave 的密钥
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-provision-keys
+    - text: 轮换已启用 enclave 的密钥
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-rotate-keys
+- title: 配置列
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用具有安全 Enclave 的 Always Encrypted 就地配置列加密
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-configure-encryption
+    - text: 使用 Transact-SQL 配置列加密
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-configure-encryption-tsql
+    - text: 为现有加密列启用具有安全 enclave 的 Always Encrypted
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-enable-for-encrypted-columns
+- title: 视频
+  linkLists:
+  - linkListType: video
+    links:
+    - text: 和 Mark Russinovich 一起探索 Azure 数据中心体系结构内部
+      url: https://youtu.be/69PrhWQorEM?t=4523
+    - text: 包括有关安全 enclave 部分的网络研讨会
+      url: https://info.microsoft.com/ww-ondemand-azure-webinar-series-four-ways-to-take-your-data-security-to-the-next-level.html
+- title: 查询列
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用安全 enclave 运行 Transact-SQL 语句
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-query-columns
+    - text: 排查具有安全 enclave 的 Always Encrypted 的常见问题
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-troubleshooting
+    - text: 对使用具有安全 enclave 的 Always Encrypted 的列创建和使用索引
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-create-use-indexes
+- title: 开发应用程序
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用具有安全 enclave 的 Always Encrypted 开发应用程序
+      url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-client-development

@@ -6,15 +6,15 @@ metadata:
   description: 了解如何使用 Azure Purview - 组织可通过它来查找、了解和使用数据源。 教程、REST API 参考和其他文档介绍了如何规划和配置数据存储库 - 数据使用者可在此存储库中发现可用数据源，学习主题专家分享的知识。
   ms.service: purview
   ms.topic: landing-page
-  author: JasonWHowell
-  ms.author: jasonh
-  ms.date: 11/29/2020
-  ms.openlocfilehash: c9e9a32ca5c77082186f15a0eae3f3430347a02b
-  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+  author: whhender
+  ms.author: whhender
+  ms.date: 06/09/2021
+  ms.openlocfilehash: 8db36ffb5f1d081e0e4dbb2cd6dbca02c7ddf726
+  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/28/2021
-  ms.locfileid: "98926921"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111904006"
 landingContent:
 - title: 关于 Azure Purview
   linkLists:
@@ -24,12 +24,16 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
+    - text: 使用 Purview Studio
+      url: use-purview-studio.md
     - text: 部署最佳做法
       url: deployment-best-practices.md
     - text: 数据目录权限
       url: catalog-permissions.md
     - text: 支持的数据源和文件类型
       url: sources-and-scans.md
+    - text: 数据世系
+      url: concept-data-lineage.md
 - title: 入门
   linkLists:
   - linkListType: quickstart
@@ -40,8 +44,6 @@ landingContent:
       url: create-catalog-powershell.md
   - linkListType: tutorial
     links:
-    - text: 下载初学者工具包
-      url: https://download.microsoft.com/download/9/7/9/979db3b1-0916-4997-a7fb-24e3d8f83174/PurviewStarterKitV4.zip
     - text: 运行初学者工具包并扫描数据
       url: tutorial-scan-data.md
     - text: 导航 Purview 主页并进行搜索
@@ -52,42 +54,42 @@ landingContent:
       url: tutorial-schemas-and-classifications.md
     - text: 创建术语表术语
       url: tutorial-import-create-glossary-terms.md
-- title: 扫描 Azure 数据源
+- title: 注册并扫描 Azure 数据源
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 运行初学者工具包并扫描数据
-      url: tutorial-scan-data.md
   - linkListType: how-to-guide
     links:
+    - text: 扫描多个 Azure 源
+      url: register-scan-azure-multiple-sources.md
     - text: 扫描 Azure SQL 数据库
       url: register-scan-azure-sql-database.md
     - text: 扫描 Azure Data Lake Storage Gen 2
       url: register-scan-adls-gen2.md
-    - text: 扫描 Azure Cosmos DB
-      url: register-scan-azure-cosmos-database.md
-    - text: Power BI 租户
+    - text: 扫描 Azure Synapse 工作区
+      url: register-scan-synapse-workspace.md
+    - text: 扫描 Power BI 租户
       url: register-scan-power-bi-tenant.md
-    - text: 注册和扫描 Azure Blob 存储
+    - text: 扫描 Azure 专用 SQL 池（以前称为 SQL DW）
+      url: register-scan-azure-synapse-analytics.md
+    - text: 扫描 Azure Blob 存储
       url: register-scan-azure-blob-storage-source.md
-- title: 扫描非 Azure 数据源
+  - linkListType: tutorial
+    links:
+    - text: 大规模载入 Azure 源
+      url: tutorial-data-sources-readiness.md
+- title: 发现数据
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 浏览和世系
+      url: tutorial-browse-and-view-lineage.md
   - linkListType: how-to-guide
     links:
-    - text: 扫描 本地 SQL Server
-      url: register-scan-on-premises-sql-server.md
-- title: 了解数据资产
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 查看资产见解
-      url: asset-insights.md
-    - text: 查看术语表见解
-      url: glossary-insights.md
-    - text: 查看扫描见解
-      url: scan-insights.md
-    - text: 查看分类见解
-      url: classification-insights.md
+    - text: 使用数据世系功能
+      url: catalog-lineage-user-guide.md
+    - text: 按资产类型进行浏览
+      url: how-to-browse-catalog.md
+    - text: 搜索资产、术语、注释和联系人
+      url: how-to-search-catalog.md
 - title: 策展数据
   linkLists:
   - linkListType: tutorial
@@ -102,15 +104,29 @@ landingContent:
       url: create-a-custom-classification-and-classification-rule.md
     - text: 创建、导入和导出术语表
       url: how-to-create-import-export-glossary.md
-- title: 发现数据
+    - text: 批量编辑资产
+      url: how-to-bulk-edit-assets.md
+- title: 扫描非 Azure 数据源
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 浏览和世系
-      url: tutorial-browse-and-view-lineage.md
   - linkListType: how-to-guide
     links:
-    - text: 按资产类型进行浏览
-      url: how-to-browse-catalog.md
-    - text: 搜索资产、术语、注释和联系人
-      url: how-to-search-catalog.md
+    - text: 扫描 本地 SQL Server
+      url: register-scan-on-premises-sql-server.md
+    - text: 扫描 Amazon S3
+      url: register-scan-amazon-s3.md
+    - text: 扫描 Oracle
+      url: register-scan-oracle-source.md
+    - text: 扫描 Hive 元存储数据库
+      url: register-scan-hive-metastore-source.md
+- title: 了解数据资产
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 查看敏感度标签见解
+      url: sensitivity-insights.md
+    - text: 查看资产见解
+      url: asset-insights.md
+    - text: 查看分类见解
+      url: classification-insights.md
+    - text: 查看术语表见解
+      url: glossary-insights.md
