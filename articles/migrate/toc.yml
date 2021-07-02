@@ -54,7 +54,7 @@
           href: tutorial-assess-gcp.md
         - name: 评估已导入的服务器以便迁移到 Azure VM
           href: tutorial-discover-import.md
-    - name: 迁移
+    - name: Migrate
       items:
         - name: 迁移 VMware VM
           items:
@@ -114,7 +114,7 @@
           href: concepts-azure-vmware-solution-assessment-calculation.md
         - name: 评估最佳做法
           href: best-practices-assessment.md
-    - name: 迁移
+    - name: Migrate
       items:
         - name: 构建迁移计划
           href: concepts-migration-planning.md
@@ -126,6 +126,8 @@
           href: migrate-support-matrix-physical-migration.md
         - name: 复制设备要求
           href: migrate-replication-appliance.md
+        - name: VMware 无代理迁移体系结构
+          href: concepts-vmware-agentless-migration.md
         - name: Hyper-V 迁移体系结构
           href: hyper-v-migration-architecture.md
         - name: 基于 VMware 代理的迁移体系结构
@@ -134,8 +136,11 @@
   items:
     - name: 创建和管理 Azure Migrate 项目
       href: create-manage-projects.md
-    - name: 将 Azure Migrate 与专用链接配合使用
+    - name: 使用结合专用终结点的 Azure Migrate
       href: how-to-use-azure-migrate-with-private-endpoints.md
+      items:
+        - name: 排查网络连接问题
+          href: troubleshoot-network-connectivity.md
     - name: 准备使用 ISV 工具/Movere
       href: prepare-isv-movere.md
     - name: 发现
@@ -188,7 +193,7 @@
               href: scale-hyper-v-assessment.md
             - name: 评估大量物理服务器
               href: scale-physical-assessment.md
-    - name: 迁移
+    - name: Migrate
       items:
         - name: 添加迁移工具
           href: how-to-migrate.md
@@ -236,7 +241,7 @@
       items:
         - name: 排查评估/依赖项可视化问题
           href: troubleshoot-assessment.md
-    - name: 迁移
+    - name: Migrate
       items:
         - name: 排查无代理 VMware 迁移中的复制问题
           href: troubleshoot-changed-block-tracking-replication.md

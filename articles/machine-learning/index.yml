@@ -1,71 +1,67 @@
 ### YamlMime:Landing
 title: Azure 机器学习文档
-summary: 了解如何使用 Azure 机器学习来大规模训练、部署和管理机器学习模型、使用 AutoML 和运行管道。  教程、代码示例、API 参考和其他资源介绍了操作方法。
+summary: 了解如何使用 Azure 机器学习训练和部署模型以及管理机器学习生命周期。 教程、代码示例、API 参考和其他资源介绍了操作方法。
 metadata:
   title: Azure 机器学习文档
-  description: 了解如何使用 Azure 机器学习来大规模训练、部署和管理机器学习模型、使用 AutoML 和运行管道。 教程、代码示例、API 参考和其他资源介绍了操作方法。
+  description: 了解如何使用 Azure 机器学习训练和部署模型以及管理机器学习生命周期。 教程、代码示例、API 参考和其他资源介绍了操作方法。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
   ms.topic: landing-page
   ms.collection: collection
-  ms.author: larryfr
-  author: BlackMist
-  ms.date: 09/21/2020
-  ms.custom: contperf-fy21q1
-  ms.openlocfilehash: bbf934ef45f66a009c198a5ab0a47b871b419d85
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.author: sgilley
+  author: sdgilley
+  ms.date: 06/11/2021
+  ms.custom: jordan-changes
+  ms.openlocfilehash: 8ca3c770daa74b2f9f8f8dfd2edd0e22b6659538
+  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108740908"
+  ms.lasthandoff: 06/11/2021
+  ms.locfileid: "112030064"
 landingContent:
-- title: 入门：代码优先
+- title: 入门：训练模型
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 开始使用 Azure 机器学习
+    - text: 设置资源
       url: quickstart-create-resources.md
-    - text: 使用 ML 管道的批量推理 (Python)
-      url: tutorial-pipeline-batch-scoring-classification.md
-- title: 入门：低代码或无代码
+    - text: 使用 Python SDK 进行训练
+      url: tutorial-1st-experiment-hello-world.md
+    - text: 使用 v2 CLI（预览版）进行训练
+      url: how-to-train-cli.md
+- title: 其他模型训练选项
   linkLists:
-  - linkListType: overview
+  - linkListType: how-to-guide
     links:
-    - text: Azure 机器学习工作室
-      url: overview-what-is-machine-learning-studio.md
-    - text: 什么是自动化 ML (AutoML)？
-      url: concept-automated-ml.md
-    - text: 什么是拖放式设计器？
-      url: concept-designer.md
-  - linkListType: tutorial
-    links:
-    - text: 入门 (AutoML)
+    - text: 通过超参数扫描优化模型
+      url: how-to-tune-hyperparameters.md
+    - text: 创建多步骤 ML 管道
+      url: how-to-create-machine-learning-pipelines.md
+    - text: 使用 AutoML 进行训练
       url: tutorial-first-experiment-automated-ml.md
-    - text: 入门（设计器）
+    - text: 使用设计器进行训练
       url: tutorial-designer-automobile-price-train-score.md
-  - linkListType: reference
-    links:
-    - text: 设计器算法和模块
-      url: algorithm-module-reference/module-reference.md
-- title: 将 ML 模型引入 Azure
+- title: 部署模型
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 将模型部署到云
+    - text: 如何部署模型
       url: how-to-deploy-and-where.md
-    - text: 跟踪 MLflow 模型
-      url: how-to-use-mlflow.md
-- title: 部署和管理模型 (MLOps)
+    - text: 托管联机评分（预览版）
+      url: how-to-deploy-managed-online-endpoints.md
+    - text: 托管批量评分（预览版）
+      url: how-to-use-batch-endpoint.md
+- title: 管理 ML 生命周期
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 什么是 MLOps？
+    - text: 跟踪 ML 试验
+      url: how-to-track-monitor-analyze-runs.md
+    - text: ML 生命周期管理 (MLOps)
       url: concept-model-management-and-deployment.md
-    - text: 部署方式和位置
-      url: how-to-deploy-and-where.md
-    - text: 部署 MLflow 模型
-      url: how-to-deploy-mlflow-models.md
+- title: 参考文档
+  linkLists:
   - linkListType: reference
     links:
     - text: Python SDK

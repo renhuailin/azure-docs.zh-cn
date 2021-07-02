@@ -12,12 +12,12 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 异常检测, 机器学习, 算法
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d63399d0f492f85a4a2d57a595a6d8ef5b606d92
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 52ed294146edbd70f21af4f706ad68f3aa6662dc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599513"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076809"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
 
@@ -56,16 +56,7 @@ ms.locfileid: "107599513"
 
 若要了解如何调用异常检测器API，请试用此 [Notebook](https://aka.ms/adNotebook)。 此 Jupyter Notebook 演示如何发送 API 请求和直观显示结果。
 
-若要运行此 Notebook，请完成以下步骤：
-
-1. 获取一个有效的异常检测器 API 订阅密钥和一个 API 终结点。 以下部分提供注册说明。
-1. 登录，然后选择右上角的“克隆”。
-1. 在完成克隆操作之前，请取消选中对话框中的“公共”选项，否则你的笔记本（包括任何订阅密钥）将是公共的。
-1. 选择“在免费计算上运行”
-1. 选择其中一个笔记本。
-1. 向 `subscription_key` 变量添加有效的异常检测器 API 订阅密钥。
-1. 将 `endpoint` 变量更改为你的终结点。 例如： `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. 在顶部菜单栏中，依次选择“单元格”、“全部运行”。
+若要运行 Notebook，应获取有效的异常检测器 API 订阅密钥和 API 终结点。 在笔记本中，将有效的异常检测器 API 订阅密钥添加到 `subscription_key` 变量，并将 `endpoint` 变量更改为你的终结点。
 
 ## <a name="workflow"></a>工作流
 

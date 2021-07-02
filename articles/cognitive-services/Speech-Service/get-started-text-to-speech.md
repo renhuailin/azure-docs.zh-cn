@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/01/2020
+ms.date: 05/17/2021
 ms.author: trbye
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-four
 keywords: 文本转语音
-ms.openlocfilehash: 7a41c4d9c1074b376da3de556caf63ced0bc84ec
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 33e19816d219e2be3dae367c5b30da349e2eb879
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428167"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085475"
 ---
 # <a name="get-started-with-text-to-speech"></a>开始使用文本转语音
 
@@ -28,6 +28,10 @@ ms.locfileid: "102428167"
 
 ::: zone pivot="programming-language-cpp"
 [!INCLUDE [C++ Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-cpp.md)]
+::: zone-end
+
+::: zone pivot="programming-language-go"
+[!INCLUDE [C++ Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-go.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
@@ -56,9 +60,11 @@ ms.locfileid: "102428167"
 
 ## <a name="get-position-information"></a>获取位置信息
 
-你的项目可能需要知道某个字词何时通过语音转文本说出，以便能够根据该时间执行特定操作。 例如，如果需要字词在被说出时突出显示，就会需要知道要突出显示什么内容、何时突出显示这些内容，以及突出显示多长时间。
+你的项目可能需要知道何时会通过文本转语音说出某个字词，以便能够根据该时间执行特定操作。
+例如，如果需要字词在被说出时突出显示，就会需要知道要突出显示什么内容、何时突出显示这些内容，以及突出显示多长时间。
 
-可以使用 `SpeechSynthesizer` 中提供的 `WordBoundary` 事件来实现此目的。 此事件在每个新说出的字词的开头引发，并且将会在说出的流中提供时间偏移，另外还会在输入提示中提供文本偏移。
+可以使用 `SpeechSynthesizer` 中提供的 `WordBoundary` 事件来实现此目的。
+此事件在每个新说出的字词的开头引发，并且将会在说出的流中提供时间偏移，另外还会在输入提示中提供文本偏移。
 
 * `AudioOffset` 会报告输出音频在合成的开始处和下一个字词的开头之间经历的时间。 此时间以百纳秒单位 (HNS) 进行测量，10,000 HNS 相当于 1 毫秒。
 * `WordOffset` 报告输入字符串（原始文本或 [SSML](speech-synthesis-markup.md)）中紧靠在要说出的字词之前的字符位置。

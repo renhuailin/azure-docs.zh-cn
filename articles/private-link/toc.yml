@@ -51,6 +51,8 @@
       href: private-link-service-overview.md
     - name: 专用终结点 DNS 集成
       href: private-endpoint-dns.md
+    - name: RBAC 权限
+      href: rbac-permissions.md
     - name: 安全性
       items:
         - name: 安全基线

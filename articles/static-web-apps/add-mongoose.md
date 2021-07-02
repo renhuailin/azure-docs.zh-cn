@@ -6,12 +6,12 @@ ms.author: chrhar
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 01/25/2021
-ms.openlocfilehash: fb1c1d64d77ca1c69960b77cbec7f60bb717c26c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 63bbc978f4927dc6922d92e1f339282f74e4fb4e
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143514"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814291"
 ---
 # <a name="tutorial-access-data-in-cosmos-db-using-mongoose-with-azure-static-web-apps"></a>教程：使用 Mongoose 通过 Azure Static Web Apps 访问 Cosmos DB 中的数据
 
@@ -71,7 +71,7 @@ ms.locfileid: "108143514"
 5. 返回到 [Azure 门户](https://portal.azure.com)
 6. 单击“创建资源”
 7. 在搜索框中键入“静态 Web 应用”
-8. 选择“静态 Web 应用(预览版)”
+8. 选择“静态 Web 应用”
 9. 单击“创建” 
 10. 为 Azure 静态 Web 应用配置以下信息
     - 订阅：选择与之前相同的订阅

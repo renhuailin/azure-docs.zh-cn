@@ -4,14 +4,10 @@
   items:
     - name: 什么是 ARM 模板？
       href: overview.md
-    - name: Bicep 概述
-      href: bicep-overview.md
 - name: 快速入门
   items:
     - name: 创建 JSON 模板 - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: 创建 Bicep 模板 - VS Code
-      href: quickstart-create-bicep-use-visual-studio-code.md
     - name: 创建 JSON 模板 - 门户
       href: quickstart-create-templates-use-the-portal.md
     - name: 创建模板规格
@@ -40,38 +36,6 @@
           href: template-tutorial-add-tags.md
         - name: 10 - 使用参数文件
           href: template-tutorial-use-parameter-file.md
-    - name: 初学者的 Bicep
-      items:
-        - name: 1 - 创建第一个模板
-          displayName: Bicep
-          href: bicep-tutorial-create-first-bicep.md
-        - name: 2 - 添加参数
-          displayName: Bicep
-          href: bicep-tutorial-add-parameters.md
-        - name: 3 - 添加模板函数
-          displayName: Bicep
-          href: bicep-tutorial-add-functions.md
-        - name: 4 - 添加变量
-          displayName: Bicep
-          href: bicep-tutorial-add-variables.md
-        - name: 5 - 添加输出
-          displayName: Bicep
-          href: bicep-tutorial-add-outputs.md
-        - name: 6 - 使用导出的模板
-          displayName: Bicep
-          href: bicep-tutorial-export-template.md
-        - name: 7 - 使用快速入门模板
-          displayName: Bicep
-          href: bicep-tutorial-quickstart-template.md
-        - name: 8 - 添加标记
-          displayName: Bicep
-          href: bicep-tutorial-add-tags.md
-        - name: 9 - 使用参数文件
-          displayName: Bicep
-          href: bicep-tutorial-use-parameter-file.md
-        - name: 10 - 添加模块
-          displayName: Bicep
-          href: bicep-tutorial-add-modules.md
     - name: 部署
       items:
         - name: 1 - 部署本地模板
@@ -128,7 +92,7 @@
           href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 机器学习
           href: ../../machine-learning/how-to-create-workspace-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-    - name: Analytics
+    - name: 分析
       items:
         - name: Analysis Services
           href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -325,45 +289,34 @@
 - name: 概念
   items:
     - name: 模板最佳实践
-      href: template-best-practices.md
-    - name: Bicep
-      items:
-        - name: 安装 Bicep
-          href: bicep-install.md
-        - name: 在 JSON 和 Bicep 之间转换
-          href: bicep-decompile.md
-        - name: 比较 JSON 和 Bicep
-          href: compare-template-syntax.md
+      href: best-practices.md
     - name: 数据类型
       href: data-types.md
     - name: 常见问题
       href: frequently-asked-questions.md
     - name: 用于提供云一致性的模板
-      href: templates-cloud-consistency.md
+      href: template-cloud-consistency.md
     - name: 部署模式
       href: deployment-modes.md
     - name: 部署历史记录删除
       href: deployment-history-deletions.md
-    - name: 完整模式删除
-      href: complete-mode-deletion.md
+    - name: 部署完整模式删除
+      href: deployment-complete-mode-deletion.md
 - name: 如何
   items:
     - name: 创建模板
       items:
         - name: JSON 结构
           displayName: 'parameters,variables,resources,outputs,condition'
-          href: template-syntax.md
-        - name: Bicep 结构
-          displayName: 'parameters,variables,resources,outputs,condition'
-          href: bicep-file.md
+          href: syntax.md
         - name: 编写模板表达式
           href: template-expressions.md
-        - name: 参数
-          href: template-parameters.md
+        - name: parameters
+          href: parameters.md
         - name: 变量
-          href: template-variables.md
+          href: variables.md
         - name: 用户定义的函数
-          href: template-user-defined-functions.md
+          href: user-defined-functions.md
         - name: 资源
           items:
             - name: 资源声明
@@ -373,13 +326,13 @@
             - name: 条件部署
               href: conditional-resource-deployment.md
             - name: 设置资源依赖项
-              href: define-resource-dependency.md
+              href: resource-dependency.md
             - name: 设置资源位置
               href: resource-location.md
             - name: 使用模板扩展
-              href: add-resource-extensions.md
+              href: resource-extensions.md
         - name: Outputs
-          href: template-outputs.md
+          href: outputs.md
         - name: 部署脚本
           displayName: custom script
           href: deployment-script-template.md
@@ -390,8 +343,6 @@
             - name: 将模板模块化
               displayName: 'linked templates, nested templates'
               href: linked-templates.md
-            - name: Bicep 模块
-              href: bicep-modules.md
         - name: 创建多个实例
           items:
             - name: 资源
@@ -441,7 +392,7 @@
             - name: 跨范围的函数
               href: scope-functions.md
         - name: 模拟部署
-          href: template-deploy-what-if.md
+          href: deploy-what-if.md
         - name: 出错时重新部署
           displayName: rollback
           href: rollback-on-error.md
@@ -467,7 +418,7 @@
         - name: 创建和部署模板规格
           href: template-specs.md
         - name: 转换门户模板库
-          href: convert-to-template-spec.md
+          href: template-spec-convert.md
     - name: CI/CD
       items:
         - name: 带管道的 ARM 模板
@@ -530,8 +481,6 @@
       items:
         - name: 所有函数
           href: template-functions.md
-        - name: 任何函数 (Bicep)
-          href: template-functions-any.md
         - name: 数组函数
           href: template-functions-array.md
         - name: 比较函数
@@ -550,16 +499,6 @@
           href: template-functions-resource.md
         - name: 字符串函数
           href: template-functions-string.md
-    - name: Bicep 运算符
-      items:
-        - name: 所有运算符
-          href: bicep-operators.md
-        - name: 比较运算符
-          href: bicep-operators-comparison.md
-        - name: 逻辑运算符
-          href: bicep-operators-logical.md
-        - name: 数字运算符
-          href: bicep-operators-numeric.md
     - name: REST
       href: /rest/api/resources/
     - name: Azure PowerShell

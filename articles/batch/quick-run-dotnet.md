@@ -2,20 +2,20 @@
 title: 快速入门 - 使用 .NET API 运行第一个 Azure Batch 作业
 description: 在本快速入门中，使用 Batch .NET 客户端库通过 C# 应用程序运行 Azure Batch 示例作业和任务。
 ms.topic: quickstart
-ms.date: 08/17/2020
+ms.date: 05/25/2021
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 1c2328db520042ceff1861b740313befbed0e20d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 3f6bca64e3241c5ee3aa5940a7556bc545932e87
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876717"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467719"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入门：使用 .NET API 运行第一个 Azure Batch 作业
 
 实现 Azure Batch 入门，方法是通过基于 Azure Batch .NET API 生成的 C# 应用程序运行作业。 此应用将多个输入数据文件上传到 Azure 存储，然后创建包含 Batch 计算节点（虚拟机）的池。 再然后，它创建一个示例作业，以便运行任务，在池中使用基本命令来处理每个输入文件。
 
-完成本快速入门以后，你会了解 Batch 服务的重要概念，并可使用更逼真的工作负荷进行更大规模的 Batch 试用。
+完成本快速入门以后，你会了解 Batch 服务的重要概念，并可使用更逼真的工作负载进行更大规模的 Batch 试用。
 
 ![概述 Azure Batch 应用工作流的关系图。](./media/quick-run-dotnet/sampleapp.png)
 
@@ -25,7 +25,7 @@ ms.locfileid: "107876717"
 
 - Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
 
-- 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)或 [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)。 
+- 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)或 [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -145,7 +145,7 @@ using (BatchClient batchClient = BatchClient.Open(cred))
 
 为了创建 Batch 池，应用使用 [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) 方法设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Windows Server 映像的 [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference)。 Batch 支持 Azure 市场中的各种 Linux 和 Windows Server 映像以及自定义 VM 映像。
 
-节点数 (`PoolNodeCount`) 和 VM 大小 (`PoolVMSize`) 是定义的常数。 此示例默认创建的池包含 2 个大小为 *Standard_A1_v2* 的节点。 就此快速示例来说，建议的大小在性能和成本之间达成了很好的平衡。
+节点数 (`PoolNodeCount`) 和 VM 大小 (`PoolVMSize`) 是定义的常数。 此示例默认创建包含两个 Standard_A1_v2 节点的池。 就此快速示例来说，建议的大小在性能和成本之间达成了很好的平衡。
 
 [Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) 方法将池提交到 Batch 服务。
 
@@ -203,7 +203,7 @@ try
 
 ### <a name="create-tasks"></a>创建任务
 
-此应用创建 [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 对象的列表。 每个任务都使用 [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) 属性来处理输入 `ResourceFile` 对象。 在示例中，命令行运行 Windows `type` 命令来显示输入文件。 此命令是一个用于演示的简单示例。 使用 Batch 时，可以在命令行中指定应用或脚本。 Batch 提供多种将应用和脚本部署到计算节点的方式。
+此应用创建 [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 对象的列表。 每个任务都使用 [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) 属性来处理输入 `ResourceFile` 对象。 在示例中，命令行运行 Windows `type` 命令来显示输入文件。 此命令是一个用于演示的简单示例。 使用 Batch 时，可以在命令行中指定应用或脚本。 Batch 提供了多种将应用和脚本部署到计算节点的方式。
 
 然后，应用使用 [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) 方法将任务添加到作业，使任务按顺序在计算节点上运行。
 
@@ -239,13 +239,13 @@ foreach (CloudTask task in completedtasks)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-应用自动删除所创建的存储容器，并允许你选择是否删除 Batch 池和作业。 只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请将其删除。 删除池时会删除节点上的所有任务输出。
+应用自动删除所创建的存储容器，并允许你选择是否删除 Batch 池和作业。 只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请将其删除。 删除池后，节点上的所有任务输出都会被删除。
 
 若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门运行了使用 Batch .NET API 生成的小应用，目的是创建 Batch 池和 Batch 作业。 该作业运行了示例任务，并下载了在节点上产生的输出。 了解 Batch 服务的重要概念以后，即可使用更逼真的工作负荷进行更大规模的 Batch 试用。 若要详细了解 Azure Batch 并使用实际的应用程序演练并行工作负荷，请继续学习 Batch .NET 教程。
+本快速入门运行了使用 Batch .NET API 生成的小应用，目的是创建 Batch 池和 Batch 作业。 该作业运行了示例任务，并下载了在节点上产生的输出。 了解 Batch 服务的重要概念以后，即可使用更真实的工作负荷进行更大规模的 Batch 试用。 若要详细了解 Azure Batch 并使用实际的应用程序演练并行工作负荷，请继续学习 Batch .NET 教程。
 
 > [!div class="nextstepaction"]
 > [使用 .NET 处理并行工作负荷](tutorial-parallel-dotnet.md)

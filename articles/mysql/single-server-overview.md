@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: b0f8c5806ba22708db6dc537d391c1f1b1a183ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9752b97e2f9bcff2f08dd2a280014e2c3d4a06c6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92543808"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470263"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL 单一服务器
 
@@ -61,7 +61,7 @@ Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft �
 
 单一服务器服务使用 FIPS 140-2 验证的加密模块对静态数据进行存储加密。 在运行查询时创建的数据（包括备份）和临时文件都会进行加密。 该服务使用 Azure 存储加密中包含的 AES 256 位密码，并且密钥可由系统进行管理（默认）或由[客户管理](concepts-data-encryption-mysql.md)。 该服务使用默认实施的传输层安全性 (SSL/TLS) 对动态数据进行加密。 该服务支持 TLS 版本 1.2、1.1 和 1.0，并可强制执行[最低 TLS 版本](concepts-ssl-connection-security.md)。 
 
-该服务允许使用[专用链接](concepts-data-access-security-private-link.md)对服务器进行专用访问，并提供[高级威胁防护](concepts-data-access-and-security-threat-protection.md)功能。 高级威胁防护可检测异常活动，指出在访问或利用数据库时的异常行为和可能有害的尝试。
+该服务允许使用[专用链接](concepts-data-access-security-private-link.md)对服务器进行专用访问，并通过可选的[用于开源关系数据库的 Azure Defender](../security-center/defender-for-databases-introduction.md) 计划提供威胁保护。 Azure Defender 会检测异常活动，这些活动表示可能有害的异常数据库访问或攻击尝试。
 
 除了本机身份验证外，单一服务器服务还支持 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 身份验证。 Azure AD 身份验证是一种使用 Azure AD 中定义和管理的标识连接到 MySQL 服务器的机制。 通过 Azure AD 身份验证，可以在一个中心位置集中管理数据库用户标识和其他 Azure 服务，从而简化和集中访问控制。
 

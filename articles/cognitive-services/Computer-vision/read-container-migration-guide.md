@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/29/2021
+ms.date: 05/24/2021
 ms.author: aahi
-ms.openlocfilehash: 1cc17306265e6e8ba2e7fb3f570d0017b006b84f
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: d648acb3ff9a1f7c2076a4b7c1fcf9755a9ea05d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284679"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465186"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>迁移到 Read v3.x OCR 容器
 
@@ -35,7 +35,7 @@ Read v3.2 容器使用计算机视觉 API 版本 3，并具有以下终结点：
 * `/vision/v3.2-preview.1/read/analyze`
 * `/vision/v3.2-preview.1/read/syncAnalyze`
 
-有关更新应用程序以使用基于云的 Read API 版本 3 的详细信息，请参阅[计算机视觉 v3 REST API 迁移指南](./upgrade-api-versions.md)。 此信息也适用于容器。 请注意，同步操作仅在容器中受支持。
+有关更新应用程序以使用基于云的 Read API 版本 3 的详细信息，请参阅[计算机视觉 v3 REST API 迁移指南](./upgrade-api-versions.md)。 此信息也适用于容器。 同步操作仅在容器中受支持。
 
 ## <a name="memory-requirements"></a>内存需求
 
@@ -69,7 +69,7 @@ Read v3.2 容器使用计算机视觉 API 版本 3，并具有以下终结点：
 | Azure 队列 | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | 生产 |
 | RabbitMQ    | 不可用 | 生产 |
 
-对于增加的冗余，Read v3.x 容器使用可见性计时器来确保：在多容器设置中运行时，即使发生崩溃也可成功处理请求。 
+为了提高冗余性，Read v3.x 容器使用可见性计时器来确保在采用多容器设置运行时，即使发生崩溃也可成功处理请求。 
 
 使用 `Queue:Azure:QueueVisibilityTimeoutInMilliseconds` 设置计时器，以设置另一个工作线程处理消息时，该消息不可见的时长。 为了避免重复处理页面，建议将超时期限设置为 120 秒。 默认值为 30 秒。
 

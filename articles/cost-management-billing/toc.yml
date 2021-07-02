@@ -220,7 +220,7 @@
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
             - name: 以编程方式创建 MPA 订阅
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: 以编程方式创建订阅 - 预览 API
+            - name: 以编程方式创建订阅 - 旧版 API
               href: manage/programmatically-create-subscription-preview.md
         - name: 管理企业协议订阅
           items:

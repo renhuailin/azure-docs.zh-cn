@@ -154,6 +154,8 @@
           href: howto-password-ban-bad-on-premises-faq.yml
         - name: 代理版本历史记录
           href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: 推送 Microsoft Authenticator 设置（预览）
+      href: how-to-nudge-authenticator-app.md
     - name: 使用临时访问密码（预览）
       href: howto-authentication-temporary-access-pass.md
     - name: 使用基于短信的身份验证

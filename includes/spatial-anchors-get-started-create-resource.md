@@ -4,12 +4,13 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: 2c85e26d5a9115b00621c4099e3ed36afb224e3f
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: eb9b77e42a46ba735a5721907f9d3a7890a34131
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107879413"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111896959"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>创建空间定位点资源
 
@@ -34,7 +35,7 @@ ms.locfileid: "107879413"
   [!INCLUDE [resource group intro text](resource-group.md)]
 
 * 选择可在其中放置资源的位置（区域）。
-* 选择“新建”开始创建资源。
+* 选择“创建”开始创建资源。
 
 ![用于创建资源的“空间定位点”窗格的屏幕截图。](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
@@ -46,13 +47,13 @@ ms.locfileid: "107879413"
 
 将资源的“帐户 ID”值复制到文本编辑器中，供稍后使用。
 
-![“资源属性”窗格的屏幕截图。](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
+![“资源属性”窗格的屏幕截图。](./media/spatial-anchors-get-started-create-resource/view-resource-accountid.png)
 
 另外，将资源的“帐户域”值复制到文本编辑器中，供稍后使用。
 
 ![显示资源的帐户域值的屏幕截图。](./media/spatial-anchors-get-started-create-resource/view-resource-domain.png)
 
-在“设置”下，选择“密钥” 。 将“帐户密钥”的“主密钥”值复制到文本编辑器中，供稍后使用 。
+在“设置”下，选择“访问密钥” 。 将“帐户密钥”的“主密钥”值复制到文本编辑器中，供稍后使用 。
 
 ![帐户的“密钥”窗格的屏幕截图。](./media/spatial-anchors-get-started-create-resource/view-account-key.png)
 

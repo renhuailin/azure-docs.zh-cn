@@ -106,6 +106,8 @@
       items:
         - name: 规划访问评审部署
           href: deploy-access-reviews.md
+        - name: 创建访问评审历史记录报告
+          href: access-reviews-downloadable-review-history.md
         - name: 访问包
           items:
             - name: 创建访问评审
@@ -144,6 +146,6 @@
   expanded: true
   items:
     - name: 访问评审 - Graph API
-      href: /graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true
+      href: /graph/api/resources/accessreviewsv2-root?view=graph-rest-beta
     - name: 权利管理 - Graph API
-      href: /graph/api/resources/entitlementmanagement-root?view=graph-rest-beta&preserve-view=true
+      href: /graph/api/resources/entitlementmanagement-root?view=graph-rest-beta

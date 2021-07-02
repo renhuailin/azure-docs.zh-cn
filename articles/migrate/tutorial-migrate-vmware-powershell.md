@@ -5,13 +5,14 @@ author: rahulg1190
 ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
-ms.date: 03/02/2021
-ms.openlocfilehash: 24dd33495915a9f4d47a00fbbfe9e894df839d4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 22fea8695af7f7ee3915e6e0518d20312d59766c
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715065"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688166"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>将 VMware VM 迁移到 Azure（使用无代理方法）- PowerShell
 
@@ -70,10 +71,12 @@ Azure Migrate 项目用于存储从正在评估或迁移的环境中收集的发
 ```azurepowershell-interactive
 # Get resource group of the Azure Migrate project
 $ResourceGroup = Get-AzResourceGroup -Name MyResourceGroup
-
+```
+```azurepowershell-interactive
 # Get details of the Azure Migrate project
 $MigrateProject = Get-AzMigrateProject -Name MyMigrateProject -ResourceGroupName $ResourceGroup.ResourceGroupName
-
+```
+```azurepowershell-interactive
 # View Azure Migrate project details
 Write-Output $MigrateProject
 ```
@@ -139,22 +142,20 @@ Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName $ResourceGroup.
 
 可以按如下所示指定复制属性。
 
-- 目标订阅和资源组 - 通过使用 (`TargetResourceGroupId`) 参数提供资源组 ID，指定 VM 应该迁移到的订阅和资源组。
-- 目标虚拟网络和子网 - 分别使用 (`TargetNetworkId`) 和 (`TargetSubnetName`) 参数指定 VM 应迁移到的 Azure 虚拟网络的 ID 和子网的名称。
-- 目标 VM 名称 - 使用 (`TargetVMName`) 参数指定要创建的 Azure VM 的名称。
-- 目标 VM 大小 - 使用 (`TargetVMSize`) 参数指定要用于复制 VM 的 Azure VM 大小。 例如，要将 VM 迁移到 Azure 中的 D2_v2 VM，请将 (`TargetVMSize`) 的值指定为“Standard_D2_v2”。
-- 许可证 - 若要为活动软件保障或 Windows Server 订阅涵盖的 Windows Server 计算机使用 Azure 混合权益，请将 (`LicenseType`) 参数的值指定为“WindowsServer” 。 否则，请将 (`LicenseType`) 参数的值指定为“NoLicenseType”。
-- **OS 磁盘** - 指定载有操作系统引导加载程序和安装程序的磁盘的唯一标识符。 要使用的磁盘 ID 是使用 [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) cmdlet 检索到的磁盘的唯一标识符 (UUID) 属性。
-- 磁盘类型 - 指定 (`DiskType`) 参数的值，如下所示。
-    - 若要使用高级托管磁盘，请指定“Premium_LRS”作为 (`DiskType`) 参数的值。
-    - 若要使用标准 SSD 盘，请指定“StandardSSD_LRS”作为 (`DiskType`) 参数的值。
-    - 若要使用标准 HDD 磁盘，请指定“Standard_LRS”作为 (`DiskType`) 参数的值。
-- **基础结构冗余** - 指定基础结构冗余选项，如下所示。
-    - 可用性区域，将迁移的计算机固定到区域中的特定可用性区域。 使用此选项可跨可用性区域分配形成多节点应用程序层的服务器。 仅当为迁移选择的目标区域支持可用性区域时，此选项才可用。 若要使用可用性区域，请为 (`TargetAvailabilityZone`) 参数指定可用性区域值。
-    - 可用性集，将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。 若要使用可用性集，请为 (`TargetAvailabilitySet`) 参数指定可用性集 ID。
- - 启动诊断存储帐户 - 若要使用启动诊断存储帐户，请为 (`TargetBootDiagnosticStorageAccount`) 参数指定 ID。
-    -  用于启动诊断的存储帐户应位于要将 VM 迁移到的同一订阅中。  
-    - 默认情况下，没有为此参数设置值。 
+**参数** | **类型** | **说明**
+--- | --- | ---
+ 目标订阅和资源组 |  必需 | 通过使用 (`TargetResourceGroupId`) 参数提供资源组 ID，指定 VM 应迁移到的订阅和资源组。
+ 目标虚拟网络和子网 | 必需 | 分别使用 (`TargetNetworkId`) 和 (`TargetSubnetName`) 参数指定 VM 应迁移到的 Azure 虚拟网络的 ID 和子网的名称。
+ 计算机 ID | 必需 | 指定需要复制和迁移的已发现计算机的 ID。 使用 (`InputObject`) 为复制指定发现的 VM 对象。  
+ 目标 VM 名称 | 必需 | 使用 (`TargetVMName`) 参数指定要创建的 Azure VM 的名称。 
+ 目标 VM 大小 | 必需 | 使用 (`TargetVMSize`) 参数指定要用于复制 VM 的 Azure VM 大小。 例如，要将 VM 迁移到 Azure 中的 D2_v2 VM，请将 (`TargetVMSize`) 的值指定为“Standard_D2_v2”。 
+ 许可证 | 必需 | 若要为活动软件保障或 Windows Server 订阅涵盖的 Windows Server 计算机使用 Azure 混合权益，请将 (`LicenseType`) 参数的值指定为“WindowsServer”。 否则，请将值指定为“NoLicenseType”。 
+ OS 磁盘 | 必需 | 指定载有操作系统引导加载程序和安装程序的磁盘的唯一标识符。 要使用的磁盘 ID 是使用 [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) cmdlet 检索到的磁盘的唯一标识符 (UUID) 属性。
+ 磁盘类型 | 必需 | 指定要创建的负载均衡器的名称。 
+ 基础结构冗余 | 可选 | 指定基础结构冗余选项，如下所示。 <br/><br/> - 可用性区域 - 将迁移的计算机固定到区域中的特定可用性区域。 使用此选项可跨可用性区域分配形成多节点应用程序层的服务器。 仅当为迁移选择的目标区域支持可用性区域时，此选项才可用。 若要使用可用性区域，请为 (`TargetAvailabilityZone`) 参数指定可用性区域值。 <br/> - 可用性集 - 将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。 若要使用可用性集，请为 (`TargetAvailabilitySet`) 参数指定可用性集 ID。 
+ 启动诊断存储帐户 | 可选 | 若要使用启动诊断存储帐户，请为 (`TargetBootDiagnosticStorageAccount`) 参数指定 ID。 <br/> - 用于启动诊断的存储帐户应位于要将 VM 迁移到的同一订阅中。 <br/> - 默认情况下，没有为此参数设置值。 
+
+
 
 ### <a name="replicate-vms-with-all-disks"></a>使用所有磁盘复制 VM
 
@@ -163,13 +164,17 @@ Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName $ResourceGroup.
 ```azurepowershell-interactive
 # Retrieve the resource group that you want to migrate to
 $TargetResourceGroup = Get-AzResourceGroup -Name MyTargetResourceGroup
+```
 
+```azurepowershell-interactive
 # Retrieve the Azure virtual network and subnet that you want to migrate to
 $TargetVirtualNetwork = Get-AzVirtualNetwork -Name MyVirtualNetwork
-
+```
+```azurepowershell-interactive
 # Start replication for a discovered VM in an Azure Migrate project
 $MigrateJob =  New-AzMigrateServerReplication -InputObject $DiscoveredServer -TargetResourceGroupId $TargetResourceGroup.ResourceId -TargetNetworkId $TargetVirtualNetwork.Id -LicenseType NoLicenseType -OSDiskID $DiscoveredServer.Disk[0].Uuid -TargetSubnetName $TargetVirtualNetwork.Subnets[0].Name -DiskType Standard_LRS -TargetVMName MyMigratedTestVM -TargetVMSize Standard_DS2_v2
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -195,7 +200,9 @@ Write-Output $MigrateJob.State
 ```azurepowershell-interactive
 # View disk details of the discovered server
 Write-Output $DiscoveredServer.Disk
+```
 
+```azurepowershell-interactive
 # Create a new disk mapping for the disks to be replicated
 $DisksToReplicate = @()
 $OSDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[0].Uuid -DiskType StandardSSD_LRS -IsOSDisk true
@@ -203,16 +210,24 @@ $DataDisk = New-AzMigrateDiskMapping -DiskID $DiscoveredServer.Disk[1].Uuid -Dis
 
 $DisksToReplicate += $OSDisk
 $DisksToReplicate += $DataDisk
+```
 
+```azurepowershell-interactive
 # Retrieve the resource group that you want to migrate to
 $TargetResourceGroup = Get-AzResourceGroup -Name MyTargetResourceGroup
+```
 
+```azurepowershell-interactive
 # Retrieve the Azure virtual network and subnet that you want to migrate to
 $TargetVirtualNetwork = Get-AzVirtualNetwork -Name MyVirtualNetwork
+```
 
+```azurepowershell-interactive
 # Start replication for the VM
 $MigrateJob =  New-AzMigrateServerReplication -InputObject $DiscoveredServer -TargetResourceGroupId $TargetResourceGroup.ResourceId -TargetNetworkId $TargetVirtualNetwork.Id -LicenseType NoLicenseType -DiskToInclude $DisksToReplicate -TargetSubnetName $TargetVirtualNetwork.Subnets[0].Name -TargetVMName MyMigratedTestVM -TargetVMSize Standard_DS2_v2
+```
 
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -238,7 +253,8 @@ Write-Output $MigrateJob.State
 ```azurepowershell-interactive
 # List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
 $ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
-
+```
+```azurepowershell-interactive
 # Retrieve all properties of a replicating VM 
 $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 ```
@@ -320,26 +336,26 @@ $job = Get-AzMigrateJob -InputObject $job
 
 可以为 VM 更新以下属性。
 
-- VM 名称 - 使用 [`TargetVMName`] 参数指定要创建的 Azure VM 的名称。
-- VM 大小 - 使用 [`TargetVMSize`] 参数指定要用于复制 VM 的 Azure VM 大小。 例如，要将 VM 迁移到 Azure 中的 D2_v2 VM，请将 [`TargetVMSize`] 的值指定为 `Standard_D2_v2`。
-- 虚拟网络 - 使用 [`TargetNetworkId`] 参数指定 VM 应迁移到的 Azure 虚拟网络的 ID。
-- 资源组 - 通过使用 [`TargetResourceGroupId`] 参数提供资源组 ID，指定 VM 应迁移到的资源组的 ID。
-- 网络接口 - 可以使用 [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) cmdlet 指定 NIC 配置。 然后对象的输入将传递给 [Set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) cmdlet 中的 [`NicToUpdate`] 参数。
 
-    - 更改 IP 分配 - 若要为 NIC 指定静态 IP，请使用 [`TargetNicIP`] 参数提供要用作 VM 静态 IP 的 IPv4 地址。 若要为 NIC 动态分配 IP，请提供 `auto` 作为 TargetNicIP 参数的值。
-    - 为 [`TargetNicSelectionType`] 参数使用值 `Primary`、`Secondary` 或 `DoNotCreate` 来指定 NIC 应该是主要的、次要的还是不在迁移的 VM 上创建。 只能将一个 NIC 指定为 VM 的主要的 NIC。
-    - 要使 NIC 成为主要 NIC，还需要指定其他应设为次要的 NIC 或不在迁移的 VM 上创建的 NIC。
-    - 若要更改 NIC 的子网，请使用 [`TargetNicSubnet`] 参数指定子网的名称。
+**参数** | **类型** | **说明**
+--- | --- | ---
+VM 名称 | 可选 | 使用 [`TargetVMName`] 参数指定要创建的 Azure VM 的名称。 
+VM 大小 | 可选 | 使用 [`TargetVMSize`] 参数指定要用于复制 VM 的 Azure VM 大小。 例如，要将 VM 迁移到 Azure 中的 D2_v2 VM，请将 [`TargetVMSize`] 的值指定为 `Standard_D2_v2`。
+虚拟网络 | 可选 | 使用 [`TargetNetworkId`] 参数指定 VM 应迁移到的 Azure 虚拟网络的 ID。 
+资源组 | 可选 | 可以使用 [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) cmdlet 指定 IC 配置。 然后对象的输入将传递给 [Set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) cmdlet 中的 [`NicToUpdate`] 参数。 <br/><br/> - 更改 IP 分配 - 若要为 NIC 指定静态 IP，请使用 [`TargetNicIP`] 参数提供要用作 VM 静态 IP 的 IPv4 地址。 若要为 NIC 动态分配 IP，请提供 `auto` 作为 TargetNicIP 参数的值。 <br/> - 为 [`TargetNicSelectionType`] 参数使用值 `Primary`、`Secondary` 或 `DoNotCreate` 来指定 NIC 应该是主要的、次要的还是不在迁移的 VM 上创建。 只能将一个 NIC 指定为 VM 的主要的 NIC。 <br/> - 要使 NIC 成为主要 NIC，还需要指定其他应设为次要的 NIC 或不在迁移的 VM 上创建的 NIC。 <br/> - 若要更改 NIC 的子网，请使用 [`TargetNicSubnet`] 参数指定子网的名称。
+网络接口 | 可选 | 使用 [`TargetVMName`] 参数指定要创建的 Azure VM 的名称。 
+可用性区域 | 可选 | 若要使用可用性区域，请为 [`TargetAvailabilityZone`] 参数指定可用性区域值。 
+可用性集 | 可选 | 若要使用可用性集，请为 [`TargetAvailabilitySet`] 参数指定可用性集 ID。 
 
- - 可用性区域 - 若要使用可用性区域，请为 [`TargetAvailabilityZone`] 参数指定可用性区域值。
- - 可用性集 - 若要使用可用性集，请为 [`TargetAvailabilitySet`] 参数指定可用性集 ID。
 
 [Get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) cmdlet 将返回一个作业，跟踪该作业可监视操作的状态。
 
 ```azurepowershell-interactive
 # List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
 $ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
+```
 
+```azurepowershell-interactive
 # Retrieve all properties of a replicating VM 
 $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 
@@ -357,10 +373,12 @@ $NicMapping2 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecifi
 
 $NicMapping += $NicMapping1
 $NicMapping += $NicMapping2
-
+```
+```azurepowershell-interactive
 # Update the name, size and NIC configuration of a replicating server
 $UpdateJob = Set-AzMigrateServerReplication -InputObject $ReplicatingServer -TargetVMSize Standard_DS13_v2 -TargetVMName MyMigratedVM -NicToUpdate $NicMapping
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -386,10 +404,12 @@ Write-Output $UpdateJob.State
 ```azurepowershell-interactive
 # Retrieve the Azure virtual network created for testing
 $TestVirtualNetwork = Get-AzVirtualNetwork -Name MyTestVirtualNetwork
-
+```
+```azurepowershell-interactive
 # Start test migration for a replicating server
 $TestMigrationJob = Start-AzMigrateTestMigration -InputObject $ReplicatingServer -TestNetworkID $TestVirtualNetwork.Id
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($TestMigrationJob.State -eq 'InProgress') -or ($TestMigrationJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -405,7 +425,8 @@ Write-Output $TestMigrationJob.State
 ```azurepowershell-interactive
 # Clean-up test migration for a replicating server
 $CleanupTestMigrationJob = Start-AzMigrateTestMigrationCleanup -InputObject $ReplicatingServer
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($CleanupTestMigrationJob.State -eq "InProgress") -or ($CleanupTestMigrationJob.State -eq "NotStarted")){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -425,7 +446,8 @@ Write-Output $CleanupTestMigrationJob.State
 ```azurepowershell-interactive
 # Start migration for a replicating server and turn off source server as part of migration
 $MigrateJob = Start-AzMigrateServerMigration -InputObject $ReplicatingServer -TurnOffSourceServer
-
+```
+```azurepowershell-interactive
 # Track job status to check for completion
 while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStarted')){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
@@ -443,7 +465,8 @@ Write-Output $MigrateJob.State
    ```azurepowershell-interactive
    # Stop replication for a migrated server
    $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $ReplicatingServer
-
+   ```
+   ```azurepowershell-interactive
    # Track job status to check for completion
    while (($StopReplicationJob.State -eq 'InProgress') -or ($StopReplicationJob.State -eq 'NotStarted')){
            #If the job hasn't completed, sleep for 10 seconds before checking the job status again
