@@ -1,18 +1,15 @@
 ---
 title: 快速入门 - 创建注册表 - PowerShell
 description: 快速了解如何使用 PowerShell 在 Azure 容器注册表中创建专用 Docker 注册表
-ms.date: 01/22/2019
+ms.date: 06/03/2021
 ms.topic: quickstart
-ms.custom:
-- mvc
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: bd9b93e22081c43dfa3fd934f13da3713120aadb
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - mvc - devx-track-azurepowershell - mode-api
+ms.openlocfilehash: 794b82817ce092fac34512c0faec097ecab53dc5
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537387"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439937"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用容器注册表
 
@@ -58,23 +55,16 @@ $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "
 
 ## <a name="log-in-to-registry"></a>登录到注册表
 
-在推送和拉取容器映像之前，必须登录到注册表。 为保留本快速入门摘要，请使用 [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] 命令在你的注册表上启用管理员用户。 在生产方案中，你应使用备用[身份验证方法](container-registry-authentication.md)访问注册表，如服务主体。 
+在推送和拉取容器映像之前，必须使用 [Connect-AzContainerRegistry][connect-azcontainerregistry] cmdlet 登录到注册表。 下面的示例使用的凭据与你使用 `Connect-AzAccount` cmdlet 向 Azure 进行身份验证时登录所用的凭据相同。
+
+> [!NOTE]
+> 在以下示例中，`$registry.Name` 的值是资源名称，而不是完全限定的注册表名称。
 
 ```powershell
-$creds = Get-AzContainerRegistryCredential -Registry $registry
-```
-
-接下来，运行用于登录的 [docker login][docker-login] 命令：
-
-```powershell
-$creds.Password | docker login $registry.LoginServer -u $creds.Username --password-stdin
+Connect-AzContainerRegistry -Name $registry.Name
 ```
 
 该命令在完成后返回 `Login Succeeded`。
-
-> [!TIP]
-> Azure CLI 提供了 `az acr login` 命令，它是一种使用 [单个标识](container-registry-authentication.md#individual-login-with-azure-ad)登录容器注册表的便利方法，无需传递 Docker 凭据。
-
 
 [!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
 
@@ -108,7 +98,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 <!-- Links - internal -->
 [Connect-AzAccount]: /powershell/module/az.accounts/connect-azaccount
-[Get-AzContainerRegistryCredential]: /powershell/module/az.containerregistry/get-azcontainerregistrycredential
 [Get-Module]: /powershell/module/microsoft.powershell.core/get-module
 [New-AzContainerRegistry]: /powershell/module/az.containerregistry/New-AzContainerRegistry
 [New-AzResourceGroup]: /powershell/module/az.resources/new-azresourcegroup
@@ -116,3 +105,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md
+[connect-azcontainerregistry]: /powershell/module/az.containerregistry/connect-azcontainerregistry

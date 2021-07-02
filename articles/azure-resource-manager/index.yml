@@ -10,106 +10,126 @@ metadata:
   ms.collection: collection
   author: tfitzmac
   ms.author: tomfitz
-  ms.date: 03/04/2020
-  ms.openlocfilehash: e844a428910a220d77c143baa74124a112135387
-  ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/01/2020
-  ms.locfileid: "96435206"
+  ms.date: 06/01/2021
 highlightedContent:
   items:
-  - title: 什么是资源管理器？
-    itemType: overview
-    url: management/overview.md
-  - title: 什么是 ARM 模板？
-    itemType: overview
-    url: templates/overview.md
-  - title: 创建第一个模板
-    itemType: tutorial
-    url: templates/template-tutorial-create-first-template.md
+    - title: 什么是资源管理器？
+      itemType: overview
+      url: management/overview.md
+    - title: 什么是 ARM 模板？
+      itemType: overview
+      url: templates/overview.md
+    - title: 什么是 Bicep？
+      itemType: overview
+      url: bicep/overview.md
 conceptualContent:
   items:
-  - title: 部署 ARM 模板
-    links:
-    - url: templates/overview.md
-      itemType: overview
-      text: 概述
-    - url: templates/template-tutorial-create-first-template.md
-      itemType: tutorial
-      text: 初学者教程系列
-    - url: templates/template-syntax.md
-      itemType: reference
-      text: 模板语法
-    - url: templates/template-functions.md
-      itemType: reference
-      text: 模板函数
-    - url: /azure/templates/
-      itemType: reference
-      text: 模板参考
-    - url: templates/deploy-powershell.md
-      itemType: how-to-guide
-      text: 部署
-    - url: templates/template-best-practices.md
-      itemType: concept
-      text: 最佳做法
-    footerLink:
-      url: templates/index.yml
-      text: 查看详细信息
-  - title: 管理资源
-    links:
-    - url: management/overview.md
-      itemType: overview
-      text: 概述
-    - url: management/tag-resources.md
-      itemType: how-to-guide
-      text: 标记资源
-    - url: management/move-resource-group-and-subscription.md
-      itemType: concept
-      text: 移动资源
-    - url: management/lock-resources.md
-      itemType: how-to-guide
-      text: 锁定资源
-    - url: management/resource-providers-and-types.md
-      itemType: concept
-      text: 资源提供程序和类型
-    - url: management/azure-subscription-service-limits.md
-      itemType: concept
-      text: 订阅和服务限制
-    footerLink:
-      url: management/index.yml
-      text: 查看详细信息
-  - title: 托管应用程序
-    links:
-    - url: managed-applications/overview.md
-      itemType: overview
-      text: 概述
-    - url: managed-applications/publish-service-catalog-app.md
-      itemType: tutorial
-      text: 将应用发布到服务目录
-    - url: managed-applications/create-uidefinition-overview.md
-      itemType: how-to-guide
-      text: 定义用于创建应用的门户窗格
-    - url: ../marketplace/create-new-azure-apps-offer.md
-      itemType: tutorial
-      text: 将应用添加到市场
-    footerLink:
-      url: managed-applications/index.yml
-      text: 查看详细信息
-  - title: Azure Custom Providers
-    links:
-    - url: custom-providers/overview.md
-      itemType: overview
-      text: 概述
-    - url: custom-providers/create-custom-provider.md
-      itemType: quickstart
-      text: 创建自定义提供程序
-    - url: custom-providers/tutorial-get-started-with-custom-providers.md
-      itemType: tutorial
-      text: 创建自定义操作和资源
-    - url: custom-providers/custom-providers-action-endpoint-how-to.md
-      itemType: how-to-guide
-      text: 将自定义操作添加到 Azure REST API
-    footerLink:
-      url: custom-providers/index.yml
-      text: 查看详细信息
+    - title: 部署 ARM 模板
+      links:
+        - url: templates/overview.md
+          itemType: overview
+          text: 概述
+        - url: templates/template-tutorial-create-first-template.md
+          itemType: tutorial
+          text: 初学者教程系列
+        - url: ./templates/syntax.md
+          itemType: reference
+          text: 模板语法
+        - url: templates/template-functions.md
+          itemType: reference
+          text: 模板函数
+        - url: /azure/templates/
+          itemType: reference
+          text: 模板参考
+        - url: templates/deploy-powershell.md
+          itemType: how-to-guide
+          text: 部署
+        - url: ./templates/best-practices.md
+          itemType: concept
+          text: 最佳做法
+      footerLink:
+        url: templates/index.yml
+        text: 查看详细信息
+    - title: 部署 Bicep 文件
+      links:
+        - url: bicep/overview.md
+          itemType: overview
+          text: 概述
+        - url: /learn/modules/deploy-azure-resources-by-using-bicep-templates
+          itemType: learn
+          text: 部署 Azure 资源
+        - url: bicep/file.md
+          itemType: reference
+          text: Bicep 文件结构
+        - url: bicep/data-types.md
+          itemType: reference
+          text: Bicep 数据类型
+        - url: bicep/bicep-functions.md
+          itemType: reference
+          text: Bicep 函数
+        - url: bicep/operators.md
+          itemType: reference
+          text: Bicep 运算符
+        - url: bicep/deploy-powershell.md
+          itemType: how-to-guide
+          text: 部署
+      footerLink:
+        url: bicep/index.yml
+        text: 查看详细信息
+    - title: 管理资源
+      links:
+        - url: management/overview.md
+          itemType: overview
+          text: 概述
+        - url: management/tag-resources.md
+          itemType: how-to-guide
+          text: 标记资源
+        - url: management/move-resource-group-and-subscription.md
+          itemType: concept
+          text: 移动资源
+        - url: management/lock-resources.md
+          itemType: how-to-guide
+          text: 锁定资源
+        - url: management/resource-providers-and-types.md
+          itemType: concept
+          text: 资源提供程序和类型
+        - url: management/azure-subscription-service-limits.md
+          itemType: concept
+          text: 订阅和服务限制
+      footerLink:
+        url: management/index.yml
+        text: 查看详细信息
+    - title: 托管应用程序
+      links:
+        - url: managed-applications/overview.md
+          itemType: overview
+          text: 概述
+        - url: managed-applications/publish-service-catalog-app.md
+          itemType: tutorial
+          text: 将应用发布到服务目录
+        - url: managed-applications/create-uidefinition-overview.md
+          itemType: how-to-guide
+          text: 定义用于创建应用的门户窗格
+        - url: ../marketplace/azure-app-offer-setup.md
+          itemType: tutorial
+          text: 将应用添加到市场
+      footerLink:
+        url: managed-applications/index.yml
+        text: 查看详细信息
+    - title: Azure Custom Providers
+      links:
+        - url: custom-providers/overview.md
+          itemType: overview
+          text: 概述
+        - url: custom-providers/create-custom-provider.md
+          itemType: quickstart
+          text: 创建自定义提供程序
+        - url: custom-providers/tutorial-get-started-with-custom-providers.md
+          itemType: tutorial
+          text: 创建自定义操作和资源
+        - url: custom-providers/custom-providers-action-endpoint-how-to.md
+          itemType: how-to-guide
+          text: 将自定义操作添加到 Azure REST API
+      footerLink:
+        url: custom-providers/index.yml
+        text: 查看详细信息

@@ -140,8 +140,8 @@
               items:
                 - name: 显示配置
                   href: show-configuration-postgresql-hyperscale-server-group.md
-                - name: 横向扩展 - 添加工作器节点
-                  href: scale-out-postgresql-hyperscale-server-group.md
+                - name: 横向扩展/缩减工作器节点
+                  href: scale-out-in-postgresql-hyperscale-server-group.md
                 - name: 纵向扩展/缩减内存和 vCore 数
                   href: scale-up-down-postgresql-hyperscale-server-group-using-cli.md
                 - name: 配置服务器参数

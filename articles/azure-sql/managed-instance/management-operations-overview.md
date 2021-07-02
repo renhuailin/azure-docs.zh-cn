@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: 了解 Azure SQL 托管实例管理操作的持续时间和最佳做法。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: deployment-configuration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: overview
 author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
-ms.date: 07/10/2020
-ms.openlocfilehash: bd66c10bb1d6316bbe90e7ba4092d79c6a43a75d
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.date: 06/08/2021
+ms.openlocfilehash: 9a4df35d102b3304a65ad7c9a5c750bd70d3d64c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285269"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745846"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Azure SQL 托管实例管理操作概述
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -125,7 +125,7 @@ SQL 托管实例在更新操作期间可用，但更新结束时发生的故障�
 |清理旧的 SQL 实例 |从虚拟群集中删除旧的 SQL 进程 |
 
 > [!NOTE]
-> 由于缩放实例，基础虚拟群集将经历释放未使用的容量和可能的容量碎片整理的过程，这可能会影响未参与创建/缩放操作的实例。 
+> 实例缩放完成后，基础虚拟群集将完成释放未使用容量和可能的容量碎片整理的过程，这可能会影响未参与缩放操作的同一子网中的实例，从而导致其故障转移。 
 
 
 ## <a name="management-operations-cross-impact"></a>管理操作交叉影响

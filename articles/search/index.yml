@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 03/02/2021
-  ms.openlocfilehash: 6203e20f007fc170447d0c145bbaab942834d907
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 86122297340197ede15e99b8ac3f4ff2f61713b1
+  ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110378362"
+  ms.lasthandoff: 06/07/2021
+  ms.locfileid: "111555859"
 landingContent:
 - title: 关于认知搜索
   linkLists:
@@ -62,20 +62,6 @@ landingContent:
       url: search-create-app-portal.md
     - text: 从图像和应用文件中提取文本
       url: cognitive-search-quickstart-blob.md
-- title: 为任意数据编制索引
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 定义索引
-      url: search-what-is-an-index.md
-    - text: 导入数据
-      url: search-what-is-data-import.md
-  - linkListType: reference
-    links:
-    - text: 创建索引 (REST)
-      url: /rest/api/searchservice/create-index
-    - text: 创建索引器 (REST)
-      url: /rest/api/searchservice/create-indexer
 - title: 使用 AI 扩充
   linkLists:
   - linkListType: concept
@@ -98,6 +84,22 @@ landingContent:
     links:
     - text: 内置技能
       url: cognitive-search-predefined-skills.md
+- title: 为任意数据编制索引
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 定义索引
+      url: search-what-is-an-index.md
+    - text: 导入数据
+      url: search-what-is-data-import.md
+    - text: 使用 Power Query 连接器编制索引
+      url: search-how-to-index-power-query-data-sources.md
+  - linkListType: reference
+    links:
+    - text: 创建索引 (REST)
+      url: /rest/api/searchservice/create-index
+    - text: 创建索引器 (REST)
+      url: /rest/api/searchservice/create-indexer
 - title: 查询数据
   linkLists:
   - linkListType: concept

@@ -130,6 +130,12 @@ conceptualContent:
         - url: ./big-data/samples-python.md
           itemType: reference
           text: Python 示例
+    - title: 负责使用 AI
+      summary: Azure 认知服务提供了有关如何在应用程序中负责任地使用 AI 服务的相关信息和指导。
+      links:
+        - url: responsible-use-of-ai-overview.md
+          itemType: overview
+          text: 负责使用 AI
 additionalContent:
   sections:
     - title: 其他资源

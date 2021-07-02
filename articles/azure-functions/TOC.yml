@@ -58,8 +58,10 @@
         - name: Azure Arc（预览版）
           items:
             - name: 发布代码项目
+              displayName: 'Arc, container, Kubernetes'
               href: create-first-function-arc-cli.md
             - name: 发布 Linux 容器
+              displayName: 'Arc, container, Kubernetes'
               href: create-first-function-arc-custom-container.md
     - name: 连接到数据库
       items:
@@ -352,6 +354,8 @@
           href: functions-manually-run-non-http.md
         - name: 将依赖项引入函数应用
           href: bring-dependency-to-functions.md
+        - name: 开发 Python 辅助角色扩展
+          href: develop-python-worker-extensions.md
     - name: 部署
       items:
         - name: 连续部署

@@ -1,10 +1,10 @@
-- name: Windows 虚拟桌面（经典）
+- name: Azure 虚拟桌面（经典）
   href: ../index.yml
 - name: 概述
   items:
-    - name: 什么是 Windows 虚拟桌面？
+    - name: 什么是 Azure 虚拟桌面？
       href: ../overview.md
-    - name: Windows 虚拟桌面文档
+    - name: Azure 虚拟桌面文档
       href: ../create-host-pools-azure-marketplace.md
 - name: 教程
   items:
@@ -24,7 +24,7 @@
   items:
     - name: 手动迁移
       href: ../manual-migration.md
-    - name: 连接到 Windows 虚拟桌面资源
+    - name: 连接到 Azure 虚拟桌面资源
       items:
         - name: 使用 Windows 桌面客户端进行连接
           href: connect-windows-7-10-2019.md
@@ -76,9 +76,9 @@
       href: ../set-up-mfa.md
 - name: 概念
   items:
-    - name: Windows 虚拟桌面环境
+    - name: Azure 虚拟桌面环境
       href: environment-setup-2019.md
-    - name: Windows 虚拟桌面中的委托访问
+    - name: Azure 虚拟桌面中的委托访问
       href: delegated-access-virtual-desktop-2019.md
     - name: 主机池负载均衡方法
       href: host-pool-load-balancing-2019.md
@@ -100,7 +100,7 @@
       href: troubleshoot-management-tool.md
     - name: 远程桌面服务连接
       href: troubleshoot-service-connection-2019.md
-    - name: Windows 虚拟桌面 PowerShell
+    - name: Azure 虚拟桌面 PowerShell
       href: troubleshoot-powershell-2019.md
 - name: 参考
   items:

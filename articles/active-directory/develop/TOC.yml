@@ -23,12 +23,10 @@
     - name: 单页应用 (SPA)
       items:
         - name: Angular
-          href: quickstart-v2-angular.md
-        - name: Angular - 授权代码流
           href: quickstart-v2-javascript-auth-code-angular.md
         - name: JavaScript
           href: quickstart-v2-javascript-auth-code.md
-        - name: React - 授权代码流
+        - name: React
           href: quickstart-v2-javascript-auth-code-react.md
     - name: Web 应用
       items:
@@ -81,8 +79,6 @@
     - name: 单页应用 (SPA)
       items:
         - name: Angular
-          href: tutorial-v2-angular.md
-        - name: Angular - 授权代码流
           href: tutorial-v2-angular-auth-code.md
         - name: Blazor WebAssembly
           href: tutorial-blazor-webassembly.md
@@ -148,13 +144,18 @@
       href: app-objects-and-service-principals.md
     - name: 标识平台最佳做法
       href: identity-platform-integration-checklist.md
+    - name: 应用安全
+      displayName: 'least privilege, secure app configuration, conditional access'
+      items:
+        - name: 应用最低权限访问的最佳做法
+          href: secure-least-privileged-access.md
+        - name: 条件性访问
+          href: v2-conditional-access-dev-guide.md
+        - name: 认证上下文
+          href: developer-guide-conditional-access-authentication-context.md
     - name: 权限和许可
       displayName: Scopes
       href: v2-permissions-and-consent.md
-    - name: 条件性访问
-      href: v2-conditional-access-dev-guide.md
-    - name: 认证上下文
-      href: developer-guide-conditional-access-authentication-context.md
     - name: 自动用户预配 (SCIM)
       href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
 - name: 操作说明
@@ -617,6 +618,8 @@
               href: id-tokens.md
             - name: 访问令牌
               href: access-tokens.md
+            - name: 刷新令牌
+              href: refresh-tokens.md
             - name: 配置令牌生存期
               href: active-directory-configurable-token-lifetimes.md
             - name: UserInfo 终结点

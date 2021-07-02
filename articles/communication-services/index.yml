@@ -9,12 +9,12 @@ metadata:
   author: mikben
   ms.author: mikben
   ms.date: 03/10/2021
-  ms.openlocfilehash: ec0a4ebaebecf9cf5fac95ca1b3bded1ba759958
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 9c07d4334d6137fc6bef9a9edecf6566d97c4cd6
+  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110092271"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111903376"
 landingContent:
 - title: 关于 Azure 通信服务
   linkLists:
@@ -36,6 +36,8 @@ landingContent:
       url: quickstarts/create-communication-resource.md
     - text: 创建和管理用户访问令牌
       url: quickstarts/access-tokens.md
+    - text: 获取中继令牌
+      url: quickstarts/relay-token.md
   - linkListType: concept
     links:
     - text: 客户端和服务器体系结构
@@ -52,10 +54,10 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 向应用添加语音和视频呼叫
+    - text: 在应用中添加语音呼叫
       url: quickstarts/voice-video-calling/getting-started-with-calling.md
-    - text: 使用呼叫 SDK
-      url: quickstarts/voice-video-calling/calling-client-samples.md
+    - text: 在应用中添加视频呼叫
+      url: quickstarts/voice-video-calling/get-started-with-video-calling.md
   - linkListType: concept
     links:
     - text: 语音和视频概念
