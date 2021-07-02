@@ -1,12 +1,12 @@
-- name: Windows 虚拟桌面
+- name: Azure 虚拟桌面
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Windows 虚拟桌面？
+    - name: 什么是 Azure 虚拟桌面？
       href: overview.md
     - name: 新增功能
       href: whats-new.md
-    - name: Windows 虚拟桌面（经典）文档
+    - name: Azure 虚拟桌面（经典）文档
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: 教程
   items:
@@ -22,7 +22,7 @@
   items:
     - name: 手动迁移
       href: manual-migration.md
-    - name: 连接到 Windows 虚拟桌面资源
+    - name: 连接到 Azure 虚拟桌面资源
       items:
         - name: 使用 Windows 桌面客户端进行连接
           href: connect-windows-7-10.md
@@ -76,7 +76,7 @@
           href: configure-host-pool-load-balancing.md
         - name: 个人桌面分配类型
           href: configure-host-pool-personal-desktop-assignment-type.md
-    - name: 使用 Windows 虚拟桌面许可证
+    - name: 使用 Azure 虚拟桌面许可证
       href: apply-windows-license.md
     - name: 自定义会话主机映像
       items:
@@ -109,9 +109,11 @@
         - name: 设置 MSIXMGR 工具
           href: app-attach-msixmgr.md
     - name: 使用 Microsoft Teams
-      href: teams-on-wvd.md
+      href: teams-on-avd.md
     - name: 设置 Azure AD 多重身份验证
       href: set-up-mfa.md
+    - name: 配置 AD FS 单一登录
+      href: configure-adfs-sso.md
     - name: 配置自动更新
       href: configure-automatic-updates.md
     - name: 安装语言包
@@ -120,7 +122,7 @@
       href: azure-advisor.md
     - name: 解决建议
       href: azure-advisor-recommendations.md
-    - name: 使用适用于 Windows 虚拟桌面的 Azure Monitor
+    - name: 使用适用于 Azure 虚拟桌面的 Azure Monitor
       href: azure-monitor.md
     - name: 设置灾难恢复计划
       href: disaster-recovery.md
@@ -140,9 +142,9 @@
       href: rbac.md
     - name: 身份验证
       href: authentication.md
-    - name: Windows 虚拟桌面环境
+    - name: Azure 虚拟桌面环境
       href: environment-setup.md
-    - name: Windows 虚拟桌面代理
+    - name: Azure 虚拟桌面代理
       href: agent-overview.md
     - name: 网络连接
       items:
@@ -160,7 +162,7 @@
           href: proxy-server-support.md
         - name: 确定用户连接延迟
           href: connection-latency.md
-    - name: Windows 虚拟桌面中的委托访问
+    - name: Azure 虚拟桌面中的委托访问
       href: delegated-access-virtual-desktop.md
     - name: 主机池负载均衡方法
       href: host-pool-load-balancing.md
@@ -168,7 +170,7 @@
       href: fslogix-containers-azure-files.md
     - name: FSLogix 配置文件容器的存储选项
       href: store-fslogix-profile.md
-    - name: Windows 虚拟桌面常见问题解答
+    - name: Azure 虚拟桌面常见问题解答
       href: faq.md
     - name: Windows 10 Enterprise 多会话常见问题解答
       href: windows-10-multisession-faq.yml
@@ -200,11 +202,11 @@
       href: troubleshoot-vm-configuration.md
     - name: 远程桌面服务连接
       href: troubleshoot-service-connection.md
-    - name: Windows 虚拟桌面代理
+    - name: Azure 虚拟桌面代理
       href: troubleshoot-agent.md
     - name: 远程桌面客户端问题
       href: troubleshoot-client.md
-    - name: Windows 虚拟桌面 PowerShell
+    - name: Azure 虚拟桌面 PowerShell
       href: troubleshoot-powershell.md
     - name: 诊断图形性能问题
       href: remotefx-graphics-performance-counters.md
