@@ -72,7 +72,7 @@
           href: ./samples/pattern-logical-operators.md
         - name: 字段
           href: ./samples/pattern-fields.md
-        - name: 参数
+        - name: parameters
           href: ./samples/pattern-parameters.md
         - name: 效果详细信息
           href: ./samples/pattern-effect-details.md
@@ -283,7 +283,7 @@
           href: /rest/api/policy/
         - name: 来宾配置
           href: /rest/api/guestconfiguration/
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       items:
         - name: 分配
           href: /azure/templates/microsoft.authorization/policyassignments
@@ -305,6 +305,8 @@
   items:
     - name: GitHub - Azure Policy 示例
       href: 'https://github.com/Azure/azure-policy'
+    - name: 企业规模 - 参考实现
+      href: 'https://github.com/Azure/Enterprise-Scale#enterprise-scale---reference-implementation'
     - name: 社区工具
       items:
         - name: GitHub - 社区策略存储库

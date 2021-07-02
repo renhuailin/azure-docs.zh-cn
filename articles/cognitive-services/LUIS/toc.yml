@@ -18,8 +18,6 @@
   items:
     - name: 使用 LUIS 门户
       href: luis-get-started-create-app.md
-    - name: 使用浏览器
-      href: luis-get-started-get-intent-from-browser.md
     - name: 使用客户端库和 REST API
       href: client-libraries-rest-api.md
 - name: 示例
@@ -82,18 +80,14 @@
       href: luis-get-started-get-intent-from-browser.md
     - name: 迁移
       items:
-        - name: 概述
-          href: migration.md
-        - name: 从复合实体迁移
-          href: migrate-from-composite-entity.md
-        - name: 迁移到创作资源
-          href: luis-migration-authoring.md
-        - name: 迁移到 V3 API
-          href: luis-migration-api-v3.md
         - name: 迁移到 V3 创作 API
           href: luis-migration-authoring-entities.md
         - name: 迁移到 V3 预测 API
           href: luis-migration-api-v3.md
+        - name: 从复合实体迁移
+          href: migrate-from-composite-entity.md
+        - name: 迁移到创作资源
+          href: luis-migration-authoring.md
         - name: 迁移到 V2 API
           href: luis-migration-api-v1-to-v2.md
     - name: 管理应用
@@ -171,10 +165,6 @@
       items:
         - name: 查看终结点话语
           href: luis-concept-review-endpoint-utterances.md
-    - name: 测试
-      items:
-        - name: 交互式测试
-          href: luis-concept-test.md
     - name: 数据管理
       items:
         - name: 数据收集
@@ -196,14 +186,12 @@
       displayName: import
     - name: 通过 LUIS 应用 DevOps 实践
       items:
-        - name: 使用 DevOps
-          href: luis-how-to-devops-with-github.md
+        - name: 持续集成和持续交付 (CI/CD) 工作流
+          href: luis-concept-devops-automation.md
         - name: LUIS 的源代码管理和分支策略
           href: luis-concept-devops-sourcecontrol.md
         - name: DevOps 测试
           href: luis-concept-devops-testing.md
-        - name: CI/CD 工作流
-          href: luis-concept-devops-automation.md
 - name: 教程
   items:
     - name: 生成可分解的应用
@@ -356,8 +344,6 @@
           items:
             - name: 机器学习实体
               href: reference-entity-machine-learned-entity.md
-            - name: 复合实体
-              href: reference-entity-composite.md
             - name: 列表实体
               href: reference-entity-list.md
             - name: Pattern.any 实体

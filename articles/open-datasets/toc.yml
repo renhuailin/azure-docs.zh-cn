@@ -16,6 +16,104 @@
   items:
     - name: Azure 机器学习中的数据集
       href: how-to-create-azure-machine-learning-dataset-from-open-dataset.md
+- name: 数据集
+  items:
+    - name: 数据集目录
+      href: dataset-catalog.md
+    - name: 运输
+      items:
+        - name: Tartanair AirSim
+          href: dataset-tartanair-simulation.md
+        - name: 纽约出租车 - 黄色
+          href: dataset-taxi-yellow.md
+        - name: 纽约出租车 - 绿色
+          href: dataset-taxi-green.md
+        - name: 纽约出租车 - 租约车
+          href: dataset-taxi-for-hire-vehicle.md
+    - name: 健康和基因组学
+      items:
+        - name: COVID-19 数据湖
+          items:
+            - name: COVID-19 数据湖
+              href: dataset-covid-19-data-lake.md
+            - name: 必应 COVID-19 数据
+              href: dataset-bing-covid-19.md
+            - name: COVID 跟踪项目
+              href: dataset-covid-tracking.md
+            - name: ECDC COVID-19 病例
+              href: dataset-ecdc-covid-cases.md
+            - name: 牛津 COVID-19 政府响应追踪系统
+              href: dataset-oxford-covid-government-response-tracker.md
+        - name: COVID-19 开放研究
+          href: dataset-covid-19-open-research.md
+        - name: 基因组学数据湖
+          items:
+            - name: 基因组学数据湖
+              href: dataset-genomics-data-lake.md
+            - name: Illumina Platinum Genomes
+              href: dataset-illumina-platinum-genomes.md
+            - name: 人类参考基因组
+              href: dataset-human-reference-genomes.md
+            - name: ClinVar 注释
+              href: dataset-clinvar-annotations.md
+            - name: SnpEff
+              href: dataset-snpeff.md
+            - name: gnomAD
+              href: dataset-gnomad.md
+            - name: 1000 基因组
+              href: dataset-1000-genomes.md
+            - name: OpenCravat
+              href: dataset-open-cravat.md
+            - name: ENCODE
+              href: dataset-encode.md
+            - name: GATK 资源包
+              href: dataset-gatk-resource-bundle.md
+    - name: 劳动力和经济
+      items:
+        - name: 美国劳动力统计信息
+          href: dataset-us-labor-force.md
+        - name: 美国全国工作时数及收入
+          href: dataset-us-national-employment-earnings.md
+        - name: 美国各州工作时数及收入
+          href: dataset-us-state-employment-earnings.md
+        - name: 美国各地区失业统计信息
+          href: dataset-us-local-unemployment.md
+        - name: 美国消费者价格指数
+          href: dataset-us-consumer-price-index.md
+        - name: 美国生产者价格指数 - 行业
+          href: dataset-us-producer-price-index-industry.md
+        - name: 美国生产者价格指数 - 商品
+          href: dataset-us-producer-price-index-commodities.md
+    - name: 人口和安全
+      items:
+        - name: 按县划分的美国人口
+          href: dataset-us-population-county.md
+        - name: 按邮政编码划分的美国人口
+          href: dataset-us-population-zip.md
+        - name: 波士顿安全数据
+          href: dataset-boston-safety.md
+        - name: 芝加哥安全数据
+          href: dataset-chicago-safety.md
+        - name: 纽约市安全数据
+          href: dataset-new-york-city-safety.md
+        - name: 旧金山安全数据
+          href: dataset-san-francisco-safety.md
+        - name: 西雅图安全数据
+          href: dataset-seattle-safety.md
+    - name: 常用数据集
+      items:
+        - name: 糖尿病
+          href: dataset-diabetes.md
+        - name: OJ 销售模拟数据
+          href: dataset-oj-sales-simulated.md
+        - name: MNIST
+          href: dataset-mnist.md
+        - name: Microsoft 资讯建议数据集
+          href: dataset-microsoft-news.md
+        - name: 公共节假日
+          href: dataset-public-holidays.md
+        - name: 俄语开放语音转文本
+          href: dataset-open-speech-text.md
 - name: 示例
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md

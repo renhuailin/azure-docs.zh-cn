@@ -2,14 +2,14 @@
 title: 快速入门 - 使用 Azure CLI 运行第一个 Batch 作业
 description: 本快速入门介绍如何使用 Azure CLI 创建 Batch 帐户和运行 Batch 作业。
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 05/25/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8d3005233320a7ba0d00f186944a0a8c0c456647
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: eba9bf9fd290c4483fc9caa0efa4f05adbeb08ef
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765298"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476134"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入门：使用 Azure CLI 运行第一个 Batch 作业
 
@@ -72,7 +72,7 @@ az batch account login \
 
 ## <a name="create-a-pool-of-compute-nodes"></a>创建计算节点池
 
-有了 Batch 帐户以后，即可使用 [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) 命令创建包含 Linux 计算节点的示例池。 以下示例创建名为 *mypool* 的池，其中包含 2 个大小为 *Standard_A1_v2* 且运行 Ubuntu 16.04 LTS 的节点。 就此快速示例来说，建议的节点大小在性能和成本之间达成了很好的平衡。
+有了 Batch 帐户以后，即可使用 [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) 命令创建包含 Linux 计算节点的示例池。 以下示例创建一个名为“mypool”的池，其中包含两个运行 Ubuntu 16.04 LTS 的 Standard_A1_v2 节点。 就此快速示例来说，建议的节点大小在性能和成本之间达成了很好的平衡。
  
 ```azurecli-interactive
 az batch pool create \
@@ -103,9 +103,9 @@ az batch job create \
 
 ## <a name="create-tasks"></a>创建任务
 
-现在，请使用 [az batch task create](/cli/azure/batch/task#az_batch_task_create) 命令创建一些在作业中运行的任务。 此示例创建四个相同的任务。 每个任务都运行`command-line`，用于显示计算节点上的 Batch 环境变量，然后等待 90 秒。 使用 Batch 时，可以在此命令行中指定应用或脚本。 Batch 提供多种将应用和脚本部署到计算节点的方式。
+现在，请使用 [az batch task create](/cli/azure/batch/task#az_batch_task_create) 命令创建一些在作业中运行的任务。 此示例创建四个相同的任务。 每个任务都运行`command-line`，用于显示计算节点上的 Batch 环境变量，然后等待 90 秒。 使用 Batch 时，可以在此命令行中指定应用或脚本。 Batch 提供了多种将应用和脚本部署到计算节点的方式。
 
-以下 Bash 脚本创建 4 个并行任务（*mytask1* 到 *mytask4*）。
+以下 Bash 脚本创建四个并行任务（mytask1 到 mytask4）。
 
 ```azurecli-interactive
 for i in {1..4}

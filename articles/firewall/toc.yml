@@ -62,6 +62,8 @@
       href: remote-work-support.md
     - name: 网络规则中的 FQDN
       href: fqdn-filtering-network-rules.md
+    - name: DNS 代理详细信息
+      href: dns-details.md
     - name: 安全基线
       href: /security/benchmark/azure/baselines/firewall-security-baseline?toc=/azure/firewall/toc.json
     - name: 主动 FTP 支持
@@ -136,7 +138,7 @@
     - name: 常见问题解答
       href: firewall-faq.yml
     - name: 创作模板
-      href: ../azure-resource-manager/templates/template-syntax.md
+      href: ../azure-resource-manager/templates/syntax.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 社区模板

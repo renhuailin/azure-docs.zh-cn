@@ -1,0 +1,46 @@
+- name: 将本地 MySQL 迁移到 Azure Database for MySQL
+  items:
+    - name: 概述
+      items:
+        - name: 简介
+          href: index.md
+        - name: 代表性用例
+          href: representative-use-case.md
+    - name: 迁移前
+      items:
+        - name: 评估
+          href: assessment.md
+        - name: 规划
+          href: planning.md
+        - name: 迁移方法
+          href: migration-methods.md
+        - name: Test Plans
+          href: test-plans.md
+        - name: 性能基线
+          href: performance-baselines.md
+    - name: 数据迁移
+      items:
+        - name: 数据迁移
+          href: data-migration.md
+        - name: 通过 MySQL Workbench 进行数据迁移
+          href: data-migration-with-mysql-workbench.md
+    - name: 迁移后管理
+      items:
+        - name: 迁移后管理
+          href: post-migration-management.md
+        - name: 优化
+          href: optimization.md
+        - name: 业务连续性和灾难恢复 (BCDR)
+          href: business-continuity-and-disaster-recovery.md
+        - name: 安全性
+          href: security.md
+        - name: 摘要
+          href: summary.md
+    - name: 附录
+      items:
+        - name: 附录 A - 环境设置
+          href: appendix-a-environment-setup.md
+        - name: 附录 B - ARM 模板
+          href: appendix-b-arm-templates.md
+        - name: 附录 C - 默认服务器参数 MySQL 5.5 和 Azure Database for MySQL
+          href: appendix-c-default-server-parameters-mysql-55-and-azure-database-for-mysql.md
