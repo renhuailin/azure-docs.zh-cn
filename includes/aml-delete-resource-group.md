@@ -8,18 +8,18 @@ ms.topic: include
 author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: 9c6d29287f86cd6334692e2be5376caf9dd98bdd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8aeff540c323905f91af94af29a8be9a980afc19
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91372556"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760638"
 ---
 >[!IMPORTANT]
 >已创建的资源可用作其他 Azure 机器学习教程和操作方法文章的先决条件。 
 
 
-如果不打算使用已创建的资源，请删除它们，以免产生任何费用：
+如果你不打算使用已创建的任何资源，请删除它们，以免产生任何费用：
 
 1. 在 Azure 门户中，选择最左侧的“资源组”  。
  

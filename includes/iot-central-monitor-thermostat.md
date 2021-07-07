@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 26aefab9b4637c3f3f6b0f0d1195068e2cd770ab
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 76f8c8819bf67405023980a6fd0e48f997926938
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001803"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111896435"
 ---
 <!-- All needs updating -->
 Azure IoT Central 应用程序中的操作员可以：
@@ -58,7 +58,7 @@ Azure IoT Central 应用程序中的操作员可以：
 
 1. 选择“保存”。
 
-“温度控制器”模型中的恒温器组件包含“目标温度”可写属性，设备模板包含“客户名称”云属性。   操作员可以使用“创建视图”来编辑以下属性：
+“温度控制器”模型中的恒温器组件包含“目标温度”可写属性，设备模板包含“客户名称”云属性。 操作员可以使用“创建视图”来编辑以下属性：
 
 1. 选择“视图”，然后选择“编辑设备和云数据”磁贴。
 
@@ -78,7 +78,7 @@ Azure IoT Central 应用程序中的操作员可以：
 
 操作员现在可以使用“属性”视图来更新属性值，并在设备命令页上调用“获取恒温器 1 状态报告”和“获取恒温器 2 状态报告”的命令：  
 
-* 更新“属性”页上的可写属性值： 
+* 更新“属性”页上的可写属性值：
 
     :::image type="content" source="media/iot-central-monitor-thermostat/update-properties.png" alt-text="更新设备属性":::
 

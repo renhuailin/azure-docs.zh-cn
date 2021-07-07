@@ -1,0 +1,108 @@
+---
+title: include 文件
+description: include 文件
+author: timlt
+ms.service: iot-develop
+ms.topic: include
+ms.date: 04/28/2021
+ms.author: timlt
+ms.custom: include file
+ms.openlocfilehash: 984849cddceb2476bd9d0870da47a33770c4a36a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108776407"
+---
+## <a name="prerequisites"></a>先决条件
+- [Python](https://www.python.org/downloads/) 版本 3.7 或更高版本。 若要检查 Python 版本，请运行 `python --version`。
+- [Git](https://git-scm.com/downloads)。
+- 可以在 Linux 或 Windows 上运行此快速入门。 Shell 命令使用标准 Linux 路径分隔符 `/`。 如果使用 Windows，请将这些分隔符替换为 Windows 路径分隔符 `\`。
+
+[!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
+
+## <a name="run-a-simulated-device"></a>运行模拟设备
+在本部分，你将配置本地环境，安装 Azure IoT Python 设备 SDK，并运行创建模拟温度控制器的示例。
+
+### <a name="configure-your-environment"></a>配置环境
+
+1. 使用 Windows CMD、PowerShell 或 Bash 打开控制台。
+
+1. 使用适用于你的控制台的适当命令设置以下环境变量。 模拟设备使用这些值连接到 IoT Central。 对于 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY` 和 `IOTHUB_DEVICE_DPS_DEVICE_ID`，请使用之前保存的设备连接值。
+
+    **Windows CMD**
+
+    ```console
+    set IOTHUB_DEVICE_SECURITY_TYPE=DPS
+    set IOTHUB_DEVICE_DPS_ID_SCOPE=<application ID scope>
+    set IOTHUB_DEVICE_DPS_DEVICE_KEY=<device primary key>
+    set IOTHUB_DEVICE_DPS_DEVICE_ID=<your device ID>
+    set IOTHUB_DEVICE_DPS_ENDPOINT=global.azure-devices-provisioning.net
+    ```
+
+    > [!NOTE]
+    > 在 Windows CMD 中，请不要在变量值的两边加上引号。
+
+    **PowerShell**
+
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_SECURITY_TYPE='DPS'
+    $env:IOTHUB_DEVICE_DPS_ID_SCOPE='<application ID scope>'
+    $env:IOTHUB_DEVICE_DPS_DEVICE_KEY='<device primary key>'
+    $env:IOTHUB_DEVICE_DPS_DEVICE_ID='<your device ID>'
+    $env:IOTHUB_DEVICE_DPS_ENDPOINT='global.azure-devices-provisioning.net'
+    ```
+
+    **Bash（Linux 或 Windows）**
+
+    ```bash
+    export IOTHUB_DEVICE_SECURITY_TYPE='DPS'
+    export IOTHUB_DEVICE_DPS_ID_SCOPE='<application ID scope>'
+    export IOTHUB_DEVICE_DPS_DEVICE_KEY='<device primary key>'
+    export IOTHUB_DEVICE_DPS_DEVICE_ID='<your device ID>'
+    export IOTHUB_DEVICE_DPS_ENDPOINT='global.azure-devices-provisioning.net' 
+    ```
+
+### <a name="install-the-sdk-and-samples"></a>安装 SDK 和示例
+
+1. 将 Azure IoT Python 设备 SDK 复制到本地计算机。
+
+    ```console
+    git clone https://github.com/Azure/azure-iot-sdk-python
+    ```
+1. 导航到示例目录。
+    ```console
+    cd azure-iot-sdk-python/azure-iot-device/samples/pnp
+    ```
+1. 安装 Azure IoT Python SDK。
+    ```console
+    pip3 install azure-iot-device
+    ```
+
+### <a name="run-the-code"></a>运行代码
+
+1. 在控制台中，从 SDK 运行以下代码示例。 此示例使用恒温器传感器创建模拟温度控制器。
+    ```console
+    python temp_controller_with_thermostats.py
+    ```
+
+    模拟设备连接到 IoT Central 应用程序后，它会连接到在该应用程序中创建的设备实例，并开始发送遥测数据。 控制台中显示了连接详细信息和遥测输出： 
+    
+    ```output
+    Device was assigned
+    iotc-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.azure-devices.net
+    my-sdk-device
+    Updating pnp properties for root interface
+    {'serialNumber': 'alohomora'}
+    Updating pnp properties for thermostat1
+    {'thermostat1': {'maxTempSinceLastReboot': 98.34, '__t': 'c'}}
+    Updating pnp properties for thermostat2
+    {'thermostat2': {'maxTempSinceLastReboot': 48.92, '__t': 'c'}}
+    Updating pnp properties for deviceInformation
+    {'deviceInformation': {'swVersion': '5.5', 'manufacturer': 'Contoso Device Corporation', 'model': 'Contoso 4762B-turbo', 'osName': 'Mac Os', 'processorArchitecture': 'x86-64', 'processorManufacturer': 'Intel', 'totalStorage': 1024, 'totalMemory': 32, '__t': 'c'}}
+    Listening for command requests and property updates
+    Press Q to quit
+    Sending telemetry from various components
+    Sent message
+    {"temperature": 33}
+    ```

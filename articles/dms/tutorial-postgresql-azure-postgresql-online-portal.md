@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: d28c45b2d0fc1a123f44020f42c4d2c59c593cb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d81e43958bf9d4bb8cc20d57ba7ca7a49387f07
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709914"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070023"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>教程：通过 Azure 门户使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -110,54 +110,9 @@ ms.locfileid: "101709914"
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental citus < dvdrentalSchema.sql
     ```
 
-4. 若要提取 drop foreign key 脚本并将其添加到目标 (Azure Database for PostgreSQL) 中，请在 PgAdmin 或 psql 中运行以下脚本。
+   > [!NOTE]
+   > 迁移服务在内部处理外键和触发器的启用/禁用，以确保可靠且稳定的数据迁移。 因此，你不需要担忧对目标数据库架构所做的任何修改。
 
-   > [!IMPORTANT]
-   > 如果架构中有外键，则迁移的初始加载和连续同步将失败。
-
-    ```
-    SELECT Q.table_name
-        ,CONCAT('ALTER TABLE ', table_schema, '.', table_name, STRING_AGG(DISTINCT CONCAT(' DROP CONSTRAINT ', foreignkey), ','), ';') as DropQuery
-            ,CONCAT('ALTER TABLE ', table_schema, '.', table_name, STRING_AGG(DISTINCT CONCAT(' ADD CONSTRAINT ', foreignkey, ' FOREIGN KEY (', column_name, ')', ' REFERENCES ', foreign_table_schema, '.', foreign_table_name, '(', foreign_column_name, ')' ), ','), ';') as AddQuery
-    FROM
-        (SELECT
-        S.table_schema,
-        S.foreignkey,
-        S.table_name,
-        STRING_AGG(DISTINCT S.column_name, ',') AS column_name,
-        S.foreign_table_schema,
-        S.foreign_table_name,
-        STRING_AGG(DISTINCT S.foreign_column_name, ',') AS foreign_column_name
-    FROM
-        (SELECT DISTINCT
-        tc.table_schema,
-        tc.constraint_name AS foreignkey,
-        tc.table_name,
-        kcu.column_name,
-        ccu.table_schema AS foreign_table_schema,
-        ccu.table_name AS foreign_table_name,
-        ccu.column_name AS foreign_column_name
-        FROM information_schema.table_constraints AS tc
-        JOIN information_schema.key_column_usage AS kcu ON tc.constraint_name = kcu.constraint_name AND tc.table_schema = kcu.table_schema
-        JOIN information_schema.constraint_column_usage AS ccu ON ccu.constraint_name = tc.constraint_name AND ccu.table_schema = tc.table_schema
-    WHERE constraint_type = 'FOREIGN KEY'
-        ) S
-        GROUP BY S.table_schema, S.foreignkey, S.table_name, S.foreign_table_schema, S.foreign_table_name
-        ) Q
-        GROUP BY Q.table_schema, Q.table_name;
-    ```
-
-5. 运行查询结果中的 drop foreign key（第二列）。
-
-6. 若要在目标数据库中禁用触发器，请运行以下脚本。
-
-   > [!IMPORTANT]
-   > 数据中的触发器（插入或更新触发器）会赶在从源中复制数据之前在目标中强制实施数据完整性。 因此，建议在迁移期间禁用目标的所有表中的触发器，然后在迁移完成后重新启用这些触发器。
-
-    ```
-    SELECT DISTINCT CONCAT('ALTER TABLE ', event_object_schema, '.', event_object_table, ' DISABLE TRIGGER ', trigger_name, ';')
-    FROM information_schema.triggers
-    ```
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 

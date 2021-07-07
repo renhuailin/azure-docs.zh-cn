@@ -3,18 +3,18 @@ title: 面向合作伙伴的 Azure 成本管理入门
 description: 本文介绍合作伙伴如何使用 Azure 成本管理功能，以及如何为客户启用成本管理访问。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/27/2021
+ms.date: 06/01/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 40c683d98a13bf4810ec4575af3fba5ae64961f0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 7278211ee47ec4a291a7934fee4b56fae0d8dfc4
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946984"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790359"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
@@ -110,11 +110,17 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 合作伙伴可以使用范围来管理与已加入 Microsoft 客户协议的客户关联的成本。 合作伙伴可以使用范围来查看特定客户的采用计费货币的税前成本。 还可以筛选特定订阅、资源组或资源的税前成本。
 
-客户范围不包括当前 CSP 套餐中的客户。 该范围仅包括已签署 Microsoft 客户协议的客户。 应用客户筛选器时，将在计费帐户和计费配置文件范围提供当前 CSP 套餐客户的权利成本，而不提供 Azure 用量。 在此范围设置的预算采用计费货币。
+客户范围不包括当前 CSP 套餐中的客户。 该范围仅包括已签署 Microsoft 客户协议的客户。
+
+应用客户筛选器时，将在计费帐户和计费配置文件范围提供当前 CSP 套餐客户的权利成本，而不提供 Azure 用量。 在此范围设置的预算采用计费货币。
+
+若要查看客户范围内的成本，请在合作伙伴租户中导航到“成本分析”，选择范围选取器，然后在范围列表中选择特定客户。 下面是 Contoso 服务客户的示例。
+
+:::image type="content" source="./media/get-started-partners/customer-scope.png" alt-text="屏幕截图，显示如何选择客户范围。" lightbox="./media/get-started-partners/customer-scope.png" :::
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>合作伙伴在成本管理中访问计费范围
 
-只有具有“全局管理员”和“管理员代理”角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件与客户的成本。 有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
+只有具有“全局管理员”和“管理员代理”角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件与客户的成本。  有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
 
 ## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>为客户租户订阅启用成本管理
 
@@ -147,7 +153,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>查看客户租户中的订阅成本
 
-若要查看订阅成本，请在客户的 Azure 租户中打开“成本管理 + 计费”。 选择“成本分析”所需订阅，开始查看成本。 可在客户租户中单独查看每个订阅的消耗成本。
+若要查看订阅成本，请在客户的 Azure 租户中打开“成本管理 + 计费”。 选择“成本分析”，然后选择所需订阅，开始查看成本。 可在客户租户中单独查看每个订阅的消耗成本。
 
 [![以客户身份查看成本分析](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/25/2021
 ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, 群集
-ms.openlocfilehash: 6221de7a9cffe5ba4d2e1ed8cc8e47c372b6b578
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a15a841e24d1464741c115684ed639609576a314
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373711"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796549"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>快速入门：将现有 Kubernetes 群集连接到 Azure Arc 
 
@@ -59,11 +59,11 @@ ms.locfileid: "110373711"
   
 | 终结点 (DNS) | 说明 |  
 | ----------------- | ------------- |  
-| `https://management.azure.com`                                                                                 | 代理需要该终结点才可连接到 Azure 并注册群集。                                                        |  
-| `https://<region>.dp.kubernetesconfiguration.azure.com` | 代理的数据平面终结点，用于推送状态和提取配置信息。                                      |  
-| `https://login.microsoftonline.com`                                                                            | 提取和更新 Azure 资源管理器令牌所需的终结点。                                                                                    |  
-| `https://mcr.microsoft.com`                                                                            | 拉取 Azure Arc 代理的容器映像所需的终结点。                                                                  |  
-| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  拉取系统分配的托管服务标识 (MSI) 证书所需的终结点。                                                                  |
+| `https://management.azure.com`（针对 Azure 云），`https://management.usgovcloudapi.net`（针对 Azure US Government） | 代理需要该终结点才可连接到 Azure 并注册群集。 |  
+| `https://<region>.dp.kubernetesconfiguration.azure.com`（针对 Azure 云），`https://<region>.dp.kubernetesconfiguration.azure.us`（针对 Azure US Government） | 代理的数据平面终结点，用于推送状态和提取配置信息。 |  
+| `https://login.microsoftonline.com`（针对 Azure 云），`https://login.microsoftonline.us`（针对 Azure US Government） | 提取和更新 Azure 资源管理器令牌所需的终结点。 |  
+| `https://mcr.microsoft.com` | 拉取 Azure Arc 代理的容器映像所需的终结点。                                                                  |  
+| `https://<region-code>.his.arc.azure.com`（针对 Azure 云），`https://usgv.his.arc.azure.us`（针对 Azure US Government） |  拉取系统分配的托管服务标识 (MSI) 证书所需的终结点。 Azure 云区域的 `<region-code>` 映射：`eus`（美国东部）、`weu`（西欧）、`wcus`（美国中西部）、`scus`（美国中南部）、`sea`（东南亚）、`uks`（英国南部）、`wus2`（美国西部 2）、`ae`（澳大利亚东部）、`eus2`（美国东部 2）、`ne`（北欧）、`fc`（法国中部）。 |
 
 ## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. 为已启用 Azure Arc 的 Kubernetes 注册提供程序
 
@@ -142,14 +142,14 @@ Helm release deployment succeeded
 > 上面未指定位置参数的命令会在资源组所在位置创建启用了 Azure Arc 的 Kubernetes 资源。 若要在其他位置创建启用了 Azure Arc 的 Kubernetes 资源，请在运行 `az connectedk8s connect` 命令时指定 `--location <region>` 或 `-l <region>`。
 
 > [!NOTE]
-> 如果使用服务主体登录到 Azure CLI，则在将群集连接到 Azure Arc 时，需要服务主体上的[其他权限](troubleshooting.md#enable-custom-locations-using-service-principal)才能启用自定义位置功能。
+> 如果你使用服务主体登录到 Azure CLI，则需要设置一个[附加参数](troubleshooting.md#enable-custom-locations-using-service-principal)，用于在群集上启用自定义位置功能。
 
 ## <a name="4-verify-cluster-connection"></a>4. 验证群集连接
 
 运行以下命令：  
 
 ```azurecli-interactive
-az connectedk8s list -resource-group AzureArcTest -output table
+az connectedk8s list --resource-group AzureArcTest --output table
 ```
 
 输出：

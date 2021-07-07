@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/02/2020
+ms.date: 05/26/2021
 ms.author: jeedes
-ms.openlocfilehash: d6b23213d9d986c62a227b3e182a22896d128222
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5de617feb34db1ada91423d8f3cb3ed235f15151
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92442518"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111570020"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>教程：Azure Active Directory 单一登录 (SSO) 与 HRworks Single Sign-On 的集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "92442518"
 * 在 Azure AD 中控制谁有权访问 HRworks Single Sign-On。
 * 可让用户使用其 Azure AD 帐户自动登录 HRworks Single Sign-On。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,45 +37,48 @@ ms.locfileid: "92442518"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* HRworks Single Sign-On 支持 **SP** 发起的 SSO
+* HRworks Single Sign-On 支持 SP 发起的 SSO。
 
-## <a name="adding-hrworks-single-sign-on-from-the-gallery"></a>从库中添加 HRworks Single Sign-On
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
+
+## <a name="add-hrworks-single-sign-on-from-the-gallery"></a>从库中添加 HRworks Single Sign-On
 
 若要配置 HRworks Single Sign-On 与 Azure AD 的集成，需要从库中将 HRworks Single Sign-On 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“HRworks Single Sign-On”   。
 1. 从结果面板中选择“HRworks Single Sign-On”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-hrworks-single-sign-on"></a>配置并测试 HRworks Single Sign-On 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-hrworks-single-sign-on"></a>配置并测试 HRworks Single Sign-On 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置并测试 HRworks Single Sign-On 的 Azure AD SSO  。 若要正常使用 SSO，需要在 Azure AD 用户与 HRworks Single Sign-On 中的相关用户之间建立链接关系。
 
-若要配置和测试 HRworks Single Sign-On 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 HRworks Single Sign-On 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 HRworks Single Sign-On SSO](#configure-hrworks-single-sign-on-sso)** - 在应用程序端配置单一登录设置。
-    * **[创建 HRworks Single Sign-On 测试用户](#create-hrworks-single-sign-on-test-user)** - 在 HRworks Single Sign-On 中创建 B.Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
+    1. **[创建 HRworks Single Sign-On 测试用户](#create-hrworks-single-sign-on-test-user)** - 在 HRworks Single Sign-On 中创建 B.Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“HRworks Single Sign-On”应用程序集成页上，找到“管理”部分并选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在 Azure 门户中的“HRworks Single Sign-On”应用程序集成页上，找到“管理”部分并选择“单一登录”。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”  部分中，执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://login.hrworks.de/?companyId=<companyId>&directssologin=true`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://login.hrworks.de/?companyId=<COMPANY_ID>&directssologin=true`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [HRworks Single Sign-On 客户端支持团队](mailto:nadja.sommerfeld@hrworks.de)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -109,15 +110,9 @@ ms.locfileid: "92442518"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在“应用程序”列表中，选择“HRworks Single Sign-On”。 
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-hrworks-single-sign-on-sso"></a>配置 HRworks Single Sign-On SSO
@@ -134,7 +129,7 @@ ms.locfileid: "92442518"
 
 1. 在菜单栏的左侧单击“管理员” > “基本信息” > “安全性” > “单一登录”，并执行以下步骤：    
 
-    ![配置单一登录](./media/hrworks-single-sign-on-tutorial/configure01.png)
+    ![配置单一登录](./media/hrworks-single-sign-on-tutorial/configure.png)
 
     a. 选中“使用单一登录”框。 
 
@@ -156,28 +151,26 @@ ms.locfileid: "92442518"
 
 1. 在菜单栏的左侧单击“管理员” > “人员” > “人员” > “新建人员”。    
 
-     ![屏幕截图显示“HRworks”页面，其中已选择“人员”和“新建人员”。](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![屏幕截图显示“HRworks”页面，其中已选择“人员”和“新建人员”。](./media/hrworks-single-sign-on-tutorial/persons.png)
 
 1. 在弹出窗口中，单击“下一步”。 
 
-    ![屏幕截图显示可为该人员选择的国家/地区的列表。](./media/hrworks-single-sign-on-tutorial/configure03.png)
+    ![屏幕截图显示可为该人员选择的国家/地区的列表。](./media/hrworks-single-sign-on-tutorial/new-person.png)
 
 1. 在包含国家/地区信息和法律条款的“创建新人员”弹出窗口中填写相关的详细信息，例如“名字”和“姓氏”，然后单击“创建”。    
 
-    ![屏幕截图显示可在其中输入该人员名字和姓氏的文本框。](./media/hrworks-single-sign-on-tutorial/configure04.png)
+    ![屏幕截图显示可在其中输入该人员名字和姓氏的文本框。](./media/hrworks-single-sign-on-tutorial/create-person.png)
 
 ## <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中单击“HRworks Single Sign-On”磁贴时，应会自动登录到设置了 SSO 的 HRworks Single Sign-On。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 HRworks Single Sign-on 登录 URL，你可以在那里启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 HRworks Single Sign-on 登录 URL，并从那里启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“HRworks Single Sign-On”磁贴时，会重定向到 HRworks Single Sign-On 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [尝试结合使用 HRworks Single Sign-On 和 Azure AD](https://aad.portal.azure.com/)
+配置 HRworks Single Sign-on 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

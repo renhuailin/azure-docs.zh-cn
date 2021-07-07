@@ -7,12 +7,13 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ba3a589c5d0f09f24950bd3fee8edc7f4dcd4601
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+zone_pivot_groups: acs-web-ios
+ms.openlocfilehash: 196c35d78b18241a808d4f941dd51d0f08a5b722
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169056"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110080230"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>快速入门：将你的聊天应用连接到 Teams 会议
 
@@ -21,20 +22,15 @@ ms.locfileid: "106169056"
 > [!IMPORTANT]
 > 若要启用/禁用 [Teams 租户互操作性](../../concepts/teams-interop.md)，请填写[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)。
 
-通过使用 JavaScript SDK 将聊天解决方案连接到 Microsoft Teams，开始使用 Azure 通信服务。 
+通过将聊天解决方案连接到 Microsoft Teams，开始使用 Azure 通信服务。 
 
-## <a name="prerequisites"></a>先决条件 
+::: zone pivot="platform-web"
+[!INCLUDE [Teams interop with JavaScript SDK](./includes/meeting-interop-javascript.md)]
+::: zone-end
 
-1.  [部署 Teams](/deployoffice/teams-install)。 
-2. [聊天应用](./get-started.md)正常运行。 
-
-## <a name="enable-teams-interoperability"></a>启用 Teams 互操作性 
-
-以来宾用户身份加入 Teams 会议的通信服务用户仅在加入 Teams 会议通话后才能访问会议的聊天。 请参阅 [Teams 互操作](../voice-video-calling/get-started-teams-interop.md)文档，了解如何将通信服务用户添加到 Teams 会议通话。
-
-你需要是拥有这两个实体的组织的成员才能使用此功能。
-
-[!INCLUDE [Join Teams meetings](./includes/meeting-interop-javascript.md)]
+::: zone pivot="platform-ios"
+[!INCLUDE [Teams interop with iOS SDK](./includes/meeting-interop-swift.md)]
+::: zone-end
 
 ## <a name="clean-up-resources"></a>清理资源
 

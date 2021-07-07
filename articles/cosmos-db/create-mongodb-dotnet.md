@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e0299a6fc7de0592397c20ec5c434fc2ebbcb28d
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 20c6b7286ca769de97e0b694a3b9bf37583678bc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206504"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070887"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 Azure Cosmos DB 的 API for MongoDB 构建 .NET Web 应用 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -33,7 +33,8 @@ Azure Cosmos DB 是 Microsoft 的快速 NoSQL 数据库，具有适合于任何�
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>运行示例应用的先决条件
 
-若要运行该示例，需要 [Visual Studio](https://www.visualstudio.com/downloads/) 和有效的 Azure Cosmos DB 帐户。
+* [Visual Studio](https://www.visualstudio.com/downloads/)
+* 一个 Azure Cosmos DB 帐户。
 
 如果没有 Visual Studio，请在使用安装程序安装 **ASP.NET 和 Web 开发** 工作负荷后，下载 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。
 
@@ -48,35 +49,33 @@ Azure Cosmos DB 是 Microsoft 的快速 NoSQL 数据库，具有适合于任何�
 
 ## <a name="clone-the-sample-app"></a>克隆示例应用
 
-首先，从 GitHub 下载示例应用。 
+在启用 GitHub 的命令窗口（如 [Git bash](https://git-scm.com/downloads)）中运行以下命令：
 
-1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
+```bash
+mkdir "C:\git-samples"
+cd "C:\git-samples"
+git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
+```
 
-    ```bash
-    mkdir "C:\git-samples"
-    ```
+前面的命令：
 
-2. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为要安装示例应用的新文件夹。
-
-    ```bash
-    cd "C:\git-samples"
-    ```
-
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
-
-    ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
-    ```
+1. 为示例创建 C:\git-samples 目录。 选择适合你的操作系统的文件夹。
+1. 将当前目录更改为 C:\git-samples 文件夹。
+1. 将示例克隆到 C:\git-samples 文件夹中。
 
 如果不想使用 git，也可以[下载 ZIP 文件格式的项目](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started/archive/master.zip)。
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
+1. 在 Visual Studio 中，右键单击解决方案资源管理器中的项目，并单击“管理 NuGet 包”。
+1. 在 NuGet“浏览”框中，键入 *MongoDB.Driver*。
+1. 从结果中安装“MongoDB.Driver”库。 这会安装 MongoDB.Driver 包以及所有依赖项。
 
-以下代码片段全部摘自 DAL 目录中的 Dal.cs 文件。
+可选择执行以下步骤。 如果有意了解如何使用代码创建数据库资源，请查看以下代码片段。 否则，可直接跳转到[更新连接字符串](#update-the-connection-string)。
 
-* 初始化客户端。
+以下代码片段摘自 DAL/Dal.cs 文件。
+
+* 以下代码会初始化客户端：
 
     ```cs
         MongoClientSettings settings = new MongoClientSettings();
@@ -93,7 +92,7 @@ Azure Cosmos DB 是 Microsoft 的快速 NoSQL 数据库，具有适合于任何�
         MongoClient client = new MongoClient(settings);
     ```
 
-* 检索数据库和集合。
+* 以下代码会检索数据库和集合：
 
     ```cs
     private string dbName = "Tasks";
@@ -103,13 +102,13 @@ Azure Cosmos DB 是 Microsoft 的快速 NoSQL 数据库，具有适合于任何�
     var todoTaskCollection = database.GetCollection<MyTask>(collectionName);
     ```
 
-* 检索所有文档。
+* 以下代码会检索所有文档：
 
     ```cs
     collection.Find(new BsonDocument()).ToList();
     ```
 
-创建任务并将其插入到集合
+以下代码会创建任务并将其插入到集合中：
 
    ```csharp
     public void CreateTask(MyTask task)
@@ -125,36 +124,38 @@ Azure Cosmos DB 是 Microsoft 的快速 NoSQL 数据库，具有适合于任何�
         }
     }
    ```
-   同样，可以使用 [collection.UpdateOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.updateOne/index.html) 和 [collection.DeleteOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.deleteOne/index.html) 方法更新和删除文档。 
+   同样，可以使用 [collection.UpdateOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.updateOne/index.html) 和 [collection.DeleteOne()](https://docs.mongodb.com/stitch/mongodb/actions/collection.deleteOne/index.html) 方法更新和删除文档。
 
-## <a name="update-your-connection-string"></a>更新连接字符串
+## <a name="update-the-connection-string"></a>更新连接字符串
 
-现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
+从 Azure 门户复制连接字符串信息：
 
-1. 在 [Azure 门户](https://portal.azure.com/)上的 Cosmos 帐户中，在左侧导航栏中单击“连接字符串”，然后单击“读写密钥”。 使用屏幕右侧的复制按钮将用户名、密码和主机复制到下一步的 Dal.cs 文件中。
+1. 在 [Azure 门户](https://portal.azure.com/)上选择 Cosmos 帐户，在左侧导航栏中单击“连接字符串”，然后单击“读写密钥” 。 使用屏幕右侧的复制按钮将用户名、密码和主机复制到下一步的 Dal.cs 文件中。
 
-2. 打开 **DAL** 目录中的 **Dal.cs** 文件。 
+2. 打开 DAL/Dal.cs 文件。
 
-3. 从门户中复制“用户名”值（使用复制按钮），并在 **Dal.cs** 文件中将其设为“用户名”的值。 
+3. 从门户中使用复制按钮复制“用户名”值，并在 Dal.cs 文件中将其设为“用户名”的值  。
 
-4. 然后从门户复制“主机”值，并在 **Dal.cs** 文件中将其设为“主机”的值。 
+4. 从门户复制“主机”值，并在 Dal.cs 文件中将其设为“主机”的值  。
 
-5. 最后从门户复制“密码”值，并在 **Dal.cs** 文件中将其设为“密码”的值。 
+5. 从门户复制“密码”值，并在 Dal.cs 文件中将其设为“密码”的值  。
 
-现在，你已在应用中更新了全部所需信息，它可以与 Cosmos DB 进行通信。 
-    
+<!-- TODO Store PW correctly-->
+> [!WARNING]
+> 切勿将密码或其他敏感数据签入源代码。
+
+现在，你已在应用中更新了全部所需信息，它可以与 Cosmos DB 进行通信。
+
 ## <a name="run-the-web-app"></a>运行 Web 应用
 
-1. 在 Visual Studio 中，右键单击解决方案资源管理器中的项目，并单击“管理 NuGet 包”。 
+1. 单击 Ctrl + F5 以运行应用。 默认浏览器随应用一起启动。 
+1. 在浏览器中单击“创建”，并在“任务列表”应用中创建一些新任务。
 
-2. 在 NuGet“浏览”框中，键入 *MongoDB.Driver*。
-
-3. 从结果中安装“MongoDB.Driver”库。 这会安装 MongoDB.Driver 包以及所有依赖项。
-
-4. 单击 Ctrl+F5 运行应用程序。 应用会显示在浏览器中。 
-
-5. 在浏览器中单击“创建”，并在“任务列表”应用中创建一些新任务。
-
+<!-- 
+## Deploy the app to Azure 
+1. In VS, right click .. publish
+2. This is so easy, why is this critical step missed?
+-->
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]

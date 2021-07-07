@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 7422b88aa2f9c4894d550ee2bf7e397cd163f870
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 3b72f65ad5cf025533e844478deb84433b019c18
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046022"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853705"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教程：运行以 Python 编写的 TensorFlow 模型
 
 从自定义影像服务中[导出 TensorFlow 模型](./export-your-model.md)后，本快速入门教程将演示如何在本地使用此模型来分类图像。
 
 > [!NOTE]
-> 本教程仅适用于从图像分类项目导出的模型。
+> 本教程仅适用于从“常规（压缩）”图像分类项目导出的模型。 如果你导出了其他模型，请访问我们的[示例代码存储库](https://github.com/Azure-Samples/customvision-export-samples)。
 
 ## <a name="prerequisites"></a>必备条件
 

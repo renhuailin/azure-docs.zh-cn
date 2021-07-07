@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
-ms.date: 03/24/2021
-ms.openlocfilehash: 09d253aae4c054db5efdc252f62986044e1d366b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/11/2021
+ms.openlocfilehash: 08de00415229b410e7b88bc4cae26754c466baef
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771850"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789076"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 的 B2B 企业集成解决方案
 
@@ -22,7 +22,7 @@ ms.locfileid: "107771850"
 * 电子数据交换 (EDI)
 * 企业应用程序集成 (EAI)
 
-如果你熟悉 Microsoft BizTalk Server 或 Azure BizTalk 服务，则也会熟悉 EIP 的概念，因此可以轻松地使用其功能。 不过，一个重要差别在于，EIP 在体系结构上基于“集成帐户”，可以简化 B2B 通信中使用的项目的存储和管理。 这些帐户是基于云的容器，用于存储所有项目，例如合作伙伴、协议、架构、映射和证书。 
+如果你熟悉 Microsoft BizTalk Server 或 Azure BizTalk 服务，则也会熟悉 EIP 的概念，因此可以轻松地使用其功能。 不过，一个重要差别在于，EIP 在体系结构上基于“集成帐户”，可以简化 B2B 通信中使用的项目的存储和管理。 这些帐户是基于云的容器，用于存储所有项目，例如合作伙伴、协议、架构、映射和证书。
 
 ## <a name="why-use-the-enterprise-integration-pack"></a>为何使用 Enterprise Integration Pack？
 
@@ -40,17 +40,26 @@ ms.locfileid: "107771850"
 
 * 包含要使用的项目的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* 若要创建映射和架构，可以使用[适用于 Visual Studio 2015 的 Microsoft Azure 逻辑应用企业集成工具 2.0](https://aka.ms/vsmapsandschemas) 和 Visual Studio 2015。
+* 若要创建映射和架构，可以使用 [Microsoft Azure 逻辑应用企业集成工具扩展](https://aka.ms/vsenterpriseintegrationtools)和 Visual Studio 2019。 
+
+   > [!IMPORTANT]
+   > 不要将此扩展与 BizTalk Server 扩展一起安装。 同时具有这两个扩展可能会导致意外行为。 请确保只安装其中一个扩展。
+
+   > [!NOTE]
+   > 在高分辨率监视器上，可能会在 Visual Studio 中遇到[地图设计器显示问题](/visualstudio/designers/disable-dpi-awareness)。 要解决此显示问题，请[在 DPI 无感知模式下重启 Visual Studio](/visualstudio/designers/disable-dpi-awareness#restart-visual-studio-as-a-dpi-unaware-process) 或添加 [DPIUNAWARE 注册表值](/visualstudio/designers/disable-dpi-awareness#add-a-registry-entry)。
+
+
+* 如果使用的是 Visual Studio 2015，则可以使用[适用于 Visual Studio 2015 2.0 的 Microsoft Azure 逻辑应用企业集成工具](https://aka.ms/vsmapsandschemas)扩展。
 
 创建集成帐户并添加项目后，可以通过在 Azure 门户中创建一个逻辑应用，开始使用这些项目构建 B2B 工作流。 如果你不熟悉逻辑应用，请尝试[创建一个简单的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用这些项目，请确保先将集成帐户链接到逻辑应用。 之后，逻辑应用便可以访问集成帐户。 还可以使用 Visual Studio 或 [PowerShell](/powershell/module/az.logicapp) 来创建、管理和部署逻辑应用。
 
 下面是开始构建 B2B 逻辑应用的概要步骤：
 
-![创建 B2B 逻辑应用的先决条件](./media/logic-apps-enterprise-integration-overview/overview.png)  
+![创建 B2B 逻辑应用的先决条件](./media/logic-apps-enterprise-integration-overview/overview.png)
 
 ## <a name="try-now"></a>立即试用
 
-[部署一个用于发送和接收 AS2 消息的完全正常运行的示例逻辑应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
+[部署一个用于发送和接收 AS2 消息的完全正常运行的示例逻辑应用](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/logic-app-as2-send-receive)
 
 ## <a name="next-steps"></a>后续步骤
 

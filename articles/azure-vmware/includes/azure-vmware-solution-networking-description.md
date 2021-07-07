@@ -2,13 +2,13 @@
 title: Azure VMware 解决方案网络和连接
 description: Azure VMware 解决方案网络和连接说明。
 ms.topic: include
-ms.date: 03/13/2021
-ms.openlocfilehash: 96dd93f1db5dc3ddcbb883313e19c6aed8a256da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: 66ea12565aa84661a4019e5685a5544792591b0c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462570"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350630"
 ---
 <!-- Used in introduction.md and concepts-networking.md -->
 
@@ -18,5 +18,7 @@ Azure VMware 解决方案提供了一个私有云环境，可以在本地对其�
 
 ExpressRoute Global Reach 用于将私有云连接到本地环境。 要实现该连接，你的订阅中必须存在一个使用 ExpressRoute 线路（连接到本地）的虚拟网络。
 
-使用 Azure 虚拟 WAN 公共 IP 功能，可从 Internet 访问部署在私有云上的虚拟机 (VM)。  默认情况下，会针对新的私有云禁用 Internet 访问。 有关详细信息，请参阅[如何使用 Azure VMware 解决方案中的公共 IP 功能](../public-ip-usage.md)。
+使用 Azure 虚拟 WAN 公共 IP 功能，可从 Internet 访问部署在私有云上的虚拟机 (VM)。  默认情况下，会针对新的私有云禁用 Internet 访问。 有关详细信息，请参阅[在 Azure VMware 解决方案中启用公共 Internet 访问](../enable-public-internet-access.md)。
+
+
 

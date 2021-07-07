@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 0d597f0742cfc43f1c7fb38568b2a2bbda352beb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8c9666f9cfadeda29b6259876c972bda67a9ee44
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049332"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462007"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 
@@ -39,17 +39,17 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 
 完成本教程：
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 * 安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)（包含 **Azure 开发** 工作负荷）。
 
   ![Azure 开发（位于“Web 和云”下）](media/storage-create-geo-redundant-storage/workloads.png)
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
@@ -58,11 +58,11 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 * [安装 Python](https://www.python.org/downloads/)
 * 下载并安装[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)
 
-# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+# <a name="nodejs-v12-sdk"></a>[Node.js v12 SDK](#tab/nodejs)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
+# <a name="nodejs-v11-sdk"></a>[Node.js v11 SDK](#tab/nodejs11)
 
 * 安装 [Node.js](https://nodejs.org)。
 
@@ -70,7 +70,7 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录 [Azure 门户](https://portal.azure.com/)。
+登录到 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -84,7 +84,7 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 
    | 设置       | 示例值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **订阅** | 我的订阅 | 有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions)。 |
+   | **订阅** | 我的订阅 | 有关订阅的详细信息，请参阅[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。 |
    | **ResourceGroup** | *myResourceGroup* | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
    | **名称** | mystorageaccount | 存储帐户的唯一名称。 |
    | **位置** | *美国东部* | 选择一个位置。 |
@@ -97,11 +97,11 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 
 ## <a name="download-the-sample"></a>下载示例
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 [下载示例项目](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip)并解压缩 storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip 文件。 也可使用 [git](https://git-scm.com/) 将应用程序的副本下载到开发环境。 示例项目包含一个控制台应用程序。
 
@@ -109,7 +109,7 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
@@ -121,11 +121,11 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+# <a name="nodejs-v12-sdk"></a>[Node.js v12 SDK](#tab/nodejs)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
+# <a name="nodejs-v11-sdk"></a>[Node.js v11 SDK](#tab/nodejs11)
 
 [下载示例项目](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs)并解压缩文件。 也可使用 [git](https://git-scm.com/) 将应用程序的副本下载到开发环境。 示例项目包含一个基本的 Node.js 应用程序。
 
@@ -137,15 +137,15 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 ## <a name="configure-the-sample"></a>配置示例
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 在应用程序中，必须为存储帐户提供连接字符串。 可以将此连接字符串存储在运行应用程序的本地计算机的环境变量中。 根据你的操作系统，按照下面的某个示例创建环境变量。
 
-在 Azure 门户中导航到存储帐户。 在存储帐户的“设置”  下选择“访问密钥”  。 复制主密钥或辅助密钥中的 **连接字符串**。 根据操作系统运行以下命令之一（将 \<yourconnectionstring\> 替换为实际的连接字符串）。 此命令将一个环境变量保存到本地计算机。 在 Windows 中，必须重载正在使用的 **命令提示符** 或 shell，该环境变量才可用。
+在 Azure 门户中导航到存储帐户。 在存储帐户中选择“设置”下的“访问密钥”。  复制主密钥或辅助密钥中的 **连接字符串**。 根据操作系统运行以下命令之一（将 \<yourconnectionstring\> 替换为实际的连接字符串）。 此命令将一个环境变量保存到本地计算机。 在 Windows 中，必须重载正在使用的 **命令提示符** 或 shell，该环境变量才可用。
 
 ### <a name="linux"></a>Linux
 
@@ -159,7 +159,7 @@ export storageconnectionstring=<yourconnectionstring>
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
@@ -183,11 +183,11 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+# <a name="nodejs-v12-sdk"></a>[Node.js v12 SDK](#tab/nodejs)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
+# <a name="nodejs-v11-sdk"></a>[Node.js v11 SDK](#tab/nodejs11)
 
 若要运行此示例，必须将存储帐户凭据添加到 `.env.example` 文件，然后将其重命名为 `.env`。
 
@@ -204,11 +204,11 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 ## <a name="run-the-console-application"></a>运行控制台应用程序
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 在 Visual Studio 中，按 F5 或选择“启动”，开始调试应用程序。 Visual Studio 会自动还原缺少的 NuGet 包（若已配置）。若要了解详情，请参阅[通过包还原安装和重新安装包](/nuget/consume-packages/package-restore#package-restore-overview)。
 
@@ -218,7 +218,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 在示例代码中，`Program.cs` 文件中的 `RunCircuitBreakerAsync` 任务用于通过 [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) 方法下载存储帐户中的图像。 下载前，将会先定义 [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext)。 操作上下文定义事件处理程序，此类程序在下载成功完成时或者下载失败并重试时触发。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
@@ -234,11 +234,11 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 在下载之前，定义了服务对象的 [retry_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) 和 [response_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) 函数。 这些函数定义了在下载成功完成或下载失败并重试时触发的事件处理程序。
 
-# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+# <a name="nodejs-v12-sdk"></a>[Node.js v12 SDK](#tab/nodejs)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
+# <a name="nodejs-v11-sdk"></a>[Node.js v11 SDK](#tab/nodejs11)
 
 若要运行示例，请打开命令提示符，导航到示例文件夹，然后输入 `node index.js`。
 
@@ -269,11 +269,11 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>了解示例代码
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 ### <a name="retry-event-handler"></a>Retry 事件处理程序
 
@@ -324,7 +324,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
@@ -371,11 +371,11 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+# <a name="nodejs-v12-sdk"></a>[Node.js v12 SDK](#tab/nodejs)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
+# <a name="nodejs-v11-sdk"></a>[Node.js v11 SDK](#tab/nodejs11)
 
 使用 Node.js V10 SDK 时，不需回调处理程序。 示例会创建一个配置了重试选项和辅助终结点的管道。 这样，如果应用程序无法通过主管道访问数据，则会自动切换到辅助管道。
 

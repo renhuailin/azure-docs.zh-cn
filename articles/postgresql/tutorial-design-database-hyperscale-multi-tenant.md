@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: d8dee086f55c5596af50245b5271d98536eb7e57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe58822755959b35fce2a7e714b6e81c2ca58c2c
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95026193"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109518119"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教程：通过使用 Azure Database for PostgreSQL - 超大规模 (Citus)设计多租户数据库
 
@@ -62,6 +62,9 @@ CREATE TABLE campaigns (
   PRIMARY KEY (company_id, id)
 );
 ```
+
+>[!NOTE]
+> 本文包含对术语“方块列表”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 每个广告系列会支付运行广告的费用。 此外，添加用于广告的一个表，方法是在以上代码后，运行以下代码：
 

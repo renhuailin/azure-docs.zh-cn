@@ -1,27 +1,27 @@
 ---
-title: 使用 Azure 门户创建 Windows 虚拟桌面主机池 - Azure
-description: 如何使用 Azure 门户创建 Windows 虚拟桌面主机池。
+title: 使用 Azure 门户创建 Azure 虚拟桌面主机池 - Azure
+description: 如何使用 Azure 门户创建 Azure 虚拟桌面主机池。
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
 ms.date: 03/10/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1003ab20f839469235d6bd7949ec3b2df4dd4f25
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 96e5fbf825c0550001ae9b0a38517e753b3a8d0f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447975"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756250"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)。 使用 Windows 虚拟桌面（经典）创建的任何对象都无法通过 Azure 门户进行管理。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)。 无法通过 Azure 门户来管理使用 Azure 虚拟桌面（经典）创建的任何对象。
 
-主机池是 Windows 虚拟桌面环境中包含一个或多个相同虚拟机 (VM) 的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
+主机池是 Azure 虚拟桌面环境中包含一个或多个相同虚拟机 (VM) 的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
 
-本文将引导你完成通过 Azure 门户为 Windows 虚拟桌面环境创建主机池的设置过程。 此方法提供基于浏览器的用户界面，用于在 Windows 虚拟桌面中创建主机池，在 Azure 订阅中创建包含 VM 的资源组，将这些 VM 加入 Azure Active Directory (AD) 域，然后将 VM 注册到 Windows 虚拟桌面。
+本文将引导你完成通过 Azure 门户为 Azure 虚拟桌面环境创建主机池的设置过程。 此方法提供基于浏览器的用户界面，用于在 Azure 虚拟桌面中创建主机池，在 Azure 订阅中创建包含 VM 的资源组，将这些 VM 加入 Azure Active Directory (AD) 域，然后将 VM 注册到 Azure 虚拟桌面。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "106447975"
 - VM 映像名称
 - VM 配置
 - 域和网络属性
-- Windows 虚拟桌面主机池属性
+- Azure 虚拟桌面主机池属性
 
 还需要了解以下信息：
 
@@ -39,7 +39,7 @@ ms.locfileid: "106447975"
 
 此外，请确保已注册 Microsoft.DesktopVirtualization 资源提供程序。 如果还没有注册，请转到“订阅”，选择你的订阅名称，然后选择“资源提供程序” 。 搜索“DesktopVirtualization”，选择“Microsoft.DesktopVirtualization”，然后选择“注册”。
 
-使用 Azure 资源管理器模板创建 Windows 虚拟桌面主机池时，可以从 Azure 库、托管映像或非托管映像创建虚拟机。 若要详细了解如何创建 VM 映像，请参阅[准备要上传到 Azure 的 Windows VHD 或 VHDX](../virtual-machines/windows/prepare-for-upload-vhd-image.md)，以及[为 Azure 中的通用化 VM 创建托管映像](../virtual-machines/windows/capture-image-resource.md)。
+使用 Azure 资源管理器模板创建 Azure 虚拟桌面主机池时，可以从 Azure 库、托管映像或非托管映像创建虚拟机。 若要详细了解如何创建 VM 映像，请参阅[准备要上传到 Azure 的 Windows VHD 或 VHDX](../virtual-machines/windows/prepare-for-upload-vhd-image.md)，以及[为 Azure 中的通用化 VM 创建托管映像](../virtual-machines/windows/capture-image-resource.md)。
 
 如果你还没有 Azure 订阅，请务必在按照以下说明开始操作之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -52,9 +52,9 @@ ms.locfileid: "106447975"
    >[!NOTE]
    > 如果要登录 US Gov 门户，请改为转到 [https://portal.azure.us/](https://portal.azure.us/)。
 
-2. 在搜索栏中输入“Windows 虚拟桌面”，然后在“服务”下找到并选择“Windows 虚拟桌面” 。
+2. 在搜索栏中输入“Azure 虚拟桌面”，然后在“服务”下找到并选择“Azure 虚拟桌面” 。
 
-3. 在“Windows 虚拟桌面”概览页中，选择“创建主机池” 。
+3. 在“Azure 虚拟桌面”概述页中，选择“创建主机池” 。
 
 4. 在“基本信息”选项卡中，在“项目详细信息”下选择正确的订阅。
 
@@ -208,7 +208,7 @@ ms.locfileid: "106447975"
 
 ## <a name="next-steps"></a>后续步骤
 
-创建主机池后，可以使用 RemoteApp 程序来填充主机池。 若要详细了解如何在 Windows 虚拟桌面中管理应用，请转到下一篇教程：
+创建主机池后，可以使用 RemoteApp 程序来填充主机池。 若要详细了解如何在 Azure 虚拟桌面中管理应用，请转到下一篇教程：
 
 > [!div class="nextstepaction"]
 > [管理应用组教程](./manage-app-groups.md)

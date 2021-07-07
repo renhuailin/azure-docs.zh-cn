@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 05/07/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 267094ea6a7295a65b93fb7700c97e4280da341d
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 86609d42a7c8f0e78df6b3a0019d97c951b5d378
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539105"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736080"
 ---
 ::: zone target="docs"
 
@@ -344,14 +344,14 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ::: zone target="docs"
 
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload.md)]
 
 ::: zone-end
 -->
 
 ## <a name="self-managed"></a>[自托管](#tab/in-selfmanaged)
 
-如果在美国政府、日本、新加坡、韩国、印度、南非、英国、西欧或澳大利亚使用 Data Box，并在创建订单时选择了自我管理式寄送选项，请按以下说明操作。
+如果在美国政府、日本、新加坡、韩国、印度、南非、英国、西欧、澳大利亚或巴西使用 Data Box，并在创建订单时选择了自我管理式寄送选项，请按以下说明操作。
 
 1. 成功完成此步骤后，请记下 Data Box 本地 Web UI 的“准备交付”页上显示的授权代码。
 2. 关闭设备电源并拔下电缆。 将设备随附的电源线卷好并安全地放在设备后面。
@@ -363,8 +363,12 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
     Body:
         1. Order name  
         2. Authorization code available after Prepare to Ship has completed [Yes/No]  
-        3. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+        3. Contact name of the person dropping off. You will need to display a government-approved ID during the drop off.
     ```
+
+   > [!NOTE]
+   > - 返回时所需信息可能因区域而异。 
+   > - 如果是在巴西返回 Data Box，请参阅[为 Azure Data Box 使用自我管理式寄送](data-box-portal-customer-managed-shipping.md)来获取详细说明。 
 
 ::: zone target="chromeless"
 
@@ -387,4 +391,3 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 [!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
-

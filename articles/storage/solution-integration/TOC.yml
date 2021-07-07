@@ -29,9 +29,13 @@
       href: ./validated-partners/data-management/migration-tools-comparison.md
     - name: DobiMigrate 入门指南
       href: ./validated-partners/data-management/dobimigrate-quick-start-guide.md
+    - name: Komprise 入门指南
+      href: ./validated-partners/data-management/komprise-quick-start-guide.md
   expanded: false
 - name: 主存储和辅助存储合作伙伴
   items:
     - name: 认证合作伙伴概述
       href: .\validated-partners\primary-secondary-storage\partner-overview.md
+    - name: ISV 文件服务
+      href: .\validated-partners\primary-secondary-storage\isv-file-services.md
   expanded: false

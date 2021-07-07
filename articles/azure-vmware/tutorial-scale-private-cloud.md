@@ -1,16 +1,16 @@
 ---
-title: 教程 - 缩放私有云
+title: 教程 - 在私有云中扩展或收缩群集
 description: 在本教程中，使用 Azure 门户缩放 Azure VMware 解决方案私有云。
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: 2129a3f5d04311883369b7b708689a13f07ec118
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 23fa38f41a1effab212896e59118978202ef17a7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463576"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769284"
 ---
-# <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>教程：缩放 Azure VMware 解决方案私有云
+# <a name="tutorial-expand-or-shrink-clusters-in-a-private-cloud"></a>教程：在私有云中扩展或收缩群集
 
 若要充分利用 Azure VMware 解决方案私有云体验，请缩放群集和主机，使之反映你对计划内工作负载的需求。 可以根据应用程序工作负载的需求，缩放私有云中的群集和主机。 应该逐一解决特定服务的性能和可用性限制。 [私有云概念](concepts-private-clouds-clusters.md)一文提供了群集和主机限制。
 

@@ -4,17 +4,17 @@ titleSuffix: Azure Applied AI Services
 description: 本指南介绍如何使用 Azure 函数来触发对已上传到 Azure Blob 存储容器的文档的处理。
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: 6a8f3cf5b98361f96df26da923ff6bff7a604d23
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c458740f3b8b321631b4c9e8fec5d30e8286eb6e
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373991"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111893473"
 ---
 # <a name="tutorial-use-an-azure-function-to-process-stored-documents"></a>教程：使用 Azure 函数处理存储的文档
 
@@ -23,7 +23,7 @@ ms.locfileid: "110373991"
 > [!div class="mx-imgBorder"]
 > ![Azure 服务工作流示意图](./media/tutorial-azure-function/workflow-diagram.png)
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建 Azure 存储帐户
@@ -166,7 +166,7 @@ def main(myblob: func.InputStream):
 > [!IMPORTANT]
 > 转到 Azure 门户。 如果在“先决条件”部分中创建的表单识别器资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
 >
-> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅[认知服务安全性](../cognitive-services-security.md)一文。
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请使用安全方法来存储和访问凭据。 有关详细信息，请参阅[认知服务安全性](../cognitive-services-security.md)一文。
 
 接下来，添加代码以查询服务并获取返回的数据。 
 

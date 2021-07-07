@@ -5,23 +5,94 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI, devx-track-azurecli
-ms.openlocfilehash: 44c349afe4bee4762b6dc2564c200f68f3296cc4
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 6f6209eaee172ece5000d48c48b6cc38e4385017
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107893171"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060090"
 ---
 <!-- ### Create a storage account -->
 
-创建媒体服务帐户时，需要提供 Azure 存储帐户资源的名称。 指定存储帐户会附加到媒体服务帐户。 若要详细了解如何在媒体服务中使用存储帐户，请参阅[存储帐户](../storage-account-concept.md)。
+以下命令创建与媒体服务帐户相关联的存储帐户。 
 
-必须具有一个主存储帐户，并且可以拥有任意数量的与媒体服务帐户关联的辅助存储帐户 。 媒体服务支持常规用途 v2 (GPv2) 或常规用途 v1 (GPv1) 帐户 。 不允许将仅限 Blob 的帐户作为主帐户。 若要了解存储帐户的详细信息，请参阅 [Azure 存储帐户选项](../../../storage/common/storage-account-overview.md)。 
+将 `your-storage-account-name` 更改为长度小于 24 个字符的唯一名称。 该命令假定你已创建了资源组。  将该资源组名称用于 `your-resource-group-name`。 将你的首选区域的名称用于 `your-region`。
 
-在此示例中，我们创建一个常规用途 v2 标准 LRS 帐户。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在选取用于生产的 SKU 时，应考虑 `--sku Standard_RAGRS`，以便通过异地复制确保业务连续性。 有关详细信息，请参阅[存储帐户](/cli/azure/storage/account)。
+```azurecli-interactive
+az storage account create --name <your-storage-account-name> --kind StorageV2 --sku Standard_LRS -l <your-region> -g <your-resource-group-name>
+```
 
-以下命令创建将与媒体服务帐户相关联的存储帐户。 在下面的脚本中，将 `storageaccountforams` 替换为你自己的唯一名称（长度小于 24 个字符）。 `amsResourceGroup` 必须与在上一步中为资源组指定的值匹配。
+示例 JSON 响应：
 
-```azurecli
-az storage account create --name storageaccountforams --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
+```json
+{
+  "accessTier": "Hot",
+  "allowBlobPublicAccess": null,
+  "azureFilesIdentityBasedAuthentication": null,
+  "blobRestoreStatus": null,
+  "creationTime": "2021-05-12T22:10:22.058640+00:00",
+  "customDomain": null,
+  "enableHttpsTrafficOnly": true,
+  "encryption": {
+    "keySource": "Microsoft.Storage",
+    "keyVaultProperties": null,
+    "requireInfrastructureEncryption": null,
+    "services": {
+      "blob": {
+        "enabled": true,
+        "keyType": "Account",
+        "lastEnabledTime": "2021-05-12T22:10:22.152394+00:00"
+      },
+      "file": {
+        "enabled": true,
+        "keyType": "Account",
+        "lastEnabledTime": "2021-05-12T22:10:22.152394+00:00"
+      },
+      "queue": null,
+      "table": null
+    }
+  },
+  "failoverInProgress": null,
+  "geoReplicationStats": null,
+  "id": "/subscriptions/00000000-0000-0000-000000000000/resourceGroups/your-resource-group-name/providers/Microsoft.Storage/storageAccounts/your-storage-account-name",
+  "identity": null,
+  "isHnsEnabled": null,
+  "kind": "StorageV2",
+  "largeFileSharesState": null,
+  "lastGeoFailoverTime": null,
+  "location": "your-region",
+  "minimumTlsVersion": null,
+  "name": "your-storage-account-name",
+  "networkRuleSet": {
+    "bypass": "AzureServices",
+    "defaultAction": "Allow",
+    "ipRules": [],
+    "virtualNetworkRules": []
+  },
+  "primaryEndpoints": {
+    "blob": "https://your-storage-account-name.blob.core.windows.net/",
+    "dfs": "https://your-storage-account-name.dfs.core.windows.net/",
+    "file": "https://your-storage-account-name.file.core.windows.net/",
+    "internetEndpoints": null,
+    "microsoftEndpoints": null,
+    "queue": "https://your-storage-account-name.queue.core.windows.net/",
+    "table": "https://your-storage-account-name.table.core.windows.net/",
+    "web": "your-storage-account-name.z5.web.core.windows.net/"
+  },
+  "primaryLocation": "your-region",
+  "privateEndpointConnections": [],
+  "provisioningState": "Succeeded",
+  "resourceGroup": "your-resource-group-name",
+  "routingPreference": null,
+  "secondaryEndpoints": null,
+  "secondaryLocation": null,
+  "sku": {
+    "name": "Standard_LRS",
+    "tier": "Standard"
+  },
+  "statusOfPrimary": "available",
+  "statusOfSecondary": null,
+  "tags": {},
+  "type": "Microsoft.Storage/storageAccounts"
+}
 ```

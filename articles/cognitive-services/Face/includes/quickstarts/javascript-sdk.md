@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 3873a15c6a56d6ee4944cc596f447c966c275950
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a44cbbf110ac2789b03b411f074f068451c70e2c
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313698"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109858047"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>快速入门：适用于 JavaScript 的人脸客户端库
 
@@ -208,15 +208,15 @@ node index.js
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤
 
-此快速入门介绍了如何使用适用于 JavaScript 的人脸客户端库来执行基本的人脸识别任务。 接下来，请在参考文档中详细了解该库。
+此快速入门介绍了如何使用适用于 JavaScript 的人脸客户端库来执行基本的人脸识别任务。 接下来，了解不同的人脸检测模型，学习如何为你的用例指定适当的模型。
 
 > [!div class="nextstepaction"]
-> [人脸 API 参考 (JavaScript)](/javascript/api/@azure/cognitiveservices-face/)
+> [指定人脸检测模型版本](../../Face-API-How-to-Topics/specify-detection-model.md)
 
 * [什么是人脸服务？](../../overview.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/Face/sdk_quickstart.js) 上找到此示例的源代码。

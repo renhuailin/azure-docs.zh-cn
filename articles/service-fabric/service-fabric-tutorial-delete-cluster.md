@@ -3,19 +3,19 @@ title: 删除 Azure 中的 Service Fabric 群集
 description: 在本教程中，你将了解如何删除 Azure 托管的 Service Fabric 群集及其所有资源。 可以删除包含群集的资源组，也可以有选择地删除资源。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 083c6047a8b5279b9f03db5ba5196c9a109f2d25
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 9eb33acc31c3fa9c959fb9313997015cac29b95d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075944"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665046"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>教程：删除在 Azure 中运行的 Service Fabric 群集
 
 本教程是一个系列的第五部分，介绍了如何删除在 Azure 中运行的 Service Fabric 群集。 若要彻底删除 Service Fabric 群集，还需要删除该群集使用的所有资源。 可使用两种方法：删除该群集所在的资源组（此操作将删除群集资源以及该资源组中的所有其他资源），或特定删除群集资源及其关联资源（而不删除资源组中的其他资源）。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 删除资源组及其所有资源
@@ -37,7 +37,7 @@ ms.locfileid: "108075944"
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安装 [Azure Powershell](/powershell/azure//install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安装 [Azure PowerShell](/powershell/azure//install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>删除包含 Service Fabric 群集的资源组
@@ -108,5 +108,5 @@ az resource delete --name "<name of the Resource>" --resource-type "Microsoft.Se
 
 现在你已完成了本教程，请尝试执行以下任务：
 * 了解如何使用 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 检查和管理 Service Fabric 群集。
-* 了解如何为群集节点[修补 Windows 操作系统](service-fabric-patch-orchestration-application.md)。
+* 了解如何[修补在 Windows 上运行的群集节点](how-to-patch-cluster-nodes-windows.md)。
 * 了解如何为 [Windows 群集](service-fabric-diagnostics-event-aggregation-wad.md)聚合和收集事件以及如何[设置 Log Analytics](service-fabric-diagnostics-oms-setup.md) 来监视群集事件。

@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 3ab861caca0ef6f58c2c1bc722412774deb725ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da1760def8f2c036854839787b1051e8f52358d0
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98936680"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809645"
 ---
 # <a name="tutorial-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>Tutorial:在 Azure Synapse Analytics 中使用认知服务的先决条件
 
@@ -65,17 +65,17 @@ ms.locfileid: "98936680"
    ![显示用于创建机密的选项的屏幕截图。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00d.png)
 
    > [!IMPORTANT]
-   > 请确保记住或记下此密钥名称。 稍后从 Azure Synapse Studio 连接到认知服务时，将用到它。
+   > 请确保记住或记下此密钥名称。 稍后从 Synapse Studio 连接到认知服务时，会用到它。
 
 ## <a name="create-an-azure-key-vault-linked-service-in-azure-synapse"></a>在 Azure Synapse 中创建 Azure Key Vault 链接服务
 
-1. 在 Azure Synapse Studio 中打开工作区。 
+1. 在 Synapse Studio 中打开工作区。 
 2. 转到“管理” > “链接服务” 。 创建指向刚刚创建的密钥保管库的“Azure Key Vault”链接服务。 
 3. 选择“测试连接”按钮，对连接进行验证。 如果连接为绿色，请选择“创建”，然后选择“全部发布”，以保存所做的更改 。
 
 ![显示 Azure Key Vault 作为新链接服务的屏幕截图。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00e.png)
 
-现在，可以继续学习使用 Azure Synapse Studio 中的 Azure 认知服务体验的教程之一。
+现在，可以继续学习关于在 Synapse Studio 中使用 Azure 认知服务体验的教程之一。
 
 ## <a name="next-steps"></a>后续步骤
 

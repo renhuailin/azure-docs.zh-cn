@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 06/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 3d784979876857e94c1e09ffc5b7bef11c0a0d04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ef286e9e760c6a18b69eb8724c1317e6a872b2c
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735958"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569026"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EasySSO for Bamboo 的集成
 
@@ -37,10 +37,10 @@ ms.locfileid: "98735958"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* EasySSO for Bamboo 支持 SP 和 IDP 发起的 SSO
-* EasySSO for Bamboo 支持实时用户预配
+* EasySSO for Bamboo 支持 SP 和 IDP 发起的 SSO。
+* EasySSO for Bamboo 支持实时用户预配。
 
-## <a name="adding-easysso-for-bamboo-from-the-gallery"></a>从库中添加 EasySSO for Bamboo
+## <a name="add-easysso-for-bamboo-from-the-gallery"></a>从库中添加 EasySSO for Bamboo
 
 若要配置 EasySSO for Bamboo 与 Azure AD 的集成，需要从库中将 EasySSO for Bamboo 添加到托管 SaaS 应用列表。
 
@@ -50,7 +50,6 @@ ms.locfileid: "98735958"
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“EasySSO for Bamboo”。
 1. 从结果面板中选择“EasySSO for Bamboo”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-easysso-for-bamboo"></a>配置并测试 EasySSO for Bamboo 的 Azure AD SSO
 
@@ -71,19 +70,19 @@ ms.locfileid: "98735958"
 
 1. 在 Azure 门户的“EasySSO for Bamboo”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/easysso/saml`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SERVER_BASE_URL>/plugins/servlet/easysso/saml`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/easysso/saml`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SERVER_BASE_URL>/plugins/servlet/easysso/saml`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/login.jsp`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SERVER_BASE_URL>/login.jsp`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 如有疑问，请联系 [EasySSO 支持团队](mailto:support@techtime.co.nz)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -129,9 +128,7 @@ ms.locfileid: "98735958"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“EasySSO for Bamboo”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
@@ -166,7 +163,7 @@ ms.locfileid: "98735958"
 
 5. 现在，找到在 Azure AD SSO 配置的之前步骤中保存的“证书(Base64)”或“元数据文件”  。 对于如何继续操作，可使用以下选项：
 
-    a. 使用下载到计算机本地文件中的应用联合“元数据文件”。 选择“上传”单选按钮，然后按照特定于操作系统的上传文件对话框操作
+    a. 使用下载到计算机本地文件中的应用联合“元数据文件”。 选择“上传”单选按钮，然后按照操作系统特定的“上传文件”对话框操作。
 
     **OR**
 
@@ -191,7 +188,7 @@ ms.locfileid: "98735958"
 
 但是，如果不希望在用户首次登录时启用自动用户预配，则用户必须存在于 Bamboo 实例使用的后端用户目录（如 LDAP 或 Atlassian Crowd）中。
 
-![用户预配](./media/easysso-for-bamboo-tutorial/bamboo-admin-6.png)
+![用户预配](./media/easysso-for-bamboo-tutorial/admin.png)
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -209,7 +206,7 @@ ms.locfileid: "98735958"
 
 此方案假定你已在 Bamboo EasySSO 配置页面的“外观和感受”选项卡中启用了“SAML 登录”按钮（请参阅上文） 。 在浏览器隐身模式下打开 Bamboo 登录 URL，以避免对现有会话造成任何干扰。 单击“SAML 登录”按钮，系统会将你重定向到 Azure AD 用户身份验证流。 成功完成后，系统会将你作为已通过 SAML 进行身份验证的用户重定向回 Bamboo 实例。
 
-从 Azure AD 重定向回后，你可能会看到以下屏幕
+从 Azure AD 重定向回后，你可能会看到以下屏幕。
 
 ![EasySSO 故障屏幕](./media/easysso-for-bamboo-tutorial/bamboo-admin-8.png)
 

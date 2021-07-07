@@ -5,13 +5,13 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.openlocfilehash: fd0d5c5b73ae1fb1eae7f38a22913018555ebe11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/02/2021
+ms.openlocfilehash: 257055110bffac10c92d87820bcfadff2b208b3b
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101747443"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538033"
 ---
 # <a name="quickstart-deploy-a-managed-apache-spark-cluster-preview-with-azure-databricks"></a>快速入门：使用 Azure Databricks 部署托管的 Apache Spark 群集（预览版）
 
@@ -80,9 +80,9 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
 1. 在“新建群集”窗格中，对于除以下字段以外的所有其他字段，请接受默认值：
 
    * **群集名称** - 为群集输入一个名称。
-   * **Databricks Runtime 版本** -选择 Cassandra 连接器支持的 Scala 2.11 或更低版本。
+   * Databricks Runtime 版本 - 我们建议选择 Databricks Runtime 7.5 或更高版本，以支持 Spark 3.x。 
 
-    :::image type="content" source="./media/deploy-cluster-databricks/spark-cluster.png" alt-text="选择 Databricks 运行时版本和 Spark 群集。" border="true":::
+    :::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="选择 Databricks 运行时版本和 Spark 群集。" border="true":::
 
 1. 展开“高级选项”，然后添加以下配置。 请务必替换节点 IP 和凭据：
 
@@ -94,9 +94,9 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
     spark.cassandra.connection.ssl.enabled true
     ```
 
-1. 在“库”选项卡中，为 Cassandra (spark-cassandra-connector) 安装最新版本的 Spark 连接器并重启群集：
+1. 将 Apache Spark Cassandra 连接器库添加到群集，以便连接到原生终结点和 Azure Cosmos DB Cassandra 终结点。 在群集中，选择“库” > “安装新库” > “Maven”，然后在 Maven 坐标中添加 `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0`  。
 
-    :::image type="content" source="./media/deploy-cluster-databricks/connector.png" alt-text="安装 Cassandra 连接器。" border="true":::
+:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="屏幕截图显示在 Databricks 中搜索 Maven 包。":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

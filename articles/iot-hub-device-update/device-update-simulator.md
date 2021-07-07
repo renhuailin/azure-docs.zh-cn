@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 77bfab51cf7ccc9ec6ffe3b0018c0a488b601a0a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7381d7f233bc813118f310b08352d1642904a907
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070202"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753788"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>使用 Ubuntu (18.04 x64) 模拟器引用代理的 Device Update for Azure IoT Hub 教程
 
@@ -75,9 +75,9 @@ PS> wsl --list
 
 ## <a name="download-device-update-ubuntu-1804-x64-simulator-reference-agent"></a>下载 Device Update Ubuntu (18.04 x64) 模拟器引用代理
 
-可以从[此处](https://github.com/Azure/iot-hub-device-update/releases)的发行说明中的“资产”部分下载 Ubuntu 更新映像。
+可以从发行说明（[此处](https://github.com/Azure/iot-hub-device-update/releases)）中的资产部分下载 Ubuntu 参考代理。
 
-代理有两种版本。 如果你练习的是基于映像的场景，请使用 AducIotAgentSim-microsoft-swupdate，如果练习的是基于包的场景，请使用 AducIotAgentSim-microsoft-apt。
+代理有两种版本。 对于本教程，由于你练习的是基于映像的场景，因此请使用 AducIotAgentSim-microsoft-swupdate。 如果打算改为使用基于包的场景，请使用 AducIotAgentSim-microsoft-apt。
 
 ## <a name="install-device-update-agent-simulator"></a>安装 Device Update 代理模拟器
 
@@ -112,7 +112,7 @@ Device Update 代理在 IoT 设备上运行后，需要将该设备添加到 Azu
 
 1. 在 Azure 门户中，启动 Device Update IoT 中心。
 2. 创建新设备。
-3. 在页面左侧，导航到“IoT 设备”> 选择“新建”。
+3. 在页面左侧，导航到“IoT 设备”，然后选择“新建”。
 4. 在“设备 ID”下提供设备的名称 - 确保选中“自动生成密钥”复选框。
 5. 选择“保存”。
 6. 现在，你将返回到“设备”页，你创建的设备应在列表中。 选择该设备。
@@ -161,14 +161,14 @@ Agent running. [main]
 
 ## <a name="import-update"></a>导入更新
 
-1. 按照这些[说明](import-update.md)操作，创建导入清单。
-2. 从左侧导航栏中选择“自动设备管理”下的“设备更新”选项。
+1. 下载[示例导入清单](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/TutorialImportManifest.json)和[示例映像更新](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/adu-update-image-raspberrypi3-0.6.5073.1.swu)。
+2. 登录 [Azure 门户](https://portal.azure.com/)并导航到具有设备更新的 IoT 中心。 然后，从左侧导航栏中选择“自动设备管理”下的“设备更新”选项。
 
 3. 选择“更新”选项卡。
 
 4. 选择“+ 导入新更新”。
 
-5. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择上面创建的导入清单。  接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择之前下载的 Ubuntu 更新映像。 
+5. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择你在上面的步骤 1 中下载的示例导入清单。  接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择你在上面的步骤 1 中下载的示例映像更新。 
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="显示更新文件选择的屏幕截图。" lightbox="media/import-update/select-update-files.png":::
 

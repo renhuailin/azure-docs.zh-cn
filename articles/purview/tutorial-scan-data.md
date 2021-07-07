@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 16692ac75f0ab6df0c8ee1bebef393848ca066b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb11033e0f4fcff171825d579e62e071f66b1cea
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676541"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745882"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>教程：使用 Azure Purview（预览版）扫描数据
 
@@ -192,7 +192,7 @@ PowerShell 安装所需的模块可能最多需要一分钟时间。
 
 ### <a name="scan-your-data-sources"></a>扫描数据源
 
-1. 在 [Azure 门户](https://portal.azure.com)中导航到 Azure Purview 资源，然后选择“打开 Purview Studio”。 你将自动转到 Purview Studio 的主页。
+1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择作为先决条件创建的 Azure Purview 实例的名称，然后选择“打开 Purview Studio”。 你将自动转到 Purview Studio 的主页。
 
 1. 在目录的网页上选择“源”，然后选择“注册” 。 然后依次选择“Azure Blob 存储”、“继续” 。
 

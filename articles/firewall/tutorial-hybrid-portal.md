@@ -1,38 +1,37 @@
 ---
-title: 教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
-description: 本教程介绍如何使用 Azure 门户部署和配置 Azure 防火墙。
+title: 使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
+description: 在本文中，你将学习如何使用 Azure 门户部署和配置 Azure 防火墙。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
-ms.date: 11/17/2020
+ms.topic: how-to
+ms.date: 04/29/2021
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 86e27c190b269763d8dd2f562a207b3f2020da29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36605d6bf17c7652e7f21b89a83af08972765a30
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98051065"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287595"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
+# <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
 
 将本地网络连接到 Azure 虚拟网络以创建混合网络时，必须能够控制对 Azure 网络资源的访问，这是整体安全计划的重要部分。
 
 可以使用 Azure 防火墙通过规则来定义允许的和拒绝的网络流量，以便控制混合网络中的网络访问。
 
-在本教程中，请创建三个虚拟网络：
+在本文中，将创建三个虚拟网络：
 
 - **VNet-Hub** - 防火墙在此虚拟网络中。
 - **VNet-Spoke** - 分支虚拟网络代表 Azure 中的工作负荷。
-- **VNet-Onprem** - 本地虚拟网络代表本地网络。 在实际部署中，可以使用 VPN 或 ExpressRoute 来连接它。 为简单起见，本教程将使用 VPN 网关连接，并使用 Azure 中的某个虚拟网络来代表本地网络。
+- **VNet-Onprem** - 本地虚拟网络代表本地网络。 在实际部署中，可以使用 VPN 或 ExpressRoute 来连接它。 为简单起见，本过程将使用 VPN 网关连接，并使用 Azure 中的某个虚拟网络来代表本地网络。
 
 ![混合网络中的防火墙](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-在本教程中，你将了解如何执行以下操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
-> * 声明变量
 > * 创建防火墙中心虚拟网络
 > * 创建分支虚拟网络
 > * 创建本地虚拟网络
@@ -45,19 +44,22 @@ ms.locfileid: "98051065"
 
 如果要使用 Azure PowerShell 完成此过程，请参阅[使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙](tutorial-hybrid-ps.md)。
 
+> [!NOTE]
+> 本文使用经典防火墙规则来管理防火墙。 首选方法是使用[防火墙策略](../firewall-manager/policy-overview.md)。 若要使用防火墙策略完成此过程，请查看[教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙和策略](tutorial-hybrid-portal-policy.md)。
+
 ## <a name="prerequisites"></a>先决条件
 
 混合网络使用中心辐射型网络体系结构模型在 Azure VNet 与本地网络之间路由流量。 中心辐射型网络体系结构具有以下要求：
 
-- 将 VNet-Hub 对等互连到 VNet-Spoke 时设置 **AllowGatewayTransit**。 在中心辐射型网络体系结构中，辐射虚拟网络可以通过网关传输共享中心的 VPN 网关，不必在每个辐射虚拟网络中部署 VPN 网关。 
+- 将 VNet-Hub 对等互连到 VNet-Spoke 时，应设置“使用此虚拟网络的网关或路由服务器”。 在中心辐射型网络体系结构中，辐射虚拟网络可以通过网关传输共享中心的 VPN 网关，不必在每个辐射虚拟网络中部署 VPN 网关。 
 
    此外，通往网关连接的虚拟网络或本地网络的路由会通过网关传输自动传播到对等互连的虚拟网络的路由表。 有关详细信息，请参阅[针对虚拟网络对等互连配置 VPN 网关传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md)。
 
-- 将 VNet-Spoke 对等互连到 VNet-Hub 时设置 **UseRemoteGateways**。 如果设置了 **UseRemoteGateways** 并且还在远程对等互连上设置了 **AllowGatewayTransit**，则辐射虚拟网络使用远程虚拟网络的网关进行传输。
+- 将 VNet-Spoke 对等互连到 VNet-Hub 时，应设置“使用远程虚拟网络的网关或路由服务器”。 如果设置了“使用远程虚拟网络的网关或路由服务器”，同时在远程对等端上设置了“使用此虚拟网络的网关或路由服务器”，则辐射虚拟网络将使用远程虚拟网络的网关进行传输 。
 - 若要通过中心防火墙路由分支子网流量，则可使用一个用户定义的路由 (UDR) 指向禁用了“虚拟网关路由传播”选项的防火墙。 禁用了“虚拟网关路由传播”选项可防止将路由分配到分支子网。 这可以防止获知的路由与你的 UDR 冲突。 如果要保持“虚拟网关路由传播”处于启用状态，请确保定义到防火墙的特定路由，以替代通过 BGP 从本地发布的路由。
 - 请在中心网关子网上配置一个指向防火墙 IP 地址的 UDR，将其作为通向辐射网络的下一跃点。 无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
 
-请参阅本教程的[创建路由](#create-the-routes)部分了解如何创建这些路由。
+请参阅本文的[创建路由](#create-the-routes)部分来了解如何创建这些路由。
 
 >[!NOTE]
 >Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接 。
@@ -71,15 +73,15 @@ ms.locfileid: "98051065"
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>创建防火墙中心虚拟网络
 
-首先，创建用于存储本教程资源的资源组：
+首先，创建用于包含资源的资源组：
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在 Azure 门户主页上，选择“资源组” > “添加” 。
 3. 对于“订阅”，请选择自己的订阅。 
 1. 对于“资源组名称”，请键入 **FW-Hybrid-Test**。
 2. 对于“区域”，请选择“(US)美国东部”。 以后创建的所有资源必须位于同一位置。
-3. 选择“查看 + 创建”。
-4. 选择“创建”。
+3. 选择“查看 + 创建”  。
+4. 选择“创建”  。
 
 现在创建 VNet：
 
@@ -154,6 +156,7 @@ ms.locfileid: "98051065"
    |资源组     |**FW-Hybrid-Test** |
    |名称     |**AzFW01**|
    |区域     |**美国东部**|
+   |防火墙管理|使用“防火墙规则(经典)”来管理此防火墙|
    |选择虚拟网络     |**使用现有项**：<br> **VNet-hub**|
    |公共 IP 地址     |添加新项： <br>fw-pip。 |
 
@@ -173,27 +176,27 @@ ms.locfileid: "98051065"
 3. 选择“添加网络规则集合”。
 4. 对于“名称”，请键入 **RCNet01**。
 5. 对于“优先级”，请键入 **100**。
-6. 对于“操作”，请选择“允许”。  
+6. 对于 **规则集合操作**，请选择 **允许**。
 6. 在“规则”下，为“名称”键入 **AllowWeb**。 
-7. 对于“协议”，请选择“TCP”。 
 8. 对于 **源类型**，请选择“IP 地址”。
 9. 对于 **源**，请键入 **192.168.1.0/24**。
-10. 对于“目标类型”，请选择“IP 地址” 。
-11. 对于 **目标地址**，请键入 **10.6.0.0/16**
-12. 对于“目标端口”，请键入 **80**。
+7. 对于“协议”，请选择“TCP”。 
+1. 对于“目标端口”，请键入 **80**。
+1. 对于“目标类型”，请选择“IP 地址” 。
+1. 对于“目标”，请键入 **10.6.0.0/16**。
 
 现在添加一个规则以允许 RDP 流量。
 
 在第二个规则行中键入以下信息：
 
 1. 对于“名称”，请键入 **AllowRDP**。
-2. 对于“协议”，请选择“TCP”。 
 3. 对于 **源类型**，请选择“IP 地址”。
 4. 对于 **源**，请键入 **192.168.1.0/24**。
-5. 对于“目标类型”，请选择“IP 地址” 。
-6. 对于 **目标地址**，请键入 **10.6.0.0/16**
-7. 对于“目标端口”，请键入 **3389**。
-8. 选择 **添加** 。
+2. 对于“协议”，请选择“TCP”。 
+1. 对于“目标端口”，请键入 **3389**。
+1. 对于“目标类型”，请选择“IP 地址” 。
+1. 为“目标”键入 10.6.0.0/16 
+1. 选择 **添加** 。
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>创建并连接 VPN 网关
 
@@ -246,7 +249,7 @@ ms.locfileid: "98051065"
 5. 选择“VNet 到 VNet”作为“连接类型”。
 6. 对于“第二个虚拟网络网关”，请选择“GW-Onprem”。
 7. 对于“共享密钥(PSK)”，请键入 **AzureA1b2C3**。
-8. 选择“确定”。
+8. 选择“确定”  。
 
 创建本地到中心虚拟网络连接。 此步骤类似于前一步骤，但这次是创建从 VNet-Onprem 到 VNet-hub 的连接。 确保共享密钥匹配。 几分钟后会建立连接。
 
@@ -257,7 +260,7 @@ ms.locfileid: "98051065"
 5. 选择“VNet 到 VNet”作为“连接类型”。
 6. 对于“第二个虚拟网络网关”，请选择“GW-hub”。
 7. 对于“共享密钥(PSK)”，请键入 **AzureA1b2C3**。
-8. 选择“确定”。
+8. 选择“确定”  。
 
 
 #### <a name="verify-the-connection"></a>验证连接
@@ -314,7 +317,7 @@ ms.locfileid: "98051065"
 8. 对于“区域”，请选择以前使用的同一位置。 
 1. 对于“名称”，请键入 **UDR-Hub-Spoke**。
 9. 选择“查看 + 创建”  。
-10. 选择“创建”。
+10. 选择“创建”  。
 11. 创建路由表后，请选择它以打开路由表页。
 12. 在左栏中选择“路由”。
 13. 选择 **添加** 。
@@ -322,7 +325,7 @@ ms.locfileid: "98051065"
 15. 键入 **10.6.0.0/16** 作为地址前缀。
 16. 选择“虚拟设备”作为下一跃点类型。
 17. 键入前面记下的防火墙专用 IP 地址作为下一跃点地址。
-18. 选择“确定”。
+18. 选择“确定”  。
 
 现在，将路由关联到子网。
 
@@ -343,7 +346,7 @@ ms.locfileid: "98051065"
 1. 键入 **UDR-DG** 作为名称。
 4. 对于“传播网关路由”，请选择“否” 。
 5. 选择“查看 + 创建”  。
-6. 选择“创建”。
+6. 选择“创建”  。
 7. 创建路由表后，请选择它以打开路由表页。
 8. 在左栏中选择“路由”。
 9. 选择 **添加** 。
@@ -351,7 +354,7 @@ ms.locfileid: "98051065"
 11. 键入 **0.0.0.0/0** 作为地址前缀。
 12. 选择“虚拟设备”作为下一跃点类型。
 13. 键入前面记下的防火墙专用 IP 地址作为下一跃点地址。
-14. 选择“确定”。
+14. 选择“确定”  。
 
 现在，将路由关联到子网。
 
@@ -423,6 +426,8 @@ ms.locfileid: "98051065"
 10. 对于“启动诊断”，请选择“禁用” 。
 10. 选择“查看 + 创建”，检查摘要页上的设置，然后选择“创建”。
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="test-the-firewall"></a>测试防火墙
 
 1. 首先，记下“VM-spoke-01”虚拟机的专用 IP 地址。
@@ -445,7 +450,7 @@ ms.locfileid: "98051065"
 - 可以浏览分支虚拟网络中的 Web 服务器。
 - 可以使用 RDP 连接到分支虚拟网络中的服务器。
 
-接下来，将防火墙网络规则集合操作更改为“拒绝”，以验证防火墙规则是否按预期工作。
+接下来，将防火墙网络规则集合操作更改为“拒绝”，以验证防火墙规则是否按预期工作。 
 
 1. 选择“AzFW01”防火墙。
 2. 选择“规则”。 
@@ -457,11 +462,10 @@ ms.locfileid: "98051065"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可以保留防火墙资源以便在下一篇教程中使用。不再需要时，请删除 **FW-Hybrid-Test** 资源组，以删除与防火墙相关的所有资源。
+可保留防火墙资源供进一步测试。如果不再需要，请删除 FW-Hybrid-Test 资源组，以删除与防火墙相关的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 
 接下来，可以监视 Azure 防火墙日志。
 
-> [!div class="nextstepaction"]
-> [教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)
+[教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)

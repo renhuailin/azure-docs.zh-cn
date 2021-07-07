@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4b57b3fbb338774eb8d66fc4d3c0c817e19aff4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2790ae787831fb5dfa81656d32473c98ac4bb4bd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92458194"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739936"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Maxient Conduct Manager Software 集成
 
@@ -64,7 +64,7 @@ ms.locfileid: "92458194"
 若要配置并测试 Maxient Conduct Manager Software 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够通过 Maxient Conduct Manager Software 进行身份验证
-    1. **[指定所有用户都使用 Maxient](#assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software)** - 让机构中的每个人都能够进行身份验证。
+   - [将“是否需要进行用户分配?”设置为“否”](#set-user-assignment-required-to-no) - 让机构中的每个人都能进行身份验证。
 1. **[使用 Maxient 测试 Azure AD 设置](#test-with-maxient)** - 验证配置是否有效以及是否发布了正确的属性
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -90,21 +90,15 @@ ms.locfileid: "92458194"
 
     ![证书下载链接](common/copy-metadataurl.png)
 
-### <a name="assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software"></a>指定所有用户都能够向 Maxient Conduct Manager Software 验证身份
+<a name="set-user-assignment-required-to-no"></a>
+    
+### <a name="set-user-assignment-required-to-no"></a>请将“是否需要进行用户分配?” 设置为“否”
 
-在本部分中，你将向所有帐户授予访问权限，以便其使用 Azure 系统向 Maxient Conduct Manager Software 验证身份。  请务必注意，必须执行此步骤，否则 Maxient 无法正常运行。  Maxient 利用 Azure AD 系统来验证用户身份。 为用户授权时，将根据他们要执行的特定功能在 Maxient 系统中进行授权。 Maxient 不会使用你目录中的属性来做出这些决定。
+请务必注意，必须执行此步骤，否则 Maxient 无法正常运行。  Maxient 利用 Azure AD 系统来验证用户身份。 为用户授权时，将根据他们要执行的特定功能在 Maxient 系统中进行授权。 Maxient 不会使用你目录中的属性来做出这些决定。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“Maxient Conduct Manager Software”。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，选择所有用户（或适当的组），并指定他们能够向 Maxient 验证身份。
+1. 在应用的概述页面中，将“是否需要进行用户分配?”设置切换为“否”。
 
 ## <a name="test-with-maxient"></a>使用 Maxient 进行测试 
 

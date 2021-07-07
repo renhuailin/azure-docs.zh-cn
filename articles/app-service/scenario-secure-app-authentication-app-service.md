@@ -11,12 +11,12 @@ ms.date: 04/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: b17cb6906a37d2cab4383fac18400b35dc8adb2f
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a99b017bf619bb7b3312f71a156b4d535b4067b3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223163"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075855"
 ---
 # <a name="tutorial-add-authentication-to-your-web-app-running-on-azure-app-service"></a>教程：向 Azure 应用服务上运行的 Web 应用添加身份验证
 
@@ -68,6 +68,10 @@ ms.locfileid: "106223163"
 :::image type="content" alt-text="显示配置身份验证的屏幕截图。" source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
 
 现在，你有一个受应用服务身份验证和授权保护的应用。
+
+> [!NOTE]
+> 若要允许来自其他租户的帐户，请从“身份验证”边栏选项卡编辑“标识提供者”，将“颁发者 URL”更改为“https://login.microsoftonline.com/common/v2.0”。
+>
 
 ## <a name="verify-limited-access-to-the-web-app"></a>验证对 Web 应用的受限访问
 

@@ -2,20 +2,20 @@
 author: craigktreasure
 ms.service: azure-object-anchors
 ms.topic: include
-ms.date: 02/18/2021
+ms.date: 06/10/2021
 ms.author: crtreasu
-ms.openlocfilehash: ada83d6263ef033208200d810c53c5f045acc9a7
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 8ad55355307cfc8656b6f6bf9b074d90daf7e2e8
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105196"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006882"
 ---
 下一步是下载适用于 Unity 的 Azure Object Anchors 包。
 
 # <a name="download-with-web-browser"></a>[使用 Web 浏览器下载](#tab/unity-package-web-ui)
 
-在[此处](https://aka.ms/aoa/unity-sdk/package)找到适用于 Unity 的 Azure Object Anchors 包。 选择所需的版本，并使用“下载”按钮下载该包。
+在[此处](https://aka.ms/aoa/unity-sdk/package)找到适用于 Unity (`com.microsoft.azure.object-anchors.runtime`) 的 Azure Object Anchors 包。 选择所需的版本，并使用“下载”按钮下载该包。
 
 # <a name="download-with-npm"></a>[使用 NPM 下载](#tab/unity-package-npm)
 

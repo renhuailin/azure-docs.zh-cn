@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 06/14/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 4817a68ad74ed9a51f8b9ea67f3d271bbaa3423b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3ef1e3afecfc17b30a29ea3da846b51a0ca9db6
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466136"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112084071"
 ---
 这一类别有 31 条相关建议。
 
@@ -40,7 +40,7 @@ ms.locfileid: "103466136"
 |应将 Python 更新为函数应用的最新版本 |我们定期发布适用于 Python 软件的更高版本来解决安全漏洞或包含更多功能。<br>建议使用函数应用的最新 Python 版本，以从最新版本的安全修复（若有）和/或新功能中受益。<br />（相关策略：[确保用作函数应用一部分的“Python 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7238174a-fd10-4ef0-817e-fc820a951d73)） |中型 |
 |应将 Python 更新为 Web 应用的最新版本 |我们定期发布适用于 Python 软件的更高版本来解决安全漏洞或包含更多功能。<br>建议使用 Web 应用的最新 Python 版本，以从最新版本的安全修复（若有）和/或新功能中受益。<br />（相关策略：[确保用作 Web 应用一部分的“Python 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7008174a-fd10-4ef0-817e-fc820a951d73)） |中型 |
 |应为 API 应用禁用远程调试 |远程调试需要在 API 应用上打开入站端口。 应禁用远程调试。<br />（相关策略：[应为 API 应用禁用远程调试](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2fe9c8d085-d9cc-4b17-9cdc-059f1f01f19e)） |低 |
-|应对函数应用禁用远程调试 |远程调试需要在函数应用上打开入站端口。 应禁用远程调试。<br />（相关策略：[应对函数应用禁用远程调试](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f0e60b895-3786-45da-8377-9c6b4b6ac5f9)） |低 |
+|应对函数应用禁用远程调试 |远程调试需要在 Azure 函数应用上打开入站端口。 应禁用远程调试。<br />（相关策略：[应对函数应用禁用远程调试](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f0e60b895-3786-45da-8377-9c6b4b6ac5f9)） |低 |
 |应禁用 Web 应用程序的远程调试 |远程调试需要在 Web 应用程序上打开入站端口。 远程调试当前已启用。 如果不再需要使用远程调试，则应将其关闭。<br />（相关策略：[应禁用 Web 应用程序的远程调试](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2fcb510bfd-1cba-4d9f-a230-cb0976f4bb71)） |低 |
 |应将 TLS 更新为 API 应用的最新版本 |升级到最新的 TLS 版本<br />（相关策略：[应在 API 应用中使用最新的 TLS 版本](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f8cb6aa8b-9e41-4f4e-aa25-089a7ac2581e)） |高 |
 |应将 TLS 更新为函数应用的最新版本 |升级到最新的 TLS 版本<br />（相关策略：[应在函数应用中使用最新的 TLS 版本](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff9d614c5-c173-4d56-95a7-b4437057d193)） |高 |

@@ -1,18 +1,18 @@
 ---
 title: 教程：使用 Azure 虚拟 WAN 创建站点到站点连接
-description: 本教程介绍如何使用 Azure 虚拟 WAN 来与 Azure 建立站点到站点 VPN 连接。
+description: 了解如何使用 Azure 虚拟 WAN 来与 Azure 建立站点到站点 VPN 连接。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 03/05/2021
+ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: 365952beca96b91d312eab209c5332fca2d4842b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2752d437800840181062f7a9c07d37620e06677a
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061870"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578221"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -34,7 +34,7 @@ ms.locfileid: "106061870"
 > 如果你有多个站点，则通常会使用[虚拟 WAN 合作伙伴](https://aka.ms/virtualwan)来创建此配置。 但是，如果你熟悉网络技术并能够熟练配置自己的 VPN 设备，则可以自行创建此配置。
 >
 
-![虚拟 WAN 示意图](./media/virtual-wan-about/virtualwan.png)
+:::image type="content" source="./media/virtual-wan-about/virtualwan.png" alt-text="屏幕截图显示虚拟 WAN 的网络关系图。":::
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -233,7 +233,7 @@ ms.locfileid: "106061870"
 * VPN 网关默认 BGP IP 地址（由 Azure 分配）
 * 自定义 BGP IP 地址的配置选项：此字段保留给 APIPA（自动专用 IP 地址）。 Azure 支持介于 169.254.21.* 与 169.254.22.* 范围之间的 BGP IP。 Azure 接受这些范围内的 BGP 连接，但会使用默认的 BGP IP 拨号连接。
 
-   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="查看配置" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="屏幕截图显示“编辑 VPN 网关”页，并突出显示“编辑”按钮。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清理资源
 

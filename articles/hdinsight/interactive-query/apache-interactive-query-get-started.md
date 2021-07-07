@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: ec5d63c18e8fb3a353de334ae571c730f9b0d3d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 464521cee3242859294de42d2086e1bea33bb4c4
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869797"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290894"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的交互式查询？
 
 交互式查询（也称为 Apache Hive LLAP 或[低延迟分析处理](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一种 Azure HDInsight [群集类型](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type)。 交互式查询支持内存中缓存，可提高 Apache Hive 查询速度和交互性。 客户使用交互式查询以超快的方式查询存储在 Azure 存储和 Azure Data Lake Storage 中的数据。 交互式查询使开发人员和数据科学家可以使用他们最喜欢的 BI 工具轻松处理大数据。 HDInsight 交互式查询支持使用多种工具轻松访问大数据。
 
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
+[!INCLUDE [hdinsight-price-change](../includes/hdinsight-enhancements.md)]
 
 交互式查询群集与 Apache Hadoop 群集有所不同。 交互式 Hive 群集只包含 Hive 服务。
 

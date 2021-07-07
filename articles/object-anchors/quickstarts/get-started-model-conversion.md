@@ -4,25 +4,25 @@ description: 本快速入门教程介绍如何从 3D 模型创建 Object Anchors
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 02/22/2021
+ms.date: 06/10/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 69d23b9d02eb176a2e42985ef5c3673e83d9bb7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 592affde83e468c409c25204fa389471a77abcce
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607894"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005584"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>快速入门：从 3D 模型创建 Object Anchors 模型
 
-Azure Object Anchors 是一项托管的云服务，它将 3D 模型转换为 AI 模型，以便为 HoloLens 启用对象感知混合现实体验。 本快速入门介绍如何使用 C#/.NET Core SDK 从 3D 模型创建 Object Anchors 模型。
+Azure Object Anchors 是一项托管的云服务，它将 3D 模型转换为 AI 模型，以便为 HoloLens 启用对象感知混合现实体验。 此快速入门介绍如何使用[适用于 .NET 的 Azure Object Anchors 转换 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre) 从 3D 模型创建 Object Anchors 模型。
 
 将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 创建 Object Anchors 帐户
-> * 转换 3D 模型以创建 Object Anchors 模型
+> * 创建 Object Anchors 帐户。
+> * 使用[适用于 .NET 的 Azure Object Anchors 转换 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre) ([NuGet](https://www.nuget.org/packages/Azure.MixedReality.ObjectAnchors.Conversion/)) 转换 3D 模型以创建 Object Anchors 模型。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -126,6 +126,9 @@ Azure Object Anchors 是一项托管的云服务，它将 3D 模型转换为 AI 
 
 4. 成功完成作业后，你应该会在指定的输出位置看到一个格式为 `<Model-Filename-Without-Extension>_<JobID>.ou` 的文件。 例如，如果你的 3D 模型文件名为 `chair.ply`，而你的作业 ID 为 `00000000-0000-0000-0000-000000000000`，则服务输出的文件名将为 `chair_00000000-0000-0000-0000-000000000000.ou`。
 
+## <a name="error-codes"></a>错误代码
+若要详细了解资产转换作业失败可能导致的不同错误代码以及处理每个错误代码的方式，请参阅[转换错误代码页](..\model-conversion-error-codes.md)。
+
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>后续步骤
@@ -140,3 +143,6 @@ Azure Object Anchors 是一项托管的云服务，它将 3D 模型转换为 AI 
 
 > [!div class="nextstepaction"]
 > [HoloLens DirectX](get-started-hololens-directx.md)
+
+> [!div class="nextstepaction"]
+> [转换 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre)

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在通用 Windows 平台桌面应用中让用户登录并调用 Microsoft Graph | Azure
+title: 快速入门：在 Windows 桌面应用中让用户登录并调用 Microsoft Graph | Azure
 description: 本快速入门介绍 Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台保护的 API。
 services: active-directory
 author: jmprieur
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: eb5bf0bc6e211d83d2de2eb8d327ee6b2d577721
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 29ec031fe462e44c1f00d383d667c45b0b16f60b
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075009"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536543"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
