@@ -5,21 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/11/2021
+ms.date: 05/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 708baa83ca919adcc374be36c229ce3ff30da384
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3652fbeee10f8ddad538446087f399ca625f6b07
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100362912"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578220"
 ---
 1. 在虚拟 WAN 的“门户”页上，选择“连接”部分中的“VPN 站点”以开打“VPN 站点”页 。
 1. 在“VPN 站点”页上，单击“+创建站点”。
 1. 在“创建 VPN 站点”页的“基本信息”选项卡上，填写以下字段 ：
 
-   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-basics.png" alt-text="“基本信息”选项卡" lightbox="./media/virtual-wan-tutorial-site-include/site-basics.png":::
+   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-basics.png" alt-text="屏幕截图显示“创建 VPN 站点”页，其中“基本信息”选项卡已打开。" lightbox="./media/virtual-wan-tutorial-site-include/site-basics.png":::
 
     * **区域** - 之前称为位置。 这是要在其中创建此站点资源的位置。
     * **名称** - 本地站点的名称。
@@ -31,7 +31,7 @@ ms.locfileid: "100362912"
       >
 1. 选择“链路”以在分支添加物理链路的信息。 如果有虚拟 WAN 合作伙伴 CPE 设备，请检查该设备，查看是否将此信息作为从其系统设置的分支信息上传的一部分与 Azure 进行交换。
 
-   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-links.png" alt-text="“链路”选项卡" lightbox="./media/virtual-wan-tutorial-site-include/site-links.png":::
+   :::image type="content" source="./media/virtual-wan-tutorial-site-include/site-links.png" alt-text="屏幕截图显示“创建 VPN 站点”页，其中“链接”选项卡已打开。" lightbox="./media/virtual-wan-tutorial-site-include/site-links.png":::
 
    * **链路名称** - 要在 VPN 站点为物理链路提供的名称。 例如：mylink1。
    * **速度** - 这是 VPN 设备在分支位置的速度。 示例：50 表示 VPN 设备在分支站点的速度为 50 Mbps。
@@ -49,4 +49,4 @@ ms.locfileid: "100362912"
 1. 填写完这些字段后，选择“查看 + 创建”来验证和创建站点。
 1. 导航到所需的虚拟中心，然后取消选择“中心关联”，将 VPN 站点连接到中心。
 
-   :::image type="content" source="./media/virtual-wan-tutorial-site-include/connect.png" alt-text="连接到此中心" lightbox="./media/virtual-wan-tutorial-site-include/connect.png":::
+   :::image type="content" source="./media/virtual-wan-tutorial-site-include/connect.png" alt-text="屏幕截图显示“连接到此中心”。" lightbox="./media/virtual-wan-tutorial-site-include/connect.png":::

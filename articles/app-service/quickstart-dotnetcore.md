@@ -3,19 +3,19 @@ title: 快速入门：部署 ASP.NET Web 应用
 description: 了解如何通过部署首个 ASP.NET 应用，在 Azure 应用服务中运行 Web 应用。
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 03/30/2021
+ms.date: 06/08/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-ide
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
-ms.openlocfilehash: 482bf6d29fbc1e982ee4d17099d82915ff3a0241
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3b3abdf40d5aa9d56421361237432ddf08c0c016
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762454"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746530"
 ---
 <!-- NOTES:
 
@@ -39,10 +39,7 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 
 本快速入门介绍如何创建第一个 ASP.NET Web 应用并将其部署到 [Azure 应用服务](overview.md)。 应用服务支持各种版本的 .NET 应用，并提供高度可缩放、自修补的 Web 托管服务。 ASP.NET Web 应用具有跨平台特性，可以在 Linux 或 Windows 上托管。 完成后，你将获得一个 Azure 资源组，其中包含一个应用服务托管计划，以及一个部署了 Web 应用程序的应用服务。
 
-> [!TIP]
-> .NET Core 3.1 是 .NET 的当前长期支持 (LTS) 版本。 有关详细信息，请参阅 [.NET 支持策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
-
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 :::zone target="docs" pivot="development-environment-vs"
 
@@ -110,12 +107,15 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 
 ## <a name="create-an-aspnet-web-app"></a>创建 ASP.NET Web 应用
 
+> [!TIP]
+> .NET Core 3.1 是 .NET 的当前长期支持 (LTS) 版本。 有关详细信息，请参阅 [.NET 支持策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
+
 :::zone target="docs" pivot="development-environment-vs"
 
 ### <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 1. 打开 Visual Studio，然后选择“创建新项目”。
-1. 在“创建新项目”中，找到并选择“ASP.NET Web Core 应用”，然后选择“下一步”。
+1. 在“创建新项目”中，找到并选择“ASP.NET Core Web 应用”，然后选择“下一步”。
 1. 在“配置新项目”中，将应用程序命名为“MyFirstAzureWebApp”，然后选择“下一步”。
 
    :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="配置 ASP.NET Core 3.1 Web 应用" border="true":::
@@ -132,7 +132,7 @@ target cross-platform with .NET Core 3.1 or .NET 5.0.
 ### <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 1. 打开 Visual Studio，然后选择“创建新项目”。
-1. 在“创建新项目”中，找到并选择“ASP.NET Web Core 应用”，然后选择“下一步”。
+1. 在“创建新项目”中，找到并选择“ASP.NET Core Web 应用”，然后选择“下一步”。
 1. 在“配置新项目”中，将应用程序命名为“MyFirstAzureWebApp”，然后选择“下一步”。
 
    :::image type="content" source="media/quickstart-dotnet/configure-webapp-net.png" alt-text="Visual Studio - 配置 ASP.NET 5.0 Web 应用。" border="true":::

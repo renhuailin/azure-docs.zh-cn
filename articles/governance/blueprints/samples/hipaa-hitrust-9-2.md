@@ -3,16 +3,17 @@ title: HIPAA HITRUST 9.2 蓝图示例概述
 description: HIPAA HITRUST 9.2 蓝图示例概述。 此蓝图示例有助于客户评估特定的 HIPAA HITRUST 9.2 控制要求。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 168946319c11f31ee41594d82d9ff186dea232cd
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: eda98807a48a43132b9bbf6c7f9b6293aefdbacb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386578"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757144"
 ---
 # <a name="hipaa-hitrust-92-blueprint-sample"></a>HIPAA HITRUST 9.2 蓝图示例
 
-HIPAA HITRUST 9.2 蓝图示例提供了监管防护措施，其中使用 [Azure Policy](../../policy/overview.md) 来帮助评估特定 HIPAA HITRUST 9.2 控制要求。 对于 Azure 部署的任何必须实现 HIPAA HITRUST 9.2 控制要求的体系结构，此蓝图可帮助客户为其部署一组核心策略。
+HIPAA HITRUST 9.2 蓝图示例使用 [Azure Policy](../../policy/overview.md) 提供治理防护措施，帮助你评估特定 HIPAA HITRUST 9.2 控制要求。
+对于 Azure 部署的任何必须实现 HIPAA HITRUST 9.2 控制要求的体系结构，此蓝图可帮助客户为其部署一组核心策略。
 
 ## <a name="control-mapping"></a>控制映射
 

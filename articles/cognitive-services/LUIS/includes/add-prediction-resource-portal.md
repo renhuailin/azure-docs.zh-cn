@@ -5,14 +5,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/23/2021
+ms.date: 05/14/2021
 ms.author: aahi
-ms.openlocfilehash: 74a5cad377f94d869655952d093e1b54708c1163
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 1144d6d8387817d76ba9969b0c56936301b85c30
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107948297"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095955"
 ---
 1. 在应用程序中转到“管理”选项卡。
 2. 在左侧导航栏中，选择“Azure 资源”。
@@ -20,7 +20,7 @@ ms.locfileid: "107948297"
 
     :::image type="image" alt-text="从门户添加预测资源" source="../media/add-prediction-resource-portal.png" lightbox="../media/add-prediction-resource-portal.png":::
   
-    如果没有直接添加的预测资源，请选择“新建预测资源”。
+    如果已有预测资源，请添加。 否则，请选择“创建新的预测资源”。
   
     :::image type="image" alt-text="从门户添加预测资源 - 2" source="../media/add-prediction-resource-portal-2.png" lightbox="../media/add-prediction-resource-portal-2.png":::
   

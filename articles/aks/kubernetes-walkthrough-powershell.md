@@ -5,18 +5,18 @@ services: container-service
 ms.topic: quickstart
 ms.date: 03/15/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2b61c791390200beac4a18422a4de58dd94fa711
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f96ecd00b72f1853fe25b497283ea48ebdf55d7
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492891"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747790"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>快速入门：使用 PowerShell 部署 Azure Kubernetes 服务群集
 
 Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 在本快速入门中，请执行以下操作：
-* 使用 PowerShell 部署 AKS 群集。 
-* 在该群集中运行一个包含 Web 前端和 Redis 实例的多容器应用程序。 
+* 使用 PowerShell 部署 AKS 群集。
+* 在该群集中运行一个包含 Web 前端和 Redis 实例的多容器应用程序。
 * 监视运行应用程序的群集和 Pod 的运行状况。
 
 若要详细了解如何创建 Windows Server 节点池，请参阅[创建支持 Windows Server 容器的 AKS 群集][windows-container-powershell]。
@@ -41,9 +41,9 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-[Azure 资源组](../azure-resource-manager/management/overview.md)是用于部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会提示你指定一个位置。 此位置是： 
+[Azure 资源组](../azure-resource-manager/management/overview.md)是用于部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会提示你指定一个位置。 此位置是：
 * 资源组元数据的存储位置。
-* 在创建资源期间未指定另一个区域时，资源在 Azure 中的运行位置。 
+* 在创建资源期间未指定另一个区域时，资源在 Azure 中的运行位置。
 
 以下示例在“eastus”区域创建名为“myResourceGroup”的资源组 。
 
@@ -65,12 +65,12 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-1. 使用 `ssh-keygen` 命令行实用工具生成 SSH 密钥对。 
+1. 使用 `ssh-keygen` 命令行实用工具生成 SSH 密钥对。
     * 有关详细信息，请参阅[快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
-1. 使用 [New-AzAks][new-azaks] cmdlet 创建 AKS 群集。 默认已启用用于容器的 Azure Monitor。
+1. 使用 [New-AzAksCluster][new-azakscluster] cmdlet 创建 AKS 群集。 默认已启用用于容器的 Azure Monitor。
 
-    以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 
+    以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。
 
     ```azurepowershell-interactive
     New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
@@ -83,7 +83,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="connect-to-the-cluster"></a>连接到群集
 
-若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 
+若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。
 
 1. 使用 `Install-AzAksKubectl` cmdlet 在本地安装 `kubectl`：
 
@@ -112,11 +112,11 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="run-the-application"></a>运行应用程序
 
-[Kubernetes 清单文件][kubernetes-deployment]定义群集的所需状态，例如，要运行哪些容器映像。 
+[Kubernetes 清单文件][kubernetes-deployment]定义群集的所需状态，例如，要运行哪些容器映像。
 
 在本快速入门中，你将使用清单来创建运行 [Azure Vote 应用程序][azure-vote-app]所需的所有对象。 此清单包含两个 [Kubernetes 部署][kubernetes-deployment]：
 * 示例 Azure Vote Python 应用程序。
-* 一个 Redis 实例。 
+* 一个 Redis 实例。
 
 此外，还会创建两个 [Kubernetes 服务][kubernetes-service]：
 * Redis 实例的内部服务。
@@ -256,7 +256,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ![Azure Kubernetes 服务中部署的投票应用](./media/kubernetes-walkthrough-powershell/voting-app-deployed-in-azure-kubernetes-service.png)
 
-在 Azure 门户中查看用于容器的 Azure Monitor 捕获的群集节点和 Pod 运行状况指标。 
+在 Azure 门户中查看用于容器的 Azure Monitor 捕获的群集节点和 Pod 运行状况指标。
 
 ## <a name="delete-the-cluster"></a>删除群集
 
@@ -268,7 +268,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 > [!NOTE]
 > 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。
-> 
+>
 > 如果你使用了托管标识，则该标识由平台托管，不需要删除。
 
 ## <a name="get-the-code"></a>获取代码
@@ -296,7 +296,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [install-azure-powershell]: /powershell/azure/install-az-ps
 [new-azresourcegroup]: /powershell/module/az.resources/new-azresourcegroup
-[new-azaks]: /powershell/module/az.aks/new-azaks
+[new-azakscluster]: /powershell/module/az.aks/new-azakscluster
 [import-azakscredential]: /powershell/module/az.aks/import-azakscredential
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services

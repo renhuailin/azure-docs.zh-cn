@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 05/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 330c02f15c0818f0a5c69088757c92a91a523589
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c292838305baa44699b6309fcaaf7de7366ba94
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952637"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753374"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>Tutorial:Azure Active Directory 单一登录 (SSO) 与 Samsung Knox and Business Services 的集成
 
@@ -37,7 +37,7 @@ ms.locfileid: "104952637"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Samsung Kno 和业务服务支持 SP 发起的 SSO
+* Samsung Knox and Business Services 支持 SP 发起的 SSO。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -78,7 +78,7 @@ ms.locfileid: "104952637"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    * 在“登录 URL”文本框中，键入 URL：`https://www.samsungknox.com`
+    * 在“登录 URL”文本框中，键入 URL：`https://www2.samsungknox.com/en/sso/login/ad`
     * 在“回复 URL (断言使用者服务 URL)”文本框中，键入 URL：`https://central.samsungknox.com/ams/ad/saml/acs`
     
     ![基本 SAML 配置值](https://docs.samsungknox.com/assets/merge/ad-sso/basic-saml-configuration.png)

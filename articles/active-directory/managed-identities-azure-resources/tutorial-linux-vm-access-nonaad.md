@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/16/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f808c9d01ecbd125e2ef0e3a7b61152767b1b4b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5ac851c54a17893082d70bec5d96e8b8cf63b482
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124016"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517885"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure Key Vault 
 
@@ -47,7 +47,7 @@ ms.locfileid: "108124016"
 
 本部分说明如何授予 VM 访问密钥保管库中存储的密钥的权限。 使用 Azure 资源的托管标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。但是，并非所有 Azure 服务都支持 Azure AD 身份验证。 若要将 Azure 资源的托管标识用于这些服务，请将服务凭据存储在 Azure Key Vault 中，然后使用 VM 的托管标识访问 Key Vault 以检索凭据。
 
-首先，我们需要创建一个 Key Vault 并授予 VM 的系统分配托管标识对 Key Vault 的访问权限。
+首先，我们需要创建一个 Key Vault 并授予 VM 的系统分配托管标识对该 Key Vault 的访问权限。
 
 1. 打开 Azure [门户](https://portal.azure.com/)
 1. 在左侧导航栏的顶部，选择“创建资源”  
@@ -97,10 +97,10 @@ ms.locfileid: "108124016"
 
 >[!IMPORTANT]
 > 所有 Azure SDK 都支持 Azure.Identity 库，这使你可以轻松获取 Azure AD 令牌来访问目标服务。 详细了解 [Azure SDK](https://azure.microsoft.com/downloads/) 并利用 Azure.Identity 库。
-> - [.NET](/dotnet/api/overview/azure/identity-readme?view=azure-dotnet)
-> - [JAVA](/java/api/overview/azure/identity-readme?view=azure-java-stable)
-> - [Javascript](/javascript/api/overview/azure/identity-readme?view=azure-node-latest)
-> - [Python](/python/api/overview/azure/identity-readme?view=azure-python)
+> - [.NET](/dotnet/api/overview/azure/identity-readme)
+> - [JAVA](/java/api/overview/azure/identity-readme)
+> - [Javascript](/javascript/api/overview/azure/identity-readme)
+> - [Python](/python/api/overview/azure/identity-readme)
 
 
 1. 在门户中，转到 Linux VM，并单击“概述”  中的“连接”  。 
@@ -126,7 +126,7 @@ ms.locfileid: "108124016"
     "token_type":"Bearer"} 
     ```
     
-    可以使用此访问令牌对 Azure Key Vault 进行身份验证。  下一个 CURL 请求显示如何使用 CURL 和 Key Vault REST API 从 Key Vault 读取密钥。  将需要 Key Vault 的 URL，该 URL 位于 Key Vault 的“概述”页的“软件包”部分。  另外，还需要在前面的调用中获取的访问令牌。 
+    可以使用此访问令牌对 Azure Key Vault 进行身份验证。  下一个 CURL 请求显示如何使用 CURL 和 Key Vault REST API 从 Key Vault 读取密钥。  你将需要 Key Vault 的 URL，该 URL 位于 Key Vault 的“概述”页的“基本信息”部分。  另外，还需要在前面的调用中获取的访问令牌。 
         
     ```bash
     curl 'https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -138,7 +138,7 @@ ms.locfileid: "108124016"
     {"value":"p@ssw0rd!","id":"https://mytestkeyvault.vault.azure.net/secrets/MyTestSecret/7c2204c6093c4d859bc5b9eff8f29050","attributes":{"enabled":true,"created":1505088747,"updated":1505088747,"recoveryLevel":"Purgeable"}} 
     ```
     
-在检索 Key Vault 中的密钥后，可以使用该密钥对需要名称和密码的服务进行身份验证。
+在检索 Key Vault 中的机密后，可以使用该机密向需要名称和密码的服务进行身份验证。
 
 ## <a name="clean-up-resources"></a>清理资源
 

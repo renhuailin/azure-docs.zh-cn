@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2021
-ms.openlocfilehash: 83e206a5fd7b34da0b0ac8590d5271a554855d3e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 06/03/2021
+ms.openlocfilehash: 713d2216029fb88716d157d9db7b2010d3f32720
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580752"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526265"
 ---
 # <a name="create-an-azure-cognitive-search-service-in-the-portal"></a>在门户中创建 Azure 认知搜索服务
 
 [Azure 认知搜索](search-what-is-azure-search.md)是用于将全文搜索体验添加到自定义应用的 Azure 资源。 可轻松地将其与其他提供数据或额外处理的 Azure 服务集成，与网络服务器上的应用集成，或与其他云平台上运行的软件集成。
 
-可使用本文中介绍的 [Azure 门户](https://portal.azure.com/)创建搜索服务。 还可使用 [Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search)、[管理 REST API](/rest/api/searchmanagement/) 或 [Azure 资源管理器服务模板](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。
+可使用本文中介绍的 [Azure 门户](https://portal.azure.com/)创建搜索服务。 还可使用 [Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search)、[管理 REST API](/rest/api/searchmanagement/) 或 [Azure 资源管理器服务模板](https://azure.microsoft.com/resources/templates/azure-search-create/)。
 
 [![动画 GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -83,25 +83,25 @@ ms.locfileid: "106580752"
 
 ## <a name="choose-a-location"></a>选择位置
 
-Azure 认知搜索在大多数区域都可用，如[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=search)中所述。 通常，如果使用多个 Azure 服务，请选择同时托管数据或应用程序服务的区域。 这样做可以最大程度地减少或避免出站数据的带宽费用（当服务位于同一区域时，出站数据没有任何费用）。
+Azure 认知搜索在大多数区域都可用，如[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=search)中所述。 
 
-+ [AI 扩充](cognitive-search-concept-intro.md)要求认知服务处于与 Azure 认知搜索相同的物理区域。 只有几个区域不能同时提供这两种服务。 [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=search)页用两个复选标记表示两者皆可用。 不可用组合缺少一个复选标记：
+一般情况下，如果使用多个 Azure 服务，请选择同时托管数据或应用程序服务的区域。 这样做可以最大程度地减少或避免出站数据的带宽费用（当服务位于同一区域时，出站数据没有任何费用）。
+
++ [AI 扩充](cognitive-search-concept-intro.md)要求认知服务处于与 Azure 认知搜索相同的物理区域。 只有几个区域不能同时提供这二者。 [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=search)页用两个复选标记表示两者皆可用。 不可用组合缺少一个复选标记：
 
   :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="区域可用性" border="true":::
 
 + 应在[区域对](../best-practices-availability-paired-regions.md#azure-regional-pairs)中创建多个搜索服务来满足业务连续性和灾难恢复 (BCDR) 要求。 例如，如果你在北美运营，则可以为每个搜索服务选择“美国东部”和“美国西部”或“美国中北部”和“美国中南部”。
 
-一些功能的可用性有限，具体取决于区域。 功能文档中概述了这些限制：
-
-+ [双重加密](search-security-overview.md#double-encryption)
+下面列出了按区域提供的功能。 功能文章中列出了支持的区域： 
 
 + [“性能缩放”一文中的“可用性区域](search-performance-optimization.md#availability-zones)。
 
 ## <a name="choose-a-pricing-tier"></a>选择一个定价层
 
-Azure 认知搜索当前以[多个定价层](https://azure.microsoft.com/pricing/details/search/)提供：免费、基本、标准或存储优化。 每个层都有自己的[容量和限制](search-limits-quotas-capacity.md)。 有关相关指南，请参阅[选择定价层](search-sku-tier.md)。
+Azure 认知搜索当前以[多个定价层](https://azure.microsoft.com/pricing/details/search/)提供：免费、基本、标准或存储优化。 每个层都有自己的[容量和限制](search-limits-quotas-capacity.md)。 此外，你选择的层可能会影响某些功能的可用性。 有关指南，请参阅[功能可用性（按层）](search-sku-tier.md#feature-availability-by-tier)。
 
-“基本”和“标准”是生产工作负荷的最常用选项，但大多数客户会从“免费”服务开始。 各个层之间的主要差别在于分区大小和速度，以及可创建的对象数限制。
+“基本”和“标准”是生产工作负荷的最常用选项，但许多客户出于评估目的最初会从“免费”服务开始。 在计费层中，主要差别在于分区大小和速度，以及可创建对象的数目限制。
 
 请记住，创建服务后无法更改定价层。 如果需要更高或较低的层，必须重新创建该服务。
 

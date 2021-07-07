@@ -3,12 +3,12 @@ title: 教程：构建策略以强制实施符合性
 description: 本教程中将使用策略来强制执行标准、控制成本、维护安全性并施加企业范围的设计原则。
 ms.date: 05/01/2021
 ms.topic: tutorial
-ms.openlocfilehash: 68621ee5a4cdfcb3bdbdddb2baa423d443eba36a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 8f5b68190691651855bae31bae2885f80a16111f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325204"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752230"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
 
@@ -98,7 +98,7 @@ ms.locfileid: "108325204"
      > 若要将此策略定义应用到多个订阅，则位置必须是策略要分配到的订阅所在的管理组。 对于计划定义，也需要确保这一点。
 
    - 策略定义的名称 - 需要非 G 系列中的 VM SKU
-   - 想通过策略定义实现的操作的说明 - 此策略定义强制此范围中创建的所有虚拟机具有 G 系列以外的 SKU，以减少成本。
+   - 想通过策略定义实现的操作的说明 - 此策略定义强制此范围内创建的所有虚拟机具有 G 系列以外的 SKU，以减少成本。
    - 从现有的选项（例如“计算”）中选择，或者为此策略定义创建新的类别。
    - 复制以下 JSON 代码并根据需要进行更新：
       - 策略参数。
@@ -393,7 +393,7 @@ az policy definition list
 
 1. 选择页面底部的“下一步”或向导顶部的“策略参数”选项卡 。
 
-1. 计划中添加的具有参数的策略定义会显示在网格中。 值类型可以是“默认值”、“设置值”或“使用计划参数”。 如果选择了“设置值”，则在“值”下输入相关值。 如果策略定义上的参数包含允许的值的列表，则输入框会是一个下拉选择器。 如果选择了“使用计划参数”，则会提供下拉的选择列表，其中包含在“计划参数”选项卡上创建的计划参数的名称。
+1. 计划中添加的具有参数的策略定义会显示在网格中。 值类型可以是“默认值”、“设置值”或“使用计划参数”。 如果选择了“设置值”，则在“值”下输入相关值。 如果策略定义上的参数包含允许的值的列表，则输入框会是一个下拉列表选择器。 如果选择了“使用计划参数”，则会提供下拉的选择列表，其中包含在“计划参数”选项卡上创建的计划参数的名称。
 
    :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="屏幕截图显示“计划定义”页的“策略参数”选项卡上，“允许的位置”定义参数的允许的值的选项。":::
 
@@ -457,7 +457,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
    :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="计划定义页面上的“分配”按钮的屏幕截图。" border="false":::
 
-   也可右键单击选定的行，或者选择上下文菜单行末尾处的省略号。 然后选择“分配”。
+   也可选择和按住（或右键单击）选定的行，或者选择上下文菜单行末尾处的省略号。 然后选择“分配”。
 
    :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="用于选择“分配”功能的计划的上下文菜单的屏幕截图。" border="false":::
 

@@ -1,29 +1,26 @@
 ---
 title: 使用服务主体创建 Azure AD 用户
-description: 本教程介绍如何在 Azure SQL 数据库和 Azure Synapse Analytics 中使用 Azure AD 应用程序（服务主体）创建 Azure AD 用户
+description: 本教程介绍如何在 Azure SQL 数据库中使用 Azure AD 应用程序（服务主体）创建 Azure AD 用户
 ms.service: sql-database
 ms.subservice: security
-ms.custom: azure-synapse
 ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 02/11/2021
-ms.openlocfilehash: 13e049d3e7e0c87bd0a214a92491e10d652a3619
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c1c0754175283dd9087429586e61739c8c779e49
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380604"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662429"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>教程：使用 Azure AD 应用程序创建 Azure AD 用户
 
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-> [!NOTE]
-> 本文目前以公共预览版提供。 有关详细信息，请参阅[使用 Azure SQL 的 Azure Active Directory 服务主体](authentication-aad-service-principal.md)。 本文将使用 Azure SQL 数据库来演示必要的教程步骤，但同样适用于 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。
-
-本文将指导你完成使用 Azure 服务主体（Azure AD 应用程序）在 Azure SQL 数据库中创建 Azure AD 用户的过程。 此功能已存在于 Azure SQL 托管实例中，但现在在 Azure SQL 数据库和 Azure Synapse Analytics 中引入。 若要支持此方案，必须生成 Azure AD 标识并将其分配给 Azure SQL 逻辑服务器。
+本文将指导你完成使用 Azure 服务主体（Azure AD 应用程序）在 Azure SQL 数据库中创建 Azure AD 用户的过程。 此功能已存在于 Azure SQL 托管实例中，但现在在 Azure SQL 数据库中引入。 若要支持此方案，必须生成 Azure AD 标识并将其分配给 Azure SQL 逻辑服务器。
 
 有关 Azure SQL 的 Azure AD 身份验证的详细信息，请参阅[使用 Azure Active Directory 身份验证](authentication-aad-overview.md)。
 
@@ -38,7 +35,7 @@ ms.locfileid: "100380604"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 现有 [Azure SQL 数据库](single-database-create-quickstart.md)或 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 部署。 在本教程中，我们假设你有一个正常运行的 SQL 数据库。
+- 现有 [Azure SQL 数据库](single-database-create-quickstart.md)部署。 在本教程中，我们假设你有一个正常运行的 SQL 数据库。
 - 可以访问现有 Azure Active Directory。
 - 使用 PowerShell 将单个 Azure AD 应用程序设置为 Azure SQL 的 Azure AD 管理员时，需要使用 [Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 模块或更高版本。 确保已升级到最新模块。
 
@@ -159,13 +156,7 @@ if ($selDirReader -eq $null) {
 
 ## <a name="create-a-service-principal-an-azure-ad-application-in-azure-ad"></a>在 Azure AD 中创建服务主体（Azure AD 应用程序）
 
-1. 请按照此处的指南[注册应用并设置权限](active-directory-interactive-connect-azure-sql-db.md#register-your-app-and-set-permissions)。
-
-    请确保添加应用程序权限以及委托的权限。
-
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="显示了 Azure Active Directory 的“应用注册”页的屏幕截图。突出显示了显示名称为“AppSP”的应用。":::
-
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="api-permissions":::
+1. 请按照此处的指南[注册应用](active-directory-interactive-connect-azure-sql-db.md#register-your-app-and-set-permissions)。
 
 2. 还需要创建用于登录的客户端密码。 请按照此处的指南[上传证书或创建用于登录的机密](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)。
 
@@ -176,17 +167,6 @@ if ($selDirReader -eq $null) {
 本教程将使用 AppSP 作为主服务主体，使用 myapp 作为将在 Azure SQL 中通过 AppSP 创建的第二个服务主体用户  。 需要创建两个应用程序：AppSP 和 myapp 。
 
 有关如何创建 Azure AD 应用程序的详细信息，请参阅文章[如何使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
-
-### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>设置或取消设置 Azure AD 管理员所需的权限
-
-为了使服务主体为 Azure SQL 设置或取消设置 Azure AD 管理员，需要额外的 API 权限。 需要将 [Directory.Read.All](/graph/permissions-reference#application-permissions-18) 应用程序 API 权限添加到 Azure AD 中的应用程序。
-
-:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Azure AD 中的 Directory.Reader.All 权限":::
-
-服务主体还需要适用于 SQL 数据库的 [SQL Server 参与者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)角色，或适用于 SQL 托管实例的 [SQL 托管实例参与者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)角色 。
-
-> [!NOTE]
-> 尽管 Azure AD Graph API 将被弃用，但 Directory.Reader.All 权限仍适用于本教程。 Microsoft Graph API 不适用于本教程。
 
 ## <a name="create-the-service-principal-user-in-azure-sql-database"></a>在 Azure SQL 数据库中创建服务主体用户
 
@@ -270,7 +250,7 @@ if ($selDirReader -eq $null) {
     $conn.Close()
     ``` 
 
-    或者，可以使用博客[对 SQL DB 进行 Azure AD 服务主体身份验证 - 代码示例](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)中的代码示例。 修改脚本以执行 DDL 语句 `CREATE USER [myapp] FROM EXTERNAL PROVIDER`。 相同的脚本可用于在 SQL 数据库中创建常规 Azure AD 用户组。
+    或者，可以使用博客[对 SQL DB 进行 Azure AD 服务主体身份验证 - 代码示例](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)中的代码示例。 修改脚本以执行 DDL 语句 `CREATE USER [myapp] FROM EXTERNAL PROVIDER`。 相同的脚本可用于在 SQL 数据库中创建常规 Azure AD 用户或组。
 
     
 2. 通过执行以下命令，检查用户 myapp 是否存在于数据库中：

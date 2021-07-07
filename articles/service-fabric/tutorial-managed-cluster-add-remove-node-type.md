@@ -1,18 +1,19 @@
 ---
-title: 添加和删除 Service Fabric 托管群集的节点类型（预览版）
+title: 在 Service Fabric 托管群集中添加和删除节点类型
 description: 本教程介绍如何添加和删除 Service Fabric 托管群集的节点类型。
 ms.topic: tutorial
-ms.date: 09/28/2020
-ms.openlocfilehash: bb33512652677fc4e46d8ba3668dca985bbcfe01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0ce797c5f206378abe3691d895c58afa26282b0c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791234"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677276"
 ---
-# <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster-preview"></a>教程：在 Service Fabric 托管群集中添加和删除节点类型（预览版）
+# <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster"></a>教程：在 Service Fabric 托管群集中添加和删除节点类型
 
-在此教程系列中，我们将讨论以下内容：
+在本系列教程中，我们将讨论以下内容：
 
 > [!div class="checklist"]
 > * [如何部署 Service Fabric 托管群集](tutorial-managed-cluster-deploy.md)

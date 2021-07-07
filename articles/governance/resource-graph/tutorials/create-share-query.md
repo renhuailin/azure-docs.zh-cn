@@ -3,12 +3,12 @@ title: 教程：在 Azure 门户中管理查询
 description: 在本教程中，你会在 Azure 门户中创建 Resource Graph 查询并将这个新查询与其他人共享。
 ms.date: 05/01/2021
 ms.topic: tutorial
-ms.openlocfilehash: a7c2e5917abc89aded225bc7a62746399bec050b
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 75942cf681384d2759a8cf0f32c938efa793df86
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324826"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751420"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>教程：在 Azure 门户中创建和共享 Azure Resource Graph 查询
 
@@ -44,7 +44,7 @@ ms.locfileid: "108324826"
 
    选择“运行查询”以在底部窗格中查看查询结果。
 
-   有关此查询的详细信息，请参阅[示例 – 按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os)。
+   有关此查询的详细信息，请参阅[示例 - 按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os)。
 
 1. 选择“保存”或“另存为”，输入“按 OS 对 VM 进行计数”作为名称，将类型保留为“专用查询”，然后选择“保存查询”窗格底部的“保存”     。 选项卡标题从“查询 1”更改为“按 OS 对 VM 进行计数” 。
 
@@ -52,7 +52,7 @@ ms.locfileid: "108324826"
 
 1. 选择“打开查询”。 确保该类型为“专用查询”。 已保存的名称“按 OS 对 VM 进行计数”现在会显示在“查询名称”列表中。 选择已保存查询的标题链接后，会将其加载到具有该查询的名称的新选项卡中。
 
-   > [!NOTE] 
+   > [!NOTE]
    > 当已保存的查询处于打开状态且选项卡显示其名称时，选择“保存”按钮将使用所做的任何更改来更新它。 若要从这一打开的查询中创建新保存的查询，请选择“另存为”并继续操作，就像保存全新的查询一样。
 
 1. 若要删除已保存的查询，请再次选择“打开查询”，并验证“类型”字段是否设置为“专用查询”。 在已保存的 `Count VMs by OS` 查询的行上，选择“删除”（回收站图标）。 在确认对话框中，选择“是”以完成查询删除。
@@ -71,10 +71,10 @@ ms.locfileid: "108324826"
    | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
-    
+
    选择“运行查询”以在底部窗格中查看查询结果。
 
-   有关此查询的详细信息，请参阅[示例 – 按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os)。
+   有关此查询的详细信息，请参阅[示例 - 按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os)。
 
 1. 选择“保存”或“另存为” 。
 
@@ -87,10 +87,10 @@ ms.locfileid: "108324826"
 1. 选中“发布到 resource-graph-queries 资源组”复选框，并将“资源组位置”设置为“(美国)美国中西部”  。
 
 1. 在“保存查询”窗格底部选择“保存”。  选项卡标题从“查询 1”更改为“按 OS 对 VM 进行计数” 。 第一次使用 resource-graph-queries 资源组时，创建资源组后保存所需的时间比预期时间更长。
-   
+
    :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="将新查询另存为共享查询" border="false":::
 
-   > [!NOTE] 
+   > [!NOTE]
    > 如果要提供保存共享查询的现有资源组的名称，则可以清除“发布到 resource-graph-queries 资源组”复选框。 使用查询的默认命名资源组可以更轻松地发现共享查询。 它还使该资源组的用途更加明显。 但出于安全原因，可以根据现有权限选择现有资源组。
 
 1. 离开 Azure 门户中的 Azure Resource Graph 资源管理器，然后返回到该资源管理器。 请注意，不再显示已保存的查询，并且已返回“查询 1”选项卡。
@@ -99,7 +99,7 @@ ms.locfileid: "108324826"
 
    :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="显示带有图标的共享查询" border="false":::
 
-   > [!NOTE] 
+   > [!NOTE]
    > 当已保存的查询处于打开状态且选项卡显示其名称时，“保存”按钮将使用所做的任何更改来更新它。 若要创建新保存的查询，请选择“另存为”并继续操作，就像保存全新的查询一样。
 
 ## <a name="discover-shared-queries"></a>发现共享查询
@@ -122,7 +122,7 @@ ms.locfileid: "108324826"
 ### <a name="list-resource-groups-resources"></a>列出资源组资源
 
 Resource Graph 查询与作为资源组一部分的其他资源一起列出。
-选择 Resource Graph 查询可打开该查询的页面。 省略号和快捷菜单选项（通过右键单击触发）的工作方式与 Resource Graph 查询页上的工作方式相同。
+选择 Resource Graph 查询可打开该查询的页面。 省略号和快捷菜单选项（选择并按住它们即可触发，右键单击它们也可触发）的工作方式与 Resource Graph 查询页上的工作方式相同。
 
 ### <a name="query-resource-graph"></a>查询 Resource Graph
 

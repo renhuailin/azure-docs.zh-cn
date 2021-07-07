@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: f4cc631bd3ff05dc63566677ec96ef0360d362c9
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: ba6023ccc1582650e74da483aeefc48d2a305bef
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517345"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554745"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>探索 Synapse 知识中心
 
 在本教程中，你将了解如何使用 Synapse Studio 知识中心。
 
-## <a name="finding-to-the-knowledge-center"></a>找到知识中心
+## <a name="finding-the-knowledge-center"></a>找到知识中心
 
 在 Synapse Studio 中，有两种方法可以找到知识中心：
 
@@ -51,9 +51,9 @@ ms.locfileid: "107517345"
 1. 滚动到第一个查询（第 28 行到第 32 行），然后选择查询文本。
 1. 单击“运行”。 它只会运行所选代码。
 
-## <a name="gallery-a-collectiopn-of-sample-data-sets-and-sample-code"></a>库：示例数据集和示例代码的集合
+## <a name="gallery-a-collection-of-sample-datasets-and-sample-code"></a>库：示例数据集和示例代码集合
 
-1. 转到“知识中心”，单击“浏览库” 。
+1. 转到“知识中心”，单击“浏览库”。
 1. 选择顶部的“SQL 脚本”选项卡。
 1. 选择“加载纽约出租车数据集”数据引入示例，单击“继续” 。
 1. 在“SQL 池”下，依次选择“选择现有池”和“SQLPOOL1”，然后选择之前创建的 SQLPOOL1 数据库   。

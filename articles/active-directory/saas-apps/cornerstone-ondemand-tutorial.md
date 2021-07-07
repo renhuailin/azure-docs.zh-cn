@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/25/2021
+ms.date: 05/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 28e77ecafc32f5b71ff2141aadb00ab484e0067a
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: dd032056360262c95540c3147aceeea8f4566c9c
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001945"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576017"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-single-sign-on"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cornerstone Single Sign-On 集成
 
@@ -31,7 +31,7 @@ ms.locfileid: "108001945"
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用 Cornerstone Single Sign-On 单一登录 (SSO) 的订阅。
+* 已启用单一登录 (SSO) 的 Cornerstone 订阅。
 
 > [!NOTE]
 > 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
@@ -41,18 +41,18 @@ ms.locfileid: "108001945"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Cornerstone Single Sign-On 支持 **SP** 发起的 SSO。
-* Cornerstone Single Sign-On 支持[自动用户预配](cornerstone-ondemand-provisioning-tutorial.md)。
+
 * 如果要集成这个特定的列表中的一个或多个产品，应使用库中的此 Cornerstone OnDemand 单一登录应用。
 
     我们提供了以下几个方面的解决方案：
 
-    1. 学习管理 (LMS)
-    2. 性能管理 (EPM)
-    3. 继任计划
-    4. 招聘 (ATS)
-    5. 扩展企业
-    6. 人力资源
-    7. 员工内容
+    1. 招聘
+    2. 学习
+    3. 开发
+    4. Content
+    5. 性能
+    6. 事业
+    7. HR
 
 ## <a name="adding-cornerstone-single-sign-on-from-the-gallery"></a>从库中添加 Cornerstone Single Sign-On
 
@@ -75,7 +75,7 @@ ms.locfileid: "108001945"
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 2. **[配置 Cornerstone Single Sign-On SSO](#configure-cornerstone-single-sign-on-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Cornerstone Single Sign-On 测试用户](#create-cornerstone-single-sign-on-test-user)** - 在 Cornerstone Single Sign-On 中创建 B.Simon 的对应用户，并将其链接到其在 Azure AD 中的表示形式。
+    1. [创建 Cornerstone Single Sign-On 测试用户](#create-cornerstone-single-sign-on-test-user) - 在 Cornerstone 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -97,7 +97,7 @@ ms.locfileid: "108001945"
     c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<PORTAL_NAME>.csod.com/samldefault.aspx?ouid=<OUID>` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际回复 URL、标识符和登录 URL 更新这些值。 请联系 [Cornerstone Single Sign-on 客户端支持团队](mailto:moreinfo@csod.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际回复 URL、标识符和登录 URL 更新这些值。 你需要联系 Cornerstone 咨询团队或合作伙伴，以获得这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 4. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -133,11 +133,12 @@ ms.locfileid: "108001945"
 
 ## <a name="configure-cornerstone-single-sign-on-sso"></a>配置 Cornerstone Single Sign-On SSO
 
-若要在 Cornerstone 单一登录端配置单一登录，你需要将下载的证书 (Base64) 以及从 Azure 门户复制的相应 URL 发送给 [Cornerstone 单一登录支持团队](mailto:moreinfo@csod.com)，或者联系你的合作伙伴。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Cornerstone Single **Sign-On** 端配置单一登录，需要联系 Cornerstone 咨询团队或合作伙伴。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-cornerstone-single-sign-on-test-user"></a>创建 Cornerstone Single Sign-On 测试用户
 
-本部分的目的是在 Cornerstone Single Sign-On 中创建名为 B.Simon 的用户。 Cornerstone Single Sign-On 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](./cornerstone-ondemand-provisioning-tutorial.md)。
+本部分需在 Cornerstone 中创建一个名为“Britta Simon”的用户。 与你的 Cornerstone 咨询团队合作，或联系合作伙伴，将用户添加到 Cornerstone Single Sign-On 平台。 使用单一登录前，必须先创建并激活用户。
+
 
 ## <a name="test-sso"></a>测试 SSO 
 

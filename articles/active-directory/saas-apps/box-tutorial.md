@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2021
 ms.author: jeedes
-ms.openlocfilehash: d21ccdcb1f3854733d045b47a5f43e27bbdf4ccb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79153734beb9ddc8bb43c1c4928844c5d4bd18e7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98807900"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739979"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Box 集成
 
@@ -153,12 +153,21 @@ ms.locfileid: "98807900"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Box 登录 URL，可以从那里启动登录流。
+* 在 Azure 门户中，选择“测试此应用程序”。 你将重定向到 Box 登录 URL，可以从那里启动登录流。
 
 * 直接转到 Box 登录 URL，并从那里启动登录流。
 
 * 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Box 磁贴时，会重定向到 Box 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
+### <a name="push-an-azure-group-to-box"></a>将 Azure 组推送到 Box
+
+可以将 Azure 组推送到 Box 并同步该组。 Azure 通过 API 级别的集成将组推送到 Box。
+
+1. 在“用户和组”中，搜索要分配给 Box 的组。
+1. 在“预配”中，确保选中“将 Azure Active Directory 组同步到 Box” 。 此设置会同步在上一步中分配的组。 从 Azure 推送这些组可能需要一些时间。
+
+> [!NOTE]
+> 如果需要手动创建用户，请联系[支持团队](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)。
 
 ## <a name="next-steps"></a>后续步骤
 

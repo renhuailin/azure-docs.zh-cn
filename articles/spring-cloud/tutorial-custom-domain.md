@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 583124e9e3ca657ee13e4726eda981ae26022856
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6c9d2e82e048a8693175974d6ef664d67e9deac8
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138510"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652645"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>教程：将现有自定义域映射到 Azure Spring Cloud
 
@@ -28,7 +28,7 @@ ms.locfileid: "108138510"
 * 来自第三方提供商的私有证书（即你的自签名证书）。 该证书必须与域匹配。
 * 一个已部署的 [Azure Key Vault](../key-vault/general/overview.md) 实例
 
-## <a name="keyvault-private-link-considerations"></a>Keyvault 专用链接注意事项
+## <a name="keyvault-private-link-considerations"></a>Key Vault 专用链接注意事项
 
 Azure Spring Cloud 管理 IP 尚不属于 Azure 受信任的 Microsoft 服务。 因此，若要允许 Azure Spring Cloud 从受专用终结点连接保护的 Key Vault 加载证书，必须将以下 IP 添加到 Azure Key Vault 防火墙：
 
@@ -89,7 +89,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 1. 在上部菜单中，单击“生成/导入”。
 1. 在“创建证书”对话框中，在“证书创建方法”下，选择 `Import` 。
 1. 在“上传证书文件”下，导航到证书所在位置并选择该证书。
-1. 在“密码”下，输入证书的私钥。
+1. 在“密码”下，如果要上传受密码保护的证书文件，请在此处提供该密码。 否则，请将其留空。 成功导入证书文件后，密钥保管库会删除该密码。
 1. 单击“创建”。
 
     ![导入证书 1](./media/custom-dns-tutorial/import-certificate-a.png)

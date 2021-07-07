@@ -5,17 +5,19 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI
-ms.openlocfilehash: 3c05025ecf6ea4de6485264e13c4d568e1222710
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: babd2fd92932e027a0ad56fc30b2ced6b20d4aee
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88539098"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060092"
 ---
 <!-- ### Set the Azure subscription -->
 
-在以下命令中，为媒体服务帐户提供想要使用的 Azure 订阅 ID。 导航到[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)即可查看有权访问的订阅列表。
+在以下命令中，为媒体服务帐户提供想要使用的 Azure 订阅 ID。
 
 ```azurecli
-az account set --subscription mySubscriptionId
+az account set --subscription <your-subscription-name>
 ```
+
+此命令不返回任何内容。

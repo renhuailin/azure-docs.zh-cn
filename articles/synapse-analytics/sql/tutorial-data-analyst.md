@@ -1,6 +1,6 @@
 ---
-title: 教程：在 Azure Synapse Studio 中使用无服务器 SQL 池分析 Azure 开放数据集
-description: 本教程介绍如何在 Azure Synapse Studio 中使用无服务器 SQL 池来组合不同的 Azure 开放数据集，从而轻松执行探索数据分析，然后将结果可视化。
+title: 教程：在 Synapse Studio 中使用无服务器 SQL 池分析 Azure 开放数据集
+description: 本教程介绍如何在 Synapse Studio 中使用无服务器 SQL 池来组合不同的 Azure 开放数据集，从而轻松执行探索数据分析，然后将结果可视化。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d37597f8667c461e8d61f8214483f57eb702c2a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eed38a5dfeafee6a951ea745f3fa12ba11a36699
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97007545"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813715"
 ---
 # <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool"></a>教程：利用无服务器 SQL 池探索和分析数据湖
 
@@ -25,6 +25,13 @@ OPENROWSET(BULK...) 函数可用于访问 Azure 存储中的文件。 [OPENROWSE
 ## <a name="automatic-schema-inference"></a>自动架构推理
 
 由于数据以 Parquet 文件格式存储，因此可以使用自动架构推理。 无需列出文件中所有列的数据类型即可轻松查询数据。 还可以使用虚拟列机制和 filepath 函数筛选出特定的文件子集。
+
+> [!NOTE]
+> 如果使用具有非默认排序规则的数据库（是默认排序规则SQL_Latin1_General_CP1_CI_AS），则应当考虑是否区分大小写。 
+> 
+> 如果使用区分大小写的排序规则创建数据库，则在指定列时，请确保使用列的正确名称。
+> 
+> 列名示例“tpepPickupDateTime”是正确的，而“tpeppickupdatetime”在非默认排序规则中是无效列名。
 
 首先，通过运行以下查询来熟悉 NYC 出租车数据：
 

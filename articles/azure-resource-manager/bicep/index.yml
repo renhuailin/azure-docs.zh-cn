@@ -1,0 +1,105 @@
+### YamlMime:Landing
+title: Bicep 文档
+summary: Bicep 是用来以声明方式部署 Azure 资源的一种语言。 可以使用 Bicep（而不是 JSON）来开发 Azure 资源管理器模板（ARM 模板）。
+metadata:
+  title: Bicep 文档
+  description: 了解如何开发 Bicep 文件并将其用于部署 Azure 资源
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: Bicep
+  ms.topic: landing-page
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 05/20/2021
+  ms.openlocfilehash: 4ca69803581d8cf04e20e13845944c55ec334516
+  ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/02/2021
+  ms.locfileid: "111025405"
+landingContent:
+- title: Bicep
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Bicep？
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: Ignite 2021 大会展示内容
+      url: https://www.youtube.com/embed/sc1kJfcRQgY
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建 Bicep 文件 - VS Code
+      url: quickstart-create-bicep-use-visual-studio-code.md
+  - linkListType: learn
+    links:
+    - text: Bicep 简介
+      url: /learn/modules/introduction-to-infrastructure-as-code-using-bicep/
+    - text: 使用 Bicep 进行部署
+      url: /learn/modules/deploy-azure-resources-by-using-bicep-templates/
+    - text: 部署子资源和扩展资源
+      url: /learn/modules/child-extension-bicep-templates/
+- title: 创作 Bicep 文件
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用函数
+      url: ./bicep-functions.md
+    - text: 使用运算符
+      url: ./operators.md
+    - text: 使用数据类型
+      url: ./data-types.md
+    - text: 定义参数
+      url: ./parameters.md
+    - text: 定义变量
+      url: ./variables.md
+    - text: 定义资源
+      url: ./resource-declaration.md
+    - text: 定义输出
+      url: outputs.md
+  - linkListType: reference
+    links:
+    - text: Bicep 文件结构
+      url: ./file.md
+    - text: Azure 快速入门模板
+      url: https://azure.microsoft.com/resources/templates/
+- title: 部署 Bicep 文件
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell
+      url: deploy-powershell.md
+    - text: Azure CLI
+      url: deploy-cli.md
+    - text: Cloud Shell
+      url: deploy-cloud-shell.md
+    - text: 模拟部署
+      url: deploy-what-if.md
+- title: 作用域内部署
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 资源组
+      url: deploy-to-resource-group.md
+    - text: 订阅
+      url: deploy-to-subscription.md
+    - text: 管理组
+      url: deploy-to-management-group.md
+    - text: 租户
+      url: deploy-to-tenant.md
+    - text: 范围扩展资源
+      url: scope-extension-resources.md
+- title: 浏览参考内容
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 模板参考
+      url: /azure/templates/
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource

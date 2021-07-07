@@ -7,18 +7,18 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/26/2021
+ms.date: 06/07/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fa1250189c5ba11426ac993bed8fde398ae37ea2
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: fb04dbe5cdfab523e8af9a057cc4477f58b1b525
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001458"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565331"
 ---
-# <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
+# <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流和自定义策略
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -46,13 +46,13 @@ ms.locfileid: "108001458"
 
 ::: zone pivot="b2c-user-flow"
 - 如果没有租户，请[创建链接到 Azure 订阅的 Azure AD B2C 租户](tutorial-create-tenant.md)。
-- 在所创建的租户中[注册应用程序](tutorial-register-applications.md)，使其能够与 Azure AD B2C 通信。
+- [注册 Web 应用程序](tutorial-register-applications.md)并[启用 ID 令牌隐式授权](tutorial-register-applications.md#enable-id-token-implicit-grant)。
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
 - 如果没有租户，请[创建链接到 Azure 订阅的 Azure AD B2C 租户](tutorial-create-tenant.md)。
-- 在所创建的租户中[注册应用程序](tutorial-register-applications.md)，使其能够与 Azure AD B2C 通信。
+- [注册 Web 应用程序](tutorial-register-applications.md)并[启用 ID 令牌隐式授权](tutorial-register-applications.md#enable-id-token-implicit-grant)。
 - [创建 Facebook 应用程序](identity-provider-facebook.md#create-a-facebook-application)。 跳过[使用 Facebook 帐户设置注册和登录](identity-provider-facebook.md)一文中的先决条件和重置步骤。 尽管使用自定义策略不需要 Facebook 应用程序，但在本演练中，将用它来演示如何在自定义策略中实现社交登录。
 
 ::: zone-end
@@ -82,7 +82,7 @@ ms.locfileid: "108001458"
 
 1. 输入该用户流的 **名称**。 例如 *signupsignin1*。
 1. 对于“标识提供者”，请选择“电子邮件注册”。
-1. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”所对应的属性和声明。 单击“确定”。
+1. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”所对应的属性和声明。 单击 **“确定”** 。
 
     ![属性和声明选择页，有三个声明处于选中状态](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
@@ -327,7 +327,9 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 1. 在“自定义策略”下，选择“B2C_1A_signup_signin” 。
 1. 选择“立即运行”，然后选择 Facebook，通过 Facebook 登录并测试自定义策略。
 
+
 ::: zone-end
+
 ## <a name="next-steps"></a>后续步骤
 
 本文介绍了如何执行以下操作：
@@ -341,3 +343,5 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 > [!div class="nextstepaction"]
 > [教程：使用 Azure AD B2C 在 Web 应用程序中启用身份验证 >](tutorial-web-app-dotnet.md)
+
+还可以在 [Azure AD B2C 体系结构深入探讨系列](https://www.youtube.com/playlist?list=PLOPotgzC07IKXXCTZcrpuLWbVe3y51kfm)中了解详细信息。

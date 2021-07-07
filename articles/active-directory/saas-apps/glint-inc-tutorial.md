@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 9bf523fcc7699096b273b79d703770cbe71dcb35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b95d23498c4f28cd1cdacb9ae8b709739e150312
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92448565"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556327"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-glint-inc"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Glint Inc 的集成
 
@@ -37,9 +37,9 @@ ms.locfileid: "92448565"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Glint Inc 支持 SP 和 IDP 发起的 SSO
+* Glint Inc 支持 SP 和 IDP 发起的 SSO。
 
-## <a name="adding-glint-inc-from-the-gallery"></a>从库中添加 Glint Inc
+## <a name="add-glint-inc-from-the-gallery"></a>从库中添加 Glint Inc
 
 要配置 Glint Inc 与 Azure AD 的集成，需要从库中将 Glint Inc 添加到托管 SaaS 应用列表。
 
@@ -50,12 +50,11 @@ ms.locfileid: "92448565"
 1. 在“从库中添加”部分的搜索框中，键入 Glint Inc 。
 1. 从结果面板中选择“Glint Inc”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-glint-inc"></a>配置并测试 Glint Inc 的 Azure AD SSO
 
 使用名为 B. Simon 的测试用户配置和测试 Glint Inc 的 Azure AD SSO。 为了使 SSO 正常工作，需要在 Azure AD 用户与 Glint Inc 中的相关用户之间建立链接关系。
 
-要配置和测试 Glint Inc 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Glint Inc 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
@@ -70,11 +69,11 @@ ms.locfileid: "92448565"
 
 1. 在 Azure 门户的“Glint Inc”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://api.<REGION>.glintinc.com/api/client/<CUSTOMER_NAME>/token/saml2/consume/includeDeskLink`
 
@@ -94,6 +93,7 @@ ms.locfileid: "92448565"
 1. 在“设置 Glint Inc”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -130,18 +130,18 @@ ms.locfileid: "92448565"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-#### <a name="sp-initiated"></a>SP 启动：
+#### <a name="sp-initiated"></a>SP 启动的：
 
 * 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Glint Inc 登录 URL，可以在其中启动登录流。  
 
 * 直接转到 Glint Inc 登录 URL，并在其中启动登录流。
 
-#### <a name="idp-initiated"></a>IDP 启动：
+#### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Glint Inc 
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Glint Inc。 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 Glint Inc 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Glint Inc。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Glint Inc 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Glint Inc。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Glint Inc 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 Glint Inc 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

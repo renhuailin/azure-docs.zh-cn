@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/26/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 6f77bac93b7bb5e3319409c01e328c73cd08a9a0
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: d9520f3a6c6ffadf7186b0b3c5c83fe872711316
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058946"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007780"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
 
@@ -104,13 +104,16 @@ Azure CDN 可处理证书管理任务，例如获取和续订操作。 启用此
 > 此选项仅适用于来自 Microsoft 的 Azure CDN 和来自 Verizon 的 Azure CDN 配置文件   。 
 >
  
-可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure CDN 使用此安全机制来获得你的证书，因此需要额外一些步骤。 创建 TLS/SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure CDN 上启用自定义 HTTPS 的证书颁发机构](cdn-troubleshoot-allowed-ca.md)。 对于“Verizon 的 Azure CDN”，将接受任何有效的 CA。 
+可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure Front Door 使用此安全机制来获取你的证书，并且需要一些额外的步骤。 创建 TLS/SSL 证书时，必须使用 [Microsoft 受信任 CA 列表](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)中允许的证书颁发机构 (CA) 创建完整的证书链。 如果使用不允许的 CA，请求会被拒绝。  如果提供的是没有完整链的证书，则不能保证涉及该证书的请求实现预期效果。 对于“Verizon 的 Azure CDN”，将接受任何有效的 CA。
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
 1. Azure Key Vault：在要启用自定义 HTTPS 的 Azure CDN 配置文件和 CDN 终结点的同一订阅下，必须具有正在运行的 Azure Key Vault 帐户。 创建 Azure Key Vault 帐户（如果还没有帐户）。
  
 2. Azure Key Vault 证书：如果你有证书，请直接将其上传到 Azure Key Vault 帐户。 如果没有证书，请通过 Azure Key Vault 直接创建新证书。
+
+> [!NOTE]
+> 证书必须具有包含叶证书和中间证书的完整证书链，根 CA 必须是 [Microsoft 受信任 CA 列表](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)的一部分。
 
 ### <a name="register-azure-cdn"></a>注册 Azure CDN
 
@@ -146,21 +149,20 @@ Azure CDN 可处理证书管理任务，例如获取和续订操作。 启用此
 
 2. 在“添加访问策略”页面中，勾选“选择主体”旁边的“未选中”  。 在“主体”页面中，输入“205478c0-bd83-4e1b-a9d6-db63a3e1e1c8” 。 选择“Microsoft.AzureFrontdoor-Cdn”。  勾选“选择”：
 
-2. 在“选择主体”中，搜索“205478c0-bd83-4e1b-a9d6-db63a3e1e1c8”，并选择“Microsoft.AzureFrontDoor-Cdn”  。 选择“选择”  。
+3. 在“选择主体”中，搜索“205478c0-bd83-4e1b-a9d6-db63a3e1e1c8”，并选择“Microsoft.AzureFrontDoor-Cdn”  。 选择“选择”  。
 
     :::image type="content" source="./media/cdn-custom-ssl/cdn-access-policy-settings.png" alt-text="选择 Azure CDN 的服务主体" border="true":::
     
-3. 选择“证书权限”。 选中“Get”和“List”复选框，以允许 CDN 权限获取和列出证书 。
+4. 选择“证书权限”。 选中“Get”和“List”复选框，以允许 CDN 权限获取和列出证书 。
 
-4. 选择“机密权限”。 选中“Get”和“List”复选框，以允许 CDN 权限获取和列出机密 ：
+5. 选择“机密权限”。 选中“Get”和“List”复选框，以允许 CDN 权限获取和列出机密 ：
 
     :::image type="content" source="./media/cdn-custom-ssl/cdn-vault-permissions.png" alt-text="为 CDN 选择 keyvault 的权限" border="true":::
 
-5. 选择 **添加** 。 
+6. 选择 **添加** 。 
 
 > [!NOTE]
-> Azure CDN 现在可以访问此 Key Vault 和存储在其中的证书（机密）。 在此订阅中创建的任何 CDN 实例都将有权访问此密钥保管库中的证书。 
-
+> Azure CDN 现在可以访问此 Key Vault 和存储在其中的证书（机密）。 在此订阅中创建的任何 CDN 实例都将有权访问此密钥保管库中的证书。
  
 ### <a name="select-the-certificate-for-azure-cdn-to-deploy"></a>选择要部署的 Azure CDN 证书
  

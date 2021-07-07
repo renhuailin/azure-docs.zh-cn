@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/03/2020
+ms.date: 05/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 41b1d9b4d0ae9e2a05fc59eae499eb8929770ab3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6450c68c60a499fb8d3c49dab78bc35cd681e3ae
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92458126"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078559"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apex-portal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Apex Portal 集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "92458126"
 * 在 Azure AD 中控制谁有权访问 Apex Portal。
 * 让用户使用其 Azure AD 帐户自动登录到 Apex Portal。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,40 +37,40 @@ ms.locfileid: "92458126"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Apex Portal 支持 **IDP** 发起的 SSO
-* Apex Portal 支持 **实时** 用户预配
+* Apex Portal 支持 IDP 发起的 SSO。
+* Apex Portal 支持实时用户预配。
 
-## <a name="adding-apex-portal-from-the-gallery"></a>从库中添加 Apex Portal
+## <a name="add-apex-portal-from-the-gallery"></a>从库中添加 Apex Portal
 
 要配置 Apex Portal 与 Azure AD 的集成，需要从库中将 Apex Portal 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 Apex Portal。
 1. 在结果面板中选择 Apex Portal，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-apex-portal"></a>配置并测试 Apex Portal 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-apex-portal"></a>配置并测试 Apex Portal 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置并测试 Apex Portal 的 Azure AD SSO。 要使 SSO 正常工作，需要在 Azure AD 用户与 Apex Portal 中的相关用户之间建立链接关系。
 
-要配置并测试 Apex Portal 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Apex Portal 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Apex Portal SSO](#configure-apex-portal-sso)** - 在应用程序端配置单一登录设置。
-    * **[创建 Apex Portal 测试用户](#create-apex-portal-test-user)** - 在 Apex Portal 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    1. **[创建 Apex Portal 测试用户](#create-apex-portal-test-user)** - 在 Apex Portal 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 Apex Portal 应用程序集成页面上，找到“管理”部分，选择“单一登录”。
+1. 在 Azure 门户中的“Apex Portal”应用程序集成页面上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -125,15 +123,9 @@ ms.locfileid: "92458126"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“Apex Portal”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-apex-portal-sso"></a>配置 Apex Portal SSO
@@ -149,16 +141,12 @@ ms.locfileid: "92458126"
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Apex Portal”磁贴时，应会自动登录到设置了 SSO 的 Apex Portal。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”后，你会自动登录到为其设置了 SSO 的 Apex Portal。
 
-## <a name="additional-resources"></a>其他资源
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Apex Portal 磁贴时，你会自动登录到为其设置了 SSO 的 Apex Portal。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [尝试 Apex Portal 与 Azure AD 集成](https://aad.portal.azure.com/)
+配置 Apex Portal 后，即可强制实施会话控制，实时防止组织的敏感数据遭受外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

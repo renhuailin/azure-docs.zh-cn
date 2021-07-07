@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Purview 中注册 Oracle 源并设置扫描（预览版）
+title: 在 Azure Purview 中注册 Oracle 源并设置扫描
 description: 本文概述了如何在 Azure Purview 中注册 Oracle 源并设置扫描。
 author: chandrakavya
 ms.author: kchandra
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 40c5e0ff2c2301607f5a548ff05c742c5c5a948d
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: dadf457c2fc3f617e2473a853e802fe863709ac5
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517056"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072282"
 ---
-# <a name="register-and-scan-oracle-source-preview"></a>注册并扫描 Oracle 源（预览版）
+# <a name="register-and-scan-oracle-source"></a>注册并扫描 Oracle 源
 
 本文概述了如何在 Purview 中注册 Oracle 数据库并设置扫描。
 
@@ -132,8 +132,13 @@ Oracle 源支持完全扫描（用于从 Oracle 数据库中提取元数据）�
     不能使用 NOT 和特殊字符。
 
 6.  **驱动程序位置**：指定运行自承载集成运行时的 VM 中 JDBC 驱动程序位置的路径。 这应当是指向有效 JAR 文件夹位置的路径。
+    > [!Note]
+    > VM 中的所有帐户均应可以访问该驱动程序。 请不要在用户帐户中安装。
 
 7.  **最大可用内存**：客户 VM 上可供扫描进程使用的最大内存 (GB)。 这取决于要扫描的 SAP S/4HANA 源的大小。
+
+    > [!Note] 
+    > 根据经验，每 1000 张表应提供 1GB 内存
 
     :::image type="content" source="media/register-scan-oracle-source/scan.png" alt-text="扫描 oracle" border="true":::
 

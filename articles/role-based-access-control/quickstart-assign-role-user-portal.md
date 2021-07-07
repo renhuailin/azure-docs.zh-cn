@@ -11,14 +11,15 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/22/2019
+ms.date: 06/07/2021
 ms.author: rolyon
-ms.openlocfilehash: fcba9cad208c2ac170f91cc06a6db22e271f2a70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 5df6b591cc7ba3795104957b9cd11de814e2472a
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100559317"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591835"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>教程：使用 Azure 门户授予用户对 Azure 资源的访问权限
 
@@ -40,53 +41,52 @@ ms.locfileid: "100559317"
 
 1. 在导航列表中，单击“资源组”。
 
-1. 单击“添加”以打开“资源组”边栏选项卡。 
+1. 单击“新建”打开“创建资源组”页。
 
-   ![添加新资源组](./media/quickstart-assign-role-user-portal/resource-group.png)
+   ![创建新资源组页。](./media/quickstart-assign-role-user-portal/resource-group.png)
 
-1. 对于“资源组名称”，输入 **rbac-resource-group**。
+1. 选择一个订阅。
 
-1. 选择订阅和位置。
+1. 对于“资源组”名称，请输入 example-group 或其他名称。
 
-1. 单击“创建”创建资源组。
+1. 单击“查看 + 创建”，然后单击“创建”以创建资源组。
 
 1. 单击“刷新”以刷新资源组的列表。
 
    新资源组将出现在你的资源组列表中。
 
-   ![资源组列表](./media/quickstart-assign-role-user-portal/resource-group-list.png)
-
 ## <a name="grant-access"></a>授予访问权限
 
 在 Azure RBAC 中，若要授予访问权限，需分配一个 Azure 角色。
 
-1. 在“资源组”列表中，单击新的 rbac-resource-group 资源组。
+1. 在“资源组”列表中，打开新的“example-group”资源组。
 
-1. 单击“访问控制(IAM)”。
+1. 在导航菜单中，单击“访问控制(IAM)”。
 
 1. 单击“角色分配”选项卡以查看当前的角色分配列表。
 
-   ![资源组的“访问控制(IAM)”边栏选项卡](./media/quickstart-assign-role-user-portal/access-control.png)
+   ![资源组的“访问控制(IAM)”页。](./media/shared/rg-role-assignments.png)
 
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。 
+
+1. 单击“添加” > “添加角色分配(预览)”。
 
    如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-   ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
+   ![打开了“添加角色分配”菜单的“访问控制(IAM)”页。](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
 
-    将打开“添加角色分配”窗格。
+1. 在“角色”选项卡上，选择“虚拟机参与者”角色。
 
-   ![“添加角色分配”窗格](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
+    ![选中了“角色”选项卡的“添加角色分配”页。](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
 
-1. 在“角色”下拉列表中，选择“虚拟机参与者”。 
+1. 在“成员”选项卡上，选择自己或其他用户。
 
-1. 在“选择”列表中，选择你自己或其他用户。
+1. 在“查看 + 分配”选项卡上，查看角色分配设置。
 
-1. 单击“保存”以分配该角色。
+1. 单击“查看 + 分配”以分配角色。
 
-   片刻之后，将在 rbac-resource-group 资源组范围内为用户分配“虚拟机参与者”角色。
+   片刻之后，将在 example-group 资源组范围内为用户分配“虚拟机参与者”角色。
 
-   ![虚拟机参与者角色分配](./media/quickstart-assign-role-user-portal/vm-contributor-assignment.png)
+   ![虚拟机参与者角色分配。](./media/quickstart-assign-role-user-portal/vm-contributor-assignment.png)
 
 ## <a name="remove-access"></a>删除访问权限
 
@@ -96,7 +96,7 @@ ms.locfileid: "100559317"
 
 1. 单击 **“删除”** 。
 
-   ![“删除角色分配”消息](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
+   ![“删除角色分配”消息。](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
 1. 在显示的“删除角色分配”消息中，单击“是”。
 
@@ -104,15 +104,11 @@ ms.locfileid: "100559317"
 
 1. 在导航列表中，单击“资源组”。
 
-1. 单击“rbac-resource-group”以打开该资源组。
+1. 单击“example-group”打开资源组。
 
 1. 单击“删除资源组”以删除该资源组。
 
-   ![删除资源组](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
-
-1. 在“是否确定要删除”边栏选项卡上，键入资源组名称：**rbac-resource-group**。
-
-1. 单击“删除”以删除该资源组。
+1. 在“是否确定要删除”窗格中，键入资源组名称，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

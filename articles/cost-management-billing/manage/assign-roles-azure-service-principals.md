@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 05/01/2021
 ms.author: banders
-ms.openlocfilehash: cb6a7d8411c2be6d76718b79c6fc1339a6600ce5
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 395f6804e0fdea88e65879817b83b9a8aabdd0f1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905497"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748060"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>向 Azure 企业协议服务主体名称分配角色
 
@@ -77,7 +77,7 @@ ms.locfileid: "107905497"
 
 ## <a name="assign-enrollment-account-role-permission-to-the-spn"></a>向 SPN 分配注册帐户角色权限
 
-1. 阅读[角色分配 - Put](/rest/api/billing/2019-10-01-preview/roleassignments/put) REST API 文章。 阅读此文时，请选择“试用”以通过 SPN 开始使用。
+1. 阅读[角色分配 - Put](/rest/api/billing/2019-10-01-preview/role-assignments/put) REST API 文章。 阅读此文时，请选择“试用”以通过 SPN 开始使用。
 
    :::image type="content" source="./media/assign-roles-azure-service-principals/put-try-it.png" alt-text="显示 Put 文章中“试用”选项的屏幕截图。" lightbox="./media/assign-roles-azure-service-principals/put-try-it.png" :::
 
@@ -91,13 +91,13 @@ ms.locfileid: "107905497"
 
    - `billingRoleAssignmentName`：此参数是需要提供的唯一 GUID。 可以使用 [New-Guid](/powershell/module/microsoft.powershell.utility/new-guid) PowerShell 命令生成 GUID。 也可使用[在线 GUID/UUID 生成器](https://guidgenerator.com/)网站生成唯一的 GUID。
 
-   - `api-version`：使用 2019-10-01-preview 版本。 使用[角色分配 - Put - 示例](/rest/api/billing/2019-10-01-preview/roleassignments/put#examples)中的示例请求正文。
+   - `api-version`：使用 2019-10-01-preview 版本。 使用[角色分配 - Put - 示例](/rest/api/billing/2019-10-01-preview/role-assignments/put#examples)中的示例请求正文。
 
       请求正文具有 JSON 代码，其中包含需要使用的三个参数。
 
       | 参数 | 查找位置 |
       | --- | --- |
-      | `properties.principalId` | 请参阅[查找 SPN 和租户 ID](#find-your-spn-and-tenant-id)。 |
+      | `properties.principalId` | 这是对象 ID 的值。 请参阅[查找 SPN 和租户 ID](#find-your-spn-and-tenant-id)。 |
       | `properties.principalTenantId` | 请参阅[查找 SPN 和租户 ID](#find-your-spn-and-tenant-id)。 |
       | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountName}/billingRoleDefinitions/24f8edb6-1668-4659-b5e2-40bb5f3a7d7e` |
 
@@ -121,7 +121,7 @@ ms.locfileid: "107905497"
 
 ## <a name="assign-the-department-reader-role-to-the-spn"></a>将部门读取者角色分配给 SPN
 
-1. 请阅读[注册部门角色分配 - Put](/rest/api/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put) REST API 文章。 阅读此文时，请选择“试用”。
+1. 请阅读[注册部门角色分配 - Put](/rest/api/billing/2019-10-01-preview/enrollment-department-role-assignments/put) REST API 文章。 阅读此文时，请选择“试用”。
 
    :::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" alt-text="显示“注册部门角色分配 - Put”文章中“试用”选项的屏幕截图。" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" :::
 
@@ -141,13 +141,13 @@ ms.locfileid: "107905497"
 
       :::image type="content" source="./media/assign-roles-azure-service-principals/department-id.png" alt-text="显示示例部门 ID 的屏幕截图。" lightbox="./media/assign-roles-azure-service-principals/department-id.png" :::
 
-   - `api-version`：使用 2019-10-01-preview 版本。 使用[注册部门角色分配 - Put](/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put) 中的示例。
+   - `api-version`：使用 2019-10-01-preview 版本。 使用[注册部门角色分配 - Put](/rest/api/billing/2019-10-01-preview/enrollment-department-role-assignments/put) 中的示例。
 
       请求正文具有 JSON 代码，其中包含需要使用的三个参数。
 
       | 参数 | 查找位置 |
       | --- | --- |
-      | `properties.principalId` | 请参阅[查找 SPN 和租户 ID](#find-your-spn-and-tenant-id)。 |
+      | `properties.principalId` | 这是对象 ID 的值。 请参阅[查找 SPN 和租户 ID](#find-your-spn-and-tenant-id)。 |
       | `properties.principalTenantId` | 请参阅[查找 SPN 和租户 ID](#find-your-spn-and-tenant-id)。 |
       | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountName}/billingRoleDefinitions/db609904-a47f-4794-9be8-9bd86fbffd8a` |
 
@@ -165,13 +165,13 @@ ms.locfileid: "107905497"
 
 ## <a name="assign-the-subscription-creator-role-to-the-spn"></a>将订阅创建者角色分配给 SPN
 
-1. 阅读[注册帐户角色分配 - Put](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) 文章。 阅读时，请选择“试用”以将订阅创建者角色分配给 SPN。
+1. 阅读[注册帐户角色分配 - Put](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put) 文章。 阅读时，请选择“试用”以将订阅创建者角色分配给 SPN。
 
    :::image type="content" source="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" alt-text="显示“注册帐户角色分配 - Put”文章中“试用”选项的屏幕截图。" lightbox="./media/assign-roles-azure-service-principals/enrollment-department-role-assignments-put-try-it.png" :::
 
 1. 使用你的帐户凭据通过要分配的注册访问权限登录到租户。
 
-1. 提供以下参数作为 API 请求的一部分。 阅读[注册帐户角色分配 - Put - URI 参数](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put#uri-parameters)文章。
+1. 提供以下参数作为 API 请求的一部分。 阅读[注册帐户角色分配 - Put - URI 参数](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put#uri-parameters)文章。
 
    - `billingAccountName`：此参数为“计费帐户 ID”。 可以在 Azure 门户中的“成本管理 + 计费”概述页上找到此 ID。
 
@@ -185,13 +185,13 @@ ms.locfileid: "107905497"
 
       :::image type="content" source="./media/assign-roles-azure-service-principals/account-id.png" alt-text="显示帐户 ID 的屏幕截图。" lightbox="./media/assign-roles-azure-service-principals/account-id.png" :::
 
-   - `api-version`：使用 2019-10-01-preview 版本。 使用[注册部门角色分配 - Put - 示例](/rest/api/billing/2019-10-01-preview/enrollmentdepartmentroleassignments/put#putenrollmentdepartmentadministratorroleassignment)中的示例。
+   - `api-version`：使用 2019-10-01-preview 版本。 使用[注册部门角色分配 - Put - 示例](/rest/api/billing/2019-10-01-preview/enrollment-department-role-assignments/put#examples)中的示例。
 
       请求正文具有 JSON 代码，其中包含需要使用的三个参数。
 
       | 参数 | 查找位置 |
       | --- | --- |
-      | `properties.principalId` | 请参阅[查找 SPN 和租户 ID](#find-your-spn-and-tenant-id)。 |
+      | `properties.principalId` | 这是对象 ID 的值。 请参阅[查找 SPN 和租户 ID](#find-your-spn-and-tenant-id)。 |
       | `properties.principalTenantId` | 请参阅[查找 SPN 和租户 ID](#find-your-spn-and-tenant-id)。 |
       | `properties.roleDefinitionId` | `/providers/Microsoft.Billing/billingAccounts/{BillingAccountID}/enrollmentAccounts/196987/billingRoleDefinitions/a0bcee42-bf30-4d1b-926a-48d21664ef71` |
 

@@ -1,6 +1,6 @@
 ---
 title: 教程：Azure Synapse Analytics 入门 - 使用 Power BI 可视化工作区数据
-description: 在本教程中，你将了解如何创建 Power BI 工作区、链接 Azure Synapse 工作区，以及创建利用 Azure Synapse 工作区中的数据的 Power BI 数据集。
+description: 本教程将介绍如何使用 Power BI 在 Azure Synapse Analytics 中可视化数据。
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 03/25/2021
-ms.openlocfilehash: 829daaa9c739657528a9085201c61c88635931d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fe830d277fa2e2ff57661500c3c56c0927637ab4
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608436"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516896"
 ---
 # <a name="visualize-data-with-power-bi"></a>使用 Power BI 可视化数据
 

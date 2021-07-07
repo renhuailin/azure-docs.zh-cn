@@ -3,16 +3,18 @@ title: Azure HDInsight 上的 ML Services 简介
 description: 了解如何使用 HDInsight 上的 ML Services 创建用于大数据分析的应用程序。
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0baf100d7d3a3e6a0667ed00176fa533eafe6d57
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943927"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295950"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 ML 服务
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 可以在 Azure 中创建 HDInsight 群集时选择使用 Microsoft Machine Learning Server 部署。 提供此选项的群集类型名为 ML Services  。 使用此功能可以按需访问 HDInsight 上的自适应分布式分析方法。
 

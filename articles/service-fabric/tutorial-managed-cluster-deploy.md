@@ -1,17 +1,17 @@
 ---
-title: 部署 Service Fabric 托管群集（预览版）
+title: 部署 Service Fabric 托管群集
 description: 在本教程中，你将部署一个 Service Fabric 托管群集来进行测试。
 ms.topic: tutorial
-ms.date: 08/27/2020
-ms.custom: references_regions
-ms.openlocfilehash: fd54e6f8c5272c3a8fe0e0162ca2e57968b24642
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 5/10/2021
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: f87e45dcaab5e42607f24decc5897471a74e90b5
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791705"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666922"
 ---
-# <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>教程：部署 Service Fabric 托管群集（预览版）
+# <a name="tutorial-deploy-a-service-fabric-managed-cluster"></a>教程：部署 Service Fabric 托管群集
 
 在本系列教程中，我们将讨论以下内容：
 

@@ -3,12 +3,12 @@ title: Azure 安全基准蓝图示例概述
 description: Azure 安全基准蓝图示例的概述。 此蓝图示例可帮助客户评估特定控制要求。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 58e8c3972b0f05e5b0a3f15da0dfd3eae301ad31
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 0e4a8eab295690770745362480251a4a8c2c3959
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386986"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757846"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Azure 安全基准蓝图示例
 
@@ -50,7 +50,7 @@ Azure 安全基准蓝图示例提供了监管防护措施，其中使用 [Azure 
 
 ### <a name="publish-the-sample-copy"></a>发布示例副本
 
-现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。  可根据环境和需求自定义蓝图示例的副本，但这种修改可能不符合 Azure 安全基准建议。
+现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。 可根据环境和需求自定义蓝图示例的副本，但这种修改可能不符合 Azure 安全基准建议。
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 

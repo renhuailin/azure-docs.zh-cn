@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12841c747116cc9e14f348dfcf81acaa5da5e8c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83c3fd114ab7ed3bf04d47ef3be2fc563b6b43d5
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98165359"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586177"
 ---
 # <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池将查询结果存储到存储
 
@@ -104,6 +104,8 @@ ORDER BY
 - [支持在外部表中删除数据](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/15158034-polybase-delete-from-external-tables)
 - [在 CETAS 中指定分区](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/19520860-polybase-partitioned-by-functionality-when-creati)
 - [指定文件大小和计数](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/42263617-cetas-specify-number-of-parquet-files-file-size)
+
+支持的输出类型只有 Parquet 和 CSV。 可以在 [Azure 反馈站点](https://feedback.azure.com/forums/307516-azure-synapse-analytics/)上为其他类型投票。
 
 ## <a name="next-steps"></a>后续步骤
 

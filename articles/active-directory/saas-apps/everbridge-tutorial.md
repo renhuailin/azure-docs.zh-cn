@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 05/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 6e281931eb4646e09bb9aa3226ed7d0735c84e3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74ea971a16d1c16be17f16cc5345e162fd974f43
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643773"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>教程：Azure Active Directory 与 Everbridge 集成
 
@@ -79,8 +79,6 @@ ms.locfileid: "101643773"
 
 4. 若要将 Everbridge 应用程序配置为 Everbridge 管理员门户，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Everbridge 域和 URL 单一登录信息](common/idp-intiated.png)
-
     a. 在“标识符”框中，输入采用以下模式的 URL。
     `https://sso.everbridge.net/<API_Name>`
 
@@ -94,15 +92,11 @@ ms.locfileid: "101643773"
 
   * 如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
 
-     ![IDP 发起模式的 Everbridge 域和 URL 单一登录信息](common/idp-intiated.png)
-
     a. 在“标识符”框中，输入采用以下模式的 URL：`https://sso.everbridge.net/<API_Name>/<Organization_ID>`
 
     b. 在“回复 URL”框中，输入采用以下模式的 URL：`https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
 
    * 如果要在 SP 发起的模式下配置应用程序，选择“设置其他 URL”并执行以下步骤：
-
-     ![SP 发起模式的 Everbridge 域和 URL 单一登录信息](common/both-signonurl.png)
 
      a. 在“登录 URL”框中，输入采用以下模式的 URL：`https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
 
@@ -141,15 +135,15 @@ ms.locfileid: "101643773"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-everbridge-sso"></a>配置 Everbridge SSO
+## <a name="configure-everbridge-sso"></a>配置 Everbridge SSO
 
 若要将 Everbridge 上的 SSO 配置为“Everbridge 管理员门户”应用程序，请执行以下步骤。
  
 1. 在另一 Web 浏览器窗口中，以管理员身份登录到 Everbridge。
 
-1. 在顶部菜单中，选择“设置”选项卡。在“安全性”下，选择“单一登录” 。
+1. 在顶部菜单中，选择“设置”选项卡。在“安全性”下，选择“适用于管理员门户的单一登录”  。
    
-     ![配置单一登录](./media/everbridge-tutorial/sso.png)
+     ![配置单一登录](./media/everbridge-tutorial/settings.png)
    
      a. 在“名称”框中，输入标识符提供者的名称。 例如，贵公司的名称。
    
@@ -165,7 +159,7 @@ ms.locfileid: "101643773"
 
      g. 选择“保存”。
 
-### <a name="configure-everbridge-as-everbridge-member-portal-sso"></a>将 Everbridge 配置为 Everbridge 成员门户 SSO
+## <a name="configure-everbridge-as-everbridge-member-portal-sso"></a>将 Everbridge 配置为 Everbridge 成员门户 SSO
 
 若要将 Everbridge 的单一登录配置为 Everbridge 成员门户，请将下载的“联合元数据 XML”发送给 [Everbridge 支持团队](mailto:support@everbridge.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
@@ -173,7 +167,7 @@ ms.locfileid: "101643773"
 
 在本部分中，会在 Everbridge 中创建测试用户 Britta Simon。 要将用户添加到 Everbridge 平台，请与 [Everbridge 支持团队](mailto:support@everbridge.com)协作。 使用单一登录前，必须先在 Everbridge 中创建并激活用户。 
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 

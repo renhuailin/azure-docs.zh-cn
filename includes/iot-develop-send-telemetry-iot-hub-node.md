@@ -1,0 +1,115 @@
+---
+title: include 文件
+description: include 文件
+author: timlt
+ms.service: iot-develop
+ms.topic: include
+ms.date: 05/05/2021
+ms.author: timlt
+ms.custom: include file
+ms.openlocfilehash: 501b1383bbc4fb3e20a675b3dca7186d0fe4548e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112041959"
+---
+## <a name="prerequisites"></a>先决条件
+- 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- [Git](https://git-scm.com/downloads)。
+- [Node.js](https://nodejs.org) 10 或更高版本。 若要检查节点版本，请运行 `node --version`。
+- Azure CLI。 在本快速入门中，有两个选项可用于运行 Azure CLI 命令：
+    - 使用 Azure Cloud Shell，这是一个交互式 Shell，可在浏览器中运行 CLI 命令。 建议使用此选项，因为无需安装任何插件。 如果是首次使用 Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。 按照 [Cloud Shell 快速入门](../articles/cloud-shell/quickstart.md)中的步骤启动 Cloud Shell 并选择 Bash 环境。
+    - （可选）在本地计算机上运行 Azure CLI。 如果已安装 Azure CLI，请运行 `az upgrade` 以将 CLI 和扩展升级到当前版本。 要安装 Azure CLI，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+
+[!INCLUDE [iot-hub-include-create-hub-cli](iot-hub-include-create-hub-cli.md)]
+
+## <a name="run-a-simulated-device"></a>运行模拟设备
+在本部分，你要使用 Node.js SDK 将消息从模拟设备发送到 IoT 中心。 
+
+1. 打开新的控制台窗口。 将使用此控制台来安装 Node.js SDK 和处理 Node.js 示例代码。 现在应会打开两个控制台窗口：刚打开的控制台窗口，以及之前用于输入 CLI 命令的 Cloud Shell 或 CLI 控制台。
+
+1. 在 Node 控制台中，将 [Azure IoT Node.js SDK 设备示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)克隆到本地计算机：
+
+    ```console
+    git clone https://github.com/Azure/azure-iot-sdk-node
+    ```
+
+1. 导航到“azure-iot-sdk-node/device/samples/pnp”目录：
+
+    ```console
+    cd azure-iot-sdk-node/device/samples/pnp
+    ```
+
+1. 安装 Azure IoT Node.js SDK 和所需的依赖项：
+
+    ```console
+    npm install
+    ```
+
+    此命令按照设备示例目录下 *package.json* 文件中的指定安装适当的依赖项。
+
+1. 设置以下两个环境变量，使模拟设备能够连接到 Azure IoT。
+    * 设置名为 `IOTHUB_DEVICE_CONNECTION_STRING` 的环境变量。 对于变量值，请使用上一部分保存的设备连接字符串。
+    * 设置名为 `IOTHUB_DEVICE_SECURITY_TYPE` 的环境变量。 对于变量，请使用文本字符串值 `connectionString`。
+
+    **Windows (cmd)**
+
+    ```console
+    set IOTHUB_DEVICE_CONNECTION_STRING=<your connection string here>
+    set IOTHUB_DEVICE_SECURITY_TYPE=connectionString
+    ```
+
+    > [!NOTE]
+    > 对于 Windows CMD，每个变量的字符串值的两边没有引号。
+
+    **PowerShell**
+
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_CONNECTION_STRING='<your connection string here>'
+    $env:IOTHUB_DEVICE_SECURITY_TYPE='connectionString'
+    ```
+
+    **Bash（Linux 或 Windows）**
+
+    ```bash
+    export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
+    export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
+    ```
+1. 在 CLI 应用中，运行 [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) 命令以开始监视模拟 IoT 设备上的事件。  事件消息抵达后，会在终端中输出。
+
+    ```azurecli-interactive
+    az iot hub monitor-events --output table --hub-name {YourIoTHubName}
+    ```
+
+1. 在 Node 控制台中，运行以下示例文件的代码。 此代码访问模拟的 IoT 设备并将消息发送到 IoT 中心。
+
+    若要在终端中运行 Node.js 示例：
+    ```console
+    node pnpTemperatureController.js
+    ```
+    > [!NOTE]
+    > 此代码示例使用 Azure IoT 即插即用，这使你无需任何手动配置即可将智能设备集成到你的解决方案中。  默认情况下，本文档中的大多数示例都使用 IoT 即插即用。 若要详细了解 IoT PnP 的优点以及使用或不使用它的案例，请参阅[什么是 IoT 即插即用？](../articles/iot-pnp/overview-iot-plug-and-play.md)。
+
+当 Node.js 代码将模拟的遥测消息从设备发送到 IoT 中心时，该消息将显示于正在监视事件的 CLI 应用中：
+
+```output
+Starting event monitor, use ctrl-c to stop...
+event:
+  component: thermostat1
+  interface: dtmi:com:example:TemperatureController;2
+  module: ''
+  origin: myDevice
+  payload:
+    temperature: 70.5897683228018
+
+event:
+  component: thermostat2
+  interface: dtmi:com:example:TemperatureController;2
+  module: ''
+  origin: myDevice
+  payload:
+    temperature: 52.87582619316418
+```
+
+设备现已安全建立连接，并在向 Azure IoT 中心发送遥测数据。

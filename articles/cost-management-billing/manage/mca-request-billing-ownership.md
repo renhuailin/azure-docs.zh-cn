@@ -6,30 +6,25 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 04/29/2021
 ms.author: banders
-ms.openlocfilehash: 4cfb5c0b746ab8cf4ebb26ee0f755b34b6289982
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 1e9e5582c95183a5e832950c5ac0b154cdef8362
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481423"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088113"
 ---
 # <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>转让 Microsoft 客户协议的 Azure 订阅计费所有权
 
-如果现有的计费所有者即将离职，或者你希望通过你的计费帐户为订阅付费时，你可以接管 Azure 订阅的所有权。 接管所有权会将订阅的计费责任转移到你的帐户。
-
-本文适用于 Microsoft 客户协议的计费帐户。 [检查你是否有权访问 Microsoft 客户协议](#check-for-access)。
-
-只有 **发票科目所有者** 或 **发票科目参与者** 才能请求计费所有权。 有关详细信息，请参阅[发票科目角色任务](understand-mca-roles.md#invoice-section-roles-and-tasks)。
+在以下情况下，需要转移 Azure 订阅的计费所有权：
+- 要将订阅的计费责任转移到其他计费所有者。
+- 要将 Azure 订阅从一个许可协议转移到另一个许可协议。 例如，从企业协议或 Microsoft 在线订阅协议 (MOSA) 转移到 Microsoft 客户协议。 [检查你是否有权访问 Microsoft 客户协议](#check-for-access)。
 
 你向其请求计费所有权的人员须具有以下角色之一：
-
-- 对于企业 Microsoft 客户协议，用户是计费所有者。
-- 对于企业协议，此用户必须是帐户所有者。
-- 对于 Microsoft 联机服务程序计费帐户，用户必须是帐户管理员。
-
-有关详细信息，请参阅[在 Azure 门户中查看计费帐户](view-all-accounts.md)。
+- 对于 Microsoft 客户协议，此人必须具有计费帐户或者相关计费配置文件或发票科目的所有者或参与者角色。 有关详细信息，请参阅[计费角色和任务](understand-mca-roles.md#invoice-section-roles-and-tasks)。
+- 对于企业协议，此人必须是帐户所有者。
+- 对于 Microsoft 在线订阅协议，此人必须是帐户管理员。
 
 ## <a name="request-billing-ownership"></a>请求计费所有权
 
@@ -137,7 +132,36 @@ ms.locfileid: "107481423"
 
 ## <a name="additional-information"></a>其他信息
 
-以下部分提供有关转移订阅的其他信息。
+以下部分提供有关转移订阅的附加信息。
+
+### <a name="cancel-a-prior-support-plan"></a>取消以前的支持计划
+
+如果你有一个 Azure 支持计划并想要将所有 Azure 订阅转移到新协议，则必须取消该支持计划，因为它不会随订阅一起转移。 例如，在将 Microsoft 在线订阅协议（在 Web 上购买的 Azure 订阅）转移到 Microsoft 客户协议时，就需要这样做。 若要取消支持计划，请执行以下操作：
+
+如果旧帐户的帐户管理员凭据不同于用于访问新 Microsoft 客户协议帐户的凭据，则必须使用旧帐户的凭据。
+
+1.  通过 https://portal.azure.com 登录到 Azure 门户。
+1.  导航到“成本管理 + 计费”。
+1.  在左侧窗格中选择“计费范围”。
+1.  选择与你的 Microsoft 支持计划关联的计费帐户。
+    - 对于 Microsoft 客户协议：
+        - 在左侧窗格中选择“周期性费用”。
+        - 在支持计划行项右侧的右侧窗格中，选择省略号图标 (...)，然后选择“关闭自动续订” 。
+    - 对于 Microsoft 在线订阅协议 (MOSA)：
+        - 在左侧窗格中选择“订阅”。
+        - 在右侧窗格中选择支持计划订阅，然后选择“取消”。
+
+### <a name="access-your-historical-invoices"></a>访问历史发票
+
+在将计费所有权转移到新的 Microsoft 客户协议帐户后，你可能想要访问旧 Microsoft 在线订阅协议帐户（在 Web 上购买的 Azure 订阅）的发票。 为此，请按照以下步骤操作：
+
+如果旧帐户的帐户管理员凭据不同于用于访问新 Microsoft 客户协议帐户的凭据，则必须使用旧帐户的凭据。
+
+1.  通过 https://portal.azure.com/ 登录到 Azure 门户。
+1.  导航到“成本管理 + 计费”。
+1.  在左侧窗格中选择“计费范围”。
+1.  选择与你的 Microsoft 在线订阅协议帐户关联的计费帐户。
+1.  在左侧窗格中选择“发票”以访问历史发票。
 
 ### <a name="no-service-downtime"></a>服务不会中断
 
@@ -162,10 +186,6 @@ Azure 市场产品将连同各自的订阅一起转移。
 ### <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 
 在转换期间，使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 为现有用户、组或服务主体分配的访问权限不受影响。
-
-### <a name="azure-support-plan"></a>Azure 支持计划
-
-Azure 支持不会随订阅一起转移。 如果用户要转移所有 Azure 订阅，请让他们取消其支持计划。
 
 ### <a name="charges-for-transferred-subscription"></a>转移的订阅费用
 

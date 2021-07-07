@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 06/04/2021
 ms.author: alkohli
-ms.openlocfilehash: a415dba4bb4fd5b95e98ae7c104cae92db27f34c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 406e31320e8f7d0d95bfef44f620505989b3ae9f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060153"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746692"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 安装 Azure Stack Edge Pro
 
@@ -21,7 +21,7 @@ ms.locfileid: "106060153"
 
 安装可能需要大约两小时才能完成。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 拆开设备包装
@@ -163,7 +163,7 @@ ms.locfileid: "106060153"
 - 已拆包并装入机架的 Azure Stack Edge Pro 物理设备。
 - 两根电源线。
 - 至少一根用于连接管理接口的 1-GbE RJ-45 网线。 设备上有两个 1-GbE 网络接口：一个用于管理，一个用于数据。
-- 一根 25-GbE SFP+ 铜缆用于配置每个数据网络接口。 至少需要将一个数据网络接口（端口 2、端口 3、端口 4、端口 5 或端口 6）连接到 Internet（在连接到 Azure 的情况下）。  
+- 一根 25/10-GbE SFP+ 铜缆用于要配置的每个数据网络接口。 至少需要将一个数据网络接口（端口 2、端口 3、端口 4、端口 5 或端口 6）连接到 Internet（在连接到 Azure 的情况下）。  
 - 可以取用两个配电单元（建议）。
 - 至少一个 1-GbE 网络交换机，用于将 1-GbE 网络接口连接到 Internet 以获取数据。 若连接的交换机低于 1 GbE，则无法访问本地 Web UI。 若在获取数据时使用 25/10 GbE 接口，则需要 25-GbE 或 10-GbE 交换机。
 
@@ -190,10 +190,10 @@ ms.locfileid: "106060153"
     - **自定义 Microsoft `Qlogic` Cavium 25G NDC 适配器** - 端口 1 到端口 4。
     - **Mellanox 双端口 25G ConnectX-4 通道网络适配器** - 端口 5 和端口 6。
 
-若要查看这些网卡支持的线缆、交换机和收发器的完整列表，请参阅：
+若要查看这些网络适配器卡支持的线缆、交换机和收发器的完整列表，请参阅：
 
 - [`Qlogic` Cavium 25G NDC 适配器互操作性矩阵](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
-- [Mellanox 双端口 25G ConnectX-4 通道网络适配器兼容产品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。  
+- [Mellanox 双端口 25G ConnectX-4 通道网络适配器兼容产品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)中的 25 GbE 和 10 GbE 电缆和模块。  
 
  
 执行以下步骤，为设备排布电源线和网线。

@@ -6,12 +6,12 @@ ms.author: juliako
 ms.service: azure-video-analyzer
 ms.topic: tutorial
 ms.date: 04/01/2021
-ms.openlocfilehash: d54983e25abc769a75923e59c483a4cf9495770f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 82edf5b282f7b68a7d4d1d7909cfe653a65c175b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110383810"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746549"
 ---
 # <a name="tutorial-live-video-with-computer-vision-for-spatial-analysis-preview"></a>教程：使用计算机视觉空间分析（预览版）功能分析实时视频
 
@@ -145,16 +145,7 @@ ms.locfileid: "110383810"
 1. 从此位置克隆存储库：[https://github.com/Azure-Samples/azure-video-analyzer-iot-edge-csharp](https://github.com/Azure-Samples/azure-video-analyzer-iot-edge-csharp)。
 1. 在 Visual Studio Code 中，打开下载的存储库所在的文件夹。
 1. 在 Visual Studio Code 中，转到 src/cloud-to-device-console-app 文件夹。 在该文件中，创建一个文件并将其命名为 appsettings.json。 该文件将包含运行程序所需的设置。
-1. 按照以下步骤从边缘设备获取 `IotHubConnectionString`：
-
-   - 在 Azure 门户中转到你的 IoT 中心，然后在左侧导航窗格中单击“`Shared access policies`”。
-   - 单击 `iothubowner` 以获取共享访问密钥。
-   - 复制 `Connection String – primary key`，并将其粘贴到 VSCode 上的输入框中。
-
-     连接字符串将如下所示： <br/>`HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=xxx`
-
-1. 将以下内容复制到文件中。 确保对变量进行替换。
-
+1. 从 Azure 门户复制 appsettings.json 文件的内容。 文本应类似于以下代码。
    ```json
    {
      "IoThubConnectionString": "HostName=<IoTHubName>.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=<SharedAccessKey>",
@@ -164,7 +155,7 @@ ms.locfileid: "110383810"
    ```
 
 1. 转到 src/edge 文件夹并创建一个名为 .env 的文件 。
-1. 从 Azure 门户复制 env 文件的内容。 文本应类似于以下代码。
+1. 从 Azure 门户复制 env.txt 文件的内容。 文本应类似于以下代码。
 
    ```env
    SUBSCRIPTION_ID="<Subscription ID>"
@@ -198,7 +189,7 @@ ms.locfileid: "110383810"
 1. `avaedge` 和 `spatialanalysis` 模块 createOptions 中的 `IpcMode` 应当相同并设置为 host。
 1. 若要使 RTSP 模拟器正常工作，请确保在使用 Azure Stack Edge 设备时已设置“卷边界”。
 
-   1. [连接到 SMB 共享](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)并将[示例楼梯井视频文件](https://lvamedia.blob.core.windows.net/public/2018-03-05.10-27-03.10-30-01.admin.G329.mp4)复制到本地共享。
+   1. [连接到 SMB 共享](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)并将[示例楼梯井视频文件](https://lvamedia.blob.core.windows.net/public/2018-03-05.10-27-03.10-30-01.admin.G329.mkv)复制到本地共享。
 
       > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWDRJd]
 
@@ -295,7 +286,7 @@ ms.locfileid: "110383810"
   {
       "opName": "pipelineTopologySet",
       "opParams": {
-          "topologyUrl": "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-count-operation-topology.json"
+          "pipelineTopologyUrl": "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-count-operation-topology.json"
       }
   },
   ```
@@ -313,7 +304,7 @@ ms.locfileid: "110383810"
               "parameters": [
                   {
                       "name": "rtspUrl",
-                      "value": " rtsp://rtspsim:554/media/stairwell.mkv"
+                      "value": " rtsp://rtspsim:554/media/2018-03-05.10-27-03.10-30-01.admin.G329.mkv"
                   },
                   {
                       "name": "rtspUserName",
@@ -381,7 +372,7 @@ ms.locfileid: "110383810"
       ],
   ```
 
-运行调试会话并按照“终端”说明进行操作。它将设置 pipelineTopology、设置 livePipeline、激活 livePipeline，并最终删除资源。
+按下 F5 运行调试会话并按照“终端”说明进行操作。它将设置 pipelineTopology、设置 livePipeline、激活 livePipeline，并最终删除资源。
 
 ## <a name="interpret-results"></a>解释结果
 
@@ -725,12 +716,26 @@ personZoneEvent 的输出示例（来自 `SpatialAnalysisPersonZoneCrossingOpera
 
 </details>
 
-## <a name="video-player"></a>视频播放器
+## <a name="playing-back-the-recording"></a>播放录制内容
 
-可以使用视频播放器查看生成的视频，包括推理（边界框），如下所示：
+可通过登录到 Azure 门户并观看视频来检查实时管道创建的视频分析器视频资源。
 
-> [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis/inference.png" alt-text="边界框":::
+1. 打开 Web 浏览器，并转到 [Azure 门户](https://portal.azure.com/)。 输入登录到门户所需的凭据。 默认视图是服务仪表板。
+1. 在订阅资源中找到视频分析器帐户，并打开“帐户”窗格。
+1. 在“视频分析器”列表中选择“视频” 。
+1. 你会发现以名称 `personcount` 列出的视频。 这是在管道拓扑文件中选择的名称。
+1. 选择视频。
+1. 在视频“详细信息”页上，单击“播放”图标
+
+   > [!div class="mx-imgBorder"]
+   > :::image type="content" source="./media/spatial-analysis/sa-video-playback.png" alt-text="视频播放的屏幕截图":::
+   
+1. 要在视频中以边界框的形式查看推理元数据，请单击“边界框”图标
+   > [!div class="mx-imgBorder"]
+   > :::image type="content" source="./media/record-stream-inference-data-with-video/bounding-box.png" alt-text="“边界框”图标":::
+
+> [!NOTE]
+> 由于视频源是模拟相机源的容器，因此视频中的时间戳与启用和停用实时管道的时间有关。
 
 ## <a name="troubleshooting"></a>故障排除
 

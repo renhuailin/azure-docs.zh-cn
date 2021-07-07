@@ -7,12 +7,12 @@ keywords: dsc, 配置, 自动化
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93760823363b7582133727a7e5b0dc0f2a97a6d0
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86186072"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992164"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>使用 Desired State Configuration 配置 VM
 
@@ -40,7 +40,7 @@ ms.locfileid: "86186072"
 3. 查找要为其启用 DSC 的虚拟机。 可以使用搜索栏和筛选器选项来查找特定的虚拟机。
 4. 单击该虚拟机，然后单击“连接”。
 5. 选择适用于虚拟机的 DSC 设置。 如果已准备好一个配置，可将其指定为 `Node Configuration Name`。 可以将[配置模式](/powershell/scripting/dsc/managing-nodes/metaConfig)设置为控制计算机的配置行为。
-6. 单击“确定”。  将 DSC 扩展部署到虚拟机时，状态将显示为 `Connecting`。
+6. 单击“确定”。 将 DSC 扩展部署到虚拟机时，状态将显示为 `Connecting`。
 
 ![启用用于 DSC 的 Azure VM](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "86186072"
 在文本编辑器中键入以下内容，并在本地将文件保存为 AMPServer.ps1。
 
 ```powershell-interactive
-configuration LAMPServer {
+configuration 'LAMPServer' {
    Import-DSCResource -module "nx"
 
    Node localhost {
@@ -97,7 +97,7 @@ configuration LAMPServer {
 1. 在自动化帐户的左窗格中，选择“状态配置(DSC)”，然后单击“配置”选项卡。
 2. 单击“+ 添加”。
 3. 选择在前一步骤中保存的配置文件。
-4. 单击“确定”。 
+4. 单击“确定”。
 
 ## <a name="compile-a-configuration"></a>编译配置
 

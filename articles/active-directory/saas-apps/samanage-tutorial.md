@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 6dcd5612bd2c5957ae0a397c3463dbb42445a754
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d10ff0f9ca4fde80557341c0b5d29b3f7c26c970
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956037"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982771"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>教程：Azure Active Directory 与 SolarWinds Service Desk（以前称为 Samanage）集成
 
@@ -32,6 +32,9 @@ ms.locfileid: "104956037"
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 SolarWinds 单一登录 (SSO) 的订阅。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -134,7 +137,7 @@ ms.locfileid: "104956037"
  
     a. 单击“启用使用 SAML 单一登录”  。  
  
-    b. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。    
+    b. 在“标识提供者 URL”文本框中，输入类似于 `https://YourAccountName.samanage.com` 的值。
  
     c. 确认“登录 URL”与 Azure 门户的“基本 SAML 配置”部分中的“登录 URL”    。
  

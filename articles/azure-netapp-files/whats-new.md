@@ -12,20 +12,81 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/21/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: fa028d8fffd2a4097b5bf7d7326d355ae56aebd7
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 768b2f4a9b993e4824fbcebe7a96d7f62a90c934
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862806"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078305"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
 Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强功能。 
 
+## <a name="june-2021"></a>2021 年 6 月
+
+* [Azure NetApp 文件存储服务加载项](storage-service-add-ons.md)
+
+    新的 Azure NetApp 文件的“存储服务加载项”菜单选项针对 Azure NetApp 文件存储服务提供了一个 Azure 门户启动板，可启动受支持的第三方生态系统加载项。 使用这个新的门户菜单选项，您可以通过单击加载项磁贴来进入登陆页，以便快速访问该外接程序。  
+
+    NetApp 加载项是存储服务加载项下面引入的第一类加载项。 它提供了对 NetApp 云合规性的访问。 单击“NetApp 云合规性”磁贴将打开一个新浏览器，并将你引导到加载项安装页面。 
+
+* 现已正式发布 (GA) 的功能   
+
+    以下 Azure NetApp 文件功能现已正式发布。 您无需再注册以下功能，可直接使用：
+    * [快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
+    * [手动 QoS 容量池](manual-qos-capacity-pool-introduction.md)
+
+* [支持共享 AD，在每个区域的每个订阅中，可以让多个帐户访问一个 Active Directory](create-active-directory-connections.md#shared_ad)（预览）   
+
+    到目前为止，Azure NetApp 文件在每个区域仅支持一个 Active Directory (AD)，其中只能将一个 NetApp 配置为访问 AD。 新的 **共享 AD** 功能使所有 NetApp 帐户共享一个 AD 连接，该连接是由属于同一订阅和同一区域的某个 NetApp 帐户创建。 例如，使用此功能，同一订阅和区域中的所有 NetApp 帐户均可使用常见 AD 配置来创建 SMB 卷、NFSv 4.1 Kerberos 卷或双协议卷。 使用此功能时，AD 连接将在同一订阅和同一区域下的所有 NetApp 帐户中可见。
+
+## <a name="may-2021"></a>2021 年 5 月 
+
+* Azure NetApp 文件应用程序一致快照工具 [(AzAcSnap)](azacsnap-introduction.md) 现已正式发布。 
+
+    AzAcSnap 是一款命令行工具，你可用它来简化 Linux 环境（例如 SUSE 和 RHEL）中第三方数据库 (SAP HANA) 的数据保护。 有关该工具的最新更改，请参阅 [AzAcSnap 发行说明](azacsnap-release-notes.md)。   
+
+* [支持容量池计费标记](manage-billing-tags.md)   
+
+    Azure NetApp 文件现在支持计费标记，可帮助你在业务单元或其他内部使用者方面交叉引用成本。 计费标记是在容量池级别分配，而不是数据量级别分配，计费标记将显示在客户发票中。
+
+* [ADDS LDAP over TLS](configure-ldap-over-tls.md)（预览） 
+
+    默认情况下，客户端和服务器应用程序之间的 LDAP 通信不会被加密。 这意味着，可以使用网络监视设备或软件来查看 LDAP 客户端与服务器计算机之间的通信。 使用 LDAP 简单绑定时，这一方案在非隔离或共享的 VNet 中可能会出现问题，因为用于将 LDAP 客户端绑定到 LDAP 服务器的凭据（用户名和密码）通过未加密的网络传递。 LDAP over TLS（也称为 LDAPS）是一种协议，该协议使用 TLS 来保护 LDAP 客户端与 LDAP 服务器之间的通信。 Azure NetApp 文件现在通过 LDAP over TLS 来支持 Active Directory 域服务器 (ADDS) 之间的安全通信。 现在，Azure NetApp 文件可以使用 LDAP over TLS 在 Active Directory 集成的 LDAP 服务器之间设置经过身份验证的会话。 可以为 NFS、SMB 和双协议卷启用 LDAP over TLS 功能。 默认情况下，LDAP over TLS 在 Azure NetApp 文件中处于禁用状态。  
+
+* 支持吞吐量[指标](azure-netapp-files-metrics.md)    
+
+    Azure NetApp 文件增加了对以下指标的支持：   
+    * 容量池吞吐量指标
+        * 分配给卷的池的吞吐量
+        * 池消耗的吞吐量
+        * 分配给卷的池的吞吐量百分比
+        * 池消耗的吞吐量百分比
+    * 卷吞吐量指标
+        * 卷分配的吞吐量
+        * 池消耗的吞吐量
+        * 卷消耗的吞吐量百分比
+
+* 支持对复制卷[动态更改服务级别](dynamic-change-volume-service-level.md)   
+
+    Azure NetApp 文件现在支持动态更改复制源卷和目标卷的服务级别。
+
 ## <a name="april-2021"></a>2021 年 4 月
+
+* [手动卷和容量池管理](volume-quota-introduction.md)（硬配额） 
+
+    Azure NetApp 文件卷和容量池预配的行为已更改为手动且可控的机制。 卷的存储容量限制为卷的设定大小（配额）。 当卷消耗量达到最大时，卷和基础容量池都不会自动增长。 相反，该卷将收到显示“空间不足”的条件。 不过，可以根据需要[调整容量池或卷的大小](azure-netapp-files-resize-capacity-pools-or-volumes.md)。 应主动[监视卷](monitor-volume-capacity.md)和基础容量池的容量。
+
+    这一行为变化是许多用户指示的以下关键请求的结果：
+
+    * 以前，在使用 OS 空间或容量监视工具时，VM 客户端会看到任何给定卷的容量都是精简预配的 (100 TiB)。  这种情况可能会导致客户端或应用程序端的容量显示不准确。 此行为现已更正。  
+    * 容量之前的自动增大行为让应用程序所有者无法控制预配的容量池空间（以及关联的成本）。 在可能快速填满“失控进程”和增大预配容量的环境中，这一行为特别讨厌。 此行为已更正。  
+    * 用户希望看到并维持卷大小（配额）与性能之间的直接关联。 以前的行为允许（隐式）超额订阅卷（容量），而容量池会自动增大。 因此，在主动设置或重置卷配额之前，用户无法进行直接关联。 此行为现已更正。
+
+    用户已请求直接控制预配的容量。 用户想要控制和平衡存储容量与利用率。 他们还想要控制成本，及其应用程序卷的可用、已用和预配容量与性能的应用程序端和客户端可见性。 借助这一新行为，现在可以完整启用整个容量。
 
 * [SMB 连续可用性 (CA) 共享支持 FSLogix 用户配置文件容器](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)（预览版）  
 
@@ -83,7 +144,7 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
     Azure NetApp 文件现在支持 LDAP 签名，以在 Azure NetApp 文件服务和用户指定的 Active Directory 域服务域控制器之间进行安全 LDAP 查找。 此功能目前处于预览状态。
 
-* [用于 AD 身份验证的 AES 加密](azure-netapp-files-create-volumes-smb.md)（预览版）
+* [用于 AD 身份验证的 AES 加密](create-active-directory-connections.md#create-an-active-directory-connection)（预览版）
 
     Azure NetApp 文件现在支持对与 DC 的 LDAP 连接进行 AES 加密，以便为 SMB 卷启用 AES 加密。 此功能目前处于预览状态。 
 
@@ -105,9 +166,9 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
     Azure NetApp 文件现在支持使用 AES-256 加密算法在 Kerberos 模式（krb5、krb5i 和 krb5p）下加密 NFS 客户端，从而提供额外的数据安全性。 此功能免费（常规 [Azure NetApp 文件存储成本](https://azure.microsoft.com/pricing/details/netapp/)仍然适用），并已正式发布。 有关详细信息，请参阅 [NFS v4.1 Kerberos 加密文档](configure-kerberos-encryption.MD)。
 
-* [动态卷服务级别更改](dynamic-change-volume-service-level.MD)
+* [动态卷服务级别更改](dynamic-change-volume-service-level.MD)（预览） 
 
-    云保证了 IT 支出的灵活性。 现在，可以通过将现有 Azure NetApp 文件卷移到使用所需卷服务级别的另一个容量池中，来更改该卷的服务级别。 这种针对卷的就地服务级别更改不需要迁移数据， 也不会影响对卷的数据平面访问。 你可以将现有卷更改为使用更高的服务级别（提升性能），或使用更低的服务级别（优化成本）。 此功能免费（常规 [Azure NetApp 文件存储成本](https://azure.microsoft.com/pricing/details/netapp/)仍然适用），并且目前提供公共预览版。 你可以按照[动态卷服务级别更改文档](dynamic-change-volume-service-level.md)注册该预览版功能。
+    云保证了 IT 支出的灵活性。 现在，可以通过将现有 Azure NetApp 文件卷移到使用所需卷服务级别的另一个容量池中，来更改该卷的服务级别。 这种针对卷的就地服务级别更改不需要迁移数据， 也不会影响对卷的数据平面访问。 你可以将现有卷更改为使用更高的服务级别（提升性能），或使用更低的服务级别（优化成本）。 此功能免费（常规 [Azure NetApp 文件存储成本](https://azure.microsoft.com/pricing/details/netapp/)仍然适用）。 此功能当前处于预览状态。 你可以按照[动态卷服务级别更改文档](dynamic-change-volume-service-level.md)注册该预览版功能。
 
 * [卷快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)（预览版） 
 

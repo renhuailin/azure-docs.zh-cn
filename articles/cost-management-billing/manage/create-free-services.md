@@ -7,16 +7,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 15c97640ab1f4e862aab0aff4b3965822daafb2b
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 553483a1d7005f73bf62e2afb5cc427d96b2e211
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219818"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331189"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>创建 Azure 免费帐户包含的服务
 
-创建 Azure 免费帐户后的前 30 天内，你的计费货币有 200 美元的信用额度，可用于购买除第三方市场商品外的任何服务。 可以使用免费信用额度试用不同层和类型的 Azure 服务，获得 Azure 体验。 如果使用的服务或 Azure 资源在这期间不可用，收费会根据你的信用额度相应扣减。
+创建 Azure 免费帐户后的头 30 天，你有 200 美元的信用额度（按你的计费货币换算），用于第三方市场商品外的任何服务。 可以使用免费信用额度试用不同层和类型的 Azure 服务，获得 Azure 体验。 如果使用的服务或 Azure 资源在这期间不可用，收费会根据你的信用额度相应扣减。
 
 如果在前 30 天结束时未使用完信用额度，额度会清零。 注册后的前 30 天和最多 12 个月内，只能使用有限数量的服务，并非所有 Azure 服务都是免费的。 如果前 30 天内升级且仍有剩余信用额度，可以将剩余的信用额度与即用即付订阅一起使用以获取剩余天数。 例如，如果在 11 月 1 日注册免费帐户，在 11 月 5 日升级，则在 11 月 30 日之前，可以在新的即用即付订阅中使用信用额度。 
 

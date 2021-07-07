@@ -3,12 +3,12 @@ title: 快速入门：使用 REST API 创建蓝图
 description: 在本快速入门中，通过 REST API 使用 Azure 蓝图创建、定义和部署项目。
 ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 37f67e6db753969344b8c442de78b867dd41ecd6
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 5b65350f47e470fc9f4797d768a32acded241266
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323818"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761500"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>快速入门：使用 REST API 定义和分配 Azure 蓝图
 
@@ -435,4 +435,4 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 在本快速入门中，你使用 REST API 创建、分配并删除了蓝图。 若要详细了解 Azure 蓝图，请继续学习蓝图生命周期文章。
 
 > [!div class="nextstepaction"]
-> [了解蓝图生命周期](./concepts/lifecycle.md)
+> [了解蓝图生命周期](./concepts/lifecycle.md) 

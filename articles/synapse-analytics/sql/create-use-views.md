@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7528d1f29b293e1efadde84fac9fa8d95f8f5076
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: da026012c4084783d30f548cbdffc8951d74bcd6
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371290"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751210"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中通过无服务器 SQL 池创建和使用视图
 
@@ -119,6 +119,8 @@ FROM
 
 > [!div class="mx-imgBorder"]
 >![Yellow Taxi Delta Lake 文件夹](./media/shared/yellow-taxi-delta-lake.png)
+
+查询已分区的 Delta Lake 数据时，请勿在 `OPENROWSET` 函数中使用 `WITH` 子句。 由于预览版中的已知问题，`WITH` 子句无法正确返回基础分区列中的值。 如果直接将 `OPENROWSET` 函数与子 `WITH` 子句一起使用（不带视图），则分区消除工作会正常运行。  
 
 ## <a name="use-a-view"></a>使用视图
 

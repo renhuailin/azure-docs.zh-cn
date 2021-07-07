@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 1ba2b7d648c86912118b83a566bf2eb0800baee2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6953ffb5542e2a0d8acb9e404b2df0f923a08145
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101747435"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744010"
 ---
 # <a name="frequently-asked-questions-about-azure-managed-instance-for-apache-cassandra-preview"></a>关于 Azure Managed Instance for Apache Cassandra（预览版）的常见问题解答
 
@@ -45,6 +45,10 @@ Azure Managed Instance for Apache Cassandra 由 Azure Cosmos DB 团队提供。 
 ### <a name="what-are-the-storage-and-throughput-limits-of-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra 在存储和吞吐量方面有哪些限制？
 
 这些限制取决于你选择的虚拟机 SKU。
+
+### <a name="how-are-cassandra-repairs-carried-out-in-azure-managed-instance-for-apache-cassandra"></a>如何在 Azure Managed Instance for Apache Cassandra 中进行 Cassandra 修复？
+
+我们使用 [cassandra-reaper.io](http://cassandra-reaper.io/)。 它已设置为自动运行。
 
 ### <a name="what-is-the-cost-of-azure-managed-instance-for-apache-cassandra"></a>Azure Managed Instance for Apache Cassandra 的成本是多少？
 

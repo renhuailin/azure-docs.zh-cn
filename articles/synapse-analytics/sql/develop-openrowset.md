@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: be412f4dd2413cfe5562f895489aed10b9a9a80f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1a39b963fa88866e02e9813c68d1b6504d3e98c7
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378677"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956528"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
@@ -90,7 +90,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 <bulk_options> ::=  
 [ , FIELDTERMINATOR = 'char' ]    
 [ , ROWTERMINATOR = 'char' ] 
-[ , ESCAPE_CHAR = 'char' ] 
+[ , ESCAPECHAR = 'char' ] 
 [ , FIRSTROW = 'first_row' ]     
 [ , FIELDQUOTE = 'quote_characters' ]
 [ , DATA_COMPRESSION = 'data_compression_method' ]
@@ -189,11 +189,11 @@ ROWTERMINATOR ='row_terminator'`
 
 指定要使用的行终止符。 如果未指定行终止符，将使用默认终止符之一。 PARSER_VERSION = '1.0' 的默认终止符为 \r\n、\n 和 \r。 PARSER_VERSION = '2.0' 的默认终止符为 \r\n 和 \n。
 
-ESCAPE_CHAR = 'char'
+ESCAPECHAR = 'char'
 
 指定文件中用于将自身及文件中所有分隔符值转义的字符。 如果转义字符后接除本身以外的某个值或者任何分隔符值，则读取值时会删除该转义字符。 
 
-无论是否启用了 FIELDQUOTE，都会应用 ESCAPE_CHAR 参数。 不会使用该参数来转义引号字符。 必须使用其他引号字符来转义引号字符。 要让引号字符出现在列值内，必须将值放在引号中。
+无论是否启用了 FIELDQUOTE，都会应用 ESCAPECHAR 参数。 不会使用该参数来转义引号字符。 必须使用其他引号字符来转义引号字符。 要让引号字符出现在列值内，必须将值放在引号中。
 
 FIRSTROW = 'first_row' 
 
@@ -279,10 +279,10 @@ Parquet 文件和 Delta Lake 文件包含每一列的类型说明。 下表介�
 | BINARY |STRING |varchar \*（UTF8 排序规则） |
 | BINARY |ENUM|varchar \*（UTF8 排序规则） |
 | FIXED_LEN_BYTE_ARRAY |UUID |uniqueidentifier |
-| BINARY |DECIMAL |decimal |
+| BINARY |DECIMAL |Decimal |
 | BINARY |JSON |varchar(8000) \*（UTF8 排序规则） |
 | BINARY |BSON | 不支持 |
-| FIXED_LEN_BYTE_ARRAY |DECIMAL |decimal |
+| FIXED_LEN_BYTE_ARRAY |DECIMAL |Decimal |
 | BYTE_ARRAY |INTERVAL | 不支持 |
 | INT32 |INT(8, true) |smallint |
 | INT32 |INT(16, true) |smallint |
@@ -291,11 +291,11 @@ Parquet 文件和 Delta Lake 文件包含每一列的类型说明。 下表介�
 | INT32 |INT(16, false) |int |
 | INT32 |INT(32, false) |bigint |
 | INT32 |DATE |date |
-| INT32 |DECIMAL |decimal |
+| INT32 |DECIMAL |Decimal |
 | INT32 |TIME (MILLIS)|time |
 | INT64 |INT(64, true) |bigint |
 | INT64 |INT(64, false) |decimal(20,0) |
-| INT64 |DECIMAL |decimal |
+| INT64 |DECIMAL |Decimal |
 | INT64 |TIME (MICROS) |time - 不支持 TIME(NANOS) |
 |INT64 |TIMESTAMP (MILLIS/MICROS) |datetime2 - 不支持 TIMESTAMP(NANOS) |
 |[复杂类型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |列表 |varchar(8000)，序列化为 JSON |
@@ -420,5 +420,4 @@ AS [r]
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多示例，请参阅[查询数据存储快速入门](query-data-storage.md)，了解如何使用 `OPENROWSET` 来读取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、[DELTA LAKE](query-delta-lake-format.md) 和 [JSON](query-json-files.md) 文件格式。 查看[最佳做法](best-practices-sql-on-demand.md)以获得最佳性能。 你还可以了解如何使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储。
-
+有关更多示例，请参阅[查询数据存储快速入门](query-data-storage.md)，了解如何使用 `OPENROWSET` 来读取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、[DELTA LAKE](query-delta-lake-format.md) 和 [JSON](query-json-files.md) 文件格式。 查看[最佳做法](./best-practices-serverless-sql-pool.md)以获得最佳性能。 你还可以了解如何使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储。

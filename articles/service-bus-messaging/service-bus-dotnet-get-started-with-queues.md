@@ -3,178 +3,205 @@ title: Azure 服务总线队列入门 (Azure.Messaging.ServiceBus)
 description: 在本教程中，你将创建 .NET Core C# 应用程序，用于向/从服务总线队列发送/接收消息。
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 11/13/2020
+ms.date: 06/10/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec3f53e6f69614028c013efa5f0e6852cbc3f8ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d82ee765e61fc743473801cf14752013790b5578
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98631634"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020687"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>向/从服务总线队列发送/接收消息 (.NET)
-在本教程中，你将使用 Azure.Messaging.ServiceBus 包创建 .NET Core C# 控制台应用程序，用于向/从 Azure 服务总线队列发送/接收消息。 
+本快速入门指南显示如何使用 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) .NET 库向服务总线队列发送消息和接收来自该队列的消息。
 
-> [!Important]
-> 本快速入门使用新的 Azure.Messaging.ServiceBus 包。 有关使用旧的 Microsoft.Azure.ServiceBus 包的快速入门，请参阅[使用 Microsoft.Azure.ServiceBus 包发送和接收事件](service-bus-dotnet-get-started-with-queues-legacy.md)。
 
 ## <a name="prerequisites"></a>先决条件
+如果你是首次使用该服务，请在使用本快速入门之前先参阅[服务总线概述](service-bus-messaging-overview.md)。 
 
-- [Visual Studio 2019](https://www.visualstudio.com/vs)
-- Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-- 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。 记下服务总线命名空间的连接字符串以及创建的队列的名称 。
+- **Azure 订阅**。 若要使用 Azure 服务（包括 Azure 服务总线），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
+- Microsoft Visual Studio 2019。 Azure 服务总线客户端库利用 C# 8.0 中引入的新功能。  你仍可使用以前的 C# 语言版本的库，但新语法将不可用。 若要使用完整语法，建议使用 [.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 或更高版本进行编译，并将[语言版本](/dotnet/csharp/language-reference/configure-language-version#override-a-default) 设置为 `latest`。 如果使用 Visual Studio，Visual Studio 2019 以前的版本与生成 C# 8.0 项目时所需的工具将不兼容。 可在[此处](https://visualstudio.microsoft.com/vs/)下载 Visual Studio 2019（包括免费的 Community Edition）。
+- **创建服务总线命名空间和队列**。 按照[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文的步骤创建服务总线命名空间和队列。 
 
-## <a name="send-messages-to-a-queue"></a>向队列发送消息
-在此快速入门中，你将创建 C# .Net Core 控制台应用程序，以将消息发送到队列。
+    > [!IMPORTANT]
+    > 记下服务总线命名空间的连接字符串以及创建的队列的名称 。 本教程后面会用到它们。 
+
+
+## <a name="send-messages"></a>发送消息
+本部分介绍如何创建一个向服务总线队列发送消息的 .NET Core 控制台应用程序。 
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
-启动 Visual Studio 并创建新的用于 C# 的 **控制台应用 (.NET Core)** 项目。 
+
+1. 启动 Visual Studio 2019。 
+1. 选择“创建新项目”。 
+1. 在“创建新项目”对话框中执行以下步骤：如果看不到此对话框，请在菜单中选择“文件”，然后依次选择“新建”、“项目”。   
+    1. 选择“C#”作为编程语言。
+    1. 选择“控制台”作为应用程序类型。 
+    1. 从结果列表中选择 **控制台应用程序**。 
+    1. 然后，选择“下一步”  。 
+
+        :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/new-send-project.png" alt-text="显示使用 C# 和所选的控制台创建新项目对话框的图像":::
+1. 输入 **QueueSender** 作为项目名称，输入 **ServiceBusQueueQuickStart** 作为解决方案名称，然后选择 **下一步**。 
+
+    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/project-solution-names.png" alt-text="在“配置你的新项目对话框”中显示解决方案和项目名称的图像 ":::
+1. 在 **其他信息** 页面，选择 **创建** 来创建解决方案和项目。 
 
 ### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
 
-1. 右键单击新创建的项目，并选择“管理 NuGet 包” 。
-1. 选择“浏览”。 搜索并选择 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/)。
-1. 选择“安装”以完成安装，然后关闭“NuGet 包管理器”。
+1. 在菜单中选择“工具” > “NuGet 包管理器” > “包管理器控制台”。 
+1. 运行以下命令安装 **Azure.Messaging.ServiceBus**  NuGet 包：
+
+    ```cmd
+    Install-Package Azure.Messaging.ServiceBus
+    ```
 
 ### <a name="add-code-to-send-messages-to-the-queue"></a>添加将消息发送到队列的代码
 
-1. 在 *Program.cs* 中将以下 `using` 语句添加到命名空间定义顶部，位于类声明之前：
+1. 在 **Program.cs** 中，将以下`using`语句添加到文件顶部的现有 `using` 语句后面。 
 
     ```csharp
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    
+    using System.Threading.Tasks;    
     using Azure.Messaging.ServiceBus;
     ```
-
-1. 在 `Program` 类中声明以下变量：
+1. 在 `Program` 类中，添加以下两种静态属性： 
 
     ```csharp
+        // connection string to your Service Bus namespace
         static string connectionString = "<NAMESPACE CONNECTION STRING>";
+
+        // name of your Service Bus queue
         static string queueName = "<QUEUE NAME>";
     ```
 
-    以 `connectionString` 变量的形式输入命名空间的连接字符串。 输入队列名称。
-
-1. 紧跟在 `Main()` 方法的后面，添加以下 `SendMessagesAsync()` 方法来发送消息：
-
-    ```csharp
-        static async Task SendMessageAsync()
-        {
-            // create a Service Bus client 
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
-            {
-                // create a sender for the queue 
-                ServiceBusSender sender = client.CreateSender(queueName);
-
-                // create a message that we can send
-                ServiceBusMessage message = new ServiceBusMessage("Hello world!");
-
-                // send the message
-                await sender.SendMessageAsync(message);
-                Console.WriteLine($"Sent a single message to the queue: {queueName}");
-            }
-        }
-    ```
-1. 添加一个名为 `CreateMessages` 的方法，以创建指向 `Program` 类的消息队列（.NET 队列）。 通常，可以从应用程序的不同部分获得这些消息。 在这里，我们将创建一个示例消息队列。
+    > [!NOTE]
+    > 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串。 并将 `<QUEUE NAME>` 替换为你的队列的名称。 
+1. 在 `Program` 类中表明以下静态属性。 请参阅代码注释以了解详细信息。 
 
     ```csharp
-        static Queue<ServiceBusMessage> CreateMessages()
-        {
-            // create a queue containing the messages and return it to the caller
-            Queue<ServiceBusMessage> messages = new Queue<ServiceBusMessage>();
-            messages.Enqueue(new ServiceBusMessage("First message in the batch"));
-            messages.Enqueue(new ServiceBusMessage("Second message in the batch"));
-            messages.Enqueue(new ServiceBusMessage("Third message in the batch"));
-            return messages;
-        }
+        // the client that owns the connection and can be used to create senders and receivers
+        static ServiceBusClient client;
+
+        // the sender used to publish messages to the queue
+        static ServiceBusSender sender;
+
+        // number of messages to be sent to the queue
+        private const int numOfMessages = 3; 
     ```
-1. 将名为 `SendMessageBatchAsync` 的方法添加到 `Program` 类，并添加以下代码。 此方法使用消息队列，并准备一个或多个要发送到服务总线队列的批处理。 
-
-    ```csharp
-        static async Task SendMessageBatchAsync()
-        {
-            // create a Service Bus client 
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
-            {
-                // create a sender for the queue 
-                ServiceBusSender sender = client.CreateSender(queueName);
-
-                // get the messages to be sent to the Service Bus queue
-                Queue<ServiceBusMessage> messages = CreateMessages();
-
-                // total number of messages to be sent to the Service Bus queue
-                int messageCount = messages.Count;
-
-                // while all messages are not sent to the Service Bus queue
-                while (messages.Count > 0)
-                {
-                    // start a new batch 
-                    using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
-
-                    // add the first message to the batch
-                    if (messageBatch.TryAddMessage(messages.Peek()))
-                    {
-                        // dequeue the message from the .NET queue once the message is added to the batch
-                        messages.Dequeue();
-                    }
-                    else
-                    {
-                        // if the first message can't fit, then it is too large for the batch
-                        throw new Exception($"Message {messageCount - messages.Count} is too large and cannot be sent.");
-                    }
-
-                    // add as many messages as possible to the current batch
-                    while (messages.Count > 0 && messageBatch.TryAddMessage(messages.Peek()))
-                    {
-                        // dequeue the message from the .NET queue as it has been added to the batch
-                        messages.Dequeue();
-                    }
-        
-                    // now, send the batch
-                    await sender.SendMessagesAsync(messageBatch);
-        
-                    // if there are any remaining messages in the .NET queue, the while loop repeats 
-                }
-
-                Console.WriteLine($"Sent a batch of {messageCount} messages to the topic: {queueName}");
-            }
-        }
-    ```
-1. 将 `Main()` 方法替换为以下 **async** `Main` 方法。 它同时调用发送方法，将单个消息和一批消息发送到队列。 
+1. 将 `Main()` 方法替换为以下 **async** `Main` 方法。  
 
     ```csharp
         static async Task Main()
         {
-            // send a message to the queue
-            await SendMessageAsync();
+            // The Service Bus client types are safe to cache and use as a singleton for the lifetime
+            // of the application, which is best practice when messages are being published or read
+            // regularly.
+            //
+            // Create the clients that we'll use for sending and processing messages.
+            client = new ServiceBusClient(connectionString);
+            sender = client.CreateSender(queueName);
 
-            // send a batch of messages to the queue
-            await SendMessageBatchAsync();
+            // create a batch 
+            using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
+
+            for (int i = 1; i <= 3; i++)
+            {
+                // try adding a message to the batch
+                if (!messageBatch.TryAddMessage(new ServiceBusMessage($"Message {i}")))
+                {
+                    // if it is too large for the batch
+                    throw new Exception($"The message {i} is too large to fit in the batch.");
+                }
+            }
+
+            try 
+            {
+                // Use the producer client to send the batch of messages to the Service Bus queue
+                await sender.SendMessagesAsync(messageBatch);
+                Console.WriteLine($"A batch of {numOfMessages} messages has been published to the queue.");
+            }
+            finally
+            {
+                // Calling DisposeAsync on client types is required to ensure that network
+                // resources and other unmanaged objects are properly cleaned up.
+                await sender.DisposeAsync();
+                await client.DisposeAsync();
+            }
+
+            Console.WriteLine("Press any key to end the application");
+            Console.ReadKey();
         }
     ```
-5. 运行该应用程序。 你应该会看到以下消息。 
-
-    ```console
-    Sent a single message to the queue: myqueue
-    Sent a batch of messages to the queue: myqueue
-    ```       
+1. 生成项目并确保没有错误。 
+1. 运行程序并等待出现确认消息。
+    
+    ```bash
+    A batch of 3 messages has been published to the queue
+    ```
 1. 在 Azure 门户中按照以下步骤操作：
     1. 导航到服务总线命名空间。 
     1. 在“概述”页上，在底部中间的窗格中选择队列。 
+    
+        :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/select-queue.png" alt-text="按照所选队列在 Azure 门户中显示服务总线命名空间页面的图像。" lightbox="./media/service-bus-dotnet-get-started-with-queues/select-queue.png":::
     1. 请注意“必备”部分中的值。
 
-    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png" alt-text="收到的消息，包含计数和大小" lightbox="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png":::
+    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png" alt-text="显示接收的消息数量和队列大小的图像" lightbox="./media/service-bus-dotnet-get-started-with-queues/sent-messages-essentials.png":::
 
     请注意以下值：
-    - 队列的“活动消息计数”值现在为 4 。 每次运行此发件人应用而不检索消息时，该值会增加 4。
-    - 每次该应用将消息添加到队列，队列的当前大小就会递增，增量为“基本信息”中的“当前”值。 
-    - 在“消息”图表中的底部“指标”部分中，可以看到队列有四条传入的消息 。 
+    - 队列的 **活动** 消息计数值现在为 **3**。 每次运行此发件人应用而不检索消息时，该值会增加 3。
+    - 每次应用向队列添加消息时，队列的 **当前大小** 都会递增。
+    - 在 **消息** 图表中的底部 **指标** 部分中，可以看到队列有三条传入的消息。 
 
-## <a name="receive-messages-from-a-queue"></a>从队列接收消息
+## <a name="receive-messages"></a>接收消息
+在本节中，你将会创建一个 .NET Core 控制台应用，用于接收来自队列的消息。 
+
+### <a name="create-a-project-for-the-receiver"></a>为接收器创建项目
+
+1. 在“解决方案资源管理器”窗口中，右键单击 **ServiceBusQueueQuickStart** 解决方案，指向 **添加**，然后选择 **新建项目**。 
+1. 选择 **控制台应用程序**，然后选择 **下一步**。 
+1. 输入 **QueueReceiver** 作为 **项目名称**，然后选择 **创建**。 
+1. 在 **解决方案资源管理器** 窗口中，右键单击 **QueueReceiver**，然后选择 **设为启动项目**。 
+
+### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
+
+1. 在菜单中选择“工具” > “NuGet 包管理器” > “包管理器控制台”。 
+1. 在 **程序包管理器控制台** 窗口中，确认 **QueueReceiver** 选定用于 **默认项目**。 如果不是，请使用下拉列表选择 **QueueReceiver**。
+1. 运行以下命令安装 **Azure.Messaging.ServiceBus**  NuGet 包：
+
+    ```cmd
+    Install-Package Azure.Messaging.ServiceBus
+    ```
+
+### <a name="add-the-code-to-receive-messages-from-the-queue"></a>添加从队列接收消息的代码
 在本部分中，你将添加从队列检索消息的代码。
 
+1. 在 *Program.cs* 中将以下 `using` 语句添加到命名空间定义顶部，位于类声明之前：
+
+    ```csharp
+    using System.Threading.Tasks;
+    using Azure.Messaging.ServiceBus;
+    ```
+
+1. 在 `Program` 类中表明以下静态属性：
+
+    ```csharp
+        // connection string to your Service Bus namespace
+        static string connectionString = "<NAMESPACE CONNECTION STRING>";
+
+        // name of your Service Bus queue
+        static string queueName = "<QUEUE NAME>";
+    ```
+
+    > [!NOTE]
+    > 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串。 并将 `<QUEUE NAME>` 替换为你的队列的名称。 
+1. 在 `Program` 类中表明以下静态属性。 参阅代码注释了解详细信息。 
+
+    ```csharp
+        // the client that owns the connection and can be used to create senders and receivers
+        static ServiceBusClient client;
+
+        // the processor that reads and processes messages from the queue
+        static ServiceBusProcessor processor;
+    ```
 1. 将以下方法添加到处理消息和任何错误的 `Program` 类中。 
 
     ```csharp
@@ -195,77 +222,69 @@ ms.locfileid: "98631634"
             return Task.CompletedTask;
         }
     ```
-1. 将名为 `ReceiveMessagesAsync` 的方法添加到 `Program` 类中，并添加以下代码来接收消息。 
+1. 替换 `Main()` 方法。 它调用 `ReceiveMessages` 方法从队列接收消息。 
 
     ```csharp
-        static async Task ReceiveMessagesAsync()
+        static async Task Main()
         {
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
-            {
-                // create a processor that we can use to process the messages
-                ServiceBusProcessor processor = client.CreateProcessor(queueName, new ServiceBusProcessorOptions());
+            // The Service Bus client types are safe to cache and use as a singleton for the lifetime
+            // of the application, which is best practice when messages are being published or read
+            // regularly.
+            //
 
+            // Create the client object that will be used to create sender and receiver objects
+            client = new ServiceBusClient(connectionString);
+
+            // create a processor that we can use to process the messages
+            processor = client.CreateProcessor(queueName, new ServiceBusProcessorOptions());
+
+            try
+            {
                 // add handler to process messages
                 processor.ProcessMessageAsync += MessageHandler;
-
+    
                 // add handler to process any errors
                 processor.ProcessErrorAsync += ErrorHandler;
-
+    
                 // start processing 
                 await processor.StartProcessingAsync();
-
+    
                 Console.WriteLine("Wait for a minute and then press any key to end the processing");
                 Console.ReadKey();
-
+    
                 // stop processing 
                 Console.WriteLine("\nStopping the receiver...");
                 await processor.StopProcessingAsync();
                 Console.WriteLine("Stopped receiving messages");
             }
+            finally
+            {
+                // Calling DisposeAsync on client types is required to ensure that network
+                // resources and other unmanaged objects are properly cleaned up.
+                await processor.DisposeAsync();
+                await client.DisposeAsync();
+            }
         }
     ```
-1. 从 `ReceiveMessagesAsync` 方法中添加对 `Main` 方法的调用。 如果只想对接收消息进行测试，请注释禁止 `SendMessagesAsync` 方法。 如果不这样做，则会看到发送到队列的其他四条消息。 
+1. 生成项目并确保没有错误。
+1. 运行接收器应用程序。 你应该会看到接收的消息。 按任意键来停止使用接收器和应用程序。 
 
-    ```csharp
-        static async Task Main()
-        {
-            // send a message to the queue
-            await SendMessageAsync();
-
-            // send a batch of messages to the queue
-            await SendMessageBatchAsync();
-
-            // receive message from the queue
-            await ReceiveMessagesAsync();
-        }
+    ```console
+    Wait for a minute and then press any key to end the processing
+    Received: Message 1
+    Received: Message 2
+    Received: Message 3
+    
+    Stopping the receiver...
+    Stopped receiving messages
     ```
+1. 再次检查门户。 等待几分钟，如果未看到 **活动** 消息的 `0`，请刷新页面。 
 
-## <a name="run-the-app"></a>运行应用
-运行该应用程序。 等待一分钟，然后按任意键停止接收消息。 你应该会看到以下输出（密钥的空格）。 
+    - **活动** 消息计数和 **当前大小** 值现为 **0**。
+    - 在“消息”图表中的底部“指标”部分中，可以看到队列有八条传入消息和八条传出消息 。 
+    
+        :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="接收后的活动消息和大小" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 
-```console
-Sent a single message to the queue: myqueue
-Sent a batch of messages to the queue: myqueue
-Wait for a minute and then press any key to end the processing
-Received: Hello world!
-Received: First message in the batch
-Received: Second message in the batch
-Received: Third message in the batch
-Received: Hello world!
-Received: First message in the batch
-Received: Second message in the batch
-Received: Third message in the batch
-
-Stopping the receiver...
-Stopped receiving messages
-```
-
-再次检查门户。 
-
-- “活动消息计数”和“当前”值现在为 **0**。
-- 在“消息”图表中的底部“指标”部分中，可以看到队列有八条传入消息和八条传出消息 。 
-
-    :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="接收后的活动消息和大小" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文档和示例：
