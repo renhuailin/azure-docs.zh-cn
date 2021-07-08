@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 64f18d3217d7f5b7c2feb28190475ef885d4e72b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 68afdb1c0ab74f5d05fd13a9fe8868cb9e2ac4aa
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203498"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460251"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教程：使用 Azure 数字孪生 API 编写代码
 
-开发人员使用 Azure 数字孪生编写客户端应用程序，以与其 Azure 数字孪生服务实例交互，这是很常见的情况。 这篇面向开发人员的教程介绍如何使用[适用于 .NET 的 Azure 数字孪生 SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client) 对 Azure 数字孪生服务进行编程。 本教程会逐步引导你从头开始编写 C# 控制台客户端应用。
+开发人员使用 Azure 数字孪生编写客户端应用程序，以与其 Azure 数字孪生服务实例交互，这是很常见的情况。 这篇面向开发人员的教程介绍如何使用[适用于 .NET 的 Azure 数字孪生 SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 对 Azure 数字孪生服务进行编程。 本教程会逐步引导你从头开始编写 C# 控制台客户端应用。
 
 > [!div class="checklist"]
 > * 设置项目
@@ -43,7 +43,7 @@ ms.locfileid: "108203498"
 
 准备好使用 Azure 数字孪生实例后，请开始设置客户端应用项目。 
 
-在计算机上打开命令提示符或其他控制台窗口，创建用于存储本教程工作的空项目目录。 将目录命名为任何你喜欢的名称（例如，DigitalTwinsCodeTutorial）。
+在计算机上打开命令提示符或其他控制台窗口，创建一个空的项目目录，用于存储本教程中的工作。 将目录命名为任何你喜欢的名称（例如，DigitalTwinsCodeTutorial）。
 
 导航到新目录。
 
@@ -57,7 +57,7 @@ dotnet new console
 
 让命令窗口保持打开状态，因为整个教程都要继续使用该窗口。
 
-接下来，将两个依赖项添加到你的项目，这是与 Azure 数字孪生结合使用所必需的。 第一个是[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client) 的包，第二个提供工具来帮助向 Azure 进行身份验证。
+接下来，将两个依赖项添加到你的项目，这是与 Azure 数字孪生结合使用所必需的。 第一个是[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的包，第二个提供工具来帮助向 Azure 进行身份验证。
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core
@@ -80,7 +80,7 @@ dotnet add package Azure.Identity
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="示例代码片段。其中有一个“using System;”语句、一个名为 DigitalTwinsCodeTutorial 的命名空间，该命名空间中有一个名为 Program 的类，该类中有一个 Main 方法，该方法具有标准签名“static void Main(string[] args)”。该 main 方法包含 Hello World print 语句。" lightbox="media/tutorial-code/starter-template.png":::
+        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="代码编辑器中示例代码片段的屏幕截图。" lightbox="media/tutorial-code/starter-template.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -96,9 +96,9 @@ dotnet add package Azure.Identity
 
 应用必须执行的第一项操作是对 Azure 数字孪生服务进行身份验证。 接着，你可以创建服务客户端类来访问 SDK 函数。
 
-为了进行身份验证，需要 Azure 数字孪生实例的 hostName。
+为了进行身份验证，需要 Azure 数字孪生实例的主机名。
 
-在 Program.cs 中，将以下代码粘贴到 `Main` 方法中的“Hello, World!”输出行下方。 将 `adtInstanceUrl` 的值设置为 Azure 数字孪生实例 hostName。
+在 Program.cs 中，将以下代码粘贴到 `Main` 方法中的“Hello, World!”输出行下方。 将 `adtInstanceUrl` 的值设置为 Azure 数字孪生实例的主机名。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Authentication_code":::
 
@@ -120,7 +120,7 @@ Azure 数字孪生没有内部域词汇。 环境中可在 Azure 数字孪生中
 
 创建 Azure 数字孪生解决方案的第一步是在 DTDL 文件中至少定义一个模型。
 
-在创建项目的目录中，创建名为 SampleModel.json 的新 .json 文件 。 粘贴以下文件主体： 
+在创建项目的目录中，创建名为 SampleModel.json 的新 .json 文件。 粘贴以下文件主体： 
 
 :::code language="json" source="~/digital-twins-docs-samples/models/SampleModel.json":::
 
@@ -180,7 +180,7 @@ dotnet run
 
 现在，如果在命令窗口中使用 `dotnet run` 运行程序，则会看到返回的错误代码。 模型创建代码的输出显示此错误：
 
-:::image type="content" source= "media/tutorial-code/model-error.png" alt-text="程序输出，其中显示一条消息，指出“409: 服务请求失败。状态：409 (冲突)。”，后跟一个指示 dtmi:example:SampleModel;1 已存在的错误输出":::
+:::image type="content" source= "media/tutorial-code/model-error.png" alt-text="控制台的屏幕截图，其中显示了程序输出，该输出导致错误“409: 服务请求失败。状态: 409 (冲突)”。":::
 
 从此时起，本教程会将所有对服务方法的调用包装在 try/catch 处理程序中。
 
@@ -228,7 +228,7 @@ dotnet run
 
 在命令窗口中，使用 `dotnet run` 运行程序。 应该会在 output 语句中看到已创建的所有关系的列表，如下所示：
 
-:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="程序输出，其中显示一条消息，指出“孪生体 sampleTwin-0 已连接到: contains->sampleTwin-1、-contains->sampleTwin-2”" lightbox="media/tutorial-code/list-relationships.png":::
+:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="控制台的屏幕截图，其中显示了程序输出，该输出返回一条列出孪生关系的消息。" lightbox="media/tutorial-code/list-relationships.png":::
 
 ### <a name="query-digital-twins"></a>查询数字孪生
 
@@ -254,7 +254,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，可选择想要删除的资源，这具体取决于你接下来要执行哪些操作。
+完成本教程后，可以选择要删除的资源，具体取决于接下来要执行的操作。
 
 * 如果打算继续学习下一个教程，可在下一教程中重复使用本教程中的实例。 你可保留在此处设置的 Azure 数字孪生资源，并跳过本部分的其余部分。
 

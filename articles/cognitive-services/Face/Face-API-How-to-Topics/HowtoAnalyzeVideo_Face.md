@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d06396c869bb7e9dbfbf99109d0a857302d5e874
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 92bf7b7c1d2f24b7a858f6e9b786b84943651239
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136204"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810725"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>示例：如何实时分析视频
 
@@ -173,7 +173,7 @@ while (true)
 
 本指南介绍了如何使用人脸 API、计算机视觉 API 和情感 API 对实时视频流运行近实时分析，以及如何使用我们的示例代码开始操作。
 
-请随时在 [GitHub 存储库](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供反馈和建议，或者在我们的 UserVoice 站点上提供更广泛的 API 反馈。
+请随时在 [GitHub 存储库](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供反馈和建议，或者在我们的 [UserVoice](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743) 站点上提供更广泛的 API 反馈。
 
 ## <a name="related-topics"></a>相关主题
 - [如何检测图像中的人脸](HowtoDetectFacesinImage.md)

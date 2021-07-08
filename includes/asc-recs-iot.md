@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/22/2021
+ms.date: 06/14/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 388798b9f1ada6921fb79363678ecd17a3041227
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5f4838765ff21d744faa14733f02bb0119b2f875
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801449"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112083583"
 ---
 这一类别有 12 条相关建议。
 

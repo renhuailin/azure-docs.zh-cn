@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/20/2020
+ms.date: 03/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b154dabd6f672c6fdaf77c5f8d48f80fb40d5d8
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8bf73374545fa10c1b26ccbc9b932962fcabb6b3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060102"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759862"
 ---
 # <a name="tutorial-install-azure-stack-edge-mini-r"></a>教程：安装 Azure Stack Edge Mini R
 
@@ -82,7 +82,10 @@ ms.locfileid: "106060102"
 - Azure Stack Edge Mini R 物理设备在安装位置。
 - 一根电源线。
 - 至少一根用于连接管理接口的 1-GbE RJ-45 网线。 设备上有两个 1-GbE 网络接口：一个用于管理，一个用于数据。
-- 一根 10-GbE SFP+ 铜缆用于要配置的每个数据网络接口。 至少需要将一个数据网络接口（来自端口 3 或端口 4）连接到 Internet（在连接到 Azure 的情况下）。  
+- 一根 10-GbE SFP+ 铜缆用于要配置的每个数据网络接口。 至少需要将一个数据网络接口（来自端口 3 或端口 4）连接到 Internet（在连接到 Azure 的情况下）。
+
+  强烈建议使用性能最佳的铜质 SFP+ (10 Gbps) 收发器。 可使用兼容的光纤收发器，但尚未经过测试。 有关详细信息，请参阅 Azure Stack Edge Mini R 的[收发器和电缆规格](azure-stack-edge-mini-r-technical-specifications-compliance.md#transceivers-cables)。
+   
 - 可访问一个配电装置（推荐）。
 
 > [!NOTE]
@@ -97,10 +100,10 @@ ms.locfileid: "106060102"
     - 设备插槽中有 1 个 SSD 盘。 
     - 设备还有一张 CFx 卡，它用作操作系统磁盘的存储区。
     
-- 前面板上有网络接口，可连接 Wi-Fi。
+- 前面板上有网络接口，可连接 Wi-Fi。 
 
-    - 2 个 1 GbE RJ 45 网络接口。 它们是设备本地 UI 上的端口 1 和端口 2。
-    - 2 个 10 GbE SFP+ 网络接口。 它们是设备本地 UI 上的端口 3 和端口 4。 
+    - 2 个 1 GbE RJ 45 网络接口（设备本地 UI 上的端口 1 和端口 2）
+    - 2 个 10 GbE SFP+ 网络接口（设备本地 UI 上的端口 3 和端口 4） 
     - 1 个 Wi-Fi 端口，上面连接了 1 个 Wi-Fi 收发器。
 
 - 前面板上还有一个电源按钮。 

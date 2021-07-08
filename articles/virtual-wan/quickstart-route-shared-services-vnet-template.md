@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 ARM 模板路由到共享服务
 titleSuffix: Azure Virtual WAN
-description: 本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）设置路由，以访问具有每个 VNet 和分支都要访问的工作负载的共享服务 VNet。
+description: 了解如何使用 Azure 资源管理器模板（ARM 模板）设置路由，以访问具有每个 VNet 和分支都要访问的工作负载的共享服务 VNet。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: c954db5c75f1cf32833ec5ecb270ef3c4b57c10b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ff23bf626fe252547d3449cfe318c073e9cc9b6c
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110093171"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026302"
 ---
 # <a name="quickstart-route-to-shared-services-vnets-using-an-arm-template"></a>快速入门：使用 ARM 模板路由到共享服务 VNet
 
@@ -33,7 +33,7 @@ ms.locfileid: "110093171"
 
 ## <a name="review-the-template"></a><a name="review"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templatesvirtual-wan-with-route-tables)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/virtual-wan-with-route-tables/azuredeploy.json)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/virtual-wan-with-route-tables)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/virtual-wan-with-route-tables/azuredeploy.json)。
 
 在此快速入门中，你将创建一个 Azure 虚拟 WAN 多中心部署，包括所有网关和 VNet 连接。 输入参数列表已有意保持在最小值。 可通过修改模板内的变量来更改 IP 寻址方案。 [方案：共享服务 VNet](scenario-shared-services-vnet.md) 一文中进一步说明了该方案。
 

@@ -6,15 +6,15 @@ author: nmurav
 manager: jken
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 3/23/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c7ec360d961c0960dc941c48626c3aeb3f7367ec
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 377d6783fb73c2d03f7e4dde7b352abe1eaef993
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289005"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110792"
 ---
 # <a name="ensure-high-quality-media-in-azure-communication-services"></a>在 Azure 通信服务中确保媒体的高质量
 
@@ -47,7 +47,7 @@ ms.locfileid: "108289005"
 |500 kbps|群视频通话，360p，每秒 30 帧|
 |1.2 Mbps|高清群视频通话，分辨率为高清 720p，每秒 30 帧| 
 
-下面是原生 Android 和 iOS SDK 的带宽要求：
+下面是原生 Windows、Android 和 iOS SDK 的带宽要求：
 
 |带宽|方案|
 |:--|:--|

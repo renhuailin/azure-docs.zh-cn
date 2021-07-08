@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 01/15/2021
+ms.date: 05/25/2021
 ms.custom: designer
-ms.openlocfilehash: 1846b5478c824caa954b85ea6346d773f46b279c
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 73cc893815cf591812c95c8d8b092a4b58697917
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315662"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457641"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教程：使用设计器部署机器学习模型
 
@@ -56,8 +56,8 @@ ms.locfileid: "108315662"
     * 已添加“Web 服务输入”和“Web 服务输出”模块。 这些模块显示用户数据进入管道的位置，以及返回数据的位置。
 
     > [!NOTE]
-    > 默认情况下，“Web 服务输入”将需要与用于创建预测管道的训练数据相同的数据架构。 在此方案中，价格包含在架构内。 但是，在预测过程中不会将价格用作因素。
-    >
+    > 默认情况下，“Web 服务输入”会要求数据架构与同它连接到同一下游端口的模块输出数据的数据架构相同。 在此示例中，“Web 服务输入”和“汽车价格数据(原始)”连接到同一下游模块，因此，“Web 服务输入”需要与“汽车价格数据(原始)”相同的数据架构，并且架构中包括目标变量列 `price`。   
+    > 但是，通常情况下，为数据评分时，你不知道目标变量值。 对于这种情况，你可以使用“选择数据集中的列”模块删除推理管道中的目标变量列。 确保“选择数据集中的列”的输出（在删除目标变量列后）连接到与“Web 服务输入”模块的输出相同的端口。
 
 1. 选择“提交”，并使用在第一部分中使用的相同计算目标和试验。
 
@@ -81,7 +81,7 @@ ms.locfileid: "108315662"
     
 1. 对于“区域”，选择可用的邻近区域。
 
-1. 选择“创建”  。
+1. 选择“创建”。
 
     > [!NOTE]
     > 创建新的 AKS 服务大约需要 15 分钟。 可在“推理群集”页上查看预配状态。

@@ -1,24 +1,24 @@
 ---
-title: 通过预览 API 以编程方式创建 Azure 订阅
-description: 了解如何使用 REST API、Azure CLI 和 Azure PowerShell 的预览版本以编程方式创建额外的 Azure 订阅。
+title: 通过旧 API 以编程方式创建 Azure 订阅
+description: 了解如何使用 REST API、Azure CLI 和 Azure PowerShell 的旧版本以编程方式创建额外的 Azure 订阅。
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 06/09/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: d3247a86795b9661196c3264c60b06e7c61d6e23
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: edf57ec72d056f58eaca624b4c91b27a82ad9daf
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877871"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902044"
 ---
-# <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>通过预览 API 以编程方式创建 Azure 订阅
+# <a name="programmatically-create-azure-subscriptions-with-legacy-apis"></a>通过旧 API 以编程方式创建 Azure 订阅
 
-本文可帮助你使用较旧的预览 API 以编程方式创建 Azure 订阅。 本文介绍如何使用 Azure 资源管理器以编程方式创建订阅。
+本文可帮助你使用旧版预览 API 以编程方式创建 Azure 订阅。 本文介绍如何使用 Azure 资源管理器以编程方式创建订阅。
 
 我们有新文章来讲解用于不同 Azure 协议订阅类型的最新 API 版本：
 

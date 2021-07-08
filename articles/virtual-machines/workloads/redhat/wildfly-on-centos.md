@@ -11,12 +11,12 @@ ms.subservice: redhat
 ms.custom:
 - mode-api
 ms.collection: linux
-ms.openlocfilehash: bad9331a6d9a0c0936b1458e3aa4a84559e4a107
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 7c80634e78a8c37551a57fc8597831898646ef8e
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533561"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900928"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>快速入门：CentOS 8 上的 WildFly
 
@@ -34,7 +34,7 @@ WildFly 是在 Azure 上开发和测试企业 Java 应用程序的理想选择�
 
 ## <a name="configuration-choice"></a>配置选择
 
-可在“独立服务器”模式下启动 WildFly - 独立服务器实例是一个独立的进程，与 JBoss 应用程序服务器 (AS) 3、4、5 或 6 实例非常类似。 独立实例可通过 standalone.sh 或 standalone.bat 启动脚本来启动。 对于多个独立实例，由用户负责协调跨服务器的多服务器管理。
+可在“独立服务器”模式下启动 WildFly - 独立服务器实例是一个独立的进程，与 JBoss 应用程序服务器 (AS) 3、4、5 或 6 实例非常类似。 独立实例可通过 standalone.sh 或 standalone.bat 启动脚本来启动。 对于多个独立实例，由用户负责协调跨服务器进行的多服务器管理。
 
 你还可使用配置文件夹中提供的配置文件，通过备用配置启动 WildFly 实例。
 
@@ -73,7 +73,7 @@ Azure CentOS 8 映像是即用即付 (PAYG) VM 映像，不要求用户获取许
     ```
 
     ```
-    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/wildfly/wildfly-standalone-centos8/azuredeploy.json
     ```
     
 - 使用 Azure CLI - 请运行以下命令来部署模板：（若要详细了解如何安装和配置 Azure 跨平台命令行接口，请参阅 [Azure 跨平台命令行](/cli/azure/install-azure-cli)）。
@@ -83,14 +83,14 @@ Azure CentOS 8 映像是即用即付 (PAYG) VM 映像，不要求用户获取许
     ```
 
     ```
-    az deployment group create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    az deployment group create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/wildfly/wildfly-standalone-centos8/azuredeploy.json
     ```
 
-- 使用 Azure 门户 - 单击<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">此处</a>部署模板，并登录到 Azure 门户。
+- 使用 Azure 门户 - 单击<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fwildfly%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">此处</a>部署模板，并登录到 Azure 门户。
 
 ## <a name="arm-template"></a>ARM 模板
 
-<a href="https://github.com/Azure/azure-quickstart-templates/tree/master/wildfly-standalone-centos8" target="_blank"> CentOS 8（独立 VM）上的 WildFly 18</a> - 这是一个快速入门模板，用于在资源组 (RG) 中的 CentOS 8 VM 上创建 WildFly 18.0.1.Final 的独立节点，其中该节点包含 VM 的专用 IP、虚拟网络和诊断存储帐户。 它还在 WildFly 的 Azure 上部署一个名为 JBoss-EAP 的示例 Java 应用程序。
+<a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/wildfly/wildfly-standalone-centos8" target="_blank"> CentOS 8（独立 VM）上的 WildFly 18</a> - 这是一个快速入门模板，用于在资源组 (RG) 中的 CentOS 8 VM 上创建 WildFly 18.0.1.Final 的独立节点，其中该节点包含 VM 的专用 IP、虚拟网络和诊断存储帐户。 它还在 WildFly 的 Azure 上部署一个名为 JBoss-EAP 的示例 Java 应用程序。
 
 ## <a name="resource-links"></a>资源链接
 

@@ -4,17 +4,17 @@ titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: b6bea3fdc47bfbb74c18161a400d59453540b14d
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: cfcf01bd95452002591c657019c59491d3e20bc2
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106081009"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894437"
 ---
 [参考文档](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html) | [库源代码](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/README.md) | [包 (PiPy)](https://pypi.org/project/azure-ai-metricsadvisor/) | [示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/samples/README.md)
 
@@ -248,7 +248,7 @@ return detection_config
 
 ## <a name="create-a-hook"></a>创建挂钩
 
-在新方法中，创建类似于以下示例的 import 语句。 通过密钥和终结点创建客户端，并使用 `client.create_hook()` 创建挂钩。 输入说明、要向其发送警报的电子邮件列表，以及用于接收警报的外部链接。  
+在新方法中，创建类似于以下示例的 import 语句。 通过密钥和终结点创建客户端，并使用 `client.create_hook()` 创建挂钩。 输入说明、要向其发送警报的电子邮件列表，以及将在警报中显示的外部链接。
 
 ```python
 def sample_create_hook():
@@ -267,7 +267,7 @@ hook = client.create_hook(
         name="email hook",
         description="my email hook",
         emails_to_alert=["alertme@alertme.com"],
-        external_link="https://example.com/handleAlerts", # you must enter a valid webhook url to post the alert payload
+        external_link="https://example.com/handleAlerts"   #A customized field configured by users, which will be displayed in the anomaly alert. It's usually been used to link to a troubleshooting guide to help further diagnose the issue.
     )
 )
 ```

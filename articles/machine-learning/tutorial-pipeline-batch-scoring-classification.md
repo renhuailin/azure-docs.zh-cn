@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: 570bfed5ae5fc6fafea36b9ed1f2673a0daae22b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 75e87e004190ebe86c983c5956105ec629dcc673
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521503"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772272"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教程：生成用于批量评分的 Azure 机器学习管道
 
@@ -40,8 +40,11 @@ ms.locfileid: "102521503"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果你没有 Azure 机器学习工作区或笔记本虚拟机，请完成[设置教程的第 1 部分](tutorial-1st-experiment-sdk-setup.md)。
-* 完成设置教程后，使用同一笔记本服务器打开 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb 笔记本。
+* 如果还没有 Azure 机器学习工作区或计算实例，请完成[快速入门：Azure 机器学习入门](quickstart-create-resources.md)。
+* 完成快速入门后，请执行以下操作：
+    1. 在工作室中选择“笔记本”。
+    1. 选择“示例”选项卡。
+    1. 打开 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb 笔记本。
 
 如果要在自己的[本地环境](how-to-configure-environment.md#local)中运行设置教程，可以访问 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上的教程。 运行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` 以获取所需的包。
 

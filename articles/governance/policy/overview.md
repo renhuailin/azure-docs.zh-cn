@@ -3,12 +3,12 @@ title: Azure Policy 概述
 description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
 ms.date: 05/01/2021
 ms.topic: overview
-ms.openlocfilehash: 8d261cc958a104b4a11a6f82a8f86352159c0275
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b9cd2becc0c1241c34b7cd887a274088296150ba
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323692"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733474"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -137,9 +137,9 @@ Azure Policy 评估订阅级别或更低级别的所有 Azure 资源，包括启
 
 在此计划中，将具有特定策略定义，例如：
 
-- 监视安全中心中未加密的 SQL 数据库 – 用于监视未加密的 SQL 数据库和服务器。
-- **监视安全中心中的操作系统漏洞** - 用于监视不满足配置基线的服务器。
-- 监视安全中心中缺失的终结点保护 – 用于监视不具备已安装终结点保护代理的服务器。
+- **在安全中心监视未加密的 SQL 数据库** - 用于监视未加密的 SQL 数据库和服务器。
+- **在安全中心监视 OS 漏洞** - 用于监视不满足配置基线的服务器。
+- **在安全中心监视缺失的终结点保护** - 用于监视未安装终结点保护代理的服务器。
 
 类似于策略参数，计划参数通过减少冗余来帮助简化计划管理。 计划参数是计划内的策略定义正在使用的参数。
 
@@ -148,12 +148,12 @@ Azure Policy 评估订阅级别或更低级别的所有 Azure 资源，包括启
 | 策略 | 参数的名称 |参数的类型  |注意 |
 |---|---|---|---|
 | policyA | allowedLocations | array  |此参数要求将值设置为字符串列表，因为参数类型已定义为数组 |
-| policyB | allowedSingleLocation |string |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
+| policyB | allowedSingleLocation |字符串 |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
 
 在此情况下，定义 initiativeC 的计划参数时，有三个选项可供选择：
 
 - 使用此计划中的策略定义参数：在此示例中，allowedLocations 和 allowedSingleLocation 为 initiativeC 的计划参数 。
-- 向此计划定义中策略定义的参数提供值。 在此示例中，可以向 policyA 的参数 – allowedLocations 和 policyB 的参数 – allowedSingleLocation   提供位置列表。 此外，也可在分配此计划时提供值。
+- 向此计划定义中策略定义的参数提供值。 在此示例中，可以向 policyA 的参数 - allowedLocations 和 policyB 的参数 - allowedSingleLocation    提供位置列表。 此外，也可在分配此计划时提供值。
 - 分配此计划时，提供可供使用的值列表选项。 在分配此计划时，从计划内的策略定义继承的参数只能具有此提供列表中的值。
 
 在计划定义中创建值选项时，无法在计划分配期间输入其他值，因为它不属于列表。

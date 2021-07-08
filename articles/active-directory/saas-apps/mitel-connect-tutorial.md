@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/31/2020
+ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b246aed607d8a52e14f29ecfb47693c46067f236
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96015173"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>教程：Azure Active Directory 与 Mitel MiCloud Connect 或 CloudLink Platform 的集成
 
@@ -24,10 +24,6 @@ ms.locfileid: "96015173"
 
 * 你可以使用用户的企业凭据来控制用户对 Azure AD 中的 MiCloud Connect 应用和 CloudLink 应用的访问。
 * 可让你帐户上的用户使用其 Azure AD 帐户自动登录到 MiCloud Connect 或 CloudLink（单一登录）。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)。
-
-如果没有 Azure 订阅，请在开始将 Azure AD 与 Mitel MiCloud Connect 或 CloudLink Platform 集成之前，[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,30 +36,20 @@ ms.locfileid: "96015173"
 
 在本教程中，我们将配置并测试 Azure AD 单一登录 (SSO)。
 
-* Mitel Connect 支持 **SP** 发起的 SSO
-* 配置 Mitel Connect 后，就可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+* Mitel Connect 支持 SP 发起的 SSO。
 
-## <a name="add-mitel-connect-from-the-gallery"></a>从库中添加 Mitel Connect
+## <a name="adding-mitel-connect-from-the-gallery"></a>从库中添加 Mitel Connect
 
-若要配置 Mitel Connect 与 Azure AD 的集成，需要使用 Azure 门户从库中将 Mitel Connect 添加到托管 SaaS 应用列表。
+若要配置 Mitel Connect 与 Azure AD 的集成，需要从库中将 Mitel Connect 添加到托管 SaaS 应用列表。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，选择“Azure Active Directory”。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分的搜索框中，键入“Mitel Connect” 。
+1. 在结果面板中选择“Mitel Connect”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
-
-2. 依次选择“企业应用程序”、“所有应用程序”。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-3. 选择“新建应用程序”。
-
-    ![“新增应用程序”按钮](common/add-new-app.png)
-
-4. 在搜索字段中键入“Mitel Connect”，在结果面板中选择“Mitel Connect”，然后选择“添加”  。
-
-     ![结果列表中的“Mitel Connect”](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
 
 在本部分中，你将基于名为“Britta Simon”的测试用户为 MiCloud Connect 和 CloudLink Platform 配置并测试 Azure AD SSO。 若要运行单一登录，必须在 Azure AD 门户中的用户与 Mitel 平台上的相应用户之间建立链接关系。 有关为 MiCloud Connect 或 CloudLink Platform 配置和测试 Azure AD SSO 的信息，请参阅以下各节。
 * 为 MiCloud Connect 配置和测试 Azure AD SSO
@@ -77,7 +63,7 @@ ms.locfileid: "96015173"
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 3. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 4. **[创建 Mitel MiCloud Connect 测试用户](#create-a-mitel-micloud-connect-test-user)** - 在 MiCloud Connect 帐户中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+5. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-micloud-connect-for-sso-with-azure-ad"></a>将 MiCloud Connect 配置为使用 Azure AD 进行单一登录
 
@@ -86,17 +72,11 @@ ms.locfileid: "96015173"
 若要为 MiCloud Connect 配置 Azure AD 单一登录，最简单的方法是并排打开 Azure 门户和 Mitel 帐户门户。 需要将一些信息从 Azure 门户复制到 Mitel 帐户门户，以及将一些信息从 Mitel 帐户门户复制到 Azure 门户。
 
 
-1. 若要在 [Azure 门户](https://portal.azure.com/)中打开配置页，请执行以下操作：
+1. 若要在 Azure 门户中打开配置页，请执行以下操作：
 
     1. 在“Mitel Connect”应用程序集成页上，选择“单一登录” 。
 
-       ![配置单一登录链接](common/select-sso.png)
-
-    1. 在“选择单一登录方法”对话框中，选择“SAML” 。
-    
-       ![单一登录选择模式](common/select-saml-option.png)
-    
-       此时会显示基于 SAML 的登录页。
+    1. 在“选择单一登录方法”对话框中，选择“SAML” 。 此时会显示基于 SAML 的登录页。
 
 2. 若要在 Mitel 帐户门户中打开配置对话框，请执行以下操作：
 
@@ -152,53 +132,27 @@ ms.locfileid: "96015173"
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
-在本部分，我们将在 Azure 门户中创建名为 Britta Simon 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
-
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”对话框中，执行以下步骤：
-
-    ![“用户”对话框](common/user-properties.png)
-
-    1. 在“姓名”字段中，键入输入“BrittaSimon”。
-  
-    1. 在“用户名”字段中，键入 brittasimon@\<yourcompanydomain\>.\<extension\>。  例如，BrittaSimon@contoso.com。
-
-    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-
-    1. 选择“创建”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分，我们通过授予 Britta Simon 访问 Mitel Connect 的权限，使其能够使用 Azure 单一登录。
+在本部分，我们通过授予 B.Simon 访问 Mitel Connect 的权限，使其能够使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-2. 在“应用程序”列表中，选择“Mitel Connect”。
-
-    ![“应用程序”列表中的“Mitel Connect”链接](common/all-applications.png)
-
-3. 在左侧菜单中，选择“用户和组”。
-
-    ![“用户和组”链接](common/users-groups-blade.png)
-
-4. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后选择屏幕底部的“选择”   。
-
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后选择屏幕底部的“选择” 。
-
-7. 在“添加分配”对话框中选择“分配”。
+1. 在“应用程序”列表中，选择“Mitel Connect”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ### <a name="create-a-mitel-micloud-connect-test-user"></a>创建 Mitel MiCloud Connect 测试用户
 
@@ -217,11 +171,16 @@ ms.locfileid: "96015173"
 > [!NOTE]
 > 用户的 MiCloud Connect 用户名必须与用户在 Azure 中的电子邮件地址相同。
 
-### <a name="test-single-sign-on"></a>测试单一登录
+### <a name="test-sso"></a>测试 SSO
 
-在本部分，我们将使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中选择“Mitel Connect”磁贴时，系统会将你自动重定向，以便登录到 MiCloud Connect 应用程序。你已在“登录 URL”字段中将该应用程序配置为默认应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这将重定向到 Mitel Connect 登录 URL，你可以从那里启动登录流。 
+
+* 直接转到 Mitel Connect 登录 URL，从那里启动登录流。
+
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Mitel Connect 磁贴时，将会重定向到 Mitel Connect 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+
 
 ## <a name="configure-and-test-azure-ad-sso-with-cloudlink-platform"></a>为 CloudLink Platform 配置和测试 Azure AD SSO
 
@@ -229,17 +188,10 @@ ms.locfileid: "96015173"
 
 若要为 CloudLink 平台配置 Azure AD 单一登录，建议并排打开 Azure 门户和 CloudLink 帐户门户，因为你需要在 Azure 门户和 CloudLink 帐户门户之间复制一些信息。
 
-1. 若要在 [Azure 门户](https://portal.azure.com/)中打开配置页，请执行以下操作：
+1. 若要在 Azure 门户中打开配置页，请执行以下操作：
 
     1. 在“Mitel Connect”应用程序集成页上，选择“单一登录” 。
-
-       ![配置单一登录链接](common/select-sso.png)
-
-    1. 在“选择单一登录方法”对话框中，选择“SAML” 。
-
-       ![单一登录选择模式](common/select-saml-option.png)
-    
-       此时会打开“基于 SAML 的登录”页面，其中显示“基本 SAML 配置”部分 。
+    1. 在“选择单一登录方法”对话框中，选择“SAML” 。 此时会打开“基于 SAML 的登录”页面，其中显示“基本 SAML 配置”部分 。
 
        ![屏幕截图显示了“基于 SAML 的登录”页面，其中包含“基本 SAML 配置”。](./media/mitel-connect-tutorial/mitel-azure-saml-settings.png)
 
@@ -307,53 +259,27 @@ ms.locfileid: "96015173"
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
-在本部分，我们将在 Azure 门户中创建名为 Britta Simon 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
-
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”对话框中，执行以下步骤：
-
-    ![“用户”对话框](common/user-properties.png)
-
-    1. 在“姓名”字段中，键入输入“BrittaSimon”。
-  
-    1. 在“用户名”字段中，键入 brittasimon@\<yourcompanydomain\>.\<extension\>。  例如，BrittaSimon@contoso.com。
-
-    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-
-    1. 选择“创建”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分，我们通过授予 Britta Simon 访问 Mitel Connect 的权限，使其能够使用 Azure 单一登录。
+在本部分，我们通过授予 B.Simon 访问 Mitel Connect 的权限，使其能够使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-2. 在“应用程序”列表中，选择“Mitel Connect”。
-
-    ![“应用程序”列表中的“Mitel Connect”链接](common/all-applications.png)
-
-3. 在左侧菜单中，选择“用户和组”。
-
-    ![“用户和组”链接](common/users-groups-blade.png)
-
-4. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后选择屏幕底部的“选择”   。
-
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后选择屏幕底部的“选择” 。
-
-7. 在“添加分配”对话框中选择“分配”。
+1. 在“应用程序”列表中，选择“Mitel Connect”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ### <a name="create-a-cloudlink-test-user"></a>创建 CloudLink 测试用户
 
@@ -371,16 +297,16 @@ ms.locfileid: "96015173"
 > [!NOTE]
 > 用户的 CloudLink 电子邮件地址必须与 Azure 门户中“用户主体名称”相同。
 
-### <a name="test-single-sign-on"></a>测试单一登录
+### <a name="test-sso"></a>测试 SSO
 
-在本部分中，你将使用访问面板测试 Azure AD SSO 配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中选择“Mitel Connect”磁贴时，系统会将你自动重定向，以便登录到 CloudLink 应用程序。你已在“登录 URL”字段中将该应用程序配置为默认应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这将重定向到 CloudLink 登录 URL，你可以从中启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 CloudLink 登录 URL，从那里启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Mitel Connect 磁贴时，会重定向到 CloudLink 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+配置 Mitel Connect 后，就可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

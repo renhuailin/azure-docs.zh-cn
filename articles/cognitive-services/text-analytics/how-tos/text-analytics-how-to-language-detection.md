@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 04/02/2021
+ms.date: 06/10/2021
 ms.author: aahi
-ms.openlocfilehash: d7f62082d860d8ec39a5937af5c1bae81b372caa
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: c9ff3bdc7e7076846ffb44239bf5654512f88eea
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906577"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967970"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>示例：通过文本分析检测语言
 
@@ -91,9 +91,9 @@ Azure 文本分析 REST API 的[语言检测](https://westus2.dev.cognitive.micr
 
 系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中。 然后，将输出导入到可以用来对数据进行排序、搜索和操作的应用程序。
 
-示例请求的结果应类似于以下 JSON。 请注意，它是一个包含多个项的文档。 输出采用英文。 语言标识符包括友好名称和 [ISO 639-1](https://www.iso.org/standard/22109.html) 格式的语言代码。
+示例请求的结果应类似于以下 JSON 文档。 请注意，这是一个包含多个项的 JSON 文档，其中每个项代表提交的每个文档的检测结果。 输出采用英文。 
 
-正分 1.0 表示分析可能达到的最高可信度。
+语言检测将为一个文档返回一种主要语言，以及 [ISO 639-1](https://www.iso.org/standard/22109.html) 名称、易记名称和置信度分数。 正分 1.0 表示分析可能达到的最高可信度。
 
 ```json
 {
@@ -303,3 +303,4 @@ Azure 文本分析 REST API 的[语言检测](https://westus2.dev.cognitive.micr
 * [文本分析概述](../overview.md)
 * [使用文本分析客户端库](../quickstarts/client-libraries-rest-api.md)
 * [新增功能](../whats-new.md)
+* [模型版本](../concepts/model-versioning.md)

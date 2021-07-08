@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 6e3827ca9f729f1fa231a58a11c829b1ee8a4f44
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 87871be12310782abe172fe308782825ba8e09d0
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108791044"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109858128"
 ---
 开始使用人脸 REST API 进行人脸识别。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -222,14 +222,14 @@ ms.locfileid: "108791044"
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已了解如何使用人脸 REST API 来执行基本人脸识别任务。 接下来，请在参考文档中详细了解该库。
+在本快速入门中，你已了解如何使用人脸 REST API 来执行基本人脸识别任务。 接下来，了解不同的人脸检测模型，学习如何为你的用例指定适当的模型。
 
 > [!div class="nextstepaction"]
-> [人脸 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [指定人脸检测模型版本](../../Face-API-How-to-Topics/specify-detection-model.md)
 
 * [什么是人脸服务？](../../overview.md)

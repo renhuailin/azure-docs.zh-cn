@@ -1,24 +1,24 @@
 ---
 title: 排查 Azure 付款问题
-description: 解决在 Microsoft Azure 门户或帐户中心更新付款信息帐户时遇到的问题。
+description: 解决在 Microsoft Azure 门户中更新付款信息帐户时遇到的问题。
 author: v-miegge
 ms.reviewerr: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 05/13/2021
 ms.author: jaserano
-ms.openlocfilehash: 77ca8e8425326cec31fce345600bdd0174ab5f4e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 54aba8ecb56d3c96628c424522ca606a0b04273a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131847"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481164"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>排查 Azure 付款问题
 
-尝试在 Microsoft Azure 门户或 Azure 帐户中心更新付款信息帐户时，可能会遇到问题或错误。
+尝试在 Microsoft Azure 门户中更新付款信息帐户时，可能会遇到问题或错误。
 
 若要解决问题，请在下面选择最接近错误的主题。
 
@@ -30,7 +30,7 @@ ms.locfileid: "92131847"
 
 你使用的电子邮件 ID 可能不同于用于订阅的电子邮件 ID。
 
-若要排查此问题，请参阅[在 Azure 门户或 Azure 帐户中心注册时出现“找不到任何订阅”错误](no-subscriptions-found.md)。
+若要排查此问题，请参阅[在 Azure 门户中发生“找不到任何订阅”登录错误](no-subscriptions-found.md)。
 
 ## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>无法使用虚拟或预付信用卡或借记卡作为付款方式。
 
@@ -49,13 +49,13 @@ ms.locfileid: "92131847"
 
 新付款方式可能未与订阅关联。 若要帮助将付款方式与订阅相关联，请参阅[添加、更新或删除用于 Azure 的信用卡](change-credit-card.md)。
 
-## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>因存在“无法删除付款方式”错误，无法删除付款方式 
+## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>因存在“无法删除付款方式”错误，无法删除付款方式
 
 发生此错误是由于存在未清余额。 请在删除付款方式之前结清任何未清余额。
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>无法为订阅付款
 
-如果收到错误消息：“付款已过期。  你的付款方式有问题”或“很抱歉，无法保存信息。  请关闭浏览器，然后再试。”则可能是因为卡上仍有待付款，因为卡被金融机构拒绝过。
+如果收到“付款已过期。你的付款方式有问题。”或“很抱歉，无法保存信息。请关闭浏览器并重试。”错误消息，则表明该卡存在待付款，因为该卡被金融机构拒绝。 
 
 请验证信用卡是否有足够的余额来付款。 如果没有足够的余额，请使用其他卡来付款，或者联系你的金融机构解决此问题。
 

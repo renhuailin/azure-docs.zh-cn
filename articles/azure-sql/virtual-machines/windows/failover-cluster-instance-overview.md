@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 030aadf55f692b19109582fb85320023159005a3
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690917"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569415"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上的 SQL Server 故障转移群集实例 (FCI)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,12 +27,15 @@ ms.locfileid: "101690917"
 
 ## <a name="overview"></a>概述
 
-Azure VM 上的 SQL Server 使用 Windows Server 故障转移群集 (WSFC) 功能通过冗余在服务器实例级别（故障转移群集实例）上提供本地高可用性。 FCI 是跨 WSFC（或只是群集）节点和（可能）跨多个子网安装的 SQL Server 的单个实例。 在网络上，FCI 显示为在单台计算机上运行的 SQL Server 的一个实例。 但是，如果当前节点变得不可用，则 FCI 提供从一个 WSFC 节点到另一个 WSFC 节点的故障转移。
+Azure VM 上的 SQL Server 使用 [Windows Server 故障转移群集 (WSFC)](hadr-windows-server-failover-cluster-overview.md) 功能通过冗余在服务器实例级别（故障转移群集实例）上提供本地高可用性。 FCI 是跨 WSFC（或只是群集）节点和（可能）跨多个子网安装的 SQL Server 的单个实例。 在网络上，FCI 显示为在单台计算机上运行的单个 SQL Server 实例。 但是，如果当前节点变得不可用，则 FCI 提供从一个 WSFC 节点到另一个 WSFC 节点的故障转移。
 
 本文的其余部分重点介绍在将故障转移群集实例与 Azure VM 上的 SQL Server 一起使用时这些实例的区别。 若要详细了解故障转移群集技术，请参阅： 
 
 - [Windows 群集技术](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server 故障转移群集实例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+
+> [!NOTE]
+> 现在，可以使用 Azure Migrate 将故障转移群集实例解决方案直接迁移到 Azure VM 上的 SQL Server。 有关详细信息，请参阅[迁移故障转移群集实例](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)。 
 
 ## <a name="quorum"></a>Quorum
 
@@ -145,9 +148,11 @@ Azure VM 上的 SQL Server 提供各种选项用作共享存储解决方案，�
 
 ## <a name="connectivity"></a>连接
 
-Azure 虚拟机上的 SQL Server 故障转移群集实例使用[分布式网络名称 (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) 或 [Azure 负载均衡器虚拟网络名称 (VNN)](failover-cluster-instance-vnn-azure-load-balancer-configure.md) 将流量路由到 SQL Server 实例，而不管哪个节点当前拥有群集资源。 在将某些功能和 DNN 与 SQL Server FCI 一起使用时，还有其他注意事项。 有关详细信息，请参阅 [DNN 互操作性与 SQL Server FCI](failover-cluster-instance-dnn-interoperability.md)。 
+可为故障转移群集实例配置虚拟网络名称或分布式网络名称。 [查看两者之间的差异](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)；然后，为故障转移群集实例部署[分布式网络名称](failover-cluster-instance-distributed-network-name-dnn-configure.md)或[虚拟网络名称](failover-cluster-instance-vnn-azure-load-balancer-configure.md)。
 
-有关群集连接选项的更多详细信息，请参阅[将 HADR 连接路由到 Azure VM 上的 SQL Server](hadr-cluster-best-practices.md#connectivity)。 
+建议尽可能地使用分布式网络名称，因为这样可以加快故障转移的速度，而且可以消除负载均衡器的管理开销和成本。 
+
+使用 DNN 时，大多数 SQL Server 功能可以透明使用 FCI，但某些功能可能需要满足特殊的考虑因素。 有关详细信息，请参阅 [FCI 和 DNN 互操作性](failover-cluster-instance-dnn-interoperability.md)。 
 
 ## <a name="limitations"></a>限制
 
@@ -173,7 +178,9 @@ Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理
 
 请参阅[群集配置最佳做法](hadr-cluster-best-practices.md)，然后可[为 FCI 准备 SQL Server VM](failover-cluster-instance-prepare-vm.md)。 
 
-有关详细信息，请参阅： 
 
-- [Windows 群集技术](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server 故障转移群集实例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+若要了解更多信息，请参阅以下文章：
+
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [故障转移群集实例概述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+

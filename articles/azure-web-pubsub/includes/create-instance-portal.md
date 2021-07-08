@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: include
 ms.date: 03/11/2021
-ms.openlocfilehash: 72e3c56b4f8fdaeec94bff60be45aadfb9b09e76
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: e147d6f954009f8ed4267f8b947438e2e60da0b4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166852"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110486986"
 ---
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -21,11 +21,13 @@ ms.locfileid: "108166852"
 
 你的应用程序将连接到 Azure 中的 Web PubSub 服务实例。
 
-1. 选择 Azure 门户左上角的“新建”按钮。 在“新建”屏幕中，在搜索框中键入“Web PubSub”，然后按 Enter。
+1. 选择 Azure 门户左上角的“新建”按钮。 在“新建”屏幕中，在搜索框中键入“Web PubSub”，然后按 Enter。 （还可以从 `Web` 类别中搜索 Azure Web PubSub。）
 
-1. 在搜索结果中选择“Web PubSub”，然后选择“创建” 。
+:::image type="content" source="../media/create-instance-portal/search-web-pubsub-in-portal.png" alt-text="屏幕截图显示在门户中搜索 Azure Web PubSub。":::
 
-1. 输入以下设置。
+2. 在搜索结果中选择“Web PubSub”，然后选择“创建” 。
+
+3. 输入以下设置。
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -36,4 +38,4 @@ ms.locfileid: "108166852"
     | **定价层** | 免费 | 免费试用 Azure Web PubSub 服务。 |
     | **单位计数** |  不适用 | 单位计数指定 Web PubSub 服务实例可接受的连接数。 它只能在标准层中配置。 |
 
-1. 选择“创建”，开始部署 Web PubSub 服务实例。
+4. 选择“创建”，开始部署 Web PubSub 服务实例。

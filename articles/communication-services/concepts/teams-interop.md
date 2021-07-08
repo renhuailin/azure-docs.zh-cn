@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cf6553cd7c59febd19f9654e31188f127b8eb065
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 3fd6aa705a2220483534761c185ca7cac01e148e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276750"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110093603"
 ---
 # <a name="teams-interoperability"></a>Teams 互操作性
 
@@ -22,6 +22,12 @@ ms.locfileid: "106276750"
 
 > [!IMPORTANT]
 > 若要启用/禁用 [Teams 租户互操作性](../concepts/teams-interop.md)，请填写[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)。
+
+> [!NOTE]
+> 通过 Azure 通信服务与 Microsoft Teams 之间的互操作性，应用程序和用户可以参与 Teams 调用、会议和聊天。 你需要负责确保，在 Teams 调用或会议中启用录制或听录时，要通知应用程序的用户。 Microsoft 会通过 Azure 通信服务 API 向你指示录制或听录已开始，你需要在应用程序的用户界面中向用户实时传达这一信息。 你同意赔偿 Microsoft 因自己未能遵守此义务而产生的所有费用和损失。
+
+> [!NOTE]
+> 仅当使用 Azure API 和 SDK 时才对 Azure 资源计取 VoIP 和聊天用量的费用。 Teams 客户端可免费与 Azure 通信服务应用程序交互。
 
 Azure 通信服务可用于构建与 Microsoft Teams 交互的自定义会议体验。 通信服务解决方案用户可以通过语音、视频、聊天和屏幕共享与 Teams 参与者进行交互。
 
@@ -52,3 +58,8 @@ Azure 通信服务互操作性与目前使用 [Microsoft 365 政府云 (GCC)](/M
 
 > [!div class="nextstepaction"]
 > [在 Teams 会议中加入通话应用](../quickstarts/voice-video-calling/get-started-teams-interop.md)
+
+有关详细信息，请参阅以下文章：
+
+- 了解 [UI 库](./ui-library/ui-library-overview.md)
+- 了解 [UI 库功能](./ui-library/ui-library-use-cases.md)

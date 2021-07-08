@@ -1,34 +1,42 @@
 ---
-title: 快速入门：使用 Visual Studio 在 Azure 中创建第一个函数
-description: 本快速入门介绍如何使用 Visual Studio 创建并发布 HTTP 触发器 Azure 函数。
+title: 快速入门：使用 Visual Studio 在 Azure 中创建第一个 C# 函数
+description: 本快速入门将介绍如何使用 Visual Studio 创建 C# HTTP 触发的函数，并将其发布到在 .NET Core 3.1 上运行的 Azure Functions。
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 09/30/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
+ms.date: 05/18/2021
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f, contperf-fy21q3-portal
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-ms.openlocfilehash: d691ee60f624f75c89e44e905e5343bf9c71fd4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b76d9cf86a1bb00ea73c396ce1e563374a834f89
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101701379"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459448"
 ---
-# <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>快速入门：使用 Visual Studio 在 Azure 中创建第一个函数
+# <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>快速入门：使用 Visual Studio 在 Azure 中创建第一个 C# 函数
 
-在本文中，我们使用 Visual Studio 来创建一个响应 HTTP 请求的基于 C# 类库的函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。  
+通过 Azure Functions，可以在 Azure 的无服务器环境中运行 C# 代码。 
 
+在本文中，学习如何：
+
+> [!div class="checklist"]
+> * 使用 Visual Studio 创建 C# 类库 (.NET Core 3.1) 项目。
+> * 创建响应 HTTP 请求的函数。 
+> * 在本地运行代码以验证函数行为。
+> * 将代码项目部署到 Azure Functions。 
+ 
 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
+ 
+创建的项目在 .NET Core 3.1 上运行。 如果想要创建在 .NET 5.0 上运行的项目，请参阅[使用 Azure Functions 开发和发布 .NET 5 函数](dotnet-isolated-process-developer-howtos.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，请先安装 [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 请确保在安装过程中选择“Azure 开发”工作负载。 若要改为使用 Visual Studio 2017 创建 Azure Functions 项目，则必须先安装[最新的 Azure Functions 工具](functions-develop-vs.md#check-your-tools-version)。
++ [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 请确保在安装过程中选择“Azure 开发”工作负载。 
 
-![安装包含“Azure 开发”工作负载的 Visual Studio](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
-
-如果还没有 [Azure 订阅](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/dotnet/)。
++ [Azure 订阅](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)。 如果还没有帐户，请在开始之前[创建免费帐户](https://azure.microsoft.com/free/dotnet/)。
 
 ## <a name="create-a-function-app-project"></a>创建函数应用项目
 
@@ -46,6 +54,10 @@ Visual Studio 将创建一个项目和一个包含 HTTP 触发器函数类型样
 
 1. 在名为 `Run` 的 `HttpTrigger` 方法中，将 `FunctionName` 方法属性重命名为 `HttpExample`。
 
+函数定义现在应如以下代码所示：
+
+:::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs" range="13-18"::: 
+ 
 重命名函数以后，即可在本地计算机上对其进行测试。
 
 ## <a name="run-the-function-locally"></a>在本地运行函数

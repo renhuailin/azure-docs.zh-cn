@@ -3,12 +3,12 @@ title: Azure 快速入门 - 使用 Azure 门户创建事件中心
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure 事件中心。
 ms.topic: quickstart
 ms.date: 05/25/2021
-ms.openlocfilehash: 32a669c08976f1626617b7d17558e2733fa784a5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6a483981f1461c738f087c6f9401006319fd0135
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375104"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617132"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>快速入门：使用 Azure 门户创建事件中心
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
@@ -55,7 +55,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
    1. 输入命名空间的 **名称**。 系统会立即检查该名称是否可用。  
    1. 选择命名空间所在的 **位置**。
    1. 选择“基本”作为“定价层”。 若要了解各层之间的差异，请参阅以下文章：[配额和限制](event-hubs-quotas.md)、[事件中心高级版](event-hubs-premium-overview.md)和[事件中心专用层](event-hubs-dedicated-overview.md)。 
-   1. 按原样保留“吞吐量单位”（适用于标准层）或“处理单位”（适用于高级层）设置。 吞吐量单位是预先购买的容量单位。 若要了解吞吐量单位或处理单位，请参阅[事件中心的可伸缩性](event-hubs-scalability.md)。  
+   1. 按原样保留“吞吐量单位”（适用于标准层）或“处理单位”（适用于高级层）设置。 若要了解吞吐量单位或处理单位，请参阅：[事件中心的可伸缩性](event-hubs-scalability.md)。  
    1. 在页面底部选择“查看 + 创建”  。
       
       ![创建事件中心命名空间](./media/event-hubs-quickstart-portal/create-event-hub1.png)

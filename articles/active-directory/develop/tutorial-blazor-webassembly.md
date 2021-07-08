@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 47b4f36aec9a906317a9704a7d73bf66385d9e88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a095cee6b2af93358b0e76c39cfc0c04ad454fa
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552110"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408040"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教程：从 Blazor WebAssembly 应用让用户登录并调用受保护的 API
 
@@ -40,7 +40,7 @@ ms.locfileid: "102552110"
 使用 Azure Active Directory (Azure AD) 进行身份验证的每个应用都必须注册到 Azure AD。 按照[注册应用程序](quickstart-register-app.md)中的说明及以下规范进行操作：
 
 - 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。 
-- 将“重定向 URI”下拉框的设置保留为“Web”并输入 `https://localhost:5001/authentication/login-callback`。 在 Kestrel 上运行的应用的默认端口为 5001。 如果应用通过一个不同的端口提供，请指定该端口号而非 `5001`。
+- 将“重定向 URI”下拉列表设置为“单页应用程序(SPA)”，并输入 `https://localhost:5001/authentication/login-callback`。 在 Kestrel 上运行的应用的默认端口为 5001。 如果应用通过一个不同的端口提供，请指定该端口号而非 `5001`。
 
 注册后，在“管理”下，选择“身份验证” > “隐式授权和混合流”  。 选择“访问令牌”和“ID 令牌”，然后选择“保存”  。
 

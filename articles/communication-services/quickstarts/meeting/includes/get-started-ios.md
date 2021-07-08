@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 671c86790a3c90f948edb574bc015c0f41c5fbdf
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 5c2f53138d6f716d2917cff831e9b86c40b77a00
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109858074"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111545865"
 ---
 本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务 Teams 嵌入库加入 Microsoft Teams 会议。
 
@@ -46,11 +46,11 @@ platform :ios, '12.0'
 use_frameworks!
 
 target 'TeamsEmbedGettingStarted' do
-    pod 'AzureCommunication', '~> 1.0.0-beta.11'
+    pod 'AzureCommunicationCommon', '1.0.0'
 end
 
 azure_libs = [
-'AzureCommunication',
+'AzureCommunicationCommon',
 'AzureCore']
 
 post_install do |installer|
@@ -82,6 +82,8 @@ end
 <string></string>
 <key>NSMicrophoneUsageDescription</key>
 <string></string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string></string>
 ```
 
 ### <a name="add-the-teams-embed-framework"></a>添加 Teams 嵌入框架
@@ -93,7 +95,7 @@ end
 
 :::image type="content" source="../media/ios/xcode-add-frameworks.png" alt-text="显示 Xcode 中所添加框架的屏幕截图。":::
 
-5. 如果尚未添加，请在项目目标编译设置选项卡下将 `$(PROJECT_DIR)/Frameworks` 添加到 `Framework Search Paths`。若要查找设置，则需要将筛选器从 `basic` 更改为 `all`，你还可以使用右侧的搜索栏。
+5. 如果尚未添加，请将 `$(PROJECT_DIR)/Frameworks` 添加到项目目标生成设置选项卡下面的 `Framework Search Paths`。若要找到此设置，请将筛选器从 `basic` 更改为 `all`。 还可以使用右侧的搜索栏。
 
 :::image type="content" source="../media/ios/xcode-add-framework-search-path.png" alt-text="显示 Xcode 中的框架搜索路径的屏幕截图。":::
 
@@ -153,11 +155,11 @@ override func viewDidLoad() {
 
 ### <a name="set-up-the-app-framework"></a>设置应用框架
 
-打开项目的 ViewController.swift 文件，将 `import` 声明添加到文件顶部以导入 `AzureCommunication library` 和 `MeetingUIClient`。 
+打开项目的 ViewController.swift 文件，将 `import` 声明添加到文件顶部以导入 `AzureCommunicationCommon library` 和 `MeetingUIClient`。 
 
 ```swift
 import UIKit
-import AzureCommunication
+import AzureCommunicationCommon
 import MeetingUIClient
 ```
 
@@ -167,6 +169,7 @@ import MeetingUIClient
 class ViewController: UIViewController {
 
     private var meetingUIClient: MeetingUIClient?
+    private var meetingUIClientCall: MeetingUIClientCall?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -195,10 +198,19 @@ class ViewController: UIViewController {
 | MeetingUIClientGroupCallJoinOptions | MeetingUIClientMeetingJoinOptions 用于可配置的选项，例如显示名称。 |
 | MeetingUIClientTeamsMeetingLinkLocator | MeetingUIClientTeamsMeetingLinkLocator 用于设置用于加入会议的会议 URL。 |
 | MeetingUIClientGroupCallLocator | MeetingUIClientGroupCallLocator 用于设置要加入的组 ID。 |
+| MeetingUIClientInCallScreenDelegate | MeetingUIClientInCallScreenDelegate 用于在 UI 中的主调用屏幕上提供自定义项。 |
+| MeetingUIClientStagingScreenDelegate | MeetingUIClientStagingScreenDelegate 用于在 UI 中的暂存调用屏幕上提供自定义项。 |
+| MeetingUIClientConnectingScreenDelegate | MeetingUIClientConnectingScreenDelegate 用于在 UI 中提供连接调用屏幕的自定义项。 |
+| MeetingUIClientIconType | MeetingUIClientIconType 用于指定哪些图标可以替换为特定于应用的图标。 |
+| MeetingUIClientCall | MeetingUIClientCall 描述调用，并提供 API 来控制调用。 |
 | MeetingUIClientCallState | MeetingUIClientCallState 用于报告调用状态更改。 选项如下：`connecting`、`waitingInLobby`、`connected` 和 `ended`。 |
-| MeetingUIClientDelegate | MeetingUIClientDelegate 用于接收事件，例如调用状态的更改。 |
-| MeetingUIClientIdentityProviderDelegate | MeetingUIClientIdentityProviderDelegate 用于将用户详细信息映射到会议中的用户。 |
-| MeetingUIClientUserEventDelegate | MeetingUIClientUserEventDelegate 在 UI 中提供有关用户操作的信息。 |
+| MeetingUIClientUserRole | MeetingUIClientUserRole 用于在组调用中设置用户角色。 |
+| MeetingUIClientAudioRoute | MeetingUIClientAudioRoute 用于本地音频路由，如 `Earpiece` 或 `SpeakerOn`。 |
+| MeetingUIClientLayoutMode | MeetingUIClientLayoutMode 用于允许在调用 UI 模式下选择不同的布局模式。 |
+| MeetingUIClientAvatarSize | MeetingUIClientAvatarSize 用于通知代理请求的头像大小。 |
+| MeetingUIClientCallDelegate | MeetingUIClientDelegate 用于接收事件，例如调用状态的更改。 |
+| MeetingUIClientCallIdentityProviderDelegate | MeetingUIClientIdentityProviderDelegate 用于将用户详细信息映射到会议中的用户。 |
+| MeetingUIClientCallUserEventDelegate | MeetingUIClientUserEventDelegate 在 UI 中提供有关用户操作的信息。 |
 
 ## <a name="create-and-authenticate-the-client"></a>创建客户端并对其进行身份验证
 
@@ -242,15 +254,21 @@ private func fetchTokenAsync(completionHandler: @escaping TokenRefreshHandler) {
 private func joinMeeting() {
     let meetingJoinOptions = MeetingUIClientMeetingJoinOptions(displayName: "John Smith", enablePhotoSharing: true, enableNamePlateOptionsClickDelegate: true)
     let meetingLocator = MeetingUIClientTeamsMeetingLinkLocator(meetingLink: "<MEETING_URL>")
-    meetingUIClient?.join(meetingLocator: meetingLocator, joinCallOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
+    meetingUIClient?.join(meetingLocator: meetingLocator, joinCallOptions: meetingJoinOptions, completionHandler: { (meetingUIClientCall: MeetingUIClientCall?, error: Error?) in
         if (error != nil) {
             print("Join meeting failed: \(error!)")
+        }
+        else {
+            if (meetingUIClientCall != nil) {
+                self.meetingUIClientCall? = meetingUIClientCall
+            }
         }
     })
 }
 ```
+注意，将 `<MEETING URL>` 替换为 Microsoft Teams 会议链接。
 
-将 `<MEETING URL>` 替换为 Microsoft Teams 会议链接。
+完成事件处理器将返回错误，以防操作失败，如果操作成功，则会返回 `MeetingUIClientCall`。 使用 `MeetingUIClientCall` 控制调用。 
 
 ### <a name="get-a-microsoft-teams-meeting-link"></a>获取 Microsoft Teams 会议链接
 

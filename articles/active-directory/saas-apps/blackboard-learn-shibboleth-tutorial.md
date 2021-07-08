@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/19/2021
+ms.date: 06/04/2021
 ms.author: jeedes
-ms.openlocfilehash: b1b3f265d0e1fcad2953292c5227c2630c6df229
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 099ca4681dcbcc31962a56c08f5599a96c00bcb6
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649882"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112008050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>教程：Azure Active Directory 与 Blackboard Learn - Shibboleth 的集成
 
@@ -37,7 +37,7 @@ ms.locfileid: "101649882"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Blackboard Learn - Shibboleth 支持 **SP** 发起的 SSO
+* Blackboard Learn - Shibboleth 支持 SP 发起的 SSO。
 
 ## <a name="add-blackboard-learn---shibboleth-from-the-gallery"></a>从库添加 Blackboard Learn - Shibboleth
 
@@ -63,7 +63,7 @@ ms.locfileid: "101649882"
     1. **[创建 Blackboard Learn - Shibboleth 测试用户](#create-blackboard-learn---shibboleth-test-user)** - 在 Blackboard Learn - Shibboleth 中创建 B.Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
@@ -121,15 +121,15 @@ ms.locfileid: "101649882"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-blackboard-learn---shibboleth-sso"></a>配置 Blackboard Learn - Shibboleth SSO
+## <a name="configure-blackboard-learn---shibboleth-sso"></a>配置 Blackboard Learn - Shibboleth SSO
 
-若要在 **Blackboard Learn - Shibboleth** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Blackboard Learn - Shibboleth 支持团队](https://www.blackboard.com/forms/contact-us_form.aspx)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要配置 Blackboard Learn - Shibboleth 单一登录，请参阅本[文档](https://help.blackboard.com/Learn/Administrator/SaaS/Authentication/Implement_Authentication/SAML_Authentication_Provider_Type)。
 
 ### <a name="create-blackboard-learn---shibboleth-test-user"></a>创建 Blackboard Learn - Shibboleth 测试用户
 
 在本部分中，在 Blackboard Learn - Shibboleth 中创建名为 Britta Simon 的用户。 与 [Blackboard Learn - Shibboleth 支持团队](https://www.blackboard.com/forms/contact-us_form.aspx)协作，在 Blackboard Learn - Shibboleth 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 

@@ -1,6 +1,6 @@
 ---
-title: 教程：在 Azure 门户中连接、配置和激活 Azure Stack Edge Pro 设备 | Microsoft Docs
-description: 本教程介绍 Azure Stack Edge Pro 部署方法，指导你连接、设置和激活物理设备。
+title: 有关在 Azure 门户中连接、配置和激活 Azure Stack Edge Pro FPGA 设备的教程
+description: 本教程介绍 Azure Stack Edge Pro FPGA 部署方法，指导你连接、设置和激活物理设备。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
-ms.openlocfilehash: af0c305cc13b94666a87d937d1eac10586135a4d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: c8edd68dae991a06cc7280e95a5c193c34452329
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067684"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461354"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>教程：连接、设置并激活 Azure Stack Edge Pro 
+# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro-fpga"></a>教程：连接、设置并激活 Azure Stack Edge Pro FPGA 
 
-本教程介绍如何使用本地 Web UI 连接到 Azure Stack Edge Pro 设备并设置和激活它。
+本教程介绍如何使用本地 Web UI 连接到 Azure Stack Edge Pro FPGA 设备并设置和激活它。
 
 完成设置和激活过程可能需要大约 20 分钟。
 
@@ -30,14 +30,14 @@ ms.locfileid: "106067684"
 
 ## <a name="prerequisites"></a>先决条件
 
-配置和设置 Azure Stack Edge Pro 设备之前，请确保：
+配置和设置 Azure Stack Edge Pro FPGA 设备之前，请确保：
 
-* 已根据[安装 Azure Stack Edge Pro](azure-stack-edge-deploy-install.md) 中详述的内容安装了物理设备。
-* 已从所创建的用于管理 Azure Stack Edge Pro 设备的 Azure Stack Edge 服务获得激活密钥。 有关详细信息，请转到[准备部署 Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)。
+* 已按照[安装 Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-install.md) 中详述的内容安装物理设备。
+* 已从所创建的用于管理 Azure Stack Edge Pro FPGA 设备的 Azure Stack Edge 服务获得激活密钥。 有关详细信息，请转到[准备部署 Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-prep.md)。
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>连接到本地 Web UI 设置
 
-1. 在计算机上配置以太网适配器，以便通过静态 IP 地址 192.168.100.5 和子网 255.255.255.0 连接到 Azure Stack Edge Pro 设备。
+1. 在计算机上配置以太网适配器，以便通过静态 IP 地址 192.168.100.5 和子网 255.255.255.0 连接到 Azure Stack Edge Pro FPGA 设备。
 
 2. 将计算机连接到设备上的端口 1。 使用下图标识设备上的端口 1。
 
@@ -55,7 +55,7 @@ ms.locfileid: "106067684"
 
 5. 登录到设备的 Web UI。 默认密码为 *Password1*。 
    
-    ![Azure Stack Edge Pro 设备登录页面](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
+    ![Azure Stack Edge Pro FPGA 设备登录页](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. 出现提示时，请更改设备管理员密码。  
     新的密码必须包含 8 到 16 个字符。 它必须包含以下字符中的三项：大写字母、小写字母、数字和特殊字符。
@@ -95,7 +95,7 @@ ms.locfileid: "106067684"
    
    a. 在“Web 代理 URL”框中，按以下格式输入 URL：`http://host-IP address or FQDN:Port number`。 不支持 HTTPS URL。
 
-   b. 在“身份验证”下选择“无”或“NTLM”。   如果在 Azure Stack Edge Pro 设备上启用计算和使用 IoT Edge 模块，建议将 Web 代理身份验证设置为“无”。 不支持 NTLM。
+   b. 在“身份验证”下选择“无”或“NTLM”。   如果在 Azure Stack Edge Pro FPGA 设备上启用计算和使用 IoT Edge 模块，建议将 Web 代理身份验证设置为“无”。 不支持 NTLM。
 
    c. 如果使用身份验证，请输入用户名和密码。
 
@@ -104,7 +104,7 @@ ms.locfileid: "106067684"
    > [!NOTE]
    > 不支持代理自动配置 (PAC) 文件。 PAC 文件定义了 Web 浏览器和其他用户代理如何自动选择适当的代理服务器（访问方法）来获取给定 URL。
    > 尝试拦截和读取所有流量（然后用其自己的证书对所有内容进行重新签名）的代理不兼容，因为代理的证书不受信任。
-   > 通常，透明代理非常适用于 Azure Stack Edge Pro。
+   > 通常，透明代理非常适用于 Azure Stack Edge Pro FPGA。
 
 4. （可选）在左窗格中选择“时间设置”，然后为设备配置时区以及主 NTP 服务器和辅助 NTP 服务器。  
     NTP 服务器是必需的，因为设备必须同步时间，才能通过云服务提供程序进行身份验证。
@@ -132,7 +132,7 @@ ms.locfileid: "106067684"
 
 6. 在左窗格中选择“云设置”，然后通过 Azure 门户中的 Azure Stack Edge 服务激活设备。
     
-    1. 在“激活密钥”框中，为 Azure Stack Edge Pro 输入你在[获取激活密钥](azure-stack-edge-deploy-prep.md#get-the-activation-key)中获得的激活密钥。
+    1. 在“激活密钥”框中，为 Azure Stack Edge Pro FPGA 输入你在[获取激活密钥](azure-stack-edge-deploy-prep.md#get-the-activation-key)中获得的激活密钥。
     2. 选择“应用”。
        
         ![本地 Web UI“云设置”页](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
@@ -157,7 +157,7 @@ ms.locfileid: "106067684"
 > * 连接到物理设备
 > * 设置和激活物理设备
 
-若要了解如何使用 Azure Stack Edge Pro 设备传输数据，请参阅：
+若要了解如何使用 Azure Stack Edge Pro FPGA 设备传输数据，请参阅：
 
 > [!div class="nextstepaction"]
-> [使用 Azure Stack Edge Pro 传输数据](./azure-stack-edge-deploy-add-shares.md)。
+> [使用 Azure Stack Edge Pro FPGA 传输数据](./azure-stack-edge-deploy-add-shares.md)。

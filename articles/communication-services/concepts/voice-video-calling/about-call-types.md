@@ -6,17 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/25/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8a25f69019e194650bb6aa2f5b8ae19dd37fbc48
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 52404879e14f31ddd284aa2bfb8d1724d9338be5
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729161"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108290"
 ---
 # <a name="voice-and-video-concepts"></a>语音和视频概念
+
+[!INCLUDE [SDP Plan B Deprecation Notice](../../includes/plan-b-sdp-deprecation.md)]
 
 可以使用 Azure 通信服务进行和接收一对一或群组语音和视频通话。 你可以对其他连接到 Internet 的设备和旧式电话进行呼叫。 你可以使用通信服务 JavaScript、Android 或 iOS SDK 来构建允许用户在私人对话或小组讨论中彼此交谈的应用程序。 Azure 通信服务支持与服务或机器人之间的呼叫。
 

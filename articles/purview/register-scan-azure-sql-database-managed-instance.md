@@ -6,13 +6,13 @@ ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: aaca73d71731ee18eb8f12468ec26ece746f1b8f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.date: 05/08/2021
+ms.openlocfilehash: 3ead96a49e2bacca526cd9ee3b8c8e00abbba426
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288357"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656283"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>注册和扫描 Azure SQL 数据库托管实例
 
@@ -107,19 +107,19 @@ Purview 可以通过几个步骤使用服务主体扫描 Azure SQL 数据库托�
 
 ## <a name="register-an-azure-sql-database-managed-instance-data-source"></a>注册 Azure SQL 数据库托管实例数据源
 
-1. 导航到你的 Purview 帐户
+1. 导航到你的 Purview 帐户。
 
-1. 在左侧导航区域中选择“源”
+1. 在左侧导航区域中选择“源”。
 
-1. 选择“注册”
+1. 选择“注册”。
 
-1. 选择“Azure SQL 数据库托管实例”，然后选择“继续” 
+1. 选择“Azure SQL 数据库托管实例”，然后选择“继续” 。
 
     :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/set-up-the-sql-data-source.png" alt-text="设置 SQL 数据源":::
 
 1. 选择“从 Azure 订阅中”，然后从“Azure 订阅”下拉框中选择相应订阅，并从“服务器名称”下拉框中选择相应服务器  。
 
-1. 提供公共终结点完全限定的域名和端口号 。 然后选择“完成”以注册数据源。
+1. 提供公共终结点完全限定的域名和端口号 。 然后选择“注册”以注册数据源。
 
     :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/add-azure-sql-database-managed-instance.png" alt-text="添加 Azure SQL 数据库托管实例":::
 

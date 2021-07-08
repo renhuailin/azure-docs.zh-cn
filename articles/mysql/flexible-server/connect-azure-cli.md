@@ -7,19 +7,19 @@ ms.service: mysql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: 5abc71a4df8dd27e80a7590d53159be95d46e441
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 3d24c6443dfa4c2e4eab1f247e075b34e891c1b6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883843"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470245"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>快速入门：通过 Azure CLI 与 Azure Database for MySQL - 灵活服务器进行连接和查询
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
-本快速入门演示了如何通过 ```az mysql flexible-server connect``` 命令使用 Azure CLI 连接到 Azure Database for MySQL 灵活服务器。 通过此命令可测试与数据库服务器的连接，并直接对服务器运行查询。  还可以使用在交互模式下运行命令来运行多个查询。
+本快速入门演示了如何在 Azure CLI 中使用 ```az mysql flexible-server connect``` 连接到 Azure Database for MySQL 灵活服务器并使用 ```az mysql flexible-server execute``` 命令执行单个查询或 sql 文件。 通过此命令可测试与数据库服务器的连接并运行查询。 还可以使用交互模式运行多个查询。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -77,39 +77,6 @@ Successfully connected to mysqldemoserver1.
 - 如果已为客户端计算机配置防火墙规则
 - 如果已在虚拟网络中为服务器配置了专用访问权限，请确保客户端计算机位于同一虚拟网络中。
 
-## <a name="run-single-query"></a>运行单个查询
-运行以下命令，以使用 ```--querytext``` 参数 ```-q``` 执行单个查询。
-
-```azurecli
-az mysql flexible-server connect -n <server-name> -u <username> -p "<password>" -d <database-name> --querytext "<query text>"
-```
-
-**示例：**
-```azurecli
-az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase -q "select * from table1;" --output table
-```
-
-应会看到如下所示的输出：
-
-```output
-Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-Successfully connected to mysqldemoserver1.
-Ran Database Query: 'select * from table1;'
-Retrieving first 30 rows of query output, if applicable.
-Closed the connection to mysqldemoserver1
-Local context is turned on. Its information is saved in working directory C:\Users\sumuth. You can run `az local-context off` to turn it off.
-Your preference of  are now saved to local context. To learn more, type in `az local-context --help`
-Txt    Val
------  -----
-test   200
-test   200
-test   200
-test   200
-test   200
-test   200
-test   200
-```
-
 ## <a name="run-multiple-queries-using-interactive-mode"></a>使用交互模式运行多个查询
 可以使用“交互”模式运行多个查询。 若要启用交互模式，请运行以下命令
 
@@ -153,6 +120,59 @@ Local context is turned on. Its information is saved in working directory C:\myd
 Your preference of  are now saved to local context. To learn more, type in `az local-context --help`
 ```
 
+## <a name="run-single-query"></a>运行单个查询
+运行以下命令，以使用 ```--querytext``` 参数 ```-q``` 执行单个查询。
+
+```azurecli
+az mysql flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> --querytext "<query text>"
+```
+
+**示例：**
+```azurecli
+az mysql flexible-server execute -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase -q "select * from table1;" --output table
+```
+
+应会看到如下所示的输出：
+
+```output
+Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+Successfully connected to mysqldemoserver1.
+Ran Database Query: 'select * from table1;'
+Retrieving first 30 rows of query output, if applicable.
+Closed the connection to mysqldemoserver1
+Local context is turned on. Its information is saved in working directory C:\Users\sumuth. You can run `az local-context off` to turn it off.
+Your preference of  are now saved to local context. To learn more, type in `az local-context --help`
+Txt    Val
+-----  -----
+test   200
+test   200
+test   200
+test   200
+test   200
+test   200
+test   200
+```
+
+## <a name="run-sql-file"></a>运行 SQL 文件
+可以通过 ```--file-path``` 参数 ```-q``` 使用命令执行 SQL 文件。
+
+```azurecli
+az mysql flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> --file-path "<file-path>"
+```
+
+**示例：** 
+```azurecli
+az mysql flexible-server execute -n mysqldemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -f "./test.sql"
+```
+
+应会看到如下所示的输出：
+
+```output
+Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+Running sql file '.\test.sql'...
+Successfully executed the file.
+Closed the connection to mysqldemoserver.
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 10/26/2020
+ms.date: 05/17/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ef04c964f0037fcf36fe376084df75ffa0034957
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 013a59c703d5275278e905314357f32acc211f93
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027554"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067755"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>教程：查看单独的 Azure 订阅账单
 
@@ -37,7 +37,7 @@ ms.locfileid: "97027554"
 
 仅当超过每月信用额度时，才会创建 Azure 免费帐户的发票。
 
-在时间上必须超过 30 天，从订阅 Azure 那天算起。 在发票周期结束时，Azure 会向你开具账单。
+从订阅 Azure 那天算起，必须超过 30 天。 在发票周期结束时，Azure 会向你开具账单。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -122,13 +122,13 @@ ms.locfileid: "97027554"
 
 ![发票使用费](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external-marketplace-services-are-billed-separately"></a>外部市场服务单独计费
+## <a name="external-marketplace-services"></a>外部市场服务
 
 <a name="external"></a>
 
 外部服务或市场费用针对的是由第三方软件供应商创建的资源。 这些资源可以从 Azure 市场使用。 例如，Barracuda 防火墙是由第三方提供的 Azure 市场资源。 此防火墙的所有费用及其对应的计量指标都将显示为外部服务费用。
 
-外部服务单独计费。 Azure 发票上不会记录该费用。
+外部服务费用显示在单独的发票上。
 
 ### <a name="resources-are-billed-by-usage-meters"></a>资源按使用计量计费
 
@@ -140,8 +140,8 @@ Azure 不直接根据资源成本计费。 资源费用按一个或多个计量�
 
 - 计算小时数
 - IP 地址小时数
-- 入站数据传输
-- 出站数据传输
+- 数据传入
+- 数据发送
 - 标准托管磁盘
 - 标准托管磁盘操作数
 - 标准 IO 磁盘

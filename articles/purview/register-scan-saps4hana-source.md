@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Purview 中注册 SAP S/4HANA 源并设置扫描（预览版）
+title: 在 Azure Purview 中注册 SAP S/4HANA 源并设置扫描
 description: 本文概述了如何在 Azure Purview 中注册 SAP S/4HANA 源并设置扫描。
 author: chandrakavya
 ms.author: kchandra
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: e7030d1b692777b7497ffe464a70d3a80cab9647
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: a061f3afbfb3a114ec22bcfba123aa326b6ac3fd
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992352"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067089"
 ---
-# <a name="register-and-scan-a-sap-s4hana-source-preview"></a>注册并扫描 SAP S/4HANA 源（预览版）
+# <a name="register-and-scan-a-sap-s4hana-source"></a>注册并扫描 SAP S/4HANA 源
 
 本文概述了如何在 Purview 中注册 SAP S/4HANA 源并设置扫描。
 

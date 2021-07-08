@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3aa218710ddd4addfb8e430122ab19c95e42772a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 0c86c9f2ffece02ed026d1052929836e42c82434
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070883"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810095"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>近实时分析视频
 
@@ -247,5 +247,5 @@ VideoFrameAnalyzer 的图像、语音、视频和文本理解功能使用 Azure 
 
 本文介绍了如何使用人脸服务和计算机视觉服务对实时视频流运行近实时分析。 此外还介绍了如何通过示例代码开始使用这些功能。
 
-欢迎在 [GitHub 存储库](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供反馈和建议。 若要提供更广泛的 API 反馈，请访问 UserVoice 站点。
+欢迎在 [GitHub 存储库](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供反馈和建议。 若要提供更广泛的 API 反馈，请转到 [UserVoice](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743) 站点。
 

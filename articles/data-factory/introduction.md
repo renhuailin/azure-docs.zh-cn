@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 8fef4bbc0c0e77c1e152b8c2c44254e091b0e5a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5259294734b3b0c33835759beadb2ad4e1089a9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392538"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744712"
 ---
 # <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
 
@@ -36,6 +36,12 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 ## <a name="how-does-it-work"></a>工作原理
 
 数据工厂包含一系列为数据工程师提供完整端到端平台的互连系统。
+
+本图解指南在高层次概述了数据工厂体系结构：
+
+:::image type="content" source="media\introduction\data-factory-visual-guide-small.png" alt-text="完整系统体系结构的详细图解指南，用一张高分辨率图片来表示。" lightbox="media\introduction\data-factory-visual-guide.png":::
+
+若要查看更多详细信息，请单击前面的图像进行放大，或浏览到[高分辨率图像](/azure/data-factory/media/introduction/data-factory-visual-guide.png#lightbox)。 
 
 ### <a name="connect-and-collect"></a>连接和收集
 
@@ -97,7 +103,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 ### <a name="pipeline-runs"></a>管道运行
 管道运行是管道执行实例。 管道运行通常是通过将自变量传递给管道中定义的参数来实例化的。 自变量可手动传递，也可在触发器定义中传递。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 参数是只读配置的键值对。  参数是在管道中定义的。 所定义的参数的自变量是在执行期间通过由触发器创建的运行上下文传递的或通过手动执行的管道传递的。 管道中的活动使用参数值。
 
 数据集是强类型参数和可重用/可引用的实体。 活动可以引用数据集并且可以使用数据集定义中所定义的属性。

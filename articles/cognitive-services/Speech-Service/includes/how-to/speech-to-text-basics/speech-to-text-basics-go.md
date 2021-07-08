@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: bced384e8ba88fb83499e78c4e0d60e811ae32df
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 618074d696804171ee5e05655c1e15557789fac9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99215082"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110165172"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -99,7 +99,7 @@ func main() {
 }
 ```
 
-运行以下命令以创建 go.mod 文件并使其链接到 Github 上托管的组件。
+运行以下命令，来创建一个 go.mod 文件并使其关联到 GitHub 上托管的组件。
 
 ```cmd
 go mod init quickstart
@@ -179,7 +179,7 @@ func main() {
 }
 ```
 
-运行以下命令以创建 go.mod 文件并使其链接到 Github 上托管的组件。
+运行以下命令，来创建一个 go.mod 文件并使其关联到 GitHub 上托管的组件。
 
 ```cmd
 go mod init quickstart

@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL 中的 T-SQL 功能差异
+title: Synapse SQL 池中的 T-SQL 功能
 description: Synapse SQL 中提供的 Transact-SQL 功能列表。
 services: synapse analytics
 author: jovanpop-msft
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 407c677eb6ae851c2c7d05602ca0ce1458ca80e1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 100da2e8b259c31daa6b0e72c8d2c4c2b0cb1d51
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144558"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569703"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL 中支持的 Transact-SQL 功能
 
@@ -73,7 +73,7 @@ Synapse SQL 中使用的查询语言可能有不同的受支持功能，具体�
 
 ## <a name="security"></a>安全性
 
-Synapse SQL 可让你使用内置安全功能来保护数据和控制访问。 下表概要比较了 Synapse SQL 使用模型之间的差异。
+Synapse SQL 池可让你使用内置安全功能来保护数据和控制访问。 下表概要比较了 Synapse SQL 使用模型之间的差异。
 
 |   | 专用 | 无服务器 |
 | --- | --- | --- |
@@ -87,15 +87,16 @@ Synapse SQL 可让你使用内置安全功能来保护数据和控制访问。 �
 | **存储访问密钥身份验证** | 是，在 [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true) 中使用 [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 否 |
 | **存储 [托管标识](../security/synapse-workspace-managed-identity.md)身份验证** | 是，使用[托管服务标识凭据](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&preserve-view=true&toc=%2fazure%2fsynapse-analytics%2ftoc.json&view=azure-sqldw-latest&preserve-view=true) | 是，使用 `Managed Identity` 凭据。 |
 | **存储应用程序标识身份验证** | [是](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 否 |
-| **权限 - 对象级别** | 是，包括能够授予、拒绝和撤销用户的权限 | 是，包括能够授予、拒绝和撤销用户/登录名对受支持系统对象的权限 |
-| **权限 - 架构级别** | 是，包括能够授予、拒绝和撤销用户/登录名对架构的权限 | 是，包括能够授予、拒绝和撤销用户/登录名对架构的权限 |
-| **权限 - [数据库级别](/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)** | 是 | 是 |
-| **权限 - [服务器级别](/sql/relational-databases/security/authentication-access/server-level-roles)** | 否 | 是，支持 sysadmin 和其他服务器角色 |
-| **权限 - [列级安全性](../sql-data-warehouse/column-level-security.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)** | 是 | 是 |
-| **角色/组** | 是（数据库范围） | 是（服务器和数据库范围） |
-| **安全性函数和标识函数** | 部分 Transact-SQL 安全性函数和运算符：`CURRENT_USER`、`HAS_DBACCESS`、`IS_MEMBER`、`IS_ROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`OPEN/CLOSE MASTER KEY` | 部分 Transact-SQL 安全性函数和运算符：`CURRENT_USER`、`HAS_DBACCESS`、`HAS_PERMS_BY_NAME`、`IS_MEMBER', 'IS_ROLEMEMBER`、`IS_SRVROLEMEMBER`、`SESSION_USER`、`SESSION_CONTEXT`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME``EXECUTE AS` 和 `REVERT`。 安全性函数不可用于查询外部数据（将结果存储在可在查询中使用的变量中）。  |
-| **DATABASE SCOPED CREDENTIAL** | 是 | 是 |
+| **服务器级别角色** | 否 | 是，支持 sysadmin 角色、public 角色和其他服务器角色 |
 | **SERVER SCOPED CREDENTIAL** | 否 | 是 |
+| **权限 - [服务器级别](/sql/relational-databases/security/authentication-access/server-level-roles)** | 否 | 是 |
+| 数据库范围的角色 | 是 | 是 |
+| **DATABASE SCOPED CREDENTIAL** | 是 | 是 |
+| **权限 - [数据库级别](/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)** | 是 | 是 |
+| **权限 - 架构级别** | 是，包括能够授予、拒绝和撤销用户/登录名对架构的权限 | 是，包括能够授予、拒绝和撤销用户/登录名对架构的权限 |
+| **权限 - 对象级别** | 是，包括能够授予、拒绝和撤销用户的权限 | 是，包括能够授予、拒绝和撤销用户/登录名对受支持系统对象的权限 |
+| **权限 - [列级安全性](../sql-data-warehouse/column-level-security.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)** | 是 | 是 |
+| **安全性函数和标识函数** | 部分 Transact-SQL 安全性函数和运算符：`CURRENT_USER`、`HAS_DBACCESS`、`IS_MEMBER`、`IS_ROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`OPEN/CLOSE MASTER KEY` | 部分 Transact-SQL 安全性函数和运算符：`CURRENT_USER`、`HAS_DBACCESS`、`HAS_PERMS_BY_NAME`、`IS_MEMBER', 'IS_ROLEMEMBER`、`IS_SRVROLEMEMBER`、`SESSION_USER`、`SESSION_CONTEXT`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME``EXECUTE AS` 和 `REVERT`。 安全性函数不可用于查询外部数据（将结果存储在可在查询中使用的变量中）。  |
 | **行级安全** | [是](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 否 |
 | **透明数据加密 (TDE)** | [是](../../azure-sql/database/transparent-data-encryption-tde-overview.md) | 否 | 
 | **数据发现和分类** | [是](../../azure-sql/database/data-discovery-and-classification-overview.md) | 否 |
@@ -135,7 +136,7 @@ Synapse SQL 可让你使用内置安全功能来保护数据和控制访问。 �
 | **Azure Blob 存储** | 是 | 是 |
 | **Azure SQL（远程）** | 否 | 否 |
 | **Azure CosmosDB 事务存储** | 否 | 否 |
-| **Azure CosmosDB 分析存储** | 否 | 是，使用 [Synapse 链接（预览版）](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)（[公开预览版](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json#limitations)） |
+| **Azure CosmosDB 分析存储** | 否 | 是，使用 [Synapse Link](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) |
 | **Apache Spark 表（在工作区中）** | 否 | PARQUET 表仅使用[元数据同步](develop-storage-files-spark-tables.md) |
 | **Apache Spark 表（远程）** | 否 | 否 |
 | **Databricks 表（远程）** | 否 | 否 |
@@ -153,7 +154,7 @@ Synapse SQL 可让你使用内置安全功能来保护数据和控制访问。 �
 | **Hive RC** | [是](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 否 |
 | **JSON** | 是 | [是](query-json-files.md) |
 | **Avro** | 否 | 否 |
-| **[Delta-lake](https://delta.io/)** | 否 | 否 |
+| **[Delta-lake](https://delta.io/)** | 否 | [是](query-delta-lake-format.md) |
 | **[CDM](/common-data-model/)** | 否 | 否 |
 
 ## <a name="next-steps"></a>后续步骤

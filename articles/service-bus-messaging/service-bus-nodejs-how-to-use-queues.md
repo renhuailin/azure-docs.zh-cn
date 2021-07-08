@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: d2c861757b72f630f88d62ba50723ed1b6fc25ed
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fb84dd12dd8e7a5b60d77e7a4895ae5b5d67cde6
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462345"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652265"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>向 Azure 服务总线队列发送消息并从中接收消息 (JavaScript)
 本教程介绍如何使用 JavaScript 程序中的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包向服务总线队列发送消息并从中接收消息。
@@ -37,7 +37,7 @@ npm install @azure/service-bus
 以下示例代码演示如何向队列发送消息。
 
 1. 打开偏好的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)。
-2. 创建一个名为 `send.js` 的文件，并将下面的代码粘贴到其中。 此代码将向队列发送一条消息。 消息具有标签（科学家）和正文（爱因斯坦）。
+2. 创建一个名为 `send.js` 的文件，并将下面的代码粘贴到其中。 此代码将科学家的名称作为消息发送到队列。
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus");
@@ -208,6 +208,6 @@ npm install @azure/service-bus
 请参阅以下文档和示例： 
 
 - [适用于 JavaScript 的 Azure 服务总线客户端库](https://www.npmjs.com/package/@azure/service-bus)
-- [JavaScript 示例](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
-- [TypeScript 示例](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/v7/javascript)
+- [TypeScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/v7/typescript)
 - [API 参考文档](/javascript/api/overview/azure/service-bus)

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 04/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 8ec834d76692f78d1d7bc60ddbd4c73fe4adaede
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29ffe0f0509629daa0fc0c9b72e4a55d16b88856
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646096"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Bamboo by resolution GmbH 集成
 
@@ -30,15 +30,15 @@ ms.locfileid: "101646096"
 
 若要配置 Azure AD 与 SAML SSO for Bamboo by resolution GmbH 的集成，需要以下各项：
 
-* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)
-* 已启用了 SAML SSO for Bamboo by resolution GmbH 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 SAML SSO for Bamboo by resolution GmbH 单一登录的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* SAML SSO for Bamboo by resolution GmbH 支持 **SP 和 IDP** 发起的 SSO
-* SAML SSO for Bamboo by resolution GmbH 支持 **实时** 用户预配
+* SAML SSO for Bamboo by resolution GmbH 支持 SP 和 IDP 发起的 SSO。
+* SAML SSO for Bamboo by resolution GmbH 支持实时用户预配。
 
 ## <a name="add-saml-sso-for-bamboo-by-resolution-gmbh-from-the-gallery"></a>从库添加 SAML SSO for Bamboo by resolution GmbH
 
@@ -125,19 +125,19 @@ ms.locfileid: "101646096"
 
 1. 在主工具栏的右侧，单击“设置” > “加载项”。
 
-    ![设置](./media/bamboo-tutorial/tutorial_bamboo_setings.png)
+    ![设置](./media/bamboo-tutorial/settings.png)
 
 1. 转到“安全性”部分，在菜单栏上单击“SAML 单一登录”  。
 
-    ![Samlsingle](./media/bamboo-tutorial/tutorial_bamboo_samlsingle.png)
+    ![Samlsingle](./media/bamboo-tutorial/single-sign-on.png)
 
 1. 在“SAML 单一登录插件配置”页上，单击“添加 idp”   。
 
-    ![添加 idp](./media/bamboo-tutorial/tutorial_bamboo_addidp.png)
+    ![添加 idp](./media/bamboo-tutorial/configuration.png)
 
 1. 在“选择 SAML 标识提供者”页上，执行以下步骤  ：
 
-    ![标识提供者](./media/bamboo-tutorial/tutorial_bamboo_identityprovider.png)
+    ![标识提供者](./media/bamboo-tutorial/identity-provider.png)
 
     a. 选择“Idp 类型”作为“AZURE AD”   。
 
@@ -149,11 +149,11 @@ ms.locfileid: "101646096"
 
 1. 在“标识提供者配置”页上，单击“下一步”   。
 
-    ![标识配置](./media/bamboo-tutorial/tutorial_bamboo_identityconfig.png)
+    ![标识配置](./media/bamboo-tutorial/identity-configuration.png)
 
 1. 在“导入 SAML Idp 元数据”页上，单击“加载文件”以上传从 Azure 门户下载的“元数据 XML”文件    。
 
-    ![Idpmetadata](./media/bamboo-tutorial/tutorial_bamboo_idpmetadata.png)
+    ![Idpmetadata](./media/bamboo-tutorial/metadata.png)
 
 1. 单击“下一步”。 
 

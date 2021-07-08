@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 05/07/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 542eed34f2be05cce3829baab2f07a5c58413ba0
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: b590468b0e1f036a8b60143ff23e4a54b01802a8
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526290"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714487"
 ---
 ::: zone target="docs"
 
@@ -213,7 +213,7 @@ ms.locfileid: "99526290"
 
 | 联系信息 | 详细信息 |
 |---|---|
-|姓名：       | Bao Ying|
+|姓名：       | `Bao Ying`|
 |职务 | 高级 OneCall 代表 |
 |电话：      | 400.889.6066 分机3693 |
 |电子邮件：     | [ying.bao@fedex.com](mailto:ying.bao@fedex.com) |
@@ -222,26 +222,32 @@ ms.locfileid: "99526290"
 
 | 联系信息 | 详细信息 |
 |---|---|
-|姓名：       | He Xun|
+|姓名：       | `He Xun`|
 |职务 | OneCall 代表 |
 |电话：      | 400.889.6066 分机3603 |
 |电子邮件：     | [739951@fedex.com](mailto:739951@fedex.com) |
 
 ### <a name="self-managed"></a>[自托管](#tab/in-selfmanaged)
 
-如果在美国政府、日本、新加坡、韩国、英国、西欧、澳大利亚、南非或印度使用 Data Box Disk，并在创建订单时选择了自我管理式寄送选项，请按以下说明操作。
+如果在美国政府、日本、新加坡、韩国、英国、西欧、澳大利亚、南非、印度或巴西使用 Data Box Disk，并在创建订单时选择了自我管理式寄送选项，请按以下说明操作。
 
 1. 在 Azure 门户中转到订单的“概览”边栏选项卡。 如果选择“安排提货”，请查看显示的说明。 应会看到在进行订单送货时使用的授权代码。
 
 2. 准备好返回设备时，请使用以下模板将电子邮件发送到 Azure Data Box 运营团队。
 
-    ```
-    To: adbops@microsoft.com
-    Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
-    Body:
-     a. Order name
-     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop-off.
-    ```
+   ```
+   To: adbops@microsoft.com
+   Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
+   Body:
+   1. Order name
+   2. Contact name of the person dropping off. You will need to display a government-approved ID during the drop-off.
+   ```
+
+   > [!NOTE]
+   > - 返回时所需信息可能因区域而异。 
+   > - 如果是在巴西返回 Data Box Disk，请参阅[为 Azure Data Box Disk 使用自我管理式寄送](data-box-disk-portal-customer-managed-shipping.md)来获取详细说明。
+  
+
 3. Azure Data Box 运营团队会与你协作安排送货到 Azure 数据中心。
 
 ---

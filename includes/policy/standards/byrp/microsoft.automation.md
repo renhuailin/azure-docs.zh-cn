@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 06/11/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f1fa4ccdc346bd601ea34e52f00fae8ba50673c9
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: a5c6d36b70c3950279ea7c0adb1fa7396046948b
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178478"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029346"
 ---
 ## <a name="azure-security-benchmark"></a>Azure 安全基准
 
@@ -50,4 +50,13 @@ ms.locfileid: "108178478"
 |域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
 |加密 |10.1.1 |有关使用加密控制措施的策略 |[自动化帐户变量应加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
+
+## <a name="uk-official-and-uk-nhs"></a>英国官方和英国 NHS
+
+若要查看可供各项 Azure 服务使用的 Azure Policy 内置项如何映射到此合规性标准，请参阅 [Azure Policy 合规性 - UK OFFICIAL 和 UK NHS](../../../../articles/governance/policy/samples/ukofficial-uknhs.md)。
+有关此合规性标准的详细信息，请参阅 [UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications)。
+
+|域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|资产保护和复原能力 |2.3 |静态数据保护 |[自动化帐户变量应加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
 

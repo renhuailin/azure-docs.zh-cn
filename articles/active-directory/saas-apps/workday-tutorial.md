@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: af001ddd8dc468d06706e63eaf092d1179fe3fdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db6df5f89a380f6a570b4aa2bbb0e317c38b57ac
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181364"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767778"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workday 集成
 
@@ -74,7 +74,7 @@ ms.locfileid: "96181364"
 
 1. 在 Azure 门户的 Workday 应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -97,9 +97,9 @@ ms.locfileid: "96181364"
     > [!NOTE]
     > 此处我们已将名称 ID 与 UPN (user.userprincipalname) 映射为默认值。 需要在 Workday 帐户（电子邮件、UPN 等）中将名称 ID 与实际用户 ID 进行映射，以便成功运行 SSO。
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
-   ![证书下载链接](common/certificatebase64.png)
+   ![证书下载链接](common/metadataxml.png)
 
 1. 若要根据要求修改“签名”选项，请单击“编辑”按钮，打开“SAML 签名证书”对话框  。
 
@@ -115,7 +115,7 @@ ms.locfileid: "96181364"
 
    ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -127,7 +127,7 @@ ms.locfileid: "96181364"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Workday 的权限，允许其使用 Azure 单一登录。
 
@@ -139,59 +139,48 @@ ms.locfileid: "96181364"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-workday"></a>配置 Workday
+## <a name=&quot;configure-workday&quot;></a>配置 Workday
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录 Workday 公司站点。
 
-1. 在主页左上方的“搜索框”中使用名称“编辑租户设置 - 安全性”搜索。
+1. 在主页左上方的“搜索框”中使用名称“编辑租户设置 - 安全性”进行搜索 。
 
-    ![编辑租户安全](./media/workday-tutorial/IC782925.png "编辑租户安全")
-
-
-1. 在“SAML 设置”部分中，执行以下步骤：
-
-    ![SAML 设置](./media/workday-tutorial/IC782926.png "SAML 设置")
-
-    a.  选择 **“启用 SAML 身份验证”**。
-
-    b.  单击“添加行”  。
-
-1. 在“SAML 标识提供者”部分中，请对新创建的行执行以下操作。
-
-    a. 对下面显示的字段执行以下操作。
-
-    ![SAML 标识提供者 1](./media/workday-tutorial/IC7829271.png "SAML 标识提供者")
-
-    * 在“标识提供者名称”文本框中，键入提供者名称（例如：SPInitiatedSSO）。
-
-    * 在 Azure 门户的“设置 Workday”部分复制“Azure AD 标识符”值，然后将其粘贴到“颁发者”文本框中。
-
-    * 打开从 Azure 门户下载到记事本中的“证书”，将内容粘贴到“x.509 证书”文本框中 。
-
-    b. 对下面显示的字段执行以下操作。
-
-    ![SAML 标识提供者 2](./media/workday-tutorial/saml-identity-provider-2.png "SAML 标识提供者")
-
-    * 单击“启用 IDP 发起的注销”复选框。
-
-    * 在“注销响应 URL”文本框中，键入 http://www.workday.com 。
-
-    * 在“注销请求 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值 。
-
-    * 单击“SP 发起”复选框。
-
-    * 在“服务提供商 ID”文本框中，键入 **http://www.workday.com**。
+    ![编辑租户安全](./media/workday-tutorial/search-box.png &quot;编辑租户安全")
 
 
-    * 选择 **“不削弱 SP 发起的身份验证请求”**。
+1. 在“SAML 设置”部分，单击“导入标识提供者” 。
 
-    c. 对下面显示的字段执行以下操作。
+    ![SAML 设置](./media/workday-tutorial/saml-setup.png "SAML 设置")
 
-    ![SAML 标识提供者 3](./media/workday-tutorial/saml-identity-provider-3.png "SAML 标识提供者")
+1. 在“导入标识提供者”部分，执行以下步骤：
 
-    * 在 Azure 门户的“设置 Workday”部分复制“登录 URL”值，然后将其粘贴到“IdP SSO 服务 URL”文本框中。
+    ![导入标识提供者](./media/workday-tutorial/import-identity-provider.png)
 
-    * 在“用于环境”文本框中，从下拉列表中选择适当的环境名称。
+    a. 在文本框中提供“标识提供者名称”，例如 `AzureAD`。
+
+    b. 在“用于环境”文本框中，从下拉列表中选择适当的环境名称。
+
+    c. 单击“选择文件”以上传下载的“联合元数据 XML”文件 。
+
+    d. 单击“确定”，然后单击“完成” 。
+
+1. 单击“完成”后，将在“SAML 身份提供者”中添加一个新行，然后可以为新创建的行添加以下步骤 。
+
+    ![SAML 标识提供者。](./media/workday-tutorial/saml-identity-providers.png "SAML 标识提供者")
+
+    a. 单击“启用 IDP 发起的注销”复选框。
+
+    b. 在“注销响应 URL”文本框中，键入 http://www.workday.com 。
+
+    c. 单击“启用 Workday 发起的注销”复选框。
+
+    d. 在“注销请求 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值 。
+
+    e. 单击“SP 发起”复选框。
+
+    f. 在“服务提供商 ID”文本框中，键入 **http://www.workday.com**。
+
+    g 选择“不削弱 SP 发起的身份验证请求”。
 
 1. 在下图中执行以下步骤。
 
@@ -233,11 +222,11 @@ ms.locfileid: "96181364"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Workday 登录 URL，可在其中启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Workday 登录 URL，可在其中启动登录流。 
 
-2. 直接转到 Workday 登录 URL，并从那里启动登录流。
+* 直接转到 Workday 登录 URL，并从那里启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击“Workday”磁贴时，应会自动登录到设置了 SSO 的 Workday。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Workday”磁贴时，你应会自动登录到为其设置了 SSO 的 Workday。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/02/2021
-ms.openlocfilehash: f8ac611d25507913d6d5f2e2dd289ea52ce4ae9f
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: ec1f8890d9626ca1ed96f538bd464da7c30caf17
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387101"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983781"
 ---
 # <a name="quickstart-create-a-purview-account-using-python"></a>快速入门：使用 Python 创建 Purview 帐户
 
@@ -69,7 +69,7 @@ ms.locfileid: "106387101"
 
 2. 将以下代码添加到“Main”方法，此方法可创建 PurviewManagementClient 类的实例。 你可以使用此对象创建 purview 帐户、删除 purview 帐户、检查名称可用性和其他资源提供程序操作。
  
- ```python
+    ```python
     def main():
     
     # Azure subscription ID
@@ -92,9 +92,9 @@ ms.locfileid: "106387101"
 
 ## <a name="create-a-purview-account"></a>创建 Purview 帐户
 
-将以下代码添加到“Main”方法，此方法可创建 purview 帐户。 如果资源组已存在，请注释掉第一个 `create_or_update` 语句。
+1. 将以下代码添加到“Main”方法，此方法可创建 purview 帐户。 如果资源组已存在，请注释掉第一个 `create_or_update` 语句。
 
-```python
+   ```python
     # create the resource group
     # comment out if the resource group already exits
     resource_client.resource_groups.create_or_update(rg_name, rg_params)
@@ -118,15 +118,14 @@ ms.locfileid: "106387101"
             print("Error in creating Purview account")
             break
         time.sleep(30)      
-        
-```
+      ```
 
-现在添加以下语句，以便在运行程序时调用 **main** 方法：
+2. 现在添加以下语句，以便在运行程序时调用 **main** 方法：
 
-```python
-# Start the main method
-main()
-```
+   ```python
+   # Start the main method
+   main()
+   ```
 
 ## <a name="full-script"></a>完整脚本
 

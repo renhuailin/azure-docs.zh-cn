@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78fd91e2ba7badb1936b8603c8ed089130b29ffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d64fd91d3f033c0a04c4936f11d096aa640942a1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644059"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743878"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Azure Active Directory 中的外部标识是什么？
 
@@ -39,7 +39,7 @@ Azure AD 外部标识在用户与组织的关系上关注较少，而更多地�
 | ---- | --- | --- |
 | 主要场景 | 使用 Microsoft 应用程序（Microsoft 365、Teams 等）或你自己的应用程序（SaaS 应用、自定义开发的应用等）进行协作。  | 新式 SaaS 或自定义开发的应用程序（非第一方 Microsoft 应用）的标识和访问管理。   |
 | **适用对象**    | 与外部组织（如供应商和合作伙伴）的业务合作伙伴协作。 用户在目录中显示为来宾用户。 这些用户可能管理过 IT，也可能没有管理过 IT。  | 产品的客户。 这些用户在单独的 Azure AD 目录中进行管理。  |
-| 支持的标识提供程序 | 外部用户可以使用工作帐户、学校帐户、任何电子邮件地址、SAML 和基于 WS 联合身份验证的标识提供程序、Gmail 和 Facebook 进行协作。  | 具有本地应用程序帐户（任何电子邮件地址或用户名）的消费者用户、受支持的各种社会标识，以及通过直接联合身份验证具有公司和政府颁发的标识的用户。       |
+| 支持的标识提供程序 | 外部用户可以使用工作帐户、学校帐户、任何电子邮件地址、SAML 和基于 WS 联合身份验证的标识提供程序、Gmail 和 Facebook 进行协作。  | 具有本地应用程序帐户（任何电子邮件地址或用户名）的消费者用户、受支持的各种社会标识，以及通过基于 SAML/WS 联合身份验证的标识提供者身份验证具有公司和政府颁发的标识的用户。       |
 | 外部用户管理   | 外部用户在员工所在的目录中进行管理，但通常批注为来宾用户。 可采用与员工相同的方式管理来宾用户，还可将其添加到相同组等。    | 外部用户在 Azure AD B2C 目录中管理。 他们与组织的员工和合作伙伴目录（若有）分开管理。  |
 | **单一登录 (SSO)**      | 支持 SSO 到所有 Azure AD 连接的应用。 例如，可允许访问 Microsoft 365 或本地应用以及其他 SaaS 应用（例如 Salesforce 或 Workday）。    | 支持在 Azure AD B2C 租户中单一登录到客户自有应用。 不支持单一登录到 Microsoft 365 或其他 Microsoft SaaS 应用。    |
 | 安全策略和合规性        | 由主办/邀请组织管理（例如，通过[条件访问策略](conditional-access.md)）。 | 由组织通过条件访问和标识保护进行管理。        |

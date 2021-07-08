@@ -1,24 +1,23 @@
 ---
-title: 图像分类教程：训练模型
+title: 教程：训练示例 Jupyter Notebook
 titleSuffix: Azure Machine Learning
-description: 通过 Azure 机器学习在 Python Jupyter Notebook 中使用 scikit-learn 训练图像分类模型。 本教程是第一部分（共两部分）。
+description: 通过 Azure 机器学习在基于云的 Python Jupyter Notebook 中使用 scikit-learn 训练图像分类模型。 本教程是第一部分（共两部分）。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 09/28/2020
-ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 6c5691759983d8ec40598834e5dbcd507ccf00cf
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 04/26/2021
+ms.custom: seodec18, devx-track-python, contperf-fy21q4
+ms.openlocfilehash: 544b3ac4702f8ecaa66735f8e0b836cc6f004f42
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816865"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028246"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教程：使用 MNIST 数据和 scikit-learn 训练图像分类模型 
-
+# <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>教程：使用示例 Jupyter Notebook 训练图像分类模型 
 
 在本教程中，你将在远程计算资源上训练一个机器学习模型。 你将在 Python Jupyter Notebook 中使用 Azure 机器学习的训练和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
 
@@ -41,15 +40,56 @@ ms.locfileid: "107816865"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 在开始本教程之前完成[教程：开始创建第一个 Azure ML 试验](tutorial-1st-experiment-sdk-setup.md)，以执行以下操作：
-    * 创建工作区
-    * 将教程笔记本克隆到工作区中的文件夹。
-    * 创建基于云的计算实例。
+* 完成[快速入门：Azure 机器学习入门](quickstart-create-resources.md)以执行以下操作：
+    * 创建工作区。
+    * 创建用于开发环境的基于云的计算实例。
+    * 创建用于训练模型的基于云的计算群集。
 
-* 在克隆的 tutorials/image-classification-mnist-data 文件夹中，打开 img-classification-part1-training.ipynb 笔记本。 
+## <a name="run-a-notebook-from-your-workspace"></a><a name="azure"></a>在工作区中运行笔记本
+
+Azure 机器学习在你的工作区中提供了一个云笔记本服务器，实现了免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](how-to-configure-environment.md#local)。
+
+ 按照此视频的说明或使用详细步骤从工作区克隆和运行教程笔记本。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
+
+### <a name="clone-a-notebook-folder"></a><a name="clone"></a>克隆笔记本文件夹
+
+在 Azure 机器学习工作室中完成以下试验设置并运行步骤。 此合并接口包括机器学习工具，所有技能级别的数据科学专业人员均可利用这些工具实现数据科学方案。
+
+1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
+
+1. 选择创建的订阅和工作区。
+
+1. 在左侧选择“笔记本”。
+
+1. 在顶部选择“示例”选项卡。
+
+1. 打开“Python”文件夹。
+
+1. 打开包含版本号的文件夹。 此数字表示 Python SDK 的当前版本。
+
+1. 选择“教程”文件夹右侧的“…”按钮，然后选择“克隆”  。
+
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="显示“克隆”教程文件夹的屏幕截图。":::
+
+1. 文件夹列表显示访问该工作区的每个用户。 选择要将“tutorials”文件夹克隆到其中的文件夹。
+
+### <a name="open-the-cloned-notebook"></a><a name="open"></a>打开克隆的笔记本
+
+1. 打开已克隆到“用户文件”部分的“tutorials”文件夹 。
+
+    > [!IMPORTANT]
+    > 可以查看“示例”文件夹中的笔记本，但无法从此文件夹运行笔记本。 若要运行笔记本，请确保在“用户文件”部分打开笔记本的克隆版本。
+    
+1. 选择 tutorials/image-classification-mnist-data 文件夹中的 img-classification-part1-training.ipynb 文件。 
+
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="显示“打开”教程文件夹的屏幕截图。":::
+
+1. 在顶部栏上，选择用于运行笔记本的计算实例。
 
 
-如果希望在自己的 [本地环境](how-to-configure-environment.md#local)中使用此教程及其附带的 **utils.py** 文件，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。 运行 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` 以便安装本教程的依赖项。
+如果希望在自己的 [本地环境](how-to-configure-environment.md#local)中使用此教程及其附带的 **utils.py** 文件，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。 如果不使用计算实例，请运行 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` 安装本教程的依赖项。 
 
 > [!Important]
 > 本文的其余部分包含的内容与在笔记本中看到的内容相同。  
@@ -84,7 +124,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>连接到工作区
 
-从现有工作区创建工作区对象。 `Workspace.from_config()` 读取文件 config.json 并将详细信息加载到一个名为 `ws` 的对象：
+从现有工作区创建工作区对象。 `Workspace.from_config()` 读取文件 config.json 并将详细信息加载到一个名为 `ws` 的对象。  计算实例将此文件的副本保存在其根目录中。  如果在其他位置运行代码，则需要[创建文件](how-to-configure-environment.md#workspace)。
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -110,9 +150,12 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 Azure 机器学习计算是一项托管服务，可让数据科学家在 Azure 虚拟机群集上训练机器学习模型。 示例包括带 GPU 支持的 VM。 在本教程中，你将创建 Azure 机器学习计算作为训练环境。 在本教程的后面部分，你将提交要在此 VM 上运行的 Python 代码。 
 
-如果工作区中尚无计算群集，以下代码将创建计算群集。 它会设置一个群集，该群集在不使用时将缩减至 0，并且最多可以扩展至 4 个节点。 
+如果工作区中尚无计算群集，以下代码将创建计算群集。 它会设置一个群集，该群集在不使用时将缩减至 0，并且最多可以扩展至 4 个节点。
 
- **创建计算目标需要大约 5 分钟。** 如果计算资源已经在工作区中，则代码将使用它并跳过创建过程。
+ **创建计算目标需要大约 5 分钟。** 如果计算资源已经在工作区中，则代码将使用它并跳过创建过程。  
+
+> [!TIP]
+> 如果在快速入门中创建了计算群集，请确保以下代码中的 `compute_name` 使用相同的名称。
 
 ```python
 from azureml.core.compute import AmlCompute

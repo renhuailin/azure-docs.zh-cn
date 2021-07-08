@@ -1,6 +1,6 @@
 ---
-title: 排查在 Azure 门户或 Azure 帐户中心注册新帐户时遇到的问题
-description: 解决尝试在 Microsoft Azure 门户帐户中心注册新帐户时遇到的问题。
+title: 排查在 Azure 门户注册新帐户时遇到的问题
+description: 解决尝试在 Microsoft Azure 门户注册新帐户时遇到的问题。
 services: cost-management-billing
 author: v-miegge
 manager: dcscontentpm
@@ -8,18 +8,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 01/28/2021
+ms.date: 05/13/2021
 ms.author: v-miegge
-ms.openlocfilehash: 015e6058236190a04df152573621f0e57030d23b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 6e9c3d09c5dbf9ddae779f585425f8317b41ab46
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054155"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467508"
 ---
-# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>排查在 Azure 门户或 Azure 帐户中心注册新帐户时遇到的问题
+# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal"></a>排查在 Azure 门户注册新帐户时遇到的问题
 
-尝试在 Microsoft Azure 门户或 Azure 帐户中心注册新帐户时，可能会遇到问题。 本简短指南将指导你完成注册过程，并在每个步骤讨论一些常见问题。
+尝试在 Microsoft Azure 门户中注册新帐户时，可能会遇到问题。 本简短指南将指导你完成注册过程，并在每个步骤讨论一些常见问题。
 
 > [!NOTE]
 > 如果你已有一个现有帐户，并且正在寻求排查登录问题的指导，请参阅[排查 Azure 订阅登录问题](./troubleshoot-sign-in-issue.md)。
@@ -28,7 +28,7 @@ ms.locfileid: "99054155"
 
 在开始注册之前，请验证以下内容：
 
-- Azure 帐户个人资料的信息（包括联系人电子邮件地址、街道地址和电话号码）正确无误。
+- Azure 个人资料的信息（包括联系人电子邮件地址、街道地址和电话号码）正确无误。
 - 信用卡信息正确无误。
 - 你还没有具有相同信息的 Microsoft 帐户。
 
@@ -45,7 +45,14 @@ Azure 注册体验包含四个部分：
 
 ## <a name="about-you"></a>关于你
 
-![关于你](./media/troubleshoot-azure-sign-up/1.png)
+初次注册 Azure 时，需要提供自己的一些信息，包括：
+
+- 国家/地区
+- 名字
+- 姓氏
+- 电子邮件地址
+- 电话号码
+- 信用卡信息
  
 ### <a name="common-issues-and-solutions"></a>常见问题和解决方案
 
@@ -53,9 +60,9 @@ Azure 注册体验包含四个部分：
 
 若要解决此错误，请执行以下步骤：
 
-1.  使用帐户管理员凭据登录到 [Azure 帐户中心](https://account.azure.com/Profile)。
-1.  选择“编辑详细信息”。
-1.  验证所有地址字段都已填写并且有效。
+1. 登录到 [Microsoft 帐户中心](https://account.microsoft.com/)。
+1. 在页面顶部选择“你的信息”。
+1. 验证计费和发运详细信息是否完整且有效。
 1.  注册 Azure 订阅时，请验证信用卡注册的帐单邮寄地址与银行记录相符。
 
 如果继续收到该消息，请尝试使用其他浏览器进行注册。

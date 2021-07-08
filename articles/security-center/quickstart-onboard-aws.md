@@ -7,12 +7,12 @@ ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2ad3ab8c39d9f9a29e74bd139fb5ddd1e5faeff9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 563d8f3035eb889a2b9d25d563ef57373e4e3aff
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755157"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537167"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>将 AWS 帐户连接到 Azure 安全中心
 
@@ -183,7 +183,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 :::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="“资产清单”页面的资源类型筛选器，其中显示了 AWS 选项"::: 
 
 
-## <a name="aws-in-security-center-faq"></a>安全中心中的 AWS 常见问题解答
+## <a name="faq---aws-in-security-center"></a>常见问题解答 - 安全中心中的 AWS
 
 ### <a name="what-operating-systems-for-my-ec2-instances-are-supported"></a>哪些操作系统支持我的 EC2 实例？
 

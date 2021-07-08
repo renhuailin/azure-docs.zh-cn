@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/27/2020
+ms.date: 05/04/2021
 ms.author: trbye
-ms.openlocfilehash: ab22ad75b5b49588bbdcedf5fc995ce65fe4e690
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 4ac14a82fa5698faf6f79c97cd1cdd729f1966a8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104892"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769414"
 ---
 若要完成意向识别快速入门，需要使用 LUIS 预览门户创建 LUIS 帐户和项目。 本快速入门仅需 LUIS 订阅。 无需语音服务订阅。
 
@@ -31,7 +31,7 @@ ms.locfileid: "105104892"
 
 1. 在LUIS 预览门户中，选择你的应用，然后选择“发布”按钮。
 
-2. 选择“生产”槽，如果使用的是 `en-US`，请将“语音启动”选项切换到“开”位置。 然后选择“发布”按钮。
+2. 选择“生产”槽，如果使用的是 `en-US`，请选择“更改设置”，然后将“语音启动”选项切换到“开”位置   。 然后选择“发布”按钮。
 
     > [!IMPORTANT]
     > 强烈建议使用“语音启动”，因为它会提高语音识别的准确性。
@@ -39,12 +39,12 @@ ms.locfileid: "105104892"
     > [!div class="mx-imgBorder"]
     > ![将 LUIS 发布到终结点](../../../media/luis/publish-app-popup.png)
 
-3. 在 LUIS 预览版门户中，选择“管理”，然后选择“Azure 资源”。 在此页上，可以找到你的 LUIS 密钥和位置（有时也称为“区域”）。
+3. 在 LUIS 预览版门户中，选择“管理”，然后选择“Azure 资源”。 在此页面上，可以找到 LUIS 预测资源的 LUIS 密钥和位置（有时也称为“区域”）。
 
    > [!div class="mx-imgBorder"]
    > ![LUIS 密钥和位置](../../../media/luis/luis-key-region.png)
 
-4. 获取密钥和位置后，需要应用 ID。 选择“应用程序设置”-- 你的应用 ID 在此页上提供。
+4. 获取密钥和位置后，需要应用 ID。 选择“设置”。 此页面上提供应用 ID。
 
    > [!div class="mx-imgBorder"]
    > ![LUIS 应用 ID](../../../media/luis/luis-app-id.png)

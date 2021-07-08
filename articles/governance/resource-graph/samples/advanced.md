@@ -3,12 +3,12 @@ title: 高级查询示例
 description: 使用 Azure Resource Graph 运行一些高级查询，包括使用列、列出使用的标记以及使用正则表达式匹配资源。
 ms.date: 03/23/2021
 ms.topic: sample
-ms.openlocfilehash: c6a140b0392affea252e05d63055232532305c75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef26a12b2b9d8b0d2bfe473ca91c12985185ade8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104949849"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751546"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Advanced Resource Graph 查询示例
 
@@ -218,7 +218,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb"></a>列出具有特定写入位置的 Cosmos DB
 
-以下查询限制了 Cosmos DB 资源，使用 `mv-expand` 展开 **properties.writeLocations** 的属性包，然后投影特定字段，并将结果进一步限制为与 ‘East US’ 或 ‘West US’ 匹配的 **properties.writeLocations.locationName** 值。
+以下查询限制了 Azure Cosmos DB 资源，使用 `mv-expand` 展开 properties.writeLocations 的属性包，然后投影特定字段，并将结果进一步限制为与“美国东部”或“美国西部”匹配的 properties.writeLocations.locationName 值 。
 
 ```kusto
 Resources
@@ -330,15 +330,15 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 ```kusto
 Resources
 | where type =~ 'microsoft.compute/virtualmachines'
-| extend nics=array_length(properties.networkProfile.networkInterfaces) 
-| mv-expand nic=properties.networkProfile.networkInterfaces 
-| where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) 
-| project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) 
+| extend nics=array_length(properties.networkProfile.networkInterfaces)
+| mv-expand nic=properties.networkProfile.networkInterfaces
+| where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic)
+| project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id)
 | join kind=leftouter (
     Resources
     | where type =~ 'microsoft.network/networkinterfaces'
-    | extend ipConfigsCount=array_length(properties.ipConfigurations) 
-    | mv-expand ipconfig=properties.ipConfigurations 
+    | extend ipConfigsCount=array_length(properties.ipConfigurations)
+    | mv-expand ipconfig=properties.ipConfigurations
     | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true'
     | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id))
 on nicId
@@ -390,7 +390,7 @@ Resources
 | join kind=leftouter(
     Resources
     | where type == 'microsoft.compute/virtualmachines/extensions'
-    | extend 
+    | extend
         VMId = toupper(substring(id, 0, indexof(id, '/extensions'))),
         ExtensionName = name
 ) on $left.JoinID == $right.VMId
@@ -532,7 +532,6 @@ Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/sub
 
 此查询使用虚拟机上的[扩展属性](../concepts/query-language.md#extended-properties)按电源状态进行汇总。
 
-
 ```kusto
 Resources
 | where type == 'microsoft.compute/virtualmachines'
@@ -563,7 +562,8 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 
 ## <a name="count-of-non-compliant-guest-configuration-assignments"></a><a name="count-gcnoncompliant"></a>不合规来宾配置分配计数
 
-显示每个[来宾配置分配原因](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)的不合规计算机的计数。 为了提高性能，将结果限制为前 100 个。
+显示每个[来宾配置分配原因](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)的不合规计算机的计数。
+为了提高性能，将结果限制为前 100 个。
 
 ```kusto
 GuestConfigurationResources

@@ -10,16 +10,14 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: ebd2759d4dfb8ee79130f9b4876eba8d45226d04
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 90e1b951cd3990df3615cdcf33a4d659f693b5ee
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718784"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064875"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central 设备开发指南
-
-本文适用于设备开发人员。
 
 IoT Central 应用程序使你可以在设备整个生命周期内监视和管理数百万台设备。 本指南适用于要执行以下操作的设备开发人员：实现代码以在连接到 IoT Central 的设备上运行。
 
@@ -35,27 +33,25 @@ IoT Central 应用程序使你可以在设备整个生命周期内监视和管�
 
 以下部分介绍了可连接到 IoT Central 应用程序的设备的主要类型：
 
-### <a name="standalone-device"></a>独立设备
+### <a name="iot-device"></a>IoT 设备
 
-独立设备可直接连接到 IoT Central。 独立设备通常会将遥测从其内载或联网的传感器发送到 IoT Central 应用程序， 并且还可以报告属性值、接收可写属性值以及响应命令。
+IoT 设备是可直接连接到 IoT Central 的独立设备。 IoT 设备通常会将遥测从其内载或联网的传感器发送到 IoT Central 应用程序。 并且还可以报告属性值、接收可写属性值以及响应命令。
 
-### <a name="gateway-device"></a>网关设备
+### <a name="iot-edge-device"></a>IoT Edge 设备
 
-网关设备管理连接到 IoT Central 应用程序的一个或多个下游设备。 可使用 IoT Central 配置下游设备与网关设备之间的关系。 若要了解详细信息，请参阅[在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型](./tutorial-define-gateway-device-type.md)。
+IoT Edge 设备直接连接到 IoT Central。 IoT Edge设备可以发送自己的遥测，报告其属性，并响应可写的属性更新和命令。 IoT Edge 模块可以本地处理 IoT Edge 设备上的数据。 IoT Edge 设备还可以充当其他设备（称为叶设备）的中介。 使用 IoT edge 设备的场景包括：
 
-### <a name="edge-device"></a>边缘设备
-
-边缘设备直接连接到 IoT Central，但充当其他设备（称为“叶设备”）的中介。 边缘设备通常位于叶设备（边缘设备充当其中介）附近。 使用边缘设备的场景包括：
-
-- 使无法直接连接到 IoT Central 的设备能够通过边缘设备连接。 例如，叶设备可能使用蓝牙连接到边缘设备，后者随后通过 Internet 连接到 IoT Central。
-- 在将遥测发送到 IoT Central 之前，对其进行聚合。 此方法有助于降低向 IoT Central 发送数据的成本。
+- 在将遥测发送到 IoT Central 之前，对其进行聚合或筛选。 此方法有助于降低向 IoT Central 发送数据的成本。
+- 使无法直接连接到 IoT Central 的设备能够通过 IoT Central 设备连接。 例如，叶设备可能使用蓝牙连接到 IoT Edge 设备，后者随后通过 Internet 连接到 IoT Central。
 - 本地控制叶设备，避免与通过 Internet 连接到 IoT Central 相关的延迟。
 
-边缘设备还可以发送自己的遥测，报告其属性，并响应可写的属性更新和命令。
-
-IoT Central 仅可看到边缘设备，看不到连接到边缘设备的叶设备。
+IoT Central 仅会看到 IoT Edge 设备，而不会看到连接到 IoT Edge 设备的叶设备。
 
 若要了解详细信息，请参阅[将 Azure IoT Edge 设备添加到 Azure IoT Central 应用程序](./tutorial-add-edge-as-leaf-device.md)。
+
+### <a name="gateways"></a>网关
+
+网关设备管理连接到 IoT Central 应用程序的一个或多个下游设备。 可使用 IoT Central 配置下游设备与网关设备之间的关系。 IoT 设备和 IoT Edge 设备均可用作网关。 若要了解详细信息，请参阅[在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型](./tutorial-define-gateway-device-type.md)。
 
 ## <a name="connect-a-device"></a>连接一个设备
 
@@ -81,6 +77,8 @@ Azure IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](../../iot-dp
 ## <a name="implement-the-device"></a>实现设备
 
 IoT Central 设备模板包括一个模型，用于指定该类型的设备应实现的行为。 行为包括遥测、属性和命令。
+
+若要详细了解编辑模型的最佳做法，请参阅[编辑现有设备模板](howto-edit-device-template.md)。
 
 > [!TIP]
 > 可以将模型作为[数字孪生定义语言 (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl) JSON 文件从 IoT Central 导出。
