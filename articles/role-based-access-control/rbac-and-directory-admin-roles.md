@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/31/2021
+ms.date: 05/20/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: bd5533f4bc8420ee6d8900e8a17dfe7099d7945f
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d339f058e94f27c26b4d5ae9bfcce4c66f279554
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107191"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463612"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>经典订阅管理员角色、Azure 角色和 Azure AD 角色
 
@@ -44,13 +44,13 @@ ms.locfileid: "106107191"
 
 | 经典订阅管理员 | 限制 | 权限 | 说明 |
 | --- | --- | --- | --- |
-| 帐户管理员 | 每个 Azure 帐户有 1 个 | <ul><li>[在 Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中管理计费</li><li>管理帐户中的所有订阅</li><li>创建新订阅</li><li>取消订阅</li><li>更改订阅的计费</li><li>更改服务管理员</li></ul> | 在概念上是订阅的计费所有者。 |
+| 帐户管理员 | 每个 Azure 帐户有 1 个 | <ul><li>可以访问 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并管理计费</li><li>管理帐户中所有订阅的计费</li><li>创建新订阅</li><li>取消订阅</li><li>更改订阅的计费</li><li>更改服务管理员</li><li>除非具有服务管理员或订阅所有者角色，否则无法取消订阅</li></ul> | 在概念上是订阅的计费所有者。 |
 | 服务管理员 | 每个 Azure 订阅有 1 个 | <ul><li>在 [Azure 门户](https://portal.azure.com)中管理服务</li><li>取消订阅</li><li>将用户分配到共同管理员角色</li></ul> | 默认情况下，新订阅的帐户管理员也是服务管理员。<br>服务管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。<br>服务管理员具有 Azure 门户的完全访问权限。 |
 | 共同管理员 | 每个订阅有 200 个 | <ul><li>与服务管理员的访问特权相同，但无法更改订阅与 Azure 目录之间的关联。</li><li>将用户分配到共同管理员角色，但无法更改服务管理员</li></ul> | 共同管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。 |
 
 在 Azure 门户中，可以使用“经典管理员”选项卡管理共同管理员或查看服务管理员。
 
-![Azure 门户中的 Azure 经典订阅管理员](./media/rbac-and-directory-admin-roles/subscription-view-classic-administrators.png)
+![Azure 门户中的 Azure 经典订阅管理员](./media/shared/classic-administrators.png)
 
 在 Azure 门户中，可以在订阅的属性边栏选项卡上，查看或更改服务管理员，或是查看帐户管理员。
 
@@ -85,11 +85,11 @@ Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/managemen
 
 在 Azure 门户中，使用 Azure RBAC 的角色分配显示在“访问控制(标识和访问管理)”边栏选项卡上。 在整个门户中都可以找到此边栏选项卡，例如，在管理组、订阅、资源组和各种资源所在的部分。
 
-![Azure 门户中的“访问控制(IAM)”边栏选项卡](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
+![Azure 门户中的“访问控制(IAM)”边栏选项卡](./media/shared/sub-role-assignments.png)
 
 单击“角色”选项卡时，会看到内置角色和自定义角色的列表。
 
-![Azure 门户中的内置角色](./media/rbac-and-directory-admin-roles/roles-list.png)
+![Azure 门户中的内置角色](./media/shared/roles-list.png)
 
 有关详细信息，请参阅[使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)。
 

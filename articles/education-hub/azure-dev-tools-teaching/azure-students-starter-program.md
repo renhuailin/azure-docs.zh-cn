@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: d29fb34fd16293eee014c28cbbc39ec9a0ab7813
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bc40b149da61936240562d13f8556e4bf0ce8890
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064929"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460199"
 ---
 # <a name="azure-for-students-starter"></a>面向学生的 Azure 入门版
 
@@ -31,7 +31,7 @@ ms.locfileid: "110064929"
 
 此套餐仅限每位符合条件的客户获得一份面向学生的 Azure 入门版订阅。 未经 Microsoft 许可，不可转让此套餐，也不能与任何其他套餐结合使用。
 
-面向学生的 Azure 入门版套餐不需要使用信用卡。 但是，可以随时使用 [Azure 帐户门户](https://account.azure.com/)升级为即用即付订阅，以访问所有 Azure 服务。
+面向学生的 Azure 入门版套餐不需要使用信用卡。 但是，可以随时使用 [Azure 门户](https://portal.azure.com/)升级为即用即付订阅，以访问所有 Azure 服务。
 
 ## <a name="next-steps"></a>后续步骤
 - [获取有关登录错误的帮助](troubleshoot-login.md)
