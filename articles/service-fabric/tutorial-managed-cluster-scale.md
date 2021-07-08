@@ -1,16 +1,17 @@
 ---
-title: 横向扩展 Service Fabric 托管群集（预览版）
+title: 横向扩展 Service Fabric 托管群集
 description: 本教程介绍如何横向扩展 Service Fabric 托管群集的节点类型。
 ms.topic: tutorial
-ms.date: 09/28/2020
-ms.openlocfilehash: 769bcb339b2cc1419c7a3d92d0f08130029a9f95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 5/10/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9e2bd57925ddb78dcfe23742b35c1490584558f8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98785425"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666870"
 ---
-# <a name="tutorial-scale-out-a-service-fabric-managed-cluster-preview"></a>教程：横向扩展 Service Fabric 托管群集（预览版）
+# <a name="tutorial-scale-out-a-service-fabric-managed-cluster"></a>教程：横向扩展 Service Fabric 托管群集
 
 在此教程系列中，我们将讨论以下内容：
 

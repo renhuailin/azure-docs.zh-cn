@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/23/2021
-ms.openlocfilehash: aa65989953f761ff915383fcb59da7f36ea98dab
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.date: 06/10/2021
+ms.openlocfilehash: 13f5bb8245ecc57c01d4236dfea7c9e4a2f7ae75
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600476"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111986311"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure 安全中心免费版与已启用 Azure Defender
 Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，我们会自动开始收取使用费用。
@@ -70,7 +70,7 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>如何为订阅启用 Azure Defender？ 
 可以使用以下任一方法启用订阅的 Azure Defender： 
 
-| 方法                                          | Instructions                                                                                                                                       |
+| 方法                                          | 说明                                                                                                                                       |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure 门户的 Azure 安全中心页面 | [启用 Azure Defender](enable-azure-defender.md)                                                                                                  |
 | REST API                                        | [定价 API](/rest/api/securitycenter/pricings)                                                                                                  |
@@ -87,7 +87,9 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果我已有 Microsoft Defender for Endpoint 许可证，能否获得 Azure Defender 的折扣？
 如果你已获得 Microsoft Defender for Endpoint 的许可证，则无需为 Azure Defender 许可证的相应部分付费。
 
-若要确认折扣，请联系安全中心的支持团队，并提供相关工作区 ID、区域和每个相关许可证的许可证信息。
+若要请求折扣，请与安全中心的支持团队联系，并提供相关的工作区 ID、区域以及为给定工作区中的计算机应用的 Microsoft Defender for Endpoint 许可证数。
+
+该折扣将从批准之日起生效，不具追溯效力。
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>我的订阅已为服务器启用了 Azure Defender，是否需要为未运行的服务器付费？ 
 不是。 如果在订阅中启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md)，则在计算机处于已解除分配电源状态时，你都无需为此状态的任何计算机付费。 计算机按照下表中所示的电源状态进行计费：
@@ -107,10 +109,10 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 是的。 在订阅上启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 时，即使未安装 Log Analytics 代理，该订阅中的计算机也会受到一系列保护。
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice"></a>如果 Log Analytics 代理向多个工作区报告，是否需要重复付费？ 
-是的。 如果已将 Log Analytics 代理配置为将数据发送到两个或多个不同的 Log Analytics 工作区（多宿主），则需要为每个安装了“安全”或“反恶意软件”解决方案的工作区付费。 
+是的。 如果已将 Log Analytics 代理配置为将数据发送到两个或更多个不同的 Log Analytics 工作区（多宿主），则需为每个安装了“安全”或“反恶意软件”解决方案的工作区付费。 
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>如果 Log Analytics 代理向多个工作区报告，是否所有工作区上均提供 500-MB 的免费数据引入？
-是的。 如果已将 Log Analytics 代理配置为将数据发送到两个或多个不同的 Log Analytics 工作区（多宿主），则将获得 500-MB 的免费数据引入。 它是按每个节点、每个报告的工作空间、每一天来计算的，并且适用于安装了“安全”或“反恶意软件”解决方案的所有工作空间。 你将需要为超出 500 MB 的引入数据付费。
+是的。 如果已将 Log Analytics 代理配置为将数据发送到两个或多个不同的 Log Analytics 工作区（多宿主），则将获得 500-MB 的免费数据引入。 它是按每个节点、每个报告的工作区、每一天来计算的，适用于安装了“安全”或“反恶意软件”解决方案的所有工作区。 你将需要为超出 500 MB 限制的引入数据付费。
 
 ### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>500 MB 免费数据引入量是针对整个工作区计算还是严格按每台计算机计算得出的？
 对于连接到工作区的每台计算机，你每天都可免费引入 500 MB 的数据。 专用于直接由 Azure 安全中心收集的安全数据类型。
@@ -120,7 +122,6 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 ### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>每日 500 MB 数据限额中包含哪些数据类型？
 
 安全中心的账单与 Log Analytics 账单密切相关。 安全中心根据以下[安全数据类型](/azure/azure-monitor/reference/tables/tables-category#security)子集提供 500 MB/节点/天分配额：
-- WindowsEvent
 - SecurityAlert
 - SecurityBaseline
 - SecurityBaselineSummary
@@ -128,7 +129,6 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 - SecurityEvent
 - WindowsFirewall
 - MaliciousIPCommunication
-- LinuxAuditLog
 - SysmonEvent
 - ProtectionStatus
 - 当工作区上未在运行更新管理解决方案或者启用了解决方案目标设定时，将更新 UpdateSummary 数据类型

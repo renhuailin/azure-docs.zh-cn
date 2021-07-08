@@ -29,6 +29,8 @@
       href: hsm-protected-keys-byok.md
     - name: 备份和还原
       href: backup-restore.md
+    - name: 通过软删除和清除保护实现恢复管理
+      href: recovery.md
 - name: 概念
   items:
     - name: 安全域
@@ -39,6 +41,8 @@
       href: access-control.md
     - name: 本地 RBAC 内置角色
       href: built-in-roles.md
+    - name: 托管 HSM 软删除
+      href: soft-delete-overview.md
 - name: 参考
   items:
     - name: Azure PowerShell
@@ -55,7 +59,7 @@
       href: /python/api/overview/azure/key-vault-index
     - name: REST
       href: /rest/api/keyvault
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
 - name: 资源

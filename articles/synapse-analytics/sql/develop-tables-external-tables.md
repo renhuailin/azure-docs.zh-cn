@@ -9,28 +9,28 @@ ms.subservice: sql
 ms.date: 04/26/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 41825ceed38203c88ddfc28eca9a738663b9d7e6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fad0da60ab19a8614e25a56701c5ee2d1a80548c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378659"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410506"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>通过 Synapse SQL 使用外部表
 
 外部表指向位于 Hadoop、Azure 存储 Blob 或 Azure Data Lake Storage 中的数据。 外部表用于读取文件中的数据，或将数据写入 Azure 存储中的文件。 借助 Synapse SQL，可以使用外部表通过专用 SQL 池或无服务器 SQL 池读取和写入数据。
 
 根据外部数据源的类型，可以使用两种类型的外部表：
-- Hadoop 外部表，可用于读取和导出各种数据格式（例如 CSV、Parquet 和 ORC）的数据。 Hadoop 外部表，可在专用 Synapse SQL 池中使用，但无法在无服务器 SQL 池中使用。
-- 本机外部表，可用于读取和导出各种格式（例如 CSV 和 Parquet）的数据。 原生外部表可在无服务器 SQL 池中使用，在专用 Synapse SQL 池中为预览版。
+- Hadoop 外部表，可用于读取和导出各种数据格式（例如 CSV、Parquet 和 ORC）的数据。 Hadoop 外部表可在专用 SQL 池中使用，但无法在无服务器 SQL 池中使用。
+- 原生外部表，可用于以各种数据格式（如 CSV 和 Parquet）读取和导出数据。 原生外部表可在无服务器 SQL 池中使用，在专用 Synapse SQL 池中为预览版。
 
 下表列出了 Hadoop 和本机外部表之间的主要区别：
 
 | 外部表类型 | Hadoop | 本机 |
 | --- | --- | --- |
-| 专用 SQL 池 | 可用 | Parquet 表在门控式预览版中可用 - 请联系你的 Microsoft 技术客户经理或云解决方案架构师，查看你的专用池是否能够加入预览版。 |
+| 专用 SQL 池 | 可用 | Parquet 表在门控式预览版中提供 - 请联系你的 Microsoft 技术客户经理或云解决方案架构师，看看是否可以将专用 SQL 池添加到门控式预览版。 |
 | 无服务器 SQL 池 | 不可用 | 可用 |
-| 支持的格式 | 带分隔符/CSV、Parquet、ORC、Hive RC 和 RC | 无服务器池：带分隔符/CSV、Parquet 和 Delta Lake（预览版）<br/>专用池：Parquet |
+| 支持的格式 | 带分隔符/CSV、Parquet、ORC、Hive RC 和 RC | 无服务器 SQL 池：带分隔符/CSV、Parquet 和 Delta Lake（预览版）<br/>专用 SQL 池：Parquet |
 | 文件夹分区清除 | 否 | 仅适用于从 Synapse 工作区中的 Apache Spark 池同步到无服务器 SQL 池的分区表 |
 | 适用于位置的自定义格式 | 是 | 是，使用 `/year=*/month=*/day=*` 等通配符 |
 | 递归文件夹扫描 | 否 | 仅在无服务器 SQL 池中（当在位置路径末尾指定了 `/**` 时） |
@@ -64,7 +64,7 @@ ms.locfileid: "110378659"
 用户必须具有对外部表的 `SELECT` 权限才能读取数据。
 外部表使用数据库范围的凭据访问基础 Azure 存储，这些凭据使用以下规则在数据源中定义：
 - 没有凭据的数据源使外部表可访问 Azure 存储上公开可用的文件。
-- 数据源可以使用凭据，使外部表能够使用 SAS 令牌或工作区托管标识，仅访问 Azure 存储上的文件。有关示例，请参阅[开发存储文件存储访问控制](develop-storage-files-storage-access-control.md#examples)一文。
+- 数据源可能有一个凭据，外部表可以使用该凭据通过 SAS 令牌或工作区托管标识仅访问 Azure 存储上的文件 - 有关示例，请参阅[开发存储文件存储访问控制](develop-storage-files-storage-access-control.md#examples)一文。
 
 ## <a name="create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE
 

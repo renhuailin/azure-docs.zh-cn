@@ -3,12 +3,12 @@ title: 教程：使用锁保护新资源
 description: 在本教程中，你将使用 Azure 蓝图资源锁选项“只读”和“不要删除”来保护新部署的资源。
 ms.date: 03/08/2021
 ms.topic: tutorial
-ms.openlocfilehash: 87da0f5a1fff2feb103b32533c8d314fb7690f80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abb880923da71c437507245917c8e8fddb92b2fa
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485735"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733852"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>教程：使用 Azure 蓝图资源锁保护新资源
 
@@ -161,7 +161,7 @@ ms.locfileid: "102485735"
      |-|-|-|-|-|
      |RGtoLock 资源组|资源组|名称|TestingBPLocks|定义要将蓝图锁应用到的新资源组的名称。|
      |RGtoLock 资源组|资源组|位置|美国西部 2|定义要将蓝图锁应用到的新资源组的位置。|
-     |StorageAccount|资源管理器模板|storageAccountType (StorageAccount)|Standard_GRS|存储 SKU。 默认值为 _Standard_LRS_。|
+     |StorageAccount|资源管理器模板|storageAccountType (StorageAccount) |Standard_GRS|存储 SKU。 默认值为 _Standard_LRS_。|
 
 1. 输入所有参数后，选择页面底部的“分配”。
 

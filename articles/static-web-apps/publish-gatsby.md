@@ -5,17 +5,17 @@ services: static-web-apps
 author: aaronpowell
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 05/08/2020
+ms.date: 05/10/2021
 ms.author: aapowell
 ms.custom: devx-track-js
-ms.openlocfilehash: 4430ed34858077b13b4fec69756c1c7e9f3ef7ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c6a68b8db40aa07c251cabab28217143105aab1
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652341"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814507"
 ---
-# <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>教程：将 Gatsby 站点发布到 Azure 静态 Web 应用（预览）
+# <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps"></a>教程：将 Gatsby 站点发布到 Azure 静态 Web 应用
 
 本文演示如何创建 [Gatsby](https://gatsbyjs.org) Web 应用程序并将其部署到 [Azure 静态 Web 应用](overview.md)。 最终结果是一个新的静态 Web 应用站点（其中包含关联的 GitHub 操作），使你可以控制如何生成和发布应用。
 
@@ -85,54 +85,38 @@ ms.locfileid: "100652341"
 ### <a name="create-the-application"></a>创建应用程序
 
 1. 导航到 [Azure 门户](https://portal.azure.com)
-1. 单击“创建资源”
+1. 选择“创建资源”
 1. 搜索“静态 Web 应用”
-1. 单击“静态 Web 应用(预览)”
-1. 单击“创建” 
+1. 选择“Static Web Apps”
+1. 选择“创建”
+1. 在“基本信息”选项卡上，输入下列值。
 
-   :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="在门户中创建静态 Web 应用（预览）":::
+    | 属性 | 值 |
+    | --- | --- |
+    | _订阅_ | Azure 订阅名称。 |
+    | _资源组_ | **my-gatsby-group**  |
+    | _名称_ | **my-gatsby-app** |
+    | _计划类型_ | **免费** |
+    | Azure Functions API 和过渡环境的区域 | 选择离你最近的区域。 |
+    | _Source_ | **GitHub** |
 
-1. 对于“订阅”，请接受列出的订阅，或从下拉列表中选择一个新订阅。
+1. 选择“使用 GitHub 登录”，然后向 GitHub 进行身份验证。
 
-1. 在“资源组”中选择“新建”。 在“新资源组名称”中，输入“gatsby-static-web-app”并选择“确定”。
+1. 输入以下 GitHub 值。
 
-1. 接下来，在“名称”框中输入应用名称。 有效字符包括 `a-z`、`A-Z`、`0-9` 和 `-`。
+    | 属性 | 值 |
+    | --- | --- |
+    | 组织 | 选择所需的 GitHub 组织。 |
+    | 存储库 | 选择“gatsby-static-web-app”。 |
+    | 分支 | 选择“主要”。 |
 
-1. 对于“区域”，选择靠近你的可用区域。
-
-1. 对于“SKU”，选择“免费”。
-
-   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="已填写的详细信息":::
-
-1. 单击“使用 GitHub 登录”按钮。
-
-1. 选择在其中创建存储库的“组织”。
-
-1. 选择“gatsby-static-web-app”作为“存储库”。
-
-1. 为“分支”选择“主”。
-
-   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="已完成的 GitHub 信息":::
-
-### <a name="build"></a>构建
-
-接下来，添加生成过程用于生成应用的配置设置。
-
-1. 单击“下一步:生成 >”按钮以编辑生成配置
-
-1. 若要在 GitHub 操作中配置步骤的设置，请将“应用位置”设置为 /。
-
-1. 将“应用项目位置”设置为“公共”。
-
-   “API 位置”的值不是必需的，因为目前不会部署 API。
-
-   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="生成设置":::
+1. 在“生成详细信息”部分，从“生成预设”下拉列表中选择“Gatsby”，并保留默认值 。
 
 ### <a name="review-and-create"></a>查看并创建
 
-1. 单击“查看 + 创建”按钮以验证详细信息是否都正确。
+1. 选择“查看 + 创建”按钮，验证详细信息是否全部正确。
 
-1. 单击“创建”以开始创建应用服务静态 Web 应用并为部署预配 GitHub 操作。
+1. 选择“创建”，开始创建应用服务静态 Web 应用并为部署预配 GitHub 操作。
 
 1. 部署完成后，单击“转到资源”。
 

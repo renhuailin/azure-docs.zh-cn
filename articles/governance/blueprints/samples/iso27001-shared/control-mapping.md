@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 共享服务蓝图示例控制
 description: ISO 27001 共享服务蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 02/05/2021
+ms.date: 04/30/2021
 ms.topic: sample
-ms.openlocfilehash: 64266e72bf2aa24ac7fbf70f87f27739709fa0be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c84a1bca5089e2287dac80758092f7377689340b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99626336"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739234"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的控制映射
 
@@ -178,7 +178,7 @@ Azure 的 [SQL 漏洞评估服务](../../../../azure-sql/database/sql-vulnerabil
 
 ## <a name="a1321-information-transfer-policies-and-procedures"></a>A.13.2.1 信息传输策略和过程
 
-该蓝图通过分配两个 [Azure Policy](../../../policy/overview.md) 定义用于审核与存储帐户和 Redis 缓存建立的不安全连接，来帮助你确保与 Azure 服务之间安全传输信息。
+该蓝图通过分配两个 [Azure Policy](../../../policy/overview.md) 定义来审核与存储帐户和 Azure Cache for Redis 建立的不安全连接，从而帮助确保使用 Azure 服务传输的信息是安全的。
 
 - 只能与 Azure Cache for Redis 建立安全连接
 - 应该启用安全传输到存储帐户

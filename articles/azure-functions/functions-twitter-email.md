@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/10/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3517835859de82117de07ad67cdf8027960ab777
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: ace2c9819802150f1131da9e542c6c8feb589c3a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388635"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954938"
 ---
 # <a name="tutorial-create-a-function-to-integrate-with-azure-logic-apps"></a>教程：创建与 Azure 逻辑应用集成的函数
 
@@ -226,7 +226,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
     | 设置 | 值 |
     | ------- | ----- |
     | 搜索文本 | **#my-twitter-tutorial** |
-    | 你想多久检查一次项？ | 文本框中为“15”， <br> 下拉列表中为“分钟” |
+    | 你想多久检查一次项？ | 文本框中为“1”， <br> 下拉列表中为“小时”。 可以输入不同的值，但请务必查看 Twitter 连接器的当前[限制](/connectors/twitterconnector/#limits)。  |
 
 1. 选择工具栏上的“保存”按钮来保存进度。
 

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: 97901b851353007d6b99dd39f4ecb36b7284eaf8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 87bfb857aa8963de20b392b924e03e36c3b3fffd
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470404"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439379"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
@@ -74,7 +74,7 @@ ms.locfileid: "110470404"
 
 - 在所选资源组中创建 VM。
 - 在所选虚拟网络中创建 VM。
-- 写入 Azure 托管磁盘。 
+- 写入 Azure 托管磁盘。
 
 ### <a name="create-an-azure-network"></a>创建 Azure 网络
 
@@ -86,7 +86,7 @@ ms.locfileid: "110470404"
 
 ### <a name="check-machine-requirements-for-migration"></a>检查要迁移的计算机的要求
 
-确保计算机符合迁移到 Azure 的要求。 
+确保计算机符合迁移到 Azure 的要求。
 
 > [!NOTE]
 > 迁移物理计算机时，Azure Migrate 的服务器迁移工具会使用与 Azure Site Recovery 服务中基于代理的灾难恢复功能相同的复制体系结构，并且某些组件共享同一代码库。 某些内容可能链接到 Site Recovery 文档。
@@ -94,15 +94,16 @@ ms.locfileid: "110470404"
 1. [验证](migrate-support-matrix-physical-migration.md#physical-server-requirements)物理服务器要求。
 2. 验证复制到 Azure 的本地计算机是否符合 [Azure VM 要求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 3. 在将 VM 迁移到 Azure 之前，需要在 VM 上进行一些更改。
-    - 对于某些操作系统，Azure Migrate 可自动做出这些更改。 
-    - 在开始迁移之前，必须做出这些更改。 如果在做出更改之前迁移 VM，VM 可能无法在 Azure 中启动。 查看在 [Windows](prepare-for-migration.md#windows-machines) 和 [Linux](prepare-for-migration.md#linux-machines) 上需要进行的更改。
+    - 对于某些操作系统，Azure Migrate 可自动做出这些更改。
+    - 在开始迁移之前，必须做出这些更改。 如果在做出更改之前迁移 VM，VM 可能无法在 Azure 中启动。
+查看在 [Windows](prepare-for-migration.md#windows-machines) 和 [Linux](prepare-for-migration.md#linux-machines) 上需要进行的更改。
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>为复制设备准备计算机
 
 “Azure Migrate:Azure Migrate 使用复制设备将计算机复制到 Azure。 复制设备运行以下组件。
 
 - **配置服务器**：配置服务器在本地和 Azure 之间协调通信并管理数据复制。
-- **进程服务器**：进程服务器充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将其发送到 Azure 中的缓存存储帐户。 
+- **进程服务器**：进程服务器充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将其发送到 Azure 中的缓存存储帐户。
 
 为设备部署做好准备，如下所述：
 
@@ -131,9 +132,9 @@ ms.locfileid: "110470404"
 5. 单击“创建资源”。 随即会在后台创建一个 Azure Site Recovery 保管库。
     - 如果已使用 Azure Migrate 的服务器迁移工具设置迁移，则由于已设置资源，因此无法配置目标选项。    
     - 单击此按钮后，无法更改此项目的目标区域。
-    - 所有后续迁移的目标都是此区域。 
+    - 所有后续迁移的目标都是此区域。
     > [!NOTE]
-    > 如果在创建 Azure Migrate 项目时选择了专用终结点作为该项目的连接方法，则还将为专用终结点连接配置恢复服务保管库。 确保可从复制设备访问专用终结点。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#troubleshoot-network-connectivity)
+    > 如果在创建 Azure Migrate 项目时选择了专用终结点作为该项目的连接方法，则还将为专用终结点连接配置恢复服务保管库。 确保可从复制设备访问专用终结点。 [**了解详细信息**](troubleshoot-network-connectivity.md)
 
 6. 在“是否安装新的复制设备?”中，选择“安装复制设备”。 
 7. 在“下载并安装复制设备软件”中，下载设备安装程序和注册密钥。 需要使用该密钥来注册设备。 下载的密钥有效期为 5 天。
@@ -141,7 +142,8 @@ ms.locfileid: "110470404"
     ![下载提供程序](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
 8. 将设备安装程序文件和密钥文件复制到为该设备创建的 Windows Server 2016 计算机。
-9. 安装完成后，设备配置向导将自动启动（也可使用在设备的桌面上创建的 cspsconfigtool 快捷方式手动启动该向导）。 在本教程中，我们将在要复制的源 VM 上手动安装移动服务，因此请在此步骤中创建一个虚拟帐户，然后继续。 可以提供以下详细信息来创建虚拟帐户：“guest”作为友好名称，“username”作为用户名，“password”作为帐户密码。 你将在“启用复制”阶段使用此虚拟帐户。 
+
+9. 安装完成后，设备配置向导将自动启动（也可使用在设备的桌面上创建的 cspsconfigtool 快捷方式手动启动该向导）。 在本教程中，我们将在要复制的源 VM 上手动安装移动服务，因此请在此步骤中创建一个虚拟帐户，然后继续。 可以提供以下详细信息来创建虚拟帐户：“guest”作为友好名称，“username”作为用户名，“password”作为帐户密码。 你将在“启用复制”阶段使用此虚拟帐户。
 
 10. 设备已安装并重启后，在“发现计算机”中的“选择配置服务器”内选择新设备，然后单击“完成注册”。   “完成注册”步骤会执行最终的几个任务来准备复制设备。
 
@@ -158,7 +160,7 @@ ms.locfileid: "110470404"
 
 1. 登录到复制设备。
 2. 导航到 **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**。
-3. 找到适用于计算机操作系统和版本的安装程序。 查看[支持的操作系统](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)。 
+3. 找到适用于计算机操作系统和版本的安装程序。 查看[支持的操作系统](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)。
 4. 将安装程序文件复制到要迁移的计算机。
 5. 确保已准备好在部署设备时生成的通行短语。
     - 将该通行短语存储在计算机上的某个临时文本文件中。
@@ -206,7 +208,7 @@ ms.locfileid: "110470404"
 
 ## <a name="replicate-machines"></a>复制计算机
 
-现在，选择要迁移的 计算机。 
+现在，选择要迁移的 计算机。
 
 > [!NOTE]
 > 最多可以同时复制 10 台计算机。 如果需要复制更多，则可以每批 10 台同时复制它们。
@@ -230,17 +232,17 @@ ms.locfileid: "110470404"
 
 8. 在“目标设置”中，选择订阅以及要迁移到的目标区域，并指定迁移之后 Azure VM 所在的资源组。
 9. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。   
-10. 在“缓存存储帐户”中，保留默认选项，以使用为项目自动创建的缓存存储帐户。 如果要指定其他存储帐户用作复制的缓存存储帐户，请使用下拉列表。 <br/> 
+10. 在“缓存存储帐户”中，保留默认选项，以使用为项目自动创建的缓存存储帐户。 如果要指定其他存储帐户用作复制的缓存存储帐户，请使用下拉列表。 <br/>
     > [!NOTE]
     >
     > - 如果选择了专用终结点作为 Azure Migrate 项目的连接方法，请向恢复服务保管库授予对缓存存储帐户的访问权限。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#grant-access-permissions-to-the-recovery-services-vault)
-    > - 若要使用结合专用对等互连的 ExpressRoute 进行复制，请为缓存存储帐户创建专用终结点。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional) 
-  
+    > - 若要使用结合专用对等互连的 ExpressRoute 进行复制，请为缓存存储帐户创建专用终结点。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional)
+
 11. 在“可用性选项”中，选择：
     -  可用性区域，将迁移的计算机固定到区域中的特定可用性区域。 使用此选项可跨可用性区域分配形成多节点应用程序层的服务器。 如果选择此选项，则需要在“计算”选项卡中指定用于每个选定计算机的可用性区域。仅当为迁移选择的目标区域支持可用性区域时，此选项才可用
     -  可用性集，将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。
     - 如果不需要为迁移的计算机使用其中任何可用性配置，则选择“无需基础结构冗余”选项。
-    
+
 12. 在“磁盘加密类型”中，选择以下类型：
     - 使用平台管理的密钥进行静态加密
     - 使用客户管理的密钥进行静态加密
@@ -248,7 +250,7 @@ ms.locfileid: "110470404"
 
    > [!NOTE]
    > 若要使用 CMK 复制 VM，需要在目标资源组下[创建磁盘加密集](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)。 磁盘加密集对象将托管磁盘映射到包含 CMK 的密钥保管库，以用于 SSE。
-  
+
 13. 在“Azure 混合权益”中：
 
     - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
@@ -267,7 +269,7 @@ ms.locfileid: "110470404"
 
 15. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
     - 可以从复制中排除磁盘。
-    - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
+    - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。
 
     ![磁盘设置](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
@@ -278,7 +280,7 @@ ms.locfileid: "110470404"
 
 ## <a name="track-and-monitor"></a>跟踪和监视
 
-- 单击“复制”会启动一个“开始复制”作业。 
+- 单击“复制”会启动一个“开始复制”作业。
 - “开始复制”作业成功完成后，计算机将开始初始复制到 Azure。
 - 初始复制完成后，增量复制将会开始。 对本地磁盘所做的增量更改会定期复制到 Azure 中的副本磁盘。
 
@@ -293,7 +295,7 @@ ms.locfileid: "110470404"
 
 增量复制开始后，在运行到 Azure 的完整迁移之前，可以针对 VM 运行测试迁移。 我们强烈建议在迁移之前，针对每台计算机至少执行此操作一次。
 
-- 运行测试迁移可以检查迁移是否按预期进行，而不会影响本地计算机，它们仍可保持正常运行并继续复制。 
+- 运行测试迁移可以检查迁移是否按预期进行，而不会影响本地计算机，它们仍可保持正常运行并继续复制。
 - 测试迁移通过使用复制的数据创建一个 Azure VM 来模拟迁移（通常是迁移到 Azure 订阅中的非生产 VNet）。
 - 可以使用复制的测试 Azure VM 来验证迁移、执行应用测试，并解决完整迁移之前出现的任何问题。
 
@@ -314,7 +316,10 @@ ms.locfileid: "110470404"
 6. 测试完成后，在“复制计算机”中右键单击该 Azure VM，然后单击“清理测试迁移”。
 
     ![清理迁移](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
-
+    > [!NOTE]
+    > 现在可以使用 SQL VM RP 注册运行 SQL Server 的服务器，以利用自动修补、自动备份和使用 SQL IaaS 代理扩展简化的许可证管理。
+    >- 选择“管理” > “复制服务器” > “包含 SQL Server 的计算机” > “计算和网络”，然后选择“是”，注册 SQL VM RP。
+    >- 如果你的 SQL Server 实例享有有效软件保障或 SQL Server 订阅的权益，并且你需要将此权益应用到所要迁移的计算机，请选择“面向 SQL Server 的 Azure 混合权益”。
 
 ## <a name="migrate-vms"></a>迁移 VM
 
@@ -327,7 +332,7 @@ ms.locfileid: "110470404"
 2. 在“复制计算机”中，右键单击该 VM 并选择“迁移”。
 3. 在“迁移” > “关闭虚拟机并执行计划迁移(不会丢失任何数据)”中，选择“是” > “确定”。   
     - 如果你不想要关闭 VM，请选择“否”
-    
+
     注意：对于物理服务器迁移，建议在迁移时段中将应用程序关闭（不要让应用程序接受任何连接），然后启动迁移（服务器需要保持运行，这样，剩余的更改可以在迁移完成前同步）。
 
 4. 随即会针对该 VM 启动一个迁移作业。 在 Azure 通知中跟踪该作业。
@@ -345,7 +350,7 @@ ms.locfileid: "110470404"
 5. 将流量交接到已迁移的 Azure VM 实例。
 6. 从本地 VM 清单中删除本地 VM。
 7. 从本地备份中删除本地 VM。
-8. 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。 
+8. 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。
 
 ## <a name="post-migration-best-practices"></a>迁移后的最佳做法
 

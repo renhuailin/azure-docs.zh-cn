@@ -5,24 +5,26 @@ description: 本快速入门介绍如何使用 Azure 门户创建 Azure 应用�
 services: application-gateway
 author: vhorne
 ms.author: victorh
-ms.date: 01/19/2021
+ms.date: 06/14/2021
 ms.topic: quickstart
 ms.service: application-gateway
 ms.custom:
 - mvc
 - mode-portal
-ms.openlocfilehash: 92e966f5a9c4a21a6a55862ad582f0238802720f
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a1c826470a7fb9daf3b311c6e7fff02a21fc5b25
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538577"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072264"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户
 
 在本快速入门中，你将使用 Azure 门户创建一个应用程序网关。 然后对其进行测试以确保其正常运行。 
 
 该应用程序网关将应用程序 Web 流量定向到后端池中的特定资源。 你将向端口分配侦听器，创建规则，并向后端池中添加资源。 为简单起见，本文使用了带有公共前端 IP 的简单设置、一个在应用程序网关上托管单个站点的基本侦听器、一个基本的请求路由规则，以及后端池中的两台虚拟机。
+
+:::image type="content" source="media/quick-create-portal/application-gateway-qs-resources.png" alt-text="应用程序网关资源":::
 
 还可以使用 [Azure PowerShell](quick-create-powershell.md) 或 [Azure CLI](quick-create-cli.md) 完成本快速入门。
 
@@ -143,7 +145,7 @@ ms.locfileid: "107538577"
 为此，将要：
 
 1. 创建两个新的 VM（myVM 和 myVM2），用作后端服务器 。
-2. 可以在虚拟机上安装 IIS，以验证是否已成功创建了应用程序网关。
+2. 在虚拟机上安装 IIS，以验证是否成功创建了应用程序网关。
 3. 将后端服务器添加到后端池。
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机

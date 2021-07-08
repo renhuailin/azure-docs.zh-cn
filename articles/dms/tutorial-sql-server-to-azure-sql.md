@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 0330ea419b92d4e2e85c01e2770ec0d92987c4d2
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 0383b76a08c5c56c27bfbc7f83bf786b4b452849
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107102"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796699"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>教程：使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库
 
@@ -276,7 +276,7 @@ ms.locfileid: "107107102"
 
      ![查找 Azure 数据库迁移服务实例](media/tutorial-sql-server-to-azure-sql/dms-instance-search.png)
 
-4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库”，然后针对“选择迁移活动类型”选择“数据迁移”。     
+4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库”，然后针对“选择迁移活动类型”选择“数据迁移”。
 
     ![创建数据库迁移服务项目](media/tutorial-sql-server-to-azure-sql/dms-create-project-2.png)
 

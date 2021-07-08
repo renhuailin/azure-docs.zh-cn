@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 05/13/2021
 ms.author: banders
-ms.openlocfilehash: e380aa1f4d50e6ced34254ceca9d899022142f6d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a2f4bab7f0d2f28cdefcecd82ad9a2285cd9b41a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911284"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451902"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下载或查看 Azure 帐单发票和每日使用数据
 
@@ -77,7 +77,7 @@ ms.locfileid: "92911284"
 
 ## <a name="get-your-invoice-in-email-pdf"></a>通过电子邮件获取发票 (.pdf)
 
-可以选择加入并配置其他收件人来通过电子邮件接收 Azure 发票。 此功能可能不适用于某些订阅，例如支持套餐、企业协议或 Azure 开放许可。 如果你签订了 Microsoft 客户协议，请参阅“通过电子邮件获取计费对象信息发票”。
+可以选择加入并配置其他收件人来通过电子邮件接收 Azure 发票。 此功能可能不适用于某些订阅，例如支持套餐、企业协议或 Azure 开放许可。 如果你签订了 Microsoft 客户协议，请参阅[通过电子邮件获取计费对象信息发票](../understand/download-azure-invoice.md#get-your-billing-profiles-invoice-in-email)。
 
 ### <a name="get-your-subscriptions-invoices-in-email"></a>通过电子邮件获取订阅的发票
 
@@ -93,7 +93,7 @@ ms.locfileid: "92911284"
 
     ![显示了“选择加入”流步骤 3 的屏幕截图](./media/download-azure-invoice-daily-usage-date/invoicearticlestep03.png)
 
-如果执行步骤后未收到电子邮件，请确保[个人资料通讯首选项](https://account.windowsazure.com/profile)中的电子邮件地址正确。
+如果执行步骤后未收到电子邮件，请确保你在 Microsoft 帐户中心内的[个人资料通讯首选项](https://account.microsoft.com/profile)中的电子邮件地址正确。
 
 ### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>选择不通过电子邮件获取订阅的发票
 

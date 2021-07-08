@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/03/2020
+ms.date: 06/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 0f17aa943f599c910d651a72b1ed2d3ae7b2434a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58d3d7c4d10dc49a0f5ce22bc1b274020833bcef
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92677513"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111568335"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saviynt"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Saviynt 的集成
 
@@ -37,8 +37,8 @@ ms.locfileid: "92677513"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Saviynt 支持 SP 和 IDP 发起的 SSO
-* Saviynt 支持实时用户预配
+* Saviynt 支持 SP 和 IDP 发起的 SSO。
+* Saviynt 支持实时用户预配。
 
 ## <a name="add-saviynt-from-the-gallery"></a>从库中添加 Saviynt
 
@@ -50,7 +50,6 @@ ms.locfileid: "92677513"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Saviynt” 。
 1. 从结果面板中选择“Saviynt”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-saviynt"></a>配置并测试 Saviynt 的 Azure AD SSO
 
@@ -71,15 +70,15 @@ ms.locfileid: "92677513"
 
 1. 在 Azure 门户中的“Saviynt”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`Saviynt-<ID>`
+    a. 在“标识符”文本框中，使用以下模式键入值：`Saviynt-<ID>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.saviyntcloud.com/ECM/saml/SSO/alias/<SAVIYNT-ID>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.saviyntcloud.com/ECM/saml/SSO/alias/<SAVIYNT_ID>`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -140,9 +139,9 @@ ms.locfileid: "92677513"
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Saviynt 
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Saviynt。 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击“Saviynt”磁贴时，应会自动登录到为其设置了 SSO 的 Saviynt。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Saviynt”磁贴时，你应会自动登录到为其设置了 SSO 的 Saviynt。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

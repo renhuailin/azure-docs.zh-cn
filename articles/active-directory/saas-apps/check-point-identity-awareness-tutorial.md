@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/08/2021
+ms.date: 04/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 0024d6b3f7e692a7caf13457b27c32d0ba9dc1e8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3f517698c1e44ccb5bdddb5a0bf78578c62b481e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134368"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740044"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-identity-awareness"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Check Point Identity Awareness 集成
 
@@ -85,13 +85,14 @@ ms.locfileid: "108134368"
     > [!NOTE]
     > 这些不是实际值。 使用实际标识符、回复 URL 和登录 URL 更新这些值。 联系 [Check Point Identity Awareness](mailto:support@checkpoint.com) 客户支持团队获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
-    ![证书下载链接](common/certificatebase64.png)
+    ![证书下载链接](common/metadataxml.png)
 
 1. 在“设置 Check Point Identity Awareness”部分，根据需要复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -136,7 +137,7 @@ ms.locfileid: "108134368"
 
     d. 复制“回复URL”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中  。
 
-    e. 选择“导入元数据文件”，上传从 Azure 门户中下载的证书 (Base64) 。
+    e. 选择“导入元数据文件”，上传从 Azure 门户下载的“联合元数据 XML” 。
 
     > [!NOTE]
     > 此外，还可以选择“手动插入”，手动将“实体 ID”和“登录 URL”值粘贴到相应的字段中，并上传从 Azure 门户获取的证书文件   。

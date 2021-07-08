@@ -2,15 +2,15 @@
 title: 配置 Linux Python 应用
 description: 了解如何使用 Azure 门户和 Azure CLI 配置运行 Web 应用的 Python 容器。
 ms.topic: quickstart
-ms.date: 03/16/2021
+ms.date: 06/11/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 605d1e0f67ac959d2c7325e04e2fd10d9d2419be
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: db1650c61ae9e70955fd945527ff049e2663a174
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829487"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018056"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
@@ -104,7 +104,7 @@ ms.locfileid: "107829487"
 1. **源存储库**：在适当的存储库（如 GitHub）中维护源代码，确保可以在此过程的稍后部分设置持续部署。
     1. requirements.txt 文件必须位于存储库的根目录，应用服务才能自动安装必需的包。    
 
-1. **数据库**：如果应用依赖于数据库，则还应在 Azure 上预配必需的资源。 请参阅[教程：使用 PostgreSQL 部署 Django Web 应用 - 创建数据库](tutorial-python-postgresql-app.md#3-create-postgres-database-in-azure)，以了解示例。
+1. 数据库：如果应用依赖于数据库，则还应在 Azure 上预配必需的资源。 请参阅[教程：使用 PostgreSQL 部署 Django Web 应用 - 创建数据库](tutorial-python-postgresql-app.md#3-create-postgres-database-in-azure)，以了解示例。
 
 1. **应用服务资源**：创建资源组、应用服务计划和应用服务 Web 应用来承载你的应用程序。 若要最轻松地实现这一点，可以使用 Azure CLI 命令 `az webapp up` 执行代码的初始部署，如[教程：使用 PostgreSQL 部署 Django Web 应用 - 部署代码](tutorial-python-postgresql-app.md#4-deploy-the-code-to-azure-app-service)所示。 替换资源组、应用服务计划和 Web 应用的名称，使其更适合你的应用程序。
 

@@ -1,11 +1,14 @@
 ---
-ms.openlocfilehash: e62aed02a0ad5f26ec8fd0a79de5e91269386095
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 61648bc0eab3aba4806cf4594e6fe222ac77f93f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450532"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111993457"
 ---
+> [!NOTE]
+> 在 [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/phone-numbers-quickstart) 上查找此快速入门的最终代码
+
 ## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -53,6 +56,8 @@ pip install azure-identity
 ```
 
 创建 `DefaultAzureCredential` 对象要求你使用已注册 Azure AD 应用程序中的对应值将 `AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID` 设置为环境变量。
+
+若要快速了解如何获取这些环境变量，你可以使用 [CLI 快速入门中的设置托管标识](../../managed-identity-from-cli.md)。
 
 安装 `azure-identity` 库后，可以继续对客户端进行身份验证。
 
@@ -111,7 +116,7 @@ try:
         calling = PhoneNumberCapabilityType.INBOUND,
         sms = PhoneNumberCapabilityType.INBOUND_OUTBOUND
     )
-    search_poller = self.phone_number_client.begin_search_available_phone_numbers(
+    search_poller = phone_numbers_client.begin_search_available_phone_numbers(
         "US",
         PhoneNumberType.TOLL_FREE,
         PhoneNumberAssignmentType.APPLICATION,
@@ -226,5 +231,5 @@ print('Status of the operation: ' + release_poller.status())
 在控制台提示下，导航到包含 phone_numbers_sample.py 文件的目录，然后执行以下 Python 命令来运行应用程序。
 
 ```console
-./phone_numbers_sample.py
+python phone_numbers_sample.py
 ```

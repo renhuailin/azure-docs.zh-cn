@@ -3,49 +3,24 @@ title: 创建 Datadog - Azure 合作伙伴解决方案
 description: 本文介绍如何使用 Azure 门户创建 Datadog 的实例。
 ms.service: partner-services
 ms.topic: quickstart
-ms.date: 02/19/2021
+ms.date: 05/28/2021
 author: tfitzmac
 ms.author: tomfitz
 ms.custom: references_regions
-ms.openlocfilehash: 7af8b82c5da6c60527b45b6e8e292b9f067016ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b2737877ecc550540761bfb704aee98f6e7c2f4
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101747332"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655222"
 ---
-# <a name="quickstart-get-started-with-datadog"></a>快速入门：Datadog 入门
+# <a name="quickstart-get-started-with-datadog-by-creating-new-instance"></a>快速入门：通过创建新实例开始使用 Datadog
 
-在本快速入门中，你将创建一个 Datadog 实例。 可以创建新的 Datadog 组织，或链接到现有的 Datadog 组织。
+在本快速入门中，你将创建一个新 Datadog 实例。 可以创建新的 Datadog 组织，也可以[链接到现有 Datadog 组织](link-to-existing-organization.md)。
 
-## <a name="pre-requisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
-若要设置 Azure Datadog 集成，必须在 Azure 订阅上拥有“所有者”访问权限。 在开始设置之前，请确保拥有适当的访问权限。
-
-若要在 Datadog 资源中使用安全断言标记语言 (SAML) 单一登录 (SSO) 功能，必须设置一个企业应用程序。 若要添加企业应用程序，需具有以下角色之一：“全局管理员”、“云应用程序管理员”、“应用程序管理员”或服务主体的所有者。
-
-使用以下步骤设置企业应用程序：
-
-1. 转到 [Azure 门户](https://portal.azure.com)。 选择“Azure Active Directory”  。
-1. 在左窗格中，选择“企业应用程序”。
-1. 选择“新建应用程序”。
-1. 在“从库中添加”中，搜索 *Datadog*。 选择搜索结果，然后选择“添加”。
-
-   :::image type="content" source="media/create/datadog-azure-ad-app-gallery.png" alt-text="AAD 企业库中的 Datadog 应用程序。" border="true":::
-
-1. 创建应用后，从边侧面板转到“属性”。 将“需要进行用户分配?”设置为“否”，然后选择“保存”。  
-
-   :::image type="content" source="media/create/user-assignment-required.png" alt-text="设置 Datadog 应用程序的属性" border="true":::
-
-1. 从边侧面板转到“单一登录”。 然后选择“SAML”。
-
-   :::image type="content" source="media/create/saml-sso.png" alt-text="SAML 身份验证。" border="true":::
-
-1. 当系统提示“保存单一登录设置”时，请选择“是”。 
-
-   :::image type="content" source="media/create/save-sso.png" alt-text="保存 Datadog 应用的单一登录" border="true":::
-
-1. 单一登录的设置现已完成。
+在 Azure 中创建第一个 Datadog 实例之前，请[配置环境](prerequisites.md)。 必须先完成这些步骤，然后才能继续执行本快速入门中的后续步骤。
 
 ## <a name="find-offer"></a>查找产品/服务
 
@@ -61,9 +36,15 @@ ms.locfileid: "101747332"
 
 1. 在“计划概述”屏幕中，选择“设置 + 订阅”。
 
-   :::image type="content" source="media/create/datadog-app.png" alt-text="Azure 市场中的 Datadog 应用程序。":::
+   :::image type="content" source="media/create/datadog-app-2.png" alt-text="Azure 市场中的 Datadog 应用程序。":::
 
 ## <a name="create-a-datadog-resource-in-azure"></a>在 Azure 中创建 Datadog 资源
+
+门户会显示一个选项，询问你是要创建 Datadog 组织，还是将 Azure 订阅链接到现有 Datadog 组织。
+
+若要新建 Datadog 组织，请选择“创建新的 Datadog 组织”下的“创建”
+
+:::image type="content" source="media/create/datadog-create-link-selection.png" alt-text="创建或链接 Datadog 组织" border="true":::
 
 门户将显示一个用于创建 Datadog 资源的表单。
 
@@ -77,25 +58,8 @@ ms.locfileid: "101747332"
 | 资源组 | 指定是要创建新的资源组还是使用现有的资源组。 “资源组”是用于保存 Azure 解决方案相关资源的容器。 |
 | 资源名称 | 指定 Datadog 资源的名称。 创建新的 Datadog 组织时，此名称将是新 Datadog 组织的名称。 |
 | 位置 | 选择“美国西部 2”。 目前，“美国西部 2”是唯一受支持的区域。 |
-| Datadog 组织 | 若要创建新的 Datadog 组织，请选择“新建”。 若要链接到现有的 Datadog 组织，请选择“现有”。 |
 | 定价计划 | 创建新组织时，请从可用 Datadog 计划列表中进行选择。 |
 | 计费期限 | 每月。 |
-
-如果要链接到现有的 Datadog 组织，请参阅下一部分。 否则，请选择“下一步: 指标和日志”并跳过下一部分。
-
-## <a name="link-to-existing-datadog-organization"></a>链接到现有的 Datadog 组织
-
-可将 Azure 中的新 Datadog 资源链接到现有的 Datadog 组织。
-
-为“数据组织”选择“现有”，然后选择“链接到 Datadog 组织”。 
-
-:::image type="content" source="media/create/link-to-existing.png" alt-text="链接到现有的 Datadog 组织。" border="true":::
-
-该链接操作将打开 Datadog 身份验证窗口。 登录到 Datadog。
-
-默认情况下，Azure 会将当前 Datadog 组织链接到 Datadog 资源。 若要链接到其他组织，请如下所示在身份验证窗口中选择相应的组织。
-
-:::image type="content" source="media/create/select-datadog-organization.png" alt-text="选择要链接的相应 Datadog 组织" border="true":::
 
 ## <a name="configure-metrics-and-logs"></a>配置指标和日志
 
@@ -127,7 +91,7 @@ ms.locfileid: "101747332"
 
 若要将订阅级日志发送到 Datadog，请选择“发送订阅活动日志”。 如果不选中此选项，则不会将任何订阅级日志发送到 Datadog。
 
-若要将 Azure 资源日志发送到 Datadog，请选择“发送所有已定义的资源的 Azure 资源日志”。 Azure 资源日志的类型在 [Azure Monitor 资源日志类别](../../azure-monitor/essentials/resource-logs-categories.md)中列出。  若要筛选向 Datadog 发送日志的 Azure 资源集，请使用 Azure 资源标记。  
+若要将 Azure 资源日志发送到 Datadog，请选择“发送所有已定义的资源的 Azure 资源日志”。 Azure 资源日志的类型在 [Azure Monitor 资源日志类别](../../azure-monitor/essentials/resource-logs-categories.md)中列出。  若要筛选向 Datadog 发送日志的 Azure 资源集，请使用 Azure 资源标记。
 
 发送到 Datadog 的日志将由 Azure 收费。 有关详细信息，请参阅发送到 Azure 市场合作伙伴的[平台日志的定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
@@ -136,10 +100,6 @@ ms.locfileid: "101747332"
 ## <a name="configure-single-sign-on"></a>配置单一登录
 
 如果你的组织使用 Azure Active Directory 作为标识提供者，那么你可以建立从 Azure 门户到 Datadog 的单一登录。 如果你的组织使用其他标识提供者，或者你暂时不想要建立单一登录，则可以跳过本部分。
-
-如果要将 Datadog 资源链接到现有的 Datadog 组织，则不能在此步骤中设置单一登录， 而应该在创建 Datadog 资源后设置单一登录。 有关详细信息，请参阅[重新配置单一登录](manage.md#reconfigure-single-sign-on)。
-
-:::image type="content" source="media/create/linking-sso.png" alt-text="用于链接到现有 Datadog 组织的单一登录。" border="true":::
 
 若要通过 Azure Active Directory 建立单一登录，请选中“通过 Azure Active Directory 启用单一登录”对应的复选框。
 

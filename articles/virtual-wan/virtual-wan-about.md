@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: ab54192480a1c36a27c175254d6d4d275b67c8b7
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 6bce9d2c39b792923f3c85e5eb42734f1a116a66
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835319"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076342"
 ---
 # <a name="what-is-azure-virtual-wan"></a>什么是 Azure 虚拟 WAN？
 
@@ -65,9 +65,7 @@ Azure 区域充当可供连接的中心。 所有中心均在标准虚拟 WAN �
 
 * 站点：此资源仅用于站点到站点连接。 站点资源为 vpnsite。 它表示本地 VPN 设备及其设置。 可以通过与虚拟 WAN 合作伙伴合作，使用一个内置的解决方案自动将此信息导出到 Azure。
 
-## <a name="types-of-connectivity"></a><a name="connectivity"></a>连接类型
-
-虚拟 WAN 允许以下类型的连接：站点到站点 VPN、用户 VPN（点到站点）和 ExpressRoute。
+## <a name="connectivity"></a><a name="connectivity"></a>连接
 
 ### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>站点到站点 VPN 连接
 
@@ -129,7 +127,7 @@ Azure 虚拟 WAN 提供了加密 ExpressRoute 流量的功能。 此方法通过
 
 ## <a name="faq"></a><a name="faq"></a>常见问题解答
 
-[!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+对于常见问题，请参阅[虚拟 WAN 常见问题解答](virtual-wan-faq.md)。
 
 ## <a name="whats-new"></a><a name="new"></a>新增功能
 

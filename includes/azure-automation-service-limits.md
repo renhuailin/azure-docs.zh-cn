@@ -5,15 +5,15 @@ services: automation
 author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 02/08/2021
+ms.date: 05/04/2021
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 3ee44509997a16fc7f06fd5a24e473d7011bde40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1949fe7e795d7f671462f8c2a78204690dfa0595
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99974644"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108807456"
 ---
 #### <a name="process-automation"></a>流程自动化
 
@@ -49,6 +49,7 @@ ms.locfileid: "99974644"
 | **资源** | **限制**| **备注** |
 |---|---|---|
 |文件|500||
+|文件大小|5 MB||
 |注册表|250||
 |Windows 软件|250|不包括软件更新。|
 |Linux 包|1,250||
@@ -62,3 +63,4 @@ ms.locfileid: "99974644"
 | **资源** | **限制**| **备注** |
 |---|---|---|
 |每个更新部署的计算机数|1000||
+|每个更新部署的动态组数 |500 ||

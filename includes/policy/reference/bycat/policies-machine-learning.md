@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 06/11/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cb1059d77c2c75e2dbb395483e37c8467c83ce2a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 66c74e5615718fff2ccffe4239ba8cb5dc27fd20
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761872"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019326"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -25,3 +25,5 @@ ms.locfileid: "108761872"
 |[为 Azure 机器学习工作区配置专用终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7838fd83-5cbb-4b5d-888c-bfa240972597) |专用终结点可在源或目标位置没有公共 IP 地址的情况下将虚拟网络连接到 Azure 服务。 通过将专用终结点映射到 Azure 机器学习工作区，可以降低数据泄露风险。 有关专用链接的详细信息，请访问：[https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateEndpoint_DeployIfNotExists.json) |
 |[\[预览\]：为指定的 Azure 机器学习计算配置用于训练代码的代码签名](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6a6f7384-63de-11ea-bc55-0242ac130003) |此策略有助于在指定的 Azure 机器学习计算中为定型代码提供代码签名，并可以在工作区进行分配。 有关详细信息，请访问 [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc)。 |enforceSetting，已禁用 |[2.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedSigningKey_EnforceSetting.json) |
 |[\[预览\]：为指定的 Azure 机器学习计算配置用于完整日志的日志筛选表达式和数据存储](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d413020-63de-11ea-bc55-0242ac130003) |此策略有助于在指定的 Azure 机器学习计算中提供用于完整日志的日志筛选表达式和数据存储，并可以在工作区进行分配。 有关详细信息，请访问 [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc)。 |enforceSetting，已禁用 |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedLogFilter_EnforceSetting.json) |
+|[配置机器学习计算以禁用本地身份验证方法](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6f9a2d0-cff7-4855-83ad-4cd750666512) |禁用本地身份验证方法，使机器学习计算需要专用于身份验证的 Azure Active Directory 标识。 有关详细信息，请访问：[https://aka.ms/azure-ml-aad-policy](https://aka.ms/azure-ml-aad-policy)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/MachineLearningServices_DisableLocalAuth_Modify.json) |
+|[机器学习计算应禁用本地身份验证方法](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe96a9a5f-07ca-471b-9bc5-6a0f33cbd68f) |禁用本地身份验证方法可确保机器学习计算需要专用于身份验证的 Azure Active Directory 标识，从而提高安全性。 有关详细信息，请访问：[https://aka.ms/azure-ml-aad-policy](https://aka.ms/azure-ml-aad-policy)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/MachineLearningServices_DisableLocalAuth_Audit.json) |

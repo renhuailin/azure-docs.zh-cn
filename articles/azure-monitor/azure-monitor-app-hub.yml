@@ -1,0 +1,432 @@
+### YamlMime:Hub 
+title: Azure Monitor Application Insights 文档
+summary: Application Insights 属于 Azure Monitor 服务
+brand: azure
+metadata:
+  title: Azure Monitor Application Insights 文档
+  description: Application Insights 属于 Azure Monitor 服务
+  ms.service: application-insights
+  ms.topic: hub-page
+  manager: carmonm
+  ms.date: 09/30/2019
+highlightedContent:
+  items:
+    - title: 什么是 Application Insights？
+      itemType: overview
+      url: ./app/app-insights-overview.md
+    - title: 发行说明
+      itemType: whats-new
+      url: ./app/release-notes.md
+    - title: 监视 Azure 应用服务
+      itemType: how-to-guide
+      url: ./app/azure-web-apps.md
+    - title: 监视 ASP.NET Core 应用
+      itemType: how-to-guide
+      url: ./app/asp-net-core.md
+    - title: 创建资源
+      itemType: how-to-guide
+      url: ./app/create-new-resource.md
+    - title: 监视网站
+      itemType: how-to-guide
+      url: ./app/javascript.md
+conceptualContent:
+  items:
+    - title: 基于代码的监视
+      links:
+        - url: ./app/asp-net-core.md
+          itemType: how-to-guide
+          text: ASP.NET Core
+        - url: ./app/asp-net.md
+          itemType: how-to-guide
+          text: ASP.NET
+        - url: ./app/worker-service.md
+          itemType: how-to-guide
+          text: .NET Core 辅助角色服务
+        - url: ./app/java-2x-get-started.md
+          itemType: how-to-guide
+          text: Java
+        - url: ./app/opencensus-python.md
+          itemType: how-to-guide
+          text: Python
+        - url: ./app/javascript.md
+          itemType: how-to-guide
+          text: JavaScript
+        - url: ./app/nodejs.md
+          itemType: how-to-guide
+          text: Node.js
+    - title: 无代码监视/基于代理的监视
+      links:
+        - url: ./app/azure-web-apps.md
+          itemType: how-to-guide
+          text: Azure 应用服务
+        - url: ./app/cloudservices.md
+          itemType: how-to-guide
+          text: 云服务
+        - url: ../azure-functions/functions-monitoring.md
+          itemType: how-to-guide
+          text: Azure Functions
+        - url: ./app/kubernetes-codeless.md
+          itemType: how-to-guide
+          text: Kubernetes 应用程序
+        - url: ./app/cloudservices.md
+          itemType: how-to-guide
+          text: 云服务
+        - url: ./app/status-monitor-v2-overview.md
+          itemType: how-to-guide
+          text: 状态监视器 V2
+        - url: ./app/azure-vm-vmss-apps.md
+          itemType: how-to-guide
+          text: Azure VM 和 Azure 虚拟机规模集
+    - title: 快速入门和教程
+      links:
+        - url: ./app/nodejs-quick-start.md
+          itemType: how-to-guide
+          text: Node.js
+        - url: ./app/mobile-center-quickstart.md
+          itemType: how-to-guide
+          text: 移动应用
+        - url: ./app/website-monitoring.md
+          itemType: how-to-guide
+          text: 网站监视
+        - url: ./app/tutorial-runtime-exceptions.md
+          itemType: how-to-guide
+          text: 查找和诊断运行时异常
+        - url: ./app/tutorial-performance.md
+          itemType: how-to-guide
+          text: 查找和诊断性能问题
+        - url: ./app/tutorial-alert.md
+          itemType: how-to-guide
+          text: 监视应用程序运行状况并根据情况发出警报
+        - url: ./app/tutorial-users.md
+          itemType: how-to-guide
+          text: 理解用户行为
+        - url: ./app/tutorial-app-dashboards.md
+          itemType: how-to-guide
+          text: 创建自定义仪表板
+    - title: 分布式跟踪、依赖项跟踪和关联
+      links:
+        - url: ./app/distributed-tracing.md
+          itemType: overview
+          text: 什么是分布式跟踪？
+        - url: ./app/app-map.md
+          itemType: how-to-guide
+          text: 应用程序地图
+        - url: ./app/correlation.md
+          itemType: how-to-guide
+          text: 遥测关联
+        - url: ./app/custom-data-correlation.md
+          itemType: how-to-guide
+          text: 关联自定义数据源
+        - url: ./app/transaction-diagnostics.md
+          itemType: how-to-guide
+          text: 端到端事务诊断
+        - url: ./app/asp-net-dependencies.md
+          itemType: how-to-guide
+          text: 依赖项跟踪
+        - url: ./app/auto-collect-dependencies.md
+          itemType: how-to-guide
+          text: 依赖项自动收集
+        - url: ./app/custom-operations-tracking.md
+          itemType: how-to-guide
+          text: 队列和后台任务
+    - title: 综合事务和可用性监视
+      links:
+        - url: ./app/monitor-web-app-availability.md
+          itemType: how-to-guide
+          text: URL 测试
+        - url: ./app/availability-multistep.md
+          itemType: how-to-guide
+          text: 多步骤 Web 测试
+        - url: ./app/availability-alerts.md
+          itemType: how-to-guide
+          text: 可用性警报
+    - title: 指标、日志和跟踪
+      links:
+        - url: ./app/live-stream.md
+          itemType: how-to-guide
+          text: 实时指标
+        - url: ./app/pre-aggregated-metrics-log-metrics.md
+          itemType: how-to-guide
+          text: 基于日志的指标和预聚合的指标
+        - url: ./essentials/app-insights-metrics.md
+          itemType: how-to-guide
+          text: 基于日志的指标定义
+        - url: ./app/ilogger.md
+          itemType: how-to-guide
+          text: ILogger
+        - url: ./app/performance-counters.md
+          itemType: how-to-guide
+          text: 性能计数器
+        - url: ./app/eventcounters.md
+          itemType: how-to-guide
+          text: EventCounter (.NET/.NET Core)
+        - url: ./app/asp-net-trace-logs.md
+          itemType: how-to-guide
+          text: 系统诊断跟踪日志
+        - url: ./app/diagnostic-search.md
+          itemType: how-to-guide
+          text: 搜索
+    - title: 探查器和快照调试器
+      links:
+        - url: ./app/profiler-overview.md
+          itemType: overview
+          text: 探查器概述
+        - url: ./app/profiler.md
+          itemType: how-to-guide
+          text: 探查 Azure 应用服务应用
+        - url: ./app/profiler-cloudservice.md
+          itemType: how-to-guide
+          text: 探查 Azure 云服务应用
+        - url: ./app/profiler-servicefabric.md
+          itemType: how-to-guide
+          text: 探查 Service Fabric 应用
+        - url: ./app/profiler-vm.md
+          itemType: how-to-guide
+          text: 探查 VM 和虚拟机规模集应用
+        - url: ./app/snapshot-debugger.md
+          itemType: overview
+          text: Snapshot Debugger 概述
+        - url: ./app/snapshot-debugger-appservice.md
+          itemType: how-to-guide
+          text: 为 Azure 应用服务启用 Snapshot Debugger
+        - url: ./app/snapshot-debugger-vm.md
+          itemType: how-to-guide
+          text: 为其他环境启用 Snapshot Debugger
+        - url: ./app/snapshot-debugger-upgrade.md
+          itemType: how-to-guide
+          text: 升级 Snapshot Debugger
+    - title: 智能检测
+      links:
+        - url: ./app/proactive-diagnostics.md
+          itemType: overview
+          text: 智能检测概述
+        - url: ./app/proactive-failure-diagnostics.md
+          itemType: how-to-guide
+          text: 失败异常
+        - url: ./app/proactive-performance-diagnostics.md
+          itemType: how-to-guide
+          text: 性能异常
+        - url: ./app/proactive-trace-severity.md
+          itemType: how-to-guide
+          text: 跟踪降级
+        - url: ./app/proactive-exception-volume.md
+          itemType: how-to-guide
+          text: 异常卷
+        - url: ./app/proactive-potential-memory-leak.md
+          itemType: how-to-guide
+          text: 内存泄漏
+        - url: ./app/proactive-application-security-detection-pack.md
+          itemType: how-to-guide
+          text: 安全检测
+        - url: ./app/proactive-cloud-services.md
+          itemType: how-to-guide
+          text: Azure 云服务
+        - url: ./app/proactive-arm-config.md
+          itemType: how-to-guide
+          text: 管理智能检测规则
+        - url: ./app/proactive-email-notification.md
+          itemType: how-to-guide
+          text: 电子邮件通知
+    - title: 使用情况（用户行为分析）
+      links:
+        - url: ./app/usage-overview.md
+          itemType: overview
+          text: 概述
+        - url: ./app/usage-segmentation.md
+          itemType: how-to-guide
+          text: 用户、会话、事件
+        - url: ./app/usage-funnels.md
+          itemType: how-to-guide
+          text: 漏斗图
+        - url: ./app/usage-cohorts.md
+          itemType: how-to-guide
+          text: 队列
+        - url: ./app/usage-impact.md
+          itemType: how-to-guide
+          text: 影响
+        - url: ./app/usage-retention.md
+          itemType: how-to-guide
+          text: 保留
+        - url: ./app/usage-flows.md
+          itemType: how-to-guide
+          text: 用户流
+    - title: 隐私、安全性、使用情况和成本
+      links:
+        - url: ./logs/personal-data-mgmt.md
+          itemType: how-to-guide
+          text: 个人数据处理
+        - url: ./app/data-retention-privacy.md
+          itemType: how-to-guide
+          text: 数据收集、保留和存储
+        - url: ./app/resources-roles-access-control.md
+          itemType: how-to-guide
+          text: 基于角色的访问控制
+        - url: ./app/ip-addresses.md
+          itemType: how-to-guide
+          text: IP 地址和防火墙异常
+        - url: ./app/ip-collection.md
+          itemType: how-to-guide
+          text: 地理位置和 IP 地址处理
+    - title: 高级配置
+      links:
+        - url: ./app/sampling.md
+          itemType: how-to-guide
+          text: 采样
+        - url: ./app/api-filtering-sampling.md
+          itemType: how-to-guide
+          text: 筛选和遥测处理器
+        - url: ./app/telemetry-channels.md
+          itemType: how-to-guide
+          text: 遥测通道
+        - url: ./app/configuration-with-applicationinsights-config.md
+          itemType: how-to-guide
+          text: ApplicationInsights.config
+        - url: ./app/asp-net-exceptions.md
+          itemType: how-to-guide
+          text: 异常
+        - url: ./app/automate-custom-reports.md
+          itemType: how-to-guide
+          text: 自定义电子邮件报告
+        - url: ./app/usage-overview.md
+          itemType: how-to-guide
+          text: 发送用户上下文 ID
+        - url: ./app/custom-endpoints.md
+          itemType: how-to-guide
+          text: 终结点重写
+    - title: 数据模型
+      links:
+        - url: ./app/data-model.md
+          itemType: overview
+          text: 概述
+        - url: ./app/data-model-request-telemetry.md
+          itemType: how-to-guide
+          text: 请求
+        - url: ./app/data-model-dependency-telemetry.md
+          itemType: how-to-guide
+          text: 依赖项
+        - url: ./app/data-model-exception-telemetry.md
+          itemType: how-to-guide
+          text: 异常
+        - url: ./app/data-model-trace-telemetry.md
+          itemType: how-to-guide
+          text: 跟踪
+        - url: ./app/data-model-event-telemetry.md
+          itemType: how-to-guide
+          text: 事件
+        - url: ./app/data-model-metric-telemetry.md
+          itemType: how-to-guide
+          text: 指标
+        - url: ./app/data-model-context.md
+          itemType: how-to-guide
+          text: 上下文
+    - title: Azure DevOps
+      links:
+        - url: ./app/annotations.md
+          itemType: how-to-guide
+          text: 版本注释
+        - url: ./app/continuous-monitoring.md
+          itemType: how-to-guide
+          text: 持续监视
+    - title: 导出
+      links:
+        - url: ./app/export-telemetry.md
+          itemType: how-to-guide
+          text: 导出遥测
+        - url: ./app/export-stream-analytics.md
+          itemType: how-to-guide
+          text: 导出到流分析
+        - url: ./app/code-sample-export-sql-stream-analytics.md
+          itemType: how-to-guide
+          text: 使用流分析导出到 SQL
+        - url: ./app/code-sample-export-sql-stream-analytics.md
+          itemType: how-to-guide
+          text: 导出数据模型
+        - url: ./logs/logicapp-flow-connector.md
+          itemType: how-to-guide
+          text: Flow 集成
+        - url: ./app/automate-with-logic-apps.md
+          itemType: how-to-guide
+          text: 逻辑应用集成
+    - title: 可视化和分析
+      links:
+        - url: ./app/overview-dashboard.md
+          itemType: how-to-guide
+          text: 应用程序仪表板
+        - url: ./app/export-power-bi.md
+          itemType: how-to-guide
+          text: PowerBI 集成
+        - url: ./essentials/metrics-charts.md
+          itemType: how-to-guide
+          text: 指标图表
+        - url: ./visualize/workbooks-overview.md
+          itemType: how-to-guide
+          text: 工作簿（交互式报告）
+        - url: ./app/change-analysis.md
+          itemType: how-to-guide
+          text: 更改分析(预览)
+    - title: Visual Studio
+      links:
+        - url: ./app/visual-studio.md
+          itemType: how-to-guide
+          text: 使用 F5 获取见解
+        - url: ./app/visual-studio.md
+          itemType: how-to-guide
+          text: 趋势
+        - url: ./app/visual-studio-codelens.md
+          itemType: how-to-guide
+          text: CodeLens
+    - title: 故障排除和常见问题解答
+      links:
+        - url: ./app/usage-troubleshoot.md
+          itemType: how-to-guide
+          text: 使用情况故障排除
+        - url: ./app/snapshot-debugger-troubleshoot.md
+          itemType: how-to-guide
+          text: Snapshot Debugger 故障排除
+        - url: ./app/profiler-troubleshooting.md
+          itemType: how-to-guide
+          text: 探查器故障排除
+        - url: ./app/troubleshoot-availability.md
+          itemType: how-to-guide
+          text: 可用性故障排除
+        - url: ./app/asp-net-troubleshoot-no-data.md
+          itemType: how-to-guide
+          text: 故障排除无数据
+        - url: ./faq.md
+          itemType: how-to-guide
+          text: 故障排除常见问题解答
+    - title: 参考
+      links:
+        - url: ./app/platforms.md
+          itemType: reference
+          text: 平台
+        - url: ./app/azure-functions-supported-features.md
+          itemType: reference
+          text: Azure Functions 集成
+        - url: /dotnet/api/overview/azure/insights
+          itemType: reference
+          text: .NET SDK
+        - url: /java/api/overview/azure/appinsights
+          itemType: reference
+          text: .Java
+        - url: /javascript/api/overview/azure/applicationinsights
+          itemType: reference
+          text: Node.js
+        - url: /rest/api/application-insights/
+          itemType: reference
+          text: REST API
+        - url: 'https://dev.applicationinsights.io/'
+          itemType: reference
+          text: REST API 沙盒
+additionalContent:
+  sections:
+    - items:
+        - title: Application Insights API 摘要
+          summary: 所有 Application Insights API 调用的代码示例
+          url: ./app/api-custom-events-metrics.md
+        - title: Application Insights PowerShell
+          summary: 了解如何安装和使用 Application Insights PowerShell cmdlet。
+          url: /powershell/module/az.applicationinsights/new-azapplicationinsights
+        - title: 适用于 Application Insights 的 Azure CLI
+          summary: Application Insights CLI 扩展命令 (az extension add -n application-insights)。
+          url: /cli/azure/monitor/app-insights/component

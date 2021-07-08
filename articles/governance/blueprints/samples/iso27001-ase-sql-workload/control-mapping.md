@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ASE/SQL 工作负荷蓝图示例控件
 description: 控制从 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例到 Azure Policy 和 Azure RBAC 的映射。
-ms.date: 02/05/2021
+ms.date: 04/30/2021
 ms.topic: sample
-ms.openlocfilehash: f4bd340e67547ee22a558a63b56619171a1749c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ad15e7ebc980a72b079ff965e3f94a46c470af7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99627461"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753004"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL 工作负荷蓝图示例的控制映射
 
@@ -179,7 +179,7 @@ Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-b
 
 ## <a name="a1321-information-transfer-policies-and-procedures"></a>A.13.2.1 信息传输策略和过程
 
-该蓝图通过分配两个 [Azure Policy](../../../policy/overview.md) 定义用于审核与存储帐户和 Redis 缓存建立的不安全连接，来帮助你确保与 Azure 服务之间安全传输信息。
+该蓝图通过分配两个 [Azure Policy](../../../policy/overview.md) 定义来审核与存储帐户和 Azure Cache for Redis 建立的不安全连接，从而帮助确保使用 Azure 服务传输的信息是安全的。
 
 - 只能与 Azure Cache for Redis 建立安全连接
 - 应该启用安全传输到存储帐户

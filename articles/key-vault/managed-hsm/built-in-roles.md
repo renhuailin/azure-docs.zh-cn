@@ -6,14 +6,14 @@ author: amitbapat
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 06/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 01e96922d9c0c47eaf4d430e92eafcd9d0964e13
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9594157349754c7178f3c73cfe9529ad478de4a
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557218"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411010"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>托管 HSM 本地 RBAC 内置角色
 
@@ -28,7 +28,7 @@ ms.locfileid: "105557218"
 |托管 HSM 加密用户|授予执行除清除或恢复已删除密钥和导出密钥以外的所有密钥管理操作的权限。|21dbd100-6940-42c2-9190-5d6cb909625b|
 |托管 HSM 策略管理员| 授予创建和删除角色分配的权限|4bd23610-cdcf-4971-bdee-bdc562cc28e4|
 |托管 HSM 加密审核者|授予读取（但不使用）密钥属性的读取权限。|2c18b078-7c48-4d3a-af88-5a3a1b3f82b3|
-|托管 HSM 加密服务加密| 授予使用密钥进行服务加密的权限。 |33413926-3206-4cdd-b39a-83574fe37a17|
+|托管 HSM 加密服务加密用户| 授予使用密钥进行服务加密的权限。 |33413926-3206-4cdd-b39a-83574fe37a17|
 |托管 HSM 备份| 授予执行单个密钥或完整 HSM 备份的权限。|7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
 
 ## <a name="permitted-operations"></a>允许执行的运算

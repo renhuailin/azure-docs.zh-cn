@@ -1,17 +1,16 @@
 ---
-title: 使用 Azure 资源管理器部署 Service Fabric 托管群集（预览版）
+title: 使用 Azure 资源管理器部署 Service Fabric 托管群集
 description: 了解如何使用 Azure 资源管理器模板创建 Service Fabric 托管群集
 ms.topic: quickstart
-ms.date: 09/28/2020
-ms.custom: references_regions
-ms.openlocfilehash: 079e8e3e39bd306332abb43fa2ae1f8cc04e305b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 5/10/2021
+ms.openlocfilehash: 0775d5f6874de8fafb1d9a32cf19071f4a7a99b4
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91410379"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685200"
 ---
-# <a name="quickstart-deploy-a-service-fabric-managed-cluster-preview-with-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板部署 Service Fabric 托管群集（预览版）
+# <a name="quickstart-deploy-a-service-fabric-managed-cluster-with-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板部署 Service Fabric 托管群集
 
 Service Fabric 托管群集是从 Azure Service Fabric 群集资源模型演变而来，用于简化部署和群集管理体验。 Service Fabric 托管群集是一种完全封装的资源，可用于部署单个 Service Fabric 群集资源，而不必部署构成 Service Fabric 群集的所有基础资源。 本文介绍如何使用 Azure 资源管理器模板（ARM 模板）在 Azure 中部署 Service Fabric 托管群集以进行测试。
 
@@ -47,7 +46,7 @@ Service Fabric 托管群集使用客户端证书作为访问控制的密钥。 �
 
     * 订阅：选择 Azure 订阅。
     * **资源组**：选择“新建”。 输入资源组的唯一名称（例如 *myResourceGroup*），然后选择“确定”。
-    * 位置：选择一个位置，例如 eastus2。 Service Fabric 托管群集预览版支持的区域包括 `centraluseuap`、`eastus2euap`、`eastasia`、`northeurope`、`westcentralus` 和 `eastus2`。
+    * 位置：选择一个位置。
     * **群集名称**：输入群集的唯一名称，例如 mysfcluster。
     * **管理员用户名**：输入要在群集中的基础 VM 上用于 RDP 的管理员名称。
     * **管理员密码**：输入要在群集中的基础 VM 上用于 RDP 的管理员密码。
@@ -73,7 +72,7 @@ Service Fabric 托管群集使用客户端证书作为访问控制的密钥。 �
 如果不再需要 Service Fabric 托管群集的资源组，请将其删除。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
-2. 选择“删除资源组”。
+2. 选择“删除资源组”  。
 3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除” 。
 
 ## <a name="next-steps"></a>后续步骤

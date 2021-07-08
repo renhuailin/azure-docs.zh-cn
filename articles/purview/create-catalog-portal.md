@@ -9,12 +9,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 158eed6d287fa384023defbb20a7a1c39ea3d838
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7c75e550c1987302559fb07e3785686244d128a0
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728583"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060977"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Purview 帐户
 
@@ -87,7 +87,7 @@ ms.locfileid: "107728583"
 
     1. 使用创建的自定义策略[创建策略分配](../governance/policy/assign-policy-portal.md)。
 
-        [ ![显示如何创建策略分配的屏幕截图](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
+       :::image type="content" source="./media/create-catalog-portal/policy-assignment.png" alt-text="显示如何创建策略分配的屏幕截图" lightbox="./media/create-catalog-portal/policy-assignment.png":::
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -125,8 +125,12 @@ ms.locfileid: "107728583"
     1. 选择一个 **资源组**。
     1. 为目录输入“Purview 帐户名称”。 不允许使用空格和符号。
     1. 选择“位置”，然后选择“下一步：:配置”。
-1. 在“配置”选项卡上，选择所需的“平台大小”- 允许的值为 4 个容量单位 (CU) 和 16 CU 。 在完成时选择“下一步:  标记”。
-1. 在“标记”选项卡上，可以选择添加一个或多个标记。 这些标记仅用于 Azure 门户，而不用于 Azure Purview。 
+1. 在“配置”选项卡上，选择所需的“平台大小”- 允许的值为 4 个容量单位 (CU) 和 16 CU 。 （可选）为 Azure Purview 托管资源组提供一个不同的名称。 在完成时选择“下一步:  标记”。
+
+    > [!Note] 
+    > [托管资源组](create-catalog-portal.md#azure-purview-managed-resources)将包含一个托管的存储帐户，以及一个供 Azure Purview 帐户专用的事件中心命名空间。
+
+3. 在“标记”选项卡上，可以选择添加一个或多个标记。 这些标记仅用于 Azure 门户，而不用于 Azure Purview。 
 
     > [!Note] 
     > 如果已有 Azure Policy，并需要在“先决条件”中添加例外，则需要添加正确的标记 。 例如，可以添加 `resourceBypass` 标记：:::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="将标记添加到 Purview 帐户。":::
@@ -167,6 +171,13 @@ ms.locfileid: "107728583"
 1. 对于“选择”，输入要分配的用户、Azure Active Directory 组或服务主体的名称，然后在结果窗格中单击其名称。
 
 1. 单击“保存”  。
+
+## <a name="azure-purview-managed-resources"></a>Azure Purview 托管资源
+在部署 Azure Purview 帐户的过程中，将在 Azure 订阅中连同该 Azure Purview 帐户一起部署一个新的托管资源组，其中包含新的 Azure 存储帐户和新的事件中心命名空间。 在部署期间，你可以根据需要为托管资源组选择不同的命名约定。
+
+这些资源对于 Azure Purview 帐户的操作至关重要，在将信息引入 Azure Purview 数据目录之前，一直会使用这些资源来包含临时数据。 
+
+系统会自动将一个拒绝分配添加到所有主体的托管资源组，其中唯一排除的主体是 Azure Purview 托管标识，它允许 Azure Purview 管理资源组中的资源（存储帐户、事件中心命名空间），因此，你无法在数据平面中删除或修改托管资源组、托管资源或其内容，但是，在删除 Purview 帐户时，会自动删除托管资源组及其内容。 
 
 ## <a name="clean-up-resources"></a>清理资源
 

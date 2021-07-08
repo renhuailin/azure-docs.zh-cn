@@ -3,12 +3,12 @@ title: 部署 CAF 迁移登陆区域蓝图示例
 description: CAF 迁移登陆区域蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: d5aed1d492fea102598a22921d04ed8681c727cb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9c953c5ec7f6c8a9a9ae7a1ff784b5c0d0f8f877
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470109"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757810"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>部署适用于 Azure 的 Microsoft 云采用框架迁移登陆区域蓝图示例
 
@@ -35,7 +35,7 @@ ms.locfileid: "103470109"
 1. 在“其他示例”下找到“CAF 迁移登陆区域”蓝图示例，然后选择“使用此示例”。   
 
 1. 输入该蓝图示例的“基本信息”： 
-   - **蓝图名称** 提供 CAF 迁移登陆区域蓝图示例副本的名称。
+   - “蓝图名称”提供 CAF 迁移登陆区域蓝图示例副本的名称。
    - **定义位置** 使用省略号并选择要将示例副本保存到的管理组。
 
 1. 选择页面顶部的“项目”选项卡，或页面底部的“下一步:   项目”。
@@ -72,7 +72,7 @@ ms.locfileid: "103470109"
      - Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。
        若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
      - **蓝图定义版本**：选择蓝图示例副本的 **已发布** 版本。
-    
+
    - 锁分配
 
      选择环境的蓝图锁定设置。 有关更多信息，请参阅[蓝图资源锁定](../../concepts/resource-locking.md)。
@@ -85,9 +85,9 @@ ms.locfileid: "103470109"
 
      蓝图定义中的许多项目使用本部分定义的参数来提供一致性。
 
-       - **组织**：输入组织名称（例如 Contoso 或 Fabrikam），必须唯一。
-       - **Azure 区域**：选择要部署的一个 Azure 区域。
-       
+     - **组织**：输入组织名称（例如 Contoso 或 Fabrikam），必须唯一。
+     - **Azure 区域**：选择要部署的一个 Azure 区域。
+
    - 项目参数
 
      在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters) ，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table) 。

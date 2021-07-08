@@ -3,12 +3,12 @@ title: 模式：策略定义中的逻辑运算符
 description: 此 Azure Policy 模式通过示例介绍了如何使用策略定义中的逻辑运算符。
 ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: feb9e50b0c73c19027b747cf0f95fa1cb6fbd47c
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 3daf5e5873566b1335178d50a4589ec7a6e1971c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093344"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752266"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy 模式：逻辑运算符
 
@@ -16,7 +16,7 @@ ms.locfileid: "106093344"
 
 ## <a name="sample-1-one-logical-operator"></a>示例 1：一个逻辑运算符
 
-此策略定义会评估 [Azure Cosmos DB](../../../cosmos-db/introduction.md) 帐户，以查看是否配置了自动故障转移和多个写入位置。 如果尚未配置上述项目，则当创建或更新不合规的资源时，[审核](../concepts/effects.md#audit)会触发并创建一个日志条目。
+此策略定义会评估 [Azure Cosmos DB](../../../cosmos-db/introduction.md) 帐户，以了解是否配置了自动故障转移和多个写入位置。 如果尚未配置上述项目，则当创建或更新不合规的资源时，[审核](../concepts/effects.md#audit)会触发并创建一个日志条目。
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json":::
 
@@ -37,11 +37,11 @@ ms.locfileid: "106093344"
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json" range="7-21" highlight="2,3,9":::
 
-此 **policyRule.if** 块也包含单个 **allOf**，但每个条件都使用 **not** 逻辑运算符进行包装。 系统会先评估 **not** 逻辑运算符中的条件，然后评估该 **not**，以便确定整个子句是 true 还是 false。 如果 **not** 逻辑运算符的评估结果为 true，则会触发策略效果。
+此 **policyRule.if** 块也包含单个 **allOf**，但每个条件都使用 **not** 逻辑运算符进行包装。 系统会先评估 not 逻辑运算符中的条件，然后评估该 not，以便确定整个子句是 true 还是 false。 如果 **not** 逻辑运算符的评估结果为 true，则会触发策略效果。
 
 ## <a name="sample-3-combining-logical-operators"></a>示例 3：组合逻辑运算符
 
-此策略定义会评估 [Azure 上的 Spring](/azure/developer/java/spring-framework) 帐户，以查看是否未启用跟踪或跟踪未处于成功状态。
+此策略定义会评估 [Azure 上的 Spring](/azure/developer/java/spring-framework) 帐户，以了解是否未启用跟踪或跟踪未处于成功状态。
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
 

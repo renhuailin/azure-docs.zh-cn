@@ -8,16 +8,16 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: 70769ec97affcd95d07a1365d6357262072c86ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a11ee7c31c5db7b1ee2af8a08ddf152211aed5a3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99832058"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756586"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-yolo-v3"></a>教程：在 Azure IoT Central 中创建视频分析 - 对象和运动检测应用程序 (YOLO v3)
 
-以解决方案构建者的身份，了解如何使用 IoT Central 视频分析 - 对象和运动检测应用程序模板、Azure IoT Edge 设备和 Azure 媒体服务以及 YOLO v3 实时对象和运动检测系统创建视频分析应用程序。 该解决方案使用零售商店来说明如何满足监视监控摄像头的常见业务需求， 并在视频源中使用自动对象检测来快速识别和查找感兴趣的事件。
+了解如何使用 IoT Central 的“视频分析 - 对象和运动检测”应用程序模板、Azure IoT Edge 设备、Azure 媒体服务以及 YOLO v3 实时对象和运动检测系统创建视频分析应用程序。 该解决方案使用零售商店来说明如何满足监视监控摄像头的常见业务需求， 并在视频源中使用自动对象检测来快速识别和查找感兴趣的事件。
 
 > [!TIP]
 > 若要使用 OpenVINO&trade; 而不是 YOLO v3 进行对象和运动检测，请参阅[教程：在 Azure IoT Central 中创建视频分析 - 对象和运动检测应用程序 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md)。
@@ -25,7 +25,7 @@ ms.locfileid: "99832058"
 [!INCLUDE [iot-central-video-analytics-part1](../../../includes/iot-central-video-analytics-part1.md)]
 
 - [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt) - 此文件可帮助你在浏览这些教程时，记录所需的各种配置选项。
-- [deployment.amd64.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deployment.amd64.json)
+- [deployment.amd64.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deploymentManifests/deployment.amd64.json)
 - [LvaEdgeGatewayDcm.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/LvaEdgeGatewayDcm.json)
 - [state.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json) - 当你打算在第二个教程中使用 Intel NUC 设备时，只需下载此文件。
 

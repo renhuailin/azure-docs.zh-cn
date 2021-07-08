@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9eb35c892db113807d3c401306485a836a1d970b
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: df34d0ad7aa2c8249f013d430cedd72dd86eb6a2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947422"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451990"
 ---
 # <a name="what-is-optical-character-recognition"></a>什么是光学字符识别？
 
@@ -42,7 +42,7 @@ ms.locfileid: "107947422"
 
 * 支持的文件格式：JPEG、PNG、BMP、PDF 和 TIFF
 * 对于 PDF 和 TIFF 文件，最多处理 2000 个页面（对于免费层，只处理前两个页面）。
-* 文件大小必须小于 50 MB（对于免费层，则为 4 MB），且尺寸介于 50 x 50 和 10000 x 10000 像素之间。 
+* 文件大小必须小于 50 MB（对于免费层，则为 6 MB），且尺寸介于 50 x 50 和 10000 x 10000 像素之间。 
 
 ## <a name="supported-languages"></a>支持的语言
 对于印刷体文本，读取 API 总共支持 73 种语言。 请参阅 [OCR 支持的语言](./language-support.md#optical-character-recognition-ocr)完整列表。 手写体 OCR 仅支持英语。
@@ -67,10 +67,6 @@ ms.locfileid: "107947422"
 大多数客户都青睐读取 3.x 云 API，因为它易于集成，而且其现成可用的性质能够提高工作效率。 Azure 和计算机视觉服务将处理缩放、性能、数据安全与合规需求，你只需将工作重心放在满足客户需求上。
 
 对于本地部署，可以使用[读取 Docker 容器（预览版）](./computer-vision-how-to-install-containers.md)在你自己的本地环境中部署新的 OCR 功能。 容器非常适合用于满足特定的安全性和数据管理要求。
-
-## <a name="ocr-api"></a>OCR API
-
-旧的 [OCR API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f20d) 使用较旧的识别模式、仅支持图像，且以同步方式执行，一旦检测到文本便会立即返回。 有关支持的语言列表，请参阅[支持的语言](./language-support.md#optical-character-recognition-ocr) 的 OCR 列。
 
 > [!WARNING]
 > 计算机视觉 2.0 RecognizeText 操作即将弃用，将由本文所述的新[读取 API](#read-api) 所取代。 现有客户应[改用读取操作](upgrade-api-versions.md)。

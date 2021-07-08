@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 419e609c4b78007f215d67ab4a69671bc9cbb198
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 1cee1a33f74b11793d9b12db0b8bc6f65fda29a3
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205622"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787666"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>教程：使用示例客户端应用创建 Azure 数字孪生图
 
@@ -20,7 +20,7 @@ ms.locfileid: "108205622"
 
 在本教程中，你将使用模型、孪生和关系在 Azure 数字孪生中生成一个图。 本教程使用的工具是可与 Azure 数字孪生实例交互的一个 **示例命令行客户端应用程序**。 客户端应用与[教程：编写客户端应用](tutorial-code.md)中编写的应用类似。
 
-可以使用此示例执行基本的 Azure 数字孪生操作，例如上传模型、创建和修改孪生以及创建关系。 还可以查看[示例的代码](https://github.com/Azure-Samples/digital-twins-samples/tree/master/)来了解 Azure 数字孪生 API，并通过按你想要的方式修改示例项目来练习实现你自己的命令。
+可以使用此示例执行基本的 Azure 数字孪生操作，例如上传模型、创建和修改孪生以及创建关系。 还可查看[示例的代码](https://github.com/Azure-Samples/digital-twins-samples/tree/master/)来了解 Azure 数字孪生 API，并按你想要的方式修改示例项目来练习实现你自己的命令。
 
 在本教程中，你将...
 > [!div class="checklist"]
@@ -129,7 +129,7 @@ Content-Type: application/json; charset=utf-8
     
     :::image type="content" source="media/tutorial-command-line/app/output-create-digital-twin.png" alt-text="显示 CreateDigitalTwin 命令结果摘录的屏幕截图，其中包括 floor0、floor1、room0 和 room1。" lightbox="media/tutorial-command-line/app/output-create-digital-twin.png":::
 
-1. 可以运行 `Query` 命令来验证是否已创建孪生。 此命令在 Azure 数字孪生实例中查询其包含的所有数字孪生。 在结果中查找 *room0*、*room1*、*floor0* 和 *floor1* 孪生。
+1. 可以运行 `Query` 命令来验证是否已创建孪生。 此命令在 Azure 数字孪生实例中查询其包含的所有数字孪生。 在结果中查找 room0、room1、floor0 和 floor1 孪生。
 
 ### <a name="modify-a-digital-twin"></a>修改数字孪生
 
@@ -138,7 +138,7 @@ Content-Type: application/json; charset=utf-8
 > [!NOTE]
 > 底层 REST API 使用 [JSON 补丁](http://jsonpatch.com/)格式定义对孪生的更新。 该命令行应用也使用此格式，以便用户更真实地体验底层 API 所需的内容。
 
-1. 运行以下命令，将 *room0* 的 RoomName 从 *Room0* 更改为 *PresidentialSuite*：
+1. 运行以下命令，将 room0 的 RoomName 从“Room0”更改为“PresidentialSuite”：
     
     ```cmd/sh
     UpdateDigitalTwin room0 add /RoomName string PresidentialSuite
@@ -159,11 +159,11 @@ Content-Type: application/json; charset=utf-8
 
 接下来，你可以在这些孪生之间创建某种关系，以将它们连接到孪生图 。 孪生图用于表示整个环境。 
 
-可由你在两个不同孪生之间创建的关系的类型，是在前面上传的[模型](#model-a-physical-environment-with-dtdl)中定义的。 [Floor 的模型定义](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)指定楼层可有一个名为 contains 的关系类型。 因此，可以创建从每个 *Floor* 孪生到它所包含的相应房间的 *contains* 类型的关系。
+可由你在两个不同孪生之间创建的关系的类型，是在前面上传的[模型](#model-a-physical-environment-with-dtdl)中定义的。 [Floor 的模型定义](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)指定楼层可有一个名为 contains 的关系类型。 因此，可以创建从每个 Floor 孪生到它所包含的相应房间的 *contains* 类型的关系。
 
 要添加关系，请使用 `CreateRelationship` 命令。 指定该关系的来源孪生、关系类型，以及该关系要连接到的孪生。 最后，为该关系指定唯一的 ID。
 
-1. 运行以下代码，将来自之前创建的每个 Floor 孪生的“包含”关系添加到对应的 Room 孪生 。 关系的名称分别为 *relationship0* 和 *relationship1*。
+1. 运行以下代码，将来自之前创建的每个 Floor 孪生的“包含”关系添加到对应的 Room 孪生 。 关系的名称分别为 relationship0 和 relationship1。
 
     ```cmd/sh
     CreateRelationship floor0 contains room0 relationship0
@@ -172,7 +172,7 @@ Content-Type: application/json; charset=utf-8
 
     >[!TIP]
     >在 [Floor 模型](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)中定义的 *contains* 关系也有两个字符串属性：`ownershipUser` 和 `ownershipDepartment`，因此，在创建关系时，也可以为参数提供这些属性的初始值。
-    > 下面是上述命令的另一个版本，该版本将创建 *relationship0*，其中也会指定这些属性的初始值：
+    > 下面是上述命令的另一个版本，该版本将创建 relationship0，其中也会指定这些属性的初始值：
     > ```cmd/sh
     > CreateRelationship floor0 contains room0 relationship0 ownershipUser string MyUser ownershipDepartment string myDepartment
     > ``` 
@@ -219,7 +219,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
     :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="显示孪生查询部分结果的屏幕截图，其中包括 room0 和 floor1。":::
 
     >[!NOTE]
-    >在示例项目中，不带任何附加参数的命令 `Query` 相当于 `Query SELECT * FROM DIGITALTWINS`。 若要使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](how-to-use-cli.md)查询实例中的所有孪生体，请使用较长的（完整）查询。
+    >在示例项目中，不带任何附加参数的命令 `Query` 相当于 `Query SELECT * FROM DIGITALTWINS`。 若要使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](concepts-cli.md)查询实例中的所有孪生体，请使用较长的（完整）查询。
 
 1. **我的环境中的所有房间都有哪些？** （按模型查询）
 
@@ -227,7 +227,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
     Query SELECT * FROM DIGITALTWINS T WHERE IS_OF_MODEL(T, 'dtmi:example:Room;2')
     ```
 
-    可以将查询限制为某种类型的孪生，以获取有关所表示内容的更多具体信息。 此命令的结果显示 room0 和 room1，但不显示 floor0 或 floor1（因为它们是楼层，而不是房间）  。
+    可以将查询限制为某种类型的孪生，以获取有关所表示内容的更多具体信息。 此查询的结果显示 room0 和 room1，但不显示 floor0 或 floor1（因为它们是楼层，而不是房间）。
     
     :::image type="content" source="media/tutorial-command-line/app/output-query-model.png" alt-text="模型查询结果的屏幕截图，其中只显示了 room0 和 room1。":::
 
@@ -263,7 +263,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，可选择想要删除的资源，这具体取决于你接下来要执行哪些操作。
+完成本教程后，可以选择要删除的资源，具体取决于接下来要执行的操作。
 
 * 如果打算继续学习下一个教程，可保留在此处设置的资源，以便继续在下一个教程中使用此 Azure 数字孪生实例和已配置的示例应用
 

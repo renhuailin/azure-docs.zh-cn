@@ -8,14 +8,14 @@ ms.author: delegenz
 ms.devlang: javascript
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/02/2021
+ms.date: 06/11/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 7d31201f9d1a4519538aba3ac57ddfd340d936d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3ca078bd712d711f4c8883360eb121287662a16
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99509395"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018344"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>快速入门：使用 JavaScript SDK 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -607,9 +607,8 @@ console.log(`HotelId: ${documentResult.HotelId}; HotelName: ${documentResult.Hot
 
 ## <a name="next-steps"></a>后续步骤
 
-在此 JavaScript 快速入门中，你完成了一系列任务：创建索引、使用文档加载索引，以及运行查询。 
+在此 JavaScript 快速入门中，你完成了一系列任务：创建索引、使用文档加载索引，以及运行查询。 若要继续学习，请尝试将以下教程和示例作为“跳板”来尝试建议器（预先输入或自动完成查询）、筛选器和分面导航。 
 
-如果已对 Azure 认知搜索有一定的了解，可以将此教程用作尝试使用建议器（提前键入或自动完成查询）、筛选器和分面导航的跳板。 如果你是 Azure 认知搜索的新手，我们建议尝试阅读其他教程，深入了解可以创建哪些内容。 请访问 [文档页](https://azure.microsoft.com/documentation/services/search/) 查找更多资源。 
++ [教程：向 Web 应用添加搜索](tutorial-csharp-overview.md)
 
-> [!div class="nextstepaction"]
-> [构建 Azure 认知搜索的 React 前端](https://github.com/dereklegenzoff/azure-search-react-template)
++ [示例：构建 Azure 认知搜索的 React 前端](https://github.com/dereklegenzoff/azure-search-react-template)

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9b332b18930d58ebb1d155c35a74eed69a90ce73
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 90bc724ac6184943415ae0d86cb5ccd1b34c35d3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788756"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733294"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建公共负载均衡器以对 VM 进行负载均衡
 
@@ -281,7 +281,7 @@ az network bastion create \
     --sku Standard
 ```
 
-在区域 1 中创建区域性冗余公共 IP 地址：
+在区域 1 中创建区域性公共 IP 地址：
 
 ```azurecli-interactive
   az network public-ip create \

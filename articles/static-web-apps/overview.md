@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: c0a4156fb0015c6d319700c82f6285dbf0ed1443
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 5a335525bef3509f547bbccc478ec9402ad05e28
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947872"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109815047"
 ---
-# <a name="what-is-azure-static-web-apps-preview"></a>什么是 Azure 静态 Web 应用预览版？
+# <a name="what-is-azure-static-web-apps"></a>什么是 Azure 静态 Web 应用？
 
 Azure Static Web Apps 是一种服务，可从代码存储库自动生成完整的堆栈 Web 应用，并将其部署到 Azure。
 
@@ -31,13 +31,13 @@ Azure 静态 Web 应用的工作流适用于开发人员的日常工作流。 �
 ## <a name="key-features"></a>主要功能
 
 - 适用于 HTML、CSS、JavaScript 和映像等静态内容的 Web 托管。
-- 由 Azure Functions 提供的集成 API 支持。
+- Azure Functions 提供的集成 API 支持，可选择使用标准帐户链接现有的 Azure Functions 应用程序。
 - 一流的 GitHub 和 Azure DevOps 集成，其中的存储库更改会触发生成和部署。
 - 全球分布的静态内容，使内容更接近你的用户。
 - 可自动续订的免费 SSL 证书。
 - 自定义域为应用提供品牌自定义。
 - 调用 API 时使用反向代理的无缝安全模型，这不需要配置 CORS。
-- 身份验证提供程序与 Azure Active Directory、Facebook、Google、GitHub 和 Twitter 集成。
+- 身份验证提供程序与 Azure Active Directory、GitHub 和 Twitter 集成。
 - 可自定义的授权角色定义和分配。
 - 后端路由规则，使你能够完全控制所提供的内容和路由。
 - 生成的临时版本由拉取请求提供支持，在发布前提供站点的预览版本。

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 06/01/2021
 ms.author: justinha
-ms.openlocfilehash: 4d03edac98329d7c47b8bfafbf4d30cfca18863c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6e226ff022788c3409be4004c11db6bdad36876
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96618223"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438515"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务托管域
 
@@ -95,7 +95,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     >
     > 对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看区域可用性的详细信息，请参阅[Azure 中的可用性区域是什么？][availability-zones]
 
-1. **SKU** 确定可以创建的林信任的性能、备份频率和最大数量。 如果业务需求或要求发生变化，可以在创建托管域后更改 SKU。 有关详细信息，请参阅 [Azure AD DS SKU 概念][concepts-sku]。
+1. SKU 决定性能和备份频率。 如果业务需求或要求发生变化，可以在创建托管域后更改 SKU。 有关详细信息，请参阅 [Azure AD DS SKU 概念][concepts-sku]。
 
     对于本教程，请选择“标准”SKU。
 1. 林是 Active Directory 域服务用来对一个或多个域进行分组的逻辑构造。 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。

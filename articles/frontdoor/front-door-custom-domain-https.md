@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/26/2021
+ms.date: 06/10/2021
 ms.author: duau
-ms.openlocfilehash: 4291a7d46c723f799cf9d09ca0e7a3f6d614971f
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 7f2a5faebb56cfb12a62a8bdae4e6b7e56e88b57
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389734"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004702"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -75,7 +75,7 @@ ms.locfileid: "107389734"
 
 ### <a name="option-2-use-your-own-certificate"></a>选项 2：使用自己的证书
 
-可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure Front Door 使用此安全机制来获取你的证书，并且需要一些额外的步骤。 创建 TLS/SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure Front Door 上启用自定义 HTTPS 的证书颁发机构](front-door-troubleshoot-allowed-ca.md)。
+可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure Front Door 使用此安全机制来获取你的证书，并且需要一些额外的步骤。 创建 TLS/SSL 证书时，必须使用 [Microsoft 受信任 CA 列表](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)中允许的证书颁发机构 (CA) 创建完整的证书链。 如果使用不允许的 CA，请求会被拒绝。  如果提供的是没有完整链的证书，则不能保证涉及该证书的请求实现预期效果。
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
@@ -87,7 +87,7 @@ ms.locfileid: "107389734"
 2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。 将证书上传为 **证书** 对象，而不是 **机密**。
 
 > [!NOTE]
-> 对于你自己的 TLS/SSL 证书，Front Door 不支持带有 EC 加密算法的证书。
+> 对于你自己的 TLS/SSL 证书，Front Door 不支持带有 EC 加密算法的证书。 证书必须具有包含叶证书和中间证书的完整证书链，根 CA 必须是 [Microsoft 受信任 CA 列表](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)的一部分。
 
 #### <a name="register-azure-front-door"></a>注册 Azure Front Door
 
@@ -209,7 +209,7 @@ postmaster@&lt;your-domain-name.com&gt;
 | | 域所有权验证请求已过期（很可能是客户在 6 天内未响应）。 将不会在域中启用 HTTPS。 * |
 | | 客户已拒绝域所有权验证请求。 将不会在域中启用 HTTPS。 * |
 | 3 证书预配 | 证书颁发机构当前正在颁发在你的域中启用 HTTPS 所需的证书。 |
-| | 证书已颁发，并且当前正在为 Front Door 部署该证书。 此过程最长可能需要花费 1 小时。 |
+| | 证书已颁发，并且当前正在为 Front Door 部署该证书。 此过程可能需要几分钟到一小时才能完成。 |
 | | 已成功为 Front Door 部署证书。 |
 | 4 完成 | 已成功在域中启用 HTTPS。 |
 

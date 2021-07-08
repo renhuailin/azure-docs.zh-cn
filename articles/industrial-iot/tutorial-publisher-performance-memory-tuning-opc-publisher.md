@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 89e288d1186efd405019d6474dcbd332e7925d67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 98bff6a72d35e2cee3157b997796bbe51795e1ea
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104787218"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677848"
 ---
 # <a name="tutorial-tune-the-opc-publisher-performance-and-memory"></a>教程：优化 OPC 发布服务器性能和内存
 
@@ -33,7 +33,7 @@ ms.locfileid: "104787218"
 
 * 缩短 IoT 中心发送间隔 (`si`)
 
-* 增大 IoT 中心消息大小（`ms` ，可将其最大值设置为 256 KB）
+* 增大 IoT 中心消息大小（`ms`，可将其最大值设置为 256 KB）。 在版本 2.7 或更高版本中，默认值已设置为 256 KB。
 
 即使已调整 `si` 和 `ms` 参数，如果队列仍不断增长，最终将达到最大队列容量，消息将丢失。 这是因为 `si` 和 `ms` 参数都具有物理限制，因此，OPC 发布服务器与 IoT 中心之间的 Internet 连接的速度不够快，无法满足给定方案中必须发送的消息数。 在这种情况下，只有设置多个并行 OPC 发布服务器才会有所帮助。 `mq/om` 参数还对 OPC 发布服务器的内存消耗产生最大的影响。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "104787218"
 
 `ms` 参数允许批处理发送到 IoT 中心的消息。 在大多数网络设置中，将单个消息发送到 IoT 中心的延迟时间比传输有效负载所用的时间要长。 这主要是由于服务质量 (QoS) 要求，因为消息仅在 IoT 中心处理后才会被确认。 因此，如果可接受到 IoT 中心的数据延迟，则应通过将 `ms` 参数设置为 0，将 OPC 发布服务器配置为使用最大消息大小 256 KB。 这也是使用 OPC 发布服务器的最具成本效益的方法。
 
-使用默认配置时，每 10 秒 (`si=10`) 或当 256 KB IoT 中心消息数据可用时，会将数据发送到 IoT 中心(`ms=0`)。 这最多还会延迟 10 秒，但由于消息较大，丢失数据的可能性很低。 OPC 发布服务器版本 2.5 及更低版本的指标 `monitored item notifications enqueue failure` 和 OPC 发布服务器版本 2.7 的指标 `messages lost` 显示丢失的消息数。
+在版本 2.5 中，默认配置每 10 秒 (`si=10`) 或当 256 KB 的 IoT 中心消息数据可用 (`ms=0`) 时，会将数据发送到 IoT 中心。 这最多还会延迟 10 秒，但由于消息较大，丢失数据的可能性很低。 在版本 2.7 或更高版本中，协调模式的默认配置为 500 毫秒，对于独立模式，默认配置为 0（无发送间隔）。 OPC 发布服务器版本 2.5 及更低版本的指标 `monitored item notifications enqueue failure` 和 OPC 发布服务器版本 2.7 的指标 `messages lost` 显示丢失的消息数。
 
 当 `si` 和 `ms` 参数均设置为 0 时，只要数据可用，OPC 发布服务器就会向 IoT 中心发送一条消息。 这将导致 IoT 中心消息的平均大小仅超过 200 个字节。 但是，此配置的优点是，OPC 发布服务器从连接的资产中发送数据，而不会造成延迟。 对于必须发布大量数据的用例，丢失的消息数将会很高，因此不建议在这些情况下使用。
 

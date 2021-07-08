@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cbfa01788f1897264b4197798aa5879cf724db3
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 93b5d7059c1d19b3e5130a8e6d360655fa210aba
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104770948"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555945"
 ---
 # <a name="tutorial-use-net-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 .NET 和 AI 从 Azure Blob 生成可搜索的内容
 
@@ -297,7 +297,7 @@ SearchIndexerDataSourceConnection dataSource = CreateOrUpdateDataSource(indexerC
 
 * [文本拆分](cognitive-search-skill-textsplit.md)：用于先将大段内容拆分为较小区块，再调用关键短语提取技能和实体识别技能。 关键短语提取和实体识别接受不超过 50,000 个字符的输入。 有几个示例文件需要拆分才能保留在此限制范围内。
 
-* [实体识别](cognitive-search-skill-entity-recognition.md)：从 Blob 容器中的内容提取组织名称。
+* [实体识别](cognitive-search-skill-entity-recognition-v3.md)：从 Blob 容器中的内容提取组织名称。
 
 * [关键短语提取](cognitive-search-skill-keyphrases.md)：取出最关键的短语。
 

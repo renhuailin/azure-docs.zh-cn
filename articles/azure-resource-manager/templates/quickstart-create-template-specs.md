@@ -2,17 +2,17 @@
 title: 创建和部署模板规格
 description: 了解如何通过 ARM 模板创建模板规格。 然后，将模板规格部署到订阅中的资源组。
 author: tfitzmac
-ms.date: 12/14/2020
+ms.date: 05/04/2021
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 28987486726f5a88d20efe9fe8a766e536062c2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0775d58bebaf487d5a536818aec788fabdace909
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889954"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754174"
 ---
-# <a name="quickstart-create-and-deploy-template-spec-preview"></a>快速入门：创建和部署模板规格（预览）
+# <a name="quickstart-create-and-deploy-template-spec"></a>快速入门：创建和部署模板规格
 
 本快速入门介绍如何将 Azure 资源管理器模板（ARM 模板）打包为[模板规格](template-specs.md)。然后部署该模板规格。模板规格包含用于部署存储帐户的 ARM 模板。
 
@@ -21,13 +21,13 @@ ms.locfileid: "104889954"
 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 模板规格当前提供预览版。 若要将其与 Azure PowerShell 一起使用，必须安装[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
+> 若要将模板规则与 Azure PowerShell 一起使用，必须安装[版本 5.0.0 或更高版本](/powershell/azure/install-az-ps)。 若要将其与 Azure CLI 一起使用，请使用[版本 2.14.2 或更高版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-template"></a>创建模板
 
 可以根据本地模板创建模板规格。 复制以下模板并将其本地保存到名为 azuredeploy.json 的文件中。 本快速入门假设你已将模板保存到路径 c:\Templates\azuredeploy.json，不过你可以使用任何路径。
 
-:::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json":::
 
 ## <a name="create-template-spec"></a>创建模板规格
 
@@ -126,7 +126,7 @@ ms.locfileid: "104889954"
       "resources": [
         {
           "type": "Microsoft.Resources/templateSpecs",
-          "apiVersion": "2019-06-01-preview",
+          "apiVersion": "2021-05-01",
           "name": "storageSpec",
           "location": "westus2",
           "properties": {
@@ -136,12 +136,12 @@ ms.locfileid: "104889954"
           "resources": [
             {
               "type": "versions",
-              "apiVersion": "2019-06-01-preview",
+              "apiVersion": "2021-05-01",
               "name": "1.0",
               "location": "westus2",
               "dependsOn": [ "storageSpec" ],
               "properties": {
-                "template": {
+                "mainTemplate": {
                   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
                   "contentVersion": "1.0.0.0",
                   "parameters": {
@@ -490,7 +490,7 @@ ms.locfileid: "104889954"
       "resources": [
         {
           "type": "Microsoft.Resources/templateSpecs",
-          "apiVersion": "2019-06-01-preview",
+          "apiVersion": "2021-05-01",
           "name": "storageSpec",
           "location": "westus2",
           "properties": {
@@ -500,12 +500,12 @@ ms.locfileid: "104889954"
           "resources": [
             {
               "type": "versions",
-              "apiVersion": "2019-06-01-preview",
+              "apiVersion": "2021-05-01",
               "name": "2.0",
               "location": "westus2",
               "dependsOn": [ "storageSpec" ],
               "properties": {
-                "template": {
+                "mainTemplate": {
                   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
                   "contentVersion": "1.0.0.0",
                   "parameters": {

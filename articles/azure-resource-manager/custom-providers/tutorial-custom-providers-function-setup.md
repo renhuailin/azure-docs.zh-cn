@@ -1,27 +1,27 @@
 ---
 title: 设置 Azure Functions
-description: 本教程讲述如何创建 Azure 函数应用并将其设置为与 Azure 自定义提供程序配合使用
+description: 本教程讲述如何在 Azure Functions 中创建函数应用并将其设置为与 Azure 自定义提供程序配合使用。
 author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b63dc2e47a494b50ea756728afc39e74200f8d39
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737314"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745822"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>设置用于 Azure 自定义提供程序的 Azure Functions
 
-自定义提供程序是 Azure 与终结点之间的协定。 使用自定义提供程序，可以在 Azure 中更改工作流。 本教程介绍如何设置 Azure 函数应用，将其用作自定义提供程序终结点。
+自定义提供程序是 Azure 与终结点之间的协定。 使用自定义提供程序，可以在 Azure 中更改工作流。 本教程介绍如何在 Azure Functions 中设置函数应用，将其用作自定义提供程序终结点。
 
-## <a name="create-the-azure-function-app"></a>创建 Azure 函数应用
+## <a name="create-the-function-app"></a>创建函数应用
 
 > [!NOTE]
-> 在本教程中，我们创建一个简单的使用 Azure 函数应用的服务终结点。 但是，自定义提供程序可以使用任何可公开访问的终结点。 备用选项包括 Azure 逻辑应用、Azure API 管理，以及 Azure 应用服务的 Web 应用功能。
+> 在本教程中，你将在 Azure Functions 中创建一个使用函数应用的简单服务终结点。 但是，自定义提供程序可以使用任何可公开访问的终结点。 备用选项包括 Azure 逻辑应用、Azure API 管理，以及 Azure 应用服务的 Web 应用功能。
 
-若要开始本教程，首先应该按[在 Azure 门户中创建第一个 Azure 函数应用](../../azure-functions/functions-get-started.md)教程中的说明操作。 该教程创建一个 .NET Core Webhook 函数，该函数可以在 Azure 门户中修改。 它也是当前教程的基础。
+若要开始本教程，首先应该按[在 Azure 门户中创建你的第一个函数应用](../../azure-functions/functions-get-started.md)教程中的说明操作。 该教程创建一个 .NET Core Webhook 函数，该函数可以在 Azure 门户中修改。 它也是当前教程的基础。
 
 ## <a name="install-azure-table-storage-bindings"></a>安装 Azure 表存储绑定
 
@@ -77,6 +77,6 @@ ms.locfileid: "98737314"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍如何设置 Azure 函数应用，将其用作 Azure 自定义提供程序终结点。
+在本教程中，你在 Azure Functions 中设置了一个函数应用，将其用作 Azure 自定义提供程序终结点。
 
 若要了解如何创作 RESTful 自定义提供程序终结点，请参阅[教程：创作 RESTful 自定义提供程序终结点](./tutorial-custom-providers-function-authoring.md)。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 2eb6bcb2fcaeb3afddfb8605b9065766fa0af5ee
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 677ce4e66a3d9f870e21785327f382b9974b2cdf
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130558"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748648"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-holmes"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Holmes 集成
 
@@ -36,8 +36,6 @@ ms.locfileid: "108130558"
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
-
-* Holmes 支持 SP 和 IDP 发起的 SSO。
 
 ## <a name="adding-holmes-from-the-gallery"></a>从库中添加 Holmes
 
@@ -74,18 +72,20 @@ ms.locfileid: "108130558"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+2. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“标识符”文本框中，使用以下模式键入 URL：`https://<WorkspaceID>.holmescloud.com` 
+   1. 在“标识符”文本框中，使用以下模式键入 URL： 
 
-1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
-
-    在“登录 URL”文本框中，键入 URL：`https://www.holmescloud.com/login`
+      `https://<WorkspaceID>.holmescloud.com`
+      
+   1. 在“回复 URL (断言使用者服务 URL)”文本框中，输入 `https://holmescloud.com/sso/acs`。
+   
+   1. 在“注销 URL”文本框中，输入 `https://holmescloud.com/sso/logout`。
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际标识符更新此值。 请联系 [Holmes 客户端支持团队](mailto:team-dev@holmescloud.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 将值更新为用实际标识符（指“Holmes 管理”页）。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+3. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -102,8 +102,8 @@ ms.locfileid: "108130558"
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-   1. 单击“创建”。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -115,15 +115,15 @@ ms.locfileid: "108130558"
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
-1. 在“添加分配”对话框中，单击“分配”按钮。
+1. 在“添加分配”对话框中，选择“分配”按钮 。
 
 ## <a name="configure-holmes-sso"></a>配置 Holmes SSO
 
-若要在 Holmes 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Holmes 支持团队](mailto:team-dev@holmescloud.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Holmes 端配置单一登录，你需要在“Holmes 管理”页上注册下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL。  
 
 ### <a name="create-holmes-test-user"></a>创建 Holmes 测试用户
 
-本部分将在 Holmes 中创建名为 Britta Simon 的用户。 在 [Holmes 支持团队](mailto:team-dev@holmescloud.com)的配合下，将用户添加到 Holmes 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，你将在 Holmes 中创建名为 B.Simon 的用户。 可以在“Holmes 成员管理”页上创建/邀请用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

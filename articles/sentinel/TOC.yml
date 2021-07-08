@@ -25,10 +25,12 @@
       href: tutorial-respond-threats-playbook.md
     - name: 创建 KQL 查询（Learn 模块）
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
-    - name: 为 SAP 部署 Azure Sentinel 解决方案
-      href: sap-deploy-solution.md
+    - name: 从 Azure Sentinel 创建 Power BI 报表
+      href: powerbi.md
 - name: 概念
   items:
+    - name: 了解和管理成本和计费
+      href: azure-sentinel-billing.md
     - name: 使用实体对数据进行分类
       href: entities-in-azure-sentinel.md
     - name: 管理访问权限
@@ -116,7 +118,7 @@
               href: connect-asc-iot.md
             - name: 域名服务器
               href: connect-dns.md
-            - name: Dynamics 365（全新！）
+            - name: Dynamics 365
               href: connect-dynamics-365.md
             - name: Microsoft 365 Defender
               href: connect-microsoft-365-defender.md
@@ -130,7 +132,7 @@
                   href: connect-azure-atp.md
                 - name: Microsoft Defender for Office 365（前身为 Office 365 ATP）
                   href: connect-office-365-advanced-threat-protection.md
-            - name: Office 365（现带有 Teams！）
+            - name: Office 365（包括 Teams）
               href: connect-office-365.md
             - name: Windows 防火墙
               href: connect-windows-firewall.md
@@ -278,14 +280,24 @@
           href: connect-azure-stack.md
         - name: 监视数据连接器运行状况
           href: monitor-data-connector-health.md
-    - name: 部署解决方案
+    - name: 分析规则
       items:
-        - name: 发现和部署解决方案
-          href: sentinel-solutions-deploy.md
-        - name: 高级 - 在本地部署 SAP 数据连接器
-          href: sap-solution-deploy-alternate.md
-    - name: 使用 SOC-ML 异常规则
-      href: work-with-anomaly-rules.md
+        - name: 警报扩充
+          items:
+            - name: 将数据字段映射到实体
+              href: map-data-fields-to-entities.md
+            - name: 警报中的 Surface 自定义详细信息
+              href: surface-custom-details-in-alerts.md
+            - name: 自定义警报详细信息
+              href: customize-alert-details.md
+        - name: 导出和导入分析规则
+          href: import-export-analytics-rules.md
+        - name: 从警报创建事件
+          href: create-incidents-from-alerts.md
+        - name: 使用 SOC-ML 异常规则
+          href: work-with-anomaly-rules.md
+    - name: 发现和部署解决方案
+      href: sentinel-solutions-deploy.md
     - name: 创建自定义实体活动
       href: customize-entity-activities.md
     - name: 使用用户和实体行为分析
@@ -294,18 +306,12 @@
           href: enable-entity-behavior-analytics.md
         - name: 使用 UEBA 进行调查
           href: investigate-with-ueba.md
-    - name: 将数据字段映射到实体
-      href: map-data-fields-to-entities.md
     - name: 管理多个租户 (MSSP)
       href: multiple-tenants-service-providers.md
     - name: 处理多个工作区中的事件
       href: multiple-workspace-view.md
     - name: 设置客户管理的密钥 (CMK)
       href: customer-managed-keys.md
-    - name: 警报中的 Surface 自定义详细信息
-      href: surface-custom-details-in-alerts.md
-    - name: 从警报创建事件
-      href: create-incidents-from-alerts.md
     - name: 在 Microsoft Teams 中开展协作
       href: collaborate-in-microsoft-teams.md
     - name: 利用事件指标更好地管理 SOC
@@ -325,12 +331,26 @@
           href: livestream.md
     - name: 删除 Azure Sentinel
       href: offboard.md
+- name: 集成 SAP 和 Azure Sentinel
+  items:
+    - name: 部署 SAP 连续威胁监视
+      href: sap-deploy-solution.md
+    - name: 部署要求
+      href: sap-solution-detailed-requirements.md
+    - name: 可用的 SAP 日志
+      href: sap-solution-log-reference.md
+    - name: SAP 工作簿、规则和播放列表
+      href: sap-solution-security-content.md
+    - name: 在本地部署 SAP 数据连接器
+      href: sap-solution-deploy-alternate.md
 - name: 参考
   items:
     - name: 热门 Azure Sentinel 工作簿
       href: top-workbooks.md
     - name: Azure CLI
       href: /cli/azure/sentinel
+    - name: Azure Sentinel PowerShell
+      href: /powershell/module/az.securityinsights/
     - name: Azure RBAC 角色
       items:
         - name: 所有 Azure 角色
@@ -367,14 +387,6 @@
       href: cef-name-mapping.md
     - name: MCAS 警报未加入到 Microsoft 365 Defender
       href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
-    - name: SAP 解决方案参考
-      items:
-        - name: 详细的 SAP 解决方案要求
-          href: sap-solution-detailed-requirements.md
-        - name: 可用的 SAP 日志
-          href: sap-solution-log-reference.md
-        - name: SAP 解决方案安全内容参考
-          href: sap-solution-security-content.md
 - name: 资源
   items:
     - name: 有用的资源
@@ -386,6 +398,6 @@
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/azure-sentinel/'
     - name: 美国政府云的功能可用性
-      href: /azure/security/fundamentals/feature-availability
+      href: ../security/fundamentals/feature-availability.md
     - name: 存档新功能（早于 6 个月）
       href: whats-new-archive.md

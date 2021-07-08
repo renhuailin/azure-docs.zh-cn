@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
 ms.date: 04/26/2021
-ms.openlocfilehash: e53823539194fe1082621f458e8b5b3d493c191d
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: b16c69d4a51026d3eafcb6449dd3042703269118
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166851"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371611"
 ---
 # <a name="azure-web-pubsub-service-faq"></a>Azure Web PubSub 服务常见问题解答
 
@@ -19,7 +19,23 @@ ms.locfileid: "108166851"
 
 ## <a name="is-azure-web-pubsub-service-ready-for-production-use"></a>Azure Web PubSub 服务是已可用于生产？
 
-Azure Web PubSub 服务现为公共预览版，没有承诺的 SLA。 
+Azure Web PubSub 服务目前为公共预览版，不提供 SLA 方面的承诺。 
+
+## <a name="how-do-i-choose-between-azure-signalr-service-and-azure-web-pubsub-service"></a>如何在 Azure SignalR 服务与 Azure Web PubSub 服务之间进行选择？
+
+[Azure SignalR 服务](https://azure.microsoft.com/services/signalr-service)和 [Azure Web PubSub 服务](https://azure.microsoft.com/services/web-pubsub)都可帮助客户轻松生成大规模且高度可用的实时 Web 应用程序，使客户能够将工作重心放在业务逻辑上，而无需管理消息传递基础结构。 一般而言，如果你已使用 SignalR 库生成了实时应用程序，则可以选择 Azure SignalR 服务。 如果你正在寻求一种通用解决方案来基于 WebSocket 和发布-订阅模式生成实时应用程序，则可以选择 Azure Web PubSub 服务。 Azure Web PubSub 服务不能替代 Azure SignalR 服务。 它们面向不同的方案。
+
+对于以下情况，更适合使用 Azure SignalR 服务：  
+
+- 你已使用 ASP.NET 或 ASP.NET Core SignalR（主要是使用 .NET），或者需要与 .NET 生态系统（例如 Blazor）相集成。
+- 有一个适用于你的平台的 SignalR 客户端。 
+- 需要一个已确立的且支持多种调用模式（RPC 和流式处理）和传输（WebSocket、服务器发送的事件和长时间轮询）的协议，以及一个可以代你管理连接生存期的客户端。 
+
+对于以下情况，更适合使用 Azure Web PubSub 服务：  
+
+- 你需要基于 WebSocket 技术或者基于 WebSocket 的发布-订阅模式生成实时应用程序。
+- 你需要生成自己的子协议，或使用基于 WebSocket 的现有高级协议（例如，基于 WebSocket 的 MQTT 或 AMQP）。 
+- 你正在寻求一台轻型服务器，例如，在不通过配置的后端的情况下将消息发送到客户端。  
 
 ##  <a name="where-does-my-data-reside"></a>我的数据存放在什么位置？
 

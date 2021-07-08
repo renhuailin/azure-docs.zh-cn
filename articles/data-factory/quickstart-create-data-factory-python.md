@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 04/12/2021
+ms.date: 05/27/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 665944688533b4efa6e0e14077ae7df22d352d50
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dbc82773128aec58202821827be16bdf5d80260a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123620"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665169"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
 
@@ -40,7 +40,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
 * [Azure 存储资源管理器](https://storageexplorer.com/)（可选）。
 
-* [Azure Active Directory 中的应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 按照此链接中的步骤创建应用程序，并按照同一文章中的说明将应用程序分配到“参与者”角色。 记下本文显示的以下值，以便在后续步骤中使用：应用程序 ID（下方的服务主体 ID）、身份验证密钥（下方的客户端密码）和租户 ID。
+* [Azure Active Directory 中的应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 按照此链接中的步骤，使用验证选项 2（应用程序机密）创建应用程序，并按照同一文章中的说明将应用程序分配到“参与者”角色。 记下本文显示的以下值，以便在后续步骤中使用：应用程序（客户端）ID、客户端密码值和租户 ID。
 
 ## <a name="create-and-upload-an-input-file"></a>创建并上传输入文件
 
@@ -139,7 +139,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
         df_name = '<factory name>'
 
         # Specify your Active Directory client ID, client secret, and tenant ID
-        credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
+        credentials = ClientSecretCredential(client_id='<Application (client) ID>', client_secret='<client secret value>', tenant_id='<tenant ID>') 
         
         # Specify following for Soverign Clouds, import right cloud constant and then use it to connect.
         # from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD as CLOUD

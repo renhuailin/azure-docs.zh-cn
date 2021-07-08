@@ -3,12 +3,12 @@ title: Azure Resource Graph 概述
 description: 了解如何使用 Azure Resource Graph 服务跨订阅和租户对资源进行大规模的复杂查询。
 ms.date: 05/01/2021
 ms.topic: overview
-ms.openlocfilehash: dfbd0aad0ddc7a6b5aa0ccb78429c82f6aa33b3d
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 783f6040191996c1ba8d572be2666e5aeabc76e5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326050"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751582"
 ---
 # <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph？
 
@@ -84,11 +84,11 @@ Resource Graph 在用户级别对查询进行限制。 服务响应包含以下 
 
 ## <a name="running-your-first-query"></a>运行自己的第一个查询
 
-Azure Resource Graph 资源管理器是 Azure门户的一部分，支持直接在 Azure 门户中运行 Resource Graph 查询。 将结果固定为动态图表，以便向门户工作流提供实时动态信息。 有关详细信息，请参阅[使用 Azure Resource Graph 资源管理器进行第一次查询](./first-query-portal.md)。
+Azure Resource Graph 资源管理器是 Azure 门户的一部分，支持直接在 Azure 门户中运行 Resource Graph 查询。 将结果固定为动态图表，以便向门户工作流提供实时动态信息。 有关详细信息，请参阅[使用 Azure Resource Graph 资源管理器进行第一次查询](./first-query-portal.md)。
 
 Resource Graph 支持 Azure CLI、Azure PowerShell、用于 Python 的 Azure SDK 等。 对于每种语言，查询结构相同。 了解如何使用以下项启用 Resource Graph：
 
-- [Azure 门户和 Resource Graph 资源管理器](./first-query-portal.md) 
+- [Azure 门户和 Resource Graph 资源管理器](./first-query-portal.md)
 - [Azure CLI](./first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](./first-query-powershell.md#add-the-resource-graph-module)
 - [Python](./first-query-python.md#add-the-resource-graph-library)

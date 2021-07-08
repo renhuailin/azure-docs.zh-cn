@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 71ba1d6e1e45c5c2e72e2be620158b1aa4b71582
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 8750ad846b832eb4fe037568d3b99f299cfe121b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430797"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790624"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise 注册发票
 
@@ -231,7 +231,7 @@ Microsoft 每年在注册生效日期对 Microsoft Azure 服务的任何预付�
 - 可用 Azure 预付款金额涵盖产生的总费用，包括以往未付的所有 Azure 发票。
 - 要完成的计费条款必须完全了结。 计费将在每个月的五号之后完全了结。
 - 要抵销的计费周期必须完全了结。
-- Azure 预付款折扣 (ACD) 基于实际的新预付款金额减去根据上次消耗量计划的任何资金。 此项要求仅适用于产生的超额费用。 它只对 Azure 预付款服务有效，因此不适用于支付 Azure 市场费用。 Azure 市场费用单独计收。
+- Azure 预付款折扣 (APD) 基于实际的新预付款金额减去根据上次消耗量计划的任何资金。 此项要求仅适用于产生的超额费用。 它只对 Azure 预付款服务有效，因此不适用于支付 Azure 市场费用。 Azure 市场费用单独计收。
 
 若要完成超额抵销，你或帐户团队可以提出支持请求。 需要经过企业管理员或“接收帐单的联系人”的电子邮件批准。
 

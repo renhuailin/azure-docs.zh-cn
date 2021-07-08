@@ -1,0 +1,148 @@
+- name: Bicep 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Bicep？
+      href: overview.md
+    - name: 比较 JSON 和 Bicep
+      href: compare-template-syntax.md
+- name: 安装
+  items:
+    - name: 安装 Bicep 工具
+      href: install.md
+- name: 快速入门
+  items:
+    - name: 创建 Bicep 模板 - VS Code
+      href: quickstart-create-bicep-use-visual-studio-code.md
+- name: 教程
+  items:
+    - name: Microsoft Learn - Bicep
+      href: learn-bicep.md
+- name: 如何
+  items:
+    - name: 作者
+      items:
+        - name: 资源
+          items:
+            - name: 资源声明
+              href: resource-declaration.md
+            - name: 条件部署
+              href: conditional-resource-deployment.md
+            - name: 子资源名称和类型
+              href: child-resource-name-type.md
+            - name: 扩展资源
+              href: scope-extension-resources.md
+        - name: parameters
+          href: parameters.md
+        - name: 变量
+          href: variables.md
+        - name: Outputs
+          href: outputs.md
+        - name: 模块
+          href: modules.md
+        - name: 循环
+          items:
+            - name: 资源
+              displayName: 'iteration,copy,multiple'
+              href: loop-resources.md
+            - name: 属性
+              displayName: 'iteration,copy,multiple'
+              href: loop-properties.md
+            - name: 变量
+              displayName: 'iteration,copy,multiple'
+              href: loop-variables.md
+            - name: Outputs
+              displayName: 'iteration,copy,multiple'
+              href: loop-outputs.md
+        - name: 作用域
+          items:
+            - name: 资源组
+              href: deploy-to-resource-group.md
+            - name: 订阅
+              href: deploy-to-subscription.md
+            - name: 管理组
+              href: deploy-to-management-group.md
+            - name: 租户
+              href: deploy-to-tenant.md
+        - name: 最佳实践
+          href: best-practices.md
+    - name: 部署
+      items:
+        - name: 预部署检查
+          items:
+            - name: 模拟部署
+              href: deploy-what-if.md
+        - name: 部署命令
+          items:
+            - name: 部署 - CLI
+              href: deploy-cli.md
+            - name: 部署 - PowerShell
+              href: deploy-powershell.md
+            - name: 部署 - Cloud Shell
+              href: deploy-cloud-shell.md
+        - name: parameters
+          items:
+            - name: 创建参数文件
+              href: parameter-files.md
+            - name: 传递敏感值
+              displayname: key vault
+              href: key-vault-parameter.md
+        - name: CI/CD
+          items:
+            - name: Bicep 与管道
+              href: add-template-to-azure-pipelines.md
+            - name: Bicep 与 GitHub Actions
+              href: deploy-github-actions.md
+    - name: 使用 Bicep CLI
+      items:
+        - name: 反向编译
+          href: decompile.md
+- name: 参考
+  items:
+    - name: Bicep 文件结构
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: file.md
+    - name: 数据类型
+      href: data-types.md
+    - name: 函数
+      items:
+        - name: 所有函数
+          href: bicep-functions.md
+        - name: 任何函数
+          href: bicep-functions-any.md
+        - name: 数组函数
+          href: bicep-functions-array.md
+        - name: 日期函数
+          href: bicep-functions-date.md
+        - name: 部署函数
+          href: bicep-functions-deployment.md
+        - name: 逻辑函数
+          href: bicep-functions-logical.md
+        - name: 数值函数
+          href: bicep-functions-numeric.md
+        - name: 对象函数
+          href: bicep-functions-object.md
+        - name: Resource functions
+          href: bicep-functions-resource.md
+        - name: 作用域函数
+          href: bicep-functions-scope.md
+        - name: 字符串函数
+          href: bicep-functions-string.md
+    - name: 运算符
+      items:
+        - name: 所有运算符
+          href: operators.md
+        - name: 比较运算符
+          href: operators-comparison.md
+        - name: 逻辑运算符
+          href: operators-logical.md
+        - name: 数字运算符
+          href: operators-numeric.md
+    - name: Bicep CLI
+      href: bicep-cli.md
+    - name: 模板参考
+      href: /azure/templates/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure CLI
+      href: /cli/azure/resource

@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d1b2cbefe64add5048d4e3c7946277b1461a5434
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e0605b5a882dcfa09b2435476a37d116f8c47286
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607077"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350685"
 ---
 [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md) 的配置设置。
 
@@ -103,7 +103,7 @@ ms.locfileid: "105607077"
 |---------|---------|----------|
 |hubName|DurableFunctionsHub|可以使用备用[任务中心](../articles/azure-functions/durable/durable-functions-task-hubs.md)名称将多个 Durable Functions 应用程序彼此隔离，即使这些应用程序使用同一存储后端。|
 |controlQueueBatchSize|32|要从控制队列中一次性拉取的消息数。|
-|controlQueueBufferThreshold| **消耗计划**：32 <br> **专用/高级计划**：256 |一次可以在内存中缓冲的控制队列消息数，此时调度程序将等待，然后再将任何其他消息出队。|
+|controlQueueBufferThreshold| 适用于 Python 的消耗计划：32 <br> 适用于 JavaScript 和 C# 的消耗计划：128 <br> **专用/高级计划**：256 |一次可以在内存中缓冲的控制队列消息数，此时调度程序将等待，然后再将任何其他消息出队。|
 |partitionCount |4|控制队列的分区计数。 可以是 1 到 16 之间的正整数。|
 |controlQueueVisibilityTimeout |5 分钟|已取消排队的控制队列消息的可见性超时。|
 |workItemQueueVisibilityTimeout |5 分钟|已取消排队的工作项队列消息的可见性超时。|

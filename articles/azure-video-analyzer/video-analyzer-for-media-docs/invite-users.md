@@ -1,20 +1,19 @@
 ---
 title: 邀请用户加入 Azure 视频分析器媒体版（旧称为视频分析器媒体版） - Azure
-titleSuffix: Azure Video Analyzer for Media
+titleSuffix: Azure Media Services
 description: 本文介绍如何邀请用户加入 Azure 视频分析器媒体版（旧称为视频分析器媒体版）。
-services: azure-video-analyzer
+services: media-services
 author: Juliako
 manager: femila
 ms.topic: quickstart
-ms.subservice: azure-video-analyzer-media
 ms.date: 02/03/2021
 ms.author: juliako
-ms.openlocfilehash: b724ebdc929c654c5a31db2c797901147be3e29a
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 9f10decf9ae90d91f57eda2da84be8910d7b9fc7
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119593"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110384946"
 ---
 # <a name="quickstart-invite-users-to-video-analyzer-for-media"></a>快速入门：邀请用户加入视频分析器媒体版
 

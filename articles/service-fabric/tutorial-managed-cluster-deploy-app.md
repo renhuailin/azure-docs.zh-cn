@@ -1,16 +1,17 @@
 ---
-title: 通过 PowerShell 将应用程序部署到 Service Fabric 托管群集（预览版）
+title: 通过 PowerShell 将应用程序部署到 Service Fabric 托管群集
 description: 在本教程中，你将连接到 Service Fabric 托管群集并通过 PowerShell 部署应用程序。
 ms.topic: tutorial
-ms.date: 09/28/2020
-ms.openlocfilehash: 36a91d2852bcda5f958441b48ef4721d6ccc83c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 5/10/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f9ee801bdddd43563794aee7420ee8ba54f4d1d7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91410188"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672402"
 ---
-# <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster-preview"></a>教程：将应用部署到 Service Fabric 托管群集（预览版）
+# <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster"></a>教程：将应用部署到 Service Fabric 托管群集
 
 在本系列教程中，我们将讨论以下内容：
 
@@ -39,7 +40,7 @@ ms.locfileid: "91410188"
 可以使用以下命令来查询群集资源，以获取群集证书指纹。
 
 ```powershell
-$serverThumbprint = (Get-AzResource -ResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceFabric/managedclusters/mysfcluster).Properties.clusterCertificateThumbprint
+$serverThumbprint = (Get-AzResource -ResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceFabric/managedclusters/mysfcluster).Properties.clusterCertificateThumbprints
 ```
 
 有了群集证书指纹，你就可以连接到群集了。
@@ -93,7 +94,12 @@ Remove-ServiceFabricApplication fabric:/Voting
 
 ## <a name="next-steps"></a>后续步骤
 
-在这一步中，我们将应用部署到了 Service Fabric 托管群集。 若要详细了解 Service Fabric 托管群集，请参阅：
+在这一步中，我们将应用程序部署到 Service Fabric 托管群集。 若要详细了解应用程序部署选项，请参阅：
 
-> [!div class="nextstepaction"]
-> [Service Fabric 托管群集常见问题](faq-managed-cluster.md)
+* [部署托管群集应用程序机密](how-to-managed-cluster-application-secrets.md)
+* [使用 ARM 模板部署托管群集应用程序](how-to-managed-cluster-app-deployment-template.md)
+* [使用托管标识部署托管群集应用程序](how-to-managed-cluster-application-managed-identity.md)
+
+若要详细了解托管群集配置选项，请参阅：
+
+* [配置托管群集](how-to-managed-cluster-configuration.md)

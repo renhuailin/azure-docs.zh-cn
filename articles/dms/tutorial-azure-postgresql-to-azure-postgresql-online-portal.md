@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 996523d507f0a4f2850e936df39a38769bc47cde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f372e72b423db17e1c11907b4a41d65c9fba2fd
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091294"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950787"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>教程：通过 Azure 门户使用 DMS 以联机方式将 Azure DB for PostgreSQL 单一服务器迁移/升级到 Azure DB for PostgreSQL 单一服务器
 
@@ -40,7 +40,7 @@ ms.locfileid: "101091294"
 > 为获得最佳迁移体验，Microsoft 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。
 
 > [!IMPORTANT]
-> PostgreSQL 版本 10 及更高版本支持从 Azure Database for PostgreSQL 进行迁移。 你还可以使用本教程从一个 Azure Database for PostgreSQL 实例迁移到另一个 Azure Database for PostgreSQL 实例或超大规模 (Citus) 实例。
+> PostgreSQL 版本 9.x 及更高版本支持从 Azure Database for PostgreSQL 进行迁移。 你还可以使用本教程从一个 Azure Database for PostgreSQL 实例迁移到另一个 Azure Database for PostgreSQL 实例或超大规模 (Citus) 实例。 请注意，从 PostgreSQL 9.5 和 9.6 进行迁移需要在源实例中具有[额外的逻辑复制权限](#run-the-migration)。 
 
 ## <a name="prerequisites"></a>先决条件
 

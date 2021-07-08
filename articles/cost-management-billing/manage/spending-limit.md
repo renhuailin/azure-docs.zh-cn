@@ -7,18 +7,20 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 04/30/2021
 ms.author: banders
-ms.openlocfilehash: 47f1a1ed182420852682e908c7cd8b5e094bc085
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f49b318cfb413aff98a37dc244d43c690c8c1698
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932550"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753618"
 ---
 # <a name="azure-spending-limit"></a>Azure 支出限制
 
-Azure 中的支出限制可以防止支出超过额度金额。 如果新客户注册包括几个月额度的 Azure 免费帐户或订阅类型，则这些客户都将默认开启支出限制。 支出限制等于额度金额。 无法更改支出限制的金额。 例如，如果注册获取 Azure 免费帐户，则支出限制为 200 美元，不能将其更改为 500 美元。 但是，可以移除支出限制。 因此，你要么没有限制，要么限制为额度金额。 这导致你无法完成大多数类型的支出。 支出限制不适用于具有承诺计划或使用即用即付定价的订阅。 请参阅 [Azure 订阅类型以及支出限制可用性的完整列表](https://azure.microsoft.com/support/legal/offer-details/)。
+Azure 中的支出限制可以防止支出超过额度金额。 如果新客户注册包括几个月额度的 Azure 免费帐户或订阅类型，则这些客户都将默认开启支出限制。 支出限制等于额度金额。 无法更改支出限制的金额。 例如，如果注册获取 Azure 免费帐户，则支出限制为 200 美元，不能将其更改为 500 美元。 但是，可以移除支出限制。 因此，你要么没有限制，要么限制为额度金额。 这导致你无法完成大多数类型的支出。
+
+支出限制不适用于具有承诺计划或使用即用即付定价的订阅。 对于这些类型的订阅，Azure 门户中未显示支出限制，你无法启用该功能。 请参阅 [Azure 订阅类型以及支出限制可用性的完整列表](https://azure.microsoft.com/support/legal/offer-details/)。
 
 ## <a name="reaching-a-spending-limit"></a>达到支出限制
 
@@ -41,33 +43,19 @@ Azure 中的支出限制可以防止支出超过额度金额。 如果新客户�
 <a id="remove"></a>
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。 
-
-    ![显示搜索“成本管理 + 计费”的屏幕截图 ](./media/spending-limit/search-bar.png)
-
-1. 在“我的订阅”列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。
-
-   ![显示我的订阅网格概览的屏幕截图](./media/spending-limit/cost-management-overview-msdn-x.png)
-
+1. 搜索“成本管理 + 计费”。  
+    :::image type="content" source="./media/spending-limit/search-bar.png" alt-text="显示搜索“成本管理 + 计费”的屏幕截图。" lightbox="./media/spending-limit/search-bar.png" :::
+1. 在“我的订阅”列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。  
+    :::image type="content" source="./media/spending-limit/cost-management-overview-msdn-x.png" alt-text="显示概述中我的订阅网格的屏幕截图。" lightbox="./media/spending-limit/cost-management-overview-msdn-x.png" :::
     > [!NOTE]
     > 如果在此处未看到你的某些 Visual Studio 订阅，则可能是因为你在某个时间点更改了订阅目录。 对于这些订阅，你需要将目录切换回原始目录（你最初在其中进行注册的目录）。 然后，重复步骤 2。
-
-1. 在订阅概览中，单击橙色横幅删除支出限制。
-
-    ![显示删除支出限制横幅的屏幕截图](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
-
-1. 选择是要永久删除支出限制还是仅为当前计费周期删除。
-
-      ![显示删除支出限制边栏选项卡的屏幕截图](./media/spending-limit/remove-spending-limit-blade-x.png)
-
-      | 选项 | 效果 |
-      | --- | --- |
-      | 永久性移除支出限制 | 支出限制在下个计费周期开始时不会自动重新启用。 但是，你随时可以将其重新启用。 |
-      | 移除当前计费期间的支出限制 | 支出限制在下个计费周期开始时会自动重新启用。 |
-
-
+1. 在订阅概述中，单击横幅以删除支出限制。  
+    :::image type="content" source="./media/spending-limit/msdn-remove-spending-limit-banner-x.png" alt-text="显示删除支出限制横幅的屏幕截图。" lightbox="./media/spending-limit/msdn-remove-spending-limit-banner-x.png" :::
+1. 选择是要永久删除支出限制还是仅为当前计费周期删除。  
+    :::image type="content" source="./media/spending-limit/remove-spending-limit-blade-x.png" alt-text="显示“删除支出限制”页面的屏幕截图。" lightbox="./media/spending-limit/remove-spending-limit-blade-x.png" :::
+    - 选择“无限期删除支出限制”选项可防止支出限制在下次计费周期开始时自动启用。 但是，你随时可以将其重新启用。
+    - 选择“删除当前计费周期的支出限制”选项会在下一个计费周期开始时自动重新启用支出限制。
 1. 单击“选择付款方式”，为订阅选择一个付款方式  。 这将成为订阅的有效付款方式。
-
 1. 单击“完成”  。
 
 
@@ -83,19 +71,13 @@ Azure 中的支出限制可以防止支出超过额度金额。 如果新客户�
 
 对于包含多个月额度的订阅类型来说，仅当已无限期移除支出限制时，此功能才可用。 可以使用此功能，在下次计费期开始时自动打开支出限制。
 
-
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。 
-
-    ![显示搜索“成本管理 + 计费”的屏幕截图 ](./media/spending-limit/search-bar.png)
-
-1. 在“我的订阅”列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。
-
-   ![显示我的订阅网格概览的屏幕截图](./media/spending-limit/cost-management-overview-msdn-x.png)
-
+1. 搜索“成本管理 + 计费”。  
+    :::image type="content" source="./media/spending-limit/search-bar.png" alt-text="显示搜索“成本管理 + 计费”的屏幕截图。" lightbox="./media/spending-limit/search-bar.png" :::
+1. 在“我的订阅”列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。  
+    :::image type="content" source="./media/spending-limit/cost-management-overview-msdn-x.png" alt-text="显示概述中我的订阅网格的屏幕截图。" lightbox="./media/spending-limit/cost-management-overview-msdn-x.png" :::
     > [!NOTE]
     > 如果在此处未看到你的某些 Visual Studio 订阅，则可能是因为你在某个时间点更改了订阅目录。 对于这些订阅，你需要将目录切换回原始目录（你最初在其中进行注册的目录）。 然后，重复步骤 2。
-
 1. 在订阅概述中，单击页面顶部的横幅以重新启用支出限制。
 
 ## <a name="custom-spending-limit"></a>自定义支出限制

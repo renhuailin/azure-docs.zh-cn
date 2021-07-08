@@ -3,12 +3,12 @@ title: 添加 NSX-T 网段
 description: 用于为 Azure VMware 解决方案添加 NSX-T 网段的步骤。
 ms.topic: include
 ms.date: 03/13/2021
-ms.openlocfilehash: 477533887629a88f72426a33ed38278636e72fef
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 10b04c8000b8ef440a2a729be671630b4382f3a8
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064445"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794938"
 ---
 <!-- Used in configure-dhcp-azure-vmware-solution.md and tutorial-nsx-t-network-segment.md -->
 
@@ -24,7 +24,7 @@ ms.locfileid: "110064445"
 
    :::image type="content" source="../media/nsxt/nsxt-create-segment-specs.png" alt-text="设置网段名称、连接的网关和类型以及传输区域，然后选择“设置子网”。":::
 
-1. 输入网关的 IP 地址，然后选择“添加”。 
+1. 输入网关 IP 地址，然后选择“添加”。 
 
    >[!IMPORTANT]
    >IP 地址需要位于不重叠的 RFC1918 地址块上，这样可确保连接到新段上的 VM。

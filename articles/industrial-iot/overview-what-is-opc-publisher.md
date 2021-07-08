@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: conceptual
 ms.date: 3/22/2021
-ms.openlocfilehash: 6df39c93e9bcfca522ac61a863c87269216cc592
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 5b91828999d1b8650d8d645d11e62919ddd76090
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816163"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677973"
 ---
 # <a name="what-is-the-opc-publisher"></a>什么是 OPC 发布服务器？
 
@@ -28,6 +28,9 @@ OPC 发布服务器是一种参考实现，演示了如何：
 
 - 用于连接到网络上现有 OPC UA 服务器的 OPC UA 客户端。
 - 端口 62222 上的 OPC UA *服务器*，你可以使用它来管理已发布的内容，并提供 IoT 中心直接方法来执行同样的操作。
+> [!NOTE]
+> 内置 OPC UA 服务器仅在 2.5 版或更低版本中可用。
+
 
 可以从 GitHub 下载 [OPC 发布服务器参考实现](https://github.com/Azure/iot-edge-opc-publisher)。
 

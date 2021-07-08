@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 682394329205d74859c1af0c0a68a37539da7872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68669418a62daad2c2c5d1b9f44f66c1a5b7ebb8
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98881022"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111904078"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教程：使用 AzCopy 将本地数据迁移到云存储空间
 
@@ -56,13 +56,13 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
+- [macOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 将 AzCopy 文件置于计算机上的任何位置。 将文件位置添加到系统路径变量，这样即可从计算机上的任何文件夹引用该可执行文件。
 
 ## <a name="authenticate-with-azure-ad"></a>使用 Azure AD 进行身份验证
 
-首先，为标识分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色。 请参阅[使用 Azure 门户分配用于访问 Blob 和队列数据的 Azure 角色](./storage-auth-aad-rbac-portal.md)。
+首先，为标识分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色。 请参阅[分配 Azure 角色以访问 blob 数据](../blobs/assign-azure-role-data-access.md)。
 
 然后打开命令提示符，键入以下命令，按 ENTER 键。
 

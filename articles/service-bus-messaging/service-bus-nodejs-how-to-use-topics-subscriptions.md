@@ -1,6 +1,6 @@
 ---
-title: 使用包含主题和订阅的预览版 JavaScript azure/service-bus
-description: 了解如何编写使用最新预览版的 @azure/service-bus 包的 JavaScript 程序，以便将消息发送到服务总线主题，并从主题的订阅接收消息。
+title: 向 Azure 服务总线主题发送消息，并从该主题的订阅接收消息 (JavaScript)
+description: 了解如何编写使用最新版 @azure/service-bus 包的 JavaScript 程序，以便将消息发送到服务总线主题，并从主题的订阅接收消息。
 author: spelluru
 ms.author: spelluru
 ms.date: 11/09/2020
@@ -9,14 +9,14 @@ ms.devlang: nodejs
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: 59f1bb29099f2b921e687ca9de46365bc34f1b91
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 13664e2a465ae891666e9c296514dc18a14ed191
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537246"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950210"
 ---
-# <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>快速入门：使用 Node.js 和预览版 azure/service-bus 包的服务总线主题与订阅
+# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-javascript"></a>向 Azure 服务总线主题发送消息，并从该主题的订阅接收消息 (JavaScript)
 本教程介绍如何使用 JavaScript 程序中的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包将消息发送到服务总线主题，并从该主题的服务总线订阅接收消息。
 
 ## <a name="prerequisites"></a>先决条件
@@ -208,6 +208,7 @@ npm install @azure/service-bus
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文档和示例： 
 
-- [适用于 Python 的 Azure 服务总线客户端库](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
-- [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples)。 javascript 文件夹包含 JavaScript 示例，typescript 包含 TypeScript 示例 。 
-- [azure-servicebus 参考文档](/javascript/api/overview/azure/service-bus)
+- [适用于 JavaScript 的 Azure 服务总线客户端库](https://www.npmjs.com/package/@azure/service-bus)
+- [JavaScript 示例](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [TypeScript 示例](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [API 参考文档](/javascript/api/overview/azure/service-bus)

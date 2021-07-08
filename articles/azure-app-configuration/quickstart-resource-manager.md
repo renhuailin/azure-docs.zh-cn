@@ -4,16 +4,16 @@ titleSuffix: Azure App Configuration
 description: 了解如何使用 Azure 资源管理器模板（ARM 模板）创建 Azure 应用程序配置存储。
 author: GrantMeStrength
 ms.author: jken
-ms.date: 10/16/2020
+ms.date: 06/09/2021
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: 2bdd989f79a8a24e47698e187bfc45559e873237
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 15e0bc45bc4fea645ff0ccf7b17110ce4361a9a0
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763966"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983413"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 应用程序配置存储
 
@@ -27,7 +27,7 @@ ms.locfileid: "108763966"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.appconfiguration%2Fapp-configuration-store-kv%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,14 +35,14 @@ ms.locfileid: "108763966"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-app-configuration-store-kv/)。 它创建新的应用程序配置存储，其中包含两个键值。 然后，它使用 `reference` 函数输出这两个键值资源的值。 通过这种方式读取键的值，就能在模板的其他位置使用键值。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/app-configuration-store-kv/)。 它创建新的应用程序配置存储，其中包含两个键值。 然后，它使用 `reference` 函数输出这两个键值资源的值。 通过这种方式读取键的值，就能在模板的其他位置使用键值。
 
 本快速入门使用 `copy` 元素来创建多个键值资源实例。 若要详细了解 `copy` 元素，请参阅 [ARM 模板中的资源迭代](../azure-resource-manager/templates/copy-resources.md)。
 
 > [!IMPORTANT]
 > 此模板需要的应用程序配置资源提供程序版本为 `2020-07-01-preview` 或更高版本。 此版本使用 `reference` 函数来读取键值。 从 `2020-07-01-preview` 版本开始，将不再提供以前的版本中用于读取键值的 `listKeyValue` 函数。
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.appconfiguration/app-configuration-store-kv/azuredeploy.json":::
 
 该模板中定义了两个 Azure 资源：
 
@@ -67,18 +67,21 @@ ms.locfileid: "108763966"
 > az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
 > ```
 
+> [!NOTE]
+> 存在这样一种限制：如果访问密钥身份验证被禁用，则 ARM 模板内的键值数据访问会被禁用。 有关更多详细信息，请参阅[禁用访问密钥身份验证](./howto-disable-access-key-authentication.md#limitations)。
+
 ## <a name="deploy-the-template"></a>部署模板
 
 选择下图登录到 Azure 并打开一个模板。 该模板创建应用程序配置存储，其中包含两个键值。
 
-[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
+[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.appconfiguration%2Fapp-configuration-store-kv%2Fazuredeploy.json)
 
 你也可以使用以下 PowerShell cmdlet 部署模板。 键值将位于 PowerShell 控制台的输出中。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-configuration-store-kv/azuredeploy.json"
+$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.appconfiguration/app-configuration-store-kv/azuredeploy.json"
 
 $resourceGroupName = "${projectName}rg"
 
@@ -110,5 +113,5 @@ Write-Host "Press [ENTER] to continue..."
 
 若要了解如何将功能标志和 Key Vault 引用添加到应用程序配置存储，请查看以下 ARM 模板示例。
 
-- [101-app-configuration-store-ff](https://azure.microsoft.com/resources/templates/101-app-configuration-store-ff/)
-- [101-app-configuration-store-keyvaultref](https://azure.microsoft.com/resources/templates/101-app-configuration-store-keyvaultref/)
+- [app-configuration-store-ff](https://azure.microsoft.com/resources/templates/app-configuration-store-ff/)
+- [app-configuration-store-keyvaultref](https://azure.microsoft.com/resources/templates/app-configuration-store-keyvaultref/)

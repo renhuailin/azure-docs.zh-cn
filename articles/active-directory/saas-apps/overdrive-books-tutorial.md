@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/15/2021
+ms.date: 05/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 390ccfa828ebaa0d3dec15990ffeb60cbb24360e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f94c19f52ab5b49f63d02296f30108f643f5c66d
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648567"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>教程：Azure Active Directory 与 Overdrive 的集成
 
@@ -82,9 +82,9 @@ ms.locfileid: "101648567"
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Overdrive 客户端支持团队](https://help.overdrive.com/)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”来根据要求下载从给定选项提供的应用联合元数据 URL，并将其保存在计算机上   。
 
-    ![证书下载链接](common/metadataxml.png)
+    ![证书下载链接](common/copy-metadataurl.png)
 
 6. 在“设置 Overdrive”部分，根据要求复制相应的 URL。
 
@@ -123,7 +123,7 @@ ms.locfileid: "101648567"
 
 ## <a name="configure-overdrive-sso"></a>配置 Overdrive SSO
 
-若要在 **Overdrive** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Overdrive 支持团队](https://help.overdrive.com/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Overdrive 端配置单一登录，需要将应用联合元数据 URL 发送给 [Overdrive 支持团队](https://help.overdrive.com/) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-overdrive-test-user"></a>创建 Overdrive 测试用户
 

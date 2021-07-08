@@ -3,12 +3,12 @@ title: 教程：从蓝图示例到新环境
 description: 在本教程，你将使用蓝图示例创建蓝图定义，用于设置两个资源组并为每个资源组配置角色分配。
 ms.date: 05/01/2021
 ms.topic: tutorial
-ms.openlocfilehash: 50871c14ed8357e46e49a599065f878253c860df
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 809f29e603d82467a5188a94d4517b48fa825a37
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324430"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733906"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>教程：基于蓝图示例创建环境
 
@@ -122,7 +122,7 @@ ms.locfileid: "108324430"
 
 1. 在左侧选择“分配的蓝图”页。  使用筛选器找到 _Assignment-two-rgs-with-role-assignments_ 蓝图分配，并将其选中。
 
-   在此页中，可以看到分配成功消息、创建的资源列表及其蓝图锁定状态。 如果更新了分配，“分配操作”下拉列表会显示有关每个定义版本的部署的详细信息。  可以选择列出的每个已创建资源，打开该资源的属性页。
+   在此页中，可以看到分配成功消息、创建的资源列表及其蓝图锁定状态。 如果更新了分配，“分配操作”下拉列表会显示有关每个定义版本的部署的详细信息。 可以选择列出的每个已创建资源，打开该资源的属性页。
 
 1. 选择“ProductionRG”资源组。 
 

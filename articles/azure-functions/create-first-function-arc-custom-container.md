@@ -3,12 +3,12 @@ title: 快速入门：在自定义容器中创建基于 Azure Arc 的函数应�
 description: 通过在自定义 Linux 容器中部署第一个函数应用，开始在 Azure Arc 上使用 Azure Functions。
 ms.topic: quickstart
 ms.date: 05/11/2021
-ms.openlocfilehash: 073ec52bc1b48ad285140a56fb4514ed315097e3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 28079b9a7821350736647d49815c541f6a79d119
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384922"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525617"
 ---
 # <a name="create-your-first-function-on-azure-arc-using-a-custom-container-preview"></a>使用自定义容器创建第一个基于 Azure Arc 的函数（预览版）
 
@@ -24,7 +24,7 @@ ms.locfileid: "110384922"
 # <a name="c"></a>[C\#](#tab/csharp)
 
 + [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)
-+ [Azure Functions Core Tools](functions-run-local.md#v2) 版本 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) 3.0.3245 或更高版本。
 + [Azure CLI](/cli/azure/install-azure-cli) 版本 2.4 或更高版本。
 + [Docker](https://docs.docker.com/install/)  
 + [Docker ID](https://hub.docker.com/signup)
@@ -32,7 +32,7 @@ ms.locfileid: "110384922"
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 + [Node.js](https://nodejs.org/) 版本 12。 还支持 Node.js 版本 10。
-+ [Azure Functions Core Tools](functions-run-local.md#v2) 版本 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) 3.0.3245 或更高版本。
 + [Azure CLI](/cli/azure/install-azure-cli) 版本 2.4 或更高版本。
 + [Docker](https://docs.docker.com/install/)  
 + [Docker ID](https://hub.docker.com/signup)
@@ -40,7 +40,7 @@ ms.locfileid: "110384922"
 # <a name="python"></a>[Python](#tab/python)
 
 + [Azure Functions 支持的 Python 版本](supported-languages.md#languages-by-runtime-version)
-+ [Azure Functions Core Tools](functions-run-local.md#v2) 版本 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) 3.0.3245 或更高版本。
 + [Azure CLI](/cli/azure/install-azure-cli) 版本 2.4 或更高版本。
 + [Docker](https://docs.docker.com/install/)  
 + [Docker ID](https://hub.docker.com/signup)
@@ -93,7 +93,7 @@ ms.locfileid: "110384922"
     ```
     ---
 
-    `--docker` 选项生成该项目的 `Dockerfile`，其中定义了适合用于 Azure Functions 和所选运行时的自定义容器。 
+    `--docker` 选项生成该项目的 `Dockerfile`，其中定义了适合用于 Azure Functions 和所选运行时的自定义容器。
 
 1. 导航到项目文件夹：
 
@@ -101,7 +101,9 @@ ms.locfileid: "110384922"
     cd LocalFunctionProj
     ```
 
-    此文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 默认情况下，local.settings.json 文件会从 .gitignore 文件的源代码管理中排除。  此排除是因为该文件可以包含从 Azure 下载的机密。
+    此文件夹包含项目的其他 Dockerfile 文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 默认情况下，local.settings.json 文件会从 .gitignore 文件的源代码管理中排除。  此排除是因为该文件可以包含从 Azure 下载的机密。
+
+1. 打开生成的 `Dockerfile` 并找到基础映像的 `3.0` 标记。 如果有 `3.0` 标记，请将其替换为 `3.0.15885` 标记。 例如，在 JavaScript 应用程序中，Docker 文件应该修改为包含 `FROM mcr.microsoft.com/azure-functions/node:3.0.15885`。 此版本的基础映像支持部署到已启用 Azure Arc 的 Kubernetes 群集。 
 
 1. 使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数 (HttpExample) 的唯一名称，`--template` 参数指定该函数的触发器 (HTTP)。
 

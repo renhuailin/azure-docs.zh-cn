@@ -9,16 +9,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 05/16/2021
 ms.author: Zhchia
-ms.openlocfilehash: 94de0ca0a5393c891e567e558cbbadd0ca1f453b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84024ad57af3ca650c69bfda0eda672aee313793
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97832072"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814651"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>教程：为 Oracle Cloud Infrastructure Console 配置自动用户预配
+> [!NOTE]
+> 不支持将 Oracle Cloud Infrastructure Console 或 Oracle IDCS 与自定义/BYOA 应用程序集成。 支持使用本教程中所述的库应用程序。 库应用程序已经过自定义，可与 Oracle SCIM 服务器一起使用。 
 
 本教程介绍在 Oracle Cloud Infrastructure Console 和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [Oracle Cloud Infrastructure Console](https://www.oracle.com/cloud/free/?source=:ow:o:p:nav:0916BCButton&intcmp=:ow:o:p:nav:0916BCButton) 以及将其解除预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
@@ -102,7 +104,7 @@ ms.locfileid: "97832072"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

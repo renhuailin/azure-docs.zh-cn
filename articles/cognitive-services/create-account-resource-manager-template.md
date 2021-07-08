@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 04/28/2021
+ms.date: 06/04/2021
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: b67639c5a6f55c45e42e3a17187356caf32451a6
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: b9fcd3d5eac8ddda890201bf5608e6e412f5d826
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278445"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004306"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>快速入门：使用 ARM 模板创建认知服务资源
 
@@ -27,6 +27,7 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的云服务，可帮�
 
 * 通过单个密钥和终结点访问多个 Azure 认知服务。
 * 合并所用资源的计费。
+* [!INCLUDE [terms-azure-portal](./includes/quickstarts/terms-azure-portal.md)]
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -40,7 +41,7 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的云服务，可帮�
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/cognitive-services-universalkey/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.cognitiveservices/cognitive-services-universalkey/azuredeploy.json":::
 
@@ -135,6 +136,8 @@ az group delete --name $resourceGroupName
 ```
 
 ---
+
+如果需要恢复已删除的资源，请参阅[恢复已删除的认知服务资源](manage-resources.md)。
 
 ## <a name="see-also"></a>另请参阅
 

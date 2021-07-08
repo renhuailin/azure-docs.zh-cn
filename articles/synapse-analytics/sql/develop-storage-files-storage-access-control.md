@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4419c9d64eac6eb468c5eb4414a3c9b844d7d8a7
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a93e63207bbbe9a2ac65823b3c22773f6cd97cf8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181717"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110676848"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
@@ -102,18 +103,19 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 
 \* SAS 令牌和 Azure AD 标识可用于访问不受防火墙保护的存储。
 
+## <a name="firewall-protected-storage"></a>受防火墙保护的存储
 
-### <a name="querying-firewall-protected-storage"></a>查询受防火墙保护的存储
-
+通过创建[资源实例规则](../../storage/common/storage-network-security.md?tabs=azure-portal#grant-access-from-azure-resource-instances-preview)，可以将存储帐户配置为允许访问特定无服务器 SQL 池。
 访问受防火墙保护的存储时，可使用用户标识或托管标识。 
 
 > [!NOTE]
 > 存储上的防火墙功能现为公共预览版，它在所有公共云区域中都可用。 
 
-#### <a name="user-identity"></a>用户标识
+
+### <a name="user-identity"></a>[用户标识](#tab/user-identity)
 
 若要通过用户标识访问受防火墙保护的存储，可以使用 Azure 门户 UI 或 PowerShell 模块 Az.Storage。
-#### <a name="configuration-via-azure-portal"></a>通过 Azure 门户配置
+### <a name="configuration-via-azure-portal"></a>通过 Azure 门户配置
 
 1. 在 Azure 门户中搜索你的存储帐户。
 1. 转到“设置”部分下的“网络”。
@@ -122,7 +124,7 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 1. 选择工作区名称作为实例名称。
 1. 单击“保存”。
 
-#### <a name="configuration-via-powershell"></a>通过 PowerShell 进行配置
+### <a name="configuration-via-powershell"></a>通过 PowerShell 进行配置
 
 按照以下步骤配置存储帐户防火墙，并为 Synapse 工作区添加例外。
 
@@ -189,8 +191,19 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
         }
     ```
 
-#### <a name="managed-identity"></a>托管标识
+### <a name="shared-access-signature"></a>[共享访问签名](#tab/shared-access-signature)
+
+不能使用共享访问签名来访问受防火墙保护的存储。
+
+### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
+
 需要[允许受信任的 Microsoft 服务设置](../../storage/common/storage-network-security.md#trusted-microsoft-services)并明确[将 Azure 角色](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)分配给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问范围对应于分配给托管标识的 Azure 角色。
+
+### <a name="anonymous-access"></a>[匿名访问](#tab/public-access)
+
+无法使用匿名访问方式来访问受防火墙保护的存储。
+
+---
 
 ## <a name="credentials"></a>凭据
 

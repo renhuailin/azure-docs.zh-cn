@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 493ec8ccc46ea5c2763f3a0159891fe9cbea142c
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 7622b3bb50139ddfdce53bb7e765db5aac90eff3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209240"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766054"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Saba Cloud 的集成
 
@@ -79,9 +79,12 @@ ms.locfileid: "108209240"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`<CUSTOMER_NAME>_SPLN_PRINCIPLE`
+    a. 在“标识符”文本框中，键入采用以下模式（你将在步骤 6 的“配置 Saba Cloud SSO”部分获得该值，但它通常采取 `<CUSTOMER_NAME>_sp` 格式）的 URL：`<CUSTOMER_NAME>_sp`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SIGN-ON URL>/Saba/saml/SSO/alias/<ENTITY_ID>`
+    b. 在“回复 URL”文本框中，键入采用以下模式（ENTITY_ID 引用上一步，通常为 `<CUSTOMER_NAME>_sp`）的 URL：`https://<CUSTOMER_NAME>.sabacloud.com/Saba/saml/SSO/alias/<ENTITY_ID>`
+    
+    > [!NOTE]
+    > 如果错误地指定了回复 URL，可能需要在 Azure AD 的“应用注册”部分（而不是“企业应用程序”部分）调整回复 URL 。 对“基本 SAML 配置”部分进行的更改并不会始终更新回复 URL。
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -90,10 +93,13 @@ ms.locfileid: "108209240"
     b. 在“中继状态”文本框中，使用以下模式键入 URL：`IDP_INIT---SAML_SSO_SITE=<SITE_ID> `。如果为微站点配置了 SAML，请使用以下模式键入 URL：`IDP_INIT---SAML_SSO_SITE=<SITE_ID>---SAML_SSO_MICRO_SITE=<MicroSiteId>`
 
     > [!NOTE]
-    > 有关配置中继状态的详细信息，请参阅[此链接](https://help.sabacloud.com/sabacloud/help-system/topics/help-system-idp-and-sp-initiated-sso-for-a-microsite.html)。
-
-    > [!NOTE]
     > 这些不是实际值。 请使用“标识符”、“回复 URL”、“登录 URL”和“中继状态”更新这些值。 请联系 [Saba Cloud 客户端支持团队](mailto:support@saba.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 
+    > 如需详细了解如何配置 RelayState，请参阅[适用于微站点的 IdP 和 SP 发起的 SSO](https://help.sabacloud.com/sabacloud/help-system/topics/help-system-idp-and-sp-initiated-sso-for-a-microsite.html)。
+
+1. 在“用户属性和声明”部分中，将唯一用户标识符调整为你的组织打算用作 Saba 用户的主要用户名的任何内容。
+
+   只有在尝试从用户名/密码转换为 SSO 时，才需要执行此步骤。 如果这是没有现有用户的新 Saba Cloud 部署，则可以跳过此步骤。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -153,6 +159,8 @@ ms.locfileid: "108209240"
 1. 在“配置属性”部分，确认填充的字段并单击“保存”。  
 
     ![“配置属性”的屏幕截图](./media/saba-cloud-tutorial/configure-properties.png) 
+    
+    可能需要将“最大身份验证期限(以秒为单位)”设置为“7776000”（90 天），以匹配默认 Azure AD 允许登录的最大滚动期限 。 否则，可能会导致错误 `(109) Login failed. Please contact system administrator.`
 
 ### <a name="create-saba-cloud-test-user"></a>创建 Saba Cloud 测试用户
 

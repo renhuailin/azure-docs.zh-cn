@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: c330cc4e5721fab9d7336fd5b111d8cef67e170c
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 05b42a3dd6d5df7bf4484e23b2780732d55ab731
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070220"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789148"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>使用 Raspberry Pi 3 B + Reference Image 的 Device Update for Azure IoT Hub 教程
 
@@ -35,7 +35,7 @@ Device Update for IoT Hub 支持两种形式的更新：基于映像的更新和
 
 ## <a name="download-image"></a>下载映像
 
-我们在[设备更新 GitHub 发布页面](https://github.com/Azure/iot-hub-device-update/releases)上的“资产”中提供了示例图像。 swUpdate 文件是可刷写到 Raspberry Pi B3+ 板上的基础映像，.gz 文件是要通过 Device Update for IoT Hub 导入的更新。 
+我们在[设备更新 GitHub 发布页面](https://github.com/Azure/iot-hub-device-update/releases)上的“资产”中提供了示例图像。 .gz 文件是可刷写到 Raspberry Pi B3+ 板上的基础映像，swUpdate 文件是要通过 Device Update for IoT Hub 导入的更新。 
 
 ## <a name="flash-sd-card-with-image"></a>使用映像刷写 SD 卡
 
@@ -143,11 +143,11 @@ Device Update for Azure IoT Hub 软件受以下许可条款的约束：
 
 ## <a name="import-update"></a>导入更新
 
-1. 按照这些[说明](import-update.md)操作，创建导入清单。
-2. 从左侧导航栏中选择“自动设备管理”下的“设备更新”选项。
+1. 下载[示例导入清单](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/TutorialImportManifest.json)和[示例映像更新](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/adu-update-image-raspberrypi3-0.6.5073.1.swu)。
+2. 登录 [Azure 门户](https://portal.azure.com/)并导航到具有设备更新的 IoT 中心。 然后，从左侧导航栏中选择“自动设备管理”下的“设备更新”选项。
 3. 选择“更新”选项卡。
 4. 选择“+ 导入新更新”。
-5. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择上面创建的导入清单。  接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择要部署到 IoT 设备的更新文件。
+5. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择你在上面的步骤 1 中下载的示例导入清单。  接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择你在上面的步骤 1 中下载的示例更新文件。
    
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="显示更新文件选择的屏幕截图。" lightbox="media/import-update/select-update-files.png":::
 

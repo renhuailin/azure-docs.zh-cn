@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: f453370530359bc967316957b717f40904f6e392
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 18746da524c4b045471031af2330d9daba4bfcc0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125978"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949345"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>排查 Azure 专用 HSM 服务问题
 
@@ -52,11 +52,11 @@ Azure 专用 HSM 服务有两个不同的方面。 第一个方面是指在 Azur
 
 ### <a name="hsm-deployment-race-condition"></a>HSM 部署争用条件
 
-为部署提供的标准 ARM 模板具有 HSM 和 ExpressRoute 网关相关资源。 若要成功进行 HSM 部署，网络资源不可或缺。时机可能很关键。  有时，我们发现部署失败与依赖项问题有关，重新运行部署通常可以解决问题。 如果那样行不通，则删除资源后重新进行部署通常就会成功。 这样尝试以后，如果仍然出现问题，请在 Azure 门户中选择“配置 Azure 安装程序时遇到问题”作为问题类型，提交一项支持请求。
+为部署提供的标准 ARM 模板具有 HSM 和 [ExpressRoute 网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)相关资源。 若要成功进行 HSM 部署，网络资源不可或缺。时机可能很关键。  有时，我们发现部署失败与依赖项问题有关，重新运行部署通常可以解决问题。 如果那样行不通，则删除资源后重新进行部署通常就会成功。 这样尝试以后，如果仍然出现问题，请在 Azure 门户中选择“配置 Azure 安装程序时遇到问题”作为问题类型，提交一项支持请求。
 
 ### <a name="hsm-deployment-using-terraform"></a>使用 Terraform 进行 HSM 部署
 
-一些客户已使用 Terraform 作为自动化环境，而不是使用在注册获取此服务时获得的 ARM 模板。 HSM 不能以这种方式部署，但所依赖的网络资源可以。 Terraform 可以通过模块调用一个只有 HSM 部署的最小 ARM 模板。  在这种情况下，应注意确保在部署 HSM 之前网络资源（例如所需的 ExpressRoute 网关）已完全部署好。 以下 CLI 命令可用于测试是否已按要求完成部署并进行集成。 将尖括号占位符替换为具体命名。 应查找“provisioningState 成功”结果
+一些客户已使用 Terraform 作为自动化环境，而不是使用在注册获取此服务时获得的 ARM 模板。 HSM 不能以这种方式部署，但所依赖的网络资源可以。 Terraform 可以通过模块调用一个只有 HSM 部署的最小 ARM 模板。  在这种情况下，应注意确保在部署 HSM 之前网络资源（例如所需的 [ExpressRoute 网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)）已完全部署好。 以下 CLI 命令可用于测试是否已按要求完成部署并进行集成。 将尖括号占位符替换为具体命名。 应查找“provisioningState 成功”结果
 
 ```azurecli
 az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/providers/Microsoft.Network/virtualNetworkGateways/<myergateway>
@@ -79,7 +79,7 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 
 ### <a name="provisioning-expressroute"></a>预配 ExpressRoute
 
-专用 HSM 使用 ExpressRoute 网关作为“隧道”在 Azure 数据中心的客户专用 IP 地址空间与物理 HSM 之间通信。  考虑到存在一个 VNet 一个网关的限制，因此，如果需要通过 ExpressRoute 连接到本地资源，客户必须使用另一 VNet 进行该连接。  
+专用 HSM 使用 [ExpressRoute 网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)作为“隧道”在 Azure 数据中心的客户专用 IP 地址空间与物理 HSM 之间通信。  考虑到存在一个 VNet 一个网关的限制，因此，如果需要通过 ExpressRoute 连接到本地资源，客户必须使用另一 VNet 进行该连接。  
 
 ### <a name="hsm-private-ip-address"></a>HSM 专用 IP 地址
 
@@ -116,7 +116,7 @@ Shell 管理员密码丢失会导致 HSM 密钥材料丢失。 应提交支持�
 
 ### <a name="hsm-networking-configuration"></a>HSM 网络配置
 
-在 HSM 中配置网络时请小心。  HSM 通过 ExpressRoute 网关从客户专用 IP 地址空间直接连接到 HSM。  此信道仅用于客户通信，Microsoft 无权访问。 如果 HSM 的配置方式使此网络路径受到影响，则会删除与 HSM 的所有通信。  在这种情况下，唯一的选择是通过 Azure 门户提出 Microsoft 支持请求，以重置设备。 此重置过程会将 HSM 重新设置为其初始状态，所有配置和密钥材料都会丢失。  必须重新创建配置。当设备加入 HA 组时，会复制密钥材料。  
+在 HSM 中配置网络时请小心。  HSM 有一个通过 [ExpressRoute 网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)进行的连接，该连接可以从客户专用 IP 地址空间直接连接到 HSM。  此信道仅用于客户通信，Microsoft 无权访问。 如果 HSM 的配置方式使此网络路径受到影响，则会删除与 HSM 的所有通信。  在这种情况下，唯一的选择是通过 Azure 门户提出 Microsoft 支持请求，以重置设备。 此重置过程会将 HSM 重新设置为其初始状态，所有配置和密钥材料都会丢失。  必须重新创建配置。当设备加入 HA 组时，会复制密钥材料。  
 
 ### <a name="hsm-device-reboot"></a>HSM 设备重启
 

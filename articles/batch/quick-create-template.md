@@ -1,21 +1,23 @@
 ---
 title: Azure 快速入门 - 创建 Batch 帐户 - Azure 资源管理器模板
 description: 本快速入门介绍如何使用 ARM 模板创建 Batch 帐户。
-ms.date: 08/17/2020
+ms.date: 05/25/2021
 ms.topic: quickstart
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: ae481d6dd9a21281c2026eb9a3609094a09ad475
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: d28a60fd3476877bf79fa8ea542db074c565fc89
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838386"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005674"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>快速入门：使用 ARM 模板创建批处理帐户
 
-需要一个 Batch 帐户来创建计算资源（计算节点池）和批处理作业。 可将 Azure 存储帐户与 Batch 帐户关联，后者可以用于为大多数现实世界的工作负荷部署应用程序和存储输入和输出数据。 本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）创建批处理帐户（包括存储）。 完成本快速入门以后，你会了解 Batch 服务的重要概念，并可使用更逼真的工作负荷进行更大规模的 Batch 试用。
+Azure Batch 入门：使用 Azure 资源管理器模板（ARM 模板）创建批处理帐户（包括存储）。 需要一个 Batch 帐户来创建计算资源（计算节点池）和批处理作业。 可将 Azure 存储帐户与 Batch 帐户关联，后者可以用于为大多数现实世界的工作负荷部署应用程序和存储输入和输出数据。
+
+完成本快速入门以后，你会了解 Batch 服务的重要概念，并可使用更逼真的工作负载进行更大规模的 Batch 试用。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -31,7 +33,7 @@ ms.locfileid: "109838386"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/batchaccount-with-storage/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.batch/batchaccount-with-storage/azuredeploy.json":::
 
@@ -48,7 +50,7 @@ ms.locfileid: "109838386"
 
 1. 选择或输入以下值。
 
-   ![资源管理器模板、Batch 帐户创建、部署门户](media/quick-create-template/batch-template.png)
+   :::image type="content" source="media/quick-create-template/batch-template.png" alt-text="资源管理器模板、Batch 帐户创建、部署门户":::
 
    - 订阅：选择一个 Azure 订阅。
    - 资源组：选择“新建”，输入资源组的唯一名称，然后单击“确定”。 
@@ -56,9 +58,8 @@ ms.locfileid: "109838386"
    - Batch 帐户名：保留默认值。
    - 存储帐户 sku：选择一个存储帐户类型。 例如 Standard_LRS。
    - 位置：保留默认值，以便资源与资源组位于相同位置。
-   - 我同意上述条款和条件：选择。
 
-1. 选择“购买”。
+1. 依次选择“查看 + 创建”、“创建”。  
 
 几分钟后，应会看到一条通知指出已成功创建 Batch 帐户。
 
@@ -70,7 +71,7 @@ ms.locfileid: "109838386"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用后续的[教程](./tutorial-parallel-dotnet.md)，则可能需要保留这些资源。 或者，如果不再需要这些资源，可以[删除资源组](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group)，此操作还将删除你创建的 Batch 帐户和存储帐户。
+如果打算继续学习更多[教程](./tutorial-parallel-dotnet.md)，可能需要保留这些资源。 或者，如果不再需要这些资源，可以[删除资源组](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group)，此操作还将删除你创建的 Batch 帐户和存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,16 +3,16 @@ title: 教程 - 使用 Azure IoT Edge 在边缘部署流分析
 description: 在本教程中，请将 Azure 流分析作为模块部署到 IoT Edge 设备
 author: kgremban
 ms.author: kgremban
-ms.date: 07/29/2020
+ms.date: 05/03/2021
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 323973b7646acee07a0c4dbc59834e0aceca75ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cafb9cdbc5ca9851130ea4d9b2ef60c1616d213
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462042"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790714"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>教程：将 Azure 流分析作为 IoT Edge 模块进行部署
 
@@ -89,7 +89,7 @@ Azure IoT Edge 设备：
    | 订阅 | 选择与 IoT 中心相同的订阅。 |
    | 资源组 | 建议对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
    | 位置 | 选择靠近你的位置。 |
-   | 宿主环境 | 选择“边缘”。 |
+   | 宿主环境 | 选择“边缘”。 此选项指示作业将部署到 IoT Edge 设备而非托管在云中。 |
 
 1. 选择“创建”。
 
@@ -106,6 +106,8 @@ Azure IoT Edge 设备：
    ![Azure 流分析 - 添加输入](./media/tutorial-deploy-stream-analytics/asa-input.png)
 
 1. 从下拉列表中选择“边缘中心”。
+
+   如果在列表中看不到“Edge 中心”选项，则你可能已将流分析作业创建为云托管的作业。 请尝试创建新作业，并确保选择“Edge”作为宿主环境。
 
 1. 在“新建输入”窗格中，输入 **temperature** 作为输入别名。
 
@@ -140,15 +142,15 @@ Azure IoT Edge 设备：
 
 ### <a name="configure-iot-edge-settings"></a>配置 IoT Edge 设置
 
-若要准备需部署到 IoT Edge 设备的流分析作业，需将作业与存储帐户中的容器关联起来。 准备部署作业时，作业定义会导出到存储容器。
+若要准备需部署到 IoT Edge 设备的流分析作业，需将作业与存储帐户关联起来。 部署作业时，作业定义将以容器的形式导出到存储帐户中。
 
 1. 到“配置”下，依次选择“存储帐户设置”、“添加存储帐户”。  
 
    ![Azure 流分析 - 添加存储帐户](./media/tutorial-deploy-stream-analytics/add-storage-account.png)
 
-1. 从下拉菜单中选择在本教程开头创建的 **存储帐户**。
+1. 选择“从订阅中选择 Blob 存储/ADLS Gen 2”选项。
 
-1. 对于“容器”字段，请选择“新建”，然后为存储容器提供一个名称。 
+1. 使用下拉菜单选择在本教程开头设置的“订阅”和“存储帐户”。
 
 1. 选择“保存”。
 

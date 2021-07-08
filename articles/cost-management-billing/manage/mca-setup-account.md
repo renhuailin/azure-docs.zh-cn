@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: 15aa3acab9fe98a4c2f5103ba211dde34220c54e
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: af9a56dd52a0ee70a457e4e53fd37962dca9c90d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107255661"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739836"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>设置 Microsoft 客户协议的计费帐户
 
@@ -60,9 +60,9 @@ ms.locfileid: "107255661"
 
 - 使用签署 Microsoft 客户协议时收到的电子邮件中的链接登录到 Azure 门户。
 
-- 如果没有电子邮件，请使用以下链接登录。 将 `enrollmentNumber` 替换为续订的企业协议的注册编号。
+- 如果没有电子邮件，请使用以下链接登录。
 
-  `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+  `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment`
 
 如果你同时具备企业管理员和计费帐户所有者角色或计费对象信息角色，则会在 Azure 门户中看到以下页面。 你可以继续设置 EA 注册和 Microsoft 客户协议计费帐户以供转换。
 
@@ -70,7 +70,7 @@ ms.locfileid: "107255661"
 
 如果你没有企业协议的企业管理员角色或 Microsoft 客户协议的计费对象信息所有者角色，则可以使用以下信息获取完成设置所需的访问权限。
 
-### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>如果你不是该注册的企业管理员
+#### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>如果你不是该注册的企业管理员
 
 如果你具备计费帐户或计费对象信息所有者角色，但不是企业管理员，则会在 Azure 门户中看到以下页面。
 
@@ -83,9 +83,9 @@ ms.locfileid: "107255661"
 
 获得企业管理员角色后，复制“设置计费帐户”页上的链接。 在 Web 浏览器中打开该链接以继续设置 Microsoft 客户协议。 否则，请将其发送给企业管理员。
 
-### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>如果你不是计费配置文件的所有者
+#### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>如果你不是计费配置文件的所有者
 
-如果你是企业管理员，但不具备 Microsoft 客户协议的计费帐户或计费对象信息所有者角色，则会在 Azure 门户中看到以下页面。
+如果你是企业管理员但没有计费帐户，则会在 Azure 门户中看到以下会阻止转换的错误。
 
 如果你认为你具有正确 Microsoft 客户协议的计费对象信息所有者访问权限，并且看到以下消息，请确保你位于组织的正确租户中。 你可能需要更改目录。
 
@@ -97,6 +97,42 @@ ms.locfileid: "107255661"
 - 为现有计费帐户所有者提供企业管理员角色。 有关更多信息，请参阅[创建另一个企业管理员](ea-portal-administration.md#create-another-enterprise-administrator)。
 
 获得计费帐户所有者或计费对象信息所有者角色后，复制“设置计费帐户”页上的链接。 在 Web 浏览器中打开该链接以继续设置 Microsoft 客户协议。 否则，请将该链接发送给计费帐户所有者。
+
+#### <a name="prepare-enrollment-for-transition"></a>准备用于转换的注册
+
+在你拥有对 EA 注册和计费对象信息的所有者访问权限后，即可准备它们以进行转换。
+
+打开之前显示的迁移，或打开通过电子邮件发送的链接。 链接为 `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment`。
+
+下图显示“准备企业协议注册以进行转换”窗口示例。
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition.png" alt-text="显示提供了选项的“设置计费帐户 - 准备企业协议注册以进行转换”页面的屏幕截图。" lightbox="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition.png" :::
+
+接下来，选择要转换的源注册。 然后选择计费帐户和计费对象信息。 如果验证通过且没有出现类似以下屏幕的任何问题，请选择“继续”以继续。
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition-continue.png" alt-text="显示具有有效选项的“设置计费帐户 - 准备企业协议注册以进行转换”页面的屏幕截图。" lightbox="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition-continue.png" :::
+
+**错误条件**
+
+如果你拥有企业管理员（只读）角色，则会看到以下阻止转换的错误。 必须具有企业管理员角色才能转换注册。
+
+`Select another enrollment. You do not hve Enterprise Administrator write permission to the enrollment.`
+
+如果注册距结束日期超过 60 天，你将看到以下阻止转换的错误。 当前日期必须在注册结束后的 60 天内才能转换注册。
+
+`Select another enrollment. This enrollment has more than 60 days before its end date.`
+
+如果注册仍有额度，你将看到以下会阻止转换的错误。 用完所有额度后才能转换注册。
+
+`Select another enrollment. This enrollment still has credits and can't be transitioned to a billing account.`
+
+如果你没有计费对象信息的所有者权限，你将看到以下会阻止转换的错误。 必须具有计费对象信息所有者角色才能转换注册。
+
+`Select another Billing Profile. You do not have owner permission to this profile.`
+
+如果新的计费对象信息未启用新计划，你将看到以下错误。 启用该计划后才能转换注册。
+
+`Select another Billing Profile. The current selection does not have Azure Plan and Azure dev test plan enabled on it.`
 
 ## <a name="understand-changes-to-your-billing-hierarchy"></a>了解计费层次结构的变化
 
@@ -197,9 +233,9 @@ ms.locfileid: "107255661"
 
 1. 使用签署 Microsoft 客户协议时收到的电子邮件中的链接登录到 Azure 门户。
 
-2. 如果没有电子邮件，请使用以下链接登录。 将 `<enrollmentNumber>` 替换为续订的企业协议的注册编号。
+2. 如果没有电子邮件，请使用以下链接登录。
 
-   `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+   `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment`
 
 3. 在设置过程的最后一个步骤中选择“开始转换”。  选择“开始转换”后：
 

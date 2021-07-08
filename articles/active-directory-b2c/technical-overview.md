@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 04/27/2021
+ms.date: 06/07/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa6bf4b59b8cc478115cfb69fea532b076141b38
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 29fc4028308d2d1fd9a23aa37d635f6b9fb0e68c
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071273"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111570610"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
-本文是[关于 Azure Active Directory B2C](overview.md) 一文的配套文档，其中更深入地介绍了该服务。 本文介绍你将在该服务中使用的主要资源和该服务的功能，以及如何通过这些功能为应用程序中的客户提供完全自定义的标识体验。
+本文是[关于 Azure Active Directory B2C](overview.md) 一文的配套文档，其中更深入地介绍了该服务。 这里讨论了你在服务中使用的主要资源及其功能。 了解这些功能如何使你能够在应用程序中为客户提供完全定制的身份体验。
 
 ## <a name="azure-ad-b2c-tenant"></a>Azure AD B2C 租户
 
@@ -38,7 +38,10 @@ ms.locfileid: "108071273"
   * 可让用户使用用户名（或者电子邮件地址或其他 ID）和密码注册和登录的本地帐户。
 * **密钥** - 添加和管理用于签名和验证令牌、客户端密码、证书和密码的加密密钥。
 
-Azure AD B2C 租户是开始使用 Azure AD B2C 之前必须先创建的第一个资源。 有关如何创建该资源，请参阅[教程：创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)中的步骤创建一个。
+Azure AD B2C 租户是开始使用 Azure AD B2C 之前必须先创建的第一个资源。 了解如何：
+
+* [创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)。
+* [准备 Azure AD B2C 租户](tenant-management.md)
 
 ## <a name="accounts-in-azure-ad-b2c"></a>Azure AD B2C 中的帐户
 
@@ -63,13 +66,26 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 
 ![使用者帐户标识](media/technical-overview/identities.png)<br/>*图：在 Azure AD B2C 中具有多个标识的单个使用者帐户*
 
-通过 Azure AD B2C，可管理使用者帐户个人资料的通用属性。 例如显示名称、姓氏、名字、城市等信息。 还可以扩展 Azure AD 架构以存储有关用户的其他信息。 例如，用户居住国家/地区、首选语言和偏好（比如是否想要订阅新闻稿或启用多重身份验证）。
-
 有关详细信息，请查看 [Azure Active Directory B2C 中的用户帐户概述](user-overview.md)。
 
-## <a name="external-identity-providers"></a>外部标识提供者
+## <a name="local-account-sign-in-options"></a>本地帐户登录选项
 
-可以配置 Azure AD B2C，以允许用户使用外部社交或企业标识提供者 (IdP) 提供的凭据登录到你的应用程序。 Azure AD B2C 支持 Facebook、Microsoft 帐户、Google、Twitter 等外部标识提供程序，以及支持 OAuth 1.0、OAuth 2.0、OpenID Connect 和 SAML 协议的任何标识提供者。
+Azure AD B2C 提供了用户可以用于对用户进行身份验证的各种方式。 用户可以使用用户名和密码、电话验证（也称为无密码身份验证）登录本地帐户。 在默认情况下，本地帐户标识提供者设置中会启用电子邮件注册。
+
+有关详细信息，请参阅[设置本地帐户标识提供者](identity-provider-local.md)。
+
+## <a name="user-profile-attributes"></a>用户配置文件属性
+
+通过 Azure AD B2C，可管理使用者帐户个人资料的通用属性。 例如显示名称、姓氏、名字、城市等信息。
+
+还可以扩展 Azure AD 架构以存储有关用户的其他信息。 例如，用户居住国家/地区、首选语言和偏好（比如是否想要订阅新闻稿或启用多重身份验证）。 有关详细信息，请参阅：
+
+* [用户配置文件属性](user-profile-attributes.md)
+* [添加用户属性并自定义用户输入](configure-user-input.md)
+
+## <a name="sign-in-with-external-identity-providers"></a>用外部标识提供者登录
+
+可以配置 Azure AD B2C，以允许用户使用社交和企业标识提供者提供的凭据登录到你的应用程序。 Azure AD B2C 可以与支持 OAuth 1.0、OAuth 2.0、OpenID Connect和 SAML 协议的标识提供者联合。 例如 Facebook、Microsoft 帐户、Google、Twitter 和 AD-FS。
 
 ![外部标识提供者](media/technical-overview/external-idps.png)
 
@@ -83,83 +99,40 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>标识体验：用户流或自定义策略
 
-Azure AD B2C 的核心优势在于它的可扩展策略框架。 策略描述用户的标识体验，例如注册、登录和配置文件编辑。
+在 Azure AD B2C 中，你可以定义用户在获取应用程序访问权限时遵循的业务逻辑。 例如，可以确定用户在登录、注册、编辑个人资料或重置密码时遵循的步骤顺序。 按顺序完成步骤后，用户会获得一个令牌，并获得对应用程序的访问权限。
 
-在 Azure AD B2C 中，可以通过两个主要途径来提供这些标识体验：用户流和自定义策略。
+在 Azure AD B2C 中，有两种方式可以提供标识用户体验：
 
 * **用户流** 是我们提供的预定义的内置可配置策略，使你能够在几分钟内创建注册、登录和策略编辑体验。
 
 * 使用 **自定义策略** 可为复杂的标识体验方案创建自己的用户旅程。
 
-用户流和自定义策略均由 *Identity Experience Framework*（Azure AD B2C 的策略业务流程引擎）提供支持。
+以下屏幕截图显示用户流设置 UI，而不是自定义策略配置文件。
 
-### <a name="user-flow"></a>用户流
+![屏幕截图显示用户流设置 UI，而不是自定义策略配置文件。](media/technical-overview/user-flow-vs-custom-policy.png)
 
-为了帮助你快速设置最常见的标识任务，Azure 门户中包含了多个称作“用户流”的预定义可配置策略。
+阅读[用户流和自定义策略概述](user-flow-overview.md)一文。 这篇文章概述了用户流和自定义策略，并帮助你确定哪种方法最适合你的业务需求。
 
-可以配置如下所述的用户流设置，以控制应用程序中的标识体验行为：
-
-* 用于登录的帐户类型，例如 Facebook 等社交帐户，或者使用电子邮件地址和密码进行登录的本地帐户
-* 要从使用者收集的属性，例如名字、邮政编码，或居住地所在国家/地区
-* Azure AD 多重身份验证 (MFA)
-* 用户界面的自定义
-* 在用户完成用户流后由应用程序接收的令牌中的声明集
-* 会话管理
-* 等等。
-
-应用的大多数常见标识方案都可以通过用户流来有效定义和实施。 除非你的复杂用户旅程方案要求自定义策略具有完全灵活性，否则我们建议使用内置用户流。
-
-在 [Azure Active Directory B2C 中的用户流](user-flow-overview.md)中详细了解用户流。
-
-### <a name="custom-policy"></a>自定义策略
-
-自定义策略是完全可配置的，它由策略驱动。 它可以协调标准协议中实体之间的信任。 例如，OpenID Connect、OAuth、SAML 和一些非标准协议，如基于 REST API 的系统间声明交换。 该框架创建用户友好的白标体验。
-
-自定义策略可让你使用步骤的任意组合来构造用户旅程。 例如：
-
-* 与其他标识提供者联合
-* 第一方和第三方多重身份验证 (MFA) 质询
-* 收集任何用户输入
-* 使用 REST API 通信来与外部系统集成
-
-每个此类用户旅程都由策略定义，你可以根据需要构建任意数量的策略，以便为组织启用最佳用户体验。
-
-![显示 IEF 启用的复杂用户旅程示例的图示](media/technical-overview/custom-policy.png)
-
-在 [Azure Active Directory B2C 中的自定义策略](custom-policy-overview.md)中详细了解自定义策略。
-
-## <a name="protocols-and-tokens"></a>协议和令牌
-
-- 对于应用程序，Azure AD B2C 支持对用户旅程使用 [OAuth 2.0](protocols-overview.md)、[OpenID Connect](openid-connect.md) 和 [SAML 协议](saml-service-provider.md)。 应用程序通过向 Azure AD B2C 发出身份验证请求，来启动此用户旅程。 向 Azure AD B2C 发出请求后会获得一个安全令牌，例如 [ID 令牌、访问令牌](tokens-overview.md)或 SAML 令牌。 此安全令牌定义应用程序中用户的标识。
-
-- 对于外部标识，Azure AD B2C 支持与任何 OAuth 1.0、OAuth 2.0、OpenID Connect、SAML 标识提供者联合。
-
-下图显示了 Azure AD B2C 如何使用同一身份验证流中的各种协议进行通信：
-
-![基于 OIDC 的客户端应用与基于 SAML 的 IdP 联合的示意图](media/technical-overview/protocols.png)
-
-1. 信赖方应用程序使用 OpenID Connect 向 Azure AD B2C 发起授权请求。
-1. 当应用程序的用户选择通过使用 SAML 协议的外部标识提供者登录时，Azure AD B2C 将调用 SAML 协议来与该标识提供者通信。
-1. 用户使用外部标识提供者完成登录操作后，Azure AD B2C 会使用 OpenID Connect 将令牌返回给信赖方应用程序。
-
-## <a name="application-integration"></a>应用程序集成
-
-当用户想要登录你的应用程序时，应用程序就会向用户流或自定义策略提供的终结点发起授权请求。 用户流或自定义策略定义并控制用户的体验。 当用户完成用户流（例如注册或登录流）后，Azure AD B2C 会生成一个令牌，然后将用户重定向回到应用程序。
-
-![移动应用，其中的箭头显示 Azure AD B2C 登录页之间的流](media/technical-overview/app-integration.png)
-
-多个应用程序可以使用同一个用户流或自定义策略。 单个应用程序可以使用多个用户流或自定义策略。
-
-例如，若要登录到某个应用程序，该应用程序将使用注册或登录用户流。 用户登录后，他们可能想要编辑其配置文件，在这种情况下，应用程序将发起另一个授权请求（这一次使用的是配置文件编辑用户流）。
-
-## <a name="user-experiences"></a>用户体验
+## <a name="user-interface"></a>用户界面
 
 在 Azure AD B2C 中，可创建用户的标识体验，使显示的页面能够与品牌形象无缝融合。 当用户完成应用程序的标识旅程时，你几乎可以获得向用户显示的 HTML 和 CSS 内容的完全控制权。 凭借这种灵活性，可以在应用程序与 Azure AD B2C 之间保持品牌和视觉一致性。
 
 ![按品牌自定义的注册/登录页的屏幕截图](media/technical-overview/seamless-ux.png)
 
-有关 UI 自定义的信息，请参阅[关于 Azure Active Directory B2C 中的用户界面自定义](customize-ui-with-html.md)。
+有关 UI 自定义项的信息，请参见：
 
+* [自定义用户界面](customize-ui.md)
+* [利用 HTML 模板自定义用户界面](customize-ui-with-html.md)
+* [启用 JavaScript 并选择页面布局版本](javascript-and-page-layout.md)
+
+## <a name="custom-domain"></a>自定义域
+
+可以在 Azure AD B2C 的重定向 URL 中自定义 Azure AD B2C 域。 自定义域允许你创建无缝体验，使页面显示与应用程序的域名无缝结合。
+
+![Azure AD B2C 自定义域的屏幕截图](media/technical-overview/custom-domain.png)
+
+从用户角度来看，他们会在登录过程中保留在域中，而不是重定向到 Azure AD B2C 默认域 .b2clogin.com。 有关详细信息，请参阅[启用自定义域](custom-domain.md)。
+ 
 ## <a name="localization"></a>本地化
 
 借助 Azure AD B2C 中的语言自定义可以适应不同的语言以满足客户需求。 Microsoft 提供 36 种语言的翻译，但你也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。
@@ -167,6 +140,17 @@ Azure AD B2C 的核心优势在于它的可扩展策略框架。 策略描述用
 ![以不同语言显示 UI 文本的三个注册/登录页](media/technical-overview/localization.png)
 
 在 [Azure Active Directory B2C 中的语言自定义](language-customization.md)中了解本地化的工作原理。
+
+## <a name="email-verification"></a>电子邮件验证
+
+Azure AD B2C 通过要求客户在注册过程中和密码重置流程中验证电子邮件地址来确保电子邮件地址有效。 它还可防止恶意执行组件使用自动进程在应用程序中生成欺诈帐户。
+
+![Azure AD B2C 电子邮件验证的屏幕截图](media/technical-overview/email-verification.png)
+
+可以为注册使用你的应用程序的用户自定义电子邮件。 通过使用第三方电子邮件提供商，你可以使用自己的电子邮件模板和“发件人：”地址和主题，并支持本地化和自定义一次性密码 (OTP) 设置。 有关详细信息，请参阅：
+
+* [使用 Mailjet 进行自定义电子邮件验证](custom-email-mailjet.md)
+* [使用 SendGrid 进行自定义电子邮件验证](custom-email-sendgrid.md)
 
 ## <a name="add-your-own-business-logic"></a>添加自己的业务逻辑
 
@@ -193,7 +177,69 @@ Azure AD B2C 的核心优势在于它的可扩展策略框架。 策略描述用
 
 若要了解如何对 Azure AD B2C 中的 RESTful API 集成使用自定义策略，请参阅[在 Azure AD B2C 自定义策略中集成 REST API 声明交换](api-connectors-overview.md)。
 
-## <a name="protect-customer-identities"></a>保护客户标识
+## <a name="protocols-and-tokens"></a>协议和令牌
+
+- 对于应用程序，Azure AD B2C 支持对用户旅程使用 [OAuth 2.0](protocols-overview.md)、[OpenID Connect](openid-connect.md) 和 [SAML 协议](saml-service-provider.md)。 应用程序通过向 Azure AD B2C 发出身份验证请求，来启动此用户旅程。 向 Azure AD B2C 发出请求后会获得一个安全令牌，例如 [ID 令牌、访问令牌](tokens-overview.md)或 SAML 令牌。 此安全令牌定义应用程序中用户的标识。
+
+- 对于外部标识，Azure AD B2C 支持与任何 OAuth 1.0、OAuth 2.0、OpenID Connect、SAML 标识提供者联合。
+
+下图显示了 Azure AD B2C 如何使用同一身份验证流中的各种协议进行通信：
+
+![基于 OIDC 的客户端应用与基于 SAML 的 IdP 联合的示意图](media/technical-overview/protocols.png)
+
+1. 信赖方应用程序使用 OpenID Connect 向 Azure AD B2C 发起授权请求。
+1. 当应用程序的用户选择通过使用 SAML 协议的外部标识提供者登录时，Azure AD B2C 将调用 SAML 协议来与该标识提供者通信。
+1. 用户使用外部标识提供者完成登录操作后，Azure AD B2C 会使用 OpenID Connect 将令牌返回给信赖方应用程序。
+
+## <a name="application-integration"></a>应用程序集成
+
+当用户想要登录你的应用程序时，应用程序就会向用户流或自定义策略提供的终结点发起授权请求。 用户流或自定义策略定义并控制用户的体验。 当用户完成用户流（例如注册或登录流）后，Azure AD B2C 会生成一个令牌，然后将用户重定向回到应用程序。
+
+![移动应用，其中的箭头显示 Azure AD B2C 登录页之间的流](media/technical-overview/app-integration.png)
+
+多个应用程序可以使用同一个用户流或自定义策略。 单个应用程序可以使用多个用户流或自定义策略。
+
+例如，若要登录到某个应用程序，该应用程序将使用注册或登录用户流。 用户登录后，他们可能想要编辑其配置文件，在这种情况下，应用程序将发起另一个授权请求（这一次使用的是配置文件编辑用户流）。
+
+## <a name="multi-factor-authentication-mfa"></a>多重身份验证 (MFA)
+
+Azure AD B2C 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求另一种形式的身份验证来提供额外的安全性，并通过提供一系列易于使用的身份验证方法来实现强式身份验证。 
+
+根据管理员做出的配置决策，用户可能会受到 MFA 的质询，也可能不会受到 MFA 的质询。
+
+有关如何在用户流中启用 MFA，请参阅[在 Azure Active Directory B2C 中启用多重身份验证](multi-factor-authentication.md)。
+
+## <a name="conditional-access"></a>条件性访问
+
+Azure AD 标识保护风险检测功能会自动检测风险用户和风险登录并将其显示在 Azure AD B2C 租户中。 你可以创建使用这些风险检测功能的条件访问策略来确定修正操作并强制实施组织策略。 
+
+![条件访问流](media/technical-overview/conditional-access-flow.png)
+
+Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求后才向用户授予访问权限。 有风险的用户或登录名可能被阻止，或者需要完成特定修正操作，如多重身份验证 (MFA)。 有关详细信息，请参阅[标识保护和条件访问](conditional-access-identity-protection-overview.md)。
+
+## <a name="password-complexity"></a>密码复杂性
+
+在注册或密码重置期间，用户必须提供符合复杂性规则的密码。 默认情况下，Azure AD B2C 实施强密码策略。 Azure AD B2C 还提供相应的配置选项用于指定客户所用密码的复杂性要求。
+
+![密码复杂性用户体验的屏幕截图](media/technical-overview/password-complexity.png)
+
+有关详细信息，请参阅[在 Azure AD B2C 中配置密码的复杂性要求](password-complexity.md)。
+
+## <a name="force-password-reset"></a>强制执行密码重置
+
+如果用户忘记了密码，作为 Azure AD B2C 租户管理员，你可以[重置用户的密码](manage-users-portal.md#reset-a-users-password)。 你也可以强制他们定期重置密码。 有关详细信息，请参阅[设置强制密码重置流程](force-password-reset.md)。
+
+![强制密码重置流](media/technical-overview/force-password-reset-flow.png)
+
+## <a name="smart-account-lockout"></a>智能帐户锁定
+
+为了防止密码猜测暴力破解攻击，Azure AD B2C 可使用一种复杂的策略，根据请求的 IP、输入的密码和其他多个因素来锁定帐户。 锁定持续时间根据风险和尝试次数自动延长。
+
+![帐户智能锁定](media/technical-overview/smart-lockout1.png)
+
+有关管理密码保护设置的详细信息，请参阅[在 Azure AD B2C 中缓解凭据攻击](threat-management.md)。
+
+## <a name="protect-resources-and-customer-identities"></a>保护资源和客户标识
 
 Azure AD B2C 符合 [Microsoft Azure 信任中心](https://www.microsoft.com/trustcenter/cloudservices/azure)内所述的安全性、隐私性和其他承诺。
 
@@ -215,31 +261,9 @@ Azure AD B2C 租户与用于员工和合作伙伴的企业 Azure Active Director
 
 有关 Azure AD 角色的详细信息，包括 Azure AD B2C 管理角色支持，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/roles/permissions-reference.md)。
 
-### <a name="multi-factor-authentication-mfa"></a>多重身份验证 (MFA)
-
-Azure AD B2C 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求另一种形式的身份验证来提供额外的安全性，并通过提供一系列易于使用的身份验证方法来实现强式身份验证。 
-
-根据管理员做出的配置决策，用户可能会受到 MFA 的质询，也可能不会受到 MFA 的质询。
-
-有关如何在用户流中启用 MFA，请参阅[在 Azure Active Directory B2C 中启用多重身份验证](multi-factor-authentication.md)。
-
-### <a name="smart-account-lockout"></a>智能帐户锁定
-
-为了防止密码猜测暴力破解攻击，Azure AD B2C 可使用一种复杂的策略，根据请求的 IP、输入的密码和其他多个因素来锁定帐户。 锁定持续时间根据风险和尝试次数自动延长。
-
-![帐户智能锁定](media/technical-overview/smart-lockout1.png)
-
-有关管理密码保护设置的详细信息，请参阅[管理 Azure Active Directory B2C 中的资源和数据受到的威胁](threat-management.md)。
-
-### <a name="password-complexity"></a>密码复杂性
-
-在注册或密码重置期间，用户必须提供符合复杂性规则的密码。 默认情况下，Azure AD B2C 实施强密码策略。 Azure AD B2C 还提供相应的配置选项用于指定客户所用密码的复杂性要求。
-
-可以在[用户流](password-complexity.md)和[自定义策略](password-complexity.md)中配置密码复杂性要求。
-
 ## <a name="auditing-and-logs"></a>审核和日志
 
-Azure AD B2C 发出审核日志，其中包含有关其资源、颁发的令牌和管理员访问权限的活动信息。 可以使用这些审核日志来了解平台活动和诊断问题。 在生成事件的活动发生后，会立即提供审核日志条目。
+Azure AD B2C 发出审核日志，其中包含有关其资源、颁发的令牌和管理员访问权限的活动信息。 可以使用审核日志来了解平台活动和诊断问题。 在生成事件的活动发生后，会立即提供审核日志条目。
 
 在适用于 Azure AD B2C 租户或特定用户的审核日志中，可以找到以下信息：
 
@@ -254,7 +278,7 @@ Azure AD B2C 发出审核日志，其中包含有关其资源、颁发的令牌�
 
 有关审核日志的详细信息，请查看[访问 Azure AD B2C 审核日志](view-audit-logs.md)。
 
-### <a name="usage-insights"></a>使用情况见解
+## <a name="usage-analytics"></a>使用情况分析
 
 在 Azure AD B2C 中，可发现用户何时注册或登录你的应用、用户身在何处，还有他们在使用哪些浏览器和操作系统。 
 

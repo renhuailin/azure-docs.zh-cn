@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 4bc5732c1b2349f34297ecaacc7eb3176fdba611
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39b21a849f13af39731c31590cf92f8ffc12cd7d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570487"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783596"
 ---
 # <a name="what-is-azure-sentinel"></a>什么是 Azure Sentinel？
 
@@ -31,7 +31,7 @@ Azure Sentinel 是整个企业的鸟瞰视图，可以缓解日益复杂的攻�
 
 - 跨所有用户、设备、应用程序和基础结构（包括本地和多个云）以 **云规模收集数据**。 
 
-- **检测以前未检测到的威胁**，并使用 Microsoft 的分析和无与伦比的威胁智能，最大限度地减少误报。 
+- 使用 Microsoft 的分析和出色的威胁情报检测以前未检测到的威胁，并[最大限度地减少误报](false-positives.md)。 
 
 - **借助人工智能调查威胁**，结合 Microsoft 多年以来的网络安全工作经验大规模搜寻可疑活动。 
 

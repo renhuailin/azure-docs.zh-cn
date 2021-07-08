@@ -4,12 +4,12 @@ description: 使用 Docker Compose 构建并运行多容器应用程序，然后
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.custom: ''
-ms.openlocfilehash: ef08b9f9e0f596f1d94c0e6edfd46f735fe78053
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 73699e9d0b7b63dcc2960521b26f0c615a608ed9
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786903"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753284"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>教程：使用 Docker Compose 部署多容器组 
 

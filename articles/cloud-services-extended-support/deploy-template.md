@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 855cbb619f536354010c5bfe05c6c03f8bfc6985
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 7c013cbaf8a64d12b132e3dd4c599920bd3f6a2a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291471"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736103"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>使用 ARM 模板部署云服务（外延支持）
 
@@ -27,7 +27,7 @@ ms.locfileid: "108291471"
  
 3. 使用 [Azure 门户](../storage/common/storage-account-create.md?tabs=azure-portal)或 [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell) 创建新的存储帐户。 若要使用现有存储帐户，则可选择性地执行此步骤。
 
-4. 使用 [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)、[AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 或 [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) 将服务定义文件 (.csdef) 和服务配置文件 (.cscfg) 上传到存储帐户。 获取这两个文件的 SAS URI，以便在本教程稍后部分将它们添加到 ARM 模板中。
+4. 使用 [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) 或 [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) 将包 (.csdef) 和服务配置文件 (.cscfg) 上传到存储帐户。 获取这两个文件的 SAS URI，以便在本教程稍后部分将它们添加到 ARM 模板中。
 
 5. （可选）创建密钥保管库并上传证书。
 

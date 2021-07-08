@@ -3,12 +3,12 @@ title: FedRAMP High 蓝图示例控制
 description: FedRAMP High 蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 88449bfb52dfe2452e1dd6b744f67600242edf79
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 3e1cea90e7b1553fb3b8b9e93994208ecfa564da
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386732"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757450"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High 蓝图示例的控制映射
 
@@ -117,7 +117,7 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 审核评审、分析和报告 | 集成/扫描和监视功能
 
-此蓝图提供的策略定义用于审核记录，分析虚拟机、虚拟机规模集、SQL 数据服务器和 SQL 托管实例服务器上的漏洞评估。 这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。 为了实现详细的漏洞扫描和监视，我们建议你同时利用 Azure Sentinel 和 Azure 安全中心。
+此蓝图提供的策略定义用于审核记录，分析虚拟机、虚拟机规模集、SQL 数据服务器和 SQL 托管实例服务器上的漏洞评估。 这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。 为了实现详细的漏洞扫描和监视，我们建议你同时使用 Azure Sentinel 和 Azure 安全中心。
 
 - \[预览\]：应在虚拟机上启用漏洞评估
 - \[预览\]：启用用于 VM 的 Azure Monitor
@@ -182,7 +182,7 @@ Azure Site Recovery 将在虚拟机上运行的工作负荷从主位置复制到
 
 - 审核没有配置灾难恢复的虚拟机
 
-## <a name="cp-9-05--information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05) 信息系统备份 | 转移到备用存储站点
+## <a name="cp-9-05-information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05) 信息系统备份 | 转移到备用存储站点
 
 此蓝图以电子方式将对组织的系统备份信息进行审核的 Azure 策略定义分配给备用存储站点。 对于存储元数据的物理装运，请考虑使用 Azure Data Box。
 
@@ -352,7 +352,7 @@ Azure 存储高级威胁防护会检测试图访问或利用存储帐户的异�
 - 在存储帐户上部署高级威胁防护
 
 > [!NOTE]
-> 特定 Azure Policy 定义的可用性在 Azure 政府和其他国家云中可能会有所不同。 
+> 特定 Azure Policy 定义的可用性在 Azure 政府和其他国家云中可能会有所不同。
 
 ## <a name="next-steps"></a>后续步骤
 

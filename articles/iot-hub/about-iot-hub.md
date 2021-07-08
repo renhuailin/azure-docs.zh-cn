@@ -1,9 +1,9 @@
 ---
-title: Azure IoT 中心简介 | Microsoft Docs
-description: 了解 Azure IoT 中心。 此 IoT 服务针对可缩放数据引入、设备管理和安全性而构建。
-author: nberdy
-ms.author: nberdy
-ms.date: 08/08/2019
+title: 什么是 Azure IoT 中心 | Microsoft Docs
+description: 本文介绍对 Azure IoT 中心的使用。 它使你可以以可缩放的方式读取数据，并可以安全地管理设备。
+author: robinsh
+ms.author: robinsh
+ms.date: 05/03/2021
 ms.topic: overview
 ms.custom:
 - mvc
@@ -11,22 +11,23 @@ ms.custom:
 - mqtt
 - 'role: Direction'
 - 'role: System Architecture'
+- contentperf:fy21q3
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 86a373844b370cc9f9ce31dc65b2039a81279803
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95247a1485bac7282ffe95ddcc2ddd37883738dd
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454764"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783813"
 ---
-# <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
+# <a name="what-is-azure-iot-hub"></a>什么是 Azure IoT 中心
 
-IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 IoT 应用程序与其管理的设备之间的双向通信。 可以使用 Azure IoT 中心，将数百万 IoT 设备和云托管解决方案后端之间建立可靠又安全的通信，生成 IoT 解决方案。 几乎可以将任何设备连接到 IoT 中心。
+IoT 中心是托管在云中的托管服务，充当中央消息中心，用于 IoT 应用程序及其连接设备之间双向通信。 可以安全可靠地连接数百万台设备及其后端解决方案。 几乎任何设备都可以连接到 IoT 中心。 
 
-IoT 中心支持设备与云之间的双向通信。 IoT 中心支持多种消息传递模式，例如设备到云的遥测、从设备上传文件以及从云控制设备的请求-回复方式。 IoT 中心的监视功能可跟踪各种事件（例如设备创建、设备故障和设备连接），有助于维持解决方案的良好运行。
+支持若干消息传递模式，包括设备到云遥测、从设备上传文件，以及从云中控制设备的请求-答复方法。 IoT 中心还支持监视，以帮助跟踪创建设备、连接设备和设备故障。
 
-IoT 中心的功能有助于生成可缩放且功能完整的 IoT 解决方案，例如管理制造业中使用的工业设备、跟踪医疗保健中宝贵的资产以及监视办公大楼使用情况。
+借助 IoT 中心的功能，你可以生成可缩放且功能完整的 IoT 解决方案，例如管理制造业中使用的工业设备、跟踪医疗保健中宝贵的资产以及监视办公大楼使用情况。
 
 ## <a name="scale-your-solution"></a>缩放解决方案
 
@@ -34,7 +35,7 @@ IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万�
 
 ## <a name="secure-your-communications"></a>保护通信
 
-IoT 中心为发送数据的设备提供保护信道。
+可以使用 IoT 中心安全地发送数据。
 
 * 通过对每个设备进行身份验证，可以安全地将每个设备连接到 IoT 中心，并且安全地管理这些设备。
 
@@ -44,21 +45,21 @@ IoT 中心为发送数据的设备提供保护信道。
 
 * 多种身份验证类型支持各种设备功能：
 
-  * 基于 SAS 令牌的身份验证可快速启动 IoT 解决方案。
+  * 基于 SAS 令牌的身份验证使你可以快速启动 IoT 解决方案。
 
-  * 单个 X.509 证书身份验证，用于安全、以标准为基础的身份验证。
+  * 单个 X.509 证书身份验证可用于安全、以标准为基础的身份验证。
 
-  * X.509 CA 身份验证，用于简单、以标准为基础的注册。
+  * X.509 CA 身份验证可用于简单、以标准为基础的注册。
 
 ## <a name="route-device-data"></a>路由设备数据
 
 内置的消息路由功能可以灵活地设置基于规则的自动消息扇出：
 
-* 使用[消息路由](iot-hub-devguide-messages-d2c.md)控制你的中心发送设备遥测数据的位置。
+* [消息路由](iot-hub-devguide-messages-d2c.md)用于控制你的中心发送设备遥测数据的位置。
 
 * 无需支付额外费用，即可将消息路由到多个终结点。
 
-* 无代码路由规则替代了自定义消息调度程序代码。
+* 传递规则可以配置为根据消息中的内容自动引导消息，而无需编写任何代码。
 
 ## <a name="integrate-with-other-services"></a>与其他服务集成
 
@@ -84,7 +85,7 @@ IoT 中心为发送数据的设备提供保护信道。
 
 ## <a name="make-your-solution-highly-available"></a>使解决方案具有高可用性
 
-[IoT 中心的服务级别协议](https://azure.microsoft.com/support/legal/sla/iot-hub/)提供 99.9% 的可用性。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/) 说明了 Azure 作为整体的保证可用性。
+IoT 中心具有 [IoT 中心的服务级别协议](https://azure.microsoft.com/support/legal/sla/iot-hub/)的 99.9% 的可用性。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/) 说明了 Azure 作为整体的保证可用性。
 
 ## <a name="connect-your-devices"></a>连接数据
 
@@ -117,7 +118,7 @@ IoT 中心和设备 SDK 支持用于连接设备的 [Azure IoT 即插即用](../
 
 ## <a name="quotas-and-limits"></a>配额和限制
 
-每个 Azure 订阅都有默认的配额限制以防止服务滥用，并且这些限制可能会影响 IoT 解决方案的作用域。 每个订阅的当前限制是每个订阅 50 个 IoT 中心。 可以通过联系支持人员，请求增加配额。 有关详细信息，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。 有关配额限制的详细信息，请参阅以下文章之一：
+每个 Azure 订阅都有默认配额限制，以防止服务滥用。 这些限制可能影响 IoT 解决方案的作用域。 每个订阅的当前限制是每个订阅 50 个 IoT 中心。 可以通过联系支持人员，请求增加配额。 有关详细信息，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。 有关配额限制的详细信息，请参阅以下文章之一：
 
 * [Azure 订阅服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)
 

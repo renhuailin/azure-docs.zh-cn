@@ -7,29 +7,30 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/09/2021
+ms.date: 05/26/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e17d08d09814c135af3e0b4fc299b6e6f42326d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b08fe34e7ac5eede8d1435e3de3817224fafdbc6
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549883"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560162"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？
 
-Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-name)）是一种云搜索服务，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容构建丰富的搜索体验。 
+Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-name)）是一个云搜索服务，它为开发人员提供体系结构、API 和工具，用于基于 Web、移动和企业应用程序中的专用异类内容构建丰富的搜索体验。 
 
-搜索是任何向用户展示内容的应用的基础，其常见方案包括目录或文档搜索、电子商务站点搜索或数据科学知识挖掘等。 认知搜索的 API 和体系结构简化了向任何解决方案添加复杂信息检索的任务。
+搜索是任何向用户展示内容的应用的基础，其常见方案包括目录或文档搜索、电子商务站点搜索或数据科学知识挖掘等。
 
-搜索服务具有以下组件：
+创建搜索服务时，将使用以下功能：
 
-+ 用于全文搜索的搜索引擎
-+ 用户所拥有且已编制索引的内容的持久存储
-+ 用于编制索引和查询内容的 API
-+ 可选的[基于 AI 的扩充](cognitive-search-concept-intro.md)，可从图像、原始非结构化文本、应用程序文件创建可搜索的内容
-+ 可选择与其他 Azure 服务集成以实现数据、机器学习/AI、监视和安全性
-+ 可选择实现[语义搜索（预览版）](semantic-search-overview.md)以提高关联性
++ 用于进行全文搜索的搜索引擎
++ 搜索索引中用户拥有的内容的永久性存储
++ 丰富索引编制、文本分析以及用于提取和转换内容的可选 [AI 扩充](cognitive-search-concept-intro.md)
++ 丰富查询功能，包括简单语法、完整 Lucene 语法和自动提示搜索
++ 通过 REST API 和适用于 .NET、Python、Java 与 JavaScript 的 Azure SDK 中的客户端库实现的可编程性
++ 数据层、机器学习层和 AI（认知服务）级别的 Azure 集成
++ 通过[语义搜索（预览版）](semantic-search-overview.md)实现的先进排名算法
 
 从体系结构方面来讲，搜索服务位于外部数据存储（包含未编入索引的数据）与客户端应用（向搜索索引发送查询请求并处理响应）之间。
 

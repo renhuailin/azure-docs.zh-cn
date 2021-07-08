@@ -1,21 +1,22 @@
 ---
-title: 教程 - 自定义 Azure Active Directory 属性映射
-description: 了解 Azure Active Directory 中有哪些针对 SaaS 应用的属性映射，以及如何修改它们来满足业务需求。
+title: 教程 - 在应用程序预配中自定义 Azure Active Directory 属性映射
+description: 了解如何修改 Azure Active Directory 应用程序预配中软件即服务 (SaaS) 应用的属性映射以满足业务需求。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.openlocfilehash: 8534c21bb0dad782b89c6518ea2313b4232639a6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.reviewer: arvinh
+ms.openlocfilehash: 78e2b01da1b47a51309a9e26500514aea396190b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128660"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783002"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 

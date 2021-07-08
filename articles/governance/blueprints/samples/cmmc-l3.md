@@ -3,16 +3,16 @@ title: CMMC 级别 3 蓝图示例
 description: CMMC 级别 3 蓝图示例概述。 此蓝图示例可帮助客户评估特定控制要求。
 ms.date: 03/24/2021
 ms.topic: sample
-ms.openlocfilehash: 100e404567f0241e814280650944e620435dc60c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: df3dac17ce91757640f5b437f5915d41c901afc4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145080"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757630"
 ---
 # <a name="cmmc-level-3-blueprint-sample"></a>CMMC 级别 3 蓝图示例
 
-CMMC 级别 3 蓝图示例提供了使用 [Azure Policy](../../policy/overview.md) 的监管防护措施，以便帮助你评估特定的[网络安全成熟度模型认证 (CMMC) 框架](https://www.acq.osd.mil/cmmc/index.html)控制要求。 此蓝图帮助客户为 Azure 部署的任何必须实施 CMMC 级别 3 控制要求的体系结构部署一组核心策略。
+CMMC 级别 3 蓝图示例使用 [Azure Policy](../../policy/overview.md) 提供治理防护措施，帮助你评估特定的[网络安全成熟度模型认证 (CMMC) 框架](https://www.acq.osd.mil/cmmc/index.html)控制要求。 此蓝图帮助客户为 Azure 部署的任何必须实施 CMMC 级别 3 控制要求的体系结构部署一组核心策略。
 
 ## <a name="control-mapping"></a>控制映射
 
