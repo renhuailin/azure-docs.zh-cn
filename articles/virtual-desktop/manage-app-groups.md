@@ -1,24 +1,24 @@
 ---
-title: 使用门户管理 Windows 虚拟桌面的应用组 - Azure
-description: 如何使用 Azure 门户管理 Windows 虚拟桌面应用组。
+title: 管理 Azure 虚拟桌面门户的应用组 - Azure
+description: 如何使用 Azure 门户管理 Azure 虚拟桌面应用组。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 10/09/2020
+ms.date: 05/28/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 65ca13cba07230a7bf606a398e28761aced14857
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3c28654f70599a67060a94b8bb93397fc51c527e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446003"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753334"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>教程：使用 Azure 门户管理应用组
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/manage-app-groups-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/manage-app-groups-2019.md)。
 
-为新的 Windows 虚拟桌面主机池创建的默认应用组也会发布完整桌面。 此外，可为主机池创建一个或多个 RemoteApp 应用程序组。 请遵循本教程创建 RemoteApp 应用组并发布单个“开始”菜单应用。
+为新的 Azure 虚拟桌面主机池创建的默认应用组也会发布完整桌面。 此外，可为主机池创建一个或多个 RemoteApp 应用程序组。 请遵循本教程创建 RemoteApp 应用组并发布单个“开始”菜单应用。
 
 本教程介绍如何执行下列操作：
 
@@ -35,7 +35,7 @@ ms.locfileid: "106446003"
     >[!NOTE]
     > 如果要登录 US Gov 门户，请改为转到 [https://portal.azure.us/](https://portal.azure.us/)。
 
-2.  搜索并选择“Windows 虚拟桌面”  。
+2.  搜索并选择“Azure 虚拟桌面”。
 
 3. 可以直接添加应用程序组，也可以从现有主机池中添加该组。 选择下列选项之一：
 
@@ -124,7 +124,31 @@ ms.locfileid: "106446003"
 - 基于你的配置创建 Azure 资源管理器模板的链接，你可以下载并保存该模板供以后使用。
 
 >[!IMPORTANT]
->只能为每个 Azure Active Directory 租户创建 200 个应用程序组。 由于检索用户源存在服务限制，我们添加了此限制。 此限制不适用于在 Windows 虚拟桌面（经典）中创建的应用组。
+>只能为每个 Azure Active Directory 租户创建 200 个应用程序组。 由于检索用户源存在服务限制，我们添加了此限制。 此限制不适用于在 Azure 虚拟桌面（经典）中创建的应用组。
+
+## <a name="edit-or-remove-an-app"></a>编辑或删除应用
+
+若要编辑或删除应用组中的应用，请执行以下操作：
+
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+   
+   >[!NOTE]
+   >如果要登录 US Gov 门户，请改为转到 [https://portal.azure.us/](https://portal.azure.us)。
+
+2. 搜索并选择“Azure 虚拟桌面”。
+
+3. 可以直接添加应用程序组，也可以通过选择以下选项之一，从现有主机池添加应用程序组：
+
+    - 若要直接添加新的应用程序组，请在页面左侧的菜单中选择“应用程序组”，然后选择要编辑的应用组。
+    - 若要编辑现有主机池中的某个应用组，请在屏幕左侧的菜单中选择“主机池”，选择主机池的名称，在屏幕左侧显示的菜单中选择“应用程序组”，然后选择要编辑的应用组 。
+
+4. 在页面左侧的菜单中选择“应用程序”。
+
+5. 如果你要删除某个应用程序，请选中该应用程序旁边的复选框，然后在页面顶部的菜单中选择“删除”。
+
+6. 如果你要编辑某个应用程序的详细信息，请选择应用程序名称。 此时会打开编辑菜单。
+
+7. 完成更改后，选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 

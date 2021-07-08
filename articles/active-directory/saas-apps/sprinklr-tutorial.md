@@ -9,101 +9,75 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 05/18/2021
 ms.author: jeedes
-ms.openlocfilehash: e76386c8c276c6c8c07751474b3718f98af18f4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e683abfc9296211547647f47a46b82ed34d823f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92519429"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461937"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>教程：Azure Active Directory 与 Sprinklr 集成
 
-在本教程中，了解如何将 Sprinklr 与 Azure Active Directory (Azure AD) 集成。
-将 Sprinklr 与 Azure AD 集成可提供以下优势：
+本教程介绍如何将 Sprinklr 与 Azure Active Directory (Azure AD) 相集成。 将 Sprinklr 与 Azure AD 集成后，可以：
 
-* 可在 Azure AD 中控制谁有权访问 Sprinklr。
-* 可让用户使用其 Azure AD 帐户自动登录到 Sprinklr（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
-
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+* 在 Azure AD 中控制谁有权访问 Sprinklr。
+* 让用户使用其 Azure AD 帐户自动登录到 Sprinklr。
+* 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Sprinklr 的集成，需要以下项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 Sprinklr 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Sprinklr 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Sprinklr 支持“SP”发起的 SSO 
+* Sprinklr 支持 SP 发起的 SSO。
 
-## <a name="adding-sprinklr-from-the-gallery"></a>从库添加 Sprinklr
+## <a name="add-sprinklr-from-the-gallery"></a>从库中添加 Sprinklr
 
 若要配置 Sprinklr 与 Azure AD 的集成，需要从库中将 Sprinklr 添加到托管 SaaS 应用列表。
 
-**若要从库添加 Sprinklr，请执行以下步骤：**
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分的搜索框中，键入 Sprinklr 。
+1. 在结果面板中选择“Sprinklr”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
+## <a name="configure-and-test-azure-ad-sso-for-sprinklr"></a>配置并测试 Sprinklr 的 Azure AD SSO
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
+使用名为 B.Simon 的测试用户配置并测试 Sprinklr 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Sprinklr 中的相关用户之间建立链接关系。
 
-2. 转到“企业应用”，并选择“所有应用”选项   。
+若要配置并测试 Sprinklr 的 Azure AD SSO，请执行以下步骤：
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. [配置 Sprinklr SSO](#configure-sprinklr-sso) - 在应用程序端配置单一登录设置。
+    1. [创建 Sprinklr 测试用户](#create-sprinklr-test-user) - 在 Sprinklr 中创建 B.Simon 的对应用户，并将其链接到其在 Azure AD 中的表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
-    ![“新增应用程序”按钮](common/add-new-app.png)
+按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-4. 在搜索框中，键入“Sprinklr”，在结果面板中选择“Sprinklr”，然后单击“添加”按钮添加该应用程序    。
+1. 在 Azure 门户中的“Sprinklr”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
-     ![结果列表中的 Sprinklr](common/search-new-app.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-在本部分中，基于一个名为“Britta Simon”的测试用户使用 Sprinklr 配置和测试 Azure AD 单一登录。 
-若要运行单一登录，需要在 Azure AD 用户与 Sprinklr 相关用户之间建立链接关系。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.sprinklr.com` 
 
-若要配置和测试 Sprinklr 的 Azure AD 单一登录，需要完成以下构建基块：
-
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Sprinklr 单一登录](#configure-sprinklr-single-sign-on)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Sprinklr 测试用户](#create-sprinklr-test-user)** - 在 Sprinklr 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
-
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
-
-若要配置 Sprinklr 的 Azure AD 单一登录，请执行以下步骤：
-
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Sprinklr”应用程序集成页上，选择“单一登录”。  
-
-    ![配置单一登录链接](common/select-sso.png)
-
-2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
-
-    ![单一登录选择模式](common/select-saml-option.png)
-
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
-
-    ![编辑基本 SAML 配置](common/edit-urls.png)
-
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
-
-    ![Sprinklr 域和 URL 单一登录信息](common/sp-identifier.png)
-
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.sprinklr.com` 
-
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.sprinklr.com`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.sprinklr.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Sprinklr 客户端支持团队](https://www.sprinklr.com/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -116,31 +90,49 @@ ms.locfileid: "92519429"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    a. 登录 URL
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
-    b. Azure AD 标识符
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-    c. 注销 URL
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
-### <a name="configure-sprinklr-single-sign-on"></a>配置 Sprinklr 单一登录
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
+
+在本部分，你将通过授予 B.Simon 访问 Sprinklr 的权限，使其能够使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Sprinklr”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
+
+## <a name=&quot;configure-sprinklr-sso&quot;></a>配置 Sprinklr SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Sprinklr 公司站点。
 
 1. 转到“管理”\>“设置”  。
 
-    ![管理](./media/sprinklr-tutorial/ic782907.png "管理")
+    ![管理](./media/sprinklr-tutorial/settings.png &quot;管理")
 
 1. 从左侧窗格转到“管理合作伙伴”\>“单一登录”  。
 
-    ![管理合作伙伴](./media/sprinklr-tutorial/ic782908.png "管理合作伙伴")
+    ![管理合作伙伴](./media/sprinklr-tutorial/users.png "管理合作伙伴")
 
 1. 单击“+添加单一登录”  。
 
-    ![显示“添加单一登录”按钮的屏幕截图。](./media/sprinklr-tutorial/ic782909.png "单一登录")
+    ![显示“添加单一登录”按钮的屏幕截图。](./media/sprinklr-tutorial/add-user.png "单一登录")
 
 1. 在“单一登录”  页上，执行以下步骤：
 
-    ![显示“单一登录”页的屏幕截图，可在其中输入所述的值。](./media/sprinklr-tutorial/ic782910.png "单一登录")
+    ![显示“单一登录”页的屏幕截图，可在其中输入所述的值。](./media/sprinklr-tutorial/configuration.png "单一登录")
 
     a. 在“名称”文本框中，键入配置名称（例如  ：WAADSSOTest)  。
 
@@ -162,58 +154,7 @@ ms.locfileid: "92519429"
 
     j. 单击“ **保存**”。
 
-    ![SAML](./media/sprinklr-tutorial/ic782911.png "SAML")
-
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
-
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”中，按照以下步骤操作。
-
-    ![“用户”对话框](common/user-properties.png)
-
-    a. 在“名称”  字段中，输入 BrittaSimon  。
-  
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
-
-    d. 单击“创建”。
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分，通过授予 Britta Simon 访问 Sprinklr 的权限，使其能够使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Sprinklr”    。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-2. 在应用程序列表中，选择“Sprinklr”  。
-
-    ![应用程序列表中的 Sprinklr 链接](common/all-applications.png)
-
-3. 在左侧菜单中，选择“用户和组”  。
-
-    ![“用户和组”链接](common/users-groups-blade.png)
-
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
-
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-
-7. 在“添加分配”对话框中，单击“分配”按钮。  
+    ![SAML](./media/sprinklr-tutorial/save-configuration.png "SAML")
 
 ### <a name="create-sprinklr-test-user"></a>创建 Sprinklr 测试用户
 
@@ -221,19 +162,19 @@ ms.locfileid: "92519429"
 
 1. 转到“管理”\>“设置”  。
 
-    ![管理](./media/sprinklr-tutorial/ic782907.png "管理")
+    ![管理](./media/sprinklr-tutorial/settings.png "管理")
 
 1. 从左侧窗格转到“管理客户端”\>“用户”  。
 
-    ![显示“设置/用户”中的“添加用户”按钮的屏幕截图。](./media/sprinklr-tutorial/ic782914.png "设置")
+    ![显示“设置/用户”中的“添加用户”按钮的屏幕截图。](./media/sprinklr-tutorial/client.png "设置")
 
 1. 单击“添加用户”  。
 
-    ![显示“编辑用户”对话框的屏幕截图，可在其中输入所述的值。](./media/sprinklr-tutorial/ic782915.png "设置")
+    ![显示“编辑用户”对话框的屏幕截图，可在其中输入所述的值。](./media/sprinklr-tutorial/search-users.png "设置")
 
 1. 在“编辑用户”  对话框中，执行以下步骤：
 
-    ![编辑用户](./media/sprinklr-tutorial/ic782916.png "编辑用户")
+    ![编辑用户](./media/sprinklr-tutorial/update-users.png "编辑用户")
 
     a. 在“电子邮件”  、“名字”  和“姓氏”  文本框中，键入要预配的 Azure AD 用户帐户的信息。
 
@@ -250,7 +191,7 @@ ms.locfileid: "92519429"
 
 1. 单击“角色”  ，并执行以下步骤：
 
-    ![合作伙伴角色](./media/sprinklr-tutorial/ic782917.png "合作伙伴角色")
+    ![合作伙伴角色](./media/sprinklr-tutorial/role.png "合作伙伴角色")
 
     a. 从“全局”  列表中，选择 **ALL_Permissions**。  
 
@@ -259,16 +200,16 @@ ms.locfileid: "92519429"
 > [!NOTE]
 > 可以使用任何其他 Sprinklr 用户帐户创建工具或 Sprinklr 提供的 API 来预配 Azure AD 用户帐户。
 
-### <a name="test-single-sign-on"></a>测试单一登录
+## <a name="test-sso"></a>测试 SSO
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-单击访问面板中的 Sprinklr 磁贴时，应会自动登录到为其设置了 SSO 的 Sprinklr。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Sprinklr 登录 URL，可从中启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 Sprinklr 登录 URL，并从中启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Sprinklr”磁贴时，会重定向到 Sprinklr 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+配置 Sprinklr 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

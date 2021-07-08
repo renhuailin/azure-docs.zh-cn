@@ -14,20 +14,16 @@ ms.topic: tutorial
 ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 083bd56b2b211d11206a277bf31eea797b37cdb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6a80a4d17fd5bf9584a6aaa8b50802f5a4ec5a6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979923"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468842"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用动态配置
 
-ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据。 它可以动态处理更改，而不会导致应用程序重启。 ASP.NET Core 支持将配置设置绑定到强类型 .NET 类。 它通过使用各种 `IOptions<T>` 模式将其注入到代码中。 其中一种模式（特别是 `IOptionsSnapshot<T>`）会在基础数据发生更改时自动重载应用程序的配置。 可将 `IOptionsSnapshot<T>` 注入应用程序的控制器，以访问 Azure 应用配置中存储的最新配置。
-
-此外，还可以设置应用配置 ASP.NET Core 客户端库，以使用中间件动态刷新一组配置设置。 每次只要 Web 应用收到请求，配置设置就会使用配置存储进行更新。
-
-Azure 应用程序配置会自动缓存每项设置，避免过多调用配置存储。 刷新操作会等待，直到某项设置的已缓存值过期才更新该设置，即使其值在配置存储中发生了更改。 默认缓存过期时间为 30 秒。 可以根据需要覆盖此过期时间。
+ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据。 它可以动态处理更改，而不会导致应用程序重启。 ASP.NET Core 支持将配置设置绑定到强类型 .NET 类。 它通过使用 `IOptionsSnapshot<T>`（它会在基础数据发生变化时自动重载应用程序的配置）将它们注入到代码中。
 
 本教程演示如何在代码中实现动态配置更新。 它建立在快速入门中介绍的 Web 应用之上。 在继续操作之前，请先完成[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
 
@@ -49,14 +45,14 @@ Azure 应用程序配置会自动缓存每项设置，避免过多调用配置�
 
 ## <a name="add-a-sentinel-key"></a>添加 sentinel 键
 
-sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会监视 sentinel 键以了解更改情况。 检测到更改时，刷新所有配置值。 与监视所有键以了解更改情况相比，这种方法可减少应用对 Azure 应用程序配置发出的请求的总数。
+Sentinel 键是完成所有其他键的更改后更新的特殊键。 应用程序监视 Sentinel 键。 检测到更改时，应用程序刷新所有配置值。 与监视所有键以了解更改情况相比，此方法有助于确保应用程序中配置的一致性，并减少对应用程序配置发出的请求总数。
 
 1. 在 Azure 门户中，选择“配置资源管理器”>“创建”>“键-值”  。
 1. 输入 *TestApp:Settings:Sentinel* 作为“键”。   输入 1 作为“值”。 将“标签”和“内容类型”留空   。
 1. 选择“应用”。 
 
 > [!NOTE]
-> 如果不使用 Sentinel 密钥，则需手动注册要监视的每个密钥。
+> 如果不使用 Sentinel 键，则需手动注册要监视的每个键。
 
 ## <a name="reload-data-from-app-configuration"></a>从应用配置重载数据
 
@@ -133,16 +129,14 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
     ```
     ---
 
-    `ConfigureRefresh` 方法用于指定在刷新操作触发时通过应用程序配置存储区更新配置数据所用的设置。 `Register` 方法的 `refreshAll` 参数指示在 sentinel 键更改时应刷新所有配置值。
-
-    此外，`SetCacheExpiration` 方法会重写默认的缓存过期时间（30 秒），改为指定一个 5 分钟的时间。 这会减少对 Azure 应用程序配置发出的请求数。
+    在 `ConfigureRefresh` 方法中，在要监视更改的应用程序配置存储中注册键。 `Register` 方法的 `refreshAll` 参数指示在已注册键更改时应刷新所有配置值。 `SetCacheExpiration` 方法指定向应用程序配发出新请求以检查任何配置更改之前必须经过的最小时间。 在此示例中，替代默认的过期时间（30 秒），改为指定一个 5 分钟的时间。 这会减少对应用程序配置存储发出的潜在请求数。
 
     > [!NOTE]
-    > 出于测试目的，可能需要缩短缓存的过期时间。
+    > 出于测试目的，可能需要缩短缓存刷新过期时间。
 
-    为了实际触发刷新操作，需要配置刷新中间件，使应用程序在发生任何更改时刷新配置数据。 稍后会介绍如何执行此操作。
+    若要实际触发一个配置刷新，可使用应用程序配置中间件。 稍后会介绍如何执行此操作。
 
-2. 在控制器目录中添加一个 Settings.cs 文件，用于定义和实现新的 `Settings` 类。 将命名空间替换为项目的名称。 
+1. 在控制器目录中添加一个 Settings.cs 文件，用于定义和实现新的 `Settings` 类。 将命名空间替换为项目的名称。 
 
     ```csharp
     namespace TestAppConfig
@@ -157,7 +151,7 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
     }
     ```
 
-3. 打开 Startup.cs  ，然后在 `ConfigureServices` 方法中使用 `IServiceCollection.Configure<T>` 将配置数据绑定到 `Settings` 类。
+1. 打开 Startup.cs 并更新 `ConfigureServices` 方法。 调用 `Configure<Settings>`，将配置数据绑定到 `Settings` 类。 调用 `AddAzureAppConfiguration`，将应用程序配置组件添加到应用程序的服务集合。
 
     #### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
 
@@ -190,11 +184,8 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
     }
     ```
     ---
-    > [!Tip]
-    > 若要了解有关读取配置值时的选项模式的详细信息，请参阅 [ASP.NET Core 中的选项模式](/aspnet/core/fundamentals/configuration/options)。
 
-4. 更新 `Configure` 方法以添加 `UseAzureAppConfiguration` 中间件，从而允许在 ASP.NET Core Web 应用继续接收请求的同时，更新已为刷新操作注册的配置设置。
-
+1. 更新 `Configure` 方法，并添加对 `UseAzureAppConfiguration` 的调用。 它使应用程序能够使用应用程序配置中间件自动为你处理配置更新。
 
     #### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
 
@@ -284,10 +275,11 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
     ```
     ---
     
-    该中间件使用 `Program.cs` 的 `AddAzureAppConfiguration` 方法中指定的刷新配置，以针对 ASP.NET Core Web 应用收到的每个请求触发刷新。 对于每个请求，均会触发刷新操作，并且客户端库会检查已注册的配置设置的缓存值是否过期。 如果它已过期，则会刷新它。
-
     > [!NOTE]
-    > 若要确保配置已刷新，请尽早将中间件添加到请求管道中，以免应用程序中的其他中间件使该中间件短路。
+    > 应用程序配置中间件监视 Sentinel 键或你在上一步骤的 `ConfigureRefresh` 调用中注册以进行刷新的其他任何键。 每次向应用程序传入请求时，都会触发中间件。 但是，当设置的缓存过期时间已过去，中间件只会发送请求以检查应用程序配置中的值。 检测到更改时，如果使用 Sentinel 键，它将更新所有配置，或仅更新已注册键的值。
+    > - 如果向应用程序配置的更改检测请求失败，则应用程序将继续使用缓存的配置。 当配置的缓存过期时间再次过去，并且有新的请求传入应用程序时，将进行另一次检查。
+    > - 配置刷新与应用程序传入请求的处理异步进行。 它不会阻止或减缓触发刷新的传入请求。 触发刷新的请求可能无法获取更新的配置值，但后续请求会获得。
+    > - 若要确保中间件被触发，请在请求管道中尽早调用 `app.UseAzureAppConfiguration()`，使其他中间件不会在应用程序中将其短路。
 
 ## <a name="use-the-latest-configuration-data"></a>使用最新的配置数据
 
@@ -299,9 +291,9 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
 
 2. 更新 `HomeController` 类，通过依赖项注入接收 `Settings` 并利用其值。
 
- #### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
+    #### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
 
-```csharp
+    ```csharp
     public class HomeController : Controller
     {
         private readonly Settings _settings;
@@ -325,10 +317,10 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
 
         // ...
     }
-```
-#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+    ```
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
-```csharp
+    ```csharp
     public class HomeController : Controller
     {
         private readonly Settings _settings;
@@ -352,10 +344,10 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
 
         // ...
     }
-```
-#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+    ```
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
-```csharp
+    ```csharp
     public class HomeController : Controller
     {
         private readonly Settings _settings;
@@ -374,10 +366,10 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
             return View();
         }
     }
-```
----
-
-
+    ```
+    ---
+    > [!Tip]
+    > 若要了解有关读取配置值时的选项模式的详细信息，请参阅 [ASP.NET Core 中的选项模式](/aspnet/core/fundamentals/configuration/options)。
 
 3. 在“视图”>“主页”目录中打开 *Index.cshtml*，并将其内容替换为以下脚本：
 
@@ -422,7 +414,7 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区实例  。
 
-1. 选择“配置资源管理器”  并更新以下键的值：
+1. 选择“配置资源管理器”并更新以下键的值。 最后记得更新 Sentinel 键。
 
     | 密钥 | 值 |
     |---|---|
@@ -431,7 +423,7 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
     | TestApp:Settings:Message | Azure 应用配置中的数据 - 现可实时更新！ |
     | TestApp:Settings:Sentinel | 2 |
 
-1. 刷新浏览器页面，查看新的配置设置。 可能需要多次刷新，系统才能反映所做的更改，你也可以将自动刷新率更改为小于 5 分钟。 
+1. 刷新浏览器页面，查看新的配置设置。 可能需要多次刷新，系统才能反映所做的更改，也可以将缓存过期时间更改为小于 5 分钟。 
 
     ![在本地启动更新的快速入门应用](./media/quickstarts/aspnet-core-app-launch-local-after.png)
 

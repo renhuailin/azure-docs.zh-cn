@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f2c290c69fcadd594d6cbd5879e7d9f5304a42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7071d180efe9f7da088f30106c879fd10ed9051
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558009"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087105"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory 中的管理单元
 
@@ -40,7 +40,7 @@ ms.locfileid: "102558009"
 
 ## <a name="license-requirements"></a>许可要求
 
-若要使用管理单元，需要每个管理单元管理员具有 Azure Active Directory Premium 许可证，并需要管理单元成员具有 Azure Active Directory Free 许可证。 有关详细信息，请参阅 [Azure AD Premium 入门](../fundamentals/active-directory-get-started-premium.md)。
+使用管理单元要求每个管理单元管理员具有 Azure AD Premium P1 许可证，要求管理单元成员具有 Azure AD Free 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ## <a name="manage-administrative-units"></a>对管理单元进行管理
 
@@ -64,7 +64,7 @@ ms.locfileid: "102558009"
 
 ## <a name="currently-supported-scenarios"></a>当前支持的场景
 
-全局管理员或特权角色管理员可以使用 Azure AD 门户来执行以下操作：
+作为全局管理员或特权角色管理员，你可以使用 Azure 门户：
 
 - 创建管理单元
 - 添加管理单元的用户和组成员
@@ -79,7 +79,7 @@ ms.locfileid: "102558009"
 
 ### <a name="administrative-unit-management"></a>管理单元管理
 
-| 权限 |   Graph/PowerShell   | Azure AD 门户 | Microsoft 365 管理中心 |
+| 权限 |   Graph/PowerShell   | Azure 门户 | Microsoft 365 管理中心 |
 | --- | --- | --- | --- |
 | 创建和删除管理单元   |    支持    |   支持   |    不支持 |
 | 单独添加和删除管理单位成员    |   支持    |   支持   |    不支持 |
@@ -89,7 +89,7 @@ ms.locfileid: "102558009"
 
 ### <a name="user-management"></a>用户管理
 
-| 权限 |   Graph/PowerShell   | Azure AD 门户 | Microsoft 365 管理中心 |
+| 权限 |   Graph/PowerShell   | Azure 门户 | Microsoft 365 管理中心 |
 | --- | --- | --- | --- |
 | 用户属性、密码和许可证的管理单元范围管理   |    支持     |  支持   |   支持 |
 | 用户登录的管理单元范围阻止和取消阻止    |   支持   |    支持   |    支持 |
@@ -97,12 +97,12 @@ ms.locfileid: "102558009"
 
 ### <a name="group-management"></a>组管理
 
-| 权限 |   Graph/PowerShell   | Azure AD 门户 | Microsoft 365 管理中心 |
+| 权限 |   Graph/PowerShell   | Azure 门户 | Microsoft 365 管理中心 |
 | --- | --- | --- | --- |
 | 组属性和成员的管理单元范围管理     |  支持   |    支持    |  不支持 |
 | 组许可的管理单元范围管理   |    支持  |    支持   |   不支持 |
 
-管理单元仅对管理权限应用范围。 它们不会阻止成员或管理员使用其[默认用户权限](../fundamentals/users-default-permissions.md)浏览管理单元外部的其他用户、组或资源。 在 Microsoft 365 管理中心，管理员的管理单元范围外的用户会被筛选掉。但你可以在 Azure AD 门户、PowerShell 和其他 Microsoft 服务中浏览其他用户。
+管理单元仅对管理权限应用范围。 它们不会阻止成员或管理员使用其[默认用户权限](../fundamentals/users-default-permissions.md)浏览管理单元外部的其他用户、组或资源。 在 Microsoft 365 管理中心，管理员的管理单元范围外的用户会被筛选掉。但你可以在 Azure 门户、PowerShell 和其他 Microsoft 服务中浏览其他用户。
 
 ## <a name="next-steps"></a>后续步骤
 

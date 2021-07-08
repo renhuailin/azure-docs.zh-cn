@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2021
 ms.author: jeedes
-ms.openlocfilehash: a5a6833e07e6743eed4013739f9acda6b5bd1fa4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ffdd6c30e279cc5df7f97e5ab5bb77a87c18dd8b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145910"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480487"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-managed-user"></a>教程：Azure Active Directory 单一登录 (SSO) 与 GitHub Enterprise Managed User 的集成
 
-本教程介绍如何将 GitHub Enterprise Managed User 与 Azure Active Directory (Azure AD) 相集成。 将 GitHub Enterprise Managed User 与 Azure AD 集成后，可以：
+本教程介绍如何将 GitHub Enterprise Managed User (EMU) 与 Azure Active Directory (Azure AD) 相集成。 将 GitHub Enterprise Managed User 与 Azure AD 集成后，可以：
 
 * 在 Azure AD 中控制谁有权访问 GitHub Enterprise Managed User。
 * 让用户使用其 Azure AD 帐户自动登录到 GitHub Enterprise Managed User。
@@ -38,8 +38,7 @@ ms.locfileid: "108145910"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * GitHub Enterprise Managed User 支持 **SP 和 IDP** 发起的 SSO。
-* GitHub Enterprise Managed User 支持 **即时** 用户预配。
-* GitHub Enterprise Managed User 支持 [**自动** 用户预配](./github-enterprise-managed-user-provisioning-tutorial.md)。
+* GitHub Enterprise Managed User 需要[自动用户预配](./github-enterprise-managed-user-provisioning-tutorial.md)。
 
 ## <a name="adding-github-enterprise-managed-user-from-the-gallery"></a>从库中添加 GitHub Enterprise Managed User
 
@@ -55,16 +54,10 @@ ms.locfileid: "108145910"
 
 ## <a name="configure-and-test-azure-ad-sso-for-github-enterprise-managed-user"></a>配置并测试 GitHub Enterprise Managed User 的 Azure AD SSO
 
-使用名为 **B.Simon** 的测试用户配置并测试 GitHub Enterprise Managed User 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 GitHub Enterprise Managed User 中的相关用户之间建立链接关系。
-
 若要配置并测试 GitHub Enterprise Managed User 的 Azure AD SSO，请执行以下步骤：
 
-1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-1. **[配置 GitHub Enterprise Managed User SSO](#configure-github-enterprise-managed-user-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 GitHub Enterprise Managed User 测试用户](#create-github-enterprise-managed-user-test-user)** - 在 GitHub Enterprise Managed User 中创建 B.Simon 的对应用户，并将其链接到其在 Azure AD 中的表示形式。
-1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+1. [配置 Azure AD SSO](#configure-azure-ad-sso) - 在 AAD 租户中启用 SAML 单一登录。
+1. [配置 GitHub Enterprise Managed User SSO](#configure-github-enterprise-managed-user-sso) - 在 GitHub Enterprise 中配置单一登录设置。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
@@ -76,77 +69,66 @@ ms.locfileid: "108145910"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 在开始之前，请确保已准备好你的企业 URL。 下面提到的“实体”字段是启用了 EMU 的企业 URL 的企业名称。 例如， https://github.com/enterprises/contoso -  contoso 就是实体。 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://github.com/enterprise-managed/<ENTITY>`
-
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://github.com/enterprises/<ENTITY>`
+    
+    > [!NOTE]
+    > 请注意，标识符格式不同于应用程序的建议格式 - 请遵循上述格式。 此外，请确保标识符不包含尾部斜杠。
+    
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://github.com/enterprises/<ENTITY>/saml/consume`
+    
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://github.com/enterprises/<ENTITY>/sso`
 
-    > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [GitHub Enterprise Managed User 客户端支持团队](mailto:support@github.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
-
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
-    ![证书下载链接](common/certificatebase64.png)
+    ![证书下载链接](common/certificate-base64-download.png)
 
-1. 在“设置 GitHub Enterprise Managed User”部分，根据要求复制相应的 URL。
+1. 在“设置 GitHub Enterprise Managed User”部分，复制并保存以下 URL，供稍后在配置 GitHub 时使用。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”。
-1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分，你将通过授予 B.Simon 访问 GitHub Enterprise Managed User 的权限，使其能够使用 Azure 单一登录。
+在本部分，你要将自己的帐户分配到 GitHub Enterprise Managed User 以完成 SSO 设置。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在“应用程序”列表中，选择“GitHub Enterprise Managed User”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“用户和组”对话框的“用户”列表中选择你的帐户，然后单击屏幕底部的“选择”按钮 。
+1. 在“选择角色”对话框中选择“企业所有者”角色，然后单击屏幕底部的“选择”按钮  。 在下一篇教程中预配你的帐户时，该帐户将分配为 GitHub 实例的企业所有者。 
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-github-enterprise-managed-user-sso"></a>配置 GitHub Enterprise Managed User SSO
 
-若要在 **GitHub Enterprise Managed User** 端配置单一登录，需要将从 Azure 门户下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [GitHub Enterprise Managed User 支持团队](mailto:support@github.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 GitHub Enterprise Managed User 一端配置单一登录，需要指定以下各项：
 
-### <a name="create-github-enterprise-managed-user-test-user"></a>创建 GitHub Enterprise Managed User 测试用户
+1. 上述 AAD Enterprise Managed User 应用程序中的 URL：登录 URL；Azure AD 标识符；注销 URL
+1. GitHub Enterprise 的第一个管理员用户的帐户名和密码。 这些凭据是通过 GitHub 解决方案工程联系人所发送的密码重置电子邮件提供的。 
 
-在本部分，我们将在 GitHub Enterprise Managed User 中创建名为 Britta Simon 的用户。 GitHub Enterprise Managed User 支持默认已启用的即时用户预配。 此部分不存在任何操作项。 当你尝试访问 GitHub Enterprise Managed User 时会创建一个新用户（如果 GitHub Enterprise Managed User 中尚不存在该用户）。
+### <a name="enable-github-enterprise-managed-user-saml-sso"></a>启用 GitHub Enterprise Managed User SAML SSO
 
-GitHub Enterprise Managed User 还支持自动用户预配，在[此处](./github-enterprise-managed-user-provisioning-tutorial.md)可以找到有关如何配置自动用户预配的更多详细信息。
+在本部分，你将采用 AAD 提供的上述信息，并将其输入到企业设置中以启用 SSO 支持。
 
-## <a name="test-sso"></a>测试 SSO 
-
-在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
-
-#### <a name="sp-initiated"></a>SP 启动的：
-
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 GitHub Enterprise Managed User 登录 URL，可从中启动登录流。  
-
-* 直接转到 GitHub Enterprise Managed User 登录 URL，并从中启动登录流。
-
-#### <a name="idp-initiated"></a>IDP 启动的：
-
-* 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 GitHub Enterprise Managed User。 
-
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“GitHub Enterprise Managed User”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 GitHub Enterprise Managed User。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+1. 转到 https://github.com
+1. 单击右上角的“登录”
+1. 输入第一个管理员用户帐户的凭据。 登录句柄应采用以下格式：`<your enterprise short code>_admin`
+1. 导航到 https://github.com/enterprises/ `<your enterprise name>`。 此信息应由解决方案工程联系人提供。
+1. 在左侧导航菜单中，依次选择“设置”、“安全性” 。
+1. 单击“启用 SAML 身份验证”复选框
+1. 填写“登录 URL”。 此 URL 是前面从 AAD 复制的“登录 URL”。
+1. 填写“颁发者”。 此 URL 是前面从 AAD 复制的“Azure AD 标识符”。
+1. 填写“公共证书”。 请打开前面下载的 base64 证书，并将该文件的文本内容粘贴到此对话框中。
+1. 单击“测试 SAML 配置”。 此时会打开一个对话框，可在其中使用 Azure AD 凭据登录，以验证 SAML SSO 是否已正确配置。 使用 AAD 凭据登录。 成功验证后，你将收到消息“已通过: 已成功对你的 SAML SSO 标识进行身份验证”。
+1. 单击“保存”以保存这些设置。
+1. 请在安全的位置保存（下载、打印或复制）恢复代码。
+1. 单击“启用 SAML 身份验证”。
+1. 此时，只有使用 SSO 的帐户才能登录到你的企业。 请按照以下文档中的预配说明来预配 SSO 支持的帐户。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 GitHub Enterprise Managed User 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+GitHub Enterprise Managed User 还要求通过自动用户预配创建所有帐户，在[此处](./github-enterprise-managed-user-provisioning-tutorial.md)可以找到有关如何配置自动用户预配的更多详细信息。

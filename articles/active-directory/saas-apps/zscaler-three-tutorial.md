@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 05/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 75d95ff77b48e7b1102900bc103e6930282e21e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d30b4e60ef93b8dccc7e9ed4966eeb7d9570df43
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726189"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110096907"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zscaler Three 集成
 
@@ -25,7 +25,6 @@ ms.locfileid: "98726189"
 * 在 Azure AD 中控制谁有权访问 Zscaler Three。
 * 让用户使用其 Azure AD 帐户自动登录到 Zscaler Three。
 * 在一个中心位置（Azure 门户）管理帐户。
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,14 +37,14 @@ ms.locfileid: "98726189"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Zscaler Three 支持 SP 发起的 SSO 
+* Zscaler Three 支持 SP 发起的 SSO。
 
-* Zscaler Three 支持实时用户预配 
+* Zscaler Three 支持实时用户预配。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-## <a name="adding-zscaler-three-from-the-gallery"></a>从库添加 Zscaler Three
+## <a name="add-zscaler-three-from-the-gallery"></a>从库中添加 Zscaler Three
 
 若要配置 Zscaler Three 与 Azure AD 的集成，需从库中将 Zscaler Three 添加到托管 SaaS 应用列表。
 
@@ -63,10 +62,10 @@ ms.locfileid: "98726189"
 若要配置并测试 Zscaler Three 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+   1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+   1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Zscaler Three SSO](#configure-zscaler-three-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Zscaler Three 测试用户](#create-zscaler-three-test-user)** - 在 Zscaler Three 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+   1. **[创建 Zscaler Three 测试用户](#create-zscaler-three-test-user)** - 在 Zscaler Three 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -79,30 +78,30 @@ ms.locfileid: "98726189"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“登录 URL”文本框中，键入 URL：`https://login.zscalerthree.net/sfc_sso` 
+   在“登录 URL”文本框中，键入 URL：`https://login.zscalerthree.net/sfc_sso`
 
 1. Zscaler Three 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
-    ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
+   ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
-6. 除了上述属性，Zscaler Three 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+1. 除了上述属性，Zscaler Three 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | 名称 | 源属性 |
-    | ---------| ------------ |
-    | memberOf | user.assignedroles |
+   | 名称     | 源属性   |
+   | -------- | ------------------ |
+   | memberOf | user.assignedroles |
 
-    > [!NOTE]
-    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)  。
+   > [!NOTE]
+   > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)  。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
-    ![证书下载链接](common/certificatebase64.png)
+   ![证书下载链接](common/certificatebase64.png)
 
 1. 在“设置 Zscaler Three”部分中，根据要求复制相应 URL  。
 
-    ![复制配置 URL](common/copy-configuration-urls.png)
+   ![复制配置 URL](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -111,7 +110,7 @@ ms.locfileid: "98726189"
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“名称”字段中，输入 `B.Simon`。
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
@@ -122,94 +121,89 @@ ms.locfileid: "98726189"
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“Zscaler Three”  。
-1. 在“用户和组”对话框中，从列表中选择用户（例如“Britta Simon”），然后单击屏幕底部的“选择”按钮    。
-
-    ![显示“用户和组”对话框的屏幕截图，你可以在其中选择用户。](./media/zscaler-three-tutorial/tutorial_zscalerthree_users.png)
-
-1. 从“选择角色”对话框中，选择列表中合适的用户角色，然后单击屏幕底部的“选择”按钮   。
-
-    ![显示“选择角色”对话框的屏幕截图，你可以在其中选择用户角色。](./media/zscaler-three-tutorial/tutorial_zscalerthree_roles.png)
-
-1. 在“添加分配”  对话框中，选择“分配”  按钮。
-
-    ![显示“添加分配”对话框的屏幕截图，你可以在其中选择“分配”。](./media/zscaler-three-tutorial/tutorial_zscalerthree_assign.png)
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-zscaler-three-sso"></a>配置 Zscaler Three SSO
 
 1. 若要在“Zscaler Three”中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”   。
 
-    ![我的应用扩展](common/install-myappssecure-extension.png)
+   ![我的应用扩展](common/install-myappssecure-extension.png)
 
 2. 将扩展添加到浏览器后，单击“安装 Zscaler Three”  会将你定向到 Zscaler Three 应用程序。 在此处，请提供管理员凭据以登录到 Zscaler Three。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-6。
 
-    ![设置](common/setup-sso.png)
+   ![设置](common/setup-sso.png)
 
 3. 若要手动设置 Zscaler Three，请打开新的 Web 浏览器窗口，以管理员身份登录 Zscaler Three 公司网站，并执行以下步骤：
 
 4. 转到“管理”>“身份验证”>“身份验证设置”并执行以下步骤： 
 
-    ![显示包含所述步骤的 Zscaler One 站点的屏幕截图。](./media/zscaler-three-tutorial/ic800206.png "管理")
+   ![显示包含所述步骤的 Zscaler One 站点的屏幕截图。](./media/zscaler-three-tutorial/settings.png "管理")
 
-    a. 在“身份验证类型”下选择“SAML”。 
+   a. 在“身份验证类型”下选择“SAML”。 
 
-    b. 单击“配置 SAML”。 
+   b. 单击“配置 SAML”。 
 
-5. 在“编辑 SAML”窗口中，执行以下步骤并单击“保存”。   
+5. 在“编辑 SAML”窗口中，执行以下步骤并单击“保存”。 
 
-    ![管理用户和身份验证](./media/zscaler-three-tutorial/ic800208.png "管理用户和身份验证")
+   ![管理用户和身份验证](./media/zscaler-three-tutorial/authentication.png "管理用户和身份验证")
 
-    a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”   。
+   a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”   。
 
-    b. 在“登录名属性”文本框中，输入 **NameID**。
+   b. 在“登录名属性”文本框中，输入 **NameID**。
 
-    c. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。  
+   c. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。 
 
-    d. 切换“启用 SAML 自动预配”  。
+   d. 切换“启用 SAML 自动预配”  。
 
-    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。
+   e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。
 
-    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。
+   f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。
 
-    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
+   g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
 
-    h. 单击“保存”  。
+   h. 单击“保存”  。
 
 6. 在“配置用户身份验证”  对话框页上，执行以下步骤：
 
-    ![显示选择了“激活”的“配置用户身份验证”对话框的屏幕截图。](./media/zscaler-three-tutorial/ic800207.png)
+   ![显示选择了“激活”的“配置用户身份验证”对话框的屏幕截图。](./media/zscaler-three-tutorial/user.png)
 
-    a. 将鼠标悬停在左下角附近的“激活”菜单上。 
+   a. 将鼠标指针悬停在左下角附近的“激活”菜单上。
 
-    b. 单击“激活”  。
+   b. 单击“激活”  。
 
-## <a name="configuring-proxy-settings"></a>配置代理设置
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中配置代理设置
+## <a name="configuring-proxy-settings&quot;></a>配置代理设置
+
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>在 Internet Explorer 中配置代理设置
 
 1. 启动 **Internet Explorer**。
 
-2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。      
+2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。   
 
-     ![Internet 选项](./media/zscaler-three-tutorial/ic769492.png "Internet 选项")
+   ![Internet 选项](./media/zscaler-three-tutorial/tools.png &quot;Internet 选项")
 
-3. 单击“连接”  选项卡。   
+3. 单击“连接”  选项卡。
 
-     ![连接](./media/zscaler-three-tutorial/ic769493.png "连接")
+   ![连接](./media/zscaler-three-tutorial/setup.png "连接")
 
 4. 单击“LAN 设置”  ，打开“LAN 设置”  对话框。
 
-5. 在“代理服务器”部分中，执行以下步骤：   
+5. 在“代理服务器”部分中，执行以下步骤：
 
-    ![代理服务器](./media/zscaler-three-tutorial/ic769494.png "代理服务器")
+   ![代理服务器](./media/zscaler-three-tutorial/server.png "代理服务器")
 
-    a. 选择“为 LAN 使用代理服务器”。 
+   a. 选择“为 LAN 使用代理服务器”。 
 
-    b. 在“地址”文本框中，键入 **gateway.Zscaler Three.net**。
+   b. 在“地址”文本框中，键入 **gateway.Zscaler Three.net**。
 
-    c. 在“端口”文本框中，键入 **80**。
+   c. 在“端口”文本框中，键入 **80**。
 
-    d. 选择“对本地地址不使用代理服务器”  。
+   d. 选择“对本地地址不使用代理服务器”  。
 
-    e. 单击“确定”  ，关闭“局域网(LAN)设置”  对话框。
+   e. 单击“确定”  ，关闭“局域网(LAN)设置”  对话框。
 
 6. 单击“确定”  ，关闭“Internet 选项”  对话框。
 
@@ -217,10 +211,10 @@ ms.locfileid: "98726189"
 
 在本部分，我们将在 Zscaler Three 中创建一个名为 B.Simon 的用户。 Zscaler Three 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 尝试访问 Zscaler Three 时，如果 Zscaler Three 中尚不存在用户，则系统会创建一个新用户。
 
->[!Note]
->如果需要手动创建用户，请联系 [Zscaler Three 支持团队](https://www.zscaler.com/company/contact)。
+> [!Note]
+> 如果需要手动创建用户，请联系 [Zscaler Three 支持团队](https://www.zscaler.com/company/contact)。
 
-## <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -229,7 +223,6 @@ ms.locfileid: "98726189"
 * 直接转到 Zscaler Three 登录 URL，并从那里启动登录流。
 
 * 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Zscaler Three 磁贴时，会重定向到 Zscaler Three 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

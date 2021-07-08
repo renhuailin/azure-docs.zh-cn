@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: overview
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 05/17/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: 4241e476b2f778ff63057d0491b5dc8666c7520c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9126b3a915f9d457b51a69a4cef9a79003597c31
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100650858"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091120"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>什么是 Azure 基于角色的访问控制 (Azure RBAC)？
 
@@ -44,13 +44,13 @@ Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/o
 
 安全主体是一个对象，表示请求访问 Azure 资源的用户、组、服务主体或托管标识。 可以将角色分配给其中任何一个安全主体。
 
-![角色分配的安全主体](./media/shared/rbac-security-principal.png)
+![显示角色分配的安全主体类型的图表。](./media/shared/rbac-security-principal.png)
 
 ### <a name="role-definition"></a>角色定义
 
 角色定义是权限的集合。 它通常直接称为“角色”。 角色定义列出可以执行的操作，例如读取、写入和删除。 角色可以是高级别的（例如所有者），也可以是特定的（例如虚拟机读取者）。
 
-![角色分配的角色定义](./media/shared/rbac-role-definition.png)
+![显示角色分配的角色定义示例的图表](./media/shared/rbac-role-definition.png)
 
 Azure 包含多个可用的[内置角色](built-in-roles.md)。 例如，[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色允许用户创建和管理虚拟机。 如果内置角色不能满足组织的特定需求，你可以创建自己的 [Azure 自定义角色](custom-roles.md)。
 
@@ -68,7 +68,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 在 Azure 中，可在四个级别指定范围：[管理组](../governance/management-groups/overview.md)、订阅、[资源组](../azure-resource-manager/management/overview.md#resource-groups)或资源。 范围采用父子关系结构。 可以在其中任何一个范围级别分配角色。
 
-![角色分配的范围](./media/shared/rbac-scope.png)
+![显示角色分配的范围级别的图表。](./media/shared/rbac-scope.png)
 
 有关范围的详细信息，请参阅[了解范围](scope-overview.md)。
 
@@ -78,17 +78,23 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 下图显示了角色分配的示例。 在此示例中，为“营销”组分配了医药销售资源组的[参与者](built-in-roles.md#contributor)角色。 这意味着，“营销”组中的用户可以在医药销售资源组中创建或管理任何 Azure 资源。 “营销”用户无权访问医药销售资源组外部的资源，除非他们属于另一个角色分配。
 
-![用于控制访问权限的角色分配](./media/overview/rbac-overview.png)
+![显示安全主体、角色定义和范围如何创建角色分配的图表。](./media/overview/rbac-overview.png)
 
 可使用 Azure 门户、Azure CLI、Azure PowerShell、Azure SDK 或 REST API 分配角色。
 
 有关详细信息，请参阅[分配 Azure 角色的步骤](role-assignments-steps.md)。
 
+## <a name="groups"></a>组
+
+角色分配对组来说是可传递的，这意味着如果某用户是某个组的成员，而该组属于具有角色分配的另一个组，那么该用户将具有该角色分配中的权限。
+
+![显示组的角色分配是如何传递的图表。](./media/overview/rbac-groups-transitive.png)
+
 ## <a name="multiple-role-assignments"></a>多角色分配
 
 如果有多个重叠的角色分配，将会发生什么情况？ Azure RBAC 是一个加法模型，因此有效权限是角色分配的总和。 请考虑以下示例，其中在订阅范围内向用户授予了“参与者”角色，并且授予了对资源组的“读者”角色。 “参与者”权限与“读者”权限的总和实际上是订阅的“参与者”角色。 因此，在这种情况下，“读者”角色分配没有任何影响。
 
-![多角色分配](./media/overview/rbac-multiple-roles.png)
+![显示多个角色分配如何重叠的图表。](./media/overview/rbac-multiple-roles.png)
 
 ## <a name="deny-assignments"></a>拒绝分配
 
@@ -98,7 +104,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 ## <a name="how-azure-rbac-determines-if-a-user-has-access-to-a-resource"></a>Azure RBAC 如何确定用户是否有权访问资源
 
-下面是 Azure RBAC 用于确定你是否可以访问管理平面上的资源的概要步骤。 如果正在尝试对访问问题进行故障排除，这有助于了解问题。
+下面是 Azure RBAC 用于确定你是否可访问资源的概要步骤。 这些步骤适用于与 Azure RBAC 集成的 Azure 资源管理器或数据平面服务。 如果正在尝试对访问问题进行故障排除，这有助于了解问题。
 
 1. 用户（或服务主体）获取 Azure 资源管理器的令牌。
 
@@ -108,13 +114,25 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 1. Azure 资源管理器检索适用于对其执行操作的资源的所有角色分配和拒绝分配。
 
+1. 如果拒绝分配适用，则阻止访问。 否则，将继续评估。
+
 1. Azure 资源管理器缩小适用于此用户或其组的角色分配范围，并确定用户针对此资源拥有的角色。
 
-1. Azure 资源管理器确定 API 调用中的操作是否包含在用户针对此资源拥有的角色中。
+1. Azure 资源管理器确定 API 调用中的操作是否包含在用户针对此资源拥有的角色中。 如果角色包含具有通配符 (`*`) 的 `Actions`，则通过从允许的 `Actions` 中减去 `NotActions` 来计算有效权限。 同样，对任何数据操作执行相同的减法运算。
 
-1. 如果用户在请求的范围内没有包含该操作的角色，则不授予访问权限。 否则，Azure 资源管理器会检查是否适用拒绝分配。
+    `Actions - NotActions = Effective management permissions`
 
-1. 如果拒绝分配适用，则阻止访问。 否则授予访问权限。
+    `DataActions - NotDataActions = Effective data permissions`
+
+1. 如果用户在请求的范围内没有包含该操作的角色，则不允许访问。 否则，将评估任何条件。
+
+1. 如果角色分配包含条件，则对这些条件进行评估。 否则将允许访问。
+
+1. 如果满足条件，则允许访问。 否则将不允许访问。
+
+下图是评估逻辑的摘要。
+
+![用于确定对资源的访问权限的评估逻辑流程图。](./media/overview/evaluation-logic.png)
 
 ## <a name="license-requirements"></a>许可要求
 

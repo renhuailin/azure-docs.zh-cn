@@ -2,13 +2,13 @@
 title: 教程 - 部署 Azure VMware 解决方案私有云
 description: 了解如何创建和部署 Azure VMware 解决方案私有云
 ms.topic: tutorial
-ms.date: 04/23/2021
-ms.openlocfilehash: cdbd00473890e22c08ebf57f7c6f54f6eef188bb
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 06/11/2021
+ms.openlocfilehash: 5d882098c29db7fb0272bb503eae42a244113b5b
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945786"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112021368"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>教程：部署 Azure VMware 解决方案私有云
 
@@ -31,11 +31,10 @@ ms.locfileid: "107945786"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 拥有适当的管理权限和创建私有云的权限。 你在订阅中必须至少是参与者级别。
 - 按照你在部署 Azure VMware 解决方案的[规划](production-ready-deployment-steps.md)文章中收集的信息进行操作。
 - 确保已按照[网络规划清单](tutorial-network-checklist.md)中所述配置相应的网络。
-- 已按[请求主机和启用 Microsoft.AVS 资源提供程序](enable-azure-vmware-solution.md)中所述预配了主机并注册了 Microsoft AVS 资源提供程序。
+- 主机已预配，Microsoft.AVS [资源提供程序已注册](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)。
 
 ## <a name="create-a-private-cloud"></a>创建私有云
 

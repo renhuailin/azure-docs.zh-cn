@@ -6,16 +6,16 @@ author: tomaschladek
 manager: nmurav
 services: azure-communication-services
 ms.author: tchladek
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: e356219d22ee558ce3de5a96d58f24b9e7902d8a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d4836609aac24a414cb112988a0524de1e7a71c1
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726611"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113113228"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>快速入门：创建和管理访问令牌
 
@@ -63,7 +63,6 @@ Deleted the identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_0000000
 ## <a name="clean-up-resources"></a>清理资源
 
 如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 了解有关[清理资源](./create-communication-resource.md#clean-up-resources)的详细信息。
-
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,23 +4,27 @@ description: 使用适用于 .NET 的表单识别器客户端库创建一个表�
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/12/2021
+ms.date: 05/25/2021
 ms.author: lajanuar
 ms.custom: " devx-track-csharp"
-ms.openlocfilehash: 1adba2b8f0be01be231721a9c838ad6961ab03a0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 000c8a1bf59597dd8786874eff3b5edcbc8e364a
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374142"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894275"
 ---
 <!-- markdownlint-disable MD024 -->
+
 <!-- markdownlint-disable MD033 -->
 > [!IMPORTANT]
-> 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
+>
+> * 本快速入门使用 SDK 版本 3.1.0 并针对 API 版本 2.1。
+>
+>* 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
 
 [参考文档](/dotnet/api/overview/azure/ai.formrecognizer-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [包 (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
@@ -61,28 +65,9 @@ Build succeeded.
 
 在应用程序目录中，使用以下命令安装适用于 .NET 的表单识别器客户端库：
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
 ```console
-dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.4
+dotnet add package Azure.AI.FormRecognizer --version 3.1.0
 ```
-
-> [!NOTE]
-> 表单识别器 3.1.0-beta.4 SDK 反映了 API 版本 2.1-preview.3。
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```console
-dotnet add package Azure.AI.FormRecognizer --version 3.0.0
-```
-
-> [!NOTE]
-> 表单识别器 3.0.0 SDK 反映了 API v2.0
-
----
-
-> [!TIP]
-> 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上找到它，其中包含此快速入门中的代码示例。
 
 在首选的编辑器或 IDE 中，从项目目录打开 *Program.cs* 文件。 然后，添加以下 `using` 指令：
 
@@ -93,21 +78,13 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 > [!IMPORTANT]
 > 转到 Azure 门户。 如果在“先决条件”部分中创建的表单识别器资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。
 >
-> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请使用安全方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_creds)]
 
-在应用程序的“Main”方法中，添加对此快速入门中使用的异步任务的调用。 稍后将实现这些操作。
-
-#### <a name="v21"></a>[v2.1](#tab/2-1)
+在应用程序的“Main”方法中，添加对此快速入门中使用的异步任务的调用。 稍后将实现这些操作：
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
-
----
 
 ## <a name="object-model"></a>对象模型
 
@@ -135,34 +112,6 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 > [!NOTE]
 > 还可以使用图形用户界面（例如[表单识别器标记工具](../../label-tool.md)）来训练模型。
 
-## <a name="code-examples"></a>代码示例
-
-这些代码片段演示如何使用适用于 .NET 的表单识别器客户端库执行以下任务：
-<!-- markdownlint-disable MD001 -->
-
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
-* [对客户端进行身份验证](#authenticate-the-client)
-* [分析布局](#analyze-layout)
-* [分析回执](#analyze-receipts)
-* [分析名片](#analyze-business-cards)
-* [分析发票](#analyze-invoices)
-* [分析标识文档](#analyze-identity-documents)
-* [训练自定义模型](#train-a-custom-model)
-* [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
-* [管理自定义模型](#manage-custom-models)
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-* [对客户端进行身份验证](#authenticate-the-client)
-* [分析布局](#analyze-layout)
-* [分析回执](#analyze-receipts)
-* [训练自定义模型](#train-a-custom-model)
-* [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
-* [管理自定义模型](#manage-custom-models)
-
----
-
 ## <a name="authenticate-the-client"></a>验证客户端
 
 在“Main”下创建名为 `AuthenticateClient` 的新方法。 你将在其他任务中使用该方法来验证对表单识别器服务的请求。 此方法使用 `AzureKeyCredential` 对象，因此，如果需要，你可以更新 API 密钥而无需创建新的客户端对象。
@@ -170,7 +119,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 > [!IMPORTANT]
 > 从 Azure 门户获取密钥和终结点。 如果在“先决条件”部分中创建的表单识别器资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。
 >
-> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 例如，[Azure 密钥保管库](../../../../key-vault/general/overview.md)。
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请使用安全方法来存储和访问凭据。 例如，[Azure 密钥保管库](../../../../key-vault/general/overview.md)。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_auth)]
 
@@ -188,15 +137,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 * 然后，重复上述步骤获取 Blob 存储容器中单个文档的 SAS URL。 同样将其保存到临时位置。
 * 最后，保存下方包含的示例图像的 URL（也可以在 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) 上找到）。
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
-
----
 
 ## <a name="analyze-layout"></a>分析布局
 
@@ -309,8 +250,6 @@ Total: '1203.39', with confidence '0.774'
 
 ## <a name="analyze-business-cards"></a>分析名片
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
 本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。
 
 若要分析位于某个 URL 的名片，请使用 `StartRecognizeBusinessCardsFromUriAsync` 方法。
@@ -324,16 +263,7 @@ Total: '1203.39', with confidence '0.774'
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
----
-
 ## <a name="analyze-invoices"></a>分析发票
-
-#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 本部分演示如何使用预先训练的模型分析和提取销售发票中的常见字段。 有关发票分析的详细信息，请参阅[发票概念指南](../../concept-invoices.md)。
 
@@ -348,36 +278,20 @@ Total: '1203.39', with confidence '0.774'
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
----
-
 ## <a name="analyze-identity-documents"></a>分析标识文档
-
-#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 本部分演示如何使用表单识别器预生成的 ID 模型，分析和提取政府颁发的标识文档（全球护照和美国驾照）中的关键信息。 有关标识文档分析的详细信息，请参阅[预生成的标识模型概念指南](../../concept-identification-cards.md)。
 
-若要从 URI 分析标识文档，请使用 `StartRecognizeIdDocumentsFromUriAsync` 方法。
+若要从 URI 分析标识文档，请使用 `StartRecognizeIdentityDocumentsFromUriAsync` 方法。
 
-:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs" id="snippet_id_call":::
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_id_call)]
 
 > [!TIP]
-> 你还可以分析本地标识文档图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 StartRecognizeIdDocumentsAsync。 也可参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 你还可以分析本地标识文档图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 StartRecognizeIdentityDocumentsAsync。 也可参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
 以下代码处理给定 URI 的标识文档，并将主字段和值输出到控制台。
 
-:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs" id="snippet_id_print":::
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
----
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_id_print)]
 
 ## <a name="train-a-custom-model"></a>训练自定义模型
 
@@ -687,7 +601,7 @@ dotnet run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答
@@ -709,14 +623,26 @@ catch (RequestFailedException e)
 
 你会发现，操作的客户端请求 ID 等其他信息已被记录下来。
 
-``
+```console
 
-消息：Azure.RequestFailedException: 服务请求失败。
-状态：400 (错误的请求)
+Message:
+    Azure.RequestFailedException: Service request failed.
+    Status: 400 (Bad Request)
 
-Content: {"error":{"code":"FailedToDownloadImage","innerError": {"requestId":"8ca04feb-86db-4552-857c-fde903251518"}, "message":"未能从输入 URL 下载图像。"}}
+Content:
+    {"error":{"code":"FailedToDownloadImage","innerError":
+    {"requestId":"8ca04feb-86db-4552-857c-fde903251518"},
+    "message":"Failed to download image from input URL."}}
 
-Headers: Transfer-Encoding: chunked x-envoy-upstream-service-time: REDACTED apim-request-id: REDACTED Strict-Transport-Security: REDACTED X-Content-Type-Options: REDACTED Date: Mon, 20 Apr 2020 22:48:35 GMT Content-Type: application/json; charset=utf-8 ``
+Headers:
+    Transfer-Encoding: chunked
+    x-envoy-upstream-service-time: REDACTED
+    apim-request-id: REDACTED
+    Strict-Transport-Security: REDACTED
+    X-Content-Type-Options: REDACTED
+    Date: Mon, 20 Apr 2020 22:48:35 GMT
+    Content-Type: application/json; charset=utf-8
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 05/20/2021
 ms.author: banders
-ms.openlocfilehash: b20134cbfb85c2dcaef1227e6390c8c6047ad5be
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: b0c7f1ee4daea871cfdc9e92908cd287a49997da
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109384"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481077"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 订阅
 
@@ -36,9 +36,11 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 
 |订阅类型     |谁可以取消  |
 |---------|---------|
-|通过 Azure 网站注册 Azure 时创建的订阅。 例如，当你注册 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)、[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或作为 [Visual Studio 订阅者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)时。 |  订阅的帐户管理员和所有者  |
-|[Microsoft 企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)和 [Enterprise 开发/测试](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  订阅的帐户所有者和所有者       |
+|通过 Azure 网站注册 Azure 时创建的订阅。 例如，当你注册 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)、[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或作为 [Visual Studio 订阅者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)时。 |  服务管理员和订阅所有者  |
+|[Microsoft 企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)和 [Enterprise 开发/测试](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  服务管理员和订阅所有者       |
 |[Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g/)和 [Azure 开发测试计划](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  订阅的所有者      |
+
+没有服务管理员或订阅所有者角色的帐户管理员无法取消 Azure 订阅。 但是，帐户管理员可以将自己设置为服务管理员，之后则可取消订阅。 有关详细信息，请参阅[更改服务管理员](../../role-based-access-control/classic-administrators.md#change-the-service-administrator)。
 
 
 ## <a name="cancel-subscription-in-the-azure-portal"></a>在 Azure 门户中取消订阅

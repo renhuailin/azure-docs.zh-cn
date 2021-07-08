@@ -7,12 +7,12 @@ ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 94c7a800fc551faf6650b8e30fe7c2188f7d2dbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e32c5f02191e4bd60ad4334884df34ce0bc0537
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100008377"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537446"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>将 GCP 帐户连接到 Azure 安全中心
 
@@ -134,7 +134,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="“资产清单”页面的资源类型筛选器，其中显示了 GCP 选项"::: 
 
 
-## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>有关将 GCP 帐户连接到 Azure 安全中心的常见问题解答
+## <a name="faq---connecting-gcp-accounts-to-azure-security-center"></a>常见问题解答 - 将 GCP 帐户连接到 Azure 安全中心
 
 ### <a name="can-i-connect-multiple-gcp-organizations-to-security-center"></a>是否可将多个 GCP 组织连接到安全中心？
 是的。 安全中心的 GCP 连接器在组织级别连接 Google Cloud 资源。 

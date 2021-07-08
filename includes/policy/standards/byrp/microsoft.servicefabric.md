@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: bee4c5a035397436b1c834e61a093e0c8bd5cd1e
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: e18ebda9aef4de7c54aa6162bcf006be92d6f145
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176498"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073822"
 ---
 ## <a name="azure-security-benchmark"></a>Azure 安全基准
 
@@ -34,6 +34,15 @@ ms.locfileid: "108176498"
 |标识和访问控制 |3.9 |使用 Azure Active Directory |[Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb54ed75b-3e1a-44ac-a333-05ba39b99ff0) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditADAuth_Audit.json) |
 |数据保护 |4.8 |加密静态的敏感信息 |[Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F617c02be-7f02-4efd-8836-3180d47b6c68) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditClusterProtectionLevel_Audit.json) |
 
+## <a name="canada-federal-pbmm"></a>加拿大联邦 PBMM
+
+若要查看可供各项 Azure 服务使用的 Azure Policy 内置项如何映射到此合规性标准，请参阅 [Azure Policy 合规性 - 加拿大联邦 PBMM](../../../../articles/governance/policy/samples/canada-federal-pbmm.md)。
+有关此合规性标准的详细信息，请参阅[加拿大联邦 PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html)。
+
+|域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|访问控制 |AC-2(7) |帐户管理 \| 基于角色的方案 |[Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb54ed75b-3e1a-44ac-a333-05ba39b99ff0) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditADAuth_Audit.json) |
+
 ## <a name="cmmc-level-3"></a>CMMC 级别 3
 
 若要查看各项 Azure 服务可用的 Azure Policy 内置项如何映射到此合规性标准，请参阅 [Azure Policy 法规合规性 - CMMC 级别 3](../../../../articles/governance/policy/samples/cmmc-l3.md)。
@@ -43,6 +52,15 @@ ms.locfileid: "108176498"
 |---|---|---|---|---|
 |系统和通信保护 |SC.3.177 |采用经 FIPS 验证的加密模块来保护 CUI 的机密性。 |[Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F617c02be-7f02-4efd-8836-3180d47b6c68) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditClusterProtectionLevel_Audit.json) |
 |系统和通信保护 |SC.3.191 |保护静态 CUI 的机密性。 |[Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F617c02be-7f02-4efd-8836-3180d47b6c68) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditClusterProtectionLevel_Audit.json) |
+
+## <a name="irs-1075-september-2016"></a>IRS 1075 2016 年 9 月
+
+若要查看可供各项 Azure 服务使用的 Azure Policy 内置项如何映射到此合规性标准，请参阅 [Azure Policy 合规性 - IRS 1075 2016 年 9 月版](../../../../articles/governance/policy/samples/irs-1075-sept2016.md)。
+有关此合规性标准的详细信息，请参阅 [IRS 1075 2016 年 9 月版](https://www.irs.gov/pub/irs-pdf/p1075.pdf)。
+
+|域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|访问控制 |9.3.1.2 |帐户管理 (AC-2) |[Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb54ed75b-3e1a-44ac-a333-05ba39b99ff0) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditADAuth_Audit.json) |
 
 ## <a name="iso-270012013"></a>ISO 27001:2013
 
@@ -71,4 +89,14 @@ ms.locfileid: "108176498"
 |域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
 |访问控制 |AC-2 (7) |帐户管理 \| 基于角色的方案 |[Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb54ed75b-3e1a-44ac-a333-05ba39b99ff0) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditADAuth_Audit.json) |
+
+## <a name="uk-official-and-uk-nhs"></a>英国官方和英国 NHS
+
+若要查看可供各项 Azure 服务使用的 Azure Policy 内置项如何映射到此合规性标准，请参阅 [Azure Policy 合规性 - UK OFFICIAL 和 UK NHS](../../../../articles/governance/policy/samples/ukofficial-uknhs.md)。
+有关此合规性标准的详细信息，请参阅 [UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications)。
+
+|域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|资产保护和复原能力 |2.3 |静态数据保护 |[Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F617c02be-7f02-4efd-8836-3180d47b6c68) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditClusterProtectionLevel_Audit.json) |
+|标识和身份验证 |10 |标识和身份验证 |[Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb54ed75b-3e1a-44ac-a333-05ba39b99ff0) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditADAuth_Audit.json) |
 

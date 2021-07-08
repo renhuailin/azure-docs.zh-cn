@@ -5,16 +5,16 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 04/28/2021
+ms.date: 05/11/2021
 ms.author: cshoe
-ms.openlocfilehash: 0f572d49867fe9149416664a405309253dd01af2
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 179fa0e247b2c875a4d32eac312d240ae768c009
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202923"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190546"
 ---
-# <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>教程：将 Jekyll 网站发布到 Azure 静态 Web 应用（预览）
+# <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps"></a>教程：将 Jekyll 网站发布到 Azure 静态 Web 应用
 
 本文演示如何创建 [Jekyll](https://jekyllrb.com/) Web 应用程序并将其部署到 [Azure 静态 Web 应用](overview.md)。
 
@@ -91,59 +91,49 @@ Azure 静态 Web 应用使用 GitHub 来发布你的网站。 以下步骤展示
 
 ### <a name="create-the-application"></a>创建应用程序
 
-1. 导航到 [Azure 门户](https://portal.azure.com)。
+1. 导航到 [Azure 门户](https://portal.azure.com)
+1. 选择“创建资源”
+1. 搜索“静态 Web 应用”
+1. 选择“Static Web Apps”
+1. 选择“创建”
+1. 在“基本信息”选项卡上，输入下列值。
 
-1. 单击“创建资源”。
+    | 属性 | 值 |
+    | --- | --- |
+    | _订阅_ | Azure 订阅名称。 |
+    | _资源组_ | jekyll-static-app  |
+    | _名称_ | jekyll-static-app |
+    | _计划类型_ | **免费** |
+    | Azure Functions API 和过渡环境的区域 | 选择离你最近的区域。 |
+    | _Source_ | **GitHub** |
 
-1. 搜索“静态 Web 应用”。
+1. 选择“使用 GitHub 登录”，然后向 GitHub 进行身份验证。
 
-1. 单击“静态 Web 应用(预览)”。
+1. 输入以下 GitHub 值。
 
-1. 单击“创建”。
+    | 属性 | 值 |
+    | --- | --- |
+    | 组织 | 选择你所需的 GitHub 组织。 |
+    | 存储库 | 选择“jekyll-static-app”。 |
+    | 分支 | 选择“主要”。 |
 
-1. 对于“订阅”，请接受列出的订阅，或从下拉列表中选择一个新订阅。
+1. 在“生成详细信息”部分，从“生成预设”下拉列表中选择“自定义”，并保留默认值。
 
-1. 在“资源组”中选择“新建”。 在“新资源组名称”中，输入“jekyll-static-app”并选择“确定” 。
+1. 在“应用位置”框中输入“./”。
 
-1. 接下来，在“名称”框中提供应用名称。 有效字符包括 `a-z`、`A-Z`、`0-9` 和 `-`。
+1. 将“API 位置”框留空。
 
-1. 对于“区域”，选择靠近你的可用区域。
-
-1. 对于“SKU”，选择“免费”。
-
-1. 在“部署详细信息”中，为“源”选择“GitHub”。
-
-1. 单击“使用 GitHub 登录”按钮。
-
-1. 选择在其中创建存储库的“组织”。
-
-1. 选择“jekyll-static-app”作为存储库。
-
-1. 为“分支”选择“主”。
-
-### <a name="build"></a>构建
-
-接下来，添加生成过程用于生成应用的配置设置。 以下设置配置 GitHub Actions 工作流文件。
-
-1. 对于“生成预设”，选择“自定义”。
-
-1. 将“应用位置”设置为 /。
-
-1. 将“输出位置”设置为“_site”。
-
-   “API 位置”的值不是必需的，因为目前不会部署 API。
-
-   :::image type="content" source="./media/publish-jekyll/github-actions-inputs.png" alt-text="GitHub Actions 输入":::
+1. 在“输出位置”框中，输入“_site”。
 
 ### <a name="review-and-create"></a>查看并创建
 
-1. 单击“查看 + 创建”按钮以验证详细信息是否都正确。
+1. 选择“查看 + 创建”按钮以验证详细信息是否都正确。
 
-1. 单击“创建”以开始创建 Azure 静态 Web 应用并为部署预配 GitHub Action。
+1. 选择“创建”以开始创建应用服务静态 Web 应用并为部署预配 GitHub 操作。
 
-1. 等待 GitHub Actions 完成。
+1. 部署完成后，单击“转到资源”。
 
-1. 在 Azure 门户的新建 Azure 静态 Web 应用资源的“概述”窗口中，单击“URL”链接以打开已部署的应用程序。
+1. 在资源屏幕中，单击 URL 链接，打开已部署的应用程序。 可能需要等待一两分钟，GitHub 操作才能完成。
 
    :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="已部署的应用程序":::
 
@@ -156,7 +146,7 @@ Azure 静态 Web 应用使用 GitHub 来发布你的网站。 以下步骤展示
 ```yaml
 - name: Build And Deploy
    id: builddeploy
-   uses: Azure/static-web-apps-deploy@v0.0.1-preview
+   uses: Azure/static-web-apps-deploy@v1
    with:
       azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
       repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
@@ -165,7 +155,7 @@ Azure 静态 Web 应用使用 GitHub 来发布你的网站。 以下步骤展示
       # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
       app_location: "/" # App source code path
       api_location: "" # Api source code path - optional
-      output_location: "_site_" # Built app content directory - optional
+      output_location: "_site" # Built app content directory - optional
       ###### End of Repository/Build Configurations ######
    env:
       JEKYLL_ENV: production

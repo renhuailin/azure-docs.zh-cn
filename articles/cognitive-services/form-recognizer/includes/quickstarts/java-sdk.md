@@ -4,18 +4,18 @@ description: 使用表单识别器 Java 客户端库创建一个表单处理应�
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/12/2021
+ms.date: 05/25/2021
 ms.custom: devx-track-java
 ms.author: lajanuar
-ms.openlocfilehash: fa98977d25f6c1c406b95d0817e841d25c28394f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: de9e52dcd372740a7ba7a50e3ace3390bbf0af03
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374141"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894273"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -23,7 +23,10 @@ ms.locfileid: "110374141"
 <!-- markdownlint-disable MD034 -->
 
 > [!IMPORTANT]
-> 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
+>
+> * 本快速入门使用 SDK 版本 3.1.0 并针对 API 版本 2.1。
+>
+> * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
 
 [参考文档](/java/api/overview/azure/ai-formrecognizer-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer) | [示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
@@ -61,8 +64,6 @@ gradle init --type basic
 
 在项目的 build.gradle.kts 文件中，以 `implementation` 语句的形式包含客户端库及所需的插件和设置。
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
 ```kotlin
 plugins {
     java
@@ -75,35 +76,9 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.3")
+    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0")
 }
 ```
-
-> [!NOTE]
-> 表单识别器 3.1.0-beta.3 SDK 反映了 API 版本 2.1-preview.3。
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```kotlin
-plugins {
-    java
-    application
-}
-application {
-    mainClass.set("FormRecognizer")
-}
-repositories {
-    mavenCentral()
-}
-dependencies {
-    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.3")
-}
-```
-
-> [!NOTE]
-> 表单识别器 3.0.0 SDK 反映了 API v2.1-preview.3
-
----
 
 ### <a name="create-a-java-file"></a>创建 Java 文件
 
@@ -118,7 +93,7 @@ mkdir -p src/main/java
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_imports)]
 
 > [!TIP]
-> 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/FormRecognizer/FormRecognizer.java) 上找到它，其中包含此快速入门中的代码示例。
+> 如果你想查看包含此快速入门中的代码示例的整个文件，可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/FormRecognizer/FormRecognizer.java) 上找到它。
 
 在应用程序的 FormRecognizer 类中，为资源的密钥和终结点创建变量。
 
@@ -127,7 +102,7 @@ mkdir -p src/main/java
 > [!IMPORTANT]
 > 转到 Azure 门户。 如果在“先决条件”部分中创建的表单识别器资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。
 >
-> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请使用安全方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 
 在应用程序的 main 方法中，添加对本快速入门中使用的方法的调用。 稍后将对这些调用进行定义。 还需要为训练和测试数据添加对 URL 的引用。
 
@@ -137,19 +112,10 @@ mkdir -p src/main/java
 * 若要获取要测试的表单的 URL，可以使用上述步骤获取 blob 存储中单个文档的 SAS URL。 或者获取位于其他位置的文档的 URL。
 * 使用上述方法还可获取回执图像的 URL。
 <!-- markdownlint-disable MD024 -->
-#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
-
----
 
 ## <a name="object-model"></a>对象模型
 
@@ -174,33 +140,6 @@ mkdir -p src/main/java
 
 > [!NOTE]
 > 还可以使用图形用户界面（例如[表单识别器标记工具](../../label-tool.md)）来训练模型。
-
-## <a name="code-examples"></a>代码示例
-
-这些代码片段演示如何使用适用于 Java 的表单识别器客户端库执行以下任务：
-<!-- markdownlint-disable MD001 -->
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
-* [对客户端进行身份验证](#authenticate-the-client)
-* [分析布局](#analyze-layout)
-* [分析回执](#analyze-receipts)
-* [分析名片](#analyze-business-cards)
-* [分析发票](#analyze-invoices)
-* [分析标识文档](#analyze-identity-documents)
-* [训练自定义模型](#train-a-custom-model)
-* [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
-* [管理自定义模型](#manage-custom-models)
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-* [对客户端进行身份验证](#authenticate-the-client)
-* [分析布局](#analyze-layout)
-* [分析回执](#analyze-receipts)
-* [训练自定义模型](#train-a-custom-model)
-* [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
-* [管理自定义模型](#manage-custom-models)
-
----
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -280,8 +219,6 @@ Total Price: null, confidence: 0.93
 
 ## <a name="analyze-business-cards"></a>分析名片
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
 本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。
 
 若要分析位于某个 URL 的名片，请使用 `beginRecognizeBusinessCardsFromUrl` 方法。
@@ -295,16 +232,7 @@ Total Price: null, confidence: 0.93
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
----
-
 ## <a name="analyze-invoices"></a>分析发票
-
-#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 本部分演示如何使用预先训练的模型分析和提取销售发票中的常见字段。 有关发票分析的详细信息，请参阅[发票概念指南](../../concept-invoices.md)。
 
@@ -319,36 +247,20 @@ Total Price: null, confidence: 0.93
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
 
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
----
-
 ## <a name="analyze-identity-documents"></a>分析标识文档
-
-#### <a name="v21"></a>[v2.1](#tab/2-1)
 
 本部分演示如何使用表单识别器预生成的 ID 模型，分析和提取政府颁发的标识文档（全球护照和美国驾照）中的关键信息。 有关标识文档分析的详细信息，请参阅[预生成的标识模型概念指南](../../concept-identification-cards.md)。
 
-若要从 URI 分析标识文档，请使用 `beginRecognizeIdDocumentsFromUrl` 方法。
+若要从 URI 分析标识文档，请使用 `beginRecognizeIdentityDocumentsFromUrl` 方法。
 
-:::code language="java" source="~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java" id="snippet_id_call":::
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_id_call)]
 
 > [!TIP]
-> 你还可以分析本地标识文档图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 beginRecognizeIdDocuments。 也可参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 你还可以分析本地标识文档图像。 请参阅 [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 beginRecognizeIdentityDocuments。 也可参阅 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
 以下代码处理给定 URI 的标识文档，并将主字段和值输出到控制台。
 
-:::code language="java" source="~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java" id="snippet_id_print":::
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
----
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_id_print)]
 
 ## <a name="train-a-custom-model"></a>训练自定义模型
 
@@ -524,7 +436,7 @@ gradle run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答
