@@ -6,14 +6,14 @@ author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/06/2021
+ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: f9ba38b6493ee3dcb246382407552091b97454f0
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 43ad5918f882a9496cfb9ee7ded13314cfdd87c1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108121198"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110166102"
 ---
 开始使用适用于 Java 的异常检测器多变量客户端库。 请按照以下步骤操作，以使用服务提供的算法安装软件包。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
 
@@ -105,12 +105,26 @@ import java.util.stream.Collectors;
 
 为资源的 Azure 终结点和密钥创建变量。 为示例数据文件创建另一个变量。
 
+> [!NOTE]
+> 始终可在两个密钥之间任选其一。 这是为了实现安全的密钥轮换。 在本快速入门中，使用第一个密钥。 
+
 ```java
 String key = "YOUR_API_KEY";
 String endpoint = "YOUR_ENDPOINT";
 ```
 
- 若要使用异常检测器多变量 API，我们需要在使用检测之前先训练自己的模型。 用于训练的数据是一批时序，每个时序应采用 CSV 格式，其中包含两列，即“时间戳”和“值”。 所有时序都应压缩为一个 zip 文件，并上传到 [Azure Blob 存储](../../../../storage/blobs/storage-blobs-introduction.md)。 默认情况下，文件名将用于表示时序的变量。 或者，如果你希望变量名称与 .zip 文件名不同，也可以在 zip 文件中包含一个额外的 meta.json 文件。 当我们生成 [blob SAS（共享访问签名）URL](../../../../storage/common/storage-sas-overview.md) 后，就可以使用 zip 文件的 URL 进行训练了。
+若要使用异常检测器多变量 API，需要先训练你自己的模型。 训练数据是一组满足以下要求的多个时间序列：
+
+每个时间序列都应是一个 CSV 文件，该文件有 2 列（且仅有 2 列），“timestamp”和“value”（全部小写）作为标题行。 “timestamp”值应符合 ISO 8601 标准；“value”可为整数，也可为带有任意小数位的小数。 例如：
+
+|timestamp | 值|
+|-------|-------|
+|2019-04-01T00:00:00Z| 5|
+|2019-04-01T00:01:00Z| 3.6|
+|2019-04-01T00:02:00Z| 4|
+|`...`| `...` |
+
+每个 CSV 文件应根据要用于模型训练的不同变量进行命名。 例如，“temperature.csv”和“humidity.csv”。 所有 CSV 文件都应压缩到一个没有任何子文件夹的 zip 文件中。 zip 文件可采用任何所需名称。 zip 文件应上传到 Azure Blob 存储。 为 zip 文件生成 Blob SAS（共享访问签名）URL 后，可使用该 URL 进行训练。 请查看此文档，了解如何从 Azure Blob 存储生成 SAS URL。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -230,6 +244,9 @@ while (true) {
 
 ## <a name="export-model"></a>导出模型
 
+> [!NOTE]
+> Export 命令的作用在于使容器化环境中能够运行异常检测器多变量模型。 目前不支持多变量，但将来会添加相关支持。
+
 若要导出训练的模型，请使用 `exportModelWithResponse`。
 
 ```java
@@ -264,6 +281,14 @@ gradle build
 gradle run
 ```
 
+## <a name="clean-up-resources"></a>清理资源
+
+如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与资源组相关联的任何其他资源。
+
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
 ## <a name="next-steps"></a>后续步骤
 
-* [异常检测器多变量最佳做法](../../concepts/best-practices-multivariate.md)
+* [什么是异常检测器 API？](../../overview-multivariate.md)
+* [使用异常检测器 API 时的最佳做法](../../concepts/best-practices-multivariate.md)。 

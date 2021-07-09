@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 320457365a36825564154c36ad843ef665fc2d2c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9ce2abfc013374a74247d8daaa7d76f570699960
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791546"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969925"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-flexible-server-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL 灵活服务器
 
@@ -121,6 +121,8 @@ az postgres flexible-server show --resource-group myresourcegroup --name mydemos
 ```bash
 psql -h mydemoserver.postgres.database.azure.com -u mydemouser -p
 ```
+>[!Note]
+> 如果收到错误“`The parameter PrivateDnsZoneArguments is required, and must be provided by customer`”，则意味着你可能正在运行旧版本的 Azure CLI。 请[升级 Azure CLI](/cli/azure/update-azure-cli) 并重试操作。
 
 ## <a name="clean-up-resources"></a>清理资源
 

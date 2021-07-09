@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/17/2020
-ms.openlocfilehash: 3eb5ea468a234aea228539c2390ab6cae9352948
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 729939f9dfe4c995f92513117d9a2631333bc19d
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629979"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110630854"
 ---
 **一个训练作业的计算目标可以在下一个训练作业中重复使用。** 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。 对于机器学习管道，请对每个计算目标使用适当的[管道步骤](/python/api/azureml-pipeline-steps/azureml.pipeline.steps)。
 
@@ -26,6 +26,7 @@ ms.locfileid: "105629979"
 |[Azure 机器学习计算群集](../articles/machine-learning/how-to-create-attach-compute-cluster.md)| 是 | 是 | 是 |
 |[Azure 机器学习计算实例](../articles/machine-learning/how-to-create-manage-compute-instance.md) | 是（通过 SDK）  | 是 |  |
 |[远程 VM](../articles/machine-learning/how-to-attach-compute-targets.md#vm) | 是  | 是 | &nbsp; |
+|[Apache Spark 池（预览版）](../articles/machine-learning/how-to-attach-compute-targets.md#synapse)| 是（仅限 SDK 本地模式） | 是 | &nbsp; |
 |[Azure&nbsp;Databricks](../articles/machine-learning/how-to-attach-compute-targets.md#databricks)| 是（仅限 SDK 本地模式） | 是 | &nbsp; |
 |[Azure Data Lake Analytics](../articles/machine-learning/how-to-attach-compute-targets.md#adla) | &nbsp; | 是 | &nbsp; |
 |[Azure HDInsight](../articles/machine-learning/how-to-attach-compute-targets.md#hdinsight) | &nbsp; | 是 | &nbsp; |

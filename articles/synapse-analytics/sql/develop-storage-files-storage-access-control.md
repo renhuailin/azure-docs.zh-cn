@@ -10,12 +10,12 @@ ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a93e63207bbbe9a2ac65823b3c22773f6cd97cf8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ca738136984941b050c0ae3a7c2408273724b1cd
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676848"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112379269"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
@@ -97,11 +97,9 @@ Synapse Analytics 工作区中的无服务器 SQL 池可以读取 Azure Data Lak
 
 | 授权类型  | Blob 存储   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| SAS    | 支持\*      | 不支持   | 支持\*     |
+| SAS    | 支持      | 不支持   | 支持     |
 | [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 支持      | 支持        | 支持     |
-| [用户标识](?tabs=user-identity#supported-storage-authorization-types)    | 支持\*      | 支持\*        | 支持\*     |
-
-\* SAS 令牌和 Azure AD 标识可用于访问不受防火墙保护的存储。
+| [用户标识](?tabs=user-identity#supported-storage-authorization-types)    | 支持      | 支持        | 支持     |
 
 ## <a name="firewall-protected-storage"></a>受防火墙保护的存储
 

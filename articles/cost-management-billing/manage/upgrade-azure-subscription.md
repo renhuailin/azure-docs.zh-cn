@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6066b5efc9bb004aab6b651f15d24b19672c3497
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 56d0116217f8db76131ccecc884312fb5296d1ed
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220600"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331711"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>升级 Azure 免费帐户或面向学生的 Azure 入门版帐户
 

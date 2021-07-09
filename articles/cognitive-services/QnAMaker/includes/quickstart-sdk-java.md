@@ -8,12 +8,12 @@ ms.subservice: qna-maker
 ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
-ms.openlocfilehash: 755e4fcb9d5b9f1711bc615a29489037ea377d43
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: dcd1a5da072954f47a21be2657bc9a4f8ae4a9cf
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609454"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110487534"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/version-1)
 
@@ -30,7 +30,7 @@ ms.locfileid: "105609454"
 
 [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker) | [包](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-qnamaker/1.0.0-beta.1) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/qnamaker/sdk/quickstart.java)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 可以使用适用于 Java 的 QnA Maker 客户端库执行以下操作：
 
@@ -58,14 +58,12 @@ ms.locfileid: "105609454"
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到 QnA Maker API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * [JDK](https://www.oracle.com/java/technologies/javase-downloads.html)
-* 有了 Azure 订阅后，在 Azure 门户中创建 [QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以获取创作密钥和终结点。
-    * 注意：请务必选择“托管”复选框。
-    * 部署 QnA Maker 资源后，选择“转到资源”。 需要从创建的资源获取密钥和终结点，以便将应用程序连接到 QnA Maker API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
-    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 自定义问答需要启用了自定义问答功能的[文本分析资源](https://ms.portal.azure.com/?quickstart=true#create/Microsoft.CognitiveServicesTextAnalytics)来生成 API 密钥和终结点。
+    * 部署文本分析资源后，请选择“转到资源”。 需要从创建的资源获取密钥和终结点，以便将应用程序连接到 QnA Maker API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
 
 ---
 
@@ -83,7 +81,7 @@ ms.locfileid: "105609454"
 
 [!code-java[Dependencies](~/cognitive-services-quickstart-code/java/qnamaker/sdk/quickstart.java?name=dependencies)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-java[Dependencies](~/cognitive-services-quickstart-code/java/qnamaker/sdk/preview-sdk/quickstart.java?name=dependencies)]
 
@@ -107,13 +105,14 @@ ms.locfileid: "105609454"
 
 [!code-java[Resource variables](~/cognitive-services-quickstart-code/java/qnamaker/sdk/quickstart.java?name=resourceKeys)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
-- 我们使用的“订阅密钥”和“创作密钥”是可互换的。 有关创作密钥的详细信息，请访问 [QnA Maker 中的密钥](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker)。
+- 我们使用的“订阅密钥”和“创作密钥”是可互换的。 有关创作密钥的详细信息，请参阅[密钥](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker)。
 
-- QNA_MAKER_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 转到 Azure 门户，并找到之前在“必备组件”部分创建的 QnA Maker 资源。 单击“资源管理”下的“密钥和终结点”页，找到创作（订阅）密钥和 QnA Maker 终结点。
+- QNA_MAKER_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 转到 Azure 门户，并找到之前在“必备组件”部分创建的文本分析资源。 单击“资源管理”下的“密钥和终结点”页，找到创作（订阅）密钥和终结点 。
 
- ![QnA Maker 创作终结点](../media/keys-endpoint.png)
+> [!div class="mx-imgBorder"]
+> ![自定义 QnA 创作终结点](../media/qnamaker-how-to-key-management/custom-qna-keys-and-endpoint.png)
  
 - 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 例如，[Azure 密钥保管库](../../../key-vault/general/overview.md)可提供安全的密钥存储。
 
@@ -129,7 +128,7 @@ QnA Maker 使用两种不同的对象模型：
 * **[QnAMakerClient](#qnamakerclient-object-model)** 对象可创建、管理、发布和下载知识库。
 * **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象可通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为 [主动学习](../how-to/use-active-learning.md)的一部分）。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 QnA Maker 使用以下对象模型：
 * [QnAMakerClient](#qnamakerclient-object-model) 是用于创建、管理、发布、下载和查询知识库的对象。
@@ -156,9 +155,9 @@ QnA Maker 使用以下对象模型：
 
 通过调用 [QnAMakerRuntimeManager.authenticate](https://github.com/Azure/azure-sdk-for-java/blob/b455a61f4c6daece13590a0f4136bab3c4f30546/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/QnAMakerRuntimeManager.java#L29) 并传递运行时终结点密钥来创建运行时客户端。 要获取运行时终结点密钥，请使用创作客户端调用 [getKeys](https://github.com/Azure/azure-sdk-for-java/blob/b455a61f4c6daece13590a0f4136bab3c4f30546/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/EndpointKeys.java#L30)。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
-QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为直接在 [QnAMakerClient](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/QnAMakerClient.java) 对象上调用 [generateAnswer](https://github.com/Azure/azure-sdk-for-java/blob/657e9a47e4b4c7e7e7eee4100273c09468a30c63/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/Knowledgebases.java#L308)。
+自定义问答不需要使用 QnAMakerRuntimeClient 对象。 请改为直接在 [QnAMakerClient](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/QnAMakerClient.java) 对象上调用 [generateAnswer](https://github.com/Azure/azure-sdk-for-java/blob/657e9a47e4b4c7e7e7eee4100273c09468a30c63/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/Knowledgebases.java#L308)。
 
 ---
 
@@ -170,7 +169,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-java[Authenticate](~/cognitive-services-quickstart-code/java/qnamaker/sdk/quickstart.java?name=authenticate)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-java[Authenticate](~/cognitive-services-quickstart-code/java/qnamaker/sdk/preview-sdk/quickstart.java?name=authenticate)]
 
@@ -193,7 +192,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-java[Create knowledgebase](~/cognitive-services-quickstart-code/java/qnamaker/sdk/quickstart.java?name=createKb)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-java[Create knowledgebase](~/cognitive-services-quickstart-code/java/qnamaker/sdk/preview-sdk/quickstart.java?name=createKb)]
 
@@ -212,7 +211,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-java[Update knowledgebase](~/cognitive-services-quickstart-code/java/qnamaker/sdk/quickstart.java?name=updateKb)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-java[Update knowledgebase](~/cognitive-services-quickstart-code/java/qnamaker/sdk/preview-sdk/quickstart.java?name=updateKb)]
 
@@ -226,7 +225,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-java[Download knowledgebase](~/cognitive-services-quickstart-code/java/qnamaker/sdk/quickstart.java?name=downloadKb)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-java[Download knowledgebase](~/cognitive-services-quickstart-code/java/qnamaker/sdk/preview-sdk/quickstart.java?name=downloadKb)]
 
@@ -240,7 +239,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-java[Publish knowledgebase](~/cognitive-services-quickstart-code/java/qnamaker/sdk/quickstart.java?name=publishKb)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-java[Publish knowledgebase](~/cognitive-services-quickstart-code/java/qnamaker/sdk/preview-sdk/quickstart.java?name=publishKb)]
 
@@ -260,7 +259,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-java[Query knowledgebase](~/cognitive-services-quickstart-code/java/qnamaker/sdk/quickstart.java?name=queryKb)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 使用 [generateAnswer](https://github.com/Azure/azure-sdk-for-java/blob/657e9a47e4b4c7e7e7eee4100273c09468a30c63/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/Knowledgebases.java#L308) 方法从已发布的知识库生成答案。 此方法接受知识库 ID 和 [QueryDTO](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/cognitiveservices/ms-azure-cs-qnamaker/src/main/java/com/microsoft/azure/cognitiveservices/knowledge/qnamaker/models/QueryDTO.java) 对象。
 
@@ -278,7 +277,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-java[Delete knowledgebase](~/cognitive-services-quickstart-code/java/qnamaker/sdk/quickstart.java?name=deleteKb)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-java[Delete knowledgebase](~/cognitive-services-quickstart-code/java/qnamaker/sdk/preview-sdk/quickstart.java?name=deleteKb)]
 
@@ -292,7 +291,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-java[Wait for operation](~/cognitive-services-quickstart-code/java/qnamaker/sdk/quickstart.java?name=waitForOperation)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-java[Wait for operation](~/cognitive-services-quickstart-code/java/qnamaker/sdk/preview-sdk/quickstart.java?name=waitForOperation)]
 
@@ -306,7 +305,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-java[Main method](~/cognitive-services-quickstart-code/java/qnamaker/sdk/quickstart.java?name=main)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-java[Main method](~/cognitive-services-quickstart-code/java/qnamaker/sdk/preview-sdk/quickstart.java?name=main)]
 
@@ -323,7 +322,7 @@ java -cp .;lib\* Quickstart
 
 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/qnamaker/sdk/quickstart.java) 上找到此示例的源代码。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/qnamaker/sdk/preview-sdk/quickstart.java) 上找到此示例的源代码。
 

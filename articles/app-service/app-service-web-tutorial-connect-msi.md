@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: fb13e5015a589efc575d5a7bbb8b662fc23b72be
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 465e5c3c1f95004ec8fc3e46bd24274f18330e2a
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076376"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576478"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接安全
 
@@ -138,6 +138,9 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 
 ### <a name="modify-aspnet-core"></a>修改 ASP.NET Core
 
+> [!NOTE]
+> Microsoft.Azure.Services.AppAuthentication 不再被推荐用于新的 Azure SDK。 已将其替换为新的 Azure 标识客户端库（可用于 .NET、Java、TypeScript 和 Python），应将此库用于所有新的开发。 有关如何迁移到 `Azure Identity` 的信息，请参阅：[AppAuthentication 到 Azure.Identity 的迁移指南](/dotnet/api/overview/azure/app-auth-migration)。
+
 在 Visual Studio 中，打开包管理器控制台，并添加 NuGet 包 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)：
 
 ```powershell
@@ -182,6 +185,9 @@ connection.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureSe
 az webapp identity assign --resource-group myResourceGroup --name <app-name>
 ```
 
+> [!NOTE]
+> 若要为[部署槽位](deploy-staging-slots.md)启用托管标识，请添加 `--slot <slot-name>`，并在 \<slot-name> 中使用槽名称。
+
 这是一个输出示例：
 
 <pre>
@@ -222,7 +228,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-\<identity-name> 是 Azure AD 中托管标识的名称。 如果标识是系统分配的，则此名称始终与应用服务应用的名称相同。 若要为 Azure AD 组授予权限，请改为使用组的显示名称（例如，*myAzureSQLDBAccessGroup*）。
+\<identity-name> 是 Azure AD 中托管标识的名称。 如果标识是系统分配的，则此名称始终与应用服务应用的名称相同。 对于[部署槽位](deploy-staging-slots.md)，其系统分配的标识的名称为 \<app-name>/slots/\<slot-name>。 若要为 Azure AD 组授予权限，请改为使用组的显示名称（例如，*myAzureSQLDBAccessGroup*）。
 
 键入 `EXIT`，返回到 Cloud Shell 提示符窗口。
 

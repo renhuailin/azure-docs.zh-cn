@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt, troubleshoot
-ms.openlocfilehash: c36e1221c77d7f2b285419be705990405965c005
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 598c578c445cbd7dc7086f22e3c8d4885d67b112
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382609"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537324"
 ---
 # <a name="troubleshooting-prebuilt-docker-images-for-inference-preview"></a>排查用于推理的预生成 Docker 映像（预览版）的问题
 
@@ -47,7 +47,7 @@ docker run -it -v $(pwd):/var/azureml-app -e AZUREML_EXTRA_REQUIREMENTS_TXT="req
 
 ## <a name="enable-local-debugging"></a>启用本地调试
 
-在本地推理服务器中可以快速调试入口脚本 (`score.py`)。 如果基础评分脚本存在 bug，该服务器将无法初始化或者为模型提供服务。 相反，它会引发异常并指出发生问题的位置。
+在本地推理服务器中可以快速调试入口脚本 (`score.py`)。 如果基础评分脚本存在 bug，该服务器将无法初始化或者为模型提供服务。 相反，它会引发异常并指出发生问题的位置。 [详细了解 Azure 机器学习推理 HTTP 服务器](how-to-inference-server-http.md)
 
 ## <a name="for-common-model-deployment-issues"></a>对于常见模型部署问题
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: cbaa84c73a5e332dca60286bc35200761e546dd3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 144e9eb84b6add1c10103148b374aeeeca0e6c6d
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864221"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112293412"
 ---
 # <a name="what-is-azure-hdinsight"></a>什么是 Azure HDInsight？
 
@@ -32,7 +32,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 |功能  |说明  |
 |---------|---------|
-|云原生     |     可以使用 Azure HDInsight 在 Azure 上为 Hadoop、Spark、 [交互式查询 (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、Kafka、Storm、HBase 和 ML Services 创建优化群集。 HDInsight 还在所有生产工作负荷上提供端到端 SLA。  |
+|云原生     |     可以使用 Azure HDInsight 在 Azure 上为 Hadoop、Spark、 [Interactive Query (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、Kafka、Storm、HBase 创建优化群集。 HDInsight 还在所有生产工作负荷上提供端到端 SLA。  |
 |低成本且可缩放     | 可以通过 HDInsight 纵向缩放工作负荷。可以通过创建按需群集来降低成本，只为自己使用的资源付费。 还可以生成数据管道，使作业可操作化。 使计算和存储分离，提高性能和灵活性。 |
 |既安全又合规    | HDInsight 允许通过 Azure 虚拟网络、加密以及与 Azure Active Directory 集成来保护企业数据资产。 HDInsight 还满足最常用的行业和政府符合性标准。        |
 |监视    | Azure HDInsight 集成 Azure Monitor 日志，可以通过单个界面来监视所有群集。        |
@@ -81,7 +81,6 @@ HDInsight 包括特定的群集类型和群集自定义功能，例如添加组�
 |[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|一个框架，使用 HDFS、YARN 资源管理和简单的 MapReduce 编程模型并行处理和分析批处理数据。|
 |Apache Spark[](./spark/apache-spark-overview.md)|一种开源并行处理框架，支持使用内存中处理来提升大数据分析应用程序的性能。 请参阅[什么是 HDInsight 中的 Apache Spark？](./spark/apache-spark-overview.md)|
 |[Apache HBase](./hbase/apache-hbase-overview.md)|基于 Hadoop 上的 NoSQL 数据库构建，为大量非结构化和半结构化数据（可能为数十亿行乘以数百万列）提供随机访问和高度一致性。 请参阅[什么是 HDInsight 上的 HBase？](./hbase/apache-hbase-overview.md)|
-|[ML Services](./r-server/r-server-overview.md)|用于托管和管理并行分布式 R 进程的服务器。 它可让数据科研人员、统计人员和 R 程序员根据需要访问 HDInsight 上可缩放的分布式分析方法。 请参阅 [HDInsight 上的 ML Services 概述](./r-server/r-server-overview.md)。|
 |[Apache Storm](./storm/apache-storm-overview.md)|分布式实时计算系统，用于快速处理大型数据流。 Storm 以 HDInsight 中的托管群集形式提供。 请参阅 [使用 Storm 和 Hadoop 分析实时传感器数据](./storm/apache-storm-overview.md)。|
 |[Apache 交互式查询](./interactive-query/apache-interactive-query-get-started.md)|更快的交互式 Hive 查询的内存中缓存。 请参阅[在 HDInsight 中使用交互式查询](./interactive-query/apache-interactive-query-get-started.md)。|
 |[Apache Kafka](./kafka/apache-kafka-introduction.md)|一种开源平台，用于生成流式处理的数据管道和应用程序。 Kafka 还提供了消息队列功能，允许用户发布和订阅数据流。 请参阅 [Apache Kafka on HDInsight 简介](./kafka/apache-kafka-introduction.md)。|

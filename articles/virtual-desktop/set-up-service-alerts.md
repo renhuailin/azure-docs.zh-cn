@@ -1,24 +1,24 @@
 ---
-title: 为 Windows 虚拟桌面设置服务警报 - Azure
-description: 如何设置 Azure 服务运行状况以接收 Windows 虚拟桌面的服务通知。
+title: 为 Azure 虚拟桌面设置服务警报 - Azure
+description: 如何设置 Azure 服务运行状况以接收 Azure 虚拟桌面的服务通知。
 author: Heidilohr
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ca5f225265b42ffc67a41a5252b2e789f7bcf500
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: e867901fb90e4e6d6c3a6b8fa7ca6cd28a5e7178
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445629"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755926"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>教程：设置服务警报
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/set-up-service-alerts-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[本文](./virtual-desktop-fall-2019/set-up-service-alerts-2019.md)。
 
-可以使用 Azure 服务运行状况监视 Windows 虚拟桌面的服务问题和运行状况公告。 Azure 服务运行状况可以通过不同类型的警报（例如，电子邮件或短信）通知你，帮助你了解问题的影响，并在问题解决时保持更新。 此外，Azure 服务运行状况还可以帮助你减少停机时间，并为可能影响资源可用性的计划内维护和更改做准备。
+可以使用 Azure 服务运行状况监视 Azure 虚拟桌面的服务问题和运行状况公告。 Azure 服务运行状况可以通过不同类型的警报（例如，电子邮件或短信）通知你，帮助你了解问题的影响，并在问题解决时保持更新。 此外，Azure 服务运行状况还可以帮助你减少停机时间，并为可能影响资源可用性的计划内维护和更改做准备。
 
 本教程介绍以下操作：
 
@@ -35,7 +35,7 @@ ms.locfileid: "106445629"
 
 我们建议你为以下运行状况事件类型创建服务警报：
 
-- **服务问题：** 接收有关影响用户与服务的连接或管理 Windows 虚拟桌面租户的能力的主要问题的通知。
+- 服务问题：接收有关以下主要问题的通知：影响用户与服务的连接或管理 Azure 虚拟桌面租户的能力。
 - **运行状况公告：** 接收需要你注意的通知。 以下是此类通知的一些示例：
     - 虚拟机 (VM) 没有安全配置为打开端口 3389
     - 弃用的功能
@@ -50,7 +50,7 @@ ms.locfileid: "106445629"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何设置和使用 Azure 服务运行状况来监视 Windows 虚拟桌面的服务问题和运行状况公告。 若要了解如何登录到 Windows 虚拟桌面，请继续学习“连接到 Windows 虚拟桌面”操作指南。
+本教程介绍了如何设置和使用 Azure 服务运行状况来监视 Azure 虚拟桌面的服务问题和运行状况公告。 若要了解如何登录到 Azure 虚拟桌面，请继续学习“连接到 Azure 虚拟桌面”操作指南。
 
 > [!div class="nextstepaction"]
 > [连接到 Windows 7 和 Windows 10 上的远程桌面客户端](./connect-windows-7-10.md)

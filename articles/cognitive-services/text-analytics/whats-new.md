@@ -8,20 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/17/2021
+ms.date: 06/03/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 21f072747c9184fa15fd7e3477c0b4009cd885fc
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 63063ef205b456c368cec2d5c1a8ce1f456aaa59
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376231"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756466"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了让大家随时了解最新的开发成果，本文介绍了新版本和新功能。
 
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="general-api-updates"></a>常规 API 更新
+
+* 用于关键短语提取的新模型版本 `2021-06-01`，增加了对简体中文的支持。
+* [命名实体识别](how-tos/text-analytics-how-to-entity-linking.md) v3.x 的 `2021-06-01` 模型版本，其中提供 
+  * 改进了 AI 质量并扩展了对技能实体类别的语言支持。 
+  * 为技能实体类别添加了西班牙语、法语、德语、意大利语和葡萄牙语语言支持
+* 异步操作和健康状况文本分析在所有地区可用 
+
+### <a name="text-analytics-for-health-updates"></a>健康状况文本分析更新
+
+* 预览健康状况文本分析时不再需要申请访问权限。
+* 为 `/health` 终结点和本地容器提供了新模型版本 `2021-05-15`，其中提供
+    * 5 种新实体类型：`ALLERGEN`、`CONDITION_SCALE`、`COURSE`、`EXPRESSION` 和 `MUTATION_TYPE`，
+    * 14 种新关系类型，
+    * 针对新实体类型进行了扩展的断言检测以及
+    * 对 ALLERGEN 实体类型的链接支持
+
+ 
 ## <a name="may-2021"></a>2021 年 5 月
 
 * 现在可以使用文本分析资源访问[自定义问答](../qnamaker/custom-question-answering.md)（以前为 QnA Maker）。 
@@ -273,7 +293,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
     * 日期（作为 DateTime 下的子类型）
     * 电子邮件 
     * 电话号码（仅限美国）
-    * URL
+    * 代码
     * IP 地址
 
 ### <a name="october-2019"></a>2019 年 10 月

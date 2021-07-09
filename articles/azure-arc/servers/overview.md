@@ -2,20 +2,23 @@
 title: 已启用 Azure Arc 的服务器概述
 description: 了解如何使用已启用 Azure Arc 的服务器像管理 Azure 资源一样，管理托管在 Azure 外部的服务器。
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
-ms.date: 04/21/2021
+ms.date: 05/26/2021
 ms.topic: overview
-ms.openlocfilehash: 324f6cc29bd9e4eca1a20413032c213c2618a11e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 307d09f23c5c1e74e2e4c81d77a3521652598fa4
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831989"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110585487"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什么是已启用 Azure Arc 的服务器？
 
 利用启用了 Azure Arc 的服务器，可以管理 Windows 和 Linux 物理服务器和虚拟机，这些服务器和虚拟机托管在 Azure（或其他云提供商）外部的企业网络中。 这种管理体验旨在与原生 Azure 虚拟机的管理方式保持一致。 当混合计算机连接到 Azure 时，它将成为一台联网计算机，被视为 Azure 中的资源。 每台联网计算机都有一个资源 ID，包含在一个资源组中，可受益于标准的 Azure 构造，例如 Azure Policy 和应用标记。 为客户管理本地基础结构的服务提供商可以通过结合使用 Azure Arc 和 [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) 来管理其混合计算机，与当前跨多个客户环境管理本机 Azure 资源一样。
 
 若要为托管在 Azure 外部的混合计算机提供此体验，需要在打算连接到 Azure 的每台计算机上安装 Azure Connected Machine 代理。 此代理不提供任何其他功能，而且不会取代 Azure [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-introduction.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。
+
+>[!NOTE]
+> [Azure Monitor 代理](../../azure-monitor/agents/azure-monitor-agent-overview.md) (AMA)（当前为预览版）不会取代 Connected Machine Agent。 Azure Monitor 代理将取代 Windows 和 Linux 计算机上的 Log Analytics 代理、诊断扩展和 Telegraf 代理。 有关更多详细信息，请查看有关新代理的 Azure Monitor 文档。
 
 ## <a name="supported-scenarios"></a>支持的方案
 

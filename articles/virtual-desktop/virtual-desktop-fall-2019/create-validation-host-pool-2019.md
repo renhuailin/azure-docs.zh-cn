@@ -1,33 +1,33 @@
 ---
-title: Windows 虚拟桌面（经典）主机池服务更新 - Azure
-description: 了解如何在 Windows 虚拟桌面（经典）中创建验证主机池，以便在将服务更新推出到生产环境之前监视更新。
+title: Azure 虚拟桌面（经典）主机池服务更新 - Azure
+description: 了解如何在 Azure 虚拟桌面（经典）中创建验证主机池，以便在将服务更新推出到生产环境之前监视更新。
 author: Heidilohr
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ad79ad31678f698c0f034b39bab1e3a19a48d3f2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: bca4d55d0c5abb4e133a8eef8b51a2a5ae57b5d5
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444966"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749824"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates-in-windows-virtual-desktop-classic"></a>教程：在 Windows 虚拟桌面（经典）中创建主机池以验证服务更新
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates-in-azure-virtual-desktop-classic"></a>教程：在 Azure 虚拟桌面（经典）中创建主机池以验证服务更新
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../create-validation-host-pool.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../create-validation-host-pool.md)。
 
-主机池是 Windows 虚拟桌面租户环境中一个或多个相同虚拟机的集合。 建议先创建一个要应用服务更新的验证主机池。 这样可以在服务将更新应用于标准或非验证环境之前，监视服务更新。 如果没有验证主机池，则可能无法发现引入错误的更改，这可能会在生产环境中对用户导致故障时间。
+主机池是 Azure 虚拟桌面租户环境中一个或多个相同虚拟机的集合。 建议先创建一个要应用服务更新的验证主机池。 这样可以在服务将更新应用于标准或非验证环境之前，监视服务更新。 如果没有验证主机池，则可能无法发现引入错误的更改，这可能会在生产环境中对用户导致故障时间。
 
 若要确保应用适用于最新更新，验证主机池应尽可能地与非验证环境中的主机池类似。 用户应如同连接到标准主机池一样频繁地连接到验证主机池。 如果在主机池上进行自动测试，则应在验证主机池上包含自动测试。
 
-可以使用[诊断功能](diagnostics-role-service-2019.md)或 [Windows 虚拟桌面故障排除文章](troubleshoot-set-up-overview-2019.md)对验证主机池中的问题进行调试。
+可以使用[诊断功能](diagnostics-role-service-2019.md)或 [Azure 虚拟桌面故障排除文章](troubleshoot-set-up-overview-2019.md)对验证主机池中的问题进行调试。
 
 >[!NOTE]
 > 建议保留验证主机池以测试所有将来的更新。
 
-在开始之前，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做）。 然后，运行以下 cmdlet 登录到你的帐户：
+在开始之前，请[下载并导入 Azure 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做）。 然后，运行以下 cmdlet 登录到你的帐户：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -77,7 +77,7 @@ cmdlet 的结果应类似于以下输出：
 
 ## <a name="next-steps"></a>后续步骤
 
-既然已创建了验证主机池，接下来可以了解如何使用 Azure 服务运行状况来监视 Windows 虚拟桌面部署。
+你已经创建了验证主机池，接下来可以了解如何使用 Azure 服务运行状况来监视 Azure 虚拟桌面部署。
 
 > [!div class="nextstepaction"]
 > [设置服务警报](set-up-service-alerts-2019.md)

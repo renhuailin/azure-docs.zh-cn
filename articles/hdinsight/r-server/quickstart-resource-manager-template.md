@@ -5,14 +5,17 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 9ead752258596e9beb2bc112296d9275092ea8bb
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 86d43a09e4c739cc588848429dcaf6276f68dbf2
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556813"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299386"
 ---
 # <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-arm-template"></a>快速入门：使用 ARM 模板在 Azure HDInsight 中创建 ML Services 群集
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 本快速入门将使用 Azure 资源管理器模板（ARM 模板）在 Azure HDInsight 中创建 [ML Services](./r-server-overview.md) 群集。 可以在 Azure 中创建 HDInsight 群集时选择使用 Microsoft Machine Learning Server 部署。 提供此选项的群集类型名为 ML Services。 这项功能可让数据科研人员、统计人员和 R 程序员根据需要访问 HDInsight 上可缩放的分布式分析方法。
 

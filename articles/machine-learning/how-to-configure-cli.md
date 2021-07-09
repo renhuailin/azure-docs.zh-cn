@@ -10,16 +10,16 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 05/25/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 19534a5b55ea666233bb1a9b66916791e934908a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e93985b6583f164e1ea497f5d8cad7352b60f556
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476606"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755548"
 ---
 # <a name="install-set-up-and-use-the-20-cli-preview"></a>安装、设置和使用 2.0 CLI（预览版）
 
-[Azure CLI](/cli/azure/) 的 `ml` 扩展（预览版）是适用于 Azure 机器学习的下一代接口。 该扩展可让你从命令行训练和部署模型，并提供了在跟踪模型生命周期时加快数据科学纵向和横向扩展的功能。
+[Azure CLI](/cli/azure/) 的 `ml` 扩展（预览版）是适用于 Azure 机器学习的增强型接口。 该扩展可让你从命令行训练和部署模型，并提供了在跟踪模型生命周期时加快数据科学纵向和横向扩展的功能。
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
@@ -43,11 +43,11 @@ az version
 
 检查已安装的 Azure CLI 扩展：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_extension_list":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_list":::
 
 确保未安装任何有冲突的、使用 `ml` 命名空间的扩展，包括 `azure-cli-ml` 扩展：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_extension_remove":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_remove":::
 
 现在，请安装 `ml` 扩展：
 
@@ -55,11 +55,11 @@ az version
 
 运行 help 命令以验证安装，并查看可用的子命令：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_ml_verify":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_ml_verify":::
 
 可将扩展升级到最新版本：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_ml_update":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_ml_update":::
 
 ## <a name="set-up"></a>设置
 
@@ -71,7 +71,7 @@ az login
 
 如果你可以访问多个 Azure 订阅，则可以设置活动的订阅：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="az_account_set":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_account_set":::
 
 如果它不存在，可以创建 Azure 资源组：
 
@@ -106,13 +106,13 @@ cd azureml-examples/cli
 
 提交作业，将日志流式传输到控制台输出，并在 Azure 机器学习工作室中打开运行：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-configure-cli.sh" id="hello_world":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/hello-world.sh" id="hello_world":::
 
 > [!IMPORTANT]
 > 首次运行可能需要花费几分钟时间，因为将在本地拉取 Docker 映像，并且要运行 Azure ML 作业。 后续运行将使用本地缓存的映像，因此可以更快地完成。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [安装 Visual Studio Code Azure 机器学习扩展](how-to-setup-vs-code.md)
 - [使用机器学习 CLI 扩展（预览版）训练模型](how-to-train-cli.md)
+- [安装 Visual Studio Code Azure 机器学习扩展](how-to-setup-vs-code.md)
 - [使用 Azure 机器学习 Visual Studio Code 扩展训练图像分类 TensorFlow 模型](tutorial-train-deploy-image-classification-model-vscode.md)
