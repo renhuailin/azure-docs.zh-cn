@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2969ee5339306e30044a6a80260f912d45d0c8a2
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: d44e73b7d4c2988fb26c947100faac2ebcbe8f8f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105046"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474587"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>设置 Azure 数字孪生实例和身份验证 (CLI)
 
@@ -21,11 +21,10 @@ ms.locfileid: "107105046"
 本文介绍新 Azure 数字孪生实例的设置步骤，包括创建实例和设置身份验证。 完成本文操作后，即可对 Azure 数字孪生实例编程。
 
 本文的此版本借助 CLI 逐个手动完成这些步骤。
-* 若要使用 Azure 门户手动完成这些步骤，请参阅本文的门户版本：[操作说明：设置实例和身份验证（门户）](how-to-set-up-instance-portal.md)。
-* 若要使用部署脚本示例完成自动设置，请参阅本文的脚本编写版本：[操作说明：设置实例和身份验证（已编写脚本）](how-to-set-up-instance-scripted.md)。
+* 若要使用 Azure 门户手动完成这些步骤，请参阅本文的门户版本：操作说明：设置实例和身份验证（门户）。
+* 若要使用部署脚本示例完成自动设置，请参阅本文的脚本编写版本：操作说明：设置实例和身份验证（已编写脚本）。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
-[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -39,20 +38,20 @@ ms.locfileid: "107105046"
     ```azurecli-interactive
     az group create --location <region> --name <name-for-your-resource-group>
     ```
-* 用于部署的区域。 若要查看哪些区域支持 Azure 数字孪生，请访问[各区域的 Azure 产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
+* 用于部署的区域。 若要查看哪些区域支持 Azure 数字孪生，请访问各区域的 Azure 产品可用性。
 * 你的实例的名称。 如果订阅在该区域已存在使用指定名称的其他 Azure 数字孪生实例，系统会要求你选择其他的名称。
 
 在以下命令中使用这些值创建实例：
 
 ```azurecli-interactive
-az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
+az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> --resource-group <your-resource-group> --location <region>
 ```
 
 ### <a name="verify-success-and-collect-important-values"></a>验证是否成功并收集重要值
 
 如果实例已成功创建，则 Cloud Shell 中的结果将如下所示，输出有关已创建资源的信息：
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="成功创建了资源组和 Azure 数字孪生实例的命令窗口":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="Cloud Shell 窗口屏幕截图，其中显示了在 Azure 门户中成功创建资源组和 Azure 数字孪生实例。":::
 
 记下输出中 Azure 数字孪生实例的“hostName”、“name”和“resourceGroup”。 在继续使用 Azure 数字孪生实例时，可能需要使用所有这些重要的值，以便设置身份验证和相关的 Azure 资源。 如果其他用户将针对该实例进行编程，则应与他们共享这些值。
 
@@ -64,6 +63,14 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-res
 ## <a name="set-up-user-access-permissions"></a>设置用户访问权限
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
+
+### <a name="prerequisites-permission-requirements"></a>先决条件：权限要求
+
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
+
+### <a name="assign-the-role"></a>分配角色
+
+若要授予用户管理 Azure 数字孪生实例的权限，必须在实例中为他们分配“Azure 数字孪生数据所有者”角色。
 
 使用以下命令来分配角色（必须由在 Azure 订阅中具有[足够权限](#prerequisites-permission-requirements)的用户来运行）。 此命令要求你传入要为其分配角色的用户在 Azure AD 帐户中的用户主体名称。 在大多数情况下，这将与该用户在 Azure AD 帐户中的电子邮件匹配。
 
@@ -80,7 +87,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 >
 > 使用 [Azure Active Directory 用户的 Azure 门户页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)选择用户帐户并打开其详细信息。 复制用户的 ObjectID：
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="Azure 门户中的用户页面视图，其中突出显示了“对象 ID”字段中的 GUID" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="Azure 门户中的用户页面屏幕截图，其中突出显示了“对象 ID”字段中的 GUID。" lightbox="media/includes/user-id.png":::
 >
 > 然后，重复执行角色分配列表命令，将用户的对象 ID 用于上面的 `assignee` 参数。
 
@@ -93,8 +100,8 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 ## <a name="next-steps"></a>后续步骤
 
 使用 Azure 数字孪生 CLI 命令在实例上测试各个 REST API 调用： 
-* [az dt reference](/cli/azure/dt)
-* [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
+* [az dt reference](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)
+* [概念：Azure 数字孪生 CLI 命令集](concepts-cli.md)
 
 或者，了解如何使用验证码将客户端应用程序连接到实例：
 * [如何：编写应用验证码](how-to-authenticate-client.md)

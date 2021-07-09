@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: db6aafc8c9db7a67c9ee70d524d17a642d03dfd8
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 081c520377327e4ceeace204755a0076e5b2f0d0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259058"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092379"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通信服务中的故障排除
 
@@ -160,6 +160,17 @@ AzureLogger.log = (...args) => {
 
 在 Android Studio 上，从模拟器和设备中选择“查看”>“工具窗口”>“设备文件资源管理器”，导航到设备文件资源管理器。 `.blog` 文件将位于应用程序的目录中，例如 `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog`。 可以将此文件附加到支持请求。
 
+## <a name="enable-and-access-call-logs-windows"></a>启用并访问调用日志 (Windows)
+
+在针对 Windows 系统进行开发时，日志存储在 `.blog` 文件中。 请注意，不能直接查看日志，因为它们已加密。
+
+可以通过查看应用的本地数据保留位置来访问这些数据。 有多种方法可以确定 UWP 应用的本地数据保存位置，以下步骤只是其中一种方法：
+1. 打开 Windows 命令提示符（Windows 键 + R）
+2. 键入 `cmd.exe`
+3. 键入 `where /r %USERPROFILE%\AppData acs*.blog`
+4. 请检查应用程序的应用 ID 是否与上一个命令返回的应用 ID 匹配。
+5. 通过输入 `start ` 以及步骤 3 返回的路径，打开包含日志的文件夹。 例如：`start C:\Users\myuser\AppData\Local\Packages\e84000dd-df04-4bbc-bf22-64b8351a9cd9_k2q8b5fxpmbf6`
+6. 请将所有 `*.blog` 和 `*.etl` 文件附加到 Azure 支持请求。
 
 ---
 
@@ -180,6 +191,17 @@ Azure 通信服务呼叫 SDK 使用以下错误代码，你可以通过这些错
 | 490、491、496、487、498 | 本地终结点网络问题。 | 检查网络。 |
 | 500、503、504 | 通信服务基础结构错误。 | 通过 Azure 门户提交支持请求。 |
 | 603 | 全球呼叫被远程通信服务参与者拒绝 | 预期行为。 |
+
+## <a name="chat-sdk-error-codes"></a>聊天 SDK 错误代码
+
+Azure 通信服务聊天 SDK 使用以下错误代码，你可以通过这些错误代码来排查聊天问题。 错误代码通过错误响应中的 `error.code` 属性公开。
+
+| 错误代码 | 说明 | 采取的操作 |
+| -------- | ---------------| ---------------|
+| 401 | 未授权 | 确保通信服务令牌有效且未过期。 |
+| 403 | 禁止 | 确保请求的发起方有权访问该资源。 |
+| 429 | 请求过多 | 确保客户端应用程序以用户友好的方式处理此方案。 如果此错误持续存在，请提交支持请求。 |
+| 503 | 服务不可用 | 通过 Azure 门户提交支持请求。 |
 
 ## <a name="related-information"></a>相关信息
 - [日志和诊断](logging-and-diagnostics.md)

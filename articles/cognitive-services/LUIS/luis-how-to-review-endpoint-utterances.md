@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 04/16/2021
-ms.openlocfilehash: 339b87abad863f19a012dc6ed3a14ab13a44fc48
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 05/05/2021
+ms.openlocfilehash: 41c45b2887736847c2413c2193e57d35f49594e7
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949103"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109518051"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何通过评审终结点言语来改进 LUIS 应用
 
@@ -41,14 +41,16 @@ ms.locfileid: "107949103"
 
      此操作通过添加 `log=true` 查询字符串参数来更改示例 URL。 对运行时终结点进行预测查询时，请复制并使用更改后的示例查询 URL。
 
-## <a name="correct-intent-predictions-to-align-utterances"></a>纠正意向预测以匹配言语
+## <a name="correct-predictions-to-align-utterances"></a>修正预测以使言语一致
 
-每个陈述的“统一意向”列中都显示一个建议意向。
+每个言语的“预测意向”列中都显示一个建议意向，并在虚线边界框中显示建议实体。
 
 > [!div class="mx-imgBorder"]
 > [![查看 LUIS 无法确定的终结点言语](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
 
-如果同意该意向，请选择复选标记。 如果不同意建议，请从统一意向下拉列表中选择合适的意向，然后选择统一意向右侧的复选标记。 在复选标记上进行选择后，言语将移至该意向并从“评审终结点言语”列表中删除。
+如果同意预测的意向和实体，请选择言语旁边的复选标记。 如果复选标记处于禁用状态，说明没有内容需要确认。  
+如果不同意建议的意向，请从“预测意向”下拉列表中选择合适的意向。 如果不同意建议的实体，请开始标记它们。
+完成后，选择言语旁的复选标记来确认标记。 选择“保存言语”将其从评审列表中移出，并将其添加到相应的意向中。
 
 > [!TIP]
 > 若要查看并纠正来自“评审终结点言语”列表中的所有示例言语的实体预测，请务必转到意向详细信息页。
@@ -61,7 +63,8 @@ ms.locfileid: "107949103"
 
 ## <a name="disable-active-learning"></a>禁用主动学习
 
-若要禁用主动学习，请不要记录用户查询。 这可以通过使用 `log=false` 查询字符串参数和值设置[终结点查询](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)，或不使用查询字符串值（因为默认值是 false）来实现。
+若要禁用主动学习，请不要记录用户查询。 这是通过更改如上所示的查询参数或通过在终结点查询中设置 `log=false` 参数来实现的，或者可以省略 `log` 参数，因为默认值为 `false`。
+
 
 ## <a name="next-steps"></a>后续步骤
 

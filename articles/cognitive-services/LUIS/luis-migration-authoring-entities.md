@@ -4,17 +4,17 @@ description: V3 创作提供了一种新的实体类型，即机器学习实体�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/08/2020
-ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: 6808c5d84a1be6a2e9b262eab00010d4a962c259
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91324682"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701159"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>迁移到 V3 创作实体
 
-V3 创作提供了一种新的实体类型，即机器学习实体，还可以向机器学习实体和应用程序的其他实体或功能添加关系。
+V3 创作提供了一种新的实体类型，即机器学习实体，还可以向机器学习实体和应用程序的其他实体或功能添加关系。 目前没有完成迁移的截止日期。
 
 ## <a name="entities-are-decomposable-in-v3"></a>实体在 V3 中可分解
 

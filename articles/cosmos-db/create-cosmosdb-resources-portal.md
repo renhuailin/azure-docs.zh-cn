@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2021
-ms.openlocfilehash: c73701ae5ada23ed20aaaaa7554a6c714f5dab26
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: df434c54bed103bd17d1a0009478e624da762ecc
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456960"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112235646"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>快速入门：从 Azure 门户创建 Azure Cosmos 帐户、数据库、容器和项
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,12 +36,12 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
-- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
+- [!INCLUDE [cosmos-db-emulator-docdb-api](includes/cosmos-db-emulator-docdb-api.md)]  
 
 <a id="create-account"></a>
 ## <a name="create-an-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](includes/cosmos-db-create-dbaccount.md)]
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>添加数据库和容器 
@@ -59,7 +59,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
     |设置|建议的值|说明
     |---|---|---|
     |**数据库 ID**|ToDoList|输入 ToDoList 作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“跨容器共享吞吐量”选项，这样就可以在数据库中的所有容器之间共享在该数据库上预配的吞吐量。 此选项还有助于节省成本。 |
-    | **数据库吞吐量**| 你可以预配“自动缩放”或“手动”吞吐量 。 借助“手动”吞吐量，你可以自行缩放 RU/s，而“自动缩放”吞吐量允许系统根据使用情况缩放 RU/s。 对于此示例，请选择“手动”。 <br><br> 将吞吐量保留为每秒 400 个请求单位 (RU/s)。 如果希望减少延迟，可以稍后通过使用[容量计算器](estimate-ru-with-capacity-planner.md)估算所需的 RU/s 来纵向扩展吞吐量。<br><br>**注意**：在无服务器帐户中创建新容器时，此设置不可用。 |
+    | **数据库吞吐量**| 可以预配“自动缩放”或“手动”吞吐量 。 “手动”吞吐量使你可以自行缩放 RU/秒，而自动缩放吞吐量使系统可以根据使用情况缩放 RU/秒。 对于此示例，请选择“手动”。 <br><br> 将吞吐量保留为每秒 400 个请求单位 (RU/s)。 如果希望减少延迟，可以稍后通过使用[容量计算器](estimate-ru-with-capacity-planner.md)估算所需的 RU/秒来纵向扩展吞吐量。<br><br>**注意**：在无服务器帐户中创建新容器时，此设置不可用。 |
     |**容器 ID**|Items|输入 *Items* 作为新容器的名称。 容器 ID 与数据库名称的字符要求相同。|
     |**分区键**| /category| 本文中所述的示例使用 /category 作为分区键。|
 
@@ -95,11 +95,11 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 ## <a name="query-your-data"></a>查询数据
 
-[!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)] 
+[!INCLUDE [cosmos-db-create-sql-api-query-data](includes/cosmos-db-create-sql-api-query-data.md)] 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+[!INCLUDE [cosmosdb-delete-resource-group](includes/cosmos-db-delete-resource-group.md)]
 
 如果希望仅删除数据库并在将来使用 Azure Cosmos 帐户，则可以通过以下步骤删除数据库：
 

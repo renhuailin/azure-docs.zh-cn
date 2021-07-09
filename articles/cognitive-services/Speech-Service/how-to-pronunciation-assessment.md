@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 2d1b5e490b7c8212e6103e3d169c1b5491d01dde
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: f9f787af8cad8dffa728e29fd3a13defc8e160ca
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167424"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494862"
 ---
 # <a name="pronunciation-assessment"></a>发音评估
 
@@ -34,7 +34,7 @@ ms.locfileid: "106167424"
 
 在下面的示例中，你将创建 `PronunciationAssessmentConfig`，然后将其应用于 `SpeechRecognizer`。
 
-以下代码片段演示了如何在应用中使用自动语言检测：
+以下代码片段说明如何在应用中使用语言识别：
 
 ::: zone pivot="programming-language-csharp"
 

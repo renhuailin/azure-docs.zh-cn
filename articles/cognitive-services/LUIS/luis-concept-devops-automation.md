@@ -1,16 +1,19 @@
 ---
-title: 适用于 LUIS 应用的持续工作流
+title: LUIS 应用持续集成和持续交付工作流
 description: 如何为“语言理解 (LUIS)”实现 DevOps 的 CI/CD 工作流。
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/5/2020
-ms.openlocfilehash: 215399e4b131162097e54c15b84cb6fa7dac72e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.author: aahi
+author: aahill
+ms.manager: nitinme
+ms.openlocfilehash: 550af8bda0768738dc2162a0dc0bf767d1c54741
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98932534"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783023"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>LUIS DevOps 持续集成和持续交付工作流
 
@@ -34,6 +37,9 @@ ms.locfileid: "98932534"
 持续集成和持续交付的目标是确保“主分支始终可提供服务”。 对于 LUIS 应用程序，这意味着，如果需要，我们可以从主分支 LUIS 应用中获取任何版本并将其交付生产。
 
 ### <a name="tools-for-building-automation-workflows-for-luis"></a>LUIS 自动化工作流生成工具
+
+> [!TIP]
+> 可以在 [LUIS DevOps 模板存储库](#apply-devops-to-luis-app-development-using-github-actions)中找到用于实现 DevOps 的完整解决方案。
 
 有多种不同的生成自动化技术可用于创建生成自动化工作流。 所有这些方法都要求使用命令行接口 (CLI) 或 REST 调用来编写步骤的脚本，以便可以在生成服务器上执行。
 
@@ -96,7 +102,26 @@ CI/CD 工作流中的 CD 作业会根据设置的条件在生成和自动化单�
 
 通常，我们建议你仅对非生产环境（例如开发和暂存）进行持续交付。 大多数团队需要一个手动审查和批准过程才能实现对生产环境的部署。 对于生产部署，你可能希望确保它在开发团队中的关键人员可提供支持时或在低流量时期执行。
 
+
+## <a name="apply-devops-to-luis-app-development-using-github-actions"></a>使用 GitHub Actions 将 DevOps 应用于 LUIS 应用开发
+
+请转到 [LUIS DevOps 模板存储库](https://github.com/Azure-Samples/LUIS-DevOps-Template)，以获取针对 LUIS 实现 DevOps 和软件工程最佳做法的完整解决方案。 可以使用此模板存储库创建自己的存储库，其中提供对 CI/CD 工作流和做法的内置支持，这些做法通过 LUIS 为项目实现[源代码管理](luis-concept-devops-sourcecontrol.md)、自动生成、[测试](luis-concept-devops-testing.md)和发布管理。
+
+[LUIS DevOps 模板存储库](https://github.com/Azure-Samples/LUIS-DevOps-Template)演练如何执行以下操作：
+
+* 克隆模板存储库 - 将模板复制到自己的 GitHub 存储库。
+* 配置 LUIS 资源 - [在 Azure 中创建 LUIS 创作和预测资源](./luis-how-to-azure-subscription.md)，这些资源将由持续集成工作流使用。
+* 配置 CI/CD 工作流 - 配置 CI/CD 工作流的参数并将它们存储在 [GitHub 机密](https://help.github.com/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)中。
+* 演练[“开发内部循环”](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow) - 开发人员在开发分支中工作时对示例 LUIS 应用进行更新，测试更新，然后引发拉取请求来提议更改并寻求审批。
+* 执行 CI/CD 工作流 - 使用 GitHub Actions 执行[持续集成工作流以生成和测试 LUIS 应用](#build-automation-workflows-for-luis)。
+* 执行自动测试 - 执行 [LUIS 应用的自动批处理测试](luis-concept-devops-testing.md)以评估应用的质量。
+* 部署 LUIS 应用 - 执行[持续交付 (CD) 作业](#continuous-delivery-cd)以发布 LUIS 应用。
+* 将存储库用于自己的项目 - 说明如何将存储库用于自己的 LUIS 应用程序。
+
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[使用 GitHub 实现 DevOps for LUIS](luis-how-to-devops-with-github.md)
 * 了解如何[使用 NLU.DevOps 编写 GitHub Actions 工作流](https://github.com/Azure-Samples/LUIS-DevOps-Template/blob/master/docs/4-pipeline.md)
+
+* 使用 [LUIS DevOps 模板存储库](https://github.com/Azure-Samples/LUIS-DevOps-Template)将 DevOps 应用于自己的项目。
+* [LUIS 的源代码管理和分支策略](luis-concept-devops-sourcecontrol.md)
+* [LUIS DevOps 测试](luis-concept-devops-testing.md)

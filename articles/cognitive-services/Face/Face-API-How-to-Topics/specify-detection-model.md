@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 72fd005ce44d116f86d9a0b4c0d1932e2e4facfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da05251dab17aeb086be53a8583110dd5f12d7b3
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102425764"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541638"
 ---
 # <a name="specify-a-face-detection-model"></a>指定人脸检测模型
 
@@ -102,8 +102,8 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 |---------|---------|---|
 |所有人脸检测操作的默认选项。 | 已于 2019 年 5 月发布，可以选择性地在所有人脸检测操作中使用。 |  已于 2021 年 2 月发布，可以选择性地在所有人脸检测操作中使用。
 |未针对小尺寸人脸、侧视人脸或模糊人脸进行优化。  | 已针对小尺寸人脸、侧视人脸或模糊人脸提高了准确度。 | 进一步提升了准确度，包括针对人脸较小（64x64 像素）和人脸方向发生了转动等情况。
-|如果在检测调用中指定了主要的人脸属性（头部姿势、年龄、表情，等等），则返回这些属性。 |  不返回人脸属性。     | 如果在检测调用中指定了“faceMask”和“noseAndMouthCovered”属性，则返回这些属性。
-|如果在检测调用中指定了人脸特征点，则返回这些特征点。   | 不返回人脸特征点。  | 不返回人脸特征点。
+|如果在检测调用中指定了主要的人脸属性（头部姿势、年龄、表情，等等），则返回这些属性。 |  不返回人脸属性。     | 如果在检测调用中指定了面罩和头部姿势属性，则返回这些属性。
+|如果在检测调用中指定了人脸特征点，则返回这些特征点。   | 不返回人脸特征点。  | 如果在检测调用中指定了人脸特征点，则返回这些特征点。
 
 比较检测模型性能的最佳方式是针对示例数据集使用这些模型。 我们建议使用每个检测模型针对各种图像（尤其是许多人脸的图像，或者难以辨认的人脸的图像）调用 [Face - Detect] API。 请注意每个模型返回的人脸数。
 

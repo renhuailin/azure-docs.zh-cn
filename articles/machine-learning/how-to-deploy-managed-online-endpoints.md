@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 05/13/2021
 ms.topic: how-to
 ms.custom: how-to
-ms.openlocfilehash: 8c14523d1d566086eff73693d6500947ccda7ba4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 85b587dcaed162a0372f03240f9c4cb33d7507c1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382496"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969055"
 ---
 # <a name="deploy-and-score-a-machine-learning-model-with-a-managed-online-endpoint-preview"></a>使用托管联机终结点（预览版）部署机器学习模型并为其评分
 
@@ -86,10 +86,10 @@ export ENDPOINT_NAME=YOUR_ENDPOINT_NAME
 | $schema    | [可选] YAML 架构。 可以在浏览器中查看上述示例中的架构，以查看 YAML 文件的所有可用选项。|
 | name       | 终结点的名称。 在 Azure 区域级别需是唯一的。|
 | traffic | 从终结点转移到每个部署的流量百分比。 流量值的总和需是 100 |
-| auth_mode | 使用 `key` 可执行基于密钥的身份验证，使用 `aml_token` 可执行基于 Azure 机器学习令牌的身份验证。 `key` 不会过期，但 `aml_token` 会过期。 使用 `az ml endpoint list-keys` 命令获取最新的令牌。 |
+| auth_mode | 使用 `key` 可执行基于密钥的身份验证，使用 `aml_token` 可执行基于 Azure 机器学习令牌的身份验证。 `key` 不会过期，但 `aml_token` 会过期。 使用 `az ml endpoint get-credentials` 命令获取最新的令牌。 |
 | deployments | 包含要在终结点中创建的部署的列表。 在本例中，只有一个名为 `blue` 的部署。 有关多个部署的详细信息，请参阅[联机终结点的安全推出（预览版）](how-to-safely-rollout-managed-endpoints.md)|
 
-`deployment` 的特性：
+`deployments` 的特性：
 
 | 密钥 | 说明 |
 | --- | --- |
@@ -102,6 +102,8 @@ export ENDPOINT_NAME=YOUR_ENDPOINT_NAME
 | scale_settings.scale_type | 目前，此值必须是 `manual`。 若要在创建终结点和部署后进行纵向扩展或缩减，请更新 YAML 中的 `instance_count` 并运行命令 `az ml endpoint update -n $ENDPOINT_NAME --file <yaml filepath>`。|
 | scale_settings.instance_count | 部署中的实例数。 请根据预期的工作负载确定值。 为实现高可用性，Microsoft 建议将此值至少设置为 `3`。 |
 
+有关 YAML 架构的详细信息，请参阅[联机终结点 YAML 参考](reference-online-endpoint-yaml.md)文档。
+
 > [!Note]
 > 若要使用Azure Kubernetes 服务 (AKS) 而不是托管终结点作为计算目标，请运行以下命令：
 > 1. [使用 Azure 机器学习工作室](how-to-create-attach-compute-studio.md#whats-a-compute-target)创建 AKS 群集并将其作为计算目标附加到 Azure 机器学习工作区
@@ -110,7 +112,7 @@ export ENDPOINT_NAME=YOUR_ENDPOINT_NAME
 
 ### <a name="registering-your-model-and-environment-separately"></a>单独注册模型和环境
 
- 在此示例中，我们将指定要从中上传文件的内联模型和环境属性：`name`、`version` 和 `local_path`。 在幕后，CLI 会上传文件，并自动注册模型和环境。 适用于生产环境的最佳做法是单独注册模型和环境，并在 YAML 中指定已注册的名称和版本。 格式为 `model:azureml:my-model:1` 或 `environment:azureml:my-env:1`。
+ 在此示例中，我们将指定要从中上传文件的内联模型和环境属性：`name`、`version` 和 `local_path`。 在幕后，CLI 会上传文件，并自动注册模型和环境。 适用于生产环境的最佳做法是单独注册模型和环境，并在 YAML 中指定已注册的名称和版本。 格式为 `model: azureml:my-model:1` 或 `environment: azureml:my-env:1`。
 
  若要执行注册，可以将 `model` 和 `environment` 的 YAML 定义提取到单独的 YAML 文件中，并使用命令 `az ml model create` 和 `az ml environment create`。 若要详细了解这些命令，请运行 `az ml model create -h` 和 `az ml environment create -h`。
 
@@ -127,7 +129,7 @@ export ENDPOINT_NAME=YOUR_ENDPOINT_NAME
 ## <a name="understand-the-scoring-script"></a>了解评分脚本
 
 > [!Tip]
-> 托管联机终结点的评分脚本格式与早期版本的 CLI 和 Python SDK 中使用的格式相同
+> 托管联机终结点的评分脚本格式与早期版本的 CLI 和 Python SDK 中使用的格式相同。
 
 如前面的 YAML 中所述，`code_configuration.scoring_script` 必须有一个 `init()` 函数和一个 `run()` 函数。 此示例使用该 [score.py 文件](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/model-1/onlinescoring/score.py)。 初始化/启动容器时，将调用函数 `init()`。 此初始化通常在创建或更新部署后立即发生。 在此处编写逻辑以执行全局初始化操作，例如在内存中缓存模型（如本示例中所执行的那样）。 每次调用终结点时，都将调用 `run()` 函数，该函数应执行实际的评分/预测。 在该示例中，我们将从 JSON 输入提取数据，调用 `scikit-learn` 模型的 `predict()` 方法，并返回结果。
 
@@ -137,13 +139,12 @@ export ENDPOINT_NAME=YOUR_ENDPOINT_NAME
 
 > [!Note]
 > * 若要在本地部署，必须已安装 [Docker 引擎](https://docs.docker.com/engine/install/)
-> * Docker 引擎必须正在运行。 一般情况下，启动系统时会启动引擎，如果它不启动，可以[参阅此文进行故障排除](https://docs.docker.com/config/daemon/#start-the-daemon-manually)
+> * Docker 引擎必须正在运行。 一般情况下，启动系统时会启动引擎。 如果它不启动，可以[参阅此文进行故障排除](https://docs.docker.com/config/daemon/#start-the-daemon-manually)。
 
 > [!Important]
 > 在本地部署终结点的目的是在部署到 Azure 之前验证和调试代码与配置。 本地部署具有以下限制：
 > - 本地终结点不支持流量规则、身份验证、缩放设置或探测设置。 
-> - 本地终结点仅支持每个终结点一个部署。
-> - 目前，本地部署需要模型和环境的内联规范（如示例 YAML 中所示）。 也就是说，在本地部署中，不能使用对 Azure 机器学习工作区中已注册的模型或环境的引用。 
+> - 本地终结点仅支持每个终结点一个部署。 也就是说，在本地部署中，不能使用对 Azure 机器学习工作区中已注册的模型或环境的引用。 
 
 ### <a name="deploy-the-model-locally"></a>在本地部署模型
 
@@ -190,9 +191,9 @@ az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
 
 若要将 YAML 配置部署到云，请运行以下命令：
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint.sh" ID="deploy" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="deploy" :::
 
-此项部署可能需要大约 8-14 分钟，具体取决于是否是首次生成基础环境/映像。 以后使用同一环境进行部署将更快完成。
+此项部署最多可能需要约 15 分钟，具体取决于是否是首次生成基础环境/映像。 以后使用同一环境进行部署将更快完成。
 
 > [!Tip]
 > 如果你不希望阻塞 CLI 控制台，可以将 `--no-wait` 标志添加到命令中。 但是，这会停止以交互方式显示部署状态。
@@ -204,7 +205,7 @@ az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
 
 对于终结点和部署，`show` 命令均包含 `provisioning_status`：
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint.sh" ID="get_status" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_status" :::
 
 可以使用 `list` 命令以表格格式列出工作区中的所有终结点：
 
@@ -216,9 +217,7 @@ az ml endpoint list --output table
 
 在日志中检查模型是否成功部署：
 
-```azurecli
-az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_logs" :::
 
 默认情况下，日志是从推理服务器拉取的。 如果你要查看存储初始化表达式（用于将模型和代码等资产装载到容器）的日志，请添加标志 `--container storage-initializer`。
 
@@ -226,13 +225,13 @@ az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
 
 可以使用 `invoke` 命令或你选择的 REST 客户端来调用终结点并为一些数据评分： 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint.sh" ID="test_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint" :::
 
 可以再次使用前面所示的 `get-logs` 命令来查看调用日志。
 
 若要使用 REST 客户端，需要 `scoring_uri` 和身份验证密钥/令牌。 `show` 命令的输出中提供了 `scoring_uri`：
  
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint.sh" ID="get_scoring_uri" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_scoring_uri" :::
 
 请注意我们如何使用 `--query` 来筛选特性，以便仅显示所需的特性。 可以在[查询 Azure CLI 命令输出](/cli/azure/query-azure-cli)中详细了解 `--query`。
 
@@ -284,7 +283,7 @@ az ml endpoint delete -n $ENDPOINT_NAME --deployment blue
 
 ### <a name="optional-integrate-with-log-analytics"></a>[可选] 与 Log Analytics 集成
 
-`get-logs` 命令只提供自动选择的实例最近发出的几百行日志。 但是，Log Analytics 提供一种用于持久存储和分析日志的方式。 首先，请按照[在 Azure 门户中创建 Log Analytics 工作区](/azure/azure-monitor/logs/quick-create-workspace#create-a-workspace)中的步骤创建一个 Log Analytics 工作区。
+`get-logs` 命令只提供自动选择的实例最近发出的几百行日志。 但是，Log Analytics 提供一种用于持久存储和分析日志的方式。 首先，请按照[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md#create-a-workspace)中的步骤创建一个 Log Analytics 工作区。
 
 然后在 Azure 门户中执行以下操作：
 
@@ -306,9 +305,9 @@ az ml endpoint delete -n $ENDPOINT_NAME --deployment blue
 
 如果你将来不再使用该部署，应使用以下命令将其删除（这会删除终结点和所有基础部署）：
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
 
 ## <a name="next-steps"></a>后续步骤
 
-- [联机终结点的安全推出（预览版）](how-to-safely-rollout-managed-endpoints.md)|
+- [联机终结点的安全推出（预览版）](how-to-safely-rollout-managed-endpoints.md)
 - [排查托管联机终结点部署问题](how-to-troubleshoot-managed-online-endpoints.md)

@@ -1,52 +1,85 @@
 ---
 title: 认知服务：文档中的新增内容
-description: 2020 年 2 月 1 日 - 2020 年 2 月 28 日认知服务文档中的新增内容。
+description: 2021 年 5 月 1 日 - 2021 年 5 月 31 日认知服务文档中的新增内容。
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 03/08/2021
-ms.openlocfilehash: 75efcbd5a037729570da6912d7929951aa5b73e0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/14/2021
+ms.openlocfilehash: f8a9706fac53ad5ea44a53f44317b18956f57504
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376145"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078862"
 ---
-# <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>认知服务文档：2021 年 2 月 1 日 - 2021 年 2 月 28 日的新增内容
+# <a name="cognitive-services-docs-whats-new-for-may-1-2021---may-31-2021"></a>认知服务文档：2021 年 5 月 1 日 - 2021 年 5 月 31 日的新增内容
 
-欢迎阅读 2021 年 2 月 1 日 - 2021 年 2 月 28 日认知服务文档中的新增内容。 本文列出了 7 月份对文档进行的一些重大更改。
-
-## <a name="cognitive-services"></a>认知服务
-
-### <a name="new-articles"></a>新文章
-
-- [用于 Azure 认知服务的 Azure Policy 合规性控制措施](security-controls-policy.md)
+欢迎阅读 2021 年 5 月 1 日 - 2021 年 5 月 31 日认知服务文档中的新增内容。 本文列出了 7 月份对文档进行的一些重大更改。
 
 ## <a name="containers"></a>容器
 
 ### <a name="new-articles"></a>新文章
 
-- [Azure 认知服务容器常见问题解答 (FAQ)](./containers/container-faq.yml)
+- [安装并运行翻译器容器](translator/containers/translator-how-to-install-container.md)
+- [配置翻译器 Docker 容器](translator/containers/translator-container-configuration.md)
+- [容器：翻译器翻译方法](translator/containers/translator-container-supported-parameters.md)
+
+
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [Azure 认知服务容器映像标记和发行说明](./containers/container-image-tags.md)
+- [Azure 认知服务容器映像标记和发行说明](/azure/cognitive-services/containers/container-image-tags.md)
 
 ## <a name="form-recognizer"></a>表单识别器
 
+### <a name="new-articles"></a>新文章
+
+- [参考：Azure 表单识别器客户端库 v3.0.0 和 REST API v2.0](/azure/cognitive-services/form-recognizer/api-v2-0/reference-sdk-api-v2-0.md)
+
 ### <a name="updated-articles"></a>更新的文章
 
-- [部署示例标记工具](./form-recognizer/deploy-label-tool.md)
-- [什么是表单识别器？](./form-recognizer/overview.md)
-- [使用示例标记工具通过标签来训练表单识别器模型](./form-recognizer/label-tool.md)
+- [表单识别器预生成的名片模型](/azure/cognitive-services/form-recognizer/concept-business-cards.md)
+- [快速入门：开始使用客户端库 SDK 或 REST API](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
+- [表单识别器的新增功能](/azure/cognitive-services/form-recognizer/whats-new.md)
+- [表单识别器登陆页](/azure/cognitive-services/form-recognizer/form-recognizer.md)
+
+## <a name="translator"></a>转换器
+
+### <a name="new-articles"></a>新文章
+
+- [常见问题解答 - 翻译器 API](translator/translator-faq.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+#### <a name="document-translation-is-now-ga"></a>文档翻译功能现已正式发布
+- [文档翻译入门](translator/document-translation/get-started-with-document-translation.md)
+- 全部 9 个参考页均已更新，从 REST API 终结点中删除预览参数。
+## <a name="personalizer"></a>个性化体验创建服务
+
+### <a name="updated-articles"></a>更新的文章
+
+- [个性化体验创建服务的新增功能](/azure/cognitive-services/personalizer/whats-new.md)
 
 ## <a name="text-analytics"></a>文本分析
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [文本分析 API v3 语言支持](./text-analytics/language-support.md)
-- [如何调用文本分析 REST API](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
+- [教程：将 Power BI 与文本分析认知服务集成](/azure/cognitive-services/text-analytics/tutorials/tutorial-power-bi-key-phrases.md)
+- [使用文本分析和 Power Automate 在 Excel 中提取信息](/azure/cognitive-services/text-analytics/tutorials/extract-excel-information.md)
+- [如何调用文本分析 REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
+- [如何在文本分析中使用命名实体识别](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [文本分析 API 中有哪些新功能？](/azure/cognitive-services/text-analytics/whats-new.md)
+
+## <a name="community-contributors"></a>社区参与者
+
+在此期间，下列人员为认知服务文档贡献了内容。 谢谢！ 请访问[登陆页面中的新增内容](index.yml)中“参与”下的链接，了解如何参与。
+
+- [enzocanoo](https://github.com/enzocanoo) - Enzo Cano (2)
+- [hyoshioka0128](https://github.com/hyoshioka0128) - Hiroshi Yoshioka (2)
+- [sassdawe](https://github.com/sassdawe) - DavidSass (1)
+- [SzymonSel](https://github.com/SzymonSel) - Szymon Seliga (1)
+- [thomash0815](https://github.com/thomash0815) (1)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 05/20/2021
 ms.author: banders
-ms.openlocfilehash: 4f7179a5ad35b4d3ca9a92119fb7b492e2aff779
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: b4a4bd73672b36e8301d33618701a5d6b43926a5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122490"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474866"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>开始使用更新的 Azure 计费帐户
 
@@ -115,7 +115,7 @@ ms.locfileid: "106122490"
 
 **迁移后首月的账单**
 
-在你更新帐户的那一天，将最终确定现有的未结费用，你将在平时收到账单的那一天收到这些费用的账单。 例如，John 有两个 Azure 订阅：Azure 订阅 1 的计费周期是从当月 5 日到下月 4 日，Azure 订阅 2 的计费周期是从当月 10 日到下月 9 日。 John 一般在每月 5 日收到这两个 Azure 订阅的账单。 现在，如果 John 的帐户在 4 月 4 日进行了更新，则 Azure 帐户 1 的费用将为 3 月 5 日至 4 月 4 日的费用，Azure 订阅 2 的费用将为 3 月 10 日到 4 月 4 日的费用。 John 将在每月 5 日收到两张账单，每个订阅各一张。 帐户更新后，John 的计费周期将基于日历月，并将包含从日历月开始到该日历月结束时产生的所有费用。  每月 9 日提供有关上一个日历月的费用账单。 因此，在上例中，John 还将收到一张计费周期为 5 月 5 日到 4 月 30 日的账单。 
+在你更新帐户的那一天，将最终确定现有的未结费用，你将在平时收到账单的那一天收到这些费用的账单。 例如，John 有两个 Azure 订阅：Azure 订阅 1 的计费周期是从当月 5 日到下月 4 日，Azure 订阅 2 的计费周期是从当月 10 日到下月 9 日。 John 一般在每月 5 日收到这两个 Azure 订阅的账单。 现在，如果 John 的帐户在 4 月 4 日进行了更新，则 Azure 帐户 1 的费用将为 3 月 5 日至 4 月 4 日的费用，Azure 订阅 2 的费用将为 3 月 10 日到 4 月 4 日的费用。 John 将在每月 5 日收到两张账单，每个订阅各一张。 帐户更新后，John 的计费周期将基于日历月，并将包含从日历月开始到该日历月结束时产生的所有费用。 每月头几日可查看有关上一个日历月的费用账单。 因此，在上例中，John 将在 5 月初收到另一张帐单，计费周期为 4 月 5 日至 4 月 30 日。
 
 
 **新的计费和成本管理 API**

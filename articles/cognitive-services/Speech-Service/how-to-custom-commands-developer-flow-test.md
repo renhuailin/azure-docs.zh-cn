@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c0bd21f55fee4d8487826deae23093ede293c8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d97ab241120ddc4c8e7434591b866312ea7708ae
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95021807"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890107"
 ---
 # <a name="test-your-custom-commands-application"></a>测试自定义命令应用程序
 
@@ -40,8 +40,17 @@ Windows 语音助理客户端是 C# 中的一种 Windows Presentation Foundation
 > [!div class="mx-imgBorder"]
 > ![WVAC - 创建配置文件](media/custom-commands/conversation.png)
 
-## <a name="test-with-speech-sdk-enabled-client-applications"></a>使用支持语音 SDK 的客户端应用程序进行测试 
-语音软件开发工具包 (SDK) 公开了许多语音服务功能，这使得你能够开发支持语音的应用程序。 该工具包还可以在许多编程语言中和所有平台中使用。
+## <a name="test-programatically-with-the-cognitive-services-voice-assistant-test-tool"></a>通过认知服务语音助理测试工具以编程方式进行测试
+
+语音助理测试工具是一种可配置的 .NET Core C# 控制台应用程序，用于 Microsoft 语音助理的端到端功能回归测试。 
+
+该工具可作为控制台命令手动运行，也可作为 Azure DevOps CI/CD 管道的一部分自动运行，来防止机器人出现回归。
+
+若要了解如何设置该工具，请参阅[语音助理测试工具](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/main/clients/csharp-dotnet-core/voice-assistant-test)。
+
+## <a name="test-with-speech-sdk-enabled-client-applications"></a>使用支持语音 SDK 的客户端应用程序进行测试
+
+语音软件开发工具包 (SDK) 公开了许多语音服务功能，这使得你能够开发支持语音的应用程序。 它可在大多数平台和多种编程语言中使用。
 
 使用语音 SDK 设置通用 Windows 平台 (UWP) 客户端应用程序，并将其与自定义命令应用程序集成：  
 - [操作说明：使用语音 SDK 与客户端应用程序集成](./how-to-custom-commands-setup-speech-sdk.md)

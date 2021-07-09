@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 713a829ee8c7a3d036bc82f6f509e5c79dfb71aa
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: f99309302c594d407a0d65d0ab61a8ece860695b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205766"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082318"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的孪生模型
 
@@ -45,30 +45,59 @@ DTDL 基于 JSON-LD，独立于编程语言。 DTDL 并非专用于 Azure 数字
 
 此外，Azure 数字孪生不关注属性或关系中的 `writable` 特性。 尽管可以根据 DTDL 规范设置此值，但 Azure 数字孪生不会使用此值。 这些值始终被视为可供对 Azure 数字孪生服务拥有常规写入权限的外部客户端写入。
 
-## <a name="elements-of-a-model"></a>模型的元素
+## <a name="model-overview"></a>模型概述
+
+### <a name="elements-of-a-model"></a>模型的元素
 
 在模型定义中，顶级代码项是一个 **接口**。 这将封装整个模型，并在接口中定义模型的其余部分。 
 
 一个 DTDL 模型接口可以包含以下每种字段的零个、一个或多个字段：
-* **属性** - 属性是表示实体状态的数据字段（类似于许多面向对象的编程语言中的属性）。 属性具有后备存储，随时可供读取。
-* **遥测** - 遥测字段表示度量结果或事件，通常用于描述设备传感器读数。 与属性不同，遥测数据不会存储在数字孪生上；它是一系列有时间限制的数据事件，在这些事件发生时就需要对其进行处理。 有关属性和遥测之间的差异的详细信息，请参阅下面的属性与遥测部分。
+* **属性** - 属性是表示实体状态的数据字段（类似于许多面向对象的编程语言中的属性）。 属性具有后备存储，随时可供读取。 有关详细信息，请参阅下面的[属性和遥测](#properties-and-telemetry)。
+* **遥测** - 遥测字段表示度量结果或事件，通常用于描述设备传感器读数。 与属性不同，遥测数据不会存储在数字孪生上；它是一系列有时间限制的数据事件，在这些事件发生时就需要对其进行处理。 有关详细信息，请参阅下面的[属性和遥测](#properties-and-telemetry)。
+* **关系** - 使用关系可以表示一个数字孪生与其他数字孪生的关连方式。 关系可以表示不同的语义含义，例如 contains ("floor contains room")、cools ("hvac cools room")、isBilledTo ("compressor is billed to user")，等等。解决方案可以使用关系来提供相互关联的实体的图。 关系还可具有其自己的属性。 有关详细信息，请参阅下面的[关系](#relationships)。
 * **组件** - 如果需要，可以使用组件生成你的模型接口作为其他接口的程序集。 组件的一个示例是 *frontCamera* 接口（和另一个组件接口 *backCamera*），在定义 *phone* 的模型时可以使用这些接口。 必须先定义 *frontCamera* 的接口，就像它是其自己的模型一样，然后在定义 *Phone* 时可以引用该接口。
 
-    使用组件可以描述这样的对象：它属于解决方案不可或缺的一部分，但不需要单独的标识，且不需要在孪生图中单独创建、删除或重新排列。 如果你希望实体在孪生图中独立存在，请将其表示为通过关系连接的不同模型的单独数字孪生（参阅下一条带项目符号的要点）。
+    使用组件可以描述这样的对象：它属于解决方案不可或缺的一部分，但不需要单独的标识，且不需要在孪生图中单独创建、删除或重新排列。 如果你希望实体在孪生体图中独立存在，请将其表示为通过关系连接的不同模型的单独数字孪生体。
     
     >[!TIP] 
     >组件还可用于进行组织，以便在模型接口中将相关属性集分组到一起。 在这种情况下，可以将每个组件视为该接口中的命名空间或“文件夹”。
-* **关系** - 使用关系可以表示一个数字孪生与其他数字孪生的关连方式。 关系可以表示不同的语义含义，例如 contains ("floor contains room")、cools ("hvac cools room")、isBilledTo ("compressor is billed to user")，等等。解决方案可以使用关系来提供相互关联的实体的图。 关系还可具有其自己的[属性](#properties-of-relationships)。
+
+    有关详细信息，请参阅下面的[组件](#components)。
+
 
 > [!NOTE]
 > [DTDL 规范](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)还定义了 **命令**。命令是可以在数字孪生上执行的方法（例如重置命令，或者打开或关闭风扇的命令）。 但是，Azure 数字孪生中目前不支持命令。
 
-### <a name="properties-vs-telemetry"></a>属性与遥测
+### <a name="model-code"></a>模型代码
 
-下面是有关区分 Azure 数字孪生中 DTDL **属性** 和 **遥测** 字段的一些附加指导。
+可以在任何文本编辑器中编写孪生类型模型。 DTDL 语言遵循 JSON 语法，因此你应使用扩展名 .json 存储模型。 使用 JSON 扩展名可使许多编程文本编辑器在你的 DTDL 文档中提供基本语法检查和突出显示。 还有一个适用于 [Visual Studio Code](https://code.visualstudio.com/) 的 [DTDL 扩展名](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)。
 
-Azure 数字孪生模型的属性和遥测的区别如下：
-* **属性** 预期具有后备存储。 这意味着，你可以随时读取属性并检索其值。 如果属性是可写的，则你还可以在该属性中存储值。  
+模型的字段为：
+
+| 字段 | 说明 |
+| --- | --- |
+| `@id` | 模型的标识符。 必须采用 `dtmi:<domain>:<unique-model-identifier>;<model-version-number>` 格式。 |
+| `@type` | 标识所要描述的信息类型。 对于接口，类型为 *Interface*。 |
+| `@context` | 设置 JSON 文档的[上下文](https://niem.github.io/json/reference/json-ld/context/)。 模型应使用 `dtmi:dtdl:context;2`。 |
+| `displayName` | [可选] 允许根据需要指定模型的易记名称。 |
+| `contents` | 所有剩余的接口数据将作为特性定义数组放在此处。 每个特性必须提供 `@type`（属性、遥测、命令、关系或组件），用于标识它所描述的接口信息种类，然后必须提供一组属性用于定义实际特性（例如，提供 `name` 和 `schema` 来定义某个属性）     。 |
+
+#### <a name="example-model"></a>示例模型
+
+本部分包含一个以 DTDL 接口形式编写的基本模型示例。 
+
+此模型描述了一个住宅，其中每个 ID 都有一个属性。 住宅模型还定义了与楼层模型的关系，用于指示住宅孪生体连接到了特定的楼层孪生体。
+
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/basic-home-example/IHome.json":::
+
+## <a name="properties-and-telemetry"></a>属性和遥测
+
+本部分详细介绍了 DTDL 模型中的属性和遥测 。
+
+### <a name="difference-between-properties-and-telemetry"></a>属性和遥测之间的差异
+
+下面是有关在概念上区分 Azure 数字孪生中 DTDL 属性和遥测的一些附加指导 。
+* **属性** 预期具有后备存储。 这意味着，你可以随时读取属性并检索其值。 如果属性是可写的，则你还可在该属性中存储值。  
 * **遥测** 更像是事件流；它是一组生存期较短的数据消息。 如果不设置侦听事件以及该事件发生时要执行的操作，则以后不会该跟踪事件。 以后你无法返回并读取该事件。 
   - 在 C# 术语中，遥测类似于 C# 事件。 
   - 在 IoT 术语中，遥测通常是设备发送的单个度量结果。
@@ -77,73 +106,118 @@ Azure 数字孪生模型的属性和遥测的区别如下：
 
 因此，在 Azure 数字孪生中设计模型时，你在大多数情况下可能会使用 **属性** 来为孪生建模。 这样你就可以获得后备存储，并可以读取和查询数据字段。
 
-遥测和属性通常协同工作来处理从设备流入的数据。 由于流入 Azure 数字孪生的所有数据都是通过 [API](how-to-use-apis-sdks.md) 传输的，因此，你通常会使用 ingress 函数读取来自设备的遥测或属性事件，并在 Azure 数字孪生的响应中设置一个属性。 
+遥测和属性通常协同工作来处理从设备流入的数据。 由于流入 Azure 数字孪生的所有数据都是通过 [API](concepts-apis-sdks.md) 传输的，因此，你通常会使用 ingress 函数读取来自设备的遥测或属性事件，并在 Azure 数字孪生的响应中设置一个属性。 
 
 你还可以通过 Azure 数字孪生 API 发布遥测事件。 与其他遥测一样，该事件是一个生存期较短的事件，需要通过一个侦听器对其进行处理。
 
-#### <a name="properties-of-relationships"></a>关系的属性
+### <a name="schema"></a>架构
+
+根据 DTDL，属性和遥测特性的架构可以是标准基元类型（`integer`、`double`、`string` 和 `Boolean`），也可以是 `DateTime` 和 `Duration` 等其他类型 。 
+
+除基元类型外，属性和遥测字段还可以使用以下[复杂类型](#complex-object-type-example)：
+* `Object`
+* `Map`
+* `Enum`
+* （仅限遥测）`Array`
+
+它们也可以是[语义类型](#semantic-type-example)，这样便可批注带单位的值。
+
+### <a name="basic-property-and-telemetry-examples"></a>基本属性和遥测示例
+
+下面是 DTDL 模型中属性的基本示例。 此示例显示住宅的 ID 属性。
+
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/basic-home-example/IHome.json" highlight="7-11":::
+
+下面是 DTDL 模型中“遥测”字段的基本示例。 此示例显示传感器上的温度遥测。
+
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/basic-home-example/ISensor.json" highlight="7-11":::
+
+### <a name="complex-object-type-example"></a>复杂（对象）类型示例
+
+属性和遥测可以是复杂类型，包括 `Object` 类型。
+
+下面的示例演示住宅模型的另一个版本，其地址具有一个属性。 `address` 是一个对象，有其自己的街道、城市、省/市/自治区和邮政编码字段。
+
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/advanced-home-example/IHome.json" highlight="8-31":::
+
+### <a name="semantic-type-example"></a>语义类型示例
+
+语义类型可表示带有单位的值。 可使用 DTDL 支持的任何语义类型来表示属性和遥测。 要详细了解 DTDL 中的语义类型以及支持的值，请参阅 [DTDL v2 规范中的语义类型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#semantic-types)。
+
+以下示例演示了一个传感器模型，该模型具有温度的语义类型遥测和湿度的语义类型属性。
+
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/advanced-home-example/ISensor.json" highlight="7-18":::
+
+## <a name="relationships"></a>关系
+
+本部分详细介绍 DTDL 模型中的关系。
+
+### <a name="basic-relationship-example"></a>基本关系示例
+
+下面是 DTDL 模型中关系的基本示例。 此示例展示了住宅模型上的关系，通过这种关系，住宅模型可以连接到楼层模型。
+
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/basic-home-example/IHome.json" highlight="12-18":::
+
+### <a name="targeted-and-non-targeted-relationships"></a>目标和非目标关系
+
+可定义含目标或不含目标的关系。 目标指定关系可以涉及的孪生体类型。 例如，可以包含一个目标，指定住宅模型只能与楼层孪生体之间具有 rel_has_floors 关系。 
+
+有时最好定义不含特定目标的关系，以便关系可以连接到许多不同类型的孪生体。
+
+下面是 DTDL 模型上不含目标的关系示例。 在此例中，关系用于定义房间可能具有哪些传感器，关系可以连接到任意类型。
+
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/advanced-home-example/IRoom.json" range="2-27" highlight="20-25":::
+
+### <a name="properties-of-relationships"></a>关系的属性
 
 DTDL 还允许关系具有其自己的属性。 在 DTDL 模型中定义关系时，关系可以有它自己的 `properties` 字段，你可以在其中定义自定义属性来描述特定于关系的状态。
 
+下面的示例演示了住宅模型的另一个版本，其中 `rel_has_floors` 关系具有一个属性，用于表示相关楼层上次被占用的时间。
+
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/advanced-home-example/IHome.json" highlight="39-45":::
+
+## <a name="components"></a>组件
+
+本部分详细介绍 DTDL 模型中的组件。
+
+### <a name="basic-component-example"></a>基本组件示例
+
+下面是 DTDL 模型中组件的基本示例。 此示例演示使用恒温器组件的房间模型。
+
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/advanced-home-example/IRoom.json" highlight="15-19, 28-41":::
+
+> [!NOTE]
+> 请注意，组件接口（恒温器组件）是在使用该接口的接口（房间）所在的同一数组中定义的。 必须以这种方式在 API 调用中定义组件才能找到该接口。
+
 ## <a name="model-inheritance"></a>模型继承
 
-有时你可能想要进一步将模型专用化。 例如，使用一个泛型模型 *Room* 以及专用化变体 *ConferenceRoom* 和 *Gym* 可能会很有用。 为了表达专用化，DTDL 支持继承：接口可以从一个或多个其他接口继承。 
+有时你可能想要进一步将模型专用化。 例如，使用一个泛型模型 Room 以及专用化变体 ConferenceRoom 和 Gym 可能会很有用。 为了表示专用化，DTDL 支持继承。 接口可从一个或多个接口继承。 通过向模型添加 `extends` 字段即可实现。
 
-以下示例将前面的 DTDL 示例中的 *Planet* 模型重新假设为更大 *CelestialBody* 模型的子类型。 首先定义“父”模型，然后，“子”模型将使用字段 `extends` 构建在“父”模型的基础之上。
+`extends` 节是接口名称或接口名称的数组（允许扩展接口以根据需要从多个父模型继承）。 单个父模型可以充当多个扩展接口的基础模型。
 
-:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
+以下示例将前面 DTDL 示例中的住宅模型重新假设为更大的“核心”模型的子类型。 首先定义父模型（核心），然后使用 `extends` 在父模型的基础之上构建子模型（住宅）。
 
-在此示例中，*CelestialBody* 向 *Planet* 提供名称、质量和温度。 `extends` 节是接口名称或接口名称的数组（允许扩展接口以根据需要从多个父模型继承）。
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/advanced-home-example/ICore.json":::
+
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/advanced-home-example/IHome.json" range="1-8" highlight="6":::
+
+在这种情况下，核心模型向住宅模型提供 ID 和名称。 其他模型也可以扩展核心模型以同样获取这些属性。 下面是扩展同一父接口的房间模型：
+
+:::code language="json" source="~/digital-twins-docs-samples-getting-started/models/advanced-home-example/IRoom.json" range="2-9" highlight="6":::
 
 应用继承后，扩展接口会公开整个继承链中的所有属性。
 
 扩展接口不能更改父接口的任何定义；只能在父接口中添加定义。 此外，扩展接口不能重新定义已在该接口的父接口中定义的功能（即使定义的功能相同）。 例如，如果父接口定义了 `double` 属性 *mass*，则扩展接口不能包含 *mass* 的声明，即使该声明也是 `double`。
 
-## <a name="model-code"></a>模型代码
+## <a name="modeling-best-practices"></a>建模的最佳做法
 
-可以在任何文本编辑器中编写孪生类型模型。 DTDL 语言遵循 JSON 语法，因此你应使用扩展名 *.json* 存储模型。 使用 JSON 扩展名可使许多编程文本编辑器在你的 DTDL 文档中提供基本语法检查和突出显示。 还有一个适用于 [Visual Studio Code](https://code.visualstudio.com/) 的 [DTDL 扩展名](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)。
-
-### <a name="possible-schemas"></a>可能的架构
-
-根据 DTDL，属性和遥测特性的架构可以是标准基元类型（`integer`、`double`、`string` 和 `Boolean`），也可以是 `DateTime` 和 `Duration` 等其他类型。  
-
-除基元类型外，属性和遥测字段还可以使用以下复杂类型： 
-* `Object`
-* `Map`
-* `Enum`
-
-遥测字段还支持 `Array`。
-
-### <a name="example-model"></a>示例模型
-
-本部分包含一个以 DTDL 接口形式编写的典型模型示例。 该模型描述 **行星**，每个行星具有名称、质量和温度。
- 
-假设行星还可能与它们的卫星 **月球** 交互，并可能包含 **陨石坑**。 在以下示例中，`Planet` 模型通过引用两个外部模型（`Moon` 和 `Crater`）来表达与其他这些实体的连接。 以下示例代码中也定义了这些模型，但其代码非常简单，以免分散读者对主要 `Planet` 示例的注意力。
-
-:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Crater-Moon.json":::
-
-模型的字段为：
-
-| 字段 | 说明 |
-| --- | --- |
-| `@id` | 模型的标识符。 必须采用 `dtmi:<domain>:<unique model identifier>;<model version number>` 格式。 |
-| `@type` | 标识所要描述的信息类型。 对于接口，类型为 *Interface*。 |
-| `@context` | 设置 JSON 文档的[上下文](https://niem.github.io/json/reference/json-ld/context/)。 模型应使用 `dtmi:dtdl:context;2`。 |
-| `displayName` | [可选] 允许根据需要指定模型的易记名称。 |
-| `contents` | 所有剩余的接口数据将作为特性定义数组放在此处。 每个特性必须提供 `@type`（属性、遥测、命令、关系或组件）以标识它所描述的接口信息种类，然后必须提供一组属性用于定义实际特性（例如，提供 `name` 和 `schema` 来定义某个属性）。      |
-
-> [!NOTE]
-> 请注意，组件接口（本示例中为 *Crater*）是在使用该接口的接口 (*Planet*) 所在的同一数组中定义的。 必须以这种方式在 API 调用中定义组件才能找到该接口。
-
-## <a name="best-practices-for-designing-models"></a>有关设计模型的最佳做法
-
-在设计模型以反映环境中的实体时，提前考虑你的设计的[查询](concepts-query-language.md)影响。 你可能想要以一种可避免图遍历后生成较大结果集的方式设计属性。 你还可能想要为在单个查询中作为单级别关系解答的关系建模。
+在设计模型以反映环境中的实体时，提前考虑你的设计的[查询](concepts-query-language.md)影响。 你可能想要以一种可避免图遍历后生成较大结果集的方式设计属性。 我们还建议你将需要在单个查询中解答的关系建模为单层关系。
 
 ### <a name="validating-models"></a>验证模型
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="tools-for-models"></a>模型工具 
+## <a name="modeling-tools"></a>建模工具
 
 我们提供了多个示例来进一步方便你处理模型和本体。 这些示例位于以下存储库中：[数字孪生定义语言 (DTDL) 的工具](https://github.com/Azure/opendigitaltwins-tools)。
 
@@ -151,15 +225,11 @@ DTDL 还允许关系具有其自己的属性。 在 DTDL 模型中定义关系�
 
 ### <a name="model-uploader"></a>模型上传程序 
 
-**用于将模型上传到 Azure 数字孪生**
+完成创建、扩展或选择模型后，可以将其上传到 Azure 数字孪生实例，使其可在解决方案中使用。 可以根据操作指南：管理 DTDL 模型中所述，使用 [Azure 数字孪生 API](concepts-apis-sdks.md) 来执行此操作。
 
-完成创建、扩展或选择模型后，可以将其上传到 Azure 数字孪生实例，使其可在解决方案中使用。 可以根据操作指南：管理 DTDL 模型中所述，使用 [Azure 数字孪生 API](how-to-use-apis-sdks.md) 来执行此操作。
-
-但是，如果你要上传很多模型，或者这些模型存在很多相互依赖关系，导致各个模型的上传顺序变得复杂，那么，你可以使用此示例一次上传很多模型：[Azure 数字孪生模型上传程序](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader)。 按照示例附带的说明，配置并使用此项目将模型上传到你自己的实例中。
+但如果你要上传很多模型，或者这些模型存在很多相互依赖关系，导致各个模型的上传顺序变得复杂，那么，你可以使用 [Azure 数字孪生模型上传程序示例](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#uploadmodels)一次上传很多模型。 按照示例附带的说明，配置并使用此项目将模型上传到你自己的实例中。
 
 ### <a name="model-visualizer"></a>模型可视化工具 
-
-**用于将模型可视化**
 
 将模型上传到 Azure 数字孪生实例后，可以使用 [Azure 数字孪生模型可视化工具](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)查看 Azure 数字孪生实例中的模型，包括任何继承和模型关系。 此示例当前处于草稿状态。 我们鼓励数字孪生开发社区扩展该示例并为其贡献内容。 
 

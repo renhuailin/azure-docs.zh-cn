@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/28/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e45f6078bd2cd078202cbe30462614961cfa7404
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e03552bc3be1a4d124a46c437b60ac2d4e466940
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203642"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476764"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-original-version-2018"></a>新版 Azure 数字孪生是指什么？ 它与原始版本 (2018) 有何区别？
 
@@ -42,6 +42,6 @@ Azure 数字孪生的第一个公共预览版已于 2018 年 10 月发布。 虽
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在快速入门中深入研究如何使用当前版本：快速入门：浏览示例方案。
+* 在[快速入门：Azure Digital Twins Explorer 入门](quickstart-azure-digital-twins-explorer.md)深入了解如何使用最新版本。
 
 * 或者，通过概念：自定义模型，开始了解有关重要概念的信息。

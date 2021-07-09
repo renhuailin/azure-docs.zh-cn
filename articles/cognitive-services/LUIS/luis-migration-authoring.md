@@ -10,18 +10,18 @@ ms.custom: seodec18, contperf-fy21q2
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/14/2020
-ms.openlocfilehash: 54c0d8aa8ba17beb5a2f5a51c4a19795f767733a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 05/28/2021
+ms.openlocfilehash: cf40cea7e92cdb36f489943d5af2ef140bd92a9e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089428"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706900"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
 > [!IMPORTANT]
->  从 12 月 3 日开始，现有的 LUIS 用户必须完成迁移过程才能继续创作 LUIS 应用程序。
+>  自 2020 年 12 月 3 日起，现有的 LUIS 用户必须完成迁移过程才能继续创作 LUIS 应用程序。
 
 语言理解 (LUIS) 创作身份验证已从电子邮件帐户更改为 Azure 资源。 如果你尚未进行迁移，请使用本文来了解如何迁移你的帐户。  
 

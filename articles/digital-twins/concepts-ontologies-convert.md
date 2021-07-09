@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6d15df406399e49bff3d95cb90f5d8b908d09631
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ebe6a96c88d061138eb629f50aa37ea90fe40eb4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208016"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475872"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>将行业标准本体转换为适用于 Azure 数字孪生的 DTDL
 
@@ -45,13 +45,11 @@ ms.locfileid: "108208016"
 
 提供了一个示例应用程序，可将基于 RDF 的模型文件转换为供 Azure 数字孪生服务使用的 [DTDL（版本 2）](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 它已针对 [Brick](https://brickschema.org/ontology/) 架构进行了验证，且可以将其扩展以用于建筑行业中的其他架构（如[构建拓扑本体 (BOT)](https://w3c-lbd-cg.github.io/bot/)、[语义传感器网络](https://www.w3.org/TR/vocab-ssn/)或 [buildingSmart 行业基础类 (IFC)](https://technical.buildingsmart.org/standards/ifc/ifc-schema-specifications/)）。
 
-该示例是一个名为 RdfToDtdlConverter 的 .NET Core 命令行应用程序。
+该示例是一个[名为 RdfToDtdlConverter 的 .NET Core 命令行应用程序](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/)。
 
-可在此处获取该示例：RdfToDtdlConverter。 
+若要将代码下载到计算机，请在示例页上的标题下选择“浏览代码”按钮，转到该示例的 GitHub 存储库。 选择“代码”按钮，然后选择“下载 ZIP”，以将示例下载为名为 RdfToDtdlConverter-main.zip 的 .zip 文件 。 然后可以对该文件进行解压并浏览代码。
 
-若要将代码下载到计算机，请在示例页上的标题下选择“浏览代码”按钮，转到该示例的 GitHub 存储库。   选择“代码”按钮，然后选择“下载 ZIP”将示例下载为名为 RdfToDtdlConverter-main.zip 的 .ZIP 文件。 然后可以对该文件进行解压并浏览代码。
-
-:::image type="content" source="media/concepts-ontologies-convert/download-repo-zip.png" alt-text="GitHub 上 RdfToDtdlConverter 存储库的屏幕截图。选中了“代码”按钮，生成了一个小对话框，其中突出显示了“下载 ZIP”按钮。" lightbox="media/concepts-ontologies-convert/download-repo-zip.png":::
+:::image type="content" source="media/concepts-ontologies-convert/download-repo-zip.png" alt-text="GitHub 上 RdfToDtdlConverter 存储库的屏幕截图。选中了“代码”按钮，生成了一个对话框，其中突出显示了“下载 ZIP”按钮。" lightbox="media/concepts-ontologies-convert/download-repo-zip.png":::
 
 你可以使用此示例在上下文中查看转换模式，并将其用作自己的应用程序构建块，根据自己的特定需要执行模型转换。
 

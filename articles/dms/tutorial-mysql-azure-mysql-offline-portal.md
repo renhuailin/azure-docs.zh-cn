@@ -12,24 +12,24 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2021
-ms.openlocfilehash: d1a8cc9a615474685222d0339ec948401fb8cdff
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 45d9104c5669b3b0adef2c32757076097656ae87
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128003"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967892"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-offline-using-dms"></a>教程：使用 DMS 将 MySQL 脱机迁移到 Azure Database for MySQL
 
 可以使用 Azure 数据库迁移服务执行从本地 MySQL 实例到具有高速数据迁移功能的 [Azure Database for MySQL](../mysql/index.yml) 的一次性完整数据库迁移。 本教程介绍如何在 Azure 数据库迁移服务中使用脱机迁移活动将示例数据库从 MySQL 5.7 的本地实例迁移到 Azure Database for MySQL (v5.7)。 虽然本文假设源为 MySQL 数据库实例，目标为 Azure Database for MySQL，但只需更改源服务器名称和凭据，本文即可用于在 Azure Database for MySQL 之间迁移。 此外，还支持从低版本的 MySQL 服务器（5.6 和更高版本）迁移到高版本。
 
 > [!IMPORTANT]
-> 对于联机迁移，可以将 [MyDumper/MyLoader](https://centminmod.com/mydumper.html) 之类的开源工具与[数据传入复制](/azure/mysql/concepts-data-in-replication)配合使用。 
+> 对于联机迁移，可以将 [MyDumper/MyLoader](https://centminmod.com/mydumper.html) 之类的开源工具与[数据传入复制](../mysql/concepts-data-in-replication.md)配合使用。 
 
 [!INCLUDE [preview features callout](../../includes/dms-boilerplate-preview.md)]
 
 > [!NOTE]
-> 有关此迁移体验的基于 PowerShell 的可编写脚本版本，请参阅[以可编写脚本的方式脱机迁移到 Azure Database for MySQL](https://docs.microsoft.com/azure/dms/migrate-mysql-to-azure-mysql-powershell)。
+> 有关此迁移体验的基于 PowerShell 的可编写脚本版本，请参阅[以可编写脚本的方式脱机迁移到 Azure Database for MySQL](./migrate-mysql-to-azure-mysql-powershell.md)。
 
 > [!NOTE]
 > 另外，支持 Amazon Relational Database Service (RDS) for MySQL 和 Amazon Aurora（基于 MySQL）作为源进行迁移。
@@ -50,6 +50,7 @@ ms.locfileid: "108128003"
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free)。
 * 具有 5.7 版本的本地 MySQL 数据库。 如果没有，请下载并安装 [MySQL 社区版](https://dev.mysql.com/downloads/mysql/) 5.7。
+* MySQL 脱机迁移仅在高级 DMS SKU 上受支持。
 * [在 Azure Database for MySQL 中创建一个实例](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md)。 有关如何使用 Workbench 应用程序连接和创建数据库的详细信息，请参阅[使用 MySQL Workbench 进行连接并查询数据](../mysql/connect-workbench.md)一文。 Azure Database for MySQL 的版本应不低于本地 MySQL 版本。 例如，MySQL 5.7 可以迁移到 Azure Database for MySQL 5.7，或升级到 8。 
 * 使用 Azure 资源管理器部署模型创建适合 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，它将使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](../virtual-network/index.yml)，尤其是提供了分步详细信息的快速入门文章。
 
@@ -157,7 +158,7 @@ GROUP BY SchemaName
   
 3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称。
 
-4. 选择定价层并移动到“网络”屏幕。 标准定价层和高级定价层均提供脱机迁移功能。
+4. 选择定价层并移动到“网络”屏幕。 脱机迁移功能仅在高级定价层上可用。
 
     有关成本和定价层的详细信息，请参阅[价格页](https://aka.ms/dms-pricing)。
 

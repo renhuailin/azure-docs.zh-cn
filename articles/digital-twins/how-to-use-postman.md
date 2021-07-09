@@ -8,26 +8,26 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: cacf298fe5f8d6d36bfa6a963e3f3d9a2c996778
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 839ce4df4a79b34890a19d3beb470b77fef1f19d
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207728"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617649"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>如何使用 Postman 将请求发送到 Azure 数字孪生 API
 
-[Postman](https://www.getpostman.com/) 是一种 REST 测试工具，它在桌面和基于插件的 GUI 中提供关键 HTTP 请求功能。 你可用它来创建 HTTP 请求并将其提交到 [Azure 数字孪生 REST API](how-to-use-apis-sdks.md)。
+[Postman](https://www.getpostman.com/) 是一种 REST 测试工具，它在桌面和基于插件的 GUI 中提供关键 HTTP 请求功能。 你可用它来创建 HTTP 请求并将其提交到 [Azure 数字孪生 REST API](concepts-apis-sdks.md)。
 
 本文介绍如何通过以下步骤来配置 [Postman REST 客户端](https://www.getpostman.com/)以与 Azure 数字孪生 API 进行交互：
 
 1. 使用 Azure CLI 获取将用于在 Postman 中发出 API 请求的持有者令牌。
 1. 设置 Postman 集合并配置 Postman REST 客户端以使用持有者令牌进行身份验证。 设置集合时，你可以选择以下两种选项之一：
-    1. 导入预生成的 Azure 数字孪生 API 请求集合。
-    1. 从头开始创建自己的集合。
-1. 将请求添加到已配置的集合，并将其发送到 Azure 数字孪生 API。
+    1. [导入预生成的 Azure 数字孪生 API 请求集合](#import-collection-of-azure-digital-twins-apis)。
+    1. [从头开始创建自己的集合](#create-your-own-collection)。
+1. [将请求添加到已配置的集合](#add-an-individual-request)，并将其发送到 Azure 数字孪生 API。
 
-Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面 。 如需详细了解这些 API 集之间的差异，请参阅操作指南：使用 Azure 数字孪生 API 和 SDK。 本文包含这两个 API 集的信息。
+Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面 。 如需详细了解这些 API 集之间的差异，请参阅[概念：Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)。 本文包含这两个 API 集的信息。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +39,7 @@ Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面
 
 ### <a name="download-postman"></a>下载 Postman
 
-接下来，下载 Postman 客户端的桌面版本。 导航到 www.getpostman.com/apps，然后按照提示下载应用。
+接下来，[下载 Postman 客户端的桌面版本](https://www.getpostman.com/apps)。
 
 ## <a name="get-bearer-token"></a>获取持有者令牌
 
@@ -47,7 +47,7 @@ Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面
 
 可通过多种方式获取此令牌。 本文使用 [Azure CLI](/cli/azure/install-azure-cli) 登录到 Azure 帐户，并以这种方式获取令牌。
 
-如果[本地安装](/cli/azure/install-azure-cli)了 Azure CLI，则可以在计算机上启动命令提示符以运行以下命令。
+如果已[在本地安装 Azure CLI](/cli/azure/install-azure-cli)，可在计算机上启动命令提示符来运行以下命令。
 否则，可以在浏览器中打开 [Azure Cloud Shell](https://shell.azure.com) 窗口，并在其中运行命令。
 
 1. 首先，请通过运行以下命令来确保你已使用相应的凭据登录到 Azure：
@@ -56,9 +56,9 @@ Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面
     az login
     ```
 
-2. 接下来，使用 [az account get-access-token](/cli/azure/account#az_account_get_access_token) 命令获取具有 Azure 数字孪生服务访问权限的持有者令牌。 在此命令中，传入 Azure 数字孪生服务终结点的资源 ID，以获取可访问 Azure 数字孪生资源的访问令牌。 
+2. 接下来，使用 [az account get-access-token](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az_account_get_access_token) 命令获取具有 Azure 数字孪生服务访问权限的持有者令牌。 在此命令中，传入 Azure 数字孪生服务终结点的资源 ID，以获取可访问 Azure 数字孪生资源的访问令牌。 
 
-    令牌需要的上下文取决于使用的 API 集，因此请使用下面的选项卡在[数据平面](how-to-use-apis-sdks.md#overview-data-plane-apis)和[控制平面](how-to-use-apis-sdks.md#overview-control-plane-apis) API 之间进行选择。
+    令牌需要的上下文取决于使用的 API 集，因此请使用下面的选项卡在[数据平面](concepts-apis-sdks.md#overview-data-plane-apis)和[控制平面](concepts-apis-sdks.md#overview-control-plane-apis) API 之间进行选择。
 
     # <a name="data-plane"></a>[数据平面](#tab/data-plane)
     
@@ -168,11 +168,11 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 
 # <a name="data-plane"></a>[数据平面](#tab/data-plane)
 
-如果是在建立[数据平面](how-to-use-apis-sdks.md#overview-data-plane-apis)集合，可通过设置集合附带的某些变量让集合能够轻松地连接到 Azure 数字孪生资源。 集合中的许多请求需要相同的值（如 Azure 数字孪生实例的主机名）时，可将该值存储在一个适用于集合中每个请求的变量中。 Azure 数字孪生的两个可下载集合都附带预先创建的变量，可在集合级别对变量进行设置。
+如果是在建立[数据平面](concepts-apis-sdks.md#overview-data-plane-apis)集合，可通过设置集合附带的某些变量让集合能够轻松地连接到 Azure 数字孪生资源。 集合中的许多请求需要相同的值（如 Azure 数字孪生实例的主机名）时，可将该值存储在一个适用于集合中每个请求的变量中。 Azure 数字孪生的两个可下载集合都附带预先创建的变量，可在集合级别对变量进行设置。
 
 1. 还是在集合的编辑对话框中，移动到“Variables”选项卡。
 
-1. 使用先决条件部分中实例的主机名来设置相关变量的“CURRENT VALUE”字段。 选择“保存”。
+1. 使用[先决条件部分](#prerequisites)中实例的主机名来设置相关变量的“CURRENT VALUE”字段。 选择“保存”。
 
     :::image type="content" source="media/how-to-use-postman/postman-variables-imported.png" alt-text="Postman 中导入的集合的编辑对话框的屏幕截图，显示了“Variables”选项卡。突出显示了“CURRENT VALUE”字段。" lightbox="media/how-to-use-postman/postman-variables-imported.png":::
 
@@ -182,7 +182,7 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 
 # <a name="control-plane"></a>[控制面板](#tab/control-plane)
 
-如果是选择建立[控制平面](how-to-use-apis-sdks.md#overview-control-plane-apis)集合，你已经完成了配置集合所需的一切操作。 可根据需要关闭集合的编辑选项卡，然后继续下一部分。
+如果是选择建立[控制平面](concepts-apis-sdks.md#overview-control-plane-apis)集合，你已经完成了配置集合所需的一切操作。 可根据需要关闭集合的编辑选项卡，然后继续下一部分。
 
 --- 
 
@@ -276,8 +276,8 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 
 若要继续执行示例查询，本文将使用查询 API（及其[参考文档](/rest/api/digital-twins/dataplane/query/querytwins)）来查询实例中的所有数字孪生。
 
-1. 获取参考文档中的请求 URL 和类型。 对于查询 API，当前为 POST `https://digitaltwins-hostname/query?api-version=2020-10-31`。
-1. 在 Postman 中，设置请求的类型并输入请求 URL，并根据需要填充 URL 中的占位符。 这是你将在先决条件部分中使用实例的主机名的位置。
+1. 获取参考文档中的请求 URL 和类型。 对于查询 API，当前为 POST `https://digitaltwins-host-name/query?api-version=2020-10-31`。
+1. 在 Postman 中，设置请求的类型并输入请求 URL，并根据需要填充 URL 中的占位符。 你将在这里使用[先决条件部分](#prerequisites)中实例的主机名。
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="Postman 中新请求的详细信息的屏幕截图。参考文档中的查询 URL 已填充到请求 URL 框中。" lightbox="media/how-to-use-postman/postman-request-url.png":::
     
@@ -302,4 +302,4 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关数字孪生 API 的详细信息，请参阅如何：使用 Azure 数字孪生 API 和 SDK，或查看 [REST API 的参考文档](/rest/api/azure-digitaltwins/)。
+若要详细了解数字孪生 API，请阅读[概念：Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)，或查看 [REST API 的参考文档](/rest/api/azure-digitaltwins/)。

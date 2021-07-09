@@ -7,26 +7,26 @@ ms.author: baanders
 ms.date: 4/07/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3c896e2aad7dae8d03b26e2a16ecb96224ab547b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f306fd1a2cccb3733640f5da100718908c444c3a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303744"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478117"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
-可使用 [DigitalTwinModels API](/rest/api/digital-twins/dataplane/models)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 或 [Azure 数字孪生 CLI](how-to-use-cli.md)来管理 Azure 数字孪生实例的[模型](concepts-models.md)。 
-
-管理操作包括上传、验证、检索和删除模型。 
+本文介绍如何管理 Azure 数字孪生实例中的[模型](concepts-models.md)。 管理操作包括上传、验证、检索和删除模型。 
 
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-## <a name="ways-to-manage-models"></a>管理模型的方法
+[!INCLUDE [digital-twins-developer-interfaces.md](../../includes/digital-twins-developer-interfaces.md)]
 
-[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+:::image type="content" source="media/how-to-use-azure-digital-twins-explorer/model-graph-panel.png" alt-text="Azure Digital Twins Explorer 的屏幕截图，其中显示了一张示例模型图。" lightbox="media/how-to-use-azure-digital-twins-explorer/model-graph-panel.png":::
 
 ## <a name="create-models"></a>创建模型
 
@@ -41,7 +41,7 @@ Azure 数字孪生的模型用 DTDL 编写，并保存为 .json 文件。 还有
 > [!NOTE]
 > 这是一个 .json 文件的示例正文，其中定义并保存了模型，并且该模型作为客户端项目的一部分上传。 另一方面，REST API 调用采用类似于上面的模型定义数组（该数组在 .NET SDK 中映射到 `IEnumerable<string>`）。 因此，若要直接在 REST API 中使用此模型，请用括号括起来。
 
-此模型定义了病房的名称和唯一 ID，并定义了表示访客人数和洗手状态的属性（这些计数器将根据运动传感器和智能给皂器进行更新，并将一起用于计算 handwash percentage 属性）。 该模型还定义了一个关系 hasDevices，用于将基于此 Room 模型的任何[数字孪生体](concepts-twins-graph.md)连接到实际设备 。
+此模型定义了病房的名称和唯一 ID，并定义了表示访客人数和洗手状态的属性（这些计数器将根据运动传感器和智能给皂器进行更新，并将一起用于计算 handwash percentage 属性）。 该模型还定义了一个关系 hasDevices，用于将基于此 Room 模型的任何[数字孪生体](concepts-twins-graph.md)连接到实际设备。
 
 按照此方法，可继续为医院的病房、区域或医院本身定义模型。
 
@@ -120,7 +120,7 @@ Azure 数字孪生的模型用 DTDL 编写，并保存为 .json 文件。 还有
 
 这也意味着上传新版本的模型不会自动影响现有孪生体。 现有孪生体将只保留旧模型版本的实例。
 
-通过修补现有孪生体可以将这些孪生体更新为新模型版本，如“操作指南：管理数字孪生体”的[更新数字孪生体的模型](how-to-manage-twin.md#update-a-digital-twins-model)部分所述 。 在同一修补程序中，必须同时更新模型 ID（更新为新版本）和孪生体上必须更改的任何字段以使其符合新模型 。
+通过修补现有孪生体可以将这些孪生体更新为新模型版本，如“操作说明：管理数字孪生体”的[更新数字孪生体的模型](how-to-manage-twin.md#update-a-digital-twins-model)部分所述。 在同一修补程序中，必须同时更新模型 ID（更新为新版本）和孪生体上必须更改的任何字段以使其符合新模型 。
 
 ## <a name="remove-models"></a>删除模型
 
@@ -142,7 +142,7 @@ Azure 数字孪生的模型用 DTDL 编写，并保存为 .json 文件。 还有
 
 可一次删除实例中的所有模型，也可逐个删除。
 
-有关如何删除所有模型的示例，请下载[教程：使用示例客户端应用了解基础知识](tutorial-command-line-app.md)中使用的示例应用。 CommandLoop.cs 文件在 `CommandDeleteAllModels` 函数中执行此操作。
+有关如何删除所有模型的示例，请下载教程：使用示例客户端应用了解基础知识中使用的示例应用。 CommandLoop.cs 文件在 `CommandDeleteAllModels` 函数中执行此操作。
 
 本节的其余部分将更详细地说明模型的删除，并演示如何针对单个模型执行此操作。
 

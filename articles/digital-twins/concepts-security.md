@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: aea55b77330972877fd5e2d87758ab110071c072
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: db58b523f1280847815587a5037c2348335482b6
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207764"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616165"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure 数字孪生安全性
 
-为确保安全，Azure 数字孪生支持对部署中的特定数据、资源和操作进行精确的访问控制。 它通过称为“Azure 基于角色的访问控制 (Azure RBAC)”的粒度角色和权限管理策略来实现此功能。 可在[此处](../role-based-access-control/overview.md)阅读有关 Azure RBAC 一般原则的信息。
+为确保安全，Azure 数字孪生支持对部署中的特定数据、资源和操作进行精确的访问控制。 它通过称为“Azure 基于角色的访问控制 (Azure RBAC)”的粒度角色和权限管理策略来实现此功能。
 
 Azure 数字孪生还支持静态数据加密。
 
@@ -47,7 +47,7 @@ Azure RBAC 通过与 [Azure Active Directory](../active-directory/fundamentals/a
 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>授权：Azure 数字孪生的 Azure 角色
 
-Azure 提供了两个 Azure 内置角色，用于授权对 Azure 数字孪生[数据平面 API](how-to-use-apis-sdks.md#overview-data-plane-apis) 的访问。 可以按名称或 ID 引用角色：
+Azure 提供了两个 Azure 内置角色，用于授权对 Azure 数字孪生[数据平面 API](concepts-apis-sdks.md#overview-data-plane-apis) 的访问。 可以按名称或 ID 引用角色：
 
 | 内置角色 | 说明 | ID | 
 | --- | --- | --- |
@@ -102,7 +102,7 @@ Azure 支持两种类型的托管标识：系统分配和用户分配的托管�
 
 专用终结点使用 Azure VNet 地址空间的 IP 地址。 专用网络上的客户端与 Azure 数字孪生之间的网络流量将通过 VNet 以及 Microsoft 主干网络上的专用链接，因此不会在公共 Internet 公开。 下方直观地展示了此系统：
 
-:::image type="content" source="media/concepts-security/private-link.png" alt-text="PowerGrid 公司网络图，该网络是不具有 Internet/公有云访问权限的受保护 VNET，通过专用链接连接到名为 CityOfTwins 的 Azure 数字孪生实例。":::
+:::image type="content" source="media/concepts-security/private-link.png" alt-text="网络示意图，该网络是不具有公有云访问权限的受保护 VNET，通过专用链接连接到 Azure 数字孪生实例。":::
 
 通过为 Azure 数字孪生实例配置专用终结点，可以保护 Azure 数字孪生实例，消除曝光危险，以及避免 VNet 数据外泄。
 

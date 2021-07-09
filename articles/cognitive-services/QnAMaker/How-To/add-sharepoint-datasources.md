@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 0832b54e02cabecb0b1f0e7af600b8adc621a8b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c15bac8417fdba5f87551dc13311b5272c0926ee
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99584764"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743842"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>向知识库添加受保护的 SharePoint 数据源
 
@@ -52,7 +52,7 @@ ms.locfileid: "99584764"
 
 ## <a name="permissions"></a>权限
 
-当 SharePoint 服务器中的受保护文件添加到知识库中时，会授予权限。 根据 SharePoint 的设置方式和添加文件的人员的权限，这可能需要：
+当运行 SharePoint 的服务器中的受保护文件添加到知识库中时，会授予权限。 根据 SharePoint 的设置方式和添加文件的人员的权限，这可能需要：
 
 * 无附加步骤 - 添加文件的人员具有所需的所有权限。
 * [知识库管理员](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal)和 [Active Directory 管理员](#active-directory-manager-grant-file-read-access-to-qna-maker)执行的步骤。

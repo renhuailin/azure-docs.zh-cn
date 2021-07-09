@@ -8,12 +8,12 @@ ms.date: 4/22/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 13bf3b8b8756fcc83211b02379980972629d9438
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 8a5a092da37b453b719669109bd4924b032c0604
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290535"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616216"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>关于 Azure 数字孪生的查询语言
 
@@ -31,7 +31,7 @@ ms.locfileid: "108290535"
 * 关系
   - 关系属性
 
-若要从客户端应用将查询提交到服务，请使用 Azure 数字孪生查询 API。 使用 API 的一种方法是通过 Azure 数字孪生的一个 [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)。
+若要从客户端应用将查询提交到服务，请使用 Azure 数字孪生查询 API。 使用 API 的一种方法是通过 Azure 数字孪生的一个 [SDK](concepts-apis-sdks.md#overview-data-plane-apis)。
 
 [!INCLUDE [digital-twins-query-reference.md](../../includes/digital-twins-query-reference.md)]
 
@@ -42,6 +42,8 @@ ms.locfileid: "108290535"
 * 转义单引号：如果查询文本的数据中包含单引号字符，则需要使用 `\` 字符对引号进行转义。 下面是一个处理 D'Souza 属性值的示例：
 
   :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="EscapedSingleQuote":::
+
+* **考虑可能的延迟**：对图表中的数据进行更改后，可能会有长达 10 秒的延迟才会在查询中反映更改。 [GetDigitalTwin API](how-to-manage-twin.md#get-data-for-a-digital-twin) 不会遇到这种延迟，因此如果需要即时响应，请使用 API 调用而不是通过查询来立即查看更改。
 
 ## <a name="next-steps"></a>后续步骤
 

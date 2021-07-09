@@ -1,24 +1,24 @@
 ---
-title: 管理 Windows 虚拟桌面（经典）的应用组 - Azure
-description: 了解如何在 Azure Active Directory (AD) 中设置 Windows 虚拟桌面（经典）租户。
+title: 管理 Azure 虚拟桌面（经典）的应用组 - Azure
+description: 了解如何在 Azure Active Directory (AD) 中设置 Azure 虚拟桌面（经典）租户。
 author: Heidilohr
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0b95c87ad447b92532bc6c456c06eb85162c7247
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b4c0f4733ec1d80db4b2181ed292f702926e0e75
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444405"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754000"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>教程：管理 Windows 虚拟桌面（经典）的应用组
+# <a name="tutorial-manage-app-groups-for-azure-virtual-desktop-classic"></a>教程：管理 Azure 虚拟桌面（经典）的应用组
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../manage-app-groups.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[此文](../manage-app-groups.md)。
 
-为新的 Windows 虚拟桌面主机池创建的默认应用组也会发布完整桌面。 此外，可为主机池创建一个或多个 RemoteApp 应用程序组。 请遵循本教程创建 RemoteApp 应用组并发布单个“开始”  菜单应用。
+为新的 Azure 虚拟桌面主机池创建的默认应用组也会发布完整桌面。 此外，可为主机池创建一个或多个 RemoteApp 应用程序组。 请遵循本教程创建 RemoteApp 应用组并发布单个“开始”  菜单应用。
 
 本教程介绍如何执行下列操作：
 
@@ -26,7 +26,7 @@ ms.locfileid: "106444405"
 > * 创建 RemoteApp 组。
 > * 授予对 RemoteApp 程序的访问权限。
 
-在开始之前，如果尚未这样做，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)，以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
+在开始之前，请[下载并导入 Azure 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Purview 中注册 Teradata 源并设置扫描（预览版）
+title: 在 Azure Purview 中注册 Teradata 源并设置扫描
 description: 本文概述了如何在 Azure Purview 中注册 Teradata 源并设置扫描。
 author: chandrakavya
 ms.author: kchandra
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 8f300f214ed36b7a5257b7276364027b91edc746
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ce5f1e9a7ab493bf7989a55fccb5ef696433d771
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048096"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066963"
 ---
-# <a name="register-and-scan-teradata-source-preview"></a>注册并扫描 Teradata 源（预览版）
+# <a name="register-and-scan-teradata-source"></a>注册并扫描 Teradata 源
 
 本文概述了如何在 Purview 中注册 Teradata 源并设置扫描。
 

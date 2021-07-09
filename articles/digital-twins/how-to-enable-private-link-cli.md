@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 47299467c51d128a228e4120eb8e0d0ff4deebc4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0a9b92eb4d49274c23d89674e6f97f906dc28b43
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456455"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616131"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>使用专用链接实现专用访问（预览）：Azure CLI
 
@@ -28,7 +28,7 @@ ms.locfileid: "110456455"
 
 ## <a name="prerequisites"></a>先决条件
 
-在设置专用终结点之前，需要一个可在其中部署终结点的 [Azure 虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 。 如果尚无 VNet，可以按照 Azure 虚拟网络[快速入门](../virtual-network/quick-create-portal.md)中的一种方式进行设置。
+在设置专用终结点之前，需要一个可在其中部署终结点的 [Azure 虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 。 如果尚无 VNet，可以按照 [Azure 虚拟网络快速入门](../virtual-network/quick-create-portal.md)中的其中一种方式进行设置。
 
 ## <a name="manage-private-endpoints-for-an-azure-digital-twins-instance"></a>管理 Azure 数字孪生实例的专用终结点 
 

@@ -12,12 +12,12 @@ ms.date: 02/17/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: 2fd08e6534ce5500e3872afceb72c932d14d1ab4
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 5734d7a1f889c6e7334d0a088fecdfdcd39936c5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108185340"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964927"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -72,7 +72,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 #### <a name="recommendations-for-the-connector-server"></a>有关连接器服务器的建议
 
 1. 将连接器服务器实物定位在靠近应用程序服务器的位置，以优化连接器与应用程序之间的性能。 有关详细信息，请参阅[使用 Azure Active Directory 应用程序代理优化通信流](application-proxy-network-topology.md)。
-1. 连接器服务器和 Web 应用程序服务器应属于同一个 Active Directory 域，或者跨信任域。 若要配合 Windows 集成身份验证 (IWA) 和 Kerberos 约束委派 (KCD) 使用单一登录 (SSO)，这些服务器必须位于同一个域或信任域中。 如果连接器服务器和 Web 应用程序服务器处于不同的 Active Directory 域，则你需要使用基于资源的委派进行单一登录。 有关详细信息，请参阅[用于使用应用程序代理进行单一登录的 KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)。
+1. 连接器服务器和 Web 应用程序服务器应属于同一个 Active Directory 域，或者跨信任域。 若要配合 Windows 集成身份验证 (IWA) 和 Kerberos 约束委派 (KCD) 使用单一登录 (SSO)，这些服务器必须位于同一个域或信任域中。 如果连接器服务器和 Web 应用程序服务器处于不同的 Active Directory 域，则你需要使用基于资源的委派进行单一登录。 有关详细信息，请参阅[用于使用应用程序代理进行单一登录的 KCD](./application-proxy-configure-single-sign-on-with-kcd.md)。
 
 > [!WARNING]
 > 如果已部署 Azure AD 密码保护代理，请不要在同一台计算机上一起安装 Azure AD 应用程序代理和 Azure AD 密码保护代理。 Azure AD 应用程序代理和 Azure AD 密码保护代理安装不同版本的 Azure AD Connect 代理更新程序服务。 当在同一台计算机上一起安装时，这些不同的版本是不兼容的。
@@ -134,6 +134,8 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 | ctldl.windowsupdate.com                                      | 80/HTTP   | 在注册过程中，连接器将使用此 URL。 |
 
 如果防火墙或代理允许根据域后缀配置访问规则，可允许连接到 &ast;.msappproxy.net、&ast;.servicebus.windows.net 和其他 URL。 如果没有，则需要允许访问 [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 范围每周更新。
+> [!IMPORTANT]
+> 避免对 Azure AD 应用程序代理连接器和 Azure AD 应用程序代理云服务之间的出站 TLS 通信进行所有形式的内联检查和终止。
 
 ### <a name="dns-name-resolution-for-azure-ad-application-proxy-endpoints"></a>Azure AD 应用程序代理终结点的 DNS 名称解析
 
@@ -162,13 +164,13 @@ Azure AD 应用程序代理终结点的公共 DNS 记录是链接的指向 A 记
 
 ### <a name="general-remarks"></a>一般备注
 
-如果以前安装了连接器，请重新安装以获取最新版本。 要查看有关以前发布的版本及其包含的更改的信息，请参阅[应用程序代理：版本发布历史记录](../manage-apps/application-proxy-release-version-history.md)。
+如果以前安装了连接器，请重新安装以获取最新版本。 要查看有关以前发布的版本及其包含的更改的信息，请参阅[应用程序代理：版本发布历史记录](./application-proxy-release-version-history.md)。
 
-如果选择对本地应用程序使用多个 Windows 服务器，则需要在每个服务器上安装并注册连接器。 可将连接器组织成连接器组。 有关详细信息，请参阅[连接器组](../manage-apps/application-proxy-connector-groups.md)。
+如果选择对本地应用程序使用多个 Windows 服务器，则需要在每个服务器上安装并注册连接器。 可将连接器组织成连接器组。 有关详细信息，请参阅[连接器组](./application-proxy-connector-groups.md)。
 
 如果已在不同区域安装了连接器，可以通过选择距离最近的应用程序代理云服务区域来优化流量，以便与每个连接器组配合使用，详见[使用 Azure Active Directory 应用程序代理优化通信流](application-proxy-network-topology.md)
 
-如果你的组织使用代理服务器连接到 Internet，则需要为应用程序代理配置代理服务器。  有关详细信息，请参阅[使用现有的本地代理服务器](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)。 
+如果你的组织使用代理服务器连接到 Internet，则需要为应用程序代理配置代理服务器。  有关详细信息，请参阅[使用现有的本地代理服务器](./application-proxy-configure-connectors-with-proxy-servers.md)。 
 
 有关连接器、容量规划以及它们如何保持最新状态的信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。
 
@@ -186,7 +188,7 @@ Azure AD 应用程序代理终结点的公共 DNS 记录是链接的指向 A 记
 
     ![Azure AD 应用程序代理连接器](./media/application-proxy-add-on-premises-application/app-proxy-connectors.png)
 
-要获得关于安装连接器的更多帮助，请参阅[安装应用程序代理连接器时出现问题](../manage-apps/application-proxy-connector-installation-problem.md)。
+要获得关于安装连接器的更多帮助，请参阅[安装应用程序代理连接器时出现问题](./application-proxy-connector-installation-problem.md)。
 
 ### <a name="verify-the-installation-through-your-windows-server"></a>通过 Windows Server 验证安装
 
@@ -215,7 +217,7 @@ Azure AD 应用程序代理终结点的公共 DNS 记录是链接的指向 A 记
     | :--------------------- | :----------------------------------------------------------- |
     | **名称** | 要显示在“我的应用”和 Azure 门户中的应用程序名称。 |
     | **内部 URL** | 用于从专用网络内部访问应用程序的 URL。 可以提供后端服务器上要发布的特定路径，而服务器的其余部分则不发布。 通过这种方式，可以在同一服务器上将不同站点发布为不同应用，并为每个站点提供其自己的名称和访问规则。<br><br>如果发布路径，请确保它包含应用程序的所有必要映像、脚本和样式表。 例如，如果应用位于 https:\//yourapp/app 并使用位于 https:\//yourapp/media 的映像，则应将 https:\//yourapp/ 发布为路径。 此内部 URL 不一定是用户看到的登陆页面。 有关详细信息，请参阅[为发布的应用设置自定义主页](application-proxy-configure-custom-home-page.md)。 |
-    | **外部 URL** | 用户从网络外部访问应用时使用的地址。 如果不想使用默认的应用程序代理域，请参阅 [Azure AD 应用程序代理中的自定义域](../manage-apps/application-proxy-configure-custom-domain.md)。 |
+    | **外部 URL** | 用户从网络外部访问应用时使用的地址。 如果不想使用默认的应用程序代理域，请参阅 [Azure AD 应用程序代理中的自定义域](./application-proxy-configure-custom-domain.md)。 |
     | **预身份验证** | 应用程序代理在向用户授予应用程序访问权限之前如何验证用户。<br><br>**Azure Active Directory** - 应用程序代理重定向用户，让其使用 Azure AD 登录；这会验证他们对目录和应用程序的权限。 建议将此选项保留为默认值，以便可以利用条件性访问和多重身份验证等 Azure AD 安全功能。 必须在 **Azure Active Directory** 中使用 Microsoft 云应用程序安全性来监视应用程序。<br><br>直通 - 用户无需对 Azure AD 进行身份验证即可访问应用程序  。 仍可在后端设置身份验证要求。 |
     | **连接器组** | 连接器处理对应用程序的远程访问，借助连接器组可按区域、网络或用途组织连接器和应用。 如果尚未创建任何连接器组，应用将分配到“默认”  。<br><br>如果应用程序使用 WebSocket 进行连接，组中的所有连接器必须为 1.5.612.0 或更高版本。 |
 
@@ -226,9 +228,9 @@ Azure AD 应用程序代理终结点的公共 DNS 记录是链接的指向 A 记
     | **后端应用程序超时** | 仅当应用程序身份验证和连接速度较慢时，才将此值设置为“长”  。 默认情况下，后端应用程序超时的长度为 85 秒。 设置为 long 时，后端超时将增加到 180 秒。 |
     | **使用仅限 HTTP 的 Cookie** | 将此值设置为“是”，使应用程序代理 Cookie 在 HTTP 响应标头中包含 HTTPOnly 标志。 如果使用远程桌面服务，请将此值设置为“否”。 |
     | **使用安全 Cookie**| 将此值设置为“是”可通过安全通道（例如加密的 HTTPS 请求）传输 Cookie。
-    | **使用永久性 Cookie**| 始终将此值设置为“否”  。 仅对无法在进程之间共享 cookie 的应用程序使用此设置。 有关 Cookie 设置的详细信息，请参阅[用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置](../manage-apps/application-proxy-configure-cookie-settings.md)。
+    | **使用永久性 Cookie**| 始终将此值设置为“否”  。 仅对无法在进程之间共享 cookie 的应用程序使用此设置。 有关 Cookie 设置的详细信息，请参阅[用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置](./application-proxy-configure-cookie-settings.md)。
     | **转换标头中的 URL** | 除非应用程序要求在身份验证请求中包含原始主机标头，否则请将此值保留为“是”  。 |
-    | **转换应用程序主体中的 URL** | 除非具有指向其他本地应用程序的硬编码 HTML 链接且不使用自定义域，否则请将此值保留为“否”  。 有关详细信息，请参阅[使用应用程序代理进行链接转换](../manage-apps/application-proxy-configure-hard-coded-link-translation.md)。<br><br>如果你打算使用 Microsoft 云应用安全性 (MCAS) 监视此应用程序，请将此值设置为“是”。 有关详细信息，请参阅[使用 Microsoft Cloud App Security 和 Azure Active Directory 配置实时应用程序访问监视](../manage-apps/application-proxy-integrate-with-microsoft-cloud-application-security.md)。 |
+    | **转换应用程序主体中的 URL** | 除非具有指向其他本地应用程序的硬编码 HTML 链接且不使用自定义域，否则请将此值保留为“否”  。 有关详细信息，请参阅[使用应用程序代理进行链接转换](./application-proxy-configure-hard-coded-link-translation.md)。<br><br>如果你打算使用 Microsoft 云应用安全性 (MCAS) 监视此应用程序，请将此值设置为“是”。 有关详细信息，请参阅[使用 Microsoft Cloud App Security 和 Azure Active Directory 配置实时应用程序访问监视](./application-proxy-integrate-with-microsoft-cloud-application-security.md)。 |
 
 7. 选择 **添加** 。
 
@@ -257,7 +259,7 @@ Azure AD 应用程序代理终结点的公共 DNS 记录是链接的指向 A 记
 2. 在页面顶部，选择“测试应用程序”  以对应用程序运行测试并检查是否存在任何配置问题。
 3. 请确保首先启动应用程序以测试登录到应用程序，然后下载诊断报告以查看有关任何检测到的问题的解决方案指南。
 
-有关故障排除信息，请参阅[根据错误消息排查应用程序代理问题](../manage-apps/application-proxy-troubleshoot.md)。
+有关故障排除信息，请参阅[根据错误消息排查应用程序代理问题](./application-proxy-troubleshoot.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -6,16 +6,27 @@ ms.author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 02/10/2021
+ms.date: 05/19/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 2e9f3c877a5c4650d3e31fa414cac76837f4c9e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac5e2f5474b786895ce90dbe682e98f08205c048
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101655745"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476921"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-mongodb-native-tools"></a>Tutorial:使用 MongoDB 本机工具将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
+
+> [!IMPORTANT]  
+> 在执行迁移步骤之前，请完整阅读本指南。
+>
+
+本 MongoDB 迁移指南是 MongoDB 迁移系列的一部分。 关键的 MongoDB 迁移步骤包括[迁移前步骤](mongodb-pre-migration.md)、迁移步骤和[迁移后步骤](mongodb-post-migration.md)，如下所示。
+
+![迁移步骤示意图。](./media/mongodb-pre-migration/overall-migration-steps.png)
+
+## <a name="overview-of-data-migration-using-mongodb-native-tools"></a>使用 MongoDB 原生工具迁移数据概述
 
 可以使用 MongoDB 本机工具将数据库从 MongoDB 的本地或云实例脱机（一次性）迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。
 

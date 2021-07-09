@@ -2,17 +2,17 @@
 title: 与 Azure 时序见解集成
 titleSuffix: Azure Digital Twins
 description: 了解如何设置从 Azure 数字孪生到 Azure 时序见解的事件路由。
-author: alexkarcher-msft
-ms.author: alkarche
+author: baanders
+ms.author: baanders
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5aa74920919e7af98368d08bfea892494273f946
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: b4dad7e5de44701b946c3d7b9412d5d3095c5736
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208628"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615791"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解相集成
 
@@ -24,10 +24,8 @@ ms.locfileid: "108208628"
 
 需要设置以下资源，才能设置与时序见解的关系：
 * IoT 中心。 有关说明，请参阅《IoT 中心的发送遥测》快速入门中的[创建 IoT 中心](../iot-hub/quickstart-send-telemetry-cli.md#create-an-iot-hub)部分。
-* Azure 数字孪生实例。
-有关说明，请参阅如何：设置 Azure 数字孪生实例和身份验证。
-* Azure 数字孪生实例中的模型和孪生体。
-需要多次更新孪生体信息，才能看到在时序见解中跟踪的数据。 有关说明，请参阅《操作说明：引入 IoT 中心》一文中的[添加模型和孪生体](how-to-ingest-iot-hub-data.md#add-a-model-and-twin)部分。
+* Azure 数字孪生实例。 有关说明，请参阅如何：设置 Azure 数字孪生实例和身份验证。
+* Azure 数字孪生实例中的模型和孪生体。 需要多次更新孪生体信息，才能看到在时序见解中跟踪的数据。 有关说明，请参阅《操作说明：引入 IoT 中心》一文中的[添加模型和孪生体](how-to-ingest-iot-hub-data.md#add-a-model-and-twin)部分。
 
 > [!TIP]
 > 在本文中，为简单起见，手动更新在时序见解中查看的不断更改的数字孪生体值。 但是，如果要使用实时模拟数据完成本文，可以设置一个 Azure 函数，用于根据来自模拟设备的 IoT 遥测事件更新数字孪生体。 有关说明，请遵循如何：引入 IoT 中心数据，包括运行设备模拟器并验证数据流是否正常工作的最终步骤。
@@ -52,7 +50,7 @@ ms.locfileid: "108208628"
 创建事件中心之前，请先创建一个可从 Azure 数字孪生实例接收事件的事件中心命名空间。 可以参考以下 Azure CLI 说明，也可以使用 Azure 门户：快速入门：使用 Azure 门户创建事件中心。 若要查看哪些区域支持事件中心，请访问可用的 Azure 产品（按区域）。
 
 ```azurecli-interactive
-az eventhubs namespace create --name <name-for-your-event-hubs-namespace> --resource-group <your-resource-group> -l <region>
+az eventhubs namespace create --name <name-for-your-Event-Hubs-namespace> --resource-group <your-resource-group> --location <region>
 ```
 
 > [!TIP]
@@ -79,15 +77,15 @@ az eventhubs namespace create --name <name-for-your-event-hubs-namespace> --reso
 使用以下 CLI 命令创建孪生体中心。 为孪生体中心指定名称。
 
 ```azurecli-interactive
-az eventhubs eventhub create --name <name-for-your-twins-hub> --resource-group <your-resource-group> --namespace-name <your-event-hubs-namespace-from-above>
+az eventhubs eventhub create --name <name-for-your-twins-hub> --resource-group <your-resource-group> --namespace-name <your-Event-Hubs-namespace-from-above>
 ```
 
 ### <a name="create-twins-hub-authorization-rule"></a>创建孪生体中心授权规则
 
-创建具有发送和接收权限的[授权规则](/cli/azure/eventhubs/eventhub/authorization-rule#az_eventhubs_eventhub_authorization_rule_create)。 指定规则的名称。
+创建具有发送和接收权限的[授权规则](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az_eventhubs_eventhub_authorization_rule_create)。 指定规则的名称。
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-twins-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-event-hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above>
+az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-twins-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-Event-Hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above>
 ```
 
 ### <a name="create-twins-hub-endpoint"></a>创建孪生体中心终结点
@@ -95,7 +93,7 @@ az eventhubs eventhub authorization-rule create --rights Listen Send --name <nam
 创建一个 Azure 数字孪生[终结点](concepts-route-events.md#create-an-endpoint)，用于将事件中心链接到 Azure 数字孪生实例。 为孪生体中心终结点指定名称。
 
 ```azurecli-interactive
-az dt endpoint create eventhub -n <your-Azure-Digital-Twins-instance-name> --eventhub-resource-group <your-resource-group> --eventhub-namespace <your-event-hubs-namespace-from-earlier> --eventhub <your-twins-hub-name-from-above> --eventhub-policy <your-twins-hub-auth-rule-from-earlier> --endpoint-name <name-for-your-twins-hub-endpoint>
+az dt endpoint create eventhub --dt-name <your-Azure-Digital-Twins-instance-name> --eventhub-resource-group <your-resource-group> --eventhub-namespace <your-Event-Hubs-namespace-from-earlier> --eventhub <your-twins-hub-name-from-above> --eventhub-policy <your-twins-hub-auth-rule-from-earlier> --endpoint-name <name-for-your-twins-hub-endpoint>
 ```
 
 ### <a name="create-twins-hub-event-route"></a>创建孪生体中心事件路由
@@ -105,7 +103,7 @@ az dt endpoint create eventhub -n <your-Azure-Digital-Twins-instance-name> --eve
 在 Azure 数字孪生中创建[路由](concepts-route-events.md#create-an-event-route)，将孪生体更新事件发送到前面的终结点。 此路由中的筛选器只允许将孪生更新消息传递到你的终结点。 为孪生体中心事件路由指定名称。
 
 ```azurecli-interactive
-az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <your-twins-hub-endpoint-from-above> --route-name <name-for-your-twins-hub-event-route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
+az dt route create --dt-name <your-Azure-Digital-Twins-instance-name> --endpoint-name <your-twins-hub-endpoint-from-above> --route-name <name-for-your-twins-hub-event-route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
 ```
 
 ### <a name="get-twins-hub-connection-string"></a>获取孪生体中心连接字符串
@@ -113,7 +111,7 @@ az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <
 使用前面为孪生体中心创建的授权规则获取[孪生体事件中心连接字符串](../event-hubs/event-hubs-get-connection-string.md)。
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-event-hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above> --name <your-twins-hub-auth-rule-from-earlier>
+az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-Event-Hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above> --name <your-twins-hub-auth-rule-from-earlier>
 ```
 记下结果中的 primaryConnectionString 值，以在本文后面配置孪生体中心应用设置。
 
@@ -131,15 +129,15 @@ az eventhubs eventhub authorization-rule keys list --resource-group <your-resour
 使用以下命令创建时序中心。 为时序中心指定名称。
 
 ```azurecli-interactive
- az eventhubs eventhub create --name <name-for-your-time-series-hub> --resource-group <your-resource-group> --namespace-name <your-event-hub-namespace-from-earlier>
+ az eventhubs eventhub create --name <name-for-your-time-series-hub> --resource-group <your-resource-group> --namespace-name <your-Event-Hub-namespace-from-earlier>
 ```
 
 ### <a name="create-time-series-hub-authorization-rule"></a>创建时序中心授权规则
 
-创建具有发送和接收权限的[授权规则](/cli/azure/eventhubs/eventhub/authorization-rule#az_eventhubs_eventhub_authorization_rule_create)。 为时序中心授权规则指定名称。
+创建具有发送和接收权限的[授权规则](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az_eventhubs_eventhub_authorization_rule_create)。 为时序中心授权规则指定名称。
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-time-series-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-event-hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-above>
+az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-time-series-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-Event-Hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-above>
 ```
 
 ### <a name="get-time-series-hub-connection-string"></a>获取时序中心连接字符串
@@ -147,7 +145,7 @@ az eventhubs eventhub authorization-rule create --rights Listen Send --name <nam
 使用前面为时序见解中心创建的授权规则获取[时序中心连接字符串](../event-hubs/event-hubs-get-connection-string.md)：
 
 ```azurecli-interactive
-az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-event-hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-earlier> --name <your-time-series-hub-auth-rule-from-earlier>
+az eventhubs eventhub authorization-rule keys list --resource-group <your-resource-group> --namespace-name <your-Event-Hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-earlier> --name <your-time-series-hub-auth-rule-from-earlier>
 ```
 记下结果中的 primaryConnectionString 值，以在本文后面配置时序中心应用设置。
 
@@ -202,13 +200,13 @@ az eventhubs eventhub authorization-rule keys list --resource-group <your-resour
 使用先前保存的孪生体中心 primaryConnectionString 值在函数应用中创建包含孪生体中心连接字符串的应用设置：
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<your-twins-hub-primaryConnectionString>" -g <your-resource-group> -n <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<your-twins-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-function-app-name>
 ```
 
 使用先前保存的时序中心 primaryConnectionString 值在函数应用中创建包含时序中心连接字符串的应用设置：
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-time-series-hub-primaryConnectionString>" -g <your-resource-group> -n <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-time-series-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-function-app-name>
 ```
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>创建和连接时序见解实例
@@ -228,9 +226,9 @@ az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-t
 
     可以在此页面上保留其他属性的默认值。 选择“下一步: 事件源 >”按钮。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png" alt-text="创建时序见解环境的 Azure 门户屏幕截图。从相应的下拉列表中选择你的订阅、资源组和位置，然后为环境选择一个名称。" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png" alt-text="Azure 门户的屏幕截图，显示了如何创建时序见解环境（第 1/3 部分）。" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png":::
         
-    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png" alt-text="创建时序见解环境的 Azure 门户屏幕截图。其中已选择“Gen2(L1)”定价层，时序 ID 属性名称为 $dtId。" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png" alt-text="Azure 门户的屏幕截图，显示了如何创建时序见解环境（第 2/3 部分）。" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png":::
 
 2. 在“事件源”选项卡上，选择以下字段：
 
@@ -246,22 +244,22 @@ az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-t
     
     选择“查看 + 创建”按钮以查看所有详细信息。 然后，再次选择“查看 + 创建”按钮以创建时序环境。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png" alt-text="创建时序见解环境的 Azure 门户屏幕截图。你在使用前面提供的事件中心信息创建一个事件源。你还在创建一个新的使用者组。" lightbox="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png" alt-text="Azure 门户的屏幕截图，显示了如何创建时序见解环境（第 3/3 部分）。" lightbox="media/how-to-integrate-time-series-insights/create-tsi-environment-event-source.png":::
 
 ## <a name="send-iot-data-to-azure-digital-twins"></a>将 IoT 数据发送到 Azure 数字孪生
 
 若要开始将数据发送到时序见解，需要开始更新 Azure 数字孪生中的数字孪生体属性并更改数据值。
 
-使用以下 CLI 命令更新在[先决条件](#prerequisites)部分中添加到实例中的 thermostat67 孪生体上的 Temperature 属性 。
+使用以下 CLI 命令更新在[先决条件部分](#prerequisites)中添加到实例中的 thermostat67 孪生体上的 Temperature 属性。
 
 ```azurecli-interactive
-az dt twin update -n <your-azure-digital-twins-instance-name> --twin-id thermostat67 --json-patch '{"op":"replace", "path":"/Temperature", "value": 20.5}'
+az dt twin update --dt-name <your-Azure-Digital-Twins-instance-name> --twin-id thermostat67 --json-patch '{"op":"replace", "path":"/Temperature", "value": 20.5}'
 ```
 
 使用不同温度值再重复该命令至少 4 次，以创建稍后可在时序见解环境中观察到的多个数据点。
 
 > [!TIP]
-> 如果要使用实时模拟数据完成本文，而不是手动更新数字孪生体值，请先确保已完成先决条件部分中的提示，以设置从模拟设备更新孪生体的 Azure 函数。
+> 如果要使用实时模拟数据完成本文，而不是手动更新数字孪生体值，请先确保已完成[先决条件](#prerequisites)部分中的提示，设置从模拟设备更新孪生体的 Azure 函数。
 在此之后，可以立即运行设备，以开始发送模拟数据并通过该数据流更新数字孪生体。
 
 ## <a name="visualize-your-data-in-time-series-insights"></a>在时序见解中可视化数据
@@ -270,19 +268,19 @@ az dt twin update -n <your-azure-digital-twins-instance-name> --twin-id thermost
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索先前创建的时序环境名称。 在左侧菜单选项中，选择“概述”以查看“时序见解资源管理器 URL” 。 选择 URL 以查看在时序见解环境中反映的温度变化。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在时序见解环境的概述选项卡中选择时序见解资源管理器 URL 的 Azure 门户屏幕截图。" lightbox="media/how-to-integrate-time-series-insights/view-environment.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Azure 门户的屏幕截图，其中在时序见解环境的概述选项卡中显示时序见解资源管理器 URL。" lightbox="media/how-to-integrate-time-series-insights/view-environment.png":::
 
-2. 在资源管理器的左侧，你会看到显示了 Azure 数字孪生实例中的孪生体。 选择“thermostat67”孪生体，选择属性“Temperature”，然后点击“添加” 。
+2. 在资源管理器的左侧，你会看到显示了 Azure 数字孪生实例中的孪生体。 选择“thermostat67”孪生体，选择属性“Temperature”，然后选择“添加”。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="选择 thermostat67，选择属性 temperature，并点击添加的时序见解资源管理器屏幕截图。" lightbox="media/how-to-integrate-time-series-insights/add-data.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="时序见解资源管理器的屏幕截图，突出显示了选择 thermostat67、选择属性 temperature 和选择“添加”的步骤。" lightbox="media/how-to-integrate-time-series-insights/add-data.png":::
 
 3. 现在应会看到温度计的初始温度读数，如下所示。 
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="查看的 TSI 资源管理器屏幕截图。这是一系列介于 68 到 85 之间的随机值" lightbox="media/how-to-integrate-time-series-insights/initial-data.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="带有初始温度数据的时序见解资源管理器的屏幕截图，显示了一系列介于 68 到 85 之间的随机值。" lightbox="media/how-to-integrate-time-series-insights/initial-data.png":::
 
 如果运行模拟很长一段时间，则可视化效果将如下所示：
 
-:::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="以三条不同颜色的平行线绘制每个孪生体的温度数据的 TSI 资源管理器屏幕截图。" lightbox="media/how-to-integrate-time-series-insights/day-data.png":::
+:::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="时序见解资源管理器的屏幕截图，其中以三条不同颜色的平行线绘制每个孪生体的温度数据。" lightbox="media/how-to-integrate-time-series-insights/day-data.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

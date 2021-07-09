@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: e3b7da30f54b9d9468b46a2cd0972a3397e5cdce
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 46348fe35f425811e2ff03208feeae6ab7a112bd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865099"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453573"
 ---
 # <a name="cancel-translation"></a>取消翻译
 
@@ -26,7 +26,7 @@ ms.locfileid: "107865099"
 将 `DELETE` 请求发送到：
 
 ```DELETE HTTP
-https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}
+https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches/{id}
 ```
 
 了解如何查找[自定义域名](../get-started-with-document-translation.md#find-your-custom-domain-name)。
@@ -92,9 +92,10 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 |code|string|包含错误代码概要的枚举。 可能的值：<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>未授权</li></ul>|
 |message|字符串|获取概要错误消息。|
 |目标|string|获取错误的源。 例如，对于无效的文档，应为“文档”或“文档 ID”。|
-|innerError|InnerErrorV2|新内部错误格式，符合认知服务 API 准则。 它包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
+|innerError|InnerTranslationError|新内部错误格式，符合认知服务 API 准则。 这包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
 |innerError.code|字符串|获取代码错误字符串。|
-|inner.Eroor.message|字符串|获取概要错误消息。|
+|innerError.message|字符串|获取概要错误消息。|
+|innerError.target|string|获取错误的源。 例如，如果存在无效的文档，应为“文档”或“文档 ID”。|
 
 ## <a name="examples"></a>示例
 

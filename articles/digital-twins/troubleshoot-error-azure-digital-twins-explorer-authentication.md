@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/8/2021
-ms.openlocfilehash: 59d2d561945ed55f3140099117c2f8dc9d8cc766
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a91053f9a21aebf1a99c35a3a982fd3ad5514d04
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084549"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475648"
 ---
 # <a name="authentication-failed"></a>验证失败
 
@@ -21,39 +21,19 @@ ms.locfileid: "110084549"
 
 在设置和运行 Azure Digital Twins Explorer 应用程序时，对应用执行身份验证尝试后，收到以下错误消息：
 
-:::image type="content" source="media/troubleshoot-error-azure-digital-twins-explorer-authentication/authentication-error.png" alt-text="Azure Digital Twins Explorer 中的错误消息屏幕截图，其中显示以下文本：身份验证失败。如果要在本地运行应用，请确保已通过在命令提示符中运行“az login”、通过登录到 Visual Studio 或 VS Code，或通过设置环境变量等方式在主机计算机上登录到 Azure。如果需要了解详细信息，请参阅自述文件，或在 Azure.Identity 文档中查找 DefaultAzureCredential。如果你运行的是在云中托管的 ADT Explorer，请确保托管 Azure 函数已设置系统分配的托管标识。有关详细信息，请参阅自述文件。":::
+:::image type="content" source="media/troubleshoot-error-azure-digital-twins-explorer-authentication/authentication-error.png" alt-text="Azure Digital Twins Explorer 中的身份验证失败错误消息的屏幕截图。":::
 
 ## <a name="causes"></a>原因
 
 ### <a name="cause-1"></a>原因 #1
 
-Azure Digital Twins Explorer 应用程序使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true)（`Azure.Identity` 库的一部分），它将在你的本地环境中搜索凭据。
-
-如错误文本所述，如果你未提供由 `DefaultAzureCredential` 选择的本地凭据，则可能会出现此错误。
-
-若要详细了解如何在 Azure Digital Twins Explorer 中使用本地凭据，请参阅 Azure 数字孪生的“快速入门：浏览示例方案”中的[设置本地 Azure 凭据](./quickstart-azure-digital-twins-explorer.md#set-up-local-azure-credentials)部分。
-
-### <a name="cause-2"></a>原因 #2
-
-如果 Azure 帐户没有在 Azure 数字孪生实例上设置所需的 Azure 基于角色的访问控制(Azure RBAC) 权限，也会发生此错误。 若要访问实例中的数据，必须分别在你尝试读取或管理的实例上拥有“Azure 数字孪生数据读取者”或“Azure 数字孪生数据所有者”角色。 
+如果 Azure 帐户没有在 Azure 数字孪生实例上设置所需的 Azure 基于角色的访问控制 (Azure RBAC) 权限，可能会发生此错误。 若要访问实例中的数据，必须分别在你尝试读取或管理的实例上拥有“Azure 数字孪生数据读取者”或“Azure 数字孪生数据所有者”角色。 
 
 有关 Azure 数字孪生中的安全性和角色的详细信息，请参阅概念：Azure 数字孪生安全性解决方案。
 
 ## <a name="solutions"></a>解决方案
 
 ### <a name="solution-1"></a>解决方案 #1
-
-首先，请确保已为应用程序提供了必需的凭据。
-
-#### <a name="provide-local-credentials"></a>提供本地凭据
-
-`DefaultAzureCredential` 使用本地 Azure 登录的信息对服务进行身份验证。 通过在本地 [Azure CLI](/cli/azure/install-azure-cli) 窗口中或者在 Visual Studio 或 Visual Studio Code 中登录到 Azure 帐户，可以提供 Azure 凭据。
-
-可以在 [Azure 标识文档中的 DefaultAzureCredential](/dotnet/api/overview/azure/identity-readme#defaultazurecredential) 部分查看 `DefaultAzureCredential` 接受的凭据类型，以及尝试的顺序。
-
-如果你已在本地登录到正确的 Azure 帐户，但问题未得到解决，请继续尝试下一个解决方法。
-
-### <a name="solution-2"></a>解决方法 #2
 
 验证 Azure 用户是在 Azure 数字孪生实例上拥有“Azure 数字孪生数据读取者”角色（如果你只是尝试读取数据）还是在实例上拥有“Azure 数字孪生数据所有者”角色（如果你尝试管理数据）。
 

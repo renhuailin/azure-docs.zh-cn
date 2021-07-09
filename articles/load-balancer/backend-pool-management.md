@@ -8,12 +8,13 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 4e8be77851d0d7102d7c0cef85d9fbfefd8dc2a2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8a0294e205dd8a22f9847140511cbce634322c4a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137159"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285222"
 ---
 # <a name="backend-pool-management"></a>后端池管理
 后端池是负载均衡器的一个关键组成部分。 后端池定义将在给定负载均衡规则下提供流量的资源的组。
@@ -22,7 +23,7 @@ ms.locfileid: "108137159"
 * 网络接口卡 (NIC)
 * IP 地址和虚拟网络 (VNET) 资源 ID 的组合
 
-使用现有的虚拟机和虚拟机规模集时，通过 NIC 配置后端池。 此方法会在资源与后端池之间生成最直接的链接。 
+使用现有的虚拟机和虚拟机规模集时，通过 NIC 配置后端池。 此方法会在资源与后端池之间生成最直接的链接。
 
 在为后端池预分配一个 IP 地址范围（计划稍后创建虚拟机和虚拟机规模集的范围）时，请结合 IP 地址和 VNET ID 配置后端池。
 
@@ -33,7 +34,7 @@ ms.locfileid: "108137159"
 * Azure PowerShell
 * Azure CLI
 * REST API
-* Azure 资源管理器模板 
+* Azure 资源管理器模板
 
 这些部分将介绍对于每一配置选项而言，后端池是如何构建的。
 
@@ -42,7 +43,7 @@ ms.locfileid: "108137159"
 
 为了突出强调此工作流和关系，以下示例重点演示了后端池的创建和填充操作。
 
-  >[!NOTE] 
+  >[!NOTE]
   >请务必注意一点，通过网络接口配置的后端池不能作为后端池操作的一部分更新。 对后端资源的任何添加或删除都必须在资源的网络接口上进行。
 
 ### <a name="powershell"></a>PowerShell
@@ -53,7 +54,7 @@ $resourceGroup = "myResourceGroup"
 $loadBalancerName = "myLoadBalancer"
 $backendPoolName = "myBackendPool"
 
-$backendPool = 
+$backendPool =
 New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
@@ -67,10 +68,10 @@ $nicname = "myNic"
 $location = "eastus"
 $vnetname = <your-vnet-name>
 
-$vnet = 
+$vnet =
 Get-AzVirtualNetwork -Name $vnetname -ResourceGroupName $resourceGroup
 
-$nic = 
+$nic =
 New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicname -LoadBalancerBackendAddressPool $backendPoolName -Subnet $vnet.Subnets[0]
 ```
 
@@ -105,9 +106,9 @@ $location = "eastus"
 $nic =
 Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
 
-$vmConfig = 
+$vmConfig =
 New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
- 
+
 # Create a virtual machine using the configuration
 $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
@@ -119,7 +120,7 @@ $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -V
 az network lb address-pool create \
 --resource-group myResourceGroup \
 --lb-name myLB \
---name myBackendPool 
+--name myBackendPool
 ```
 
 创建新的网络接口并将它添加到后端池：
@@ -158,9 +159,9 @@ az vm create \
 
 ### <a name="resource-manager-template"></a>Resource Manager 模板
 
-按照此[快速入门资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/)部署负载均衡器和虚拟机，并通过网络接口将虚拟机添加到后端池。
+按照此[快速入门资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-standard-create/)部署负载均衡器和虚拟机，并通过网络接口将虚拟机添加到后端池。
 
-按照此[快速入门资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-ip-configured-backend-pool)部署负载均衡器和虚拟机，并通过 IP 地址将虚拟机添加到后端池。
+按照此[快速入门资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-ip-configured-backend-pool)部署负载均衡器和虚拟机，并通过 IP 地址将虚拟机添加到后端池。
 
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>通过 IP 地址和虚拟网络配置后端池
@@ -203,7 +204,7 @@ Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBala
 创建网络接口并将它添加到后端池。 将 IP 地址设置为后端地址之一：
 
 ```azurepowershell-interactive
-$nic = 
+$nic =
 New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicName -PrivateIpAddress 10.0.0.4 -Subnet $virtualNetwork.Subnets[0]
 ```
 
@@ -225,7 +226,7 @@ $location = "eastus"
 $nic =
 Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
 
-$vmConfig = 
+$vmConfig =
 New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
 
 # Create a virtual machine using the configuration
@@ -233,7 +234,7 @@ $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -V
 ```
 
 ### <a name="cli"></a>CLI
-使用 CLI 时，可以通过命令行参数或 JSON 配置文件填充后端池。 
+使用 CLI 时，可以通过命令行参数或 JSON 配置文件填充后端池。
 
 通过命令行参数创建并填充后端池：
 
@@ -307,17 +308,19 @@ az vm create \
   --admin-username azureuser \
   --generate-ssh-keys
 ```
- 
+
 ### <a name="limitations"></a>限制
 IP 地址配置的后端池具有以下限制：
   * 只能用于标准负载均衡器
   * 后端池中的 100 IP 地址限制
   * 后端资源必须与负载均衡器位于同一虚拟网络中
   * 具有基于 IP 的后端池的负载均衡器不能充当专用链接服务
-  * Azure 门户目前不支持此功能
   * 此功能当前不支持 ACI 容器
   * 负载均衡器或应用程序网关等服务不能放置在负载均衡器的后端池中
   * 不能通过 IP 地址指定入站 NAT 规则
+
+>[!Important]
+> 当后端池通过 IP 地址进行配置时，它的行为就像启用了默认出站地址的基本负载均衡器。 为了在默认情况下保护有很高出站需求的配置和应用，可以用 NIC 配置后端池。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了有关 Azure 负载均衡器后端池管理的信息，以及如何通过 IP 地址和虚拟网络配置后端池。

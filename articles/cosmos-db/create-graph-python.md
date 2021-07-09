@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/29/2021
 ms.author: chrande
 ms.custom: devx-track-python
-ms.openlocfilehash: cef397789d5ebcfa95c01e42dac9a80b9e1564e0
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 479b65deec8ef7a7c313be2844495e4ed29d4d7d
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106919"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "113225491"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>快速入门：在 Azure Cosmos DB 中使用 Python 和 Azure 门户创建图形数据库
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -43,11 +43,11 @@ ms.locfileid: "106106919"
 
 在创建图形数据库之前，需通过 Azure Cosmos DB 创建 Gremlin (Graph) 数据库帐户。
 
-[!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-graph](includes/cosmos-db-create-dbaccount-graph.md)]
 
 ## <a name="add-a-graph"></a>添加图形
 
-[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
+[!INCLUDE [cosmos-db-create-graph](includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -187,7 +187,7 @@ ms.locfileid: "106106919"
 
 5. 选择“添加属性”，以添加下列每个属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
-    key|value|说明
+    key|值|注释
     ----|----|----
     pk|/pk| 
     id|ashley|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
@@ -197,7 +197,7 @@ ms.locfileid: "106106919"
     > [!NOTE]
     > 在本快速入门中创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
 
-6. 选择“确定”。 可能需要展开屏幕才能在屏幕底部看到“确定”。
+6. 选择“确定”  。 可能需要展开屏幕才能在屏幕底部看到“确定”。
 
 7. 再次选择“新建顶点”，添加其他新用户。 
 
@@ -205,14 +205,14 @@ ms.locfileid: "106106919"
 
 9. 选择“添加属性”，以添加下列每个属性：
 
-    key|value|说明
+    key|值|注释
     ----|----|----
     pk|/pk| 
     id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
     gender|男| 
     school|MIT| 
 
-10. 选择“确定”。 
+10. 选择“确定”  。 
 
 11. 选择“应用筛选器”按钮（使用默认 `g.V()` 筛选器），显示图中的所有值。 所有用户此时会显示在“结果”列表中。 
 
@@ -234,11 +234,11 @@ ms.locfileid: "106106919"
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+[!INCLUDE [cosmosdb-delete-resource-group](includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

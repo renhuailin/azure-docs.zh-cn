@@ -9,18 +9,18 @@ ms.author: mlearned
 description: 本文提供已启用 Azure Arc 的 Kubernetes 的概述。
 keywords: Kubernetes、Arc、Azure、容器
 ms.custom: references_regions
-ms.openlocfilehash: 74db1dda9ffdf40ec7e6a571a63986d4ab75c193
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d2e71b61210baf93950cb9e8fb2270320f882404
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375347"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967151"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>什么是已启用 Azure Arc 的 Kubernetes？
 
 通过已启用 Azure Arc 的 Kubernetes，可在 Azure 内部或外部附加和配置 Kubernetes 群集。 将 Kubernetes 群集连接到 Azure Arc 时，它将：
 * 通过 Azure 资源管理器 ID 和托管标识显示在 Azure 门户中。 
-* 位于 Azure 订阅和资源组中。
+* 被置于 Azure 订阅和资源组中。
 * 接收标记，就像其他任何 Azure 资源一样。 
 
 若要将 Kubernetes 群集连接到 Azure，群集管理员需要部署代理。 这些代理将执行以下操作：
@@ -29,7 +29,7 @@ ms.locfileid: "110375347"
 * 收集 Azure Arc 日志和指标。
 * 监视配置请求。 
 
-已启用 Azure Arc 的 Kubernetes 支持行业标准 SSL 来保护传输中的数据。 此外，数据以静态加密方式存储在 Azure Cosmos DB 数据库中，确保数据保密性。
+已启用 Azure Arc 的 Kubernetes 支持行业标准 SSL 来保护传输中的数据。 此外，静态数据将以加密方式存储在 Azure Cosmos DB 数据库中，以确保数据机密性。
 
 ## <a name="supported-kubernetes-distributions"></a>支持的 Kubernetes 分布
 
@@ -49,7 +49,7 @@ ms.locfileid: "110375347"
 
 * 使用适用于 Kubernetes 的 Azure Policy 来应用策略。
 
-* 创建[自定义位置](./custom-locations.md)作为目标位置，用于部署已启用 Azure Arc 的数据服务、[Azure Arc 上的应用服务](../../app-service/overview-arc-integration.md)（包括 Web、函数和逻辑应用）和 [Kubernetes 上的事件网格](/azure/event-grid/kubernetes/overview)。
+* 创建[自定义位置](./custom-locations.md)作为目标位置，用于部署已启用 Azure Arc 的数据服务、[Azure Arc 上的应用服务](../../app-service/overview-arc-integration.md)（包括 Web、函数和逻辑应用）和 [Kubernetes 上的事件网格](../../event-grid/kubernetes/overview.md)。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 

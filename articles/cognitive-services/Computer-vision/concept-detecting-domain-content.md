@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b0a046441466efeef559544814f5471b5802b1d4
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: ff00d61c5f53d0c702e16d8223a330cb09ee619e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714829"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465393"
 ---
 # <a name="detect-domain-specific-content"></a>检测特定于域的内容
 
@@ -137,6 +137,8 @@ ms.locfileid: "109714829"
 }
 ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="use-the-api"></a>使用 API
 
-了解有关[对图像进行分类](concept-categorizing-images.md)的概念。
+可通过[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API 获取此功能。 可以通过本机 SDK 或 REST 调用来调用此 API。 在 details 查询参数中包含 `Celebrities` 或 `Landmarks`。 然后，在获取完整 JSON 响应时，就只需分析 `"details"` 部分内容的字符串。
+
+* [快速入门：计算机视觉 REST API 或客户端库](./quickstarts-sdk/image-analysis-client-library.md?pivots=programming-language-csharp)

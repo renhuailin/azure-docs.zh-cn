@@ -10,40 +10,42 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 22db0006e6abb38439a2db46584559dcd9ce3f3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b745a5673aa5cebe62be4c0571d90839399668d6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101722358"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479263"
 ---
-# <a name="prepare-data-to-create-a-custom-voice"></a>准备用于创建自定义语音的数据
+# <a name="prepare-training-data"></a>准备训练数据
 
 准备好为应用程序创建自定义的“文本转语音”语音后，第一步是收集音频录制内容和关联的脚本，开始训练语音模型。 语音服务会使用此数据创建与录制内容中的语音相匹配的、经过优化的独特语音。 训练该语音后，可以开始合成应用程序中的语音。
+
+## <a name="voice-talent-verbal-statement"></a>配音员语音语句
 
 在训练自己的“文本转语音”语音模型之前，需要创建音频录制内容和关联的文本听录内容。 在此页上，我们将查看数据类型及其使用方式和管理方式。
 
 > [!NOTE]
-> 如果要训练神经语音，必须指定配音员个人资料，其中包含配音员提供的语音同意文件，确认使用他/她的语音数据来训练一个自定义语音模型。 准备录制脚本时，请确保包含以下句子。 
+> 若要训练神经语音，必须使用配音员录制的音频文件创建配音员配置文件，前提是配音员同意授权使用其语音数据来训练自定义语音模型。 准备录制脚本时，请确保包含以下句子。
 
 > “我[说出你的名字和姓氏]知道，[说出公司名称]将使用我的声音录音来创建和使用我的声音的合成版本。”
-这句话将用于验证训练数据是否由作出同意的同一人完成。 在此处详细了解[配音员验证](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。
+这句话将用于验证训练数据是否由作出同意的那个人完成。 在此处详细了解[配音员验证](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。
 
-> 自定义神经语音只能在有限的访问权限下使用。 请确保你了解[负责任的 AI 原则](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)和[在此处应用访问权限](https://aka.ms/customneural)。 
+> 自定义神经语音只能在有限的访问权限下使用。 请确保你了解[负责任的 AI 使用原则](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)并[在此处应用访问权限](https://aka.ms/customneural)。 
 
-## <a name="data-types"></a>数据类型
+## <a name="types-of-training-data"></a>训练数据类型
 
 语音训练数据集包括音频录制内容，以及一个包含关联听录内容的文本文件。 每个音频文件应包含单个言语（对话系统的单个句子或单个轮次），长度不能超过 15 秒。
 
-在某些情况下，你可能尚未准备好适当的数据集，并希望使用可用的音频文件（或长或短，包含或不包含脚本）来测试自定义语音训练。 我们提供了所需的工具 (beta) 来帮助你将音频分段成言语，并使用[批量听录 API](batch-transcription.md) 来准备脚本。
+在某些情况下，你可能尚未准备好合适的数据集，于是希望使用可用的音频文件（或长或短，包含或不包含脚本）来测试自定义神经语音训练。 我们提供了所需的工具 (beta) 来帮助你将音频分段成言语，并使用[批量听录 API](batch-transcription.md) 来准备脚本。
 
 下表列出了数据类型，以及如何使用每种类型来创建自定义的“文本转语音”语音模型。
 
-| 数据类型 | 说明 | 何时使用 | 需要额外的处理 | 
+| 数据类型 | 说明 | 何时使用 | 需要额外的处理 |
 | --------- | ----------- | ----------- | --------------------------- |
 | **单个言语 + 匹配的脚本** | 单个言语形式的音频文件 (.wav) 集合 (.zip)。 每个音频文件的长度不应超过 15 秒，并与带格式的脚本 (.txt) 配对。 | 包含匹配脚本的专业录制内容 | 做好训练准备。 |
-| **长音频 + 脚本 (beta)** | 长的未分段音频文件（长度超过 20 秒）集合 (.zip)，与包含所有口语的脚本 (.txt) 配对。 | 有音频文件和匹配的脚本，但它们未分段成言语。 | 分段（使用批量听录）。<br>根据需要进行音频格式转换。 | 
-| **仅限音频 (beta)** | 不包含脚本的音频文件集合 (.zip)。 | 只有音频文件，没有脚本。 | 分段 + 脚本生成（使用批量听录）。<br>根据需要进行音频格式转换。| 
+| **长音频 + 脚本 (beta)** | 长的未分段音频文件（长度超过 20 秒）集合 (.zip)，与包含所有口语的脚本 (.txt) 配对。 | 有音频文件和匹配的脚本，但它们未分段成言语。 | 分段（使用批量听录）。<br>根据需要进行音频格式转换。 |
+| **仅限音频 (beta)** | 不包含脚本的音频文件集合 (.zip)。 | 只有音频文件，没有脚本。 | 分段 + 脚本生成（使用批量听录）。<br>根据需要进行音频格式转换。|
 
 文件应按类型分组成数据集，并作为 zip 文件上传。 每个数据集只能包含一种数据类型。
 
@@ -57,7 +59,7 @@ ms.locfileid: "101722358"
 若要生成好的语音模型，请在安静的房间中使用优质麦克风创建录制内容。 必须确保使用一致的音量、语速、语调以及有表现力的语音方式。
 
 > [!TIP]
-> 若要创建生产用的语音，建议使用专业录音棚和语音专家。 有关详细信息，请参阅[如何录制自定义语音的语音示例](record-custom-voice-samples.md)。
+> 若要创建生产用的语音，建议使用专业录音棚和语音专家。 有关详细信息，请参阅[录制语音示例以创建自定义神经语音](record-custom-voice-samples.md)。
 
 ### <a name="audio-files"></a>音频文件
 
@@ -68,7 +70,7 @@ ms.locfileid: "101722358"
 | 属性 | 值 |
 | -------- | ----- |
 | 文件格式 | RIFF (.wav)，分组成 .zip 文件 |
-| 采样率 | 至少 16,000 Hz |
+| 采样率 | 至少 16,000 Hz。 若要创建神经语音，需要 24,000 Hz。 |
 | 示例格式 | PCM，16 位 |
 | 文件名 | 数字，扩展名为 .wav。 不允许重复的文件名。 |
 | 音频长度 | 短于 15 秒 |
@@ -76,7 +78,10 @@ ms.locfileid: "101722358"
 | 最大存档大小 | 2048 MB |
 
 > [!NOTE]
-> 采样率低于 16,000 Hz 的 .wav 文件将被拒绝。 如果 .zip 文件包含具有不同采样率的 .wav 文件，只会导入等于或高于 16,000 Hz 的波形。 门户目前可以导入的 .zip 存档最多只能为 200 MB。 但是，可以上传多个存档。
+> 采样率低于 16,000 Hz 的 .wav 文件将被拒绝。 如果 .zip 文件包含具有不同采样率的 .wav 文件，只会导入等于或高于 16,000 Hz 的波形。 门户目前可以导入的 .zip 存档最多只能为 2048 MB。 但是，可以上传多个存档。
+
+> [!NOTE]
+> 自定义神经语音的默认采样频率为 24,000 Hz。  采样频率低于 16,000 Hz 的 .wav 文件将向上采样至 24,000 Hz，以训练神经语音。  建议对训练数据使用 24,000 Hz 的采样频率。
 
 ### <a name="transcripts"></a>脚本
 
@@ -100,7 +105,7 @@ ms.locfileid: "101722358"
 
 ## <a name="long-audio--transcript-beta"></a>长音频 + 脚本 (beta)
 
-在某些情况下，你可能没有可用的分段音频。 我们将通过自定义语音门户提供一个服务 (beta)，以帮助你分段长音频文件和创建听录内容。 请记住，此服务会产生语音转文本订阅使用费。
+在某些情况下，你可能没有可用的分段音频。 我们将通过 Speech Studio 提供一个服务 (beta)，帮助将长音频文件分段和创建听录内容。 请记住，此服务会产生语音转文本订阅使用费。
 
 > [!NOTE]
 > 长音频分段服务将利用语音转文本的批量听录功能，该功能仅支持标准订阅 (S0) 用户。 在处理分段期间，还会将音频文件和脚本发送到自定义语音服务来优化识别模式，以改善数据的准确性。 在此过程中不会保留任何数据。 分段完成后，只会存储已分段的言语及其映射脚本供你下载和训练。
@@ -116,6 +121,9 @@ ms.locfileid: "101722358"
 | 音频长度 | 长于 20 秒 |
 | 存档格式 | .zip |
 | 最大存档大小 | 2048 MB |
+
+> [!NOTE]
+> 自定义神经语音的默认采样频率为 24,000 Hz。  采样频率低于 16,000 Hz 的 .wav 文件将向上采样至 24,000 Hz，以训练神经语音。  建议对训练数据使用 24,000 Hz 的采样频率。
 
 所有音频文件应分组成一个 .zip 文件。 可以将 .wav 文件和 .mp3 文件放入一个音频 zip。 例如，上传的 zip 文件可以包含一个名为“kingstory.wav”且长度为 45 秒的音频文件，以及一个名为“queenstory.mp3”且长度为 200 秒的音频。 处理后，所有 .mp3 文件将转换为 .wav 格式。
 
@@ -137,7 +145,7 @@ ms.locfileid: "101722358"
 
 ## <a name="audio-only-beta"></a>仅限音频 (beta)
 
-如果音频录制内容没有听录，请使用“仅限音频”选项上传数据。 我们的系统可帮助你分段和听录音频文件。 请记住，此服务将计收语音转文本订阅使用费。
+如果音频录制内容没有听录，请使用“仅限音频”选项上传数据。 我们的系统可帮助你分段和听录音频文件。 请记住，此服务会产生语音转文本订阅使用费。
 
 准备音频时，请遵循这些指导原则。
 
@@ -152,9 +160,12 @@ ms.locfileid: "101722358"
 | 存档格式 | .zip |
 | 最大存档大小 | 2048 MB |
 
+> [!NOTE]
+> 自定义神经语音的默认采样频率为 24,000 Hz。  采样频率低于 16,000 Hz 的 .wav 文件将向上采样至 24,000 Hz，以训练神经语音。  建议对训练数据使用 24,000 Hz 的采样频率。
+
 所有音频文件应分组成一个 .zip 文件。 成功上传数据集后，我们会基于语音批量听录服务帮助你将音频文件分段成言语。 系统会自动将唯一 ID 分配到分段的言语。 匹配的脚本将通过语音识别生成。 处理后，所有 .mp3 文件将转换为 .wav 格式。 可以通过下载数据集来检查分段的言语和匹配的脚本。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建自定义语音](how-to-custom-voice-create-voice.md)
-- [指南：录制语音样本](record-custom-voice-samples.md)
+- [创建和使用语音模型](how-to-custom-voice-create-voice.md)
+- [如何录制语音示例](record-custom-voice-samples.md)

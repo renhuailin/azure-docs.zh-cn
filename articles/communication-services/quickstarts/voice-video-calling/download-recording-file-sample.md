@@ -6,15 +6,15 @@ author: joseys
 manager: anvalent
 services: azure-communication-services
 ms.author: joseys
-ms.date: 04/14/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 486dbc4e3bafe34fad9f6eeb00460ee6b9bf5613
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: e7a114c5ce31ff4df96648ba2545c2222ba4893d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292803"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111602"
 ---
 # <a name="record-and-download-calls-with-event-grid"></a>使用事件网格录制和下载通话
 
@@ -34,7 +34,7 @@ ms.locfileid: "108292803"
 
 可以编写自定义 webhook 来接收这些事件通知。 对于通过验证代码响应入站消息以成功将 webhook 订阅到事件服务，此 webhook 非常重要。
 
-```
+```csharp
 [HttpPost]
 public async Task<ActionResult> PostAsync([FromBody] object request)
   {
@@ -63,7 +63,6 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
   }
 ```
 
-
 上述代码依赖于 `Microsoft.Azure.EventGrid` NuGet 包。 若要了解有关事件网格终结点验证的详细信息，请访问[终结点验证文档](../../../event-grid/receive-events.md#endpoint-validation)
 
 接下来，我们将此 webhook 订阅到 `recording`：
@@ -81,7 +80,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
 ## <a name="notification-schema"></a>通知架构
 当录像可供下载时，通信服务资源将发出包含以下事件架构的通知。 可以从每个 `documentId` 的 `recordingChunk` 字段提取录像的文档 ID。
 
-```
+```json
 {
     "id": string, // Unique guid for event
     "topic": string, // Azure Communication Services resource id
@@ -130,7 +129,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
 
 使用以下提供的 `HttpClient` 创建 `HmacAuthenticationUtils` 并添加所需的标头：
 
-```
+```csharp
   var client = new HttpClient();
 
   // Set Http Method
@@ -156,7 +155,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
   // Hash the content of the request.
   var contentHashed = HmacAuthenticationUtils.CreateContentHash(serializedPayload);
 
-  // Add HAMC headers.
+  // Add HMAC headers.
   HmacAuthenticationUtils.AddHmacHeaders(request, contentHashed, accessKey, method);
 
   // Make a request to the Azure Communication Services APIs mentioned above
@@ -168,7 +167,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
 
 **创建内容哈希**
 
-```
+```csharp
 public static string CreateContentHash(string content)
 {
     var alg = SHA256.Create();
@@ -191,7 +190,7 @@ public static string CreateContentHash(string content)
 
 **添加 HMAC 标头**
 
-```
+```csharp
 public static void AddHmacHeaders(HttpRequestMessage requestMessage, string contentHash, string accessKey)
 {
     var utcNowString = DateTimeOffset.UtcNow.ToString("r", CultureInfo.InvariantCulture);

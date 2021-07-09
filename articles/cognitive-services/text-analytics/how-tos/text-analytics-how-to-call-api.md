@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 06/10/2021
 ms.author: aahi
-ms.custom: references_regions
-ms.openlocfilehash: 5790c7c62b9d97df9683773170301b6e09a47667
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: b7ad200bba527d0b4b841483175b2672d94f162e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728475"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962850"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -31,9 +30,9 @@ ms.locfileid: "107728475"
 
 1.  首先，转到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)并创建一个新的文本分析资源（如果没有）。 选择一个[定价层](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)。
 
-2.  选择要用于终结点的区域。  请注意，`/analyze` 和 `/health` 终结点仅在以下区域提供：美国西部 2、美国东部 2、美国中部、欧洲北部和欧洲西部。
+2.  选择要用于终结点的区域。
 
-3.  创建文本分析资源，并转到页面左侧的“密钥和终结点边栏选项卡”。 复制稍后调用 API 时要使用的密钥。 稍后会将此添加为 `Ocp-Apim-Subscription-Key` 标头的值。
+3.  创建文本分析资源，并转到页面左侧资源管理下的“密钥和终结点”部分。 复制稍后调用 API 时要使用的密钥。 稍后会将此添加为 `Ocp-Apim-Subscription-Key` 标头的值。
 
 4. 若要检查使用文本分析资源发送的文本记录数，请执行以下操作：
 
@@ -41,7 +40,7 @@ ms.locfileid: "107728475"
     2. 单击左侧导航菜单中的“监视”下的“指标” 。 
     3. 在“指标”下拉框中选择“已处理的文本记录”。
     
-每个文本记录包含 1000 个字符。
+文本记录是字符数不超过 1000 的输入文本单元。  例如，作为输入文本提交的 1500 个字符将计为 2 条文本记录。
 
 ## <a name="change-your-pricing-tier"></a>更改定价层 
 
@@ -59,21 +58,19 @@ ms.locfileid: "107728475"
 
 ## <a name="using-the-api-asynchronously"></a>以异步方式使用 API
 
-从 v3.1 - 预览版 3 开始，文本分析 API 提供了两个异步终结点： 
+文本分析 v3.1-preview.5 API 提供了两个异步终结点： 
 
 * 用于文本分析的 `/analyze` 终结点，它让你能够在一个 API 调用中使用多个文本分析功能分析同一组文本文档。 以前，若要使用多个功能，需要为每个操作执行单独的 API 调用。 需要使用多个文本分析功能分析大型文档集时，请考虑使用此功能。
 
 * 用于健康状况文本分析的 `/health` 终结点，它可以从临床文档中提取和标记相关的医疗信息。  
-
-请注意，/analyze 和 /health 终结点仅在以下区域提供：美国西部 2、美国东部 2、美国中部、欧洲北部和欧洲西部。
 
 请参阅下表，了解可以通过异步方式使用哪些功能。 请注意，只有几个功能可以从 `/analyze` 终结点进行调用。 
 
 | 功能 | 同步 | 异步 |
 |--|--|--|
 | 语言检测 | ✔ |  |
-| 情绪分析 | ✔ |  |
-| 观点挖掘 | ✔ |  |
+| 情绪分析 | ✔ | ✔* |
+| 观点挖掘 | ✔ | ✔* |
 | 关键短语提取 | ✔ | ✔* |
 | 命名实体识别（包括 PII 和 PHI） | ✔ | ✔* |
 | 实体链接 | ✔ | ✔* |
@@ -132,6 +129,8 @@ ms.locfileid: "107728475"
 * 关键短语提取 
 * 命名实体识别（包括 PII 和 PHI）
 * 实体链接
+* 情绪分析
+* 观点挖掘
 
 | 元素 | 有效值 | 必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
@@ -140,7 +139,7 @@ ms.locfileid: "107728475"
 |`documents` | 包括下面的 `id` 和 `text` 字段 | 必需 | 包含发送的每个文档的信息以及文档的原始文本。 |
 |`id` | String | 必须 | 提供的 ID 用于构建输出。 |
 |`text` | 非结构化原始文本，最多包含 125,000 个字符。 | 必需 | 必须为英语，这是目前支持的唯一语言。 |
-|`tasks` | 包括以下文本分析功能：`entityRecognitionTasks`、`entityLinkingTasks``keyPhraseExtractionTasks` 或 `entityRecognitionPiiTasks`。 | 必需 | 要使用的一个或多个文本分析功能。 请注意，`entityRecognitionPiiTasks` 有一个可选的 `domain` 参数，该参数可设置为 `pii` 或 `phi`，并且 `pii-categories` 用于检测所选的实体类型。 如果未指定 `domain` 参数，则系统默认使用 `pii`。 |
+|`tasks` | 包括以下文本分析功能：`entityRecognitionTasks`、`entityLinkingTasks`、`keyPhraseExtractionTasks``entityRecognitionPiiTasks` 或 `sentimentAnalysisTasks`。 | 必需 | 要使用的一个或多个文本分析功能。 请注意，`entityRecognitionPiiTasks` 有一个可选的 `domain` 参数，该参数可设置为 `pii` 或 `phi`，并且 `pii-categories` 用于检测所选的实体类型。 如果未指定 `domain` 参数，则系统默认使用 `pii`。 类似地，`sentimentAnalysisTasks` 具有 `opinionMining` 布尔参数，用于在情绪分析的输出中包含观点挖掘结果。 |
 |`parameters` | 包括下面的 `model-version` 和 `stringIndexType` 字段 | 必需 | 此字段包含在所选的上述功能任务中。 它们包含有关要使用的模型版本和索引类型的信息。 |
 |`model-version` | String | 必须 | 指定要使用调用的哪个模型版本。  |
 |`stringIndexType` | String | 必须 | 指定与编程环境匹配的文本解码器。  支持的类型有 `textElement_v8`（默认）、`unicodeCodePoint` 和 `utf16CodeUnit`。 有关详细信息，请参阅[文本偏移文章](../concepts/text-offsets.md#offsets-in-api-version-31-preview)。  |
@@ -157,7 +156,7 @@ ms.locfileid: "107728475"
             },
             {
                 "id": "doc2",
-                "text": "Pike place market is my favorite Seattle attraction."
+                "text": "Pike place market is my favorite Seattle attraction. The shops have very good food."
             }
         ]
     },
@@ -166,7 +165,19 @@ ms.locfileid: "107728475"
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElements_v8"
+                    "stringIndexType": "TextElement_v8",
+                    "loggingOptOut": "false"
+                }
+            }
+        ],
+        "entityRecognitionPiiTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElement_v8",
+                    "loggingOptOut": "true",
+                    "domain": "phi",
+                    "piiCategories":["default"]
                 }
             }
         ],
@@ -174,23 +185,29 @@ ms.locfileid: "107728475"
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElements_v8"
+                    "stringIndexType": "TextElement_v8",
+                    "loggingOptOut": "false"
                 }
             }
         ],
-        "keyPhraseExtractionTasks": [{
-            "parameters": {
-                "model-version": "latest"
+        "keyPhraseExtractionTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "loggingOptOut": "false"
+                }
             }
-        }],
-        "entityRecognitionPiiTasks": [{
-            "parameters": {
-                "model-version": "latest",
-                "stringIndexType": "TextElements_v8",
-                "domain": "phi",
-                "pii-categories":"default"
+        ],
+        "sentimentAnalysisTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElement_v8",
+                    "loggingOptOut": "false",
+                    "opinionMining": "true"
+                }
             }
-        }]
+        ]
     }
 }
 
@@ -242,11 +259,12 @@ example.json
 |--|--|--|
 | 语言检测 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
 | 情绪分析 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
-| 观点挖掘 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment?opinionMining=true` |
+| 观点挖掘 | POST | `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/sentiment?opinionMining=true` |
 | 关键短语提取 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/keyPhrases` |
 | 命名实体识别 - 常规 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/general` |
-| 命名实体识别 - PII | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
-| 命名实体识别 - PHI | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
+| 命名实体识别 - PII | POST | `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/recognition/pii` |
+| 命名实体识别 - PHI | POST |  `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/recognition/pii?domain=phi` |
+| 实体链接 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/linking` |
 
 #### <a name="asynchronous"></a>[异步](#tab/asynchronous)
 
@@ -254,16 +272,16 @@ example.json
 
 | 功能 | 请求类型 | 资源终结点 |
 |--|--|--|
-| 提交分析作业 | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze` |
-| 获取分析状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>` |
+| 提交分析作业 | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/analyze` |
+| 获取分析状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>用于将异步请求发送到 `/health` 终结点的终结点
 
 | 功能 | 请求类型 | 资源终结点 |
 |--|--|--|
-| 提交健康状况文本分析作业  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs` |
-| 获取作业状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
-| 取消作业 | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
+| 提交健康状况文本分析作业  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs` |
+| 获取作业状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs/<Operation-Location>` |
+| 取消作业 | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
@@ -299,9 +317,9 @@ example.json
 如果调用了异步 `/analyze` 或 `/health` 终结点，请检查是否收到 202 响应代码。 需要获取响应才能查看结果：
 
 1. 在 API 响应中，从标头中找到 `Operation-Location`，它用于标识发送到 API 的作业。 
-2. 为所使用的终结点创建 GET 请求。 请参阅[上文中的表格](#set-up-a-request)，了解终结点格式，并查看 [API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)。 例如：
+2. 为所使用的终结点创建 GET 请求。 请参阅[上文中的表格](#set-up-a-request)，了解终结点格式，并查看 [API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/AnalyzeStatus)。 例如：
 
-    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>`
+    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/analyze/jobs/<Operation-Location>`
 
 3. 将 `Operation-Location` 添加到请求。
 
@@ -329,6 +347,7 @@ example.json
 如果成功，对 `/analyze` 终结点的 GET 请求将返回包含所分配任务的对象。 例如，`keyPhraseExtractionTasks`。 这些任务包含来自适当文本分析功能的响应对象。 有关详细信息，请参阅以下文章。
 
 + [关键短语提取](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [情绪分析](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [实体识别](text-analytics-how-to-entity-linking.md#view-results)
 + [运行状况文本分析](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
 
@@ -337,6 +356,7 @@ example.json
 ## <a name="see-also"></a>另请参阅
 
 * [文本分析概述](../overview.md)
+* [模型版本](../concepts/model-versioning.md)
 * [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
 * [文本分析产品页](//go.microsoft.com/fwlink/?LinkID=759712)
 * [使用文本分析客户端库](../quickstarts/client-libraries-rest-api.md)

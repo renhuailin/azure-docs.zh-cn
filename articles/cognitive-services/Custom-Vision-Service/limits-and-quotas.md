@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 3392cc5f3ee9daef1ae8397f6829f4ca7a42373a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8dfe8711733efeb33561531c85925111799daba
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98871394"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479298"
 ---
 # <a name="limits-and-quotas"></a>限制和配额
 
@@ -23,13 +23,13 @@ ms.locfileid: "98871394"
 
 对于 S0 项目，预计每个项目训练图像数和每个项目的标记数量将随着时间的推移而增加。
 
-|因子|**F0**|**S0**|
+|因子|**F0（免费）**|**S0（标准）**|
 |-----|-----|-----|
 |项目|2|100|
 |每项目训练图像数 |5,000|100,000|
 |每月预测数|10,000 |无限制|
 |每项目标记数|50|500|
-|迭代 |10|10|
+|迭代 |20|20|
 |每个标记的最少标记图像数，分类（建议 50+） |5|5|
 |每个标记的最少标记图像数，对象检测（建议 50+）|15|15|
 |将预测图像存储的时间长度|30 天|30 天|

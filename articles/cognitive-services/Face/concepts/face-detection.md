@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 68d1e9744d937cf80327c3f41cc69f4af97d3400
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a8abb31b2442a8823437bb155b5b9970db1d181
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98600184"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742258"
 ---
 # <a name="face-detection-and-attributes"></a>人脸检测和属性
 
@@ -39,6 +39,7 @@ ms.locfileid: "98600184"
 
 属性是可由[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API 选择性地检测到的一组特征。 以下属性可以检测到：
 
+* 配饰。 给定的人脸是否戴有配饰。 此属性会返回可能的配饰，包括头饰、眼镜和口罩，每个配饰的置信度分数介于 0 到 1 之间。
 * **Age**： 特定人脸的估计年龄（岁）。
 * **Blur**： 图像中人脸的模糊度。 此属性返回 0 到 1 的值，以及非正式分级：low、medium 或 high。
 * **Emotion**： 给定人脸的情感列表及其检测置信度。 置信度分数会进行标准化，所有情感的分数加起来后得到一个总的分数。 返回的情感包括快乐、悲伤、中性、愤怒、蔑视、厌恶、惊讶、恐惧。
@@ -51,6 +52,7 @@ ms.locfileid: "98600184"
 
     ![标有俯仰、翻滚和偏航轴的头部](../Images/headpose.1.jpg)
 * **Makeup**： 人脸是否有化妆。 此值返回 eyeMakeup 和 lipMakeup 的布尔值。
+* 口罩。  人脸是否佩戴口罩。 此属性会返回可能的口罩类型，以及一个布尔值，用于指示鼻子和嘴巴是否被覆盖。
 * **Noise**： 在人脸图像中检测到的视觉噪点。 此属性返回 0 到 1 的值，以及非正式分级：low、medium 或 high。
 * **Occlusion**： 是否存在遮挡人脸部位的物体。 此属性返回 eyeOccluded、foreheadOccluded 和 mouthOccluded 的布尔值。
 * **Smile**： 给定人脸的微笑表情。 此值介于 0（未微笑）与 1（明确的微笑）之间。

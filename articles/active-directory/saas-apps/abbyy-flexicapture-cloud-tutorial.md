@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 359511e653231ee25f0cd09f32448a0b66b40d3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb7bef1b2c197268e7810001f845c89788579e5b
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97586731"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891102"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-abbyy-flexicapture-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ABBYY FlexiCapture Cloud 的集成
 
@@ -37,10 +37,10 @@ ms.locfileid: "97586731"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* ABBYY FlexiCapture Cloud 支持 SP 和 IDP 发起的 SSO
-* ABBYY FlexiCapture Cloud 支持实时用户预配
+* ABBYY FlexiCapture Cloud 支持 SP 和 IDP 发起的 SSO。
+* ABBYY FlexiCapture Cloud 支持实时用户预配。
 
-## <a name="adding-abbyy-flexicapture-cloud-from-the-gallery"></a>从库中添加 ABBYY FlexiCapture Cloud
+## <a name="add-abbyy-flexicapture-cloud-from-the-gallery"></a>从库中添加 ABBYY FlexiCapture Cloud
 
 要配置 ABBYY FlexiCapture Cloud 与 Azure AD 的集成，需要从库中将 ABBYY FlexiCapture Cloud 添加到托管 SaaS 应用列表。
 
@@ -50,7 +50,6 @@ ms.locfileid: "97586731"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“ABBYY FlexiCapture Cloud” 。
 1. 从结果面板中选择“ABBYY FlexiCapture Cloud”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-abbyy-flexicapture-cloud"></a>配置和测试 ABBYY FlexiCapture Cloud 的 Azure AD SSO
 
@@ -71,11 +70,11 @@ ms.locfileid: "97586731"
 
 1. 在 Azure 门户的“ABBYY FlexiCapture Cloud”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.flexicapture.com/FlexiCapture12/Login/<TENANT_NAME>/AccessToken/Saml`
 
@@ -95,6 +94,7 @@ ms.locfileid: "97586731"
 1. 在“设置 ABBYY FlexiCapture Cloud”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -139,9 +139,9 @@ ms.locfileid: "97586731"
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 ABBYY FlexiCapture Cloud 
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 ABBYY FlexiCapture Cloud。 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 单击访问面板中的 ABBYY FlexiCapture Cloud 磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 ABBYY FlexiCapture Cloud。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“ABBYY FlexiCapture Cloud”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 ABBYY FlexiCapture Cloud。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

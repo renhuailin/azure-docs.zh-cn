@@ -8,16 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 04/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 6971c6f0959135c7de1f41bcd49adde514f87941
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d5de7ed4536ce7c83de4cc1e9a2d886015188e20
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625477"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695342"
 ---
-# <a name="use-speech-services-through-a-private-endpoint"></a>通过专用终结点使用语音服务
+# <a name="use-speech-service-through-a-private-endpoint"></a>通过专用终结点使用语音服务
 
 使用 [Azure 专用链接](../../private-link/private-link-overview.md)，可以通过[专用终结点](../../private-link/private-endpoint-overview.md)连接到 Azure 中的服务。 专用终结点是只能在特定[虚拟网络](../../virtual-network/virtual-networks-overview.md)和子网中访问的专用 IP 地址。
 
@@ -29,14 +30,22 @@ ms.locfileid: "105625477"
 
 
 
+为专用终结点方案设置语音资源需要执行以下任务：
+1. [创建自定义域名](#create-a-custom-domain-name)
+1. [启用专用终结点](#turn-on-private-endpoints)
+1. [调整现有应用程序和解决方案](#adjust-an-application-to-use-a-speech-resource-with-a-private-endpoint)
+
+[!INCLUDE [](includes/speech-vnet-service-enpoints-private-endpoints.md)]
+
+本文介绍如何将专用终结点与语音服务一起使用。 [此处](speech-service-vnet-service-endpoint.md)说明了 VNet 服务终结点的用法。
+
+
 ## <a name="create-a-custom-domain-name"></a>创建自定义域名
 
 专用终结点需要[将自定义子域名称用于认知服务](../cognitive-services-custom-subdomains.md)。 使用以下说明可为语音资源创建一个专用终结点。
 
 > [!WARNING]
-> 使用自定义域名的语音资源会以不同的方式与语音服务进行交互。
-> 你可能需要调整应用程序代码以使用具有专用终结点的语音资源，同时使用无专用终结点的语音资源。
-> 这两种方案可能都是必需的，因为切换到自定义域名的操作不可逆。
+> 启用了自定义域名的语音资源使用不同的方法与语音服务交互。 可能必须为以下两种方案调整应用程序代码：[使用专用终结点](#adjust-an-application-to-use-a-speech-resource-with-a-private-endpoint)以及[不使用专用终结点](#adjust-an-application-to-use-a-speech-resource-without-private-endpoints)。
 >
 > 启用自定义域名时，此操作[不可逆](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name)。 恢复为[区域名称](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)的唯一方法是创建新语音资源。
 >
@@ -561,13 +570,17 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
 ```
 
+[!INCLUDE [](includes/speech-vnet-service-enpoints-private-endpoints-simultaneously.md)]
+
 ## <a name="pricing"></a>定价
 
 有关定价详细信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link)。
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解更多信息
 
+* [通过虚拟网络服务终结点使用语音服务](speech-service-vnet-service-endpoint.md)
 * [Azure 专用链接](../../private-link/private-link-overview.md)
+* [Azure VNet 服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)
 * [语音 SDK](speech-sdk.md)
 * [语音转文本 REST API](rest-speech-to-text.md)
 * [文本转语音 REST API](rest-text-to-speech.md)

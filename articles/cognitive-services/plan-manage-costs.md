@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: db99fa5caff27a24aa04e4780b25ade3f7c25496
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d686ea40b08139b9d16ade16d6e401db8300db0f
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101699923"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081112"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>规划和管理 Azure 认知服务的成本
 
@@ -36,7 +36,30 @@ ms.locfileid: "101699923"
 
 ## <a name="understand-the-full-billing-model-for-cognitive-services"></a>了解认知服务的完整计费模式
 
-认知服务在 Azure 基础结构上运行，部署新资源时，该基础结构会随之[产生成本](https://azure.microsoft.com/pricing/details/cognitive-services/)。 需要了解的是，其他基础结构可能会产生成本。 对已部署的资源进行更改时需要管理该成本。 
+认知服务在 Azure 基础结构上运行，部署新资源时，该基础结构会随之[产生成本](https://azure.microsoft.com/pricing/details/cognitive-services/)。 需要了解的是，增加基础结构可能会产生成本。 对已部署的资源进行更改时需要管理该成本。 
+
+### <a name="how-youre-charged-for-cognitive-services"></a>认知服务的收费方式
+
+创建或使用认知服务资源时，可能需要针对使用的服务按以下计量标准付费：
+
+| 服务 | 计量标准 | 计费信息 | 
+|---------|-------|---------------------|
+| **影像** | | |
+| [计算机视觉](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/) | 免费、标准 (S1) | 按事务数计费。 每个事务的价格因功能（读取、OCR、空间分析）而异。 有关完整详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)。 |
+| [自定义视觉](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) | 免费、标准 | <li>预测按事务数计费。</li><li>训练按计算小时计费。</li><li>图像存储按图像数（每张图片最大 6 MB）计费。</li>|
+| [人脸](https://azure.microsoft.com/pricing/details/cognitive-services/face-api/) | 免费、标准 | 按事务数计费。 |
+| **语音** | | |
+| [语音服务](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) | 免费、标准 | 计费因功能（语音转文本、文本转语音、语音翻译、说话人识别）而异。 主要按事务计数或字符计数计费。 有关完整详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。 |
+| **语言** | | |
+| [语言理解 (LUIS)](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) | 免费创作、免费预测、标准 | 按事务数计费。 每个事务的价格因功能（语音请求、文本请求）而异。 有关完整详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)。 |
+| [QnA Maker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/) | 免费、标准 | 订阅费用按月计费。 有关完整详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)。 | 
+| [文本分析](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) | 免费、标准 | 按文本记录数计费。 | 
+| [翻译](https://azure.microsoft.com/pricing/details/cognitive-services/translator/) | 免费、即用即付 (S1)、批量折扣（S2、S3、S4、C2、C3、C4、D3） | 定价因计量标准和功能而异。 有关完整详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/translator/)。 <li>文本翻译按翻译的字符数计费。</li><li>文档翻译按翻译的字符数计费。</li><li>自定义翻译按源和目标训练数据的字符数计费。</li> |  
+| **决策** | | |
+| [异常检测器](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/) | 免费、标准 | 按事务数计费。 | 
+| [内容审查器](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/) | 免费、标准 | 按事务数计费。 |
+| [个性化体验创建服务](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/) | 免费、标准 (S0) | 按每月事务数计费。 存在存储和事务配额。 有关完整详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/)。 | 
+
 
 ### <a name="costs-that-typically-accrue-with-cognitive-services"></a>通常随认知服务而产生的成本
 
@@ -62,7 +85,7 @@ ms.locfileid: "101699923"
 
 ### <a name="using-azure-prepayment-credit-with-cognitive-services"></a>对于认知服务使用 Azure 预付款信用额度
 
-可以使用 Azure 预付款（之前称为货币承诺）信用额度支付认知服务费用。 但是，不能使用 Azure 预付款额度来支付第三方产品和服务（包括 Azure 市场中的）的费用。
+可以使用 Azure 预付款（之前称为货币承诺）信用额度支付认知服务费用。 但是，不能使用 Azure 预付款额度来支付第三方产品和服务的费用（包括 Azure 市场中的第三方产品和服务）。
 
 ## <a name="monitor-costs"></a>监视成本
 
@@ -75,7 +98,7 @@ ms.locfileid: "101699923"
 在成本分析中查看认知服务成本：
 
 1. 登录到 Azure 门户。
-2. 在 Azure 门户中打开范围，并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析” 。 选择“范围”，在成本分析中切换到不同的范围。
+2. 在 Azure 门户中打开范围，并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择一项订阅，然后在菜单中选择“成本分析” 。 选择“范围”，在成本分析中切换到不同的范围。
 3. 默认情况下，服务的成本显示在第一个圆环图中。 选择图表中标记为“认知服务”的区域。
 
 最初打开成本分析时，会显示实际的每月成本。 下面是显示所有每月使用成本的示例。
@@ -98,7 +121,7 @@ ms.locfileid: "101699923"
 
 ## <a name="export-cost-data"></a>导出成本数据
 
-还可以将[成本数据导出](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)到存储帐户。 当你或其他人需要进行有关成本的额外数据分析时，这非常有用。 例如，财务团队可以使用 Excel 或 Power BI 来分析数据。 可以按每天、每周或每月计划导出成本，并设置自定义的日期范围。 建议导出成本数据来检索成本数据集。
+还可以将[成本数据导出](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)到存储帐户。 当你或其他人需要进行有关成本的更多数据分析时，这非常有用。 例如，财务团队可以使用 Excel 或 Power BI 来分析数据。 可以按每天、每周或每月计划导出成本，并设置自定义的日期范围。 建议导出成本数据来检索成本数据集。
 
 ## <a name="next-steps"></a>后续步骤
 

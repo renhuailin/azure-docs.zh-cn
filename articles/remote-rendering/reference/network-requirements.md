@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: fd8686cc396d5fcee20590fbac8bccaf187b024d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fd77f7ac69296c8d59b703d202b23e2112bd912
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101735941"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764704"
 ---
 # <a name="network-requirements"></a>网络要求
 
@@ -21,7 +21,7 @@ ms.locfileid: "101735941"
 确切的网络要求视特定用例而定（如对远程场景图的修改次数和频率，以及所渲染视图的复杂度），但仍有许多准则可以确保尽可能获得良好的用户体验：
 
 * 对于单个 Azure 远程渲染用户会话，Internet 连接至少需要始终如一地支持 40 Mbps 下游速度和 5 Mbps 上游速度（假设网络上没有竞争流量）。 为了获得更好的体验，建议提高速度。 
-* Wi-Fi 是推荐的网络类型，因为它支持低延迟、高带宽和稳定的连接。 一些移动网络引入了抖动，这会导致糟糕的体验。 
+* Wi-Fi 是建议的网络类型，因为它支持低延迟、高带宽和稳定连接。 一些移动网络引入了抖动，这会导致糟糕的体验。 
 * 使用 5 GHz Wi-Fi 频段通常会比使用 2.4 GHz Wi-Fi 频段产生更好的效果，不过这两种频段都可以使用。
 * 如果附近有其他 Wi-Fi 网络，应避免使用其他这些网络正在使用的 Wi-Fi 通道。 可以使用网络扫描工具（如 [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html)）来验证你的 Wi-Fi 网络使用的通道是否没有竞争流量。
 * 请务必避免使用 Wi-Fi 中继器或电力线 LAN 上网转发。

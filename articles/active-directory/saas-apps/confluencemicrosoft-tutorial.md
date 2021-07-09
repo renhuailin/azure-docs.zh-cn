@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/25/2020
+ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 34365a8bd7a15f502aa89a966adb14807e802cc4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77e98560ee483f55fc4a808a8c888f20af983a90
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736992"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478473"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Confluence SAML SSO by Microsoft 集成
 
@@ -62,7 +62,7 @@ ms.locfileid: "98736992"
 
 - Confluence：5.0 到 5.10
 - Confluence：6.0.1 到 6.15.9
-- Confluence：7.0.1 到 7.9.3
+- Confluence：7.0.1 到 7.10.0
 
 > [!NOTE]
 > 请注意，Confluence 插件还适用于 Ubuntu 版本 16.04
@@ -71,7 +71,7 @@ ms.locfileid: "98736992"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Confluence SAML SSO by Microsoft 支持 **SP** 发起的 SSO
+* Confluence SAML SSO by Microsoft 支持 SP 发起的 SSO。
 
 ## <a name="adding-confluence-saml-sso-by-microsoft-from-the-gallery"></a>从库中添加 Confluence SAML SSO by Microsoft
 
@@ -109,11 +109,11 @@ ms.locfileid: "98736992"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`。
+    a. 在“标识符”框中，使用以下模式键入 URL：`https://<DOMAIN:PORT>/`
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<domain:port>/`
-
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<DOMAIN:PORT>/plugins/servlet/saml/auth`
+    
+    c. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<DOMAIN:PORT>/plugins/servlet/saml/auth`。
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 端口可选，以防止其为命名 URL。 在配置 Confluence 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
@@ -152,11 +152,11 @@ ms.locfileid: "98736992"
 
 1. 将鼠标悬停在小齿轮上，并单击“外接程序”。
 
-    ![显示已选择“小齿轮”图标的屏幕截图，其中下拉菜单中突出显示了“加载项”。](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![显示已选择“小齿轮”图标的屏幕截图，其中下拉菜单中突出显示了“加载项”。](./media/confluencemicrosoft-tutorial/add-on-1.png)
 
 1. 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=56503)下载插件。 使用“上传加载项”菜单手动上传由 Microsoft 提供的插件。 [Microsoft 服务协议](https://www.microsoft.com/servicesagreement/)涵盖了插件下载。
 
-    ![显示“管理加载项”页的屏幕截图，其中已选择“上传加载项”操作。](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![显示“管理加载项”页的屏幕截图，其中已选择“上传加载项”操作。](./media/confluencemicrosoft-tutorial/add-on-12.png)
 
 1. 要运行 Confluence 反向代理方案或负载均衡器方案，请执行以下步骤：
 
@@ -167,19 +167,19 @@ ms.locfileid: "98736992"
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![显示“server.xml”文件的屏幕截图，其中属性已添加到“连接器”端口。](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    ![显示“server.xml”文件的屏幕截图，其中属性已添加到“连接器”端口。](./media/confluencemicrosoft-tutorial/reverse-proxy-1.png)
 
     b. 根据代理/负载均衡器，在 **系统设置** 中更改 **基本 URL**。
 
-    ![显示“管理 -设置”页的屏幕截图，其中突出显示了“基本 URL”。](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    ![显示“管理 -设置”页的屏幕截图，其中突出显示了“基本 URL”。](./media/confluencemicrosoft-tutorial/reverse-proxy-2.png)
 
 1. 插件安装后，它会显示在“管理加载项”部分的“用户已安装”加载项部分 。 单击“配置”配置新的插件。
 
-    ![显示“用户已安装”部分的屏幕截图，其中突出显示了“配置”按钮。](./media/confluencemicrosoft-tutorial/addon15.png)
+    ![显示“用户已安装”部分的屏幕截图，其中突出显示了“配置”按钮。](./media/confluencemicrosoft-tutorial/add-on-15.png)
 
 1. 在配置页上执行下列步骤：
 
-    ![显示单一登录配置页的屏幕截图。](./media/confluencemicrosoft-tutorial/addon54.png)
+    ![显示单一登录配置页的屏幕截图。](./media/confluencemicrosoft-tutorial/add-on-53.png)
 
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
@@ -209,7 +209,7 @@ ms.locfileid: "98736992"
 
        > [!Note]
        > 若要在启用“强制 Azure 登录”时在登录页上启用管理员登录的默认登录表单，请在浏览器 URL 中添加查询参数。
-       > `https://<domain:port>/login.action?force_azure_login=false`
+       > `https://<DOMAIN:PORT>/login.action?force_azure_login=false`
 
     1. 单击“保存”按钮保存设置。
 
@@ -226,11 +226,11 @@ ms.locfileid: "98736992"
 
 1. 将鼠标悬停在小齿轮上，并单击“用户管理”。
 
-    ![添加员工](./media/confluencemicrosoft-tutorial/user1.png)
+    ![添加员工](./media/confluencemicrosoft-tutorial/user-1.png)
 
 1. 在“用户”部分，单击“添加用户”选项卡。在“添加用户”对话框页上，执行以下步骤：
 
-    ![显示“Confluence 管理”的屏幕截图，其中已选择“添加用户”选项卡并已输入“添加用户”信息。](./media/confluencemicrosoft-tutorial/user2.png)
+    ![显示“Confluence 管理”的屏幕截图，其中已选择“添加用户”选项卡并已输入“添加用户”信息。](./media/confluencemicrosoft-tutorial/user-2.png)
 
     a. 在“用户名”文本框中，键入用户的电子邮件（例如 B.Simon）。
 

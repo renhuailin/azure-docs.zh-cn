@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/11/2021
 ms.custom: references_regions
-ms.openlocfilehash: da6d19a20a31e4cc4c4fac5bb704cb193611dbbc
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6e8f9a26836be14d4952ba309933511635ff673a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382454"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982639"
 ---
 # <a name="qna-maker-managed-is-now-renamed-to-custom-question-answering"></a>QnA Maker 托管现在已重命名为自定义问答
 
@@ -41,7 +41,7 @@ QnA Maker 托管现已成为文本分析中的一项功能，并已重命名为�
 
 - 所有现有 QnA Maker 托管（预览版）资源将继续像以前一样工作。 目前不需要对这些资源执行任何操作。
 - 自定义问答（预览版）的创建流是主要更改。 服务、门户、终结点、SDK 等仍保持原样。
-- 自定义问答（预览版）继续作为免费公共预览版提供。
+- 自定义问答（预览版）继续作为免费公共预览版提供。 此功能仅作为文本分析标准资源的一部分提供。 请勿将文本分析资源的定价层更改为“免费”。
 - 自定义问答（预览版）在以下区域提供：
     - 美国中南部
     - 北欧
@@ -51,5 +51,4 @@ QnA Maker 托管现已成为文本分析中的一项功能，并已重命名为�
 
 * [QnA Maker 客户端库入门](./quickstarts/quickstart-sdk.md)
 * [QnA Maker 门户入门](./quickstarts/create-publish-knowledge-base.md)
-
 
