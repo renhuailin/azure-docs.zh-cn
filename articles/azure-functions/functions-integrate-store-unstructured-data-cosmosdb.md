@@ -4,12 +4,12 @@ description: 使用 Azure Functions 和 Cosmos DB 存储非结构化数据
 ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 5bc3895cb219338acde492b871dce806db70622b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90a85cad60696ad692d39d19ad123ecfd6f7dc30
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91661153"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236564"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 存储非结构化数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "91661153"
 
 在创建输出绑定之前，必须已具有使用 SQL API 的 Azure Cosmos DB 帐户。
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](../cosmos-db/includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="add-an-output-binding"></a>添加输出绑定
 

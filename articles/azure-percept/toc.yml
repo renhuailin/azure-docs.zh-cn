@@ -40,6 +40,10 @@
           href: tutorial-no-code-speech.md
 - name: 概念
   items:
+    - name: Azure Percept DK
+      items:
+        - name: 通过手机网络连接
+          href: connect-over-cellular.md
     - name: Azure Percept 音频
       items:
         - name: LED 和按钮行为
@@ -78,6 +82,8 @@
           href: how-to-update-via-usb.md
     - name: 连接到 Azure Percept DK
       items:
+        - name: 通过以太网连接
+          href: how-to-connect-over-ethernet.md
         - name: 通过 SSH 连接
           href: how-to-ssh-into-percept-dk.md
         - name: 通过串口连接

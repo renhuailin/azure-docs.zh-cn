@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/02/2021
-ms.openlocfilehash: ed988baec46152d55cf63aec09fce7a298157212
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0560c7e1f8770dd27d8ad462d10a2668d69d5865
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99509130"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559239"
 ---
 # <a name="tutorial-debug-a-skillset-using-debug-sessions"></a>Tutorial:使用调试会话调试技能组
 
@@ -107,7 +107,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 输入此查询字符串 `$select=metadata_storage_path, organizations, locations&$count=true` 以返回特定文档的字段（由唯一 `metadata_storage_path` 字段标识）。
 1. 单击“搜索”以运行查询，返回所有 19 个文档并对“organizations”和“locations”显示空值。
 
-这些字段应已通过技能组的[实体识别技能](cognitive-search-skill-entity-recognition.md)进行了填充，此技能用于查找 blob 内容内任何位置的 organizations 和 locations。 在下一练习中，你将使用调试会话来确定发生了什么问题。
+这些字段应已通过技能组的[实体识别技能](cognitive-search-skill-entity-recognition-v3.md)进行了填充，此技能用于查找 blob 内容内任何位置的 organizations 和 locations。 在下一练习中，你将使用调试会话来确定发生了什么问题。
 
 还可通过 Azure 门户调查错误和警告。
 
