@@ -9,18 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 7d2321189e32c77d9360ff6d772fcebf9c6abb1d
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 55cd7c86ae4f0110618745459cea48abe5e144d0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324556"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084567"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>教程 - 在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
 
-本文适用于解决方案构建者和设备开发人员。 
-
-本教程向解决方案构建者介绍如何使用网关设备模板在 IoT Central 应用程序中定义网关设备。 然后配置多个下游设备，这些设备通过网关设备连接到 IoT Central 应用程序。 
+本教程介绍了如何使用网关设备模板在 IoT Central 应用程序中定义网关设备。 然后配置多个下游设备，这些设备通过网关设备连接到 IoT Central 应用程序。 
 
 在本教程中，你将创建一个“智能建筑物”网关设备模板。  “智能建筑物”网关设备与其他下游设备发生关系。 
 
@@ -37,7 +35,9 @@ ms.locfileid: "108324556"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，需要[创建一个 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)。
+完成本教程中的步骤需要具备以下各项：
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 ## <a name="create-downstream-device-templates"></a>创建下游设备模板
 
@@ -115,14 +115,14 @@ ms.locfileid: "108324556"
 
 1. 在“智能建筑物网关设备”模板中，选择“云属性”。  
 
-1.  使用下表中的信息将两个云属性添加到网关设备模板。
+1. 使用下表中的信息将两个云属性添加到网关设备模板。
 
     | 显示名称      | 语义类型 | 架构 |
     | ----------------- | ------------- | ------ |
     | 最后维修日期 | 无          | 日期   |
     | 客户名称     | 无          | 字符串 |
 
-2. 选择“保存”。 
+1. 选择“保存”。 
 
 ### <a name="create-views"></a>创建视图
 
@@ -151,7 +151,9 @@ ms.locfileid: "108324556"
 
 3. 在“发布设备模板”对话框中，选择“发布”   。
 
-发布设备模板后，它将显示在“设备”页上，操作员可以看到它。  在发布的设备模板中，除非创建新的版本，否则无法编辑设备模型。 但是，可以在发布的设备模板中更新云属性、自定义项和视图。 这些更新不会导致创建新版本。 进行任何更改后，选择“发布”将这些更改推送给操作员。 
+发布设备模板后，它将显示在“设备”页上，操作员可以看到它。  操作员可以使用模板创建设备实例或建立规则和监视。 编辑已发布的模板可能会影响整个应用程序中的行为。
+
+若要详细了解在发布设备模板后如何对其进行修改，请参阅[编辑现有设备模板](howto-edit-device-template.md)。
 
 ## <a name="create-the-simulated-devices"></a>创建模拟设备
 
@@ -221,7 +223,7 @@ ms.locfileid: "108324556"
 * 添加关系。
 * 发布设备模板。
 
-接下来，设备开发人员可以了解如何：
+接下来，你可以学习如何执行以下操作：
 
 > [!div class="nextstepaction"]
 > [将 Azure IoT Edge 设备添加到 Azure IoT Central 应用程序](tutorial-add-edge-as-leaf-device.md)

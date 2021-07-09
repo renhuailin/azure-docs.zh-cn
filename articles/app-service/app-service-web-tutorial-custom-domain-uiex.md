@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1fcf8c681f4fad65209c27663045d4974be633f7
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: bfd3429531f1473e099e3296ebfebd50c6d4d864
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833233"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787897"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -156,7 +156,7 @@ ms.locfileid: "107833233"
 
 对于子域（如 `www.contoso.com` 中的 `www`），请根据下表创建两条记录：
 
-| 记录类型 | 主机 | 值 | 注释 |
+| 记录类型 | 主机 | Value | 注释 |
 | - | - | - |
 | CNAME | `<subdomain>`（例如 `www`） | `<app-name>.azurewebsites.net` | 域映射本身。 |
 | TXT | `asuid.<subdomain>`（例如 `asuid.www`） | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 |
@@ -167,7 +167,7 @@ ms.locfileid: "107833233"
 
 对于根域（如 `contoso.com`），请根据下表创建两条记录：
 
-| 记录类型 | 主机 | 值 | 注释 |
+| 记录类型 | 主机 | Value | 注释 |
 | - | - | - |
 | A | `@` | 通过[复制应用的 IP 地址](#3-get-a-domain-verification-id)获得的 IP 地址 | 域映射本身（`@` 通常表示根域）。 |
 | TXT | `asuid` | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 对于根域，请使用 `asuid`。 |
@@ -183,7 +183,7 @@ ms.locfileid: "107833233"
 <tr>
 <th>记录类型</th>
 <th>主机</th>
-<th>值</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
@@ -205,7 +205,7 @@ ms.locfileid: "107833233"
 
 对于通配符名称（如 `*.contoso.com` 中的 `*`），请按照下表创建两条记录：
 
-| 记录类型 | 主机 | 值 | 注释 |
+| 记录类型 | 主机 | Value | 注释 |
 | - | - | - |
 | CNAME | `*` | `<app-name>.azurewebsites.net` | 域映射本身。 |
 | TXT | `asuid` | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid` TXT 记录以验证你对自定义域的所有权。 |
@@ -262,7 +262,7 @@ ms.locfileid: "107833233"
 
 3. 键入已配置 A 记录的完全限定的域名，如 `contoso.com`。 
 
-1. 选择“验证”。 此时会显示“添加自定义域”页。
+1. 选择“验证”。  此时会显示“添加自定义域”页。
 
 1. 确保“主机名记录类型”设置为“A 记录 (example.com)”。  选择“添加自定义域”。
 
@@ -314,7 +314,7 @@ ms.locfileid: "107833233"
 <details>
 <summary>我收到 HTTP 404（找不到）错误。</summary>
 <ul>
-<li>配置的自定义域缺少 A 记录或 CNAME 记录。</li>
+<li>配置的自定义域缺少 A 记录或 CNAME 记录。  检查 DNS 记录是否是使用<a href="https://www.nslookup.io/">联机 DNS 查找</a>工具公开的。</li>
 <li>浏览器客户端已缓存域的旧 IP 地址。 清除缓存并再次测试 DNS 解析。 在 Windows 计算机上，使用 <code>ipconfig /flushdns</code> 清除缓存。</li>
 </ul>
 </details>

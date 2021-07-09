@@ -8,20 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/11/2021
+ms.date: 06/07/2021
 ms.author: aahi
-ms.custom: references_regions
-ms.openlocfilehash: 80a943d235783852f57832363b5af8048f010575
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37dd6eddc302062d756df79a03bd13cfc8c881e1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599420"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757168"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用健康状况文本分析（预览）
 
 > [!IMPORTANT] 
-> 健康状况文本分析是一项预览功能，其“按原样”提供并在“不保证没有缺点”情况下提供。 因此，不应在任何生产用途中实施或部署健康状况文本分析（预览版）。 健康状况文本分析不应用于或不可供用于医疗设备、临床支持、诊断工具或者其他旨在用于诊断、治愈、缓解、治疗或预防疾病或其他健康问题的技术，Microsoft 不授予将此功能用于此类目的的任何许可或权利。 此功能不旨在代替专业人员医疗建议或保健意见、诊断、治疗或医疗保健专业人员临床判断而实施或部署，并且不应用作此用途。 客户独自负责健康状况文本分析的任何使用。 Microsoft 不保证健康状况文本分析或提供的与该功能相关的任何材料足够充分用于任何医疗目的，或者满足任何人的健康或医疗要求。 
+> 健康状况文本分析是一项预览功能，其“按原样”提供并在“不保证没有缺点”情况下提供。 因此，不应在任何生产用途中实施或部署健康状况文本分析（预览版）。 健康状况文本分析不应用于或不可供用于医疗设备、临床支持、诊断工具或者其他旨在用于诊断、治愈、缓解、治疗或预防疾病或其他健康问题的技术，Microsoft 不授予将此功能用于此类目的的任何许可或权利。 此功能不旨在代替专业人员医疗建议或保健意见、诊断、治疗或医疗保健专业人员临床判断而实施或部署，并且不应用作此用途。 客户独自负责健康状况文本分析的任何使用。 客户必须根据为该 [UMLS Metathesaurus 许可协议附录](https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus/release/license_agreement_appendix.html)或任何未来等效链接设置的条款单独许可其打算使用的任何和所有源词汇。 客户有责任确保遵守这些许可条款，包括任何地域限制或其他适用限制。
 
 
 健康状况文本分析是文本分析 API 服务的一项功能，它可以从非结构化文本（例如医生的备注、出院摘要、临床文档和电子健康记录）中提取和标记相关医疗信息。  可以使用两种方法来利用这项服务： 
@@ -74,22 +73,9 @@ ms.locfileid: "104599420"
 
 请参阅运行状况文本分析返回的[实体类别](../named-entity-types.md?tabs=health)，获取支持的实体的完整列表。 有关置信度分数的信息，请参阅[文本分析透明度备注](/legal/cognitive-services/text-analytics/transparency-note#general-guidelines-to-understand-and-improve-performance?context=/azure/cognitive-services/text-analytics/context/context)。 
 
-### <a name="supported-languages-and-regions"></a>支持的语言和区域
+### <a name="supported-languages"></a>支持的语言
 
 健康状况文本分析仅支持英语文档。 
-
-健康状况文本分析托管 Web API 目前仅在以下区域提供：美国西部 2、美国东部 2、美国中部、欧洲北部和欧洲西部。
-
-## <a name="request-access-to-the-public-preview"></a>请求访问公共预览版
-
-填写并提交[认知服务请求表单](https://aka.ms/csgate)，请求访问健康状况文本分析公共预览版。 不会对健康状况文本分析的使用而收费。 
-
-通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交表单后，Azure 认知服务团队将对其进行审核，并通过电子邮件向你告知决定。
-
-> [!IMPORTANT]
-> * 在此表单上，必须使用与 Azure 订阅 ID 关联的电子邮件地址。
-> * 使用的 Azure 资源必须通过批准的 Azure 订阅 ID 创建。 
-> * 请检查你的电子邮件（“收件箱”和“垃圾邮件”文件夹）以获取来自 Microsoft 的应用程序状态更新。
 
 ## <a name="using-the-docker-container"></a>使用 Docker 容器 
 
@@ -116,12 +102,9 @@ ms.locfileid: "104599420"
 
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>为托管的异步 Web API 构造 API 请求
 
-对于容器和托管 Web API，必须创建 POST 请求。 可以[使用 Postman](text-analytics-how-to-call-api.md)、cURL 命令或[健康状况文本分析托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health)中的 API 测试控制台快速构造 POST 请求，并将其发送到所需区域中的托管 Web API。 
+对于容器和托管 Web API，必须创建 POST 请求。 可以[使用 Postman](text-analytics-how-to-call-api.md)、cURL 命令或[健康状况文本分析托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/Health)中的 API 测试控制台快速构造 POST 请求，并将其发送到所需区域中的托管 Web API。 在 API v3.1-preview.5 终结点中，`loggingOptOut` 布尔查询参数可用于启用日志记录来进行故障排除。  如果未在请求查询中指定，则默认值为 TRUE。
 
-> [!NOTE]
-> 异步 `/analyze` 和 `/health` 终结点仅在以下区域提供：美国西部 2、美国东部 2、美国中部、欧洲北部和欧洲西部。  若要成功地向这些终结点发出请求，请确保已在其中一个区域中创建资源。
-
-以下是附加到健康状况文本分析 API 请求 POST 正文的 JSON 文件示例：
+将 POST 请求发送到 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs`。下面是附加到健康状况文本分析 API 请求 POST 正文的 JSON 文件示例：
 
 ```json
 example.json
@@ -141,11 +124,11 @@ example.json
 
 由于此 POST 请求用于提交异步操作的作业，因此响应对象中没有任何文本。  但是，需要响应标头中操作位置键的值，才能发出 GET 请求来检查作业和输出的状态。  下面是 POST 请求的响应标头中操作位置键的值的示例：
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/health/jobs/<jobID>`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs/<jobID>`
 
 若要检查作业状态，请在 POST 响应的操作位置键标头的值中向 URL 发出 GET 请求。  以下状态用于反映作业的状态：`NotStarted`、`running``succeeded``failed``rejected``cancelling` 和 `cancelled`。  
 
-你可以通过对与 GET 请求相同的 URL 的 DELETE HTTP 调用来取消状态为 `NotStarted` 或 `running` 的作业。  有关 DELETE 调用的详细信息，请参阅[健康状况文本分析托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/CancelHealthJob)。
+你可以通过对与 GET 请求相同的 URL 的 DELETE HTTP 调用来取消状态为 `NotStarted` 或 `running` 的作业。  有关 DELETE 调用的详细信息，请参阅[健康状况文本分析托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/CancelHealthJob)。
 
 以下是 GET 请求的响应示例。  在 `expirationDateTime`（创建作业 24 小时后）已过之前，输出可供检索；在此时间之后，输出将被清除。
 
@@ -302,7 +285,7 @@ example.json
 可以[使用 Postman](text-analytics-how-to-call-api.md) 或下面的 cURL 请求示例向部署的容器提交查询，以适当的值替换 `serverURL` 变量。  请注意，容器的 URL 中的 API 版本不同于托管 API。
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1-preview.5/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
@@ -522,6 +505,18 @@ example.json
 
 **ABBREVIATION**
 
+**BODY_SITE_OF_CONDITION**
+
+**BODY_SITE_OF_TREATMENT**
+
+**COURSE_OF_CONDITION**
+
+**COURSE_OF_EXAMINATION**
+
+**COURSE_OF_MEDICATION**
+
+**COURSE_OF_TREATMENT**
+
 **DIRECTION_OF_BODY_STRUCTURE**
 
 **DIRECTION_OF_CONDITION**
@@ -532,17 +527,31 @@ example.json
 
 **DOSAGE_OF_MEDICATION**
 
+**EXAMINATION_FINDS_CONDITION**
+
+**EXPRESSION_OF_GENE**
+
+**EXPRESSION_OF_VARIANT**
+
 **FORM_OF_MEDICATION**
+
+**FREQUENCY_OF_CONDITION**
 
 **FREQUENCY_OF_MEDICATION**
 
 **FREQUENCY_OF_TREATMENT**
+
+**MUTATION_TYPE_OF_GENE**
+
+**MUTATION_TYPE_OF_VARIANT**
 
 **QUALIFIER_OF_CONDITION**
 
 **RELATION_OF_EXAMINATION**
 
 **ROUTE_OF_MEDICATION** 
+
+**SCALE_OF_CONDITION**
 
 **TIME_OF_CONDITION**
 
@@ -561,6 +570,8 @@ example.json
 **VALUE_OF_CONDITION**  
 
 **VALUE_OF_EXAMINATION**
+
+**VARIANT_OF_GENE**
 
 > [!NOTE]
 > * 引用 CONDITION 的关系可以指 DIAGNOSIS 实体类型，也可以指 SYMPTOM_OR_SIGN 实体类型。

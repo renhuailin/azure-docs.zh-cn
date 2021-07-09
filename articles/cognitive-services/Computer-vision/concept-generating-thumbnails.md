@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bcfaf250aa5ebf29f51fae22f87c14c29416107e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "68945230"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465324"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>使用计算机视觉生成智能裁剪的缩略图
 
@@ -48,6 +48,8 @@ ms.locfileid: "68945230"
 |![具有绿色背景的白色花卉](./Images/flower.png) | ![视觉分析花缩略图](./Images/flower_thumbnail.png) |
 |![在公寓楼顶上的一个女人](./Images/woman_roof.png) | ![在公寓楼顶上的一个女人的缩略图](./Images/woman_roof_thumbnail.png) |
 
-## <a name="next-steps"></a>后续步骤
+## <a name="use-the-api"></a>使用 API
 
-了解[标记图像](concept-tagging-images.md)和[对图像进行分类](concept-categorizing-images.md)。
+可通过[获取缩略图](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f20c)和[获取感兴趣区域](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/b156d0f5e11e492d9f64418d) API 获取生成缩略图功能。 可以通过本机 SDK 或 REST 调用来调用此 API。 
+
+* [快速入门：计算机视觉 REST API 或客户端库](./quickstarts-sdk/image-analysis-client-library.md?pivots=programming-language-csharp)

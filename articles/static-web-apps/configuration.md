@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 9494bcc9941491bbb82c6a948dce720cb9e51424
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 693a102c988d87dc4ed6ac9f0f4cb2176ec78ca5
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502277"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059987"
 ---
 # <a name="configure-azure-static-web-apps"></a>配置 Azure Static Web Apps
 
@@ -26,6 +26,9 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 - 全局 HTTP 头定义
 - 自定义 MIME 类型
 
+> [!NOTE]
+> 以前用于配置路由的 [_routes.json_](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated)) 已被启用。 使用本文中所述的 _staticwebapp.config.json_ ，为静态 Web 应用配置路由和其他设置。
+
 ## <a name="file-location"></a>文件位置
 
 建议将 _staticwebapp.config.json_ 置于 [工作流文件](./github-actions-workflow.md)中设置为 `app_location` 的文件夹内。 但是，可将该文件放在应用程序源代码文件夹中的任何位置。
@@ -33,7 +36,7 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 有关详细信息，请参阅[示例配置](#example-configuration-file)文件。
 
 > [!IMPORTANT]
-> 如果 _staticwebapp.config.json_ 存在，则会忽略 [_routes.json_ 文件](./routes.md)。
+> 如果 _staticwebapp.config.json_ 存在，则会忽略已被弃用的 [_routes.json_ 文件](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated))。
 
 ## <a name="routes"></a>路由
 

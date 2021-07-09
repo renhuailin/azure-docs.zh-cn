@@ -10,12 +10,12 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 05/25/2021
 ms.reviewer: peterlu
-ms.openlocfilehash: fadcb4c8b24e9c0dcc1cfe39529af4a1c75cc36c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 65b7446602c8b7202ba7ccf56115edfc5de333db
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382613"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750724"
 ---
 # <a name="train-models-with-rest-preview"></a>使用 REST 训练模型（预览版）
 
@@ -72,7 +72,7 @@ API_VERSION="2021-03-01-preview"
 运行机器学习作业需要计算资源。 可以列出工作区的计算资源：
 
 ```bash
-curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.MachineLearningServices/workspaces/$WORKSPACE/computes?api-version=$API_VERSION \
+curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.MachineLearningServices/workspaces/$WORKSPACE/computes?api-version=$API_VERSION" \
 --header "Authorization: Bearer $TOKEN"
 ```
 
@@ -91,7 +91,7 @@ LightGBM 示例需要在 LightGBM 环境中运行。 使用 PUT 请求创建环�
 
 可以使用 `Docker` 配置 Docker 映像，并使用 `condaFile` 添加 Conda 依赖项： 
 
-:::code language="rest" source="~/azureml-examples-cli-preview/cli/how-to-train-rest.sh" id="create_environment":::
+:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_environment":::
 
 ### <a name="datastore"></a>数据存储
 
@@ -113,7 +113,7 @@ AZURE_STORAGE_KEY=$(az storage account keys list --account-name $AZURE_STORAGE_A
 
 获取数据存储后，接下来可以创建数据集。 对于此示例，请使用通用数据集 `iris.csv`，并在 `path` 中指向该数据集。 
 
-:::code language="rest" source="~/azureml-examples-cli-preview/cli/how-to-train-rest.sh" id="create_data":::
+:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_data":::
 
 ### <a name="code"></a>代码
 
@@ -127,7 +127,7 @@ az storage blob upload-batch -d $AZUREML_DEFAULT_CONTAINER/src \
 
 上传代码后，可以使用 PUT 请求指定代码，并使用 `datastoreId` 引用数据存储。 
 
-:::code language="rest" source="~/azureml-examples-cli-preview/cli/how-to-train-rest.sh" id="create_code":::
+:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_code":::
 
 ## <a name="submit-a-training-job"></a>提交训练作业
 
@@ -144,11 +144,11 @@ az storage blob upload-batch -d $AZUREML_DEFAULT_CONTAINER/src \
 
 使用以下命令提交训练作业：
 
-:::code language="rest" source="~/azureml-examples-cli-preview/cli/how-to-train-rest.sh" id="create_job":::
+:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_job":::
 
 ## <a name="submit-a-hyperparameter-sweep-job"></a>提交超参数扫描作业
 
-Azure 机器学习还可让你有效优化训练超参数。 可以使用 REST API 创建超参数优化扫描。 有关 Azure 机器学习的超参数优化选项的详细信息，请参阅[对模型进行超参数优化](how-to-tune-hyperparameters.md)。 指定超参数优化参数以配置扫描：
+Azure 机器学习还可让你有效优化训练超参数。 可以使用 REST API 创建超参数优化套件。 有关 Azure 机器学习的超参数优化选项的详细信息，请参阅[对模型进行超参数优化](how-to-tune-hyperparameters.md)。 指定超参数优化参数以配置扫描：
 
 - jobType：作业类型。 对于扫描作业，此参数为 `Sweep`。 
 - algorithm：采样算法 -“random”通常是很好的起始值。 有关选项的列表，请参阅扫描作业[架构](https://azuremlschemas.azureedge.net/latest/sweepJob.schema.json)。 
@@ -161,7 +161,7 @@ Azure 机器学习还可让你有效优化训练超参数。 可以使用 REST A
 
 若要通过相同的 LightGBM 示例创建扫描作业，请使用以下命令： 
 
-:::code language="rest" source="~/azureml-examples-cli-preview/cli/how-to-train-rest.sh" id="create_a_sweep_job":::
+:::code language="rest" source="~/azureml-examples-main/cli/train-rest.sh" id="create_a_sweep_job":::
 
 ## <a name="next-steps"></a>后续步骤
 

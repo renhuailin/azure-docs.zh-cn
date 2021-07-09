@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 295889cf64d27761021dd09549a3366ea142516e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 8d754d03811bf532d6be6b4695281e82ab8fb002
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752023"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440441"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>使用弹性作业（预览版）自动完成管理任务
 
@@ -54,9 +54,9 @@ ms.locfileid: "107752023"
 
 弹性作业可以将 [Azure SQL数据库](sql-database-paas-overview.md)、[Azure SQL 数据库弹性池](elastic-pool-overview.md)和[分片映射](elastic-scale-shard-map-management.md)中的 Azure SQL 数据库作为目标。
 
-对于 SQL Server 和 Azure SQL 托管实例中的 T-SQL 脚本作业自动化，请考虑 [SQL 代理](job-automation-managed-instances.md)。 
+- 对于 SQL Server 和 Azure SQL 托管实例中的 T-SQL 脚本作业自动化，请考虑 [SQL 代理](../managed-instance/job-automation-managed-instance.md)。 
 
-对于 Azure Synapse Analytics 中的 T-SQL 脚本作业自动化，请考虑[具有重复触发器的管道](../../synapse-analytics/data-integration/concepts-data-factory-differences.md)，这些管道[基于 Azure 数据工厂](../../synapse-analytics/data-integration/concepts-data-factory-differences.md)。
+- 对于 Azure Synapse Analytics 中的 T-SQL 脚本作业自动化，请考虑[具有重复触发器的管道](../../synapse-analytics/data-integration/concepts-data-factory-differences.md)，这些管道[基于 Azure 数据工厂](../../synapse-analytics/data-integration/concepts-data-factory-differences.md)。
 
 值得注意的是，SQL 代理（在 SQL Server 中提供以及作为 SQL 托管实例的一部分提供）与数据库弹性作业代理（可对 Azure SQL 数据库或 SQL Server 和 Azure SQL 托管实例、Azure Synapse Analytics 中的数据库执行 T-SQL）之间存在差异。
 
@@ -159,7 +159,7 @@ ms.locfileid: "107752023"
 
 #### <a name="job-history"></a>作业历史记录
 
-通过[查询表 jobs.job_executions](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)，在作业数据库中查看弹性作业执行历史记录。 系统清除作业会清除时间超过 45 天的执行历史记录。 若要删除时间不到 45 天的历史记录，请调用作业数据库中的 sp_purge_jobhistory 存储过程。
+通过[查询表 jobs.job_executions](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)，在作业数据库中查看弹性作业执行历史记录。 系统清除作业会清除时间超过 45 天的执行历史记录。 若要删除时间不到 45 天的历史记录，请调用作业数据库中的 `sp_purge_jobhistory` 存储过程。
 
 #### <a name="job-status"></a>作业状态
 

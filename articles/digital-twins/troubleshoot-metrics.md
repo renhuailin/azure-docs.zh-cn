@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ffae474f6de5de7715585f0606a9630b136a2c37
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ae3c214cb1e1d58098dddd29a31d6403aa2e42c6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092127"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475614"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>排查 Azure 数字孪生指标问题
 
@@ -28,18 +28,18 @@ ms.locfileid: "110092127"
 
     在实例的菜单中，选择“指标”。
    
-    :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的“指标”页的屏幕截图":::
+    :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="此屏幕截图显示了 Azure 门户中 Azure 数字孪生的“指标”页面。":::
 
     此页面显示了 Azure 数字孪生实例的指标。 还可从列表中选择要查看的指标来创建指标的自定义视图。
     
 3. 可从菜单中选择“诊断设置”，然后单击“添加诊断设置”，选择将指标数据发送到事件中心终结点或 Azure 存储帐户 。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示诊断设置页面和“添加”按钮的屏幕截图":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="此屏幕截图显示了 Azure 门户中“诊断设置”页面和“添加”按钮。":::
 
     有关此过程的详细信息，请参阅故障排除：设置诊断。
 
 4. 可从菜单中选择“警报”，然后选择“+新建警报规则”，选择为指标数据设置警报 。
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="显示警报页面和“添加”按钮的屏幕截图":::
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="此屏幕截图显示了 Azure 门户中的“警报”页面和“添加”按钮。":::
 
     有关此过程的详细信息，请参阅故障排除：设置警报。
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: e4c58d67668a67eee38a73d46a2a40ca29c1dfd8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 311b6a603d0c68699155510797f1dd75e3cf915a
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121246"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655377"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>快速入门：在 Node.js 中使用 Azure Cache for Redis
 
@@ -26,26 +26,31 @@ ms.locfileid: "102121246"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-- [node_redis](https://github.com/mranney/node_redis)，可以使用命令 `npm install redis` 安装。 
+- [node_redis](https://github.com/mranney/node_redis)，可以使用命令 `npm install redis` 安装。
 
 有关使用其他 Node.js 客户端的示例，请参阅 [Node.js Redis 客户端](https://redis.io/clients#nodejs)中所列的适用于 Node.js 客户端的各个文档。
 
 ## <a name="create-a-cache"></a>创建缓存
+
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
+为 **主机名** 和 **主** 访问密钥添加环境变量。 通过代码使用这些变量，而不是直接在代码中包含敏感信息。
 
-为 **主机名** 和 **主** 访问密钥添加环境变量。 你将通过代码使用这些变量，而不是直接在代码中包含敏感信息。
-
+```powershell
+set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
+set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
+
+```powershell
 set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 ## <a name="connect-to-the-cache"></a>连接到缓存
 
-最新版本的 [node_redis](https://github.com/mranney/node_redis) 支持使用 TLS 连接到 Azure Cache for Redis。 以下示例演示如何使用 TLS 终结点 6380 连接到 Azure Cache for Redis。 
+最新版本的 [node_redis](https://github.com/mranney/node_redis) 支持使用 TLS 连接到 Azure Cache for Redis。 以下示例演示如何使用 TLS 终结点 6380 连接到 Azure Cache for Redis。
 
 ```js
 var redis = require("redis");
@@ -55,7 +60,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
     {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
 ```
 
-不要为代码中的每个操作创建新连接， 而应尽可能重用连接。 
+不要为代码中的每个操作创建新连接， 而应尽可能重用连接。
 
 ## <a name="create-a-new-nodejs-app"></a>新建 Node.js 应用
 
@@ -105,7 +110,7 @@ testCache();
 
 使用 Node.js 运行该脚本。
 
-```
+```powershell
 node redistest.js
 ```
 
@@ -117,7 +122,7 @@ node redistest.js
 
 如果想要继续学习下一篇教程，可以保留本快速入门中创建的资源，以便重复使用。
 
-如果已完成快速入门示例应用程序，可以删除本快速入门中创建的 Azure 资源，以免产生费用。 
+如果已完成快速入门示例应用程序，可以删除本快速入门中创建的 Azure 资源，以免产生费用。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
@@ -129,7 +134,7 @@ node redistest.js
 
 ![删除 Azure 资源组](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
-系统会要求确认是否删除资源组。 重新键入资源组的名称进行确认，然后选择“删除”  。
+系统会要求确认是否删除该资源组。 重新键入资源组的名称进行确认，然后选择“删除”  。
 
 片刻之后，将会删除该资源组及其包含的所有资源。
 

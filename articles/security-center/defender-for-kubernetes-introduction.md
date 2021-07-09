@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c500c7b7afb36ffbe04fb63551c3a7d17c1347d9
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: acf038d6e1ead94bdfb2e00ffe225e566faa6c44
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029074"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854893"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>适用于 Kubernetes 的 Azure Defender 简介
 
@@ -22,7 +22,7 @@ Azure Defender for Kubernetes 是 Azure Defender 计划，无论 Kubernetes 群�
 
 - **Azure Kubernetes 服务 (AKS)** 中的群集；AKS 是 Microsoft 的托管服务，用于开发、部署和管理容器化应用程序
 
-- **本地和多云环境** 中的群集；可[为已启用 Arc 的 Kubernetes 使用扩展](defender-for-kubernetes-azure-arc.md)
+- **本地和多云环境** 中的群集；可 [为已启用 Arc 的 Kubernetes 使用扩展](defender-for-kubernetes-azure-arc.md)
 
 Azure 安全中心和 AKS 构成了一种云原生 Kubernetes 安全产品/服务，同时提供环境强化功能、工作负载保护和运行时间保护，如[安全中心中的容器安全](container-security.md)所述。
 
@@ -44,7 +44,7 @@ Azure 安全中心和 AKS 构成了一种云原生 Kubernetes 安全产品/服�
 
 Azure Defender for Kubernetes 通过监视群集日志来提供群集级别的威胁防护。
 
-Azure Defender for Kubernetes 监视的安全事件示例包括公开 Kubernetes 仪表板、创建高特权角色，以及创建敏感的装入点。 如需群集级警报的完整列表，请参阅[警报的引用表](alerts-reference.md#alerts-akscluster)。
+Azure Defender for Kubernetes 监视的安全事件示例包括公开 Kubernetes 仪表板、创建高特权角色，以及创建敏感的装入点。 如需群集级警报的完整列表，请参阅[警报的引用表](alerts-reference.md#alerts-k8scluster)。
 
 > [!TIP]
 > 可以按照[此博客文章](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)中的说明来模拟容器警报。
@@ -57,7 +57,7 @@ Azure Defender for Kubernetes 监视的安全事件示例包括公开 Kubernetes
 
 
 
-## <a name="azure-defender-for-kubernetes---faq"></a>适用于 Kubernetes 的 Azure Defender - 常见问题解答
+## <a name="faq---azure-defender-for-kubernetes"></a>常见问题解答 - Azure Defender for Kubernetes
 
 ### <a name="can-i-still-get-cluster-protections-without-the-log-analytics-agent"></a>如果没有 Log Analytics 代理，是否仍可以获得群集保护？
 

@@ -6,13 +6,13 @@ ms.author: sunila
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/22/2020
-ms.openlocfilehash: 6d10298b016cbcf362af2d272f9fa822db6e569d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/02/2021
+ms.openlocfilehash: b4fed0e26043e645ece4f35af8b721d858426672
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604747"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111406914"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL 灵活服务器
 
@@ -51,7 +51,10 @@ ms.locfileid: "105604747"
     ---|---|---
     订阅|订阅名称|要用于服务器的 Azure 订阅。 如果你有多个订阅，请选择要计费的资源所在的订阅。
     资源组| myresourcegroup| 新的资源组名称，或订阅中的现有资源组。
-    服务器名称 |*mydemoserver*|用于标识用于 PostgreSQL 的 Azure 数据库服务器的唯一名称。 域名 *postgres.database.azure.com* 附加到提供的服务器名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 该名称必须至少包含 3 到 63 个字符。
+    工作负荷类型|默认 SKU 选择|可以从“开发”（可突发 SKU）、“中小规模生产”（常规用途 SKU）或“大规模生产”（内存优化 SKU）中进行选择。 可以单击“配置服务器”链接进一步自定义 SKU 和存储。
+    可用性区域|首选的可用性区域|可以选择要将服务器部署到哪个可用性区域。 此设置可用于将服务器与应用程序共置在一起。 如果选择“无首选项”，则系统将为你选择默认可用性区域。
+    高可用性|启用区域冗余的部署| 如果选择此选项，将在同一区域中的另一个可用性区域中自动预配与主服务器具有相同配置的备用服务器。 注意：也可以在创建服务器后启用或禁用高可用性。
+    服务器名称 |mydemoserver-pg|用于标识用于 PostgreSQL 的 Azure 数据库服务器的唯一名称。 域名 *postgres.database.azure.com* 附加到提供的服务器名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 该名称必须至少包含 3 到 63 个字符。
     管理员用户名 |*myadmin*| 连接到服务器时使用的自己的登录帐户。 管理员登录名不能是 **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest** 或 **public**， 不能以 **pg_** 开头。
     密码 |你的密码| 服务器管理员帐户的新密码。 该密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字 (0 到 9)和非字母数字字符（!, $, #, % 等）。
     位置|离用户最近的区域| 最靠近用户的位置。
@@ -70,6 +73,7 @@ ms.locfileid: "105604747"
 
     :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="选择“添加当前客户端 IP 地址”":::
 
+    如果选择专用访问 
 6. 选择“查看 + 创建”，查看所选内容。 选择“创建”以预配服务器。 此操作可能需要几分钟的时间。
 
 7. 在工具栏上选择“通知”图标（铃铛）以监视部署过程。  完成部署后，可以选择“固定到仪表板”  ，以便在 Azure 门户仪表板上为此服务器创建磁贴作为到此服务器“概述”  页的快捷方式。 选择“转到资源”  可打开此服务器的“概述”  页。
@@ -103,7 +107,7 @@ ms.locfileid: "105604747"
    例如，以下命令使用访问凭据连接到 PostgreSQL 服务器 mydemoserver.postgres.database.azure.com 上名为“postgres”的默认数据库。 提示输入密码时，输入之前选择的 `<server_admin_password>`。
   
    ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin --dbname=postgres
+   psql --host=mydemoserver-pg.postgres.database.azure.com --port=5432 --username=myadmin --dbname=postgres
    ```
 
    连接后，psql 实用工具会显示 postgres 提示符，要求在其中键入 sql 命令。 在初始连接输出中可能会显示警告，因为所使用的 psql 版本可能不同于 Azure Database for PostgreSQL 服务器版本。
@@ -111,13 +115,14 @@ ms.locfileid: "105604747"
    psql 输出示例：
 
    ```bash
-   psql (11.3, server 12.1)
-   WARNING: psql major version 11, server major version 12.
-            Some psql features might not work.
-   SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+   psql (12.3 (Ubuntu 12.3-1.pgdg18.04+1), server 13.2)
+   WARNING: psql major version 12, server major version 13.
+         Some psql features might not work.
+   SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
    Type "help" for help.
 
    postgres=>
+
    ```
 
    > [!TIP]

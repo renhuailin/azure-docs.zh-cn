@@ -6,14 +6,14 @@ author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 03/22/2021
+ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5155ffed26daaf53b991a84971929500057d0007
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: b6e1deb15f5efe8441624a3c00f72efc1ba38138
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275271"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955433"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 来分析视频
 
@@ -34,7 +34,7 @@ ms.locfileid: "106275271"
 
 ## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
  
-作为一项重要提醒，您必须遵守使用视频索引器的所有适用法律。 不得使用视频索引器或任何其他 Azure 服务，这种方式违反了其他任何 Azure 服务的权限。 在将任何视频（包括任何生物特征数据）上传到视频索引器服务进行处理和存储之前，必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 若要了解视频索引器中的符合性、隐私和安全性，请参阅 Azure [认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 若要了解 Microsoft 的隐私义务以及对您的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 其他隐私信息（包括有关数据保留、删除/销毁的信息）在 OST 中和[此处](../video-indexer/faq.md)提供。 使用视频索引器即表示您同意接受认知服务条款、OST、DPA 和隐私声明的约束。
+作为一项重要提醒，您必须遵守使用视频索引器的所有适用法律。 不得使用视频索引器或任何其他 Azure 服务，这种方式违反了其他任何 Azure 服务的权限。 在将任何视频（包括任何生物特征数据）上传到视频索引器服务进行处理和存储之前，必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 若要了解视频索引器中的符合性、隐私和安全性，请参阅 Azure [认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 若要了解 Microsoft 的隐私义务以及对您的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 其他隐私信息（包括有关数据保留、删除/销毁的信息）在 OST 中和[此处](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md)提供。 使用视频索引器即表示您同意接受认知服务条款、OST、DPA 和隐私声明的约束。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,13 +50,13 @@ ms.locfileid: "106275271"
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
 
-该示例位于 [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos) 文件夹。
+该示例位于 [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/main/AMSV3Tutorials/AnalyzeVideos) 文件夹。
 
-打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json)。 将值替换为从[访问 API](./access-api-howto.md) 获得的凭据。
+打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/AnalyzeVideos/appsettings.json)。 将值替换为从[访问 API](./access-api-howto.md) 获得的凭据。
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>检查用于分析指定视频的代码
 
-本节讨论 AnalyzeVideos 项目的 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/Program.cs) 文件中定义的函数。
+本节讨论 AnalyzeVideos 项目的 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/AnalyzeVideos/Program.cs) 文件中定义的函数。
 
 该示例执行以下操作：
 
@@ -67,11 +67,19 @@ ms.locfileid: "106275271"
 5. 检查作业的状态。
 6. 下载运行作业产生的文件。
 
-### <a name="start-using-media-services-apis-with-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
+### <a name="start-using-media-services-apis-with-the-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
 
-若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在本文开头克隆的代码中，**GetCredentialsAsync** 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。 
+若要开始将媒体服务 API 与 .NET 结合使用，需要创建 `AzureMediaServicesClient` 对象。 若要创建对象，需要提供客户端凭据以使用 Azure Active Directory 连接到 Azure。 另一个选项是使用在 `GetCredentialsInteractiveAuthAsync` 中实现的交互式身份验证。
 
-[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateMediaServicesClient)]
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#CreateMediaServicesClientAsync)]
+
+在文章开头克隆的代码中，`GetCredentialsAsync` 函数根据本地配置文件 (appsettings.json) 中提供的凭据或通过存储库根目录中的 .env 环境变量文件创建 `ServiceClientCredentials` 对象。
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#GetCredentialsAsync)]
+
+在交互式身份验证的情况下，`GetCredentialsInteractiveAuthAsync` 函数根据交互式身份验证和本地配置文件 (appsettings.json) 中提供的连接参数或通过存储库根目录中的 .env 环境变量文件创建 `ServiceClientCredentials` 对象。 在本例中，配置或环境变量文件中均不需要 AADCLIENTID 和 AADSECRET。
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#GetCredentialsInteractiveAuthAsync)]
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>创建输入资产并将本地文件上传到该资产 
 

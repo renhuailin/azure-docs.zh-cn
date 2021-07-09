@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 04/22/2021
+ms.date: 05/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cc163f02873cf1827af515791e254261149fc4f9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 248aa55a05267f7cbabae0c0c4b7a69b6a3837b4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124430"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110060844"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>向 Azure Active Directory B2C 中的用户流添加条件访问
 
@@ -27,8 +27,6 @@ ms.locfileid: "108124430"
 ![条件访问流](media/conditional-access-user-flow/conditional-access-flow.png)
 
 通过策略条件自动执行风险评估意味着，风险登录会被立即识别，然后被修正或阻止。
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="service-overview"></a>服务概述
 
@@ -48,11 +46,20 @@ Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求�
 </TechnicalProfile>
 ```
 
+为了确保正确评估标识保护信号，需要为所有用户（包括[本地帐户和社交帐户](technical-overview.md#consumer-accounts)）调用 `ConditionalAccessEvaluation` 技术配置文件。 否则，标识保护将指示错误的用户关联风险程度。
+
 ::: zone-end
 
-在后面的 **修正** 阶段中，将通过 MFA 质询用户。 完成后，Azure AD B2C 会通知“标识保护”，已通过哪种方法修正了所识别的登录威胁。 在此示例中，Azure AD B2C 通过信号表明用户已成功完成多重身份验证质询。 
+在后面的 *修正* 阶段中，将通过 MFA 质询用户。 完成后，Azure AD B2C 会通知“标识保护”，已通过哪种方法修正了所识别的登录威胁。 在此示例中，Azure AD B2C 通过信号表明用户已成功完成多重身份验证质询。
+
+修正也可以通过其他渠道进行。 例如，当管理员或用户重置帐户的密码时。 你可以在[风险用户报告](identity-protection-investigate-risk.md#navigating-the-risky-users-report)中查看用户风险状态。
 
 ::: zone pivot="b2c-custom-policy"
+
+> [!IMPORTANT]
+> 若要在旅程中成功修正风险，请确保在执行“评估”技术配置文件后调用“修正”技术配置文件。  如果调用了“评估”而没有调用“修正”，则风险状态将为“有风险”。  
+
+当“评估”技术配置文件建议返回 `Block` 时，不需要调用“评估”技术配置文件。 风险状态设置为“有风险”。
 
 以下示例展示了用于修正所查明的威胁的条件访问技术配置文件：
 
@@ -118,7 +125,7 @@ Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求�
 若要添加条件访问策略，请执行以下操作：
 
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
-1. 在“安全性”下，选择“条件访问(预览版)” 。 此时将打开“条件访问策略”页。
+1. 在“安全性”下，选择“条件访问” 。 此时将打开“条件访问策略”页。
 1. 选择“+ 新建策略”。
 1. 输入策略的名称，例如“Block risky sign-in”。
 1. 在“分配”下，选择“用户和组”，然后选择以下一种受支持的配置：
@@ -155,21 +162,15 @@ Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求�
 
 1. 通过选择“创建”启用测试条件访问策略。
 
-## <a name="add-conditional-access-to-a-user-flow"></a>向用户流添加条件访问
-
-添加 Azure AD 条件访问策略后，在用户流或自定义策略中启用条件访问。 启用条件访问时，不需要指定策略名称。
-
-随时可能都会有多个条件访问策略应用于单个用户的情况。 在这种情况下，将优先使用最严格的访问控制策略。 例如，如果一个策略要求执行多重身份验证 (MFA)，而另一个策略阻止访问，则用户将被阻止。
-
 ## <a name="conditional-access-template-1-sign-in-risk-based-conditional-access"></a>条件访问模板 1：基于登录风险的条件访问
 
 大多数用户的正常行为是可以跟踪的，如果其行为超出规范，则允许他们登录可能很危险。 可能需要阻止该用户，或者直接要求他们执行多重身份验证，证明自己真的是所宣称的用户。
 
-登录风险表示给定身份验证请求未经标识所有者授权的概率。 拥有 P2 许可证的组织可创建纳入 [Azure AD 标识保护登录风险检测](../active-directory/identity-protection/concept-identity-protection-risks.md#sign-in-risk)的条件访问策略。 请注意[针对 B2C 的标识保护检测的限制](./identity-protection-investigate-risk.md?pivots=b2c-user-flow#service-limitations-and-considerations)。
+登录风险表示给定身份验证请求未经标识所有者授权的概率。 拥有 P2 许可证的 Azure AD B2C 租户可创建纳入 [Azure AD 标识保护登录风险检测](../active-directory/identity-protection/concept-identity-protection-risks.md#sign-in-risk)的条件访问策略。 请注意[针对 B2C 的标识保护检测的限制](./identity-protection-investigate-risk.md?pivots=b2c-user-flow#service-limitations-and-considerations)。
 
 如果检测到风险，用户可以执行多重身份验证以进行自我修正，并关闭有风险的登录事件，以避免为管理员带来不必要的干扰。
 
-组织应选择下列选项之一来启用基于登录风险的条件访问策略，该策略要求在登录风险为“中等”或“高”时进行多重身份验证 (MFA)。
+通过 Azure 门户或 Microsoft Graph API 配置条件访问，基于登录风险的条件访问策略，在登录风险为“中”或“高”时要求使用 MFA。 
 
 ### <a name="enable-with-conditional-access-policy"></a>通过条件访问策略进行启用
 
@@ -189,11 +190,11 @@ Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求�
 9. 确认设置，然后将“启用策略”设置为“打开”。  
 10. 选择“创建”  ，以便创建启用策略所需的项目。
 
-### <a name="enable-with-conditional-access-apis"></a>通过条件访问 API 进行启用
+### <a name="enable-with-conditional-access-apis-optional"></a>通过条件访问 API 启用（可选）
 
-若要通过条件访问 API 创建基于登录风险的条件访问策略，请查看[条件访问 API](../active-directory/conditional-access/howto-conditional-access-apis.md#graph-api) 文档。
+使用 MS Graph API 创建基于登录风险的条件访问策略。 有关详细信息，请参阅[条件访问 API](../active-directory/conditional-access/howto-conditional-access-apis.md#graph-api)。
 
-可使用以下模板在仅限报表模式下创建显示名称为“CA002：中等及以上登录风险时需要使用 MFA”的条件访问策略。
+可使用以下模板在仅限报表模式下创建显示名称为“模板 1：中等及以上登录风险时需要使用 MFA”的条件访问策略。
 
 ```json
 {
@@ -226,16 +227,25 @@ Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求�
 }
 ```
 
+## <a name="add-conditional-access-to-a-user-flow"></a>向用户流添加条件访问
+
+添加 Azure AD 条件访问策略后，在用户流或自定义策略中启用条件访问。 启用条件访问时，不需要指定策略名称。
+
+随时可能都会有多个条件访问策略应用于单个用户的情况。 在这种情况下，将优先使用最严格的访问控制策略。 例如，如果一个策略要求使用 MFA，而另一个策略阻止访问，则用户将被阻止。
+
 ## <a name="enable-multi-factor-authentication-optional"></a>启用多重身份验证（可选）
 
-向用户流添加条件访问时，请考虑使用 **多重身份验证 (MFA)** 。 用户可以通过短信或语音使用一次性代码，或者通过电子邮件使用一次性密码来进行多重身份验证。 MFA 设置独立于条件访问设置。 可从下列 MFA 选项中进行选择：
+MFA向用户流添加条件访问时，请考虑使用多重身份验证 (MFA)。 用户可以通过短信或语音使用一次性代码，或者通过电子邮件使用一次性密码来进行多重身份验证。 MFA 设置的配置独立于条件访问设置。 可从下列 MFA 选项中进行选择：
 
-   - **关** - 决不在登录期间强制执行 MFA，也不在注册和登录期间提示用户注册 MFA。
-   - **始终启用** - 无论条件访问设置如何，始终需要 MFA。 如果用户尚未注册 MFA，系统会在登录时提示他们注册。 在注册期间，系统会提示用户注册 MFA。
-   - **条件性(预览)** - 仅在有效条件访问策略要求 MFA 时才进行 MFA。 如果条件访问评估的结果是没有风险的 MFA 质询，则在登录期间强制执行 MFA。 如果结果是因风险导致的 MFA 质询，而且用户未注册 MFA，则会阻止登录。 在注册期间，不会提示用户注册 MFA。
+- **关** - 决不在登录期间强制执行 MFA，也不在注册和登录期间提示用户注册 MFA。
+- **始终启用** - 无论条件访问设置如何，始终需要 MFA。 在注册期间，系统会提示用户注册 MFA。 在登录期间，如果用户尚未注册 MFA，系统会提示他们注册。
+- **条件性** - 在注册和登录期间，系统会提示用户注册 MFA（包括新用户和未注册 MFA 的现有用户）。 在登录期间，仅在活动的条件访问策略评估需要 MFA 时强制执行 MFA：
 
-> [!IMPORTANT]
-> 如果条件访问策略通过 MFA 授予访问权限，但用户尚未注册电话号码，则用户可能被阻止。
+   - 如果结果是没有风险的 MFA 质询，则强制实施 MFA。 如果用户尚未注册 MFA，系统会提示他们注册。
+   - 如果结果是因风险导致的 MFA 质询，而且用户未注册 MFA，则会阻止登录。
+
+   > [!NOTE]
+   > 随着条件访问在 Azure AD B2C 中正式发布，现在系统会在注册期间提示用户注册 MFA 方法。 在正式发布之前创建的任何注册用户流都不会自动反映这一新行为，但你可以通过创建新的用户流来包括该行为。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -253,9 +263,9 @@ Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求�
  
    ![在“属性”中配置 MFA 和条件访问](media/conditional-access-user-flow/add-conditional-access.png)
 
-1. 在“多重身份验证”部分，选择所需的方法类型，然后在“MFA 强制执行”下选择“条件性(预览)”   。
+1. 在“多重身份验证”部分，选择所需的方法类型，然后在“MFA 强制执行”下选择“条件性”   。
  
-1. 在“条件访问(预览)”部分，选择“强制实施条件访问策略”复选框 。
+1. 在“条件访问”部分中，选中“强制实施条件访问策略”复选框 。
 
 1. 选择“保存”。
 
@@ -269,6 +279,23 @@ Azure AD B2C 会评估每个登录事件，并确保在满足所有策略要求�
 1. 在 [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access) 上获取条件访问策略的示例。
 1. 在每个文件中，将字符串 `yourtenant` 替换为 Azure AD B2C 租户的名称。 例如，如果 B2C 租户的名称为 contosob2c，则 `yourtenant.onmicrosoft.com` 的所有实例都将变为 `contosob2c.onmicrosoft.com`。
 1. 上传策略文件。
+ 
+### <a name="configure-claim-other-than-phone-number-to-be-used-for-mfa"></a>配置将声明而不是电话号码用于 MFA
+
+在上面的条件访问策略中，`DoesClaimExist` 声明转换方法会检查声明是否包含值，例如 `strongAuthenticationPhoneNumber` 声明是否包含电话号码。 
+
+声明转换不限于 `strongAuthenticationPhoneNumber` 声明。 根据方案，可以使用任何其他声明。 在下面的 XML 代码片段中，改为选中了 `strongAuthenticationEmailAddress` 声明。 你选择的声明必须具有有效的值，否则 `IsMfaRegistered` 声明将被设置为 `False`。 如果设置为 `False`，则条件访问策略评估将返回 `Block` 授权类型，使用户无法完成用户流。
+
+```XML
+ <ClaimsTransformation Id="IsMfaRegisteredCT" TransformationMethod="DoesClaimExist">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="strongAuthenticationEmailAddress" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="IsMfaRegistered" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+ </ClaimsTransformation>
+```
 
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 

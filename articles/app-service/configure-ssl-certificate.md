@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 11cd17041ce110cca4f3cd5bce5cc98ccc0ed7af
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c087533958665eb71e046d3bab1f03265adbd3ba
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373044"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853561"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -20,7 +20,7 @@ ms.locfileid: "110373044"
 将证书添加到应用服务应用或[函数应用](../azure-functions/index.yml)后，即可[使用它来保护自定义 DNS 名称](configure-ssl-bindings.md)或[在应用程序代码中使用它](configure-ssl-certificate-in-code.md)。
 
 > [!NOTE]
-> 上传到应用的证书存储在与该应用的资源组和区域组合（内部称为网络空间）绑定的部署单元中。 这使得相应证书可供相同资源组和区域组合中的其他应用访问。 
+> 上传到应用的证书存储在与应用服务计划的资源组和区域组合（在内部称为“Web 空间”）绑定的部署单元中。 这使得相应证书可供相同资源组和区域组合中的其他应用访问。 
 
 下表列出了用于在应用服务中添加证书的选项：
 
@@ -63,7 +63,9 @@ ms.locfileid: "110373044"
 > [!NOTE]
 > 在创建免费托管证书之前，请先确保已[满足应用的先决条件](#prerequisites)。
 
-免费应用服务托管证书是用于保护应用服务中的自定义 DNS 名称的统包解决方案。 它是一个功能完备的 TLS/SSL 证书，由应用服务管理并自动续订。 免费证书具有以下限制：
+免费应用服务托管证书是用于保护应用服务中的自定义 DNS 名称的统包解决方案。 它是一种完全由应用服务托管的 TLS/SSL 服务器证书，在到期前 45 天以 6 个月为增量自动持续续订。 你创建证书并将其绑定到自定义域，然后让应用服务执行其余操作。
+
+免费证书具有以下限制：
 
 - 不支持通配符证书。
 - 不支持使用证书指纹的客户端证书（已计划删除证书指纹）。
@@ -155,6 +157,10 @@ ms.locfileid: "110373044"
 
 选择保管库后，关闭“Key Vault 存储库”页面。 “步骤1:存储”选项应显示绿色复选标记表示成功。 保持页面处于打开状态，执行下一步骤。
 
+> [!NOTE]
+> 目前，应用服务证书仅支持 Key Vault 访问策略，而不支持 RBAC 模型。
+>
+
 ### <a name="verify-domain-ownership"></a>验证域所有权
 
 在上一步中所用的同一“证书配置”页中，单击“步骤 2:  验证”。
@@ -197,6 +203,10 @@ ms.locfileid: "110373044"
 默认情况下，应用服务资源提供程序无权访问 Key Vault。 若要将 Key Vault 用于证书部署，需要[授权资源提供程序对 KeyVault 的读取访问权限](../key-vault/general/assign-access-policy-cli.md)。 
 
 `abfa0a7c-a6b6-4736-8310-5855508787cd` 是应用服务的资源提供程序服务主体名称，并且对于所有 Azure 订阅都是相同的。 对于 Azure 政府云环境，请改用 `6a02c803-dafd-4136-b4c3-5a6f318b4714` 作为资源提供程序服务主体名称。
+
+> [!NOTE]
+> 目前，Key Vault 证书仅支持 Key Vault 访问策略，而不支持 RBAC 模型。
+> 
 
 ### <a name="import-a-certificate-from-your-vault-to-your-app"></a>将保管库中的证书导入到应用
 
@@ -379,11 +389,11 @@ az keyvault secret download \
 
 现在，你可以删除应用服务证书。 在左侧导航窗格中选择“概述” > “删除”。 在确认对话框中，键入证书名称并选择“确定”。
 
-## <a name="automate-with-scripts&quot;></a>使用脚本自动化
+## <a name="automate-with-scripts"></a>使用脚本自动化
 
-### <a name=&quot;azure-cli&quot;></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 &quot;Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 

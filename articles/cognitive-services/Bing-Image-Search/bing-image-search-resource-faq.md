@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: e8502b1d01e0f3fbf5d42e924511cc978690bce4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e62aa434efade2cb1fa3d82265eb44d523dd869
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96342186"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773352"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>有关必应图像搜索 API 的常见问题解答 (FAQ)
 
@@ -24,7 +24,7 @@ ms.locfileid: "96342186"
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
 > 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
-获取与 Azure 上 Microsoft 认知服务必应图像搜索 API 有关的概念、代码和方案的常见问题解答。
+获取与 Azure 上 Azure 认知服务必应图像搜索 API 有关的概念、代码和方案的常见问题解答。
 
 ## <a name="response-headers-in-javascript"></a>JavaScript 响应头
 
@@ -69,7 +69,7 @@ cors-proxy-server
 
 ## <a name="next-steps"></a>后续步骤
 
-问题是否与缺少功能相关？ 不妨在我们的 [用户之声网站](https://cognitive.uservoice.com/forums/555907-bing-search)上申请或投票支持相应功能。
+问题是否与缺少功能相关？ 请考虑使用[反馈工具](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)发起请求或投票。
 
 ## <a name="see-also"></a>另请参阅
 

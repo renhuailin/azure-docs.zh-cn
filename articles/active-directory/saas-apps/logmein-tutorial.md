@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2021
 ms.author: jeedes
-ms.openlocfilehash: e5b28c70f19d651212cc7af54968ce60c6daeb38
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 09c46efab8eea797b10b2724c3c19c7b1b34c87f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125384"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467649"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logmein"></a>教程：Azure Active Directory 单一登录 (SSO) 与 LogMeIn 集成
 
@@ -80,6 +80,9 @@ ms.locfileid: "108125384"
 
     a. 在“登录 URL”文本框中，键入 URL：`https://authentication.logmeininc.com/login?service=https%3A%2F%2Fmyaccount.logmeininc.com`
 
+1. LogMeIn 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表，其中“唯一用户标识符”通过 user.userprincipalname 进行映射 。 LogMeIn 应用程序要求通过 user.mail 对“唯一用户标识符”进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
+
+    ![图像](common/default-attributes.png)
 
 1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 

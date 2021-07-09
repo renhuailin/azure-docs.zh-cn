@@ -9,18 +9,21 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 1def60843df55a80e8b7d28d7eb61e262a560111
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3938f7f5dae00a3628e2c9e2fec21a364efac95d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044137"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084693"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>复制和移动“自定义视觉”项目
 
 创建并训练“自定义视觉”项目后，你可能会想要将项目复制到另一个资源。 例如，你可能想要将项目从开发环境移至生产环境，或将项目备份到不同 Azure 区域中的帐户，以提高数据安全性。
 
 **[ExportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)** 和 **[ImportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** API 允许将项目从一个“自定义视觉”帐户复制到其他帐户，从而实现这种场景。 本指南演示如何将这些 REST API 与 cURL 配合使用。 还可以使用 HTTP 请求服务（如 Postman）来发出请求。
+
+> [!TIP]
+> 有关使用 Python 客户端库的此方案示例，请参阅 GitHub 上的[移动自定义视觉项目](https://github.com/Azure-Samples/custom-vision-move-project/tree/master/)存储库。
 
 ## <a name="business-scenarios"></a>业务场景
 

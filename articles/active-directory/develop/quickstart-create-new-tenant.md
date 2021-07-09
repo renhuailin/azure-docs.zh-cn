@@ -13,12 +13,12 @@ ms.date: 02/15/2021
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: cb4995c0c71d0bcebb3cdd8ec471a92b7820cb9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ef84b1ac1a1d7f1b1c9c629c4e6eb2606f2441c
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100535155"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854839"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入门：设置租户
 
@@ -69,7 +69,7 @@ ms.locfileid: "100535155"
 你要提供以下信息来创建新租户：
 
 - 组织名称
-- **初始域** - 此域是 *.onmicrosoft.com 的一部分。 稍后可对该域进行自定义。
+- 初始域 - 无法编辑或删除初始域 `<domainname>.onmicrosoft.com`。 可以稍后添加自定义域名。
 - 国家或地区
 
 > [!NOTE]

@@ -8,14 +8,14 @@ manager: nitinme
 keywords: 认知服务, 认知智能, 认知解决方案, ai 服务
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 06/04/2021
 ms.author: aahi
-ms.openlocfilehash: de855e53f6d54c9175963b34d8cd3da572e02790
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: fb28a431f9f2f136d177a5d51398bc2427a7134d
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736531"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540155"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建认知服务资源
 
@@ -114,6 +114,8 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的基于云的服务�
 1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。
 2. 找到包含要删除的资源的资源组。
 3. 右键单击资源组列表。 选择“删除资源组”并进行确认。
+
+如果需要恢复已删除的资源，请参阅[恢复已删除的认知服务资源](manage-resources.md)。
 
 ## <a name="see-also"></a>另请参阅
 

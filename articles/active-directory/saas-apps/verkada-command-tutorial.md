@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/07/2020
+ms.date: 05/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 33e404a7569f4d68fa4679ce492c7713714ce09f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 44f2611baefde8ca2ab15cfaf7dc189f9276da06
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92636657"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478429"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verkada-command"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Verkada Command 集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "92636657"
 * 在 Azure AD 中控制谁有权访问 Verkada Command。
 * 让用户使用其 Azure AD 帐户自动登录到 Verkada Command。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要详细了解 SaaS 应用与 Azure AD 单一登录的集成，请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,42 +37,42 @@ ms.locfileid: "92636657"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Verkada Command 支持 **SP 和 IDP** 发起的 SSO
+* Verkada Command 支持 SP 和 IDP 发起的 SSO。
 
-* 配置 Verkada Command 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-## <a name="adding-verkada-command-from-the-gallery"></a>从库中添加 Verkada Command
+## <a name="add-verkada-command-from-the-gallery"></a>从库中添加 Verkada Command
 
 若要配置 Verkada Command 与 Azure AD 的集成，需要从库中将 Verkada Command 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 **Verkada Command**。
 1. 在结果面板中选择“Verkada Command”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on-for-verkada-command"></a>配置并测试 Verkada Command 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-verkada-command"></a>配置并测试 Verkada Command 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置并测试 Verkada Command 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Verkada Command 中的相关用户之间建立链接关系。
 
-若要配置并测试 Verkada Command 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Verkada Command 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Verkada Command SSO](#configure-verkada-command-sso)** - 在应用程序端配置单一登录设置。
-    * **[创建 Verkada Command 测试用户](#create-verkada-command-test-user)** - 在 Verkada Command 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    1. **[创建 Verkada Command 测试用户](#create-verkada-command-test-user)** - 在 Verkada Command 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Verkada Command”应用程序集成页上，找到“管理”部分并选择“单一登录”。
+1. 在 Azure 门户中的“Verkada Command”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -90,14 +88,12 @@ ms.locfileid: "92636657"
 
     c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“基本 SAML 配置”部分。  
 
-    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
-
     > [!Note]
     > 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。  
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://vauth.command.verkada.com/saml/login/<client id>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://vauth.command.verkada.com/saml/login/<CLIENT_ID>`
 
     > [!NOTE]
     > 登录 URL 值不是实际值。 使用实际登录 URL 更新此值。 请联系 [Verkada Command 客户端支持团队](mailto:support@verkada.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -143,15 +139,9 @@ ms.locfileid: "92636657"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在“应用程序”列表中选择“Verkada Command”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-verkada-command-sso"></a>配置 Verkada Command SSO
@@ -164,18 +154,20 @@ ms.locfileid: "92636657"
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-在访问面板中单击“Verkada Command”磁贴时，应会自动登录到设置了 SSO 的 Verkada Command。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+#### <a name="sp-initiated"></a>SP 启动的：
 
-## <a name="additional-resources"></a>其他资源
+* 在 Azure 门户中单击“测试此应用程序”。 这将重定向到 Verkada Command 登录 URL，你可以从那里启动登录流。  
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 直接转到 Verkada Command 登录 URL，从那里启动登录流。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？]( https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+#### <a name="idp-initiated"></a>IDP 启动的：
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+* 在 Azure 门户中单击“测试此应用程序”后，你会自动登录到为其设置了 SSO 的 Verkada Command。 
 
-- [在 Azure AD 中试用 Verkada Command](https://aad.portal.azure.com/)
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的 Verkada Command 磁贴时，如果该应用程序是在 SP 模式下配置的，则系统会将你重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则你会自动登录到为其设置了 SSO 的 Verkada Command。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>后续步骤
+
+配置 Verkada Command 后，可强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

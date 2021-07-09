@@ -4,17 +4,17 @@ description: 已启用 Azure Arc 的 SQL 托管实例概述
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: rothja
-ms.author: jroth
+author: dnethi
+ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: overview
-ms.openlocfilehash: b0c84d8907087c6641f15167515c5bc255e6a1f1
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 60ffd6b836278bbb6a5742fbff10c2ad4072808c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733633"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755507"
 ---
 # <a name="azure-arc-enabled-sql-managed-instance-overview"></a>已启用 Azure Arc 的 SQL 托管实例概述
 

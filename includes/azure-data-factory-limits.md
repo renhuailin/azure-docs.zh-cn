@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 96c67327a8272a02e677cc40b46c3177e470b684
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 6c991188c266d2e169a7a1d50f4c2ea61f3a51f3
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106125886"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "111350982"
 ---
 Azure 数据工厂是一项多租户服务，具有以下默认限制，目的是确保客户订阅不受彼此工作负荷的影响。 若要将限制提高到订阅的最高限制，请联系支持部门。
 
@@ -21,11 +21,10 @@ Azure 数据工厂是一项多租户服务，具有以下默认限制，目的�
 
 | 资源 | 默认限制 | 最大限制 |
 | -------- | ------------- | ------------- |
-| Azure 订阅中的数据工厂 | 800 | 800 |
 | 数据工厂中的实体（例如管道、数据集、触发器、链接服务、专用终结点和集成运行时）总数 | 5,000 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 一个订阅中 Azure-SSIS Integration Runtime 的总 CPU 内核数 | 256 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 每个数据工厂的并行管道运行数（在工厂中的所有管道之间共享） | 10,000  | 10,000 |
-| 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)的每个订阅的并发外部活动运行数<br><small>外部活动在集成运行时上进行管理，但在 Databricks、存储过程、HDInsights 和 Web 等链接服务上执行。此限制不适用于自承载 IR。</small> | 3,000 | 3,000 |
+| 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)的每个订阅的并发外部活动运行数<br><small>外部活动在集成运行时上进行管理，但在 Databricks、存储过程、Web 等链接服务上执行。此限制不适用于自承载 IR。</small> | 3,000 | 3,000 |
 | 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)的每个订阅的并发管道活动运行数 <br><small>Lookup、GetMetadata 和 Delete 等管道活动在集成运行时上执行。此限制不适用于自承载 IR。</small> | 1,000 | 1,000                                                        |
 | 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#azure-ir-location)的每个订阅的并发创作操作数<br><small>包括测试连接、浏览文件夹列表和表列表，以及预览数据。此限制不适用于自承载 IR。</small> | 200 | 200                                                          |
 | 每个 [Azure Integration Runtime 区域](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)每个订阅的并发数据集成单位<sup>1</sup> 消耗量| 区域组 1<sup>2</sup>：6,000<br>区域组 2<sup>2</sup>：3,000<br>区域组 3<sup>2</sup>：1,500 | 区域组 1<sup>2</sup>：6,000<br/>区域组 2<sup>2</sup>：3,000<br/>区域组 3<sup>2</sup>：1,500 |

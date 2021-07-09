@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 探索示例方案
+title: 快速入门 - Azure Digital Twins Explorer 入门
 titleSuffix: Azure Digital Twins
 description: 快速入门 - 使用 Azure Digital Twins Explorer 示例直观显示和探索预生成方案。
 author: baanders
@@ -7,109 +7,71 @@ ms.author: baanders
 ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: ca50c0221843b4e24a6287177f36608b86a0a1a9
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: d4315ff04235e4b555a201e9da7287339b0de125
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075607"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110450665"
 ---
-# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>快速入门 - 使用 Azure Digital Twins Explorer 探索示例 Azure 数字孪生方案
+# <a name="quickstart---get-started-with-a-sample-scenario-in-azure-digital-twins-explorer"></a>快速入门 - 开始使用 Azure Digital Twins Explorer 中的示例场景
 
 通过 Azure 数字孪生，可创建真实环境的实时模型并与之交互。 首先，将单个元素建模为“数字孪生”。 然后将它们连接到一个知识图，该图可以响应实时事件并查询信息。
 
-在本快速入门中，你将通过名为 [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 的示例应用程序来探索预生成的 Azure 数字孪生图形。 可使用 Azure Digital Twins Explorer 完成以下操作：
+在本快速入门中，你将使用 [Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) 来探索预生成的 Azure 数字孪生图形。 通过此工具，你可在 Azure 门户中将 Azure 数字孪生数据可视化并与之交互。
 
-- 上传环境的数字表示形式。
-- 查看为表示 Azure 数字孪生中的环境而创建的孪生和图的可视图像。
-- 通过基于浏览器的视觉体验执行其他管理活动。
+你将完成以下步骤：
 
-本快速入门包含以下主要步骤：
-
-1. 设置 Azure 数字孪生实例和 Azure Digital Twins Explorer。
+1. 创建一个 Azure 数字孪生实例，并在 Azure Digital Twins Explorer 中连接到该实例。
 1. 上传预生成的模型和图形数据来构造示例方案。
 1. 探索已创建的方案图形。
 1. 对图形进行更改。
+1. 回顾你从体验中学到的知识。
 
-你将使用的示例图形表示具有两个楼层和两个房间的建筑。 该图形将如下图像所示：
+你将使用的示例图形表示具有两个楼层和两个房间的建筑。 Floor0 包含 Room0，Floor1 包含 Room1。 该图形将如下图像所示：
 
-:::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="由箭头连接的 4 个圆形节点组成的图形视图。标记为“Floor1”的圆通过一个标记为“contains”的箭头连接到一个标记为“Room1”的圆。标记为“Floor0”的圆通过一个标记为“contains”的箭头连接到一个标记为“Room0”的圆。未连接“Floor1”和“Floor0”。":::
+:::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="四个圆形节点组成的图形的屏幕截图，这些节点在 Azure Digital Twins Explorer 中由箭头连接。":::
 
 ## <a name="prerequisites"></a>必备知识
 
 要完成本快速入门，你需要一个 Azure 订阅。 如果还没有 Azure 订阅，可立即[免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-还需要在计算机上有 Node.js。 若要获取最新版本，请参阅 [Node.js](https://nodejs.org/)。
+对于在快速入门中使用的示例图形，你还需要下载相关资料。 按照以下链接和说明，从 [GitHub 存储库 digital-twins-explorer](https://github.com/Azure-Samples/digital-twins-explorer) 中下载 3 个必需文件。
+* [Room.js](https://raw.githubusercontent.com/Azure-Samples/digital-twins-explorer/main/client/examples/Room.json)：导航到链接，右键单击屏幕上的任意位置，然后在浏览器的右键单击菜单中选择“另存为”。 使用下面的“另存为”窗口将文件保存在计算机上的某个位置，文件名为“Room.json”。
+* [Floor.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-explorer/main/client/examples/Floor.json)：导航到链接，右键单击屏幕上的任意位置，然后在浏览器的右键单击菜单中选择“另存为”。 使用下面的“另存为”窗口将文件保存在 Room.json 所在的位置，文件名为“Floor.json” 。
+* [buildingScenario.xlsx](https://github.com/Azure-Samples/digital-twins-explorer/blob/main/client/examples/buildingScenario.xlsx)：导航到链接，然后选择“下载”按钮。 这会将该文件下载到默认下载位置。
 
-最后，还需要下载要在快速入门期间使用的示例. 示例应用程序是 Azure Digital Twins Explorer。 此示例包含快速入门中用于加载和探索 Azure 数字孪生方案的应用。 它还包含示例方案文件。 若要获取示例，请转到 [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 选择标题下方的“浏览代码”按钮，随后会转到示例的相应 GitHub 存储库。 选择“代码”按钮，然后单击“下载 ZIP”，将示例下载为 .ZIP 文件 。 
-
-:::image type="content" source="media/quickstart-azure-digital-twins-explorer/download-repo-zip.png" alt-text="GitHub 上 digital-twins-explorer 存储库的屏幕截图。选中了“代码”按钮，生成了一个小对话框，其中突出显示了“下载 ZIP”按钮。" lightbox="media/quickstart-azure-digital-twins-explorer/download-repo-zip.png":::
-
-解压缩 digital-twins-explorer-main.zip 文件夹，并提取文件。
+    :::image type="content" source="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png" alt-text="GitHub 中的 digital-twins-explorer/client/examples/buildingScenario.xlsx 文件的屏幕截图。其中的“下载”按钮突出显示。" lightbox="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png":::
 
 ## <a name="set-up-azure-digital-twins-and-azure-digital-twins-explorer"></a>设置 Azure 数字孪生和 Azure Digital Twins Explorer
 
-要使用 Azure 数字孪生，第一步是设置 Azure 数字孪生实例。 创建服务的实例并设置凭据以向 Azure Digital Twins Explorer 进行身份验证后，可以在 Azure Digital Twins Explorer 中连接到该实例，并且稍后可在快速入门中使用示例数据填充该实例。
+要使用 Azure 数字孪生，第一步是设置 Azure 数字孪生实例。 创建服务的实例后，可在 Azure Digital Twins Explorer 中连接到该实例，稍后可在快速入门中使用示例数据对其进行填充。
 
 本部分的其余部分将指导你完成这些步骤。
 
 ### <a name="set-up-an-azure-digital-twins-instance"></a>设置 Azure 数字孪生实例
 
-[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+若要在本文中使用 Azure 数字孪生，首先需要设置一个 Azure 数字孪生实例。 还需具备使用它所必需的权限。
 
-### <a name="set-up-local-azure-credentials"></a>设置本地 Azure 凭据
+请按照[设置实例和身份验证](how-to-set-up-instance-portal.md)中的说明操作。 该说明中包含可帮助你验证是否已成功完成每个步骤的信息。
 
-当你在本地计算机上运行示例时，Azure Digital Twins Explorer 应用程序使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential)（属于 `Azure.Identity` 库的一部分）对用户进行 Azure 数字孪生实例验证。 若要详细了解客户端应用可向 Azure 数字孪生进行身份验证的不同方法，请参阅[编写应用身份验证代码](how-to-authenticate-client.md)。
+### <a name="open-instance-in-azure-digital-twins-explorer"></a>在 Azure Digital Twins Explorer 中打开实例
 
-借助此身份验证类型，Azure Digital Twins Explorer 将在本地环境中搜索凭据，如本地 [Azure CLI](/cli/azure/install-azure-cli) 或 Visual Studio 或 Visual Studio Code 中的 Azure 登录名。 因此，你应该通过这些机制之一在本地登录 Azure，以便设置 Azure Digital Twins Explorer 应用的凭据。
+接下来，在 Azure 门户为实例打开 [Azure Digital Twins Explorer](https://portal.azure.com)。 
 
-如果已通过其中一种方式登录到 Azure，则可以跳到[下一部分](#run-and-configure-azure-digital-twins-explorer)。
+为此，请转到 Azure 门户，在门户搜索栏中搜索新的 Azure 数字孪生实例的名称来导航到该实例。
 
-否则，可以使用以下步骤安装本地 Azure CLI：
+接下来，选择“打开 Azure Digital Twins Explorer (预览版)”按钮。
 
-1. 按照[此安装链接](/cli/azure/install-azure-cli)上的过程进行操作，完成与你的操作系统相匹配的安装。
-1. 在计算机上打开控制台窗口。
-1. 运行 `az login` 并按照身份验证提示操作以登录到 Azure 帐户。
-1. 可能执行的最后一步：如果在此帐户下使用多个 Azure 订阅，请运行 `az account set --subscription "<your-subscription-name-or-ID>"` 来将身份验证上下文设置为包含 Azure 数字孪生实例的 Azure 订阅（订阅的名称或 ID 值也有效）。
+:::image type="content" source="media/includes/azure-digital-twins-explorer-portal-access.png" alt-text="显示 Azure 数字孪生实例概述页面的 Azure 门户的屏幕截图。其中的“打开 Azure Digital Twins Explorer (预览版)”按钮突出显示。" lightbox="media/includes/azure-digital-twins-explorer-portal-access.png":::
 
-登录后，在下一部分中运行 Azure Digital Twins Explorer 时，它会自动获取 Azure 凭据。
+这将打开连接到实例的 Azure Digital Twins Explorer 窗口。
 
-如果需要，可以关闭身份验证控制台窗口。 或者，可以使其保持打开状态以供下一步使用。
-
-### <a name="run-and-configure-azure-digital-twins-explorer"></a>运行和配置 Azure Digital Twins Explorer
-
-接下来，运行 Azure Digital Twins Explorer 应用程序，并为 Azure 数字孪生实例配置该应用程序。
-
-1. 转到已下载并解压缩的 digital-twins-explorer-main 文件夹。
-在文件夹位置 digital-twins-explorer-main/client/src 打开控制台窗口。
-
-1. 运行 `npm install`，下载所有必需的依赖项。
-
-1. 运行 `npm run start` 启动该应用。
-
-   几秒钟后，将打开一个浏览器窗口，应用将显示在浏览器中。
-
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 Azure Digital Twins Explorer，其中包含查询资源管理器、模型、图形视图和属性所对应的面板。屏幕上尚无数据。" lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
-
-1. 选择窗口右上角的“登录”按钮（如下图所示），以将 Azure Digital Twins Explorer 配置为使用已设置的实例。
-
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/sign-in.png" alt-text="在窗口顶部附近突出显示“登录”图标的 Azure Digital Twins Explorer。图标显示了一个简单的人员与密钥叠加的剪影。" lightbox="media/quickstart-azure-digital-twins-explorer/sign-in.png":::
-
-1. 输入之前在[设置 Azure 数字孪生实例](#set-up-an-azure-digital-twins-instance)部分中收集的 Azure 数字孪生实例 URL，格式为 https://<instance-host-name>。
-
-> [!TIP]
-> 如果在连接时显示 `SignalRService.subscribe` 错误消息，请确保 Azure 数字孪生 URL 以“https://”开头。
->
-> 如果出现身份验证错误，则可能要检查 **环境变量**，以确保其中包含的所有凭据对 Azure 数字孪生有效。 `DefaultAzureCredential` 会尝试按照[特定顺序](/dotnet/api/overview/azure/identity-readme#defaultazurecredential)针对凭据类型进行身份验证，并首先计算环境变量。
-
-如果你看到来自 Microsoft 的“权限已请求”弹出窗口，请向此应用程序授予同意并接受以继续。
-
->[!NOTE]
-> 可随时重新访问或编辑此信息，方法是选择相同图标以再次打开“登录”框。 它将保留你传入的值。
+:::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="Internet 浏览器中 Azure Digital Twins Explorer 的屏幕截图。" lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
 
 ## <a name="add-the-sample-data"></a>添加示例数据
 
-接下来，需要将把示例方案和图形导入到 Azure Digital Twins Explorer 中。 还可在你先前下载的 digital-twins-explorer-main 文件夹中找到该示例方案。
+接下来，需要将把示例方案和图形导入到 Azure Digital Twins Explorer 中。 可在[先决条件](#prerequisites)部分下载的“digital-twins-explorer-main”文件夹中找到示例方案。
 
 ### <a name="models"></a>模型
 
@@ -132,18 +94,18 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
 
 按照以下步骤上传模型。
 
-1. 在“模型”面板中，选择“上传模型”图标 。
+1. 在“模型”面板中，选择“上传模型”图标，该图标显示一个指向云的箭头 。
 
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/upload-model.png" alt-text="在“模型”面板中，中间图标突出显示。它显示了一个指向云的箭头。" lightbox="media/quickstart-azure-digital-twins-explorer/upload-model.png":::
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/upload-model.png" alt-text="Azure Digital Twins Explorer 的屏幕截图，其中突出显示“模型”面板和“上传模型”图标。" lightbox="media/quickstart-azure-digital-twins-explorer/upload-model.png":::
  
-1. 在出现的“文件选择器”窗口中，转到下载的存储库中的 digital-twins-explorer-main/client/examples 文件夹。
-1. 选择“Room.json”和“Floor.json”，然后选择“确定”  。 可根据需要上传其他模型，但在本快速入门中不会用到它们。
+1. 在显示的“打开”窗口中，导航到包含之前下载的 Room.json 和 Floor.json 文件的文件夹 。
+1. 选择 Room.json 和 Floor.json，然后选择“打开”来将其上传  。 
 
-现在，Azure Digital Twins Explorer 会将这些模型文件上传到 Azure 数字孪生实例。 它们应在“模型”面板中显示，并显示其易记名称和完整模型 ID。 可选择“查看模型”信息图标，查看其后面的 DTDL 代码。
+Azure Digital Twins Explorer 会将这些模型文件上传到 Azure 数字孪生实例。 它们应在“模型”面板中显示，并显示其易记名称和完整的模型 ID。 可选择“查看模型”信息图标，查看其后面的 DTDL 代码。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/model-info.png" alt-text="“模型”面板的视图，其中列出了两个模型定义，分别是楼层 (dtmi:example:Floor;1) 和房间 (dtmi:example:Room;1)。“查看模型信息”图标，其中每个模型都突出显示了一个带圆圈的字母“i”。" lightbox="media/quickstart-azure-digital-twins-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/model-info.png" alt-text="显示“模型”面板的 Azure Digital Twins Explorer 的屏幕截图，其中列出“楼层”和“房间”这两个模型的定义。" lightbox="media/quickstart-azure-digital-twins-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -157,7 +119,7 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
 
 数字孪生表示你的商业环境中的实际实体。 它们可以是诸如农场上的传感器、汽车上的灯，或者（在本快速入门中）建筑楼层上的房间等实体。 你可以创建任意给定模型类型的许多孪生，例如都使用“房间”模型的多个房间。 将它们与关系连接到表示完整环境的“孪生图形”。
 
-在本部分，将上传预先创建的孪生，而这些孪生已连接到预先创建的图中。 该图包含两个楼层和两个房间，并通过下列布局连接：
+在本部分，将上传预先创建的孪生体，这些孪生体已连接到预先创建的图中。 该图包含两个楼层和两个房间，并通过下列布局连接：
 
 * 楼层 0
     - 包含 Room0
@@ -168,29 +130,29 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
 
 请按照以下步骤导入图形。
 
-1. 在“孪生图”面板中，选择“导入图形”图标 。
+1. 在“孪生图”面板中，选择“导入图形”图标，该图标显示一个指向云的箭头 。
 
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/import-graph.png" alt-text="在“图形视图”面板中，一个图标突出显示。它显示了一个指向云的箭头。" lightbox="media/quickstart-azure-digital-twins-explorer/import-graph.png":::
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/import-graph.png" alt-text="显示“图形视图”面板的 Azure Digital Twins Explorer 的屏幕截图，其中突出显示“导入图形”图标。" lightbox="media/quickstart-azure-digital-twins-explorer/import-graph.png":::
 
-2. 在“文件选择器”窗口中，转到 digital-twins-explorer-main/client/examples 文件夹，然后选择 buildingScenario.xlsx 电子表格文件 。 此文件包含示例图的说明。 选择“确定”。
+2. 在“打开”窗口中，导航到之前下载的 buildingScenario.xlsx 文件。 此文件包含示例图的说明。 选择“打开”  。
 
    几秒钟后，Azure Digital Twins Explorer 将打开“导入”视图，其中显示了要加载的图形的预览。
 
-3. 若要确认图形上传，请选择“孪生图”面板右上角的“保存”图标 。
+3. 若要确认图形上传，请选择图形预览面板右上角的“保存”图标。
 
    :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png" alt-text="在“图形预览”窗格中突出显示“保存”图标。" lightbox="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png" alt-text="在“图形预览”窗格中突出显示“保存”图标的 Azure Digital Twins Explorer 的屏幕截图。" lightbox="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
    :::row-end:::
 
-4. 现在，Azure Digital Twins Explorer 将使用上传的文件来创建所请求的孪生及其相互之间的关系。 完成后，将出现一个对话框。 选择“关闭”。
+4. Azure Digital Twins Explorer 将使用上传的文件来创建所请求的孪生体及其相互关系。 完成后，将出现一个对话框。 选择“关闭”。
 
    :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/import-success.png" alt-text="指示图形导入成功的对话框。它显示为“导入成功。已导入 4 对孪生。已导入 2 对关系。”" lightbox="media/quickstart-azure-digital-twins-explorer/import-success.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/import-success.png" alt-text="Azure Digital Twins Explorer 的屏幕截图，其中有一个对话框指示图形导入成功。" lightbox="media/quickstart-azure-digital-twins-explorer/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -198,11 +160,11 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
 
 5. 该图现在已上传到 Azure Digital Twins Explorer。 切换回“孪生图”面板。
  
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/twin-graph-tab.png" alt-text="突出显示了“孪生图”选项卡。" lightbox="media/quickstart-azure-digital-twins-explorer/twin-graph-tab.png":::
-
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/twin-graph-tab.png" alt-text="突出显示“孪生图”选项卡的 Azure Digital Twins Explorer 的屏幕截图。" lightbox="media/quickstart-azure-digital-twins-explorer/twin-graph-tab.png"::: 
+ 
 6. 若要查看该图，请在 Azure Digital Twins Explorer 窗口顶部附近的“查询资源管理器”面板中选择“运行查询”按钮 。
 
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/run-query.png" alt-text="突出显示了窗口右上角的“运行查询”按钮。" lightbox="media/quickstart-azure-digital-twins-explorer/run-query.png":::
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/run-query.png" alt-text="突出显示窗口右上角的“运行查询”按钮的 Azure Digital Twins Explorer 的屏幕截图。" lightbox="media/quickstart-azure-digital-twins-explorer/run-query.png":::
 
 该操作将运行默认查询以选择并显示所有数字孪生。 Azure Digital Twins Explorer 将从服务中检索所有孪生和关系。 它将在“孪生图”面板中绘制它们定义的图形。
 
@@ -210,7 +172,7 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
 
 现在，你可看到已上传的示例方案图形。
 
-:::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="“图形视图”面板的视图，其中包含孪生图。标记为“floor1”的圆通过一个标记为“contains”的箭头连接到一个标记为“room1”的圆。标记为“floor0”的圆通过一个标记为“contains”的箭头连接到一个标记为“room0”的圆。":::
+:::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="Azure Digital Twins Explorer 的屏幕截图，其中显示包含孪生图的“图形视图”面板。":::
 
 这些圆（图形“节点”）表示数字孪生。 这些线条表示关系。 Floor0 孪生包含 Room0，Floor1 孪生包含 Room1   。
 
@@ -218,13 +180,13 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
 
 ### <a name="view-twin-properties"></a>查看孪生属性
 
-可选择一个孪生，在“属性”面板中查看其属性及其值的列表。
+可选择一个孪生体，在“属性”面板中查看其属性及其值的列表。
 
 下面是房间 0 的属性：
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room0.png" alt-text="显示 Room0 的属性的“属性”面板周围运用了突出显示，其中包括 Room0 的“$dtId”字段、“温度”字段 70 和“湿度”字段 30 等。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room0.png" alt-text="突出显示“属性”窗格的 Azure Digital Twins Explorer 的屏幕截图，其中显示 Room0 的 $dtId、Temperature 和 Humidity 属性。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -236,7 +198,7 @@ Room0 的温度为 70。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room1.png" alt-text="显示 Room1 的属性的“属性”面板周围运用了突出显示，其中包括 Room1 的“$dtId”字段、“温度”字段 80 和“湿度”字段 60 等。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room1.png" alt-text="突出显示“属性”窗格的 Azure Digital Twins Explorer 的屏幕截图，其中显示 Room1 的 $dtId、Temperature 和 Humidity 属性。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -258,7 +220,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 回想一下之前查看过的孪生属性，Room0 的温度为 70，Room1 的温度为 80。 因此，此处的结果中仅显示 Room1。
     
-:::image type="content" source="media/quickstart-azure-digital-twins-explorer/result-query-property-before.png" alt-text="属性查询的结果，其中仅显示 Room1。" lightbox="media/quickstart-azure-digital-twins-explorer/result-query-property-before.png":::
+:::image type="content" source="media/quickstart-azure-digital-twins-explorer/result-query-property-before.png" alt-text="显示属性查询结果的 Azure Digital Twins Explorer 的屏幕截图，其中只显示 Room1。" lightbox="media/quickstart-azure-digital-twins-explorer/result-query-property-before.png":::
 
 >[!TIP]
 > 之前的查询还支持其他比较运算符（<、>、=，或 !=）。 你可尝试将这些运算符、不同的值或不同的孪生属性插入到查询中来试着回答自己的问题。
@@ -277,13 +239,13 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png" alt-text="显示 Room0 的属性的“属性”面板。温度值为一个显示 76 的可编辑框，“保存”图标周围突出显示。" lightbox="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png" alt-text="Azure Digital Twins Explorer 的屏幕截图，其中突出显示“属性”面板上有可为 Room0 编辑的属性。" lightbox="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
 :::row-end:::
 
-现在，你将看到“补丁信息”窗口，其中显示了在后台用于 Azure 数字孪生 [API](how-to-use-apis-sdks.md) 进行更新的补丁代码。 选择“关闭”。
+现在，你将看到“补丁信息”窗口，其中显示了在后台用于 Azure 数字孪生 [API](concepts-apis-sdks.md) 进行更新的补丁代码。 选择“关闭”。
 
 ### <a name="query-to-see-the-result"></a>查询以查看结果
 
@@ -293,11 +255,11 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 现在，房间 0 的温度已从 70 更改为 76，因此两个孪生都应出现在结果中 。
 
-:::image type="content" source="media/quickstart-azure-digital-twins-explorer/result-query-property-after.png" alt-text="属性查询的结果，其中同时显示了 Room0 和 Room1。" lightbox="media/quickstart-azure-digital-twins-explorer/result-query-property-after.png":::
+:::image type="content" source="media/quickstart-azure-digital-twins-explorer/result-query-property-after.png" alt-text="显示属性查询结果的 Azure Digital Twins Explorer 的屏幕截图，其中显示 Room0 和 Room1。" lightbox="media/quickstart-azure-digital-twins-explorer/result-query-property-after.png":::
 
 ## <a name="review-and-contextualize-learnings"></a>回顾所学内容并将其置于上下文中进行理解
 
-在本快速入门中，你创建了一个 Azure 数字孪生实例、将它连接到了 Azure Digital Twins Explorer，并使用示例方案对其进行了填充。
+在本快速入门中，你创建了一个 Azure 数字孪生实例，并在 Azure Digital Twins Explorer 中使用示例方案对其进行了填充。
 
 然后，你探索了图，方法是：
 
@@ -311,9 +273,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要结束本快速入门的工作，请先结束正在运行的控制台应用。 此操作将关闭与浏览器中 Azure Digital Twins Explorer 应用的连接。 你将无法在浏览器中查看实时数据。 你可关闭浏览器标签页。
-
-然后，可选择想要删除的资源，这具体取决于你接下来要执行哪些操作。
+若要在本快速入门完成后进行清理，请根据接下来要执行的操作选择要删除的资源。
 
 * 如果你计划继续学习 Azure 数字孪生教程，可将本快速入门中使用的实例重复用于那些文章，无需将它们删除。
 
@@ -321,7 +281,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-你可能还需要从本地计算机中删除项目文件夹。
+你可能还需要从本地计算机中删除示例项目文件夹。
 
 ## <a name="next-steps"></a>后续步骤
 

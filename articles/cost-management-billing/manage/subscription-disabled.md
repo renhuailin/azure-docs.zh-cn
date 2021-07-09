@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 37093900bf49e8a7613e2e3f4311548675791ceb
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: aad194babdf539584f3e349e8050105ed801bbf0
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220877"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331729"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>重新激活已禁用的 Azure 订阅
 

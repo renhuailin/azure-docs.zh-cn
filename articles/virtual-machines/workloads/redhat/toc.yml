@@ -8,8 +8,16 @@
       href: redhat-imagelist.md
 - name: Red Hat Java 快速入门
   items:
-    - name: VM/VMSS 上的 JBoss EAP + RHEL
+    - name: VM 上的 JBoss EAP + RHEL
       href: jboss-eap-on-rhel.md
+    - name: JBoss EAP 市场映像
+      href: jboss-eap-marketplace-image.md
+    - name: Azure 上的 JBoss EAP 最佳做法
+      href: jboss-eap-on-azure-best-practices.md
+    - name: 将 JBoss EAP 迁移到 Azure VM
+      href: jboss-eap-on-azure-migration.md
+    - name: 将 JBoss EAP 迁移到应用服务
+      href: /azure/developer/java/migration/migrate-jboss-eap-to-jboss-eap-on-azure-app-service.md
     - name: VM 上的 WildFly + CentOS
       href: wildfly-on-centos.md
 - name: Azure 中的 Red Hat 更新基础结构

@@ -5,16 +5,46 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 49f9bac40ae803f980a22c19fd5d44d85fa99e9e
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 2fb04acd75d607772b6582882b98f9ed222f070c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564519"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111430007"
 ---
+本快速入门介绍如何使用适用于 JavaScript 的 Azure 通信服务聊天 SDK 在 Teams 会议中聊天。
+
+> [!NOTE]
+> 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-chat-to-teams-meeting) 上查找此快速入门的最终代码
+
+## <a name="prerequisites"></a>先决条件 
+
+*  [部署 Teams](/deployoffice/teams-install)。 
+* [聊天应用](../get-started.md)正常运行。 
+
+## <a name="enable-teams-interoperability"></a>启用 Teams 互操作性 
+
+以来宾用户身份加入 Teams 会议的通信服务用户仅在加入 Teams 会议通话后才能访问会议的聊天。 请参阅 [Teams 互操作](../../voice-video-calling/get-started-teams-interop.md)文档，了解如何将通信服务用户添加到 Teams 会议通话。
+
+你需要是拥有这两个实体的组织的成员才能使用此功能。
+
 ## <a name="joining-the-meeting-chat"></a>加入会议聊天 
 
 启用 Teams 互操作性后，通信服务用户可以使用通话 SDK 以外部用户身份加入 Teams 通话。 用户加入通话时还会以参与者身份加入会议聊天，在聊天中用户可以与通话中的其他用户发送和接收消息。 用户将无法访问加入通话前发送的聊天消息。 若要加入会议并开始聊天，可以执行后续步骤。
+
+## <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
+
+打开终端或命令窗口，为应用创建一个新目录，并导航到该目录。
+
+```console
+mkdir chat-interop-quickstart && cd chat-interop-quickstart
+```
+
+运行 `npm init -y` 以使用默认设置创建 package.json 文件。
+
+```console
+npm init -y
+```
 
 ## <a name="install-the-chat-packages"></a>安装聊天包
 
@@ -34,11 +64,21 @@ npm install @azure/communication-calling --save
 
 `--save` 选项将该库作为 package.json 文件中的依赖项列出。
 
+## <a name="set-up-the-app-framework"></a>设置应用框架
+
+此快速入门使用 webpack 捆绑应用程序资产。 运行以下命令以安装 webpack、 webpack-cli 和 webpack-dev-server npm 包，并将它们作为 package.json 中的开发依赖项列出：
+
+```console
+npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
+```
+
+在项目的根目录中创建一个 index.html 文件。 我们将使用此文件来配置可让用户加入会议并开始聊天。
+
 ## <a name="add-the-teams-ui-controls"></a>添加 Teams UI 控件
 
 将 index.html 中的代码替换为以下代码片段。
 页面顶部的文本框将用于输入 Teams 会议上下文和会议线程 ID。 使用“加入 Teams 会议”按钮加入指定会议。
-页面底部将弹出一个聊天窗口。 它可用于在会议线程上发送消息，并且它将在 ACS 用户为成员时实时显示在该线程上发送的任何消息。
+页面底部将弹出一个聊天窗口。 它可用于在会议线程上发送消息，并且它将在通信服务用户为成员时实时显示在该线程上发送的任何消息。
 
 ```html
 <!DOCTYPE html>
@@ -145,14 +185,12 @@ npm install @azure/communication-calling --save
 将 client.js 文件的内容替换为以下代码片段。
 
 在代码片段中，将 
-- `SECRET CONNECTION STRING` 替换为通信服务的连接字符串 
-- `ENDPOINT URL` 替换为通信服务的终结点 URL
+- `SECRET_CONNECTION_STRING` 替换为通信服务的连接字符串 
+- `ENDPOINT_URL` 替换为通信服务的终结点 URL
 
 ```javascript
-// run using
-// npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
 import { CallClient, CallAgent } from "@azure/communication-calling";
-import { AzureCommunicationUserCredential } from "@azure/communication-common";
+import { AzureCommunicationTokenCredential } from "@azure/communication-common";
 import { CommunicationIdentityClient } from "@azure/communication-identity";
 import { ChatClient } from "@azure/communication-chat";
 
@@ -176,112 +214,115 @@ var userId = '';
 var messages = '';
 
 async function init() {
-  const connectionString = "<SECRET CONNECTION STRING>";
-  const endpointUrl = "<ENDPOINT URL>";
+    const connectionString = "<SECRET_CONNECTION_STRING>";
+    const endpointUrl = "<ENDPOINT_URL>";
 
-  const identityClient = new CommunicationIdentityClient(connectionString);
+    const identityClient = new CommunicationIdentityClient(connectionString);
 
-  let identityResponse = await identityClient.createUser();
-  userId = identityResponse.communicationUserId;
-  console.log(
-    `\nCreated an identity with ID: ${identityResponse.communicationUserId}`
-  );
+    let identityResponse = await identityClient.createUser();
+    userId = identityResponse.communicationUserId;
+    console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
 
-  let tokenResponse = await identityClient.issueToken(identityResponse, [
-    "voip",
-    "chat",
-  ]);
-  const { token, expiresOn } = tokenResponse;
-  console.log(
-    `\nIssued an access token that expires at ${expiresOn}:`
-  );
-  console.log(token);
+    let tokenResponse = await identityClient.getToken(identityResponse, [
+        "voip",
+        "chat",
+    ]);
 
-  const callClient = new CallClient();
-  const tokenCredential = new AzureCommunicationUserCredential(token);
-  callAgent = await callClient.createCallAgent(tokenCredential);
-  callButton.disabled = false;
+    const { token, expiresOn } = tokenResponse;
+    console.log(`\nIssued an access token that expires at: ${expiresOn}`);
+    console.log(token);
 
-  chatClient = new ChatClient(
-    endpointUrl,
-    new AzureCommunicationUserCredential(token)
-  );
+    const callClient = new CallClient();
+    const tokenCredential = new AzureCommunicationTokenCredential(token);
+    callAgent = await callClient.createCallAgent(tokenCredential);
+    callButton.disabled = false;
 
-  console.log('Azure Communication Chat client created!');
+    chatClient = new ChatClient(
+        endpointUrl,
+        new AzureCommunicationTokenCredential(token)
+    );
+
+    console.log('Azure Communication Chat client created!');
 }
 
 init();
 
 callButton.addEventListener("click", async () => {
-  // join with meeting link
-  call = callAgent.join({meetingLink: meetingLinkInput.value}, {});
-    
-  call.on('callStateChanged', () => {
+    // join with meeting link
+    call = callAgent.join({meetingLink: meetingLinkInput.value}, {});
+
+    call.on('stateChanged', () => {
         callStateElement.innerText = call.state;
-  })
-  // toggle button and chat box states
-  chatBox.style.display = "block";
-  hangUpButton.disabled = false;
-  callButton.disabled = true;
+    })
+    // toggle button and chat box states
+    chatBox.style.display = "block";
+    hangUpButton.disabled = false;
+    callButton.disabled = true;
 
-  messagesContainer.innerHTML = messages;
-  
-  console.log(call);
+    messagesContainer.innerHTML = messages;
 
-  // open notifications channel
-  await chatClient.startRealtimeNotifications();
+    console.log(call);
 
-  // subscribe to new message notifications
-  chatClient.on("chatMessageReceived", (e) => {
-    console.log("Notification chatMessageReceived!");
-    
-    if (e.sender.communicationUserId != userId) {
-       renderReceivedMessage(e.content);
-    }
-    else {
-       renderSentMessage(e.content);
-    }
-  });
-  chatThreadClient = await chatClient.getChatThreadClient(threadIdInput.value);
+    // open notifications channel
+    await chatClient.startRealtimeNotifications();
+
+    // subscribe to new message notifications
+    chatClient.on("chatMessageReceived", (e) => {
+        console.log("Notification chatMessageReceived!");
+
+      // check whether the notification is intended for the current thread
+        if (threadIdInput.value != e.threadId) {
+            return;
+        }
+
+        if (e.sender.communicationUserId != userId) {
+           renderReceivedMessage(e.message);
+        }
+        else {
+           renderSentMessage(e.message);
+        }
+    });
+
+    chatThreadClient = await chatClient.getChatThreadClient(threadIdInput.value);
 });
 
 async function renderReceivedMessage(message) {
-   messages += '<div class="container lighter">' + message + '</div>';
-   messagesContainer.innerHTML = messages;
+    messages += '<div class="container lighter">' + message + '</div>';
+    messagesContainer.innerHTML = messages;
 }
 
 async function renderSentMessage(message) {
-   messages += '<div class="container darker">' + message + '</div>';
-   messagesContainer.innerHTML = messages;
+    messages += '<div class="container darker">' + message + '</div>';
+    messagesContainer.innerHTML = messages;
 }
 
 hangUpButton.addEventListener("click", async () => 
-  {
-    // end the current call
-    await call.hangUp();
+    {
+        // end the current call
+        await call.hangUp();
 
-    // toggle button states
-    hangUpButton.disabled = true;
-    callButton.disabled = false;
-    callStateElement.innerText = '-';
+        // toggle button states
+        hangUpButton.disabled = true;
+        callButton.disabled = false;
+        callStateElement.innerText = '-';
 
-    // toggle chat states
-    chatBox.style.display = "none";
-    messages = "";
-  });
+        // toggle chat states
+        chatBox.style.display = "none";
+        messages = "";
+    });
 
 sendMessageButton.addEventListener("click", async () =>
-  {
-      let message = messagebox.value;
+    {
+        let message = messagebox.value;
 
-      let sendMessageRequest = { content: message };
-      let sendMessageOptions = { senderDisplayName : 'Jack' };
-      let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
-      let messageId = sendChatMessageResult.id;
+        let sendMessageRequest = { content: message };
+        let sendMessageOptions = { senderDisplayName : 'Jack' };
+        let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
+        let messageId = sendChatMessageResult.id;
 
-      messagebox.value = '';
-      console.log(`Message sent!, message id:${messageId}`);
-  });
+        messagebox.value = '';
+        console.log(`Message sent!, message id:${messageId}`);
+    });
 ```
 
 ## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>获取通信服务用户的 Teams 会议聊天线程
@@ -302,9 +343,9 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 打开浏览器并导航到 http://localhost:8080/。 应该看到以下内容：
 
-:::image type="content" source="../acs-join-teams-meeting-chat-quickstart.png" alt-text="已完成的 JavaScript 应用程序的屏幕截图。":::
+:::image type="content" source="../join-teams-meeting-chat-quickstart.png" alt-text="已完成的 JavaScript 应用程序的屏幕截图。":::
 
-在文本框中插入 Teams 会议链接和线程 ID。 按“加入 Teams 会议”来加入 Teams 会议。 在 ACS 用户获批进入会议后，可以在通信服务应用程序中进行聊天。 导航到页面底部的框以开始聊天。
+在文本框中插入 Teams 会议链接和线程 ID。 按“加入 Teams 会议”来加入 Teams 会议。 在通信服务用户获批进入会议后，可以在通信服务应用程序中进行聊天。 导航到页面底部的框以开始聊天。
 
 > [!NOTE] 
-> 对于 Teams 中的互操作性方案，当前仅支持发送、接收和编辑消息。 尚不支持其他功能，例如键入指示符，以及通信服务用户从 Teams 会议添加或删除其他用户。  
+> 对于 Teams 中的互操作性方案，当前仅支持发送、接收和编辑消息。 尚不支持其他功能，例如键入指示符，以及通信服务用户从 Teams 会议添加或删除其他用户。

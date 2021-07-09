@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 9c3908c81e7d89efe3da90f9707023cb7c184795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74e01ffe3ed846ebc56a82d352894e8424bb3f7a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94365000"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748000"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>适用于文本分析认知服务的外部和社区内容
 
@@ -27,7 +27,7 @@ ms.locfileid: "94365000"
 
 + [从 PowerShell 使用文本分析关键短语认知服务 API（AutomationNext 博客）](https://automationnext.wordpress.com/tag/text-analytics/)
 
-+ [R 快速提示：Microsoft 认知服务的文本分析 API (R Bloggers)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
++ [R 快速提示：Azure 认知服务的文本分析 API (R Bloggers)](https://www.r-bloggers.com/r-quick-tip-microsoft-cognitive-services-text-analytics-api/)
 
 + [使用 SQL Server 数据的逻辑应用中的情绪分析（TechNet 博客）](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
 
@@ -43,13 +43,13 @@ ms.locfileid: "94365000"
 
 + [用于检测情绪并从文本中提取关键短语的逻辑应用](https://www.youtube.com/watch?v=jVN9NObAzgk)
 
-+ [使用 Power BI 和 Microsoft 认知服务的情绪分析](https://www.youtube.com/watch?v=gJ1j3N7Y75k)
++ [使用 Power BI 和 Azure 认知服务的情绪分析](https://www.youtube.com/watch?v=gJ1j3N7Y75k)
 
-+ [使用 Power BI 和 Microsoft 认知服务的文本分析提取关键短语](https://www.youtube.com/watch?v=R_-1TB2BF14)
++ [使用 Power BI 和 Azure 认知服务的文本分析提取关键短语](https://www.youtube.com/watch?v=R_-1TB2BF14)
 
 ## <a name="next-steps"></a>后续步骤
 
-你是否在寻找我们未涵盖的相关功能或用例信息？ 请考虑在我们的 [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics) 发起请求或投票。 
+你是否在寻找我们未涵盖的相关功能或用例信息？ 请考虑使用[反馈工具](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395749)发起请求或投票。 
 
 ## <a name="see-also"></a>另请参阅
 

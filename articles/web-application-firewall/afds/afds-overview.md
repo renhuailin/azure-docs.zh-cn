@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 06/09/2021
 ms.author: victorh
-ms.openlocfilehash: 0e3073c491b251a1dbb505d4656de9c6a1e0ac7f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7e0cc01d15e33e86f7e9446537fff6d43652256
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048487"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892837"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上的 Azure Web 应用程序防火墙
 
@@ -71,11 +71,11 @@ WAF 策略可以由安全规则（由客户创作的自定义规则）和托管�
 
 - **基于 HTTP 参数的访问控制：** 可使规则基于 HTTP/HTTPS 请求参数中的字符串匹配项。  例如，查询字符串、POST 参数、请求 URI、请求标头和请求正文。
 
-- **基于请求方法的访问控制：** 使规则基于请求的 HTTP 请求方法。 例如 GET、PUT 或 HEAD。
+- 基于请求方法的访问控制：将规则基于请求的 HTTP 请求方法。 例如 GET、PUT 或 HEAD。
 
 - **大小约束：** 可使规则基于请求的特定部分（例如查询字符串、URI 或请求正文）的长度。
 
-- **速率限制规则：** 速率控制规则用于限制任何客户端 IP 发出的异常高的流量。 对于客户端 IP 在一分钟内允许的 Web 请求数，可以配置一个阈值。 此规则与基于 IP 列表的允许/阻止自定义规则不同，后者允许或阻止客户端 IP 的所有请求。 速率限制可以与其他匹配条件（例如用于粒度速率控制的 HTTP(S) 参数匹配）结合使用。
+- 速率限制规则：速率控制规则会限制来自任何客户端 IP 地址的异常高流量。 对于客户端 IP 在一分钟内允许的 Web 请求数，可以配置一个阈值。 此规则与基于 IP 列表的允许/阻止自定义规则不同，后者允许或阻止客户端 IP 的所有请求。 速率限制可以与其他匹配条件（例如用于粒度速率控制的 HTTP(S) 参数匹配）结合使用。
 
 ### <a name="azure-managed-rule-sets"></a>Azure 托管的规则集
 
@@ -91,14 +91,10 @@ Azure 托管的规则集可轻松针对一组常见的安全威胁来部署保�
 - SQL 注入保护
 - 协议攻击者
 
-将新的攻击签名添加到规则集时，默认规则集的版本号将递增。
-默认规则集在 WAF 策略的检测模式下默认启用。 可以禁用或启用默认规则集内的各个规则以满足应用程序要求。 还可以根据规则设置特定操作（允许/阻止/重定向/记录）。
-
-有时你可能需要忽略 WAF 评估中的某些请求属性。 一个常见的例子是用于身份验证的 Active Directory 插入令牌。 可以为托管规则、规则组或整个规则集配置排除列表。  
-
-默认操作为“阻止”。 此外，如果想要绕过默认规则集中的任何预配置规则，可以在同一 WAF 策略中配置自定义规则。
-
 在评估默认规则集中的规则之前，自定义规则始终适用。 如果请求与某个自定义规则相匹配，将应用相应的规则操作。 请求将被阻止，或通过后端传递。 不会处理任何其他自定义规则或默认规则集中的规则。 还可以从 WAF 策略中删除默认规则集。
+
+有关详细信息，请参阅 [Web 应用程序防火墙 DRS 规则组和规则](waf-front-door-drs.md)。
+
 
 ### <a name="bot-protection-rule-set-preview"></a>机器人防护规则集（预览版）
 

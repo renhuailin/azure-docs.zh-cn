@@ -12,12 +12,12 @@ ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 49ac70b6881085f48c8bc3a12e31e4a1aa220c6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a1ec49ca9ee9d0adcbae97eae2e4093274a524c6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95021943"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099633"
 ---
 # <a name="get-started-with-custom-keyword"></a>自定义关键字入门
 
@@ -39,7 +39,7 @@ ms.locfileid: "95021943"
 
 1. 在[自定义关键字](https://aka.ms/sdsdk-wakewordportal)页上，创建一个新项目。 
 
-1. 输入名称、可选的描述，然后选择语言 。 你需要一种语言一个项目，并且支持目前仅限于 `en-US` 语言。
+1. 输入名称、可选的描述，然后选择语言 。 每个项目都需要配置一种语言，当前仅支持英语（美国）和中文（普通话，简体）。
 
     ![描述关键字项目](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "95021943"
 
 1. 要创建新的关键字模型，请单击“训练模型”。
 
-1. 输入模型的名称、可选的描述和所选择的关键字，然后单击“下一步”   。 有关如何选择有效关键字，请参阅[指南](./custom-keyword-overview.md#choose-an-effective-keyword)。
+1. 输入模型的名称、可选的描述和所选择的关键字，然后单击“下一步”   。 有关如何选择有效关键字，请参阅[指南](keyword-recognition-guidelines.md#choosing-an-effective-keyword)。
 
     ![输入关键字](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "95021943"
 
 1. 下载的文件是 `.zip` 存档。 提取存档，将看到一个扩展名为 `.table` 的文件。 这是你将在下一部分中与 SDK 一起使用的文件，因此请确保记下其路径。 文件名将反映你的关键字名，例如关键字“Activate device”的文件名为 `Activate_device.table`。
 
-## <a name="use-a-keyword-model-with-the-sdk"></a>结合使用关键字模型和 SDK
+## <a name="use-a-keyword-model-with-the-speech-sdk"></a>结合使用关键字模型和语音 SDK
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/keyword-recognition/keyword-basics-csharp.md)]
@@ -79,4 +79,5 @@ ms.locfileid: "95021943"
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[语音设备 SDK 快速入门](./speech-devices-sdk-quickstart.md?pivots=platform-android)测试自定义关键字。
+> [!div class="nextstepaction"]
+> [获取语音 SDK](speech-sdk.md)

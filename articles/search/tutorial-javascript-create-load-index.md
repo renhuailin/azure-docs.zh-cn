@@ -7,15 +7,15 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 03/18/2021
+ms.date: 05/21/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: ef48074c5346374b12eb5a3a3aea50b2c753a082
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 5ce85cf6a238ce3291d7e296ba74e735970c5e64
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950291"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469863"
 ---
 # <a name="2---create-and-load-search-index-with-javascript"></a>2 - 创建和加载包含 JavaScript 的搜索索引
 
@@ -96,6 +96,14 @@ ms.locfileid: "107950291"
 1. 依次展开“索引”、“文档”、`good-books`，然后选择一个文档以查看所有特定于该文档的数据。
  
     :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-search-extension-view-docs.png" lightbox="media/tutorial-javascript-create-load-index/visual-studio-code-search-extension-view-docs.png" alt-text="展开“索引”和 `good-books`，然后选择一个文档。":::
+
+## <a name="rollback-bulk-import-file-changes"></a>回滚批量导入文件更改
+
+在 `bulk-insert` 目录中的 VS Code 集成终端使用以下 git 命令来回滚更改。 它们不是继续学习教程所必需的，不应将这些机密保存或推送到你的存储库。 
+
+```git
+git checkout .
+```
 
 ## <a name="copy-your-search-resource-name"></a>复制搜索资源名称
 

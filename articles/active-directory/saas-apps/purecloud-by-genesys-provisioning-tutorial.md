@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: bbb9b47e42ce195a98801ee08d177efd409c597e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4643efd197734ff7f12fb7806e474e0419843ed
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181656"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078555"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教程：为 PureCloud by Genesys 配置自动用户预配
 
@@ -36,7 +36,7 @@ ms.locfileid: "96181656"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md) 
-* 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
+* Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
 * PureCloud [组织](https://help.mypurecloud.com/?p=81984)。
 * 具有创建 Oauth 客户端[权限](https://help.mypurecloud.com/?p=24360)的用户。
 
@@ -82,11 +82,11 @@ ms.locfileid: "96181656"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
-5. 在“管理员凭据”部分下，分别在“租户 URL”和“机密令牌”字段中输入 PureCloud by Genesys API URL 和 Oauth 令牌  。 通过使用 [PureCloud 开发人员中心](https://developer.mypurecloud.com/api/rest/index.html)中你的 PureCloud 区域的 API URL，API URL 的结构将为 `{{API Url}}/api/v2/scim/v2`。 单击“测试连接”，以确保 Azure AD 可以连接到 PureCloud by Genesys。 如果连接失败，请确保 PureCloud by Genesys 帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分下，分别在“租户 URL”和“机密令牌”字段中输入 PureCloud by Genesys API URL 和 Oauth 令牌  。 API URL 的结构将为 `{{API Url}}/api/v2/scim/v2`，使用 [PureCloud 开发人员中心](https://developer.mypurecloud.com/api/rest/index.html)提供的 PureCloud 区域的 API URL。 单击“测试连接”，以确保 Azure AD 可以连接到 PureCloud by Genesys。 如果连接失败，请确保 PureCloud by Genesys 帐户具有管理员权限，然后重试。
 
     ![屏幕截图显示“管理员凭据”对话框，可在该框中输入租户 URL 和机密令牌。](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
@@ -100,27 +100,36 @@ ms.locfileid: "96181656"
 
 9. 在“属性映射”部分中，查看从 Azure AD 同步到 PureCloud by Genesys 的用户属性。 选为“匹配”属性的特性用于匹配 PureCloud by Genesys 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](../app-provisioning/customize-application-attributes.md)，则需要确保 PureCloud by Genesys API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
-     |Attribute|类型|
-     |---|---|
-     |userName|字符串|
+     |Attribute|类型|支持筛选|
+     |---|---|---|
+     |userName|字符串|&check;|
      |活动|Boolean|
      |displayName|字符串|
      |emails[type eq "work"].value|字符串|
      |title|字符串|
      |phoneNumbers[type eq "mobile"].value|字符串|
      |phoneNumbers[type eq "work"].value|字符串|
+     |phoneNumbers[type eq "work2"].value|String|
+     |phoneNumberss[type eq "work3"].value|String|
+     |phoneNumbers[type eq "work4"].value|字符串|
+     |phoneNumbers[type eq "home"].value|字符串|
+     |phoneNumbers[type eq "microsoftteams"].value|String|
+     |角色|字符串|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
-     
+     |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|字符串|
+     |urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘microsoftteams’].value|String|     
+     |urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘ringcentral’].value|String|    
+     |urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘zoomphone].value|字符串|
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 PureCloud by Genesys” 。
 
 11. 在“属性映射”部分中，查看从 Azure AD 同步到 PureCloud by Genesys 的组属性。 选为“匹配”属性的特性用于匹配 PureCloud by Genesys 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。 PureCloud by Genesys 不支持创建或删除组，仅支持更新组。
 
-      |属性|类型|
-      |---|---|
-      |displayName|字符串|
+      |属性|类型|支持筛选|
+      |---|---|---|
+      |displayName|字符串|&check;|
       |externalId|字符串|
       |members|参考|
 
@@ -149,9 +158,10 @@ ms.locfileid: "96181656"
 
 ## <a name="change-log"></a>更改日志
 
-09/10 - 添加了对企业属性“employeeNumber”的支持。
+* 2020/09/10 - 添加了对扩展企业属性“employeeNumber”的支持。
+* 2021/05/18 - 添加了对核心属性 phoneNumbers[type eq "work2"]、phoneNumbers[type eq "work3"]、phoneNumbers[type eq "work4"]、phoneNumbers[type eq "home"]、phoneNumbers[type eq "microsoftteams"] 和 roles 的支持。 还添加了对自定义扩展属性 urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘microsoftteams’]、urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘zoomphone] 和 urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq ‘ringcentral’] 的支持。
 
-## <a name="additional-resources"></a>其他资源
+## <a name="more-resources"></a>更多资源
 
 * [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)

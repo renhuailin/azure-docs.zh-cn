@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: tutorial
 ms.date: 03/01/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 44c053eac2215354fbd43e4c0068f02419010a85
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 11c0a621375cfa57c8b25f0bdd5ed4651dffa853
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131848"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949428"
 ---
 # <a name="tutorial-create-your-project"></a>教程：创建项目
 
@@ -27,8 +27,13 @@ ms.locfileid: "108131848"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 需要一个有效的工作/学校 [Azure Active Directory 帐户](../active-directory/fundamentals/active-directory-whatis.md)。
-- 需要一个已验证的 Microsoft 合作伙伴网络 (MPN) 帐户。 如果你没有 MPN 帐户，请在开始之前[加入合作伙伴网络](https://partner.microsoft.com/)。
+
+- 有效的工作/学校 [Azure Active Directory 帐户](../active-directory/fundamentals/active-directory-whatis.md)。
+- 已验证的 Microsoft 合作伙伴网络 (MPN) 帐户。 如果你没有 MPN 帐户，请在开始之前[加入合作伙伴网络](https://partner.microsoft.com/)。 
+
+> [!NOTE] 
+> 如果在设置或验证 MPN 帐户时遇到问题，请参阅[合作伙伴中心支持](/partner-center)文档。
+
 
 ## <a name="signing-into-the-azure-certified-device-portal"></a>登录到 Azure 认证设备门户
 

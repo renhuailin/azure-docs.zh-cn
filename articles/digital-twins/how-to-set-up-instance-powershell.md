@@ -8,12 +8,12 @@ ms.date: 12/16/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 024b238ef9a6330831ae6cf4dcd6bb72d72dcc74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c52cd013d1a5d2cbde0ab88eac24d2fd3ef77d46
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98044265"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613520"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-powershell"></a>设置 Azure 数字孪生实例和身份验证 (PowerShell)。
 
@@ -23,11 +23,10 @@ ms.locfileid: "98044265"
 
 本文此版本借助 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 逐个手动完成这些步骤。
 
-* 若要使用 Azure 门户手动完成这些步骤，请参阅本文的门户版本：[操作说明：设置实例和身份验证（门户）](how-to-set-up-instance-portal.md)。
-* 若要使用部署脚本示例完成自动安装，请参阅本文的脚本编写版本：[操作说明：设置实例和身份验证（已编写脚本）](how-to-set-up-instance-scripted.md)。
+* 若要使用 Azure 门户手动完成这些步骤，请参阅本文的门户版本：操作说明：设置实例和身份验证（门户）。
+* 若要使用部署脚本示例完成自动安装，请参阅本文的脚本编写版本：操作说明：设置实例和身份验证（已编写脚本）。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
-[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="prepare-your-environment"></a>准备环境
 
@@ -38,10 +37,10 @@ ms.locfileid: "98044265"
        1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。
     * 如果选择使用 Azure Cloud Shell：
         1. 请参阅 [Azure Cloud Shell 概述](../cloud-shell/overview.md)了解有关 Cloud Shell 的详细信息。
-        1. 在浏览器中通过此[链接](https://shell.azure.com)打开 Cloud Shell 窗口。
+        1. [在浏览器中打开一个 Cloud Shell 窗口](https://shell.azure.com)。
         1. 在 Cloud Shell 图标栏中，确保已将 Cloud Shell 设置为运行 PowerShell 版本。
     
-            :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Cloud Shell 窗口，其中显示选择 PowerShell 版本":::
+            :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Azure 门户中 Cloud Shell 窗口的屏幕截图，其中显示选择 PowerShell 版本。":::
     
 1. 如果有多个 Azure 订阅，请选择应当计费的资源所在的相应订阅。 使用 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) cmdlet 选择特定订阅。
 
@@ -74,7 +73,7 @@ ms.locfileid: "98044265"
   New-AzResourceGroup -Name <name-for-your-resource-group> -Location <region>
   ```
 
-* 部署区域。 若要查看支持 Azure 数字孪生的区域，请访问[各区域的 Azure 产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
+* 部署区域。 若要查看哪些区域支持 Azure 数字孪生，请访问各区域的 Azure 产品可用性。
 * 实例名。 新实例的名称在订阅所在区域内必须是唯一的。 如果订阅在区域中已存在使用指定名称的其他 Azure 数字孪生实例，则系统将要求选择其他名称。
 
 在以下命令中使用值创建实例：
@@ -103,13 +102,20 @@ Get-AzDigitalTwinsInstance -ResourceGroupName <your-resource-group> -ResourceNam
 > [!TIP]
 > 可以使用此命令随时查看实例的所有属性。
 
-记下 Azure 数字孪生实例的 ‘’HostName”、”Name” 和 “ResourceGroup”。 在继续使用 Azure 数字孪生实例、设置身份验证和使用相关 Azure 资源时，可能需要使用这些重要的值。 如果其他用户将对该实例进行编程，则应与他们共享这些值。
+记下 Azure 数字孪生实例的主机名、名称和资源组  。 在继续使用 Azure 数字孪生实例、设置身份验证和使用相关 Azure 资源时，可能需要使用这些重要的值。 如果其他用户将对该实例进行编程，则应与他们共享这些值。
 
-现已准备好 Azure 数字孪生实例。 接下来，将授予相应的 Azure 用户权限对其进行管理。
+现已准备好 Azure 数字孪生实例。 接下来，你将向适当的 Azure 用户授予权限来管理该实例。
 
 ## <a name="set-up-user-access-permissions"></a>设置用户访问权限
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
+
+### <a name="prerequisites-permission-requirements"></a>先决条件：权限要求
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
+
+### <a name="assign-the-role"></a>分配角色
+
+若要授予用户管理 Azure 数字孪生实例的权限，必须在实例中为他们分配“Azure 数字孪生数据所有者”角色。
 
 首先，确定应为其分配角色的用户的 Azure AD 帐户 ObjectId。 可以使用 [Get-AzAdUser](/powershell/module/az.resources/get-azaduser) cmdlet 查找此值，方法是传入 Azure AD 帐户中的用户主体名，以检索其 ObjectId（以及用户其他信息）。 在大多数情况下，用户主体名与 Azure AD 帐户中的用户电子邮件匹配。
 
@@ -121,9 +127,9 @@ Get-AzADUser -UserPrincipalName <Azure-AD-user-principal-name-of-user-to-assign>
 
 ```azurepowershell-interactive
 $Params = @{
-  ObjectId = '<Azure-AD-user-object-id-of-user-to-assign>'
+  ObjectId = '<Azure-AD-user-object-ID-of-user-to-assign>'
   RoleDefinitionName = 'Azure Digital Twins Data Owner'
-  Scope = '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DigitalTwins/digitalTwinsInstances/<name-for-your-Azure-Digital-Twins-instance>'
+  Scope = '/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.DigitalTwins/digitalTwinsInstances/<name-for-your-Azure-Digital-Twins-instance>'
 }
 New-AzRoleAssignment @Params
 ```
@@ -134,7 +140,7 @@ New-AzRoleAssignment @Params
 
 [!INCLUDE [digital-twins-setup-verify-role-assignment.md](../../includes/digital-twins-setup-verify-role-assignment.md)]
 
-现在，已准备好 Azure 数字孪生实例，并分配了管理权限。
+现在，你已准备好 Azure 数字孪生实例，并分配了管理权限。
 
 ## <a name="next-steps"></a>后续步骤
 
