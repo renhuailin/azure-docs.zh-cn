@@ -7,16 +7,22 @@ ms.service: cache
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: 17f38d79b75179d7a54ca5ed1d20dff18d0a0363
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: acbf5933f01a465ad1855c049796901da5d1ff90
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121093"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059727"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-rust"></a>快速入门：将 Azure Cache for Redis 与 Rust 配合使用
 
-本文将介绍如何使用 [Rust 编程语言](https://www.rust-lang.org/)来与 [Azure Cache for Redis](./cache-overview.md) 交互。 本文还会演示常用的 Redis 数据结构示例，如[字符串](https://redis.io/topics/data-types-intro#redis-strings)、[哈希](https://redis.io/topics/data-types-intro#redis-hashes)、[列表](https://redis.io/topics/data-types-intro#redis-lists)等。 使用 Redis 的 [redis-rs](https://github.com/mitsuhiko/redis-rs) 库。 此客户端公开高级别和低级别 API，可利用本文提供的示例代码了解这两种样式的实际应用。
+本文将介绍如何使用 [Rust 编程语言](https://www.rust-lang.org/)来与 [Azure Cache for Redis](./cache-overview.md) 交互。 你还将了解常用的 Redis 数据结构： 
+
+* [字符串](https://redis.io/topics/data-types-intro#redis-strings) 
+* [哈希](https://redis.io/topics/data-types-intro#redis-hashes) 
+* [列表](https://redis.io/topics/data-types-intro#redis-lists) 
+
+在本示例中，你将使用 Redis 的 [redis-rs](https://github.com/mitsuhiko/redis-rs) 库。 此客户端公开高级别和低级别 API，你可查看这两种样式的实际应用。
 
 ## <a name="skip-to-the-code-on-github"></a>跳到 GitHub 上的代码
 
@@ -39,7 +45,7 @@ ms.locfileid: "102121093"
 
 `connect` 函数用于与 Azure Cache for Redis 建立连接。 它需要分别通过环境变量 `REDIS_HOSTNAME` 和 `REDIS_PASSWORD` 传入主机名和密码（访问密钥）。 连接 URL 的格式为 `rediss://<username>:<password>@<hostname>` - Azure Cache for Redis 仅接受以 [TLS 1.2 作为所需的最低版本](cache-remove-tls-10-11.md)的安全连接。
 
-对 [redis::Client::open](https://docs.rs/redis/0.19.0/redis/struct.Client.html#method.open) 的调用会执行基本验证，同时 [get_connection()](https://docs.rs/redis/0.19.0/redis/struct.Client.html#method.get_connection) 实际启动连接 - 如果因任何原因（如密码错误）导致连接失败，程序将停止。
+对 [redis::Client::open](https://docs.rs/redis/0.19.0/redis/struct.Client.html#method.open) 进行调用会执行基本验证，而 [get_connection()](https://docs.rs/redis/0.19.0/redis/struct.Client.html#method.get_connection) 会实际启动连接。 如果连接因任何原因失败，程序将停止。 例如，其中一个原因可能是密码不正确。
 
 ```rust
 fn connect() -> redis::Connection {
@@ -56,7 +62,11 @@ fn connect() -> redis::Connection {
 }
 ```
 
-`basics` 函数涵盖 [SET](https://redis.io/commands/set)、[GET](https://redis.io/commands/get) 和 [INCR](https://redis.io/commands/incr) 命令。 低级别 API 用于 `SET` 和 `GET`，以设置和检索名为 `foo` 的键的值。 `INCRBY` 命令是使用高级 API 执行的，即 [incr](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.incr) 以 `2` 为增量递增键（名为 `counter`）的值，然后调用 [get](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.get) 来检索该值。
+`basics` 函数涵盖 [SET](https://redis.io/commands/set)、[GET](https://redis.io/commands/get) 和 [INCR](https://redis.io/commands/incr) 命令。 
+
+低级别 API 用于 `SET` 和 `GET`，以设置和检索名为 `foo` 的键的值。 
+
+`INCRBY` 命令是使用高级别 API 执行的，即 [incr](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.incr) 以 `2` 为增量递增键（名为 `counter`）的值，然后调用 [get](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.get) 来检索该值。
 
 ```rust
 fn basics() {
@@ -130,7 +140,7 @@ fn hash() {
 }
 ```
 
-在下面的函数中，可了解如何使用 `LIST` 数据结构。 通过执行 [LPUSH](https://redis.io/commands/lpush)（使用低级别 API）将条目添加到列表，并使用高级别 [lpop](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.lpop) 方法从列表中检索该条目。 然后使用 [rpush](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.rpush) 方法将几个条目添加到列表中，然后使用低级别 [lrange](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.lrange) 方法提取这些条目。
+在下面的函数中，可了解如何使用 `LIST` 数据结构。 通过执行 [LPUSH](https://redis.io/commands/lpush)（使用低级别 API）将条目添加到列表，并使用高级别 [lpop](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.lpop) 方法从列表中检索该条目。 然后使用 [rpush](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.rpush) 方法将几个条目添加到列表中，再使用低级别 [lrange](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.lrange) 方法提取这些条目。
 
 ```rust
 fn list() {
@@ -197,7 +207,7 @@ fn set() {
 }
 ```
 
-下面的 `sorted_set` 函数演示排序集数据结构。 调用 [ZADD](https://redis.io/commands/zadd)（使用低级别 API）为播放机（`player-1`）添加随机整数分数。 接下来使用 [zadd](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.zadd) 方法（高级别 API）添加更多播放机（`player-2` 至 `player-5`）及其各自（随机生成）的分数。 排序集内的条目数是使用 [ZCARD](https://redis.io/commands/zcard) 来确定的，它被用作 [ZRANGE](https://redis.io/commands/zrange) 命令（使用低级别 API 调用）的限制，以按分数升序列出播放机。
+下面的 `sorted_set` 函数演示排序集数据结构。 使用低级别 API 调用 [ZADD](https://redis.io/commands/zadd)，为播放机 (`player-1`) 添加随机整数分数。 接下来使用 [zadd](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.zadd) 方法（高级别 API）添加更多播放机（`player-2` 至 `player-5`）及其各自（随机生成）的分数。 排序集内的条目数是使用 [ZCARD](https://redis.io/commands/zcard) 确定的。 它被用作 [ZRANGE](https://redis.io/commands/zrange) 命令（使用低级别 API 调用）的限制，以按分数升序列出播放机。
 
 ```rust
 fn sorted_set() {
@@ -247,7 +257,7 @@ fn sorted_set() {
     md "C:\git-samples"
     ```
 
-1. 打开 git 终端窗口（例如 git bash）。 使用 `cd` 命令转到新文件夹，你将在其中克隆示例应用。
+1. 打开 git 终端窗口（例如 git bash）。 使用 `cd` 转到新文件夹，你将在这里克隆示例应用。
 
     ```bash
     cd "C:\git-samples"
@@ -284,7 +294,7 @@ fn sorted_set() {
     cargo run
     ```
     
-    应会看到如下所示的输出：
+    将会看到以下输出：
     
     ```bash
     ******* Running SET, GET, INCR commands *******
@@ -328,7 +338,7 @@ fn sorted_set() {
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果已完成在此快速入门中创建的 Azure 资源组和资源，则可以删除它们以避免产生费用。
+用完资源组和资源后，可将它们删除。 通过删除在本快速入门中创建的内容，可避免产生费用。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 如果在要保留的现有资源组中创建了 Azure Redis 缓存实例，可从缓存“概述”页选择“删除”以便仅删除缓存 。 
@@ -336,7 +346,7 @@ fn sorted_set() {
 删除资源组及其 Azure Redis 缓存实例：
 
 1. 从 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。
-1. 在“按名称筛选”文本框中，输入包含缓存实例的资源组的名称，然后从搜索结果中选择它。 
+1. 在“按名称筛选”文本框中，输入包含你的缓存实例的资源组的名称。 然后，从搜索结果中选择它。 
 1. 在资源组页上，选择“删除资源组”。
 1. 键入资源组名称，然后选择“删除”。
    

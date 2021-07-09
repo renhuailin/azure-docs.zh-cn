@@ -9,12 +9,12 @@ ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 0072ce81fc619c39770eba52e24dc5a0c57280a6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 397a26c7a0ba3771c47e2971fecde09f166cc90f
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604570"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751215"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -69,7 +69,18 @@ ms.locfileid: "104604570"
     ![下载提供程序和密钥](./media/tutorial-migrate-hyper-v/download-provider-hyper-v.png)
 
 4. 将提供程序安装文件和注册密钥文件复制到运行要复制的 VM 的每个 Hyper-V 主机（或群集节点）。
-5. 按下一过程中所述，在每台主机上运行提供程序安装程序文件。
+5. 在每台主机上运行提供程序安装程序文件，如下所述：
+    - 将提供程序安装文件和注册密钥文件复制到运行要复制的 VM 的每个 Hyper-V 主机（或群集节点）。
+    - 单击任务栏中的文件图标，以打开安装程序文件和注册密钥下载到的文件夹。
+    - 选择“AzureSiteRecoveryProvider”。 
+    - 在提供程序安装向导中，确保选中“启用(推荐)”，然后单击“下一步”。
+    - 选择“安装”以接受默认安装文件夹。
+    - 选择“注册”以在 Azure Site Recovery 保管库中注册此服务器。
+    - 单击“浏览” 。
+    - 找到注册密钥，然后单击“打开”。
+    - 单击“下一步”。
+    - 确保选中“在不使用代理服务器的情况下直接连接到 Azure Site Recovery”，然后单击“下一步”。
+    - 单击“完成”  。
 6. 在主机上安装提供程序后，在“发现计算机”中单击“完成注册”。 
 
     ![完成注册](./media/tutorial-migrate-hyper-v/finalize-registration.png)

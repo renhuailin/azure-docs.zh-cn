@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教程 - 更新应用程序
 description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何使用新版应用程序代码将现有应用程序部署更新到 AKS。
 services: container-service
 ms.topic: tutorial
-ms.date: 01/12/2021
-ms.custom: mvc
-ms.openlocfilehash: b969e3ec1c670c0a12129289c8ff7eb81df51ff9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/24/2021
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: eaa7f6b0f99a856ea9210be3fdb6d2de1dd87d2a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98250649"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697943"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序
 
@@ -30,7 +30,15 @@ ms.locfileid: "98250649"
 
 此外，还克隆了应用程序存储库，其中包括应用程序源代码和本教程中使用的预创建的 Docker Compose 文件。 验证是否已克隆存储库，并且是否已将目录更改为克隆的目录。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+此教程需要运行 Azure PowerShell 5.9.0 版或更高版本。 运行 `Get-InstalledModule -Name Az` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell][azure-powershell-install]。
+
+---
 
 ## <a name="update-an-application"></a>更新应用程序
 
@@ -70,11 +78,24 @@ docker-compose up --build -d
 
 ## <a name="tag-and-push-the-image"></a>标记并推送映像
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 若要正确使用已更新的映像，请使用 ACR 注册表的登录服务器名称标记 *azure-vote-front* 映像。 运行 [az acr list](/cli/azure/acr) 命令，获取登录服务器名称：
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+若要正确使用已更新的映像，请使用 ACR 注册表的登录服务器名称标记 *azure-vote-front* 映像。 使用 [Get-AzContainerRegistry][get-azcontainerregistry] cmdlet 获取登录服务器名称：
+
+```azurepowershell
+(Get-AzContainerRegistry -ResourceGroupName myResourceGroup -Name <acrName>).LoginServer
+```
+
+---
+
 
 使用 [docker tag][docker-tag] 标记映像。 将 `<acrLoginServer>` 替换为 ACR 登录服务器名称或公共注册表主机名，并将映像版本更新为 *:v2*，如下所示：
 
@@ -84,8 +105,17 @@ docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azur
 
 现在，请使用 [docker push][docker-push] 将映像上传到注册表。 将 `<acrLoginServer>` 替换为 ACR 登录服务器名称。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 > [!NOTE]
 > 如果在推送到 ACR 注册表时遇到问题，请确保你仍已登录。 使用在 [创建 Azure 容器注册表](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry)步骤中创建的 Azure 容器注册表的名称运行 [az acr login][az-acr-login] 命令。 例如，`az acr login --name <azure container registry name>` 。
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+> [!NOTE]
+> 如果在推送到 ACR 注册表时遇到问题，请确保你仍已登录。 使用在[创建 Azure 容器注册表](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry)步骤中创建的 Azure 容器注册表的名称运行 [Connect-AzContainerRegistry][connect-azcontainerregistry] cmdlet。 例如，`Connect-AzContainerRegistry -Name <azure container registry name>` 。
+
+---
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -174,3 +204,6 @@ kubectl get service azure-vote-front
 [aks-tutorial-upgrade]: ./tutorial-kubernetes-upgrade-cluster.md
 [az-acr-login]: /cli/azure/acr
 [azure-cli-install]: /cli/azure/install-azure-cli
+[azure-powershell-install]: /powershell/azure/install-az-ps
+[get-azcontainerregistry]: /powershell/module/az.containerregistry/get-azcontainerregistry
+[connect-azcontainerregistry]: /powershell/module/az.containerregistry/connect-azcontainerregistry

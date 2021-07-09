@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教程 - 创建容器注册表
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请创建 Azure 容器注册表实例并上传示例应用程序容器映像。
 services: container-service
 ms.topic: tutorial
-ms.date: 01/31/2021
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: fd53fab577797ad8bfdbf29b4a6d219e61ee3ef4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/20/2021
+ms.custom: mvc, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 157aae551f4fa77c4739670081804af1b8dbf16b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764254"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697761"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署并使用 Azure 容器注册表
 
@@ -28,11 +28,21 @@ Azure 容器注册表 (ACR) 是容器映像的专用注册表。 可以通过专
 
 在[上一教程][aks-tutorial-prepare-app]中，已经为一个 Azure Voting 应用程序示例创建了容器映像。 如果尚未创建 Azure Voting 应用映像，请返回到[教程 1：创建容器映像][aks-tutorial-prepare-app]。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+此教程需要运行 Azure PowerShell 5.9.0 版或更高版本。 运行 `Get-InstalledModule -Name Az` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell][azure-powershell-install]。
+
+---
 
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
 
 若要创建 Azure 容器注册表，首先需要一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用“[az group create][az-group-create]”命令创建资源组。 以下示例在 *eastus* 区域创建名为 *myResourceGroup* 的资源组：
 
@@ -46,13 +56,41 @@ az group create --name myResourceGroup --location eastus
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+使用 [New-AzResourceGroup][new-azresourcegroup] cmdlet 创建资源组。 以下示例在 *eastus* 区域创建名为 *myResourceGroup* 的资源组：
+
+```azurepowershell
+New-AzResourceGroup -Name myResourceGroup -Location eastus
+```
+
+使用 [New-AzContainerRegistry][new-azcontainerregistry] cmdlet 创建 Azure 容器注册表实例，并提供你自己的注册表名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 在本教程的剩余部分，请使用 `<acrName>` 作为容器注册表名称的占位符。 提供自己的唯一注册表名称。 “基本”SKU 是一个针对成本优化的入口点，适用于可以对存储和吞吐量进行均衡考虑的开发目的。
+
+```azurepowershell
+New-AzContainerRegistry -ResourceGroupName myResourceGroup -Name <acrname> -Sku Basic
+```
+
+---
+
 ## <a name="log-in-to-the-container-registry"></a>登录到容器注册表
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 ACR 实例，必须先登录。 使用 [az acr login][az-acr-login] 命令并提供一个唯一名称，该名称是在上一步提供给容器注册表的。
 
 ```azurecli
 az acr login --name <acrName>
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+若要使用 ACR 实例，必须先登录。 使用 [Connect-AzContainerRegistry][connect-azcontainerregistry] cmdlet 并提供上一步中为容器注册表提供的唯一名称。
+
+```azurepowershell
+Connect-AzContainerRegistry -Name <acrName>
+```
+
+---
 
 完成后，该命令会返回“登录成功”消息。
 
@@ -74,11 +112,22 @@ tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863 
 
 若要将 *azure-vote-front* 容器映像与 ACR 配合使用，需使用注册表的登录服务器地址对映像进行标记。 在将容器映像推送到映像注册表时，使用此标记进行路由。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 若要获取登录服务器地址，请使用 [az acr list][az-acr-list] 命令并查询是否存在 *loginServer*，如下所示：
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+若要获取登录服务器地址，请使用 [Get-AzContainerRegistry][get-azcontainerregistry] cmdlet，并按如下方式查询 loginServer：
+
+```azurepowershell
+(Get-AzContainerRegistry -ResourceGroupName myResourceGroup -Name <acrName>).LoginServer
+```
+
+---
 
 现在，请使用容器注册表的 acrLoginServer 地址标记本地 azure-vote-front 映像。 若要指示映像版本，请将 *:v1* 添加到映像名称的末尾：
 
@@ -114,6 +163,8 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 ## <a name="list-images-in-registry"></a>列出注册表中的映像
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 若要返回已推送到 ACR 实例的映像列表，请使用 [az acr repository list][az-acr-repository-list] 命令。 按如下所示提供自己的 `<acrName>`：
 
 ```azurecli
@@ -141,6 +192,38 @@ Result
 --------
 v1
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+若要返回已推送到 ACR 实例的映像列表，请使用 [Get-AzContainerRegistryManifest][get-azcontainerregistrymanifest] cmdlet。 按如下所示提供自己的 `<acrName>`：
+
+```azurepowershell
+Get-AzContainerRegistryManifest -RegistryName <acrName> -RepositoryName azure-vote-front
+```
+
+以下示例输出将 *azure-vote-front* 映像列为在注册表中可用：
+
+```output
+Registry  ImageName        ManifestsAttributes
+--------  ---------        -------------------
+<acrName> azure-vote-front {Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase}
+```
+
+若要查看特定映像的标记，请使用 [Get-AzContainerRegistryTag][get-azcontainerregistrytag] cmdlet，如下所示：
+
+```azurepowershell
+Get-AzContainerRegistryTag -RegistryName <acrName> -RepositoryName azure-vote-front
+```
+
+以下示例输出显示在上一步标记的 *v1* 映像：
+
+```output
+Registry  ImageName        Tags
+--------  ---------        ----
+<acrName> azure-vote-front {v1}
+```
+
+---
 
 你现在有了一个容器映像，该映像存储在专用的 Azure 容器注册表实例中。 在下一教程中，此映像会从 ACR 部署到 Kubernetes 群集。
 
@@ -174,3 +257,10 @@ v1
 [azure-cli-install]: /cli/azure/install-azure-cli
 [aks-tutorial-deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[azure-powershell-install]: /powershell/azure/install-az-ps
+[new-azresourcegroup]: /powershell/module/az.resources/new-azresourcegroup
+[new-azcontainerregistry]: /powershell/module/az.containerregistry/new-azcontainerregistry
+[connect-azcontainerregistry]: /powershell/module/az.containerregistry/connect-azcontainerregistry
+[get-azcontainerregistry]: /powershell/module/az.containerregistry/get-azcontainerregistry
+[get-azcontainerregistrymanifest]: /powershell/module/az.containerregistry/get-azcontainerregistrymanifest
+[get-azcontainerregistrytag]: /powershell/module/az.containerregistry/get-azcontainerregistrytag

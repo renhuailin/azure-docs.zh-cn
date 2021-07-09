@@ -2,13 +2,13 @@
 title: 快速入门：适用于 .NET 的 QnA Maker 客户端库
 description: 本快速入门介绍如何开始使用适用于 .NET 的 QnA Maker 客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。  使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。
 ms.topic: quickstart
-ms.date: 06/18/2020
-ms.openlocfilehash: aac57f4ca173a7ac94c64884fa1d2db4a478c3f3
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.date: 04/28/2021
+ms.openlocfilehash: e59f2137af303242ef2747e2b3430dd9e081c6aa
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609488"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110486384"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/version-1)
 
@@ -25,7 +25,7 @@ ms.locfileid: "105609488"
 
 [参考文档](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/2.0.1) | [C# 示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/QnAMaker/SDK-based-quickstart)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 可以使用适用于 .NET 的 QnA Maker 客户端库执行以下操作：
 
@@ -53,14 +53,12 @@ ms.locfileid: "105609488"
     * 需要从创建的资源获取密钥和资源名称，以便将应用程序连接到 QnA Maker API。 你稍后会在本快速入门中将密钥和资源名称粘贴到下文的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) 或最新版本的 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
-* 有了 Azure 订阅后，在 Azure 门户中创建 [QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以获取创作密钥和终结点。
-    * 注意：请务必选择“托管”复选框。
-    * 部署 QnA Maker 资源后，选择“转到资源”。 需要从创建的资源获取密钥和终结点，以便将应用程序连接到 QnA Maker API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
-    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 自定义问答需要启用了自定义问答功能的[文本分析资源](https://ms.portal.azure.com/?quickstart=true#create/Microsoft.CognitiveServicesTextAnalytics)来生成 API 密钥和终结点。
+    * 部署文本分析资源后，选择“转到资源”。 需要从创建的资源获取密钥和终结点，以便将应用程序连接到 QnA Maker API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
 
 ---
 
@@ -98,7 +96,7 @@ Build succeeded.
 dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --version 2.0.1
 ```
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 ```console
 dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --version 3.0.0-preview.1
@@ -111,7 +109,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --versio
 > [!TIP]
 > 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/QnAMaker/SDK-based-quickstart/Program.cs) 上找到它，其中包含此快速入门中的代码示例。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 > [!TIP]
 > 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/QnAMaker/Preview-sdk-based-quickstart/Program.cs) 上找到它，其中包含此快速入门中的代码示例。
@@ -126,7 +124,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --versio
 
 [!code-csharp[Dependencies](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=Dependencies)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-csharp[Dependencies](~/cognitive-services-quickstart-code/dotnet/QnAMaker/Preview-sdk-based-quickstart/Program.cs?name=Dependencies)]
 
@@ -152,13 +150,15 @@ dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --versio
 
 [!code-csharp[Set the resource key and resource name](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=Resourcevariables)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
-- 我们使用的“订阅密钥”和“创作密钥”是可互换的。 有关创作密钥的详细信息，请访问 [QnA Maker 中的密钥](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker)。
+- 我们使用的“订阅密钥”和“创作密钥”是可互换的。 有关创作密钥的详细信息，请参阅[密钥](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker)。
 
-- QNA_MAKER_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 转到 Azure 门户，并找到之前在“必备组件”部分创建的 QnA Maker 资源。 单击“资源管理”下的“密钥和终结点”页，找到创作（订阅）密钥和 QnA Maker 终结点。
+- QNA_MAKER_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 转到 Azure 门户，并找到之前在“必备组件”部分创建的文本分析资源。 单击“资源管理”下的“密钥和终结点”页，找到创作（订阅）密钥和终结点 。
 
- ![QnA Maker 创作终结点](../media/keys-endpoint.png)
+> [!div class="mx-imgBorder"]
+> ![自定义 QnA 创作终结点](../media/qnamaker-how-to-key-management/custom-qna-keys-and-endpoint.png)
+
 
 - 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 例如，[Azure 密钥保管库](../../../key-vault/general/overview.md)可提供安全的密钥存储。
 
@@ -175,7 +175,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --versio
 * **[QnAMakerClient](#qnamakerclient-object-model)** 对象可创建、管理、发布和下载知识库。
 * **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象可通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为 [主动学习](../how-to/use-active-learning.md)的一部分）。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [QnA Maker](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker) 使用以下对象模型：
 * [QnAMakerClient](#qnamakerclient-object-model) 是用于创建、管理、发布、下载和查询知识库的对象。
@@ -200,9 +200,9 @@ dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --versio
 
 使用 [GenerateAnswer](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions) 方法从查询运行时获取答案。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
-QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为调用 [QnAMakerClient.Knowledgebase](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient.knowledgebase).[GenerateAnswerAsync](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.generateanswerasync) 方法。
+ 自定义问答不需要使用 QnAMakerRuntimeClient 对象。 请改为调用 [QnAMakerClient.Knowledgebase](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient.knowledgebase).[GenerateAnswerAsync](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.generateanswerasync) 方法。
 
 ---
 
@@ -223,7 +223,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 * [对查询运行时客户端进行身份验证](#authenticate-the-runtime-for-generating-an-answer)
 * [从知识库生成答案](#generate-an-answer-from-the-knowledge-base)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 * [对创作客户端进行身份验证](#authenticate-the-client-for-authoring-the-knowledge-base)
 * [创建知识库](#create-a-knowledge-base)
@@ -244,7 +244,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-csharp[Create QnAMakerClient object with key and endpoint](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=AuthorizationAuthor)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-csharp[Create QnAMakerClient object with key and endpoint](~/cognitive-services-quickstart-code/dotnet/QnAMaker/Preview-sdk-based-quickstart/Program.cs?name=AuthorizationAuthor)]
 
@@ -272,7 +272,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-csharp[Create a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=CreateKBMethod)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-csharp[Create a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/Preview-sdk-based-quickstart/Program.cs?name=CreateKBMethod)]
 
@@ -288,7 +288,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-csharp[Update a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=UpdateKBMethod)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-csharp[Update a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/Preview-sdk-based-quickstart/Program.cs?name=UpdateKBMethod)]
 
@@ -304,7 +304,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-csharp[Download a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=DownloadKB)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-csharp[Download a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/Preview-sdk-based-quickstart/Program.cs?name=DownloadKB)]
 
@@ -318,7 +318,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-csharp[Publish a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=PublishKB)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-csharp[Publish a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/Preview-sdk-based-quickstart/Program.cs?name=PublishKB)]
 
@@ -354,7 +354,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-csharp[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=GenerateAnswer)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 ## <a name="generate-an-answer-from-the-knowledge-base"></a>从知识库生成答案
 
@@ -374,7 +374,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-csharp[Delete a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=DeleteKB)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-csharp[Delete a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/Preview-sdk-based-quickstart/Program.cs?name=DeleteKB)]
 
@@ -390,7 +390,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-csharp[Monitor an operation](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=MonitorOperation)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-csharp[Monitor an operation](~/cognitive-services-quickstart-code/dotnet/QnAMaker/Preview-sdk-based-quickstart/Program.cs?name=MonitorOperation)]
 
@@ -408,7 +408,7 @@ dotnet run
 
 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/QnAMaker/SDK-based-quickstart) 上找到此示例的源代码。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/QnAMaker/Preview-sdk-based-quickstart) 上找到此示例的源代码。
 

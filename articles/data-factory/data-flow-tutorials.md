@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 12/14/2020
-ms.openlocfilehash: f1171bdd087d6ca72a09a2e3efb7f4767a575d21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/18/2021
+ms.openlocfilehash: 6f101d31e7268eb8f58d236bc214f322c71336df
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100517784"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075009"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>映射数据流视频教程
 
@@ -93,6 +93,10 @@ ms.locfileid: "100517784"
 
 [分析转换](https://www.youtube.com/watch?v=r7O7AJcuqoY)
 
+[转换复杂数据类型](https://youtu.be/Wk0C76wnSDE)
+
+[输出到下一个活动](http://youtu.be/r1m3Ya14qpE?hd=1)
+
 ## <a name="source-and-sink"></a>源和接收器
 
 [读取和写入 JSON](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
@@ -130,6 +134,8 @@ ms.locfileid: "100517784"
 [优化数据流启动时间](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
 [Azure Integration Runtime 的数据流](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
+[通过 Azure IR 进行快速的群集启动](https://www.youtube.com/watch?v=mxzsOZX6WVY)
 
 ## <a name="mapping-data-flow-scenarios"></a>映射数据流方案
 

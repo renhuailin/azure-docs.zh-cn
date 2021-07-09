@@ -4,14 +4,14 @@ description: 自定义具有个性化体验创建服务循环的 C# .NET 聊天�
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 05/17/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7c4920eaa7a5619be37d38afd763e7be416d3124
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 4cc2fcfb73117edf27421dd8c91161d12bab7a7a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565715"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097905"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>教程：在 .NET 聊天机器人中使用个性化体验创建服务
 
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 若要使用该聊天机器人，需要为个性化体验创建服务和语言理解 (LUIS) 创建 Azure 资源。
 
-* [创建 LUIS 资源](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal)。 在创建步骤中选择“两者”，因为同时需要创作和预测资源。
+* [创建 LUIS 资源](../luis/luis-how-to-azure-subscription.md)。 创建创作和预测资源。
 * [创建个性化体验创建服务资源](how-to-create-resource.md)，然后从 Azure 门户复制密钥和终结点。 你将需要在 .NET 项目的 `appsettings.json` 文件中设置这些值。
 
 ### <a name="create-luis-app"></a>创建 LUIS 应用

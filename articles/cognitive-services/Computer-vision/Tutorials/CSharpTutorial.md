@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 82e21f57a22da43f904ac9a12afb016c257e5055
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: dd2ceaa97a456d72227d6180596aeccc9e00a614
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289689"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453891"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>示例：使用 C# 探索图像处理应用
 
@@ -40,7 +40,7 @@ ms.locfileid: "108289689"
 
 ## <a name="get-the-sample-app"></a>获取示例应用
 
-计算机视觉示例应用已在 `Microsoft/Cognitive-Vision-Windows` 存储库的 GitHub 上发布。 此存储库还包含 `Microsoft/Cognitive-Common-Windows` 存储库作为 Git 子模块。 可以通过使用命令行中的 `git clone --recurse-submodules` 命令或使用 GitHub 桌面以递归方式克隆此存储库（包括子模块）。
+GitHub 上的 [Microsoft/Cognitive-Vision-Windows 存储库](https://github.com/microsoft/Cognitive-Vision-Windows)提供了计算机视觉示例应用。 此存储库还包含 `Microsoft/Cognitive-Common-Windows` 存储库作为 Git 子模块。 可以通过使用命令行中的 `git clone --recurse-submodules` 命令或使用 GitHub 桌面以递归方式克隆此存储库（包括子模块）。
 
 例如，若要从命令提示符以递归方式克隆计算机视觉示例应用的存储库，请运行以下命令：
 

@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: a47f9d6a47876f09ca241c30e3443886642e4fd8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 80d4ef5fc474ff40807e01b6ecb9014db1ae8f51
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137231"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677866"
 ---
 # <a name="tutorial-deploy-the-opc-publisher"></a>教程：部署 OPC 发布服务器
 
@@ -32,6 +32,7 @@ OPC 发布服务器是一种完全受支持的 Microsoft 产品，在开放的�
 
 - 必须创建 IoT 中心
 - 必须创建 IoT Edge 设备
+- 必须注册 IoT Edge 设备
 
 ## <a name="deploy-the-opc-publisher-from-the-azure-marketplace"></a>从 Azure 市场部署 OPC 发布服务器
 
@@ -42,16 +43,7 @@ OPC 发布服务器是一种完全受支持的 Microsoft 产品，在开放的�
 5. 单击“OPCPublisher”打开 OPC 发布服务器的“更新 IoT Edge 模块”页，然后选择“容器创建选项”。
 6. 基于您对 OPC 发布服务器的使用情况指定其他容器创建选项，请参阅下一节。
 
-
-### <a name="accessing-the-microsoft-container-registry-docker-containers-for-opc-publisher-manually"></a>手动访问 OPC 发布服务器的 Microsoft 容器注册表 Docker 容器
-
-可以通过以下方式手动运行 OPC 发布服务器的最新发布版本：
-
-```
-docker run mcr.microsoft.com/iotedge/opc-publisher:latest <name>
-```
-
-其中“name”是容器的名称。
+[此处](https://mcr.microsoft.com/v2/iotedge/opc-publisher/tags/list)列出了 Docker OPC 发布服务器支持的所有 Docker 映像。 对于非 OPC UA 启用的资产，我们已与领先的行业连接提供商合作，帮助他们将其 OPC UA 适配器软件移植到 Azure IoT Edge。 Azure [市场](https://azuremarketplace.microsoft.com/marketplace/apps?page=1)中提供了这些适配器。
 
 ## <a name="specifying-container-create-options-in-the-azure-portal"></a>在 Azure 门户中指定容器创建选项
 通过 Azure 门户部署 OPC 发布服务器时，可以在 OPC 发布服务器的“更新 IoT Edge 模块”页中指定容器创建选项。 这些创建选项必须采用 JSON 格式。 可以通过 Cmd 键指定 OPC 发布服务器命令行参数，例如：

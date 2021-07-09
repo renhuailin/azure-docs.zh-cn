@@ -3,17 +3,17 @@ title: Azure EA 虚拟机预留实例
 description: 本文总结了针对 VM 预留实例的 Azure 预留如何帮助你节省企业注册的费用。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2020
+ms.date: 05/17/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 6303a94cec9efc01815b6dc6c697abdfe0f84227
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0378e05d8d606d04b90ca20aa3e0399132e9f0ef
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220894"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095835"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA 虚拟机预留实例
 
@@ -43,6 +43,14 @@ ms.locfileid: "106220894"
 有关预留成本和使用情况的详细信息，请参阅[获取企业协议预留成本和使用情况](../reservations/understand-reserved-instance-usage-ea.md)。
 
 有关定价的信息，请参阅 [Linux 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)或 [Windows 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)。
+
+### <a name="reservation-prices"></a>预留价格
+
+EA 门户价目表中不会显示组织可能商定的任何预留折扣。 以前，EA 门户中可使用折扣费率，但该功能已删除。 如果已协商降低预留价格，则目前获取预留价格列表的唯一方法就是创建 [Azure 支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+
+预留的零售价和 EA 中的价格不一定相同。 二者也可能相同，但如果已协商折扣，费率就会不同。
+
+[Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)和[零售价格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) 中显示的价格相同。 一次性查看所有价格的最佳方法是查询 API。
 
 ## <a name="reserved-instances-api-support"></a>预留实例 API 支持
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 7056027965bd5e0f41c07835d21b454ab772a55a
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 94c1bc1b5dc61ac30d2adfb1bc42e13128de054d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132244"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105521"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>设置 Azure Percept DK 并部署你的第一个 AI 模型
 
@@ -24,6 +24,9 @@ ms.locfileid: "108132244"
 - 将开发工具包连接到 IoT 中心和 Azure 帐户
 
 如果在此过程中遇到任何问题，请参阅[安装故障排除指南](./how-to-troubleshoot-setup.md)，了解可用的解决方案。
+
+> [!TIP]
+> 你可以随时返回到设置体验来重新初始化开发工具包，以便执行连接到新的 Wi-Fi 网络、创建新的 SSH 用户、重新连接到 IoT 中心等操作。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -55,13 +58,13 @@ ms.locfileid: "108132244"
 
 1. 将主计算机直接连接到开发工具包的 Wi-Fi 接入点。 就像连接到任何其他 Wi-Fi 网络一样，打开计算机上的“网络和 Internet 设置”，单击以下网络，并在出现提示时输入网络密码：
 
-    - 网络名称：根据开发工具包的操作系统版本，Wi-Fi 访问点的名称为 **scz-xxxx** 或 **apd-xxxx**（其中“xxxx”是开发工具包的 MAC 地址的最后四位数）
-    - 密码：可在开发工具包随附的欢迎卡上找到
+    - **网络名称**：根据开发工具包的操作系统版本，Wi-Fi 接入点的名称为 scz-xxxx 或 apd-xxxx（其中“xxxx”是开发工具包的 MAC 地址的最后四位数） 
+    - **密码**：可在开发工具包随附的欢迎卡上找到
 
     > [!WARNING]
     > 连接到 Azure Percept DK Wi-Fi 接入点时，主计算机将暂时断开与 Internet 的连接。 正在进行的视频会议通话、Web 流式处理或其他基于网络的体验将中断。
 
-1. 一旦连接到开发工具包的 Wi-Fi 接入点，主计算机就会在新的浏览器窗口中自动启动安装体验，并在地址栏中显示 your.new.device/。 如果未自动打开标签页，请转到 [http://10.1.1.1](http://10.1.1.1) 来启动安装体验。 请确保登录浏览器使用的 Azure 帐户凭据与打算用于 Azure Percept 的帐户凭据相同。
+1. 一旦连接到开发工具包的 Wi-Fi 接入点，主计算机就会在新的浏览器窗口中自动启动安装体验，并在地址栏中显示 your.new.device/。 如果标签页未自动打开，请在 Web 浏览器中转到 [http://10.1.1.1](http://10.1.1.1) 来启动设置体验。 请确保登录浏览器使用的 Azure 帐户凭据与打算用于 Azure Percept 的帐户凭据相同。
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-01-welcome.png" alt-text="欢迎页。":::
 
@@ -144,10 +147,8 @@ ms.locfileid: "108132244"
 
 1. 看到“设备安装完成!” 页时，表示开发工具包已成功链接到 IoT 中心，并下载了必要的软件。 开发工具包会自动断开与 Wi-Fi 访问点的连接，进而产生以下两条通知：
 
-    <!---
     > [!NOTE]
-    > The onboarding process and connection to the device Wifi access to your host computer shuts down at this point, but your dev kit will stay connected to the internet.   You can restart the onboarding experience with a dev kit reboot, which will allow you to go back through the onboarding and reconnect the device to a different IOT hub associated with the same or a different Azure Subscription..
-    --->
+    > 在此设置过程中配置的 IoT Edge 容器使用的证书会在 90 天后过期。 可以通过重启 IoT Edge 来自动重新生成证书。 有关更多详细信息，请参阅[管理 IoT Edge 设备上的证书](../iot-edge/how-to-manage-device-certificates.md)。
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="安装体验断开连接警告。":::
 
@@ -155,7 +156,7 @@ ms.locfileid: "108132244"
 
 1. 单击“继续转到 Azure 门户”。
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-20-azure-portal-continue.png" alt-text="转到 Azure Percept Studio。":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-20-Azure-portal-continue.png" alt-text="转到 Azure Percept Studio。":::
 
 ## <a name="view-your-dev-kit-video-stream-and-deploy-a-sample-model"></a>查看开发工具包视频流并部署示例模型
 
@@ -169,7 +170,7 @@ ms.locfileid: "108132244"
 
 1. 单击“查看设备流”。 如果是第一次查看设备的视频流，会在右上角看到一个通知，指示部署了一个新模型。 这可能需要几分钟的时间。
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-03-1-start-video-stream.png" alt-text="查看视频流。":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/view-stream.png" alt-text="查看视频流。":::
 
     部署模型后，将收到另一条包含“查看流”链接的通知。 单击此链接可在新的浏览器窗口中查看来自 Azure Percept Vision 照相机的视频流。 开发工具包会预加载 AI 模型，用于自动执行许多常见对象的对象检测。
 
@@ -177,7 +178,7 @@ ms.locfileid: "108132244"
 
 1. Azure Percept Studio 还具有多个示例 AI 模型。 要将示例模型部署到开发工具包，请导航回到设备页，然后单击“部署示例模型”。
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-04-explore-prebuilt.png" alt-text="了解预生成的模型。":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/deploy-sample-model.png" alt-text="了解预生成的模型。":::
 
 1. 从库中选择一个示例模型，然后单击“部署到设备”。
 

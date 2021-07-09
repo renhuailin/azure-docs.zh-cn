@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: b8c9610ca7043ed6b8baa86e35ea76c74ed75bba
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 58e6d0cb0aebc7c8f72b0991447e0b35fceb00c1
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107883987"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464140"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
@@ -111,14 +111,13 @@ ms.locfileid: "107883987"
 
 对于以下版本，Azure Migrate 会自动完成这些操作
 
-- Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x（Azure Linux VM 代理也会在迁移过程中自动安装）
-- Cent OS 7.7、7.6、7.5、7.4、6.x（Azure Linux VM 代理也会在迁移过程中自动安装）
-- SUSE Linux Enterprise Server 12 SP1+
-- SUSE Linux Enterprise Server 15 SP1
+- Red Hat Enterprise Linux 8、7.8、7.7、7.6、7.5、7.4、7.0、6.x（Azure Linux VM 代理也会在迁移过程中自动安装）
+- Cent OS 8、7.7、7.6、7.5、7.4、6.x（Azure Linux VM 代理也会在迁移过程中自动安装）
+- SUSE Linux Enterprise Server 15 SP0、15 SP1、12、11
 - Ubuntu 19.04、19.10、18.04LTS、16.04LTS、14.04LTS（Azure Linux VM 代理也会在迁移过程中自动安装）
 - Ubuntu 18.04LTS、16.04LTS
 - Debian 9、8、7
-- Oracle Linux 7.7、7.7-CI
+- Oracle Linux 6、7.7、7.7-CI 
 
 对于其他版本，请按表中汇总所示准备计算机。  
 

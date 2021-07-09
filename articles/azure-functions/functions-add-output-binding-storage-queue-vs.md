@@ -1,15 +1,15 @@
 ---
 title: 使用 Visual Studio 将函数连接到 Azure 存储
 description: 了解如何使用 Visual Studio 添加输出绑定，以将 C# 类库函数连接到 Azure 存储队列。
-ms.date: 07/22/2019
+ms.date: 05/30/2021
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 635392212027c73e5aa954eb671be31228796a0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28748b7b9d0622d62baeb0de144adcd89c061a72
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96185124"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790898"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>使用 Visual Studio 将函数连接到 Azure 存储
 
@@ -33,7 +33,7 @@ ms.locfileid: "96185124"
 
 1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”。 
 
-1. 在“操作”下，选择“编辑 Azure 应用服务设置”。  
+1. 在“托管”下的“发布”选项卡中，展开三个点 (...) 并选择“管理 Azure 应用服务”设置。 
 
     ![编辑应用程序设置](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 

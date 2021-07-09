@@ -3,18 +3,18 @@ title: 教程 - 从 Azure 成本管理创建和管理导出的数据
 description: 本文介绍如何创建和管理导出的 Azure 成本管理数据，以便在外部系统中使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2021
+ms.date: 05/06/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 37804be38918713cdfa7aea59763054e444daa7e
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 9f9afe0b7c27fb2199f9bdcd1fa5edbe4da01602
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015710"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517633"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -34,7 +34,7 @@ ms.locfileid: "108015710"
 
 ## <a name="prerequisites"></a>先决条件
 
-数据导出适用于各种 Azure 帐户类型，包括[企业协议(EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 和 [Microsoft 客户协议](get-started-partners.md)客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 对于按用户和组导出的数据，每个订阅均支持以下 Azure 权限或作用域。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+数据导出适用于各种 Azure 帐户类型，包括[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 和 [Microsoft 客户协议](get-started-partners.md)客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 对于按用户和组导出的数据，每个订阅均支持以下 Azure 权限或作用域。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 - 所有者 - 可以为订阅创建、修改或删除计划导出。
 - 参与者 - 可以创建、修改或删除自己的计划导出。 可以修改其他人创建的计划导出的名称。
@@ -55,20 +55,20 @@ ms.locfileid: "108015710"
 
 ### <a name="portal"></a>[门户](#tab/azure-portal)
 
-要创建或查看数据导出或计划导出，请在 Azure 门户中打开所需的作用域，然后在菜单中选择“成本分析”。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析” 。 在“成本分析”页的顶部，选择“设置”，然后“导出”。
+要创建或查看数据导出或计划导出，请在 Azure 门户中选择范围，然后在菜单中选择“成本分析”。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析” 。 在“成本分析”页的顶部，选择“设置”，然后“导出”。
 
 > [!NOTE]
 > - 除了订阅之外，还可以针对资源组、管理组、部门和注册创建导出。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
->- 在计费帐户范围内或在客户的租户上以合作伙伴身份登录时，可以将数据导出到链接到合作伙伴存储帐户的 Azure 存储帐户。 但是，必须在 CSP 租户中具有活动订阅。
+> - 在计费帐户范围内或在客户的租户上以合作伙伴身份登录时，可以将数据导出到链接到合作伙伴存储帐户的 Azure 存储帐户。 但是，必须在 CSP 租户中具有活动订阅。
 
 1. 选择“添加”，然后键入导出的名称。
 1. 对于“指标”，请选择：
     - **实际成本（使用量和购买量）** - 选择此项可导出标准使用量和购买量
     - **摊销成本（使用量和购买量）** - 选择此项可针对购买量（如 Azure 预留）导出摊销成本
 1. 对于“导出类型”，请选择：
-    - **每日导出本月至今累计成本** - 每日提供一个新的本月至今累计成本的导出文件。 最新数据是根据以前的每日导出聚合的。
+    - **每日导出本月累计成本** - 每日提供一个新的本月累计成本的导出文件。 最新数据是根据以前的每日导出聚合的。
     - **每周导出过去七天的成本** - 创建自选定的导出开始日期起过去七天的每周成本导出文件。
-    - **每月导出上个月的成本** - 提供上月成本的导出文件（与创建导出的当前月份进行比较）。 并且，计划在每月的第五天运行导出，其中包含以前的月份成本。
+    - **每月导出上个月的成本** - 提供上月成本的导出文件（与创建导出的当前月份进行比较）。 然后，计划在每月的第五天运行导出，其中包含以前的月份成本。
     - **一次性导出** - 允许你选择要导出到 Azure blob 存储的历史数据的日期范围。 你可以导出从所选的那一天起最多 90 天的历史成本。 此导出会立即运行，最多 2 小时后便可在存储帐户中获取它。
         根据你的导出类型，请选择“开始日期”，或选择“从”和“到”日期 。
 1. 指定 Azure 存储帐户的订阅，然后选择一个资源组，或者创建一个新的资源组。
@@ -257,7 +257,45 @@ Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-00
 1. 在范围内创建导出，获取管理组中订阅的成本管理数据。
     :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="显示具有管理组范围的“新建导出”选项的示例":::
 
-## <a name="verify-that-data-is-collected"></a>验证是否已收集数据
+### <a name="file-partitioning-for-large-datasets"></a>大型数据集的文件分区
+
+如果你有 Microsoft 客户协议或 Microsoft 合作伙伴协议，则可以启用导出将文件分块到多个较小的文件分区中，以帮助进行数据引入。 首次配置导出时，请将“文件分区”设置设置为“启用” 。 默认情况下设置为“关闭”。
+
+:::image type="content" source="./media/tutorial-export-acm-data/file-partition.png" alt-text="显示“文件分区”选项的屏幕截图。" lightbox="./media/tutorial-export-acm-data/file-partition.png" :::
+
+如果没有 Microsoft 客户协议或 Microsoft 合作伙伴协议，就不会看到“文件分区”选项。
+
+#### <a name="update-existing-exports-to-use-file-partitioning"></a>更新现有导出以使用文件分区
+
+如果你有现有导出，并且想要设置文件分区，请新建导出。 文件分区仅适用于最新的导出版本。 创建的使用情况文件中的某些字段可能有一些细微更改。
+
+如果对现有导出启用文件分区，则可能会在文件输出中看到字段的细微更改。 任何更改都是由最初设置后对导出进行的更新产生的。
+
+#### <a name="partitioning-output"></a>分区输出
+
+启用文件分区后，你将获得导出中的每个数据分区的文件以及 _manifest.json 文件。 清单包含完整数据集的摘要，以及其中每个文件分区的信息。 每个文件分区都有标题，只包含完整数据集的一个子集。 若要处理完整的数据集，必须引入导出的每个分区。
+
+下面是 _manifest.json 示例清单文件。
+
+```json
+{
+  "manifestVersion": "2021-01-01",
+  "dataFormat": "csv",
+  "blobCount": 1,
+  "byteCount": 160769,
+  "dataRowCount": 136,
+  "blobs": [
+    {
+      "blobName": "blobName.csv",
+      "byteCount": 160769,
+      "dataRowCount": 136,
+      "headerRowCount": 1,
+      "contentMD5": "md5Hash"
+    }
+  ]
+}
+```
+## <a name="verify-that-data-is-collected"></a>验证收集的数据
 
 可以轻松验证正在收集的成本管理数据，并使用 Azure 存储资源管理器查看导出的 CSV 文件。
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/17/2019
+ms.date: 05/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 86a314cd5255c06a70d0f9b28d06e3ac4156fdb6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7150ac0fc3d291019b9e53776ed8b92431f2d2b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92453820"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451406"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Evernote 的集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "92453820"
 * 在 Azure AD 中控制谁有权访问 Evernote。
 * 让用户使用其 Azure AD 帐户自动登录到 Evernote。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,27 +37,27 @@ ms.locfileid: "92453820"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Evernote 支持 **SP 和 IDP** 发起的 SSO
+* Evernote 支持 SP 和 IDP 发起的 SSO。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-## <a name="adding-evernote-from-the-gallery"></a>从库中添加 Evernote
+## <a name="add-evernote-from-the-gallery"></a>从库中添加 Evernote
 
 要配置 Evernote 与 Azure AD 的集成，需要将库中的 Evernote 添加到托管的 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Evernote”   。
 1. 从结果面板中选择“Evernote”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-evernote"></a>配置并测试 Evernote 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-evernote"></a>配置并测试 Evernote 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置和测试 Evernote 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Evernote 相关用户之间建立链接关系。
 
-若要配置和测试 Evernote 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Evernote 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
@@ -72,19 +70,19 @@ ms.locfileid: "92453820"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Evernote”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在 Azure 门户的“Evernote”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤 ： 
 
-    在“标识符”  文本框中，键入一个 URL：`https://www.evernote.com/saml2`
+    在“标识符”文本框中键入 URL：`https://www.evernote.com/saml2`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，键入 URL：`https://www.evernote.com/Login.action` 
+    在“登录 URL”文本框中，键入 URL：  `https://www.evernote.com/Login.action`
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -94,7 +92,7 @@ ms.locfileid: "92453820"
 
     ![显示已选择“编辑”按钮的“SAML 签名证书”对话框的屏幕截图。](common/edit-certificate.png) 
 
-    ![image](./media/evernote-tutorial/samlassertion.png)
+    ![image](./media/evernote-tutorial/assertion.png)
 
     a. 选择“为 SAML 响应和断言签名”选项作为“签名选项”   。
 
@@ -123,15 +121,9 @@ ms.locfileid: "92453820"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“Evernote”。 
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-evernote-sso"></a>配置 Evernote SSO
@@ -148,15 +140,15 @@ ms.locfileid: "92453820"
 
 4. 转到“管理控制台” 
 
-    ![Admin-Console](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
+    ![Admin-Console](./media/evernote-tutorial/admin.png)
 
 5. 在“管理控制台”中，转到“安全性”并选择“单一登录”   
 
-    ![SSO-Setting](./media/evernote-tutorial/tutorial_evernote_sso.png)
+    ![SSO-Setting](./media/evernote-tutorial/security.png)
 
 6. 配置以下值：
 
-    ![Certificate-Setting](./media/evernote-tutorial/tutorial_evernote_certx.png)
+    ![Certificate-Setting](./media/evernote-tutorial/certificate.png)
     
     a.  启用 SSO：  SSO 默认已启用（单击“禁用单一登录”可以取消 SSO 要求） 
 
@@ -177,30 +169,34 @@ ms.locfileid: "92453820"
 
 2. 单击“管理控制台”。 
 
-    ![Admin-Console](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
+    ![Admin-Console](./media/evernote-tutorial/admin.png)
 
 3. 在“管理控制台”中，转到“添加用户”。  
 
-    ![显示选中了“添加用户”的“用户”菜单的屏幕截图。](./media/evernote-tutorial/create_aaduser_0001.png)
+    ![显示选中了“添加用户”的“用户”菜单的屏幕截图。](./media/evernote-tutorial/create-user.png)
 
 4. 在“电子邮件”文本框中的“添加团队成员”内，键入用户帐户的电子邮件地址，并单击“邀请”。   
 
-    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0002.png)
+    ![Add-testUser](./media/evernote-tutorial/add-user.png)
     
 5. 发送邀请后，Azure Active Directory 帐户持有人将收到邀请电子邮件。
 
 ## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-单击访问面板中的 Evernote 磁贴时，应当会自动登录到你为其设置了 SSO 的 Evernote。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+#### <a name="sp-initiated"></a>SP 启动的：
 
-## <a name="additional-resources"></a>其他资源
+* 在 Azure 门户中单击“测试此应用程序”。 这将重定向到 Evernote 登录 URL，从那里启动登录流。  
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 直接转到 Evernote 登录 URL，从那里启动登录流。
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP 启动的：
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+* 在 Azure 门户中单击“测试此应用程序”后，你会自动登录到为其设置了 SSO 的 Evernote。 
 
-- [在 Azure AD 中试用 Evernote](https://aad.portal.azure.com/)
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的 Evernote 磁贴时，如果该应用程序是在 SP 模式下配置的，系统会将你重定向到应用程序登录页来启动登录流；如果它是在 IDP 模式下配置的，你会自动登录到为其设置了 SSO 的 Evernote。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+
+## <a name="next-steps"></a>后续步骤
+
+配置 Evernote 后，你可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

@@ -2,19 +2,19 @@
 title: 呼叫（语音/视频）和聊天的定价方案
 titleSuffix: An Azure Communication Services concept document
 description: 了解通信服务的定价模型。
-author: mikben
-manager: jken
+author: nmurav
+manager: nmurav
 services: azure-communication-services
-ms.author: mikben
+ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5f7b1e6d600f5d3652ce6a66a72cbfbf33b336c4
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 038b4df78ca7f10b0ec0e9dfe224f6aca2430e82
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091865"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111986293"
 ---
 # <a name="pricing-scenarios"></a>定价方案
 
@@ -51,16 +51,16 @@ Alice 与其同事 Bob 和 Charlie 进行了一次群呼。 Alice 和 Bob 使用
 Alice 在应用中向 Bob 的美国电话号码（以 `+1-425` 开头）发起了 PSTN 呼叫。
 
 - Alice 使用 JS SDK 生成了应用。
-- 呼叫总共持续了 5 分钟。
+- 呼叫总共持续了 10 分钟。
 
 成本计算
 
 - VoIP 端有 1 名参与者 (Alice) 从应用向通信服务服务器发起呼叫 x 10 分钟 x 每个参与者端每分钟 $0.004 = $0.04
-- PSTN 出站端有 1 名参与方 (Charlie) 从通信服务服务器向美国电话号码发起呼叫 x 10 分钟 x 每个参与者端每分钟 $0.013 = $0.13。
+- PSTN 出站端有 1 名参与者 (Bob) 从通信服务服务器向美国电话号码发起呼叫 x 10 分钟 x 每个参与者端每分钟 0.013 美元 = 0.13 美元。
 
 注意：在美国呼叫 `+1-425` 的混合费率为 $0.013。 有关详细信息，请参阅以下链接： https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)
 
-**群呼总成本**：$0.04 + $0.13 = $0.17
+此次呼叫的总费用：0.04 美元 + 0.13 美元 = 0.17 美元
 
 
 ### <a name="pricing-example-group-audio-call-using-js-sdk-and-1-pstn-leg"></a>定价示例：使用 JS SDK 和 1 个 PSTN 端发起音频群呼
@@ -85,13 +85,15 @@ Alice 和 Bob 使用 VOIP 呼叫。 Bob 升级了对 Charlie 的呼叫方式，�
 Alice 医生与她的患者 Bob 会面。 Alice 将从 Teams 桌面应用程序加入探访。 Bob 将收到一个通过医疗保健提供商网站加入的链接，该网站使用通信服务 JavaScript SDK 连接到会议。 Bob 将使用移动电话通过 Web 浏览器（iPhone 通过 Safari）进入会议。 虚拟探访期间可以聊天。
 
 - 通话总时长为 30 分钟。
-- Alice 和 Bob 参与了整个通话。 Alice 在通话开始五分钟后打开她的视频，并共享屏幕 13 分钟。 Bob 在整个通话期间均打开了视频。
+- 当 Bob 加入会议时，根据 Teams 策略，他被放置在 Teams 会议厅中。 一分钟后，Alice 让他进入会议。
+- 在 Bob 被允许参加会议后，Alice 和 Bob 参与了整个通话。 Alice 在通话开始五分钟后打开她的视频，并共享屏幕 13 分钟。 Bob 在整个通话期间均打开了视频。
 - Alice 发送了 5 条消息，Bob 回复了 3 条消息。
 
 
 成本计算
 
-- 1 个参与者 (Bob) x 30 分钟 x 0.004 美元/参与者/分钟 = 0.12 美元 [视频和音频以相同费率进行收费]
+- 1 个参与者 (Bob) 连接到 Teams 会议厅 x 1 分钟 x 每个参与者每分钟 0.004 美元（会议厅按常规会议费率收费）= 0.004 美元
+- 1 个参与者 (Bob) x 29 分钟 x 0.004 美元/参与者/分钟 = 0.116 美元 [视频和音频以相同费率收费]
 - 1 个参与者 (Alice) x 30 分钟 x 0.000 美元/参与者/分钟 = 0.0* 美元。
 - 1 个参与方 (Bob) x 3 条聊天消息 x 0.0008 美元 = 0.0024 美元。
 - 1 个参与者 (Alice) x 5 条聊天消息 x 0.000 美元 = 0.0* 美元。
@@ -99,7 +101,7 @@ Alice 医生与她的患者 Bob 会面。 Alice 将从 Teams 桌面应用程序�
 *Alice 的参与费用由她的 Teams 许可证涵盖。 为了方便起见，Azure 发票将显示 Teams 用户与通信服务用户之间产生的分钟数和聊天消息数，但来自 Teams 客户端的这些分钟数和消息数不会产生费用。
 
 **此次探访的总费用**：
-- 用户使用通信服务 JavaScript SDK 加入：$0.12 + $0.0024 = $0.1224
+- 用户使用通信服务 JavaScript SDK 加入：0.004 美元 + 0.116 美元 + 0.0024 美元 = 0.1224 美元
 - 用户通过 Teams 桌面应用程序加入：0 美元（Teams 许可证涵盖）
 
 
@@ -152,7 +154,7 @@ Rose 会看到消息并开始聊天。 与此同时，Casey 收到了一个电�
 
 #### <a name="united-states-calling-prices"></a>美国呼叫价格
 
-以下价格包含了 2021 年 6 月 30 日之前所需的通信税和费用：
+以下价格包含了所需的通信税和费用：
 
 |数字类型   |拨打电话   |接听电话|
 |--------------|-----------|------------|
@@ -161,7 +163,7 @@ Rose 会看到消息并开始聊天。 与此同时，Casey 收到了一个电�
 
 #### <a name="other-calling-destinations"></a>其他呼叫目的地
 
-以下价格包含了 2021 年 6 月 30 日之前所需的通信税和费用：
+以下价格包含了所需的通信税和费用：
 
 |呼叫目的地   |每分钟价格|
 |-----------|------------|
@@ -175,7 +177,7 @@ Rose 会看到消息并开始聊天。 与此同时，Casey 收到了一个电�
 
 短信提供即用即付定价。 价格为基于短信目的地的每条短信费用。 可以通过免费电话号码向美国境内的电话号码发送短信。 请注意，本地（地理）电话号码不能用于发送短信。
 
-以下价格包含了 2021 年 6 月 30 日之前所需的通信税和费用：
+以下价格包含了所需的通信税和费用：
 
 |国家/地区   |发送消息|接收消息|
 |-----------|------------|------------|

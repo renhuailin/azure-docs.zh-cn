@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 426d7f5ee117b346280a712cc9f71ab0e617d64f
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: cac3126706b5c2c7e890890013a506d04f104bb2
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220732"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330991"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>避免 Azure 免费帐户产生费用
 

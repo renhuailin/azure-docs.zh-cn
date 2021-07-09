@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adbc653c8b698cb7b439b54b0a77d2b8cd4042a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 607a68870d3124eadba63b7a04b73ec7705a97a0
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100547394"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713965"
 ---
 # <a name="tutorial-manage-access-to-resources-in-azure-ad-entitlement-management"></a>Tutorial:管理对 Azure AD 权利管理中的资源的访问
 
@@ -78,7 +78,7 @@ ms.locfileid: "100547394"
 
 访问包是团队或项目所需的且受策略制约的资源捆绑包  。 在名为 *catalogs* 的容器中定义访问包。 在此步骤中，请在“常规”目录中创建一个“市场营销活动”访问包   。
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色：** 全局管理员、标识治理管理员、用户管理员、目录所有者或访问包管理员
 
 ![创建访问包](./media/entitlement-management-access-package-first/elm-access-package.png)
 
