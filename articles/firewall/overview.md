@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
 ms.date: 04/20/2021
 ms.author: victorh
-ms.openlocfilehash: a271de46a55722d59043fdfd2b1daf634091ff7c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 077de420397f3b8feab60a9f555fc26e66a5b5ff
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147366"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539766"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -65,7 +65,7 @@ Azure 防火墙存在以下已知问题：
 |对入站连接的 SNAT|除了 DNAT 以外，通过防火墙公共 IP 地址（入站）建立的连接将通过 SNAT 转换为某个防火墙专用 IP。 当前提出此项要求（也适用于主动/主动 NVA）的目的是确保对称路由。|若要保留 HTTP/S 的原始源，请考虑使用 [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) 标头。 例如，在防火墙前面使用 [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) 或 [Azure 应用程序网关](../application-gateway/rewrite-http-headers-url.md)等服务。 还可以添加 WAF 作为 Azure Front Door 的一部分，并链接到防火墙。
 |仅在代理模式下支持 SQL FQDN 筛选（端口 1433）|对于 Azure SQL 数据库、Azure Synapse Analytics 和 Azure SQL 托管实例：<br><br>仅在代理模式下支持 SQL FQDN 筛选（端口 1433）。<br><br>对于 Azure SQL IaaS：<br><br>如果使用的是非标准端口，则可以在应用程序规则中指定这些端口。|对于采用重定向模式的 SQL（这是从 Azure 内连接时采用的默认设置），可以将 SQL 服务标记用作 Azure 防火墙网络规则的一部分，改为对访问进行筛选。
 |不允许 TCP 端口 25 上的出站流量| 将阻止使用 TCP 端口 25 的出站 SMTP 连接。 端口 25 主要用于未经身份验证的电子邮件传递。 这是虚拟机的默认平台行为。 有关详细信息，请参阅[排查 Azure 中的出站 SMTP 连接问题](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)。 但是，与虚拟机不同，目前无法在 Azure 防火墙上启用此功能。 注意：若要允许经过身份验证的 SMTP（端口 587）或基于 25 之外的端口的 SMTP，请确保配置网络规则而不是应用程序规则，因为目前不支持 SMTP 检查。|请按照 SMTP 故障排除文章中所述的建议方法发送电子邮件。 或者，排除需要从默认路由对防火墙进行出站 SMTP 访问的虚拟机。 改为配置直接对 Internet 进行出站访问。
-|SNAT 端口耗尽|Azure 防火墙当前支持每个后端虚拟机规模集实例的每个公用 IP 地址 1024 个端口。 默认情况下，有两个 VMSS 实例。|这是 SLB 限制，我们一直在寻找机会来提高该限制。 同时，对于容易出现 SNAT 耗尽的部署，建议为 Azure 防火墙部署配置至少五个公共 IP 地址。 这将使可用的 SNAT 端口增加五倍。 从 IP 地址前缀分配以简化下游权限。|
+|SNAT 端口耗尽|Azure 防火墙当前支持每个后端虚拟机规模集实例的每个公用 IP 地址 1024 个端口。 默认有两个虚拟机规模集实例。|这是 SLB 限制，我们一直在寻找机会来提高该限制。 同时，对于容易出现 SNAT 耗尽的部署，建议为 Azure 防火墙部署配置至少五个公共 IP 地址。 这将使可用的 SNAT 端口增加五倍。 从 IP 地址前缀分配以简化下游权限。|
 |在启用了强制隧道的情况下不支持 DNAT|由于采用非对称路由，在启用了强制隧道的情况下部署的防火墙无法支持从 Internet 进行入站访问。|这种限制是根据非对称路由设计的。 入站连接的返回路径通过本地防火墙，而该防火墙看不到已建立的连接。
 |出站被动 FTP 可能不适用于具有多个公共 IP 的防火墙，具体取决于你的 FTP 服务器配置。|被动 FTP 为控制通道和数据通道建立不同的连接。 当具有多个公共 IP 地址的防火墙发送出站数据时，它会随机选择一个公共 IP 地址作为源 IP 地址。 当数据和控制通道使用不同的源 IP 地址时，FTP 可能会失败，具体取决于你的 FTP 服务器配置。|规划显式 SNAT 配置。 同时，你可将 FTP 服务器配置为接受来自不同源 IP 地址的数据和控制通道（请参阅 [IIS 的示例](/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity)）。 或者，请考虑在此情况中使用单个 IP 地址。|
 |入站被动 FTP 可能无法工作，具体取决于你的 FTP 服务器配置 |被动 FTP 为控制通道和数据通道建立不同的连接。 Azure 防火墙上的入站连接经过 SNAT 转换为防火墙专用 IP 地址，以确保对称路由。 当数据和控制通道使用不同的源 IP 地址时，FTP 可能会失败，具体取决于你的 FTP 服务器配置。|保留原始源 IP 地址的操作正在接受调查。 在此期间，你可将 FTP 服务器配置为接受来自不同源 IP 地址的数据和控制通道。|
@@ -75,9 +75,10 @@ Azure 防火墙存在以下已知问题：
 |Azure 防火墙使用 SNI TLS 标头筛选 HTTPS 和 MSSQL 流量|如果浏览器或服务器软件不支持服务器名称指示 (SNI) 扩展，则无法通过 Azure 防火墙进行连接。|如果浏览器或服务器软件不支持 SNI，也许可以使用网络规则（而不是应用程序规则）控制连接。 有关支持 SNI 的软件，请参阅[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)。|
 |自定义 DNS 不适用于强制隧道|如果启用了强制隧道，自定义 DNS 将无法使用。|我们正在研究修复措施。|
 |启动/停止操作不适用于在强制隧道模式下配置的防火墙|启动/停止操作不适用于在强制隧道模式下配置的 Azure 防火墙。 如果尝试在配置了强制隧道的情况下启动 Azure 防火墙，会导致以下错误：<br><br>*Set-AzFirewall:AzureFirewall FW-xx 管理 IP 配置无法添加到现有防火墙中。如果要使用强制隧道支持，请使用管理 IP 配置重新部署。<br>StatusCode:400<br>ReasonPhrase：请求错误*|正在调查中。<br><br>一种解决方法是，删除现有的防火墙，并使用相同的参数创建一个新的防火墙。|
-|无法使用门户添加防火墙策略标记|Azure 防火墙策略具有修补程序支持限制，可防止使用 Azure 门户添加标记。 生成以下错误：无法保存资源的标记。|我们正在研究修复措施。 或者，可以使用 Azure PowerShell cmdlet `Set-AzFirewallPolicy` 更新标记。|
-|尚不支持 IPv6|如果将 IPv6 地址添加到规则，防火墙会失败。|仅使用 IPv4 地址。 正在调查 IPv6 支持。|
-|更新多个 IPGroup 失败并出现冲突错误。|当你将两个或多个 IPGroup 连接到同一个防火墙时，其中一个资源将进入失败状态。|这是一个已知问题或限制。 <br><br>更新 IPGroup 时，它会触发所有附加 IPGroup 的防火墙进行更新。 如果系统在防火墙仍处于“正在更新”状态时启动第二个 IPGroup 的更新，则此 IPGroup 更新失败。<br><br>若要避免更新失败，必须一次更新一个附加到同一个防火墙的 IPGroup。 请在两次更新之间留出足够的时间，让防火墙可以避开“正在更新”状态。| 
+|无法使用门户或 Azure 资源管理器 (ARM) 模板添加防火墙策略标记|Azure 防火墙策略存在补丁支持限制，可防止使用 Azure 门户或 ARM 模板添加标记。 生成以下错误：无法保存资源的标记。|我们正在研究修复措施。 或者，可以使用 Azure PowerShell cmdlet `Set-AzFirewallPolicy` 更新标记。|
+|目前不支持 IPv6|如果将 IPv6 地址添加到规则，防火墙会失败。|仅使用 IPv4 地址。 正在调查 IPv6 支持。|
+|更新多个 IPGroup 失败并出现冲突错误。|当你更新两个或更多个已附加到同一个防火墙的 IP 组时，其中一个资源将进入失败状态。|这是一个已知问题或限制。 <br><br>更新 IP 组时，会对该 IP 组所附加到的所有防火墙触发更新。 如果在防火墙仍处于“正在更新”状态时启动对另一个 IP 组的更新，IP 组更新将会失败。<br><br>若要避免更新失败，必须逐个更新附加到同一个防火墙的 IP 组。 请在两次更新之间留出足够的时间，让防火墙可以避开“正在更新”状态。|
+|不支持使用 ARM 模板删除 RuleCollectionGroup。|不支持使用 ARM 模板删除 RuleCollectionGroup，这会导致失败。|此操作不受支持。|
 
 
 ## <a name="next-steps"></a>后续步骤

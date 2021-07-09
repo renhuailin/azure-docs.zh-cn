@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3e0bcef30d13403d8067c41568b7ee321fb46995
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 3ba2dad93778e9d4482fa00c854a73dbc616d290
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377185"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750400"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -106,77 +106,6 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 |-----------|-------------|---------------------|
 | `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
-> [!IMPORTANT]
-> 多个语音与字边界功能不兼容。 需要禁用字边界功能才能使用多个语音。
-
-### <a name="disable-word-boundary"></a>禁用字边界
-
-根据语音 SDK 语言，需将 `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` 属性设置为 `SpeechConfig` 对象的实例上的 `false`。
-
-# <a name="c"></a>[C#](#tab/csharp)
-
-有关详细信息，请参阅 <a href="/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a>。
-
-```csharp
-speechConfig.SetProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="c"></a>[C++](#tab/cpp)
-
-有关详细信息，请参阅 <a href="/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a>。
-
-```cpp
-speechConfig->SetProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-有关详细信息，请参阅 <a href="/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a>。
-
-```java
-speechConfig.setProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-有关详细信息，请参阅 <a href="/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a>。
-
-```python
-speech_config.set_property_by_name(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-有关详细信息，请参阅 <a href="/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty`</a>。
-
-```javascript
-speechConfig.setProperty(
-    "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
-```
-
-# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
-
-有关详细信息，请参阅 <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>。
-
-```objectivec
-[speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
-```
-
-# <a name="swift"></a>[Swift](#tab/swift)
-
-有关详细信息，请参阅 <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>。
-
-```swift
-speechConfig!.setPropertyTo(
-    "false", byName: "SpeechServiceResponse_Synthesis_WordBoundaryEnabled")
-```
-
----
-
 **示例**
 
 ```xml
@@ -202,10 +131,10 @@ speechConfig!.setPropertyTo(
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
-* `zh-CN-YunxiNeural` 
-* `zh-CN-XiaohanNeural` 
-* `zh-CN-XiaomoNeural` 
-* `zh-CN-XiaoxuanNeural` 
+* `zh-CN-YunxiNeural`
+* `zh-CN-XiaohanNeural`
+* `zh-CN-XiaomoNeural`
+* `zh-CN-XiaoxuanNeural`
 * `zh-CN-XiaoruiNeural`
 
 可进一步更改说话风格的强度，更好地适应你的使用场景。 可以使用 `styledegree` 指定更强或更柔和的风格，使语音更具表现力或更柔和。 目前，中文（普通话，简体）神经语音支持说话风格调整。
@@ -228,7 +157,7 @@ speechConfig!.setPropertyTo(
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> 目前，`styledegree` 仅支持中文（普通话，简体）神经语音。 `role` 仅支持 zh-CN-XiaomoNeural 和 zh-CN-XiaoxuanNeural。 
+> 目前，`styledegree` 仅支持中文（普通话，简体）神经语音。 `role` 仅支持 zh-CN-XiaomoNeural 和 zh-CN-XiaoxuanNeural。
 
 **属性**
 
@@ -375,10 +304,12 @@ speechConfig!.setPropertyTo(
 
 ## <a name="adjust-speaking-languages"></a>调整讲话语言
 
-> [!IMPORTANT]
->  只能调整神经语音的讲话语言。
-> 使用 `<lang xml:lang>` 元素，使一种语音能够流利地讲不同的语言（例如英语、西班牙语和中文）。 这是语音服务特有的可选元素。 如果没有此元素，语音将讲其主要语言。
-> 目前，以下神经语音支持讲话语言调整：`en-US-JennyMultilingualNeural`。 上述更改将在句子级别和单词级别应用。 如果不支持某语言，则服务不会返回音频流。
+可以调整神经语音的讲话语言。
+使用 `<lang xml:lang>` 元素，使一种语音能够流利地讲不同的语言（例如英语、西班牙语和中文）。 这是语音服务特有的可选元素。 如果没有此元素，语音将讲其主要语言。
+目前，以下神经语音支持讲话语言调整：`en-US-JennyMultilingualNeural`。 上述更改将在句子级别和单词级别应用。 如果不支持某语言，则服务不会返回音频流。
+
+> [!NOTE]
+> 当前，`<lang xml:lang>` 元素与 `prosody` 和 `break` 元素不兼容，你无法调整此元素中的暂停和韵律，如音调、调型、速率、持续时间和音量。
 
 **语法**
 
@@ -396,20 +327,20 @@ speechConfig!.setPropertyTo(
 
 | 语音                            | 区域设置语言           | 说明                                                 |
 |----------------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-JennyMultilingualNeural`  | `lang="en-us"`            | 讲英语（美国）区域设置，这是此语音的主要区域设置 |
-|                                  | `lang="en-ca"`            | 讲英语（加拿大）区域设置语言                                  |
-|                                  | `lang="en-au"`            | 讲英语（澳大利亚）区域设置语言                                  |
-|                                  | `lang="en-gb"`            | 讲英语（英国）区域设置语言                                  |
-|                                  | `lang="de-de"`            | 讲德语（德国）区域设置语言                                  |
-|                                  | `lang="fr-fr"`            | 讲法语（法国）区域设置语言                                  |
-|                                  | `lang="fr-ca"`            | 讲法语（加拿大）区域设置语言                                  |
-|                                  | `lang="es-es"`            | 讲西班牙语（西班牙）区域设置语言                                  |
-|                                  | `lang="es-mx"`            | 讲西班牙语（墨西哥）区域设置语言                                  |
-|                                  | `lang="zh-cn"`            | 讲中文（中国）区域设置语言                                  |
-|                                  | `lang="ko-kr"`            | 讲韩语（韩国）区域设置语言                                  |
-|                                  | `lang="ja-jp"`            | 讲日语（日本）区域设置语言                                  |
-|                                  | `lang="it-it"`            | 讲意大利语（意大利）区域设置语言                                  |
-|                                  | `lang="pt-br"`            | 讲葡萄牙语（葡萄牙）区域设置语言                                  |
+| `en-US-JennyMultilingualNeural`  | `lang="en-US"`            | 讲英语（美国）区域设置，这是此语音的主要区域设置 |
+|                                  | `lang="en-CA"`            | 讲英语（加拿大）区域设置语言                                  |
+|                                  | `lang="en-AU"`            | 讲英语（澳大利亚）区域设置语言                                  |
+|                                  | `lang="en-GB"`            | 讲英语（英国）区域设置语言                                  |
+|                                  | `lang="de-DE"`            | 讲德语（德国）区域设置语言                                  |
+|                                  | `lang="fr-FR"`            | 讲法语（法国）区域设置语言                                  |
+|                                  | `lang="fr-CA"`            | 讲法语（加拿大）区域设置语言                                  |
+|                                  | `lang="es-ES"`            | 讲西班牙语（西班牙）区域设置语言                                  |
+|                                  | `lang="es-MX"`            | 讲西班牙语（墨西哥）区域设置语言                                  |
+|                                  | `lang="zh-CN"`            | 讲中文（中国）区域设置语言                                  |
+|                                  | `lang="ko-KR"`            | 讲韩语（韩国）区域设置语言                                  |
+|                                  | `lang="ja-JP"`            | 讲日语（日本）区域设置语言                                  |
+|                                  | `lang="it-IT"`            | 讲意大利语（意大利）区域设置语言                                  |
+|                                  | `lang="pt-BR"`            | 讲葡萄牙语（葡萄牙）区域设置语言                                  |
 
 **示例**
 
@@ -420,10 +351,10 @@ speechConfig!.setPropertyTo(
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
     <voice name="en-US-JennyMultilingualNeural">
         I am looking forward to the exciting things.
-        <lang xml:lang="es-mx">
+        <lang xml:lang="es-MX">
             Estoy deseando que lleguen las cosas emocionantes.
         </lang>
-        <lang xml:lang="de-de">
+        <lang xml:lang="de-DE">
             Ich freue mich auf die spannenden Dinge.
         </lang>
     </voice>
@@ -625,8 +556,8 @@ A good place to start is by trying out the slew of educational apps that are hel
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
   <lexeme>
-    <grapheme>😀</grapheme> 
-    <alias>test emoji</alias> 
+    <grapheme>😀</grapheme>
+    <alias>test emoji</alias>
   </lexeme>
 </lexicon>
 ```

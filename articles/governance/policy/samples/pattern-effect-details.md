@@ -3,12 +3,12 @@ title: 模式：策略定义的效果
 description: 此 Azure Policy 模式通过示例介绍了如何使用策略定义的不同效果。
 ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 9fa95fdc793e7762c39525a83f38ae952f532a60
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 083433bc3993aed9dc90fa8db8a26feab60c93ee
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092834"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752374"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy 模式：效果
 
@@ -16,7 +16,7 @@ Azure Policy 有很多[效果](../concepts/effects.md)，这些效果决定了�
 
 ## <a name="sample-1-simple-effect"></a>示例 1：简单效果
 
-此策略定义检查评估的资源上是否存在参数 **tagName** 中定义的标记。 如果标记尚不存在，则会触发 [modify](../concepts/effects.md#modify) 效果，添加一个使用参数 **tagValue** 中的值的标记。
+此策略定义检查评估的资源上是否存在参数 tagName 中定义的标记。 如果标记尚不存在，则会触发 [modify](../concepts/effects.md#modify) 效果，添加一个使用参数 **tagValue** 中的值的标记。
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json":::
 
@@ -36,7 +36,7 @@ modify  效果需要 policyRule.then.details  块，该块定义 roleDefinitionI
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-2.json" range="45-58":::
 
-**auditIfNotExists** 效果需要 **policyRule.then.details** 块来定义要查找的 **type** 和 **existenceCondition**。 **existenceCondition** 使用策略语言元素（如 [逻辑运算符](../concepts/definition-structure.md#logical-operators)）来确定是否存在匹配的相关资源。 在此示例中，对照每个[别名](../concepts/definition-structure.md#aliases)检查的值在参数中定义。
+**auditIfNotExists** 效果需要 **policyRule.then.details** 块来定义要查找的 **type** 和 **existenceCondition**。 existenceCondition 使用策略语言元素（如[逻辑运算符](../concepts/definition-structure.md#logical-operators)）来确定是否存在匹配的相关资源。 在此示例中，对照每个[别名](../concepts/definition-structure.md#aliases)检查的值在参数中定义。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,17 +5,17 @@ description: 通过表单识别器预生成 ID API 了解与标识文档中的�
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9ab936f90fb890d50e6e476e216b327ed26fc4f5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f829de878b512ae6a8c8f8747e7c61456027cd68
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374844"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890665"
 ---
 # <a name="form-recognizer-prebuilt-identification-id-document-model"></a>表单识别器预生成标识 (ID) 文档模型
 
@@ -54,16 +54,16 @@ ID API 还为 [AI Builder ID 读取器功能](/ai-builder/prebuilt-id-reader)提
 
 ### <a name="fields-extracted"></a>提取的字段
 
-|名称| 类型 | 说明 | 值 |
+|名称| 类型 | 说明 | 值（标准化输出） |
 |:-----|:----|:----|:----|
-|  国家/地区 | country | 符合 ISO 3166 标准的国家/地区代码 | “USA” |
+|  CountryRegion | countryRegion | 符合 ISO 3166 标准的国家/地区或区域代码 | “USA” |
 |  DateOfBirth | date | YYYY-MM-DD 格式的 DOB | “1980-01-01” |
 |  DateOfExpiration | date | YYYY-MM-DD 格式的到期日期 | “2019-05-05” |
 |  DocumentNumber | 字符串 | 相关护照号、驾照编号等。 | “340020013” |
 |  FirstName | 字符串 | 提取的名字和中间名（如适用） | “JENNIFER” |
 |  LastName | 字符串 | 提取的姓氏 | “BROOKS” |
-|  国家/地区 | country | 符合 ISO 3166 标准的国家/地区代码 | “USA” |
-|  Sex | gender | 可能的提取值包括“M”、“F”和“X” | “F” |
+|  国家/地区 | countryRegion | 符合 ISO 3166 标准的国家/地区或区域代码 | “USA” |
+|  Sex | 字符串 | 可能的提取值包括“M”、“F”和“X” | “F” |
 |  MachineReadableZone | 对象 (object) | 提取的护照 MRZ 包括两行，每行 44 个字符 | “P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816” |
 |  DocumentType | 字符串 | 文档类型，例如护照、驾照 | “passport” |
 |  地址 | 字符串 | 提取的地址（仅限驾照） | “123 STREET ADDRESS YOUR CITY WA 99999-1234”|
@@ -87,10 +87,6 @@ ID API 还会返回以下信息：
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-locales"></a>支持的区域设置
-
- 预生成的 ID v2.1 支持 en-us 区域设置的标识文档。 
-
 ## <a name="supported-identity-document-types"></a>支持的标识文档类型
 
 * 预生成 ID v2.1 可从全球护照和美国驾照中提取关键信息。
@@ -100,7 +96,7 @@ ID API 还会返回以下信息：
   >
   > 目前支持的 ID 类型包括全球护照和美国驾照。 我们正努力将我们的 ID 支持扩展到世界各地的其他标识文档中。
 
-## <a name="post-analyze-id-document"></a>POST 分析 ID 文档
+## <a name="the-analyze-id-document-operation"></a>Analyze ID Document 操作
 
 [Analyze ID](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7daad1f2612c46f5822) 操作将 ID 的图像或 PDF 作为输入，并提取相关值。 该调用返回一个名为 `Operation-Location` 的响应标头字段。 `Operation-Location` 值是一个 URL，其中包含要在下一步骤中使用的结果 ID。
 
@@ -108,13 +104,13 @@ ID API 还会返回以下信息：
 |:-----|:----|
 |Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/prebuilt/idDocument/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
-## <a name="get-analyze-id-document-result"></a>GET Analyze ID Document Result
+## <a name="the-get-analyze-id-document-result-operation"></a>Get Analyze Receipt Result 操作
 
 <!---
 Need to update this with updated APIM links when available
 -->
 
-第二步是调用 [Get Analyze idDocument Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707) 操作。 此操作采用 Analyze ID 操作创建的结果 ID 作为输入。 此操作返回一个 JSON 响应，其中包含具有以下可能值的 **status** 字段。 可以不断地以迭代方式调用此操作，直到它返回 **succeeded** 值为止。 使用 3 到 5 秒的间隔可以避免超过每秒请求数 (RPS) 的速率限制。
+第二步是调用 [Get Analyze ID Document Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707) 操作。 此操作采用 Analyze ID 操作创建的结果 ID 作为输入。 此操作返回一个 JSON 响应，其中包含具有以下可能值的 **status** 字段。 可以不断地以迭代方式调用此操作，直到它返回 **succeeded** 值为止。 使用 3 到 5 秒的间隔可以避免超过每秒请求数 (RPS) 的速率限制。
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
@@ -129,11 +125,11 @@ Need to update this with updated APIM links when available
 
 ### <a name="sample-json-output"></a>示例 JSON 输出
 
-请参阅以下成功 JSON 响应示例：`readResults` 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。 `documentResults` 节点包含模型发现的 ID 值。 在此节点中，还可以找到有用的键/值对，如名字、姓氏、文档编号等。
+请参阅以下成功的 JSON 响应示例（为简单起见，已缩短了输出）：`readResults` 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。 `documentResults` 节点包含模型发现的 ID 值。 在此节点中，还可以找到有用的键/值对，如名字、姓氏、文档编号等。
 
 ```json
 {
-   "status": "succeeded",
+  "status": "succeeded",
   "createdDateTime": "2021-03-04T22:29:33Z",
   "lastUpdatedDateTime": "2021-03-04T22:29:36Z",
   "analyzeResult": {
@@ -175,6 +171,8 @@ Need to update this with updated APIM links when available
               }
             ],
           ...
+          }
+        ]
       }
     ],
 
@@ -187,9 +185,9 @@ Need to update this with updated APIM links when available
           1
         ],
         "fields": {
-          "Country": {
-            "type": "country",
-            "valueCountry": "USA",
+          "CountryRegion": {
+            "type": "countryRegion",
+            "valueCountryRegion": "USA",
             "text": "USA"
           },
           "DateOfBirth": {
@@ -218,12 +216,12 @@ Need to update this with updated APIM links when available
             "text": "BROOKS"
           },
           "Nationality": {
-            "type": "country",
-            "valueCountry": "USA",
+            "type": "countryRegion",
+            "valueCountryRegion": "USA",
             "text": "USA"
           },
           "Sex": {
-            "type": "gender",
+            "type": "string",
             "valueGender": "F",
             "text": "F"
           },

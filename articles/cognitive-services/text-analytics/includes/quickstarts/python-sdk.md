@@ -3,20 +3,20 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/19/2021
+ms.date: 06/11/2021
 ms.author: aahi
-ms.openlocfilehash: 42716c4e2c4aa2e76242034b493f4181632f0fe9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b94aaff50547830c796e3461a55126b3d54d905a
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110163188"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112083838"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-[v3.1 参考文档](/python/api/azure-ai-textanalytics/azure.ai.textanalytics) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [v3.1 包 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3.1 参考文档](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [v3.1 包 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/5.1.0b7/) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -42,7 +42,7 @@ ms.locfileid: "110163188"
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
 ```console
-pip install azure-ai-textanalytics --pre
+pip install azure-ai-textanalytics==5.1.0b7
 ```
 
 > [!TIP]
@@ -229,7 +229,62 @@ Neutral=0.77
 Negative=0.02
 ```
 
+
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+创建一个名为 `sentiment_analysis_example()` 的新函数，该函数采用客户端作为参数，然后调用 `analyze_sentiment()` 函数。 返回的响应对象将包含整个输入文档的情绪标签和分数，以及每个句子的情绪分析。
+
+
+```python
+def sentiment_analysis_example(client):
+
+    documents = ["I had the best day of my life. I wish you were there with me."]
+    response = client.analyze_sentiment(documents = documents)[0]
+    print("Document Sentiment: {}".format(response.sentiment))
+    print("Overall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} \n".format(
+        response.confidence_scores.positive,
+        response.confidence_scores.neutral,
+        response.confidence_scores.negative,
+    ))
+    for idx, sentence in enumerate(response.sentences):
+        print("Sentence: {}".format(sentence.text))
+        print("Sentence {} sentiment: {}".format(idx+1, sentence.sentiment))
+        print("Sentence score:\nPositive={0:.2f}\nNeutral={1:.2f}\nNegative={2:.2f}\n".format(
+            sentence.confidence_scores.positive,
+            sentence.confidence_scores.neutral,
+            sentence.confidence_scores.negative,
+        ))
+          
+sentiment_analysis_example(client)
+```
+
+### <a name="output"></a>输出
+
+```console
+Document Sentiment: positive
+Overall scores: positive=1.00; neutral=0.00; negative=0.00 
+
+Sentence: I had the best day of my life.
+Sentence 1 sentiment: positive
+Sentence score:
+Positive=1.00
+Neutral=0.00
+Negative=0.00
+
+Sentence: I wish you were there with me.
+Sentence 2 sentiment: neutral
+Sentence score:
+Positive=0.21
+Neutral=0.77
+Negative=0.02
+```
+
+---
+
 ## <a name="opinion-mining"></a>观点挖掘
+
+# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+
 
 若要使用观点挖掘进行情绪分析，请创建一个名为 `sentiment_analysis_with_opinion_mining_example()` 的新函数（采用客户端作为参数），然后使用选项标志 `show_opinion_mining=True` 调用 `analyze_sentiment()` 函数。 返回的响应对象不仅包含整个输入文档的情绪标签和分数以及每个句子的情绪分析，还包含角度和观点级情绪分析。
 
@@ -336,54 +391,9 @@ Press any key to continue . . .
 
 ```
 
-# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+# <a name="version-30-preview"></a>[版本 3.0 预览](#tab/version-3)
 
-创建一个名为 `sentiment_analysis_example()` 的新函数，该函数采用客户端作为参数，然后调用 `analyze_sentiment()` 函数。 返回的响应对象将包含整个输入文档的情绪标签和分数，以及每个句子的情绪分析。
-
-
-```python
-def sentiment_analysis_example(client):
-
-    documents = ["I had the best day of my life. I wish you were there with me."]
-    response = client.analyze_sentiment(documents = documents)[0]
-    print("Document Sentiment: {}".format(response.sentiment))
-    print("Overall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} \n".format(
-        response.confidence_scores.positive,
-        response.confidence_scores.neutral,
-        response.confidence_scores.negative,
-    ))
-    for idx, sentence in enumerate(response.sentences):
-        print("Sentence: {}".format(sentence.text))
-        print("Sentence {} sentiment: {}".format(idx+1, sentence.sentiment))
-        print("Sentence score:\nPositive={0:.2f}\nNeutral={1:.2f}\nNegative={2:.2f}\n".format(
-            sentence.confidence_scores.positive,
-            sentence.confidence_scores.neutral,
-            sentence.confidence_scores.negative,
-        ))
-          
-sentiment_analysis_example(client)
-```
-
-### <a name="output"></a>输出
-
-```console
-Document Sentiment: positive
-Overall scores: positive=1.00; neutral=0.00; negative=0.00 
-
-Sentence: I had the best day of my life.
-Sentence 1 sentiment: positive
-Sentence score:
-Positive=1.00
-Neutral=0.00
-Negative=0.00
-
-Sentence: I wish you were there with me.
-Sentence 2 sentiment: neutral
-Sentence score:
-Positive=0.21
-Neutral=0.77
-Negative=0.02
-```
+此功能在版本 3.0 中不可用。
 
 ---
 
@@ -486,7 +496,88 @@ Named Entities:
         Confidence Score:        0.8    Length:          9      Offset:          34
 ```
 
-### <a name="entity-linking"></a>实体链接
+### <a name="personally-identifiable-information-recognition"></a>个人身份信息识别
+
+创建一个名为 `pii_recognition_example` 的新函数，该函数采用客户端作为参数，然后调用 `recognize_pii_entities()` 函数并循环访问结果。 如果成功，则返回的响应对象将在 `entity` 中包含检测到的实体列表，否则将包含 `error`。 对于检测到的每个实体，输出其类别和子类别（如果存在）。
+
+```python
+def pii_recognition_example(client):
+    documents = [
+        "The employee's SSN is 859-98-0987.",
+        "The employee's phone number is 555-555-5555."
+    ]
+    response = client.recognize_pii_entities(documents, language="en")
+    result = [doc for doc in response if not doc.is_error]
+    for doc in result:
+        print("Redacted Text: {}".format(doc.redacted_text))
+        for entity in doc.entities:
+            print("Entity: {}".format(entity.text))
+            print("\tCategory: {}".format(entity.category))
+            print("\tConfidence Score: {}".format(entity.confidence_score))
+            print("\tOffset: {}".format(entity.offset))
+            print("\tLength: {}".format(entity.length))
+pii_recognition_example(client)
+```
+
+### <a name="output"></a>输出
+
+```console
+Redacted Text: The employee's SSN is ***********.
+Entity: 859-98-0987
+        Category: U.S. Social Security Number (SSN)
+        Confidence Score: 0.65
+        Offset: 22
+        Length: 11
+Redacted Text: The employee's phone number is ************.
+Entity: 555-555-5555
+        Category: Phone Number
+        Confidence Score: 0.8
+        Offset: 31
+        Length: 12
+```
+
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+创建一个名为 `entity_recognition_example` 的新函数，该函数采用客户端作为参数，然后调用 `recognize_entities()` 函数并循环访问结果。 如果成功，则返回的响应对象将在 `entity` 中包含检测到的实体列表，否则将包含 `error`。 对于检测到的每个实体，输出其类别和子类别（如果存在）。
+
+```python
+def entity_recognition_example(client):
+
+    try:
+        documents = ["I had a wonderful trip to Seattle last week."]
+        result = client.recognize_entities(documents = documents)[0]
+
+        print("Named Entities:\n")
+        for entity in result.entities:
+            print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
+                    "\n\tConfidence Score: \t", round(entity.confidence_score, 2), "\n")
+
+    except Exception as err:
+        print("Encountered exception. {}".format(err))
+entity_recognition_example(client)
+```
+
+### <a name="output"></a>输出
+
+```console
+Named Entities:
+
+        Text:    trip   Category:        Event  SubCategory:     None
+        Confidence Score:        0.61
+
+        Text:    Seattle        Category:        Location       SubCategory:     GPE
+        Confidence Score:        0.82
+
+        Text:    last week      Category:        DateTime       SubCategory:     DateRange
+        Confidence Score:        0.8
+```
+
+
+---
+
+## <a name="entity-linking"></a>实体链接
+
+# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
 创建一个名为 `entity_linking_example()` 的新函数，该函数采用客户端作为参数，然后调用 `recognize_linked_entities()` 函数并循环访问结果。 如果成功，则返回的响应对象将在 `entities` 中包含检测到的实体列表，否则将包含 `error`。 由于链接实体是唯一标识的，因此同一实体的实例将以分组形式出现在 `entity` 对象下，显示为 `match` 对象的列表。
 
@@ -574,87 +665,7 @@ Linked Entities:
                 Length: 11
 ```
 
-### <a name="personally-identifiable-information-recognition"></a>个人身份信息识别
-
-创建一个名为 `pii_recognition_example` 的新函数，该函数采用客户端作为参数，然后调用 `recognize_pii_entities()` 函数并循环访问结果。 如果成功，则返回的响应对象将在 `entity` 中包含检测到的实体列表，否则将包含 `error`。 对于检测到的每个实体，输出其类别和子类别（如果存在）。
-
-```python
-def pii_recognition_example(client):
-    documents = [
-        "The employee's SSN is 859-98-0987.",
-        "The employee's phone number is 555-555-5555."
-    ]
-    response = client.recognize_pii_entities(documents, language="en")
-    result = [doc for doc in response if not doc.is_error]
-    for doc in result:
-        print("Redacted Text: {}".format(doc.redacted_text))
-        for entity in doc.entities:
-            print("Entity: {}".format(entity.text))
-            print("\tCategory: {}".format(entity.category))
-            print("\tConfidence Score: {}".format(entity.confidence_score))
-            print("\tOffset: {}".format(entity.offset))
-            print("\tLength: {}".format(entity.length))
-pii_recognition_example(client)
-```
-
-### <a name="output"></a>输出
-
-```console
-Redacted Text: The employee's SSN is ***********.
-Entity: 859-98-0987
-        Category: U.S. Social Security Number (SSN)
-        Confidence Score: 0.65
-        Offset: 22
-        Length: 11
-Redacted Text: The employee's phone number is ************.
-Entity: 555-555-5555
-        Category: Phone Number
-        Confidence Score: 0.8
-        Offset: 31
-        Length: 12
-```
-
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-> [!NOTE]
-> 在版本 `3.0` 中： 
-> * 实体链接是一个独立于 NER 的请求。
-
-创建一个名为 `entity_recognition_example` 的新函数，该函数采用客户端作为参数，然后调用 `recognize_entities()` 函数并循环访问结果。 如果成功，则返回的响应对象将在 `entity` 中包含检测到的实体列表，否则将包含 `error`。 对于检测到的每个实体，输出其类别和子类别（如果存在）。
-
-```python
-def entity_recognition_example(client):
-
-    try:
-        documents = ["I had a wonderful trip to Seattle last week."]
-        result = client.recognize_entities(documents = documents)[0]
-
-        print("Named Entities:\n")
-        for entity in result.entities:
-            print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
-                    "\n\tConfidence Score: \t", round(entity.confidence_score, 2), "\n")
-
-    except Exception as err:
-        print("Encountered exception. {}".format(err))
-entity_recognition_example(client)
-```
-
-### <a name="output"></a>输出
-
-```console
-Named Entities:
-
-        Text:    trip   Category:        Event  SubCategory:     None
-        Confidence Score:        0.61
-
-        Text:    Seattle        Category:        Location       SubCategory:     GPE
-        Confidence Score:        0.82
-
-        Text:    last week      Category:        DateTime       SubCategory:     DateRange
-        Confidence Score:        0.8
-```
-
-### <a name="entity-linking"></a>实体链接
 
 创建一个名为 `entity_linking_example()` 的新函数，该函数采用客户端作为参数，然后调用 `recognize_linked_entities()` 函数并循环访问结果。 如果成功，则返回的响应对象将在 `entities` 中包含检测到的实体列表，否则将包含 `error`。 由于链接实体是唯一标识的，因此同一实体的实例将以分组形式出现在 `entity` 对象下，显示为 `match` 对象的列表。
 
@@ -726,7 +737,7 @@ Linked Entities:
 
 ---
 
-### <a name="key-phrase-extraction"></a>关键短语提取
+## <a name="key-phrase-extraction"></a>关键短语提取
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
@@ -799,13 +810,15 @@ key_phrase_extraction_example(client)
 
 ---
 
-## <a name="use-the-api-asynchronously-with-the-batch-analyze-operation"></a>使用批量分析操作异步使用 API
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>使用“分析”操作异步使用 API
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
+可以使用“分析”操作执行异步批处理请求实现以下目的：NER、关键短语提取、情绪分析和 PII 检测。 下面的示例演示了有关一个操作的基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_actions.py)找到更高级的示例。
+
 [!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
-创建一个名为 `analyze_batch_example()` 的新函数，该函数采用客户端作为参数，然后调用 `begin_analyze_batch_actions()` 函数。 结果将是一个长期操作，将轮询该操作以获得结果。
+创建一个名为 `analyze_batch_example()` 的新函数，该函数采用客户端作为参数，然后调用 `begin_analyze_actions()` 函数。 结果将是一个长期操作，将轮询该操作以获得结果。
 
 ```python
 from azure.ai.textanalytics import (
@@ -817,7 +830,7 @@ def analyze_batch_example(client):
             "Microsoft was founded by Bill Gates and Paul Allen."
         ]
 
-        poller = client.begin_analyze_batch_actions(
+        poller = client.begin_analyze_actions(
             documents,
             display_name="Sample Text Analysis",
             actions=[RecognizeEntitiesAction()]
@@ -842,7 +855,7 @@ def analyze_batch_example(client):
 analyze_batch_example(client)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>输出
 
 ```console
 Results of Entities Recognition task:
@@ -861,8 +874,6 @@ Entity: Paul Allen
 ...Offset: 40
 ------------------------------------------
 ```
-
-你还可以使用批量分析操作检测 PII 和执行关键短语提取。 请参阅 GitHub 上的[批量分析示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_actions.py)。
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 

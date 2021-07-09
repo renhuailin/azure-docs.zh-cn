@@ -155,6 +155,8 @@
               href: sizes-compute.md
             - name: Fsv2 系列
               href: fsv2-series.md
+            - name: FX 系列
+              href: fx-series.md
         - name: 内存优化
           items:
             - name: 概述
@@ -206,6 +208,8 @@
               href: ncv3-series.md
             - name: NCasT4_v3 系列
               href: nct4-v3-series.md
+            - name: NDasrA100_v4 系列
+              href: nda100-v4-series.md
             - name: ND 系列
               href: nd-series.md
             - name: NDv2 系列
@@ -790,13 +794,13 @@
         - name: 资源管理器模板
           items:
             - name: 创建共享映像库
-              href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+              href: 'https://azure.microsoft.com/resources/templates/sig-create/'
             - name: 在共享映像库中创建映像定义
-              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+              href: 'https://azure.microsoft.com/resources/templates/sig-image-definition-create/'
             - name: 在共享映像库中创建映像版本
-              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+              href: 'https://azure.microsoft.com/resources/templates/sig-image-version-create/'
             - name: 从映像版本创建 VM
-              href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+              href: 'https://azure.microsoft.com/resources/templates/vm-from-sig/'
         - name: Ansible
           href: /azure/developer/ansible/vm-configure-from-azure-shared-image-gallery?tabs=ansible
         - name: 排查共享映像问题
@@ -809,7 +813,7 @@
           href: managed-disk-from-image-version.md
         - name: 购买计划信息
           href: marketplace-images.md
-    - name: 映像生成器（预览版）
+    - name: 映像生成器
       items:
         - name: 概述
           displayName: 'Image builder, images, building'
@@ -965,6 +969,8 @@
       href: disks-shared-enable.md
     - name: 加密
       items:
+        - name: 磁盘加密概述
+          href: disk-encryption-overview.md
         - name: 服务器端加密
           items:
             - name: 服务器端加密概述
@@ -1039,7 +1045,9 @@
                 - name: 磁盘加密故障排除
                   href: ./linux/disk-encryption-troubleshooting.md
                 - name: 磁盘加密常见问题解答
-                  href: ./linux/disk-encryption-faq.md
+                  href: ./linux/disk-encryption-faq.yml
+                - name: 从以前的版本升级到当前版本
+                  href: ./linux/disk-encryption-upgrade.md
                 - name: 磁盘加密 - 历史版本
                   items:
                     - name: 概述
@@ -1070,7 +1078,7 @@
                 - name: 磁盘加密故障排除
                   href: ./windows/disk-encryption-troubleshooting.md
                 - name: 磁盘加密常见问题解答
-                  href: ./windows/disk-encryption-faq.md
+                  href: ./windows/disk-encryption-faq.yml
                 - name: 磁盘加密 - 历史版本
                   items:
                     - name: 概述
@@ -1258,7 +1266,7 @@
               displayName: Find unattached disks
               href: disks-find-unattached-portal.md
         - name: 磁盘常见问题解答
-          href: faq-for-disks.md
+          href: faq-for-disks.yml
     - name: 代码示例
       items:
         - name: CLI
@@ -1453,12 +1461,18 @@
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
         - name: OS 映像更新的维护控制
           items:
-            - name: 概览（预览）
+            - name: 概述
               displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
               href: virtual-machine-scale-sets-maintenance-control.md
-            - name: PowerShell（预览版）
+            - name: PowerShell
               displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
               href: virtual-machine-scale-sets-maintenance-control-powershell.md
+            - name: CLI
+              displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
+              href: virtual-machine-scale-sets-maintenance-control-cli.md
+            - name: 门户
+              displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
+              href: virtual-machine-scale-sets-maintenance-control-portal.md
     - name: 自动 VM 来宾修补（预览版）
       items:
         - name: 概述
@@ -1827,6 +1841,6 @@
     - name: 常见问题解答
       items:
         - name: Linux
-          href: ./linux/faq.md
+          href: ./linux/faq.yml
         - name: Windows
-          href: ./windows/faq.md
+          href: ./windows/faq.yml

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a278b6e725488d6107e6b0819e002d1dafe4774
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 7c3e5adfbadf7188b8fccf97b277f4c2377cd552
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591657"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964057"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>教程：接口和自定义模型
 
@@ -77,13 +77,17 @@ ms.locfileid: "99591657"
 1. 将 AppMenu 预制项拖到场景中。
 1. 你可能会看到“TMP 导入工具”对话框，因为这是第一次在场景中加入“文本网格 Pro”资产。 按照“导入 TMP 基本要素”的提示操作。 然后关闭导入工具对话框，这里不需要示例和其他功能。
 1. AppMenu 配置为自动挂钩，并提供“同意连接到会话”的模式，以便能够删除之前放置的旁路。 在 RemoteRenderingCoordinator GameObject 上，按“请求授权时”事件上的“-”按钮，删除先前实现的授权旁路 。
- ![删除旁路](./media/remove-bypass-event.png)。
+
+    ![删除旁路](./media/remove-bypass-event.png).
+
 1. 在 Unity 编辑器中按“播放”来测试视图控制器。
 1. 在编辑器中，已配置了 MRTK，现在可以使用 WASD 键更改视图的位置，然后按住鼠标右键同时移动鼠标来更改视图方向。 尝试在各方向上稍微移动场景，感受控制的感觉。
 1. 在设备上，可以通过举起手掌来召唤 AppMenu，在 Unity 编辑器中，可以使用热键“M”来实现此目的。
 1. 如果看不到菜单，可按“M”键召唤菜单。 菜单将位于相机附近，便于交互。
 1. 授权现在显示为 AppMenu右侧的请求，从现在开始，使用授权应用管理远程渲染会话。
- ![UI 授权](./media/authorize-request-ui.png)
+
+    ![UI 授权](./media/authorize-request-ui.png)
+
 1. 让 Unity 停止播放，以继续学习本教程。
 
 ## <a name="manage-model-state"></a>管理模型状态
@@ -257,15 +261,26 @@ ms.locfileid: "99591657"
 
 ## <a name="load-the-test-model"></a>加载测试模型
 
-现在通过再次加载测试模型来测试新脚本。 我们将创建一个包含脚本的游戏对象，并将其作为测试模型的父级。
+现在通过再次加载测试模型来测试新脚本。 我们将添加一个包含脚本的游戏对象，并将其作为测试模型的父级。 还会创建一个包含该模型的虚拟阶段。 使用 [WorldAnchor](/windows/mixed-reality/develop/unity/spatial-anchors-in-unity?tabs=worldanchor)，相对于现实世界，该阶段将保持不变。 我们将使用固定的阶段，这样模型本身在以后仍可以移动。
 
-1. 在场景中创建新的空游戏对象并将其命名为 TestModel。
+1. 在场景中创建新的空游戏对象并将其命名为 ModelStage。
+1. 向 ModelStage 添加 WorldAnchor 组件
+
+    ![添加 WorldAnchor 组件](./media/add-world-anchor-component.png)
+
+1. 创建一个新的空游戏对象作为 ModelStage 的子级，并将其命名为 TestModel。
 1. 将 RemoteRenderedModel 脚本添加到 TestModel。
-![添加 RemoteRenderedModel 组件](./media/add-remote-rendered-model-script.png)
+
+    ![添加 RemoteRenderedModel 组件](./media/add-remote-rendered-model-script.png)
+
 1. 分别用“TestModel”和“builtin://Engine”填写 `Model Display Name` 和 `Model Path` 。
-![指定模型详细信息](./media/add-model-script.png)
+
+    ![指定模型详细信息](./media/add-model-script.png)
+
 1. 将 TestModel 对象放置在相机前面，位置为 x = 0, y = 0, z = 3 。
-![位置对象](./media/test-model-position.png)
+
+    ![位置对象](./media/test-model-position.png)
+
 1. 确保启用 AutomaticallyLoad。
 1. 在 Unity 编辑器中按“播放”来测试应用程序。
 1. 单击“连接”按钮授予权限，允许应用创建会话，然后它会连接到会话并自动加载模型。
@@ -286,7 +301,9 @@ ms.locfileid: "99591657"
 
 1. 在场景中创建新的空 GameObject，并将其命名为类似于自定义模型。
 1. 将 RemoteRenderedModel 脚本添加到新创建的 GameObject。
- ![添加 RemoteRenderedModel 组件](./media/add-remote-rendered-model-script.png)
+
+    ![添加 RemoteRenderedModel 组件](./media/add-remote-rendered-model-script.png)
+
 1. 使用适当的模型名称填充 `Model Display Name`。
 1. 使用在上面的引入步骤中创建的模型共享访问签名 (SAS) URI 填充 `Model Path`。
 1. 将 GameObject 放置在相机前面，位置为 x = 0, y = 0, z = 3。

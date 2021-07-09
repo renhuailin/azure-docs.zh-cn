@@ -12,7 +12,7 @@
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: 备忘单
       href: cheat-sheet.md
-    - name: 最佳做法
+    - name: 最佳实践
       href: ../sql/best-practices-dedicated-sql-pool.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json
     - name: 容量限制
       href: sql-data-warehouse-service-capacity-limits.md
@@ -134,7 +134,7 @@
       items:
         - name: 概述
           href: design-elt-data-loading.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: guidance-for-loading-data.md
         - name: 列存储压缩
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
@@ -142,7 +142,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-develop.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: sql-data-warehouse-best-practices-development.md
         - name: JSON
           items:
@@ -368,6 +368,8 @@
           href: sql-data-warehouse-restore-from-geo-backup.md
         - name: 禁用异地备份
           href: disable-geo-backup.md
+        - name: 配置单一区域驻留
+          href: single-region-residency.md
     - name: 集成
       items:
         - name: 使用机器学习

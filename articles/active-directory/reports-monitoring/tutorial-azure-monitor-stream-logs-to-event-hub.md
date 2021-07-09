@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0443dcb2bf3bd58f2474c507c9f9594fb6d8a7f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f7a35faa75af5a6205609e7afd40225d960d132
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89469178"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964616"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心
 
@@ -77,7 +77,7 @@ ms.locfileid: "89469178"
 
 * **配置支持的 SIEM 工具**。 若要从事件中心读取数据，大多数工具需要事件中心连接字符串和对 Azure 订阅的某些权限。 带有 Azure Monitor 集成的第三方工具包括但不限于：
     
-    * **ArcSight**：若要详细了解如何将 Azure AD 日志与 Splunk 集成，请参阅 [使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成](howto-integrate-activity-logs-with-arcsight.md)。
+    * ArcSight：若要详细了解如何将 Azure AD 日志与 ArcSight 集成，请参阅[使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成](howto-integrate-activity-logs-with-arcsight.md)。
     
     * **Splunk**：若要详细了解如何将 Azure AD 日志与 Splunk 集成，请参阅 [使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成](./howto-integrate-activity-logs-with-splunk.md)。
     
@@ -93,5 +93,5 @@ ms.locfileid: "89469178"
 * [使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成](howto-integrate-activity-logs-with-arcsight.md)
 * [使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成](./howto-integrate-activity-logs-with-splunk.md)
 * [使用 Azure Monitor 将 Azure AD 日志与 SumoLogic 集成](howto-integrate-activity-logs-with-sumologic.md)
-* [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
+* [解释 Azure Monitor 中的审核日志架构](./overview-reports.md)
 * [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)

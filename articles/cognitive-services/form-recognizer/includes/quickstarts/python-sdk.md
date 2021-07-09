@@ -4,23 +4,25 @@ description: 使用适用于 Python 的表单识别器客户端库创建一个�
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 0210ef3d82997887cd306098d4db7934443cd300
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7bee493f86a215f4c90624e0c4dcded43e83b827
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374144"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894276"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
 
 > [!IMPORTANT]
+>
+> * 本快速入门使用 SDK 版本 3.1.0 并针对 API 版本 2.1。
 >
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 请参阅下面的参考文档。
 
@@ -42,25 +44,9 @@ ms.locfileid: "110374144"
 
 安装 Python 后，可以使用以下内容安装最新版本的表单识别器客户端库：
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
 ```console
-pip install azure-ai-formrecognizer --pre
+pip install azure-ai-formrecognizer 
 ```
-
-> [!NOTE]
-> 表单识别器 3.1.0b4 是最新的 SDK 预览版，反映了 API 版本 2.1 preview.3。
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-```console
-pip install azure-ai-formrecognizer
-```
-
-> [!NOTE]
-> 表单识别器 3.0.0 SDK 反映了 API v2.0
-
----
 
 ### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
@@ -69,7 +55,7 @@ pip install azure-ai-formrecognizer
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_imports)]
 
 > [!TIP]
-> 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py) 上找到它，其中包含此快速入门中的代码示例。
+> 如果你想查看包含此快速入门中的代码示例的整个文件，可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py) 上找到它。
 
 为资源的 Azure 终结点和密钥创建变量。
 
@@ -99,34 +85,6 @@ pip install azure-ai-formrecognizer
 > [!NOTE]
 > 还可以使用图形用户界面（例如[表单识别器标记工具](../../label-tool.md)）来训练模型。
 
-## <a name="code-examples"></a>代码示例
-
-这些代码片段演示如何使用适用于 Python 的表单识别器客户端库执行以下任务：
-<!-- markdownlint-disable MD001 -->
-<!-- markdownlint-disable MD024 -->
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
-* [对客户端进行身份验证](#authenticate-the-client)
-* [分析布局](#analyze-layout)
-* [分析回执](#analyze-receipts)
-* [分析名片](#analyze-business-cards)
-* [分析发票](#analyze-invoices)
-* [分析标识文档](#analyze-identity-documents)
-* [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
-* [训练自定义模型](#train-a-custom-model)
-* [管理自定义模型](#manage-custom-models)
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-* [对客户端进行身份验证](#authenticate-the-client)
-* [分析布局](#analyze-layout)
-* [分析回执](#analyze-receipts)
-* [训练自定义模型](#train-a-custom-model)
-* [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
-* [管理自定义模型](#manage-custom-models)
-
----
-
 ## <a name="authenticate-the-client"></a>验证客户端
 
 此处，你将使用前面定义的订阅变量对两个客户端对象进行身份验证。 你将使用 AzureKeyCredential 对象，因此，如果需要，你可以更新 API 密钥而无需创建新的客户端对象。
@@ -155,7 +113,7 @@ pip install azure-ai-formrecognizer
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
 > [!TIP]
-> 还可从本地映像中获取内容。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_content`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+> 还可以使用 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法（例如 `begin_recognize_content`）从本地图像获取内容。 
 
 ### <a name="output"></a>输出
 
@@ -187,7 +145,7 @@ Confidence score: 1.0
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
 > [!TIP]
-> 你还可以分析本地收据图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_receipts`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
+> 还可以使用 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法（例如 `begin_recognize_receipts`）分析本地收据图像。 
 
 ### <a name="output"></a>输出
 
@@ -213,63 +171,36 @@ Total: 1203.39 has confidence 0.774
 
 ## <a name="analyze-business-cards"></a>分析名片
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
-本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。
+本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。 
 
 若要分析位于某个 URL 的名片，请使用 `begin_recognize_business_cards_from_url` 方法。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
 
 > [!TIP]
-> 你还可以分析本地名片图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_business_cards`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
----
+ > 还可以使用 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法（例如 `begin_recognize_business_cards`）分析本地名片图像。 
 
 ## <a name="analyze-invoices"></a>分析发票
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
-本部分演示如何使用预先训练的模型分析和提取销售发票中的常见字段。 有关发票分析的详细信息，请参阅[发票概念指南](../../concept-invoices.md)。
+本部分演示如何使用预先训练的模型分析和提取销售发票中的常见字段。 有关发票分析的详细信息，请参阅[发票概念指南](../../concept-invoices.md)。 
 
 若要分析位于某个 URL 的发票，请使用 `begin_recognize_invoices_from_url` 方法。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> 你还可以分析本地发票图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法，例如 `begin_recognize_invoices`。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
----
+> 还可以使用 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) 方法（例如 `begin_recognize_invoices`）分析本地发票图像。 
 
 ## <a name="analyze-identity-documents"></a>分析标识文档
 
-#### <a name="v21"></a>[v2.1](#tab/2-1)
-
-本部分演示如何使用表单识别器预生成的 ID 模型，分析和提取政府颁发的标识文档（全球护照和美国驾照）中的关键信息。 有关发票分析的详细信息，请参阅[预生成的标识模型概念指南](../../concept-identification-cards.md)。
+本部分演示如何使用表单识别器预生成的 ID 模型，分析和提取政府颁发的标识文档（全球护照和美国驾照）中的关键信息。 有关标识文档分析的详细信息，请参阅[预生成的标识模型概念指南](../../concept-identification-cards.md)。
 
 若要分析位于某个 URL 的标识文档，请使用 `begin_recognize_id_documents_from_url` 方法。
 
-:::code language="python" source="~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py" id="snippet_id":::
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_id)]
 
 > [!TIP]
-> 你还可以分析标识文档图像。 请参阅 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true#methods) 方法，例如 `begin_recognize_id_documents`。 另请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的示例代码，了解涉及本地图像的方案。
-
-#### <a name="v20"></a>[v2.0](#tab/2-0)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
----
+ > 还可以使用 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true#methods) 方法（例如 `begin_recognize_identity_documents`）分析标识文档图像。 
 
 ## <a name="train-a-custom-model"></a>训练自定义模型
 
@@ -471,7 +402,7 @@ python quickstart-file.py
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答

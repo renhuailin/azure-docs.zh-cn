@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 2c98546d20e9f977a605ccbac21010aa9b1dbadc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 991268aff1b74f8e1990c106fa40b3f3fadd4145
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232488"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769266"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音识别的数据
 
@@ -49,13 +49,14 @@ ms.locfileid: "103232488"
 | 数据类型 | 用于测试 | 建议的数量 | 用于训练 | 建议的数量 |
 |-----------|-----------------|----------|-------------------|----------|
 | [音频：](#audio-data-for-testing) | 是<br>用于视觉检测 | 5 个以上的音频文件 | 否 | 空值 |
-| [音频和人为标记的听录内容](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用于评估准确度 | 0.5-5 小时的音频 | 是 | 1-20 小时的音频 |
-| [相关文本](#related-text-data-for-training) | 否 | 不适用 | 是 | 1-200 MB 的相关文本 |
+| [音频和人为标记的听录内容](#audio-and-human-labeled-transcript-data) | 是<br>用于评估准确度 | 0.5-5 小时的音频 | 是 | 1-20 小时的音频 |
+| [纯文本](#plain-text-data-for-training) | 否 | 不适用 | 是 | 1-200 MB 的相关文本 |
+| [发音](#pronunciation-data-for-training) | 否 | 不适用 | 是 | 1 KB - 1 MB 的发音文本 |
 
 文件应按类型分组成数据集，并作为 .zip 文件上传。 每个数据集只能包含一种数据类型。
 
 > [!TIP]
-> 训练新模型时，请从[相关文本](#related-text-data-for-training)开始。 这些数据将改善对特殊术语和短语的识别。 使用文本进行训练比使用音频进行训练的速度快得多（分钟与天的对比）。
+> 训练新模型时，请从[文本](#plain-text-data-for-training)开始。 这些数据将改善对特殊术语和短语的识别。 使用文本进行训练比使用音频进行训练的速度快得多（分钟与天的对比）。
 
 > [!NOTE]
 > 并非所有基本模型都支持通过音频训练。 如果基本模型不支持该训练，语音服务将仅使用脚本中的文本，而忽略音频。 有关支持使用音频数据进行训练的基础模型的列表，请参阅[语言支持](language-support.md#speech-to-text)。 即使基础模型支持使用音频数据进行训练，该服务也可能只使用部分音频。 它仍将使用所有脚本。
@@ -68,48 +69,19 @@ ms.locfileid: "103232488"
 
 ## <a name="upload-data"></a>上传数据
 
-若要上传数据，请导航到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a>。 在门户中，单击“上传数据”启动向导并创建第一个数据集。 在上传数据之前，系统会要求你为数据集选择语音数据类型。
+若要上传数据，请导航到<a href="https://speech.microsoft.com/customspeech" target="_blank">自定义语音识别门户</a>。 创建项目后，导航到“语音数据集”选项卡，然后单击“上传数据”以启动向导并创建第一个数据集 。 在上传数据之前，系统会要求你为数据集选择语音数据类型。
 
-![屏幕截图，突出显示了语音门户中的“音频上传”选项。](./media/custom-speech/custom-speech-select-audio.png)
-
-上传的每个数据集必须符合所选数据类型的要求。 必须先将数据设置为正确格式再上传它。 格式正确的数据可确保自定义语音识别服务对其进行准确处理。 以下部分列出了要求。
+首先需要指定要将数据集用于“训练”还是“测试” 。 还有多种类型的数据可供上传并用于“训练”或“测试” 。 上传的每个数据集必须符合所选数据类型的要求。 必须先将数据设置为正确格式再上传它。 格式正确的数据可确保自定义语音识别服务对其进行准确处理。 以下部分列出了要求。
 
 上传数据集后，可以使用几个选项：
 
-* 可以导航到“测试”选项卡，并直观地查看仅包含音频的数据，或同时包含音频和人为标记的听录内容的数据。
-* 可以导航到“训练”选项卡，并使用音频和人为听录数据或相关文本数据来训练自定义模型。
+* 可以导航到“训练自定义模型”选项卡来训练自定义模型。
+* 可以导航到“测试模型”选项卡，以直观地检查仅含音频数据的质量，或者通过音频 + 人为标记的听录内容来评估准确性。
 
-## <a name="audio-data-for-testing"></a>用于测试的音频数据
 
-音频数据最适合用于测试 Microsoft 基线语音转文本模型或自定义模型的准确度。 请记住，音频数据用于检查语音的准确度，反映特定模型的性能。 若要量化模型的准确度，请使用[音频和人为标记的听录数据](#audio--human-labeled-transcript-data-for-testingtraining)。
+## <a name="audio-and-human-labeled-transcript-data"></a>音频 + 人为标记的听录内容
 
-参考下表来确保正确设置用于自定义语音识别的音频文件的格式：
-
-| 属性                 | 值                 |
-|--------------------------|-----------------------|
-| 文件格式              | RIFF (WAV)            |
-| 采样速率              | 8,000 Hz 或 16,000 Hz |
-| 声道                 | 1（单音）              |
-| 每个音频的最大长度 | 2 小时               |
-| 示例格式            | PCM，16 位           |
-| 存档格式           | .zip                  |
-| 最大存档大小     | 2 GB                  |
-
-[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
-
-> [!TIP]
-> 上传训练和测试数据时，.zip 文件大小不能超过 2 GB。 如果需要更多数据来进行训练，请将其划分为多个 .zip 文件并分别上传。 稍后，可选择从多个数据集进行训练。 但是，只能从单个数据集进行测试。
-
-使用 <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX</a> 来验证音频属性，或将现有音频转换为适当的格式。 下面这些示例演示如何通过 SoX 命令行完成其中的每个活动：
-
-| 活动 | 说明 | SoX 命令 |
-|----------|-------------|-------------|
-| 检查音频格式 | 使用此命令检查<br>音频文件格式。 | `sox --i <filename>` |
-| 转换音频格式 | 使用此命令<br>将音频文件转换为单声道 16 位 16 KHz。 | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
-
-## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>用于测试/训练的音频和人为标记的听录数据
-
-若要在处理音频文件时测量 Microsoft 语音转文本的准确度，必须提供人为标记的听录内容（逐字对照）进行比较。 尽管人为标记的听录往往很耗时，但有必要评估准确度并根据用例训练模型。 请记住，识别能力的改善程度以提供的数据质量为界限。 出于此原因，只能上传优质的听录内容，这一点非常重要。
+音频 + 人为标记的听录内容可用于训练和测试目的。 若要从轻微口音、说话风格、背景噪音等方面优化声音，或在处理音频文件时度量 Microsoft 语音转文本的准确性，则必须提供人为标记的听录内容（逐字逐句）进行比较。 尽管人为标记的听录往往很耗时，但有必要评估准确度并根据用例训练模型。 请记住，识别能力的改善程度以提供的数据质量为界限。 出于此原因，只能上传优质的听录内容，这一点非常重要。
 
 音频文件在录音开始和结束时可以保持静音。 如果可能，请在每个示例文件中的语音前后包含至少半秒的静音。 录音音量小或具有干扰性背景噪音的音频没什么用，但不应损害你的自定义模型。 收集音频示例之前，请务必考虑升级麦克风和信号处理硬件。
 
@@ -154,20 +126,11 @@ speech03.wav    the lazy dog was not amused
 
 并非所有基础模型都支持使用音频数据进行训练。 如果基础模型不支持它，则服务将忽略音频，并仅使用听录内容的文本进行训练。 在这种情况下，训练将与使用相关文本进行的训练相同。 有关支持使用音频数据进行训练的基础模型的列表，请参阅[语言支持](language-support.md#speech-to-text)。
 
-## <a name="related-text-data-for-training"></a>用于训练的相关文本数据
+## <a name="plain-text-data-for-training"></a>用于训练的纯文本数据
 
-唯一的产品名称或功能应包含用于训练的相关文本数据。 相关文本有助于确保正确识别。 可以提供两种类型的相关文本数据来改善识别能力：
+在识别产品名称或行业特定的术语时，可以使用域相关句子来提高准确性。 可将句子作为单个文本文件提供。 若要提高准确性，请使用较接近预期口头言语的文本数据。 
 
-| 数据类型 | 这些数据如何改善识别能力 |
-|-----------|------------------------------------|
-| 句子（言语） | 在识别句子上下文中的产品名称或行业特定的词汇时，可以提高准确度。 |
-| 发音 | 改善不常见字词、缩写词或其他未定义发音的单词的发音。 |
-
-可将言语作为单个或多个文本文件提供。 若要提高准确性，请使用较接近预期口头言语的文本数据。 应以单个文本文件的形式提供发音。 所有内容均可打包成单个 zip 文件并上传到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a>。
-
-使用相关文本进行的训练通常在几分钟内完成。
-
-### <a name="guidelines-to-create-a-sentences-file"></a>有关创建句子文件的指导原则
+使用纯文本进行的训练通常在几分钟内完成。
 
 若要使用句子的自定义模型，需要提供示例言语表。 言语不一定要是完整的或者语法正确的，但必须准确反映生产环境中预期的口头输入。 如果想要增大某些字词的权重，可添加包含这些特定字词的多个句子。
 
@@ -187,14 +150,13 @@ speech03.wav    the lazy dog was not amused
 * 请勿使用特殊字符或编码在 `U+00A1` 以后的 UTF-8 字符。
 * 将会拒绝 URI。
 
-### <a name="guidelines-to-create-a-pronunciation-file"></a>有关创建发音文件的指导原则
+## <a name="pronunciation-data-for-training"></a>用于训练的发音数据
 
-如果用户会遇到或使用没有标准发音的不常见字词，你可以提供自定义发音文件来改善识别能力。
-
+如果用户会遇到或使用没有标准发音的不常见字词，你可以提供自定义发音文件来改善识别能力。 
 > [!IMPORTANT]
 > 建议不要使用自定义发音文件来改变常用字的发音。
 
-下面提供了口述言语的示例，以及每个言语的自定义发音：
+应以单个文本文件的形式提供发音。 下面提供了口述言语的示例，以及每个言语的自定义发音：
 
 | 识别/显示的形式 | 口头形式 |
 |--------------|--------------------------|
@@ -219,9 +181,37 @@ speech03.wav    the lazy dog was not amused
 | 每行的发音数目 | 1 |
 | 文件大小上限 | 1 MB（在免费层中为 1 KB） |
 
+## <a name="audio-data-for-testing"></a>用于测试的音频数据
+
+音频数据最适合用于测试 Microsoft 基线语音转文本模型或自定义模型的准确度。 请记住，音频数据用于检查语音的准确度，反映特定模型的性能。 若要量化模型的准确度，请使用[音频和人为标记的听录数据](#audio-and-human-labeled-transcript-data)。
+
+参考下表来确保正确设置用于自定义语音识别的音频文件的格式：
+
+| 属性                 | 值                 |
+|--------------------------|-----------------------|
+| 文件格式              | RIFF (WAV)            |
+| 采样速率              | 8,000 Hz 或 16,000 Hz |
+| 声道                 | 1（单音）              |
+| 每个音频的最大长度 | 2 小时               |
+| 示例格式            | PCM，16 位           |
+| 存档格式           | .zip                  |
+| 最大存档大小     | 2 GB                  |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
+
+> [!TIP]
+> 上传训练和测试数据时，.zip 文件大小不能超过 2 GB。 如果需要更多数据来进行训练，请将其划分为多个 .zip 文件并分别上传。 稍后，可选择从多个数据集进行训练。 但是，只能从单个数据集进行测试。
+
+使用 <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX</a> 来验证音频属性，或将现有音频转换为适当的格式。 下面这些示例演示如何通过 SoX 命令行完成其中的每个活动：
+
+| 活动 | 说明 | SoX 命令 |
+|----------|-------------|-------------|
+| 检查音频格式 | 使用此命令检查<br>音频文件格式。 | `sox --i <filename>` |
+| 转换音频格式 | 使用此命令<br>将音频文件转换为单声道 16 位 16 KHz。 | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
+
 ## <a name="next-steps"></a>后续步骤
 
 * [检查数据](how-to-custom-speech-inspect-data.md)
 * [评估数据](how-to-custom-speech-evaluate-data.md)
-* [训练模型](how-to-custom-speech-train-model.md)
+* [训练自定义模型](how-to-custom-speech-train-model.md)
 * [部署模型](./how-to-custom-speech-train-model.md)

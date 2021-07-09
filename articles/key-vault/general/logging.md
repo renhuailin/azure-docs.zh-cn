@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5847fcb2cf553e1fcc744877e52dbbdf1f24d992
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: f6d467b2480ded274699e7274edcf745eaa4980a
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751825"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748474"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
 
@@ -58,7 +58,7 @@ ms.locfileid: "107751825"
 
 下表列出了字段的名称和描述：
 
-| 字段名 | 说明 |
+| 字段名称 | 说明 |
 | --- | --- |
 | **time** |日期和时间 (UTC)。 |
 | **resourceId** |Azure 资源管理器资源 ID。 对于密钥保管库日志而言，这始终是密钥保管库资源 ID。 |
@@ -176,8 +176,8 @@ ms.locfileid: "107751825"
 | **CertificateEnroll** |注册证书 |
 | **CertificateRenew** |续订证书 |
 | **CertificatePendingGet** |检索挂起的证书 |
-| **CertificatePendingMerge** |挂起证书合并 |
-| **CertificatePendingUpdate** |挂起证书更新 |
+| **CertificatePendingMerge** | 证书合并挂起 |
+| **CertificatePendingUpdate** | 证书更新挂起 |
 | **CertificatePendingDelete** |删除挂起的证书 |
 | **CertificateNearExpiryEventGridNotification** |证书即将过期事件已发布 |
 | **CertificateExpiredEventGridNotification** |证书已过期事件已发布 |

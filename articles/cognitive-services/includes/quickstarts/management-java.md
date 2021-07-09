@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 3/22/2021
+ms.date: 06/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 4c0d4dd1a834e42a75da5199b7aaed0e123f8e63
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: dc9b5b3fae714319e48bcdfe1b2ce8a684a03854
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104879779"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111594155"
 ---
 [参考文档](/java/api/com.microsoft.azure.management.cognitiveservices) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18) | [包 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
@@ -22,6 +22,7 @@ ms.locfileid: "104879779"
 * 一个有效的 Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
 * 最新版本的 [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle 生成工具](https://gradle.org/install/)，或其他依赖项管理器。
+* [!INCLUDE [terms-azure-portal](./terms-azure-portal.md)]
 
 
 [!INCLUDE [Create a service principal](./create-service-principal.md)]
@@ -121,6 +122,8 @@ dependencies {
 下面的方法从给定的资源组中删除指定的资源。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/azure_management_service/quickstart.java?name=snippet_delete)]
+
+如果需要恢复已删除的资源，请参阅[恢复已删除的认知服务资源](../../manage-resources.md)。
 
 ## <a name="see-also"></a>另请参阅
 

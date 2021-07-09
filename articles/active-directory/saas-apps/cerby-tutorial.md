@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/13/2021
+ms.date: 05/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 650df4d85d01b9617e094faf4cf7952da1f8eb9f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ac95a6eecba6311f81b4dc871775c99698be2244
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134501"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467194"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cerby"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cerby 的集成
 
@@ -96,13 +96,14 @@ ms.locfileid: "108134501"
     > [!NOTE]
     > 这些不是实际值。 使用实际标识符、回复 URL 和登录 URL 更新这些值。 请联系 [Cerby 客户端支持团队](mailto:help@cerby.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. Cerby 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示一个示例。 “名称”的默认值是“user.userprincipalname”，但 Cerby 要求通过用户的 givenname 映射此项 。 为此，可以使用列表中的 user.givenname 属性，或使用基于组织配置的相应属性值。
 
-    ![证书下载链接](common/certificatebase64.png)
+    ![图像](common/default-attributes.png)
 
-1. 在“设置 Cerby”部分中，根据要求复制相应的 URL。
+1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
-    ![复制配置 URL](common/copy-configuration-urls.png)
+    ![证书下载链接](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -129,7 +130,7 @@ ms.locfileid: "108134501"
 
 ## <a name="configure-cerby-sso"></a>配置 Cerby SSO
 
-若要在 Cerby 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Cerby 支持团队](mailto:help@cerby.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Cerby 端配置单一登录，需要将“应用联合元数据 URL”发送给 [Cerby 支持团队](mailto:help@cerby.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-cerby-test-user"></a>创建 Cerby 测试用户
 

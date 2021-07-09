@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: c654153340586004415b9d2fd8744fb539726960
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0d9e3d4c9ec9eab75ce5917e9ea20011653ff133
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369400"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790187"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -60,15 +60,31 @@ ms.locfileid: "110369400"
 
 ## <a name="metadata-limits"></a>元数据限制
 
-元数据表示为基于文本的键值对，例如 `product:windows 10`。 它以小写形式存储和比较。
+元数据表示为基于文本的键值对，例如 `product:windows 10`。 它以小写形式存储和比较。 元数据字段的最大数量基于 [Azure 认知搜索层限制](../../search/search-limits-quotas-capacity.md)。
 
-### <a name="by-azure-cognitive-search-pricing-tier"></a>按 Azure 认知搜索定价层
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
-每个知识库的元数据字段的最大数量基于 [Azure 认知搜索层限制](../../search/search-limits-quotas-capacity.md)。
+对于 GA 版本，由于测试索引在所有 KB 之间共享，因此该限制适用于 QnA Maker 服务中的所有 KB。
 
 |**Azure 认知搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |每个 QnA Maker 服务的元数据字段的最大数量（包括所有知识库）|1,000|100*|1,000|1,000|1,000|1,000|
+
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+如果选择在一个服务中使用多种不同语言的 KB，则每个 KB 有一个专用的测试索引。 因此，QnA Maker 服务中的限制是按每个 KB 应用的。
+
+|**Azure 认知搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
+|---|---|---|---|---|---|----|
+|每个 QnA Maker 服务的元数据字段的最大数量（每 KB）|1,000|100*|1,000|1,000|1,000|1,000|
+
+如果未选择使用多种不同语言的 KB 的选项，则限制将应用于 QnA Maker 服务中的所有 KB。
+
+|**Azure 认知搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
+|---|---|---|---|---|---|----|
+|每个 QnA Maker 服务的元数据字段的最大数量（包括所有知识库）|1,000|100*|1,000|1,000|1,000|1,000|
+
+---
 
 ### <a name="by-name-and-value"></a>按名称和值
 

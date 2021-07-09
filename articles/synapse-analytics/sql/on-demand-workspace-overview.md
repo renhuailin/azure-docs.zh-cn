@@ -9,20 +9,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f0abef835e406b442239cecd81fed5751f1c9a92
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: a09dfb2b8e29ba925a702c169a1a79c13016d5dc
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378153"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421699"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的无服务器 SQL 池 
 
-每个 Azure Synapse Analytics 工作区都随附了可用于在 Lake 中查询数据的无服务器 SQL 池终结点。
+每个 Azure Synapse Analytics 工作区都附带了无服务器 SQL 池终结点，使用这些终结点可以在 [Azure Data Lake](query-data-storage.md)（[Parquet](query-data-storage.md#query-parquet-files)、[Delta Lake](query-delta-lake-format.md)、[带分隔符的文本](query-data-storage.md#query-csv-files)格式）、[Cosmos DB](query-cosmos-db-analytical-store.md?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=openrowset-key) 或 Dataverse 中查询数据。
 
 无服务器 SQL 池是针对数据湖中的数据运行的查询服务。 它可让你通过以下功能访问数据：
  
-- 熟悉的 T-SQL 语法，可以就地查询数据，而无需将数据复制或加载到专用存储。 
+- 熟悉的 [T-SQL 语法](overview-features.md)，可以就地查询数据，而无需将数据复制或加载到专用存储。 
 - 通过 T-SQL 接口建立的集成连接，提供各种商业智能和即席查询工具（包括最流行的驱动程序）。 
 
 无服务器 SQL 池是专为大规模数据和计算功能构建的分布式数据处理系统。 使用无服务器 SQL 池可在几秒到几分钟内分析完大数据，具体所需时间取决于工作负荷。 得益于内置的查询执行容错机制，即使是对于涉及大型数据集的长时间运行的查询，该系统也能够提供很高的可靠性和成功率。
@@ -38,7 +38,7 @@ ms.locfileid: "107378153"
 如果需要探索 Data Lake 中的数据、从这些数据获取见解，或者要优化现有的数据转换管道，则可从使用无服务器 SQL 池获益。 它适用于以下方案：
 
 - 基本发现和探索 - 快速推理 Data Lake 中各种格式（Parquet、CSV、JSON）的数据，以便你可以规划好如何从这些数据提取见解。
-- 逻辑数据仓库 – 基于原始数据或异类数据提供关系抽象，而无需重新放置和转换数据，使你看到的数据始终是最新数据。
+- 逻辑数据仓库 – 基于原始数据或异类数据提供关系抽象，而无需重新放置和转换数据，使你看到的数据始终是最新数据。 详细了解如何[创建逻辑数据仓库](tutorial-logical-data-warehouse.md)。
 - 数据转换 - 使用 T-SQL 以简单、可缩放且高效的方式转换 Lake 中的数据，以便可将数据馈送到 BI 和其他工具，或者载入到关系数据存储（Synapse SQL 数据库、Azure SQL 数据库等）。
 
 不同的职业角色可以从无服务器 SQL 池获益：
@@ -52,6 +52,8 @@ ms.locfileid: "107378153"
 
 每个 Azure Synapse 工作区中都会提供无服务器 SQL 池终结点。 可以创建一个工作区，然后使用熟悉的工具立即开始查询数据。
 
+确保应用[最佳做法](best-practices-serverless-sql-pool.md)来获得最佳性能。
+
 ## <a name="client-tools"></a>客户端工具
 
 使用无服务器 SQL 池，可以将现有的 SQL 即席查询和商业智能工具连接到 Data Lake 中。 由于它提供用户熟悉的 T-SQL 语法，因此任何能够与 SQL 产品/服务建立 TDS 连接的工具都可[连接和查询 Synapse SQL](connect-overview.md)。 可以与 Azure Data Studio 进行连接并运行即席查询，或者与 Power BI 进行连接以快速获取见解。
@@ -63,7 +65,7 @@ ms.locfileid: "107378153"
 - 可以使用熟悉的概念来组织工作负荷：
 - 数据库 - 无服务器 SQL 池终结点可以包含多个数据库。
 - 架构 - 数据库中可以包含一个或多个称作“架构”的对象所有权组。
-- 视图
+- 视图、存储过程、内联表值函数
 - 外部资源 – 数据源、文件格式和表
 
 可通过以下方式强制实施安全性：
@@ -93,9 +95,13 @@ ms.locfileid: "107378153"
 
 [查询多个文件或文件夹](query-data-storage.md#query-multiple-files-or-folders)
 
-[PARQUET 文件格式](query-data-storage.md#query-parquet-files)
+[查询 PARQUET 文件格式](query-data-storage.md#query-parquet-files)
 
-[用于处理分隔文本的其他选项（字段终止符、行终止符、转义字符）](query-data-storage.md#query-csv-files)
+[查询 DELTA 格式](query-delta-lake-format.md)
+
+[各种带分隔符的文本格式（包含自定义字段终止符、行终止符、转义符）](query-data-storage.md#query-csv-files)
+
+[Cosmos DB 分析存储](query-cosmos-db-analytical-store.md?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=openrowset-key)
 
 [读取选定的列子集](query-data-storage.md#read-a-chosen-subset-of-columns)
 
@@ -139,9 +145,15 @@ ms.locfileid: "107378153"
 
 登录到无服务器 SQL 池服务的用户必须获得访问和查询 Azure 存储中的文件的授权。 无服务器 SQL 池支持以下授权类型：
 
-- 共享访问签名 (SAS) 提供对存储帐户中的资源的委托访问权限。 通过 SAS，可以授予客户端对存储帐户中资源的访问权限，而无需共享帐户密钥。 通过 SAS 可以精细控制向具有 SAS 的客户端授予的访问权限类型：有效期间隔、授予的权限、可接受的 IP 地址范围、可接受的协议 (https/http)。
+- [共享访问签名 (SAS)](develop-storage-files-storage-access-control.md?tabs=shared-access-signature) 提供对存储帐户中的资源的委托访问权限。 通过 SAS，可以授予客户端对存储帐户中资源的访问权限，而无需共享帐户密钥。 通过 SAS 可以精细控制向具有 SAS 的客户端授予的访问权限类型：有效期间隔、授予的权限、可接受的 IP 地址范围、可接受的协议 (https/http)。
 
-- 用户标识（也称为“直通”）是一种授权类型。在使用这种授权类型的情况下，登录到无服务器 SQL 池的 Azure AD 用户的标识会用来授予对数据的访问权限。 在访问数据之前，Azure 存储管理员必须向访问数据的 Azure AD 用户授予权限。 此授权类型使用登录到无服务器 SQL 池的 Azure AD 用户，因此不受 SQL 用户类型的支持。
+- [用户标识](develop-storage-files-storage-access-control.md?tabs=user-identity)（也称为“直通”）是一种授权类型。在使用这种授权类型的情况下，登录到无服务器 SQL 池的 Azure AD 用户的标识会用来授予对数据的访问权限。 在访问数据之前，Azure 存储管理员必须向访问数据的 Azure AD 用户授予权限。 此授权类型使用登录到无服务器 SQL 池的 Azure AD 用户，因此不受 SQL 用户类型的支持。
+
+- [工作区标识](develop-storage-files-storage-access-control.md?tabs=managed-identity)是一种授权类型。在使用这种授权类型的情况下，将使用 Synapse 工作区的标识来授权访问数据。 在访问数据之前，Azure 存储管理员必须向工作区标识授予访问数据的权限。
+
+### <a name="access-to-cosmos-db"></a>访问 Cosmos DB
+
+需要使用 Cosmos DB 帐户只读密钥创建服务器级凭据或数据库范围的凭据，才能[访问 Cosmos DB 分析存储](query-cosmos-db-analytical-store.md?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=openrowset-key)。
 
 ## <a name="next-steps"></a>后续步骤
 可在以下文章中找到有关终结点连接和查询文件的更多信息： 

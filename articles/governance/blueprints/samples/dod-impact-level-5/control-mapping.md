@@ -3,17 +3,17 @@ title: DoD 影响级别 5 蓝图示例控制
 description: DoD 影响级别 5 蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: af68ee959c50102b8344f91f8c3aa2fe11a0e2c2
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: fdfa0cb3824234b68710600bd70ebf074cf3d157
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386681"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757504"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>DoD 影响级别 5 蓝图示例的控制映射
 
 以下文章详细介绍了 Azure 蓝图国防部影响级别 5 (DoD IL5) 蓝图示例如何映射到 DoD 影响级别 5 控制。 有关控制的详细信息，请参阅 [DoD 云计算安全要求指南 (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf)。
-国防情报系统机构 (DISA) 是隶属于美国国防部 (DoD) 的一个机构，负责开发和维护 DoD 云计算安全要求指南 (SRG)。 SRG 定义了对托管 DoD 信息、系统和应用程序的云服务提供商 (CSP) 以及对 DoD 使用云服务的基准安全要求。  
+国防情报系统机构 (DISA) 是隶属于美国国防部 (DoD) 的一个机构，负责开发和维护 DoD 云计算安全要求指南 (SRG)。 SRG 定义了对托管 DoD 信息、系统和应用程序的云服务提供商 (CSP) 以及对 DoD 使用云服务的基准安全要求。
 
 以下映射是到 DoD 影响级别 5 控制的映射。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。  然后，找到并选择“ **\[预览\]：** DoD 影响级别 5”内置策略计划。
 
@@ -120,7 +120,7 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 审核评审、分析和报告 | 集成/扫描和监视功能
 
-此蓝图提供的策略定义用于审核记录，分析虚拟机、虚拟机规模集、SQL 数据服务器和 SQL 托管实例服务器上的漏洞评估。 这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。 为了实现详细的漏洞扫描和监视，我们建议你同时利用 Azure Sentinel 和 Azure 安全中心。
+此蓝图提供的策略定义用于审核记录，分析虚拟机、虚拟机规模集、SQL 数据服务器和 SQL 托管实例服务器上的漏洞评估。 这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。 为了实现详细的漏洞扫描和监视，我们建议你同时使用 Azure Sentinel 和 Azure 安全中心。
 
 - 审核诊断设置
 - 应对 SQL 托管实例启用漏洞评估
@@ -154,19 +154,19 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 
 ## <a name="cm-7-2-least-functionality--prevent-program-execution"></a>CM-7 (2) 最少的功能 | 防止程序执行
 
-Azure 安全中心中的自适应应用程序控制是一种智能、自动化端到端的应用程序允许列表解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制可以在强制模式下运行，从而禁止未批准的应用程序运行。 此蓝图分配了一个 Azure Policy 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
+Azure 安全中心中的自适应应用程序控制是一种自动化的智能端到端应用程序允许列表解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制可以在强制模式下运行，从而禁止未批准的应用程序运行。 此蓝图分配了一个 Azure Policy 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
 
 - 应在计算机中启用自适应应用程序控制以定义安全应用程序
 
 ## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) 最少的功能 | 授权软件/允许列表
 
-Azure 安全中心中的自适应应用程序控制是一种智能、自动化端到端的应用程序允许列表解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制帮助你为虚拟机创建批准的应用程序列表。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
+Azure 安全中心中的自适应应用程序控制是一种自动化的智能端到端应用程序允许列表解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制帮助你为虚拟机创建批准的应用程序列表。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
 
 - 应在计算机中启用自适应应用程序控制以定义安全应用程序
 
 ## <a name="cm-11-user-installed-software"></a>CM-11 用户安装的软件
 
-Azure 安全中心中的自适应应用程序控制是一种智能、自动化端到端的应用程序允许列表解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制可以帮助你强制执行和监视软件限制策略的符合性。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
+Azure 安全中心中的自适应应用程序控制是一种自动化的智能端到端应用程序允许列表解决方案，可以阻止或防止特定软件在虚拟机上运行。 应用程序控制可以帮助你强制执行和监视软件限制策略的符合性。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义，用于帮助监视建议使用应用程序允许列表但尚未对其进行配置的虚拟机。
 
 - 应在计算机中启用自适应应用程序控制以定义安全应用程序
 
@@ -176,7 +176,7 @@ Azure Site Recovery 将在虚拟机上运行的工作负荷从主位置复制到
 
 - 审核没有配置灾难恢复的虚拟机
 
-## <a name="cp-9-05--information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05) 信息系统备份 | 转移到备用存储站点
+## <a name="cp-9-05-information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05) 信息系统备份 | 转移到备用存储站点
 
 此蓝图以电子方式将对组织的系统备份信息进行审核的 Azure 策略定义分配给备用存储站点。 对于存储元数据的物理装运，请考虑使用 Azure Data Box。
 
@@ -353,14 +353,14 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="si-4-12-information-system-monitoring--automated-alerts"></a>SI-4 (12) 信息系统监视 | 自动化警报
 
-此蓝图提供的策略定义可帮助你确保正确启用数据安全通知。 此外，此蓝图确保为 Azure 安全中心启用标准定价层级。 请注意，标准定价层为网络和虚拟机启用威胁检测，在 Azure 安全中心提供威胁情报、异常检测和行为分析。
+此蓝图提供的策略定义可帮助你确保正确启用数据安全通知。 此外，此蓝图确保为 Azure 安全中心启用标准定价层。 请注意，标准定价层为网络和虚拟机启用威胁检测，在 Azure 安全中心提供威胁情报、异常检测和行为分析。
 
 - 应启用向订阅所有者发送高严重性警报的电子邮件通知
 - 应为订阅提供安全联系人电子邮件地址
 - 应为订阅提供安全联系人电话号码
 
 > [!NOTE]
-> 特定 Azure Policy 定义的可用性在 Azure 政府和其他国家云中可能会有所不同。 
+> 特定 Azure Policy 定义的可用性在 Azure 政府和其他国家云中可能会有所不同。
 
 ## <a name="next-steps"></a>后续步骤
 

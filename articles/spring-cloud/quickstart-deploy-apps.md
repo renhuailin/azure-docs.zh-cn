@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: bcbf2f88409dba5d0f3e0955345c298de9961ca4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: fc005e8d94a0c6ddb7f21de05872f12bdb7f2177
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289028"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965127"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>快速入门：生成应用并将其部署到 Azure Spring Cloud
 
@@ -209,6 +209,13 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 
 ## <a name="create-and-deploy-apps-on-azure-spring-cloud"></a>生成应用并将其部署到 Azure Spring Cloud
 
+1. 如果在前面的快速入门中没有运行以下命令，请设置 CLI 默认值。
+
+    ```azurecli
+    az configure --defaults group=<resource group name> spring-cloud=<service name>  
+    az spring-cloud config-server git set -n <service instance name> --uri https://github.com/azure-samples/spring-petclinic-microservices-config
+    ```
+
 1. 创建 PetClinic 的 2 核微服务：API 网关和客户服务。
 
     ```azurecli
@@ -229,7 +236,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
     az spring-cloud app list -o table
     ```
 
-    ```txt
+    ```azurecli
         Name               Location    ResourceGroup    Production Deployment    Public Url                                           Provisioning Status    CPU    Memory    Running Instance    Registered Instance    Persistent Storage
     -----------------  ----------  ---------------  -----------------------  ---------------------------------------------------  ---------------------  -----  --------  ------------------  ---------------------  --------------------
     api-gateway        eastus      xxxxxx-sp         default                  https://<service name>-api-gateway.azuremicroservices.io   Succeeded              1      2         1/1                 1/1                    -     
@@ -275,7 +282,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
 1. 通过在包含父 POM 的 PetClinic 的根文件夹中运行以下命令来生成配置。 如果已使用 Azure CLI 登录，则该命令将自动提取凭据。 否则，它将提示你登录。 有关详细信息，请参阅我们的 [wiki 页面](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)。
 
     ```azurecli
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.3.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.5.0:config
     ```
     
     系统会提示你选择：
@@ -285,20 +292,20 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
     * **公共终结点：** 在提供的项目列表中，输入与 `api-gateway` 对应的数字。  这使其具有公共访问权限。
 
 1. 验证 POM 文件中的 `appName` 元素是否正确：
-    ```
+    ```xml
     <build>
         <plugins>
             <plugin>
                 <groupId>com.microsoft.azure</groupId>
                 <artifactId>azure-spring-cloud-maven-plugin</artifactId>
-                <version>1.3.0</version>
+                <version>1.5.0</version>
                 <configuration>
                     <subscriptionId>xxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx</subscriptionId>
                     <clusterName>v-spr-cld</clusterName>
                     <appName>customers-service</appName>
     
     ```
-    可能需要将 `appName` 文本更改为以下内容：
+    请确保 `appName` 文本与以下内容匹配，根据需要删除任何前缀并保存文件：
     * api-gateway
     * customers-service
 
@@ -307,9 +314,10 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
     ```azurecli
     mvn azure-spring-cloud:deploy
     ```
+    
 ## <a name="verify-the-services"></a>验证服务
 
-成功的部署命令将返回以下格式的 URL：“https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io”。  使用该 URL 导航到正在运行的服务。
+成功的部署命令将返回以下格式的 URL：“https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io”。 使用该 URL 导航到正在运行的服务。
 
 ![访问 PetClinic](media/build-and-deploy/access-customers-service.png)
 
@@ -321,12 +329,12 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
 
 ## <a name="deploy-extra-apps"></a>部署额外的应用
 
-若要让 PetClinic 应用正常运行所有功能（如“管理服务器”、“访问”和“兽医”功能），可以部署其他微服务。   重新运行配置命令并选择以下微服务。
+若要让 PetClinic 应用正常运行所有功能（如“管理服务器”、“访问”和“兽医”功能），可以部署其他微服务。 重新运行配置命令并选择以下微服务。
 * admin-server
 * vets-service
 * visits-service
 
-然后再次运行 `deploy` 命令。
+为上述模块更正每个 `pom.xml` 中的应用名称，然后再次运行 `deploy` 命令。
 
 #### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
 
@@ -341,7 +349,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
     ![导入项目](media/spring-cloud-intellij-howto/import-project-1-pet-clinic.png)
 
 ### <a name="deploy-api-gateway-app-to-azure-spring-cloud"></a>将 api-gateway 应用部署到 Azure Spring Cloud
-若要部署到 Azure，必须通过 Azure Toolkit for IntelliJ 使用 Azure 帐户登录，然后选择你的订阅。 有关登录的详细信息，请参阅[安装和登录](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)。
+若要部署到 Azure，必须通过 Azure Toolkit for IntelliJ 使用 Azure 帐户登录，然后选择你的订阅。 有关登录的详细信息，请参阅[安装和登录](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)。
 
 1. 在 IntelliJ 项目资源管理器中右键单击你的项目，选择“Azure” -> “部署到 Azure Spring Cloud”。 
 
@@ -354,7 +362,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
 1. 将“公共终结点”设置为“启用”。
 1. 在“应用:”文本框中，选择“创建应用…” 。
 1. 输入“api-gateway”，然后单击“确定”。
-1. 指定内存和 JVM 选项。
+1. 将内存指定为 2 GB 并指定 JVM 选项：`-Xms2048m -Xmx2048m`。
 
      ![内存 JVM 选项](media/spring-cloud-intellij-howto/memory-jvm-options.png)
 

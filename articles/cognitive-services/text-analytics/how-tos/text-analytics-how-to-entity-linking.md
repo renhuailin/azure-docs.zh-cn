@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 03/15/2021
+ms.date: 06/10/2021
 ms.author: aahi
-ms.openlocfilehash: 903147b6c9f102b83f65d67cf41d4df0c62c7b54
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 3fdd5db4abc2b16153f6758827e152337887a095
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280558"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962799"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -35,7 +35,7 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 
 ## <a name="named-entity-recognition-features-and-versions"></a>命名实体识别功能和版本
 
-| 功能                                                         | NER v3.0 | NER v3.1-preview.4 |
+| 功能                                                         | NER v3.0 | NER v3.1-preview.5 |
 |-----------------------------------------------------------------|--------|----------|
 | 用于单个请求和批量请求的方法                          | X      | X        |
 | 跨多个类别展开的实体识别           | X      | X        |
@@ -47,8 +47,8 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 
 命名实体识别 v3 提供跨多种类型的扩展检测。 目前，NER v3.0 可以识别[常规实体类别](../named-entity-types.md)中的实体。
 
-命名实体识别 v3.1-preview.4 包括了 v3.0 的检测功能，以及： 
-* 使用 `v3.1-preview.4/entities/recognition/pii` 终结点检测个人信息 (`PII`) 的功能。 
+命名实体识别 v3.1-preview.5 包括了 v3.0 的检测功能，以及： 
+* 使用 `v3.1-preview.5/entities/recognition/pii` 终结点检测个人信息 (`PII`) 的功能。 
 * 用于检测机密的健康状况信息 (`PHI`) 的可选的 `domain=phi` 参数。
 * 使用 `/analyze` 终结点的[异步操作](text-analytics-how-to-call-api.md)。
 
@@ -74,38 +74,38 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 
 #### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-preview)
 
-命名实体识别 `v3.1-preview.4` 对 NER、PII 和实体链接请求使用不同的终结点。 根据你的请求使用以下 URL 格式。
+命名实体识别 `v3.1-preview.5` 对 NER、PII 和实体链接请求使用不同的终结点。 根据你的请求使用以下 URL 格式。
 
 **实体链接**
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/linking`
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/linking`
 
-[`Linking` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesLinking)
+[`Linking` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesLinking)
 
 **命名实体识别**
-* 常规实体 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/general`
+* 常规实体 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/general`
 
-[`General` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionGeneral)
+[`General` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesRecognitionGeneral)
 
 **个人身份信息 (PII)**
-* 个人 (`PII`) 信息 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii`
+* 个人 (`PII`) 信息 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii`
 
 还可以使用可选的 `domain=phi` 参数来检测文本中的健康状况 (`PHI`) 信息。 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii?domain=phi`
 
-从 `v3.1-preview.4` 开始，JSON 响应中将包含 `redactedText` 属性，该属性包含修改后的输入文本，其中检测到的 PII 实体的每个字符将被替换为 `*`。
+从 `v3.1-preview.5` 开始，JSON 响应中将包含 `redactedText` 属性，该属性包含修改后的输入文本，其中检测到的 PII 实体的每个字符将被替换为 `*`。
 
-[`PII` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionPii)
+[`PII` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesRecognitionPii)
 
 此 API 会尝试检测给定文档语言[列出的实体类别](../named-entity-types.md?tabs=personal)。 如果要指定将检测并返回哪些实体，请使用可选的 pii-categories 参数指定相应的实体类别。 此参数还可以检测默认情况下未为文档语言启用的实体。 例如，可能出现在英文文本中的法国驾照号码。
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?piiCategories=[FRDriversLicenseNumber]`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii?piiCategories=[FRDriversLicenseNumber]`
 
 **异步操作**
 
-从 `v3.1-preview.4` 开始，可以使用 `/analyze` 终结点异步发送 NER 和实体链接请求。
+从 `v3.1-preview.5` 开始，可以使用 `/analyze` 终结点异步发送 NER 和实体链接请求。
 
-* 异步操作 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze`
+* 异步操作 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/analyze`
 
 有关发送异步请求的信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。
 
@@ -206,7 +206,7 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 
 ## <a name="post-the-request"></a>发布请求
 
-在收到请求时执行分析。 若要了解每分钟和每秒可以发送的请求大小和数量，请参阅[数据限制](../overview.md#data-limits)一文。
+在收到请求时执行分析。 有关每分钟和每秒可以发送的请求大小和数量信息，请参阅[数据限制](../overview.md#data-limits)一文。
 
 文本分析 API 是无状态的。 不会在帐户中存储数据，结果会立即在响应中返回。
 
@@ -489,4 +489,5 @@ PII 响应的示例：
 
 * [文本分析概述](../overview.md)
 * [使用文本分析客户端库](../quickstarts/client-libraries-rest-api.md)
+* [模型版本](../concepts/model-versioning.md)
 * [新增功能](../whats-new.md)

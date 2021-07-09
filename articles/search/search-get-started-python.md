@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/12/2021
+ms.date: 06/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 8b9c4792fa6dbdc70f657ce3c5f1757473a22fda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bac4baea6421c0e4a1f6e3b956245202eef18e1
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225211"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018273"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>快速入门：使用 Jupyter Notebook 通过 Python 创建 Azure 认知搜索索引
 
@@ -348,7 +348,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="clean-up"></a>清理
 
-在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
+使用自己的订阅时，最好在项目结束时确定是否仍然需要所创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
 可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
 
@@ -356,7 +356,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="next-steps"></a>后续步骤
 
-为简单起见，本快速入门使用了 Hotels 索引的缩写版本。 你可以创建完整的版本，以尝试进行更有意思的查询。 若要获取完整版本和所有 50 个文档，请运行“导入数据”向导，并从内置的示例数据源中选择“hotels-sample”。  
+在此 JavaScript 快速入门中，你完成了一系列任务：创建索引、使用文档加载索引，以及运行查询。 若要继续学习，请试用以下教程。
 
 > [!div class="nextstepaction"]
-> [快速入门：在 Azure 门户中创建索引](search-get-started-portal.md)
+> [教程：向 Web 应用添加搜索](tutorial-python-overview.md)

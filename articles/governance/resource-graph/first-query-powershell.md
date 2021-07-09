@@ -1,16 +1,16 @@
 ---
 title: 快速入门：第一个 PowerShell 查询
 description: 本快速入门介绍为 Azure PowerShell 启用 Resource Graph 模块并运行第一个查询的步骤。
-ms.date: 05/01/2021
+ms.date: 05/11/2021
 ms.topic: quickstart
 ms.custom:
 - mode-api
-ms.openlocfilehash: 6147b6bcdda2674190fe3591794bb6758eb8d3eb
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: dd620ec63547b0b9fdba41da3cd2dcf6daa9dea0
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324988"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750908"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询
 
@@ -47,7 +47,7 @@ Azure Resource Graph 模块需要以下软件：
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. 验证该模块是否已导入且是否为最新版本 (0.7.5)：
+1. 验证模块是否已导入并且至少是版本 `0.10.0`：
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -64,7 +64,7 @@ Azure Resource Graph 模块需要以下软件：
    # Login first with Connect-AzAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   Search-AzGraph -Query 'Resources | project name, type | limit 5'
+   (Search-AzGraph -Query 'Resources | project name, type | limit 5').Data
    ```
 
    > [!NOTE]
@@ -74,7 +74,7 @@ Azure Resource Graph 模块需要以下软件：
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
-   Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc'
+   (Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc').Data
    ```
 
    > [!NOTE]
@@ -84,14 +84,14 @@ Azure Resource Graph 模块需要以下软件：
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
+   (Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5').Data
    ```
 
 假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且按 Name 属性排序，但仍限制为前五个结果。
 
 > [!NOTE]
 > 如果查询未从你已有权访问的订阅返回结果，请注意 `Search-AzGraph` cmdlet 默认为默认上下文中的订阅。 若要查看作为默认上下文一部分的订阅 ID 列表，请运行此 `(Get-AzContext).Account.ExtendedProperties.Subscriptions`。如果你希望搜索你有权访问的所有订阅，可以通过运行 `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` 为 `Search-AzGraph` cmdlet 设置 PSDefaultParameterValues
-   
+
 ## <a name="clean-up-resources"></a>清理资源
 
 若希望从 Azure PowerShell 环境中删除 Resource Graph 模块，可使用以下命令：

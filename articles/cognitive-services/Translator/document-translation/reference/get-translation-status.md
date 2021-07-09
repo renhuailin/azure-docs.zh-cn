@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: c17cd6cb97aaac3cd08342270e4eafa07eb5fd7d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e6ec2289b272ae4c9d7d0c8eaca84b05d718908c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864875"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451134"
 ---
 # <a name="get-translation-status"></a>获取翻译状态
 
@@ -25,7 +25,7 @@ ms.locfileid: "107864875"
 
 将 `GET` 请求发送到：
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches/{id}
 ```
 
 了解如何查找[自定义域名](../get-started-with-document-translation.md#find-your-custom-domain-name)。
@@ -85,16 +85,17 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 |summary.cancelled|integer|已取消的作业计数。|
 |summary.totalCharacterCharged|integer|API 计费的总字符数。|
 
-###<a name="error-response"></a>错误响应
+### <a name="error-response"></a>错误响应
 
 |名称|类型|说明|
 |--- |--- |--- |
 |code|string|包含错误代码概要的枚举。 可能的值：<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>未授权</li></ul>|
 |message|字符串|获取概要错误消息。|
 |目标|string|获取错误的源。 例如，对于无效的文档，应为“文档”或“文档 ID”。|
-|innerError|InnerErrorV2|新内部错误格式，符合认知服务 API 准则。 它包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
+|innerError|InnerTranslationError|新内部错误格式，符合认知服务 API 准则。 这包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
 |innerError.code|字符串|获取代码错误字符串。|
 |innerError.message|字符串|获取概要错误消息。|
+|innerError.target|string|获取错误的源。 例如，如果文档无效，应为“文档”或“文档 ID”。|
 
 ## <a name="examples"></a>示例
 

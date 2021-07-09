@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 472c1770e2793d8da4e8fc76fafbf3b9073b746d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e99dcb0d7edaf79356f54c930e24e35153c26c3f
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96763384"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109719337"
 ---
 ## <a name="deploy-and-configure-azure-media-services"></a>部署和配置 Azure 媒体服务
 
@@ -78,7 +78,7 @@ az resource list --resource-group lva-rg --resource-type microsoft.media/mediase
 
 1. 如果你有一个 Azure 订阅，请选择“目录”、“Azure 订阅”并选择“美国”作为“位置”   。 如果你没有订阅，则可以启用 7 天免费试用版并填写所需的联系人信息  。 由于本教程使用三个设备（两个相机、一个 IoT Edge 设备），如果你不使用免费试用版，将按使用量计费。
 
-    有关目录、订阅和位置的详细信息，请参阅[创建应用程序快速入门](../articles/iot-central/core/quick-deploy-iot-central.md)。
+    有关目录、订阅和位置的详细信息，请参阅[创建 IoT Central 应用程序](../articles/iot-central/core/howto-create-iot-central-application.md)。
 
 1. 选择“创建”。
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 06/01/2021
 ms.author: jeedes
-ms.openlocfilehash: c26224f388c09ec758373c877004f5485bb420df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec6de7ea5c9da4402126990d1c165d4f4ad6d12f
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97725069"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111557443"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-cloud"></a>教程：Azure Active Directory 与 Terraform Cloud 的单一登录 (SSO) 集成
 
@@ -37,11 +37,10 @@ ms.locfileid: "97725069"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Terraform Cloud 支持 SP 和 IDP 发起的 SSO
-* Terraform Cloud 支持实时用户预配
+* Terraform Cloud 支持 SP 和 IDP 发起的 SSO。
+* Terraform Cloud 支持实时用户预配。
 
-
-## <a name="adding-terraform-cloud-from-the-gallery"></a>从库中添加 Terraform Cloud
+## <a name="add-terraform-cloud-from-the-gallery"></a>从库中添加 Terraform Cloud
 
 要配置 Terraform Cloud 与 Azure AD 的集成，需要从库中将 Terraform Cloud 添加到托管 SaaS 应用列表。
 
@@ -51,7 +50,6 @@ ms.locfileid: "97725069"
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Terraform Cloud” 。
 1. 从结果面板中选择“Terraform Cloud”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-terraform-cloud"></a>配置并测试 Terraform Cloud 的 Azure AD SSO
 
@@ -72,24 +70,27 @@ ms.locfileid: "97725069"
 
 1. 在 Azure 门户的 Terraform Cloud 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    在“标识符”文本框中，使用以下模式键入 URL：`https://app.terraform.io/sso/saml/samlconf-<ID>/metadata` 
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://app.terraform.io/sso/saml/samlconf-<ID>/metadata`
+
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.terraform.io/sso/saml/samlconf-<ID>/acs`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，键入 URL：`https://app.terraform.io/session`
 
     > [!NOTE]
-    > 标识符非实际值。 请使用实际标识符更新此值。 请联系 [Terraform 客户端支持团队](mailto:tf-cloud@hashicorp.support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Terraform 客户端支持团队](mailto:tf-cloud@hashicorp.support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -126,7 +127,7 @@ ms.locfileid: "97725069"
 
 3. 若要手动设置 Terraform Cloud，请在另一个 Web 浏览器窗口中，以管理员身份登录到 Terraform Cloud 公司站点。
 
-2. 转到“设置”>“SSO”>“编辑设置”
+2. 转到“设置”>“SSO”>“编辑设置”。
 
     ![Terraform Cloud 设置](./media/terraform-cloud-tutorial/sso-settings.png)
 
@@ -158,11 +159,10 @@ ms.locfileid: "97725069"
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Terraform Cloud 
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Terraform Cloud。 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 Terraform Cloud 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Terraform Cloud。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
-
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Terraform Cloud 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Terraform Cloud。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Terraform Cloud 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 Terraform Cloud 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。
