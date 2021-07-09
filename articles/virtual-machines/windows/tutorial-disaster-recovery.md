@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: recovery
 ms.topic: tutorial
-ms.date: 11/05/2020
+ms.date: 05/18/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fd5d8c3e2c6e4ee5556568ebd23ac99b48300e9d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: e76245c9ad08a9a826e1d0431c2dd01b61a6b860
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381993"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077565"
 ---
 # <a name="tutorial-enable-disaster-recovery-for-windows-vms"></a>教程：为 Windows VM 启用灾难恢复
 
@@ -37,21 +37,21 @@ ms.locfileid: "106381993"
         - 在所选虚拟网络中创建 VM。
         - 写入 Azure 存储帐户。
         - 写入 Azure 托管磁盘。
-    - Site Recovery 参与者内置角色，用于管理保管库中的 Site Recovery 操作。 
+    - Site Recovery 参与者内置角色，用于管理保管库中的 Site Recovery 操作。
 3. 建议使用运行 Windows Server 2012 或更高版本的 Windows VM。 对于本教程，不应加密 VM 磁盘。
 4. 如果 VM 出站连接使用基于 URL 的代理，请确保其可以访问这些 URL。 不支持使用经过身份验证的代理。
 
     **Name** | **公有云** | **政府云** | **详细信息**
     --- | --- | --- | ---
-    存储 | `*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`| 将数据从 VM 写入源区域中的缓存存储帐户。 
-    Azure AD  | `login.microsoftonline.com` | `login.microsoftonline.us`| 授权并验证 Site Recovery 服务 URL。 
-    复制 | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`  |VM 与 Site Recovery 服务进行通信。 
-    服务总线 | `*.servicebus.windows.net` | `*.servicebus.usgovcloudapi.net` | VM 写入 Site Recovery 以监视和诊断数据。 
+    存储 | `*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`| 将数据从 VM 写入源区域中的缓存存储帐户。
+    Azure AD  | `login.microsoftonline.com` | `login.microsoftonline.us`| 授权并验证 Site Recovery 服务 URL。
+    复制 | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`  |VM 与 Site Recovery 服务进行通信。
+    服务总线 | `*.servicebus.windows.net` | `*.servicebus.usgovcloudapi.net` | VM 写入 Site Recovery 以监视和诊断数据。
 
 4. 如果使用网络安全组 (NSG) 限制 VM 的网络流量，请创建相关 NSG 规则，允许使用这些服务标记（IP 地址组）为 VM 进行出站连接 (HTTPS 443)。 首先尝试使用测试 NSG 上的规则。
 
-    **标记** | **允许** 
-    --- | --- 
+    **标记** | **允许**
+    --- | ---
     存储标记 | 允许将数据从 VM 写入缓存存储帐户。
     Azure AD 标记 | 允许访问与 Azure AD 对应的所有 IP 地址。
     EventsHub 标记 | 允许访问 Site Recovery 监视。
@@ -70,10 +70,10 @@ ms.locfileid: "106381993"
 5. 在“恢复服务保管库”中，选择要用于复制的保管库。 如果没有保管库，请选择“新建”。 选择要在其中存放保管库的资源组和保管库名称。
 6. 在“Site Recovery 策略”中，保留默认策略，或选择“新建”设置自定义值。
 
-    - 恢复点是基于在特定时间点生成的 VM 磁盘快照创建的。 故障转移 VM 时，你可以使用恢复点来还原目标区域中的 VM。 
-    - 每 5 分钟创建一次崩溃一致的恢复点。 此设置不可修改。 崩溃一致快照捕获创建快照时磁盘上的数据。 它不包括内存中的任何数据。 
+    - 恢复点是基于在特定时间点生成的 VM 磁盘快照创建的。 故障转移 VM 时，你可以使用恢复点来还原目标区域中的 VM。
+    - 每 5 分钟创建一次崩溃一致的恢复点。 此设置不可修改。 崩溃一致快照捕获创建快照时磁盘上的数据。 它不包括内存中的任何数据。
     - 默认情况下，Site Recovery 会将崩溃一致恢复点保留 24 小时。 你可以设置一个介 于0 到 72 小时之间的自定义值。
-    - 系统每 4 小时拍摄一次应用程序一致快照。 应用程序一致的快照 
+    - 系统每 4 小时拍摄一次应用程序一致快照。 应用程序一致的快照
     - 默认情况下，Site Recovery 会将恢复点保留 24 小时。
 
 7. 在“可用性选项”中，指定 VM 是作为独立部署、在可用性区域中部署还是在可用性集中部署。
@@ -81,6 +81,9 @@ ms.locfileid: "106381993"
     :::image type="content" source="./media/tutorial-disaster-recovery/create-vm.png" alt-text="在 VM 管理属性页上启用复制。"
 
 8. 完成 VM 创建。
+
+>[!NOTE]
+> 如果在创建 Windows VM 时启用复制，则只会复制 OS 磁盘。 数据磁盘需要由你进行初始化，之后，Azure Site Recovery 会自动复制它们。
 
 ## <a name="enable-disaster-recovery-for-an-existing-vm"></a>为现有的 VM 启用灾难恢复
 
@@ -131,7 +134,7 @@ ms.locfileid: "106381993"
 1. 打开 VM 属性页。
 2. 在“操作”中，选择“灾难恢复” 。
 3. 展开“概要”部分，查看有关保管库、复制策略和目标设置的默认设置。
-4. 在“运行状况和状态”中，获取有关 VM 的复制状态、代理版本、故障转移准备情况以及最新恢复点的信息。 
+4. 在“运行状况和状态”中，获取有关 VM 的复制状态、代理版本、故障转移准备情况以及最新恢复点的信息。
 
     :::image type="content" source="./media/tutorial-disaster-recovery/essentials.png" alt-text="VM 灾难恢复的“概要”视图。":::
 
@@ -142,22 +145,22 @@ ms.locfileid: "106381993"
 
 ## <a name="run-a-drill"></a>运行演练
 
-运行演练，确保灾难恢复按预期方式进行。 运行测试故障转移时，它将创建 VM 的副本，但不会影响正在进行的复制或生产环境。 
+运行演练，确保灾难恢复按预期方式进行。 运行测试故障转移时，它将创建 VM 的副本，但不会影响正在进行的复制或生产环境。
 
 1. 在 VM 灾难恢复页面中，选择“测试故障转移”。
 2. 在“测试故障转移”中，保留恢复点的默认“最新处理(低 RPO)”设置 。
 
    此选项提供最低的恢复点目标 (RPO)，并且通常提供目标 VM 的最快启动速度。 它会首先处理已发送到 Site Recovery 服务的所有数据，为每个 VM 创建恢复点，然后将其故障转移到该恢复点。 触发故障转移后，此恢复点的所有数据将复制到 Site Recovery。
 
-3. 选择故障转移后 VM 所处的虚拟网络。 
+3. 选择故障转移后 VM 所处的虚拟网络。
 
      :::image type="content" source="./media/tutorial-disaster-recovery/test-failover-settings.png" alt-text="设置测试故障转移选项的页面。":::
 
 4. 测试故障转移过程开始。 可在通知中监视进度。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/test-failover-notification.png" alt-text="测试故障转移通知。"::: 
-    
-   测试故障转移完成后，VM 在“概要”页面上处于“清理测试故障转移挂起”状态。 
+    :::image type="content" source="./media/tutorial-disaster-recovery/test-failover-notification.png" alt-text="测试故障转移通知。":::
+
+   测试故障转移完成后，VM 在“概要”页面上处于“清理测试故障转移挂起”状态。
 
 
 
@@ -167,15 +170,15 @@ ms.locfileid: "106381993"
 
 1. 若要开始自动清理，请选择“清理测试故障转移”。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/start-cleanup.png" alt-text="在“概要”页上启动清理。"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/start-cleanup.png" alt-text="在“概要”页上启动清理。":::
 
 2. 在“测试故障转移清理”中，键入要为故障转移记录的所有说明，然后选择”测试完成。删除测试故障转移虚拟机”。 然后选择“确定”  。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test.png" alt-text="用于记录说明并删除测试 VM 的页面。"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test.png" alt-text="用于记录说明并删除测试 VM 的页面。":::
 
 7. 删除过程开始。 可在通知中监视进度。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test-notification.png" alt-text="监视删除测试 VM 的通知。"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/delete-test-notification.png" alt-text="监视删除测试 VM 的通知。":::
 
 ### <a name="stop-replicating-the-vm"></a>停止复制 VM
 
@@ -190,10 +193,10 @@ ms.locfileid: "106381993"
 1. 在“VM 灾难恢复”页面中，选择“禁用复制”。
 2. 在“禁用复制”中，选择要禁用复制的原因。 然后选择“确定”  。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/disable-replication.png" alt-text="可禁用复制并提供原因的页面。"::: 
+    :::image type="content" source="./media/tutorial-disaster-recovery/disable-replication.png" alt-text="可禁用复制并提供原因的页面。":::
 
 
-在复制过程中安装在 VM 上的 Site Recovery 扩展不会自动删除。 如果为 VM 禁用复制，且不想以后再次复制，则可以手动删除 Site Recovery 扩展，如下所示： 
+在复制过程中安装在 VM 上的 Site Recovery 扩展不会自动删除。 如果为 VM 禁用复制，且不想以后再次复制，则可以手动删除 Site Recovery 扩展，如下所示：
 
 1. 转到 VM >“设置” > “扩展” 。
 2. 在“扩展”页中，为 Linux 选择每个“Microsoft.Azure.RecoveryServices”条目。

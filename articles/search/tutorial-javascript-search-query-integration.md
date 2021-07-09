@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/09/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: f6c23c7b0870fe8caed1f82e8ce102539aa2e950
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 3353ff11a93fa4a79c266b7bd323071b55cd76c6
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950215"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109848098"
 ---
 # <a name="4---javascript-search-integration-cheat-sheet"></a>4 - JavaScript 搜索集成速查表
 
@@ -66,7 +66,7 @@ Azure Function 拉取搜索配置信息并完成查询。
 
 ## <a name="client-suggestions-from-the-catalog"></a>客户端：来自目录的建议
 
-建议函数 API 在 `\src\components\SearchBar\SearchBar.js` 作为组件初始化的一部分在 React 应用程序中调用：
+建议函数 API 在 `\src\components\SearchBar\SearchBar.js` 作为组件初始化的一部分在 React 应用中调用：
 
 :::code language="javascript" source="~/azure-search-javascript-samples/search-website/src/components/SearchBar/SearchBar.js" highlight="52-60" :::
 

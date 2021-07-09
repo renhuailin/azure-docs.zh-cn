@@ -5,17 +5,17 @@ description: 使用表单识别器 API 了解与发票分析相关的概念 - �
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: effe9a1f4959748ee04fadff2bd733c52c14a790
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fc00e651cf8ec61a884864c57c0cafd2551f1a38
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374861"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890683"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>表单识别器预生成的发票模型
 
@@ -78,6 +78,8 @@ JSON 输出分为三个部分：
 
 发票服务将提取文本、表和 26 个发票字段。 下面是在 JSON 输出响应中从发票中提取的字段（下面的输出使用此[示例发票](media/sample-invoice.jpg)）。
 
+### <a name="key-value-pairs"></a>键值对 
+
 |名称| 类型 | 说明 | 文本 | 值（标准化输出） |
 |:-----|:----|:----|:----| :----|
 | CustomerName | 字符串 | 正在开票的客户 | Microsoft Corp |  |
@@ -107,6 +109,8 @@ JSON 输出分为三个部分：
 | ServiceEndDate | date | 服务时段的结束日期（例如，公用事业帐单服务期间） | 2019/11/14 | 2019-11-14 |
 | PreviousUnpaidBalance | 数字 | 先前未付的具体余额 | 500.00 美元 | 500 |
 
+### <a name="line-items"></a>行项目
+
 下面是在 JSON 输出响应中从发票中提取的行项目（下面的输出使用此[示例发票](./media/sample-invoice.jpg)）
 
 |名称| 类型 | 说明 | 文本（行项目 #1） | 值（标准化输出） |
@@ -121,6 +125,7 @@ JSON 输出分为三个部分：
 | 日期 | date| 对应于每个行项目的日期。 这通常是行项目的发货日期 | 2021/3/4| 2021-03-04 |
 | 税款 | 数字 | 与每个行项目关联的税款。 可能的值包括税金、税款 % 和税款 Y/N | 10% | |
 
+提取的发票键值对和行项目位于 JSON 输出的 documentResults 部分。 
 
 ## <a name="next-steps"></a>后续步骤
 

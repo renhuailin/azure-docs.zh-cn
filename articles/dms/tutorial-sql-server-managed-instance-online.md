@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 5585eb210b54dfa016d25c430256508e1b0b9f61
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 70793c997979be1c94dda0a5198df8c450e16496
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076881"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031000"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 托管实例
 
@@ -35,7 +35,7 @@ ms.locfileid: "106076881"
 
 > [!IMPORTANT]
 > 若要使用 Azure 数据库迁移服务从 SQL Server 联机迁移到 SQL 托管实例，必须在 SMB 网络共享中提供完整的数据库备份和后续日志备份，供服务用来迁移数据库。 Azure 数据库迁移服务不启动任何备份，而是使用现有备份进行迁移。你可能已经在灾难恢复计划中有了这些备份。
-> 确保[使用 WITH CHECKSUM 选项进行备份](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?preserve-view=true&view=sql-server-2017)。 另外，请确保不要将多个备份（即完整备份和 t-log 备份）追加到单个备份介质中；请在单独的备份文件上进行每一次备份。 最后，可以使用压缩的备份来减少遇到与迁移大型备份相关的潜在问题的可能性。
+> 确保[使用 WITH CHECKSUM 选项进行备份](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?preserve-view=true&view=sql-server-2017)。 可以将每个备份写入单个独立的备份文件或多个备份文件。 但是，不支持将多个备份（即完整备份和 t-log 备份）追加到单个备份介质中。 最后，可以使用压缩的备份来减少遇到与迁移大型备份相关的潜在问题的可能性。
 
 > [!NOTE]
 > 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。
@@ -83,6 +83,9 @@ ms.locfileid: "106076881"
 * 确保运行源 SQL Server 实例的服务帐户对你创建的网络共享拥有写入权限，并且源服务器的计算机帐户具有对同一共享的读/写访问权限。
 * 请记下在前面创建的网络共享中拥有完全控制权限的 Windows 用户（和密码）。 Azure 数据库迁移服务可模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。
 * 创建一个 Azure Active Directory 应用程序 ID，用于生成可由 Azure 数据库迁移服务用来连接目标 Azure 数据库托管实例和 Azure 存储容器的应用程序 ID 密钥。 有关详细信息，请参阅[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)一文。
+
+  > [!NOTE]
+  > Azure 数据库迁移服务使用的应用程序 ID 支持服务主体的机密（基于密码的）身份验证。 它不支持基于证书的身份验证。
 
   > [!NOTE]
   > Azure 数据库迁移服务需要对指定的应用程序 ID 的订阅具有参与者权限。 或者，你可以创建自定义角色，以授予 Azure 数据库迁移服务所需的特定权限。 有关使用自定义角色的分步指导，请参阅[用于 SQL Server 到 SQL 托管实例联机迁移的自定义角色](./resource-custom-roles-sql-db-managed-instance.md)一文。

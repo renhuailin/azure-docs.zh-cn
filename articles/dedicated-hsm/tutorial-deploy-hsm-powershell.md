@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 5ed5ac90f446f74c54488f6d0cf23adbd63a3e1e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2b93496244ed36ce2ca08dfd48b7bb176d6cdd40
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606872"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949451"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教材 - 使用 PowerShell 将 HSM 部署到现有虚拟网络中
 
@@ -33,7 +33,7 @@ Azure 专用 HSM 服务提供供单个客户使用的物理设备，由客户对
 
 ![多区域部署](media/tutorial-deploy-hsm-powershell/high-availability.png)
 
-本教程重点介绍一对 HSM 和必需的 ExpressRoute 网关（参见上面的子网 1），该网关会集成到现有的虚拟网络（参见上面的 VNET 1）中。  所有其他资源都是标准的 Azure 资源。 同一集成过程可以用于上述 VNET 3 上的子网 4 中的 HSM。
+本教程重点介绍一对 HSM 和必需的 [ExpressRoute 网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)（参见上面的子网 1），该网关会集成到现有的虚拟网络（参见上面的 VNET 1）中。  所有其他资源都是标准的 Azure 资源。 同一集成过程可以用于上述 VNET 3 上的子网 4 中的 HSM。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -52,7 +52,7 @@ Azure 专用 HSM 目前在 Azure 门户中不可用，因此与该服务的所�
 
 ## <a name="provisioning-a-dedicated-hsm"></a>预配专用 HSM
 
-可以通过 ExpressRoute 网关预配 HSM 并将其集成到现有虚拟网络中，这一操作将通过 ssh 命令行工具进行验证，确保 HSM 设备的可访问性和基本的可用性，以便进行进一步的配置活动。 以下命令将使用资源管理器模板创建 HSM 资源和关联的网络资源。
+可以通过 [ExpressRoute 网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)预配 HSM 并将其集成到现有虚拟网络中，这一操作将通过 ssh 命令行工具进行验证，确保 HSM 设备的可访问性和基本的可用性，以便进行进一步的配置活动。 以下命令将使用资源管理器模板创建 HSM 资源和关联的网络资源。
 
 ### <a name="validating-feature-registration"></a>验证功能注册
 
@@ -68,7 +68,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -Feat
 
 ### <a name="creating-hsm-resources"></a>创建 HSM 资源
 
-HSM 设备预配到客户的虚拟网络中。 这意味着子网的要求。 HSM 依赖 ExpressRoute 网关实现在虚拟网络和物理设备之间通信。最终如果需要使用 Thales 客户端软件来访问 HSM 设备，则虚拟机是必需的。 这些资源已收集到一个带有相应参数文件的模板文件中，以方便使用。 若要获取这些文件，请通过 HSMrequest@Microsoft.com 直接联系 Microsoft。
+HSM 设备预配到客户的虚拟网络中。 这意味着子网的要求。 HSM 依赖 [ExpressRoute 网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)实现在虚拟网络和物理设备之间的通信。最终如果需要使用 Thales 客户端软件来访问 HSM 设备，则虚拟机是必需的。 这些资源已收集到一个带有相应参数文件的模板文件中，以方便使用。 若要获取这些文件，请通过 HSMrequest@Microsoft.com 直接联系 Microsoft。
 
 有了这些文件以后，必须编辑该参数文件，插入资源的首选名称。 这意味着使用“值”: “”格式编辑行。
 

@@ -6,15 +6,15 @@ author: v-amallick
 manager: carmonm
 ms.service: backup
 ms.topic: include
-ms.date: 10/18/2018
+ms.date: 06/01/2021
 ms.author: v-amallick
 ms.custom: include file
-ms.openlocfilehash: c126c349897016a00753b402b696c60fdd7b1b2e
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: 7d354ce3e69f075d2f523a75ba96f9a6efb7d797
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106294160"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783558"
 ---
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -24,23 +24,21 @@ ms.locfileid: "106294160"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中登录到自己的订阅。
 
-1. 在左侧菜单中，选择“所有服务”。
+1. 在 Azure 门户中搜索“备份中心”，并导航到“备份中心”仪表板。
 
-    ![选择“所有服务”](./media/backup-create-rs-vault/click-all-services.png)
+    ![选择“备份中心”](../includes/media/backup-create-rs-vault/backup-center-search-backup-center.png)
 
-1. 在“所有服务”对话框中，输入“恢复服务” 。 资源列表根据输入进行筛选。 在资源列表中，选择“恢复服务保管库”。
+1. 从“概述”选项卡中选择“+保管库”。
 
-    ![输入并选择“恢复服务保管库”](./media/backup-create-rs-vault/all-services.png)
+    ![创建保管库](./media/backup-create-rs-vault/backup-center-create-vault.png) 
 
-    此时会显示订阅中的恢复服务保管库列表。
+1. 选择“恢复服务保管库”，然后单击“继续”。
 
-1. 在“恢复服务保管库”仪表板上，选择“添加” 。
+    ![选择恢复服务保管库](./media/backup-create-rs-vault/backup-center-select-recovery-services-vault.png) 
 
-    ![添加恢复服务保管库](./media/backup-create-rs-vault/add-button-create-vault.png)
+1. 此时会打开“恢复服务保管库”对话框。 提供“名称”、“订阅”、“资源组”和“位置”的值   。
 
-    此时会打开“恢复服务保管库”对话框。 提供“名称”、“订阅”、“资源组”和“位置”的值   。
-
-    ![配置恢复服务保管库](./media/backup-create-rs-vault/create-new-vault-dialog.png)
+    ![配置恢复服务保管库](./media/backup-create-rs-vault/backup-center-add-vault-details.png)
 
    - **名称**：输入一个友好名称以标识此保管库。 名称对于 Azure 订阅必须是唯一的。 指定的名称应至少包含 2 个字符，最多不超过 50 个字符。 名称必须以字母开头且只能包含字母、数字和连字符。
    - **订阅**：选择要使用的订阅。 如果你仅是一个订阅的成员，则会看到该名称。 如果不确定要使用哪个订阅，请使用默认的（建议的）订阅。 仅当工作或学校帐户与多个 Azure 订阅关联时，才会显示多个选项。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 65e55d8e9d81f4045dde29c943f034ed0a24bf4c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cc5ed68fa7a26a347f0cb85c94bb0b7b79ccb055
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608079"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059155"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -69,15 +69,14 @@ ms.locfileid: "105608079"
 
 #### <a name="keyword-recognition"></a>关键字识别
 
-语音 SDK 支持[关键字识别](./custom-keyword-basics.md)的概念。 “关键字识别”是在语音中识别关键字的操作，后跟一个在听到该关键字时执行的操作。 例如，“你好，Cortana”会激活 Cortana 助理。
+语音 SDK 支持[关键字识别](custom-keyword-basics.md)的概念。 “关键字识别”是在语音中识别关键字的操作，后跟一个在听到该关键字时执行的操作。 例如，“你好，Cortana”会激活 Cortana 助理。
 
 “关键字识别”在以下平台上可用：
 
   - C++/Windows 和 Linux
   - C#/Windows 和 Linux
   - Python/Windows 和 Linux
-  - Java/Windows 和 Linux 和 Android（语音设备 SDK）
-  - 关键字识别功能可能适用于任何麦克风类型，不过，官方关键字识别支持目前仅限于 Azure Kinect DK 硬件或语音设备 SDK 中的麦克风阵列
+  - Java/Windows、Linux 和 Android
 
 ### <a name="meeting-scenarios"></a>会议场景
 

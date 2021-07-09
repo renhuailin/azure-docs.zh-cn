@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1337167b13b05122aa38b3142a849129171bdc4d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2c8147399f37f5f9fe2b3c01bc2c273ffc59be31
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140292"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469600"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 简介
 
@@ -41,6 +41,7 @@ Azure Defender 为虚拟机、SQL 数据库、容器、web 应用程序、网络
 - [适用于 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)
 - [适用于资源管理器的 Azure Defender](defender-for-resource-manager-introduction.md)
 - [适用于 DNS 的 Azure Defender](defender-for-dns-introduction.md)
+- [用于开源关系数据库的 Azure Defender](defender-for-databases-introduction.md)
 
 安全中心的文档对其中每个计划单独进行了介绍。
 

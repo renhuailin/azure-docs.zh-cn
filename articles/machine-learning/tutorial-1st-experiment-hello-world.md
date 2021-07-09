@@ -1,7 +1,7 @@
 ---
-title: 教程：运行“Hello world!” Python 脚本
+title: 教程：Python 脚本入门
 titleSuffix: Azure Machine Learning
-description: Azure 机器学习入门系列的第 2 部分介绍了如何将简单的“Hello world!” Python 脚本提交到云中。
+description: 开始在 Azure 机器学习中使用第一个 Python 脚本。 本教程是由三个部分构成的入门教程系列的第 1 部分。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 02/11/2021
-ms.custom: devx-track-python
-ms.openlocfilehash: 4f2b01b7a04958c4bd1f97332b54a1ff4fc32356
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.date: 04/27/2021
+ms.custom: devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: ccc28c5a20fd31d3200f6473210150587fd5b4ad
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522319"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028624"
 ---
-# <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>教程：运行“Hello world!” Python 脚本（第 2 部分，共 4 部分）
+# <a name="tutorial-get-started-with-a-python-script-in-azure-machine-learning-part-1-of-3"></a>教程：开始在 Azure 机器学习中使用 Python 脚本（第 1 部分，共 3 部分）
 
-在本教程中，你将了解如何使用适用于 Python 的 Azure 机器学习 SDK 提交并运行 Python“Hello world!” 脚本。
+在本教程中，你将使用 Azure 机器学习在云中运行第一个 Python 脚本。 本教程是由三个部分构成的教程系列的第 1 部分。
 
-本教程是由四部分组成的系列教程的第 2 部分，你可以在其中了解 Azure 机器学习基础知识，并在 Azure 中完成基于作业的机器学习任务。 本教程的基础是你在[第 1 部分：为 Azure 机器学习设置本地计算机](tutorial-1st-experiment-sdk-setup-local.md)中完成的工作。
+本教程避免了训练机器学习模型的复杂性。 你将在云中运行“Hello World”Python 脚本。 你将了解如何使用控制脚本在 Azure 机器学习中配置和创建某个运行。
 
 在本教程中，将：
 
@@ -35,42 +35,60 @@ ms.locfileid: "102522319"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果你还没有 Azure 机器学习工作区，请先完成[第 1 部分](tutorial-1st-experiment-sdk-setup-local.md)。
+- 完成[快速入门：设置工作区以开始使用 Azure 机器学习](quickstart-create-resources.md)来创建工作区、计算实例和计算群集，以在本系列教程中使用。
 
-## <a name="create-and-run-a-python-script-locally"></a>在本地创建并运行一个 Python 脚本
+## <a name="create-and-run-a-python-script"></a>创建并运行一个 Python 脚本
 
-在 `tutorial` 目录下创建一个新的名为 `src` 的子目录，用于存储要在 Azure 机器学习计算群集上运行的代码。 在 `src` 子目录中，创建 `hello.py` Python 脚本：
+本教程将使用计算实例作为开发计算机。  首先创建几个文件夹和脚本：
+
+1. 登录 [Azure 机器学习工作室](https://ml.azure.com)，然后选择工作区（如果出现提示）。
+1. 在左侧选择“笔记本”
+1. 在“文件”工具栏中，选择“+”，然后选择“创建新文件夹”  。
+  :::image type="content" source="media/tutorial-1st-experiment-hello-world/create-folder.png" alt-text="屏幕截图显示在工具栏中创建新的文件夹工具。":::
+1. 将文件夹命名为“get-started”。
+1. 在文件夹名称的右侧，使用“...”在 get-started 下创建另一个文件夹 。
+  :::image type="content" source="media/tutorial-1st-experiment-hello-world/create-sub-folder.png" alt-text="屏幕截图显示创建子文件夹菜单。":::
+1. 将新文件夹命名为“src”。  如果文件位置不正确，请使用“编辑位置”链接。
+1. 在 src 文件夹的右侧，使用“...”在 src 文件夹中创建新文件  。 
+1. 将文件命名为“hello.py”。  将“文件类型”切换为 Python (.py)*。
+
+将以下代码复制到文件中：
 
 ```python
 # src/hello.py
 print("Hello world!")
 ```
 
-你的项目目录结构现在将如下所示：
+你的项目文件夹结构现在将如下所示： 
 
-:::image type="content" source="media/tutorial-1st-experiment-hello-world/directory-structure.png" alt-text="目录结构显示 src 子目录中的 hello.py":::
+:::image type="content" source="media/tutorial-1st-experiment-hello-world/directory-structure.png" alt-text="文件夹结构显示 src 子文件夹中的 hello.py。":::
 
 
-### <a name="test-your-script-locally"></a><a name="test"></a>在本地测试你的脚本
+### <a name="test-your-script"></a><a name="test"></a>测试你的脚本
 
-你可以通过使用你常用的 IDE 或终端在本地运行代码。 在本地运行代码具有可对代码进行交互式调试的好处。  在已激活 tutorial1 conda 环境的窗口中，运行 Python 文件：
+可以在本地运行代码，在本例中意味着在计算实例上运行。 在本地运行代码具有可对代码进行交互式调试的好处。  
 
-```bash
-cd <path/to/tutorial>
-python ./src/hello.py
-```
+如果之前已停止计算实例，现在使用计算下拉列表右侧“开始计算”工具启动它。 等待大约一分钟，状态更改为“正在运行”。
+
+:::image type="content" source="media/tutorial-1st-experiment-hello-world/start-compute.png" alt-text="屏幕截图显示正在启动计算实例（如果已停止）":::
+
+选择“保存并在终端中运行脚本”来运行脚本。
+
+:::image type="content" source="media/tutorial-1st-experiment-hello-world/save-run-in-terminal.png" alt-text="屏幕截图显示工具栏中的“保存并在终端中运行脚本”工具":::
+
+将在打开的终端窗口中看到该脚本的输出。 关闭选项卡，选择“终止”以关闭会话。
 
 > [!div class="nextstepaction"]
 > [我在本地运行脚本](?success=run-local#control-script) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=run-local)
 
 ## <a name="create-a-control-script"></a><a name="control-script"></a> 创建控制脚本
 
-使用控制脚本，你可以在云中运行 `hello.py` 脚本。 可以使用控制脚本来控制如何运行以及在何处运行机器学习代码。  
+通过“控制脚本”，你可以在不同的计算资源上运行 `hello.py` 脚本。 可以使用控制脚本来控制如何运行以及在何处运行机器学习代码。  
 
-在你的教程目录中，创建名为 `03-run-hello.py` 的新 Python 文件，然后将以下代码复制并粘贴到该文件中：
+选择“get-started”文件夹末尾的“...”，创建新文件 。  创建名为 run-hello.py 的新 Python 文件，然后将以下代码复制并粘贴到该文件中：
 
 ```python
-# tutorial/03-run-hello.py
+# get-started/run-hello.py
 from azureml.core import Workspace, Experiment, Environment, ScriptRunConfig
 
 ws = Workspace.from_config()
@@ -82,6 +100,9 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
+
+> [!TIP]
+> 如果在创建计算群集时使用了其他名称，请确保也调整代码中 `compute_target='cpu-cluster'` 的名称。
 
 ### <a name="understand-the-code"></a>了解代码
 
@@ -108,7 +129,7 @@ print(aml_url)
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) 包装你的 `hello.py` 代码并将其传递到你的工作区。 顾名思义，你可以使用此类来配置你希望脚本如何在 Azure 机器学习中运行。   此类还会指定该脚本将会在哪个计算目标上运行。 在此代码中，目标是在[设置教程](tutorial-1st-experiment-sdk-setup-local.md)中创建的计算群集。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) 包装你的 `hello.py` 代码并将其传递到你的工作区。 顾名思义，你可以使用此类来配置你希望脚本如何在 Azure 机器学习中运行。   此类还会指定该脚本将会在哪个计算目标上运行。 在此代码中，目标是在[设置教程](./quickstart-create-resources.md)中创建的计算群集。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -133,24 +154,21 @@ print(aml_url)
 
 ## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> 在云中提交并运行代码
 
-运行你的控制脚本，该脚本继而会在[设置教程](tutorial-1st-experiment-sdk-setup-local.md)中创建的计算群集上运行 `hello.py`。
+选择“保存并在终端中运行脚本”运行你的控制脚本，该脚本继而会在[设置教程](quickstart-create-resources.md)中创建的计算群集上运行 `hello.py`。
 
-
-```bash
-python 03-run-hello.py
-```
+在终端中，系统可能会要求你登录以进行身份验证。  复制代码，然后访问链接完成此步骤。
 
 > [!TIP]
-> 如果运行此代码返回错误“你没有访问订阅的权限”，请参阅[连接到工作区](how-to-manage-workspace.md?tab=python#connect-multi-tenant)，以获取有关身份验证选项的信息。
+> 如果刚创建完计算群集，则可能会看到错误“UserError: 未找到必需的 Docker 映像...”请等待大约 5 分钟，然后重试。  计算群集可能需要更多时间才能准备好启动节点。
 
 > [!div class="nextstepaction"]
 > [我在云中提交了代码](?success=submit-to-cloud#monitor) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)
 
-## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>通过使用工作室在云中监视代码
+## <a name="monitor-your-code-in-the-cloud-in-the-studio"></a><a name="monitor"></a>在工作室的云中监视代码
 
 来自脚本的输出中将包含一个指向工作室的链接，该链接类似于：`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`。
 
-访问该链接。  首先，你会看到状态为“正在准备”。  首次运行将需要 5 - 10 分钟才能完成。 这是因为发生了以下情况：
+访问该链接。  首先，你会看到状态为“已排队”或“正在准备” 。  首次运行将需要 5 - 10 分钟才能完成。 这是因为发生了以下情况：
 
 * docker 映像在云中构建
 * 计算群集的大小从 0 个节点调整到 1 个节点
@@ -158,7 +176,7 @@ python 03-run-hello.py
 
 由于 docker 映像已缓存在计算中，因此后续运行要快得多（约 15 秒）。 可以通过在第一次运行完成后重新提交以下代码来进行测试。
 
-作业完成后，转到“输出 + 日志”选项卡。在那里可以看到 `70_driver_log.txt` 文件，该文件的内容类似于：
+请等待大约 10 分钟。  你将看到一条消息，指出运行已完成。 然后使用“刷新”，查看状态更改为“已完成”。  作业完成后，转到“输出 + 日志”选项卡。在那里可以看到 `70_driver_log.txt` 文件，该文件的内容类似于：
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.

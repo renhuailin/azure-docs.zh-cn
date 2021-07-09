@@ -9,16 +9,16 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 324ca849e0f9c1282dc4b47ceba4654c76c07b35
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 8928e4752f8b1201cc3f4d26e48fa64e75bdd1fd
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870816"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903466"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>使用最新的 API 以编程方式为 Microsoft 客户协议创建 Azure 订阅
 
-本文帮助你使用最新 API 版本以编程方式为 Microsoft 客户协议创建 Azure 订阅。 如果你仍在使用较旧的预览版本，请参阅[通过 API 预览版以编程方式创建 Azure 订阅](programmatically-create-subscription-preview.md)。 
+本文帮助你使用最新 API 版本以编程方式为 Microsoft 客户协议创建 Azure 订阅。 如果你仍在使用较旧的预览版本，请参阅[通过旧 API 以编程方式创建 Azure 订阅](programmatically-create-subscription-preview.md)。 
 
 本文介绍如何使用 Azure 资源管理器以编程方式创建订阅。
 
@@ -30,7 +30,7 @@ ms.locfileid: "107870816"
 
 必须在发票科目上具有所有者、参与者或 Azure 订阅创建者角色，或者在计费对象信息或计费帐户上具有所有者或参与者角色才能创建订阅。 还可以为服务主体名称 (SPN) 提供相同的角色。 有关角色以及如何为这些角色分配权限的详细信息，请参阅[订阅计费角色和任务](understand-mca-roles.md#subscription-billing-roles-and-tasks)。
 
-如果使用 SPN 来创建订阅，则使用 [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) 或 [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) 将 Azure AD 应用程序注册的 ObjectId 用作服务主体 ObjectId。 
+如果使用 SPN 来创建订阅，则使用 [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true) 或 [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list) 将 Azure AD 应用程序注册的 ObjectId 用作服务主体 ObjectId。 
 
 如果不知道是否有权访问 Microsoft 客户协议帐户，请参阅[检查对 Microsoft 客户协议的访问权限](../understand/mca-overview.md#check-access-to-a-microsoft-customer-agreement)。
 

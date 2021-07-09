@@ -8,18 +8,18 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 52adba94650c09f731cfb6142852b28a0e3f3906
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: f279ea2011b37c01b1ef9ec67a2b5642f7e640b8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288629"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078087"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生孪生图
 
 本文提供了查询示例和说明来介绍如何使用 Azure 数字孪生查询语言查询[孪生图](concepts-twins-graph.md)以获取信息。 （如需获取查询语言简介，请参阅[概念：查询语言](concepts-query-language.md)。）
 
-本文包含示例查询，说明数字孪生的查询语言结构和常见查询操作。 本文还介绍了在编写查询后如何使用 Azure 数字孪生[查询 API](/rest/api/digital-twins/dataplane/query) 或 [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) 运行查询。
+本文包含示例查询，说明数字孪生的查询语言结构和常见查询操作。 本文还介绍了在编写查询后如何使用 Azure 数字孪生[查询 API](/rest/api/digital-twins/dataplane/query) 或 [SDK](concepts-apis-sdks.md#overview-data-plane-apis) 运行查询。
 
 > [!NOTE]
 > 如果通过 API 或 SDK 调用运行以下示例查询，则需将查询文本压缩为一行。
@@ -116,11 +116,11 @@ ms.locfileid: "108288629"
 
 可使用关系查询结构来标识作为关系的源或目标的数字孪生体。
 
-例如，你可从源孪生体开始，然后按照其关系查找关系的目标孪生体。 下面是一个查询示例，该查询查找来自孪生体 source-twin 的源关系的目标孪生体 。
+例如，你可从源孪生体开始，然后按照其关系查找关系的目标孪生体。 下面是一个查询示例，该查询查找来自孪生体 source-twin 的源关系的目标孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationshipSource":::
 
-也可以从关系的目标开始，追溯关系以查找源孪生体。 下面是一个查询示例，该查询查找孪生体 target-twin 的源关系的源孪生体 。
+也可以从关系的目标开始，追溯关系以查找源孪生体。 下面是一个查询示例，该查询查找孪生体 target-twin 的源关系的源孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationshipTarget":::
 
@@ -167,20 +167,17 @@ ms.locfileid: "108288629"
 
 ## <a name="filter-results-specify-return-set-with-projections"></a>筛选结果：使用投影指定返回集
 
-通过在 `SELECT` 语句中使用投影，可以选择查询将返回的列。
+通过在 `SELECT` 语句中使用投影，可以选择查询将返回的列。 基元属性和复杂属性现在都支持投影。 有关 Azure 数字孪生投影的详细信息，请参阅 [SELECT 子句参考文档](reference-query-clause-select.md#select-columns-with-projections)。
 
->[!NOTE]
->目前，不支持复杂属性。 为确保投影属性有效，请将投影与 `IS_PRIMITIVE` 检查合并。
-
-以下示例说明查询如何使用投影返回孪生和关系。 以下查询对方案中的客户、工厂和边缘进行了投影，其中 ID 为 ABC 的工厂通过 Factory.customer 关系与客户相关联，而该关系则表示为边缘       。
+以下示例说明查询如何使用投影返回孪生和关系。 以下查询对方案中的客户、工厂和边缘进行了投影，其中 ID 为 ABC 的工厂通过 Factory.customer 关系与客户相关联，而该关系则表示为边缘  。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections1":::
 
-你还可以使用投影返回孪生的属性。 以下查询对客户的 Name 属性进行了投影，这些客户通过 Factory.customer 关系与 ID 为 ABC 的工厂相关联    。
+你还可以使用投影返回孪生的属性。 以下查询对客户的 Name 属性进行了投影，这些客户通过 Factory.customer 关系与 ID 为 ABC 的工厂相关联  。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections2":::
 
-你还可以使用投影返回关系的属性。 与先前的示例类似，以下查询对客户的 Name 属性进行了投影，这些客户通过 Factory.customer 关系与 ID 为 ABC 的工厂相关联；但现在该查询还返回了该关系的 prop1 和 prop2 两个属性      。 它通过将关系命名为边缘并收集其属性来实现这一点。  
+你还可以使用投影返回关系的属性。 与先前的示例类似，以下查询对客户的 Name 属性进行了投影，这些客户通过 Factory.customer 关系与 ID 为 ABC 的工厂相关联；但现在该查询还返回了该关系的 prop1 和 prop2 两个属性    。 它通过将关系命名为边缘并收集其属性来实现这一点。  
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections3":::
 
@@ -190,7 +187,7 @@ ms.locfileid: "108288629"
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections4":::
 
-以下类似查询可查询上述集合，但仅将 Consumer.name 属性投影为 `consumerName`，并将整个工厂投影为孪生 。
+以下类似查询可查询上述集合，但仅将 Consumer.name 属性投影为 `consumerName`，并将整个工厂投影为孪生。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections5":::
 
@@ -231,13 +228,13 @@ ms.locfileid: "108288629"
 
 确定查询字符串后，可以调用查询 API 来执行它。
 
-可以直接调用 API，也可以使用适用于 Azure 数字孪生的其中一个 [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)。
+可以直接调用 API，也可以使用适用于 Azure 数字孪生的其中一个 [SDK](concepts-apis-sdks.md#overview-data-plane-apis)。
 
-以下代码片段说明了客户端应用中的 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 调用：
+以下代码片段说明了客户端应用中的 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 调用：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-此调用中使用的查询返回数字孪生的列表，上述示例中使用 [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin) 对象来表示它。 每个查询的数据返回类型取决于使用 `SELECT` 语句指定的术语：
+此调用中使用的查询返回数字孪生的列表，上述示例中使用 [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) 对象来表示它。 每个查询的数据返回类型取决于使用 `SELECT` 语句指定的术语：
 * 以 `SELECT * FROM ...` 开头的查询将返回数字孪生的列表（可以将其序列化为 `BasicDigitalTwin` 对象或已创建的其他自定义数字孪生类型）。
 * 以格式 `SELECT <A>, <B>, <C> FROM ...` 开头的查询将返回包含键 `<A>`、`<B>` 和 `<C>` 的字典。
 * 可以设计其他格式的 `SELECT` 语句，以返回自定义数据。 可以考虑创建自己的类来处理自定义程度非常高的结果集。 
@@ -250,4 +247,4 @@ ms.locfileid: "108288629"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 [Azure 数字孪生 API 和 SDK](how-to-use-apis-sdks.md)，包括本文中用于运行查询的查询 API。
+详细了解 [Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)，包括本文中用于运行查询的查询 API。

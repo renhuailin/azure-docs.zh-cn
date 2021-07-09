@@ -5,12 +5,12 @@ ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: fddf208a51254d70fb8cc2aa1c9322a22506003a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b01bc4ceefd1d0c645ed584648a34851d741aed1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324268"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751762"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入门：使用 Azure Resource Graph Explorer 运行第一个 Resource Graph 查询
 

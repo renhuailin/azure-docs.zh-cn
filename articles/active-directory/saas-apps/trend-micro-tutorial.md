@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/21/2020
+ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05831b88c492051b2b8d48071702335b3aac76b9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008389"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062481"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>教程：Azure Active Directory 与 Trend Micro Web Security (TMWS) 的单一登录 (SSO) 集成
 
@@ -25,8 +25,6 @@ ms.locfileid: "96008389"
 * 在 Azure AD 中控制谁有权访问 TMWS。
 * 让用户使用其 Azure AD 帐户自动登录到 TMWS。
 * 在一个中心位置（Azure 门户）管理帐户。
-
-若要了解有关 SaaS 应用程序与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 中的应用程序](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,13 +38,12 @@ ms.locfileid: "96008389"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * TMWS 支持 SP 发起的 SSO。
-* 配置 TMWS 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 若要了解如何使用 Microsoft Cloud App Security 实施会话控制，请参阅[为任何应用加入和部署条件访问应用控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-tmws-from-the-gallery"></a>从库中添加 TMWS
 
 若要配置 TMWS 与 Azure AD 的集成，需要从库中将 TMWS 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左窗格中，选择“Azure Active Directory”服务。 
 1. 依次选择“企业应用程序”、“所有应用程序”。  
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
@@ -70,7 +67,7 @@ ms.locfileid: "96008389"
 
 在 Azure 门户中完成以下步骤以启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在“Trend Micro Web Security (TMWS)”应用程序集成页上，在“管理”部分中选择“单一登录”。   
+1. 在 Azure 门户中的“Trend Micro Web Security (TMWS)”应用程序集成页上，在“管理”部分选择“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML”   。
 1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的笔形按钮以编辑设置：  
 
@@ -127,13 +124,7 @@ ms.locfileid: "96008389"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中选择“Trend Micro Web Security (TMWS)”。 
 1. 在应用概览页上，在“管理”部分中选择“用户和组”：  
-
-   ![选择“用户和组”](common/users-groups-blade.png)
-
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
-
-    ![选择“添加用户”](common/add-assign-user.png)
-
 1. 在“用户和组”对话框中的“用户”列表内选择“B.Simon”，然后单击屏幕底部的“选择”按钮。    
 1. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中选择“分配”。  
@@ -228,16 +219,6 @@ ms.locfileid: "96008389"
 
 1. 在 Azure AD 登录窗口中，输入你的 Azure AD 帐户凭据。 现在你应当已登录到 TMWS。
 
-## <a name="additional-resources"></a>其他资源
+## <a name="next-steps"></a>后续步骤
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程](./tutorial-list.md)
-
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [尝试通过 Azure AD 使用 Trend Micro Web Security](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
-
-- [如何使用高级可见性和控制保护 Trend Micro Web Security](/cloud-app-security/proxy-intro-aad)
+配置 TMWS 后，可以强制实施会话控制，实时防止组织的敏感数据遭受外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

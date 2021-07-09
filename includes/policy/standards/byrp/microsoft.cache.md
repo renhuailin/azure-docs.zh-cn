@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 05/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 2c8b27043c20bfe9736c2b2ab669a108dc219286
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 0ea6ec45eba1dfb25af188901572df8ccc08593a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175653"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100498"
 ---
 ## <a name="azure-security-benchmark"></a>Azure 安全基准
 
@@ -32,6 +32,15 @@ ms.locfileid: "108175653"
 |域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
 |数据保护 |4.4 |加密传输中的所有敏感信息 |[只能与 Azure Cache for Redis 建立安全连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+
+## <a name="canada-federal-pbmm"></a>加拿大联邦 PBMM
+
+若要查看可供各项 Azure 服务使用的 Azure Policy 内置项如何映射到此合规性标准，请参阅 [Azure Policy 合规性 - 加拿大联邦 PBMM](../../../../articles/governance/policy/samples/canada-federal-pbmm.md)。
+有关此合规性标准的详细信息，请参阅[加拿大联邦 PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html)。
+
+|域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|系统和通信保护 |SC-8(1) |传输保密性和完整性 \| 加密或备用物理保护 |[只能与 Azure Cache for Redis 建立安全连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 
 ## <a name="cmmc-level-3"></a>CMMC 级别 3
 
@@ -58,6 +67,15 @@ ms.locfileid: "108175653"
 |网络连接控制 |0814.01n1Organizational.12 - 01.n |根据访问控制策略以及临床和商业应用程序的要求，使用托管接口上的“默认拒绝，出现例外情况时允许”策略来限制用户连接到内部网络的能力。 |[只能与 Azure Cache for Redis 建立安全连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 |识别与外部各方相关的风险 |1451.05iCSPOrganizational.2 - 05.i |云服务提供商设计并实现控制，通过适当地划分职责、基于角色的访问权限以及为供应链中所有人提供最低特权访问权限，来降低和控制数据安全风险。 |[只能与 Azure Cache for Redis 建立安全连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 |在线事务 |0946.09y2Organizational.14 - 09.y |组织要求交易中的各方使用电子签名，并要求其相互之间使用加密。 |[只能与 Azure Cache for Redis 建立安全连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+
+## <a name="irs-1075-september-2016"></a>IRS 1075 2016 年 9 月
+
+若要查看可供各项 Azure 服务使用的 Azure Policy 内置项如何映射到此合规性标准，请参阅 [Azure Policy 合规性 - IRS 1075 2016 年 9 月版](../../../../articles/governance/policy/samples/irs-1075-sept2016.md)。
+有关此合规性标准的详细信息，请参阅 [IRS 1075 2016 年 9 月版](https://www.irs.gov/pub/irs-pdf/p1075.pdf)。
+
+|域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|系统和通信保护 |9.3.16.6 |传输保密性和完整性 (SC-8) |[只能与 Azure Cache for Redis 建立安全连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 
 ## <a name="iso-270012013"></a>ISO 27001:2013
 
@@ -97,4 +115,13 @@ ms.locfileid: "108175653"
 |域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
 |系统和通信保护 |SC-8 (1) |传输保密性和完整性 \| 加密或备用物理保护 |[只能与 Azure Cache for Redis 建立安全连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+
+## <a name="uk-official-and-uk-nhs"></a>英国官方和英国 NHS
+
+若要查看可供各项 Azure 服务使用的 Azure Policy 内置项如何映射到此合规性标准，请参阅 [Azure Policy 合规性 - UK OFFICIAL 和 UK NHS](../../../../articles/governance/policy/samples/ukofficial-uknhs.md)。
+有关此合规性标准的详细信息，请参阅 [UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications)。
+
+|域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|传输中数据保护 |1 |传输中数据保护 |[只能与 Azure Cache for Redis 建立安全连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 

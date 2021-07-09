@@ -6,15 +6,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 05/21/2021
 ms.author: banders
 ms.reviewer: baolcsva
-ms.openlocfilehash: f32c43b08b8259467fb00a75ca2e7089d7ec87e8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9ef2d08f3cbc557cfa914c13298b1675afbf455c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107485562"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458681"
 ---
 # <a name="key-next-steps-after-accepting-your-microsoft-customer-agreement"></a>接受 Microsoft 客户协议后的关键后续步骤
 
@@ -45,7 +45,7 @@ ms.locfileid: "107485562"
 
 移动订阅后，用户对订阅的访问权限保持不变。 所有针对订阅的使用量都会根据新合同路由发票。
 
-当你开始使用 Azure 服务时，会根据 Microsoft 客户协议在每月的第五天生成新发票 - 请确保[更新计费对象信息中的 PO 编号](../manage/change-azure-account-profile.md)。 默认付款方式为电汇。 若要了解如何设置付款方式以避免延迟，请参阅[如何为订阅付费](../understand/pay-bill.md#wire-bank-details)。 本文介绍如何获取所需的银行付款信息。
+当你开始使用 Azure 服务时，系统会根据 Microsoft 客户协议在每月的第五天生成新发票。 默认付款方式为电汇。 若要了解如何设置付款方式以避免延迟，请参阅[如何为订阅付费](../understand/pay-bill.md#wire-bank-details)。 本文介绍如何获取所需的银行付款信息。
 
 ## <a name="confirm-payment-details"></a>确认付款详细信息
 
@@ -68,6 +68,22 @@ ms.locfileid: "107485562"
 
 请确保完成之前的[即用即付](../understand/download-azure-invoice.md)或 [EA](../manage/ea-portal-enrollment-invoices.md) 合同订阅发票的任何未结付款。 有关详细信息，请参阅[了解 Azure 中的 Microsoft 客户协议发票](../understand/mca-understand-your-invoice.md#billing-period)。
 
+## <a name="update-a-po-number"></a>更新 PO 编号
+
+默认情况下，计费对象信息的发票没有关联的 PO 编号。 为计费对象信息添加 PO 编号后，该编号将显示在计费对象信息的发票上。
+
+若要添加或更改计费对象信息的 PO 编号，请使用以下步骤。
+
+1.  登录到 Azure 门户。
+1.  搜索“成本管理 + 计费”，然后选择“计费范围” 。
+1.  选择计费范围。
+1.  在左侧菜单中的“计费”下，选择“计费对象信息” 。
+1.  选择相应的计费对象信息。
+1.  在左侧菜单中的“设置”下，选择“属性” 。
+1.  选择“更新 PO 编号”。
+1.  输入 PO 编号，然后选择“更新”。
+
+
 ## <a name="update-your-tax-id"></a>更新纳税人标识号
 
 请确保在移动订阅后更新你的纳税人标识号。 纳税人标识号用于免税计算，并且会显示在发票上。
@@ -80,6 +96,10 @@ ms.locfileid: "107485562"
 1. 进行更新，然后选择“保存”。
 
 [了解有关如何更新计费帐户设置的详细信息](/microsoft-store/update-microsoft-store-for-business-account-settings)。
+
+## <a name="cancel-support-plan"></a>取消支持计划
+
+了解如何[取消以前的支持计划](../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json#cancel-a-prior-support-plan)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 

@@ -6,22 +6,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/19/2021
+ms.date: 06/11/2021
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: d39f40d4059b43246f523b4d01ca92c0360bc574
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bd2babf0ae88cce5d6162ddd797225a83ef9367b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765036"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112084051"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-[参考文档](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.5/sdk/textanalytics/azure-ai-textanalytics) | [包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.5) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.5/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[参考文档](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.7/sdk/textanalytics/azure-ai-textanalytics) | [包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.7) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.7/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -44,14 +44,14 @@ ms.locfileid: "107765036"
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-在首选 IDE 或开发环境中创建 Maven 项目。 然后在项目的 pom.xml 文件中，添加以下依赖项。 可联机找到[用于其他生成工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.5)的实现语法。
+在首选 IDE 或开发环境中创建 Maven 项目。 然后在项目的 pom.xml 文件中，添加以下依赖项。 可联机找到[用于其他生成工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.7)的实现语法。
 
 ```xml
 <dependencies>
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>5.1.0-beta.5</version>
+        <version>5.1.0-beta.7</version>
     </dependency>
 </dependencies>
 ```
@@ -207,7 +207,7 @@ Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0
 Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
 ```
 
-### <a name="opinion-mining"></a>观点挖掘
+## <a name="opinion-mining"></a>观点挖掘
 
 若要使用观点挖掘执行情绪分析，请创建一个名为 `sentimentAnalysisWithOpinionMiningExample()` 的新函数（该函数接受之前创建的客户端），并通过设置选项对象 `AnalyzeSentimentOptions` 调用其 `analyzeSentiment()` 函数。 如果成功，则返回的 `AnalyzeSentimentResult` 对象将包含 `documentSentiment` 和 `sentenceSentiments`，否则将包含 `errorMessage`。 
 
@@ -365,66 +365,6 @@ Recognized entity: Seattle, entity category: Location, entity sub-category: GPE,
 Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8, offset: 24, length: 9.
 ```
 
-### <a name="entity-linking"></a>实体链接
-
-创建一个名为 `recognizeLinkedEntitiesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `recognizeLinkedEntities()` 函数。 如果成功，则返回的 `LinkedEntityCollection` 对象将包含 `LinkedEntity` 的列表，否则将包含 `errorMessage`。 由于链接实体是唯一标识的，因此同一实体的实例将以分组形式出现在 `LinkedEntity` 对象下，显示为 `LinkedEntityMatch` 对象的列表。
-
-
-```java
-static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
-{
-    // The text that need be analyzed.
-    String text = "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, " +
-        "to develop and sell BASIC interpreters for the Altair 8800. " +
-        "During his career at Microsoft, Gates held the positions of chairman, " +
-        "chief executive officer, president and chief software architect, " +
-        "while also being the largest individual shareholder until May 2014.";
-
-    System.out.printf("Linked Entities:%n");
-    for (LinkedEntity linkedEntity : client.recognizeLinkedEntities(text)) {
-        System.out.printf("Name: %s, ID: %s, URL: %s, Data Source: %s.%n",
-            linkedEntity.getName(),
-            linkedEntity.getDataSourceEntityId(),
-            linkedEntity.getUrl(),
-            linkedEntity.getDataSource());
-        System.out.printf("Matches:%n");
-        for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getMatches()) {
-            System.out.printf("Text: %s, Score: %.2f, Offset: %s, Length: %s%n",
-            linkedEntityMatch.getText(),
-            linkedEntityMatch.getConfidenceScore(),
-            linkedEntityMatch.getOffset(),
-            linkedEntityMatch.getLength());
-        }
-    }
-}
-```
-
-### <a name="output"></a>输出
-
-```console
-Linked Entities:
-Name: Microsoft, ID: Microsoft, URL: https://en.wikipedia.org/wiki/Microsoft, Data Source: Wikipedia.
-Matches:
-Text: Microsoft, Score: 0.55, Offset: 9, Length: 0
-Text: Microsoft, Score: 0.55, Offset: 9, Length: 150
-Name: Bill Gates, ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates, Data Source: Wikipedia.
-Matches:
-Text: Bill Gates, Score: 0.63, Offset: 10, Length: 25
-Text: Gates, Score: 0.63, Offset: 5, Length: 161
-Name: Paul Allen, ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen, Data Source: Wikipedia.
-Matches:
-Text: Paul Allen, Score: 0.60, Offset: 10, Length: 40
-Name: April 4, ID: April 4, URL: https://en.wikipedia.org/wiki/April_4, Data Source: Wikipedia.
-Matches:
-Text: April 4, Score: 0.32, Offset: 7, Length: 54
-Name: BASIC, ID: BASIC, URL: https://en.wikipedia.org/wiki/BASIC, Data Source: Wikipedia.
-Matches:
-Text: BASIC, Score: 0.33, Offset: 5, Length: 89
-Name: Altair 8800, ID: Altair 8800, URL: https://en.wikipedia.org/wiki/Altair_8800, Data Source: Wikipedia.
-Matches:
-Text: Altair 8800, Score: 0.88, Offset: 11, Length: 116
-```
-
 
 ### <a name="personally-identifiable-information-recognition"></a>个人身份信息识别
 
@@ -485,7 +425,71 @@ Recognized entity: Seattle, entity category: Location, entity sub-category: GPE,
 Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
 ```
 
-### <a name="entity-linking"></a>实体链接
+---
+
+## <a name="entity-linking"></a>实体链接
+
+# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+
+创建一个名为 `recognizeLinkedEntitiesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `recognizeLinkedEntities()` 函数。 如果成功，则返回的 `LinkedEntityCollection` 对象将包含 `LinkedEntity` 的列表，否则将包含 `errorMessage`。 由于链接实体是唯一标识的，因此同一实体的实例将以分组形式出现在 `LinkedEntity` 对象下，显示为 `LinkedEntityMatch` 对象的列表。
+
+
+```java
+static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
+{
+    // The text that need be analyzed.
+    String text = "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, " +
+        "to develop and sell BASIC interpreters for the Altair 8800. " +
+        "During his career at Microsoft, Gates held the positions of chairman, " +
+        "chief executive officer, president and chief software architect, " +
+        "while also being the largest individual shareholder until May 2014.";
+
+    System.out.printf("Linked Entities:%n");
+    for (LinkedEntity linkedEntity : client.recognizeLinkedEntities(text)) {
+        System.out.printf("Name: %s, ID: %s, URL: %s, Data Source: %s.%n",
+            linkedEntity.getName(),
+            linkedEntity.getDataSourceEntityId(),
+            linkedEntity.getUrl(),
+            linkedEntity.getDataSource());
+        System.out.printf("Matches:%n");
+        for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getMatches()) {
+            System.out.printf("Text: %s, Score: %.2f, Offset: %s, Length: %s%n",
+            linkedEntityMatch.getText(),
+            linkedEntityMatch.getConfidenceScore(),
+            linkedEntityMatch.getOffset(),
+            linkedEntityMatch.getLength());
+        }
+    }
+}
+```
+
+### <a name="output"></a>输出
+
+```console
+Linked Entities:
+Name: Microsoft, ID: Microsoft, URL: https://en.wikipedia.org/wiki/Microsoft, Data Source: Wikipedia.
+Matches:
+Text: Microsoft, Score: 0.55, Offset: 9, Length: 0
+Text: Microsoft, Score: 0.55, Offset: 9, Length: 150
+Name: Bill Gates, ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates, Data Source: Wikipedia.
+Matches:
+Text: Bill Gates, Score: 0.63, Offset: 10, Length: 25
+Text: Gates, Score: 0.63, Offset: 5, Length: 161
+Name: Paul Allen, ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen, Data Source: Wikipedia.
+Matches:
+Text: Paul Allen, Score: 0.60, Offset: 10, Length: 40
+Name: April 4, ID: April 4, URL: https://en.wikipedia.org/wiki/April_4, Data Source: Wikipedia.
+Matches:
+Text: April 4, Score: 0.32, Offset: 7, Length: 54
+Name: BASIC, ID: BASIC, URL: https://en.wikipedia.org/wiki/BASIC, Data Source: Wikipedia.
+Matches:
+Text: BASIC, Score: 0.33, Offset: 5, Length: 89
+Name: Altair 8800, ID: Altair 8800, URL: https://en.wikipedia.org/wiki/Altair_8800, Data Source: Wikipedia.
+Matches:
+Text: Altair 8800, Score: 0.88, Offset: 11, Length: 116
+```
+
+# <a name="version-30-preview"></a>[版本 3.0 预览](#tab/version-3)
 
 创建一个名为 `recognizeLinkedEntitiesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `recognizeLinkedEntities()` 函数。 如果成功，则返回的 `LinkedEntityCollection` 对象将包含 `LinkedEntity` 的列表，否则将包含 `errorMessage`。 由于链接实体是唯一标识的，因此同一实体的实例将以分组形式出现在 `LinkedEntity` 对象下，显示为 `LinkedEntityMatch` 对象的列表。
 
@@ -574,6 +578,8 @@ veterinarian
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
+可以使用“分析”操作执行异步批处理请求实现以下目的：NER、关键短语提取、情绪分析和 PII 检测。 下面的示例演示了有关一个操作的基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeActions.md)找到更高级的示例
+
 [!INCLUDE [Analyze Batch Action pricing](../analyze-operation-pricing-caution.md)]
 
 创建名为 `analyzeBatchActionsExample()` 的新函数，它将调用 `beginAnalyzeBatchActions()` 函数。 结果将是一个长期操作，将轮询该操作以获得结果。
@@ -586,16 +592,16 @@ static void analyzeBatchActionsExample(TextAnalyticsClient client)
                         );
 
         
-        SyncPoller<AnalyzeBatchActionsOperationDetail, PagedIterable<AnalyzeBatchActionsResult>> syncPoller =
-                client.beginAnalyzeBatchActions(documents,
+        SyncPoller<AnalyzeActionsOperationDetail, PagedIterable<AnalyzeActionsResult>> syncPoller =
+                client.beginAnalyzeActions(documents,
                         new TextAnalyticsActions().setDisplayName("Analyze Batch Actions Quickstart")
                                 .setRecognizeEntitiesOptions(new RecognizeEntitiesOptions()),
-                        new AnalyzeBatchActionsOptions().setIncludeStatistics(false),
+                        new AnalyzeActionsOptions().setIncludeStatistics(false),
                         Context.NONE);
 
         // Task operation statistics
         while (syncPoller.poll().getStatus() == LongRunningOperationStatus.IN_PROGRESS) {
-            final AnalyzeBatchActionsOperationDetail operationResult = syncPoller.poll().getValue();
+            final AnalyzeActionsOperationDetail operationResult = syncPoller.poll().getValue();
             System.out.printf("Action display name: %s, Successfully completed actions: %d, in-process actions: %d, failed actions: %d, total actions: %d%n",
                     operationResult.getDisplayName(), operationResult.getActionsSucceeded(),
                     operationResult.getActionsInProgress(), operationResult.getActionsFailed(),
@@ -604,13 +610,13 @@ static void analyzeBatchActionsExample(TextAnalyticsClient client)
 
         syncPoller.waitForCompletion();
 
-        Iterable<PagedResponse<AnalyzeBatchActionsResult>> pagedResults = syncPoller.getFinalResult().iterableByPage();
-        for (PagedResponse<AnalyzeBatchActionsResult> page : pagedResults) {
+        Iterable<PagedResponse<AnalyzeActionsResult>> pagedResults = syncPoller.getFinalResult().iterableByPage();
+        for (PagedResponse<AnalyzeActionsResult> page : pagedResults) {
             System.out.printf("Response code: %d, Continuation Token: %s.%n", page.getStatusCode(), page.getContinuationToken());
-            page.getElements().forEach(analyzeBatchActionsResult -> {
+            page.getElements().forEach(analyzeActionsResult -> {
                 System.out.println("Entities recognition action results:");
                 IterableStream<RecognizeEntitiesActionResult> recognizeEntitiesActionResults =
-                        analyzeBatchActionsResult.getRecognizeEntitiesActionResults();
+                        analyzeActionsResult.getRecognizeEntitiesActionResults();
                 if (recognizeEntitiesActionResults != null) {
                     recognizeEntitiesActionResults.forEach(actionResult -> {
                         if (!actionResult.isError()) {
@@ -660,7 +666,7 @@ Recognized entity: Bill Gates, entity category: Person, entity subcategory: null
 Recognized entity: Paul Allen, entity category: Person, entity subcategory: null, confidence score: 0.990000.
 ```
 
-你还可以使用“分析”操作检测 PII、识别链接的实体和关键短语提取。 请参阅 GitHub 上的[分析示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro)。
+还可以使用“分析”操作来执行 NER、关键短语提取、情绪分析和检测 PII。 请参阅 GitHub 上的[分析示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeActionsAsync.java)。
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 

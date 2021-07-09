@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: ea22e6a3afe8ee90cb7b59d1aca0a37fc4fa03d6
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 0185a4b18ed56899de9c235bbd0438ef1dedf7c4
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864912"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412720"
 ---
 # <a name="get-supported-glossary-formats"></a>获取支持的词汇表格式
 
@@ -25,7 +25,7 @@ ms.locfileid: "107864912"
 
 将 `GET` 请求发送到：
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/glossaries/formats
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/glossaries/formats
 ```
 
 了解如何查找[自定义域名](../get-started-with-document-translation.md#find-your-custom-domain-name)。
@@ -62,11 +62,14 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 获取支持的术语表格式 API 中将返回基类型列表。
 
-|状态代码|说明|
-|--- |--- |
-|200|没问题。 返回受支持术语表文件格式的列表。|
-|500|内部服务器错误。|
-|其他状态代码|太多 requestsServer 暂不可用|
+|名称|类型|说明|
+|--- |--- |--- |
+|值|FileFormat []|FileFormat[] 包含下面列出的详细信息。|
+|value.contentTypes|string []|此格式受支持的内容类型。|
+|value.defaultVersion|字符串|如果未指定，则为默认版本|
+|value.fileExtensions|string []| 此格式支受持的文件扩展名。|
+|value.format|字符串|格式名称。|
+|value.versions|string []| 受支持的版本。|
 
 ### <a name="error-response"></a>错误响应
 
@@ -74,9 +77,10 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 |--- |--- |--- |
 |code|string|包含错误代码概要的枚举。 可能的值：<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>未授权</li></ul>|
 |message|字符串|获取概要错误消息。|
-|innerError|InnerErrorV2|新内部错误格式，符合认知服务 API 准则。 它包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
+|innerError|InnerTranslationError|新内部错误格式，符合认知服务 API 准则。 这包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
 |innerError.code|字符串|获取代码错误字符串。|
 |innerError.message|字符串|获取概要错误消息。|
+|innerError.target|string|获取错误的源。 例如，如果文档无效，应为“文档”或“文档 ID”。|
 
 ## <a name="examples"></a>示例
 
@@ -95,6 +99,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
             "contentTypes": [
                 "application/xliff+xml"
             ],
+            "defaultVersion": "1.2",
             "versions": [
                 "1.0",
                 "1.1",
@@ -109,11 +114,20 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
             ],
             "contentTypes": [
                 "text/tab-separated-values"
+            ]
+        },
+        {
+            "format": "CSV",
+            "fileExtensions": [
+                ".csv"
             ],
-            "versions": []
+            "contentTypes": [
+                "text/csv"
+            ]
         }
     ]
 }
+
 ```
 
 ### <a name="example-error-response"></a>错误响应示例

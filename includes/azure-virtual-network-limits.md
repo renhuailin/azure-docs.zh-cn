@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 2262290486047c225cec8e8f6bb73242df7258fa
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: d31e52763ed69303ee6ea9bf44fd85403c810179
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106271586"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111993478"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>网络限制 - Azure 资源管理器
 以下限制仅适用于通过每个订阅的每个区域的 Azure 资源管理器进行管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
@@ -46,13 +46,14 @@ ms.locfileid: "106271586"
 | 用户定义路由表数 |200 |
 | 每个路由表的用户定义的路由数 |400 |
 | 每个 Azure VPN 网关的点到站点根证书数 |20 |
+| 每个 Azure VPN 网关的点到站点撤销客户端证书 |300 |
 | 虚拟网络 TAP |100 |
 | 每个虚拟网络 TAP 的网络接口 TAP 配置 |100 |
 
 #### <a name="public-ip-address-limits"></a><a name="publicip-address"></a>公共 IP 地址限制
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 公共 IP 地址<sup>1</sup> | 基本版为 10。 | 请联系支持人员。 |
+| 公共 IP 地址<sup>1,2</sup> | 基本版为 10。 | 请联系支持人员。 |
 | 静态公共 IP 地址<sup>1</sup> | 基本版为 10。 | 请联系支持人员。 |
 | 标准公共 IP 地址<sup>1</sup> | 10 | 请联系支持人员。 |
 | [每个资源组的公共 IP 地址](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | 请联系支持人员。 | 
@@ -60,6 +61,8 @@ ms.locfileid: "106271586"
 | 公共 IP 前缀长度 | /28 | 请联系支持人员。 |
 
 <sup>1</sup>公共 IP 地址的默认限制根据产品/服务类别类型（例如免费试用、即用即付、CSP）而有所不同。 例如，企业协议订阅数的默认值为 1000。
+
+<sup>2</sup>公共 IP 地址限制是指公共 IP 地址的总数，包括基本 IP 地址和标准 IP 地址。 
 
 #### <a name="load-balancer-limits"></a><a name="load-balancer"></a>负载均衡器限制
 以下限制仅适用于通过每个订阅的每个区域的 Azure Resource Manager 进行管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。

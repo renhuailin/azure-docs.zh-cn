@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 0939216e1d96e898d7c45b9e7a3ec72453b263d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: adcabf8427f515a1814dd740bc5c70b8b0e7b9b7
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958355"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109858008"
 ---
 开始使用适用于 Python 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -22,7 +22,7 @@ ms.locfileid: "105958355"
 
 * [检测图像中的人脸](#detect-faces-in-an-image)
 * [查找相似人脸](#find-similar-faces)
-* [创建和训练人员组](#create-and-train-a-persongroup)
+* [创建和训练 PersonGroup](#create-and-train-a-persongroup)
 * [识别人脸](#identify-a-face)
 * [验证人脸](#verify-faces)
 
@@ -86,7 +86,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 * [对客户端进行身份验证](#authenticate-the-client)
 * [检测图像中的人脸](#detect-faces-in-an-image)
 * [查找相似人脸](#find-similar-faces)
-* [创建和训练人员组](#create-and-train-a-persongroup)
+* [创建和训练 PersonGroup](#create-and-train-a-persongroup)
 * [识别人脸](#identify-a-face)
 * [验证人脸](#verify-faces)
 
@@ -174,7 +174,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。
 
 > [!IMPORTANT]
-> 若要运行此示例，必须先运行[创建和训练人员组](#create-and-train-a-persongroup)中的代码。
+> 若要运行此示例，必须先运行[创建和训练 PersonGroup](#create-and-train-a-persongroup) 中的代码。
 
 ### <a name="get-a-test-image"></a>获取测试图像
 
@@ -235,10 +235,10 @@ python quickstart-file.py
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已了解如何使用适用于 Python 的人脸客户端库来执行基本人脸识别任务。 接下来，请在参考文档中详细了解该库。
+在本快速入门中，你已了解如何使用适用于 Python 的人脸客户端库来执行基本人脸识别任务。 接下来，了解不同的人脸检测模型以及如何为你的用例指定适当的模型。
 
 > [!div class="nextstepaction"]
-> [人脸 API 参考 (Python)](/python/api/azure-cognitiveservices-vision-face/)
+> [指定人脸检测模型版本](../../Face-API-How-to-Topics/specify-detection-model.md)
 
 * [什么是人脸服务？](../../overview.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) 上找到此示例的源代码。

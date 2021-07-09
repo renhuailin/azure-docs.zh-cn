@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 00058f75a2c4378371c427ff9ebabe7e2336b06a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29430671cd5879f140127c94541dd50d765fa87e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99576542"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460269"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>了解数字孪生体及其孪生图
 
@@ -23,7 +23,7 @@ ms.locfileid: "99576542"
 
 ## <a name="digital-twins"></a>数字孪生
 
-你需要将模型上传到此服务，然后才能在 Azure 数字孪生实例中创建数字孪生体。 模型描述特定孪生体可以具有的一组属性、遥测消息和关系，等等。 有关在模型中定义的信息的类型，请参阅[概念：自定义模型](concepts-models.md)。
+你需要将模型上传到此服务，然后才能在 Azure 数字孪生实例中创建数字孪生体。 模型描述特定孪生体可以具有的一组属性、遥测消息和关系，等等。 有关在模型中定义的信息的类型，请参阅概念：自定义模型。
 
 创建并上传模型后，客户端应用可以创建该类型的实例；这是一个数字孪生体。 例如，在创建“Floor”的模型后，你可以创建使用此类型的一个或多个数字孪生体（例如，“Floor”类型的一个孪生体称为“GroundFloor”，另一个称为“Floor2”，等等）。
 
@@ -33,7 +33,7 @@ ms.locfileid: "99576542"
 
 孪生体通过其关系连接成为孪生图。 孪生体可以具有的关系定义为其模型的一部分。  
 
-例如，模型“Floor”可以定义对“Room”类型的孪生体的“包含”关系 。 有了此定义，你就可以通过 Azure 数字孪生创建从任何“Floor”孪生体到任何“Room”孪生体（包括属于“Room”子类型的孪生体）的“包含”关系。    
+例如，模型 Floor 可以定义针对 Room 类型的孪生体的“包含”关系。 有了此定义，你就可以通过 Azure 数字孪生创建从任何 Floor 孪生体到任何 Room 孪生体（包括属于 Room 子类型的孪生体）的“包含”关系。 
 
 此过程的结果是一组节点（数字孪生体），它们通过图中的边（它们的关系）连接在一起。
 
@@ -45,13 +45,13 @@ ms.locfileid: "99576542"
 
 ### <a name="create-digital-twins"></a>创建数字孪生
 
-下面是客户端代码的一个片段，它使用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 来实例化“Room”类型的一个孪生体。
+下面是客户端代码的一个片段，它使用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 来实例化 Room 类型的孪生体。
 
 你可以在创建孪生体时对其属性进行初始化，也可以稍后设置这些属性。 若要创建具有已初始化属性的孪生体，请创建一个提供必要初始化值的 JSON 文档。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
-你还可以使用名为 `BasicDigitalTwin` 的帮助程序类更直接地将属性字段存储在“孪生体”对象中，这是一种替代字典的方法。 有关帮助程序类及其用法示例的详细信息，请参阅“操作说明：管理数字孪生体”中的[创建数字孪生体](how-to-manage-twin.md#create-a-digital-twin)部分。
+你还可以使用名为 `BasicDigitalTwin` 的帮助程序类更直接地将属性字段存储在“孪生体”对象中，这是一种替代字典的方法。 若要详细了解帮助程序类及其用法示例，请查看“如何：管理数字孪生”中的[创建数字孪生](how-to-manage-twin.md#create-a-digital-twin)部分。
 
 >[!NOTE]
 >虽然孪生体属性被视为可选属性，因此不需要初始化，但在创建孪生体时，需要设置孪生体上的所有[组件](concepts-models.md#elements-of-a-model)。 它们可以是空对象，但组件本身必须存在。
@@ -70,22 +70,22 @@ ms.locfileid: "99576542"
 
 当表示为 JSON 对象时，数字孪生体会显示以下字段：
 
-| 字段名 | 说明 |
+| 字段名称 | 说明 |
 | --- | --- |
 | `$dtId` | 用户提供的字符串，表示数字孪生体的 ID |
 | `$etag` | 由 Web 服务器分配的标准 HTTP 字段 |
 | `$conformance` | 包含此数字孪生体的一致性状态的枚举（conformant、non-conformant、unknown） |
-| `{propertyName}` | 属性的值，表示为 JSON 形式（`string`、数字类型或对象） |
+| `<property-name>` | 属性的值，表示为 JSON 形式（`string`、数字类型或对象） |
 | `$relationships` | 关系集合的路径的 URL。 如果数字孪生体没有传出的关系边，则此字段不存在。 |
 | `$metadata.$model` | [可选] 将此数字孪生体特征化的模型接口的 ID |
-| `$metadata.{propertyName}.desiredValue` | [仅适用于可写属性] 指定的属性的所需值 |
-| `$metadata.{propertyName}.desiredVersion` | [仅适用于可写属性] 所需值的版本 |
-| `$metadata.{propertyName}.ackVersion` | 实现数字孪生体的设备应用认可的版本 |
-| `$metadata.{propertyName}.ackCode` | [仅适用于可写属性] 实现数字孪生体的设备应用返回的 `ack` 代码 |
-| `$metadata.{propertyName}.ackDescription` | [仅适用于可写属性] 实现数字孪生体的设备应用返回的 `ack` 说明 |
-| `{componentName}` | 一个 JSON 对象，包含组件的属性值和元数据，类似于根对象的那些属性值和元数据。 即使组件没有属性，此对象也存在。 |
-| `{componentName}.{propertyName}` | 组件的属性的值，表示为 JSON 形式（`string`、数字类型或对象） |
-| `{componentName}.$metadata` | 组件的元数据信息，类似于根级别 `$metadata` |
+| `$metadata.<property-name>.desiredValue` | [仅适用于可写属性] 指定的属性的所需值 |
+| `$metadata.<property-name>.desiredVersion` | [仅适用于可写属性] 所需值的版本 |
+| `$metadata.<property-name>.ackVersion` | 实现数字孪生体的设备应用认可的版本 |
+| `$metadata.<property-name>.ackCode` | [仅适用于可写属性] 实现数字孪生体的设备应用返回的 `ack` 代码 |
+| `$metadata.<property-name>.ackDescription` | [仅适用于可写属性] 实现数字孪生体的设备应用返回的 `ack` 说明 |
+| `<component-name>` | 一个 JSON 对象，包含组件的属性值和元数据，类似于根对象的那些属性值和元数据。 即使组件没有属性，此对象也存在。 |
+| `<component-name>.<property-name>` | 组件的属性的值，表示为 JSON 形式（`string`、数字类型或对象） |
+| `<component-name>.$metadata` | 组件的元数据信息，类似于根级别 `$metadata` |
 
 下面是一个格式化为 JSON 对象的数字孪生体的示例：
 
@@ -137,14 +137,14 @@ ms.locfileid: "99576542"
 
 当表示为 JSON 对象时，数字孪生体中的关系会显示以下字段：
 
-| 字段名 | 说明 |
+| 字段名称 | 说明 |
 | --- | --- |
 | `$relationshipId` | 用户提供的字符串，表示此关系的 ID。 此字符串在源数字孪生体的上下文中是唯一的，这也意味着 `sourceId` + `relationshipId` 在 Azure 数字孪生实例的上下文中是唯一的。 |
 | `$etag` | 由 Web 服务器分配的标准 HTTP 字段 |
 | `$sourceId` | 源数字孪生体的 ID |
 | `$targetId` | 目标数字孪生体的 ID |
 | `$relationshipName` | 关系的名称 |
-| `{propertyName}` | [可选] 此关系的属性的值，表示为 JSON 形式（`string`、数字类型或对象） |
+| `<property-name>` | [可选] 此关系的属性的值，表示为 JSON 形式（`string`、数字类型或对象） |
 
 下面是一个格式化为 JSON 对象的关系的示例：
 

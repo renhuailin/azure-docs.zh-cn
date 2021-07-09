@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 32715ad1a01366d7d56e6fa8129151b15c315e1d
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 73e42ac1f076b67d31cbad0823ea63db40045c1e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504169"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746026"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>在语音 SDK 中启用日志记录
 
@@ -68,7 +68,15 @@ StorageFile logFile = await storageFolder.CreateFileAsync("logfile.txt", Creatio
 config.SetProperty(PropertyId.Speech_LogFilename, logFile.Path);
 ```
 
-[此处](/windows/uwp/files/file-access-permissions)提供了有关 UWP 应用程序的文件访问权限的详细信息。
+在 Unity UWP 应用程序中，可以使用应用程序持久数据路径文件夹创建日志文件，如下所示：
+
+```csharp
+#if ENABLE_WINMD_SUPPORT
+    string logFile = Application.persistentDataPath + "/logFile.txt";
+    config.SetProperty(PropertyId.Speech_LogFilename, logFile);
+#endif
+```
+有关 UWP 应用程序中文件访问权限的详细信息，请参阅[文件访问权限](/windows/uwp/files/file-access-permissions)。
 
 ### <a name="android"></a>Android
 
@@ -92,11 +100,21 @@ config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 </manifest>
 ```
 
+在 Unity Android 应用程序中，可以使用应用程序持久数据路径文件夹创建日志文件，如下所示：
+
+```csharp
+string logFile = Application.persistentDataPath + "/logFile.txt";
+config.SetProperty(PropertyId.Speech_LogFilename, logFile);
+```
+此外，还需要在适用于 Android 的 Unity Player 设置中将写入权限设置为“外部 (SDCard)”。 日志将写入可以使用 AndroidStudio 设备文件资源管理器等工具获取的目录中。 确切的目录路径可能因 Android 设备而异，通常位于 `sdcard/Android/data/your-app-packagename/files` 目录。
+
 [此处](https://developer.android.com/guide/topics/data/data-storage.html)提供了有关适用于 Android 应用程序的数据和文件存储的详细信息。
 
 #### <a name="ios"></a>iOS
 
-只能访问应用程序沙盒中的目录。 可以在文档、库和临时目录中创建文件。 文档目录中的文件可供用户使用。 以下代码片段演示如何在应用程序文档目录中创建日志文件：
+只能访问应用程序沙盒中的目录。 可以在文档、库和临时目录中创建文件。 文档目录中的文件可供用户使用。 
+
+如果在 iOS 上使用 Objective-C，请使用以下代码片段在应用程序文档目录中创建日志文件：
 
 ```objc
 NSString *filePath = [
@@ -112,6 +130,14 @@ NSString *filePath = [
 <true/>
 <key>LSSupportsOpeningDocumentsInPlace</key>
 <true/>
+```
+
+如果在 iOS 上使用 Swift，请使用以下代码片段启用日志：
+```swift
+let documentsDirectoryPathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+let documentsDirectoryPath = NSURL(string: documentsDirectoryPathString)!
+let logFilePath = documentsDirectoryPath.appendingPathComponent("swift.log")
+self.speechConfig!.setPropertyTo(logFilePath!.absoluteString, by: SPXPropertyId.speechLogFilename)
 ```
 
 [此处](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html)提供了有关 iOS 文件系统的详细信息。

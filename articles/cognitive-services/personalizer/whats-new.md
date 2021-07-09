@@ -7,19 +7,29 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 07/17/2020
-ms.openlocfilehash: a62c7dc8238b642aeaa59a7b470266378832e26e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 05/28/2021
+ms.openlocfilehash: e181dd8618d571a2aea4af5475f8c6ac06a94f8b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363878"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698713"
 ---
 # <a name="whats-new-in-personalizer"></a>个性化体验创建服务的新增功能
 
 了解服务中的新增功能。 这些项可能包括发布说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="may-2021----build-conference"></a>2021 年 5 月 - //Build 大会
+
+* 自动优化（预览版）：可以配置正在使用的个性化体验创建服务循环，以便随着时间的推移不断改进，减少工作量。 个性化体验创建服务将自动运行脱机评估、发现更好的机器学习设置并应用这些设置。 有关详细信息，请参阅[个性化体验创建服务自动优化（预览）](concept-auto-optimization.md)。
+* 多槽个性化（预览）：如果具有平铺布局、轮播内容和/或边栏，则对于同一页面上的推荐产品或内容的每个位置，使用个性化体验创建服务会更方便。 个性化体验创建服务现在可以在排名 API 中获取槽列表，为每个槽分配操作，并参考每个槽发送的奖励分数。 有关详细信息，请参阅[多槽个性化（预览）](concept-multi-slot-personalization.md)。
+* 个性化体验创建服务现已在更多区域提供。
+* 已更新代码示例 (GitHub) 和文档。 使用以下链接查看更新后的示例：
+  * [C#/.NET](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer)
+  * [JavaScript](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
+  * [Python 示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer)
 
 ### <a name="july-2020"></a>2020 年 7 月
 
@@ -39,7 +49,7 @@ ms.locfileid: "94363878"
 
 * 现在，将对此服务的所有 HTTP 请求强制执行 TLS 1.2。 有关详细信息，请参阅 [Azure 认知服务安全性](../cognitive-services-security.md)。
 
-### <a name="november-2019---ignite-conference"></a>2019 年 11 月- Ignite 大会
+### <a name="november-2019---ignite-conference"></a>2019 年 11 月 - Ignite 大会
 
 * 个性化体验创建服务正式发布 (GA)
 * 包含整个生命周期的 Azure Notebooks [教程](tutorial-use-azure-notebook-generate-loop-data.md)

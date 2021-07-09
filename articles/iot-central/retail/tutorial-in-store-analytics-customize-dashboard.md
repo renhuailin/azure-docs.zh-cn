@@ -11,17 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 74ce36652b1a00ac6813c62a17d44e2a5486645f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cea5ed5d75bbba4e2e6cdc8793bf5ce7503a5912
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831701"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755344"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>教程：在 Azure IoT Central 中自定义操作员仪表板和管理设备
 
 
-本教程介绍如何作为构建者在 Azure IoT Central 店内分析应用程序中自定义操作员仪表板。 应用程序操作员可以使用自定义仪表板来运行应用程序和管理连接的设备。
+本教程介绍如何在 Azure IoT Central 店内分析应用程序中自定义操作员仪表板。 应用程序操作员可以使用自定义仪表板来运行应用程序和管理连接的设备。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]

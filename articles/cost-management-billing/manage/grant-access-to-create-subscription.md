@@ -6,21 +6,21 @@ ms.service: cost-management-billing
 ms.subservice: billing
 ms.reviewer: andalmia
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 06/09/2021
 ms.author: banders
-ms.openlocfilehash: 039e728f6518d21ddfb9c7c359a6cf2ec743f232
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 897c9d851227a59e6ab8e6a35829e113b980c2e4
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185098"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902494"
 ---
-# <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>授予创建 Azure Enterprise 订阅（预览版）所需的访问权限
+# <a name="grant-access-to-create-azure-enterprise-subscriptions-legacy"></a>授予创建 Azure Enterprise 订阅所需的访问权限（旧版）
 
-作为[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 的 Azure 客户，你可以授予其他用户或服务主体创建计费到你的帐户的订阅所需的权限。 本文介绍如何使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) 共享创建订阅的功能，以及如何审核订阅创建。 必须在想要共享的帐户上具备所有者角色。
+作为签订了[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 的 Azure 客户，你可以授予其他用户或服务主体创建计费到你的帐户的订阅所需的权限。 本文介绍如何使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) 共享创建订阅的功能，以及如何审核订阅创建。 必须在想要共享的帐户上具备所有者角色。
 
 > [!NOTE]
-> 此 API 仅适用于[订阅创建的预览 API](programmatically-create-subscription-preview.md)。 如果要使用 [GA 版本](programmatically-create-subscription-enterprise-agreement.md)，请使用最新的 API 版本 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)。 如果要迁移到使用较新的 API，则必须使用 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) 再次授予所有者权限。 若以前的配置使用以下 API，则其不会自动转换为使用较新的 API。
+> 此 API 仅适用于[旧版 API（用于创建订阅）](programmatically-create-subscription-preview.md)。 除非有特定需求要使用旧版 API，否则应该使用有关最新 API 版本 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put) 的[最新 GA 版本](programmatically-create-subscription-enterprise-agreement.md)的信息。 如果要迁移到使用较新的 API，则必须使用 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollment-account-role-assignments/put) 再次授予所有者权限。 若以前的配置使用以下 API，则其不会自动转换为使用较新的 API。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

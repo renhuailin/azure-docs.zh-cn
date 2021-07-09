@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: how-to
 author: lostmygithubaccount
 ms.author: copeters
-ms.date: 05/25/2021
+ms.date: 06/08/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 92397e1648afe8e92cd810827b75cb23c2dac09f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 141f1ac9cefa91c93a6f2e0cb8500f378ae4700b
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458269"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112008014"
 ---
 # <a name="train-models-create-jobs-with-the-20-cli-preview"></a>使用 2.0 CLI（预览版）训练模型（创建作业）
 
@@ -79,7 +79,7 @@ Azure 机器学习自动捕获以下项目：
 
 可以使用 `--file/-f` 参数通过 `az ml job create` 创建并运行此作业。 但是，该作业的目标是尚不存在的名为 `cpu-cluster` 的计算。 若要先在本地运行作业，可以使用 `--set` 替代计算目标：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris_local":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="lightgbm_iris_local":::
 
 虽然在本地运行此作业比在包含所需包的本地 Python 环境运行 `python main.py` 要慢，但这样你可以：
 
@@ -99,9 +99,9 @@ Azure 机器学习自动捕获以下项目：
 
 可以从命令行创建 Azure 机器学习计算群集。 例如，以下命令创建一个名为 `cpu-cluster` 的群集和一个名为 `gpu-cluster` 的群集。
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="create_computes":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/create-compute.sh" id="create_computes":::
 
-请注意，此时你无需支付计算费用，因为在提交作业之前，`cpu-cluster` 和 `gpu-cluster` 将保留在 0 个节点上。 详细了解如何[规划和管理 AmlCompute 的成本](concept-plan-manage-cost.md#use-azure-machine-learning-compute-cluster-amlcompute)。
+请注意，此时你无需支付计算费用，因为在提交作业之前，`cpu-cluster` 和 `gpu-cluster` 将保留在 0 个节点上。 详细了解如何[管理和优化 AmlCompute 的成本](how-to-manage-optimize-cost.md#use-azure-machine-learning-compute-cluster-amlcompute)。
 
 使用 `az ml compute create -h` 了解有关计算创建选项的更多详细信息。
 
@@ -126,11 +126,11 @@ Azure 机器学习自动捕获以下项目：
 
 若要运行 lightgbm/iris 训练作业，请执行以下命令：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="lightgbm_iris":::
 
 作业完成后，可以下载输出：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="download_outputs":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="download_outputs":::
 
 > [!IMPORTANT]
 > 请将 `$run_id` 替换为你的运行 ID，可以在控制台输出或工作室的运行详细信息页中找到该 ID。
@@ -139,7 +139,7 @@ Azure 机器学习自动捕获以下项目：
 
 ## <a name="sweep-hyperparameters"></a>扫描超参数
 
-Azure 机器学习还可让你更有效地优化机器学习模型的超参数。 可以配置一个超参数优化作业（称为扫描作业），然后通过 CLI 提交该作业。 有关 Azure 机器学习的超参数优化产品/服务的详细信息，请参阅[对模型进行超参数优化](how-to-tune-hyperparameters.md)。
+Azure 机器学习还可让你更有效地优化机器学习模型的超参数。 可以配置一个超参数优化作业（称为扫描作业），然后通过 CLI 提交该作业。
 
 可将 `job.yml` 修改为 `job-sweep.yml` 以扫描超参数：
 
@@ -160,7 +160,7 @@ Azure 机器学习还可让你更有效地优化机器学习模型的超参数�
 
 在工作室中创建并打开作业：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="lightgbm_iris_sweep":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="lightgbm_iris_sweep":::
 
 > [!TIP]
 > 超参数扫描可与分布式命令作业配合使用。
@@ -179,11 +179,11 @@ Azure 机器学习还可让你更有效地优化机器学习模型的超参数�
 
 请注意，此项引用克隆的示例存储库中不存在的本地数据。 首先需要在本地下载、提取并重新放置 CIFAR-10 数据集，应将其放置在项目目录中的适当位置：
 
-:::code language="bash" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="download_cifar":::
+:::code language="bash" source="~/azureml-examples-main/cli/train.sh" id="download_cifar":::
 
 在工作室中创建并打开作业：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="pytorch_cifar":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="pytorch_cifar":::
 
 ### <a name="tensorflow"></a>TensorFlow
 
@@ -193,7 +193,7 @@ Azure 机器学习还可让你更有效地优化机器学习模型的超参数�
 
 在工作室中创建并打开作业：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="tensorflow_mnist":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="tensorflow_mnist":::
 
 ### <a name="mpi"></a>MPI
 
@@ -207,7 +207,7 @@ Azure ML 支持跨多个节点以及每个节点的多个进程启动 MPI 作业
 
 在工作室中创建并打开作业：
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/how-to-train-cli.sh" id="tensorflow_mnist_horovod":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/train.sh" id="tensorflow_mnist_horovod":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f108062c04292c322d07980155fea9c8808beb0a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 07fbe0cff104c25eca6db2750c2db692429ada65
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326734"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786507"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>教程：从必应地图迁移 Web 服务
 
@@ -44,7 +44,7 @@ Azure Maps 和必应地图都通过 REST Web 服务提供对空间 API 的访问
 | 空间数据服务 (SDS)           | [搜索](/rest/api/maps/search) + [路线](/rest/api/maps/route) + 其他 Azure 服务 |
 | 时区                             | [时区](/rest/api/maps/timezone)  |
 | 交通事故                     | [交通事件详细信息](/rest/api/maps/traffic/gettrafficincidentdetail)                     |
-| Elevation                             | [高程（预览版）](/rest/api/maps/elevation)
+| Elevation                             | [提升](/rest/api/maps/elevation)
 
 以下服务 API 目前在 Azure Maps 中不可用：
 
@@ -53,7 +53,7 @@ Azure Maps 和必应地图都通过 REST Web 服务提供对空间 API 的访问
 
 Azure Maps 提供其他几个你可能会感兴趣的 REST Web 服务；
 
--   [Azure Maps Creator（预览版）](./creator-indoor-maps.md) - 创建建筑和空间的自定义专有数字孪生。
+-   [Azure Maps Creator](./creator-indoor-maps.md) - 创建建筑和空间的自定义专有数字孪生体。
 -   [空间操作](/rest/api/maps/spatial) - 将复杂的空间计算和操作（例如地理围栏）负载分散到某个服务。
 -   [地图图块](/rest/api/maps/render/getmaptile) - 通过 Azure Maps 访问光栅和矢量图块形式的道路和图像图块。
 -   [批处理路线](/rest/api/maps/route/postroutedirectionsbatchpreview) - 支持在一段时间内在单个批处理中发出多达 1,000 个路线请求。 路线在服务器上并行计算，以提高处理速度。
@@ -281,8 +281,8 @@ Azure Maps 可以通过使用[路线方向](/rest/api/maps/route/postroutedirect
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints` - 将这些点传递到 post 请求的正文中  |
 | `interpolate`              | 空值                                                                 |
-| `includeSpeedLimit`        | 空值                                                                 |
-| `includeTruckSpeedLimit`   | 空值                                                                 |
+| `includeSpeedLimit`        | 不适用                                                                 |
+| `includeTruckSpeedLimit`   | 不适用                                                                 |
 | `speedUnit`                | 空值                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
@@ -343,7 +343,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 | `mapLayer` (`ml`)        | 空值                                            |
 | `mapSize` (`ms`)         | `width` 和 `height` – 最大大小可为 8192x8192。 |
 | `declutterPins` (`dcl`)  | 空值                                            |
-| `dpi`                    | 空值                                            |
+| `dpi`                    | 不适用                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | 空值                                            |
 | `pitch`                  | N/A - 不支持街景。                |

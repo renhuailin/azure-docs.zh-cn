@@ -2,17 +2,17 @@
 title: 从 IoT 中心引入遥测数据
 titleSuffix: Azure Digital Twins
 description: 请参阅如何从 IoT 中心引入设备遥测消息。
-author: alexkarcher-msft
-ms.author: alkarche
+author: baanders
+ms.author: baanders
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b69ba164a7bd0edecf427866cd3e872a65e41355
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8160a2fdb35062c678fc1a9f2e629cca7885224d
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208736"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438967"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>将 IoT 中心遥测数据引入到 Azure 数字孪生
 
@@ -25,8 +25,10 @@ Azure 数字孪生是使用来自 IoT 设备和其他来源的数据驱动的。
 ## <a name="prerequisites"></a>先决条件
 
 在继续此示例之前，需要将以下资源设置为先决条件：
-* IoT 中心。 有关说明，请参阅[此 IoT 中心快速入门](../iot-hub/quickstart-send-telemetry-cli.md)中的“创建 IoT 中心”部分。
+* IoT 中心。 有关说明，请参阅此 [IoT 中心快速入门](../iot-hub/quickstart-send-telemetry-cli.md)中的“创建 IoT 中心”部分。
 * 将接收设备遥测的 Azure 数字孪生实例。 有关说明，请参阅如何：设置 Azure 数字孪生实例和身份验证。
+
+本文还使用 Visual Studio。 你可从 [Visual Studio 下载](https://visualstudio.microsoft.com/downloads/)中下载最新版本。
 
 ### <a name="example-telemetry-scenario"></a>遥测方案示例
 
@@ -39,7 +41,7 @@ Azure 数字孪生是使用来自 IoT 设备和其他来源的数据驱动的。
 
 每当恒温器设备发送温度遥测事件时，函数就会处理遥测数据，并且数字孪生的“温度”属性应进行更新。 下图概述了此方案：
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="关系图显示了 IoT 中心设备通过 IoT 中心将温度遥测数据发送到 Azure 中的一个函数，这更新了 Azure 数字孪生中某个孪生上的“温度”属性。" border="false":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="关系图显示 IoT 中心设备将温度遥测数据发送到 Azure 中的一个函数，这更新了 Azure 数字孪生中一个孪生体上的 temperature 属性。" border="false":::
 
 ## <a name="add-a-model-and-twin"></a>添加模型和孪生体
 
@@ -52,16 +54,8 @@ Azure 数字孪生是使用来自 IoT 设备和其他来源的数据驱动的。
 然后，需要使用此模型创建一个孪生。 使用以下命令创建名为 thermostat67 的恒温器孪生，并将初始温度值设置为 0.0。
 
 ```azurecli-interactive
-az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
+az dt twin create  --dt-name <instance-name> --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}'
 ```
-
-> [!Note]
-> 如果在 PowerShell 环境中使用 Cloud Shell，可能需要对内联 JSON 字段上的引号字符进行转义，才能正确分析它们的值。 下面是用此修改创建孪生体的命令：
->
-> 创建孪生：
-> ```azurecli-interactive
-> az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{\"Temperature\": 0.0,}' --dt-name {digital_twins_instance_name}
-> ```
 
 成功创建孪生后，命令的 CLI 输出应如下所示：
 ```json
@@ -97,7 +91,7 @@ az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id t
 * [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/)
 * [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/)
 
-将 Visual Studio 使用新项目生成的 Function1.cs 示例函数重命名为 IoTHubtoTwins.cs。 用下面的代码替换文件中的代码：
+将 Visual Studio 生成的 Function1.cs 示例函数重命名为 IoTHubtoTwins.cs 。 用下面的代码替换文件中的代码：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
 
@@ -129,7 +123,7 @@ az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id t
   1. 对于“终结点类型”，请选择“Azure 函数”。
   1. 对于“终结点”，请使用“选择终结点”链接选择要用于终结点的 Azure 函数。
     
-:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="用于创建事件订阅详细信息的 Azure 门户的屏幕截图":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="用于创建事件订阅详细信息的 Azure 门户的屏幕截图。":::
 
 在打开的“选择 Azure 函数”页上，验证或填充以下详细信息。
  1. **订阅**：Azure 订阅。
@@ -146,7 +140,7 @@ az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id t
 
 ## <a name="send-simulated-iot-data"></a>发送模拟 IoT 数据
 
-若要测试新的 ingress 函数，请使用 教程：连接端到端解决方案中的设备模拟器。 本教程由用 C# 编写的示例项目驱动。 示例代码如下所示：[Azure 数字孪生端到端示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 将使用该存储库中的 DeviceSimulator 项目。
+若要测试新的 ingress 函数，请使用 教程：连接端到端解决方案中的设备模拟器。 本教程是在[使用 C# 编写的 Azure 数字孪生端到端示例项目](/samples/azure-samples/digital-twins-samples/digital-twins-samples)推动下编写的。 将使用该存储库中的 DeviceSimulator 项目。
 
 在端到端教程中，完成以下步骤：
 1. [在 IoT 中心注册模拟设备](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
@@ -157,7 +151,7 @@ az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id t
 在运行上面的设备模拟器时，将更改数字孪生的温度值。 在 Azure CLI 中，运行以下命令以查看温度值。
 
 ```azurecli-interactive
-az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
+az dt twin query --query-command "select * from digitaltwins" --dt-name <Digital-Twins-instance-name>
 ```
 
 输出应包含温度值，如下所示：
@@ -167,18 +161,14 @@ az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name
   "result": [
     {
       "$dtId": "thermostat67",
-      "$etag": "W/\"0000000-1e83-4f7f-b448-524371f64691\"",
+      "$etag": "W/\"dbf2fea8-d3f7-42d0-8037-83730dc2afc5\"",
       "$metadata": {
         "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
         "Temperature": {
-          "ackCode": 200,
-          "ackDescription": "Auto-Sync",
-          "ackVersion": 1,
-          "desiredValue": 69.75806974934324,
-          "desiredVersion": 1
+          "lastUpdateTime": "2021-06-03T17:05:52.0062638Z"
         }
       },
-      "Temperature": 69.75806974934324
+      "Temperature": 70.20518558807913
     }
   ]
 }
@@ -189,4 +179,4 @@ az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name
 ## <a name="next-steps"></a>后续步骤
 
 了解 Azure 数字孪生的数据入口和出口：
-* [概念：与其他服务集成](concepts-integration.md)
+* [概念：数据引入和传出](concepts-data-ingress-egress.md)

@@ -10,20 +10,24 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: c3301283f0a7334a7c207ff7c80b4f71a13de465
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: a7615a8230b03c928d256fae62fbbe3b4e8651fb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864822"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453382"
 ---
 # <a name="get-translations-status"></a>获取翻译状态
 
-获取翻译状态方法可返回提交的批处理请求列表和每个请求的状态。 此列表仅包含用户提交的批处理请求（基于订阅）。 每个请求的状态按 ID 排序。
+获取翻译状态方法可返回提交的批处理请求列表和每个请求的状态。 此列表仅包含用户提交的批处理请求（基于资源）。
 
-如果请求数超过了分页限制，则使用服务器端分页。 分页后的响应表示的是部分结果，且响应中包含延续令牌。 如果没有延续令牌，则表示没有其他页面。
+如果请求数超过了分页限制，则使用服务器端分页。 分页后的响应表示的是部分结果，且响应中包含延续令牌。 如果没有延续令牌，则表示没有其他可用页面。
 
-$top 和 $skip 查询参数可用于指定要返回的结果数以及集合的偏移量。
+$top、$skip 和 $maxpagesize 查询参数可用于指定要返回的结果数以及集合的偏移量。
+
+$top 指示用户希望所有页面返回的记录总数。 $skip 指示根据指定的排序方法从批处理列表中跳过的记录数。 默认情况下，我们按开始时间降序排序。 $maxpagesize 是页面中返回的最大项数。 如果通过 $top 请求更多的项（或未指定 $top，并且会返回更多的项），则 @nextLink 将包含指向下一页的链接。
+
+$orderBy 查询参数可用于对返回的列表进行排序（例如“$orderBy=createdDateTimeUtc asc”或“$orderBy=createdDateTimeUtc desc”）。 默认排序按 createdDateTimeUtc 降序排序。 一些可用于筛选返回列表的查询参数（例如：“status=Succeeded,Cancelled”）将仅返回成功和已取消的操作。 createdDateTimeUtcStart 和 createdDateTimeUtcEnd 可以组合使用，也可以单独使用，用于指定筛选返回列表所依据的日期时间范围。 支持的筛选查询参数包括：status、IDs、createdDateTimeUtcStart、createdDateTimeUtcEnd。
 
 服务器以客户端指定的值为准。 但是，必须将客户端准备好以处理包含不同页面大小或包含延续令牌的响应。
 
@@ -36,7 +40,7 @@ $top 和 $skip 查询参数可用于指定要返回的结果数以及集合的�
 
 将 `GET` 请求发送到：
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches
 ```
 
 了解如何查找[自定义域名](../get-started-with-document-translation.md#find-your-custom-domain-name)。
@@ -50,10 +54,16 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 查询字符串上传递的请求参数如下：
 
-|查询参数|必需|说明|
-|--- |--- |--- |
-|$skip|错误|跳过集合中的 $skip 条目。 同时提供 $top 和 $skip 时，则先应用 $skip。|
-|$top|错误|采用集合中的 $top 条目。 同时提供 $top 和 $skip 时，则先应用 $skip。|
+|查询参数|在|必须|类型|说明|
+|--- |--- |--- |---|---|
+|$maxpagesize|query|错误|整数 (int32)|$maxpagesize 是页面中返回的最大项数。 如果通过 $top 请求更多的项（或未指定 $top，并且会返回更多的项），则 @nextLink 将包含指向下一页的链接。 客户端可以通过指定 $maxpagesize 首选项来请求按特定页面大小进行服务器驱动的分页。 如果指定的页面大小小于服务器的默认页面大小，则服务器应遵循此首选项。|
+|$orderBy|query|错误|array|集合的排序查询（例如：“CreatedDateTimeUtc asc”、“CreatedDateTimeUtc desc”）|
+|$skip|query|错误|整数 (int32)|$skip 指示根据指定的排序方法从服务器保存的记录列表中跳过的记录数。 默认情况下，我们按开始时间降序排序。 客户端可以使用 $top 和 $skip 查询参数指定要返回的结果数以及集合的偏移量。 当客户端提供 $top 和 $skip 时，服务器应先后对集合应用 $skip 和 $top。注意：如果服务器不能遵循 $top 和/或 $skip，服务器必须向客户端返回一个错误通知，而不是只是忽略查询选项。|
+|$top|query|错误|整数 (int32)|$top 指示用户希望所有页面返回的记录总数。 客户端可以使用 $top 和 $skip 查询参数指定要返回的结果数以及集合的偏移量。 当客户端提供 $top 和 $skip 时，服务器应先后对集合应用 $skip 和 $top。注意：如果服务器不能遵循 $top 和/或 $skip，服务器必须向客户端返回一个错误通知，而不是只是忽略查询选项。|
+|createdDateTimeUtcEnd|query|错误|字符串（日期时间）|获取项的结束日期时间。|
+|createdDateTimeUtcStart|query|错误|字符串（日期时间）|获取项的开始日期时间。|
+|ids|query|错误|array|要在筛选中使用的 ID。|
+|statuses|query|错误|array|要在筛选中使用的状态。|
 
 ## <a name="request-headers"></a>请求标头
 
@@ -83,18 +93,20 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 |名称|类型|说明|
 |--- |--- |--- |
-|id|字符串|操作的 ID。|
-|createdDateTimeUtc|字符串|操作创建的日期时间。|
-|lastActionDateTimeUtc|字符串|操作的状态已更新的日期时间。|
-|状态|字符串|作业或文档的可能状态的列表： <ul><li>已取消</li><li>Cancelling</li><li>失败</li><li>NotStarted</li><li>正在运行</li><li>已成功</li><li>ValidationFailed</li></ul>|
-|摘要|StatusSummary[]|摘要包含下面列出的详细信息。|
-|summary.total|integer|文档总数。|
-|summary.failed|integer|失败的文档数。|
-|summary.success|integer|成功翻译的文档数。|
-|summary.inProgress|integer|正在进行处理的文档数。|
-|summary.notYetStarted|integer|尚未开始处理的文档数。|
-|summary.cancelled|integer|已取消的文档数。|
-|summary.totalCharacterCharged|integer|收取费用的字符总数。|
+|@nextLink|字符串|下一页的 Url。 如果没有页，则为 NULL。|
+|值|TranslationStatus[]|下面列出的 TranslationStatus[] 数组|
+|value.id|字符串|操作的 ID。|
+|value.createdDateTimeUtc|字符串|操作创建的日期时间。|
+|value.lastActionDateTimeUtc|字符串|操作的状态已更新的日期时间。|
+|value.status|字符串|作业或文档的可能状态的列表： <ul><li>已取消</li><li>Cancelling</li><li>失败</li><li>NotStarted</li><li>正在运行</li><li>已成功</li><li>ValidationFailed</li></ul>|
+|value.summary|StatusSummary[]|摘要包含下面列出的详细信息。|
+|value.summary.total|integer|文档总数。|
+|value.summary.failed|integer|失败的文档数。|
+|value.summary.success|integer|成功翻译的文档数。|
+|value.summary.inProgress|integer|正在进行处理的文档数。|
+|value.summary.notYetStarted|integer|尚未开始处理的文档数。|
+|value.summary.cancelled|integer|已取消的文档数。|
+|value.summary.totalCharacterCharged|integer|收取费用的字符总数。|
 
 ### <a name="error-response"></a>错误响应
 
@@ -102,10 +114,11 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 |--- |--- |--- |
 |code|string|包含错误代码概要的枚举。 可能的值：<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>未授权</li></ul>|
 |message|字符串|获取概要错误消息。|
-|目标|string|获取错误的源。 例如，对于无效的文档，应为“文档”或“文档 ID”。|
-|innerError|InnerErrorV2|新内部错误格式，符合认知服务 API 准则。 它包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
+|目标|string|获取错误的源。 例如，如果存在无效的文档，则应为“文档”或“文档 ID”。|
+|innerError|InnerTranslationError|新内部错误格式，符合认知服务 API 准则。 这包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
 |innerError.code|字符串|获取代码错误字符串。|
 |innerError.message|字符串|获取概要错误消息。|
+|innerError.target|string|获取错误的源。 例如，如果存在无效的文档，则应为“文档”或“文档 ID”。|
 
 ## <a name="examples"></a>示例
 
@@ -117,9 +130,9 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 {
   "value": [
     {
-      "id": "727bf148-f327-47a0-9481-abae6362f11e",
-      "createdDateTimeUtc": "2020-03-26T00:00:00Z",
-      "lastActionDateTimeUtc": "2020-03-26T01:00:00Z",
+      "id": "273622bd-835c-4946-9798-fd8f19f6bbf2",
+      "createdDateTimeUtc": "2021-03-23T07:03:30.013631Z",
+      "lastActionDateTimeUtc": "2021-03-26T01:00:00Z",
       "status": "Succeeded",
       "summary": {
         "total": 10,
@@ -128,7 +141,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
         "inProgress": 0,
         "notYetStarted": 0,
         "cancelled": 0,
-        "totalCharacterCharged": 0
+        "totalCharacterCharged": 1000
       }
     }
   ]

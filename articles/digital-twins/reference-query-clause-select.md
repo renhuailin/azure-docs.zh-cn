@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 58e37cb1cffadf841e6d9450f1ce908cf6f22c69
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 1118e44e822068566579fdc516479afeda294cf6
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296380"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789490"
 ---
 # <a name="azure-digital-twins-query-language-reference-select-clause"></a>Azure 数字孪生查询语言参考：SELECT 子句
 
@@ -70,11 +70,11 @@ SELECT 子句是查询的第一个部分。 它指定查询将返回的列的列
 #### <a name="example-scenario"></a>示例方案
 
 对于以下示例，请考虑包含以下数据元素的孪生图：
-* 名为 `FactoryA` 的工厂孪生体
+* 名为 FactoryA 的工厂孪生体
     - 包含一个名为 `name` 的属性，其值为 `FactoryA`
-* 名为 `Contoso` 的使用者孪生体
+* 名为 Contoso 的使用者孪生体
     - 包含一个名为 `name` 的属性，其值为 `Contoso`
-* 从 `FactoryA` 到 `Contoso` 的 consumerRelationship 关系，称为 `FactoryA-consumerRelationship-Contoso`
+* 从 FactoryA 到 Contoso 的 consumerRelationship 关系，称为 `FactoryA-consumerRelationship-Contoso`
     - 包含一个名为 `managedBy` 的属性，其值为 `Jeff`
 
 以下是说明此情况的关系图：

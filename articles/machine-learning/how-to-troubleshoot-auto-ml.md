@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/08/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-python, automl, references_regions
-ms.openlocfilehash: 6f64d3511da8fbf953a50eab44702c7356ad3c5b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0eda886537f0cfd6819ca69c53b4cafa44746636
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140472"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540696"
 ---
 # <a name="troubleshoot-automated-ml-experiments-in-python"></a>对 Python 中的自动化 ML 试验进行故障排除
 
@@ -148,8 +148,16 @@ ms.locfileid: "108140472"
     1. 在命令行界面中输入 `pip uninstall PyJWT`，然后输入 `y` 进行确认。
     1. 使用 `pip install 'PyJWT<2.0.0'` 进行安装。
   
+
+## <a name="data-access"></a>数据访问
+ 
+若要运行自动化 ML，需要确保连接到 AzureFile 存储的文件数据存储具有适当的身份验证凭据。 否则，将显示以下消息。 了解如何[更新数据访问身份验证凭据](how-to-train-with-datasets.md#azurefile-storage)。
+
+错误消息：`Could not create a connection to the AzureFileService due to missing credentials. Either an Account Key or SAS token needs to be linked the default workspace blob store.`
+
 ## <a name="databricks"></a>Databricks
 请参阅[如何使用 Databricks 配置自动化 ML 试验](how-to-configure-databricks-automl-environment.md#troubleshooting)。
+
 
 ## <a name="forecasting-r2-score-is-always-zero"></a>预测 R2 评分始终为零
 

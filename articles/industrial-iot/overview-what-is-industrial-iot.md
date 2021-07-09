@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: overview
 ms.date: 3/22/2021
-ms.openlocfilehash: ce582f810f483f2e5d3fdda2c3379ecad3842d51
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 902cd7c9cf0f682541be86e82a1d51525ad5b3f9
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813265"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678024"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>什么是工业 IoT (IIoT)？
 
@@ -21,9 +21,9 @@ Microsoft Azure 工业物联网 (IIoT) 是将云的强大功能集成到工业�
 
 ## <a name="discover-register-and-manage-your-industrial-assets-with-azure"></a>通过 Azure 发现、注册和管理工业资产
 
-使用 Azure 工业 IoT，工厂操作员可以发现工厂网络中已启用 OPC UA 的服务器，并将这些服务器注册到 Azure IoT 中心。 操作人员可以从世界各地的任何地点订阅和响应工厂的事件，接收警报和告警，并实时对它们做出反应。
+使用 Azure 工业 IoT 平台，工厂操作员可以发现工厂网络中已启用 OPC UA 的服务器，并将这些服务器注册到 Azure IoT 中心。 操作人员可以从世界各地的任何地点订阅和响应工厂的事件，接收警报和告警，并实时对它们做出反应。
 
-IIoT 提供一组用于实现 OPC UA 功能的微服务。 微服务 REST API 将镜像 OPC UA 服务边缘。 使用 Azure Active Directory (AAD) 支持的 OAUTH 身份验证和授权来保护这些服务。 这使你的云应用程序能够浏览服务器地址空间或读/写变量，并使用 HTTPS 和简单的 OPC UA JSON 负载来执行各种方法。 边缘服务以 Azure IoT Edge 模块方式实现并在本地运行。 云微服务以 ASP.NET 微服务方式实现，带有 REST 接口，并在托管的 Azure Kubernetes 服务上运行或在 Azure 应用服务上独立。 对于边缘服务和云服务，IIoT 在 Microsoft Container Registry (MCR) 中提供预生成的 Docker 容器，为客户省去了这一步。 边缘和云服务相互利用，并且必须一起使用。 IIoT 还提供了易于使用的部署脚本，允许使用一个命令部署整个平台。
+IIoT 提供一组用于实现 OPC UA 功能的微服务。 微服务 REST API 将镜像 OPC UA 服务边缘。 它使你的云应用程序能够浏览服务器地址空间或读/写变量，并使用 HTTPS 和简单的 OPC UA JSON 有效负载来执行各种方法。 边缘服务以 Azure IoT Edge 模块方式实现并在本地运行。 云微服务以 ASP.NET 微服务方式实现，带有 REST 接口，并在托管的 Azure Kubernetes 服务上运行或在 Azure 应用服务上独立运行。 对于边缘服务和云服务，IIoT 在 Microsoft Container Registry (MCR) 中提供预生成的 Docker 容器。 边缘和云服务相互利用，并且必须一起使用。 IIoT 还提供了易于使用的部署脚本，允许使用一个命令部署整个平台。
 
 此外，REST API 可通过其公开的开放 API 规范 (Swagger) 与任何编程语言一起使用。 这意味着，在将 OPC UA 集成到云管理解决方案中时，开发人员可自由选择与他们的技能、兴趣和体系结构选择相匹配的技术。 例如，开发警报和事件仪表板应用程序的完整堆栈 Web 开发人员能够以 JavaScript 或 TypeScript 编写逻辑来响应事件，而无需加深对 OPC UA SDK、C、C++、Java 或 C# 的了解。
 
@@ -40,7 +40,7 @@ Azure IIoT 解决方案基于特定组件生成而来。 这些组件包括：
 - 工业 Edge 模块。
 
 ### <a name="iot-hub"></a>IoT 中心
-[Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/ )充当中央消息中心，用于在任何 IoT 应用程序及其管理的设备之间实现安全的双向通信。 它是一个开放且灵活的云平台即服务 (PaaS)，支持开源 SDK 和多种协议。 
+[Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)充当中央消息中心，用于在任何 IoT 应用程序及其管理的设备之间实现安全的双向通信。 它是一个开放且灵活的云平台即服务 (PaaS)，支持开源 SDK 和多种协议。 
 
 通过将工业和业务数据收集到 IoT 中心，可安全地存储数据，对其执行业务和效率分析，并基于其生成报告。 你还可以对合并的数据应用 Microsoft Azure 服务和工具，如 [Power BI](https://powerbi.microsoft.com)。
 
@@ -57,7 +57,10 @@ IoT Edge 设备由 Edge 运行时和 Edge 模块组成。
 - **发现**：发现模块（由发现器标识表示）在边缘提供发现服务，其中包括 OPC UA 服务器发现。 如果已配置并已启用发现，则发现模块将通过 IoT Edge 和 IoT 中心遥测路径向载入服务发送扫描探测的结果。 服务处理结果，并更新注册表中所有相关的标识。
 
 ## <a name="next-steps"></a>后续步骤
-现在你已了解什么是工业 IoT，可以阅读有关工业 IoT 平台和 OPC 发布服务器的内容：
+现在，你已了解什么是工业 IoT，可以阅读有关 OPC 发布服务器的详细信息，或开始部署 IIoT 平台：
 
 > [!div class="nextstepaction"]
 > [什么是 OPC 发布服务器？](overview-what-is-opc-publisher.md)
+
+> [!div class="nextstepaction"]
+> [部署工业 IoT 平台](tutorial-deploy-industrial-iot-platform.md)

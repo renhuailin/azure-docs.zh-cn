@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/05/2020
+ms.date: 06/04/2021
 ms.author: pafarley
-ms.openlocfilehash: fb908cdcf3e235654effc043de29e599a48179d4
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d98b71680e8be744b52f5060cc9be38366963fd6
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104879762"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111593972"
 ---
 [参考文档](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices) | [包 (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
 
@@ -21,6 +21,7 @@ ms.locfileid: "104879762"
 
 * 一个有效的 Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
 * [Python 3.x](https://www.python.org/)
+* [!INCLUDE [terms-azure-portal](./terms-azure-portal.md)]
 
 [!INCLUDE [Create a service principal](./create-service-principal.md)]
 
@@ -83,6 +84,8 @@ pip install azure-mgmt-cognitiveservices
 下面的函数从给定的资源组中删除指定的资源。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/azure_management_service/create_delete_resource.py?name=snippet_delete)]
+
+如果需要恢复已删除的资源，请参阅[恢复已删除的认知服务资源](../../manage-resources.md)。
 
 ## <a name="call-management-functions"></a>调用管理函数
 

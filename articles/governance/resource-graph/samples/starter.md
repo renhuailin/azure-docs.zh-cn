@@ -3,12 +3,12 @@ title: 初学者查询示例
 description: 使用 Azure 资源图来运行一些初学者查询，包括计算资源数、对资源进行排序或按特定标记排序。
 ms.date: 05/01/2021
 ms.topic: sample
-ms.openlocfilehash: 52744c3d1e83874d4ac469a93eef86ae12155b5a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ddb4b57a9f2bae8298de8dad74e99edc19353e42
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325996"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751492"
 ---
 # <a name="starter-resource-graph-query-samples"></a>初学者 Resource Graph 查询示例
 
@@ -468,7 +468,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 查询首先仅查找带有 `isnotempty()` 标记的资源，通过仅包含 `project`、`mvexpand` 和 `extend` 中的标记来限制所包含的字段，从而获取属性包中配对的数据。 然后，它使用 `union` 将 ResourceContainers 中的结果合并到资源中的相同结果，从而广泛覆盖要提取的标记 。 最后，它将结果限制为 `distinct` 配对数据，并排除系统隐藏的标记。
 
 ```kusto
-ResourceContainers 
+ResourceContainers
 | where isnotempty(tags)
 | project tags
 | mvexpand tags
@@ -555,7 +555,7 @@ advisorresources
     solution = tostring(properties.shortDescription.solution),
     currency = tostring(properties.extendedProperties.savingsCurrency)
 | summarize
-    dcount(resources), 
+    dcount(resources),
     bin(sum(savings), 0.01)
     by solution, currency
 | project solution, dcount_resources, sum_savings, currency

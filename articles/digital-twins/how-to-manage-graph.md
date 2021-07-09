@@ -7,32 +7,31 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fde473453aa79e0078765df394acdeb54b3c7fe9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c48f62d193af953ec080fcd559c9d7593428d99e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102433312"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454593"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
 
 Azure 数字孪生的核心是代表整个环境的[孪生图](concepts-twins-graph.md)。 孪生图由通过关系连接的各个数字孪生组成。 
 
-拥有有效的 [Azure 数字孪生实例](how-to-set-up-instance-portal.md)并在客户端应用中设置了[验证](how-to-authenticate-client.md)码后，就可使用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 在 Azure 数字孪生实例中创建、修改和删除数字孪生体及其关系。 还可使用 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 或 [Azure 数字孪生 CLI](how-to-use-cli.md)。
+拥有有效的 [Azure 数字孪生实例](how-to-set-up-instance-portal.md)并在客户端应用中设置了[验证](how-to-authenticate-client.md)码后，就可在 Azure 数字孪生实例中创建、修改和删除数字孪生体及其关系。
 
-本文重点介绍如何将关系和图作为一个整体进行管理；若要单独处理数字孪生体，请参阅[操作指南：管理数字孪生体](how-to-manage-twin.md)。
+本文重点介绍如何将关系和图作为一个整体进行管理；若要单独处理数字孪生体，请参阅操作指南：管理数字孪生体。
 
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-## <a name="ways-to-manage-graph"></a>管理图的方式
-
-[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
-
-还可使用 Azure Digital Twins Explorer 示例对图进行更改，从而能够可视化孪生体和图，并在后台使用 SDK。 下一部分将详细介绍此示例。
+[!INCLUDE [digital-twins-developer-interfaces.md](../../includes/digital-twins-developer-interfaces.md)]
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+:::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="Azure Digital Twins Explorer 的屏幕截图，其中显示了示例模型和孪生体。" lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
+
 
 ## <a name="create-relationships"></a>创建关系
 
@@ -47,7 +46,7 @@ Azure 数字孪生的核心是代表整个环境的[孪生图](concepts-twins-gr
 * 关系 ID（以下代码示例中为 `relId`）：此关系的特定名称，如 Relationship1。
 
 关系 ID 在给定的源孪生体中必须是唯一的。 无需全局唯一。
-例如，对于孪生体 foo，每个特定的关系 ID 必须是唯一的。 但是，另一个孪生体 bar 可以具有与 foo 关系的相同 ID 匹配的传出关系 。
+例如，对于孪生体 Foo，每个特定的关系 ID 必须是唯一的。 但是，另一个孪生体 Bar 可以具有与 Foo 关系的相同 ID 匹配的传出关系。
 
 下面的代码示例演示如何在 Azure 数字孪生实例中创建关系。 在可能出现在较大程序上下文中的自定义方法中，它使用 SDK 调用（已突出显示）。
 
@@ -59,7 +58,7 @@ Azure 数字孪生的核心是代表整个环境的[孪生图](concepts-twins-gr
 
 如果希望创建多个关系，可重复调用同一方法，将不同的关系类型传递到参数。 
 
-有关帮助程序类 `BasicRelationship` 的详细信息，请参阅[操作指南：使用 Azure 数字孪生 API 和 SDK](how-to-use-apis-sdks.md#serialization-helpers)。
+有关帮助程序类 `BasicRelationship` 的详细信息，请参阅[概念：Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md#serialization-helpers)。
 
 ### <a name="create-multiple-relationships-between-twins"></a>在孪生体之间创建多种关系
 
@@ -70,9 +69,9 @@ Azure 数字孪生的核心是代表整个环境的[孪生图](concepts-twins-gr
 
 两个孪生体间的关系数量没有限制，你可根据需要在孪生体之间建立任意数量的关系。 
 
-这意味着，可一次表达两个孪生体间的多种关系。 例如，孪生体 A 可与孪生体 B 既有 stored 关系又有 manufactured 关系   。
+这意味着，可一次表达两个孪生体间的多种关系。 例如，孪生体 A 可与孪生体 B 既有 stored 关系又有 manufactured 关系 。
 
-如果需要，甚至可在相同的两个孪生体之间创建具有同一种关系的多个实例。 在此示例中，孪生体 A 可与孪生体 B 具有两种不同的 stored 关系，只要这两种关系具有不同的关系 ID 即可  。
+如果需要，甚至可在相同的两个孪生体之间创建具有同一种关系的多个实例。 在此示例中，孪生体 A 可与孪生体 B 具有两种不同的 stored 关系，只要这两种关系具有不同的关系 ID 即可。
 
 ## <a name="list-relationships"></a>列出关系
 
@@ -97,7 +96,7 @@ Azure 数字孪生的核心是代表整个环境的[孪生图](concepts-twins-gr
 Azure 数字孪生还提供了一个 API，用于查找给定孪生体的所有传入关系。 这在反向导航或删除孪生体时通常很有用。
 
 >[!NOTE]
-> `IncomingRelationship` 调用不返回关系的完整正文。 有关 `IncomingRelationship` 类的更多信息，请参阅其[参考文档](/dotnet/api/azure.digitaltwins.core.incomingrelationship)。
+> `IncomingRelationship` 调用不返回关系的完整正文。 有关 `IncomingRelationship` 类的更多信息，请参阅其[参考文档](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true)。
 
 上一节的代码示例重点介绍了如何查找孪生体的传出关系。 以下示例的结构类似，但用于查找孪生体的传入关系。 在可能出现在较大程序上下文中的自定义方法中，此示例还使用 SDK 调用（已突出显示）。
 
@@ -124,7 +123,7 @@ Azure 数字孪生还提供了一个 API，用于查找给定孪生体的所有�
 >[!NOTE]
 >此方法用于更新关系的属性。 如果需要更改关系的源孪生体或目标孪生体，则需要[删除该关系](#delete-relationships)，然后使用新的孪生体[重新创建关系](#create-relationships)。
 
-客户端调用所需的参数包括源孪生体的 ID（关系起源的孪生体），要更新的关系的 ID 以及包含要更新的属性和新值的 [JSON 修补程序](http://jsonpatch.com/)文档。
+客户端调用所需的参数包括源孪生体（关系起源的孪生体）的 ID、要更新的关系的 ID 以及包含要更新的属性和新值的 [JSON 修补程序](http://jsonpatch.com/)文档。
 
 下面是演示如何使用此方法的示例代码。 在可能出现在较大程序上下文中的自定义方法中，此示例使用 SDK 调用（已突出显示）。
 
@@ -146,40 +145,6 @@ Azure 数字孪生还提供了一个 API，用于查找给定孪生体的所有�
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseDeleteRelationship":::
 
-## <a name="runnable-twin-graph-sample"></a>可运行的孪生图示例
-
-以下可运行代码片段使用本文中的关系操作，根据数字孪生体和关系创建孪生图。
-
-### <a name="set-up-the-runnable-sample"></a>设置可运行的示例
-
-此代码片段使用[教程：使用示例客户端应用了解 Azure 数字孪生](tutorial-command-line-app.md)中的 [Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) 和 [Floor.json](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) 模型定义  。 可以使用这些链接直接转到这些文件，也可以[在此处](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)下载这些文件以将其作为完整的端到端示例项目的一部分。 
-
-运行此示例之前，请执行以下步骤：
-1. 下载模型文件，将它们放在项目中，并替换以下代码中的 `<path-to>` 占位符，以告诉程序在何处找到这些文件。
-2. 将占位符 `<your-instance-hostname>` 替换为你的 Azure 数字孪生实例的主机名。
-3. 将两个依赖项添加到你的项目，这是与 Azure 数字孪生结合使用所必需的。 第一个是[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client) 的包，第二个提供工具来帮助向 Azure 进行身份验证。
-
-      ```cmd/sh
-      dotnet add package Azure.DigitalTwins.Core
-      dotnet add package Azure.Identity
-      ```
-
-如果要直接运行该示例，还需要设置本地凭据。 下一节将详细介绍这一点。
-[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
-
-### <a name="run-the-sample"></a>运行示例
-
-完成上述步骤后，可直接运行以下示例代码。
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs":::
-
-下面是上述程序的控制台输出： 
-
-:::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="显示孪生体的详细信息以及传入和传出关系的控制台输出。" lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
-
-> [!TIP]
-> 孪生图是在孪生体之间创建关系的概念。 若要查看孪生图的可视化表示形式，请参阅本文的[可视化效果](how-to-manage-graph.md#visualization)部分。 
-
 ## <a name="create-graph-from-a-csv-file"></a>根据 CSV 文件创建关系图
 
 在实际用例中，通常会根据其他数据库中存储的数据创建孪生体层次结构，也可能根据电子表格或 CSV 文件中的数据创建。 本部分说明如何从 CSV 文件中读取数据并根据这些数据创建孪生图。
@@ -198,6 +163,46 @@ Azure 数字孪生还提供了一个 API，用于查找给定孪生体的所有�
 在下面的代码中，CSV 文件名为 data.csv，并且还有一个占位符，表示 Azure 数字孪生实例的主机名。 该示例还利用了多个包，你可将这些包添加到项目中来帮助完成此过程。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graphFromCSV.cs":::
+
+## <a name="runnable-twin-graph-sample"></a>可运行的孪生图示例
+
+以下可运行代码片段使用本文中的关系操作，根据数字孪生体和关系创建孪生图。
+
+### <a name="set-up-sample-project-files"></a>设置示例项目文件
+
+该代码片段使用两个示例模型定义，[Room.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-samples/master/AdtSampleApp/SampleClientApp/Models/Room.json) 和 [Floor.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-samples/master/AdtSampleApp/SampleClientApp/Models/Floor.json)。 若要下载模型文件以便可在代码中使用，请使用以下链接直接转到 GitHub 中的这些文件。 然后，右键单击屏幕上的任意位置，在浏览器的右击菜单中选择“另存为”，并使用“另存为”窗口将文件另存为 Room.json 和 Floor.json  。
+
+接下来，在 Visual Studio 或所选的编辑器中创建新的控制台应用项目。
+
+然后，将可运行示例的以下代码复制到你的项目中：
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs":::
+
+### <a name="configure-project"></a>配置项目
+
+接下来，完成以下步骤来配置项目代码：
+1. 将之前下载的 Room.json 和 Floor.json 文件添加到项目中，并替换代码中的 `<path-to>` 占位符，以告知程序可在何处找到它们 。
+1. 将占位符 `<your-instance-hostname>` 替换为你的 Azure 数字孪生实例的主机名。
+1. 将两个依赖项添加到你的项目，这是与 Azure 数字孪生结合使用所必需的。 第一个是[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的包，第二个提供工具来帮助向 Azure 进行身份验证。
+
+      ```cmd/sh
+      dotnet add package Azure.DigitalTwins.Core
+      dotnet add package Azure.Identity
+      ```
+
+如果要直接运行该示例，还需要设置本地凭据。 下一节将详细介绍这一点。
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>运行示例
+
+现已完成设置，可以运行示例代码项目。
+
+下面是该程序的控制台输出： 
+
+:::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="控制台输出的屏幕截图，其中显示孪生体的详细信息及其传入和传出关系。" lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
+
+> [!TIP]
+> 孪生图是在孪生体之间创建关系的概念。 若要查看孪生图的可视化表示形式，请参阅本文的可视化效果部分。 
 
 ## <a name="next-steps"></a>后续步骤
 

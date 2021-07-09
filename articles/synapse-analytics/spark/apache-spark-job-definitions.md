@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: 15b67c969cb0464256caed58a2e7388eb7a76b9c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7c60addd80f7ed027870744d12975fd76983b2f5
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608731"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813823"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>教程：在 Synapse Studio 中创建 Apache Spark 作业定义
 
-本教程演示如何使用 Azure Synapse Studio 创建 Apache Spark 作业定义，然后将其提交到无服务器 Apache Spark 池。
+本教程演示如何使用 Synapse Studio 创建 Apache Spark 作业定义，然后将其提交到无服务器 Apache Spark 池。
 
 本教程涵盖以下任务：
 > [!div class="checklist"]
@@ -45,7 +45,7 @@ ms.locfileid: "105608731"
 
 在本部分中，为 PySpark (Python) 创建 Apache Spark 作业定义。
 
-1. 打开 [Azure Synapse Studio](https://web.azuresynapse.net/)。
+1. 打开 [Synapse Studio](https://web.azuresynapse.net/)。
 
 2. 可转到[创建 Apache Spark 作业定义的示例文件](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)下载 python.zip 的示例文件，然后将压缩包解压缩，并提取 wordcount.py 和 shakespeare.txt 文件  。 
 
@@ -171,7 +171,7 @@ ms.locfileid: "105608731"
  ![创建导入定义](./media/apache-spark-job-definitions/create-import-definition.png)
 
  
- Spark 作业定义与 Livy API 完全兼容。 可以在本地 JSON 文件中为其他 Livy 属性 [(Livy Docs - REST API (apache.org)](https://livy.incubator.apache.org/docs/latest/rest-api.html) 添加其他参数。 还可以在配置属性中指定与 Spark 配置相关的参数，如下所示。 然后，可以重新导入 JSON 文件，以便为批处理作业创建新的 Apache Spark 作业定义。 Spark 定义导入的示例 JSON：
+ Spark 作业定义与 Livy API 完全兼容。 可以在本地 JSON 文件中为其他 Livy 属性 [(Livy Docs - REST API (apache.org)](https://livy.incubator.apache.org/docs/latest/rest-api.html) 添加其他参数。 还可以在配置属性中指定与 Spark 配置相关的参数，如下所示。 然后，可以重新导入 JSON 文件，为批处理作业创建新的 Apache Spark 作业定义。 Spark 定义导入的示例 JSON：
  
 ```Scala
    {
@@ -209,7 +209,7 @@ ms.locfileid: "105608731"
 
 ## <a name="export-an-existing-apache-spark-job-definition-file"></a>导出现有的 Apache Spark 作业定义文件
 
- 可以从文件资源管理器的“操作” (...) 菜单将现有的 Apache Spark 作业定义文件导出到本地。 可以进一步更新 JSON 文件以获取其他 Livy 属性，并在必要时将其重新导入以创建新的作业定义。
+ 可以从文件资源管理器的“操作”(...) 菜单将现有的 Apache Spark 作业定义文件导出到本地。 可以进一步更新 JSON 文件以获取其他 Livy 属性，并在必要时将其重新导入以创建新的作业定义。
 
  ![创建导出定义](./media/apache-spark-job-definitions/create-export-definition.png)
 

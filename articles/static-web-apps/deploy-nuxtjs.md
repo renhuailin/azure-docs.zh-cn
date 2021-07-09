@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 8f21f5fa8ee9035fe594cecff37a63b1ef2115cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7654546ba52406aed5659cc736bb9a538a73ac7f
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97563460"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813229"
 ---
-# <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>将服务器呈现的 Nuxt.js 网站部署到 Azure 静态 Web 应用（预览）
+# <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps"></a>将服务器呈现的 Nuxt.js 网站部署到 Azure 静态 Web 应用
 
 此教程介绍如何将 [Nuxt.js](https://nuxtjs.org) 生成的静态网站部署到 [Azure 静态 Web 应用](overview.md)。 首先将介绍如何安装、配置和部署 Nuxt.js 应用。 在此过程中，还会介绍如何处理生成 Nuxt.js 静态页面时遇到的常见问题
 
@@ -31,7 +31,7 @@ ms.locfileid: "97563460"
 
 1. 通过 GitHub 帐户从模板存储库创建新的存储库。
 1. 导航到 [http://github.com/staticwebdev/nuxtjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nuxtjs-starter/generate)
-1. 将存储库命名为 nuxtjs-starter
+1. 将存储库命名为 nuxtjs-starter。
 1. 接下来，将新存储库克隆到计算机。 确保将 <YOUR_GITHUB_ACCOUNT_NAME> 替换为你的帐户名称。
 
     ```bash
@@ -116,49 +116,49 @@ Azure 静态 Web 应用从 GitHub 存储库部署应用，并且每次将提交�
 
 以下步骤演示了如何将刚推送到 GitHub 的应用链接到 Azure 静态 Web 应用。 在 Azure 中，可以将应用程序部署到生产环境。
 
-### <a name="create-an-azure-static-web-apps-preview-resource"></a>创建 Azure 静态 Web 应用预览资源
+### <a name="create-an-azure-static-web-apps-resource"></a>创建 Azure Static Web Apps 资源
 
-1. 导航到 [Azure 门户](https://portal.azure.com)
-1. 单击“创建资源”
-1. 搜索“静态 Web 应用”
-1. 单击“静态 Web 应用(预览)”
-1. 单击“创建” 
+1. 导航到 [Azure 门户](https://portal.azure.com)。
+1. 选择“创建资源”。
+1. 搜索“静态 Web 应用”。
+1. 选择“静态 Web 应用”。
+1. 选择“创建”。
+1. 在“基本信息”选项卡上，输入下列值。
 
-1. 从“订阅”下拉列表中选择一个订阅，或使用默认值。
-1. 单击“资源组”下拉列表下的“新建”链接。 在“新建资源组名称”中，键入“mystaticsite”，然后单击“确定”
-1. 在“名称”文本框中提供应用的全局唯一名称。 有效字符包括 `a-z`、`A-Z`、`0-9` 和 `-`。 此值用作静态应用的 URL 前缀，采用 `https://<APP_NAME>.azurestaticapps.net` 格式。
-1. 在“区域”下拉列表中，选择离你最近的区域。
-1. 从“SKU”下拉列表中选择“可用”。
+    | 属性 | 值 |
+    | --- | --- |
+    | _订阅_ | Azure 订阅名称。 |
+    | _资源组_ | **my-nuxtjs-group**  |
+    | _名称_ | **my-nuxtjs-app** |
+    | _计划类型_ | **免费** |
+    | Azure Functions API 和过渡环境的区域 | 选择离你最近的区域。 |
+    | _Source_ | **GitHub** |
 
-   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="创建静态 Web 应用":::
+1. 选择“使用 GitHub 登录”，然后向 GitHub 进行身份验证。
 
-### <a name="add-a-github-repository"></a>添加 GitHub 存储库
+1. 输入以下 GitHub 值。
 
-新的静态 Web 应用帐户需要使用 Nuxt.js 应用访问存储库，以便可以自动部署提交。
+    | 属性 | 值 |
+    | --- | --- |
+    | 组织 | 选择所需的 GitHub 组织。 |
+    | 存储库 | 选择之前创建的存储库。 |
+    | 分支 | 选择“主要”。 |
 
-1. 单击“使用 GitHub 登录”按钮
-1. 选择要在其中创建 Nuxt.js 项目的存储库的“组织”，这可能是你的 GitHub 用户名。
-1. 查找并选择之前创建的存储库的名称。
-1. 从“分支”下拉列表中选择“主”作为分支。
+1. 在“生成详细信息”部分，从“生成预设”下拉列表中选择“自定义”，并保留默认值 。
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="连接 GitHub":::
-
-### <a name="configure-the-build-process"></a>配置生成过程
-
-生成 Azure 静态 Web 应用的目的是自动执行常见任务，例如安装 npm 模块并在每个部署过程中运行 `npm run build`。 但有一些设置（例如，应用程序源文件夹和生成目标文件夹）需要手动配置。
-
-1. 单击“生成”选项卡以配置静态输出文件夹。
-
-      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="“生成”选项卡":::
-
-1. 在“应用项目位置”文本框中键入“dist”。
+1. 在“应用位置”框中输入“./”。
+1. 将“API 位置”框留空。
+1. 在“输出位置”框中，输入“out”。
 
 ### <a name="review-and-create"></a>查看并创建
 
-1. 单击“查看 + 创建”按钮以验证详细信息是否都正确。
-1. 单击“创建”以开始创建资源并为部署预配 GitHub Action。
-1. 部署完成后，单击“转到资源”
-1. 在“概述”窗口中，单击 URL 链接，打开已部署的应用程序。 
+1. 选择“查看 + 创建”按钮，验证详细信息是否全部正确。
+
+1. 选择“创建”，开始创建应用服务静态 Web 应用并为部署预配 GitHub 操作。
+
+1. 部署完成后，单击“转到资源”。
+
+1. 在“概述”窗口中，单击 URL 链接，打开已部署的应用程序。
 
 如果网站并未立即加载，则后台 GitHub Actions 工作流仍在运行。 工作流完成后，可以单击“刷新浏览器”以查看 Web 应用。
 

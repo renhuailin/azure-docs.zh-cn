@@ -12,17 +12,17 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: a7808b3b5db9d01d6a1a2cd352a912d44a4e7908
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 7ef3e07eb1585aaa87986fd682b4db00c53e66f3
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904489"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810671"
 ---
 # <a name="get-facial-pose-events"></a>获取人脸姿态事件
 
 > [!NOTE]
-> Viseme 事件现仅可用于 `en-US-AriaNeural` 语音。
+> Viseme 事件现仅可用于 `en-US` 英语（美国）[神经语音](language-support.md#text-to-speech)。
 
 _视素_ 是口语中音素的视觉描述。
 它定义了在说一个字词时人脸和嘴部的位置。
@@ -35,7 +35,10 @@ _视素_ 是口语中音素的视觉描述。
 
 ## <a name="get-viseme-events-with-the-speech-sdk"></a>使用语音 SDK 获取视素事件
 
-为了创建视素事件，我们将输入文本转换为一组音素序列以及与它们相对应的视素序列。 我们会预估语音音频中每个视素的开始时间。 视素事件包含一系列视素 ID，每个 ID 都带有在该视素出现的音频中的偏移量。 这些事件可以驱动对朗读输入文本的人员进行模拟的嘴部动态。
+为了创建视素事件，TTS 服务将输入文本转换为一组音素序列以及与它们相对应的视素序列。
+然后预估语音音频中每个视素的开始时间。
+视素事件包含一系列视素 ID，每个 ID 都带有在该视素出现的音频中的偏移量。
+这些事件可以驱动对朗读输入文本的人员进行模拟的嘴部动态。
 
 | 参数 | 说明 |
 |-----------|-------------|

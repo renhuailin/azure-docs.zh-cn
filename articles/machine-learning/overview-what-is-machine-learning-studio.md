@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
 adobe-target: true
-ms.openlocfilehash: 48c4b2a73628ab2105e23054d747e28acc105d01
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: ca53c42c5c80a86e50db5ac52e6efee75c17cd8e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563176"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770634"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 
@@ -105,8 +105,10 @@ Azure 机器学习工作室是 Azure 机器学习中的 Web 门户，其中包�
 
 请访问[工作室](https://ml.azure.com)，或浏览以下教程中的不同创作选项：  
 
-- + [在自己的开发环境开始使用](tutorial-1st-experiment-sdk-setup-local.md)
-  + [在计算实例上使用 Jupyter 笔记本来训练和部署模型](tutorial-1st-experiment-sdk-setup.md)
+从[快速入门：Azure 机器学习入门](quickstart-create-resources.md)开始。  然后使用这些资源以你喜欢的方法创建你的第一个试验：
+
+  + [运行“Hello world!”Python 脚本（第 1 部分，共 3 部分）](tutorial-1st-experiment-hello-world.md)
+  + [使用 Jupyter Notebook 训练图像分类模型](tutorial-train-models-with-aml.md)
   + [使用自动化机器学习训练和部署模型](tutorial-first-experiment-automated-ml.md)  
   + [使用设计器训练和部署模型](tutorial-designer-automobile-price-train-score.md)
   + [在受保护的虚拟网络中使用工作室](how-to-enable-studio-virtual-network.md)

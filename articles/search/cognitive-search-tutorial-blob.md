@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 878bdc1224134f7b9de684635cde77d057b221a7
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94738044"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555985"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 REST 和 AI 从 Azure Blob 生成可搜索的内容
 
@@ -113,7 +113,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 第三个组件是可以[在门户中创建](search-create-service-portal.md)的 Azure 认知搜索。 可使用免费层完成本演练。 
 
-与处理 Azure Blob 存储时一样，请花片刻时间来收集访问密钥。 此外，在开始构建请求时，需要提供终结点和管理 API 密钥用于对每个请求进行身份验证。
+与处理 Azure Blob 存储时一样，请花点时间收集访问密钥。 此外，在开始构建请求时，需要提供终结点和管理 API 密钥用于对每个请求进行身份验证。
 
 ### <a name="copy-an-admin-api-key-and-url-for-azure-cognitive-search"></a>复制 Azure 认知搜索的管理员 API 密钥和 URL
 
@@ -185,7 +185,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
    | 技能                 | 说明    |
    |-----------------------|----------------|
-   | [实体识别](cognitive-search-skill-entity-recognition.md) | 从 Blob 容器中的内容提取人员、组织和位置的名称。 |
+   | [实体识别](cognitive-search-skill-entity-recognition-v3.md) | 从 Blob 容器中的内容提取人员、组织和位置的名称。 |
    | [语言检测](cognitive-search-skill-language-detection.md) | 检测内容的语言。 |
    | [文本拆分](cognitive-search-skill-textsplit.md)  | 将大段内容拆分为较小区块，然后调用关键短语提取技能。 关键短语提取接受不超过 50,000 个字符的输入。 有几个示例文件需要拆分才能保留在此限制范围内。 |
    | [关键短语提取](cognitive-search-skill-keyphrases.md) | 提取出最相关的关键短语。 |

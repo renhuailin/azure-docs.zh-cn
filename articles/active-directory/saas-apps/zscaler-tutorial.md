@@ -11,34 +11,34 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 84c74d5c1452cf5945aa4f66c3ed3c6af48681b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0b824b35c1cbeeda9639f321200b367d0152e0e
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726101"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803145"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zscaler 集成
 
 本教程介绍如何将 Zscaler 与 Azure Active Directory (Azure AD) 集成。 将 Zscaler 与 Azure AD 集成后，可以：
 
-* 在 Azure AD 中控制谁有权访问 Zscaler。
-* 让用户使用其 Azure AD 帐户自动登录到 Zscaler。
-* 在一个中心位置（Azure 门户）管理帐户。
+- 在 Azure AD 中控制谁有权访问 Zscaler。
+- 让用户使用其 Azure AD 帐户自动登录到 Zscaler。
+- 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用单一登录 (SSO) 的 Zscaler 订阅。
+- 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+- 已启用单一登录 (SSO) 的 Zscaler 订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Zscaler 支持 SP 发起的 SSO 
-* Zscaler 支持恰时用户预配 
+- Zscaler 支持 SP 发起的 SSO 
+- Zscaler 支持恰时用户预配 
 
 ## <a name="adding-zscaler-from-the-gallery"></a>从库中添加 Zscaler
 
@@ -58,10 +58,10 @@ ms.locfileid: "98726101"
 若要配置并测试 Zscaler 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+   1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+   1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Zscaler SSO](#configure-zscaler-sso)** - 在应用程序端配置单一登录设置。
-    1. [创建 Zscaler 测试用户](#create-zscaler-test-user) - 在 Zscaler 中创建 B.Simon 的对应用户，其与用户的 Azure AD 表示形式相关联  。
+   1. [创建 Zscaler 测试用户](#create-zscaler-test-user) - 在 Zscaler 中创建 B.Simon 的对应用户，其与用户的 Azure AD 表示形式相关联  。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -76,43 +76,43 @@ ms.locfileid: "98726101"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.zscaler.net`
+   在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.zscaler.net`。
 
-    > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Zscaler 客户端支持团队](https://www.zscaler.com/company/contact)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+   > [!NOTE]
+   > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Zscaler 客户端支持团队](https://www.zscaler.com/company/contact)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. Zscaler 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
-    ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
+   ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
 1. 除了上述属性，Zscaler 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 名称 | 源属性 |
-    | ---------| ------------ |
-    | memberOf | user.assignedroles |
+   | 名称     | 源属性   |
+   | -------- | ------------------ |
+   | memberOf | user.assignedroles |
 
-    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
+   a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    b. 在“名称”文本框中，键入为该行显示的属性名称。 
+   b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
-    c. 将“命名空间”留空  。
+   c. 将“命名空间”留空  。
 
-    d. 选择“源”作为“属性”  。
+   d. 选择“源”作为“属性”  。
 
-    e. 在“源属性”  列表中，键入为该行显示的属性值。
+   e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“ **保存**”。
+   f. 单击“ **保存**”。
 
-    > [!NOTE]
-    > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
+   > [!NOTE]
+   > 若要了解如何在 Azure AD 中配置角色，请单击[此处](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
-    ![证书下载链接](common/certificatebase64.png)
+   ![证书下载链接](common/certificatebase64.png)
 
 1. 在“设置 Zscaler”部分中，根据要求复制相应 URL  。
 
-    ![复制配置 URL](common/copy-configuration-urls.png)
+   ![复制配置 URL](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -121,7 +121,7 @@ ms.locfileid: "98726101"
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“名称”字段中，输入 `B.Simon`。
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
@@ -142,79 +142,79 @@ ms.locfileid: "98726101"
 
 1. 若要在“Zscaler”中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”   。
 
-    ![我的应用扩展](common/install-myappssecure-extension.png)
+   ![我的应用扩展](common/install-myappssecure-extension.png)
 
 1. 将扩展添加到浏览器后，单击“安装 Zscaler”  会将你定向到 Zscaler 应用程序。 在此处，请提供管理员凭据以登录到 Zscaler。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-6。
 
-    ![设置 SSO](common/setup-sso.png)
+   ![设置 SSO](common/setup-sso.png)
 
 1. 若要手动设置 Zscaler，请打开新的 Web 浏览器窗口，以管理员身份登录 Zscaler 公司网站，并执行以下步骤：
 
 1. 转到“管理”>“身份验证”>“身份验证设置”并执行以下步骤： 
 
-    ![显示包含所述步骤的 Zscaler One 站点的屏幕截图。](./media/zscaler-tutorial/ic800206.png "管理")
+   ![显示包含所述步骤的 Zscaler One 站点的屏幕截图。](./media/zscaler-tutorial/ic800206.png "管理")
 
-    a. 在“身份验证类型”下选择“SAML”。 
+   a. 在“身份验证类型”下选择“SAML”。 
 
-    b. 单击“配置 SAML”。 
+   b. 单击“配置 SAML”。 
 
-1. 在“编辑 SAML”窗口中，执行以下步骤并单击“保存”。   
+1. 在“编辑 SAML”窗口中，执行以下步骤并单击“保存”。 
 
-    ![管理用户和身份验证](./media/zscaler-tutorial/ic800208.png "管理用户和身份验证")
+   ![管理用户和身份验证](./media/zscaler-tutorial/ic800208.png "管理用户和身份验证")
 
-    a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”   。
+   a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”   。
 
-    b. 在“登录名属性”文本框中，输入 **NameID**。
+   b. 在“登录名属性”文本框中，输入 **NameID**。
 
-    c. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。  
+   c. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。 
 
-    d. 切换“启用 SAML 自动预配”  。
+   d. 切换“启用 SAML 自动预配”  。
 
-    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。
+   e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。
 
-    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。
+   f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。
 
-    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
+   g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
 
-    h. 单击“保存”  。
+   h. 单击“ **保存**”。
 
 1. 在“配置用户身份验证”  对话框页上，执行以下步骤：
 
-    ![显示选择了“激活”的“配置用户身份验证”对话框的屏幕截图。](./media/zscaler-tutorial/ic800207.png)
+   ![显示选择了“激活”的“配置用户身份验证”对话框的屏幕截图。](./media/zscaler-tutorial/ic800207.png)
 
-    a. 将鼠标悬停在左下角附近的“激活”菜单上。 
+   a. 将鼠标悬停在左下角附近的“激活”菜单上。 
 
-    b. 单击“激活”  。
+   b. 单击“激活”  。
 
-## <a name="configuring-proxy-settings"></a>配置代理设置
+## <a name="configuring-proxy-settings&quot;></a>配置代理设置
 
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中配置代理设置
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>在 Internet Explorer 中配置代理设置
 
 1. 启动 **Internet Explorer**。
 
 1. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。   
 
-    ![Internet 选项](./media/zscaler-tutorial/ic769492.png "Internet 选项")
+   ![Internet 选项](./media/zscaler-tutorial/ic769492.png &quot;Internet 选项")
 
 1. 单击“连接”  选项卡。
 
-    ![连接](./media/zscaler-tutorial/ic769493.png "连接")
+   ![连接](./media/zscaler-tutorial/ic769493.png "连接")
 
 1. 单击“LAN 设置”  ，打开“LAN 设置”  对话框。
 
-1. 在“代理服务器”部分中，执行以下步骤：   
+1. 在“代理服务器”部分中，执行以下步骤：
 
-    ![代理服务器](./media/zscaler-tutorial/ic769494.png "代理服务器")
+   ![代理服务器](./media/zscaler-tutorial/ic769494.png "代理服务器")
 
-    a. 选择“为 LAN 使用代理服务器”。 
+   a. 选择“为 LAN 使用代理服务器”。 
 
-    b. 在“地址”文本框中，键入 gateway.zscaler.net  。
+   b. 在“地址”文本框中，键入 gateway.zscaler.net  。
 
-    c. 在“端口”文本框中，键入 **80**。
+   c. 在“端口”文本框中，键入 **80**。
 
-    d. 选择“对本地地址不使用代理服务器”  。
+   d. 选择“对本地地址不使用代理服务器”  。
 
-    e. 单击“确定”  ，关闭“局域网(LAN)设置”  对话框。
+   e. 单击“确定”  ，关闭“局域网(LAN)设置”  对话框。
 
 1. 单击“确定”  ，关闭“Internet 选项”  对话框。
 
@@ -225,16 +225,15 @@ ms.locfileid: "98726101"
 > [!Note]
 > 如果需要手动创建用户，请联系 [Zscaler 支持团队](https://www.zscaler.com/company/contact)。
 
-## <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO
 
-在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Zscaler 登录 URL，可以在其中启动登录流。 
+- 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Zscaler 登录 URL，可以在其中启动登录流。
 
-* 直接转到 Zscaler 登录 URL，并从那里启动登录流。
+- 直接转到 Zscaler 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Zscaler”磁贴时，会重定向到 Zscaler 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+- 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Zscaler”磁贴时，会重定向到 Zscaler 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

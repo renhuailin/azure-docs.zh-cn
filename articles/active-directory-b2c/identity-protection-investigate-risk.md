@@ -5,22 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 05/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8919285f31e04a51ce10afe3313b28cf86b64ee0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 072278ab70484eb427bafafc3e644e39e47eb8a8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055185"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960495"
 ---
 # <a name="investigate-risk-with-identity-protection-in-azure-ad-b2c"></a>使用 Azure AD B2C 中的标识保护来调查风险
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 标识保护为 Azure AD B2C 租户提供持续的风险检测。 它使组织能够发现、调查和修正基于标识的风险。 标识保护随附风险报告，这些报告可用于调查 Azure AD B2C 租户中的标识风险。 本文介绍如何调查和缓解风险。
 
@@ -70,7 +68,7 @@ Azure AD B2C 标识保护提供两份报告。 风险用户报告：管理员可
 
 通过风险用户报表提供的信息，管理员可找出：
 
-- 哪些用户面临风险、其风险是否已得到修正，或其风险已被消除？
+- 风险状态，显示哪些用户有风险；风险已修正或风险已消除
 - 有关检测的详细信息
 - 所有风险登录的历史记录
 - 风险历史记录
@@ -83,6 +81,8 @@ Azure AD B2C 标识保护提供两份报告。 风险用户报告：管理员可
 - 阻止用户登录
 - 使用 Azure ATP 进一步调查
 
+管理员可以选择在 Azure 门户中消除用户的风险，或者通过 Microsoft Graph API 的[“消除用户风险”](/graph/api/riskyusers-dismiss?preserve-view=true&view=graph-rest-beta)选项以编程方式这样做。 需要管理员权限才能消除用户的风险。 消除风险可以由风险用户或代表该用户的管理员通过特定方式（例如密码重置）来执行。
+
 ### <a name="navigating-the-risky-users-report"></a>浏览风险用户报告
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
@@ -91,7 +91,7 @@ Azure AD B2C 标识保护提供两份报告。 风险用户报告：管理员可
 
 1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
 
-1. 在“安全性”下，选择“风险用户(预览版)” 。
+1. 在“安全性”下，选择“风险用户” 。
 
    ![有风险用户](media/identity-protection-investigate-risk/risky-users.png)
 
@@ -115,7 +115,7 @@ Azure AD B2C 标识保护提供两份报告。 风险用户报告：管理员可
 ### <a name="navigating-the-risk-detections-report"></a>浏览风险检测项报告
 
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
-1. 在“安全性”下，选择“风险检测(预览版)” 。
+1. 在“安全性”下，选择“风险检测” 。
 
    ![风险检测](media/identity-protection-investigate-risk/risk-detections.png)
 

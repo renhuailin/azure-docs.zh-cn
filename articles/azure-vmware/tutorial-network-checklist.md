@@ -2,13 +2,13 @@
 title: 教程 - 网络规划清单
 description: 了解 Azure VMware 解决方案中网络连接和网络端口的网络要求。
 ms.topic: tutorial
-ms.date: 04/23/2021
-ms.openlocfilehash: 2e7854100df7e19ec8cfcc9b6de647fa8ed31d38
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 06/08/2021
+ms.openlocfilehash: 5719ec1a2495c6a225c35ec46cdf19506a10ba6f
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945442"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017264"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware 解决方案的网络规划清单 
 
@@ -52,7 +52,13 @@ Azure VMware 解决方案私有云要求至少对子网使用 CIDR 网络地址�
 | 私有云管理  | `/26`  | `10.10.0.0/26`   |
 | HCX 管理迁移       | `/26`  | `10.10.0.64/26`  |
 | Global Reach 已预留     | `/26`  | `10.10.0.128/26` |
-| ExpressRoute 已预留     | `/27`  | `10.10.0.192/27` |
+| NSX-T DNS 服务         | `/32`  | `10.10.0.192/32` |
+| 预留                  | `/32`  | `10.10.0.193/32` |
+| 预留                  | `/32`  | `10.10.0.194/32` |
+| 预留                  | `/32`  | `10.10.0.195/32` |
+| 预留                  | `/30`  | `10.10.0.196/30` |
+| 预留                  | `/29`  | `10.10.0.200/29` |
+| 预留                  | `/28`  | `10.10.0.208/28` |
 | ExpressRoute 对等互连      | `/27`  | `10.10.0.224/27` |
 | ESXi 管理           | `/25`  | `10.10.1.0/25`   |
 | vMotion 网络           | `/25`  | `10.10.1.128/25` |
@@ -85,9 +91,8 @@ Azure VMware 解决方案私有云要求至少对子网使用 CIDR 网络地址�
 | 本地 vCenter 网络 | 私有云管理网络 | TCP | 8000 |  从本地 vCenter 到私有云 vCenter 的 VM vMotion   |     
 
 ## <a name="dhcp-and-dns-resolution-considerations"></a>DHCP 和 DNS 解析注意事项
-在私有云环境中运行的应用程序和工作负载需要使用名称解析和 DHCP 服务来进行查找和 IP 地址分配。 需有适当的 DHCP 和 DNS 基础结构才能提供这些服务。 在私有云环境中，可以配置一个虚拟机来提供这些服务。  
 
-使用内置于 NSX 的 DHCP 服务，或使用私有云中的本地 DHCP 服务器，而不要通过 WAN 将广播 DHCP 流量路由回本地。
+[!INCLUDE [dhcp-dns-in-azure-vmware-solution-description](includes/dhcp-dns-in-azure-vmware-solution-description.md)]
 
 
 ## <a name="next-steps"></a>后续步骤

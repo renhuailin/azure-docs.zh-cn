@@ -6,13 +6,13 @@ ms.author: srranga
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 04/26/2021
-ms.openlocfilehash: ad417bc44de7d13594f003f7aa1e39b2308204ed
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.date: 05/25/2021
+ms.openlocfilehash: 4ed84ab94173961412a7769da89136c39413a92e
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064856"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983071"
 ---
 # <a name="release-notes---azure-database-for-postgresql---flexible-server"></a>发行说明 - Azure Database for PostgreSQL - 灵活服务器
 
@@ -21,6 +21,12 @@ ms.locfileid: "108064856"
 > [!IMPORTANT]
 > Azure Database for PostgreSQL 灵活服务器以预览版提供
 
+## <a name="release-may-25-2021"></a>发布日期：2021 年 5 月 25 日
+
+* 支持 [PostgreSQL 主版本 13](./concepts-supported-versions.md)。
+* 支持扩展（包括 pg_partman、pg_cron 和 pgaudit）。 有关每个主版本支持的版本，请参阅[扩展页](./concepts-extensions.md)。
+* 修复了多个 bug，并提升了稳定性和性能。
+
 ## <a name="release-april-26-2021"></a>发布日期：2021 年 4 月 26 日
 
 * 支持通过创建新服务器使用[最新的 PostgreSQL 次要版本](./concepts-supported-versions.md) 12.6 和 11.11。
@@ -28,7 +34,7 @@ ms.locfileid: "108064856"
 * 支持在时间点还原操作期间选择可用性区域。
 * 支持新[区域](./overview.md#azure-regions)，包括澳大利亚东部、加拿大中部和法国中部。
 * 支持[内置的 PgBouncer](./concepts-pgbouncer.md) 连接池程序。 
-* 支持 [pglogical](https://github.com/2ndQuadrant/pglogical) 扩展版本 2.3.2。
+<!--- * Support for [pglogical](https://github.com/2ndQuadrant/pglogical) extension version 2.3.2. -->
 * [智能性能](concepts-query-store.md)目前提供公共预览版。
 * 修复了多个 bug，并提升了稳定性和性能。
 

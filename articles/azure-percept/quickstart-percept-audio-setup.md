@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/25/2021
-ms.openlocfilehash: fa3dad8cdd38e6db621d8194cc9472430c7c5008
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ae2720c321e701d14e91f8aee7a6dfbfc5f15739
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605784"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071337"
 ---
 # <a name="azure-percept-audio-setup"></a>Azure Percept 音频设置
 
@@ -23,7 +23,7 @@ Azure Percept 音频可直接与 Azure Percept DK 一起使用。 无需进行�
 - Azure Percept 音频
 - [Azure 订阅](https://azure.microsoft.com/free/)
 - [Azure Percept DK 设置体验](./quickstart-percept-dk-set-up.md)：你已将 devkit 连接到 Wi-Fi 网络，创建了 IoT 中心，并已将 devkit 连接到 IoT 中心
-- 可以连接到 3.5 毫米音频插孔的扬声器或耳机（可选）
+- 可连接到 3.5 毫米音频插孔的扬声器或耳机（可选）
 
 ## <a name="connecting-your-devices"></a>连接设备
 
@@ -31,14 +31,14 @@ Azure Percept 音频可直接与 Azure Percept DK 一起使用。 无需进行�
 
 1. （可选）通过音频插孔（标记为“输出线”）将扬声器或耳机连接到 Azure Percept Audio 设备。 这样即可听到音频响应。
 
-1. 开启 devkit。 音频内插板上的 LED L02 会变为白光闪烁，指示设备已开机且 Audio SoM 正在进行身份验证。
+1. 开启 devkit。 LED L02 将变为白色闪烁，这表示设备已开机且正在进行身份验证。
 
-1. 等待身份验证过程完成，最多可能需要 3 分钟。
+1. 等待身份验证过程完成，最多需要 5 分钟。
 
-1. 当你看到以下情况之一时，就可以开始创建原型了：
+1. 看到下述 LED 状态之一时，就可开始创建原型：
 
-    - LED L02 会变为纯白色：指示身份验证已完成，但 devkit 尚未配置关键字。
-    - 所有三个 LED 都变为蓝色：指示身份验证已完成，且 devkit 已配置关键字。
+    - LED L02 将变为白色常亮，这表示身份验证已完成，但 devkit 未配置关键字。
+    - 全部三个 LED 都变为蓝色，这表示身份验证已完成且 devkit 已配置关键字。
 
 ## <a name="next-steps"></a>后续步骤
 

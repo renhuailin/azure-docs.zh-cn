@@ -3,18 +3,18 @@ title: 了解 Azure 成本管理数据
 description: 本文帮助你更好地了解 Azure 成本管理中包含的数据、这些数据的处理频率以及收集、显示和关闭方式。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/17/2021
+ms.date: 05/24/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 568f3d811876073dc899204cb8ca4d1753d9cfd0
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 025208685d45658824956b5625993a5dfdbf5e6a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499289"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467526"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -31,32 +31,30 @@ ms.locfileid: "102499289"
 | **类别**  | **产品/服务名称** | **配额 ID** | **套餐编号** | **数据可用** |
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 2014 年 5 月<sup>1</sup> |
-| **Azure Government** | Azure 政府即用即付 | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P | 2018 年 10 月 2 日<sup>2</sup> |
+| **Azure Government** | Azure 政府即用即付 | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P | 2018 年 10 月 2 日 |
 | **企业协议 (EA)** | Enterprise 开发/测试                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014 年 5 月<sup>1</sup> |
 | **企业协议 (EA)** | Microsoft Azure Enterprise | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014 年 5 月<sup>1</sup> |
-| **Microsoft 客户协议** | Microsoft Azure 计划 | EnterpriseAgreement_2014-09-01 | 空值 | 2019 年 3 月<sup>3</sup> |
-| **Microsoft 客户协议** | 适用于开发/测试的 Microsoft Azure 计划 | MSDNDevTest_2014-09-01 | 空值 | 2019 年 3 月<sup>3</sup> |
+| **Microsoft 客户协议** | Microsoft Azure 计划 | EnterpriseAgreement_2014-09-01 | 空值 | 2019 年 3 月<sup>2</sup> |
+| **Microsoft 客户协议** | 适用于开发/测试的 Microsoft Azure 计划 | MSDNDevTest_2014-09-01 | 空值 | 2019 年 3 月<sup>2</sup> |
 | **合作伙伴支持的 Microsoft 客户协议** | Microsoft Azure 计划 | CSP_2015-05-01、CSP_MG_2017-12-01 和 CSPDEVTEST_2018-05-01<br><br>此配额 ID 可重复用于 Microsoft 客户协议和旧 CSP 订阅。 目前仅支持 Microsoft 客户协议订阅。 | 空值 | 2019 年 10 月 |
-| **Microsoft 开发人员网络 (MSDN)** | MSDN 平台<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2018 年 10 月 2 日<sup>2</sup> |
-| **即用即付** | 即用即付                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2018 年 10 月 2 日<sup>2</sup> |
-| **即用即付** | 即用即付开发/测试         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2018 年 10 月 2 日<sup>2</sup> |
-| **即用即付** | Microsoft 合作伙伴网络      | MPN_2014-09-01 | MS-AZR-0025P | 2018 年 10 月 2 日<sup>2</sup> |
-| **即用即付** | 免费试用版<sup>4</sup>         | FreeTrial_2014-09-01 | MS-AZR-0044P | 2018 年 10 月 2 日<sup>2</sup> |
-| **即用即付** | Azure 开放许可<sup>4</sup>      | AzureInOpen_2014-09-01 | MS-AZR-0111P | 2018 年 10 月 2 日<sup>2</sup> |
-| **即用即付** | Azure Pass<sup>4</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P、MS-AZR-0122P - MS-AZR-0125P、MS-AZR-0128P - MS-AZR-0130P | 2018 年 10 月 2 日<sup>2</sup> |
-| **Visual Studio** | Visual Studio Enterprise – MPN<sup>4</sup>     | MPN_2014-09-01 | MS-AZR-0029P | 2018 年 10 月 2 日<sup>2</sup> |
-| **Visual Studio** | Visual Studio Professional<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2018 年 10 月 2 日<sup>2</sup> |
-| **Visual Studio** | Visual Studio Test Professional<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | 2018 年 10 月 2 日<sup>2</sup> |
-| **Visual Studio** | Visual Studio Enterprise<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2018 年 10 月 2 日<sup>2</sup> |
-| **Visual Studio** | Visual Studio Enterprise：BizSpark<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2018 年 10 月 2 日<sup>2</sup> |
+| **Microsoft 开发人员网络 (MSDN)** | MSDN 平台<sup>3</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2018 年 10 月 2 日 |
+| **即用即付** | 即用即付                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2018 年 10 月 2 日 |
+| **即用即付** | 即用即付开发/测试         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2018 年 10 月 2 日 |
+| **即用即付** | Microsoft 合作伙伴网络      | MPN_2014-09-01 | MS-AZR-0025P | 2018 年 10 月 2 日 |
+| **即用即付** | 免费试用版<sup>3</sup>         | FreeTrial_2014-09-01 | MS-AZR-0044P | 2018 年 10 月 2 日 |
+| **即用即付** | Azure 开放许可<sup>3</sup>      | AzureInOpen_2014-09-01 | MS-AZR-0111P | 2018 年 10 月 2 日 |
+| **即用即付** | Azure Pass<sup>3</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P、MS-AZR-0122P - MS-AZR-0125P、MS-AZR-0128P - MS-AZR-0130P | 2018 年 10 月 2 日 |
+| **Visual Studio** | Visual Studio Enterprise – MPN<sup>3</sup>     | MPN_2014-09-01 | MS-AZR-0029P | 2018 年 10 月 2 日 |
+| **Visual Studio** | Visual Studio Professional<sup>3</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2018 年 10 月 2 日 |
+| **Visual Studio** | Visual Studio Test Professional<sup>3</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | 2018 年 10 月 2 日 |
+| **Visual Studio** | Visual Studio Enterprise<sup>3</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2018 年 10 月 2 日 |
+| **Visual Studio** | Visual Studio Enterprise：BizSpark<sup>3</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2018 年 10 月 2 日 |
 
 <sup>**1**</sup> 对于 2014 年 5 月之前的数据，请访问 [Azure 企业门户](https://ea.azure.com)。
 
-_<sup>**2**</sup>_ 如需 2018年 10 月 2 日之前的数据，请访问 [Azure 帐户中心](https://account.azure.com/subscriptions)（适用于全局帐户）和 [Azure 帐户中心政府版](https://account.windowsazure.us/subscriptions)（适用于 Azure 政府帐户）。
+_<sup>2</sup> Microsoft 客户协议从 2019 年 3 月开始，在此时间点之前没有任何历史数据。_ 
 
-<sup>**3**</sup> Microsoft 客户协议从 2019 年 3 月开始，在此时间点之前没有任何历史数据。
-
-<sup>**4**</sup> 基于额度的订阅和提前支付订阅的历史数据可能与发票不匹配。请参阅下面的 [历史数据可能与发票不匹配](#historical-data-might-not-match-invoice)。
+_<sup>3</sup> 基于额度的订阅和提前支付订阅的历史数据可能与发票不匹配。请参阅下面的[历史数据可能与发票不匹配](#historical-data-might-not-match-invoice)。_ 
 
 目前尚不支持以下套餐：
 
@@ -67,7 +65,7 @@ _<sup>**2**</sup>_ 如需 2018年 10 月 2 日之前的数据，请访问 [Azure
 | **云解决方案提供商 (CSP)** | Azure 政府版 CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **云解决方案提供商 (CSP)** | Microsoft 德国云 CSP 中的 Azure 德国版   | CSP_2015-05-01 | MS-AZR-DE-0145P |
 | **即用即付**                 | 面向学生的 Azure 入门版 | DreamSpark_2015-02-01 | MS-AZR-0144P |
-| **即用即付** | 面向学生的 Azure<sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
+| **即用即付** | 面向学生的 Azure<sup>3</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
 | **即用即付**                 | Microsoft Azure 赞助 | Sponsored_2016-01-01 | MS-AZR-0036P |
 | **支持计划** | 标准支持                    | Default_2014-09-01 | MS-AZR-0041P |
 | **支持计划** | 专业直接支持         | Default_2014-09-01 | MS-AZR-0042P |
@@ -93,17 +91,17 @@ _<sup>**2**</sup>_ 如需 2018年 10 月 2 日之前的数据，请访问 [Azure
 
 | **包括** | **不包括** |
 | --- | --- |
-| Azure 服务使用情况<sup>5</sup>        | 支持费用 - 有关详细信息，请参阅[发票条款说明](../understand/understand-invoice.md)。 |
-| 市场产品/服务用量<sup>6</sup> | 税费 - 有关详细信息，请参阅[发票条款说明](../understand/understand-invoice.md)。 |
-| 市场购买<sup>6</sup>      | 信用额度 - 有关详细信息，请参阅[发票条款说明](../understand/understand-invoice.md)。 |
-| 预留项购买<sup>7</sup>      |  |
-| 摊销预留项购买<sup>7</sup>      |  |
+| Azure 服务使用情况<sup>4</sup>        | 支持费用 - 有关详细信息，请参阅[发票条款说明](../understand/understand-invoice.md)。 |
+| 市场产品/服务使用情况<sup>5</sup> | 税费 - 有关详细信息，请参阅[发票条款说明](../understand/understand-invoice.md)。 |
+| 市场购买<sup>5</sup>      | 信用额度 - 有关详细信息，请参阅[发票条款说明](../understand/understand-invoice.md)。 |
+| 预留项购买<sup>6</sup>      |  |
+| 摊销预留项购买<sup>6</sup>      |  |
 
-<sup>**5**</sup> Azure 服务用量基于预留价格和议价。
+_<sup>4</sup> Azure 服务用量基于预留价格和议价。_ 
 
-<sup>6</sup> 市场购买目前不适用于 MSDN 和 Visual Studio 套餐。
+_<sup>5</sup> 市场购买目前不适用于 MSDN 和 Visual Studio 套餐。_
 
-<sup>7</sup> 预留项购买目前仅适用于企业协议 (EA) 和 Microsoft 客户协议帐户。
+_<sup>6</sup> 预留项购买目前仅适用于企业协议 (EA) 和 Microsoft 客户协议帐户。_
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>如何在成本和使用情况数据中使用标记
 

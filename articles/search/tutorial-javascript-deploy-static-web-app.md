@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: c3f4d883dcc9b79ddab77bb8779e52e629226631
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 021f7aeda86f5ff9f11eb2991a74c6ad37a203e6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950317"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469776"
 ---
 # <a name="3---deploy-the-search-enabled-website"></a>3 - 部署启用搜索的网站
 
@@ -26,6 +26,15 @@ ms.locfileid: "107950317"
 ## <a name="create-a-static-web-app-in-visual-studio-code"></a>在 Visual Studio Code 中创建静态 Web 应用
 
 1. 从活动栏中选择 **Azure**，然后从侧边栏中选择 **静态 Web 应用**。 
+
+1. 如果 VS Code 中出现一个弹出窗口，询问要从哪个分支进行部署，请选择默认分支（通常是 master 或 main） 。 
+
+    此设置意味着，只有已提交到该分支的更改才会部署到静态 Web 应用。 
+
+1. 如果出现一个弹出窗口要求提交更改，请不要提交。 不应将批量导入步骤中的机密提交到存储库。 
+
+    若要回滚更改，请在 VS Code 中的“活动”栏上选择“源代码管理”图标，在“更改”列表中选择每个已更改的文件，然后选择“放弃更改”图标。
+
 1. 右键单击订阅名称，然后选择 **创建静态 Web 应用（高级）** 。    
 
     :::image type="content" source="media/tutorial-javascript-create-load-index/visual-studio-code-create-static-web-app-resource-advanced.png" alt-text="右键单击订阅名称，然后选择 **创建静态 Web 应用（高级）**。":::
@@ -34,16 +43,13 @@ ms.locfileid: "107950317"
 
     |Prompt|Enter|
     |--|--|
-    |要如何创建静态 Web 应用？|使用现有的 GitHub 存储库|
-    |选择组织|选择您 _自己_ 的 GitHub 别名作为组织。|
-    |选择存储库|从列表中选择 **azure-search-javascript-samples**。 |
-    |选择存储库的分支|从列表中选择 **主设备**。 |
     |输入新静态 Web 应用的名称。|创建资源的唯一名称。 例如，您可以在存储库名称之前预置名称，如`joansmith-azure-search-javascript-samples`。 |
     |选择新资源的资源组。|使用为本教程创建的资源组。|
+    |选择 SKU| 对于本教程，请选择免费 SKU。|
     |选择“生成预设”以配置默认项目结构。|选择“自定义”|
-    |选择应用程序代码的位置|`search-website`|
-    |选择 Azure Functions 代码的位置|`search-website/api`|
-    |输入构建输出的路径...|build|
+    |选择应用程序代码的位置|`search-website`<br><br>这是从存储库的根目录到 Azure 静态 Web 应用的路径。 |
+    |选择 Azure Functions 代码的位置|`search-website/api`<br><br>这是从存储库的根目录到 Azure 函数应用的路径。 |
+    |输入构建输出的路径...|`build`<br><br>这是从 Azure 静态 Web 应用到生成的文件的路径。|
     |选择新资源的位置。|选择附近的区域。|
 
 1. 创建资源后，从“通知”中选择 **打开 GitHub 中的操作**。 这会打开一个浏览器窗口，该窗口指向分支存储库。 

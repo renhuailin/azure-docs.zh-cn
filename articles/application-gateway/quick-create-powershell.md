@@ -5,22 +5,25 @@ description: 本快速入门介绍如何使用 Azure PowerShell 创建 Azure 应
 services: application-gateway
 author: vhorne
 ms.author: victorh
-ms.date: 01/19/2021
+ms.date: 06/14/2021
 ms.topic: quickstart
 ms.service: application-gateway
 ms.custom: devx-track-azurepowershell - mvc - mode-api
-ms.openlocfilehash: a50c264829ce08b409b52b321ca9c31b3688aed9
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 66c28c68dccad7874d65c7c4c1c9c78cc2ea13da
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320612"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072246"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>快速入门：通过 Azure PowerShell 使用 Azure 应用程序网关定向 Web 流量
 
 在本快速入门中，你将使用 Azure PowerShell 创建一个应用程序网关。 然后对其进行测试以确保其正常运行。 
 
 该应用程序网关将应用程序 Web 流量定向到后端池中的特定资源。 你将向端口分配侦听器，创建规则，并向后端池中添加资源。 为简单起见，本文使用带有公共前端 IP 地址的简单设置、一个在应用程序网关上托管单个站点的基本侦听器、一个基本请求路由规则，以及后端池中的两台虚拟机。
+
+:::image type="content" source="media/quick-create-portal/application-gateway-qs-resources.png" alt-text="应用程序网关资源":::
+
 
 还可以使用 [Azure CLI](quick-create-cli.md) 或 [Azure 门户](quick-create-portal.md)完成本快速入门。
 
@@ -59,15 +62,15 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。  应用程
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myAGSubnet `
-  -AddressPrefix 10.0.1.0/24
+  -AddressPrefix 10.21.0.0/24
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name myBackendSubnet `
-  -AddressPrefix 10.0.2.0/24
+  -AddressPrefix 10.21.1.0/24
 New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myVNet `
-  -AddressPrefix 10.0.0.0/16 `
+  -AddressPrefix 10.21.0.0/16 `
   -Subnet $agSubnetConfig, $backendSubnetConfig
 New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `

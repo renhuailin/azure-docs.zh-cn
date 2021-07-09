@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3e698abbdad4b45a58f14e350e1f2b268a7de371
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 5fba53125e22eed6797db7ada6b99e679e136ea8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324484"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092397"
 ---
 # <a name="telephony-concepts"></a>电话服务概念
 
@@ -40,7 +40,9 @@ Azure 通信服务通话 SDK 可用于向应用程序添加电话服务和 PSTN�
 - 你不需要部署或维护本地部署，因为语音呼叫 (PSTN) 在 Azure 通信服务之外运行。
 - 注意：如有必要，可选择通过 Azure 直接路由连接受支持的会话边界控制器 (SBC)，来与第三方 PBX、模拟设备和 SBC 支持的其他第三方电话服务设备进行互操作。
 
-此选项要求与 Azure 通信服务的连接不间断。
+此选项要求与 Azure 通信服务的连接不间断。  
+
+对于云通话，出站呼叫按每分钟费率计费，具体取决于目标国家/地区。 请参阅 [PSTN 呼叫的当前费率列表](https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)。
 
 ### <a name="azure-direct-routing"></a>Azure 直接路由
 

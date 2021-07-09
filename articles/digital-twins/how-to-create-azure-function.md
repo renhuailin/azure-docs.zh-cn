@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8aaa1b2865b1d0f39e6cb224c3979b4f53eeee81
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2ce667363c2bd3251eba1a0e4829c60d99d3a4bf
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066711"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456593"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>在 Azure 中连接函数应用以处理数据
 
@@ -40,7 +40,7 @@ ms.locfileid: "110066711"
 
 为函数应用指定名称，然后选择“创建”。
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio 的屏幕截图，其中显示了用于配置新项目的对话框。设置包括项目名称、保存位置、新建解决方案的选择，以及解决方案名称。":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio 的屏幕截图，其中显示了用于配置新项目的对话框，包括项目名称、位置、新建解决方案的选择。":::
 
 选择函数应用类型“事件网格触发器”，然后选择“创建”。
 
@@ -107,7 +107,7 @@ ms.locfileid: "110066711"
     > [!Note] 
     > 你可能需要等待几分钟或刷新页面几次，然后你的函数才会出现在已发布函数列表中。
 
-    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="查看 Azure 门户中的已发布函数。" lightbox="media/how-to-create-azure-function/view-published-functions.png":::
+    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="显示 Azure 门户中已发布的函数的屏幕截图。" lightbox="media/how-to-create-azure-function/view-published-functions.png":::
 
 要访问 Azure 数字孪生，函数应用需要系统托管标识并且该标识具有访问 Azure 数字孪生实例的权限。 你接下来要设置此内容。
 
@@ -132,14 +132,14 @@ ms.locfileid: "110066711"
 1. 使用以下命令查看函数的系统托管标识的详细信息。 记下输出中的 `principalId` 字段。
 
     ```azurecli-interactive 
-    az functionapp identity show --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>   
+    az functionapp identity show --resource-group <your-resource-group> --name <your-App-Service-function-app-name> 
     ```
 
     >[!NOTE]
     > 如果结果为空而不是显示标识详细信息，请使用以下命令为函数创建新的系统托管标识：
     > 
     >```azurecli-interactive    
-    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>    
+    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-function-app-name>  
     >```
     >
     > 输出会显示标识的详细信息，包括下一步所需的 `principalId` 值。 
@@ -158,7 +158,7 @@ ms.locfileid: "110066711"
 > 通过将 https:// 添加到实例主机名的开头，创建 Azure 数字孪生实例的 URL。 若要查看主机名以及实例的所有属性，请运行 `az dt show --dt-name <your-Azure-Digital-Twins-instance>`。
 
 ```azurecli-interactive 
-az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
+az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-function-app-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
 ```
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
@@ -224,7 +224,7 @@ az functionapp config appsettings set --resource-group <your-resource-group> --n
 
 1. 在打开的窗口中，使用复制的主机名值创建应用程序设置。
     * **名称**：ADT_SERVICE_URL
-    * **值**： https://{your-azure-digital-twins-host-name}
+    * **值**： https://<your-Azure-Digital-Twins-host-name>
     
     选择“确定”，以创建应用程序设置。
     
@@ -232,11 +232,11 @@ az functionapp config appsettings set --resource-group <your-resource-group> --n
 
 1. 创建设置后，它应出现在“应用程序设置 ”选项卡上。验证 ADT_SERVICE_URL 是否出现在列表中。 然后通过选择“保存”来保存新应用程序设置。
 
-    :::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure 门户的屏幕截图。在应用程序设置选项卡上，突出显示了新的 ADT SERVICE URL 设置。还突出显示了“保存”按钮。":::
+    :::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure 门户的屏幕截图。在应用程序设置选项卡上，突出显示了新的 ADT SERVICE URL 设置和“保存”按钮。":::
 
 1. 对应用程序设置进行的任何更改都需要重启应用程序，因此请在系统提示时选择“继续”以重启应用程序。
 
-    :::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure 门户的屏幕截图。一个备注指出对应用程序设置进行的任何更改都会重启应用程序。突出显示了“继续”按钮。":::
+    :::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure 门户的屏幕截图。一个备注指出对应用程序设置进行的任何更改都会重启应用程序。":::
 
 ---
 

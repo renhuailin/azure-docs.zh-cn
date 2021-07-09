@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: a195567117378a118b9bea8d15a7cb0a661d284a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9bfb125a9906c89fb7c607ce241a9b7696b805bc
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303519"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537600"
 ---
-# <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
+# <a name="language-support-for-text-and-speech-translation"></a>针对文本和语音翻译的语言支持
 
 使用 Translator 可以在 90 多种文本翻译语言和方言之间互译。 神经机器翻译 (NMT) 是采用 AI 的高质量机器翻译的新标准。当神经系统可用时，你可以在使用 V3 版翻译器时将神经机器翻译用作默认设置。
 
@@ -129,6 +129,9 @@ ms.locfileid: "107303519"
 
 > [!NOTE]
 > 语言代码 `pt` 将默认为 `pt-br`，表示“葡萄牙语(巴西)”。
+
+> [!NOTE]
+> 以下语言当前在容器中不可用：萨摩亚语、塔希提语、克林贡语、克林贡语 (plqaD) 和泰语。
 
 ### <a name="detect"></a>Detect
 

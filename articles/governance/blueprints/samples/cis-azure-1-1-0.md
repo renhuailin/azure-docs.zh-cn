@@ -3,16 +3,16 @@ title: CIS Microsoft Azure 基础基准检验 v1.1.0 蓝图示例
 description: CIS Microsoft Azure 基础基准检验 v1.1.0 蓝图示例的概述。 此蓝图示例可帮助客户评估特定控制要求。
 ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: b6188d96971329a83bc82042a1f840bd893354eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a7b6afb2647db02f50704c8718ba8562c5c6c02
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103197804"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757774"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-v110-blueprint-sample"></a>CIS Microsoft Azure 基础基准检验 v1.1.0 蓝图示例
 
-CIS Microsoft Azure 基础基准检验 v1.1.0 蓝图示例使用 [Azure Policy](../../policy/overview.md) 提供监管防护措施，帮助你评估特定 CIS Microsoft Azure 基础基准检验建议。 对于 Azure 部署的任何必须实施 CIS Microsoft Azure 基础基准检验 v1.1.0 建议的体系结构，此蓝图可帮助客户为其部署一组核心策略。
+CIS Microsoft Azure 基础基准检验 v1.1.0 蓝图示例使用 [Azure Policy](../../policy/overview.md) 提供治理防护措施，帮助你评估特定 CIS Microsoft Azure 基础基准检验建议。 对于 Azure 部署的任何必须实施 CIS Microsoft Azure 基础基准检验 v1.1.0 建议的体系结构，此蓝图可帮助客户为其部署一组核心策略。
 
 ## <a name="recommendation-mapping"></a>建议映射
 

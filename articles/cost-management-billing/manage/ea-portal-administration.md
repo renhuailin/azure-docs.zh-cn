@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 787f902311437e6ca8a679299ef7a28b34cee4ab
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 09e719408926c071777a7022264c10f14531067f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728403"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075513"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -52,7 +52,7 @@ ms.locfileid: "107728403"
 
 #### <a name="if-your-enterprise-administrator-cant-help-you"></a>如果企业管理员无法为你提供帮助
 
-如果企业管理员无法为你提供帮助，请创建 [Azure Enterprise 门户支持请求](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c)。 提供以下信息：
+如果企业管理员无法为你提供帮助，请创建 [Azure 支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。 提供以下信息：
 
 - 注册编号
 - 要添加的电子邮件地址和身份验证类型（工作、学校帐户或 Microsoft 帐户）

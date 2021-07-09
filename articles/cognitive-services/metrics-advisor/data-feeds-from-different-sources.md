@@ -5,17 +5,17 @@ description: 将不同的数据馈送添加到指标顾问
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
-ms.openlocfilehash: 4fd01256d94fbcb18fe8437be00c84e49d98f7d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8ed4f3463a4061fffe480da7006e8660e95a5af6
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606141"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891169"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>将来自不同数据源的数据馈送添加到指标顾问
 

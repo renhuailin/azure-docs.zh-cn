@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 540631db87807312f96c96ddd5b8144d4e22ff91
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a63390073f92625788dfbf43fc1183cc1812024a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095565"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460320"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>将事件路由到 Azure 数字孪生内部和外部
 
@@ -32,7 +32,7 @@ Azure 数字孪生使用事件路由向服务外的使用者发送数据。
 
 下图说明了通过具有 Azure 数字孪生特性的大型 IoT 解决方案的事件数据流：
 
-:::image type="content" source="media/concepts-route-events/routing-workflow.png" alt-text="Azure 数字孪生通过终结点将数据路由到多个下游服务" border="false":::
+:::image type="content" source="media/concepts-route-events/routing-workflow.png" alt-text="Azure 数字孪生通过终结点将数据路由到多个下游服务的图示。" border="false":::
 
 事件路由的典型下游目标是 TSI、Azure Maps、存储和分析解决方案等资源。
 
@@ -95,7 +95,7 @@ Azure 数字孪生使用事件路由向服务外的使用者发送数据。
 
 如果满足上述任一条件，则会将该事件删除或视为死信。 默认情况下，每个终结点不会启用死信功能。 若要启用该功能，在创建终结点时必须指定一个存储帐户来存放未传递的事件。 然后，你可从此存储帐户中拉取事件来解决传递问题。
 
-在设置死信位置之前，必须有一个包含容器的存储帐户。 在创建终结点时，需要提供此容器的 URL。 死信作为带有 SAS 令牌的容器 URL 提供。 该令牌只需要存储帐户中目标容器的 `write` 权限。 完整格式的 URL 将为 `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+在设置死信位置之前，必须有一个包含容器的存储帐户。 在创建终结点时，需要提供此容器的 URL。 死信作为带有 SAS 令牌的容器 URL 提供。 该令牌只需要存储帐户中目标容器的 `write` 权限。 完整格式的 URL 将为 `https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>`
 
 若要详细了解 SAS 令牌，请参阅使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限。
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 820b5f39192fffa0ec54b44c6016965599d85a8c
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 2896c5c78acb98c798f85684ef6f800f82549b06
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107863688"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412702"
 ---
 # <a name="start-translation"></a>开始翻译
 
@@ -31,7 +31,7 @@ ms.locfileid: "107863688"
 
 将 `POST` 请求发送到：
 ```HTTP
-POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches
+POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches
 ```
 
 了解如何查找[自定义域名](../get-started-with-document-translation.md#find-your-custom-domain-name)。
@@ -59,25 +59,25 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 输入批量翻译请求的定义。
 
-|名称|类型|必需|说明|
+|名称|类型|必须|说明|
 |--- |--- |--- |--- |
 |source|SourceInput[]|正确|下面列出 inputs.source。 输入文档的源。|
-|storageType|StorageInputType[]|正确|下面列出 inputs.storageType。 输入文档源字符串的存储类型。|
+|storageType|StorageInputType[]|False|下面列出 inputs.storageType。 输入文档源字符串的存储类型。 仅需要进行单个文档翻译。|
 |目标|TargetInput[]|正确|下面列出 inputs.target。 输出的目标位置。|
 
 **inputs.source**
 
 输入文档的源。
 
-|名称|类型|必需|说明|
+|名称|类型|必须|说明|
 |--- |--- |--- |--- |
 |filter|DocumentFilter[]|错误|下面列出 DocumentFilter[]。|
-|filter.prefix|string|错误|区分大小写的前缀字符串，用于筛选源路径中的文档以进行翻译。 例如，使用 Azure 存储 blob URI 时，请使用前缀限制要翻译的子文件夹。|
-|filter.suffix|string|错误|区分大小写的后缀字符串，用于筛选源路径中的文档以进行翻译。 这最常用于文件扩展名。|
+|filter.prefix|字符串|错误|区分大小写的前缀字符串，用于筛选源路径中的文档以进行翻译。 例如，使用 Azure 存储 blob URI 时，请使用前缀限制要翻译的子文件夹。|
+|filter.suffix|字符串|错误|区分大小写的后缀字符串，用于筛选源路径中的文档以进行翻译。 这最常用于文件扩展名。|
 |语言|字符串|错误|语言代码如果未指定，则将对文档执行自动检测。|
-|sourceUrl|string|True|包含文档的文件夹/容器或单个文件的位置。|
+|sourceUrl|字符串|True|包含文档的文件夹/容器或单个文件的位置。|
 |storageSource|StorageSource|错误|下面列出 StorageSource。|
-|storageSource.AzureBlob|string|错误||
+|storageSource.AzureBlob|字符串|错误||
 
 **inputs.storageType**
 
@@ -85,24 +85,24 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 |名称|类型|
 |--- |--- |
-|文件|string|
+|文件|字符串|
 |文件夹|string|
 
 **inputs.target**
 
 已完成翻译的文档的目标。
 
-|名称|类型|必需|说明|
+|名称|类型|必须|说明|
 |--- |--- |--- |--- |
-|category|string|错误|翻译请求的类别/自定义系统。|
+|category|字符串|错误|翻译请求的类别/自定义系统。|
 |术语表|Glossary[]|错误|下面列出术语表。 术语表。|
-|glossaries.format|string|错误|格式。|
-|glossaries.glossaryUrl|string|True（如果使用术语表）|术语表的位置。 如果未提供格式参数，我们将使用文件扩展名来提取格式设置。 如果术语表中没有翻译语言对，则不会应用该术语表。|
+|glossaries.format|字符串|错误|格式。|
+|glossaries.glossaryUrl|字符串|True（如果使用术语表）|术语表的位置。 如果未提供格式参数，我们将使用文件扩展名来提取格式设置。 如果术语表中没有翻译语言对，则不会应用该术语表。|
 |glossaries.storageSource|StorageSource|错误|上面列出 StorageSource。|
+|glossaries.version|字符串|错误|可选版本。 如果未指定，则使用默认版本。|
 |targetUrl|字符串|True|包含文档的文件夹/容器的位置。|
 |语言|字符串|True|目标语言代码（两个字母）。 请参阅[语言代码列表](../../language-support.md)。|
 |storageSource|StorageSource []|错误|上面列出 StorageSource []。|
-|版本|string|错误|版本。|
 
 ## <a name="example-request"></a>示例请求
 
@@ -115,11 +115,11 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
     "inputs": [
         {
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
                     "language": "fr"
                 }
             ]
@@ -137,15 +137,15 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
     "inputs": [
         {
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
-                    "language": "fr"
-     "glossaries": [
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
+                    "language": "fr",
+                    "glossaries": [
                         {
-                            "glossaryUrl": https://my.blob.core.windows.net/glossaries/en-fr.xlf?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=BsciG3NWoOoRjOYesTaUmxlXzyjsX4AgVkt2AsxJ9to%3D,
+                            "glossaryUrl": "https://my.blob.core.windows.net/glossaries/en-fr.xlf?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=BsciG3NWoOoRjOYesTaUmxlXzyjsX4AgVkt2AsxJ9to%3D",
                             "format": "xliff",
                             "version": "1.2"
                         }
@@ -167,14 +167,14 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
     "inputs": [
         {
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D,
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D",
                 "filter": {
                     "prefix": "MyFolder/"
                 }
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
                     "language": "fr"
                 }
             ]
@@ -196,15 +196,15 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
         {
             "storageType": "File",
             "source": {
-                "sourceUrl": https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D
+                "sourceUrl": "https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D"
             },
             "targets": [
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
                     "language": "es"
                 },
                 {
-                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
                     "language": "de"
                 }
             ]
@@ -233,9 +233,10 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 |--- |--- |--- |
 |code|string|包含错误代码概要的枚举。 可能的值：<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>未授权</li></ul>|
 |message|字符串|获取概要错误消息。|
-|innerError|InnerErrorV2|新内部错误格式，符合认知服务 API 准则。 它包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
+|innerError|InnerTranslationError|新内部错误格式，符合认知服务 API 准则。 这包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
 |inner.Errorcode|字符串|获取代码错误字符串。|
 |innerError.message|字符串|获取概要错误消息。|
+|innerError.target|string|获取错误的源。 例如，如果文档无效，应为“文档”或“文档 ID”。|
 
 ## <a name="examples"></a>示例
 
@@ -246,7 +247,7 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 可以在 POST 方法的响应头 Operation-Location URL 值中找到作业 ID。 URL 的最后一个参数是操作的作业 ID，即“/operation/”之后的字符串。
 
 ```HTTP
-Operation-Location: https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0.preview.1/operation/0FA2822F-4C2A-4317-9C20-658C801E0E55
+Operation-Location: https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/operation/0FA2822F-4C2A-4317-9C20-658C801E0E55
 ```
 
 ### <a name="example-error-response"></a>错误响应示例

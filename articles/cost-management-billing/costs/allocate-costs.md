@@ -3,17 +3,17 @@ title: 分摊 Azure 成本
 description: 本文介绍如何创建成本分摊规则，以将订阅、资源组或标记的成本分摊给其他订阅、资源组或标记。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/23/2021
+ms.date: 05/10/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: e7afef7e0a10bb4be3c30112fc207467167e4a17
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: b837e5819318707b44932f5915746479e27646ec
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726513"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734861"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>创建和管理 Azure 成本分摊规则（预览版）
 
@@ -76,6 +76,10 @@ ms.locfileid: "107726513"
 > [!NOTE] 
 > 新规则可能需要长达两个小时才能处理完成并处于活动状态。
 
+下面的视频演示了如何创建成本分摊规则。
+
+>[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+
 ## <a name="verify-the-cost-allocation-rule"></a>验证成本分摊规则
 
 当成本分摊规则处于活动状态时，所选源的成本将分摊给指定的分摊目标。 使用以下信息来验证成本是否已正确分摊到目标。
@@ -96,10 +100,17 @@ ms.locfileid: "107726513"
 
 :::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="显示标记项成本的示例" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
-下面的视频演示了如何创建成本分摊规则。
+### <a name="view-cost-allocation-in-the-downloaded-usage-details-and-in-exports-csv-files"></a>在已下载的使用情况详细信息和导出 CSV 文件中查看成本分摊
 
->[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+已下载的使用情况详细信息文件和导出的数据中也提供了成本分摊规则。 数据文件具有列名称 `costAllocationRuleName`。 如果成本分摊规则适用于使用情况详细信息或导出文件中的条目，则使用成本分摊规则名称填充该行。 下面的示例图像通过源订阅的一个条目显示负费用。 这就是从中获取分摊成本的费用。 成本分摊规则的目标还有正费用。
 
+:::image type="content" source="./media/allocate-costs/rule-costs-allocated.png" alt-text="屏幕截图显示使用情况详细信息文件中的分摊成本。" lightbox="./media/allocate-costs/rule-costs-allocated.png" :::
+
+#### <a name="azure-invoice-reconciliation"></a>Azure 发票对帐 
+
+使用情况详细信息文件还用于 Azure 发票对帐。 在对帐期间显示任何内部分摊成本可能会造成混淆。 若要减少任何潜在的混淆情况并与发票上显示的数据保持一致，可以筛选掉任何成本分摊规则。 删除成本分摊规则后，使用情况详细信息文件应与计费订阅发票显示的成本匹配。
+
+:::image type="content" source="./media/allocate-costs/rule-name-filtered.png" alt-text="屏幕截图显示已筛选掉规则名称的分摊成本" lightbox="./media/allocate-costs/rule-name-filtered.png" :::
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>编辑现有的成本分摊规则
 
@@ -111,7 +122,6 @@ ms.locfileid: "107726513"
 
 成本分摊公共预览版当前不支持以下项：
 
-- 计划的[导出](tutorial-export-acm-data.md)
 - [使用情况详细信息](/rest/api/consumption/usagedetails/list) API 公开的数据
 - 计费订阅区域
 - [成本管理 Power BI 应用](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)

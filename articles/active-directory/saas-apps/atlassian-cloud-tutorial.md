@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/02/2020
+ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: fe83a012cac68f705bc9fabc7748f5a7c7c61bbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b76f5ec2cffde60379b12a0ad7d623ebe9a06c2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94330495"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473169"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>教程：将 Atlassian Cloud 与 Azure Active Directory 集成
 
@@ -41,8 +41,8 @@ ms.locfileid: "94330495"
 
 本教程在测试环境中配置并测试 Azure AD SSO。 
 
-* Atlassian Cloud 支持 SP 和 IDP 发起的 SSO 
-* Atlassian Cloud 支持[自动用户预配和取消预配](atlassian-cloud-provisioning-tutorial.md)
+* Atlassian Cloud 支持 SP 和 IDP 发起的 SSO。
+* Atlassian Cloud 支持[自动用户预配和取消预配](atlassian-cloud-provisioning-tutorial.md)。
 
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>从库中添加 Atlassian Cloud
 
@@ -187,6 +187,9 @@ ms.locfileid: "94330495"
       c. 最终属性映射应如下所示。
 
       ![图 4](./media/atlassian-cloud-tutorial/default-attributes-2.png)
+
+ > [!NOTE]
+ > 可以通过从左侧抽屉中选择“身份验证策略”选项来设置多个安全策略。 身份验证策略允许为组织中不同的用户和配置集指定身份验证设置。 它验证访问 Atlassian 组织的用户的身份。 有关详细信息，请参阅[身份验证策略](https://support.atlassian.com/security-and-access-policies/docs/understand-authentication-policies/)。
      
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -247,7 +250,7 @@ ms.locfileid: "94330495"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Atlassian Cloud 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 Atlassian Cloud 磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Atlassian Cloud。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的 Atlassian Cloud 磁贴时，如果是在 SP 模式下配置的，系统会将你重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，你会自动登录到为其设置了 SSO 的 Atlassian Cloud。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

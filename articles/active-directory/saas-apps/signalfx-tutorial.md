@@ -9,46 +9,42 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/24/2020
+ms.date: 05/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 1fbc42864761360d252ed62cea1aef6f2937b599
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3fbab143fd330e017e9e51c74a403d9bfb687ff
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92516063"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110455614"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SignalFx 集成
 
 本教程介绍如何将 SignalFx 与 Azure Active Directory (Azure AD) 集成。 将 SignalFx 与 Azure AD 集成后，可以：
 
-* 在 Azure AD 中控制谁有权访问 SignalFx；
-* 让用户可以使用其 Azure AD 帐户自动登录到 SignalFx；
+* 在 Azure AD 中控制谁有权访问 SignalFx。
+* 让用户使用其 Azure AD 帐户自动登录到 SignalFx。
 * 在一个位置（Azure 门户）管理帐户。
-
-若要详细了解有关 SaaS 应用程序与 Azure AD 的集成，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，需要：
+若要开始操作，需备齐以下项目：
 
-* Azure AD 订阅
-    * 如果没有订阅，可[在此处获取免费帐户](https://azure.microsoft.com/free/)。
-* 已启用 SignalFx 单一登录 (SSO) 的订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 SignalFx 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程将在测试环境中配置并测试 Azure AD SSO。
 
-* SignalFx 支持 **IDP** 发起的 SSO
-* SignalFx 支持 **实时** 用户预配
-* 配置 SignalFx 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+* SignalFx 支持 IDP 发起的 SSO。
+* SignalFx 支持实时用户预配。
 
 ## <a name="step-1-add-the-signalfx-application-in-azure"></a>步骤 1：在 Azure 中添加 SignalFx 应用程序
 
 按照以下说明操作，以便将 SignalFx 应用程序添加到托管 SaaS 应用列表。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到 Azure 门户。
 1. 在左侧的导航窗口中，选择“Azure Active Directory”。 
 1. 选择“企业应用程序”，然后选择“所有应用程序”。  
 1. 选择“新建应用程序”  。
@@ -76,13 +72,13 @@ ms.locfileid: "92516063"
 
 按照以下说明操作，以便在 Azure 门户中启用 Azure AD SSO。
 
-1. 返回 [Azure 门户](https://portal.azure.com/)，在“SignalFx”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”旁边的铅笔（编辑）图标以编辑设置。  
+1. 返回到 Azure 门户，在“SignalFx”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“设置 SAML 单一登录”页上填写以下字段：  
+1. 在“设置 SAML 单一登录”页上，执行以下步骤  ： 
 
     a. 在“标识符”中输入以下 URL：`https://api.<realm>.signalfx.com/v1/saml/metadata`（请将 `<realm>` 替换为你的 SignalFx 领域）。  
 
@@ -110,33 +106,27 @@ ms.locfileid: "92516063"
 
 ## <a name="step-4-create-an-azure-ad-test-user"></a>步骤 4：创建 Azure AD 测试用户
 
-按照以下说明操作，以便在 Azure 门户中创建名为 **B.Simon** 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧导航窗口中，依次选择“Azure Active Directory”、“用户”、“所有用户”。   
-1. 选择页面顶部的“新建用户”。 
-1. 在“用户”属性中： 
-   1. 在“用户名”中输入 `username@companydomain.extension`，例如 `b.simon@contoso.com`。 
-   1. 在“名称”  中，请输入 `B.Simon`。
-   1. 勾选“显示密码”，然后复制“密码”中显示的值。   在后续步骤中需要使用此信息来测试此集成。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。 
 
 ## <a name="step-5-assign-the-azure-ad-test-user"></a>步骤 5：分配 Azure AD 测试用户
 
-按照以下说明操作，以使测试用户能够对 SignalFx 使用 Azure 单一登录。
+在本部分中，将通过授予 B.Simon 访问 SignalFx 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“SignalFx”  。
-1. 在应用的概述页中，找到“管理”部分，然后选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中的“用户”列表内选择“B.Simon”，然后单击页面底部的“选择”。    
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框中的列表内为用户选择相应的角色，然后单击页面底部的“选择”。  
-1. 在“添加分配”对话框中，单击“分配”。  
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="step-6-complete-the-signalfx-sso-configuration"></a>步骤 6：完成 SignalFx SSO 配置 
 
@@ -154,11 +144,11 @@ ms.locfileid: "92516063"
 
 * 若要测试登录，应使用私密/隐匿窗口，或者可以从 Azure 门户注销。 否则，配置该应用程序的用户的 Cookie 将会干扰并阻止以测试用户的身份成功登录。
 
-* 当新的测试用户首次登录时，Azure 会强制要求更改密码。 如果出现这种情况，SSO 登录过程将不会完成；测试用户会被引导到 Azure 门户。 若要进行故障排除，测试用户应更改其密码，然后导航到 SignalFx 登录页或访问面板并重试。
-    * 在访问面板中单击“SignalFx”磁贴时，应会自动登录到 SignalFx。 
-        * 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 当新的测试用户首次登录时，Azure 会强制要求更改密码。 如果出现这种情况，SSO 登录过程将不会完成；测试用户会被引导到 Azure 门户。 若要进行故障排除，测试用户应更改其密码，然后导航到 SignalFx 登录页或“MyApps”并重试。
+    * 单击“MyApps”中的 SignalFx 磁贴时，你会自动登录到 SignalFx。 
+        * 有关 MyApps 的详细信息，请参阅 [MyApps 简介](../user-help/my-apps-portal-end-user-access.md)。
 
-* 可以通过访问面板或已分配到组织的自定义登录页访问 SignalFx 应用程序。 测试用户应从上述任一位置开始测试集成。
+* 可以通过 MyApps 或已分配到组织的自定义登录页访问 SignalFx 应用程序。 测试用户应从上述任一位置开始测试集成。
     * 测试用户可以使用在此过程的前面部分为 b.simon\@contoso.com 创建的凭据。
 
 ### <a name="first-time-logins"></a>首次登录
@@ -167,14 +157,6 @@ ms.locfileid: "92516063"
 
 * SignalFx 支持 **即时** 用户创建，这意味着，如果 SignalFx 中不存在某个用户，则首次尝试登录时会创建该用户的帐户。
 
-## <a name="additional-resources"></a>其他资源
+## <a name="next-steps"></a>后续步骤
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
-
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [Microsoft Cloud App Security 中的会话控制是什么？](/cloud-app-security/proxy-intro-aad)
-
-- [尝试结合使用 SignalFx 和 Azure AD](https://aad.portal.azure.com/)
+配置 SignalFx 后，可以强制实施会话控制，从而实时保护组织的敏感数据，使其免遭外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

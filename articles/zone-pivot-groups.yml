@@ -392,10 +392,10 @@ groups:
   pivots:
   - id: development-environment-vscode
     title: Visual Studio Code
-  - id: development-environment-cli
-    title: 命令行
   - id: development-environment-vs
     title: Visual Studio
+  - id: development-environment-cli
+    title: 命令行
 - id: bring-third-party-dependency-programming-functions
   title: 编程语言
   prompt: 选择编程语言
@@ -793,8 +793,8 @@ groups:
   - id: programming-language-python
     title: Python
 - id: app-service-ide
-  title: 开发体验
-  prompt: 选择开发体验
+  title: 开发环境
+  prompt: 选择开发环境
   pivots:
   - id: development-environment-vs
     title: Visual Studio
@@ -1200,10 +1200,54 @@ groups:
     title: Python
   - id: programming-language-java
     title: Java
+- id: facility-ontology-schema
+  title: Creator Facility Ontology
+  prompt: 选择 Facility Ontology 版本
+  pivots:
+  - id: facility-ontology-v1
+    title: Facility Ontology 1.0
+  - id: facility-ontology-v2
+    title: Facility Ontology 2.0
+- id: how-to-troubleshoot-monitoring-and-faq-zpg
+  title: 用于 IoT Edge 的 Azure Monitor 常见问题解答
+  prompt: 选择主题
+  pivots:
+  - id: metrics-collection
+    title: 指标收集
+  - id: custom-metrics
+    title: 自定义指标
+  - id: alerts
+    title: 警报
+  - id: workbooks
+    title: 工作簿
+- id: identity-mi-methods
+  title: 托管标识方法
+  prompt: 选择一个选项
+  pivots:
+  - id: identity-mi-methods-azp
+    title: Azure 门户
+  - id: identity-mi-methods-azcli
+    title: Azure CLI
+  - id: identity-mi-methods-powershell
+    title: PowerShell
+  - id: identity-mi-methods-arm
+    title: 资源管理器
+  - id: identity-mi-methods-rest
+    title: REST
+- id: identity-mi-method-sub
+  title: 托管标识方法子集
+  prompt: 选择一个选项
+  pivots:
+  - id: identity-mi-methods-sub-azp
+    title: Azure 门户
+  - id: identity-mi-methods-sub-azcli
+    title: Azure CLI
+  - id: identity-mi-methods-sub-powershell
+    title: PowerShell
 metadata:
-  ms.openlocfilehash: adcb769a1cf52dc86ee60349463caa078fb31a4b
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 0a7eb15f89dccdc97443a2c14107aa7bdb6fdba4
+  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110373520"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111902224"

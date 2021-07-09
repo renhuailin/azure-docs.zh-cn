@@ -6,22 +6,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/19/2021
+ms.date: 06/11/2021
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 72ca331546d53f85ca82f33ec6a02558d91f1c1e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 98e8d7862f1270977ed3eb3ab71605e440d53520
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765035"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112083623"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-[v3 参考文档](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-preview) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 包(NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[v3 参考文档](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-preview) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 包(NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics/v/5.1.0-beta.6) | [v3 示例](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/ai-text-analytics_5.1.0-beta.6/sdk/textanalytics/ai-text-analytics/samples)
 
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
@@ -64,7 +64,7 @@ npm init
 安装 `@azure/ai-text-analytics` NPM 包：
 
 ```console
-npm install --save @azure/ai-text-analytics@5.1.0-beta.5
+npm install --save @azure/ai-text-analytics@5.1.0-beta.6
 ```
 
 > [!TIP]
@@ -124,7 +124,7 @@ const endpoint = '<paste-your-text-analytics-endpoint-here>';
 
 ## <a name="code-examples"></a>代码示例
 
-* [客户端身份验证](#client-authentication)
+* [客户端身份验证](#authenticate-the-client)
 * [情绪分析](#sentiment-analysis) 
 * [观点挖掘](#opinion-mining)
 * [语言检测](#language-detection)
@@ -133,7 +133,7 @@ const endpoint = '<paste-your-text-analytics-endpoint-here>';
 * 个人身份信息
 * [关键短语提取](#key-phrase-extraction)
 
-## <a name="client-authentication"></a>客户端身份验证
+## <a name="authenticate-the-client"></a>验证客户端
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
@@ -201,7 +201,57 @@ ID: 0
                 Positive: 0.21  Negative: 0.02  Neutral: 0.77
 ```
 
-### <a name="opinion-mining"></a>观点挖掘
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `analyzeSentiment()` 方法，并获取返回的 `SentimentBatchResult` 对象。 循环访问结果列表，输出每个文档的 ID、文档级别情绪以及置信度分数。 对于每个文档，结果都包含句子级别情绪以及偏移量、长度和置信度分数。
+
+```javascript
+async function sentimentAnalysis(client){
+
+    const sentimentInput = [
+        "I had the best day of my life. I wish you were there with me."
+    ];
+    const sentimentResult = await client.analyzeSentiment(sentimentInput);
+
+    sentimentResult.forEach(document => {
+        console.log(`ID: ${document.id}`);
+        console.log(`\tDocument Sentiment: ${document.sentiment}`);
+        console.log(`\tDocument Scores:`);
+        console.log(`\t\tPositive: ${document.confidenceScores.positive.toFixed(2)} \tNegative: ${document.confidenceScores.negative.toFixed(2)} \tNeutral: ${document.confidenceScores.neutral.toFixed(2)}`);
+        console.log(`\tSentences Sentiment(${document.sentences.length}):`);
+        document.sentences.forEach(sentence => {
+            console.log(`\t\tSentence sentiment: ${sentence.sentiment}`)
+            console.log(`\t\tSentences Scores:`);
+            console.log(`\t\tPositive: ${sentence.confidenceScores.positive.toFixed(2)} \tNegative: ${sentence.confidenceScores.negative.toFixed(2)} \tNeutral: ${sentence.confidenceScores.neutral.toFixed(2)}`);
+        });
+    });
+}
+sentimentAnalysis(textAnalyticsClient)
+```
+
+在控制台窗口中使用 `node index.js` 运行代码。
+
+### <a name="output"></a>输出
+
+```console
+ID: 0
+        Document Sentiment: positive
+        Document Scores:
+                Positive: 1.00  Negative: 0.00  Neutral: 0.00
+        Sentences Sentiment(2):
+                Sentence sentiment: positive
+                Sentences Scores:
+                Positive: 1.00  Negative: 0.00  Neutral: 0.00
+                Sentence sentiment: neutral
+                Sentences Scores:
+                Positive: 0.21  Negative: 0.02  Neutral: 0.77
+```
+
+---
+
+## <a name="opinion-mining"></a>观点挖掘
+
+# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
 若要使用观点挖掘进行情绪分析，请创建一个包含要分析的文档的字符串数组。 调用客户端的 `analyzeSentiment()` 方法（添加了选项标志 `includeOpinionMining: true`），并获取返回的 `SentimentBatchResult` 对象。 循环访问结果列表，输出每个文档的 ID、文档级别情绪以及置信度分数。 对于每个文档，结果不仅包含如上所述的句子级情绪，而且还包含角度和观点级情绪。
 
@@ -283,49 +333,7 @@ sentimentAnalysisWithOpinionMining(textAnalyticsClient)
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
-创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `analyzeSentiment()` 方法，并获取返回的 `SentimentBatchResult` 对象。 循环访问结果列表，输出每个文档的 ID、文档级别情绪以及置信度分数。 对于每个文档，结果都包含句子级别情绪以及偏移量、长度和置信度分数。
-
-```javascript
-async function sentimentAnalysis(client){
-
-    const sentimentInput = [
-        "I had the best day of my life. I wish you were there with me."
-    ];
-    const sentimentResult = await client.analyzeSentiment(sentimentInput);
-
-    sentimentResult.forEach(document => {
-        console.log(`ID: ${document.id}`);
-        console.log(`\tDocument Sentiment: ${document.sentiment}`);
-        console.log(`\tDocument Scores:`);
-        console.log(`\t\tPositive: ${document.confidenceScores.positive.toFixed(2)} \tNegative: ${document.confidenceScores.negative.toFixed(2)} \tNeutral: ${document.confidenceScores.neutral.toFixed(2)}`);
-        console.log(`\tSentences Sentiment(${document.sentences.length}):`);
-        document.sentences.forEach(sentence => {
-            console.log(`\t\tSentence sentiment: ${sentence.sentiment}`)
-            console.log(`\t\tSentences Scores:`);
-            console.log(`\t\tPositive: ${sentence.confidenceScores.positive.toFixed(2)} \tNegative: ${sentence.confidenceScores.negative.toFixed(2)} \tNeutral: ${sentence.confidenceScores.neutral.toFixed(2)}`);
-        });
-    });
-}
-sentimentAnalysis(textAnalyticsClient)
-```
-
-在控制台窗口中使用 `node index.js` 运行代码。
-
-### <a name="output"></a>输出
-
-```console
-ID: 0
-        Document Sentiment: positive
-        Document Scores:
-                Positive: 1.00  Negative: 0.00  Neutral: 0.00
-        Sentences Sentiment(2):
-                Sentence sentiment: positive
-                Sentences Scores:
-                Positive: 1.00  Negative: 0.00  Neutral: 0.00
-                Sentence sentiment: neutral
-                Sentences Scores:
-                Positive: 0.21  Negative: 0.02  Neutral: 0.77
-```
+此功能在版本 3.0 中不可用。
 
 ---
 
@@ -395,10 +403,6 @@ ID: 0
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-> [!NOTE]
-> 在版本 `3.1` 中：
-> * 实体链接是一个独立于 NER 的请求。
-
 创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `recognizeEntities()` 方法，并获取 `RecognizeEntitiesResult` 对象。 循环访问结果列表，并输出实体名称、类型、子类型、偏移量、长度和分数。
 
 ```javascript
@@ -442,60 +446,6 @@ Document ID: 1
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
         Score: 0.25
-```
-
-### <a name="entity-linking"></a>实体链接
-
-创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `recognizeLinkedEntities()` 方法，并获取 `RecognizeLinkedEntitiesResult` 对象。 循环访问结果列表，并输出实体名称、ID、数据源、URL 和匹配项。 `matches` 数组中的每个对象都将包含该匹配项的偏移量、长度和分数。
-
-```javascript
-async function linkedEntityRecognition(client){
-
-    const linkedEntityInput = [
-        "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800. During his career at Microsoft, Gates held the positions of chairman, chief executive officer, president and chief software architect, while also being the largest individual shareholder until May 2014."
-    ];
-    const entityResults = await client.recognizeLinkedEntities(linkedEntityInput);
-
-    entityResults.forEach(document => {
-        console.log(`Document ID: ${document.id}`);
-        document.entities.forEach(entity => {
-            console.log(`\tName: ${entity.name} \tID: ${entity.dataSourceEntityId} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
-            console.log(`\tMatches:`)
-            entity.matches.forEach(match => {
-                console.log(`\t\tText: ${match.text} \tScore: ${match.confidenceScore.toFixed(2)}`);
-        })
-        });
-    });
-}
-linkedEntityRecognition(textAnalyticsClient);
-```
-
-在控制台窗口中使用 `node index.js` 运行代码。
-
-### <a name="output"></a>输出
-
-```console
-Document ID: 0
-        Name: Altair 8800       ID: Altair 8800         URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
-        Matches:
-                Text: Altair 8800       Score: 0.88
-        Name: Bill Gates        ID: Bill Gates  URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
-        Matches:
-                Text: Bill Gates        Score: 0.63
-                Text: Gates     Score: 0.63
-        Name: Paul Allen        ID: Paul Allen  URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
-        Matches:
-                Text: Paul Allen        Score: 0.60
-        Name: Microsoft         ID: Microsoft   URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
-        Matches:
-                Text: Microsoft         Score: 0.55
-                Text: Microsoft         Score: 0.55
-        Name: April 4   ID: April 4     URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
-        Matches:
-                Text: April 4   Score: 0.32
-        Name: BASIC     ID: BASIC       URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
-        Matches:
-                Text: BASIC     Score: 0.33
 ```
 
 ### <a name="personally-identifying-information-pii-recognition"></a>个人身份信息 (PII) 识别
@@ -537,10 +487,6 @@ Redacted Text:  The employee's phone number is **************.
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
-> [!NOTE]
-> 在版本 `3.0` 中：
-> * 实体链接是一个独立于 NER 的请求。
-
 创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `recognizeEntities()` 方法，并获取 `RecognizeEntitiesResult` 对象。 循环访问结果列表，并输出实体名称、类型、子类型、偏移量、长度和分数。
 
 ```javascript
@@ -586,7 +532,13 @@ Document ID: 1
         Score: 0.25
 ```
 
-### <a name="entity-linking"></a>实体链接
+
+---
+
+
+## <a name="entity-linking"></a>实体链接
+
+# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
 创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `recognizeLinkedEntities()` 方法，并获取 `RecognizeLinkedEntitiesResult` 对象。 循环访问结果列表，并输出实体名称、ID、数据源、URL 和匹配项。 `matches` 数组中的每个对象都将包含该匹配项的偏移量、长度和分数。
 
@@ -640,6 +592,59 @@ Document ID: 0
                 Text: BASIC     Score: 0.33
 ```
 
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `recognizeLinkedEntities()` 方法，并获取 `RecognizeLinkedEntitiesResult` 对象。 循环访问结果列表，并输出实体名称、ID、数据源、URL 和匹配项。 `matches` 数组中的每个对象都将包含该匹配项的偏移量、长度和分数。
+
+```javascript
+async function linkedEntityRecognition(client){
+
+    const linkedEntityInput = [
+        "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800. During his career at Microsoft, Gates held the positions of chairman, chief executive officer, president and chief software architect, while also being the largest individual shareholder until May 2014."
+    ];
+    const entityResults = await client.recognizeLinkedEntities(linkedEntityInput);
+
+    entityResults.forEach(document => {
+        console.log(`Document ID: ${document.id}`);
+        document.entities.forEach(entity => {
+            console.log(`\tName: ${entity.name} \tID: ${entity.dataSourceEntityId} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
+            console.log(`\tMatches:`)
+            entity.matches.forEach(match => {
+                console.log(`\t\tText: ${match.text} \tScore: ${match.confidenceScore.toFixed(2)}`);
+        })
+        });
+    });
+}
+linkedEntityRecognition(textAnalyticsClient);
+```
+
+在控制台窗口中使用 `node index.js` 运行代码。
+
+### <a name="output"></a>输出
+
+```console
+Document ID: 0
+        Name: Altair 8800       ID: Altair 8800         URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
+        Matches:
+                Text: Altair 8800       Score: 0.88
+        Name: Bill Gates        ID: Bill Gates  URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
+        Matches:
+                Text: Bill Gates        Score: 0.63
+                Text: Gates     Score: 0.63
+        Name: Paul Allen        ID: Paul Allen  URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
+        Matches:
+                Text: Paul Allen        Score: 0.60
+        Name: Microsoft         ID: Microsoft   URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
+        Matches:
+                Text: Microsoft         Score: 0.55
+                Text: Microsoft         Score: 0.55
+        Name: April 4   ID: April 4     URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
+        Matches:
+                Text: April 4   Score: 0.32
+        Name: BASIC     ID: BASIC       URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
+        Matches:
+                Text: BASIC     Score: 0.33
+```
 
 ---
 
@@ -710,6 +715,8 @@ ID: 0
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
+可以使用“分析”操作执行异步批处理请求实现以下目的：NER、关键短语提取、情绪分析和 PII 检测。 下面的示例演示了有关一个操作的基本示例。 可在 GitHub 上找到更多适用于 [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript/beginAnalyzeActions.js) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src/beginAnalyzeActions.ts) 的高级示例。
+
 [!INCLUDE [Analyze Batch Action pricing](../analyze-operation-pricing-caution.md)]
 
 创建名为 `analyze_example()` 的新函数，它将调用 `beginAnalyze()` 函数。 结果将是一个长期操作，将轮询该操作以获得结果。
@@ -723,7 +730,7 @@ async function analyze_example(client) {
   const actions = {
     recognizeEntitiesActions: [{ modelVersion: "latest" }],
   };
-  const poller = await client.beginAnalyzeBatchActions(documents, actions, "en");
+  const poller = await client.beginAnalyzeActions(documents, actions, "en");
 
   console.log(
     `The analyze batch actions operation was created on ${poller.getOperationState().createdOn}`
@@ -767,15 +774,13 @@ The analyze batch actions operation results will expire on Sat Mar 13 2021 09:53
         - Entity Paul Allen of type Person
 ```
 
-你还可以使用“分析”操作检测 PII、识别链接的实体和关键短语提取。 请参阅 GitHub 上的 [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src) 分析示例。
+还可以使用“分析”操作来执行 NER、关键短语提取、情绪分析和检测 PII。 请参阅 GitHub 上的 [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript/beginAnalyzeActions.js) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src) 分析示例。
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 此功能在版本 3.0 中不可用。
 
 ---
-
-## <a name="run-the-application"></a>运行应用程序
 
 在快速入门文件中使用 `node` 命令运行应用程序。
 

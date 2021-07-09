@@ -10,16 +10,16 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ea1cc022cbea7dbf3d1fa12cb83cfe3084b28560
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9d54040fc4defa30adb52cec6edb335cc7bdc76
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92788074"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559171"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 Python 和 AI 从 Azure Blob 生成可搜索的内容
 
-如果在 Azure Blob 存储中有使用非结构化文本或图像，则 [AI 扩充管道](cognitive-search-concept-intro.md)可以提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 尽管管道可以处理图像，但本 Python 教程侧重于如何分析文本、应用语言检测和自然语言处理，以创建可在查询、分面和筛选器中利用的新字段。
+如果在 Azure Blob 存储中有非结构化文本或图像，则 [AI 扩充管道](cognitive-search-concept-intro.md)可以提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 尽管管道可以处理图像，但本 Python 教程侧重于如何分析文本、应用语言检测和自然语言处理，以创建可在查询、分面和筛选器中利用的新字段。
 
 本教程使用 Python 和[搜索 REST API](/rest/api/searchservice/) 执行以下任务：
 
@@ -107,7 +107,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 第三个组件是可以[在门户中创建](search-create-service-portal.md)的 Azure 认知搜索。 可使用免费层完成本演练。 
 
-与处理 Azure Blob 存储时一样，请花片刻时间来收集访问密钥。 此外，在开始构建请求时，需要提供终结点和管理 API 密钥用于对每个请求进行身份验证。
+与处理 Azure Blob 存储时一样，请花点时间收集访问密钥。 此外，在开始构建请求时，需要提供终结点和管理 API 密钥用于对每个请求进行身份验证。
 
 ### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>获取 Azure 认知搜索的管理 API 密钥和 URL
 
@@ -196,7 +196,7 @@ print(r.status_code)
 
 在此步骤中，你将定义一组要应用到数据的扩充步骤。 每个扩充步骤称为“技能”，一组扩充步骤称为“技能集”。  本教程对技能集使用以下[内置认知技能](cognitive-search-predefined-skills.md)：
 
-+ [实体识别](cognitive-search-skill-entity-recognition.md)：从 Blob 容器中的内容提取组织名称。
++ [实体识别](cognitive-search-skill-entity-recognition-v3.md)：从 Blob 容器中的内容提取组织名称。
 
 + [语言检测](cognitive-search-skill-language-detection.md)：识别内容的语言。
 

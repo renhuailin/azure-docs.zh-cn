@@ -1,18 +1,17 @@
 ---
 title: Azure 自动化中的新增功能
 description: Azure 自动化每月都有重大更新。
+services: automation
 ms.subservice: ''
 ms.topic: overview
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/09/2021
+ms.date: 06/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: f8b4d6965a8a1f046fd2459ce9fe5cce8ea45443
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 6eae4a65412ad922724d4c35b7628b15698ba841
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531081"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982927"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure 自动化有哪些新增功能？
 
@@ -24,13 +23,43 @@ Azure 自动化会不断改进。 为了让大家随时了解最新的开发成�
 
 本页面每月更新，请不时回来查看。
 
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="support-for-automation-and-state-configuration-available-in-west-us-3"></a>在美国西部 3 区域中推出了对自动化和 State Configuration 的支持
+
+**类型：** 新功能
+
+有关详细信息，请参阅 [Azure 中的数据驻留](https://azure.microsoft.com/global-infrastructure/data-residency/)，并从下拉列表中选择你的地理位置。
+
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="startstop-vms-during-off-hours-v1"></a>在空闲时间启动/停止 VM (v1)
+
+**类型：** 更改计划
+
+在空闲时间启动/停止 VM (v1) 的功能将于 2022 年 5 月 21 日弃用。 客户应该评估并规划迁移到启动/停止 VM v2（预览版）。 有关详细信息，请参阅[启动/停止 v2 概述](../azure-functions/start-stop-vms/overview.md)（预览版）。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+### <a name="support-for-update-management-and-change-tracking"></a>支持更新管理和更改跟踪
+
+**类型：** 新功能
+
+已更新区域映射，以支持挪威东部、阿联酋北部、美国中北部、巴西南部和韩国中部区域的更新管理与更改跟踪。 有关详细信息，请参阅[支持的映射](./how-to/region-mappings.md#supported-mappings)。
+
+### <a name="support-for-system-assigned-managed-identities"></a>支持系统分配的托管标识
+
+**类型：** 新功能
+
+Azure 自动化现在支持对 Azure 公有云与政府云区域中的云作业和混合作业使用[系统分配的托管标识](./automation-security-overview.md#managed-identities-preview)。 有关详细信息，请参阅[公告](https://azure.microsoft.com/updates/azure-automation-system-assigned-managed-identities/)。
+
 ## <a name="march-2021"></a>2021 年 3 月
 
 ### <a name="new-azure-automation-built-in-policies"></a>新的 Azure 自动化内置策略
 
 **类型：** 新功能
 
-Azure 自动化添加了 5 个新的内置策略：
+Azure 自动化添加了五个新的内置策略：
 
 - 自动化帐户应禁用公用网络访问，
 - Azure 自动化帐户应使用客户管理的密钥来加密静态数据
@@ -38,7 +67,7 @@ Azure 自动化添加了 5 个新的内置策略：
 - 在 Azure 自动化帐户上配置专用终结点连接
 - 应启用自动化帐户上的专用终结点连接。
 
-有关更多详细信息，请参阅[策略参考](./policy-reference.md)文章。
+有关详细信息，请参阅[策略参考](./policy-reference.md)。
 
 ### <a name="support-for-automation-and-state-configuration-declared-ga-in-south-india"></a>已在印度南部正式发布对自动化和 State Configuration 的支持声明
 
@@ -58,7 +87,7 @@ Azure 自动化添加了 5 个新的内置策略：
 
 可在阿联酋中部使用过程自动化和 State Configuration 功能。 有关详细信息，请参阅[公告](https://azure.microsoft.com/updates/azure-automation-in-uae-central-region/)。
 
-### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2--norway-west-and-france-south"></a>在澳大利亚中部 2、挪威西部和法国南部推出对自动化和状态配置的支持
+### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2-norway-west-and-france-south"></a>在澳大利亚中部 2、挪威西部和法国南部区域推出了对自动化和 State Configuration 的支持
 
 **类型：** 新功能
 
@@ -74,19 +103,19 @@ Azure 自动化添加了 5 个新的内置策略：
 
 **类型：** 新功能
 
-有关更多详细信息，请参阅[使用 ARM 模板中的 webhook](./automation-webhooks.md#use-a-webhook-from-an-arm-template)。
+有关详细信息，请参阅[通过 ARM 模板使用 Webhook](./automation-webhooks.md#use-a-webhook-from-an-arm-template)。
 
 ### <a name="azure-update-management-now-supports-centos-8x-red-hat-enterprise-linux-server-8x-and-suse-linux-enterprise-server-15"></a>Azure 更新管理现在支持Centos 8.x、Red Hat Enterprise Linux Server 8.x 和 SUSE Linux Enterprise Server 15
 
 **类型：** 新功能
 
-有关更多详细信息，请参阅支持的 Linux 操作系统的[完整列表](./update-management/overview.md#supported-operating-systems)。
+有关更多详细信息，请参阅支持的 Linux 操作系统的[完整列表](./update-management/operating-system-requirements.md)。
 
 ### <a name="in-region-data-residency-support-for-brazil-south-and-south-east-asia"></a>巴西南部和东南亚的区域内数据驻留支持 
 
 **类型：** 新功能
 
-在除巴西南部和东南亚以外的所有区域中，Azure 自动化数据都存储在其他区域（Azure 配对区域），以提供业务连续性和灾难恢复 (BCDR)。 对于巴西和东南亚区域，我们现在将 Azure 自动化数据存储在同一区域中，以适应这些区域的数据驻留要求。 有关更多详细信息，请参阅 [Azure 自动化中的异地复制](./automation-managing-data.md#geo-replication-in-azure-automation)。
+在除巴西南部和东南亚以外的所有区域中，Azure 自动化数据都存储在其他区域（Azure 配对区域），以提供业务连续性和灾难恢复 (BCDR)。 对于巴西和东南亚区域，我们现在将 Azure 自动化数据存储在同一区域中，以适应这些区域的数据驻留要求。 有关详细信息，请参阅 [Azure 自动化中的异地复制](./automation-managing-data.md#geo-replication-in-azure-automation)。
 
 ## <a name="february-2021"></a>2021 年 2 月
 
@@ -100,7 +129,7 @@ Azure 自动化添加了 5 个新的内置策略：
 
 类型：新功能
 
-可以使用新的 Azure Policy 合规性规则来允许创建作业、Webhook 和作业计划，以使其仅在混合辅助角色组上运行。
+可以使用新的 Azure Policy 合规性规则来允许创建作业、Webhook 和作业计划，使其仅在混合辅助角色组上运行。
 
 ### <a name="update-management-availability-in-east-us-france-central-and-north-europe-regions"></a>现可在美国东部、法国中部和北欧地区使用更新管理
 
@@ -128,11 +157,11 @@ Azure 自动化添加了 5 个新的内置策略：
 
 混合 Runbook 辅助角色功能支持 CentOS 8.x、REHL 8.x 和 SLES 15 分发版，仅用于对混合 Runbook 辅助角色的进程自动化。 请参阅[受支持的操作系统](automation-linux-hrw-install.md#supported-linux-operating-systems)，获取反映这些更改的文档更新。
 
-### <a name="update-management-and-change-tracking-availability-in-australia-east-east-asia-west-us-and-central-us-regions"></a>现可在澳大利亚东部、东亚、美国西部和美国中部地区使用更新管理和更改跟踪
+### <a name="update-management-and-change-tracking-availability-in-australia-east-east-asia-west-us-and-central-us-regions"></a>在澳大利亚东部、东亚、美国西部和美国中部区域可以使用更新管理和更改跟踪
 
 **类型：** 新功能
 
-在澳大利亚东部、东亚、美国西部和美国中部区域提供自动化帐户、更改跟踪和清单，以及更新管理。 
+在澳大利亚东部、东亚、美国西部和美国中部区域可以使用自动化帐户、更改跟踪和清单，以及更新管理。 
 
 ### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>在美国政府云中引入了 Python 3 runbook 公共预览版
 
@@ -180,7 +209,7 @@ Microsoft 产品的辅助功能可帮助机构满足全球辅助功能要求。 
 
 **类型：** 新功能
 
-Azure 自动化现支持在 Azure 全球云的所有区域中执行 Python 3 云和混合 runbook - 此功能现为公共预览版。 有关更多详细信息，请参阅[公告]((https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/) 。
+Azure 自动化现支持在 Azure 全球云的所有区域中执行 Python 3 云和混合 runbook - 此功能现为公共预览版。 有关详细信息，请参阅 [公告]((https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/) 。
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -244,7 +273,7 @@ Azure 自动化区域映射已经更新，现支持在美国中南部区域使�
 
 **类型：** 新功能
 
-更新管理功能支持评估和修补 Windows Server 2008 R2 操作系统。 请参阅[受支持的操作系统](update-management/overview.md#clients)，获取反映这些更改的文档更新。
+更新管理功能支持评估和修补 Windows Server 2008 R2 操作系统。 请参阅[受支持的操作系统](update-management/operating-system-requirements.md)，获取反映这些更改的文档更新。
 
 ### <a name="automation-diagnostic-logs-schema-update"></a>自动化诊断日志架构更新
 
@@ -290,7 +319,7 @@ Azure 自动化 DNS 记录已经更新，现支持专用链接。 有关详细�
 
 **类型：** 新功能
 
-除了提高资产的安全性外，还对 runbook 和 DSC 脚本进行加密来增强 Azure 自动化的安全性。
+除了提高资产的安全性以外，还会加密 Runbook 和 DSC 脚本以增强 Azure 自动化的安全性。
 
 ## <a name="april-2020"></a>2020 年 4 月
 

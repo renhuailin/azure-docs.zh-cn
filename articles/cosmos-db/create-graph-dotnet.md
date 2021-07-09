@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: chrande
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 1953f4a21df6f550320592fbe009834a7b573887
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8bf24a3fa23880d9656ae6ce525f7877a6599e4
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93360524"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411964"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 .NET Framework 或 Core 应用程序
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -73,11 +73,14 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 5. 在项目中还原 NuGet 包。 这应该包括 Gremlin.Net 驱动程序和 Newtonsoft.Json 包。
 
 
-6. 也可使用 NuGet 包管理器或 [NuGet 命令行实用程序](/nuget/install-nuget-client-tools)手动安装 Gremlin.Net 驱动程序： 
+6. 也可使用 Nuget 包管理器或 [NuGet 命令行实用程序](/nuget/install-nuget-client-tools)手动安装 Gremlin.Net@v3.4.6 驱动程序： 
 
     ```bash
-    nuget install Gremlin.Net
+    nuget install Gremlin.NET -Version 3.4.6
     ```
+    
+> [!NOTE]
+> Gremlin API 当前仅[支持最高 v3.4.6 的 Gremlin.Net](gremlin-support.md#compatible-client-libraries)。 如果安装最新版本，则在使用该服务时会收到错误。
 
 ## <a name="review-the-code"></a>查看代码
 

@@ -4,17 +4,24 @@ description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 31885eba16d59e2e48a08f84c56271b84e6c565f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: aahi
+author: aahill
+ms.manager: nitinme
+ms.date: 06/01/2021
+ms.openlocfilehash: d5263f85fa8cc2a9f1b55da32b4aa1418e304347
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98790912"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954263"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
 
-对应用进行[测试](luis-concept-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看应用是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。
+
+进行测试过程中，会向 LUIS 提供示例话语并获取 LUIS 识别出的意向和实体响应。 可以通过交互方式测试 LUIS，一次提供一条言语，或提供一组言语。 测试时，可以将当前活动模型的预测响应与已发布模型的预测响应进行比较。 
+
+
+对应用进行测试是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看应用是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。
 
 <!-- anchors for H2 name changes -->
 <a name="train-your-app"></a>
@@ -22,13 +29,31 @@ ms.locfileid: "98790912"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
-## <a name="train-before-testing"></a>测试前训练
+## <a name="interactive-testing"></a>交互式测试
 
-1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
-1. 在“我的应用”页上选择应用名称以打开应用。
-1. 为针对最新版的活动应用进行测试，请在测试之前从顶部菜单中选择“训练”。
+交互式测试在 LUIS 门户的“测试”  面板中完成。 可输入话语，了解意向和实体的识别和打分方式。 在测试面板中，如果 LUIS 根据话语预测的意向和实体不符合预期，则将其作为新话语复制到“意向”页  。 然后为实体标记该话语的各个部分，并训练 LUIS。 
+
+如果一次测试多个言语，请参阅[批处理测试](./luis-how-to-batch-test.md)，若要详细了解预测分数，请参阅[预测分数](luis-concept-prediction-score.md)一文。
+
+可使用[终结点](luis-glossary.md#endpoint)进行测试，最多可使用两个版本的应用。 将主要或实时版本的应用设置为“生产”终结点，将另一版本添加到“暂存”终结点   。 通过此方法可获得三个版本的话语：[LUIS](luis-reference-regions.md) 门户“测试”窗格中的当前模型，以及两个不同终结点上的两个版本。 
+
+所有终结点测试均计入使用配额。 
+
+## <a name="logging"></a>日志记录
+
+LUIS 将记录的所有话语存储在查询日志中，可从 LUIS 门户上的 **应用** 列表页，以及 LUIS [创作 API](https://go.microsoft.com/fwlink/?linkid=2092087) 下载。 
+
+如果对终结点进行测试，并且不希望记录话语，请记得使用 `logging=false` 查询字符串配置。
+
+[LUIS](luis-reference-regions.md) 门户的[“查看终结点话语”](luis-how-to-review-endpoint-utterances.md)页列出了 LUIS 不确定的所有话语。  
 
 ## <a name="test-an-utterance"></a>测试陈述
+
+> [!NOTE]
+> 请记住在更改模型后[训练](luis-how-to-train.md) LUIS。 在训练应用前在测试中看不到对 LUIS 应用的更改。
+> 1. 登录到 LUIS 门户，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+> 2. 在“我的应用”页上选择应用名称以打开应用。
+> 3. 为针对最新版的活动应用进行测试，请在测试之前从顶部菜单中选择“训练”。
 
 测试言语不应与应用中的任何示例言语完全相同。 测试言语应包括预期用户使用的选词、短语长度和实体用法。
 
@@ -127,3 +152,4 @@ ms.locfileid: "98790912"
 
 * [使用 LUIS 标记建议的陈述](luis-how-to-review-endpoint-utterances.md)
 * [使用相关功能来改进 LUIS 应用的性能](luis-how-to-add-features.md)
+* [最佳实践](luis-concept-best-practices.md)

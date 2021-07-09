@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: ee7ccb126eb04e168ccc213f0429d41a76a8bc2f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 704697a88a723182c2dbbcb2f25eb18df7be34c1
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103021683"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111429827"
 ---
 **数据收集量和保留期** 
 
@@ -37,7 +37,7 @@ ms.locfileid: "103021683"
 
 | Category | 限制 | 注释 |
 |:---|:---|:---|
-| 日志查询返回的最大记录数 | 10,000 | 在查询中使用查询作用域、时间范围和筛选器来减少结果。 |
+| 日志查询返回的最大记录数 | 30,000 | 在查询中使用查询作用域、时间范围和筛选器来减少结果。 |
 
 
 **数据收集器 API**
@@ -52,7 +52,7 @@ ms.locfileid: "103021683"
 | Category | 限制 | 注释 |
 |:---|:---|:---|
 | 单个查询中返回的最大记录数 | 500,000 | |
-| 返回的数据的最大大小 | 64,000,000 字节 (~61 MiB)| |
+| 返回的数据的最大大小 | 约 104 MB（约 100 MiB）| |
 | 最长查询运行时间 | 10 分钟 | 有关详细信息，请参阅[超时](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts)。  |
 | 最大请求速率 | 每个 Azure AD 用户或客户端 IP 地址每 30 秒 200 个请求 | 有关详细信息，请参阅[速率限制](https://dev.loganalytics.io/documentation/Using-the-API/Limits)。 |
 
@@ -61,6 +61,7 @@ ms.locfileid: "103021683"
 | Category | 限制 | 注释 |
 |:---|:---|:---|
 | 最大记录数 | 500,000 | |
+| 返回的数据的最大大小 | 约 104 MB（约 100 MiB） | |
 | 最大查询超时 | 110 秒 | |
 | 图表 | | 日志页面中的可视化效果与连接器使用不同的图表库，某些功能当前不可在连接器中使用。 |
 

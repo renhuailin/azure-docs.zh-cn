@@ -4,12 +4,12 @@ description: Azure 数字孪生的 include 文件 - 命令行教程的模型说�
 ms.topic: include
 ms.date: 3/5/2021
 ms.author: baanders
-ms.openlocfilehash: a94b9304ecd6c6630f6ad45652e76d2879bbc1b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 784dde0790633adbbae0ae315ce0fd5c271bdb4c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463712"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766734"
 ---
 1. 更新版本号，以指出正在提供此模型的更新版本。 为此，请将 `@id` 末尾的 1 更改为 2 。 大于当前版本号的任何数字也有效。
 1. 编辑属性。 将 `Humidity` 属性的名称更改为 HumidityLevel（或根据需要将其更改为其他名称。 如果使用的名称不是 HumidityLevel，请记住自己使用的名称，并在整个教程中继续使用该名称，而不使用 HumidityLevel） 。

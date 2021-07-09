@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: e7b4bbafd5630c2c116e002ee6ebafaa5444ce2d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d9050b0b414ef6ca49f9376e20498b14a8952480
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369313"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072570"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 
@@ -279,7 +279,14 @@ ms.locfileid: "110369313"
 <details>
 <summary><b>我删除了搜索服务中的 `testkb` 索引，该如何解决此问题？</b></summary>
 
-答：无法恢复你的旧数据。 请创建新的 QnA Maker 资源并再次创建知识库。
+答：如果你删除了搜索服务中的 `testkb` 索引，可从上次发布的知识库中还原数据。 请使用 GitHub 上提供的恢复工具 [RestoreTestKBIndex](https://github.com/pchoudhari/QnAMakerBackupRestore/tree/master/RestoreTestKBFromProd)。 
+
+</details>
+
+<details>
+<summary>https://www.qnamaker.ai 我收到如下错误：“请检查 QnA Maker 应用服务的 CORS 设置是否允许 <b> 或是否存在组织特定的网络限制。”该如何解决此问题？</b></summary>
+
+答：在“应用服务”边栏选项卡的“API”部分，将“CORS 设置”更新为 * 或“https://www.qnamaker.ai ”。 如果这没有解决问题，请检查是否有组织特定的限制。
 
 </details>
 
@@ -360,9 +367,9 @@ ms.locfileid: "110369313"
 </details>
 
 <details>
-<summary><b>我删除了搜索服务中的 `testkb` 索引，该如何解决此问题？</b></summary>
+<summary><b>我删除了搜索服务中的 `testkbv2` 索引，该如何解决此问题？</b></summary>
 
-答：无法恢复你的旧数据。 请创建新的 QnA Maker 资源并再次创建知识库。
+答：如果你删除了搜索服务中的 `testkbv2` 索引，可从上次发布的知识库中还原数据。 请使用 GitHub 上提供的恢复工具 [RestoreTestKBIndex](https://github.com/pchoudhari/QnAMakerBackupRestore/tree/master/RestoreTestKBFromProd)。 
 
 </details>
 

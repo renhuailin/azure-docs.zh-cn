@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/28/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4e408832affd84fcde41c79d33ec7f157611ef08
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: b38b5303f21cb31115a2279648c8d631e31aa8bf
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166805"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459307"
 ---
 # <a name="tutorial-create-logical-data-warehouse-with-serverless-sql-pool"></a>教程：使用无服务器 SQL 池创建逻辑数据仓库
 
@@ -52,9 +52,9 @@ CREATE EXTERNAL DATA SOURCE ecdc_cases WITH (
 如果数据源的所有者允许匿名访问或为调用方 Azure AD 标识提供显式访问权限，则调用方可以在没有凭据的情况下访问数据源。
 
 可以显式定义在访问外部数据源上的数据时使用的自定义凭据。
-- Synapse 工作区的托管标识
-- Azure 存储的共享访问签名
-- 只读 Cosmos DB 帐户密钥
+- Synapse 工作区的[托管标识](develop-storage-files-storage-access-control.md?tabs=managed-identity)
+- Azure 存储的[共享访问签名](develop-storage-files-storage-access-control.md?tabs=shared-access-signature)
+- 只读的 Cosmos DB 帐户密钥，可用于读取 Cosmos DB 分析存储。
 
 作为先决条件，需要在数据库中创建一个主密钥：
 ```sql
@@ -77,7 +77,8 @@ CREATE EXTERNAL DATA SOURCE ecdc_cases WITH (
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL MyCosmosDbAccountCredential
-WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+     SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 ```
 
 ### <a name="define-external-file-formats"></a>定义外部文件格式
@@ -87,8 +88,10 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBe
 ```sql
 CREATE EXTERNAL FILE FORMAT ParquetFormat WITH (  FORMAT_TYPE = PARQUET );
 GO
-CREATE EXTERNAL FILE FORMAT CsvFormat WITH (  FORMAT_TYPE = CSV );
+CREATE EXTERNAL FILE FORMAT CsvFormat WITH (  FORMAT_TYPE = DELIMITEDTEXT );
 ```
+
+在[此文](develop-tables-external-tables.md?tabs=native#syntax-for-create-external-file-format)中可以找到详细信息
 
 ## <a name="explore-your-data"></a>浏览数据
 
@@ -97,7 +100,7 @@ CREATE EXTERNAL FILE FORMAT CsvFormat WITH (  FORMAT_TYPE = CSV );
 ```sql
 select top 10  *
 from openrowset(bulk 'latest/ecdc_cases.parquet',
-                data_source = 'ecdc_cases'
+                data_source = 'ecdc_cases',
                 format='parquet') as a
 ```
 
@@ -105,7 +108,7 @@ from openrowset(bulk 'latest/ecdc_cases.parquet',
 
 ## <a name="create-external-tables-on-azure-storage"></a>在 Azure 存储上创建外部表
 
-发现架构后，可以在 yu=our 外部数据源之上创建外部表和视图。 正确做法是在数据库架构中组织表和视图。 在下面的查询中，你可以创建一个架构，并将所有访问 Azure data Lake storage 中的 ECDC COVID 数据集的对象放入该架构中：
+发现架构后，可以在外部数据源之上创建外部表和视图。 正确做法是在数据库架构中组织表和视图。 在下面的查询中，你可以创建一个架构，并将所有访问 Azure data Lake storage 中的 ECDC COVID 数据集的对象放入该架构中：
 
 ```sql
 create schema ecdc_adls;
@@ -118,19 +121,19 @@ create schema ecdc_adls;
 
 ```sql
 create external table ecdc_adls.cases (
-    date_rep        date,
-    day    smallint,
-    month             smallint,
-    year  smallint,
-    cases smallint,
-    deaths            smallint,
-    countries_and_territories       varchar(256),
-    geo_id             varchar(60),
-    country_territory_code           varchar(16),
-    pop_data_2018           int,
-    continent_exp             varchar(32),
-    load_date      datetime2(7),
-    iso_country   varchar(16)
+    date_rep                   date,
+    day                        smallint,
+    month                      smallint,
+    year                       smallint,
+    cases                      smallint,
+    deaths                     smallint,
+    countries_and_territories  varchar(256),
+    geo_id                     varchar(60),
+    country_territory_code     varchar(16),
+    pop_data_2018              int,
+    continent_exp              varchar(32),
+    load_date                  datetime2(7),
+    iso_country                varchar(16)
 ) with (
     data_source= ecdc_cases,
     location = 'latest/ecdc_cases.parquet',
@@ -176,11 +179,23 @@ FROM OPENROWSET(
 ## <a name="access-and-permissions"></a>访问和权限
 
 作为最后一步，应创建能够访问 LDW 的数据库用户，并授予他们从外部表和视图选择数据的权限。
-在以下脚本中，你可以看到如何添加新用户并提供读取数据的权限：
+以下脚本演示如何添加一个要使用 Azure AD 标识进行身份验证的新用户：
 
 ```sql
 CREATE USER [jovan@contoso.com] FROM EXTERNAL PROVIDER;
 GO
+```
+
+可以不创建 Azure AD 主体，而是创建使用登录名和密码进行身份验证的 SQL 主体。
+
+```sql
+CREATE LOGIN [jovan] WITH PASSWORD = 'My Very strong Password ! 1234';
+CREATE USER [jovan] FROM LOGIN [jovan];
+```
+
+对于这两种做法，都可以向用户分配权限。
+
+```sql
 DENY ADMINISTER DATABASE BULK OPERATIONS TO [jovan@contoso.com]
 GO
 GRANT SELECT ON SCHEMA::ecdc_adls TO [jovan@contoso.com]
@@ -195,6 +210,37 @@ GO
 - 你应拒绝为新用户提供 `ADMINISTER DATABASE BULK OPERATIONS` 权限，因为他们应只能使用你准备的外部表和视图来读取数据。
 - 应只为某些用户能够使用的表提供 `SELECT` 权限。
 - 如果提供对使用视图的数据的访问权限，对于将用于访问外部数据源的凭据，应为其授予 `REFERENCES` 权限。
+
+此用户拥有查询外部数据所需的最低权限。 如果你要创建可以设置权限、外部表和视图的超级用户，可以向该用户授予 `CONTROL` 权限：
+
+```sql
+GRANT CONTROL TO [jovan@contoso.com]
+```
+
+### <a name="role-based-security"></a>基于角色的安全性
+
+良好的做法是不向单个用户分配权限，而是将用户组织成角色，并在角色级别管理权限。
+以下代码示例创建一个新角色来表示可以分析 COVID-19 案例的人员，并将三个用户添加到此角色：
+
+```sql
+CREATE ROLE CovidAnalyst;
+
+ALTER ROLE CovidAnalyst ADD MEMBER [jovan@contoso.com];
+ALTER ROLE CovidAnalyst ADD MEMBER [milan@contoso.com];
+ALTER ROLE CovidAnalyst ADD MEMBER [petar@contoso.com];
+```
+
+可将权限分配到属于该组的所有用户：
+
+```sql
+GRANT SELECT ON SCHEMA::ecdc_cosmosdb TO [CovidAnalyst];
+GO
+DENY SELECT ON SCHEMA::ecdc_adls TO [CovidAnalyst];
+GO
+DENY ADMINISTER DATABASE BULK OPERATIONS TO [CovidAnalyst];
+```
+
+这种基于角色的安全访问控制可以简化安全规则的管理。
 
 ## <a name="next-steps"></a>后续步骤
 

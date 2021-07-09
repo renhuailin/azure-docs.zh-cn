@@ -3,12 +3,12 @@ title: 快速入门：在 Azure Arc 上创建函数应用
 description: 通过部署第一个函数应用，开始在 Azure Arc 上使用 Azure Functions。
 ms.topic: quickstart
 ms.date: 05/10/2021
-ms.openlocfilehash: 8e65eeaae942eafa34a89054ff06951f2bde8741
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: da00cc070e14490bcd3f4661d30b65bd97553c2e
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371798"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528461"
 ---
 # <a name="create-your-first-function-on-azure-arc-preview"></a>在 Azure Arc 上创建第一个函数（预览版）
 
@@ -26,19 +26,19 @@ ms.locfileid: "110371798"
 # <a name="c"></a>[C\#](#tab/csharp)
 
 + [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)
-+ [Azure Functions Core Tools](functions-run-local.md#v2) 版本 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) 3.0.3245 或更高版本。
 + [Azure CLI](/cli/azure/install-azure-cli) 版本 2.4 或更高版本。
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 + [Node.js](https://nodejs.org/) 版本 12。 还支持 Node.js 版本 10。
-+ [Azure Functions Core Tools](functions-run-local.md#v2) 版本 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) 3.0.3245 或更高版本。
 + [Azure CLI](/cli/azure/install-azure-cli) 版本 2.4 或更高版本。
 
 # <a name="python"></a>[Python](#tab/python)
 
 + [Azure Functions 支持的 Python 版本](supported-languages.md#languages-by-runtime-version)
-+ [Azure Functions Core Tools](functions-run-local.md#v2) 版本 3.x。
++ [Azure Functions Core Tools](functions-run-local.md#v2) 3.0.3245 或更高版本。
 + [Azure CLI](/cli/azure/install-azure-cli) 版本 2.4 或更高版本。
 
 ---

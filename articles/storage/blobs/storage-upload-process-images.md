@@ -1,30 +1,30 @@
 ---
 title: 使用 Azure 存储在云中上传图像数据 | Microsoft Docs
 description: 结合使用 Azure Blob 存储和 Web 应用将应用数据存储到存储帐户。 本教程会创建一个 Web 应用，用于存储和显示 Azure 存储中的图像。
-author: twooley
+author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 06/24/2020
-ms.author: twooley
+ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: f751b93a7d298763da5a37a54f400d6fc56a58e3
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: a2a73c081a24d0efc8197a2d6808f4dfee94481a
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277957"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591667"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
 本教程是一个系列中的第一部分。 本教程将介绍如何部署 Web 应用。 该 Web 应用使用 Azure Blob 存储客户端库将图像上传到存储帐户。 完成后，你将具有一个通过 Azure 存储来存储和显示图像的 Web 应用。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 ![.NET 中的图像调整器应用](media/storage-upload-process-images/figure2.png)
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 ![JavaScript 中的图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
@@ -158,7 +158,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>从 GitHub 存储库部署示例应用
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 应用服务支持通过多种方式将内容部署到 Web 应用。 在本教程中，将从[公共 GitHub 示例存储库](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)部署 Web 应用。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。
 
@@ -176,7 +176,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 应用服务支持通过多种方式将内容部署到 Web 应用。 在本教程中，将从[公共 GitHub 示例存储库](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs)部署 Web 应用。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。
 
@@ -196,7 +196,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ## <a name="configure-web-app-settings"></a>配置 Web 应用设置
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 示例 Web 应用使用[适用于 .NET 的 Azure 存储 API](/dotnet/api/overview/azure/storage) 上传图像。 存储帐户凭据在 Web 应用的应用设置中进行设置。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
@@ -216,7 +216,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 示例 Web 应用使用[适用于 JavaScript 的 Azure 存储客户端库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)来上传图像。 存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
@@ -240,7 +240,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 若要测试 Web 应用，请浏览到已发布应用的 URL。 Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 选择“上传照片”区域以指定并上传文件，或者将文件拖动到该区域上。 如果成功上传，图像会消失。 “生成的缩略图”部分将保持为空白，直到我们稍后在本教程中对它进行测试为止。
 
@@ -282,7 +282,7 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential(String, String) 构造函数](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 选择“选择文件”以选择文件，然后单击“上传图像”。 “生成的缩略图”部分将保持为空白，直到我们稍后在本教程中对它进行测试为止。
 
@@ -382,7 +382,7 @@ router.post('/', uploadStrategy, async (req, res) => {
     await blockBlobClient.uploadStream(stream,
       uploadOptions.bufferSize, uploadOptions.maxBuffers,
       { blobHTTPHeaders: { blobContentType: "image/jpeg" } });
-    res.render('success', { message: 'File uploaded to Azure Blob storage.' });
+    res.render('success', { message: 'File uploaded to Azure Blob Storage.' });
   } catch (err) {
     res.render('error', { message: err.message });
   }
@@ -395,7 +395,7 @@ module.exports = router;
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>验证图像是否显示在存储帐户中
 
-登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“图像”容器 。
+登录 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“图像”容器 。
 
 验证图像是否显示在该容器中。
 
@@ -405,17 +405,17 @@ module.exports = router;
 
 为了测试缩略图查看，你将把图像上传到 **thumbnails** 容器，以检查应用可以读取 **thumbnails** 容器。
 
-登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“缩略图”容器 。 选择“上传”以打开“上传 blob”窗格。
+登录 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“缩略图”容器 。 选择“上传”以打开“上传 blob”窗格。
 
 使用文件选取器选择文件，然后选择“上传”。
 
 导航回到应用，以验证上传到 **thumbnails** 容器的图像是否可见。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 ![显示新图像的 .NET 图像调整器应用](media/storage-upload-process-images/figure2.png)
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 ![显示了新图像的 Node.js 图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 

@@ -1,26 +1,28 @@
 ---
-title: 教程：使用自动化机器学习创建回归
+title: 教程：AutoML - 训练回归模型
 titleSuffix: Azure Machine Learning
-description: 使用 Python SDK 编写代码，创建自动化机器学习试验以生成回归模型。
+description: 通过 Azure 机器学习 Python SDK 使用 Azure 机器学习自动化 ML 训练回归模型，以便预测纽约出租车费用。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: aniththa
-ms.author: anumamah
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 08/14/2020
+ms.date: 06/11/2021
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 85129cf282e39b4f4932cc5e9f7cfd72d1e445b0
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 243dd16cc70a77a0d1da0adf190dc92d83ad1ab4
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210628"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033430"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
+# <a name="tutorial-train-a-regression-model-with-automl-and-python"></a>教程：使用 AutoML 和 Python 训练回归模型
 
-在本教程中，你将使用 Azure 机器学习 SDK 中的自动化机器学习来创建一个预测纽约市出租车收费价格的[回归模型](concept-automated-ml.md#regression)。 此过程接受定型数据和配置设置，并自动循环访问不同特征规范化/标准化方法、模型和超参数设置的组合，以实现最佳模型。
+本教程介绍如何通过 Azure 机器学习 Python SDK 使用 Azure 机器学习自动化 ML 训练回归模型。 此回归模型预测纽约出租车费用。 
+
+此过程接受定型数据和配置设置，并自动循环访问不同特征规范化/标准化方法、模型和超参数设置的组合，以实现最佳模型。 
 
 ![流程图](./media/tutorial-auto-train-models/flow2.png)
 
@@ -31,17 +33,21 @@ ms.locfileid: "107210628"
 > * 定型自动化机器学习回归模型
 > * 计算模型准确度
 
-此外，请为其他这些模型类型尝试自动化机器学习： 
+对于无代码 AutoML，请尝试以下教程： 
 
-* [教程：使用 Azure 机器学习中的自动化 ML 创建分类模型](tutorial-first-experiment-automated-ml.md) - 无代码示例。
-* [教程：使用自动化机器学习预测需求](tutorial-automated-ml-forecast.md) - 无代码示例。
+* [教程：训练无代码分类模型](tutorial-first-experiment-automated-ml.md)
+
+* [教程：使用自动化机器学习预测需求](tutorial-automated-ml-forecast.md)
 
 ## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版](https://aka.ms/AMLFree)的 Azure 机器学习。
 
-* 如果还没有 Azure 机器学习工作区或 Notebook 虚拟机，请完成[设置教程](tutorial-1st-experiment-sdk-setup.md)。
-* 完成设置教程后，使用同一笔记本服务器打开 tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb 笔记本。
+* 如果还没有 Azure 机器学习工作区或计算实例，请完成[快速入门：Azure 机器学习入门](quickstart-create-resources.md)。
+* 完成快速入门后：
+    1. 在工作室中选择“Notebooks”。
+    1. 选择“示例”选项卡。
+    1. 打开 tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb 笔记本。
 
 如果你想要在自己的[本地环境](how-to-configure-environment.md#local)中运行此教程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。 若要获取所需的包， 
 * [安装完整的 `automl` 客户端](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)。

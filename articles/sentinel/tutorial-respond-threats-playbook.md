@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2021
 ms.author: yelevin
-ms.openlocfilehash: 365ba9df39b4b3bd7397e86e6a51b285bf049242
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: af5e0e6a8f019d0b35d73b49f6efb45c2195d62d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600567"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072624"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>教程：在 Azure Sentinel 中结合自动化规则使用 playbook
 
@@ -36,7 +36,7 @@ ms.locfileid: "104600567"
 
 ## <a name="what-are-automation-rules-and-playbooks"></a>什么是自动化规则和 playbook？
 
-自动化规则可帮助你在 Azure Sentinel 中会审事件。 你可以使用它们自动将事件分配给适当的人员、关闭有干扰的事件或已知误报、更改其严重性并添加标记。 它们也是可用于为响应事件而运行 playbook 的机制。
+自动化规则可帮助你在 Azure Sentinel 中会审事件。 你可以使用它们自动将事件分配给适当的人员、关闭有干扰的事件或已知[误报](false-positives.md)、更改其严重性并添加标记。 它们也是可用于为响应事件而运行 playbook 的机制。
 
 playbook 是在 Azure Sentinel 中运行以响应警报或事件的一个流程集合。 playbook可帮助自动处理和编排响应，并可设置为在特定警报或事件生成时通过分别附加到分析规则或自动化规则来自动运行。 还可以按需手动运行。
 
@@ -159,7 +159,7 @@ Azure Sentinel 中的 playbook 基于 [Azure 逻辑应用](../logic-apps/logic-a
 
 1. 选择希望此自动化规则执行的操作。 可用操作包括 **分配所有者**、**更改状态**、**更改严重性**、**添加标记** 和 **运行 playbook**。 可添加任意数量的操作。
 
-1. 如果添加 **运行 playbook** 操作，系统将提示从可用 playbook 下拉列表中选择。 只有以 **事件触发器** 开头的 playbook 才能由自动化规则运行，因此只有这类 playbook 会出现在列表中。
+1. 如果添加 **运行 playbook** 操作，系统将提示从可用 playbook 下拉列表中选择。 只有以事件触发器开头的 playbook 才能由自动化规则运行，因此只有这类 playbook 会出现在列表中。<a name="permissions-to-run-playbooks"></a>
 
     > [!IMPORTANT]
     > 若要由自动化规则运行 playbook，必须向 Azure Sentinel 授予显式权限。 如果 playbook 在下拉列表中为"灰显"状态，则表示 Sentinel 无权访问该 playbook 的资源组。 单击 **管理 playbook 权限** 链接以分配权限。
@@ -170,6 +170,22 @@ Azure Sentinel 中的 playbook 基于 [Azure 逻辑应用](../logic-apps/logic-a
     >    1. 从 playbook 的租户中的 Azure Sentinel 导航菜单中，选择 **设置**。
     >    1. 在 **设置** 边栏选项卡中，选择 **设置** 选项卡，然后选择 **playbook 权限** 扩展器。
     >    1. 单击 **配置权限** 按钮以打开上面提到的 **管理权限** 面板，并按上所述继续操作。
+    > - 如果在 MSSP 方案中，你想要通过某个自动化规则[在客户租户中运行 playbook](automate-incident-handling-with-automation-rules.md#permissions-in-a-multi-tenant-architecture)，而该规则是在登录到服务提供商租户后创建的，则必须授予 Azure Sentinel 权限才能在这两个租户中运行 playbook。在客户租户中，请按照前面的要点中适用于多租户部署的说明进行操作 。 在服务提供商租户中，必须在 Azure Lighthouse 加入模板中添加 Azure Security Insights 应用：
+    >    1. 在 Azure 门户中，转到“Azure Active Directory”。
+    >    1. 单击“企业应用程序”。
+    >    1. 选择“应用程序类型”，并根据“Microsoft 应用程序”进行筛选 。
+    >    1. 在搜索框中，键入 Azure Security Insights。
+    >    1. 复制“对象 ID”字段。 需要将此附加授权添加到现有的 Azure Lighthouse 委派。
+    >
+    >    “Azure Sentinel 自动化参与者”角色具有固定的 GUID，即 `f4c81013-99ee-4d62-a7ee-b3f1f648599a`。 参数模板中的示例 Azure Lighthouse 授权如下所示：
+    >    
+    >    ```json
+    >    {
+    >        "principalId": "<Enter the Azure Security Insights app Object ID>", 
+    >        "roleDefinitionId": "f4c81013-99ee-4d62-a7ee-b3f1f648599a",
+    >        "principalIdDisplayName": "Azure Sentinel Automation Contributors" 
+    >    }
+    >    ```
 
 1. 如果想自动化规则有到期日期，可以设置一个。
 
@@ -181,7 +197,7 @@ Azure Sentinel 中的 playbook 基于 [Azure 逻辑应用](../logic-apps/logic-a
 
 ### <a name="respond-to-alerts"></a>响应警报
 
-使用 playbook 通过以下方法来响应 **警报**：创建 **分析规则** 或编辑现有分析规则，警报生成时运行，并在[分析规则向导](tutorial-detect-threats-custom.md)中选择 playbook 作为自动响应。
+使用 playbook 通过以下方法来响应 **警报**：创建 **分析规则** 或编辑现有分析规则，警报生成时运行，并在 [分析规则向导](tutorial-detect-threats-custom.md)中选择 playbook 作为自动响应。
 
 1. 从 Azure Sentinel 导航菜单中的 **分析** 边栏选项卡中，选择要自动响应的分析规则，并在细节窗格中单击 **编辑**。
 

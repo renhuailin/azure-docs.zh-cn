@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 92c2ae13b840d7a73d86365ce88584bcafc878e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 673dca65726a4258e267e8dd3e403329b47f6d98
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181446"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739972"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教程：为 Slack 配置自动用户预配
 
@@ -36,9 +36,12 @@ ms.locfileid: "96181446"
 在本教程中概述的方案假定您已具有以下各项：
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md)。
-* 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。
+* Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。
 * 启用了[加法计划](https://aadsyncfabric.slack.com/pricing)或更佳计划的 Slack 租户。
 * 在 Slack 中具有团队管理员权限的用户帐户。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
@@ -75,7 +78,7 @@ ms.locfileid: "96181446"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
@@ -125,6 +128,7 @@ ms.locfileid: "96181446"
    |profileUrl|字符串|
    |timezone|字符串|
    |userType|字符串|
+   |preferredLanguage|字符串|
    |urn:scim:schemas:extension:enterprise:1.0.department|String|
    |urn:scim:schemas:extension:enterprise:1.0.manager|参考|
    |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|String|

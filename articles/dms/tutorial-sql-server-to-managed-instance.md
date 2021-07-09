@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 2dfcb4ade9da76d5ec4883e9f4b5b3cb3e0c8682
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: e00af1551d5de5a2c8cbd5ea119c94ef4b38aaa3
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076830"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030982"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 托管实例
 
@@ -35,7 +35,7 @@ ms.locfileid: "106076830"
 > - 下载迁移报告。
 
 > [!IMPORTANT]
-> 对于从 SQL Server 到 SQL 托管实例的脱机迁移，Azure 数据库迁移服务可以为你创建备份文件。 或者可以在 SMB 网络共享中提供服务将用于迁移数据库的最新完整数据库备份。 请勿将多个备份追加到单个备份介质中；请在单独的备份文件上进行每一次备份。 请注意，也可以使用压缩的备份来减少在迁移大型备份时出现潜在问题的可能性。
+> 对于从 SQL Server 到 SQL 托管实例的脱机迁移，Azure 数据库迁移服务可以为你创建备份文件。 或者可以在 SMB 网络共享中提供服务将用于迁移数据库的最新完整数据库备份。 可以将每个备份写入单个独立的备份文件或多个备份文件。 但是，不支持将多个备份追加到单个备份介质中。 请注意，也可以使用压缩的备份来减少在迁移大型备份时出现潜在问题的可能性。
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 

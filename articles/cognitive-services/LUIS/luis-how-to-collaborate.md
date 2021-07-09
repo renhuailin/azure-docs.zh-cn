@@ -10,13 +10,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 01/21/2021
-ms.openlocfilehash: 5ca13784fe2f9a6a5b448bc838bf508f01b0a9fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/17/2021
+ms.openlocfilehash: 044c690688bfc83ce1b4ebc13008ad9a2f37034a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101095198"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026878"
 ---
 # <a name="add-contributors-to-your-app"></a>向应用添加参与者
 
@@ -26,18 +26,7 @@ ms.locfileid: "101095198"
 
 如果你的 LUIS 创作体验已绑定到 LUIS 门户中“管理 -> Azure 资源”页上的某个创作资源，则表明你已完成迁移。
 
-1. 在 Azure 门户中，找到语言理解 (LUIS) 创作资源。 它的类型为 `LUIS.Authoring`。
-1. 在该资源的“访问控制(标识和访问管理)”页上选择“+ 添加”，然后选择“添加角色分配”。
-
-    ![在 Azure 门户中，在创作资源上添加角色分配。](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
-
-1. 在“添加角色分配”窗口中，选择“参与者”作为“角色”。 在“分配访问权限至”选项中，选择“Azure AD 用户、组或服务主体”。 在“选择”选项中，输入用户的电子邮件地址。 如果已知用户有同一个域的多个电子邮件地址，请确保输入主电子邮件帐户。
-
-    ![将用户的电子邮件添加到 Azure AD 的参与者角色](./media/luis-how-to-collaborate/add-role-assignment-for-contributor.png)
-
-    找到用户的电子邮件以后，请选择该帐户，然后选择“保存”。
-
-    如果无法进行此角色分配，请查看“[分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)”和“[Azure 访问控制故障排除](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)”。
+在 Azure 门户中，找到语言理解 (LUIS) 创作资源。 它的类型为 `LUIS.Authoring`。 在资源的“访问控制 (IAM)”页中，为希望参与的用户添加“参与者”角色 。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](/azure/role-based-access-control/role-assignments-portal)。
 
 ## <a name="view-the-app-as-a-contributor"></a>以参与者身份查看应用
 
@@ -80,6 +69,6 @@ LUIS 使用标准的 Azure Active Directory (Azure AD) 许可流程。
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[如何使用版本](luis-how-to-manage-versions.md)来控制应用生命周期。
-* 了解概念，包括[创作资源](luis-how-to-azure-subscription.md#authoring-key)和该资源上的[参与者](luis-how-to-azure-subscription.md#contributions-from-other-authors)。
+* 了解如何[创作资源](luis-how-to-azure-subscription.md)以及如何在该资源中[添加参与者](luis-how-to-collaborate.md)。
 * 了解[如何创建](luis-how-to-azure-subscription.md)创作和运行时资源
 * 迁移到新的[创作资源](luis-migration-authoring.md)

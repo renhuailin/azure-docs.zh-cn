@@ -7,16 +7,16 @@ ms.service: cache
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: 04b582b5ef31e61039c5513ea2a4aa60f1c638e7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5303289cd0629fea1c78e4ae746427e875f80520
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121331"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891609"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>快速入门：将 Azure Cache for Redis 与 Go 配合使用
 
-在本文中，你将了解如何在 Go 应用中构建 REST API，该应用将存储和检索由 [Azure Cache for Redis](./cache-overview.md) 中的 [HASH](https://redis.io/topics/data-types-intro#redis-hashes) 数据结构支持的用户信息。 
+在本文中，你将了解如何在 Go 应用中构建 REST API，该应用将存储和检索由 [Azure Cache for Redis](./cache-overview.md) 中的 [HASH](https://redis.io/topics/data-types-intro#redis-hashes) 数据结构支持的用户信息。
 
 ## <a name="skip-to-the-code-on-github"></a>跳到 GitHub 上的代码
 
@@ -30,6 +30,7 @@ ms.locfileid: "102121331"
 - HTTP 客户端，如 [curl](https://curl.se/)
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>创建用于 Redis 的 Azure 缓存实例
+
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
@@ -49,7 +50,7 @@ func main() {
 ...
 ```
 
-然后，我们会建立与 Azure Cache for Redis 的连接。 请注意，[tls.Config](https://golang.org/pkg/crypto/tls/#Config) 正在使用 - Azure Cache for Redis 只接受以 [TLS 1.2 作为所需的最低版本](cache-remove-tls-10-11.md)的安全连接。
+然后，我们会建立与 Azure Cache for Redis 的连接。 我们使用 [tls.Config](https://golang.org/pkg/crypto/tls/#Config)--Azure Cache for Redis 只接受以 [TLS 1.2 作为所需的最低版本](cache-remove-tls-10-11.md)的安全连接。
 
 ```go
 ...
@@ -64,9 +65,9 @@ if err != nil {
 ...
 ```
 
-如果连接成功，[HTTP 处理程序](https://golang.org/pkg/net/http/#HandleFunc)将配置为处理 `POST` 和 `GET` 操作，HTTP 服务器已启动。 
+如果连接成功，[HTTP 处理程序](https://golang.org/pkg/net/http/#HandleFunc)将配置为处理 `POST` 和 `GET` 操作，HTTP 服务器已启动。
 
-> [!NOTE] 
+> [!NOTE]
 > [gorilla mux 库](https://github.com/gorilla/mux)用于路由（尽管这不是必须的，而且我们可以通过使用这个示例应用程序的标准库来避免这种情况）。
 >
 
@@ -80,7 +81,7 @@ router.HandleFunc("/users/{userid}", uh.getUser).Methods(http.MethodGet)
 log.Fatal(http.ListenAndServe(":8080", router))
 ```
 
-`userHandler` 结构封装了由 `createUser`、`getUser` 方法使用的 [redis.Client](https://pkg.go.dev/github.com/go-redis/redis/v8#Client) - 为了简洁起见，没有包含这些方法的代码。 
+`userHandler` 结构封装了由 `createUser`、`getUser` 方法使用的 [redis.Client](https://pkg.go.dev/github.com/go-redis/redis/v8#Client) - 为了简洁起见，没有包含这些方法的代码。
 
 - `createUser`：接受 JSON 有效负载（包含用户信息）并将其保存为 Azure Cache for Redis 中的 `HASH`。
 - `getUser`：从 `HASH` 提取用户信息，如果找不到，则返回 HTTP `404` 响应。
@@ -125,7 +126,7 @@ func (uh userHandler) getUser(rw http.ResponseWriter, r *http.Request) {
 
 ## <a name="run-the-application"></a>运行应用程序
 
-应用程序接受环境变量形式的连接和凭据。 
+应用程序接受环境变量形式的连接和凭据。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中为 Azure Cache for Redis 实例提取“主机名”和“访问密钥”（可通过访问密钥获得） 
 
@@ -167,7 +168,7 @@ HTTP 服务器将在端口 `8080` 上启动。
     ```
 
     应获得 JSON 响应，如下所示：
-    
+
     ```json
     {
         "email": "foo1@bar",
@@ -193,15 +194,15 @@ HTTP 服务器将在端口 `8080` 上启动。
 如果已完成在此快速入门中创建的 Azure 资源组和资源，则可以删除它们以避免产生费用。
 
 > [!IMPORTANT]
-> 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 如果在要保留的现有资源组中创建了 Azure Redis 缓存实例，可从缓存“概述”页选择“删除”以便仅删除缓存 。 
+> 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 如果在要保留的现有资源组中创建了 Azure Redis 缓存实例，可从缓存“概述”页选择“删除”以便仅删除缓存 。
 
 删除资源组及其 Azure Redis 缓存实例：
 
 1. 从 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。
-1. 在“按名称筛选”文本框中，输入包含缓存实例的资源组的名称，然后从搜索结果中选择它。 
+1. 在“按名称筛选”文本框中，输入包含缓存实例的资源组的名称，然后从搜索结果中选择它。
 1. 在资源组页上，选择“删除资源组”。
 1. 键入资源组名称，然后选择“删除”。
-   
+
    ![删除 Azure Redis 缓存的资源组](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 ## <a name="next-steps"></a>后续步骤

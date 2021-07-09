@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: feab48f32396bcc89621433930c9a9f4689d8286
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa14a42ceffae476ad4df669898d6ce31c163620
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97355437"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569973"
 ---
 # <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>教程：手动配置可用性组（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -75,7 +75,7 @@ ms.locfileid: "97355437"
 
 4. 在“创建群集向导”中，使用下表中的设置完成向导的每个页面，创建一个单节点群集：
 
-   | 页 | 设置 |
+   | Page | 设置 |
    | --- | --- |
    | 开始之前 |使用默认值 |
    | 选择服务器 |在“输入服务器名称”中键入第一个 SQL Server 的名称，然后选择“添加” 。 |
@@ -378,7 +378,7 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
    | **虚拟网络** |使用虚拟网络的名称。 |
    | **子网** |使用虚拟机所在的子网的名称。  |
    | IP 地址分配 |静态 |
-   | **IP 地址** |使用子网中的可用地址。 将该地址用于可用性组侦听程序。 请注意，这不同于群集 IP 地址。  |
+   | IP 地址 |使用子网中的可用地址。 将该地址用于可用性组侦听程序。 请注意，这不同于群集 IP 地址。  |
    | **订阅** |使用虚拟机所在的同一个订阅。 |
    | **位置** |使用虚拟机所在的同一个位置。 |
 
@@ -419,9 +419,9 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
    | --- | --- |---
    | **名称** | 文本 | SQLAlwaysOnEndPointProbe |
    | **协议** | 选择 TCP | TCP |
-   | 端口 | 任何未使用的端口 | 59999 |
+   | **端口** | 任何未使用的端口 | 59999 |
    | **时间间隔**  | 尝试探测的间隔时间，以秒为单位 |5 |
-   | **不正常阈值** | 在将虚拟机视为不正常之前，探测必须连续失败的次数。  | 2 |
+   | 不正常阈值 | 在将虚拟机视为不正常之前，探测必须连续失败的次数。  | 2 |
 
 1. 选择“确定”以设置运行状况探测。
 
@@ -436,10 +436,10 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
    | **名称** | 文本 | SQLAlwaysOnEndPointListener |
    | “前端 IP 地址” | 选择地址 |使用创建负载均衡器时所创建的地址。 |
    | **协议** | 选择 TCP |TCP |
-   | 端口 | 使用可用性组侦听程序的端口 | 1433 |
+   | **端口** | 使用可用性组侦听程序的端口 | 1433 |
    | 后端端口 | 如果为直接服务器返回设置了“浮动 IP”，不会使用此字段 | 1433 |
    | 探测 |为探测指定的名称 | SQLAlwaysOnEndPointProbe |
-   | **会话持久性** | 下拉列表 | 无 |
+   | **会话持久性** | 下拉列表 | **无** |
    | **空闲超时** | 将 TCP 连接保持打开的分钟数 | 4 |
    | 浮动 IP (直接服务器返回) | |已启用 |
 
@@ -463,9 +463,9 @@ WSFC IP 地址也必须在负载均衡器上。
    | --- | --- |---
    | **名称** | 文本 | WSFCEndPointProbe |
    | **协议** | 选择 TCP | TCP |
-   | 端口 | 任何未使用的端口 | 58888 |
+   | **端口** | 任何未使用的端口 | 58888 |
    | **时间间隔**  | 尝试探测的间隔时间，以秒为单位 |5 |
-   | **不正常阈值** | 在将虚拟机视为不正常之前，探测必须连续失败的次数。  | 2 |
+   | 不正常阈值 | 在将虚拟机视为不正常之前，探测必须连续失败的次数。  | 2 |
 
 1. 选择“确定”以设置运行状况探测。
 
@@ -478,10 +478,10 @@ WSFC IP 地址也必须在负载均衡器上。
    | **名称** | 文本 | WSFCEndPoint |
    | “前端 IP 地址” | 选择地址 |使用配置 WSFC IP 地址时所创建的地址。 这不同于侦听器 IP 地址 |
    | **协议** | 选择 TCP |TCP |
-   | 端口 | 使用群集 IP 地址的端口。 这是可用的端口，不用于侦听器探测端口。 | 58888 |
+   | **端口** | 使用群集 IP 地址的端口。 这是可用的端口，不用于侦听器探测端口。 | 58888 |
    | 后端端口 | 如果为直接服务器返回设置了“浮动 IP”，不会使用此字段 | 58888 |
    | 探测 |为探测指定的名称 | WSFCEndPointProbe |
-   | **会话持久性** | 下拉列表 | 无 |
+   | **会话持久性** | 下拉列表 | **无** |
    | **空闲超时** | 将 TCP 连接保持打开的分钟数 | 4 |
    | 浮动 IP (直接服务器返回) | |已启用 |
 
@@ -542,3 +542,10 @@ SQLCMD 连接自动连接到托管主副本的 SQL Server 实例。
 ## <a name="next-steps"></a>后续步骤
 
 - [将 IP 地址添加到第二个可用性组的负载均衡器](availability-group-listener-powershell-configure.md#Add-IP)。
+
+若要了解更多信息，请参阅以下文章：
+
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Always On 可用性组与 Azure VM 上的 SQL Server](availability-group-overview.md)
+- [Always On 可用性组概述](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)

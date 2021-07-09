@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 05/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 9512287f656c6c64399cb8749b7451a5a780bba8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ecb78009c99177eeafda1a4472ad5fabdf0f752
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92677635"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888763"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsara"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Samsara 的集成
 
@@ -37,32 +37,19 @@ ms.locfileid: "92677635"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Samsara 支持 SP 和 IDP 启动的 SSO 
-* Samsara 支持实时用户预配
+* Samsara 支持 SP 和 IDP 启动的 SSO。
+* Samsara 支持实时用户预配。
 
-## <a name="adding-samsara-from-the-gallery"></a>从库中添加 Samsara
+## <a name="add-samsara-from-the-gallery"></a>从库中添加 Samsara
 
 若要配置 Samsara 与 Azure AD 的集成，需要从库中将 Samsara 添加到托管 SaaS 应用的列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
-    
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-1. 若要添加新的应用程序，请选择“新建应用程序”  。
-
-    ![“新增应用程序”按钮](common/add-new-app.png)
-
+1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Samsara” 。
-
-     ![结果列表中的 OneTrust Privacy Management Software](common/search-new-app.png)
-
 1. 从结果面板中选择“Samsara”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-samsara"></a>配置并测试 Samsara 的 Azure AD SSO
 
@@ -82,20 +69,14 @@ ms.locfileid: "92677635"
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 Azure 门户中的 Samsara 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
-
-    ![配置单一登录链接](common/select-sso.png)
-
 1. 在“选择单一登录方法”页上选择“SAML” 。
-
-    ![单一登录选择模式](common/select-saml-option.png)
-
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://cloud.samsara.com/signin/<ORGID>` 用于美国云客户，`https://cloud.eu.samsara.com/signin/<ORGID>` 用于欧洲云客户
+    a. 在“登录 URL”文本框中，使用以下模式之一键入 URL：`https://cloud.samsara.com/signin/<ORGID>`（用于美国云客户），`https://cloud.eu.samsara.com/signin/<ORGID>`（用于欧洲云客户）
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`urn:auth0:samsara-dev:samlp-orgid-<ORGID>`
 
@@ -104,11 +85,11 @@ ms.locfileid: "92677635"
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、回复 URL 和标识符来更新这些值。 请联系 [Samsara 客户端支持团队](mailto:support@samsara.com)以获取这些值，或者请在 Samsara 中转到“设置” > “单一登录” > ”新建 SAML 连接”，以获取 \<ORGID\>  。 还可参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上。   
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Samsara”部分，复制登录 URL 
+1. 在“设置 Samsara”部分，复制“登录 URL”
 
     ![复制配置 URL](common/copy-configuration-urls.png)
     
@@ -148,12 +129,17 @@ ms.locfileid: "92677635"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这样将会重定向到 Samsara 登录 URL，可以从那里启动登录流。 
+#### <a name="sp-initiated"></a>SP 启动的：
 
-2. 直接转到 Samsara 登录 URL，并从那里启动登录流。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Samsara 登录 URL，你可以从那里启动登录流。  
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 Samsara 磁贴时，将会重定向到 Samsara 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 直接转到 Samsara 登录 URL，并从那里启动登录流。
 
+#### <a name="idp-initiated"></a>IDP 启动的：
+
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Samsara。 
+
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Samsara”磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Samsara。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,16 +9,16 @@ ms.date: 03/12/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 69d8910ffe0e45c4c47a035d5c32e71f19d9e04a
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 768cc936964d216ce3f477fde48071aa0eb39162
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870654"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902056"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-partner-agreement-with-the-latest-apis"></a>使用最新的 API 以编程方式为 Microsoft 合作伙伴协议创建 Azure 订阅
 
-本文帮助你使用最新的 API 版本以编程方式为 Microsoft 合作伙伴协议创建 Azure 订阅。 如果你仍在使用较旧的预览版本，请参阅[通过 API 预览版以编程方式创建 Azure 订阅](programmatically-create-subscription-preview.md)。 
+本文帮助你使用最新的 API 版本以编程方式为 Microsoft 合作伙伴协议创建 Azure 订阅。 如果你仍在使用较旧的预览版本，请参阅[通过旧 API 以编程方式创建 Azure 订阅](programmatically-create-subscription-preview.md)。 
 
 本文介绍如何使用 Azure 资源管理器以编程方式创建订阅。
 

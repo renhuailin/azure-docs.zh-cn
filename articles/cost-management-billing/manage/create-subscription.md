@@ -5,20 +5,20 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 05/13/2021
 ms.author: banders
-ms.openlocfilehash: 27594ff4d7673038e9de38c5969a615be60aeadf
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d82599831d0495df5dba4758976e70b3119a8018
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844687"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451849"
 ---
 # <a name="create-an-additional-azure-subscription"></a>创建另外的 Azure 订阅
 
 可以在 Azure 门户中为[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)、[Microsoft 客户协议](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)或 [Microsoft 合作伙伴协议](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement)计费帐户创建另一个订阅。 你可能希望添加另外的订阅以避免达到订阅限制，为安全性创建单独的环境，或者因为合规性原因而隔离数据。
 
-如果有一个 Microsoft Online Services 计划 (MOSP) 计费帐户，则可在 [Azure 注册门户](https://account.azure.com/signup?offer=ms-azr-0003p)中创建其他订阅。
+如果有一个 Microsoft Online Services 计划 (MOSP) 计费帐户，则可在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中创建其他订阅。
 
 若要详细了解计费帐户并确定计费帐户的类型，请参阅[在 Azure 门户中查看计费帐户](view-all-accounts.md)。
 

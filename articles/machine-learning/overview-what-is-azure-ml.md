@@ -10,12 +10,12 @@ author: BlackMist
 ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: cd395f0ff29eed1e09f5bdac882482b201052c90
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 89d839a9b507530eb0b3fc763b2fbba36208f79c
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814814"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081886"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -44,8 +44,6 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 + Jupyter 笔记本：使用我们的[示例笔记本](https://github.com/Azure/MachineLearningNotebooks)或创建自己的笔记本，以利用<a href="/python/api/overview/azure/ml/intro" target="_blank">适用于 Python 的 SDK</a> 示例进行机器学习。 
 
-+ R 脚本或笔记本，其中你使用<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">适用于 R 的 SDK</a> 编写自己的代码，或使用设计器中的 R 模块。
-
 + [多模型解决方案加速器](https://aka.ms/many-models)（预览版）在 Azure 机器学习的基础上构建，使你能够训练、操作和管理数百甚至数千个机器学习模型。
 
 + [用于 Visual Studio Code 的机器学习扩展（预览版）](how-to-set-up-vs-code-remote.md)提供了一个功能完备的开发环境，用于构建和管理机器学习项目。
@@ -58,9 +56,9 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 甚至可以使用 [MLflow 跟踪指标并部署模型](how-to-use-mlflow.md)或使用 Kubeflow [生成端到端工作流管道](https://www.kubeflow.org/docs/azure/)。
 
-## <a name="build-ml-models-in-python-or-r"></a>在 Python 或 R 中生成 ML 模型
+## <a name="build-ml-models-in-with-the-python-sdk"></a>使用 Python SDK 生成 ML 模型
 
-开始使用 Azure 机器学习 <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a> 或 <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a> 在本地计算机上训练。 然后，横向扩展到云。 
+开始使用 Azure 机器学习 <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a> 在本地计算机上训练。 然后，横向扩展到云。 
 
 借助许多可用的[计算目标](how-to-create-attach-compute-studio.md)（例如 Azure 机器学习计算和 [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks)）以及[高级超参数优化服务](how-to-tune-hyperparameters.md)，可以利用云的强大功能更快地生成更好的模型。
 
@@ -126,14 +124,15 @@ Azure 存储帐户、计算目标和其他资源可在虚拟网络内安全地�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 通过首选方法创建首个试验：
-- + [在自己的开发环境开始使用](tutorial-1st-experiment-sdk-setup-local.md)
-  + [在计算实例上使用 Jupyter 笔记本来训练和部署 ML 模型](tutorial-1st-experiment-sdk-setup.md)
+开始使用[快速入门：Azure 机器学习入门](quickstart-create-resources.md)。  然后，使用以下资源通过首选方法创建第一个试验：
+
+  + [运行“Hello world!”Python 脚本（第 1 部分，共 3 部分）](tutorial-1st-experiment-hello-world.md)
+  + [使用 Jupyter 笔记本训练图像分类模型](tutorial-train-models-with-aml.md)
   + [使用自动化机器学习训练和部署 ML 模型](tutorial-first-experiment-automated-ml.md) 
   + [管理 Visual Studio Code 中的资源](how-to-manage-resources-vscode.md)
   + [使用 Visual Studio Code 训练和部署图像分类模型](tutorial-train-deploy-image-classification-model-vscode.md)
   + [使用设计器的拖放功能进行训练和部署](tutorial-designer-automobile-price-train-score.md) 
-  + [使用机器学习 CLI 训练和部署模型](tutorial-train-deploy-model-cli.md)
+  + [使用机器学习 CLI 来训练模型](how-to-train-cli.md)
 
 - 了解[机器学习管道](concept-ml-pipelines.md)，以便生成、优化和管理机器学习方案。
 

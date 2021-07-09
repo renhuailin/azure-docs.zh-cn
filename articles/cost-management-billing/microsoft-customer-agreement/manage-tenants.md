@@ -6,15 +6,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 05/05/2021
 ms.author: banders
 ms.reviewer: baolcsva
-ms.openlocfilehash: dc34d0f12430838be29897ccc5cbeee382ecaa2b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a1d66e1a28717feb66bc223d10ae44e8d5457728
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107485565"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747856"
 ---
 # <a name="manage-tenants-in-your-microsoft-customer-agreement-billing-account"></a>管理 Microsoft 客户协议计费帐户中的租户
 
@@ -43,6 +43,24 @@ ms.locfileid: "107485565"
 
 - 可将其他租户的订阅链接到你的 Microsoft 客户协议计费帐户。 获取订阅的计费所有权只会更改开票排列。 这不会影响服务租户或 Azure RBAC 角色。
 - 若要更改服务租户中的订阅所有者，必须将[订阅转移到不同的 Azure Active Directory 目录](../../role-based-access-control/transfer-subscription.md)。
+
+MCA 计费帐户由单个租户/目录管理。 计费帐户仅控制其租户中订阅的计费。 但是，你可以使用计费所有权转让将订阅链接到不同租户中的计费帐户。
+
+### <a name="billing-ownership-transfer"></a>计费所有权转让
+
+计费所有权转让只更改单个订阅的发票安排。 订阅的用户和资源管理不会更改。
+
+计费所有权转让执行两件事：
+
+- 删除订阅的原始计费所有权。
+- 将订阅计费所有权链接到可能位于不同的租户/目录中的目标计费帐户。
+
+计费所有权转让不会影响以下项：
+
+- 用户
+- 资源
+- Azure RBAC 权限
+
 
 ## <a name="add-guest-users-to-your-microsoft-customer-agreement-tenant"></a>向 Microsoft 客户协议租户添加来宾用户
 

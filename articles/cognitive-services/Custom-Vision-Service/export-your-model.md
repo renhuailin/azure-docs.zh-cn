@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: be28a10f8a96d21d64d08cfacee4543c065168ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c98ed6dbff4be00b6620d96926d6059876494f94
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "85391751"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084711"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>导出模型以用于移动设备
 
@@ -26,8 +26,9 @@ ms.locfileid: "85391751"
 自定义影像服务支持导出以下内容：
 
 * 用于 Android 的 Tensorflow。
+* 用于 JavaScript 框架（如 React、Angular 和 Vue）的 TensorflowJS。 这将在 Android 和 iOS 设备上运行 。
 * 用于 iOS11 的 CoreML。
-* 用于 Windows ML 的 ONNX。
+* 适用于 Windows ML、Android 和 iOS 的 ONNX  。
 * [视觉 AI 开发人员工具包](https://azure.github.io/Vision-AI-DevKit-Pages/)。
 * 适用于 Windows、Linux 或 ARM 架构的 Docker 容器。 容器包括 Tensorflow 模型和服务代码，可用于使用自定义视觉 API。
 

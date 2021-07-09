@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 4c6e82af46a012ad53dfa1cc1db1252ef2c0443e
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 69172956d36aa4b43c88858a65771fdb183a39f6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864930"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453608"
 ---
 # <a name="get-document-status"></a>获取文档状态
 
@@ -25,7 +25,7 @@ Get Document Status 方法可返回特定文档的状态。 该方法根据请�
 
 将 `GET` 请求发送到：
 ```HTTP
-GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/{id}/documents/{documentId}
+GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches/{id}/documents/{documentId}
 ```
 
 了解如何查找[自定义域名](../get-started-with-document-translation.md#find-your-custom-domain-name)。
@@ -70,10 +70,11 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 |名称|类型|描述|
 |--- |--- |--- |
 |path|string|文档或文件夹的位置。|
+|sourcePath|字符串|源文档的位置。|
 |createdDateTimeUtc|字符串|操作创建的日期时间。|
 |lastActionDateTimeUtc|字符串|操作的状态已更新的日期时间。|
 |状态|字符串|作业或文档的可能状态的列表： <ul><li>已取消</li><li>Cancelling</li><li>失败</li><li>NotStarted</li><li>正在运行</li><li>已成功</li><li>ValidationFailed</li></ul>|
-|to|string|目标语言的两个字母的语言代码。 查看语言列表。|
+|to|string|目标语言的两个字母的语言代码。 [查看语言列表](../../language-support.md)。|
 |进度|数字|翻译进度（如果提供）|
 |id|字符串|文档 ID。|
 |characterCharged|整型|由 API 计费的字符。|
@@ -84,9 +85,10 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 |--- |--- |--- |
 |code|string|包含错误代码概要的枚举。 可能的值：<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>未授权</li></ul>|
 |message|字符串|获取概要错误消息。|
-|innerError|InnerErrorV2|新内部错误格式，符合认知服务 API 准则。 它包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
+|innerError|InnerTranslationError|新内部错误格式，符合认知服务 API 准则。 这包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
 |innerError.code|字符串|获取代码错误字符串。|
 |innerError.message|字符串|获取概要错误消息。|
+|innerError.target|string|获取错误的源。 例如，如果文档无效，应为“文档”或“文档 ID”。|
 
 ## <a name="examples"></a>示例
 
@@ -96,6 +98,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 ```JSON
 {
   "path": "https://myblob.blob.core.windows.net/destinationContainer/fr/mydoc.txt",
+  "sourcePath": "https://myblob.blob.core.windows.net/sourceContainer/fr/mydoc.txt",
   "createdDateTimeUtc": "2020-03-26T00:00:00Z",
   "lastActionDateTimeUtc": "2020-03-26T01:00:00Z",
   "status": "Running",

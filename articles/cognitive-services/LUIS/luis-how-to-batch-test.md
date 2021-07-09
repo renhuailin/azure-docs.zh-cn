@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 04/13/2021
-ms.openlocfilehash: 9fe4f21a5c9e9e26a2f94b8a60cba47916842fe3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 05/18/2021
+ms.openlocfilehash: b6d007d3020d3fa2b001178bd23d721ea6a6aa6b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501784"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067827"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 
@@ -87,7 +87,19 @@ ms.locfileid: "107501784"
 
 5. 命名数据集 `pizza test`，然后选择“完成”。
 
-6. 选择“运行”按钮。 在批量测试运行后，选择“查看结果”。 
+6. 选择“运行”按钮。 
+
+7. 批处理测试完成后，可以看到以下各列：
+
+    | 列 | 说明 |
+    | -------- | ------------- |
+    | 状态 | 测试状态。 “查看结果”仅在测试完成后可见。 |
+    | 名称 | 为测试指定的名称。 |
+    | 大小 | 此批处理测试文件中的测试数。 |
+    | 上次运行时间 | 此批处理测试文件的上次运行日期。 |
+    | 最后结果 | 测试中成功的预测数。 |
+
+8. 若要查看测试的详细结果，请选择“查看结果”。 
 
     > [!TIP]
     > * 选择“下载”会下载你上传的同一文件。

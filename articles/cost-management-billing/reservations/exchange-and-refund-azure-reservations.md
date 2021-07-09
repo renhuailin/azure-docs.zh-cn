@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/14/2021
 ms.author: banders
-ms.openlocfilehash: 3e8f50efd04364483c32ecb8ef5020bdd053e55b
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d45682a3ccdc67cdbff8ef0c1edd542817875fbc
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515475"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891547"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预留的自助交换和退款
 
@@ -65,6 +65,7 @@ Azure Databricks 预留容量、Azure VMware Solution by CloudSimple 预留、Az
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>以非高级存储交换高级存储
 
 可以将购买时其 VM 大小不支持高级存储的预留交换成其 VM 大小支持高级存储的预留。 例如，以 _F1_ 交换 _F1s_。 若要进行交换，请转到“预留详细信息”，然后选择“交换”。 交换不会重置预留实例的期限，也不创建新的交易。
+如果要交换不同的大小、序列、区域或付款频率，则会为新预留重置该期限。 
 
 ## <a name="how-transactions-are-processed"></a>处理交易的方式
 
