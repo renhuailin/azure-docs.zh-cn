@@ -6,19 +6,15 @@ ms.author: mbaldwin
 ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
-ms.topic: how-to
-ms.openlocfilehash: 7d219b752b894bbce9815911658c804ecb850ea1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.topic: conceptual
+ms.openlocfilehash: 1fa4f4b4b9b56b5acc3a3d3d9e75177889a4a8af
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753427"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479228"
 ---
-# <a name="authenticate-to-azure-key-vault"></a>对 Azure Key Vault 进行身份验证
-
-借助 Azure 密钥保管库，可以在集中的安全云存储库中存储机密并控制其分发，因而无需在应用程序中存储凭据。 应用程序只需要在运行时使用密钥保管库进行身份验证即可访问这些机密。
-
-## <a name="app-identity-and-security-principals"></a>应用标识和安全主体
+# <a name="authentication-in-azure-key-vault"></a>Azure 密钥保管库中的身份验证
 
 使用密钥保管库进行的身份验证可与 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 结合使用，后者负责对任何给定安全主体的标识进行身份验证。
 
@@ -40,49 +36,23 @@ ms.locfileid: "107753427"
 
 * 如果不能使用托管标识，请改为将应用程序注册到 Azure AD 租户，如[快速入门：将应用程序注册到 Azure 标识平台](../../active-directory/develop/quickstart-register-app.md)中所述。 注册操作还会创建第二个应用程序对象，该对象在所有租户中标识该应用。
 
-## <a name="authorize-a-security-principal-to-access-key-vault"></a>授权安全主体访问 Key Vault
-
-密钥保管库可用于两个不同的授权级别：
-
-- 访问策略控制是否授权用户、组或服务主体访问现有密钥保管库资源内的机密、密钥和证书（有时称为“数据平面”操作）。 访问策略通常授予用户、组和应用程序。
-
-    若要分配访问策略，请参阅以下文章：
-
-    - [Azure 门户](assign-access-policy-portal.md)
-    - [Azure CLI](assign-access-policy-cli.md)
-    - [Azure PowerShell](assign-access-policy-portal.md)
-
-- 角色权限控制是否授权用户、组或服务主体创建、删除及以其他方式管理密钥保管库资源（有时称为“管理平面”操作）。 此类角色通常仅授予管理员。
- 
-    若要分配和管理角色，请参阅以下文章：
-
-    - [Azure 门户](../../role-based-access-control/role-assignments-portal.md)
-    - [Azure CLI](../../role-based-access-control/role-assignments-cli.md)
-    - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-
-    有关角色的一般信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md)。
-
-
-> [!IMPORTANT]
-> 为了获得最高安全性，请始终遵循最小特权原则，并仅授予所需的最具体的访问策略和角色。 
-    
 ## <a name="configure-the-key-vault-firewall"></a>配置密钥保管库防火墙
 
 默认情况下，密钥保管库允许通过公共 IP 地址访问资源。 为了提高安全性，还可以限制对特定 IP 范围、服务终结点、虚拟网络或专用终结点的访问。
 
 有关详细信息，请参阅[访问防火墙保护下的 Azure 密钥保管库](./access-behind-firewall.md)。
 
+## <a name="the-key-vault-request-operation-flow-with-authentication"></a>包括身份验证的密钥保管库请求操作流
 
-## <a name="the-key-vault-authentication-flow"></a>密钥保管库身份验证流
+密钥保管库身份验证将作为密钥保管库中每个请求操作的一部分进行。 检索令牌后，可将其重用于后续调用。 身份验证流示例：
 
-1. 服务主体请求使用 Azure AD 进行身份验证，例如：
+1. 某个令牌请求使用 Azure AD 进行身份验证，例如：
+    * Azure 资源（例如具有托管标识的虚拟机或应用服务应用程序）与 REST 终结点联系以获取访问令牌。
     * 用户使用用户名和密码登录到 Azure 门户。
-    * 应用程序调用 Azure REST API，提供客户端 ID 和密码或客户端证书。
-    * Azure 资源（例如具有托管标识的虚拟机）与 [Azure 实例元数据服务 (IMDS)](../../virtual-machines/windows/instance-metadata-service.md) REST 终结点联系以获取访问令牌。
 
-1. 如果使用 Azure AD 成功进行身份验证，则将向服务主体授予 OAuth 令牌。
+1. 如果使用 Azure AD 成功进行身份验证，则将向安全主体授予 OAuth 令牌。
 
-1. 服务主体通过密钥保管库的终结点 (URI) 调用密钥保管库 REST API。
+1. 通过密钥保管库的终结点 (URI) 调用密钥保管库 REST API。
 
 1. 密钥保管库防火墙会检查以下条件。 如果满足任何条件，则允许调用。 否则，调用将被阻止并返回禁止访问响应。
 
@@ -91,9 +61,9 @@ ms.locfileid: "107753427"
     * 调用方按 IP 地址、虚拟网络或服务终结点在防火墙中列出。
     * 调用方可以通过配置的专用链接连接访问密钥保管库。    
 
-1. 如果防火墙允许该调用，则密钥保管库会调用 Azure AD 来验证服务主体的访问令牌。
+1. 如果防火墙允许该调用，则密钥保管库会调用 Azure AD 来验证安全主体的访问令牌。
 
-1. 密钥保管库会检查服务主体是否对请求的操作具有所需的访问策略。 如果没有，则密钥保管库会返回禁止访问响应。
+1. 密钥保管库会检查安全主体是否对请求的操作拥有所需的权限。 如果没有，则密钥保管库会返回禁止访问响应。
 
 1. 密钥保管库会执行请求的操作并返回结果。
 
@@ -104,24 +74,24 @@ ms.locfileid: "107753427"
 > [!NOTE]
 > Key Vault SDK 用于机密、证书和密钥的客户端在没有访问令牌的情况下对 Key Vault 进行了额外的调用，这导致 401 响应来检索租户信息。 有关详细信息，请参阅[身份验证、请求和响应](authentication-requests-and-responses.md)
 
-## <a name="code-examples"></a>代码示例
+## <a name="authentication-to-key-vault-in-application-code"></a>在应用程序代码中对密钥保管库进行身份验证
 
-下表链接到其他文章，这些文章演示如何使用相关语言的 Azure SDK 库在应用程序代码中使用密钥保管库。 为了方便起见，还包括了其他接口，例如 Azure CLI 和 Azure 门户。
+密钥保管库 SDK 使用 Azure 标识客户端库，通过该库可以使用相同的代码跨环境对密钥保管库进行无缝身份验证
 
-| 密钥保管库机密 | 密钥保管库密钥 | Key Vault 证书 |
-|  --- | --- | --- |
-| [Python](../secrets/quick-create-python.md) | [Python](../keys/quick-create-python.md) | [Python](../certificates/quick-create-python.md) | 
-| [.NET](../secrets/quick-create-net.md) | [.NET](../keys/quick-create-net.md) | [.NET](../certificates/quick-create-net.md) |
-| [Java](../secrets/quick-create-java.md) | [Java](../keys/quick-create-java.md) | [Java](../certificates/quick-create-java.md) |
-| [JavaScript](../secrets/quick-create-node.md) | [JavaScript](../keys/quick-create-node.md) | [JavaScript](../certificates/quick-create-node.md) | 
-| [Azure 门户](../secrets/quick-create-portal.md) | [Azure 门户](../keys/quick-create-portal.md) | [Azure 门户](../certificates/quick-create-portal.md) |
-| [Azure CLI](../secrets/quick-create-cli.md) | [Azure CLI](../keys/quick-create-cli.md) | [Azure CLI](../certificates/quick-create-cli.md) |
-| [Azure PowerShell](../secrets/quick-create-powershell.md) | [Azure PowerShell](../keys/quick-create-powershell.md) | [Azure PowerShell](../certificates/quick-create-powershell.md) |
-| [ARM 模板](../secrets/quick-create-net.md) | -- | -- |
+**Azure 标识客户端库**
+
+| .NET | Python | Java | JavaScript |
+|--|--|--|--|
+|[Azure 标识 SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure 标识 SDK Python](/python/api/overview/azure/identity-readme)|[Azure 标识 SDK Java](/java/api/overview/azure/identity-readme)|[Azure 标识 SDK JavaScript](/javascript/api/overview/azure/identity-readme)|   
+
+有关最佳做法和开发人员示例的详细信息，请参阅[在代码中对密钥保管库进行身份验证](developers-guide.md#authenticate-to-key-vault-in-code)
 
 ## <a name="next-steps"></a>后续步骤
 
+- [密钥保管库开发人员指南](developers-guide.md)
+- [使用 Azure 门户分配 Key Vault 访问策略](assign-access-policy-portal.md)
+- [将 Azure RBAC 角色分配到密钥保管库](rbac-guide.md)
 - [密钥保管库访问策略故障排除](troubleshooting-access-issues.md)
 - [密钥保管库 REST API 错误代码](rest-error-codes.md)
-- [密钥保管库开发人员指南](developers-guide.md)
+
 - [什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md)

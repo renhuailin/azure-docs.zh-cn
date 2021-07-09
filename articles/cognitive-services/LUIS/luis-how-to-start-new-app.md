@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/18/2020
-ms.openlocfilehash: 2dd06a7b4c8e6296cda747d17fd3d5be5db0af6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.openlocfilehash: 31316a5d0688c7cee0bc15f6e7cebdea23d0f29d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95018882"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097078"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>在 LUIS 门户中创建新的 LUIS 应用
 可通过多种方法创建 LUIS 应用。 可以在 LUIS 门户中创建 LUIS 应用，也可以通过 LUIS 创作 [API](developer-reference-resource.md) 进行创建。
@@ -44,13 +44,12 @@ ms.locfileid: "95018882"
 ## <a name="create-new-app-in-luis"></a>在 LUIS 中创建新应用
 
 1. 在“我的应用”页上，依次选择“订阅”、“创作资源”和“+ 创建”。 
-
-> [!div class="mx-imgBorder"]
-> ![LUIS 应用列表](./media/create-app-in-portal.png)
+    
+    :::image type="content" source="media/create-app-in-portal.png" alt-text="LUIS 应用列表" lightbox="media/create-app-in-portal.png":::
 
 1. 在对话框中，输入应用程序的名称，例如“`Pizza Tutorial`”。
 
-    ![“创建新应用”对话框](./media/create-pizza-tutorial-app-in-portal.png)
+    :::image type="content" source="media/create-pizza-tutorial-app-in-portal.png" alt-text="“创建新应用”对话框" lightbox="media/create-pizza-tutorial-app-in-portal.png":::
 
 1. 选择应用程序区域性，然后选择“完成”。 此时，“说明”和“预测资源”是可选项。 以后随时可以在门户的“管理”部分进行设置。
 
@@ -59,8 +58,7 @@ ms.locfileid: "95018882"
 
     创建应用后，LUIS 门户会显示“意向”列表，其中包含已为你创建的 `None` 意向。 现在，你已有一个空应用。
 
-    > [!div class="mx-imgBorder"]
-    > ![意向列表，其中包含在没有示例言语的情况下创建的 None 意向。](media/pizza-tutorial-new-app-empty-intent-list.png)
+    :::image type="content" source="media/pizza-tutorial-new-app-empty-intent-list.png" alt-text="无任何意向和示例言语的意向列表" lightbox="media/pizza-tutorial-new-app-empty-intent-list.png":::
 
 ## <a name="other-actions-available-on-my-apps-page"></a>“我的应用”页上提供的其他操作
 

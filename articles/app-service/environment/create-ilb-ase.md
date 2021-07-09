@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be936bf8799d3e16679cf337e2425543163fe8f3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009545"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110063291"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 
@@ -129,7 +129,7 @@ SCM 站点名称能将用户带到 Kudu 控制台，在 Azure 门户中称为 **
 
 如果生成代理可访问 Internet 并与 ILB ASE 在同一网络上，则基于 Internet 的 CI 系统（例如 GitHub 和 Azure DevOps）仍将使用 ILB ASE。 因此，如果在 ILB ASE 所在的 VNET 上（不同的子网属正常情况）创建生成代理，Azure DevOps 将能从 Azure DevOps git 中拉取代码并部署到 ILB ASE。 如果不想创建自己的生成代理，则需要使用利用拉取模型的 CI 系统，如 Dropbox。
 
-ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 此域显示在应用的发布配置文件和应用的门户边栏选项卡中（“概述”   > “软件包”  以及“属性”  ）。 如果 ILB ASE 包含域后缀 *&lt;ASE 名称&gt;.appserviceenvironment.net* 和名为 *mytest* 的应用，请使用 *mytest.&lt;ASE 名称&gt;.appserviceenvironment.net* 进行 FTP 部署，并使用 *mytest.scm.contoso.net* 进行 Web 部署。
+ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 此域显示在应用的发布配置文件和应用的门户边栏选项卡中（“概述”   > “软件包”  以及“属性”  ）。 如果 ILB ASE 包含域后缀 *&lt;ASE 名称&gt;.appserviceenvironment.net* 和名为 *mytest* 的应用，请使用 *mytest.&lt;ASE 名称&gt;.appserviceenvironment.net* 进行 FTP 部署，并使用 *mytest.scm.contoso.net* 进行 MSDeploy 部署。
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>在 ILB ASE 中配置 WAF 设备 ##
 

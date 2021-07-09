@@ -8,21 +8,33 @@ ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
 ms.date: 11/09/2020
-ms.openlocfilehash: fa497b69b067d5556f11effdb52505895ecc3bdd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eca47e26f497b1e8bb54e99cf49fcf326f9e5255
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94386664"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110486401"
 ---
 此基于 Postman 的快速入门详细介绍如何从知识库获取答案。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 最新 [Postman](https://www.getpostman.com/)。
 * 必须具有：
-    * 一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)
-    * 在快速入门中生成的已训练且已发布的[包含问题和答案的知识库](../Quickstarts/add-question-metadata-portal.md)已配置元数据和闲聊内容。
+    * 最新 [Postman](https://www.getpostman.com/)。
+    * 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+
+> * 在 Azure 门户中创建的 [QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
+
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+> * 在 Azure 门户中启用了自定义问答功能的[文本分析资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅和文本分析资源名称。
+
+---
+
+   * 在前一篇[快速入门](../Quickstarts/add-question-metadata-portal.md)中生成的已训练且已发布的知识库，包含问题和答案，并且已配置元数据和闲聊内容。
+
 
 > [!NOTE]
 > 准备好从知识库生成问题的答案后，必须[训练](../Quickstarts/create-publish-knowledge-base.md#save-and-train)并[发布](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)该知识库。 发布知识库后，“发布”页将显示 HTTP 请求设置以生成答案。 “Postman”选项卡将显示生成答案所需的设置。
@@ -47,7 +59,7 @@ ms.locfileid: "94386664"
 
 1. 打开 Postman，使用发布的知识库设置创建新的基本 **POST** 请求。 在以下部分，请改动 POST 正文 JSON，以更改知识库查询。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 本快速入门对 Postman **POST** 请求使用相同的设置，并根据你尝试查询的内容，对发送到服务的 POST 正文 JSON 进行配置。
 
@@ -425,3 +437,53 @@ JSON 响应使用与已发布的知识库查询相同的架构。
         "activeLearningEnabled": true
     }
     ```
+## <a name="use-unstructured-data-sources"></a>使用非结构化数据源。
+    
+我们现在支持添加无法用于提取 QnA 的非结构化文档。用户可以在提取查询响应时，选择在 GenerateAnswer API 中包括或排除非结构化数据集。
+     
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
+我们不支持 GA 服务中的非结构化数据集。
+
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
+
+1. 如果要在评估对“生成答案 API”的响应时包含非结构化数据源，请将参数 includeUnstructuredResources 设置为 true，反之亦然。
+   ```json
+    {
+       "question": "what is Surface Headphones 2+ priced at?",
+       "includeUnstructuredSources":true,
+       "top": 2
+    }
+    ```
+2. 响应包括答案源。 
+    ```json
+       {
+     "answers": [
+       {
+         "questions": [],
+         "answer": "Surface Headphones 2+ is priced at $299.99 USD. Business and education customers in select markets can place orders today through microsoft.com\n\nor their local authorized reseller.\n\nMicrosoft Modern USB and Wireless Headsets:\n\nCertified for Microsoft Teams, these Microsoft Modern headsets enable greater focus and call privacy, especially in shared workspaces.",
+         "score": 82.11,
+         "id": 0,
+         "source": "blogs-introducing-surface-laptop-4-and-new-access.pdf",
+         "isDocumentText": false,
+         "metadata": [],
+         "answerSpan": {
+           "text": "$299.99 USD",
+           "score": 0.0,
+           "startIndex": 34,
+           "endIndex": 45
+         }
+       },
+       {
+         "questions": [],
+         "answer": "Now certified for Microsoft Teams with the included dongle, Surface Headphones 2+ provides an even more robust meeting experience with on‐ear Teams controls and improved remote calling. Surface Headphones 2+ is priced at $299.99 USD. Business and education customers in select markets can place orders today through microsoft.com\n\nor their local authorized reseller.",
+         "score": 81.95,
+         "id": 0,
+         "source": "blogs-introducing-surface-laptop-4-and-new-access.pdf",
+         "isDocumentText": false,
+         "metadata": []
+       }
+     ],
+     "activeLearningEnabled": true
+   }
+    ```
+---

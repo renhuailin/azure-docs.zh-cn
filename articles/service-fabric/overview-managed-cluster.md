@@ -1,16 +1,16 @@
 ---
-title: Service Fabric 托管群集（预览版）
+title: Service Fabric 托管群集
 description: Service Fabric 托管群集从 Azure Service Fabric 群集资源模型演变而来，该模型可以简化部署和群集管理。
 ms.topic: overview
-ms.date: 02/15/2021
-ms.openlocfilehash: 271852214097ee96ba6b10de7a94904981cd8ef8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 5/10/2021
+ms.openlocfilehash: a412899f4aa37ce2257a3351c3e27da4d5d3add2
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041223"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685254"
 ---
-# <a name="service-fabric-managed-clusters-preview"></a>Service Fabric 托管群集（预览版）
+# <a name="service-fabric-managed-clusters"></a>Service Fabric 托管群集
 
 Service Fabric 托管群集从 Azure Service Fabric 群集资源模型演变而来，该模型可以简化部署和群集管理体验。
 
@@ -47,7 +47,10 @@ Service Fabric 托管群集从 Azure Service Fabric 群集资源模型演变而�
 **默认情况下的最佳做法**
 - 简化的可靠性和持久性设置
 
-除了群集所需的基础资源的成本外，Service Fabric 托管群集不会产生额外的成本。
+除了群集所需的基础资源成本之外，Service Fabric 托管群集不会产生额外的成本，并且它们适用同样的 Service Fabric SLA。
+
+> [!NOTE]
+> 没有从现有 Service Fabric 群集到托管群集的迁移路径。 需要创建新的 Service Fabric 托管群集才能使用此新资源类型。
 
 ## <a name="service-fabric-managed-cluster-skus"></a>Service Fabric 托管群集 SKU
 
@@ -62,30 +65,26 @@ Service Fabric 托管群集从 Azure Service Fabric 群集资源模型演变而�
 | 添加/删除节点类型 | 否 | 是 |
 | 区域冗余 | 否 | 是 |
 
-## <a name="whats-new-for-service-fabric-managed-clusters"></a>Service Fabric 托管群集的新增功能
+## <a name="feature-support"></a>功能支持
 
-Service Fabric 托管群集预览版的最新功能包括对以下内容的支持：
+托管群集的功能将继续扩展。 目前支持以下功能：
 
-* [使用 ARM 模板部署应用程序](how-to-managed-cluster-app-deployment-template.md)
-* [自动 OS 升级](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
-* [磁盘加密](how-to-enable-managed-cluster-disk-encryption.md)
-* [应用 NSG 规则](how-to-managed-cluster-networking.md)
-
-即将推出的版本中要添加的功能包括：
-
-* 使用 Visual Studio 部署应用程序
-* 托管标识支持
-* 可用性区域
-* 反向代理
-* 自动缩放
+* [使用 ARM 模板进行应用程序部署](how-to-managed-cluster-app-deployment-template.md)
+* [应用程序密钥](how-to-managed-cluster-application-secrets.md)
+* [自动 OS 映像升级](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
+* [可用性区域跨越](how-to-managed-cluster-availability-zones.md)
+* [磁盘加密](how-to-enable-managed-cluster-disk-encryption.md)和[托管磁盘类型](how-to-managed-cluster-managed-disk.md)选择
+* 托管群集[节点类型](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md)和[应用程序身份验证](how-to-managed-cluster-application-managed-identity.md)的托管标识支持
+* [NSG 规则和其他网络选项](how-to-managed-cluster-networking.md)
+* [仅限无状态节点类型](how-to-managed-cluster-stateless-node-type.md)
+* 节点类型的[虚拟机规模集扩展](how-to-managed-cluster-vmss-extension.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 若要开始使用 Service Fabric 托管群集，请尝试以下快速入门：
 
 > [!div class="nextstepaction"]
-> [创建 Service Fabric 托管群集（预览版）](quickstart-managed-cluster-template.md)
-
+> [创建 Service Fabric 托管群集](quickstart-managed-cluster-template.md)
 
 [sf-composition]: ./media/overview-managed-cluster/sfrp-composition-resource.png
 [sf-encapsulation]: ./media/overview-managed-cluster/sfrp-encapsulated-resource.png

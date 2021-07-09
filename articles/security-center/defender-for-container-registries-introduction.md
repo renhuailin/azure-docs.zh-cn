@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4840fc27133b1d92cb8aaad80921f9d21901569d
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 282777a692b7b0fe54415ef09c2cf1879868dd3b
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010686"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854425"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
@@ -28,7 +28,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 **适用于容器注册表的 Azure Defender** 包含一个漏洞扫描程序，可扫描基于 Azure 资源管理器的 Azure Container Registry 注册表中的映像，使你能够更深入地了解映像漏洞。 该集成的扫描程序由业界领先的漏洞扫描供应商 Qualys 提供支持。
 
-当 Qualys 或安全中心发现问题时，你将在安全中心仪表板中收到通知。 安全中心会针对每个漏洞提供可行的建议、严重性分类，以及有关如何修正问题的指南。 若要详细了解安全中心针对容器提供的建议，请参阅[建议的参考列表](recommendations-reference.md#recs-compute)。
+当 Qualys 或安全中心发现问题时，你将在安全中心仪表板中收到通知。 安全中心会针对每个漏洞提供可行的建议、严重性分类，以及有关如何修正问题的指南。 若要详细了解安全中心针对容器提供的建议，请参阅[建议的参考列表](recommendations-reference.md#recs-container)。
 
 安全中心会对扫描程序的扫描结果进行筛选和分类。 当映像正常运行时，安全中心会将其标为正常。 安全中心仅为存在待解决问题的映像生成安全建议。 安全中心针对每个报告的漏洞提供相关详细信息和严重性类别。 此外，它还提供有关如何修正每个映像上发现的特定漏洞的指导内容。
 
@@ -65,7 +65,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 
 
-## <a name="faq-for-azure-container-registry-image-scanning"></a>Azure 容器注册表映像扫描常见问题解答
+## <a name="faq---azure-container-registry-image-scanning"></a>常见问题解答 - Azure 容器注册表映像扫描
 
 ### <a name="how-does-security-center-scan-an-image"></a>安全中心如何扫描图像？
 安全中心会从注册表中拉取映像，并使用 Qualys 扫描程序在一个隔离的沙盒中运行它。 扫描程序会提取已知漏洞的列表。
@@ -88,6 +88,8 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 ### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>有个映像不在我的注册表中，它存在漏洞。为什么安全中心要就这些漏洞向我发送警报？
 安全中心会对在注册表中拉取或推送的每个映像提供漏洞评估。 某些映像可能会重复使用来自已扫描的某个映像的标记。 例如，每次你向摘要添加一张映像时，都可能重新分配名为“最新”的标记。 在这种情况下，“旧”映像仍然在注册表中，可能仍会被其摘要拉取。 如果发现该映像存在安全问题，而它被拉取了，那么就将暴露安全漏洞。
 
+### <a name="what-should-i-do-if-the-scan-results-for-my-image-arent-shown"></a>如果未显示我的图像的扫描结果，该怎么办？
+请等待几分钟，如果未显示结果，请尝试再次推送图像以触发新扫描。 如果仍未出现扫描结果，请与我们的支持团队联系。 
 
 ## <a name="next-steps"></a>后续步骤
 

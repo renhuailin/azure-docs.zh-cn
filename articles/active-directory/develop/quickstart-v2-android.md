@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 49c69a79b4841f13623c9e6ab3daea72dd7fde26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aabb4806dd709236af9e5b25a14cf3e1e8799dee
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583648"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713443"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -112,12 +112,6 @@ ms.locfileid: "99583648"
 
 MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 将以下内容添加到“Gradle 脚本” > “build.gradle (Module: app)”中的“Dependencies”下时，Gradle 3.0+ 将安装该库：   
 
-```gradle
-implementation 'com.microsoft.identity.client:msal:2.+'
-```
-
-可以在示例项目的 build.gradle (Module: app) 中看到以下内容：
-
 ```java
 dependencies {
     ...
@@ -127,6 +121,30 @@ dependencies {
 ```
 
 此代码指示 Gradle 从 Maven Central 下载并生成 MSAL。
+
+还必须在 build.gradle (Module: app) 的“allprojects” > “repositories”部分添加对 maven 的引用，如下所示  ：
+
+```java
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+        mavenLocal()
+        maven {
+            url 'https://pkgs.dev.azure.com/MicrosoftDeviceSDK/DuoSDK-Public/_packaging/Duo-SDK-Feed/maven/v1'
+        }
+        maven {
+            name "vsts-maven-adal-android"
+            url "https://identitydivision.pkgs.visualstudio.com/_packaging/AndroidADAL/maven/v1"
+            credentials {
+                username System.getenv("ENV_VSTS_MVN_ANDROIDADAL_USERNAME") != null ? System.getenv("ENV_VSTS_MVN_ANDROIDADAL_USERNAME") : project.findProperty("vstsUsername")
+                password System.getenv("ENV_VSTS_MVN_ANDROIDADAL_ACCESSTOKEN") != null ? System.getenv("ENV_VSTS_MVN_ANDROIDADAL_ACCESSTOKEN") : project.findProperty("vstsMavenAccessToken")
+            }
+        }
+        jcenter()
+    }
+}
+```
 
 ### <a name="msal-imports"></a>MSAL 导入
 

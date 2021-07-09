@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: a9f5a307bfefedf74f884e39b482bd90454fc5c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b97fa934c346b8613d5a06ae758efd07f9fc2cad
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93096863"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "113225527"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>快速入门：使用 Node.js 和 Azure Cosmos DB 生成表 API 应用
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -40,15 +40,15 @@ ms.locfileid: "93096863"
 > 必须新建表 API 帐户，才能使用正式发布的表 API SDK。 正式发布的 SDK 不支持在预览期间创建的表 API 帐户。
 >
 
-[!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-table](includes/cosmos-db-create-dbaccount-table.md)]
 
 ## <a name="add-a-table"></a>添加表
 
-[!INCLUDE [cosmos-db-create-table](../../includes/cosmos-db-create-table.md)]
+[!INCLUDE [cosmos-db-create-table](includes/cosmos-db-create-table.md)]
 
 ## <a name="add-sample-data"></a>添加示例数据
 
-[!INCLUDE [cosmos-db-create-table-add-sample-data](../../includes/cosmos-db-create-table-add-sample-data.md)]
+[!INCLUDE [cosmos-db-create-table-add-sample-data](includes/cosmos-db-create-table-add-sample-data.md)]
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -180,11 +180,11 @@ ms.locfileid: "93096863"
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+[!INCLUDE [cosmosdb-delete-resource-group](includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

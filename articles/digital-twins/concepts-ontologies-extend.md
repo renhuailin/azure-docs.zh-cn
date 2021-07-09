@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 547081122b1bc6611200e2abc2042a111e4284e1
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: edadf3ad7e86572c758a90fd35a941024b0aa60e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208070"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475750"
 ---
 # <a name="extending-ontologies"></a>扩展 ontology 
 
@@ -28,7 +28,7 @@ ms.locfileid: "108208070"
 
 层次结构的一部分如下图所示。 
 
-:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="此流程图演示了部分 RealEstateCore 空间层次结构。位于顶层的元素称为“空间”；它由一个“扩展”箭头连接到下一层“房间”；“房间”由“扩展”箭头连接到下一层“会议室”和“办公室”。"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="流程图展示部分 RealEstateCore 空间层次结构。其中显示了空间、房间、会议室和办公室的元素。"::: 
 
 有关 RealEstateCore 本体的详细信息，请参阅概念：采用行业标准本体。
 
@@ -51,7 +51,7 @@ ms.locfileid: "108208070"
 
 添加专注室接口后，扩展的层次结构将显示新的房间类型。 
 
-:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="此流程图从上而下演示了 RealEstateCore 空间层次结构，其中包含新的添加内容。在包含“会议室”和“办公室”的底层，有一个称为“专注室”的新元素（也通过“扩展”箭头从“房间”进行连接）"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="流程图展示部分 RealEstateCore 空间层次结构，包括新增内容。"::: 
 
 ### <a name="add-additional-capabilities-to-existing-interfaces"></a>将附加功能添加到现有接口 
 
@@ -69,7 +69,7 @@ ms.locfileid: "108208070"
 
 扩展如上所示的层次结构部分后，扩展层次结构如下图所示。 此时，扩展的“空间”接口添加 `drawingId` 属性，该属性包含将数字孪生体与 3D 绘图关联的 ID。 此外，“会议室”接口添加 "online" 属性，该属性包含会议室的联机状态。 通过继承，“会议室”接口包含 RealEstateCore“会议室”接口中的所有功能以及扩展“空间”接口中的所有功能。 
 
-:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-2.png" alt-text="此流程图从上而下演示了扩展的 RealEstateCore 空间层次结构，其中包含更多新的添加内容。现在，“房间”与“空间”元素同级，后者通过一个“扩展”箭头与下一级“会议室”和“办公室”旁的新“房间”元素相连。新元素通过更多“扩展”关系连接到现有本体。"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-2.png" alt-text="流程图展示扩展的 RealEstateCore 空间层次结构，包括所述的新增内容。"::: 
 
 ## <a name="using-the-extended-space-hierarchy"></a>使用扩展空间层次结构 
 
@@ -77,7 +77,7 @@ ms.locfileid: "108208070"
 
 每对数字孪生体的模型将是扩展层次结构中的一个接口，如下图所示。 
  
-:::image type="content" source="media/concepts-ontologies-extend/ontology-with-models.png" alt-text="扩展 RealEstateCore 空间层次结构摘录，其中包括“空间”（顶层）、一个“房间”（中间层），以及“会议室”、“办公室”和“专注室”（底层）。模型名连接到每个元素（例如，“房间”连接到一个称为“房间101”的模型）。"::: 
+:::image type="content" source="media/concepts-ontologies-extend/ontology-with-models.png" alt-text="流程图展示扩展的 RealEstateCore 空间层次结构，包括连接的模型空间、房间、会议室、办公室和专注室。"::: 
 
 使用模型 ID（`IS_OF_MODEL` 运算符）查询数字孪生体时，应使用扩展层次结构中的模型 ID。 例如，`SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:com:example:Office;1')`。 
 

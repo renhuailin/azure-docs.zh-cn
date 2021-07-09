@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: e4b79dc278bf41015c84f72994dd68419ae6e230
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5c16a0245361dfa7e3ff160f5ffa45154555aa0b
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097941"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495324"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 API 安装并运行 Docker 容器 
 
@@ -34,7 +34,7 @@ ms.locfileid: "110097941"
 > * 神经文本转语音
 >
 > 以下语音容器已推出受限预览版。
-> * 语音语言检测 
+> * 语音语言识别 
 >
 > 若要使用语音容器，必须提交在线请求并获得批准。 有关详细信息，请参阅下面的“请求批准运行容器”部分。
 
@@ -43,7 +43,7 @@ ms.locfileid: "110097941"
 | 语音转文本 | 使用中间结果分析情绪并听录连续实时语音或批量音频录制内容。  | 2.12.0 |
 | 自定义语音转文本 | 通过[自定义语音识别门户](https://speech.microsoft.com/customspeech)中的自定义模型，使用中间结果将连续实时语音或批量音频录制内容听录成文本。 | 2.12.0 |
 | 文本转语音 | 使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.14.0 |
-| 语音语言检测 | 检测音频文件中讲述的语言。 | 1.0 |
+| 语音语言识别 | 检测音频文件中讲述的语言。 | 1.0 |
 | 神经文本转语音 | 使用深度神经网络技术将文本转换为自然语音，使合成语音变得更自然。 | 1.6.0 |
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
@@ -83,7 +83,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 | 语音转文本 | 2 核心，2 GB 内存 | 4 核心，4-GB 内存 |
 | 自定义语音转文本 | 2 核心，2 GB 内存 | 4 核心，4-GB 内存 |
 | 文本转语音 | 单核，2-GB 内存 | 2 核心，3-GB 内存 |
-| 语音语言检测 | 1 核心，1-GB 内存 | 1 核心，1-GB 内存 |
+| 语音语言识别 | 1 核心，1-GB 内存 | 1 核心，1-GB 内存 |
 | 神经文本转语音 | 6 核心，12-GB 内存 | 8 核心，16-GB 内存 |
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
@@ -128,14 +128,14 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |-----------|------------|
 | 神经文本转语音 | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech:latest` |
 
-# <a name="speech-language-detection"></a>[语音语言检测](#tab/lid)
+# <a name="speech-language-identification"></a>[语音语言识别](#tab/lid)
 
 > [!TIP]
-> 为了获取最有用的结果，我们建议将语音语言检测容器与语音转文本或自定义语音转文本容器配合使用。 
+> 为了获取最有用的结果，我们建议将语音语言识别容器与语音转文本或自定义语音转文本容器配合使用。 
 
 | 容器 | 存储库 |
 |-----------|------------|
-| 语音语言检测 | `mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection:latest` |
+| 语音语言识别 | `mcr.microsoft.com/azure-cognitive-services/speechservices/language-detection:latest` |
 
 ***
 
@@ -249,9 +249,9 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-tex
 > [!IMPORTANT]
 > 构造神经文本转语音 HTTP POST 时，[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 消息需要一个具有 `name` 特性的 `voice` 元素。 值是对应的容器区域设置和语音，也称为[“短名称”](language-support.md#neural-voices)。 例如，`latest` 标记具有语音名称 `en-US-AriaNeural`。
 
-# <a name="speech-language-detection"></a>[语音语言检测](#tab/lid)
+# <a name="speech-language-identification"></a>[语音语言识别](#tab/lid)
 
-#### <a name="docker-pull-for-the-speech-language-detection-container"></a>语音语言检测容器的 Docker pull
+#### <a name="docker-pull-for-the-speech-language-identification-container"></a>语音语言识别容器的 Docker pull
 
 使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令从 Microsoft 容器注册表下载容器映像。
 
@@ -319,7 +319,7 @@ diarize_speech_config.set_service_property(
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>分析语音转文本输出中的情绪 
-从语音转文本容器 v2.6.0 开始，应使用 TextAnalytics 3.0 API 终结点，而不要使用预览版。 例如：
+从语音转文本容器 v2.6.0 开始，应使用 TextAnalytics 3.0 API 终结点，而不要使用预览版。 例如
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
 * `https://localhost:5000/text/analytics/v3.0/sentiment`
 
@@ -498,9 +498,9 @@ ApiKey={API_KEY}
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
-# <a name="speech-language-detection"></a>[语音语言检测](#tab/lid)
+# <a name="speech-language-identification"></a>[语音语言识别](#tab/lid)
 
-若要运行语音语言检测容器，请执行以下 `docker run` 命令。
+若要运行语音语言识别容器，请执行以下 `docker run` 命令。
 
 ```bash
 docker run --rm -it -p 5003:5003 --memory 1g --cpus 1 \
@@ -517,7 +517,7 @@ ApiKey={API_KEY}
 * 公开 TCP 端口 5003，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
-如果你只是发送语音语言检测请求，则需要将语音客户端的 `phraseDetection` 值设置为 `None`。  
+如果你只是发送语音语言识别请求，则需要将语音客户端的 `phraseDetection` 值设置为 `None`。  
 
 ```python
 speech_config.set_service_property(
@@ -534,7 +534,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 ```
 
 > [!NOTE]
-> 增加并发调用数可能会影响可靠性和延迟。 要进行语言检测，我们建议使用 1 个 CPU 和 1GB 内存最多发出 4 个并发调用。 对于具有 2 个 CPU 和 2GB 内存的主机，建议最多发出 6 个并发调用。
+> 增加并发调用数可能会影响可靠性和延迟。 要进行语言识别，我们建议使用 1 个 CPU 和 1GB 内存最多发出 4 个并发调用。 对于具有 2 个 CPU 和 2GB 内存的主机，建议最多发出 6 个并发调用。
 
 ***
 
@@ -549,7 +549,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 | 容器 | SDK 主机 URL | 协议 |
 |--|--|--|
 | 标准语音转文本和自定义语音转文本 | `ws://localhost:5000` | WS |
-| 文本转语音（包括标准和神经）、语音语言检测 | `http://localhost:5000` | HTTP |
+| 文本转语音（包括标准和神经）、语音语言识别 | `http://localhost:5000` | HTTP |
 
 有关使用 WSS 和 HTTPS 协议的详细信息，请参阅[容器安全性](../cognitive-services-container-support.md#azure-cognitive-services-container-security)。
 
@@ -714,7 +714,7 @@ speech_config.set_service_property(
   * *文本转语音*
   * *自定义文本转语音*
   * *神经文本转语音*
-  * *语音语言检测*
+  * *语音语言识别*
 * 可以从 Azure 中的容器注册表下载容器映像。
 * 容器映像在 Docker 中运行。
 * 无论是使用 REST API（仅适用于文本转语音）还是 SDK（语音转文本或文本转语音），都要指定容器的主机 URI。 

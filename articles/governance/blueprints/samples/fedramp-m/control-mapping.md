@@ -3,12 +3,12 @@ title: FedRAMP Moderate 蓝图示例控件
 description: FedRAMP Moderate 蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 7c8b2524958be1a4b5e49ff870c7c01a8f89f305
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 27db1fdc8fc6f1c51f2cf708fe2e5cfc8a2c4026
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386663"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757288"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate 蓝图示例的控制映射
 
@@ -276,7 +276,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 - 在 SQL 服务器上部署威胁检测
 
 > [!NOTE]
-> 特定 Azure Policy 定义的可用性在 Azure 政府和其他国家云中可能会有所不同。 
+> 特定 Azure Policy 定义的可用性在 Azure 政府和其他国家云中可能会有所不同。
 
 ## <a name="next-steps"></a>后续步骤
 

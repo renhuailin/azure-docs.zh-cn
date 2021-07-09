@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: 65fd6e5b4d494f8e8486d72079b9fa97a175894b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: e5e1556b0b4960850c955f3d52c34396d1363b2a
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376879"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535746"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>教程：配置 Azure IoT Edge 设备
 
@@ -105,11 +105,11 @@ ms.locfileid: "107376879"
 
     ![展示密钥保管库脚本输出的屏幕截图。](media/tutorial-machine-learning-edge-05-configure-edge-device/key-vault-entries-output.png)
 
-## <a name="create-an-iot-edge-device"></a>创建 IoT Edge 设备
+## <a name="register-an-iot-edge-device"></a>注册 IoT Edge 设备
 
-要将 Azure IoT Edge 设备连接到 IoT 中心，首先需在中心内创建该设备的标识。 我们从云端设备标识中提取连接字符串，用它在 IoT Edge 设备上配置运行时。 在配置的设备连接到中心后，我们便可以部署模块并发送消息了。 我们还可以通过更改 IoT 中心内相应的设备标识来更改物理 IoT Edge 设备的配置。
+若要将 Azure IoT Edge 设备连接到 IoT 中心，请先在中心注册设备。 我们从云端设备标识中提取连接字符串，用它在 IoT Edge 设备上配置运行时。 在配置的设备连接到中心后，我们便可以部署模块并发送消息了。 我们还可以通过更改 IoT 中心内相应的设备标识来更改物理 IoT Edge 设备的配置。
 
-在本教程中，我们将使用 Visual Studio Code 创建新的设备标识。 也可以使用 Azure 门户或 Azure CLI 完成这些步骤。
+在本教程中，我们将使用 Visual Studio Code 注册新的设备标识。 也可以使用 Azure 门户或 Azure CLI 完成这些步骤。 无论选择哪种方法，请确保获取 IoT Edge 设备的设备连接字符串。 在 Azure 门户上设备的“详细信息”页中，可以找到设备连接字符串。
 
 1. 在开发计算机上，打开 Visual Studio Code。
 
@@ -125,79 +125,43 @@ ms.locfileid: "107376879"
 
 ## <a name="deploy-an-azure-virtual-machine"></a>部署 Azure 虚拟机
 
-我们使用来自 Azure 市场的 [Azure IoT Edge on Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) 映像创建本教程所用的 IoT Edge 设备。 IoT Edge on Ubuntu 映像会在启动时安装最新的 Azure IoT Edge 运行时及其依赖项。 通过以下方式部署 VM：
+我们使用 Ubuntu 18.04 LTS 虚拟机，并安装和配置 Azure IoT Edge 运行时。 部署使用 [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) 项目存储库中维护的 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)。 它使用模板中提供的连接字符串预配在上一步中注册的 IoT Edge 设备。
 
-- PowerShell 脚本 `Create-EdgeVM.ps1`。
-- Azure 资源管理器模板 `IoTEdgeVMTemplate.json`。
-- shell 脚本 `install packages.sh`。
+你可以使用 Azure 门户或 Azure CLI 来部署虚拟机。 我们将演示 Azure 门户步骤。 有关详细信息，请参阅[在 Ubuntu 虚拟机上运行 Azure IoT Edge](how-to-install-iot-edge-ubuntuvm.md)。
 
-### <a name="enable-programmatic-deployment"></a>启用编程部署
+### <a name="deploy-using-deploy-to-azure-button"></a>使用“部署到 Azure”按钮进行部署
 
-若要在脚本化部署中使用 Azure 市场提供的映像，我们需要为该映像启用编程部署。
+1. 若要使用 `iotedge-vm-deploy` ARM 模板部署 Ubuntu 18.04 LTS 虚拟机，请单击下面的按钮：
 
-1. 登录到 Azure 门户。
+    [![iotedge-vm-deploy 的“部署到 Azure”按钮](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
-1. 选择“所有服务”  。
+1. 在新启动的窗口中，填写可用的窗体字段。
 
-1. 在搜索栏中，输入并选择“市场”  。
+   | 字段 | 说明 |
+   | - | - |
+   | **订阅** | 要将虚拟机部署到的活动 Azure 订阅。 |
+   | **资源组** | 用于包含该虚拟机及其相关资源的现有或新建的资源组。 |
+   | **DNS 标签前缀** | 必需的值，用作虚拟机主机名的前缀。 |
+   | **管理员用户名** | 一个用户名，将为其提供对部署的 root 特权。 |
+   | **设备连接字符串** | 在预期 [IoT 中心](../iot-hub/about-iot-hub.md)内创建的设备的[设备连接字符串](./how-to-register-device.md)。 |
+   | **VM 大小** | 要部署的虚拟机的 [大小](../cloud-services/cloud-services-sizes-specs.md)
+   | **Ubuntu OS 版本** | 要在基础虚拟机上安装的 Ubuntu OS 版本。 |
+   | **位置** | 要部署虚拟机的[地理区域](https://azure.microsoft.com/global-infrastructure/locations/)，此值默认为所选资源组的位置。 |
+   | **身份验证类型** | 根据偏好选择“sshPublicKey”或“密码”。 |
+   | **管理员密码或密钥** | SSH 公钥的值或密码的值，具体取决于所选的身份验证类型。 |
 
-1. 在市场搜索栏中，输入并选择“Azure IoT Edge on Ubuntu”  。
+1. 填写完所有字段后，选中页面底部的复选框以接受条款，然后依次选择“查看 + 创建”和“创建”以开始部署。
 
-1. 选择 **入门** 超链接以编程方式进行部署。
+1. 在 Azure 门户中，导航到你的虚拟机。 可以通过资源组或在门户登陆页面上的“Azure 服务”下选择“虚拟机”来找到它。
 
-1. 选择“启用”按钮，然后选择“保存”。 
-
-    ![展示如何为虚拟机启用编程部署的屏幕截图。](media/tutorial-machine-learning-edge-05-configure-edge-device/deploy-ubuntu-vm.png)
-
-1. 你将看到一条成功通知。
-
-### <a name="create-a-virtual-machine"></a>创建虚拟机
-
-接下来，运行脚本来为 IoT Edge 设备创建虚拟机。
-
-1. 打开 PowerShell 窗口，转到“EdgeVM”目录。
-
-    ```powershell
-    cd c:\source\IoTEdgeAndMlSample\EdgeVM
-    ```
-
-1. 运行脚本来创建虚拟机。
-
-    ```powershell
-    .\Create-EdgeVm.ps1
-    ```
-
-1. 根据提示提供每个参数的值。 建议在这整个教程中，所有资源的订阅、资源组和位置均保持一致。
-
-    * **Azure 订阅 ID**：可在 Azure 门户中找到。
-    * **资源组名称**：在本教程中，请使用易记名称将资源分组
-    * **位置**：将在其中创建虚拟机的 Azure 位置， 例如 westus2 或 northeurope。 有关详细信息，请查看所有 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。
-    * **AdminUsername**：管理员帐户的名称，用于登录到虚拟机。
-    * **AdminPassword**：为虚拟机上的管理员用户名设置的密码。
-
-1. 使脚本能够设置 VM，请使用与当前所用 Azure 订阅关联的凭据登录到 Azure。
-
-1. 该脚本会确认此信息来创建 VM。 选择“y”或 Enter 继续操作   。
-
-1. 脚本在执行以下步骤时，会运行几分钟：
-
-    * 创建资源组（如果尚不存在）
-    * 创建虚拟机
-    * 为端口 22 (SSH)、5671 (AMQP)、5672 (AMPQ) 和 443 (TLS) 添加 VM 的 NSG 例外
-    * 安装 [Azure CLI](/cli/azure/install-azure-cli-apt)
-
-1. 该脚本会输出 SSH 连接字符串用于连接到 VM。 复制连接字符串供下一步使用。
-
-    ![展示如何复制虚拟机 SSH 连接字符串的屏幕截图。](media/tutorial-machine-learning-edge-05-configure-edge-device/vm-ssh-connection-string.png)
+1. 记下虚拟机的“DNS 名称”。 你将需要使用它来登录到虚拟机。
 
 ## <a name="connect-to-your-iot-edge-device"></a>连接到 IoT Edge 设备
 
-下面几个部分会配置我们创建的 Azure 虚拟机。 首先是连接到虚拟机。
+1. 打开命令提示符，并使用以下命令登录到虚拟机。 根据上一部分的内容输入自己的用户名和 DNS 名称信息。
 
-1. 打开命令提示符，粘贴从脚本输出中复制的 SSH 连接字符串。 根据你在上一部分中提供给 PowerShell 脚本的值，输入自己的用户名、前缀和区域信息。
-
-    ```cmd
-    ssh -l <username> iotedge-<suffix>.<region>.cloudapp.azure.com
+    ```bash
+    ssh <adminUsername>@<DNS_name>
     ```
 
 1. 当系统提示验证主机的真实性时，请键入 **yes** 并按 **Enter**。
@@ -245,25 +209,12 @@ ms.locfileid: "107376879"
 
 ## <a name="update-the-iot-edge-device-configuration"></a>更新 IoT Edge 设备配置
 
-IoT Edge 运行时使用 /etc/iotedge/config.yaml 文件来保留其配置。 我们需要更新此文件中的三部分信息：
+IoT Edge 运行时使用 /etc/iotedge/config.yaml 文件来保留其配置。 我们需要更新此文件中的两部分信息：
 
-* **设备连接字符串**：IoT 中心内来自此设备的标识的连接字符串
 * **证书**：用来与下游设备建立连接的证书
 * **主机名**：VM IoT Edge 设备的完全限定域名 (FQDN)
 
-用于创建 IoT Edge VM 的 Azure IoT Edge on Ubuntu 映像随附了一个 shell 脚本，该脚本可使用连接字符串更新 config.yaml 文件。
-
-1. 在 Visual Studio Code 中右键单击 IoT Edge 设备，然后选择“复制设备连接字符串”。
-
-    ![展示如何从 Visual Studio Code 复制连接字符串的屏幕截图。](media/tutorial-machine-learning-edge-05-configure-edge-device/copy-device-connection-string-command.png)
-
-1. 在 SSH 会话中运行命令，使用设备连接字符串更新 config.yaml 文件。
-
-    ```bash
-    sudo /etc/iotedge/configedge.sh "<your_iothub_edge_device_connection_string>"
-    ```
-
-接下来，我们通过直接编辑 config.yaml 文件来更新证书和主机名。
+通过直接编辑 config.yaml 文件来更新证书和主机名。
 
 1. 打开 config.yaml 文件。
 
@@ -306,11 +257,16 @@ IoT Edge 运行时使用 /etc/iotedge/config.yaml 文件来保留其配置。 �
     systemctl status iotedge
     ```
 
-1. 如果在状态中看到了错误（带“\[ERROR\]”前缀的彩色文本），请检查守护程序日志了解详细错误信息。
+## <a name="troubleshooting"></a>疑难解答
 
-    ```bash
-    journalctl -u iotedge --no-pager --no-full
-    ```
+如果在状态中看到了错误（带“\[ERROR\]”前缀的彩色文本），请检查守护程序日志了解详细错误信息。
+
+   ```bash
+   journalctl -u iotedge --no-pager --no-full
+   ```
+
+有关修复错误的详细信息，请查看[故障排除](troubleshoot.md)页。
+
 ## <a name="clean-up-resources"></a>清理资源
 
 本教程是一系列文章的一部分，其中每篇文章都基于前一篇文章中介绍的内容。 请等到完成最后一篇教程之后才清理任何资源。

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 05/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 1b4bf5b9d9b0341609d4caf0647c849ba92b073f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00f6de3b18ac4c5abbe87777957ac171617c4a0e
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647206"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555737"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>教程：Azure Active Directory 与 DigiCert 集成
 
@@ -38,6 +38,9 @@ ms.locfileid: "101647206"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * DigiCert 支持 IDP 发起的 SSO。
+
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="add-digicert-from-the-gallery"></a>从库中添加 DigiCert
 
@@ -75,7 +78,14 @@ ms.locfileid: "101647206"
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    在“标识符”文本框中键入 URL：`https://www.digicert.com/sso`
+    a. 在“标识符”文本框中键入 URL：`https://www.digicert.com/account/sso/metadata`
+
+    b. 在“回复 URL”文本框中键入 URL：`https://www.digicert.com/account/sso/`
+
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.digicert.com/account/sso/<FEDERATION_NAME>/login` 
+
+    > [!NOTE]
+    > 登录 URL 值不是实际值。 使用实际登录 URL 更新此值。 请联系 [DigiCert 支持团队](mailto:support@digicert.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. DigiCert 应用程序需要采用特定格式的 SAML 断言语句。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 759adea3cf34b79c76b6facec3bd4626ca54107e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b9833035aa83f739b2edad7cfea9fd6cd959a69
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625026"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032332"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
@@ -25,7 +25,7 @@ ms.locfileid: "98625026"
 Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的跟踪。 本教程介绍以下操作：
 
 > [!div class="checklist"]
-> * 上传用于定义要监视的构造站点区域的[地理围栏 GeoJSON 数据](geofence-geojson.md)。 你将使用[数据上传 API](/rest/api/maps/data/uploadpreview) 将地理围栏作为多边形坐标上传到你的 Azure Maps 账户。
+> * 上传用于定义要监视的构造站点区域的[地理围栏 GeoJSON 数据](geofence-geojson.md)。 你将使用[数据上传 API](/rest/api/maps/data-v2/upload-preview) 将地理围栏作为多边形坐标上传到你的 Azure Maps 账户。
 > * 设置两个[逻辑应用](../event-grid/handler-webhooks.md#logic-apps)，当设备进入或退出地理围栏区域，将触发应用并向构造站点的运营管理员发送邮件通知。
 > * 使用 [Azure 事件网格](../event-grid/overview.md)订阅 Azure Maps 地理围栏进入和退出事件。 你将设置两个 Webhook 事件订阅，用于调用两个逻辑应用中定义的 HTTP 终结点。 然后，逻辑应用将发送有关设备移出或移入地理围栏的相应邮件通知。
 > * 使用[搜索地理围栏 GET API](/rest/api/maps/spatial/getgeofence) 在有设备退出和进入地理围栏区域时接收通知。
@@ -42,7 +42,7 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 在本教程中，你将上传包含 `FeatureCollection` 的地理围栏 GeoJSON 数据。 `FeatureCollection` 包含用于定义站点内多边形区域的两个地理围栏。 第一个地理围栏不设过期时间或时间限制。 第二个地理围栏只能在营业时间（太平洋时区上午 9:00 到下午 5:00）接受查询，且在 2022 年 1 月 1 日后将失效。 有关 GeoJSON 数据格式的详细信息，请参阅[为 GeoJSON 数据设置地理围栏](geofence-geojson.md)。
 
 >[!TIP]
->可以随时更新地理围栏数据。 有关详细信息，请参阅[数据上传 API](/rest/api/maps/data/uploadpreview)。
+>可以随时更新地理围栏数据。 有关详细信息，请参阅[数据上传 API](/rest/api/maps/data-v2/upload-preview)。
 
 1. 打开 Postman 应用。 在顶部附近选择“新建”。 在“新建”窗口中，选择“集合”。 命名集合，然后选择“创建”。
 
@@ -51,7 +51,7 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 3. 在生成器选项卡上选择“POST”HTTP 方法并输入以下 URL 将地理围栏数据上传到 Azure Maps。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
 
     ```HTTP
-    https://atlas.microsoft.com/mapData/upload?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&dataFormat=geojson
+    https://us.atlas.microsoft.com/mapData?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
     URL 路径中的 `geojson` 参数表示正在上传的数据的数据格式。
@@ -144,42 +144,37 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
    }
    ```
 
-5. 选择“发送”，然后等待请求处理完成。 在请求处理完成后，请转到响应的“头”选项卡。 复制“位置”键的值，即 `status URL`。
+5. 选择“发送”，然后等待请求处理完成。 在请求处理完成后，请转到响应的“头”选项卡。 复制“Operation-Location”键的值，即 `status URL`。
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0
+    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
     ```
 
 6. 检查 API 调用的状态，在 `status URL` 上创建“GET”HTTP 请求。 为了进行身份验证，需要将主订阅密钥追加到 URL 中。 “GET”请求应如以下 URL 所示：
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={Subscription-key}
+   https://us.atlas.microsoft.com/mapData/<operationId>?api-version=2.0&subscription-key={Subscription-key}
    ```
 
-7. “GET”HTTP 请求成功完成后，它将返回 `resourceLocation`。 `resourceLocation` 包含更新内容的唯一 `udid`。 保存此 `udid`，在本教程的最后一部分中需要用它查询 Get 地理围栏 API。 （可选）可以使用 `resourceLocation` URL 在下一步中从此资源中检索元数据。
+7. 请求成功完成后，在响应窗口中选择“标头”选项卡。 复制“Resource-Location”键的值，即 `resource location URL`。  `resource location URL` 包含已上传数据的唯一标识符 (`udid`)。 保存 `udid`，在本教程的最后一部分中需要用它查询获取地理围栏 API。 （可选）可以使用 `resource location URL` 在下一步中从此资源中检索元数据。
 
-      ```json
-      {
-          "status": "Succeeded",
-          "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
-      }
-      ```
+    :::image type="content" source="./media/tutorial-geofence/resource-location-url.png" alt-text="复制资源位置 URL。":::
 
-8. 要检索内容元数据，请在第 7 步中检索到的 `resourceLocation` URL 上创建“GET”HTTP 请求。 为了进行身份验证，请确保将主订阅密钥追加到 URL 中。 “GET”请求应如以下 URL 所示：
+8. 要检索内容元数据，请在第 7 步中检索到的 `resource location URL` 上创建“GET”HTTP 请求。 为了进行身份验证，请确保将主订阅密钥追加到 URL 中。 “GET”请求应如以下 URL 所示：
 
     ```http
-   https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-9. 当“GET”HTTP 请求成功完成时，响应正文将包含步骤 7 的 `resourceLocation` 中指定的 `udid`。 它还将包含将来访问和下载内容的位置，以及有关该内容的其他元数据。 整体响应的示例如下：
+9. 请求成功完成后，在响应窗口中选择“标头”选项卡。 元数据应如以下 JSON 片段所示：
 
     ```json
     {
         "udid": "{udid}",
-        "location": "https://atlas.microsoft.com/mapData/{udid}?api-version=1.0",
-        "created": "7/15/2020 6:11:43 PM +00:00",
-        "updated": "7/15/2020 6:11:45 PM +00:00",
-        "sizeInBytes": 1962,
+        "location": "https://us.atlas.microsoft.com/mapData/6ebf1ae1-2a66-760b-e28c-b9381fcff335?api-version=2.0",
+        "created": "5/18/2021 8:10:32 PM +00:00",
+        "updated": "5/18/2021 8:10:37 PM +00:00",
+        "sizeInBytes": 946901,
         "uploadStatus": "Completed"
     }
     ```

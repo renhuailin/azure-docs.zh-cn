@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: quickstart
-ms.date: 09/15/2020
+ms.date: 06/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b29a292dae570d368f54f65773ce72a54de2e2d
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91756805"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413980"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>快速入门：使用 Azure CLI 预配和激活托管 HSM
 
@@ -63,11 +63,11 @@ az group create --name "ContosoResourceGroup" --location eastus2
 - Azure 位置。
 - 初始管理员的列表。
 
-以下示例会在资源组 ContosoResourceGroup（位于美国东部 2 位置）创建一个名为 ContosoMHSM 的 HSM，并将当前已登录的用户设为唯一管理员   。
+以下示例会在资源组 ContosoResourceGroup（位于美国东部 2 位置）中创建一个名为 ContosoMHSM 的 HSM，并将当前已登录的用户设为唯一管理员，软删除保留期为 28 天。 详细了解[托管 HSM 软删除](soft-delete-overview.md)
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
-az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid
+az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid --retention-days 28
 ```
 
 > [!NOTE]

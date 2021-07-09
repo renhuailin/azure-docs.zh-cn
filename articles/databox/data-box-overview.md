@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 12/18/2020
+ms.date: 04/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 13c07da7393c70bb1fc61930dd1179994c68ed75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6da5dfcded067420fd6d43f4a5b2841da060898a
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389801"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738115"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 
@@ -99,6 +99,17 @@ Data Box 包括以下组件：
 * **本地 Web 用户界面** - 基于 Web 的UI，用于配置设备，以便它可以连接到本地网络，并向 Data Box 服务注册该设备。 此外还可以使用本地 Web UI 关闭和重启 Data Box 设备、查看复制日志，并联系 Microsoft 支持部门以提交服务请求。
 
     ![Data Box 本地 Web UI](media/data-box-overview/data-box-local-web-ui.png)
+
+    设备上的本地 Web UI 当前支持以下语言及其相应的语言代码：
+
+    | 语言             | 代码 | 语言                | 代码   | 语言                | 代码         |
+    |----------------------|------|-------------------------|--------|-------------------------|--------------|
+    | 英语（默认）    | en   |  捷克语                  | cs     | 德语                  | de           |
+    | 西班牙语              | es   | 法语                  | fr     | 匈牙利语               | hu           |
+    | 意大利语              | it   | 日语                | ja     | 朝鲜语                  | ko           |
+    | 荷兰语                | nl   | 波兰语                  | pl     | 葡萄牙语 - 巴西     | pt-br        |
+    | 葡萄牙语 - 葡萄牙| pt-pt| 俄语                 | ru     | 瑞典语                 | sv           |
+    | 土耳其语              | tr   | 简体中文    | zh-hans|    |       |    
 
     有关使用基于 Web 的 UI 的详细信息，请转到[使用基于 Web 的 UI 管理 Data Box](data-box-portal-ui-admin.md)。
 

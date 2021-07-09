@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 94c1bc1b5dc61ac30d2adfb1bc42e13128de054d
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 3bc89555f3526048f2e4876724503d0137f21fbf
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105521"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964381"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>设置 Azure Percept DK 并部署你的第一个 AI 模型
 
@@ -170,7 +170,7 @@ ms.locfileid: "113105521"
 
 1. 单击“查看设备流”。 如果是第一次查看设备的视频流，会在右上角看到一个通知，指示部署了一个新模型。 这可能需要几分钟的时间。
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/view-stream.png" alt-text="查看视频流。":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-03-1-start-video-stream.png" alt-text="查看视频流。":::
 
     部署模型后，将收到另一条包含“查看流”链接的通知。 单击此链接可在新的浏览器窗口中查看来自 Azure Percept Vision 照相机的视频流。 开发工具包会预加载 AI 模型，用于自动执行许多常见对象的对象检测。
 
@@ -178,7 +178,7 @@ ms.locfileid: "113105521"
 
 1. Azure Percept Studio 还具有多个示例 AI 模型。 要将示例模型部署到开发工具包，请导航回到设备页，然后单击“部署示例模型”。
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/deploy-sample-model.png" alt-text="了解预生成的模型。":::
+    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-04-explore-prebuilt.png" alt-text="了解预生成的模型。":::
 
 1. 从库中选择一个示例模型，然后单击“部署到设备”。
 

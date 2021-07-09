@@ -6,14 +6,14 @@ author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/25/2020
+ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 789f493640e9795c58fd278db6cc0b11902c1cfa
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 0cbd7415f3b6f79a6c7231c7caa7ed947b9bdc24
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107925313"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110165949"
 ---
 开始使用适用于 Python 的异常检测器多变量客户端库。 请按照以下步骤操作，以使用服务提供的算法安装软件包。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
 
@@ -23,7 +23,7 @@ ms.locfileid: "107925313"
 * 当任何单独的时序都不能告知太多信息时，而你不得不查看所有信号来检测问题。
 * 使用数十到数百种不同类型的传感器对昂贵的物理资产进行预测维护，以测量系统运行状况的各个方面。
 
-[库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [包 (PyPi) ](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [示例代码](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py) | [Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)
+[库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [包 (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [示例代码](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,6 +36,15 @@ ms.locfileid: "107925313"
 
 
 ## <a name="setting-up"></a>设置
+
+### <a name="install-the-client-library"></a>安装客户端库
+
+安装 Python 后，可以通过以下命令安装客户端库：
+
+```console
+pip install pandas
+pip install --upgrade azure-ai-anomalydetector
+```
 
 ### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
@@ -52,20 +61,17 @@ from azure.core.credentials import AzureKeyCredential
 from azure.core.exceptions import HttpResponseError
 ```
 
-将密钥的变量创建为环境变量，同时创建时序数据文件的路径，以及订阅的 Azure 位置。 例如，`westus2`。
+将密钥的变量创建为环境变量，同时创建时序数据文件的路径，以及订阅的 Azure 位置。 
+
+> [!NOTE]
+> 始终可以在两个密钥之间选择一个使用。 这是为了实现安全的密钥轮换。 针对本快速入门，请使用第一个密钥。 
 
 ```python
 subscription_key = "ANOMALY_DETECTOR_KEY"
 anomaly_detector_endpoint = "ANOMALY_DETECTOR_ENDPOINT"
 ```
 
-### <a name="install-the-client-library"></a>安装客户端库
 
-在安装 Python 后，可以通过以下命令安装客户端库：
-
-```console
-pip install --upgrade azure-ai-anomalydetector
-```
 
 ## <a name="code-examples"></a>代码示例
 
@@ -81,9 +87,22 @@ pip install --upgrade azure-ai-anomalydetector
 
 若要实例化新的异常检测器客户端，需要传递异常探测器订阅密钥和关联的终结点。 我们还将建立一个数据源。  
 
-若要使用异常检测器多变量 API，我们需要在使用检测之前先训练自己的模型。 用于训练的数据是一批时序，每个时序应采用 CSV 格式，其中包含两列，即“时间戳”和“值”。 所有时序都应压缩为一个 zip 文件，并上传到 [Azure Blob 存储](../../../../storage/blobs/storage-blobs-introduction.md#blobs)。 默认情况下，文件名将用于表示时序的变量。 或者，如果你希望变量名称与 .zip 文件名不同，也可以在 zip 文件中包含一个额外的 meta.json 文件。 当我们生成 [blob SAS（共享访问签名）URL](../../../../storage/common/storage-sas-overview.md) 后，就可以使用 zip 文件的 URL 进行训练了。
+若要使用异常检测器多变量 API，需要先训练你自己的模型。 训练数据是一组满足以下要求的多个时间序列：
+
+每个时间序列都应是一个 CSV 文件，该文件有 2 列（且仅有 2 列），“timestamp”和“value”（全部小写）作为标题行。 “timestamp”值应符合 ISO 8601 标准；“value”可为整数，也可为带有任意小数位的小数。 例如：
+
+|timestamp | 值|
+|-------|-------|
+|2019-04-01T00:00:00Z| 5|
+|2019-04-01T00:01:00Z| 3.6|
+|2019-04-01T00:02:00Z| 4|
+|`...`| `...` |
+
+每个 CSV 文件应根据要用于模型训练的不同变量进行命名。 例如，“temperature.csv”和“humidity.csv”。 所有 CSV 文件都应压缩到一个没有任何子文件夹的 zip 文件中。 zip 文件可采用任何所需名称。 zip 文件应上传到 Azure Blob 存储。 为 zip 文件生成 Blob SAS（共享访问签名）URL 后，可使用该 URL 进行训练。 请查看此文档，了解如何从 Azure Blob 存储生成 SAS URL。
 
 ```python
+class MultivariateSample():
+
 def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None):
     self.sub_key = subscription_key
     self.end_point = anomaly_detector_endpoint
@@ -94,11 +113,7 @@ def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None
     self.ad_client = AnomalyDetectorClient(AzureKeyCredential(self.sub_key), self.end_point)
     # </client>
 
-    if not data_source:
-        # Datafeed for test only
-        self.data_source = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS"
-    else:
-        self.data_source = data_source
+    self.data_source = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS"
 ```
 
 ## <a name="train-the-model"></a>定型模型
@@ -176,6 +191,9 @@ def detect(self, model_id, start_time, end_time, max_tryout=500):
 
 ## <a name="export-model"></a>导出模型
 
+> [!NOTE]
+> export 命令用于允许在容器化环境中运行异常检测器多变量模型。 目前不支持多变量，但将来会添加支持。
+
 如果要导出模型，请使用 `export_model` 并传递要导出的模型的模型 ID：
 
 ```python
@@ -242,4 +260,14 @@ if __name__ == '__main__':
 使用 `python` 命令和文件名运行应用程序。
 
 
-[!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]
+## <a name="clean-up-resources"></a>清理资源
+
+如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与资源组相关联的任何其他资源。
+
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
+## <a name="next-steps"></a>后续步骤
+
+* [什么是异常检测器 API？](../../overview-multivariate.md)
+* [使用异常检测器 API 时的最佳做法](../../concepts/best-practices-multivariate.md)。 

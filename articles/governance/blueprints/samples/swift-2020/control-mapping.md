@@ -3,12 +3,12 @@ title: SWIFT CSP-CSCF v2020 蓝图示例控件
 description: SWIFT CSP-CSCF v2020 蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 9d385cfddae11b026cd93f49c1bc41ca48265a87
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5f534853fb34be75f5bafcf0eb5dc90cf5afcc1a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386170"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733960"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 蓝图示例的控制映射。
 
@@ -37,7 +37,7 @@ ms.locfileid: "106386170"
 - 审核不使用托管磁盘的 VM
 - Service Fabric 群集只应使用 Azure Active Directory 进行客户端身份验证
 
-## <a name="29a--account-management--account-monitoring--atypical-usage"></a>2.9A  帐户管理 | 帐户监视/异常使用
+## <a name="29a-account-management--account-monitoring--atypical-usage"></a>2.9A 帐户管理 | 帐户监视/异常使用
 
 实时 (JIT) 虚拟机访问会锁定发往 Azure 虚拟机的入站流量，降低遭受攻击的可能性，同时在需要时还可轻松连接到 VM。 所有访问虚拟机的 JIT 请求都记录在活动日志中，用于监视异常使用情况。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义，有助于你监视能够支持实时访问但尚未配置的虚拟机。
 
@@ -188,7 +188,7 @@ Azure 安全中心提供报告功能，使你能够实时洞察已部署的 Azur
 - 应在 SQL 服务器上启用高级数据安全性
 - 应启用 SQL 服务器上的审核
 - 应该修复虚拟机规模集上安全配置中的漏洞
-- 应该修复 SQL 数据库中的漏洞 
+- 应该修复 SQL 数据库中的漏洞
 - 应该修复计算机上安全配置中的漏洞
 
 ## <a name="13-denial-of-service-protection"></a>1.3 拒绝服务保护

@@ -3,16 +3,16 @@ title: CIS Microsoft Azure 基础基准检验 v1.3.0 蓝图示例
 description: CIS Microsoft Azure 基础基准检验 v1.3.0 蓝图示例的概述。 此蓝图示例可帮助客户评估特定控制要求。
 ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: 7030b4e9e9ddd3d5bbf1a5a7deaf1e1aa241b38e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 402d01d05a36bbcdcc36e60e16a05e51c9a8e30c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565990"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757666"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-v130-blueprint-sample"></a>CIS Microsoft Azure 基础基准检验 v1.3.0 蓝图示例
 
-CIS Microsoft Azure 基础基准检验 v1.3.0 蓝图示例使用 [Azure Policy](../../policy/overview.md) 提供监管防护措施，帮助你评估特定 CIS Microsoft Azure 基础基准检验 v1.3.0 建议。 对于 Azure 部署的任何必须实施 CIS Microsoft Azure 基础基准检验 v1.3.0 建议的体系结构，此蓝图可帮助客户为其部署一组核心策略。
+CIS Microsoft Azure 基础基准检验 v1.3.0 蓝图示例使用 [Azure Policy](../../policy/overview.md) 提供治理防护措施，帮助你评估特定 CIS Microsoft Azure 基础基准检验 v1.3.0 建议。 对于 Azure 部署的任何必须实施 CIS Microsoft Azure 基础基准检验 v1.3.0 建议的体系结构，此蓝图可帮助客户为其部署一组核心策略。
 
 ## <a name="recommendation-mapping"></a>建议映射
 
@@ -172,18 +172,18 @@ CIS Microsoft Azure 基础基准检验 v1.3.0 蓝图示例使用 [Azure Policy](
 |CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略的效果：监视 Azure 安全中心 Endpoint Protection 的缺失情况|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
 |CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 应启用搜索服务中的诊断日志|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
 |CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 应启用应用服务中的诊断日志|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
-|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
-|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/securityRules/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
-|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/securityRules/write)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
-|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/write)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
-|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Sql/servers/firewallRules/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
-|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Sql/servers/firewallRules/write)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
+|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/delete) |有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
+|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/securityRules/delete) |有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
+|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/securityRules/write) |有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
+|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Network/networkSecurityGroups/write) |有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
+|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Sql/servers/firewallRules/delete) |有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
+|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“管理”操作，应有活动日志警报(Microsoft.Sql/servers/firewallRules/write) |有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
 |CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 应只安装已批准的 VM 扩展|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
 |CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 应启用用于容器注册表的 Azure Defender|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
 |CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 应在 API 应用中使用托管标识|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
 |CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 应为 API 应用启用身份验证|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
-|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“策略”操作，应有活动日志警报(Microsoft.Authorization/policyAssignments/delete)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
-|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“策略”操作，应有活动日志警报(Microsoft.Authorization/policyAssignments/write)|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
+|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“策略”操作，应有活动日志警报(Microsoft.Authorization/policyAssignments/delete) |有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
+|CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 对于特定的“策略”操作，应有活动日志警报(Microsoft.Authorization/policyAssignments/write) |有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
 |CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 应为函数应用启用身份验证|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
 |CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 应启用 Data Lake Analytics 中的诊断日志|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |
 |CIS Microsoft Azure 基础基准检验 v1.3.0|策略分配|策略效果: 存储帐户应允许来自受信任的 Microsoft 服务的访问|有关效果的详细信息，请访问 [https://aka.ms/policyeffects](../../policy/concepts/effects.md) |

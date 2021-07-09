@@ -1,6 +1,6 @@
 ---
 title: 配置 Azure 密钥保管库防火墙和虚拟网络 - Azure 密钥保管库
-description: 配置 Key Vault 防火墙和虚拟网络的分步说明
+description: 了解密钥保管库网络设置
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 91cba45bc38bddc32aae036a029006c5004da058
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c8513faa74959b679eedcf95710c7915364504ca
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140634"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962706"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>配置 Azure Key Vault 防火墙和虚拟网络
 
-本文将提供有关如何配置 Azure Key Vault 防火墙的指导。 本文档将详细介绍 Key Vault 防火墙的不同配置，并提供有关如何将 Azure Key Vault 配置为与其他应用程序和 Azure 服务一起使用的分步说明。
+本文档将详细介绍密钥保管库防火墙的不同配置。 若要按照有关如何配置这些设置的分步说明操作，请遵循[此处](how-to-azure-key-vault-network-security.md)的指南 
 
 有关详细信息，请参阅[适用于 Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)。
 
@@ -28,14 +28,14 @@ ms.locfileid: "108140634"
 
 ### <a name="key-vault-firewall-disabled-default"></a>禁用 Key Vault 防火墙（默认值）
 
-默认情况下，当你创建新的密钥保管库时，Azure Key Vault 防火墙处于禁用状态。 所有应用程序和 Azure 服务都可以访问该密钥保管库并将请求发送到该密钥保管库。 请注意，此配置并不意味着任何用户都可以在你的密钥保管库上执行操作。 密钥保管库仍通过要求 Azure Active Directory 身份验证和访问策略权限来限制存储在密钥保管库中的机密、密钥和证书。 若要更详细地了解密钥保管库身份验证，请参阅[此处](./authentication-fundamentals.md)的密钥保管库身份验证基础知识文档。 有关详细信息，请参阅[访问防火墙保护下的 Azure 密钥保管库](./access-behind-firewall.md)。
+默认情况下，当你创建新的密钥保管库时，Azure Key Vault 防火墙处于禁用状态。 所有应用程序和 Azure 服务都可以访问该密钥保管库并将请求发送到该密钥保管库。 请注意，此配置并不意味着任何用户都可以在你的密钥保管库上执行操作。 密钥保管库仍通过要求 Azure Active Directory 身份验证和访问策略权限来限制存储在密钥保管库中的机密、密钥和证书。 若要更详细地了解密钥保管库身份验证，请参阅[此处](/azure/key-vault/general/authentication.md)的密钥保管库身份验证基础知识文档。 有关详细信息，请参阅[访问防火墙保护下的 Azure 密钥保管库](./access-behind-firewall.md)。
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>启用 Key Vault 防火墙（仅限受信任的服务）
 
 启用 Key Vault 防火墙时，系统将向你提供“允许受信任的 Microsoft 服务绕过此防火墙”的选项。 受信任的服务列表并不是全部的 Azure 服务。 例如，Azure DevOps 不在受信任的服务列表中。 这并不意味着未出现在受信任的服务列表中的服务不受信任或不安全。 受信任的服务列表中包含的服务符合这一条件：Microsoft 控制该服务上运行的所有代码。 由于用户可以在 Azure 服务（例如 Azure DevOps）中编写自定义代码，因此 Microsoft 不提供为该服务创建全面批准的选项。 此外，服务出现在受信任的服务列表中并不意味着所有方案都允许该服务。 
 
 若要确定你尝试使用的服务是否在受信任的服务列表中，请参阅[此处](./overview-vnet-service-endpoints.md#trusted-services)的以下文档。
-有关操作指南，请遵循此处有关[门户、Azure CLI 和 Powershell](#use-the-azure-portal) 的说明进行操作
+有关操作指南，请遵循此处有关[门户、Azure CLI 和 Powershell](how-to-azure-key-vault-network-security.md) 的说明执行操作
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>启用 Key Vault 防火墙（IPv4 地址和范围 - 静态 IP）
 
@@ -75,97 +75,6 @@ ms.locfileid: "108140634"
 > * 最多允许 127 条虚拟网络规则和 127 条 IPv4 规则。 
 > * IP 网络规则仅适用于公共 IP 地址。 IP 规则不允许为专用网络保留的 IP 地址范围（如 RFC 1918 中所定义）。 专用网络包括以 **10.** 、**172.16-31** 和 **192.168.** 开头的地址。 
 > * 目前仅支持 IPv4 地址。
-
-## <a name="use-the-azure-portal"></a>使用 Azure 门户
-
-下面介绍了如何使用 Azure 门户配置 Key Vault 防火墙和虚拟网络：
-
-1. 浏览要保护的 Key Vault。
-2. 选择“网络”，然后选择“防火墙和虚拟网络”信息栏 。
-3. 在“允许的访问来源”下，选择“所选网络”。
-4. 若要将现有虚拟网络添加到防火墙和虚拟网络规则，请选择“+ 添加现有虚拟网络”。
-5. 在打开的新边栏选项卡中，选择可访问此 Key Vault 的订阅、虚拟网络和子网。 如果虚拟网络和选择的子网没有启用服务终结点，确认想要启用服务终结点，并选择“启用”。 此操作最多可能需要 15 分钟才能生效。
-6. 在“IP 网络”下，可通过采用 [CIDR（无类域间路由）表示法](https://tools.ietf.org/html/rfc4632)键入 IPv4 地址范围或单个 IP 地址来添加 IPv4 地址范围。
-7. 如果要允许 Microsoft 信任的服务跳过 Key Vault 防火墙，请选择“是”。 有关当前 Key Vault 信任的服务的完整列表，请参阅以下链接。 [Azure Key Vault 信任的服务](./overview-vnet-service-endpoints.md#trusted-services)
-7. 选择“保存”。
-
-还可添加新的虚拟网络和子网，然后通过选择“+ 添加新的虚拟网络”，为新创建的虚拟网络和子网启用服务终结点。 然后遵照提示操作。
-
-## <a name="use-the-azure-cli"></a>使用 Azure CLI 
-
-下面介绍了如何使用 Azure CLI 配置 Key Vault 防火墙和虚拟网络
-
-1. [安装 Azure CLI](/cli/azure/install-azure-cli) 并[登录](/cli/azure/authenticate-azure-cli)。
-
-2. 列出可用的虚拟网络规则。 如果尚未设置此 Key Vault 的任何规则，该列表将为空。
-   ```azurecli
-   az keyvault network-rule list --resource-group myresourcegroup --name mykeyvault
-   ```
-
-3. 在现有虚拟网络和子网上启用 Key Vault 的服务终结点。
-   ```azurecli
-   az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.KeyVault"
-   ```
-
-4. 为虚拟网络和子网添加网络规则。
-   ```azurecli
-   subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
-   az keyvault network-rule add --resource-group "demo9311" --name "demo9311premium" --subnet $subnetid
-   ```
-
-5. 添加允许通信的 IP 地址范围。
-   ```azurecli
-   az keyvault network-rule add --resource-group "myresourcegroup" --name "mykeyvault" --ip-address "191.10.18.0/24"
-   ```
-
-6. 如果所有受信服务都可以访问此 Key Vault，请将 `bypass` 设置为 `AzureServices`。
-   ```azurecli
-   az keyvault update --resource-group "myresourcegroup" --name "mykeyvault" --bypass AzureServices
-   ```
-
-7. 将默认操作设置为 `Deny`，以启用网络规则。
-   ```azurecli
-   az keyvault update --resource-group "myresourcegroup" --name "mekeyvault" --default-action Deny
-   ```
-
-## <a name="use-azure-powershell"></a>使用 Azure PowerShell
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-下面介绍了如何使用 PowerShell 配置 Key Vault 防火墙和虚拟网络：
-
-1. 安装最新的 [Azure PowerShell](/powershell/azure/install-az-ps) 并[登录](/powershell/azure/authenticate-azureps)。
-
-2. 列出可用的虚拟网络规则。 如果尚未设置此密钥保管库的任何规则，该列表将为空。
-   ```powershell
-   (Get-AzKeyVault -VaultName "mykeyvault").NetworkAcls
-   ```
-
-3. 在现有虚拟网络和子网上启用 Key Vault 的服务终结点。
-   ```powershell
-   Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
-   ```
-
-4. 为虚拟网络和子网添加网络规则。
-   ```powershell
-   $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
-   Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
-   ```
-
-5. 添加允许通信的 IP 地址范围。
-   ```powershell
-   Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
-   ```
-
-6. 如果所有受信服务都可以访问此 Key Vault，请将 `bypass` 设置为 `AzureServices`。
-   ```powershell
-   Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
-   ```
-
-7. 将默认操作设置为 `Deny`，以启用网络规则。
-   ```powershell
-   Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
-   ```
 
 ## <a name="references"></a>参考
 * ARM 模板参考：[Azure Key Vault ARM 模板参考](/azure/templates/Microsoft.KeyVault/vaults)

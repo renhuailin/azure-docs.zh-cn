@@ -6,16 +6,16 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-azcli-net-ps
-ms.openlocfilehash: aa5d24229bae0e459471dc40ca375d42ccc1405c
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b24fbcafa917e4577dc0b13b83e83cf105174332
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293219"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113113138"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>快速入门：创建和管理通信服务资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "108293219"
 
 
 > [!WARNING]
-> 请注意，虽然在多个地理区域提供通信服务，但若要获得电话号码，资源必须有一个设置为“美国”的数据位置。 另请注意，在公共预览版期间，通信资源无法转移到其他订阅。
+> 请注意，虽然在多个地理区域提供通信服务，但若要获得电话号码，资源必须有一个设置为“美国”的数据位置。 另请注意，不能同时创建一个资源组作为 Azure 通信服务的资源。 创建资源时，必须使用已创建的资源组。
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]
@@ -118,9 +118,12 @@ export COMMUNICATION_SERVICES_CONNECTION_STRING="<yourconnectionstring>"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
+如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 
 
-如果在删除资源时已为资源分配了任何电话号码，则会同时自动从资源释放电话号码。
+如果在删除资源时已为资源分配了任何电话号码，则会同时自动从资源释放电话号码。 
+
+> [!Note]
+> 资源删除是永久性的。如果删除资源，则无法恢复任何数据，包括事件网格筛选器、电话号码或与资源相关的其他数据。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f83948fe0805229c0f01accb9e2b51112da599aa
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95021960"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838170"
 ---
 # <a name="speech-service-for-telephony-data"></a>用于处理电话数据的语音服务
 
@@ -103,7 +103,7 @@ ms.locfileid: "95021960"
 
 某些企业需要实时听录对话。 实时听录可用于识别关键字、针对对话相关的内容和资源触发搜索、监视情绪、改善可访问性，或者为听不懂本地语言的客户和座席提供翻译。
 
-对于需要实时听录的场景，我们建议使用[语音 SDK](speech-sdk.md)。 目前，语音转文本支持 [20 多种语言](language-support.md)，该 SDK 适用于 C++、C#、Java、Python、Node.js、Objective-C 和 JavaScript。 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) 上提供了适用于每种语言的示例。 有关最新消息和更新，请参阅[发行说明](releasenotes.md)。
+对于需要实时听录的场景，我们建议使用[语音 SDK](speech-sdk.md)。 目前，语音转文本支持 [20 多种语言](language-support.md)，该 SDK 适用于 C++、C#、Java、Python、JavaScript、Objective-C 和 Go。 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) 上提供了适用于每种语言的示例。 有关最新消息和更新，请参阅[发行说明](releasenotes.md)。
 
 在内部，我们使用上述技术来分析实时发生的 Microsoft 客户呼叫，如下图所示。
 

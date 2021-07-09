@@ -3,23 +3,21 @@ title: 适用于 SQL 的 Azure Defender - 优点和功能
 description: 了解适用于 SQL 的 Azure Defender 的优点和功能。
 author: memildin
 ms.author: memildin
-ms.date: 12/13/2020
+ms.date: 05/27/2021
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 532c46c50d0b422946af649801e43904b4b6ed7d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90129acd53bf077c325660c0c4d3091ba1ee084d
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096864"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572114"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 简介
 
-适用于 SQL 的 Azure Defender 包括两个 Azure Defender 计划，这些计划可扩展 Azure 安全中心的[数据安全包](../azure-sql/database/azure-defender-for-sql.md)以保护任何位置的数据库及其数据。 
-
-> [!VIDEO https://www.youtube.com/embed/V7RdB6RSVpc]
+适用于 SQL 的 Azure Defender 包括两个 Azure Defender 计划，这些计划可扩展 Azure 安全中心的[数据安全包](../azure-sql/database/azure-defender-for-sql.md)以保护任何位置的数据库及其数据。 Azure Defender for SQL 具有以下功能：发现并减少潜在的数据库漏洞，并检测可能表明数据库受到威胁的异常活动。
 
 ## <a name="availability"></a>可用性
 
@@ -49,13 +47,31 @@ ms.locfileid: "102096864"
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 有哪些优点？
 
-这两项计划包括用于识别和减少潜在的数据库漏洞的功能，以及用于检测可能表明数据库有威胁的异常活动的功能：
+这两项计划包括用于识别和减少潜在的数据库漏洞的功能，以及用于检测可能表明数据库有威胁的异常活动的功能。
 
-- [漏洞评估](../azure-sql/database/sql-vulnerability-assessment.md) - 一种扫描服务，用于发现、跟踪并帮助修正潜在的数据库漏洞。 评估扫描概述了 SQL 计算机的安全状态以及任何安全发现结果的详细信息。
+漏洞评估服务可发现、跟踪并帮助你修正潜在的数据库漏洞。 评估扫描概述了 SQL 计算机的安全状态以及任何安全发现结果的详细信息。
 
-- [高级威胁防护](../azure-sql/database/threat-detection-overview.md) -一种检测服务，用于持续监视 SQL 服务器的威胁，例如 SQL 注入、暴力攻击和特权滥用。 此服务在 Azure 安全中心提供面向操作的安全警报，其中包括可疑活动的详细信息、有关如何减少威胁的指导以及使用 Azure Sentinel 继续调查的选项。 
-    > [!TIP]
-    > [在警报参考页中](alerts-reference.md#alerts-sql-db-and-warehouse)查看 SQL Server 的安全警报列表。
+- 详细了解 [Azure SQL 数据库的漏洞评估](../azure-sql/database/sql-vulnerability-assessment.md)。
+- 详细了解[计算机上 Azure SQL 服务器的漏洞评估](defender-for-sql-on-machines-vulnerability-assessment.md)。
+
+高级威胁防护服务持续监视 SQL 服务器的威胁，例如 SQL 注入、暴力攻击和特权滥用。 此服务在 Azure 安全中心提供面向操作的安全警报，其中包括可疑活动的详细信息、有关如何减少威胁的指导以及使用 Azure Sentinel 继续调查的选项。 详细了解[高级威胁防护](../azure-sql/database/threat-detection-overview.md)。
+
+ > [!TIP]
+ > [在警报参考页中](alerts-reference.md#alerts-sql-db-and-warehouse)查看 SQL Server 的安全警报列表。
+
+
+## <a name="is-there-a-performance-impact-from-deploying-azure-defender-for-sql-on-machines"></a>在计算机上部署 Azure Defender for SQL 是否会影响性能？
+
+针对计算机上的 Azure Defender for SQL 的重点显然是安全性。 但我们同样关心你的业务，因此会优先考虑性能，以确保对 SQL 服务器的影响降至最低。 
+
+这项服务有一个拆分体系结构，用于平衡数据上传、速度与性能： 
+
+- 我们的一些检测器在计算机上运行，具有实时速度优势
+- 其他一些检测器则在云中运行，以分担计算机繁重的计算负载
+
+我们的解决方案实验室测试（与基准负载相比较）显示，峰值部分的平均 CPU 使用率为 3%。 对当前用户的遥测数据分析显示，对 CPU 和内存使用情况的影响可以忽略不计。
+
+当然，性能始终因环境、计算机和负载而异。 上述声明和数字作为一般准则提供，而不是对任何个别部署的保证。
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>适用于 SQL 的 Azure Defender 提供哪种类型的警报？
@@ -75,3 +91,4 @@ ms.locfileid: "102096864"
 本文介绍了适用于 SQL 的 Azure Defender。 若要使用所描述的服务：
 
 - 在计算机上使用 Azure Defender for SQL 服务器[扫描 SQL 服务器是否存在漏洞](defender-for-sql-usage.md)
+- 有关 Azure Defender for SQL 的演示，请参阅 [Azure Defender for SQL 如何随时随地保护 SQL 服务器](https://www.youtube.com/watch?v=V7RdB6RSVpc)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: ce6cb60754ed0afae27c5b5d316a7158961b55a3
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 5c301b42c4467a10063da329e885185de2815242
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323368"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032350"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
 
@@ -168,9 +168,9 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service-preview"></a>将可抵达范围和充电站上传到 Azure Maps 数据服务（预览版）
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>将可抵达范围和充电站上传到 Azure Maps 数据服务
 
-你需要在地图上直观显示电动车的充电站和最大可抵达范围边界。 为此，请将边界数据和充电站数据作为 geojson 对象上传到 Azure Maps 数据服务（预览版）。 可使用[数据上传 API](/rest/api/maps/data/uploadpreview)。 
+你需要在地图上直观显示电动车的充电站和最大可抵达范围边界。 为此，请将边界数据和充电站数据作为 geojson 对象上传到 Azure Maps 数据服务。 可使用[数据上传 API](/rest/api/maps/data-v2/upload-preview)。 
 
 若要将边界和充电站数据上传到 Azure Maps 数据服务，请运行以下两个单元：
 
@@ -191,8 +191,8 @@ rangeData = {
   ]
 }
 
-# Upload the range data to Azure Maps Data service (Preview).
-uploadRangeResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
+# Upload the range data to Azure Maps Data service.
+uploadRangeResponse = await session.post("https://us.atlas.microsoft.com/mapData?subscription-key={}&api-version=2.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
 
 rangeUdidRequest = uploadRangeResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
 
@@ -220,8 +220,8 @@ poiData = {
   ]
 }
 
-# Upload the electric vehicle charging station data to Azure Maps Data service (Preview).
-uploadPOIsResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
+# Upload the electric vehicle charging station data to Azure Maps Data service.
+uploadPOIsResponse = await session.post("https://us.atlas.microsoft.com/mapData?subscription-key={}&api-version=2.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
 
 poiUdidRequest = uploadPOIsResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
 
@@ -333,13 +333,13 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>直观显示路线
 
-为了帮助直观显示路线，首先请将路线数据作为 geojson 对象上传到 Azure Maps 数据服务（预览版）。 为此，可使用 Azure Maps 的[数据上传 API](/rest/api/maps/data/uploadpreview)。 然后调用呈现服务[获取地图图像 API](/rest/api/maps/render/getmapimage)，在地图上呈现并直观显示路线。
+为了帮助直观显示路线，首先请将路线数据作为 geojson 对象上传到 Azure Maps 数据服务。 为此，可使用 Azure Maps 的[数据上传 API](/rest/api/maps/data-v2/upload-preview)。 然后调用呈现服务[获取地图图像 API](/rest/api/maps/render/getmapimage)，在地图上呈现并直观显示路线。
 
 若要获取地图上呈现的路线图像，请运行以下脚本：
 
 ```python
-# Upload the route data to Azure Maps Data service (Preview).
-routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
+# Upload the route data to Azure Maps Data service .
+routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData?subscription-key={}&api-version=2.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
 
 udidRequestURI = routeUploadRequest.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
 
@@ -390,7 +390,7 @@ display(Image(staticMapImage))
 
 * [获取路线范围](/rest/api/maps/route/getrouterange)
 * [在几何结构中发布搜索](/rest/api/maps/search/postsearchinsidegeometry)
-* [数据上传](/rest/api/maps/data/uploadpreview)
+* [数据上传](/rest/api/maps/data-v2/upload-preview)
 * [呈现器 - 获取地图图像](/rest/api/maps/render/getmapimage)
 * [发布路线矩阵](/rest/api/maps/route/postroutematrix)
 * [获取路线方向](/rest/api/maps/route/getroutedirections)

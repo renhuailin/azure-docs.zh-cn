@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18
-ms.openlocfilehash: 60b7cfa744de244015f99a2e42070eb3430878c7
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 916abcb702f46e5b18a403369bd2ed4dfe5b8473
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015656"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695287"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -71,7 +71,7 @@ ms.locfileid: "108015656"
 - 参与者和成本管理参与者 - 可以创建、修改或删除自己的预算。 可以修改其他人创建的预算的预算金额。
 - 读者和成本管理读者 - 可以查看他们有权访问的预算。
 
-有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。 若要详细了解如何分配对成本管理数据的权限，请参阅[分配对成本管理数据的访问权限](./assign-access-acm-data.md)。
+**有关范围的详细信息，包括为企业协议和 Microsoft 客户协议范围配置导出所需的访问权限，请参阅[了解和使用范围](understand-work-scopes.md)** 。 若要详细了解如何分配对成本管理数据的权限，请参阅[分配对成本管理数据的访问权限](./assign-access-acm-data.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Always Encrypted 文档
+summary: 查找有关 Always Encrypted 的文档
+metadata:
+  title: Always Encrypted 文档
+  description: 查找用于 SQL Server、Azure SQL 数据库和 Azure SQL 托管实例的 Always Encrypted 文档
+  ms.service: sql-db-mi
+  ms.subservice: security
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: landing-page
+  author: VanMSFT
+  ms.author: vanto
+  ms.reviewer: 
+  ms.date: 01/15/2021
+  ms.openlocfilehash: 5abf79ca2e650f45f0ad29c34ab799d660c015f8
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111965467"
+landingContent:
+- title: Always Encrypted 概述
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Always Encrypted？
+      url: /sql/relational-databases/security/encryption/always-encrypted-database-engine
+- title: Always Encrypted 概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Always Encrypted 的密钥管理
+      url: /sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted
+    - text: Always Encrypted 加密
+      url: /sql/relational-databases/security/encryption/always-encrypted-cryptography
+- title: Always Encrypted 教程
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 Azure 密钥管理库配置 Always Encrypted
+      url: always-encrypted-azure-key-vault-configure.md
+    - text: 使用 Windows 证书存储配置 Always Encrypted
+      url: always-encrypted-certificate-store-configure.md
+- title: 配置 Always Encrypted
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 PowerShell 配置 Always Encrypted
+      url: /sql/relational-databases/security/encryption/configure-always-encrypted-using-powershell
+    - text: 使用 SQL Server Management Studio 配置 Always Encrypted
+      url: /sql/relational-databases/security/encryption/configure-always-encrypted-using-sql-server-management-studio
+- title: 管理 Always Encrypted 密钥
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建并存储 Always Encrypted 的列主密钥
+      url: /sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted
+    - text: 使用 SQL Server Management Studio 预配 Always Encrypted 密钥
+      url: /sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-ssms
+    - text: 使用 SQL Server Management Studio 轮换 Always Encrypted 密钥
+      url: /sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-ssms
+    - text: 使用 PowerShell 预配 Always Encrypted 密钥
+      url: /sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell
+    - text: 使用 PowerShell 轮换 Always Encrypted 密钥
+      url: /sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell
+- title: 配置 Always Encrypted 列
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Always Encrypted 向导配置列加密
+      url: /sql/relational-databases/security/encryption/always-encrypted-wizard
+    - text: 使用 Always Encrypted 和 DAC 包配置列加密
+      url: /sql/relational-databases/security/encryption/configure-always-encrypted-using-dacpac
+- title: 查询 Always Encrypted 列
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 通过 SQL Server Management Studio 查询使用 Always Encrypted 的列
+      url: /sql/relational-databases/security/encryption/always-encrypted-query-columns-ssms
+    - text: 通过 Azure Data Studio 查询使用 Always Encrypted 的列
+      url: /sql/relational-databases/security/encryption/always-encrypted-query-columns-ads
+- title: 使用 Always Encrypted 迁移数据
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 导出和导入使用 Always Encrypted 的数据库
+      url: /sql/relational-databases/security/encryption/always-encrypted-migrate-using-bacpac
+    - text: 备份和还原使用 Always Encrypted 的数据库
+      url: /sql/relational-databases/security/encryption/always-encrypted-migrate-using-backup-restore
+    - text: 通过 SQL Server 导入和导出向导在使用 Always Encrypted 的列之间迁移数据
+      url: /sql/relational-databases/security/encryption/always-encrypted-migrate-using-import-export-wizard
+    - text: 使用 Always Encrypted 将加密数据批量加载到列中
+      url: /sql/relational-databases/security/encryption/migrate-sensitive-data-protected-by-always-encrypted
+    - text: 通过 Azure 数据工厂使用 Always Encrypted
+      url: ../../data-factory/connector-azure-sql-database.md#using-always-encrypted
+- title: 使用 Always Encrypted 开发应用程序
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Always Encrypted 开发应用程序
+      url: /sql/relational-databases/security/encryption/always-encrypted-client-development

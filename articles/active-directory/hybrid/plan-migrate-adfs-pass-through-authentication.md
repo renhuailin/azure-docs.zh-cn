@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a10c4c0e6e40636e4803e054155d6fdaa12a9366
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ba41c8e7c63888212a9a59c33e0d7efb2b9fb54d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96858546"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965962"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>从联合身份验证迁移到 Azure Active Directory 的直通身份验证
 
@@ -144,7 +144,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 如果用户身份验证在企业网络内部进行，则 AD FS 会颁发 **InsideCorporateNetwork** 声明。 然后，可将此声明传递给 Azure AD。 此声明用于根据用户的网络位置绕过多重身份验证。 若要了解如何确定此功能当前是否在 AD FS 中可用，请参阅[联合用户的受信任 IP](../authentication/howto-mfa-adfs.md)。
 
-将域转换为直通身份验证后，**InsideCorporateNetwork** 声明不再可用。 可以使用 [Azure AD 中的命名位置](../reports-monitoring/quickstart-configure-named-locations.md)来取代此功能。
+将域转换为直通身份验证后，**InsideCorporateNetwork** 声明不再可用。 可以使用 [Azure AD 中的命名位置](../conditional-access/location-condition.md)来取代此功能。
 
 配置命名位置后，必须更新配置为包含或排除网络“所有受信任位置”或“MFA 信任的 IP”值的所有条件访问策略，以反映新的命名位置。 
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8a0294e205dd8a22f9847140511cbce634322c4a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3c9d1b7152133bf03b8bcdba9a7b97e5bef4a648
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112285222"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028282"
 ---
 # <a name="backend-pool-management"></a>后端池管理
 后端池是负载均衡器的一个关键组成部分。 后端池定义将在给定负载均衡规则下提供流量的资源的组。
@@ -161,7 +161,7 @@ az vm create \
 
 按照此[快速入门资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-standard-create/)部署负载均衡器和虚拟机，并通过网络接口将虚拟机添加到后端池。
 
-按照此[快速入门资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/load-balancer-ip-configured-backend-pool)部署负载均衡器和虚拟机，并通过 IP 地址将虚拟机添加到后端池。
+按照此[快速入门资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-ip-configured-backend-pool)部署负载均衡器和虚拟机，并通过 IP 地址将虚拟机添加到后端池。
 
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>通过 IP 地址和虚拟网络配置后端池

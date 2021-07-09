@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a0584bea6fab1d49c552785d093e7e2df823b11b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 82c24a38d8b693bb931be75b3be5d3bfaaa2d38f
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205820"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615654"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教程：扩建端到端解决方案
 
@@ -42,13 +42,13 @@ ms.locfileid: "108205820"
 
 首先，你将创建 Azure 数字孪生实例（图中的 A 部分），然后设置传入数字孪生的遥测数据流（箭头 B），再设置通过孪生图进行的数据传播（箭头 C）  。
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="完整的建筑方案图。描绘了从设备流向 IoT 中心的数据，该数据通过 Azure 函数（箭头 B）传到 Azure 数字孪生实例（A 部分），然后通过事件网格传到另一个 Azure 函数进行处理（箭头 C）":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="完整建筑方案图，其中显示了通过各种 Azure 服务在设备和 Azure 数字孪生之间流动的数据。":::
 
 为逐步完成此方案，需要与先前下载的预先编写的示例应用程的组件进行交互。
 
 下面是建筑方案 AdtSampleApp 示例应用实现的组件：
 * 设备身份验证 
-* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 用法示例（参见 CommandLoop.cs）
+* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 用法示例（参见 CommandLoop.cs）
 * 调用 Azure 数字孪生 API 的控制台接口
 * SampleClientApp - Azure 数字孪生解决方案示例
 * SampleFunctionsApp - Azure Functions 应用，可将 Azure 数字孪生图更新为来自 IoT 中心和 Azure 数字孪生事件的遥测结果
@@ -57,11 +57,11 @@ ms.locfileid: "108205820"
 
 首先，你将使用示例项目中的 AdtSampleApp 解决方案构建端到端方案的 Azure 数字孪生部分（A 部分）：
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="完整建筑方案图的摘录，其中突出显示了 A 部分（Azure 数字孪生实例）":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="完整建筑方案图的摘录关系图，其中突出显示了“Azure 数字孪生实例”部分。":::
 
 在打开 AdtE2ESample 项目的 Visual Studio 窗口中，使用工具栏中的此按钮运行该项目：
 
-:::image type="content" source="media/tutorial-end-to-end/start-button-sample.png" alt-text="Visual Studio 开始按钮（SampleClientApp 项目）":::
+:::image type="content" source="media/tutorial-end-to-end/start-button-sample.png" alt-text="Visual Studio 开始按钮的屏幕截图，其中打开了 SampleClientApp 项目。":::
 
 控制台窗口随即打开，执行身份验证，然后等待命令。 在此控制台中，运行下一个命令来实例化示例 Azure 数字孪生解决方案。
 
@@ -72,11 +72,11 @@ ms.locfileid: "108205820"
 SetupBuildingScenario
 ```
 
-此命令的输出是一系列确认消息，因为 Azure 数字孪生实例中创建和连接了 3 个[数字孪生](concepts-twins-graph.md)：名为 floor1 的楼层、名为 room21 的房间和名为 thermostat67 的温度传感器  。 这些数字孪生表示真实环境中可能存在的实体。
+此命令的输出是一系列确认消息，因为 Azure 数字孪生实例中创建和连接了 3 个[数字孪生](concepts-twins-graph.md)：名为 floor1 的楼层、名为 room21 的房间和名为 thermostat67 的温度传感器。 这些数字孪生表示真实环境中可能存在的实体。
 
 它们通过关系连接到以下孪生图。 孪生图表示整个环境，包括实体之间的交互和关联方式。
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-graph.png" alt-text="该图显示 floor1 包含 room21 且 room21 包含 thermostat67" border="false":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-graph.png" alt-text="显示 floor1 包含 room21 且 room21 包含 thermostat67 的示意图。" border="false":::
 
 通过运行以下命令可以验证孪生是否已创建，这样会查询已连接的 Azure 数字孪生实例中所包含的所有数字孪生：
 
@@ -85,7 +85,7 @@ Query
 ```
 
 >[!TIP]
-> 此简化方法作为 AdtE2ESample 项目的一部分提供。 在此示例代码的上下文外，你可以随时使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](how-to-use-cli.md)查询实例中的所有孪生体。
+> 此简化方法作为 AdtE2ESample 项目的一部分提供。 在此示例代码的上下文外，你可以随时使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)查询实例中的所有孪生体。
 >
 > 下面是完整的查询正文，用于获取实例中的所有数字孪生体：
 > 
@@ -109,11 +109,11 @@ Query
 
 在“解决方案资源管理器”窗格中，展开“SampleFunctionsApp”>“依赖项”。 右键选择“包”，并选择“管理 NuGet 包...” 。
 
-:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio：管理 SampleFunctionsApp 项目的 NuGet 包" border="false":::
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio 的屏幕截图，其中显示了 SampleFunctionsApp 项目的“管理 NuGet 包”菜单按钮。" border="false":::
 
-这将打开 NuGet 包管理器。 选择“更新”选项卡，如果有任何要更新的包，请选中此复选框以“选择所有的包” 。 然后点击“更新”。
+这将打开 NuGet 包管理器。 选择“更新”选项卡，如果有任何要更新的包，请选中此复选框以“选择所有的包” 。 然后选择“更新”。
 
-:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio：选择更新 NuGet 包管理器中的所有包":::
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio 的屏幕截图，其中显示了如何选择在 NuGet 包管理器中更新所有包。":::
 
 ### <a name="publish-the-app"></a>发布应用
 
@@ -134,14 +134,14 @@ Query
 1. 使用以下命令查看函数的系统托管标识的详细信息。 记下输出中的 principalId 字段。
 
     ```azurecli-interactive 
-    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-function-app-name>   
     ```
 
     >[!NOTE]
     > 如果结果为空而不是显示标识详细信息，请使用以下命令为函数创建新的系统托管标识：
     > 
     >```azurecli-interactive    
-    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >az functionapp identity assign --resource-group <your-resource-group> --name <your-App-Service-function-app-name>  
     >```
     >
     > 然后，输出将显示标识的详细信息，包括下一步所需的 principalId 值。 
@@ -161,7 +161,7 @@ Query
 运行下面的命令，并在占位符中填入资源的详细信息。
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
+az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-function-app-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
 ```
 
 输出是 Azure 函数的设置列表，其中现在应包含一个名为 ADT_SERVICE_URL 的条目。
@@ -175,7 +175,7 @@ Azure 数字孪生图将由真实设备的遥测驱动。
 
 该过程发生在端到端方案的这一部分（箭头 B）：
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="完整建筑方案图的摘录，其中突出显示了箭头 B（Azure 数字孪生前的元素：设备、IoT 中心和第一个 Azure 函数）":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="完整建筑方案图的摘录关系图，其中突出显示了展示 Azure 数字孪生前的元素的部分。":::
 
 下面是设置此设备连接需要完成的操作：
 1. 创建将管理模拟设备的 IoT 中心
@@ -191,7 +191,7 @@ Azure 数字孪生旨在搭配 [IoT 中心](../iot-hub/about-iot-hub.md)使用�
 在 Azure Cloud Shell 中，使用此命令创建新的 IoT 中心：
 
 ```azurecli-interactive
-az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku S1
+az iot hub create --name <name-for-your-IoT-hub> --resource-group <your-resource-group> --sku S1
 ```
 
 此命令的输出是有关已创建的 IoT 中心的信息。
@@ -206,22 +206,22 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 在 [Azure 门户](https://portal.azure.com/)中，导航到新创建的 IoT 中心，方法是在顶部搜索栏中搜索其名称。 从中心菜单中选择“事件”，然后选择“+ 事件订阅” 。
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-1.png" alt-text="Azure 门户：IoT 中心事件订阅":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-1.png" alt-text="Azure 门户的屏幕截图，其中显示了 IoT 中心事件订阅。":::
 
 此时将显示“创建事件订阅”页。
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure 门户：创建事件订阅":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure 门户的屏幕截图，其中显示了如何创建事件订阅。":::
 
 按如下所示填写字段（默认填充的字段未提及）：
 * “事件订阅详细信息” > “名称”：为事件订阅指定名称。
 * “主题详细信息” > “系统主题名称”：为系统主题提供一个名称。 
 * “事件类型” > “筛选事件类型”：从菜单选项中选择“设备遥测”。
 * “终结点详细信息” > “终结点类型”：从菜单选项中选择“Azure 函数”。
-* “终结点详细信息” > “终结点”：点击“选择终结点”链接。 这会打开“选择 Azure 函数”窗口：:::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure 门户事件订阅：选择 Azure 函数" border="false":::
+* “终结点详细信息” > “终结点”：选择“选择终结点”链接。 这会打开“选择 Azure 函数”窗口：:::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure 门户事件订阅的屏幕截图，其中显示了用于选择 Azure 函数的窗口。" border="false":::
     - 填写“订阅”、“资源组”、“函数应用”和“函数”(ProcessHubToDTEvents)   。 在选择订阅后，其中一些可能会自动填充。
-    - 点击“确认所选内容”。
+    - 选择“确认所选内容”  。
 
-返回“创建事件订阅”页，点击“创建”。
+返回“创建事件订阅”页，选择“创建”。 
 
 ### <a name="register-the-simulated-device-with-iot-hub"></a>在 IoT 中心注册模拟设备 
 
@@ -230,7 +230,7 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 在 Azure Cloud Shell 中，使用以下命令在 IoT 中心创建设备：
 
 ```azurecli-interactive
-az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> -g <your-resource-group>
+az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> --resource-group <your-resource-group>
 ```
 
 输出是已创建设备的相关信息。
@@ -242,7 +242,7 @@ az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-
 首先，使用以下命令获取 IoT 中心连接字符串：
 
 ```azurecli-interactive
-az iot hub connection-string show -n <your-IoT-hub-name>
+az iot hub connection-string show --hub-name <your-IoT-hub-name>
 ```
 
 然后，使用此命令获取设备连接字符串：
@@ -269,17 +269,17 @@ deviceConnectionString = <your-device-connection-string>
 
 现在，要查看已设置的数据模拟结果，请在工具栏中用此按钮运行 DeviceSimulator 项目：
 
-:::image type="content" source="media/tutorial-end-to-end/start-button-simulator.png" alt-text="Visual Studio 开始按钮（DeviceSimulator 项目）":::
+:::image type="content" source="media/tutorial-end-to-end/start-button-simulator.png" alt-text="Visual Studio 开始按钮的屏幕截图，其中打开了 DeviceSimulator 项目。":::
 
 控制台窗口将打开并显示模拟的温度遥测消息。 这些消息将发送到 IoT 中心，由 Azure 函数选取并处理。
 
-:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="设备模拟器的控制台输出，其中显示了正在发送的温度遥测":::
+:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="设备模拟器的控制台输出的屏幕截图，其中显示了正在发送的温度遥测。":::
 
 你无需此控制台中执行任何其他操作，但在完成后续步骤时，需要让其保持运行状态。
 
 ### <a name="see-the-results-in-azure-digital-twins"></a>查看 Azure 数字孪生中的结果
 
-之前发布的 ProcessHubToDTEvents 函数会侦听 IoT 中心数据，并调用 Azure 数字孪生 API 来更新 thermostat67 孪生上的“温度”属性  。
+之前发布的 ProcessHubToDTEvents 函数会侦听 IoT 中心数据，并调用 Azure 数字孪生 API 来更新 thermostat67 孪生上的“温度”属性。
 
 要查看 Azure 数字孪生端的数据，请转到打开 AdtE2ESample 项目的 Visual Studio 窗口，并运行该项目。
 
@@ -294,7 +294,7 @@ ObserveProperties thermostat67 Temperature
 >[!NOTE]
 > 可能需要几秒钟才能将设备中的数据传播到孪生体。 在数据开始到达之前，前几个温度读数可能显示为 0。
 
-:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="控制台输出，其中显示来自数字孪生 thermostat67 的温度消息日志":::
+:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="控制台输出的屏幕截图，其中显示了来自数字孪生 thermostat67 的温度消息日志。":::
 
 验证此操作成功后，就可以停止运行这两个项目。 让 Visual Studio 窗口保持打开状态，因为在本教程的其余部分将继续使用它们。
 
@@ -302,9 +302,9 @@ ObserveProperties thermostat67 Temperature
 
 到本教程的此阶段，你已了解如何通过外部设备数据更新 Azure 数字孪生。 接下来，你将了解如何通过 Azure 数字孪生图传播对某个数字孪生的更改，换句话说，就是如何从服务内部数据更新孪生。
 
-为此，在更新已连接的 Thermostat 孪生时，你将使用 ProcessDTRoutedData Azure 函数来更新 Room 孪生  。 该过程发生在端到端方案的这一部分（箭头 C）：
+为此，在更新已连接的 Thermostat 孪生时，你将使用 ProcessDTRoutedData Azure 函数来更新 Room 孪生。 该过程发生在端到端方案的这一部分（箭头 C）：
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="完整建筑方案图的摘录，其中突出显示了箭头 C（Azure 数字孪生后的元素：事件网格和第二个 Azure 函数）":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="完整建筑方案图的摘录关系图，其中突出显示了展示 Azure 数字孪生后的元素的部分。":::
 
 下面是设置此数据流需要完成的操作：
 1. 在 Azure 数字孪生中创建一个将实例连接到事件网格的事件网格终结点
@@ -321,13 +321,13 @@ ObserveProperties thermostat67 Temperature
 在 Azure Cloud Shell 中运行以下命令，以创建事件网格主题：
 
 ```azurecli-interactive
-az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-grid-topic> -l <region>
+az eventgrid topic create --resource-group <your-resource-group> --name <name-for-your-event-grid-topic> --location <region>
 ```
 
 > [!TIP]
 > 要输出可传递到 Azure CLI 命令中的 Azure 区域名称的列表，请运行以下命令：
 > ```azurecli-interactive
-> az account list-locations -o table
+> az account list-locations --output table
 > ```
 
 此命令的输出是已创建的事件网格主题的相关信息。
@@ -348,7 +348,7 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 在输出中查找 `provisioningState` 字段，检查其值是否为“Succeeded”。 它也可能显示“Provisioning”，这意味着仍在创建终结点。 在这种情况下，请等待几秒钟，然后再次运行该命令，以检查它是否已成功完成。
 
-:::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="终结点的查询结果，其中显示 provisioningState 为 Succeeded":::
+:::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Azure 门户的 Cloud Shell 中终结点查询结果的屏幕截图，其中显示了 provisioningState 为“成功”的终结点。":::
 
 保存提供给事件网格主题和 Azure 数字孪生中事件网格终结点的名称。  稍后你将用到它们。
 
@@ -367,24 +367,24 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 #### <a name="connect-the-function-to-event-grid"></a>将函数连接到事件网格
 
-接下来，请将 ProcessDTRoutedData Azure 函数订阅到前面创建的事件网格主题，让遥测数据可以通过事件网格主题从 thermostat67 孪生流向该函数，该函数会返回到 Azure 数字孪生并相应地更新 room21  。
+接下来，请将 ProcessDTRoutedData Azure 函数订阅到前面创建的事件网格主题，让遥测数据可以通过事件网格主题从 thermostat67 孪生流向该函数，该函数会返回到 Azure 数字孪生并相应地更新 room21。
 
 为此，你将创建一个事件网格订阅，使其将来自你之前创建的事件网格主题的数据发送到 ProcessDTRoutedData Azure 函数。 
 
 在 [Azure 门户](https://portal.azure.com/)中，导航到事件网格主题，方法是在顶部搜索栏中搜索其名称。 选择“+ 事件订阅”。
 
-:::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure 门户：事件网格事件订阅":::
+:::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure 门户的屏幕截图，其中显示了如何创建事件网格事件订阅。":::
 
 创建此事件订阅的步骤与之前在本教程中将第一个 Azure 函数订阅到 IoT 中心的步骤类似。 这次不需要将设备遥测指定为要侦听的事件类型，而且会连接到其他 Azure 函数。
 
 在“创建事件订阅”页，按如下所示填写字段（默认填充的字段未提及）：
 * “事件订阅详细信息” > “名称”：为事件订阅指定名称。
 * “终结点详细信息” > “终结点类型”：从菜单选项中选择“Azure 函数”。
-* “终结点详细信息” > “终结点”：点击“选择终结点”链接。 这会打开“选择 Azure 函数”窗口：
+* “终结点详细信息” > “终结点”：选择“选择终结点”链接。 这会打开“选择 Azure 函数”窗口：
     - 填写“订阅”、“资源组”、“函数应用”和“函数”(ProcessDTRoutedData)   。 在选择订阅后，其中一些可能会自动填充。
-    - 点击“确认所选内容”。
+    - 选择“确认所选内容”  。
 
-返回“创建事件订阅”页，点击“创建”。
+返回“创建事件订阅”页，选择“创建”。 
 
 ### <a name="run-the-simulation-and-see-the-results"></a>运行模拟并查看结果
 
@@ -392,13 +392,13 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 与之前运行设备模拟器一样，控制台窗口将打开并显示模拟温度遥测消息。 这些事件将经过之前设置的流来更新 thermostat67 孪生，然后经过最近设置的流来更新 room21 孪生以进行匹配 。
 
-:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="设备模拟器的控制台输出，其中显示了正在发送的温度遥测":::
+:::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="设备模拟器的控制台输出的屏幕截图，其中显示了正在发送的温度遥测。":::
 
 你无需此控制台中执行任何其他操作，但在完成后续步骤时，需要让其保持运行状态。
 
 若要查看 Azure 数字孪生端的数据，请转到打开 AdtE2ESample 项目的 Visual Studio 窗口，并运行该项目。
 
-在打开的项目控制台窗口中运行以下命令，以获取 thermostat67 和 room21 这两个数字孪生所报告的温度 。
+在打开的项目控制台窗口中运行以下命令，以获取 thermostat67 和 room21 这两个数字孪生所报告的温度。
 
 ```cmd
 ObserveProperties thermostat67 Temperature room21 Temperature
@@ -406,7 +406,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 你应该会看到来自 Azure 数字孪生实例的实时更新温度每 2 秒被记录到控制台中一次。 注意，room21 的温度正在更新，以匹配 thermostat67 的更新 。
 
-:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="控制台输出，其中显示来自温控设备和房间的温度消息日志":::
+:::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="控制台输出的屏幕截图，其中显示了来自温控设备和房间的温度消息日志。":::
 
 验证此操作成功后，就可以停止运行这两个项目。 你也可以关闭 Visual Studio 窗口，因为本教程现已完成。
 
@@ -415,20 +415,20 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 下面回顾了在本教程中扩建的方案。
 
 1. Azure 数字孪生实例以数字方式表示楼层、房间和温控设备（如下图中 A 部分所示）
-2. 模拟设备遥测发送到 IoT 中心，其中 ProcessHubToDTEvents Azure 函数正在侦听遥测事件。 ProcessHubToDTEvents Azure 函数使用这些事件中的信息来设置 thermostat67（图中箭头 B）的“温度”属性  。
-3. Azure 数字孪生的属性更改事件会路由到事件网格主题，其中 ProcessDTRoutedData Azure 函数正在侦听事件。 ProcessDTRoutedData Azure 函数使用这些事件中的信息来设置 room21（图中箭头 C）的“温度”属性  。
+2. 模拟设备遥测发送到 IoT 中心，其中 ProcessHubToDTEvents Azure 函数正在侦听遥测事件。 ProcessHubToDTEvents Azure 函数使用这些事件中的信息来设置 thermostat67（图中箭头 B）的“温度”属性。
+3. Azure 数字孪生的属性更改事件会路由到事件网格主题，其中 ProcessDTRoutedData Azure 函数正在侦听事件。 ProcessDTRoutedData Azure 函数使用这些事件中的信息来设置 room21（图中箭头 C）的“温度”属性。
 
-:::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="完整的建筑方案图。描绘了从设备流向 IoT 中心的数据，该数据通过 Azure 函数（箭头 B）传到 Azure 数字孪生实例（A 部分），然后通过事件网格传到另一个 Azure 函数进行处理（箭头 C）":::
+:::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="完整建筑方案图，其中显示了通过各种 Azure 服务在设备和 Azure 数字孪生之间流动的数据。":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，可选择想要删除的资源，这具体取决于你接下来要执行哪些操作。
+完成本教程后，可以选择要删除的资源，具体取决于接下来要执行的操作。
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* 如果要继续使用本文中设置的 Azure 数字孪生实例，但想要清除其部分或全部模型、孪生和关系，可在 [Azure Cloud Shell](https://shell.azure.com) 窗口中使用 CLI 命令 [az dt](/cli/azure/dt) 来删除要移除的元素。
+* 如果要继续使用本文中设置的 Azure 数字孪生实例，但想要清除其部分或全部模型、孪生和关系，可在 [Azure Cloud Shell](https://shell.azure.com) 窗口中使用 CLI 命令 [az dt](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) 来删除要移除的元素。
 
-    此选项不会删除在本教程中创建的任何其他 Azure 资源（IoT 中心、Azure Functions 应用等）。 可以使用适用于每种资源类型的 [dt 命令](/cli/azure/reference-index)分别删除这些资源。
+    此选项不会删除在本教程中创建的任何其他 Azure 资源（IoT 中心、Azure Functions 应用等）。 可以使用适用于每种资源类型的 [dt 命令](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true)分别删除这些资源。
 
 你可能还需要从本地计算机中删除项目文件夹。
 

@@ -3,20 +3,33 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 09/30/2019
+ms.date: 05/07/2021
 ms.author: alkohli
-ms.openlocfilehash: ca7b83d24f2416b224963559361faf5a7775cd0d
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: a46552639b9cdea135216e544ec4c51f4d9dda3d
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631524"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736106"
 ---
 当 Microsoft 收到并扫描该设备时，订单状态将更新为“已接收”。  然后，该设备将经受物理验证，以确定是否存在损坏或篡改迹象。
 
 验证完成后，Data Box 将连接到 Azure 数据中心的网络。 数据复制将自动开始。 根据数据大小，复制操作可能需要几小时到几天的时间才能完成。 可以在门户中监视复制作业的进度。
 
-复制完成后，订单状态将更新为“已完成”。 
+### <a name="review-copy-errors-from-upload"></a>查看上传时发生的复制错误
+
+当由于发生不可重试的错误而导致文件无法上传时，系统会通知你查看错误，然后继续。 数据复制日志中会列出错误。
+
+无法修复这些错误。 上传已完成但出错。 在尝试通过网络传输或新的导入订单操作再次上传之前，通知会告诉你需要解决的任何配置问题。 有关指导，请参阅[查看从 Azure Data Box 和 Azure Data Box Heavy 设备上传时发生的复制错误](../articles/databox/data-box-troubleshoot-data-upload.md)。
+
+在确认你已查看错误并已准备好继续时，将从设备中安全地清除数据。 订单将在 14 天后自动完成。 根据通知采取措施可以加快事务的处理速度。
+
+[!INCLUDE [data-box-review-nonretryable-errors](data-box-review-nonretryable-errors.md)]
+
+
+### <a name="verify-data-in-completed-upload"></a>验证数据是否已完成上传
+
+数据上传完成后，订单状态将更新为“已完成”。
 
 从源中删除数据之前，请确认数据已上传到 Azure。 你的数据可位于：
 
@@ -50,7 +63,7 @@ ms.locfileid: "91631524"
 本教程介绍了有关 Azure Data Box 的主题，例如：
 
 > [!div class="checklist"]
-> * 必备条件
+> * 先决条件
 > * 准备交付
 > * 将 Data Box 寄送到 Microsoft
 > * 验证 Azure 中的数据上传

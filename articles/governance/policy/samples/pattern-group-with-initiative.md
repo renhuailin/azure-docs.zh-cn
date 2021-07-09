@@ -3,12 +3,12 @@ title: 模式：使用计划将策略定义分组
 description: 此 Azure Policy 模式通过示例介绍了如何将策略定义分组到计划中。
 ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 7bbb2efdd27ead942fa0ef48f7785eec8bce9378
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: a2cc89954c34f22d5dba0ecce710a7db152ec665
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092851"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752338"
 ---
 # <a name="azure-policy-pattern-group-policy-definitions"></a>Azure Policy 模式：将策略定义分组
 
@@ -32,7 +32,7 @@ ms.locfileid: "106092851"
 
 #### <a name="includes-policy-definitions"></a>包括策略定义
 
-如果策略定义接受参数，则每个包含的策略定义都必须提供 **policyDefinitionId** 和一个 **parameters** 数组。 在下面的代码片段中，包含的策略定义使用两个参数：**tagName** 和 **tagValue**。 **tagName** 使用文本进行定义，但 **tagValue** 使用计划定义的参数 **costCenterValue**。 对值进行这样的传递可提高重用性。
+如果策略定义接受参数，则每个包含的策略定义都必须提供 **policyDefinitionId** 和一个 **parameters** 数组。 在代码片段中，包含的策略定义使用两个参数：tagName 和 tagValue 。 **tagName** 使用文本进行定义，但 **tagValue** 使用计划定义的参数 **costCenterValue**。 对值进行这样的传递可提高重用性。
 
 :::code language="json" source="~/policy-templates/patterns/pattern-group-with-initiative.json" range="30-40":::
 

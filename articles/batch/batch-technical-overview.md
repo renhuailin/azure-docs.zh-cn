@@ -1,14 +1,14 @@
 ---
 title: Azure Batch 在云中运行大型并行作业
-description: 了解如何使用 Azure Batch 服务执行大规模并发工作负荷与 HPC 工作负荷
+description: 了解如何使用 Azure Batch 服务执行大规模并发工作负荷与 HPC 工作负荷。
 ms.topic: overview
-ms.date: 07/30/2020
-ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: 9061da0b479f77353554ef1c9eb311f22220f02d
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743094"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007114"
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？
 
@@ -22,7 +22,7 @@ ms.locfileid: "98743094"
 
 ## <a name="run-parallel-workloads"></a>运行并行工作负荷
 
-Batch 很适合处理本质并行（也称为“易并行”）的工作负荷。 本质上会并行运行的工作负载包含可独立运行的应用程序，其中每个实例会完成一部分工作。 应用程序在执行时，可能会访问一些公共数据，但不会与该应用程序的其他实例通信。 因此，本质并行工作负荷可以大规模运行，具体取决于可以用来同时运行应用程序的计算资源的量。
+Batch 很适合处理本质并行（也称为“易并行”）的工作负荷。 这些工作负载包含可独立运行的应用程序，其中每个实例会完成一部分工作。 应用程序在执行时，可能会访问一些公共数据，但不会与该应用程序的其他实例通信。 因此，本质并行工作负荷可以大规模运行，具体取决于可以用来同时运行应用程序的计算资源的量。
 
 可以带到 Batch 来处理的本质并行工作负荷的示例包括：
 
@@ -43,14 +43,11 @@ Batch 很适合处理本质并行（也称为“易并行”）的工作负荷�
 - 流体动力学
 - 多节点 AI 训练
 
-许多紧密耦合作业可以使用 Batch 来并行运行。 例如，通过更改管道宽度对液体在管道中的流动进行多次模拟。
+许多紧密耦合作业可以使用 Batch 来并行运行。 例如，可以通过更改管道宽度对液体在管道中的流动进行多次模拟。
 
 ## <a name="additional-batch-capabilities"></a>其他 Batch 功能
 
-更高级别的特定于工作负荷的功能也适用于 Azure Batch：
-
-- Batch 支持大规模[渲染工作负荷](batch-rendering-service.md)，使用的渲染工具包括 Autodesk Maya、3ds Max、Arnold 和 V-Ray。 
-- R 用户可以安装 [doAzureParallel R 包](https://github.com/Azure/doAzureParallel)，在 Batch 池中轻松地横向扩展 R 算法的执行。
+Batch 支持大规模[渲染工作负荷](batch-rendering-service.md)，使用的渲染工具包括 Autodesk Maya、3ds Max、Arnold 和 V-Ray。 
 
 还可以在更大型的 Azure 工作流中运行 Batch 作业，以便转换 [Azure 数据工厂](../data-factory/transform-data-using-dotnet-custom-activity.md)等工具管理的数据。
 
@@ -76,12 +73,15 @@ Batch 的常用方案涉及在计算节点池中横向扩展本质并行工作�
 有关池、节点、作业和任务等功能的概述，请参阅 [Batch 服务工作流和资源](batch-service-workflow-features.md)。 另请参阅最新的 [Batch 服务更新](https://azure.microsoft.com/updates/?product=batch)。
 
 ## <a name="in-region-data-residency"></a>区域内数据驻留
+
 Azure Batch 不会将客户数据移出部署它的区域，也不会将其存储在该区域之外。 
 
 ## <a name="next-steps"></a>后续步骤
 
 阅读以下快速入门文章之一，开始使用 Azure Batch：
+
 - [使用 Azure CLI 运行第一个 Batch 作业](quick-create-cli.md)
 - [使用 Azure 门户运行第一个 Batch 作业](quick-create-portal.md)
 - [使用 .NET API 运行第一个 Batch 作业](quick-run-dotnet.md)
 - [使用 Python API 运行第一个 Batch 作业](quick-run-python.md)
+- [使用 ARM 模板创建批处理帐户](quick-create-template.md)

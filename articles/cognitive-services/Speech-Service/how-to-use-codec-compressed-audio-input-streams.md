@@ -12,16 +12,16 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: db902019b4fb1237c8403c719862d8fca4ba4f28
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 183679eb9c4eb2480736dfb4cec8a343c67d0ed7
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772516"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854464"
 ---
-# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
+# <a name="use-codec-compressed-audio-input"></a>使用通过编解码器压缩的音频输入
 
-语音服务 SDK 可以接受压缩的音频格式。 它会先解压缩音频，然后再将音频作为原始 PCM 通过网络发送到语音服务。
+语音 SDK 和语音 CLI 可以使用 GStreamer 接收压缩的音频格式。 GStreamer 会先解压缩音频，然后再将音频作为原始 PCM 通过网络发送到语音服务。
 
 平台 | 语言 | 支持的 GStreamer 版本
 | :--- | ---: | :---:
@@ -32,7 +32,7 @@ Android  | Java | [1.18.3](https://gstreamer.freedesktop.org/data/pkg/android/1.
 ## <a name="speech-sdk-version-required-for-compressed-audio-input"></a>压缩的音频输入所需的语音 SDK 版本
 * RHEL 8 和 CentOS 8 需要语音 SDK 1.10.0 或更高版本
 * Windows 需要语音 SDK 版本 1.11.0 或更高版本。
-* 适用于 Windows 和 Android 上的最新 gstreamer 的语音 SDK 版本 1.16.0 或更高版本。
+* 适用于 Windows 和 Android 上的最新 GStreamer 的语音 SDK 版本 1.16.0 或更高版本。
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 

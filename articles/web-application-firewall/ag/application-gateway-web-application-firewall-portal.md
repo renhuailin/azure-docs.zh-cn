@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 05/19/2021
 ms.author: victorh
-ms.openlocfilehash: 35bede052f06c0fcffe46460a376d10690fd4417
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f72706d4bb1d9470518fb3b14ee756a1fe1551db
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559599"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480539"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关
 
@@ -66,7 +66,7 @@ ms.locfileid: "105559599"
 
     - **子网名称**（后端服务器子网）：在子网网关的第二行中，在“子网名称”列输入“myBackendSubnet”。
 
-    - **地址范围**（后端服务器子网）：在子网网格的第二行中，输入不会与 myAGSubnet 的地址范围重叠的地址范围。 例如，如果 myAGSubnet 的地址范围为 10.0.0.0/24，则为 myBackendSubnet 的地址范围输入 10.0.1.0/24  。
+    - **地址范围**（后端服务器子网）：在子网网格的第二行中，输入不会与 myAGSubnet 的地址范围重叠的地址范围。 例如，如果 myAGSubnet 的地址范围为 10.21.0.0/24，则为 myBackendSubnet 的地址范围输入 10.21.1.0/24  。
 
     选择“确定”以关闭“创建虚拟网络”窗口，并保存虚拟网络设置   。
 
@@ -145,25 +145,28 @@ ms.locfileid: "105559599"
 为此，将要：
 
 1. 创建两个新的 VM（myVM 和 myVM2），用作后端服务器 。
-2. 可以在虚拟机上安装 IIS，以验证是否已成功创建了应用程序网关。
+2. 在虚拟机上安装 IIS，以验证是否成功创建了应用程序网关。
 3. 将后端服务器添加到后端池。
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
 1. 在 Azure 门户中，选择“创建资源”。  此时会显示“新建”窗口。
-2. 在“常用”列表中选择“Windows Server 2016 Datacenter” 。 此时会显示“创建虚拟机”页。<br>应用程序网关可将流量路由到其后端池中使用的任何类型的虚拟机。 本示例使用 Windows Server 2016 Datacenter。
+2. 在“常用”列表中选择“Windows Server 2019 Datacenter” 。 此时会显示“创建虚拟机”页。<br>应用程序网关可将流量路由到其后端池中使用的任何类型的虚拟机。 在此示例中，请使用 Windows Server 2019 Datacenter。
 3. 对于以下虚拟机设置，请在“基本信息”选项卡中输入相应值：
 
     - **资源组**：选择 **myResourceGroupAG** 作为资源组名称。
     - **虚拟机名称**：输入 *myVM* 作为虚拟机的名称。
     - **用户名**：为管理员用户名输入一个名称。
     - **密码**：输入管理员密码。
+    - 公共入站端口：选择“无”。
 4. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
 5. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
-6. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为 **虚拟网络**，以及是否已将“子网”设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
-7. 在“管理”选项卡上，将“启动诊断”设置为“禁用”  。 接受其他默认值，然后选择“复查 + 创建”。
-8. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
-9. 等待虚拟机创建完成，然后再继续操作。
+6. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为 **虚拟网络**，以及是否已将“子网”设置为 **myBackendSubnet**。
+1. 对于“公共 IP”，请选择“无”。
+1. 接受其他默认值，然后选择“下一步:**管理”** 。
+1. 在“管理”选项卡上，将“启动诊断”设置为“禁用”  。 接受其他默认值，然后选择“复查 + 创建”。
+1. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
+1. 等待虚拟机创建完成，然后再继续操作。
 
 ### <a name="install-iis-for-testing"></a>安装 IIS 用于测试
 
@@ -225,21 +228,17 @@ ms.locfileid: "105559599"
    |订阅     |选择你的订阅名称|
    |资源组     |选择“myResourceGroupAG”|
    |策略名称     |键入 WAF 策略的唯一名称。|
-1. 选择“下一步: 策略设置”。
-1. 接受默认值，然后选择“下一步: 托管规则”。
+1. 选择“下一步: 托管规则”。
+1. 接受默认值，然后选择“下一步: 策略设置”。
 1. 接受默认值，然后选择“下一步: 自定义规则”。
 1. 选择“下一步: 关联”。
 1. 选择“添加关联”，然后选择“应用程序网关” 。
 1. 选中“应用 Web 应用程序防火墙策略配置，即使它与当前配置不同”对应的复选框。
-1. 选择“添加”。
-1. 在“关联”选项卡上选择“添加关联”，然后选择“应用程序网关”  。
+1. 选择 **添加** 。
 
    > [!NOTE]
    > 如果将某个策略分配到已有策略的应用程序网关（或侦听器），原始策略将由新策略覆盖并取代。
 4. 依次选择“查看 + 创建”、“创建”。  
-1. **选择“下一步:** 标记”。
-1. 选择“查看 + 创建”。
-1. 选择“创建”。
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 

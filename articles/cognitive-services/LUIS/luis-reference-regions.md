@@ -6,18 +6,19 @@ ms.subservice: language-understanding
 author: aahill
 ms.author: aahi
 ms.topic: reference
-ms.date: 04/07/2021
+ms.date: 05/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: fd02bf5c3291569b71416392b651967e0da701d9
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 160a12139054f5ee887a540a4d838d124dd34840
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226661"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617323"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
 
 LUIS 门户支持 LUIS 创作区域。 若要将 LUIS 应用发布到多个区域，每个区域至少需要一个密钥。
+
 
 <a name="luis-website"></a>
 
@@ -25,9 +26,15 @@ LUIS 门户支持 LUIS 创作区域。 若要将 LUIS 应用发布到多个区�
 
 [!INCLUDE [portal consolidation](includes/portal-consolidation.md)]
 
-LUIS 有一个门户，[www.luis.ai](https://www.luis.ai)，可在任何地区使用。 仍必须在同一区域中创建和发布应用。
+LUIS 包含以下可用的创作区域：
+    
+* 澳大利亚东部
+* 西欧
+* 美国西部
+* 瑞士北部
 
-创作的区域具有[配对故障转移区域](../../best-practices-availability-paired-regions.md)
+
+LUIS 有一个门户，[www.luis.ai](https://www.luis.ai)，可在任何地区使用。 仍必须在同一区域中创建和发布应用。 创作区域具有[配对故障转移区域](../../best-practices-availability-paired-regions.md)。
 
 <a name="regions-and-azure-resources"></a>
 
@@ -73,7 +80,7 @@ LUIS 有一个门户，[www.luis.ai](https://www.luis.ai)，可在任何地区�
 | 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| Japan East<br>`japaneast`     |   `https://japaneast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 日本西部<br>`japanwest`     |   `https://japanwest.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 韩国中部<br>`koreacentral`     |   `https://koreacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
-| 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| Southeast Asia<br>`southeastasia`     |   `https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
+| 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 东南亚<br>`southeastasia`     |   `https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 阿联酋北部<br>`northuae`     |   `https://northuae.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 北美 |`westus`<br>[www.luis.ai][www.luis.ai] | 加拿大中部<br>`canadacentral`     |   `https://canadacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 北美 |`westus`<br>[www.luis.ai][www.luis.ai] | Central US<br>`centralus`     |   `https://centralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |

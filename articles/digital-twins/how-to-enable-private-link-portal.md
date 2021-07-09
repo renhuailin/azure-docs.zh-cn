@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/25/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff1589eb496cbc4482aaf93dfd4f0faeeda5e9cd
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 6243fce7ad7f83b747e678a25eb20aaea7a4cf76
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208862"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616199"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-portal"></a>使用专用链接启用专用访问(预览)：Azure 门户
 
@@ -51,7 +51,7 @@ ms.locfileid: "108208862"
 
 此操作将会添加一个名为“专用终结点连接”的部分，在其中可以配置专用终结点的详细信息。 选择“+ 添加”按钮继续操作。
 
-:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-1.png" alt-text="Azure 门户的屏幕截图，其中显示了 Azure 数字孪生的“创建资源”对话框的“网络”选项卡。突出显示了选项卡名称、连接方法的“专用终结点”选项以及用于新建专用终结点连接的“+ 添加”按钮。" lightbox="media/how-to-enable-private-link/create-instance-networking-1.png":::
+:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-1.png" alt-text="Azure 门户的屏幕截图，其中显示了新 Azure 数字孪生实例的“网络”选项卡，突出显示了如何创建专用终结点。“添加”按钮突出显示。" lightbox="media/how-to-enable-private-link/create-instance-networking-1.png":::
 
 将打开一个页面，用于输入新专用终结点的详细信息。
 
@@ -59,15 +59,15 @@ ms.locfileid: "108208862"
 
 1. 为“订阅”和“资源组”填充所选内容。 将“位置”设置为与要使用的 VNet 相同的位置。 选择终结点“名称”，并为“目标子资源”选择“API”。
 
-1. 接下来，选择要用于部署终结点的“虚拟网络”和“子网”。
+1. 接下来，选择要用于部署终结点的“虚拟网络”和“子网” 。
 
 1. 最后，选择是否 **与专用 DNS 区域集成**。 可以使用默认值“是”，或者为了便于选择，通过门户中的链接来[详细了解专用 DNS 集成](../private-link/private-endpoint-overview.md#dns-configuration)。
 
-填写完配置选项后，单击 **确定** 完成此操作。
+填写完配置选项后，选择“确定”完成此操作。
 
-将返回到 Azure 数字孪生实例设置的“网络”选项卡，在其中的“专用终结点连接”下应可以看到新的终结点。
+将返回到 Azure 数字孪生实例设置的“网络”选项卡，在其中的“专用终结点连接”下应可以看到新的终结点 。
 
-:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-2.png" alt-text="Azure 门户的屏幕截图，其中显示 Azure 数字孪生的“创建资源”对话框的“网络”选项卡。突出显示了新的专用终结点连接和导航按钮（“审阅 + 创建”、“上一步”、“下一步: 高级”）。" lightbox="media/how-to-enable-private-link/create-instance-networking-2.png":::
+:::image type="content" source="media/how-to-enable-private-link/create-instance-networking-2.png" alt-text="Azure 门户的屏幕截图，其中显示具有新创建的专用终结点的 Azure 数字孪生的“网络”选项卡。" lightbox="media/how-to-enable-private-link/create-instance-networking-2.png":::
 
 然后，可以使用底部的导航按钮继续完成余下的实例设置。
 
@@ -83,7 +83,7 @@ ms.locfileid: "108208862"
 
 1. 选择“+ 专用终结点”，打开“创建专用终结点”设置。
 
-    :::image type="content" source="media/how-to-enable-private-link/add-endpoint-digital-twins.png" alt-text="Azure 门户的屏幕截图，其中显示了 Azure 数字孪生实例的“网络(预览)”页。突出显示了“专用终结点连接”选项卡和“+ 专用终结点”按钮。" lightbox="media/how-to-enable-private-link/add-endpoint-digital-twins.png":::
+    :::image type="content" source="media/how-to-enable-private-link/add-endpoint-digital-twins.png" alt-text="Azure 门户的屏幕截图，其中显示了现有 Azure 数字孪生实例的“网络”页，突出显示了如何创建专用终结点。" lightbox="media/how-to-enable-private-link/add-endpoint-digital-twins.png":::
 
 1. 在“基本信息” ****  选项卡中，输入或选择项目的“订阅”和“资源组”，以及终结点的“名称”和“区域”。 区域需要与要使用的 VNet 的所在区域相同。
 
@@ -137,7 +137,7 @@ ms.locfileid: "108208862"
 
     :::row:::
         :::column:::
-            :::image type="content" source="media/how-to-enable-private-link/network-flag-portal.png" alt-text="Azure 门户的屏幕截图，其中显示了 Azure 数字孪生实例的“网络(预览)”页。突出显示了“公共访问”选项卡以及用于选择是否允许公用网络访问的选项。" lightbox="media/how-to-enable-private-link/network-flag-portal.png":::
+            :::image type="content" source="media/how-to-enable-private-link/network-flag-portal.png" alt-text="Azure 门户的屏幕截图，其中显示 Azure 数字孪生实例的“网络”页，突出显示了如何切换公共访问。" lightbox="media/how-to-enable-private-link/network-flag-portal.png":::
         :::column-end:::
         :::column:::
         :::column-end:::

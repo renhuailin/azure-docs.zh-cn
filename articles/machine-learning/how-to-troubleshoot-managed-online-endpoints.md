@@ -10,12 +10,12 @@ ms.author: petrodeg
 ms.reviewer: laobri
 ms.date: 05/13/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: d0c2884b9c080c214cbebd666cbf4df62a8efcf2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f493cfc21ff3f5e2aa122bbbc08f24e1a759558e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382610"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480938"
 ---
 # <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>排查托管联机终结点的部署和评分问题（预览版）
 
@@ -50,6 +50,8 @@ az ml endpoint create -n <endpoint-name> -f <spec_file.yaml> --local
 
 - Docker 生成新的容器映像，或者从本地 Docker 缓存拉取现有映像。 如果某个现有映像与规范文件的环境部分相匹配，将使用该映像。
 - Docker 启动装载了本地项目（如模型和代码文件）的新容器。
+
+有关详细信息，请参阅[使用托管联机终结点（预览版）在本地部署机器学习模型并为其评分](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-using-local-endpoints)。
 
 ## <a name="get-container-logs"></a>获取容器日志
 
@@ -164,7 +166,10 @@ az ml endpoint get-logs
 
 为了运行在部署过程中提供的 `score.py`，Azure 将创建一个包含 `score.py` 所需全部资源的容器，并在该容器上运行评分脚本。  在这种场景下发生的错误表现为此容器在运行时崩溃，这意味着无法评分。 出现以下情况时会发生此错误：
 
-- `score.py` 中有错误。
+- `score.py` 中有错误。 使用 `get--logs` 来帮助诊断常见问题：
+    - 包已导入，但不在 conda 环境中
+    - 语法错误
+    - `init()` 方法失败
 - 未正确设置就绪状态或运行情况探测。
 - 容器的环境设置有错误，例如缺少依赖项。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/24/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4ca6989a6c446c543c35d8e35e5e27aefef118c2
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ced6f28bb7174bc3510de9025569646210e87782
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205676"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475699"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>排查 Azure 数字孪生问题：诊断日志记录
 
@@ -32,7 +32,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 
 2. 从菜单中选择“诊断设置”，然后选择“添加诊断设置”。 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示诊断设置页面和“添加”按钮的屏幕截图" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示 Azure 门户中“诊断设置”页面和用于添加的按钮的屏幕截图。" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. 在随后出现的页面上填写以下值：
      * **诊断设置名称**：为诊断设置指定一个名称。
@@ -53,7 +53,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
     
 4. 保存新设置。 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="显示诊断设置页的屏幕截图，其中用户已填写诊断设置名称，并勾选了“类别详细信息”和“目标详细信息”对应的一些复选框。突出显示了“保存”按钮。" lightbox="media/troubleshoot-diagnostics/diagnostic-settings-details.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="显示 Azure 门户中的诊断设置页的屏幕截图，其中用户已填写诊断设置信息。" lightbox="media/troubleshoot-diagnostics/diagnostic-settings-details.png":::
 
 新设置在大约 10 分钟后生效。 然后，日志将重新显示在实例的“诊断设置”页上已配置的目标中。 
 
@@ -351,14 +351,14 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 
 2. 从菜单中选择“日志”打开日志查询页。 该页中将打开一个名为“查询”的窗口。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="显示 Azure 数字孪生实例的“日志”页的屏幕截图。其中叠加了一个“查询”窗口，该窗口显示了根据不同日志选项命名的预生成查询（例如“DigitalTwin API 延迟”和“模型 API 延迟”）。" lightbox="media/troubleshoot-diagnostics/logs.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="显示 Azure 门户中 Azure 数字孪生实例的日志页的屏幕截图，其中叠加了“查询”窗口，显示了预构建的查询。" lightbox="media/troubleshoot-diagnostics/logs.png":::
 
     这些查询是为各种日志编写的预生成示例查询。 可以选择其中一个查询以将其载入查询编辑器，然后运行该查询以查看实例的这些日志。
 
     还可以在不运行任何查询的情况下关闭“查询”窗口以直接转到查询编辑器页，在其中可以编写或编辑自定义查询代码。
 
 3. 退出“查询”窗口后，你将看到查询编辑器主页。 在此页中可以查看和编辑示例查询的文本，或者从头开始编写你自己的查询。
-    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="显示 Azure 数字孪生实例的“日志”页的屏幕截图。“查询”窗口已消失，取而代之的是一个包含不同日志的列表、一个显示可编辑查询代码的编辑窗格，以及一个显示“查询历史记录”的窗格。" lightbox="media/troubleshoot-diagnostics/logs-query.png":::
+    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="显示 Azure 门户中 Azure 数字孪生实例的日志页的屏幕截图。其中包含了日志列表、查询代码和查询历史记录。" lightbox="media/troubleshoot-diagnostics/logs-query.png":::
 
     在左窗格中： 
     - “表”选项卡显示可在查询中使用的不同 Azure 数字孪生[日志类别](#log-categories)。 

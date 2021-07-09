@@ -11,10 +11,12 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 下载登录报表
-      href: quickstart-download-sign-in-report.md
-    - name: 下载审核报表
-      href: quickstart-download-audit-report.md
+    - name: 筛选审核日志
+      href: quickstart-filter-audit-log.md
+    - name: 分析登录
+      href: quickstart-analyze-sign-in.md
+    - name: 使用图形 API 访问日志
+      href: quickstart-access-log-with-graph-api.md
     - name: 将日志路由到存储帐户
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
 - name: 教程

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: 88f59c1b3fc1014cef5035845f1f2e8616bea908
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: ed15d75836f3642622f963ac8c0185c1520bce2b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739901"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281298"
 ---
 # <a name="what-is-azure-iot-central"></a>什么是 Azure IoT Central？
 
@@ -34,7 +34,7 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 
 本 IoT Central 文档提到了四个可与 IoT Central 应用程序进行交互的用户角色：
 
-- 解决方案构建者负责[创建应用程序](quick-deploy-iot-central.md)、[配置规则和操作](quick-configure-rules.md)、[定义与其他服务的集成](howto-export-data.md)，并进一步自定义供操作员和设备开发人员使用的应用程序。
+- 解决方案构建者负责[创建应用程序](quick-deploy-iot-central.md)、[配置规则和操作](quick-configure-rules.md)、[定义与其他服务的集成](quick-export-data.md)，并进一步自定义供操作员和设备开发人员使用的应用程序。
 - “操作员”[管理连接到应用程序的设备](howto-manage-devices.md)。
 - “管理员”负责执行管理任务，例如，管理应用程序中的[用户角色和权限](howto-administer.md)。
 - “设备开发者”[创建在连接到应用程序的设备上运行的代码](concepts-telemetry-properties-commands.md)，或在连接到应用程序的 [IoT Edge 模块](concepts-iot-edge.md)上运行的代码。
@@ -77,8 +77,6 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 - 在 IoT Central 中设计设备模板，然后在设备代码中实现其设备模型。
 - 使用 Visual Studio code 创建设备模型，并将模型发布到存储库。 基于模型实现设备代码，并将设备连接到 IoT Central 应用程序。 IoT Central 从存储库中查找设备模型，并创建简单的设备模板。
 - 使用 Visual Studio Code 创建设备模型。 基于模型实现设备代码。 将设备模型手动导入到 IoT Central 应用程序中，然后添加 IoT Central 应用程序所需的任何云属性、自定义项和仪表板。
-
-请参阅[添加模拟设备](quick-create-simulated-device.md)快速入门，以了解如何创建和连接你的第一个设备。
 
 ### <a name="customize-the-ui"></a>自定义 UI
 

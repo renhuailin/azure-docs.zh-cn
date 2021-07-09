@@ -2,7 +2,7 @@
 title: 快速入门：使用 Azure PowerShell 创建 Synapse 工作区
 description: 按照本指南中的步骤使用 Azure PowerShell 创建 Azure Synapse 工作区。
 services: synapse-analytics
-author: alehall
+author: lenadroid
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: workspace
@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f02833ef7497c34b72db6b858a51c6046bbf3df
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 1b602ecb096293df7071489262175ae4bb7d71b0
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567564"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113113528"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Azure Synapse 工作区
 
@@ -91,8 +91,8 @@ Install-Module -Name Az.Synapse
 1. 获取 Azure Synapse 工作区的 Web 和开发 URL：
 
    ```azurepowershell-interactive
-   $WorkspaceWeb = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.Web
-   $WorkspaceDev = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.Dev
+   $WorkspaceWeb = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.web
+   $WorkspaceDev = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.dev
    ```
 
 1. 创建防火墙规则以允许你从自己的计算机访问 Azure Synapse 工作区：
