@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: b845ecabe74040e154886476a8ba28efecc99325
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 2ffb38d334aa5b0abefa3398a5c2a7608f448025
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868854"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965314"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>教程：使用 Azure CLI 将 HSM 部署到现有虚拟网络中
 
@@ -34,7 +34,7 @@ Azure 专用 HSM 提供供单个客户使用的物理设备，由客户对设备
 
 ![多区域部署](media/tutorial-deploy-hsm-cli/high-availability-architecture.png)
 
-本教程重点介绍一对 HSM 和必需的 ExpressRoute 网关（参见上面的子网 1），该网关会集成到现有的虚拟网络（参见上面的 VNET 1）中。  所有其他资源都是标准的 Azure 资源。 同一集成过程可以用于上述 VNET 3 上的子网 4 中的 HSM。
+本教程重点介绍一对 HSM 和必需的 [ExpressRoute 网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)（参见上面的子网 1），该网关会集成到现有的虚拟网络（参见上面的 VNET 1）中。  所有其他资源都是标准的 Azure 资源。 同一集成过程可以用于上述 VNET 3 上的子网 4 中的 HSM。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +51,7 @@ Azure 专用 HSM 目前在 Azure 门户中不可用。 与该服务的所有交�
 
 ## <a name="provisioning-a-dedicated-hsm"></a>预配专用 HSM
 
-可以通过 ExpressRoute 网关预配 HSM 并将其集成到现有虚拟网络中，这一操作将通过 ssh 进行验证。 该验证可确保 HSM 设备的可访问性以及基本的可用性，以便进行进一步的配置活动。
+可以通过 [ExpressRoute 网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)预配 HSM 并将其集成到现有虚拟网络中，这一操作将通过 ssh 进行验证。 该验证可确保 HSM 设备的可访问性以及基本的可用性，以便进行进一步的配置活动。
 
 ### <a name="validating-feature-registration"></a>验证功能注册
 

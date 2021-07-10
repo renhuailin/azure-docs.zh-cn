@@ -5,23 +5,22 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 02/17/2021
+ms.date: 06/08/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: e160b21581bc7b5fa38b12309bd9deb90bfbbe51
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: dc0ea990b9bb41279e5670456c6a81d11a4753c2
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107251386"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111761378"
 ---
 下表列出了特定于 Azure 服务总线消息的配额信息。 若要了解服务总线的定价和其他配额，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
-| 配额名称 | 作用域 | 注释 | 值 |
+| 配额名称 | 作用域 | 说明 | 值 |
 | --- | --- | --- | --- |
-| 每个 Azure 订阅的基本或标准命名空间的最大数量 |命名空间 |Azure 门户会拒绝对更多基本或标准命名空间的后续请求。 | 默认值为 100。 <br/> 最大值为 1,000。 <br/><br/> 要提高限制，请联系 Azure 支持。 |
-| 每个 Azure 订阅的高级命名空间的最大数量 |命名空间 |门户会拒绝对更多高级命名空间的后续请求。 | 默认值为 100。 <br/> 最大值为 1,000。 <br/><br/> 要提高限制，请联系 Azure 支持。 |
-| 队列或主题大小 |实体 |创建队列或主题时定义。 <br/><br/> 后续的传入消息会被拒绝，且调用代码会收到异常。 |1、2、3、4 GB 或 5 GB。<br /><br />在高级 SKU 以及启用了[分区](../articles/service-bus-messaging/service-bus-partitioning.md)的标准 SKU 中，队列或主题的最大大小是 80 GB。 |
+| 每个 Azure 订阅的最大命名空间数 |命名空间 | 对更多命名空间的后续请求被拒绝。 | 1000（默认值和最大值） |
+| 队列或主题大小 |实体 |创建/更新队列或主题时定义。 <br/><br/> 后续的传入消息会被拒绝，且调用代码会收到异常。 |1、2、3、4 GB 或 5 GB。<br /><br />在高级 SKU 以及启用了[分区](../articles/service-bus-messaging/service-bus-partitioning.md)的标准 SKU 中，队列或主题的最大大小是 80 GB。 |
 | 命名空间上的并发连接数 |命名空间 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 REST 操作不计入并发 TCP 连接数。 |Net Messaging：1,000。<br /><br />AMQP：5,000。 |
 | 队列、主题或订阅实体上的并发接收请求数 |实体 |后续的接收请求会被拒绝，且调用代码会收到异常。 此配额适用于一个主题上所有订阅的并发接收操作总数。 |5,000 |
 | 每个命名空间的主题或队列数 |命名空间 |系统将拒绝后续的在命名空间中创建新主题或队列的请求。 因此，如果是通过 [Azure 门户][Azure portal]配置的，将生成错误消息。 如果是通过管理 API 调用的，调用代码将收到异常。 |基本层或标准层为 10,000。 命名空间中主题和队列的数目之和必须小于或等于 10,000。 <br/><br/>对于高级层，每个消息传送单元 (MU) 为 1,000。 |
@@ -30,8 +29,8 @@ ms.locfileid: "107251386"
 | 任一消息实体名称的最大大小：命名空间、订阅或订阅规则 |实体 |- |50 个字符。 |
 | 消息 ID 的最大大小 | 实体 |- | 128 |
 | 消息会话 ID 的最大大小 | 实体 |- | 128 |
-| 队列、主题或订阅实体的消息大小 |实体 |超过这些配额的传入消息会被拒绝，且调用代码会收到异常。 |最大消息大小：[标准层](../articles/service-bus-messaging/service-bus-premium-messaging.md)为 256 KB，[高级层](../articles/service-bus-messaging/service-bus-premium-messaging.md)为 1 MB。 <br /><br />由于系统开销，此限制小于这些值。<br /><br />最大标头大小：64 KB。<br /><br />属性包中标头属性的最大数：byte/int.MaxValue。<br /><br />属性包中属性的最大大小：没有明确的限制。 受最大标头大小限制。 |
-| 队列、主题或订阅实体的消息属性大小 |实体 | 生成了 `SerializationException` 异常。 |每个属性的最大消息属性大小为 32,000。 所有属性的累计大小不得超过 64,000。 此限制适用于中转消息的整个标头，其中既有用户属性也有系统属性，如序列号、标签和消息 ID。 |
+| 队列、主题或订阅实体的消息大小 |实体 |超过这些配额的传入消息会被拒绝，且调用代码会收到异常。 |最大消息大小：[标准层](../articles/service-bus-messaging/service-bus-premium-messaging.md)为 256 KB，[高级层](../articles/service-bus-messaging/service-bus-premium-messaging.md)为 1 MB。 <br /><br />由于系统开销，此限制小于这些值。<br /><br />最大标头大小：64 KB。<br /><br />属性包中标头属性的最大数：byte/int.MaxValue。<br /><br />属性包中属性的最大大小：属性名称和值都限制为 32KB。 |
+| 队列、主题或订阅实体的消息属性大小 |实体 | 生成了 `SerializationException` 异常。 |每个属性的最大消息属性大小为 32 KB。 所有属性的累计大小不得超过 64 KB。 此限制适用于中转消息的整个标头，其中既有用户属性也有系统属性，如序列号、标签和消息 ID。 |
 | 每个主题的订阅数 |实体 |系统将拒绝后续的为主题创建更多订阅的请求。 因此，如果是通过门户配置的，会显示错误消息。 如果是通过管理 API 调用的，调用代码将收到异常。 |标准层和高级层每个主题 2,000 个。 |
 | 每个主题的 SQL 筛选器数 |实体 |在主题上创建更多筛选器的后续请求会被拒绝，且调用代码会收到异常。 |2,000 |
 | 每个主题的相关性筛选器数 |实体 |在主题上创建更多筛选器的后续请求会被拒绝，且调用代码会收到异常。 |100,000 |

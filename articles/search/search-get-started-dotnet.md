@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/20/2020
+ms.date: 06/11/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0d912d5b14932c43d109f8f955d5f16381cf773
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11870ed112f4d342bf6df95185d1005004df3f67
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98180092"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029272"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>快速入门：使用 Azure.Search.Documents 客户端库创建搜索索引
 
@@ -507,12 +507,7 @@ Azure 认知搜索对存储在服务中的内容进行搜索。 在此步骤中�
 
 ## <a name="next-steps"></a>后续步骤
 
-在此 C# 快速入门中，你已完成一系列任务，即创建索引、使用文档加载索引并运行查询。 在不同的阶段，我们采用快捷方式来简化代码，从而实现可读性和可理解性。 如果你已理解这些基本概念，我们建议阅读下一篇文章，探索替代方法和概念，进一步加深你的理解。 
+在此 C# 快速入门中，你已完成一系列任务，即创建索引、使用文档加载索引并运行查询。 在不同的阶段，我们采用快捷方式来简化代码，从而实现可读性和可理解性。 现在你已熟悉了基本概念，请尝试下一教程，在 Web 应用的上下文中调用认知搜索 API。
 
 > [!div class="nextstepaction"]
-> [如何在 .NET 中开发](search-howto-dotnet-sdk.md)
-
-希望优化并节省云支出？
-
-> [!div class="nextstepaction"]
-> [使用成本管理开始分析成本](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [教程：向 Web 应用添加搜索](tutorial-csharp-overview.md)

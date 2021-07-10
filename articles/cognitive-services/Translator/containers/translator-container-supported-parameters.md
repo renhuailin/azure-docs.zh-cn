@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 97c24959328a151df133c1e9a18003cdf1901d9f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 25fefcdbf5fc7b8bd9ad8bc81a9a1bd6bd7d3e11
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382488"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957429"
 ---
 # <a name="container-translator-translate-method"></a>容器：翻译器翻译方法
 
@@ -26,8 +26,10 @@ ms.locfileid: "110382488"
 将 `POST` 请求发送到：
 
 ```HTTP
-https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
+http://localhost:{port}/translate?api-version=3.0
 ```
+
+示例： http://<span></span>localhost:5000/translate?api-version=3.0
 
 ## <a name="request-parameters"></a>请求参数
 
@@ -38,22 +40,21 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 | 查询参数 | 说明 |
 | --- | --- |
 | api-version | 必需参数。  <br>客户端所请求的 API 的版本。 值必须是 `3.0`。 |
-| to  | 必需参数。  <br>指定输出文本的语言。 目标语言必须是 `translation` 范围中包含的[支持的语言](../reference/v3-0-languages.md)之一。 例如，若要翻译为德语，请使用 `to=de`。  <br>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 `to=de&to=it`。 |
 | from | 必需参数。  <br>指定输入文本的语言。 可以使用 `translation` 范围来查找[支持的语言](../reference/v3-0-languages.md)，了解哪些语言可以翻译。|
+| to  | 必需参数。  <br>指定输出文本的语言。 目标语言必须是 `translation` 范围中包含的[支持的语言](../reference/v3-0-languages.md)之一。 例如，若要翻译为德语，请使用 `to=de`。  <br>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 `to=de&to=it`。 |
 
 ### <a name="optional-parameters"></a>可选参数
 
 | 查询参数 | 说明 |
 | --- | --- |
 | textType | 可选参数。  <br>定义要翻译的文本是纯文本还是 HTML 文本。 HTML 必须是格式正确的完整元素。 可能的值为 `plain`（默认）`html`。 |
-| includeAlignment | 可选参数。  <br>指定是否包括从源文本到翻译文本的比对投射。 可能的值为 `true` 或 `false`（默认）。 |
 | includeSentenceLength | 可选参数。  <br>指定是否包括输入文本和翻译文本的句子边界。 可能的值为 `true` 或 `false`（默认）。 |
 
 请求标头包括：
 
 | 头文件 | 说明 |
 | --- | --- |
-| 身份验证标头 | 必需的请求标头。  <br>请参阅[用于身份验证的可用选项](/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。 |
+| 身份验证标头 | 必需的请求标头。  <br>请参阅[用于身份验证的可用选项](../reference/v3-0-reference.md#authentication)。 |
 | Content-Type | 必需的请求标头。  <br>指定有效负载的内容类型。  <br>接受的值为：`application/json; charset=UTF-8`。 |
 | Content-Length | 必需的请求标头。  <br>请求正文的长度。 |
 | X-ClientTraceId | 可选。  <br>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。 |
@@ -113,7 +114,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 以下示例演示了如何将单个句子从英文翻译为简体中文。
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "http://localhost:{port}/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 响应正文为：
@@ -135,7 +136,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 一次翻译多个字符串时，只需在请求正文中指定一个字符串数组即可。
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
+curl -X POST "http://localhost:{port}/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
 响应包含所有文本片段的翻译，其顺序与请求中的完全相同。
@@ -161,7 +162,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 以下示例演示如何在一个请求中将同一输入翻译为多种语言。
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "http://localhost:{port}/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 响应正文为：
@@ -189,7 +190,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 下面是用于演示的示例请求。
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
+curl -X POST "http://localhost:{port}/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
 ```
 
 响应为：
@@ -217,7 +218,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 例如，考虑英语句子“The word wordomatic is a dictionary entry.”。 若要在翻译中保留单词 _wordomatic_，请发送请求：
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
+curl -X POST "http://localhost:{port}/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
 ```
 
 结果为：
@@ -243,4 +244,3 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 | Operation | 数组元素的最大大小 | 最大数组元素数 | 最大请求大小（字符数） |
 |:----|:----|:----|:----|
 | translate | 10,000 | 100 | 10,000 |
-

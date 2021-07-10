@@ -6,12 +6,12 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: quickstart
-ms.openlocfilehash: c0e2a4422cea681a3bccee0739b8c26350803eb8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d29583cecb1498c10320a844923067a48693480a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384994"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030298"
 ---
 # <a name="route-cloud-events-to-webhooks-with-azure-event-grid-on-kubernetes"></a>使用 Kubernetes 上的 Azure 事件网格将云事件路由到 Webhook
 在此快速入门中，你将在 Kubernetes 上的事件网格中创建一个主题，为该主题创建订阅，然后将示例事件发送到该主题以测试方案。 
@@ -23,7 +23,7 @@ ms.locfileid: "110384994"
 
 1. [将 Kubernetes 群集连接到 Azure Arc](../../azure-arc/kubernetes/quickstart-connect-cluster.md)。
 1. [在 Kubernetes 群集上安装事件网格扩展](install-k8s-extension.md)。 此扩展将事件网格部署到 Kubernetes 群集。 
-1. [创建自定义位置](../../azure-arc/kubernetes/custom-locations.md)。 自定义位置表示群集中的命名空间，是部署主题和事件订阅的位置。
+1. [创建自定义位置](../../azure-arc/kubernetes/custom-locations.md)。 自定义位置表示群集中的命名空间，是主题和事件订阅的部署位置。
 
 ## <a name="create-a-topic"></a>创建主题
 
@@ -99,11 +99,12 @@ az eventgrid event-subscription create --name <EVENT SUBSCRIPTION NAME> \
     ```azurecli
     az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv
     ```
-3. 创建名为 evt.json 的文件，其中包含如下内容： 
+1. 运行以下 Curl 命令以发布事件。 在运行命令之前，请从步骤 1 和 2 中指定终结点 URL 和密钥。 
 
-    ```json
-    [{
-          "specVersion": "1.0",
+    ```bash
+    curl  -k -X POST -H "Content-Type: application/cloudevents-batch+json" -H "aeg-sas-key: <KEY_FROM_STEP_2>" -g <ENDPOINT_URL_FROM_STEP_1> \
+    -d  '[{ 
+          "specversion": "1.0",
           "type" : "orderCreated",
           "source": "myCompanyName/us/webCommerceChannel/myOnlineCommerceSiteBrandName",
           "id" : "eventId-n",
@@ -115,13 +116,48 @@ az eventgrid event-subscription create --name <EVENT SUBSCRIPTION NAME> \
              "orderType" : "PO",
              "reference" : "https://www.myCompanyName.com/orders/123"
           }
-    }]
+    }]'
     ```
-4. 运行以下 Curl 命令以发布事件。 在运行命令之前，请从步骤 1 和 2 中指定终结点 URL 和密钥。 
+    
+    如果步骤 1 中的主题终结点 URL 是专用 IP 地址，例如当事件网格中转站的服务类型为 ClusterIP 时，可以从群集中的另一个 Pod 中执行“Curl” 以访问该 IP 地址。 例如，可以执行以下步骤：
 
-    ```
-    curl -k -X POST -H "Content-Type: application/cloudevents-batch+json" -H "aeg-sas-key: <KEY FROM STEP 2>" -g -d @evt.json <ENDPOINT URL from STEP 1>
-    ```
+    1. 创建具有以下配置的清单文件。 可能需要根据需求调整 ``dnsPolicy``。 有关详细信息，请参阅 [服务和 Pod 的 DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)。
+    
+        ```yml
+        apiVersion: v1
+        dnsPolicy: ClusterFirstWithHostNet
+        hostNetwork: true
+        kind: Pod
+        metadata: 
+          name: test-pod
+        spec: 
+          containers: 
+            - 
+              name: nginx
+          emptyDir: {}
+          image: nginx
+          volumeMounts: 
+            - 
+              mountPath: /usr/share/nginx/html
+              name: shared-data
+          volumes: 
+            - 
+              name: shared-data  
+        ```
+    1. 删除 Pod。
+        ```bash
+            kubectl apply -f <name_of_your_yaml_manifest_file>
+        ```
+    1. 验证 Pod 是否正在运行。
+        ```bash
+            kubectl get pod test-pod
+        ```
+    1. 从容器启动 shell 会话
+        ```bash
+            kubectl exec --stdin --tty test-pod -- /bin/bash
+        ```
+
+    此时，群集中正在运行的容器中有一个 shell 会话，可以从中执行上述步骤中所述的“Curl”命令。
 
     > [!NOTE]
     > 若要了解如何使用编程语言发送云事件，请参阅以下示例： 

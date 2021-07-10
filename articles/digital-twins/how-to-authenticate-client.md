@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f153544d27621e4978b496d74f8d79e4e0bf2024
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: f37699e9710acc9e4098fd38f0d9da0f50e65a58
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207782"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953974"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用验证码
 
@@ -20,7 +20,7 @@ ms.locfileid: "108207782"
 
 Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)执行身份验证。 若要对 SDK 进行身份验证，需要获取具有 Azure 数字孪生正确权限的持有者令牌，并将其与 API 调用一起传递。 
 
-本文介绍如何使用 `Azure.Identity` 客户端库获取凭据。 尽管本文介绍的是 C# 代码示例（如你为 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 编写的内容），但无论你使用的是何种 SDK，都可使用 `Azure.Identity` 版本（有关可用于 Azure 数字孪生的 SDK 的详细信息，请参阅操作指南：使用 Azure 数字孪生 API 和 SDK。
+本文介绍如何使用 `Azure.Identity` 客户端库获取凭据。 尽管本文介绍的是 C# 代码示例（如你为 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 编写的内容），但无论你使用的是何种 SDK，都可使用 `Azure.Identity` 版本（有关可用于 Azure 数字孪生的 SDK 的详细信息，请参阅[概念：Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,16 +32,16 @@ Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-d
 
 `Azure.Identity` 是一个客户端库，提供多种凭据获取方法，你可使用这些方法来获取持有者令牌并对 SDK 进行身份验证。 尽管本文提供的是 C# 示例，但你可查看多种语言的 `Azure.Identity`，其中包括：
 
-* [.NET (C#)](/dotnet/api/azure.identity)
-* [Java](/java/api/overview/azure/identity-readme)
-* [JavaScript](/javascript/api/overview/azure/identity-readme)
-* [Python](/python/api/overview/azure/identity-readme)
+* [.NET (C#)](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)
+* [Java](/java/api/overview/azure/identity-readme?view=azure-java-stable&preserve-view=true)
+* [JavaScript](/javascript/api/overview/azure/identity-readme?view=azure-node-latest&preserve-view=true)
+* [Python](/python/api/overview/azure/identity-readme?view=azure-python&preserve-view=true)
 
 `Azure.Identity` 中的三种常用凭据获取方法是：
 
-* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 为即将部署到 Azure 的应用程序提供默认的 `TokenCredential` 身份验证流，若在本地部署，建议选择此方法。 还可启用它来尝试本文中建议的另外两种方法；它包装 `ManagedIdentityCredential` 并可使用配置变量访问 `InteractiveBrowserCredential`。
-* [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) 非常适用于需要[托管标识 (MSI)](../active-directory/managed-identities-azure-resources/overview.md) 的情况，是使用 Azure Functions 和部署到 Azure 服务时的很好的候选项。
-* [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) 适用于交互式应用程序，可用于创建经过身份验证的 SDK 客户端
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) 为即将部署到 Azure 的应用程序提供默认的 `TokenCredential` 身份验证流，若在本地部署，建议选择此方法。 还可启用它来尝试本文中建议的另外两种方法；它包装 `ManagedIdentityCredential` 并可使用配置变量访问 `InteractiveBrowserCredential`。
+* [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) 非常适用于需要[托管标识 (MSI)](../active-directory/managed-identities-azure-resources/overview.md) 的情况，是使用 Azure Functions 和部署到 Azure 服务时的很好的候选项。
+* [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) 适用于交互式应用程序，可用于创建经过身份验证的 SDK 客户端
 
 以下示例演示如何在 .NET (C#) SDK 中使用这些方法。
 
@@ -59,7 +59,7 @@ Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-d
 
 ### <a name="defaultazurecredential-method"></a>DefaultAzureCredential 方法
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 为即将部署到 Azure 的应用程序提供默认的 `TokenCredential` 身份验证流，若在本地部署，建议选择此方法。
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) 为即将部署到 Azure 的应用程序提供默认的 `TokenCredential` 身份验证流，若在本地部署，建议选择此方法。
 
 若要使用默认的 Azure 凭据，则需要 Azure 数字孪生实例的 URL（[查找说明](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)）。
 
@@ -73,7 +73,7 @@ Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-d
 
 ### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential 方法
 
-[ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) 方法适用于需要[托管标识 (MSI)](../active-directory/managed-identities-azure-resources/overview.md) 的情况，例如使用 Azure Functions 时。
+[ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) 方法适用于需要[托管标识 (MSI)](../active-directory/managed-identities-azure-resources/overview.md) 的情况，例如使用 Azure Functions 时。
 
 这意味着，可在同一项目中像 `DefaultAzureCredential` 或 `InteractiveBrowserCredential` 一样使用 `ManagedIdentityCredential`，对项目的不同部分进行身份验证。
 
@@ -85,12 +85,12 @@ Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-d
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential 方法
 
-[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) 方法适用于交互式应用程序，并将打开一个 Web 浏览器进行身份验证。 如果需要交互式身份验证，可使用此方法而不是 `DefaultAzureCredential`。
+[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) 方法适用于交互式应用程序，并将打开一个 Web 浏览器进行身份验证。 如果需要交互式身份验证，可使用此方法而不是 `DefaultAzureCredential`。
 
 若要使用交互式浏览器凭据，你将需要具有 Azure 数字孪生 API 权限的应用注册。 有关如何设置此应用注册的步骤，请参阅操作指南：创建应用注册。 设置应用注册后，需要以下内容：
-* 应用注册的应用程序（客户端）ID（[查找说明](how-to-create-app-registration.md#collect-client-id-and-tenant-id)）
-* 应用注册的目录（租户）ID（[查找说明](how-to-create-app-registration.md#collect-client-id-and-tenant-id)）
-* Azure 数字孪生实例的 URL（[查找说明](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)）
+* [应用注册的应用程序（客户端）ID](./how-to-create-app-registration-portal.md#collect-client-id-and-tenant-id)
+* [应用注册的目录（租户）ID](./how-to-create-app-registration-portal.md#collect-client-id-and-tenant-id)
+* [Azure 数字孪生实例的 URL](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)
 
 下面是使用 `InteractiveBrowserCredential` 创建经过身份验证的 SDK 客户端的代码示例。
 

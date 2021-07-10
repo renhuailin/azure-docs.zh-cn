@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: fdf24fdc56d39d93fed0009e2fadbafd7f97db6c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e25851bc9d3cba6e71056a6fb6a24ff9a0cee6ce
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280490"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968064"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>示例：如何使用文本分析提取关键短语
 
@@ -121,7 +121,7 @@ ms.locfileid: "106280490"
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
-在收到请求时执行分析。 有关每分钟或每秒可以发送的请求大小和数量信息，请参阅[数据限制](../concepts/data-limits.md)一文。
+在收到请求时执行分析。 若要了解每分钟或每秒可以发送的请求的大小和数量，请参阅[数据限制](../concepts/data-limits.md)一文。
 
 记住，该服务是无状态服务。 帐户中未存储任何数据。 结果会立即在响应中返回。
 
@@ -131,7 +131,7 @@ ms.locfileid: "106280490"
 
 系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。
 
-下面显示的是从 v3.1-preview.2 终结点提取关键短语的输出示例：
+下面显示的是从 v3.1-preview 终结点提取关键短语的输出示例：
 
 ### <a name="synchronous-result"></a>同步结果
 
@@ -269,3 +269,4 @@ ms.locfileid: "106280490"
 * [文本分析概述](../overview.md)
 * [使用文本分析客户端库](../quickstarts/client-libraries-rest-api.md)
 * [新增功能](../whats-new.md)
+* [模型版本](../concepts/model-versioning.md)

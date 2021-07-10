@@ -5,20 +5,20 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 05/25/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: e57f385dce6446ebb3aa2df0ceb48f97a7e0c2f4
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 6811b899aa87a5b0c1987f2e86c07d8646a86ef4
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877870"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901270"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>通过最新的 API 以编程方式创建 Azure 企业协议订阅
 
-本文帮助你使用最新的 API 版本以编程方式为 EA 计费帐户创建 Azure 企业协议 (EA) 订阅。 如果你仍在使用较旧的预览版本，请参阅[通过 API 预览版以编程方式创建 Azure 订阅](programmatically-create-subscription-preview.md)。 
+本文帮助你使用最新的 API 版本以编程方式为 EA 计费帐户创建 Azure 企业协议 (EA) 订阅。 如果你仍在使用较旧的预览版本，请参阅[通过旧 API 以编程方式创建 Azure 订阅](programmatically-create-subscription-preview.md)。 
 
 本文介绍如何使用 Azure 资源管理器以编程方式创建订阅。
 
@@ -28,13 +28,16 @@ ms.locfileid: "107877870"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须在注册帐户上具有所有者角色才能创建订阅。 可通过两种方式获取角色：
+用户必须在注册帐户上具有所有者角色才能创建订阅。 可通过两种方式获取角色：
 
 * 注册的企业管理员可以[将你设为帐户所有者](https://ea.azure.com/helpdocs/addNewAccount)（需要登录），这使得你成为注册帐户的所有者。
-* 注册帐户的现有所有者可以[向你授予访问权限](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)。 类似地，若要使用服务主体来创建 EA 订阅，则必须[向该服务主体授予创建订阅的权限](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)。  
-    如果使用 SPN 来创建订阅，则使用 [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) 或 [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) 将 Azure AD 应用程序注册的 ObjectId 用作服务主体 ObjectId。
+* 注册帐户的现有所有者可以[向你授予访问权限](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)。 
+
+若要使用服务主体 (SPN) 来创建 EA 订阅，则注册帐户的所有者必须[向该服务主体授予创建订阅的权限](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)。 使用 SPN 来创建订阅时，请使用 [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true ) 或 [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list) 将 Azure AD 应用程序注册的 ObjectId 用作服务主体 ObjectId。 有关 EA 角色分配 API 请求的详细信息，请参阅[将角色分配给 Azure 企业协议服务主体名称](assign-roles-azure-service-principals.md)。 本文包括可以分配给 SPN 的角色（和角色定义 ID）的列表。
+
   > [!NOTE]
-  > 确保使用正确的 API 版本为注册帐户授予所有者权限。 对于本文以及其中所述的 API，请使用 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API。 如果要迁移到使用较新的 API，则必须使用 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) 再次授予所有者权限。 以前使用 [2015-07-01 版本](grant-access-to-create-subscription.md)进行的配置不会自动转换为使用较新的 API。
+  > - 确保使用正确的 API 版本为注册帐户授予所有者权限。 对于本文以及其中所述的 API，请使用 [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API。 
+  > - 如果要进行迁移以使用较新的 API，以前使用 [2015-07-01 版本](grant-access-to-create-subscription.md)进行的配置不会自动转换为使用较新的 API。
 
 ## <a name="find-accounts-you-have-access-to"></a>查找有访问权限的帐户
 
