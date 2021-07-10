@@ -4,12 +4,12 @@ description: 本快速入门介绍如何开始使用适用于 Node.js 的 QnA Ma
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0d0522be53ec9b1008f18725308c91a19ee24156
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: c101458f9cee00fbc1f25f4c6679485439864eab
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609378"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110487286"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/version-1)
 
@@ -26,7 +26,7 @@ ms.locfileid: "105609378"
 
 [参考文档](/javascript/api/@azure/cognitiveservices-qnamaker/) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-qnamaker) | [包 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node.js 示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 可以使用适用于 Node.js 的 QnA Maker 客户端库执行以下操作：
 
@@ -54,14 +54,12 @@ ms.locfileid: "105609378"
     * 需要从创建的资源获取密钥和资源名称，以便将应用程序连接到 QnA Maker API。 你稍后会在本快速入门中将密钥和资源名称粘贴到下文的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 最新版本的 [Node.js](https://nodejs.org)。
-* 有了 Azure 订阅后，在 Azure 门户中创建 [QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以获取创作密钥和终结点。
-    * 注意：请务必选择“托管”复选框。
-    * 部署 QnA Maker 资源后，选择“转到资源”。 需要从创建的资源获取密钥和终结点，以便将应用程序连接到 QnA Maker API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
-    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 自定义问答需要启用了自定义问答功能的[文本分析资源](https://ms.portal.azure.com/?quickstart=true#create/Microsoft.CognitiveServicesTextAnalytics)来生成 API 密钥和终结点。
+     * 部署文本分析资源后，请选择“转到资源”。 需要从创建的资源获取密钥和终结点，以便将应用程序连接到 QnA Maker API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
 
 ---
 
@@ -93,7 +91,7 @@ npm install @azure/cognitiveservices-qnamaker-runtime
 npm install @azure/ms-rest-js
 ```
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 安装以下 NPM 包：
 
@@ -112,7 +110,7 @@ npm install @azure/ms-rest-js
 
 [!code-javascript[Dependencies](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=Dependencies)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-javascript[Dependencies](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=Dependencies)]
 
@@ -136,14 +134,15 @@ npm install @azure/ms-rest-js
 
 [!code-javascript[Set the resource key and resource name](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=Resourcevariables)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
-- 我们使用的“订阅密钥”和“创作密钥”是可互换的。 有关创作密钥的详细信息，请访问 [QnA Maker 中的密钥](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker)。
+- 我们使用的“订阅密钥”和“创作密钥”是可互换的。 有关创作密钥的详细信息，请参阅[密钥](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker)。
 
-- QNA_MAKER_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 转到 Azure 门户，并找到之前在“必备组件”部分创建的 QnA Maker 资源。 单击“资源管理”下的“密钥和终结点”页，找到创作（订阅）密钥和 QnA Maker 终结点。
+- QNA_MAKER_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 转到 Azure 门户，并找到之前在“必备组件”部分创建的文本分析资源。 单击“资源管理”下的“密钥和终结点”页，找到创作（订阅）密钥和终结点 。
 
- ![QnA Maker 创作终结点](../media/keys-endpoint.png)
- 
+> [!div class="mx-imgBorder"]
+> ![自定义 QnA 创作终结点](../media/qnamaker-how-to-key-management/custom-qna-keys-and-endpoint.png)
+
 - 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 例如，[Azure 密钥保管库](../../../key-vault/general/overview.md)可提供安全的密钥存储。
 
 [!code-javascript[Set the resource key and resource name](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=Resourcevariables)]
@@ -158,7 +157,7 @@ npm install @azure/ms-rest-js
 * **[QnAMakerClient](#qnamakerclient-object-model)** 对象可创建、管理、发布和下载知识库。
 * **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象可通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为 [主动学习](../how-to/use-active-learning.md)的一部分）。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [QnA Maker](/javascript/api/@azure/cognitiveservices-qnamaker/) 使用以下对象模型：
 * [QnAMakerClient](#qnamakerclient-object-model) 是用于创建、管理、发布、下载和查询知识库的对象。
@@ -179,9 +178,9 @@ npm install @azure/ms-rest-js
 
 预测 QnA Maker 客户端是 QnAMakerRuntimeClient 对象，该对象使用 Microsoft.Rest.ServiceClientCredentials 向 Azure 进行身份验证。Microsoft.Rest.ServiceClientCredentials 包含预测运行时密钥，该密钥在发布知识库后从创作客户端调用 [client.EndpointKeys.getKeys](/javascript/api/@azure/cognitiveservices-qnamaker/endpointkeys#getkeys-msrest-requestoptionsbase-) 返回。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
-QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为直接在 [QnAMakerClient](/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient) 对象上调用 [generateAnswer](/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase#generateAnswer_string__QueryDTO__msRest_RequestOptionsBase_)。
+自定义问答不需要使用 QnAMakerRuntimeClient 对象。 请改为直接在 [QnAMakerClient](/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient) 对象上调用 [generateAnswer](/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase#generateAnswer_string__QueryDTO__msRest_RequestOptionsBase_)。
 
 ---
 
@@ -202,7 +201,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 * [对查询运行时客户端进行身份验证](#authenticate-the-runtime-for-generating-an-answer)
 * [从知识库生成答案](#generate-an-answer-from-the-knowledge-base)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 * [对创作客户端进行身份验证](#authenticate-the-client-for-authoring-the-knowledge-base)
 * [创建知识库](#create-a-knowledge-base)
@@ -223,7 +222,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-javascript[Create QnAMakerClient object with key and endpoint](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=AuthorizationAuthor)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-javascript[Create QnAMakerClient object with key and endpoint](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=AuthorizationAuthor)]
 
@@ -251,7 +250,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-javascript[Create knowledgebase](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=CreateKBMethod)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-javascript[Create knowledgebase](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=CreateKBMethod)]
 
@@ -267,7 +266,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-javascript[Update a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=UpdateKBMethod)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-javascript[Update a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=UpdateKBMethod)]
 
@@ -283,7 +282,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-javascript[Download a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=DownloadKB)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-javascript[Download a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=DownloadKB)]
 
@@ -297,7 +296,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-javascript[Publish a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=PublishKB)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-javascript[Publish a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=PublishKB)]
 
@@ -331,7 +330,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-javascript[Generate an answer from a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=GenerateAnswer)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 ### <a name="generate-an-answer-from-the-knowledge-base"></a>从知识库生成答案
 
@@ -351,7 +350,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-javascript[Delete a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=DeleteKB)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-javascript[Delete a knowledge base](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=DeleteKB)]
 
@@ -367,7 +366,7 @@ QnA Maker 托管资源不要求使用 QnAMakerRuntimeClient 对象。 请改为�
 
 [!code-javascript[Monitor an operation](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=MonitorOperation)]
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 [!code-javascript[Monitor an operation](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=MonitorOperation)]
 
@@ -385,7 +384,7 @@ node index.js
 
 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/qnamaker_quickstart.js) 上找到此示例的源代码。
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
+# <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/version-2)
 
 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/QnAMaker/sdk/preview-sdk/quickstart.js) 上找到此示例的源代码。
 

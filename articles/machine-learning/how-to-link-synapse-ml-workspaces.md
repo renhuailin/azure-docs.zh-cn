@@ -1,28 +1,28 @@
 ---
 title: 使用 Synapse 和 Azure 机器学习工作区创建链接服务（预览版）
 titleSuffix: Azure Machine Learning
-description: 了解如何链接 Azure Synapse 和 Azure 机器学习工作区以获得统一的数据整理体验。
+description: 了解如何将 Azure Synapse 工作区和 Azure 机器学习工作区相链接并附加 Apache Spark 池，来获得统一的数据整理体验。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
-ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 23184eee67013e39400446db5f744dd0ddb7bc50
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
+ms.openlocfilehash: 558610a23098a64f0f36ccb5c04ee71e8a7343cb
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575728"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408454"
 ---
-# <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>链接 Azure Synapse Analytics 和 Azure 机器学习工作区（预览版）
+# <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-and-attach-apache-spark-poolspreview"></a>将 Azure Synapse Analytics 工作区和 Azure 机器学习工作区进行链接并附加 Apache Spark 池（预览）
 
-在本文中，你将了解如何创建一个链接服务来链接 [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) 工作区和 [Azure 机器学习工作区](concept-workspace.md)。
+在本文中，你将了解如何创建一个链接服务来链接 [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) 工作区和 [Azure 机器学习工作区](concept-workspace.md)。 
 
-通过将 Azure 机器学习工作区与 Azure Synapse 工作区链接起来，你可以将 Apache Spark 池附加为专用计算，用于大规模的数据整理，或完全从相同 Python 笔记本进行模型训练。
+通过将 Azure 机器学习工作区与 Azure Synapse 工作区进行链接，你可将 Apache Spark 池（由 Azure Synapse Analytics 提供支持）附加为专用计算，用于大规模数据整理，或完全从同一 Python 笔记本训练模型。
 
 可以通过 [Python SDK](#link-sdk) 或 [Azure 机器学习工作室](#link-studio)链接 ML 工作区和 Synapse 工作区。
 
@@ -35,9 +35,9 @@ ms.locfileid: "107575728"
 
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md?tabs=python)。
 
-* [在 Azure 门户中创建 Synapse 工作区](/azure/synapse-analytics/quickstart-create-workspace)。
+* [在 Azure 门户中创建 Synapse 工作区](../synapse-analytics/quickstart-create-workspace.md)。
 
-* [使用 Azure 门户、Web 工具或 Synapse Studio 创建 Apache Spark 池](/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)
+* [使用 Azure 门户、Web 工具或 Synapse Studio 创建 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)
 
 * 安装 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro)
 
@@ -49,7 +49,7 @@ ms.locfileid: "107575728"
 > [!IMPORTANT]
 > 若要成功链接到 Synapse 工作区，必须授予 Synapse 工作区的“所有者”角色。 查看 [Azure 门户](https://ms.portal.azure.com/)中的访问权限。
 >
-> 如果你不是 Synapse 工作区的“所有者”，且只是 Synapse 工作区的“参与者”，则只能使用现有的链接服务 。 请参阅如何[检索和使用现有的链接服务](how-to-data-prep-synapse-spark-pool.md#get-an-existing-linked-service)。
+> 如果你不是 Synapse 工作区的“所有者”，且只是 Synapse 工作区的“参与者”，则只能使用现有的链接服务 。 请参阅如何[检索和使用现有的链接服务](#get-an-existing-linked-service)。
 
 下面的代码使用 [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice) 和 [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration) 类，
 
@@ -115,8 +115,81 @@ linked_service.unregister()
 1. 选择“下一步”，打开“审阅”窗体并检查你的选择 。
 1. 选择“创建”以完成链接服务的创建过程。
 
+## <a name="get-an-existing-linked-service"></a>获取现有链接服务
+
+你必须有一个链接到 Azure Synapse Analytics 工作区的 ML 工作区（称为链接服务），然后才能附加专用计算以进行数据整理。 
+
+若要检索和使用现有链接服务，需要具有 Azure Synapse Analytics 工作区的“用户”或“参与者”权限 。
+
+此示例使用 [`get()`](/python/api/azureml-core/azureml.core.linkedservice#get-workspace--name-) 方法从工作区 `ws` 检索现有链接服务 `synapselink1`。
+```python
+from azureml.core import LinkedService
+
+linked_service = LinkedService.get(ws, 'synapselink1')
+```
+
+## <a name="attach-synapse-spark-pool-as-a-compute"></a>将 Synapse Spark 池附加为计算
+
+检索链接服务后，请将 Synapse Apache Spark 池附加为用于数据整理任务的专用计算资源。 
+
+可以通过以下方式附加 Apache Spark 池：
+* Azure 机器学习工作室
+* [Azure 资源管理器 (ARM) 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
+* Azure 机器学习 Python SDK 
+
+### <a name="attach-a-pool-via-the-studio"></a>通过工作室附加池
+按照以下步骤操作： 
+
+1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
+1. 在左窗格的“管理”部分中选择“链接服务”。
+1. 选择 Synapse 工作区。
+1. 选择左上方的“附加的 Spark 池”。 
+1. 选择“附加”。 
+1. 从列表中选择 Apache Spark 池，并为其命名。  
+    1. 此列表标识可附加到计算的可用 Synapse Spark 池。 
+    1. 若要创建新的 Synapse Spark 池，请参阅[使用 Synapse Studio 创建 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+1. 选择“附加所选内容”。 
+
+### <a name="attach-a-pool-with-the-python-sdk"></a>使用 Python SDK 附加池
+
+你还可以使用 Python SDK 附加 Apache Spark 池。 
+
+以下代码的用途： 
+1. 使用以下项配置 [`SynapseCompute`](/python/api/azureml-core/azureml.core.compute.synapsecompute)：
+
+   1. 在上一步中创建或检索的 [`LinkedService`](/python/api/azureml-core/azureml.core.linkedservice) `linked_service`。 
+   1. 要附加的计算目标的类型 `SynapseSpark`
+   1. Apache Spark 池的名称。 该名称必须与 Azure Synapse Analytics 工作区中的现有 Apache Spark 池相同。
+   
+1. 通过传入以下项来创建机器学习 [`ComputeTarget`](/python/api/azureml-core/azureml.core.computetarget)： 
+   1. 要使用的机器学习工作区 `ws`
+   1. 要在 Azure 机器学习工作区中表示计算的名称。 
+   1. 配置 Synapse 计算时指定的 attach_configuration。
+       1. 对 ComputeTarget () 的调用是异步的，因此在调用完成之前，示例将无法使用。
+
+```python
+from azureml.core.compute import SynapseCompute, ComputeTarget
+
+attach_config = SynapseCompute.attach_configuration(linked_service, #Linked synapse workspace alias
+                                                    type='SynapseSpark', #Type of assets to attach
+                                                    pool_name=synapse_spark_pool_name) #Name of Synapse spark pool 
+
+synapse_compute = ComputeTarget.attach(workspace= ws,                
+                                       name= synapse_compute_name, 
+                                       attach_configuration= attach_config
+                                      )
+
+synapse_compute.wait_for_completion()
+```
+
+验证是否已附加 Apache Spark 池。
+
+```python
+ws.compute_targets['Synapse Spark pool alias']
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azure Synapse 附加 Synapse Spark 池进行数据准备（预览版）](how-to-data-prep-synapse-spark-pool.md)。
+* [如何使用 Azure Synapse 来整理数据（预览）](how-to-data-prep-synapse-spark-pool.md)。
 * [如何通过 Azure Synapse 在机器学习管道中使用 Apache Spark](how-to-use-synapsesparkstep.md)
 * [训练模型](how-to-set-up-training-targets.md)。

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0bfdb7017a5042787e7e33e05e52bd90d67deb0e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98939867"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110058865"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>在 Windows 上实施语音助理
 
@@ -124,7 +124,7 @@ await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);
 
 在锁定时激活类似于在未锁定时激活。 如果没有处于活动状态的应用程序实例，将在后台启动一个新实例，并调用 App.xaml.cs 中的 `OnBackgroundActivated`。 如果有一个应用程序实例，该实例将通过 `ConversationalAgentSession.SignalDetected` 事件收到通知。
 
-如果在锁定时尚未显示某个应用程序，则它必须调用 `ConversationalAgentSession.RequestForegroundActivationAsync`。 这会触发 App.xaml.cs 中的 `OnLaunched` 方法，然后应会导航到将在锁定时显示的视图。
+如果在锁定时未显示应用程序，则它必须调用 `ConversationalAgentSession.RequestForegroundActivationAsync`。 这会触发 App.xaml.cs 中的 `OnLaunched` 方法，然后应会导航到将在锁定时显示的视图。
 
 ### <a name="detecting-lock-screen-transitions"></a>检测锁屏转换
 

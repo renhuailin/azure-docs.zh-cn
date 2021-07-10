@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.custom: mvc
-ms.openlocfilehash: 5a581652bfd084118b47b5693a2b2ca9e92feda9
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 187808cacd40d2be0b122263e4c10672ef90fff3
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751178"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412450"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-azure-migrate-discovery-and-assessment"></a>教程：使用 Azure Migrate：发现和评估发现 Google Cloud Platform（GCP）实例
 
@@ -87,7 +87,7 @@ ms.locfileid: "109751178"
         * 性能日志用户。
 * 对于 Linux 服务器：
     * 需要在要发现的 Linux 服务器上拥有根帐户。 如果无法提供根帐户，请参阅[支持矩阵](migrate-support-matrix-physical.md#physical-server-requirements)中的说明。
-    * Azure Migrate 在发现 AWS 实例时使用密码验证。 AWS 实例默认不支持密码验证。 需要先启用密码验证，才能发现实例。
+    * Azure Migrate 在发现 GCP 实例时使用密码验证。 GCP 实例默认不支持密码身份验证。 需要先启用密码验证，才能发现实例。
         1. 登录到每台 Linux 计算机。
         2. Open the sshd_config file : vi /etc/ssh/sshd_config
         3. 在文件中，定位到 PasswordAuthentication 行，然后将值改为“yes”。 

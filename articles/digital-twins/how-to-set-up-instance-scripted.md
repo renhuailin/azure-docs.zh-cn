@@ -8,33 +8,35 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 4ef4e1f11018c82d96907518b79cc5737c49b946
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: f56d1c305f5d18d82ae79781a7b60fd6b429357b
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104042"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613811"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>设置 Azure 数字孪生实例和身份验证（已编写脚本）
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
-本文介绍“设置新 Azure 数字孪生实例”的步骤，包括创建实例和设置身份验证。 完成本文操作后，将准备好 Azure 数字孪生实例，可开始对其编程。
+本文介绍“设置新 Azure 数字孪生实例”的步骤，包括创建实例和设置身份验证。 完成本文操作后，即可对 Azure 数字孪生实例编程。
 
-本文的此版本通过运行 [**自动部署脚本** 示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)来完成这些步骤，由此可简化过程。 
-* 要查看脚本在后台运行的手动 CLI 步骤，请参阅本文的 CLI 版本：[*操作指南：设置实例和身份验证 (CLI)*](how-to-set-up-instance-cli.md)。
-* 要查看使用 Azure 门户的手动步骤，请参阅本文的门户版本：[*操作说明：设置实例和身份验证（门户）*](how-to-set-up-instance-portal.md)。
+本文的此版本通过运行[自动部署脚本示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)来完成这些步骤，由此可简化过程。 
+* 要查看脚本在后台运行的手动 CLI 步骤，请参阅本文的 CLI 版本：[操作指南：设置实例和身份验证 (CLI)](how-to-set-up-instance-cli.md) 。
+* 要查看使用 Azure 门户的手动步骤，请参阅本文的门户版本：[操作说明：设置实例和身份验证（门户）](how-to-set-up-instance-portal.md) 。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+
+## <a name="prerequisites-permission-requirements"></a>先决条件：权限要求
 [!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="prerequisites-download-the-script"></a>先决条件：下载脚本
 
-示例脚本是在 PowerShell 中编写的。 这是 [**Azure 数字孪生端到端示例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，可通过导航到此示例链接并选择标题下面的“浏览代码”按钮，将其下载到计算机。 这会将你转到这些示例的 GitHub 存储库，可以通过选择“代码”按钮和“下载 ZIP”将其下载为 .ZIP  。
+示例脚本是在 PowerShell 中编写的。 这是 [Azure 数字孪生端到端示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，你可导航到此示例链接并选择标题下面的“浏览代码”按钮，将其下载到计算机。 此时会转到这些示例的 GitHub 存储库，你可以通过选择“代码”按钮和“下载 ZIP”将其下载为 .zip 。
 
-:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub 上 digital-twins-samples 存储库的视图。选中了“代码”按钮，生成了一个小对话框，其中突出显示了“下载 ZIP”按钮。" lightbox="media/includes/download-repo-zip.png":::
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub 上的 digital-twins-samples 存储库的屏幕截图，突出显示了将该存储库下载为 zip 的步骤。" lightbox="media/includes/download-repo-zip.png":::
 
-这会将 .ZIP 文件夹以 digital-twins-samples-master.zip 的形式下载到计算机上。 导航到计算机上的文件夹，并对其解压缩以提取文件。
+这会将 .zip 文件夹以 digital-twins-samples-master.zip 形式下载到计算机上。 导航到计算机上的文件夹，并对其解压缩以提取文件。
 
 在解压缩的文件夹中，部署脚本位于“digital-twins-samples-master”>“脚本” >“deploy.ps1”中。
 
@@ -53,13 +55,13 @@ ms.locfileid: "107104042"
  
 2. 在 Cloud Shell 图标栏中，确保将 Cloud Shell 设置为运行 PowerShell 版本。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="显示选择 PowerShell 版本的 Cloud Shell 窗口":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Azure 门户中 Cloud Shell 窗口的屏幕截图，其中显示选择 PowerShell 版本。":::
 
 1. 选择“上传/下载文件”图标，然后选择“上传”。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="显示选择“上传”图标的 Cloud Shell 窗口":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Azure 门户中 Cloud Shell 窗口的屏幕截图，其中显示选择“上传”图标。":::
 
-    导航到计算机上的“deploy.ps1”文件（“digital-twins-samples-master”>“脚本” >“deploy.ps1”中），然后单击“打开”。 该文件将上传到 Cloud Shell，以便可以在“Cloud Shell”窗口中运行。
+    导航到计算机上的 deploy.ps1 文件（digital-twins-samples-master > scripts > deploy.ps1 中），然后选择“打开” 。 该文件将上传到 Cloud Shell，以便可以在“Cloud Shell”窗口中运行。
 
 4. 通过在“Cloud Shell”窗口中发送 `./deploy.ps1` 命令运行该脚本。 可以复制以下命令（要粘贴到 Cloud Shell 中，在 Windows 和 Linux 上可以使用 Ctrl+Shift+V，在 macOS 上可以使用 Cmd+Shift+V。 还可以使用右键单击菜单）。
 
@@ -71,25 +73,25 @@ ms.locfileid: "107104042"
 
     当脚本通过自动安装步骤运行时，系统会要求你传递以下值：
     * 对于实例：要使用的 Azure 订阅的订阅 ID
-    * 对于实例：要将实例部署到的位置。 要查看哪些区域支持 Azure 数字孪生，请访问 [*各区域的 Azure 产品可用性*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
+    * 对于实例：要在其中部署实例的位置。 要查看哪些区域支持 Azure 数字孪生，请访问[各区域的 Azure 产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
     * 对于实例：资源组名称。 可以使用现有资源组，也可以输入一个新名称进行创建。
     * 对于实例：Azure 数字孪生实例的名称。 如果订阅在该区域已存在使用指定名称的其他 Azure 数字孪生实例，系统会要求你选择其他的名称。
 
 下面是该脚本输出日志的摘录：
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="显示运行部署脚本的输入和输出日志的 Cloud Shell 窗口" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Azure 门户中 Cloud Shell 窗口的屏幕截图，其中显示通过运行部署脚本得到的输入和输出日志。" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 如果脚本成功完成，最终打印输出将显示 `Deployment completed successfully`。 否则，请解决错误消息，并重新运行该脚本。 它将跳过已完成的步骤，并从中断的位置重新开始请求输入。
 
 > [!NOTE]
-> 脚本当前会向通过 Cloud Shell 运行该脚本的同一用户分配 Azure 数字孪生中必需的管理角色（“Azure 数字孪生数据所有者”）。 如果需要将此角色分配给其他要管理实例的人，可以通过 Azure 门户（[说明](how-to-set-up-instance-portal.md#set-up-user-access-permissions)）或 CLI（[说明](how-to-set-up-instance-cli.md#set-up-user-access-permissions)）来完成此操作。
+> 脚本当前会向通过 Cloud Shell 运行该脚本的同一用户分配 Azure 数字孪生中必需的管理角色（“Azure 数字孪生数据所有者”）。 如果需要将此角色分配给其他要管理实例的人员，可通过 [Azure 门户说明](how-to-set-up-instance-portal.md#set-up-user-access-permissions)或 [CLI 说明](how-to-set-up-instance-cli.md#set-up-user-access-permissions)来完成此操作。
 
 >[!NOTE]
 >目前，脚本安装存在一个已知问题，有些用户（特别是使用个人 [Microsoft 帐户 (MSA)](https://account.microsoft.com/account) 的用户）可能会发现“Azure 数字孪生数据所有者的角色分配尚未创建”。
 >
->你可以按照本文后面的“[*验证用户角色分配*](#verify-user-role-assignment)”部分验证角色分配，如果需要，还可以使用 [Azure 门户](how-to-set-up-instance-portal.md#set-up-user-access-permissions)或 [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions) 手动设置角色分配。
+>你可以按照本文后面的“[验证用户角色分配](#verify-user-role-assignment)”部分验证角色分配，如果需要，还可以使用 [Azure 门户](how-to-set-up-instance-portal.md#set-up-user-access-permissions)或 [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions) 手动设置角色分配。
 >
->有关此问题的更多详细信息，请参阅 [*故障排除：Azure 数字孪生中的已知问题*](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup)。
+>有关此问题的更多详细信息，请参阅[故障排除：Azure 数字孪生中的已知问题](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup)。
 
 ## <a name="verify-success-and-collect-important-values"></a>验证是否成功并收集重要值
 
@@ -109,7 +111,7 @@ ms.locfileid: "107104042"
 
 从 [Azure 数字孪生页面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances)选择实例的名称，以打开该实例的“概述”页。 记下它的“名称”、“资源组”和“主机名”。 稍后，可能需要用它们来识别和连接实例。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例“概述”页中的这些重要值":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Azure 门户的屏幕截图，突出显示了 Azure 数字孪生实例的概述页面中的重要值。":::
 
 ### <a name="verify-user-role-assignment"></a>验证用户角色分配
 
@@ -123,8 +125,8 @@ ms.locfileid: "107104042"
 ## <a name="next-steps"></a>后续步骤
 
 使用 Azure 数字孪生 CLI 命令在实例上测试各个 REST API 调用： 
-* [az dt reference](/cli/azure/dt)
-* [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
+* [az dt reference](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)
+* [概念：Azure 数字孪生 CLI 命令集](concepts-cli.md)
 
 或者，了解如何使用验证码将客户端应用程序连接到实例：
 * [如何：编写应用验证码](how-to-authenticate-client.md)

@@ -1,6 +1,6 @@
 ---
-title: 教程：准备 Azure 门户、数据中心环境以便部署 Azure Stack Edge Pro | Microsoft Docs
-description: 本文是介绍如何部署 Azure Stack Edge Pro 的第一篇教程，涉及如何准备 Azure 门户。
+title: 有关通过 Azure 门户在数据中心准备部署 Azure Stack Edge Pro FPGA 的教程
+description: 本文是介绍如何部署 Azure Stack Edge Pro FPGA 的第一篇教程，涉及到如何在 Azure 门户中做好准备。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/16/2021
 ms.author: alkohli
-ms.openlocfilehash: 0e0d7808e449a6e4f3e341cd40acdc220e65c0ba
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 1cab6f6f9db0650cee51b3863d521089b500bee9
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068211"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461302"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>教程：准备部署 Azure Stack Edge Pro  
+# <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-fpga"></a>教程：准备部署 Azure Stack Edge Pro FPGA  
 
-本文是完整部署 Azure Stack Edge Pro 时必读的部署教程系列的第一篇教程。 本教程介绍如何准备 Azure 门户，以便部署 Azure Stack Edge 资源。 
+本文是完整部署 Azure Stack Edge Pro FPGA 时必读的部署教程系列的第一篇教程。 本教程介绍如何准备 Azure 门户，以便部署 Azure Stack Edge 资源。 
 
 需要有管理员权限才能完成安装和配置过程。 门户准备只需不到 10 分钟的时间。  
 
@@ -32,21 +32,21 @@ ms.locfileid: "106068211"
 
 ## <a name="get-started"></a>入门
 
-若要部署 Azure Stack Edge Pro，请按指定顺序参阅以下教程。
+若要部署 Azure Stack Edge Pro FPGA，请按指定顺序参阅以下教程。
 
 | **#** | **此步骤的内容** | **使用这些文档** |
 | --- | --- | --- | 
-| 1. |[在 Azure 门户中做好部署 Azure Stack Edge Pro 的准备](azure-stack-edge-deploy-prep.md) |在安装 Azure Stack Edge 物理设备之前创建并配置 Azure Stack Edge 资源。 |
-| 2. |[安装 Azure Stack Edge Pro](azure-stack-edge-deploy-install.md)|将 Azure Stack Edge Pro 物理设备拆包、装入机架并布线。  |
-| 3. |[连接、设置并激活 Azure Stack Edge Pro](azure-stack-edge-deploy-connect-setup-activate.md) |连接到本地 Web UI，完成设备设置，然后激活设备。 现已准备好在设备设置 SMB 或 NFS 共享。  |
-| 4. |[使用 Azure Stack Edge Pro 传输数据](azure-stack-edge-deploy-add-shares.md) |添加共享，并通过 SMB 或 NFS 连接到共享。 |
-| 5. |[使用 Azure Stack Edge Pro 转换数据](azure-stack-edge-deploy-configure-compute.md) |在设备上配置计算模块，以便在将数据移到 Azure 时转换数据。 |
+| 1. |[在 Azure 门户中做好部署 Azure Stack Edge Pro FPGA 的准备](azure-stack-edge-deploy-prep.md) |在安装 Azure Stack Edge 物理设备之前创建并配置 Azure Stack Edge 资源。 |
+| 2. |[安装 Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-install.md)|将 Azure Stack Edge Pro FPGA 物理设备拆包、装入机架并布线。  |
+| 3. |[连接、设置并激活 Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-connect-setup-activate.md) |连接到本地 Web UI，完成设备设置，然后激活设备。 现已准备好在设备设置 SMB 或 NFS 共享。  |
+| 4. |[使用 Azure Stack Edge Pro FPGA 传输数据](azure-stack-edge-deploy-add-shares.md) |添加共享，并通过 SMB 或 NFS 连接到共享。 |
+| 5. |[使用 Azure Stack Edge Pro FPGA 转换数据](azure-stack-edge-deploy-configure-compute.md) |在设备上配置计算模块，以便在将数据移到 Azure 时转换数据。 |
 
 现在可以开始设置 Azure 门户。
 
 ## <a name="prerequisites"></a>先决条件
 
-下面是 Azure Stack Edge 资源、Azure Stack Edge Pro 设备和数据中心网络的配置先决条件。
+下面是 Azure Stack Edge 资源、Azure Stack Edge Pro FPGA 设备和数据中心网络的配置先决条件。
 
 ### <a name="for-the-azure-stack-edge-resource"></a>对于 Azure Stack Edge 资源
 
@@ -65,7 +65,7 @@ ms.locfileid: "106068211"
 * 具有 Microsoft Azure 存储帐户和访问凭据。
 * 你未被系统管理员设置的任何 Azure 策略阻止。 有关策略的详细信息，请参阅[快速入门：创建策略分配以识别不合规资源](../governance/policy/assign-policy-portal.md)。
 
-### <a name="for-the-azure-stack-edge-pro-device"></a>对于 Azure Stack Edge Pro 设备
+### <a name="for-the-azure-stack-edge-pro-fpga-device"></a>对于 Azure Stack Edge Pro FPGA 设备
 
 在部署物理设备之前，请确保：
 
@@ -79,20 +79,20 @@ ms.locfileid: "106068211"
 
 在开始之前，请确保：
 
-* 按你的 Azure Stack Edge Pro 设备的网络要求配置数据中心内的网络。 有关详细信息，请参阅 [Azure Stack Edge Pro 系统要求](azure-stack-edge-system-requirements.md)。
+* 按你的 Azure Stack Edge Pro FPGA 设备的网络要求配置数据中心内的网络。 有关详细信息，请参阅 [Azure Stack Edge Pro FPGA 系统要求](azure-stack-edge-system-requirements.md)。
 
-* 若要使 Azure Stack Edge Pro 正常运行，请做好以下准备：
+* 若要使 Azure Stack Edge Pro FPGA 正常运行，请做好以下准备：
 
   * 使用至少 10 Mbps 的下载带宽以确保设备保持更新。
   * 使用至少 20 Mbps 的专用上传和下载带宽传输文件。
 
 ## <a name="create-new-resource-for-existing-device"></a>为现有设备创建新资源
 
-如果你是现有的 Azure Stack Edge Pro 客户并需要更换或重置现有的设备，请使用以下过程创建新资源。
+如果你是现有的 Azure Stack Edge Pro FPGA 客户并需要更换或重置现有的设备，请使用以下过程创建新资源。
 
 如果你是新客户，我们建议先了解如何为工作负载使用 Azure Stack Edge Pro - GPU 设备。 有关详细信息，请参阅[什么是 Azure Stack Edge Pro with GPU](azure-stack-edge-gpu-overview.md)。 有关订购 Azure Stack Edge Pro with GPU 设备的信息，请参阅[为 Azure Stack Edge Pro - GPU 创建新资源](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)。
 
-若要为现有设备创建新的 Azure Stack Edge Pro 资源，请在 Azure 门户中执行以下步骤。
+若要为现有设备创建新的 Azure Stack Edge 资源，请在 Azure 门户中执行以下步骤。
 
 1. 使用 Microsoft Azure 凭据通过
 
@@ -101,7 +101,7 @@ ms.locfileid: "106068211"
 
 1. 选择“+ 创建资源”。  搜索并选择“Azure Stack Edge”。 然后选择“创建”。
 
-1. 选择 Azure Stack Edge Pro 设备的订阅，并在“寄送地址”中选择要将该设备寄送到的国家/地区。
+1. 选择 Azure Stack Edge Pro FPGA 设备的订阅，并在“寄送地址”中选择要将该设备寄送到的国家/地区。
 
    ![选择设备的订阅以及寄送到的国家/地区](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-01.png)
 
@@ -142,12 +142,12 @@ ms.locfileid: "106068211"
 
 在你下单以后，Microsoft 会审核该订单并通过电子邮件联系你，核对配送详细信息。
 
-![关于审核 Azure Stack Edge Pro 订单的通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource-02.png)
+![关于审核 Azure Stack Edge Pro FPGA 订单的通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource-02.png)
 
 
 ## <a name="get-the-activation-key"></a>获取激活密钥
 
-在 Azure Stack Edge 资源启动并运行后，你需要获取激活密钥。 此密钥用于激活 Azure Stack Edge Pro 设备并将其连接到资源。 如果你仍在 Azure 门户中，则现在可以获取此密钥。
+在 Azure Stack Edge 资源启动并运行后，你需要获取激活密钥。 此密钥用于激活 Azure Stack Edge Pro FPGA 设备并将其连接到资源。 如果你仍在 Azure 门户中，则现在可以获取此密钥。
 
 1. 转到创建的资源，然后选择“概述”。 你将看到一个通知，指示你的订单正在处理中。
 
@@ -164,14 +164,14 @@ ms.locfileid: "106068211"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解了以下 Azure Stack Edge Pro 主题：
+在本教程中，你已了解了以下 Azure Stack Edge Pro FPGA 主题：
 
 > [!div class="checklist"]
 >
 > * 创建新资源
 > * 获取激活密钥
 
-请继续学习下一教程，了解如何安装 Azure Stack Edge Pro。
+请继续学习下一教程，了解如何安装 Azure Stack Edge Pro FPGA。
 
 > [!div class="nextstepaction"]
-> [安装 Azure Stack Edge Pro](./azure-stack-edge-deploy-install.md)
+> [安装 Azure Stack Edge Pro FPGA](./azure-stack-edge-deploy-install.md)

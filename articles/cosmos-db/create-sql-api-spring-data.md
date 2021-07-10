@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/07/2021
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 1cb218b0a779bc750cebfb4b7ae4a6bb285c2af3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9241c7a95641a938b494cba5e1d661a77d0eb98a
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073716"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112235101"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入门：构建一个 Spring Data Azure Cosmos DB v3 应用以管理 Azure Cosmos DB SQL API 数据
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -64,20 +64,20 @@ Cosmos DB 帐户的结构。 不管使用 API 还是编程语言，都具有以�
 
 在创建文档数据库之前，需通过 Azure Cosmos DB 创建 SQL API 帐户。
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="add-a-container"></a>添加容器
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](includes/cosmos-db-create-collection.md)]
 
 <a id="add-sample-data"></a>
 ## <a name="add-sample-data"></a>添加示例数据
 
-[!INCLUDE [cosmos-db-create-sql-api-add-sample-data](../../includes/cosmos-db-create-sql-api-add-sample-data.md)]
+[!INCLUDE [cosmos-db-create-sql-api-add-sample-data](includes/cosmos-db-create-sql-api-add-sample-data.md)]
 
 ## <a name="query-your-data"></a>查询数据
 
-[!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
+[!INCLUDE [cosmos-db-create-sql-api-query-data](includes/cosmos-db-create-sql-api-query-data.md)]
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -158,11 +158,11 @@ Spring Data value-add 也来自其简单、干净、标准化和独立于平台�
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+[!INCLUDE [cosmosdb-delete-resource-group](includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

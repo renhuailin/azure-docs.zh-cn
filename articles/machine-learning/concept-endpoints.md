@@ -10,14 +10,14 @@ ms.author: seramasu
 author: rsethur
 ms.reviewer: laobri
 ms.date: 05/25/2021
-ms.openlocfilehash: 472af8cdb377ea5eb1be15ebcfadabb38311545a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bc1983a16ba2ec85dc943e10d7b2220b0de1dc88
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382458"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408526"
 ---
-# <a name="what-are-azure-machine-learning-endpoints-preview"></a>什么是 Azure 机器学习终结点（预览版）？
+# <a name="what-are-azure-machine-learning-endpoints-preview"></a>什么是 Azure 机器学习终结点（预览版）？ 
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
@@ -140,7 +140,7 @@ Azure 机器学习使用终结点和部署的概念实现不同类型的终结�
 :::image type="content" source="media/concept-endpoints/endpoint-deployment-costs.png" alt-text="终结点和部署的成本图的屏幕截图":::
 
 - 查看成本 
-    - 托管联机终结点允许[在终结点和部署级别监视成本](how-to-view-online-endpoints-costs.md)
+    - 通过托管联机终结点可[在终结点和部署级别监视成本](how-to-view-online-endpoints-costs.md)
 
 有关分步教程，请参阅[如何部署托管联机终结点](how-to-deploy-managed-online-endpoints.md)。
 

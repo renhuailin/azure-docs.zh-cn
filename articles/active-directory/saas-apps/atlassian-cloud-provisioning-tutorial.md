@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 691d35267c255c933a8098b99301fbb795a3cd0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 172ffe8b5028032c38f5c86a7289cef4250653a4
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181061"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614942"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>教程：为 Atlassian Cloud 配置自动用户设置
 
@@ -88,7 +88,7 @@ ms.locfileid: "96181061"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
@@ -104,7 +104,9 @@ ms.locfileid: "96181061"
 
 8. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Atlassian Cloud” 。
 
-9. 在“特性映射”部分中，查看从 Azure AD 同步到 Atlassian Cloud 的用户特性。 选为“匹配”属性的特性用于匹配 Atlassian Cloud 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改  。
+9. 在“特性映射”部分中，查看从 Azure AD 同步到 Atlassian Cloud 的用户特性。
+   电子邮件属性将用于将 Atlassian Cloud 帐户与 Azure AD 帐户匹配。
+   选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|
    |---|---|
@@ -116,7 +118,9 @@ ms.locfileid: "96181061"
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Atlassian Cloud” 。
 
-11. 在“特性映射”部分中，查看从 Azure AD 同步到 Atlassian Cloud 的组特性。 选为“匹配”属性的特性用于匹配 Atlassian Cloud 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
+11. 在“特性映射”部分中，查看从 Azure AD 同步到 Atlassian Cloud 的组特性。
+    显示名称属性将用于将 Atlassian Cloud 组与 Azure AD 组匹配。
+    选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|
       |---|---|
@@ -134,7 +138,7 @@ ms.locfileid: "96181061"
 
     ![预配范围](common/provisioning-scope.png)
 
-16. 已准备好预配时，单击“保存”  。
+15. 已准备好预配时，单击“保存”  。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 

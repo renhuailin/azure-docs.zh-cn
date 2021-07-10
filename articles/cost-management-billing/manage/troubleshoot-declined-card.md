@@ -1,23 +1,23 @@
 ---
 title: 对 Azure 注册时卡被拒进行故障排除
-description: 解决在 Azure 门户或帐户中心注册 Azure 时信用卡被拒的问题。
+description: 解决在 Azure 门户注册 Azure 时信用卡被拒的问题。
 author: v-miegge
 ms.reviewer: judupont
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 05/13/2021
 ms.author: banders
-ms.openlocfilehash: 5b53d1855abb3114be1ab31e19af3bb3a11d722f
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e2295a974baec9a841e79873568f3f3c7c835544
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132153"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470842"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>对 Azure 注册时卡被拒进行故障排除
 
-可能会遇到问题或错误，其中在 Microsoft Azure 门户或 Azure 帐户中心进行 Azure 注册时拒绝了信用卡。
+在 Microsoft Azure 门户中注册 Azure 时，可能会遇到信用卡被拒绝的问题或错误。
 
 若要解决问题，请在下面选择最接近错误的主题。
 
@@ -42,9 +42,9 @@ ms.locfileid: "92132153"
 
 你可能会遇到其他注册问题
 
-有关如何排查 Azure 注册问题的详细信息，请参阅以下知识库文章：
+有关如何排查 Azure 注册问题的详细信息，请参阅以下文章：
 
-[无法在 Azure 门户或 Azure 帐户中心注册 Azure](troubleshoot-azure-sign-up.md)
+[无法在 Azure 门户中注册 Azure](troubleshoot-azure-sign-up.md)
 
 ## <a name="you-represent-a-business-that-doesnt-want-to-pay-by-card"></a>你所代表的企业不想用卡支付
 

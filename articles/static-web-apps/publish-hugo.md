@@ -5,16 +5,16 @@ services: static-web-apps
 author: aaronpowell
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 05/08/2020
+ms.date: 05/11/2021
 ms.author: aapowell
-ms.openlocfilehash: 4539c32a367bb0974212d989176a96b530da21a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5257d57221e946ac63559b324e7032e1ba78041e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652321"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069645"
 ---
-# <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教程：将 Hugo 站点发布到 Azure 静态 Web 应用（预览版）
+# <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps"></a>教程：将 Hugo 站点发布到 Azure 静态 Web 应用
 
 本文演示如何创建 [Hugo](https://gohugo.io/) Web 应用程序并将其部署到 [Azure 静态 Web 应用](overview.md)。 最终结果是一个全新的 Azure 静态 Web 应用，其中包含关联的 GitHub Actions，使你可以控制生成和发布应用的方式。
 
@@ -98,56 +98,42 @@ ms.locfileid: "100652321"
 ### <a name="create-the-application"></a>创建应用程序
 
 1. 导航到 [Azure 门户](https://portal.azure.com)
-1. 单击“创建资源”
+1. 选择“创建资源”
 1. 搜索“静态 Web 应用”
-1. 单击“静态 Web 应用(预览)”
-1. 单击“创建” 
+1. 选择“Static Web Apps”
+1. 选择“创建”
+1. 在“基本信息”选项卡上，输入下列值。
 
-   :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="在门户中创建 Azure 静态 Web 应用资源":::
+    | 属性 | 值 |
+    | --- | --- |
+    | _订阅_ | Azure 订阅名称。 |
+    | _资源组_ | my-hugo-group  |
+    | _名称_ | hugo-static-app |
+    | _计划类型_ | **免费** |
+    | Azure Functions API 和过渡环境的区域 | 选择离你最近的区域。 |
+    | _Source_ | **GitHub** |
 
-1. 对于“订阅”，请接受列出的订阅，或从下拉列表中选择一个新订阅。
+1. 选择“使用 GitHub 登录”，然后向 GitHub 进行身份验证。
 
-1. 在“资源组”中选择“新建”。 在“新资源组名称”中，输入“hugo-static-app”并选择“确定”。
+1. 输入以下 GitHub 值。
 
-1. 接下来，在“名称”框中输入应用名称。 有效字符包括 `a-z`、`A-Z`、`0-9` 和 `-`。
+    | 属性 | 值 |
+    | --- | --- |
+    | 组织 | 选择你所需的 GitHub 组织。 |
+    | 存储库 | 选择“hugo-static-app”。 |
+    | 分支 | 选择“主要”。 |
 
-1. 对于“区域”，选择靠近你的可用区域。
-
-1. 对于“SKU”，选择“免费”。
-
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="已填写的详细信息":::
-
-1. 单击“使用 GitHub 登录”按钮。
-
-1. 选择在其中创建存储库的“组织”。
-
-1. 选择“hugo-static-app”作为“存储库”。
-
-1. 为“分支”选择“主”。
-
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="已完成的 GitHub 信息":::
-
-### <a name="build"></a>构建
-
-接下来，添加生成过程用于生成应用的配置设置。 以下设置配置 GitHub Actions 工作流文件。
-
-1. 单击“下一步:生成 >”按钮以编辑生成配置
-
-1. 将“应用位置”设置为 /。
-
-1. 将“应用项目位置”设置为“公共”。
-
-   “API 位置”的值不是必需的，因为目前不会部署 API。
+1. 在“生成详细信息”部分，从“生成预设”下拉列表中选择“Hugo”，并保留默认值。
 
 ### <a name="review-and-create"></a>查看并创建
 
-1. 单击“查看 + 创建”按钮以验证详细信息是否都正确。
+1. 选择“查看 + 创建”按钮以验证详细信息是否都正确。
 
-1. 单击“创建”以开始创建 Azure 静态 Web 应用并为部署预配 GitHub Action。
+1. 选择“创建”以开始创建应用服务静态 Web 应用并为部署预配 GitHub 操作。
 
-1. 等待 GitHub Actions 完成。
+1. 部署完成后，单击“转到资源”。
 
-1. 在 Azure 门户的新建 Azure 静态 Web 应用资源的“概述”窗口中，单击“URL”链接以打开已部署的应用程序。
+1. 在资源屏幕中，单击 URL 链接，打开已部署的应用程序。 可能需要等待一两分钟，GitHub 操作才能完成。
 
    :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="已部署的应用程序":::
 
@@ -167,7 +153,7 @@ jobs:
           submodules: true
       - name: Build And Deploy
         id: builddeploy
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)

@@ -20,6 +20,12 @@ items:
         href: manage-kafka-dotnet.md
   - name: 教程
     items:
+      - name: 大规模载入 Azure 数据源
+        items:
+          - name: 大规模进行 Azure 数据源就绪情况检查
+            href: tutorial-data-sources-readiness.md
+          - name: 大规模进行 Azure Purview MSI 配置
+            href: tutorial-msi-configuration.md
       - name: 初学者工具包
         items:
           - name: 扫描数据
@@ -196,6 +202,8 @@ items:
     items:
       - name: 支持的分类
         href: supported-classifications.md
+      - name: Azure Purview 产品词汇表
+        href: reference-purview-glossary.md
       - name: ABAP 函数部署指南
         href: abap-functions-deployment-guide.md
   - name: 资源

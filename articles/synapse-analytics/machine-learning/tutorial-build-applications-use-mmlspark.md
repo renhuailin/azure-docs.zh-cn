@@ -9,12 +9,12 @@ ms.reviewer: ''
 ms.date: 03/08/2021
 author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: aeb0e84400ae4a4d48bd070e9c9902c5b005ac9e
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: 8a4c5892e5b7b542177376fcd0adae76527957a8
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109664863"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578074"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>教程：使用适用于 Apache Spark 的 Microsoft 机器学习生成机器学习应用程序（预览）
 
@@ -39,7 +39,7 @@ Synapse Spark 提供内置的 MMLSpark 库，包括：
 ## <a name="prerequisites"></a>先决条件 
 
 - [Azure Synapse Analytics 工作区](../get-started-create-workspace.md)，其中 Azure Data Lake Storage Gen2 存储帐户配置为默认存储。 你需要成为所使用的 Data Lake Storage Gen2 文件系统的存储 Blob 数据参与者。
-- Azure Synapse Analytics 工作区中的 Spark 池。 有关详细信息，请参阅[在 Azure Synapse 中创建 Spark 池](../quickstart-create-sql-pool-studio.md)。
+- Azure Synapse Analytics 工作区中的 Spark 池。 有关详细信息，请参阅[在 Azure Synapse 中创建 Spark 池](../get-started-analyze-spark.md)。
 - [在 Azure Synapse 中配置认知服务](./tutorial-configure-cognitive-services-synapse.md)教程中所述的预配置步骤。
 
 
@@ -81,7 +81,7 @@ df_sentences = spark.createDataFrame([
 # Run the Text Analytics service with options
 sentiment = (TextSentiment()
     .setTextCol("text")
-    .setLocation("eastasia")
+    .setLocation("eastasia") # Set the location of your cognitive service
     .setSubscriptionKey(cognitive_service_key)
     .setOutputCol("sentiment")
     .setErrorCol("error")
@@ -114,7 +114,7 @@ df_images = spark.createDataFrame([
 
 # Run the Computer Vision service. Analyze Image extracts information from/about the images.
 analysis = (AnalyzeImage()
-    .setLocation("eastasia")
+    .setLocation("eastasia") # Set the location of your cognitive service
     .setSubscriptionKey(cognitive_service_key)
     .setVisualFeatures(["Categories","Color","Description","Faces","Objects","Tags"])
     .setOutputCol("analysis_results")
@@ -240,6 +240,39 @@ display(anamoly_detector.transform(df_timeseriesdata).select("timestamp", "value
 |1973-01-01T00:00:00Z|881.0|false|
 |1973-02-01T00:00:00Z|837.0|false|
 |1973-03-01T00:00:00Z|9000.0|是|
+
+
+## <a name="speech-to-text-sample"></a>语音转文本示例
+
+[语音转文本](../../cognitive-services/speech-service/index-text-to-speech.yml)服务将语音音频的流或文件转换为文本。 本示例将一个音频文件转录为文本。 
+
+```python
+# Create a dataframe with our audio URLs, tied to the column called "url"
+df = spark.createDataFrame([("https://mmlspark.blob.core.windows.net/datasets/Speech/audio2.wav",)
+                           ], ["url"])
+
+# Run the Speech-to-text service to translate the audio into text
+speech_to_text = (SpeechToTextSDK()
+    .setSubscriptionKey(service_key)
+    .setLocation("northeurope") # Set the location of your cognitive service
+    .setOutputCol("text")
+    .setAudioDataCol("url")
+    .setLanguage("en-US")
+    .setProfanity("Masked"))
+
+# Show the results of the translation
+display(speech_to_text.transform(df).select("url", "text.DisplayText"))
+```
+### <a name="expected-results"></a>预期结果
+
+|url | DisplayText |
+|--|--|
+| `https://mmlspark.blob.core.windows.net/datasets/Speech/audio2.wav` | 自定义语音识别提供了一些工具，通过比较音频数据和自定义语音门户的相应识别结果，你可以直观地检查模型的识别质量。 你可以播放上传的音频，并确定提供的识别结果是否正确。 使用此工具，可以快速检查 Microsoft 的基准语音转文本模型或经过训练的自定义模型的质量，而无需转录任何音频数据。|
+
+## <a name="clean-up-resources"></a>清理资源
+为了确保关闭 Spark 实例，请结束任何已连接的会话（笔记本）。 达到 Apache Spark 池中指定的空闲时间时，池将会关闭。 也可以从笔记本右上角的状态栏中选择“停止会话”。
+
+![显示“停止会话”的屏幕截图](./media/tutorial-build-applications-use-mmlspark/stop-session.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 04/07/2021
+ms.date: 06/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 43477f11effaafb0bcd6158be6843c79d19092ac
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 0dd8b103f81ea911a079aee6590287a939819b52
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210804"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982369"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>快速入门：开始使用 Azure Stack Edge Pro with GPU 
 
@@ -30,7 +30,7 @@ ms.locfileid: "107210804"
 1. 配置网络，使设备可访问[列出的 URL 模式和端口](azure-stack-edge-gpu-system-requirements.md#networking-port-requirements)。 
 1. 对 Azure 订阅具有所有者或参与者访问权限。
 1. 在 Azure 门户中，转到“主页”>“订阅”> 你的订阅 >“资源提供程序”。 搜索 `Microsoft.DataBoxEdge` 并注册该资源提供程序。 如果要创建 IoT 中心资源来部署计算工作负荷，请重复注册 `Microsoft.Devices`。
-1. 确保为 Kubernetes 节点提供至少 2 个免费的连续静态 IP，为 IoT Edge 服务提供至少 1 个静态 IP。 对于部署的每个模块或外部服务，需要 1 个额外的 IP。
+1. 确保为 Kubernetes 节点提供至少 2 个免费的连续静态 IP，为 IoT Edge 服务提供至少 1 个静态 IP。 所部署的每个模块或外部服务都另需 1 个 IP。
 1. 请参阅[部署清单](azure-stack-edge-gpu-deploy-checklist.md)，获取设备配置所需的一切。 
 
 
@@ -72,11 +72,8 @@ ms.locfileid: "107210804"
 
 12. **配置计算**：在 Azure 门户中，转到“概述”>“设备”。 确认设备处于联机状态。 在左窗格中，转到“边缘计算”>“入门”>“配置边缘计算”>“计算”。 提供现有或新的 IoT 中心服务，并等待大约 20 分钟的时间完成计算配置。 请在[教程：在 Azure Stack Edge Pro GPU 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中查看详细信息
 
-现在即可在设备上[通过 IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)、[通过 `kubectl`](azure-stack-edge-gpu-create-kubernetes-cluster.md) 或[通过启用了 Azure Arc 的 Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) 部署计算工作负荷！ 如果在设置过程中遇到任何问题，请转到[排查设备问题]()、[订购问题](azure-stack-edge-gpu-troubleshoot.md)、[证书问题](azure-stack-edge-gpu-certificate-troubleshooting.md)或 Kubernetes 问题。 
+现在即可在设备上[通过 IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)、[通过 `kubectl`](azure-stack-edge-gpu-create-kubernetes-cluster.md) 或[通过启用了 Azure Arc 的 Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) 部署计算工作负荷！ 如果在设置过程中遇到任何问题，请参阅针对 [Azure Stack Edge Pro GPU 设备](azure-stack-edge-gpu-troubleshoot.md)、[证书问题](azure-stack-edge-gpu-certificate-troubleshooting.md)或 [IoT Edge 问题](azure-stack-edge-gpu-troubleshoot-iot-edge.md)的故障排除信息。 
 
 ## <a name="next-steps"></a>后续步骤
 
 [安装 Azure Stack Edge Pro GPU](./azure-stack-edge-gpu-deploy-install.md)
-
-
-

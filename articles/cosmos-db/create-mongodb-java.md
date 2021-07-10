@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: f6d590ff4f7cdb052f9177f23e9bfe14c8792b6a
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 026e40595adcf22b119f223b289ba496f61c8e7a
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206450"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112235380"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>快速入门：在 Azure Cosmos DB 中使用 Java 和 MongoDB API 创建控制台应用
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -37,13 +37,13 @@ ms.locfileid: "108206450"
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
-[!INCLUDE [mongodb-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
+[!INCLUDE [mongodb-create-dbaccount](includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ## <a name="add-a-collection"></a>添加集合
 
 将新数据库命名为 **db**，将新集合命名为 **coll**。
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-mongodb-create-collection.md)] 
+[!INCLUDE [cosmos-db-create-collection](includes/cosmos-db-mongodb-create-collection.md)] 
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -125,11 +125,11 @@ ms.locfileid: "108206450"
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+[!INCLUDE [cosmosdb-delete-resource-group](includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

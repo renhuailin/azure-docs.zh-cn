@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 05/13/2021
+ms.date: 05/28/2021
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37118a84468743053e6f825bf982b3073c5545d3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 739c20cb39db5fda3a182bc4c5379d0bc9c4d06e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060790"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690343"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C 的标识保护和条件访问
 
@@ -26,7 +26,7 @@ ms.locfileid: "110060790"
 ![B2C 租户中的条件访问](media/conditional-access-identity-protection-overview/conditional-access-b2c.png)
 
 > [!NOTE]
-> 若要使用条件访问，需要 Azure AD B2C 高级 P2。
+> 创建风险登录策略需要 Azure AD B2C **Premium P2**。 **Premium P1** 租户可以创建基于位置、应用程序的策略，也可以创建基于用户或基于组的策略。 有关详细信息，请参阅[更改 Azure AD B2C 定价层](billing.md#change-your-azure-ad-pricing-tier)。
 
 ## <a name="benefits-of-identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C 的标识保护和条件访问的优点  
 

@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文本转语音
-ms.openlocfilehash: 73e37fde4b3c2dd1aeb6ab171c3726f1b4353949
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 53b4d7a3e8b0831856f2b43fac40962fe81065d1
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106082"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478081"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
@@ -44,12 +44,9 @@ ms.locfileid: "107106082"
 
 * 神经语音 - 深层神经网络用于克服有关口语中的重读和语调的传统语音合成限制。 韵律预测和语音合成以同步方式执行，使输出听起来更流畅且自然。 使用神经语音可使得与聊天机器人和语音助手的交流更加自然且富有吸引力、将数字文本（如电子书）转换为有声读物以及增强车载导航系统。 神经语音可以生成类人的自然韵律和清晰的字词发音，当你在与 AI 系统交互时，它可以显著减轻听力疲劳。 有关神经语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
-* 使用 SSML 调整说话风格 - 语音合成标记语言 (SSML) 是一种基于 XML 的标记语言，用于自定义语音转文本输出。 使用 SSML，你可以调整音调、添加暂停、改进发音、提高或降低语速、增加或减少音量，以及将多个语音赋予单个文档。 请参阅[操作说明](speech-synthesis-markup.md)调整说话风格。
+* 使用 SSML 优化 TTS 输出 - 语音合成标记语言 (SSML) 是一种基于 XML 的标记语言，用于对文本转语音输出进行自定义。 使用 SSML，你不仅可以调整音调、添加暂停、改进发音、改变语速、调整音量，以及将多个语音分配到一个文档，还可以定义你自己的词典或者转换为不同的说话风格。 使用多语言语音，还可通过 SSML 调整说话语言。 请参阅[如何使用 SSML](speech-synthesis-markup.md) 根据场景微调语音输出。 
 
-* 视素 - [视素](how-to-speech-synthesis-viseme.md)是观察到的语音中的关键姿态，包括在产生特定音素时嘴唇、下巴和舌头的位置。 视素与语音和音素有很强的关联性。 使用语音 SDK 中的视素事件，可以生成面部动画数据，用于制作唇读交流、教育、娱乐、客户服务等方面的面部动画。
-
-> [!NOTE]
-> 目前只支持 `en-US-AriaNeural` 语音的视素事件。
+* 视素 - [视素](how-to-speech-synthesis-viseme.md)是观察到的语音中的关键姿态，包括在产生特定音素时嘴唇、下巴和舌头的位置。 视素与语音和音素有很强的关联性。 使用语音 SDK 中的视素事件，可以生成面部动画数据，用于制作唇读交流、教育、娱乐、客户服务等方面的面部动画。 Viseme 目前仅支持 `en-US` 英语（美国）[神经语音](language-support.md#text-to-speech)。
 
 ## <a name="get-started"></a>入门
 
@@ -64,7 +61,7 @@ GitHub 上提供了文本转语音的示例代码。 这些示例涵盖了最流
 
 ## <a name="customization"></a>自定义
 
-除了神经语音外，还可以创建和微调产品或品牌独有的自定义语音。 只需准备好几个音频文件和关联的听录内容即可完全入门。 有关详细信息，请参阅[自定义语音入门](how-to-custom-voice.md)
+除了神经语音外，还可以创建和微调产品或品牌独有的自定义语音。 只需准备好几个音频文件和关联的听录内容即可完全入门。 有关详细信息，请参阅[自定义神经语音入门](how-to-custom-voice.md)
 
 ## <a name="pricing-note"></a>定价说明
 

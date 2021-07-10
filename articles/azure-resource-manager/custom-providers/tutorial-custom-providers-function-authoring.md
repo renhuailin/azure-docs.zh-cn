@@ -5,19 +5,19 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jobreen
-ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49a2d242ef5cdb9304a9b94d29328c8379a05f46
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98200203"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755614"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>创作自定义提供程序的 RESTful 终结点
 
 自定义提供程序是 Azure 与终结点之间的协定。 使用自定义提供程序，可以在 Azure 上自定义工作流。 本教程介绍如何创作自定义提供程序的 RESTful 终结点。 如果不熟悉 Azure 自定义提供程序，请参阅[自定义资源提供程序概述](overview.md)。
 
 > [!NOTE]
-> 本教程在[设置用于 Azure 自定义提供程序的 Azure Functions](./tutorial-custom-providers-function-setup.md) 教程的基础上编写。 本教程中的某些步骤只有在已将某个 Azure 函数应用设置为与自定义提供程序配合使用的情况下才生效。
+> 本教程在[设置用于 Azure 自定义提供程序的 Azure Functions](./tutorial-custom-providers-function-setup.md) 教程的基础上编写。 本教程中的某些步骤只有在已将某个函数应用在 Azure Functions 中设置为与自定义提供程序配合使用的情况下才生效。
 
 ## <a name="work-with-custom-actions-and-custom-resources"></a>使用自定义操作和自定义资源
 
@@ -259,7 +259,7 @@ public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRe
 
 ```csharp
 /// <summary>
-/// Entry point for the Azure function app webhook that acts as the service behind a custom provider.
+/// Entry point for the function app webhook that acts as the service behind a custom provider.
 /// </summary>
 /// <param name="requestMessage">The HTTP request message.</param>
 /// <param name="log">The logger.</param>

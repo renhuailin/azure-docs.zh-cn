@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 05/19/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 456decb74534cfd3ca5bfbf966c57b4182814225
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ebf2fd078f5492537455c5819235d359367613cb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952604"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110482261"
 ---
 # <a name="quickstart-get-started-with-elastic"></a>快速入门：Elastic 入门
 
@@ -51,7 +51,7 @@ ms.locfileid: "111952604"
     | **订阅** | 从下拉菜单，选择你对其具有所有者访问权限的 Azure 订阅。 |
     | **资源组** | 指定是要创建新的资源组还是使用现有资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../azure-resource-manager/management/overview.md)。 |
     | Elastic 帐户名称 | 为要创建的 Elastic 帐户提供名称 |
-    | **区域** | 选择“美国西部 2”或“英国南部” 。 在预览期间，Elastic 仅支持这些区域。 |
+    | 区域 | 选择“美国西部 2”或“英国南部” 。 在预览期间，Elastic 仅支持这些区域。 |
     | 定价计划 | 即用即付。 |
     | **价格** | 基于选定的 Elastic 计划指定。 |
 
@@ -65,7 +65,7 @@ ms.locfileid: "111952604"
 
    订阅日志提供[管理平台](../../azure-resource-manager/management/control-plane-and-data-plane.md)的订阅中针对各个 Azure 资源操作的见解。 这些日志还提供有关服务运行状况事件的更新。 使用活动日志，可确定订阅中针对资源的任何写入操作（PUT、POST、DELETE）的“什么操作”、“谁操作”和“操作时间”等信息。 每个 Azure 订阅都具有单个活动日志。
 
-   Azure 资源日志提供在[数据平面](../../azure-resource-manager/management/control-plane-and-data-plane.md)内发生的操作的见解。 例如，从密钥保管库获取密钥或向数据库发出请求都是数据平面活动。 资源日志的内容因 Azure 服务和资源类型而异。 Azure 资源日志的类型在 [Azure Monitor 资源日志类别](../../azure-monitor/essentials/resource-logs-categories.md)中列出。
+   Azure 资源日志提供在[数据平面](../../azure-resource-manager/management/control-plane-and-data-plane.md)内发生的操作的见解。 例如，从密钥保管库获取密钥或向数据库发出请求都是数据平面活动。 资源日志的内容因 Azure 服务和资源类型而异。 Azure 资源日志的类型在 [Azure Monitor 资源日志类别](../../azure-monitor/platform/resource-logs-categories.md)中列出。
 
    要筛选发送日志到 Elastic 的 Azure 资源，请使用资源标记。 发送日志的标记规则是：
 

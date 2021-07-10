@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/07/2021
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: a46978e55e41cb05bb4a270c8c241c244e3c5021
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 67ec2cc71a0068bc25bc85767c81e6cfcc4b2152
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100425"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234886"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Node.js 连接和查询 Azure Cosmos DB SQL API 帐户中的数据
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,15 +57,15 @@ ms.locfileid: "110100425"
 
 ## <a name="add-a-container"></a>添加容器
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](includes/cosmos-db-create-collection.md)]
 
 ## <a name="add-sample-data"></a>添加示例数据
 
-[!INCLUDE [cosmos-db-create-sql-api-add-sample-data](../../includes/cosmos-db-create-sql-api-add-sample-data.md)]
+[!INCLUDE [cosmos-db-create-sql-api-add-sample-data](includes/cosmos-db-create-sql-api-add-sample-data.md)]
 
 ## <a name="query-your-data"></a>查询数据
 
-[!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
+[!INCLUDE [cosmos-db-create-sql-api-query-data](includes/cosmos-db-create-sql-api-query-data.md)]
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -172,7 +172,7 @@ npm install @azure/cosmos
 
    `key: "<Your Azure Cosmos account key>"`
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 1. 在终端中运行 `npm install`，安装“@azure/cosmos”npm 包
 
@@ -184,7 +184,7 @@ npm install @azure/cosmos
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
+[!INCLUDE [cosmosdb-tutorial-review-slas](includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

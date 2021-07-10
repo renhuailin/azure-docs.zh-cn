@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64536024af7e939de2bd8f98a9ce14bb4df3303f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c447bae82f4e8eb428942bdf807f6ebf23b4043c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98611906"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070347"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>将现有林和新林与单个 Azure AD 租户集成
 
@@ -69,7 +69,10 @@ ms.locfileid: "98611906"
 9. 在“配置完成”屏幕上，单击“确认”。   此操作将注册并重启代理。</br>
 ![显示“配置完成”屏幕的屏幕截图。](media/how-to-install/install-4a.png)</br>
 
-10. 此操作完成后，会显示一条通知：“已成功验证代理配置”。   可以单击“退出”。</br>
+   > [!NOTE]
+   > 组托管服务帐户（例如 CONTOSO\provAgentgMSA$）是在主机服务器加入的同一 Active Directory 域中创建的。
+
+10. 此操作完成后，会显示一条通知：“已成功验证代理配置”。  可以单击“退出”。</br>
 ![欢迎屏幕](media/how-to-install/install-5.png)</br>
 11. 如果仍然显示了初始屏幕，请单击“关闭”。
 

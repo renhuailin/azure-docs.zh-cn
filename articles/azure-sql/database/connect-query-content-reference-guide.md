@@ -4,20 +4,20 @@ description: 指向 Azure SQL 数据库快速入门的链接，介绍如何连�
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: connect
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: guide
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: dzsquared
+ms.author: drskwier
+ms.reviewer: mathoma
 ms.date: 03/17/2021
-ms.openlocfilehash: 96b52c80fa06be8c157ad39fd65be4e491e0cbe3
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 8ba88b2d740eb723fa05ff6e9587a181dbaa56f6
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874812"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694663"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL 数据库和 Azure SQL 托管实例连接和查询文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -78,6 +78,20 @@ Microsoft 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连
 
 默认情况下，非 Microsoft 驱动程序可能不会使用 TLS。 连接到 Azure SQL 数据库或 Azure SQL 托管实例时，这可能是一个因素。 使用嵌入式驱动程序的应用程序可能不允许你控制这些连接设置。 我们建议你在与敏感数据进行交互的系统上使用此类驱动程序和应用程序之前，检查这些程序的安全性。
 
+## <a name="drivers"></a>驱动程序
+
+如果要连接到 Azure SQL 数据库，建议使用以下最低版本的工具和驱动程序：
+
+| 驱动程序/工具 | 版本 |
+| --- | --- |
+|.NET framework | 4.6.1（或 .NET Core） |
+|ODBC 驱动程序| v17 |
+|PHP 驱动程序| 5.2.0 |
+|JDBC 驱动程序| 6.4.0 |
+|Node.js 驱动程序| 2.1.1 |
+|OLEDB 驱动程序| 18.0.2.0 |
+|[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 或更高版本 |
+
 ## <a name="libraries"></a>库
 
 可以使用各种库和框架连接到 Azure SQL 数据库或 Azure SQL 托管实例。 请查看[快速入门教程](https://aka.ms/sqldev)，了解 C#、Java、Node.js、PHP、Python 等编程语言的快速入门方式。 然后使用基于 Linux 或 Windows 的 SQL Server 或基于 macOS 的 Docker 生成一个应用。
@@ -93,6 +107,8 @@ Microsoft 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连
 | Python | Windows、Linux、macOS | [Python SQL 驱动程序](/sql/connect/python/python-driver-for-sql-server/) | 安装选项： <br/> \* [pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \* [pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [入门](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows、Linux、macOS | [用于 SQL Server 的 Ruby 驱动程序](/sql/connect/ruby/ruby-driver-for-sql-server/) | [安装](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development/) | [入门](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Windows、Linux、macOS | [用于 SQL Server 的 Microsoft ODBC 驱动程序](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server/) | [下载](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server/) |  
+
+### <a name="data-access-frameworks"></a>数据访问框架
 
 下表列出了客户端应用程序可以与 SQL Server、Azure SQL 数据库、Azure SQL 托管实例或 Azure Synapse Analytics 一起使用的对象关系映射 (ORM) 框架和 Web 框架的示例。 可以在 Linux、Windows 或 Docker 上使用这些框架。
 

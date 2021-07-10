@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d2b80dfa091d6a2b892c8baf8e9c35084c5bee4e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: caed40f91ef6a6c1e8bdb353c6548aee699dbc07
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076382"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110795421"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>教程：从 Google Maps 迁移 Web 服务
 
@@ -50,7 +50,7 @@ Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访�
 | 速度限制            | 请参阅[对坐标进行反向地理编码](#reverse-geocode-a-coordinate)部分。         |         
 | 静态地图              | [Render](/rest/api/maps/render/getmapimage)                       |                         
 | 时区               | [时区](/rest/api/maps/timezone)                              |                         
-| Elevation               | [高程（预览版）](/rest/api/maps/elevation)                   | 
+| Elevation               | [提升](/rest/api/maps/elevation)                   | 
 
 以下服务 API 目前在 Azure Maps 中不可用：
 
@@ -203,7 +203,7 @@ Azure Maps 路线服务提供以下 API 来计算路线：
 
 - [**计算路线**](/rest/api/maps/route/getroutedirections)：计算路线并立即处理请求。 此 API 支持 GET 和 POST 请求。 指定大量中途点或使用大量路线选项时，建议使用 POST 请求，以确保 URL 请求不会太长并导致出现问题。 Azure Maps 中的“POST 路线方向”有一个选项，该选项可以接受数千个[支持点](/rest/api/maps/route/postroutedirections#supportingpoints)，并将使用这些支持点在它们之间重新创建一个逻辑路线路径（对齐到道路）。 
 - [**批处理路线**](/rest/api/maps/route/postroutedirectionsbatchpreview)：创建最多包含 1,000 个路线请求的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
-- [**出行服务（预览）**](/rest/api/maps/mobility)：使用公共交通计算路线和方向。
+- [出行服务（预览版）](/rest/api/maps/mobility)：使用公共交通计算路线和方向。
 
 下表对 Google Maps API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 

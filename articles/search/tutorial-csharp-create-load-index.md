@@ -7,15 +7,15 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 04/23/2021
+ms.date: 05/21/2021
 ms.custom: devx-track-csharp
 ms.devlang: dotnet
-ms.openlocfilehash: b7bbf9f1ec572680f02e4b6d3adca6d807b45f83
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 7822f86b52bf3b8fce9ee144797d8a9b83d90a9b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107981940"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469845"
 ---
 # <a name="2---create-and-load-search-index-with-net"></a>2 - 使用 .NET 创建和加载搜索索引
 
@@ -103,6 +103,14 @@ ms.locfileid: "107981940"
 
 > [!CAUTION]
 > 尽管您可能会尝试在 Azure Function 中使用搜索管理密钥，但这并不遵循最低权限原则。 Azure Function 将使用查询密钥以符合最小特权。 
+
+## <a name="rollback-bulk-import-file-changes"></a>回滚批量导入文件更改
+
+在 `bulk-insert` 目录中的 VS Code 集成终端使用以下 git 命令来回滚更改。 它们不是继续学习教程所必需的，不应将这些机密保存或推送到你的存储库。 
+
+```git
+git checkout .
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: 57f3cf0cb15243d054da0111366f3a1dc0fb5349
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 78986eca3d1db65afb8ac4e0ca8ff76a0e3201eb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95739751"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110451955"
 ---
 # <a name="whats-new-in-custom-vision"></a>自定义视觉中的新增功能
 
-了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。
+了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
 
 
 ## <a name="october-2020"></a>2020 年 10 月 

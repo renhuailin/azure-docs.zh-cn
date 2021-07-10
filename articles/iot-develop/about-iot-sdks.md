@@ -6,12 +6,12 @@ ms.author: philmea
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: c35a9045bf809c03630fbb7c57f9d31e7b143422
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 2e8a503731cc8e3774b898241140ef1bfaa72619
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876450"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591198"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT 设备 SDK 概述
 
@@ -49,7 +49,7 @@ Azure IoT 设备 SDK 可以由多种语言实现，因此你可以选择你喜�
 
 ## <a name="how-can-i-get-started"></a>如何入门？
 
-首先要了解 Azure 设备 SDK 的 GitHub 存储库。 还可以尝试[快速入门](quickstart-send-telemetry-python.md)，其中展示了如何快速使用 SDK 向 Azure IoT 发送遥测。
+首先要了解 Azure 设备 SDK 的 GitHub 存储库。 还可以尝试[快速入门](quickstart-send-telemetry-central.md)，其中展示了如何快速使用 SDK 向 Azure IoT 发送遥测。
 
 入门选项取决于你的设备类型：
 - 对于受限设备，请使用 [Embedded C SDK](#embedded-c-sdk)。 
@@ -163,7 +163,7 @@ Node.js 设备预配服务 SDK：[GitHub 存储库](https://github.com/Azure/azu
 
 ## <a name="next-steps"></a>后续步骤
 
-* [快速入门：将设备连接到 IoT Central (Python)](quickstart-send-telemetry-python.md)
-* [快速入门：将设备连接到 IoT 中心 (Python)](quickstart-send-telemetry-cli-python.md)
-* [嵌入式开发入门](quickstart-device-development.md)
+* [快速入门：将遥测数据发送到 IoT Central](quickstart-send-telemetry-central.md)
+* [快速入门：将遥测数据发送到 IoT 中心](quickstart-send-telemetry-iot-hub.md)
+* [快速入门：将 MXCHIP AZ3166 Devkit 连接到 IoT Central](quickstart-devkit-mxchip-az3166.md)
 * 详细了解[使用 Azure IoT SDK 进行开发的好处](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)

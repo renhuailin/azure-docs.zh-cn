@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/06/2020
 ms.author: duau
-ms.custom: seodec18
-ms.openlocfilehash: eda575e0f29abbe18750a24fbfc212a9d84819cf
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 7242749958d12b8d93f667b91ed005096d75f1e4
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110353"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538726"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit"></a>教程：将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -31,6 +31,8 @@ ms.locfileid: "106110353"
 * 单个 VNet 可最多连接到 16 条 ExpressRoute 线路。 使用本文中的步骤为要连接的每条 ExpressRoute 线路创建新的连接对象。 ExpressRoute 线路可在同一订阅、不同订阅或两者兼有。
 
 * 如果启用 ExpressRoute 高级版加载项，则可以链接 ExpressRoute 线路的地缘政治区域外部的虚拟网络。 通过高级版加载项，你还可以根据所选带宽，将 10 个以上的虚拟网络连接到 ExpressRoute 线路。 有关高级外接程序的更多详细信息，请参阅[常见问题解答](expressroute-faqs.md)。
+
+* 如果要创建从 ExpressRoute 线路到目标 ExpressRoute 虚拟网络网关的连接，则从本地或对等互连虚拟网络播发的地址空间数必须等于或小于 200。 成功创建连接后，可以将其他地址空间（最多 1000 个）添加到本地或对等互连虚拟网络。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]

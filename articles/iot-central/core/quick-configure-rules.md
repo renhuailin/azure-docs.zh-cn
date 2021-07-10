@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 94dab0124a1f5e0144aab2e271fbf89e02111d3a
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 25342ef6f7a79d91e91c59b88639318bfbf824e8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206792"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072921"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>快速入门：在 Azure IoT Central 中配置用于设备的规则和操作
 
@@ -45,7 +45,7 @@ ms.locfileid: "108206792"
 
     :::image type="content" source="media/quick-configure-rules/condition.png" alt-text="显示规则条件的屏幕截图":::
 
-1. 若要添加要在规则触发时运行的电子邮件操作，请选择“+ 电子邮件”  。
+1. 若要添加要在规则触发时运行的电子邮件操作，请选择“操作”部分中的“+ 电子邮件” 。
 
 1. 使用下表中的信息定义操作，然后选择“完成”  ：
 

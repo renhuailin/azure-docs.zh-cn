@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/6/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 20afd0a696a2bbeda0e2fa8bb114ecb8b5b6a76b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: f62e07bbc5b61ce07299f1d617b8aea1b331024e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205532"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475583"
 ---
 # <a name="troubleshooting-azure-digital-twins-resource-health"></a>Azure 数字孪生故障排除：资源运行状况
 
@@ -30,7 +30,7 @@ Azure 资源运行状况可帮助监视 Azure 数字孪生实例是否已启动�
 
 2. 从实例的菜单中，选择“支持 + 故障排除”下的 "资源运行状况"。 将转到可以查看资源运行状况历史记录的页面。 
 
-    :::image type="content" source="media/troubleshoot-resource-health/resource-health.png" alt-text="显示“资源运行状况”页的屏幕截图。其中有一个“运行状况历史记录”部分显示最近 9 天的每日报告。每天显示的状态为“可用”。":::
+    :::image type="content" source="media/troubleshoot-resource-health/resource-health.png" alt-text="该屏幕截图显示了“资源运行状况”页面。其中有一个“运行状况历史记录”部分显示最近九天的每日报告。":::
 
 在上图中，此实例显示为“可用”，且最近 9 天一直为“可用”状态。 若要了解有关“可用”状态和可能出现的其他状态类型的详细信息，请参阅 Azure 资源运行状况概述。
 

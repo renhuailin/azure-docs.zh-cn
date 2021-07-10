@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 04/15/2021
-ms.openlocfilehash: acae55ca82b82de8459068bb1ac4363d6a9faafe
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8a8e8fae151b0d9be318d4dfad832ead34ef04da
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206630"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738079"
 ---
 # <a name="analyze-data-with-a-serverless-sql-pool"></a>使用无服务器 SQL 池分析数据
 
@@ -28,6 +28,9 @@ ms.locfileid: "108206630"
 每个工作区都具有名为“内置”的预配置无服务器 SQL 池。 
 
 ## <a name="analyze-nyc-taxi-data-with-a-serverless-sql-pool"></a>使用无服务器 SQL 池分析纽约市出租车数据
+ 
+> [!NOTE]
+> 请确保已[将示例数据放入主存储帐户](get-started-create-workspace.md#place-sample-data-into-the-primary-storage-account)
 
 1. 在 Synapse Studio 中，转到“开发”中心
 1. 创建一个新的 SQL 脚本。
@@ -97,7 +100,7 @@ ms.locfileid: "108206630"
     FROM
         OPENROWSET(
                 BULK '/users/NYCTripSmall.parquet',
-                DATA_SOURCE = 'ContosoLake'
+                DATA_SOURCE = 'ContosoLake',
                 FORMAT='PARQUET'
         ) AS [result]
     ```

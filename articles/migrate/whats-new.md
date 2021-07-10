@@ -7,16 +7,22 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 3f49c0acc99f82cc2986ca896d40b3998cf47c5c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: dadde132effe24fa1cdffd8830139573de4ee5d4
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834995"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439972"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新增功能
 
 [Azure Migrate](migrate-services-overview.md) 可帮助发现和访问本地服务器、应用和数据并将其迁移到 Microsoft Azure 云。 本文汇总了 Azure Migrate 中的新版本和功能。
+
+## <a name="update-june-2021"></a>更新（2021 年 6 月）
+- Azure Migrate 可让你在复制期间使用 SQL VM RP 注册运行 SQL Server 的服务器，以自动安装 SQL IaaS 代理扩展。 此功能适用于无代理 VMware、无代理 Hyper-V 和基于代理的迁移。
+
+## <a name="update-may-2021"></a>更新（2021 年 5 月）
+- 现在支持使用基于代理的迁移方法迁移 OS 磁盘容量高达 4 TB 的 VM 和物理服务器。
 
 ## <a name="update-march-2021"></a>更新（2021 年 3 月）
 - 支持在 Azure Migrate 设备上提供多个服务器凭据，以在 VMware 环境中发现已安装的应用程序（软件清单）、执行无代理依赖项分析以及发现 SQL Server 实例和数据库。 [了解详细信息](tutorial-discover-vmware.md#provide-server-credentials)
@@ -59,7 +65,7 @@ ms.locfileid: "107834995"
 
 ## <a name="update-april-2020"></a>更新（2020 年 4 月）
 
-Azure Migrate 支持在 Azure 政府中部署。 
+Azure Migrate 支持在 Azure 政府中部署。
 
 - 你可以发现和评估 VMware VM、Hyper-V VM 和物理服务器。
 - 你可以将 VMware VM、Hyper-V VM 和物理服务器迁移到 Azure。

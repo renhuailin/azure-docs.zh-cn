@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 02/24/2021
 ms.custom: mvc
-ms.openlocfilehash: 1cddd39d0b95e021478235fcdafbacd40eb4097c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 315230a19967e4006e378b836b0ea70f6b5c19b9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105249"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094287"
 ---
 # <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
 
@@ -117,13 +117,9 @@ HTTP 应用程序路由加载项可帮助你轻松访问部署到 AKS 群集的�
 
 ## <a name="development-tooling-integration"></a>开发工具集成
 
-Kubernetes 提供丰富的开发和管理工具生态系统，可与 AKS 无缝配合使用。 这些工具包括用于 Visual Studio Code 的 Helm 和 Kubernetes 扩展。   
+Kubernetes 提供丰富的开发和管理工具生态系统，可与 AKS 无缝配合使用。 这些工具包括用于 Visual Studio Code 的 Helm 和 Kubernetes 扩展。 
 
-Azure 提供多个工具来帮助简化 Kubernetes，例如 Azure Dev Spaces 和 DevOps Starter。  
-
-### <a name="azure-dev-spaces"></a>Azure Dev Spaces
-
-Azure Dev Spaces 为团队提供快速、迭代的 Kubernetes 开发体验。 只需最少的配置，即可直接在 AKS 中运行和调试容器。 若要开始使用，请参阅 [Azure Dev Spaces][azure-dev-spaces]。
+Azure 还提供多种工具来帮助简化 Kubernetes，例如 DevOps Starter。  
 
 ### <a name="devops-starter"></a>DevOps Starter
 

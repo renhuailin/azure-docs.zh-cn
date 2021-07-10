@@ -6,12 +6,12 @@ ms.date: 03/23/2021
 ms.topic: quickstart
 ms.author: thweiss
 zone_pivot_groups: programming-languages-set-functions-temp
-ms.openlocfilehash: 0a0c63ee54699185bcd02104b1a3f4d0070ea808
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 884ed08dc6dc6587b4f464c18e8231a7f5342422
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023242"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234531"
 ---
 # <a name="connect-azure-functions-to-azure-cosmos-db-using-visual-studio-code"></a>使用 Visual Studio Code 将 Azure Functions 连接到 Azure Cosmos DB
 
@@ -39,7 +39,7 @@ ms.locfileid: "105023242"
 
 2. 单击“创建资源” > “数据库” > “Azure Cosmos DB”。
    
-    :::image type="content" source="../../includes/media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png" alt-text="Azure 门户“数据库”窗格" border="true":::
+    :::image type="content" source="../cosmos-db/includes/media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png" alt-text="Azure 门户“数据库”窗格" border="true":::
 
 3. 在“创建 Azure Cosmos DB 帐户”页中，输入新 Azure Cosmos DB 帐户的设置。 
  

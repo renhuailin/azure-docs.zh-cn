@@ -6,18 +6,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 04/07/2021
+ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8db1a671904233098610a9ba55ce260e6214c38c
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 3d388a072038655d5b9de690abed68096e93faad
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028496"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469758"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
 了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。 访问[预览功能列表](search-api-preview.md)，查看尚未正式发布的功能的完整列表。
+
+## <a name="may-2021"></a>2021 年 5 月
+
+|功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  说明 | 可用性  |
+|------------------------------------|--------------|---------------|
+| [Power Query 连接器支持（预览）](search-how-to-index-power-query-data-sources.md) | 索引器现可从其他云平台建立索引。 若要使用索引器抓取外部数据源来建立索引，现可使用 Power Query 连接器连接到 Amazon Redshift、Elasticsearch、PostgreSQL、Salesforce 对象、Salesforce 报告、Smartsheet 和 Snowflake。 | 公共预览版（[通过请求获取](https://aka.ms/azure-cognitive-search/indexer-preview)），使用 Azure 门户和 REST api-version=2020-06-30-Preview。 |
+|[Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) | 索引器使用的 ADLS Gen2 数据源现已正式发布。 | 正式发布，使用 REST 和 Azure 门户。 |
+|[MySQL 支持（预览）](search-howto-index-mysql.md) | 对于基于索引器的索引，宣布推出 Azure MySQL 的数据源支持预览版。 | 公共预览版，REST api-version=2020-06-30-Preview、[.NET SDK 11.2.1](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype.mysql) 和 Azure 门户。 |
+| [面向拼写检查和语义结果的更多 queryLanguage](/rest/api/searchservice/preview-api/search-documents#queryLanguage) | 对于调用拼写检查或 queryType=semantic 的查询请求，现可将 queryLanguage 设置为 [38 种](/rest/api/searchservice/preview-api/search-documents#queryLanguage)非英语语言。 | 公开预览版（[根据要求提供](https://aka.ms/SemanticSearchPreviewSignup)）。 </br></br>在 Azure 门户中使用[搜索文档 (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview 或[搜索资源管理器](search-explorer.md)。 </br></br>需遵守[区域和层级](semantic-search-overview.md#availability-and-pricing)限制。 |
+
+## <a name="april-2021"></a>2021 年 4 月
+
+|功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  说明 | 可用性  |
+|------------------------------|---------------|---------------|
+| [Gremlin API 支持](search-howto-index-cosmosdb-gremlin.md) | 对于基于索引器的索引，现可创建一个数据源，用于从通过 Gremlin API 访问的 Cosmos DB 中检索内容。 | 公共预览版（[通过请求获取](https://aka.ms/azure-cognitive-search/indexer-preview)），使用 api-version=2020-06-30-Preview。 |
 
 ## <a name="march-2021"></a>2021 年 3 月
 

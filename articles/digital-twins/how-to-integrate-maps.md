@@ -2,18 +2,18 @@
 title: 与 Azure Maps 集成
 titleSuffix: Azure Digital Twins
 description: 了解如何使用 Azure Functions 创建一个函数，该函数可使用孪生图和 Azure 数字孪生通知来更新 Azure Maps 室内地图。
-author: alexkarcher-msft
-ms.author: alkarche
+author: baanders
+ms.author: baanders
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: b2b6e045a86fff7ba8a0d88a938fae93a0c6812a
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 69a02db3eafa9c75808eece69ce8ed676adf0ab2
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790444"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615808"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 数字孪生更新 Azure Maps 室内地图
 
@@ -37,7 +37,7 @@ ms.locfileid: "109790444"
 
 下图展示了本教程中的室内地图集成元素在更大的端到端 Azure 数字孪生方案中的相应位置。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-integration-topology.png" alt-text="端到端方案中的 Azure 服务的视图，其中突出显示了室内地图集成块" lightbox="media/how-to-integrate-maps/maps-integration-topology.png":::
+:::image type="content" source="media/how-to-integrate-maps/maps-integration-topology.png" alt-text="端到端方案中的 Azure 服务的图示，其中突出显示了 Indoor Maps 集成块。" lightbox="media/how-to-integrate-maps/maps-integration-topology.png":::
 
 ## <a name="create-a-function-to-update-a-map-when-twins-update"></a>创建一个用于在孪生体更新时更新地图的函数
 
@@ -67,7 +67,7 @@ ms.locfileid: "109790444"
     >若要解决此问题，请在运行命令之前在 Cloud Shell 中运行 `az login`，或者使用[本地 CLI](/cli/azure/install-azure-cli) 而不使用 Cloud Shell。 有关此操作的详细信息，请参阅[故障排除：Azure 数字孪生中的已知问题](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
     ```azurecli-interactive
-    az dt route create --dt-name <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
+    az dt route create --dt-name <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my-route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
 ## <a name="create-a-function-to-update-maps"></a>创建一个函数来更新地图
@@ -83,8 +83,8 @@ ms.locfileid: "109790444"
 你需要在函数应用中设置两个环境变量。 其中一个是你的 [Azure Maps 主订阅密钥](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)，另一个是你的 [Azure Maps 状态集 ID](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)。
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <your-App-Service-(function-app)-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
-az functionapp config appsettings set --name <your-App-Service-(function-app)-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
+az functionapp config appsettings set --name <your-App-Service-function-app-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
+az functionapp config appsettings set --name <your-App-Service-function-app-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
 ```
 
 ### <a name="view-live-updates-on-your-map"></a>在地图上查看实时更新
@@ -92,14 +92,14 @@ az functionapp config appsettings set --name <your-App-Service-(function-app)-na
 若要查看实时更新的温度，请执行以下步骤：
 
 1. 通过运行 Azure 数字孪生教程：连接端到端解决方案中的 **DeviceSimulator** 项目，开始发送模拟的 IoT 数据。 有关此操作的说明，请参阅配置并运行模拟部分。
-2. 使用 [Azure Maps Indoor 模块](../azure-maps/how-to-use-indoor-module.md)呈现你在 Azure Maps Creator 中创建的室内地图。
+2. 使用 [Azure Maps Indoor](../azure-maps/how-to-use-indoor-module.md) 模块呈现你在 Azure Maps Creator 中创建的室内地图。
     1. 将室内地图[教程：使用 Azure Maps Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md)的[示例：使用 Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)部分的 HTML 复制到一个本地文件。
     1. 将本地 HTML 文件中的订阅密钥、tilesetId 和 statesetID 替换为你的值。
     1. 在浏览器中打开该文件。
 
 两个样本发送的温度在一个兼容的范围内，所以你应该看到 121 房间的颜色在地图上大约每 30 秒更新一次。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="一幅办公室地图，其中的 121 房间显示为橙色":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="办公室地图的屏幕截图，其中的 121 房间显示为橙色。":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>将地图信息存储在 Azure 数字孪生中
 
