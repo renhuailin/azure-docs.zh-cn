@@ -1,37 +1,32 @@
 ---
-title: Azure 静态 Web 应用预览中的配额
-description: 了解与 Azure 静态 Web 应用预览关联的配额
+title: Azure Static Web Apps 中的配额
+description: 了解与 Azure Static Web Apps 关联的配额
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e3538e90a6dea69c703f56871fde86a18557a022
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 12666d69f6dcab043e909dbb2b49276644a70d76
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095163"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069555"
 ---
-# <a name="quotas-in-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览中的配额
+# <a name="quotas-in-azure-static-web-apps"></a>Azure Static Web Apps 中的配额
 
-Azure 静态 Web 应用预览存在以下配额。
+Azure Static Web Apps 存在以下配额。
 
-> [!IMPORTANT]
-> Azure 静态 Web 应用处于公开预览状态，不适用于生产。
-
-| Feature                     | 免费计划        |
-|-----------------------------|------------------|
-| 包含的带宽          | 100 GB/月 |
-| 超额带宽           | 不可用      |
-| 应用/Azure 订阅 | 10               |
-| 应用大小                    | 250 MB           |
-| 预生产环境 | 3                |
-| 自定义域              | 1                |
-| 授权（使用自定义角色和路由规则） | 最多可有 25 个最终用户属于自定义角色 |
-| Azure Functions             | 可用        |
-| SLA                         | 无             |
+| Feature                     | 免费计划        | 标准计划 |
+|-----------------------------|------------------|---------------|
+| 包含的带宽          | 每个订阅每月 100 GB | 每个订阅每月 100 GB |
+| 超额带宽           | 不可用      | 每 GB 0.20 美元 |
+| 应用/Azure 订阅 | 10               | 无限制 |
+| 应用大小                    | 250 MB           | 500 MB |
+| 预生产环境 | 3                | 10 |
+| 自定义域              | 每个应用 2 个        | 每个应用 5 个 |
+| 授权（使用自定义角色和路由规则） | 最多可有 25 个最终用户属于自定义角色 | 最多可有 25 个最终用户属于自定义角色 |
 
 ## <a name="github-storage"></a>GitHub 存储
 

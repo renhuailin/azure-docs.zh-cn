@@ -1,7 +1,7 @@
 ---
-title: 创建自动化 ML 分类模型
+title: 教程：AutoML - 训练无代码分类模型
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 机器学习的自动机器学习（自动化 ML）界面，无需编写代码即可训练和部署分类模型。
+description: 在工作室 UI 中使用 Azure 机器学习自动化 ML，在不编写任何代码的情况下训练分类模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 12/21/2020
+ms.date: 06/11/2021
 ms.custom: automl
-ms.openlocfilehash: d0e236891e48a20adf1901d2f95a90ae25969c49
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: e088184cadea64b769faf75c6455b720f45d91cc
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210840"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028710"
 ---
-# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教程：使用 Azure 机器学习中的自动化 ML 创建分类模型
+# <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>教程：在 Azure 机器学习工作室中使用无代码 AutoML 训练分类模型
 
-了解如何在 Azure 机器学习工作室中使用自动化机器学习在不编写任何代码的情况下创建一个[简单的分类模型](concept-automated-ml.md#classification)。 此分类模型预测某个金融机构的客户是否会认购定期存款产品。
+了解如何在 Azure 机器学习工作室中使用 Azure 机器学习自动化 ML，通过无代码 AutoML 来训练分类模型。 此分类模型预测某个金融机构的客户是否会认购定期存款产品。
 
 利用自动机器学习，可以自动完成耗时的任务。 自动机器学习会快速循环访问算法和超参数的多个组合，以帮助你根据所选的成功指标找到最佳模型。
 
@@ -35,7 +35,7 @@ ms.locfileid: "107210840"
 此外，请为其他这些模型类型尝试自动化机器学习：
 
 * 有关预测的无代码示例，请参阅[教程：需求预测和 AutoML](tutorial-automated-ml-forecast.md)。
-* 如需回归模型的代码优先示例，请参阅[教程：使用自动化机器学习预测出租车费用](tutorial-auto-train-models.md)。
+* 有关回归模型的 Code First 示例，请参阅[教程：使用 AutoML 的回归模型](tutorial-auto-train-models.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -149,7 +149,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
             **完成此操作需要数分钟的时间。** 
 
-             ![“设置”页](./media/tutorial-first-experiment-automated-ml/compute-settings.png)
+             ![“设置”页面](./media/tutorial-first-experiment-automated-ml/compute-settings.png)
 
         1. 创建后，从下拉列表中选择新的计算目标。
 
@@ -231,7 +231,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 按如下所示填充“部署模型”窗格：
 
-    字段| 值
+    字段| Value
     ----|----
     部署名称| my-automl-deploy
     部署说明| 我的第一个自动化机器学习试验部署

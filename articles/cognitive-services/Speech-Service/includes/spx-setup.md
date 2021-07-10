@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 20c394520e8d4100470c0176c284cf4136e9d3db
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 32f28a6fa056819081804a3ccb919436c3f50bae
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227968"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112042251"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -56,6 +56,9 @@ ms.locfileid: "108227968"
 
     `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI`
 
+3. 在 RHEL/CentOS Linux 上，[配置适用于 Linux 的 OpenSSL](../how-to-configure-openssl-linux.md)。
+4. 在 Ubuntu 20.04 Linux 上，[安装 GStreamer](../how-to-use-codec-compressed-audio-input-streams.md)。
+
 若要查看语音 CLI 的帮助，请键入 `spx`。
 
 > [!NOTE]
@@ -64,6 +67,9 @@ ms.locfileid: "108227968"
 
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker 安装（Windows、Linux、macOS）](#tab/dockerinstall)
+
+> [!WARNING]
+> 在 Docker 容器中运行语音 CLI 时，不能使用计算机的麦克风。 但你可以在本地装载的目录中读取和保存音频文件。 
 
 按照以下步骤在 Docker 容器中安装语音 CLI：
 
@@ -126,9 +132,6 @@ docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCR
 ```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
-
-> [!WARNING]
-> 在 Docker 容器中运行语音 CLI 时，不能使用计算机的麦克风。 但你可以在本地装载的目录中读取和保存音频文件。 
 
 <!-- Need to troubleshoot issues with docker pull image
 

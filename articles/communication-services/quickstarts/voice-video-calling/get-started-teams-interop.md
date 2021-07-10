@@ -7,13 +7,13 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 0e75d2b480a9cbfd2977d9d449c1ea12bdfe4920
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+zone_pivot_groups: acs-plat-web-ios-android-windows
+ms.openlocfilehash: 8f5ba479d96953bf5bc5f56b20eb719c18863ab3
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095605"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560565"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>快速入门：在 Teams 会议中加入通话应用
 
@@ -25,15 +25,19 @@ ms.locfileid: "106095605"
 通过使用 JavaScript SDK 将呼叫解决方案连接到 Microsoft Teams，开始使用 Azure 通信服务。
 
 ::: zone pivot="platform-web"
-[!INCLUDE [Calling with JavaScript](./includes/teams-interop-javascript.md)]
+[!INCLUDE [Calling with JavaScript](./includes/teams-interop/teams-interop-javascript.md)]
+::: zone-end
+
+::: zone pivot="platform-windows"
+[!INCLUDE [Calling with Windows](./includes/teams-interop/teams-interop-windows.md)]
 ::: zone-end
 
 ::: zone pivot="platform-android"
-[!INCLUDE [Calling with Android](./includes/teams-interop-android.md)]
+[!INCLUDE [Calling with Android](./includes/teams-interop/teams-interop-android.md)]
 ::: zone-end
 
 ::: zone pivot="platform-ios"
-[!INCLUDE [Calling with iOS](./includes/teams-interop-ios.md)]
+[!INCLUDE [Calling with iOS](./includes/teams-interop/teams-interop-ios.md)]
 ::: zone-end
 
 本文档所述的功能使用通信服务 SDK 的正式发布版。 Teams 互操作性需要通信服务 SDK 的 Beta 版本。 可以在[发行说明页](https://github.com/Azure/Communication/tree/master/releasenotes)上浏览 Beta 版本 SDK。

@@ -11,16 +11,16 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: caa61170504c3ee4b7162cc06db4df16d1232395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 183693963d66a5df13cbb4dd1e561b26f5495f08
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014360"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685686"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建店内分析应用程序
 
-本教程向解决方案构建者介绍如何创建 Azure IoT Central 店内分析应用程序。 示例应用程序适用于零售商店。 这是一种满足常见业务需求的解决方案，可监视和适应占用和环境情况。
+本教程介绍如何创建 Azure IoT Central 店内分析应用程序。 示例应用程序适用于零售商店。 这是一种满足常见业务需求的解决方案，可监视和适应占用和环境情况。
 
 你构建的示例应用程序包括三个实际设备：一个 Rigado Cascade 500 网关和两个 RuuviTag 传感器。 本教程还演示如何将应用程序模板中包含的模拟占用传感器用于测试用途。 Rigado C500 网关充当应用程序中的通信中心。 它与应用商店中的传感器通信，并管理其与云的连接。 RuuviTag 是一个环境传感器，提供温度、湿度和压力等遥测数据。 模拟占用传感器提供一种在应用商店的结帐区域中跟踪运动和状态的方法。 
 
@@ -72,8 +72,6 @@ ms.locfileid: "103014360"
     > 如果你使用友好的应用程序名称，则仍必须为应用程序 URL 使用唯一值   。
 
 1. 如果你有一个 Azure 订阅，请输入目录、Azure 订阅和区域  。 如果你没有订阅，则可以启用 7 天免费试用版并填写所需的联系人信息  。  
-
-    有关目录和订阅的详细信息，请参阅[创建应用程序快速入门](../core/quick-deploy-iot-central.md)。
 
 1. 选择“创建”  。
 

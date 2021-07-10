@@ -3,18 +3,18 @@ title: 了解和使用 Azure 成本管理范围
 description: 本文帮助你了解 Azure 中提供的计费和资源管理范围，以及如何在成本管理和 API 中使用范围。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/19/2021
+ms.date: 05/05/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: f1b98cdf662f6f518e0bc1c3e869de3774c1bf7e
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 67d8ef5bf6960ca03d8d2d36efbe4461e1124190
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204146"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695248"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -73,7 +73,7 @@ Azure 支持用于资源管理的三个范围。 每个范围支持管理访问�
 - **计划成本数据导出** – 成本管理参与者还需要以下访问权限：管理存储帐户，以计划通过导出将数据复制到存储帐户。 请考虑将[存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)授予某个资源组，该资源组包含要将成本数据导出到的存储帐户。
 - **查看成本节省建议** – 默认情况下，成本管理读取者和成本管理参与者拥有查看成本建议的访问权限。 但是，需要访问各个资源才能获得处理成本建议的访问权限。 若要处理基于成本的建议，请考虑授予[服务特定的角色](../../role-based-access-control/built-in-roles.md#all)。
 
-仅当管理组包含企业协议 (EA)、即用即付 (PAYG) 或 Microsoft 内部订阅时，才支持管理组。 具有任何其他订阅类型（如 Microsoft 客户协议或 Azure Active Directory 订阅）的管理组无法查看成本。 如果你有多个订阅，请将不受支持的订阅移动到管理组层次结构的单独分支中，以便为支持的订阅启用“成本管理”。 例如，在根管理组下创建两个管理组：Azure AD 和 My Org 。将 Azure AD 订阅移动到 Azure AD 管理组，然后使用 My Org 管理组查看和管理成本 。
+仅当管理组包含多大 3,000 个企业协议 (EA)、即用即付 (PAYG) 或 Microsoft 内部订阅时，才支持管理组。 具有超过 3,000 个订阅或具有任何其他订阅类型（如 Microsoft 客户协议或 Azure Active Directory 订阅）的管理组无法查看成本。 如果你有多个订阅，请将不受支持的订阅移动到管理组层次结构的单独分支中，以便为支持的订阅启用“成本管理”。 例如，在根管理组下创建两个管理组：Azure AD 和 My Org 。将 Azure AD 订阅移动到 Azure AD 管理组，然后使用 My Org 管理组查看和管理成本 。
 
 ### <a name="feature-behavior-for-each-role"></a>每个角色的功能行为
 
@@ -186,7 +186,7 @@ Microsoft 客户协议计费帐户具有以下范围：
 
 - **客户** - 代表关联到特定客户的一组订阅，该客户已由合作伙伴加入到 Microsoft 客户协议。 此范围特定于云解决方案提供商 (CSP)。
 
-与 EA 计费范围不同，客户协议计费帐户绑定到单个目录，不能包含多个 Azure AD 目录中的订阅。
+与 EA 计费范围不同，客户协议计费帐户 _和_ 是由单个目录管理。 Microsoft 客户协议计费帐户的 *链接* 订阅可能在不同的 Azure AD 目录中。
 
 客户协议计费范围不适用于合作伙伴。 [分配用户角色和权限](/partner-center/permissions-overview)中介绍了合作伙伴角色和权限。
 

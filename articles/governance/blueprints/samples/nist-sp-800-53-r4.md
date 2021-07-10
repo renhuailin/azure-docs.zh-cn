@@ -3,16 +3,17 @@ title: NIST SP 800-53 R4 蓝图示例概述
 description: NIST SP 800-53 R4 蓝图示例的概述。 此蓝图示例可帮助客户评估特定 NIST SP 800-53 R4 控制要求。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 9fc387fc444acf5c2ead4cc8983013a50d42907f
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 9632ca6e33f8e6df39f3861f3f056d285da0613f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386087"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757000"
 ---
 # <a name="nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 蓝图示例
 
-NIST SP 800-53 R4 蓝图示例提供了监管防护措施，其中使用 [Azure Policy](../../policy/overview.md) 来帮助评估特定 NIST SP 800-53 R4 控制要求。 对于 Azure 部署的任何必须实现 NIST SP 800-53 R4 控制要求的体系结构，此蓝图可帮助客户为其部署一组核心策略。
+NIST SP 800-53 R4 蓝图示例提供了监管防护措施，其中使用 [Azure Policy](../../policy/overview.md) 来帮助评估特定 NIST SP 800-53 R4 控制要求。
+对于 Azure 部署的任何必须实现 NIST SP 800-53 R4 控制要求的体系结构，此蓝图可帮助客户为其部署一组核心策略。
 
 ## <a name="control-mapping"></a>控制映射
 
@@ -113,11 +114,11 @@ NIST SP 800-53 R4 蓝图示例提供了监管防护措施，其中使用 [Azure 
 |\[预览\]：为 Windows VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|可选：支持将 Windows OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
 |\[预览\]：为 Windows VM 部署 Log Analytics 代理|策略分配|Windows VM 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
 |\[预览\]：为 Windows VM 部署 Log Analytics 代理|策略分配|可选：支持将 Windows OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
-|在存储帐户上部署高级威胁防护|策略分配|效果|有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../policy/concepts/effects.md)|
-|对 SQL 服务器部署审核|策略分配|保持期的值（天数，0 表示保持期无限制）|保留天数（可选，如果未指定，则为 180 天）|
+|在存储帐户上部署高级威胁防护|策略分配|效果|有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../policy/concepts/effects.md) |
+|对 SQL 服务器部署审核|策略分配|保持期的值（天数，0 表示保持期无限制） |保留天数（可选，如果未指定，则为 180 天） |
 |对 SQL 服务器部署审核|策略分配|要进行 SQL Server 审核的存储帐户的资源组名称|审核针对 Azure 存储帐户（将在 SQL Server 所在的每个区域中创建的存储帐户，由该区域中的所有服务器共享）中审核日志的写入数据库事件。 重要提示 - 为了正确地进行审核，请勿删除或重命名资源组或存储帐户。|
 |为网络安全组部署诊断设置|策略分配|适用于网络安全组诊断的存储帐户前缀|此前缀将与网络安全组位置结合使用，一起构成已创建的存储帐户的名称。|
-|为网络安全组部署诊断设置|策略分配|适用于网络安全组诊断的存储帐户的资源组名称（必须存在）|将在其中创建存储帐户的资源组。 此资源组必须已存在。|
+|为网络安全组部署诊断设置|策略分配|适用于网络安全组诊断的存储帐户的资源组名称（必须存在） |将在其中创建存储帐户的资源组。 此资源组必须已存在。|
 
 ## <a name="next-steps"></a>后续步骤
 

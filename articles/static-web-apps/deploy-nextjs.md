@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: a22d06137c3ec17851280605ac85c94ef8b342cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 940ea0b96d4e369ceb4ba21c0d31fad36501c24f
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97563069"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814021"
 ---
-# <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>在 Azure Static Web Apps（预览版）中部署静态呈现的 Next.js 网站
+# <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps"></a>在 Azure Static Web Apps 中部署静态呈现的 Next.js 网站
 
 此教程介绍如何将 [Next.js](https://nextjs.org) 生成的静态网站部署到 [Azure 静态 Web 应用](overview.md)。 首先将介绍如何安装、配置和部署 Next.js 应用。 在此过程中，还会介绍如何处理生成 Next.js 静态页面时遇到的常见问题
 
@@ -69,7 +69,7 @@ ms.locfileid: "97563069"
 
 使用 `npm run build` 生成 Next.js 站点时，应用将生成为传统 Web 应用，而非静态站点。 若要生成静态站点，请使用以下应用程序配置。
 
-1. 若要配置静态路由，则在项目根部创建文件 next.config.js，并添加以下代码。
+1. 若要配置静态路由，请在项目的根目录中创建名为 next.config.js 的文件，并添加以下代码。
 
     ```javascript
     module.exports = {
@@ -81,7 +81,7 @@ ms.locfileid: "97563069"
       }
     };
     ```
-    
+
       此配置将 `/` 映射到为 `/` 路由提供的 Next.js 页面，这就是 pages/index.js 页面文件。
 
 1. 更新 package.json 的生成脚本，以便在完成生成后也使用 `next export` 命令生成静态站点。 `export` 命令将生成静态站点。
@@ -134,47 +134,47 @@ Azure 静态 Web 应用从 GitHub 存储库部署应用，并且每次将提交�
 
 ### <a name="create-a-static-app"></a>创建静态应用
 
-1. 导航到 [Azure 门户](https://portal.azure.com)
-1. 单击“创建资源”
-1. 搜索“静态 Web 应用”
-1. 单击“静态 Web 应用(预览)”
-1. 单击“创建” 
+1. 导航到 [Azure 门户](https://portal.azure.com)。
+1. 选择“创建资源”。
+1. 搜索“静态 Web 应用”。
+1. 选择“静态 Web 应用”。
+1. 选择“创建”。
+1. 在“基本信息”选项卡上，输入下列值。
 
-1. 从“订阅”下拉列表中选择一个订阅，或使用默认值。
-1. 单击“资源组”下拉列表下的“新建”链接。 在“新建资源组名称”中，键入“mystaticsite”，然后单击“确定”
-1. 在“名称”文本框中提供应用的全局唯一名称。 有效字符包括 `a-z`、`A-Z`、`0-9` 和 `-`。 此值用作静态应用的 URL 前缀，采用 `https://<APP_NAME>.azurestaticapps.net` 格式。
-1. 在“区域”下拉列表中，选择离你最近的区域。
-1. 从“SKU”下拉列表中选择“可用”。
+    | 属性 | 值 |
+    | --- | --- |
+    | _订阅_ | Azure 订阅名称。 |
+    | _资源组_ | **my-nextjs-group**  |
+    | _名称_ | **my-nextjs-app** |
+    | _计划类型_ | **免费** |
+    | Azure Functions API 和过渡环境的区域 | 选择离你最近的区域。 |
+    | _Source_ | **GitHub** |
 
-   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="创建静态 Web 应用":::
+1. 选择“使用 GitHub 登录”，然后向 GitHub 进行身份验证。
 
-### <a name="add-a-github-repository"></a>添加 GitHub 存储库
+1. 输入以下 GitHub 值。
 
-新的静态 Web 应用帐户需要使用 Next.js 应用访问存储库，以便可以自动部署提交。
+    | 属性 | 值 |
+    | --- | --- |
+    | 组织 | 选择所需的 GitHub 组织。 |
+    | 存储库 | 选择 nextjs-starter。 |
+    | 分支 | 选择“主要”。 |
 
-1. 单击“使用 GitHub 登录”按钮
-1. 选择已在其中创建 Next.js 项目存储库的“组织”，这可能是你的 GitHub 用户名。
-1. 查找并选择之前创建的存储库的名称。
-1. 从“分支”下拉列表中选择“主”作为分支。
+1. 在“生成详细信息”部分，从“生成预设”下拉列表中选择“自定义”，并保留默认值 。
 
-   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="连接 GitHub":::
-
-### <a name="configure-the-build-process"></a>配置生成过程
-
-生成 Azure 静态 Web 应用的目的是自动执行常见任务，例如安装 npm 模块并在每个部署过程中运行 `npm run build`。 但有一些设置（例如，应用程序源文件夹和生成目标文件夹）需要手动配置。
-
-1. 单击“生成”选项卡以配置静态输出文件夹。
-
-   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="“生成”选项卡":::
-
-2. 在“应用项目位置”文本框中键入“out”。
+1. 在“应用位置”框中输入“/”。
+1. 将“API 位置”框留空。
+1. 在“输出位置”框中，输入“out”。
 
 ### <a name="review-and-create"></a>查看并创建
 
-1. 单击“查看 + 创建”按钮以验证详细信息是否都正确。
-1. 单击“创建”以开始创建资源并为部署预配 GitHub Action。
-1. 部署完成后，单击“转到资源”
-1. 在“概述”窗口中，单击 URL 链接，打开已部署的应用程序。 
+1. 选择“查看 + 创建”按钮，验证详细信息是否全部正确。
+
+1. 选择“创建”，开始创建应用服务静态 Web 应用并为部署预配 GitHub 操作。
+
+1. 部署完成后，单击“转到资源”。
+
+1. 在“概述”窗口中，单击 URL 链接，打开已部署的应用程序。
 
 如果网站并未立即加载，则后台 GitHub Actions 工作流仍在运行。 工作流完成后，可以单击“刷新浏览器”以查看 Web 应用。
 如果网站并未立即加载，则后台 GitHub Actions 工作流仍在运行。 工作流完成后，可以单击“刷新浏览器”以查看 Web 应用。

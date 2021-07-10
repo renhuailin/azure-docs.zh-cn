@@ -1,38 +1,39 @@
 ---
-title: Windows 虚拟桌面主机池服务更新 - Azure
+title: Azure 虚拟桌面主机池服务更新 - Azure
 description: 如何创建验证主机池以在将更新推广到生产之前监视服务更新。
 author: Heidilohr
 ms.topic: tutorial
 ms.date: 12/15/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 66279c2ea798a7edb21795f368011b00bdf6297e
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 2c944d1068ae74a97c8a6315e98a1348f9378b8c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447805"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749122"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教程：创建主机池以验证服务更新
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[本文](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)。
 
-主机池是 Windows 虚拟桌面环境中包含一个或多个相同虚拟机的集合。 我们强烈建议先创建一个要应用服务更新的验证主机池。 这样可以在服务将更新应用于标准或非验证环境之前，监视服务更新。 如果没有验证主机池，则可能无法发现引入错误的更改，这可能会在标准环境中对用户导致故障时间。
+主机池是 Azure 虚拟桌面环境中包含一个或多个相同虚拟机的集合。 我们强烈建议先创建一个要应用服务更新的验证主机池。 这样可以在服务将更新应用于标准或非验证环境之前，监视服务更新。 如果没有验证主机池，则可能无法发现引入错误的更改，这可能会在标准环境中对用户导致故障时间。
 
 若要确保应用适用于最新更新，验证主机池应尽可能地与非验证环境中的主机池类似。 用户应如同连接到标准主机池一样频繁地连接到验证主机池。 如果在主机池上进行自动测试，则应在验证主机池上包含自动测试。
 
-可以使用[诊断功能](diagnostics-role-service.md)或 [Windows 虚拟桌面故障排除文章](troubleshoot-set-up-overview.md)对验证主机池中的问题进行调试。
+可以使用[诊断功能](diagnostics-role-service.md)或 [Azure 虚拟桌面故障排除文章](troubleshoot-set-up-overview.md)对验证主机池中的问题进行调试。
 
 >[!NOTE]
 > 建议保留验证主机池以测试所有将来的更新。
 
 >[!IMPORTANT]
->集成 Azure 资源管理器的 Windows 虚拟桌面目前在启用和禁用验证环境时会遇到麻烦。 当解决此问题后，我们会更新本文。
+>集成 Azure 资源管理器的 Azure 虚拟桌面目前在启用和禁用验证环境时会遇到麻烦。 当解决此问题后，我们会更新本文。
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请按照[设置 Windows 虚拟桌面 PowerShell 模块](powershell-module.md)中的说明设置 PowerShell 模块并登录到 Azure。
+在开始之前，请按照[设置 Azure 虚拟桌面 PowerShell 模块](powershell-module.md)中的说明设置 PowerShell 模块并登录到 Azure。
 
 ## <a name="create-your-host-pool"></a>创建主机池
 
@@ -74,8 +75,8 @@ cmdlet 的结果应类似于以下输出：
 使用 Azure 门户配置验证主机池：
 
 1. 通过 <https://portal.azure.com> 登录到 Azure 门户。
-2. 搜索并选择“Windows 虚拟桌面”  。
-3. 在“Windows 虚拟桌面”页中，选择“主机池”。
+2. 搜索并选择“Azure 虚拟桌面”。
+3. 在“Azure 虚拟桌面”页中，选择“主机池”。
 4. 选择要编辑的主机池的名称。
 5. 选择“属性”。
 6. 在“验证环境”字段中，选择“是”，启用验证环境。
@@ -89,7 +90,7 @@ cmdlet 的结果应类似于以下输出：
 
 ## <a name="next-steps"></a>后续步骤
 
-既然已创建了验证主机池，接下来可以了解如何使用 Azure 服务运行状况来监视 Windows 虚拟桌面部署。
+你已经创建了验证主机池，接下来可以了解如何使用 Azure 服务运行状况来监视 Azure 虚拟桌面部署。
 
 > [!div class="nextstepaction"]
 > [设置服务警报](./set-up-service-alerts.md)

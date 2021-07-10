@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 3c5afc92044fcb109bedd38298b0b027ebeb437d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 7a23522da2bf6d1c5f9c6a76ab3d9c92cbc64897
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749683"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749530"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 密钥保管库可用性和冗余
 
@@ -22,13 +22,13 @@ Azure 密钥保管库具有多层冗余功能，确保密钥和机密持续可�
 > [!NOTE]
 > 本指南适用于保管库。 托管 HSM 池使用其他高可用性和灾难恢复模型。 要了解详细信息，请参阅[有关托管 HSM 灾难恢复的指南](../managed-hsm/disaster-recovery-guide.md)。
 
-会在区域中复制密钥保管库的内容，并复制到至少 150 英里以外的次要区域，但位于同一个地理位置，以保持密钥和机密的持久性。 有关特定区域对的详细信息，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md)。 配对区域模型的例外是巴西南部，它只允许选择将数据保存在巴西南部。 巴西南部使用区域冗余存储 (ZRS) 在单个位置/区域内复制数据三次。 对于 AKV 高级版，3 个区域中只有 2 个用于从 HSM 复制数据。  
+会在区域中复制密钥保管库的内容，并复制到至少 150 英里以外的次要区域，但位于同一个地理位置，以保持密钥和机密的持久性。 有关特定区域对的详细信息，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md)。 配对区域模型的例外情况是单区域地理位置，例如巴西南部、卡塔尔中部。 此类区域仅允许将数据驻留在同一区域的选项。 巴西南部和卡塔尔中部都使用区域冗余存储 (ZRS) 在单个位置/区域内复制数据三次。 对于 AKV 高级版，3 个区域中只有 2 个用于从 HSM 复制数据。
 
 如果密钥保管库服务中的单独组件发生故障，则区域内的替代组件将继续处理请求，确保不会导致功能损失。 无需执行任何操作即可开始此过程，它会自动发生，且相关信息是透明的。
 
-在整个 Azure 区域服务中断的情况下（这很少见），对该区域中的 Azure 密钥保管库发出的请求会自动路由（“故障转移”）到除巴西南部区域以外的次要区域。 当主要区域再次可用时，请求将路由回（“故障回复”  ）到主要区域。 同样，不需要采取任何措施，因为这会自动发生。
+在整个 Azure 区域服务中断的情况下（这很少见），对该区域中的 Azure Key Vault 发出的请求会自动路由（“故障转移”）到除巴西南部和卡塔尔中部区域以外的次要区域。 当主要区域再次可用时，请求将路由回（“故障回复”  ）到主要区域。 同样，不需要采取任何措施，因为这会自动发生。
 
-在巴西南部区域，必须在区域故障方案中计划恢复 Azure 密钥保管库。 若要备份 Azure 密钥保管库并还原到所选区域，请完成 [Azure Key Vault 备份](backup.md)中详细介绍的步骤。 
+在巴西南部和卡塔尔中部区域，必须在区域故障方案中计划恢复 Azure 密钥保管库。 若要备份 Azure 密钥保管库并还原到所选区域，请完成 [Azure Key Vault 备份](backup.md)中详细介绍的步骤。 
 
 通过这种高可用性设计，Azure 密钥保管库不需要停机进行维护活动。
 

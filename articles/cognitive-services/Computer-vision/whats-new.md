@@ -8,26 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/13/2021
+ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: 2e0a04cef7952822931887f038410ff867cc2afe
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: ce04187cb513712998b6c4ba26d5210bb56ca5df
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286719"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110453749"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
 了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
+
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="spatial-analysis-container-update"></a>空间分析容器更新
+
+已发布提供新功能集的[空间分析容器](spatial-analysis-container.md)新版本。 借助此 Docker 容器，可分析实时流视频，了解人们与他们在物理环境中的移动之间的空间关系。 
+
+* 现可配置[空间分析操作](spatial-analysis-operations.md)来检测人面朝的方向。 
+    * 可通过配置 `enable_orientation` 参数，为 `personcrossingline` 和 `personcrossingpolygon` 操作启用方向分类器。 默认情况下，此选项设置为 off。
+
+* [空间分析操作](spatial-analysis-operations.md)现在还提供可检测人步行/奔跑速度的配置
+     * 可以通过打开 `enable_speed` 分类器（默认情况下为关闭状态）来检测 `personcrossingline` 和 `personcrossingpolygon` 操作的速度。 输出结果反映在 `speed`、`avgSpeed` 和 `minSpeed` 输出中。
+
 
 ## <a name="april-2021"></a>2021 年 4 月
 
 ### <a name="computer-vision-v32-ga"></a>计算机视觉 v3.2 GA
 
 计算机视觉 API v3.2 现已正式发布，进行了以下更新：
-* 改善了图像标记模型：根据图像中显示的对象、操作和内容分析视觉对象内容并生成相关标记。 此功能通过[标记图像 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) 提供。 有关详细信息，请参阅图像分析[操作指南](./vision-api-how-to-topics/howtocallvisionapi.md)和[概述](./overview-image-analysis.md)。
-* 更新的内容审查模型：检测是否存在成人内容并提供标志来筛选包含成人、猥亵和血腥视觉内容的图像。 这可通过[分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) 获得。 有关详细信息，请参阅图像分析[操作指南](./vision-api-how-to-topics/howtocallvisionapi.md)和[概述](./overview-image-analysis.md)。
+* 改善了图像标记模型：根据图像中显示的对象、操作和内容分析视觉对象内容并生成相关标记。 此模型通过[标记图像 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) 提供。 有关详细信息，请参阅图像分析[操作指南](./vision-api-how-to-topics/howtocallvisionapi.md)和[概述](./overview-image-analysis.md)。
+* 更新的内容审查模型：检测是否存在成人内容并提供标志来筛选包含成人、猥亵和血腥视觉内容的图像。 可通过[分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) 获取此模型。 有关详细信息，请参阅图像分析[操作指南](./vision-api-how-to-topics/howtocallvisionapi.md)和[概述](./overview-image-analysis.md)。
 * [用于 73 种语言的 OCR（读取）](./language-support.md#optical-character-recognition-ocr)，这些语言包括简体中文和繁体中文、日语、韩语和拉丁语言。
 * [OCR (读取) ](./overview-ocr.md) 还可作为本地部署的 [Distroless 容器](./computer-vision-how-to-install-containers.md?tabs=version-3-2)。
 
@@ -131,11 +144,11 @@ ms.locfileid: "108286719"
 
 ### <a name="read-api-30-public-preview"></a>读取 API 3.0 公共预览版
 
-现在，可以选择使用 Read API 3.0 版从图像中提取印刷体文本或手写文本。 与早期版本相比，3.0 版提供了：
+现在，可以使用 Read API 3.0 版从图像中提取印刷体文本或手写文本。 与早期版本相比，3.0 版提供了：
 * 准确度改进
 * 新输出格式
 * 每个已提取单词的置信度分数
-* 使用附加的语言参数同时支持西班牙语和英语
+* 使用语言参数同时支持西班牙语和英语
 
 按照[提取文本快速入门](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-hand-text.md?tabs=version-3)，开始使用 3.0 API。
 

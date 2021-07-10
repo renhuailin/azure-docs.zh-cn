@@ -3,17 +3,17 @@ title: 教程 - 使用自定义硬件安全模块 (HSM) 向 Azure IoT 中心预�
 description: 本教程使用注册组。 在本教程中，你将了解如何使用自定义硬件安全模块 (HSM) 和适用于 Azure IoT 中心设备预配服务 (DPS) 的 C 设备 SDK 预配 X.509 设备。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/28/2021
+ms.date: 05/24/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b178aa4a524cb7fcc85c7fc68ac5f772747787a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e7d024d4d5b1e058e7a0b895faae5d2e7425f44
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99052357"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472120"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>教程：使用注册组预配多个 X.509 设备
 
@@ -62,7 +62,7 @@ Azure IoT 设备预配服务支持两种类型的预配设备注册：
 
 2. 找到[最新版](https://github.com/Azure/azure-iot-sdk-c/releases/latest) Azure IoT C SDK 的标记名称。
 
-3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
+3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步找到的标记作为 `-b` 参数的值：
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -121,6 +121,10 @@ Azure IoT 设备预配服务支持两种类型的预配设备注册：
 #### <a name="create-root-and-intermediate-certificates"></a>创建根证书和中间证书
 
 若要创建证书链的根部分和中间部分，请执行以下操作：
+
+> [!IMPORTANT]
+> 对于本文，请仅使用 Bash shell 方法。 可以使用 PowerShell，但本文中未介绍此方法。
+
 
 1. 打开 Git Bash 命令提示符。 使用位于[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md#managing-test-ca-certificates-for-samples-and-tutorials)中的 Bash shell 指令完成步骤 1 和步骤 2。
 
@@ -233,7 +237,7 @@ Azure IoT 设备预配服务支持两种类型的预配设备注册：
     >
     > 但是，设备还必须能够访问设备证书的私钥。 这是必需的，因为设备在尝试预配时必须在运行时使用该密钥执行验证。 此密钥的敏感性是建议在实际 HSM 中使用基于硬件的存储来帮助保护私钥的主要原因之一。
 
-4. 对于设备 ID 为 `custom-hsm-device-02` 的第二台设备重复步骤 1-3。 为该设备使用以下值：
+4. 删除 ./certs/new-device.cert.pem，并对设备 ID 为 `custom-hsm-device-02` 的第二台设备重复步骤 1-3。 对于第二台设备，必须删除 ./certs/new-device.cert.pem，否则将无法生成证书。 本文仅使用完整链证书文件。 对于第二台设备，请使用以下值：
 
     |   说明                 |  值  |
     | :---------------------------- | :--------- |
@@ -290,7 +294,7 @@ Azure IoT 设备预配服务支持两种类型的预配设备注册：
     winpty openssl pkcs12 -inkey ../private/azure-iot-test-only.intermediate.key.pem -in ./azure-iot-test-only.intermediate.cert.pem -export -out ./intermediate.pfx
     ```
 
-2. 右键单击 Windows“开始”按钮。 然后，左键单击“运行”。 输入“certmgr.mcs”，然后单击“确定”启动证书管理器 MMC 管理单元。
+2. 右键单击 Windows“开始”按钮。 然后，左键单击“运行”。 输入 certmgr.msc 并单击“确定”以启动证书管理器 MMC 管理单元。
 
 3. 在证书管理器的“证书 - 当前用户”下，单击“受信任的根证书颁发机构” 。 然后在菜单上，单击“操作” > “所有任务” > “导入”以导入 `root.pfx`  。
 

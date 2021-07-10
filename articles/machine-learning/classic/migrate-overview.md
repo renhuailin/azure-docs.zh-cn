@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: fafb9f7e84263c33cf1b15a52742ec9cd0380a40
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7bb7c3a2d19b4dbb84d09829e2ed181a62ef7fbe
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311849"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901288"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>迁移到 Azure 机器学习
 
@@ -75,7 +75,7 @@ Azure 机器学习提供了一个现代化的数据科学平台，该平台将�
 
 ## <a name="studio-classic-and-designer-module-mapping"></a>工作室（经典）和设计器模块映射
 
-请查阅下表，以了解在设计器中重建工作室（经典）试验时要使用的模块。
+请查阅下表，了解在设计器中重建工作室（经典）试验时要使用的模块。
 
 
 > [!IMPORTANT]
@@ -108,7 +108,7 @@ Azure 机器学习提供了一个现代化的数据科学平台，该平台将�
 | Web 服务 | - 输入 </br> - 输出 | - 输入 </br>  - Output（输出）|
 | 计算机视觉| | - 应用图像转换 </br> - 转换为图像目录 </br> - 初始化图像转换 </br> - 拆分图像目录  </br> - DenseNet 图像分类   </br>- ResNet 图像分类 |
 
-有关如何使用各个设计器模块的详细信息，请参阅[设计器模块参考](../algorithm-module-reference/module-reference.md)。
+若要详细了解如何使用各个设计器模块，请查看[设计器模块参考](../algorithm-module-reference/module-reference.md)。
 
 ### <a name="what-if-a-designer-module-is-missing"></a>如果缺少设计器模块怎么办？
 
@@ -134,7 +134,6 @@ Azure 机器学习设计器包含工作室（经典）最热门的模块。 它�
 
 在工作室（经典）中，试验包含工作的处理逻辑。 你已使用拖放模块创建了试验。
 
-
 ![automobile-price-classic-experiment](./media/migrate-overview/studio-classic-experiment.png)
 
 在 Azure 机器学习中，管道包含工作的处理逻辑。 可以使用拖放模块或通过编写代码来创建管道。
@@ -143,14 +142,13 @@ Azure 机器学习设计器包含工作室（经典）最热门的模块。 它�
 
 ### <a name="web-service-endpoint"></a>Web 服务终结点
 
-在工作室（经典）中，REQUEST/RESPOND API 用于实时预测。 BATCH EXECUTION API 用于批预测或重新训练。
+工作室（经典）使用 REQUEST/RESPOND API 进行实时预测，使用 BATCH EXECUTION API 进行批量预测或重新训练 。
 
 ![automobile-price-classic-webservice](./media/migrate-overview/studio-classic-web-service.png)
 
-在 Azure 机器学习中，实时终结点用于实时预测。 管道终结点用于批预测或重新训练。
+Azure 机器学习使用实时终结点进行实时预测，使用管道终结点进行批量预测或重新训练 。
 
 ![automobile-price-aml-endpoint](./media/migrate-overview/aml-endpoint.png)
-
 
 ## <a name="next-steps"></a>后续步骤
 

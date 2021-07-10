@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 537378ef11333bd8942a61ab2bbb4e8a251c2b59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 721c13ea31f812dd5f5b5c335373884766764c80
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103196812"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750667"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>教程：Azure Active Directory 与 GitHub AE 的单一登录 (SSO) 集成
 
@@ -75,7 +75,7 @@ ms.locfileid: "103196812"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<YOUR-GITHUB-AE-HOSTNAME>`
 
@@ -95,7 +95,7 @@ ms.locfileid: "103196812"
 
 1. 编辑“用户属性和声明”。
 
-1. 单击“添加新声明”，并在文本框中输入名称作为“管理员” 。
+1. 单击“添加新声明”，并在文本框中输入名称作为“管理员”（“管理员”值区分大小写）  。
 
 1. 展开“声明条件”，并从“用户类型”中选择“成员”  。
 

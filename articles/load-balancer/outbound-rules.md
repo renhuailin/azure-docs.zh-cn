@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 339bbd7edf48737113de360812165dc8148c5b93
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: cbc5ff51a576cf2c784192bc33b06018c6f116c8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375859"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472086"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>使用 Azure 负载均衡器配置出站规则
 
@@ -36,15 +36,18 @@ ms.locfileid: "107375859"
 使用出站规则可以控制：
 
 * **哪些虚拟机应转换为哪些公共 IP 地址。**
-     * 两个规则分别是后端池 1 使用蓝色 IP 地址 1 和 2，后端池 2 使用黄色 IP 前缀。
+     * 两个规则是后端池 1 使用蓝色 IP 地址 1 和 2，以及后端池 2 使用黄色 IP 前缀。
 * **如何分配出站 SNAT 端口。**
-     * 如果后端池 2 是唯一建立出站连接的池，则将所有 SNAT 端口提供给后端池 2，而不向后端池 1 提供任何 SNAT 端口。
+     * 如果后端池 2 是唯一建立出站连接的池，则将所有 SNAT 端口提供给后端池 2，而无 SNAT 端口提供给后端池 1。
 * **要为哪些协议提供出站转换。**
-     * 如果后端池 2 需要 UDP 端口用于出站，且后端池 1 需要 TCP，则将 TCP 端口提供给 1，将 UDP 端口提供给 2。
+     * 如果后端池 2 需要 UDP 端口用于出站，并且后端池 1 需要 TCP，则将 TCP 端口提供给后端池 1，将 UDP 端口提供给后端池 2。
 * **用于出站连接空闲超时的持续时间（4-120 分钟）。**
      * 如果有长时间运行的带有 keepalives 的连接，请为长时间运行的连接保留空闲端口，空闲时间最长可达 120 分钟。 假设放弃过时连接，并在 4 分钟内为新连接释放端口 
 * **是否要在空闲超时时发送 TCP 重置。**
      * 当空闲连接超时时，我们是否会向客户端和服务器发送 TCP RST，以便它们知道已放弃流？
+
+>[!Important]
+> 当后端池通过 IP 地址进行配置时，它的行为就像启用了默认出站地址的基本负载均衡器。 为了在默认情况下保护有很高出站需求的配置和应用，可以用 NIC 配置后端池。
 
 ## <a name="outbound-rule-definition"></a>出站规则定义
 

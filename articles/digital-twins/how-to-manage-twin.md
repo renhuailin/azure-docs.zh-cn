@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 68127a7603db2d408ed1bbdb244f49de4eb21031
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 2c83ac769cc4a8aec6148e1a45ec6435f117d73a
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208484"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812026"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
-环境中的实体由[数字孪生体](concepts-twins-graph.md)表示。 数字孪生体的管理操作可能包括创建、修改和删除。 若要执行这些操作，可使用 DigitalTwins API、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 或 [Azure 数字孪生 CLI](how-to-use-cli.md)。
+环境中的实体由[数字孪生体](concepts-twins-graph.md)表示。 数字孪生体的管理操作可能包括创建、修改和删除。
 
 本文重点介绍如何管理数字孪生体；若要将关系和[孪生图](concepts-twins-graph.md)作为一个整体进行处理，请参阅操作指南：使用关系管理孪生图。
 
@@ -27,9 +27,11 @@ ms.locfileid: "108208484"
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-## <a name="ways-to-manage-twins"></a>管理孪生体的方式
+[!INCLUDE [digital-twins-developer-interfaces.md](../../includes/digital-twins-developer-interfaces.md)]
 
-[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+:::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="Azure Digital Twins Explorer 的屏幕截图，其中显示了示例模型和孪生体。" lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
 
 ## <a name="create-a-digital-twin"></a>创建数字孪生体
 
@@ -95,7 +97,7 @@ ms.locfileid: "108208484"
 
 若要使用单个 API 调用检索多个孪生体，请参阅操作指南：查询孪生图中的查询 API 示例。
 
-请看下面定义月亮的模型（用[数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL) 编写）：
+请看下面定义月亮的模型（用[数字孪生体定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL) 编写）：
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Moon.json":::
 
@@ -132,14 +134,14 @@ ms.locfileid: "108208484"
 * `$etag`：由 Web 服务器分配的标准 HTTP 字段。 每次更新孪生体时，此值将更新为新值，这对于确定自上次检查后是否已在服务器上更新了孪生体数据非常有用。 可以使用 `If-Match` 执行更新和删除，仅当实体的 etag 与提供的 etag 相匹配时，这两项操作才会完成。 有关这些操作的详细信息，请参阅 [DigitalTwins 更新](/rest/api/digital-twins/dataplane/twins/digitaltwins_update)和 [DigitalTwins 删除](/rest/api/digital-twins/dataplane/twins/digitaltwins_delete)的文档。
 * `$metadata`：一组其他属性，包括：
   - 数字孪生体的模型的 DTMI。
-  - 每个可写属性的同步状态。 这对设备最为有用，因为服务和设备的状态可能不同（例如当设备离线时）。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 若使用元数据部分中的数据，可了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅[此 IoT 中心教程](../iot-hub/tutorial-device-twins.md)，了解如何同步设备状态。
+  - 每个可写属性的同步状态。 这对设备最为有用，因为服务和设备的状态可能不同（例如当设备离线时）。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 若使用元数据部分中的数据，可了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅此 [IoT 中心教程](../iot-hub/tutorial-device-twins.md)，了解如何同步设备状态。
   - 服务特定的元数据，如来自 IoT 中心或 Azure 数字孪生的元数据。 
 
-若要详细了解 `BasicDigitalTwin` 等序列化帮助程序类，可阅读操作指南：使用 Azure 数字孪生 API 和 SDK。
+若要详细了解 `BasicDigitalTwin` 等序列化帮助程序类，可阅读[概念：Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)。
 
 ## <a name="view-all-digital-twins"></a>查看所有数字孪生体
 
-若要查看实例中的所有数字孪生体，请使用[查询](how-to-query-graph.md)。 可使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](how-to-use-cli.md)来运行查询。
+若要查看实例中的所有数字孪生体，请使用[查询](how-to-query-graph.md)。 可使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)来运行查询。
 
 下方是一个基本查询的正文，它将返回一个包含实例中所有数字孪生体的列表：
 
@@ -160,17 +162,58 @@ ms.locfileid: "108208484"
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-可使用 Azure .NET SDK 的 [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument) 创建修补程序。 示例如下。
+可使用 Azure .NET SDK 的 [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) 创建修补程序。 示例如下。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
-### <a name="update-properties-in-digital-twin-components"></a>更新数字孪生体组件中的属性
+### <a name="update-sub-properties-in-digital-twin-components"></a>更新数字孪生体组件中的子属性
 
 请记住，模型可以包含组件，使其可由其他模型组成。 
 
 若要修补数字孪生体组件中的属性，可在 JSON 修补程序中使用路径语法：
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch-component.json":::
+
+### <a name="update-sub-properties-in-object-type-properties"></a>更新对象类型属性中的子属性
+
+模型可能包含属于对象类型的属性。 这些对象可能具有自己的属性，并且你可能想要更新属于对象类型属性的其中一个子属性。 此过程类似于[更新组件中的子属性](#update-sub-properties-in-digital-twin-components)的过程，但可能需要执行一些额外的步骤。 
+
+考虑具有对象类型属性 `ObjectProperty` 的模型。 `ObjectProperty` 具有一个名为 `StringSubProperty` 的字符串属性。
+
+使用此模型创建孪生体时，无需实例化 `ObjectProperty`。 如果在创建孪生体的过程中未实例化对象属性，则不会为修补操作创建默认路径来访问 `ObjectProperty` 及其 `StringSubProperty`。 需要先添加 `ObjectProperty` 的路径，然后才能更新其属性。
+
+这可以通过 JSON 修补 `add` 操作来完成，如下所示：
+
+```json
+[
+  {
+    "op": "add", 
+    "path": "/ObjectProperty", 
+    "value": {"StringSubProperty":"<string-value>"}
+  }
+]
+```
+
+>[!NOTE]
+> 如果 `ObjectProperty` 具有多个属性，则应将所有属性都包含在此操作的 `value` 字段中，即使只更新一个属性也是如此：
+> ```json
+>... "value": {"StringSubProperty":"<string-value>", "Property2":"<property2-value>", ...}
+>```
+
+
+完成此操作后，将存在一个 `StringSubProperty` 路径，并且现在可以通过典型的 `replace` 操作直接更新它：
+
+```json
+[
+  {
+    "op": "replace",
+    "path": "/ObjectProperty/StringSubProperty",
+    "value": "<string-value>"
+  }
+]
+```
+
+虽然在创建孪生体时实例化了 `ObjectProperty` 的情况下不需要第一步，但建议在每次首次更新子属性时使用该步骤，因为你可能并不总是能够确定对象属性最初是否已实例化。
 
 ### <a name="update-a-digital-twins-model"></a>更新数字孪生体的模型
 
@@ -183,8 +226,8 @@ ms.locfileid: "108208484"
 仅当修补程序修改的数字孪生体符合新模型时，此操作才会成功。 
 
 请看下面的示例：
-1. 假设有一个数字孪生体，其模型为 foo_old。 foo_old 定义必需属性 mass 。
-2. 新模型 foo_new 定义属性 mass 并添加新的必需属性 temperature 。
+1. 假设有一个数字孪生体，其模型为 foo_old。 foo_old 定义必需属性 mass。
+2. 新模型 foo_new 定义属性 mass 并添加新的必需属性 temperature。
 3. 修补后，数字孪生体必须同时具有 mass 和 temperature 属性。 
 
 这种情况的修补程序需要同时更新模型和孪生体的 temperature 属性，如下所示：
@@ -220,14 +263,22 @@ Azure 数字孪生确保所有传入请求都会一个接一个地得到处理�
 
 可使用下面的可运行代码示例创建一个孪生体，更新其详细信息，然后删除孪生体。 
 
-### <a name="set-up-the-runnable-sample"></a>设置可运行的示例
+### <a name="set-up-sample-project-files"></a>设置示例项目文件
 
-此代码片段使用教程：使用示例客户端应用了解 Azure 数字孪生中的 [Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) 模型定义。 你可使用此链接直接转到该文件，或下载该文件以将其作为完整的[端到端示例项目](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分。
+代码片段使用示例模型定义 [Room.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-samples/master/AdtSampleApp/SampleClientApp/Models/Room.json)。 若要下载模型文件以便可以在代码中使用，请使用此链接直接转到 GitHub 中的该文件。 然后，右键单击屏幕上的任意位置，在浏览器的右击菜单中选择“另存为”，并使用“另存为”窗口将文件另存为 Room.json 。
 
-运行此示例之前，请执行以下步骤：
-1. 下载模型文件，将其放在项目中，并替换以下代码中的 `<path-to>` 占位符，告诉程序在何处找到该文件。
+接下来，在 Visual Studio 或所选的编辑器中创建新的控制台应用项目。
+
+然后，将可运行示例的以下代码复制到你的项目中：
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs":::
+
+### <a name="configure-project"></a>配置项目
+
+接下来，完成以下步骤来配置项目代码：
+1. 将之前下载的 Room.json 文件添加到项目中，并替换代码中的 `<path-to>` 占位符，以告知程序可在何处找到它。
 2. 将占位符 `<your-instance-hostname>` 替换为你的 Azure 数字孪生实例的主机名。
-3. 将两个依赖项添加到你的项目，这是与 Azure 数字孪生结合使用所必需的。 第一个是[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client) 的包，第二个提供工具来帮助向 Azure 进行身份验证。
+3. 将两个依赖项添加到你的项目，这是与 Azure 数字孪生结合使用所必需的。 第一个是[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的包，第二个提供工具来帮助向 Azure 进行身份验证。
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core
@@ -239,13 +290,11 @@ Azure 数字孪生确保所有传入请求都会一个接一个地得到处理�
 
 ### <a name="run-the-sample"></a>运行示例
 
-完成上述步骤后，可直接运行以下示例代码。
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs":::
+现已完成设置，可以运行示例代码项目。
 
 下面是上述程序的控制台输出： 
 
-:::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="显示孪生体已创建、更新和删除的控制台输出" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
+:::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="显示已创建、更新和删除孪生体的控制台输出的屏幕截图。" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

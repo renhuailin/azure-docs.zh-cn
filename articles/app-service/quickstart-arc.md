@@ -2,13 +2,13 @@
 title: 快速入门：在 Azure Arc 上创建 Web 应用
 description: 开始使用 Azure Arc 上的应用服务部署第一个 Web 应用。
 ms.topic: quickstart
-ms.date: 05/11/2021
-ms.openlocfilehash: b57c5e80ecef87901221c3ead49419f3cce89302
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/02/2021
+ms.openlocfilehash: b9292af90c50712ef99496ce6078c4c34b5e5d01
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385027"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984871"
 ---
 # <a name="create-an-app-service-app-on-azure-arc-preview"></a>在 Azure Arc 上创建应用服务应用（预览版）
 
@@ -28,36 +28,35 @@ ms.locfileid: "110385027"
 az group create --name myResourceGroup --location eastus 
 ```
 
-<!-- ## 2. Create an App Service plan
-
-Run the following command and replace `<environment-name>` with the name of the App Service Kubernetes environment (see [Prerequisites](#prerequisites)).
-
-```azurecli-interactive
-az appservice plan create --resource-group myResourceGroup --name myAppServicePlan --custom-location <environment-name> --kube-sku K1
-``` 
-
-Currently does not work
-
--->
-
 ## <a name="2-get-the-custom-location"></a>2. 获取自定义位置
 
 [!INCLUDE [app-service-arc-get-custom-location](../../includes/app-service-arc-get-custom-location.md)]
 
 
-## <a name="3-create-an-app"></a>3. 创建应用
+## <a name="3-create-an-app-service-plan"></a>3. 创建应用服务计划
+
+运行以下命令，替换从上一步获得的 `$customLocationId`。
+
+```azurecli-interactive
+az appservice plan create -g myResourceGroup -n myPlan \
+    --custom-location $customLocationId \
+    --per-site-scaling --is-linux --sku K1
+``` 
+
+## <a name="4-create-an-app"></a>4. 创建应用
 
 以下示例创建一个 Node.js 应用。 将 `<app-name>` 替换为在群集中唯一的名称（有效字符为 `a-z`、`0-9` 和 `-`）。 若要查看所有受支持的运行时，请运行 [`az webapp list-runtimes --linux`](/cli/azure/webapp)。
 
 ```azurecli-interactive
  az webapp create \
+    --plan myPlan
     --resource-group myResourceGroup \
     --name <app-name> \
     --custom-location $customLocationId \
     --runtime 'NODE|12-lts'
 ```
 
-## <a name="4-deploy-some-code"></a>4. 部署一些代码
+## <a name="5-deploy-some-code"></a>5. 部署一些代码
 
 > [!NOTE]
 > 公共预览版期间不支持 `az webapp up`。
@@ -71,7 +70,7 @@ zip -r package.zip .
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app-name> --src package.zip
 ```
 
-## <a name="5-get-diagnostic-logs-using-log-analytics"></a>5. 使用 Log Analytics 获取诊断日志
+## <a name="6-get-diagnostic-logs-using-log-analytics"></a>6. 使用 Log Analytics 获取诊断日志
 
 > [!NOTE]
 > 若要使用 Log Analytics，应在之前[安装应用服务扩展](manage-create-arc-environment.md#install-the-app-service-extension)时启用它。 如果安装的扩展没有 Log Analytics，请跳过此步骤。

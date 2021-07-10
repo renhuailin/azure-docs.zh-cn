@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: a64564887fa2738fd3c0586d1040be3c95193927
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 8213bd8e819e3a6c4a84a95f7c996912ac28ec2b
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205784"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539430"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
 
-Azure 数字孪生是一个服务型平台 (PaaS)，可用于基于整个环境的数字模型创建知识图。 这些环境可能是建筑物、工厂、农场、能源网络、铁路，体育场等，甚至是整个城市。 这些数字模型可用于获取洞察力，以推动产品改进、运营优化、成本降低和客户体验突破。
+Azure 数字孪生是一个服务型平台 (PaaS)，可用于基于整个环境的数字模型创建孪生图。 这些环境可能是建筑物、工厂、农场、能源网络、铁路，体育场等，甚至是整个城市。 这些数字模型可用于获取洞察力，以推动产品改进、运营优化、成本降低和客户体验突破。
 
 利用你基于 Azure 数字孪生的领域专业知识来构建自定义的连接解决方案，这些解决方案：
 * 为任何环境建模，并以可缩放且安全的方式将数字孪生引入生活
@@ -37,7 +37,7 @@ Azure 数字孪生是一个服务型平台 (PaaS)，可用于基于整个环境�
 [!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 模型是采用类似 JSON 语言（称为[数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)）进行定义的，它们根据状态属性、遥测事件、命令、组件和关系描述孪生。
-* 模型定义实体之间的语义 **关系**，以便可以将孪生连接到反映其交互的知识图。 可以将模型视为描述你世界的名词，将关系视为动词。
+* 模型定义实体之间的语义关系，以便可以将孪生连接到反映其交互的图。 可以将模型视为描述你世界的名词，将关系视为动词。
 * 还可以使用模型继承来专用化孪生。 一个模型可以继承自另一个模型。
 
 DTDL 用于其他 Azure IoT 服务中的数据模型，包括 [IoT 即插即用 (PnP)](../iot-pnp/overview-iot-plug-and-play.md) 和[时序见解 (TSI)](../time-series-insights/overview-what-is-tsi.md)。 这有助于使 Azure 数字孪生解决方案与 Azure 生态系统的其他部分保持连接并兼容。
@@ -46,11 +46,9 @@ DTDL 用于其他 Azure IoT 服务中的数据模型，包括 [IoT 即插即用 
 
 Azure 数字孪生中的数字模型是真实世界的实时最新表示。 使用自定义 DTDL 模型中的关系，可以将孪生连接到表示你环境的 **实时图形**。
 
-可借助示例应用程序 Azure 数字孪生资源管理器查看 Azure 数字孪生图的可视化效果。
+可以在 [Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) 中可视化 Azure 数字孪生图，其中提供了用来与图交互的以下界面：
 
-下面是示例可视化效果的视图：
-
-:::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Azure 数字孪生资源管理器示例应用程序的屏幕截图，显示表示数字孪生的节点图" lightbox="media/includes/azure-digital-twins-explorer.png":::
+:::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="Azure Digital Twins Explorer 的屏幕截图，其中显示了表示数字孪生的节点图。" lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
 
 Azure 数字孪生提供了丰富的 **事件系统**，以使该图形跟上数据处理和业务逻辑的变化。 可以连接外部计算资源（例如 [Azure Functions](../azure-functions/functions-overview.md)），以灵活的自定义方式来驱动此数据处理。
 
@@ -64,16 +62,17 @@ Azure 数字孪生提供了丰富的 **事件系统**，以使该图形跟上数
 
 还可以使用 REST API 或其他服务（例如[逻辑应用](../logic-apps/logic-apps-overview.md)）的连接器，从其他数据源驱动 Azure 数字孪生。
 
-### <a name="output-to-tsi-storage-and-analytics"></a>输出到 TSI、存储和分析
+### <a name="output-to-adx-tsi-storage-and-analytics"></a>输出到 ADX、TSI、存储和分析
 
 可以将 Azure 数字孪生模型中的数据路由到下游 Azure 服务，以进行其他分析或存储。 这是通过 **事件路由** 提供的，该事件路由使用 [事件中心](../event-hubs/event-hubs-about.md)、[事件网格](../event-grid/overview.md)或 [服务总线](../service-bus-messaging/service-bus-messaging-overview.md)来驱动所需的数据流。
 
 可以使用事件路由执行的操作包括：
+* 将数字孪生数据发送到 ADX，以使用 [Azure 数据资源管理器 (ADX) 的 Azure 数字孪生查询插件](concepts-data-explorer-plugin.md)查询这些数据
+* [将 Azure 数字孪生连接到时序见解 (TSI)](how-to-integrate-time-series-insights.md)，以跟踪每个孪生的时序历史记录
+* 将时序见解中的时序模型与 Azure 数字孪生中的源保持一致
 * 在 [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md) 中存储 Azure 数字孪生数据
 * 使用 [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 或其他 Microsoft 数据分析工具分析 Azure 数字孪生数据
 * 将较大的工作流与逻辑应用集成
-* 将 Azure 数字孪生连接到时序见解以跟踪每个孪生的时序历史记录
-* 将时序见解中的时序模型与 Azure 数字孪生中的源保持一致
 
 这是 Azure 数字孪生可以连接到较大解决方案并支持自定义需求以继续利用这些见解进行工作的另一种方式。
 
@@ -86,7 +85,7 @@ Azure 数字孪生通常与其他 Azure 服务结合使用，作为较大 IoT �
 * 一个或多个客户端应用程序，通过配置模型、创建拓扑并从孪生图中提取见解来驱动 Azure 数字孪生实例。
 * 一种或多种外部计算资源，用于处理由 Azure 数字孪生或连接的数据源（例如设备）生成的事件。 提供计算资源的一种常见方法是通过 [Azure Functions](../azure-functions/functions-overview.md)。
 * IoT 中心，提供设备管理和 IoT 数据流功能。
-* 下游服务，处理工作流集成（如[逻辑应用](../logic-apps/logic-apps-overview.md)、冷存储、时序集成或分析）等任务。
+* 下游服务，处理工作流集成（如[逻辑应用](../logic-apps/logic-apps-overview.md)、冷存储、Azure 数据资源管理器、时序集成或分析）等任务。
 
 下图显示了 Azure 数字孪生在较大 Azure IoT 解决方案的上下文中所处的位置。
 
@@ -94,14 +93,14 @@ Azure 数字孪生通常与其他 Azure 服务结合使用，作为较大 IoT �
 
 ## <a name="service-limits"></a>服务限制
 
-请参阅此处，了解 Azure 数字孪生的服务限制：[Azure 数字孪生服务限制](reference-service-limits.md)。 在使用服务来了解服务的功能和速率限制，以及在必要时可以调整哪些限制时，这一点非常有用。
+可以在 [Azure 数字孪生服务限制文章](reference-service-limits.md)中了解 Azure 数字孪生的服务限制。 在使用服务来了解服务的功能和速率限制，以及在必要时可以调整哪些限制时，这一点非常有用。
 
 ## <a name="terminology"></a>术语
 
-你可单击此处查看 Azure IoT 服务（包括 Azure 孪生）的常见 IoT 条款及其使用列表：[Azure IoT 词汇表](../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json)。 当你开始使用 Azure 数字孪生并构建 IoT 解决方案时，这可能是一个实用参考。
+可以在 [Azure IoT 词汇表](../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json)中查看 Azure IoT 服务（包括 Azure 数字孪生）的常见 IoT 术语及其用法列表。 参考此资源可帮助你获取 Azure 数字孪生的入门知识和生成 IoT 解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在快速入门中深入研究如何使用 Azure 数字孪生：[快速入门：浏览示例方案](quickstart-azure-digital-twins-explorer.md)。
+* 在[快速入门：Azure Digital Twins Explorer 入门](quickstart-azure-digital-twins-explorer.md)中深入了解如何使用 Azure 数字孪生。
 
 * 或者，通过概念：自定义模型，开始了解有关 Azure 数字孪生概念的信息。

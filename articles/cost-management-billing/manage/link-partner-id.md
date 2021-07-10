@@ -8,12 +8,13 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: a214e91307308e191ce92b6461c1454d2cc7dd2b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ca8c972f1d5c8819d5902966adde1070691301ba
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370472"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695228"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
@@ -31,7 +32,7 @@ PAL 使 Microsoft 能够识别哪些合作伙伴促成了 Azure 客户的成功�
 
 - **服务主体**：客户可在其目录中为你的组织添加一个应用或脚本，并分配任何 Azure 角色。 该应用或脚本的标识称为服务主体。
 
-- **Azure Lighthouse**：你的客户可以委托一个订阅（或资源组），这样你的用户就可以通过你的租户在其上工作。 有关详细信息，请参阅 [Azure 委托资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。
+- **Azure Lighthouse**：你的客户可以委托一个订阅（或资源组），这样你的用户就可以通过你的租户在其上工作。 有关详细信息，请参阅 [Azure Lighthouse](../../lighthouse/overview.md)。
 
 ## <a name="link-to-a-partner-id"></a>链接到合作伙伴 ID
 

@@ -5,14 +5,14 @@ author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: tutorial
-ms.date: 03/02/2021
+ms.date: 05/04/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: f4f3d045a2530fa54d22bec789918454cba80097
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: be6bcf84ebb9c979cd60e6ca6803b7a24a0944a1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310421"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736269"
 ---
 # <a name="tutorial-add-device-details"></a>教程：添加设备详细信息
 
@@ -28,25 +28,33 @@ ms.locfileid: "107310421"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 你应当登录到 [Azure 认证设备门户](https://certify.azure.com)并在其上为设备创建一个项目。 有关详细信息，请查看[教程](tutorial-01-creating-your-project.md)。
+* 应登录 [Azure 认证设备门户](https://certify.azure.com)，并为你的设备创建一个项目。 有关详细信息，请查看[教程](tutorial-01-creating-your-project.md)。
 * 你应为设备提供 PDF 格式的入门指南。 我们提供了许多入门模板供你使用，具体取决于认证计划和你的首选语言。 模板位于我们的 GitHub [入门模板](https://aka.ms/GSTemplate "入门模板")位置。
 
 ## <a name="adding-technical-device-details"></a>添加设备的技术性详细信息
 
 你的项目页的第一部分称为“输入设备详细信息”，可以在其中提供有关设备的核心硬件功能的信息，例如设备名称、说明、处理器、操作系统、连接选项、硬件接口、行业协议、物理尺寸，等等。 虽然许多字段是可选的，但如果你在设备通过认证后选择发布设备，则大多数此类信息会在 Azure 认证设备目录中提供给潜在客户。
 
-1. 在项目摘要页的“输入设备详细信息”部分单击“`Add`”以打开设备详细信息部分。 你会看到有五个部分需要你完成。
+1. 在项目摘要页的“输入设备详细信息”部分单击“`Add`”以打开设备详细信息部分。 你会看到有六个部分需要你完成。
 
 ![项目详细信息页的图像](./media/images/device-details-menu.png)
 
 2. 在“`Basics`”选项卡下检查你之前创建项目时提供的信息。
 1. 在“`Certifications`”选项卡下检查你为设备申请的认证。
-1. 打开“`Product details`”选项卡，然后选择至少一个操作系统。
-1. 添加 **至少** 一个说明你的设备的单独组件。 可在[此处](how-to-using-the-components-feature.md)查看有关组件用法的其他指导。
+1. 打开 `Hardware` 选项卡并添加至少一个描述你的设备的单独组件。 还可以查看关于[组件使用情况](how-to-using-the-components-feature.md)的指南。
 1. 单击 `Save`。 然后，你将能够编辑组件设备并添加更高级的详细信息。
-1. 在“`Additional product details`”下列出组件详细信息未涵盖的其他设备详细信息。
+1. 添加有关操作条件的任何相关信息（例如 IP 分级、操作温度或安全认证）。
+
+![硬件部分的图像](./media/images/hardware-section.png)
+
+7. 在“`Additional product details`”下列出组件详细信息未涵盖的其他设备详细信息。
 1. 如果你在任何组件字段中标记了“`Other`”，或者有特殊情况需要向 Azure 认证团队说明，请在“`Comments for reviewer`”部分提供一条澄清性的注释。
-1. 如果你的设备需要额外的硬件或服务才能将数据发送到 Azure，请使用“`Dependencies`”选项卡列出任何依赖项。 可在[此处](how-to-indirectly-connected-devices.md)查看有关如何列出依赖项的其他指导。
+1. 打开 `Software` 选项卡，然后选择至少一个操作系统。
+1. （开发套件设备需要，强烈建议所有其他设备使用）选择一个级别以指示将设备连接到 Azure 的预期设置过程。 如果选择级别 2，你将需要提供指向可用软件映像的链接。
+
+![软件部分的图片](./media/images/software-section.png)
+
+11. 如果你的设备需要额外的硬件或服务才能将数据发送到 Azure，请使用“`Dependencies`”选项卡列出任何依赖项。 还可以查看关于[列出依赖项](how-to-indirectly-connected-devices.md)的附加指南。
 1. 如果你对已提供的信息满意，则可以使用“`Review`”选项卡了解已输入的完整设备详细信息的只读概述。
 1. 单击页面顶部的“`Project summary`”，返回到摘要页。
 
@@ -81,7 +89,7 @@ ms.locfileid: "107310421"
     > [!Note]
     > 请确保提供的所有 URL 有效，或者在批准后发布时会处于活动状态。
 
-1. 指定最多 3 个已为其优化了你的设备的目标行业。
+1. 指定最多 3 个已针对其优化了你的设备的目标行业。
 1. 提供最多 5 个设备分销商的信息。 这可能包括制造商自己的站点。
 
     > [!Note]

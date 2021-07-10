@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 05/25/2021
 ms.author: banders
-ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 80c0627cdc2169ce3301ee56a449442387d8f6e1
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684739"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481095"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>确定要购买的预留项
 
@@ -97,7 +97,7 @@ Azure Synapse Analytics 用量在一天中可能会上下波动。 请咨询管�
 
 ## <a name="recommendations-in-the-cost-management-power-bi-app"></a>成本管理 Power BI 应用中的建议
 
-企业协议和 Microsoft 客户协议客户可以使用“VM RI 覆盖范围”报表来查看 VM 和购买建议。 覆盖范围报表显示总用量以及预留实例涵盖的用量。
+企业协议客户可以使用“VM RI 覆盖范围”报表来查看 VM 和购买建议。 覆盖范围报表显示总用量以及预留实例涵盖的用量。
 
 1. 获取[成本管理应用](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)。
 2. 根据要在哪个范围购买预留项，转到“VM RI 覆盖范围”报表 –“共享范围”或“单个范围”。

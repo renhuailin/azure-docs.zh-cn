@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/03/2021
+ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 58e2a19f2d57eafc7d2967141d584dc7a22fe76c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c086440cce663f6c22b05b9a52c33b526106355
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955663"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559709"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>教程：将 Zscaler Private Access (ZPA) 与 Azure Active Directory 集成
 
@@ -41,6 +41,9 @@ ms.locfileid: "104955663"
 本教程在测试环境中配置并测试 Azure AD SSO。 
 
 * Zscaler Private Access (ZPA) 支持 SP 发起的 SSO。
+* Zscaler Private Access (ZPA) 支持[自动用户预配](zscaler-private-access-provisioning-tutorial.md)。
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="add-zscaler-private-access-zpa-from-the-gallery"></a>从库中添加 Zscaler Private Access (ZPA)
 
@@ -53,7 +56,7 @@ ms.locfileid: "104955663"
 1. 在“从库中添加”部分的搜索框中，键入“Zscaler Private Access (ZPA)” 。
 1. 从结果面板中选择“Zscaler Private Access (ZPA)”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-sso"></a>配置和测试 Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-zscaler-private-access-zpa"></a>配置并测试 Zscaler Private Access (ZPA) 的 Azure AD SSO
 
 使用名为“B.Simon”的测试用户配置并测试 Zscaler Private Access (ZPA) 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Zscaler Private Access (ZPA) 相关用户之间建立链接关系。
 
@@ -76,11 +79,11 @@ ms.locfileid: "104955663"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”页上，输入以下字段的值  ：
-
-    1. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>` 
+1. 在“基本 SAML 配置”页上，执行以下步骤：
 
     1. 在“标识符(实体 ID)”文本框中，键入 URL：`https://samlsp.private.zscaler.com/auth/metadata` 
+
+    1. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://samlsp.private.zscaler.com/auth/login?domain=<DOMAIN_NAME>` 
 
     > [!NOTE]
     > “登录 URL”值不是实际值。 请使用实际的登录 URL 更新此值。 若要获取这些值，请联系 [Zscaler Private Access (ZPA) 客户端支持团队](https://help.zscaler.com/zpa-submit-ticket)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -154,6 +157,8 @@ ms.locfileid: "104955663"
 ### <a name="create-zscaler-private-access-zpa-test-user"></a>创建 Zscaler Private Access (ZPA) 测试用户
 
 在本部分中，会在 Zscaler Private Access (ZPA) 中创建一个名为“Britta Simon”的用户。 请与 [Zscaler Private Access (ZPA) 支持团队](https://help.zscaler.com/zpa-submit-ticket)协作，将用户添加到 Zscaler Private Access (ZPA) 平台。
+
+Zscaler Private Access (ZPA) 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参阅[此处](zscaler-private-access-provisioning-tutorial.md)。
 
 ## <a name="test-sso"></a>测试 SSO
 

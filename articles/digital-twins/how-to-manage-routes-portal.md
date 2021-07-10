@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4aef4f3a0da17abc497225bcd0a27b98e4eaea95
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 6dd307c53985e9877d6d627000933234d3731775
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208502"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615854"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>在 Azure 数字孪生中管理终结点和路由（门户）
 
@@ -22,11 +22,11 @@ ms.locfileid: "108208502"
 
 本文介绍使用 [Azure 门户](https://portal.azure.com)创建终结点和路由的过程。
 
-此外，还可以通过[事件路由 API](/rest/api/digital-twins/dataplane/eventroutes)、[SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) 或 [Azure 数字孪生 CLI](how-to-use-cli.md) 来管理终结点和路由。 有关使用上述机制（而非门户）的本文版本，请参阅如何：管理终结点和路由（API 和 CLI）。
+此外，还可以通过[事件路由 API](/rest/api/digital-twins/dataplane/eventroutes)、[SDK](concepts-apis-sdks.md#overview-data-plane-apis) 或 [Azure 数字孪生 CLI](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) 来管理终结点和路由。 有关使用上述机制（而非门户）的本文版本，请参阅如何：管理终结点和路由（API 和 CLI）。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 你需要一个 Azure 帐户（你可以在[此处](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)免费设置一个）
+* 你需要一个 Azure 帐户（可[免费设置一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)）
 * 在 Azure 订阅中需要一个“Azure 数字孪生实例”。 如果还没有实例，可以使用如何：设置实例和身份验证中的步骤创建一个实例。 准备好以下设置值，以便稍后在本文中使用：
     - 实例名称
     - 资源组
@@ -37,7 +37,7 @@ ms.locfileid: "108208502"
 
 从结果中选择实例，即可在实例概述中查看这些详细信息：
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Azure 数字孪生实例“概述”页的屏幕截图。名称和资源组已突出显示。":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Azure 门户中 Azure 数字孪生实例概述页面的屏幕截图。名称和资源组突出显示。":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>为 Azure 数字孪生创建终结点
 
@@ -58,7 +58,7 @@ ms.locfileid: "108208502"
 
 1. 从实例菜单中选择“终结点”。 然后，在显示的“终结点”页选择“+ 创建终结点”。 随后将打开“创建终结点”页，可在该页面中按以下步骤填写字段。
 
-    :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="创建“事件网格”类型终结点的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-endpoint-event-grid.png":::
+    :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="在 Azure 门户中创建“事件网格”类型终结点的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-endpoint-event-grid.png":::
 
 1. 输入终结点的“名称”，并选择“终结点类型”。
 
@@ -67,7 +67,7 @@ ms.locfileid: "108208502"
 
     :::row:::
         :::column:::
-            :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png" alt-text="创建“事件中心”类型终结点的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png":::
+            :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png" alt-text="在 Azure 门户中创建“事件中心”类型终结点的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png":::
         :::column-end:::
         :::column:::
         :::column-end:::
@@ -82,7 +82,7 @@ ms.locfileid: "108208502"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="用于验证终结点创建的通知的屏幕截图。门户顶部栏中铃形图标已选定，显示一条通知表示“已成功创建终结点 ADT-eh-endpoint”。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="指示验证 Azure 门户中终结点的创建的通知的屏幕截图。":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -98,7 +98,7 @@ ms.locfileid: "108208502"
 
 当终结点无法在特定时间段内传递事件，或在尝试传递事件一定次数后仍无法传递，它可将未传递的事件发送到存储帐户。 此过程称为“死信处理”。
 
-要创建启用死信的终结点，必须使用 [CLI 命令](how-to-use-cli.md)或[控制平面 API](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 来创建终结点，而不是 Azure 门户。
+要创建启用死信的终结点，必须使用 [CLI 命令](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)或[控制平面 API](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) 来创建终结点，而不是 Azure 门户。
 
 有关如何使用这些工具创建终结点的说明，请参阅本文的 API 和 CLI 版本。
 
@@ -129,13 +129,13 @@ ms.locfileid: "108208502"
 
 在打开的“创建事件路由”页上，至少选择以下项目：
 * “名称”字段的路由名称
-* 要用于创建路由的“终结点” 
+* 要用于创建路由的终结点 
 
 要启用该路由，还必须“添加事件路由筛选器”，其值至少为 `true`。 （保留默认值 `false` 会创建路由，但不会向其发送事件。）因此，请切换“高级编辑器”的开关将其启用，并在“筛选器”框中写入 `true`。
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="为实例创建事件路由的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="在 Azure 门户中为实例创建事件路由的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
-完成后，点击“保存”按钮创建事件路由。
+完成后，选择“保存”按钮创建事件路由。
 
 ## <a name="filter-events"></a>筛选事件
 
@@ -163,7 +163,7 @@ ms.locfileid: "108208502"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。选择事件的复选框。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="在 Azure 门户中使用基本筛选器创建事件路由的屏幕截图，其中突出显示了事件的复选框。":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -173,7 +173,7 @@ ms.locfileid: "108208502"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。显示选择事件后自动填充的筛选器文本。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="在 Azure 门户中使用基本筛选器创建事件路由的屏幕截图，其中突出显示了选择事件后自动填充的筛选器文本。":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -187,7 +187,7 @@ ms.locfileid: "108208502"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="使用高级筛选器创建事件路由的屏幕截图。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="在 Azure 门户中使用高级筛选器创建事件路由的屏幕截图。":::
     :::column-end:::
     :::column:::
     :::column-end:::

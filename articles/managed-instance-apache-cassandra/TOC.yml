@@ -26,9 +26,21 @@
       href: compare-cosmosdb-managed-instance.md
 - name: 操作指南
   items:
+    - name: 迁移
+      items:
+        - name: 实时迁移
+          items:
+            - name: 使用双重写入代理
+              href: dual-write-proxy-migration.md
+        - name: 脱机迁移
+          items:
+            - name: 使用 Apache Spark
+              href: spark-migration.md
     - name: 使用 Azure CLI 进行管理
       displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md
+    - name: 所需出站网络规则
+      href: network-rules.md
     - name: 在 Prometheus 中通过 Grafana 可视化指标
       href: visualize-prometheus-grafana.md
 - name: 参考

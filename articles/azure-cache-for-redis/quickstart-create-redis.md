@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 24de9e4eabfbc03e942868cce7560b5df093e1ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5559f3bdd749ba7913db3f37d47d2d158700facb
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100365117"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746648"
 ---
 # <a name="quickstart-create-an-open-source-redis-cache"></a>快速入门：创建开放源 Redis 缓存
 
@@ -23,6 +23,7 @@ Azure Cache for Redis 在 Azure 中提供完全托管的 [开源 Redis](https://
 在开始之前，你需要一个 Azure 订阅。 如果没有，请先创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-cache"></a>创建缓存
+
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 ## <a name="next-steps"></a>后续步骤
