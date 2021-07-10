@@ -3,12 +3,12 @@ title: Azure Monitor 文档：2021 年 5 月的新增内容
 description: 2021 年 5 月 Azure Monitor 文档中的新增内容。
 ms.topic: conceptual
 ms.date: 06/03/2021
-ms.openlocfilehash: 543cfc80cac144b4ff729338442b5169e0f3a5e1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 26fe99f92656940616f09419674a02c046214dd0
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747448"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112292278"
 ---
 # <a name="azure-monitor-docs-whats-new-for-may-2021"></a>Azure Monitor 文档：2021 年 5 月的新增内容
 
@@ -18,7 +18,7 @@ ms.locfileid: "111747448"
 
 **更新的文章**
 
-- [Azure Monitor 常见问题解答](faq.md)
+- [Azure Monitor 常见问题解答](faq.yml)
 - [Azure 监视器合作伙伴集成](partners.md)
 
 ## <a name="alerts"></a>警报

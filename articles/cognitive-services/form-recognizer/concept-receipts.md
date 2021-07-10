@@ -5,17 +5,17 @@ description: 使用表单识别器 API 了解与收据分析相关的概念 - �
 services: cognitive-services
 author: laujan
 manager: nitinme
-ms.service: cognitive-services
+ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9d37811c89cd42053333bfb8ddc17dfbb47b907c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f6fccecca72e106f42ccd185a7c2cb3ba9fe4a53
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110374676"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887790"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>表单识别器预生成收据模型
 
@@ -60,7 +60,7 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
 
 |名称| 类型 | 说明 | 文本 | 值（标准化输出） |
 |:-----|:----|:----|:----| :----|
-| ReceiptType | 字符串 | 销售收据类型 | Itemized |  |
+| ReceiptType | 字符串 | 销售收据类型 |  | Itemized |
 | MerchantName | 字符串 | 开具收据的商家的名称 | Contoso |  |
 | MerchantPhoneNumber | phoneNumber | 列出的商户电话号码 | 987-654-3210 | +19876543210 |
 | MerchantAddress | 字符串 | 列出的商家地址 | 123 Main St Redmond WA 98052 |  |
@@ -72,7 +72,7 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
 | 提示 | 数字 | 买家提供的小费 | 1\.00 美元 | 1.00 |
 | 项 | 对象数组 | 提取的行项，其中包含名称、数量、单价和提取的总价格 | |
 | 名称 | 字符串 | 项名称 | Surface Pro 6 | |
-| 数量 | 数字 | 每个项的数量 | 1 | |
+| 数量 | 数字 | 每个项的数量 | 1 | 1 |
 | 价格 | 数字 | 每个项单位的单独价格 | 999.00 美元 | 999.00 |
 | 总价 | 数字 | 行项总价 | 999.00 美元 | 999.00 |
 
@@ -91,17 +91,12 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
 ## <a name="supported-locales"></a>支持的区域设置
 
 * 预生成的 receipt v2.0 支持 en-us 区域设置的销售收据
-* 预生成的 receipt v2.1 为以下英语收据区域设置添加了更多支持：
-
-* **en-au**
-* **en-ca**
-* **en-gb**
-* **en-in**
+* 预生成的 receipt v2.1 为以下英语收据区域设置添加了更多支持：en-au、en-ca、en-gb、en-in    
 
   > [!NOTE]
   > 语言输入
   >
-  > 预生成的 Receipt v2.1 提供了一个可选的请求参数，用于指定来自其他英语市场的收据区域设置。 对于来自澳大利亚 (en-au)、加拿大 (en-ca)、英国 (en-gb) 和印度 (en-in) 的英语销售收据，可以指定区域设置以获得改进的结果。 如果在 v2.1 中未指定任何区域设置，则会默认为 en-us 模型。
+  > 预生成的 Receipt v2.1 提供了一个可选的请求参数，用于指定来自其他英语市场的收据区域设置。 对于来自澳大利亚 (en-au)、加拿大 (en-ca)、英国 (en-gb) 和印度 (en-in) 的英语销售收据，可以指定区域设置以获得改进的结果。 如果在 v2.1 中未指定任何区域设置，则模型会自动检测区域设置。
 
 ## <a name="the-analyze-receipt-operation"></a>Analyze Receipt 操作
 
@@ -130,7 +125,7 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
 
 对 Get Analyze Receipt Result 操作的响应将是已提取所有信息的收据的结构化表示形式。  有关[示例收据文件](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg)及其结构化输出[示例收据输出](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)，请参阅此处。
 
-参阅下面的成功 JSON 响应示例：
+请参阅以下成功的 JSON 响应示例（为简单起见，已缩短了输出）：
 * `"readResults"` 节点包含所有已识别的文本。 文本按页，然后按行，然后按单个单词进行组织。
 * `"documentResults"` 节点包含模型发现的特定于名片的值。 在此，你可以找到有用的键/值对，如名字、姓氏、公司名等。
 

@@ -67,10 +67,14 @@
       href: choose-pricing-tier.md
     - name: 用于室内地图的 Creator
       items:
+        - name: Creator 服务地理范围
+          href: creator-geographic-scope.md
         - name: 室内地图概念
           href: creator-indoor-maps.md
         - name: 绘图转换错误和警告
           href: drawing-conversion-error-codes.md
+    - name: 静态数据加密
+      href: ../security/fundamentals/encryption-atrest.md
     - name: 覆盖率
       items:
         - name: 覆盖率
@@ -238,7 +242,7 @@
               href: spatial-io-supported-data-format-details.md
         - name: Web SDK 支持的浏览器
           href: supported-browsers.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: web-sdk-best-practices.md
     - name: 使用 Android SDK 进行开发
       items:
@@ -300,6 +304,8 @@
       items:
         - name: 绘图包要求
           href: drawing-requirements.md
+        - name: 绘图包指南
+          href: drawing-package-guide.md
         - name: 动态地图 StylesObject
           href: schema-stateset-stylesobject.md
         - name: 车辆消耗模型
@@ -310,10 +316,12 @@
           href: geofence-geojson.md
         - name: 支持的搜索类别
           href: supported-search-categories.md
+        - name: Facility Ontology
+          href: creator-facility-ontology.md
     - name: REST
       items:
         - name: 数据服务
-          href: /rest/api/maps/data
+          href: /rest/api/maps/data-v2
         - name: 高度服务
           href: /rest/api/maps/elevation
         - name: 地理位置服务
@@ -339,17 +347,17 @@
         - name: 地图创建者服务
           items:
             - name: 别名服务
-              href: /rest/api/maps/alias
+              href: /rest/api/maps/v2/alias
             - name: 转换服务
-              href: /rest/api/maps/conversion
+              href: /rest/api/maps/v2/conversion
             - name: 数据集服务
-              href: /rest/api/maps/dataset
+              href: /rest/api/maps/v2/dataset
             - name: 功能状态服务
-              href: /rest/api/maps/featurestate
+              href: /rest/api/maps/v2/feature-state
             - name: 图块集服务
-              href: /rest/api/maps/tileset
+              href: /rest/api/maps/v2/tileset
             - name: WFS 服务
-              href: /rest/api/maps/wfs
+              href: /rest/api/maps/v2/wfs
         - name: 地图帐户管理
           href: /rest/api/maps-management
     - name: JavaScript

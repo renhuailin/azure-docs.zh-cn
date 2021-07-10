@@ -6,21 +6,22 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: ''
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/23/2020
+ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c7612188043be070ead92c88838b567b22787d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e927415e0a1d2ce7d52e602eddfffb0eae5387b5
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98131264"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076557"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure 存储 
 
@@ -76,21 +77,12 @@ ms.locfileid: "98131264"
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>向 VM 授予对 Azure 存储容器的访问权限 
 
-可以使用 VM 的托管标识检索 Azure 存储 blob 中的数据。
+可以使用 VM 的托管标识检索 Azure 存储 blob 中的数据。 Azure 资源的托管标识可以用来对支持 Azure AD 身份验证的资源进行身份验证。  通过向包含存储帐户的资源组范围中的托管标识分配 [storage-blob-data-reader](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) 角色来授予访问权限。
+ 
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。”
 
 >[!NOTE]
 > 有关可用于授予存储权限的各种角色的信息，请查看[使用 Azure Active Directory 对 Blob 和队列授予访问权限](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)
-
-1. 导航回新创建的存储帐户。  
-2. 单击左侧面板中的“访问控制(IAM)”  链接。  
-3. 单击页面顶部的“+ 添加角色分配”，为 VM 添加新的角色分配。
-4. 在“角色”下，从下拉列表中，选择“存储 Blob 数据读取器”。 
-5. 在下一个下拉列表中，在“将访问权限分配到”下，选择“虚拟机”。  
-6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。    
-7. 在“选择”下，选择你的 VM 并单击“保存”。
-
-    ![分配权限](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
-
 ## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>获取访问令牌并使用它来调用 Azure 存储
 
 Azure 存储原生支持 Azure AD 身份验证，因此可以直接接受使用托管标识获取的访问令牌。 在某种程度上，这是将 Azure 存储与 Azure AD 集成，不同于在连接字符串中提供凭据。

@@ -16,12 +16,12 @@ ms.date: 12/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759781fd61cd42d05f2823d390e99d128dd2fcac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83aa5f4527885fbb0a02c70857cdd8409f0fa554
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96512386"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892717"
 ---
 # <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>特权访问 Azure AD 组的管理功能（预览版）
 
@@ -36,7 +36,7 @@ ms.locfileid: "96512386"
 
 ## <a name="activate-multiple-role-assignments-in-a-single-request"></a>在单个请求中激活多个角色分配
 
-借助特权访问组预览版，可以为特定于工作负载的管理员提供通过单个实时请求快速访问多个角色的权限。 例如，第 3 层 Office 管理员可能需要实时访问 Exchange 管理员、Office 应用管理员、Teams 管理员和搜索管理员角色，以便每天彻底调查事件。 今天之前这需要四个连续请求，是一个需要花费一些时间的过程。 相反，可以创建一个名为“第 3 层 Office 管理员”的可分配角色的组，将它分配给前面提到的所有四个角色（或任何 Azure AD 内置角色），并在该组的“活动”部分中为特权访问启用相应角色。 为特权访问启用后，可以为组成员配置实时设置，并将管理员和所有者分配为符合条件。 当管理员提升到组中时，他们会成为所有四个 Azure AD 角色的成员。
+借助特权访问组预览版，可以为特定于工作负载的管理员提供通过单个实时请求快速访问多个角色的权限。 例如，第 0 层 Office 管理员可能需要实时访问 Exchange 管理员、Office 应用管理员、Teams 管理员和搜索管理员角色，以便每天都对事件进行彻底调查。 今天之前这需要四个连续请求，是一个需要花费一些时间的过程。 而现在，你可以创建一个名为“第 0 层 Office 管理员”的可分配角色组，将它分配给前面提到的所有四个角色（或任何 Azure AD 内置角色），并在该组的“活动”部分为特权访问启用相应角色。 为特权访问启用后，可以为组成员配置实时设置，并将管理员和所有者分配为符合条件。 当管理员提升到组中时，他们会成为所有四个 Azure AD 角色的成员。
 
 ## <a name="extend-and-renew-group-assignments"></a>扩展和续订组分配
 

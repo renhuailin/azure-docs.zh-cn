@@ -2,13 +2,13 @@
 title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 3feb0c0ac40812ef628281d93d5848c2d60df6eb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/09/2021
+ms.openlocfilehash: 1831b103dc037b5f92f9ca53be1c71ce1bb3f558
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375793"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111889790"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -182,7 +182,9 @@ ms.locfileid: "110375793"
 
 [!INCLUDE [quantum-limits](../../../includes/azure-quantum-limits.md)]
 
-## <a name="azure-role-based-access-control-limits"></a>Azure 基于角色的访问控制限制
+## <a name="azure-rbac-limits"></a>Azure RBAC 限制
+
+以下限制适用于 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
 
 [!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control/limits.md)]
 
