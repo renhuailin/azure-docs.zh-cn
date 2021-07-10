@@ -4,12 +4,12 @@ description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的
 ms.topic: overview
 ms.date: 03/22/2021
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c445687db7a154b6fc86e962d2c2340ad6297431
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a93bb81fc2d9f3abc9994921ad3ec689737d4588
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799065"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113214490"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -21,7 +21,7 @@ ms.locfileid: "104799065"
 
 与虚拟机 (VM) 相比，容器的启动优势明显。 Azure 容器实例可在数秒内启动 Azure 中的容器，且无需预配和管理 VM。
 
-从 Docker Hub 引入 Linux 或 Windows 容器映像、专用 [Azure 容器注册表](../container-registry/index.yml)或其他基于云的 Docker 注册表。 请访问[常见问题解答](container-instances-faq.md)，了解 ACI 支持哪些注册表。 Azure 容器实例会缓存几个常见的基础操作系统映像，有助于加快自定义应用程序映像的部署速度。
+从 Docker Hub 引入 Linux 或 Windows 容器映像、专用 [Azure 容器注册表](../container-registry/index.yml)或其他基于云的 Docker 注册表。 请访问[常见问题解答](container-instances-faq.yml)，了解 ACI 支持哪些注册表。 Azure 容器实例会缓存几个常见的基础操作系统映像，有助于加快自定义应用程序映像的部署速度。
 
 ## <a name="container-access"></a>容器访问
 
@@ -64,7 +64,7 @@ Azure 容器实例可以使用同一 API 来计划 Windows 和 Linux 容器。 �
 * [虚拟网络部署](container-instances-vnet.md)
 * [GPU 资源](container-instances-gpu.md)（预览版）
 
-对于 Windows 容器部署，请基于常用 [Windows 基础映像](container-instances-faq.md#what-windows-base-os-images-are-supported)使用映像。
+对于 Windows 容器部署，请基于常用 [Windows 基础映像](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported)使用映像。
 
 ## <a name="co-scheduled-groups"></a>共同计划组
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9ebc6e266c93e55bc250e8450356f8b695dd9080
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 37aa8c954f847002ad69fa17ee1f025049ec9bb6
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714985"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785753"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
@@ -24,7 +24,7 @@ ms.locfileid: "107714985"
 
 > [!div class="checklist"]
 > * 创建 Azure 存储帐户用于记录汽车跟踪数据。
-> * 使用数据上传 API 将地理围栏上传到 Azure Maps 数据服务（预览版）。
+> * 使用数据上传 API 将地理围栏上传到 Azure Maps 数据服务。
 > * 在 Azure IoT 中心创建中心并注册设备。
 > * 在 Azure Functions 中创建一个函数，基于 Azure Maps 空间分析实现业务逻辑。
 > * 通过 Azure 事件网格订阅 Azure 函数发出的 IoT 设备遥测事件。
@@ -126,33 +126,28 @@ ms.locfileid: "107714985"
 3. 在生成器选项卡上选择“POST”HTTP 方法并输入以下 URL，将地理围栏上传到数据上传 API。 确保将 `{subscription-key}` 替换为主要订阅密钥。
 
     ```HTTP
-    https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
+    https://us.atlas.microsoft.com/mapData?subscription-key={subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
     在 URL 路径中，`dataFormat` 参数对应的 `geojson` 值表示正在上传的数据的格式。
 
 4. 为输入格式选择“正文” > “原始”，然后从下拉列表选择“JSON”  。 [打开 JSON 数据文件](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)，然后将 JSON 复制到正文部分。 选择“发送”。
 
-5. 选择“发送”，然后等待请求处理完成。 在请求处理完成后，请转到响应的“标头”选项卡。 复制“位置”键的值，即 `status URL`。
+5. 选择“发送”，然后等待请求处理完成。 在请求处理完成后，请转到响应的“标头”选项卡。 复制“Operation-Location”键的值，即 `status URL`。
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0
+    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
     ```
 
 6. 检查 API 调用的状态，在 `status URL` 上创建“GET”HTTP 请求。 为了进行身份验证，需要将主订阅密钥追加到 URL 中。 “GET”请求应如以下 URL 所示：
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={subscription-key}
+   https://us.atlas.microsoft.com/mapData/<operationId>/status?api-version=2.0&subscription-key={subscription-key}
    ```
-   
-7. “GET”HTTP 请求成功完成后，它将返回 `resourceLocation`。 `resourceLocation` 包含更新内容的唯一 `udid`。 复制该 `udid`，本教程稍后会使用。
 
-      ```json
-      {
-          "status": "Succeeded",
-          "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
-      }
-      ```
+7. 请求成功完成后，在响应窗口中选择“标头”选项卡。 复制“Resource-Location”键的值，即 `resource location URL`。  `resource location URL` 包含已上传数据的唯一标识符 (`udid`)。 复制 `udid`，本教程稍后会用到它。
+
+    :::image type="content" source="./media/tutorial-iot-hub-maps/resource-location-url.png" alt-text="复制资源位置 URL。":::
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

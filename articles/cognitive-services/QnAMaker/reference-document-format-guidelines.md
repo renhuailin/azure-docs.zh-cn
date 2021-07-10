@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: 40b9d9e665aacf3024e409ef6bf1b5596ad28ca9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 53baa580d2f2c68fa32f38bddb07b5d9e362d190
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372511"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787742"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>导入的文档和 URL 的格式准则
 
@@ -92,7 +92,7 @@ Answer2
 
 ### <a name="structured-txt-tsv-and-xls-files"></a>结构化 *TXT*、*TSV* 和 *XLS* 文件
 
-采用结构化 *.txt*、*.tsv* 或 *.xls* 文件形式的 QnA 也可上传到 QnA Maker，以便创建或增强知识库。  它们的内容可以是纯文本，也可以是 RTF 或 HTML 格式。
+采用结构化 *.txt*、*.tsv* 或 *.xls* 文件形式的 QnA 也可上传到 QnA Maker，以便创建或增强知识库。  它们的内容可以是纯文本，也可以是 RTF 或 HTML 格式。 [QnA 对](./How-To/edit-knowledge-base.md#question-and-answer-pairs)具有一个可选的元数据字段，可用于将 QnA 对归为不同类别。
 
 | 问题  | Answer  | 元数据（1 个键：1 个值） |
 |-----------|---------|-------------------------|
@@ -122,7 +122,7 @@ Answer2
 
 ### <a name="structured-data-format-through-import"></a>通过导入提供的结构化数据格式
 
-导入知识库将替换现有知识库的内容。 导入需要包含数据源信息的结构化 .tsv 文件。 这些信息可帮助 QnA Maker 将问答对分组，并将它们归因于特定数据源。
+导入知识库将替换现有知识库的内容。 导入需要包含数据源信息的结构化 .tsv 文件。 这些信息可帮助 QnA Maker 将问答对分组，并将它们归因于特定数据源。 [QnA 对](./How-To/edit-knowledge-base.md#question-and-answer-pairs)具有一个可选的元数据字段，可用于将 QnA 对归为不同类别。
 
 | 问题  | Answer  | 源| 元数据（1 个键：1 个值） |
 |-----------|---------|----|---------------------|

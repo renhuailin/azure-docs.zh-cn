@@ -2,7 +2,7 @@
 title:使用媒体服务 v3 进行上传、编码和流式传输:Azure 媒体服务说明:介绍如何使用 Azure 媒体服务 v3 上载文件、对视频编码和流式传输内容的教程。
 services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
 
-ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date: 03/17/2021 ms.author: inhenkel
+ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date: 05/25/2021 ms.author: inhenkel
 ---
 
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 对视频进行上载、编码和流式传输
@@ -41,13 +41,13 @@ ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.dat
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
 
-该示例位于 [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles) 文件夹。
+该示例位于 [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/main/AMSV3Tutorials/UploadEncodeAndStreamFiles) 文件夹。
 
-打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json)。 将值替换为在[访问 API](./access-api-howto.md) 中获取的凭据。
+打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json)。 将值替换为在[访问 API](./access-api-howto.md) 中获取的凭据。
 
 ## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>检查用于上传、编码和流式传输的代码
 
-本节讨论 UploadEncodeAndStreamFiles 项目的 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs) 文件中定义的函数。
+本节讨论 UploadEncodeAndStreamFiles 项目的 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs) 文件中定义的函数。
 
 该示例执行以下操作：
 
@@ -59,11 +59,19 @@ ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.dat
 6. 创建 **流定位符**。
 7. 生成流式处理 URL。
 
-### <a name="start-using-media-services-apis-with-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
+### <a name="start-using-media-services-apis-with-the-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
 
-若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象。 若要创建对象，必须提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在本文开头克隆的代码中，**GetCredentialsAsync** 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。
+若要开始将媒体服务 API 与 .NET 结合使用，需要创建 `AzureMediaServicesClient` 对象。 若要创建对象，需要提供客户端凭据以使用 Azure Active Directory 连接到 Azure。 另一个选项是使用在 `GetCredentialsInteractiveAuthAsync` 中实现的交互式身份验证。
 
-[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateMediaServicesClient)]
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#CreateMediaServicesClientAsync)]
+
+在文章开头克隆的代码中，`GetCredentialsAsync` 函数根据本地配置文件 (appsettings.json) 中提供的凭据或通过存储库根目录中的 .env 环境变量文件创建 `ServiceClientCredentials` 对象。
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#GetCredentialsAsync)]
+
+在交互式身份验证的情况下，`GetCredentialsInteractiveAuthAsync` 函数根据交互式身份验证和本地配置文件 (appsettings.json) 中提供的连接参数或通过存储库根目录中的 .env 环境变量文件创建 `ServiceClientCredentials` 对象。 在本例中，配置或环境变量文件中均不需要 AADCLIENTID 和 AADSECRET。
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#GetCredentialsInteractiveAuthAsync)]
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>创建输入资产并将本地文件上传到该资产
 
@@ -93,7 +101,7 @@ CreateInputAsset 函数创建新的输入[资产](/rest/api/media/assets)并将�
 
 #### <a name="transform"></a>转换
 
-创建新[转换](/rest/api/media/transforms)实例时，需要指定希望生成的输出内容。 所需参数是 **TransformOutput** 对象，如以下代码所示。 每个 TransformOutput 包含一个预设 。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput 。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](encode-autogen-bitrate-ladder.md)。
+创建新实例时，需要指定希望生成的输出内容[转换](/rest/api/media/transforms)。 所需参数是 **TransformOutput** 对象，如以下代码所示。 每个 TransformOutput 包含一个预设 。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput 。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](encode-autogen-bitrate-ladder.md)。
 
 可以使用内置 EncoderNamedPreset 或使用自定义预设。 有关详细信息，请参阅[如何自定义编码器预设](transform-custom-presets-how-to.md)。
 
