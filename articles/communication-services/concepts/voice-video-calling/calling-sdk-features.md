@@ -6,17 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 298e22388290d16b2dec76aabc9f32ad493ed341
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 7173c625ef56ea9e4d4d43d90adc18ba4fe167ab
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986275"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113109280"
 ---
 # <a name="calling-sdk-overview"></a>呼叫 SDK 概述
+
+[!INCLUDE [SDP Plan B Deprecation Notice](../../includes/plan-b-sdp-deprecation.md)]
 
 最终用户设备可以通过呼叫 SDK 来驱动语音和视频通信体验。 本页提供呼叫功能的详细说明，包括平台和浏览器支持信息。 若要立即开始，请查看[呼叫快速入门](../../quickstarts/voice-video-calling/getting-started-with-calling.md)或[呼叫 hero 示例](../../samples/calling-hero-sample.md)。 
 
@@ -106,7 +108,7 @@ ms.locfileid: "111986275"
 
 下表显示了当前可用的一组受支持的浏览器。 除非另有说明，否则我们支持浏览器最新的三个版本。
 
-| 平台     | Chrome | Safari | Microsoft Edge (Chromium) | 说明                                                                                                                                                                                                       |
+| 平台     | Chrome | Safari | Microsoft Microsoft Edge (Chromium) | 注释                                                                                                                                                                                                       |
 | ------------ | ------ | ------ | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Android      | ✔️      | ❌      | ❌               | 不支持传出屏幕共享。                                                                                                                                                                   |
 | iOS          | ❌      | ✔️      | ❌               | Safari 上的一个 iOS 应用无法枚举/选择麦克风和扬声器设备（例如，蓝牙）；这是 OS 的限制，且始终只有一个设备。 不支持传出屏幕共享。 |

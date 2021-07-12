@@ -6,21 +6,22 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: daveba
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2020
+ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4555baf658f720bc92e882e141b71f3b8050a1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 66624f0304065c21ecde9de261bebad3300bbd26
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093773"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077981"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>使用 Windows VM 系统分配的托管标识访问资源管理器
 
@@ -42,17 +43,9 @@ ms.locfileid: "101093773"
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>授予 VM 对资源管理器中资源组的访问权限
 
-使用 Azure 资源的托管标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。  Azure 资源管理器支持 Azure AD 身份验证。  首先，需要向此 VM 的系统分配的托管标识授予对资源管理器中资源（在本例中为包含 VM 的资源组）的访问权限。  
-
-1.  转到“资源组”选项卡。 
-2.  选择为 Windows VM 创建的特定“资源组”。 
-3.  转到左侧面板中的“访问控制(IAM)”。 
-4.  然后单击“添加角色分配”为 **Windows VM** 添加一个新的角色分配。  选择“阅读器”作为“角色”。 
-5.  在下一个下拉列表中，为资源虚拟机分配访问权限。 
-6.  接下来，请确保“订阅”下拉列表中列出的订阅正确无误。 对于“资源组”，请选择“所有资源组”。 
-7.  最后，在“选择”中，选择下拉列表中的 Windows VM 并单击“保存”。
-
-    ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
+使用 Azure 资源的托管标识，代码可以获取访问令牌，以便向支持 Azure AD 身份验证的资源进行身份验证，而 Azure 资源管理器支持 Azure AD 身份验证。  我们需要向此 VM 的系统分配托管标识授予对资源管理器中资源（在本例中是你在其中创建了 VM 的资源组）的访问权限。 在我们为 Windows VM 创建的资源组的范围内，将[读者](../../role-based-access-control/built-in-roles.md#reader)角色分配给托管标识。
+ 
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 的系统分配的托管标识获取访问令牌并使用它来调用 Azure 资源管理器 
 

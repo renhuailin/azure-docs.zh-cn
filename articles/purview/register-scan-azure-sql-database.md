@@ -6,13 +6,13 @@ ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 10/02/2020
-ms.openlocfilehash: 9873ec2113c0c5704ccca4fa10daf6ac8d572989
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 06/08/2021
+ms.openlocfilehash: da265e1be47a7ee1a98f6e8169f2531110b5c772
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107425"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756592"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>注册并扫描 Azure SQL 数据库
 
@@ -28,7 +28,6 @@ Azure SQL 数据库数据源支持以下功能：
 
 ### <a name="known-limitations"></a>已知的限制
 
-> * Azure Purview 不支持扫描 Azure SQL 数据库中的[视图](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true)。
 > * Azure Purview 在“架构”选项卡中不支持超过 300 列，并将显示“Additional-Columns-Truncated”。 
 
 ## <a name="prerequisites"></a>先决条件
@@ -90,13 +89,13 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
 服务主体或托管标识必须具有获取数据库、架构和表的元数据的权限。 它还必须能够查询表以进行采样分类。
 
 - [使用 Azure SQL 配置和管理 Azure AD 身份验证](../azure-sql/database/authentication-aad-configure.md)
-- 如果你使用的是托管标识，则你的 Purview 帐户具有其自己的托管标识，这基本上就是创建它时所用的 Purview 名称。 必须遵循关于[在 Azure SQL 数据库中创建服务主体用户](../azure-sql/database/authentication-aad-service-principal-tutorial.md#create-the-service-principal-user-in-azure-sql-database)的教程，在 Azure SQL 数据库中使用确切的 Purview 托管标识或你自己的服务主体创建 Azure AD 用户。 需要为该标识分配适当的权限（例如 `db_owner` 或 `db_datareader`）。 用于创建用户和授予权限的示例 SQL 语法：
+- 如果你使用的是托管标识，则你的 Purview 帐户具有其自己的托管标识，这基本上就是创建它时所用的 Purview 名称。 必须遵循关于[在 Azure SQL 数据库中创建服务主体用户](../azure-sql/database/authentication-aad-service-principal-tutorial.md#create-the-service-principal-user-in-azure-sql-database)的教程，在 Azure SQL 数据库中使用确切的 Purview 托管标识或你自己的服务主体创建 Azure AD 用户。 需要为该标识分配适当的权限（例如 `db_datareader`）。 用于创建用户和授予权限的示例 SQL 语法：
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER
     GO
     
-    EXEC sp_addrolemember 'db_owner', [Username]
+    EXEC sp_addrolemember 'db_datareader', [Username]
     GO
     ```
 
@@ -137,11 +136,11 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
 
 若要在数据目录中注册新的 Azure SQL 数据库，请执行以下操作：
 
-1. 导航到你的 Purview 帐户
+1. 导航到你的 Purview 帐户。
 
-1. 在左侧导航区域中选择“源”
+1. 在左侧导航区域中选择“源”。
 
-1. 选择“注册”
+1. 选择“注册”。
 
 1. 在“注册源”上选择“Azure SQL 数据库” 。 选择“继续”。
 
@@ -151,7 +150,7 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
 
 1. 输入数据源将在目录中列出的名称。
 1. 选择“从 Azure 订阅中”，然后从“Azure 订阅”下拉框中选择相应订阅，并从“服务器名称”下拉框中选择相应服务器  。
-1. 选择“完成”以注册数据源。
+1. 选择“注册”以注册数据源。
 
 :::image type="content" source="media/register-scan-azure-sql-database/add-azure-sql-database.png" alt-text="注册源选项" border="true":::
 

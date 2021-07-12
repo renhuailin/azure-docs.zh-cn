@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: tracych
 ms.author: tracych
 ms.reviewer: laobri
-ms.date: 5/20/2021
+ms.date: 5/25/2021
 ms.custom: how-to
-ms.openlocfilehash: b4484a22d8839e758f7ccbb0a43904b81b028909
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 53fa68fdffd27c1d48322104c541894c6f9c4dd8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382493"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751246"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>使用批处理终结点（预览版）进行批量评分
 
@@ -61,14 +61,14 @@ az upgrade
 添加并配置 Azure ML 扩展：
 
 ```azurecli
-az extension add  ml
+az extension add -n ml
 ```
 
 有关配置 ML 扩展的详细信息，请参阅[安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)。
 
 * 示例存储库
 
-克隆 [AzureML 示例存储库](https://github.com/Azure/azureml-examples)。 本文将使用 `/cli-preview/experiment/using-cli/assets/endpoints/batch` 中的资产。
+克隆 [AzureML 示例存储库](https://github.com/Azure/azureml-examples)。 本文将使用 `/cli/endpoints/batch` 中的资产。
 
 ## <a name="create-a-compute-target"></a>创建计算目标
 
@@ -90,7 +90,7 @@ az ml endpoint create --type batch --file cli/endpoints/batch/create-batch-endpo
 
 下面是定义 MLFlow 批处理终结点的 YAML 文件：
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/create-batch-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/create-batch-endpoint.yml":::
 
 | 密钥 | 说明 |
 | --- | ----------- |
@@ -99,7 +99,7 @@ az ml endpoint create --type batch --file cli/endpoints/batch/create-batch-endpo
 | 类型 | 终结点的类型。 使用 `batch` 表示批处理终结点。 |
 | auth_mode | 使用 `aad_token` 表示基于 Azure 令牌的身份验证。 |
 | traffic | 路由到此部署的流量百分比。 对于批处理终结点，`traffic` 的有效值仅为 `0` 或 `100`。 流量值为 `100` 的部署处于活动状态。 调用后，所有数据将发送到活动部署。 |
-| deployments | 要在批处理终结点中创建的部署列表。 该示例只有一个名为 `autolog_deployment` 的部署。 |
+| deployments | 要在批处理终结点中创建的部署列表。 该示例只有一个名为 `autolog-deployment` 的部署。 |
 
 部署特性：
 
@@ -182,7 +182,7 @@ az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipeli
 
 * 如果使用不同大小的输入数据，可使用 `--mini-batch-size` 覆盖 `mini_batch_size`。 
 * 如果此作业需要不同的计算资源，可使用 `--instance-count` 覆盖 `instance_count`。 
-* 使用 `--set` 可覆盖其他设置，包括 `max_retries`、`timeout`、`error_threshold` 和 `logging_level`。
+* 使用 `--set` 可覆盖其他设置，包括 `max_retries`、`timeout` 和 `error_threshold`。
 
 ```azurecli
 az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv --set retry_settings.max_retries=1
@@ -240,7 +240,7 @@ az ml endpoint update --name mybatchedp --type batch --deployment-file cli/endpo
 
 此示例使用非 MLflow 模型。 使用非 MLflow 时，需要在 YAML 文件中指定环境和评分脚本：
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/add-deployment.yml" :::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/add-deployment.yml" :::
 
 非 MLflow 模型的其他部署特性：
 
@@ -261,7 +261,7 @@ az ml endpoint show --name mybatchedp --type batch
 对于批量推理，必须将 100% 的查询发送到所需的部署。 若要将新建的部署设置为目标，请使用：
 
 ```azurecli
-az ml endpoint update --name mybatchedp --type batch --traffic mnist_deployment:100
+az ml endpoint update --name mybatchedp --type batch --traffic mnist-deployment:100
 ```
 
 如果再次检查部署详细信息，你将看到更改：
@@ -289,13 +289,13 @@ scoring_uri=$(az ml endpoint show --name mybatchedp --type batch --query scoring
 2. 获取访问令牌：
 
 ```azurecli
-auth_token=$(az account get-access-token --resource https://ml.azure.com --query accessToken -o tsv)
+auth_token=$(az account get-access-token --query accessToken -o tsv)
 ```
 
 3. 使用 `scoring_uri`、访问令牌和 JSON 数据发布 (POST) 请求并启动批量评分作业：
 
 ```bash
-curl --location --request POST '$scoring_uri' --header "Authorization: Bearer $auth_token" --header 'Content-Type: application/json' --data-raw '{
+curl --location --request POST "$scoring_uri" --header "Authorization: Bearer $auth_token" --header 'Content-Type: application/json' --data-raw '{
 "properties": {
   "dataset": {
     "dataInputType": "DataUrl",
