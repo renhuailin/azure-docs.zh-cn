@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: b49ded912037c8935b67e64d4e4bb09402576bc7
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 63b02b66b68e40ae9ae209979d6464d97c30caf3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203624"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967914"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服务请求失败。 状态: 403 (已禁用)
 
@@ -29,7 +29,7 @@ ms.locfileid: "108203624"
 
 ### <a name="cause-2"></a>原因 #2
 
-如果客户端应用与使用[应用注册](how-to-create-app-registration.md)进行身份验证的 Azure 数字孪生通信，则可能会发生此错误，因为尚未为应用注册设置对 Azure 数字孪生服务的权限。
+如果客户端应用与使用[应用注册](./how-to-create-app-registration-portal.md)进行身份验证的 Azure 数字孪生通信，则可能会发生此错误，因为尚未为应用注册设置对 Azure 数字孪生服务的权限。
 
 必须为应用注册配置对 Azure 数字孪生 API 的访问权限。 然后，在根据应用注册对客户端应用进行身份验证时，会向其授予已为应用注册配置的权限。
 
@@ -74,15 +74,15 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 在列表中应该可以看到刚创建的应用注册。 选择它以打开其详细信息。
 
-:::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Azure 门户中的“应用注册”页":::
+:::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Azure 门户中“应用注册”页的屏幕截图。":::
 
 首先，验证注册中是否已正确设置 Azure 数字孪生权限。 为此，请从菜单栏中选择“清单”，以查看应用注册的清单代码。 滚动到代码窗口的底部，在 `requiredResourceAccess` 下查找以下字段。 这些值应与以下屏幕截图中的值相匹配：
 
-:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="门户视图，其中显示 Azure AD 应用注册清单":::
+:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Azure 门户中 Azure AD 应用注册清单屏幕截图。":::
 
 接下来，从菜单栏中选择“API 权限”，验证此应用注册是否包含对 Azure 数字孪生的读/写权限。 应看到如下条目：
 
-:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="门户视图，其中显示 Azure AD 应用注册的“API 权限”页，展示对 Azure 数字孪生的“读/写访问权限”":::
+:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Azure 门户中 Azure AD 应用注册的 API 权限屏幕截图，其中显示了 Azure 数字孪生的“读/写访问权限”。":::
 
 #### <a name="fix-issues"></a>解决问题
 

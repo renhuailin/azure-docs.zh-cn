@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 78536867efa4894f1041a340b9d6347a4e030a69
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: d70a15456ecc688b6bc8137223d36164545c0123
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685650"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956153"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>教程：部署和演练微型配送中心应用程序模板
 
@@ -57,6 +57,8 @@ ms.locfileid: "109685650"
 
     ![Azure IoT Central 的“新建应用程序”页的屏幕截图](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc.png)
 
+    ![Azure IoT Central 的“计费信息”屏幕截图](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc-billing.png)
+
 ## <a name="walk-through-the-application"></a>演练应用程序 
 
 成功部署应用模板后，会看到 **Northwind Traders 微型配送中心仪表板**。 Northwind Traders 是一家虚构的零售商，它在此 Azure IoT Central 应用程序中管理微型配送中心。 在操作员仪表板上，可以看到此模板中与设备有关的信息和遥测数据，以及可执行的一组命令、作业和操作。 仪表板以逻辑方式划分为两个部分。 在左侧可以监视配送结构中的环境条件，在右侧可以监视车间中机器人载体的运行状况。  
@@ -66,11 +68,11 @@ ms.locfileid: "109685650"
    * 查看楼面布置图，以及机器人载体在配送结构中的位置。
    * 触发命令，例如重置控制系统、更新载体的固件，以及重新配置网络。
 
-     ![Northwind Traders 微履行中心仪表板上半部分的屏幕截图。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Northwind Traders 微履行中心仪表板上半部分的屏幕截图。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard-1.png)
    * 参阅可供操作员用来监视配送中心内的条件的仪表板示例。 
    * 监视配送中心内网关设备上运行的有效负载的运行状况。    
 
-     ![Northwind Traders 微履行中心仪表板下半部分的屏幕截图。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Northwind Traders 微履行中心仪表板下半部分的屏幕截图。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard-2.png)
 
 ## <a name="device-template"></a>设备模板
 如果选择“设备模板”选项卡，将会看到模板中包含两种不同的设备类型： 

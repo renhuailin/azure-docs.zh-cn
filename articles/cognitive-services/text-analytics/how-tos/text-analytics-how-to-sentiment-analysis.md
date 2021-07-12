@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 04/14/2021
+ms.date: 06/10/2021
 ms.author: aahi
-ms.openlocfilehash: 59518b1117a566f9bc238a70a6bcaff6f1e05197
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a8645552cba0bb687b5d9a9dc93bc917d7ee38af
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085414"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969325"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>如何：情绪分析和观点挖掘
 
@@ -304,3 +304,4 @@ API 返回观点作为目标（名词或动词）和评估（形容词）。
 * [文本分析概述](../overview.md)
 * [使用文本分析客户端库](../quickstarts/client-libraries-rest-api.md)
 * [新增功能](../whats-new.md)
+* [模型版本](../concepts/model-versioning.md)

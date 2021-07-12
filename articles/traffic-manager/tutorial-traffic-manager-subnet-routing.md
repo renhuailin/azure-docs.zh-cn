@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2021
 ms.author: duau
-ms.openlocfilehash: 9b916f9942b0459b41d98b952fad072ae48318b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e95d3b72af14b151bdd1cbeede4d65deef0f817
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505421"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081508"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教程：使用流量管理器，基于用户子网，将流量定向到特定终结点
 
@@ -67,9 +67,9 @@ ms.locfileid: "102505421"
    - **实例详细信息** > **虚拟机名称**：键入 *myIISVMEastUS*。
    - “实例详细信息” > “区域”： 选择“美国东部”。
    - “管理员帐户”   >   “用户名”：输入所选用户名。
-   - “管理员帐户”   >   “密码”：输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
+   - “管理员帐户”   >   “密码”：输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。
    - “入站端口规则”   >   “公共入站端口”：选择“允许所选端口”  。
-   - “入站端口规则” > “选择入站端口”：在下拉框中选择“RDP”和“HTTP”   。
+   - “入站端口规则” > “选择入站端口”virtual-machines/windows/faq.yml：在下拉框中选择“RDP”和“HTTP”。
 
 3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
 4. 选择“查看 + 创建”。
@@ -135,7 +135,7 @@ ms.locfileid: "102505421"
    - **实例详细信息** > **虚拟机名称**：键入 *myVMEastUS*。
    - “实例详细信息” > “区域”： 选择“美国东部”。
    - “管理员帐户”   >   “用户名”：输入所选用户名。
-   - “管理员帐户”   >   “密码”：输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。
+   - “管理员帐户”   >   “密码”：输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。
    - “入站端口规则”   >   “公共入站端口”：选择“允许所选端口”  。
    - “入站端口规则” > “选择入站端口”：在下拉框中选择“RDP”  。
 
@@ -154,7 +154,7 @@ ms.locfileid: "102505421"
 
     ![创建流量管理器配置文件](./media/tutorial-traffic-manager-subnet-routing/create-traffic-manager-profile.png)
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 名称                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
     | 路由方法          | 选择“子网”路由方法  。                                       |
@@ -169,7 +169,7 @@ ms.locfileid: "102505421"
 2. 在“流量管理器配置文件”  的“设置”  部分，选择“终结点”  ，然后选择  “添加”。
 3. 输入或选择以下信息。 接受其余设置的默认值，然后选择“确定”：
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 类型                    | Azure 终结点                                   |
     | 名称           | myInternalWebSiteEndpoint                                        |

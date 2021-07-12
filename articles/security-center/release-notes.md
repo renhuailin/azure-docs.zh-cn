@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/27/2021
+ms.date: 06/14/2021
 ms.author: memildin
-ms.openlocfilehash: 35873711753400132f47933f009365cc6383429b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fff347c230b148548db94e97afd6a1ef3254f231
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123476"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062579"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -25,22 +25,303 @@ ms.locfileid: "108123476"
 > [!TIP]
 > 如果要查找 6 个月之前的项目，可查看 [Azure 安全中心的新增功能存档](release-notes-archive.md)。
 
+
+## <a name="june-2021"></a>2021 年 6 月
+
+6 月的更新包括以下内容：
+
+- [适用于 Key Vault 的 Azure Defender 的新警报](#new-alert-for-azure-defender-for-key-vault)
+- [默认禁用使用客户管理的密钥 (CMK) 进行加密的建议](#recommendations-to-encrypt-with-customer-managed-keys-cmks-disabled-by-default)
+- [Kubernetes 警报的前缀已从“AKS_”更改为“K8S_”](#prefix-for-kubernetes-alerts-changed-from-aks_-to-k8s_)
+- [弃用了“应用系统更新”安全控制中的两个建议](#deprecated-two-recommendations-from-apply-system-updates-security-control)
+
+
+### <a name="new-alert-for-azure-defender-for-key-vault"></a>适用于 Key Vault 的 Azure Defender 的新警报
+
+为了扩展 Azure Defender 为 Key Vault 提供的威胁保护，我们添加了以下警报：
+
+| 警报（警报类型）                                                                 | 说明                                                                                                                                                                                                                                                                                                                                                      | MITRE 技巧 | 严重性 |
+|------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------:|----------|
+| 可疑 IP 地址对 Key Vault 的访问<br>(KV_SuspiciousIPAccess)  | 被 Microsoft 威胁情报标识为可疑 IP 地址的 IP 已经成功访问了 key vault。 这可能表示基础结构已遭到入侵。 建议进一步调查。 详细了解 [Microsoft 威胁智能功能](https://go.microsoft.com/fwlink/?linkid=2128684)。 | 凭据访问                            | 中型   |
+|||
+
+有关详细信息，请参阅：
+- [用于 Key Vault 的 Azure Defender 简介](defender-for-resource-manager-introduction.md)
+- [响应适用于 Key Vault 的 Azure Defender 警报](defender-for-key-vault-usage.md)
+- [适用于 Key Vault 的 Azure Defender 提供的警报列表](alerts-reference.md#alerts-azurekv)
+
+
+### <a name="recommendations-to-encrypt-with-customer-managed-keys-cmks-disabled-by-default"></a>默认禁用使用客户管理的密钥 (CMK) 进行加密的建议
+
+安全中心包含多个建议，它们建议使用客户管理的密钥对静态数据进行加密，例如：
+
+- 容器注册表应使用客户管理的密钥 (CMK) 进行加密
+- Azure Cosmos DB 帐户应使用客户管理的密钥来加密静态数据
+- Azure 机器学习工作区应使用客户管理的密钥 (CMK) 进行加密
+
+使用平台管理的密钥自动对 Azure 中的数据进行加密，因此，只有在要求符合组织选择执行的特定政策时，才使用客户管理的密钥。
+
+如此更改后，现已 **默认禁用** 使用 CMK 的建议。 当与你的组织相关时，可以通过将相应安全策略的 *效果* 参数更改为 **AuditIfNotExists** 或 **Enforce** 来启用它们。 有关详细信息，请参阅[启用安全策略](tutorial-security-policy.md#enable-a-security-policy)。
+
+此更改将反映在包含新前缀的建议名称中， **[Enable if required]** ，如以下示例所示：
+
+- [Enable if required] 存储帐户应使用客户管理的密钥来加密静态数据
+- [Enable if required] 应使用客户管理的密钥 (CMK) 来加密容器寄存器
+- [Enable if required] Azure Cosmos DB 帐户应使用客户管理的密钥来加密静态数据
+
+:::image type="content" source="media/upcoming-changes/customer-managed-keys-disabled.png" alt-text="默认禁用安全中心的 CMK 建议。" lightbox="media/upcoming-changes/customer-managed-keys-disabled.png":::
+
+
+### <a name="prefix-for-kubernetes-alerts-changed-from-aks_-to-k8s_"></a>Kubernetes 警报的前缀已从“AKS_”更改为“K8S_”
+
+Azure Defender for Kubernetes 最近已扩展，可保护托管在本地和多云环境中的 Kubernetes 群集。 参阅[使用 Azure Defender for Kubernetes 保护混合和多云 Kubernetes 部署（预览版）](release-notes.md#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview)，了解更多信息。
+
+为了反映 Azure Defender for Kubernetes 提供的安全警报不再限于 Azure Kubernetes 服务上的群集，我们已将警报类型的前缀从 “AKS_”更改为“K8S_”。 必要时，还会更新名称和说明。 例如，以下警报：
+
+|警报（警报类型）|说明|
+|----|----|
+|检测到 Kubernetes 渗透测试工具<br>(**AKS** _PenTestToolsKubeHunter)|Kubernetes 审核日志分析检测到在 **AKS** 群集中使用了 Kubernetes 渗透测试工具。 此行为可能是合法的，不过，攻击者可能会出于恶意使用此类公用工具。
+|||
+
+已更改为：
+
+|警报（警报类型）|说明|
+|----|----|
+|检测到 Kubernetes 渗透测试工具<br>(**K8S** _PenTestToolsKubeHunter)|Kubernetes 审核日志分析检测到在 **Kubernetes** 群集中使用了 Kubernetes 渗透测试工具。 此行为可能是合法的，不过，攻击者可能会出于恶意使用此类公用工具。|
+|||
+
+将自动转换提到以“AKS_”开始的警报的所有抑制规则。 如果已设置 SIEM 导出或按警报类型引用 Kubernetes 警报的自定义自动化脚本，则需要使用新的警报类型对其进行更新。
+
+有关 Kubernetes 警报的完整列表，请参阅[适用于 Kubernetes 群集的警报](alerts-reference.md#alerts-k8scluster)。
+
+### <a name="deprecated-two-recommendations-from-apply-system-updates-security-control"></a>弃用了“应用系统更新”安全控制中的两个建议
+
+以下两项建议已被弃用：
+
+- **应为你的云服务角色更新 OS 版本** - 默认情况下，Azure 会定期将来宾 OS 更新为 OS 系列（在服务配置 (.cscfg) 中指定）中支持的最新映像，例如 Windows Server 2016。
+- **Kubernetes Services 应升级到不容易受到攻击的 Kubernetes 版本** - 这项建议的评估覆盖面并不像我们所希望的那样广泛。 我们计划使用增强版本替换建议，以更好地满足你的安全需求。
+
+
+## <a name="may-2021"></a>2021 年 5 月
+
+5 月的更新包括以下内容：
+
+- [适用于 DNS 的 Azure Defender 和适用于资源管理器的 Azure Defender 正式发布 (GA)](#azure-defender-for-dns-and-azure-defender-for-resource-manager-released-for-general-availability-ga)
+- [适用于开放源代码关系数据库的 Azure Defender 正式发布 (GA)](#azure-defender-for-open-source-relational-databases-released-for-general-availability-ga)
+- [适用于资源管理器的 Azure Defender 的新警报](#new-alerts-for-azure-defender-for-resource-manager)
+- [通过 GitHub 工作流和 Azure Defender (预览版）扫描容器映像的 CI/CD 漏洞](#cicd-vulnerability-scanning-of-container-images-with-github-workflows-and-azure-defender-preview)
+- [可用于某些建议的更多 Resource Graph 查询](#more-resource-graph-queries-available-for-some-recommendations)
+- [更改了 SQL 数据分类建议严重性](#sql-data-classification-recommendation-severity-changed)
+- [用于启用受信任启动功能（预览版）的新建议](#new-recommendations-to-enable-trusted-launch-capabilities-in-preview)
+- [用于强化 Kubernetes 群集（预览版）的新建议](#new-recommendations-for-hardening-kubernetes-clusters-in-preview)
+- [评估 API 扩充了两个新字段](#assessments-api-expanded-with-two-new-fields)
+- [资产盘存增加了云环境筛选器](#asset-inventory-gets-a-cloud-environment-filter)
+
+
+### <a name="azure-defender-for-dns-and-azure-defender-for-resource-manager-released-for-general-availability-ga"></a>适用于 DNS 的 Azure Defender 和适用于资源管理器的 Azure Defender 正式发布 (GA)
+
+这两个云原生广度的威胁保护计划现已正式发布。
+
+这些新的防护极大增强了你在遭到威胁行为体攻击后的复原能力，还大大增加了受 Azure Defender 保护的 Azure 资源数量。
+
+- **适用于资源管理器的 Azure Defender** - 自动监视在你的组织中执行的所有资源管理操作。 有关详细信息，请参阅：
+    - [适用于资源管理器的 Azure Defender 简介](defender-for-resource-manager-introduction.md)
+    - [响应适用于资源管理器的 Azure Defender 警报](defender-for-resource-manager-usage.md)
+    - [适用于资源管理器的 Azure Defender 提供的警报列表](alerts-reference.md#alerts-resourcemanager)
+
+- **适用于 DNS 的 Azure Defender** - 持续监视来自你的 Azure 资源的所有 DNS 查询。 有关详细信息，请参阅：
+    - [适用于 DNS 的 Azure Defender 简介](defender-for-dns-introduction.md)
+    - [响应适用于 DNS 的 Azure Defender 警报](defender-for-dns-usage.md)
+    - [适用于 DNS 的 Azure Defender 提供的警报列表](alerts-reference.md#alerts-dns)
+
+若要简化启用这些计划的过程，请使用建议：
+
+- **应启用 Azure Defender for Resource Manager**
+- **应启用 Azure Defender for DNS**
+
+> [!NOTE]
+> 启用 Azure Defender 计划会产生费用。 若要了解各区域的定价详细信息，请访问安全中心的定价页： https://aka.ms/pricing-security-center 。
+
+
+### <a name="azure-defender-for-open-source-relational-databases-released-for-general-availability-ga"></a>适用于开放源代码关系数据库的 Azure Defender 正式发布 (GA)
+
+Azure 安全中心使用新的捆绑包扩展其 SQL 保护产品/服务，以涵盖开放源代码关系数据库：
+
+- 适用于 Azure SQL 数据库服务器的 Azure Defender - 保护 Azure 原生 SQL 服务器
+- 计算机上的 Azure Defender for SQL 服务器：将相同的保护扩展到混合、多云和本地环境中的 SQL 服务器
+- **适用于开放源代码关系数据库的 Azure Defender** - 保护你的Azure Database for MySQL、PostgreSQL 和 MariaDB 单一服务器
+
+适用于开放源代码关系数据库的 Azure Defender 持续监视服务器是否受到安全威胁，并检测异常的数据库活动，指出对 Azure Database for MySQL、PostgreSQL 和 MariaDB 的潜在威胁。 下面是一些示例：
+
+- **精确检测暴力攻击** - 适用于开放源代码关系数据库的 Azure Defender 提供有关尝试的和成功的暴力攻击的详细信息。 让你可以更全面地了解你的环境中的攻击的性质和状态，据此展开调查和进行响应。
+- **行为警报检测** - 适用于开放源代码关系数据库的 Azure Defender 会提醒你服务器上存在的可疑和意外行为，例如对数据库的访问模式的更改。
+- **基于威胁情报的检测** -Azure Defender 利用 Microsoft 的威胁情报和巨大的知识库来发出威胁警报，以便你进行应对。
+
+阅读[适用于开放源代码关系数据库的 Azure Defender 的简介](defender-for-databases-introduction.md)，了解更多信息。
+
+### <a name="new-alerts-for-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 的新警报
+
+为了扩展适用于资源管理器的 Azure Defender 提供的威胁保护，我们添加以下提醒：
+
+| 警报（警报类型）                                                                                                                                                | 说明                                                                                                                                                                                                                                                                                                                                                                                                                              | MITRE 技巧 | 严重性 |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------:|----------|
+|**针对你的 Azure 环境（预览版），以异常方式授予 RBAC 角色的权限**<br>(ARM_AnomalousRBACRoleAssignment)|在与由同一位分配人执行的其他分配/对同一位被分派人执行的分配/在你的租户中执行的其他分配比较，适用于资源管理器的 Azure Defender 检测到一项 RBAC 角色分配异常，异常原因如下：分配时间、分配地点、分配人、身份验证方法、分配的工具、使用的客户端软件、分配范围。 此操作可能是由你的组织中的合法用户执行的。 或者，这可能表示组织中的某个帐户被入侵，威胁方正在尝试向其拥有的其他用户帐户授予权限。|横向移动，防御规避|中等|
+|**以可疑方式为订阅创建的特权自定义角色（预览版）**<br>(ARM_PrivilegedRoleDefinitionCreation)|适用于资源管理器的 Azure Defender 检测到你的订阅中发生了可疑的特权自定义角色定义创建行为。 此操作可能是由你的组织中的合法用户执行的。 或者，这可能表明你的组织中的帐户被入侵，并且威胁方正在尝试创建特权角色，以在将来用于规避检测。|横向移动，防御规避|低|
+|**来自可疑 IP 地址的 Azure 资源管理器操作（预览版）**<br>(ARM_OperationFromSuspiciousIP)|适用于资源管理器的 Azure Defender 检测到来自某个 IP 地址的操作在威胁情报源中被标记为可疑。|执行|中型|
+|**来自可疑代理 IP 地址的 Azure 资源管理器操作（预览版）**<br>(ARM_OperationFromSuspiciousProxyIP)|适用于资源管理器的 Azure Defender 检测到来自某个 IP 地址的资源管理操作，而这个 IP 地址与代理服务（例如 TOR）相关联。 虽然这种行为可能是合法的，但经常出现在恶意活动中，在这些恶意活动中，攻击者会试图隐藏其源 IP。|防御规避|中|
+||||
+
+有关详细信息，请参阅：
+- [适用于资源管理器的 Azure Defender 简介](defender-for-resource-manager-introduction.md)
+- [响应适用于资源管理器的 Azure Defender 警报](defender-for-resource-manager-usage.md)
+- [适用于资源管理器的 Azure Defender 提供的警报列表](alerts-reference.md#alerts-resourcemanager)
+
+
+### <a name="cicd-vulnerability-scanning-of-container-images-with-github-workflows-and-azure-defender-preview"></a>通过 GitHub 工作流和 Azure Defender (预览版）扫描容器映像的 CI/CD 漏洞
+
+适用于容器注册表的 Azure Defender 现在让 DevSecOps 团队可以观察 GitHub 操作工作流。
+
+针对容器映像的新漏洞扫描功能利用 Trivy 来帮助开发人员在将映像推送到容器注册表 *之前*， 扫描其容器映像中的常见漏洞。
+
+容器扫描报告在 Azure 安全中心中进行汇总，使安全团队能够更好地理解和了解易受攻击的容器映像来源，以及是从哪里生成工作流和存储库。
+
+有关详细信息，请参阅[识别 CI/CD 工作流中有漏洞的容器映像](defender-for-container-registries-cicd.md)。
+
+### <a name="more-resource-graph-queries-available-for-some-recommendations"></a>可用于某些建议的更多资源图查询
+
+安全中心的所有建议都可以使用 **打开查询** 中的“Azure 资源图”查看有关受影响的资源的状态信息。 有关此强大功能的完整详细信息，请参阅[在 Azure Resource Graph 资源管理器 (ARG) 中查看建议数据](security-center-recommendations.md#review-recommendation-data-in-azure-resource-graph-explorer-arg)。
+
+安全中心包含内置的漏洞扫描程序，用于扫描 VM、SQL 服务器及其主机，以及容器注册表，以发现安全漏洞。 这些结果将作为建议返回，其中关于每个资源类型的所有单个发现都将集中到一个视图中。 这三个建议是：
+
+- 应修正 Azure 容器注册表映像中的漏洞（由 Qualys 提供技术支持）
+- 应修正虚拟机中的漏洞
+- SQL 数据库应已解决漏洞结果
+- 计算机上的 SQL 服务器应已解决漏洞结果
+
+进行此更改后，也可以使用 **打开查询** 按钮打开显示安全发现的查询。
+
+:::image type="content" source="media/release-notes/open-query-menu-security-findings.png" alt-text="“打开查询”按钮现在提供更详细的查询选项，显示漏洞扫描器相关建议的安全发现":::
+
+**打开查询** 按钮还提供了一些其他相关建议的附加选项。
+
+了解关于安全中心漏洞扫描程序的更多信息：
+
+- [适用于 Azure 和混合计算机的 Azure Defender 集成式漏洞评估扫描程序](deploy-vulnerability-assessment-vm.md)
+- [适用于 SQL 服务器的集成式漏洞评估扫描程序](defender-for-sql-on-machines-vulnerability-assessment.md)
+- [适用于容器寄存表的 Azure Defender 集成式漏洞评估扫描程序](defender-for-container-registries-usage.md)
+
+### <a name="sql-data-classification-recommendation-severity-changed"></a>更改了 SQL 数据分类建议严重性
+
+已将 **“应对 SQL 数据库中的敏感数据进行分类”** 建议的严重性从 **高** 更改为 **低**。
+
+这是对 [SQL 数据分类建议的增强](upcoming-changes.md#enhancements-to-sql-data-classification-recommendation)中公布的此建议的更改的一部分。 
+
+
+### <a name="new-recommendations-to-enable-trusted-launch-capabilities-in-preview"></a>用于启用受信任启动功能（预览版）的新建议
+
+Azure 提供受信任启动作为一种无缝提高[第 2 代](../virtual-machines/generation-2.md) VM 安全性的方式。 受信任启动能够防范具有持续性的高级攻击手法。 受信任启动由多种可单独启用的协调式基础结构技术组成。 每种技术都针对错综复杂的威胁提供另一层防御。 在 [Azure 虚拟机的受信任启动](../virtual-machines/trusted-launch.md)中了解详细信息。
+
+> [!IMPORTANT]
+> 受信任启动要求创建新的虚拟机。 如果现有的虚拟机在最初创建时未配置受信任启动，则无法在其上启用受信任启动。
+> 
+> 受信任启动目前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+
+安全中心的建议 **应在受支持的虚拟机上启用 vTPM** 确保你的 Azure VM 会使用 vTPM。 硬件受信任的平台模块的这个虚拟化版本通过测量 VM（UEFI、OS、系统和驱动程序）的整个启动链来实现证明。
+
+启用 vTPM 后， **来宾证明扩展名** 可以远程验证安全启动。 以下建议可确保部署此扩展名：
+
+- **应在受支持的 Windows 虚拟机上启用安全启动**
+- **应在受支持的 Windows 虚拟机上安装来宾证明扩展名**
+- **应在受支持的 Windows 虚拟机规模集上安装来宾证明扩展名**
+- **应在受支持的 Linux 虚拟机上安装来宾证明扩展名**
+- **应在受支持的 Linux 虚拟机规模集上安装来宾证明扩展名**
+
+在 [Azure 虚拟机的受信任启动](../virtual-machines/trusted-launch.md)中了解详细信息。 
+
+### <a name="new-recommendations-for-hardening-kubernetes-clusters-in-preview"></a>用于强化 Kubernetes 群集（预览版）的新建议
+
+以下建议可用于进一步强化 Kubernetes 群集
+
+- **Kubernetes 群集不得使用默认命名空间** - 防止在 Kubernetes 群集中使用默认命名空间，以防止对 ConfigMap、Pod、Secret、Service 和 ServiceAccount 资源类型进行未经授权的访问。
+- **Kubernetes 群集应禁用自动装载 API 凭据** - 若要防止可能泄露的 Pod 资源对 Kubernetes 群集运行 API 命令，请禁用自动装载 API 凭据。
+- **Kubernetes 群集不应授予 CAPSYSADMIN 安全功能**
+
+如需了解安全中心如何保护容器化环境，请查阅[安全中心的容器安全性](container-security.md)。
+
+### <a name="assessments-api-expanded-with-two-new-fields"></a>评估扩充了两个新字段的  API
+
+我们已将以下两个字段添加到[评估 REST API](/rest/api/securitycenter/assessments)中：
+
+- **FirstEvaluationDate** – 创建和首次评估建议的时间。 返回为 ISO 8601 格式的 UTC 时间。
+- **StatusChangeDate** – 建议状态上次更改的时间。 返回为 ISO 8601 格式的 UTC 时间。
+
+这些字段的初始默认值（对于所有建议）为 `2021-03-14T00:00:00+0000000Z`。
+
+若要访问此信息，可以使用下表中的任意方法。
+
+| 工具                 | 详细信息                                                                                                                                                                |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| REST API 调用        | 获取 https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/providers/Microsoft.Security/assessments?api-version=2019-01-01-preview& $expand=statusEvaluationDates |
+| Azure Resource Graph | `securityresources`<br>`where type == "microsoft.security/assessments"`                                                                                                |
+| 连续导出    | 这两个专用字段将可用于 Log Analytics 工作区数据                                                                                            |
+| [CSV 导出](continuous-export.md#manual-one-time-export-of-alerts-and-recommendations) | CSV 文件中包含这两个字段                                                        |
+|                      |                                                                                                                                                                        |
+
+
+详细了解[评估 REST API](/rest/api/securitycenter/assessments)。
+
+
+### <a name="asset-inventory-gets-a-cloud-environment-filter"></a>资产盘存增加了云环境筛选器
+
+安全中心的资产盘存页提供多个筛选器，可快速优化显示的资源列表。 有关详细信息，请参阅[利用资产清单浏览和管理资源](asset-inventory.md)。
+
+新筛选器提供根据使用安全中心的多云功能连接的云帐户来优化列表的选项：
+
+:::image type="content" source="media/asset-inventory/filter-environment.png" alt-text="盘存环境筛选器":::
+
+详细了解多云功能：
+
+- [将 AWS 帐户连接到 Azure 安全中心](quickstart-onboard-aws.md)
+- [将 GCP 帐户连接到 Azure 安全中心](quickstart-onboard-gcp.md)
+
+
 ## <a name="april-2021"></a>2021 年 4 月
 
 4 月的更新包括：
-- [最近拉取的容器注册表映像现在将每周重新扫描（正式发布）](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
-- [使用 Azure Defender for Kubernetes 保护混合和多云 Kubernetes 部署（预览版）](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
-- [关于启用适用于 DNS 和资源管理器的 Azure Defender 的建议（预览版）](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
+- [刷新了资源运行状况页（预览版）](#refreshed-resource-health-page-in-preview)
+- [现在会每周重新扫描最近拉取的容器注册表映像（正式公布 (GA)）](#container-registry-images-that-have-been-recently-pulled-are-now-rescanned-weekly-released-for-general-availability-ga)
+- [使用 Azure Defender for Kubernetes 保护混合和多云 Kubernetes 部署（预览版）](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview)
+- [Microsoft Defender for Endpoint 与 Azure Defender 的集成现在支持 Windows Server 2019 和 Windows 10 虚拟桌面 (WVD)（正式发布 (GA)）](#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga)
+- [关于启用适用于 DNS 和资源管理器的 Azure Defender 的建议（预览版）](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-in-preview)
 - [添加了三个监管合规性标准：Azure CIS 1.3.0、CMMC 级别 3 和限制性的新西兰 ISM](#three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted)
-- [与来宾配置相关的四个新建议（预览版）](#four-new-recommendations-related-to-guest-configuration-preview)
+- [与来宾配置相关的四个新建议（预览版）](#four-new-recommendations-related-to-guest-configuration-in-preview)
 - [CMK 建议移动到最佳做法安全控制](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 Azure Defender 警报已弃用](#11-azure-defender-alerts-deprecated)
 - [“应用系统更新”安全控制中的两个建议已弃用](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
 - [从 Azure Defender 仪表板中删除了适用于计算机上的 SQL 的 Azure Defender 磁贴](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
 - [21 条建议在不同安全控件之间进行了调动](#21-recommendations-moved-between-security-controls)
 
+### <a name="refreshed-resource-health-page-in-preview"></a>刷新了资源运行状况页（预览版）
 
-### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>最近拉取的容器注册表映像现在将每周重新扫描（正式发布）
+安全中心的资源运行状况已展开、增强和改进，提供单个资源总体运行状况的快照视图。 
+
+可以查看有关该资源的详细信息以及适用于该资源的所有建议。 如果使用 [Azure Defender](azure-defender.md)，还可查看该特定资源的未解决的安全警报。
+
+若要打开资源的资源运行状况页，请从[资产清单页](asset-inventory.md)中选择任何资源。
+
+安全中心门户页面中的此预览页显示：
+
+1. **资源信息**：资源组及其附加到的订阅，以及地理位置等。
+1. **应用的安全功能**：是否为资源启用 Azure Defender。
+1. **未完成的建议和警报数**：未完成的安全建议和 Azure Defender 警报的数量。
+1. **可操作的建议和警报**：两个选项卡列出适用于资源的建议和警报。
+
+:::image type="content" source="media/investigate-resource-health/resource-health-page-virtual-machine.gif" alt-text="显示虚拟机运行状况信息的 Azure 安全中心的资源运行状况页":::
+
+参阅[教程：调查资源的运行状况](investigate-resource-health.md)，了解更多信息。
+
+
+### <a name="container-registry-images-that-have-been-recently-pulled-are-now-rescanned-weekly-released-for-general-availability-ga"></a>现在会每周重新扫描最近拉取的容器注册表映像（正式公布 (GA)）
 
 适用于容器注册表的 Azure Defender 包含内置漏洞扫描程序。 此扫描程序会立即扫描推送到注册表中的任何映像以及在过去 30 天内拉取的任何映像。
 
@@ -51,7 +332,7 @@ ms.locfileid: "108123476"
 可在[使用适用于容器注册表的 Azure Defender 来扫描映像是否存在漏洞](defender-for-container-registries-usage.md)中详细了解此扫描程序。
 
 
-### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>使用 Azure Defender for Kubernetes 保护混合和多云 Kubernetes 部署（预览版）
+### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview"></a>使用 Azure Defender for Kubernetes 保护混合和多云 Kubernetes 部署（预览版）
 
 Azure Defender for Kubernetes 正在扩展其威胁防护功能，以便在部署时保护其群集。 这已通过集成[已启用 Azure Arc 的 Kubernetes](../azure-arc/kubernetes/overview.md) 及其新的[扩展功能](../azure-arc/kubernetes/extensions.md)来实现。 
 
@@ -72,14 +353,26 @@ Azure 安全中心、Azure Defender 和启用了 Azure Arc 的 Kubernetes 之间
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="有关为已启用 Azure Arc 的 Kubernetes 群集部署 Azure Defender 扩展的 Azure 安全中心建议。" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
 
 
-### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview"></a>关于启用适用于 DNS 和资源管理器的 Azure Defender 的建议（预览版）
+### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga"></a>Microsoft Defender for Endpoint 与 Azure Defender 现在支持 Windows Server 2019 和 Windows 10 Virtual Desktop (WVD)（正式公布 (GA)）
+
+Microsoft Defender for Endpoint 是一种整体的、云交付的终结点安全解决方案。 它提供基于风险的漏洞管理和评估以及终结点检测和响应 (EDR)。 有关将 Defender for Endpoint 与 Azure 安全中心一起使用的好处的完整列表，请参阅[使用安全中心的集成式 EDR 解决方案 (Microsoft Defender for Endpoint) 保护终结点](security-center-wdatp.md)。
+
+为 Windows Server 上的服务器启用 Azure Defender 时，Defender for Endpoint 的许可证会包含在计划在中。 如果已为服务器启用 Azure Defender 并且订阅中有 Windows 2019 服务器，则它们会自动接收包含此更新的 Defender for Endpoint。 无需手动操作。 
+
+支持现在已扩展为包括 Windows Server 2019 和 [Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)。
+
+> [!NOTE]
+> 如果要在 Windows Server 2019 计算机上启用 Defender for Endpoint，请确保它满足[启用 Microsoft Defender for Endpoint 集成](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)中所述的先决条件。
+
+
+### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-in-preview"></a>关于启用适用于 DNS 和资源管理器的 Azure Defender 的建议（预览版）
 
 添加了两项新建议，以简化启用[适用于资源管理器的 Azure Defender](defender-for-resource-manager-introduction.md) 和[适用于 DNS 的 Azure Defender](defender-for-dns-introduction.md)：
 
 - **应启用适用于资源管理器的 Azure Defender** - 适用于资源管理器的 Defender 会自动监视组织中的资源管理操作。 Azure Defender 会检测威胁，并向你发出有关可疑活动的警报。
 - **应启用适用于 DNS 的 Azure Defender** - 适用于 DNS 的 Defender 通过持续监视所有来自 Azure 资源的 DNS 查询为云资源额外提供保护层。 Azure Defender 会在 DNS 层向你发出有关可疑活动的警报。
 
-启用 Azure Defender 计划会产生费用。 若要了解各区域的定价详细信息，请访问安全中心的定价页：https://aka.ms/pricing-security-center。
+启用 Azure Defender 计划会产生费用。 若要了解各区域的定价详细信息，请访问安全中心的定价页： https://aka.ms/pricing-security-center 。
 
 > [!TIP]
 > 预览版建议不会显示资源运行不正常，并且在计算安全功能分数时不会包含这些建议。 请尽量修正这些建议，以便在预览期结束之后，借助这些建议提高安全功能分数。 如需详细了解如何响应这些建议，请参阅[修正 Azure 安全中心的建议](security-center-remediate-recommendations.md)。
@@ -102,7 +395,7 @@ Azure 安全中心、Azure Defender 和启用了 Azure Arc 的 Kubernetes 之间
 - [教程：提高合规性](security-center-compliance-dashboard.md)
 - [常见问题解答 - 法规合规性仪表板](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
 
-### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>与来宾配置相关的四个新建议（预览版）
+### <a name="four-new-recommendations-related-to-guest-configuration-in-preview"></a>与来宾配置相关的四个新建议（预览版）
 
 Azure 的[来宾配置扩展](../governance/policy/concepts/guest-configuration.md) 向安全中心报告，以帮助确保强化虚拟机的来宾内设置。 已启用 Arc 的服务器不需要该扩展，因为已连接 Arc 的计算机代理中包含该扩展。 扩展需要计算机上系统托管标识。
 
@@ -607,7 +900,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 ### <a name="csv-export-of-filtered-list-of-recommendations"></a>将经筛选的建议列表导出为 CSV 
 
-2020 年 11 月，我们在“建议”页面中添加了筛选器（[建议列表现包含筛选器](#recommendations-list-now-includes-filters)）。 12 月，我们扩展了这些筛选器（[建议页面包含用于环境、严重性和可用响应的新筛选器](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)）。 
+2020 年 11 月，我们在“建议”页面中添加了筛选器（[建议列表现包含筛选器](release-notes-archive.md#recommendations-list-now-includes-filters)）。 12 月，我们扩展了这些筛选器（[建议页面包含用于环境、严重性和可用响应的新筛选器](release-notes-archive.md#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)）。 
 
 随着此次公告的发布，我们将更改为“下载到 CSV”按钮的行为，使 CSV 导出仅包含经筛选的列表中当前显示的建议。 
 
@@ -633,293 +926,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 :::image type="content" source="media/release-notes/export-frequency.png" alt-text="选择连续导出的频率":::
 
-- **流式处理** - 更新资源的运行状况时，将实时发送评估（如果没有更新，则不发送任何数据）。
+- **流式处理** - 更新资源的运行状况时，将发送评估（如果没有更新，则不发送任何数据）。
 - **快照** - 每周将发送所有法规合规性评估的当前状态的快照（这是面向安全分数和法规合规性数据每周快照的一项预览功能）。
 
 请在[持续导出安全中心数据](continuous-export.md)中详细了解此功能的所有性能。
-
-## <a name="december-2020"></a>2020 年 12 月
-
-12 月的更新包括：
-
-- [适用于计算机上的 SQL 服务器的 Azure Defender 现已正式发布](#azure-defender-for-sql-servers-on-machines-is-generally-available)
-- [针对 Azure Synapse Analytics 专用 SQL 池的 Azure Defender for SQL 支持现已正式发布](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
-- [全局管理员现在可以授予自己的租户级别权限](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
-- [两项新的 Azure Defender 计划：适用于 DNS 的 Azure Defender 和适用于资源管理器的 Azure Defender（预览版）](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
-- [Azure 门户中的新安全警报页（预览版）](#new-security-alerts-page-in-the-azure-portal-preview)
-- [在 Azure SQL 数据库和 SQL 托管实例中更新了安全中心体验](#revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance)
-- [更新了资产清单工具和筛选器](#asset-inventory-tools-and-filters-updated)
-- [有关请求 SSL 证书的 Web 应用的建议不再属于安全功能分数](#recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score)
-- [建议页面包含用于环境、严重性和可用响应的新筛选器](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)
-- [连续导出获得新的数据类型和改进的 deployifnotexist 策略](#continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies)
-
-
-### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>适用于计算机上的 SQL 服务器的 Azure Defender 现已正式发布
-
-Azure 安全中心为 SQL 服务器提供两个 Azure Defender 计划：
-
-- 适用于 Azure SQL 数据库服务器的 Azure Defender - 保护 Azure 原生 SQL 服务器 
-- 计算机上的 Azure Defender for SQL 服务器：将相同的保护扩展到混合、多云和本地环境中的 SQL 服务器
-
-根据此公告，适用于 SQL 的 Azure Defender 现在可以保护位于任何位置的数据库及其数据。
-
-适用于 SQL 的 Azure Defender 包括漏洞评估功能。 漏洞评估工具包括以下高级功能：
-
-- 基线配置（新功能！），可以智能地将漏洞扫描的结果细化为可能表示实际安全问题的结果。 建立基线安全状态后，漏洞评估工具仅报告与该基线状态的偏差。 与基线匹配的结果被视为通过后续扫描。 这样，你和你的分析师就可以将注意力集中在重要的方面。
-- 详细的基准信息有助于了解已发现的结果，以及这些结果为何与资源相关。
-- 修正脚本有助于减轻已确定的风险。
-
-详细了解 [Azure Defender for SQL](defender-for-sql-introduction.md)。
-
-
-### <a name="azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available"></a>针对 Azure Synapse Analytics 专用 SQL 池的 Azure Defender for SQL 支持现已正式发布
-
-Azure Synapse Analytics（以前称为 SQL DW）是一种分析服务，它将企业数据仓库和大数据分析合并在一起。 专用 SQL 池是 Azure Synapse 的企业数据仓库功能。 有关详细信息，请参阅[什么是 Azure Synapse Analytics（以前称为 SQL DW）？](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。
-
-适用于 SQL 的 Azure Defender 可通过以下方式保护专用 SQL 池：
-
-- 用于检测威胁和攻击的高级威胁防护 
-- 用于识别和修正安全错误配置的漏洞评估功能
-
-针对 Azure Synapse Analytics SQL 池的 Azure Defender for SQL 支持会自动添加到 Azure 安全中心中的 Azure SQL 数据库捆绑中。 你可以在 Azure 门户的 Synapse 工作区页面中找到新的“适用于 SQL 的 Azure Defender”选项卡。
-
-详细了解 [Azure Defender for SQL](defender-for-sql-introduction.md)。
-
-
-### <a name="global-administrators-can-now-grant-themselves-tenant-level-permissions"></a>全局管理员现在可以授予自己的租户级别权限
-
-具有 Azure Active Directory“全局管理员”角色的用户可能要承担租户范围内的责任，但缺乏 Azure 权限，无法在 Azure 安全中心查看组织范围内的信息。 
-
-若要向你自己分配租户级别的权限，请按照[授予自己租户范围的权限](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself)中的说明操作。
-
-
-### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>两项新的 Azure Defender 计划：适用于 DNS 的 Azure Defender 和适用于资源管理器的 Azure Defender（预览版）
-
-我们为你的 Azure 环境添加了两项新的云原生广度威胁防护功能。
-
-这些新的防护极大增强了你在遭到威胁行为体攻击后的复原能力，还大大增加了受 Azure Defender 保护的 Azure 资源数量。
-
-- **适用于资源管理器的 Azure Defender** - 自动监视在你的组织中执行的所有资源管理操作。 有关详细信息，请参阅：
-    - [适用于资源管理器的 Azure Defender 简介](defender-for-resource-manager-introduction.md)
-    - [响应适用于资源管理器的 Azure Defender 警报](defender-for-resource-manager-usage.md)
-    - [适用于资源管理器的 Azure Defender 提供的警报列表](alerts-reference.md#alerts-resourcemanager)
-
-- **适用于 DNS 的 Azure Defender** - 持续监视来自你的 Azure 资源的所有 DNS 查询。 有关详细信息，请参阅：
-    - [适用于 DNS 的 Azure Defender 简介](defender-for-dns-introduction.md)
-    - [响应适用于 DNS 的 Azure Defender 警报](defender-for-dns-usage.md)
-    - [适用于 DNS 的 Azure Defender 提供的警报列表](alerts-reference.md#alerts-dns)
-
-
-### <a name="new-security-alerts-page-in-the-azure-portal-preview"></a>Azure 门户中的新安全警报页（预览版）
-
-Azure 安全中心的安全警报页经过重新设计，可提供以下内容：
-
-- **更好的警报会审体验** - 帮助减少警报疲劳，让你能够专注于相关度最高的威胁，列表包含可自定义的筛选器和分组选项
-- **警报列表中的更多信息** - 例如 MITRE ATT&ACK 策略
-- **用于创建示例警报的按钮** - 要评估 Azure Defender 功能并测试警报配置（对于 SIEM 集成、电子邮件通知和工作流自动化），可以从所有 Azure Defender 计划创建示例警报
-- **与 Azure Sentinel 事件体验的一致性** - 对于同时使用这两种产品的客户，现在可以更直接地在它们之间进行切换
-- **更好的大型警报列表性能**
-- **警报列表键盘导航**
-- **来自 Azure Resource Graph 的警报** - 可以在 Azure Resource Graph 中查询警报，它是适用于所有资源的类 Kusto API。 如果要构建自己的警报仪表板，这也很有用。 [详细了解 Azure Resource Graph](../governance/resource-graph/index.yml)。
-
-若要访问新体验，请使用安全警报页顶部横幅中的“立即试用”链接。
-
-:::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="带有新预览版警报体验链接的横幅":::
-
-若要通过新的警报体验创建示例警报，请参阅[生成 Azure Defender 示例警报](security-center-alert-validation.md#generate-sample-azure-defender-alerts)。
-
-
-### <a name="revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance"></a>在 Azure SQL 数据库和 SQL 托管实例中更新了安全中心体验 
-
-通过 SQL 中的安全中心体验，可访问安全中心和 Azure Defender for SQL 的下列功能：
-
-- **安全建议** - 安全中心会定期分析所有已连接的 Azure 资源的安全状态，以识别潜在的安全配置错误。 然后，它会提供建议来指导如何修正这些漏洞和提升组织的安全状况。
-- **安全警报** - 一种检测服务，用于持续监视 Azure SQL 活动是否存在 SQL 注入、暴力攻击和特权滥用等威胁。 该服务会在安全中心触发面向操作的详细安全警报，并提供选项便于继续使用 Azure Sentinel（Microsoft 的 Azure 原生 SIEM 解决方案）进行调查。
-- **结果** - 一种漏洞评估服务，可持续监视 Azure SQL 配置并帮助修正漏洞。 评估扫描会提供 Azure SQL 安全状态的概述以及详细的安全扫描结果。     
-
-:::image type="content" source="media/release-notes/azure-security-center-experience-in-sql.png" alt-text="Azure 安全中心适用于 SQL 的安全功能在 Azure SQL 中可用":::
-
-
-### <a name="asset-inventory-tools-and-filters-updated"></a>更新了资产清单工具和筛选器
-
-Azure 安全中心的“清单”页面已刷新，它具有以下更改：
-
-- 工具栏上添加了“指南和反馈”。 该操作会打开一个窗格，其中有指向相关信息和工具的链接。 
-- 可用于资源的默认筛选器中添加了“订阅筛选器”。
-- “打开查询”链接，它用于将当前筛选器选项作为 Azure Resource Graph 查询（以前称为“在 Resource Graph 资源管理器中查看”）打开。
-- 每个筛选器都有了运算符选项。 现在，可从“=”之外的其他逻辑运算符中进行选择。 例如，你可能想要查找所有具有活动建议且标题包含“encrypt”字符串的资源。 
-
-    :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="资产清单筛选器中运算符选项的控件":::
-
-有关清单的详细信息，请参阅[利用资产清单浏览和管理资源](asset-inventory.md)。
-
-
-### <a name="recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score"></a>有关请求 SSL 证书的 Web 应用的建议不再属于安全功能分数
-
-“Web 应用应请求一个 SSL 证书用于所有传入请求”这一建议已从“管理访问和权限”安全控制（最多值 4 分）移至“实现安全最佳做法”（不值任何分数） 。 
-
-确保 Web 应用请求的是肯定会增强其安全性的证书。 但是，对于面向公众的 Web 应用，这是不相关的。 如果通过 HTTP 而不是 HTTPS 访问站点，不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则你不应允许通过 HTTP 对应用程序发出请求。 有关详细信息，请参阅[为 Azure 应用服务配置 TLS 相互身份验证](../app-service/app-service-web-configure-tls-mutual-auth.md)。
-
-在此更改后，此建议现在已是推荐的最佳做法，不会影响你的分数。 
-
-请在[安全控件及其建议](secure-score-security-controls.md#security-controls-and-their-recommendations)中了解每个安全控件中的建议。
-
-
-### <a name="recommendations-page-has-new-filters-for-environment-severity-and-available-responses"></a>建议页面包含用于环境、严重性和可用响应的新筛选器
-
-Azure 安全中心会监视所有已连接的资源并生成安全建议。 可使用这些建议来强化你的混合云状况，并跟踪与组织、行业和国家/地区相关的策略和标准的合规性。
-
-随着安全中心不断扩展其覆盖范围和功能，安全建议的列表每月都在扩充。 例如，请参阅[添加了 29 条预览建议，以扩大 Azure 安全基准的覆盖范围](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)。
-
-随着列表的扩充，需要筛选建议来找出最感兴趣的建议。 11 月，我们在“建议”页面中添加了筛选器（请参阅[建议列表现包含筛选器](#recommendations-list-now-includes-filters)）。
-
-本月添加的筛选器提供了一些选项，可根据以下条件优化建议列表：
-
-- 环境 - 查看有关 AWS、GCP 或 Azure 资源（或任何组合）的建议
-- 严重性 - 根据安全中心设置的严重性分类来查看建议
-- **响应操作** - 根据安全中心响应选项的可用性来查看建议：修复、拒绝和强制实施
-
-    > [!TIP]
-    > “响应操作”筛选器替代了“可用的快速修复(是/否)”筛选器。 
-    > 
-    > 请详细了解每个响应选项：
-    > - [修复按钮](security-center-remediate-recommendations.md#fix-button)
-    > - [使用“强制执行/拒绝”建议防止错误配置](prevent-misconfigurations.md)
-
-:::image type="content" source="./media/release-notes/added-recommendations-filters.png" alt-text="建议会按安全控制分组" lightbox="./media/release-notes/added-recommendations-filters.png":::
-
-### <a name="continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies"></a>连续导出获得新的数据类型和改进的 deployifnotexist 策略
-
-借助 Azure 安全中心的连续导出工具，可导出安全中心的建议和警报，以便与环境中的其他监视工具一起使用。
-
-“连续导出”使你可以完全自定义将要导出的内容，以及要导出到的位置 。 有关完整详细信息，请参阅[连续导出安全中心数据](continuous-export.md)。
-
-这些工具已通过以下方式进行了增强和扩展：
-
-- **连续导出的 deployifnotexist 策略已得到增强**。 策略目前执行以下操作：
-
-    - **检查配置是否已启用。** 如果未启用，策略将显示为不合规，并将创建合规的资源。 若要详细了解所提供的 Azure Policy 模板，请参阅[设置连续导出](continuous-export.md#set-up-a-continuous-export)的“使用 Azure Policy 选项卡大规模部署”。
-
-    - **支持导出安全结果。** 使用 Azure 策略模板时，可配置连续导出，使其包含结果。 这在导出具有子建议的建议时非常重要，例如漏洞评估扫描程序的结果或针对“应在计算机上安装系统更新”这一父建议的特定系统更新。
-    
-    - **支持导出安全功能分数数据。**
-
-- **已添加合规性评估数据（预览）。** 现在，你可将对法规合规性评估的更新（包括针对任何自定义计划的更新）连续导出到 Log Analytics 工作区或事件中心。 此功能在国家云/主权云上不可用。
-
-    :::image type="content" source="media/release-notes/continuous-export-regulatory-compliance-option.png" alt-text="用于将法规合规性评估信息包含在连续导出数据中的选项。":::
-
-
-## <a name="november-2020"></a>2020 年 11 月
-
-11 月的更新包括：
-
-- [添加了 29 条预览建议，以扩大 Azure 安全基准的覆盖范围](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
-- [向安全中心的法规合规性仪表板添加了 NIST SP 800 171 R2](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
-- [建议列表现包含筛选器](#recommendations-list-now-includes-filters)
-- [自动预配体验得到改进和扩展](#auto-provisioning-experience-improved-and-expanded)
-- [现可在连续导出中使用安全功能分数（预览）](#secure-score-is-now-available-in-continuous-export-preview)
-- [“应在计算机上安装系统更新”建议现包含子建议](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations)
-- [Azure 门户中的“策略管理”页现在显示默认策略分配的状态](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
-
-### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>添加了 29 条预览建议，以扩大 Azure 安全基准的覆盖范围
-
-Azure 安全基准是 Microsoft 制定的一组 Azure 专属准则，适合基于常见合规框架的安全性与合规性最佳做法。 [详细了解 Azure 安全基准](/security/benchmark/azure/introduction)。
-
-已在安全中心添加下列 29 条预览建议，以扩大此基准的覆盖范围。
-
-预览版建议不会显示资源运行不正常，并且在计算安全功能分数时不会包含这些建议。 请尽量修正这些建议，以便在预览期结束之后，借助这些建议提高安全功能分数。 如需详细了解如何响应这些建议，请参阅[修正 Azure 安全中心的建议](security-center-remediate-recommendations.md)。
-
-| 安全控制                     | 新建议                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 加密传输中的数据              | - 应为 PostgreSQL 数据库服务器启用“强制 SSL 连接”<br>- 应为 MySQL 数据库服务器启用“强制 SSL 连接”<br>- 应将 TLS 更新为 API 应用的最新版本<br>- 应将 TLS 更新为函数应用的最新版本<br>- 应将 TLS 更新为 Web 应用的最新版本<br>- 应在 API 应用中要求使用 FTPS<br>- 应在函数应用中要求使用 FTPS<br>- 应在 Web 应用中要求使用 FTPS                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| 管理访问和权限        | - Web 应用应请求一个用于所有传入请求的 SSL 证书<br>- 应在 API 应用中使用托管标识<br>- 应在函数应用中使用托管标识<br>- 应在 Web 应用中使用托管标识                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| 限制未经授权的网络访问 | - 应为 PostgreSQL 服务器启用专用终结点<br>- 应为 MariaDB 服务器启用专用终结点<br>- 应为 MySQL 服务器启用专用终结点                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 启用审核和日志记录          | - 应启用应用服务中的诊断日志                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| 实现安全最佳实践    | - 应为虚拟机启用 Azure 备份<br>- 应为 Azure Database for MariaDB 启用异地冗余备份<br>- 应为 Azure Database for MySQL 启用异地冗余备份<br>- 应为 Azure Database for PostgreSQL 启用异地冗余备份<br>- 应将 PHP 更新为 API 应用的最新版本<br>- 应将 PHP 更新为 Web 应用的最新版本<br>- 应将 Java 更新为 API 应用的最新版本<br>- 应将 Java 更新为函数应用的最新版本<br>- 应将 Java 更新为 Web 应用的最新版本<br>- 应将 Python 更新为 API 应用的最新版本<br>- 应将 Python 更新为函数应用的最新版本<br>- 应将 Python 更新为 Web 应用的最新版本<br>- 应将 SQL Server 的审核保留设置为至少 90 天 |
-|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-
-相关链接：
-
-- [详细了解 Azure 安全基准](/security/benchmark/azure/introduction)
-- [详细了解 Azure API 应用](../app-service/app-service-web-tutorial-rest-api.md)
-- [详细了解 Azure 函数应用](../azure-functions/functions-overview.md)
-- [详细了解 Azure Web 应用](../app-service/overview.md)
-- [详细了解 Azure Database for MariaDB](../mariadb/overview.md)
-- [详细了解 Azure Database for MySQL](../mysql/overview.md)
-- [详细了解 Azure Database for PostgreSQL](../postgresql/overview.md)
-
-
-### <a name="nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard"></a>向安全中心的法规合规性仪表板添加了 NIST SP 800 171 R2
-
-NIST SP 800-171 R2 标准现可以内置计划的形式提供，用于安全中心的法规合规性仪表板。 有关控制措施的映射，可参阅 [NIST SP 800-171 R2 法规合规性内置计划的详细信息](../governance/policy/samples/nist-sp-800-171-r2.md)。 
-
-若要将该标准用于订阅并持续监视合规性状态，请按照[自定义法规合规性仪表板中的标准集](update-regulatory-compliance-packages.md)中的说明操作。
-
-:::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="安全中心法规合规性仪表板中的 NIST SP 800 171 R2 标准":::
-
-有关此符合性标准的详细信息，请参阅 [NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final)。
-
-
-### <a name="recommendations-list-now-includes-filters"></a>建议列表现包含筛选器
-
-现在，你可以根据一系列条件筛选安全建议列表。 在以下示例中，已筛选建议列表，用于显示满足以下条件的建议：
-
-- 已正式发布（即不是预览版）
-- 适用于存储帐户
-- 支持快速修复修正
-
-:::image type="content" source="media/release-notes/recommendations-filters.png" alt-text="建议列表的筛选器":::
-
-
-### <a name="auto-provisioning-experience-improved-and-expanded"></a>自动预配体验得到改进和扩展
-
-通过在新的和现有的 Azure VM 上安装所需的扩展，使 VM 能够受益于安全中心的保护，自动预配功能有助于降低管理开销。 
-
-随着 Azure 安全中心的发展，更多的扩展得到了开发，安全中心可以监视更大的资源类型列表。 自动预配工具已经过扩展，现支持通过 Azure Policy 的功能使用其他扩展和资源类型。
-
-你现在可配置以下项的自动预配：
-
-- Log Analytics 代理
-- （新）适用于 Kubernetes 的 Azure Policy 加载项
-- （新）Microsoft Dependency Agent
-
-有关详细信息，请参阅[从 Azure 安全中心自动预配代理和扩展](security-center-enable-data-collection.md)。
-
-
-### <a name="secure-score-is-now-available-in-continuous-export-preview"></a>现可在连续导出中使用安全功能分数（预览）
-
-借助安全功能分数的连续导出，你可将对分数的更改实时地流式传输到 Azure 事件中心或 Log Analytics 工作区。 此功能可用于：
-
-- 通过动态报表跟踪一段时间内的安全功能分数
-- 将安全功能分数数据导出到 Azure Sentinel（或任何其他 SIEM）
-- 将此数据与你可能已在使用的任何进程集成来监视你组织中的安全功能分数
-
-详细了解如何[连续导出安全中心数据](continuous-export.md)。
-
-
-### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations"></a>“应在计算机上安装系统更新”建议现包含子建议
-
-“应在计算机上安装系统更新”建议已得到增强。 新版本包括针对每个缺失的更新的子建议，其中还引入了以下改进：
-
-- 重新设计了 Azure 门户的 Azure 安全中心页面的体验。 “应在计算机上安装系统更新”的建议详细信息页包括发现结果列表，如下所示。 选择单个发现结果时，结果窗格将打开，并提供指向修正信息和受影响资源列表的链接。
-
-    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="在门户体验中打开其中一个子建议，了解更新的建议":::
-
-- 丰富了 Azure Resource Graph (ARG) 的建议数据。 ARG 是一项 Azure 服务，专用于提供高效的资源探索。 可以使用 ARG 在一组给定的订阅中进行大规模查询，以便有效地控制环境。 
-
-    对于 Azure 安全中心，你可以使用 ARG 和 [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/query/) 来查询各种安全状态数据。
-
-    以前，如果你在 ARG 中查询此建议，唯一提供的信息就是“需要在计算机上修正建议”。 以下查询的增强版本将返回按计算机分组的每个缺失的系统更新。
-
-    ```kusto
-    securityresources
-    | where type =~ "microsoft.security/assessments/subassessments"
-    | where extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) == "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27"
-    | where properties.status.code == "Unhealthy"
-    ```
-
-### <a name="policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments"></a>Azure 门户中的“策略管理”页现在显示默认策略分配的状态
-
-现在，你可以在 Azure 门户安全中心的“安全策略”页面中，查看订阅是否已分配到默认安全中心策略。
-
-:::image type="content" source="media/release-notes/policy-assignment-info-per-subscription.png" alt-text="Azure 安全中心的“策略管理”页显示默认策略分配":::

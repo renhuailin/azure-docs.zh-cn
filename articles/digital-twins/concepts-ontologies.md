@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b7bed0f3b10dd057073203bb9c2e336299c50662
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 17411f3c0a12e544d3204b2194e53d9565b164a9
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207980"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061895"
 ---
 # <a name="what-is-an-ontology"></a>什么是 ontology？ 
 
@@ -20,7 +20,7 @@ Azure 数字孪生解决方案的词汇是使用[模型](concepts-models.md)定�
 
 有时，当您的解决方案与特定行业关联时，从已存在的一组模型开始，可以更方便、更有效地开始，而无需从头开始创作您自己的模型集。 这些已存在的模型集则被称为 **ontology**。 
 
-一般而言，本体是指特定域的模型集，例如建筑结构、IoT 系统、智能城市、能源网、Web 内容等。本体通常用作知识图架构，因为它们可以：
+一般而言，ontology 是指特定领域的模型集，例如建筑结构、IoT 系统、智能城市、能源网、Web 内容等。ontology 通常用作孪生图架构，因为它们可以：
 * 协调软件组件、文档、查询库等
 * 减少概念建模和系统开发方面的投资
 * 更方便在语义级别进行数据互操作
@@ -54,11 +54,12 @@ Ontology 为数字孪生解决方案提供了良好的起点。 它们包含一�
 1. 使用上面所选的 ontology 集成策略（[采用](concepts-ontologies-adopt.md)、[转换](concepts-ontologies-convert.md)或根据 ontology [创作](concepts-models.md)模型）继续执行操作。
     1. 如有必要，[扩展](concepts-ontologies-extend.md) ontology 以根据需求对其进行自定义。
 1. [验证](how-to-parse-models.md)模型，以确认它们是有效的 DTDL 文档。
-1. 使用 [API](how-to-manage-model.md#upload-models) 或类似于 [Azure 数字孪生模型上传工具](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader)的示例，将完成的模型上传到 Azure 数字孪生。
+1. 使用 [API](how-to-manage-model.md#upload-models) 或类似于 [Azure 数字孪生模型上传工具](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#uploadmodels)的示例，将完成的模型上传到 Azure 数字孪生。
 
 然后，你应该能够在 Azure 数字孪生实例中使用自己的模型。 
 
-可以使用 [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 或 [Azure 数字孪生模型可视化工具](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)等示例查看它们，也可以继续使用它们来创建[数字孪生](concepts-twins-graph.md)。
+>[!TIP]
+> 可使用 [Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) 或 [Azure 数字孪生模型可视化工具](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer)在 ontology 中直观呈现这些模型。
 
 ## <a name="next-steps"></a>后续步骤
 

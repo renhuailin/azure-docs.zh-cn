@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
 ms.date: 03/11/2021
-ms.openlocfilehash: 41d60c8e565655793dd33393f41876438c7eab66
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 573e0dc028391c2eea9d412bfe68c07a2e95aec3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166853"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963142"
 ---
 # <a name="quickstart-create-a-serverless-simple-chat-application-with-azure-functions-and-azure-web-pubsub-service"></a>快速入门：使用 Azure Functions 和 Azure Web PubSub 服务创建简单的无服务器聊天应用程序 
 
@@ -58,8 +58,8 @@ Azure Web PubSub 服务可帮助你轻松地使用 Websocket 和发布-订阅模
   打开克隆的存储库中的 /samples/functions/js/simplechat 文件夹。 编辑 local.settings.json 以添加服务连接字符串。
   在 local.settings.json 中需要进行这些更改，然后保存该文件。
     - 将占位符 <connection-string> 替换为从 Azure 门户中复制的值，以便进行 `WebPubSubConnectionString` 设置 。 
-    - 对于 `AzureWebJobsStorage` 设置，这是必需的，因为 [Azure Functions 需要 Azure 存储帐户](https://docs.microsoft.com/azure/azure-functions/storage-considerations)。
-        - 如果 Azure 存储模拟器在本地运行，请保留“UseDevelopmentStorage=true”的原始设置。
+    - 对于 `AzureWebJobsStorage` 设置，这是必需的，因为 [Azure Functions 需要 Azure 存储帐户](../azure-functions/storage-considerations.md)。
+        - 如果 Azure 存储模拟器在本地运行，请保留“UseDevelopmentStorage=true”原始设置。
         - 如果有 Azure 存储连接字符串，请用它来替换值。
  
 - JavaScript 函数将组织到文件夹中。 每个文件夹中有两个文件：`function.json` 定义函数中使用的绑定，`index.js` 是函数的主体。 此函数应用中有几个 HTTP 触发的函数：
