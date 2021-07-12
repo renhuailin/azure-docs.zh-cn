@@ -6,15 +6,15 @@ author: chpalm
 manager: chpalm
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3fd6aa705a2220483534761c185ca7cac01e148e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 142b4635bed6361987c21173245bb4d4e7557f90
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110093603"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108092"
 ---
 # <a name="teams-interoperability"></a>Teams 互操作性
 
@@ -43,13 +43,11 @@ Azure 通信服务可用于构建与 Microsoft Teams 交互的自定义会议体
 
 ![Teams 互操作的体系结构](./media/call-flows/teams-interop.png)
 
-尽管某些 Teams 会议功能（如举手、同聚一堂模式和分组讨论室）只可供 Teams 用户使用，但你的自定义应用程序可以访问会议的核心音频、视频、聊天和屏幕共享功能。 自定义应用程序用户可在通话期间使用会议聊天功能。 他们在加入通话前或退出通话后，将无法发送或接收消息。 
+只要在[会议设置](/microsoftteams/meeting-settings-in-teams)中启用了匿名加入，通信服务用户就可以加入计划的 Teams 会议。 
+
+尽管某些 Teams 会议功能（如举手、同聚一堂模式和分组讨论室）只可供 Teams 用户使用，但你的自定义应用程序可以访问会议的核心音频、视频、聊天和屏幕共享功能。 自定义应用程序用户可在通话期间使用会议聊天功能。 他们在加入通话前或退出通话后，将无法发送或接收消息。 如果会议计划为频道，则通信服务用户将无法加入聊天或发送和接收消息。
 
 当通信服务用户加入 Teams 会议时，Teams 用户可以看见通过通话 SDK 提供的显示名称。 否则，通信服务用户将被视为 Teams 中的匿名用户。  自定义应用程序应考虑使用用户身份验证和其他安全措施来保护 Teams 会议。 请注意允许匿名用户加入会议的安全影响，并使用 [Teams 安全指南](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings)配置匿名用户可用的功能。
-
-通信服务团队互操作性当前为个人预览版。 正式发布时，通信服务用户将被视为“外部访问用户”。 要详细了解外部访问，请参阅[在 Microsoft Teams 与组织外部的人员通话、聊天和协作](/microsoftteams/communicate-with-users-from-other-organizations)。
-
-只要在[会议设置](/microsoftteams/meeting-settings-in-teams)中启用了匿名加入，通信服务用户就可以加入计划的 Teams 会议。 如果会议计划为频道，则通信服务用户将无法加入聊天或发送和接收消息。
 
 ## <a name="teams-in-government-clouds-gcc"></a>政府云中的 Teams (GCC)
 Azure 通信服务互操作性与目前使用 [Microsoft 365 政府云 (GCC)](/MicrosoftTeams/plan-for-government-gcc) 的 Teams 部署不兼容。 
