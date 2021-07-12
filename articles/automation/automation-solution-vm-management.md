@@ -3,27 +3,29 @@ title: Azure 自动化“在空闲时间启动/停止 VM”的概述
 description: 本文介绍“在空闲时间启动/停止 VM”功能，该功能按计划启动或停止 VM 并主动通过 Azure Monitor 日志监视这些 VM。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/04/2020
+ms.date: 05/25/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b28367aa242d5fab71dc5046ff6188c634883f03
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 0ac3a2dccecf50b53917d878535ce62e124f8f8e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834509"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479541"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>“在空闲时间启动/停止 VM”概述
 
 “在空闲时间启动/停止 VM”功能可启动或停止已启用的 Azure VM。 它根据用户定义的计划启动或停止计算机、通过 Azure Monitor 日志提供见解，并通过使用[操作组](../azure-monitor/alerts/action-groups.md)发送可选的电子邮件。 在大多数情况下，可同时在 Azure 资源管理器和经典 VM 上启用此功能。
 
+> [!NOTE]
+> 在安装此版本 (v1) 之前，建议了解[下一版本](../azure-functions/start-stop-vms/overview.md)（目前为预览版）。 这一新版本 (v2) 提供与此版本相同的所有功能，但旨在利用 Azure 中的新技术。 它添加了客户经常请求的一些功能，如单个启动/停止实例中的多订阅支持。 
+>
+> 在空闲时间启动/停止 VM (v1) 的功能将于 2022 年 5 月 21 日弃用。 
+
 此功能使用 [Start-AzVm](/powershell/module/az.compute/start-azvm) cmdlet 来启动 VM。 它使用 [Stop-AzVM](/powershell/module/az.compute/stop-azvm) 来停止 VM。
 
 > [!NOTE]
-> 虽然 runbook 已更新为使用新的 Azure Az 模块 cmdlet，但它们使用 AzureRM 前缀别名。
-
-> [!NOTE]
-> “在空闲时间启动/停止 VM”已进行了更新，可支持可用的最新版本的 Azure 模块。 此功能更新后的版本（Azure 市场提供）不支持 AzureRM 模块，因为我们已从 AzureRM 迁移到 Az 模块。
+> “在空闲时间启动/停止 VM”已进行了更新，可支持可用的最新版本的 Azure 模块。 此功能更新后的版本（Azure 市场提供）不支持 AzureRM 模块，因为我们已从 AzureRM 迁移到 Az 模块。 虽然 runbook 已更新为使用新的 Azure Az 模块 cmdlet，但它们使用 AzureRM 前缀别名。
 
 对于想要优化 VM 成本的用户，此功能提供分散式的低成本自动化选项。 可以使用此功能执行以下操作：
 
@@ -36,14 +38,11 @@ ms.locfileid: "107834509"
 - 它可管理任何区域中的 VM，但只能在 Azure 自动化帐户所在的同一订阅中使用。
 - 它可在支持 Log Analytics 工作区、Azure 自动化帐户和警报的任何 Azure 和 Azure 政府区域中使用。 Azure 政府区域目前不支持电子邮件功能。
 
-> [!NOTE]
-> 在安装此版本之前，我们希望你了解[下一版本](https://github.com/microsoft/startstopv2-deployments)（目前为预览版）。  这一新版本 (V2) 提供与此版本相同的所有功能，但旨在利用 Azure 中的新技术。 它添加了客户经常请求的一些功能，如单个启动/停止实例中的多订阅支持。
-
 ## <a name="prerequisites"></a>先决条件
 
 - “在空闲时间启动/停止 VM”功能的 runbook 使用 [Azure 运行方式帐户](./automation-security-overview.md#run-as-accounts)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
 
-- [Azure Monitor Log Analytics 工作区](../azure-monitor/logs/design-logs-deployment.md)，用于在工作区中存储 runbook 作业日志和作业流结果以进行查询和分析。 自动化帐户可关联到新的或现有的 Log Analytics 工作区，这两种资源需要位于同一资源组中。
+- [Azure Monitor Log Analytics 工作区](../azure-monitor/logs/design-logs-deployment.md)，用于在工作区中存储 runbook 作业日志和作业流结果以进行查询和分析。 自动化帐户和 Log Analytics 工作区需要在同一订阅中，且在同一支持的区域中。 工作区需要已经存在，无法在部署此功能期间创建新的工作区。
 
 对于为“在空闲时间启动/停止 VM”功能启用的 VM，建议使用单独的自动化帐户。 Azure 模块版本经常升级，其参数可能会更改。 此功能不按照与之相同的频率升级，所以可能不适用于它所使用的较新版本的 cmdlet。 在将更新后的模块导入到生产自动化帐户之前，建议将它们导入测试自动化帐户以验证没有任何兼容性问题。
 

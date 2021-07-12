@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 05/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 07529b18191c71776a9a36edbfa4cfd8ded5af4f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 75e5737f8ad7b0f40e8480c17e150669220007ff
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99524543"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753680"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>在 Azure 门户中对 Azure Data Box 使用自我托管交付功能
 
@@ -32,6 +32,7 @@ ms.locfileid: "99524543"
 * 印度
 * 南非
 * 澳大利亚
+* 巴西
 
 ## <a name="use-self-managed-shipping"></a>使用自我托管交付
 
@@ -59,36 +60,72 @@ ms.locfileid: "99524543"
 
    ![Azure 提货安排说明](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-email-01.png)
 
+   **有关巴西的说明：** 如果要安排在巴西提取设备，请在电子邮件中包含以下信息。 数据中心在收到入站 `Nota Fiscal` 后会安排取件，可能最长需要 4 个工作日。
+
+   ```
+   Subject: Request Azure Data Box Disk pickup for order: <ordername>
+
+   - Order name
+   - Company name
+   - Company legal name (if different) 
+   - Tax ID 
+   - Address 
+   - Country 
+   - Phone number 
+   - Contact name of the person who will pick up the Data Box Disk (A government-issued photo ID will be required to validate the contact’s identity upon arrival.)   
+   ```
+
 6. 安排好设备提货后，可在“Azure 提货安排”窗格中查看设备授权代码。
 
    ![查看设备授权代码](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   记下此授权代码。 根据安全要求，在安排提货时，需要提供将负责提货的人员姓名。
+   记下此授权代码。 提取设备的人将需要提供该代码。
 
-   你还需要提供将前往数据中心提货的人员的详细信息。 你或联系人员必须携带政府批准的带照片的 ID，我们将在数据中心验证该 ID。
+   根据安全要求，在安排提货时，需要提供负责提货的人员的姓名和详细信息。 你或联系人员必须携带政府批准的带照片的 ID，我们将在数据中心验证该 ID。
 
-   此外，设备提取人员还需要有授权代码。 在数据中心提货时会验证该授权代码。
+7. 在安排的时间在数据中心提取 Data Box。
 
-7. 从数据中心提取设备后，你的订单将自动切换到“已提货”状态。
+   提取设备的人需要提供以下信息：
+
+   * 从 Microsoft Operations 访问数据中心时所需的电子邮件确认的副本。
+
+   * 授权代码。 参考号在提货或交送时是唯一代码，并且在数据中心进行验证。
+
+   * 政府批准的带照片的 ID。 将在数据中心验证此 ID，并且在安排提货时需要提供提取设备的人员的姓名和详细信息。
+
+   > [!NOTE]
+   > 如果错过预约的安排，则需要重新安排。
+
+8. 从数据中心提取设备后，你的订单将自动切换到“已提货”状态。
 
     ![处于“已提货”状态的订单](media\data-box-portal-customer-managed-shipping\data-box-portal-picked-up-boxed-01.png)
 
-8. 提出设备后，可将数据复制到你所在站点上的 Data Box。 数据复制完成后，可准备交付 Data Box。 有关详细信息，请参阅[准备交付](data-box-deploy-picked-up.md#prepare-to-ship)。
+9. 提出设备后，可将数据复制到你所在站点上的 Data Box。 数据复制完成后，可准备交付 Data Box。 有关详细信息，请参阅[准备交付](data-box-deploy-picked-up.md#prepare-to-ship)。
 
    “准备交付”步骤需要在没有任何关键错误的前提下完成。 否则，在做出必要的修补后需要再次运行此步骤。 “准备交付”步骤成功完成后，可以在设备本地用户界面上查看交货的授权代码。
 
    > [!NOTE]
    > 请勿通过电子邮件共享授权代码。 仅在数据中心交货时进行验证该代码。
 
-9. 如果你已收到订单交货预约，那么订单在 Azure 门户中应处于“可以在 Azure 数据中心接收”状态。 按照“安排交货”下的说明退回设备。
+   **有关巴西的说明：** 若要安排在巴西退返设备，请发送电子邮件至 [adbops@microsoft.com](mailto:adbops@microsoft.com)，并提供以下信息：
 
-   ![设备交货说明](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+   ```
+   Subject: Request Azure Data Box Disk drop-off for order: <ordername>
 
-10. 在你的 ID 和授权代码经过验证，且你将设备交付给数据中心后，订单状态应为“已接收”。
+   - Order name
+   - Contact name of the person who will drop off the Data Box Disk (A government-issued photo ID will be required to validate the contact’s identity upon arrival.) 
+   - Inbound Nota Fiscal (A copy of the inbound Nota Fiscal will be required at drop-off.)   
+   ```
+
+10. 如果你已收到订单交货预约，那么订单在 Azure 门户中应处于“可以在 Azure 数据中心接收”状态。 按照“安排交货”下的说明退回设备。
+
+    ![设备交货说明](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+
+11. 在你的 ID 和授权代码经过验证，且你将设备交付给数据中心后，订单状态应为“已接收”。
 
     ![具有“已接收”状态的订单](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-01.png)
 
-11. 设备被接收后，数据复制将继续。 复制完成后，订单完成。
+12. 设备被接收后，数据复制将继续。 复制完成后，订单完成。
 
 ## <a name="next-steps"></a>后续步骤
 

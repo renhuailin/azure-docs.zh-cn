@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 05/25/2021
 ms.topic: tutorial
 ms.custom: tutorial
-ms.openlocfilehash: 6e8f176df9a87f10af89b71d35b1d5577a223424
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 731d9a64c9ef144e8e51e9bce319a031056958ae
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382176"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071544"
 ---
 # <a name="tutorial-access-azure-resources-with-a-managed-online-endpoint-and-system-managed-identity-preview"></a>教程：使用托管联机终结点和系统托管标识访问 Azure 资源（预览版）
 
@@ -45,6 +45,7 @@ ms.locfileid: "110382176"
 * 必须有一个 Azure 机器学习工作区。 如果已按照上述文章配置了 ML 扩展，那么你就有了此类工作区。
 
 * 一个已训练的、可供评分和部署的机器学习模型。
+
 
 ## <a name="set-the-defaults-for-azure-cli"></a>为 Azure CLI 设置默认值
 
@@ -77,13 +78,13 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 为工作区、工作区位置以及要创建的终结点配置变量名称。 以下代码将这些值作为终结点中的环境变量导出：
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="set_variables" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="set_variables" :::
 
 接下来，指定 Blob 存储帐户、Blob 容器和文件的名称。 这些变量名称在此处定义，并在下一部分所述的 `az storage account create` 和 `az storage container create` 命令中引用。
 
 以下代码将这些值作为环境变量导出：
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="configure_storage_names" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="configure_storage_names" :::
 
 
 导出这些变量后，在本地创建一个文本文件。 部署终结点后，评分脚本将使用在创建终结点时生成的系统分配的托管标识来访问此文本文件。
@@ -94,15 +95,15 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 首先创建存储帐户。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_account" :::
 
 接下来，在该存储帐户中创建 Blob 容器。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_container" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_storage_container" :::
 
 然后，将文本文件上传到该 Blob 容器。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="upload_file_to_storage" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="upload_file_to_storage" :::
 
 ## <a name="create-a-managed-online-endpoint"></a>创建托管联机终结点
 
@@ -113,11 +114,11 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 >[!IMPORTANT]
 > 系统分配的托管标识是不可变的，一旦创建便不可更改。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="create_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="create_endpoint" :::
 
 使用以下代码检查终结点的状态。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
 
 
 ## <a name="give-storage-permission-to-system-assigned-managed-identity"></a>向系统分配的托管标识授予存储权限
@@ -126,11 +127,11 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 检索为终结点创建的系统分配的托管标识。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="get_system_identity" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="get_system_identity" :::
 
 在此处，可以授予系统分配的托管标识访问你的存储的权限。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="give_permission_to_user_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="give_permission_to_user_storage_account" :::
 
 ## <a name="scoring-script-to-access-azure-resource"></a>用于访问 Azure 资源的评分脚本
 
@@ -144,18 +145,18 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 此项部署可能需要大约 8-14 分钟，具体取决于是否是首次生成基础环境/映像。 以后使用同一环境进行部署将更快完成。
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="deploy" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="deploy" :::
 
 检查部署的状态。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deploy_Status" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deploy_Status" :::
 
 > [!NOTE]
 > 评分脚本中的 init 方法使用系统分配的托管标识令牌从你的存储帐户读取文件。 
 
 若要检查 init 方法输出，请使用以下代码查看部署日志。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deployment_log" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_deployment_log" :::
 
 此命令完成后，即已在 Azure 机器学习工作区中注册模型、环境和终结点。
 
@@ -167,15 +168,15 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 若要调用终结点，请运行： 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="test_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="test_endpoint" :::
 
 
 ## <a name="delete-the-endpoint-and-storage-account"></a>删除终结点和存储帐户
 
 如果你不打算继续使用部署的终结点和存储，请将其删除以降低成本。 删除终结点时，也会删除其所有关联的部署。 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_endpoint" :::
-::: code language="azurecli" source="~/azureml-examples-main/cli/how-to-deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_storage_account" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="delete_storage_account" :::
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -191,3 +192,4 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 * 要详细了解如何使用 CLI，请参阅[将 CLI 扩展用于 Azure 机器学习](reference-azure-machine-learning-cli.md)。
 * 若要将 JSON 查询细化为仅返回特定数据，请参阅[查询 Azure CLI 命令输出](/cli/azure/query-azure-cli)。
+* 有关 YAML 架构的详细信息，请参阅[联机终结点 YAML 参考](reference-online-endpoint-yaml.md)文档。

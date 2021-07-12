@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 05/07/2021
-ms.openlocfilehash: f435ed599e39b2dd0c204ef8c2cdcbb23146bc08
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/04/2021
+ms.openlocfilehash: 3681164f1b7415679ed599a70faf6453ab0a5c87
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367860"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968000"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -20,13 +20,13 @@ ms.locfileid: "110367860"
 
 Azure Cosmos DB 是一种用于新式应用开发的完全托管的 NoSQL 数据库。 个位数的毫秒响应时间以及自动和即时的可伸缩性，可保证任何规模的速度。 [SLA 支持](https://azure.microsoft.com/support/legal/sla/cosmos-db)的可用性和企业级安全性可确保业务连续性。 得益于全球各地的统包多区域数据分布、适用于常用语言的开源 API 和 SDK，应用的开发速度更快、效率更高。 作为一项完全托管的服务，Azure Cosmos DB 使用自动管理、更新和修补，使你无需进行数据库管理。 它还通过经济高效的无服务器和自动缩放选项处理容量管理，这些选项可响应应用程序的需求，使容量与需求相匹配。
 
-> [!NOTE]
-> 是否想要通过参与用户研究来帮助改进 Azure Cosmos DB 文档？ 请花几分钟来填写这个 5 分钟的[筛选调查](https://aka.ms/cosmosdb-documentation-screener-survey)。 如果你符合条件，你会被重定向到计划程序，你可以在其中预定一个槽来加入交互式研究会话。 在此过程中，根据我们的[隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)，将不会收集任何个人数据。
-
 可以在没有 Azure 订阅的情况下[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)（无需支付费用，也无需承诺），或者使用 [Azure Cosmos DB 免费层](free-tier.md)获取一个帐户，其中包含每秒前 1000 RU 的免费吞吐量和 25 GB 的免费存储。
 
 > [!div class="nextstepaction"]
 > [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
+
+> [!TIP]
+> 若要详细了解 Azure Cosmos DB，请在每周四下午 1 点（太平洋时间）通过 Azure Cosmos DB Live TV 观看我们的播客。 请参阅[将来的研讨会安排以及过去的精彩内容](https://gotcosmos.com/tv)。
 
 :::image type="content" source="./media/introduction/azure-cosmos-db.png" alt-text="Azure Cosmos DB 是一种用于新式应用开发的完全托管的 NoSQL 数据库。" border="false":::
 
@@ -77,6 +77,7 @@ Azure Cosmos DB 是一种用于新式应用开发的完全托管的 NoSQL 数据
 
 请通过阅读以下快速入门文章之一，来开始使用 Azure Cosmos DB：
 
+- 了解在 Azure Cosmos DB 中[如何选择 API](choose-api.md)
 - [Azure Cosmos DB SQL API 入门](create-sql-api-dotnet.md)
 - [Azure Cosmos DB 的用于 MongoDB 的 API 入门](create-mongodb-nodejs.md)
 - [Azure Cosmos DB Cassandra API 入门](create-cassandra-dotnet.md)

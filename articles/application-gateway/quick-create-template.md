@@ -5,20 +5,22 @@ description: 本快速入门介绍如何使用资源管理器模板创建 Azure 
 services: application-gateway
 author: vhorne
 ms.author: victorh
-ms.date: 01/20/2021
+ms.date: 06/14/2021
 ms.topic: quickstart
 ms.service: application-gateway
 ms.custom: devx-track-azurepowershell - mvc - subject-armqs - mode-arm
-ms.openlocfilehash: ab9a586e657652c50f182fd1dcb7e085e2e8dac7
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 1436a029185ed30b1c45ea11db484d5f53f3b2a2
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839160"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072176"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - ARM 模板
 
 在本快速入门中，使用 Azure 资源管理器模板（ARM 模板）创建 Azure 应用程序网关。 然后，我们对应用程序网关进行测试，确保其正常运行。
+
+:::image type="content" source="media/quick-create-portal/application-gateway-qs-resources.png" alt-text="应用程序网关资源":::
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

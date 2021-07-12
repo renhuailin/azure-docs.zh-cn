@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 02/24/2021
-ms.openlocfilehash: 7124014821c79fa37aa04da8909e3b4ac3bcb4fb
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 06/07/2021
+ms.openlocfilehash: 4f7900c4abc37df776c231ac9d70a09862f6d49f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492488"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748385"
 ---
 # <a name="quickstart-enable-azure-defender"></a>快速入门：启用 Azure Defender
 
@@ -32,7 +32,7 @@ ms.locfileid: "106492488"
 
 - 可以在订阅级别或资源级别启用 **用于存储帐户的 Azure Defender**
 - 可以在订阅级别或资源级别启用 **用于 SQL 的 Azure Defender**。
-- 只能在资源级别为 **Azure Database for MariaDB/MySQL/PostgreSQL** 启用威胁防护
+- 你只能在资源级别启用用于开源关系数据库的 Azure Defender
 
 ### <a name="to-enable-azure-defender-on-your-subscriptions-and-workspaces"></a>若要在订阅和工作区中启用 Azure Defender：
 
@@ -64,6 +64,21 @@ ms.locfileid: "106492488"
         :::image type="content" source="./media/enable-azure-defender/upgrade-selected-workspaces-and-subscriptions.png" alt-text="在“开始使用”页中升级所有选定的工作区和订阅":::
 
 
+## <a name="disable-azure-defender"></a>禁用 Azure Defender
+
+如果需要为订阅禁用 Azure Defender，则可采用相同的过程，但选择“关闭 Azure Defender”：
+ 
+1. 从安全中心的菜单中，选择“定价和设置”。
+1. 选择相关订阅。
+1. 如果订阅已启用 Azure Defender，请打开该“Azure Defender 计划”，然后选择“关闭 Azure Defender”。 
+
+    :::image type="content" source="./media/enable-azure-defender/disable-plans.png" alt-text="启用或禁用 Azure Defender":::
+
+1. 选择“保存”。
+
+> [!NOTE]
+> 禁用 Azure Defender 后（无论是禁用单个计划还是一次禁用所有计划），数据收集可能会在短时间内继续。 
+
 ## <a name="next-steps"></a>后续步骤
 
-启用 Azure Defender 后，请根据 [Azure 安全中心的自动预配代理和扩展](security-center-enable-data-collection.md)中所述，启用由所需代理和扩展实现的自动数据收集。
+启用 Azure Defender 后，请根据[自动预配代理和扩展](security-center-enable-data-collection.md)中所述，启用由所需代理和扩展实现的自动数据收集。

@@ -2,14 +2,14 @@
 author: amitbapat
 ms.service: key-vault
 ms.topic: include
-ms.date: 03/09/2021
+ms.date: 05/28/2021
 ms.author: ambapat
-ms.openlocfilehash: 9ecfcff00e6f44f5c739513c063baaa3fa02a3db
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 3539e222407fee63a829e80db986f2b0eed02e24
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753284"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111761543"
 ---
 Azure 密钥保管库服务支持两种资源类型：“保管库”和“托管 HSM”。 以下两个部分将分别说明每种类型的服务限制。
 
@@ -62,6 +62,12 @@ Azure 密钥保管库服务支持两种资源类型：“保管库”和“托�
 > [!NOTE]
 > 如果尝试备份的密钥、机密或证书对象版本数超出上限，将会导致错误。 无法删除密钥、机密或证书的历史版本。 
 
+### <a name="limits-on-count-of-keys-secrets-and-certificates"></a>对密钥、机密和证书的数量限制：
+
+密钥保管库不限制可存储在保管库中的密钥、机密或证书的数量。 应考虑保管库的事务限制，以确保操作不会受到限制。
+
+密钥保管库不限制存储的机密、密钥或证书的版本数量，但存储大量版本 (500+) 可能会影响备份操作性能。 请参阅 [Azure Key Vault 备份](../articles/key-vault/general/backup.md)。
+
 #### <a name="azure-private-link-integration"></a>Azure 专用链接集成
 
 > [!NOTE]
@@ -72,7 +78,7 @@ Azure 密钥保管库服务支持两种资源类型：“保管库”和“托�
 | 每个密钥保管库的专用终结点数目 | 64 |
 | 每个订阅的包含专用终结点的密钥保管库数目 | 400 |
 
-### <a name="resource-type-managed-hsm-preview"></a>资源类型：托管 HSM（预览）
+### <a name="resource-type-managed-hsm"></a>资源类型：托管 HSM
 
 本部分说明 `managed HSM` 资源类型的服务限制。
 
@@ -80,7 +86,7 @@ Azure 密钥保管库服务支持两种资源类型：“保管库”和“托�
 
 |项|限制|
 |----|------:|
-每个区域每个订阅的 HSM 实例数|1（在预览期）
+每个区域每个订阅的 HSM 实例数|1 
 每个 HSM 池的密钥数|5000
 每个密钥的版本数|100
 每个 HSM 的自定义角色定义数|50
