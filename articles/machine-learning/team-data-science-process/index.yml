@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Team Data Science Process 文档
+summary: 了解如何使用 Team Data Science Process（一种敏捷的迭代式数据科学方法，用于预测分析解决方案和智能应用程序）。
+metadata:
+  title: Team Data Science Process 文档
+  description: 了解如何使用 Team Data Science Process（一种敏捷的迭代式数据科学方法，用于预测分析解决方案和智能应用程序）。
+  ms.service: machine-learning
+  ms.subservice: team-data-science-process
+  ms.topic: landing-page
+  author: marktab
+  ms.author: marktab
+  ms.date: 03/10/2020
+  ms.openlocfilehash: cfa2721328eb5cbe9a9a5b1db663702cc47fbec0
+  ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/24/2021
+  ms.locfileid: "112678227"
+landingContent:
+- title: 了解过程
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是团队数据科学过程？
+      url: /azure/architecture/data-science-process/overview
+  - linkListType: concept
+    links:
+    - text: 过程生命周期
+      url: /azure/architecture/data-science-process/lifecycle
+    - text: 了解业务
+      url: /azure/architecture/data-science-process/lifecycle-business-understanding
+    - text: 数据获取
+      url: /azure/architecture/data-science-process/lifecycle-data
+- title: 规划和开发项目
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 项目规划
+      url: /azure/architecture/team-data-science-process-project-templates
+    - text: 敏捷开发
+      url: /azure/architecture/agile-development

@@ -101,6 +101,8 @@
           href: deploy-iot-edge-device.md
         - name: 部署到 IoT Edge for Linux on Windows
           href: deploy-iot-edge-linux-on-windows.md
+        - name: 在 Azure Stack Edge 上部署
+          href: deploy-on-stack-edge.md
     - name: 播放
       items:
         - name: 播放录制内容
@@ -157,6 +159,8 @@
       href: 'https://azure.microsoft.com/updates/?category=media'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/video-analyzer/'
+    - name: 可用区域
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all'
     - name: 常见问题
       href: faq-edge.md
     - name: 配额和限制
