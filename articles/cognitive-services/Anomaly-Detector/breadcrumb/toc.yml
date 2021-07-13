@@ -9,3 +9,14 @@
         - name: 异常检测器
           tocHref: /azure/cognitive-services/
           topicHref: /azure/cognitive-services/Anomaly-Detector/index
+- name: Azure
+  tocHref: /legal/
+  topicHref: /azure/index
+  items:
+    - name: 认知服务
+      tocHref: /legal/cognitive-services/anomaly-detector
+      topicHref: /azure/cognitive-services/index
+      items:
+        - name: 异常检测器
+          tocHref: /legal/cognitive-services/anomaly-detector
+          topicHref: /azure/cognitive-services/anomaly-detector/index

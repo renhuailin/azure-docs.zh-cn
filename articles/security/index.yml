@@ -16,18 +16,18 @@ metadata:
   ms.date: 02/05/2021
 highlightedContent:
   items:
-    - title: 开始安全旅程
+    - title: 开始你的安全之旅
       itemType: get-started
       url: ./journey/index.yml
-    - title: 查找满足业务需求的安全服务
+    - title: 找到满足你的业务需求的安全服务
       itemType: overview
       url: ./fundamentals/end-to-end.md
-    - title: 利用最佳做法和建议来保护云部署
+    - title: 使用最佳做法和建议来保护云部署
       itemType: concept
       url: ./benchmarks/introduction.md
 conceptualContent:
   items:
-    - title: 基础知识
+    - title: 基础
       links:
         - url: ./fundamentals/overview.md
           itemType: overview
@@ -143,13 +143,13 @@ conceptualContent:
       links:
         - url: ../sentinel/overview.md
           itemType: overview
-          text: Azure Sentinel 预览版是什么？
+          text: 什么是 Azure Sentinel？
         - url: ../sentinel/quickstart-onboard.md
           itemType: quickstart
-          text: 载入 Azure Sentinel 预览版
+          text: 载入 Azure Sentinel
         - url: ../sentinel/quickstart-get-visibility.md
           itemType: quickstart
-          text: Azure Sentinel 预览版入门
+          text: Azure Sentinel 入门
       footerLink:
         url: ../sentinel/index.yml
         text: 查看详细信息
@@ -218,7 +218,7 @@ conceptualContent:
       links:
         - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
           itemType: overview
-          text: 数据安全性
+          text: 数据安全
         - url: ./fundamentals/paas-applications-using-sql.md
           itemType: concept
           text: 适用于 PaaS 数据库的最佳做法

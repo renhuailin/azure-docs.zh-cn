@@ -1,0 +1,22 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 应用 AI 服务
+      tocHref: /azure/applied-ai-services/
+      topicHref: /azure/applied-ai-services/index
+      items:
+        - name: 指标顾问
+          tocHref: /azure/cognitive-services/
+          topicHref: /azure/cognitive-services/metrics-advisor/index
+- name: Azure
+  tocHref: /legal/
+  topicHref: /azure/index
+  items:
+    - name: 应用 AI 服务
+      tocHref: /legal/cognitive-services/anomaly-detector
+      topicHref: /azure/applied-ai-services/index
+      items:
+        - name: 指标顾问
+          tocHref: /legal/cognitive-services/anomaly-detector
+          topicHref: /azure/cognitive-services/metrics-advisor/index

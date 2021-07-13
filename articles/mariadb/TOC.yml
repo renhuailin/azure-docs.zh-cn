@@ -1,4 +1,4 @@
-- name: Azure DB for MariaDB 文档
+- name: Azure Database for MariaDB 文档
   href: index.yml
 - name: 概述
   expanded: true
@@ -154,7 +154,7 @@
     - name: 配置 TLS
       href: howto-tls-configurations.md
     - name: 使用 Azure Defender 进行威胁防护
-      href: ../security-center/defender-for-databases-introduction.md
+      href: ../security-center/defender-for-databases-usage.md?toc=/azure/mariadb/toc.json&bc=/azure/mariadb/breadcrumb/toc.json
     - name: 审核概念
       href: concepts-audit-logs.md
     - name: 配置审核日志
@@ -236,7 +236,7 @@
       href: /cli/azure/mariadb
     - name: REST API
       href: /rest/api/mariadb
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: /azure/templates/microsoft.dbformariadb/allversions
     - name: 管理存储过程
       href: reference-stored-procedures.md

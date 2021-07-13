@@ -12,7 +12,7 @@
     - name: 新增功能
       href: whats-new.md
     - name: LUIS 常见问题
-      href: troubleshooting.md
+      href: troubleshooting.yml
       displayName: 'Troubleshooting, import'
 - name: LUIS 快速入门
   items:

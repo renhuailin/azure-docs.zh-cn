@@ -25,6 +25,8 @@
           href: security-controls-policy.md
         - name: 安全概述
           href: security-overview.md
+        - name: 专用链接网络
+          href: private-link-security.md
 - name: 操作指南
   items:
     - name: 部署

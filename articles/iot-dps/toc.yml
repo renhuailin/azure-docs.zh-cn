@@ -118,8 +118,6 @@
   items:
     - name: 开发
       items:
-        - name: 将 MXChip IoT DevKit 连接到 IoT 中心
-          href: how-to-connect-mxchip-iot-devkit.md
         - name: 如何从设备发送更多数据
           href: how-to-send-additional-data.md
         - name: 使用自定义分配策略预配设备

@@ -50,7 +50,7 @@
     - name: 将 Key Vault 与 DigiCert CA 集成
       href: how-to-integrate-certificate-authority.md
     - name: 疑难解答 - 导入证书
-      href: import-cert-faqs.md
+      href: import-cert-faqs.yml
     - name: 导出来自 Key Vault 的证书
       href: how-to-export-certificate.md
 - name: 参考

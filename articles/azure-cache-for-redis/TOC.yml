@@ -111,11 +111,11 @@
         - name: 迁移到 Azure Cache for Redis
           href: cache-migration-guide.md
         - name: 有关规划的常见问题
-          href: cache-planning-faq.md
+          href: cache-planning-faq.yml
     - name: 生成
       items:
         - name: 有关开发的常见问题
-          href: cache-development-faq.md
+          href: cache-development-faq.yml
     - name: 自动化
       items:
         - name: 使用 Azure PowerShell 进行部署和管理
@@ -145,7 +145,7 @@
         - name: 删除 TLS 1.0 和 1.1
           href: cache-remove-tls-10-11.md
         - name: 管理常见问题解答
-          href: cache-management-faq.md
+          href: cache-management-faq.yml
     - name: 监视
       items:
         - name: 在 Azure 门户中监视
@@ -153,7 +153,7 @@
         - name: 设置异常警报
           href: cache-how-to-monitor.md#operations-and-alerts
         - name: 监视常见问题解答
-          href: cache-monitor-troubleshoot-faq.md
+          href: cache-monitor-troubleshoot-faq.yml
     - name: 缩放
       items:
         - name: 更新为不同的大小和层
@@ -171,7 +171,7 @@
         - name: 排查数据丢失问题
           href: cache-troubleshoot-data-loss.md
         - name: 故障排查常见问题解答
-          href: cache-monitor-troubleshoot-faq.md
+          href: cache-monitor-troubleshoot-faq.yml
 - name: 参考
   items:
     - name: “用于 Redis 的 Azure 缓存”示例
@@ -198,7 +198,7 @@
 - name: 资源
   items:
     - name: Azure Cache for Redis 常见问题解答
-      href: cache-faq.md
+      href: cache-faq.yml
     - name: 视频
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
     - name: Microsoft Q&A 问题页面

@@ -13,7 +13,7 @@ items:
       - name: 新增功能
         href: whats-new.md
       - name: 计算机视觉常见问题解答
-        href: FAQ.md
+        href: FAQ.yml
   - name: 光学字符识别 (OCR)
     items:
       - name: OCR 概述

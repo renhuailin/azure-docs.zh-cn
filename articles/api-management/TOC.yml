@@ -338,7 +338,7 @@
 - name: 资源
   items:
     - name: 常见问题解答
-      href: api-management-faq.md
+      href: api-management-faq.yml
     - name: 定价
       href: 'https://aka.ms/apimpricing'
     - name: 产品更新

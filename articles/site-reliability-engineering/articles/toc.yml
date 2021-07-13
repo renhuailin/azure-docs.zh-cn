@@ -4,6 +4,6 @@
   expanded: true
   items:
     - name: SRE 和编码
-      href: code.md
+      href: code.yml
     - name: SRE 和 DevOps
-      href: devops.md
+      href: devops.yml
