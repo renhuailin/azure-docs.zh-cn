@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概念
   items:
-    - name: 最佳做法
+    - name: 最佳实践
       items:
         - name: 概述
           href: secure-dev-overview.md
@@ -24,7 +24,7 @@
         - name: 配置
           href: security-code-analysis-customize.md
         - name: 常见问题解答
-          href: security-code-analysis-faq.md
+          href: security-code-analysis-faq.yml
         - name: YAML 配置
           href: yaml-configuration.md
         - name: 发行版和路线图

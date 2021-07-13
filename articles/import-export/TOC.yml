@@ -10,7 +10,7 @@
     - name: 审查要求
       href: storage-import-export-requirements.md
     - name: 常见问题解答
-      href: storage-import-export-service-faq.md
+      href: storage-import-export-service-faq.yml
 - name: 如何
   expanded: true
   items:

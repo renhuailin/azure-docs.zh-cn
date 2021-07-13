@@ -51,9 +51,9 @@ productDirectory:
           text: 书籍
         - url: resources/events.md
           text: 事件
-        - url: articles/code.md
+        - url: articles/code.yml
           text: 常见问题解答：SRE 和编码
-        - url: articles/devops.md
+        - url: articles/devops.yml
           text: 常见问题解答：SRE 和 DevOps
         - url: resources/links.md
           text: 链接和摘要

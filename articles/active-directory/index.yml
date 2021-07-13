@@ -260,10 +260,10 @@ conceptualContent:
         text: 查看详细信息
     - title: 角色
       links:
-        - url: ./roles/groups-assign-role.md
+        - url: ./roles/concept-understand-roles.md
           itemType: concept
           text: 了解 Azure AD 角色
-        - url: ./roles/concept-understand-roles.md
+        - url: ./roles/custom-create.md
           itemType: how-to-guide
           text: 创建自定义角色
         - url: ./roles/groups-view-assignments.md

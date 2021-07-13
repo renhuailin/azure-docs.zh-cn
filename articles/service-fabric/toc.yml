@@ -918,7 +918,7 @@
 - name: 资源
   items:
     - name: Service Fabric 托管群集常见问题
-      href: faq-managed-cluster.md
+      href: faq-managed-cluster.yml
     - name: 常见问题
       href: service-fabric-common-questions.md
     - name: Azure 路线图

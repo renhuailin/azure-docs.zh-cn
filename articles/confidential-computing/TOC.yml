@@ -23,7 +23,7 @@
         - name: 使用 Azure CLI 创建机密节点
           href: confidential-nodes-aks-get-started.md
         - name: AKS 机密节点常见问题解答
-          href: confidential-nodes-aks-faq.md
+          href: confidential-nodes-aks-faq.yml
 - name: 概念
   expanded: true
   items:
@@ -34,7 +34,7 @@
         - name: 有关虚拟机的解决方案
           href: virtual-machine-solutions.md
         - name: 机密计算VM 常见问题解答
-          href: faq.md
+          href: faq.yml
     - name: 容器计算
       expanded: true
       items:

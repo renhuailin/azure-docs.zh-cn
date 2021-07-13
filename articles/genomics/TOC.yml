@@ -24,7 +24,7 @@
 - name: 资源
   items:
     - name: 常见问题
-      href: frequently-asked-questions-genomics.md
+      href: frequently-asked-questions-genomics.yml
     - name: 故障排除指南
       href: troubleshooting-guide-genomics.md
     - name: 提出支持请求

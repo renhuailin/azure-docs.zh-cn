@@ -149,7 +149,7 @@
           href: ../virtual-machines/sizes-hpc.md
           maintainContext: true
         - name: 不带临时磁盘的 Azure VM
-          href: ../virtual-machines/azure-vms-no-temp-disk.md
+          href: ../virtual-machines/azure-vms-no-temp-disk.yml
           maintainContext: true
         - name: Azure VM 大小命名约定
           href: ../virtual-machines/vm-naming-conventions.md
@@ -182,7 +182,7 @@
         - name: 选择磁盘类型
           href: ../virtual-machines/disks-types.md
           maintainContext: true
-        - name: Encryption
+        - name: 加密
           href: ../virtual-machines/disk-encryption.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
           maintainContext: true
         - name: 高级存储性能
