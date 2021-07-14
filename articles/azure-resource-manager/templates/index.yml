@@ -12,12 +12,12 @@ metadata:
   author: mumian
   ms.author: jgao
   ms.date: 03/03/2021
-  ms.openlocfilehash: b3a8448145a101367a2000e5b16d0ff61b93a0d7
-  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.openlocfilehash: 0f25783d39adb290b372ac87edcb69559143c1a5
+  ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111963218"
+  ms.lasthandoff: 06/16/2021
+  ms.locfileid: "112202807"
 landingContent:
 - title: 关于 ARM 模板
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
     - text: 最佳做法
       url: ./best-practices.md
     - text: 常见问题
-      url: frequently-asked-questions.md
+      url: frequently-asked-questions.yml
     - text: 模板规格
       url: template-specs.md
     - text: 部署模式

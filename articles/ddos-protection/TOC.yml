@@ -72,7 +72,7 @@
 - name: 资源
   items:
     - name: 常见问题解答
-      href: ddos-faq.md
+      href: ddos-faq.yml
     - name: 定价
       href: 'https://azure.microsoft.com/en-us/pricing/details/ddos-protection/'
     - name: 区域可用性

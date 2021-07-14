@@ -55,7 +55,7 @@
         - name: 禁止的操作
           href: forbidden-actions.md
         - name: 常见问题解答
-          href: cloudsimple-faq.md
+          href: cloudsimple-faq.yml
     - name: 教程
       items:
         - name: 创建 CloudSimple 服务

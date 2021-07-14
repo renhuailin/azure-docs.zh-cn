@@ -1,31 +1,34 @@
 ---
-title: Azure Percept 深色80/20 集成
-description: 了解有关 Azure Percept 深色如何与 80/20 railing 系统集成的详细信息。
+title: Azure Percept DK 80/20 集成
+description: 详细了解 Azure Percept DK 如何与 80/20 导轨系统集成。
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/24/2021
 ms.custom: template-concept
-ms.openlocfilehash: f63c5e5764451fd7a03b0e68982db01330d1995c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 32254b1ca094ee3e34ca95088210bb7c2e7bc0e8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662068"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562743"
 ---
-# <a name="azure-percept-dk-8020-integration-overview"></a>Azure Percept 深色80/20 集成概述
+# <a name="azure-percept-dk-8020-integration-overview"></a>Azure Percept DK 80/20 集成概述
 
-Azure Percept 深色和音频附件旨在与 [80/20 railing 系统](https://8020.net/)集成。
+Azure Percept DK 和音频附件旨在与 [80/20 T 槽铝质生成系统](https://8020.net/)集成。
 
 ## <a name="8020-features"></a>80/20 功能
 
-每个硬件组件都是用凹槽和 protrusions 生成的，以适合1010延伸类型。 此集成使客户和解决方案构建者能够更轻松地将其概念证明扩展到生产环境中。
+Azure Percept DK 载板、Azure Percept Vision 设备和 Azure Percept Audio 附件使用内置的 80/20 1010 连接器进行制造，这允许使用带有 80/20 导轨的无限安装配置。 此集成使客户和解决方案构建者能够更轻松地将其概念证明扩展到生产环境中。
 
-<!---
-## Check out this video for more information on how to use Azure Percept DK with 80/20
---->
+有关如何使用 Azure Percept DK 80/20 的详细信息，请观看此视频：
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/Dg6mtD9psLU]  
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 [Azure Percept 音频附件](./overview-azure-percept-audio.md)。
+> [!div class="nextstepaction"]
+> [从 Microsoft 在线商店购买 Azure Percept DK](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

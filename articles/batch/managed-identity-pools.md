@@ -2,14 +2,13 @@
 title: 在 Batch 池中配置托管标识
 description: 了解如何在 Batch 池上启用用户分配的托管标识，以及如何在节点内使用托管标识。
 ms.topic: conceptual
-ms.date: 03/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: d69e983a4b17298150942c924a3c694e2cceaf72
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.date: 05/25/2021
+ms.openlocfilehash: 243cf375b3ebf8bd64d73022ba44c3224b58872d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967245"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457763"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>在 Batch 池中配置托管标识
 
@@ -18,9 +17,9 @@ ms.locfileid: "105967245"
 本主题介绍如何在 Batch 池上启用用户分配的托管标识，以及如何在节点内使用托管标识。
 
 > [!IMPORTANT]
-> 包含用户分配的托管标识的 Azure Batch 池目前支持在以下区域提供公共预览版：美国西部 2、美国中南部、美国东部、US Gov 亚利桑那州和 US Gov 弗吉尼亚州。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 必须使用[虚拟机配置](nodes-and-pools.md#virtual-machine-configuration)来配置池，才能使用托管标识。
+>
+> 可以使用 [Batch .NET 管理库](/dotnet/api/overview/azure/batch#management-library)创建具有托管标识的池，但 [Batch .NET 客户端库](/dotnet/api/overview/azure/batch#client-library)当前不支持创建具有托管标识的池。
 
 ## <a name="create-a-user-assigned-identity"></a>创建用户分配的标识
 
@@ -29,9 +28,6 @@ ms.locfileid: "105967245"
 ## <a name="create-a-batch-pool-with-user-assigned-managed-identities"></a>创建包含用户分配的托管标识的 Batch 池
 
 创建一个或多个用户分配的托管标识后，可以使用 [Batch .NET 管理库](/dotnet/api/overview/azure/batch#management-library)创建包含该托管标识的 Batch 池。
-
-> [!IMPORTANT]
-> 必须使用[虚拟机配置](nodes-and-pools.md#virtual-machine-configuration)来配置池，才能使用托管标识。
 
 ```csharp
 var poolParameters = new Pool(name: "yourPoolName")
@@ -72,9 +68,6 @@ var pool = await managementClient.Pool.CreateWithHttpMessagesAsync(
     parameters: poolParameters,
     cancellationToken: default(CancellationToken)).ConfigureAwait(false);    
 ```
-
-> [!NOTE]
-> [Batch .NET 客户端库](/dotnet/api/overview/azure/batch#client-library)当前不支持创建包含托管标识的池。
 
 ## <a name="use-user-assigned-managed-identities-in-batch-nodes"></a>在 Batch 节点中使用用户分配的托管标识
 

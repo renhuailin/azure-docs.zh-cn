@@ -36,5 +36,25 @@
           href: 13-security.md
         - name: 摘要
           href: 14-summary.md
-        - name: 附录
-          href: 15-appendix.md
+    - name: 示例应用程序
+      href: 15-appendix.md
+    - name: 资源
+      items:
+        - name: 通过 mysqldump 或 phpmyadmin 迁移数据
+          href: ../../concepts-migrate-dump-restore.md
+          displayName: 'migrate, mysqldump'
+        - name: 通过 dbForge Studio for MySQL 迁移数据
+          href: ../../concepts-migrate-dbforge-studio-for-mysql.md
+          displayName: 'migrate, dbforge'
+        - name: 通过 MySQL Workbench 迁移数据
+          href: ../../concepts-migrate-import-export.md
+          displayName: 'import , migrate, export'
+        - name: 使用 MySQL Workbench 迁移 RDS MySQL 数据
+          href: ../../how-to-migrate-rds-mysql-workbench.md
+          displayName: 'import , migrate, export'
+        - name: 通过 DMS 实现停机时间最短的迁移
+          href: ../../howto-migrate-online.md
+          displayName: 'migrate, dms, database migration service'
+        - name: 解决常见问题
+          href: ../../howto-troubleshoot-common-errors.md
+          displayName: 'SUPER privilege, DBA role, Access is denied'

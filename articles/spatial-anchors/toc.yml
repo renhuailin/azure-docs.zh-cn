@@ -132,7 +132,7 @@
     - name: Azure 混合现实资源管理 REST API
       href: /rest/api/mixedreality/
     - name: 常见问题解答
-      href: spatial-anchor-faq.md
+      href: spatial-anchor-faq.yml
     - name: 提供产品反馈
       href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'
     - name: Stack Overflow

@@ -214,8 +214,6 @@
                   href: automation-dsc-config-from-server.md
                 - name: 将配置转换为复合资源
                   href: automation-dsc-create-composite.md
-                - name: 修正不合规的服务器
-                  href: automation-dsc-remediate.md
         - name: 更改跟踪和库存
           items:
             - name: 概述

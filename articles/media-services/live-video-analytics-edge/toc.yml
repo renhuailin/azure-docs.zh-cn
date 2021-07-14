@@ -128,7 +128,7 @@
     - name: 配额和限制
       href: quotas-limitations.md
     - name: 常见问题解答
-      href: faq.md
+      href: faq.yml
     - name: 生产就绪情况和最佳做法
       href: production-readiness.md
     - name: 透明度和负责任的 AI 原则
