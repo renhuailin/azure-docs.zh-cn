@@ -74,7 +74,7 @@
         - name: 载入根或顶点域
           href: onboard-apex-domain.md
         - name: 按国家或地区限制访问
-          href: cdn-restrict-access-by-country.md
+          href: cdn-restrict-access-by-country-region.md
         - name: 通过压缩文件来提高性能
           href: cdn-improve-performance.md
         - name: 终结点多源

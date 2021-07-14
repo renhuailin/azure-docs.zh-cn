@@ -400,7 +400,7 @@
     - name: 疑难解答
       items:
         - name: 常见问题
-          href: media-services-frequently-asked-questions.md
+          href: media-services-frequently-asked-questions.yml
         - name: 实时流式处理故障排除指南
           href: media-services-troubleshooting-live-streaming.md
         - name: 错误代码

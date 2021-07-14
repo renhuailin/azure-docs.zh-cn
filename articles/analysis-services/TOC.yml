@@ -44,7 +44,7 @@
     - name: 支持的数据源
       href: analysis-services-datasource.md
     - name: 网络连接常见问题解答
-      href: analysis-services-network-faq.md
+      href: analysis-services-network-faq.yml
 - name: 操作说明
   items:
     - name: 服务器

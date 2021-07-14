@@ -12,12 +12,12 @@ metadata:
   ms.date: 10/19/2020
   author: curtand
   ms.author: curtand
-  ms.openlocfilehash: 8dd6ac6fef0dbc84c77ccacfd048b2af21771f6a
-  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+  ms.openlocfilehash: 9a01fc386fcf1c100072d8cf813c27f2ba2f0ad1
+  ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/02/2020
-  ms.locfileid: "96499197"
+  ms.lasthandoff: 06/25/2021
+  ms.locfileid: "112965917"
 landingContent:
 - title: 关于 Azure AD 角色
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
       url: concept-understand-roles.md
     - text: 了解 Azure AD 中的管理单元
       url: administrative-units.md
-    - text: 使用云组来管理角色分配
+    - text: 通过组来管理角色分配
       url: groups-concept.md
 - title: 入门
   linkLists:
@@ -65,7 +65,7 @@ landingContent:
     links:
     - text: 创建可分配角色的组
       url: groups-create-eligible.md
-    - text: 向云组分配角色
+    - text: 向组分配角色
       url: groups-assign-role.md
     - text: 使组符合 PIM
       url: groups-pim-eligible.md

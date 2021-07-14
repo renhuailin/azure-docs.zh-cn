@@ -10,12 +10,12 @@ metadata:
   author: JBCook
   ms.author: jencook
   ms.date: 09/22/2020
-  ms.openlocfilehash: b5d8550c87d56a7deb257b485722f64a5b8f7131
-  ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+  ms.openlocfilehash: e7d63965f45b513e89016525d888549da81791cc
+  ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2021
-  ms.locfileid: "104955253"
+  ms.lasthandoff: 07/09/2021
+  ms.locfileid: "113551373"
 landingContent:
 - title: 关于 Azure 机密计算
   linkLists:
@@ -58,7 +58,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: 机密计算虚拟机常见问题解答
-      url: faq.md
+      url: faq.yml
     - text: 定价
       url: https://azure.microsoft.com/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2
     - text: 可用性
@@ -90,7 +90,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: AKS 机密节点常见问题解答
-      url: confidential-nodes-aks-faq.md
+      url: confidential-nodes-aks-faq.yml
     - text: 关于 Azure Kubernetes 服务 (AKS)
       url: ../aks/intro-kubernetes.md
 - title: 机密云服务

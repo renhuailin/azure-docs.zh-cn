@@ -401,7 +401,7 @@
         - name: CSP 发行说明
           href: 'https://partner.microsoft.com/Support/whats-new'
         - name: StorSimple for CSP：常见问题解答
-          href: storsimple-partner-csp-faq.md
+          href: storsimple-partner-csp-faq.yml
 - name: 相关内容
   items:
     - name: StorSimple 5000-7000 系列

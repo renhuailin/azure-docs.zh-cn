@@ -18,7 +18,7 @@
           href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: Microsoft 365 角色
           href: m365-workload-docs.md
-    - name: 基于组的角色分配
+    - name: 通过组来管理角色分配
       href: groups-concept.md
     - name: 管理单元
       href: administrative-units.md
@@ -87,9 +87,9 @@
     - name: 疑难解答
       items:
         - name: 排查分配给组的角色的问题
-          href: groups-faq-troubleshooting.md
+          href: groups-faq-troubleshooting.yml
         - name: 排查管理单元问题
-          href: admin-units-faq-troubleshoot.md
+          href: admin-units-faq-troubleshoot.yml
         - name: 获取 Azure AD 支持
           href: ../fundamentals/active-directory-troubleshooting-support-howto.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: 参考
