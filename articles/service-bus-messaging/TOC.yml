@@ -34,14 +34,14 @@
               href: service-bus-python-how-to-use-queues.md
             - name: JavaScript (@azure/service-bus)
               href: service-bus-nodejs-how-to-use-queues.md
-            - name: PHP
-              href: service-bus-php-how-to-use-queues.md
         - name: 发送和接收消息（旧版本/包）
           items:
             - name: .NET (Microsoft.Azure.ServiceBus)
               href: service-bus-dotnet-get-started-with-queues-legacy.md
             - name: Java (azure-servicebus)
               href: service-bus-java-how-to-use-queues-legacy.md
+            - name: PHP
+              href: service-bus-php-how-to-use-queues.md
     - name: 服务总线主题和订阅
       items:
         - name: 创建主题和订阅
@@ -62,14 +62,14 @@
               href: service-bus-python-how-to-use-topics-subscriptions.md
             - name: JavaScript (@azure/service-bus)
               href: service-bus-nodejs-how-to-use-topics-subscriptions.md
-            - name: PHP
-              href: service-bus-php-how-to-use-topics-subscriptions.md
         - name: 发布和订阅消息（旧版本/包）
           items:
             - name: .NET (Microsoft.Azure.ServiceBus)
               href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
             - name: Java (azure-servicebus)
               href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
+            - name: PHP
+              href: service-bus-php-how-to-use-topics-subscriptions.md
 - name: 教程
   items:
     - name: 更新清单
@@ -327,7 +327,7 @@
       href: /powershell/module/az.servicebus
     - name: REST
       href: /rest/api/servicebus
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: /azure/templates/microsoft.servicebus/allversions
     - name: 配额
       href: service-bus-quotas.md
