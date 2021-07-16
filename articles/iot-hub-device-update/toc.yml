@@ -47,6 +47,8 @@ items:
         href: import-concepts.md
       - name: 与导入相关的架构
         href: import-schema.md
+      - name: 设备更新限制
+        href: device-update-limits.md
   - name: 操作指南
     items:
       - name: 创建设备更新帐户

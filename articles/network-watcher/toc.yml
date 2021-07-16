@@ -30,6 +30,8 @@
   items:
     - name: 连接监视器
       href: connection-monitor-overview.md
+    - name: 连接监视器架构
+      href: connection-monitor-schema.md
     - name: 诊断 VM 网络流量筛选器问题
       href: network-watcher-ip-flow-verify-overview.md
     - name: 诊断 NSG 规则和流量筛选
@@ -139,10 +141,13 @@
             - name: 读取 NSG 流日志
               href: network-watcher-read-nsg-flow-logs.md
             - name: 使用流量分析
-              href: traffic-analytics.md
               items:
+                - name: 流量分析概述
+                  href: traffic-analytics.md
                 - name: 常见问题
                   href: traffic-analytics-faq.yml
+                - name: 内置策略
+                  href: traffic-analytics-policy-portal.md
                 - name: 架构和数据聚合
                   href: traffic-analytics-schema.md
                 - name: 架构更新（2019 年 8 月）

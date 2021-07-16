@@ -12,6 +12,10 @@
       href: iot-support-help.md
     - name: IoT 术语表
       href: iot-glossary.md
+- name: 操作指南
+  items:
+    - name: 使用智能手机设备应用
+      href: iot-phone-app-how-to.md
 - name: 安全性
   items:
     - name: 建议

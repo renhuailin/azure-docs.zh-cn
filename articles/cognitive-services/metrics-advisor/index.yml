@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 08/13/2020
   ms.author: mbullwin
-  ms.openlocfilehash: 51a9315974b97032a58e21923df12d0adbe9d11b
-  ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+  ms.openlocfilehash: 788b982828c288952b79ba49c5ce515a9e16496f
+  ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111893852"
+  ms.lasthandoff: 06/19/2021
+  ms.locfileid: "112378504"
 landingContent:
 - title: 关于指标顾问
   linkLists:
@@ -34,6 +34,12 @@ landingContent:
       url: quickstarts/web-portal.md
     - text: 使用 REST API 或客户端库
       url: quickstarts/rest-api-and-client-library.md
+  - linkListType: video
+    links:
+    - text: 指标顾问简介
+      url: https://www.youtube.com/watch?v=0Y26cJqZMIM
+    - text: 初次使用认知服务
+      url: https://www.youtube.com/watch?v=7tCLJHdBZgM
 - title: 操作方法文章
   linkLists:
   - linkListType: how-to-guide
@@ -49,7 +55,7 @@ landingContent:
     - text: 配置警报并使用挂钩获取通知
       url: how-tos/alerts.md
     - text: 诊断事件
-      url: how-tos/diagnose-incident.md
+      url: how-tos/diagnose-an-incident.md
     - text: 使用反馈调整异常检测
       url: how-tos/anomaly-feedback.md
     - text: 生成指标图

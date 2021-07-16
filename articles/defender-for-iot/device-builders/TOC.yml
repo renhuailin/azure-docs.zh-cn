@@ -1,0 +1,189 @@
+- name: 适用于设备生成器的 Azure Defender for IoT
+  items: null
+- name: 概述
+  displayName: 'IoT, OT, getting started'
+  href: overview.md
+  items:
+    - name: 新增功能
+      displayName: 'version, versions, servicing, information, timeline, support, support date, dates, versioning, policy'
+      href: release-notes.md
+    - name: 什么是基于代理的解决方案体系结构
+      href: architecture-agent-based.md
+- name: 快速入门
+  expanded: false
+  items:
+    - name: 载入 Defender for IoT 基于代理的解决方案
+      displayName: 'IoT Hub, existing, enable'
+      href: quickstart-onboard-iot-hub.md
+    - name: 安装 Defender for IoT 微代理（预览）
+      displayName: 'package, authentication, methods, certificate, authenticate, version'
+      href: quickstart-standalone-agent-binary-installation.md
+    - name: 创建 Defender IoT 微代理模块孪生（预览）
+      href: quickstart-create-micro-agent-module-twin.md
+    - name: 从源代码生成 Defender for IoT 微代理（预览）
+      displayName: 'baseline, configuration, customize, distribution'
+      href: quickstart-building-the-defender-micro-agent-from-source.md
+    - name: 配置适用于 Azure RTOS 的 Defender-IoT-micro-agent
+      href: quickstart-azure-rtos-security-module.md
+    - name: 将 Azure 资源添加到 IoT 解决方案
+      displayName: 'resources, monitored, resource'
+      href: quickstart-configure-your-solution.md
+    - name: 调查安全建议
+      href: quickstart-investigate-security-recommendations.md
+    - name: 调查安全警报
+      href: quickstart-investigate-security-alerts.md
+    - name: 经典
+      items:
+        - name: 安全代理概述
+          displayName: 'platforms, C, C#, agent'
+          href: security-agent-architecture.md
+        - name: 创建 azureiotsecurity 模块孪生
+          displayName: 'module twin, security module'
+          href: quickstart-create-security-twin.md
+- name: 概念
+  items:
+    - name: 代理组合概述和操作系统支持（预览）
+      displayName: 'standalone agent, micro agent, RTOS'
+      href: concept-agent-portfolio-overview-os-support.md
+    - name: 独立微代理概述（预览）
+      displayName: 'endpoint, posture, distribution, flexible, model'
+      href: concept-standalone-micro-agent-overview.md
+    - name: 安全代理身份验证（预览）
+      displayName: 'connection string, certificate, authentication'
+      href: concept-security-agent-authentication.md
+    - name: 安全状况 - CIS 基准
+      href: concept-security-posture.md
+    - name: 微代理事件集合（预览版）
+      displayName: 'process events, network connection'
+      href: concept-event-aggregation.md
+    - name: IoT 中心的内置警报
+      displayName: 'binary command line, disable firewall, port forwarding detection, possible attempt to disable auditd logging detected, reverse shells, successful bruteforce attempt, successful local login, web shell, Behavior similar, Crypto coin, suspicious, Exposed Docker,'
+      href: concept-security-alerts.md
+    - name: IoT 中心的自定义安全警报
+      href: concept-customizable-security-alerts.md
+    - name: IoT 中心的安全建议
+      href: concept-recommendations.md
+    - name: 经典
+      items:
+        - name: Defender-IoT-micro-agent
+          displayName: 'device twins, Defender-IoT-micro-agent twin'
+          href: concept-security-module.md
+        - name: Edge Defender-IoT-micro-agent
+          href: security-edge-architecture.md
+        - name: 安全代理
+          href: overview-security-agents.md
+        - name: 安全代理身份验证
+          displayName: 'method, C, C#, module, device, installation, authentication'
+          href: concept-security-agent-authentication-methods.md
+        - name: 基线
+          displayName: 'custom, setting, properties'
+          href: concept-baseline.md
+        - name: 适用于 Azure Defender for IoT 的 Azure 安全基线
+          displayName: 'identity management, active directory, privileged access, data protection, incident response, posture, vulnerability, governance'
+          href: /security/benchmark/azure/baselines/defender-for-iot-security-baseline?toc=/azure/defender-for-iot/TOC.json
+        - name: Defender-IoT-micro-agent 经典事件聚合
+          displayName: 'twin, default, configuration, alerts'
+          href: event-aggregation.md
+        - name: 基于代理的安全警报
+          href: agent-based-security-alerts.md
+        - name: 基于代理的安全自定义警报
+          href: agent-based-security-custom-alerts.md
+        - name: 基于代理的建议
+          href: agent-based-recommendations.md
+- name: 操作指南
+  items:
+    - name: 连接到 Azure Sentinel
+      displayName: 'log analytics, service notes'
+      href: how-to-configure-with-sentinel.md
+    - name: 配置 Azure Defender for IoT 基于代理的解决方案
+      displayName: 'data, collection, geolocation, log analytics, raw events'
+      href: how-to-configure-agent-based-solution.md
+    - name: 调查 CIS 基准建议
+      href: how-to-investigate-cis-benchmark.md
+    - name: 创建自定义警报
+      displayName: security group
+      href: quickstart-create-custom-alerts.md
+    - name: 适用于 Azure RTOS 的 Defender-IoT-micro-agent
+      href: iot-security-azure-rtos.md
+      items:
+        - name: 使用适用于 Azure RTOS 的 Defender-IoT-micro-agent
+          href: how-to-azure-rtos-security-module.md
+        - name: 了解适用于 Azure RTOS 的 Defender-IoT-micro-agent
+          href: concept-rtos-security-module.md
+        - name: 适用于 Azure RTOS 的 Defender-IoT-micro-agent 警报和建议
+          href: concept-rtos-security-alerts-recommendations.md
+    - name: 经典
+      items:
+        - name: 我应该部署哪个代理？
+          items:
+            - name: 选择要部署的代理
+              href: how-to-deploy-agent.md
+            - name: 在 Windows 设备上部署基于 C# 的安全代理
+              href: how-to-deploy-windows-cs.md
+            - name: 在 Linux 设备上部署基于 C# 的安全代理
+              href: how-to-deploy-linux-cs.md
+            - name: 在 Linux 设备上部署基于 C 的安全代理
+              href: how-to-deploy-linux-c.md
+        - name: 排查安全代理问题
+          items:
+            - name: 排查 Azure Defender for IoT Linux 安全代理问题
+              href: troubleshoot-agent.md
+            - name: 本地配置 C
+              href: azure-iot-security-local-configuration-c.md
+            - name: 本地配置 C#
+              href: azure-iot-security-local-configuration-csharp.md
+        - name: 部署 Edge Defender-IoT-micro-agent
+          href: how-to-deploy-edge.md
+        - name: 配置安全代理
+          displayName: property
+          href: how-to-agent-configuration.md
+        - name: 发送自己的安全消息
+          href: how-to-send-security-messages.md
+        - name: 访问原始安全数据
+          displayName: 'log analytics, alerts,'
+          href: how-to-security-data-access.md
+        - name: 调查设备
+          displayName: 'access, data, kql, ports, logins, process'
+          href: how-to-investigate-device.md
+    - name: 疑难解答
+      items:
+        - name: Defender IoT 微代理故障排除（预览）
+          displayName: 'service status, review logs'
+          href: troubleshoot-defender-micro-agent.md
+- name: 参考
+  items:
+    - name: 适用于 Azure RTOS 的 Defender-IoT-micro-agent API
+      displayNAme: 'prototype, disable'
+      href: azure-rtos-security-module-api.md
+    - name: 常见问题
+      displayName: 'FAQ, embedded, dependencies, data, quota, internet,'
+      href: resources-agent-frequently-asked-questions.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Defender for IoT 术语表
+      href: references-defender-for-iot-glossary.md
+    - name: 功能支持和停用
+      items:
+        - name: 功能支持和停用
+          displayName: 'C, C#, deprecation, support'
+          href: edge-security-module-deprecation.md
+- name: 资源
+  items:
+    - name: 利用 Microsoft Learn 掌握安全技能
+      href: /learn/browse/?term=securityS&terms=securityS
+    - name: Azure 安全中心文档
+      href: ../../security-center/
+    - name: Azure 安全文档
+      href: ../../security/index.yml
+    - name: Azure IoT 安全性、隐私性与合规性博客
+      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'
+    - name: 适用于设备构建者的基于代理的解决方案
+      items: null
+    - name: Stack Overflow 上的 Azure RTOS Defender-IoT-micro-agent
+      href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'

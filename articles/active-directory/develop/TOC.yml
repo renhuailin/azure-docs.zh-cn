@@ -322,6 +322,8 @@
             - name: 将应用从 ADAL 迁移到 MSAL
               href: msal-migration.md
               displayName: migration
+            - name: 使用 ADAL 列出所有应用
+              href: howto-get-list-of-all-active-directory-auth-library-apps.md
             - name: 国家云和 MSAL
               href: msal-national-cloud.md
               displayName: 'china, germany, gov, 21vianet'
@@ -337,11 +339,17 @@
             - name: 与 ADFS 集成
               href: msal-net-adfs-support.md
             - name: 迁移到 MSAL.NET
-              href: msal-net-migration.md
-            - name: 使用代理将 Xamarin Android 应用迁移到 MSAL.NET
-              href: msal-net-migration-android-broker.md
-            - name: 使用代理将 Xamarin iOS 应用迁移到 MSAL.NET
-              href: msal-net-migration-ios-broker.md
+              items:
+                - name: 从 ADAL.NET 迁移到 MSAL.NET
+                  href: msal-net-migration.md
+                - name: 将机密客户端应用迁移到 MSAL.NET
+                  href: msal-net-migration-confidential-client.md
+                - name: 使用代理将 Xamarin Android 应用迁移到 MSAL.NET
+                  href: msal-net-migration-android-broker.md
+                - name: 使用代理将 Xamarin iOS 应用迁移到 MSAL.NET
+                  href: msal-net-migration-ios-broker.md
+                - name: ADAL.NET 与 MSAL.NET 之间的差异
+                  href: msal-net-differences-adal-net.md
             - name: Web 浏览器注意事项
               href: msal-net-web-browsers.md
             - name: 处理 MSAL.NET 中的错误和异常
@@ -684,7 +692,7 @@
         - name: 常见预配方案
           href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: 使用 MS Graph 自动执行配置
-          href: /graph/application-provisioning-configure-api?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
+          href: /azure/active-directory/app-provisioning/application-provisioning-configuration-api?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
 - name: 资源
   items:
     - name: 视频

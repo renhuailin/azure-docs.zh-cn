@@ -63,6 +63,8 @@
           href: in-place-migration-portal.md
         - name: 使用 PowerShell 迁移
           href: in-place-migration-powershell.md
+        - name: 迁移后更改
+          href: post-migration-changes.md
         - name: 常见错误和已知问题
           href: in-place-migration-common-errors.md
     - name: 应用扩展

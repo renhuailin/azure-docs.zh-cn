@@ -1,15 +1,18 @@
 - name: Bicep 文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: 什么是 Bicep？
       href: overview.md
+      displayName: 'benefits,faq,playground'
     - name: 比较 JSON 和 Bicep
       href: compare-template-syntax.md
 - name: 安装
   items:
     - name: 安装 Bicep 工具
       href: install.md
+      displayName: nightly
 - name: 快速入门
   items:
     - name: 创建 Bicep 模板 - VS Code
@@ -19,31 +22,40 @@
     - name: Microsoft Learn - Bicep
       href: learn-bicep.md
 - name: 如何
+  expanded: true
   items:
     - name: 作者
+      expanded: true
       items:
         - name: 资源
+          expanded: true
           items:
             - name: 资源声明
               href: resource-declaration.md
             - name: 条件部署
               href: conditional-resource-deployment.md
+              displayName: runtime
             - name: 子资源名称和类型
               href: child-resource-name-type.md
+              displayName: 'parent,parent resource'
             - name: 扩展资源
               href: scope-extension-resources.md
         - name: parameters
           href: parameters.md
+          displayName: 'decorators,secure,objects,constraints'
         - name: 变量
           href: variables.md
+          displayName: configuration
         - name: Outputs
           href: outputs.md
+          displayName: 'dynamic number of outputs,modules'
         - name: 模块
           href: modules.md
+          displayName: 'scopes,consume'
         - name: 循环
           items:
             - name: 资源
-              displayName: 'iteration,copy,multiple'
+              displayName: 'iteration,copy,multiple,batches,child'
               href: loop-resources.md
             - name: 属性
               displayName: 'iteration,copy,multiple'
@@ -58,12 +70,18 @@
           items:
             - name: 资源组
               href: deploy-to-resource-group.md
+              displayName: 'deployment commands,multiple resource groups'
             - name: 订阅
               href: deploy-to-subscription.md
+              displayName: 'Azure policy,policy,access control'
             - name: 管理组
               href: deploy-to-management-group.md
+              displayName: 'policy,Azure policy'
             - name: 租户
               href: deploy-to-tenant.md
+              displayName: assign role
+        - name: Linter
+          href: linter.md
         - name: 最佳实践
           href: best-practices.md
     - name: 部署
@@ -72,6 +90,7 @@
           items:
             - name: 模拟部署
               href: deploy-what-if.md
+              displayName: 'whatif, what if'
         - name: 部署命令
           items:
             - name: 部署 - CLI
@@ -85,7 +104,7 @@
             - name: 创建参数文件
               href: parameter-files.md
             - name: 传递敏感值
-              displayname: key vault
+              displayName: key vault
               href: key-vault-parameter.md
         - name: CI/CD
           items:
@@ -97,6 +116,7 @@
       items:
         - name: 反向编译
           href: decompile.md
+          displayName: 'conversion issues,export,convert,playground'
 - name: 参考
   items:
     - name: Bicep 文件结构
@@ -104,6 +124,7 @@
       href: file.md
     - name: 数据类型
       href: data-types.md
+      displayName: 'supported types,arrays,booleans,integers,objects,strings,secure,'
     - name: 函数
       items:
         - name: 所有函数
@@ -140,6 +161,7 @@
           href: operators-numeric.md
     - name: Bicep CLI
       href: bicep-cli.md
+      displayName: 'build,decompile,install,list-versions,list versions,upgrade,version'
     - name: 模板参考
       href: /azure/templates/
     - name: Azure PowerShell

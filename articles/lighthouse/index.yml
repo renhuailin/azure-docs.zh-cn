@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 01/26/2021
-  ms.openlocfilehash: dae3705f71362cf1ca6ee8005c2c864533b3fbd0
-  ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+  ms.date: 07/07/2021
+  ms.openlocfilehash: 788d1bd8438bd3e732e4f48da95abd7d6d891ab1
+  ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104590273"
+  ms.lasthandoff: 07/08/2021
+  ms.locfileid: "113492165"
 landingContent:
 - title: 关于 Azure Lighthouse
   linkLists:
@@ -25,8 +25,8 @@ landingContent:
       url: ./overview.md
   - linkListType: concept
     links:
-    - text: Azure 委派资源管理
-      url: ./concepts/azure-delegated-resource-management.md
+    - text: 体系结构
+      url: ./concepts/architecture.md
     - text: 跨租户管理体验
       url: ./concepts/cross-tenant-management-experience.md
 - title: 入门
@@ -35,6 +35,8 @@ landingContent:
     links:
     - text: 将客户加入 Azure Lighthouse
       url: ./how-to/onboard-customer.md
+    - text: 实时角色（预览版）
+      url: ./how-to/create-eligible-authorizations.md
     - text: 查看和管理客户
       url: ./how-to/view-manage-customers.md
     - text: 链接你的合作伙伴 ID
@@ -67,7 +69,7 @@ landingContent:
     links:
     - text: 查看和管理服务提供商
       url: ./how-to/view-manage-service-providers.md
-    - text: 查看服务提供商活动
+    - text: 查看 Managing Tenant 活动
       url: ./how-to/view-service-provider-activity.md
 - title: 示例和模板
   linkLists:

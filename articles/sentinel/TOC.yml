@@ -1,91 +1,86 @@
 - name: Azure Sentinel 文档
   href: index.yml
 - name: 概述
-  href: overview.md
-- name: Azure Sentinel 中有哪些新增功能？
-  href: whats-new.md
-- name: 快速入门
   expanded: true
   items:
-    - name: 载入 Azure Sentinel
+    - name: 关于 Azure Sentinel
+      href: overview.md
+    - name: Azure Sentinel 中有哪些新增功能？
+      href: whats-new.md
+- name: 快速入门
+  items:
+    - name: 加入 Azure Sentinel
       href: quickstart-onboard.md
-    - name: 了解警报
-      href: quickstart-get-visibility.md
 - name: 教程
   items:
-    - name: 使用内置分析来检测威胁
-      href: tutorial-detect-threats-built-in.md
-    - name: 创建自定义规则以检测威胁
-      href: tutorial-detect-threats-custom.md
-    - name: 监视数据
-      href: tutorial-monitor-your-data.md
     - name: 调查事件
       href: tutorial-investigate-cases.md
     - name: 使用自动化来响应威胁
       href: tutorial-respond-threats-playbook.md
-    - name: 创建 KQL 查询（Learn 模块）
+    - name: 与 Microsoft 365 Defender 集成
+      href: microsoft-365-defender-sentinel-integration.md
+    - name: 创建 Azure Sentinel 的 KQL 查询（Learn 模块）
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
     - name: 从 Azure Sentinel 创建 Power BI 报表
       href: powerbi.md
 - name: 概念
   items:
-    - name: 了解和管理成本和计费
-      href: azure-sentinel-billing.md
-    - name: 使用实体对数据进行分类
-      href: entities-in-azure-sentinel.md
-    - name: 管理访问权限
+    - name: 体系结构
       items:
-        - name: Azure Sentinel 中的权限
+        - name: 角色和权限
           href: roles.md
-        - name: 管理资源的访问权限
-          href: resource-context-rbac.md
-        - name: 保护 MSSP 知识产权
-          href: mssp-protect-intellectual-property.md
-    - name: 高级多阶段攻击检测
-      href: fusion.md
-    - name: 自动化 (SOAR)
+        - name: 成本和计费
+          href: azure-sentinel-billing.md
+        - name: 安全基线
+          href: 'https://docs.microsoft.com/security/benchmark/azure/baselines/sentinel-security-baseline?toc=/azure/sentinel/TOC.json'
+    - name: 数据收集和分析
       items:
-        - name: Azure Sentinel 中的 SOAR
-          href: automation-in-azure-sentinel.md
-        - name: 事件处理的自动化规则
-          href: automate-incident-handling-with-automation-rules.md
-        - name: 使用 playbook 的高级自动化
-          href: automate-responses-with-playbooks.md
-    - name: 通过 UEBA 识别高级威胁
-      href: identify-threats-with-entity-behavior-analytics.md
-    - name: 使用 SOC-ML 异常检测威胁
-      href: soc-ml-anomalies.md
-    - name: 将威胁情报导入 Azure Sentinel
-      href: import-threat-intelligence.md
-    - name: 威胁情报集成
-      href: threat-intelligence-integration.md
-    - name: 自带机器学习平台
-      href: bring-your-own-ml.md
-    - name: 将 Microsoft 365 Defender 与 Azure Sentinel 集成
-      href: microsoft-365-defender-sentinel-integration.md
-    - name: 使用具有播放列表的外部数据
-      href: watchlists.md
-    - name: 跨工作区和租户扩展 Azure Sentinel
-      href: extend-sentinel-across-workspaces-tenants.md
+        - name: 规范化和 Azure Sentinel 信息模型 (ASIM)
+          href: normalization.md
+        - name: 使用实体对数据进行分类
+          href: entities-in-azure-sentinel.md
     - name: Azure Sentinel 解决方案
       items:
         - name: 关于 Sentinel 解决方案
           href: sentinel-solutions.md
         - name: 解决方案目录
           href: sentinel-solutions-catalog.md
-    - name: 跨表规范化数据
-      href: normalization.md
-    - name: 使用 Azure 数据资源管理器以实现长期日志保留
-      href: store-logs-in-azure-data-explorer.md
-    - name: 安全性
+    - name: 威胁情报
       items:
-        - name: 安全基线
-          href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=/azure/sentinel/TOC.json
+        - name: 将威胁情报导入 Azure Sentinel
+          href: import-threat-intelligence.md
+        - name: 威胁情报集成
+          href: threat-intelligence-integration.md
+    - name: 威胁检测
+      items:
+        - name: 用户与实体行为分析 (UEBA)
+          href: identify-threats-with-entity-behavior-analytics.md
+        - name: SOC-ML 异常
+          href: soc-ml-anomalies.md
+        - name: 多阶段攻击 (Fusion)
+          href: fusion.md
+        - name: 播放列表
+          href: watchlists.md
+    - name: 威胁搜寻
+      href: hunting.md
+    - name: SOAR
+      items:
+        - name: 业务流程、自动化和响应
+          href: automation-in-azure-sentinel.md
+        - name: 自动化规则
+          href: automate-incident-handling-with-automation-rules.md
+        - name: 攻略
+          href: automate-responses-with-playbooks.md
+        - name: 自带机器学习
+          href: bring-your-own-ml.md
 - name: 操作指南
   items:
-    - name: 连接数据源
-      href: connect-data-sources.md
+    - name: 迁移到 Azure Sentinel
+      href: migration.md
+    - name: 收集数据
       items:
+        - name: 连接数据源
+          href: connect-data-sources.md
         - name: 进行服务到服务连接
           items:
             - name: AWS CloudTrail
@@ -140,7 +135,9 @@
               href: connect-windows-security-events.md
             - name: Windows 虚拟桌面
               href: connect-windows-virtual-desktop.md
-        - name: 连接外部解决方案
+        - name: 合作伙伴数据连接器
+          href: partner-data-connectors.md
+        - name: 连接合作伙伴数据源
           items:
             - name: Agari Phishing Defense 和 Agari Brand Protection
               href: connect-agari-phishing-defense.md
@@ -274,63 +271,90 @@
                   href: connect-cef-verify.md
         - name: 创建自定义连接器
           href: create-custom-connector.md
-        - name: 连接威胁智能
-          href: connect-threat-intelligence.md
         - name: 连接 Azure Stack VM
           href: connect-azure-stack.md
         - name: 监视数据连接器运行状况
           href: monitor-data-connector-health.md
-    - name: 分析规则
+        - name: 集成 Azure 数据资源管理器
+          href: store-logs-in-azure-data-explorer.md
+    - name: 发现和部署解决方案
+      href: sentinel-solutions-deploy.md
+    - name: 连接威胁智能
+      href: connect-threat-intelligence.md
+    - name: 监视和可视化数据
       items:
-        - name: 警报扩充
+        - name: 可视化收集的数据
+          href: quickstart-get-visibility.md
+        - name: 使用 Azure Monitor 工作簿
+          href: tutorial-monitor-your-data.md
+    - name: 检测威胁并分析数据
+      items:
+        - name: 使用内置角色
+          href: tutorial-detect-threats-built-in.md
+        - name: 创建自定义规则
           items:
+            - name: 创建规则
+              href: tutorial-detect-threats-custom.md
             - name: 将数据字段映射到实体
               href: map-data-fields-to-entities.md
             - name: 警报中的 Surface 自定义详细信息
               href: surface-custom-details-in-alerts.md
             - name: 自定义警报详细信息
               href: customize-alert-details.md
-        - name: 导出和导入分析规则
-          href: import-export-analytics-rules.md
-        - name: 从警报创建事件
-          href: create-incidents-from-alerts.md
+            - name: 导出和导入分析规则
+              href: import-export-analytics-rules.md
+            - name: 使用 SOC-ML 异常规则
+              href: work-with-anomaly-rules.md
+        - name: 启用用户与实体行为分析 (UEBA)
+          href: enable-entity-behavior-analytics.md
         - name: 使用 SOC-ML 异常规则
           href: work-with-anomaly-rules.md
-    - name: 发现和部署解决方案
-      href: sentinel-solutions-deploy.md
-    - name: 创建自定义实体活动
-      href: customize-entity-activities.md
-    - name: 使用用户和实体行为分析
+        - name: 处理误报
+          href: false-positives.md
+        - name: 根据 Microsoft 安全警报创建事件
+          href: create-incidents-from-alerts.md
+    - name: 寻找威胁
       items:
-        - name: 启用 UEBA
-          href: enable-entity-behavior-analytics.md
-        - name: 使用 UEBA 进行调查
-          href: investigate-with-ueba.md
-    - name: 管理多个租户 (MSSP)
-      href: multiple-tenants-service-providers.md
-    - name: 处理多个工作区中的事件
-      href: multiple-workspace-view.md
-    - name: 设置客户管理的密钥 (CMK)
-      href: customer-managed-keys.md
-    - name: 在 Microsoft Teams 中开展协作
-      href: collaborate-in-microsoft-teams.md
-    - name: 利用事件指标更好地管理 SOC
-      href: manage-soc-with-incident-metrics.md
-    - name: 处理误报
-      href: false-positives.md
-    - name: 审核 Azure Sentinel 查询和活动
-      href: audit-sentinel-data.md
-    - name: 搜寻
-      href: hunting.md
-      items:
-        - name: 使用笔记本搜寻
+        - name: 使用 Jupyter Notebook 进行搜寻
           href: notebooks.md
-        - name: 使用书签搜寻
+        - name: 使用书签进行搜寻
           href: bookmarks.md
-        - name: 使用实时流搜寻
+        - name: 使用 Livestream 进行搜寻
           href: livestream.md
-    - name: 删除 Azure Sentinel
-      href: offboard.md
+    - name: 调查和响应
+      items:
+        - name: 创建自定义实体活动
+          href: customize-entity-activities.md
+        - name: 常见的 UEBA 调查方法
+          href: investigate-with-ueba.md
+        - name: 在 Microsoft Teams 中开展协作
+          href: collaborate-in-microsoft-teams.md
+        - name: 向 Azure Sentinel 验证 playbook
+          href: authenticate-playbooks-to-sentinel.md
+        - name: 在 playbook 中使用触发器和操作
+          href: playbook-triggers-actions.md
+    - name: 管理 Azure Sentinel
+      items:
+        - name: 管理工作区访问权限
+          href: resource-context-rbac.md
+        - name: 跨工作区和租户扩展 Azure Sentinel
+          href: extend-sentinel-across-workspaces-tenants.md
+        - name: 适用于 MSSP 的 Azure Sentinel
+          items:
+            - name: 管理多个租户 (MSSP)
+              href: multiple-tenants-service-providers.md
+            - name: 处理多个工作区中的事件
+              href: multiple-workspace-view.md
+            - name: 在 Azure Sentinel 中管理知识产权
+              href: mssp-protect-intellectual-property.md
+        - name: 设置客户管理的密钥
+          href: customer-managed-keys.md
+        - name: 使用事件指标管理 SOC
+          href: manage-soc-with-incident-metrics.md
+        - name: 使用 Azure 活动日志审核 Azure Sentinel
+          href: audit-sentinel-data.md
+        - name: 从工作区中删除 Azure Sentinel
+          href: offboard.md
 - name: 集成 SAP 和 Azure Sentinel
   items:
     - name: 部署 SAP 连续威胁监视
@@ -345,48 +369,64 @@
       href: sap-solution-deploy-alternate.md
 - name: 参考
   items:
-    - name: 热门 Azure Sentinel 工作簿
-      href: top-workbooks.md
-    - name: Azure CLI
-      href: /cli/azure/sentinel
-    - name: Azure Sentinel PowerShell
-      href: /powershell/module/az.securityinsights/
-    - name: Azure RBAC 角色
+    - name: Azure Sentinel REST API
+      href: /rest/api/securityinsights/
+    - name: 管理引用
       items:
-        - name: 所有 Azure 角色
-          href: ../role-based-access-control/built-in-roles.md#all
-        - name: Azure Sentinel 角色
-          href: ../role-based-access-control/built-in-roles.md#security
-    - name: REST API
+        - name: Azure Sentinel 逻辑应用连接器
+          href: /connectors/azuresentinel/
+        - name: Azure CLI
+          href: /cli/azure/sentinel
+        - name: Azure Sentinel PowerShell
+          href: /powershell/module/az.securityinsights/
+        - name: Azure RBAC 角色
+          items:
+            - name: 所有 Azure 角色
+              href: ../role-based-access-control/built-in-roles.md#all
+            - name: Azure Sentinel 角色
+              href: ../role-based-access-control/built-in-roles.md#security
+    - name: 数据连接器引用
       items:
-        - name: Azure Sentinel REST API
-          href: /rest/api/securityinsights/
-        - name: 通过 REST-API 管理搜寻查询
-          href: hunting-with-rest-api.md
-        - name: 通过 REST API 管理播放列表
-          href: watchlist-with-rest-api.md
-    - name: Azure Sentinel 逻辑应用连接器
-      href: /connectors/azuresentinel/
-    - name: 实体参考
-      href: entities-reference.md
-    - name: 网络规范化架构
-      href: normalization-schema.md
-    - name: 数据源架构引用
-      href: data-source-schema-reference.md
-    - name: Kusto 查询语言
+        - name: 数据源架构引用
+          href: data-source-schema-reference.md
+        - name: CEF 日志字段映射
+          href: cef-name-mapping.md
+        - name: 标准化
+          items:
+            - name: 身份验证规范化架构
+              href: authentication-normalization-schema.md
+            - name: DNS 规范化架构
+              href: dns-normalization-schema.md
+            - name: 网络规范化架构
+              href: normalization-schema.md
+            - name: 处理事件规范化架构
+              href: process-events-normalization-schema.md
+            - name: 注册表事件规范化架构
+              href: registry-event-normalization-schema.md
+    - name: 检测和分析引用
       items:
-        - name: Kusto 查询概述
-          href: /azure/data-explorer/kusto/query/
-        - name: Kusto 查询语言快速参考
-          href: /azure/data-explorer/kql-quick-reference
-        - name: Azure Monitor 日志查询优化
-          href: ../azure-monitor/logs/query-optimization.md
-    - name: UEBA 扩充
-      href: ueba-enrichments.md
-    - name: CEF 日志字段映射
-      href: cef-name-mapping.md
-    - name: MCAS 警报未加入到 Microsoft 365 Defender
-      href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
+        - name: 热门 Azure Sentinel 工作簿
+          href: top-workbooks.md
+        - name: 实体参考
+          href: entities-reference.md
+        - name: UEBA 扩充
+          href: ueba-enrichments.md
+        - name: Kusto 查询语言
+          items:
+            - name: Kusto 查询概述
+              href: /azure/data-explorer/kusto/query/
+            - name: Kusto 查询语言快速参考
+              href: /azure/data-explorer/kql-quick-reference
+            - name: Azure Monitor 日志查询优化
+              href: ../azure-monitor/logs/query-optimization.md
+        - name: REST API - 示例
+          items:
+            - name: 通过 REST-API 管理搜寻查询
+              href: hunting-with-rest-api.md
+            - name: 通过 REST API 管理播放列表
+              href: watchlist-with-rest-api.md
+        - name: MCAS 警报未加入到 Microsoft 365 Defender
+          href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
 - name: 资源
   items:
     - name: 有用的资源

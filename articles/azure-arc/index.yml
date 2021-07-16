@@ -9,7 +9,7 @@ metadata:
   ms.topic: hub-page
   author: MGoedtel
   ms.author: magoedte
-  ms.date: 03/02/2021
+  ms.date: 06/28/2021
   ms.custom: e2e-hybrid
 highlightedContent:
   items:
@@ -25,85 +25,86 @@ highlightedContent:
     - title: 已启用 Azure Arc 的 Kubernetes
       itemType: overview
       url: ./kubernetes/overview.md
-    - title: 已启用 Azure Arc 的数据服务（预览）
+    - title: 已启用 Azure Arc 的数据服务（预览版）
       itemType: overview
       url: ./data/overview.md
-    - title: 已启用 Azure Arc 的 SQL Server（预览）
+    - title: 已启用 Azure Arc 的服务器上的 SQL Server（预览版）
       itemType: overview
       url: /sql/sql-server/azure-arc/overview
-productDirectory:
-  title: 已启用 Azure Arc 的服务
-  summary: 查看如何随处运行服务。
-  items:
-    - title: 已启用 Azure Arc 的服务器
-      imageSrc: ./media/manage-450-machines-azure-arc.svg
-      links:
-        - url: ./servers/onboard-portal.md
-          text: 从 Azure 门户将计算机连接到 Azure Arc
-        - url: ./servers/onboard-service-principal.md
-          text: 使用服务主体大规模连接计算机
-        - url: ./servers/onboard-dsc.md
-          text: 通过 PowerShell DSC 将计算机连接到 Azure
-        - url: ./servers/index.yml
-          text: 查看更多…
-    - title: 已启用 Azure Arc 的 Kubernetes
-      imageSrc: ./media/01088-icon-arc-kubernetes-menu.svg
-      links:
-        - url: ./kubernetes/quickstart-connect-cluster.md
-          text: 连接群集
-        - url: ./kubernetes/tutorial-use-gitops-connected-cluster.md
-          text: 使用 GitOps 部署配置
-        - url: ./kubernetes/index.yml
-          text: 查看更多…
-    - title: 已启用 Azure Arc 的数据服务（预览）
-      imageSrc: ./media/manage-756-azure-arc.svg
-      links:
-        - url: ./data/install-client-tools.md
-          text: 安装工具
-        - url: ./data/create-sql-managed-instance.md
-          text: 创建 SQL 托管实例
-        - url: ./data/create-postgresql-hyperscale-server-group.md
-          text: 创建 PostgreSQL 超大规模
-        - url: ./data/index.yml
-          text: 查看更多…
-    - title: 已启用 Azure Arc 的 SQL Server（预览）
-      imageSrc: ./media/01850-icon-arc-sql-server-menu.svg
-      links:
-        - url: /sql/sql-server/azure-arc/assess
-          text: 评估 SQL 实例
-        - url: /sql/sql-server/azure-arc/overview
-          text: 查看更多…
 conceptualContent:
-  title: 入门
   items:
     - title: 已启用 Azure Arc 的服务器
       links:
         - url: ./servers/learn/quick-enable-hybrid-vm.md
-          itemType: get-started
-          text: 启用支持 Arc 的服务器代理
-        - url: ./servers/learn/tutorial-enable-vm-insights.md
-          itemType: tutorial
-          text: 通过用于 VM 的 Azure Monitor 的监视混合计算机
+          itemType: quickstart
+          text: 连接混合计算机
+        - url: ./servers/security-overview.md
+          itemType: concept
+          text: 安全概述
         - url: ./servers/policy-reference.md
           itemType: learn
           text: 使用 Azure Policy 的许可控制策略
-        - url: ./servers/manage-vm-extensions.md
-          itemType: how-to-guide
-          text: 管理和使用 Azure VM 扩展
+        - url: /sql/sql-server/azure-arc/overview
+          itemType: overview
+          text: 启用已启用 Arc 的 SQL Server（预览版）
+      footerLink:
+        url: ./servers/index.yml
+        text: 查看详细信息
     - title: 已启用 Azure Arc 的 Kubernetes
       links:
-        - url: ./kubernetes/use-gitops-with-helm.md
-          itemType: deploy
-          text: 使用 GitOps 部署 Helm 图表
+        - url: ./kubernetes/quickstart-connect-cluster.md
+          itemType: quickstart
+          text: 将群集连接到 Azure Arc
+        - url: ../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md
+          itemType: tutorial
+          text: 用适用于容器的 Azure Monitor 进行监视
         - url: ./kubernetes/use-azure-policy.md
           itemType: how-to-guide
           text: 通过 Azure Policy 强制使用 GitOps
-        - url: ../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=%2fazure%2fazure-arc%2ftoc.json
+        - url: ./kubernetes/tutorial-arc-enabled-open-service-mesh.md
           itemType: tutorial
-          text: 用适用于容器的 Azure Monitor 进行监视
-        - url: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/toc.json
-          itemType: learn
-          text: 使用 Azure Policy 的许可控制策略
-        - url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+          text: 已启用 Azure Arc 的 Open Service Mesh（预览版）
+      footerLink:
+        url: ./kubernetes/index.yml
+        text: 查看详细信息
+    - title: 已启用 Azure Arc 的数据服务（预览版）
+      links:
+        - url: ./data/install-client-tools.md
           itemType: deploy
-          text: 部署 Azure IoT Edge 工作负载
+          text: 安装工具
+        - url: ./data/create-sql-managed-instance.md
+          itemType: how-to-guide
+          text: 创建 SQL 托管实例
+        - url: ./data/create-postgresql-hyperscale-server-group.md
+          itemType: how-to-guide
+          text: 创建 PostgreSQL 超大规模
+        - url: ./data/index.yml
+          itemType: get-started
+          text: 查看更多…
+    - title: 应用程序服务
+      links:
+        - url: ../app-service/overview-arc-integration.md
+          itemType: overview
+          text: Azure Arc 上的应用服务、函数和逻辑应用（预览版）
+    - title: 支持 Azure Arc 的管理服务
+      links:
+        - url: ../azure-monitor/overview.md?
+          itemType: overview
+          text: Azure Monitor 概述
+        - url: ../governance/policy/overview.md
+          itemType: overview
+          text: Azure Policy 概述
+        - url: ../security-center/azure-defender.md
+          itemType: overview
+          text: Azure Defender 概述
+        - url: ../automation/automation-intro.md
+          itemType: overview
+          text: Azure 自动化概述
+    - title: 已启用 Azure Arc 的服务器上的 SQL Server（预览版）
+      links:
+        - url: /sql/sql-server/azure-arc/assess
+          itemType: how-to-guide
+          text: 评估已启用 Arc 的实例
+        - url: /sql/sql-server/azure-arc/configure-advanced-data-security
+          itemType: how-to-guide
+          text: 配置高级数据安全

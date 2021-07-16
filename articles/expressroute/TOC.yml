@@ -148,6 +148,8 @@
           href: expressroute-network-insights.md
         - name: ExpressRoute 监视、指标和警报
           href: expressroute-monitoring-metrics-alerts.md
+        - name: 监视 ExpressRoute
+          href: monitor-expressroute.md
         - name: 查看并配置维护警报
           href: maintenance-alerts.md
         - name: 为 ExpressRoute 配置网络性能监视器
@@ -210,6 +212,8 @@
           href: expressroute-troubleshooting-arp-classic.md
 - name: 参考
   items:
+    - name: 监视数据参考
+      href: monitor-expressroute-reference.md
     - name: Azure PowerShell
       href: /powershell/module/az.network#expressroute
     - name: Azure CLI

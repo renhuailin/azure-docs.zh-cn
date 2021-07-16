@@ -7,11 +7,11 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 使用 VM 设置创建主机
+    - name: 从 VM 设置配置 Bastion
       href: quickstart-host-portal.md
 - name: 教程
   items:
-    - name: 创建主机并连接到 Windows VM
+    - name: 配置 Bastion 并连接
       href: tutorial-create-host-portal.md
 - name: 概念
   items:
@@ -29,7 +29,7 @@
           href: /security/benchmark/azure/baselines/bastion-security-baseline?toc=/azure/bastion/TOC.json
 - name: 操作指南
   items:
-    - name: 创建主机
+    - name: 配置 Bastion
       items:
         - name: Azure 门户
           href: tutorial-create-host-portal.md
@@ -55,12 +55,14 @@
           href: bastion-vm-full-screen.md
     - name: 使用 NSG
       href: bastion-nsg.md
-    - name: 配置和访问诊断日志
-      href: diagnostic-logs.md
-    - name: 监视和管理会话
-      href: session-monitoring.md
-    - name: 指标、监视和警报
-      href: howto-metrics-monitor-alert.md
+    - name: 运行状况监视
+      items:
+        - name: 监视 Azure Bastion
+          href: howto-metrics-monitor-alert.md
+        - name: 配置和访问诊断日志
+          href: diagnostic-logs.md
+        - name: 监视和管理会话
+          href: session-monitoring.md
     - name: 疑难解答
       href: troubleshoot.md
 - name: 参考
