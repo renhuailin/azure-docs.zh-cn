@@ -1,4 +1,4 @@
-- name: 用于 MySQL 的 Azure 数据库文档
+- name: Azure Database for MySQL 文档
   href: index.yml
 - name: 概述
   expanded: true
@@ -7,6 +7,10 @@
       href: overview.md
     - name: 我应选择哪个 MySQL 选项？
       href: select-right-deployment-type.md
+    - name: 单一服务器中有哪些新增功能？
+      href: single-server-whats-new.md
+    - name: 灵活服务器中有哪些新增功能？
+      href: flexible-server/whats-new.md
     - name: 版本支持策略
       href: concepts-version-policy.md
       displayName: version policy
@@ -21,8 +25,6 @@
           href: single-server-overview.md
         - name: 支持的版本
           href: concepts-supported-versions.md
-        - name: 单一服务器中有哪些新增功能？
-          href: single-server-whats-new.md
         - name: 定价层
           items:
             - name: 定价层
@@ -144,10 +146,8 @@
               items:
                 - name: 配置 SSL
                   href: concepts-ssl-connection-security.md
-            - name: 高级威胁防护
-              items:
-                - name: 使用 Azure Defender 进行威胁防护
-                  href: ../security-center/defender-for-databases-introduction.md
+            - name: 使用 Azure Defender 进行威胁防护
+              href: ../security-center/defender-for-databases-usage.md?toc=/azure/mysql/toc.json&bc=/azure/mysql/breadcrumb/toc.json
             - name: 静态加密
               items:
                 - name: 数据加密
@@ -583,6 +583,9 @@
     - name: 通过 mysqldump 或 phpmyadmin 迁移数据
       href: concepts-migrate-dump-restore.md
       displayName: 'migrate, mysqldump'
+    - name: 使用 mydumper/myloader 将大型数据库迁移到 Azure Database for MySQL
+      href: concepts-migrate-mydumper-myloader.md
+      displayName: 'migrate, mydumper/myloader'
     - name: 通过 dbForge Studio for MySQL 迁移数据
       href: concepts-migrate-dbforge-studio-for-mysql.md
       displayName: 'migrate, dbforge'
@@ -592,6 +595,9 @@
     - name: 使用 MySQL Workbench 迁移 RDS MySQL 数据
       href: how-to-migrate-rds-mysql-workbench.md
       displayName: 'import , migrate, export'
+    - name: 将 Azure DB for MySQL 单一服务器迁移到 Azure DB for MySQL 灵活服务器
+      href: howto-migrate-single-flexible-minimum-downtime.md
+      displayName: 'migrate, Single to Flexible'
     - name: 通过 DMS 实现停机时间最短的迁移
       href: howto-migrate-online.md
       displayName: 'migrate, dms, database migration service'
@@ -624,7 +630,7 @@
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: 管理存储过程
       href: reference-stored-procedures.md

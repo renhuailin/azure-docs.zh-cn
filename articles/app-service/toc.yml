@@ -78,7 +78,7 @@
       href: app-service-web-tutorial-rest-api.md
     - name: 映射自定义域
       href: app-service-web-tutorial-custom-domain.md
-    - name: 使用 SSL 保护域
+    - name: 使用 TLS/SSL 保护域
       href: configure-ssl-bindings.md
     - name: 添加 CDN
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
@@ -213,11 +213,9 @@
           href: configure-domain-traffic-manager.md
         - name: 迁移活动域
           href: manage-custom-dns-migrate-domain.md
-    - name: 安全应用
+    - name: 对用户进行身份验证
       items:
-        - name: 添加 SSL 证书
-          href: configure-ssl-certificate.md
-        - name: 对用户进行身份验证
+        - name: 配置标识提供者
           items:
             - name: 使用 Azure AD 进行身份验证
               href: configure-authentication-provider-aad.md
@@ -231,15 +229,27 @@
               href: configure-authentication-provider-openid-connect.md
             - name: 使用“Apple 登录”进行验证（预览）
               href: configure-authentication-provider-apple.md
-        - name: 高级身份验证
-          href: app-service-authentication-how-to.md
+        - name: 自定义登录/注销
+          href: configure-authentication-customize-sign-in-out.md
+        - name: 访问用户标识
+          href: configure-authentication-user-identities.md
+        - name: 使用令牌
+          href: configure-authentication-oauth-tokens.md
+        - name: 管理 API 版本
+          href: configure-authentication-api-version.md
+        - name: 基于文件的配置
+          href: configure-authentication-file-based.md
+    - name: 安全应用
+      items:
+        - name: 添加 TSL/SSL 证书
+          href: configure-ssl-certificate.md
         - name: 限制访问
           href: app-service-ip-restrictions.md
         - name: 使用托管标识
           href: overview-managed-identity.md
         - name: 从 Key Vault 引用机密
           href: app-service-key-vault-references.md
-        - name: 在代码中使用 SSL 证书
+        - name: 在代码中使用 TLS/SSL 证书
           href: configure-ssl-certificate-in-code.md
         - name: 配置 TLS 相互身份验证
           href: app-service-web-configure-tls-mutual-auth.md
@@ -257,6 +267,8 @@
           href: manage-scale-per-app.md
     - name: 监视应用
       items:
+        - name: 使用 Azure Monitor 监视应用服务
+          href: monitor-app-service.md
         - name: 配额和警报
           href: web-sites-monitor.md
         - name: 启用日志
@@ -303,6 +315,8 @@
           href: webjobs-sdk-how-to.md
 - name: 参考
   items:
+    - name: 监视数据
+      href: monitor-app-service-reference.md
     - name: Azure CLI
       href: /cli/azure/appservice
     - name: Azure PowerShell
@@ -311,6 +325,8 @@
       href: /rest/api/appservice/
     - name: 资源管理器模板
       href: /azure/templates/microsoft.web/allversions
+    - name: 应用设置参考
+      href: reference-app-settings.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
@@ -344,7 +360,7 @@
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: 部署脚本
           href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查间歇性出站连接错误
           href: troubleshoot-intermittent-outbound-connection-errors.md
@@ -361,18 +377,18 @@
         - name: 常见问题解答
           items:
             - name: 可用性、性能和应用程序常见问题解答
-              href: faq-availability-performance-application-issues.md
+              href: faq-availability-performance-application-issues.yml
             - name: 部署常见问题解答
-              href: faq-deployment.md
+              href: faq-deployment.yml
             - name: 开放源代码技术常见问题解答
-              href: faq-open-source-technologies.md
+              href: faq-open-source-technologies.yml
             - name: 配置和管理常见问题解答
-              href: faq-configuration-and-management.md
+              href: faq-configuration-and-management.yml
     - name: IP 地址更改
       items:
         - name: 入站 IP 地址
           href: ip-address-change-inbound.md
         - name: 出站 IP 地址
           href: ip-address-change-outbound.md
-        - name: SSL 地址
+        - name: TLS/SSL 地址
           href: ip-address-change-ssl.md

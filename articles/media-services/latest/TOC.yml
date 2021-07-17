@@ -97,6 +97,8 @@
       items:
         - name: Python 基本编码
           href: encode-basic-encoding-python-quickstart.md
+        - name: 基于事件的人脸编修
+          href: face-redaction-event-based-python-quickstart.md
     - name: Azure 门户
       items:
         - name: 客户管理的密钥或 BYOK 教程
@@ -226,6 +228,8 @@
           href: stream-streaming-policy-concept.md
         - name: 内容密钥策略
           href: drm-content-key-policy-concept.md
+        - name: 密钥传送 IP 允许列表
+          href: drm-content-protection-key-delivery-ip-allow.md
     - name: 监视
       items:
         - name: 使用 Azure Monitor 进行监视
@@ -452,6 +456,9 @@
           href: asset-publish-cli-how-to.md
     - name: 安全性
       items:
+        - name: 安全基线
+          href: 'https://docs.microsoft.com/security/benchmark/azure/baselines/media-services-security-baseline'
+          displayName: 'security, baseline'
         - name: Azure RBAC
           href: security-rbac-concept.md
         - name: 滚动存储访问密钥
@@ -470,6 +477,9 @@
           href: security-access-storage-managed-identity-cli-tutorial.md
         - name: 授予函数应用访问媒体服务帐户的权限
           href: security-function-app-managed-identity-cli-tutorial.md
+        - name: 使用专用链接创建媒体服务和存储帐户
+          href: security-private-link-how-to.md
+          displayName: 'security, private link, links, firewall'
     - name: 使用媒体播放器
       items:
         - name: Azure Media Player 完全设置

@@ -58,6 +58,8 @@
   items:
     - name: 直观显示事件中心数据流的数据异常
       href: event-hubs-tutorial-visualize-anomalies.md
+    - name: 使用流分析对欺诈性呼叫数据进行分析
+      href: ../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/event-hubs/TOC.json
     - name: 将捕获的数据存储在 Azure Synapse Analytics 中
       href: store-captured-data-data-warehouse.md
     - name: 使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件
@@ -307,7 +309,7 @@
       href: /cli/azure/eventhubs
     - name: REST
       href: /rest/api/eventhub
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: /azure/templates/microsoft.eventhub/allversions
     - name: 配额
       href: event-hubs-quotas.md

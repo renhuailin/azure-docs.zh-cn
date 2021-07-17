@@ -52,8 +52,10 @@
               href: class-type-database-management.md
             - name: 自然语言处理中的深度学习
               href: class-type-deep-learning-natural-language-processing.md
-            - name: 道德黑客攻击
+            - name: Hyper-V 的道德黑客攻击
               href: class-type-ethical-hacking.md
+            - name: VirtualBox 的道德黑客攻击
+              href: class-type-ethical-hacking-virtualbox.md
             - name: MATLAB
               href: class-type-matlab.md
             - name: GNS3 的网络
@@ -205,4 +207,4 @@
     - name: 技术社区论坛
       href: 'https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices'
     - name: 常见问题
-      href: classroom-labs-faq.md
+      href: classroom-labs-faq.yml
