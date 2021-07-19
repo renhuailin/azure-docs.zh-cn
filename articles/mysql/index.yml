@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 94f0a30c070578a441940b701a7110f1b0bf76fe
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 320ff38fecdab0cfd0a689e483a76a8422888085
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110464122"
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112457473"
 landingContent:
 - title: 关于 Azure Database for MySQL
   linkLists:
@@ -35,10 +35,12 @@ landingContent:
     links:
     - text: 什么是单服务器？
       url: single-server-overview.md
-    - text: 单一服务器中有哪些新增功能？
-      url: single-server-whats-new.md
     - text: 查看所有单服务器文档
       url: single-server/index.yml
+  - linkListType: whats-new
+    links:
+    - text: 单一服务器中有哪些新增功能？
+      url: single-server-whats-new.md
   - linkListType: concept
     links:
     - text: 服务器概念
@@ -61,6 +63,10 @@ landingContent:
       url: flexible-server/overview.md
     - text: 查看所有灵活服务器文档
       url: flexible-server/index.yml
+  - linkListType: whats-new
+    links:
+    - text: 灵活服务器中有哪些新增功能？
+      url: flexible-server/whats-new.md
   - linkListType: concept
     links:
     - text: 服务器概念
@@ -95,6 +101,24 @@ landingContent:
       url: flexible-server/connect-php.md
     - text: 使用 Python 连接到灵活服务器
       url: flexible-server/connect-python.md
+- title: 迁移
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Database for MySQL 迁移指南
+      url: migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md
+    - text: dbForge Studio for MySQL
+      url: concepts-migrate-dbforge-studio-for-mysql.md
+    - text: 转储和还原
+      url: concepts-migrate-dump-restore.md
+    - text: 导入和导出
+      url: concepts-migrate-import-export.md
+    - text: 使用 MySQL Workbench 迁移 Amazon RDS for MySQL
+      url: how-to-migrate-rds-mysql-workbench.md
+    - text: 停机时间最短的迁移
+      url: howto-migrate-online.md
+    - text: 迁移期间或迁移后的常见错误
+      url: howto-troubleshoot-common-errors.md
 - title: 管理并迁移数据
   linkLists:
   - linkListType: concept

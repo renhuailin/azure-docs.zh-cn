@@ -1,6 +1,7 @@
-### YamlMime:Landing
-title: 适用于 IoT 的 Azure Defender 文档
+### YamlMime:Hub
+title: 适用于 IoT 的 Azure Defender
 summary: Azure Defender for IoT 为 IoT/OT 环境提供全面的威胁检测和多种部署选项，包括完全本地部署、连接云的部署或混合部署。
+brand: azure
 metadata:
   title: 适用于 IoT 的 Azure Defender 文档
   description: 了解 Azure Defender for IoT（一种基于 Azure 的云安全服务）如何提供全面的 IoT 设备威胁防护。
@@ -8,79 +9,63 @@ metadata:
   ms.service: defender-for-iot
   ms.topic: landing-page
   ms.collection: M365-security-compliance
-  author: mlottner
-  ms.author: mlottner
-  ms.date: 09/07/2020
-  ms.openlocfilehash: 1e7f3b151691c80861c9add3188a3d4479fac059
-  ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/16/2021
-  ms.locfileid: "103496093"
-landingContent:
-- title: Azure Defender for IoT 入门
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 什么是 Azure Defender for IoT？
-      url: overview.md
-    - text: 解决方案体系结构
-      url: architecture.md
-    - text: 解决方案设置概述
-      url: getting-started.md
-    - text: 新增功能
-      url: release-notes.md
-- title: 设置和加入 - 无代理解决方案
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 设置网络
-      url: how-to-set-up-your-network.md
-    - text: 确定所需设备
-      url: how-to-identify-required-appliances.md
-    - text: 安装软件
-      url: how-to-install-software.md
-- title: 监视网络 - 无代理解决方案
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 查看连接的设备
-      url: how-to-work-with-the-sensor-device-map.md
-    - text: 查看设备清单
-      url: how-to-investigate-sensor-detections-in-a-device-inventory.md
-    - text: 调查警报
-      url: how-to-work-with-alerts-on-your-sensor.md
-    - text: 控制要检测的流量
-      url: how-to-control-what-traffic-is-monitored.md
-    - text: 连接到 Azure Sentinel
-      url: how-to-configure-with-sentinel.md
-- title: Azure Defender for IoT - 基于代理的解决方案
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Edge Defender-IoT-micro-agent
-      url: security-edge-architecture.md
-  - linkListType: quickstart
-    links:
-    - text: 启用 IoT 中心 - 基于代理的解决方案
-      url: quickstart-onboard-iot-hub.md
-    - text: 配置 IoT 安全解决方案
-      url: quickstart-configure-your-solution.md
-    - text: 配置适用于 Azure RTOS 的 Defender-IoT-micro-agent
-      url: quickstart-azure-rtos-security-module.md
-    - text: 创建 Azure Defender for IoT 模块孪生
-      url: quickstart-create-security-twin.md
-    - text: 创建自定义安全警报
-      url: quickstart-create-custom-alerts.md
-    - text: 调查安全警报
-      url: quickstart-investigate-security-alerts.md
-- title: Azure Defender for IoT 解决方案资源
-  linkLists:
-  - linkListType: video
-    links:
-    - text: Take
-      url: https://myignite.microsoft.com/sessions/973175b0-2a2d-4b41-99f8-051e42ac575a
-  - linkListType: reference
-    links:
-    - text: 常见问题
-      url: resources-frequently-asked-questions.md
+  author: elazark
+  ms.author: v-ekrieg
+  manager: raynew
+  ms.date: 06/16/2021
+highlightedContent:
+  items:
+    - title: 什么是适用于组织的 Azure Defender for IoT？
+      itemType: overview
+      url: organizations/overview.md
+    - title: 组织的新增功能有哪些？
+      itemType: whats-new
+      url: organizations/release-notes.md
+    - title: 适用于组织的无代理解决方案
+      itemType: overview
+      url: organizations/architecture.md
+    - title: 什么是适用于设备生成器的 Azure Defender for IoT？
+      itemType: overview
+      url: device-builders/overview.md
+    - title: 设备生成器的新增功能有哪些？
+      itemType: whats-new
+      url: device-builders/release-notes.md
+    - title: 适用于设备构建者的基于代理的解决方案
+      itemType: overview
+      url: device-builders/architecture-agent-based.md
+conceptualContent:
+  items:
+    - title: 适用于组织的 Azure Defender for IoT
+      links:
+        - url: organizations/quickstart-system-prerequisites.md
+          itemType: quickstart
+          text: 系统先决条件
+        - url: organizations/getting-started.md
+          itemType: quickstart
+          text: 开始使用适用于组织的 Defender for IoT
+        - url: organizations/concept-key-concepts.md
+          itemType: quickstart
+          text: 关键概念
+        - url: organizations/how-to-set-up-your-network.md
+          itemType: how-to-guide
+          text: 关于 Azure Defender for IoT 网络设置
+      footerLink:
+        url: organizations/index.yml
+        text: 查看详细信息
+    - title: 适用于设备生成器的 Azure Defender for IoT
+      links:
+        - url: device-builders/quickstart-onboard-iot-hub.md
+          itemType: quickstart
+          text: 将 Defender for IoT 加入到基于代理的解决方案
+        - url: device-builders/quickstart-configure-your-solution.md
+          itemType: quickstart
+          text: 配置你的 Azure Defender for IoT 解决方案
+        - url: device-builders/concept-recommendations.md
+          itemType: concept
+          text: IoT 中心的安全建议
+        - url: device-builders/how-to-configure-agent-based-solution.md
+          itemType: how-to-guide
+          text: 配置 Azure Defender for IoT
+      footerLink:
+        url: device-builders/index.yml
+        text: 查看详细信息

@@ -7,7 +7,7 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 尝试实时演示
+    - name: 尝试使用聊天室实时演示
       href: quickstart-live-demo.md
     - name: 从简单的聊天室无服务器应用程序开始
       href: quickstart-serverless.md

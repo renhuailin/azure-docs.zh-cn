@@ -217,7 +217,7 @@
         - name: 直通身份验证入门
           href: how-to-connect-pta-quick-start.md
         - name: 直通身份验证常见问题解答
-          href: how-to-connect-pta-faq.md
+          href: how-to-connect-pta-faq.yml
         - name: 通过设置“不配置”来为 Azure AD Connect 禁用 PTA
           href: how-to-connect-pta-disable-do-not-configure.md
     - name: 管理联合身份验证服务
@@ -244,12 +244,14 @@
           href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
         - name: AD FS 证书的紧急轮换
           href: how-to-connect-emergency-ad-fs-certificate-rotation.md
+        - name: 监视联合身份验证配置的更改
+          href: how-to-connect-monitor-federation-changes.md
     - name: 管理单一登录
       items:
         - name: 单一登录入门
           href: how-to-connect-sso-quick-start.md
         - name: 单一登录常见问题解答
-          href: how-to-connect-sso-faq.md
+          href: how-to-connect-sso-faq.yml
     - name: 管理 Azure AD Connect Health
       items:
         - name: Azure AD Connect Health 操作
@@ -357,9 +359,9 @@
     - name: 帐户和权限
       href: reference-connect-accounts-permissions.md
     - name: Azure AD Connect 常见问题
-      href: reference-connect-faq.md
+      href: reference-connect-faq.yml
     - name: Azure AD Connect Health 常见问题
-      href: reference-connect-health-faq.md
+      href: reference-connect-health-faq.yml
     - name: 针对 Azure 政府的混合标识注意事项
       href: reference-connect-government-cloud.md
     - name: Azure AD Connect 用户隐私
@@ -378,6 +380,8 @@
       href: how-to-connect-fed-compatibility.md
     - name: 强制执行 TLS 1.2
       href: reference-connect-tls-enforcement.md
+    - name: ADSync 参考
+      href: reference-connect-adsync.md
     - name: ADSyncConfig 参考
       href: reference-connect-adsyncconfig.md
     - name: ADSyncTools 参考

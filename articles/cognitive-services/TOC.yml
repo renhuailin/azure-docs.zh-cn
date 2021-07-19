@@ -70,6 +70,8 @@
           href: ./encryption/cognitive-services-encryption-keys-portal.md
         - name: 对认知服务的请求进行身份验证
           href: authentication.md
+        - name: 配置数据丢失防护
+          href: cognitive-services-data-loss-prevention.md
         - name: 安全基线
           href: /security/benchmark/azure/baselines/cognitive-services-security-baseline?toc=/azure/cognitive-services/TOC.json
         - name: Azure Policy 的安全控件

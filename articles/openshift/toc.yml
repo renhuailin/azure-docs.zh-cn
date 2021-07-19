@@ -48,6 +48,8 @@
           href: configure-azure-ad-ui.md
         - name: 更新 ARO 群集的请求机密
           href: howto-add-update-pull-secret.md
+        - name: 为 Azure Red Hat OpenShift (ARO) 群集轮换服务主体凭据
+          href: howto-service-principal-credential-rotation.md
     - name: 备份和还原
       items:
         - name: 使用 Velero 创建群集应用程序备份
@@ -120,7 +122,7 @@
 - name: 资源
   items:
     - name: 常见问题解答
-      href: openshift-faq.md
+      href: openshift-faq.yml
     - name: 疑难解答
       href: troubleshoot.md
     - name: ARO 4 的支持策略

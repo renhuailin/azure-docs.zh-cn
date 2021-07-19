@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   ms.date: 09/02/2021
   ms.custom: contperf-fy21q3
-  ms.openlocfilehash: b863c90897fb9fdd67ced188747f31411d37bdac
-  ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+  ms.openlocfilehash: 76c00322bd14c20b85ecd6d248fb5d35b226aace
+  ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2021
-  ms.locfileid: "105109142"
+  ms.lasthandoff: 07/09/2021
+  ms.locfileid: "113587980"
 landingContent:
 - title: 关于 Azure IoT Central
   linkLists:
@@ -58,8 +58,6 @@ landingContent:
       url: core/concepts-telemetry-properties-commands.md
   - linkListType: how-to-guide
     links:
-    - text: 连接 Azure Sphere 设备
-      url: core/howto-connect-sphere.md
     - text: 排查设备连接问题
       url: core/troubleshoot-connection.md
 - title: 生成集成的解决方案
@@ -75,13 +73,11 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 创建仪表板
-      url: core/howto-create-personal-dashboards.md
+      url: core/howto-manage-dashboards.md
     - text: 分析设备数据
       url: core/howto-create-analytics.md
     - text: 将数据导出到云目标
       url: core/howto-export-data.md
-    - text: 从 IoT 中心移动设备
-      url: core/how-to-move-device-to-iot.md
   - linkListType: reference
     links:
     - text: REST API
@@ -98,10 +94,10 @@ landingContent:
       url: core/tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
-    - text: 添加、导入和导出设备
-      url: core/howto-manage-devices.md
-    - text: 运行作业
-      url: core/howto-run-a-job.md
+    - text: 单独管理设备
+      url: core/howto-manage-devices-individually.md
+    - text: 批量管理设备
+      url: core/howto-manage-devices-in-bulk.md
 - title: 管理
   linkLists:
   - linkListType: overview
@@ -114,8 +110,6 @@ landingContent:
       url: core/howto-administer.md
     - text: 管理用户和角色
       url: core/howto-manage-users-roles.md
-    - text: 查看帐单
-      url: core/howto-view-bill.md
     - text: 自定义应用程序 UI
       url: core/howto-customize-ui.md
   - linkListType: sample
@@ -138,6 +132,8 @@ landingContent:
       url: /learn/modules/manage-iot-central-apps-with-rest-api/
     - text: Learn 模块：设置从 Azure IoT Central 到 Power BI 应用的连续数据导出
       url: /learn/modules/continuously-export-data-from-iot-central-power-bi/
+    - text: Learn 模块：将 IoT Edge 设备连接到 IoT Central 应用程序
+      url: /learn/modules/connect-iot-edge-device-to-iot-central/
 - title: 行业应用程序模板
   linkLists:
   - linkListType: tutorial

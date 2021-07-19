@@ -1,0 +1,30 @@
+### YamlMime:Landing
+title: Azure 上的 PyTorch Enterprise 文档
+summary: PyTorch Enterprise 为 PyTorch 开发人员提供长期支持、优先故障排除以及与 Azure 解决方案的集成。
+metadata:
+  author: alonbochman
+  description: 面向 PyTorch 开发人员的长期支持、优先故障排除以及与 Azure 解决方案的集成。
+  ms.author: alonbochman
+  ms.collection: na
+  ms.date: 07/06/2021
+  ms.service: pytorch-enterprise
+  ms.topic: landing-page
+  ms.openlocfilehash: 6a00ad68978dedd393c62ad9aee052dfce3d27f9
+  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/10/2021
+  ms.locfileid: "113598490"
+landingContent:
+- title: 什么是 PyTorch Enterprise？
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 PyTorch Enterprise？
+      url: pte-overview.md
+- title: 涵盖什么内容？
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 支持 PyTorch Enterprise 边界
+      url: support-boundaries.md

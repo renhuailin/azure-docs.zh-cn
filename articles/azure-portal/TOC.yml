@@ -25,6 +25,8 @@
   items:
     - name: 管理 Azure 门户设置和首选项
       href: set-preferences.md
+    - name: 管理 Azure 门户设置（较旧版本）
+      href: original-preferences.md
     - name: 对收藏夹执行添加、删除和排序操作
       href: azure-portal-add-remove-sort-favorites.md
     - name: 查看和筛选资源信息
@@ -72,9 +74,9 @@
           href: capture-browser-trace.md
 - name: 参考
   items:
-    - name: 键盘快捷方式
+    - name: 键盘快捷键
       href: azure-portal-keyboard-shortcuts.md
-    - name: 将 Azure 门户 URL 加入安全列表
+    - name: Azure 门户 URL
       href: azure-portal-safelist-urls.md
     - name: Azure 仪表板结构
       href: azure-portal-dashboards-structure.md

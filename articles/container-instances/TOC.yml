@@ -130,8 +130,8 @@
           href: container-instances-get-logs.md
         - name: 使用 Azure Monitor 日志进行日志记录
           href: container-instances-log-analytics.md
-        - name: 使用 Azure 容器扫描操作扫描映像
-          href: container-instances-github-action-scan.md
+        - name: 查看实例的状态
+          href: container-state.md
     - name: 疑难解答
       items:
         - name: 排查常见问题
@@ -178,6 +178,6 @@
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
     - name: 常见问题解答
-      href: container-instances-faq.md
+      href: container-instances-faq.yml
 - name: 支持和疑难解答
   href: container-instances-support-help.md

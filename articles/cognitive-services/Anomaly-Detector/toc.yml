@@ -3,33 +3,35 @@
 - name: 概述
   expanded: true
   items:
-    - name: 什么是异常检测器（多变量）？
-      href: overview-multivariate.md
     - name: 什么是异常检测器（单变量）？
       href: overview.md
+    - name: 什么是异常检测器（多变量）？
+      href: overview-multivariate.md
     - name: 定价
       href: 'https://aka.ms/adpricing'
+    - name: 新增功能
+      href: whats-new.md
 - name: 快速入门
   items:
-    - name: 多变量客户端库
-      href: ./quickstarts/client-libraries-multivariate.md
-    - name: 单变量客户端库
+    - name: 客户端库（单变量）
       href: ./quickstarts/client-libraries.md
+    - name: 客户端库（多变量）
+      href: ./quickstarts/client-libraries-multivariate.md
 - name: 示例
   items:
-    - name: 互动演示（单变量）
+    - name: 演示 Web 应用程序（单变量）
       href: 'https://aka.ms/adDemo'
-    - name: Jupyter Notebook（单变量）
+    - name: Jupyter 笔记本
       href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
-    - name: Jupyter Notebook（多变量）
-      href: 'https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb'
-    - name: Azure 示例
-      href: /samples/browse/?products=azure&terms=anomaly-detector
+    - name: Azure 示例（单变量）
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/quickstarts'
+    - name: Azure 示例（多变量）
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/quickstarts-multivariate'
 - name: 操作指南
   items:
-    - name: 识别数据中的异常
+    - name: 识别数据中的异常（单变量）
       href: how-to/identify-anomalies.md
-    - name: 部署异常检测器
+    - name: 部署异常检测器（单变量）
       items:
         - name: 部署到 IoT Edge
           href: how-to/deploy-anomaly-detection-on-iot-edge.md
@@ -54,19 +56,33 @@
           href: ../authentication.md?context=/azure/cognitive-services/anomaly-detector/context/context
 - name: 概念
   items:
-    - name: 异常检测器 API 最佳做法（多变量）
-      href: concepts/best-practices-multivariate.md
     - name: 异常检测器 API 最佳做法（单变量）
       href: concepts/anomaly-detection-best-practices.md
+    - name: 异常检测器 API 最佳做法（多变量）
+      href: concepts/best-practices-multivariate.md
     - name: 预测性维护体系结构（多变量）
       href: concepts/multivariate-architecture.md
 - name: 教程
   items:
-    - name: 使用 Power BI 将异常成批可视化
+    - name: 使用 Power BI 批量可视化异常（单变量）
       href: tutorials/batch-anomaly-detection-powerbi.md
+    - name: 在一小时内了解多变量异常情况检测（多变量）
+      href: tutorials/learn-multivariate-anomaly-detection.md
+- name: 负责使用 AI
+  items:
+    - name: 透明度说明
+      items:
+        - name: 异常检测器的用例
+          href: /legal/cognitive-services/anomaly-detector/transparency-note?context=/azure/cognitive-services/anomaly-detector/context/context
+        - name: 特征和限制
+          href: /legal/cognitive-services/anomaly-detector/characteristics-and-limitations?context=/azure/cognitive-services/anomaly-detector/context/context
+    - name: 集成和负责使用
+      href: /legal/cognitive-services/anomaly-detector/guidance-integration-responsible-use?context=/azure/cognitive-services/anomaly-detector/context/context
+    - name: 数据、隐私和安全
+      href: /legal/cognitive-services/anomaly-detector/data-privacy-security?context=/azure/cognitive-services/anomaly-detector/context/context
 - name: 参考
   items:
-    - name: 异常检测器 REST API
+    - name: 异常检测器 REST API（单变量）
       href: 'https://aka.ms/anomaly-detector-rest-api-ref'
     - name: 异常检测器 REST API 预览版（多元）
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector-v1-1-preview/operations/DetectAnomaly'
@@ -82,31 +98,35 @@
   items:
     - name: 企业就绪情况
       items:
-        - name: 区域支持
+        - name: 区域支持（单变量）
           href: 'https://aka.ms/adregion'
+        - name: 区域支持（多变量）
+          href: overview-multivariate.md#region-support
         - name: 符合性和认证
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
-    - name: Microsoft 学习模式
+    - name: Microsoft Learn 模块（单变量）
       href: /learn/modules/intro-to-anomaly-detector/
-    - name: 用户生成的内容
-      href: user-generated-content.md
     - name: 加入 Microsoft Teams 中的异常检测器顾问组
       href: 'https://aka.ms/adadvisorsjoin'
-    - name: 参考解决方案体系结构
+    - name: 参考解决方案体系结构（单变量）
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Azure 更新
       href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
-    - name: 多变量故障排除
+    - name: 错误代码（多变量）
       href: concepts/troubleshoot.md
     - name: 技术文章
       items:
-        - name: Azure 异常检测器 API 简介
+        - name: Azure 异常检测器 API 简介（单变量）
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
+        - name: 多变量异常情况检测简介
+          href: 'https://techcommunity.microsoft.com/t5/azure-ai/introducing-multivariate-anomaly-detection/ba-p/2260679'
         - name: SR-CNN 算法概述
           href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
         - name: 谱残差 (SR) 和卷积神经网络 (CNN) 异常检测
           href: 'https://arxiv.org/abs/1906.03821'
         - name: 通过图注意力网络进行多变量时序异常情况检测
           href: 'https://arxiv.org/abs/2009.02040'
+        - name: 更多技术文章…
+          href: whats-new.md#technical-articles

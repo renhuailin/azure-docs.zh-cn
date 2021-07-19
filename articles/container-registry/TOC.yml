@@ -139,8 +139,6 @@
               displayName: 'permissions, authorization'
             - name: 内容信任
               href: container-registry-content-trust.md
-            - name: 通过安全中心扫描映像
-              href: ../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json
         - name: 注册表和其他 Azure 服务
           expanded: false
           items:
@@ -157,6 +155,13 @@
               href: monitor-service.md
             - name: 使用 Azure Policy 审核符合性
               href: container-registry-azure-policy.md
+            - name: 扫描容器映像
+              expanded: false
+              items:
+                - name: 使用 Azure Defender 进行扫描
+                  href: scan-images-defender.md
+                - name: 使用 GitHub Actions 进行扫描
+                  href: github-action-scan.md
         - name: 疑难解答
           expanded: false
           items:

@@ -22,8 +22,8 @@
           href: tutorial-deploy-industrial-iot-platform.md
         - name: 配置 IIoT 组件
           href: tutorial-configure-industrial-iot-components.md
-        - name: 将 IIoT 数据拉取到 ADX
-          href: tutorial-industrial-iot-azure-data-explorer.md
+        - name: 使用工业 IoT 将数据拉取到 Azure 数据资源管理器
+          href: tutorial-data-explorer-import.md
         - name: 使用时序见解可视化和分析数据
           href: tutorial-visualize-data-time-series-insights.md
 - name: 参考

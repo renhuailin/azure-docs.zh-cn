@@ -1,0 +1,18 @@
+- name: 访问 Windows 虚拟桌面
+  href: index.yml
+- name: 操作说明
+  items:
+    - name: 使用 Windows 桌面客户端进行连接
+      href: connect-windows-7-10.md
+    - name: 使用 Web 客户端进行连接
+      href: connect-web.md
+    - name: 使用 Android 客户端进行连接
+      href: connect-android.md
+    - name: 使用 macOS 客户端进行连接
+      href: connect-macos.md
+    - name: 使用 iOS 客户端进行连接
+      href: connect-ios.md
+    - name: 使用 Microsoft Store 客户端进行连接
+      href: connect-microsoft-store.md
+    - name: 使用精简客户端进行连接
+      href: linux-overview.md

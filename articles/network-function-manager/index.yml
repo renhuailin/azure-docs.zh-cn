@@ -1,0 +1,36 @@
+### YamlMime:Landing
+title: 网络功能管理器文档（预览版）
+summary: Azure 网络功能管理器提供 Azure 市场体验，以便将网络功能部署到 Azure Stack Edge 设备。
+metadata:
+  title: 网络功能管理器文档预览版
+  description: 了解网络功能管理器。
+  ms.service: vnf-manager
+  ms.topic: landing-page
+  author: cherylmc
+  ms.author: cherylmc
+  ms.date: 06/09/2021
+  ms.openlocfilehash: c2d71775890c3cafca81f5f4b8bf93c35587905a
+  ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/16/2021
+  ms.locfileid: "112240497"
+landingContent:
+- title: 关于网络功能管理器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是网络功能管理器？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 网络功能管理器常见问题解答
+      url: faq.md
+- title: 入门
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 创建设备资源
+      url: create-device.md
+    - text: 部署网络功能
+      url: deploy-functions.md

@@ -26,6 +26,14 @@ groups:
     title: Flask
   - id: python-framework-django
     title: Django
+- id: postgres-server-options
+  title: PostgreSQL 服务器
+  prompt: 选择 PostgreSQL SKU
+  pivots:
+  - id: postgres-single-server
+    title: 单台服务器
+  - id: postgres-flexible-server
+    title: 灵活服务器（预览版）
 - id: programming-languages-set-one
   title: 编程语言
   prompt: 选择编程语言
@@ -872,6 +880,14 @@ groups:
     title: JavaScript
   - id: programming-language-csharp
     title: C#
+- id: acs-csharp-java
+  title: Java 和 C# 透视
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-csharp
+    title: C#
 - id: acs-plat-azp-azcli-net-ps
   title: JS 和 C# 透视
   prompt: 选择编程语言
@@ -1245,9 +1261,9 @@ groups:
   - id: identity-mi-methods-sub-powershell
     title: PowerShell
 metadata:
-  ms.openlocfilehash: 0a7eb15f89dccdc97443a2c14107aa7bdb6fdba4
-  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+  ms.openlocfilehash: d6ef125a7b5cd8a3122e9a965eda0f71f99c0d69
+  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111902224"
+  ms.lasthandoff: 07/10/2021
+  ms.locfileid: "113594654"

@@ -46,9 +46,9 @@
     - name: NAT 网关
       items:
         - name: 将 NAT 网关与公共负载均衡器集成
-          href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+          href: ../virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
         - name: 将 NAT 网关与内部负载均衡器集成
-          href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+          href: ../virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
     - name: 基于 IP 的后端
       items:
         - name: 创建具有基于 IP 的后端的公共负载均衡器 - 门户
@@ -75,14 +75,16 @@
       href: skus.md
     - name: 运行状况监视
       items:
+        - name: 监视负载均衡器
+          href: monitor-load-balancer.md
+        - name: 监视数据参考
+          href: monitor-load-balancer-reference.md
         - name: 运行状况探测
           href: load-balancer-custom-probe-overview.md
         - name: 针对负载均衡器的 Azure Monitor 见解
           href: load-balancer-insights.md
         - name: 标准负载均衡器指标和诊断
           href: load-balancer-standard-diagnostics.md
-        - name: 负载均衡器的 Azure Monitor 日志
-          href: load-balancer-monitor-log.md
         - name: 使用 REST 获取负载均衡器指标
           href: load-balancer-query-metrics-rest-api.md
     - name: 高可用性端口
@@ -137,7 +139,7 @@
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           href: ../virtual-network/ipv6-configure-standard-load-balancer-template-json.md
           displayName: ARM
     - name: 配置 TCP 重置和空闲超时
@@ -220,4 +222,4 @@
     - name: 产品更新
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'
     - name: 常见问题解答
-      href: load-balancer-faqs.md
+      href: load-balancer-faqs.yml

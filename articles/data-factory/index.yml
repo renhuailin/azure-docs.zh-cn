@@ -10,13 +10,14 @@ metadata:
   ms.collection: collection
   author: jonburchel
   ms.author: jburchel
-  ms.date: 10/02/2019
-  ms.openlocfilehash: 754cdd8b8f2029814f69b12166d93adf03576911
-  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.date: 06/14/2021
+  ms.custom: contperf-fy21q4
+  ms.openlocfilehash: 2cf3843234051d51b681ca8ccb4f0ce88613bd9f
+  ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111957179"
+  ms.lasthandoff: 06/16/2021
+  ms.locfileid: "112239619"
 landingContent:
 - title: 关于 Azure 数据工厂
   linkLists:
@@ -40,6 +41,10 @@ landingContent:
       url: https://feedback.azure.com/forums/270578-azure-data-factory
 - title: 入门
   linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 数据工厂中的管道和活动
+      url: ./concepts-pipelines-activities.md
   - linkListType: quickstart
     links:
     - text: Azure 数据工厂 UI
@@ -56,22 +61,26 @@ landingContent:
       url: ./quickstart-create-data-factory-rest-api.md
     - text: 资源管理器模板
       url: ./quickstart-create-data-factory-resource-manager-template.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure 数据工厂中的表达式和函数
+      url: ./control-flow-expression-language-functions.md
   - linkListType: learn
     links:
     - text: Azure 数据工厂简介
       url: /learn/modules/intro-to-azure-data-factory/
 - title: 数据移动
   linkLists:
+  - linkListType: overview
+    links:
+    - text: Data lake 和数据仓库迁移
+      url: ./data-migration-guidance-overview.md
   - linkListType: concept
     links:
     - text: “复制活动”概述
       url: ./copy-activity-overview.md
     - text: 复制性能优化
       url: ./copy-activity-performance.md
-  - linkListType: overview
-    links:
-    - text: Data lake 和数据仓库迁移
-      url: ./data-migration-guidance-overview.md
   - linkListType: tutorial
     links:
     - text: 复制云中的数据
@@ -90,10 +99,6 @@ landingContent:
       url: ./load-sap-bw-data.md
 - title: 数据转换
   linkLists:
-  - linkListType: concept
-    links:
-    - text: 映射数据流是什么？
-      url: ./concepts-data-flow-overview.md
   - linkListType: tutorial
     links:
     - text: 创建数据流
@@ -108,12 +113,22 @@ landingContent:
       url: ./concepts-data-flow-monitoring.md
     - text: 数据流性能
       url: ./concepts-data-flow-performance.md
+  - linkListType: concept
+    links:
+    - text: 映射数据流是什么？
+      url: ./concepts-data-flow-overview.md
+    - text: 映射数据流中的数据转换表达式
+      url: ./data-flow-expression-functions.md
 - title: 直接迁移 SSIS 包
   linkLists:
   - linkListType: overview
     links:
     - text: 将 SSIS 包迁移到 Azure SQL 托管实例
       url: ./scenario-ssis-migration-ssisdb-mi.md
+  - linkListType: concept
+    links:
+    - text: Azure 数据工厂中的集成运行时
+      url: ./concepts-integration-runtime.md
   - linkListType: tutorial
     links:
     - text: 在 Azure 中运行 SSIS 包
@@ -126,51 +141,19 @@ landingContent:
       url: ./join-azure-ssis-integration-runtime-virtual-network.md
     - text: 使用“执行 SSIS 包”活动运行 SSIS 包
       url: ./how-to-invoke-ssis-package-ssis-activity.md
-    - text: 计划 SSIS integration runtime
-      url: ./how-to-schedule-azure-ssis-integration-runtime.md
-    - text: 自定义 SSIS IR 的安装程序
-      url: ./how-to-configure-azure-ssis-ir-custom-setup.md
-    - text: 安装 SSIS IR 的已许可组件
-      url: ./how-to-develop-azure-ssis-ir-licensed-components.md
-- title: 安全性
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 数据移动安全注意事项
-      url: ./data-movement-security-considerations.md
-    - text: 数据工厂的托管标识
-      url: ./data-factory-service-identity.md
-    - text: 在 Azure Key Vault 中存储凭据
-      url: ./store-credentials-in-key-vault.md
+    - text: 创建和配置自承载集成运行时
+      url: ./create-self-hosted-integration-runtime.md
 - title: 创作、监视和管理
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 以可视化方式监视 Azure 数据工厂
       url: ./author-visually.md
+    - text: 排查 Azure 数据工厂连接器问题
+      url: ./connector-troubleshoot-guide.md
     - text: 源代码管理
       url: ./source-control.md
     - text: 持续集成和交付
       url: ./continuous-integration-deployment.md
-    - text: 迭代开发和调试
-      url: ./iterative-development-debugging.md
-    - text: 直观地监视
-      url: ./monitor-visually.md
     - text: 使用 Azure Monitor 进行监视
       url: ./monitor-using-azure-monitor.md
-    - text: 使用 SDK 进行监视
-      url: ./monitor-programmatically.md
-- title: Languages
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Azure PowerShell
-      url: /powershell/module/az.datafactory/
-    - text: .NET
-      url: /dotnet/api/microsoft.azure.management.datafactory/
-    - text: Python
-      url: /python/api/overview/azure/datafactory
-    - text: REST
-      url: /rest/api/datafactory/
-    - text: 资源管理器模板
-      url: /azure/templates/microsoft.datafactory/allversions

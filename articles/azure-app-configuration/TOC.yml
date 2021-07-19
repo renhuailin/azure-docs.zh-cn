@@ -152,6 +152,8 @@
       href: howto-backup-config-store.md
     - name: 使用托管标识来访问应用程序配置
       href: howto-integrate-azure-managed-service-identity.md
+    - name: 更新到新的 Spring Boot 库
+      href: howto-convert-to-the-new-spring-boot.md
 - name: 参考
   items:
     - name: 客户端库

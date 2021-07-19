@@ -113,7 +113,7 @@
           href: how-to-query-graph.md
     - name: 开发客户端应用
       items:
-        - name: 通过 Postman 发出请求
+        - name: 通过 Postman 发出 API 请求
           href: how-to-use-postman.md
         - name: 与 Azure SignalR 服务集成
           href: how-to-integrate-azure-signalr.md
@@ -135,12 +135,8 @@
               href: how-to-manage-routes-portal.md
             - name: API 和 CLI
               href: how-to-manage-routes-apis-cli.md
-        - name: 为路由事件启用托管标识
-          items:
-            - name: 门户
-              href: how-to-enable-managed-identities-portal.md
-            - name: CLI
-              href: how-to-enable-managed-identities-cli.md
+        - name: 使用托管标识路由事件
+          href: how-to-route-with-managed-identity.md
         - name: 与 Azure Maps 集成
           href: how-to-integrate-maps.md
         - name: 与 Azure 时序见解集成
