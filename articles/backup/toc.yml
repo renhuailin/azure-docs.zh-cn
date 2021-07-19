@@ -238,6 +238,12 @@
               href: backup-managed-disks-ps.md
             - name: 还原
               href: restore-managed-disks-ps.md
+        - name: 使用 CLI
+          items:
+            - name: 备份
+              href: backup-managed-disks-cli.md
+            - name: 还原
+              href: restore-managed-disks-cli.md
     - name: Azure Blob 备份
       items:
         - name: 概述
@@ -254,6 +260,20 @@
               href: backup-blobs-storage-account-ps.md
             - name: 还原
               href: restore-blobs-storage-account-ps.md
+        - name: 使用 CLI
+          items:
+            - name: 备份
+              href: backup-blobs-storage-account-cli.md
+            - name: 还原
+              href: restore-blobs-storage-account-cli.md
+        - name: 使用 REST API
+          items:
+            - name: Blob 策略
+              href: backup-azure-dataprotection-use-rest-api-create-update-blob-policy.md
+            - name: 备份
+              href: backup-azure-dataprotection-use-rest-api-backup-blobs.md
+            - name: 还原
+              href: backup-azure-dataprotection-use-rest-api-restore-blobs.md
     - name: Azure 文件共享备份
       items:
         - name: 概述
@@ -334,6 +354,8 @@
               href: backup-azure-sql-mabs.md
             - name: 保护系统状态和裸机恢复
               href: backup-mabs-system-state-and-bmr.md
+            - name: 使用备份前和备份后脚本
+              href: pre-backup-post-backup-scripts.md
         - name: 从 Azure 备份服务器恢复数据
           href: backup-azure-alternate-dpm-server.md
         - name: 使用 Azure 备份服务器还原 VMware VM
@@ -440,6 +462,8 @@
               href: backup-azure-arm-userestapi-restoreazurevms.md
             - name: 管理 Azure 备份作业
               href: backup-azure-arm-userestapi-managejobs.md
+        - name: 使用 Azure 数据保护 REST API
+          href: backup-azure-dataprotection-use-rest-api-create-update-backup-vault.md
         - name: 使用 ARG 查询备份信息
           href: query-backups-using-azure-resource-graph.md
         - name: 资源管理器模板

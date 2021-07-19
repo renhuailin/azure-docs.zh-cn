@@ -45,6 +45,8 @@
       href: concept-activity-logs-azure-monitor.md
     - name: 计划报告和监视部署
       href: plan-monitoring-and-reporting.md
+    - name: 登录诊断场景
+      href: concept-sign-in-diagnostics-scenarios.md
 - name: 操作指南
   expanded: true
   items:

@@ -151,7 +151,7 @@
               href: concepts-connectivity-architecture.md
               displayName: 'security, architecture'
             - name: 使用 Azure Defender 进行威胁防护
-              href: ../security-center/defender-for-databases-introduction.md
+              href: ../security-center/defender-for-databases-usage.md?toc=/azure/postgresql/toc.json&bc=/azure/postgresql/breadcrumb/toc.json
               displayName: 'security, advanced threat protection'
             - name: Azure AD 身份验证
               href: concepts-aad-authentication.md
@@ -528,10 +528,12 @@
                   href: flexible-server/how-to-manage-firewall-portal.md
                 - name: Azure CLI
                   href: flexible-server/how-to-manage-firewall-cli.md
-            - name: TLS/SSL
+            - name: TLS/SSL/SCRAM
               items:
                 - name: 使用 TLS/SSL 连接
                   href: flexible-server/how-to-connect-tls-ssl.md
+                - name: 使用 SCRAM 进行连接
+                  href: flexible-server/how-to-connect-scram.md
         - name: 配置服务器参数
           items:
             - name: Azure 门户
@@ -695,6 +697,8 @@
           items:
             - name: Azure 门户
               href: howto-hyperscale-maintenance.md
+        - name: 重启服务器组
+          href: howto-hyperscale-restart.md
         - name: 监视
           items:
             - name: 针对指标创建警报

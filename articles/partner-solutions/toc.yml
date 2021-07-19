@@ -5,14 +5,35 @@
     - name: Confluent Cloud 上的 Apache Kafka
       items:
         - name: 概述
-          displayName: 'Apache, Kafka, Confluent'
-          href: ./apache-kafka-confluent-cloud/overview.md
-        - name: 创建
-          href: ./apache-kafka-confluent-cloud/create.md
-        - name: 管理
-          href: ./apache-kafka-confluent-cloud/manage.md
-        - name: 疑难解答
-          href: ./apache-kafka-confluent-cloud/troubleshoot.md
+          items:
+            - name: 什么是 Azure 上的 Confluent Cloud？
+              href: ./apache-kafka-confluent-cloud/overview.md
+        - name: 快速入门
+          items:
+            - name: Azure 门户
+              href: ./apache-kafka-confluent-cloud/create.md
+            - name: Azure CLI
+              href: ./apache-kafka-confluent-cloud/create-cli.md
+              displayName: 'Azure CLI, az confluent organization create, az confluent organization wait, az confluent organization list, az confluent organization show'
+        - name: 如何
+          items:
+            - name: 添加连接器
+              href: ./apache-kafka-confluent-cloud/add-connectors.md
+            - name: 管理
+              href: ./apache-kafka-confluent-cloud/manage.md
+              displayName: 'Azure CLI, az confluent organization delete'
+            - name: 疑难解答
+              items:
+                - name: 获取支持
+                  href: ./apache-kafka-confluent-cloud/get-support.md
+                - name: 解决常见错误
+                  href: ./apache-kafka-confluent-cloud/troubleshoot.md
+        - name: 参考
+          items:
+            - name: Azure CLI
+              href: /cli/azure/confluent
+            - name: Azure PowerShell
+              href: /powershell/module/az.confluent/#confluent
     - name: Datadog
       items:
         - name: 概述
@@ -38,6 +59,10 @@
                   href: ./datadog/get-support.md
                 - name: 解决常见错误
                   href: ./datadog/troubleshoot.md
+        - name: 参考
+          items:
+            - name: Azure CLI
+              href: /cli/azure/datadog
     - name: Elastic
       items:
         - name: 概述
@@ -54,7 +79,3 @@
               href: ./elastic/manage.md
             - name: 疑难解答
               href: ./elastic/troubleshoot.md
-- name: 参考
-  items:
-    - name: Azure CLI
-      href: /cli/azure/confluent

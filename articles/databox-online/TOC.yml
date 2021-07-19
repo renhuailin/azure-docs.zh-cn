@@ -218,6 +218,8 @@
                   href: azure-stack-edge-gpu-deploy-arc-data-controller.md
         - name: 配置 Azure 资源管理器（预览版）
           items:
+            - name: 什么是本地 Azure 资源管理器？
+              href: azure-stack-edge-gpu-local-resource-manager-overview.md
             - name: 通过 Azure PowerShell 连接
               href: azure-stack-edge-gpu-connect-resource-manager.md
             - name: 设置 Azure 资源管理器密码
@@ -280,20 +282,30 @@
                   items:
                     - name: 连接到 VM 控制台
                       href: azure-stack-edge-gpu-connect-virtual-machine-console.md
+                    - name: 收集 VM 来宾日志
+                      href: azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md
                     - name: VM 映像上传
                       href: azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md
                     - name: VM 部署
                       href: azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md
                     - name: GPU 扩展问题
                       href: azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md
-        - name: 管理证书
+        - name: 关于证书
           items:
-            - name: 要求
+            - name: 什么是证书？
+              href: azure-stack-edge-gpu-certificates-overview.md
+            - name: 查看要求
               href: azure-stack-edge-gpu-certificate-requirements.md
-            - name: 自带
+            - name: 创建证书
+              items:
+                - name: 通过 Azure PowerShell
+                  href: azure-stack-edge-gpu-create-certificates-powershell.md
+                - name: 通过 Azure Stack 就绪情况检查器工具
+                  href: azure-stack-edge-gpu-create-certificates-tool.md
+            - name: 准备要在设备上上传的证书
+              href: azure-stack-edge-gpu-prepare-certificates-device-upload.md
+            - name: 上传、导入、查看到期时间
               href: azure-stack-edge-gpu-manage-certificates.md
-            - name: 通过 Azure Stack 准备情况检查器工具进行创建
-              href: azure-stack-edge-gpu-create-certificates-tool.md
             - name: 排查证书错误
               href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: 管理 Edge 计算

@@ -174,8 +174,11 @@
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc, Azure Defender'
         - name: 用于开源关系数据库的 Azure Defender 概述
-          displayName: 'PG, PostgreSQL, MySQL, MariaDB'
+          displayName: 'PG, PostgreSQL, MySQL, MariaDB, Azure Defender, OS RDBs, OSRDB'
           href: defender-for-databases-introduction.md
+        - name: 为 OS RDB 启用 Defender 并响应警报
+          displayName: 'PG, PostgreSQL, MySQL, MariaDB, open-source relational databases, Azure Defender, OS RDBs, OSRDB'
+          href: defender-for-databases-usage.md
         - name: 扫描 SQL 资源是否存在漏洞
           href: defender-for-sql-on-machines-vulnerability-assessment.md
           displayName: 'hybrid, arc, Azure Defender, VA, registry, vulnerabilities'

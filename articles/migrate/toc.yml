@@ -79,7 +79,11 @@
         - name: 容器化 ASP.NET 应用并迁移到 AKS
           href: tutorial-app-containerization-aspnet-kubernetes.md
         - name: 容器化 Java Web 应用并迁移到 AKS
-          href: tutorial-containerize-java-kubernetes.md
+          href: tutorial-app-containerization-java-kubernetes.md
+        - name: 容器化 ASP.NET 应用并迁移到应用服务
+          href: tutorial-app-containerization-aspnet-app-service.md
+        - name: 容器化 Java Web 应用并迁移到应用服务
+          href: tutorial-app-containerization-java-app-service.md
 - name: 概念
   items:
     - name: 常规
@@ -128,6 +132,9 @@
           href: migrate-replication-appliance.md
         - name: VMware 无代理迁移体系结构
           href: concepts-vmware-agentless-migration.md
+          items:
+            - name: 准备 VMware 无代理迁移
+              href: prepare-for-agentless-migration.md
         - name: Hyper-V 迁移体系结构
           href: hyper-v-migration-architecture.md
         - name: 基于 VMware 代理的迁移体系结构
@@ -235,11 +242,15 @@
           href: troubleshoot-project.md
     - name: 发现
       items:
-        - name: 排查 Azure Migrate 设备/发现问题
-          href: troubleshoot-appliance-discovery.md
+        - name: 排查 Azure Migrate 设备问题
+          href: troubleshoot-appliance.md
+        - name: 排查发现问题
+          href: troubleshoot-discovery.md
+        - name: 排查依赖项可视化问题
+          href: troubleshoot-dependencies.md
     - name: 评估
       items:
-        - name: 排查评估/依赖项可视化问题
+        - name: 排查评估问题
           href: troubleshoot-assessment.md
     - name: Migrate
       items:
