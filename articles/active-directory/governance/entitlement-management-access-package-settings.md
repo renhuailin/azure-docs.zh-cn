@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32973d063c36a45eee79db0b4da4e7419cb70013
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25cbef009f73ac788da36d60f2313dcfe9b49ebe
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798540"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713551"
 ---
 # <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>共享链接以在 Azure AD 权利管理中请求访问包
 
@@ -31,7 +31,7 @@ ms.locfileid: "87798540"
 
 ## <a name="share-link-to-request-an-access-package"></a>共享链接以请求访问包
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色：** 全局管理员、标识治理管理员、用户管理员、目录所有者或访问包管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 

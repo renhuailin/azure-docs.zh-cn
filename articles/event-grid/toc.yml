@@ -100,7 +100,7 @@
           href: scripts/event-grid-powershell-resource-group.md
         - name: 订阅和筛选资源组事件
           href: scripts/event-grid-powershell-resource-group-filter.md
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: template-samples.md
     - name: 代码示例
       href: /samples/browse/?term=Event+Grid
@@ -128,6 +128,8 @@
               href: event-schema-container-registry.md
             - name: Azure 事件中心
               href: event-schema-event-hubs.md
+            - name: Azure FarmBeats
+              href: event-schema-farmbeats.md
             - name: Azure IoT 中心
               href: event-schema-iot-hub.md
             - name: Azure Key Vault
@@ -270,8 +272,6 @@
           href: move-custom-topics-across-regions.md
         - name: 跨区域移动域
           href: move-domains-across-regions.md
-        - name: 跨区域移动合作伙伴命名空间
-          href: move-partner-namespaces-across-regions.md
     - name: 安全
       items:
         - name: 通过专用链接安全地发布事件
@@ -286,6 +286,8 @@
               href: add-identity-roles.md
             - name: 创建使用托管标识的事件订阅
               href: managed-service-identity.md
+        - name: 使用自定义 Azure 策略强制实施安全控制措施
+          href: custom-azure-policies-for-security-control.md
         - name: 通过专用链接安全地传送事件
           href: consume-private-endpoints.md
         - name: 配置 IP 防火墙

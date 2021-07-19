@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fd119238476b842a4dba1efeec86544ca263920
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 075e1a445ad1df82be245322871277038b14d641
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90980091"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713821"
 ---
 # <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的生命周期设置
 
@@ -36,7 +36,7 @@ ms.locfileid: "90980091"
 
 若要更改访问包的生命周期设置，需要打开相应的策略。 按照以下的步骤打开访问包的生命周期设置。
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色：** 全局管理员、标识治理管理员、用户管理员、目录所有者或访问包管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 

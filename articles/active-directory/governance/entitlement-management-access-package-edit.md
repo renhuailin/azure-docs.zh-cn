@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22aa97c6e627c2072636ca2e079877ff0f608b68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3e56e5e33701acd1fe8950d65a2fc02b3a25fdc
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798794"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713839"
 ---
 # <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中隐藏或删除访问包
 
@@ -33,7 +33,7 @@ ms.locfileid: "87798794"
 
 按照以下步骤更改访问包的 **隐藏** 设置。
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色：** 全局管理员、标识治理管理员、用户管理员、目录所有者或访问包管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 

@@ -210,6 +210,8 @@
               href: ./hdinsight-log-management.md
             - name: 添加存储帐户
               href: ./hdinsight-hadoop-add-storage.md
+            - name: 更新存储帐户访问密钥
+              href: ./hdinsight-rotate-storage-keys.md
             - name: 上传 Apache Hadoop 作业的数据
               href: ./hdinsight-upload-data.md
             - name: 将多个 HDInsight 群集与 Data Lake Storage 配合使用
@@ -313,7 +315,7 @@
             - name: Azure HDInsight 发行说明存档
               href: ./hdinsight-release-notes-archive.md
         - name: 常见问题 (FAQ)
-          href: ./hdinsight-faq.md
+          href: ./hdinsight-faq.yml
         - name: 迁移到群集配置的基于角色的细化访问权限
           href: ./hdinsight-migrate-granular-access-cluster-configurations.md
         - name: 有关在 Linux 上使用 HDInsight 的信息
@@ -365,7 +367,7 @@
           href: ./spark/spark-best-practices.md
         - name: 配置 Apache Spark 设置
           href: ./spark/apache-spark-settings.md
-        - name: 优化
+        - name: Optimization
           items:
             - name: 优化 Apache Spark 作业
               href: ./spark/apache-spark-perf.md
@@ -660,7 +662,7 @@
         - name: 性能调优
           href: ./kafka/apache-kafka-performance-tuning.md
         - name: Kafka 常见问题解答
-          href: ./kafka/kafka-faq.md
+          href: ./kafka/kafka-faq.yml
     - name: 操作指南
       items:
         - name: 开发
@@ -891,7 +893,7 @@
       items:
         - name: Hive LLAP 工作负载管理命令
           href: ./interactive-query/workload-management-commands.md
-- name: ML Services
+- name: ML Services（已停用）
   items:
     - name: 概述
       items:

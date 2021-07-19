@@ -47,6 +47,8 @@
       items:
         - name: 将模型导出到移动设备
           href: export-your-model.md
+        - name: 以编程方式导出模型
+          href: export-programmatically.md
         - name: 将 ONNX 模型与 Windows ML 配合使用
           href: custom-vision-onnx-windows-ml.md
         - name: 运行以 Python 编写的 TensorFlow 模型

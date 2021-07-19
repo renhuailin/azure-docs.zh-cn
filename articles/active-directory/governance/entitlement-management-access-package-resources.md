@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65f69cf492ec3e28d7f4aa86971dc6c91b34bdf5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a275b1c43f8a7c5526209f943e48a1d943eca149
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644165"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713677"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的资源角色
 
@@ -35,7 +35,7 @@ ms.locfileid: "101644165"
 
 如果需要向访问包添加资源，你应检查目录中是否有所需的资源。 如果你是访问包管理员，则不能将资源添加到目录，即使你拥有这些资源也是如此。 你只能使用目录中提供的资源。
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色：** 全局管理员、标识治理管理员、用户管理员、目录所有者或访问包管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 

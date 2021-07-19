@@ -1,0 +1,46 @@
+- name: Azure 专用多接入边缘计算文档
+  href: index.yml
+  items:
+    - name: 概述
+      expanded: true
+      items:
+        - name: 什么是 Azure 专用 MEC？
+          href: overview.md
+        - name: Azure 专用 MEC 合作伙伴解决方案
+          href: partner-programs.md
+    - name: 使用 Metaswitch 5G Fusion Core 的边缘连接
+      items:
+        - name: 概述
+          items:
+            - name: 什么是 Fusion Core？
+              href: metaswitch-fusion-core-overview.md
+        - name: 操作指南
+          items:
+            - name: 在 Azure Stack Edge 上部署 Fusion Core
+              href: deploy-metaswitch-fusion-core-solution.md
+    - name: 使用 Affirmed 专用网络服务的专用网络
+      items:
+        - name: 概述
+          items:
+            - name: 什么是 Azure 上的 Affirmed 专用网络服务？
+              href: affirmed-private-network-service-overview.md
+        - name: 操作指南
+          items:
+            - name: 在 Azure 上部署 Affirmed 专用网络服务
+              href: deploy-affirmed-private-network-service-solution.md
+    - name: 相关内容
+      items:
+        - name: Azure 网络功能管理器
+          href: ../network-function-manager/index.yml
+    - name: 资源
+      items:
+        - name: Azure 专用 MEC 产品页
+          href: 'https://go.microsoft.com/fwlink/?linkid=2165610'
+        - name: 网络功能管理器产品页
+          href: 'https://go.microsoft.com/fwlink/?linkid=2166098'
+        - name: Azure 市场
+          href: 'https://azuremarketplace.microsoft.com/marketplace/'
+        - name: Azure 路线图
+          href: 'https://azure.microsoft.com/roadmap/?category=networking'
+        - name: 博客
+          href: 'https://azure.microsoft.com/blog/topics/networking'

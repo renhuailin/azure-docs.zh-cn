@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Azure 专用多接入边缘计算文档
+summary: Azure 专用多接入边缘计算 (MEC) 解决方案使运营商和系统集成商能够在企业边缘提供高性能、低延迟连接和 IoT 应用程序。
+metadata:
+  title: Azure 专用多接入边缘计算文档
+  description: Azure 专用多接入边缘计算 (MEC) 解决方案使运营商和系统集成商能够在企业边缘提供高性能、低延迟连接和 IoT 应用程序。
+  ms.service: private-multi-access-edge-compute-mec
+  ms.topic: landing-page
+  author: kumud
+  ms.author: KumudD
+  ms.date: 06/15/2021
+  ms.openlocfilehash: 57bd78341606ee1b15afbd3a37363fa6d84f95a0
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112458355"
+landingContent:
+- title: 关于 Azure 专用 MEC
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 专用 MEC？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 合作伙伴解决方案
+      url: partner-programs.md
+- title: 使用 Metaswitch 解决方案的边缘连接
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是 Fusion Core？
+      url: metaswitch-fusion-core-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Azure Stack Edge 设备上部署 Fusion Core
+      url: deploy-metaswitch-fusion-core-solution.md
+- title: 关于 Azure 上的 Affirmed 专用网络服务
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是 Azure 上的 Affirmed 专用网络服务？
+      url: affirmed-private-network-service-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Azure 上部署 Affirmed 专用网络服务
+      url: deploy-affirmed-private-network-service-solution.md
+- title: 关于 Azure 网络功能管理器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 网络功能管理器？
+      url: ../network-function-manager/overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 部署网络功能
+      url: ../network-function-manager/deploy-functions.md

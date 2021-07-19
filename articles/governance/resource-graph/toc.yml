@@ -54,12 +54,18 @@
       href: ./tutorials/create-share-query.md
 - name: 示例
   items:
-    - name: 初学者查询
-      displayName: 'query language, data explorer, count, list, show'
-      href: ./samples/starter.md
-    - name: 高级查询
-      displayName: 'query language, data explorer, list, regex'
-      href: ./samples/advanced.md
+    - name: 语言示例
+      items:
+        - name: 初学者查询
+          displayName: 'query language, data explorer, count, list, show'
+          href: ./samples/starter.md
+        - name: 高级查询
+          displayName: 'query language, data explorer, list, regex'
+          href: ./samples/advanced.md
+    - name: 按类别编制索引
+      href: ./samples/samples-by-category.md
+    - name: 按表编制索引
+      href: ./samples/samples-by-table.md
 - name: 概念
   items:
     - name: 理解查询语言
@@ -116,7 +122,7 @@
           href: /rest/api/azure-resourcegraph/
         - name: OpenAPI
           href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01'
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: /azure/templates/microsoft.resourcegraph/allversions
     - name: Resource Graph 表和资源类型
       href: ./reference/supported-tables-resources.md
