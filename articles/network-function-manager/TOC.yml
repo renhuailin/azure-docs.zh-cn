@@ -1,0 +1,32 @@
+- name: 网络功能管理器文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 关于网络功能管理器
+      href: overview.md
+- name: 教程
+  expanded: true
+  items:
+    - name: 创建设备资源
+      href: create-device.md
+    - name: 部署网络功能
+      href: deploy-functions.md
+- name: 概念
+  expanded: true
+  items:
+    - name: 合作伙伴
+      href: partners.md
+    - name: 常见问题解答
+      href: faq.md
+- name: 资源
+  expanded: true
+  items:
+    - name: 网络功能管理器产品页
+      href: 'https://go.microsoft.com/fwlink/?linkid=2166098'
+    - name: Azure 专用 MEC 文档
+      href: 'https://go.microsoft.com/fwlink/?linkid=2165316'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/topics/networking'

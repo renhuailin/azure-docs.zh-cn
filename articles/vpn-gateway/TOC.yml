@@ -57,6 +57,8 @@
       href: point-to-site-about.md
     - name: 关于点到站点 VPN 路由
       href: vpn-gateway-about-point-to-site-routing.md
+    - name: 关于 NAT 和 VPN 网关
+      href: nat-overview.md
     - name: 关于可用性区域的区域冗余网关
       href: about-zone-redundant-vnet-gateways.md
     - name: 安全性
@@ -225,6 +227,8 @@
               href: vpn-gateway-about-forced-tunneling.md
         - name: 配置 VNet 对等互连的网关传输
           href: vpn-gateway-peering-gateway-transit.md
+    - name: 配置 VPN 网关的 NAT
+      href: nat-howto.md
     - name: 修改本地网关
       items:
         - name: Azure 门户
@@ -241,10 +245,10 @@
           href: vpn-gateway-download-vpndevicescript.md
         - name: 示例：Cisco ASA 设备（IKEv2/无 BGP）
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
-    - name: 监视和警报
+    - name: 运行状况监视
       items:
-        - name: 查看 VPN 网关指标
-          href: vpn-gateway-howto-view-virtual-network-gateway-metrics.md
+        - name: 监视 VPN 网关
+          href: monitor-vpn-gateway.md
         - name: 基于指标设置警报
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: 基于资源日志设置警报

@@ -10,12 +10,12 @@ metadata:
   author: ekpgh
   ms.author: v-erkel
   ms.date: 11/07/2019
-  ms.openlocfilehash: a31fb7a2878766e960e602e5167df4f92a978f25
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: d2101ad354a67e79356d6f2fb5a41eecea2f5936
+  ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87061296"
+  ms.lasthandoff: 07/09/2021
+  ms.locfileid: "113587582"
 landingContent:
 - title: 关于 Azure HPC 缓存
   linkLists:
@@ -35,8 +35,10 @@ landingContent:
       url: hpc-cache-add-storage.md
     - text: 装载客户端
       url: hpc-cache-mount.md
-    - text: 管理和监视缓存
+    - text: 管理缓存
       url: hpc-cache-manage.md
+    - text: 查看缓存指标
+      url: metrics.md
   - linkListType: concept
     links:
     - text: 规划聚合命名空间
@@ -51,6 +53,8 @@ landingContent:
       url: hpc-cache-support-ticket.md
     - text: 编辑存储目标
       url: hpc-cache-edit-storage.md
+    - text: 管理存储目标
+      url: manage-storage-targets.md
     - text: 解决防火墙设置问题以创建 Blob 存储目标
       url: hpc-cache-blob-firewall-fix.md
     - text: 排查 NFS 存储目标创建问题

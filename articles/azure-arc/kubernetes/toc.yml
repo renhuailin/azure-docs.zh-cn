@@ -34,6 +34,8 @@
       href: faq.md
     - name: 使用 GitOps 的 CI/CD 工作流
       href: conceptual-gitops-ci-cd.md
+    - name: 内部循环开发人员体验
+      href: conceptual-inner-loop-gitops.md
 - name: 操作指南
   items:
     - name: 使用服务主体连接群集
@@ -64,6 +66,8 @@
           href: custom-locations.md
         - name: 部署 IoT 工作负载
           href: deploy-azure-iot-edge-workloads.md
+        - name: 已启用 Arc 的机器学习
+          href: ../../machine-learning/how-to-attach-arc-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
     - name: 疑难解答
       href: Troubleshooting.md
 - name: 参考

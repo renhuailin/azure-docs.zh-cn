@@ -25,8 +25,10 @@
   items:
     - name: 规划 Azure 文件部署
       href: storage-files-planning.md
-    - name: 可用的文件共享协议
-      href: storage-files-compare-protocols.md
+    - name: SMB 文件共享
+      href: files-smb-protocol.md
+    - name: NFS 文件共享
+      href: files-nfs-protocol.md
     - name: 基于标识的身份验证和授权
       href: storage-files-active-directory-overview.md
     - name: 关于直接访问的网络注意事项
@@ -35,26 +37,6 @@
       href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Azure 文件共享快照
       href: storage-snapshots-files.md
-    - name: 开发
-      items:
-        - name: 共享密钥身份验证
-          href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
-        - name: 共享访问签名 (SAS)
-          href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 监视和故障排除
-      items:
-        - name: 从经典指标转换
-          href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 监视（经典）
-          items:
-            - name: 存储分析
-              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: 指标
-              href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: 日志
-              href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: 监视、诊断和故障排除
-              href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 性能和规模
       items:
         - name: SMB 多通道性能
@@ -83,10 +65,10 @@
       items:
         - name: 创建 SMB 文件共享
           href: storage-how-to-create-file-share.md
+        - name: 创建 NFS 文件共享
+          href: storage-files-how-to-create-nfs-shares.md
         - name: 结合使用 DFS-N 和 Azure 文件存储
           href: files-manage-namespaces.md
-        - name: 创建 NFS 共享
-          href: storage-files-how-to-create-nfs-shares.md
         - name: 具有高级文件共享的 SQL Server FCI
           href: ../../azure-sql/virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 购买存储预留
@@ -141,8 +123,6 @@
       items:
         - name: 启用软删除
           href: storage-files-enable-soft-delete.md
-        - name: 更改复制数据的方式
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 管理数据冗余
           items:
             - name: 更改复制数据的方式
@@ -217,8 +197,6 @@
       items:
         - name: 启用 SMB 多通道
           href: storage-files-enable-smb-multichannel.md
-        - name: 启用大型文件共享
-          href: storage-files-how-to-create-large-file-share.md
     - name: 开发
       items:
         - name: 配置连接字符串
@@ -251,6 +229,10 @@
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 需要安全传输
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 在 Windows SMB 客户端上禁用 SMB 1
+          href: /windows-server/storage/file-server/troubleshoot/detect-enable-and-disable-smbv1-v2-v3?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 在 Linux SMB 客户端上禁用 SMB
+          href: files-remove-smb1-linux.md
         - name: 管理传输层安全性 (TLS)
           items:
             - name: 为传入请求强制执行最低 TLS 版本
@@ -275,8 +257,6 @@
           href: storage-troubleshooting-files-performance.md
         - name: Linux 上的 Azure 文件存储 (NFS) 故障排除
           href: storage-troubleshooting-files-nfs.md
-        - name: 关于删除 Azure 文件共享的疑难解答
-          href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
         - name: 备份文件共享疑难解答
           href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: 参考
@@ -306,6 +286,8 @@
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
     - name: Azure 文件存储和 Azure NetApp 文件的比较
       href: storage-files-netapp-comparison.md
+    - name: 比较使用 NFS 对 Azure 文件存储、Blob 存储和 NetApp 文件的访问
+      href: ../common/nfs-comparison.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: NuGet 包 (.NET)
       items:
         - name: Microsoft.Azure.Storage.Common（版本 11.x）

@@ -18,40 +18,40 @@
       href: tutorial-deploy-vmware-hcx.md
 - name: 教程
   items:
-    - name: 1 - 网络规划清单
-      href: tutorial-network-checklist.md
-    - name: 2 - 创建私有云
-      href: tutorial-create-private-cloud.md
-    - name: 3 - 访问私有云
+    - name: 访问私有云
       href: tutorial-access-private-cloud.md
-    - name: 4 - 配置网络
+    - name: 配置网络
       href: tutorial-configure-networking.md
-    - name: 5 - 创建 NSX-T 网络段
+    - name: 创建私有云
+      href: tutorial-create-private-cloud.md
+    - name: 创建 NSX-T 网络段
       href: tutorial-nsx-t-network-segment.md
-    - name: 6 - 从本地对等连接到私有云
-      href: tutorial-expressroute-global-reach-private-cloud.md
-    - name: 7 - 部署和配置 VMware HCX
-      href: tutorial-deploy-vmware-hcx.md
-    - name: 8 - 在私有云中扩展或收缩群集
-      href: tutorial-scale-private-cloud.md
-    - name: 9 - 删除私有云
+    - name: 删除私有云
       href: tutorial-delete-private-cloud.md
+    - name: 部署和配置 VMware HCX
+      href: tutorial-deploy-vmware-hcx.md
+    - name: 在私有云中扩展或收缩群集
+      href: tutorial-scale-private-cloud.md
+    - name: 网络规划清单
+      href: tutorial-network-checklist.md
+    - name: 从本地对等连接到私有云
+      href: tutorial-expressroute-global-reach-private-cloud.md
 - name: 概念
   items:
-    - name: 私有云和群集
-      href: concepts-private-clouds-clusters.md
-    - name: 网络和互连
-      href: concepts-networking.md
-    - name: 存储
-      href: concepts-storage.md
     - name: 访问和标识
       href: concepts-identity.md
-    - name: 监视和保护
-      href: concepts-monitor-protection.md
     - name: API 管理
       href: concepts-api-management.md
     - name: 中心和分支
       href: concepts-hub-and-spoke.md
+    - name: 监视和保护
+      href: concepts-monitor-protection.md
+    - name: 网络和互连
+      href: concepts-networking.md
+    - name: 私有云和群集
+      href: concepts-private-clouds-clusters.md
+    - name: 存储
+      href: concepts-storage.md
 - name: 操作指南
   items:
     - name: 创建 Azure VMware 解决方案评估
@@ -60,33 +60,53 @@
       href: request-host-quota-azure-vmware-solution.md
     - name: 通过预留实例节约成本
       href: reserved-instance.md
+    - name: 配置网络
+      items:
+        - name: 配置 DHCP
+          href: configure-dhcp-azure-vmware-solution.md
+        - name: 在 L2 延伸 VMware HCX 网络上配置 DHCP
+          href: configure-l2-stretched-vmware-hcx-networks.md
+        - name: 使用 Azure 配置 NSX 组件
+          href: configure-nsx-network-components-azure-portal.md
+        - name: 配置 GitHub Enterprise 服务器
+          href: ./configure-github-enterprise-server.md
+        - name: 启用公共 Internet 访问
+          href: enable-public-internet-access.md
+        - name: 在 vWAN 中配置站点到站点 VPN
+          href: configure-site-to-site-vpn-gateway.md
+    - name: 配置 Windows Server 故障转移群集
+      href: configure-windows-server-failover-cluster.md
+    - name: 轮换 cloudadmin 凭据
+      href: rotate-cloudadmin-credentials.md
+    - name: 连接同一区域内的多个私有云
+      href: connect-multiple-private-clouds-same-region.md
     - name: 移动资源
       items:
         - name: 移动 Azure VMware 解决方案订阅
           href: move-ea-csp-subscriptions.md
         - name: 跨区域移动 Azure VMware 解决方案资源
           href: move-azure-vmware-solution-across-regions.md
-    - name: 配置 DHCP
-      href: configure-dhcp-azure-vmware-solution.md
-    - name: 在 L2 延伸 VMware HCX 网络上配置 DHCP
-      href: configure-l2-stretched-vmware-hcx-networks.md
-    - name: 使用 Azure 配置 NSX 组件
-      href: configure-nsx-network-components-azure-portal.md
-    - name: 配置 GitHub Enterprise 服务器
-      href: ./configure-github-enterprise-server.md
-    - name: 启用公共 Internet 访问
-      href: enable-public-internet-access.md
-    - name: 在 vWAN 中配置站点到站点 VPN
-      href: configure-site-to-site-vpn-gateway.md
-    - name: 配置 Windows Server 故障转移群集
-      href: configure-windows-server-failover-cluster.md
-    - name: 轮换 cloudadmin 凭据
-      href: rotate-cloudadmin-credentials.md
-    - name: 灾难恢复
+    - name: Azure 本机集成
       items:
-        - name: 使用 VMware HCX 部署灾难恢复
-          href: deploy-disaster-recovery-using-vmware-hcx.md
-        - name: 灾难恢复到 Azure Site Recovery
+        - name: 保护、监视和管理 VM
+          href: integrate-azure-native-services.md
+        - name: 集成 Azure 安全中心
+          href: azure-security-integration.md
+        - name: 集成 Azure NetApp 文件
+          href: netapp-files-with-azure-vmware-solution.md
+        - name: 通过 Azure 应用程序网关保护 Web 应用
+          href: protect-azure-vmware-solution-with-application-gateway.md
+        - name: 部署流量管理器以平衡工作负载
+          href: deploy-traffic-manager-balance-workloads.md
+        - name: 配置警报并使用指标
+          href: configure-alerts-for-azure-vmware-solution.md
+        - name: 使用 Azure 备份服务器进行备份
+          items:
+            - name: 设置备份服务器
+              href: set-up-backup-server-for-azure-vmware-solution.md
+            - name: 使用备份服务器备份私有云 VM
+              href: backup-azure-vmware-solution-virtual-machines.md
+        - name: 使用 Azure Site Recovery 进行灾难恢复
           items:
             - name: 准备 Azure
               href: ../site-recovery/avs-tutorial-prepare-azure.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
@@ -102,20 +122,6 @@
               href: ../site-recovery/avs-tutorial-reprotect.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
             - name: 从 Azure 进行故障回复
               href: ../site-recovery/avs-tutorial-failback.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
-    - name: Azure 本机集成
-      items:
-        - name: 保护、监视和管理 VM
-          href: integrate-azure-native-services.md
-        - name: 集成 Azure 安全中心
-          href: azure-security-integration.md
-        - name: 集成 Azure NetApp 文件
-          href: netapp-files-with-azure-vmware-solution.md
-        - name: 通过 Azure 应用程序网关保护 Web 应用
-          href: protect-azure-vmware-solution-with-application-gateway.md
-        - name: 部署流量管理器以平衡工作负载
-          href: deploy-traffic-manager-balance-workloads.md
-        - name: 配置警报并使用指标
-          href: configure-alerts-for-azure-vmware-solution.md
     - name: VMware 解决方案
       items:
         - name: 配置 vRealize Operations
@@ -124,6 +130,10 @@
           href: azure-vmware-solution-horizon.md
         - name: 从内容库部署 VM
           href: deploy-vm-content-library.md
+        - name: 使用 VMware HCX 部署灾难恢复
+          href: deploy-disaster-recovery-using-vmware-hcx.md
+        - name: 升级 VMware HCX 设备
+          href: 'https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html'
     - name: VMware 生态系统
       items:
         - name: VM 的备份解决方案
@@ -132,6 +142,10 @@
           href: ecosystem-migration-vms.md
 - name: 资源
   items:
+    - name: 学习路径
+      items:
+        - name: 在 Azure VMware 解决方案上运行 VMware 工作负载
+          href: /learn/paths/run-vmware-workloads-azure-vmware-solution/
     - name: 疑难解答
       items:
         - name: 就部署失败发起支持请求
@@ -141,27 +155,29 @@
     - name: 常见问题解答
       items:
         - name: 常规
-          href: faq.yml
+          href: ./faq.yml
         - name: 客户通信
-          href: /azure/azure-vmware/faq.yml#customer-communication
+          href: /azure/azure-vmware/faq#customer-communication
         - name: 配置和设置
-          href: /azure/azure-vmware/faq.yml#configuration-and-setup
+          href: /azure/azure-vmware/faq#configuration-and-setup
         - name: VMware 软件
-          href: /azure/azure-vmware/faq.yml#vmware-software
+          href: /azure/azure-vmware/faq#vmware-software
         - name: 第三方备份解决方案
-          href: /azure/azure-vmware/faq.yml#third-party-backup-and-recovery
+          href: /azure/azure-vmware/faq#third-party-backup-and-recovery
         - name: 计算
-          href: /azure/azure-vmware/faq.yml#compute
+          href: /azure/azure-vmware/faq#compute
         - name: 网络和互连
-          href: /azure/azure-vmware/faq.yml#networking-and-interconnectivity
+          href: /azure/azure-vmware/faq#networking-and-interconnectivity
         - name: 存储
-          href: /azure/azure-vmware/faq.yml#storage
+          href: /azure/azure-vmware/faq#storage
         - name: 主机、群集和私有云
-          href: '/azure/azure-vmware/faq.yml#hosts,-clusters,-and-private-clouds'
+          href: '/azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds'
         - name: 身份管理
-          href: /azure/azure-vmware/faq.yml#identity-management
+          href: /azure/azure-vmware/faq#identity-management
+        - name: CSP 和多租户
+          href: /azure/azure-vmware/faq#csp-and-multi-tenancy
         - name: 计费和支持
-          href: /azure/azure-vmware/faq.yml#billing-and-support
+          href: /azure/azure-vmware/faq#billing-and-support
     - name: 视频
       items:
         - name: 播放列表

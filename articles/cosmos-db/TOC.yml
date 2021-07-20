@@ -698,6 +698,10 @@
               href: how-to-define-unique-keys.md
             - name: 执行事务性批处理操作
               href: transactional-batch.md
+        - name: 最佳方案
+          items:
+            - name: .NET
+              href: best-practice-dotnet.md
         - name: 性能
           items:
             - name: 查询
@@ -769,6 +773,8 @@
                   href: troubleshoot-dot-net-sdk-request-header-too-large.md
                 - name: 排查请求超时故障
                   href: troubleshoot-dot-net-sdk-request-timeout.md
+                - name: 排查请求速度缓慢的问题
+                  href: troubleshoot-dot-net-sdk-slow-request.md
                 - name: 排查服务不可用故障
                   href: troubleshoot-service-unavailable.md
             - name: .Java
@@ -915,7 +921,7 @@
               href: sql-api-sdk-java-spring-v2.md
             - name: Spring 数据连接器 v3
               href: sql-api-sdk-java-spring-v3.md
-            - name: Spark 3 OLTP 连接器（预览版）
+            - name: Spark 3 OLTP 连接器
               href: sql-api-sdk-java-spark-v3.md
             - name: Spark 2 OLTP 连接器
               href: sql-api-sdk-java-spark.md
@@ -930,7 +936,7 @@
         - name: REST（数据平面）
           href: /rest/api/cosmos-db/
         - name: REST（管理平面）
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/sql-resources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: 资源管理器模板
@@ -1014,6 +1020,8 @@
           href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 排查常见问题
           href: cassandra-troubleshoot.md
+        - name: 使用诊断日志进行监视
+          href: queries-cassandra.md
         - name: Cassandra 和 Spark
           items:
             - name: 简介
@@ -1048,7 +1056,7 @@
     - name: 参考
       items:
         - name: REST 资源提供程序
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/cassandraresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/cassandra-resources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: 资源管理器模板
@@ -1125,6 +1133,8 @@
               href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: 数据库迁移服务（脱机）
               href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: Azure Databricks 和 Spark（脱机）
+              href: mongodb-migrate-databricks.md
             - name: 迁移后指南
               href: mongodb-post-migration.md
         - name: 升级到 API 版本 4.0 或 3.6
@@ -1153,6 +1163,8 @@
         - name: 使用容量规划器估算 RU/秒
           displayName: 'request units, RUs, RU, capacity'
           href: mongodb/estimate-ru-capacity-planner.md
+        - name: 优化写入性能
+          href: mongodb/optimize-write-performance.md
         - name: 创建容器 - MongoDB API
           href: how-to-create-container-mongodb.md
         - name: 预配吞吐量 - MongoDB API
@@ -1161,6 +1173,8 @@
         - name: 查找请求单位费用
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-mongodb.md
+        - name: 使用诊断日志进行监视
+          href: queries-mongo.md
         - name: 查询性能故障排除
           href: mongodb-troubleshoot-query.md
         - name: 排查常见问题
@@ -1182,7 +1196,7 @@
     - name: 参考
       items:
         - name: REST 资源提供程序
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/mongodbresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/mongo-db-resources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: 资源管理器模板
@@ -1250,6 +1264,8 @@
           href: how-to-access-system-properties-gremlin.md
         - name: 将图数据可视化
           href: graph-visualization.md
+        - name: 使用诊断日志进行监视
+          href: queries-gremlin.md
         - name: 存储和管理 Spring Data
           href: /azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 使用资源管理器模板进行管理
@@ -1266,7 +1282,7 @@
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: REST 资源提供程序
-          href: /rest/api/cosmos-db-resource-provider/2021-04-15/gremlinresources
+          href: /rest/api/cosmos-db-resource-provider/2021-04-15/gremlin-resources
         - name: 资源管理器模板
           href: /azure/templates/microsoft.documentdb/allversions
         - name: Azure CLI
@@ -1330,8 +1346,6 @@
         - name: 查找请求单位费用
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-table.md
-        - name: 表存储设计指南
-          href: table-storage-design-guide.md
         - name: 使用资源管理器模板进行管理
           href: templates-samples-table.md
           displayName: ARM
@@ -1480,6 +1494,8 @@
               href: cosmosdb-monitor-resource-logs.md
             - name: 使用基本查询排查问题
               href: cosmosdb-monitor-logs-basic-queries.md
+            - name: 使用高级查询排查问题
+              href: cosmos-db-advanced-queries.md
             - name: 审核控制平面日志
               href: audit-control-plane-logs.md
         - name: 配置警报

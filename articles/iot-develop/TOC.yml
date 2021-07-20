@@ -31,7 +31,7 @@
           href: quickstart-devkit-renesas-rx65n-2mb.md
         - name: Renesas RX65N 云工具包
           href: quickstart-devkit-renesas-rx65n-cloud-kit.md
-        - name: ST Microelectronics B-L475E/L4S5I-IOT01A
+        - name: STMicroelectronics B-L475E/L4S5I-IOT01A
           href: quickstart-devkit-stm-b-l475e.md
 - name: 教程
   items:
@@ -43,6 +43,12 @@
       href: concepts-overview-connection-options.md
     - name: 设备类型概述
       href: concepts-iot-device-types.md
+- name: 如何
+  items:
+    - name: 疑难解答
+      items:
+        - name: 排查嵌入式快速入门问题
+          href: troubleshoot-embedded-device-quickstarts.md
 - name: 参考
   items:
     - name: Azure CLI
@@ -85,7 +91,7 @@
       href: /rest/api/iothub/iothubresource
     - name: REST（证书）
       href: /rest/api/iothub/certificates
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: /azure/templates/microsoft.devices/iothub-allversions
 - name: 资源
   items:

@@ -7,24 +7,10 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 发送遥测
-      items:
-        - name: 入门
-          href: quickstart-send-telemetry-cli.md
-        - name: C
-          href: quickstart-send-telemetry-c.md
-        - name: Node.js
-          href: quickstart-send-telemetry-node.md
-        - name: .NET
-          href: quickstart-send-telemetry-dotnet.md
-        - name: Java
-          href: quickstart-send-telemetry-java.md
-        - name: Python
-          href: quickstart-send-telemetry-python.md
-        - name: Android
-          href: quickstart-send-telemetry-android.md
-        - name: iOS
-          href: quickstart-send-telemetry-ios.md
+    - name: 使用 CLI 的无代码快速入门
+      href: quickstart-send-telemetry-cli.md
+    - name: 使用 SDK 发送遥测数据
+      href: ../iot-develop/quickstart-send-telemetry-iot-hub.md?toc=/azure/iot-hub/toc.json&bc=/azure/iot-hub/breadcrumb/toc.json
     - name: 控制设备
       items:
         - name: Node.js
@@ -173,8 +159,6 @@
           items:
             - name: SDK 概述
               href: iot-hub-devguide-sdks.md
-            - name: SDK 平台支持
-              href: iot-hub-device-sdk-platform-support.md
             - name: 不使用 SDK 进行开发
               href: iot-hub-devguide-no-sdk.md
             - name: 管理连接和可靠的消息传送
@@ -373,18 +357,6 @@
               href: iot-hub-raspberry-pi-kit-node-get-started.md
             - name: 将 Raspberry Pi 与 C 配合使用
               href: iot-hub-raspberry-pi-kit-c-get-started.md
-            - name: 将 MXChip IoT DevKit 与 Arduino 配合使用
-              href: iot-hub-arduino-iot-devkit-az3166-get-started.md
-        - name: 使用 MXChip IoT DevKit
-          items:
-            - name: 使用 Azure 认知服务翻译语音消息
-              href: iot-hub-arduino-iot-devkit-az3166-translator.md
-            - name: 使用 Azure Functions 检索 Twitter 消息
-              href: iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md
-            - name: 使用 Eclipse Paho API 将消息发送到 MQTT 服务器
-              href: iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md
-            - name: 使用 Azure Functions 监视磁传感器并发送电子邮件通知
-              href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
     - name: 扩展的 IoT 方案
       items:
         - name: 使用用于 VS Code 的 Azure IoT Tools 管理云设备消息传送

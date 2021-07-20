@@ -1,5 +1,7 @@
 - name: 基础知识文档
   href: index.yml
+- name: 从系统标识泄露中恢复
+  href: recover-from-identity-compromise.md
 - name: 概述
   items:
     - name: Azure 安全性简介

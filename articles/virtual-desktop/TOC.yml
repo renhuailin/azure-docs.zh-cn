@@ -6,6 +6,8 @@
       href: overview.md
     - name: 新增功能
       href: whats-new.md
+    - name: Azure Monitor 的新增功能
+      href: whats-new-azure-monitor.md
     - name: Azure 虚拟桌面（经典）文档
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: 教程
@@ -25,19 +27,19 @@
     - name: 连接到 Azure 虚拟桌面资源
       items:
         - name: 使用 Windows 桌面客户端进行连接
-          href: connect-windows-7-10.md
+          href: ./user-documentation/connect-windows-7-10.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: 使用 Web 客户端进行连接
-          href: connect-web.md
+          href: ./user-documentation/connect-web.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: 使用 Android 客户端进行连接
-          href: connect-android.md
+          href: ./user-documentation/connect-android.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: 使用 macOS 客户端进行连接
-          href: connect-macos.md
+          href: ./user-documentation/connect-macos.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: 使用 iOS 客户端进行连接
-          href: connect-ios.md
+          href: ./user-documentation/connect-ios.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: 使用 Microsoft Store 客户端进行连接
-          href: connect-microsoft-store.md
+          href: ./user-documentation/connect-microsoft-store.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: 使用精简客户端进行连接
-          href: linux-overview.md
+          href: ./user-documentation/linux-overview.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: 配置设备重定向
       href: configure-device-redirections.md
     - name: 设置 PowerShell 模块
@@ -138,6 +140,8 @@
       href: drain-mode.md
 - name: 概念
   items:
+    - name: 管理建议
+      href: management.md
     - name: 内置角色
       href: rbac.md
     - name: 身份验证
@@ -212,12 +216,12 @@
       href: remotefx-graphics-performance-counters.md
     - name: Azure Monitor
       href: troubleshoot-azure-monitor.md
+    - name: 管理问题
+      href: troubleshoot-management-issues.md
 - name: 参考
   items:
     - name: 安全最佳做法
       href: security-guide.md
-    - name: Linux 支持
-      href: linux-overview.md
     - name: Azure CLI
       href: /cli/azure/desktopvirtualization
     - name: 估计 Azure Monitor 成本

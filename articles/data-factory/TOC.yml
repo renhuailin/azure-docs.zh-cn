@@ -113,6 +113,8 @@
           items:
             - name: 使用 ADLS Gen2 将数据加载到数据湖中的最佳实践
               href: tutorial-data-flow-write-to-lake.md
+            - name: 动态设置列名称
+              href: tutorial-data-flow-dynamic-columns.md
             - name: 使用 Delta Lake 转换数据湖数据
               href: tutorial-data-flow-delta-lake.md
             - name: 使用映射数据流转换数据
@@ -283,7 +285,7 @@
           href: connector-azure-databricks-delta-lake.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL 数据库
+        - name: Azure SQL Database
           href: connector-azure-sql-database.md
           displayName: upsert
         - name: Azure SQL 托管实例
@@ -476,6 +478,8 @@
           href: delete-activity.md
         - name: “复制数据”工具
           href: copy-data-tool.md
+        - name: 由元数据驱动的复制数据
+          href: copy-data-tool-metadata-driven.md
         - name: 格式和压缩支持
           href: supported-file-formats-and-compression-codecs.md
           displayName: zip
@@ -881,7 +885,7 @@
           href: ssis-integration-runtime-management-troubleshoot.md
           displayName: timeout
         - name: 在 Azure-SSIS IR 中排查包执行问题
-          href: ssis-integration-runtime-ssis-activity-faq.md
+          href: ssis-integration-runtime-ssis-activity-faq.yml
           displayName: 'retry, timeout'
         - name: 在 Azure-SSIS IR 中诊断连接性
           href: ssis-integration-runtime-diagnose-connectivity-faq.md
@@ -896,7 +900,7 @@
       href: /powershell/module/az.datafactory/
     - name: REST API
       href: /rest/api/datafactory
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory
@@ -927,3 +931,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 支持选项
       href: 'https://azure.microsoft.com/support/options/'
+    - name: 限制
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits

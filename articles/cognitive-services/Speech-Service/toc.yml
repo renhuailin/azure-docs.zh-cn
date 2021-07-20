@@ -59,6 +59,18 @@
               href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: 负责使用 AI
       items:
+        - name: 语音转文本
+          items:
+            - name: 透明度说明
+              items:
+                - name: 语音转换为文本的用例
+                  href: /legal/cognitive-services/speech-service/speech-to-text/transparency-note?context=/azure/cognitive-services/speech-service/context/context
+                - name: 特征和限制
+                  href: /legal/cognitive-services/speech-service/speech-to-text/characteristics-and-limitations?context=/azure/cognitive-services/speech-service/context/context
+            - name: 集成和负责使用
+              href: /legal/cognitive-services/speech-service/speech-to-text/guidance-integration-responsible-use?context=/azure/cognitive-services/speech-service/context/context
+            - name: 数据、隐私和安全性
+              href: /legal/cognitive-services/speech-service/speech-to-text/data-privacy-security?context=/azure/cognitive-services/speech-service/context/context
         - name: 发音评估
           items:
             - name: 透明度说明
@@ -105,9 +117,11 @@
           href: language-support.md#speech-to-text
         - name: 区域支持
           href: regions.md#speech-to-text-text-to-speech-and-translation
+        - name: 引入客户端
+          href: ingestion-client.md
         - name: 语音转文本常见问题解答
           displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
-          href: faq-stt.md
+          href: faq-stt.yml
 - name: 文本转语音
   items:
     - name: 文本转语音文档
@@ -499,8 +513,8 @@
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
         - name: 容器常见问题解答
-          href: speech-container-faq.md
-        - name: 所有认知服务容器文档
+          href: speech-container-faq.yml
+        - name: 认知服务容器文档
           href: ../containers/index.yml
           maintainContext: true
     - name: 迁移

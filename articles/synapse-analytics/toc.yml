@@ -11,7 +11,7 @@ items:
       - name: 术语
         href: overview-terminology.md
       - name: 常见问题解答
-        href: overview-faq.md
+        href: overview-faq.yml
   - name: 快速入门
     expanded: true
     items:
@@ -214,8 +214,6 @@ items:
           - name: 专用 SQL 池
             href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             displayname: overview
-          - name: 体系结构
-            href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           - name: 功能概述
             href: sql/overview-features.md
           - name: 资源消耗模型
@@ -807,7 +805,7 @@ items:
                 href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Azure 文件存储
                 href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: Azure SQL 数据库
+              - name: Azure SQL Database
                 href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Azure SQL 托管实例
                 href: ../data-factory/connector-azure-sql-managed-instance.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json
@@ -977,11 +975,11 @@ items:
                 href: ../data-factory/connector-zoho.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           - name: 移动数据
             items:
-              - name: 通过复制活动复制数据
+              - name: 使用“复制”活动复制数据
                 href: ../data-factory/copy-activity-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: 监视复制活动
                 href: ../data-factory/copy-activity-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 使用“删除活动”删除文件
+              - name: 使用 Delete 活动删除文件
                 href: ../data-factory/delete-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: 复制数据工具
                 href: ../data-factory/copy-data-tool.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1038,11 +1036,11 @@ items:
                 href: ../data-factory/transform-data-using-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: HDInsight Streaming 活动
                 href: ../data-factory/transform-data-using-hadoop-streaming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 机器学习执行管道活动
+              - name: 机器学习 Execute Pipeline 活动
                 href: ../data-factory/transform-data-machine-learning-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 机器学习工作室（经典）批处理执行活动
+              - name: 机器学习工作室（经典版）Batch Execution 活动
                 href: ../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 机器学习工作室（经典）更新资源活动
+              - name: 机器学习工作室（经典版）Update Resource 活动
                 href: ../data-factory/update-machine-learning-models.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: 存储过程活动
                 href: ../data-factory/transform-data-using-stored-procedure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1050,21 +1048,21 @@ items:
                 href: ../data-factory/compute-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           - name: 控制流
             items:
-              - name: 追加变量活动
+              - name: Append Variable 活动
                 href: ../data-factory/control-flow-append-variable-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 执行管道活动
+              - name: Execute Pipeline 活动
                 href: ../data-factory/control-flow-execute-pipeline-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 筛选器活动
+              - name: 筛选活动
                 href: ../data-factory/control-flow-filter-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: For Each 活动
                 href: ../data-factory/control-flow-for-each-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 获取元数据活动
+              - name: Get Metadata 据活动
                 href: ../data-factory/control-flow-get-metadata-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: If Condition 活动
                 href: ../data-factory/control-flow-if-condition-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: 查找活动
                 href: ../data-factory/control-flow-lookup-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 设置变量活动
+              - name: Set Variable 活动
                 href: ../data-factory/control-flow-set-variable-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               - name: Until 活动
                 href: ../data-factory/control-flow-until-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1168,6 +1166,8 @@ items:
         items:
           - name: Azure Synapse 中的机器学习是指什么？
             href: machine-learning/what-is-machine-learning.md
+          - name: Azure Synapse Analytics 中的认知服务
+            href: machine-learning/overview-cognitive-services.md
       - name: 快速入门
         items:
           - name: 使用库中的示例笔记本

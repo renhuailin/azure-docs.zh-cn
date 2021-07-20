@@ -21,6 +21,8 @@
       href: role-management.md
     - name: 安全访问托管的 HSM
       href: secure-your-managed-hsm.md
+    - name: 使用专用终结点
+      href: private-link.md
     - name: 为托管的 HSM 设置日志记录
       href: logging.md
     - name: 灾难恢复
@@ -59,19 +61,21 @@
       href: /python/api/overview/azure/key-vault-index
     - name: REST
       href: /rest/api/keyvault
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
 - name: 资源
   items:
+    - name: 第三方解决方案
+      href: third-party-solutions.md
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/?products=azure-key-vault
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: 上市区域
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault&regions=all'
     - name: 服务级别协议 (SLA)
-      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault-managed-hsm/v1_0/'
     - name: 服务限制
       href: ../general/service-limits.md
     - name: 服务状态
