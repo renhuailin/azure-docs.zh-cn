@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: rabhaiya
-ms.openlocfilehash: f17223fbada3dabbf0126f6f841e36ace6d0215c
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 7f6fb6abdf2e73985b8c15e63af588b20feb4f45
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112283854"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297978"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>教程：通过 Azure IoT 中心接收设备数据
 
@@ -23,7 +23,7 @@ ms.locfileid: "112283854"
 
 - 有效的 Azure 订阅 - [免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - 包含至少一个适用于 FHIR 的 Azure IoT 连接器的 Azure API for FHIR 资源 - [使用 Azure 门户部署适用于 FHIR 的 Azure IoT 连接器（预览版）](iot-fhir-portal-quickstart.md)
-- 与真实或模拟设备连接的 Azure IoT 中心资源 - [使用 Azure 门户创建 IoT 中心](../../iot-hub/quickstart-send-telemetry-dotnet.md)
+- 与真实或模拟设备连接的 Azure IoT 中心资源 - [使用 Azure 门户创建 IoT 中心](../../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)
 
 > [!TIP]
 > 如果你使用的是 Azure IoT 中心模拟设备应用程序，则可以从采用各种不同支持语言和系统的应用程序中进行选择。
