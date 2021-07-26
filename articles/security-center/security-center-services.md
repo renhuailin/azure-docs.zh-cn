@@ -5,14 +5,15 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 05/13/2021
+ms.date: 06/17/2021
+ms.custom: references_regions
 ms.author: memildin
-ms.openlocfilehash: b68a9946908697d6e9113af586a134b0b3d8784a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 05b535a0aabe0108c0a9abcedef166293541d407
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468332"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005467"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -98,41 +99,65 @@ ms.locfileid: "110468332"
 
 
 
-## <a name="feature-support-in-government-clouds"></a>政府云中的功能支持
+## <a name="feature-support-in-government-and-sovereign-clouds"></a>政府云和主权云中的功能支持
 
-| 服务/功能 | US Gov | China Gov |
-|------|:----:|:----:|
-|[实时 VM 访问](security-center-just-in-time.md) (1)|✔|✔|
-|[文件完整性监视](security-center-file-integrity-monitoring.md) (1)|✔|✔|
-|[自适应应用程序控制](security-center-adaptive-application.md) (1)|✔|✔|
-|[自适应网络强化](security-center-adaptive-network-hardening.md) (1)|-|-|
-|[Docker 主机强化](harden-docker-hosts.md) (1)|✔|✔|
-|[的集成漏洞评估](deploy-vulnerability-assessment-vm.md) (1)|-|-|
-|[用于终结点的 Microsoft Defender](harden-docker-hosts.md) (1)|✔|-|
-|[连接 AWS 帐户](quickstart-onboard-aws.md) (1)|-|-|
-|[连接 GCP 帐户](quickstart-onboard-gcp.md) (1)|-|-|
-|[连续导出](continuous-export.md)|✔|✔|
-|[工作流自动化](workflow-automation.md)|✔|✔|
-|[建议例外规则](exempt-resource.md)|-|-|
-|[警报抑制规则](alerts-suppression-rules.md)|✔|✔|
-|[安全警报的电子邮件通知](security-center-provide-security-contact-details.md)|✔|✔|
-|[资产清单](asset-inventory.md)|✔|✔|
-|[适用于应用服务的 Azure Defender](defender-for-app-service-introduction.md)|-|-|
-|[适用于存储的 Azure Defender](defender-for-storage-introduction.md)|✔|-|
-|[Azure Defender for SQL](defender-for-sql-introduction.md)|✔|✔ (2)|
-|[适用于 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)|-|-|
-|[适用于资源管理器的 Azure Defender](defender-for-resource-manager-introduction.md)|-|-|
-|[适用于 DNS 的 Azure Defender](defender-for-dns-introduction.md)|-|-|
-|[适用于容器注册表的 Azure Defender](defender-for-container-registries-introduction.md)|✔ (2)|✔ (2)|
-|[适用于 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)|✔|✔|
-|[用于开源关系数据库的 Azure Defender](defender-for-databases-introduction.md)|-|-|
-|[Kubernetes 工作负载保护](kubernetes-workload-protections.md)|✔|✔|
-|||
+| 功能/服务                                                                                                                                                             | Azure          | 美国政府                  | Azure 中国   |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|--------------------------------|---------------|
+| **安全中心免费功能**                                                                                                                                           |                |                                |               |
+| - [连续导出](/azure/security-center/continuous-export)                                                                                                             | GA             | GA                             | GA            |
+| - [工作流自动化](/azure/security-center/continuous-export)                                                                                                           | GA             | GA                             | GA            |
+| - [建议例外规则](/azure/security-center/exempt-resource)                                                                                                  | 公共预览版 | 不可用                  | 不可用 |
+| - [警报抑制规则](/azure/security-center/alerts-suppression-rules)                                                                                                | GA             | GA                             | GA            |
+| - [安全警报的电子邮件通知](/azure/security-center/security-center-provide-security-contact-details)                                                        | GA             | GA                             | GA            |
+| - [代理和扩展的自动预配](/azure/security-center/security-center-enable-data-collection)                                                              | GA             | GA                             | GA            |
+| - [资产清单](/azure/security-center/asset-inventory)                                                                                                                 | GA             | GA                             | GA            |
+| - [Azure 安全中心工作簿库中的 Azure Monitor 工作簿报表](/azure/security-center/custom-dashboards-azure-workbooks)                                  | GA             | GA                             | GA            |
+| **Azure Defender 计划和扩展**                                                                                                                                     |                |                                |               |
+| - [适用于服务器的 Azure Defender](/azure/security-center/defender-for-servers-introduction)                                                                                    | GA             | GA                             | GA            |
+| - [适用于应用服务的 Azure Defender](/azure/security-center/defender-for-app-service-introduction)                                                                            | GA             | 不可用                  | 不可用 |
+| - [适用于 DNS 的 Azure Defender](/azure/security-center/defender-for-dns-introduction)                                                                                            | GA             | 不可用                  | 不可用 |
+| - [适用于容器注册表的 Azure Defender](/azure/security-center/defender-for-container-registries-introduction) <sup>[1](#footnote1)</sup>                               | GA             | GA  <sup>[2](#footnote2)</sup> | GA  <sup>[2](#footnote2)</sup> |
+| - [适用于容器注册表的 Azure Defender 扫描 CI/CD 工作流中的容器映像](/azure/security-center/defender-for-container-registries-cicd) <sup>[3](#footnote3)</sup> | 公共预览版 | 不可用                  | 不可用 |
+| - [Azure Defender for Kubernetes](/azure/security-center/defender-for-kubernetes-introduction) <sup>[4](#footnote4)</sup>                                                   | GA             | GA                             | GA            |
+| - [适用于启用了 Azure Arc 的 Kubernetes 群集的 Azure Defender 扩展](/azure/security-center/defender-for-kubernetes-azure-arc) <sup>[5](#footnote5)</sup>                 | 公共预览版 | 不可用                  | 不可用 |
+| - [适用于 Azure SQL 数据库服务器的 Azure Defender](/azure/security-center/defender-for-sql-introduction)                                                                     | GA             | GA                             | GA  <sup>[9](#footnote9)</sup> |
+| - [计算机上的 Azure Defender for SQL 服务器](/azure/security-center/defender-for-sql-introduction)                                                                        | GA             | GA                             | 不可用 |
+| - [适用于开源关系数据库的 Azure Defender](/azure/security-center/defender-for-databases-introduction)                                                         | GA             | 不可用                  | 不可用 |
+| - [适用于 Key Vault 的 Azure Defender](/azure/security-center/defender-for-key-vault-introduction)                                                                                | GA             | 不可用                  | 不可用 |
+| - [适用于资源管理器的 Azure Defender](/azure/security-center/defender-for-resource-manager-introduction)                                                                  | GA             | 公共预览版                 | 不可用 |
+| - [适用于存储的 Azure Defender](/azure/security-center/defender-for-storage-introduction) <sup>[6](#footnote6)</sup>                                                         | GA             | GA                             | 不可用 |
+| - [针对 Cosmos DB 的威胁防护](/azure/security-center/other-threat-protections.md#threat-protection-for-azure-cosmos-db-preview)                                       | 公共预览版 | 不可用                  | 不可用 |
+| - [Kubernetes 工作负载保护](/azure/security-center/kubernetes-workload-protections)                                                                                  | GA             | GA                             | GA            |
+| **适用于服务器功能的 Azure Defender** <sup>[7](#footnote7)</sup>                                                                                                          |                |                                |               |
+| - [实时 VM 访问](/azure/security-center/security-center-just-in-time)                                                                                             | GA             | GA                             | GA            |
+| - [文件完整性监视](/azure/security-center/security-center-file-integrity-monitoring)                                                                             | GA             | GA                             | GA            |
+| - [自适应应用程序控制](/azure/security-center/security-center-adaptive-application)                                                                              | GA             | GA                             | GA            |
+| - [自适应网络强化](/azure/security-center/security-center-adaptive-network-hardening)                                                                           | GA             | 不可用                  | 不可用 |
+| - [Docker 主机强化](/azure/security-center/harden-docker-hosts)                                                                                                       | GA             | GA                             | GA            |
+| - [计算机的集成漏洞评估](/azure/security-center/deploy-vulnerability-assessment-vm)                                                             | GA             | 不可用                  | 不可用 |
+| - [合规性仪表板和报表](/azure/security-center/security-center-compliance-dashboard) <sup>[8](#footnote8)</sup>                                       | GA             | GA                             | GA            |
+| - [Microsoft Defender for Endpoint 部署和集成许可证](/azure/security-center/security-center-wdatp)                                                         | GA             | GA                             | 不可用 |
+| - [连接 AWS 帐户](/azure/security-center/quickstart-onboard-aws)                                                                                                      | GA             | 不可用                  | 不可用 |
+| - [连接 GCP 帐户](/azure/security-center/quickstart-onboard-gcp)                                                                                                      | GA             | 不可用                  | 不可用 |
+|                                                                                                                                                                             |                |                                |
 
-(1) 需要用于服务器的 Azure Defender
+<sup><a name="footnote1" /></a>1</sup> 部分 GA：禁用漏洞扫描的特定发现的功能处于公共预览状态。
 
-(2) 部分完成
+<sup><a name="footnote2" /></a>2</sup> Azure Gov 上容器注册表的漏洞扫描只能通过“推送扫描”功能来执行。
 
+<sup><a name="footnote3" /></a>3</sup> 需要适用于容器注册表的 Azure Defender。
+
+<sup><a name="footnote4" /></a>4</sup> 部分 GA：对启用了 Arc 的群集的支持处于公开预览状态，在 Azure 政府中不可用。
+
+<sup><a name="footnote5" /></a>5</sup> 需要 Azure Defender for Kubernetes。
+
+<sup><a name="footnote6" /></a>6</sup> 部分 GA：适用于存储的 Azure Defender 中的部分威胁防护警报处于公共预览状态。
+
+<sup><a name="footnote7" /></a>7</sup> 这些功能都需要[适用于服务器的 Azure Defender](/azure/security-center/defender-for-servers-introduction)。
+
+<sup><a name="footnote8" /></a>8</sup> 每个云类型提供的标准可能存在差异。
+ 
+<sup><a name="footnote9" /></a>9</sup> 部分 GA：SQL Server 警报和漏洞评估的子集。 行为威胁防护功能不可用。
 
 ## <a name="next-steps"></a>后续步骤
 

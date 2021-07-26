@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 55955f883425651749809da951832484f098aeaf
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 9b93ac2973fdf45c5ec395cf30490a820848bad9
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256117"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027160"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
 Azure Maps 是一系列地理空间服务和 SDK，它使用全新地图绘制数据为 Web 和移动应用程序提供地理上下文。 Azure Maps 具有以下功能：
 
 * REST API，用于以多种样式和卫星图像呈现矢量地图和光栅地图。
-* Creator 服务（预览版），可根据专用室内地图数据创建和呈现地图。
+* Creator 服务可根据专用室内地图数据创建和呈现地图。
 * 搜索服务，用于查找全世界的地址、地点和兴趣点。
 * 各种路线规划选项，例如地点到地点、多地点、多地点优化、等时线、电动车、商务车、受影响的交通，以及路网路线。
 * 交通情况视图和事故视图，适用于需要实时交通信息的应用程序。
 * 出行服务（预览版），用于通过结合不同的出行模式和实时到达时间来请求公共交通信息和规划路线。
 * 时区和地理位置（预览版）服务。
-* 具有数字高程模型的高程服务（预览版）
+* 具有数字高程模型的高程服务
 * 地理围栏和地图数据存储，其中的位置信息托管在 Azure 中。
 * 通过地理空间分析进行智能定位。
 
@@ -59,9 +59,9 @@ Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地�
 
 Azure Maps 包含以下可在 Azure 应用程序中提供地理上下文的服务。
 
-### <a name="data-service-preview"></a>数据服务（预览版）
+### <a name="data-service"></a>数据服务
 
-数据对于地图至关重要。 使用数据服务上传和存储地理空间数据，以用于空间操作或图像合成。  使客户数据靠近 Azure Maps 服务可以降低延迟、提高工作效率，并在应用程序中创建新方案。 有关此服务的详细信息，请访问[数据服务文档](/rest/api/maps/data)。
+数据对于地图至关重要。 使用数据服务上传和存储地理空间数据，以用于空间操作或图像合成。  使客户数据靠近 Azure Maps 服务可以降低延迟、提高工作效率，并在应用程序中创建新方案。 有关此服务的详细信息，请访问[数据服务文档](/rest/api/maps/data-v2)。
 
 ### <a name="geolocation-service-preview"></a>地理位置服务（预览版）
 
@@ -179,29 +179,29 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 
 ![带有实时天气雷达图块的地图示例](media/about-azure-maps/intro_weather.png)
 
-### <a name="maps-creator-service-preview"></a>Maps Creator 服务（预览版） 
+### <a name="maps-creator-service"></a>地图创建者服务
 
 Maps Creator 服务是一套 Web 服务，开发人员可以使用这些服务基于室内地图数据创建具有地图功能的应用程序。
 
 Maps Creator 提供三个核心服务：
 
-* [数据集服务](/rest/api/maps/dataset)。 使用数据集服务，基于转换后的绘图包数据创建数据集。 有关绘图包要求的信息，请参阅绘图包要求。
+* [数据集服务](/rest/api/maps/v2/dataset)。 使用数据集服务，基于转换后的绘图包数据创建数据集。 有关绘图包要求的信息，请参阅绘图包要求。
 
-* [转换服务](/rest/api/maps/dataset)。 使用转换服务将 DWG 设计文件转换为室内地图的绘图包数据。
+* [转换服务](/rest/api/maps/v2/dataset)。 使用转换服务将 DWG 设计文件转换为室内地图的绘图包数据。
 
-* [图块集服务](/rest/api/maps/tileset)。 使用图块集服务可以创建数据集的基于向量的表示形式。 应用程序可以使用图块集来呈现基于视觉对象图块的数据集视图。
+* [图块集服务](/rest/api/maps/v2/tileset)。 使用图块集服务可以创建数据集的基于向量的表示形式。 应用程序可以使用图块集来呈现基于视觉对象图块的数据集视图。
 
-* [功能状态服务](/rest/api/maps/featurestate)。 使用功能状态服务来支持动态地图样式。 动态定位样式允许应用程序在 IoT 系统提供的空间上反映实时事件。
+* [功能状态服务](/rest/api/maps/v2/feature-state)。 使用功能状态服务来支持动态地图样式。 动态定位样式允许应用程序在 IoT 系统提供的空间上反映实时事件。
 
-* [WFS 服务](/rest/api/maps/featurestate)。 使用 WFS 服务查询室内地图数据。 WFS 服务遵循[开放地理空间信息联盟 API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) 标准来查询单个数据集。
+* [WFS 服务](/rest/api/maps/v2/feature-state)。 使用 WFS 服务查询室内地图数据。 WFS 服务遵循[开放地理空间信息联盟 API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) 标准来查询单个数据集。
 
-### <a name="elevation-service-preview"></a>高程服务（预览版）
+### <a name="elevation-service"></a>高度服务
 
 Azure Maps 高程服务是一项 Web 服务，开发人员可以使用该服务从地球表面上的任何位置检索高程数据。
 
 高程服务允许以两种格式检索高程数据：
 
-* **GeoTIFF 光栅格式**。 使用[呈现 V2 - Get Map Tile API](/rest/api/maps/renderv2) 以磁贴格式检索高程数据。
+* **GeoTIFF 光栅格式**。 使用 [Render V2-Get Map Tile API](/rest/api/maps/renderv2)，以磁贴格式检索高程数据。
 
 * **GeoJSON 格式**。 使用[高程 API](/rest/api/maps/elevation) 沿着路径在定义的边界框内或在特定坐标处请求采样的高程数据。 
 

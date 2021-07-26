@@ -6,12 +6,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 06/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 6eae4a65412ad922724d4c35b7628b15698ba841
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: bd2bd39839645aa0511a00cc7a6c87c711e33e2b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982927"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294744"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure 自动化有哪些新增功能？
 
@@ -24,6 +24,14 @@ Azure 自动化会不断改进。 为了让大家随时了解最新的开发成�
 本页面每月更新，请不时回来查看。
 
 ## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="security-update-for-log-analytics-contributor-role"></a>Log Analytics 参与者角色的安全更新
+
+**类型：** 更改计划
+
+Microsoft 打算从 Log Analytics 参与者角色中删除自动化帐户权限。 目前，内置的 [Log Analytics 参与者](./automation-role-based-access-control.md#log-analytics-contributor)角色可以将权限提升为订阅[参与者](./../role-based-access-control/built-in-roles.md#contributor)角色。 由于自动化帐户运行方式帐户最初在订阅上配置了“参与者”权限，因此攻击者可以使用该帐户创建新的 runbook，并以订阅参与者身份执行代码。
+
+由于存在此安全风险，建议不要使用 Log Analytics 参与者角色来执行自动化作业。 请改为创建 Azure 自动化参与者自定义角色，并使用它执行与自动化帐户相关的操作。 有关实现步骤，请参阅[自定义 Azure 自动化参与者角色](./automation-role-based-access-control.md#custom-azure-automation-contributor-role)。
 
 ### <a name="support-for-automation-and-state-configuration-available-in-west-us-3"></a>在美国西部 3 区域中推出了对自动化和 State Configuration 的支持
 

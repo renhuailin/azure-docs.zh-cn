@@ -7,12 +7,12 @@ ms.date: 05/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: eb460fc214cd9dfb65e1ef500cfc3c152452030e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: eddab19cb46d27d0d48d1f2376cd9507b28cefc8
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482220"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003613"
 ---
 # <a name="introduction-to-azure-defender-for-open-source-relational-databases"></a>用于开源关系数据库的 Azure Defender 的简介
 
@@ -33,7 +33,7 @@ Azure Defender 会检测异常活动，这些活动表示可能有害的异常�
 | PostgreSQL 的受保护版本：  | 单一服务器 -“常规用途”和“内存优化”。 若要了解详细信息，请查看 [PostgreSQL 定价层](../postgresql/concepts-pricing-tiers.md)。   |
 | MySQL 的受保护版本：       | 单一服务器 -“常规用途”和“内存优化”。 若要了解详细信息，请查看 [MySQL 定价层](../mysql/concepts-pricing-tiers.md)。                        |
 | MariaDB 的受保护版本：     | “常规用途”和“内存优化”。 若要了解详细信息，请查看 [MariaDB 定价层](../mariadb/concepts-pricing-tiers.md)。                      |
-| 云：                            | ![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov） |
+| 云：                            | ![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov，Azure 中国） |
 |                                    |                                                                                                                                            |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-open-source-relational-databases"></a>用于开源关系数据库的 Azure Defender 有哪些优势？

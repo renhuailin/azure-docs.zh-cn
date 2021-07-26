@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: cfa4239fb6a3c78d861885478c1c643151ee6e13
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0a490811250d4665531119733ab959ed2780e741
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128552"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112280974"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>快速入门：配置客户端应用程序以访问 Web API
 
@@ -128,7 +128,7 @@ ms.locfileid: "108128552"
 
 ### <a name="other-permissions-granted"></a>授予的其他权限
 
-你可能还会在“API 权限”窗格上看到标题是“为 {你的租户} 授予的其他权限”的表 。 在“为 {你的租户} 授予的其他权限”表中，显示了为租户授予的、未在应用程序对象中显式配置的权限。 这些权限是动态请求且获得同意的。 仅当至少应用了其中一个权限时，才会显示此部分。
+你可能还会在“API 权限”窗格上看到标题是“为 {你的租户} 授予的其他权限”的表。 在“为 {你的租户} 授予的其他权限”表中，显示了为租户授予的、未在应用程序对象中显式配置的权限。 这些权限是由管理员代表所有用户动态请求和同意的。 仅当至少应用了其中一个权限时，才会显示此部分。
 
 可将此表中显示的一整套 API 权限或单个权限添加到“已配置权限”表。 作为管理员，你可撤销此部分中对 API 或单个权限的管理员同意。
 

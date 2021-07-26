@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 282777a692b7b0fe54415ef09c2cf1879868dd3b
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: f11a9391b0a4f467cba41724b1d15493f1393201
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854425"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992128"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
@@ -53,14 +53,14 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
  
 扫描通常在 2 分钟内完成，最多可能需要 15 分钟。 扫描结果以“安全中心建议”的形式提供，如下所示：
 
-[![有关在 Azure 容器注册表 (ACR) 托管映像中发现的漏洞的 Azure 安全中心建议示例](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+[![有关在 Azure 容器注册表 (ACR) 托管映像中发现的漏洞的 Azure 安全中心建议示例。](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
 
 ## <a name="how-does-security-center-work-with-azure-container-registry"></a>安全中心如何使用 Azure 容器注册表
 
 下面是有关使用安全中心保护注册表的组件和优点的概括性关系图。
 
-![Azure 安全中心和 Azure 容器注册表 (ACR) 综合概述](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+![Azure 安全中心和 Azure 容器注册表 (ACR) 综合概述。](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
 
 
@@ -88,8 +88,6 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 ### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>有个映像不在我的注册表中，它存在漏洞。为什么安全中心要就这些漏洞向我发送警报？
 安全中心会对在注册表中拉取或推送的每个映像提供漏洞评估。 某些映像可能会重复使用来自已扫描的某个映像的标记。 例如，每次你向摘要添加一张映像时，都可能重新分配名为“最新”的标记。 在这种情况下，“旧”映像仍然在注册表中，可能仍会被其摘要拉取。 如果发现该映像存在安全问题，而它被拉取了，那么就将暴露安全漏洞。
 
-### <a name="what-should-i-do-if-the-scan-results-for-my-image-arent-shown"></a>如果未显示我的图像的扫描结果，该怎么办？
-请等待几分钟，如果未显示结果，请尝试再次推送图像以触发新扫描。 如果仍未出现扫描结果，请与我们的支持团队联系。 
 
 ## <a name="next-steps"></a>后续步骤
 

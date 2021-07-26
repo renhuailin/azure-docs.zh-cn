@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 01/12/2021
 ms.openlocfilehash: 1b4570b09994f292de2b175396e4b6d1882658d9
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104866482"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
@@ -26,7 +26,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 
 ## <a name="connectivity"></a>连接
 
-在 HDInsight 群集上从 `https://CLUSTERNAME.azurehdinsight.net` 可获得 Ambari Web UI，其中 CLUSTERNAME`CLUSTERNAME` 是你的群集名称。
+在 HDInsight 群集上从 `https://CLUSTERNAME.azurehdinsight.net` 可获得 Ambari Web UI，其中 `CLUSTERNAME` 是你的群集名称。
 
 > [!IMPORTANT]  
 > 连接到 HDInsight 上的 Ambari 需要 HTTPS。 当提示进行身份验证时，请使用在创建群集时提供的管理员帐户名称和密码。 如果系统未提示你输入凭据，请检查网络设置以确认客户端与 Azure HDInsight 群集之间没有连接问题。

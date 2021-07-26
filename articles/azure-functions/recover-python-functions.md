@@ -1,47 +1,49 @@
 ---
-title: Azure Functions 中的 Python 函数应用疑难解答
-description: 了解如何对 Python 函数进行故障排除。
+title: 在 Azure Functions 中排查 Python 函数应用错误
+description: 了解如何对 Python 函数进行错误排查。
 author: Hazhzeng
 ms.topic: article
 ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
-ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 56da006dc5a0eef46d5b13984983ca680359b968
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846031"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168087"
 ---
-# <a name="troubleshoot-python-errors-in-azure-functions"></a>排查 Azure Functions 的 Python 错误
+# <a name="troubleshoot-python-errors-in-azure-functions"></a>在 Azure Functions 中排查 Python 错误
 
-下面是 Python 函数中常见问题的疑难解答指南列表：
+下面列出了 Python 函数常见问题的错误排查指南：
 
 * [ModuleNotFoundError 和 ImportError](#troubleshoot-modulenotfounderror)
-* [无法导入 "cygrpc"](#troubleshoot-cannot-import-cygrpc)
+* [无法导入“cygrpc”](#troubleshoot-cannot-import-cygrpc)
+* [Python 已退出，代码为 137](#troubleshoot-python-exited-with-code-137)
+* [Python 已退出，代码为 139](#troubleshoot-python-exited-with-code-139)
 
-## <a name="troubleshoot-modulenotfounderror"></a>ModuleNotFoundError 故障排除
+## <a name="troubleshoot-modulenotfounderror"></a>ModuleNotFoundError 错误排查
 
-本部分可帮助你对 Python function app 中与模块相关的错误进行故障排除。 这些错误通常会导致以下 Azure Functions 错误消息：
+本部分可帮助你排查 Python 函数应用中与模块相关的错误。 这些错误通常会导致以下 Azure Functions 错误消息：
 
 > `Exception: ModuleNotFoundError: No module named 'module_name'.`
 
-当 Python 函数应用加载 Python 模块失败时，会发生此错误问题。 此错误的根本原因是以下问题之一：
+当 Python 函数应用加载 Python 模块失败时，会发生此错误。 此错误的根本原因是以下问题之一：
 
-- [找不到该包](#the-package-cant-be-found)
-- [未使用正确的 Linux wheel 解析该包](#the-package-isnt-resolved-with-proper-linux-wheel)
-- [该包与 Python 解释器版本不兼容](#the-package-is-incompatible-with-the-python-interpreter-version)
-- [该包与其他包冲突](#the-package-conflicts-with-other-packages)
-- [该包仅支持 Windows 或 macOS 平台](#the-package-only-supports-windows-or-macos-platforms)
+* [找不到该包](#the-package-cant-be-found)
+* [未使用正确的 Linux wheel 解析该包](#the-package-isnt-resolved-with-proper-linux-wheel)
+* [该包与 Python 解释器版本不兼容](#the-package-is-incompatible-with-the-python-interpreter-version)
+* [该包与其他包冲突](#the-package-conflicts-with-other-packages)
+* [该包仅支持 Windows 或 macOS 平台](#the-package-only-supports-windows-or-macos-platforms)
 
 ### <a name="view-project-files"></a>查看项目文件
 
 为了确定问题的真正原因，你需要获取在函数应用上运行的 Python 项目文件。 如果本地计算机上没有这些项目文件，可以通过以下方式之一获取它们：
 
-- 如果函数应用具有 `WEBSITE_RUN_FROM_PACKAGE` 应用设置，并且其值是一个 URL，请通过将该 URL 复制并粘贴到浏览器来下载文件。
-- 如果函数应用具有 `WEBSITE_RUN_FROM_PACKAGE` 并且它设置为 `1`，请导航至 `https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages`，并从最新的 `href` URL 下载文件。
-- 如果函数应用没有上述应用设置，请导航至 `https://<app-name>.scm.azurewebsites.net/api/settings`，并在 `SCM_RUN_FROM_PACKAGE` 下找到 URL。 通过将该 URL 复制并粘贴到浏览器来下载文件。
-- 如果这些都不适用，请导航至 `https://<app-name>.scm.azurewebsites.net/DebugConsole`，并显示 `/home/site/wwwroot` 下的内容。
+* 如果函数应用具有 `WEBSITE_RUN_FROM_PACKAGE` 应用设置，并且其值是一个 URL，请通过将该 URL 复制并粘贴到浏览器来下载文件。
+* 如果函数应用具有 `WEBSITE_RUN_FROM_PACKAGE` 并且它设置为 `1`，请导航至 `https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages`，并从最新的 `href` URL 下载文件。
+* 如果函数应用没有上述应用设置，请导航至 `https://<app-name>.scm.azurewebsites.net/api/settings`，并在 `SCM_RUN_FROM_PACKAGE` 下找到 URL。 通过将该 URL 复制并粘贴到浏览器来下载文件。
+* 如果这些都不适用，请导航至 `https://<app-name>.scm.azurewebsites.net/DebugConsole`，并显示 `/home/site/wwwroot` 下的内容。
 
 本文的其余部分通过检查函数应用的内容、确定根本原因并解决特定问题，来帮助你排查此错误的潜在原因。
 
@@ -144,43 +146,79 @@ you must uninstall azure-storage first.</pre>
 
 ---
 
-## <a name="troubleshoot-cannot-import-cygrpc"></a>疑难解答无法导入 "cygrpc"
+## <a name="troubleshoot-cannot-import-cygrpc"></a>错误排查无法导入“cygrpc”
 
-本部分可帮助解决在 Python function 应用中出现 "cygrpc" 相关错误。 这些错误通常会导致以下 Azure Functions 错误消息：
+本文可帮助你排查 Python 函数应用中与“cygrpc”相关的错误。 这些错误通常会导致以下 Azure Functions 错误消息：
 
 > `Cannot import name 'cygrpc' from 'grpc._cython'`
 
-当 Python 函数应用无法使用正确的 Python 解释器启动时，会出现此错误。 此错误的根本原因是以下问题之一：
+如果 Python 函数应用无法在相应的 Python 解释器上启动，会发生此错误。 此错误的根本原因是以下问题之一：
 
-- [Python 解释器不匹配 OS 体系结构](#the-python-interpreter-mismatches-os-architecture)
+- [Python 解释器与操作系统体系结构不匹配](#the-python-interpreter-mismatches-os-architecture)
 - [Azure Functions Python 辅助角色不支持 Python 解释器](#the-python-interpreter-is-not-supported-by-azure-functions-python-worker)
 
-### <a name="diagnose-cygrpc-reference-error"></a>诊断 "cygrpc" 引用错误
+### <a name="diagnose-cygrpc-reference-error"></a>诊断“cygrpc”引用错误
 
-#### <a name="the-python-interpreter-mismatches-os-architecture"></a>Python 解释器不匹配 OS 体系结构
+#### <a name="the-python-interpreter-mismatches-os-architecture"></a>Python 解释器与操作系统体系结构不匹配
 
-这很可能是因为64位操作系统上安装了32位 Python 解释器。
+这很可能是因为 32 位 Python 解释器安装在 64 位操作系统上。
 
-如果你在 x64 操作系统上运行，请确保你的 Python 3.6、3.7 或3.8 解释器也在64位版本上。
+如果在 x64 操作系统上运行，请确保 Python 3.6、3.7 或 3.8 解释器也安装在 64 位版本上。
 
 可以通过以下命令检查 Python 解释器位数：
 
-在 PowerShell 中的 Windows 上： `py -c 'import platform; print(platform.architecture()[0])'`
+在 Windows PowerShell 上：`py -c 'import platform; print(platform.architecture()[0])'`
 
-在类似 Unix 的 shell 上： `python3 -c 'import platform; print(platform.architecture()[0])'`
+在类 Unix 的 shell 上：`python3 -c 'import platform; print(platform.architecture()[0])'`
 
-如果 Python 解释器位数和操作系统体系结构不匹配，请从 [Python Software Foundation](https://python.org/downloads/release)下载适当的 Python 解释器。
+如果 Python 解释器位数和操作系统体系结构不匹配，请从 [Python Software Foundation](https://python.org/downloads/release) 下载相应的 Python 解释器。
 
 #### <a name="the-python-interpreter-is-not-supported-by-azure-functions-python-worker"></a>Azure Functions Python 辅助角色不支持 Python 解释器
 
-Azure Functions Python 辅助角色仅支持 Python 3.6、3.7 和3.8。
-请检查你的 Python 解释器 `py --version` 在 Windows 或 `python3 --version` 类似于 Unix 的系统中是否与预期的版本相匹配。 确保返回结果为 Python 3.6. x、Python 3.7. x 或 Python 3.8. x。
+Azure Functions Python 辅助角色仅支持 Python 3.6、3.7 和 3.8。
+请检查 Python 解释器是否与 Windows 中的 `py --version` 或类 Unix 系统中的 `python3 --version` 的预期版本相匹配。 确保返回结果为 Python 3.6.x、Python 3.7.x 或 Python 3.8.x。
 
-如果 Python 解释器版本不符合我们的预期，请从 [Python Software Foundation](https://python.org/downloads/release)下载 python 3.6、3.7 或3.8 解释器。
+如果 Python 解释器版本与预期版本不匹配，请从 [Python Software Foundation](https://python.org/downloads/release) 下载 Python 3.6、3.7 或 3.8 解释器。
+
+---
+
+## <a name="troubleshoot-python-exited-with-code-137"></a>对“Python 已退出，代码为 137”进行故障排除
+
+发生代码 137 错误的原因通常是 Python 函数应用中存在内存不足的问题。 因此，你会收到以下 Azure Functions 错误消息：
+
+> `Microsoft.Azure.WebJobs.Script.Workers.WorkerProcessExitException : python exited with code 137`
+
+当一个 Python 函数应用被操作系统用 SIGKILL 信号强制终止时，会发生此错误。 此信号通常指示 Python 进程中出现内存不足错误。 Azure Functions 平台有一个[服务限制](functions-scale.md#service-limits)，它会终止任何超出此限制的函数应用。
+
+请访问 [Python 函数的内存分析](python-memory-profiler-reference.md#memory-profiling-process)中的教程部分，以分析函数应用中的内存瓶颈。
+
+---
+
+## <a name="troubleshoot-python-exited-with-code-139"></a>对“Python 已退出，代码为 139”进行故障排除
+
+本部分可帮助你对 Python 函数应用中的分段错误进行故障排除。 这些错误通常会导致以下 Azure Functions 错误消息：
+
+> `Microsoft.Azure.WebJobs.Script.Workers.WorkerProcessExitException : python exited with code 139`
+
+当一个 Python 函数应用被操作系统用 SIGSEGV 信号强制终止时，会发生此错误。 此信号指示存在内存分段冲突，可能是因为意外地从受限的内存区域执行了读出或写入操作。 在以下各节中，我们将提供常见根本原因的列表。
+
+### <a name="a-regression-from-third-party-packages"></a>来自第三方包的回归
+
+在函数应用的 requirements.txt 中，取消固定的包将会在每次 Azure Functions 部署中升级到最新版本。 这些包的供应商可能会在最新版本中引入回归。 若要修复此问题，请尝试在 requirements.txt 中注释掉导入语句、禁用包引用或将包固定到之前的版本。
+
+### <a name="unpickling-from-a-malformed-pkl-file"></a>从格式错误的 .pkl 文件取消封装
+
+如果函数应用使用 Python pickel 库从 .pkl 文件加载 Python 对象，那么 .pkl 有可能在其中包含格式错误的字节字符串或无效的地址引用。 若要修复此问题，请尝试注释掉 pickle.load() 函数。
+
+### <a name="pyodbc-connection-collision"></a>Pyodbc 连接冲突
+
+如果函数应用使用热门的 ODBC 数据库驱动程序 [pyodbc](https://github.com/mkleehammer/pyodbc)，则有可能在单个函数应用中打开多个连接。 若要避免此问题，请使用单一实例模式，并确保函数应用中仅使用一个 pyodbc 连接。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 
-如果无法解决问题，请向函数团队报告以下内容：
+如果无法解决问题，请向 Functions 团队报告：
 
 > [!div class="nextstepaction"]
 > [报告未解决的问题](https://github.com/Azure/azure-functions-python-worker/issues)

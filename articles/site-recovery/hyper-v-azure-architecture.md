@@ -1,18 +1,15 @@
 ---
 title: Azure Site Recovery 中的 Hyper-V 灾难恢复体系结构
 description: 本文概述了使用 Azure Site Recovery 服务将本地 Hyper-V VM（不带 VMM）的灾难恢复部署到 Azure 时使用的组件和体系结构。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: c5025b83619b505728bfdf5c4e1ccc81d3bb225e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73771a70bfe14e46fb08db75fd4baa522caaadb8
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97654755"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579612"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 到 Azure 的灾难恢复体系结构
 
@@ -86,7 +83,7 @@ ms.locfileid: "97654755"
 1. 为 Hyper-V VM 启用保护以后，就会在 Azure 门户中或本地启动“启用保护”。
 2. 该作业会检查计算机是否符合先决条件，然后调用 [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice)，以使用配置的设置来设置复制。
 3. 该作业通过调用 [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) 方法启动初始复制，以便初始化完整的 VM 复制，然后将 VM 的虚拟磁盘发送到 Azure。
-4. 可以在“作业”选项卡中监视作业。    ![“作业”选项卡中作业列表的屏幕截图。](media/hyper-v-azure-architecture/image1.png)![“启用保护”屏幕的屏幕截图，其中包含更多详细信息。](media/hyper-v-azure-architecture/image2.png)
+4. 你可以在“作业”选项卡中监视作业。![“作业”选项卡中的作业列表的屏幕截图。](media/hyper-v-azure-architecture/image1.png)![“启用保护”屏幕的屏幕截图，其中包含更多详细信息。](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>初始数据复制

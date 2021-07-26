@@ -4,16 +4,16 @@ description: 介绍如何在 Azure HDInsight 中使用 Apache Ambari。
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2021
-ms.openlocfilehash: 6233c42d7fbf8dc7821d26f77171c44485fb8d34
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 35338cad4364abbf233e3da81b05ba912959ed65
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946929"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064483"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Ambari 的用法
 
-HDInsight 使用 Apache Ambari 来部署和管理群集。 Ambari 代理在每个节点（头节点、工作器节点、Zookeeper 和边缘节点（如果存在））上运行。 Ambari 服务器仅在头节点（hn0 或 hn1）上运行。 一次只能运行 Ambari 服务器的一个实例。 运行的实例数由 HDInsight 故障转移控制器控制。 当一个头节点由于重新启动或维护而关闭时，另一个头节点将成为活动头节点，并启动另一个头节点上的 Ambari 服务器。
+HDInsight 使用 Apache Ambari 来部署和管理群集。 Ambari 代理在每个节点（头节点、工作器节点、Zookeeper 和边缘节点（如果存在））上运行。 Ambari 服务器仅在头节点上运行。 一次只能运行 Ambari 服务器的一个实例。 运行的实例数由 HDInsight 故障转移控制器控制。 当一个头节点由于重新启动或维护而关闭时，另一个头节点将成为活动头节点，并启动另一个头节点上的 Ambari 服务器。
 
 所有群集配置应通过 [Ambari UI](./hdinsight-hadoop-manage-ambari.md) 完成，重启节点时会覆盖任何本地更改。
 

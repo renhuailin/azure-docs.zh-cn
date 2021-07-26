@@ -8,19 +8,19 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a90d4c2a8649e270365af9b11fa408b865945f92
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 5afdc2e46e4c234204a27261ae87061a3631071c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877217"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134746"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的应用程序
 
 ::: zone pivot="programming-language-csharp"
 Azure Spring Cloud 提供强大的服务来托管、监视、缩放和更新 Steeltoe 应用。 本文介绍了如何准备现有的需要部署到 Azure Spring Cloud 的 Steeltoe 应用程序。 
 
-本文介绍了在 Azure Spring Cloud 中运行 .NET Core Steeltoe 应用所需的依赖项、配置和代码。 有关如何将应用程序部署到 Azure Spring Cloud 的信息，请参阅[部署首个 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)。
+本文介绍了在 Azure Spring Cloud 中运行 .NET Core Steeltoe 应用所需的依赖项、配置和代码。 有关如何将应用程序部署到 Azure Spring Cloud 的信息，请参阅[部署首个 Azure Spring Cloud 应用程序](./quickstart.md)。
 
 >[!Note]
 > 针对 Azure Spring Cloud 的 Steeltoe 支持目前以公共预览版的形式提供。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。  有关预览期间支持的详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或提交[支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)。
@@ -124,11 +124,11 @@ using (var client = new HttpClient(discoveryHandler, false))
 ::: zone pivot="programming-language-java"
 本主题介绍如何准备现有的需要部署到 Azure Spring Cloud 的 Java Spring 应用程序。 在配置正确的情况下，Azure Spring Cloud 可以提供强大的服务来监视、缩放和更新 Java Spring Cloud 应用程序。
 
-在运行此示例之前，可以尝试[基础知识快速入门](spring-cloud-quickstart.md)。
+在运行此示例之前，可以尝试[基础知识快速入门](./quickstart.md)。
 
 其他示例说明了在配置 POM 文件时，如何将应用程序部署到 Azure Spring Cloud。 
-* [启动第一个应用](spring-cloud-quickstart.md)
-* [生成并运行微服务](spring-cloud-quickstart-sample-app-introduction.md)
+* [启动第一个应用](./quickstart.md)
+* [生成并运行微服务](./quickstart-sample-app-introduction.md)
 
 本文介绍所需的依赖项，以及如何将它们添加到 POM 文件。
 
@@ -142,7 +142,7 @@ Azure Spring Cloud 支持 Java 8 和 Java 11。 托管环境包含用于 Azure �
 
 若要准备要部署到 Azure Spring Cloud 的现有 Spring Boot 应用程序，请按以下部分中所述，在应用程序 POM 文件中包含 Spring Boot 和 Spring Cloud 依赖项。
 
-Azure Spring Cloud 仅支持使用 Spring Boot 版本2.1 或 2.2 的 Spring Boot 应用。 下表列出了支持的 Spring Boot 和 Spring Cloud 组合：
+Azure Spring Cloud 支持 Spring Boot 版本 2.2、2.3、2.4。 下表列出了支持的 Spring Boot 和 Spring Cloud 组合：
 
 Spring Boot 版本 | Spring Cloud 版本
 ---|---
@@ -151,7 +151,7 @@ Spring Boot 版本 | Spring Cloud 版本
 2.4.1+ | 2020.0.0
 
 > [!NOTE]
-> 我们发现 Spring Boot 2.4.0 在应用和 Eureka 之间的 TLS 身份验证存在问题，请使用 2.4.1 版或更高版本。 如果坚持使用 2.4.0，请参阅我们的[常见问题解答](./spring-cloud-faq.md?pivots=programming-language-java#development)以获取解决方法。
+> 我们发现 Spring Boot 2.4.0 在应用和 Eureka 之间的 TLS 身份验证存在问题，请使用 2.4.1 版或更高版本。 如果坚持使用 2.4.0，请参阅我们的[常见问题解答](./faq.md?pivots=programming-language-java#development)以获取解决方法。
 
 ### <a name="dependencies-for-spring-boot-version-2223"></a>Spring Boot 版本 2.2/2.3 的依赖项
 
@@ -284,7 +284,7 @@ public class GatewayApplication {
 
 ### <a name="distributed-tracing"></a>分布式跟踪
 
-还需让 Azure Application Insights 实例能够兼容 Azure Spring Cloud 服务实例。 若要了解如何将 Application Insights 与 Azure Spring Cloud 配合使用，请参阅[有关分布式跟踪的文档](spring-cloud-tutorial-distributed-tracing.md)。
+还需让 Azure Application Insights 实例能够兼容 Azure Spring Cloud 服务实例。 若要了解如何将 Application Insights 与 Azure Spring Cloud 配合使用，请参阅[有关分布式跟踪的文档](./how-to-distributed-tracing.md)。
 
 #### <a name="spring-boot-2223"></a>Spring Boot 2.2/2.3
 在 pom.xml 文件的 dependencies 节中包括下面的 `spring-cloud-starter-sleuth` 和 `spring-cloud-starter-zipkin` 依赖项：
@@ -312,14 +312,14 @@ public class GatewayApplication {
 
 ## <a name="see-also"></a>另请参阅
 * [分析应用程序日志和指标](./diagnostic-services.md)
-* [设置配置服务器](spring-cloud-tutorial-config-server.md)
-* [将分布式跟踪与 Azure Spring Cloud 配合使用](spring-cloud-tutorial-distributed-tracing.md)
+* [设置配置服务器](./how-to-config-server.md)
+* [将分布式跟踪与 Azure Spring Cloud 配合使用](./how-to-distributed-tracing.md)
 * [Spring 快速入门指南](https://spring.io/quickstart)
 * [Spring Boot 文档](https://spring.io/projects/spring-boot)
 
 ## <a name="next-steps"></a>后续步骤
 
-本主题介绍了如何配置 Java Spring 应用程序，以便将其部署到 Azure Spring Cloud。 若要了解如何设置配置服务器实例，请参阅[设置配置服务器实例](spring-cloud-tutorial-config-server.md)。
+本主题介绍了如何配置 Java Spring 应用程序，以便将其部署到 Azure Spring Cloud。 若要了解如何设置配置服务器实例，请参阅[设置配置服务器实例](./how-to-config-server.md)。
 
 GitHub 中提供了更多示例：[Azure Spring Cloud 示例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)。
 ::: zone-end

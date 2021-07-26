@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 8/7/2020
 ms.author: baanders
-ms.openlocfilehash: 32c02750f99f1aa6733d9c6dd673ffe4964978f4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9b7a2f3c4b8909a33010797c74bf8ce9631af68b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303743"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789672"
 ---
 > [!TIP]
 > 创建模型后，建议先离线对其进行验证，然后再将其上传到 Azure 数字孪生实例。
 
-有一个与语言无关的示例可用于验证模型文档，以确保 DTDL 在上传到实例之前是正确的。 该示例位于这里：[DTDL 验证程序示例](/samples/azure-samples/dtdl-validator/dtdl-validator)。
+有一个与语言无关的 [DTDL 验证程序示例](/samples/azure-samples/dtdl-validator/dtdl-validator)可用于验证模型文档，以确保 DTDL 在上传到实例之前是正确的。
 
-DTDL 验证程序示例基于.NET DTDL 分析程序库构建，该库可以在 NuGet 上作为客户端库使用：[Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。 你也可以直接使用该库来设计自己的验证解决方案。 使用分析程序库时，请确保使用与 Azure 数字孪生正在运行的版本兼容的版本。 目前，此版本为 3.12.4。
+DTDL 验证程序示例基于.NET DTDL 分析程序库构建，该库可以在 NuGet 上作为客户端库使用：Microsoft.Azure.DigitalTwins.Parser。 你也可以直接使用该库来设计自己的验证解决方案。 使用分析程序库时，请确保使用与 Azure 数字孪生正在运行的版本兼容的版本。 目前，此版本为 3.12.4。
 
-若要详细了解该验证程序示例和分析程序库（包括用法示例），请参阅[操作指南：分析和验证模型](../articles/digital-twins/how-to-parse-models.md)。
+若要详细了解该验证程序示例和分析程序库（包括用法示例），请参阅操作指南：分析和验证模型。

@@ -11,75 +11,100 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dddfb8426b769c06cb5b7494431b7eee34dbf9e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: MT
+ms.openlocfilehash: dfa329999cb7b53835907196ceaa9b02920da149
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410889"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124250"
 ---
 # <a name="adsync-service-account"></a>ADSync 服务帐户
-Azure AD Connect 会安装一个本地服务用于协调 Active Directory 与 Azure Active Directory 之间的同步。  Microsoft Azure AD 同步同步服务 (ADSync) 在本地环境中的服务器上运行。  默认会在“快速”安装中设置该服务的凭据，不过，用户也可以根据组织的安全要求自定义凭据。  这些凭据不会用于连接到本地林或 Azure Active Directory。
+Azure AD Connect 会安装一个本地服务用于协调 Active Directory 与 Azure Active Directory 之间的同步。  Microsoft Azure AD Sync 同步服务 (ADSync) 在本地环境中的服务器上运行。  默认会在“快速”安装中设置该服务的凭据，不过，用户也可以根据组织的安全要求自定义凭据。  这些凭据不会用于连接到本地林或 Azure Active Directory。
 
 选择 ADSync 服务帐户是在安装 Azure AD Connect 之前要做出的一项重要规划决策。  安装后尝试更改凭据会导致服务无法启动、无法访问同步数据库，以及无法在连接的目录（Azure 和 AD DS）中进行身份验证。  在还原原始凭据之前无法进行同步。
 
-## <a name="the-default-adsync-service-account"></a>默认的 ADSync 服务帐户
+同步服务可在不同帐户下运行。 它可以在虚拟服务帐户 (VSA)、托管服务帐户 (gMSA/sMSA) 或普通用户帐户下运行。 执行全新安装时，支持的选项已随着 2017 年 4 月版和 2021 年 3 月版 Azure AD Connect 的发布而发生变化。 如果从早期版本的 Azure AD Connect 升级，这些附加选项将不可用。 
 
-在成员服务器上运行时，AdSync 服务将在虚拟服务帐户 (VSA) 的上下文中运行。  由于产品限制，在域控制器上安装时会创建一个自定义服务帐户。  如果使用“快速”设置时该服务帐户不能满足组织的安全要求，请选择“自定义”选项来部署 Azure AD Connect。  然后选择符合组织要求的服务帐户选项。
 
->[!NOTE]
->在域控制器上安装时，默认服务帐户的格式为 Domain\AAD_InstallationIdentifier。  此帐户的密码是随机生成的，这为恢复和密码轮换带来了重大挑战。  Microsoft 建议在域控制器上执行初始安装期间自定义服务帐户，以使用独立帐户或组托管服务帐户 (sMSA/gMSA)
+|帐户的类型|安装选项|说明| 
+|-----|------|-----|
+|虚拟服务帐户|快速和自定义，2017 年 4 月版及更高版本| 虚拟服务帐户用于所有快速安装，但域控制器上的安装除外。 使用自定义安装时，除非使用了其他选项，否则此选项是默认选项。| 
+|托管服务帐户|自定义，2017 年 4 月版及更高版本|如果你使用远程 SQL Server，则我们建议使用组托管服务帐户。 |
+|托管服务帐户|快速和自定义，2021 年 3 月版及更高版本|在域控制器上安装时，将在执行快速安装期间创建前缀为 ADSyncMSA_ 的独立托管服务帐户。 使用自定义安装时，除非使用了其他选项，否则此选项是默认选项。|
+|用户帐户|快速和自定义，2017 年 4 月版至 2021 年 3 月版|在域控制器上安装时，将在执行快速安装期间创建前缀为 AAD_ 的用户帐户。 使用自定义安装时，除非使用了其他选项，否则此选项是默认选项。|
+|用户帐户|快速和自定义，2017 年 3 月版及更早版本|在执行快速安装期间将创建前缀为 AAD_ 的用户帐户。 使用自定义安装时，可指定另一个帐户。| 
 
-|Azure AD Connect 的位置|已创建服务帐户|
-|-----|-----|
-|成员服务器|NT SERVICE\ADSync|
-|域控制器|Domain\AAD_74dc30c01e80（参阅注释）|
+>[!IMPORTANT]
+> 如果将 Connect 与 2017 年 3 月的版本或更早版本一起使用，则不应重置服务帐户中的密码，因为出于安全原因，Windows 会销毁加密密钥。 无法在不重装 Azure AD Connect 的情况下将帐户更改为任何其他帐户。 如果从 2017 年 4 月版或更高版本升级到某个版本，则支持更改服务帐户的密码，但无法更改使用的帐户。 
 
-## <a name="custom-adsync-service-accounts"></a>自定义 ADSync 服务帐户
-Microsoft 建议在虚拟服务帐户或者独立或组托管服务帐户的上下文中运行 ADSync 服务。  域管理员还可以选择创建一个根据具体组织安全要求预配的服务帐户。   若要自定义安装期间使用的服务帐户，请在“快速设置”页上选择如下所示的“自定义”选项。   提供了以下选项：
+> [!IMPORTANT]
+> 只能在首次安装时设置服务帐户。 安装完成后，不支持更改服务帐户。 如果你需要更改服务帐户密码，我们支持此操作，在[此处](how-to-connect-sync-change-serviceacct-pass.md)可找到相关说明。
 
-- 默认帐户– Azure AD Connect 将按上文所述预配服务帐户
-- 托管服务帐户–使用管理员预配的独立或组 MSA
-- 域帐户–使用管理员预配的域服务帐户
+下面是同步服务帐户的默认、建议和支持的选项表格。 
 
-![“Azure AD Connect 快速设置”页的屏幕截图，其中显示了“自定义”或“使用快速设置”选项按钮。](media/concept-adsync-service-account/adsync1.png)
+图例： 
 
-![Azure AD Connect“安装所需组件”页的屏幕截图，其中选定了“使用现有托管服务帐户”选项。](media/concept-adsync-service-account/adsync2.png)
+- **粗体** 表示默认选项，在大多数情况下也是建议的选项。 
+- *斜体* 表示建议选项（当该选项不是默认选项时）。 
+- 非粗体 - 支持的选项 
+- 本地帐户 - 服务器上的本地用户帐户 
+- 域帐户 - 域用户帐户 
+- sMSA - [独立托管服务帐户](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA - [组托管服务帐户](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 
 
-## <a name="diagnosing-adsync-service-account-changes"></a>诊断 ADSync 服务帐户更改
-安装后更改 ADSync 服务的凭据会导致服务无法启动、无法访问同步数据库，以及无法在连接的目录（Azure 和 AD DS）中进行身份验证。  为数据库授予对新 ADSync 服务帐户的访问权限并不足以从此问题恢复。 在还原原始凭据之前无法进行同步。
+|计算机类型 |**LocalDB</br> 快速**|**LocalDB/LocalSQL</br> 自定义**|**远程 SQL</br> 自定义**|
+|-----|-----|-----|-----|
+|**加入域的计算机**|**VSA**|**VSA**</br> *sMSA*</br> *gMSA*</br> 本地帐户</br> 域帐户| *gMSA* </br>域帐户|
+|域控制器| **sMSA**|**sMSA** </br>*gMSA*</br> 域帐户|*gMSA*</br>域帐户| 
 
-无法启动时，ADSync 服务将在事件日志中发出错误级消息。  该消息的内容根据使用的是内置数据库 (localdb) 还是完整 SQL 而异。  下面是可能显示的事件日志条目示例。
+## <a name="virtual-service-account"></a>虚拟服务帐户 
 
-### <a name="example-1"></a>示例 1
+虚拟服务帐户是一种特殊类型的托管本地帐户，它不带有密码，由 Windows 自动管理。 
 
-找不到 AdSync 服务加密密钥，或者已重新创建这些密钥。  在更正此问题之前无法进行同步。
+ ![虚拟服务帐户](media/concept-adsync-service-account/account-1.png)
 
-解决此问题如果更改了 AdSync 服务登录凭据，则 Microsoft Azure AD 同步加密密钥将不可访问。  如果更改了凭据，请使用“服务”应用程序将登录帐户改回到其原始配置值（例如 NT SERVICE\AdSync），并重启该服务。  这可以使 AdSync 服务立即恢复正常运行。
+虚拟服务帐户适用于同步引擎与 SQL 位于同一台服务器上的方案。 如果你使用远程 SQL，则我们建议改用组托管服务帐户。 
 
-有关详细信息，请参阅以下[文章](./whatis-hybrid-identity.md)。
+由于 [Windows 数据保护 API (DPAPI)](/previous-versions/ms995355(v=msdn.10)) 的问题，无法在域控制器上使用虚拟服务帐户。 
 
-### <a name="example-2"></a>示例 2
+## <a name="managed-service-account"></a>托管服务帐户 
 
-由于无法与本地数据库 (localdb) 建立连接，该服务无法启动。
+如果你使用远程 SQL Server，则我们建议使用组托管服务帐户。 有关如何为组托管服务帐户准备 Active Directory 的详细信息，请参阅[组托管服务帐户概述](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))。 
 
-解决此问题如果更改了 AdSync 服务登录凭据，则 Microsoft Azure AD 同步服务将失去访问本地数据库提供程序的权限。  如果更改了凭据，请使用“服务”应用程序将登录帐户改回到其原始配置值（例如 NT SERVICE\AdSync），并重启该服务。  这可以使 AdSync 服务立即恢复正常运行。
+要使用此选项，请在[安装所需组件](how-to-connect-install-custom.md#install-required-components)页上，选择“使用现有服务帐户”，并选择“托管服务帐户”。 
 
-有关详细信息，请参阅以下[文章](./whatis-hybrid-identity.md)。
+ ![托管服务帐户](media/concept-adsync-service-account/account-2.png)
 
-其他详细信息：提供程序返回了以下错误信息：
- 
+还支持使用独立托管服务帐户。 但是，这些帐户只能在本地计算机上使用，因此使用这些帐户相对默认虚拟服务帐户而言并没有好处。 
 
-``` 
-OriginalError=0x80004005 OLEDB Provider error(s): 
-Description  = 'Login timeout expired'
-Failure Code = 0x80004005
-Minor Number = 0 
-Description  = 'A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online.'
-```
+### <a name="auto-generated-standalone-managed-service-account"></a>自动生成的独立托管服务帐户 
+
+如果在域控制器上安装 Azure AD Connect，则安装向导将创建独立的托管服务帐户（除非在自定义设置中指定了要使用的帐户）。 该帐户的前缀为 **ADSyncMSA_** ，用作实际同步服务的运行方式帐户。 
+
+此帐户是一个托管域帐户，它不带有密码，由 Windows 自动管理。 
+
+此帐户适用于同步引擎与 SQL 位于域控制器上的方案。 
+
+## <a name="user-account"></a>用户帐户 
+
+本地服务帐户由安装向导创建（除非在自定义设置指定了要使用的帐户）。 该帐户具有 AAD_ 前缀，可用作实际同步服务的运行帐户。 如果在域控制器上安装 Azure AD Connect，则会在该域中创建帐户。 在以下情况下，AAD_ 服务帐户必须位于域中： 
+- 使用运行 SQL Server 的远程服务器 
+- 使用需要身份验证的代理 
+
+ ![用户帐户 (user account)](media/concept-adsync-service-account/account-3.png)
+
+该帐户带有永不过期的长复杂密码。 
+
+此帐户用于以安全方式存储其他帐户的密码。 其他这些帐户密码以加密形式存储在数据库中。 通过使用 Windows 数据保护 API (DPAPI) 的密钥加密服务来保护加密密钥的私钥。 
+
+如果使用完整的 SQL Server，服务帐户将是为同步引擎创建的数据库的 DBO。 如果使用任何其他权限，服务无法按预期工作。 此外会创建 SQL 登录名。 
+
+还会为该帐户授予对文件、注册表项和与同步引擎相关的其他对象的权限。 
+
+
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

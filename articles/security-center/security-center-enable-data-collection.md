@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 16902a8733c4b4d423deb47c5a8980284d8e690e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f7b09c47d94443edc81a66028fa687aa48e843e7
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964078"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002335"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>从 Azure 安全中心为代理和扩展配置自动预配
 
@@ -28,7 +28,7 @@ Azure 安全中心使用资源的相关代理或扩展以及已启用的数据�
 | 发布状态：          | **功能**：自动预配功能已正式发布 (GA)<br>**代理和扩展**：适用于 Azure VM 的 Log Analytics 代理已正式发布，Microsoft Dependency Agent 为预览版，适用于 Kubernetes 的策略加载项已正式发布                |
 | 定价：                | 免费                                                                                                                                                                                                                         |
 | 支持的目标： | ![是](./media/icons/yes-icon.png) Azure 计算机<br>![否](./media/icons/no-icon.png) Azure Arc 计算机<br>![否](./media/icons/no-icon.png) Kubernetes 节点<br>![否](./media/icons/no-icon.png) 虚拟机规模集 |
-| 云：                 | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov、China Gov、其他 Gov                                                                                                      |
+| 云：                 | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov，Azure 中国                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
 ## <a name="how-does-security-center-collect-data"></a>安全中心如何收集数据？
@@ -69,11 +69,11 @@ Azure 安全中心使用资源的相关代理或扩展以及已启用的数据�
 1. 选择相关订阅。
 1. 在“自动预配”页中，将 Log Analytics 代理的状态设置为“打开” 。
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="启用 Log Analytics 代理的自动预配":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="启用 Log Analytics 代理的自动预配。":::
 
 1. 在配置选项窗格中，定义要使用的工作区。
 
-    :::image type="content" source="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png" alt-text="用于将 Log Analytics 代理自动预配到 VM 的配置选项" lightbox="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png":::
+    :::image type="content" source="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png" alt-text="用于将 Log Analytics 代理自动预配到 VM 的配置选项。" lightbox="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png":::
 
     - **将 Azure VM 连接到安全中心创建的默认工作区** - 安全中心在同一地理位置创建新的资源组和默认工作区，并将代理连接到该工作区。 如果订阅包含多个地理位置中的 VM，安全中心会创建多个工作区，以确保符合数据隐私要求。
 
@@ -86,9 +86,9 @@ Azure 安全中心使用资源的相关代理或扩展以及已启用的数据�
         > [!TIP]
         > 有关默认工作区的问题，请参阅：
         >
-        > - [安全中心创建的工作区中的 Azure Monitor 日志是否会产生费用？](/azure/security-center/faq-data-collection-agents.yml#am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center)
-        > - [创建的默认 Log Analytics 工作区的位置是哪里？](/azure/security-center/faq-data-collection-agents.yml#where-is-the-default-log-analytics-workspace-created)
-        > - [是否可以删除安全中心创建的默认工作区？](/azure/security-center/faq-data-collection-agents.yml#can-i-delete-the-default-workspaces-created-by-security-center)
+        > - [安全中心创建的工作区中的 Azure Monitor 日志是否会产生费用？](/azure/security-center/faq-data-collection-agents#am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center-)
+        > - [创建的默认 Log Analytics 工作区的位置是哪里？](/azure/security-center/faq-data-collection-agents#where-is-the-default-log-analytics-workspace-created-)
+        > - [是否可以删除安全中心创建的默认工作区？](/azure/security-center/faq-data-collection-agents#can-i-delete-the-default-workspaces-created-by-security-center-)
 
     - **将 Azure VM 连接到不同的工作区** - 从下拉列表中，选择用于存储收集的数据的工作区。 下拉列表包含所有订阅中的所有工作区。 你可以使用此选项从在不同订阅中运行的虚拟机收集数据，并将其全部存储在所选工作区中。  
 
@@ -118,7 +118,7 @@ Azure 安全中心使用资源的相关代理或扩展以及已启用的数据�
     1. 如果要为 Microsoft Dependency Agent 启用自动预配，请确保将 Log Analytics 代理设置为自动部署。
     1. 将相关扩展的状态切换为“打开”。
 
-        :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="切换以启用 K8 策略加载项的自动预配":::
+        :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="切换以启用 K8s 策略加载项的自动预配。":::
 
     1. 选择“保存”。 分配 Azure Policy 并创建修正任务。
 
@@ -133,7 +133,7 @@ Azure 安全中心使用资源的相关代理或扩展以及已启用的数据�
 
 1. 系统会询问你是否要重新配置之前已连接到默认工作区的受监视 VM：
 
-    :::image type="content" source="./media/security-center-enable-data-collection/reconfigure-monitored-vm.png" alt-text="查看用于重新配置受监视的 VM 的选项":::
+    :::image type="content" source="./media/security-center-enable-data-collection/reconfigure-monitored-vm.png" alt-text="重新配置受监视的 VM 的查看选项。":::
 
     - **否** - 新的工作区设置将仅应用于未安装 Log Analytics 代理的新发现的 VM。
     - **是** - 新的工作区设置将应用于所有 VM，当前连接到安全中心创建的工作区的每个 VM 都将重新连接到新的目标工作区。
@@ -181,7 +181,7 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> - 如果使用组策略对象 (GPO)，建议启用审核策略过程创建事件 4688 以及事件 4688 内的 CommandLine 字段。 有关过程创建事件 4688 的详细信息，请参阅安全中心的[常见问题解答](/azure/security-center/faq-data-collection-agents.yml#what-happens-when-data-collection-is-enabled)。 有关这些审核策略的详细信息，请参阅[审核策略建议](/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)。
+> - 如果使用组策略对象 (GPO)，建议启用审核策略过程创建事件 4688 以及事件 4688 内的 CommandLine 字段。 有关过程创建事件 4688 的详细信息，请参阅安全中心的[常见问题解答](/azure/security-center/faq-data-collection-agents#what-happens-when-data-collection-is-enabled-)。 有关这些审核策略的详细信息，请参阅[审核策略建议](/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)。
 > -  若要为[自适应应用程序控件](security-center-adaptive-application.md)启用数据收集，安全中心会在审核模式下配置本地 AppLocker 策略以允许所有应用程序。 这将导致 AppLocker 生成事件，然后由安全中心收集和利用这些事件。 请务必注意，不会在已配置 AppLocker 策略的任何计算机上配置此策略。 
 > - 若要收集 Windows 筛选平台[事件 ID 5156](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=5156)，需要启用[审核筛选平台连接](/windows/security/threat-protection/auditing/audit-filtering-platform-connection) (Auditpol /set /subcategory:"Filtering Platform Connection" /Success:Enable)
 >
@@ -193,7 +193,7 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 1. 在 Azure 门户的“安全中心”菜单中，选择“定价和设置”。
 1. 选择相关工作区。 工作区的唯一数据收集事件是此页上描述的 Windows 安全事件。
 
-    :::image type="content" source="media/security-center-enable-data-collection/event-collection-workspace.png" alt-text="设置要存储在工作区中的安全事件数据":::
+    :::image type="content" source="media/security-center-enable-data-collection/event-collection-workspace.png" alt-text="设置要存储在工作区中的安全事件数据。":::
 
 1. 选择要存储的原始事件数据量，然后选择“保存”。
 
@@ -263,7 +263,7 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 1. 选择“自动预配”。
 1. 将相关代理的状态切换为“关闭”。
 
-    :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="切换以禁用按代理类型的自动预配":::
+    :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="切换以禁用按代理类型进行的自动预配。":::
 
 1. 选择“保存”。 自动预配处于禁用状态时，不会显示默认的工作区配置部分：
 
@@ -271,7 +271,7 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 
 
 > [!NOTE]
->  禁用自动预配不会从曾预配了 Log Analytics 代理的 Azure VM 中删除该代理。 有关删除 OMS 扩展的信息，请参阅[如何删除安全中心安装的 OMS 扩展](/azure/security-center/faq-data-collection-agents.yml#remove-oms)。
+>  禁用自动预配不会从曾预配了 Log Analytics 代理的 Azure VM 中删除该代理。 有关删除 OMS 扩展的信息，请参阅[如何删除安全中心安装的 OMS 扩展](/azure/security-center/faq-data-collection-agents#how-do-i-remove-oms-extensions-installed-by-security-center-)。
 >
 
 

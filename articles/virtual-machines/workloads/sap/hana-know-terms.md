@@ -10,15 +10,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2020
+ms.date: 4/16/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92ef2e59dab1921eae8e7d88249e75116601c597
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a243b348c01e6d1297a6a1fe016e3b6bc8d98d47
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101670859"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719072"
 ---
 # <a name="know-the-terms"></a>了解术语
 
@@ -41,12 +41,11 @@ ms.locfileid: "101670859"
     - **I 类**：S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224 和 S224m
     - **II 类**：S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm 和 S960m
 - **缩放单元**：定义 HANA 大型实例的 Microsoft 内部部署大小。 在部署 HANA 大型实例单元之前，需要在数据中心位置部署一个由计算、网络和存储机架组成的 HANA 大型实例缩放单元。 这样的部署称为 HANA 大型实例缩放单元，从修订版 4（请参阅下文）开始，我们使用替代术语“大型实例行”
-- 修订：HANA 大型实例缩放单元有两个不同的缩放单元修订。 这两个修订在体系结构方面不同，接近于 Azure 虚拟机主机
-    - “修订 3”(Rev 3)：是从 2016 年中期开始部署的原始设计
-    - “修订 4”(Rev 4)：是一种新的设计，可提供与 Azure 虚拟机主机更接近的网络延迟，并了降低 Azure VM 与 HANA 大型实例单位之间的网络延迟 
-    - “修订 4.2”(Rev 4.2)：在现有修订 4 DC 基础上，资源更名为 BareMetal 基础结构。  客户可以从 Azure 门户中作为 BareMetal 实例访问其资源。 
+- 修订：HANA 大型实例缩放单元有两个不同的缩放单元修订。 这两个修订在体系结构和接近 Azure 虚拟主机方面有所不同。
+    - “修订版 3”(Rev 3) 是在 2016 年中期部署的初始设计。
+    - “修订版 4.2”(Rev 4.2) 是一种新的设计，它提供与 Azure 虚拟主机更接近的功能。 Rev 4.2 在 Azure VM 与 HANA 大型实例单元之间实现了超低网络延迟。 Azure 门户中的资源称为 BareMetal 基础结构。 客户可以从 Azure 门户中作为 BareMetal 实例访问其资源。 
 
 其他各种资源介绍了如何在云中部署 SAP 工作负荷。 需要由拥有相关经验的人员来规划 Azure 中的 SAP HANA 的部署，他们应该了解 Azure IaaS 的原理，知道如何在 Azure IaaS 上部署 SAP 工作负荷。 在继续之前，请参阅[在 Azure 虚拟机上使用 SAP 解决方案](get-started.md)来了解详细信息。 
 
-后续步骤
-- 请参阅 [HLI 认证](hana-certification.md)
+## <a name="next-steps"></a>后续步骤
+- 请参阅 [HLI 认证](hana-certification.md)。

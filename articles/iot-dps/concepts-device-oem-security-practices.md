@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dad46e21b35225855d787c367d112362fc95a463
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90527201"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010535"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>适用于 Azure IoT 设备制造商的安全做法
 随着越来越多的制造商发行 IoT 设备，了解常见做法指导会很有帮助。 本文汇总了在制造与 Azure IoT 设备预配服务 (DPS) 配合使用的设备时要考虑的建议安全做法。  
@@ -177,7 +177,7 @@ TPM 的缺点：
     > 如果使用软件 TPM，现在可以安装它。  同时提取 EK_pub。
 
 #### <a name="step-4-device-is-packaged-and-sent-to-the-warehouse"></a>步骤 4：将设备打包并运送到仓库
-在部署之前，设备可以在仓库中存放 6-12 个月。 
+一台设备有时会在仓库中放置长达一年的时间，然后才进行 DPS 部署和预配。  如果某个设备在部署之前在仓库中放置了较长时间，则部署该设备的客户可能需要更新固件、软件或过期的凭据。
 
 #### <a name="step-5-device-is-installed-into-the-location"></a>步骤 5：将设备安装在目标位置
 设备抵达其最终目标位置后，将通过 DPS 完成自动预配过程。

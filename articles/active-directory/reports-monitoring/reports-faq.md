@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45b6b182d030c267dcec7ed57c0c0dd1901b0cb1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4da0083a236900037b388798d825515e94613c20
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97935081"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533695"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>有关 Azure Active Directory 报告的常见问题解答
 
@@ -29,15 +29,15 @@ ms.locfileid: "97935081"
 
 ## <a name="getting-started"></a>入门 
 
-问：我目前正在使用 `https://graph.windows.net/<tenant-name>/reports/` 终结点 API 以编程方式将 Azure AD 审核和集成的应用程序使用情况报告拉取到报告系统中。我应当切换到什么？
+问：我现在使用 `https://graph.windows.net/<tenant-name>/reports/` 终结点 API 以编程方式将 Azure AD 审核和集成的应用程序使用情况报告拉取到报告系统中。我应该切换到什么？
 
 **答：** 请查看 [API 参考](https://developer.microsoft.com/graph/)，了解如何 [使用 API 访问活动报告](concept-reporting-api.md)。 此终结点有两个报告（“审核”和“登录”），它们提供了你在旧的 API 终结点中获取的所有数据。  此新的终结点还有一个登录报告，其中包含可用来获取应用使用情况、设备使用情况和用户登录信息的 Azure AD Premium 许可证。
 
 ---
 
-问：我目前正在使用 `https://graph.windows.net/<tenant-name>/reports/` 终结点 API 以编程方式将 Azure AD 安全报告（特定类型的检测，如泄漏的凭据或来自匿名 IP 地址的登录）拉取到报告系统中。我应当切换到什么？
+问：我现在使用 `https://graph.windows.net/<tenant-name>/reports/` 终结点 API 以编程方式将 Azure AD 安全报告（特定类型的检测，例如泄漏的凭据或来自匿名 IP 地址的登录）拉取到报告系统中。我应该切换到什么？
 
-答：可以使用[标识保护风险检测 API](../identity-protection/howto-identity-protection-graph-api.md) 通过 Microsoft Graph 访问安全检测。 此新格式在数据查询方式上提供了更大的灵活性，具有高级筛选、字段选择等功能，并将风险检测标准化为一种类型，以便轻松集成到 SIEM 和其他数据收集工具中。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 但是，[新 API 使用 Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta)，它是 Microsoft 365 或 Azure AD 等 API 的 Microsoft 标准。 因此，需要做的工作可以扩展当前 Microsoft Graph 投资或者帮助你开始向这个新标准平台过渡。
+答：可以使用[标识保护风险检测 API](../identity-protection/howto-identity-protection-graph-api.md) 通过 Microsoft Graph 访问安全检测。 此新格式在数据查询方式上提供了更大的灵活性，具有高级筛选、字段选择等功能，并将风险检测标准化为一种类型，以便轻松集成到 SIEM 和其他数据收集工具中。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 但是，[新 API 使用 Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true)，它是 Microsoft 365 或 Azure AD 等 API 的 Microsoft 标准。 因此，需要做的工作可以扩展当前 Microsoft Graph 投资或者帮助你开始向这个新标准平台过渡。
 
 ---
 
@@ -99,9 +99,9 @@ ms.locfileid: "97935081"
 
 ---
 
-## <a name="risky-sign-ins"></a>有风险的登录
+## <a name="risky-sign-ins"></a>风险登录
 
-问：标识保护中存在风险检测，但登录报告中未显示相应的登录。这是正常情况吗？
+问：标识保护中存在风险检测，但登录报告中未显示相应的登录。这是正常的吗？
 
 **答：** 是的，标识保护会评估所有身份验证流的风险，无论其为交互式还是非交互式。 但是，所有登录报告仅显示交互式登录。
 
@@ -137,7 +137,7 @@ ms.locfileid: "97935081"
 
 * 导航到 [Azure门户](https://portal.azure.com)中的登录报告。
 * 单击要进行故障排除的登录。
-* 导航到“条件访问”选项卡。在这里，可以查看影响登录的所有策略以及每个策略的结果。 
+* 导航到“条件访问”选项卡。在这里，可以查看影响了登录的所有策略以及每个策略的结果。 
     
 问：条件访问状态都有哪些可能的值？
 
@@ -156,10 +156,10 @@ ms.locfileid: "97935081"
 * **未应用**：这可能是因为不符合策略条件。
 * **未启用**：这是由于策略处于禁用状态。 
     
-**问：所有登录报告中的策略名称与 CA 中的策略名称不匹配，为什么？**
+问：所有登录报告中的策略名称与 CA 中的策略名称不匹配，为什么？
 
 答：所有登录报告中的策略名称均基于登录时的条件访问策略名称。 如果你后来（即登录后）更新了策略名称，则这可能与 CA 中的策略名称不一致。
 
-问：我的登录因条件访问策略而被阻止，但登录活动报告显示已登录成功。为什么？
+问：我的登录因条件访问策略而被阻止，但登录活动报告显示已登录成功，为什么？
 
 答：在应用了条件访问时，登录报告目前可能无法显示 Exchange ActiveSync 方案的准确结果。 在有些情况下，报告中的登录结果显示已成功登录，但由于条件访问策略，登录实际上失败了。

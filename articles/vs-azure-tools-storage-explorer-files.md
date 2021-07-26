@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 84f6473c25a5be11eeda7cd2b311d93a7226a78c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0387aaecd45a2f09acc8d9ad7af230a62da6ed1
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96488385"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109628493"
 ---
-# <a name="using-storage-explorer-with-azure-file-storage"></a>将存储资源管理器与 Azure 文件存储配合使用
+# <a name="using-storage-explorer-with-azure-files"></a>将存储资源管理器与 Azure 文件存储配合使用
 
 Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中提供文件共享的服务。 支持 SMB 2.1 和 SMB 3.0。 通过 Azure 文件存储，可以将依赖文件共享的旧版应用程序快速迁移到 Azure 且无成本高昂的重写。 可以使用文件存储向外公开数据，或者私下存储应用程序数据。 本文介绍如何使用存储资源管理器处理文件共享和文件。
 
@@ -145,7 +145,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 ## <a name="manage-access-policies-for-a-file-share"></a>管理文件共享的访问策略
 
-以下步骤演示了如何管理（添加和删除）文件共享的访问策略。 访问策略用于创建 SAS URL，用户可以通过该 URL 在定义的时段访问存储文件资源。
+以下步骤演示了如何管理（添加和删除）文件共享的访问策略。 访问策略用于创建 SAS URL，用户可以通过该 URL 在定义的时段访问 Azure 文件存储资源。
 
 1. 打开存储资源管理器。
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 04/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 84fd1a2d3d0dc4ce6960469ea3212b8ca1d4d07c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9480bc7ddb03ba537ea7f13057492aa05ed66bae
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023017"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770156"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>停用和删除 StorSimple Virtual Array
 
@@ -27,7 +27,7 @@ ms.locfileid: "96023017"
 
 停用 StorSimple 虚拟阵列时，会断开设备与相应 StorSimple Device Manager 服务之间的连接。 本教程介绍了如何完成以下操作：
 
-* 停用设备 
+* 停用设备
 * 删除已停用的设备
 
 本文中的信息仅适用于 StorSimple 虚拟阵列。 有关 8000 系列的信息，请转到“如何[停用或删除设备](./storsimple-8000-deactivate-and-delete-device.md)”。
@@ -42,11 +42,11 @@ ms.locfileid: "96023017"
 
 ## <a name="deactivate-a-device"></a>停用设备
 
-若要停用设备，请执行以下步骤。
+若要停用设备，请执行以下步骤。 设备必须处于联机状态才能停用。
 
 #### <a name="to-deactivate-the-device"></a>停用设备
 
-1. 在服务中，转到“管理”>“设备”。 在“设备”边栏选项卡中，单击并选择要停用的设备。
+1. 在服务中，转到“管理”>“设备”。 在“设备”边栏选项卡中，单击并选择要停用的设备。 设备状态必须为“联机”。
    
     ![选择要停用的设备](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
 2. 在“设备仪表板”边栏选项卡中，单击“...更多”，并从列表中选择“停用”。
@@ -59,6 +59,7 @@ ms.locfileid: "96023017"
     停用过程将开始并且需要花费几分钟时间才能完成。
    
     ![停用正在进行](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete2.png)
+
 4. 停用后，将刷新设备列表。
    
     ![停用完成](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete3.png)
@@ -67,7 +68,7 @@ ms.locfileid: "96023017"
 
 ## <a name="delete-the-device"></a>删除设备
 
-必须先停用设备，然后才能将其删除。 删除设备会将其从连接到该服务的设备列表中删除。 之后，该服务不再能够管理已删除的设备。 但是，与设备关联的数据将保留在云中。 然后此数据产生费用。
+必须先停用设备，然后才能将其删除。 删除设备会将其从连接到该服务的设备列表中删除。 之后，该服务不再能够管理已删除的设备。 但是，与设备关联的数据会保留在云中。 然后此数据产生费用。
 
 若要删除设备，请执行以下步骤。
 

@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: c4ca8d8ac24ac174158957e44b5eabe4a89a5340
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: edc74f0379a15c9119d2e3ed4f207832c367866b
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775198"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804027"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>在 Azure 政府中设置设备 
 
@@ -26,7 +26,7 @@ ms.locfileid: "104775198"
 
 该脚本在现有物理服务器或虚拟化服务器上设置 Azure Migrate 设备。
 
-- 用作设备的服务器须运行 Windows Server 2016，具有 32 GB 内存、8 个 vCPU、约 80 GB 的磁盘存储和外部虚拟交换机。 需要使用静态或动态 IP 地址，且能访问 Internet。
+- 用作设备的服务器须运行 Windows Server 2016，具有 32 GB 内存、8 个 vCPU、约 80 GB 的磁盘存储和外部虚拟交换机。 它需要静态或动态 IP 地址。 
 - 在部署设备之前，请先检查针对 [VMware 上的服务器](migrate-appliance.md#appliance---vmware)和 [Hyper-V 上的服务器](migrate-appliance.md#appliance---hyper-v)以及[物理服务器](migrate-appliance.md#appliance---physical)的详细设备要求。
 - 请勿在现有 Azure Migrate 设备上运行脚本。
 
@@ -47,7 +47,7 @@ ms.locfileid: "104775198"
 1. 在下载文件的服务器上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
 3. 验证最新设备版本和哈希值：
 
@@ -62,7 +62,7 @@ ms.locfileid: "104775198"
 
 - 安装代理和 Web 应用程序。
 - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。 [了解详细信息](https://www.microsoft.com/download/details.aspx?id=7435)。
+- 下载并安装 IIS 可重写模块。
 - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置。
 - 创建日志和配置文件，如下所示：
     - 配置文件：%ProgramData%\Microsoft Azure\Config
@@ -101,7 +101,7 @@ ms.locfileid: "104775198"
 1. 在下载文件的服务器上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
 3. 验证最新设备版本和哈希值：
 
@@ -117,7 +117,7 @@ ms.locfileid: "104775198"
 
 - 安装代理和 Web 应用程序。
 - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。 [了解详细信息](https://www.microsoft.com/download/details.aspx?id=7435)。
+- 下载并安装 IIS 可重写模块。
 - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置。
 - 创建日志和配置文件，如下所示：
     - 配置文件：%ProgramData%\Microsoft Azure\Config
@@ -155,7 +155,7 @@ ms.locfileid: "104775198"
 1. 在已将文件下载到其中的服务器上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
 3. 验证最新设备版本和哈希值：
 
@@ -170,7 +170,7 @@ ms.locfileid: "104775198"
 
 - 安装代理和 Web 应用程序。
 - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。 [了解详细信息](https://www.microsoft.com/download/details.aspx?id=7435)。
+- 下载并安装 IIS 可重写模块。
 - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置。
 - 创建日志和配置文件，如下所示：
     - 配置文件：%ProgramData%\Microsoft Azure\Config

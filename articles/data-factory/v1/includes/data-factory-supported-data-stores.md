@@ -32,7 +32,7 @@ ms.locfileid: "108753149"
 | &nbsp; |[Teradata](../data-factory-onprem-teradata-connector.md)* |✓ | |
 | **NoSQL** |[Cassandra](../data-factory-onprem-cassandra-connector.md)* |✓ | |
 | &nbsp; |[MongoDB](../data-factory-on-premises-mongodb-connector.md)* |✓ | |
-| **File** |[Amazon S3](../data-factory-amazon-simple-storage-service-connector.md) |✓ | |
+| **文件** |[Amazon S3](../data-factory-amazon-simple-storage-service-connector.md) |✓ | |
 | &nbsp; |[文件系统](../data-factory-onprem-file-system-connector.md)* |✓ |✓ |
 | &nbsp; |[FTP](../data-factory-ftp-connector.md) |✓ | |
 | &nbsp; |[HDFS](../data-factory-hdfs-connector.md)* |✓ | |

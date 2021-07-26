@@ -4,15 +4,15 @@ description: 了解如何使用 Azure DataBox 将文件从本地网络附加存�
 author: fauhse
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 04/02/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: a8420d23c8bda29290722975ada2acca6733f0e7
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: eb3327ad84310e5dae55103171f7677d5b2c06d1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491658"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756154"
 ---
 # <a name="use-databox-to-migrate-from-network-attached-storage-nas-to-azure-file-shares"></a>使用 DataBox 从网络附加存储 (NAS) 迁移到 Azure 文件共享
 
@@ -29,11 +29,11 @@ ms.locfileid: "106491658"
 
 ## <a name="migration-goals"></a>迁移目标
 
-目标是将 NAS 设备上的共享迁移到 Azure，并使其成为原生的 Azure 文件共享（无需 Windows Server 即可使用）。 在执行这种迁移时，需要保证生产数据的完整性以及迁移期间的可用性。 要满足后一项要求，需将停机时间尽量缩短，使之不会超过或者只略微超过例行维护时段。
+目标是将 NAS 设备上的共享迁移到 Azure，并使其成为原生 Azure 文件共享。 无需 Windows Server 即可使用原生 Azure 文件共享。 在执行这种迁移时，需要保证生产数据的完整性以及迁移期间的可用性。 要满足后一项要求，需将停机时间尽量缩短，使之不会超过或者只略微超过例行维护时段。
 
 ## <a name="migration-overview"></a>迁移概述
 
-迁移过程包括多个阶段。 你需要部署 Azure 存储帐户和文件共享，配置网络，使用 Azure DataBox 进行迁移，通过 RoboCopy 来与更改保持同步，最后将用户切换到新建的 Azure 文件共享。 以下各部分详细介绍了迁移过程的各个阶段。
+迁移过程包括多个阶段。 你需要部署 Azure 存储帐户和文件共享并配置网络。 然后，你将使用 Azure DataBox 和 RoboCopy 迁移文件，以与更改保持同步。 最后，将用户和应用切换到新创建的 Azure 文件共享。 以下各部分详细介绍了迁移过程的各个阶段。
 
 > [!TIP]
 > 如果你返回到本文，请使用右侧的导航栏转到你离开的迁移阶段。
@@ -92,7 +92,7 @@ RoboCopy 作业的工作速度主要取决于以下因素：
 - 网络：使网络能够路由 SMB 流量。
 - 身份验证：配置 Azure 存储帐户以进行 Kerberos 身份验证。 为存储帐户配置 AdConnect 和域加入可使你的应用和用户能够使用其 AD 标识进行身份验证
 - 授权：针对每个 Azure 文件共享的共享级 ACL 将允许 AD 用户和组访问给定的共享；在 Azure 文件共享中，本机 NTFS ACL 将接管控制权。 然后，基于文件和文件夹 ACL 的授权将发挥作用，就像对本地 SMB 共享一样。
-- 业务连续性：将 Azure 文件共享集成到现有环境通常需要保留现有的共享地址。 如果你尚未使用 DFS 命名空间，请考虑在环境中建立该服务。 可将用户和脚本使用的共享地址保持不变。 你将使用 DFS-N 作为 SMB 的命名空间路由服务，方法是在迁移后将 DFS 命名空间目标重定向到 Azure 文件共享。
+- 业务连续性：将 Azure 文件共享集成到现有环境通常需要保留现有的共享地址。 如果你尚未使用 DFS-Namespaces，请考虑在环境中建立该服务。 可将用户和脚本使用的共享地址保持不变。 你将使用 DFS-N 作为 SMB 的命名空间路由服务，方法是在迁移后将 DFS 命名空间目标重定向到 Azure 文件共享。
 
 :::row:::
     :::column:::
@@ -110,7 +110,7 @@ RoboCopy 作业的工作速度主要取决于以下因素：
 * [如何配置 Windows P2S VPN](storage-files-configure-p2s-vpn-windows.md)
 * [如何配置 Linux P2S VPN](storage-files-configure-p2s-vpn-linux.md)
 * [如何配置 DNS 转发](storage-files-networking-dns.md)
-* [配置 DFS-N](/windows-server/storage/dfs-namespaces/dfs-overview)
+* [配置 DFS-N](files-manage-namespaces.md)
    :::column-end:::
 :::row-end:::
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85574b7d33af6d9abfe25f5af4d811255f08ce4b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 176c36ee5c3addf655503e3a371767764e0d9968
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452231"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738046"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -28,13 +28,13 @@ ms.locfileid: "102452231"
 
 比较两个声明，如果根据指定的比较 inputClaim1、inputClaim2 和 stringComparison 它们不相等，将引发异常。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字符串 | 要比较的第一个声明的类型。 |
 | InputClaim | inputClaim2 | 字符串 | 要比较的第二个声明的类型。 |
 | InputParameter | stringComparison | 字符串 | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
 
-AssertStringClaimsAreEqual 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 元数据控制向用户显示的错误消息。 可以将错误消息[本地化](localization-string-ids.md#claims-transformations-error-messages)。
+AssertStringClaimsAreEqual 声明转换始终从一个[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayControl](display-controls.md) 调用。 自断言技术配置文件的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 元数据控制向用户显示的错误消息。 可以将错误消息[本地化](localization-string-ids.md#claims-transformations-error-messages)。
 
 
 ![AssertStringClaimsAreEqual 执行](./media/string-transformations/assert-execution.png)
@@ -90,7 +90,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 将所提供的声明更改为小写或大写，具体要取决于运算符。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字符串 | 要更改的 ClaimType。 |
 | InputParameter | toCase | 字符串 | 以下值之一：`LOWER` 或 `UPPER`。 |
@@ -125,9 +125,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 基于转换中提供的输入参数创建字符串声明。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | value | 字符串 | 要设置的字符串。 此输入参数支持[字符串声明转换表达式](string-transformations.md#string-claim-transformations-expressions)。 |
+| InputParameter | 值 | 字符串 | 要设置的字符串。 此输入参数支持[字符串声明转换表达式](string-transformations.md#string-claim-transformations-expressions)。 |
 | OutputClaim | createdClaim | 字符串 | 调用此声明转换后生成的 ClaimType，其值在输入参数中指定。 |
 
 使用此声明转换设置一个字符串 ClaimType 值。
@@ -152,14 +152,14 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 ## <a name="copyclaimifpredicatematch"></a>CopyClaimIfPredicateMatch
 
-如果输入声明的值与输出声明谓词匹配，则将一个声明的值复制到另一个。 
+如果输入声明的值与输出声明谓词匹配，则将一个声明的值复制到另一个声明的值。 
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | 字符串 | 要复制的声明类型。 |
 | OutputClaim | outputClaim | 字符串 | 调用此声明转换后生成的声明类型。 根据此声明谓词检查输入声明的值。 |
 
-下面的示例仅当 signInName 为电话号码时，才将 signInName 声明值复制到 phoneNumber 声明。 有关完整的示例，请参阅[电话号码或电子邮件登录](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/blob/master/scenarios/phone-number-passwordless/Phone_Email_Base.xml)初学者包策略。
+仅当 signInName 为电话号码时，以下示例才会将 signInName 声明值复制到 phoneNumber 声明。 有关完整的示例，请参阅[电话号码或电子邮件登录](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/blob/master/scenarios/phone-number-passwordless/Phone_Email_Base.xml)初学者包策略。
 
 ```xml
 <ClaimsTransformation Id="SetPhoneNumberIfPredicateMatch" TransformationMethod="CopyClaimIfPredicateMatch">
@@ -177,12 +177,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输入声明：
     - **inputClaim**: bob@contoso.com
 - 输出声明：
-    - **outputClaim**：不会更改输出声明的原始值。
+    - outputClaim：不会更改输出声明的原始值。
 
 ### <a name="example-2"></a>示例 2
 
 - 输入声明：
-    - **inputClaim**：+11234567890
+    - inputClaim：+11234567890
 - 输出声明：
     - **outputClaim**：+11234567890
 
@@ -190,7 +190,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 确定一个字符串声明是否等于另一个字符串声明。 结果是新布尔型 ClaimType，值为 `true` 或 `false`。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字符串 | 要比较的第一个声明类型。 |
 | InputClaim | inputClaim2 | 字符串 | 要比较的第二个声明类型。 |
@@ -231,7 +231,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 确定声明值是否等于输入参数值。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | 字符串 | 要比较的声明类型。 |
 | InputParameter | 运算符后的表达式 | 字符串 | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
@@ -271,7 +271,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 使用随机数生成器创建随机字符串。 如果随机数生成器是 `integer` 类型，则可以选择提供种子参数和最大数。 可选字符串格式参数允许使用它来格式化输出，可选的 base64 参数指定输出是否为 base64 编码的 encoded randomGeneratorType [guid, integer] outputClaim（字符串）。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputParameter | randomGeneratorType | 字符串 | 指定要生成的随机值，`GUID`（全局唯一 ID）或 `INTEGER`（数字）。 |
 | InputParameter | stringFormat | 字符串 | [可选]格式化随机值。 |
@@ -401,7 +401,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 根据提供的格式字符串格式化声明。 此转换将使用 C# `String.Format` 方法。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |字符串 |作为字符串格式 {0} 参数的 ClaimType。 |
 | InputParameter | stringFormat | 字符串 | 字符串格式，包括 {0} 参数。 此输入参数支持[字符串声明转换表达式](string-transformations.md#string-claim-transformations-expressions)。  |
@@ -439,7 +439,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 根据提供的格式字符串格式化两个声明。 此转换将使用 C# `String.Format` 方法。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |字符串 | 作为字符串格式 {0} 参数的 ClaimType。 |
 | InputClaim | inputClaim | 字符串 | 作为字符串格式 {1} 参数的 ClaimType。 |
@@ -480,7 +480,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 将本地化的字符串复制到声明中。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | 本地化的字符串的名称 | 字符串 | 调用此声明转换后生成的声明类型列表。 |
 
@@ -550,7 +550,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 从声明 Restriction 集合中查找项。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | mapFromClaim | 字符串 | 该声明包含要在带 Restriction 集合的 restrictionValueClaim 声明中查找的文本。  |
 | OutputClaim | restrictionValueClaim | 字符串 | 包含 Restriction 集合的声明。 在调用声明转换后，此声明的值将包含选定项的值。 |
@@ -593,7 +593,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 基于另一个声明的值从值列表中查找声明值。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputParameterId | 字符串 | 包含查找值的声明 |
 | InputParameter | |字符串 | inputParameters 集合。 |
@@ -671,7 +671,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 清除给定声明的值。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | claim_to_null | 字符串 | 声明的值设置为 NULL。 |
 
@@ -694,7 +694,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 获取电子邮件地址的域部分。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | emailAddress | 字符串 | 包含电子邮件地址的 ClaimType。 |
 | OutputClaim | 域 | 字符串 | 调用此声明转换后生成的 ClaimType - 域。 |
@@ -723,7 +723,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 检查字符串声明 `claimToMatch` 和 `matchTo` 输入参数是否相等，并使用 `outputClaimIfMatched` 输入参数中提供的值设置输出声明，以及比较结果输出声明，将基于比较结果将此声明设置为 `true` 或 `false`。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | claimToMatch | 字符串 | 要比较的声明类型。 |
 | InputParameter | matchTo | 字符串 | 要匹配的正则表达式。 |
@@ -799,7 +799,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 检查字符串声明和 `matchTo` 输入参数是否相等，并使用 `stringMatchMsg` 和 `stringMatchMsgCode` 输入参数中提供的值设置输出声明，以及比较结果输出声明，将基于比较结果将此声明设置为 `true` 或 `false`。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | 字符串 | 要比较的声明类型。 |
 | InputParameter | matchTo | 字符串 | 要与 `inputClaim` 进行比较的字符串。 |
@@ -848,7 +848,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 检查字符串声明和 `matchTo` 输入参数是否相等，并使用 `outputClaimIfMatched` 输入参数中提供的值设置输出声明，以及比较结果输出声明，将基于比较结果将此声明设置为 `true` 或 `false`。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | claimToMatch | 字符串 | 要比较的声明类型。 |
 | InputParameter | matchTo | 字符串 | 要与 inputClaim 进行比较的字符串。 |
@@ -893,7 +893,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 确定输入声明中是否出现了指定的子字符串。 结果是新布尔型 ClaimType，值为 `true` 或 `false`。 如果此字符串中出现了值参数，则为 `true`；否则为 `false`。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | 字符串 | 要搜索的声明类型。 |
 |InputParameter|contains|字符串|要搜索的值。|
@@ -931,7 +931,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 提取字符串声明类型的组成部分（从位于指定位置处的字符开始），并返回指定数目的字符。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | 字符串 | 包含该字符串的声明类型。 |
 | InputParameter | startIndex | int | 此实例中子字符串的起始字符位置（从零开始）。 |
@@ -969,7 +969,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 在声明类型字符串中搜索指定的值，并返回一个新的声明类型字符串，在该字符串中，当前字符串中出现的所有指定字符串已替换为另一个指定的字符串。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | 字符串 | 包含该字符串的声明类型。 |
 | InputParameter | oldValue | 字符串 | 要搜索的字符串。 |
@@ -1007,7 +1007,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 在每个元素或成员之间使用指定的分隔符，串联指定字符串集合声明类型的元素。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | stringCollection | 包含要串联的字符串的集合。 |
 | InputParameter | delimiter | 字符串 | 用作分隔符的字符串，例如逗号 `,`。 |
@@ -1043,7 +1043,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 返回一个字符串数组，其中包含此实例中由指定字符串的元素分隔的子字符串。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | 字符串 | 包含要拆分的子字符串的字符串声明类型。 |
 | InputParameter | delimiter | 字符串 | 用作分隔符的字符串，例如逗号 `,`。 |

@@ -7,16 +7,17 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3f933393b331d24e5de05a00d1abdc7302282308
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92123331"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684138"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>在 Power BI 仪表板中可视化和分析 Azure IoT Central 数据
 
-本主题适用于管理员和解决方案开发人员。
+> [!Note] 
+> 此解决方案使用[旧数据导出功能](./howto-export-data-legacy.md)。 请随时关注更新指南，了解如何使用最新的数据导出功能连接到 Power BI。
 
 :::image type="content" source="media/howto-connect-powerbi/iot-continuous-data-export.png" alt-text="Power BI 解决方案管道":::
 
@@ -27,16 +28,15 @@ ms.locfileid: "92123331"
 - 筛选特定设备发送的数据
 - 查看表中的最新遥测数据
 
-此解决方案会设置一个管道，用于从[连续数据导出](./howto-export-data.md) Azure Blob 存储帐户读取数据。 该管道使用 Azure Functions、Azure 数据工厂和 Azure SQL 数据库来处理和转换数据。 可以在下载为 PBIX 文件的 Power BI 报表中可视化和分析数据。 所有这些资源在 Azure 订阅中创建，因此，你可以根据需求自定义每个组件。
+此解决方案会设置一个管道，用于从[旧数据导出](./howto-export-data-legacy.md) Azure Blob 存储帐户读取数据。 该管道使用 Azure Functions、Azure 数据工厂和 Azure SQL 数据库来处理和转换数据。 可以在下载为 PBIX 文件的 Power BI 报表中可视化和分析数据。 所有这些资源在 Azure 订阅中创建，因此，你可以根据需求自定义每个组件。
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本操作方法指南中的步骤需要有效的 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要完成本操作指南中的步骤，需要：
 
-设置此解决方案需要以下资源：
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
-- 版本 3 IoT Central 应用程序。 若要了解如何检查应用程序版本，请参阅[关于你的应用程序](./howto-get-app-info.md)。 若要了解如何创建 IoT Central 应用程序，请参阅[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)。
-- 连续数据导出配置为将遥测、设备和设备模板导出到 Azure Blob 存储。 若要了解详细信息，请参阅[如何将 IoT 数据导出到 Azure 中的目标](howto-export-data.md)。
+- 将旧的连续数据导出配置为将遥测数据、设备和设备模板导出到 Azure Blob 存储。 有关详细信息，请参阅[旧数据导出文档](howto-export-data-legacy.md)。
   - 确保只有 IoT Central 应用程序将数据导出到 Blob 容器。
   - [设备必须发送 JSON 编码的消息](../../iot-hub/iot-hub-devguide-messages-d2c.md)。 设备必须在消息系统属性中指定 `contentType:application/JSON` 和 `contentEncoding:utf-8`、`contentEncoding:utf-16` 或 `contentEncoding:utf-32`。
 - Power BI Desktop（最新版本）。 请参阅 [Power BI 下载](https://powerbi.microsoft.com/downloads/)。
@@ -75,7 +75,7 @@ Azure 数据工厂作为链接服务连接到 SQL 数据库。 它运行存储�
 
 Azure 数据工厂每 15 分钟运行一次，以将最新批次的数据转换为可加载到 SQL 表中（翻转窗口触发器的当前最小数目）。
 
-### <a name="azure-sql-database"></a>Azure SQL 数据库
+### <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure 数据工厂为 Power BI 生成一组分析表。 可以探索 Power BI 中的这些架构，并将其用于生成自己的可视化效果。
 

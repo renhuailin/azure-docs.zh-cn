@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: ab08832927aeb969175968b8330b4ab54fc887bf
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 848f5f13218fde513bf48575c2f9bb298521d3ad
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071292"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113214742"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>无服务器 SQL 池自助服务
 
@@ -41,7 +41,7 @@ ms.locfileid: "112071292"
 
 ### <a name="query-fails-because-file-cannot-be-opened"></a>查询失败，因为无法打开文件
 
-如果查询失败并出现“无法打开文件，因为该文件不存在或正被另一个进程使用”错误，但你确定文件存在且未被其他进程使用，则表明无服务器 SQL 池无法访问该文件。 发生此问题的原因通常是你的 Azure Active Directory 标识无权访问该文件。 默认情况下，无服务器 SQL 池尝试使用 Azure Active Directory 标识来访问文件。 若要解决此问题，你需要有访问该文件的适当权限。 最简单的方法是在要查询的存储帐户上向自己授予“存储 Blob 数据参与者”角色。 
+如果查询失败并出现“无法打开文件，因为该文件不存在或正被另一个进程使用”错误，但你确定文件存在且未被其他进程使用，则表明无服务器 SQL 池无法访问该文件。 出现此问题的原因通常是 Azure Active Directory 标识无权访问该文件或防火墙阻止访问该文件。 默认情况下，无服务器 SQL 池尝试使用 Azure Active Directory 标识来访问文件。 若要解决此问题，你需要有访问该文件的适当权限。 最简单的方法是在要查询的存储帐户上向自己授予“存储 Blob 数据参与者”角色。 
 - [有关详细信息，请参阅关于 Azure Active Directory 访问控制（针对存储）的完整指南](../../storage/common/storage-auth-aad-rbac-portal.md)。 
 - [请访问“在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问”](develop-storage-files-storage-access-control.md)
 
@@ -438,7 +438,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
 WITH ( FORMAT_TYPE = PARQUET)
 ```
 
-### <a name="operation-operation-name-is-not-allowed-for-a-replicated-database"></a>复制的数据库不允许 [[operation name]] 操作。
+### <a name="operation-is-not-allowed-for-a-replicated-database"></a>复制的数据库不允许执行操作。
    
 如果尝试在数据库中创建某些 SQL 对象、用户或变更权限，可能会遇到诸如“复制的数据库不允许 CREATE USER 操作”之类的错误。 当您尝试在[与 Spark 池共享](../metadata/database.md)的数据库中创建某些对象时，将返回此错误。 从 Apache Spark 池复制的数据库是只读的。 不能使用 T-SQL 在复制的数据库中创建新对象。
 
@@ -464,6 +464,14 @@ WITH ( FORMAT_TYPE = PARQUET)
 
 `WITH` 子句中指定的值与分析存储中的基础 Cosmos DB 类型不匹配，因此无法进行隐式转换。 使用架构中的 `VARCHAR` 类型。
 
+### <a name="performance-issues"></a>性能问题
+
+如果你遇到一些意外的性能问题，请确保应用了最佳做法，例如：
+- 确保已将客户端应用程序、无服务器池和 Cosmos DB 分析存储置于[同一区域](best-practices-serverless-sql-pool.md#colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool)。
+- 确保你使用的是具有[最优数据类型](best-practices-serverless-sql-pool.md#use-appropriate-data-types)的 `WITH` 子句。
+- 当你使用字符串谓词筛选数据时，请确保使用 [Latin1_General_100_BIN2_UTF8 排序规则](best-practices-serverless-sql-pool.md#use-proper-collation-to-utilize-predicate-pushdown-for-character-columns)。
+- 如果你有可能缓存的重复查询，请尝试使用 [CETAS 将查询结果存储在 Azure Data Lake Storage 中](best-practices-serverless-sql-pool.md#use-cetas-to-enhance-query-performance-and-joins)。
+
 ## <a name="delta-lake"></a>Delta Lake
 
 在无服务器 SQL 池中，对 Delta Lake 的支持目前处于公共预览版。 在使用预览版期间，你可能会遇到一些已知问题。
@@ -471,10 +479,9 @@ WITH ( FORMAT_TYPE = PARQUET)
   - 根文件夹必须有一个名为 `_delta_log` 的子文件夹。 如果没有 `_delta_log` 文件夹，则查询将失败。 如果看不到该文件夹，表明你正在引用纯 Parquet 文件，必须使用 Apache Spark 池将其[转换为 Delta Lake](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#convert-parquet-to-delta)。
   - 不要指定用于描述分区架构的通配符。 Delta Lake 查询会自动标识 Delta Lake 分区。 
 - 在 Apache Spark 池中创建的 Delta Lake 表在无服务器 SQL 池中不会同步。 不能使用 T-SQL 语言来查询 Apache Spark 池 Delta Lake 表。
-- 外部表不支持分区。 使用 Delta Lake 文件夹的[分区视图](create-use-views.md#delta-lake-partitioned-views)来利用分区消除。
-  - Delta Lake 上的[分区视图](create-use-views.md#delta-lake-partitioned-views)不得同时包含 `OPENROWSET` 函数和 `WITH` 子句。 由于预览版中的已知问题，您需要使用架构来推断和删除 `WITH` 子句。
-- 无服务器 SQL 池不支持时间行程查询或更新 Delta Lake 文件。 可以使用无服务器 SQL 池来查询最新版本的 Delta Lake。 使用 Azure Synapse Analytics 中的 Apache Spark 池 [更新增量 Lake](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data) 或 [读取历史记录数据](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)。
-- 无服务器 SQL 池不支持分区中包含 `null` 或空值的 Delta Lake 数据集。 如果需要使用无服务器 SQL 池来读取数据集中的值，请更新 `null` 或清空数据集中的值。
+- 外部表不支持分区。 使用 Delta Lake 文件夹的[分区视图](create-use-views.md#delta-lake-partitioned-views)来利用分区消除。 请参阅下面的已知问题和解决方法。
+- 无服务器 SQL 池不支持按时间顺序查看的查询。 你可以在 [Azure 反馈网站](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)上对此功能进行投票
+- 无服务器 SQL 池不支持更新 Delta Lake 文件。 可以使用无服务器 SQL 池来查询最新版本的 Delta Lake。 使用 Azure Synapse Analytics 中的 Apache Spark 池 [更新增量 Lake](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data) 或 [读取历史记录数据](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)。
 - 专用 SQL 池中不支持 Delta Lake。 请确保使用无服务器池来查询 Delta Lake 文件。
 
 可以在 [Azure Synapse 反馈网站](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=171048)上提出建议和改进。
@@ -488,7 +495,28 @@ Msg 13807, Level 16, State 1, Line 6
 Content of directory on path 'https://.....core.windows.net/.../_delta_log/*.json' cannot be listed.
 ```
 
-确保 `_delta_log` 文件夹存在（可能你正在查询未转换为 Delta Lake 格式的普通 Parquet 文件）。 如果该 `_delta_log` 文件夹存在，请确保对底层 Delta Lake 文件夹具有“读取”和“列示”权限。
+确保 `_delta_log` 文件夹存在（可能你正在查询未转换为 Delta Lake 格式的普通 Parquet 文件）。
+
+如果该 `_delta_log` 文件夹存在，请确保对底层 Delta Lake 文件夹具有“读取”和“列示”权限。
+尝试使用 FORMAT='CSV' 直接读取 \*.json 文件（将 URI 置于 BULK 参数中）：
+
+```sql
+select top 10 * 
+from openrowset(BULK 'https://.....core.windows.net/.../_delta_log/*.json', 
+FORMAT='csv', FIELDQUOTE = '0x0b', FIELDTERMINATOR ='0x0b', ROWTERMINATOR = '0x0b') with (line varchar(max)) as logs
+```
+
+如果此查询失败，则调用方没有读取基础存储文件的权限。 
+
+最简单的方法是在要查询的存储帐户上向自己授予“存储 Blob 数据参与者”角色。 
+- [有关详细信息，请参阅关于 Azure Active Directory 访问控制（针对存储）的完整指南](../../storage/common/storage-auth-aad-rbac-portal.md)。 
+- [请访问“在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问”](develop-storage-files-storage-access-control.md)
+
+### <a name="partitioning-column-returns-null-values"></a>分区列返回 NULL 值
+
+如果对读取已分区 Delta Lake 文件夹的 `OPENROWSET` 函数使用视图，可能会获得 `NULL` 值，而不是分区列的实际列值。 由于已知问题，具有 `WITH` 子句的 `OPENROWSET` 函数无法读取分区列。 Delta Lake 上的[分区视图](create-use-views.md#delta-lake-partitioned-views)不得同时包含 `OPENROWSET` 函数和 `WITH` 子句。 需要使用没有显式指定架构的 `OPENROWSET` 函数。
+
+解决方法：从视图中使用的 `OPENROWSET` 函数中删除 `WITH` 子句。
 
 ### <a name="query-failed-because-of-a-topology-change-or-compute-container-failure"></a>由于拓扑变更或计算容器故障，查询失败
 
@@ -499,19 +527,42 @@ CREATE DATABASE mydb
     COLLATE Latin1_General_100_BIN2_UTF8;
 ```
 
+通过 master 数据库执行的查询会受到此问题的影响。
+
+解决方法：使用 `Latin1_General_100_BIN2_UTF8` 数据库排序规则对自定义数据库执行查询。
+
 ### <a name="column-of-type-varchar-is-not-compatible-with-external-data-type-parquet-column-is-of-nested-type"></a>“VARCHAR”类型的列与外部数据类型不兼容，“Parquet 列不是嵌套类型”
 
-你正在尝试读取包含某些嵌套类型列的 Delta Lake 文件，但未指定 WITH 子句（使用自动架构推理）。 自动架构推理不适用于 Delta Lake 中的嵌套列。 使用 `WITH` 子句并显式将 `VARCHAR` 类型分配给嵌套列。
+你正在尝试读取包含某些嵌套类型列的 Delta Lake 文件，但未指定 WITH 子句（使用自动架构推理）。 自动架构推理不适用于 Delta Lake 中的嵌套列。
+
+解决方法：使用 `WITH` 子句并将 `VARCHAR` 类型显式分配给嵌套列。
 
 ### <a name="cannot-find-value-of-partitioning-column-in-file"></a>在文件中找不到分区列的值 
 
-Delta Lake 数据集在分区列中可能具有 `NULL` 值。 无服务器 SQL 池目前不支持此功能。 在这种情况下，你将收到如下所示的错误：
+Delta Lake 数据集在分区列中可能具有 `NULL` 值。 这些分区存储在 `HIVE_DEFAULT_PARTITION` 文件夹中。 无服务器 SQL 池目前不支持此功能。 在这种情况下，你将收到如下所示的错误：
 
 ```
-Resolving Delta logs on path 'https://....core.windows.net/.../' failed with error: Cannot find value of partitioning column '<column name>' in file 'https://......core.windows.net/...../<column name>=__HIVE_DEFAULT_PARTITION__/part-00042-2c0d5c0e-8e89-4ab8-b514-207dcfd6fe13.c000.snappy.parquet'.
+Resolving Delta logs on path 'https://....core.windows.net/.../' failed with error:
+Cannot find value of partitioning column '<column name>' in file 
+'https://......core.windows.net/...../<column name>=__HIVE_DEFAULT_PARTITION__/part-00042-2c0d5c0e-8e89-4ab8-b514-207dcfd6fe13.c000.snappy.parquet'.
 ```
 
-尝试使用 Apache Spark 池更新 Delta Lake 数据集，并在分区列中使用某些值（空字符串或 `"null"`），而不是 `null`。
+解决方法：尝试使用 Apache Spark 池更新 Delta Lake 数据集，并在分区列中使用某些值（空字符串或 `"null"`）代替 `null`。
+
+## <a name="constraints"></a>约束
+
+有一些常规系统约束可能会影响工作负载：
+
+| 属性 | 限制 |
+|---|---|
+| 每个订阅的 Synapse 工作区最大数目 | 20 |
+| 每个无服务器池的数据库最大数目 | 20（不包括从 Apache Spark 池同步的数据库） |
+| 从 Apache Spark 池同步的数据库最大数目 | 无限制 |
+| 每个数据库的数据库对象最大数目 | 数据库中所有对象数量总和不得超过 2,147,483,647（请参阅 [SQL Server 数据库引擎中的限制](/sql/sql-server/maximum-capacity-specifications-for-sql-server#objects)） |
+| 最大标识符长度（以字符计） | 128（请参阅 [SQL Server 数据库引擎中的限制](/sql/sql-server/maximum-capacity-specifications-for-sql-server#objects)）|
+| 查询最长持续时间 | 30 分钟 |
+| 结果集的最大大小 | 80 GB（在所有当前正在执行的并发查询之间共享） |
+| 最大并发 | 不受限制，具体取决于查询复杂性和扫描的数据量。 一个无服务器 SQL 池可以同时处理 1000 个执行轻型查询的活动会话，但是，如果查询更复杂或扫描的数据量更大，则该数量会减少。 |
 
 ## <a name="next-steps"></a>后续步骤
 

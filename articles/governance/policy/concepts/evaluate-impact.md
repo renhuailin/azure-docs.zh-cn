@@ -3,12 +3,12 @@ title: 评估新 Azure Policy 定义的影响
 description: 了解将新策略定义引入 Azure 环境时要遵循的过程。
 ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 187a64ce3581c4aaa893e2a805ce787a0bfd6c79
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 56fa5aa0467bed94625b2233ee8b582d4d61ff63
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091712"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752914"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>评估新 Azure Policy 定义的影响
 
@@ -42,9 +42,9 @@ Azure Policy 是一种功能强大的工具，用于管理 Azure 资源以符合
 
 ## <a name="audit-new-or-updated-resources"></a>审核新的或更新的资源
 
-验证新策略定义可对现有资源正确报告后，便可以查看策略在创建或更新资源时的影响。 如果策略定义支持效果参数化，请使用 [Audit](./effects.md#audit)。 此配置使你可以监视资源的创建和更新，以查看新策略定义是否在 Azure 活动日志中为不合规资源触发条目，而不影响现有工作或请求。
+验证新策略定义可对现有资源正确报告后，便可以查看策略在创建或更新资源时的影响。 如果策略定义支持效果参数化，请使用 [Audit](./effects.md#audit)。 此配置使你可以监视资源的创建和更新以了解新策略定义是否在 Azure 活动日志中为不合规资源触发条目，而不影响现有工作或请求。
 
-建议更新并创建与策略定义相匹配的新资源，以查看是否在预期时正确触发 Audit 效果。 请注意本不应受触发 Audit 效果的新策略定义影响的资源请求。
+建议更新并创建与策略定义相匹配的新资源，以查看是否在预期时正确触发 Audit 效果。 请注意不应受触发 Audit 效果的新策略定义影响的资源请求。
 这些受影响的资源是假正的另一个示例，在进行完整实现之前，必须在策略定义中得到修复。
 
 如果在此测试阶段更改了策略定义，则建议从现有资源的审核重新开始验证过程。 在新的或更新的资源上针对假正的策略定义更改也可能会影响现有资源。

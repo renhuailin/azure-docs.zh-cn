@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ec4ac5d355266a46b33d89fd25c2665493773f5d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 75d9c649b245878e1f10c1aca9b9dd9956741fca
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100808"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002626"
 ---
 # <a name="protect-your-web-apps-and-apis"></a>保护 Web 应用和 API
 
@@ -36,7 +36,7 @@ ms.locfileid: "102100808"
 | 发布状态：               | 正式发布版 (GA)                                                                                                                                                                      |
 | 定价：                     | [适用于应用服务的 Azure Defender](azure-defender.md) 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中显示的定价计费<br>计费以所有计划中的总计算实例数为依据       |
 | 支持的应用服务计划： | 除[消耗计划上的 Azure Functions](../azure-functions/functions-scale.md) 外，[所有应用服务计划](https://azure.microsoft.com/pricing/details/app-service/plans/)都受支持。 |
-| 云：                      | ![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）                                                     |
+| 云：                      | ![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov，Azure 中国）                                                     |
 |                              |                                                                                                                                                                                                |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>适用于应用服务的 Azure Defender 有哪些优点？

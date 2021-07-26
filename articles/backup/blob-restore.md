@@ -1,20 +1,20 @@
 ---
 title: 还原 Azure Blob
-description: 了解如何在预览版中还原 Azure Blob。
+description: 了解如何还原 Azure Blob。
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: 4cbd47ea654115f00095e30f7d5114aec0f2c85a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/05/2021
+ms.openlocfilehash: aaca425e2ea13948fbd52bf60ed30d64c29c27d3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101744428"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767268"
 ---
-# <a name="restore-azure-blobs-in-preview"></a>在预览版中还原 Azure Blob
+# <a name="restore-azure-blobs"></a>还原 Azure Blob
 
 在配置了操作备份的存储帐户中，块 blob 可以还原到保持期内的任何时间点。 此外，还可以将还原的范围限定为存储帐户中的所有块 blob 或 blob 的子集。
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 - Blob 将还原到相同的存储帐户。 因此，在还原后发生了更改的 blob 将被覆盖。
 - 在还原操作过程中，只能还原标准常规用途 v2 存储帐户中的块 blob。 追加 blob、页 blob 和高级块 blob 不会还原。
@@ -84,4 +84,4 @@ ms.locfileid: "101744428"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Blob 操作备份概述（预览版）](blob-backup-overview.md)
+- [Azure Blob 操作备份概述](blob-backup-overview.md)

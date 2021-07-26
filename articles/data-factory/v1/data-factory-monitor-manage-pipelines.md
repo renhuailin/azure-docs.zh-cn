@@ -7,13 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2d2f29553d831d80923f569211bc15855b96f591
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 0744a7d915d6bee868b160abc29964d58947dd28
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665923"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779624"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 门户和 PowerShell 监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -43,7 +42,7 @@ ms.locfileid: "110665923"
 本部分还介绍数据集切片如何从一个状态转换为另一状态。   
 
 ### <a name="navigate-to-your-data-factory"></a>导航到数据工厂
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中，单击“数据工厂”。 如未看到，请单击“更多服务 >”，并在“智能 + 分析”类别下单击“数据工厂”。
 
    ![“浏览全部”->“数据工厂”](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -132,10 +131,10 @@ ms.locfileid: "110665923"
 <td>就绪</td><td>-</td><td>切片已就绪，可供使用。</td>
 </tr>
 <tr>
-<td>已跳过</td><td>无</td><td>未在处理切片。</td>
+<td>已跳过</td><td>None</td><td>未在处理切片。</td>
 </tr>
 <tr>
-<td>无</td><td>-</td><td>切片过去一直以不同状态存在，但已被重置。</td>
+<td>None</td><td>-</td><td>切片过去一直以不同状态存在，但已被重置。</td>
 </tr>
 </table>
 
@@ -306,7 +305,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![新建警报](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-3.  定义警报条件。 （请务必在“按资源类型筛选”字段中选择“数据工厂” 。）你还可以指定维度的值。
+3.  定义警报条件。 （确保在“按资源类型筛选”字段中选择“数据工厂”。）你还可以指定“维度”的值。
 
     ![定义警报条件 - 选择目标](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 
