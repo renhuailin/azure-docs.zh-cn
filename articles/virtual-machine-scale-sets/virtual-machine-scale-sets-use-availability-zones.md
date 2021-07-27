@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d66c6fada13bf88083a6359f5fa3e7ca826a6266
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: c5ddd5846be91e9fc99a251d6ad45ade8bde2937
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673696"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "96016652"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -50,7 +50,7 @@ ms.locfileid: "110673696"
 
 一个可能的情况是，规模集中的 VM 已成功创建，但这些 VM 的扩展部署失败。 在确定某个规模集是否已实现均衡时，这些 VM 虽然扩展失败，但仍计在内。 例如，如果某个规模集的区域 1 中有 3 个 VM，区域 2 中有 3 个 VM，区域 3 中有 3 个 VM，则可以认为该规模集已实现均衡，即使区域 1 中的所有扩展都失败而区域 2 和 3 中的所有扩展都成功。
 
-使用“尽量实现区域均衡”时，规模集会在维持均衡时尝试进行横向收缩和扩展。 但是，如果因某个原因而无法实现这一点（例如，某个区域停机，导致规模集无法在该区域创建新 VM），则规模集会允许暂时的不均衡，目的是能够成功地进行横向缩减或扩展。在后续的横向扩展尝试中，规模集会向需要更多 VM 才能实现规模集均衡的区域添加 VM。 同样，在后续的横向收缩尝试中，规模集会在需要减少 VM 才能实现规模集均衡的区域中删除 VM。 使用“严格执行区域均衡”时，如果在进行横向收缩或扩展尝试时会导致不均衡，规模集会放弃这样的尝试。
+使用“尽量实现区域均衡”时，规模集会在维持均衡时尝试进行横向收缩和扩展。 但是，如果由于某种原因而无法实现（例如，如果一个区域出现故障，规模集无法在该区域中创建新的 VM），则规模集允许临时不平衡，以成功地横向缩减或横向扩展。在随后的横向扩展尝试中，规模集会将 VM 添加到需要更多 VM 以使规模集达到平衡。 同样，在后续的横向收缩尝试中，规模集会在需要减少 VM 才能实现规模集均衡的区域中删除 VM。 使用“严格执行区域均衡”时，如果在进行横向收缩或扩展尝试时会导致不均衡，规模集会放弃这样的尝试。
 
 要使用“尽量实现区域均衡”，请将“zoneBalance”设置为 false。 此设置是 API 版本 2017-12-01 中的默认设置。 要使用“严格执行区域均衡”，请将“zoneBalance”设置为 true。
 

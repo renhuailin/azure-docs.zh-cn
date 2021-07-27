@@ -6,15 +6,15 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
 ms.openlocfilehash: c6645bc605dbd60d331ac0de002c36384b2bbbc4
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104864748"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>使用 Apache Spark History Server 的扩展功能调试和诊断 Spark 应用程序
 
-本文演示如何使用 Apache Spark History Server 的扩展功能调试和诊断已完成和正在运行的 Spark 应用程序。 扩展包括“数据”选项卡、“图形”选项卡以及“诊断”选项卡  。在“数据”选项卡中，可以检查 Spark 作业的输入和输出数据。 在“图形”选项卡中，可以检查数据流和重播作业图形。 在“诊断”选项卡中，可以参阅“数据倾斜”、“时间偏差”和“执行程序使用情况分析”功能。   
+本文演示如何使用 Apache Spark History Server 的扩展功能调试和诊断已完成和正在运行的 Spark 应用程序。 扩展包括“数据”选项卡、“图形”选项卡和“诊断”选项卡。使用“数据”选项卡检查 Spark 作业的输入和输出数据。    在“图形”选项卡中，可以检查数据流和重播作业图形。 在“诊断”选项卡中，可以参阅“数据倾斜”、“时间偏差”和“执行程序使用情况分析”功能。   
 
 ## <a name="get-access-to-the-spark-history-server"></a>获取 Spark History Server 的访问权限
 
@@ -94,7 +94,7 @@ Spark History Server Web UI 可能类似于下图：
    :::image type="content" source="./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png" alt-text="Spark 应用程序和作业图页上的热度地图。" border="true":::
 
 
-    |颜色 |说明 |
+    |Color |说明 |
     |---|---|
     |绿色|作业已成功完成。|
     |橙色|任务失败，但这不会影响作业的最终结果。 这些任务包括可能稍后会成功的重复或重试实例。|
@@ -156,7 +156,7 @@ Spark History Server Web UI 可能类似于下图：
 
 ### <a name="data-skew"></a>数据倾斜
 
-选择“数据倾斜”选项卡。对应倾斜任务会基于指定参数进行显示。
+选择“数据倾斜”选项卡，根据指定的参数显示相应的倾斜任务。
 
 #### <a name="specify-parameters"></a>指定参数
 

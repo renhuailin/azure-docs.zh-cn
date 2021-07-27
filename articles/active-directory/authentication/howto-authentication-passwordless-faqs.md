@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1d146be642050c169dabf009352a34ad595fab84
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101646378"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746416"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Azure AD 中混合 FIDO2 安全密钥的部署常见问题 (FAQ) 
 
@@ -27,7 +27,7 @@ ms.locfileid: "101646378"
 * 使用 FIDO2 安全密钥登录到已加入混合 Azure AD 的设备并获取对本地资源的 SSO 访问权限。
 * 使用 FIDO2 安全密钥登录到已加入 Azure AD 的设备并获取对本地资源的 SSO 访问权限。
 
-要开始使用 FIDO2 安全密钥以及对本地资源的混合访问，请参阅以下文章：
+若要开始使用 FIDO2 安全密钥以及对本地资源的混合访问，请参阅以下文章：
 
 * [无密码 FIDO2 安全密钥](howto-authentication-passwordless-security-key.md)
 * [无密码 Windows 10](howto-authentication-passwordless-security-key-windows.md)
@@ -66,6 +66,10 @@ FIDO2 安全密钥具有安全 enclaves，用于保护存储在其中的私钥�
 
 目前不行。
 
+### <a name="why-i-am-getting-notallowederror-in-the-browser-when-registering-fido2-keys"></a>注册 FIDO2 密钥时，为什么在浏览器中收到“NotAllowedError”？
+
+你将从 fido2 密钥注册页收到“NotAllowedError”。 当用户处于私有 (Incognito) 窗口或使用无法访问 FIDO2 私钥的远程桌面时，通常会发生这种情况。
+
 ## <a name="prerequisites"></a>先决条件
 
 * [如果没有 Internet 连接，此功能是否起作用？](#does-this-feature-work-if-theres-no-internet-connectivity)
@@ -73,7 +77,7 @@ FIDO2 安全密钥具有安全 enclaves，用于保护存储在其中的私钥�
 * [如何确定 Windows 10 设备的域加入类型（已加入 Azure AD 或已加入混合 Azure AD）？](#how-do-i-identify-the-domain-join-type-azure-ad-joined-or-hybrid-azure-ad-joined-for-my-windows-10-device)
 * [应打补丁的 DC 数量建议是多少？](#whats-the-recommendation-on-the-number-of-dcs-that-should-be-patched)
 * [能否在仅本地设备上部署 FIDO2 凭据提供程序？](#can-i-deploy-the-fido2-credential-provider-on-an-on-premises-only-device)
-* [FIDO2 安全密钥登录不适用于我的域管理员或其他高特权帐户。为什么？](#fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why)
+* [FIDO2 安全密钥登录不适用于我的域管理员或其他高特权帐户，为什么？](#fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why)
 
 ### <a name="does-this-feature-work-if-theres-no-internet-connectivity"></a>如果没有 Internet 连接，此功能是否起作用？
 
@@ -93,7 +97,7 @@ Internet 连接是启用此功能的先决条件。 用户首次使用 FIDO2 安
 * *.msftauth.net
 * *.msftauthimages.net
 * *.phonefactor.net
-* *enterpriseregistration.windows.net*
+* enterpriseregistration.windows.net
 * *management.azure.com*
 * *policykeyservice.dc.ad.msft.net*
 * *secure.aadcdn.microsoftonline p.com*
@@ -169,7 +173,7 @@ nltest /dsgetdc:<domain> /keylist /kdc
 * [在哪里可以查看在 AD 中创建并在 Azure AD 中发布的 Kerberos 服务器对象？](#where-can-i-view-these-kerberos-server-objects-that-are-created-in-ad-ds-and-published-in-azure-ad)
 * [为什么我们无法将公钥注册到本地 AD DS 以便不会依赖于 internet？](#why-cant-we-have-the-public-key-registered-to-on-premises-ad-ds-so-there-is-no-dependency-on-the-internet)
 * [密钥如何在 Kerberos 服务器对象上轮替？](#how-are-the-keys-rotated-on-the-kerberos-server-object)
-* [为什么需要 Azure AD Connect？它是否会将任何信息从 Azure AD 写回 AD DS？](#why-do-we-need-azure-ad-connect-does-it-write-any-info-back-to-ad-ds-from-azure-ad)
+* [为何需要 Azure AD Connect？它是否会将任何信息从 Azure AD 回写到 AD DS？](#why-do-we-need-azure-ad-connect-does-it-write-any-info-back-to-ad-ds-from-azure-ad)
 * [请求 PRT + 部分 TGT 时，HTTP 请求/响应会出现什么情况？](#what-does-the-http-requestresponse-look-like-when-requesting-prt-partial-tgt)
 
 ### <a name="how-is-azure-ad-kerberos-linked-to-my-on-premises-active-directory-domain-services-environment"></a>Azure AD Kerberos 如何链接到我的本地 Active Directory 域服务环境？
@@ -225,21 +229,21 @@ Azure AD Connect 不会将信息从 Azure AD 写回 AD DS。 实用工具包含�
 
 HTTP 请求是标准的主刷新令牌 (PRT) 请求。 此 PRT 请求包括一个声明，指出需要 Kerberos 票证授予票证 (TGT)。
 
-| 声明 | “值” | 描述                             |
+| 声明 | 值 | 说明                             |
 |-------|-------|-----------------------------------------|
-| tgt   | 是  | 声明指出客户端需要 TGT。 |
+| tgt   | true  | 声明指出客户端需要 TGT。 |
 
 Azure AD 将加密的客户端密钥和消息缓冲区合并为 PRT 响应作为附加属性。 负荷使用 Azure AD 设备会话密钥进行加密。
 
-| 字段              | 类型   | 描述  |
+| 字段              | 类型   | 说明  |
 |--------------------|--------|--------------|
-| tgt_client_key     | string | Base64 编码的客户端密钥（机密）。 此密钥是用于保护 TGT 的客户端机密。 在此无密码方案中，客户端密码由服务器作为每个 TGT 请求的一部分生成，然后在响应中返回给客户端。 |
+| tgt_client_key     | 字符串 | Base64 编码的客户端密钥（机密）。 此密钥是用于保护 TGT 的客户端机密。 在此无密码方案中，客户端密码由服务器作为每个 TGT 请求的一部分生成，然后在响应中返回给客户端。 |
 | tgt_key_type       | int    | 本地 AD DS 密钥类型，用于客户端密钥和 KERB_MESSAGE_BUFFER 中包括的 Kerberos 会话密钥。 |
-| tgt_message_buffer | string | Base64 编码的 KERB_MESSAGE_BUFFER。 |
+| tgt_message_buffer | 字符串 | Base64 编码的 KERB_MESSAGE_BUFFER。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-要开始使用 FIDO2 安全密钥以及对本地资源的混合访问，请参阅以下文章：
+若要开始使用 FIDO2 安全密钥以及对本地资源的混合访问，请参阅以下文章：
 
 * [无密码 FIDO2 安全密钥](howto-authentication-passwordless-security-key.md)
 * [无密码 Windows 10](howto-authentication-passwordless-security-key-windows.md)

@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 06/13/2021
+ms.date: 07/01/2021
 ms.author: memildin
-ms.openlocfilehash: a490a08946a7357af41cce04051ef01765c8fbe5
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: cff1215fadcd26f18b75c33bba6794c625729e5d
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062237"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113225581"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -26,19 +26,56 @@ ms.locfileid: "112062237"
 
 ## <a name="planned-changes"></a>计划的更改
 
-| 计划的更改                                                                                                                                                        | 预计更改日期 |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| [正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)          | 2021 年 6 月                 |
-| [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)                                                     | 2021 年第 3 季度                   |
-| [启用 Azure Defender 安全控件以在安全分数中增加得分](#enable-azure-defender-security-control-to-be-included-in-secure-score)                       | 2021 年第 3 季度                   |
-|                                                                                                                                                                       |                           |
+| 计划的更改                                                                                                                                                                                          | 预计更改日期 |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| [CSV 导出限制为 20 MB](#csv-exports-to-be-limited-to-20-mb)                                                                                                                               | 2021 年 7 月                 |
+| [正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)                                            | 2021 年 7 月                 |
+| [弃用建议“应在计算机上解决 Log Analytics 代理运行状况问题”](#deprecating-recommendation-log-analytics-agent-health-issues-should-be-resolved-on-your-machines) | 2021 年 7 月                 |
+| [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)                                                                                       | 2021 年第 3 季度                   |
+| [启用 Azure Defender 安全控件以在安全分数中增加得分](#enable-azure-defender-security-control-to-be-included-in-secure-score)                                                         | 2021 年第 3 季度                   |
+|                                                                                                                                                                                                         |                           |
 
+
+### <a name="csv-exports-to-be-limited-to-20-mb"></a>CSV 导出限制为 20 MB
+
+预计更改日期：2021 年 7 月
+
+导出安全中心建议数据时，当前对可下载的数据量没有限制。
+
+:::image type="content" source="media/upcoming-changes/download-csv-report.png" alt-text="安全中心的“下载 CSV 报表”按钮，用于导出建议数据。":::
+
+进行此更改后，我们将设置 20 MB 的限制。
+
+如果需要导出大量数据，请在选择数据前使用可用的筛选器，或选择订阅的子集并批量下载数据。
+
+:::image type="content" source="media/upcoming-changes/filter-subscriptions.png" alt-text="在 Azure 门户中筛选“订阅”。":::
+
+详细了解如何[执行安全建议的 CSV 导出](continuous-export.md#manual-one-time-export-of-alerts-and-recommendations)。
 
 ### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013
+
+预计更改日期：2021 年 7 月
 
 将从安全中心的监管合规性仪表板中删除 ISO 27001 的旧版实现。 如果要跟踪 ISO 27001 与安全中心的合规性，请针对所有相关管理组或订阅加入新的 ISO 27001:2013 标准，很快将会从仪表板中删除当前的旧版 ISO 27001。
 
 :::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="安全中心的监管合规性仪表板，其中显示了有关删除 ISO 27001 的旧版实现的消息。" lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
+
+### <a name="deprecating-recommendation-log-analytics-agent-health-issues-should-be-resolved-on-your-machines"></a>弃用建议“应在计算机上解决 Log Analytics 代理运行状况问题”
+
+预计更改日期：2021 年 7 月
+
+我们发现，建议“应在计算机上解决 Log Analytics 代理运行状况问题”会因与安全中心的云安全态势管理 (CSPM) 不一致而影响安全分数。 通常，CSPM 与识别安全错误配置有关。 代理运行状况问题不适用于此类问题。
+
+此外，和与安全中心相关的其他代理相比时，该建议也是异常的：这是唯一一个具有与运行状况问题相关的建议的代理。
+
+该建议将被弃用。
+
+由于此弃用，我们还将对安装 Log Analytics 代理的建议做少许更改（Log Analytics 代理应安装在...）。
+
+此更改可能会影响安全分数。 对于大多数订阅，此更改应会导致分数增加，但在某些情况下，对安装建议的更新可能会导致分数降低。
+
+> [!TIP]
+> [资产清单](asset-inventory.md)页也会受此更改影响，因为该页面也会显示有关计算机是否被监视、未被监视或被部分监视的信息（指存在运行状况问题的代理的状态）。 
 
 ### <a name="enhancements-to-sql-data-classification-recommendation"></a>SQL 数据分类建议的增强
 

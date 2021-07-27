@@ -7,27 +7,27 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: quickstart
-ms.date: 06/01/2021
+ms.date: 06/21/2021
 ms.author: ambapat
-ms.openlocfilehash: 0b29a292dae570d368f54f65773ce72a54de2e2d
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: cbde53687c08208dc8fed3b69a6a98ed732cf57c
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413980"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380349"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>快速入门：使用 Azure CLI 预配和激活托管 HSM
 
 Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户且符合标准的云服务，你可用它来使用 FIPS 140-2 级别 3 验证的 HSM 保护云应用程序的加密密钥。 要详细了解托管 HSM，可参阅[概述](overview.md)。 
 
-在本快速入门中，你将使用 Azure CLI 创建和激活托管 HSM。 完成该操作后，即可存储机密。
+在本快速入门中，你将使用 Azure CLI 创建和激活托管 HSM。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，必须准备好以下项：
 
 * Microsoft Azure 订阅。 如果没有，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial)。
-* Azure CLI 版本 2.12.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+* Azure CLI 版本 2.25.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 * 订阅中的托管 HSM。 请参阅[快速入门：使用 Azure CLI 预配和激活托管 HSM](quick-create-cli.md)，预配和激活托管 HSM。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -127,4 +127,5 @@ az group delete --name ContosoResourceGroup
 
 - 请参阅[托管 HSM 概述](overview.md)
 - 了解如何[管理托管 HSM 中的密钥](key-management.md)
+- 了解[托管 HSM 的角色管理](role-management.md)
 - 查看[托管 HSM 最佳做法](best-practices.md)

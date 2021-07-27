@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 36dfc8c906c52c6822e583db3a08c891306f7e78
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108392"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047926"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>将 Azure API 管理与 Azure Kubernetes 服务中部署的微服务结合使用
 
@@ -95,7 +95,7 @@ AKS 和 API 管理结合使用时，共同提供一个平台用来部署、发�
 
 ### <a name="option-3-deploy-apim-inside-the-cluster-vnet"></a>选项 3：在群集 VNet 中部署 APIM
 
-在某些情况下，由于公开的终结点，具有法规约束或严格安全要求的客户可能会发现选项 1 和 2 这两种解决方案不可行。 在其他情况下，AKS 群集和使用微服务的应用程序可能驻留在同一 VNet 中，因此没有理由公开群集，原因是所有 API 流量都将保留在 VNet 中。 在这些情况下，可将 API 管理部署到群集 VNet 中。 [API 管理高级层](https://aka.ms/apimpricing)支持 VNet 部署。 
+在某些情况下，由于公开的终结点，具有法规约束或严格安全要求的客户可能会发现选项 1 和 2 这两种解决方案不可行。 在其他情况下，AKS 群集和使用微服务的应用程序可能驻留在同一 VNet 中，因此没有理由公开群集，原因是所有 API 流量都将保留在 VNet 中。 在这些情况下，可将 API 管理部署到群集 VNet 中。 [API Management 的“开发人员”层和“高级”层](https://aka.ms/apimpricing)支持 VNet 部署。 
 
 可采用两种模式[将 API 管理部署到 VNet](./api-management-using-with-vnet.md) - 外部和内部。 
 

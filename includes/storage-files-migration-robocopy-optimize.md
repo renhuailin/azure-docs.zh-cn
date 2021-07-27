@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 4/05/2021
 ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: 57d14ae6e6da7cfa883f1aed74cce390c0185d98
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: a3dc42ece6bbd05b61ef9a4f1a0f82e147b2a762
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491659"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749279"
 ---
 给定 RoboCopy 运行的速度和成功率将取决于以下几个因素：
 
@@ -51,6 +51,8 @@ RoboCopy 将遍历它指向的命名空间，并评估每个文件和文件夹�
 导致这种差异的原因是遍历命名空间所需的处理能力。 RoboCopy 通过 `/MT:n` 参数支持多线程副本，其中 n 表示处理器线程数。 因此，在专门为 RoboCopy 预配计算机时，请考虑处理器核心的数量及其与提供的线程计数的关系。 最常见的是每个核心两个线程。 计算机的核心和线程计数是一个重要的数据点，可决定应该指定的多线程值 `/MT:n`。 还应考虑计划在给定计算机上并行运行的 RoboCopy 作业的数目。
 
 与更少的线程相比，线程更多可更快地复制 1-TiB 的小文件。 同时，对 1 TiB 更大文件投入额外资源可能不会产生成比例的效益。 如果线程数较高，则会尝试通过网络同时复制更多的大文件。 这种额外的网络活动增加了受吞吐量或存储 IOPS 限制的可能性。
+
+在第一次 RoboCopy 到空目标或使用大量更改文件的差异运行期间，你可能会受到网络吞吐量的限制。 在初始运行时，以较高的线程数开始。 较高的线程数（甚至超过计算机上当前可用的线程）有助于使可用网络带宽饱和。 后续 /MIR 运行会逐渐受到处理项的影响。 差异运行中的更改越少，通过网络传输的数据就越少。 相比于通过网络链接来移动命名空间项，你的速度现在更取决于处理命名空间项的能力。 对于后续运行，请将线程计数值与处理器核心计数和每个核心的线程计数相匹配。 考虑是否需要为生产服务器可能具有的其他任务预留核心。
 
 ### <a name="avoid-unnecessary-work"></a>避免不必要的工作
 

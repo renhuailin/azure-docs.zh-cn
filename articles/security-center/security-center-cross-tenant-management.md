@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心的跨租户管理 | Microsoft Docs
-description: 了解如何在安全中心使用 Azure 委派资源管理设置跨租户管理，以管理多个租户的安全状况。
+description: 了解如何在安全中心使用 Azure Lighthouse 设置跨租户管理，以管理多个租户的安全状况。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 493a06e85ad6c8260c342cf8167386394835b1c6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65ab3d1e6229d3d6fad752b1bc336d0ad749b597
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099482"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787988"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>安全中心的跨租户管理
 
-跨租户管理使你可以利用 [Azure 委派资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)在安全中心查看和管理多个租户的安全状况。 从单个视图中高效管理多个租户，无需登录每个租户的目录。
+跨租户管理使你可以利用 [Azure Lighthouse](../lighthouse/overview.md) 在安全中心查看和管理多个租户的安全状况。 从单个视图中高效管理多个租户，无需登录每个租户的目录。
 
 - 服务提供商可以在其自己的租户中管理多个客户的资源安全状况。
 
@@ -30,7 +30,7 @@ ms.locfileid: "102099482"
 
 ## <a name="set-up-cross-tenant-management"></a>设置跨租户管理
 
-Azure 委派资源管理是 Azure Lighthouse 的关键组成部分之一。 使用 Azure Lighthouse 的文档（[Azure 委派资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)）中的说明，通过将托管租户的资源访问权限委派给你自己的租户来设置跨租户管理。
+[Azure 委派资源管理](../lighthouse/concepts/architecture.md)是 Azure Lighthouse 的关键组成部分之一。 使用 Azure Lighthouse 的文档（[将客户载入到 Azure Lighthouse](../lighthouse/how-to/onboard-customer.md)）中的说明，通过将托管租户的资源访问权限委派给你自己的租户来设置跨租户管理。
 
 
 ## <a name="how-does-cross-tenant-management-work-in-security-center"></a>跨租户管理如何在安全中心工作

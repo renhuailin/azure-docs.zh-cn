@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f101c8a3d3af9658414e816afff9050402d71ce
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: d8a4b97ef095f5860ddf99751186ca04926e1698
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064064"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761734"
 ---
 # <a name="securing-service-principals"></a>保护服务主体
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) [服务主体](../develop/app-objects-and-serv
 > 你可能会发现，在身份验证相关任务中松散地引用应用程序时，应用程序和服务主体的术语可互换使用。 然而，它们是 Azure AD 中应用的两种不同表示形式。
  
 
-ApplicationID 代表全局应用程序，对于租户的所有应用程序实例都是一样的。 ObjectID 是应用程序对象的唯一值，代表服务主体。 与用户、组和其他资源一样，ObjectID 有助于在 Azure AD 中唯一标识应用程序实例。
+ApplicationID 代表全局应用程序，对于租户的所有应用程序实例都是一样的。 ObjectID 是应用程序对象的唯一值。 与用户、组和其他资源一样，ObjectID 有助于在 Azure AD 中唯一标识应用程序实例。
 
 有关本主题的详细信息，请参阅[应用程序和服务主体关系](../develop/app-objects-and-service-principals.md)。
 

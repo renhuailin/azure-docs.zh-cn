@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 030f19d61e19349de7e2d3416a3aee1385fd03c8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fbd3d9c3607a0326e7ad9403c8e69d20dafc952a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104607516"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740296"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 启动诊断
 
@@ -102,7 +102,7 @@ API 版本 2020-06-01 后的所有内容都支持托管启动诊断。 有关详
 ```
 
 ## <a name="limitations"></a>限制
-- 启动诊断仅适用于 Azure 资源管理器 VM。
+- 托管启动诊断仅适用于 Azure 资源管理器 VM。 
 - 托管启动诊断不支持那些使用非托管 OS 磁盘的 VM。
 - 启动诊断不支持高级存储帐户。如果将高级存储帐户用于启动诊断，则在启动 VM 时，用户会收到 `StorageAccountTypeNotSupported` 错误。 
 - 资源管理器 API 版本“2020-06-01”及更高版本支持托管存储帐户。

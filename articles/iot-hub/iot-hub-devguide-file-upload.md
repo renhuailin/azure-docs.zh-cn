@@ -12,42 +12,72 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bb0d39ea9e37f87a465ea5803e004a142c3a3fc6
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90019523"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715153"
 ---
 # <a name="upload-files-with-iot-hub"></a>使用 IoT 中心上传文件
 
-如 [IoT 中心终结点](iot-hub-devguide-endpoints.md)一文中详述，设备可以通过面向设备的终结点 (**/devices/{deviceId}/files**) 发送通知以启动文件上传。 当设备通知 IoT 中心已完成某个上传时，IoT 中心会通过面向服务的终结点 (**/messages/servicebound/filenotifications**) 发送文件上传通知消息。
+在许多情况下，我们无法轻松地将设备发送的数据映射为 IoT 中心容易接受的相对较小的设备到云消息。 例如：
+* 大型图像文件
+* 视频文件
+* 以高频率采样的振动数据
+* 某种形式的预处理数据
 
-IoT 中心本身不中转消息，而是充当关联 Azure 存储帐户的调度程序。 设备请求来自 IoT 中心的存储令牌，该令牌特定于设备要上传的文件。 设备使用 SAS URI 将文件上传到存储空间，上传完成后，设备将完成通知发送到 IoT 中心。 IoT 中心检查文件上传是否已完成，然后将文件上传通知消息添加到面向服务的文件通知终结点。
-
-从设备将文件上传到 IoT 中心之前，必须配置中心，通过为其[关联 Azure 存储](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub)帐户实现配置。
-
-然后，设备就能[初始化上传](iot-hub-devguide-file-upload.md#initialize-a-file-upload)，并在上传完成后[通知 IoT 中心](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)。 设备通知 IoT 中心上传完成以后，服务可选择生成[通知消息](iot-hub-devguide-file-upload.md#file-upload-notifications)。
+当你需要从设备上传此类文件时，仍可以借助 IoT 中心的安全性和可靠性。 IoT 中心本身不中转消息，但是 IoT 中心充当关联 Azure 存储帐户的调度程序。 设备请求来自 IoT 中心的存储令牌，该令牌特定于设备要上传的文件。 设备使用 SAS URI 将文件上传到存储空间，上传完成后，设备将完成通知发送到 IoT 中心。 IoT 中心检查文件上传是否已完成。
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ### <a name="when-to-use"></a>何时使用
 
-使用文件上传，发送间歇性连接的设备上传的媒体文件和大型遥测批文件（或者是压缩后的文件，以节省带宽）。
-
-如果在使用报告属性、设备到云消息或文件上传方面有任何疑问，请参阅[设备到云通信指南](iot-hub-devguide-d2c-guidance.md)。
+使用文件上传，发送间歇性连接的设备上传的媒体文件和大型遥测批文件（或者是压缩后的文件，以节省带宽）。 如果在使用报告属性、设备到云消息或文件上传方面有任何疑问，请参阅[设备到云通信指南](iot-hub-devguide-d2c-guidance.md)。
 
 ## <a name="associate-an-azure-storage-account-with-iot-hub"></a>将 Azure 存储帐户与 IoT 中心相关联
 
-要使用文件上传功能，必须首先将 Azure 存储帐户链接到 IoT 中心。 可通过 Azure 门户完成此任务，或通过 [IoT 中心资源提供程序 REST API](/rest/api/iothub/iothubresource) 以编程方式完成此任务。 将 Azure 存储帐户与 IoT 中心关联后，当设备启动文件上传请求时，此服务将向该设备返回 SAS URI。
+你需要拥有与 IoT 中心关联的 Azure 存储帐户。 
 
-[使用 IoT 中心将文件从设备上传到云](iot-hub-csharp-csharp-file-upload.md)操作指南提供了文件上传过程的完整演练。 这些操作指南展示了如何使用 Azure 门户将存储帐户与 IoT 中心相关联。
+若要了解如何使用门户创建 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)。 
+
+此外，你也可以使用 [IoT 中心资源提供程序 REST API](/rest/api/iothub/iothubresource) 以编程方式创建一个存储帐户。 
+
+将 Azure 存储帐户与 IoT 中心相关联时，IoT 中心会生成一个 SAS URI。 设备可以使用此 SAS URI 安全地将文件上传到 Blob 容器。
+
+## <a name="create-a-container"></a>创建容器
+
+ 通过门户创建 Blob 容器的步骤：
+
+1. 在存储帐户左侧窗格中的“数据存储”下，选择“容器”。
+1. 在“容器”边栏选项卡中，选择“+容器”。
+1. 在随即打开的“新建容器”窗格中，为容器提供一个名称，然后选择“创建”。
+
+创建容器后，按照[使用 Azure 门户配置文件上传](iot-hub-configure-file-upload.md)中的说明操作。 确保有一个 Blob 容器与你的 IoT 中心关联并且文件通知已启用。
+
+你还可以使用 [IoT 中心资源提供程序 REST API](/rest/api/iothub/iothubresource) 为你的 IoT 中心创建一个与存储关联的容器。
+
+## <a name="file-upload-using-an-sdk"></a>使用 SDK 上传文件
+
+以下操作指南逐步介绍了多种 SDK 语言的文件上传过程。 这些指南展示了如何使用 Azure 门户将存储帐户与 IoT 中心相关联。 它们还包含代码片段或参考示例，指导你完成上传过程。
+
+* [.NET](iot-hub-csharp-csharp-file-upload.md)
+* [Java](iot-hub-java-java-file-upload.md)
+* [Node.js](iot-hub-node-node-file-upload.md)
+* [Python](iot-hub-python-python-file-upload.md)
 
 > [!NOTE]
-> [Azure IoT SDK](iot-hub-devguide-sdks.md) 自动处理检索 SAS URI、上传文件和通知 IoT 中心已完成上传等操作。
+> [Azure IoT SDK](iot-hub-devguide-sdks.md) 自动处理检索共享访问签名 URI、上传文件和通知 IoT 中心已完成上传等操作。 如果防火墙阻止对 Blob 存储终结点的访问，但却允许访问 IoT 中心终结点，那么文件上传过程将失败，并针对 IoT C# 设备 SDK 显示以下错误：
+>
+> `---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond`
+>
+> 若要使文件上传功能正常运行，设备必须可以同时访问 IoT 中心终结点和 Blob 存储终结点。
+> 
 
-## <a name="initialize-a-file-upload"></a>初始化文件上传
-IoT 中心有一个终结点，专供设备在上传文件时请求用于存储的 SAS URI。 为了启动文件上传过程，设备会使用以下 JSON 正文向 `{iot hub}.azure-devices.net/devices/{deviceId}/files` 发送 POST 请求：
+
+## <a name="initialize-a-file-upload-rest"></a>初始化文件上传 (REST)
+
+你可以使用 REST API（而不是其中一个 SDK）来上传文件。 IoT 中心有一个终结点，专供设备在上传文件时请求用于存储的 SAS URI。 为了启动文件上传过程，设备会使用以下 JSON 正文向 `{iot hub}.azure-devices.net/devices/{deviceId}/files` 发送 POST 请求：
 
 ```json
 {
@@ -78,7 +108,7 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 * 上传完成后要使用的相关 ID。
 
-## <a name="notify-iot-hub-of-a-completed-file-upload"></a>通知 IoT 中心已完成文件上传
+## <a name="notify-iot-hub-of-a-completed-file-upload-rest"></a>通知 IoT 中心已完成文件上传 (REST)
 
 设备使用 Azure 存储 SDK 将文件上传到存储。 上传完成后，设备会使用以下 JSON 正文向 `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` 发送 POST 请求：
 
@@ -97,13 +127,13 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 以下参考主题详细介绍了如何从设备上传文件。
 
-## <a name="file-upload-notifications"></a>文件上传通知
+### <a name="file-upload-notifications"></a>文件上传通知
 
 （可选）当设备通知 IoT 中心某个上传完成后，IoT 中心将生成一条通知消息。 此消息包含文件的名称和存储位置。
 
 如 [终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 (**/messages/servicebound/fileuploadnotifications**) 以消息的形式传递文件上传通知。 文件上传通知的接收语义与云到设备消息的接收语义相同，并且具有相同的[消息生命周期](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle)。 从文件上传通知终结点检索到的每条消息都是具有以下属性的 JSON 记录：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 | --- | --- |
 | EnqueuedTimeUtc |指示通知创建时间的时间戳。 |
 | DeviceId |上传文件的设备的 **DeviceId**。 |
@@ -125,11 +155,11 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 }
 ```
 
-## <a name="file-upload-notification-configuration-options"></a>文件上传通知配置选项
+### <a name="file-upload-notification-configuration-options"></a>文件上传通知配置选项
 
 每个 IoT 中心都具有针对文件上传通知的以下配置选项：
 
-| 属性 | 说明 | 范围和默认值 |
+| 属性 | 描述 | 范围和默认值 |
 | --- | --- | --- |
 | **enableFileUploadNotifications** |控制是否将文件上传通知写入文件通知终结点。 |布尔型。 默认值：True。 |
 | **fileNotifications.ttlAsIso8601** |文件上传通知的默认 TTL。 |ISO_8601 间隔上限为 48 小时（下限为 1 分钟）。 默认值：1 小时。 |

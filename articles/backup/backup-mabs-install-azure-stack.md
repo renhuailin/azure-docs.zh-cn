@@ -3,12 +3,12 @@ title: 在 Azure Stack 上安装 Azure 备份服务器
 description: 本文介绍如何使用 Azure 备份服务器保护或备份 Azure Stack 中的工作负荷。
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 12dfd15c2bd43816dd361fdf45995bcbcd6fba56
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c133645f1d813380ba4bd6095afb6af5bdc94379
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98986999"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767754"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安装 Azure 备份服务器
 
@@ -79,7 +79,7 @@ Azure备份服务器将备份数据存储在附加到虚拟机的 Azure 磁盘�
 - 卸载数据 - 将旧数据发送到 Azure，并仅保留附加到 Azure 备份服务器的存储上的最新数据。
 - 横向扩展 - 添加更多 Azure 备份服务器来保护工作负荷。
 
-### <a name="net-framework"></a>.NET Framework
+### <a name="net-framework"></a>.NET framework
 
 必须在虚拟机上安装 .NET Framework 3.5 SP1 或更高版本。
 
@@ -361,7 +361,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 ## <a name="troubleshooting"></a>疑难解答
 
 如果 Microsoft Azure 备份服务器在安装阶段（或者备份或还原时）失败并出现错误，请参阅[错误代码文档](https://support.microsoft.com/kb/3041338)。
-此外，还可以参考 [Azure 备份相关的常见问题](backup-azure-backup-faq.md)
+此外，还可以参考 [Azure 备份相关的常见问题](backup-azure-backup-faq.yml)
 
 ## <a name="next-steps"></a>后续步骤
 

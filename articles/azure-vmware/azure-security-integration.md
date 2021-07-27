@@ -3,12 +3,12 @@ title: 用 Azure 安全中心集成保护 Azure VMware 解决方案 VM
 description: 通过 Azure 安全中心仪表板中的 Azure 本机安全工具保护 Azure VMware 解决方案 VM。
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3012da2f9d5254b581a4ce53ef51503dfb048e98
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100578252"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769518"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>用 Azure 安全中心集成保护 Azure VMware 解决方案 VM
 
@@ -24,7 +24,7 @@ Azure 本机安全工具为 Azure、Azure VMware 解决方案和本地虚拟机 
 
 ## <a name="topology"></a>拓扑
 
-![显示 Azure 集成安全性的体系结构的关系图。](media/azure-security-integration/azure-integrated-security-architecture.png)
+:::image type="content" source="media/azure-security-integration/azure-integrated-security-architecture.png" alt-text="显示 Azure 集成安全性的体系结构的关系图。" border="false":::
 
 Log Analytics 代理支持收集 Azure、Azure VMware 解决方案和本地 VM 中的日志数据。 日志数据将发送到 Azure Monitor 日志，并存储在 Log Analytics 工作区中。 可以使用启用了 Arc 的服务器 [VM 扩展支持](../azure-arc/servers/manage-vm-extensions.md)为新的和现有的 VM 部署 Log Analytics 代理。 
 
@@ -72,11 +72,11 @@ Azure 安全中心是一个预先配置的工具，不需要进行部署。 在 
 
 2. 在“资源”下选择“服务器”，然后单击“+ 添加”。
 
-    :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="显示用于将 Azure VMware 解决方案 VM 添加到 Azure 的 Azure Arc 服务器页的屏幕截图。":::
+   :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="显示用于将 Azure VMware 解决方案 VM 添加到 Azure 的 Azure Arc 服务器页的屏幕截图。":::
 
 3. 选择“生成脚本”。
  
-    :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="Azure Arc 页面的屏幕截图，其中显示了使用交互式脚本添加服务器的选项。"::: 
+   :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="Azure Arc 页面的屏幕截图，其中显示了使用交互式脚本添加服务器的选项。"::: 
  
 4. 在“先决条件”选项卡上，选择“下一步”。
 
@@ -101,13 +101,13 @@ Azure 安全中心是一个预先配置的工具，不需要进行部署。 在 
 
 2. 对于资源类型，选择“服务器 - Azure Arc”。
  
-     :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="Azure 安全中心“清单”页的屏幕截图，其中选择了“资源”类型下的“服务器 - Azure Arc”。":::
+   :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="Azure 安全中心“清单”页的屏幕截图，其中选择了“资源”类型下的“服务器 - Azure Arc”。":::
 
 3. 选择你资源的名称。 此时会打开一个页面，其中显示了资源的安全运行状况详细信息。
 
 4. 在“建议列表”下，选择“建议”、“已通过的评估”和“不可用评估”选项卡，查看其详细信息  
 
-    :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="Azure 安全中心的屏幕截图，其中显示了安全建议和评估。":::
+   :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="Azure 安全中心的屏幕截图，其中显示了安全建议和评估。":::
 
 ## <a name="deploy-an-azure-sentinel-workspace"></a>部署 Azure Sentinel 工作区
 
@@ -160,7 +160,7 @@ Azure Sentinel 构建在 Log Analytics 工作区的基础之上。 你加入 Azu
 4. 在“常规”选项卡上输入所需的信息。
 
     - 名称
-    - 描述
+    - 说明
     - 策略
     - 严重性
     - 状态
@@ -184,11 +184,11 @@ Azure Sentinel 构建在 Log Analytics 工作区的基础之上。 你加入 Azu
     - 事件分组
     - 禁止
 
-    选择“下一步”。
+    选择“**下一页**”。
 
 6. 在“事件设置”选项卡上，启用“根据此分析规则触发的警报创建事件”，然后选择“下一步: 自动响应 >”。
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="用于在 Azure Sentinel 中创建新规则的分析规则向导的屏幕截图。显示已启用“根据此规则触发的警报创建事件”。":::
+    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="用于在 Azure Sentinel 中创建新规则的分析规则向导的屏幕截图。显示“根据启用的此规则触发的警报创建事件”。":::
 
 7. 选择“下一步: 查看 >”。
 
@@ -231,7 +231,7 @@ Azure Sentinel 构建在 Log Analytics 工作区的基础之上。 你加入 Azu
 2. 填写以下信息以创建自定义查询。
 
     - 名称
-    - 描述
+    - 说明
     - 自定义查询
     - 输入映射
     - 策略
@@ -242,6 +242,6 @@ Azure Sentinel 构建在 Log Analytics 工作区的基础之上。 你加入 Azu
 
 了解了如何保护 Azure VMware 解决方案 VM 后，接下来建议了解以下内容：
 
-- 使用 [Azure Defender 仪表板](../security-center/azure-defender-dashboard.md)。
-- [Azure Sentinel 中的高级多阶段攻击检测](../azure-monitor/logs/quick-create-workspace.md)。
-- [Azure VMware 解决方案 VM 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
+- 使用 [Azure Defender 仪表板](../security-center/azure-defender-dashboard.md)
+- [Azure Sentinel 中的高级多阶段攻击检测](../azure-monitor/logs/quick-create-workspace.md)
+- [监视和管理 Azure VMware 解决方案 VM](lifecycle-management-of-azure-vmware-solution-vms.md)

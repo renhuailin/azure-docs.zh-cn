@@ -1,14 +1,14 @@
 ---
 title: 获取策略符合性数据
 description: Azure Policy 的评估和效果确定了符合性。 了解如何获取 Azure 资源的符合性详细信息。
-ms.date: 10/05/2020
+ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: 3c1c128b414444c6004f32f3f3173548f81a82e1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: fcc82e2f86746f68000e9cfcafedf2d7b8b3105d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577117"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733560"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -26,7 +26,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 
 ## <a name="evaluation-triggers"></a>评估触发器
 
-已完成的评估周期的结果通过 `PolicyStates` 和 `PolicyEvents` 操作在 `Microsoft.PolicyInsights` 资源提供程序中获取。 有关 [Azure Policy Insights](/rest/api/policy-insights/) REST API 操作的详细信息，请参阅 。
+已完成的评估周期的结果通过 `PolicyStates` 和 `PolicyEvents` 操作在 `Microsoft.PolicyInsights` 资源提供程序中获取。 有关 [Azure Policy Insights](/rest/api/policy/) REST API 操作的详细信息，请参阅 。
 
 已分配的策略和计划的评估会在各种事件后发生：
 
@@ -35,6 +35,8 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 - 更新了已分配到某个范围的策略或计划。 此场景的评估周期和计时与新的范围分配相同。
 
 - 资源将通过 Azure 资源管理器、REST API 或受支持的 SDK 部署到包含分配的范围或在其中进行更新。 在此场景中，个体资源的效果事件（追加、审核、拒绝、部署）和符合性状态将在大约 15 分钟后出现在门户与 SDK 中。 此事件不会导致对其他资源进行评估。
+
+- 在[管理组层次结构](../../management-groups/overview.md)中创建或移动订阅（资源类型 `Microsoft.Resource/subscriptions`），并有一个针对订阅资源类型的已分配策略定义。 评估订阅支持的效果（audit、auditIfNotExist、deployIfNotExists、modify），日志记录和任何修正操作大约需要 30 分钟。
 
 - 创建、更新或删除了[策略豁免](../concepts/exemption-structure.md)。 在此方案中，会为定义的豁免范围评估相应的分配。
 
@@ -53,22 +55,21 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 
 使用 [Azure Policy 符合性扫描操作](https://github.com/marketplace/actions/azure-policy-compliance-scan)可从 [GitHub 工作流](https://docs.github.com/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows)中触发对一个或多个资源、资源组或订阅的按需评估扫描，并基于资源的符合性状态来限制该工作流。 还可以将该工作流配置为按计划的时间运行，从而在方便时获取最新的符合性状态。 或者，此 GitHub 操作还可以生成有关已扫描资源的符合性状态报告，以便进一步分析或存档。
 
-以下示例对订阅运行符合性扫描。 
+以下示例对订阅运行符合性扫描。
 
 ```yaml
 on:
-  schedule:    
+  schedule:
     - cron:  '0 8 * * *'  # runs every morning 8am
 jobs:
-  assess-policy-compliance:    
+  assess-policy-compliance:
     runs-on: ubuntu-latest
-    steps:         
+    steps:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}} 
+        creds: ${{secrets.AZURE_CREDENTIALS}}
 
-    
     - name: Check for resource compliance
       uses: azure/policy-compliance-scan@v0
       with:
@@ -113,9 +114,9 @@ $job = Start-AzPolicyComplianceScan -AsJob
 ```azurepowershell-interactive
 $job
 
-Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
---     ----            -------------   -----         -----------     --------             -------
-2      Long Running O… AzureLongRunni… Running       True            localhost            Start-AzPolicyCompliance…
+Id     Name              PSJobTypeName     State         HasMoreData     Location             Command
+--     ----              -------------     -----         -----------     --------             -------
+2      Long Running O... AzureLongRunni... Running       True            localhost            Start-AzPolicyCompliance...
 ```
 
 符合性扫描完成后，“状态”属性更改为“已完成”。
@@ -179,7 +180,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 例如，假设有一个资源组 ContsoRG，其中包含一些向公共网络公开的存储帐户（以红色突出显示）。
 
 :::image type="complex" source="../media/getting-compliance-data/resource-group01.png" alt-text="向 Contoso R G 资源组中的公共网络公开的存储帐户图。" border="false":::
-   图中显示了 Contoso R G 资源组中五个存储帐户的映像。  存储帐户 1 和 3 为蓝色，而存储帐户 2、4 和 5 为红色。
+   图中显示了 Contoso R G 资源组中五个存储帐户的映像。 存储帐户 1 和 3 为蓝色，而存储帐户 2、4 和 5 为红色。
 :::image-end:::
 
 在此示例中，需要慎重考虑安全风险。 在创建策略分配后，会针对 ContosoRG 资源组中所有已包含的未豁免存储帐户评估该分配。 它对这三个不合规的存储帐户进行审核，并因此将其状态更改为“不合规”。
@@ -203,7 +204,7 @@ Azure Policy 使用定义中的“类型”、“名称”或“种类”字段�
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="“合规性”页面中策略合规性详细信息的屏幕截图。" border="false":::
 
 > [!NOTE]
-> Azure 策略中的规章遵从性是一项预览功能。 门户中 SDK 和页面的符合性属性对于已启用的计划有所不同。 有关详细信息，请参阅合规 [性](../concepts/regulatory-compliance.md)
+> Azure Policy 中的监管合规性是一项预览功能。 SDK 和门户页面中的合规性属性对于已启用的计划而言是不同的。 有关详细信息，请参阅[监管合规性](../concepts/regulatory-compliance.md)
 
 ## <a name="portal"></a>门户
 
@@ -227,7 +228,7 @@ Azure 门户展示了一个图形体验用于可视化和了解环境中的符�
 
 :::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="资源提供程序模式分配“组件合规性”选项卡及合规性详细信息的屏幕截图。" border="false":::
 
-返回资源符合性页面，右键单击要收集其更多详细信息的事件所在的行，然后选择“显示活动日志”。 活动日志页将会打开，其中的搜索结果经过预先筛选，显示分配和事件的详细信息。 活动日志提供有关这些事件的其他上下文和信息。
+返回资源符合性页面，选择并按住（或右键单击）要收集其更多详细信息的事件所在的行，然后选择“显示活动日志”。 活动日志页将会打开，其中的搜索结果经过预先筛选，显示分配和事件的详细信息。 活动日志提供有关这些事件的其他上下文和信息。
 
 :::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Azure Policy 活动和评估的活动日志屏幕截图。" border="false":::
 
@@ -237,13 +238,13 @@ Azure 门户展示了一个图形体验用于可视化和了解环境中的符�
 
 ## <a name="command-line"></a>命令行
 
-可以使用 REST API（包括使用 [ARMClient](https://github.com/projectkudu/ARMClient)）、Azure PowerShell 和 Azure CLI 来检索门户中提供的相同信息。 有关 REST API 的完整详细信息，请参阅 [Azure Policy Insights](/rest/api/policy-insights/) 参考文章。 REST API 参考页上针对每个操作提供了一个绿色的“试用”按钮，使用该按钮可在浏览器中直接试用该操作。
+可以使用 REST API（包括使用 [ARMClient](https://github.com/projectkudu/ARMClient)）、Azure PowerShell 和 Azure CLI 来检索门户中提供的相同信息。 有关 REST API 的完整详细信息，请参阅 [Azure Policy](/rest/api/policy/) 参考文章。 REST API 参考页上针对每个操作提供了一个绿色的“试用”按钮，使用该按钮可在浏览器中直接试用该操作。
 
 对于 REST API 示例，使用 ARMClient 或类似工具来处理对 Azure 的身份验证。
 
 ### <a name="summarize-results"></a>汇总结果
 
-使用 REST API 时，可以按容器、定义或分配进行汇总。 下面是使用 Azure Policy Insight 的[按订阅汇总](/rest/api/policy-insights/policystates/summarizeforsubscription)功能在订阅级别执行的汇总示例：
+使用 REST API 时，可以按容器、定义或分配进行汇总。 下面是使用 Azure Policy Insight 的[按订阅汇总](/rest/api/policy/policystates/summarizeforsubscription)功能在订阅级别执行的汇总示例：
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
@@ -287,7 +288,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 
 ### <a name="query-for-resources"></a>查询资源
 
-在上面的示例中，**value.policyAssignments.policyDefinitions.results.queryResultsUri** 提供了一个示例 URI，用于特定策略定义的所有不符合资源。 查看 $filter 值，ComplianceState 等于 (eq)“NonCompliant”，PolicyAssignmentId 是针对策略定义，然后针对 PolicyDefinitionId 本身指定的。 在筛选器中包含 PolicyAssignmentId 的原因是，PolicyDefinitionId 可能在具有不同范围的多个策略或计划分配中存在。 通过指定 PolicyAssignmentId 和 PolicyDefinitionId，可以明确指定想要查找的结果。 以前，我们使用了 **latest** 作为 PolicyStates，因此将 **起始** 和 **截止** 时间范围自动设置成了过去 24 小时。
+在上面的示例中，value.policyAssignments.policyDefinitions.results.queryResultsUri 提供了一个示例 URI，用于特定策略定义的所有不符合资源。 查看 $filter 值，ComplianceState 等于 (eq)“NonCompliant”，PolicyAssignmentId 是针对策略定义，然后针对 PolicyDefinitionId 本身指定的。 在筛选器中包含 PolicyAssignmentId 的原因是，PolicyDefinitionId 可能在具有不同范围的多个策略或计划分配中存在。 通过指定 PolicyAssignmentId 和 PolicyDefinitionId，可以明确指定想要查找的结果。 以前，我们使用了 **latest** 作为 PolicyStates，因此将 **起始** 和 **截止** 时间范围自动设置成了过去 24 小时。
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
@@ -353,7 +354,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
-有关查询策略事件的详细信息，请参阅 [Azure Policy 事件](/rest/api/policy-insights/policyevents)参考文章。
+有关查询策略事件的详细信息，请参阅 [Azure Policy 事件](/rest/api/policy/policyevents)参考文章。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -648,7 +649,7 @@ $policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/v
 $policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
 ```
 
-`$policyEvents` 对象的输出类似于：
+`$policyEvents` 对象的输出类似于以下输出：
 
 ```output
 Timestamp                  : 9/19/2020 5:18:53 AM

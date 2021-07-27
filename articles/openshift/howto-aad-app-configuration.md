@@ -7,10 +7,10 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: f0bf28d61d4c9ad95a485fb4b60e370c16ace16c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100633319"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 的 Azure Active Directory 集成
@@ -36,7 +36,7 @@ Microsoft Azure Red Hat OpenShift 需要权限，才能代表群集执行任务�
 1. 转到[用户-所有用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)边栏选项卡。
 2. 单击“+ 新建用户”以打开“用户”窗格。
 3. 输入此用户的名称。
-4. 根据已创建租户的名称创建一个用户名，并在末尾追加 `.onmicrosoft.com`。 例如 `yourUserName@yourTenantName.onmicrosoft.com`。 记下此用户名。 需要使用它来登录到群集。
+4. 根据已创建租户的名称创建一个用户名，并在末尾追加 `.onmicrosoft.com`。 例如，`yourUserName@yourTenantName.onmicrosoft.com`。 记下此用户名。 需要使用它来登录到群集。
 5. 单击“目录角色”以打开目录角色窗格，选择“所有者”，然后单击窗格底部的“确定”。
 6. 在“用户”窗格中，单击“显示密码”并记录临时密码。 首次登录后，系统将提示你重置密码。
 7. 在窗格底部，单击“创建”以创建用户。
@@ -98,7 +98,7 @@ Microsoft Azure Red Hat OpenShift 需要权限，才能代表群集执行任务�
 
 ## <a name="add-api-permissions"></a>添加 API 权限
 
-[//]: # (不要更改为 Microsoft Graph。它不适用于 Microsoft Graph。)
+[//]: # (不要更改为 Microsoft Graph。不适用于 Microsoft Graph。)
 1. 在“管理”部分单击“API 权限” 
 2. 单击“添加权限”，然后依次选择“Azure Active Directory Graph”和“委托的权限”。
 > [!NOTE]

@@ -4,14 +4,14 @@ ms.service: databox
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 71d5a910e36762d096763c4f45a13cbdad47414d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f166413507afb9aff814eaddaade099d2e34ae68
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730606"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554944"
 ---
-在 Azure Stack Edge 设备上部署 VM 之前，必须先将客户端配置为使用 Azure PowerShell 通过 Azure 资源管理器连接到设备。 有关详细说明，请参阅[连接到 Azure Stack Edge 设备上的 Azure 资源管理器](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)。
+在 Azure Stack Edge 设备上部署 VM 之前，必须先将客户端配置为使用 Azure PowerShell 通过 Azure 资源管理器连接到设备。 有关详细说明，请参阅[连接到 Azure Stack Edge 设备上的 Azure 资源管理器](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md)。
 
 确保可使用以下步骤从客户端访问设备。 能连接到 Azure 资源管理器即表示已完成此配置，现在是验证配置是否成功。 
 
@@ -23,9 +23,9 @@ ms.locfileid: "101730606"
 
 1. 若要调用本地设备 API 进行身份验证，请输入： 
 
-    `login-AzureRMAccount -EnvironmentName <Environment Name>`
+    `login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d`
 
-    若要通过 Azure 资源管理器进行连接，请提供用户名 EdgeARMuser 和密码。
+    若要通过 Azure 资源管理器进行连接，请提供用户名 EdgeArmUser 和密码。
 
 1. 如果已为 Kubernetes 配置计算，则可以跳过此步骤。 否则，请执行以下操作，确保已为网络接口启用计算： 
 
@@ -38,5 +38,3 @@ ms.locfileid: "101730606"
 
     > [!NOTE]
     > 如果是创建 GPU VM，请选择已连接到 Internet 的网络接口。 这样将能在设备上安装 GPU 扩展。
-
-

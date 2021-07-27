@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 6289f335234c9b7efec02a18e12b40a1140c1b3f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94956545"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为 iSCSI 服务器
@@ -194,7 +194,7 @@ ms.locfileid: "94956545"
 3. 在“发现目标门户”对话框中，提供支持 iSCSI 网络接口的 IP 地址，并单击“确定”。
    
     ![IP 地址](./media/storsimple-virtual-array-deploy3-iscsi-setup/image23.png)
-4. 在“iSCSI 发起程序属性”窗口中的“目标”选项卡上，找到“已发现目标”。 （每个卷都可以是已发现的目标。）设备状态应显示为 **非活动**。
+4. 在“iSCSI 发起程序属性”窗口中的“目标”选项卡上，找到“已发现目标”。 （每个卷都将成为发现的目标。）设备状态应显示为“非活动”。
    
     ![已发现的目标](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
 5. 选择目标设备，并单击“连接”。 设备连接后，状态应更改为 **已连接**。 （有关使用 Microsoft iSCSI 发起程序的详细信息，请参阅[安装和配置 Microsoft iSCSI 发起程序][1]）。

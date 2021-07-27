@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: a41696ba92757550f9cbaa08ccf78d9a5da528d2
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: ab99d4aec732d2bc6b42576d30b59b0f8c0067c3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718892"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772034"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>创建自定义安全计划和策略
 
@@ -37,9 +37,7 @@ ms.locfileid: "107718892"
     [![选择要为其创建自定义策略的订阅](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > 必须在订阅级别（或更高级别）添加自定义标准，只有这样，才会评估这些标准并在安全中心显示它们。 
-    >
-    > 添加自定义标准时，它会将一个计划分配到该范围。 因此，建议选择该分配所需的最广泛范围。
+    > 必须在订阅级别（或更高级别）添加自定义计划，只有这样，才会评估这些计划并在安全中心显示它们。 建议选择最广泛的可用范围。
 
 1. 在“安全策略”页中的“你的自定义计划”下，单击“添加自定义计划”。
 
@@ -90,7 +88,7 @@ Azure Policy 中的重要概念：
 
 - **分配** 是将计划或策略应用于特定的范围（管理组、订阅等） 
 
-安全中心有一项内置计划（[Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)），它包括中心内的所有安全策略。 要评估对 Azure 资源的安全中心策略，应对管理组或希望评估的订阅创建一个分配。
+安全中心有一项内置计划（[Azure 安全基准](/security/benchmark/azure/introduction)），它包括中心内的所有安全策略。 要评估对 Azure 资源的安全中心策略，应对管理组或希望评估的订阅创建一个分配。
 
 内置计划默认启用所有安全中心策略。 可以选择禁用内置计划中的某些策略。 例如，若要应用除 Web 应用程序防火墙之外的所有安全中心策略，请将策略的效果参数的值更改为“禁用” 。
 

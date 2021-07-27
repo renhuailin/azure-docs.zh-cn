@@ -3,12 +3,12 @@ title: 计划定义结构的详细信息
 description: 描述如何使用策略计划定义对策略定义进行分组，以便部署到组织中的 Azure 资源。
 ms.date: 03/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: edd3f25dd528d1a718c9287c9f30988b87fb73e2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7efe34c76df46bb4499def5b92521eedecaee22d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587213"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744940"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Policy 计划定义结构
 
@@ -123,7 +123,7 @@ Azure Policy 内置项和模式位于 [Azure Policy 示例](../samples/index.md)
 
 ## <a name="parameters"></a>parameters
 
-参数可减少策略定义的数量，有助于简化策略管理。 使用类似窗体中字段的参数 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
+参数可减少策略定义的数量，有助于简化策略管理。 可以将参数想象成窗体上的字段 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
 构建策略计划时，参数同样适用。 通过在策略计划定义中包含参数，可以在包含的策略中重复使用该参数。
 
 > [!NOTE]
@@ -196,7 +196,7 @@ Azure Policy 内置项和模式位于 [Azure Policy 示例](../samples/index.md)
 
 ### <a name="strongtype"></a>strongType
 
-在 `metadata` 属性中，可以使用 **strongType** 提供 Azure 门户中的选项多选列表。 strongType 可以是受支持的资源类型，也可以是允许值。 若要确定资源类型是否对 strongType有效，请使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。
+在 `metadata` 属性中，可以使用 strongType 提供 Azure 门户中的选项多选列表。 strongType 可以是受支持的资源类型，也可以是允许值。 若要确定“资源类型”是否对“strongType”有效，请使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。
 
 支持部分不是由 Get-AzResourceProvider 返回的资源类型。 这些资源类型为：
 

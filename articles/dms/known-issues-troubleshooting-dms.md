@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ce53e8a77186f96801879e5c9d8f8c65809470d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962274"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639794"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>排查常见的 Azure 数据库迁移服务问题和错误
 
@@ -64,7 +64,7 @@ ms.locfileid: "94962274"
 
 | 原因         | 解决方法 |
 | ------------- | ------------- |
-| 如果尝试停止的服务实例包含仍在运行的或者存在于迁移项目中的活动，则会显示此错误。 <br><br><br><br><br><br> | 确保尝试停止的 Azure 数据库迁移服务实例中没有任何活动正在运行。 在尝试停止该服务之前，还可以删除活动或项目。 以下步骤演示如何通过删除所有正在运行的任务来删除项目，以清理迁移服务实例：<br>1.Install-Module -Name AzureRM.DataMigration <br>2.Login-AzureRmAccount <br>3.Select-AzureRmSubscription -SubscriptionName "\<subName>" <br> 4.Remove-AzureRmDataMigrationProject -Name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
+| 如果尝试停止的服务实例包含仍在运行的或者存在于迁移项目中的活动，则会显示此错误。 <br><br><br><br><br><br> | 确保尝试停止的 Azure 数据库迁移服务实例中没有任何活动正在运行。 在尝试停止该服务之前，还可以删除活动或项目。 以下步骤演示如何通过删除所有正在运行的任务来删除项目，以清理迁移服务实例：<br>1.Install-Module -Name AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3.Select-AzureRmSubscription -SubscriptionName "\<subName>" <br> 4.Remove-AzureRmDataMigrationProject -Name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>尝试启动 Azure 数据库迁移服务时出错
 
@@ -102,7 +102,7 @@ ms.locfileid: "94962274"
 
 | 原因         | 解决方法    |
 | ------------- | ------------- |
-| 使用 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 时，Azure 数据库迁移服务[要求](./tutorial-sql-server-azure-sql-online.md)在与它关联的虚拟网络子网中预配三个服务终结点：<br> -- 服务总线终结点<br> -- 存储终结点<br> -- 目标数据库终结点（例如 SQL 终结点、Cosmos DB 终结点）<br><br><br><br><br> | 请[启用](./tutorial-sql-server-azure-sql-online.md)所需的服务终结点，以便在源与 Azure 数据库迁移服务之间建立 ExpressRoute 连接。 <br><br><br><br><br><br><br><br> |
+| 使用 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 时，Azure 数据库迁移服务[要求](./tutorial-sql-server-to-azure-sql.md)在与它关联的虚拟网络子网中预配三个服务终结点：<br> -- 服务总线终结点<br> -- 存储终结点<br> -- 目标数据库终结点（例如 SQL 终结点、Cosmos DB 终结点）<br><br><br><br><br> | 请[启用](./tutorial-sql-server-to-azure-sql.md)所需的服务终结点，以便在源与 Azure 数据库迁移服务之间建立 ExpressRoute 连接。 <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>将 MySQL 数据库迁移到 Azure DB for MySQL 时发生锁定等待超时错误
 
@@ -126,13 +126,13 @@ ms.locfileid: "94962274"
 
 ## <a name="additional-known-issues"></a>其他已知问题
 
-* [联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制](./known-issues-azure-sql-online.md)
+* [联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制](./index.yml)
 * [在联机迁移到 Azure Database for MySQL 时存在的已知问题/迁移限制](./known-issues-azure-mysql-online.md)
 * [在联机迁移到 Azure Database for PostgreSQL 时存在的已知问题/迁移限制](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 参阅[Azure 数据库迁移服务 PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)一文。
+* 参阅[Azure 数据库迁移服务 PowerShell](/powershell/module/azurerm.datamigration#data_migration)一文。
 * 查看[如何使用 Azure 门户在 Azure Database for MySQL 中配置服务器参数](../mysql/howto-server-parameters.md)一文。
 * 查看[使用 Azure 数据库迁移服务的先决条件概述](./pre-reqs.md)一文。
 * 参阅[有关使用 Azure 数据库迁移服务的常见问题解答](./faq.md)。

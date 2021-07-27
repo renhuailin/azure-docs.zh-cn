@@ -5,24 +5,32 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6dae6e7ef5a442392972a39f75bbea8046b4beff
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: da099fe09b44a8c7aeecdfd7118e936ce3f0ff91
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324718"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113113060"
 ---
 # <a name="what-is-azure-communication-services"></a>什么是 Azure 通信服务？
 
-借助 Azure 通信服务，你可以轻松地将实时语音、视频和电话通信功能添加到应用程序。 借助通信服务 SDK，还可以将短信功能添加到通信解决方案。 Azure 通信服务与标识无关，你可以完全控制最终用户的标识和身份验证方式。 你可以将用户连接到通信数据平面或服务（机器人）。
+Azure 通信服务是具有 REST API 和客户端库 SDK 的基于云的服务，可用于帮助你将通信集成到应用程序中。 你可以在自己的应用程序中添加通信功能（如媒体编码和实时网络），而不需要是通信技术的专家。 Azure 通信服务支持各种通信格式：
 
-应用程序包括：
+1. 语音和视频通话
+1. 格式文本聊天
+1. SMS
 
-- 企业对消费者 (B2C)。 企业的员工和服务可以在自定义浏览器或移动应用程序中使用语音、视频和富文本聊天与消费者交互。 组织可以发送和接收短信，或使用通过 Azure 获取的电话号码操作交互式语音响应系统 (IVR)。 通过[与 Microsoft Teams 集成](./quickstarts/voice-video-calling/get-started-teams-interop.md)，消费者可以加入员工召开的 Teams 会议；在员工已熟悉 Teams 的情况下，这是远程医疗保健、银行和产品支持方案的理想选择。
-- 消费者对消费者。 为使用语音、视频和富文本聊天进行的消费者对消费者交互构建具有吸引力的社交空间。 可以在 Azure 通信服务 SDK 上构建任意类型的用户界面，但可以使用完整的应用程序示例和 UI 资产来快速入门。
+语音和视频通话应用程序可与公共交换电话网 (PSTN) 交互。 可以直接通过 Azure 通信服务 REST API、SDK 或 Azure 门户获取电话号码。 借助 Azure 通信服务直接路由，可以使用 SIP 和会话边界控制器连接你自己的 PSTN 运营商并自带电话号码。
+
+除了 REST API，[Azure 通信服务客户端库](./concepts/sdk-options.md)还可用于各种平台和语言，包括 Web 浏览器 (JavaScript)、iOS (Swift)、Java (Android)、Windows (.NET)。 Azure 通信服务与标识无关，你可以控制最终用户的标识和身份验证方式。
+
+Azure 通信服务的场景包括：
+
+- 企业对消费者 (B2C)。 企业的员工和服务可以在自定义浏览器或移动应用程序中使用语音、视频和格式文本聊天方式与使用者交互。 组织可以发送和接收短信，也可以使用通过 Azure 获取的电话号码[操作交互式语音响应系统 (IVR)](https://github.com/microsoft/botframework-telephony/blob/main/EnableTelephony.md)。 通过[与 Microsoft Teams 集成](./quickstarts/voice-video-calling/get-started-teams-interop.md)，可以将使用者连接到员工召开的 Teams 会议；在员工已熟悉 Teams 的情况下，这是远程医疗保健、银行业和产品支持应用场景的理想选择。
+- 使用者对使用者 (C2C)。 为使用语音、视频和富文本聊天进行的消费者对消费者交互构建具有吸引力的社交空间。 可以在 Azure 通信服务 SDK 上构建任意类型的用户界面，或使用完整的应用程序示例和开放源代码 UI 工具包来帮助快速开始使用。
 
 若要了解详细信息，请查看我们的 [Microsoft Mechanics 视频](https://www.youtube.com/watch?v=apBX7ASurgM)或下面链接的资源。
 
@@ -33,18 +41,20 @@ ms.locfileid: "108324718"
 | 资源                               |说明                           |
 |---                                    |---                                   |
 |[创建通信服务资源](./quickstarts/create-communication-resource.md)|使用 Azure 门户或通信服务 SDK 预配第一个通信服务资源，从而开始使用 Azure 通信服务。 具有通信服务资源连接字符串后，便可以预配第一个用户访问令牌。|
-|[获取电话号码](./quickstarts/telephony-sms/get-phone-number.md)|可以使用 Azure 通信服务预配和发布电话号码。 这些电话号码可以用于启动或接收电话呼叫和构建短信解决方案。|
-|[从应用发送短信](./quickstarts/telephony-sms/send.md)|Azure 通信服务短信 SDK 可用于从服务应用程序发送和接收短信。|
+|[获取电话号码](./quickstarts/telephony-sms/get-phone-number.md)|使用 Azure 通信服务预配和发布电话号码。 这些电话号码可以用于启动或接收电话呼叫和构建短信解决方案。|
+|[从应用发送短信](./quickstarts/telephony-sms/send.md)| Azure 通信服务短信 REST API 和 SDK 可用于从服务应用程序发送和接收短信。|
 
 创建通信服务资源后，可以开始构建客户端方案，例如语音和视频呼叫或文本聊天：
 
 | 资源                               |说明                           |
 |---                                    |---                                   |
-|[创建第一个用户访问令牌](./quickstarts/access-tokens.md)|用户访问令牌用于针对 Azure 通信服务资源进行客户端身份验证。 这些令牌是使用通信服务 SDK 预配和重新颁发的。|
+|[创建第一个用户访问令牌](./quickstarts/access-tokens.md)|用户访问令牌用于对 Azure 通信服务资源进行客户端身份验证。 这些令牌是使用通信服务标识 API 和 SDK 预配和重新颁发的。|
 |[语音和视频呼叫入门](./quickstarts/voice-video-calling/getting-started-with-calling.md)| 借助 Azure 通信服务，可以使用呼叫 SDK 将语音和视频呼叫添加到浏览器或本机应用。 |
 |**[向应用添加通话功能](./quickstarts/voice-video-calling/pstn-call.md)**|借助 Azure 通信服务，可向应用程序添加电话通话功能。|
 |**[在 Teams 会议中加入通话应用](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure 通信服务可用于构建与 Microsoft Teams 交互的自定义会议体验。 通信服务解决方案用户可以通过语音、视频、聊天和屏幕共享与 Teams 参与者进行交互。|
 |[聊天入门](./quickstarts/chat/get-started.md)|Azure 通信服务聊天 SDK 用于向应用程序添加实时富文本聊天。|
+|[连接 Microsoft 机器人呼叫电话号码](https://github.com/microsoft/botframework-telephony)|电话通道是一种 Microsoft Bot Framework 通道，可让机器人通过手机与用户交互。 它结合使用了 Microsoft Bot Framework 与 Azure 通信服务以及 Azure 语音服务的功能。  |
+
 
 ## <a name="samples"></a>示例
 
