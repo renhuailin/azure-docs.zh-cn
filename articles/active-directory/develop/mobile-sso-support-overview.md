@@ -12,10 +12,10 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
 ms.openlocfilehash: 4f0588667df6acb11a43e8c3469c67f65ed3cdd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98165172"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>在开发的移动应用支持单一登录和应用保护策略
@@ -30,7 +30,7 @@ ms.locfileid: "98165172"
 
 [单一登录 (SSO)](../manage-apps/plan-sso-deployment.md) 使用户能够登录一次并获取其他应用程序的访问权限，而无需重新输入凭据。 这样可以更轻松地访问应用，用户无需用户记住长长的用户名和密码列表。 在应用中实现此功能可以更轻松地访问和使用应用。
 
-此外，在应用中启用单一登录可解锁附带新式身份验证的新身份验证机制，如[无密码登录](../authentication/concept-authentication-passwordless.md)。 用户名和密码是针对应用程序的最常见攻击途径之一，启用 SSO 使你可以通过强制实施条件访问或无密码登录（添加了额外安全性或依赖于更安全的身份验证机制）来缓解此风险。 最后，启用单一登录也会启用[单一注销](v2-protocols-oidc.md#single-sign-out)。对于将在共享设备上使用的工作应用程序这类情况，这会十分有用。
+此外，在应用中启用单一登录可解锁附带新式身份验证的新身份验证机制，如[无密码登录](../authentication/concept-authentication-passwordless.md)。 用户名和密码是针对应用程序的最常见攻击途径之一，启用 SSO 使你可以通过强制实施条件访问或无密码登录（添加了额外安全性或依赖于更安全的身份验证机制）来缓解此风险。 最后，启用单一登录还会启用[单一注销](v2-protocols-oidc.md#single-sign-out)。这对于将在共享设备上使用的工作应用程序之类的情况非常有用。
 
 [应用保护策略 (APP)](/mem/intune/apps/app-protection-policy) 可确保组织的数据保持安全且受控制。 它们使公司可以在应用中管理和保护其数据，并允许控制可以访问应用及其数据的人员。 通过实现应用保护策略，应用可以将用户连接到受条件访问策略保护的资源，并与其他受保护应用安全地来回传输数据。 应用保护策略解锁的方案包括：需要使用 PIN 来打开应用、控制应用之间的数据共享以及阻止将公司应用数据保存到个人存储位置。
 

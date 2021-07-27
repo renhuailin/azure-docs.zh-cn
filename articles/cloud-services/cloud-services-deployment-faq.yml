@@ -1,0 +1,101 @@
+### YamlMime:FAQ
+metadata:
+  title: Microsoft Azure 云服务部署常见问题解答 | Microsoft 文档
+  description: 本文将介绍一些关于 Microsoft Azure 云服务部署的常见问题解答。
+  ms.topic: article
+  ms.service: cloud-services
+  ms.date: 10/14/2020
+  author: hirenshah1
+  ms.author: hirshah
+  ms.reviewer: mimckitt
+  ms.custom: 
+  ms.openlocfilehash: d49e9e6f5c34ed43be05c4f16614b0eaa22f465d
+  ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/01/2021
+  ms.locfileid: "113129180"
+title: Azure 云服务（经典）的部署问题：常见问题 (FAQ)
+summary: >
+  > [!IMPORTANT]
+
+  > [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+
+  本文包含 [Microsoft Azure 云服务](https://azure.microsoft.com/services/cloud-services)的常见部署问题。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
+
+
+  [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+sections:
+- name: 忽略
+  questions:
+  - question: >
+      如果生产槽中存在现有的部署，将云服务部署到过渡槽为何有时失败并出现资源分配错误？
+    answer: >
+      如果某个云服务在任一槽中存在部署，则会将整个云服务固定到特定的群集。 这意味着，如果生产槽中已存在部署，则只能将新的过渡部署分配到与生产槽相同的群集中。
+
+
+      如果云服务所在的群集没有足够的物理计算资源用于满足部署请求，则会发生分配失败。
+
+
+      有关解决此类分配失败的帮助，请参阅[云服务分配失败：解决方法](cloud-services-allocation-failures.md#solutions)。
+  - question: >
+      为何纵向扩展或横向扩展云服务部署有时会导致分配失败？
+    answer: >
+      部署云服务后，该服务通常会固定到特定的群集。 这意味着，纵向扩展/横向扩展现有的云服务时必须在同一群集中分配新实例。 如果群集接近容量限制或所需的 VM 大小/类型不可用，则请求可能会失败。
+
+
+      有关解决此类分配失败的帮助，请参阅[云服务分配失败：解决方法](cloud-services-allocation-failures.md#solutions)。
+  - question: >
+      为何将云服务部署到地缘组有时会导致分配失败？
+    answer: >
+      进行新的目标为空云服务的部署时，可以通过该区域任何群集中的结构对部署进行分配，除非已将云服务固定到地缘组。 将会在相同的群集中尝试部署到相同的地缘组。 如果群集已接近容量限制，则请求可能失败。
+
+
+      有关解决此类分配失败的帮助，请参阅[云服务分配失败：解决方法](cloud-services-allocation-failures.md#solutions)。
+  - question: >
+      为何更改 VM 大小或将新 VM 添加到现有云服务有时会导致分配失败？
+    answer: >
+      数据中心中的集群可能具有不同的计算机类型配置（例如 A 系列、Av2 系列、D 系列、Dv2 系列、G 系列、H 系列等）。 但是，并非所有群集都一定要包含所有类型的 VM。 例如，如果尝试将 D 系列 VM 添加到已在仅限 A 系列的群集中部署的云服务，则会发生分配失败。 如果尝试更改 VM SKU 大小（例如，从 A 系列切换到 D 系列），也会发生此问题。
+
+
+      有关解决此类分配失败的帮助，请参阅[云服务分配失败：解决方法](cloud-services-allocation-failures.md#solutions)。
+
+
+      要查看你所在区域的可用大小，请参阅 [Microsoft Azure：产品区域可用性](https://azure.microsoft.com/regions/services)。
+  - question: >
+      为什么我的订阅或服务的限制/配额/约束有时会导致部署云服务失败？
+    answer: >
+      如果需要分配的资源超过服务所在区域/数据中心级别允许的默认或最大配额，则云服务部署可能会失败。 有关详细信息，请参阅[云服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits)。
+
+
+      还可在门户跟踪订阅的当前使用情况/配额：Azure 门户 =>“订阅”=> \<appropriate subscription>  =>“使用情况 + 配额”。
+
+
+      资源使用情况/相关消耗信息也可以通过 Azure 计费 API 检索。 请参阅 [Azure 使用情况 API 概述](../cost-management-billing/manage/consumption-api-overview.md)。
+  - question: >
+      如何在不重新部署已部署云服务虚拟机的情况下更改其大小？
+    answer: >
+      你无法在不重新部署已部署云服务虚拟机的情况下更改其大小。 虚拟机大小内置在 CSDEF 中，只能通过重新部署进行更新。
+
+
+      有关详细信息，请参阅[如何更新云服务](cloud-services-update-azure-service.md)。
+  - question: >
+      使用 Azure 资源管理器存储帐户时，为什么不能够通过服务管理 API 或 PowerShell 部署云服务？ 
+    answer: >
+      由于云服务不是直接与 Azure 资源管理器模型兼容的经典资源，因此不能将其与 Azure 资源管理器存储帐户相关联。 下面是几个选项： 
+
+
+      - 通过 REST API 部署。
+
+          通过服务管理 REST API 部署时，可以通过指定指向 blob 存储（同时使用经典和 Azure 资源管理器存储帐户）的 SAS URL 绕过限制。 在[此处](/previous-versions/azure/reference/ee460813(v=azure.100))阅读有关 PackageUrl 属性的详细信息。
+
+      - 通过 [Azure 门户](https://portal.azure.com)部署。
+
+          这将从 [Azure 门户](https://portal.azure.com)进行，因为调用将通过一个代理/填充程序完成，该代理/填充程序使得 Azure 资源管理器可以与经典资源通信。 
+  - question: >
+      为什么 Azure 门户要求我提供部署所需的存储帐户？
+    answer: >-
+      在经典门户中，包直接上传到管理 API 层，然后 API 层暂时将其放入内部存储帐户。  API 层并不是文件上传服务，因此这个过程会导致性能和可伸缩性问题。  在 Azure 门户中（资源管理器部署模型），我们越过了先上传到 API 层这一临时步骤，因此实现了更快、更可靠的部署。
+
+
+      所需成本很少，并且可以在所有部署中重复使用同一存储帐户。 可以使用[存储成本计算器](https://azure.microsoft.com/pricing/calculator/#storage1)确定上传服务包 (CSPKG)、下载 CSPKG 以及之后删除 CSPKG 的成本。

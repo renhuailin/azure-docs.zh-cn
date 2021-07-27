@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4b95c25400317b2baac694f4ba2b1b1dc1eae098
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: d6685d86cb9c807db130b10a9573c3ca44ec911d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435148"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763787"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions 的 Azure 服务总线触发器
 
@@ -331,9 +331,10 @@ Python 不支持特性。
 |**queueName**|**QueueName**|要监视的队列的名称。  仅在监视队列的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**subscriptionName**|**SubscriptionName**|要监视的订阅的名称。 仅在监视主题的情况下设置，不为队列设置。|
-|连接|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设为“MyServiceBus”，Functions 运行时会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。 |
+|连接|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设为“MyServiceBus”，Functions 运行时会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。 <br><br>如果使用 [5.x 版或更高版本的扩展](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)，而不是使用连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](./functions-reference.md#connections)。|
 |**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”权限。 如果使用不具有“管理”权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 及更高版本中，此属性不可用，因为最新版本的服务总线 SDK 不支持管理操作。|
 |**isSessionsEnabled**|**IsSessionsEnabled**|如果连接到[会话感知](../service-bus-messaging/message-sessions.md)队列或订阅，则为 `true`。 否则为 `false`（默认值）。|
+|**autoComplete**|**AutoComplete**|`true` 是触发器在处理后自动调用 complete，还是函数代码手动调用 complete。<br><br>仅在 C# 中支持将其设置为 `false`。<br><br>如果设置为 `true`，则触发器会在函数执行成功完成时自动完成该消息，否则会放弃该消息。<br><br>设置为 `false` 时，你负责调用 [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) 方法来完成、放弃消息或将消息放入死信队列。 如果引发了异常（并且未调用任何 `MessageReceiver` 方法），则锁仍然存在。 锁到期后，消息会重新排队，同时 `DeliveryCount` 会递增，并且锁会自动续订。<br><br>在非 C# 函数中，函数中的异常会导致运行时在后台调用 `abandonAsync`。 如果未发生异常，则在后台调用 `completeAsync`。 此属性仅在 Azure Functions 2.x 和更高版本中可用。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -347,9 +348,14 @@ Python 不支持特性。
 * `byte[]` - 适用于二进制数据。
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
 * `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法的反序列化消息。
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) - 用于接收和确认来自消息容器的消息（当 [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) 设置为 `false` 时为必需）
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) - 用于接收和确认来自消息容器的消息（当 [`autoComplete`](functions-bindings-service-bus.md#hostjson-settings) 设置为 `false` 时为必需）
 
 这些参数类型适用于 Azure Functions 版本 1.x；对于 2.x 及更高版本，请使用 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
+
+### <a name="additional-types"></a>其他类型 
+如果应用使用 5.0.0 或更高版本的服务总线扩展，那么这些应用使用 [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) 中的 `ServiceBusReceivedMessage` 类型，而不是 [Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message) 命名空间中的对应类型。 此版本为了支持以下类型，删除了对旧的 `Message` 类型的支持：
+
+- [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage)
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -361,6 +367,16 @@ Python 不支持特性。
 * `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法的反序列化消息。
 
 这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x 及更高版本，请使用 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
+
+### <a name="additional-types"></a>其他类型 
+如果应用使用 5.0.0 或更高版本的服务总线扩展，那么这些应用使用 [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) 中的 `ServiceBusReceivedMessage` 类型，而不是 [Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message) 命名空间中的对应类型。 此版本为了支持以下类型，删除了对旧的 `Message` 类型的支持：
+
+- [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage)
+
+### <a name="additional-types"></a>其他类型 
+如果应用使用 5.0.0 或更高版本的服务总线扩展，那么这些应用使用 [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) 中的 `ServiceBusReceivedMessage` 类型，而不是 [Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message) 命名空间中的对应类型。 此版本为了支持以下类型，删除了对旧的 `Message` 类型的支持：
+
+- [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -411,9 +427,20 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 |`ReplyTo`|`string`|对队列地址的回复。|
 |`SequenceNumber`|`long`|服务总线分配给消息的唯一编号。|
 |`To`|`string`|发送到地址。|
-|`UserProperties`|`IDictionary<string, object>`|由发送方设置的属性。|
+|`UserProperties`|`IDictionary<string, object>`|由发送方设置的属性。 （对于扩展版本 5.x 及更高版本，不支持此功能，请使用 `ApplicationProperties`。）|
 
 请参阅在本文的前面部分使用这些属性的[代码示例](#example)。
+
+### <a name="additional-message-metadata"></a>其他消息元数据
+
+使用扩展版本 5.0.0 或更高版本的应用支持以下元数据属性。 这些属性是 [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) 类的成员。
+
+|属性|类型|说明|
+|--------|----|-----------|
+|`ApplicationProperties`|`ApplicationProperties`|由发送方设置的属性。 使用此属性替代 `UserProperties` 元数据属性。|
+|`Subject`|`string`|特定于应用程序的标签，可用于替代 `Label` 元数据属性。|
+|`MessageActions`|`ServiceBusMessageActions`|可对 `ServiceBusReceivedMessage` 执行的一组操作。 此属性可用于替代 `MessageReceiver` 元数据属性。
+|`SessionActions`|`ServiceBusSessionMessageActions`|可对会话和 `ServiceBusReceivedMessage` 执行的一组操作。 此属性可用于替代 `MessageSession` 元数据属性。|
 
 ## <a name="next-steps"></a>后续步骤
 

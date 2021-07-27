@@ -9,12 +9,13 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d38f1f294f60b73e8f1e69169a75333eb175c9f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 0f593d801bdcc477d6084a395630211393ffa9c7
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600150"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217280"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>快速入门：创建 Synapse 工作区
 本快速入门介绍了使用 Azure 门户创建 Azure Synapse 工作区的步骤。
@@ -48,9 +49,17 @@ ms.locfileid: "104600150"
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
 1. 导航到现有的 ADLSGEN2 存储帐户
-1. 在左窗格中，选择“访问控制(IAM)”。 然后，分配以下角色或确保其已经分配：
-    * 为自己分配“所有者”角色。
-    * 为自己分配“存储 Blob 数据所有者”角色。
+1. 选择“访问控制 (IAM)”。
+1. 选择“添加” > “添加角色分配”，打开“添加角色分配”页面 。
+1. 分配以下角色。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+    
+    | 设置 | 值 |
+    | --- | --- |
+    | 角色 | 所有者和存储 Blob 数据所有者 |
+    | 将访问权限分配到 | [USER |
+    | 成员 | 你的用户名 |
+
+    ![Azure 门户中的“添加角色分配”页。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 1. 在左窗格中选择“容器”并创建容器。
 1. 可以为此容器指定任何名称。 在本文档中，我们将此容器命名为“users”。
 1. 接受默认设置“公共访问级别”，然后选择“创建” 。
@@ -60,11 +69,20 @@ ms.locfileid: "104600150"
 Azure Synapse 工作区的托管标识可能已具有对存储帐户的访问权限。 请执行以下步骤，以确保：
 
 1. 打开 [Azure 门户](https://portal.azure.com)和为工作区所选的主存储帐户。
-1. 从左窗格中选择“访问控制(标识和访问管理)”。
-1. 分配以下角色或确保其已经分配。 我们对工作区标识和工作区使用相同的名称。
-    * 对于存储帐户上的“存储 Blob 数据参与者”角色，请将 myworkspace 指定为工作区标识 。
-    * 将 myworkspace 指定为工作区名称。
+1. 选择“访问控制 (IAM)”。
+1. 选择“添加” > “添加角色分配”，打开“添加角色分配”页面 。
+1. 分配以下角色。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+    
+    | 设置 | 值 |
+    | --- | --- |
+    | 角色 | 存储 Blob 数据参与者 |
+    | 将访问权限分配到 | MANAGEDIDENTITY |
+    | 成员 | myworkspace  |
 
+    > [!NOTE]
+    > 托管标识名称也是工作区名称。
+
+    ![Azure 门户中的“添加角色分配”页。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 1. 选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 05/06/2021
 ms.author: victorh
-ms.openlocfilehash: 52c6ef9edfc42bf1ad3b3279e0fa4e19b4cf502c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4c3b33400340fc4dd13e74437aa9fddf6921e710
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98788258"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804495"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>监视 Azure 防火墙日志和指标
 
@@ -26,7 +26,7 @@ ms.locfileid: "98788258"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，你应该阅读 [Azure 防火墙日志和指标](logs-and-metrics.md)，以概要了解可用于 Azure 防火墙的诊断日志和指标。
+在开始之前，应阅读 [Azure 防火墙日志和指标](logs-and-metrics.md)，简要了解可用于 Azure 防火墙的诊断日志和指标。
 
 ## <a name="enable-diagnostic-logging-through-the-azure-portal"></a>通过 Azure 门户启用诊断日志记录
 
@@ -39,13 +39,12 @@ ms.locfileid: "98788258"
 
    * AzureFirewallApplicationRule
    * AzureFirewallNetworkRule
-   * AzureFirewallThreatIntelLog
    * AzureFirewallDnsProxy
 
 
 3. 选择“添加诊断设置”。 “诊断设置”  页提供用于诊断日志的设置。
 5. 在此示例中，Azure Monitor 日志存储日志，因此请键入“防火墙日志分析”作为名称  。
-6. 在“日志”下，选择“AzureFirewallApplicationRule”、“AzureFirewallNetworkRule”、“AzureFirewallThreatIntelLog”和“AzureFirewallDnsProxy”来收集日志。
+6. 在“日志”下面，选择“AzureFirewallApplicationRule”、“AzureFirewallNetworkRule”和“AzureFirewallDnsProxy”以收集日志   。
 7. 选择“发送到 Log Analytics”以配置工作区。
 8. 选择订阅。
 9. 选择“保存”。
@@ -60,19 +59,19 @@ ms.locfileid: "98788258"
 
    可以使用订阅中的任何工作区。 可使用 Azure 门户查找此信息。 此信息位于资源的“属性”页中。
 
-2. 记下为其启用了日志记录的防火墙的资源 ID。 此值的形式为：`/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`。
+2. 请注意防火墙的资源 ID。 此值的形式为：`/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`。
 
    可使用门户查找此信息。
 
 3. 使用以下 PowerShell cmdlet 为所有日志和指标启用诊断日志记录：
 
-   ```powershell
-   $diagSettings = @{
+   ```azurepowershell
+      $diagSettings = @{
       Name = 'toLogAnalytics'
       ResourceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
       WorkspaceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
       Enabled = $true
-   }
+      }
    Set-AzDiagnosticSetting  @diagSettings 
    ```
 
@@ -86,14 +85,14 @@ ms.locfileid: "98788258"
 
    可以使用订阅中的任何工作区。 可使用 Azure 门户查找此信息。 此信息位于资源的“属性”页中。
 
-2. 记下为其启用了日志记录的防火墙的资源 ID。 此值的形式为：`/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`。
+2. 请注意防火墙的资源 ID。 此值的形式为：`/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`。
 
    可使用门户查找此信息。
 
 3. 使用以下 Azure CLI 命令为所有日志和指标启用诊断日志记录：
 
-   ```azurecli-interactive
-   az monitor diagnostic-settings create -n 'toLogAnalytics'
+   ```azurecli
+      az monitor diagnostic-settings create -n 'toLogAnalytics'
       --resource '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
       --workspace '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
       --logs '[{\"category\":\"AzureFirewallApplicationRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallNetworkRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallDnsProxy\",\"Enabled\":true}]' 
@@ -122,12 +121,12 @@ ms.locfileid: "98788258"
 > 如果熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
 
 ## <a name="view-metrics"></a>查看指标
-浏览到 Azure 防火墙，在“监视”下选择“指标” 。 若要查看可用值，请选择“指标”下拉列表  。
+浏览 Azure 防火墙。 在“监视”下，选择“指标”。  若要查看可用值，请选择“指标”下拉列表  。
 
 ## <a name="next-steps"></a>后续步骤
 
 将防火墙配置为收集日志后，可以浏览 Azure Monitor 日志以查看数据。
 
-[使用 Azure 防火墙工作簿监视日志](firewall-workbook.md)
+- [使用 Azure 防火墙工作簿监视日志](firewall-workbook.md)
 
-[Azure Monitor 日志中的网络监视解决方案](../azure-monitor/insights/azure-networking-analytics.md)
+- [Azure Monitor 日志中的网络监视解决方案](../azure-monitor/insights/azure-networking-analytics.md)

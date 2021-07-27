@@ -14,16 +14,16 @@ ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8481c562ecbab1f26e877e55a5a9454695ddf4c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 260362d047a85953a55a9ea5cae1a201447e5f21
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92370825"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483634"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure AD 角色的审核历史记录
 
-可以使用 Privileged Identity Management (PIM) 审核历史记录来查看过去 30 天内所有特权角色的所有角色分配和激活操作。 若要查看 Azure Active Directory (Azure AD) 组织中活动的完整审核历史记录（包括管理员、最终用户和同步活动），可以使用 [Azure Active Directory 安全和活动报告](../reports-monitoring/overview-reports.md)。
+可以使用 Privileged Identity Management (PIM) 审核历史记录来查看过去 30 天内所有特权角色的所有角色分配和激活操作。 如果审核数据的保留时间需要长于默认保留期，可以使用 Azure Monitor 将其路由到 Azure 存储帐户。 有关详细信息，请参阅[将 Azure AD 日志存档到 Azure 存储帐户](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)。 若要查看 Azure Active Directory (Azure AD) 组织中活动的完整审核历史记录（包括管理员、最终用户和同步活动），可以使用 [Azure Active Directory 安全和活动报告](../reports-monitoring/overview-reports.md)。
 
 ## <a name="determine-your-version-of-pim"></a>确定 PIM 版本
 

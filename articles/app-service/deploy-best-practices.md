@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: ac4e8d93e2e729db387b0f9cf81017b6c58b6750
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951328"
 ---
 # <a name="deployment-best-practices"></a>部署最佳做法
@@ -43,7 +43,7 @@ ms.locfileid: "104951328"
 
 ### <a name="continuously-deploy-code"></a>持续部署代码
 
-如果项目中指定了用于测试、QA 和过渡的分支，则每个分支都应持续部署到过渡槽位。 （这称为 [Gitflow 设计](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)。）这样便于利益干系人轻松地访问和测试已部署的分支。 
+如果项目中指定了用于测试、QA 和过渡的分支，则每个分支都应持续部署到过渡槽位。 （这称为 [Gitflow 设计](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)。）这使利益干系人可以轻松地评估和测试已部署的分支。 
 
 对于生产槽位，不得启用持续部署。 而是应将生产分支（通常是主分支）部署到非生产槽位上。 准备好发布基本分支后，将其交换到生产槽位中。 交换到生产槽位（而不是部署到生产槽位）可以防止故障停机，并且允许通过再次交换来回滚更改。 
 
@@ -152,8 +152,8 @@ Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提�
 有关最佳做法的详细信息，请访问[应用服务诊断](./overview-diagnostics.md)，了解特定于资源的可操作最佳做法。
 
 - 在 [Azure 门户](https://portal.azure.com)中导航到 Web 应用。
-- 在左侧导航栏中单击“诊断并解决问题”，这将打开“应用服务诊断”。
+- 在左侧导航栏中单击“诊断并解决问题”，打开“应用服务诊断”。
 - 选择“最佳做法”主页磁贴。
-- 单击“针对可用性和性能的最佳做法”或“针对理想配置的最佳做法”，以查看应用在这些最佳做法下的当前状态。
+- 单击“针对可用性和性能的最佳做法”或“针对理想配置的最佳做法”，基于这些最佳做法查看应用当前的状态 。
 
 还可以单击此链接，直接打开资源对应的“应用服务诊断”：`https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`。

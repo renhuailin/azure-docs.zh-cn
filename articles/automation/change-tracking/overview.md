@@ -3,14 +3,14 @@ title: Azure 自动化 - 更改跟踪和库存概述
 description: 本文介绍了“更改跟踪和清单”功能，该功能可帮助你确定环境中的软件和 Microsoft 服务更改。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/22/2021
+ms.date: 05/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed29def305bfa33a0a947a331775de89275e5f7f
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 062e4cdeae9560bc5be58d8245390d4a538f5722
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220860"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783902"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>更改跟踪和库存概述
 
@@ -41,7 +41,7 @@ ms.locfileid: "106220860"
 > [!NOTE]
 > “更改跟踪和清单”要求将 Log Analytics 工作区链接到自动化帐户。 有关受支持区域的明确列表，请参阅 [Azure 工作区映射](../how-to/region-mappings.md)。 区域映射不会影响在单独的区域中管理自动化帐户内 VM 的功能。
 
-作为服务提供商，你可能已经将多个客户租户载入了 [Azure Lighthouse](../../lighthouse/overview.md)。 借助 Azure Lighthouse，你可以一次在多个 Azure Active Directory (Azure AD) 中大规模执行操作，从而提高你负责的这些租户上的管理任务（如更改跟踪和清单）的效率。 更改跟踪和清单功能可管理同一租户内多个订阅中的计算机，或使用 [Azure 委托资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)跨租户管理计算机。
+作为服务提供商，你可能已经将多个客户租户载入了 [Azure Lighthouse](../../lighthouse/overview.md)。 借助 Azure Lighthouse，你可以一次在多个 Azure Active Directory (Azure AD) 中大规模执行操作，从而提高你负责的这些租户上的管理任务（如更改跟踪和清单）的效率。 更改跟踪和清单功能可管理同一租户内多个订阅中的计算机，或使用 [Azure 委托资源管理](../../lighthouse/concepts/architecture.md)跨租户管理计算机。
 
 ## <a name="current-limitations"></a>当前限制
 
@@ -52,11 +52,16 @@ ms.locfileid: "106220860"
 - 不同的安装方法
 - Windows 上存储的 .exe* 文件
 - 未在当前实现中使用“最大文件大小”列和值。
+- 如果要跟踪文件更改，则仅限 5 MB 或更小的文件。 
 - 如果尝试在 30 分钟收集周期内收集超过 2,500 个文件，则“更改跟踪和清单”功能的性能可能会下降。
 - 如果网络流量较高，更改记录可能需要最多六个小时才能显示。
 - 如果在计算机或服务器关闭的情况下修改配置，则可能会发布属于以前配置的更改。
 - 收集 Windows Server 2016 Core RS3 计算机上的修补程序更新。
 - 即使未发生任何更改，Linux 守护程序也可能会显示已更改的状态。 发生此问题的原因在于写入 Azure Monitor [ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange) 表中的 `SvcRunLevels` 数据的方式。
+
+## <a name="limits"></a>限制
+
+有关适用于更改跟踪和清单的限制，请参阅 [Azure 自动化服务限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#change-tracking-and-inventory)。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 

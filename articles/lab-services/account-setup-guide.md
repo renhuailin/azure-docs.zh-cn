@@ -4,10 +4,10 @@ description: 本指南可帮助管理员快速设置实验室帐户以在学校�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: e1f36b6d0983c10926a790d42edef3736e848a59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "104669383"
 ---
 # <a name="lab-account-setup-guide"></a>实验室帐户设置指南
@@ -140,7 +140,7 @@ Azure 市场提供了成百上千个可启用的映像，以便实验室创建�
 
    如果共享映像库已附加到实验室帐户，并且你想启用实验室创建者共享的自定义映像，请完成与以下屏幕截图所示类似的步骤：
 
-   ![共享映像库中已启用的自定义映像列表的屏幕截图。](./media/setup-guide/enable-sig-custom-images.png)
+   ![屏幕截图，显示共享映像库中已启用的自定义映像的列表。](./media/setup-guide/enable-sig-custom-images.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: 6500805a4dc7e26f5e1bc601df9ea78279ae17e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 16cf1b89c2660d2505685fa931cc8b97ccb42a9b
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101709336"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992281"
 ---
-# <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>将 Microsoft 365 Defender 中的数据连接到 Azure Sentinel
+# <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>将 Microsoft 365 Defender 的数据连接到 Azure Sentinel
 
 > [!IMPORTANT]
 >
@@ -35,7 +35,7 @@ ms.locfileid: "101709336"
 
 通过 Azure Sentinel [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) 连接器与事件的集成，可将所有 M365D 事件和警报都流式传输到 Azure Sentinel，并使这些事件在这两个门户之间保持同步。 M365D 事件包含其所有警报、实体和其他相关信息，它们通过 M365D 的 Microsoft defender For Endpoint、Microsoft Defender for Identity、Microsoft Defender for Office 365 和 Microsoft Cloud App Security 组件服务中的警报得到扩充，并将这些警报分组到一起   。
 
-利用连接器，还可将 Microsoft Defender for Endpoint 高级搜寻事件流式传输到 Azure Sentinel，以便将 MDE 高级搜寻查询复制到 Azure Sentinel 中；利用 MDE 原始事件数据扩充 Sentinel 警报，从而提供更多见解；并在 Log Analytics 中以更长的保留期存储日志。
+利用连接器，还可将 Microsoft Defender for Endpoint“高级搜寻”事件流式传输到 Azure Sentinel，以便将 Defender for Endpoint 高级搜寻查询复制到 Azure Sentinel 中；利用 Defender for Endpoint 原始事件数据扩充 Sentinel 警报，从而提供更多见解；并在 Log Analytics 中以更长的保留期存储日志。
 
 要详细了解事件集成和高级搜寻事件收集，请参阅 [Microsoft 365 Defender 与 Azure Sentinel 集成](microsoft-365-defender-sentinel-integration.md)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "101709336"
     > [!NOTE]
     > 启用 Microsoft 365 Defender 连接器后，所有 M365D 组件的连接器（本文开头部分所述的连接器）都将自动连接到后台。 要使其中一个组件的连接器断开连接，必须先断开 Microsoft 365 Defender 连接器的连接。
 
-1. 若要查询 M365 Defender 事件数据，请在“查询”窗口中使用以下语句：
+1. 若要查询 Microsoft 365 Defender 事件数据，请在查询窗口中使用以下语句：
     ```kusto
     SecurityIncident
     | where ProviderName == "Microsoft 365 Defender"
@@ -72,7 +72,7 @@ ms.locfileid: "101709336"
 
        | 表名称 | 事件类型 |
        |-|-|
-       | DeviceInfo | 计算机信息（包含 OS 信息） |
+       | DeviceInfo | 计算机信息（包括 OS 信息） |
        | DeviceNetworkInfo | 计算机的网络属性 |
        | DeviceProcessEvents | 进程创建及相关事件 |
        | DeviceNetworkEvents | 网络连接及相关事件 |
@@ -92,7 +92,7 @@ ms.locfileid: "101709336"
 
 “连接器”页中的数据图指示你正在引入数据。 你会注意到，每个突发事件、警报和事件都显示一行，事件行聚合了所有已启用的表中的事件量。 启用连接器后，可使用以下 KQL 查询生成更具体的图。
 
-使用以下 KQL 查询可生成传入的 M365 Defender 事件的图：
+使用以下 KQL 查询可生成传入的 Microsoft 365 Defender 事件的图：
 
 ```kusto
 let Now = now(); 

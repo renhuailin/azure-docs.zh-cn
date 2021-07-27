@@ -2,16 +2,16 @@
 title: Azure 服务总线中 AMQP 1.0 的概述
 description: 了解 Azure 服务总线如何支持高级消息队列协议（AMQP，一种开放标准协议）。
 ms.topic: article
-ms.date: 02/17/2021
-ms.openlocfilehash: b2ca126312f5fc3da2a7ff6e20a9ade252f489f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/08/2021
+ms.openlocfilehash: 006511789bfa93f8e7d578ed21a73a2563fb4c6b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100653877"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304404"
 ---
-# <a name="amqp-10-support-in-service-bus"></a>服务总线的 AMQP 1.0 支持
-Azure 服务总线云服务使用[高级消息队列协议 (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) 作为其主要通信方式。 在过去的十年中，Microsoft 与行业内的合作伙伴（相互竞争的消息传递代理的客户和供应商）开展合作，开发和发展 AMQP，并在 [OASIS AMQP 技术委员会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)中开发了新的扩展。 AMQP 1.0 是 ISO 和 IEC 标准 ([ISO 19464:20149](https://www.iso.org/standard/64955.html))。 
+# <a name="advanced-message-queueing-protocol-amqp-10-support-in-service-bus"></a>服务总线中的高级消息队列协议 (AMQP) 1.0 支持
+Azure 服务总线云服务使用 [AMQP 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) 作为其主要通信方式。 在过去的十年中，Microsoft 与行业内的合作伙伴（相互竞争的消息传递代理的客户和供应商）开展合作，开发和发展 AMQP，并在 [OASIS AMQP 技术委员会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)中开发了新的扩展。 AMQP 1.0 是 ISO 和 IEC 标准 ([ISO 19464:20149](https://www.iso.org/standard/64955.html))。 
 
 通过 AMQP 可使用独立于供应商和实现的开放标准协议构建跨平台的混合应用程序。 可以借助使用不同语言和框架构建的且运行在不同操作系统上的组件来构建应用程序。 所有这些组件均可连接到服务总线，并且能够高效且完全无损地无缝交换结构化业务消息。
 
@@ -54,7 +54,7 @@ AMQP 1.0 是一种国际标准，已通过 ISO 和 IEC 的认证，认证编号�
 * 风险较低且可控
 
 ## <a name="amqp-10-and-service-bus"></a>AMQP 1.0 和 Service Bus
-Azure 服务总线中对 AMQP 1.0 的支持意味着可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。 此外，还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
+Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列使用有效二进制协议的平台利用队列和发布/订阅中转消息传送功能。 此外，还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
 
 下图显示了一个部署示例，其中 Java 客户端运行在 Linux 上，并使用标准 Java 消息服务 (JMS) API 写入数据；而 .NET 客户端运行在 Windows 上，并通过服务总线使用 AMQP 1.0 交换消息。
 

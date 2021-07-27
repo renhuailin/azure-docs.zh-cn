@@ -1,19 +1,19 @@
 ---
 title: 在 VMware 虚拟机上使用 Azure 应用程序网关
 description: 介绍如何使用 Azure 应用程序网关来管理 CloudSimple 私有云环境中 VMware 虚拟机上运行的 Web 服务器的传入 Web 流量
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d14fdc4e2b2b1dfca8194077acc0453808611946
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d6a189aad8766d5e4a5e5d603c4e43eb685dacc0
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97897937"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177847"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>在 CloudSimple 私有云环境中的 VMware 虚拟机上使用 Azure 应用程序网关
 
@@ -44,7 +44,7 @@ ms.locfileid: "97897937"
 3. [部署 Azure 应用程序网关](#3-deploy-an-azure-application-gateway)
 4. [在私有云中创建并配置 Web 服务器 VM 池](#4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud)
 
-## <a name="1-verify-prerequisites"></a>1.验证先决条件
+## <a name="1-verify-prerequisites"></a>1. 验证先决条件
 
 验证是否满足以下先决条件：
 
@@ -53,7 +53,7 @@ ms.locfileid: "97897937"
 * 已创建 CloudSimple 私有云。
 * 虚拟网络中的 IP 子网与私有云中的子网之间不存在 IP 冲突。
 
-## <a name="2-connect-your-azure-virtual-network-to-your-private-cloud"></a>2.将 Azure 虚拟网络连接到私有云
+## <a name="2-connect-your-azure-virtual-network-to-your-private-cloud"></a>2. 将 Azure 虚拟网络连接到私有云
 
 若要将 Azure 虚拟网络连接到私有云，请遵循此过程。
 
@@ -65,7 +65,7 @@ ms.locfileid: "97897937"
 
 4. [使用复制的对等互连信息将虚拟网络链接到 ExpressRoute 线路](virtual-network-connection.md)。
 
-## <a name="3-deploy-an-azure-application-gateway"></a>3.部署 Azure 应用程序网关
+## <a name="3-deploy-an-azure-application-gateway"></a>3. 部署 Azure 应用程序网关
 
 [通过 Azure 门户使用基于路径的路由规则创建应用程序网关](../application-gateway/create-url-route-portal.md)中提供了有关此操作的详细说明。 下面是所需步骤的摘要：
 
@@ -74,6 +74,6 @@ ms.locfileid: "97897937"
 3. 创建标准应用程序网关（选择性地启用 WAF）：在 Azure 门户主页中，单击页面左上方的“资源” > “网络” > “应用程序网关”  。 选择标准 SKU 和大小，并提供 Azure 订阅、资源组和位置信息。 如果需要，请为此应用程序网关创建新的公共 IP，并提供有关此应用程序网关的虚拟网络和专用子网的详细信息。
 4. 添加包含虚拟机的后端池，并将其添加到应用程序网关。
 
-## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4.在私有云中创建并配置 Web 服务器 VM 池
+## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. 在私有云中创建并配置 Web 服务器 VM 池
 
 在 vCenter 中，创建包含所选 OS 和 Web 服务器（例如 Windows/IIS 或 Linux/Apache）的 VM。 选择为私有云中的 Web 层指定的子网/VLAN。 验证 Web 服务器 VM 上是否至少有一个 vNIC 位于 Web 层子网中。

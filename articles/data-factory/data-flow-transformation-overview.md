@@ -1,17 +1,17 @@
 ---
 title: 映射数据流转换概述
 description: 映射数据流中可用的不同转换的概述
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: ba2ff2b5f108d7910958b374cc4b602a84a3f53d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: ebcb3298419fe53fe44418ce5f8147ed619becee
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367905"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903625"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>映射数据流转换概述
 
@@ -31,6 +31,7 @@ ms.locfileid: "100367905"
 | [Join](data-flow-join.md) | 多个输入/输出 |  合并两个源或流中的数据。 |
 | [查找](data-flow-lookup.md) | 多个输入/输出 | 引用来自其他源的数据。 |
 | [新建分支](data-flow-new-branch.md) | 多个输入/输出 | 对同一数据流应用多组操作和转换。 |
+| [Parse](data-flow-new-branch.md) | 格式化程序 | 分析数据流中的文本列（是 JSON 字符串、带分隔符的文本或 XML 格式文本）。 |
 | [透视表](data-flow-pivot.md) | 架构修饰符 | 一种聚合，其中一个或多个分组列将其不同的行值转换到各个列中。 |
 | [Rank](data-flow-rank.md) | 架构修饰符 | 根据排序条件生成已排序的排名 |
 | [Select](data-flow-select.md) | 架构修饰符 | 别名列和流名称，以及删除或重新排序列 |
@@ -41,3 +42,4 @@ ms.locfileid: "100367905"
 | [联合](data-flow-union.md) | 多个输入/输出 | 垂直合并多个数据流 |
 | [逆透视](data-flow-unpivot.md) | 架构修饰符 | 将列透视为行值 |
 | [窗口](data-flow-window.md) | 架构修饰符 |  定义数据流中基于窗口的列聚合。 |
+| [Parse](data-flow-parse.md) | 架构修饰符 |  将列数据分析为 Json 或分隔文本 |

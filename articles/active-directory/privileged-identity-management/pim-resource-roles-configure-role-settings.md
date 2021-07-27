@@ -15,12 +15,12 @@ ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40779e4517b610e52e41caacc46fc613b72023e5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 10242d867c5d9676b4f6833151863b820b2f11d1
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567129"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481798"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure 资源角色设置
 
@@ -40,7 +40,7 @@ ms.locfileid: "105567129"
 
     ![列出可以管理的资源的“Azure 资源”页](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. 选择  “角色设置”。
+1. 选择“设置”。
 
     ![列出 Azure 资源角色的“角色设置”页](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "105567129"
 
     ![列出多个分配和激活设置的“角色设置详细信息”页](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. 选择“编辑”打开“角色设置”窗格。   第一个选项卡用于更新在 Privileged Identity Management 中激活角色所需的配置。
+1. 选择“编辑”，以打开“编辑角色设置”窗格。 第一个选项卡用于更新在 Privileged Identity Management 中激活角色所需的配置。
 
     ![“编辑角色设置”页，其中的“激活”选项卡已打开](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 

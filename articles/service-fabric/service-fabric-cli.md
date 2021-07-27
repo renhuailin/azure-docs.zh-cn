@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: ff322cb3633616e9004bc8fa25b048b6f1263008
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83681802"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046328"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -22,7 +22,7 @@ Azure Service Fabric 命令行接口 (CLI) 是一个命令行实用程序，用�
 
 在安装之前，请确保环境中已安装 Python 和 pip。 有关详细信息，请参阅 [pip 快速入门文档](https://pip.pypa.io/en/latest/quickstart/)和官方的 [Python 安装文档](https://wiki.python.org/moin/BeginnersGuide/Download)。
 
-CLI 支持 Python 2.7、3.5、3.6 和 3.7 版。 建议使用 Python 3.x 版，因为很快会终止对 Python 2.7 的支持。
+CLI 支持 Python 版本 2.7 和 3.6+，但建议使用 Python 3.x。
 
 ### <a name="service-fabric-target-runtime"></a>Service Fabric 目标运行时
 
@@ -58,11 +58,11 @@ pip install -I sfctl==1.1.0
 
 对于 Windows 10、Windows Server 2016 和 Windows Server 2012 R2，使用标准官方安装说明进行操作。 默认情况下，Python 安装程序也安装 pip。
 
-1. 转到官方的 [Python 下载页](https://www.python.org/downloads/)，下载最新版本的 Python 3.7。
+1. 转到官方的 [Python 下载页](https://www.python.org/downloads/)，下载最新版 Python 3.x。
 
 2. 启动安装程序。
 
-3. 在提示的底部，选择“将 Python 3.7 添加到路径”。
+3. 在提示的底部，选择“将 Python 3.x 添加到路径”。
 
 4. 选择“立即安装”，并完成安装。
 
@@ -118,8 +118,8 @@ sudo pip3 install sfctl
 若要在 Red Hat 上安装 Service Fabric CLI，请运行以下命令：
 
 ```bash
-sudo yum install -y python34
-sudo yum install python34-setuptools
+sudo yum install -y python38
+sudo yum install python38-setuptools
 sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
@@ -135,7 +135,7 @@ sudo pip3 install sfctl
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-然后从终端通过运行以下命令，安装 Python 3.7、pip 和 Service Fabric CLI：
+然后从终端通过运行以下命令，安装最新的 Python 3.x、pip 和 Service Fabric CLI：
 
 ```bash
 brew install python3

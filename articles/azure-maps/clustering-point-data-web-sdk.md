@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f798b4a7964eba112ed9948b2db4f6d5c3edd1e3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044181"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608351"
 ---
 # <a name="clustering-point-data"></a>聚类点数据
 
@@ -26,7 +26,7 @@ ms.locfileid: "102044181"
 
 ## <a name="enabling-clustering-on-a-data-source"></a>对数据源启用聚类
 
-通过将 `cluster` 选项设置为 true，在 `DataSource` 类中启用聚类。 设置 `clusterRadius` 以选择附近的点，并将它们合并为聚类。 `clusterRadius` 的值以像素为单位。 使用 `clusterMaxZoom` 指定禁用聚类逻辑的缩放级别。 下面的示例演示如何在数据源中启用聚类。
+通过将 `cluster` 选项设置为 `true`，在 `DataSource` 类中启用聚类。 设置 `clusterRadius` 以选择附近的点，并将它们合并为聚类。 `clusterRadius` 的值以像素为单位。 使用 `clusterMaxZoom` 指定禁用聚类逻辑的缩放级别。 下面的示例演示如何在数据源中启用聚类。
 
 ```javascript
 //Create a data source and enable clustering.
@@ -92,7 +92,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 当鼠标事件在包含聚类数据点的层上发生时，聚类数据点会作为 GeoJSON 点特征对象返回给事件。 此点特征具有以下属性：
 
-| 属性名称             | 类型    | 描述   |
+| 属性名称             | 类型    | 说明   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | 指示特征是否表示聚类。 |
 | `cluster_id`              | 字符串  | 可与数据源 `getClusterExpansionZoom`、`getClusterChildren` 和 `getClusterLeaves` 方法结合使用的群集唯一 ID。 |

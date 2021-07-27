@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中缩放资源：Web 应用、云服务、�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f229b3087bd616dfb55cbec4b0f6c3fcc4ec9fe1
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726047"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737521"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
@@ -113,6 +113,10 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 始终可单击“启用自动缩放”，再单击“保存”来恢复自动缩放。 
 
+### <a name="cool-down-period-effects"></a>冷却期效果
+
+自动缩放使用冷却期来防止“不稳定”现象，即实例快速且重复地进行纵向扩展和缩减。  有关详细信息，请参阅[自动缩放计算步骤](autoscale-understanding-settings.md#autoscale-evaluation)。  如需有关不稳定情况的其他宝贵信息并了解如何监视自动缩放引擎，可分别查看[自动缩放最佳做法](autoscale-best-practices.md#choose-the-thresholds-carefully-for-all-metric-types)和[自动缩放故障排除](autoscale-troubleshoot.md)。
+
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>将流量路由到正常运行的实例（应用服务）
 
 <a id="health-check-path"></a>
@@ -128,14 +132,15 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ### <a name="move"></a>移动
 使用 [REST API](/rest/api/monitor/autoscalesettings/createorupdate) 在新环境中创建自动缩放设置。 在目标区域中创建的自动缩放设置是源区域中的自动缩放设置的副本。
 
-无法移动所创建的与源区域中的自动缩放设置关联的[诊断设置](../essentials/diagnostic-settings.md)。 自动缩放设置创建完毕后，你需要在目标区域中重新创建诊断设置。 
+无法移动所创建的与源区域中的自动缩放设置关联的[诊断设置](../essentials/diagnostic-settings.md)。 自动缩放设置创建完毕后，你需要在目标区域中重新创建诊断设置。
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>详细了解如何在 Azure 区域间移动资源
 要详细了解如何在区域之间移动资源，以及如何在 Azure 中进行灾难恢复，请参阅[将资源移动到新资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
 
 ## <a name="next-steps"></a>后续步骤
-- [创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)
+- [创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert)
+
 
 <!--Reference-->
 [1]:https://portal.azure.com

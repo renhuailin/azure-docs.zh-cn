@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: b3e0bcad7beccc31e1772fbb24ffad7f502b8140
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b72de537f573d03f37a9b1de4341a14830479e7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454237"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748414"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>自动备份应用程序配置存储区
 
@@ -127,7 +127,7 @@ az eventgrid event-subscription create \
 - Azure Functions 运行版本 3.x
 - 计时器每 10 分钟触发一次的函数
 
-为了让你能够轻松开始备份数据，我们已[测试并发布了一个函数](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup)，你无需对代码做出任何更改即可使用。 下载项目文件，并[将其从 Visual Studio 发布到自己的 Azure 函数应用](../azure-functions/functions-develop-vs.md#publish-to-azure)。
+为了让你能够轻松开始备份数据，我们已[测试并发布了一个函数](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup)，你无需对代码做出任何更改即可使用。 下载项目文件，并[将其从 Visual Studio 发布到你自己的函数应用](../azure-functions/functions-develop-vs.md#publish-to-azure)。
 
 > [!IMPORTANT]
 > 不要对下载的代码中的环境变量进行任何更改。 你将在下一部分中创建所需的应用设置。

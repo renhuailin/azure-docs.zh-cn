@@ -8,12 +8,13 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: 92b8bf240dfd73cc9191675db07f20816b7156a8
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1b3fc9f12dfa6ad4edcc120ac7c9592c9435a0e4
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953385"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830171"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>新虚拟机的热补丁（预览版）
 
@@ -82,7 +83,7 @@ POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?ap
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-使用 ```Register-AzProviderFeature``` cmdlet 为你的订阅启用预览。
+使用 ```Register-AzProviderFeature``` cmdlet 为订阅启用预览版。
 
 ``` PowerShell
 Register-AzProviderFeature -FeatureName InGuestHotPatchVMPreview -ProviderNamespace Microsoft.Compute
@@ -106,7 +107,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
 ### <a name="azure-cli"></a>Azure CLI
 
-使用 ```az feature register``` 为你的订阅启用预览。
+使用 ```az feature register``` 为订阅启用预览版。
 
 ```
 az feature register --namespace Microsoft.Compute --name InGuestHotPatchVMPreview
@@ -129,8 +130,8 @@ az provider register --namespace Microsoft.Compute
 
 ## <a name="patch-installation"></a>补丁安装
 
-在预览期间，会自动为通过“Windows Server 2019 Datacenter: Azure Edition”创建的所有 VM 启用“自动 VM 来宾修补”。[](../virtual-machines/automatic-vm-guest-patching.md) 启用自动 VM 来宾修补时：
-* 在 VM 上自动下载并应用已分类为“关键”或“安全性”的补丁。
+在预览期间，会自动为通过“Windows Server 2019 Datacenter: Azure Edition”创建的所有 VM 启用 [自动 VM 来宾修补](../virtual-machines/automatic-vm-guest-patching.md)。 启用自动 VM 来宾修补时：
+* 在 VM 上自动下载并应用已分类为“关键”或“安全性”的补丁。 
 * 在 VM 所在时区的非高峰期应用补丁。
 * 由 Azure 管理补丁业务流程，遵循[可用性优先原则](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching)应用补丁。
 * 监视虚拟机运行状况（通过平台运行状况信号来确定），以检测修补失败的情况。
@@ -151,7 +152,7 @@ VM 每隔数天自动评估，并在任意 30 天周期内多次评估，以确�
 
 要查看 VM 的修补状态，请导航到 Azure 门户中 VM 的“来宾 + 主机更新”部分。 在“来宾操作系统更新”部分下，单击“转到热补丁（预览）”以查看你的 VM 的最新补丁状态。
 
-可以在这个屏幕上看到 VM 的热补丁状态。 你还可以查看是否存在任何已经可用但尚未安装的 VM 补丁。 如上文“补丁安装”部分中所述，所有安全性和重要更新将使用“自动 VM 来宾补丁”自动安装在你的 VM 上，并且不需要任何额外的操作。[](../virtual-machines/automatic-vm-guest-patching.md) 不会自动安装具有其他更新分类的补丁。 但可以在“更新合规性”选项卡下的可用补丁列表中查看这些补丁。还可以通过“更新历史记录”查看 VM 上更新部署的历史记录。 将显示过去 30 天的更新历史记录，以及补丁安装详细信息。
+可以在这个屏幕上看到 VM 的热补丁状态。 你还可以查看是否存在任何已经可用但尚未安装的 VM 补丁。 如上文“补丁安装”部分中所述，所有安全性和重要更新将使用 [自动 VM 来宾补丁](../virtual-machines/automatic-vm-guest-patching.md) 自动安装在你的 VM 上，并且不需要任何额外的操作。 不会自动安装具有其他更新分类的补丁。 但可以在“更新符合性”选项卡下的可用补丁列表中查看。还可以通过“更新历史记录”查看 VM 上的更新部署历史记录。 将显示过去 30 天的更新历史记录，以及补丁安装详细信息。
 
 
 :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="热补丁管理。":::
@@ -167,7 +168,7 @@ VM 每隔数天自动评估，并在任意 30 天周期内多次评估，以确�
 在启用了热补丁的情况运行 Windows Server Azure edition VM 时，有一些重要的注意事项。 安装热补丁程序中未包含的更新时，仍然需要重新启动。 安装新的基线后，也需要定期重新启动。 重新启动会使 VM 与最新的累积更新中包含的非安全补丁保持同步。
 * 当前未包含在热补丁程序中的补丁有为 Windows 发布的非安全更新和非 Windows 更新（如 .NET 修补程序）。  此类补丁需要在基线月份内安装，并且需要重新启动。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="what-is-hotpatching"></a>什么是热修补？
 

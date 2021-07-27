@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: ff70df225b5ed27960c96889d409d7005f0fbcc4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94950718"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>从备份集中还原 StorSimple 卷
@@ -27,7 +27,7 @@ ms.locfileid: "94950718"
 
 在开始还原之前，请查看以下注意事项：
 
-* **必须使卷脱机** – 启动还原操作前，请在主机和设备上使卷脱机。 虽然还原操作会自动在设备上使卷联机，但必须在主机上手动使设备联机。 在设备上使卷联机后，便可以在主机上使卷联机。 （无需等待还原操作完成即可进行此操作。）有关过程，请转到[使卷脱机](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)。
+* **必须使卷脱机** – 启动还原操作前，请在主机和设备上使卷脱机。 虽然还原操作会自动在设备上使卷联机，但必须在主机上手动使设备联机。 在设备上使卷联机后，便可以在主机上使卷联机。 （你无需等待还原操作完成）。有关过程，请转到[使卷脱机](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)。
 
 * **还原后的卷类型** – 基于快照中的类型对已删除的卷进行还原；也就是说，已在本地固定的卷会还原为本地固定卷，已分层的卷会还原为分层卷。
 

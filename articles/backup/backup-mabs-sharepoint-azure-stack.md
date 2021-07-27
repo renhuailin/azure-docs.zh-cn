@@ -3,12 +3,12 @@ title: 在 Azure Stack 上备份 SharePoint 场
 description: 在 Azure Stack 上使用 Azure 备份服务器备份和还原 SharePoint 数据。 本文介绍如何配置 SharePoint 场，以便在 Azure 中存储所需的数据。 可以从磁盘或 Azure 还原受保护的 SharePoint 数据。
 ms.topic: conceptual
 ms.date: 06/07/2020
-ms.openlocfilehash: 1e237e63b92468fafff4f8f8f525d1388840d162
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efaeb1c206130778463de47ed806d9b10ea7da62
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89378315"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767340"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>在 Azure Stack 上备份 SharePoint 场
 
@@ -64,7 +64,7 @@ MABS 的 Azure 备份支持以下方案：
 
         * **EnableSPSearchProtection** 通过使用前端 Web 服务器上 HKLM\\Software\\Microsoft\\ Microsoft Data Protection Manager\\Agent\\2.0\\ 下的注册表项 SharePointSearchEnumerationEnabled 启用 WSS 3.0 SP Search 保护，并注册 DCOM 应用程序 WssCmdletsWrapper 的标识，使其作为使用此选项输入凭据的用户运行。 此帐户应为前端 Web 服务器上的场管理员和本地管理员。
 
-        * ResolveAllSQLAliases 显示 SharePoint VSS 编写器报告的所有别名，并将它们解析为对应的 SQL Server。 它还显示这些别名解析的实例名称。 如果服务器已建立镜像，它还将显示镜像服务器。 它报告未解析为 SQL Server 的所有别名。
+        * **ResolveAllSQLAliases** 显示 SharePoint VSS 编写器报告的所有别名，并将它们解析为对应的 SQL Server。 它还显示这些别名解析的实例名称。 如果服务器已建立镜像，它还将显示镜像服务器。 它报告未解析为 SQL Server 的所有别名。
 
         * SetTempPath 将环境变量 TEMP 和 TMP 设置为指定的路径。 如果正在恢复大网站集、站点、列表或项目，并且场管理员临时文件夹中的空间不足，则项目级恢复将失败。 通过此选项，你可以将临时文件的文件夹路径更改为具有充足空间来存储所恢复的网站集或站点的卷。
 
@@ -82,7 +82,7 @@ MABS 的 Azure 备份支持以下方案：
 
 1. 在“选择组成员”中，展开包含 WFE 角色的服务器。 如果有多个 WFE 服务器，请选择在其上安装 ConfigureSharePoint.exe 的服务器。
 
-    展开 SharePoint 服务器时，MABS 会查询 VSS，以查看 MABS 可以保护的数据。  如果 SharePoint 数据库是远程数据库，则 MABS 将连接到该数据库。 如果未显示 SharePoint 数据源，请检查 VSS 编写器是否在 SharePoint 服务器和任何远程 SQL Server 上运行，并确保 MABS 代理同时安装在 SharePoint 服务器和远程 SQL Server 上。 此外，请确保不会像 SQL Server 数据库一样在其他位置保护 SharePoint 数据库。
+   当你展开运行 SharePoint 的计算机时，MABS 会查询 VSS 以了解 MABS 可以保护哪些数据。 如果 SharePoint 数据库是远程数据库，则 MABS 将连接到该数据库。 如果未显示 SharePoint 数据源，请检查 VSS 编写器是否正在运行 SharePoint 的计算机上和任何 SQL Server 远程实例上运行。 然后，确保 MABS 代理安装在运行 SharePoint 的计算机上和 SQL Server 远程实例上。 此外，请确保不会像 SQL Server 数据库一样在其他位置保护 SharePoint 数据库。
 
 1. 在“选择数据保护方法”中，指定要如何处理短期和长期备份。 短期备份始终是磁盘优先，可以选择使用 Azure 备份从磁盘备份到 Azure 云（短期或长期）。
 

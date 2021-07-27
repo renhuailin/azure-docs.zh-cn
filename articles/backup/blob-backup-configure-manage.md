@@ -1,16 +1,16 @@
 ---
 title: 为 Azure Blob 配置操作备份
-description: 了解如何为 Azure Blob 配置和管理操作备份（预览版）
+description: 了解如何为 Azure Blob 配置和管理操作备份。
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: 0dc490842389ba9286799aef5d37c1cf7c1ba64e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/05/2021
+ms.openlocfilehash: cb2bc525018b33eb3441a8ed949d3e808c5051d8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102051066"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767376"
 ---
-# <a name="configure-operational-backup-for-azure-blobs-in-preview"></a>为 Azure Blob 配置操作备份（预览版）
+# <a name="configure-operational-backup-for-azure-blobs"></a>为 Azure Blob 配置操作备份
 
 Azure 备份使你可以轻松地配置操作备份，以保护存储帐户中的块 blob。 本文介绍如何使用 Azure 门户对一个或多个存储帐户配置操作备份。 本文讨论以下内容：
 
@@ -26,7 +26,7 @@ Azure 备份使你可以轻松地配置操作备份，以保护存储帐户中�
 - Blob 的操作备份是一种本地备份解决方案，可在源存储帐户本身中于指定持续时间内维护数据。 此解决方案不会在保管库中维护数据的另一个副本。
 - 此解决方案使你可以将数据保留最多 360 天以用于还原。 不过，较长的保留持续时间可能会导致在还原操作期间花费较长的时间。
 - 该解决方案只能用于对源存储帐户执行还原，可能会导致覆盖数据。
-- 如果通过调用“删除容器”操作从存储帐户中删除容器，将无法使用还原操作来还原该容器。 如果要在以后还原它们，请删除单个 blob，而不是删除整个容器。 此外，Microsoft 还建议为容器启用软删除，以及执行操作备份，以防止意外删除容器。
+- 如果通过调用“删除容器”操作从存储帐户中删除了容器，将无法使用还原操作来还原该容器。 如果要在以后还原它们，请删除单个 blob，而不是删除整个容器。 此外，Microsoft 还建议为容器启用软删除，以及执行操作备份，以防止意外删除容器。
 - 若要详细了解支持的方案、限制和可用性，请参阅[支持矩阵](blob-backup-support-matrix.md)。
 
 ## <a name="create-a-backup-vault"></a>创建备份保管库
@@ -40,9 +40,16 @@ Azure 备份使你可以轻松地配置操作备份，以保护存储帐户中�
 
 ## <a name="grant-permissions-to-the-backup-vault-on-storage-accounts"></a>向备份保管库授予对存储帐户的权限
 
-操作备份还可通过应用备份拥有的删除锁，来保护存储帐户（包含要保护的 blob）不会遭受意外删除。 这要求备份保管库对需要保护的存储帐户拥有某些权限。 为方便使用，这些权限已合并到存储帐户备份参与者角色下。 对于需要保护的存储帐户，请按照以下说明进行操作：
+操作备份还可通过应用备份拥有的删除锁，来保护存储帐户（包含要保护的 blob）不会遭受意外删除。 这要求备份保管库对需要保护的存储帐户拥有某些权限。 为方便使用，这些最低权限已合并到“存储帐户备份参与者”角色下。 
 
-1. 在要保护的存储帐户中，在左侧导航窗格上导航到“访问控制(IAM)”选项卡。
+建议在配置备份之前，将此角色分配给备份保管库。 但是，也可以在配置备份时执行角色分配。 [详细了解](#using-backup-center)使用备份中心配置备份。 
+
+要为需要保护的存储帐户分配所需的角色，请执行以下步骤：
+
+>[!NOTE]
+>还可以根据自己的方便，在“订阅”或“资源组”级别将角色分配给保管库。
+
+1. 在需要保护的存储帐户中，在左侧导航窗格上导航到“访问控制 (IAM)”选项卡。
 1. 选择“添加角色分配”以分配所需角色。
 
     ![添加角色分配](./media/blob-backup-configure-manage/add-role-assignments.png)
@@ -51,13 +58,13 @@ Azure 备份使你可以轻松地配置操作备份，以保护存储帐户中�
 
     1. 在“角色”下，选择“存储帐户备份参与者” 。
     1. 在“分配访问权限”下，选择“用户、组或服务原则” 。
-    1. 键入要用于保护此存储帐户中 blob 的备份保管库的名称，并在搜索结果中选择相同名称。
-    1. 完成后，选择“保存”。
+    1. 搜索要用于备份此存储帐户中的 Blob 的备份保管库，然后从搜索结果中选择此保管库。
+    1. 选择“保存”。
 
         ![角色分配选项](./media/blob-backup-configure-manage/role-assignment-options.png)
 
         >[!NOTE]
-        >请等待 10 分钟，以便角色分配生效。
+        >角色分配最多可能需要 10 分钟才能生效。
 
 ## <a name="create-a-backup-policy"></a>创建备份策略
 
@@ -91,9 +98,14 @@ Azure 备份使你可以轻松地配置操作备份，以保护存储帐户中�
 
 Blob 的备份在存储帐户级别进行配置。 因此，存储帐户中的所有 blob 都受操作备份保护。
 
+可以使用备份中心为多个存储帐户配置备份。 你还可以使用存储帐户的“数据保护”属性为存储帐户配置备份。 本部分介绍了配置备份的两种方式。
+
+### <a name="using-backup-center"></a>使用备份中心
+
 若要开始配置备份，请执行以下操作：
 
 1. 在搜索栏中搜索“备份中心”。
+
 1. 导航到“概述” -> “+备份”。
 
     ![备份中心概述](./media/blob-backup-configure-manage/backup-center-overview.png)
@@ -102,36 +114,91 @@ Blob 的备份在存储帐户级别进行配置。 因此，存储帐户中的�
 
     ![“启动: 配置备份”选项卡](./media/blob-backup-configure-manage/initiate-configure-backup.png)
 
-1. 在“基本信息”选项卡中，指定“Azure Blob (Azure 存储)”作为“数据源”类型，并选择要将存储帐户关联到的备份保管库  。 可以在窗格中查看所选保管库的详细信息。
+1. 在“基本信息”选项卡中，指定“Azure Blob (Azure 存储)”作为“数据源”类型，并选择要将存储帐户关联到的备份保管库 。<br></br>可以在同一窗格中查看所选保管库的详细信息。
 
     ![“基本信息”选项卡](./media/blob-backup-configure-manage/basics-tab.png)
 
-1. 接下来，选择要用于指定保留期的备份策略。 可以在屏幕的下半部分中查看所选策略的详细信息。 操作数据存储列显示策略中定义的保留期。 “操作”表示数据在源存储帐户本身中进行本地维护。
+    >[!NOTE]
+    >只会为 Blob 启用操作备份，Blob 将备份存储在源存储帐户中（而不是备份保管库）。 因此，为保管库选择的备份存储冗余类型不适用于 Blob 的备份。
 
+1. 接下来，选择要用于指定保留期的备份策略。<br></br>可以在屏幕的底部查看所选策略的详细信息。 操作数据存储列显示策略中定义的保留期。 “操作”意味着数据在源存储帐户中进行本地维护。
+    
     ![选择备份策略](./media/blob-backup-configure-manage/choose-backup-policy.png)
 
     还可以创建新备份策略。 为此，请选择“新建”，然后执行以下步骤：
+    
+    1. 为要创建的策略提供名称。<br></br>确保其他框显示正确的数据源类型和保管库名称。
+    
+    1. 在“备份策略”选项卡上，选择保留规则的“编辑保留规则”图标，以修改数据保留的持续时间。 <br></br>可以设置最长 360 天的保留期。 
+    
+        >[!NOTE]
+        >虽然备份不受保留期的影响，但还原较旧备份的还原操作可能需要更长时间才能完成。
 
-    1. 为要创建的策略提供名称。 确保其他框显示正确的数据源类型和保管库名称。
-    1. 在“备份策略”选项卡中，选择编辑保留规则图标进行编辑，并指定希望保留数据的持续时间。 可以指定最多 360 天的保留期。 对较长持续时间进行还原可能会导致还原操作需要较长时间才能完成。
+       ![创建新的备份策略](./media/blob-backup-configure-manage/new-backup-policy.png)
 
-        ![创建新备份策略](./media/blob-backup-configure-manage/new-backup-policy.png)
+    1. 选择“查看 + 创建”以创建备份策略。
 
-    1. 完成后，选择“查看 + 创建”以创建备份策略。
+1. 选择用于配置 Blob 保护所需的存储帐户。 可以一次性选择多个存储帐户，然后选择“选择”。<br></br>但是，请确保已选择的保管库已经被分配了必需的 RBAC 角色，以便在存储帐户上配置备份。 详细了解[向备份保管库授予对存储帐户的权限](#grant-permissions-to-the-backup-vault-on-storage-accounts)。<br></br>如果未分配角色，你仍可以在配置备份时分配角色。 请参阅步骤 7。
 
-1. 接下来，需要选择要为其配置 blob 保护的存储帐户。 可以一次性选择多个存储帐户，然后选择“选择”。
+    ![验证保管库的权限](./media/blob-backup-configure-manage/verify-vault-permissions.png)
 
-    但是，请确保所选保管库具有对存储帐户配置备份所需的权限（如上文的[向备份保管库授予对存储帐户的权限](#grant-permissions-to-the-backup-vault-on-storage-accounts)中所述）。
+    备份会验证保管库是否有足够权限来允许在所选存储帐户中配置备份。 此操作需要一段时间才能完成验证。
+    
+    ![允许配置备份的权限](./media/blob-backup-configure-manage/permissions-for-configuring-backup.png)
 
-    ![选择要备份的资源](./media/blob-backup-configure-manage/select-resources.png)
+1. 验证完成后，“备份就绪情况”列将通知备份保管库是否有足够的权限来配置每个存储帐户的备份。
 
-    备份会检查保管库是否有足够权限来允许对所选存储帐户配置备份。
+   ![备份保管库权限的信息](./media/blob-backup-configure-manage/information-of-backup-vault-permissions.png)
 
-    ![备份验证权限](./media/blob-backup-configure-manage/validate-permissions.png)
+    如果验证显示错误（对于上图中列出的两个存储帐户），则尚未为这些[存储帐户](#grant-permissions-to-the-backup-vault-on-storage-accounts)分配存储帐户备份参与者角色。 此外，你还可以根据自己的当前权限在此分配所需角色。 错误消息可帮助你了解你是否具有所需的权限，并采取适当的操作：
 
-    如果验证导致错误（与屏幕截图中的某个存储帐户一样），请转到所选存储帐户并分配适当的角色（如[此处](#grant-permissions-to-the-backup-vault-on-storage-accounts)所述），并选择“重新验证”。 新角色分配最多可能需要 10 分钟才能生效。
+    - 角色分配未完成：此错误（如上图中 blobbackupdemo3 项所示）表明你（用户）有权将“存储帐户备份参与者”角色和存储帐户所需的其他角色分配给保管库。 选择角色，然后单击工具栏上的“分配缺少的角色”。 这会自动将所需的角色分配到备份保管库，还会触发自动重新验证。<br><br>有时，角色传播可能需要一段时间（最多 10 分钟），这会导致重新验证失败。 在这种情况下，请等待几分钟，然后单击“重新验证”按钮重试验证。
+    
+    - 角色分配权限不足：此错误（如上图中 blobbackupdemo4 项所示）表明保管库没有配置备份所需的角色，你（用户）没有足够的权限分配所需的角色。 为了简化角色分配，备份允许你下载角色分配模板，你可以与有权为存储帐户分配角色的用户共享此模板。 为此，请选择此类存储帐户，然后单击“下载角色分配模板”以下载模板。<br><br>分配角色后，可以将角色与相应的用户共享。 成功分配角色后，单击“重新验证”以再次验证权限，然后配置备份。
+        >[!NOTE]
+        >模板将仅包含所选存储帐户的详细信息。 因此，如果有多个用户需要为不同的存储帐户分配角色，可以相应地选择和下载不同的模板。
+1. 验证对所有所选存储帐户都成功后，继续“审阅和配置备份”。<br><br>你会收到通知，告知配置保护及其完成的状态。
 
-1. 验证对所有所选存储帐户都成功后，继续“审阅和配置”以配置备份。 你会看到通知，向你告知配置保护及其完成的状态。
+### <a name="using-data-protection-settings-of-the-storage-account"></a>使用存储帐户的数据保护设置
+
+可以直接从存储帐户的“数据保护”设置为存储帐户中的 Blob 配置备份。 
+
+1. 转到要配置 Blob 备份的存储帐户，然后导航到左窗格中的“数据保护”（在“数据管理”下面）。 
+
+1. 在可用的数据保护选项中，第一个选项允许使用 Azure 备份来启用操作备份。
+
+    ![使用 Azure Backup 进行操作备份](./media/blob-backup-configure-manage/operational-backup-using-azure-backup.png)
+
+1. 选中与“使用 Azure 备份启用操作备份”相对应的复选框。 然后选择要关联的备份保管库和备份策略。<br><br>可以选择现有的保管库和策略，也可以创建新的保管库和策略（如果需要）。
+
+    >[!IMPORTANT]
+    >应该已将“存储帐户备份参与者”角色分配给所选保管库。 详细了解[向备份保管库授予对存储帐户的权限](#grant-permissions-to-the-backup-vault-on-storage-accounts)。
+    
+    - 如果已分配所需的角色，请单击“保存”以完成备份配置。 关注门户通知以跟踪配置备份的进度。
+    - 如果尚未分配，请单击“管理标识”，然后按照以下步骤分配角色。 
+
+        ![使用 Azure 备份启用操作备份](./media/blob-backup-configure-manage/enable-operational-backup-with-azure-backup.png)
+
+
+        1. 单击“管理标识”后，会转到存储帐户的“标识”边栏选项卡。 
+        
+        1. 单击“添加角色分配”以启动角色分配。
+
+            ![添加角色分配以启动角色分配。](./media/blob-backup-configure-manage/add-role-assignment-to-initiate-role-assignment.png)
+
+
+        1. 选择要分配给该角色的作用域、订阅、资源组或存储帐户。<br><br>如果要为多个存储帐户配置 blob 的操作备份，则建议在资源组级别分配角色。
+
+        1. 从“角色”下拉菜单中，选择“存储帐户备份参与者”角色。 
+
+            ![选择“存储帐户备份参与者”角色](./media/blob-backup-configure-manage/select-storage-account-backup-contributor-role.png)
+
+
+        1. 单击“保存”以完成角色分配。<br><br>成功完成后，将通过门户通知你。 你还可以看到新角色已经添加到所选保管库的现有角色列表中。
+
+            ![完成角色分配](./media/blob-backup-configure-manage/finish-role-assignment.png)
+
+        1. 单击右上角的取消图标 (x) 返回存储帐户的“数据保护”边栏选项卡。 <br><br>返回后，继续配置备份。
 
 ## <a name="effects-on-backed-up-storage-accounts"></a>对备份的存储帐户的影响
 
@@ -166,8 +233,31 @@ Blob 的备份在存储帐户级别进行配置。 因此，存储帐户中的�
 
     ![备份中心](./media/blob-backup-configure-manage/backup-center.png)
 
-有关详细信息，请参阅[备份中心概述（预览版）](backup-center-overview.md)。
+有关详细信息，请参阅[备份中心概述](backup-center-overview.md)。
+
+## <a name="stopping-protection"></a>停止保护
+
+你可以根据需要为存储帐户停止操作备份。
+
+>[!NOTE]
+>停止保护只会将存储帐户与备份保管库（以及备份工具，如备份中心）取消关联，而不会禁用配置的 blob 时间点还原、版本控制和更改源。
+
+要停止存储帐户的备份，请执行以下步骤：
+
+1. 导航到要备份的存储帐户的备份实例。<br><br>可以从存储帐户中通过“存储帐户” -> “数据保护” -> “管理备份设置“导航到此处，也可以直接从备份中心通过“备份中心” -> “备份实例”并搜索存储帐户名称导航到此处。    
+
+    ![存储帐户位置](./media/blob-backup-configure-manage/storage-account-location.png)
+
+    ![通过备份中心的存储帐户位置](./media/blob-backup-configure-manage/storage-account-location-through-backup-center.png)
+
+
+1. 在备份实例中，单击“删除”以停止特定存储帐户的操作备份。 
+ 
+    ![停止操作备份](./media/blob-backup-configure-manage/stop-operational-backup.png)
+
+停止备份后，可以从存储帐户的“数据保护”边栏选项卡中禁用其他存储数据保护功能（为配置备份而启用的功能）。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-- [还原 Azure Blob](blob-restore.md)
+[还原 Azure Blob](blob-restore.md)

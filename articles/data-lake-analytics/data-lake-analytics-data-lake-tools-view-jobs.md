@@ -5,10 +5,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 08/02/2017
 ms.openlocfilehash: a1e9a9df4c2ec57dfeec8cf5ddd5348228b9cc3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96018556"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>对 Azure Data Lake Analytics 使用作业浏览器和作业视图
@@ -108,7 +108,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
   * 持续时间：阶段所用的时钟时间，需加载配置文件才能查看此值。
   * 作业播放
     
-      Data Lake Analytics 运行作业并存档该作业的顶点运行信息，例如顶点开始、结束、失败的时间，以及如何重试等。所有信息均自动记录在查询存储内，并存储在作业配置文件中。 可通过作业视图中的“加载配置文件”下载该作业配置文件，并可在下载后查看作业播放。
+      Data Lake Analytics 运行作业并存档作业运行信息的顶点，如顶点何时启动、停止、失败以及重试方式等。所有信息都会自动记录在查询存储区中并存储在作业配置文件中。 可通过作业视图中的“加载配置文件”下载该作业配置文件，并可在下载后查看作业播放。
     
       作业播放是反映群集所发生情况的典型可视化效果。 它有助于观看作业执行进度，并在超短时间内（通常小于 30 秒）直观地检测出性能异常和瓶颈。
   * 作业热度地图显示 
@@ -128,7 +128,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
     * 输入/输出吞吐量：每个阶段的输入/输出吞吐量热度地图，通过此热度地图，可确认作业是否为 I/O 边界作业。
 * 元数据操作
   
-    可在 U-SQL 脚本中执行某些元数据操作，例如创建数据库、删除表等。编译完成后，元数据操作中会显示这些操作。 可在此处查找断言、创建实体、删除实体。
+    你可以在你的 U-SQL 脚本中执行某些元数据操作，例如创建数据库、删除表等。在编译后，这些操作显示在元数据操作中。 可在此处查找断言、创建实体、删除实体。
   
     ![Azure Data Lake Analytics 作业视图元数据操作](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
 * 状态历史记录
@@ -160,7 +160,7 @@ Azure Data Lake Analytics 服务将已提交作业存档在查询存储中。 �
     通过“资源”，可找到存储在查询存储中的作业编译输出。 例如，可在此处找到用于显示作业图的“algebra.xml”、注册的程序集等。
 * 顶点执行视图
   
-    它显示顶点执行详细信息。 作业配置文件存档每个顶点执行日志，例如读取/写入的总数据量、运行时、状态等。通过此视图，可详细了解作业的运行方式。 有关详细信息，请参阅[使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+    它显示顶点执行详细信息。 作业配置文件会存档每个顶点执行日志，例如数据读取/写入、运行时、状态等。通过此视图，可以获取有关作业运行方式的更多详细信息。 有关详细信息，请参阅[使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要记录诊断信息，请参阅[访问 Azure Data Lake Analytics 的诊断日志](data-lake-analytics-diagnostic-logs.md)

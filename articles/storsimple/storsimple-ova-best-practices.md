@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 71b018da6b54ebf2b45a261378ea521a397159e5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94964977"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple 虚拟阵列最佳实践
@@ -159,7 +159,7 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 
 在虚拟设备上预配共享或卷时，请记住以下最佳实践。
 
-* 相对于已预配分层共享大小的文件大小可能影响分层性能。 处理大型文件可能会导致分层速度变慢。处理大型文件时，建议最大的文件应小于共享大小的 3%。
+* 相对于已预配分层共享大小的文件大小可能影响分层性能。 处理大型文件可能会导致分层速度变慢。处理大型文件时，建议你确保最大文件小于共享大小的 3%。
 * 虚拟阵列上最多可以创建 16 个卷/共享。 有关在本地固定和分层的卷/共享的大小限制，请始终参阅 [StorSimple 虚拟阵列限制](storsimple-ova-limits.md)。
 * 创建卷时，请将预期的数据使用量以及将来的增长量包含考虑。 稍后将无法扩展卷或共享。
 * 创建卷/共享后，无法缩小 StorSimple 上的卷/共享的大小。

@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
 ms.openlocfilehash: 8b391438d8d6605e7ef493a6552af634db840ad5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96552279"
 ---
 # <a name="understand-business-glossary-features-in-azure-purview"></a>了解 Azure Purview 中的业务术语表功能
@@ -20,7 +20,7 @@ ms.locfileid: "96552279"
 
 ## <a name="business-glossary"></a>业务术语表
 
-术语表为业务用户提供词汇。  术语表包含可彼此关联的业务术语，并允许对它们进行分类，以便可以在不同的上下文中理解这些业务术语。 然后可以将这些术语映射到不同资产，例如数据库、表、列等。这有助于抽象化与数据存储库相关的技术术语，并让业务用户能够发现和处理他们更熟悉的词汇表中的数据。
+术语表为业务用户提供词汇。  术语表包含可彼此关联的业务术语，并允许对它们进行分类，以便可以在不同的上下文中理解这些业务术语。 然后，可以将这些术语映射到数据库、表、列等资产。这有助于抽象化与数据存储库相关的技术术语，并让业务用户能够发现和处理他们更熟悉的词汇表中的数据。
 
 
 业务术语表是词汇的集合。 每个术语表示组织中的一个对象，并且很有可能多个术语表示同一对象。 客户也可以称为顾客、买方或买家。 这几个术语彼此相关。 这些术语之间的关系可以是以下其中一种：
@@ -54,7 +54,7 @@ ms.locfileid: "96552279"
 
 虽然术语表术语、分类和标签都是对数据资产的批注，但每一项在目录上下文中具有不同的含义。 
 
-### <a name="glossary"></a>术语表
+### <a name="glossary"></a>词汇表
 
 如上所述，业务术语表术语为组织定义业务词汇，有助于消除公司中各部门之间的隔阂。
 

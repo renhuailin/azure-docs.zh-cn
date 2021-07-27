@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 7b39242a7d7208b33a070e86088b25e9414ead04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c2173118b58ca92d69286fb36014872c19058bd6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714623"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779968"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>自定义 Azure Kubernetes 服务 (AKS) 节点池的节点配置（预览版）
 
 通过自定义节点配置，你可以配置或优化操作系统 (OS) 设置或 kubelet 参数，以满足工作负荷的需求。 创建 AKS 群集或向群集添加节点池时，你可以自定义一个常用 OS 和 kubelet 设置的子集。 若要配置此子集之外的设置，请[使用守护程序集自定义所需配置，而不会失去对节点的 AKS 支持](support-policies.md#shared-responsibility)。
 
-## <a name="register-the-customnodeconfigpreview-preview-feature"></a>注册 `CustomNodeConfigPreview` 预览功能
+## <a name="register-the-customnodeconfigpreview-preview-feature"></a>注册 `CustomNodeConfigPreview` 预览版功能
 
 若要创建可自定义 kubelet 参数或 OS 设置的 AKS 群集或节点池，必须在订阅中启用 `CustomNodeConfigPreview` 功能标志。
 
@@ -59,15 +59,15 @@ az extension update --name aks-preview
 
 下面列出了支持的 Kubelet 参数和接受的值。
 
-| 参数 | 允许的值/间隔 | 默认 | 描述 |
+| 参数 | 允许的值/间隔 | 默认 | 说明 |
 | --------- | ----------------------- | ------- | ----------- |
 | `cpuManagerPolicy` | 无、静态 | 无 | 静态策略允许 CPU 请求数为整数的 [Guaranteed Pod](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/) 中的容器访问节点上的独占 CPU。 |
-| `cpuCfsQuota` | true、false | 是 |  为指定 CPU 限制的容器启用/禁用 CPU CFS 配额强制。 | 
+| `cpuCfsQuota` | true、false | true |  为指定 CPU 限制的容器启用/禁用 CPU CFS 配额强制。 | 
 | `cpuCfsQuotaPeriod` | 以毫秒为单位的间隔（毫秒） | `100ms` | 设置 CPU CFS 配额周期值。 | 
 | `imageGcHighThreshold` | 0-100 | 85 | 自此起始终运行映像垃圾回收的磁盘使用量百分比。 会触发垃圾回收的最低磁盘使用率。 如果要禁用映像垃圾回收，则设置为 100。 | 
 | `imageGcLowThreshold` | 0-100，不大于 `imageGcHighThreshold` | 80 | 在此之前从不运行映像垃圾回收的磁盘使用量百分比。 可触发垃圾回收的最低磁盘使用率。 |
 | `topologyManagerPolicy` | 无、最大努力、受限制、单个 numa 节点 | 无 | 有关优化 Numa 节点对齐的信息，请在[此处](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/)详细了解。 仅限 Kubernetes v1.18 以上版本。 |
-| `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | None | 允许的不安全 sysctl 或不安全 sysctl 模式的列表。 | 
+| `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | 无 | 允许的不安全 sysctl 或不安全 sysctl 模式的列表。 | 
 
 ### <a name="linux-os-custom-configuration"></a>Linux OS 自定义配置
 
@@ -77,7 +77,7 @@ az extension update --name aks-preview
 
 在为大量流量提供服务时，你所服务的流量通常来自大量本地文件。 你可以略微调整以下内核设置和内置限制，以便只占用部分系统内存来处理更大的量。
 
-| 设置 | 允许的值/间隔 | 默认 | 描述 |
+| 设置 | 允许的值/间隔 | 默认 | 说明 |
 | ------- | ----------------------- | ------- | ----------- |
 | `fs.file-max` | 8192 - 12000500 | 709620 | Linux 内核将分配的最大文件句柄数，通过增加该值，可以增加允许打开的最大文件数。 |
 | `fs.inotify.max_user_watches` | 781250 - 2097152 | 1048576 | 系统允许的最大文件监视数。 每个监视在 32 位内核上约为 90 字节，在 64 位内核上约为 160 字节。 | 
@@ -89,7 +89,7 @@ az extension update --name aks-preview
 
 对于预期会处理大量并发会话的代理节点，你可以使用下面的 TCP 和网络选项子集，可按节点池调整这些选项。 
 
-| 设置 | 允许的值/间隔 | 默认 | 描述 |
+| 设置 | 允许的值/间隔 | 默认 | 说明 |
 | ------- | ----------------------- | ------- | ----------- |
 | `net.core.somaxconn` | 4096 - 3240000 | 16384 | 可为任何给定侦听套接字排队的最大连接请求数。 传递给 [listen(2)](http://man7.org/linux/man-pages/man2/listen.2.html) 函数的积压工作 (backlog) 形式参数值的上限。 如果积压工作 (backlog) 实际参数大于 `somaxconn`，则以静默方式截断为此上限。
 | `net.core.netdev_max_backlog` | 1000 - 3240000 | 1000 | 接口接收数据包的速度快于内核的处理速度时，在 INPUT 端排队的数据包的最大数量。 |
@@ -114,7 +114,7 @@ az extension update --name aks-preview
 
 与文件描述符限制一样，进程可以创建的辅助角色或线程的数量受内核设置和用户限制所限制。 AKS 中的用户数不受限制。 
 
-| 设置 | 允许的值/间隔 | 默认 | 描述 |
+| 设置 | 允许的值/间隔 | 默认 | 说明 |
 | ------- | ----------------------- | ------- | ----------- |
 | `kernel.threads-max` | 20 - 513785 | 55601 | 进程可以启动工作线程。 可创建的所有线程的最大数量均使用内核设置 `kernel.threads-max` 进行设置。 | 
 
@@ -122,12 +122,12 @@ az extension update --name aks-preview
 
 以下设置可用于调整 Linux 内核虚拟内存 (VM) 子系统的操作以及向磁盘进行脏数据的 `writeout`。
 
-| 设置 | 允许的值/间隔 | 默认 | 描述 |
+| 设置 | 允许的值/间隔 | 默认 | 说明 |
 | ------- | ----------------------- | ------- | ----------- |
 | `vm.max_map_count` |  65530 - 262144 | 65530 | 此文件包含进程可能具有的最大内存映射区域数。 内存映射区域被用作 `mmap`、`mprotect` 和 `madvise` 直接调用 `malloc` 的副作用，也是加载共享库时的副作用。 | 
 | `vm.vfs_cache_pressure` | 1 - 500 | 100 | 此百分比值控制内核回收内存（用于缓存目录和 Inode 对象）的趋势。 |
 | `vm.swappiness` | 0 - 100 | 60 | 此控制用于定义内核交换内存页的积极程度。 增加值会提高积极程度，降低值会减少交换量。 值 0 指示内核不发起交换，直到可用且文件支持的页数小于区域中的高水印。 | 
-| `swapFileSizeMB` | 1 MB - [临时磁盘](../virtual-machines/managed-disks-overview.md#temporary-disk) (/dev/sdb) 的大小 | None | SwapFileSizeMB 指定将在此节点池的代理节点上创建的交换文件的大小（以 MB 为单位）。 | 
+| `swapFileSizeMB` | 1 MB - [临时磁盘](../virtual-machines/managed-disks-overview.md#temporary-disk) (/dev/sdb) 的大小 | 无 | SwapFileSizeMB 指定将在此节点池的代理节点上创建的交换文件的大小（以 MB 为单位）。 | 
 | `transparentHugePageEnabled` | `always`, `madvise`, `never` | `always` | [透明大页](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge)是一项 Linux 内核功能，它旨在通过更高效地利用处理器的内存映射硬件来提高性能。 启用后，内核会尝试尽可能地分配 `hugepages`，如果 `mmap` 区域自然对齐 2 MB，则任何 Linux 进程都将收到 2 MB 大小的页面。 在某些情况下，如果在系统范围内启用 `hugepages`，应用程序最终可能会分配更多的内存资源。 应用程序可能会对一个较大的区域执行 `mmap`，但只接触其中 1 个字节，在这种情况下，可能会无故分配一个 2 MB 大小的页面，而不是 4k 大小的页面。 这种情况可能是在系统范围内禁用 `hugepages` 或者只将它们限定在 `MADV_HUGEPAGE madvise` 区域内的原因。 | 
 | `transparentHugePageDefrag` | `always`, `defer`, `defer+madvise`, `madvise`, `never` | `madvise` | 此值可控制内核是否应充分利用内存压缩，以使更多 `hugepages` 可用。 | 
 
@@ -201,15 +201,15 @@ az aks nodepool add --name mynodepool1 --cluster-name myAKSCluster --resource-gr
 [aks-view-master-logs]: ./view-control-plane-logs.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-update]: /cli/azure/aks#az-aks-update
-[az-aks-scale]: /cli/azure/aks#az-aks-scale
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-update]: /cli/azure/aks#az_aks_update
+[az-aks-scale]: /cli/azure/aks#az_aks_scale
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [upgrade-cluster]: upgrade-cluster.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [max-surge]: upgrade-cluster.md#customize-node-surge-upgrade

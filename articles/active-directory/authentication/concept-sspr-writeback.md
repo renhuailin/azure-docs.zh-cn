@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b8a84da331568d36b6f6910054fdb2aea76f490
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a5b8f1404e95ed2ccceb8400fdabeff2d60b6706
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530328"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766108"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>自助式密码重置写回在 Azure Active Directory 中的工作原理。
 
@@ -149,7 +149,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
 * **不支持的最终用户操作**
    * 任何最终用户使用 PowerShell 版本 1、版本 2 或 Microsoft Graph API 重置自己的密码。
 * **不支持的管理员操作**
-   * 任何由管理员通过 PowerShell 版本 1、版本 2 或 Microsoft Graph API（支持 [Microsoft Graph API](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http)）发起的最终用户密码重置操作。
+   * 任何管理员发起的最终用户密码重置操作（使用 PowerShell 版本 1 或版本 2）。
    * 任何管理员通过 [Microsoft 365 管理中心](https://admin.microsoft.com)发起的任何最终用户密码重置操作。
    * 任何管理员都不能使用密码重置工具来重置其密码以进行密码写回。
 

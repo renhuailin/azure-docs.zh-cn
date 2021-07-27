@@ -3,12 +3,12 @@ title: 在 Azure 实验室服务中连接到对等网络 | Microsoft Docs
 description: 了解如何将实验室网络连接到其他对等网络。 例如，在 Azure 中将本地组织/大学网络连接到实验室的虚拟网络。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 99ea72f11c8f389a15171a1fe3b376646494903a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 645e99681f5615c3082d784e4e540a6200f618b8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96434237"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755128"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>在 Azure 实验室服务中将实验室的网络连接到对等虚拟网络
 
@@ -27,6 +27,9 @@ ms.locfileid: "96434237"
 
 > [!NOTE]
 > 创建将与实验室帐户对等互连的 Azure 虚拟网络时，必须了解虚拟网络的区域如何影响创建实验室的位置。  有关详细信息，请参阅 [regions\locations](./administrator-guide.md#regionslocations) 上的管理员指南部分。
+
+> [!NOTE]
+> 如果用户的学校需要执行内容筛选，例如，为了符合[儿童互联网保护法案 (CIPA)](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act)的要求，用户将需要使用第三方软件。  有关详细信息，请阅读有关[使用实验室服务执行内容筛选](./administrator-guide.md#content-filtering)的指南。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>创建实验室帐户时进行配置
 
