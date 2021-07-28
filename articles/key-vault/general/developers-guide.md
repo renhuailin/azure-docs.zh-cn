@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 550084ccbb1df24fe0cbc0a4630efe19e6685e5c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 08ac1ae09741b63648aec2b51b6a774a46b9af7c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101709897"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818433"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -45,7 +45,7 @@ ms.locfileid: "101709897"
 
 有关安装包和源代码的信息，请参阅[客户端库](client-libraries.md)。
 
-有关 Key Vault 管理平面的详细信息，请参阅 [Key Vault 管理平面](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+有关 Key Vault 管理平面的详细信息，请参阅 [Azure Key Vault 安全功能](security-features.md)
 
 ## <a name="authenticate-to-key-vault-in-code"></a>在代码中对 Key Vault 进行身份验证
 
@@ -83,7 +83,7 @@ Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访�
 
 ## <a name="manage-keys-certificates-and-secrets"></a>管理密钥、证书和机密
 
-对密钥、机密和证书的访问由数据平面控制。 可以使用本地保管库访问策略或 Azure RBAC（预览版）完成数据平面访问控制。
+对密钥、机密和证书的访问由数据平面控制。 可以使用本地保管库访问策略或 Azure RBAC 完成数据平面访问控制。
 
 **密钥 API 和 SDK**
 
@@ -105,7 +105,7 @@ Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访�
 
 有关安装包和源代码的信息，请参阅[客户端库](client-libraries.md)。
 
-有关 Key Vault 数据平面安全性的详细信息，请参阅 [Key Vault 数据平面和访问策略](./secure-your-key-vault.md#data-plane-and-access-policies)和 [Key Vault 数据平面和 Azure RBAC（预览版）](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview)
+有关 Key Vault 数据平面安全性的详细信息，请参阅 [Azure Key Vault 安全功能](security-features.md)。
 
 ### <a name="code-examples"></a>代码示例
 
@@ -133,7 +133,7 @@ Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访�
 - 使用 [Azure 专用链接服务](private-link-service.md)，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure Key Vault、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
 - 通过将 Key Vault 与[事件网格](../../event-grid/event-schema-key-vault.md)集成，用户可以在密钥保管库中存储的机密的状态发生更改时收到通知。 可以将新版本的机密分发到应用程序，也可以轮换即将到期的机密，以防止中断。
 - 可以防止自己的 [Azure Devops](/azure/devops/pipelines/release/azure-key-vault) 机密在 Key Vault 中被意外访问。
-- [在 DataBricks 中使用 Key Vault 中存储的机密连接到 Azure 存储](./integrate-databricks-blob-storage.md)
+- [使用 DataBricks 的密钥保管库中存储的机密连接到 Azure 存储](./integrate-databricks-blob-storage.md)
 - 为 Kubernetes 上的[机密存储 CSI 驱动程序](./key-vault-integrate-kubernetes.md)配置并运行 Azure Key Vault 提供程序
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念

@@ -2,13 +2,13 @@
 title: 容器见疑难解答 | Microsoft Docs
 description: 本文介绍如何排查和解决容器见解存在的问题。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 60a6e76d43d954b27336b9631c48328aeff0b69b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: b7618e9073308da67a8e17c82375a0f05925a542
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708299"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627109"
 ---
 # <a name="troubleshooting-container-insights"></a>容器见解疑难解答
 
@@ -113,6 +113,54 @@ nodeSelector:
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-container-insights"></a>容器见解中未显示非 Azure Kubernetes 群集
 
 要在容器见解中查看非 Azure Kubernetes 群集，需要在支持此见解的 Log Analytics 工作区和容器见解解决方案资源 ContainerInsights（工作区）上具有读取访问权限。
+
+## <a name="metrics-arent-being-collected"></a>未收集指标
+
+1. 验证群集是否处于[受支持的自定义指标区域](../essentials/metrics-custom-overview.md#supported-regions)。
+
+2. 使用以下 CLI 命令验证是否存在“监视指标发布者”角色分配：
+
+    ``` azurecli
+    az role assignment list --assignee "SP/UserassignedMSI for omsagent" --scope "/subscriptions/<subid>/resourcegroups/<RG>/providers/Microsoft.ContainerService/managedClusters/<clustername>" --role "Monitoring Metrics Publisher"
+    ```
+    对于具有 MSI 的群集，每次启用和禁用监视时，用户分配的 omsagent 客户端 ID 都会更改，因此当前 MSI 客户端 ID 上应存在角色分配。 
+
+3. 对于启用了 Azure Active Directory Pod 标识并使用 MSI 的群集：
+
+   - 使用以下命令验证 omsagent Pod 上是否存在所需的标签“kubernetes.azure.com/managedby: aks”：
+
+        `kubectl get pods --show-labels -n kube-system | grep omsagent`
+
+    - 验证使用 https://github.com/Azure/aad-pod-identity#1-deploy-aad-pod-identity 上其中一种受支持的方法启用 Pod 标识时是否启用了异常。
+
+        运行以下命令验证：
+
+        `kubectl get AzurePodIdentityException -A -o yaml`
+
+        应该会收到类似如下的输出：
+
+        ```
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: mic-exception
+        namespace: default
+        spec:
+        podLabels:
+        app: mic
+        component: mic
+        ---
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: aks-addon-exception
+        namespace: kube-system
+        spec:
+        podLabels:
+        kubernetes.azure.com/managedby: aks
+        ```
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

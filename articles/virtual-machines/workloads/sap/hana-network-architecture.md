@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92cfa5b2e399811754b57bda64569753ccfa6be8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b9baf6dc372b9ce5d85a935502cdaf710e8d0b43
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101668752"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749134"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA（大型实例）网络体系结构
 
@@ -35,9 +35,9 @@ Azure 网络服务的体系结构是在 HANA 大型实例上成功部署 SAP 应
 
 
 > [!NOTE] 
-> 在特定 Azure 区域中，一个 Azure 订阅只能关联到 HANA 大型实例戳中的一个租户。 反过来说，一个 HANA 大型实例戳租户只能关联到一个 Azure 订阅。 此要求与 Azure 中的任何其他计费对象一致。
+> 一个 Azure 订阅只能链接到特定 Azure 区域内 HANA 大型实例缩放单元中的一个租户。 反之，一个 HANA 大型实例缩放单元租户只能链接到一个 Azure 订阅。 此要求与 Azure 中的任何其他计费对象一致。
 
-如果 Azure SAP HANA（大型实例）部署在多个不同的 Azure 区域中，则在 HANA 大型实例戳中单独部署租户。 可在同一 Azure 订阅下运行这两个实例，只要这些实例属于同一 SAP 布局即可。 
+将 Azure 上的 SAP HANA（大型实例）部署在多个不同的 Azure 区域中会导致在大型实例缩放单元中部署单独的租户。 可在同一 Azure 订阅下运行这两个实例，只要这些实例属于同一 SAP 布局即可。 
 
 > [!IMPORTANT] 
 > Azure SAP HANA（大型实例）只支持 Azure 资源管理器部署方法。
@@ -71,28 +71,28 @@ Azure 中 SAP 部署的差别如下：
 - 客户租户的 HANA 大型实例单位通过另一 ExpressRoute 线路连接到虚拟网络中。 为了隔离负载条件，本地与 Azure 虚拟网络之间的 ExpressRoute 线路不会和 Azure 虚拟网络与 HANA 大型实例之间的线路共享相同的路由器。
 - 在 SAP 应用层和 HANA 大型实例之间的工作负荷配置文件在本质上不同于包含多个小型请求的迸发型数据传输（结果集），后者是从 SAP HANA 传输到应用层中。
 - 与数据在本地和 Azure 之间交换的典型方案相比，SAP 应用程序体系结构对网络延迟更为敏感。
-- Azure ExpressRoute 网关至少有两个 ExpressRoute 连接。 一个线路从本地连接，另一个从 HANA 大型实例连接。 这样剩下的空间只够另外两条线路从不同的 MSE 连接到 ExpressRoute 网关上。 此限制与 ExpressRoute Fast Path 的使用无关。 所有连接的线路会共享用于 ExpressRoute 网关传入数据的最大带宽。
+- Azure ExpressRoute 网关至少有两个 ExpressRoute 连接。 一个线路从本地连接，另一个从 HANA 大型实例连接。 这样剩下的空间只够另外两条线路从不同的 MSE 连接到 ExpressRoute 网关上。 此限制与 ExpressRoute FastPath 的使用无关。 所有连接的线路会共享用于 ExpressRoute 网关传入数据的最大带宽。
 
-使用 HANA 大型实例戳修订版 3，VM 与 HANA 大型实例单元之间的网络延迟可能比典型的 VM 到 VM 网络往返延迟要高。 测量到的值可能超过 0.7 毫秒的往返延迟，具体取决于 Azure 区域。而在 [SAP 说明 #1100926 - 常见问题解答：网络性能](https://launchpad.support.sap.com/#/notes/1100926/E)中，0.7 毫秒被归类为低于平均值。 依赖于 Azure 区域和工具来测量 Azure VM 和 HANA 大型实例单元之间的网络往返延迟，所测量的延迟可以达到或大约 2 毫秒。 尽管如此，客户在 SAP HANA 大型实例上部署基于 SAP HANA 的生产型 SAP 应用程序很成功。 请确保在 Azure HANA 大型实例中对自己的业务流程进行彻底的测试。 名为 ExpressRoute Fast Path 的新功能可以大大减少 HANA 大型实例与 Azure 中应用程序层 VM 之间的网络延迟（见下文）。 
+使用 HANA 大型实例戳修订版 3，VM 与 HANA 大型实例单元之间的网络延迟可能比典型的 VM 到 VM 网络往返延迟要高。 测量到的值可能超过 0.7 毫秒的往返延迟，具体取决于 Azure 区域。而在 [SAP 说明 #1100926 - 常见问题解答：网络性能](https://launchpad.support.sap.com/#/notes/1100926/E)中，0.7 毫秒被归类为低于平均值。 依赖于 Azure 区域和工具来测量 Azure VM 和 HANA 大型实例单元之间的网络往返延迟，所测量的延迟可以达到或大约 2 毫秒。 尽管如此，客户在 SAP HANA 大型实例上部署基于 SAP HANA 的生产型 SAP 应用程序很成功。 请确保在 Azure HANA 大型实例中对自己的业务流程进行彻底的测试。 名为 ExpressRoute FastPath 的新功能可以大大减少 HANA 大型实例与 Azure 中应用程序层 VM 之间的网络延迟（见下文）。 
 
-使用 HANA 大型实例戳修订版 4，如果已配置 Azure ExpressRoute Fast Path，则邻近 HANA 大型实例戳部署的 Azure VM 之间的网络延迟满足或优于平均分类，如 [SAP 说明 #1100926 - FAQ：网络性能](https://launchpad.support.sap.com/#/notes/1100926/E)中所述（见下文）。 若要邻近修订版 4 的 HANA 大型实例单元部署 Azure VM，则需要利用 [Azure 邻近放置组](../../co-location.md)。 [为 SAP 应用程序提供最佳网络延迟的 Azure 邻近放置组](sap-proximity-placement-scenarios.md)中介绍了如何使用邻近放置组在与修订版 4 托管 HANA 大型实例单元相同的 Azure 数据中心内定位 SAP 应用程序层。
+使用 HANA 大型实例戳修订版 4，如果已配置 Azure ExpressRoute FastPath，则邻近 HANA 大型实例戳部署的 Azure VM 之间的网络延迟满足或优于平均分类，如 [SAP 说明 #1100926 - FAQ：网络性能](https://launchpad.support.sap.com/#/notes/1100926/E)中所述（见下文）。 若要邻近修订版 4 的 HANA 大型实例单元部署 Azure VM，则需要利用 [Azure 邻近放置组](../../co-location.md)。 [为 SAP 应用程序提供最佳网络延迟的 Azure 邻近放置组](sap-proximity-placement-scenarios.md)中介绍了如何使用邻近放置组在与修订版 4 托管 HANA 大型实例单元相同的 Azure 数据中心内定位 SAP 应用程序层。
 
 若要在 VM 与 HANA 大型实例之间实现确定性的网络延迟，必须选择 ExpressRoute 网关 SKU。 不同于本地与 VM 之间的流量模式，VM 与 HANA 大型实例之间的流量模式可能是这样的：一开始流量很小，但随着要传输的请求和数据量的增多，可能会出现流量突然增高的迸发现象。 为了应对这种迸发现象，我们强烈建议使用 UltraPerformance 网关 SKU。 对于 HANA 大型实例类型 II SKU，必须使用 UltraPerformance 网关 SKU 作为 ExpressRoute 网关。
 
 > [!IMPORTANT] 
-> 假定所有的网络流量都位于 SAP 应用层与数据库层之间，则仅支持使用虚拟网络的 HighPerformance 或 UltraPerformance 网关 SKU 来连接到 Azure 上的 SAP HANA（大型实例）。 对于 HANA 大型实例类型 II SKU，只支持使用 UltraPerformance 网关 SKU 作为 ExpressRoute 网关。 使用 ExpressRoute Fast Path 时会有例外（见下文）
+> 假定所有的网络流量都位于 SAP 应用层与数据库层之间，则仅支持使用虚拟网络的 HighPerformance 或 UltraPerformance 网关 SKU 来连接到 Azure 上的 SAP HANA（大型实例）。 对于 HANA 大型实例类型 II SKU，只支持使用 UltraPerformance 网关 SKU 作为 ExpressRoute 网关。 使用 ExpressRoute FastPath 时会有例外（见下文）
 
-### <a name="expressroute-fast-path"></a>ExpressRoute Fast Path
-为了降低延迟，ExpressRoute Fast Path 于 2019 年 5 月引入并发布，用于实现 HANA 大型实例与托管 SAP 应用程序 VM 的 Azure 虚拟网络之间的特定连接。 与到目前为止推出的解决方案的主要区别是，VM 与 HANA 大型实例之间的数据流不再通过 ExpressRoute 网关进行路由。 Azure 虚拟网络子网中分配的 VM 会直接与专用企业边缘路由器进行通信。 
+### <a name="expressroute-fastpath"></a>ExpressRoute FastPath
+为了降低延迟，ExpressRoute FastPath 于 2019 年 5 月引入并发布，用于实现 HANA 大型实例与托管 SAP 应用程序 VM 的 Azure 虚拟网络之间的特定连接。 与到目前为止推出的解决方案的主要区别是，VM 与 HANA 大型实例之间的数据流不再通过 ExpressRoute 网关进行路由。 Azure 虚拟网络子网中分配的 VM 会直接与专用企业边缘路由器进行通信。 
 
 > [!IMPORTANT] 
-> ExpressRoute 快速路径功能要求运行 SAP 应用程序 VM 的子网位于与 HANA 大型实例连接的同一 Azure 虚拟网络中。 位于与直接连接 HANA 大型实例单位的 Azure 虚拟网络进行了对等互连的 Azure 虚拟网络中的 VM 无法从 ExpressRoute 快速路径受益。 因此，典型中心辐射型虚拟网络设计（其中 ExpressRoute 线路连接到中心虚拟网络，包含 SAP 应用程序层的虚拟网络（辐射型）被对等互连）无法利用 ExpressRoute Fast Path 的优化。 另外，ExpressRoute Fast Path 暂不支持用户定义的路由规则 (UDR)。 有关详细信息，请参阅 [ExpressRoute 虚拟网络网关和 FastPath](../../../expressroute/expressroute-about-virtual-network-gateways.md)。 
+> ExpressRoute FastPath 功能要求运行 SAP 应用程序 VM 的子网位于与 HANA 大型实例连接的同一 Azure 虚拟网络中。 位于与直接连接 HANA 大型实例单位的 Azure 虚拟网络进行了对等互连的 Azure 虚拟网络中的 VM 无法从 ExpressRoute FastPath 受益。 因此，典型中心辐射型虚拟网络设计（其中 ExpressRoute 线路连接到中心虚拟网络，包含 SAP 应用程序层的虚拟网络（辐射型）被对等互连）无法利用 ExpressRoute FastPath 的优化。 另外，ExpressRoute FastPath 暂不支持用户定义的路由规则 (UDR)。 有关详细信息，请参阅 [ExpressRoute 虚拟网络网关和 FastPath](../../../expressroute/expressroute-about-virtual-network-gateways.md)。 
 
 
-如需更详细地了解如何配置 ExpressRoute Fast Path，请参阅[将虚拟网络连接到 HANA 大型实例](./hana-connect-vnet-express-route.md)文档。    
+如需更详细地了解如何配置 ExpressRoute FastPath，请参阅[将虚拟网络连接到 HANA 大型实例](./hana-connect-vnet-express-route.md)文档。    
 
 > [!NOTE]
-> 必须有 UltraPerformance ExpressRoute 网关，ExpressRoute Fast Path 才能正常运行
+> 必须有 UltraPerformance ExpressRoute 网关，ExpressRoute FastPath 才能正常运行
 
 
 ## <a name="single-sap-system"></a>单个 SAP 系统
@@ -102,7 +102,7 @@ Azure 中 SAP 部署的差别如下：
 > [!NOTE] 
 > 若要在 Azure 中运行 SAP 布局，请连接到距离 SAP 布局中的 Azure 区域最近的企业边缘路由器。 HANA 大型实例标记通过专用企业边缘路由器设备进行连接，以最大程度降低 Azure IaaS 中的 VM 与 HANA 大型实例标记之间的网络延迟。
 
-托管 SAP 应用程序实例的 VM 的 ExpressRoute 网关连接到一个与本地连接的 ExpressRoute 线路。 同一虚拟网络连接到一个专门用于连接大型实例模具的单独企业边缘路由器。 使用 ExpressRoute Fast Path，从 HANA 大型实例到 SAP 应用程序层 VM 的数据流不再通过 ExpressRoute 网关进行路由，从而减少了网络往返延迟。
+托管 SAP 应用程序实例的 VM 的 ExpressRoute 网关连接到一个与本地连接的 ExpressRoute 线路。 同一虚拟网络连接到一个专门用于连接大型实例模具的单独企业边缘路由器。 使用 ExpressRoute FastPath，从 HANA 大型实例到 SAP 应用程序层 VM 的数据流不再通过 ExpressRoute 网关进行路由，从而减少了网络往返延迟。
 
 此系统是单个 SAP 系统的直观示例。 SAP 应用层承载在 Azure 中。 SAP HANA 数据库在 Azure 上的 SAP HANA（大型实例）上运行。 假设吞吐量为 2 Gbps 或 10 Gbps 的 ExpressRoute 网关带宽不产生瓶颈。
 

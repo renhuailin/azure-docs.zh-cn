@@ -3,20 +3,19 @@ title: 计划 Azure Active Directory 我的应用配置
 description: 在组织中有效使用“我的应用”的计划指南。
 services: active-directory
 author: barbaraselden
-manager: daveba
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/29/2020
-ms.author: kenwith
-ms.reviewer: baselden
-ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.author: baselden
+ms.openlocfilehash: 8cf1a671eeb4861919a389b02f45fee998d880e3
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101645461"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317210"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>计划 Azure Active Directory 我的应用配置
 
@@ -74,31 +73,19 @@ Azure Active Directory (Azure AD) 我的应用是一个基于 Web 的门户，�
 
 ## <a name="plan-consent-configuration"></a>计划同意配置
 
-有两种类型的同意：用户同意和针对应用访问数据的同意。
-
-![同意配置的屏幕截图](./media/my-apps-deployment-plan/my-apps-consent.png)
-
 ### <a name="user-consent-for-applications"></a>用户同意应用程序 
 
-用户或管理员必须同意任何应用程序的使用条款和隐私策略。 你必须决定用户或仅管理员是否可以同意应用程序。 建议如果业务规则允许，则使用管理员同意来维护租户中的应用程序控制。
+用户或管理员必须授予应用程序权限，然后用户才能够登录应用程序，应用程序才能够访问组织的数据。 你可以配置是否允许用户同意，以及在哪些条件下允许。 **Microsoft 建议你只允许用户同意已验证的发布者提供的应用程序。**
 
-若要使用管理员许可，你必须是组织的全局管理员，并且应用程序必须：
-
-* 在组织中注册。
-
-* 在其他 Azure AD 租户中注册，并且以前由至少一个用户同意。
-
-如果要允许用户同意，必须决定是要让他们同意任何应用，还是仅在特定情况下才同意。
-
-有关详细信息，请参阅[配置最终用户对 Azure Active Directory 中应用程序的同意方式。](../manage-apps/configure-user-consent.md)
+有关详细信息，请参阅[配置最终用户同意应用程序的方式](../manage-apps/configure-user-consent.md)
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>组所有者同意应用访问数据
 
-确定 Azure AD 安全组或 M365 组的所有者是否能够同意应用程序访问其拥有的组的数据。 可以禁止、允许所有组所有者或是仅允许一部分组所有者。
+组和团队所有者可授权应用程序（如第三方供应商发布的应用程序）访问你的组织中与组关联的数据。 若要了解详细信息，请参阅 [Microsoft Teams 中的资源特定同意](/microsoftteams/resource-specific-consent)。 
+
+你可以配置是要允许还是禁用此功能。
 
 有关详细信息，请参阅[配置组同意权限](../manage-apps/configure-user-consent-groups.md)。
-
-随后在 Azure 门户中配置[用户和组所有者同意设置](https://portal.azure.com/)。
 
 ### <a name="plan-communications"></a>规划沟通
 
@@ -151,7 +138,7 @@ Azure AD 支持多种 SSO 选项。
 
 #### <a name="plan-for-mobile-access"></a>计划移动访问
 
-对于使用基于密码的 SSO 的应用程序，或是使用 [Microsoft Azure AD 应用程序代理](../manage-apps/application-proxy.md)进行访问的应用程序，必须使用 Microsoft Edge 移动版。 对于其他应用程序，可以使用任何移动浏览器。 
+对于使用基于密码的 SSO 的应用程序，或是使用 [Microsoft Azure AD 应用程序代理](../app-proxy/application-proxy.md)进行访问的应用程序，必须使用 Microsoft Edge 移动版。 对于其他应用程序，可以使用任何移动浏览器。 
 
 ### <a name="linked-sso"></a>链接 SSO
 
@@ -256,11 +243,11 @@ Azure AD 将大部分审核数据保留 30 天。 数据通过 Azure 管理门�
 
 | 角色| 角色| Azure AD 角色 |
 | - | - | - |
-| 支持管理员| 第 1 层支持| None |
+| 支持管理员| 第 1 层支持| 无 |
 | 标识管理员| 在问题影响 Azure AD 时进行配置和调试| 全局管理员 |
-| 应用程序管理员| 在应用程序中进行用户证明，为用户配置权限| None |
+| 应用程序管理员| 在应用程序中进行用户证明，为用户配置权限| 无 |
 | 基础结构管理员| 证书滚动更新所有者| 全局管理员 |
-| 企业主/利益干系人| 在应用程序中进行用户证明，为用户配置权限| None |
+| 企业主/利益干系人| 在应用程序中进行用户证明，为用户配置权限| 无 |
 
 
 可用使用 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 管理角色，以便为具有目录权限的用户提供其他的审核、控制和访问评审。
@@ -269,5 +256,4 @@ Azure AD 将大部分审核数据保留 30 天。 数据通过 Azure 管理门�
 
 [计划 Azure AD 多重身份验证部署](../authentication/howto-mfa-getstarted.md)
 
-[计划应用程序代理部署](application-proxy-deployment-plan.md)
-
+[计划应用程序代理部署](../app-proxy/application-proxy-deployment-plan.md)

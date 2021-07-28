@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 94cbe0fa6669546cee8e989a6db2fcbb428cb9d0
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90055293"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829433"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>为 Azure 应用服务配置 PHP 应用
 
@@ -28,6 +28,9 @@ ms.locfileid: "90055293"
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query phpVersion
 ```
 
+> [!NOTE]
+> 若要对开发槽进行寻址，请包含参数 `--slot`，后跟槽的名称。
+
 要显示所有受支持的 PHP 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
@@ -44,6 +47,9 @@ az webapp list-runtimes | grep php
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
+> [!NOTE]
+> 若要对开发槽进行寻址，请包含参数 `--slot`，后跟槽的名称。
+
 要显示所有受支持的 PHP 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
@@ -59,7 +65,7 @@ az webapp list-runtimes --linux | grep PHP
 在 [Cloud Shell](https://shell.azure.com) 中运行以下命令，将 PHP 版本设置为 7.4：
 
 ```azurecli-interactive
-az webapp config set --name <app-name> --resource-group <resource-group-name> --php-version 7.4
+az webapp config set --resource-group <resource-group-name> --name <app-name> --php-version 7.4
 ```
 
 ::: zone-end
@@ -69,7 +75,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 在 [Cloud Shell](https://shell.azure.com) 中运行以下命令，将 PHP 版本设置为 7.2：
 
 ```azurecli-interactive
-az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
+az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PHP|7.2"
 ```
 
 ::: zone-end
@@ -243,7 +249,7 @@ getenv("DB_HOST")
 
 所选的 Web 框架可能使用子目录作为站点根路径。 例如，[Laravel](https://laravel.com/) 使用 public/ 子目录作为站点根路径。
 
-若要自定义站点根路径，请使用 [`az resource update`](/cli/azure/resource#az-resource-update) 命令设置应用的虚拟应用程序路径。 下面的示例将站点根路径设置为存储库中的 public/ 子目录。 
+若要自定义站点根路径，请使用 [`az resource update`](/cli/azure/resource#az_resource_update) 命令设置应用的虚拟应用程序路径。 下面的示例将站点根路径设置为存储库中的 public/ 子目录。 
 
 ```azurecli-interactive
 az resource update --name web --resource-group <group-name> --namespace Microsoft.Web --resource-type config --parent sites/<app-name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
@@ -492,4 +498,3 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 > [应用服务 Linux 常见问题解答](faq-app-service-linux.md)
 
 ::: zone-end
-

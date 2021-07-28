@@ -1,57 +1,37 @@
 ---
-title: .NET 和 AMQP 1.0 中的 Azure 服务总线 | Microsoft Docs
-description: 本文介绍如何使用 AMQP（高级消息队列协议）通过 .NET 应用程序使用 Azure 服务总线。
+title: 将旧版 WindowsAzure.ServiceBus .NET Framework 库与 AMQP 1.0 配合使用 | Microsoft Docs
+description: 本文介绍如何将旧版 WindowsAzure.ServiceBus .NET Framework 库与 AMQP（高级消息队列协议）配合使用。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 20800363327aefda073cd484dc737b28e60466a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/30/2021
+ms.openlocfilehash: 160da6a770e58e9a76e966f018d25dc9bc8a8c76
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98632844"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770058"
 ---
-# <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
-
-AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保使用最新版本，可以从 [NuGet][NuGet]下载服务总线安装包。
+# <a name="use-legacy-windowsazureservicebus-net-framework-library-with-amqp-10"></a>将旧版 WindowsAzure.ServiceBus .NET Framework 库与 AMQP 1.0 配合使用
 
 > [!NOTE]
-> 可以将高级消息队列协议 (AMQP) 或服务总线消息传送协议 (SBMP) 与用于服务总线的 .NET 库一起使用。 AMQP 是 .NET 库使用的默认协议。 我们建议你使用 AMQP 协议（默认协议），而不要替代它。 
+> 本文面向 WindowsAzure.ServiceBus 包的现有用户，他们希望在此包中改用 AMQP。 尽管此包仍会接收关键的 bug 修复，但我们强烈建议升级到新的 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) 包，该包已从 2020 年 11 月开始发布，并且默认支持 AMQP。
 
-## <a name="configure-net-applications-to-use-amqp-10"></a>将 .NET 应用程序配置为使用 AMQP 1.0
+默认情况下，WindowsAzure.ServiceBus 包使用名为“服务总线消息协议”(SBMP) 的基于 SOAP 的专用协议来与服务总线服务通信。 版本 2.1 中添加了对 AMQP 1.0 的支持，我们建议使用此协议，而不要使用默认协议。
 
-默认情况下，服务总线 .NET 客户端库使用 AMQP 协议与服务总线服务进行通信。 还可以显式指定 AMQP 作为传输类型，如以下部分所示。 
+若要使用 AMQP 1.0 而不是默认协议，需要对服务总线连接字符串进行显式配置，或者通过 [TransportType](/dotnet/api/microsoft.servicebus.messaging.transporttype) 选项在客户端构造函数中进行配置。 除了此更改之外，在使用 AMQP 1.0 时应用程序代码基本保持不变。
 
-在当前版本中，有一些在使用 AMQP 时不受支持的 API 功能。 这些不受支持的功能在[行为差异](#behavioral-differences)部分列出。 在使用 AMQP 时，一些高级配置设置还具有不同的含义。
+使用 AMQP 时，有几项 API 功能不受支持。 这些不受支持的功能在[行为差异](#behavioral-differences)部分列出。 在使用 AMQP 时，一些高级配置设置还具有不同的含义。
 
-### <a name="configuration-using-appconfig"></a>使用 App.config 进行配置
+## <a name="configure-connection-string-to-use-amqp-10"></a>配置连接字符串以使用 AMQP 1.0
 
-应用程序使用 App.config 配置文件存储设置是一个很好的做法。 对于服务总线应用程序，可以使用 App.config 存储服务总线连接字符串。 示例 App.config 文件如下所示：
-
-```xml
-<?xml version="1.0" encoding="utf-8" ?>
-<configuration>
-    <appSettings>
-        <add key="Microsoft.ServiceBus.ConnectionString"
-             value="Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp" />
-    </appSettings>
-</configuration>
-```
-
-`Microsoft.ServiceBus.ConnectionString` 设置的值是用于配置服务总线连接的服务总线连接字符串。 其格式如下所示：
+将连接字符串追加到 `;TransportType=Amqp`，指示客户端使用 AMQP 1.0 来与服务总线建立连接。
+例如， 
 
 `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp`
 
 其中 `namespace` 和 `SAS key` 是在创建服务总线命名空间时从 [Azure 门户][Azure portal]获取的。 有关详细信息，请参阅[使用 Azure 门户创建服务总线命名空间][Create a Service Bus namespace using the Azure portal]。
 
-使用 AMQP 时，在连接字符串后面追加 `;TransportType=Amqp`。 此表示法指示客户端库使用 AMQP 1.0 连接到服务总线。
-
 ### <a name="amqp-over-websockets"></a>基于 WebSockets 的 AMQP
 若要通过 WebSocket 使用 AMQP，请在连接字符串中将 `TransportType` 设置为 `AmqpWebSockets`。 例如：`Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`。 
-
-如果使用的是 .NET Microsoft.Azure.ServiceBus 库，请将 [ServiceBusConnection.TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) 设置为 [TransportType 枚举](/dotnet/api/microsoft.azure.servicebus.transporttype)的 AmqpWebSockets。
-
-如果使用的是 .NET Azure.Messaging.ServiceBus 库，请将 [ServiceBusClient.TransportType](/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) 设置为 [ServiceBusTransportType 枚举](/dotnet/api/azure.messaging.servicebus.servicebustransporttype)的 AmqpWebSockets。
-
 
 ## <a name="message-serialization"></a>消息序列化
 
@@ -97,7 +77,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 
 ## <a name="behavioral-differences"></a>行为差异
 
-与默认协议相比，使用 AMQP 时在服务总线 .NET API 的行为方面也有一些细微的差异：
+与默认协议相比，使用 AMQP 时，WindowsAzure.ServiceBus API 的行为会出现一些细微的差别：
 
 * 将忽略 [OperationTimeout][OperationTimeout] 属性。
 * `MessageReceiver.Receive(TimeSpan.Zero)` 是以 `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` 的形式实现的。
@@ -124,7 +104,6 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
 [OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
-[NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
 [服务总线 AMQP 概述]: service-bus-amqp-overview.md
 [AMQP 1.0 协议指南]: service-bus-amqp-protocol-guide.md

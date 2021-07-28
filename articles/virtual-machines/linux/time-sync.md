@@ -1,24 +1,19 @@
 ---
 title: Azure 中 Linux VM 的时间同步
 description: Linux 虚拟机的时间同步。
-services: virtual-machines
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/20/2020
+ms.date: 04/30/2021
 ms.author: cynthn
-ms.openlocfilehash: 18c8570a8066985cab5263c4779787062dc32d75
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c50e39db804a18d50f4a6fb594209cc015515a8c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552637"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754732"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中 Linux VM 的时间同步
 
@@ -39,7 +34,7 @@ Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Micro
 
 在独立硬件上，Linux OS 仅在启动时读取主机硬件时钟数据。 然后，时钟会通过 Linux 内核中的中断计时器来维护。 在此配置中，时钟会随着时间的推移而出现偏差。 在 Azure 上的较新的 Linux 发行版中，VM 可以使用 Linux Integration Services (LIS) 中随附的 VMICTimeSync 提供程序，从主机更频繁地查询时钟更新。
 
-虚拟机与主机的交互也可能影响时钟。 在[内存保留维护](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)期间，VM 会暂停最多 30 秒的时间。 例如，在维护开始之前，VM 时钟显示上午 10:00:00，这种状态会持续 28 秒。 在 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，这样就造成 28 秒的偏差。 为了进行纠正，VMICTimeSync 服务会监视主机上发生的情况，并会提示用户在 VM 上进行更改以纠正时间偏差。
+虚拟机与主机的交互也可能影响时钟。 在[内存保留维护](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)期间，VM 会暂停最多 30 秒的时间。 例如，在维护开始之前，VM 时钟显示上午 10:00:00，这种状态会持续 28 秒。 在 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，这样就造成 28 秒的偏差。 为了纠正这种情况，VMICTimeSync 服务会监视主机上发生的情况，并更新 Linux VM 中的日历时钟以进行补偿。
 
 如果不进行时间同步，VM 上的时钟会累积错误。 只有一个 VM 时，效果可能不明显，除非工作负荷要求极为准确的计时。 但在大多数情况下，我们有多个互连的 VM，这些 VM 使用时间来跟踪事务，因此需确保整个部署的时间一致。 当 VM 之间的时间不同时，可能会造成以下影响：
 
@@ -48,38 +43,27 @@ Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Micro
 - 如果时钟存在偏差，则可能造成计费不正确。
 
 
-
 ## <a name="configuration-options"></a>配置选项
 
-一般情况下，可以通过三种方式为托管在 Azure 中的 Linux VM 配置时间同步：
+时间同步要求在 Linux VM 中运行一个时间同步服务，并且有准确时间信息源可以用作同步的参照。
+一般会将 ntpd 或 chronyd 用作时间同步服务，不过，也有其他开源时间同步服务可供使用。
+准确时间信息源可以是 Azure 主机，也可以是通过公共 Internet 访问的外部时间服务。
+VMICTimeSync 服务不会自动在 Azure 主机与 Linux VM 之间提供持续的时间同步，除非是在由于进行主机维护（如上所述）而发生暂停之后。 
 
-- Azure 市场映像的默认配置使用 NTP 时间和 VMICTimeSync 主机时间。 
-- 仅主机（使用 VMICTimeSync）。
-- 在使用或不使用 VMICTimeSync 主机时间的情况下，使用另一外部时间服务器。
+过去，Linux 中的大多数 Azure 市场映像都采用以下两种配置方式之一：
+- 默认不会运行时间同步服务
+- ntpd 作为时间同步服务运行，并参照通过网络访问的外部 NTP 时间源进行同步。 例如，Ubuntu 18.04 LTS 市场映像使用 ntp.ubuntu.com。
 
+若要确认 ntpd 是否正确同步，请运行 `ntpq -p` 命令。
 
-### <a name="use-the-default"></a>使用默认值
+从日历年 2021 年初开始，Linux 的最新 Azure 市场映像正在改用 chronyd 作为时间同步服务，而 chronyd 配置为参照 Azure 主机而不是外部 NTP 时间源进行同步。 Azure 主机时间通常是最佳的同步参照时间源，因为它是以非常准确、可靠的方式维护的，并且可供访问，而不会出现通过公共 Internet 访问外部 NTP 时间源时那样固有的可变网络延迟。
 
-默认情况下，大多数适用于 Linux 的 Azure 市场映像配置为与两个源同步： 
+VMICTimeSync 是以并行方式使用的，它提供两种功能：
+- 发生主机维护事件后立即更新 Linux VM 的日历时钟
+- 将 IEEE 1588 精确时间协议 (PTP) 硬件时钟源实例化为一个 /dev/ptp 设备，用于提供来自 Azure 主机的准确日期时间。  可将 Chronyd 配置为参照此时间源进行同步（这是最新 Linux 映像中的默认配置）。 带有 4.11 或更高的内核版本的 Linux 发行版（或者带有 3.10.0-693 或更高的内核版本的 RHEL/CentOS 7）支持 /dev/ptp 设备。  对于不支持将 /dev/ptp 用于 Azure 主机时间的早期内核版本，只能参照外部时间源进行同步。
 
-- NTP 充当主要源，可以从 NTP 服务器获取时间。 例如，Ubuntu 16.04 LTS 市场映像使用 **ntp.ubuntu.com**。
-- VMICTimeSync 服务充当次要源，用于将主机时间传递给 VM，并在 VM 因维护而暂停后进行纠正。 Azure 主机使用 Microsoft 拥有的 Stratum 1 设备来保持准确的时间。
+当然，可以更改默认配置。 可以将配置为使用 ntpd 和外部时间源的较旧映像更改为将 chronyd 和 /dev/ptp 设备用于 Azure 主机时间。  同样，可以根据应用程序或工作负载的需求，将通过 /dev/ptp 设备使用 Azure 主机时间的映像配置为使用外部 NTP 时间源。
 
-在较新的 Linux 发行版中，VMICTimeSync 服务提供精度时间协议 (PTP) 硬件时钟源，但较早的发行版可能不提供此时钟源，因此会回退到 NTP 从主机获取时间。
-
-若要确认 NTP 是否正确同步，请运行 `ntpq -p` 命令。
-
-### <a name="host-only"></a>仅主机 
-
-由于 NTP 服务器（例如 time.windows.com 和 ntp.ubuntu.com）是公共的，因此与其同步时间需要通过 Internet 发送流量。 数据包的延迟各不相同，可能会对时间同步的质量造成负面影响。通过切换到“仅主机”同步来删除 NTP 有时候可以改善时间同步结果。
-
-如果在使用默认配置时遇到时间同步问题，则可切换到“仅主机”时间同步。 尝试“仅主机”同步，看是否会改进 VM 上的时间同步。 
-
-### <a name="external-time-server"></a>外部时间服务器
-
-如果有特定的时间同步要求，则可使用另一选项，即，使用外部时间服务器。 外部时间服务器可以提供特定的时间，这可以用于测试方案，确保时间在非 Microsoft 数据中心托管的计算机中的一致性，或者以特殊方式来处理闰秒问题。
-
-可以将外部时间服务器与 VMICTimeSync 服务组合使用，提供类似于默认配置的结果。 若要处理因维护而暂停 VM 所导致的问题，最好是将外部时间服务器与 VMICTimeSync 组合使用。 
 
 ## <a name="tools-and-resources"></a>工具和资源
 
@@ -99,23 +83,10 @@ hv_utils               24418  0
 hv_vmbus              397185  7 hv_balloon,hyperv_keyboard,hv_netvsc,hid_hyperv,hv_utils,hyperv_fb,hv_storvsc
 ```
 
-查看 Hyper-V 集成服务守护程序是否正在运行。
-
-```bash
-ps -ef | grep hv
-```
-
-看到的内容应该如下所示：
-
-```
-root        229      2  0 17:52 ?        00:00:00 [hv_vmbus_con]
-root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
-```
-
-
 ### <a name="check-for-ptp-clock-source"></a>检查 PTP 时钟源
 
-使用较新版的 Linux 时，可以在 VMICTimeSync 提供程序中获得精度时间协议 (PTP) 时钟源。 在较旧版本的 Red Hat Enterprise Linux 或 CentOS 7.x 上，可以下载 [Linux Integration Services ](https://github.com/LIS/lis-next)，并将其用于安装更新的驱动程序。 当 PTP 时钟源可用时，Linux 设备的表示形式为 /dev/ptpx。 
+对于较新版本的 Linux，在 VMICTimeSync 提供程序中提供了对应于 Azure 主机的精确时间协议 (PTP) 时钟源。
+在较旧版本的 Red Hat Enterprise Linux 或 CentOS 7.x 上，可以下载 [Linux Integration Services ](https://github.com/LIS/lis-next)，并将其用于安装更新的驱动程序。 当 PTP 时钟源可用时，Linux 设备的表示形式为 /dev/ptpx。 
 
 查看哪些 PTP 时钟源可用。
 
@@ -129,15 +100,19 @@ ls /sys/class/ptp
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-此命令应返回 `hyperv`。
+此命令应返回 `hyperv`，即 Azure 主机。
+
+在启用了加速网络的 Linux VM 中，可能会看到列出了多个 PTP 设备，因为 Mellanox mlx5 驱动程序也会创建 /dev/ptp 设备。
+由于每次启动 Linux 时初始化顺序可能不同，因此对应于 Azure 主机的 PTP 设备可能是 /dev/ptp0 或 /dev/ptp1，导致难以使用正确的时钟源配置 chronyd。 为了解决此问题，最新的 Linux 映像提供了一个 udev 规则，用于创建指向对应于 Azure 主机的任何 /dev/ptp 条目的符号链接 /dev/ptp_hyperv。 应将 Chrony 配置为使用此符号链接而不是 /dev/ptp0 或 /dev/ptp1。
 
 ### <a name="chrony"></a>chrony
 
-在 Ubuntu 19.10 及更高版本、Red Hat Enterprise Linux 和 CentOS 8.x 上，[chrony](https://chrony.tuxfamily.org/) 配置为使用 PTP 源时钟。 旧的 Linux 发行版使用网络时间协议守护程序 (ntpd)（不支持 PTP 源），而不是使用 chrony。 要在这些版本中启用 PTP，必须使用以下代码手动安装并配置 chrony（在 chrony.conf 中）：
+在 Ubuntu 19.10 及更高版本、Red Hat Enterprise Linux 和 CentOS 8.x 上，[chrony](https://chrony.tuxfamily.org/) 配置为使用 PTP 源时钟。 旧的 Linux 发行版使用网络时间协议守护程序 (ntpd)（不支持 PTP 源），而不是使用 chrony。 若要在这些版本中启用 PTP，必须使用以下语句手动安装并配置 chrony（在 chrony.conf 中）：
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
+如上所述，如果提供了 /dev/ptp_hyperv 符号链接，请使用该符号链接而不是 /dev/ptp0，以避免与 Mellanox mlx5 驱动程序创建的 /dev/ptp 设备相混淆。
 
 有关 Ubuntu 和 NTP 的详细信息，请参阅[时间同步](https://ubuntu.com/server/docs/network-ntp)。
 

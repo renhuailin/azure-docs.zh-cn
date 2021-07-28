@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/30/2020
   ms.reviewer: jushiman
   ms.custom: mimckitt
-  ms.openlocfilehash: 2888e704cf124cf37a4ed93dba9a804c1a4da483
-  ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+  ms.openlocfilehash: 3fd3f0f7af11a2354a89fc86344bef44b0cffa07
+  ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112082219"
+  ms.lasthandoff: 06/24/2021
+  ms.locfileid: "112676448"
 title: Azure 虚拟机规模集常见问题解答
 summary: 获取有关 Azure 虚拟机规模集常见问题的解答。
 sections:
@@ -404,7 +404,7 @@ sections:
   - question: >
       是否可以将 Azure 资源的托管标识用于虚拟机规模集？
     answer: >
-      是的。 可在适用于 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 和 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 的“Azure 快速入门”模板中[查看](../active-directory/managed-identities-azure-resources/overview.md)一些示例 MSI 模板。
+      是的。 可在适用于 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-msi) 和 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-msi) 的“Azure 快速入门”模板中[查看](../active-directory/managed-identities-azure-resources/overview.md)一些示例 MSI 模板。
 - name: 正在删除
   questions:
   - question: >
@@ -494,19 +494,6 @@ sections:
       虚拟机规模集扩展尝试安装需要重新启动的内容。
     answer: >
       如果虚拟机规模集扩展尝试安装需要重新启动的内容，可以使用 Azure 自动化所需状态配置 (Automation DSC) 扩展。 如果操作系统为 Windows Server 2012 R2，Azure 将拉入 Windows Management Framework (WMF) 5.0 安装程序，重新启动，然后继续使用该配置。
-  - question: >
-      如何在虚拟机规模集中启用反恶意软件？
-    answer: >
-      若要在虚拟机规模集中启用反恶意软件，请使用以下 PowerShell 示例：
-
-
-      ```powershell
-
-      $rgname = 'autolap'
-
-      $vmssname = 'autolapbr'
-
-      $location = 'eastus'
   - question: >
       如何执行一个在专用存储帐户中托管的自定义脚本？
     answer: >

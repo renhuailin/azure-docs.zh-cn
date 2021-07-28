@@ -12,18 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: a17e6cc0479cf8ff2306736994a369d9e44dfdda
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e16e95bbb65bde6c4c0b38b9c68c0f7287b8b9b3
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745938"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795575"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp 文件的指标
 
 Azure NetApp 文件提供有关已分配的存储、实际存储使用情况、卷、IOPS 和延迟的指标。 通过分析这些指标，可以更好地了解 NetApp 帐户的使用模式和卷性能。  
+
+可以通过选择“容量池”或“卷”来查找容量池或卷的指标。   然后单击“指标”以查看可用指标： 
+
+[ ![显示如何导航到“指标”下拉菜单的快照。](../media/azure-netapp-files/metrics-navigate-volume.png) ](../media/azure-netapp-files/metrics-navigate-volume.png#lightbox)
 
 ## <a name="usage-metrics-for-capacity-pools"></a><a name="capacity_pools"></a>容量池的使用情况指标
 
@@ -56,6 +60,9 @@ Azure NetApp 文件提供有关已分配的存储、实际存储使用情况、�
 
 ## <a name="performance-metrics-for-volumes"></a>卷的性能指标
 
+> [!NOTE] 
+> “平均读取延迟”和“平均写入延迟”的卷延迟在存储服务中测量，不包括网络延迟。
+
 - 平均读取延迟   
     从卷进行读取的平均时间（以毫秒为单位）。
 - 平均写入延迟   
@@ -64,24 +71,6 @@ Azure NetApp 文件提供有关已分配的存储、实际存储使用情况、�
     每秒读取到卷的次数。
 - 写 IOPS   
     每秒向卷中写入的次数。
-<!-- These two metrics are not yet available, until ~ 2020.09
-- *Read MiB/s*   
-    Read throughput in bytes per second.
-- *Write MiB/s*   
-    Write throughput in bytes per second.
---> 
-<!-- ANF-4128; 2020.07
-- *Pool Provisioned Throughput*   
-    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
-- *Pool Allocated to Volume Throughput*   
-    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
--->
-
-<!-- ANF-6443; 2020.11
-- *Pool Consumed Throughput*    
-    The total throughput being consumed by volumes in a given capacity pool.
--->
-
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>卷复制指标
 
@@ -109,6 +98,32 @@ Azure NetApp 文件提供有关已分配的存储、实际存储使用情况、�
 
 - 卷复制总传输字节   
     为关系传输的累计字节数。 
+
+## <a name="throughput-metrics-for-capacity-pools"></a>容量池的吞吐量指标   
+
+* 分配给卷的池的吞吐量    
+    分配给给定容量池中的卷的总吞吐量。 也就是说，容量池中卷的已分配吞吐量的总数。   
+
+* 池消耗的吞吐量   
+    给定容量池中卷消耗的总吞吐量。   
+
+* 分配给卷的池的吞吐量百分比   
+    分配给卷的容量池预配吞吐量百分比。   
+
+* 池消耗的吞吐量百分比    
+    卷消耗的容量池预配吞吐量百分比。
+
+## <a name="throughput-metrics-for-volumes"></a>卷的吞吐量指标   
+
+*  卷分配的吞吐量    
+    为卷分配的父容量池吞吐量 (MiB/s)。 这是卷能够消耗的最大吞吐量。
+
+* 卷消耗的吞吐量    
+    卷正在使用的实际吞吐量 (MiB/s)。
+
+* 卷消耗的吞吐量百分比   
+    卷正在使用的已分配吞吐量百分比。 即“卷消耗的吞吐量”占“卷分配的吞吐量”的百分比。
+
 
 ## <a name="next-steps"></a>后续步骤
 

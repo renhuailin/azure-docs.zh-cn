@@ -14,12 +14,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: 24a564d836405bf51aacf73af359e987e8c957e1
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7393a8085a2ac597f3fdbcc365608d32956f39b7
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737107"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111620"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入门：在 Azure 应用服务中创建 Java 应用
 
@@ -42,13 +42,13 @@ ms.locfileid: "109737107"
 
 克隆 [Spring Boot 入门](https://github.com/spring-guides/gs-spring-boot)示例项目。
 
-```bash
+```azurecli-interactive
 git clone https://github.com/spring-guides/gs-spring-boot
 ```
 
 将目录更改为已完成项目。
 
-```bash
+```azurecli-interactive
 cd gs-spring-boot/complete
 ```
 
@@ -56,15 +56,38 @@ cd gs-spring-boot/complete
 
 在 Cloud Shell 提示符下，执行以下 Maven 命令来创建一个名为 `helloworld` 的新应用：
 
-```bash
+```azurecli-interactive
 mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" "-Dversion=1.0-SNAPSHOT"
 ```
 
 然后，将工作目录更改为项目文件夹：
 
-```bash
+```azurecli-interactive
 cd helloworld
 ```
+
+# <a name="jboss-eap"></a>[JBoss EAP](#tab/jbosseap)
+
+::: zone pivot="platform-windows"
+
+JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的“Linux”按钮，以查看 JBoss EAP 的快速入门说明。
+
+::: zone-end
+::: zone pivot="platform-linux"
+
+克隆 Pet Store 演示应用程序。
+
+```azurecli-interactive
+git clone https://github.com/agoncal/agoncal-application-petstore-ee7.git
+```
+
+将目录更改为已克隆项目。
+
+```azurecli-interactive
+cd agoncal-application-petstore-ee7
+```
+
+::: zone-end
 
 ---
 
@@ -74,20 +97,20 @@ cd helloworld
 
 运行下面的 Maven 命令来配置部署。 此命令将帮助你设置应用服务操作系统、Java 版本和 Tomcat 版本。
 
-```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
+```azurecli-interactive
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.0.0:config
 ```
 
 ::: zone pivot="platform-windows"
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. 当系统提示“订阅”选项时，通过在行首输入数字来选择适当的 `Subscription`。
-1. 当系统提示“Web 应用”选项时，按 Enter 键接受默认选项 `<create>` 或选择一个现有应用。
-1. 当系统提示 OS 选项时，通过输入 `3` 选择 Windows 。
-1. 当系统提示“定价层”选项时，通过输入 `2` 选择 B2 。
-1. 按 Enter 使用默认的 Java 版本 Java 8。
-1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
+1. 如果系统提示“订阅”选项，通过在行首输入数字来选择适当的 `Subscription`。
+2. 当系统提示“Web 应用”选项时，按 Enter 键选择默认选项 `<create>`。
+3. 当系统提示 OS 选项时，通过输入 `2` 选择 Windows 。
+4. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
+5. 当系统提示“定价层”选项时，通过输入 `7` 选择“P1v2” 。
+6. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     摘要输出将类似于下面所示的代码片段。
 
@@ -114,13 +137,13 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. 当系统提示“订阅”选项时，通过在行首输入数字来选择适当的 `Subscription`。
-1. 当系统提示“Web 应用”选项时，按 Enter 键接受默认选项 `<create>` 或选择一个现有应用。
-1. 当系统提示 OS 选项时，通过输入 `3` 选择 Windows 。
-1. 当系统提示“定价层”选项时，通过输入 `2` 选择 B2 。
-1. 按 Enter 使用默认的 Java 版本 Java 8。
-1. 按 Enter 使用默认 Web 容器 Tomcat 8.5。
-1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
+1. 如果系统提示“订阅”选项，通过在行首输入数字来选择适当的 `Subscription`。
+2. 当系统提示“Web 应用”选项时，按 Enter 键选择默认选项 `<create>`。
+3. 当系统提示 OS 选项时，通过输入 `2` 选择 Windows 。
+4. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
+5. 当系统提示“webContainer”选项时，通过输入 `3` 选择“Tomcat 8.5” 。
+6. 当系统提示“定价层”选项时，通过输入 `7` 选择“P1v2” 。
+7. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     摘要输出将类似于下面所示的代码片段。
 
@@ -145,19 +168,23 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
     [INFO] ------------------------------------------------------------------------
     ```
 
+# <a name="jboss-eap"></a>[JBoss EAP](#tab/jbosseap)
+
+JBoss EAP 仅适用于 Linux 版本的应用服务。 请选择本文顶部的“Linux”按钮，以查看 JBoss EAP 的快速入门说明。
+
 ---
 
 ::: zone-end
 ::: zone pivot="platform-linux"
 
-### <a name="java-se"></a>[Java SE](#tab/javase)
+# <a name="java-se"></a>[Java SE](#tab/javase)
 
 1. 当系统提示“订阅”选项时，通过在行首输入数字来选择适当的 `Subscription`。
-1. 当系统提示“Web 应用”选项时，按 Enter 键接受默认选项 `<create>` 或选择一个现有应用。
+1. 当系统提示“Web 应用”选项时，按 Enter 键选择默认选项 `<create>`。
 1. 当系统提示 OS 选项时，按 Enter 键选择 Linux 。
-1. 当系统提示“定价层”选项时，通过输入 `2` 选择 B2 。
-1. 按 Enter 使用默认的 Java 版本 Java 8。
-1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
+2. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
+3. 当系统提示“定价层”选项时，通过输入 `6` 选择“P1v2” 。
+4. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     ```
     Please confirm webapp properties
@@ -179,14 +206,14 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
     [INFO] ------------------------------------------------------------------------
     ```
 
-### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 1. 当系统提示“订阅”选项时，通过在行首输入数字来选择适当的 `Subscription`。
-1. 当系统提示“Web 应用”选项时，按 Enter 键接受默认选项 `<create>` 或选择一个现有应用。
+1. 当系统提示“Web 应用”选项时，按 Enter 键选择默认选项 `<create>`。
 1. 当系统提示 OS 选项时，按 Enter 键选择 Linux 。
-1. 当系统提示“定价层”选项时，通过输入 `2` 选择 B2 。
-1. 按 Enter 使用默认的 Java 版本 Java 8。
-1. 按 Enter 使用默认 Web 容器 Tomcat 8.5。
+1. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
+1. 当系统提示“runtimeStack”选项时，通过输入 `3` 选择“Tomcat 8.5” 。
+1. 当系统提示“定价层”选项时，通过输入 `6` 选择“P1v2” 。
 1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
 
     ```
@@ -209,6 +236,37 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
     [INFO] ------------------------------------------------------------------------
     ```
 
+# <a name="jboss-eap"></a>[JBoss EAP](#tab/jbosseap)
+
+1. 如果系统提示“订阅”选项，通过在行首输入数字来选择适当的 `Subscription`。
+1. 当提示“Web 应用”选项时，按 Enter 接受默认选项 `<create>`。
+1. 当系统提示 OS 选项时，按 Enter 键选择 Linux 。
+1. 当系统提示“javaVersion”选项时，通过输入 `1` 选择“Java 8”。
+1. 当系统提示“runtimeStack”选项时，通过输入 `2` 选择“Jbosseap 7”
+1. 当系统提示“定价层”选项时，通过输入 `3` 选择“P1v3” 
+1. 最后，出现最后一个提示时按 Enter 来确认所做的选择。
+
+    ```
+    Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
+    AppName : petstoreee7-1623451825408
+    ResourceGroup : petstoreee7-1623451825408-rg
+    Region : westeurope
+    PricingTier : P1v3
+    OS : Linux
+    Java : Java 8
+    Web server stack: Jbosseap 7.2
+    Deploy to slot : false
+    Confirm (Y/N) [Y]: y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 01:01 min
+    [INFO] Finished at: 2021-06-11T15:52:25-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
 ---
 
 ::: zone-end
@@ -222,7 +280,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
 `<resourceGroup>` | true | 用于 Web 应用的 Azure 资源组。 | 0.1.0+
 `<appName>` | true | Web 应用的名称。 | 0.1.0+
 `<region>` | true | 指定将托管 Web 应用的区域；默认值为“westeurope”。 [支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)部分中列出了所有有效区域。 | 0.1.0+
-`<pricingTier>` | false | Web 应用的定价层。 生产工作负载的默认值为 P1V2，而 B2 是建议用于 Java 开发/测试的最低值 。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
+`<pricingTier>` | true | Web 应用的定价层。 生产工作负载的默认值为 P1V2，而 B2 是建议用于 Java 开发/测试的最低值 。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
 `<runtime>` | true | 运行时环境配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
 `<deployment>` | true | 部署配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
 
@@ -235,15 +293,22 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.14.0:config
 
 Maven 插件会使用 Azure CLI 中的帐户凭据来部署到应用服务。 在继续操作之前[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 
 然后你可使用以下命令将 Java 应用部署到 Azure。
 
-```bash
+```azurecli-interactive
 mvn package azure-webapp:deploy
 ```
+
+::: zone pivot="platform-linux"
+
+> [!NOTE]
+> 对于 JBoss EAP，请运行 `mvn package azure-webapp:deploy -DskipTests` 以禁用测试，因为它需要在本地安装 Wildfly。 
+
+::: zone-end
 
 部署完成后，应用程序会在 `http://<appName>.azurewebsites.net/`（在演示中为 `http://helloworld-1590394316693.azurewebsites.net`）处准备就绪。 在本地 Web 浏览器中打开 url，你应该会看到
 

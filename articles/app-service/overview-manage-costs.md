@@ -6,10 +6,10 @@ ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
 ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100593981"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>计划和管理 Azure 应用服务的成本
@@ -25,7 +25,7 @@ ms.locfileid: "100593981"
 
 <!-- Note for Azure service writer: Modify the following for your service. -->
 
-本文介绍如何计划和管理 Azure 应用服务的成本。 首先，使用 Azure 定价计算器来帮助计划应用服务成本，然后再添加任何服务资源来估算成本。 接下来，在添加 Azure 资源时，查看预估成本。 在开始使用应用服务资源之后，请使用[成本管理](../cost-management-billing/index.yml?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)功能来设置预算和监视成本。 还可以查看预测的成本并识别支出趋势，以确定可能需要实施措施的领域。Azure 应用服务的成本只是 Azure 账单中每月成本的一部分。 尽管本文介绍了如何为应用服务计划和管理成本，但用户需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。
+本文介绍如何计划和管理 Azure 应用服务的成本。 首先，使用 Azure 定价计算器来帮助计划应用服务成本，然后再添加任何服务资源来估算成本。 接下来，在添加 Azure 资源时，查看预估成本。 在开始使用应用服务资源之后，请使用[成本管理](../cost-management-billing/index.yml?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)功能来设置预算和监视成本。 你还可以查看预测成本并确定支出趋势，以确定你可能想要对其采取措施的区域。Azure 应用服务的成本仅是 Azure 帐单中每月成本的一部分。 尽管本文介绍了如何为应用服务计划和管理成本，但用户需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。
 
 ## <a name="relevant-costs-for-app-service"></a>应用服务的相关成本
 
@@ -67,7 +67,7 @@ ms.locfileid: "100593981"
 
 要预先评估和优化应用服务成本，一种简单方法是使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)。
 
-要使用定价计算器，请在“产品”选项卡中单击“应用服务”。 然后，向下滚动以使用计算器。 以下屏幕截图只是一个示例，并不反映当前定价。
+若要使用定价计算器，请单击“产品”选项卡中的“应用服务”。然后，向下滚动以使用计算器。  以下屏幕截图只是一个示例，并不反映当前定价。
 
 ![显示 Azure 定价计算器中的预估成本的示例](media/overview-manage-costs/pricing-calculator.png)
 
@@ -80,11 +80,11 @@ ms.locfileid: "100593981"
 1. 在“创建”页面上，向下滚动到“应用服务计划”，然后单击“新建”。 
 1. 指定名称，然后单击“确定”。
 1. 在“SKU 和大小”旁边，单击“更改大小”。 
-1. 查看摘要中显示的预估价格。 以下屏幕截图只是一个示例，并不反映当前定价。
+1. 查看摘要中显示的估计价格。 以下屏幕截图只是一个示例，并不反映当前定价。
 
     ![查看门户中每个定价层的预估成本](media/overview-manage-costs/pricing-estimates.png)
 
-如果 Azure 订阅有支出限制，Azure 将阻止超过额度金额的支出。 创建和使用 Azure 资源时，将使用额度。 达到额度限制时，将在该计费周期的剩余时间内禁用部署的资源。 用户无法更改额度限制，但可以删除该限制。 有关支出限制的详细信息，请参阅 [Azure 支出限制](../cost-management-billing/manage/spending-limit.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+如果你的 Azure 订阅有支出限制，Azure 将阻止超过额度金额的支出。 创建和使用 Azure 资源时，将使用额度。 达到额度限制时，将在该计费周期的剩余时间内禁用部署的资源。 你无法更改额度限制，但可以删除该限制。 有关支出限制的详细信息，请参阅 [Azure 支出限制](../cost-management-billing/manage/spending-limit.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 ## <a name="optimize-costs"></a>优化成本
 
@@ -131,15 +131,15 @@ ms.locfileid: "100593981"
 
 将 Azure 资源用于应用服务时，会产生成本。 Azure 资源使用的单位成本随时间间隔（秒、分钟、小时和天）而变化。 开始使用应用服务之后便会产生成本，可以在[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中查看成本。
 
-使用成本分析时，可以在关系图和表中查看不同时间间隔的应用服务成本。 有些示例是按天、当月和上个月以及按年来统计的。 此外，还可以查看成本与预算和预测成本的对比情况。 随着时间推移，切换到较长时间的视图，可帮助确定支出趋势。 用户可看到哪些领域出现了超支。 如果已创建预算，还可以轻松查看超支的地方。
+使用成本分析时，可以在关系图和表中查看不同时间间隔的应用服务成本。 有些示例是按天、当前、上个月和年划分的。 还可以对比预算和预测的成本来查看成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势。 你会看到可能出现超支的地方。 如果已创建预算，还可以轻松查看超支的地方。
     
 要在成本分析中查看应用服务成本，请执行以下操作：
 
 1. 登录到 Azure 门户。
-2. 在 Azure 门户中打开范围，并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择一项订阅，然后在菜单中选择“成本分析” 。 选择“范围”，可切换到不同的成本分析范围。
+2. 在 Azure 门户中打开范围，并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析” 。 选择“范围”，在成本分析中切换到不同的范围。
 3. 默认情况下，服务的成本显示在第一个圆环图中。 选择图表中标记为“应用服务”的区域。
 
-最初打开成本分析时，会显示每月实际成本。 下面是显示所有每月使用成本的示例。
+最初打开成本分析时，会显示实际的每月成本。 下面是显示所有每月使用成本的示例。
 
 ![显示订阅累计成本的示例](media/overview-manage-costs/all-costs.png)
 
@@ -147,9 +147,9 @@ ms.locfileid: "100593981"
 
 下面的示例只显示了“应用服务”的成本。
 
-![显示 ServiceName 累积成本的示例](media/overview-manage-costs/service-specific-costs.png)
+![显示 ServiceName 累积费用的示例](media/overview-manage-costs/service-specific-costs.png)
 
-在前面的示例中，看到的是服务的当前成本。 还显示了按 Azure 区域（位置）的成本和按资源组的应用服务成本。 自此开始，用户可以自行浏览成本信息。
+在前面的示例中，你将看到该服务的当前成本。 还显示了按 Azure 区域（位置）的成本和按资源组的应用服务成本。 从这里，你可以自行探索成本。
 
 ## <a name="create-budgets"></a>创建预算
 

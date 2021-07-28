@@ -1,18 +1,18 @@
 ---
 title: Azure 数据工厂中的 ForEach 活动
 description: ForEach 活动在管道中定义重复的控制流。 它用于循环访问集合并执行指定的活动。
-author: dcstwh
-ms.author: weetok
-ms.reviewer: maghan
+author: chez-charlie
+ms.author: chez
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: aeabd74117f99c7cac9bde0eda02b9627caf0804
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 28c67640a65e44fb9c6d6791229796c614993fa1
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177770"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906289"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ ForEach 活动在管道中定义重复的控制流。 此活动用于循环访�
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
 name | For-Each 活动的名称。 | String | 是
 type | 必须设置为 **ForEach** | String | 是
@@ -79,7 +79,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 如果 **isSequential** 被设置为 False，则活动以并行方式迭代，最多包含 20 个并发迭代。 应谨慎使用此设置。 如果并发迭代写入同一文件夹中的不同文件，此方法仍然适用。 如果并发迭代以并发的方式写入同一文件，则此方法很有可能出错。 
 
 ## <a name="iteration-expression-language"></a>迭代表达式语言
-在 ForEach 活动中，为属性 **items** 提供要循环访问的数组。 使用 `@item()` 循环访问 ForEach 活动中的单个枚举。 例如，如果 **items** 是数组：[1, 2, 3]，则 `@item()` 在第一次迭代中返回 1，在第二次迭代中返回 2，在第三次迭代中返回 3。
+在 ForEach 活动中，为属性 **items** 提供要循环访问的数组。 使用 `@item()` 循环访问 ForEach 活动中的单个枚举。 例如，如果 **items** 是数组：[1, 2, 3]，则 `@item()` 在第一次迭代中返回 1，在第二次迭代中返回 2，在第三次迭代中返回 3。 你还可以使用 `@range(0,10)` 之类的表达式，从 0 开始，到 9 结束，迭代 10 次。
 
 ## <a name="iterating-over-a-single-activity"></a>循环访问单个活动
 **场景：** 从 Azure Blob 中的同一源文件复制到 Azure Blob 中的多个目标文件。
@@ -483,7 +483,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 |---|---|
 | 不能将 ForEach 循环嵌套在另一个 ForEach 循环（或 Until 循环）中。 | 设计一个两级管道，其中具有外部 ForEach 循环的外部管道使用嵌套循环对内部管道进行迭代。 |
 | 对于并行处理，ForEach 活动的最大 `batchCount` 为 50，最大项数为 100,000 个。 | 设计一个两级管道，其中具有 ForEach 活动的外部管道对内部管道进行迭代。 |
-| SetVariable 不能在并发运行的 ForEach 活动中使用，因为变量在整个管道中是全局性的，它们的作用域不是 ForEach 或任何其他活动。 | 请考虑使用顺序 ForEach，或在 ForEach (变量/参数中) 的子管道内使用 Execute 管道。|
+| SetVariable 不能在并行运行的 ForEach 活动中使用，因为变量适用于整个管道，它们不限定于 ForEach 或任何其他活动。 | 请考虑使用顺序 ForEach，或在 ForEach 内使用执行管道（子管道中处理的变量/参数）。|
 | | |
 
 ## <a name="next-steps"></a>后续步骤

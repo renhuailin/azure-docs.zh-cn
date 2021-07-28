@@ -1,14 +1,14 @@
 ---
 title: 使用参数创建动态蓝图
 description: 了解静态和动态参数以及使用它们创建安全和动态蓝图的方法。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5dbf7ec02e89eac791ec3e17202a5ab13a04b81d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6db29a058bd8022c2f1224a8a8bf6e4fb85a398f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98918528"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761338"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -63,7 +63,7 @@ ms.locfileid: "98918528"
 
    :::image type="content" source="../media/parameters/parameter-column.png" alt-text="蓝图定义的屏幕截图，其中突出显示“填充了 X 个参数，共 Y 个参数”。" border="false":::
 
-1. “编辑项目”页会显示适用于所选项目的值选项。 项目上的每个参数具有标题、值框和复选框。 将框设置为未选中状态，使其称为“静态参数”。 在以下示例中，只有“位置”是“静态参数”，因为它处于未选中状态，同时“资源组名称”已选中。
+1. “编辑项目”页会显示适用于所选项目的值选项。 项目上的每个参数具有标题、值框和复选框。 将框设置为未选中状态，使其称为“静态参数”。 在以下示例中，只有“位置”是静态参数，因为它处于未选中状态，同时“资源组名称”已选中。
 
    :::image type="content" source="../media/parameters/static-parameter.png" alt-text="蓝图项目的静态参数屏幕截图。" border="false":::
 
@@ -174,7 +174,7 @@ ms.locfileid: "98918528"
 
 1. 右键单击要分配的蓝图。 选择“分配蓝图”或选择要分配的蓝图，然后使用“分配蓝图”按钮 。
 
-1. 在“分配蓝图”页上，查找“项目参数”部分 。 具有至少一个“动态参数”的每个项目会显示项目和配置选项。 分配蓝图前，请向参数提供所需值。 在以下示例中，“名称”是“动态参数”，必须对其定义以完成蓝图分配。
+1. 在“分配蓝图”页上，查找“项目参数”部分 。 具有至少一个“动态参数”的每个项目会显示项目和配置选项。 分配蓝图前，请向参数提供所需值。 在以下示例中，“名称”是动态参数，必须对其定义以完成蓝图分配。
 
    :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="在分配蓝图期间设置动态参数的屏幕截图。" border="false":::
 

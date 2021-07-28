@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: e762b8c2e2d7f72b89629c520560b205cedcd036
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: dc8ca48d11f31f69ca9db5dce53cce4d9d6e8f25
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728549"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772326"
 ---
 # <a name="iot-central-solution-builder-guide"></a>IoT Central 解决方案构建者指南
-
-本文适用于解决方案构建人员。
 
 IoT Central 应用程序使你可以在设备整个生命周期内监视和管理数百万台设备。 本指南适用于使用 IoT Central 来构建集成解决方案的解决方案构建者。 使用 IoT Central 应用程序，你可以管理设备、分析设备遥测以及与其他后端服务集成。
 
@@ -56,6 +54,14 @@ IoT Central 具有内置的分析功能，操作员可以使用这些功能来�
 - [使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central](howto-create-custom-rules.md)
 - [使用 Azure Databricks 通过自定义分析扩展 Azure IoT Central](howto-create-custom-analytics.md)
 - [在 Power BI 仪表板中可视化和分析 Azure IoT Central 数据](howto-connect-powerbi.md)
+
+## <a name="apis"></a>API
+
+IoT Central API 可让你与 IoT 解决方案中的其他服务建立深度集成。 可用 API 分类为数据平面 API 或控制平面 API。
+
+可以使用数据平面 API 访问 IoT Central 应用程序中的实体和功能。 例如，管理设备、设备模板、用户和角色。 IoT Central REST API 操作是数据平面操作。 若要了解详细信息，请参阅[如何使用 IoT Central REST API 管理用户和角色](howto-manage-users-roles-with-rest-api.md)。
+
+可以使用控制平面管理 Azure 订阅中与 IoT Central 相关的资源。 可以使用 Azure CLI 和资源管理器模板执行控制平面操作。 例如，可以使用 Azure CLI 创建 IoT Central 应用程序。 若要了解详细信息，请参阅[从 Azure CLI 管理 IoT Central](howto-manage-iot-central-from-cli.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

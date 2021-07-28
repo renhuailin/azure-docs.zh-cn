@@ -1,24 +1,25 @@
 ---
-title: VPN 网关：不同用户组的 Azure AD 租户：Azure AD 身份验证
-description: 可以使用 P2S VPN 通过 Azure AD 身份验证连接到 VNet
+title: 如何为 P2S OpenVPN 协议连接创建 Azure AD 租户：Azure AD 身份验证
+titleSuffix: Azure VPN Gateway
+description: 了解如何为 P2S OpenVPN 身份验证设置 Azure AD 租户，并在 Azure AD 中注册多个应用，使不同的用户和组能够以不同的方式进行访问。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 05/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1305ca603aef63dafcc7b055d55e3f0fe281f4fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5b67a1843dd363c727122d77c4c9d574e90a4ab
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91819672"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760474"
 ---
 # <a name="create-an-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Active Directory (AD) 租户
 
-连接到 VNet 时，可以使用基于证书的身份验证或 RADIUS 身份验证。 但是，在使用开放 VPN 协议时，还可以使用 Azure Active Directory 身份验证。 如果你希望一组不同的用户能够连接到不同的 VPN 网关，可以在 AD 中注册多个应用，并将这些应用链接到不同的 VPN 网关。 本文帮助你设置用于 P2S OpenVPN 身份验证的 Azure AD 租户，并在 Azure AD 中创建和注册多个应用，使不同的用户和组能够以不同的方式进行访问。
+使用点到站点连接到 VNet 时，可以选择使用哪种协议。 使用的协议决定了可用的身份验证选项。 如果要使用 Azure Active Directory 身份验证，则可以在使用 OpenVPN 协议时这样做。 如果你希望一组不同的用户能够连接到不同的 VPN 网关，可以在 AD 中注册多个应用，并将这些应用链接到不同的 VPN 网关。 本文帮助你设置用于 P2S OpenVPN 的 Azure AD 租户，并在 Azure AD 中创建和注册多个应用，允许不同的用户和组能够以不同的方式进行访问。 有关点到站点 VPN 协议和身份验证的详细信息，请参阅[关于点到站点 VPN](point-to-site-about.md)。
 
-[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
+[!INCLUDE [OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 [!INCLUDE [create](../../includes/openvpn-azure-ad-tenant-multi-app.md)]
 

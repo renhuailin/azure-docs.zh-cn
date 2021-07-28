@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 75332498ac59dc46a7a079eff4c25e02b2a6cb9b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98986931"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>将新身份验证用于 StorSimple
@@ -53,9 +53,9 @@ AAD 身份验证在运行 Update 1 或更高版本的 StorSimple 虚拟阵列（
 
 | 如果设备在运行  | 执行以下操作                                    |
 |----------------------------|--------------------------------------------------------------|
-| Update 1.0 或更高版本，且处于脱机状态。 <br> 你会看到一条警报，指出 URL 不在允许列表中。| 1.修改防火墙规则，使之包含身份验证 URL。 请参阅[身份验证 URL](#url-changes-for-aad-authentication)。 <br> 2.[从服务获取 AAD 注册密钥](#aad-based-registration-keys)。 <br> 3.执行步骤 1-5，[连接到虚拟阵列的 Windows PowerShell 界面](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)。<br> 4.使用 `Invoke-HcsReRegister` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
-| Update 1.0 或更高版本，且设备处于联机状态。| 不需要执行任何操作。                                       |
-| Update 0.6 或更低版本，且设备处于脱机状态。 | 1.[通过目录服务器下载 Update 1.0](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix)。<br>2.[通过本地 Web UI 应用 Update 1.0](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix)。<br>3.[从服务获取 AAD 注册密钥](#aad-based-registration-keys)。 <br>4.执行步骤 1-5，[连接到虚拟阵列的 Windows PowerShell 界面](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)。<br>5.使用 `Invoke-HcsReRegister` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
+| Update 1.0 或更高版本，且处于脱机状态。 <br> 你会看到一条警报，指出 URL 不在允许列表中。| 1. 修改防火墙规则，使之包含身份验证 URL。 请参阅[身份验证 URL](#url-changes-for-aad-authentication)。 <br> 2. [从服务获取 AAD 注册密钥](#aad-based-registration-keys)。 <br> 3. 执行步骤 1-5，[连接到虚拟阵列的 Windows PowerShell 界面](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)。<br> 4. 使用 `Invoke-HcsReRegister` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
+| Update 1.0 或更高版本，且设备处于联机状态。| 因此不需要执行任何操作。                                       |
+| Update 0.6 或更低版本，且设备处于脱机状态。 | 1. [通过目录服务器下载 Update 1.0](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix)。<br>2. [通过本地 Web UI 应用 Update 1.0](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix)。<br>3. [从服务获取 AAD 注册密钥](#aad-based-registration-keys)。 <br>4. 执行步骤 1-5，[连接到虚拟阵列的 Windows PowerShell 界面](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)。<br>5. 使用 `Invoke-HcsReRegister` cmdlet 通过 Windows PowerShell 注册设备。 提供在上一步获取的密钥。|
 | Update 0.6 或更低版本，且设备处于联机状态 | 修改防火墙规则，使之包含身份验证 URL。<br> 通过 Azure 门户安装 Update 1.0。 |
 
 ## <a name="aad-based-registration-keys"></a>基于 AAD 的注册密钥

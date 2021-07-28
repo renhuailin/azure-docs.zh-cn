@@ -16,10 +16,10 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 430af1dfcbd9c7faabfca2f3f5b80b3b3106a889
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101675800"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
@@ -46,7 +46,7 @@ Microsoft Azure 提供了许多不同的虚拟机类型，可运行最小的 SAP
 
 可以在[适用于 Windows 的 SAP ASE 安装指南](https://help.sap.com/viewer/36031975851a4f82b1022a9df877280b/16.0.3.7/en-US/a660d3f1bc2b101487cbdbf10069c3ac.html)中找到有关在 Windows 上安装 SAP ASE 的文档
 
-“在内存中锁定页”是可以防止将 SAP ASE 数据库缓冲区内容移出的设置。此设置对于消耗大量内存的大型繁忙系统非常有用。 有关详细信息，请联系 BC-DB-SYB。 
+“锁定内存中的页”是一种防止将 SAP ASE 数据库缓冲区内容移出的设置。此设置适用于具有大量内存的大型繁忙系统。 有关详细信息，请联系 BC-DB-SYB。 
 
 
 ## <a name="linux-operating-system-specific-settings"></a>Linux 操作系统特定的设置
@@ -119,7 +119,7 @@ Microsoft Azure 提供了许多不同的虚拟机类型，可运行最小的 SAP
 | 备份设备数量 | 4 | 4| --- |
 | 备份磁盘的数量和类型 | 1 | 1 | --- |
 
-数据库大小介于 750 GB 与 2000 GB 之间的大型 SAP ASE DB 服务器（例如较大的 SAP Business Suite 系统）的配置示例如下所示
+数据库大小介于 750 GB 到 2000 GB 之间的小型 SAP ASE DB 服务器（例如较大的 SAP Business Suite 系统）配置示例如下所示：
 
 | 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
@@ -140,7 +140,7 @@ Microsoft Azure 提供了许多不同的虚拟机类型，可运行最小的 SAP
 | 备份磁盘的数量和类型 | 1 | 1 | --- |
 
 
-数据库大小超过 2 TB 的超大型 SAP ASE DB 服务器（例如在全球使用的较大 SAP Business Suite 系统）的配置示例如下所示
+数据库大小超过 2 TB 的小型 SAP ASE DB 服务器（例如在全球范围内使用的较大 SAP Business Suite 系统）配置示例如下所示：
 
 | 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
@@ -188,7 +188,7 @@ HADR 用户指南详细介绍了双节点 SAP ASE“Always-on”解决方案的�
 > Azure 上唯一支持的配置是使用不带浮动 IP 的 Fault Manager。  浮动 IP 地址方法在 Azure 上不起作用。 
 
 ### <a name="third-node-for-disaster-recovery"></a>用于灾难恢复的第三个节点
-除了使用 SAP ASE Always-On 实现本地高可用性之外，还可以将配置扩展到另一个 Azure 区域中异步复制的节点。 可在[此处](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)找到有关此类方案的文档。
+除了使用 SAP ASE Always-On 实现本地高可用性之外，你可能还想将配置扩展到另一个 Azure 区域中异步复制的节点。 可在[此处](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)找到有关此类方案的文档。
 
 ## <a name="sap-ase-database-encryption--ssl"></a>SAP ASE 数据库加密和 SSL 
 SAP Software Provisioning Manager (SWPM) 提供一个用于在安装期间加密数据库的选项。  如果你要使用加密，建议使用 SAP 完全数据库加密。  请参阅以下文章中的详细信息：

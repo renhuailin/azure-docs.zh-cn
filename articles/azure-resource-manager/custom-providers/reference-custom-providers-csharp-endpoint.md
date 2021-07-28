@@ -6,20 +6,20 @@ ms.custom: devx-track-csharp
 ms.author: jobreen
 author: jjbfour
 ms.date: 01/14/2021
-ms.openlocfilehash: 3b951cd0878bda4a3f65f9208f6997419a10d537
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fc06d7178442c22032795bf2d6ceacdbd6199a5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98200254"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745840"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>自定义提供程序 C# RESTful 终结点参考
 
 本文是自定义提供程序 C# RESTful 终结点的基本参考。 如果不熟悉 Azure 自定义提供程序，请参阅[自定义资源提供程序概述](overview.md)。
 
-## <a name="azure-function-app-restful-endpoint"></a>Azure 函数应用 RESTful 终结点
+## <a name="azure-functions-restful-endpoint"></a>Azure Functions RESTful 终结点
 
-以下代码适用于 Azure 函数应用。 若要了解如何设置 Azure 函数应用以使用 Azure 自定义提供程序，请参阅[有关设置用于 Azure 自定义提供程序的 Azure Functions 的教程](./tutorial-custom-providers-function-setup.md)。
+以下代码适用于 Azure 中的函数应用。 若要了解如何设置函数应用以使用 Azure 自定义提供程序，请参阅[有关设置用于 Azure 自定义提供程序的 Azure Functions 的教程](./tutorial-custom-providers-function-setup.md)。
 
 ```csharp
 #r "Newtonsoft.Json"

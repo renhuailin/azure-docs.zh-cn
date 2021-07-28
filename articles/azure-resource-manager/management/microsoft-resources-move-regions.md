@@ -3,12 +3,12 @@ title: 为 Microsoft.Resources 中的资源移动区域
 description: 介绍了如何将位于 Microsoft.Resources 命名空间中的资源移动到新区域。
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 098e5c36969da12966d793b6e1eddd4f79701ead
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 898e5efef22f76dc07395fcfcad413ef4582dafd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88951049"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725865"
 ---
 # <a name="move-microsoftresources-resources-to-new-region"></a>将 Microsoft.Resources 资源移动到新区域
 
@@ -18,7 +18,7 @@ ms.locfileid: "88951049"
 
 如果一个区域中有一个[模板规格](../templates/template-specs.md)，而你想要将其移动到新区域，则可以导出该模规格范并重新部署。
 
-1. 使用以下命令导出现有模板规格。对于参数值，请提供与要导出的模板规格相匹配的值。
+1. 使用命令导出现有的模板规格。对于参数值，请提供与要导出的模板规格匹配的值。
 
    对于 Azure PowerShell，请使用：
 
@@ -40,7 +40,7 @@ ms.locfileid: "88951049"
      --output-folder c:\export
    ```
 
-1. 使用导出的模板规格来创建新的模板规格。下面示例显示了新区域的 `westus`，但你可以提供所需的区域。
+1. 使用导出的模板规格创建新的模板规格。下面的示例显示了新区域的 `westus`，但你可以提供所需的区域。
 
    对于 Azure PowerShell，请使用：
 
@@ -93,4 +93,4 @@ ms.locfileid: "88951049"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何将资源移到新的资源组或订阅，请参阅[将资源移到新的资源组或订阅](move-resource-group-and-subscription.md)。
-* 若要了解如何将资源移到新区域，请参阅[跨区域移动 Azure 资源](move-region.md)。
+* 若要了解如何将资源移动到新区域，请参阅[跨区域移动 Azure 资源](move-resources-overview.md#move-resources-across-regions)。

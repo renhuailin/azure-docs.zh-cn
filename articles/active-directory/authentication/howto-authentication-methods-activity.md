@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/16/2021
 ms.author: justinha
 author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0865fb2bda04f5a7e9ba2ef73a717946fa656a5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 699ff88e4181dada5eacaa3f13469722cdf7ceaa
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175305"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530451"
 ---
 # <a name="authentication-methods-activity"></a>身份验证方法活动 
 
@@ -46,7 +46,7 @@ ms.locfileid: "102175305"
 
 若要访问身份验证方法使用情况和见解：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 单击“Azure Active Directory” > “安全性” > “身份验证方法” > “活动”。
 1. 报告中有两个选项卡：“注册”和“使用情况”。
 
@@ -123,7 +123,7 @@ ms.locfileid: "102175305"
 
 - 日期
 - 用户名
-- User 
+- 用户 
 - 功能（注册、重置）
 - 所用方法（应用通知、应用代码、电话呼叫、办公室电话、备用移动电话、短信、电子邮件、安全问题）
 - 状态（成功、失败）
@@ -135,9 +135,10 @@ ms.locfileid: "102175305"
 
 - 报告中的数据不会实时更新，可能会反映长达数小时的延迟。
 - “临时访问密码”注册不会反映在报告的注册选项卡中，因为它们只在短时间内有效。
+- 用户已配置好的 PhoneAppNotification 或 PhoneAppOTP 方法不会显示在仪表板中。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用身份验证方法使用情况报告 API](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [使用身份验证方法使用情况报告 API](/graph/api/resources/authenticationmethods-usage-insights-overview)
 - [为你的组织选择身份验证方法](concept-authentication-methods.md)
 - [合并注册体验](concept-registration-mfa-sspr-combined.md)

@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
 description: 了解如何排查为 Kubernetes 创建策略定义、各种 SDK 和加载项时遇到的问题。
-ms.date: 01/26/2021
+ms.date: 04/19/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f369b16755c09468dbdae2076cc7828a53c8a17
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592611"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752158"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>排查使用 Azure Policy 时出现的错误
 
@@ -67,7 +67,7 @@ ms.locfileid: "100592611"
 
 若要解决策略定义问题，请执行以下操作：
 
-1. 首先，请等待一段时间来完成评估以及等待 Azure 门户或 SDK 中显示符合性结果。 
+1. 首先，请等待一段时间来完成评估，以及等待 Azure 门户或 SDK 中显示符合性结果。
 
 1. 若要使用 Azure PowerShell 或 REST API 开始新的评估扫描，请参阅[按需评估扫描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 1. 确保分配参数和分配范围已正确设置。
@@ -98,7 +98,7 @@ ms.locfileid: "100592611"
 
 通过执行以下操作来排查策略分配的实施问题：
 
-1. 首先，请等待一段时间来完成评估以及等待 Azure 门户或 SDK 中显示符合性结果。 
+1. 首先，请等待一段时间来完成评估以及等待 Azure 门户或 SDK 中显示符合性结果。
 
 1. 若要使用 Azure PowerShell 或 REST API 开始新的评估扫描，请参阅[按需评估扫描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 1. 确保已正确设置分配参数和分配范围，并且已启用“enforcementMode”。
@@ -124,6 +124,24 @@ ms.locfileid: "100592611"
 #### <a name="resolution"></a>解决方法
 
 拒绝策略分配中的错误消息包括策略定义和策略分配 ID。 如果消息中的错误信息丢失，还可在[活动日志](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log)中找到。 使用此信息可获取更多详细信息，以了解资源限制和调整请求中的资源属性以使其匹配允许的值。
+
+### <a name="scenario-definition-targets-multiple-resource-types"></a>场景：定义面向多个资源类型
+
+#### <a name="issue"></a>问题
+
+在创建或更新过程中，包含多个资源类型的策略定义无法通过验证，并出现以下错误：
+
+```error
+The policy definition '{0}' targets multiple resource types, but the policy rule is authored in a way that makes the policy not applicable to the target resource types '{1}'.
+```
+
+#### <a name="cause"></a>原因
+
+策略定义规则有一个或多个条件未由目标资源类型评估。
+
+#### <a name="resolution"></a>解决方法
+
+如果使用了别名，请确保该别名只针对其所属的资源类型进行评估，方法是在它前面添加一个类型条件。 一种替代方法是将策略定义拆分为多个定义，以避免针对多个资源类型。
 
 ## <a name="template-errors"></a>模板错误
 
@@ -220,7 +238,7 @@ Azure Policy 支持大量 ARM 模板函数以及仅在策略定义中可用的�
 
 附加产品无法访问 Azure Policy 服务终结点，并返回以下错误之一：
 
-- `azure.BearerAuthorizer#WithAuthorization: Failed to refresh the Token for request to https://gov-prod-policy-data.trafficmanager.net/checkDataPolicyCompliance?api-version=2019-01-01-preview: StatusCode=404`
+- `azure.BearerAuthorizer#WithAuthorization: Failed to refresh the Token for request to https://gov-prod-policy-data.trafficmanager.net/checkDataPolicyCompliance?api-version=2019-01-01-preview: StatusCode=404`
 - `adal: Refresh request failed. Status Code = '404'. Response body: getting assigned identities for pod kube-system/azure-policy-8c785548f-r882p in CREATED state failed after 16 attempts, retry duration [5]s, error: <nil>`
 
 #### <a name="cause"></a>原因

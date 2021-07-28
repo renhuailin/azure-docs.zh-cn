@@ -1,18 +1,18 @@
 ---
 title: 最佳做法
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
-ms.date: 03/11/2020
+ms.date: 04/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1a53915f4cdbae03fd86137f3a436bb6e9a6f615
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 181f8f8ced4113521c8791fd9e1b5d651776783e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147582"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773334"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
-本文介绍了有效使用 Azure Batch 服务的最佳做法和有用技巧集合，这些做法基于使用 Batch 的实际体验。 这些技巧有助于增强性能，并避免 Azure Batch 解决方案中出现设计缺陷。
+本文介绍有关有效使用 Azure Batch 服务的最佳做法和有用技巧。 这些技巧有助于增强性能，并避免 Batch 解决方案中出现设计缺陷。
 
 > [!TIP]
 > 有关 Azure Batch 安全性的指南，请参阅 [Batch 安全性与合规资最佳做法](security-best-practices.md)。
@@ -23,34 +23,31 @@ ms.locfileid: "108147582"
 
 ### <a name="pool-configuration-and-naming"></a>池配置和命名
 
-- **池分配模式：** 创建 Batch 帐户时，可以在两种池分配模式之间进行选择：**Batch 服务** 或 **用户订阅**。 在大部分情况下，应使用默认的 Batch 服务模式，使用此模式时，池在幕后在 Batch 托管的订阅中分配。 在备用的“用户订阅”模式下，会在创建池后直接在订阅中创建 Batch VM 和其他资源。 用户订阅帐户主要用于实现重要但却不太多见的方案。 有关用户订阅模式的详细信息，请参阅[用户订阅模式的其他配置](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
+- **池分配模式：** 创建 Batch 帐户时，可以在两种池分配模式之间进行选择：**Batch 服务** 或 **用户订阅**。 在大部分情况下，应使用默认的 Batch 服务模式，使用此模式时，池在幕后在 Batch 托管的订阅中分配。 在备用的“用户订阅”模式下，会在创建池后直接在订阅中创建 Batch VM 和其他资源。 用户订阅帐户主要用于实现一小部分但又非常重要的方案。 有关详细信息，请参阅[用户订阅模式的其他配置](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
 
 - **“virtualMachineConfiguration”或“cloudServiceConfiguration”：** 虽然目前可以使用任一配置来创建池，但应使用“virtualMachineConfiguration”而不是“cloudServiceConfiguration”来配置新池。 虚拟机配置池将支持所有当前和新的 Batch 功能。 “云服务配置”池不支持所有功能，也没有计划任何新功能。 [2024 年 2 月 29 日之后](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)，无法创建新的“cloudServiceConfiguration”池，也无法向现有池添加新节点。 有关详细信息，请参阅[将 Batch 池配置从云服务迁移到虚拟机](batch-pool-cloud-service-to-virtual-machine-configuration.md)。
 
-- **确定用于池映射的作业时考虑作业和任务运行时间：** 如果作业主要包括短时间运行的任务，且预期的任务总计数较小，因此作业的总预期运行时间不长，那么，请不要为每个作业分配新池。 节点的分配时间会缩减作业运行时间。
+- 作业和任务运行时间注意事项：如果作业主要包括短时间运行的任务，且预期的任务总数较少，即作业的总预期运行时间不长，则请勿为每个作业分配新池。 节点的分配时间会缩减作业运行时间。
 
-- **池应包含多个计算节点：** 不保证各个节点始终可用。 硬件故障、操作系统更新和其他许多问题虽然不太常见，但它们可能会导致个别节点脱机。 如果 Batch 工作负荷需要具有确定性且有保证的进度，则你应该分配包含多个节点的池。
+- 多个计算节点：不保证各个节点始终可用。 硬件故障、操作系统更新和其他许多问题虽然不太常见，但它们可能会导致个别节点脱机。 如果 Batch 工作负荷需要具有确定性且有保证的进度，则你应该分配包含多个节点的池。
 
-- 不要使用生命周期结束 (EOL) 日期临近的映像。
-    强烈建议避免使用 Batch 支持生命周期结束 (EOL) 日期临近的映像。 可以通过 [`ListSupportedImages` API](/rest/api/batchservice/account/listsupportedimages)、[PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage) 或 [Azure CLI](/cli/azure/batch/pool/supported-images) 发现这些日期。 你负责定期刷新与池相关的 EOL 日期视图，并在 EOL 日期到来之前迁移工作负荷。 如果要在指定的节点代理中使用自定义映像，则需确保在从某个映像派生自定义映像后，或者根据某个映像创建自定义映像后，沿用该映像的 Batch 支持生命周期结束日期。
+- 生命周期结束 (EOL) 日期临近的映像：强烈建议避免使用 Batch 支持生命周期结束 (EOL) 日期临近的映像。 可以通过 [`ListSupportedImages` API](/rest/api/batchservice/account/listsupportedimages)、[PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage) 或 [Azure CLI](/cli/azure/batch/pool/supported-images) 发现这些日期。 你负责定期刷新与池相关的 EOL 日期视图，并在 EOL 日期到来之前迁移工作负荷。 如果要在指定的节点代理中使用自定义映像，请确保在从某个映像派生自定义映像后，或者根据某个映像创建自定义映像后，沿用该映像的 Batch 支持生命周期结束日期。
 
-- **不要重复使用资源名称。**
-    我们往往会不断地分配和解除 Batch 资源（作业、池等）。 例如，你可能会在星期一创建一个池，在星期二将它删除，然后在星期四又创建一个池。 应为创建的每个新资源指定一个以前从未用过的唯一名称。 为此，可以使用 GUID（作为整个资源名称或其中的一部分），或者在资源名称中嵌入资源的创建时间。 Batch 支持 [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)，使用此属性可为资源指定一个用户可读的名称，即使实际资源 ID 不够用户友好。 使用唯一名称可以更方便地区分哪个特定资源在日志和指标中产生了影响。 如果需要针对某个资源提交支持案例，唯一名称还可以消除不明确性。
-
+- 唯一的资源名称：我们往往会不断地分配和解除 Batch 资源（作业、池等）。 例如，你可能会在星期一创建一个池，在星期二将它删除，然后在星期四又创建一个类似的池。 应为创建的每个新资源指定一个以前从未用过的唯一名称。 为此，可以使用 GUID（作为整个资源名称或其中的一部分），或者在资源名称中嵌入资源的创建日期和时间。 Batch 支持 [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)，此属性可为资源指定一个更易读的名称（即使实际资源 ID 不够易读）。 使用唯一名称可以更方便地区分哪个特定资源在日志和指标中产生了影响。 如果需要针对某个资源提交支持案例，唯一名称还可以消除不明确性。
 
 - **池维护和故障期间的连续性：** 最好是让作业动态使用池。 如果作业将同一个池用于所有用途，在该池出现问题时，作业有可能无法运行。 这对于时间敏感型工作负载尤其重要。 若要解决此问题，请在计划每个作业时动态选择或创建池，或通过某种方式替代池名称，以便可以绕过运行不正常的池。
 
-- **池维护和故障期间的业务连续性：** 有许多原因（例如内部错误、容量约束等）会导致池无法缩放到所需的大小。出于此原因，应当做好相应准备，以便在必要时将作业目标重新定为不同的池（也许可以使用不同的 VM 大小 - Batch 通过 [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update) 实现此目的）。 避免使用预计永远不会删除或更改的静态池 ID。
+- 池维护和故障期间的业务连续性：有许多原因（例如内部错误或容量约束）会导致池无法增长到所需的大小。 确保可以在必要时将作业目标重新定为不同的池（也许可以使用不同的 VM 大小；Batch 支持通过 [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update) 实现此目的）。 避免依赖于预计永远不会删除或更改的静态池 ID。
 
 ### <a name="pool-lifetime-and-billing"></a>池生存期和计费
 
-池生存期可能根据分配方法和应用于池配置的选项而有所不同。 池可以具有任意生存期，并且在任意时间点，池中的计算节点数可能会变化。 你需要负责显式管理池中的计算节点，或者通过服务提供的功能（[自动缩放](nodes-and-pools.md#automatic-scaling-policy)或[自动池](nodes-and-pools.md#autopools)）进行管理。
+池生存期可能根据分配方法和应用于池配置的选项而有所不同。 池可以具有任意生存期，并且在任意时间点，计算节点数可能会变化。 你需要负责显式管理池中的计算节点，或者通过服务提供的功能（[自动缩放](nodes-and-pools.md#automatic-scaling-policy)或[自动池](nodes-and-pools.md#autopools)）进行管理。
 
-- **使池保持最新状态：** 每隔几个月将池的大小调整为零，以确保获得 [最新的节点代理更新和 bug 修复](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 除非重新创建池或者将其大小调整为 0 个计算节点，否则池不会接收节点代理更新。 重新创建池或调整池大小之前，建议根据[节点](#nodes)部分中所述，下载所有节点代理日志进行调试。
+- 使池保持最新状态：每隔几个月将池的大小调整为零，以确保获得[最新的节点代理更新和 bug 修复](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 除非重新创建池（或者将其大小调整为 0 个计算节点），否则池不会接收节点代理更新。 在重新创建池或重设池大小之前，应根据[节点](#nodes)部分中所述，下载所有节点代理日志进行调试。
 
-- **重新创建池：** 同样需要注意的是，不建议每天删除再重新创建池。 应该创建新池，并将现有作业更新为指向新池。 将所有任务移到新池后删除旧池。
+- 重新创建池：同样需要注意的是，避免每天删除再重新创建池。 应该创建新池，然后将现有作业更新为指向新池。 将所有任务移到新池后删除旧池。
 
-- **池效率和计费：** Batch 本身不会产生额外的费用，但使用的计算资源确实会产生费用。 你需要为池中的每个计算节点付费，不管这些节点处于何种状态。 这包括运行节点所需的任何费用，例如存储和网络成本。 若要详细了解最佳做法，请参阅 [Azure Batch 的成本分析和预算](budget.md)。
+- **池效率和计费：** Batch 本身不会产生额外的费用，但使用的计算资源确实会产生费用。 你需要为池中的每个计算节点付费，不管这些节点处于何种状态。 这包括运行节点所需的任何费用，例如存储和网络成本。 有关详细信息，请参阅 [Azure Batch 的成本分析和预算](budget.md)。
 
 ### <a name="pool-allocation-failures"></a>池分配失败
 
@@ -58,9 +55,7 @@ ms.locfileid: "108147582"
 
 ### <a name="unplanned-downtime"></a>计划外停机
 
-Azure 中的 Batch 池可能会遇到停机事件。 在规划和开发 Batch 方案或工作流时，请牢记这一点。
-
-如果某个节点发生故障，Batch 会代表你自动尝试恢复这些计算节点。 这可能会触发在恢复的节点上重新计划任何正在运行的任务。 若要详细了解中断的任务，请参阅[重试设计](#design-for-retries-and-re-execution)。
+Azure 中的 Batch 池可能会遇到停机事件。 在规划和开发 Batch 方案或工作流时，请牢记这一点。 如果节点发生故障，Batch 会代表你自动尝试恢复这些计算节点。 这可能会触发在恢复的节点上重新计划任何正在运行的任务。 若要详细了解中断的任务，请参阅[重试设计](#design-for-retries-and-re-execution)。
 
 ### <a name="custom-image-pools"></a>自定义映像池
 
@@ -72,7 +67,9 @@ Azure 中的 Batch 池可能会遇到停机事件。 在规划和开发 Batch �
 
 ### <a name="azure-region-dependency"></a>Azure 区域依赖项
 
-如果你有时间敏感型工作负载或生产工作负载，则你不应依赖单个 Azure 区域。 有些问题虽然极少出现，但可能会影响整个区域。 例如，如果处理需要在特定的时间开始，请考虑在开始之前的相当长一段时间纵向扩展主要区域中的池。 如果扩展该池失败，可以回退并在一个或多个备份区域中纵向扩展池。 如果另一个池出现问题，跨不同区域中多个帐户的池可提供一个现成的且易于访问的备份。 有关详细信息，请参阅[设计应用程序以实现高可用性](high-availability-disaster-recovery.md)。
+如果你有时间敏感型工作负载或生产工作负载，则你不应依赖单个 Azure 区域。 有些问题虽然极少出现，但可能会影响整个区域。 例如，如果处理需要在特定的时间开始，请考虑在开始之前的相当长一段时间纵向扩展主要区域中的池。 如果扩展该池失败，可以回退并在一个或多个备份区域中纵向扩展池。
+
+如果另一个池出现问题，跨不同区域中多个帐户的池可提供一个现成的且易于访问的备份。 有关详细信息，请参阅[设计应用程序以实现高可用性](high-availability-disaster-recovery.md)。
 
 ## <a name="jobs"></a>作业
 
@@ -82,7 +79,7 @@ Azure 中的 Batch 池可能会遇到停机事件。 在规划和开发 Batch �
 
 使用一个作业运行单个任务是低效的做法。 例如，使用包含 1000 个任务的单个作业，比创建 100 个作业并在每个作业中包含 10 个任务更高效。 运行 1000 个作业并在每个作业中包含单个任务是最低效、速度最慢且成本最高的做法。
 
-因此，请确保不要设计同时需要数千个活动作业的 Batch 解决方案。 不存在针对任务的配额，因此，通过尽量少的作业执行尽量多的任务可以有效利用[作业和作业计划配额](batch-quota-limit.md#resource-quotas)。
+因此，请避免设计同时需要数千个活动作业的 Batch 解决方案。 不存在针对任务的配额，因此，通过尽量少的作业执行尽量多的任务可以有效利用[作业和作业计划配额](batch-quota-limit.md#resource-quotas)。
 
 ### <a name="job-lifetime"></a>作业生存期
 
@@ -94,11 +91,11 @@ Azure 中的 Batch 池可能会遇到停机事件。 在规划和开发 Batch �
 
 ## <a name="tasks"></a>任务
 
-[任务](jobs-and-tasks.md#tasks)是构成作业的单个工作单位。 任务由用户提交，并由 Batch 在计算节点上进行计划。 创建和执行任务时，需要考虑多个设计注意事项。 以下各部分介绍了常见方案，以及如何设计任务以便能够处理问题并有效地执行任务。
+[任务](jobs-and-tasks.md#tasks)是构成作业的单个工作单位。 任务由用户提交，并由 Batch 在计算节点上进行计划。 以下部分提供了有关设计任务以处理问题并保持高效性能的建议。
 
 ### <a name="save-task-data"></a>保存任务数据
 
-计算节点具有瞬态性。 Batch 中的许多功能（例如[自动池](nodes-and-pools.md#autopools)和[自动缩放](nodes-and-pools.md#automatic-scaling-policy)）很容易使节点消失。 当节点离开池时（由于重设大小或删除池），这些节点上的所有文件也会一并删除。 因此，在某个任务完成之前，它应将其自身的输出从运行它的节点移到持久存储。 同样，如果任务失败，则应将诊断失败问题所需的日志移到持久存储。
+计算节点具有瞬态性。 [自动汇集](nodes-and-pools.md#autopools)和[自动缩放](nodes-and-pools.md#automatic-scaling-policy)等 Batch 功能很容易使节点消失。 当节点离开池时（由于调整大小或删除池），这些节点上的所有文件也会一并删除。 因此，在某个任务完成之前，它应将其自身的输出从运行它的节点移到持久存储。 同样，如果任务失败，则应将诊断失败问题所需的日志移到持久存储。
 
 Batch 中集成了用于通过 [OutputFiles](batch-task-output-files.md) 上传数据的支持 Azure 存储以及各种共享文件系统，你也可以在任务中自行执行上传。
 
@@ -160,29 +157,19 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 在清理任务和作业时，很难处理目录联接（有时称为目录硬链接）。 请使用符号链接（软链接），而不要使用硬链接。
 
-### <a name="collect-the-batch-agent-logs"></a>收集 Batch 代理日志
+### <a name="collect-batch-agent-logs"></a>收集 Batch 代理日志
 
 如果发现节点的行为或节点上运行的任务出现问题，请在解除分配有问题的节点之前收集 Batch 代理日志。 可以使用“上传 Batch 服务日志”API 收集 Batch 代理日志。 可将这些日志作为支持票证的一部分提供给 Microsoft，它们将有助于排查和解决问题。
 
 ### <a name="manage-os-upgrades"></a>管理 OS 升级
 
-对于用户订阅模式 Batch 帐户，自动 OS 升级可能会中断任务进程，尤其是在任务长时间运行的情况下。 [生成幂等任务](#build-durable-tasks)有助于减少由这些中断导致的错误。 我们还建议[在任务不需要运行时安排 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
+对于用户订阅模式 Batch 帐户，自动 OS 升级可能会中断任务进程，尤其是在任务长时间运行的情况下。 [生成幂等任务](#build-durable-tasks)有助于减少由这些中断导致的错误。 我们还建议[将 OS 映像升级安排在任务不需要运行时](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
 
 对于 Windows 池，默认情况下 `enableAutomaticUpdates` 设置为 `true`。 建议允许自动更新，但如果需要确保不会意外进行 OS 更新，则可以将此值设置为 `false`。
 
 ## <a name="isolation-security"></a>隔离安全性
 
 出于隔离目的，如果方案需要将作业相互隔离，请通过将这些作业放入不同的池中进行隔离。 池是 Batch 中的安全隔离边界，默认情况下，两个池之间互不可见，相互之间也无法通信。 请避免使用单独的 Batch 帐户作为隔离方式。
-
-## <a name="moving-batch-accounts-across-regions"></a>跨区域移动 Batch 帐户
-
-在某些情况下，将现有 Batch 帐户从一个区域移到另一个区域可能会很有帮助。 例如在灾难恢复计划中，你可能想将帐户移到另一个区域。
-
-Azure Batch 帐户无法直接从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板来导出 Batch 帐户的现有配置。 然后，可将资源暂存在另一区域，方法是：将 Batch 帐户导出到模板，根据目标区域的情况修改参数，然后将模板部署到新区域。
-
-将模板上传到新区域后，必须重新创建证书、作业计划和应用程序包。 若要提交更改并完成 Batch 帐户的移动，请记得删除原始 Batch 帐户或资源组。
-
-有关资源管理器和模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 ## <a name="connectivity"></a>连接
 

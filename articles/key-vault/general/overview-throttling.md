@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7a215b53f673a7414f1b3662f519de5c26faaa9d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: f9e3f2095e6fd7a744769c11209ed115767c3aed
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749525"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492588"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
 
@@ -36,21 +36,7 @@ Key Vault 最初是根据 [Azure Key Vault 服务限制](service-limits.md)中�
 1. 如果使用 Key Vault 存储服务的凭据，请检查该服务是否支持使用 Azure AD 身份验证直接进行身份验证。 这可以减少 Key Vault 中的负载，提高可靠性并简化代码，因为 Key Vault 现在可以使用 Azure AD 令牌。  许多服务已改用 Azure AD 身份验证。在[支持 Azure 资源托管标识的 Azure 服务](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)中查看最新列表。
 1. 考虑在一个较长的时间段内错开负载/部署，使其不会超过当前的 RPS 限制。
 1. 如果应用包含多个需要读取相同机密的节点，请考虑使用扇出模式，让一个实体从 Key Vault 读取机密，并扇出到所有节点。   仅在内存中缓存检索的机密。
-如果你发现上述方案仍不能满足需求，请填写下表并联系我们，以确定可以添加多少附加容量（例如，以下示例仅供演示目的）。
 
-| 保管库名称 | 保管库区域 | 对象类型（机密、密钥或证书） | 操作* | 键类型 | 密钥长度或曲线 | HSM 密钥？| 所需的稳定状态 RPS | 所需的峰值 RPS |
-|--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | 键 | 签名 | EC | P-256 | 否 | 200 | 1000 |
-
-\* 有关可能值的完整列表，请参阅 [Azure Key Vault 操作](/rest/api/keyvault/key-operations)。
-
-如果增加容量已获批准，请注意容量增加后的以下考虑因素：
-1. 数据一致性模型更改。 将吞吐量容量更高的保管库加入允许列表后，Key Vault 服务数据一致性保证会发生更改（需要满足更大量的 RPS，因为底层 Azure 存储服务无法跟进）。  简而言之：
-  1. **不使用允许列表**：Key Vault 服务在后续调用（例如 SecretGet、KeySign）中会立即反映写入操作（例如 SecretSet、CreateKey）的结果。
-  1. **使用允许列表**：Key Vault 服务在 60 秒内在后续调用（例如 SecretGet、KeySign）中反映写入操作（例如 SecretSet、CreateKey）的结果。
-1. 客户端代码必须遵循 429 次重试的退避策略。 调用 Key Vault 服务的客户端代码在收到 429 响应代码时，不得立即重试 Key Vault 请求。  此处发布的 Azure Key Vault 限制指导建议在收到 429 Http 响应代码时立即应用指数退避。
-
-如果出现限制值较高的有效业务用例，请与我们联系。
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>如何针对服务限制来限制应用
 

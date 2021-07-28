@@ -3,22 +3,22 @@ title: 导入容器映像
 description: 使用 Azure API 将容器映像导入到 Azure 容器注册表中，无需运行 Docker 命令。
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e7becadab7f23acd7b85d6d82fd8abbfa7608add
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988246"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781516"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>向容器注册表导入容器映像
 
 可以轻松将容器映像导入（复制）到 Azure 容器注册表中，无需使用 Docker 命令。 例如，将映像从开发注册表导入到生产注册表，或者从公共注册表复制基础映像。
 
-Azure 容器注册表可灵活应对许多常见方案，以便从现有注册表复制映像：
+Azure 容器注册表可灵活应对许多常见方案，以便从现有注册表复制映像和其他工件：
 
-* 从公共注册表导入
+* 从公共注册表导入映像
 
-* 在同一或不同 Azure 订阅或租户中从另一个 Azure 容器注册表导入
+* 从其他 Azure 容器映像（在同一个或不同的 Azure 订阅或租户中）导入映像或 OCI 工件（包括 Helm 3 图表）
 
 * 从非 Azure 专用容器注册表导入
 
@@ -188,6 +188,6 @@ az acr import \
 
 
 <!-- LINKS - Internal -->
-[az-login]: /cli/azure/reference-index#az-login
-[az-acr-import]: /cli/azure/acr#az-acr-import
+[az-login]: /cli/azure/reference-index#az_login
+[az-acr-import]: /cli/azure/acr#az_acr_import
 [azure-cli]: /cli/azure/install-azure-cli

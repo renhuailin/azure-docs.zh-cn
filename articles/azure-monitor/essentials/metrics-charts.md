@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
-ms.openlocfilehash: d728dfb364cb0f82326a472196cb28d79b85b1e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8564f96ad311a07ccf4582f274e44e6ebd1e0c85
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031429"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758496"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 
@@ -71,13 +71,34 @@ ms.locfileid: "102031429"
 > [!NOTE]
 > 通常，图表不应混合那些使用不同度量单位的指标。 例如，应避免将一个使用毫秒的指标与另一个使用千字节的指标混合使用。 还应避免混合使用尺度差别很大的指标。 
 >
-> 在这些情况下，请考虑改用多个图表。 在指标资源管理器中，选择“添加图表”以创建新的图表。
+> 在这些情况下，请考虑改用多个图表。 在指标资源管理器中，选择“新建图表”以创建新的图表。
+
+![显示多个指标的屏幕截图。](./media/metrics-charts/multiple-metrics-chart.png)
 
 ### <a name="multiple-charts"></a>多个图表
 
-若要使用另一指标创建另一图表，请选择“添加图表”。
+若要使用另一指标创建另一图表，请选择“新建图表”。
 
 若要对多个图表重新排序或将其删除，请选择省略号 ( **...** ) 按钮以打开图表菜单。 然后，选择“上移”、“下移”或“删除”。
+
+![显示多个图表的屏幕截图。](./media/metrics-charts/multiple-charts.png)
+
+## <a name="time-range-controls"></a>时间范围控件
+
+除了使用[时间选取器面板](metrics-getting-started.md#select-a-time-range)来更改时间范围外，还可以使用图表区中的控件进行平移和缩放。
+### <a name="pan"></a>平移
+
+若要平移，请单击图表边缘的向左和向右箭头。  这会将选定的时间范围前后移动图表的时间跨度的一半。  例如，如果你正在查看过去 24 小时，单击左箭头将导致时间范围转换为一天半至 12 小时前。
+
+大多数指标支持 93 天的保留期，但一次只能查看 30 天。  使用平移控件，可以查看过去 30 天的内容，并可以一次轻松后退 15 天，以查看保留期的剩余部分。
+
+![动态 gif 显示左平移和右平移控件。](./media/metrics-charts/metrics-pan-controls.gif)
+
+### <a name="zoom"></a>缩放
+
+你可以在图表上单击并拖动以放大图表中的某个部分。  缩放将按照你选择的范围更新图表的时间范围，并且如果将时间粒度设置为“自动”，将选择较小的时间粒度。  新时间范围将应用于指标中的所有图表。
+
+![显示指标缩放功能的动态 gif。](./media/metrics-charts/metrics-zoom-control.gif)
 
 ## <a name="aggregation"></a>聚合
 
@@ -230,17 +251,17 @@ ms.locfileid: "102031429"
 有关详细信息，请参阅[创建、查看和管理指标警报](../alerts/alerts-metric.md)。
 
 ## <a name="correlate-metrics-to-logs"></a>将指标关联到日志
-为了帮助客户诊断其指标图表中异常的根本原因，我们已创建“深入查看日志”。 使用“深入查看日志”，客户能将指标图表中的峰值与日志和查询相关联。 
+为了帮助客户对其指标图表中异常情况的根本原因进行诊断，我们创建了“深入查看日志”。 利用“深入查看日志”，客户可以将其指标图表中的峰值与日志和查询关联起来。 
 
-在深入探讨该体验之前，我们首先要介绍提供的不同类型的日志和查询。 
+在深入探讨这个体验之前，需要先介绍提供的不同类型的日志和查询。 
 
 | 术语             | 定义  | 
 |------------------|-------------|
-| 活动日志    | 了解从外部（管理平台）  对订阅中的每个 Azure 资源执行的操作，以及对服务运行状况事件进行的更新。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作”、“谁操作”和“操作时间”等信息。 每个 Azure 订阅都有一个活动日志。  |   
-| 诊断日志   | 深入了解在 Azure 资源（数据平面）内执行的操作，例如，从 Key Vault 获取机密，或向数据库发出请求。 资源日志的内容因 Azure 服务和资源类型而异。 **注意：** 必须由服务提供并由客户启用  | 
-| 推荐的日志 | 基于场景的查询，客户可将其用于调查指标资源管理器中的异常。  |
+| 活动日志    | 了解从外部（管理平台）  对订阅中的每个 Azure 资源执行的操作，以及对服务运行状况事件进行的更新。 通过活动日志，可确定订阅中资源上进行的任何写入操作（PUT、POST、DELETE）的“什么操作、谁操作和操作时间”等信息。 每个 Azure 订阅都有一个活动日志。  |   
+| 诊断日志   | 深入了解在 Azure 资源（数据平面）内执行的操作，例如，从 Key Vault 获取机密，或向数据库发出请求。 资源日志的内容因 Azure 服务和资源类型而异。 注意：必须由服务提供并由客户启用  | 
+| 建议的日志 | 基于方案的查询，客户可利用这些查询来调查其指标资源管理器中的异常情况。  |
 
-目前，“深入查看日志”可供选定的资源提供程序使用。 具有完整的“深入查看日志”体验的资源提供程序包括： 
+目前，“深入查看日志”可用于特选的资源提供程序。 具有完整“深入查看日志”体验的资源提供程序为： 
 
 * Application Insights 
 * 自动缩放 
@@ -249,20 +270,20 @@ ms.locfileid: "102031429"
 
 下面是 Application Insights 资源提供程序的示例体验。
 
-![“App Insights 指标”边栏选项卡中的失败峰值](./media/metrics-charts/drill-into-log-ai.png)
+![App Insights“指标”边栏选项卡中失败的请求的峰值](./media/metrics-charts/drill-into-log-ai.png)
 
 若要诊断失败的请求的峰值，请单击“深入查看日志”。
 
-![“深入查看日志”下拉菜单的屏幕截图](./media/metrics-charts/drill-into-logs-dropdown.png)
+![“深入查看日志”下拉列表的屏幕截图](./media/metrics-charts/drill-into-logs-dropdown.png)
 
-单击“失败”选项可打开一个自定义的“失败”边栏选项卡，该边栏选项卡提供失败的操作、最多的异常类型以及依赖项。 
+单击“失败”选项就会出现“自定义故障”边栏选项卡，其中提供了失败的操作、数量最多的异常类型和依赖项。 
 
-![“App Insights 失败”边栏选项卡的屏幕截图](./media/metrics-charts/ai-failure-blade.png)
+![App Insights“失败”边栏选项卡的屏幕截图](./media/metrics-charts/ai-failure-blade.png)
 
 ### <a name="common-problems-with-drill-into-logs"></a>“深入查看日志”的常见问题
 
-* 日志和查询已禁用 - 若要查看推荐的日志和查询，必须将诊断日志路由到 Log Analytics。 阅读[本文档](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)了解如何执行此操作。 
-* 仅提供活动日志 -”深入查看日志”功能仅适用于选定的资源提供程序。 默认情况下会提供活动日志。 
+* 日志和查询已禁用 - 若要查看建议的日志和查询，必须将诊断日志路由到 Log Analytics。 请阅读[此文档](./diagnostic-settings.md)以了解如何执行此操作。 
+* 只提供活动日志 -“深入查看日志”功能只适用于特选的资源提供程序。 在默认情况下提供的是活动日志。 
 
  
 ## <a name="troubleshooting"></a>故障排除
@@ -278,4 +299,3 @@ ms.locfileid: "102031429"
 ## <a name="next-steps"></a>后续步骤
 
 若要使用指标创建可操作的仪表板，请参阅[创建自定义 KPI 仪表板](../app/tutorial-app-dashboards.md)。
-

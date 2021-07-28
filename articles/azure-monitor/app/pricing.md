@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 3/30/2021
+ms.date: 5/05/2021
 ms.reviewer: lagayhar
-ms.openlocfilehash: e048e788e674e90a62b15784c590c07e5d36b816
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 1ed9fc345b1c8afe416b4b98c621fc1c9b48a557
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078394"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795251"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -197,8 +197,11 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
  
 * **每日上限**：在 Azure 门户中创建 Application Insights 资源时，每日上限设置为 100 GB/天。 在 Visual Studio 中创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天）。 设置每日上限默认值，以便进行测试。 可预期用户在将应用部署到生产环境之前，会提高每日上限。 
 
-    除非为高流量应用程序请求了更高的最大值，否则最大上限是 1000 GB/天。
+    除非为高流量应用程序请求了更高的最大值，否则 Application Insights 中的最大上限是 1,000 GB/天。
     
+    > [!TIP]
+    > 如果有基于工作区的 Application Insights 资源，我们建议使用[工作区的每日上限](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)（而不是 Application Insights 中的上限）来限制引入和成本。
+
     有关每日上限的提醒电子邮件将发送到作为 Application Insights 资源的以下角色的成员的帐户：“ServiceAdmin”、”AccountAdmin”、”CoAdmin”、”Owner”。
 
     设置每日上限时，务必小心。 你的目标应该是“永远不会达到每日上限”。 如果达到每日上限，会丢失当天剩余时间的数据，无法监视应用程序。 若要更改每日上限，请使用“每日容量上限”选项。 可在“使用情况和预估成本”窗格中访问此选项（本文后面会详述）。
@@ -210,6 +213,9 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 ## <a name="manage-your-maximum-daily-data-volume"></a>管理每日最大数据量
 
 可以使用每日容量上限，限制所收集的数据。 但是，如果达到上限，会丢失当天剩余时间从应用程序发送的所有遥测数据。 不建议使应用程序达到每日上限。 达到每日上限后，无法跟踪应用程序的运行状况和性能。
+
+> [!WARNING]
+> 如果有基于工作区的 Application Insights 资源，我们建议使用[工作区的每日上限](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)来限制引入和成本。 Application Insights 中的每日上限可能不会在所有情况下将引入限制到所选级别。 （如果 Application Insights 资源正在引入大量数据，可能需要提高 Application Insights 每日上限。）
 
 不使用每日容量上限，而是使用[采样](./sampling.md)，将数据量调整到所需级别。 然后，仅在应用程序意外开始发送远高于预期的遥测量时，才使用每日上限作为“最后的手段”。
 
@@ -326,7 +332,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>演示如何确定不同节点计数的示例
 
-| 场景                               | 每日节点计数总数 |
+| 方案                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
 | 3 个应用程序正运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，并且位于“按节点”层中 | 2 | 

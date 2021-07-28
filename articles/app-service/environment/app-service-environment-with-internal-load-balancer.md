@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021514"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配应用服务环境使用内部负载均衡器
@@ -58,7 +58,7 @@ ms.locfileid: "96021514"
 
 在“虚拟网络”窗格中有一个“VNet 配置”选项，用于选择“外部 VIP”或“内部 VIP”。 默认为“外部”。 如果将其设置为“外部”，ASE 会使用可通过 Internet 访问的 VIP。 如果选择“内部”，则会在 VNet 中的 IP 地址上对 ASE 配置 ILB。 
 
-选择“内部”后，无法向 ASE 添加更多 IP 地址，取而代之的是必须提供 ASE 的子域。 在使用外部 VIP 的 ASE 中，ASE 的名称会在子域中用于在该 ASE 中创建的应用。 如果 ASE 名为“contosotest”，而在该 ASE 中的应用名为“mytest”，则子域的格式为“contosotest.p.azurewebsites.net”，该应用的 URL 为“mytest.contosotest.p.azurewebsites.net” _*。如果将“VIP 类型”设置为“内部”，ASE 名称不会在 ASE 的子域中使用。可以显式指定子域。如果子域为“contoso.corp.net”*_ ，而你在该 ASE 中创建的应用名为“timereporting” ，则该应用的 URL 为“timereporting.contoso.corp.net”_* **。
+选择“内部”后，无法向 ASE 添加更多 IP 地址，取而代之的是必须提供 ASE 的子域。 在使用外部 VIP 的 ASE 中，ASE 的名称会在子域中用于在该 ASE 中创建的应用。 如果你的 ASE 名为 contosotest，并且该 ASE 中的应用名为 mytest，则子域的格式为 contosotest.p.azurewebsites.net该应用的 URL 为 mytest.contosotest.p.azurewebsites.net。如果将 VIP 类型设置为内部，则 ASE 的子域中不会使用你的 ASE 名称。请明确指定子域。如果子域是 contoso.corp.net 并且你在该 ASE 中创建了一个名为 timereporting 的应用，则该应用的 URL 为 timereporting.contoso.corp.net  _*_   。
 
 ## <a name="apps-in-an-ilb-ase"></a>ILB ASE 中的应用
 在 ILB ASE 中创建应用通常与在 ASE 中创建应用相同。 
@@ -68,7 +68,7 @@ ms.locfileid: "96021514"
 3. 选择订阅。
 4. 选择或创建资源组。
 5. 选择或创建应用服务计划 (ASP)。 如果创建新的 ASP，请选择 ASE 作为位置并选择希望在其中创建 ASP 的工作线程池。 创建该 ASP 时，请选择 ASE 作为位置并选择工作线程池。 指定应用的名称时，会看到应用名称下面的子域替换为 ASE 的子域。 
-6. 选择“创建”  。 如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。 
+6. 选择“创建”。 如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。 
 
 ![演示如何在 Azure 门户的 ILB ASE 中创建应用。][2]
 

@@ -7,18 +7,18 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c9412e2adeb9b43b4c61437fb41e68bc96b86afd
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 41610bb956273fa69119d6b87a016072a5e4faa2
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481823"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749872"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT Edge 子设备上启用脱机操作。 只要 IoT Edge 设备有机会连接到 IoT 中心，该设备和任何子设备就可以在间歇性或无 Internet 连接的情况下继续运作。
+Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，并且也会在子设备上启用脱机操作。 只要 IoT Edge 设备有机会连接到 IoT 中心，该设备和任何子设备就可以在间歇性或无 Internet 连接的情况下继续运作。
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -28,7 +28,7 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT
 
 1. **配置设备**
 
-   IoT Edge 设备自动启用脱机功能。 若要将此功能扩展到其他 IoT 设备，需要在 IoT 中心声明设备之间的父子关系。 然后，将子设备配置为信任其分配的父设备，并通过作为网关的父设备路由设备到云的通信。
+   IoT Edge 设备自动启用脱机功能。 若要将此功能扩展到其他设备，需要将子设备配置为信任其分配的父设备，并通过作为网关的父设备路由设备到云的通信。
 
 2. **与 IoT 中心同步**
 
@@ -36,68 +36,57 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT
 
 3. **脱机**
 
-   从 IoT 中心断开连接时，IoT Edge 设备及其部署模块和任何 IoT 子设备都可以无限期运行。 模块和子设备可以在脱机状态下通过在 IoT Edge 中心进行身份验证来启动和重新启动。 上游绑定到 IoT 中心的遥测存储在本地。 模块之间或 loT 子设备之间的通信通过直接方法或消息来维护。
+   从 IoT 中心断开连接时，IoT Edge 设备及其部署的模块和任何子设备都可以无限期运行。 模块和子设备可以在脱机状态下通过在 IoT Edge 中心进行身份验证来启动和重新启动。 上游绑定到 IoT 中心的遥测存储在本地。 模块之间或子设备之间的通信通过直接方法或消息来维护。
 
 4. **与 IoT 中心重新连接和重新同步**
 
    一旦还原与 IoT 中心的连接，IoT Edge 设备会再次同步。 本地存储的消息会立即传递到 IoT 中心，但取决于连接速度、IoT 中心延迟和相关因素。 这些消息按照它们存储的相同顺序传递。
 
-   模块和设备的所需属性和报告属性之间的差异已得到协调。 IoT Edge 设备更新对其分配的 IoT 子设备集所做的任何更改。
+   模块和设备的所需属性和报告属性之间的差异已得到协调。 IoT Edge 设备更新对其分配的子设备集所做的任何更改。
 
 ## <a name="restrictions-and-limits"></a>约束和限制
 
 本文所述的扩展脱机功能可在 [IoT Edge 1.0.7 版或更高版本](https://github.com/Azure/azure-iotedge/releases)中获得。 早期版本有一个脱机功能子集。 不具备扩展脱机功能的现有 IoT Edge 设备不能通过更改运行时版本进行升级，但是必须用新的 IoT Edge 设备标识重新配置才能获得这些功能。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 只能添加非 IoT Edge 设备作为子设备。
+
+:::moniker-end
+<!-- end 1.1 -->
 
 IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无限期脱机运行。但是，消息存储取决于生存时间 (TTL) 设置和存储消息的可用磁盘空间。
 
 ## <a name="set-up-parent-and-child-devices"></a>设置父设备和子设备
 
-对于将其扩展脱机功能扩展到 IoT 子设备的 IoT Edge 设备，需要完成两个步骤。 首先，在 Azure 门户中声明父子关系。 其次，在父设备与任何子设备之间建立信任关系，然后将设备到云的通信配置为通过父设备（用作网关）路由。
+父设备可以有多个子设备，但一个子设备只能有一个父设备。
 
-### <a name="assign-child-devices"></a>分配子设备
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
-子设备可以是注册到同一个 IoT 中心的任何非 IoT Edge 设备。 父设备可以有多个子设备，但一个子设备只能有一个父设备。 可以使用三个选项在 Edge 设备中设置子设备：使用 Azure 门户、Azure CLI 或 IoT 中心服务 SDK。
+子设备可以是注册到同一个 IoT 中心的任何非 IoT Edge 设备。
 
-以下部分举例说明如何在 IoT 中心为现有的 IoT 设备声明父/子关系。 若要为子设备创建新的设备标识，请参阅[在 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)了解详细信息。
+:::moniker-end
+<!-- end 1.1 -->
 
-#### <a name="option-1-iot-hub-portal"></a>选项 1：IoT 中心门户
+<!-- 1.2 -->
+:::moniker range="iotedge-2020-11"
 
-可以在创建新设备时声明父子关系。 或者，对于现有的设备，可以从 IoT Edge 父设备或 IoT 子设备的设备详细信息页声明关系。
+子设备可以是注册到同一个 IoT 中心的任何 IoT Edge 设备或非 IoT Edge 设备。
 
-   ![从 IoT Edge 设备的详细信息页管理子设备](./media/offline-capabilities/manage-child-devices.png)
+:::moniker-end
+<!-- end 1.2 -->
 
-#### <a name="option-2-use-the-az-command-line-tool"></a>选项 2：使用 `az` 命令行工具
+如果你不知道如何在 IoT Edge 设备与 IoT 设备之间创建父子关系，请参阅[通过 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)。 对称密钥、自签名 X.509 和 CA 签名的 X.509 部分提供了示例来演示了在创建设备时如何使用 Azure 门户和 Azure CLI 来定义父子关系。 对于现有设备，可以从父或子设备的设备详细信息页声明关系。
 
-将 [Azure 命令行接口](/cli/azure/)与 [IoT 扩展](https://github.com/azure/azure-iot-cli-extension)（v0.7.0 或更高版本）配合使用时，可以通过 [device-identity](/cli/azure/iot/hub/device-identity/) 子命令管理父子关系。 以下示例使用一个查询将中心内的所有非 IoT Edge 设备分配为 IoT Edge 设备的子设备。
+<!-- 1.2 -->
+:::moniker range="iotedge-2020-11"
 
-```azurecli
-# Set IoT Edge parent device
-egde_device="edge-device1"
+如果你不知道如何在两个 IoT Edge 设备之间创建父子关系，请参阅[将下游 IoT Edge 设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-iot-edge-device.md)。
 
-# Get All IoT Devices
-device_list=$(az iot hub query \
-        --hub-name replace-with-hub-name \
-        --subscription replace-with-sub-name \
-        --resource-group replace-with-rg-name \
-        -q "SELECT * FROM devices WHERE capabilities.iotEdge = false" \
-        --query 'join(`, `, [].deviceId)' -o tsv)
-
-# Add all IoT devices to IoT Edge (as child)
-az iot hub device-identity add-children \
-  --device-id $egde_device \
-  --child-list $device_list \
-  --hub-name replace-with-hub-name \
-  --resource-group replace-with-rg-name \
-  --subscription replace-with-sub-name
-```
-
-可以修改“[查询](../iot-hub/iot-hub-devguide-query-language.md)”以选择其他部分设备。 如果指定大的设备集，此命令可能需要数秒钟才能完成。
-
-#### <a name="option-3-use-iot-hub-service-sdk"></a>选项 3：使用 IoT 中心服务 SDK
-
-最后，可以使用 C#、Java 或 Node.js IoT 中心服务 SDK 以编程方式管理父子关系。 下面是使用 C# SDK [分配子设备的示例](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/e2e/test/iothub/service/RegistryManagerE2ETests.cs)。
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>将父设备设为网关
 

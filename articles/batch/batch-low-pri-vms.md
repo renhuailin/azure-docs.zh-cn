@@ -5,12 +5,12 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: seodec18
-ms.openlocfilehash: cafc7216e8112640f823ecee1aea055ab78b3fc6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d6e6277292d12de10ad55c5f7d912f41e92b5b18
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098462"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989299"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
 
@@ -154,4 +154,4 @@ pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
 
 - 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
 - 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。
-- 开始规划从低优先级 VM 到现成 VM 的迁移。 如果你在“云服务配置”池中使用低优先级 VM，请规划迁移到[虚拟机配置](nodes-and-pools.md#configurations)池 。
+- 开始规划从低优先级 VM 到现成 VM 的迁移。 如果在“云服务配置”池中使用低优先级 VM（[已弃用](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)），请计划改为迁移到 [**虚拟机配置** 池](nodes-and-pools.md#configurations)。

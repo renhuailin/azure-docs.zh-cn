@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 12/16/2020
-ms.openlocfilehash: 852c44f5edc5c0b0f5f655f63ab040927bd9bc7b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/20/2021
+ms.openlocfilehash: def73d137f3cc2c79ae8417995ec6bdf6c519b7d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97963673"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812617"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share 中支持的数据存储
 
@@ -50,7 +50,7 @@ Azure Data Share 允许数据使用者选择一个数据存储来接受数据。
 | 数据资源管理器 ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>从存储帐户共享
-Azure Data Share 支持从 Azure Data Lake Storage Gen1 和 Azure Data Lake Storage Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 目前仅支持块 blob。 
+Azure Data Share 支持从 Azure Data Lake Storage Gen1 和 Azure Data Lake Storage Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 可以共享块 Blob、追加 Blob 或页 Blob，并将它们作为块 Blob 接收。
 
 在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本。 或者，他们可以使用增量快照功能仅复制新文件或更新的文件。 
 

@@ -3,12 +3,12 @@ title: 如何保护资源层次结构 - Azure 治理
 description: 了解如何通过层次结构设置（包括设置默认管理组）来保护资源层次结构。
 ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 11c20ccf5aff74d810533cd56e0a7b116f2dc64b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c87603510d036efded1331a5c08a7aae17326d09
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303638"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765154"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>如何保护资源层次结构
 
@@ -113,7 +113,7 @@ ms.locfileid: "107303638"
 
 ## <a name="powershell-sample"></a>PowerShell 示例
 
-PowerShell 没有用于设置默认管理组“Az”命令，或者设置需要授权，但作为一种解决方法，你可以将 REST API 与下面的 PowerShell 示例结合使用：
+PowerShell 没有用于设置默认管理组或设置“需要授权”的“Az”命令，但你可以将 REST API 与下面的 PowerShell 示例结合使用，这是一种解决方法：
 
 ```powershell
 $root_management_group_id = "Enter the ID of root management group"

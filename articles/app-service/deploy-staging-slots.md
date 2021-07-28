@@ -4,13 +4,13 @@ description: 了解如何将应用部署到非生产槽并自动交换到生产�
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: c779e95b790d91b801d5d35b4702191f5e7986d5
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.custom: fasttrack-edit, devx-track-azurepowershell
+ms.openlocfilehash: 792801c568255b471487c14b6a812942298ad0d4
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802958"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906541"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -248,8 +248,7 @@ ms.locfileid: "104802958"
 客户端自动路由到特定槽后，在该客户端会话生存期内都将“固定”到该槽。 在客户端浏览器上，可以通过查看 HTTP 标头中的 `x-ms-routing-name` cookie 来查看会话固定到哪个槽。 路由到“暂存”槽的请求具有 cookie `x-ms-routing-name=staging`。 路由到生产槽的请求具有 cookie `x-ms-routing-name=self`。
 
    > [!NOTE]
-   > 除了 Azure 门户之外，还可以在 Azure CLI 中使用 [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) 命令设置 CI/CD 工具（如 DevOps 管道或其他自动化系统）的路由百分比。
-   > 
+   > 还可以在 Azure CLI 中使用 [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az_webapp_traffic_routing_set) 命令设置 CI/CD 工具（如 GitHub Actions、DevOps 管道或其他自动化系统）中的路由百分比。
 
 ### <a name="route-production-traffic-manually"></a>手动路由生产流量
 
@@ -270,6 +269,9 @@ ms.locfileid: "104802958"
 ```
 
 默认情况下，为新槽提供 `0%` 的路由规则（以灰色显示）。 将此值显式设置为 `0%` 时（以黑色文本显示），用户可以使用 `x-ms-routing-name` 查询参数手动访问过渡槽。 但是，他们不会自动路由到该槽，因为路由百分比设置为 0。 这是一种高级方案，在其中可以对公众“隐藏”过渡槽，同时允许内部团队测试槽中的更改。
+
+> [!NOTE]
+> 有一个已知限制会影响专用终结点，以及影响使用槽进行的流量路由。 从 2021 年 4 月起，槽之间的自动和手动请求路由将会导致“403 Access Denied”。 将来的版本会取消此限制。 
 
 <a name="Delete"></a>
 

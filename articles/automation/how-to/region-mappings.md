@@ -1,16 +1,16 @@
 ---
 title: 链接的 Log Analytics 工作区支持的区域
 description: 本文介绍了自动化帐户与 Log Analytics 工作区之间受支持的区域映射，因为它与 Azure 自动化的某些功能相关。
-ms.date: 02/17/2021
+ms.date: 04/01/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4ac2a575c9fe551d5b1b396ab06b2735a749f9da
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720165"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221868"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>链接的 Log Analytics 工作区支持的区域
 
@@ -38,30 +38,44 @@ ms.locfileid: "101720165"
 |EastUS2<sup>2</sup>|EastUS|
 |美国西部|美国西部|
 |美国西部 2|美国西部 2|
+|NorthCentralUS|NorthCentralUS|
 |CentralUS|CentralUS|
 |SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
+|**巴西**||
+|BrazilSouth|BrazilSouth|
 |**加拿大**||
 |CanadaCentral|CanadaCentral|
+|**中国**||
+|ChinaEast2<sup>3</sup>|ChinaEast2|
 |**亚太区**||
-|AustraliaEast|AustraliaEast|
-|AustraliaSoutheast|AustraliaSoutheast|
 |EastAsia|EastAsia|
 |SoutheastAsia|SoutheastAsia|
+|**印度**||
 |CentralIndia|CentralIndia|
-|ChinaEast2<sup>3</sup>|ChinaEast2|
+|**日本**||
 |JapanEast|JapanEast|
+|**澳大利亚**||
+|AustraliaEast|AustraliaEast|
+|AustraliaSoutheast|AustraliaSoutheast|
+|**韩国**||
+|KoreaCentral|KoreaCentral|
+|**挪威**||
+|挪威东部|挪威东部|
 |**欧洲**||
 |NorthEurope|NorthEurope|
-|FranceCentral|FranceCentral|
-|UKSouth|UKSouth|
 |西欧|西欧|
+|**法国**||
+|FranceCentral|FranceCentral|
+|**英国**
+|UKSouth|UKSouth|
+|**瑞士**||
 |SwitzerlandNorth|SwitzerlandNorth|
+|**阿拉伯联合酋长国**||
+|阿拉伯联合酋长国北部|阿拉伯联合酋长国北部|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>3</sup>|USGovArizona|
-
-
 
 <sup>1</sup> Log Analytics 工作区到自动化帐户的 EastUS 映射不是精确的区域到区域的映射，但它是正确的映射。
 

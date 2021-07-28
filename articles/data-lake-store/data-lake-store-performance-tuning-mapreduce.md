@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: twooley
 ms.openlocfilehash: 2549413241e422fb1e0e5e1f079c287e0b7cf005
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97723722"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>MapReduce on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
@@ -36,7 +36,7 @@ ms.locfileid: "97723722"
 
 ### <a name="mapreducemapmemory--mapreducereducememory"></a>Mapreduce.map.memory/Mapreduce.reduce.memory
 
-根据映射和/或减少任务所需的内存量调整此数目。 可以通过 Yarn 配置查看 Ambari 中 `mapreduce.map.memory` 和 `mapreduce.reduce.memory` 的默认值。 在 Ambari 中，导航到 YARN 并查看“配置”选项卡。随即显示 YARN 内存。
+根据映射和/或减少任务所需的内存量调整此数目。 可以通过 Yarn 配置查看 Ambari 中 `mapreduce.map.memory` 和 `mapreduce.reduce.memory` 的默认值。 在 Ambari 中，导航到 YARN 并查看“配置”选项卡。此时将显示 YARN 内存。
 
 ### <a name="mapreducejobmaps--mapreducejobreduces"></a>Mapreduce.job.maps/Mapreduce.job.reduces
 
@@ -54,7 +54,7 @@ ms.locfileid: "97723722"
 
 ### <a name="step-3-determine-total-yarn-memory"></a>步骤 3：确定总 YARN 内存量
 
-要优化 mapreduce.job.maps/mapreduce.job.reduces，请考虑可供使用的总 YARN 内存量。 该信息在 Ambari 中提供。 导航到 YARN 并查看“配置”选项卡。YARN 内存量会显示在此窗口中。 将 YARN 内存量与群集中的节点数相乘，获得总 YARN 内存量。
+要优化 mapreduce.job.maps/mapreduce.job.reduces，请考虑可供使用的总 YARN 内存量。 该信息在 Ambari 中提供。 导航到 YARN 并查看“配置”选项卡。系统将在此窗口中显示 YARN 内存。 将 YARN 内存量与群集中的节点数相乘，获得总 YARN 内存量。
 
 `Total YARN memory = nodes * YARN memory per node`
 

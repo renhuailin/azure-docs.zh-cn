@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/20/2021
+ms.date: 05/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: efa88e1be5c5df5dd09cb5a97c8ece352496ccdb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c663282865e19df0e103e75a7e32d86651232a93
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769690"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762544"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -35,7 +35,7 @@ ms.locfileid: "107769690"
 
 ## <a name="availability"></a>可用性
 
-Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组织能在不增加费用的情况下实现基本级别的安全防护。 你可以在 Azure 门户中打开安全默认值。 如果你的租户是在 2019 年 10 月 22 日或之后创建的，则可能已在租户中启用了安全默认值。 为了保护我们所有的用户，将向所有新创建的租户推出安全默认值。
+Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组织能在不增加费用的情况下实现基本级别的安全防护。 你可以在 Azure 门户中打开安全默认值。 如果你的租户是在 2019 年 10 月 22 日或之后创建的，则可能已在租户中启用了安全默认值。 为了保护我们的所有用户，将向所有新创建的租户推出安全默认值。
 
 ### <a name="whos-it-for"></a>目标用户
 
@@ -135,6 +135,9 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 
 - ** 用户可以使用来自 Microsoft Authenticator 应用的验证码，但只能使用通知选项进行注册。
 - *** 仅当管理员启用了应用密码时，应用密码才可在旧身份验证场景中的每用户 MFA 中使用。
+
+> [!WARNING]
+> 如果你使用的是安全默认值，请不要对你的组织禁用方法。 禁用方法可能会导致将你自己锁定在租户之外。 在 [MFA 服务设置门户](../authentication/howto-mfa-getstarted.md#choose-verification-options)中启用所有可供用户使用的方法。
 
 ### <a name="disabled-mfa-status"></a>禁用的 MFA 状态
 

@@ -1,24 +1,24 @@
 ---
 title: 通过自定义规则和通知扩展 Azure IoT Central | Microsoft Docs
 description: 解决方案开发人员将配置一个 IoT Central 应用程序，以便在设备停止发送遥测数据时发送电子邮件通知。 此解决方案使用 Azure 流分析、Azure Functions 和 SendGrid。
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: philmea
+ms.author: philmea
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2eb776add1e4a53edc6f4f57983074af31d8f52d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179334"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750034"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
 
-本操作指南向解决方案开发人员介绍如何使用自定义规则和通知来扩展 IoT Central 应用程序。 本示例演示如何在设备停止发送遥测数据时向操作员发送通知。 该解决方案使用 [Azure 流分析](../../stream-analytics/index.yml)查询来检测设备何时已停止发送遥测数据。 流分析作业使用 [Azure Functions](../../azure-functions/index.yml) 通过 [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) 发送通知电子邮件。
+本操作指南介绍如何使用自定义规则和通知来扩展 IoT Central 应用程序。 本示例演示如何在设备停止发送遥测数据时向操作员发送通知。 该解决方案使用 [Azure 流分析](../../stream-analytics/index.yml)查询来检测设备何时已停止发送遥测数据。 流分析作业使用 [Azure Functions](../../azure-functions/index.yml) 通过 [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) 发送通知电子邮件。
 
 本操作指南将介绍如何扩展 IoT Central，使其功能超越内置规则和操作的功能。
 
@@ -40,11 +40,11 @@ ms.locfileid: "102179334"
 
 | 设置 | “值” |
 | ------- | ----- |
-| 定价计划 | Standard |
+| 定价计划 | 标准 |
 | 应用程序模板 | 店内分析 – 条件监视 |
 | 应用程序名称 | 接受默认设置，或选择自己的名称 |
 | URL | 接受默认设置，或选择自己的唯一 URL 前缀 |
-| Directory | Azure Active Directory 租户 |
+| 目录 | Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
 | 区域 | 离你最近的区域 |
 
@@ -263,7 +263,7 @@ test-device-3    2019-05-02T14:24:28.919Z
     | 输出别名 | emailnotification |
     | 订阅 | 你的订阅 |
     | 函数应用 | 你的函数应用 |
-    | 函数  | HttpTrigger1 |
+    | 功能  | HttpTrigger1 |
 
 1. 在“作业拓扑”下选择“查询”，并将现有查询替换为以下 SQL：
 
@@ -323,7 +323,7 @@ test-device-3    2019-05-02T14:24:28.919Z
     | 设置 | 值 |
     | ------- | ----- |
     | 显示名称 | 导出到事件中心 |
-    | Enabled | 开 |
+    | 已启用 | 开 |
     | 要导出的数据的类型 | 遥测 |
     | 扩充 | 输入想要如何组织导出数据的所需键/值 | 
     | 目标 | 新建并输入有关数据导出位置的信息 |

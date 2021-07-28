@@ -1,24 +1,18 @@
 ---
-title: Azure 安全中心内的文件完整性监视 | Microsoft Docs
+title: Azure 安全中心内的文件完整性监视
 description: 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/22/2020
+ms.date: 04/25/2021
 ms.author: memildin
-ms.openlocfilehash: b858903b87dc6c4cc1f7c40338c09bf5b8204b3d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e14307207ddbe9f1b89bd05d7015dafd76b10d51
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176529"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992383"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
@@ -31,7 +25,7 @@ ms.locfileid: "102176529"
 |发布状态：|正式发布版 (GA)|
 |定价：|需要[适用于服务器的 Azure Defender](defender-for-servers-introduction.md)。<br>FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。|
 |所需角色和权限：|工作区所有者可以启用/禁用 FIM（有关详细信息，请参阅 [Log Analytics 的 Azure 角色](/services-hub/health/azure-roles#azure-roles)）。<br>读取者可以查看结果。|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权云（US Gov、中国政府云、其他政府云）<br>仅在可以使用 Azure 自动化更改跟踪解决方案的区域中受支持。<br>![是](./media/icons/yes-icon.png) 已启用 [Azure Arc](https://docs.microsoft.com/azure/azure-arc/servers/overview) 的设备。<br>请参阅[链接的 Log Analytics 工作区支持的区域](../automation/how-to/region-mappings.md)。<br>[详细了解更改跟踪](../automation/change-tracking/overview.md)。|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权云（US Gov、中国政府云、其他政府云）<br>仅在可以使用 Azure 自动化更改跟踪解决方案的区域中受支持。<br>![是](./media/icons/yes-icon.png) 已启用 [Azure Arc](../azure-arc/servers/overview.md) 的设备。<br>请参阅[链接的 Log Analytics 工作区支持的区域](../automation/how-to/region-mappings.md)。<br>[详细了解更改跟踪](../automation/change-tracking/overview.md)。|
 |||
 
 ## <a name="what-is-fim-in-security-center"></a>安全中心内的 FIM 是什么？
@@ -62,7 +56,8 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 > 如果删除该“更改跟踪”资源，则还将禁用安全中心内的文件完整性监视功能。
 
 ## <a name="which-files-should-i-monitor"></a>应监视哪些文件？
-选择要监视的文件时，请考虑哪些文件对你的系统和应用程序至关重要。 监视预期不会在计划外发生更改的文件。 如果选择应用程序或操作系统经常更改的文件（例如日志文件和文本文件），则会造成很多的干扰，使攻击识别变得困难。
+
+选择要监视的文件时，请考虑对系统和应用程序至关重要的文件。 监视预期不会在计划外发生更改的文件。 如果选择应用程序或操作系统经常更改的文件（例如日志文件和文本文件），则会造成很多的干扰，使攻击识别变得困难。
 
 安全中心提供了以下建议项列表，用于根据已知攻击模式进行监视。
 
@@ -128,7 +123,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
 
     > [!TIP]
-    > 如果未显示启用或升级按钮，并且行尾空间是空白的，则表示已对工作区启用 FIM。
+    > 如果没有“启用”或“升级”按钮，并且空间为空白，则表示已在工作区中启用 FIM。
 
 
 1. 选择“启用”。 此时将显示工作区的详细信息，包括工作区下的 Windows 和 Linux 计算机数目。
@@ -168,9 +163,9 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 - 所选时间段内发生的更改总数
 - 更改总数的细分，以文件更改数或注册表更改数的形式列出
 
-在搜索字段中输入计算机名，或选择“计算机”选项卡下列出的计算机时，“日志搜索”将会打开。日志搜索结果显示所选时间段内对该计算机所做的所有更改。 可以展开某项更改以查看其详细信息。
+选择计算机时，该查询将与结果一起显示，这些结果标识所选时间段内对计算机所进行的更改。 可以展开某项更改以查看其详细信息。
 
-![日志搜索][8]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/query-machine-changes.png" alt-text="日志分析查询，其中显示了由 Azure 安全中心的文件完整性监视所标识的更改" lightbox="./media/security-center-file-integrity-monitoring/query-machine-changes.png":::
 
 “更改”选项卡（如下所示）列出所选时间段内对该工作区所做的所有更改。 对于更改的每个实体，仪表板将会列出：
 
@@ -179,64 +174,58 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 - 更改类别（修改、添加、删除）。
 - 更改日期和时间
 
-![工作区的更改][9]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/changes-tab.png" alt-text="Azure 安全中心的文件完整性监视更改选项卡" lightbox="./media/security-center-file-integrity-monitoring/changes-tab.png":::
 
 在搜索字段中输入某项更改，或选择“更改”选项卡下列出的某个实体时，“更改详细信息”将会打开。 
 
-![更改详细信息][10]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/change-details.png" alt-text="Azure 安全中心的文件完整性监视，其中显示了更改的详细信息窗格" lightbox="./media/security-center-file-integrity-monitoring/change-details.png":::
 
 ## <a name="edit-monitored-entities"></a>编辑受监视的实体
 
-1. 返回到“文件完整性监视”仪表板并选择“设置” 。
+1. 在工作区的文件完整性监视仪表板中，从工具栏中选择“设置”。 
 
-   ![设置][11]
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-dashboard-settings.png" alt-text="访问工作区的文件完整性监视设置" lightbox="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-dashboard-settings.png":::
 
-   此时将打开“工作区配置”，其中显示三个选项卡：**Windows 注册表**、**Windows 文件** 和 **Linux 文件**。 每个选项卡列出可在该类别中编辑的实体。 对于列出的每个实体，安全中心会指出是已启用 (true) 还是未启用 (false) FIM。  编辑实体可以启用或禁用 FIM。
+   “工作区配置”随即打开，其中包含可监视的每类元素的选项卡：
 
-   ![工作区配置][12]
+      - Windows 注册表
+      - Windows 文件
+      - Linux 文件
+      - 文件内容
+      - Windows 服务
 
-2. 选择标识保护。 在此示例中，我们选择了“Windows 注册表”下的某个项。 此时会打开“更改跟踪的编辑”。
+      每个选项卡列出可在该类别中编辑的实体。 对于列出的每个实体，安全中心会指出是已启用 (true) 还是未启用 (false) FIM。  编辑实体可以启用或禁用 FIM。
 
-   ![编辑或更改跟踪][13]
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-workspace-configuration.png" alt-text="Azure 安全中心中的文件完整性监视的工作区配置":::
 
-在“更改跟踪的编辑”下，可以：
+1. 从其中一个选项卡中选择一个条目，并在“编辑更改跟踪”窗格中编辑任何可用字段。 选项包括：
 
-- 启用 (True) 或禁用 (False) 文件完整性监视
-- 提供或更改实体名称
-- 提供或更改值或路径
-- 删除实体、丢弃更改或保存更改
+    - 启用 (True) 或禁用 (False) 文件完整性监视
+    - 提供或更改实体名称
+    - 提供或更改值或路径
+    - 删除实体
+
+1. 放弃或保存更改。
+
 
 ## <a name="add-a-new-entity-to-monitor"></a>添加要监视的新实体
-1. 返回到“文件完整性监视”仪表板并选择顶部的“设置”。  此时会打开“工作区配置”。
-2. 在“工作区配置”下，选择要添加的实体类型对应的选项卡：“Windows 注册表”、“Windows 文件”或“Linux 文件”。 在此示例中，我们选择了“Linux 文件”。
 
-   ![添加要监视的新项][14]
+1. 在工作区的文件完整性监视仪表板中，从工具栏中选择“设置”。 
 
-3. 选择“添加”  。 此时会打开“更改跟踪的添加”。
+    “工作区配置”随即打开。
 
-   ![输入请求的信息][15]
+1. 在“工作区配置”上：
 
-4. 在“添加”页上，键入请求的信息并选择“保存”。 
+    1. 选择要添加的实体类型的选项卡：Windows 注册表、Windows 文件、Linux 文件、文件内容或 Windows 服务。 
+    1. 选择 **添加** 。 
 
-## <a name="disable-monitored-entities"></a>禁用受监视的实体
-1. 返回到“文件完整性监视”仪表板。
-2. 选择当前已启用 FIM 的工作区。 如果某个工作区缺少“启用”按钮或“升级计划”按钮，则表示该工作区已启用 FIM。
+        在此示例中，我们选择了“Linux 文件”。
 
-   ![选择已启用 FIM 的工作区][16]
+        :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-add-element.png" alt-text="在 Azure 安全中心的文件完整性监视中添加要监视的元素" lightbox="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-add-element.png":::
 
-3. 在“文件完整性监视”下，选择“设置”。
+1. 选择“添加”  。 此时会打开“更改跟踪的添加”。
 
-   ![选择设置][17]
-
-4. 在“工作区配置”下，选择“已启用”设置为 true 的某个组。 
-
-   ![工作区配置][18]
-
-5. 在“更改跟踪的编辑”窗口中，将“已启用”设置为 False。 
-
-   ![将“已启用”设置为 false][19]
-
-6. 选择“保存” 。
+1. 输入所需信息，然后选择“保存”。
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>使用通配符监视文件夹和路径
 
@@ -249,13 +238,13 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 ## <a name="disable-fim"></a>禁用 FIM
 可以禁用 FIM。 FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 禁用 FIM 会从所选工作区中删除“更改跟踪”解决方案。
 
-1. 若要禁用 FIM，请返回到“文件完整性监视”仪表板。
-2. 选择工作区。
-3. 在“文件完整性监视”下，选择“禁用” 。
+若要禁用 FIM：
 
-   ![禁用 FIM][20]
+1. 从工作区的文件完整性监视仪表板中，选择“禁用”。
 
-4. 选择“删除”以禁用 FIM。
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/disable-file-integrity-monitoring.png" alt-text="从“设置”页禁用文件完整性监视":::
+
+1. 选择“删除” 。
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已了解如何在安全中心使用文件完整性监视 (FIM)。 若要了解有关安全中心的详细信息，请参阅以下页面：
@@ -265,21 +254,5 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 * [Azure 安全博客](/archive/blogs/azuresecurity/) - 获取最新的 Azure 安全新闻和信息。
 
 <!--Image references-->
-[1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png
 [3]: ./media/security-center-file-integrity-monitoring/enable.png
 [4]: ./media/security-center-file-integrity-monitoring/upgrade-plan.png
-[5]: ./media/security-center-file-integrity-monitoring/enable-fim.png
-[7]: ./media/security-center-file-integrity-monitoring/filter.png
-[8]: ./media/security-center-file-integrity-monitoring/log-search.png
-[9]: ./media/security-center-file-integrity-monitoring/changes-tab.png
-[10]: ./media/security-center-file-integrity-monitoring/change-details.png
-[11]: ./media/security-center-file-integrity-monitoring/fim-dashboard-settings.png
-[12]: ./media/security-center-file-integrity-monitoring/workspace-config.png
-[13]: ./media/security-center-file-integrity-monitoring/edit.png
-[14]: ./media/security-center-file-integrity-monitoring/add.png
-[15]: ./media/security-center-file-integrity-monitoring/add-item.png
-[16]: ./media/security-center-file-integrity-monitoring/fim-dashboard-disable.png
-[17]: ./media/security-center-file-integrity-monitoring/fim-dashboard-settings-disabled.png
-[18]: ./media/security-center-file-integrity-monitoring/workspace-config-disable.png
-[19]: ./media/security-center-file-integrity-monitoring/edit-disable.png
-[20]: ./media/security-center-file-integrity-monitoring/disable-fim.png

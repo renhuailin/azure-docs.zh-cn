@@ -3,12 +3,12 @@ title: Azure 服务总线订阅规则 SQL 操作语法 | Microsoft Docs
 description: 本文提供了有关 SQL 规则操作语法的参考。 这些操作是以针对消息执行的基于 SQL 语言的语法编写的。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7aceb1992aafbbf92718a6bf558a72060f3275df
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100652830"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770076"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>订阅规则 SQL 操作语法
 
@@ -53,7 +53,10 @@ ms.locfileid: "100652830"
   
 ## <a name="arguments"></a>参数  
   
--   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` or `user`进行求值的基于 SQL 语言的筛选器表达式。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
+-   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` or `user`进行求值的基于 SQL 语言的筛选器表达式。 
+    - `sys` 值指示系统范围，其中的 `<property_name>` 是服务总线消息上的任何属性，如[消息、有效负载和序列化](service-bus-messages-payloads.md)中所述。
+    - `user` 值指示用户范围，其中的 `<property_name>` 是可在发送到服务总线时在消息上设置的自定义属性的键。
+    - `user` 范围是默认范围（如果 `<scope>` 未指定）。  
   
 ### <a name="remarks"></a>备注  
 

@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f5c0e8ae52d2af25c41550df1c59680d47360477
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92532639"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987841"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>在 Azure Database for PostgreSQL 灵活服务器中进行备份和还原
 
@@ -69,9 +69,9 @@ ms.locfileid: "92532639"
 
 多种情况下可以使用时间点还原。 例如，用户意外删除了数据、删除了重要的表或数据库，或者应用程序因为缺陷而意外地使用错误数据覆盖了正确数据。 由于事务日志的持续备份，你将能够还原到最近一个事务。
 
-可选择最早还原点或自定义还原点。
+可在最新还原点和自定义还原点之间进行选择。
 
--   **最早还原点**：根据你的保持期，它将是你可还原的最早时间。 最早备份时间将自动选择，并在门户上显示。 如果你想要进行调查，或者执行某种测试，启动该时间点，那么这非常有用。
+-   最新还原点（当前）：默认选项，利用该选项可将服务器还原到最新时间点。 
 
 -   **自定义还原点**：通过此选项，可在为此灵活服务器定义的保持期内选择任何时间点。 默认情况下，UTC 中的最近时间是自动选择的；如果你想要还原到最近提交的事务来进行测试，那么最近时间非常有用。 可选择性地挑选其他日期和时间。 
 

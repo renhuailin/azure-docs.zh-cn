@@ -5,27 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 01/05/2021
+ms.date: 06/15/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77305f9f2216adba8fb46cf2d4ee6b0da8c10e5f
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97955393"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105986"
 ---
 # <a name="what-is-identity-protection"></a>什么是“标识保护”？
 
 标识保护是一种使组织能够完成三项关键任务的工具：
 
-- 自动检测和修正基于标识的风险。
-- 使用门户中的数据调查风险。
-- 将风险检测数据导出到第三方实用程序，供进一步分析。
+- [自动检测和修正基于标识的风险](howto-identity-protection-configure-risk-policies.md)。
+- 使用门户中的数据[调查风险](howto-identity-protection-investigate-risk.md)。
+- [将风险检测数据导出到你的 SIEM](../../sentinel/connect-azure-ad-identity-protection.md)。
 
 标识保护利用 Microsoft 从 Azure AD 组织、Microsoft 帐户中的用户群以及 Xbox 游戏中获得的自身经验来保护用户。 Microsoft 每天分析 6.5 万亿条信号，以识别威胁并保护客户安全。
 
@@ -45,22 +45,17 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 
 ## <a name="risk-detection-and-remediation"></a>风险检测和修正
 
-标识保护按照以下类别标识风险：
+标识保护识别许多类型的风险，包括：
 
-| 风险检测类型 | 说明 |
-| --- | --- |
-| 匿名 IP 地址 | 从匿名 IP 地址登录（例如：Tor 浏览器，匿名程序 VPN）。 |
-| 异常位置登录 | 从异常位置（基于用户最近的登录）进行登录。 |
-| 受恶意软件感染的 IP 地址 | 从受恶意软件感染的 IP 地址进行登录。 |
-| 不熟悉的登录属性 | 使用给定用户最近未曾出现过的属性进行登录。 |
-| 凭据泄漏 | 指示用户的有效凭据已泄露。 |
-| 密码喷射 | 指示正在使用常见密码以统一的暴力攻击方式攻击多个用户名。 |
-| Azure AD 威胁智能 | Microsoft 的内部和外部威胁智能源已识别出已知的攻击模式。 |
-| 新国家/地区 | 此检测由 [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) 发现。 |
-| 来自匿名 IP 地址的活动 | 此检测由 [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) 发现。 |
-| 可疑收件箱转发 | 此检测由 [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) 发现。 |
+- 匿名 IP 地址使用
+- 异常位置登录
+- 受恶意软件感染的 IP 地址
+- 不熟悉的登录属性
+- 凭据泄露
+- 密码喷射
+- 等等...
 
-要详细了解这些风险以及如何/何时计算，请参阅[什么是风险](concept-identity-protection-risks.md)一文。
+要详细了解这些风险以及其他风险，包括如何或何时计算风险，请参阅[什么是风险](concept-identity-protection-risks.md)一文。
 
 风险信号可能会触发修正措施，例如要求用户执行以下操作：执行 Azure AD 多重身份验证、使用自助式密码重置来重置其密码，或进行阻止直到管理员执行操作。
 
